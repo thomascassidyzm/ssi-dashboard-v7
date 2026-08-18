@@ -900,6 +900,29 @@ function loadPairContract(courseCode) {
   // pair's contract. The full course_code stays the DB partition key elsewhere.
   const contractCode = courseCode.replace(/_v\d+$/, '');
   try { contract = require(`../../../docs/pair-contracts/${contractCode}.contract.cjs`); } catch (_) { contract = null; }
+  // Known-LANGUAGE brief fallback (2026-08-18). The 2026-06 briefs describe a known LANGUAGE but
+  // were filed under one course code, so kor_for_hin / zho_for_hin / kor_for_tam / zho_for_tam were
+  // left contract-less — and therefore silently unchecked — purely by where the file sat.
+  const knownLang = contractCode.split('_for_')[1];
+  // NOT for English: *_for_eng has a deliberate shared scaffold (_default_eng) below, and the
+  // per-pair English contracts carry TARGET-specific licensing that must not be lent sideways.
+  if (!contract && knownLang && knownLang !== 'eng') {
+    try { contract = require(`../../../docs/pair-contracts/_known_${knownLang}.contract.cjs`); } catch (_) { contract = null; }
+    if (!contract) {
+      // A known-side BRIEF filed under another course code (the 2026-06 India briefs describe a
+      // known language, not a pair). Identified by the brief schema — `freeClass` — so only
+      // genuinely known-side-only contracts are lent, never a target-coupled pair contract.
+      try {
+        const dir = require('path').join(__dirname, '../../../docs/pair-contracts');
+        for (const f of require('fs').readdirSync(dir)) {
+          if (!f.endsWith('.contract.cjs') || f.startsWith('_')) continue;
+          if (f.replace('.contract.cjs', '').split('_for_')[1] !== knownLang) continue;
+          const cand = require(`../../../docs/pair-contracts/${f}`);
+          if (cand && Array.isArray(cand.freeClass)) { contract = cand; break; }
+        }
+      } catch (_) { contract = null; }
+    }
+  }
   if (!contract && /_for_eng$/.test(contractCode)) {
     try { contract = require('../../../docs/pair-contracts/_default_eng.contract.cjs'); } catch (_) { contract = null; }
   }

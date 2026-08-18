@@ -48,8 +48,28 @@ describe('loadPairContract default fallback', () => {
     expect(c.course_code).toBe('fra_for_eng')
   })
 
-  it('returns null for a non-English-known pair with no contract', () => {
-    expect(loadPairContract('eng_for_kor')).toBeNull()
+  // Superseded 2026-08-18 (known-side script fix). This used to assert that a non-English-known
+  // pair with no contract file returns null — i.e. that the gate silently did not run. That
+  // silence WAS the defect: a course the gate skipped was indistinguishable from a course that
+  // passed. The loader now falls back to a known-LANGUAGE brief (`_known_<lang>.contract.cjs`),
+  // because the 2026-06 briefs describe a known language but were filed under one course code.
+  it('falls back to the known-language brief for a non-English-known pair', () => {
+    const c = loadPairContract('eng_for_kor')
+    expect(c).toBeTruthy()
+    expect(c.known_lang).toBe('kor')
+  })
+
+  it('lends a pair-specific brief to another course with the same known language', () => {
+    // kor_for_hin has no file of its own; eng_for_hin's Hindi brief is valid for it.
+    const c = loadPairContract('kor_for_hin')
+    expect(c).toBeTruthy()
+    expect(c.known_lang).toBe('hin')
+  })
+
+  it('still returns null when no brief exists for the known language at all', () => {
+    // A course whose known language has no brief must return null so the caller can report
+    // UNCHECKED(no_contract) — never a pass.
+    expect(loadPairContract('eng_for_zzznosuchlang')).toBeNull()
   })
 })
 

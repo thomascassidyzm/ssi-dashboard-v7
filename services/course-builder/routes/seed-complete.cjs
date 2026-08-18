@@ -23,6 +23,9 @@ const {
   loadPairContract, checkKnownSide, isKnownVocabBreach, compileKnownContract, stemKnownGloss, tokenizeKnown,
   checkBuildRecombination,
 } = require('../lib/validation.cjs');
+// Script-aware segmentation + UNCHECKED reason codes, so the known-side gate can report that it
+// could not check rather than reporting a pass it never earned (2026-08-18).
+const { REASON: KS_REASON, segmentKnown } = require('../lib/known-side-script.cjs');
 const { loadCourseVocab, addToCourseVocab, loadTranslationVocab, loadIntroducedLegoPairs, buildVocabInjection } = require('../lib/vocab-cache.cjs');
 const { escalateBuildPhrases } = require('../lib/build-escalation.cjs');
 
@@ -1484,7 +1487,44 @@ module.exports = function seedCompleteRoutes(ctx) {
       // matches — English machinery must not be applied to a non-English-known course.
       {
         const contract = loadPairContract(course_code);
-        if (contract && (!contract.known_lang || contract.known_lang === knownLang)) {
+        const contractUsable = contract && (!contract.known_lang || contract.known_lang === knownLang);
+
+        // 3a-KNOWN-UNCHECKED (2026-08-18, Kai's requirement): SILENT REFUSAL IS A DEFECT.
+        // This block used to be a bare `if (contract && …)` whose else-branch was silence, so a
+        // course with no contract — or one whose known side the ASCII tokenizer could not read —
+        // came back indistinguishable from a course that genuinely passed. It now says so.
+        // These are WARNINGS, not errors: they report that the gate could not run, which must
+        // never be mistaken for a pass, but must also not block a submit on a course that has
+        // never been gated. Promotion to blocking is a separate, deliberate decision.
+        {
+          const unchecked = [];
+          if (!contract) {
+            unchecked.push({ reason: KS_REASON.NO_CONTRACT, detail: `no pair-contract and no _known_${knownLang} brief — the known-side gate did NOT run for ${course_code}` });
+          } else if (!contractUsable) {
+            unchecked.push({ reason: KS_REASON.CONTRACT_LANG_MISMATCH, detail: `contract known_lang=${contract.known_lang} but course known language is ${knownLang} — gate did NOT run` });
+          } else {
+            // Contract present and matching: can the tokenizer actually see this known side?
+            const probe = [];
+            for (const lego of legos) {
+              let basket = [];
+              if (usesBuildUseFormat(lego)) basket = [...(lego.build || []), ...(lego.use || [])];
+              else if (lego.phrases) basket = lego.phrases;
+              for (const p of basket) if (p.known) probe.push(p.known);
+            }
+            const blind = probe.filter((t) => segmentKnown(t, { script: contract.script, segmentation: contract.segmentation }).tokens.length === 0);
+            if (probe.length && blind.length === probe.length) {
+              unchecked.push({ reason: KS_REASON.TOKENIZER_EMPTY, detail: `segmentation produced zero tokens for all ${probe.length} known-side prompts (script=${contract.script || 'undeclared'}) — the gate saw nothing, so its silence is NOT a pass` });
+            } else if (blind.length) {
+              unchecked.push({ reason: KS_REASON.TOKENIZER_EMPTY, detail: `segmentation produced zero tokens for ${blind.length}/${probe.length} known-side prompts — those prompts were NOT checked` });
+            }
+          }
+          for (const u of unchecked) {
+            warnings.push({ type: 'known_side_unchecked', reason: u.reason, detail: u.detail, course_code, known_lang: knownLang });
+            console.log(`⚠ ${seedId}: KNOWN-SIDE UNCHECKED [${u.reason}] — ${u.detail}`);
+          }
+        }
+
+        if (contractUsable) {
           const knownCtx = await buildKnownSideSeedCtx(ctx.supabase, course_code, seed_number, legos, contract);
           for (const lego of legos) {
             const legoId = `${seedId}L${String(lego.idx).padStart(2, '0')}`;
