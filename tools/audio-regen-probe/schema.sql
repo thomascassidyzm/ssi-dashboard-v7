@@ -7,7 +7,7 @@
 -- touch_course_audio_stamp, increment_version, bump_course_version,
 -- sync_audio_duration_to_dependents, refuse_component_introduction.
 
--- dumped_at_utc: 2026-08-18T14:49:49.767Z
+-- dumped_at_utc: 2026-08-18T15:14:11.491Z
 
 -- Table DDL for the isolated fixture. Hand-authored, column names/types taken
 -- from information_schema on the live DB (see .a74-scratch/regen-repro/schema-live2.txt).
@@ -133,10 +133,15 @@ CREATE TABLE content_audio_link_drops (
 
 -- language_canonical rows copied from live (only the codes the tests use)
 INSERT INTO language_canonical (raw, canonical) VALUES ('cy', 'cym');
+INSERT INTO language_canonical (raw, canonical) VALUES ('cym', 'cym');
 INSERT INTO language_canonical (raw, canonical) VALUES ('de', 'deu');
+INSERT INTO language_canonical (raw, canonical) VALUES ('deu', 'deu');
 INSERT INTO language_canonical (raw, canonical) VALUES ('en', 'eng');
+INSERT INTO language_canonical (raw, canonical) VALUES ('eng', 'eng');
 INSERT INTO language_canonical (raw, canonical) VALUES ('es', 'spa');
 INSERT INTO language_canonical (raw, canonical) VALUES ('fr', 'fra');
+INSERT INTO language_canonical (raw, canonical) VALUES ('fra', 'fra');
+INSERT INTO language_canonical (raw, canonical) VALUES ('spa', 'spa');
 
 -- ===== normalize_text =====
 CREATE OR REPLACE FUNCTION public.normalize_text(input_text text)
@@ -728,6 +733,181 @@ BEGIN
   RETURN NEW;
 END;
 $function$;
+
+-- ===== link_all_audio_ids =====
+CREATE OR REPLACE FUNCTION public.link_all_audio_ids(p_course_code text)
+ RETURNS jsonb
+ LANGUAGE plpgsql
+AS $function$
+  DECLARE
+    v_course RECORD;
+    v_linked_legos_known INT := 0;
+    v_linked_legos_t1 INT := 0;
+    v_linked_legos_t2 INT := 0;
+    v_linked_phrases_known INT := 0;
+    v_linked_phrases_t1 INT := 0;
+    v_linked_phrases_t2 INT := 0;
+    v_linked_seeds_known INT := 0;
+    v_linked_seeds_t1 INT := 0;
+    v_linked_seeds_t2 INT := 0;
+  BEGIN
+    SELECT * INTO v_course FROM courses WHERE course_code = p_course_code;
+    IF NOT FOUND THEN
+      RAISE EXCEPTION 'Course not found: %', p_course_code;
+    END IF;
+
+    UPDATE course_legos cl SET known_audio_id = (
+      SELECT ca.id FROM course_audio ca
+      WHERE ca.course_code = cl.course_code
+        AND ca.text_normalized = normalize_text(cl.known_text)
+        AND ca.role IN ('known', 'source')
+      LIMIT 1
+    )
+    WHERE cl.course_code = p_course_code AND cl.known_audio_id IS NULL
+      AND EXISTS (
+        SELECT 1 FROM course_audio ca
+        WHERE ca.course_code = cl.course_code
+          AND ca.text_normalized = normalize_text(cl.known_text)
+          AND ca.role IN ('known', 'source')
+      );
+    GET DIAGNOSTICS v_linked_legos_known = ROW_COUNT;
+
+    UPDATE course_legos cl SET target1_audio_id = (
+      SELECT ca.id FROM course_audio ca
+      WHERE ca.course_code = cl.course_code
+        AND ca.text_normalized = normalize_text(cl.target_text)
+        AND ca.role = 'target1'
+      LIMIT 1
+    )
+    WHERE cl.course_code = p_course_code AND cl.target1_audio_id IS NULL
+      AND EXISTS (
+        SELECT 1 FROM course_audio ca
+        WHERE ca.course_code = cl.course_code
+          AND ca.text_normalized = normalize_text(cl.target_text)
+          AND ca.role = 'target1'
+      );
+    GET DIAGNOSTICS v_linked_legos_t1 = ROW_COUNT;
+
+    UPDATE course_legos cl SET target2_audio_id = (
+      SELECT ca.id FROM course_audio ca
+      WHERE ca.course_code = cl.course_code
+        AND ca.text_normalized = normalize_text(cl.target_text)
+        AND ca.role = 'target2'
+      LIMIT 1
+    )
+    WHERE cl.course_code = p_course_code AND cl.target2_audio_id IS NULL
+      AND EXISTS (
+        SELECT 1 FROM course_audio ca
+        WHERE ca.course_code = cl.course_code
+          AND ca.text_normalized = normalize_text(cl.target_text)
+          AND ca.role = 'target2'
+      );
+    GET DIAGNOSTICS v_linked_legos_t2 = ROW_COUNT;
+
+    UPDATE course_practice_phrases cpp SET known_audio_id = (
+      SELECT ca.id FROM course_audio ca
+      WHERE ca.course_code = cpp.course_code
+        AND ca.text_normalized = normalize_text(cpp.known_text)
+        AND ca.role IN ('known', 'source')
+      LIMIT 1
+    )
+    WHERE cpp.course_code = p_course_code AND cpp.known_audio_id IS NULL
+      AND EXISTS (
+        SELECT 1 FROM course_audio ca
+        WHERE ca.course_code = cpp.course_code
+          AND ca.text_normalized = normalize_text(cpp.known_text)
+          AND ca.role IN ('known', 'source')
+      );
+    GET DIAGNOSTICS v_linked_phrases_known = ROW_COUNT;
+
+    UPDATE course_practice_phrases cpp SET target1_audio_id = (
+      SELECT ca.id FROM course_audio ca
+      WHERE ca.course_code = cpp.course_code
+        AND ca.text_normalized = normalize_text(cpp.target_text)
+        AND ca.role = 'target1'
+      LIMIT 1
+    )
+    WHERE cpp.course_code = p_course_code AND cpp.target1_audio_id IS NULL
+      AND EXISTS (
+        SELECT 1 FROM course_audio ca
+        WHERE ca.course_code = cpp.course_code
+          AND ca.text_normalized = normalize_text(cpp.target_text)
+          AND ca.role = 'target1'
+      );
+    GET DIAGNOSTICS v_linked_phrases_t1 = ROW_COUNT;
+
+    UPDATE course_practice_phrases cpp SET target2_audio_id = (
+      SELECT ca.id FROM course_audio ca
+      WHERE ca.course_code = cpp.course_code
+        AND ca.text_normalized = normalize_text(cpp.target_text)
+        AND ca.role = 'target2'
+      LIMIT 1
+    )
+    WHERE cpp.course_code = p_course_code AND cpp.target2_audio_id IS NULL
+      AND EXISTS (
+        SELECT 1 FROM course_audio ca
+        WHERE ca.course_code = cpp.course_code
+          AND ca.text_normalized = normalize_text(cpp.target_text)
+          AND ca.role = 'target2'
+      );
+    GET DIAGNOSTICS v_linked_phrases_t2 = ROW_COUNT;
+
+    UPDATE course_seeds cs SET known_audio_id = (
+      SELECT ca.id FROM course_audio ca
+      WHERE ca.course_code = cs.course_code
+        AND ca.text_normalized = normalize_text(cs.known_text)
+        AND ca.role IN ('known', 'source')
+      LIMIT 1
+    )
+    WHERE cs.course_code = p_course_code AND cs.known_audio_id IS NULL
+      AND EXISTS (
+        SELECT 1 FROM course_audio ca
+        WHERE ca.course_code = cs.course_code
+          AND ca.text_normalized = normalize_text(cs.known_text)
+          AND ca.role IN ('known', 'source')
+      );
+    GET DIAGNOSTICS v_linked_seeds_known = ROW_COUNT;
+
+    UPDATE course_seeds cs SET target1_audio_id = (
+      SELECT ca.id FROM course_audio ca
+      WHERE ca.course_code = cs.course_code
+        AND ca.text_normalized = normalize_text(cs.target_text)
+        AND ca.role = 'target1'
+      LIMIT 1
+    )
+    WHERE cs.course_code = p_course_code AND cs.target1_audio_id IS NULL
+      AND EXISTS (
+        SELECT 1 FROM course_audio ca
+        WHERE ca.course_code = cs.course_code
+          AND ca.text_normalized = normalize_text(cs.target_text)
+          AND ca.role = 'target1'
+      );
+    GET DIAGNOSTICS v_linked_seeds_t1 = ROW_COUNT;
+
+    UPDATE course_seeds cs SET target2_audio_id = (
+      SELECT ca.id FROM course_audio ca
+      WHERE ca.course_code = cs.course_code
+        AND ca.text_normalized = normalize_text(cs.target_text)
+        AND ca.role = 'target2'
+      LIMIT 1
+    )
+    WHERE cs.course_code = p_course_code AND cs.target2_audio_id IS NULL
+      AND EXISTS (
+        SELECT 1 FROM course_audio ca
+        WHERE ca.course_code = cs.course_code
+          AND ca.text_normalized = normalize_text(cs.target_text)
+          AND ca.role = 'target2'
+      );
+    GET DIAGNOSTICS v_linked_seeds_t2 = ROW_COUNT;
+
+    RETURN jsonb_build_object(
+      'course_code', p_course_code,
+      'legos', jsonb_build_object('known', v_linked_legos_known, 'target1', v_linked_legos_t1, 'target2', v_linked_legos_t2),
+      'phrases', jsonb_build_object('known', v_linked_phrases_known, 'target1', v_linked_phrases_t1, 'target2', v_linked_phrases_t2),
+      'seeds', jsonb_build_object('known', v_linked_seeds_known, 'target1', v_linked_seeds_t1, 'target2', v_linked_seeds_t2)
+    );
+  END;
+  $function$;
 
 -- ===== triggers =====
 CREATE TRIGGER audio_autolink AFTER INSERT ON public.course_audio FOR EACH ROW EXECUTE FUNCTION link_audio_to_content();
