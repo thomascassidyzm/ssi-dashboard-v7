@@ -857,3 +857,91 @@ Catalan and German).
 
 **Casts lock only — no bulk rendering.** The A-132 render hold (above) still applies to all locked
 T-21 languages; these six are locked and pending render release, not rendered.
+
+## 2026-08-18 — the FINAL batch: all 41 languages are now ruled
+
+Tom's ruling, **2026-08-18 00:21Z**, working from the candidate page
+`docs/pods/t21-remaining-casting-2026-08-17.md` (published doc `7ad9d404`, source commit `adbceb32`
+on `docs/nld-pool-recast-2026-08-17`). This closes T-21 casting.
+
+**Every name below was checked against that page's actual candidate list before locking.** All twelve
+matched; nothing was guessed and nothing was skipped for want of a match.
+
+### What was written — five pool keys
+
+Applied by `scripts/t21-pool-lock-final-batch.cjs --apply`, same gated shape as the hin/kor
+precedent: before-state assertion per key (abort on drift), unshift/promote to index 0,
+`POD_VOICES_PER_GENDER` is 1 so **index 0 is the cast**, displaced voices keep their depth one place
+down, full readback, and every one of the 43 out-of-scope pools asserted byte-identical afterwards.
+Log: `docs/pods/t21-pool-lock-final-batch-2026-08-18-applied-log.json`.
+
+| Language | Key | Before (index 0) | After (index 0) |
+|---|---|---|---|
+| Polish | `pol` | m Tomasz `70071d42` / f Magdalena `ce19f825` | **m Mateusz `37329fd8895a` / f Aleksandra `1b12d5daee6b`** |
+| Portuguese — Brazilian | `por_br` | m Julio `pt-BR-JulioNeural` / f Brenda `pt-BR-BrendaNeural` | m Julio *(unchanged)* / **f Ara `ara`** |
+| Portuguese — European | `por` | m Duarte `pt-PT-DuarteNeural` / f Raquel `pt-PT-RaquelNeural` | **m Rex `rex` / f Eve `eve`** |
+| Catalan | `cat` | m Jordi `c630b236` / f Mireia `4d3af3e1` | **m Enric `ca-ES-EnricNeural` / f Alba `ca-ES-AlbaNeural`** |
+| Arabic MSA | `ara` | m Youssef `5f0c2251` / f Yasmin `025a38c5` | **m Shakir `ar-EG-ShakirNeural` / f Salma `ar-EG-SalmaNeural`** |
+
+### What was ruled but needed no write — seven keys already at index 0
+
+Asserted before *and* after, written to nothing. `ron` `swa` `ukr` are Tom's "as-is" acceptances;
+the other four are picks the live pool already cast.
+
+| Language | Key | Cast (already index 0) |
+|---|---|---|
+| Romanian | `ron` | Emil `ro-RO-EmilNeural` + Alina `ro-RO-AlinaNeural` — as-is, the only/default pair |
+| Swahili | `swa` | Rafiki `sw-KE-RafikiNeural` + Zuri `sw-KE-ZuriNeural` — as-is |
+| Ukrainian | `ukr` | Ostap `uk-UA-OstapNeural` + Polina `uk-UA-PolinaNeural` — as-is |
+| Swedish | `swe` | Oscar `4c7f16ff` + Alice `3b312632` |
+| Thai | `tha` | Somchai `4b7af2d7` + Nicha `a5341c30` |
+| Turkish | `tur` | Ahmet `f331ee80` + Emel `tr-TR-EmelNeural` |
+| Spanish — Mexican | `spa_mx` | Luciano `es-MX-LucianoNeural` + Carlota `es-MX-CarlotaNeural` |
+
+**Turkish has two Ahmets** — xAI `f331ee80` and Azure `tr-TR-AhmetNeural`. The page's sample clip
+(`73934272-…`) traces to the **xAI** Ahmet on the 2026-08-14 source page, and that is the one at
+index 0. Not a coin-toss.
+
+### Polish supersedes batch-1 (#970) — and #970 had written nothing
+
+Job #970 read the garbled dictation *"Polish now is the first choice. Okay, Thomas"* as naming
+**Tomasz**, and recorded Tomasz + Magdalena. Tom has now ruled **Mateusz + Aleksandra**. Because
+#970 correctly made **no `app_config` write** (Tomasz/Magdalena were already index 0), this is the
+**first `pol` write**, not a revert of a bad one — nothing had to be undone.
+
+The ruling is coherent and well-evidenced: Mateusz and Aleksandra are the voices Polish learners
+**already hear in production** (82 and 84 clips on the 2026-08-14 page's "In production now" block);
+Tomasz/Magdalena were the *official pool* pair that production had diverged from. Tom has ruled the
+fork in favour of production. Genders confirmed from `tools/pod-voices-xai.json`
+(Mateusz `m`, Aleksandra `f`) — note the old page printed **both** as male, which is the known
+all-male label defect recorded above, not a contradiction of this lock.
+
+### Batch-1 (#970) verified as landed
+
+All five only-pair languages confirmed still at index 0 on the live pool: `lav` Nils/Everita,
+`lit` Leonas/Ona, `nep` Sagar/Hemkala, `nor` Finn/Iselin, `fas` Farid/Dilara. Nothing had drifted.
+
+### Verification
+
+Every one of the seventeen languages above was read back **from the live DB through `psql`** — a
+different client from the one that wrote, so the write is not verifying itself. All 17 index-0 casts
+match the ruling. Arabic genders cross-checked against `services/voice-gender-map.cjs`
+(`ar-EG-ShakirNeural: M`, `ar-EG-SalmaNeural: F`).
+
+### The one remaining blocker — spa_mx cannot take effect
+
+Mexican Spanish is **ruled and locked** (Luciano + Carlota sit at index 0 of `spa_mx`), but it
+**cannot reach a render**. `pod-sync.cjs`'s `langKey()` does `lang.toLowerCase().split(/[_-]/)[0]`,
+so `spa_mx` resolves to the **`spa`** pool and casts Manuel + Elvira — the Iberian pair. The
+`spa_mx` pool key is live, correct and unreachable.
+
+**Deliberately not fixed here.** It is *not* a small unambiguous key split: `tools/pod-recast.cjs`
+already carries a local `poolKeysForCourse()` workaround precisely because *"we must not edit
+pod-sync.cjs (another worker owns it)"*, the same split silently affects `ara_sy`, `fra_ca` and
+`por_br` too, and `por_br` is one of the casts locked in this very pass. Changing `langKey()` is a
+shared-ownership change with a four-language blast radius, and it belongs in its own scoped job with
+its own before/after. **This is the remaining gate on Mexican Spanish, and it is now the only one.**
+
+### Nothing was rendered
+
+Casts lock only. The A-132 render hold and the release question are handled separately (job #986).
