@@ -375,6 +375,184 @@ describe('Rule 4 — numerals: how a number is SPELT is not whether it was SAID'
   })
 })
 
+// ---------------------------------------------------------------------------
+// The three A-136 gate artefacts (2026-08-17 nld pod recast), generalised
+// ---------------------------------------------------------------------------
+
+describe('synthesis cues are direction, not speech', () => {
+  it('strips the cue and leaves everything else alone', () => {
+    expect(V.stripSynthesisCues('Ja, [pause] natuurlijk.')).toBe('Ja, natuurlijk.')
+    expect(V.stripSynthesisCues('Wacht <break time="400ms"/> even.')).toBe('Wacht even.')
+    expect(V.stripSynthesisCues('gewoon een zin')).toBe('gewoon een zin')
+  })
+
+  it('does NOT strip bracketed words that are actually spoken', () => {
+    // 18,851 estate clips read "[atom] 17" aloud as "atom seventeen", and the
+    // English prompts say "he wanted [someone] to". A bracket rule would blind
+    // the gate to a dropped word in every one of them.
+    expect(V.stripSynthesisCues('[atom] 17')).toBe('[atom] 17')
+    expect(V.stripSynthesisCues("'he wanted [someone] to'")).toBe("'he wanted [someone] to'")
+  })
+
+  it('passes the clip A-136 was refusing — the cue was the whole error', () => {
+    // CER 0.32 against a 0.25 job gate, for audio that says exactly the right
+    // words. 16 of the 29 burnt clips were this and nothing else.
+    const v = V.verdictFromDecode('Ja, natuurlijk.', 'Ja, [pause] natuurlijk.', 'nl')
+    expect(v.pass).toBe(true)
+    expect(v.cer).toBe(0)
+  })
+
+  it('still convicts a clip that dropped real words around the cue', () => {
+    const v = V.verdictFromDecode('Buongiorno.',
+      'Buongiorno. [pause] Non mi sento, [pause] molto bene — può consigliarmi qualcosa?', 'it')
+    expect(v.pass).toBe(false)
+  })
+
+  it('a line of nothing but cues is UNCHECKED, never a pass', async () => {
+    const r = await V.checkAudioVeracity(Buffer.from('x'), '[pause] [pause]', 'nld')
+    expect(r.checked).toBe(false)
+    expect(r.pass).toBeNull()
+    expect(r.reason).toBe('unchecked_no_text')
+  })
+})
+
+describe('numerals in the language the clip is actually in', () => {
+  // Every spelling below is the standard reading in that language; if one of
+  // these changes, the lexicon has drifted and the readings it offers are wrong.
+  const SPELLINGS = {
+    nl: [[1, 'een'], [21, 'eenentwintig'], [79, 'negenenzeventig'], [100, 'honderd'], [709, 'zevenhonderdnegen'], [2000, 'tweeduizend']],
+    de: [[1, 'eins'], [21, 'einundzwanzig'], [30, 'dreißig'], [100, 'einhundert'], [709, 'siebenhundertneun'], [2021, 'zweitausendeinundzwanzig']],
+    fr: [[21, 'vingt et un'], [70, 'soixante-dix'], [71, 'soixante et onze'], [80, 'quatre-vingts'], [81, 'quatre-vingt-un'], [91, 'quatre-vingt-onze'], [200, 'deux cents'], [709, 'sept cent neuf']],
+    es: [[16, 'dieciséis'], [21, 'veintiuno'], [31, 'treinta y uno'], [100, 'cien'], [101, 'ciento uno'], [500, 'quinientos'], [709, 'setecientos nueve']],
+    pt: [[21, 'vinte e um'], [100, 'cem'], [101, 'cento e um'], [500, 'quinhentos'], [709, 'setecentos e nove']],
+    it: [[21, 'ventuno'], [23, 'ventitré'], [28, 'ventotto'], [100, 'cento'], [709, 'settecentonove'], [2000, 'duemila']],
+  }
+  for (const [iso, list] of Object.entries(SPELLINGS)) {
+    for (const [n, want] of list) {
+      it(`${iso}: ${n} reads as "${want}"`, () => {
+        expect(V.lexNumberToWords(n, V.lexiconFor(iso))).toBe(want)
+      })
+    }
+  }
+
+  it('passes the A-136 clip — "kamer 709" IS "kamer zevenhonderd negen"', () => {
+    // CER 0.257 against a 0.25 gate before this: a full re-render burnt on the
+    // transcriber's notation.
+    const v = V.verdictFromDecode('kamer 709', 'kamer zevenhonderd negen', 'nl')
+    expect(v.pass).toBe(true)
+    expect(v.cer).toBeLessThan(0.1)
+  })
+
+  const SAME_UTTERANCE = [
+    ['de', 'Zimmer siebenhundertneun', 'Zimmer 709'],
+    ['es', 'la habitación setecientos nueve', 'la habitación 709'],
+    ['fr', 'chambre sept cent neuf', 'chambre 709'],
+    ['pt', 'o quarto setecentos e nove', 'o quarto 709'],
+    ['it', 'la camera settecentonove', 'la camera 709'],
+    ['nl', 'dat is twaalf vijftig', 'dat is 12,50'],
+  ]
+  for (const [iso, script, heard] of SAME_UTTERANCE) {
+    it(`${iso}: ${JSON.stringify(script)} heard as ${JSON.stringify(heard)}`, () => {
+      expect(V.verdictFromDecode(heard, script, iso).pass).toBe(true)
+    })
+  }
+
+  describe('a wrong number is still wrong — Rule 4b keeps the teeth', () => {
+    it('convicts a substituted number the lexicon would otherwise align away', () => {
+      // "achthonderd negen" is five edits from "zevenhonderd negen" — under
+      // MIN_EDIT_DISTANCE, so Rule 2 cannot see it once the digits canonicalise.
+      const v = V.verdictFromDecode('kamer 809', 'kamer zevenhonderd negen', 'nl')
+      expect(v.pass).toBe(false)
+      expect(v.reason).toBe('numeral_mismatch')
+    })
+
+    it('convicts a wrong price in Spanish', () => {
+      const v = V.verdictFromDecode('son 250 pesos', 'son ciento cincuenta pesos', 'es')
+      expect(v.pass).toBe(false)
+      expect(v.reason).toBe('numeral_mismatch')
+    })
+
+    it('does NOT reach under the edit floor to convict a short clip', () => {
+      // Caught by replaying the 5,341 cached decodes: the French one-word clip
+      // "tout" comes back "2.", and a naive "the decode has a digit the script
+      // does not" convicts it. That is the class MIN_EDIT_DISTANCE exists for.
+      const v = V.verdictFromDecode('2.', 'tout', 'fr')
+      expect(v.pass).toBe(true)
+    })
+
+    it('says nothing when the decode wrote its number out in words too', () => {
+      // Rule 4b is about NOTATION. A spelt-out decode was never a notation
+      // problem, and the English word parser cannot read Dutch.
+      expect(V.verdictFromDecode('kamer zevenhonderd negen', 'kamer zevenhonderd negen', 'nl').pass).toBe(true)
+    })
+  })
+
+  describe('the gap, stated rather than papered over', () => {
+    it('a language with no lexicon behaves exactly as it does today', () => {
+      // Tamil, Hindi, Korean and 79 others have no lexicon here, so a
+      // digit-vs-word decode is still refused. No worse than before, and the
+      // only way to close it is to add the lexicon.
+      const v = V.verdictFromDecode('kamer 709', 'kamer zevenhonderd negen', 'ta')
+      expect(v.pass).toBe(false)
+      expect(v.reason).toBe('cer_above_threshold')
+    })
+
+    it('English is untouched by the registry', () => {
+      expect(V.lexiconFor('en')).toBeNull()
+      expect(V.verdictFromDecode("That's £48 altogether.", "That's forty-eight pounds altogether.", 'en').pass).toBe(true)
+    })
+  })
+})
+
+describe('speech rate — the clip being replaced is not a duration reference', () => {
+  it('accepts a correct render whose predecessor was a different voice', () => {
+    // Femke reads this in 1176ms where Noor took 3288ms. The old ratio check
+    // called 0.36 a truncation; both clips are perfect.
+    const v = V.speechRateVerdict({ text: 'Wat interessant.', durationMs: 1176, language: 'nld' })
+    expect(v.ok).toBe(true)
+    expect(v.reason).toBe('speech_rate_plausible')
+  })
+
+  it('accepts the correct render that a TRUNCATED predecessor was rejecting', () => {
+    // Noor's own take of this line is 936ms — itself cut short — and was being
+    // used as the standard against which the 3096ms Femke render was refused.
+    const text = 'Pardon — heeft u ook iets glutenvrijs?'
+    expect(V.speechRateVerdict({ text, durationMs: 3096, language: 'nld' }).ok).toBe(true)
+    // ...and the truncated take is what this check actually convicts.
+    expect(V.speechRateVerdict({ text, durationMs: 936, language: 'nld' }).ok).toBe(false)
+    expect(V.speechRateVerdict({ text, durationMs: 936, language: 'nld' }).reason).toBe('too_fast_for_text')
+  })
+
+  it('convicts a clip cut in half and a render that hung', () => {
+    const text = 'Goedemorgen, ik wil graag een tafel voor twee personen reserveren.'
+    expect(V.speechRateVerdict({ text, durationMs: 700 }).ok).toBe(false)
+    expect(V.speechRateVerdict({ text, durationMs: 60000 }).reason).toBe('too_slow_for_text')
+  })
+
+  it('spans the whole observed band A-136 measured, 6.9 to 20.9 chars/sec', () => {
+    const text = 'x'.repeat(100)
+    for (const cps of [6.9, 12, 20.9]) {
+      expect(V.speechRateVerdict({ text, durationMs: (100 / cps) * 1000 }).ok).toBe(true)
+    }
+  })
+
+  it('abstains rather than guessing — short texts, no duration, unmeasured scripts', () => {
+    expect(V.speechRateVerdict({ text: 'Ja.', durationMs: 200 }).reason).toBe('text_too_short_to_rate')
+    expect(V.speechRateVerdict({ text: 'een hele zin hier', durationMs: 0 }).reason).toBe('not_measurable')
+    // One Chinese character is a whole syllable, so chars/sec means something
+    // else there and no band has been measured. Abstain, never invent.
+    const cjk = V.speechRateVerdict({ text: '我想要一杯咖啡谢谢你', durationMs: 3000 })
+    expect(cjk.ok).toBe(true)
+    expect(cjk.reason).toBe('no_band_for_logographic')
+  })
+
+  it('rates the words, not the cues', () => {
+    const cued = V.speechRateVerdict({ text: 'Buongiorno. [pause] Non mi sento molto bene.', durationMs: 3000 })
+    const plain = V.speechRateVerdict({ text: 'Buongiorno. Non mi sento molto bene.', durationMs: 3000 })
+    expect(cued.cps).toBe(plain.cps)
+  })
+})
+
 describe('the third state — unchecked is never a pass', () => {
   const saved = { ...process.env }
   beforeEach(() => { V._resetAnnouncement() })

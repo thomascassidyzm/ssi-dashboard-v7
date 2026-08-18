@@ -261,6 +261,55 @@ function normalise (s) {
     .trim()
 }
 
+// ---------------------------------------------------------------------------
+// Synthesis cues — direction to the voice, never speech
+// ---------------------------------------------------------------------------
+
+/**
+ * WHY THIS EXISTS (the 2026-08-17 nld pod recast, A-136).
+ *
+ * A pod line is written for the SYNTHESISER, and some of what it carries is
+ * stage direction rather than words: "Ja, [pause] natuurlijk." asks for a beat,
+ * it does not ask the voice to say "pause". `normalise` keeps letters and throws
+ * punctuation away, so the bracket vanishes and the WORD survives — the
+ * comparison string then contains a word no healthy clip can ever contain, and
+ * every occurrence scores as a deletion. On "Ja, [pause] natuurlijk." that alone
+ * is CER 0.32 against a 0.25 gate: a perfect render, refused, at the price of a
+ * full re-render on every attempt. 16 of A-136's 29 burnt clips were this and
+ * nothing else, and the estate carries 3,190 `[pause]` clips across por, ita,
+ * fra, spa, deu, cat, eus and more — every one of them exposed to the same
+ * false rejection on its next render.
+ *
+ * A CURATED LIST, NOT A BRACKET RULE, and the estate is why. `[...]` is not a
+ * cue marker here: 18,851 clips carry `[atom]` and their text_stripped is
+ * "atom 17" — the word IS spoken — and the English prompt clips carry
+ * "[someone]" mid-sentence, likewise spoken ("he wanted someone to"). Stripping
+ * every bracket would blind the gate to a dropped word in all 18,867 of those.
+ * So only markers that are known to be silent come out, and a new cue has to be
+ * added here deliberately.
+ *
+ * This changes the COMPARISON only. The clip is still rendered from the full cue
+ * text — the beat is wanted — and nothing about the operating point moves.
+ */
+const SYNTHESIS_CUES = [
+  /\[pause\]/gi,
+  /\[break\]/gi,
+  /<break\b[^>]*\/?>/gi,
+]
+
+/**
+ * The text with the synthesiser's stage directions removed, for comparison.
+ * A no-op — the same string back — for text that carries no cues, which is
+ * every clip outside the pods.
+ * @param {string} text
+ * @returns {string}
+ */
+function stripSynthesisCues (text) {
+  let out = String(text == null ? '' : text)
+  for (const re of SYNTHESIS_CUES) out = out.replace(re, ' ')
+  return out.replace(/\s+/g, ' ').trim()
+}
+
 /** Levenshtein distance, two-row. */
 function levenshtein (a, b) {
   if (a === b) return 0
@@ -390,8 +439,206 @@ function numberToWords (n) {
 }
 
 /** Digit-by-digit, how a room number or a phone number is often read. */
-function digitwiseWords (digits) {
-  return String(digits).split('').map(c => ONES_WORDS[Number(c)]).join(' ')
+function digitwiseWords (digits, lex) {
+  const ones = (lex && lex.ones) || ONES_WORDS
+  return String(digits).split('').map(c => ones[Number(c)]).join(' ')
+}
+
+// ---------------------------------------------------------------------------
+// The same canonicalisation, in the language the clip is actually in
+// ---------------------------------------------------------------------------
+
+/**
+ * WHY THIS EXISTS (the 2026-08-17 nld pod recast, A-136).
+ *
+ * Everything above this line reads a numeral into ENGLISH words, and until now
+ * it did so whatever language the clip was in. So the fix that rescued 35
+ * English clips in August did nothing at all for the other 1.2 million: whisper
+ * decodes "kamer zevenhonderd negen" as "kamer 709", the canonicaliser offers
+ * "seven hundred and nine", neither reading fits, and CER lands at 0.257 — over
+ * the gate, for a clip that says exactly the right words. A-136 hit it in Dutch
+ * and solved it in Dutch, inside its own job script. The defect was never
+ * Dutch: it is every language the estate renders.
+ *
+ * A LEXICON, NOT A REWRITE. Reading a cardinal into words is a small regular
+ * system per language, so each one is a table plus a dozen lines of assembly,
+ * pinned by unit tests against real spellings. The scoring, the thresholds and
+ * the rules are untouched — a numeral simply gets to offer its readings in the
+ * language it was spoken in, alongside the English ones it already offered.
+ *
+ * PURELY ADDITIVE, which is what makes it safe. The raw text is still candidate
+ * zero and the English readings are still candidates, so no clip that passes
+ * today can fail tomorrow; the only thing a new reading can do is FIT better.
+ * And a number that is genuinely wrong or genuinely absent is still wrong under
+ * every reading in every language, so Rule 4 keeps its teeth.
+ *
+ * THE GAP, stated rather than papered over: seven languages have a lexicon here
+ * (en, nl, de, fr, es, it, pt) and the estate renders eighty-six. A language
+ * without one behaves EXACTLY as it does today — English readings only — so it
+ * is no worse off, but its digit-vs-word clips can still be refused for
+ * notation. There is no language-independent fix available: neutralising the
+ * difference requires knowing how THIS language spells its numbers, so the only
+ * way to close the gap is to add lexicons. zho, jpn, kor, tha and the rest of
+ * CER_UNVALIDATED_LANGUAGES are the least exposed — their threshold is 1.0, and
+ * a notation difference never reaches it.
+ */
+
+/** German: einundzwanzig, hundert, tausend — units before tens, joined by "und". */
+const DE = {
+  ones: ['null', 'eins', 'zwei', 'drei', 'vier', 'fünf', 'sechs', 'sieben', 'acht', 'neun',
+    'zehn', 'elf', 'zwölf', 'dreizehn', 'vierzehn', 'fünfzehn', 'sechzehn', 'siebzehn', 'achtzehn', 'neunzehn'],
+  tens: ['', '', 'zwanzig', 'dreißig', 'vierzig', 'fünfzig', 'sechzig', 'siebzig', 'achtzig', 'neunzig'],
+  // "einundzwanzig" uses ein-, not eins-.
+  unitInCompound: (u) => (u === 1 ? 'ein' : DE.ones[u]),
+  build (n) {
+    if (n < 20) return this.ones[n]
+    if (n < 100) {
+      const u = n % 10
+      return (u ? this.unitInCompound(u) + 'und' : '') + this.tens[Math.floor(n / 10)]
+    }
+    if (n < 1000) {
+      const h = Math.floor(n / 100); const rest = n % 100
+      return (h === 1 ? 'ein' : this.ones[h]) + 'hundert' + (rest ? this.build(rest) : '')
+    }
+    const t = Math.floor(n / 1000); const rest = n % 1000
+    return (t === 1 ? 'ein' : this.build(t)) + 'tausend' + (rest ? this.build(rest) : '')
+  },
+}
+
+/** Dutch: as A-136 wrote it, against real Femke renders — negenenzeventig, honderd, duizend. */
+const NL = {
+  ones: ['nul', 'een', 'twee', 'drie', 'vier', 'vijf', 'zes', 'zeven', 'acht', 'negen',
+    'tien', 'elf', 'twaalf', 'dertien', 'veertien', 'vijftien', 'zestien', 'zeventien', 'achttien', 'negentien'],
+  tens: ['', '', 'twintig', 'dertig', 'veertig', 'vijftig', 'zestig', 'zeventig', 'tachtig', 'negentig'],
+  build (n) {
+    if (n < 20) return this.ones[n]
+    if (n < 100) {
+      const u = n % 10
+      return (u ? this.ones[u] + 'en' : '') + this.tens[Math.floor(n / 10)]
+    }
+    if (n < 1000) {
+      const h = Math.floor(n / 100); const rest = n % 100
+      return (h === 1 ? 'honderd' : this.ones[h] + 'honderd') + (rest ? this.build(rest) : '')
+    }
+    const t = Math.floor(n / 1000); const rest = n % 1000
+    return (t === 1 ? 'duizend' : this.build(t) + 'duizend') + (rest ? this.build(rest) : '')
+  },
+}
+
+/** French: the vigesimal tail — soixante-dix, quatre-vingts, quatre-vingt-dix. */
+const FR = {
+  ones: ['zéro', 'un', 'deux', 'trois', 'quatre', 'cinq', 'six', 'sept', 'huit', 'neuf',
+    'dix', 'onze', 'douze', 'treize', 'quatorze', 'quinze', 'seize', 'dix-sept', 'dix-huit', 'dix-neuf'],
+  tens: ['', '', 'vingt', 'trente', 'quarante', 'cinquante', 'soixante', '', 'quatre-vingt', ''],
+  build (n) {
+    if (n < 20) return this.ones[n]
+    if (n < 70 || (n >= 80 && n < 90)) {
+      const t = Math.floor(n / 10); const u = n % 10
+      // vingt et un, but quatre-vingt-un; bare quatre-vingts takes the s.
+      if (!u) return this.tens[t] + (t === 8 ? 's' : '')
+      if (u === 1 && t !== 8) return this.tens[t] + ' et un'
+      return this.tens[t] + '-' + this.ones[u]
+    }
+    if (n < 100) {
+      // 70-79 is soixante + 10-19, 90-99 is quatre-vingt + 10-19.
+      const base = n < 80 ? 'soixante' : 'quatre-vingt'
+      const rest = n - (n < 80 ? 60 : 80)
+      // 71 keeps the "et": soixante et onze. 91 does not: quatre-vingt-onze.
+      return base + (rest === 11 && n < 80 ? ' et onze' : '-' + this.ones[rest])
+    }
+    if (n < 1000) {
+      const h = Math.floor(n / 100); const rest = n % 100
+      const head = h === 1 ? 'cent' : this.ones[h] + ' cent' + (rest ? '' : 's')
+      return head + (rest ? ' ' + this.build(rest) : '')
+    }
+    const t = Math.floor(n / 1000); const rest = n % 1000
+    return (t === 1 ? 'mille' : this.build(t) + ' mille') + (rest ? ' ' + this.build(rest) : '')
+  },
+}
+
+/** Spanish: veintiuno as one word, cien vs ciento, the irregular hundreds. */
+const ES = {
+  ones: ['cero', 'uno', 'dos', 'tres', 'cuatro', 'cinco', 'seis', 'siete', 'ocho', 'nueve',
+    'diez', 'once', 'doce', 'trece', 'catorce', 'quince', 'dieciséis', 'diecisiete', 'dieciocho', 'diecinueve'],
+  tens: ['', '', 'veinte', 'treinta', 'cuarenta', 'cincuenta', 'sesenta', 'setenta', 'ochenta', 'noventa'],
+  hundreds: ['', 'ciento', 'doscientos', 'trescientos', 'cuatrocientos', 'quinientos',
+    'seiscientos', 'setecientos', 'ochocientos', 'novecientos'],
+  build (n) {
+    if (n < 20) return this.ones[n]
+    if (n < 30) return n === 20 ? 'veinte' : 'veinti' + this.ones[n - 20]
+    if (n < 100) {
+      const u = n % 10
+      return this.tens[Math.floor(n / 10)] + (u ? ' y ' + this.ones[u] : '')
+    }
+    if (n < 1000) {
+      const h = Math.floor(n / 100); const rest = n % 100
+      // Bare 100 is "cien"; 101-199 is "ciento ...".
+      return (n === 100 ? 'cien' : this.hundreds[h]) + (rest ? ' ' + this.build(rest) : '')
+    }
+    const t = Math.floor(n / 1000); const rest = n % 1000
+    return (t === 1 ? 'mil' : this.build(t) + ' mil') + (rest ? ' ' + this.build(rest) : '')
+  },
+}
+
+/** Portuguese: "e" between every part — cento e nove, mil e duzentos. */
+const PT = {
+  ones: ['zero', 'um', 'dois', 'três', 'quatro', 'cinco', 'seis', 'sete', 'oito', 'nove',
+    'dez', 'onze', 'doze', 'treze', 'catorze', 'quinze', 'dezasseis', 'dezassete', 'dezoito', 'dezanove'],
+  tens: ['', '', 'vinte', 'trinta', 'quarenta', 'cinquenta', 'sessenta', 'setenta', 'oitenta', 'noventa'],
+  hundreds: ['', 'cento', 'duzentos', 'trezentos', 'quatrocentos', 'quinhentos',
+    'seiscentos', 'setecentos', 'oitocentos', 'novecentos'],
+  build (n) {
+    if (n < 20) return this.ones[n]
+    if (n < 100) {
+      const u = n % 10
+      return this.tens[Math.floor(n / 10)] + (u ? ' e ' + this.ones[u] : '')
+    }
+    if (n < 1000) {
+      const h = Math.floor(n / 100); const rest = n % 100
+      return (n === 100 ? 'cem' : this.hundreds[h]) + (rest ? ' e ' + this.build(rest) : '')
+    }
+    const t = Math.floor(n / 1000); const rest = n % 1000
+    return (t === 1 ? 'mil' : this.build(t) + ' mil') + (rest ? ' e ' + this.build(rest) : '')
+  },
+}
+
+/** Italian: elided vowels — ventuno, ventotto — and cento/mille/mila. */
+const IT = {
+  ones: ['zero', 'uno', 'due', 'tre', 'quattro', 'cinque', 'sei', 'sette', 'otto', 'nove',
+    'dieci', 'undici', 'dodici', 'tredici', 'quattordici', 'quindici', 'sedici', 'diciassette', 'diciotto', 'diciannove'],
+  tens: ['', '', 'venti', 'trenta', 'quaranta', 'cinquanta', 'sessanta', 'settanta', 'ottanta', 'novanta'],
+  build (n) {
+    if (n < 20) return this.ones[n]
+    if (n < 100) {
+      const u = n % 10
+      if (!u) return this.tens[Math.floor(n / 10)]
+      // The ten drops its final vowel before uno and otto: ventuno, ventotto.
+      const t = (u === 1 || u === 8) ? this.tens[Math.floor(n / 10)].slice(0, -1) : this.tens[Math.floor(n / 10)]
+      // ...and a final -tre takes an accent: ventitré.
+      return t + (u === 3 ? 'tré' : this.ones[u])
+    }
+    if (n < 1000) {
+      const h = Math.floor(n / 100); const rest = n % 100
+      return (h === 1 ? 'cento' : this.ones[h] + 'cento') + (rest ? this.build(rest) : '')
+    }
+    const t = Math.floor(n / 1000); const rest = n % 1000
+    return (t === 1 ? 'mille' : this.build(t) + 'mila') + (rest ? this.build(rest) : '')
+  },
+}
+
+/** ISO-639-1 -> lexicon. Absent = English readings only, exactly as before. */
+const NUMERAL_LEXICONS = { de: DE, nl: NL, fr: FR, es: ES, pt: PT, it: IT }
+
+/** The lexicon for a decode language, or null when there is none. */
+function lexiconFor (iso1) {
+  return NUMERAL_LEXICONS[String(iso1 || '').toLowerCase()] || null
+}
+
+/** One cardinal, in `lex`'s language. Bounded — past 9999 the readings stop earning their cost. */
+function lexNumberToWords (n, lex) {
+  n = Math.trunc(Math.abs(Number(n) || 0))
+  if (!lex || !Number.isFinite(n) || n > 9999) return null
+  return lex.build(n)
 }
 
 /**
@@ -411,11 +658,15 @@ const CURRENCY_WORDS = {
  * The plausible spoken readings of one numeric token, RAW FORM FIRST so that
  * leaving the text untouched is always one of the candidates.
  */
-function numeralReadings (token) {
+function numeralReadings (token, iso1) {
+  const lex = lexiconFor(iso1)
   const cur = CURRENCY_WORDS[token[0]]
   if (cur) {
-    const base = numeralReadings(token.slice(1))
+    const base = numeralReadings(token.slice(1), iso1)
     const dec = /^(\d+)\.(\d{2})$/.exec(token.slice(1))
+    // The currency WORD is language-specific too, and we do not have it for the
+    // target language — so the amount gets its target readings and keeps the
+    // symbol, which is what the decode wrote anyway.
     const out = [token, ...base.slice(1).map(r => `${r} ${cur}`)]
     // "twelve pounds fifty" — the word sits between the parts of a price.
     if (dec) out.push(`${numberToWords(Number(dec[1]))} ${cur} ${numberToWords(Number(dec[2]))}`)
@@ -432,9 +683,13 @@ function numeralReadings (token) {
   if (dec) {
     const whole = Number(dec[1])
     // "12.50" is a price: "twelve fifty". Anything else gets read out as digits.
-    if (dec[2].length === 2) out.push(`${numberToWords(whole)} ${numberToWords(Number(dec[2]))}`)
+    if (dec[2].length === 2) {
+      out.push(`${numberToWords(whole)} ${numberToWords(Number(dec[2]))}`)
+      if (lex) out.push(`${lexNumberToWords(whole, lex)} ${lexNumberToWords(Number(dec[2]), lex)}`)
+    }
     out.push(`${numberToWords(whole)} point ${digitwiseWords(dec[2])}`)
-    return out
+    if (lex) out.push(`${lexNumberToWords(whole, lex)} ${digitwiseWords(dec[2], lex)}`)
+    return [...new Set(out.filter(Boolean))]
   }
   if (!/^\d+$/.test(token)) return out
   const n = Number(token)
@@ -446,7 +701,12 @@ function numeralReadings (token) {
     out.push(numberToWords(Math.floor(n / 100)) + ' hundred' + (rest ? ' and ' + numberToWords(rest) : ''))
   }
   if (token.length >= 2) out.push(digitwiseWords(token))
-  return [...new Set(out)]
+  // The same two readings again, in the language the clip is actually in.
+  if (lex) {
+    out.push(lexNumberToWords(n, lex))
+    if (token.length >= 2) out.push(digitwiseWords(token, lex))
+  }
+  return [...new Set(out.filter(Boolean))]
 }
 
 const NUMERAL_TOKEN = /[£$€¥₹₩₪₺₫₴₦]?\d+(?:\.\d+)?(?:st|nd|rd|th)?/gi
@@ -459,14 +719,17 @@ function stripGrouping (s) { return String(s == null ? '' : s).replace(/(\d),(?=
  * whole mechanism is a no-op — which is why the 5,341 remembered decodes re-judge
  * identically except where a numeral is actually involved.
  */
-const MAX_NUMERAL_VARIANTS = 12
-function numeralVariants (text) {
+// Raised from 12 with the target-language lexicons: one token now offers up to
+// five readings instead of three, so two numerals in a line would otherwise fall
+// straight through to the three-pick shortcut and lose the reading that fits.
+const MAX_NUMERAL_VARIANTS = 32
+function numeralVariants (text, iso1) {
   const raw = stripGrouping(text)
   const plain = normalise(raw)
   const tokens = raw.match(NUMERAL_TOKEN)
   if (!tokens || !tokens.length) return [plain]
 
-  const readings = tokens.map(numeralReadings)
+  const readings = tokens.map(t => numeralReadings(t, iso1))
   const combos = readings.reduce((acc, r) => acc * r.length, 1)
   // Too many numerals to enumerate: score the plain text, the all-long-form
   // reading and the all-digitwise reading, and let the best one speak.
@@ -610,9 +873,9 @@ function containsWordRun (hayWords, needleWords) {
  *
  * @returns {{ok:boolean, via?:string, expected?:string, heard?:string}}
  */
-function numeralVerdict (expectedText, decodeText) {
+function numeralVerdict (expectedText, decodeText, iso1) {
   const eNums = cardinalsOf(expectedText)
-  if (!eNums.length) return { ok: true }
+  if (!eNums.length) return numeralVerdictViaLexicon(expectedText, decodeText, iso1)
   const dNums = cardinalsOf(decodeText)
   if (!dNums.length) return { ok: true, via: 'decode_has_no_numerals' }
 
@@ -620,7 +883,7 @@ function numeralVerdict (expectedText, decodeText) {
   const dDigits = [...digitStringsOf(decodeText)]
   if (eDigits.some(x => dDigits.includes(x))) return { ok: true }
 
-  const dVariants = numeralVariants(decodeText).map(v => v.split(' ').filter(Boolean))
+  const dVariants = numeralVariants(decodeText, iso1).map(v => v.split(' ').filter(Boolean))
   const allHeard = eNums.every(n => {
     const readings = [...new Set([numberToWords(n), digitwiseWords(String(n)), String(n)])]
       .map(r => r.split(' ').filter(Boolean))
@@ -631,13 +894,69 @@ function numeralVerdict (expectedText, decodeText) {
 }
 
 /**
+ * Rule 4b — the same question, asked where the English parser cannot hear it.
+ *
+ * Rule 4 above reads both sides with an ENGLISH word parser, so on a Dutch or
+ * Spanish script it finds no cardinals in the expected text and abstains. That
+ * was harmless while the canonicaliser was English-only — the notation
+ * difference convicted the clip at Rule 2 anyway, right answer for the wrong
+ * reason — but the lexicons have now made a numeral's spelling free in those
+ * languages too, and something has to stop them making its VALUE free with it.
+ * Without this, "kamer zevenhonderd negen" decoded as "kamer 809" would align
+ * to "achthonderd negen", five edits from the script, and pass under the floor.
+ *
+ * So: when the decode carries digits, every number it carries must be findable
+ * in the script — as digits, or spelt out in one of the target language's
+ * readings of it. Spacing and hyphens are ignored on both sides, because
+ * Dutch and German write "zevenhonderdnegen" solid where French writes
+ * "sept cent neuf" and an author may hyphenate either.
+ *
+ * THIS CANNOT MAKE ANY CLIP WORSE OFF THAN TODAY. It only fires on clips whose
+ * script has no English-readable numeral and whose decode has digits — exactly
+ * the clips Rule 2 convicts today on notation alone. A pass here is a clip that
+ * was being refused wrongly; a failure here is a clip that was being refused
+ * anyway, now with an honest reason attached.
+ */
+function numeralVerdictViaLexicon (expectedText, decodeText, iso1) {
+  const lex = lexiconFor(iso1)
+  if (!lex) return { ok: true }
+  const dNums = cardinalsOf(decodeText)
+  if (!dNums.length) return { ok: true, via: 'decode_has_no_numerals' }
+  // Only the digits the decode actually wrote are this rule's business — a
+  // number the decode spelt out in words was never a notation problem.
+  if (!/\d/.test(String(decodeText))) return { ok: true, via: 'decode_has_no_digits' }
+
+  const squash = (s) => normalise(s).replace(/[\s'-]/g, '')
+  const hay = squash(expectedText)
+  const allFound = dNums.every(n => {
+    const readings = [String(n), lexNumberToWords(n, lex), digitwiseWords(String(n), lex)]
+    return readings.filter(Boolean).some(r => hay.includes(squash(r)))
+  })
+  if (allFound) return { ok: true, via: 'numerals_spelt_out_in_script' }
+
+  // THE FLOOR HOLDS HERE TOO. Replaying the 5,341 cached decodes caught this:
+  // the French one-word clip "tout" comes back "2.", and without this guard the
+  // rule convicted it — a digit in the decode, no "deux" in the script. But that
+  // is the short-clip class MIN_EDIT_DISTANCE was built for ("er" -> "Ja.",
+  // "sie" -> "Z."): whisper cannot transcribe a four-letter clip with no context,
+  // and a three-character disagreement is not a learner-facing defect. So this
+  // rule may only convict where the two strings genuinely diverge before any
+  // canonicalisation — which is true of every real substituted number ("kamer
+  // 809" is sixteen edits from "kamer zevenhonderd negen") and false of every
+  // hallucinated digit on a short script.
+  const rawEdits = levenshtein(normalise(expectedText), normalise(decodeText))
+  if (rawEdits < MIN_EDIT_DISTANCE) return { ok: true, via: 'under_edit_floor' }
+  return { ok: false, expected: null, heard: dNums.join('') }
+}
+
+/**
  * The best-fitting pair of readings of (expected, decode) and the edit distance
  * between them. With no digits on either side this is plain normalisation and one
  * levenshtein, exactly as before.
  */
-function alignedPair (expected, decode) {
-  const eVars = numeralVariants(expected)
-  const dVars = numeralVariants(decode)
+function alignedPair (expected, decode, iso1) {
+  const eVars = numeralVariants(expected, iso1)
+  const dVars = numeralVariants(decode, iso1)
   let best = { e: eVars[0], d: dVars[0], edits: levenshtein(eVars[0], dVars[0]) }
   if (eVars.length === 1 && dVars.length === 1) return best
   for (const e of eVars) {
@@ -665,12 +984,17 @@ function alignedPair (expected, decode) {
  *   flagging a healthy one-word clip, and no experiment needs that switched off.
  * @returns {{pass:boolean, reason:string, cer:number, threshold:number}}
  */
-function verdictFromDecode (decode, expected, iso1, opts = {}) {
+function verdictFromDecode (decode, expectedRaw, iso1, opts = {}) {
+  // The synthesiser's stage directions are not speech and must not be compared
+  // against as though they were (see stripSynthesisCues). A no-op for any text
+  // without cues, which is everything outside the pods.
+  const expected = stripSynthesisCues(expectedRaw)
+
   // Both sides are re-read into the same currency before anything is measured:
   // whisper spells numbers with digits and the scripts spell them with words, and
   // that difference is orthography, not audio (see numeralVariants above). With no
   // digits anywhere this is plain normalisation and the old code path exactly.
-  const aligned = alignedPair(expected, decode)
+  const aligned = alignedPair(expected, decode, iso1)
   const e = aligned.e
   const d = aligned.d
   const edits = e.length ? aligned.edits : (d.length ? 1 : 0)
@@ -719,7 +1043,7 @@ function verdictFromDecode (decode, expected, iso1, opts = {}) {
   // Rule 4: the numbers said must be the numbers asked for. Canonicalisation
   // above deliberately made a numeral's SPELLING free; this is what stops it
   // making a numeral's VALUE free with it. See numeralVerdict.
-  const nv = numeralVerdict(expected, decode)
+  const nv = numeralVerdict(expected, decode, iso1)
   if (!nv.ok) {
     return { pass: false, reason: 'numeral_mismatch', cer, edits, threshold, numerals: { expected: nv.expected, heard: nv.heard } }
   }
@@ -861,6 +1185,106 @@ function prefixDistance (a, b) {
 }
 
 // ---------------------------------------------------------------------------
+// Duration — the clip being replaced is NOT a reference
+// ---------------------------------------------------------------------------
+
+/**
+ * WHY THIS EXISTS (the 2026-08-17 nld pod recast, A-136).
+ *
+ * Every re-render tool on this estate grew the same `not_truncated` check, and
+ * it is the same mistake every time: the NEW clip's duration is compared against
+ * the OLD clip's — the very clip being thrown away. That is not a reference. It
+ * assumes the superseded take is (a) correct and (b) spoken by a comparable
+ * voice, and a re-render is usually happening precisely because one of those is
+ * false.
+ *
+ * A-136 measured both failures in one batch. Femke reads "Wat interessant." in
+ * 1176ms where Noor took 3288ms — a 0.36 ratio, refused, both clips perfect,
+ * the voices simply differ. And Noor's own "Pardon — heeft u ook iets
+ * glutenvrijs?" is 936ms, itself a truncated take, which was then used as the
+ * standard against which a correct 3096ms Femke render was rejected. A defective
+ * clip cannot certify its replacement.
+ *
+ * The reference that IS available is the text. A voice reading a script covers
+ * its characters at a rate that varies by voice and by mood but not by orders of
+ * magnitude, and truncation and hanging are order-of-magnitude events. So the
+ * question becomes "could this text have been spoken in this long?", which needs
+ * nothing from the old clip at all.
+ *
+ * BANDS, AND WHY THEY ARE WIDE. The 245 Femke renders A-136 had already accepted
+ * span 6.9-20.9 chars/sec, and the gate sits at 4-28 — comfortably outside the
+ * observed spread, because this check is looking for a clip cut in half or a
+ * render that hung, not for a brisk reading. Anything subtler is the ASR gate's
+ * job and it is better at it.
+ *
+ * SCRIPT-DEPENDENT, and it must be: a Chinese character is a whole syllable and
+ * a Thai string has no spaces, so chars/sec means something different there.
+ * Only the script classes with a measured band get a verdict. Everything else
+ * ABSTAINS — `ok: true` with a reason saying so — because a made-up band on an
+ * unmeasured script would refuse healthy audio, which is the defect this whole
+ * function exists to remove.
+ *
+ * @param {object} o
+ * @param {string} o.text        the text sent to TTS, cues and all
+ * @param {number} o.durationMs  the rendered clip's measured duration
+ * @param {string} [o.language]  course_audio.language or ISO-639-1
+ * @returns {{ok:boolean, cps:number|null, band:[number,number]|null, reason:string, detail:string}}
+ */
+const SPEECH_RATE_BANDS = {
+  // Alphabetic scripts, one character ≈ one phoneme-ish. Measured on nld (A-136,
+  // 245 accepted renders: 6.9-20.9) and consistent with the deu/fra/eng estate.
+  alphabetic: [4, 28],
+  // Logographic: one character is a whole syllable, so the rate is far lower.
+  // NOT MEASURED — deliberately absent rather than guessed. Add a band here only
+  // with clips behind it.
+}
+
+function scriptClassOf (text) {
+  const s = String(text || '')
+  if (/[　-鿿豈-﫿぀-ヿ가-힯]/.test(s)) return 'logographic'
+  if (/[฀-๿຀-໿က-႟ក-៿]/.test(s)) return 'unspaced_abugida'
+  return 'alphabetic'
+}
+
+const SPEECH_RATE_MIN_CHARS = 6
+
+function speechRateVerdict (o = {}) {
+  const text = stripSynthesisCues(o.text)
+  const chars = normalise(text).length
+  const durationMs = Number(o.durationMs)
+
+  if (!chars || !Number.isFinite(durationMs) || durationMs <= 0) {
+    return { ok: true, cps: null, band: null, reason: 'not_measurable', detail: 'no text or no duration' }
+  }
+  // Below a handful of characters the ratio is as unstable as CER is on a
+  // two-letter script, and for the same reason: the denominator is tiny.
+  if (chars < SPEECH_RATE_MIN_CHARS) {
+    return { ok: true, cps: null, band: null, reason: 'text_too_short_to_rate', detail: `${chars} chars` }
+  }
+
+  const cls = scriptClassOf(text)
+  const band = SPEECH_RATE_BANDS[cls]
+  const cps = chars / (durationMs / 1000)
+  if (!band) {
+    return {
+      ok: true,
+      cps: +cps.toFixed(2),
+      band: null,
+      reason: `no_band_for_${cls}`,
+      detail: `${cps.toFixed(1)} chars/sec — no measured band for ${cls} script, so this check abstains`,
+    }
+  }
+  const ok = cps >= band[0] && cps <= band[1]
+  return {
+    ok,
+    cps: +cps.toFixed(2),
+    band,
+    reason: ok ? 'speech_rate_plausible' : (cps < band[0] ? 'too_slow_for_text' : 'too_fast_for_text'),
+    detail: `${cps.toFixed(1)} chars/sec (${durationMs}ms for ${chars} chars; band ${band[0]}-${band[1]})`,
+  }
+}
+
+// ---------------------------------------------------------------------------
 // The decode itself
 // ---------------------------------------------------------------------------
 
@@ -933,7 +1357,9 @@ async function checkAudioVeracity (input, expectedText, language, opts = {}) {
   })
 
   if (!isGateEnabled()) return unchecked('unchecked_disabled', 'AUDIO_VERACITY_GATE is off')
-  if (!String(expectedText || '').trim()) return unchecked('unchecked_no_text', 'no expected text to compare against')
+  // Cues are not words, so a line that is nothing but cues has nothing to compare
+  // against — the same third state as an empty text, and never a pass.
+  if (!stripSynthesisCues(expectedText)) return unchecked('unchecked_no_text', 'no expected text to compare against')
   const av = availability()
   if (!av.available) return unchecked('unchecked_no_whisper', av.missing.join(' and '))
 
@@ -1456,6 +1882,12 @@ module.exports = {
   characterErrorRate,
   isNonSpeechDecode,
   normalise,
+  stripSynthesisCues,
+  speechRateVerdict,
+  SPEECH_RATE_BANDS,
+  NUMERAL_LEXICONS,
+  lexiconFor,
+  lexNumberToWords,
   numberToWords,
   numeralReadings,
   numeralVariants,
