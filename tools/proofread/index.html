@@ -257,19 +257,42 @@ function build() {
 
 function seedApproved(n) { return !!seedOf.get(n)?.approved_at; }
 
+// NEEDS CHECKING (Kai, 2026-08-18): "open up to the earliest item that needs
+// checking, and then jump to the next item that needs checking."
+//
+// This is not a new state. It is the tool's own existing one, the same test the
+// server calls uncheckedIn(): a phrase needs checking when the progress file
+// holds NO decision for it. A flagged phrase has been looked at and does not
+// come back; an ok phrase does not come back.
+//
+// Deliberately NOT "…and its seed is unapproved". Approval is derived — a seed
+// can only be approved here once every phrase in it is ok — so the seed test is
+// redundant for anything approved through this tool, and actively harmful for
+// the one case it is not: a phrase ADDED to an already-approved seed. Under the
+// old test that phrase was invisible forever, because its seed carried an
+// approval predating it. Under this one it is unchecked work like any other and
+// sorts to its natural place in the course.
+function needsChecking(p) { return !dec(p); }
+
+// The earliest unchecked phrase in the whole course — not the reading frontier.
+// Reload used to resume just past lastPhraseId, so anything left behind (a seed
+// he stepped back into, a phrase inserted below him) stayed behind forever.
 function startIndex() {
+  const first = S.phrases.findIndex(needsChecking);
+  if (first >= 0) return first;
+  // Nothing unchecked anywhere: hold his last position rather than snapping to 0.
   const last = S.progress.lastPhraseId;
-  if (last) {
-    const i = S.phrases.findIndex((p) => p.id === last);
-    if (i >= 0) { // resume just after the last decided phrase
-      for (let j = i + 1; j < S.phrases.length; j++) {
-        if (!dec(S.phrases[j]) && !seedApproved(S.phrases[j].seed_number)) return j;
-      }
-      return i;
-    }
-  }
-  const first = S.phrases.findIndex((p) => !dec(p) && !seedApproved(p.seed_number));
-  return first >= 0 ? first : 0;
+  const i = last ? S.phrases.findIndex((p) => p.id === last) : -1;
+  return i >= 0 ? i : 0;
+}
+
+// Next unchecked ahead of `from`; wraps to the earliest unchecked behind it so a
+// phrase below the frontier is reachable by pressing next, not only via the queue.
+// Returns null when the course holds nothing unchecked at all.
+function nextNeedingCheck(from) {
+  for (let j = from + 1; j < S.phrases.length; j++) if (needsChecking(S.phrases[j])) return j;
+  for (let j = 0; j <= from && j < S.phrases.length; j++) if (needsChecking(S.phrases[j])) return j;
+  return null;
 }
 
 function firstUndecidedOfSeed(n) {
@@ -473,10 +496,11 @@ function advance() {
     const allOk = idxs.every((i) => dec(S.phrases[i])?.status === 'ok');
     if (allOk && !seedApproved(p.seed_number)) { render(); toast('Seed complete — press A to approve'); return; }
   }
-  for (let j = idx + 1; j < S.phrases.length; j++) {
-    if (!seedApproved(S.phrases[j].seed_number)) return goto(j);
-  }
-  render(); toast('End of course 🎉');
+  // Skip everything already dealt with, ok or flagged, rather than walking every
+  // phrase of every unapproved seed (Kai, 2026-08-18).
+  const next = nextNeedingCheck(idx);
+  if (next != null) return goto(next);
+  render(); toast('Nothing left unchecked 🎉');
 }
 
 async function approveSeed() {
@@ -578,10 +602,15 @@ document.addEventListener('keydown', (e) => {
     build();
     idx = resumeIdx = startIndex();
     render();
-    // Reloading used to drop him at the reading frontier with the queue behind a
-    // button he had to know to press, so seeds left behind stayed invisible
-    // (Kai, 2026-08-11). If anything is waiting, the list is the first thing he sees.
-    if (reviewQueue().length) openQueue();
+    // 2026-08-11: reloading dropped him at the reading frontier with the queue
+    // behind a button, so seeds left behind stayed invisible — the list opened on
+    // every load to make them impossible to miss.
+    // 2026-08-18: the load itself now lands on the earliest unchecked phrase in
+    // the course, wherever it sits, so when there IS unchecked work the modal is
+    // a dialog over the thing he was already put in front of. It still opens when
+    // nothing is unchecked, which is the one case it alone can answer: seeds fully
+    // reviewed and waiting to be approved. R still opens it any time.
+    if (!S.phrases.some(needsChecking) && reviewQueue().length) openQueue();
   } catch (e) {
     $('loading').innerHTML =
       `<p><b>Could not load the course.</b></p>`
