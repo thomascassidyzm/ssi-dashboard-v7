@@ -348,7 +348,11 @@
                 :title="b.sentence ? 'Play known → pause → target1 → target2' : 'No sentence in this length range'"
               >▶</button>
               <span class="lab-hear-bucket">{{ b.label }} <span class="lab-bucket-range">{{ b.range }}</span></span>
-              <span class="lab-hear-sentence">{{ b.sentence ? b.sentence.text : '—' }}</span>
+              <!-- Real course sentence (target, or its romanisation) sitting in
+                   a row of English bucket labels and durations — direct it and
+                   isolate it, so the em-dash placeholder and the neighbouring
+                   chrome keep their places. -->
+              <span class="lab-hear-sentence bidi-isolate" :dir="dirFor(b.sentence ? b.sentence.text : '')">{{ b.sentence ? b.sentence.text : '—' }}</span>
               <span class="lab-hear-pause">
                 <span v-if="b.sentence" class="lab-hear-dur">{{ (b.sentence.t1ms / effectiveSpeed / 1000).toFixed(1) }}s say</span>
                 <span v-if="b.sentence" class="lab-hear-gap">{{ (computePauseFor(b.sentence) / 1000).toFixed(1) }}s gap</span>
@@ -428,6 +432,7 @@ import { useAlgorithmConfig, NumField, NumListField, RowHeader } from './algorit
 import { computePauseDuration, computePauseForBelt, beltProgress, BELTS, SYLLABLE_BUCKETS } from './pauseModel'
 import CoursePicker from '../../components/CoursePicker.vue'
 import { getApiBaseUrl } from '../../services/api'
+import { dirFor } from '../../utils/textDirection.js'
 
 const { isAdmin, learner: currentUser } = useAuth()
 
@@ -1274,7 +1279,9 @@ h1 { font-size: 1.25rem; margin: 0 0 0.25rem; letter-spacing: -0.01em; }
 .lab-play.playing { background: #3b82f6; color: #fff; }
 .lab-play:disabled { opacity: 0.3; cursor: not-allowed; }
 .lab-hear-bucket { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-paper-dim, var(--muted)); }
-.lab-hear-sentence { font-size: 0.85rem; color: var(--color-paper, var(--ink)); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+/* text-align pinned: the span binds `dir` per sentence, and dir="rtl" would
+   otherwise flush a short target line to the right of its row. */
+.lab-hear-sentence { font-size: 0.85rem; color: var(--color-paper, var(--ink)); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-align: left; }
 .lab-hear-pause { display: inline-flex; gap: 0.5rem; align-items: baseline; font-family: var(--font-mono, ui-monospace, Menlo, monospace); font-size: 0.75rem; white-space: nowrap; }
 .lab-hear-dur { color: var(--color-paper-dim, var(--faint)); }
 .lab-hear-gap { color: var(--color-paper, var(--ink)); }

@@ -91,3 +91,31 @@ export function isRtlText(text) {
 export function dirFor(text) {
   return isRtlText(text) ? 'rtl' : 'ltr'
 }
+
+/* Unicode bidi isolate controls — the plaintext equivalent of `dir` + `unicode-bidi: isolate`. */
+const LRI = '⁦' // LEFT-TO-RIGHT ISOLATE
+const RLI = '⁧' // RIGHT-TO-LEFT ISOLATE
+const PDI = '⁩' // POP DIRECTIONAL ISOLATE
+
+/**
+ * Wrap `text` in bidi isolate controls so it lays out in its OWN direction
+ * inside a surrounding run of the opposite one.
+ *
+ * For the ordinary case — an element that paints target text — bind `dir` on
+ * that element instead; the attribute is the better primitive and leaves no
+ * invisible characters in the string. This exists for the slots where no
+ * element can be nested and so no `dir` can be bound: the text content of an
+ * `<option>` (which also carries an LTR "12. " index prefix), and any place a
+ * target string is concatenated into a plaintext label.
+ *
+ * RLI/LRI are chosen explicitly from `isRtlText` rather than using FSI
+ * (U+2068), which would defer to the same first-strong-character guess that
+ * `dir="auto"` makes and that this module exists to avoid.
+ *
+ * @param {string|null|undefined} text
+ * @returns {string} the isolated text, or '' for empty input
+ */
+export function isolateText(text) {
+  if (!text) return ''
+  return (isRtlText(text) ? RLI : LRI) + text + PDI
+}

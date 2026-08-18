@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { isRtlText, dirFor } from './textDirection'
+import { isRtlText, dirFor, isolateText } from './textDirection'
 
 /**
  * Real rows copied out of Supabase on 2026-08-18, course `ara_lb_for_eng`.
@@ -75,5 +75,40 @@ describe('isRtlText', () => {
     expect(dirFor('한국어를 배우고 싶어요')).toBe('ltr')
     expect(dirFor('Ελληνικά')).toBe('ltr')
     expect(dirFor('Русский язык')).toBe('ltr')
+  })
+})
+
+describe('isolateText — the plaintext slots where no element can carry `dir`', () => {
+  // An <option> holds text, not elements. There is nothing to bind `dir` on,
+  // and directing the <option> itself would move the LTR "12. " index prefix.
+  const LRI = '\u2066'
+  const RLI = '\u2067'
+  const PDI = '\u2069'
+
+  it('wraps Arabic in a right-to-left isolate, so the trailing `!` stays at the end', () => {
+    expect(isolateText(ARA_PHRASE_EXCLAMATION)).toBe(RLI + ARA_PHRASE_EXCLAMATION + PDI)
+    expect(isolateText(ARA_PHRASE_COMMA)).toBe(RLI + ARA_PHRASE_COMMA + PDI)
+  })
+
+  it('wraps English in a left-to-right isolate, so it is unaffected either way', () => {
+    expect(isolateText(ARA_SEED_1_KNOWN)).toBe(LRI + ARA_SEED_1_KNOWN + PDI)
+  })
+
+  it('picks the direction from the script, not from the first strong character', () => {
+    // FSI (U+2068) would guess from the leading Latin word and get this wrong;
+    // that first-strong guess is the bug class this module exists to avoid.
+    const mixed = 'Beirut يعني بيروت!'
+    expect(isolateText(mixed).startsWith(RLI)).toBe(true)
+  })
+
+  it('returns an empty string for empty, null and undefined — no stray controls', () => {
+    expect(isolateText('')).toBe('')
+    expect(isolateText(null)).toBe('')
+    expect(isolateText(undefined)).toBe('')
+  })
+
+  it('leaves the visible characters of the string untouched', () => {
+    const stripped = isolateText(ARA_SEED_1).replace(/[\u2066\u2067\u2069]/g, '')
+    expect(stripped).toBe(ARA_SEED_1)
   })
 })

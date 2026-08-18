@@ -28,6 +28,7 @@ import { composeSentenceArc, loadStage0ClipMaps, DEFAULT_STAGE0, resolveAtoms } 
 // /api routes the rest of this page uses — same helper pair as PodDetailView.
 import { getApiUrl } from '@/services/api.js'
 import { useAuth } from '@/composables/useAuth.js'
+import { dirFor } from '@/utils/textDirection.js'
 
 const { getAccessToken } = useAuth()
 
@@ -2245,7 +2246,12 @@ loadLiveConfig()
             >
               <span class="row-n">{{ s.global_order }}</span>
               <span v-if="sentenceRungDepth(s) != null" class="row-rungs" title="rung depth">{{ sentenceRungDepth(s) }}</span>
-              <span class="row-text">
+              <!-- The line is target text broken into parts with neutral `|`
+                   seam marks between them, on a row that also carries the LTR
+                   order number and rung count. Direct + isolate the text span
+                   so the parts and the seams order by the SENTENCE's direction
+                   and the numbers to its left stay put. -->
+              <span class="row-text bidi-isolate" :dir="dirFor(s.target_text)">
                 <template v-for="(p, pi) in seamPreviewParts(s.target_text)" :key="pi"
                   >{{ p.text }}<span v-if="p.seam" class="seam-mark">|</span></template
                 >
@@ -2272,7 +2278,14 @@ loadLiveConfig()
               {{ seamSaving ? 'Saving…' : 'Save review' }}
             </button>
           </div>
-          <div v-if="editorTokens.length" class="seam-line">
+          <!-- One sentence split across many sibling elements: each token is its
+               own box and each seam button sits BETWEEN two of them, so the
+               order the boxes are laid out in IS the reading order. Under an
+               LTR container an Arabic line therefore renders back-to-front and
+               every seam button points at the wrong gap. `dir` on the flex
+               container is what mirrors the row; this is the one place the fix
+               deliberately changes layout, and only for RTL sentences. -->
+          <div v-if="editorTokens.length" class="seam-line" :dir="dirFor(selectedSentence.target_text)">
             <template v-for="(t, i) in editorTokens" :key="i">
               <span class="tok">{{ t.text }}</span>
               <button
@@ -2288,7 +2301,7 @@ loadLiveConfig()
           </div>
           <div v-if="editorTokens.length" class="unit-glosses">
             <div v-for="(u, i) in editorUnits" :key="u.start + ':' + u.end" class="unit-row">
-              <span class="unit-surface">{{ u.surface }}</span>
+              <span class="unit-surface bidi-isolate" :dir="dirFor(u.surface)">{{ u.surface }}</span>
               <input
                 v-model="u.gloss"
                 class="gloss-input"
@@ -2576,8 +2589,8 @@ loadLiveConfig()
                       <span class="s-speaker">{{ c.speaker }}</span>
                       <span class="s-voice mono">{{ c.voice ? (c.voice.name || c.voice.voice_id) : 'no voice' }}</span>
                       <span class="s-text">
-                        <span class="s-main">{{ c.text }}</span>
-                        <span class="s-other">{{ c.other }}</span>
+                        <span class="s-main bidi-isolate" :dir="dirFor(c.text)">{{ c.text }}</span>
+                        <span class="s-other bidi-isolate" :dir="dirFor(c.other)">{{ c.other }}</span>
                       </span>
                     </div>
                   </div>
@@ -2624,7 +2637,7 @@ loadLiveConfig()
                       <span class="s-speaker">{{ c.speaker }}</span>
                       <span class="s-voice mono" title="the voice that actually rendered this clip">{{ bareVoiceId(c.actualVoiceId) || 'unknown voice' }}</span>
                       <span class="s-text">
-                        <span class="s-main">{{ c.text }}</span>
+                        <span class="s-main bidi-isolate" :dir="dirFor(c.text)">{{ c.text }}</span>
                         <span class="s-other">{{ (c.renderedAt || '').slice(0, 10) }}</span>
                       </span>
                     </div>
@@ -2687,7 +2700,7 @@ loadLiveConfig()
                     {{ bareVoiceId(c.actualVoiceId) || 'unknown voice' }}
                   </span>
                   <span class="s-text">
-                    <span class="s-main">{{ c.text }}</span>
+                    <span class="s-main bidi-isolate" :dir="dirFor(c.text)">{{ c.text }}</span>
                     <span class="s-other">{{ (c.renderedAt || '').slice(0, 10) }}</span>
                   </span>
                 </div>
@@ -2768,7 +2781,8 @@ loadLiveConfig()
                 "
                 @click="playShapeSteps([st])"
               >
-                {{ st.text }}<span v-if="st.rate === 2" class="x2">2×</span>
+                <!-- Target chunk sharing the button with the LTR "2×" tag. -->
+                <span class="bidi-isolate" :dir="dirFor(st.text)">{{ st.text }}</span><span v-if="st.rate === 2" class="x2">2×</span>
               </button>
             </div>
           </div>
@@ -2948,6 +2962,9 @@ code {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  /* Pinned: the span binds `dir` per sentence, and dir="rtl" would otherwise
+     flush a short Arabic line to the right of the row. Direction is the fix. */
+  text-align: left;
 }
 .row-text .seam-mark {
   color: var(--accent-2);
@@ -3333,6 +3350,8 @@ code {
   gap: 8px;
 }
 .unit-surface {
+  /* text-align pinned — see .row-text. */
+  text-align: left;
   min-width: 40%;
   max-width: 55%;
   font-size: 13px;
@@ -3651,6 +3670,11 @@ code {
 .s-text {
   display: grid;
   gap: 1px;
+}
+/* Both lines bind `dir` from their own text; alignment stays as it is today. */
+.s-main,
+.s-other {
+  text-align: left;
 }
 .s-other {
   color: var(--muted);

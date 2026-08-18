@@ -26,7 +26,7 @@
       <!-- Target text (only visible in VOICE_2) -->
       <div class="text-block target-text" :class="{ revealed: currentPhase === 'voice2' }">
         <div class="language-badge target">Target</div>
-        <p class="primary-text" v-if="currentPhase === 'voice2'">{{ targetText }}</p>
+        <p class="primary-text" v-if="currentPhase === 'voice2'" :dir="dirFor(targetText)">{{ targetText }}</p>
         <div v-else class="blur-placeholder">
           <span v-for="i in 5" :key="i" class="blur-bar"></span>
         </div>
@@ -86,6 +86,7 @@
 <script setup>
 import { ref, computed, watch, onUnmounted, onMounted } from 'vue'
 import api from '@/services/api'
+import { dirFor } from '@/utils/textDirection.js'
 
 const props = defineProps({
   knownText: {
@@ -494,6 +495,10 @@ watch(() => props.knownText + props.targetText, async () => {
   color: var(--text);
   line-height: 1.4;
   margin: 0;
+  /* Pinned, not inherited: the target line binds `dir` so its punctuation
+     resolves correctly, and dir="rtl" would otherwise right-align it away from
+     the "Target" badge above. Direction is the fix; alignment stays put. */
+  text-align: left;
 }
 
 /* Blur placeholder for hidden target */

@@ -225,7 +225,14 @@
                     <!-- Unproofread machine draft: say so before the words, so
                          nobody reads them believing they are final. -->
                     <div v-if="isDraft(sent)" class="draft-badge">DRAFT — AWAITING PROOFREAD</div>
-                    <div class="text-ink truncate" :title="sent.target_text">{{ sent.target_text }}</div>
+                    <!-- Target text carries its OWN direction. Arabic under an
+                         LTR paragraph pushes trailing neutrals (! . , quotes)
+                         to the visual right; `dir` on the painting element is
+                         the fix. `text-left` pins the alignment back, because
+                         dir="rtl" would otherwise right-align this line while
+                         the known line below it stayed left — a layout change
+                         nobody asked for. -->
+                    <div class="text-ink truncate text-left bidi-isolate" :dir="dirFor(sent.target_text)" :title="sent.target_text">{{ sent.target_text }}</div>
                     <div class="text-faint text-xs truncate" :title="sent.known_text">{{ sent.known_text }}</div>
                     <!-- Stage-1 explainer (inline, only when populated) -->
                     <div
@@ -233,12 +240,15 @@
                       class="explainer-note text-xs mt-1 italic leading-snug"
                       :title="sent.explainer_text"
                     >
-                      <span class="explainer-icon not-italic mr-1">ⓘ</span>{{ sent.explainer_text }}
+                      <!-- Mixed-language narration sharing a line with the ⓘ
+                           glyph: isolate just the text run so the icon keeps
+                           its place whichever way the narration reads. -->
+                      <span class="explainer-icon not-italic mr-1">ⓘ</span><span class="bidi-isolate" :dir="dirFor(sent.explainer_text)">{{ sent.explainer_text }}</span>
                     </div>
                   </template>
                   <!-- Edit mode -->
                   <div v-else class="space-y-1.5">
-                    <textarea v-model="editBuf.target" rows="1" dir="auto"
+                    <textarea v-model="editBuf.target" rows="1" :dir="dirFor(editBuf.target)"
                       class="w-full bg-canvas border border-emerald-700 rounded px-2 py-1 text-ink text-sm resize-y outline-none" placeholder="target" />
                     <textarea v-model="editBuf.known" rows="1"
                       class="w-full bg-canvas border border-line rounded px-2 py-1 text-muted text-xs resize-y outline-none" placeholder="known / translation" />
@@ -316,6 +326,7 @@ import { useRoute } from 'vue-router'
 import { getApiUrl } from '@/services/api.js'
 import { useAuth } from '@/composables/useAuth.js'
 import { getLanguageName, useCourses } from '@/composables/useCourses.js'
+import { dirFor } from '@/utils/textDirection.js'
 
 const route = useRoute()
 const courseCode = route.params.courseCode
