@@ -138,10 +138,29 @@ current key otherwise. A bumped `.vN` therefore cannot fail to resolve. Sampled
 clips were confirmed alive (HTTP 200) *before* the bump, so no ref was moved
 onto a missing object.
 
-**Still open:** browser-level confirmation that `.v2` is a genuine cache MISS
-against an IndexedDB store and HTTP cache already holding the bare uuid — job
-#195 is running that probe now. The server-side evidence above does not prove
-the client-side cache behaviour; it is reported separately rather than assumed.
+### Confirmed at the browser (job #195)
+
+Server-side evidence cannot prove client-side cache behaviour, so it was probed
+separately in a real headless Chromium:
+
+- **The suffix reaches the client.** `/api/courses/eus_for_eng/cycles` returns
+  `target2_id: "099a7918-….v2"` — the server route genuinely stamps it.
+- **`.v2` misses a warm cache.** The bare uuid was fetched twice (second hit
+  `fromDiskCache:true`, so the cache was genuinely warm) and IndexedDB
+  `ssi-audio-cache-v2` seeded at the bare-uuid key. The first `.v2` fetch was
+  `fromDiskCache:false` — a real network hit — and the IndexedDB lookup on the
+  `.v2` key returned not-found. Re-fetching the bare uuid still hit disk cache,
+  proving the two are independent entries.
+- **Identical bytes.** Both refs 200, both 29,088 bytes, identical SHA-256.
+
+Gaps stated rather than glossed: the cache test used direct `fetch()`/IndexedDB
+calls in the page context rather than clicking through the course picker
+(mechanically equivalent — both caches key on URL/id strings, not call path);
+one clip of the 394 was exercised end-to-end; and the client-side
+`generateLearningScript.ts` walk was confirmed by reading the shared
+`buildAudioRef`/`stampRowAudioRefs` logic, not by a second live run.
+
+Detail: https://watson-1.tail4968cb.ts.net/d/53771f00
 
 ---
 
