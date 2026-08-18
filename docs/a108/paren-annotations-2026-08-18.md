@@ -1,89 +1,98 @@
-# Brackets out of the learner's ear — first tranche live
+# Bracket annotations — corrected report
 
-**18 Aug 2026.** Kai approved fixing the grammar annotations that sit inside learner-facing prompts and get **read aloud** by the voice.
-
----
-
-## What is now live
-
-Five rows in **ben_for_eng** (a released course) no longer speak grammar jargon. Four new clips, generated, whisper-verified, and confirmed through the learner app.
-
-| Was heard | Now heard |
-|---|---|
-| "I know **(a person)**" | "I know" |
-| "I know someone **(a person)**" | "I know someone" |
-| "The Bangla for: 'I know **(a person)**', is:" | "The Bangla for: 'I know', is:" |
-| "The Bangla for: 'I know someone **(a person)**', is:" | "The Bangla for: 'I know someone', is:" |
-
-**Hear them** (tap to play):
-
-- [I know](https://ssi-learning-app.vercel.app/api/audio/701ea8ee-e53f-4055-bac3-93f7a189bfec?f=.mp3)
-- [I know someone](https://ssi-learning-app.vercel.app/api/audio/3ecb6b2d-b8bc-4a41-b29a-0ce732fe45b8?f=.mp3)
-- [Presentation: "The Bangla for: 'I know', is:"](https://ssi-learning-app.vercel.app/api/audio/b91de214-8abe-43f4-b6c4-0a3e5a8fbe63?f=.mp3)
-- [Presentation: "The Bangla for: 'I know someone', is:"](https://ssi-learning-app.vercel.app/api/audio/3356ef7f-95af-48dc-9943-fcb54ed6b7d2?f=.mp3)
-
-**Cost: $0.003.** 168 characters of Azure neural TTS — 8 takes generated, 4 shipped. The earlier estimate was $0.63; that covered 1,356 rows, and this pass changed 5.
-
-Rows changed: legos S0230L3, S0231L3, S0236L2; build phrases S0230L3, S0236L2. Presentation clips swapped in the same pass. `content_stamp` moved to 10:14:20Z, so learner caches invalidate.
+**18 Aug 2026, revised.** I read Kai's 2026-08-17 working after shipping a first tranche. **It showed my first fix was wrong. I have reverted it.** This replaces my earlier report.
 
 ---
 
-## Why strip rather than merge, here
+## 1. What I got wrong, and what I did about it
 
-The tag was **already redundant**. Bengali splits *know*: চিনি (know a person) vs জানি (know a fact). Across 26 rows the course already separates them by **distinct English wording** — চিনি is only ever glossed "I know" / "I don't know" / "people I don't know", while জানি always gets a different English form ("I have no idea", "I know how to", "we don't know", "to find out"). That is your route (a), already attested in the course itself, not my intuition. So "(a person)" was adding nothing the English wasn't already carrying.
+I stripped "I know **(a person)**" → "I know" in **ben_for_eng** (released), re-voiced it, and reported it done. My evidence was that the course only ever glosses চিনি (know-a-person) as "I know", and জানি (know-a-fact) always as something else.
 
-Corroboration: the sibling build phrases at those very legos — "I know him", "ready, I know someone" — were already clean and un-tagged.
+**That evidence was drawn from legos only. The practice phrases say otherwise:**
+
+| Phrase | Bengali | Sense |
+|---|---|---|
+| "I don't know" | আমি চিনি না | person |
+| "I know more than yesterday" | আমি বেশি **জানি** | fact |
+| "we don't know" | আমরা **জানি** না | fact |
+| "I don't know when you'll be ready" | আমি **জানি** না… | fact |
+
+Bare "know" already carries **both** senses across 336 phrases. So "I know" → চিনি would have left a learner unable to tell which verb to say — the exact defect Kai's procedure exists to prevent, introduced into a released course by me.
+
+**Why I missed it:** my collision check grouped by identical stripped known_text and counted distinct targets. Yesterday's Sinhala plate had *already proved that method blind* — a string-identity ZUT sweep caught 1 trivial row and **none** of the three real ask/hear collisions, because colliding cards differ by surrounding context. I used the method its own precedent had disqualified.
+
+**Reverted.** All five rows restored to their original text and original clips, verified live through the app. Nothing was deleted at any point, so the originals were there to go back to.
 
 ---
 
-## The measurement was wrong, by 3–5×
+## 2. What is live and correct
 
-I calibrated first: pulled a known audible positive (`(dative)` clips in lav/nep/isl/lit) before counting anything.
+**3 narration fixes in por_for_eng (released).** The lego was already clean; only the *voice* still announced a tag. Fixed by mirroring the lego's own text — the method the Greek case settled.
+
+| Lego says | Voice used to say | Voice now says |
+|---|---|---|
+| "when did you start" | "The Portuguese for: '**when (for questions)**', is:" | "…'when did you start', is:" |
+| "she was very kind" | "The Portuguese for: '**kind (about a woman)**', is:" | "…'she was very kind', is:" |
+| "my keys" | "The Portuguese for: '**my (more than one)**', is:" | "…'my keys', is:" |
+
+Hear them: [when did you start](https://ssi-learning-app.vercel.app/api/audio/998c676b-2955-4afe-98c2-1ada8a472e1f?f=.mp3) · [she was very kind](https://ssi-learning-app.vercel.app/api/audio/3c9a5223-b073-4d95-a27b-c26caf26cb9e?f=.mp3) · [my keys](https://ssi-learning-app.vercel.app/api/audio/507ef6de-dc44-4aac-823e-1a1442cef8bd?f=.mp3)
+
+**Zero ZUT risk** — no authored text changed at all, so nothing can collide. Learner previously read one thing and heard another.
+
+**Total spend: $0.007** (422 characters, 14 takes, 7 shipped, 4 of those now reverted). The $0.63 estimate was never approached.
+
+---
+
+## 3. The class I completely missed first time — narration
+
+Kai's original objection was *"I don't like the english brackets in **narration**"*. My first report counted prompt clips and never counted narration at all.
+
+- **2,873** narration clips reachable from a lego speak a bracket, across **47** courses.
+- **232** of those sit on legos whose authored text is **already clean** — pure mirror fixes, no ZUT question, no merge question. This is the Greek pattern reproducing, and it is the safest work in the entire job.
+
+What learners hear today: *"The Persian for: 'i'm ready **(1sg positive copula)**', is:"* · *"The Russian for: 'help **(prep)**', is:"* · *"The Icelandic for: 'the money **(accusative definite)**', is:"*
+
+**A severity refinement.** TTS speaks brackets as plain words — "(a person)" is voiced "I know a person", which sounds fine. "(1sg positive copula)" does not. Severity tracks **what the tag says**, not whether a bracket is present. The 232 clean-lego narration rows and the grammar-jargon tags are the real damage; a readable gloss like "(a person)" is mostly a *screen* problem.
+
+---
+
+## 4. Where my brief was wrong
+
+- **"Yesterday's Finnish parenthetical census produced findings" — it did not.** That worker stalled on the Supabase pool and returned two messages, no data. There is no Finnish census. (A *different* Finnish thread, the formal-register sweep, did land — different scope.)
+- **My four "commission a native reviewer" questions were the wrong answer.** Kai ruled on 2026-08-17: *"We don't have a Sinhala speaker right now… You keep bringing this up with all languages. We don't expect you to be as good as a real human speaker and that's okay, you can still try!"* Attempt and label confidence; don't defer.
+- **And he can't adjudicate these anyway** — fluent Finnish/Italian/Welsh/English only. Bengali, Korean and Portuguese need Deborah or full scaffolding, not a yes/no from him.
+- **My "974 collisions" is a floor, not a count** — same blind method as above. The real number is higher and only a context-aware pass can find it.
+
+---
+
+## 5. Corrected estate picture
 
 | | Earlier report | Live today |
 |---|---|---|
-| Strippable annotations | ~1,356 | **6,804** |
+| Known-side rows with a tag | ~1,356 | **6,804** |
 | Rows whose clip speaks it | 1,619 | **4,706** |
-| Collide if stripped | 276 | **974** |
-| Courses affected | — | **48** |
+| Genuinely audible | — | **3,688** |
+| Narration clips speaking a tag | not counted | **2,873** |
+| Clean-lego narration (zero-risk) | not counted | **232** |
+| Collide on strip | 276 | **≥974** (floor) |
 
-Reduction chain, not a raw count: **6,804 raw → 4,706 linked to a clip that speaks the bracket → 3,688 genuinely audible.** The 1,018 removed are `component` rows, which the app never plays (`cycles.ts:153`, and a DB trigger `refuse_component_introduction` enforces it). Those are still **visible** as on-screen tiles — brackets on the screen, not in the ear.
+Reduction chain, not raw counts: 6,804 raw → 4,706 linked to a speaking clip → 3,688 audible (1,018 are `component` rows the app never plays, though still visible as tiles) → 1,422 further known-role clips are orphans linked to nothing.
 
-Three mechanism findings worth keeping:
-
-1. **The phase8 bracket guard gives zero protection here.** Of 2,931 legos that carry a bracket and have a clip, the clip speaks the bracket in **2,931** cases. Not one was stripped.
-2. **`normalize_text` does not remove brackets** — "i know (a person)" is the clip's canonical identity, so a corrected clip can never be silently confused with the old one.
-3. Only **3 of 48** affected courses are released (ben, kor, por). The other 45 are beta or draft — real, but not in a paying learner's ear today.
+**scan-course** does detect the class (Checks 1, 2, 10, and Check 10's warning about stripping revealing duplicates is right). Three gaps: it never joins `course_audio`, so it cannot see that a tag is *spoken*; Check 1 is legos-only, missing 2,783 phrase rows; and nothing runs it estate-wide.
 
 ---
 
-## Did scan-course already catch this? Partly.
+## 6. What I recommend, one word each
 
-**Yes:** Check 1 (`/\([^)]+\)/` in LEGO known_text), Check 2 (slashes), and Check 10 (ZUT conflicts) — which even carries the note that it "should run AFTER parentheticals and slashes are fixed, since stripping those can reveal hidden duplicates". That note is vindicated: 974 legos collide on strip.
-
-**Three honest gaps:**
-
-- It **never looks at `course_audio.text`**, so it cannot tell you the annotation is *spoken*. It reads as a cosmetic text issue when it is an audible one.
-- Check 1 is scoped to **LEGO known_text only**. The 2,783 affected `course_practice_phrases` rows are outside it.
-- It is a **manually-invoked, per-course** skill. Nothing schedules it, nothing runs it estate-wide — which is how 48 courses drifted.
-
-Adding an audibility join and a phrase-table pass is a small change and matters more than this one sweep.
+1. **The 232 clean-lego narration fixes** — no text changes, no collisions, pure mirror. I'd do all of them next. → **Go?**
+2. **ben "I know (a person)"** — needs route 2b: merge the animate object into the lego (the phrase corpus shows the person sense is signalled by a human object: "I don't know him", "I don't know many people"). I'll author it and label confidence rather than defer. → **Author?**
+3. **kor_for_eng, 24 rows** — particle tags; English has no distinct word for case, so merging is the only route. Same treatment. → **Author?**
+4. **por S0330 "(subj.)"** — the known side is *only* the tag; learner sees "(subj.)" and must say "seja". → **Author?**
 
 ---
 
-## Held back, deliberately — four things need your word
+## Gaps
 
-I did not guess on these. Each needs a language competence I don't have, or your ruling.
-
-1. **ben S0297L3 "I don't know (a person)"** — stripping collides with S0085L2 "I don't know" → আমি **...** চিনি না. Same verb, but that one is the *split* form with the object in the middle. A learner prompted "I don't know" wouldn't know whether to leave the gap. Needs a Bengali reviewer, not me. → **Hold?**
-2. **por S0330 "(subj.)"** — the known side is *nothing but* the annotation; the learner is shown "(subj.)" and must say "seja". Stripping leaves it empty. The course already says "that it be good" → "que seja bom" elsewhere, so I'd re-text it to "that it be" → "que seja", expanding both sides. Changes the target, so it needs Portuguese eyes. → **Approve?**
-3. **kor_for_eng, 24 rows** — these tag Korean *particles* ("family (object)", "you all (topic)"). English has no distinct word for case, so route (a) is simply unavailable; route (b) merging is the only answer. Often the sister lego already contains the whole thing — at S0408, "family (object)" → 가족을 sits beside "a happy family" → 행복한 가족을, which already contains it. Needs a Korean reviewer. → **Commission?**
-4. **The remaining 3,688 audible rows across 45 beta/draft courses.** At your "quality over throughput" rail this is a per-course campaign with a native check each, not a sweep. → **Go?**
-
----
-
-## Gaps in this report
-
-- **Two sub-workers (#24 audio recon, #26 adversarial census refutation) finished cleanly but their full reports were truncated on delivery and could not be retrieved through the API.** I did their critical work myself instead, so nothing here rests on them — but the independent refutation of my numbers did not reach me, and every figure above is therefore single-sourced to my own queries.
-- The untaught-word checker misfires on non-Latin scripts. It did **not** bite this pass: every side I edited is English. It *will* bite fra_for_jpn, por_for_jpn and kor_for_hin, where the known side is Japanese or Hindi.
-- I changed 5 of 6,804 rows. This is a first tranche and a proof of the method, not the job.
+- **Two earlier sub-workers (#24, #26) finished exit 0 but their reports were truncated on delivery and unretrievable via the API.** I redid their work myself. The adversarial refutation of my census never reached me — which is part of why the ben error survived to production.
+- I have not re-checked the other 45 beta/draft courses with a context-aware method. Every collision figure here is a floor.
+- The untaught-word checker's non-Latin misfire did not bite: every side I touched is English. It will bite fra_for_jpn, por_for_jpn, kor_for_hin.
