@@ -384,7 +384,11 @@
                 <div v-else class="flex gap-4 items-center mapping-oneline">
                   <span class="text-muted truncate flex-1">{{ item.known_text }}</span>
                   <span class="text-faint">&rarr;</span>
-                  <span class="text-ink truncate flex-1">{{ item.target_text }}</span>
+                  <span
+                    class="text-ink truncate flex-1 text-left"
+                    :dir="dirFor(item.target_text)"
+                    style="unicode-bidi: isolate"
+                  >{{ item.target_text }}</span>
                 </div>
               </div>
 
@@ -573,6 +577,7 @@ import { ref, computed, watch, nextTick, onMounted, onUnmounted } from 'vue'
 import { useScriptPlayer } from '@/composables/useScriptPlayer'
 import { getApiUrl } from '@/services/api'
 import { useAuth } from '@/composables/useAuth.js'
+import { dirFor } from '@/utils/textDirection.js'
 import { buildLearningAppUrl } from '@/utils/learningAppUrl'
 import { qaGate } from '@/services/qaGate'
 // The one rule for what a tap does lives in src/utils/glossPlacement.ts,

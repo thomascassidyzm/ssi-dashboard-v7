@@ -38,7 +38,15 @@
           </div>
           <div class="target-text text-ink font-medium">
             <span class="text-xs text-faint mr-2">Target:</span>
-            {{ phrase.target_text }}
+            <!--
+              dir on this span only, never on the parent: the "Target:" label is
+              English chrome and must stay put. Isolating the run is what keeps a
+              trailing neutral `!` at the logical end of the Arabic.
+            -->
+            <span
+              :dir="dirFor(phrase.target_text)"
+              style="unicode-bidi: isolate"
+            >{{ phrase.target_text }}</span>
           </div>
         </div>
       </div>
@@ -127,7 +135,11 @@
           </svg>
         </button>
         <span class="audio-label text-xs text-muted w-16">Voice 1</span>
-        <span class="audio-text flex-1 text-sm text-ink truncate">{{ phrase.target_text }}</span>
+        <span
+          class="audio-text flex-1 text-sm text-ink truncate text-left"
+          :dir="dirFor(phrase.target_text)"
+          style="unicode-bidi: isolate"
+        >{{ phrase.target_text }}</span>
         <span class="voice-badge inline-flex items-center gap-0.5 text-xs text-muted px-1.5 py-0.5 bg-surface-3 rounded">
           <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 7a3 3 0 11-6 0 3 3 0 016 0zM6 20a6 6 0 0112 0"/></svg>1
         </span>
@@ -150,7 +162,11 @@
           </svg>
         </button>
         <span class="audio-label text-xs text-muted w-16">Voice 2</span>
-        <span class="audio-text flex-1 text-sm text-ink truncate">{{ phrase.target_text }}</span>
+        <span
+          class="audio-text flex-1 text-sm text-ink truncate text-left"
+          :dir="dirFor(phrase.target_text)"
+          style="unicode-bidi: isolate"
+        >{{ phrase.target_text }}</span>
         <span class="voice-badge inline-flex items-center gap-0.5 text-xs text-muted px-1.5 py-0.5 bg-surface-3 rounded">
           <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 7a3 3 0 11-6 0 3 3 0 016 0zM6 20a6 6 0 0112 0"/></svg>2
         </span>
@@ -164,6 +180,7 @@
 import { ref, computed, defineComponent, h } from 'vue';
 import type { PhraseRowData, AudioSample, SampleStatus } from '@/types/production';
 import { getApiUrl } from '@/services/api';
+import { dirFor } from '@/utils/textDirection.js';
 
 // Audio track type
 type AudioTrack = 'known' | 'target1' | 'target2';

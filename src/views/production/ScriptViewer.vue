@@ -327,7 +327,11 @@
             <div class="flex items-center gap-2 text-sm">
               <span class="text-muted truncate">{{ journeyPlayback.currentItem.known_text || '' }}</span>
               <span class="text-faint flex-shrink-0">&rarr;</span>
-              <span class="text-ink truncate">{{ journeyPlayback.currentItem.target_text || '' }}</span>
+              <span
+                class="text-ink truncate text-left"
+                :dir="dirFor(journeyPlayback.currentItem.target_text || '')"
+                style="unicode-bidi: isolate"
+              >{{ journeyPlayback.currentItem.target_text || '' }}</span>
             </div>
           </div>
 
@@ -465,7 +469,11 @@
               <div class="text-sm text-muted">
                 <span class="text-ink">{{ presentationKnownText }}</span>
                 <span class="mx-2 text-faint">&rarr;</span>
-                <span class="text-ink">{{ presentationTargetText }}</span>
+                <span
+                  class="text-ink"
+                  :dir="dirFor(presentationTargetText)"
+                  style="unicode-bidi: isolate"
+                >{{ presentationTargetText }}</span>
               </div>
 
               <!-- Loading current text -->
@@ -585,7 +593,11 @@
                 <div class="text-sm">
                   <span class="text-ink">{{ legoAudioKnownText }}</span>
                   <span class="mx-2 text-faint">&rarr;</span>
-                  <span class="text-ink">{{ legoAudioTargetText }}</span>
+                  <span
+                    class="text-ink"
+                    :dir="dirFor(legoAudioTargetText)"
+                    style="unicode-bidi: isolate"
+                  >{{ legoAudioTargetText }}</span>
                 </div>
                 <p class="text-xs text-faint">
                   The LEGO text cannot be edited here — every BUILD phrase contains it, so a change would cascade across the course.
@@ -624,6 +636,7 @@
                 <input
                   v-model="legoSpokenTarget"
                   type="text"
+                  :dir="dirFor(legoSpokenTarget)"
                   class="w-full px-3 py-2 text-sm bg-canvas text-ink rounded border border-line focus:border-purple-500 focus:outline-none"
                 />
                 <div class="flex items-center gap-1.5">
@@ -664,7 +677,11 @@
                   <span class="voice-badge inline-flex items-center gap-0.5 text-xs font-medium text-muted px-1.5 py-0.5 bg-surface-3 rounded">
                     <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 7a3 3 0 11-6 0 3 3 0 016 0zM6 20a6 6 0 0112 0"/></svg>Voice 1
                   </span>
-                  <span class="text-xs text-faint truncate">{{ legoSpokenTarget }}</span>
+                  <span
+                    class="text-xs text-faint truncate text-left"
+                    :dir="dirFor(legoSpokenTarget)"
+                    style="unicode-bidi: isolate"
+                  >{{ legoSpokenTarget }}</span>
                 </label>
                 <label class="flex items-center gap-3 p-3 rounded-lg border-2 cursor-pointer"
                   :class="legoRegenFlags.target2 ? 'border-emerald-500 bg-emerald-500 bg-opacity-10' : 'border-line'">
@@ -672,7 +689,11 @@
                   <span class="voice-badge inline-flex items-center gap-0.5 text-xs font-medium text-muted px-1.5 py-0.5 bg-surface-3 rounded">
                     <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 7a3 3 0 11-6 0 3 3 0 016 0zM6 20a6 6 0 0112 0"/></svg>Voice 2
                   </span>
-                  <span class="text-xs text-faint truncate">{{ legoSpokenTarget }}</span>
+                  <span
+                    class="text-xs text-faint truncate text-left"
+                    :dir="dirFor(legoSpokenTarget)"
+                    style="unicode-bidi: isolate"
+                  >{{ legoSpokenTarget }}</span>
                 </label>
               </div>
 
@@ -839,7 +860,11 @@
                 >
                   <span class="text-muted truncate flex-1">{{ item.known_text }}</span>
                   <span class="text-faint">&rarr;</span>
-                  <span class="text-ink truncate flex-1">{{ item.target_text }}</span>
+                  <span
+                    class="text-ink truncate flex-1 text-left"
+                    :dir="dirFor(item.target_text)"
+                    style="unicode-bidi: isolate"
+                  >{{ item.target_text }}</span>
                   <button
                     @click="onRemoveJourneyFlaggedPhrase(item.phrase_id)"
                     class="text-faint hover:text-red-400 flex-shrink-0"
@@ -955,6 +980,7 @@ import LearningJourneyView from './components/LearningJourneyView.vue';
 import AudioPreviewCourseGaps from './components/AudioPreviewCourseGaps.vue';
 import { getApiUrl } from '@/services/api';
 import { useAuth } from '@/composables/useAuth.js';
+import { dirFor } from '@/utils/textDirection.js';
 // CyclePlayer removed - not useful for QA workflow
 import type {
   SeedRowData,
