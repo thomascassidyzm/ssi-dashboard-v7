@@ -22,7 +22,7 @@ Every play logs a `cacheHit` flag. Over the last 30 days:
 | **Served from device cache** | **196,759 (97.7%)** |
 | Actually fetched over the network | 4,442 (2.2%) |
 
-Only 2.2% of plays cost us a byte. Across the entire estate that is roughly **180 MB of real audio egress per month** — comfortably inside AWS's 100 GB free tier, so plausibly billed at zero.
+Only 2.2% of plays cost us a byte. Across the entire estate that is roughly **150 MB of real audio egress per month** — comfortably inside AWS's 100 GB free tier, so plausibly billed at zero.
 
 The "download-once device caching" lever in the brief is therefore **not an available saving — it is already banked**, and it is the reason the current bill is invisible.
 
@@ -37,10 +37,10 @@ All figures from live tables and real S3 objects, sampled 2026-08-18.
 | Registered learners | 1,114 | `learners` |
 | Plays per learner/month | mean 1,419 · median 6 · p90 2,859 · p99 32,766 | `player_events` |
 | Sessions per learner/month | mean 19.2 · median 1 | `player_events` |
-| Mean clip size | **40.5 KB** (median 34 KB, p90 57 KB) | 5,000 real S3 objects |
+| Mean clip size | **33.9 KB** (median 27.3 KB, p90 51 KB) | **full census, 5,127,351 objects** |
 | Clip format | mp3 mono; 48 kHz @ ~72–84 kbps (modern bulk), 16 kHz @ 32 kbps (older) | ffprobe on real files |
-| Distinct clips touched per learner/month | 453 (≈18 MB) | `player_events` |
-| Real network fetches per learner/month | ≈31 (≈1.3 MB) | derived from `cacheHit` |
+| Distinct clips touched per learner/month | 453 (≈15 MB) | `player_events` |
+| Real network fetches per learner/month | ≈31 (≈1.0 MB) | derived from `cacheHit` |
 
 The play distribution is savagely skewed — the median active learner plays 6 clips a month, the p99 plays 32,766. Any average here hides more than it shows, which is why the sensitivity case below is the one that matters.
 
@@ -64,7 +64,7 @@ So proxied bytes cost **3.3x** what direct-S3 bytes would. A presigned direct-S3
 
 | Component | Quantity | Rate | Cost |
 |---|---|---|---|
-| Audio egress (proxied) | 1.3 MB | $0.30/GB | $0.00039 |
+| Audio egress (proxied) | 1.0 MB | $0.30/GB | $0.00031 |
 | S3 GET requests | ~31 | $0.0004/1,000 | $0.00001 |
 | Vercel edge requests | ~300 | $2.40/1M | $0.00072 |
 | Supabase row writes / DB egress | small | within plan | ~$0 |
@@ -80,8 +80,8 @@ Learner-path infrastructure only. Content-creation infrastructure — the Popty 
 |---|---|---|
 | Supabase Pro | learner-path DB is 6.8 GB, inside the 8 GB allowance; 250 GB egress and 100k MAU included | $25.00 |
 | Vercel Pro | 1 seat; usage inside included 1 TB transfer / 10M edge requests | $20.00 |
-| S3 Standard storage | ~104 GB (2.57M objects × 40.5 KB) @ $0.023/GB | $2.39 |
-| **Total learner-path fixed** | | **$47.39 ≈ £37/month** |
+| S3 Standard storage | **165.7 GB across 5,127,351 objects** (censused) @ $0.023/GB | $3.81 |
+| **Total learner-path fixed** | | **$48.81 ≈ £38/month** |
 
 Marked **ESTIMATED-FROM-PUBLISHED-RATES**, not a bill — see the gaps section.
 
@@ -89,8 +89,8 @@ Marked **ESTIMATED-FROM-PUBLISHED-RATES**, not a bill — see the gaps section.
 
 | Active learners | Fixed per learner | Marginal | **Total per learner/month** |
 |---|---|---|---|
-| 100 | £0.29 | £0.001 | **≈£0.30** |
-| 332 (today) | £0.11 | £0.001 | **≈£0.11** |
+| 100 | £0.38 | £0.001 | **≈£0.39** |
+| 332 (today) | £0.12 | £0.001 | **≈£0.12** |
 | 10,000 | £0.004 | £0.001 | **≈£0.005** |
 | 1,000,000 | £0.0003 | £0.0026 | **≈£0.003** |
 
@@ -104,25 +104,25 @@ At a million learners the picture inverts: fixed cost vanishes and the floor bec
 | **Institutional** | ₹627/yr ≈ **£0.40/mo** | ~£0.005/mo at scale | **Clears by ~80x** |
 | **Publisher / EdTech** | ₹34 one-off ≈ **£0.26** | ~£0.06 lifetime server cost per learner-year at scale | **Clears by ~4x** |
 
-All three clear. Even the one-off publisher tier — the hardest case, because ₹34 must cover a learner forever — survives, since a learner who consumes an entire large course generates roughly £0.18 of direct-S3 egress once, and at institutional scale the fixed share is negligible.
+All three clear. Even the one-off publisher tier — the hardest case, because ₹34 must cover a learner forever — survives, since a learner who consumes an entire large course generates roughly £0.15 of direct-S3 egress once, and at institutional scale the fixed share is negligible.
 
-**At today's 332 active learners the institutional tier is tighter** (~£0.11 fixed share against £0.40 net), but that is an artefact of a small base, not a structural cost. It resolves itself with volume — and the India deal is precisely what brings volume.
+**At today's 332 active learners the institutional tier is tighter** (~£0.12 fixed share against £0.40 net), but that is an artefact of a small base, not a structural cost. It resolves itself with volume — and the India deal is precisely what brings volume.
 
 ## The sensitivity that actually matters: cache eviction
 
 The 97.7% hit rate is the whole argument. It rests on a persistent IndexedDB cache (`AudioCache.ts`) which is **LRU-evicted under storage-quota pressure**.
 
-A full large course is substantial — `fra_for_eng` is 66,711 clips ≈ **2.7 GB**. A typical mobile browser quota is 1–2 GB. On a cheap Android with a full course and a busy learner, **the cache will thrash**, and a one-off download becomes a recurring one.
+A full large course is substantial — `fra_for_eng` is 66,711 clips ≈ **2.2 GB**. A typical mobile browser quota is 1–2 GB. On a cheap Android with a full course and a busy learner, **the cache will thrash**, and a one-off download becomes a recurring one.
 
 The worst realistic case — a p99 learner (32,766 plays/month) whose cache evicts constantly:
 
 | Scenario | Bytes/month | Cost/month |
 |---|---|---|
-| p99 learner, cache working | 30 MB | £0.007 |
-| **p99 learner, cache thrashing** | **1.33 GB** | **£0.31** |
-| p99 learner, thrashing, with opus | 0.36 GB | £0.085 |
+| p99 learner, cache working | 25 MB | £0.006 |
+| **p99 learner, cache thrashing** | **1.06 GB** | **£0.25** |
+| p99 learner, thrashing, with opus | 0.29 GB | £0.068 |
 
-**£0.31/month would consume 78% of the institutional tier's £0.40 net.** This is the only scenario in the whole analysis where the floor is genuinely threatened — and it is a device-storage problem, not a bandwidth problem.
+**£0.25/month would consume 63% of the institutional tier's £0.40 net.** This is the only scenario in the whole analysis where the floor is genuinely threatened — and it is a device-storage problem, not a bandwidth problem.
 
 ## The two levers, honestly costed
 
@@ -137,9 +137,9 @@ The worst realistic case — a p99 learner (32,766 plays/month) whose cache evic
 
 Durations preserved exactly; the older 16 kHz/32 kbps clips only yield ~35%, being already low-bitrate.
 
-Applied to our current 1.3 MB/learner/month, a 73% cut saves about **0.03p per learner per month — nothing.** The case for opus is not egress. It is:
+Applied to our current 1.0 MB/learner/month, a 73% cut saves about **0.02p per learner per month — nothing.** The case for opus is not egress. It is:
 
-1. **Cache durability.** A 2.7 GB course becomes ~0.8 GB, which fits inside a cheap Android's quota. That protects the 97.7% hit rate, which is what keeps the whole floor at a tenth of a penny — and it neutralises the one scenario above that threatens the institutional tier.
+1. **Cache durability.** A 2.2 GB course becomes ~0.6 GB, which fits inside a cheap Android's quota. That protects the 97.7% hit rate, which is what keeps the whole floor at a tenth of a penny — and it neutralises the one scenario above that threatens the institutional tier.
 2. **The learner's own mobile data bill.** In India this is a product and pricing argument, not an infrastructure one, and it is worth more to an Indian buyer than to us.
 
 **Recommendation: build the opus variant for India, and justify it on device storage and learner data cost — not on our server bill.** Do not justify it on egress savings; that argument does not survive contact with the numbers.
@@ -149,7 +149,11 @@ Applied to our current 1.3 MB/learner/month, a 73% cut saves about **0.03p per l
 Reported honestly rather than papered over:
 
 - **No billing data was reached.** AWS Cost Explorer, Vercel billing and Supabase billing were not accessible from this environment. Every cost above is computed from **published rates** (AWS eu-west-1, Vercel dub1 regional pricing, Supabase Pro, all retrieved 2026-08-18) applied to **measured usage**. Usage is real; prices are list. An actual invoice could differ, most likely downward on committed-use discounts.
-- **`course_audio.file_size_bytes` is NULL on 2,562,676 of 2,565,615 rows**, so per-course byte totals cannot be read from the database. Course sizes here are derived from clip counts × the measured 40.5 KB mean. A full S3 census was started but did not return in time; it would refine storage cost, which is ~£2/month and immaterial to the conclusion.
+- **`course_audio.file_size_bytes` is NULL on 2,562,676 of 2,565,615 rows**, so per-course byte totals cannot be read from the database. Course sizes here are derived from clip counts × the censused 33.9 KB mean. The full S3 census has now completed and is reflected above — it lowered the mean clip size from a sampled 40.5 KB to a true 33.9 KB, which moved every egress figure *down* by about 14%.
+
+- **Roughly half the audio in the bucket is not referenced by any course.** The census found **5,127,351 objects** under `mastered/`, against **2,565,615 rows** in `course_audio`. That gap is ~2.5M objects and ~80 GB, costing about **$1.85/month** in storage. It is immaterial to the per-learner floor, but it is real money for no benefit and worth a separate look — I have not investigated whether these are superseded takes, orphans from regeneration events, or content simply not yet linked. **No deletion should follow from this line without the standing make-before-break verification.**
 - **Whether S3 → Vercel transfer is billed at internet rate is unconfirmed.** AWS does not charge for S3 egress to same-region compute, and Vercel's dub1 runs in eu-west-1 — so the true proxied rate may be $0.15/GB rather than $0.30/GB. I have used the conservative (higher) figure throughout. This only moves numbers that are already negligible.
-- **Two of four dispatched workers were lost to transient API overloads.** Their scope — usage modelling and the cache-lever code audit — I completed directly instead; the usage answer came out stronger for it, since the `cacheHit` field gave a measurement where a worker would have produced a model. The fixed-infrastructure worker was still running at publication; if its server census contradicts the learner-path/creation-path split used here, the fixed line above is what would move — not the conclusion, which rests on marginal cost.
+- **All four dispatched workers failed to deliver** — three were lost to transient API overloads, and the fourth ended its session while its bucket scan was still running, killing it. I completed all four scopes directly instead. The usage answer came out stronger for it, since the `cacheHit` field gave a measurement where a worker would have produced a model.
+
+- **The fixed-cost line is my own construction, not a verified server census.** I have counted the learner path as Vercel + Supabase + S3 only, and excluded the Popty build machines (watson-1, Camberley) as content-creation infrastructure on the architectural grounds that the learner app reads Supabase and S3 directly and never touches them. If that split is wrong — if any Popty service sits on the live learner path — the fixed line rises and the small-scale numbers move. The conclusion would not, because it rests on marginal cost, which is independent of it.
 - **Per-learner figures use the 142 learners who actually played audio**, not the 332 with any activity. This is the conservative choice: it concentrates all cost onto fewer heads.
