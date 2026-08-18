@@ -79,7 +79,29 @@ Two readings, both useful:
 
 Cross-course leakage is negligible: 63 clips, never more than 2 courses.
 
-*This corrects a stored memory* claiming one `jpn` clip was `known_audio_id` for `S0089L03` across 21 courses. Today's live maximum, across every content table, is **2 courses**. Either it was swept since, or the original measurement was wrong — **I did not determine which, and have not deleted the memory on the strength of one query.**
+### A live defect found on the way, worth someone's five minutes
+
+Chasing a stored note that one `jpn` clip was `known_audio_id` for lego `S0089L03` across 21 courses, I found the same clip at the top of the fan-out query — so it could be settled rather than left open. **It was swept: 22 courses on 2026-08-06, 2 today.** Not a bad measurement.
+
+But the two that remain are not both legitimate:
+
+| course linking `ee9f424e-51f7-4f83-827e-2ab276376161` (`zho_for_jpn`, `jpn`, `azure_ja-JP-ShioriNeural`, text `短.`) | verdict |
+|---|---|
+| `zho_for_jpn` | legitimate — it owns the clip |
+| **`bre_for_fra`** | **wrong — a Breton-for-French course playing Japanese 短 to a learner** |
+
+**OBSERVED live.** Unrelated to the regeneration defect and out of this job's read-only rails, so not fixed here. It is one link on one slot.
+
+More usefully, the general query for this whole class returns **53** links estate-wide where a clip's own `course_code` differs from the course linking it:
+
+```sql
+-- join each lego's three *_audio_id slots to course_audio, flag the mismatches
+select l.course_code, l.lego_id, a.course_code as clip_owner, a.language, a.text
+from course_legos l join course_audio a on a.id = l.known_audio_id
+where a.course_code <> l.course_code;
+```
+
+Whether the linker that caused it was ever fixed, or only its symptoms swept, **is unverified.**
 
 ---
 
@@ -100,7 +122,7 @@ Cross-course leakage is negligible: 63 clips, never more than 2 courses.
 - **The cache-staleness layer is still not reproduced end-to-end.** Both ends are confirmed by reading — the render payload omits `audio_revision` (`:2415-2439`), the header is `public, max-age=31536000, immutable` (`services/shared/audio-cache-control.cjs`), and the learner app keys its URL on that column (`ssi-learning-app/api/_utils/audioAccess.ts:205,230,295`). No browser was driven through a stale fetch. **INFERRED, not reproduced** — and it is the layer most likely to be what Kai actually experienced.
 - **The two hard breakages reported by #104** — `/regenerate-single` throwing a `ReferenceError` after the money is spent, and the flagged-clip button proxying to an endpoint that does not regenerate — **were not independently verified by me.** They are the main report's proposal items 1 and 2. Check them before relying on either control.
 - **No census of the defect itself.** Unchanged from the main report: `course_audio` has no `updated_at` and no batch id, so a silent no-op leaves no trace on the row.
-- **The 21-courses/2-courses discrepancy** (§3) is unresolved.
+- **Whether the cross-course linker was fixed, or only its symptoms swept** (§3). 53 mismatched links remain estate-wide, and `bre_for_fra` S0089L03 is a confirmed live one.
 - The live database still runs trigger code from an **unmerged** branch. Any fix must be written against live definitions, not the repo's — the main report's unknown #1, restated here because it is the trap most likely to bite whoever implements this.
 
 ---
