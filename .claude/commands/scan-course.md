@@ -754,8 +754,10 @@ Format:
       Action: Insert "I" into the English target, null target audio for regen.
 
 [18] PRESENTATION/TEXT DRIFT: {count}
-     {all mismatches with LEGO=... PRES=...}
+     coverage: {parsed}/{clips} clips parsed ({pct}%){, N UNPARSED — not judged}
+     {all mismatches with LEGO=... ANNOUNCED=...}
      Action: Regenerate presentation audio with correct text; null presentation_audio_id first.
+     ⚠️ Coverage below 99% = FAILED run, not a clean course. Never report [18] without it.
 
 LANGUAGE SPOT-CHECK ({seed_count} seeds): {PASS/FAIL}
   {any flagged seeds}
@@ -1160,43 +1162,36 @@ When a new language-specific pattern is found during content check, add it here 
 
 #### Check 18: LEGO presentation/text drift
 
-Each LEGO has a `presentation_audio_id` whose audio text follows the template `"The {Language} for: 'X', as in — '...', is:"`. The `'X'` MUST equal the LEGO's `known_text`. When they drift, the learner hears the presenter announce one phrase and then sees a different phrase on screen — extremely confusing.
+Each LEGO has a `presentation_audio_id` whose clip announces the LEGO's `known_text` before speaking the target. The announced phrase MUST equal the LEGO's `known_text`. When they drift, the learner hears the presenter announce one phrase and then sees a different phrase on screen — extremely confusing.
 
-Two failure patterns observed:
+Failure patterns observed:
 - **Swap**: L01 announces L02's known_text and L02 announces L01's. Likely a generation bug where presentation prompts iterated in the wrong order.
 - **Synonym drift**: presentation says "about" but the LEGO is "more or less" — usually because the LEGO's known_text was edited but the presentation audio wasn't regenerated.
+- **Bracket drift**: the LEGO reads `short`, the clip speaks `short (adjective)` — the authored text was cleaned but the narration was not re-rendered.
 
-(Discovered 2026-04-30 — Deborah caught S0033 L01/L02 swap and S0038 L02 synonym drift on spa_for_eng. Course-wide scan turned up 15 more she hadn't reached yet.)
+(Discovered 2026-04-30 — Deborah caught S0033 L01/L02 swap and S0038 L02 synonym drift on spa_for_eng.)
 
-```javascript
-// Fetch presentation audio for every LEGO, compare announced English to lego.known_text
-const presIds = legos.map(l => l.presentation_audio_id).filter(Boolean);
-const audioById = new Map();
-for (let i = 0; i < presIds.length; i += 200) {  // batch-200 — Supabase IN-clause silently truncates at ~500
-  const { data } = await supabase.from('course_audio').select('id, text').in('id', presIds.slice(i, i + 200));
-  for (const a of data || []) audioById.set(a.id, a);
-}
-const TEMPLATE = /^The\s+\w+(?:\s\w+)?\s+for:\s+'([\s\S]*?)'\s*,\s*as in/i;  // lazy `[\s\S]*?` so apostrophes inside the value don't break extraction
+**Do not hand-roll the matcher.** Run the check:
 
-const drifts = [];
-for (const l of legos) {
-  if (!l.presentation_audio_id) continue;
-  const a = audioById.get(l.presentation_audio_id);
-  if (!a) continue;
-  const m = a.text.match(TEMPLATE);
-  if (!m) continue;  // doesn't follow standard template (e.g. is_new=false reps) — skip
-  const announced = m[1].toLowerCase().trim();
-  const lego = (l.known_text || '').toLowerCase().trim();
-  if (announced !== lego) drifts.push({ lego_id: l.lego_id, lego_known: l.known_text, announced });
-}
+```bash
+node tools/check-presentation-drift.cjs <course_code>          # human-readable, exits 1 on drift
+node tools/check-presentation-drift.cjs <course_code> --json    # machine-readable
+node tools/check-presentation-drift.cjs --all                   # whole estate
 ```
 
-Report: count + every mismatch. Show `LEGO=...  PRES=...` so the swap pattern is obvious at a glance.
-Action: regenerate the presentation audio with the correct text. For swapped pairs, regen both. Set `presentation_audio_id` to null on the LEGO row before re-running presentation generation, so it doesn't try to reuse the wrong audio.
+Its verdict logic lives in `tools/presentation-drift.cjs` (`matchesKnown`) if you need it programmatically.
 
-⚠️ **Three implementation gotchas worth knowing:**
+⚠️ **Why the old inline snippet was removed (2026-08-18).** This check used to extract the announced phrase with one English template, `/^The \w+ for:\s+'([\s\S]*?)'\s*,\s*as in/i`, and `continue`d past anything that didn't match. Measured live, that template matched **21,342 of 72,063** presentation clips and silently skipped **50,721**. Against a known set of 229 drifted rows it flagged **2**. It reported clean because it was not looking. The estate's narration is not one template: most courses say `, is:` rather than `, as in`; Dutch and the Indic courses use em-dashes; the known side is often not English (Japanese, Chinese, Korean, Hindi, Tamil, Spanish, German narration all exist); the legacy Welsh courses use `<src>`/`<tgt>` markup; and some Dutch clips wrap the phrase in SSML `<phoneme>`. The replacement parses **delimiters, not sentences**, and covers 72,058 of 72,063 clips (99.99%).
+
+**Read the coverage line, not just the count.** The tool always prints `coverage: parsed/clips`. Anything it cannot parse is reported as UNPARSED and counted — never dropped. A run below 99% coverage exits non-zero and is a FAILED run, not a clean course. That is the whole point: a detector you have not seen find a known-present defect is not evidence.
+
+Report: count + every mismatch, shown as `LEGO=...  ANNOUNCED=...` so the swap pattern is obvious at a glance.
+Action: regenerate the presentation audio with the correct text. For swapped pairs, regen both. Set `presentation_audio_id` to null on the LEGO row before re-running presentation generation, so it doesn't try to reuse the wrong audio. Note that a *bracket-drift* row usually needs no render at all — a clip at the corrected text often already exists, so the move is a relink.
+
+Not every mismatch is a defect worth fixing. The estate-wide run classifies into: bracket-only drift; **alternation picks** (LEGO reads `yet / still`, narration announces `yet`) which look deliberate; sub/superstring drift; and genuinely unrelated phrases. Triage before you regenerate.
+
+⚠️ **Two implementation gotchas worth knowing:**
 - Supabase silently truncates `IN`-clause results past ~500 IDs. Batch in chunks of 200 to be safe.
-- The naive regex `'([^']+)'` breaks on LEGOs containing apostrophes ("I don't want to find out") because it stops at the first apostrophe. Use lazy `[\s\S]*?` anchored on `, as in`.
 - JS regex `\b` only matches ASCII word boundaries — `\bvocê\b`, `\bcansé\b`, `\bgrüß\b` etc. silently never match. For Unicode-letter words, use `(?<!\p{L})word(?!\p{L})` with the `/u` flag.
 
 ## Step 6: Post-scan pipeline — backfill, final pass, gender prep
