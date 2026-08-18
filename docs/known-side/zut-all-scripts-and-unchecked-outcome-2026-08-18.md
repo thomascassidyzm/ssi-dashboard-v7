@@ -25,9 +25,9 @@ lego or a phrase, and no audio was generated.
 The raw count was 19,866. The number Kai should act on is **419**. Everything between those two
 figures is the triage, and it is set out below.
 
-> **Revised 2026-08-18 after adjudication.** A worker adjudicating the Devanagari courses found two
-> real defects, both now fixed, which is why these figures are lower than the first pass (20,408 →
-> 19,866). See §5.4.
+> **Revised 2026-08-18 after adjudication.** Three workers sampled and adjudicated 13 of the 16
+> answerable courses by hand. They found two real defects in this work, both now fixed (§5.4), and
+> their independently-measured true-violation rates corroborate the triage (§5.5).
 
 ---
 
@@ -221,6 +221,57 @@ pronoun a Hindi speaker plainly does not need taught, which is requirement 2 exa
 now 92 entries with the suppletive forms listed individually. Hit counts fell kor_for_hin
 1,401→1,104, zho_for_hin 1,103→957, eng_for_hin 467→396.
 
+### 5.5 Three independent adjudications, and where I disagreed with them
+
+Three workers sampled ~55 high-confidence + ~20 borderline rows per course across the full seed
+range, adjudicating against each course's own lego inventory rather than by eye.
+
+| adjudication | courses | sampled | measured true-violation rate |
+|---|---|---|---|
+| Devanagari (#163) | eng/kor/zho_for_hin, eng_for_mar | 337 rows | 6–19% |
+| Indic (#164) | eng_for_ben/guj/pan/sin/urd | 358 rows | ~4.7% |
+| Dravidian (#165) | eng/kor/zho_for_tam, eng_for_tel, eng_for_kan | 375 rows | 4–13% |
+| **this report's mechanical triage** | all 16 | all 19,866 | **3.4%** |
+
+**They converge.** Four methods — one mechanical over the whole population, three by-hand samples
+using DB ground truth — all land between 3% and 19%, against a machine count that implied 100%. That
+convergence is the strongest evidence here that the 419 is the right order of magnitude, and it is
+worth more than any single sample.
+
+**All three independently confirmed the borderline bucket is one class.** #164 found **0 confirmed
+true violations in 271 machine-flagged borderline NPI rows**; #165 found 0 in 84. The 1,194
+borderline hits should be read as a to-do on the gate, not a to-do on the courses.
+
+**Two worker claims I checked and did not accept:**
+
+- **#164: "every contract ships `stemStrip: []`, and this makes ~90%+ of the high bucket false
+  positives."** The first half is true and worth knowing — the six 2026-06 briefs predate this
+  schema entirely and carry no `script`, `morphology` or `stemStrip` field at all, so they run on
+  defaults, and guj/sin do document suffix lists in prose that were never transcribed. But the
+  second half does not survive measurement. Transcribing those prose lists and running them: Gujarati
+  resolves **362 of 73,848 tokens (0.49%)**, Sinhala **120 of 54,389 (0.22%)**, against 114 and 56
+  cases where stripping maps one taught form onto a *different* taught form (`કેવી` "how" → `કે`
+  "that"). That is the Kannada author's own measured finding (0.13% gain, destructive collisions) in
+  two more languages. **Empty stemStrip stays.** #165 reached the same conclusion independently and
+  said so explicitly; where two adjudications disagree, this one has the measurement behind it.
+- **#165: "Kannada `ಸದ್ಯಕ್ಕೆ` is ~115 rows; one freeClass line removes them."** It is **21 rows
+  (2.0% of that course's hits)**, not 115 — the 115 was raw corpus occurrences, not flagged rows.
+  And it is never taught as a LEGO anywhere in the course, so flagging it is arguably the gate
+  working correctly, not a false positive. The Kannada brief's author deliberately excluded
+  deictic/temporal adverbs from free class. Left flagged; **Kai's call**, not mine to overrule.
+
+**#165's finding that `knownConstructions` was parsed and never read was correct** — and is the same
+defect #163 found. It was fixed in `2254316f`, which postdates both runs, so neither worker's numbers
+include the fix. Its measured effect was 28 hits estate-wide.
+
+**A cross-course finding worth Kai's attention (#164):** Punjabi and Urdu leak the same "buy" verb
+about five seeds before its own debut, **at the same seed number in both independently-built
+courses**. That smells like a shared upstream generator defect rather than two coincidences.
+
+**All three flagged the same honest gap:** none is a native speaker of the languages adjudicated.
+Their calls rest on mechanical inventory evidence and each brief's own documented rules, not native
+judgment of naturalness. #164 left ~31 rows uncalled; #165 left ~5.
+
 **A third finding I have NOT acted on:** `isNegated()` detects only literal negation words and a
 question mark, while the briefs each document 8–14 NPI licensing environments (desiderative,
 conditional, comparative, ability, before/until…). That is why the entire borderline bucket is one
@@ -307,6 +358,11 @@ lands.
    new content landing on a course the gate cannot read — but it would also block courses that have
    never been gated.
 4. **Arabic and Korean** need a prefix-aware stem test before their 252 candidates mean anything.
+5. **`ಸದ್ಯಕ್ಕೆ` ("for now", Kannada, 21 rows)** — a real untaught-word finding, or a free-class
+   temporal adverb the brief should have listed? I left it flagged; the brief author's stated policy
+   excludes temporals from free class, so overruling that is a call for you.
+6. **The Punjabi/Urdu "buy" leak at the same seed in two independently-built courses** — worth
+   someone looking upstream at the generator rather than patching two courses.
 
 ---
 
