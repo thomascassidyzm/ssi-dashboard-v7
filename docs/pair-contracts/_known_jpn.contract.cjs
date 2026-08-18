@@ -133,7 +133,28 @@ module.exports = {
 
   // ── Tokenizer / outcome machinery ──
   script: 'Jpan',            // mixed kanji + hiragana + katakana; ISO 15924 'Jpan'
-  segmentation: 'dictionary', // NO spaces. ICU/Intl.Segmenter('ja', {granularity:'word'}). See header.
+  segmentation: 'dictionary',
+
+  // DETECTION: UNCALIBRATED (orchestrator, 2026-08-18, after this brief was authored).
+  // The deterministic gate is switched OFF for Japanese and every jpn-known course reports
+  // UNCHECKED(detector_uncalibrated) instead of a hit count. This is not a slur on the brief —
+  // the brief predicted it (see the segmenter-limit section: 226 hiragana fragment types carry
+  // 59.5% of all tokens, and ICU has no lemma, so 話す/話し/話せる/話した are four unrelated
+  // strings to it). It is the measurement:
+  //   - positive control caught 4 of 6 planted violations, where all 14 other calibration
+  //     courses caught 6 of 6;
+  //   - the sweep flagged 25,551 rows across the 8 jpn-known courses (~40% of all rows), and
+  //     hand-classification of ALL of them found the pile dominated by inflection of taught
+  //     vocabulary: 49.0% share a >=2-character prefix with a form already taught by that seed,
+  //     4.5% are metalinguistic scaffolding baked into known_text, 9.8% resolve to a form taught
+  //     later. Hand-reading the 36.8% residue found it too contaminated to trust — 説明しようとします
+  //     at seed 8 is the polite form of 説明しようとする, which that very seed teaches, and
+  //     学びたい at seed 2 is 学ぶ (seed 2) plus the -たい ending.
+  // A count nobody can stand behind is exactly the false confidence this whole job exists to
+  // remove, so the gate refuses it. Japanese known-side control belongs in the AGENT lane
+  // (docs/course-optimization/eng-for-x-known-side-pilot.md), which this brief now equips.
+  // To re-enable after an agent-lane check or a lemmatiser lands: set detection: 'calibrated'.
+  detection: 'uncalibrated', // NO spaces. ICU/Intl.Segmenter('ja', {granularity:'word'}). See header.
   morphology: 'agglutinative',
   stemStrip: [],             // deliberately EMPTY — measured 254 wins / 261 junk. See header.
   stemMinLen: 2,

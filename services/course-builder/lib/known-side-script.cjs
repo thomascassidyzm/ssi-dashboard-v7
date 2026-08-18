@@ -38,6 +38,7 @@ const REASON = {
   TOKENIZER_EMPTY: 'tokenizer_empty',
   MORPHOLOGY_UNRESOLVED: 'morphology_unresolved',
   MIXED_SCRIPT: 'mixed_script',
+  DETECTOR_UNCALIBRATED: 'detector_uncalibrated',
   EMPTY_TEXT: 'empty_text',
 };
 
@@ -50,6 +51,7 @@ const REASON_TEXT = {
   tokenizer_empty: 'the text is non-empty but segmentation produced zero tokens (the original silent-pass bug)',
   morphology_unresolved: 'token is not an exact introduced form and the known language inflects; whether it is a new lemma or an inflection of a taught one is a language judgment this gate must not make',
   mixed_script: 'token is written in a script other than the one the contract declares',
+  detector_uncalibrated: 'the contract declares that deterministic detection is not calibrated for this known language, so any count the gate produced here would be unsafe to quote',
   empty_text: 'the prompt is empty',
 };
 

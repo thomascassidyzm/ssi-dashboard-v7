@@ -69,6 +69,8 @@ function normalizeContract(contract) {
     morphology: contract.morphology || (script ? DEFAULT_MORPHOLOGY[script] : null) || null,
     stemStrip: (contract.stemStrip || []).slice().sort((a, b) => b.length - a.length),
     stemMinLen: contract.stemMinLen || 2,
+    // 'uncalibrated' ⇒ this language defeated the positive control; the gate must not emit counts.
+    detection: contract.detection || 'calibrated',
     // schema A (legacy, *_for_eng)          schema B (2026-06 briefs)
     freeClass: new Set([...norm(contract.freeGlue), ...norm(contract.freeClass)]),
     npi: new Set([...norm(contract.npiTokens), ...norm(contract.npi)]),
@@ -101,6 +103,13 @@ function buildContext(contract, inventory, opts = {}) {
   }
   if (!inventory || inventory.size === 0) {
     blockers.push({ reason: REASON.NO_VOCAB_INVENTORY, detail: `${REASON_TEXT.no_vocab_inventory} (${opts.courseCode || '?'})` });
+  }
+  // A language whose brief declares detection uncalibrated blocks the WHOLE course. This is the
+  // sharpest form of requirement 1: rather than publish a hit count whose precision we could not
+  // establish, the gate reports that it could not check, and names why. Japanese earned this on
+  // 2026-08-18 — see the calibration note in _known_jpn.contract.cjs.
+  if (c && c.detection === 'uncalibrated') {
+    blockers.push({ reason: REASON.DETECTOR_UNCALIBRATED, detail: `${REASON_TEXT.detector_uncalibrated} (known language: ${c.known_lang})` });
   }
 
   return {
