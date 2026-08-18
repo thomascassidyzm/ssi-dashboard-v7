@@ -169,7 +169,14 @@ function checkKnownSideV2(known, currentPos, ctx) {
   // without needing the two boundary sets to agree.
   if (seg.strategy === 'dictionary') {
     const text = normalizeKnown(known, { expandContractions: expand }).replace(/\s+/g, '');
-    const tileable = [...ctx.inventoryList, ...c.freeClass];
+    // Tile ONLY against vocabulary the learner already has at this position. Tiling against the
+    // whole inventory answers "does the course teach this somewhere", which is not the question —
+    // it silently passes a word introduced 300 seeds later. (Calibration on eng_for_jpn,
+    // 2026-08-18: all six planted late words tiled clean and returned PASS until this filter.)
+    const tileable = [
+      ...ctx.inventoryList.filter((e) => ctx.inventory.get(e) <= currentPos),
+      ...c.freeClass,
+    ];
     const uncovered = tileUncovered(text, tileable);
     if (!uncovered) {
       out.status = STATUS.PASS;
@@ -183,7 +190,11 @@ function checkKnownSideV2(known, currentPos, ctx) {
     } else {
       // Japanese/Korean: an untiled tail is usually inflectional morphology hanging off a
       // taught stem, which is exemption E2 territory and a language judgment. Refuse.
-      const stem = anyStemInside(uncovered, ctx.inventoryList, c.stemMinLen);
+      // Anchored at the LEFT edge: these languages suffix, so introduced material buried in the
+      // middle of the residue is not evidence of inflection — it is coincidence, and treating it
+      // as evidence turned every planted violation into a refusal.
+      const taught = ctx.inventoryList.filter((e) => ctx.inventory.get(e) <= currentPos);
+      const stem = stemPrefixHit(uncovered, new Set(taught), c.stemMinLen);
       if (stem) {
         out.status = STATUS.UNCHECKED;
         out.unchecked.push({ reason: REASON.MORPHOLOGY_UNRESOLVED, detail: `${REASON_TEXT.morphology_unresolved}: "${uncovered}" contains introduced "${stem}"`, token: hit });

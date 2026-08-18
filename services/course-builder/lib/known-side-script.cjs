@@ -110,6 +110,11 @@ const DEFAULT_MORPHOLOGY = {
   Hani: 'isolating', Thai: 'isolating', Latn: 'fusional',
 };
 
+// Scripts that legitimately co-occur as one writing system. Japanese text is kana+Han and a
+// kanji-only token (不親切) detects as Hani, which is not a foreign script in a Japanese course.
+const SCRIPT_FAMILY = { Jpan: ['Jpan', 'Hani'], Hani: ['Hani', 'Jpan'], Hang: ['Hang', 'Hani'] };
+const scriptCompatible = (a, b) => a === b || (SCRIPT_FAMILY[b] || []).includes(a);
+
 /** ICU locale to hand Intl.Segmenter for a script. */
 const SCRIPT_LOCALE = { Jpan: 'ja', Hani: 'zh', Thai: 'th', Hang: 'ko' };
 
@@ -179,7 +184,7 @@ function segmentKnown(rawText, opts = {}) {
   // Mixed script is not itself a failure (Japanese mixes kana+Han by design, Indic prompts
   // carry Latin proper nouns) — but a token in an UNDECLARED script is a real signal, so the
   // caller gets told. Reported, never silently dropped.
-  if (declaredScript && script !== declaredScript) {
+  if (declaredScript && script !== declaredScript && !scriptCompatible(script, declaredScript)) {
     const all = scriptsIn(text);
     if (!all.includes(declaredScript)) {
       unchecked.push({ reason: REASON.MIXED_SCRIPT, detail: `${REASON_TEXT.mixed_script}: contract declares ${declaredScript}, text is ${all.join('+')}` });
@@ -310,6 +315,7 @@ module.exports = {
   REASON_TEXT,
   detectScript,
   scriptsIn,
+  scriptCompatible,
   normalizeKnown,
   segmentKnown,
   resolveByStemStrip,

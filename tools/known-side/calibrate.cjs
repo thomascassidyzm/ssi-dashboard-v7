@@ -76,7 +76,13 @@ async function calibrate(sb, courseCode, opts = {}) {
   // Threshold relative to the course's own span, so short courses still get a real positive control.
   const maxSeed = Math.max(...c.legos.map((l) => l.seed_number || 0));
   const lateCut = Math.max(early.seed_number + 1, Math.floor(maxSeed * 0.6));
-  const lateWords = [...c.inventory.entries()].filter(([w, s]) => s >= lateCut && [...w].length >= 3 && !w.includes(' '))
+  // Exclude free-class items from plant selection. A free-class function word is permitted at
+  // any position by design (exemption E1), so planting one and expecting a violation tests the
+  // harness's naivety, not the gate. (Marathi तुम्हा / आपली are pronouns in the brief's free
+  // class; the gate was right to pass them and the harness was wrong to demand otherwise.)
+  const freeSet = new Set((contract.freeClass || contract.freeGlue || []).map((w) => normalizeKnown(w)));
+  const lateWords = [...c.inventory.entries()]
+    .filter(([w, s]) => s >= lateCut && [...w].length >= 3 && !w.includes(' ') && !freeSet.has(w))
     .sort((a, b) => b[1] - a[1]).slice(0, 12);
   const plants = [];
   for (const [word, seed] of lateWords.slice(0, 6)) {
