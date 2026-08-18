@@ -142,8 +142,8 @@ I told a reviewer I suspected the base's 13,455 practice phrases were mechanical
 **I was wrong, and the number is much better than I feared.** A calibrated four-detector
 pass over all 13,455, with every raw hit hand-adjudicated rather than sampled, found
 **107 confirmed defects — 0.80%. 99.0% pass clean.** Damage is concentrated, not uniform:
-only 46 of 511 seed-families contain any flagged phrase. Seeds and legos are **completely
-clean** — 0 of 511 and 0 of 1,938.
+only 46 of 511 seed-families contain any flagged phrase. Seeds and legos are clean of *this*
+damage — 0 of 511 and 0 of 1,938 — but see the correction immediately below.
 
 **So her practice layer is a genuinely valuable asset, not filler**, and the fact that only
 1.8% of it survived into the live course is a real loss rather than a lucky escape. Two
@@ -151,6 +151,21 @@ false-positive traps were caught and excluded during calibration (the frozen idi
 `ar maidin`, 42 spurious hits; and `go` as preposition vs complementiser). Honest caveat
 from that worker: 0.80% is a **floor, not a ceiling** — a spot-check of *unflagged* phrases
 turned up a further defect type no detector covers.
+
+**Correction to the line above, added after re-checking: her seed and lego layers are NOT
+defect-free.** They are clean of the *mutation* damage those four detectors look for. A fifth
+defect the same worker found — and which I verified independently rather than repeating —
+is baked into the seed text itself: **`nó` used to translate "No"**. `nó` means *"or"*. The
+Irish for "No" is `níl` / `ní hea`, depending on the verb being answered.
+
+> base seed 114: `No I haven't seen them, I'm sorry.` → `**Nó** ní fhaca mé iad, tá brón orm.`
+
+My own count: **57 items across 12 seed-families — 12 seeds, 12 legos and 33 phrases.** So it
+reaches the spine, not just the practice layer. (The worker reported 50; the difference is
+matching detail, and both are the same defect.) It is caught by our translation memory rather
+than inherited, because we translate afresh and consult her Irish rather than copying it — but
+it is a real defect in the asset, and if anyone ever imports that course wholesale it comes with
+it.
 
 Full report: https://watson-1.tail4968cb.ts.net/d/6788df88
 
