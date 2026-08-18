@@ -26,7 +26,9 @@ if [ "$MODE" = pre ]; then
   : > "$CAP"
   # Spread the sample across the file rather than taking the head: the snapshot
   # is ordered by uuid, so head-only would sample one arbitrary corner of it.
-  tail -n +2 "$SNAP" | awk -v n="$N" 'BEGIN{srand(7)} {a[NR]=$0} END{for(i=1;i<=n && i<=NR;i++) print a[int((i-0.5)*NR/n)+0]}' \
+  # Clamped to 1..NR: a course with 1 exposed clip must sample that clip, not an
+  # index of 0 (which silently yielded a blank line and a bogus 404 probe).
+  tail -n +2 "$SNAP" | awk -v n="$N" '{a[NR]=$0} END{m=(n<NR?n:NR); for(i=1;i<=m;i++){x=int((i-0.5)*NR/m)+1; if(x>NR)x=NR; if(x<1)x=1; print a[x]}}' \
   | while IFS=, read -r id s3 rev win last; do
       r=$(fetch "$BASE/api/audio/$id")
       set -- $r
