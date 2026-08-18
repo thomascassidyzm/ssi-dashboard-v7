@@ -128,7 +128,12 @@
         <div class="arc-controls">
           <label class="arc-pick">Sentence
             <select v-model.number="arcSentenceIdx">
-              <option v-for="(s, i) in coursePodSentences" :key="i" :value="i">{{ i + 1 }}. {{ s.target_text }}</option>
+              <!-- An <option> holds text, not elements, so there is no child to
+                   bind `dir` on and the LTR "12. " index would move if we
+                   directed the option itself. `isolateText` wraps the sentence
+                   in Unicode isolate controls instead — the plaintext form of
+                   the same fix, index stays put, trailing `!` lands correctly. -->
+              <option v-for="(s, i) in coursePodSentences" :key="i" :value="i">{{ i + 1 }}. {{ isolateText(s.target_text) }}</option>
             </select>
           </label>
           <button class="arc-play" :disabled="!arcIndexed.length || arcPlayingIdx >= 0" @click="playArc">▶ Play {{ showFullArc ? 'full arc' : 'breakdown' }} · {{ arcIndexed.length }} plays</button>
@@ -234,6 +239,7 @@ import { useAuth } from '../composables/useAuth'
 import { composeArc, normSurface } from '../lib/podArcCompose'
 import CoursePicker from '../components/CoursePicker.vue'
 import { useAlgorithmConfig, NumField, NumListField, RowHeader } from './admin/algorithmConfigShared'
+import { isolateText } from '../utils/textDirection.js'
 
 const { isAdmin, learner: currentUser } = useAuth()
 

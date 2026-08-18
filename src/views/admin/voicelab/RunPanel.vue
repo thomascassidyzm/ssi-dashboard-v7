@@ -21,6 +21,7 @@
  */
 import { ref, computed, watch } from 'vue'
 import { api } from './labApi'
+import { dirFor } from '@/utils/textDirection.js'
 import { courseNameWithCode, languageName } from '@/utils/languageNames'
 import RunResult from './RunResult.vue'
 
@@ -280,7 +281,7 @@ function defaultTitle () {
             class="vl-sentence" :class="{ on: isPicked(s) }"
             @click="togglePick(s)"
           >
-            <span class="vl-mono">{{ s.text }}</span>
+            <span class="vl-mono bidi-isolate" :dir="dirFor(s.text)">{{ s.text }}</span>
             <span class="vl-muted">{{ s.role }}</span>
           </button>
         </div>

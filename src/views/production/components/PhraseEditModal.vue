@@ -46,6 +46,7 @@
                 id="target-text"
                 v-model="localTargetText"
                 rows="2"
+                :dir="dirFor(localTargetText)"
                 class="w-full px-3 py-2 bg-surface-2 border border-line rounded-lg text-ink placeholder-muted focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent resize-none"
                 placeholder="Enter target language text..."
               />
@@ -287,6 +288,7 @@
 
 <script setup lang="ts">
 import { ref, reactive, watch, computed, onMounted, onUnmounted } from 'vue';
+import { dirFor } from '@/utils/textDirection.js';
 
 // Types
 interface PhraseData {

@@ -39,6 +39,7 @@
  */
 import { ref, computed, watch } from 'vue'
 import { api, clipUrl } from './labApi'
+import { dirFor } from '@/utils/textDirection.js'
 import { courseNameWithCode } from '@/utils/languageNames'
 
 const props = defineProps({
@@ -465,7 +466,13 @@ function gateDetail (clip) {
         </div>
         <p v-if="pickError" class="play-err">{{ pickError }}</p>
         <div v-if="found.length" class="play-found">
-          <button v-for="s in found" :key="s.id" class="play-found-row" @click="useSentence(s)">
+          <button
+            v-for="s in found"
+            :key="s.id"
+            class="play-found-row bidi-isolate"
+            :dir="dirFor(s.text)"
+            @click="useSentence(s)"
+          >
             {{ s.text }}
           </button>
         </div>
@@ -601,6 +608,10 @@ function gateDetail (clip) {
 </template>
 
 <style scoped>
+/* A directed target sentence must not drift to the other side of its cell:
+   `dir` fixes the punctuation, alignment stays as it is today. */
+.play-found-row { text-align: left; }
+
 .play { max-width: 860px; }
 .play-row { display: flex; gap: 1rem; flex-wrap: wrap; align-items: flex-end; }
 .play-field { display: flex; flex-direction: column; gap: 0.25rem; }

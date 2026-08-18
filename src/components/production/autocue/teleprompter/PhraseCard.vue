@@ -12,14 +12,21 @@
       <div v-if="isSlowCadence" class="cadence-label">SLOW</div>
 
       <!-- Normal display -->
-      <div v-if="!showGaps" class="phrase-text" :class="{ 'slow-cadence': isSlowCadence }">
+      <!-- The line the speaker reads ALOUD. Under an LTR paragraph an Arabic
+           phrase puts its trailing neutral (`!` `.` `,`) on the visual right;
+           `dir` from the phrase's own script fixes it. -->
+      <div v-if="!showGaps" class="phrase-text" :class="{ 'slow-cadence': isSlowCadence }" :dir="dirFor(phrase.text)">
         {{ phrase.text }}
       </div>
 
       <!-- Chunk-level gap display for Pass 2.
            Each chunk is a group of words the speaker reads without pausing;
            pauses (gap markers) fall BETWEEN chunks. -->
-      <div v-else class="phrase-with-gaps" :class="{ 'slow-cadence': isSlowCadence }">
+      <!-- Chunks are sibling elements with gap markers BETWEEN them, so the
+           order they lay out in IS the reading order — an LTR container renders
+           an Arabic phrase back-to-front and puts every pause in the wrong
+           place. `dir` belongs on the container here, not on each chunk. -->
+      <div v-else class="phrase-with-gaps" :class="{ 'slow-cadence': isSlowCadence }" :dir="dirFor(phrase.text)">
         <template v-for="(chunk, i) in displayChunks" :key="i">
           <span class="chunk-segment" :class="{ 'has-absorbed-glue': chunk.mergedGlue && chunk.mergedGlue.length > 0 }">
             {{ chunk.text }}
@@ -28,7 +35,7 @@
         </template>
       </div>
 
-      <div class="phrase-translation" v-if="phrase.translation">
+      <div class="phrase-translation" v-if="phrase.translation" :dir="dirFor(phrase.translation)">
         {{ phrase.translation }}
       </div>
     </div>
@@ -38,6 +45,7 @@
 <script setup>
 import { computed } from 'vue'
 import { resolvePhraseChunks } from '@/utils/phraseChunks'
+import { dirFor } from '@/utils/textDirection.js'
 
 const props = defineProps({
   phrase: { type: Object, required: true },
@@ -132,6 +140,9 @@ const displayChunks = computed(() => resolvePhraseChunks(props.phrase).chunks)
 }
 
 .phrase-text {
+  /* text-align pinned: the line binds `dir` so its punctuation resolves
+     correctly, but the teleprompter's left-hung column must not move. */
+  text-align: left;
   font-family: 'Crimson Pro', serif;
   font-size: 1.6rem;
   font-weight: 500;
@@ -141,6 +152,9 @@ const displayChunks = computed(() => resolvePhraseChunks(props.phrase).chunks)
 }
 
 .phrase-with-gaps {
+  /* text-align pinned — see .phrase-text. The chunk ORDER mirrors for an RTL
+     phrase, which is the fix; the column itself must stay where it is. */
+  text-align: left;
   font-family: 'Crimson Pro', serif;
   font-size: 1.6rem;
   font-weight: 500;
@@ -241,6 +255,7 @@ const displayChunks = computed(() => resolvePhraseChunks(props.phrase).chunks)
 }
 
 .phrase-translation {
+  text-align: left;
   font-family: 'Josefin Sans', sans-serif;
   font-size: 1rem;
   color: var(--color-paper-dim, var(--muted));

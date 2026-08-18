@@ -337,7 +337,7 @@
         <div v-for="(item, idx) in decompSample" :key="idx" class="decomp-sample-item">
           <div class="decomp-sample-head">
             <code>{{ item.phrase_id }}</code>
-            <span class="decomp-target">{{ item.target_text }}</span>
+            <span class="decomp-target bidi-isolate" :dir="dirFor(item.target_text)">{{ item.target_text }}</span>
           </div>
           <div class="decomp-blocks">
             <span
@@ -347,7 +347,7 @@
               :class="{ 'decomp-ghost': b.isGhost }"
               :title="b.legoId ? `${b.legoId} — ${b.known}` : 'ghost block'"
             >
-              <span class="decomp-block-target">{{ b.target }}</span>
+              <span class="decomp-block-target bidi-isolate" :dir="dirFor(b.target)">{{ b.target }}</span>
               <span v-if="!b.isGhost" class="decomp-block-lego">{{ b.legoId }}</span>
               <span v-else class="decomp-block-lego decomp-ghost-tag">ghost</span>
             </span>
@@ -424,6 +424,7 @@
 import { ref, computed, onMounted } from 'vue'
 import { useAuth } from '../composables/useAuth'
 import { useCourses } from '../composables/useCourses'
+import { dirFor } from '../utils/textDirection.js'
 import UptimePanel from '../components/UptimePanel.vue'
 import RecoveryPanel from '../components/RecoveryPanel.vue'
 

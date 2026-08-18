@@ -12,6 +12,7 @@
  */
 import { ref, computed } from 'vue'
 import { clipUrl } from './labApi'
+import { dirFor } from '@/utils/textDirection.js'
 
 const props = defineProps({
   experiment: { type: Object, required: true },
@@ -152,7 +153,7 @@ const byConfig = computed(() => {
       </thead>
       <tbody>
         <tr v-for="s in experiment.sentences" :key="s.i">
-          <td class="vl-mono">{{ s.text }}</td>
+          <td class="vl-mono bidi-isolate" :dir="dirFor(s.text)">{{ s.text }}</td>
           <td v-for="side in [leftKey(s.i), rightKey(s.i)]" :key="side">
             <template v-if="clipFor(s.i, side)">
               <button
@@ -181,7 +182,7 @@ const byConfig = computed(() => {
       </thead>
       <tbody>
         <tr v-for="s in experiment.sentences" :key="s.i">
-          <td class="vl-mono">{{ s.text }}</td>
+          <td class="vl-mono bidi-isolate" :dir="dirFor(s.text)">{{ s.text }}</td>
           <td>
             <button
               v-if="clipFor(s.i, 'A')"
@@ -215,6 +216,10 @@ const byConfig = computed(() => {
 </template>
 
 <style scoped>
+/* A directed target sentence must not drift to the other side of its cell:
+   `dir` fixes the punctuation, alignment stays as it is today. */
+td.vl-mono { text-align: left; }
+
 @import './lab.css';
 .vl-result-head {
   display: flex;
