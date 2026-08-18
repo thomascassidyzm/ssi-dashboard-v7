@@ -945,3 +945,94 @@ its own before/after. **This is the remaining gate on Mexican Spanish, and it is
 ### Nothing was rendered
 
 Casts lock only. The A-132 render hold and the release question are handled separately (job #986).
+
+### Stored casts re-synced so the lock is actually effective
+
+A pool lock alone is only half the job: **`/generate-pods` renders from the STORED cast**
+(`resolvePodSpeakerVoice(pod.speakers, …)` at `phase8-audio-v13.cjs:6545/6675`), not from the pool.
+All seventeen courses were carrying stale casts — a released render would have produced the
+**rejected** voices.
+
+`tools/pod-recast.cjs --apply` was run for all seventeen (dry-run read and checked first). It writes
+`listening_pods.speakers` and **nothing else** — no `target_audio_id`/`known_audio_id` is nulled, so
+every existing clip keeps playing. Logs:
+`docs/pods/t21-final-batch-recast-2026-08-18-{dryrun,applied}-log.json` and
+`…-rest12-2026-08-18-{dryrun,applied}-log.json`.
+
+This also **converged the leakage**: pods are one voice per gender by design, and several courses
+were cast across three to six voices. Every one is now exactly two.
+
+| Course | Distinct target voices before → after |
+|---|---|
+| `tha_for_eng` | 5 → 2 |
+| `ara_for_eng` `por_br_for_eng` `swe_for_eng` `tur_for_eng` | 5 → 2 |
+| `pol_for_eng` | 6 → 2 |
+| `por_for_eng` `spa_mx_for_eng` | 4 → 2 |
+| `cat_for_eng` `nor_for_eng` | 3 → 2 |
+| `ron_swa_ukr_lav_lit_nep_fas_for_eng` | 2 → 2 (voice *assignment* corrected, count already clean) |
+
+Verified live through `psql`: all 17 courses now hold exactly Tom's pair and nothing else.
+
+### CORRECTION — spa_mx is NOT blocked, and there is no remaining casting blocker
+
+The section above states Mexican Spanish "cannot reach a render". **That is wrong and is corrected
+here.** `tools/pod-recast.cjs` carries its own `poolKeysForCourse()` and reaches the `spa_mx` pool
+correctly; the recast wrote **Luciano + Carlota** to `spa_mx_for_eng`, confirmed live. Because the
+render reads the stored cast, Mexican Spanish will render on the Mexican pair.
+
+What survives is narrower and is a **latent regression risk, not a blocker**: `pod-sync.cjs`'s
+`langKey()` still splits `spa_mx` → `spa`, so a future *pod-sync* run would stomp the Mexican cast
+back to Iberian. The same split affects `ara_sy`, `fra_ca` and `por_br`. Fixing it is a
+shared-ownership change to a file another worker owns and belongs in its own scoped job — but
+nothing is waiting on it today.
+
+### Approvals recorded — all 17, per rule 6
+
+Recorded **after** the pool edit and **after** the stored cast was made to match, so each
+fingerprint is taken over the correct cast. `--list` reports **27 approvals, all LIVE, none STALE**.
+
+| Course | Fingerprint | Course | Fingerprint |
+|---|---|---|---|
+| `pol_for_eng` | `a16df5374acaf202` | `tur_for_eng` | `8208fb2c51fe0e76` |
+| `por_for_eng` | `c3b4ef599f556ed1` | `spa_mx_for_eng` | `9d3f1c9f978d0524` |
+| `por_br_for_eng` | `3a44b423647d7faa` | `lav_for_eng` | `326c274bf087a12f` |
+| `cat_for_eng` | `cf4cf2108def821a` | `lit_for_eng` | `c76ae7c4af2dc406` |
+| `ara_for_eng` | `275975a54254ef00` | `nep_for_eng` | `75ffd69d9cd4b5ce` |
+| `ron_for_eng` | `6e62977d1a506205` | `nor_for_eng` | `33fa987db6cb7f01` |
+| `swa_for_eng` | `25333b9651259f3a` | `fas_for_eng` | `3ed82d1c90c8ba2f` |
+| `ukr_for_eng` | `b960ca7538923fc9` | | |
+| `swe_for_eng` | `6bf37f154dbf2dc2` | | |
+| `tha_for_eng` | `56733b19008b1232` | | |
+
+Each note carries the A-132 hold in capitals. **The approval records the cast; it does not authorise
+a render.**
+
+## 2026-08-18 — the render: THE HOLD FORMALLY STANDS. Nothing was rendered.
+
+Investigated by job **#986**, read-only. Verdict: **HOLD STANDS.**
+
+**The click fix is merged AND genuinely live** — the merged-but-not-restarted trap does not apply.
+The A-133 chain (`02f7a232`, `fc88c72b`, `93d2440f`, `cf8939a2`, `d217682d`) is an ancestor of
+`origin/main`; the prod checkout `/home/tomcassidy/SSi/ssi-dashboard-v7-clean-prod` pulled at
+**00:11:26Z** and `popty-phase8-audio` restarted at **00:20:04Z**, after the pull;
+`endOfSpeechWithArtefacts` is present on prod disk and on the pod path.
+
+**But the hold's own release condition has not been met.** It lifts on *"a render Tom has passed by
+ear"*. The last recorded ear event on the click question is `133b1b67` at 17:48Z — a **fail** on
+Noor p1/p3, through the *then*-wired chain. The artefact rule landed 29 minutes later, and no
+post-fix render has been put to his ear since: the A-136 report still carries
+`LISTEN_LINK_PLACEHOLDER` under "Listen — is the click gone?", the 19:02Z page asked *which voice*
+rather than *is the click gone*, `ops/ledger.json` has nothing, and a repo-wide grep for any
+hold-lifted wording returns zero.
+
+**So the hold is not moot — it is un-tested.** The thing that would justify lifting it exists and is
+running; it has simply never been played to him. Per Tom's instruction, this is reported as the one
+remaining gate rather than decided here.
+
+**The render, for when it is released:** 6,910 clips / 298,494 characters across the 41 languages;
+`POD_CHARS_TO_COST = 15.00/1_000_000` at `phase8-audio-v13.cjs:6221` gives **$4.477**. Per course:
+`curl -s -X POST http://localhost:3465/generate-pods/<course> -H 'Content-Type: application/json'
+-d '{"roles":["target"],"concurrency":4}'`. **Not run.**
+
+**Approval is no longer the second gate for these seventeen** — #986 found 31 of 41 languages would
+have 409'd at `pod_voices_not_approved`; the seventeen approvals above clear that for this batch.
