@@ -100,7 +100,59 @@ Arabic tashkeel and Hebrew niqqud.
    text. 1,957 of 16,638 in this course alone (11.8%). Reported as `no-text-in-wb`, never
    counted as a pass.
 
-Estate-wide census dispatched as job **#99**; numbers not in hand at time of writing. **Gap.**
+### Estate census (job #99) — complete, no timeouts
+
+**1,548,757 rows** carrying boundaries, all 90 courses scanned:
+
+| verdict | count | share |
+|---|---|---|
+| match | 1,166,549 | 75.3% |
+| **MISMATCH** | **8,440** | **0.545%** |
+| `no-text-in-wb` (detector blind) | 373,766 | 24.1% |
+
+47 courses have ≥1 flag. Top: `hrv_for_eng` 1,363 · `ara_eg_for_eng` 1,283 · `fra_ca_for_eng` 1,011
+· `spa_for_eng` 834 · `spa_mx_for_eng` 443 · `spa_for_jpn` 430 · `cym_n_for_eng` 412 ·
+`fra_for_jpn` 386 · `ara_lb_for_eng` 382. 60 distinct voices touched.
+
+**Taxonomy** — from a 132-row stratified eyeball (≤4 per course across 47 courses). Class
+proportions are **directional, not exact**; do not multiply them out as if they were measured.
+
+| class | share of sample | note |
+|---|---|---|
+| gender rewrite | 47% | by design — the pass above. Explained, not new |
+| synonym-annotation leak | 18% | `"Excuse me."` spoken `"sorry /excuse me"`, repeats across ~15 courses |
+| markup/SSML leak | 9% | literal `</voice>`, `&lt;src&gt;` tags spoken |
+| **wrong sentence** | **6%** | **most severe — see below** |
+| content rewrite (paraphrase) | 4.5% | |
+| omission | 3.8% | `afr_for_eng` drops clauses |
+| script corruption | 2.3% | `hye_for_eng` Armenian |
+| detector noise | 2.3% | soft hyphen, `<phoneme>` tag, smart quotes — a normalisation fix absorbs these |
+
+**Precision: 3/132 (2.3%) pure noise.** 129/132 are genuine text≠spoken. Excluding the by-design
+gender class, **~60/132 (45%) are worth a human's time.**
+
+### The wrong-sentence class is a mislinked-audio detector, and it is the real finding
+
+I verified these directly rather than taking them on report. `mastered/1E045668-…mp3` is **one audio
+object carried by three course rows**:
+
+| course | stored text | |
+|---|---|---|
+| `pol_for_eng` | `I'm familiar with a young woman who can remember the answer` | ✓ matches the boundaries — the rightful owner |
+| `ell_for_eng` | `I am excited and it's starting to feel easier` | ✗ mispointed |
+| `ara_for_eng` | `I'm excited because that's an idea` | ✗ mispointed |
+
+The boundaries are the **fossil of the original render** (`origin=tts`, genuine Azure
+`{text,offset,duration}` shape, not an ASR transcript — I checked). So where a row was later
+repointed at another clip by cross-course reuse, the fossil still names the sentence the audio was
+actually made for. Two courses' learners see one sentence and hear another. Same story for
+`I do well` → `I don't do`, which `hye_for_eng` and `ara_lb_for_eng` **share**, so fixing one row
+would not fix the other.
+
+**This detects a defect class nobody was looking for, and it is not what we set out to find.**
+
+**Gap.** 24.1% of the estate (373,766 rows) is blind to this method, and the 132-row sample is not a
+random draw over the 8,440.
 
 ## It already found two learner-facing English defects
 
