@@ -66,7 +66,7 @@
         <tbody>
           <tr v-for="s in audition.sentences" :key="s.textNormalized">
             <td><span class="stratum" :class="s.stratum">{{ s.stratum }}</span></td>
-            <td class="text">{{ s.text }}</td>
+            <td class="text bidi-isolate" :dir="dirFor(s.text)">{{ s.text }}</td>
             <td>
               <span v-if="!s.existingTakes.length" class="muted">— nothing in the store; this one costs a render</span>
               <button
@@ -100,7 +100,7 @@
           <thead><tr><th>sentence</th><th>{{ blind ? 'A' : voiceA }}</th><th>{{ blind ? 'B' : voiceB }}</th></tr></thead>
           <tbody>
             <tr v-for="s in audition.sentences" :key="s.textNormalized">
-              <td class="text">{{ s.text }}</td>
+              <td class="text bidi-isolate" :dir="dirFor(s.text)">{{ s.text }}</td>
               <td><button v-if="takeFor(s, voiceA)" class="play" @click="play(takeFor(s, voiceA).url)">▶</button><span v-else class="muted">—</span></td>
               <td><button v-if="takeFor(s, voiceB)" class="play" @click="play(takeFor(s, voiceB).url)">▶</button><span v-else class="muted">—</span></td>
             </tr>
@@ -238,7 +238,7 @@
           <thead><tr><th>role</th><th>text</th><th>voices</th><th>rows</th></tr></thead>
           <tbody>
             <tr v-for="(s, i) in report.ambiguousSlots.slots.slice(0, 50)" :key="i">
-              <td>{{ s.role }}</td><td class="text">{{ s.text_normalized }}</td>
+              <td>{{ s.role }}</td><td class="text bidi-isolate" :dir="dirFor(s.text_normalized)">{{ s.text_normalized }}</td>
               <td>{{ s.voices.join(', ') }}</td><td>{{ s.clips }}</td>
             </tr>
           </tbody>
@@ -272,6 +272,7 @@
  */
 import { ref, computed } from 'vue'
 import { useAuth } from '../../../composables/useAuth'
+import { dirFor } from '@/utils/textDirection.js'
 import { decodeTo16kMono, extractFeatures, activeSpeechDb } from '../vadProsody'
 
 const { getAccessToken } = useAuth()
@@ -460,6 +461,10 @@ async function declare () {
 </script>
 
 <style scoped>
+/* A directed target sentence must not drift to the other side of its cell:
+   `dir` fixes the punctuation, alignment stays as it is today. */
+td.text { text-align: left; }
+
 .lab { padding: 0; }
 .admin-crumbs { display: flex; gap: 0.5rem; font-size: 0.8125rem; margin-bottom: 0.5rem; }
 .crumb-link { color: var(--accent-2); text-decoration: none; }

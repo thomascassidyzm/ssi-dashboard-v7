@@ -30,6 +30,7 @@
 import { ref, computed, onMounted, onBeforeUnmount } from 'vue'
 import VadContour from './VadContour.vue'
 import { languageName } from '@/utils/languageNames'
+import { dirFor } from '@/utils/textDirection.js'
 import {
   dtwWarp,
   extractFeatures,
@@ -911,7 +912,7 @@ function openRecordTab() {
             @click="selectedPairId = p.pair_id"
           >
             <span class="pr-cat">{{ catMeta(p.category).short }}</span>
-            <span class="pr-text">
+            <span class="pr-text bidi-isolate" :dir="dirFor(p.text_a)">
               “{{ p.text_a }}”<template v-if="p.category === 'diffphrase'"> · “{{ p.text_b }}”</template>
             </span>
             <span class="pr-score" :class="combinedVerdict(p).cls">{{ fmt(p.combined, 2) }}</span>
@@ -1097,7 +1098,7 @@ function openRecordTab() {
               @click="pickModel(c.id)"
             >
               <span class="pr-cat">{{ c.language }}</span>
-              <span class="pr-text">“{{ c.text }}”</span>
+              <span class="pr-text bidi-isolate" :dir="dirFor(c.text)">“{{ c.text }}”</span>
               <span class="pr-score">{{ voiceLabel(c.side) }}</span>
             </button>
             <p v-if="!recClipList.length" class="notice">No clips match.</p>
@@ -1106,7 +1107,7 @@ function openRecordTab() {
 
         <div class="pair-detail rec-detail">
           <template v-if="recModel">
-            <h3>“{{ recModel.text }}” <span class="lang">· {{ recModel.language }} · {{ voiceLabel(recModel.side) }}</span></h3>
+            <h3><span class="bidi-isolate" :dir="dirFor(recModel.text)">“{{ recModel.text }}”</span> <span class="lang">· {{ recModel.language }} · {{ voiceLabel(recModel.side) }}</span></h3>
 
             <div class="players">
               <button class="clip" :class="{ playing: playingId === recModel.id }" @click="play(recModel.id)">
@@ -1309,6 +1310,9 @@ function openRecordTab() {
 </template>
 
 <style scoped>
+/* The clip text binds `dir`; the row it sits in does not move. */
+.pr-text { text-align: left; }
+
 .vadlab {
   max-width: 1180px;
   margin: 0 auto;

@@ -66,7 +66,7 @@
           <!-- Preview Phrase & Test -->
           <div class="preview-section">
             <div class="phrase-display">
-              <span class="phrase-text">{{ getCurrentPhrase(role.id) }}</span>
+              <span class="phrase-text bidi-isolate" :dir="dirFor(getCurrentPhrase(role.id))">{{ getCurrentPhrase(role.id) }}</span>
               <button @click="cyclePhrase(role.id)" class="cycle-btn" title="Try another phrase">↻</button>
             </div>
             <button
@@ -362,6 +362,7 @@
 import { ref, computed, onMounted, watch } from 'vue'
 import { getApiUrl } from '@/services/api'
 import { languageName } from '@/utils/languageNames'
+import { dirFor } from '@/utils/textDirection.js'
 import { isConfigured as isSupabaseConfigured, getVoiceConfig, getSeedPhrasesPreview } from '@/services/supabase'
 
 const props = defineProps({
@@ -1025,6 +1026,9 @@ onMounted(() => {
 </script>
 
 <style scoped>
+/* The preview phrase binds `dir`; the row it sits in does not move. */
+.phrase-text { text-align: left; }
+
 .voice-configuration {
   background: var(--surface);
   border-radius: 0 0 12px 12px;
