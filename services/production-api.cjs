@@ -16,6 +16,7 @@ const logger = createLogger('ProductionAPI')
 const s3Service = require('./s3-production-service.cjs')
 const supabaseClient = require('./supabase-client.cjs')
 const { canonicalLanguage } = require('./shared/clip-identity.cjs')
+const { swapClipInPlace } = require('./shared/audio-revision-swap.cjs')
 const manifestGenerator = require('./manifest-generator.cjs')
 const courseDataService = require('./course-data-service.cjs')
 const { SchemaValidator } = require('./schema-validator.cjs')
@@ -5064,18 +5065,25 @@ async function handleRecordingUpload(req, res) {
     // origin='human' marks it precious (allowed by the live CHECK: 'tts'|'human').
     // The old s3_key is recorded in recording_provenance below for reversibility.
     if (existingRow) {
-      const rowUpdate = { s3_key: s3Key, origin: 'human' }
-      if (audioMeta.processed && audioMeta.durationMs) {
-        rowUpdate.duration_ms = audioMeta.durationMs
-        rowUpdate.file_size_bytes = processedBuffer.length
-      }
-      const { error: updateError } = await supabaseClient.getClient()
-        .from('course_audio')
-        .update(rowUpdate)
-        .eq('id', uuid)
-        .eq('course_code', courseCode)
-      if (updateError) throw updateError
-      logger.log(`[Upload] course_audio ${uuid} repointed ${existingRow.s3_key} -> ${s3Key} (origin=human)`)
+      // VERSIONED. A retake replaces the bytes under an unchanged row id, and
+      // the learner's address for that clip is <uuid>.v<audio_revision> — held
+      // in the browser cache under `immutable` and in player-vue's IndexedDB
+      // under the bare ref string. Repointing s3_key without bumping the
+      // revision means the recordist hears their new take and every learner who
+      // already played the old one never does. Same versioned swap the repair
+      // panel and the reuse-first render use.
+      const swap = await swapClipInPlace({
+        supabase: supabaseClient.getClient(),
+        audioId: uuid,
+        newS3Key: s3Key,
+        durationMs: (audioMeta.processed && audioMeta.durationMs) ? audioMeta.durationMs : null,
+        fileSizeBytes: (audioMeta.processed && audioMeta.durationMs) ? processedBuffer.length : null,
+        patch: { origin: 'human' },
+        source: 'recordist-retake',
+        acceptedBy: 'production-api /upload (recording)',
+        reason: 'human retake replacing an existing clip',
+      })
+      logger.log(`[Upload] course_audio ${uuid} repointed ${existingRow.s3_key} -> ${s3Key} (origin=human, revision ${swap.previousRevision} -> ${swap.revision})`)
     }
 
     // Pod mode: register the human take (course_audio upsert, origin='human',

@@ -26,6 +26,7 @@ const { createClient } = require('@supabase/supabase-js')
 const { S3Client, PutObjectCommand, HeadObjectCommand, GetObjectCommand } = require('@aws-sdk/client-s3')
 const { v4: uuidv4 } = require('uuid')
 const { AUDIO_CACHE_CONTROL } = require('../shared/audio-cache-control.cjs')
+const { swapClipInPlace, writeOrSwapClip } = require('../shared/audio-revision-swap.cjs')
 const fs = require('fs-extra')
 const path = require('path')
 const os = require('os')
@@ -3206,28 +3207,36 @@ app.post('/regenerate-role/:courseCode', async (req, res) => {
         CacheControl: AUDIO_CACHE_CONTROL,
       }))
 
-      // Update course_audio record with duration
-      const { error: updateError } = await supabase
-        .from('course_audio')
-        .update({
+      // Update course_audio record with duration — VERSIONED.
+      // This path REPLACES the bytes an existing row points at, which is
+      // exactly the case that must move audio_revision: the ref <uuid>.vN is
+      // the learner's cache key in both the HTTP cache and IndexedDB, so
+      // without the bump every learner who already played this clip keeps the
+      // old audio. This is the highest-traffic of the six — it is behind the
+      // "Regenerate" button, including the gender-flag re-voice.
+      await swapClipInPlace({
+        supabase,
+        audioId: item.id,
+        newS3Key: s3Key,
+        durationMs,
+        patch: {
           voice_id: storedVoiceId,
           origin: 'tts',
-          s3_key: s3Key,
-          duration_ms: durationMs,
           word_boundaries: wordBoundaries || null,
-          // This path REPLACES the bytes an existing row points at, so the old
-          // row's verdict — if it had one — is now about audio that no longer
-          // exists. Overwriting it is not optional bookkeeping: a stale pass
-          // next to fresh audio is exactly the false claim this column set was
-          // added to end.
+          // The old row's verdict — if it had one — is now about audio that no
+          // longer exists. Overwriting it is not optional bookkeeping: a stale
+          // pass next to fresh audio is exactly the false claim this column set
+          // was added to end.
           ...veracity.verdictColumns(gated.verdict, {
             checker: 'phase8-regenerate-role',
             attempts: gated.attempts,
           })
-        })
-        .eq('id', item.id)
-
-      if (updateError) throw updateError
+        },
+        source: 'phase8-regenerate-role',
+        acceptedBy: `phase8 /regenerate-role (${role})`,
+        reason: 'role regeneration',
+        logger,
+      })
 
       updateWork(item.text, true)
       logger.info(`Regenerated: ${role} - "${item.text.substring(0, 30)}..." (${durationMs}ms)`)
@@ -4572,24 +4581,32 @@ app.post('/regenerate-single/:courseCode/:audioUuid', async (req, res) => {
       CacheControl: AUDIO_CACHE_CONTROL,
     }))
 
-    // 8. Update course_audio record
-    const { error: updateError } = await supabase
-      .from('course_audio')
-      .update({
+    // 8. Update course_audio record — VERSIONED, so the learner ref moves.
+    // This route replaces the bytes under an existing row id. Writing s3_key
+    // without bumping audio_revision leaves the learner-facing ref <uuid>.vN
+    // unchanged, and a device that already played the clip keeps the old audio
+    // behind `immutable` forever. swapClipInPlace bumps the revision and writes
+    // the rollback ledger, exactly as reuseRenderClip below already does.
+    const swap = await swapClipInPlace({
+      supabase,
+      audioId: audioUuid,
+      newS3Key,
+      durationMs,
+      patch: {
         voice_id: storedVoiceId,
         origin: 'tts',
-        s3_key: newS3Key,
-        duration_ms: durationMs,
         word_boundaries: wordBoundaries || null,
         // The gate's verdict travels WITH the clip, as it does on the bulk path.
         ...veracity.verdictColumns(gated.verdict, {
           checker: 'phase8-regenerate-single',
           attempts: gated.attempts,
         }),
-      })
-      .eq('id', audioUuid)
-
-    if (updateError) throw updateError
+      },
+      source: 'phase8-regenerate-single',
+      acceptedBy: 'phase8 /regenerate-single',
+      reason: 'operator regenerated a single clip',
+      logger,
+    })
 
     // 9. Update or create audio_flags with incremented regen_count
     if (flagRecord) {
@@ -4623,6 +4640,10 @@ app.post('/regenerate-single/:courseCode/:audioUuid', async (req, res) => {
       audioUuid,
       newS3Key,
       durationMs,
+      // The learner ref is <audioUuid>.v<revision>; without this moving, a
+      // returning learner never re-fetches. Surfaced so a caller can prove it.
+      revision: swap.revision,
+      previousRevision: swap.previousRevision,
       regenCount: regenCount + 1
     })
 
@@ -4858,25 +4879,42 @@ app.post('/regenerate-presentation/:courseCode/:legoId', async (req, res) => {
     // 8. Update the existing row in place, or insert a new one for this lego.
     //    Either way: exactly one course_audio row is written.
     if (existingRow) {
-      const { error: updateError } = await supabase
+      // The row survives and its bytes change — so the learner ref must move,
+      // or every device that already played this intro keeps the old one.
+      // Unlike the other five, this route legitimately rewrites the row's TEXT
+      // (it is the authoritative presentation-text store), so text and its
+      // dependents are written here rather than through the swap helper, which
+      // refuses to touch them.
+      const { error: textError } = await supabase
         .from('course_audio')
         .update({
           text: presentationText,
           text_normalized: normalizeForAudio(presentationText),
           language: knownLang,
+        })
+        .eq('id', existingRow.id)
+      if (textError) throw textError
+
+      await swapClipInPlace({
+        supabase,
+        audioId: existingRow.id,
+        newS3Key,
+        durationMs,
+        patch: {
           voice_id: storedVoiceId,
           origin: 'tts',
-          s3_key: newS3Key,
-          duration_ms: durationMs,
           word_boundaries: wordBoundaries || null,
           // The gate's verdict travels WITH the clip, as it does on the bulk path.
           ...veracity.verdictColumns(gated.verdict, {
             checker: 'phase8-regenerate-presentation',
             attempts: gated.attempts,
           }),
-        })
-        .eq('id', existingRow.id)
-      if (updateError) throw updateError
+        },
+        source: 'phase8-regenerate-presentation',
+        acceptedBy: 'phase8 /regenerate-presentation',
+        reason: 'per-LEGO presentation regeneration',
+        logger,
+      })
       audioRowId = existingRow.id
     } else {
       const { data: inserted, error: insertError } = await supabase
@@ -5239,14 +5277,37 @@ app.post('/regenerate-phrase/:courseCode/:phraseId', async (req, res) => {
         CacheControl: AUDIO_CACHE_CONTROL,
       }))
 
-      // Mint a course_audio row carrying the NEW text. We checked above that no row
-      // exists for this key, so this is a fresh clip — but UPSERT on the unique key
-      // (the canonical bulk-path pattern) is belt-and-suspenders against a concurrent
-      // write that created the row between our lookup and here, so we never 500 on
-      // unique_course_audio_per_voice. On conflict the existing row's id is returned.
-      const { data: insertedAudio, error: audioInsertError } = await supabase
-        .from('course_audio')
-        .upsert({
+      // Mint a course_audio row carrying the NEW text — or, when the text did
+      // NOT change, swap the bytes under the row that already holds this key.
+      //
+      // Those are two different writes and the difference is the whole bug. A
+      // changed text mints a fresh uuid, so the learner ref changes and every
+      // cache misses correctly. UNCHANGED text collides on
+      // unique_course_audio_per_voice and lands on the EXISTING row — same id,
+      // same ref — so unless audio_revision moves, a learner who already played
+      // it keeps the old bytes forever. The previous UPSERT could not tell the
+      // two cases apart, so it silently did the second one unversioned.
+      const verdictColumns = veracity.verdictColumns(gated.verdict, {
+        checker: 'phase8-regenerate-phrase',
+        attempts: gated.attempts,
+      })
+      const swapPatch = {
+        voice_id: voiceId,
+        origin: 'tts',
+        word_boundaries: wordBoundaries || null,
+        ...verdictColumns,
+      }
+
+      const { audioId: audioRowId } = await writeOrSwapClip({
+        supabase,
+        identity: {
+          course_code: courseCode,
+          text_normalized: textNormalized,
+          language,
+          role,
+          voice_id: voiceId,
+        },
+        insertRow: {
           course_code: courseCode,
           text,                                   // authoritative NEW text
           text_normalized: textNormalized,
@@ -5258,17 +5319,16 @@ app.post('/regenerate-phrase/:courseCode/:phraseId', async (req, res) => {
           duration_ms: durationMs,
           word_boundaries: wordBoundaries || null,
           // The gate's verdict travels WITH the clip, as it does on the bulk path.
-          ...veracity.verdictColumns(gated.verdict, {
-            checker: 'phase8-regenerate-phrase',
-            attempts: gated.attempts,
-          }),
-        }, {
-          onConflict: 'course_code,text_normalized,language,role,voice_id'
-        })
-        .select('id')
-        .single()
-      if (audioInsertError) throw audioInsertError
-      const audioRowId = insertedAudio.id
+          ...verdictColumns,
+        },
+        swapPatch,
+        newS3Key,
+        durationMs,
+        source: 'phase8-regenerate-phrase',
+        acceptedBy: `phase8 /regenerate-phrase (${role})`,
+        reason: 'phrase regeneration onto an existing clip key',
+        logger,
+      })
 
       // Rebind the phrase pointer to the fresh uuid (single-column update so the
       // text-change trigger can't fire here and re-null our binding).
@@ -5599,9 +5659,35 @@ app.post('/regenerate-lego/:courseCode/:legoId', async (req, res) => {
       // s3_key. "," and "…" get their own rows and survive. Tuning done with "."
       // is therefore not durable against a later course-wide pass — prefer "…"/","
       // if the tuning must stick, until the clip-identity key is revisited.
-      const { data: insertedAudio, error: audioInsertError } = await supabase
-        .from('course_audio')
-        .upsert({
+      //
+      // This endpoint LOCKS the text, so landing on an existing row is not the
+      // edge case here — it is the normal case: re-rendering a lego's own text
+      // on the same voice always collides on unique_course_audio_per_voice and
+      // overwrites in place. Same row id, same learner ref <uuid>.vN. Without
+      // an audio_revision bump the operator hears their new take (they fetch
+      // the object) and every learner who already played the lego does not.
+      // That is why this route needs the versioned swap most of the six.
+      const verdictColumns = veracity.verdictColumns(gated.verdict, {
+        checker: 'phase8-regenerate-lego',
+        attempts: gated.attempts,
+      })
+      const swapPatch = {
+        voice_id: voiceId,
+        origin: 'tts',
+        word_boundaries: wordBoundaries || null,
+        ...verdictColumns,
+      }
+
+      const { audioId: audioRowId } = await writeOrSwapClip({
+        supabase,
+        identity: {
+          course_code: courseCode,
+          text_normalized: textNormalized,
+          language,
+          role,
+          voice_id: voiceId,
+        },
+        insertRow: {
           course_code: courseCode,
           text,
           text_normalized: textNormalized,
@@ -5613,17 +5699,16 @@ app.post('/regenerate-lego/:courseCode/:legoId', async (req, res) => {
           duration_ms: durationMs,
           word_boundaries: wordBoundaries || null,
           // The gate's verdict travels WITH the clip, as it does on the bulk path.
-          ...veracity.verdictColumns(gated.verdict, {
-            checker: 'phase8-regenerate-lego',
-            attempts: gated.attempts,
-          }),
-        }, {
-          onConflict: 'course_code,text_normalized,language,role,voice_id'
-        })
-        .select('id')
-        .single()
-      if (audioInsertError) throw audioInsertError
-      const audioRowId = insertedAudio.id
+          ...verdictColumns,
+        },
+        swapPatch,
+        newS3Key,
+        durationMs,
+        source: 'phase8-regenerate-lego',
+        acceptedBy: `phase8 /regenerate-lego (${role})`,
+        reason: 'lego regeneration onto an existing clip key',
+        logger,
+      })
 
       // Rebind ONLY this LEGO's own pointer column. No text column is written.
       const { error: bindError } = await supabase
