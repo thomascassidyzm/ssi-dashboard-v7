@@ -1,10 +1,12 @@
-# What one active learner actually costs us — the server floor
+# What one active learner actually costs us — server floor and payment processing
 
 **2026-08-18. Built from live data, for the India regional-pricing decision.**
 
 ## The headline
 
 **An active learner costs us about 0.1p per month in marginal server terms.** Not 10p. Not 1p. A tenth of a penny.
+
+**Payment processing costs 49p per learner per month on a ₹253 monthly plan — a hundred times the server floor, and a quarter of the price.** Infrastructure was never the constraint. Paddle's fixed **$0.50 per transaction** is, and it is the number that decides India pricing. Billing annually instead of monthly saves **₹557 (£4.28) per learner per year**, which is worth more than every infrastructure optimisation in this document put together.
 
 At today's scale, fixed infrastructure divided across our active base adds about **11p/learner/month**. At 10,000 active learners that falls to **half a penny**. The asymptotic floor, at a million learners, is about **0.3p/learner/month** — and it is set by Supabase's per-user charge, not by audio at all.
 
@@ -96,17 +98,88 @@ Marked **ESTIMATED-FROM-PUBLISHED-RATES**, not a bill — see the gaps section.
 
 At a million learners the picture inverts: fixed cost vanishes and the floor becomes Supabase's **$0.00325 per monthly active user** beyond the first 100,000 — about 0.26p. Vercel edge requests add most of the rest. **Audio never becomes the dominant cost at any scale.**
 
+## Payment processing — the cost that actually bites
+
+The server floor is not the constraint. **Payment processing is between 10x and 100x larger than the server cost at every India price point on the table**, and at the lowest ones it is larger than the entire payment.
+
+### Paddle's published schedule
+
+Paddle Billing's standard rate is **5% + $0.50 per checkout transaction**, retrieved 2026-08-18 from Paddle's own pricing page. The percentage is not the problem. **The $0.50 is.**
+
+| Item | Figure | Source |
+|---|---|---|
+| Standard transaction fee | **5% + $0.50** per successful checkout transaction | paddle.com/pricing, 2026-08-18 |
+| Volume tiers / fee caps / regional variation | **None published** — single flat rate | paddle.com/pricing |
+| Micro-transaction handling | *"If you're selling products under $10 or require invoicing contact us for custom pricing"* | paddle.com/pricing |
+| Minimum transaction size | None published | — |
+| Payout fee | None, except **$/€/£15 SWIFT fee** where the payout crosses currency/country | Paddle Help, *Is there a fee taken for payouts?* |
+| Minimum payout threshold | **$100 / £100 / €100**, paid on the 1st, arriving by the 15th | Paddle Help, *When and how do I get paid?* |
+| Payout FX margin | **up to 1.5%** if payout currency ≠ balance currency | Paddle Help, *Is there a fee taken for payouts?* |
+| Chargeback fee | **$15/£15/€15** card, **$20/£20/€20** PayPal; returned if the bank sides with us | Paddle Help, *Understanding Chargebacks* |
+| Refunds | The Paddle fee is **not** returned; a `retained_fee` is held "to cover gateway costs" | developer.paddle.com, payout reconciliation + adjustments |
+| Tax (merchant of record) | Paddle is the seller of record, collects and remits Indian GST, and pays us net of tax and fees | Paddle Help, tax handling |
+
+Crucially, **Paddle publishes no different rate for local payment methods**. UPI is supported — Paddle presents it automatically for INR prices to customers in India, and **UPI AutoPay covers recurring billing** — but the developer documentation for UPI is silent on fees, which on the evidence available means the standard 5% + $0.50 applies. The hope that a near-zero-fixed-fee local rail rescues the monthly tier **is not supported by anything Paddle publishes.**
+
+UPI's own limits are not a constraint for us: ₹100,000 for one-off, **₹15,000 per subscription renewal**. Nor is India's recurring-payment regime: the RBI e-mandate framework requires additional-factor authentication only above **₹15,000** per recurring transaction, so every tier here auto-debits without re-authentication. What does apply is the mandatory **24-hour pre-debit notification** before each renewal — a friction and a churn surface, not a cost.
+
+### The arithmetic
+
+All conversions at **£1 = ₹130 = $1.284** (the rate implicit in this document's existing figures — ₹253 ≈ £1.95, ₹627/yr ≈ £0.40/mo — stated here so the arithmetic is checkable). At that rate the fixed **$0.50 fee = ₹50.60 = £0.389**.
+
+| Billing shape | Gross | Paddle fee | **As % of gross** | Processing £/learner/mo | Server £/learner/mo |
+|---|---|---|---|---|---|
+| **Monthly ₹40** (Tom's probe) | ₹40/mo | ₹52.60/mo | **131.5%** | **£0.405** | £0.005 |
+| **Monthly ₹253** (IME D2C) | ₹253/mo | ₹63.25/mo | **25.0%** | **£0.487** | £0.005 |
+| **Annual ₹400** | ₹400/yr | ₹70.60/yr | **17.7%** | £0.045 | £0.005 |
+| **Annual ₹500** | ₹500/yr | ₹75.60/yr | **15.1%** | £0.048 | £0.005 |
+| **Annual ₹627** (IME institutional) | ₹627/yr | ₹81.95/yr | **13.1%** | £0.053 | £0.005 |
+| **One-off ₹34** (publisher) | ₹34 once | ₹52.30 | **153.8%** | — (loses ₹18.30 outright) | £0.005 |
+| **IME block invoice** | one wire per block | ~£15 wire + ~0.5–1% FX | **~0.5–2%** | **≈£0.004** | £0.005 |
+
+Two lines there are not tight margins, they are impossibilities. **A ₹40 monthly charge and a ₹34 one-off both cost more to collect than they collect** — ₹52.60 and ₹52.30 respectively against ₹40 and ₹34. Neither can be sold as an individually-processed transaction at any volume; the loss is structural, not a scale problem.
+
+The ₹253 D2C monthly tier survives, but processing takes **a quarter of it** — £0.487 a month, against a server floor of half a penny. And if the ₹253 is what the learner pays rather than what reaches us, Indian GST at 18% takes a further ~₹38.59 of it before we see anything.
+
+### The annual lever, quantified
+
+Tom named this one himself. It is worth exactly what you would expect, and the answer is clean and price-independent:
+
+**Moving a learner from monthly to annual billing avoids the fixed fee eleven times: 11 × ₹50.60 = ₹556.60 per learner per year = £4.28/year = 36p/month.**
+
+That is the whole lever. It does not depend on the price point, because the saving is entirely in the fixed component.
+
+| Same revenue, two shapes | Gross/yr | Paddle fee/yr | Effective rate |
+|---|---|---|---|
+| ₹253 × 12, billed monthly | ₹3,036 | ₹759 | **25.0%** |
+| ₹3,036 billed once, annually | ₹3,036 | ₹202 | **6.7%** |
+
+**An 18.3-point swing on the same revenue.** For comparison, the entire server floor at scale is 0.3% of that revenue.
+
+**When does the lever stop mattering?** Only when the fixed fee falls below ~1% of the monthly charge — that is a monthly price of about **₹5,060**, roughly £39/month. At any price India will bear, the fixed fee dominates and annual billing is worth more than every infrastructure optimisation in this document combined.
+
+### The IME block-invoice route
+
+If SSi invoices IME once for a block of seats, Paddle is not in the path at all. The cost is one international bank transfer plus an INR→GBP conversion: call it £15 plus 0.5–1% FX. Across 1,000 institutional seats at ₹627 (≈£4,823 of revenue) that is roughly **1% all-in, or £0.004/learner/month** — at parity with the server floor, and 13x cheaper than putting the same learners through Paddle individually.
+
+**The real cost of this route is not processing. It is commercial** — IME's own margin and their cost of collecting from learners, which is a negotiation, not an infrastructure line. But on the pure mechanics of getting money from India to us, block invoicing is the cheapest route by an order of magnitude, and it is the only route on which the ₹34 publisher tier works at all.
+
 ## Verdict against IME's price sheet
 
-| Tier | Nets SSi | Server floor | Verdict |
-|---|---|---|---|
-| **D2C monthly** | ₹253/mo ≈ **£1.95/mo** | ~£0.005/mo at scale | **Clears by ~390x** |
-| **Institutional** | ₹627/yr ≈ **£0.40/mo** | ~£0.005/mo at scale | **Clears by ~80x** |
-| **Publisher / EdTech** | ₹34 one-off ≈ **£0.26** | ~£0.06 lifetime server cost per learner-year at scale | **Clears by ~4x** |
+Recomputed with processing included. The earlier "clears by 390x" figures counted server cost only and were misleading by roughly two orders of magnitude.
 
-All three clear. Even the one-off publisher tier — the hardest case, because ₹34 must cover a learner forever — survives, since a learner who consumes an entire large course generates roughly £0.15 of direct-S3 egress once, and at institutional scale the fixed share is negligible.
+| Tier | Gross | Server floor | **Processing** | Total cost | Verdict |
+|---|---|---|---|---|---|
+| **D2C monthly** | ₹253/mo ≈ **£1.95/mo** | £0.005/mo | **£0.487/mo** | £0.492/mo | **Clears by ~4x** — processing is 99% of the cost |
+| **Institutional** | ₹627/yr ≈ **£0.40/mo** | £0.005/mo | **£0.053/mo** | £0.058/mo | **Clears by ~7x** |
+| **Publisher / EdTech** | ₹34 one-off ≈ **£0.26** | ~£0.06 lifetime | **£0.402 per transaction** | £0.46 | **FAILS as a card transaction** — clears only if invoiced in bulk |
+| **D2C monthly at ₹40** | ₹40/mo ≈ **£0.31/mo** | £0.005/mo | **£0.405/mo** | £0.410/mo | **FAILS** — costs £0.10/mo more than it earns |
 
-**At today's 332 active learners the institutional tier is tighter** (~£0.12 fixed share against £0.40 net), but that is an artefact of a small base, not a structural cost. It resolves itself with volume — and the India deal is precisely what brings volume.
+The two tiers that clear, clear on server cost by hundreds of times and on processing by single digits. **Processing is now the whole cost model.** The ₹34 publisher tier and Tom's ₹40 probe price are not viable as individually-processed payments — but both are fine the moment they are aggregated into a block invoice, which is what a publisher or institutional deal would do anyway.
+
+**At today's 332 active learners the institutional tier is tighter still** (~£0.12 fixed server share on top of £0.053 processing, against £0.40 net), but that is an artefact of a small base, not a structural cost. It resolves itself with volume — and the India deal is precisely what brings volume.
+
+Note that ₹40 is Tom's probe price and does not appear on IME's sheet; it is modelled here as commissioned, and the gap between it and the sheet's ₹253 is itself worth noting.
 
 ## The sensitivity that actually matters: cache eviction
 
@@ -147,6 +220,20 @@ Applied to our current 1.0 MB/learner/month, a 73% cut saves about **0.02p per l
 ## Explicit gaps
 
 Reported honestly rather than papered over:
+
+**On payment processing:**
+
+- **No India-specific Paddle rate was found, published or otherwise.** Paddle's pricing page shows one flat rate with no regional variation, and the UPI documentation does not mention fees at all. I have modelled UPI and Indian cards at the standard 5% + $0.50. **This is an assumption of parity, not a verified figure** — and it is the single most valuable thing to confirm with Paddle directly, because a lower fixed fee on UPI would change the monthly tier's viability outright.
+- **We are outside Paddle's published pricing already.** Paddle's own page says *"if you're selling products under $10 or require invoicing contact us for custom pricing."* Every India tier here is under $10, so the standard rate modelled above may not be the rate we would actually be offered. **A negotiated micro-transaction rate is a live commercial lever and has not been explored.**
+- **Whether the 5% is charged on gross-including-GST or on the pre-tax subtotal is unresolved.** Third-party summaries of Paddle's payout-reconciliation documentation say the fee derives from the transaction total including tax; Paddle's own page does not state it in those words. The difference is about ₹1.93 on a ₹253 transaction — immaterial next to the ₹50.60 fixed fee, but stated rather than hidden.
+- **The FX cost of INR→GBP is only partly pinned.** Paddle publishes a *"conversion margin of up to 1.5%"* on payouts where the payout currency differs from the balance currency. What Paddle takes on converting an INR sale into a GBP balance is not published; third-party sources put it at 1–2%, which I have not treated as fact and have not included in the tables. **If it is 2%, every effective rate above rises by two points.**
+- **The chargeback fee is a tail risk nobody has sized.** At $15 per card chargeback against a ₹253 payment, **one chargeback costs the equivalent of six months of that learner's revenue.** No dispute-rate data exists for an Indian consumer base on our product.
+- **The £1 = ₹130 = $1.284 conversion is this document's own internal rate**, back-derived from figures already in it. It is not a market quote for any particular day, and every ₹/£ figure here moves with it.
+- **The block-invoice route's ~1% all-in is my construction**, not a quote: £15 wire plus 0.5–1% FX amortised across a notional 1,000 seats. Real bank charges, IME's payment terms, and any withholding tax on a cross-border invoice have not been checked.
+- **Whether IME's ₹253 is what the learner pays or what reaches SSi is ambiguous in the source sheet.** I have modelled it as the price charged, with Paddle in the path. If it is genuinely net to SSi after IME collects locally, the entire processing section applies only to the direct-to-learner route and the D2C tier is far healthier than shown.
+- **No live Paddle account data was consulted** — this is entirely desk research against Paddle's published material, retrieved 2026-08-18. An actual Paddle contract or invoice would supersede all of it.
+
+**On server cost:**
 
 - **No billing data was reached.** AWS Cost Explorer, Vercel billing and Supabase billing were not accessible from this environment. Every cost above is computed from **published rates** (AWS eu-west-1, Vercel dub1 regional pricing, Supabase Pro, all retrieved 2026-08-18) applied to **measured usage**. Usage is real; prices are list. An actual invoice could differ, most likely downward on committed-use discounts.
 - **`course_audio.file_size_bytes` is NULL on 2,562,676 of 2,565,615 rows**, so per-course byte totals cannot be read from the database. Course sizes here are derived from clip counts × the censused 33.9 KB mean. The full S3 census has now completed and is reflected above — it lowered the mean clip size from a sampled 40.5 KB to a true 33.9 KB, which moved every egress figure *down* by about 14%.
