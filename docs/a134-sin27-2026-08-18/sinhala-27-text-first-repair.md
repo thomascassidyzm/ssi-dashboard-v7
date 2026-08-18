@@ -189,6 +189,35 @@ You don't read Sinhala and neither, reliably, does anything on this machine. Thr
 - **A stale-tag hazard I chose not to touch.** Each of the 26 retired clips still carries its `lego_id`, so two `course_audio` rows now share each tag. This does not affect the learner — the player resolves by link, step 1, and the code documents exactly this trap from the Greek incident of 2026-08-11. But `phase8`'s own `/regenerate-presentation` looks a row up with `.eq('lego_id', …).maybeSingle()`, which will now fail for these 26 LEGOs. **The next person to regenerate one of these presentations will hit it.** I left it alone because clearing tags means writing to `course_audio`, which fires the `audio_autolink` and canonical-identity triggers, and the hazard is operational rather than learner-facing. Worth a follow-up.
 - **The wider census is text-based**, from `course_audio.text` and `word_boundaries`. I did not listen to the 147.
 
+## Addendum — two-thirds of the remaining damage costs nothing to fix
+
+Added after both verification workers reported (#116 asset-verify, #117 census).
+
+Worker #117 found something I had missed, and I was wrong about it: when I first read its raw output I checked field names that don't exist, got zero, and moved on. Re-checked properly and then verified independently against the live database:
+
+**Of the 145 clips still defective, 90 already have a clean, correct, unlinked replacement clip sitting in `course_audio`.** They are the same 2026-08-17 render pass that produced the 26 I relinked today — it covered far more of the course than the approved 27, and none of it was ever linked.
+
+| | |
+|---|---|
+| Still defective after today's fix | **145** |
+| **Fixable by relink — zero TTS spend** | **90** |
+| Genuinely need a fresh render | **55** |
+| Seed range of the damage | **1 to 518** |
+
+So the remaining work splits cleanly, and the cheap two-thirds is not blocked by anything:
+
+- **The 90 need no spend, no TTS, and no veracity gate.** They are the same guarded-relink operation performed today, which is now proven end-to-end on 26 rows and verified through the live app. This is the obvious next pass.
+- **The 55 are blocked** by the Sinhala veracity-gate problem described above, and stay blocked until that gets a ruling.
+
+Worker #117's headline count was 172 rather than my 145 for two legitimate reasons, both reconciled: it censused *before* today's 26 relinks, and it counted `ඒ ගාවෙ` as filler where I hold it separately pending a native reader. Its independently-derived anchors (1,241 / 1,170 / 282) matched mine exactly, and all 27 known-corrupt rows fell inside its union — so the detectors agree on everything that matters.
+
+Two further details worth keeping:
+
+- **9 of the mismatches are clean pairwise sibling swaps** — `S0202L01`/`L02` and `S0225L01`/`L02` each announce the other's phrase. Unambiguously wrong, not a variant judgement.
+- **`file_size_bytes` is NULL course-wide**, so it reads as 0 and looks like an unrendered placeholder. It is not evidence of anything. Liveness has to be established by fetching the object, which is what both of us did.
+
+Worker #116 independently confirmed the load-bearing facts of this report: all 53 clips alive at HTTP 200, all 26 replacements matching `duration_ms` to 0 ms, `word_boundaries` NULL on all 26, `S0225L01` having no replacement, and whisper being unreliable for Sinhala.
+
 ## What I did not do
 
 No audio row was deleted. No clip was deleted. No text was written to `course_audio` or `course_legos` — the 26 corrections were achieved by pointing each card at a row that already carried the correct text. Nothing outside the 27 was changed.
