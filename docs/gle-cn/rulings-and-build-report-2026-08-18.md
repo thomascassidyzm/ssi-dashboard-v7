@@ -174,19 +174,98 @@ misreading a glossary.
 
 ## 6. What got built
 
-<!--BUILD_NUMBERS-->
+Every number here I counted myself in Supabase, not taken from a worker's word.
+
+| | at 16:05 (what I inherited) | now |
+|---|---|---|
+| seeds banked | **1** | **12** (seeds 1–12) |
+| legos | 4 | **35** |
+| practice phrases | 11 | **266** |
+| seeds translated | 24 | **36** |
+| **audio rows** | **0** | **0** |
+| course status | `draft` / `not_available` | unchanged |
+
+**Seeds refused: 0.** Every one passed the atomic gate — tiling, ZUT, target vocabulary, known-side
+controlled language, phrase counts, anti-template. **All 301 banked Irish strings swept for every
+banned and retired form — `ag iarracht`, `ag triail`, `an féidir liom`, `is féidir liom`, `ábalta`,
+`cén chaoi le`, `conas`, `táimid`, `teastaíonn`, `níl fhios agam`, `labharófá`, `ag labhairt`,
+`fosta`, `in aon chor`, `ansan`, `uilig`: total 0.** Connemara dialect gate: 290 strings, 0
+violations. ZUT at lego, component and phrase level: 0 conflicts.
+
+Seeds **13–24** are being rebuilt and **25–100** translated as I write; an independent auditor is
+attacking seeds 1–24. Their reports land after this document, so **treat the table above as the
+floor, not the total.**
+
+### Fork 2 is not just ruled, it is BUILT and the gate accepted it
+The open question was whether the machinery would allow two known prompts to share one target. It
+does: `I want → tá mé ag iarraidh` (seed 1) and `I'm trying → tá mé ag iarraidh` (seed 2) both sit in
+`course_legos`. No workaround, no second Irish form invented.
+
+### But the phrase-level contrast is BLOCKED, and you should know
+The gate rejects duplicate *target* strings **within one lego**, regardless of the known side. So
+`I'm trying to learn now` and `I want to learn now` — both `Tá mé ag iarraidh foghlaim anois` — cannot
+sit together. **The Fork 2 contrast therefore exists at lego level and nowhere at phrase level.** If
+you want learners to actually *hear* the two English prompts collapse onto one Irish sentence, that
+needs either a gate change or a design that splits the pair across two legos. Not worked around.
+
+### Two bad phrases I found and fixed rather than shipped
+The rebuild banked two phrases putting `ag iarraidh` one syllable from `iarracht` — the exact
+collision your try/want ruling exists to prevent:
+
+> `tá mé ag iarraidh iarracht a dhéanamh Gaeilge a labhairt inniu`
+> `tá mé ag iarraidh iarracht a dhéanamh céard atá i gceist agam a mhíniú inniu` ← **25 syllables**
+
+Seed 8's legos each hold exactly 8 phrases and the seed-4+ floor is 3 BUILD + 5 USE = 8, so
+**deletion was unlawful** — remapped instead:
+
+| | |
+|---|---|
+| L1 | *I'm going to try to practise speaking* → `tá mé chun iarracht a dhéanamh labhairt a chleachtadh` |
+| L3 | *I'm trying to explain what I mean in Irish* → `tá mé ag iarraidh céard atá i gceist agam a mhíniú i nGaeilge` |
+
+L3's replacement now *drills* the Fork 2 point instead of jangling against it. Residual
+`ag iarraidh iarracht` in the course: **0**.
+
+### Phrase density — the F3 problem, quantified
+| seed | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| phrases per lego | **2.8** | **4.5** | 6.7 | 9.0 | 10.0 | 8.0 | 8.0 | 8.0 | 9.0 | 9.3 | 8.5 | 8.4 |
+
+Seeds 4–12 are all at or above the ~7 mature-course floor. **The thinness is now confined to seeds
+1–3 and it is structural, not sloppiness**: seed 1 has only its own 4 legos to combine from, and the
+builder's own floor rule drops to 1 BUILD / 1 USE for seeds ≤3 for exactly that reason.
+
+**One correction to this morning's report:** it said *"seed 1's first lego has none at all"*. Measured
+now, **no lego anywhere in the course has zero phrases** — seed 1 L1 has 2. That open defect can come
+off your list.
+
+### A gate defect found on the way, and NOT fixed
+The known-side gate emits `machinery "going" needs going-to (unlicensed)` on **56 of our 266 phrases
+(21%)**, permanently and falsely — a hardcoded constant in `validation.cjs:821` meets an empty
+`constructions: []` in `_default_eng.contract.cjs`, so `consPos['going-to']` is undefined and the
+licence check can never pass at any seed number. Nothing is blocked (these are warnings by design),
+but **a real construction breach is now indistinguishable from 56 false ones**. The v2 gate already
+has the correct rule; `/seed/complete` calls v1. **I did not fix it** — it is outside this brief and
+other courses submit through that gate. Mechanism, measurement and a one-line option:
+`docs/gle-cn/known-side-gate-permanent-false-advisory-2026-08-18.md`.
 
 ---
 
 ## 7. What still needs a native speaker, in the order I would ask
 
-| rank | question | why it's first | cost to reverse |
+Reversal costs below are **measured against what is actually banked right now**, not estimated.
+
+| rank | question | why it's first | cost to reverse, measured |
 |---|---|---|---|
-| **1** | Seed 9 — *"I speak a little Irish now"*: `Labhraím beagán Gaeilge anois` or `Tá beagán Gaeilge agam anois`? | "Speak" is the course's spine. Nothing sources 1sg `labhraím` as Connemara — the argument is from what sources *didn't* say — and one forum contributor called the pattern *"utter nonsense"* for the ability sense | 3 seeds now (9, 13, 14), ~60 phrases. **Ten times that by seed 100.** Ask this one first |
-| **2** | Seed 3 — does `cén chaoi labhairt chomh minic agus is féidir` sound right with no object? | 1 supporting item in 15,904. Becomes the course's standard "how to" frame, so it compounds | 1 seed, 3 legos, ~17 phrases |
-| **3** | Seed 8 — is `Tá mé chun iarracht a dhéanamh céard atá i gceist agam a mhíniú` natural, and is `iarracht` too close to `ag iarraidh` seven seeds earlier? | My own Irish, unsupported (conf C). It is the ruling I most expect you to challenge | 1 seed. Move it to the corpus's next non-progressive demand at seed 146 |
-| **4** | Seed 7 — `mo dhícheall a dhéanamh` or the dialect's `a thabhairt`? | Vol IV says `a thabhairt`; the dictionary says `a dhéanamh` | one lego's target text |
-| **5** | Orthography vs sound — `éigin`/`eicínt`, `amárach`/`amáireach` | §4. This is a policy question for you, not a fact question for a native | one substitution pass |
+| **1** | **Fork 7.** Seed 9 — *"I speak a little Irish now"*: `Labhraím beagán Gaeilge anois` or `Tá beagán Gaeilge agam anois`? | "Speak" is the course's spine. **Nothing sources 1sg `labhraím` as Connemara** — the argument is from what sources *didn't* say — one forum contributor called the pattern *"utter nonsense"* for the ability sense, and it is **0 in Ó Curnáin** (though see §5: that zero is inside the noise floor and proves nothing) | **1 lego, 11 phrases, 1 seed today.** Cheap *now*. The corpus has 20+ "speak" seeds still to build, so this is the one that gets dearer every hour. **Ask it first** |
+| **2** | **Fork 11.** Seed 3 — does `cén chaoi labhairt chomh minic agus is féidir` sound right with **no object**? | Dropping `le` is settled (§3). The *objectless* case has 1 supporting item in 15,904, and `cén chaoi` is now the course's standard "how to" frame | **1 lego, 36 phrases, 7 seeds** — already load-bearing. Only seed 3 uses the objectless form; the other 6 seeds use the well-evidenced `cén chaoi [obj] a [VN]` and are safe either way |
+| **3** | **Fork 3.** Seed 8 — is `Tá mé chun iarracht a dhéanamh céard atá i gceist agam a mhíniú` natural, and is `iarracht` too close to `ag iarraidh` seven seeds earlier? | My own Irish, unsupported (conf **C**), and 20 syllables as the eighth thing a learner says. **The ruling I most expect you to challenge** | **11 phrases, 1 seed.** Un-bank seed 8 and move it to the corpus's next non-progressive demand at seed 146. Nothing else depends on it |
+| **4** | **Seed 7's frame.** `mo dhícheall a dhéanamh`, or the dialect's `a thabhairt`? | Ó Curnáin's transcription says `a thabhairt`; de Bhaldraithe says `a dhéanamh`. Genuine source conflict | **1 lego's target text, 10 phrases.** A find-and-replace |
+| **5** | **Fork 9 — and this one is for you, not a native.** `éigin`/`eicínt`, `amárach`/`amáireach` | §4. It is a policy question about your ratified orthography line, and the corpus is against us | one substitution pass over 2 words |
+
+**Not on this list because it is now settled, not because I forgot it:** Fork 10 (`is maith liom`)
+went from provisional to sourced when Ó Curnáin's transcribed speech turned out to be full of it. It
+carries 39 banked phrases in the `mhaith liom` family already.
 
 ---
 
