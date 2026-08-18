@@ -1,0 +1,1369 @@
+[
+ {
+  "tag": "qwen-think",
+  "id": "T-fra_for_eng-66",
+  "cls": "translate",
+  "finish": "stop",
+  "ms": 141595,
+  "human": "ce n'est pas difficile de trouver la réponse",
+  "model": "Ce n'est pas difficile de trouver la réponse.",
+  "exact": true,
+  "has_parens": false,
+  "register_drift": null
+ },
+ {
+  "tag": "qwen-fast",
+  "id": "T-fra_for_eng-66",
+  "cls": "translate",
+  "finish": "stop",
+  "ms": 46982,
+  "human": "ce n'est pas difficile de trouver la réponse",
+  "model": "Ce n'est pas difficile de trouver la réponse",
+  "exact": true,
+  "has_parens": false,
+  "register_drift": null
+ },
+ {
+  "tag": "qwen-fast",
+  "id": "T-fra_for_eng-100",
+  "cls": "translate",
+  "finish": "stop",
+  "ms": 64441,
+  "human": "tu ne devrais pas t'inquiéter de faire quelque chose de similaire",
+  "model": "tu ne devrais pas t'inquiéter de faire quelque chose de similaire",
+  "exact": true,
+  "has_parens": false,
+  "register_drift": null
+ },
+ {
+  "tag": "qwen-fast",
+  "id": "T-fra_for_eng-134",
+  "cls": "translate",
+  "finish": "stop",
+  "ms": 40366,
+  "human": "ce n'est pas un problème quand on travaille avec eux sur quelque chose de difficile",
+  "model": "Ce n'est pas un problème quand tu travailles quelque chose de difficile avec eux",
+  "exact": false,
+  "has_parens": false,
+  "register_drift": null
+ },
+ {
+  "tag": "qwen-fast",
+  "id": "T-fra_for_eng-168",
+  "cls": "translate",
+  "finish": "stop",
+  "ms": 42883,
+  "human": "et puis je pourrai venir aider plus tard",
+  "model": "et ensuite je pourrai venir aider plus tard",
+  "exact": false,
+  "has_parens": false,
+  "register_drift": null
+ },
+ {
+  "tag": "qwen-fast",
+  "id": "T-fra_for_eng-273",
+  "cls": "translate",
+  "finish": "stop",
+  "ms": 43017,
+  "human": "non malheureusement j'ai trop de travail",
+  "model": "non malheureusement j'ai trop de travail",
+  "exact": true,
+  "has_parens": false,
+  "register_drift": null
+ },
+ {
+  "tag": "qwen-fast",
+  "id": "T-fra_for_eng-202",
+  "cls": "translate",
+  "finish": "stop",
+  "ms": 43523,
+  "human": "personne n'était sûr de comment répondre à la question",
+  "model": "personne ne savait comment répondre à la question",
+  "exact": false,
+  "has_parens": false,
+  "register_drift": null
+ },
+ {
+  "tag": "qwen-fast",
+  "id": "T-fra_for_eng-309",
+  "cls": "translate",
+  "finish": "stop",
+  "ms": 43622,
+  "human": "non je ne l'ai jamais vue avant",
+  "model": "non je ne l'ai jamais vue avant",
+  "exact": true,
+  "has_parens": false,
+  "register_drift": null
+ },
+ {
+  "tag": "qwen-fast",
+  "id": "T-fra_for_eng-380",
+  "cls": "translate",
+  "finish": "stop",
+  "ms": 18708,
+  "human": "j'ai demandé ce qu'elle voulait inclure",
+  "model": "J'ai demandé ce qu'elle voulait inclure",
+  "exact": true,
+  "has_parens": false,
+  "register_drift": null
+ },
+ {
+  "tag": "qwen-fast",
+  "id": "T-fra_for_eng-484",
+  "cls": "translate",
+  "finish": "stop",
+  "ms": 18421,
+  "human": "elle est censée être un défi",
+  "model": "C'est censé être un défi",
+  "exact": false,
+  "has_parens": false,
+  "register_drift": null
+ },
+ {
+  "tag": "qwen-fast",
+  "id": "T-fra_for_eng-450",
+  "cls": "translate",
+  "finish": "stop",
+  "ms": 18645,
+  "human": "non ils doivent prendre le train eux-mêmes",
+  "model": "non ils doivent attraper le train eux-mêmes",
+  "exact": false,
+  "has_parens": false,
+  "register_drift": null
+ },
+ {
+  "tag": "qwen-fast",
+  "id": "T-fra_for_eng-414",
+  "cls": "translate",
+  "finish": "stop",
+  "ms": 19475,
+  "human": "pourrions-nous avoir une bouteille de vin rouge s'il vous plaît ?",
+  "model": "pourrions-nous avoir une bouteille de vin rouge s'il vous plaît",
+  "exact": true,
+  "has_parens": false,
+  "register_drift": null
+ },
+ {
+  "tag": "qwen-fast",
+  "id": "T-spa_for_eng-111",
+  "cls": "translate",
+  "finish": "stop",
+  "ms": 9153,
+  "human": "cuando aprendemos algo nuevo cambia nuestro cerebro",
+  "model": "cuando aprendemos algo nuevo cambia nuestro cerebro",
+  "exact": true,
+  "has_parens": false,
+  "register_drift": null
+ },
+ {
+  "tag": "qwen-fast",
+  "id": "T-spa_for_eng-145",
+  "cls": "translate",
+  "finish": "stop",
+  "ms": 9454,
+  "human": "¿Por qué ya no estás contento?",
+  "model": "¿Por qué no estás más feliz?",
+  "exact": false,
+  "has_parens": false,
+  "register_drift": null
+ },
+ {
+  "tag": "qwen-fast",
+  "id": "T-spa_for_eng-179",
+  "cls": "translate",
+  "finish": "stop",
+  "ms": 9347,
+  "human": "¿Qué vas a hacer el domingo por la tarde?",
+  "model": "¿Qué vas a hacer el domingo por la tarde?",
+  "exact": true,
+  "has_parens": false,
+  "register_drift": null
+ },
+ {
+  "tag": "qwen-fast",
+  "id": "T-spa_for_eng-247",
+  "cls": "translate",
+  "finish": "stop",
+  "ms": 7971,
+  "human": "pensé que ese libro era bastante bueno",
+  "model": "Pensé que ese libro era bastante bueno",
+  "exact": true,
+  "has_parens": false,
+  "register_drift": null
+ },
+ {
+  "tag": "qwen-fast",
+  "id": "T-spa_for_eng-320",
+  "cls": "translate",
+  "finish": "stop",
+  "ms": 7398,
+  "human": "Él no necesita comprar otra televisión este año",
+  "model": "Él no necesita comprar otra televisión este año",
+  "exact": true,
+  "has_parens": false,
+  "register_drift": null
+ },
+ {
+  "tag": "qwen-fast",
+  "id": "T-fra_for_eng-345",
+  "cls": "translate",
+  "finish": "stop",
+  "ms": 94521,
+  "human": "qui a dit qu'il n'est pas encore prêt à partir",
+  "model": "qui a dit qu'il n'est pas prêt à partir encore",
+  "exact": false,
+  "has_parens": false,
+  "register_drift": null
+ },
+ {
+  "tag": "qwen-fast",
+  "id": "T-fra_for_eng-236",
+  "cls": "translate",
+  "finish": "stop",
+  "ms": 94749,
+  "human": "Je connais quelqu'un qui a dit qu'elle allait essayer d'aider",
+  "model": "Je connais quelqu'un qui a dit qu'elle allait essayer d'aider",
+  "exact": true,
+  "has_parens": false,
+  "register_drift": null
+ },
+ {
+  "tag": "qwen-fast",
+  "id": "T-spa_for_eng-391",
+  "cls": "translate",
+  "finish": "stop",
+  "ms": 2695,
+  "human": "la que está caminando hacia el autobús",
+  "model": "el que camina hacia el autobús",
+  "exact": false,
+  "has_parens": false,
+  "register_drift": null
+ },
+ {
+  "tag": "qwen-fast",
+  "id": "T-spa_for_eng-426",
+  "cls": "translate",
+  "finish": "stop",
+  "ms": 5894,
+  "human": "les gustaría quererse pero están infelices",
+  "model": "les gustaría amarse pero están infelices",
+  "exact": false,
+  "has_parens": false,
+  "register_drift": null
+ },
+ {
+  "tag": "qwen-fast",
+  "id": "T-spa_for_eng-495",
+  "cls": "translate",
+  "finish": "stop",
+  "ms": 3420,
+  "human": "cuando importa",
+  "model": "cuando importa",
+  "exact": true,
+  "has_parens": false,
+  "register_drift": null
+ },
+ {
+  "tag": "qwen-fast",
+  "id": "T-spa_for_eng-461",
+  "cls": "translate",
+  "finish": "stop",
+  "ms": 7131,
+  "human": "una tienda donde pueda comprar unas postales",
+  "model": "una tienda donde puedo comprar algunas postales",
+  "exact": false,
+  "has_parens": false,
+  "register_drift": null
+ },
+ {
+  "tag": "qwen-fast",
+  "id": "D-fra_for_eng-79",
+  "cls": "decompose",
+  "finish": "stop",
+  "ms": 17050,
+  "parsed": true,
+  "n_model": 1,
+  "n_human": 2,
+  "model": [
+   "M:when did you start to learn = quand as-tu commencé à apprendre"
+  ],
+  "human": [
+   "M:when did you = quand as-tu",
+   "M:start to learn = commencé à apprendre"
+  ],
+  "not_in_seed": [],
+  "reintroduced": [],
+  "m_missing_components": [],
+  "has_parens": []
+ },
+ {
+  "tag": "qwen-fast",
+  "id": "D-fra_for_eng-132",
+  "cls": "decompose",
+  "finish": "stop",
+  "ms": 19626,
+  "parsed": true,
+  "n_model": 3,
+  "n_human": 3,
+  "model": [
+   "A:that is = c'est",
+   "M:less exciting = moins passionnant",
+   "M:than what she was saying = que ce qu'elle disait"
+  ],
+  "human": [
+   "M:less than = moins que",
+   "A:exciting = passionnant",
+   "M:what she was saying = ce qu'elle disait"
+  ],
+  "not_in_seed": [],
+  "reintroduced": [
+   "c'est"
+  ],
+  "m_missing_components": [],
+  "has_parens": []
+ },
+ {
+  "tag": "qwen-fast",
+  "id": "T-spa_for_eng-77",
+  "cls": "translate",
+  "finish": "stop",
+  "ms": 65907,
+  "human": "Me sorprende lo rápido que estoy empezando a entender",
+  "model": "Me sorprende lo rápido que empiezo a entender",
+  "exact": false,
+  "has_parens": false,
+  "register_drift": null
+ },
+ {
+  "tag": "qwen-fast",
+  "id": "T-spa_for_eng-285",
+  "cls": "translate",
+  "finish": "stop",
+  "ms": 55854,
+  "human": "ella habla español",
+  "model": "Ella habla español",
+  "exact": true,
+  "has_parens": false,
+  "register_drift": null
+ },
+ {
+  "tag": "qwen-fast",
+  "id": "T-spa_for_eng-213",
+  "cls": "translate",
+  "finish": "stop",
+  "ms": 56578,
+  "human": "no sabemos lo que están intentando conseguir",
+  "model": "no sabemos lo que intentan lograr",
+  "exact": false,
+  "has_parens": false,
+  "register_drift": null
+ },
+ {
+  "tag": "qwen-fast",
+  "id": "T-spa_for_eng-356",
+  "cls": "translate",
+  "finish": "stop",
+  "ms": 43278,
+  "human": "sí, tenían algo importante que discutir",
+  "model": "sí tenían algo importante que discutir",
+  "exact": true,
+  "has_parens": false,
+  "register_drift": null
+ },
+ {
+  "tag": "qwen-fast",
+  "id": "D-fra_for_eng-185",
+  "cls": "decompose",
+  "finish": "stop",
+  "ms": 22443,
+  "parsed": true,
+  "n_model": 5,
+  "n_human": 1,
+  "model": [
+   "M:I think that = Je pense que",
+   "A:you = vous",
+   "A:left = avez laissés",
+   "A:them = les",
+   "A:at work = au travail"
+  ],
+  "human": [
+   "M:left them = les avez laissés"
+  ],
+  "not_in_seed": [],
+  "reintroduced": [
+   "Je pense que",
+   "les"
+  ],
+  "m_missing_components": [],
+  "has_parens": []
+ },
+ {
+  "tag": "qwen-fast",
+  "id": "D-fra_for_eng-460",
+  "cls": "decompose",
+  "finish": "stop",
+  "ms": 19801,
+  "parsed": true,
+  "n_model": 4,
+  "n_human": 3,
+  "model": [
+   "M:I want to find = je veux trouver",
+   "A:a shop = un magasin",
+   "A:near = près de",
+   "A:the hotel = l'hôtel"
+  ],
+  "human": [
+   "M:I want to find = je veux trouver",
+   "A:shop = magasin",
+   "M:near the hotel = près de l'hôtel"
+  ],
+  "not_in_seed": [],
+  "reintroduced": [
+   "près de"
+  ],
+  "m_missing_components": [],
+  "has_parens": []
+ },
+ {
+  "tag": "qwen-fast",
+  "id": "D-spa_for_eng-125",
+  "cls": "decompose",
+  "finish": "stop",
+  "ms": 4523,
+  "parsed": true,
+  "n_model": 1,
+  "n_human": 2,
+  "model": [
+   "M:I believe that = creo que"
+  ],
+  "human": [
+   "A:I believe = creo",
+   "M:your idea was = tu idea fue"
+  ],
+  "not_in_seed": [],
+  "reintroduced": [],
+  "m_missing_components": [],
+  "has_parens": []
+ },
+ {
+  "tag": "qwen-fast",
+  "id": "D-spa_for_eng-231",
+  "cls": "decompose",
+  "finish": "stop",
+  "ms": 3409,
+  "parsed": true,
+  "n_model": 2,
+  "n_human": 3,
+  "model": [
+   "A:old = mayor",
+   "M:wanted to ask for = quería pedir"
+  ],
+  "human": [
+   "A:I know = conozco",
+   "M:an old man = un hombre mayor",
+   "M:to ask for help = pedir ayuda"
+  ],
+  "not_in_seed": [],
+  "reintroduced": [],
+  "m_missing_components": [],
+  "has_parens": []
+ },
+ {
+  "tag": "qwen-fast",
+  "id": "D-spa_for_eng-178",
+  "cls": "decompose",
+  "finish": "stop",
+  "ms": 5728,
+  "parsed": true,
+  "n_model": 3,
+  "n_human": 2,
+  "model": [
+   "M:I didn't have time = no tuve tiempo",
+   "M:although = aunque",
+   "M:I wanted to see you = quería verte"
+  ],
+  "human": [
+   "A:I had = tuve",
+   "A:although = aunque"
+  ],
+  "not_in_seed": [],
+  "reintroduced": [],
+  "m_missing_components": [
+   "aunque"
+  ],
+  "has_parens": []
+ },
+ {
+  "tag": "qwen-fast",
+  "id": "D-spa_for_eng-288",
+  "cls": "decompose",
+  "finish": "stop",
+  "ms": 6502,
+  "parsed": true,
+  "n_model": 5,
+  "n_human": 3,
+  "model": [
+   "M:most people = la mayoría de las personas",
+   "A:I know = conozco",
+   "A:like = les gusta",
+   "A:to watch = ver",
+   "A:television = la televisión"
+  ],
+  "human": [
+   "M:most = la mayoría",
+   "A:I know = conozco",
+   "M:who like watching television = que les gusta ver la televisión"
+  ],
+  "not_in_seed": [],
+  "reintroduced": [
+   "conozco",
+   "ver"
+  ],
+  "m_missing_components": [],
+  "has_parens": []
+ },
+ {
+  "tag": "qwen-fast",
+  "id": "D-spa_for_eng-398",
+  "cls": "decompose",
+  "finish": "stop",
+  "ms": 7643,
+  "parsed": true,
+  "n_model": 4,
+  "n_human": 2,
+  "model": [
+   "M:we want = queremos",
+   "M:to become = convertirnos en",
+   "M:more patient = más pacientes",
+   "M:with our children = con nuestros hijos"
+  ],
+  "human": [
+   "M:to become more patient = ser más pacientes",
+   "M:our children = nuestros hijos"
+  ],
+  "not_in_seed": [
+   "convertirnos en"
+  ],
+  "reintroduced": [
+   "queremos"
+  ],
+  "m_missing_components": [],
+  "has_parens": []
+ },
+ {
+  "tag": "qwen-fast",
+  "id": "D-spa_for_eng-453",
+  "cls": "decompose",
+  "finish": "stop",
+  "ms": 6647,
+  "parsed": true,
+  "n_model": 4,
+  "n_human": 2,
+  "model": [
+   "M:did they say = ¿Dijeron",
+   "M:who = a quién",
+   "A:they saw = vieron",
+   "A:last night = anoche"
+  ],
+  "human": [
+   "A:last night = anoche",
+   "M:who they saw = a quién vieron"
+  ],
+  "not_in_seed": [],
+  "reintroduced": [
+   "¿Dijeron",
+   "anoche"
+  ],
+  "m_missing_components": [],
+  "has_parens": []
+ },
+ {
+  "tag": "qwen-fast",
+  "id": "P-fra_for_eng-105-2",
+  "cls": "phrases",
+  "finish": "stop",
+  "ms": 17450,
+  "parsed": true,
+  "n_build": 4,
+  "n_use": 5,
+  "floor_ok": true,
+  "missing_lego": [],
+  "has_parens": [],
+  "unknown_words": [
+   "devait",
+   "allait"
+  ],
+  "model": [
+   "BUILD: he didn't know  |  il ne connaissait pas",
+   "BUILD: he didn't know the answer  |  il ne connaissait pas la réponse",
+   "BUILD: he didn't know how to speak  |  il ne connaissait pas la façon de parler",
+   "BUILD: he didn't know what to say  |  il ne connaissait pas ce qu'il devait dire",
+   "USE: He didn't know the truth.  |  Il ne connaissait pas la vérité.",
+   "USE: He didn't know how to explain.  |  Il ne connaissait pas la façon d'expliquer.",
+   "USE: He didn't know what was going to happen.  |  Il ne connaissait pas ce qui allait se passer.",
+   "USE: He didn't know the whole sentence.  |  Il ne connaissait pas toute la phrase.",
+   "USE: He didn't know how to say it.  |  Il ne connaissait pas la façon de le dire."
+  ],
+  "human": [
+   "BUILD: he didn't know  |  il ne connaissait pas",
+   "BUILD: he didn't know  |  il ne connaissait pas",
+   "BUILD: he didn't know that  |  il ne connaissait pas ça",
+   "BUILD: he didn't know that  |  il ne connaissait pas ça",
+   "USE: he didn't know why  |  il ne connaissait pas pourquoi",
+   "USE: he didn't know what we're doing  |  il ne connaissait pas ce que nous faisons",
+   "USE: he didn't know that it's not like that  |  il ne connaissait pas que ce n'est pas comme ça",
+   "USE: I said he didn't know many more words  |  j'ai dit qu'il ne connaissait pas beaucoup plus de mots",
+   "USE: that is why he didn't know how to change it  |  c'est pour cela qu'il ne connaissait pas comment le changer"
+  ]
+ },
+ {
+  "tag": "qwen-fast",
+  "id": "P-fra_for_eng-142-2",
+  "cls": "phrases",
+  "finish": "stop",
+  "ms": 13564,
+  "parsed": true,
+  "n_build": 4,
+  "n_use": 5,
+  "floor_ok": true,
+  "missing_lego": [],
+  "has_parens": [],
+  "unknown_words": [
+   "enseigne",
+   "ecoute"
+  ],
+  "model": [
+   "BUILD: I want to say I'm grateful to you  |  je veux dire je t'en suis reconnaissant",
+   "BUILD: I'm trying to say I'm grateful to you  |  j'essaie de dire je t'en suis reconnaissant",
+   "BUILD: I'd like to say I'm grateful to you  |  j'aimerais dire je t'en suis reconnaissant",
+   "BUILD: I'm not sure if I can say I'm grateful to you  |  je ne suis pas sûr de pouvoir dire je t'en suis reconnaissant",
+   "USE: I'm grateful to you for helping me  |  je t'en suis reconnaissant de m'avoir aidé",
+   "USE: I'm grateful to you for everything  |  je t'en suis reconnaissant pour tout",
+   "USE: I'm grateful to you for being my friend  |  je t'en suis reconnaissant d'être mon ami",
+   "USE: I'm grateful to you for teaching me  |  je t'en suis reconnaissant de m'avoir enseigné",
+   "USE: I'm grateful to you for listening to me  |  je t'en suis reconnaissant de m'avoir écouté"
+  ],
+  "human": [
+   "BUILD: I'm grateful to you  |  je t'en suis reconnaissant",
+   "BUILD: I'm grateful to you for this  |  je t'en suis reconnaissant pour ça",
+   "BUILD: I'm grateful to you for that  |  je t'en suis reconnaissant pour cela",
+   "BUILD: I'm grateful to you today  |  je t'en suis reconnaissant aujourd'hui",
+   "USE: I'm grateful to you, that's very kind  |  je t'en suis reconnaissant, c'est très gentil",
+   "USE: I wanted to say I'm grateful to you  |  je voulais dire que je t'en suis reconnaissant",
+   "USE: I think I'm grateful to you for this  |  je pense que je t'en suis reconnaissant pour ça",
+   "USE: I'm grateful to you for your work yesterday  |  je t'en suis reconnaissant pour ton travail hier",
+   "USE: I'm grateful to you, everything is okay now  |  je t'en suis reconnaissant, tout va bien maintenant",
+   "USE: I'm grateful to you for everything you said  |  je t'en suis reconnaissant pour tout ce que tu as dit",
+   "USE: I'm grateful to you for everything you did  |  je t'en suis reconnaissant pour tout ce que tu as fait",
+   "USE: I'm grateful to you for this work today  |  je t'en suis reconnaissant pour ce travail aujourd'hui"
+  ]
+ },
+ {
+  "tag": "qwen-fast",
+  "id": "D-fra_for_eng-351",
+  "cls": "decompose",
+  "finish": "stop",
+  "ms": 75893,
+  "parsed": true,
+  "n_model": 1,
+  "n_human": 2,
+  "model": [
+   "M:no he didn't want to leave me on my own = non il ne voulait pas me laisser seul"
+  ],
+  "human": [
+   "A:alone = seul",
+   "M:he didn't want to leave me = il ne voulait pas me laisser"
+  ],
+  "not_in_seed": [],
+  "reintroduced": [],
+  "m_missing_components": [],
+  "has_parens": []
+ },
+ {
+  "tag": "qwen-fast",
+  "id": "D-fra_for_eng-405",
+  "cls": "decompose",
+  "finish": "stop",
+  "ms": 79414,
+  "parsed": true,
+  "n_model": 5,
+  "n_human": 5,
+  "model": [
+   "M:should we = devrions-nous",
+   "A:ask = demander",
+   "A:if = si",
+   "A:we have to = nous devons",
+   "A:book = réserver"
+  ],
+  "human": [
+   "M:should we = devrions-nous",
+   "A:to ask = demander",
+   "A:if = si",
+   "A:to book = réserver",
+   "M:if we have to book = si nous devons réserver"
+  ],
+  "not_in_seed": [],
+  "reintroduced": [
+   "si",
+   "nous devons"
+  ],
+  "m_missing_components": [],
+  "has_parens": []
+ },
+ {
+  "tag": "qwen-fast",
+  "id": "P-fra_for_eng-187-1",
+  "cls": "phrases",
+  "finish": "stop",
+  "ms": 31213,
+  "parsed": true,
+  "n_build": 4,
+  "n_use": 5,
+  "floor_ok": true,
+  "missing_lego": [],
+  "has_parens": [],
+  "unknown_words": [
+   "bon",
+   "rencontrons"
+  ],
+  "model": [
+   "BUILD: I have learnt a lot so far  |  J'ai beaucoup appris jusqu'ici",
+   "BUILD: It is good so far  |  C'est bon jusqu'ici",
+   "BUILD: I am trying so far  |  J'essaie jusqu'ici",
+   "BUILD: We are meeting so far  |  Nous nous rencontrons jusqu'ici",
+   "USE: I have learnt a lot so far  |  J'ai beaucoup appris jusqu'ici",
+   "USE: It is good so far  |  C'est bon jusqu'ici",
+   "USE: I am trying so far  |  J'essaie jusqu'ici",
+   "USE: We are meeting so far  |  Nous nous rencontrons jusqu'ici",
+   "USE: I am happy so far  |  Je suis content jusqu'ici"
+  ],
+  "human": [
+   "BUILD: so far  |  jusqu'ici",
+   "BUILD: so far  |  jusqu'ici",
+   "BUILD: so far it's good  |  jusqu'ici c'est bien",
+   "BUILD: I like it so far  |  j'aime ça jusqu'ici",
+   "USE: It's good so far  |  c'est bien jusqu'ici",
+   "USE: Everything is good so far  |  tout va bien jusqu'ici",
+   "USE: I understand so far  |  je comprends jusqu'ici",
+   "USE: I'm happy so far  |  je suis content jusqu'ici",
+   "USE: so far I don't know  |  jusqu'ici je ne sais pas",
+   "USE: I'm happy so far  |  je suis content jusqu'ici",
+   "USE: I haven't seen anything so far  |  je n'ai rien vu jusqu'ici",
+   "USE: I think it's working so far  |  je pense que ça fonctionne jusqu'ici"
+  ]
+ },
+ {
+  "tag": "qwen-fast",
+  "id": "D-spa_for_eng-344",
+  "cls": "decompose",
+  "finish": "stop",
+  "ms": 97795,
+  "parsed": true,
+  "n_model": 3,
+  "n_human": 1,
+  "model": [
+   "M:who said that = que dijo que",
+   "A:he's happy = está contento",
+   "A:to help you = de ayudarte"
+  ],
+  "human": [
+   "M:happy to help you = contento de ayudarte"
+  ],
+  "not_in_seed": [],
+  "reintroduced": [],
+  "m_missing_components": [],
+  "has_parens": []
+ },
+ {
+  "tag": "qwen-fast",
+  "id": "D-spa_for_eng-72",
+  "cls": "decompose",
+  "finish": "stop",
+  "ms": 120895,
+  "parsed": true,
+  "n_model": 3,
+  "n_human": 2,
+  "model": [
+   "M:I think that = pienso que",
+   "M:you're doing = lo estás haciendo",
+   "A:very well = muy bien"
+  ],
+  "human": [
+   "A:it = lo",
+   "M:you're doing it = lo estás haciendo"
+  ],
+  "not_in_seed": [],
+  "reintroduced": [
+   "pienso que",
+   "muy bien"
+  ],
+  "m_missing_components": [],
+  "has_parens": []
+ },
+ {
+  "tag": "qwen-fast",
+  "id": "P-fra_for_eng-254-1",
+  "cls": "phrases",
+  "finish": "stop",
+  "ms": 58113,
+  "parsed": true,
+  "n_build": 4,
+  "n_use": 5,
+  "floor_ok": true,
+  "missing_lego": [],
+  "has_parens": [],
+  "unknown_words": [],
+  "model": [
+   "BUILD: I'm ready since this morning  |  Je suis prêt depuis ce matin",
+   "BUILD: I've been ready since this morning  |  Je suis prêt depuis ce matin",
+   "BUILD: I am ready since this morning  |  Je suis prêt depuis ce matin",
+   "BUILD: I was ready since this morning  |  Je suis prêt depuis ce matin",
+   "USE: I've been ready since this morning  |  Je suis prêt depuis ce matin",
+   "USE: I've been ready since this morning and I want to speak  |  Je suis prêt depuis ce matin et je veux parler",
+   "USE: I've been ready since this morning to learn  |  Je suis prêt depuis ce matin pour apprendre",
+   "USE: I've been ready since this morning with you  |  Je suis prêt depuis ce matin avec toi",
+   "USE: I've been ready since this morning now  |  Je suis prêt depuis ce matin maintenant"
+  ],
+  "human": [
+   "BUILD: I've been ready since this morning  |  je suis prêt depuis ce matin",
+   "BUILD: I've been ready since this morning  |  je suis prêt depuis ce matin",
+   "BUILD: I've been ready since this morning to start  |  je suis prêt depuis ce matin pour commencer",
+   "BUILD: I've been ready since this morning but you weren't here  |  je suis prêt depuis ce matin mais tu n'es pas ici",
+   "USE: I've been ready since this morning to talk about this with you  |  je suis prêt depuis ce matin pour parler de ça avec toi",
+   "USE: I've been ready since this morning but I don't know where you are  |  je suis prêt depuis ce matin mais je ne sais pas où tu es",
+   "USE: I've been ready since this morning to help you with this work  |  je suis prêt depuis ce matin pour t'aider avec ce travail",
+   "USE: I've been ready since this morning to finish this work with you  |  je suis prêt depuis ce matin pour finir ce travail avec toi",
+   "USE: I've been ready since this morning to start this conversation  |  je suis prêt depuis ce matin pour commencer cette conversation",
+   "USE: I've been ready since this morning so we can leave now  |  je suis prêt depuis ce matin pour qu'on puisse partir maintenant",
+   "USE: I've been ready since this morning so I don't understand the problem  |  je suis prêt depuis ce matin donc je ne comprends pas le problème",
+   "USE: I've been ready since this morning so I think we can start now  |  je suis prêt depuis ce matin donc je pense qu'on peut commencer maintenant"
+  ]
+ },
+ {
+  "tag": "qwen-fast",
+  "id": "P-spa_for_eng-100-3",
+  "cls": "phrases",
+  "finish": "stop",
+  "ms": 87593,
+  "parsed": true,
+  "n_build": 4,
+  "n_use": 5,
+  "floor_ok": true,
+  "missing_lego": [
+   "build: Estoy intentando recordar una palabra parecida",
+   "use: Entiendo cosas parecidas",
+   "use: Él quiere descubrir respuestas parecidas",
+   "use: Disfruto haciendo cosas parecidas"
+  ],
+  "has_parens": [],
+  "unknown_words": [
+   "parecida",
+   "dije",
+   "parecidas",
+   "respuestas"
+  ],
+  "model": [
+   "BUILD: I want to say something similar  |  Quiero decir algo parecido",
+   "BUILD: I'm trying to remember a similar word  |  Estoy intentando recordar una palabra parecida",
+   "BUILD: I speak a little similar  |  Hablo un poco parecido",
+   "BUILD: I want you to speak similar  |  Quiero que hables parecido",
+   "USE: This is similar to what I said  |  Esto es parecido a lo que dije",
+   "USE: I understand similar things  |  Entiendo cosas parecidas",
+   "USE: He wants to find out similar answers  |  Él quiere descubrir respuestas parecidas",
+   "USE: I enjoy doing similar things  |  Disfruto haciendo cosas parecidas",
+   "USE: It's not working similar  |  No está funcionando parecido"
+  ],
+  "human": [
+   "BUILD: Similar  |  Parecido",
+   "BUILD: Something similar  |  Algo parecido",
+   "BUILD: Very similar  |  Muy parecido",
+   "BUILD: Something similar to that  |  Algo parecido a eso",
+   "BUILD: It is similar  |  Es parecido",
+   "USE: I think this is something similar to what you said yesterday  |  Pienso que esto es algo parecido a lo que dijiste ayer",
+   "USE: She wants to do something similar tonight  |  Ella quiere hacer algo parecido esta noche",
+   "USE: She said something very similar to what you said  |  Ella dijo algo muy parecido a lo que dijiste",
+   "USE: She told me something very similar about your friend  |  Ella me dijo algo muy parecido sobre tu amigo",
+   "USE: I would like to try something similar whenever you want  |  Me gustaría intentar algo parecido cuando quieras",
+   "USE: I think I want to do something similar to this  |  Pienso que quiero hacer algo parecido a esto",
+   "USE: He said something very similar about my friend last week  |  Él dijo algo muy parecido sobre mi amigo la semana pasada",
+   "USE: I think she said something similar yesterday when I was here  |  Pienso que ella dijo algo parecido ayer cuando estaba aquí",
+   "USE: It is something very similar to what she said  |  Es algo muy parecido a lo que ella dijo",
+   "USE: He asked me to try something similar with his dog  |  Él quiere intentar algo parecido con su perro",
+   "USE: I think what you said is very similar to what I was thinking  |  Pienso que lo que dijiste es muy parecido a lo que estaba pensando"
+  ]
+ },
+ {
+  "tag": "qwen-fast",
+  "id": "D-fra_for_eng-295",
+  "cls": "decompose",
+  "finish": "stop",
+  "ms": 177866,
+  "parsed": true,
+  "n_model": 4,
+  "n_human": 1,
+  "model": [
+   "M:I didn't say = Je n'ai pas dit",
+   "M:that I wanted to = que je voulais",
+   "A:finish = finir",
+   "M:in a day = en un jour"
+  ],
+  "human": [
+   "M:in a day = en un jour"
+  ],
+  "not_in_seed": [],
+  "reintroduced": [
+   "finir"
+  ],
+  "m_missing_components": [],
+  "has_parens": []
+ },
+ {
+  "tag": "qwen-fast",
+  "id": "P-spa_for_eng-126-5",
+  "cls": "phrases",
+  "finish": "stop",
+  "ms": 80341,
+  "parsed": true,
+  "n_build": 4,
+  "n_use": 5,
+  "floor_ok": true,
+  "missing_lego": [
+   "use: Quiero hablar español contigo ahora",
+   "use: Estoy intentando aprender cómo hablar frecuentemente",
+   "use: Quiero practicar decir algo",
+   "use: Voy a hablar con otra persona",
+   "use: Quiero recordar una palabra"
+  ],
+  "has_parens": [],
+  "unknown_words": [],
+  "model": [
+   "BUILD: I want to say the shape  |  Quiero decir la forma",
+   "BUILD: I'm trying to remember the shape  |  Estoy intentando recordar la forma",
+   "BUILD: I'm going to explain the shape  |  Voy a explicar la forma",
+   "BUILD: I need to find the shape  |  Necesito encontrar la forma",
+   "USE: I want to speak Spanish with you now  |  Quiero hablar español contigo ahora",
+   "USE: I'm trying to learn how to speak frequently  |  Estoy intentando aprender cómo hablar frecuentemente",
+   "USE: I want to practice saying something  |  Quiero practicar decir algo",
+   "USE: I'm going to speak with someone else  |  Voy a hablar con otra persona",
+   "USE: I want to remember a word  |  Quiero recordar una palabra"
+  ],
+  "human": [
+   "BUILD: Shape  |  Forma",
+   "BUILD: The shape  |  La forma",
+   "BUILD: A shape  |  Una forma",
+   "BUILD: In shape  |  En forma",
+   "BUILD: Good shape  |  Buena forma",
+   "BUILD: It's changing the way  |  Está cambiando la forma",
+   "BUILD: Changing the shape of my brain  |  Cambiando la forma de mi cerebro",
+   "USE: I want to talk about the shape of this  |  Quiero hablar sobre la forma de esto",
+   "USE: I think the shape of this is very good  |  Pienso que la forma de esto es muy buena",
+   "USE: I want to change the shape of what I'm doing here  |  Quiero cambiar la forma de lo que estoy haciendo aquí",
+   "USE: He wants to explain the shape of his idea  |  Él quiere explicar la forma de su idea",
+   "USE: I want to think about the shape of what I want to say  |  Quiero pensar en la forma de lo que quiero decir",
+   "USE: The way we practise is very good  |  La forma de practicar es muy buena",
+   "USE: I think the shape of this work is better now  |  Pienso que la forma de este trabajo es mejor ahora",
+   "USE: He wants to change the shape of this, and I understand  |  Él quiere cambiar la forma de esto, y lo entiendo",
+   "USE: What I want is to understand the shape of what you want to say to me  |  Lo que quiero es entender la forma de lo que quieres decirme",
+   "USE: This work is changing the shape of my brain  |  Este trabajo está cambiando la forma de mi cerebro",
+   "USE: I believe this language is changing the shape of my brain  |  Creo que este idioma está cambiando la forma de mi cerebro",
+   "USE: I think this work is changing the shape of my brain  |  Pienso que este trabajo está cambiando la forma de mi cerebro",
+   "USE: I like this work because it's changing the way I think in Spanish  |  Me gusta este trabajo porque está cambiando la forma de pensar en español",
+   "USE: Learning Spanish is changing the shape of my brain  |  Aprender español está cambiando la forma de mi cerebro",
+   "USE: I like that learning is changing the shape of my brain  |  Me gusta que aprender está cambiando la forma de mi cerebro",
+   "USE: I believe speaking Spanish is changing the shape of my brain  |  Creo que hablar español está cambiando la forma de mi cerebro",
+   "USE: Learning this is changing the shape of my brain for the better  |  Aprendiendo esto está cambiando para mejor la forma de mi cerebro",
+   "USE: I believe that everything I'm learning is changing the way I speak  |  Creo que todo lo que estoy aprendiendo está cambiando la forma de hablar",
+   "USE: I think this moment is changing the way I see things here  |  Pienso que este momento está cambiando mi forma de ver las cosas aquí",
+   "USE: I believe learning this language is changing the way I think  |  Creo que aprender este idioma está cambiando mi forma de pensar",
+   "USE: I like that practicing is changing the shape of my brain  |  Me gusta que practicar está cambiando la forma de mi cerebro",
+   "USE: I believe that working hard is changing the shape of my brain in Spanish  |  Creo que trabajar duro está cambiando la forma de mi cerebro en español",
+   "USE: I believe my work here will change the way I think in Spanish  |  Creo que mi trabajo aquí va a cambiar mi forma de pensar en español"
+  ]
+ },
+ {
+  "tag": "qwen-fast",
+  "id": "P-spa_for_eng-158-2",
+  "cls": "phrases",
+  "finish": "stop",
+  "ms": 77503,
+  "parsed": true,
+  "n_build": 4,
+  "n_use": 5,
+  "floor_ok": true,
+  "missing_lego": [],
+  "has_parens": [],
+  "unknown_words": [],
+  "model": [
+   "BUILD: I want to say something else  |  Quiero decir otra cosa",
+   "BUILD: I am trying to remember something else  |  Estoy intentando recordar otra cosa",
+   "BUILD: I need to find something else  |  Necesito encontrar otra cosa",
+   "BUILD: I don't want to talk about something else  |  No quiero hablar de otra cosa",
+   "USE: I want to say something else now  |  Quiero decir otra cosa ahora",
+   "USE: I am trying to remember something else today  |  Estoy intentando recordar otra cosa hoy",
+   "USE: I need to find something else quickly  |  Necesito encontrar otra cosa rápidamente",
+   "USE: I don't want to talk about something else with you  |  No quiero hablar de otra cosa contigo",
+   "USE: I want to say something else easily  |  Quiero decir otra cosa fácilmente"
+  ],
+  "human": [
+   "BUILD: Something else  |  Otra cosa",
+   "BUILD: Let's talk about something else  |  Hablemos de otra cosa",
+   "BUILD: I want to do something else  |  Quiero hacer otra cosa",
+   "BUILD: There's something else I want to talk to you about  |  Hay otra cosa de la que quiero hablar contigo",
+   "BUILD: I want to think about something else  |  Quiero pensar en otra cosa",
+   "USE: Let's talk about something else because I wouldn't like to keep talking about this  |  Hablemos de otra cosa porque no me gustaría seguir hablando de esto",
+   "USE: There's something else I want to talk to you about before I have to leave  |  Hay otra cosa de la que quiero hablar contigo antes de que tenga que irme",
+   "USE: There's something else I don't understand and I want to know if you can help me  |  Hay otra cosa que no entiendo y quiero saber si puedes ayudarme",
+   "USE: I'd like to do something else this afternoon because I don't want to read any more  |  Me gustaría hacer otra cosa esta tarde porque no quiero leer más",
+   "USE: There's something else I want to know before carrying on  |  Hay otra cosa que quiero saber antes de seguir",
+   "USE: I want to think about something else because this seems very difficult to me  |  Quiero pensar en otra cosa porque esto me parece muy difícil",
+   "USE: She wants to do something else but I don't know what  |  Ella quiere hacer otra cosa pero no sé qué",
+   "USE: He doesn't want to talk about something else because he wants to keep talking about that  |  Él no quiere hablar de otra cosa porque quiere seguir hablando de eso",
+   "USE: Let's talk about something else if you don't mind  |  Hablemos de otra cosa si no te importa",
+   "USE: I want to start doing something else next month  |  Quiero empezar a hacer otra cosa el mes que viene",
+   "USE: I want to talk about something else now because this is not interesting  |  Quiero hablar de otra cosa ahora, porque esto no es interesante",
+   "USE: I think we need to talk about something else because this is very difficult  |  Pienso que necesitamos hablar de otra cosa porque esto es muy difícil",
+   "USE: There's something else I want to tell you before we talk about the rest  |  Hay otra cosa que quiero saber antes de seguir porque es muy importante",
+   "USE: She said she wanted to do something else this evening but I don't know what it was  |  Ella dijo que quería hacer otra cosa esta noche pero no sé qué era",
+   "USE: I'd like to find something else to read because I already know this  |  Me gustaría encontrar otra cosa para leer porque ya sé esto"
+  ]
+ },
+ {
+  "tag": "qwen-fast",
+  "id": "P-spa_for_eng-234-3",
+  "cls": "phrases",
+  "finish": "stop",
+  "ms": 71783,
+  "parsed": true,
+  "n_build": 4,
+  "n_use": 5,
+  "floor_ok": true,
+  "missing_lego": [],
+  "has_parens": [],
+  "unknown_words": [],
+  "model": [
+   "BUILD: he works  |  trabaja",
+   "BUILD: he works hard  |  trabaja duro",
+   "BUILD: he works as a teacher  |  trabaja como profesor",
+   "BUILD: he works at the council  |  trabaja en el ayuntamiento",
+   "USE: he works as a teacher  |  trabaja como profesor",
+   "USE: he works hard  |  trabaja duro",
+   "USE: he works at the council  |  trabaja en el ayuntamiento",
+   "USE: he works with me  |  trabaja conmigo",
+   "USE: he works with everyone else  |  trabaja con todos los demás"
+  ],
+  "human": [
+   "BUILD: he works  |  Trabaja",
+   "BUILD: My daughter works for the town hall  |  Mi hija trabaja para el ayuntamiento",
+   "BUILD: My son works as a teacher  |  Mi hijo trabaja como profesor",
+   "BUILD: he works here with us  |  Trabaja aquí con nosotros",
+   "BUILD: She works with my friend  |  Trabaja con mi amigo",
+   "USE: My son works as a teacher and he wanted to ask for help with something new  |  Mi hijo trabaja como profesor y quería pedir ayuda con algo nuevo",
+   "USE: I know a young woman who knows your sister and works here  |  Conozco a una mujer joven que conoce a tu hermana y trabaja aquí",
+   "USE: She is a woman who works very hard and does things well  |  Es una mujer que trabaja muy duro y hace las cosas bien",
+   "USE: The man who works here wanted to talk with you this morning  |  El hombre que trabaja aquí quería hablar contigo esta mañana",
+   "USE: I think she works here and could help you with what you need  |  Pienso que trabaja aquí y podría ayudarte con lo que necesitas",
+   "USE: She said she works with someone who knows your sister very well  |  Dijo que trabaja con alguien que conoce a tu hermana muy bien",
+   "USE: Do you know where the woman works who was here a while ago?  |  ¿Sabes dónde trabaja la mujer que estaba aquí hace un rato?",
+   "USE: She works with people who are trying to learn Spanish here  |  Trabaja con personas que están intentando aprender español aquí",
+   "USE: She works here and can help you with what you need to do  |  Ella trabaja aquí y puede ayudarte con lo que necesitas hacer",
+   "USE: I think she works with your sister and she wanted to talk with you today  |  Pienso que trabaja con tu hermana y quería hablar contigo hoy",
+   "USE: My friend used to work in an office and wanted to ask for help with that  |  Mi amigo trabajaba en una oficina y quería pedir ayuda con eso",
+   "USE: She works on something difficult with them and is trying to do it well  |  Trabaja en algo difícil con ellos y está intentando hacerlo bien",
+   "USE: I know someone who works here and can help you with that  |  Conozco a alguien que trabaja aquí y puede ayudarte con eso",
+   "USE: She works with people who want to learn to explain things in a different way  |  Trabaja con personas que quieren aprender a explicar esto de manera diferente",
+   "USE: She works here a lot and wanted to ask for help with something interesting  |  Trabaja aquí mucho y quería pedir ayuda con algo interesante"
+  ]
+ },
+ {
+  "tag": "qwen-fast",
+  "id": "P-spa_for_eng-200-3",
+  "cls": "phrases",
+  "finish": "stop",
+  "ms": 82762,
+  "parsed": true,
+  "n_build": 4,
+  "n_use": 5,
+  "floor_ok": true,
+  "missing_lego": [
+   "build: quiero asegurarme de que",
+   "build: estoy intentando asegurarme de que",
+   "build: necesito asegurarme de que",
+   "build: me gustaría asegurarme de que",
+   "use: me aseguro de que hablo despacio",
+   "use: me aseguro de que entiendo",
+   "use: me aseguro de que recuerdo la palabra",
+   "use: me aseguro de que practico frecuentemente",
+   "use: me aseguro de que estoy listo"
+  ],
+  "has_parens": [],
+  "unknown_words": [
+   "asegurarme",
+   "aseguro",
+   "recuerdo",
+   "practico"
+  ],
+  "model": [
+   "BUILD: I want to make sure that  |  quiero asegurarme de que",
+   "BUILD: I'm trying to make sure that  |  estoy intentando asegurarme de que",
+   "BUILD: I need to make sure that  |  necesito asegurarme de que",
+   "BUILD: I would like to make sure that  |  me gustaría asegurarme de que",
+   "USE: I make sure that I speak slowly  |  me aseguro de que hablo despacio",
+   "USE: I make sure that I understand  |  me aseguro de que entiendo",
+   "USE: I make sure that I remember the word  |  me aseguro de que recuerdo la palabra",
+   "USE: I make sure that I practice frequently  |  me aseguro de que practico frecuentemente",
+   "USE: I make sure that I am ready  |  me aseguro de que estoy listo"
+  ],
+  "human": [
+   "BUILD: To make sure that  |  Asegurarse de que",
+   "BUILD: Make sure that it is going to work  |  Asegurarse de que vaya a funcionar",
+   "BUILD: They want to make sure that  |  Quieren asegurarse de que",
+   "BUILD: To make sure that you understand  |  Asegurarse de que entiendes",
+   "BUILD: To make sure that we are doing it well  |  Asegurarse de que lo estamos haciendo bien",
+   "USE: We need to make sure that what we are doing is going to work before we continue  |  Necesitamos asegurarnos de que lo que estamos haciendo va a funcionar antes de seguir",
+   "USE: They say we need to make sure that everything is ready before we start  |  Dicen que necesitamos asegurarnos de que todo esté listo antes de empezar",
+   "USE: It is important to make sure that you understand everything before continuing  |  Es importante asegurarte de que entiendes todo antes de seguir",
+   "USE: they want to make sure that everything is ready  |  quieren asegurarse de que todo esté listo",
+   "USE: they say it is important to make sure that you understand everything  |  dicen que es importante asegurarse de que entiendes todo"
+  ]
+ },
+ {
+  "tag": "qwen-fast",
+  "id": "P-spa_for_eng-282-2",
+  "cls": "phrases",
+  "finish": "stop",
+  "ms": 54368,
+  "parsed": true,
+  "n_build": 4,
+  "n_use": 5,
+  "floor_ok": true,
+  "missing_lego": [],
+  "has_parens": [],
+  "unknown_words": [
+   "resolver",
+   "encontre"
+  ],
+  "model": [
+   "BUILD: I have a problem  |  Tengo un problema",
+   "BUILD: I want to solve a problem  |  Quiero resolver un problema",
+   "BUILD: I need to find a problem  |  Necesito encontrar un problema",
+   "BUILD: I don't want a problem  |  No quiero un problema",
+   "USE: I have a problem  |  Tengo un problema",
+   "USE: I need to solve a problem  |  Necesito resolver un problema",
+   "USE: I don't want a problem  |  No quiero un problema",
+   "USE: I found a problem  |  Encontré un problema",
+   "USE: It is a problem  |  Es un problema"
+  ],
+  "human": [
+   "BUILD: A problem  |  Un problema",
+   "BUILD: Not a problem  |  No es un problema",
+   "BUILD: There is a problem  |  Hay un problema",
+   "BUILD: Could be a problem  |  Podría ser un problema",
+   "BUILD: A different problem  |  Un problema diferente",
+   "BUILD: A new problem  |  Un problema nuevo",
+   "BUILD: Do you mind if there is a problem?  |  ¿Te importa si hay un problema?",
+   "USE: That is not a problem when you are working on something difficult  |  No es un problema cuando trabajas en algo difícil con ellos",
+   "USE: I think there is a problem with what we are doing  |  Pienso que hay un problema con lo que estamos haciendo",
+   "USE: Do you mind telling me if there is a problem?  |  ¿Te importa decirme si hay un problema?",
+   "USE: Do you mind if I finish my coffee before we talk about the problem?  |  ¿Te importa si termino mi café antes de que hablemos de un problema?",
+   "USE: I finish before the meeting and so there is no problem  |  Termino antes de la reunión así que no hay un problema",
+   "USE: I think there could be a problem with this but I am not sure  |  Pienso que podría ser un problema con esto pero no estoy seguro",
+   "USE: There is a problem with the way we are trying to do this together  |  Hay un problema con la manera en que intentamos hacer esto juntos",
+   "USE: If there is a problem do you mind telling me what it is?  |  Si hay un problema, ¿te importa decirme cuál es?",
+   "USE: I can see there is a problem with the way this is working  |  Puedo ver que hay un problema con la manera en que está funcionando esto",
+   "USE: It looks like there is a problem with what we are trying to do here  |  Parece que hay un problema con lo que intentamos hacer aquí",
+   "USE: Do you mind letting me know when you think there is a problem?  |  ¿Te importa decirme cuando piensas que hay un problema?",
+   "USE: When there is a problem it is important to try to fix it together  |  Cuando hay un problema es importante intentar arreglarlo juntos",
+   "USE: There could be a problem if we don't talk about this before we start  |  Podría ser un problema si no hablamos de esto antes de empezar",
+   "USE: I can see there is a new problem with what we discussed yesterday  |  Puedo ver que hay un problema nuevo con lo que hablamos ayer",
+   "USE: It seems like there is a problem but I think we can find a way to fix it  |  Parece que hay un problema pero pienso que puedo ayudar a arreglarlo"
+  ]
+ },
+ {
+  "tag": "qwen-think",
+  "id": "T-fra_for_eng-236",
+  "cls": "translate",
+  "finish": "stop",
+  "ms": 204407,
+  "human": "Je connais quelqu'un qui a dit qu'elle allait essayer d'aider",
+  "model": "Je connais quelqu'un qui a dit qu'elle allait essayer d'aider.",
+  "exact": true,
+  "has_parens": false,
+  "register_drift": null
+ },
+ {
+  "tag": "qwen-think",
+  "id": "T-fra_for_eng-273",
+  "cls": "translate",
+  "finish": "stop",
+  "ms": 212642,
+  "human": "non malheureusement j'ai trop de travail",
+  "model": "Non, malheureusement, j'ai trop de travail.",
+  "exact": true,
+  "has_parens": false,
+  "register_drift": null
+ },
+ {
+  "tag": "qwen-think",
+  "id": "T-fra_for_eng-134",
+  "cls": "translate",
+  "finish": "stop",
+  "ms": 258039,
+  "human": "ce n'est pas un problème quand on travaille avec eux sur quelque chose de difficile",
+  "model": "Ce n'est pas un problème quand tu travailles sur quelque chose de difficile avec eux.",
+  "exact": false,
+  "has_parens": false,
+  "register_drift": null
+ },
+ {
+  "tag": "qwen-think",
+  "id": "T-fra_for_eng-168",
+  "cls": "translate",
+  "finish": "stop",
+  "ms": 245203,
+  "human": "et puis je pourrai venir aider plus tard",
+  "model": "Et ensuite je pourrai venir aider plus tard.",
+  "exact": false,
+  "has_parens": false,
+  "register_drift": null
+ },
+ {
+  "tag": "qwen-think",
+  "id": "T-fra_for_eng-202",
+  "cls": "translate",
+  "finish": "stop",
+  "ms": 250184,
+  "human": "personne n'était sûr de comment répondre à la question",
+  "model": "Personne n'était sûr de comment répondre à la question.",
+  "exact": true,
+  "has_parens": false,
+  "register_drift": null
+ },
+ {
+  "tag": "qwen-think",
+  "id": "T-fra_for_eng-100",
+  "cls": "translate",
+  "ok": false,
+  "error": "HTTP 504: <!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta\n      name=\"viewport\"\n      content=\"width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1,minimum-scale=1\"\n    />\n    <meta http-equiv=\"X-UA-Compatible\" content=\"ie=edge\" />\n\n    <title>504 - Gateway Time",
+  "score": "API_FAIL"
+ },
+ {
+  "tag": "qwen-think",
+  "id": "T-fra_for_eng-309",
+  "cls": "translate",
+  "finish": "stop",
+  "ms": 175550,
+  "human": "non je ne l'ai jamais vue avant",
+  "model": "Non, je ne l'ai jamais vue.",
+  "exact": false,
+  "has_parens": false,
+  "register_drift": null
+ },
+ {
+  "tag": "qwen-think",
+  "id": "T-fra_for_eng-380",
+  "cls": "translate",
+  "finish": "stop",
+  "ms": 168758,
+  "human": "j'ai demandé ce qu'elle voulait inclure",
+  "model": "J'ai demandé ce qu'elle voulait inclure.",
+  "exact": true,
+  "has_parens": false,
+  "register_drift": null
+ },
+ {
+  "tag": "qwen-think",
+  "id": "T-fra_for_eng-450",
+  "cls": "translate",
+  "finish": "stop",
+  "ms": 192476,
+  "human": "non ils doivent prendre le train eux-mêmes",
+  "model": "Non, ils doivent prendre le train eux-mêmes.",
+  "exact": true,
+  "has_parens": false,
+  "register_drift": null
+ },
+ {
+  "tag": "qwen-think",
+  "id": "T-fra_for_eng-414",
+  "cls": "translate",
+  "finish": "stop",
+  "ms": 274646,
+  "human": "pourrions-nous avoir une bouteille de vin rouge s'il vous plaît ?",
+  "model": "On pourrait avoir une bouteille de vin rouge, s'il vous plaît ?",
+  "exact": false,
+  "has_parens": false,
+  "register_drift": null
+ },
+ {
+  "tag": "qwen-think",
+  "id": "T-fra_for_eng-345",
+  "cls": "translate",
+  "ok": false,
+  "error": "HTTP 504: <!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta\n      name=\"viewport\"\n      content=\"width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1,minimum-scale=1\"\n    />\n    <meta http-equiv=\"X-UA-Compatible\" content=\"ie=edge\" />\n\n    <title>504 - Gateway Time",
+  "score": "API_FAIL"
+ },
+ {
+  "tag": "qwen-think",
+  "id": "D-fra_for_eng-79",
+  "cls": "decompose",
+  "ok": false,
+  "error": "HTTP 504: <!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta\n      name=\"viewport\"\n      content=\"width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1,minimum-scale=1\"\n    />\n    <meta http-equiv=\"X-UA-Compatible\" content=\"ie=edge\" />\n\n    <title>504 - Gateway Time",
+  "score": "API_FAIL"
+ },
+ {
+  "tag": "qwen-think",
+  "id": "D-fra_for_eng-132",
+  "cls": "decompose",
+  "ok": false,
+  "error": "HTTP 504: <!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta\n      name=\"viewport\"\n      content=\"width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1,minimum-scale=1\"\n    />\n    <meta http-equiv=\"X-UA-Compatible\" content=\"ie=edge\" />\n\n    <title>504 - Gateway Time",
+  "score": "API_FAIL"
+ },
+ {
+  "tag": "qwen-think",
+  "id": "D-fra_for_eng-185",
+  "cls": "decompose",
+  "ok": false,
+  "error": "HTTP 504: <!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta\n      name=\"viewport\"\n      content=\"width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1,minimum-scale=1\"\n    />\n    <meta http-equiv=\"X-UA-Compatible\" content=\"ie=edge\" />\n\n    <title>504 - Gateway Time",
+  "score": "API_FAIL"
+ },
+ {
+  "tag": "qwen-think",
+  "id": "D-fra_for_eng-295",
+  "cls": "decompose",
+  "ok": false,
+  "error": "HTTP 504: <!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta\n      name=\"viewport\"\n      content=\"width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1,minimum-scale=1\"\n    />\n    <meta http-equiv=\"X-UA-Compatible\" content=\"ie=edge\" />\n\n    <title>504 - Gateway Time",
+  "score": "API_FAIL"
+ },
+ {
+  "tag": "qwen-think",
+  "id": "P-fra_for_eng-105-2",
+  "cls": "phrases",
+  "ok": false,
+  "error": "HTTP 504: <!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta\n      name=\"viewport\"\n      content=\"width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1,minimum-scale=1\"\n    />\n    <meta http-equiv=\"X-UA-Compatible\" content=\"ie=edge\" />\n\n    <title>504 - Gateway Time",
+  "score": "API_FAIL"
+ },
+ {
+  "tag": "qwen-think",
+  "id": "P-fra_for_eng-142-2",
+  "cls": "phrases",
+  "ok": false,
+  "error": "HTTP 504: <!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta\n      name=\"viewport\"\n      content=\"width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1,minimum-scale=1\"\n    />\n    <meta http-equiv=\"X-UA-Compatible\" content=\"ie=edge\" />\n\n    <title>504 - Gateway Time",
+  "score": "API_FAIL"
+ },
+ {
+  "tag": "qwen-think",
+  "id": "P-fra_for_eng-187-1",
+  "cls": "phrases",
+  "ok": false,
+  "error": "HTTP 504: <!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta\n      name=\"viewport\"\n      content=\"width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1,minimum-scale=1\"\n    />\n    <meta http-equiv=\"X-UA-Compatible\" content=\"ie=edge\" />\n\n    <title>504 - Gateway Time",
+  "score": "API_FAIL"
+ },
+ {
+  "tag": "qwen-think",
+  "id": "P-fra_for_eng-254-1",
+  "cls": "phrases",
+  "ok": false,
+  "error": "HTTP 504: <!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta\n      name=\"viewport\"\n      content=\"width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1,minimum-scale=1\"\n    />\n    <meta http-equiv=\"X-UA-Compatible\" content=\"ie=edge\" />\n\n    <title>504 - Gateway Time",
+  "score": "API_FAIL"
+ }
+]
