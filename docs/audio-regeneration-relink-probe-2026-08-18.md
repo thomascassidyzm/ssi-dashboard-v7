@@ -227,6 +227,20 @@ Proposed, in dependency order:
 5. **Consider** an operator-facing force flag on `/generate` that widens selection past
    `.is(audioCol, null)`. Lowest priority; 1–3 may make it unnecessary.
 
+### Two files not to reason from · OBSERVED
+
+- **`services/s3-audio-service.cjs` is dead code.** `grep -rn "s3-audio-service"` outside
+  `node_modules` returns **zero** hits. Its key scheme (`courses/<code>/audio/<uuid>.mp3`) does
+  **not** describe the estate — the real scheme is `mastered/<uuid>.mp3`, minted fresh at five
+  sites, and phase8 uses `@aws-sdk/client-s3` directly (`:26`). It also sets `ACL: 'public-read'`,
+  which the live scheme does not.
+- **`services/audio-generation-planner.cjs` is off the generate path.** Five references
+  repo-wide, all comments citing its `$4/M chars` Azure cost constant. Its entry points take a
+  *manifest*, which `CLAUDE.md` records as legacy and not on the learner path.
+
+Relevant because both look authoritative by filename and would mislead an implementer about S3
+keys and about where generation is planned.
+
 ### Blast radius
 
 - **146 courses** in the estate; **63** carry audio flags.
