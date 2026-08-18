@@ -325,7 +325,7 @@
           <!-- Current Item Text -->
           <div class="item-text flex-1 min-w-0">
             <div class="flex items-center gap-2 text-sm">
-              <span class="text-muted truncate">{{ journeyPlayback.currentItem.known_text || '' }}</span>
+              <span class="text-muted truncate bidi-isolate" :dir="dirFor(journeyPlayback.currentItem.known_text)">{{ journeyPlayback.currentItem.known_text || '' }}</span>
               <span class="text-faint flex-shrink-0">&rarr;</span>
               <span
                 class="text-ink truncate text-left"
@@ -858,7 +858,7 @@
                   :key="item.phrase_id"
                   class="flex items-center gap-3 p-2 bg-surface-2 rounded text-sm"
                 >
-                  <span class="text-muted truncate flex-1">{{ item.known_text }}</span>
+                  <span class="text-muted truncate flex-1 bidi-isolate" :dir="dirFor(item.known_text)">{{ item.known_text }}</span>
                   <span class="text-faint">&rarr;</span>
                   <span
                     class="text-ink truncate flex-1 text-left"

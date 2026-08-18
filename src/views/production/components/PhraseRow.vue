@@ -34,7 +34,7 @@
         <div class="phrase-texts space-y-1">
           <div class="known-text text-ink">
             <span class="text-xs text-faint mr-2">Known:</span>
-            {{ phrase.known_text }}
+            <span :dir="dirFor(phrase.known_text)" class="bidi-isolate">{{ phrase.known_text }}</span>
           </div>
           <div class="target-text text-ink font-medium">
             <span class="text-xs text-faint mr-2">Target:</span>
@@ -115,7 +115,7 @@
           </svg>
         </button>
         <span class="audio-label text-xs text-muted w-16">Known</span>
-        <span class="audio-text flex-1 text-sm text-ink truncate">{{ phrase.known_text }}</span>
+        <span class="audio-text flex-1 text-sm text-ink truncate bidi-isolate" :dir="dirFor(phrase.known_text)">{{ phrase.known_text }}</span>
         <AudioStatusBadge :status="getAudioStatus('known')" />
       </div>
 

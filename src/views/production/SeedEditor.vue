@@ -71,7 +71,7 @@
                 </template>
                 <template v-else>
                   <span :class="{ empty: !seed.known_text }">
-                    {{ seed.known_text || '—' }}
+                    <span :dir="dirFor(seed.known_text)" class="bidi-isolate">{{ seed.known_text || '—' }}</span>
                   </span>
                 </template>
                 <transition name="tick">
@@ -135,7 +135,7 @@
         </p>
 
         <label class="cascade-label">Known (unchanged)</label>
-        <div class="cascade-readonly">{{ cascade.seed?.known_text || '—' }}</div>
+        <div class="cascade-readonly" :dir="dirFor(cascade.seed?.known_text)">{{ cascade.seed?.known_text || '—' }}</div>
 
         <label class="cascade-label">New target translation</label>
         <textarea v-model="cascade.target" class="cascade-input" rows="2" :dir="dirFor(cascade.target)"

@@ -94,4 +94,15 @@ describe('PhraseRow — target text direction', () => {
 
     expect(wrapper.get('.known-text').attributes('dir')).toBeUndefined()
   })
+
+  it('gives an RTL KNOWN side its own direction — eng_for_ara, not just ara_*', () => {
+    // eng_for_ara and eng_for_urd have 668 seeds each with Arabic/Urdu on the
+    // KNOWN side and English as the target, so a target-only fix would leave
+    // those courses mis-rendered on the side the reviewer actually reads.
+    const wrapper = mountRow({
+      known_text: 'أريد أن أتكلم الإنجليزية معك الآن.',
+      target_text: 'I want to speak English with you now.',
+    })
+    expect(wrapper.html()).toContain('dir="rtl"')
+  })
 })
