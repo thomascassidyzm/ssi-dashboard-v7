@@ -330,4 +330,16 @@ Add a contrast card at **seed 306**, where `sun kaverille` is already introduced
 
 ## 8. Independent reader verdicts
 
-*(Pending at time of writing — see §7.)*
+**Status at publication: both readers ran to completion; neither full report had been delivered back into the parent conversation at the time this document was written. This is an explicit gap, not an omission.**
+
+| job | scope | status | what is available |
+|---|---|---|---|
+| **#107** `fin-poss-suffix-read` (opus) | all **292** rows carrying any possessive suffix — phrases, legos and seeds | **done** (5m36s) | opening line only: *"I read every row. Here are my rulings."* — remainder truncated by the job API |
+| **#108** `fin-poss-genitive-read` (opus) | all **812** genitive-pronoun determiner rows | **done** | opening line only: *"# Finnish possession audit — packetB.tsv, second read"* — remainder truncated |
+
+Both were briefed to read every row in its own context, to flag binding violations, coreference mismatches, false alignments, person mismatches, case errors and register doubts, and to state plainly where they stopped. Neither was given my conclusions, so their findings are independent of §1–§6.
+
+**What this means for the confidence of this document:** §3's defect list rests on my own row-by-row reading plus deterministic checks over the full 14,123-row dump (antecedent search across all 60 3sg-suffix rows; containment check across all 1,732 component rows; ZUT fork check across all 805 determiner rows). It is **single-pass and mine** until #107 and #108's reports are folded in. Anything they contradict should override this document, and their reports live in their own chats — they are persistent and readable, not ephemeral.
+
+The reading packets they worked from are preserved for anyone who wants to re-run the check:
+`.a74-scratch/fin-poss/packetA.tsv` (292 rows) and `.a74-scratch/fin-poss/packetB.tsv` (812 rows), alongside the full course dump (`phrases.json`, `legos.json`, `seeds.json`).

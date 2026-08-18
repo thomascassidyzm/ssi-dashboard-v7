@@ -1,0 +1,74 @@
+# Seed 8
+Known: I wouldn't like to guess what's going to happen tomorrow
+Target: Níor mhaith liom tomhas céard atá chun tarlú amárach
+
+## L1 [A] "I wouldn't like" → "níor mhaith liom"
+
+BUILD:
+- I wouldn't like to speak → níor mhaith liom labhairt
+- I wouldn't like to say something → níor mhaith liom rud éigin a rá
+- I wouldn't like to finish → níor mhaith liom críochnú
+
+USE:
+- I wouldn't like to speak Irish with someone else → Níor mhaith liom Gaeilge a labhairt le duine éigin eile [8]
+- I wouldn't like to say something in Irish now → Níor mhaith liom rud éigin a rá i nGaeilge anois [8]
+- I wouldn't like to finish after you speak → Níor mhaith liom críochnú tar éis duit labhairt [8]
+- I wouldn't like to practise speaking with you → Níor mhaith liom labhairt a chleachtadh leat [7]
+- I wouldn't like to be able to speak a little Irish → Níor mhaith liom a bheith in ann beagán Gaeilge a labhairt [8]
+
+## L2 [A] "to guess" → "tomhas"
+
+BUILD:
+- I wouldn't like to guess → níor mhaith liom tomhas
+- I'd like to guess → ba mhaith liom tomhas
+- I'm going to guess → tá mé chun tomhas
+
+USE:
+- I wouldn't like to guess now → Níor mhaith liom tomhas anois [6]
+- I'm going to guess after you finish → Tá mé chun tomhas tar éis duit críochnú [8]
+- I'm not sure if I can guess → Níl mé cinnte an féidir liom tomhas [7]
+- I'd like to guess with someone else → Ba mhaith liom tomhas le duine éigin eile [7]
+- I wouldn't like to guess as often as possible → Níor mhaith liom tomhas chomh minic agus is féidir [8]
+
+## L3 [M] "what's" → "céard atá"
+Components: what → céard, is → atá
+
+BUILD:
+- to guess what's → tomhas céard atá
+- I'm not sure what's → níl mé cinnte céard atá
+- I'd like to guess what's → ba mhaith liom tomhas céard atá
+
+USE:
+- I'm not sure what's in Irish → Níl mé cinnte céard atá i nGaeilge [7]
+- I'd like to remember what's in Irish → Ba mhaith liom cuimhneamh ar céard atá i nGaeilge [8]
+- I wouldn't like to guess what's in Irish → Níor mhaith liom tomhas céard atá i nGaeilge [8]
+- I'm going to say what's in Irish → Tá mé chun céard atá i nGaeilge a rá [8]
+- I'm not sure if I can guess what's in Irish → Níl mé cinnte an féidir liom tomhas céard atá i nGaeilge [9]
+
+## L4 [A] "to happen" → "tarlú"
+
+BUILD:
+- what's going to happen → céard atá chun tarlú
+- to guess what's going to happen → tomhas céard atá chun tarlú
+- I'm not sure what's going to happen → níl mé cinnte céard atá chun tarlú
+
+USE:
+- I wouldn't like to guess what's going to happen → Níor mhaith liom tomhas céard atá chun tarlú [9]
+- I'm not sure if I can guess what's going to happen → Níl mé cinnte an féidir liom tomhas céard atá chun tarlú [9]
+- I'd like to guess what's going to happen now → Ba mhaith liom tomhas céard atá chun tarlú anois [9]
+- I want to remember what's going to happen → Tá mé ag iarraidh cuimhneamh ar céard atá chun tarlú [9]
+- I'm going to say what's going to happen in Irish → Tá mé chun céard atá chun tarlú a rá i nGaeilge [9]
+
+## L5 [A] "tomorrow" → "amárach"
+
+BUILD:
+- what's going to happen tomorrow → céard atá chun tarlú amárach
+- I'd like to speak tomorrow → ba mhaith liom labhairt amárach
+- I'm going to finish tomorrow → tá mé chun críochnú amárach
+
+USE:
+- I wouldn't like to guess what's going to happen tomorrow → Níor mhaith liom tomhas céard atá chun tarlú amárach [9]
+- I'd like to speak Irish with you tomorrow → Ba mhaith liom Gaeilge a labhairt leat amárach [8]
+- I'm going to practise speaking with someone else tomorrow → Tá mé chun labhairt a chleachtadh le duine éigin eile amárach [9]
+- I'm not sure if I can finish tomorrow → Níl mé cinnte an féidir liom críochnú amárach [8]
+- I want to say something in Irish tomorrow → Tá mé ag iarraidh rud éigin a rá i nGaeilge amárach [8]
