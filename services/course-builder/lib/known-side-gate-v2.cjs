@@ -54,6 +54,25 @@ const STATUS = { PASS: 'pass', VIOLATION: 'violation', UNCHECKED: 'unchecked' };
  * A brief-schema contract therefore compiled to an EMPTY free class — so even had the tokenizer
  * worked, every function word would have been reported as a violation. Both are read here.
  */
+// Pull the usable surface forms out of a brief's `marker` field. Head form first, then any
+// comma/slash-separated variants inside parentheses. Purely mechanical string handling — it makes
+// no judgment about the language, it just reads what the brief's author already wrote down.
+function compileMachineryMarkers(knownConstructions) {
+  const byForm = new Map();
+  for (const con of knownConstructions) {
+    if (!con || !con.marker) continue;
+    const head = String(con.marker).split(/[（(]/)[0];
+    const inside = (String(con.marker).match(/[（(]([^)）]*)[)）]/) || [])[1] || '';
+    for (const raw of [...head.split(/[\/／,、]/), ...inside.split(/[,、\/／]/)]) {
+      const form = normalizeKnown(raw);
+      // Skip prose fragments: a marker is a word or two, never a sentence.
+      if (!form || form.split(' ').length > 2) continue;
+      if (!byForm.has(form)) byForm.set(form, con.id);
+    }
+  }
+  return byForm;
+}
+
 function normalizeContract(contract) {
   if (!contract) return null;
   const script = contract.script || null;
@@ -79,6 +98,13 @@ function normalizeContract(contract) {
     npiLicensing: contract.npiLicensing || null,
     constructions: contract.constructions || [],
     knownConstructions: contract.knownConstructions || [],
+    // E4, brief schema. The 2026-06 briefs declare machinery as { id, marker, description }
+    // where `marker` is a head form plus parenthesised variants — "ने (मैंने, आपने, उसने)".
+    // v1 only ever implemented the LEGACY `constructions[].test` regexes, so every marker in
+    // every brief was checked as if it were ordinary vocabulary. Caught by the Devanagari
+    // adjudication, 2026-08-18: 43% of the sampled Marathi hits were the brief's own declared
+    // modal system (बोलायचं, हवं, शकतो, पाहिजे) being reported as untaught words.
+    machinery: compileMachineryMarkers(contract.knownConstructions || []),
     glossUnits: contract.glossUnits || [],
     glossSynonyms: contract.glossSynonyms || {},
   };
@@ -112,8 +138,23 @@ function buildContext(contract, inventory, opts = {}) {
     blockers.push({ reason: REASON.DETECTOR_UNCALIBRATED, detail: `${REASON_TEXT.detector_uncalibrated} (known language: ${c.known_lang})` });
   }
 
+  // First position at which each machinery marker appears in what the course teaches. Absent ⇒
+  // the course never teaches it, so it is free at any position.
+  const machineryDebut = new Map();
+  if (c && inventory) {
+    for (const form of c.machinery.keys()) {
+      let first = null;
+      for (const [entry, pos] of inventory) {
+        if (entry !== form && !entry.startsWith(`${form} `) && !entry.endsWith(` ${form}`) && !entry.includes(` ${form} `)) continue;
+        if (first == null || pos < first) first = pos;
+      }
+      if (first != null) machineryDebut.set(form, first);
+    }
+  }
+
   return {
     contract: c,
+    machineryDebut,
     inventory: inventory || new Map(),
     inventoryList: [...(inventory ? inventory.keys() : [])].sort((a, b) => b.length - a.length),
     knownLang: opts.knownLang || (c && c.known_lang) || null,
@@ -231,6 +272,18 @@ function checkKnownSideV2(known, currentPos, ctx) {
     // Negation itself is machinery, licensed by its construction's debut (E4). Where the
     // contract declares no negation construction we cannot date it, so we do not judge it.
     if (c.negation.has(tok)) continue;
+
+    // E4 — declared grammatical machinery. Licensed from the position at which the course first
+    // puts it in front of the learner; where the course never teaches it as vocabulary at all, it
+    // is machinery of the learner's own language and is free. Deciding WHICH forms are machinery
+    // is the brief author's judgment, already made; this only dates it.
+    if (c.machinery.has(tok)) {
+      const debut = ctx.machineryDebut.get(tok);
+      if (debut != null && debut > currentPos) {
+        out.violations.push({ token: tok, reason: 'machinery_unlicensed', firstPos: debut, construction: c.machinery.get(tok), detail: `machinery "${tok}" (${c.machinery.get(tok)}) is not licensed until ${debut}`, confidence: 'borderline' });
+      }
+      continue;
+    }
 
     // Exact introduced form.
     const fp = ctx.inventory.get(tok);

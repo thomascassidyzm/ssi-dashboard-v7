@@ -13,7 +13,21 @@ module.exports = {
   known_lang_name: "Hindi",
 
   // Free class — Hindi function words (corpus-derived + calibration audit), never introduced.
-  freeClass: ["है","हैं","हूँ","था","थे","थी","में","से","के","की","को","का","पर","ने","एक","और","कि","भी","तो","ही","यह","वह","जो","जब","अगर","क्योंकि","लेकिन","या","हालाँकि","कितने","कौन","इस","उस","उन्हें","साथ","लिए","बारे"],
+  freeClass: ["है","हैं","हूँ","था","थे","थी","में","से","के","की","को","का","पर","ने","एक","और","कि","भी","तो","ही","यह","वह","जो","जब","अगर","क्योंकि","लेकिन","या","हालाँकि","कितने","कौन","इस","उस","उन्हें","साथ","लिए","बारे",
+    // Personal pronouns and their oblique/genitive forms, added 2026-08-18. The list above ran the
+    // full copula, postposition and determiner paradigms but contained no 1st- or 2nd-person
+    // pronoun at all — मैं "I" was checked as ordinary vocabulary. Measured cost across the three
+    // Hindi-known courses: 425 hits (kor_for_hin 268 = 19.1% of its total, zho_for_hin 123 = 11.2%,
+    // eng_for_hin 34 = 7.3%), every one of them a pronoun a Hindi speaker plainly does not need to
+    // be taught. That is Kai's requirement-2 case exactly: a function word the brief should have
+    // listed. Suppletive, so each form is listed — nothing here relates मैं to मुझे to मैंने.
+    "मैं","मुझे","मुझको","मेरा","मेरी","मेरे","मैंने",
+    "हम","हमें","हमको","हमारा","हमारी","हमारे","हमने",
+    "तू","तुम","तुम्हें","तुम्हारा","तुम्हारी","तुम्हारे","तुमने",
+    "आप","आपको","आपसे","आपने","आपका","आपकी","आपके",
+    "उसे","उसको","उसका","उसकी","उसके","उसने","उन","उनका","उनकी","उनके","उन्होंने","उनसे",
+    "इसे","इसको","इसका","इसकी","इसके","इसने","इन","इनका","इनकी","इनके","इन्हें",
+    "वे","ये","कोई","कुछ"],
 
   // NPI items + WHEN they are licensed. Violation = an NPI in a plain POSITIVE DECLARATIVE only.
   npi: ["कुछ भी","कोई","कहीं","कभी","किसी"],

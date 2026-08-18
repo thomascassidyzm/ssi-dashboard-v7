@@ -15,15 +15,19 @@ lego or a phrase, and no audio was generated.
 | …that now produce a real answer | **16** |
 | …that remain UNCHECKED, with a reason | **8** (all Japanese-known) |
 | Known-side rows swept | **259,443** |
-| Machine hits on the 16 answerable courses | **20,408** |
-| …that survive triage as strong candidates | **689** (3.4%) |
+| Machine hits on the 16 answerable courses | **19,866** |
+| …that survive triage as strong candidates | **671** (3.4%) |
 | …of those, in languages whose morphology still defeats the checker | **252** |
-| **Genuinely reportable, high-confidence** | **437** |
-| Borderline (NPI-in-positive-declarative), reported separately | **1,265** |
-| Discarded as false positives, with grounds | **18,454** (90.4%) |
+| **Genuinely reportable, high-confidence** | **419** |
+| Borderline (NPI-in-positive-declarative), reported separately | **1,194** |
+| Discarded as false positives, with grounds | **18,001** (90.6%) |
 
-The raw count was 20,408. The number Kai should act on is **437**. Everything between those two
+The raw count was 19,866. The number Kai should act on is **419**. Everything between those two
 figures is the triage, and it is set out below.
+
+> **Revised 2026-08-18 after adjudication.** A worker adjudicating the Devanagari courses found two
+> real defects, both now fixed, which is why these figures are lower than the first pass (20,408 →
+> 19,866). See §5.4.
 
 ---
 
@@ -146,9 +150,9 @@ from anywhere inside the residue rather than anchored at the left edge.
 
 | course | known | status | rows | answered | machine hits | strong candidates | borderline |
 |---|---|---|---:|---:|---:|---:|---:|
-| eng_for_hin | hin | CHECKED | 13,748 | 97.1% | 467 | **41** | 95 |
-| kor_for_hin | hin | CHECKED | 14,872 | 94.2% | 1,418 | **65** | 103 |
-| zho_for_hin | hin | CHECKED | 14,594 | 94.4% | 1,103 | **51** | 76 |
+| eng_for_hin | hin | CHECKED | 13,748 | 97.1% | 396 | **41** | 95 |
+| kor_for_hin | hin | CHECKED | 14,872 | 94.2% | 1,104 | **60** | 103 |
+| zho_for_hin | hin | CHECKED | 14,594 | 94.4% | 957 | **48** | 76 |
 | eng_for_mar | mar | CHECKED | 14,255 | 93.7% | 1,439 | **61** | 36 |
 | eng_for_ben | ben | CHECKED | 13,799 | 91.2% | 1,634 | **14** | 30 |
 | eng_for_guj | guj | CHECKED | 15,393 | 95.7% | 1,331 | **9** | 109 |
@@ -171,13 +175,13 @@ from anywhere inside the residue rather than anchored at the left edge.
 
 | class | count | share | verdict |
 |---|---:|---:|---|
-| **inflection** — shares a ≥2-char prefix with a form already taught by that seed | 16,874 | 82.7% | **DISCARD** — E2, the learner's own morphology |
-| **ordering** — shares a prefix only with a form taught later | 1,578 | 7.7% | **DISCARD** as a violation; a weaker methodology question |
-| **npi** — negative-polarity item in a positive declarative | 1,265 | 6.2% | **BORDERLINE**, reported separately |
+| **inflection** — shares a ≥2-char prefix with a form already taught by that seed | 16,554 | 83.3% | **DISCARD** — E2, the learner's own morphology |
+| **ordering** — shares a prefix only with a form taught later | 1,445 | 7.3% | **DISCARD** as a violation; a weaker methodology question |
+| **npi** — negative-polarity item in a positive declarative | 1,194 | 6.0% | **BORDERLINE**, reported separately |
 | **metalinguistic** — authoring scaffolding in `known_text` | 2 | 0.0% | out of scope (content defect) |
-| **candidate** — no taught form shares even two leading characters | **689** | **3.4%** | the reportable pile |
+| **candidate** — no taught form shares even two leading characters | **671** | **3.4%** | the reportable pile |
 
-**18,454 discarded (90.4%).** The grounds are Kai's rule 2: a Bengali `বইটা` is `বই`+definite, a
+**18,001 discarded (90.6%).** The grounds are Kai's rule 2: a Bengali `বইটা` is `বই`+definite, a
 Marathi `करायला` is an infinitive of a taught verb, a Tamil `பேசுகிறேன்` is `பேச` inflected. None of
 those is vocabulary the learner has not been given.
 
@@ -190,7 +194,38 @@ those is vocabulary the learner has not been given.
 - **eng_for_kor (111 candidates)** — Korean stem alternation changes character 2 (`배우다` → `배워요`),
   which defeats a prefix test. `배워요` "learn" at seed 13 is flagged and is almost certainly taught.
 
-**Excluding those two: 437 candidates across 14 courses.** That is the number I stand behind.
+**Excluding those two: 419 candidates across 14 courses.** That is the number I stand behind.
+
+### 5.4 Two defects the adjudication found in this work, both fixed
+
+A worker adjudicating the four Devanagari courses (60 high-confidence + 20 borderline sampled per
+course, across the full seed range) found two things wrong with what I had built. Both are fixed and
+the numbers above are post-fix.
+
+**E4 was documented and never implemented.** This report's own exemption list claims machinery is
+licensed by its carrier's debut. The v1 gate implemented that for the LEGACY `constructions[].test`
+regexes only; the 2026-06 briefs declare machinery as `knownConstructions[].marker`, which I parsed
+into the context and then never consulted. Every marker in every brief — Hindi चाहिए/सकता/रहा,
+Marathi's five-way modal system हवं/शकतो/पाहिजे/नको — was checked as ordinary vocabulary. Now
+implemented: a declared marker is dated from where the course first shows it and is free where the
+course never teaches it. **Measured effect: 28 hits.** The worker estimated this class at 43% of the
+Marathi sample; that was an over-estimate — it conflated declared machinery with inflected forms of
+taught verbs (`बोलायचं` is `बोल` + the -आयचं suffix, not a declared marker), and those were already
+being discarded as inflection.
+
+**The Hindi brief had no personal pronouns.** `eng_for_hin.contract.cjs` shipped a 37-item free class
+running the full copula, postposition and determiner paradigms — and not one 1st- or 2nd-person
+pronoun. `मैं` "I" was checked as ordinary vocabulary. Cost, measured before the fix: **425 hits** —
+kor_for_hin 268 (19.1% of its total), zho_for_hin 123 (11.2%), eng_for_hin 34 (7.3%). Every one a
+pronoun a Hindi speaker plainly does not need taught, which is requirement 2 exactly. Free class is
+now 92 entries with the suppletive forms listed individually. Hit counts fell kor_for_hin
+1,401→1,104, zho_for_hin 1,103→957, eng_for_hin 467→396.
+
+**A third finding I have NOT acted on:** `isNegated()` detects only literal negation words and a
+question mark, while the briefs each document 8–14 NPI licensing environments (desiderative,
+conditional, comparative, ability, before/until…). That is why the entire borderline bucket is one
+class. It does not touch the 419 — NPI hits are never high-confidence — so I have left it as a known
+limit rather than change scoring behaviour late in the job.
 
 ### 5.3 The strongest confirmed findings
 
@@ -265,7 +300,7 @@ lands.
 
 ## 8. What I'd ask Kai to decide
 
-1. **The 437.** Fix list, or leave as known debt? They cluster hard — `नीट` alone is 53 rows, so the
+1. **The 419.** Fix list, or leave as known debt? They cluster hard — `नीट` alone is 53 rows, so the
    real remediation is far smaller than the count.
 2. **Japanese.** Run the agent-lane known-side check on the 8 courses, or accept them as unchecked?
 3. **Should `known_side_unchecked` ever block a submit?** Today it warns. Making it block would stop
