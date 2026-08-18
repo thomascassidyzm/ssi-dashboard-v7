@@ -538,7 +538,7 @@ function updateProgressLedger(newProgress) {
  *   CS_CRON_USER=kai CS_SESSION_FILE=/home/tomcassidy/.cs-cron-session-kai \
  *     node /home/tomcassidy/command-surface/ops/cs-cron-session.js
  */
-async function publishToShelf(markdown, summary) {
+async function publishToShelf(markdown, summary, fallbackUrl) {
   const surface = process.env.CS_SURFACE || 'http://localhost:4317';
   const out = { published: false, carded: false };
 
@@ -577,7 +577,10 @@ async function publishToShelf(markdown, summary) {
   try {
     const r = await fetch(`${surface}/api/needs-you`, {
       method: 'POST', headers, signal: AbortSignal.timeout(20000),
-      body: JSON.stringify({ text: summary, needs: 'kai', ...(out.url ? { url: out.url } : {}) }),
+      // A card with nowhere to tap is a card nobody acts on. Prefer the published
+      // digest; failing that, link her actual Basecamp card — Kai has Basecamp on his
+      // phone, so that is a real destination rather than a repo path he cannot open.
+      body: JSON.stringify({ text: summary, needs: 'kai', ...((out.url || fallbackUrl) ? { url: out.url || fallbackUrl } : {}) }),
     });
     out.carded = r.ok;
     if (!r.ok) out.cardWhy = `needs-you ${r.status}: ${(await r.text()).slice(0, 200)}`;
@@ -623,7 +626,8 @@ async function publishToShelf(markdown, summary) {
     if (NO_NOTIFY) {
       process.stderr.write('[no-notify] surface publish and card suppressed by flag\n');
     } else {
-      const pub = await publishToShelf(markdown, summary.slice(0, 300));
+      const firstCard = report.cards.find((c) => c.card_id === (d.newFindings[0] || {}).card_id);
+      const pub = await publishToShelf(markdown, summary.slice(0, 300), firstCard && firstCard.url);
       process.stderr.write(pub.published ? `[published] ${pub.url}\n` : `[not published] ${pub.why}\n`);
       process.stderr.write(pub.carded ? '[carded] posted to Kai\'s board\n' : `[no card] ${pub.cardWhy || 'unknown'}\n`);
     }
