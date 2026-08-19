@@ -11,22 +11,29 @@ Half right, and the half that's wrong matters — so here it is straight.
 **Confirmed:** your microphone really is quieter than the recorder assumes. The
 code carried a constant saying ordinary speech measures `0.23`. Across 68 of
 your real takes, measured off the untouched browser recordings, your speech
-measures **`0.113`** — two to four times lower, in *every* session, including all
-the ones that worked fine. So the recorder has been reasoning about a speaker
-who isn't you. That is worth fixing, and it is fixed.
+measures **`0.113`**. So the recorder has been reasoning about a speaker who
+isn't you. Fixed.
 
-**Refuted:** the specific thing I thought was cutting you off wasn't. I expected
-the silence cut-off to be eating ordinary mid-phrase dips. It needs 800ms of
-continuous quiet to do that, and exactly **1 of your 38 natural-speed takes** has
-a dip that long — and that take came out fine.
+**Confirmed, in a real browser:** the old fixed cut-off left your voice only
+**7.8dB** clear of it on the quieter mic, against 22.4dB on the phone. That is
+the fragility you felt. With the check run, the gate now sits 21dB under your
+voice on *both* — and the same phrase comes out the same length on either
+microphone. That is the thing this fixes and it is now demonstrated, not argued.
 
-**Still open:** the truncation is real, and it's confined to one session
-(18:21–18:23). Five of nine takes there are fragments — 0.91s to 2.88s of a
-sentence that reads in 3.65s. But they end with **0–50ms of trailing silence**,
-and a cut by the voice-detector fires 800ms *into* a silence, so it physically
-cannot leave less than that. Your other sessions all carry that 800ms tail.
-**Whatever chopped those five takes was not the silence threshold**, and I don't
-yet know what it was.
+**Refuted — and this is the important one.** I thought the level threshold was
+what cut your phrases in half. It wasn't, and no level threshold could be.
+Measured through the browser's own audio processing, **a breath sits 27–32dB
+below your voice** — far below any cut-off that still lets room tone count as
+silence. So an 800ms mid-phrase pause ends the take on a phone mic and on a
+studio mic alike, calibrated or not. At 800ms of quiet, "pausing" and "finished
+reading" are literally the same signal and nothing in the audio can tell them
+apart. **That symptom is about the 800ms, not about the level** — Tom's first
+instinct was pointing at the right dial after all, and I talked him out of it.
+
+**Still open:** your 18:21–18:23 session lost five of nine takes as fragments,
+and those end with **0–50ms of trailing silence**. A cut by the voice-detector
+fires 800ms *into* a silence and cannot leave less than that. So something else
+chopped those five, and nobody knows what yet.
 
 ## What the check asks you to do
 
