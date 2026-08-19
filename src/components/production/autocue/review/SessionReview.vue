@@ -3,7 +3,14 @@
     <!-- Review Header -->
     <div class="review-header">
       <h2 class="review-title">Session Review</h2>
-      <p class="review-subtitle">
+      <!-- The tutorial uploads NOTHING, so it must not say "for upload" — a
+           practice screen that names a destination its takes never reach is
+           the one lie the whole exercise is built to avoid. -->
+      <p class="review-subtitle" v-if="tutorial">
+        That's your practice run. Listen to the pieces we cut out of each slow
+        take — nothing here is saved or uploaded.
+      </p>
+      <p class="review-subtitle" v-else>
         Recording complete! Review AI-detected segments and approve for upload.
       </p>
       <div class="review-summary">
@@ -141,7 +148,10 @@ const props = defineProps({
   activeFilter: { type: String, default: null },
   // Script mode uploads as it records; queue mode uploads at the end. That one
   // difference decides what the final actions can honestly offer.
-  scriptMode: { type: Boolean, default: false }
+  scriptMode: { type: Boolean, default: false },
+  // Practice run (the recordist tutorial). Changes wording only — every
+  // control on this screen behaves exactly as it does in a real session.
+  tutorial: { type: Boolean, default: false }
 })
 
 defineEmits([

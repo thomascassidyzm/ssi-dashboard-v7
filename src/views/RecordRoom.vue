@@ -154,6 +154,23 @@
           </div>
         </div>
 
+        <!--
+          The practice run, offered where a course recordist actually arrives.
+          A PLAIN LINK opening a NEW TAB, deliberately: useAutocueState is a
+          module-level singleton, so routing this tab to the tutorial would
+          reset the session sitting underneath it. A second tab has its own
+          singleton, so the room, the queue and the recordist's place in the
+          script are all still there when they come back — which is what makes
+          it safe to offer this at any moment, not just before starting.
+        -->
+        <p class="practice-nudge">
+          First time reading course phrases?
+          <a href="/recording-tutorial" target="_blank" rel="noopener">
+            Try the practice run
+          </a>
+          — three minutes, in this same recorder, and nothing it records is kept.
+        </p>
+
         <!-- The recorder itself -->
         <section v-if="assignedSlot" class="room-studio">
           <AutocueStudio :record-slot="assignedSlot" :voice-id="myVoiceId" />
@@ -536,6 +553,18 @@ onMounted(loadRoom)
 
 .dialogue-nudge {
   margin-top: 1rem;
+}
+
+.practice-nudge {
+  margin: 0 0 1rem;
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: var(--color-paper-dim, var(--muted));
+}
+
+.practice-nudge a {
+  color: var(--color-emerald, #06ffa5);
+  font-weight: 600;
 }
 
 .dialogue-nudge a {

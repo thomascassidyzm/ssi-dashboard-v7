@@ -421,6 +421,31 @@ const routes = [
     meta: { title: 'Recording', public: true }
   },
 
+  // ============================================
+  // THE RECORDIST TUTORIAL (Kai, 2026-08-19)
+  // ============================================
+  // "The tutorial should be part of the recording tool itself, so the recorder
+  // actually gets used to the tool." So it is not a page of its own: it is the
+  // REAL AutocueStudio, mounted with tutorial: true. Same components, same
+  // layout, same controls, same live feedback — different words, and nothing
+  // saved (see the upload gate in AutocueStudio.vue).
+  //
+  // `public: true` for the same two reasons /r/:voiceId has it: no login stands
+  // between a first-time recordist and the practice run, and the navbar stays
+  // hidden so the screen looks like the one they will actually work on. It is
+  // safe to leave open precisely because the tutorial writes nothing — there is
+  // no course, no queue and no upload path behind it.
+  //
+  // NO :courseCode, ever. A course code here would give the studio something to
+  // load a script from, and the practice script must be the only script.
+  {
+    path: '/recording-tutorial',
+    name: 'RecordistTutorial',
+    component: () => import('../components/production/autocue/AutocueStudio.vue'),
+    props: { tutorial: true },
+    meta: { title: 'Practice — Recording', public: true }
+  },
+
   // Record Room — the OLD recording shell. Kept alive so nothing Aran already
   // holds 404s, but a link carrying ?podVoice= (every link the cast panel ever
   // produced) now lands on the one surface instead.

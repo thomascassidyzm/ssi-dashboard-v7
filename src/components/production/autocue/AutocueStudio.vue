@@ -1,5 +1,8 @@
 <template>
-  <div class="autocue-studio">
+  <!-- data-surface marks a TUTORIAL mount, and only a tutorial mount: a human
+       (or a test) can read it off the served page to tell the practice run from
+       a real session without guessing from the copy. -->
+  <div class="autocue-studio" :data-surface="tutorial ? 'recordist-tutorial-in-studio' : null">
     <!-- Film grain overlay -->
     <div class="film-grain"></div>
 
@@ -9,14 +12,17 @@
         <div class="studio-badge">🎙️</div>
         <div class="studio-meta">
           <h1>Autocue Studio</h1>
-          <p class="session-info">{{ sessionInfo }}</p>
+          <p class="session-info">{{ tutorial ? 'Practice run — nothing is saved' : sessionInfo }}</p>
           <!-- Which voice this session is credited to. Silence here is what
                let takes be filed under voice 1 without anyone seeing it. -->
           <p class="recording-as" v-if="recordingAs">
             Recording as <strong>{{ recordingAs.voiceName }}</strong>
             <span class="recording-as-slot">· {{ recordingAs.label }}</span>
           </p>
-          <p class="recording-as recording-as-none" v-else-if="voiceConfigLoaded">
+          <!-- Never in the tutorial: a practice take is not credited to anyone,
+               and "no voice slot assigned to you" is a fault a first-time
+               recordist cannot fix and must not be shown on their first screen. -->
+          <p class="recording-as recording-as-none" v-else-if="voiceConfigLoaded && !tutorial">
             No voice slot assigned to you on this course — takes are saved
             unattributed until a leader assigns you one.
           </p>
@@ -65,7 +71,14 @@
     </div>
 
     <!-- Phase: Script Loaded Confirmation (new-course mode) -->
-    <div v-else-if="state.currentPhase === 'script-loaded'" class="script-loaded-phase">
+    <div v-else-if="state.currentPhase === 'script-loaded'" class="script-loaded-phase" :class="{ 'phase-stacked': tutorial }">
+      <TutorialCoach
+        v-if="tutorial"
+        step="intro"
+        :packs="tutorialPacks"
+        :pack-id="tutorialPackId"
+        @select-pack="selectTutorialPack"
+      />
       <div class="script-summary">
         <h2>Recording Script Ready</h2>
         <!-- Deliberately vague about WHICH seeds: the optimizer picks by LEGO
@@ -141,6 +154,17 @@
 
     <!-- Phase: Recording -->
     <div v-else-if="state.currentPhase === 'recording'" class="recording-phase">
+      <!-- The coach sits ABOVE the pass indicator and BELOW nothing: it is
+           read once per step and then ignored in favour of the line. It is
+           deliberately not between the refusal panel and the teleprompter. -->
+      <TutorialCoach
+        v-if="tutorial"
+        :step="currentPhrase?.cadence === 'slow' ? 'slow' : 'natural'"
+        :last-segment="lastCapturedSegment"
+        :playing="state.playingSegmentId === lastCapturedSegment?.id"
+        @play-last="playSegment(lastCapturedSegment)"
+      />
+
       <!-- Pass Indicator -->
       <div class="pass-indicator">
         <div class="pass-info" v-if="!state.scriptMode">
@@ -262,7 +286,8 @@
     </div>
 
     <!-- Phase: Session Summary (script mode) -->
-    <div v-else-if="state.currentPhase === 'summary'" class="summary-phase">
+    <div v-else-if="state.currentPhase === 'summary'" class="summary-phase" :class="{ 'phase-stacked': tutorial }">
+      <TutorialCoach v-if="tutorial" step="summary" />
       <div class="summary-card">
         <h2>Session Complete</h2>
         <div class="summary-stats">
@@ -332,6 +357,16 @@
 
     <!-- Phase: Review -->
     <div v-else-if="state.currentPhase === 'review'" class="review-phase">
+      <TutorialCoach v-if="tutorial" step="pieces" />
+
+      <!-- The lesson's last beat, under the real review screen's own pieces:
+           those same pieces, recombined into sentences never read. -->
+      <TutorialSplice
+        v-if="tutorial"
+        :takes="tutorialSpliceTakes"
+        :recombine="tutorialPack.recombine"
+      />
+
       <SessionReview
         :playback-sources="playbackSources"
         :segments="state.recordedSegments"
@@ -341,6 +376,7 @@
         :rejected-ids="[...state.rejectedSegments]"
         :active-filter="state.reviewFilter"
         :script-mode="state.scriptMode"
+        :tutorial="tutorial"
         @re-record-flagged="onReRecordFlagged"
         @play="playSegment"
         @play-chunk="playChunk"
@@ -384,6 +420,9 @@ import RecordingStatus from './recording/RecordingStatus.vue'
 import ChunkProgress from './recording/ChunkProgress.vue'
 import SlowReadRetry from './recording/SlowReadRetry.vue'
 import SessionReview from './review/SessionReview.vue'
+import TutorialCoach from './tutorial/TutorialCoach.vue'
+import TutorialSplice from './tutorial/TutorialSplice.vue'
+import { PHRASE_PACKS, packById, tutorialPhrases } from '@/utils/tutorialScript'
 
 // Recording identity, threaded in by the Record Room shell. Absent when
 // mounted from the production console (/production/:courseCode/recording) —
@@ -392,7 +431,13 @@ import SessionReview from './review/SessionReview.vue'
 // so a recordist cast as voice 2 recorded, invisibly, as voice 1.
 const props = defineProps({
   recordSlot: { type: String, default: null }, // 'known' | 'target1' | 'target2' | 'presentation'
-  voiceId: { type: String, default: null }     // human voice id from courses.voice_config
+  voiceId: { type: String, default: null },    // human voice id from courses.voice_config
+  // TUTORIAL MODE. Set by exactly one route — /recording-tutorial — and by
+  // nothing else. It is the single gate for every difference between the
+  // practice run and a real session: the local practice script, the teaching
+  // copy, and above all the upload gate below. A real recordist's mount cannot
+  // set it, so none of that can reach their screen or their queue.
+  tutorial: { type: Boolean, default: false }
 })
 
 const route = useRoute()
@@ -441,8 +486,64 @@ const {
   finalizeSession,
   resetSession,
   loadCourse,
+  loadLocalScript,
   cleanup
 } = useAutocueState()
+
+// ── Tutorial mode ────────────────────────────────────────────────────────────
+// Everything in this block is inert unless props.tutorial is true.
+const tutorialPackId = ref(PHRASE_PACKS[0].id)
+const tutorialPacks = PHRASE_PACKS.map(p => ({ id: p.id, label: p.label }))
+const tutorialPack = computed(() => packById(tutorialPackId.value))
+
+function startTutorial() {
+  loadLocalScript(tutorialPhrases(tutorialPackId.value), {
+    targetLanguage: tutorialPack.value.label,
+    estimatedMinutes: 4
+  })
+}
+
+// Changing pack before the first take reloads the practice script. Only
+// reachable from the intro card, so it can never rewrite the script underneath
+// a session in progress.
+function selectTutorialPack(id) {
+  tutorialPackId.value = id
+  startTutorial()
+}
+
+// Every exit from a session — Cancel, Done, Finish review — ends in
+// resetSession(), which lands on the mode chooser. In the tutorial there is no
+// mode to choose and no course behind it, so that would be a dead end; instead
+// it starts the practice run again. "Try again as often as you like" is part of
+// the lesson, and this is what implements it.
+watch(
+  () => state.currentPhase,
+  (phase) => {
+    if (props.tutorial && phase === 'mode-select') startTutorial()
+  }
+)
+
+// The take just captured — the lesson's "hear yourself back immediately" beat.
+// Ordinary review rows, played by the studio's own playSegment().
+const lastCapturedSegment = computed(() => {
+  const rows = state.recordedSegments
+  return rows.length ? rows[rows.length - 1] : null
+})
+
+// The two slow takes, in reading order, with the chunk ranges the REVIEW SCREEN
+// cut them into — the same ranges its ▶ piece buttons play.
+const tutorialSpliceTakes = computed(() => {
+  if (!props.tutorial) return []
+  return state.phrases
+    .filter(p => p.cadence === 'slow')
+    .map((p) => {
+      const seg = state.recordedSegments.find(s => s.phraseId === p.id)
+      const rec = state.audioRecordings.get(p.id)
+      if (!seg || !rec?.blob) return null
+      return { blob: rec.blob, chunks: seg.chunks || [] }
+    })
+    .filter(Boolean)
+})
 
 // ── Who am I recording as? ───────────────────────────────────────────────────
 // The course's cast (courses.voice_config.voices) is the canonical record of
@@ -757,6 +858,20 @@ continuousRecorder.onSegmentCaptured((segment) => {
 // pauses can be filed later, byte for byte, if the recordist keeps it anyway.
 // Nothing about what gets uploaded changed — only when.
 function queueTakeUpload(segment, phrase, itemIndex) {
+  // THE UPLOAD GATE. This is the studio's ONLY call into the upload queue —
+  // useUploadQueue().queueUpload is what POSTs a take to
+  // /api/production/:course/recording/upload, and it is reached from here and
+  // nowhere else in this component. A tutorial take therefore has no path to a
+  // server at all: it stays a Blob in this tab, is played from a blob: URL, and
+  // dies with the tab.
+  //
+  // Three further reasons the same take could not be filed even if this line
+  // were deleted, kept deliberately as depth rather than as belt-and-braces
+  // theatre: state.courseCode is null in the tutorial (every upload URL is
+  // keyed on a course), the role is 'tutorial' rather than a voice slot, and
+  // finalizeSession() returns early in script mode without uploading anything.
+  if (props.tutorial) return
+
   uploadQueue.queueUpload({
     blob: segment.blob,
     courseCode: state.courseCode,
@@ -902,6 +1017,14 @@ onMounted(() => {
   // props are provisional: loadVoiceIdentity() re-binds once the course's cast
   // is in, which is what gives a console mount the recordist's real slot.
   setRecordingIdentity({ role: props.recordSlot, voiceId: props.voiceId })
+
+  // The practice run: local script, no course, no cast, no queue, no cap. It
+  // never touches the mode chooser, so none of what follows applies to it.
+  if (props.tutorial) {
+    voiceConfigLoaded.value = true
+    startTutorial()
+    return
+  }
 
   // ?maxSeed=N on the recorder link caps the script to seeds 1..N — used to
   // hand a tester a short, listenable session instead of the whole course.
@@ -1673,9 +1796,26 @@ onUnmounted(() => {
 
 /* Phone. Kai records standing, holding the phone — nothing here may need a
    sideways scroll to reach. */
+/* The script-loaded and summary phases are flex ROWS centring a single card.
+   The tutorial adds a second child (the coach), which on a 390px phone would
+   sit beside the card and run off the screen. Stack them instead — tutorial
+   only, so no real session's layout moves. */
+.phase-stacked {
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
 @media (max-width: 480px) {
   .autocue-studio {
     padding: 1rem 0.75rem;
+  }
+
+  /* The confirmation and summary cards carry 2.5rem of padding, which on a
+     phone leaves the buttons in a narrow gutter. */
+  .script-summary,
+  .summary-card {
+    padding: 1.5rem 1.1rem;
   }
 
   .stat-item {

@@ -219,6 +219,42 @@ export function useAutocueState() {
     state.reviewFilter = null
   }
 
+  /**
+   * Load a LOCAL script — the recordist tutorial's practice phrases.
+   *
+   * Same landing state as loadOptimizedScript(): script mode, phrases in,
+   * 'script-loaded'. The differences are the whole point of the tutorial:
+   *  - no fetch. The tutorial must not need the optimiser, a course, a login
+   *    or a network at all, so a recordist can run it anywhere;
+   *  - courseCode stays NULL. Every upload path in this file and in the studio
+   *    is keyed on a course; with none there is nothing for a take to be filed
+   *    against even if a gate were ever missed;
+   *  - selectedRole is 'tutorial', not a voice slot. It never reaches a server
+   *    (nothing uploads), but if it ever did it would be self-evidently not a
+   *    recordable slot rather than a plausible target1.
+   */
+  function loadLocalScript(phrases, info = {}) {
+    state.scriptMode = true
+    state.selectedRole = 'tutorial'
+    state.courseCode = null
+    state.voiceId = null
+    state.recordingSlot = null
+    state.error = null
+    state.maxSeed = null
+    state.phrases = phrases
+    state.scriptInfo = {
+      totalItems: phrases.length,
+      totalPhrases: phrases.length,
+      totalDirect: 0,
+      estimatedMinutes: info.estimatedMinutes ?? 4,
+      maxSeed: null
+    }
+    state.knownLanguage = info.knownLanguage || ''
+    state.targetLanguage = info.targetLanguage || ''
+    state.courseName = info.courseName || ''
+    state.currentPhase = 'script-loaded'
+  }
+
   // Begin a continuous recording session (from script-loaded confirmation)
   function beginContinuousSession() {
     state.currentPhase = 'recording'
@@ -1240,6 +1276,7 @@ export function useAutocueState() {
     resetSession,
     loadCourse,
     loadOptimizedScript,
+    loadLocalScript,
     cleanup
   }
 }

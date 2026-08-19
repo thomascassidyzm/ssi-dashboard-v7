@@ -68,6 +68,18 @@
         <li>Starts at the cast panel (Listening Pods page)</li>
       </ul>
     </div>
+
+    <!--
+      The practice run. New tab on purpose: useAutocueState is a singleton, so
+      navigating this tab would reset whatever session is behind this chooser.
+      Nothing it records is saved (AutocueStudio's tutorial upload gate), so it
+      is safe to offer here to anyone, at any time.
+    -->
+    <p class="practice-nudge">
+      New to reading course phrases?
+      <a href="/recording-tutorial" target="_blank" rel="noopener">Try the three-minute practice run</a>
+      — same recorder, practice words, nothing saved.
+    </p>
   </div>
 </template>
 
@@ -129,6 +141,21 @@ function goToPods() {
   gap: 2rem;
   max-width: 1500px;
   margin: 0 auto;
+}
+
+/* Spans the card grid so it reads as a footnote under the modes, not a fourth
+   mode — on a phone the grid is one column and it simply lands last. */
+.practice-nudge {
+  grid-column: 1 / -1;
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: var(--color-paper-dim, var(--muted));
+}
+
+.practice-nudge a {
+  color: var(--color-emerald, #06ffa5);
+  font-weight: 600;
 }
 
 .mode-card {
