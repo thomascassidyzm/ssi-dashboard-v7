@@ -55,6 +55,27 @@ export interface ChunkGap {
   endMs: number | null
 }
 
+// A dip that WAS a pause to the ear but never reached chunkPauseDuration, so it
+// was never counted as a boundary.
+//
+// Nothing acts on these — they change no decision the VAD makes. They exist
+// only so the studio can tell a recordist WHY a slow read came up short:
+// "three of your pauses were too quick" is a thing a person can fix, whereas
+// "2 heard, 3 expected" leaves them guessing whether they paused in the wrong
+// places or simply not for long enough. The floor is the aligner's own silence
+// minimum (services/voice-engine/align.cjs SILENCE_MIN_MS, 150ms) — below that
+// even the server would not see it, so it is not a near miss, it is nothing.
+const SHORT_PAUSE_FLOOR_MS = 150
+
+// What the VAD heard in a take beyond the boundaries themselves. Reported with
+// the take at onSpeechEnd; purely descriptive.
+export interface TakePauseReport {
+  // Dips that measured >= SHORT_PAUSE_FLOOR_MS but under chunkPauseDuration.
+  shortPauses: number
+  // The longest of those, so the studio can say how close they came.
+  longestShortPauseMs: number
+}
+
 // What a room measured before recording. `threshold` is what the VAD will
 // actually use; `quality` is what the recordist should be told.
 export interface VADCalibration {
@@ -158,6 +179,20 @@ export function useVAD(config: Partial<VADConfig> = {}) {
   // events that drive chunksSeen, kept rather than discarded.
   let chunkGaps: ChunkGap[] = []
 
+  // ── Live pause signal, for the recordist's eyes only ───────────────────────
+  //
+  // How long the silence now in progress has lasted, in ms, 0 when speaking.
+  // Read off the SAME poll that decides whether the pause counts, so a studio
+  // watching it is watching the actual decision rather than a re-timing of it.
+  //
+  // Until this existed the recordist got no signal at all while reading: the
+  // first they knew of a pause landing (or not) was the review screen after the
+  // whole session. That is what made slow reading unlearnable by doing.
+  const silenceMs = ref(0)
+  // Near-miss pauses in the take being captured — see SHORT_PAUSE_FLOOR_MS.
+  const shortPauses = ref(0)
+  const longestShortPauseMs = ref(0)
+
   // Audio nodes
   let audioContext: AudioContext | null = null
   let analyser: AnalyserNode | null = null
@@ -166,7 +201,7 @@ export function useVAD(config: Partial<VADConfig> = {}) {
 
   // Callbacks
   let onSpeechStart: (() => void) | null = null
-  let onSpeechEnd: ((durationMs: number, chunkGaps: ChunkGap[]) => void) | null = null
+  let onSpeechEnd: ((durationMs: number, chunkGaps: ChunkGap[], pauses: TakePauseReport) => void) | null = null
   let onSpeechAborted: ((durationMs: number) => void) | null = null
   let onLevelChange: ((level: number) => void) | null = null
 
@@ -229,7 +264,10 @@ export function useVAD(config: Partial<VADConfig> = {}) {
     calibrationSamples = []
     chunksSeen.value = 0
     silenceCounted = false
+    silenceMs.value = 0
     chunkGaps = []
+    shortPauses.value = 0
+    longestShortPauseMs.value = 0
   }
 
   let calibrationSamples: number[] = []
@@ -351,9 +389,22 @@ export function useVAD(config: Partial<VADConfig> = {}) {
     const isAboveThreshold = rms > cfg.silenceThreshold
 
     if (isAboveThreshold) {
-      // Sound detected
+      // Sound detected. Before clearing the run of silence, measure it: a dip
+      // that ends here without ever having been counted as a boundary is a
+      // pause the recordist made and the recorder did not keep — the single
+      // most useful thing we can tell them about a slow read that came up
+      // short. It is tallied on RESUME rather than during the silence, because
+      // only resuming proves the dip ended below the boundary length.
+      if (isSpeaking.value && silenceStartTime.value && !silenceCounted) {
+        const dipMs = now - silenceStartTime.value
+        if (dipMs >= SHORT_PAUSE_FLOOR_MS) {
+          shortPauses.value++
+          if (dipMs > longestShortPauseMs.value) longestShortPauseMs.value = dipMs
+        }
+      }
       silenceStartTime.value = null
       silenceCounted = false
+      silenceMs.value = 0
 
       if (!isSpeaking.value) {
         // Speech just started
@@ -361,6 +412,8 @@ export function useVAD(config: Partial<VADConfig> = {}) {
         speechStartTime.value = now
         chunksSeen.value = 0
         chunkGaps = []
+        shortPauses.value = 0
+        longestShortPauseMs.value = 0
         if (onSpeechStart) {
           onSpeechStart()
         }
@@ -380,8 +433,11 @@ export function useVAD(config: Partial<VADConfig> = {}) {
         if (!silenceStartTime.value) {
           silenceStartTime.value = now
           silenceCounted = false
+          silenceMs.value = 0
         } else {
           const silenceElapsed = now - silenceStartTime.value
+          // Published every poll so the studio can draw the pause as it grows.
+          silenceMs.value = silenceElapsed
 
           // A pause long enough to be deliberate closes off a chunk. The slow
           // pass DRAWS a gap marker between LEGO chunks, so a pause mid-phrase
@@ -427,7 +483,10 @@ export function useVAD(config: Partial<VADConfig> = {}) {
               // the audio is the only one who can act on them, and this is the
               // last moment they exist.
               if (onSpeechEnd) {
-                onSpeechEnd(speechDuration, chunkGaps.map(g => ({ ...g })))
+                onSpeechEnd(speechDuration, chunkGaps.map(g => ({ ...g })), {
+                  shortPauses: shortPauses.value,
+                  longestShortPauseMs: longestShortPauseMs.value
+                })
               }
             } else if (onSpeechAborted) {
               // Too short to be a take — a cough, a chair, a door. The VAD is
@@ -445,8 +504,11 @@ export function useVAD(config: Partial<VADConfig> = {}) {
             speechStartTime.value = null
             silenceStartTime.value = null
             silenceCounted = false
+            silenceMs.value = 0
             chunksSeen.value = 0
             chunkGaps = []
+            shortPauses.value = 0
+            longestShortPauseMs.value = 0
           }
         }
       }
@@ -463,7 +525,7 @@ export function useVAD(config: Partial<VADConfig> = {}) {
   /**
    * Set callback for when speech ends
    */
-  function onSpeechEndCallback(callback: (durationMs: number, chunkGaps: ChunkGap[]) => void) {
+  function onSpeechEndCallback(callback: (durationMs: number, chunkGaps: ChunkGap[], pauses: TakePauseReport) => void) {
     onSpeechEnd = callback
   }
 
@@ -502,6 +564,16 @@ export function useVAD(config: Partial<VADConfig> = {}) {
     isCalibrating,
     calibration,
     chunksSeen,
+    // Live, read-only, for the studio's chunk indicator. Nothing here feeds a
+    // decision — see silenceMs / SHORT_PAUSE_FLOOR_MS.
+    silenceMs,
+    shortPauses,
+    longestShortPauseMs,
+    // The two constants the recordist is being asked to hit, published so the
+    // UI can DRAW the window instead of leaving it a secret. Reading them off
+    // the live config means the picture cannot drift from the behaviour.
+    chunkPauseMs: () => cfg.chunkPauseDuration,
+    shortPauseFloorMs: SHORT_PAUSE_FLOOR_MS,
 
     // Actions
     startListening,
