@@ -6,17 +6,27 @@
 
 ## The short version
 
-You were right, and it was the microphone.
+Half right, and the half that's wrong matters — so here it is straight.
 
-The recorder decides a phrase has ended when the sound drops below a certain
-level for 800ms. That level was a **fixed number**. Your phone mic put out a hot
-signal, so the fixed number sat well underneath your voice and only real silence
-crossed it. Your new external mic is quieter — everything, your voice included,
-comes out lower — but the fixed number did not move down with it. So the cut-off
-ended up sitting *inside* your voice, and an ordinary breath in the middle of a
-phrase looked exactly like the end of one.
+**Confirmed:** your microphone really is quieter than the recorder assumes. The
+code carried a constant saying ordinary speech measures `0.23`. Across 68 of
+your real takes, measured off the untouched browser recordings, your speech
+measures **`0.113`** — two to four times lower, in *every* session, including all
+the ones that worked fine. So the recorder has been reasoning about a speaker
+who isn't you. That is worth fixing, and it is fixed.
 
-That is why it worked on the phone and not on the good mic, same tool, same day.
+**Refuted:** the specific thing I thought was cutting you off wasn't. I expected
+the silence cut-off to be eating ordinary mid-phrase dips. It needs 800ms of
+continuous quiet to do that, and exactly **1 of your 38 natural-speed takes** has
+a dip that long — and that take came out fine.
+
+**Still open:** the truncation is real, and it's confined to one session
+(18:21–18:23). Five of nine takes there are fragments — 0.91s to 2.88s of a
+sentence that reads in 3.65s. But they end with **0–50ms of trailing silence**,
+and a cut by the voice-detector fires 800ms *into* a silence, so it physically
+cannot leave less than that. Your other sessions all carry that 800ms tail.
+**Whatever chopped those five takes was not the silence threshold**, and I don't
+yet know what it was.
 
 ## What the check asks you to do
 
@@ -76,59 +86,60 @@ says "worth re-checking", because rooms change.
 
 ---
 
-## The evidence, for the record
+## The real danger the measurement found
 
-One real recorded phrase, replayed through the real voice-detection code at two
-microphone gains 13dB apart — the only difference being how hot the mic is.
+Not the floor — **the ceiling.**
 
-| | gate set to | gate sits below the voice | gate sits above the room |
-|---|---|---|---|
-| **Before** — phone-like | 0.0100 | 27.5 dB | 20.5 dB |
-| **Before** — external-like | 0.0100 | **14.4 dB** | 33.6 dB |
-| **After** — phone-like | 0.0212 | 21.0 dB | 27.0 dB |
-| **After** — external-like | 0.0048 | 20.8 dB | 27.2 dB |
+The old room calibration took your measured background noise, multiplied it by
+four, and clamped the result to at most `0.08`. Two things follow.
 
-Two things fall out of that table.
+Most of the time the clamp went the *other* way: it hit the bottom stop of
+`0.01` and the room measurement was thrown away entirely. Measured on a real
+phrase replayed through the real code at two mic gains 13dB apart, it set the
+gate to `0.0100` on **both**:
 
-**The old room calibration never did anything.** It set the gate to `0.0100` on
-both microphones — the bottom of a hard-coded clamp `[0.01, 0.08]`. The room was
-measured and then thrown away, because the clamp always won.
+| | gate set to | gate sits below the voice |
+|---|---|---|
+| **Before** — phone-like | 0.0100 | 27.5 dB |
+| **Before** — external-like | 0.0100 | 14.4 dB |
+| **After** — phone-like | 0.0212 | 21.0 dB |
+| **After** — external-like | 0.0048 | 20.8 dB |
 
-**The gate ended up 13dB closer to your voice on the quieter mic.** 14.4dB of
-headroom is inside ordinary speech: unstressed syllables, the end of a word, the
-air before a plosive all live down there.
+But when the calibration happens to catch a breath — which a close-in external
+mic picks up readily — the multiply-by-four lands the gate at `0.05`–`0.08`. And
+**3 of your 68 takes have a speech p95 below 0.08 outright.** A gate above your
+voice does not truncate a take. It captures **nothing at all**, silently, for the
+whole session.
 
-Then the same phrase with a mid-phrase breath, swept by breath length. Numbers
-are the takes the recorder cut, in ms:
+That is the failure worth spending the fix on, because it is the unrecoverable
+one. A gate too low merges phrases into one long blob — ugly, slow to sort out,
+but every syllable is still in the file. A gate too high loses the audio. So the
+gate may now never come closer than **9dB to your measured voice**, whichever
+way the arithmetic went, and when your room is too loud for that to be
+comfortable it says so out loud instead of quietly picking the side you can't
+recover from.
 
-| breath | before, phone | before, external | after, phone | after, external |
-|---:|---|---|---|---|
-| 200ms | [2100] | [1900] | [2050] | [2050] |
-| 400ms | [2300] | [2100] | [2250] | [2250] |
-| 600ms | [2500] | [2300] | [2450] | [2450] |
-| **800ms** | **[2700]** | **[900, 750]** | **[2650]** | **[2650]** |
+## One more thing, for slow reads
 
-At an 800ms breath the old code **split one phrase into two takes** on the
-external mic while keeping it whole on the phone — one phrase in, two broken
-takes out. And at *every* breath length the external mic quietly lost 200ms off
-a take the phone captured in full.
-
-After the change, both microphones produce the same take, to the poll. Which is
-the property that actually matters: **a change of microphone must not change
-where the recorder cuts.**
+**23 of your 30 slow takes** have mid-phrase dips below `0.01` lasting 800ms or
+more — median 1250ms, worst 2200ms. Slow cadence has almost no margin under the
+old fixed gate. It is currently protected by a separate 4-second tolerance while
+chunks are still outstanding, not by the gate having any room in it. Worth a
+proper look; it is outside what this change touches.
 
 ## How it works, in one paragraph
 
 Everything is done in dB, because that is the unit in which a gain change is a
 constant offset: turn the mic up 12dB and the room, the voice and the gate all
 move 12dB together, and the behaviour is identical. The gate is placed **21dB
-under your measured voice** and **12dB over your measured room** — the two
-margins the configuration that demonstrably worked actually had (0.02 against a
-0.23 voice and a 0.003 room). When your room is loud enough that both cannot be
-satisfied — a gap under 33dB — it splits the difference and tells you. Under
-20dB it says the room is too noisy. The absolute clamps still exist but are now
-`[0.0006, 0.08]`, wide enough that they only ever catch a dead or blaring input,
-never a working microphone.
+under your measured voice** and **12dB over your measured room**, and may never
+come within **9dB** of your voice whatever else the arithmetic says. When your
+room is loud enough that the first two cannot both be met — a gap under 33dB —
+it splits the difference and tells you; under 20dB it says the room is too
+noisy. The absolute clamps still exist but are now `[0.0006, 0.08]`, wide enough
+that they only ever catch a dead or blaring input, never a working microphone.
+The assumed-speech constant is now `0.113`, your real measured level, and it is
+only ever used when nobody has run the check.
 
 ## Where the code is
 
