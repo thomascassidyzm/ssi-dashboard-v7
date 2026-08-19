@@ -170,9 +170,3 @@ supabase/.temp/
 # results). Same ephemeral category as docs/sessions/ above.
 # --------------------------
 docs/course-optimization/**/*.json
-
-# --------------------------
-# Recordist practice page — build output only. Rebuild with:
-#   npx vite build --config tools/recordist-tutorial/vite.config.mjs
-# --------------------------
-tools/recordist-tutorial/dist/

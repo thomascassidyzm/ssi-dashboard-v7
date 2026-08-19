@@ -1,9 +1,8 @@
 <template>
   <div class="autocue-studio">
-    <!-- Film grain overlay -->
     <div class="film-grain"></div>
 
-    <!-- Header — the real studio header, with the practice session's own numbers -->
+    <!-- Header — the real studio header, with the practice session's numbers -->
     <header class="studio-header">
       <div class="studio-branding">
         <div class="studio-badge">🎙️</div>
@@ -13,7 +12,7 @@
         </div>
       </div>
 
-      <div class="session-stats" v-if="phase !== 'intro'">
+      <div class="session-stats" v-if="step !== 'welcome'">
         <div class="stat-item">
           <span class="stat-value">{{ recordedCount }}</span>
           <span class="stat-label">Recorded</span>
@@ -28,61 +27,56 @@
         </div>
       </div>
 
-      <span class="back-link practice-badge">Practice — nothing is saved</span>
+      <span class="back-link practice-badge">{{ HINTS.nothingSaved }}</span>
     </header>
 
-    <!-- Recording Status (Fixed) — the real component -->
     <RecordingStatus :is-recording="isRecording" />
+
+    <!-- Tutorial-only progress spine. Gated with the same inject as the copy. -->
+    <TutorialProgress v-if="step !== 'welcome'" :steps="SPINE" :current="spineIndex" />
 
     <div v-if="error" class="mode-error">{{ error }}</div>
 
-    <!-- ── Phase: intro. The real "Recording Script Ready" card. ─────────── -->
-    <div v-if="phase === 'intro'" class="script-loaded-phase">
+    <!-- ── welcome ─────────────────────────────────────────────────────── -->
+    <div v-if="step === 'welcome'" class="script-loaded-phase">
       <div class="script-summary">
-        <h2>Practice Session Ready</h2>
-        <p class="script-cap-note">
-          Four items. Nothing you record here is saved or uploaded.
-        </p>
+        <h2>Practice Session</h2>
+        <p class="script-cap-note">Nothing you record here is saved or uploaded.</p>
+
+        <TutorialCoach step="welcome" />
 
         <label class="pack-label" for="pack">Language you'll be reading</label>
         <select id="pack" v-model="packId" class="pack-select">
           <option v-for="p in PHRASE_PACKS" :key="p.id" :value="p.id">{{ p.label }}</option>
         </select>
 
-        <div class="script-stats">
-          <div class="script-stat">
-            <span class="script-stat-value">2</span>
-            <span class="script-stat-label">Natural</span>
-          </div>
-          <div class="script-stat">
-            <span class="script-stat-value">2</span>
-            <span class="script-stat-label">Slow</span>
-          </div>
-          <div class="script-stat">
-            <span class="script-stat-value">6</span>
-            <span class="script-stat-label">Pieces</span>
-          </div>
-          <div class="script-stat">
-            <span class="script-stat-value">~4</span>
-            <span class="script-stat-label">Minutes</span>
-          </div>
-        </div>
-
-        <p class="script-instructions">
-          Each phrase appears twice in a real session: <strong>white text</strong> for natural
-          speed, then <strong class="amber-text">amber text</strong> for slow reading.
-          You'll do two of each here, and then hear what actually happens to the slow ones.
-        </p>
-        <p class="script-instructions">Headphones help. A quiet room helps more.</p>
-
         <div class="script-actions">
-          <button class="btn-begin" @click="beginSession">Begin Recording</button>
+          <button class="btn-begin" @click="go('pickQueueMode')">Start</button>
         </div>
       </div>
     </div>
 
-    <!-- ── Phase: recording. The real recording screen, unchanged. ───────── -->
-    <div v-else-if="phase === 'recording'" class="recording-phase">
+    <!-- ── mode select — the REAL ModeSelector, twice ───────────────────── -->
+    <div v-else-if="step === 'pickQueueMode' || step === 'switchMode'">
+      <TutorialCoach :step="step" :nudged="nudged" />
+      <ModeSelector @select="onModeSelect" />
+    </div>
+
+    <!-- ── role select — the REAL RoleSelector ──────────────────────────── -->
+    <div v-else-if="step === 'role'">
+      <TutorialCoach step="role" />
+      <RoleSelector
+        :course-name="`Practice — ${pack.label}`"
+        known-language="English"
+        :target-language="pack.label"
+        :phrase-count="totalItems"
+        @begin="go('queueNatural')"
+        @back="go('pickQueueMode')"
+      />
+    </div>
+
+    <!-- ── QUEUE MODE recording (manual advance) ────────────────────────── -->
+    <div v-else-if="step === 'queueNatural' || step === 'queueSlow'" class="recording-phase">
       <div class="pass-indicator">
         <div class="pass-info">
           <span class="pass-label">Current Pass</span>
@@ -90,82 +84,58 @@
             Pass {{ currentPass }}: {{ currentPass === 1 ? 'Natural Speed' : 'Slow with Gaps' }}
           </span>
         </div>
-        <span class="pass-progress">
-          Item {{ currentIndex + 1 }} / {{ passPhrases.length }}
-        </span>
+        <span class="pass-progress">Item {{ queueIndex + 1 }} / {{ passPhrases.length }}</span>
       </div>
 
-      <!-- Room calibration + level meter: the real studio's own markup -->
-      <div v-if="isCalibrating" class="vad-calibrating">
-        <div class="vad-bar" :style="{ width: `${vadMeterPercent}%` }"></div>
-        <span class="vad-status">Listening to the room — stay quiet for a moment...</span>
-      </div>
+      <VadStrip
+        :calibrating="isCalibrating"
+        :calibration="calibration"
+        :recording="isRecording"
+        :speaking="isSpeaking"
+        :percent="vadMeterPercent"
+      />
 
-      <div
-        v-else-if="calibrationWarning"
-        class="vad-noise-warning"
-        :class="`quality-${calibration.quality}`"
-      >
-        <strong>{{ calibration.quality === 'too-loud' ? 'Too noisy to record' : 'Background noise' }}</strong>
-        <span>{{ calibration.message }}</span>
-      </div>
-
-      <div v-if="isRecording && !isCalibrating" class="vad-indicator">
-        <div class="vad-bar" :style="{ width: `${vadMeterPercent}%` }"></div>
-        <span class="vad-status">{{ isSpeaking ? 'Speaking...' : 'Listening...' }}</span>
-      </div>
-
-      <!-- The real teleprompter. Pass 2 draws the beat markers between chunks. -->
       <TeleprompterDisplay
         :phrases="passPhrases"
-        :current-index="currentIndex"
+        :current-index="queueIndex"
         :current-pass="currentPass"
         :is-recording="isRecording"
         :scroll-speed="scrollSpeed"
         :script-mode="false"
-        :uploaded-indices="doneIndices"
+        :uploaded-indices="queueDoneIndices"
       />
 
-      <!-- Coaching for the pass, above the controls where the real studio puts
-           its upload bars. Two sentences; the teaching is in what you hear. -->
-      <div class="coach-note" :class="{ slow: currentPass === 2 }">
-        <template v-if="currentPass === 1">
-          Say it the way you'd say it to someone. We're not after a performance — if it
-          sounds like you're reading, it will sound like reading to the learner too.
-        </template>
-        <template v-else>
-          Leave a clear beat — about a second — at each marker. Say each piece
-          <strong>flat and even</strong>: we are going to cut these apart and use the pieces
-          inside other sentences.
-        </template>
-      </div>
+      <TutorialCoach :step="coachStepForQueue" />
 
-      <!-- The real controls -->
       <RecordingControls
         :is-recording="isRecording"
         :is-paused="false"
-        @toggle-recording="onToggleRecording"
+        @toggle-recording="onQueueToggleRecording"
         @pause="() => {}"
-        @previous="navigate(-1)"
-        @next="navigate(1)"
+        @previous="queueNavigate(-1)"
+        @next="queueNavigate(1)"
         @slower="adjustSpeed(-1)"
         @faster="adjustSpeed(1)"
       />
 
-      <!-- Listen back to the natural takes, immediately, while still on this screen. -->
-      <div v-if="currentPass === 1 && naturalTakes.length" class="listen-panel">
+      <TutorialHint :text="HINTS.manualAdvance" />
+
+      <!-- Natural pass: hear yourself immediately, on this screen -->
+      <div v-if="step === 'queueNatural' && naturalTakes.length" class="listen-panel">
         <h3>That's you</h3>
         <div v-for="(t, k) in naturalTakes" :key="k" class="listen-row">
-          <span class="listen-text">{{ pack.natural[k] }}</span>
-          <audio controls preload="none" :src="t.url"></audio>
+          <template v-if="t">
+            <span class="listen-text">{{ pack.natural[k] }}</span>
+            <audio controls preload="none" :src="t.url"></audio>
+          </template>
         </div>
-        <div class="panel-actions" v-if="naturalTakes.length >= pack.natural.length">
-          <button class="btn-begin" @click="goToPass2">Next — the slow ones</button>
+        <div class="panel-actions" v-if="allNaturalDone">
+          <button class="btn-begin" @click="goToSlow">Next — the slow ones</button>
         </div>
       </div>
 
-      <!-- The slow take, cut apart, on this screen, before moving on. -->
-      <div v-if="currentPass === 2 && currentSlowTake" class="listen-panel">
+      <!-- Slow pass: the cuts, on this screen, before moving on -->
+      <div v-if="step === 'queueSlow' && currentSlowTake" class="listen-panel">
         <h3>Here's where we cut it</h3>
         <TakeWaveform
           :samples="currentSlowTake.samples"
@@ -174,17 +144,19 @@
         />
         <template v-if="currentSlowTake.align.ok">
           <p class="cut-ok">Found all {{ currentSlowTake.align.chunks.length }} pieces.</p>
-          <p class="cut-hint">
-            Tap each one. The green block is exactly what a learner would hear if that
-            piece turned up on its own.
-          </p>
+          <div class="piece-row" v-for="(c, k) in currentSlowTake.align.chunks" :key="k">
+            <span class="piece-n">{{ k + 1 }}</span>
+            <span class="piece-t">{{ c.text }}</span>
+            <span class="piece-d">{{ (c.durationMs / 1000).toFixed(2) }}s</span>
+            <button class="piece-play" @click="playPiece(lastSlowIdx, k)">▶ Play</button>
+          </div>
           <div class="panel-actions">
             <button
-              v-if="currentIndex + 1 < passPhrases.length"
+              v-if="!allSlowDone"
               class="btn-begin"
-              @click="navigate(1)"
+              @click="queueNavigate(1)"
             >Next slow one</button>
-            <button v-else class="btn-begin" @click="goToReview">
+            <button v-else class="btn-begin" @click="goToQueueReview">
               Next — hear them put together
             </button>
           </div>
@@ -197,8 +169,8 @@
           <div class="cut-diagnosis">
             <template v-if="currentSlowTake.align.detectedCount < currentSlowTake.align.expectedCount">
               Two pieces ran together — the gap between them was under
-              {{ SPLICE_CONFIG.SILENCE_MIN_MS }} milliseconds, so we could not tell where one
-              ended. Leave a longer, more definite pause.
+              {{ BEAT_WINDOW.minMs }} milliseconds, so we could not tell where one ended.
+              Leave a longer, more definite pause.
             </template>
             <template v-else>
               We found more pieces than there are — usually a breath, a lip noise, or a word
@@ -210,20 +182,21 @@
               than technique will.
             </template>
           </div>
-          <p class="cut-hint">This is not a test you can fail — this is the feedback. Record it again.</p>
         </template>
       </div>
     </div>
 
-    <!-- ── Phase: review. The real review grid, with real audio behind it. ── -->
-    <div v-else-if="phase === 'review'" class="review-phase">
+    <!-- ── QUEUE MODE review ────────────────────────────────────────────── -->
+    <div v-else-if="step === 'queueReview'" class="review-phase">
       <div class="review-interface">
         <div class="review-header">
           <h2 class="review-title">Session Review</h2>
           <p class="review-subtitle">
-            These are your six pieces, cut out of the two slow reads. Tap Play on any of them.
+            Your six pieces, cut out of the two slow reads. Tap Play on any of them.
           </p>
         </div>
+
+        <TutorialCoach step="queueReview" />
 
         <div v-for="(take, ri) in slowTakes" :key="ri" class="take-block">
           <h3 class="take-heading">Slow read {{ ri + 1 }}</h3>
@@ -247,17 +220,11 @@
 
         <div class="mix-card">
           <h2>You never said any of these</h2>
-          <p class="mix-note">
-            Every one is your own voice, cut up and stuck back together. If they sound like
-            one person saying one sentence, your slow read was neutral enough. If a word jumps
-            out, or the pitch steps up and down between pieces, that's the thing to fix — and
-            it's the only feedback that's ever really worked.
-          </p>
           <div v-for="(mix, k) in mixes" :key="k" class="mix-row">
             <div class="mix-label">{{ mix.label }}</div>
             <audio v-if="mix.url" controls preload="none" :src="mix.url"></audio>
             <p v-else class="cut-hint">
-              Couldn't build this one — one of the slow reads didn't split cleanly. Redo it above.
+              Couldn't build this one — a slow read didn't split cleanly. Redo it above.
             </p>
           </div>
         </div>
@@ -266,15 +233,172 @@
           <button class="control-btn" @click="trySlowAgain">
             <span class="btn-icon">↻</span> Try the slow ones again
           </button>
+          <button class="control-btn go" @click="go('switchMode')">
+            <span class="btn-icon">➡️</span> Next — the other mode
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── SCRIPT MODE — continuous, VAD auto-advance ───────────────────── -->
+    <div v-else-if="step === 'scriptRun'" class="recording-phase">
+      <div class="pass-indicator">
+        <div class="pass-info">
+          <span class="pass-label">Continuous Recording</span>
+          <span class="pass-title">
+            {{ scriptPhrases[scriptIndex]?.cadence === 'slow' ? 'Slow Pass' : 'Natural Speed' }}
+            — Phrase
+          </span>
+        </div>
+        <span class="pass-progress">Item {{ scriptIndex + 1 }} / {{ scriptPhrases.length }}</span>
+      </div>
+
+      <VadStrip
+        :calibrating="isCalibrating"
+        :calibration="calibration"
+        :recording="isRecording"
+        :speaking="isSpeaking"
+        :percent="vadMeterPercent"
+      />
+
+      <TeleprompterDisplay
+        :phrases="scriptPhrases"
+        :current-index="scriptIndex"
+        :current-pass="1"
+        :is-recording="isRecording"
+        :scroll-speed="scrollSpeed"
+        :script-mode="true"
+        :uploaded-indices="scriptDoneIndices"
+      />
+
+      <TutorialCoach step="scriptRun" />
+
+      <RecordingControls
+        :is-recording="isRecording"
+        :is-paused="false"
+        @toggle-recording="onScriptToggleRecording"
+        @pause="() => {}"
+        @previous="scriptNavigate(-1)"
+        @next="scriptNavigate(1)"
+        @slower="adjustSpeed(-1)"
+        @faster="adjustSpeed(1)"
+      />
+
+      <TutorialHint :text="isCalibrating ? HINTS.calibrating : HINTS.autoAdvance" />
+
+      <div v-if="landings.length" class="listen-panel">
+        <h3>Takes kept so far: {{ landings.length }}</h3>
+        <p class="cut-hint">
+          You have been given {{ scriptPhrases.length }} lines. Every time this number goes up,
+          the autocue has moved on.
+        </p>
+        <div class="panel-actions">
+          <button class="btn-begin" @click="finishScriptRun">Stop and see what happened</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── SCRIPT MODE consequence ──────────────────────────────────────── -->
+    <div v-else-if="step === 'scriptConsequence'" class="review-phase">
+      <div class="review-interface">
+        <div class="review-header">
+          <h2 class="review-title">What the tool kept</h2>
+          <p class="review-subtitle">
+            {{ scriptPhrases.length }} lines on the autocue · {{ landings.length }} takes kept
+          </p>
+        </div>
+
+        <TutorialCoach step="scriptConsequence" />
+
+        <div
+          class="landing-verdict"
+          :class="landings.length > scriptPhrases.length ? 'ran-ahead' : 'clean'"
+        >
+          <template v-if="landings.length > scriptPhrases.length">
+            It ran ahead of you. {{ landings.length }} takes for {{ scriptPhrases.length }} lines
+            means {{ landings.length - scriptPhrases.length }}
+            {{ landings.length - scriptPhrases.length === 1 ? 'line was' : 'lines were' }}
+            split in the middle — everything after that landed in the wrong slot.
+          </template>
+          <template v-else-if="landings.length < scriptPhrases.length">
+            Some lines never got a take. Either you stopped early, or two lines ran together
+            without a long enough gap between them for the tool to notice a boundary.
+          </template>
+          <template v-else>
+            Clean run — one take per line. That is what it looks like when your pauses land
+            inside the window.
+          </template>
+        </div>
+
+        <div class="landing-list">
+          <div v-for="(p, i) in scriptPhrases" :key="p.id" class="landing-row">
+            <span class="landing-n">{{ i + 1 }}</span>
+            <span class="landing-text" :class="{ slow: p.cadence === 'slow' }">{{ p.text }}</span>
+            <span class="landing-takes" :class="takeClass(i)">
+              {{ takesFor(i).length }} {{ takesFor(i).length === 1 ? 'take' : 'takes' }}
+            </span>
+            <span class="landing-audio">
+              <audio
+                v-for="(t, k) in takesFor(i)"
+                :key="k"
+                controls
+                preload="none"
+                :src="t.url"
+              ></audio>
+            </span>
+          </div>
+        </div>
+
+        <div class="final-actions">
+          <button class="control-btn" @click="retryScriptRun">
+            <span class="btn-icon">↻</span> Try that again
+          </button>
+          <button class="control-btn go" @click="go('beatWindow')">
+            <span class="btn-icon">➡️</span> Why it happened
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── the beat window ──────────────────────────────────────────────── -->
+    <div v-else-if="step === 'beatWindow'" class="script-loaded-phase">
+      <div class="script-summary">
+        <h2>The beat window</h2>
+        <TutorialCoach step="beatWindow" />
+        <BeatWindowDiagram />
+        <div class="script-actions">
+          <button class="control-btn" @click="retryScriptRun">
+            <span class="btn-icon">↻</span> Try continuous again
+          </button>
+          <button class="btn-begin" @click="go('done')">I've got it</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── done ─────────────────────────────────────────────────────────── -->
+    <div v-else-if="step === 'done'" class="summary-phase">
+      <div class="summary-card">
+        <h2>Session Complete</h2>
+        <div class="summary-stats">
+          <div class="summary-stat">
+            <span class="summary-value">2</span>
+            <span class="summary-label">Modes Used</span>
+          </div>
+          <div class="summary-stat">
+            <span class="summary-value">{{ recordedCount }}</span>
+            <span class="summary-label">Takes</span>
+          </div>
+          <div class="summary-stat">
+            <span class="summary-value">{{ mixes.filter(m => m.url).length }}</span>
+            <span class="summary-label">Rebuilt</span>
+          </div>
+        </div>
+        <TutorialCoach step="done" />
+        <div class="summary-actions">
           <button class="control-btn" @click="restart">
             <span class="btn-icon">⬅️</span> Start over
           </button>
         </div>
-
-        <p class="closing-note">
-          Happy with how those sound? Then you're ready. Close this and open your real
-          recording set — none of what you just did was kept.
-        </p>
       </div>
     </div>
   </div>
@@ -282,75 +406,121 @@
 
 <script setup>
 /**
- * Recordist tutorial — a MODE of the real Autocue Studio, not a lookalike.
+ * Recordist tutorial — a guided pass over the REAL Autocue Studio, in both of
+ * its recording modes.
  *
- * WHY IT IS A SEPARATE COMPONENT rather than a flag on AutocueStudio.vue:
- * AutocueStudio's whole script-mode body is course-bound — it calls
- * loadCourse(), drives useAutocueState's module-level singleton, and hands
- * every captured segment to useUploadQueue. A `tutorial` flag would have to
- * branch around all three, and the branch that must NEVER be wrong is the
- * upload one. Keeping the practice mode in its own component means there is no
- * upload call site to disable: there is simply no import of useAudioUpload or
- * useAutocueState here, so a practice take has nowhere to go.
+ * ── WHY IT IS A SEPARATE COMPONENT rather than a flag on AutocueStudio.vue ───
+ * AutocueStudio's body is course-bound end to end: loadCourse(), the
+ * useAutocueState module singleton, and useUploadQueue on every captured
+ * segment. A `tutorial` flag would have to branch around all three, and the
+ * branch that must never be wrong is the upload one. This component imports
+ * neither useAudioUpload nor useAutocueState, so a practice take has nowhere to
+ * go — the guarantee is structural, not a conditional someone can invert.
  *
- * WHAT IS REUSED VERBATIM (same components, same layout, same gestures):
- *   RecordingStatus, TeleprompterDisplay (+ PhraseCard), RecordingControls,
- *   SegmentCard — imported from the real studio, unmodified.
- *   The shell markup and CSS below are lifted from AutocueStudio.vue, which
- *   scopes its styles, so the same rules have to be present to render the same
- *   screen. Do not let them drift.
+ * ── WHAT IS REUSED VERBATIM from the live recorder ──────────────────────────
+ *   ModeSelector, RoleSelector, RecordingStatus, TeleprompterDisplay (+
+ *   PhraseCard), RecordingControls, SegmentCard — imported unmodified. The
+ *   recordist presses the SAME mode cards, in the same place, to switch modes.
+ *   The shell markup/CSS below is lifted from AutocueStudio.vue (which scopes
+ *   its styles, so the rules must be present here to render the same screen).
+ *   Do not let them drift.
  *
- * WHAT DIFFERS, deliberately:
- *   - content: fixed practice phrases (src/utils/tutorialPhrases.js), never the
- *     recording queue;
- *   - nothing is saved: no fetch/XHR/sendBeacon anywhere in this component, no
- *     localStorage/sessionStorage/IndexedDB, no upload queue. Takes exist as
- *     in-memory Float32Arrays and blob: URLs and die with the tab.
- *   - the recordist presses Start/Stop per take, as in the studio's pass-based
- *     (non-script) mode. The continuous VAD auto-advance is NOT used, because
- *     its 800 ms silence-end would end the take at the first beat of a slow
- *     read and there would be nothing left to split. The VAD is still here for
- *     the level meter and the room-calibration warning, so the screen is the
- *     screen the recordist will see.
- *   - one addition the real review screen lacks: TakeWaveform, which draws the
- *     actual audio and the actual cut lines (SegmentCard's own eight bars are
- *     decorative, seeded from the segment id).
+ * ── WHERE THE TEACHING COPY LIVES, AND HOW IT IS GATED ──────────────────────
+ *   Every instructional word is in tutorial/tutorialScript.js and reaches the
+ *   screen ONLY through <TutorialCoach>, <TutorialHint> and <TutorialProgress>,
+ *   all three of which render nothing unless TUTORIAL_MODE was provided.
+ *   provideTutorialMode() is called once, below, and nowhere else in the repo.
+ *   So a real recordist cannot see any of it, and a future edit cannot leak it
+ *   into the live surface by forgetting a v-if — there is no v-if to forget.
  *
- * The tutorial only ever segments the SLOW reads. Natural-speed takes are
- * played straight back and never cut — so the 2026-08-19 natural-speed boundary
- * defect cannot touch anything here. Keep it that way.
+ * ── THE TWO MODES, and the order they are taught in ─────────────────────────
+ *   Queue mode (regeneration): phrase-by-phrase, MANUAL advance — the recordist
+ *   holds the boundary. Taught first, because neutrality and auto-advance
+ *   failing at the same time gives a failure two possible causes.
+ *   Script mode (new-course): continuous, VAD AUTO-advance — the tool decides
+ *   when you finished. Taught second, with the consequence made visible: the
+ *   take-landing table shows when it ran ahead of the recordist.
+ *   Both are real: see useAutocueState.js's own header.
+ *
+ * Nothing is saved: no fetch/XHR/sendBeacon, no localStorage/sessionStorage/
+ * IndexedDB, no upload queue, no TTS. Takes are in-memory Float32Arrays and
+ * blob: URLs revoked on unmount. Splicing goes through src/utils/takeSplice.js
+ * — no third implementation. Only SLOW reads are ever segmented; natural-speed
+ * takes are played straight back and never cut, so the 2026-08-19 natural-speed
+ * boundary defect cannot reach this.
  */
 import { ref, computed, onMounted, onUnmounted } from 'vue'
 
+import ModeSelector from './ModeSelector.vue'
+import RoleSelector from './RoleSelector.vue'
 import TeleprompterDisplay from './teleprompter/TeleprompterDisplay.vue'
 import RecordingControls from './recording/RecordingControls.vue'
 import RecordingStatus from './recording/RecordingStatus.vue'
 import SegmentCard from './review/SegmentCard.vue'
+
 import TakeWaveform from './tutorial/TakeWaveform.vue'
+import TutorialCoach from './tutorial/TutorialCoach.vue'
+import TutorialHint from './tutorial/TutorialHint.vue'
+import TutorialProgress from './tutorial/TutorialProgress.vue'
+import BeatWindowDiagram from './tutorial/BeatWindowDiagram.vue'
+import VadStrip from './tutorial/VadStrip.vue'
+import { provideTutorialMode } from './tutorial/tutorialMode'
+import { HINTS, BEAT_WINDOW } from './tutorial/tutorialScript'
 
 import { useVAD } from '@/composables/useVAD'
+import { useContinuousRecorder } from '@/composables/useContinuousRecorder'
 import { PHRASE_PACKS, packById } from '@/utils/tutorialPhrases'
 import {
-  decodeMono, alignSlowGap, sliceChunk, concatChunks, encodeWavMono, SPLICE_CONFIG,
+  decodeMono, alignSlowGap, sliceChunk, concatChunks, encodeWavMono,
 } from '@/utils/takeSplice'
 
+// THE GATE, turned on in exactly one place.
+provideTutorialMode()
+
+// ── the tutorial's spine ────────────────────────────────────────────────────
+const SPINE = [
+  { key: 'pickQueueMode', label: 'Modes' },
+  { key: 'role', label: 'Voice' },
+  { key: 'queueNatural', label: 'Natural' },
+  { key: 'queueSlow', label: 'Slow' },
+  { key: 'queueReview', label: 'Pieces' },
+  { key: 'switchMode', label: 'Switch' },
+  { key: 'scriptRun', label: 'Continuous' },
+  { key: 'scriptConsequence', label: 'Result' },
+  { key: 'beatWindow', label: 'The beat' },
+  { key: 'done', label: 'Done' },
+]
+
+const step = ref('welcome')
+const nudged = ref(false)
+const spineIndex = computed(() => SPINE.findIndex((s) => s.key === step.value))
+
+function go(next) {
+  nudged.value = false
+  step.value = next
+}
+
 // ── session state ───────────────────────────────────────────────────────────
-const phase = ref('intro')          // intro | recording | review
-const currentPass = ref(1)          // 1 = natural, 2 = slow
-const currentIndex = ref(0)
+const packId = ref(PHRASE_PACKS[0].id)
+const pack = computed(() => packById(packId.value))
+
 const scrollSpeed = ref(3)
 const isRecording = ref(false)
 const error = ref('')
-const packId = ref(PHRASE_PACKS[0].id)
 
-const naturalTakes = ref([])        // [{ url }]
-const slowTakes = ref([])           // [{ samples, sampleRate, align }]
-const mixes = ref([])               // [{ label, url }]
+// queue mode
+const currentPass = ref(1)
+const queueIndex = ref(0)
+const naturalTakes = ref([])
+const slowTakes = ref([])
+const lastSlowIdx = ref(null)   // which slow read the cut panel is showing
+const mixes = ref([])
 
-const pack = computed(() => packById(packId.value))
+// script mode
+const scriptIndex = ref(0)
+const landings = ref([])   // [{ index, url, durationMs }]
 
-// Blob URLs are the only artefact this component creates, and they are revoked
-// on unmount. Nothing is written to disk, storage, or the network.
+// Blob URLs are the only artefact this component makes, revoked on unmount.
 const objectUrls = []
 function urlFor(blob) {
   const u = URL.createObjectURL(blob)
@@ -361,54 +531,97 @@ function wavUrl(samples, sampleRate) {
   return urlFor(encodeWavMono(samples, sampleRate))
 }
 
-// ── teleprompter feed ───────────────────────────────────────────────────────
-// Pass 1 shows the natural phrases, pass 2 the slow ones — exactly the real
-// studio's pass model, which is what makes PhraseCard draw the beat markers.
+// ── phrase feeds ────────────────────────────────────────────────────────────
 const passPhrases = computed(() => {
   if (currentPass.value === 1) {
     return pack.value.natural.map((text, i) => ({ id: `nat-${i}`, text, cadence: 'natural' }))
   }
   return pack.value.slow.map((r, i) => ({
-    id: `slow-${i}`,
-    text: r.chunks.join(' '),
-    chunks: r.chunks,
-    cadence: 'slow',
+    id: `slow-${i}`, text: r.chunks.join(' '), chunks: r.chunks, cadence: 'slow',
   }))
 })
 
-const doneIndices = computed(() => {
+// Script mode gets ONE continuous list mixing cadences, which is the shape of a
+// real optimizer script.
+const scriptPhrases = computed(() => [
+  ...pack.value.natural.map((text, i) => ({ id: `sn-${i}`, text, cadence: 'natural' })),
+  ...pack.value.slow.map((r, i) => ({
+    id: `ss-${i}`, text: r.chunks.join(' '), chunks: r.chunks, cadence: 'slow',
+  })),
+])
+
+const queueDoneIndices = computed(() => {
   const takes = currentPass.value === 1 ? naturalTakes.value : slowTakes.value
   const s = new Set()
   takes.forEach((t, i) => { if (t) s.add(i) })
   return s
 })
+const scriptDoneIndices = computed(() => new Set(landings.value.map((l) => l.index)))
+
+const allNaturalDone = computed(
+  () => pack.value.natural.every((_, i) => !!naturalTakes.value[i])
+)
+const allSlowDone = computed(
+  () => pack.value.slow.every((_, i) => !!slowTakes.value[i])
+)
 
 const totalItems = computed(() => pack.value.natural.length + pack.value.slow.length)
-const recordedCount = computed(
-  () => naturalTakes.value.filter(Boolean).length + slowTakes.value.filter(Boolean).length
+
+// The header stats describe the LEG the recordist is in, not the whole tutorial
+// — that is what the real studio's Recorded/Total/Complete mean, and summing
+// two modes' takes against one mode's line count read as "10 of 4".
+//
+// In the continuous leg `recordedCount` can legitimately EXCEED the line count:
+// six takes for four lines is not a display bug, it is the entire lesson of
+// that screen. So the percentage is clamped rather than the count.
+const inScriptLeg = computed(
+  () => ['scriptRun', 'scriptConsequence', 'beatWindow'].includes(step.value)
 )
-const completionPercent = computed(
-  () => Math.round((recordedCount.value / totalItems.value) * 100)
+const recordedCount = computed(() => inScriptLeg.value
+  ? landings.value.length
+  : naturalTakes.value.filter(Boolean).length + slowTakes.value.filter(Boolean).length)
+const completionPercent = computed(() =>
+  Math.min(100, Math.round((recordedCount.value / totalItems.value) * 100))
 )
-const sessionInfo = computed(() => `Practice session · ${pack.value.label} · nothing saved`)
+const sessionInfo = computed(() => `Practice · ${pack.value.label} · ${modeLabel.value}`)
+const modeLabel = computed(() => {
+  if (inScriptLeg.value) return 'continuous'
+  if (['queueNatural', 'queueSlow', 'queueReview'].includes(step.value)) return 'phrase-by-phrase'
+  return 'nothing saved'
+})
+
+const coachStepForQueue = computed(() => {
+  if (step.value === 'queueSlow') return currentSlowTake.value ? 'queueCuts' : 'queueSlow'
+  // The mic is open, so the live question is no longer "how do I record" but
+  // "how do I end this take" — which is the lesson of the NEXT button.
+  if (isRecording.value) return 'queueAdvance'
+  return 'queueNatural'
+})
 
 // ── microphone + VAD ────────────────────────────────────────────────────────
 // The SAME constraints useContinuousRecorder asks for. Matching them matters:
-// AGC and denoise reshape the energy envelope, which is precisely what the
-// splitter reads, so a tutorial recorded with them off would predict a
-// different split from the one the real tool gets.
+// AGC and denoise reshape the energy envelope, which is what the splitter reads.
 const MIC = { echoCancellation: true, noiseSuppression: true, autoGainControl: true }
 
-const vad = useVAD({ silenceThreshold: 0.02, silenceDuration: 800, minSpeechDuration: 300 })
-const isSpeaking = vad.isSpeaking
-const isCalibrating = vad.isCalibrating
-const calibration = vad.calibration
-// Same x300 scaling the real studio applies — the raw RMS would only ever paint
-// a third of the bar.
-const vadMeterPercent = computed(() => Math.min(100, Math.round(vad.currentLevel.value * 300)))
-const calibrationWarning = computed(
-  () => calibration.value?.quality === 'loud' || calibration.value?.quality === 'too-loud'
-)
+const vad = useVAD({ silenceThreshold: 0.02, silenceDuration: BEAT_WINDOW.maxMs, minSpeechDuration: 300 })
+const continuous = useContinuousRecorder({
+  silenceThreshold: 0.02,
+  silenceDuration: BEAT_WINDOW.maxMs,
+  minSpeechDuration: 300,
+  autoUpload: false,   // there is no upload queue wired to this component at all
+  autoAdvance: true,
+})
+
+// Which source drives the meter depends on which mode is on screen.
+const inScript = computed(() => step.value === 'scriptRun')  // meter source only
+const isSpeaking = computed(() => (inScript.value ? continuous.isSpeaking.value : vad.isSpeaking.value))
+const isCalibrating = computed(() => (inScript.value ? continuous.isCalibrating.value : vad.isCalibrating.value))
+const calibration = computed(() => (inScript.value ? continuous.calibration.value : vad.calibration.value))
+// Same x300 scaling the real studio applies — raw RMS would paint a third of the bar.
+const vadMeterPercent = computed(() => {
+  const lvl = inScript.value ? continuous.currentLevel.value : vad.currentLevel.value
+  return Math.min(100, Math.round(lvl * 300))
+})
 
 let stream = null
 let recorder = null
@@ -428,7 +641,65 @@ function releaseMic() {
   recorder = null
 }
 
-async function startTake(onDone) {
+// ── QUEUE MODE capture ──────────────────────────────────────────────────────
+//
+// Mirrors the real tool exactly (useAutocueState.startPhraseRecording /
+// navigatePhrase): ONE microphone stream is held open for the whole session,
+// and a FRESH MediaRecorder is created per phrase. The recordist presses START
+// RECORDING once; NEXT closes the current phrase's take and opens the next;
+// STOP RECORDING ends the session.
+//
+// That is what "manual advance" actually means here — not "press record for
+// each line", but "the boundary between takes is your finger". It is the exact
+// thing script mode takes away from you, which is why the tutorial teaches this
+// one first and makes the recordist feel the NEXT button do the work.
+let phraseRecorder = null
+
+function startPhraseRecording() {
+  if (!stream) return
+  const i = queueIndex.value
+  const pass = currentPass.value
+  const mimeType = pickMimeType()
+  phraseRecorder = mimeType
+    ? new MediaRecorder(stream, { mimeType })
+    : new MediaRecorder(stream)
+  const parts = []
+  phraseRecorder.ondataavailable = (e) => { if (e.data.size) parts.push(e.data) }
+  phraseRecorder.onstop = async () => {
+    const blob = new Blob(parts, { type: phraseRecorder?.mimeType || mimeType || 'audio/webm' })
+    if (!blob.size) return
+    if (pass === 1) {
+      naturalTakes.value[i] = { url: urlFor(blob) }
+      naturalTakes.value = [...naturalTakes.value]
+    } else {
+      try {
+        const { samples, sampleRate } = await decodeMono(await blob.arrayBuffer())
+        const chunks = pack.value.slow[i].chunks
+        slowTakes.value[i] = { samples, sampleRate, align: alignSlowGap(samples, sampleRate, chunks) }
+        slowTakes.value = [...slowTakes.value]
+        lastSlowIdx.value = i
+      } catch (e) {
+        error.value = 'That take would not decode: ' + e.message
+      }
+    }
+  }
+  phraseRecorder.start()
+}
+
+function stopPhraseRecording() {
+  if (phraseRecorder?.state === 'recording') phraseRecorder.stop()
+  phraseRecorder = null
+}
+
+async function onQueueToggleRecording() {
+  if (isRecording.value) {
+    // STOP ends the whole pass, as it does in the real studio.
+    stopPhraseRecording()
+    releaseMic()
+    isRecording.value = false
+    return
+  }
+
   error.value = ''
   try {
     stream = await navigator.mediaDevices.getUserMedia({ audio: MIC })
@@ -437,80 +708,119 @@ async function startTake(onDone) {
       '. On iPhone, tap the "aA" in the address bar → Website Settings → Microphone → Allow.'
     return
   }
-
   await vad.startListening(stream)
-  // Measure the room once per session, as the real studio does before its
-  // first phrase, so a room that cannot be split is called out now.
   if (!calibratedOnce) {
     calibratedOnce = true
     await vad.calibrate(1500)
   }
-
-  const mimeType = pickMimeType()
-  recorder = mimeType ? new MediaRecorder(stream, { mimeType }) : new MediaRecorder(stream)
-  const parts = []
-  recorder.ondataavailable = (e) => { if (e.data.size) parts.push(e.data) }
-  recorder.onstop = async () => {
-    const blob = new Blob(parts, { type: recorder?.mimeType || mimeType || 'audio/webm' })
-    releaseMic()
-    isRecording.value = false
-    await onDone(blob)
-  }
-  recorder.start()
   isRecording.value = true
+  startPhraseRecording()
 }
 
-function stopTake() {
-  if (recorder?.state === 'recording') recorder.stop()
-}
-
-async function onToggleRecording() {
-  if (isRecording.value) return stopTake()
-
-  if (currentPass.value === 1) {
-    const i = currentIndex.value
-    await startTake(async (blob) => {
-      naturalTakes.value[i] = { url: urlFor(blob) }
-      naturalTakes.value = [...naturalTakes.value]
-      if (i + 1 < passPhrases.value.length) currentIndex.value = i + 1
-    })
+function queueNavigate(delta) {
+  const next = queueIndex.value + delta
+  if (next < 0 || next >= passPhrases.value.length) return
+  if (isRecording.value) {
+    // Close this phrase's take, move, open the next — the real navigatePhrase(),
+    // including its 100 ms breather so the previous blob finalises first.
+    stopPhraseRecording()
+    queueIndex.value = next
+    setTimeout(() => { if (isRecording.value) startPhraseRecording() }, 100)
   } else {
-    const i = currentIndex.value
-    await startTake(async (blob) => {
-      try {
-        const { samples, sampleRate } = await decodeMono(await blob.arrayBuffer())
-        const chunks = pack.value.slow[i].chunks
-        slowTakes.value[i] = { samples, sampleRate, align: alignSlowGap(samples, sampleRate, chunks) }
-        slowTakes.value = [...slowTakes.value]
-      } catch (e) {
-        error.value = 'That take would not decode: ' + e.message
-      }
-    })
+    queueIndex.value = next
   }
-}
-
-// ── navigation, wired to the real controls ──────────────────────────────────
-function navigate(delta) {
-  const next = currentIndex.value + delta
-  if (next >= 0 && next < passPhrases.value.length) currentIndex.value = next
 }
 function adjustSpeed(delta) {
   scrollSpeed.value = Math.min(10, Math.max(1, scrollSpeed.value - delta))
 }
 
-function beginSession() {
-  phase.value = 'recording'
-  currentPass.value = 1
-  currentIndex.value = 0
-}
-function goToPass2() {
+function goToSlow() {
   currentPass.value = 2
-  currentIndex.value = 0
+  queueIndex.value = 0
+  go('queueSlow')
+}
+
+// ── SCRIPT MODE capture: the real continuous recorder, auto-advancing ───────
+continuous.onSegmentCaptured((segment) => {
+  // Record WHICH LINE was on the autocue when this take ended. When the tool
+  // runs ahead of the recordist, this is the evidence.
+  landings.value = [...landings.value, {
+    index: scriptIndex.value,
+    url: urlFor(segment.blob),
+    durationMs: segment.durationMs,
+  }]
+  if (scriptIndex.value < scriptPhrases.value.length - 1) {
+    scriptIndex.value++
+  } else {
+    finishScriptRun()
+  }
+})
+
+async function onScriptToggleRecording() {
+  if (isRecording.value) return finishScriptRun()
+  error.value = ''
+  try {
+    await continuous.startFlow()
+    isRecording.value = true
+  } catch (e) {
+    error.value = 'Could not start continuous recording: ' + (e?.message || e) +
+      '. On iPhone, tap the "aA" in the address bar → Website Settings → Microphone → Allow.'
+  }
+}
+
+function finishScriptRun() {
+  if (continuous.isFlowMode.value) continuous.stopFlow()
+  isRecording.value = false
+  if (landings.value.length) go('scriptConsequence')
+}
+
+function retryScriptRun() {
+  landings.value = []
+  scriptIndex.value = 0
+  go('scriptRun')
+}
+
+function scriptNavigate(delta) {
+  const next = scriptIndex.value + delta
+  if (next >= 0 && next < scriptPhrases.value.length) scriptIndex.value = next
+}
+
+function takesFor(i) {
+  return landings.value.filter((l) => l.index === i)
+}
+function takeClass(i) {
+  const n = takesFor(i).length
+  return n === 1 ? 'ok' : n === 0 ? 'none' : 'many'
+}
+
+// ── mode switching, through the REAL ModeSelector ───────────────────────────
+function onModeSelect(mode) {
+  if (step.value === 'pickQueueMode') {
+    // 'regeneration' is queue mode in useAutocueState.selectMode().
+    if (mode === 'regeneration') return go('role')
+    nudged.value = true
+    return
+  }
+  if (step.value === 'switchMode') {
+    // 'new-course' is script mode — continuous, VAD auto-advance.
+    if (mode === 'new-course') {
+      landings.value = []
+      scriptIndex.value = 0
+      return go('scriptRun')
+    }
+    nudged.value = true
+  }
 }
 
 // ── the slow take on screen ─────────────────────────────────────────────────
+// The cut panel shows the take that was just COMPLETED, not whatever the
+// cursor has since moved to — pressing NEXT closes a take and advances in the
+// same gesture, so keying this off queueIndex would blank the panel at the
+// exact moment the recordist wants to look at it.
 const currentSlowTake = computed(() =>
-  currentPass.value === 2 ? slowTakes.value[currentIndex.value] || null : null
+  step.value === 'queueSlow' && lastSlowIdx.value !== null
+    ? slowTakes.value[lastSlowIdx.value] || null
+    : null
 )
 const currentSlowRegions = computed(() => {
   const t = currentSlowTake.value
@@ -536,15 +846,11 @@ function playPiece(readIndex, chunkIndex) {
 /**
  * Map a cut piece onto the real SegmentCard's shape.
  *
- * `confidence` is not decoration: it is how much silence the splitter had to
- * work with in the BEAT beside this piece, against the 150 ms it needs at
- * minimum. A piece cut out of a barely-there gap is the one that will come
- * apart in a real session, and that is the thing this whole screen is teaching.
- *
- * Only gaps BETWEEN pieces count. The silence before the first piece and after
- * the last is head/tail room — the recordist controls it by when they tap Stop,
- * it says nothing about their delivery, and grading on it marked every clean
- * outer piece "medium" for no reason.
+ * `confidence` is not decoration: it is how much silence the splitter had in
+ * the BEAT beside this piece, against the minimum it needs. Only gaps BETWEEN
+ * pieces count — the silence before the first and after the last is head/tail
+ * room, controlled by when the recordist tapped Stop, and says nothing about
+ * their delivery.
  */
 function segmentsFor(readIndex) {
   const t = slowTakes.value[readIndex]
@@ -554,9 +860,7 @@ function segmentsFor(readIndex) {
     const before = i === 0 ? Infinity : c.startMs - chunks[i - 1].endMs
     const after = i === chunks.length - 1 ? Infinity : chunks[i + 1].startMs - c.endMs
     const gap = Math.min(before, after)
-    // A single-chunk read has no beat to measure; treat it as clean rather
-    // than dividing by an infinity.
-    const margin = Number.isFinite(gap) ? Math.round(gap) : 700
+    const margin = Number.isFinite(gap) ? Math.round(gap) : BEAT_WINDOW.aimMs
     const confidence = Math.max(5, Math.min(99, Math.round((margin / 700) * 100)))
     const level = margin >= 450 ? 'high' : margin >= 250 ? 'medium' : 'low'
     return {
@@ -571,71 +875,88 @@ function segmentsFor(readIndex) {
       quality: Number.isFinite(gap) ? `${margin} ms beat beside it` : 'no beat to measure',
       issues: level === 'high'
         ? []
-        : [`only a ${margin} ms beat beside this piece (needs ${SPLICE_CONFIG.SILENCE_MIN_MS} ms)`],
+        : [`only a ${margin} ms beat beside this piece (needs ${BEAT_WINDOW.minMs} ms)`],
     }
   })
 }
 
 // ── recombination ───────────────────────────────────────────────────────────
-function goToReview() {
+function goToQueueReview() {
   mixes.value = pack.value.recombine.map((r) => {
     const pieces = r.pieces.map(([ri, ci]) => pieceOf(ri, ci))
     if (pieces.some((x) => !x?.length)) return { label: r.label, url: null }
     const sr = slowTakes.value[r.pieces[0][0]].sampleRate
     return { label: r.label, url: wavUrl(concatChunks(pieces, sr, { gapMs: 0 }), sr) }
   })
-  phase.value = 'review'
+  go('queueReview')
 }
 
 function redoSlow(readIndex) {
-  phase.value = 'recording'
   currentPass.value = 2
-  currentIndex.value = readIndex
+  queueIndex.value = readIndex
+  lastSlowIdx.value = null
+  go('queueSlow')
 }
 function trySlowAgain() {
   slowTakes.value = []
+  lastSlowIdx.value = null
   mixes.value = []
   redoSlow(0)
 }
 function restart() {
   naturalTakes.value = []
   slowTakes.value = []
+  lastSlowIdx.value = null
   mixes.value = []
-  error.value = ''
+  landings.value = []
+  scriptIndex.value = 0
+  queueIndex.value = 0
   currentPass.value = 1
-  currentIndex.value = 0
-  phase.value = 'intro'
+  error.value = ''
+  go('welcome')
 }
 
 /**
  * Testing hook (tools/recordist-tutorial/verify-recordist-tutorial.mjs).
  *
- * Chromium's fake microphone loops its file on wall-clock, so a live capture
- * lands on 2, 3 or 4 bursts depending on when the click happened — the
- * exact-count path can only be proven against a known take. This drops one into
- * both slow slots and re-exposes the splitter so the harness runs the SAME
- * module the page runs, in the same engine.
+ * Chromium's fake microphone loops on wall-clock, so a live capture lands on
+ * 2, 3 or 4 bursts depending on when the click happened — the exact-count path
+ * can only be proven against a known take. This drops one into both slow slots
+ * and re-exposes the splitter so the harness runs the SAME module the page runs.
  *
  * It writes only to this component's in-memory refs. There is nothing it could
  * save, because this component has no code that saves anything.
  */
 onMounted(() => {
   window.__tutorial = {
-    splice: { decodeMono, alignSlowGap, sliceChunk, concatChunks, encodeWavMono, SPLICE_CONFIG },
+    splice: { decodeMono, alignSlowGap, sliceChunk, concatChunks, encodeWavMono, BEAT_WINDOW },
+    goto: (s) => go(s),
     forceSlow(samples, sampleRate) {
       slowTakes.value = pack.value.slow.map((r) => ({
         samples, sampleRate, align: alignSlowGap(samples, sampleRate, r.chunks),
       }))
-      phase.value = 'recording'
       currentPass.value = 2
-      currentIndex.value = pack.value.slow.length - 1
+      queueIndex.value = pack.value.slow.length - 1
+      lastSlowIdx.value = pack.value.slow.length - 1
+      go('queueSlow')
+    },
+    forceLandings(n) {
+      // Mirror finishScriptRun()'s teardown, not just its navigation — otherwise
+      // the studio's REC pill stays lit over the consequence screen.
+      if (continuous.isFlowMode.value) continuous.stopFlow()
+      isRecording.value = false
+      landings.value = Array.from({ length: n }, (_, k) => ({
+        index: Math.min(k, scriptPhrases.value.length - 1), url: null, durationMs: 1000,
+      }))
+      go('scriptConsequence')
     },
   }
 })
 
 onUnmounted(() => {
-  stopTake()
+  stopPhraseRecording()
   releaseMic()
+  if (continuous.isFlowMode.value) continuous.stopFlow()
   objectUrls.forEach(URL.revokeObjectURL)
   delete window.__tutorial
 })
@@ -708,11 +1029,7 @@ onUnmounted(() => {
   z-index: 1;
 }
 
-.studio-branding {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
+.studio-branding { display: flex; align-items: center; gap: 1rem; }
 
 .studio-badge {
   width: 64px;
@@ -761,10 +1078,7 @@ onUnmounted(() => {
   margin: 0;
 }
 
-.session-stats {
-  display: flex;
-  gap: 1.5rem;
-}
+.session-stats { display: flex; gap: 1.5rem; }
 
 .stat-item {
   text-align: center;
@@ -793,8 +1107,8 @@ onUnmounted(() => {
   display: block;
 }
 
-/* Where the real studio puts "← Back to Dashboard". There is nowhere to go
-   back to from a practice session, so the slot carries the guarantee instead. */
+/* Where the real studio puts "← Back to Dashboard". There is nowhere to go back
+   to from a practice session, so the slot carries the guarantee instead. */
 .back-link {
   font-family: 'Josefin Sans', sans-serif;
   font-size: 0.9rem;
@@ -824,15 +1138,18 @@ onUnmounted(() => {
   margin: -1.25rem 0 1.75rem 0;
 }
 
-.script-loaded-phase {
+.script-loaded-phase,
+.summary-phase {
   display: flex;
   justify-content: center;
   position: relative;
   z-index: 1;
 }
 
-.script-summary {
-  max-width: 600px;
+.script-summary,
+.summary-card {
+  max-width: 640px;
+  width: 100%;
   background: var(--color-shadow);
   border: 1px solid var(--color-graphite);
   border-radius: 16px;
@@ -840,22 +1157,25 @@ onUnmounted(() => {
   text-align: center;
 }
 
-.script-summary h2 {
+.script-summary h2,
+.summary-card h2 {
   font-family: 'Josefin Sans', sans-serif;
   font-size: 1.75rem;
   color: var(--color-paper);
   margin: 0 0 2rem 0;
 }
 
-.script-stats {
+.summary-card h2 { color: var(--color-emerald); }
+
+.summary-stats {
   display: flex;
   gap: 1.5rem;
   justify-content: center;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
   flex-wrap: wrap;
 }
 
-.script-stat {
+.summary-stat {
   text-align: center;
   padding: 1rem;
   background: var(--color-void);
@@ -864,7 +1184,7 @@ onUnmounted(() => {
   min-width: 80px;
 }
 
-.script-stat-value {
+.summary-value {
   font-family: 'IBM Plex Mono', monospace;
   font-size: 1.75rem;
   font-weight: 600;
@@ -872,7 +1192,7 @@ onUnmounted(() => {
   display: block;
 }
 
-.script-stat-label {
+.summary-label {
   font-size: 0.7rem;
   color: var(--color-paper-dim);
   text-transform: uppercase;
@@ -881,23 +1201,13 @@ onUnmounted(() => {
   display: block;
 }
 
-.script-instructions {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 0.85rem;
-  color: var(--color-paper-dim);
-  line-height: 1.6;
-  margin-bottom: 1.25rem;
-}
-
-.amber-text {
-  color: var(--color-tungsten);
-}
-
-.script-actions {
+.script-actions,
+.summary-actions {
   display: flex;
   gap: 1rem;
   justify-content: center;
   margin-top: 1.5rem;
+  flex-wrap: wrap;
 }
 
 .btn-begin {
@@ -950,70 +1260,6 @@ onUnmounted(() => {
   white-space: nowrap;
 }
 
-.vad-indicator,
-.vad-calibrating {
-  background: var(--color-shadow);
-  border: 1px solid var(--color-graphite);
-  border-radius: 8px;
-  padding: 0.5rem 1rem;
-  margin-bottom: 1rem;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  overflow: hidden;
-  position: relative;
-}
-
-.vad-calibrating {
-  border-color: var(--color-tungsten, var(--accent));
-}
-
-.vad-bar {
-  height: 4px;
-  background: var(--color-emerald);
-  border-radius: 2px;
-  transition: width 0.05s linear;
-  min-width: 2px;
-  box-shadow: 0 0 8px rgba(6, 255, 165, 0.5);
-}
-
-.vad-status {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 0.75rem;
-  color: var(--color-paper-dim);
-  white-space: nowrap;
-}
-
-.vad-noise-warning {
-  border-radius: 8px;
-  padding: 0.5rem 1rem;
-  margin-bottom: 1rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.15rem;
-  font-size: 0.8rem;
-  line-height: 1.35;
-}
-
-.vad-noise-warning strong {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 0.75rem;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-}
-
-.vad-noise-warning.quality-loud {
-  background: rgba(255, 186, 92, 0.12);
-  border: 1px solid var(--color-tungsten, var(--accent));
-  color: var(--color-tungsten, var(--accent));
-}
-
-.vad-noise-warning.quality-too-loud {
-  background: rgba(255, 92, 92, 0.14);
-  border: 1px solid var(--color-crimson, #ff5c5c);
-  color: var(--color-crimson, #ff5c5c);
-}
-
 .recording-phase {
   max-width: 1000px;
   margin: 0 auto;
@@ -1021,10 +1267,7 @@ onUnmounted(() => {
   z-index: 1;
 }
 
-.review-phase {
-  position: relative;
-  z-index: 1;
-}
+.review-phase { position: relative; z-index: 1; }
 
 /* ── tutorial-only surfaces, built from the same tokens ──────────────────── */
 .practice-badge {
@@ -1041,6 +1284,7 @@ onUnmounted(() => {
   text-transform: uppercase;
   letter-spacing: 0.1em;
   margin-bottom: 0.4rem;
+  text-align: left;
 }
 
 .pack-select {
@@ -1049,26 +1293,10 @@ onUnmounted(() => {
   width: 100%;
   min-height: 52px;
   padding: 0.7rem;
-  margin-bottom: 2rem;
   color: var(--color-paper);
   background: var(--color-void);
   border: 1px solid var(--color-graphite);
   border-radius: 8px;
-}
-
-.coach-note {
-  background: var(--color-shadow);
-  border-left: 3px solid var(--color-emerald);
-  border-radius: 8px;
-  padding: 0.8rem 1rem;
-  margin: 1.25rem 0;
-  color: var(--color-paper-dim);
-  font-size: 0.95rem;
-  line-height: 1.5;
-}
-
-.coach-note.slow {
-  border-left-color: var(--color-tungsten);
 }
 
 .listen-panel {
@@ -1089,9 +1317,7 @@ onUnmounted(() => {
   letter-spacing: 0.05em;
 }
 
-.listen-row {
-  margin-bottom: 1rem;
-}
+.listen-row { margin-bottom: 1rem; }
 
 .listen-text {
   font-family: 'Crimson Pro', serif;
@@ -1101,10 +1327,7 @@ onUnmounted(() => {
   margin-bottom: 0.35rem;
 }
 
-audio {
-  width: 100%;
-  height: 42px;
-}
+audio { width: 100%; height: 42px; }
 
 .panel-actions {
   display: flex;
@@ -1140,10 +1363,37 @@ audio {
   line-height: 1.5;
 }
 
-.review-interface {
-  max-width: 1400px;
-  margin: 0 auto;
+.piece-row {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: var(--color-void);
+  border-radius: 10px;
+  padding: 0.5rem 0.7rem;
+  margin-top: 0.5rem;
 }
+
+.piece-n { color: var(--color-paper-dim); font-size: 0.8rem; min-width: 1.2rem; }
+.piece-t { flex: 1; color: var(--color-paper); min-width: 0; }
+.piece-d {
+  color: var(--color-paper-dim);
+  font-size: 0.8rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.piece-play {
+  background: var(--color-slate);
+  border: 1px solid var(--color-graphite);
+  color: var(--color-paper);
+  border-radius: 8px;
+  min-height: 44px;
+  padding: 0 0.9rem;
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.review-interface { max-width: 1400px; margin: 0 auto; }
 
 .review-header {
   background: var(--color-shadow);
@@ -1163,14 +1413,9 @@ audio {
   letter-spacing: 0.05em;
 }
 
-.review-subtitle {
-  color: var(--color-paper-dim);
-  margin: 0;
-}
+.review-subtitle { color: var(--color-paper-dim); margin: 0; }
 
-.take-block {
-  margin-bottom: 2rem;
-}
+.take-block { margin-bottom: 2rem; }
 
 .segments-grid {
   display: grid;
@@ -1194,15 +1439,7 @@ audio {
   margin: 0 0 0.75rem;
 }
 
-.mix-note {
-  color: var(--color-paper-dim);
-  line-height: 1.55;
-  margin: 0 0 1.25rem;
-}
-
-.mix-row {
-  margin-bottom: 1.25rem;
-}
+.mix-row { margin-bottom: 1.25rem; }
 
 .mix-label {
   font-family: 'Crimson Pro', serif;
@@ -1213,6 +1450,73 @@ audio {
   padding: 0.7rem 0.9rem;
   margin-bottom: 0.4rem;
 }
+
+/* Script-mode take landings */
+.landing-verdict {
+  border-radius: 12px;
+  padding: 1rem 1.1rem;
+  margin-bottom: 1.25rem;
+  font-size: 1rem;
+  line-height: 1.55;
+}
+
+.landing-verdict.clean {
+  background: rgba(6, 255, 165, 0.1);
+  border: 1px solid var(--color-emerald);
+  color: var(--color-emerald);
+}
+
+.landing-verdict.ran-ahead {
+  background: rgba(255, 166, 48, 0.12);
+  border: 1px solid var(--color-tungsten);
+  color: var(--color-tungsten);
+}
+
+.landing-list {
+  background: var(--color-shadow);
+  border: 1px solid var(--color-graphite);
+  border-radius: 12px;
+  padding: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.landing-row {
+  display: grid;
+  grid-template-columns: 1.5rem 1fr auto;
+  gap: 0.6rem 0.75rem;
+  align-items: center;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid var(--color-graphite);
+}
+
+.landing-row:last-child { border-bottom: none; }
+
+.landing-n { color: var(--color-paper-dim); font-size: 0.8rem; }
+
+.landing-text {
+  font-family: 'Crimson Pro', serif;
+  font-size: 1.05rem;
+  color: var(--color-paper);
+  min-width: 0;
+}
+
+.landing-text.slow { color: var(--color-tungsten); }
+
+.landing-takes {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+.landing-takes.ok { background: rgba(6, 255, 165, 0.16); color: var(--color-emerald); }
+.landing-takes.many { background: rgba(255, 166, 48, 0.18); color: var(--color-tungsten); }
+.landing-takes.none { background: rgba(230, 57, 70, 0.16); color: var(--color-film-red); }
+
+.landing-audio { grid-column: 1 / -1; }
 
 .final-actions {
   display: flex;
@@ -1241,20 +1545,16 @@ audio {
   letter-spacing: 0.05em;
 }
 
-.closing-note {
-  color: var(--color-paper-dim);
-  text-align: center;
-  margin-top: 1.5rem;
-  font-size: 0.95rem;
+.control-btn.go {
+  background: var(--color-emerald);
+  border-color: var(--color-emerald);
+  color: var(--color-void);
 }
 
 /* Responsive — same breakpoints the real studio uses. Kai records standing,
    holding the phone; nothing here may need a sideways scroll to reach. */
 @media (max-width: 768px) {
-  .studio-header {
-    flex-direction: column;
-    gap: 1rem;
-  }
+  .studio-header { flex-direction: column; gap: 1rem; }
 
   .session-stats {
     width: 100%;
@@ -1263,9 +1563,8 @@ audio {
     gap: 0.5rem;
   }
 
-  .script-summary {
-    padding: 1.5rem 1.1rem;
-  }
+  .script-summary,
+  .summary-card { padding: 1.5rem 1.1rem; }
 
   .pass-indicator {
     flex-direction: column;
@@ -1274,38 +1573,30 @@ audio {
   }
 
   .final-actions,
-  .panel-actions {
-    flex-direction: column;
-  }
+  .panel-actions,
+  .script-actions,
+  .summary-actions { flex-direction: column; }
 
   .final-actions .control-btn,
-  .panel-actions .btn-begin {
-    width: 100%;
-  }
+  .script-actions .control-btn,
+  .summary-actions .control-btn,
+  .panel-actions .btn-begin,
+  .script-actions .btn-begin { width: 100%; }
 }
 
 @media (max-width: 480px) {
-  .autocue-studio {
-    padding: 1rem 0.75rem;
-  }
+  .autocue-studio { padding: 1rem 0.75rem; }
 
-  .stat-item {
-    padding: 0.5rem 0.75rem;
-    flex: 1 1 auto;
-    min-width: 0;
-  }
+  .stat-item { padding: 0.5rem 0.75rem; flex: 1 1 auto; min-width: 0; }
+  .stat-value { font-size: 1.35rem; }
+  .studio-meta h1 { font-size: 1.5rem; }
+  .segments-grid { grid-template-columns: 1fr; }
 
-  .stat-value {
-    font-size: 1.35rem;
-  }
+  .piece-row { flex-wrap: wrap; }
+  .piece-play { width: 100%; margin-top: 0.4rem; }
 
-  .studio-meta h1 {
-    font-size: 1.5rem;
-  }
-
-  .segments-grid {
-    grid-template-columns: 1fr;
-  }
+  .landing-row { grid-template-columns: 1.5rem 1fr; }
+  .landing-takes { grid-column: 2; justify-self: start; }
 }
 
 /*
@@ -1313,10 +1604,10 @@ audio {
  * too, applied here only.
  *
  * PhraseCard sets the current card to 2rem and gives each chunk tile
- * `white-space: nowrap`. At 390 px a three-word chunk like "Minä haluan" runs
- * past the teleprompter's edge, and the viewport's `overflow: hidden` clips it
- * rather than scrolling — the recordist simply cannot read the piece they are
- * being asked to say. `:deep()` because PhraseCard scopes its own styles.
+ * `white-space: nowrap`. At 390 px a three-word chunk runs past the
+ * teleprompter's edge, and the viewport's `overflow: hidden` clips it rather
+ * than scrolling — the recordist simply cannot read the piece they are being
+ * asked to say. `:deep()` because PhraseCard scopes its own styles.
  *
  * This is NOT a fork: it changes no layout, no control and no gesture, only the
  * type size below 480 px. It is here rather than in PhraseCard.vue because that
@@ -1326,30 +1617,11 @@ audio {
  */
 @media (max-width: 480px) {
   .autocue-studio :deep(.phrase-card.current .phrase-with-gaps),
-  .autocue-studio :deep(.phrase-card.current .phrase-text) {
-    font-size: 1.4rem;
-  }
-
-  .autocue-studio :deep(.phrase-with-gaps) {
-    font-size: 1.15rem;
-  }
-
-  .autocue-studio :deep(.chunk-segment) {
-    white-space: normal;
-  }
-
-  .autocue-studio :deep(.gap-marker) {
-    width: 28px;
-    margin: 0 0.4rem;
-  }
-
-  .autocue-studio :deep(.phrase-card) {
-    gap: 0.5rem;
-    padding: 0.75rem 0.5rem;
-  }
-
-  .autocue-studio :deep(.phrase-marker) {
-    min-width: 28px;
-  }
+  .autocue-studio :deep(.phrase-card.current .phrase-text) { font-size: 1.4rem; }
+  .autocue-studio :deep(.phrase-with-gaps) { font-size: 1.15rem; }
+  .autocue-studio :deep(.chunk-segment) { white-space: normal; }
+  .autocue-studio :deep(.gap-marker) { width: 28px; margin: 0 0.4rem; }
+  .autocue-studio :deep(.phrase-card) { gap: 0.5rem; padding: 0.75rem 0.5rem; }
+  .autocue-studio :deep(.phrase-marker) { min-width: 28px; }
 }
 </style>
