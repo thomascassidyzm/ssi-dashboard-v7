@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#12121c">
+<title>Recordist tutorial</title>
+<!--
+  Recordist tutorial — teaches by consequence, not by description.
+
+  STANDALONE ON PURPOSE. No queue, no course data, no voice casting, no login,
+  no TTS. It touches exactly two same-origin URLs, both plain ES modules of our
+  own (/src/utils/takeSplice.js, /src/utils/tutorialPhrases.js) and no network
+  call of any other kind. Everything the recordist hears is their own voice,
+  recorded into a Blob in this tab and thrown away when the tab closes.
+
+  NOTHING IS SAVED. There is no fetch/XHR/sendBeacon/upload path in this file
+  at all — grep it. Recordings live only as in-memory Blobs and blob: URLs; no
+  IndexedDB, no localStorage, no File System Access. So a practice take cannot
+  reach course_audio, cannot attach to a lego or a phrase, and cannot overwrite
+  anything, because there is no code here that could carry it anywhere.
+-->
+<style>
+  :root {
+    --bg: #12121c;
+    --card: #1b1b2b;
+    --card-2: #23233a;
+    --line: #33334d;
+    --ink: #ececf5;
+    --muted: #9a9ab5;
+    --go: #4ade80;
+    --warn: #fbbf24;
+    --bad: #f87171;
+    --accent: #7dd3fc;
+  }
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html, body { margin: 0; padding: 0; background: var(--bg); color: var(--ink); }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 17px;
+    line-height: 1.5;
+    padding: 1rem 1rem calc(3rem + env(safe-area-inset-bottom));
+    max-width: 640px;
+    margin: 0 auto;
+  }
+  h1 { font-size: 1.35rem; margin: .25rem 0 .25rem; }
+  h2 { font-size: 1.1rem; margin: 0 0 .5rem; color: var(--accent); }
+  p { margin: .5rem 0; }
+  .muted { color: var(--muted); font-size: .92rem; }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 1rem;
+    margin: .85rem 0;
+  }
+  .step-badge {
+    display: inline-block; font-size: .72rem; letter-spacing: .08em;
+    text-transform: uppercase; color: var(--muted); margin-bottom: .35rem;
+  }
+  button {
+    font: inherit; font-weight: 600; color: #10101a;
+    background: var(--go); border: 0; border-radius: 12px;
+    padding: .95rem 1.1rem; min-height: 52px; width: 100%;
+    cursor: pointer; margin-top: .5rem;
+  }
+  button.secondary { background: var(--card-2); color: var(--ink); border: 1px solid var(--line); }
+  button.rec { background: var(--bad); color: #1a0505; }
+  button:disabled { opacity: .45; cursor: default; }
+  button.inline { width: auto; min-height: 44px; padding: .5rem .9rem; font-size: .9rem; margin: 0; }
+  .row { display: flex; gap: .5rem; flex-wrap: wrap; }
+  .row > button { width: auto; flex: 1 1 auto; }
+  .prompt {
+    background: var(--card-2); border-radius: 10px; padding: .9rem 1rem;
+    font-size: 1.25rem; line-height: 1.45; margin: .5rem 0;
+  }
+  .chunk { color: var(--warn); }
+  .beat { color: var(--muted); padding: 0 .3rem; font-weight: 700; }
+  audio { width: 100%; margin-top: .6rem; height: 40px; }
+  canvas { width: 100%; height: 84px; display: block; border-radius: 8px; background: #0d0d16; margin-top: .6rem; }
+  .meter { height: 10px; background: #0d0d16; border-radius: 5px; overflow: hidden; margin-top: .7rem; }
+  .meter > i { display: block; height: 100%; width: 0%; background: var(--go); transition: width .05s linear; }
+  .piece {
+    display: flex; align-items: center; gap: .6rem;
+    background: var(--card-2); border-radius: 10px; padding: .55rem .7rem; margin-top: .5rem;
+  }
+  .piece .n { color: var(--muted); font-size: .8rem; min-width: 1.2rem; }
+  .piece .t { flex: 1; }
+  .piece .d { color: var(--muted); font-size: .8rem; font-variant-numeric: tabular-nums; }
+  .note { border-left: 3px solid var(--accent); padding-left: .75rem; margin: .75rem 0; color: var(--muted); font-size: .93rem; }
+  .bad-note { border-left-color: var(--warn); color: var(--warn); }
+  .ok { color: var(--go); }
+  .warn { color: var(--warn); }
+  .bad { color: var(--bad); }
+  select { font: inherit; background: var(--card-2); color: var(--ink); border: 1px solid var(--line); border-radius: 10px; padding: .7rem; width: 100%; min-height: 48px; }
+  .hide { display: none; }
+  .dots { display: flex; gap: .35rem; margin: .4rem 0 .9rem; }
+  .dots > i { flex: 1; height: 4px; border-radius: 2px; background: var(--line); }
+  .dots > i.on { background: var(--accent); }
+  footer { color: var(--muted); font-size: .82rem; margin-top: 2rem; border-top: 1px solid var(--line); padding-top: 1rem; }
+</style>
+</head>
+<body>
+
+<h1>Before you record</h1>
+<p class="muted">Three or four minutes. You will hear what actually happens to your voice.
+Nothing here is saved — these takes are thrown away.</p>
+<div class="dots" id="dots"></div>
+
+<div id="app"></div>
+
+<footer>
+  Practice only. No recording made on this page leaves your phone, and none of it
+  goes into a course. Real recording starts afterwards, in your own set.
+</footer>
+
+<script type="module">
+import {
+  decodeMono, alignSlowGap, sliceChunk, concatChunks, encodeWavMono, SPLICE_CONFIG,
+} from '/src/utils/takeSplice.js'
+import { PHRASE_PACKS, packById } from '/src/utils/tutorialPhrases.js'
+
+// ── state ───────────────────────────────────────────────────────────────────
+const S = {
+  step: 'intro',              // intro | natural | slow | pieces | reassemble
+  packId: PHRASE_PACKS[0].id,
+  naturalIdx: 0,
+  natural: [],                // [{ url }]
+  slowIdx: 0,
+  slow: [],                   // [{ url, samples, sampleRate, align }]
+  recording: false,
+  error: '',
+}
+const pack = () => packById(S.packId)
+const app = document.getElementById('app')
+const objectUrls = []
+const urlFor = (blob) => { const u = URL.createObjectURL(blob); objectUrls.push(u); return u }
+window.addEventListener('pagehide', () => objectUrls.forEach(URL.revokeObjectURL))
+
+// ── microphone ──────────────────────────────────────────────────────────────
+// Processing off where the browser honours it: AGC and denoise reshape the
+// energy envelope, which is precisely what the splitter reads. Same request
+// the VAD lab makes (src/views/admin/VadLab.vue).
+const MIC = { echoCancellation: false, noiseSuppression: false, autoGainControl: false }
+let stream = null, recorder = null, meterRaf = 0, meterCtx = null
+
+function pickMime() {
+  for (const c of ['audio/mp4', 'audio/webm;codecs=opus', 'audio/webm']) {
+    if (window.MediaRecorder?.isTypeSupported?.(c)) return c
+  }
+  return ''
+}
+
+function stopMeter() {
+  cancelAnimationFrame(meterRaf); meterRaf = 0
+  meterCtx?.close?.(); meterCtx = null
+}
+
+function startMeter(st) {
+  const AC = window.AudioContext || window.webkitAudioContext
+  meterCtx = new AC()
+  const an = meterCtx.createAnalyser()
+  an.fftSize = 256
+  meterCtx.createMediaStreamSource(st).connect(an)
+  const buf = new Float32Array(an.fftSize)
+  const bar = document.getElementById('meter-fill')
+  const tick = () => {
+    an.getFloatTimeDomainData(buf)
+    let s = 0
+    for (let i = 0; i < buf.length; i++) s += buf[i] * buf[i]
+    const rms = Math.sqrt(s / buf.length)
+    if (bar) bar.style.width = Math.min(100, Math.round(rms * 320)) + '%'
+    meterRaf = requestAnimationFrame(tick)
+  }
+  tick()
+}
+
+async function record(onDone) {
+  S.error = ''
+  try {
+    stream = await navigator.mediaDevices.getUserMedia({ audio: MIC })
+  } catch (e) {
+    S.error = 'The browser would not give us the microphone: ' + e.message +
+      '. On iPhone, tap the “aA” in the address bar → Website Settings → Microphone → Allow.'
+    render(); return
+  }
+  const mime = pickMime()
+  recorder = mime ? new MediaRecorder(stream, { mimeType: mime }) : new MediaRecorder(stream)
+  const parts = []
+  recorder.addEventListener('dataavailable', (e) => e.data.size && parts.push(e.data))
+  recorder.addEventListener('stop', async () => {
+    stopMeter()
+    stream?.getTracks().forEach((t) => t.stop()); stream = null
+    S.recording = false
+    await onDone(new Blob(parts, { type: recorder.mimeType || mime || 'audio/mp4' }))
+  })
+  recorder.start()
+  S.recording = true
+  render()
+  startMeter(stream)
+}
+
+function stop() { if (recorder?.state === 'recording') recorder.stop() }
+
+// ── drawing ─────────────────────────────────────────────────────────────────
+function drawTake(canvas, samples, sampleRate, regions) {
+  const dpr = window.devicePixelRatio || 1
+  const w = canvas.clientWidth, h = canvas.clientHeight
+  canvas.width = w * dpr; canvas.height = h * dpr
+  const g = canvas.getContext('2d')
+  g.scale(dpr, dpr)
+  g.clearRect(0, 0, w, h)
+
+  const durMs = (samples.length / sampleRate) * 1000
+  const x = (ms) => (ms / durMs) * w
+
+  // the pieces the splitter kept, behind the waveform
+  g.fillStyle = 'rgba(74,222,128,.16)'
+  for (const r of regions) {
+    const pad = SPLICE_CONFIG.PAD_MS
+    g.fillRect(x(r.startMs - pad), 0, Math.max(2, x(r.endMs + pad) - x(r.startMs - pad)), h)
+  }
+
+  // waveform
+  g.fillStyle = '#8ea0c8'
+  const per = Math.max(1, Math.floor(samples.length / w))
+  for (let px = 0; px < w; px++) {
+    let mx = 0
+    const o = px * per
+    for (let i = 0; i < per && o + i < samples.length; i++) {
+      const a = Math.abs(samples[o + i]); if (a > mx) mx = a
+    }
+    const bh = Math.max(1, mx * (h * 0.92))
+    g.fillRect(px, (h - bh) / 2, 1, bh)
+  }
+
+  // cut lines
+  g.strokeStyle = '#4ade80'; g.lineWidth = 1
+  for (const r of regions) {
+    for (const ms of [r.startMs, r.endMs]) {
+      g.beginPath(); g.moveTo(x(ms), 0); g.lineTo(x(ms), h); g.stroke()
+    }
+  }
+}
+
+// ── audio helpers ───────────────────────────────────────────────────────────
+function wavUrl(samples, sampleRate) { return urlFor(encodeWavMono(samples, sampleRate)) }
+
+/** Pull one labelled piece out of a stored slow read. */
+function pieceOf(readIdx, chunkIdx) {
+  const t = S.slow[readIdx]
+  if (!t?.align?.ok) return null
+  const c = t.align.chunks[chunkIdx]
+  if (!c) return null
+  return sliceChunk(t.samples, t.sampleRate, c.startMs, c.endMs)
+}
+
+// ── rendering ───────────────────────────────────────────────────────────────
+const ORDER = ['intro', 'natural', 'slow', 'pieces', 'reassemble']
+function renderDots() {
+  const i = ORDER.indexOf(S.step)
+  document.getElementById('dots').innerHTML =
+    ORDER.map((_, k) => `<i class="${k <= i ? 'on' : ''}"></i>`).join('')
+}
+
+function esc(s) { return String(s).replace(/[&<>]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c])) }
+
+function chunkLine(chunks) {
+  return chunks.map((c) => `<span class="chunk">${esc(c)}</span>`).join('<span class="beat">•</span>')
+}
+
+function errorBlock() {
+  return S.error ? `<div class="card"><p class="bad">${esc(S.error)}</p></div>` : ''
+}
+
+function render() {
+  renderDots()
+  const p = pack()
+  let html = errorBlock()
+
+  // ── intro ─────────────────────────────────────────────────────────────────
+  if (S.step === 'intro') {
+    html += `
+      <div class="card">
+        <span class="step-badge">Step 1 of 4</span>
+        <h2>Pick the language you'll be reading</h2>
+        <select id="pack">
+          ${PHRASE_PACKS.map((k) => `<option value="${k.id}" ${k.id === S.packId ? 'selected' : ''}>${esc(k.label)}</option>`).join('')}
+        </select>
+        <p class="muted" style="margin-top:.8rem">
+          You'll read six short things. Two at normal speaking speed, then two slowly.
+          After the slow ones you'll hear what we actually do with them — that's the part
+          that matters, and it's much easier to hear than to explain.
+        </p>
+        <p class="muted">Headphones help. A quiet room helps more.</p>
+        <button id="go">Start — allow the microphone</button>
+      </div>`
+  }
+
+  // ── natural speed ─────────────────────────────────────────────────────────
+  if (S.step === 'natural') {
+    const i = S.naturalIdx
+    const done = S.natural.length
+    html += `
+      <div class="card">
+        <span class="step-badge">Step 2 of 4 · natural speed · ${Math.min(i + 1, p.natural.length)} of ${p.natural.length}</span>
+        <h2>Say this the way you'd say it to someone</h2>
+        <div class="prompt">${esc(p.natural[i] || '')}</div>
+        ${S.recording
+          ? `<div class="meter"><i id="meter-fill"></i></div>
+             <button class="rec" id="stop">Stop</button>`
+          : `<button id="rec">Record</button>`}
+      </div>`
+
+    if (done) {
+      html += `<div class="card">
+        <h2>Listen back</h2>
+        <div class="note">
+          We're not after a performance. We're after you, talking. If it sounds like
+          you're reading, it will sound like reading to the learner too — so glance at the
+          line, look up, and say it.
+        </div>
+        ${S.natural.map((t, k) => `
+          <div class="piece"><span class="n">${k + 1}</span><span class="t">${esc(p.natural[k])}</span></div>
+          <audio controls preload="none" src="${t.url}"></audio>`).join('')}
+        ${done >= p.natural.length
+          ? `<button id="to-slow">Next — the slow ones</button>`
+          : `<p class="muted">One more.</p>`}
+      </div>`
+    }
+  }
+
+  // ── slow reads ────────────────────────────────────────────────────────────
+  if (S.step === 'slow') {
+    const i = S.slowIdx
+    const read = p.slow[i]
+    const last = S.slow[i]
+    html += `
+      <div class="card">
+        <span class="step-badge">Step 3 of 4 · slow · ${i + 1} of ${p.slow.length}</span>
+        <h2>Now read this in pieces</h2>
+        <div class="prompt">${chunkLine(read.chunks)}</div>
+        <div class="note">
+          Leave a clear beat — about a second — where the dots are. Say each piece
+          <strong>flat and even</strong>: no rising at the end, no leaning on a word,
+          same pitch and pace for all three. We are going to cut these apart and use
+          the pieces inside other sentences, so a piece that "goes somewhere" will
+          sound wrong everywhere it lands.
+        </div>
+        ${S.recording
+          ? `<div class="meter"><i id="meter-fill"></i></div>
+             <button class="rec" id="stop">Stop</button>`
+          : `<button id="rec">${last ? 'Record again' : 'Record'}</button>`}
+      </div>`
+
+    if (last) {
+      const a = last.align
+      html += `<div class="card"><h2>Here's where we cut it</h2>
+        <canvas id="wave"></canvas>`
+      if (a.ok) {
+        html += `<p class="ok">Found all ${a.chunks.length} pieces.</p>
+          ${a.chunks.map((c, k) => `
+            <div class="piece">
+              <span class="n">${k + 1}</span>
+              <span class="t">${esc(c.text)}</span>
+              <span class="d">${(c.durationMs / 1000).toFixed(2)}s</span>
+              <button class="inline secondary" data-play-piece="${i}:${k}">Play</button>
+            </div>`).join('')}
+          <div class="note">Tap each one. That green block is exactly what a learner
+            would hear if this piece turned up on its own.</div>
+          ${i + 1 < p.slow.length
+            ? `<button id="next-slow">Next slow one</button>`
+            : `<button id="to-pieces">Next — hear them put together</button>`}`
+      } else {
+        const tooFew = a.detectedCount < a.expectedCount
+        html += `<p class="warn">We were listening for ${a.expectedCount} pieces and heard ${a.detectedCount}.</p>
+          <div class="note bad-note">
+            ${tooFew
+              ? 'Two pieces ran together — the gap between them was under ' + SPLICE_CONFIG.SILENCE_MIN_MS + ' milliseconds, so we could not tell where one ended. Leave a longer, more definite pause.'
+              : 'We found more pieces than there are — usually a breath, a lip noise, or a word split in the middle by a pause. Read each piece straight through, then pause.'}
+            ${a.detection?.noisy ? '<br><br><strong>Also: the room is noisy.</strong> The background is loud enough that we are having to guess where silence is. Somewhere quieter will fix more than technique will.' : ''}
+          </div>
+          <p class="muted">This is not a test you can fail — this is the feedback. Record it again.</p>`
+      }
+      html += `</div>`
+    }
+  }
+
+  // ── all the pieces ────────────────────────────────────────────────────────
+  if (S.step === 'pieces') {
+    html += `<div class="card">
+      <span class="step-badge">Step 4 of 4</span>
+      <h2>These are your pieces now</h2>
+      <p class="muted">Six of them, cut out of the two slow reads. From here on the
+        sentences you never said get built out of these.</p>
+      ${p.slow.map((read, ri) => read.chunks.map((c, ci) => `
+        <div class="piece">
+          <span class="n">${ri + 1}.${ci + 1}</span>
+          <span class="t">${esc(c)}</span>
+          <button class="inline secondary" data-play-piece="${ri}:${ci}">Play</button>
+        </div>`).join('')).join('')}
+      <button id="to-reassemble">Build sentences I never said</button>
+    </div>`
+  }
+
+  // ── reassembly ────────────────────────────────────────────────────────────
+  if (S.step === 'reassemble') {
+    html += `<div class="card">
+      <h2>You never said any of these</h2>
+      <div class="note">
+        Every one of these is your own voice, cut up and stuck back together.
+        If they sound like one person saying one sentence, your slow read was neutral
+        enough. If a word jumps out, or the pitch steps up and down between pieces,
+        that's the thing to fix — and it's the only feedback that's ever really worked.
+      </div>
+      ${p.recombine.map((r, k) => `
+        <div style="margin-top:1rem">
+          <div class="prompt" style="font-size:1.05rem">${esc(r.label)}</div>
+          <audio controls preload="none" id="mix-${k}"></audio>
+        </div>`).join('')}
+      <button class="secondary" id="again">Try the slow ones again</button>
+      <button class="secondary" id="restart">Start over from the beginning</button>
+      <p class="muted" style="margin-top:1rem">Happy with how those sound? Then you're
+        ready. Close this and open your real recording set — none of what you just did
+        was kept.</p>
+    </div>`
+  }
+
+  app.innerHTML = html
+  wire()
+}
+
+// ── wiring ──────────────────────────────────────────────────────────────────
+function wire() {
+  const on = (id, fn) => { const el = document.getElementById(id); if (el) el.onclick = fn }
+  const p = pack()
+
+  const sel = document.getElementById('pack')
+  if (sel) sel.onchange = (e) => { S.packId = e.target.value }
+
+  on('go', () => { S.step = 'natural'; render() })
+
+  on('rec', () => {
+    if (S.step === 'natural') {
+      record(async (blob) => {
+        S.natural[S.naturalIdx] = { url: urlFor(blob) }
+        if (S.naturalIdx + 1 < p.natural.length) S.naturalIdx++
+        render()
+      })
+    } else {
+      record(async (blob) => {
+        try {
+          const { samples, sampleRate } = await decodeMono(await blob.arrayBuffer())
+          const chunks = p.slow[S.slowIdx].chunks
+          S.slow[S.slowIdx] = { samples, sampleRate, align: alignSlowGap(samples, sampleRate, chunks) }
+        } catch (e) {
+          S.error = 'That take would not decode: ' + e.message
+        }
+        render()
+        paintWave()
+      })
+    }
+  })
+
+  on('stop', stop)
+  on('to-slow', () => { S.step = 'slow'; S.slowIdx = 0; render() })
+  on('next-slow', () => { S.slowIdx++; render() })
+  on('to-pieces', () => { S.step = 'pieces'; render() })
+  on('to-reassemble', () => { S.step = 'reassemble'; render(); buildMixes() })
+  on('again', () => { S.step = 'slow'; S.slowIdx = 0; S.slow = []; render() })
+  on('restart', () => {
+    Object.assign(S, { step: 'intro', naturalIdx: 0, natural: [], slowIdx: 0, slow: [], error: '' })
+    render()
+  })
+
+  for (const b of app.querySelectorAll('[data-play-piece]')) {
+    b.onclick = () => {
+      const [ri, ci] = b.dataset.playPiece.split(':').map(Number)
+      const piece = pieceOf(ri, ci)
+      if (!piece?.length) return
+      new Audio(wavUrl(piece, S.slow[ri].sampleRate)).play()
+    }
+  }
+}
+
+function paintWave() {
+  const c = document.getElementById('wave')
+  const t = S.slow[S.slowIdx]
+  if (!c || !t) return
+  const regions = t.align.ok ? t.align.chunks : (t.align.regions || [])
+  drawTake(c, t.samples, t.sampleRate, regions)
+}
+
+function buildMixes() {
+  const p = pack()
+  p.recombine.forEach((r, k) => {
+    const el = document.getElementById('mix-' + k)
+    if (!el) return
+    const pieces = r.pieces.map(([ri, ci]) => pieceOf(ri, ci))
+    if (pieces.some((x) => !x?.length)) return
+    const sr = S.slow[r.pieces[0][0]].sampleRate
+    el.src = wavUrl(concatChunks(pieces, sr, { gapMs: 0 }), sr)
+  })
+}
+
+// Repaint the waveform when the phone rotates — canvas is sized in CSS pixels.
+window.addEventListener('resize', () => { if (S.step === 'slow') paintWave() })
+
+/**
+ * Testing hook (tools/recordist-tutorial/verify-recordist-tutorial.mjs). Drops a known take into
+ * both slow slots so the later screens can be walked without depending on what
+ * Chromium's looping fake microphone happened to deliver.
+ *
+ * It writes only to this tab's in-memory state — there is nothing it could
+ * save, because this page has no code that saves anything.
+ */
+window.__forceSlow = (samples, sampleRate) => {
+  const p = pack()
+  S.slow = p.slow.map((r) => ({
+    samples, sampleRate, align: alignSlowGap(samples, sampleRate, r.chunks),
+  }))
+  S.step = 'slow'
+  S.slowIdx = p.slow.length - 1
+  render()
+  paintWave()
+}
+
+render()
+</script>
+</body>
+</html>
