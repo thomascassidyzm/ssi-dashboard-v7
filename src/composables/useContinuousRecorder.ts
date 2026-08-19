@@ -13,6 +13,7 @@
 
 import { ref, computed, onUnmounted } from 'vue'
 import { useVAD, type VADConfig, type ChunkGap, type TakePauseReport } from './useVAD'
+import { deviceKeyFor, loadProfile, isStale, useMicCalibration, type MicProfile } from './useMicCalibration'
 
 export interface ContinuousRecorderConfig extends Partial<VADConfig> {
   // Auto-upload after capturing segment
@@ -21,6 +22,12 @@ export interface ContinuousRecorderConfig extends Partial<VADConfig> {
   autoAdvance: boolean
   // Listen to the room for this long before going live, and set the silence
   // threshold from what is measured. 0 disables it and keeps the fixed default.
+  //
+  // This is the FALLBACK path, not the good one. A room measurement alone
+  // cannot tell how hot the microphone is, and that is what decides whether a
+  // phrase gets cut in half — see useMicCalibration. When a full mic check has
+  // been done on this device its stored profile is applied instead and this
+  // wait is skipped entirely.
   calibrationMs: number
 }
 
@@ -73,6 +80,12 @@ export function useContinuousRecorder(config: Partial<ContinuousRecorderConfig> 
   const segmentCount = ref(0)
   const lastSegment = ref<RecordedSegment | null>(null)
   const error = ref<string | null>(null)
+  // The stored per-device mic check in force, if one was found and applied.
+  // Null means the recorder is running on the room-only fallback, which the
+  // studio says out loud rather than leaving the recordist to guess.
+  const micProfile = ref<MicProfile | null>(null)
+  const micProfileStale = ref(false)
+
   // Reactive mirror of cfg.expectedChunks. cfg is a plain object, so a computed
   // over it would never re-evaluate — the studio's chunk indicator needs to
   // repaint when the autocue advances to a phrase with a different chunk count.
@@ -154,7 +167,18 @@ export function useContinuousRecorder(config: Partial<ContinuousRecorderConfig> 
       // as one blob. Doing it here, rather than leaving a constant to be right
       // everywhere, also gives the studio something to warn the recordist with
       // while the session can still be saved.
-      if (cfg.calibrationMs > 0) {
+      //
+      // A full mic check already done on THIS microphone is better than either,
+      // and costs no wait at all: apply it and go.
+      const { key } = deviceKeyFor(stream.getAudioTracks?.()?.[0])
+      const stored = loadProfile(key)
+      if (stored && stored.voiceLevel) {
+        vad.applyCalibration(stored.noiseFloor, stored.voiceLevel)
+        micProfile.value = stored
+        micProfileStale.value = isStale(stored)
+      } else if (cfg.calibrationMs > 0) {
+        micProfile.value = null
+        micProfileStale.value = false
         await vad.calibrate(cfg.calibrationMs)
       }
 
@@ -355,6 +379,29 @@ export function useContinuousRecorder(config: Partial<ContinuousRecorderConfig> 
     vad.updateConfig({ expectedChunks: n })
   }
 
+  /**
+   * Re-run the full mic check on the stream this recorder already holds.
+   *
+   * The point of doing it HERE rather than making the recordist restart is that
+   * a session has a place in it. Someone who swaps a headset for a desk mic
+   * halfway through a hundred-line queue must be able to re-check without
+   * losing which line they are on — so this touches the threshold and the
+   * stored profile and NOTHING else: no stream is reopened, no MediaRecorder is
+   * rebuilt, no queue index is read or written.
+   *
+   * Capture is suspended for the duration by the VAD's own isCalibrating flag,
+   * which holds the speech state machine off; the caller should keep the
+   * recordist quiet for the room half, which is what MicCheck.vue asks for.
+   */
+  async function recalibrate(): Promise<MicProfile | null> {
+    if (!stream) throw new Error('recalibrate() needs a live flow')
+    const check = useMicCalibration({ existingVad: vad, stream })
+    const saved = await check.run()
+    micProfile.value = saved
+    micProfileStale.value = false
+    return saved
+  }
+
   // Cleanup on unmount
   onUnmounted(() => {
     stopFlow()
@@ -368,6 +415,14 @@ export function useContinuousRecorder(config: Partial<ContinuousRecorderConfig> 
     currentLevel: vad.currentLevel,
     isCalibrating: vad.isCalibrating,
     calibration: vad.calibration,
+    micProfile,
+    micProfileStale,
+    // The VAD itself and the live stream, exposed for ONE caller: MicCheck.vue
+    // driving a re-check in the middle of a session. Everything else should go
+    // through the named actions — reaching in here to poke silenceThreshold is
+    // how the room calibration used to get clobbered (see setExpectedChunks).
+    vad,
+    getStream: () => stream,
     // The live pause signals, passed straight through. useVAD has always
     // counted chunksSeen; this recorder simply never re-exported it, so the
     // studio had nothing to draw a live chunk indicator from and the recordist
@@ -388,6 +443,8 @@ export function useContinuousRecorder(config: Partial<ContinuousRecorderConfig> 
     manualStop,
     updateConfig,
     setExpectedChunks,
+    recalibrate,
+    useFixedThreshold: () => { vad.useFixedThreshold(); micProfile.value = null; micProfileStale.value = false },
 
     // Callbacks
     onSegmentCaptured: onSegmentCapturedCallback,

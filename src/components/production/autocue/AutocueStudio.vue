@@ -163,9 +163,26 @@
 
       <!-- Room calibration: measured before the first phrase, so a room that
            cannot be split into takes is caught now and not at the end. -->
-      <div v-if="state.scriptMode && isCalibrating" class="vad-calibrating">
+      <div v-if="state.scriptMode && isCalibrating && !showMicCheck" class="vad-calibrating">
         <div class="vad-bar" :style="{ width: `${vadMeterPercent}%` }"></div>
         <span class="vad-status">Listening to the room — stay quiet for a moment...</span>
+      </div>
+
+      <!-- Which silence setting is actually in force, and the door to changing
+           it. A recordist who swaps microphones mid-queue has to be able to
+           re-check WITHOUT losing their place, so this is a button on the
+           recording screen and not a step they have to restart to reach. -->
+      <div v-if="state.scriptMode && state.isRecording && !isCalibrating" class="mic-status">
+        <span class="mic-status-text">
+          <template v-if="micProfile">
+            Tuned to <strong>{{ micProfile.label }}</strong>
+            <span v-if="micProfileStale"> · checked a while ago</span>
+          </template>
+          <template v-else>Standard silence setting — mic not checked</template>
+        </span>
+        <button type="button" class="mic-status-btn" @click="showMicCheck = true">
+          {{ micProfile ? 'Re-check mic' : 'Check mic' }}
+        </button>
       </div>
 
       <div
@@ -213,6 +230,18 @@
         :done="chunksSeen"
         :silence-ms="silenceMs"
         :threshold-ms="chunkPauseMs"
+      />
+
+      <!-- The mic check, over the top of the studio. Nothing behind it is
+           unmounted, so the queue position survives the re-check untouched. -->
+      <MicCheck
+        v-if="showMicCheck"
+        modal
+        :existing-vad="continuousRecorder.vad"
+        :stream="continuousRecorder.getStream()"
+        @done="onMicChecked"
+        @skip="onMicCheckSkipped"
+        @close="showMicCheck = false"
       />
 
       <!-- Teleprompter -->
@@ -363,6 +392,7 @@ import { ref, computed, onMounted, onUnmounted, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { useAutocueState } from '@/composables/useAutocueState'
 import { useContinuousRecorder } from '@/composables/useContinuousRecorder'
+import MicCheck from './MicCheck.vue'
 import { useUploadQueue } from '@/composables/useAudioUpload'
 import { useAuth } from '@/composables/useAuth'
 import { getApiUrl } from '@/services/api'
@@ -528,6 +558,21 @@ const chunkPauseMs = continuousRecorder.chunkPauseMs()
 
 const isCalibrating = continuousRecorder.isCalibrating
 const calibration = continuousRecorder.calibration
+// The stored per-device mic check in force, if any. Null means the recorder is
+// on the fixed fallback, which the strip above says out loud.
+const micProfile = continuousRecorder.micProfile
+const micProfileStale = continuousRecorder.micProfileStale
+const showMicCheck = ref(false)
+
+function onMicChecked() {
+  showMicCheck.value = false
+}
+// Skipping is a first-class outcome, not a failure: the recorder carries on
+// with the fixed threshold it has always used.
+function onMicCheckSkipped() {
+  continuousRecorder.useFixedThreshold()
+  showMicCheck.value = false
+}
 // Only surface the room measurement when it is bad news. "Nice and quiet" is
 // one more thing to read on a screen the recordist is trying to read a script off.
 const calibrationWarning = computed(() =>
@@ -1346,6 +1391,31 @@ onUnmounted(() => {
   font-size: 0.75rem;
   color: var(--color-paper-dim);
   white-space: nowrap;
+}
+
+/* Which silence setting is in force, plus the way to change it. Deliberately
+   quiet: it sits above a script someone is reading. */
+.mic-status {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.6rem;
+  font-size: 0.7rem;
+  opacity: 0.75;
+}
+.mic-status-text { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.mic-status-btn {
+  flex: none;
+  /* 44px tap target — this is used one-handed on a phone. */
+  min-height: 44px;
+  padding: 0 0.75rem;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 8px;
+  color: inherit;
+  font-size: 0.72rem;
+  cursor: pointer;
 }
 
 /* Room calibration — same shell as the level indicator it replaces, so the

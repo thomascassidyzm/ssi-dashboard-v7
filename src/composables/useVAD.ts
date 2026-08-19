@@ -76,15 +76,22 @@ export interface TakePauseReport {
   longestShortPauseMs: number
 }
 
-// What a room measured before recording. `threshold` is what the VAD will
-// actually use; `quality` is what the recordist should be told.
+// What a room — and, since 2026-08-19, a VOICE — measured before recording.
+// `threshold` is what the VAD will actually use; `quality` is what the
+// recordist should be told.
 export interface VADCalibration {
   // Time-domain RMS the room idles at (high percentile, not the mean, so one
   // chair creak does not set the floor).
   noiseFloor: number
-  // The silenceThreshold derived from that floor and now in force.
+  // Time-domain RMS this recordist's ordinary speech reaches THROUGH THIS MIC,
+  // measured from a spoken phrase. Null when only the room was measured, in
+  // which case SPEECH_RMS_REFERENCE stands in for it — see placeThreshold.
+  voiceLevel: number | null
+  // The silenceThreshold derived from those two and now in force.
   threshold: number
-  // Headroom between the floor and ordinary speech (~0.23 RMS), in dB.
+  // Headroom between the floor and the voice, in dB. This is the quantity that
+  // decides whether the gate can be placed at all: the gate has to clear the
+  // room AND stay well under the voice, and a small gap means it cannot do both.
   headroomDb: number
   quality: 'quiet' | 'ok' | 'loud' | 'too-loud'
   message: string
@@ -143,20 +150,101 @@ const defaultConfig: VADConfig = {
   chunkPauseDuration: 400
 }
 
-// Calibration constants. Ordinary speech through this pipeline measures ~0.23
-// RMS (p95, measured off a real take), which is the number the headroom and the
-// quality bands below are reckoned against.
+// Calibration constants.
+//
+// SPEECH_RMS_REFERENCE is what ordinary speech measured on ONE real take
+// (2026-08-07, Kai, phone mic): p95 0.23 RMS. Until 2026-08-19 it was the only
+// speech level this file knew, and the threshold was placed against the room
+// alone. That is the bug Kai found: a microphone is a GAIN STAGE, and the room
+// and the voice both move through it together. Swap a phone for a quieter,
+// lower-output external mic and the voice can land at 0.05 while the room lands
+// at 0.0005 — at which point a threshold pinned to an absolute 0.01 is sitting
+// only 14dB under the voice instead of the 21dB it was designed for, ordinary
+// mid-phrase dips fall through it, and the take is cut in the middle of a
+// phrase. It still stands in when only the room has been measured, but a
+// calibration that has heard the recordist prefers what it heard.
 const SPEECH_RMS_REFERENCE = 0.23
-// Threshold sits this far above the measured floor, so ordinary room tone reads
-// as silence but the recordist does not have to whisper to be heard.
-const NOISE_MARGIN = 4
-// Clamps. The floor stops a freakishly quiet room from setting a threshold so
-// low that a fan spinning up later re-creates the stuck-on-"Speaking" bug. The
-// ceiling matters more: past this the threshold would start eating quiet
-// speech, and a threshold above the speech level detects nothing at all —
-// the same session-lost failure from the other direction.
-const MIN_THRESHOLD = 0.01
+// Where the gate goes, stated the only way that survives a change of
+// microphone: in dB BELOW the recordist's own measured speech. -21dB is what
+// the working configuration actually was (0.02 against 0.23), kept.
+const GATE_BELOW_VOICE_DB = 21
+// ...and in dB ABOVE the measured room, which is the other end of the same
+// squeeze. Room tone has to read as silence, so the gate cannot sit on it. 12dB
+// is under the +16dB the working configuration had (0.02 against a 0.003 floor)
+// and is the minimum that kept room tone silent in the two-condition replay.
+const GATE_ABOVE_FLOOR_DB = 12
+// When the gap between floor and voice is too small to satisfy both — anything
+// under 33dB — neither constraint can win outright, so the gate is placed
+// proportionally between them and the recordist is TOLD. Splitting the
+// difference is the least-bad placement: it is as far from the room as it is
+// from the voice.
+const MIN_WORKABLE_GAP_DB = GATE_BELOW_VOICE_DB + GATE_ABOVE_FLOOR_DB
+// Absolute sanity clamps, deliberately far wider than the old [0.01, 0.08].
+// They exist only to catch a degenerate measurement — a muted mic reading
+// digital silence, or a calibration taken while something was blaring — not to
+// second-guess a real one. Narrow clamps are what made the old placement fail
+// on a low-gain mic, so these must never be the operative number for a mic that
+// works.
+const MIN_THRESHOLD = 0.0006
 const MAX_THRESHOLD = 0.08
+
+/**
+ * Place the silence gate between a measured room and a measured voice.
+ *
+ * Everything is done in dB because that is the unit a gain change is a constant
+ * offset in: turn the mic up 12dB and floor, voice and gate all move 12dB
+ * together, and the VAD behaves identically. That property is the whole fix.
+ */
+export function placeThreshold(noiseFloor: number, voiceLevel: number | null): {
+  threshold: number
+  headroomDb: number
+  quality: VADCalibration['quality']
+  message: string
+} {
+  const voice = voiceLevel && voiceLevel > 0 ? voiceLevel : SPEECH_RMS_REFERENCE
+  const db = (x: number) => 20 * Math.log10(x)
+  const headroomDb = noiseFloor > 0 ? db(voice) - db(noiseFloor) : Infinity
+
+  let thresholdDb: number
+  if (!(noiseFloor > 0)) {
+    // Nothing measurable in the room at all — usually a muted or virtual input.
+    // Place off the voice alone and let the clamp catch a nonsense voice level.
+    thresholdDb = db(voice) - GATE_BELOW_VOICE_DB
+  } else if (headroomDb >= MIN_WORKABLE_GAP_DB) {
+    // Room for both constraints. Sit under the voice, which is the edge that
+    // decides whether a phrase gets cut in half.
+    thresholdDb = db(voice) - GATE_BELOW_VOICE_DB
+  } else {
+    // Squeezed. Split the gap proportionally rather than favouring one failure
+    // mode over the other.
+    const share = GATE_ABOVE_FLOOR_DB / MIN_WORKABLE_GAP_DB
+    thresholdDb = db(noiseFloor) + headroomDb * share
+  }
+
+  const threshold = Math.min(MAX_THRESHOLD, Math.max(MIN_THRESHOLD, Math.pow(10, thresholdDb / 20)))
+
+  // Bands are set on the floor-to-voice gap, which is the quantity that decides
+  // whether the gate can be placed properly at all. The boundaries are where
+  // measured behaviour changes: at 33dB both constraints are exactly satisfied;
+  // below ~20dB the gate is inside the noise and takes start running together.
+  let quality: VADCalibration['quality']
+  let message: string
+  if (headroomDb < 20) {
+    quality = 'too-loud'
+    message = 'Your mic is picking up a lot of room noise — there is not enough difference between your voice and the background to tell them apart, so phrases will run together or get cut in half. Turn off fans, air-con or anything humming, move closer to the mic or away from the window, or use a headset, then check again.'
+  } else if (headroomDb < MIN_WORKABLE_GAP_DB) {
+    quality = 'loud'
+    message = 'There is a fair amount of background noise. It should still work, but move a little closer to the mic and leave a clear beat of silence between phrases.'
+  } else if (headroomDb < 45) {
+    quality = 'ok'
+    message = 'Your mic sounds good.'
+  } else {
+    quality = 'quiet'
+    message = 'Your mic sounds excellent — nice and quiet.'
+  }
+
+  return { threshold, headroomDb, quality, message }
+}
 
 export function useVAD(config: Partial<VADConfig> = {}) {
   const cfg = { ...defaultConfig, ...config }
@@ -271,6 +359,24 @@ export function useVAD(config: Partial<VADConfig> = {}) {
   }
 
   let calibrationSamples: number[] = []
+  // The room measurement most recently taken on this stream, kept so a voice
+  // measurement can be combined with it without re-listening to the room.
+  const measuredFloor = ref<number | null>(null)
+
+  /** Collect polled RMS for `durationMs` with the speech state machine held off. */
+  async function collect(durationMs: number): Promise<number[]> {
+    if (!analyser) throw new Error('calibration needs startListening() first')
+    calibrationSamples = []
+    isCalibrating.value = true
+    await new Promise(resolve => setTimeout(resolve, durationMs))
+    isCalibrating.value = false
+    const samples = calibrationSamples.slice().sort((a, b) => a - b)
+    calibrationSamples = []
+    return samples
+  }
+
+  const pct = (sorted: number[], p: number) =>
+    sorted.length ? sorted[Math.min(sorted.length - 1, Math.floor(p * sorted.length))] : 0
 
   /**
    * Listen to the room before recording starts and set silenceThreshold from
@@ -283,59 +389,70 @@ export function useVAD(config: Partial<VADConfig> = {}) {
    * recordist at all. Measuring the room removes the guess, and the returned
    * quality lets the studio warn BEFORE a session is lost rather than after.
    *
+   * The room ALONE is not enough — see SPEECH_RMS_REFERENCE. This still works
+   * on its own, and is what the studio falls back to when nobody has spoken a
+   * calibration phrase, but a placement that has also heard the voice
+   * (measureVoice, below) is the one that survives a change of microphone.
+   *
    * Caller must have startListening()'d first. Returns the calibration and
    * leaves it on `calibration`.
    */
   async function calibrate(durationMs = 1500): Promise<VADCalibration> {
-    if (!analyser) throw new Error('calibrate() needs startListening() first')
-
-    calibrationSamples = []
-    isCalibrating.value = true
-    await new Promise(resolve => setTimeout(resolve, durationMs))
-    isCalibrating.value = false
-
-    const samples = calibrationSamples.slice().sort((a, b) => a - b)
-    calibrationSamples = []
-
     // p90, not the mean: one chair creak or a passing car should not set the
     // room's floor, but a floor under the genuinely noisy moments would let
     // those moments read as speech.
-    const noiseFloor = samples.length
-      ? samples[Math.min(samples.length - 1, Math.floor(0.9 * samples.length))]
-      : 0
+    const noiseFloor = pct(await collect(durationMs), 0.9)
+    measuredFloor.value = noiseFloor
+    return applyCalibration(noiseFloor, calibration.value?.voiceLevel ?? null)
+  }
 
-    const threshold = Math.min(MAX_THRESHOLD, Math.max(MIN_THRESHOLD, noiseFloor * NOISE_MARGIN))
-    const headroomDb = noiseFloor > 0
-      ? 20 * Math.log10(SPEECH_RMS_REFERENCE / noiseFloor)
-      : Infinity
+  /**
+   * Listen to the recordist saying one short phrase, and set the threshold from
+   * the GAP between that and the room rather than from the room alone.
+   *
+   * p75 of the polled RMS, not p95: the useful speech level is what an ordinary
+   * syllable reaches, not what the loudest vowel peak reaches. A gate placed
+   * under the peaks is a gate sitting on top of the quiet syllables, which is
+   * exactly how a phrase gets cut in half. p75 over a short phrase — which is
+   * mostly voiced, with the leading and trailing silence trimmed off by the
+   * floor test below — lands near the body of the speech.
+   *
+   * Caller must have startListening()'d and, normally, calibrate()'d first.
+   */
+  async function measureVoice(durationMs = 3000): Promise<VADCalibration> {
+    const samples = await collect(durationMs)
+    // Drop everything at or under the room: the recordist does not start
+    // talking the instant the prompt appears, and that silence would drag the
+    // percentile down.
+    const floor = measuredFloor.value ?? 0
+    const voiced = samples.filter(v => v > Math.max(floor * 2, 0.002))
+    const voiceLevel = voiced.length >= 5 ? pct(voiced, 0.75) : 0
+    return applyCalibration(floor, voiceLevel > 0 ? voiceLevel : null)
+  }
 
-    // Bands are set on headroom, not on whether the threshold hit its clamp.
-    // Keying "too-loud" off the clamp left "loud" spanning 20-21.2dB — a sliver
-    // no real room lands in, so the gentler warning would never have shown.
-    // The boundaries below are where measured behaviour actually changes: at
-    // 18dB the segmenter still cut Kai's take correctly (13 takes vs 14 in the
-    // clean room), so that is a warning and not a refusal; below ~14dB the
-    // threshold is clamped AND sitting inside the noise, and takes start
-    // running together.
-    let quality: VADCalibration['quality']
-    let message: string
-    if (headroomDb < 14) {
-      quality = 'too-loud'
-      message = 'This room is too noisy to split takes reliably — phrases will run together into one recording. Turn off fans, air-con or anything humming, move away from the window, or use a headset mic, then start again.'
-    } else if (headroomDb < 22) {
-      quality = 'loud'
-      message = 'There is a fair amount of background noise. It should still work, but leave a clear beat of silence between phrases.'
-    } else if (headroomDb < 30) {
-      quality = 'ok'
-      message = 'Background noise is fine.'
-    } else {
-      quality = 'quiet'
-      message = 'Nice and quiet.'
-    }
-
-    cfg.silenceThreshold = threshold
-    calibration.value = { noiseFloor, threshold, headroomDb, quality, message }
+  /**
+   * Put a placement in force — from a fresh measurement, or from one restored
+   * off a stored per-device profile so a returning recordist is not made to
+   * re-do it. Same arithmetic either way; there is only one placement rule.
+   */
+  function applyCalibration(noiseFloor: number, voiceLevel: number | null): VADCalibration {
+    const placed = placeThreshold(noiseFloor, voiceLevel)
+    cfg.silenceThreshold = placed.threshold
+    measuredFloor.value = noiseFloor
+    calibration.value = { noiseFloor, voiceLevel, ...placed }
     return calibration.value
+  }
+
+  /**
+   * Throw the measurement away and go back to the fixed default. This is the
+   * escape hatch the whole feature hangs on: calibration must never be a wall,
+   * so a recordist who skips it, or whose mic check fails, records on exactly
+   * today's behaviour rather than on nothing.
+   */
+  function useFixedThreshold() {
+    cfg.silenceThreshold = defaultConfig.silenceThreshold
+    measuredFloor.value = null
+    calibration.value = null
   }
 
   /**
@@ -574,11 +691,17 @@ export function useVAD(config: Partial<VADConfig> = {}) {
     // the live config means the picture cannot drift from the behaviour.
     chunkPauseMs: () => cfg.chunkPauseDuration,
     shortPauseFloorMs: SHORT_PAUSE_FLOOR_MS,
+    // The gate actually in force, read live off the config so a UI drawing it
+    // against the level meter cannot drift from the decision being made.
+    silenceThresholdNow: () => cfg.silenceThreshold,
 
     // Actions
     startListening,
     stopListening,
     calibrate,
+    measureVoice,
+    applyCalibration,
+    useFixedThreshold,
     updateConfig,
 
     // Callbacks
