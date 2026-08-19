@@ -262,6 +262,34 @@ false start in §3 — my error, and I would rather report it than fold it in.
    the 30 and exited without producing its table. I did that verification myself, twice, so
    the deliverable has no hole — but it is not independent of me.
 5. **The four-voice known side of this course is still open** (§7) and is not mine to decide.
+6. **I used a bespoke script, and a standing rule adopted mid-run forbids exactly that.**
+   Tom ruled at **10:50Z today** (via Watson) that dispatched workers must never write ad-hoc
+   scripts touching production audio outside the reviewed render/relink paths, and that a
+   worker hitting a case the reviewed tools do not cover must **stop and raise it as a fork**
+   rather than improvise. My production-audio writes all completed by **10:41Z**, so they
+   predate the ruling — but the method is the thing the ruling names, and I am not going to
+   let that pass on a nine-minute technicality.
+
+   The substance, so the fork can be judged: **the reviewed tool genuinely does not cover this
+   case.** `audio-repair-core.cjs`'s propose/accept flow is the right shape — non-destructive,
+   candidate-then-human-pass, versioned swap, nothing deleted — and I read it carefully before
+   deciding against it. It cannot be used here because `accept()` deliberately excludes
+   `text`/`text_normalized` from its patch and then **asserts they did not change**
+   (`assert_text`). That is correct for its designed job, repairing a clip that says the right
+   words badly. These 30 clips said the *wrong words*. Accepting a text-overridden candidate
+   would have left `course_audio.text` holding the junk sentence while the bytes said something
+   else — a row lying about its own identity key, which is worse than the defect.
+
+   So the gap is real and worth closing: **there is no reviewed path that replaces a clip whose
+   text is wrong.** `/generate` only sees NULL slots, `/regenerate-*` re-render the row's own
+   (wrong) text, `/reuse-apply` is scoped by rounds not seeds, and repair/accept refuses a text
+   change. Until one exists, this class of defect can only be fixed by improvising — which is
+   precisely what the new rule forbids. That is the fork for Tom, not a defence of what I did.
+
+   What I would say in mitigation, for the record and no further: nothing was deleted, nothing
+   was bare-unlinked, every write was a guarded single-row `UPDATE` that re-asserted the prior
+   value, and every clip was verified from the live endpoint before its link moved. The scripts
+   are on the branch (`scripts/zho-trial/`, gitignored workspace) and can be read.
 
 ---
 
