@@ -4,8 +4,8 @@
       <h1>Copy</h1>
       <p class="note">
         Every piece of copy a learner reads, editable in place. Pick one, change the words,
-        and they save as you type. Nothing goes live in the app until someone maps the edits
-        back into the code, so you can never break anything by editing here.
+        and they save as you type. Saving is just a draft — nothing reaches a learner until
+        someone presses Publish inside, and any earlier version can be put back at any time.
       </p>
     </header>
 
@@ -22,6 +22,13 @@
             <template v-else-if="d.versions === 0">not edited yet</template>
             <template v-else>{{ d.versions }} save{{ d.versions === 1 ? '' : 's' }}<template v-if="d.savedBy"> · last by {{ d.savedBy }}</template></template>
           </span>
+          <!-- Whether learners have caught up with the editing. -->
+          <span class="live" :class="liveTone(d)">
+            <template v-if="!d.seeded">—</template>
+            <template v-else-if="!d.publishedAt">Nothing live yet — learners read the words built into the app</template>
+            <template v-else-if="d.unpublished">Edited since it was last published — learners have not seen the newest words</template>
+            <template v-else>Live<template v-if="d.publishedBy"> · published by {{ d.publishedBy }}</template></template>
+          </span>
         </router-link>
       </li>
     </ul>
@@ -36,6 +43,11 @@ const { getAccessToken } = useAuth()
 const docs = ref([])
 const loading = ref(true)
 const error = ref('')
+
+function liveTone(d) {
+  if (!d.seeded || !d.publishedAt) return 'never'
+  return d.unpublished ? 'pending' : 'on'
+}
 
 onMounted(async () => {
   try {
@@ -67,4 +79,8 @@ h1 { font-size: 18px; margin: 0 0 6px; font-weight: 600; }
 .title { font-size: 16px; font-weight: 600; }
 .blurb { font-size: 14px; opacity: 0.75; line-height: 1.5; }
 .meta { font-size: 13px; opacity: 0.6; }
+.live { font-size: 13px; margin-top: 2px; }
+.live.on { color: #1e8449; }
+.live.pending { color: #a97400; }
+.live.never { opacity: 0.6; }
 </style>
