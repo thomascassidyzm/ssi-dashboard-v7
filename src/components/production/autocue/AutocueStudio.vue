@@ -192,6 +192,29 @@
         Re-recording flagged takes — {{ retakeProgress.current }} of {{ retakeProgress.total }}
       </div>
 
+      <!-- A slow read whose pauses did not come out right. Sits ABOVE the
+           teleprompter deliberately: it must be the thing the eye lands on. -->
+      <SlowReadRetry
+        v-if="slowReadRetry"
+        :expected="slowReadRetry.expected"
+        :detected="slowReadRetry.detected"
+        :short-pauses="slowReadRetry.shortPauses"
+        :threshold-ms="slowReadRetry.thresholdMs"
+        :attempts="slowReadRetry.attempts"
+        @again="dismissSlowReadRetry"
+        @keep="keepRefusedTake"
+        @skip="skipRefusedTake"
+      />
+
+      <!-- Live chunk progression, while the phrase is being read. -->
+      <ChunkProgress
+        v-if="state.scriptMode && state.isRecording && !isCalibrating && expectedChunks > 1 && !slowReadRetry"
+        :expected="expectedChunks"
+        :done="chunksSeen"
+        :silence-ms="silenceMs"
+        :threshold-ms="chunkPauseMs"
+      />
+
       <!-- Teleprompter -->
       <TeleprompterDisplay
         :phrases="state.phrases"
@@ -343,7 +366,8 @@ import { useContinuousRecorder } from '@/composables/useContinuousRecorder'
 import { useUploadQueue } from '@/composables/useAudioUpload'
 import { useAuth } from '@/composables/useAuth'
 import { getApiUrl } from '@/services/api'
-import { legoChunkCount } from '@/utils/phraseChunks'
+import { legoChunkCount, resolvePhraseChunks } from '@/utils/phraseChunks'
+import { buildTakeChunks } from '@/utils/takeChunks'
 import {
   resolveAssignedSlot,
   humanVoiceIdForSlot,
@@ -357,6 +381,8 @@ import RoleSelector from './RoleSelector.vue'
 import TeleprompterDisplay from './teleprompter/TeleprompterDisplay.vue'
 import RecordingControls from './recording/RecordingControls.vue'
 import RecordingStatus from './recording/RecordingStatus.vue'
+import ChunkProgress from './recording/ChunkProgress.vue'
+import SlowReadRetry from './recording/SlowReadRetry.vue'
 import SessionReview from './review/SessionReview.vue'
 
 // Recording identity, threaded in by the Record Room shell. Absent when
@@ -494,6 +520,12 @@ const vadLevel = continuousRecorder.currentLevel
 // silence threshold at a visible 6% and normal speech near full.
 const vadMeterPercent = computed(() => Math.min(100, Math.round(vadLevel.value * 300)))
 
+// Live pause signals. useVAD has counted chunksSeen since the slow-cadence fix
+// landed; nothing ever showed it to the person doing the reading.
+const chunksSeen = continuousRecorder.chunksSeen
+const silenceMs = continuousRecorder.silenceMs
+const chunkPauseMs = continuousRecorder.chunkPauseMs()
+
 const isCalibrating = continuousRecorder.isCalibrating
 const calibration = continuousRecorder.calibration
 // Only surface the room measurement when it is bad news. "Nice and quiet" is
@@ -600,17 +632,131 @@ const playbackSources = computed(() => {
   return map
 })
 
+// ── Did the slow read come out with the right pauses? ───────────────────────
+//
+// A slow pass exists to be CUT into its LEGO pieces, and the cut is made on the
+// pauses. If they are not there, the take cannot be cut — services/voice-engine
+// /align.cjs refuses it outright ("chunk-count mismatch"), by design, rather
+// than guessing a chunk map. Until now the studio filed such a take anyway,
+// ticked the line green and advanced, so the refusal happened hours later on a
+// server the recordist will never see. Kai, recording on 2026-08-19: "it would
+// be better to prompt the recorder for the slow phrase again if it does not get
+// the gaps right, rather than carrying on - do not just mark it green."
+//
+// The maths is buildTakeChunks — the SAME function the review screen's ⚠ badge
+// uses, so the in-session verdict and the after-the-fact one can never disagree.
+function judgeSlowTake(segment, phrase) {
+  if (!phrase || phrase.cadence !== 'slow') return { ok: true }
+  const expected = legoChunkCount(phrase)
+  // One piece is not a slow read with pauses in it — nothing to get wrong.
+  if (expected < 2) return { ok: true }
+
+  const built = buildTakeChunks({
+    gaps: segment.chunkGaps || [],
+    durationMs: segment.durationMs ?? 0,
+    chunkTexts: resolvePhraseChunks(phrase).chunks.map(c => c.text)
+  })
+
+  return {
+    ok: built.matchesScript,
+    expected: built.expected,
+    detected: built.detected,
+    shortPauses: segment.pauses?.shortPauses ?? 0,
+    thresholdMs: chunkPauseMs
+  }
+}
+
+// The take now being refused, and the panel driven by it. Null when there is
+// nothing to answer for.
+const slowReadRetry = ref(null)
+// Refusals per item index, so the escape hatches (keep-anyway / skip) appear
+// only after the recordist has genuinely tried again rather than on the first
+// stumble. Kai: "Do not block them for ever" — but the DEFAULT is re-record.
+// Plain Map, not a ref: it is only ever read at capture time and the count it
+// feeds is copied into slowReadRetry, which IS reactive.
+const slowReadAttempts = new Map()
+
+// A refused take is held here, not filed. It is not stored in recordedSegments
+// and not queued for upload, so the line does not tick green and nothing
+// unusable reaches the server unless the recordist explicitly keeps it.
+let refusedSegment = null
+
+function fileTake(segment, itemIndex) {
+  const phrase = state.phrases[itemIndex]
+  if (!phrase) return
+  onSegmentCaptured(segment, itemIndex)
+  queueTakeUpload(segment, phrase, itemIndex)
+  advanceToNext()
+}
+
+function clearSlowReadRetry() {
+  slowReadRetry.value = null
+  refusedSegment = null
+}
+
+// "Record it again" — just clear the panel. The recorder never stopped
+// listening and the autocue never moved, so reading the line again is the whole
+// interaction.
+function dismissSlowReadRetry() {
+  clearSlowReadRetry()
+}
+
+function keepRefusedTake() {
+  const held = refusedSegment
+  const itemIndex = slowReadRetry.value?.itemIndex
+  clearSlowReadRetry()
+  if (held && Number.isInteger(itemIndex)) fileTake(held, itemIndex)
+}
+
+function skipRefusedTake() {
+  clearSlowReadRetry()
+  advanceToNext()
+}
+
+// The moment they start reading again, get the panel out of the way — it has
+// said what it had to say and the script underneath it is what they need now.
+watch(
+  () => continuousRecorder.isCapturing.value,
+  (capturing) => { if (capturing && slowReadRetry.value) clearSlowReadRetry() }
+)
+
+// Leaving the line, or leaving the session, takes the refusal with it — it is
+// about ONE take of ONE line and must never outlive either.
+watch(() => state.currentPhraseIndex, () => { if (slowReadRetry.value) clearSlowReadRetry() })
+watch(() => state.currentPhase, () => {
+  if (slowReadRetry.value) clearSlowReadRetry()
+  slowReadAttempts.clear()
+})
+
 // Wire continuous recorder: on segment captured, store + queue upload + advance
 continuousRecorder.onSegmentCaptured((segment) => {
   const itemIndex = state.currentPhraseIndex
   const phrase = state.phrases[itemIndex]
   if (!phrase) return
 
-  // Store in state
-  onSegmentCaptured(segment, itemIndex)
+  const verdict = judgeSlowTake(segment, phrase)
+  if (!verdict.ok) {
+    const attempts = (slowReadAttempts.get(itemIndex) || 0) + 1
+    slowReadAttempts.set(itemIndex, attempts)
+    refusedSegment = segment
+    slowReadRetry.value = { ...verdict, itemIndex, attempts }
+    console.warn(
+      `[Autocue] Slow read refused for item ${itemIndex}: heard ${verdict.detected} pieces, script has ${verdict.expected}`
+    )
+    // No store, no upload, no advance. The line stays current and ungreen.
+    return
+  }
 
-  // Queue background upload — script-mode takes carry the script's identity
-  // (seedNumber/legoId/text); the server mints the audio uuid per take.
+  fileTake(segment, itemIndex)
+})
+
+// Queue background upload — script-mode takes carry the script's identity
+// (seedNumber/legoId/text); the server mints the audio uuid per take.
+//
+// Lifted out of the capture callback unchanged so that a take REFUSED for its
+// pauses can be filed later, byte for byte, if the recordist keeps it anyway.
+// Nothing about what gets uploaded changed — only when.
+function queueTakeUpload(segment, phrase, itemIndex) {
   uploadQueue.queueUpload({
     blob: segment.blob,
     courseCode: state.courseCode,
@@ -646,10 +792,7 @@ continuousRecorder.onSegmentCaptured((segment) => {
     },
     itemIndex
   })
-
-  // Auto-advance to next item
-  advanceToNext()
-})
+}
 
 // Event handlers
 function onModeSelect(mode, opts = {}) {

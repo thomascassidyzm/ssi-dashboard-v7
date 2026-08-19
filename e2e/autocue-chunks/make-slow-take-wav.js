@@ -78,21 +78,30 @@ function voicedRun(samples, windowSamples, count) {
   return Array.from({ length: count }, (_, i) => best.start + i * windowSamples)
 }
 
-export function buildSlowTakeWav(path) {
+/**
+ * @param {string} path - where to write the wav
+ * @param {{pauseMs?: number, chunks?: number}} [opts]
+ *
+ * `pauseMs` is the only thing worth varying: it is the whole difference between
+ * a slow read the recorder can cut and one it cannot. The VAD counts a pause as
+ * a chunk boundary at 400ms (useVAD chunkPauseDuration), so 1000ms is a read
+ * that works and 250ms is the failure Kai hit — a pause a person plainly made,
+ * and plainly heard themselves make, that the recorder did not keep.
+ */
+export function buildSlowTakeWav(path, opts = {}) {
+  const pauseMs = opts.pauseMs ?? PAUSE_MS
+  const chunks = opts.chunks ?? 3
   const { rate, samples } = readWav(SOURCE_WAV)
   const ms = (n) => Math.round((n / 1000) * rate)
   const speechLen = ms(SPEECH_MS)
-  const starts = voicedRun(samples, speechLen, 3)
+  const starts = voicedRun(samples, speechLen, chunks)
 
-  const plan = [
-    { silence: LEAD_SILENCE_MS },
-    { speech: starts[0] },
-    { silence: PAUSE_MS },
-    { speech: starts[1] },
-    { silence: PAUSE_MS },
-    { speech: starts[2] },
-    { silence: TAIL_SILENCE_MS }
-  ]
+  const plan = [{ silence: LEAD_SILENCE_MS }]
+  for (let i = 0; i < chunks; i++) {
+    if (i > 0) plan.push({ silence: pauseMs })
+    plan.push({ speech: starts[i] })
+  }
+  plan.push({ silence: TAIL_SILENCE_MS })
 
   const total = plan.reduce((n, p) => n + (p.silence !== undefined ? ms(p.silence) : speechLen), 0)
   const out = new Int16Array(total)

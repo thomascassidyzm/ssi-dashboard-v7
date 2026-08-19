@@ -12,7 +12,7 @@
  */
 
 import { ref, computed, onUnmounted } from 'vue'
-import { useVAD, type VADConfig, type ChunkGap } from './useVAD'
+import { useVAD, type VADConfig, type ChunkGap, type TakePauseReport } from './useVAD'
 
 export interface ContinuousRecorderConfig extends Partial<VADConfig> {
   // Auto-upload after capturing segment
@@ -32,6 +32,12 @@ export interface RecordedSegment {
   // LEGO-chunk boundaries of a slow pass. Empty for a phrase read straight
   // through, which is every natural-speed take.
   chunkGaps: ChunkGap[]
+  // What else the VAD heard about the pauses in this take — near misses that
+  // never reached boundary length. Descriptive only; it is not uploaded and it
+  // changes nothing about the audio. The studio uses it to tell the recordist
+  // whether a short slow read was "you did not pause there" or "you paused, but
+  // too briefly for it to count".
+  pauses: TakePauseReport
 }
 
 const defaultConfig: ContinuousRecorderConfig = {
@@ -67,6 +73,10 @@ export function useContinuousRecorder(config: Partial<ContinuousRecorderConfig> 
   const segmentCount = ref(0)
   const lastSegment = ref<RecordedSegment | null>(null)
   const error = ref<string | null>(null)
+  // Reactive mirror of cfg.expectedChunks. cfg is a plain object, so a computed
+  // over it would never re-evaluate — the studio's chunk indicator needs to
+  // repaint when the autocue advances to a phrase with a different chunk count.
+  const expectedChunks = ref(cfg.expectedChunks)
 
   // Audio capture
   let mediaRecorder: MediaRecorder | null = null
@@ -81,6 +91,8 @@ export function useContinuousRecorder(config: Partial<ContinuousRecorderConfig> 
   // asynchronous — onstop fires after the last dataavailable — so they are
   // parked here between onSpeechEnd and the blob being assembled.
   let pendingChunkGaps: ChunkGap[] = []
+  // Same parking problem as pendingChunkGaps — see above.
+  let pendingPauses: TakePauseReport = { shortPauses: 0, longestShortPauseMs: 0 }
 
   // iOS Safari records audio/mp4 (AAC), not webm/opus — pick the first
   // supported container; the server transcodes whatever arrives (the upload
@@ -170,6 +182,7 @@ export function useContinuousRecorder(config: Partial<ContinuousRecorderConfig> 
           chunks = []
           segmentStartTime = null
           pendingChunkGaps = []
+          pendingPauses = { shortPauses: 0, longestShortPauseMs: 0 }
           isCapturing.value = false
           return
         }
@@ -182,7 +195,8 @@ export function useContinuousRecorder(config: Partial<ContinuousRecorderConfig> 
             blob,
             durationMs,
             timestamp: segmentStartTime,
-            chunkGaps: pendingChunkGaps
+            chunkGaps: pendingChunkGaps,
+            pauses: pendingPauses
           }
 
           lastSegment.value = segment
@@ -196,6 +210,7 @@ export function useContinuousRecorder(config: Partial<ContinuousRecorderConfig> 
         chunks = []
         segmentStartTime = null
         pendingChunkGaps = []
+        pendingPauses = { shortPauses: 0, longestShortPauseMs: 0 }
         isCapturing.value = false
 
         // If still in flow mode, we're ready for next segment
@@ -210,6 +225,7 @@ export function useContinuousRecorder(config: Partial<ContinuousRecorderConfig> 
         chunks = []
         segmentStartTime = Date.now()
         pendingChunkGaps = []
+        pendingPauses = { shortPauses: 0, longestShortPauseMs: 0 }
         isCapturing.value = true
 
         if (mediaRecorder.state === 'inactive') {
@@ -217,11 +233,12 @@ export function useContinuousRecorder(config: Partial<ContinuousRecorderConfig> 
         }
       })
 
-      vad.onSpeechEnd((durationMs, chunkGaps) => {
+      vad.onSpeechEnd((durationMs, chunkGaps, pauses) => {
         if (!isFlowMode.value || !mediaRecorder) return
 
         // Carry the chunk boundaries into the blob this stop produces.
         pendingChunkGaps = chunkGaps || []
+        pendingPauses = pauses || { shortPauses: 0, longestShortPauseMs: 0 }
 
         // Speech ended - stop capturing
         if (mediaRecorder.state === 'recording') {
@@ -318,6 +335,8 @@ export function useContinuousRecorder(config: Partial<ContinuousRecorderConfig> 
    */
   function updateConfig(newConfig: Partial<ContinuousRecorderConfig>) {
     Object.assign(cfg, newConfig)
+    // Keep the reactive mirror honest whichever door the value came in by.
+    expectedChunks.value = cfg.expectedChunks
     vad.updateConfig(newConfig)
   }
 
@@ -332,6 +351,7 @@ export function useContinuousRecorder(config: Partial<ContinuousRecorderConfig> 
   function setExpectedChunks(count: number) {
     const n = Number.isFinite(count) && count >= 1 ? Math.floor(count) : 1
     cfg.expectedChunks = n
+    expectedChunks.value = n
     vad.updateConfig({ expectedChunks: n })
   }
 
@@ -348,6 +368,16 @@ export function useContinuousRecorder(config: Partial<ContinuousRecorderConfig> 
     currentLevel: vad.currentLevel,
     isCalibrating: vad.isCalibrating,
     calibration: vad.calibration,
+    // The live pause signals, passed straight through. useVAD has always
+    // counted chunksSeen; this recorder simply never re-exported it, so the
+    // studio had nothing to draw a live chunk indicator from and the recordist
+    // learned nothing until the session was over.
+    chunksSeen: vad.chunksSeen,
+    silenceMs: vad.silenceMs,
+    shortPauses: vad.shortPauses,
+    chunkPauseMs: vad.chunkPauseMs,
+    shortPauseFloorMs: vad.shortPauseFloorMs,
+    expectedChunks,
     segmentCount,
     lastSegment,
     error,
