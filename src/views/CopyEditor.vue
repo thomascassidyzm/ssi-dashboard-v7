@@ -1,11 +1,13 @@
 <template>
   <div class="htw-wrap">
     <header class="htw-head">
-      <h1>How This Works — learner-facing copy</h1>
+      <h1>{{ title }}</h1>
       <p class="note">
-        Every word a learner reads across the "How this works" system. Edit anything below —
-        your changes save automatically and Tom sees them. Nothing to send anywhere.
+        {{ blurb }}
+        Edit anything below — your changes save automatically and Tom sees them.
+        Nothing to send anywhere.
       </p>
+      <router-link v-if="docId !== 'htw'" class="back" to="/copy">‹ All copy surfaces</router-link>
     </header>
 
     <div class="htw-bar">
@@ -42,12 +44,21 @@
 
 <script setup>
 import { ref, onMounted, onBeforeUnmount, computed } from 'vue'
+import { useRoute } from 'vue-router'
 import { useAuth } from '../composables/useAuth'
+
+// The doc id comes from the route: /copy/<doc-id>. The legacy /htw-copy route
+// pins it to 'htw' via props, so that link keeps working exactly as before.
+const props = defineProps({ doc: { type: String, default: '' } })
+const route = useRoute()
+const docId = props.doc || route.params.docId || 'htw'
 
 const { getAccessToken } = useAuth()
 
 const text = ref('')
 const original = ref('')
+const title = ref('Copy')
+const blurb = ref('')
 const status = ref('Loading…')
 const statusIsError = ref(false)
 const loadError = ref('')
@@ -56,6 +67,8 @@ const showChanges = ref(false)
 
 let timer = null
 let pending = false
+
+const endpoint = `/api/copy?doc=${encodeURIComponent(docId)}`
 
 function say(msg, isErr = false) {
   status.value = msg
@@ -74,11 +87,14 @@ async function authHeaders() {
 
 async function load() {
   try {
-    const res = await fetch('/api/htw-copy', { headers: await authHeaders() })
+    const res = await fetch(endpoint, { headers: await authHeaders() })
     if (!res.ok) throw new Error(`${res.status} ${(await res.json().catch(() => ({}))).error || ''}`)
     const data = await res.json()
     text.value = data.current
     original.value = data.original
+    title.value = data.title || 'Copy'
+    blurb.value = data.blurb || ''
+    document.title = title.value
     say(data.savedAt ? `Last saved ${clock(data.savedAt)}` : 'Loaded.')
   } catch (e) {
     loadError.value = `Could not load the copy — ${e.message}. Reload the page; nothing has been lost.`
@@ -91,7 +107,7 @@ async function save() {
   saving.value = true
   say('Saving…')
   try {
-    const res = await fetch('/api/htw-copy', {
+    const res = await fetch(endpoint, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', ...(await authHeaders()) },
       body: JSON.stringify({ content: text.value })
@@ -172,6 +188,7 @@ onBeforeUnmount(() => {
 .htw-head { padding-bottom: 8px; }
 h1 { font-size: 18px; margin: 0 0 6px; font-weight: 600; }
 .note { margin: 0; font-size: 14px; opacity: 0.75; line-height: 1.5; }
+.back { display: inline-block; margin-top: 8px; font-size: 14px; opacity: 0.75; color: inherit; }
 .htw-bar { display: flex; align-items: center; gap: 10px; padding: 10px 0; flex-wrap: wrap; }
 .status { flex: 1; font-size: 14px; opacity: 0.8; min-width: 140px; }
 .status.err { color: #c0392b; opacity: 1; font-weight: 600; }

@@ -338,13 +338,27 @@ const routes = [
     props: true,
     meta: { title: 'Course Progress' }
   },
-  // The learner-facing "How This Works" copy, editable in place. Behind the
-  // normal OTP gate — any Popty user can edit it; every save is versioned in
+  // The Copy area — every learner-facing copy surface, editable in place. Behind
+  // the normal OTP gate: any Popty user can edit; every save is versioned in
   // htw_copy_versions and diffable against the frozen original.
+  {
+    path: '/copy',
+    name: 'CopyIndex',
+    component: () => import('../views/CopyIndex.vue'),
+    meta: { title: 'Copy' }
+  },
+  {
+    path: '/copy/:docId',
+    name: 'CopyEditor',
+    component: () => import('../views/CopyEditor.vue'),
+    meta: { title: 'Copy' }
+  },
+  // Permanent alias: this link is already in an editor's inbox. Never remove it.
   {
     path: '/htw-copy',
     name: 'HtwCopyEditor',
-    component: () => import('../views/HtwCopyEditor.vue'),
+    component: () => import('../views/CopyEditor.vue'),
+    props: { doc: 'htw' },
     meta: { title: 'How This Works copy' }
   },
   {
