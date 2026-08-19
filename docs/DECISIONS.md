@@ -1225,3 +1225,50 @@ miscast the column exists to stop.
 the enumeration moved the question from *which tag* to *which column*)
 **Decided by:** agent — Tom's brief delegated the (a)/(b) choice explicitly and called it
 reversible. The casting rulings applied are Tom's own.
+
+## 2026-08-19 — publication is two nullable columns on the rows that already exist
+
+**Decision:** publishing learner-facing copy is a `published_at` / `published_by` stamp on the
+existing append-only version rows, and "the live text" is the row with the greatest non-null
+`published_at`. No publish table, no pointer row, no content copy, no status enum.
+
+**Better:** rollback falls out of the model rather than being built — stamping an older row
+makes it the newest published, so undo is the same click as publish and cannot lose anything.
+Every publish is attributable and every past state is reachable, because content is never
+copied, edited or deleted. Save stays exactly what it was: a draft that reaches nobody.
+**Simpler:** two nullable columns and one ordering rule, expressed once in
+`api/lib/copy-publish.js` and imported by both the editor endpoint and the learner endpoint —
+so the two surfaces cannot disagree about what a learner is reading. A pointer row would have
+been a second source of truth to keep consistent with the history it points into.
+**Cheaper (total):** nothing new to back up, migrate or reconcile; the store stays one table
+of plain text. The learner path costs one indexed read per edge-cache miss at
+`s-maxage=60` — and the alternative it replaces, a code deploy per wording change, costs a
+branch, a review and a release train for every comma.
+
+**Searched & rejected:**
+- A `published` boolean per row — rejected: publishing then has to unset the flag on the old
+  row, which is two writes that can half-fail, and the history of what was live when is gone.
+- A separate `htw_copy_published` pointer table — rejected: a second source of truth, and it
+  buys nothing the timestamp does not already give.
+- Copy the published content into a new row — rejected outright: it duplicates text, and it
+  makes "which version is this" unanswerable after two rollbacks.
+- Auto-publish on save (Tom raised it: *"we could just have the save auto-publish in the
+  app?"*) — rejected in the source conversation in favour of his own second option: autosave
+  stays the draft safety net, Publish is a separate button. A 2s autosave that reached
+  learners would put half-typed sentences in front of them.
+
+**A real bug the tests found:** a rollback clicked in the same millisecond as the publish it
+undoes ties on `published_at`, and the rollback target — being the *older* row — loses any
+id-based tie-break, silently leaving the wrong words live. Fixed by preventing the tie rather
+than resolving it: `nextPublishStamp()` makes every publish strictly later than the one it
+replaces.
+
+**Verification:** 30 unit tests over the rules and both endpoints, plus a probe against the
+real PostgREST on throwaway rows confirming that the rollback ordering and the
+`published_at is not null` filter behave as the test double does, and that an unpublished
+draft is unreachable through the public filter. 112/112 across the whole `api/` suite.
+
+**Search width:** four options enumerated above; the pointer-table option was the one to beat
+and lost on having a second source of truth.
+**Decided by:** agent — the brief pre-decided the column shape and called it reversible. The
+save-vs-publish split is Tom's own ruling of 2026-08-19.
