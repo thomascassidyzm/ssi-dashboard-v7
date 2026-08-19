@@ -24,9 +24,29 @@
  *   - before-state assertion on the exact 5-column conflict key, re-checked
  *     immediately before the write; any drift aborts the whole run
  *
+ * REFILING A MIS-SLOTTED TAKE (--refile-from/--refile-to)
+ *
+ * A recordist can record into the wrong voice slot. deu_at_for_eng is the
+ * worked case: Sasha recorded 11 natural takes against target1, but target1
+ * still holds Azure's de-AT-IngridNeural, so the human-voice guard above
+ * correctly refused all 11. Her voice is cast on target2. Tom's ruling
+ * 2026-08-19: target1 does NOT become a second slot for her — the two-slot
+ * design exists so learners hear two DIFFERENT voices — so the takes are
+ * treated as mis-slotted recordings of the target2 voice.
+ *
+ * --refile-from <role> --refile-to <role> re-files such takes against the
+ * DESTINATION slot's identity (role and voice), leaving the source slot alone.
+ * Every guard above still applies, unchanged, and to the destination:
+ * the destination slot must itself resolve to a HUMAN voice, so this can never
+ * be used to credit a human take to a synthetic slot. The identity-occupied
+ * refusal is what stops a refile from overwriting a take the destination slot
+ * already owns — an older mis-slotted take never displaces a newer correct one.
+ *
  * Usage:  node backfill-orphan-takes.cjs            # DRY RUN (default)
  *         node backfill-orphan-takes.cjs --apply    # writes
  *         [--course fin_for_eng]                    # optional filter
+ *         [--refile-from target1 --refile-to target2]
+ *         [--probe]                                 # decode-verify bytes in a dry run
  */
 
 const fs = require('fs')
@@ -48,7 +68,13 @@ const { normalizeForAudio } = require(path.join(REPO, 'services/shared/text-norm
 const { canonicalLanguage, canonicalVoiceId } = require(path.join(REPO, 'services/shared/clip-identity.cjs'))
 
 const APPLY = process.argv.includes('--apply')
-const COURSE_FILTER = (() => { const i = process.argv.indexOf('--course'); return i > -1 ? process.argv[i + 1] : null })()
+const arg = (name) => { const i = process.argv.indexOf(name); return i > -1 ? process.argv[i + 1] : null }
+const COURSE_FILTER = arg('--course')
+const REFILE_FROM = arg('--refile-from')
+const REFILE_TO = arg('--refile-to')
+const PROBE = process.argv.includes('--probe')
+if (!!REFILE_FROM !== !!REFILE_TO) throw new Error('--refile-from and --refile-to must be given together')
+if (REFILE_FROM && REFILE_FROM === REFILE_TO) throw new Error('--refile-from and --refile-to must differ')
 const BUCKET = 'ssi-audio-stage'
 const s3 = new AWS.S3({
   accessKeyId: process.env.AWS_ACCESS_KEY_ID,
@@ -149,20 +175,27 @@ async function probeDuration(key) {
   // ---- 3. per-take plan
   const candidates = []
   for (const t of orphans) {
+    // Refile mode acts only on takes recorded against the named source slot.
+    if (REFILE_FROM && t.ctx.role !== REFILE_FROM) continue
+
     const course = courses.get(t.ctx.course_code) || null
-    const metadata = { cadence: t.ctx.cadence || 'natural', text: t.ctx.text, role: t.ctx.role, voiceId: t.ctx.voice_id }
+    // The slot the take is FILED AGAINST: its own, or the refile destination.
+    const targetRole = REFILE_FROM ? REFILE_TO : t.ctx.role
+    const metadata = { cadence: t.ctx.cadence || 'natural', text: t.ctx.text, role: targetRole, voiceId: t.ctx.voice_id }
 
     // Voice: slot-resolved, human-only. No client fallback in a backfill.
-    const slot = course?.voice_config?.voices?.[t.ctx.role] || null
-    const resolved = resolveTakeVoiceId({ voiceConfig: course?.voice_config || null, role: t.ctx.role, clientVoiceId: null })
+    // Resolved for the DESTINATION slot, so a refile can no more credit a human
+    // take to a synthetic voice than a plain backfill can.
+    const slot = course?.voice_config?.voices?.[targetRole] || null
+    const resolved = resolveTakeVoiceId({ voiceConfig: course?.voice_config || null, role: targetRole, clientVoiceId: null })
     const humanVoiceId = (slot && slot.provider === 'human' && slot.voiceId) ? resolved.voiceId : null
 
     const plan = planScriptTakeFiling({ metadata, voiceId: humanVoiceId, course })
     if (!plan.file) {
       const detail = plan.filing.reason === 'no_voice' && slot
-        ? `slot ${t.ctx.role} is provider=${slot.provider} voiceId=${slot.voiceId} (not human)`
-        : (plan.filing.reason === 'no_voice' ? `slot ${t.ctx.role} not present in voice_config` : null)
-      record(t, 'refused', plan.filing.reason, { detail, deliberate: plan.filing.deliberate })
+        ? `slot ${targetRole} is provider=${slot.provider} voiceId=${slot.voiceId} (not human)`
+        : (plan.filing.reason === 'no_voice' ? `slot ${targetRole} not present in voice_config` : null)
+      record(t, 'refused', plan.filing.reason, { detail, deliberate: plan.filing.deliberate, refiled_to: REFILE_FROM ? targetRole : undefined })
       continue
     }
     if (!t.ctx.s3_key) { record(t, 'refused', 'no_s3_key'); continue }
@@ -177,6 +210,12 @@ async function probeDuration(key) {
     if (!head.size) { record(c.take, 'refused', 'object_zero_length'); continue }
     if (head.contentType && !/^audio\//.test(head.contentType)) {
       record(c.take, 'refused', 'object_not_audio', { detail: head.contentType }); continue
+    }
+    if (PROBE) {
+      // Decode-verify: HEAD proves bytes exist, ffprobe proves they are audio.
+      const ms = await probeDuration(c.take.ctx.s3_key)
+      if (!ms) { record(c.take, 'refused', 'object_not_decodable', { detail: 'ffprobe read no duration' }); continue }
+      c.probedMs = ms
     }
     c.head = head
     alive.push(c)
@@ -219,8 +258,20 @@ async function probeDuration(key) {
     w.before = q.rows[0] || null
     if (w.before) {
       // Somebody already owns this identity with different bytes. Not ours to overwrite.
+      // Take selection is newest-take-wins, so name both dates: an incumbent
+      // recorded LATER than this take is the take the recordist meant to keep.
+      const incumbentUuid = (w.before.s3_key || '').split('/').pop().replace(/\.[^.]+$/, '')
+      let incumbentRecordedAt = null
+      try {
+        const p = await pg.query('select created_at from recording_provenance where audio_uuid = $1', [incumbentUuid])
+        incumbentRecordedAt = p.rows[0]?.created_at || null
+      } catch {}
       record(w.take, 'refused', 'identity_occupied', {
-        detail: `course_audio ${w.before.id} origin=${w.before.origin} already holds this key with s3_key=${w.before.s3_key}`,
+        detail: `course_audio ${w.before.id} origin=${w.before.origin} already holds this key with s3_key=${w.before.s3_key}`
+          + (incumbentRecordedAt ? ` (incumbent take recorded ${new Date(incumbentRecordedAt).toISOString()}, this take ${new Date(w.take.created_at).toISOString()} — ${new Date(incumbentRecordedAt) > new Date(w.take.created_at) ? 'incumbent is NEWER, it wins' : 'this take is newer; a deliberate replacement is a separate, verified swap'})` : ''),
+        incumbent_course_audio_id: w.before.id,
+        incumbent_recorded_at: incumbentRecordedAt,
+        refiled_to: REFILE_FROM ? REFILE_TO : undefined,
       })
       continue
     }
@@ -230,6 +281,7 @@ async function probeDuration(key) {
   // ---- 7. summary before any write
   const tally = (list, fn) => list.reduce((a, x) => { const k = fn(x) ?? 'null'; a[k] = (a[k] || 0) + 1; return a }, {})
   console.log('\n--- PLAN ---')
+  if (REFILE_FROM) console.log(`REFILE MODE: takes recorded against ${REFILE_FROM} are filed against ${REFILE_TO}'s identity`)
   console.log('would file:', toWrite.length)
   console.log('  by course:', tally(toWrite, w => w.take.ctx.course_code))
   console.log('  by voice:', tally(toWrite, w => w.plan.voiceId))
@@ -277,6 +329,7 @@ async function probeDuration(key) {
     for (const w of toWrite) {
       record(w.take, 'would_file', null, {
         voice_id: w.plan.voiceId, language: w.plan.language, role: w.plan.role, bytes: w.head.size, contentType: w.head.contentType,
+        probed_duration_ms: w.probedMs, refiled_to: REFILE_FROM ? REFILE_TO : undefined,
       })
     }
   }
