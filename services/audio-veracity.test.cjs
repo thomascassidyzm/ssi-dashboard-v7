@@ -221,6 +221,72 @@ describe('the third state — unchecked is never a pass', () => {
   })
 })
 
+describe('the capability guard — a language the decoder cannot read is not gated', () => {
+  beforeEach(() => { V._resetAnnouncement() })
+
+  it('skips the six measured-blind languages instead of failing them', async () => {
+    for (const lang of ['sin', 'ben', 'pan', 'guj', 'tel', 'kan']) {
+      const r = await V.checkAudioVeracity(Buffer.from('x'), 'some text', lang, { logger: { warn: () => {} } })
+      expect(r.checked, lang).toBe(false)
+      expect(r.pass, lang).toBe(null)
+      expect(r.reason, lang).toBe('unchecked_decoder_not_validated')
+    }
+  })
+
+  it('accepts ISO-639-1 as well as the 639-3-ish course code', async () => {
+    const r = await V.checkAudioVeracity(Buffer.from('x'), 'some text', 'si', { logger: { warn: () => {} } })
+    expect(r.reason).toBe('unchecked_decoder_not_validated')
+    expect(r.language).toBe('si')
+  })
+
+  it('leaves every other language gated — including the ones never measured', () => {
+    // de/hy/eu/is all FAIL often, but their decoder demonstrably works; the
+    // cause is dialect orthography, numerals and word segmentation. Un-gating
+    // them here would be a different fix wearing this one's clothes.
+    for (const lang of ['deu', 'eng', 'hin', 'mar', 'nep', 'tam', 'zho', 'hye', 'eus', 'isl', 'vie', 'yor']) {
+      expect(V.decoderValidated(lang), lang).toBe(true)
+    }
+    for (const lang of ['sin', 'kan', 'ben', 'pan', 'guj', 'tel']) {
+      expect(V.decoderValidated(lang), lang).toBe(false)
+    }
+  })
+
+  it('says LOUDLY, once per language, that the clips went out unchecked', async () => {
+    const lines = []
+    const logger = { warn: m => lines.push(m) }
+    for (let i = 0; i < 3; i++) await V.checkAudioVeracity(Buffer.from('x'), 'text', 'sin', { logger })
+    expect(lines).toHaveLength(1)
+    expect(lines[0]).toMatch(/UNCHECKED/)
+    expect(lines[0]).toMatch(/NOT a pass/)
+  })
+
+  it('folds into stats as unchecked, never as passed', () => {
+    const stats = V.newStats()
+    V.recordVerdict(stats, { checked: false, pass: null, reason: 'unchecked_decoder_not_validated' })
+    expect(stats).toMatchObject({ checked: 0, passed: 0, failed: 0, unchecked: 1 })
+    expect(V.formatStats(stats)).toMatch(/unchecked_decoder_not_validated=1/)
+  })
+
+  it('still PUBLISHES through renderChecked, with exactly one render and no quarantine', async () => {
+    // The render path must not halt on a language it cannot check — that is the
+    // failure mode that took the estate down when the gate was switched off.
+    let renders = 0
+    const stats = V.newStats()
+    const r = await V.renderChecked({
+      render: async () => { renders++; return { buffer: Buffer.from('a'), durationMs: 1200, wordBoundaries: [{ text: 'x' }] } },
+      expectedText: 'some sinhala text', language: 'sin', stats,
+      logger: { info: () => {}, warn: () => {}, error: () => {}, log: () => {} },
+    })
+    expect(r.published).toBe(true)
+    expect(r.durationMs).toBe(1200)
+    expect(r.wordBoundaries).toEqual([{ text: 'x' }])
+    expect(renders).toBe(1)
+    expect(r.verdict.checked).toBe(false)
+    expect(r.quarantine).toBeUndefined()
+    expect(stats).toMatchObject({ checked: 0, passed: 0, failed: 0, quarantined: 0, unchecked: 1 })
+  })
+})
+
 describe('stats — the counts the render report carries', () => {
   it('counts checked / failed / unchecked separately', () => {
     const s = V.newStats()

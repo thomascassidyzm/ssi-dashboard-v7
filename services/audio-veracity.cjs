@@ -124,6 +124,72 @@ const CER_UNVALIDATED_LANGUAGES = new Set(['zh', 'yue', 'ja', 'th', 'lo', 'my', 
 const CER_THRESHOLD_UNVALIDATED = Number(process.env.AUDIO_VERACITY_CER_THRESHOLD_UNVALIDATED || 1.0)
 
 /**
+ * Languages where the DECODER ITSELF does not work, so there is nothing to gate.
+ *
+ * whisper.cpp accepts every code in WHISPER_ISO1 — `-l si` does not error, it
+ * decodes. What comes back for Sinhala is a degenerate repetition loop:
+ *
+ *   text   අද අපිට ප්‍රශ්නේ ගැන සාකච්ඡා කරන්න අවශ්‍යයි
+ *   decode වවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවව…
+ *
+ * The gate reads that as "the words are not in this clip" and refuses the
+ * render. It is a FALSE NEGATIVE every time, and it blocked eng_for_sin lego
+ * S0225L01 three times before anyone worked out why. A gate that cannot read a
+ * language is not protecting it — it is only blocking it.
+ *
+ * MEASURED, not assumed. tools/whisper-capability-probe/ (committed alongside)
+ * ran two independent experiments over 50 estate languages, ~20 live clips each:
+ *
+ *  1. DISCRIMINATION. Score each free decode against its own text and against
+ *     distractor texts from the same language. A decoder that reads the language
+ *     separates the two by 0.29-0.92 CER. These six separate by 0.06-0.15 —
+ *     their decodes are no closer to what was said than to anything else,
+ *     because the output does not depend on the input.
+ *
+ *  2. FALSE NEGATIVES ON PROVEN AUDIO. Restrict to clips whose Azure
+ *     word_boundaries independently record the full script as spoken, with the
+ *     last word landing at the end of the clip — so the words ARE there, on
+ *     evidence that does not come from whisper. Every gate failure on that set
+ *     is a false negative by construction:
+ *
+ *       si 15/15   bn 15/15   gu 15/15   te 15/15   kn 15/15   pa 14/15
+ *       controls:  en 0/15    hi 0/15    es 0/15    it 0/15    sw 0/15
+ *
+ * Both experiments pick out the SAME six, with a ~2x gap to the next language.
+ * The tell is the reason mix: these six fail 100% on cer_above_threshold with
+ * ZERO last_word_missing — the signature of unrelated output, not of damage.
+ *
+ * WHAT IS DELIBERATELY *NOT* HERE, though it fails often. Languages whose decoder
+ * works but whose COMPARISON is mismatched are a different bug and must not be
+ * silently un-gated by this set:
+ *   de  Austrian dialect script vs standard orthography ("a Glasl Wossa" ->
+ *       "Akklassewasser"): separation 0.61, so the decoder hears it fine.
+ *   hy  numerals — "100. … 200." decoded correctly as "հարյուր, երկու հարյուր".
+ *   eu  word segmentation trips the last-word rule.
+ *   is  genuinely sloppy but still separating at 0.37.
+ * Those want a threshold or normalisation fix, not a capability guard. They are
+ * written up in docs/whisper-decoder-capability-2026-08-19.md.
+ *
+ * ONLY these six are skipped. Every other language keeps its gate — including
+ * the ones this probe never reached. That is a deliberate choice against the
+ * "skip anything unverified" default: unchecked audio reaching a learner is the
+ * worse failure (there is no staging environment), and a gate that wrongly
+ * BLOCKS fails loudly and gets investigated, which is exactly how the Sinhala
+ * case surfaced. The measured-nothing languages are named in the doc.
+ *
+ * Measured 2026-08-19 against ggml-small. A bigger model would move this list;
+ * re-run the probe before assuming it still holds.
+ */
+const DECODER_NOT_VALIDATED = new Set(['si', 'bn', 'pa', 'gu', 'te', 'kn'])
+
+/** Can the decoder actually read this language? Takes 639-3 or ISO-639-1. */
+function decoderValidated (language) {
+  const raw = String(language || '').toLowerCase()
+  const iso1 = WHISPER_ISO1[raw] || (raw.length === 2 ? raw : null)
+  return !(iso1 && DECODER_NOT_VALIDATED.has(iso1))
+}
+
+/**
  * A CER threshold ALONE is not enough, and the estate proved it on the first
  * real run of this module.
  *
@@ -234,14 +300,32 @@ function announceStatus (logger = console) {
     } else if (!av.available) {
       warn(`[audio-veracity] ⚠️  CANNOT CHECK — missing ${av.missing.join(' and ')}. Clips are being PUBLISHED UNCHECKED for silence and truncation. This is NOT a pass.`)
     } else {
-      info(`[audio-veracity] ON — unprimed whisper round-trip, model ${path.basename(WHISPER_MODEL)}, CER threshold ${CER_THRESHOLD}. Validated on silence + truncation only; mispronunciation is NOT covered.`)
+      info(`[audio-veracity] ON — unprimed whisper round-trip, model ${path.basename(WHISPER_MODEL)}, CER threshold ${CER_THRESHOLD}. Validated on silence + truncation only; mispronunciation is NOT covered. Decoder not validated for ${[...DECODER_NOT_VALIDATED].sort().join(', ')} — clips in those languages are SKIPPED, not passed.`)
     }
   }
   return { enabled, available: av.available, missing: av.missing }
 }
 
+/**
+ * One LOUD line the FIRST time each unreadable language is skipped.
+ *
+ * Per language, not per clip: a course build is thousands of clips and a
+ * per-clip line would be scrolled past as noise. Per process and per language
+ * it is a single unmissable statement that this render published without the
+ * silence-and-truncation check — which is the one thing that must never become
+ * invisible. The counts still land in stats.uncheckedReasons, so the render
+ * report carries the total as well.
+ */
+const skipAnnounced = new Set()
+function announceSkip (iso1, logger = console) {
+  if (skipAnnounced.has(iso1)) return
+  skipAnnounced.add(iso1)
+  ;(logger.warn || logger.log || console.warn).call(logger,
+    `[audio-veracity] ⚠️  SKIPPING veracity for '${iso1}' — the whisper decoder is not validated for this language (it returns unrelated output for every clip, good or bad, so gating it only ever produces false negatives). These clips are being PUBLISHED UNCHECKED for silence and truncation. This is NOT a pass.`)
+}
+
 /** Test seam: forget that we already announced. */
-function _resetAnnouncement () { announced = false }
+function _resetAnnouncement () { announced = false; skipAnnounced.clear() }
 
 // ---------------------------------------------------------------------------
 // Scoring — pure, and therefore the part that is unit-tested
@@ -478,6 +562,15 @@ async function checkAudioVeracity (input, expectedText, language, opts = {}) {
   const raw = String(language || '').toLowerCase()
   const iso1 = WHISPER_ISO1[raw] || (raw.length === 2 ? raw : null)
 
+  // The decoder cannot read this language, so its verdict would be noise. Say
+  // "not checked" — never "pass" — and do it BEFORE acquire(), so a blind
+  // language does not sit in the whisper queue ahead of one we can actually
+  // read. See DECODER_NOT_VALIDATED for the measurement.
+  if (iso1 && DECODER_NOT_VALIDATED.has(iso1)) {
+    announceSkip(iso1, opts.logger)
+    return { ...unchecked('unchecked_decoder_not_validated', `whisper decoder is not validated for '${iso1}' — every verdict it gives in this language is noise`), language: iso1 }
+  }
+
   await acquire()
   let decode
   try {
@@ -678,6 +771,8 @@ module.exports = {
   CER_THRESHOLD,
   CER_UNVALIDATED_LANGUAGES,
   CER_THRESHOLD_UNVALIDATED,
+  DECODER_NOT_VALIDATED,
+  decoderValidated,
   MIN_EDIT_DISTANCE,
   WHISPER_ISO1,
   QUARANTINE_DIR,
