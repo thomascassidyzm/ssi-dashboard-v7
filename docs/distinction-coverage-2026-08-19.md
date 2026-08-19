@@ -89,8 +89,8 @@ Nothing here is a count without a hand-checked case behind it.
 ```
 axis gender: DIRECTION A (known richer), morphology available
 coverage 5082/5082 rows carrying a marked form (100%)
-A1 proposals passing the reach test : 1944
-    same target form but NOT a drill: 4
+A1 proposals passing the reach test : 1895
+    same target form but NOT a drill: 83
     attested both sides              : 33      ← the calibration signal
     rejected                         : 2102 across six named rules
 A2 reachable collapses 8 · not-drill-pairs 201 (20 in sentences) · flagged 166
@@ -116,7 +116,7 @@ The same Hindi morphology, pointed the other way, on the mirror-image course:
 ```
 axis gender: DIRECTION B (target richer), morphology available
 coverage 2200/2200 (100%)
-UNDER-DETERMINED, other form never taught : 912
+UNDER-DETERMINED, other form never taught : 929
 prompt carries a cue (he/she/sir…)        : 626
 BOTH FORMS TAUGHT SOMEWHERE               : 0
 ```
