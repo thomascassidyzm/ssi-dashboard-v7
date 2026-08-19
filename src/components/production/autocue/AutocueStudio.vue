@@ -172,10 +172,10 @@
            it. A recordist who swaps microphones mid-queue has to be able to
            re-check WITHOUT losing their place, so this is a button on the
            recording screen and not a step they have to restart to reach. -->
-      <div v-if="state.scriptMode && state.isRecording && !isCalibrating" class="mic-status">
+      <div v-if="state.scriptMode && !isCalibrating" class="mic-status">
         <span class="mic-status-text">
-          <template v-if="micProfile">
-            Tuned to <strong>{{ micProfile.label }}</strong>
+          <template v-if="micProfile || storedMicProfile">
+            Tuned to <strong>{{ (micProfile || storedMicProfile).label }}</strong>
             <span v-if="micProfileStale"> · checked a while ago</span>
           </template>
           <template v-else>Standard silence setting — mic not checked</template>
@@ -237,8 +237,8 @@
       <MicCheck
         v-if="showMicCheck"
         modal
-        :existing-vad="continuousRecorder.vad"
-        :stream="continuousRecorder.getStream()"
+        :existing-vad="state.isRecording ? continuousRecorder.vad : null"
+        :stream="state.isRecording ? continuousRecorder.getStream() : null"
         @done="onMicChecked"
         @skip="onMicCheckSkipped"
         @close="showMicCheck = false"
@@ -393,6 +393,7 @@ import { useRoute } from 'vue-router'
 import { useAutocueState } from '@/composables/useAutocueState'
 import { useContinuousRecorder } from '@/composables/useContinuousRecorder'
 import MicCheck from './MicCheck.vue'
+import { loadProfile } from '@/composables/useMicCalibration'
 import { useUploadQueue } from '@/composables/useAudioUpload'
 import { useAuth } from '@/composables/useAuth'
 import { getApiUrl } from '@/services/api'
@@ -563,8 +564,22 @@ const calibration = continuousRecorder.calibration
 const micProfile = continuousRecorder.micProfile
 const micProfileStale = continuousRecorder.micProfileStale
 const showMicCheck = ref(false)
+// What is stored for SOME microphone on this browser, so the strip can say
+// something true before a session has opened a mic and named the device. Once
+// the flow is live micProfile takes over, because only then do we know which
+// device is actually in use.
+const storedMicProfile = ref(loadProfile('default') || latestStoredProfile())
+function latestStoredProfile() {
+  try {
+    const map = JSON.parse(globalThis.localStorage?.getItem('ssi.micCalibration.v1') || '{}')
+    return Object.values(map).sort((a, b) => b.at - a.at)[0] || null
+  } catch {
+    return null
+  }
+}
 
-function onMicChecked() {
+function onMicChecked(profile) {
+  if (profile) storedMicProfile.value = profile
   showMicCheck.value = false
 }
 // Skipping is a first-class outcome, not a failure: the recorder carries on
