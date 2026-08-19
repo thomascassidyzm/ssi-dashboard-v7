@@ -130,6 +130,14 @@ const failedReasons = reactive(new Map<number, string>())
 // — the exact preview that let a butchered trim chain sound perfect for
 // months. See useStoredClip.js.
 const uploadedUuids = reactive(new Map<number, string>())
+// itemIndex -> the server's words for a take that UPLOADED but was NOT FILED as
+// a clip. This is a different failure from an upload failure and it needs its
+// own channel: the bytes reached S3 and the request returned 200, so nothing in
+// the queue's success/failure bookkeeping notices. That exact silence is what
+// let 50 Finnish takes be recorded on 2026-08-19 with no course_audio row and
+// no warning of any kind. Only NON-deliberate outcomes land here — the slow
+// cadence is deliberately never filed and must not read as a problem.
+const filingWarnings = reactive(new Map<number, string>())
 let processing = false
 let onUploadedCallback: ((itemIndex: number, result: any) => void) | null = null
 
@@ -155,6 +163,8 @@ export function useUploadQueue() {
     // the PREVIOUS take while the screen says "stored clip" — so the slot goes
     // back to having no stored clip until this upload lands.
     uploadedUuids.delete(item.itemIndex)
+    // ...and the new take gets to be filed (or not) on its own account.
+    filingWarnings.delete(item.itemIndex)
 
     queue.push(item)
     pendingCount.value = queue.length
@@ -210,6 +220,12 @@ export function useUploadQueue() {
         // and must not be offered as "the stored clip" in the meantime.
         if (!superseded && result?.uuid) {
           uploadedUuids.set(item.itemIndex, result.uuid)
+        }
+        // A 200 is not the same as "this take became a clip". Surface the
+        // server's filing verdict when it is a problem the recordist can act on.
+        if (!superseded && result?.filing && result.filing.filed === false && result.filing.deliberate === false) {
+          filingWarnings.set(item.itemIndex, result.filing.message || 'This take was saved but not filed as a clip.')
+          console.error(`[UploadQueue] item ${item.itemIndex} uploaded but NOT FILED: ${result.filing.reason} — ${result.filing.message}`)
         }
         if (onUploadedCallback) {
           onUploadedCallback(item.itemIndex, result)
@@ -276,6 +292,7 @@ export function useUploadQueue() {
     failedIndices.clear()
     failedReasons.clear()
     uploadedUuids.clear()
+    filingWarnings.clear()
     processing = false
     onUploadedCallback = null
   }
@@ -290,7 +307,8 @@ export function useUploadQueue() {
     uploadedIndices,
     uploadedUuids,
     failedIndices,
-    failedReasons
+    failedReasons,
+    filingWarnings
   }
 }
 

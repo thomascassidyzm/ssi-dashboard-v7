@@ -30,6 +30,7 @@ const manifestDiffService = require('./manifest-diff-service.cjs')
 const languageCodeService = require('./language-code-service.cjs')
 const { decomposeText } = require('./phrase-decomposer.cjs')
 const { isScriptModeUpload, normalizeProvenance, buildProvenanceContext, resolveTakeVoiceId, retainAndProcessTake } = require('./recording-upload-helpers.cjs')
+const { planScriptTakeFiling, fileScriptTake } = require('./script-take-filing.cjs')
 const podsRegistration = require('./voice-engine/pods-registration.cjs')
 const podVoiceApprovals = require('./pod-voice-approvals.cjs')
 const { resolvePoptyIdentity, hasAdminRole } = require('./shared/popty-identity.cjs')
@@ -4723,10 +4724,30 @@ app.get('/api/production/audio/:uuid/stream', async (req, res) => {
     if (supabaseClient.isInitialized()) {
       const supabase = supabaseClient.getClient()
       const { data } = await supabase
-        .from('course_audio').select('s3_key').eq('id', uuid).single()
+        .from('course_audio').select('s3_key').eq('id', uuid).maybeSingle()
       if (data?.s3_key) s3Key = data.s3_key
+      if (!s3Key) {
+        // TAKE FALLBACK (2026-08-19). Not every recorded take is a clip: a
+        // script-mode SLOW read is deliberately never filed as course_audio
+        // (services/script-take-filing.cjs), and a take whose filing failed has
+        // bytes but no row. Both are things a recordist has just spoken and must
+        // be able to play back — "there is no clip" is not an answer to "let me
+        // hear that again". recording_provenance holds the take's s3_key in its
+        // quality_notes context, keyed by the minted take uuid.
+        //
+        // READ-ONLY, and it files nothing: it makes existing bytes audible, it
+        // does not create or backfill any course_audio row.
+        const { data: takeRow } = await supabase
+          .from('recording_provenance').select('quality_notes').eq('audio_uuid', uuid).maybeSingle()
+        if (takeRow?.quality_notes && typeof takeRow.quality_notes === 'string' && takeRow.quality_notes[0] === '{') {
+          try {
+            const ctx = JSON.parse(takeRow.quality_notes)
+            if (ctx?.s3_key) s3Key = ctx.s3_key
+          } catch { /* a non-JSON quality_notes is an old plain-text row — no key to find */ }
+        }
+      }
     }
-    if (!s3Key) return res.status(404).json({ error: `no course_audio row or s3_key for ${uuid}` })
+    if (!s3Key) return res.status(404).json({ error: `no course_audio row, recorded take or s3_key for ${uuid}` })
     if (s3Key.startsWith('pending/')) return res.status(409).json({ error: 'clip has no rendered audio yet' })
     const url = await s3Service.getAudioSignedUrl(uuid, 3600, { s3Key })
     // no-store: the signed URL expires, and a cached redirect would pin a
@@ -5104,6 +5125,79 @@ async function handleRecordingUpload(req, res) {
       })
     }
 
+    // Which voice this take belongs to, resolved SERVER-side from the course's
+    // voice_config slot — the client's metadata.voiceId is advisory (used only
+    // when the slot has no human voice assigned yet, e.g. recording ahead of
+    // roster assignment). A slot still holding its TTS voice lends nothing:
+    // see resolveTakeVoiceId.
+    //
+    // HOISTED (2026-08-19) out of the provenance block below, because script-mode
+    // filing now needs it too and it must be resolved ONCE, from one place, so a
+    // take's course_audio row and its provenance row can never name two different
+    // voices. The course row is fetched here for the same reason: filing needs
+    // its target_lang/known_lang, and one read serves both.
+    let slotVoiceId = null
+    let courseRow = null
+    if (supabaseClient.isInitialized()) {
+      try {
+        const { data } = await supabaseClient.getClient()
+          .from('courses').select('voice_config, target_lang, known_lang')
+          .eq('course_code', courseCode).single()
+        courseRow = data || null
+      } catch (courseReadError) {
+        logger.warn('[Recording] course row read failed:', courseReadError.message)
+      }
+    }
+    if (isPodMode && podContext) {
+      // Pod mode already resolved the cast voice server-side in prepare
+      // (voice_config.podCast[speaker] / podCast.__explainer__).
+      slotVoiceId = podContext.voiceId
+    } else {
+      const slotRole = metadata?.role || null
+      if (slotRole) {
+        const resolved = resolveTakeVoiceId({
+          voiceConfig: courseRow?.voice_config || null,
+          role: slotRole,
+          clientVoiceId: metadata?.voiceId || null
+        })
+        slotVoiceId = resolved.voiceId
+        if (resolved.warning) logger.warn(`[Recording] ${resolved.warning}`)
+      }
+      if (!slotVoiceId && metadata?.voiceId) slotVoiceId = metadata.voiceId
+    }
+
+    // SCRIPT MODE: file the take as a course_audio row so it can actually be
+    // served. Until 2026-08-19 this branch did not exist — script takes got
+    // bytes in S3 and a provenance row and nothing that could play them back,
+    // which is why 50 takes recorded on 2026-08-19 have no clip and why the
+    // review screen's play button was dead. See services/script-take-filing.cjs
+    // for why the slow cadence is deliberately not filed.
+    //
+    // Filing NEVER fails the upload: the bytes are already safe at s3Key and
+    // refusing here would throw away a take to report a database problem. The
+    // verdict rides back in the response instead, and the recorder shows it.
+    let scriptFiling = null
+    if (isScriptMode && supabaseClient.isInitialized()) {
+      const plan = planScriptTakeFiling({ metadata, voiceId: slotVoiceId, course: courseRow })
+      scriptFiling = await fileScriptTake({
+        supabase: supabaseClient.getClient(),
+        courseCode,
+        plan,
+        s3Key,
+        durationMs: (audioMeta.processed && audioMeta.durationMs) ? audioMeta.durationMs : null,
+        logger
+      })
+    } else if (isScriptMode) {
+      scriptFiling = {
+        filed: false,
+        courseAudioId: null,
+        reason: 'no_database',
+        deliberate: false,
+        message: 'This take was saved to storage but the database was unreachable, so it was not filed as a clip and will not play back. Tell whoever runs the course build — the recording itself is safe.'
+      }
+      logger.error(`[ScriptTake] FILING SKIPPED for ${courseCode}: Supabase not initialized — take ${s3Key} has no course_audio row`)
+    }
+
     // Who recorded this take: the authenticated user's email when a session token
     // is presented, else the client-sent recorded_by. Clients send snake_case
     // provenance keys; the old camelCase-only gate meant recording_provenance was
@@ -5144,35 +5238,8 @@ async function handleRecordingUpload(req, res) {
       // context (course, seed/phrase identity, chunks_string pause map, replaced
       // s3_key). The live table has no dedicated columns for that context, so it
       // rides in quality_notes as JSON. Keyed by the take's fresh S3 uuid so every
-      // re-record gets its own row.
-      // voice_id is resolved SERVER-side from the course's voice_config slot —
-      // the client's metadata.voiceId is advisory (used only when the slot has
-      // no human voice assigned yet, e.g. recording ahead of roster assignment).
-      // A slot still holding its TTS voice lends nothing: see resolveTakeVoiceId.
-      let slotVoiceId = null
-      if (isPodMode && podContext) {
-        // Pod mode already resolved the cast voice server-side in prepare
-        // (voice_config.podCast[speaker] / podCast.__explainer__).
-        slotVoiceId = podContext.voiceId
-      } else {
-        try {
-          const slotRole = metadata?.role || null
-          if (slotRole) {
-            const { data: courseRow } = await supabaseClient.getClient()
-              .from('courses').select('voice_config').eq('course_code', courseCode).single()
-            const resolved = resolveTakeVoiceId({
-              voiceConfig: courseRow?.voice_config || null,
-              role: slotRole,
-              clientVoiceId: metadata?.voiceId || null
-            })
-            slotVoiceId = resolved.voiceId
-            if (resolved.warning) logger.warn(`[Recording] ${resolved.warning}`)
-          }
-        } catch (voiceResolveError) {
-          logger.warn('[Recording] voice_config resolve failed, falling back to client voiceId:', voiceResolveError.message)
-        }
-        if (!slotVoiceId && metadata?.voiceId) slotVoiceId = metadata.voiceId
-      }
+      // re-record gets its own row. voice_id was resolved above (hoisted so
+      // filing and provenance can never disagree about the voice).
       const provenanceContext = buildProvenanceContext({
         courseCode,
         isScriptMode,
@@ -5182,7 +5249,10 @@ async function handleRecordingUpload(req, res) {
         rawS3Key: rawKey,
         courseAudioId: isPodMode
           ? (podResult ? podResult.audioRow.id : null)
-          : (existingRow ? uuid : null),
+          // Script mode now HAS a course_audio row (natural cadence), so the
+          // provenance row names it — the join from a take to its clip used to
+          // be an honest null here only because the clip did not exist.
+          : (isScriptMode ? (scriptFiling?.courseAudioId || null) : (existingRow ? uuid : null)),
         replacedS3Key: isPodMode
           ? (podResult ? podResult.replacedS3Key : null)
           : (existingRow ? existingRow.s3_key : null),
@@ -5223,7 +5293,15 @@ async function handleRecordingUpload(req, res) {
 
     // Pod mode: the take's canonical identity is the course_audio row the
     // sentence FK now points at (clients carry this, not the minted s3 uuid).
-    const responseUuid = (isPodMode && podResult) ? podResult.audioRow.id : audioId
+    // Script mode: the course_audio row's id when the take was filed, so the
+    // review screen's play button resolves through /api/production/audio/:uuid
+    // /stream like every other clip in the estate. A take that was NOT filed
+    // (the slow cadence, or a filing failure) falls back to the minted take
+    // uuid, which that route resolves through recording_provenance — so the
+    // recordist can always hear what they just recorded, filed or not.
+    const responseUuid = (isPodMode && podResult)
+      ? podResult.audioRow.id
+      : (isScriptMode && scriptFiling?.courseAudioId) ? scriptFiling.courseAudioId : audioId
 
     // Emit recording_completed event
     io.to(`course:${courseCode}`).emit('recording_completed', {
@@ -5242,6 +5320,11 @@ async function handleRecordingUpload(req, res) {
       // Script mode: the server-minted identity — clients must carry this, not script-N
       // Pod mode: the course_audio row id now linked on the pod sentence
       uuid: responseUuid,
+      // SCRIPT MODE ONLY. Whether this take became a clip, and if not, why —
+      // in words a recordist can act on. The recorder shows this; a `filed:
+      // false` with `deliberate: false` is a warning they must not be able to
+      // miss. Absent on pod/regeneration uploads, which have always filed.
+      ...(scriptFiling ? { filing: scriptFiling } : {}),
       ...(isPodMode && podResult ? {
         pod: {
           podId: podContext.podId,

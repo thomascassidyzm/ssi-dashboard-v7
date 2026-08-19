@@ -227,6 +227,15 @@
         <span class="failed-count">{{ uploadQueue.failedIndices.size }} NOT saved</span>
         <span class="failed-reason">{{ latestFailureReason }}</span>
       </div>
+
+      <!-- Saved but NOT FILED as a clip. A separate bar from the one above
+           because it is a separate thing: the recording is safe, but nothing
+           exists that can play it to a learner. This is the failure that lost
+           2026-08-19 in total silence — it must never be silent again. -->
+      <div v-if="state.scriptMode && unfiledItems.length" class="upload-unfiled-bar">
+        <span class="failed-count">{{ unfiledItems.length }} saved but NOT filed as a clip</span>
+        <span class="failed-reason">{{ unfiledItems[unfiledItems.length - 1].reason }}</span>
+      </div>
     </div>
 
     <!-- Phase: Session Summary (script mode) -->
@@ -268,6 +277,22 @@
               <strong>Item {{ f.index + 1 }}</strong>
               <span v-if="f.text"> — “{{ f.text }}”</span>
               <span class="failed-why">{{ f.reason }}</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Saved, but not filed. Named separately from "not saved" because the
+             remedy is different: the recording exists and does not need doing
+             again — someone has to fix why it could not be filed. -->
+        <div v-if="unfiledItems.length" class="summary-failures summary-unfiled">
+          <p class="summary-failures-title">
+            {{ unfiledItems.length }} take{{ unfiledItems.length === 1 ? '' : 's' }} saved but NOT filed as a clip:
+          </p>
+          <ul>
+            <li v-for="u in unfiledItems" :key="u.index">
+              <strong>Item {{ u.index + 1 }}</strong>
+              <span v-if="u.text"> — “{{ u.text }}”</span>
+              <span class="failed-why">{{ u.reason }}</span>
             </li>
           </ul>
         </div>
@@ -530,6 +555,21 @@ const failedItems = computed(() =>
       index,
       text: state.phrases[index]?.text || '',
       reason: uploadQueue.failedReasons.get(index) || 'Upload failed'
+    }))
+)
+
+// Takes that UPLOADED but were not filed as a clip — a 200 that is not a
+// success. Same shape as failedItems so both bars and both summary lists read
+// alike, but kept separate because the remedy differs: a failed take must be
+// recorded again, an unfiled one already exists and needs someone to fix the
+// filing.
+const unfiledItems = computed(() =>
+  [...uploadQueue.filingWarnings.keys()]
+    .sort((a, b) => a - b)
+    .map(index => ({
+      index,
+      text: state.phrases[index]?.text || '',
+      reason: uploadQueue.filingWarnings.get(index) || 'This take was saved but not filed as a clip.'
     }))
 )
 
@@ -1255,6 +1295,25 @@ onUnmounted(() => {
   gap: 0.25rem;
 }
 
+/* Saved-but-not-filed. Amber, not red: the recording is safe — what is wrong is
+   downstream of it — so it must not read as "you lost that take". */
+.upload-unfiled-bar {
+  margin-top: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: rgba(217, 119, 6, 0.15);
+  border: 1px solid #d97706;
+  border-radius: 8px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.upload-unfiled-bar .failed-count,
+.upload-unfiled-bar .failed-reason {
+  color: #fcd34d;
+}
+
 .failed-count {
   font-family: 'IBM Plex Mono', monospace;
   font-size: 0.8rem;
@@ -1349,6 +1408,16 @@ onUnmounted(() => {
   background: rgba(220, 38, 38, 0.12);
   border: 1px solid var(--color-film-red);
   border-radius: 8px;
+}
+
+.summary-unfiled {
+  background: rgba(217, 119, 6, 0.12);
+  border-color: #d97706;
+}
+
+.summary-unfiled .summary-failures-title,
+.summary-unfiled .failed-why {
+  color: #fcd34d;
 }
 
 .summary-failures-title {
