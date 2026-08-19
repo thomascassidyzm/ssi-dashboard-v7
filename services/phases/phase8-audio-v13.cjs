@@ -47,7 +47,10 @@ const veracity = require('../audio-veracity.cjs')
 const { claudeChat, HAIKU_MODEL } = require('../shared/claude-cli.cjs')
 const presentationAuthor = require('./presentation-author.cjs')
 const { emitProgress } = require('../shared/emit-progress.cjs')
-const { fulfillAudioPassRequests } = require('../shared/audio-pass-queue.cjs')
+const { fulfillAudioPassRequests, queueAudioPass } = require('../shared/audio-pass-queue.cjs')
+// Kai's relink voice-match ruling, 2026-08-19 — a relink may only ever land a
+// clip whose voice matches the course voice config for that role.
+const { resolveVoices, isRelinkAllowed, RelinkRefusalLedger } = require('../shared/relink-voice-guard.cjs')
 const { isHumanVoiceCourse, HUMAN_VOICE_TARGET_LANGS } = require('../shared/human-voice-courses.cjs')
 const logger = createLogger('Phase8-Audio-v13')
 const { bulkGetRegenerationCounts } = require('../supabase-client.cjs')
@@ -1692,6 +1695,22 @@ async function linkAudioIds(courseCode) {
       + (result.legos_known || 0) + (result.legos_target1 || 0) + (result.legos_target2 || 0)
       + (result.seeds_known || 0) + (result.seeds_target1 || 0) + (result.seeds_target2 || 0)
     result.total = rpcTotal + (result.presentations || 0) + (result.component_presentations || 0)
+    // The RPC enforces Kai's voice-match rule itself and reports what it refused
+    // (database/migrations/20260819_relink_must_match_voice_config.sql). Surface
+    // that here rather than letting it sit unread in relink_refusals: a refusal
+    // the operator never sees is the silence this rule exists to end.
+    const refused = (result.refused || 0) + (presResult.voiceRefusals || 0)
+    if (refused > 0) {
+      logger.warn(`linkAudioIds: RELINK REFUSED ${refused} slot(s) in ${courseCode} on the voice-match rule — `
+        + `left as they were, need regeneration in the configured voice (see relink_refusals)`)
+      await queueAudioPass(supabase, {
+        courseCode,
+        reason: `relink refused ${refused} slot(s) on the voice-match rule — regenerate in the configured voice`,
+        requestedBy: 'phase8 linkAudioIds',
+        metadata: { relinkRefusedCount: refused, source: 'link_all_audio_ids RPC + linkPresentationAudio' },
+      })
+    }
+    result.voiceRefusals = refused
     logger.info(`linkAudioIds: linked via RPC for ${courseCode}`, JSON.stringify(result))
     return result
   }
@@ -1715,12 +1734,23 @@ async function linkAudioIdsBatch(courseCode, opts = {}) {
   const PAGE_SIZE = 1000
   const BATCH = 200
 
+  // VOICE GATE (Kai's ruling, 2026-08-19). Before this, the map key was
+  // text x language x role and a clip in ANY voice could claim a slot — which
+  // is exactly how 164 zho_for_eng known prompts moved off Sonia onto a clone
+  // without a word in the log. The configured voice per role is now part of the
+  // key, so a wrong-voice clip cannot be found at all, and the slots it would
+  // have claimed are counted as refusals instead of filled wrongly.
+  const { data: voiceCourse } = await supabase
+    .from('courses').select('voice_config').eq('course_code', courseCode).single()
+  const wantedVoices = resolveVoices(voiceCourse || {})
+  const ledger = new RelinkRefusalLedger(courseCode)
+
   // Load audio map keyed by normalizeForAudio(raw text) — which PRESERVES ?/! — so
   // question/exclamation intonation is significant (a "...?" phrase won't link to a
   // "..." recording). origin + created_at let pickPreferredAudioRow favour human > newest.
   let audioQuery = supabase
     .from('course_audio')
-    .select('id, text, language, role, s3_key, origin, created_at')
+    .select('id, text, language, role, s3_key, origin, created_at, voice_id')
     .eq('course_code', courseCode)
     .not('s3_key', 'like', 'pending/%')
     .limit(100000)
@@ -1730,16 +1760,27 @@ async function linkAudioIdsBatch(courseCode, opts = {}) {
 
   if (humanOnly && !(audioRows || []).length) return result
 
+  // Two maps. `audioMap` holds only clips whose voice matches the config — the
+  // only ones eligible to be linked. `rejectedMap` holds the text-matching clips
+  // we turned away, so when a slot goes unfilled we can say WHICH wrong voice was
+  // on offer instead of reporting a silent miss.
   const audioMap = new Map()
+  const rejectedMap = new Map()
   for (const a of (audioRows || [])) {
     // Key on normalizeForAudio(raw text) so ?/! are preserved; pickPreferredAudioRow
     // resolves collisions (human > newest). Map value is the chosen ROW.
     const norm = normalizeForAudio(a.text)
     if (!norm) continue
     const key = `${norm}|${a.language}|${a.role}`
+    const verdict = isRelinkAllowed({ role: a.role, wantedVoice: wantedVoices[a.role], candidate: a })
+    if (!verdict.ok) {
+      if (!rejectedMap.has(key)) rejectedMap.set(key, { row: a, verdict })
+      continue
+    }
     audioMap.set(key, pickPreferredAudioRow(audioMap.get(key), a))
   }
-  logger.info(`linkAudioIdsBatch${humanOnly ? ' (human-only)' : ''}: loaded ${audioMap.size} audio entries for ${courseCode}`)
+  logger.info(`linkAudioIdsBatch${humanOnly ? ' (human-only)' : ''}: loaded ${audioMap.size} voice-matched audio entries for ${courseCode}`
+    + (rejectedMap.size ? ` (${rejectedMap.size} text-matching clip(s) held back on the voice rule)` : ''))
 
   // Helper: link one slot on one table
   async function linkSlot(table, idCol, textCol, audioCol, lang, role) {
@@ -1765,8 +1806,22 @@ async function linkAudioIdsBatch(courseCode, opts = {}) {
         // Key preserves ?/! — a "...?" phrase only matches a "...?" recording; if none
         // exists it stays unlinked → regenerated with correct question intonation. No
         // ?-stripping fallback (it would relink question phrases to flat statement audio).
-        const audioRow = audioMap.get(`${norm}|${lang}|${role}`)
-        if (audioRow) updates.push({ id: row[idCol], audioId: audioRow.id })
+        const mapKey = `${norm}|${lang}|${role}`
+        const audioRow = audioMap.get(mapKey)
+        if (audioRow) { updates.push({ id: row[idCol], audioId: audioRow.id }); continue }
+        // No same-voice clip. If a wrong-voice clip DID match the text, this is a
+        // refusal and must be loud: the slot stays as it is and gets regenerated,
+        // never quietly filled with the wrong speaker.
+        const rejected = rejectedMap.get(mapKey)
+        if (rejected) {
+          ledger.record({
+            slot: row[idCol], table, role,
+            reason: rejected.verdict.reason,
+            detail: rejected.verdict.detail,
+            wantedVoice: rejected.verdict.wantedVoice || wantedVoices[role] || null,
+            candidateVoice: rejected.verdict.candidateVoice || rejected.row.voice_id || null,
+          })
+        }
       }
 
       // Batch update
@@ -1832,7 +1887,24 @@ async function linkAudioIdsBatch(courseCode, opts = {}) {
   result.component_presentations = compPresResult.linked || 0
   result.total += result.component_presentations
 
-  logger.info(`linkAudioIdsBatch: total linked = ${result.total} for ${courseCode}`)
+  // LOUD REFUSAL. Slots we declined to fill are reported, counted on the result
+  // (so every caller and every JSON response carries the number), and queued as
+  // an audio pass so the regeneration that fixes them is actually scheduled —
+  // never TTS'd here, which is approval-gated.
+  result.voiceRefusals = ledger.count
+  result.voiceRefusalBreakdown = ledger.breakdown()
+  if (ledger.count > 0) {
+    logger.warn(ledger.summary())
+    await queueAudioPass(supabase, {
+      courseCode,
+      reason: `relink refused ${ledger.count} slot(s) on the voice-match rule — regenerate in the configured voice`,
+      requestedBy: 'phase8 linkAudioIdsBatch',
+      metadata: ledger.toPassMetadata(),
+    })
+  }
+
+  logger.info(`linkAudioIdsBatch: total linked = ${result.total} for ${courseCode}`
+    + (ledger.count ? `, ${ledger.count} refused on voice` : ''))
   return result
 }
 
@@ -1846,7 +1918,7 @@ async function linkPresentationAudio(courseCode) {
   // Get all presentation audio that has lego_id set (filter pending client-side)
   const { data: rawPres, error: presError } = await supabase
     .from('course_audio')
-    .select('id, lego_id, s3_key')
+    .select('id, lego_id, s3_key, voice_id')
     .eq('course_code', courseCode)
     .eq('role', 'presentation')
     .not('lego_id', 'is', null)
@@ -1855,6 +1927,15 @@ async function linkPresentationAudio(courseCode) {
   if (presError || !presentations?.length) {
     return { linked: 0, error: presError?.message || null }
   }
+
+  // VOICE GATE (Kai's ruling, 2026-08-19). This path keys on lego_id rather than
+  // text, which does NOT make it safe: retired clips keep their lego_id, so two
+  // course_audio rows can carry the same tag and the wrong-voiced one can win.
+  // Only a clip in the configured presentation voice may claim the slot.
+  const { data: presCourse } = await supabase
+    .from('courses').select('voice_config').eq('course_code', courseCode).single()
+  const wantedPresVoice = resolveVoices(presCourse || {}).presentation
+  const presLedger = new RelinkRefusalLedger(courseCode)
 
   // Get all LEGOs missing presentation_audio_id
   const { data: legosNeedingLink } = await supabase
@@ -1865,9 +1946,15 @@ async function linkPresentationAudio(courseCode) {
 
   if (!legosNeedingLink?.length) return { linked: 0 }
 
-  // Build map: lego_id -> presentation course_audio.id
+  // Build map: lego_id -> presentation course_audio ROW, voice-matched only.
   const presMap = new Map()
+  const presRejected = new Map()
   for (const p of presentations) {
+    const verdict = isRelinkAllowed({ role: 'presentation', wantedVoice: wantedPresVoice, candidate: p })
+    if (!verdict.ok) {
+      if (!presRejected.has(p.lego_id)) presRejected.set(p.lego_id, { row: p, verdict })
+      continue
+    }
     presMap.set(p.lego_id, p.id)
   }
 
@@ -1875,7 +1962,19 @@ async function linkPresentationAudio(courseCode) {
   let linked = 0
   for (const lego of legosNeedingLink) {
     const presId = presMap.get(lego.lego_id)
-    if (!presId) continue
+    if (!presId) {
+      const rejected = presRejected.get(lego.lego_id)
+      if (rejected && lego.presentation_audio_id !== rejected.row.id) {
+        presLedger.record({
+          slot: lego.lego_id, table: 'course_legos', role: 'presentation',
+          reason: rejected.verdict.reason,
+          detail: rejected.verdict.detail,
+          wantedVoice: rejected.verdict.wantedVoice || wantedPresVoice || null,
+          candidateVoice: rejected.verdict.candidateVoice || rejected.row.voice_id || null,
+        })
+      }
+      continue
+    }
     if (lego.presentation_audio_id === presId) continue // already correct
 
     const legoMatch = lego.lego_id.match(/S(\d+)L(\d+)/)
@@ -1898,7 +1997,17 @@ async function linkPresentationAudio(courseCode) {
     logger.info(`linkPresentationAudio: linked ${linked} presentation audio IDs for ${courseCode}`)
   }
 
-  return { linked }
+  if (presLedger.count > 0) {
+    logger.warn(presLedger.summary())
+    await queueAudioPass(supabase, {
+      courseCode,
+      reason: `presentation relink refused ${presLedger.count} slot(s) on the voice-match rule — regenerate in the configured voice`,
+      requestedBy: 'phase8 linkPresentationAudio',
+      metadata: presLedger.toPassMetadata(),
+    })
+  }
+
+  return { linked, voiceRefusals: presLedger.count, voiceRefusalBreakdown: presLedger.breakdown() }
 }
 
 /**

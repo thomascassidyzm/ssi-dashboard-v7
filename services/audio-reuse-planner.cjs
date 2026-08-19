@@ -88,6 +88,13 @@
 const { generateLearningScript } = require('./learning-script-generator.cjs')
 const { normalizeForAudio, audioKeyCandidates } = require('./shared/text-normalize.cjs')
 const { pickPreferredAudioRow } = require('./shared/audio-link-preference.cjs')
+const {
+  PROVIDER_PREFIX,
+  bareVoiceId,
+  resolveVoices,
+  voicesMatch,
+  voiceCandidates,
+} = require('./shared/relink-voice-guard.cjs')
 const createLogger = require('./shared/logger.cjs')
 
 const logger = createLogger('AudioReusePlanner')
@@ -162,32 +169,12 @@ function sameLanguage(wantedLang, candidateLang) {
     .includes(String(candidateLang).trim().toLowerCase())
 }
 
-/**
- * Resolve the voice_id string phase8 would write for each role, from
- * courses.voice_config. Mirrors phase8-audio-v13.cjs getVoiceForRole exactly:
- * `${provider}_${voiceId}` when a provider is set, bare voiceId otherwise,
- * never the config object.
- */
-function resolveVoices(course) {
-  const voices = course?.voice_config?.voices || {}
-  const out = {}
-  for (const role of CLIP_ROLES) {
-    const v = voices[role]
-    if (!v) { out[role] = null; continue }
-    if (v.provider && v.voiceId) out[role] = `${v.provider}_${v.voiceId}`
-    else out[role] = v.voiceId || null
-  }
-  return out
-}
-
-// Provider prefixes phase 8 has written at various times. Stripping one yields
-// the voice's bare legacy id, which the estate also holds directly.
-const PROVIDER_PREFIX = /^(xai|azure|elevenlabs|google)_/
-
-/** The bare voice id, with any provider-era prefix removed. */
-function bareVoiceId(voiceId) {
-  return voiceId ? String(voiceId).replace(PROVIDER_PREFIX, '') : ''
-}
+// resolveVoices / bareVoiceId / voicesMatch / voiceCandidates now live in
+// services/shared/relink-voice-guard.cjs — Kai's relink voice-match ruling of
+// 2026-08-19 needs the SAME answer to "do these two ids name the same voice?"
+// in every relink path, so there is now exactly one definition and this planner
+// (which already got the rule right) is one of its callers rather than a second
+// copy. The re-exports below keep this module's public API unchanged.
 
 /**
  * Human labels for the voices that matter, so a coverage table reads as people
@@ -221,19 +208,7 @@ function voiceLabel(voiceId) {
  * it correct, not invisible. `mergeProviderEras: false` restores strict exact
  * matching. `aliases` remains for equivalences the prefix rule cannot express.
  */
-function voicesMatch(wanted, candidate, aliases = [], { mergeProviderEras = true } = {}) {
-  if (!wanted || !candidate) return { match: false, viaAlias: false }
-  if (wanted === candidate) return { match: true, viaAlias: false }
-  if (mergeProviderEras && bareVoiceId(wanted) === bareVoiceId(candidate)) {
-    return { match: true, viaAlias: true, via: 'provider-era' }
-  }
-  for (const group of aliases) {
-    if (group.includes(wanted) && group.includes(candidate)) {
-      return { match: true, viaAlias: true, via: 'explicit-alias' }
-    }
-  }
-  return { match: false, viaAlias: false }
-}
+// (implementation: services/shared/relink-voice-guard.cjs)
 
 /**
  * Can this voice's clips be trusted to be at natural (1x) pace, so a clip may
@@ -262,15 +237,7 @@ function isSpeedTrustedVoice(voiceId) {
   return true
 }
 
-/** All voice_id strings that are acceptable for `wanted` under `aliases`. */
-function voiceCandidates(wanted, aliases = []) {
-  if (!wanted) return []
-  const out = new Set([wanted])
-  for (const group of aliases) {
-    if (group.includes(wanted)) for (const v of group) out.add(v)
-  }
-  return [...out]
-}
+/* voiceCandidates: see services/shared/relink-voice-guard.cjs */
 
 /**
  * The clip identity key. Text is normalised with normalizeForAudio (the JS
