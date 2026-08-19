@@ -4134,7 +4134,7 @@ app.post('/regenerate-presentations/:courseCode', async (req, res) => {
       const batch = legoIdList.slice(i, i + BATCH_SIZE)
       const { data: batchData, error: batchError } = await supabase
         .from('course_audio')
-        .select('id, lego_id, s3_key')
+        .select('id, lego_id, s3_key, voice_id')
         .eq('course_code', courseCode)
         .eq('role', 'presentation')
         .in('lego_id', batch)
@@ -4163,7 +4163,7 @@ app.post('/regenerate-presentations/:courseCode', async (req, res) => {
         const batch = norms.slice(i, i + BATCH_SIZE)
         const { data: matchedAudio } = await supabase
           .from('course_audio')
-          .select('id, text_normalized, s3_key')
+          .select('id, text_normalized, s3_key, voice_id')
           .eq('course_code', courseCode)
           .eq('role', 'presentation')
           .in('text_normalized', batch)
@@ -4173,13 +4173,45 @@ app.post('/regenerate-presentations/:courseCode', async (req, res) => {
               // Find all unlinked LEGOs with this text
               for (const p of unlinkedPres) {
                 if (normalizeForAudio(p.presentation_text) === audio.text_normalized) {
-                  allPresAudio.push({ id: audio.id, lego_id: p.lego_id, s3_key: audio.s3_key })
+                  allPresAudio.push({ id: audio.id, lego_id: p.lego_id, s3_key: audio.s3_key, voice_id: audio.voice_id })
                 }
               }
             }
           }
         }
       }
+    }
+
+    // VOICE GATE (Kai's ruling, 2026-08-19). Everything above found EXISTING
+    // clips — by lego_id, and for duplicate presentation text by text_normalized
+    // — and is about to bind them to LEGOs. That is a relink, so it obeys the
+    // rule: only a clip in the configured presentation voice may be bound. The
+    // rest are left unlinked and reported, never quietly attached.
+    {
+      const { data: presVoiceCourse } = await supabase
+        .from('courses').select('voice_config').eq('course_code', courseCode).single()
+      const wantedPres = resolveVoices(presVoiceCourse || {}).presentation
+      const gateLedger = new RelinkRefusalLedger(courseCode)
+      const kept = []
+      for (const audio of allPresAudio) {
+        const verdict = isRelinkAllowed({ role: 'presentation', wantedVoice: wantedPres, candidate: audio })
+        if (verdict.ok) { kept.push(audio); continue }
+        gateLedger.record({
+          slot: audio.lego_id, table: 'course_legos', role: 'presentation',
+          reason: verdict.reason, detail: verdict.detail,
+          wantedVoice: wantedPres || null, candidateVoice: audio.voice_id || null,
+        })
+      }
+      if (gateLedger.count > 0) {
+        logger.warn(gateLedger.summary())
+        await queueAudioPass(supabase, {
+          courseCode,
+          reason: `presentation relink refused ${gateLedger.count} slot(s) on the voice-match rule — regenerate in the configured voice`,
+          requestedBy: 'phase8 /regenerate-presentations',
+          metadata: gateLedger.toPassMetadata(),
+        })
+      }
+      allPresAudio = kept
     }
 
     if (allPresAudio.length > 0) {
