@@ -8,26 +8,55 @@
  * why it is shaped that way. A real recordist working their queue must never
  * see any of this.
  *
- * ── The teaching order, and why it is this order ─────────────────────────────
+ * ── WHICH TOOL THIS TEACHES, AND WHICH IT DOES NOT ─────────────────────────
  *
- * QUEUE MODE FIRST, then SCRIPT MODE. Both are real modes of the recorder
- * (`useAutocueState.js` header: queue = regeneration, phrase-by-phrase with
- * manual advance; script = new-course, continuous with VAD auto-advance).
+ * THIS IS THE COURSE-CONTENT RECORDER: AutocueStudio, reached through the Record
+ * Room at /record/:courseCode (login-gated, course-scoped). Establishing that
+ * mattered, because there are TWO recording surfaces and they are not
+ * duplicates that drifted — they are different jobs:
  *
- * Queue mode first because the recordist holds the boundary themselves: they
- * decide when a take is finished and press to move on. That is the only setting
- * in which they can hear what a slow read IS before also having to worry about
- * a machine judging when they have stopped talking. Teaching neutrality and
- * auto-advance at the same time means a failure has two possible causes and the
- * recordist cannot tell which one they hit.
+ *   /r/:voiceId  (RecordistRoom.vue, public, link-is-identity) — the per-person
+ *       queue, BY LANGUAGE. Its own header says it: "no course picker, no pod
+ *       slug, no mode picker, no gate". It records whole lines with
+ *       useTapRecorder and has NO concept of slow reads, chunks or cadence
+ *       anywhere in the file. Mostly pod dialogue; it can also carry a flagged
+ *       re-record of other content (course_audio.rerecord_wanted), but new
+ *       course content is not authored into it.
  *
- * Script mode second, because it is where the skill is actually tested — and
- * where it can fail silently. The autocue moves on off your voice. Trail off,
- * or take a breath in the middle of a phrase, and it advances while you are
- * still speaking; you are now reading line four into line three's slot and
- * nothing on screen says so.
+ *   /record/:courseCode → AutocueStudio — THIS one. Passes, cadences, chunked
+ *       slow reads, the splitter, the review grid.
  *
- * ── The number that makes script mode teachable ──────────────────────────────
+ * KAI'S RULING, 2026-08-19: "I am happy for them to be separate. It is a little
+ * different recording pod audio. You can be more alive." The two surfaces stay
+ * separate ON PURPOSE, and so do their tutorials — because they teach OPPOSITE
+ * instructions to a human being:
+ *
+ *   pod audio wants PERFORMANCE — alive, in character;
+ *   course phrases want NEUTRALITY — because the slow reads get cut into pieces
+ *   and recombined into sentences the recordist never said, and expression in
+ *   the wrong place makes the joins audible.
+ *
+ * A recordist who carries the wrong register across is the failure this split
+ * exists to prevent, and it fails SILENTLY. So this tutorial names the other
+ * job and tells them not to bring this lesson to it. It must never imply the
+ * per-person tool is where course content gets recorded, because today it is not.
+ *
+ * ── The two ways THIS tool runs (both reachable here, neither on /r/) ───────
+ *
+ * AutocueStudio opens on its own ModeSelector — that screen is the first thing
+ * a course recordist meets, so the tutorial shows it rather than skipping past
+ * it. Mode 2 (regeneration) is phrase-by-phrase: the mic stays open and NEXT
+ * closes each take, so the recordist holds the boundary. Mode 1 (new-course) is
+ * continuous: the VAD ends the take and advances the autocue off the sound of
+ * the voice.
+ *
+ * Taught in that order because the boundary being your own finger is the only
+ * setting in which a bad take has ONE possible cause. This is NOT a
+ * "mode-switch lesson" — that framing came from a mistaken belief that the
+ * per-person recorder exposes these modes. It does not. They are simply both
+ * real on the surface being taught.
+ *
+ * ── The number that makes continuous mode teachable ─────────────────────────
  *
  * There is a WINDOW, and it is the single most useful fact in this tutorial:
  *
@@ -59,24 +88,25 @@ export const BEAT_WINDOW = {
  */
 export const COACH = {
   welcome: {
-    title: 'What this is',
+    title: 'This is the course-phrase recorder',
     tone: 'why',
     body: [
-      'This is the real recording tool. Same screen, same buttons, same everything — the only differences are that the lines are practice lines, and nothing you record is kept.',
-      'You will use BOTH of the ways it records, and you will switch between them yourself, because that switch is one of the things worth knowing before your first real session.',
+      'It is the real tool — same screen, same buttons, same everything. The only differences are that the lines are practice lines, and nothing you record is kept.',
+      'This is the tool for COURSE PHRASES: the sentences a learner is taught. Recording pod conversations is a different tool and a different job, and it wants the opposite of what this one wants — so do not carry this lesson over to it.',
       'Nothing here is a test. You do a thing, you hear what happened to it, you try again.',
     ],
+    watch: 'The one thing this tool is teaching you is NEUTRAL. By the end you will have heard exactly why it matters, rather than been told.',
   },
 
   pickQueueMode: {
-    title: 'The tool has two modes — start with the simpler one',
+    title: 'The screen this tool opens on',
     tone: 'do',
     body: [
-      'This is the screen you land on. Two ways of recording, and you pick one.',
-      'Tap MODE 2: REGENERATION. That is the phrase-by-phrase mode: it shows you one line, waits, and does not move until you tell it to. You are in charge of when each take ends.',
-      'We will come back to this screen later and take the other one.',
+      'This is what you see first. The tool runs two ways and it asks you which.',
+      'Tap MODE 2: REGENERATION. That is the phrase-by-phrase way: one line at a time, and it does not move until you tell it to. You hold the boundary between takes.',
+      'We will come back and take the other one once you have the important part.',
     ],
-    nudge: 'Not that one yet — tap Mode 2: Regeneration. We will do Mode 1 in a minute.',
+    nudge: 'Not that one yet — tap Mode 2: Regeneration. We will get to Mode 1 shortly.',
   },
 
   role: {
@@ -145,12 +175,12 @@ export const COACH = {
   },
 
   switchMode: {
-    title: 'Now the other mode — press it yourself',
+    title: 'The same tool runs a second way',
     tone: 'do',
     body: [
-      'Back to the mode screen. This time tap MODE 1: NEW COURSE.',
-      'This is continuous recording. You press record ONCE, at the start, and then you just read. The tool listens, and when it hears you stop, it saves that take and moves the autocue on by itself.',
-      'That is a real difference in what is being asked of you, and it is worth feeling rather than being told.',
+      'You have the important part. Now the other half of this screen: tap MODE 1: NEW COURSE.',
+      'This is continuous recording. You press record ONCE and then you just read. The tool listens, and when it hears you stop it saves that take and moves the autocue on by itself.',
+      'Same neutrality, same slow reads — but the tool now decides when you have finished, and that changes what you have to do. Worth feeling rather than being told.',
     ],
     nudge: 'This time we want Mode 1: New Course — the continuous one.',
   },
@@ -191,10 +221,11 @@ export const COACH = {
     title: 'That is the whole tool',
     tone: 'why',
     body: [
-      'You have used both modes, switched between them yourself, seen where your takes get cut, and heard your own pieces inside sentences you never said.',
+      'You have run it both ways, seen where your takes get cut, and heard your own pieces inside sentences you never said.',
       'Two things to carry into a real session: be a person talking, not a person reading; and keep your slow-read pieces flat and even, because they are going to turn up somewhere you did not choose.',
       'Nothing you did here was kept. Close this and open your real recording set.',
     ],
+    watch: 'If you are ever asked to record a POD CONVERSATION, that is a different tool and the opposite instruction: be alive, be the character, perform it. Neutral is right here and wrong there. Nothing on either screen will warn you, so it is worth remembering which job you are on.',
   },
 }
 
@@ -204,4 +235,5 @@ export const HINTS = {
   autoAdvance: 'Continuous: the autocue moves itself when it hears you stop. NEXT and PREVIOUS still work, but you should not need them.',
   calibrating: 'It is measuring your room before it goes live, so a room that cannot be split gets caught now rather than at the end of a session.',
   nothingSaved: 'Practice — nothing is saved',
+  whichTool: 'Course phrases. Pod conversations are a different tool, and a different job — see the last step.',
 }

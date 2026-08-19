@@ -42,6 +42,7 @@
       <div class="script-summary">
         <h2>Practice Session</h2>
         <p class="script-cap-note">Nothing you record here is saved or uploaded.</p>
+        <p class="which-tool">{{ HINTS.whichTool }}</p>
 
         <TutorialCoach step="welcome" />
 
@@ -56,7 +57,14 @@
       </div>
     </div>
 
-    <!-- ── mode select — the REAL ModeSelector, twice ───────────────────── -->
+    <!-- ── mode select — the REAL ModeSelector.
+         This screen IS the first thing a course recordist meets (AutocueStudio
+         mounts, resetSession()s, and lands on 'mode-select'), so the tutorial
+         shows it rather than skipping past it. Its third card — Mode 3:
+         Listening Pods — is absent because ModeSelector v-if's it on a
+         courseCode this standalone build has none of. That is the right
+         outcome and not an accident: pods are the OTHER job, with their own
+         tutorial and the opposite instruction. -->
     <div v-else-if="step === 'pickQueueMode' || step === 'switchMode'">
       <TutorialCoach :step="step" :nudged="nudged" />
       <ModeSelector @select="onModeSelect" />
@@ -406,8 +414,22 @@
 
 <script setup>
 /**
- * Recordist tutorial — a guided pass over the REAL Autocue Studio, in both of
- * its recording modes.
+ * Recordist tutorial — a guided pass over the REAL Autocue Studio.
+ *
+ * ── WHICH SURFACE THIS TEACHES ──────────────────────────────────────────────
+ * THE COURSE-PHRASE RECORDER: AutocueStudio, reached via the Record Room at
+ * /record/:courseCode. NOT /r/:voiceId (RecordistRoom.vue), which is the
+ * per-person by-language queue — public, link-is-identity, whole lines via
+ * useTapRecorder, and with no concept of slow reads, chunks or cadence anywhere
+ * in it. The two surfaces are deliberately separate (Kai, 2026-08-19) because
+ * pod audio wants performance and course phrases want neutrality, which are
+ * opposite instructions to a human. The pod tutorial is a different build and
+ * must NOT teach neutrality. See tutorialScript.js's header for the full ruling.
+ *
+ * NOTE ON REACH: the surface this teaches is login-gated (RecordRoom's route
+ * carries requiresAuth). This practice build is not, because it needs no API at
+ * all — which is right for a tutorial, but means it is a link you send someone,
+ * not something they discover inside the tool.
  *
  * ── WHY IT IS A SEPARATE COMPONENT rather than a flag on AutocueStudio.vue ───
  * AutocueStudio's body is course-bound end to end: loadCourse(), the
@@ -1275,6 +1297,17 @@ onUnmounted(() => {
   border-radius: 999px;
   padding: 0.35rem 0.8rem;
   white-space: nowrap;
+}
+
+.which-tool {
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: var(--color-paper-dim);
+  border: 1px dashed var(--color-graphite);
+  border-radius: 8px;
+  padding: 0.6rem 0.75rem;
+  margin: 0 0 1.5rem;
+  text-align: left;
 }
 
 .pack-label {

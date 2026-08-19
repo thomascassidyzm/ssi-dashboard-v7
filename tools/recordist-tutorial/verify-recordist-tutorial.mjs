@@ -162,6 +162,19 @@ check('practice guarantee visible in the header',
 check('teaching copy renders under tutorial mode',
   (await page.locator(SEL.coach).count()) >= 1)
 check('phrase packs offered', (await page.locator('#pack option').count()) >= 3)
+
+// ── WHICH SURFACE THIS TEACHES ──────────────────────────────────────────────
+// The two recording surfaces are deliberately separate and teach OPPOSITE
+// registers (pods = perform, course phrases = neutral). A tutorial that leaves
+// a recordist unsure which job they are on is the failure the split exists to
+// prevent, so the naming is asserted, not assumed.
+const welcomeText = (await page.locator('.script-summary').innerText()).toLowerCase()
+check('the tutorial says plainly which tool it teaches',
+  welcomeText.includes('course phrase'), welcomeText.slice(0, 120))
+check('it names pod recording as a different tool and a different job',
+  welcomeText.includes('different tool') && welcomeText.includes('pod'))
+check('it does not claim to teach the per-person recorder',
+  !welcomeText.includes('/r/') && !welcomeText.includes('voiceid'))
 await page.screenshot({ path: `${SHOTS}/1-welcome.png`, fullPage: true })
 
 await page.selectOption('#pack', 'fin')
@@ -381,8 +394,8 @@ await page.locator('.final-actions .control-btn.go').click()
 await page.waitForTimeout(200)
 check('back on the real ModeSelector to switch modes',
   (await page.locator(SEL.modeCard).count()) === 2)
-check('the coach asks for Mode 1 this time',
-  (await page.locator('.coach-title').innerText()).toLowerCase().includes('other mode'))
+check('the coach asks for the second way this tool runs',
+  (await page.locator('.coach-title').innerText()).toLowerCase().includes('second way'))
 
 // Wrong card again — the nudge must be the OTHER one now.
 await page.locator(SEL.modeCard).nth(1).click()
@@ -464,6 +477,11 @@ await page.screenshot({ path: `${SHOTS}/9-beat-window.png`, fullPage: true })
 await page.click(SEL.begin)   // "I've got it"
 check('the tutorial ends on the studio\'s own summary card',
   (await page.locator('.summary-card h2').innerText()).includes('Session Complete'))
+const closing = (await page.locator('.summary-card').innerText()).toLowerCase()
+check('the closing step warns that pod recording wants the OPPOSITE register',
+  closing.includes('pod') && closing.includes('opposite') &&
+  (closing.includes('alive') || closing.includes('character')),
+  closing.slice(-160))
 await page.screenshot({ path: `${SHOTS}/10-done.png`, fullPage: true })
 
 // ── 10. phone width ─────────────────────────────────────────────────────────
