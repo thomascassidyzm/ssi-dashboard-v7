@@ -61,15 +61,20 @@ renders.
 
 ## Three things worth knowing
 
-**Nothing has been published yet.** All three surfaces are sitting on their drafts, and every
-learner is reading the words built into the app. The first publish is deliberately yours or
-Aran's — the machinery is in place and has not been fired.
+**This is live in production.** Popty and the learner app are both shipped. How This Works is
+published at its frozen original, which the app renders identically to the words it already
+shipped — so nothing a learner reads has changed by a character, but the text now genuinely
+comes from the database. Your next edit plus Publish is the first one that will change what
+learners see. The other two surfaces are still unpublished.
 
 **Anyone signed in to Popty can publish**, which is the same gate as editing. That is on
 purpose: every publish is attributed by email and reversible in a click, so attribution and
 undo do the work a narrower gate would have done. If you would rather it were a named list,
 that is a one-line change.
 
-**The code is not on production.** The Popty changes and the learner-app changes are both on
-branches awaiting your word. What bypasses the branch train is the *text*, once the code is
-live — not this first release of the code itself.
+**The learner-app release carried the A-159 work with it.** Landing this through the normal
+train promoted everything that was sitting on staging — the explainer wall, the Library hub,
+the fonts, the in-app browser. Promoting also meant resolving a collision between the Arabic
+bidi fix on main and the font work on staging; both are kept, because they set different
+things. All 2,358 player tests pass, including the six bidi ones, but that resolution touches
+Arabic and Urdu rendering and deserves a look from whoever owns those plates.
