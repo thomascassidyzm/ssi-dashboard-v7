@@ -130,7 +130,6 @@ const diffAgainst = ref('original')
 const published = ref(null)          // { versionId, publishedAt, publishedBy, ... } or null
 const publishedContent = ref(null)
 const versionList = ref([])
-const lastSavedVersionId = ref(null)
 
 let timer = null
 let pending = false
@@ -222,8 +221,6 @@ function applyPublicationState(data) {
   published.value = data.published ?? null
   publishedContent.value = data.publishedContent ?? null
   versionList.value = data.versionList ?? []
-  const newest = versionList.value.find(v => v.kind === 'save')
-  lastSavedVersionId.value = newest?.versionId ?? null
 }
 
 /** Re-read the document so the live line and the history reflect the server. */
@@ -249,8 +246,6 @@ async function save() {
       body: JSON.stringify({ content: text.value })
     })
     if (!res.ok) throw new Error(`${res.status} ${(await res.json().catch(() => ({}))).error || ''}`)
-    const data = await res.json().catch(() => ({}))
-    if (data.versionId) lastSavedVersionId.value = data.versionId
     say(`Saved ${clock()}`)
   } catch (e) {
     say(`NOT SAVED — ${e.message}. Your text is still here; check your connection and press Save.`, true)
