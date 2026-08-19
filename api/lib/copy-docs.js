@@ -21,11 +21,11 @@ export const COPY_DOCS = [
     sourceRef: 'ssi-learning-app @ 270edaf6'
   },
   {
-    id: 'player-voice',
-    title: 'The player’s own voice — what the app says while you learn',
-    blurb: 'The lines the player itself shows a learner mid-lesson: the phase prompts, the listening and pronunciation overlays, the end-of-session screen and the end-of-preview screen.',
-    seedPath: 'docs/copy-surfaces/player-voice.md',
-    sourceRef: 'ssi-learning-app @ dev (see the header of each section)'
+    id: 'learner-walks',
+    title: 'The little walks a learner can ask for',
+    blurb: 'The six guided walks in the Library — the words the app says while it points at things on the learner’s own screen. The other half of the How This Works copy: that one is the reading, this one is the pointing.',
+    seedPath: 'docs/copy-surfaces/learner-walks.md',
+    sourceRef: 'ssi-learning-app packages/player-vue/src/walkthrough/pack.json @ 281e8dea (branch a159-library-htw)'
   }
 ];
 
