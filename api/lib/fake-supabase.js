@@ -7,17 +7,24 @@
  * "how many version rows exist now?", and a mock that only records calls
  * answers neither. Tables in, tables out; assertions read the tables.
  *
- * Supports exactly what the config endpoints use: select/eq/order/limit/
- * single/maybeSingle, update(...).eq(...).select().single(), and
+ * Supports exactly what the endpoints under test use: select/eq/not/order/limit/
+ * single/maybeSingle, insert(row).select().single(),
+ * update(...).eq(...).select().single(), and
  * upsert(row, { onConflict, ignoreDuplicates }). Anything else is deliberately
  * absent — a silently-ignored method is how a mock starts lying.
+ *
+ * `defaults` fills in the columns Postgres would fill in itself on insert — a
+ * bigserial id, a now() timestamp — as a per-table function of the rows already
+ * there. Without it an insert test asserts against a row the real database
+ * would never have produced.
  */
 
 const NO_ROWS = { code: 'PGRST116', message: 'JSON object requested, multiple (or no) rows returned' }
 
-export function createFakeSupabase(tables = {}) {
+export function createFakeSupabase(tables = {}, { defaults = {} } = {}) {
   const db = {
     tables: Object.fromEntries(Object.entries(tables).map(([t, rows]) => [t, rows.map(r => ({ ...r }))])),
+    defaults,
     // Force an error from a table's next operation: { [table]: { message } }
     errors: {},
     calls: [],
@@ -35,14 +42,24 @@ class Query {
     this.table = table
     this.op = 'select'
     this.filters = []
+    this.negated = []
   }
 
   select() { return this }
   eq(column, value) { this.filters.push([column, value]); return this }
+  /** Only the form the endpoints use: .not(col, 'is', null) — "col is not null". */
+  not(column, op, value) {
+    if (op !== 'is' || value !== null) {
+      throw new Error(`fake-supabase: not(${column}, ${op}, ${value}) is not implemented — add it rather than working round it`)
+    }
+    this.negated.push(row => row[column] !== null && row[column] !== undefined)
+    return this
+  }
   order(column, opts = {}) { this._order = { column, ascending: opts.ascending !== false }; return this }
   limit(n) { this._limit = n; return this }
   single() { this._row = 'single'; return this }
   maybeSingle() { this._row = 'maybe'; return this }
+  insert(values) { this.op = 'insert'; this._values = values; return this }
   update(values) { this.op = 'update'; this._values = values; return this }
   upsert(values, opts = {}) { this.op = 'upsert'; this._values = values; this._opts = opts; return this }
 
@@ -51,7 +68,7 @@ class Query {
   }
 
   _matches(row) {
-    return this.filters.every(([c, v]) => row[c] === v)
+    return this.filters.every(([c, v]) => row[c] === v) && this.negated.every(f => f(row))
   }
 
   _run() {
@@ -62,6 +79,12 @@ class Query {
     if (forced) return { data: null, error: forced }
 
     const rows = db.tables[table]
+
+    if (this.op === 'insert') {
+      const inserted = { ...(db.defaults[table] ? db.defaults[table](rows) : {}), ...this._values }
+      rows.push(inserted)
+      return this._shape([inserted])
+    }
 
     if (this.op === 'update') {
       const hit = rows.filter(r => this._matches(r))
