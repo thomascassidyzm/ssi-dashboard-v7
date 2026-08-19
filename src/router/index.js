@@ -338,6 +338,15 @@ const routes = [
     props: true,
     meta: { title: 'Course Progress' }
   },
+  // The learner-facing "How This Works" copy, editable in place. Behind the
+  // normal OTP gate — any Popty user can edit it; every save is versioned in
+  // htw_copy_versions and diffable against the frozen original.
+  {
+    path: '/htw-copy',
+    name: 'HtwCopyEditor',
+    component: () => import('../views/HtwCopyEditor.vue'),
+    meta: { title: 'How This Works copy' }
+  },
   {
     path: '/edit/introductions',
     name: 'IntroductionsEditor',
