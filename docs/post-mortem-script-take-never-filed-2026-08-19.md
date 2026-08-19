@@ -232,7 +232,10 @@ the take context as JSON) to `course_audio` on the S3 key.
 *before* the fix landed at 17:07 UTC, none had been filed at the time the fix was written. All 19
 pod takes from the same afternoon were filed.
 
-**But the population is much wider than one day**:
+**But the population is much wider than one day.** Snapshot taken 2026-08-19 evening — a backfill
+was running as this was written, so the "filed" column moves upward while you read it (it went from
+17 to 22 during the writing of this document). The *unfiled* totals are therefore a floor on what
+was lost, not a running score:
 
 | Mode | Takes | Filed | Unfiled | First | Last |
 |---|---|---|---|---|---|
