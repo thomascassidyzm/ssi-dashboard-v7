@@ -759,13 +759,16 @@ Format:
      Action: Regenerate presentation audio with correct text; null presentation_audio_id first.
      ⚠️ Coverage below 99% = FAILED run, not a clean course. Never report [18] without it.
 
-[19] KNOWN-SIDE DISTINCTION COVERAGE: {proposals} proposals ({distinction_id})
-     coverage: {classified}/{carrying} rows carrying a marked form ({pct}%)
-     attested {n} · counterpart-different-answer {n} · unanchored {n} · rejected {n} (by rule)
-     {first 12 proposals as HAS / MISSING / ANSWER}
-     Action: PROPOSE ONLY — hand to a proofreader/build agent to author the counterparts.
-     Never applied automatically, and never moved into the course builder.
+[19] DISTINCTION COVERAGE: {axes and their DIRECTION}
+     [A1] known richer, {n} proposals passing the reach test, {n} NOT drill candidates
+          coverage {classified}/{carrying}, attested {n} (calibration), rejected {n} by rule
+     [A2] {n} reachable collapses · {n} not-drill-pairs ({n} in sentences) · {n} flagged
+     [B1] target richer: {n} under-determined, other form taught {n} times, {n} prompts cued
+     [B2] {n} prompts taught with two related answers
+     Action: A → author the counterpart and drill it. B → disambiguate, split, or confirm
+     the ambiguity is deliberate. NEVER give one direction's remedy to the other's finding.
      ⚠️ Zero attested on a course known to have some = broken run, not a clean course.
+     ⚠️ Direction B findings are candidates, never asserted defects.
 
 LANGUAGE SPOT-CHECK ({seed_count} seeds): {PASS/FAIL}
   {any flagged seeds}
@@ -1202,41 +1205,81 @@ Not every mismatch is a defect worth fixing. The estate-wide run classifies into
 - Supabase silently truncates `IN`-clause results past ~500 IDs. Batch in chunks of 200 to be safe.
 - JS regex `\b` only matches ASCII word boundaries — `\bvocê\b`, `\bcansé\b`, `\bgrüß\b` etc. silently never match. For Unicode-letter words, use `(?<!\p{L})word(?!\p{L})` with the `/u` flag.
 
-#### Check 19: Known-side distinction coverage (one answer, one prompt taught)
+#### Check 19: Distinction coverage — one side marks what the other does not
 
-Where the KNOWN language distinguishes something the TARGET language does not, one target answer is reachable from more than one known prompt. If the course teaches only one of them, the learner has no way of knowing the answer serves the other too — they reasonably assume it belongs to the form they saw.
+A course pairs a KNOWN language with a TARGET language. Wherever one side grammatically marks a distinction the other does not, the pair has a problem — but **which** problem depends on which side is richer, and **the two have opposite remedies**.
 
-Hindi gender against ungendered English is the first configured instance. Shuchita, the eng_for_hin proofreader, put it plainly (2026-08-19):
+Shuchita, the eng_for_hin proofreader, named the first case (2026-08-19):
 
 > "Hindi genders things that you dont in English. We want to make sure that the Hindi speakers understand the lack of gendering in these contexts — so we should prompt for the multiple options (both genders for example) with the same English phrase as the answer. Drilling that will help them understand the phrase they learnt is acceptable for both genders instead of just the one originally introduced."
 
-**The axis is not gender.** It is *same target answer, multiple known-side prompts*. Formality tiers, number, inclusive/exclusive "we" and case distinctions are the same shape in other languages. Adding one is an entry in the table, not a change to the checker.
+**DIRECTION A — known richer.** Several known-side prompts collapse onto one target answer. The learner meets one prompt, learns the answer, and has no way to know it also answers the others. *Remedy: teach the collapse — same answer, several prompts, drilled.*
 
-**This is not ZUT, it is ZUT's mirror.** ZUT forbids one known prompt mapping to two target forms. This finds one target form reachable from two known prompts with only one taught. A healthy course can have both properties.
+**DIRECTION B — target richer.** The learner must PRODUCE a distinction their own language does not make, with nothing in the prompt telling them which. *Remedy is the opposite: this is not a lesson, it is a potentially unanswerable card. Disambiguate the prompt, split the card, or confirm the ambiguity is deliberate.*
+
+⚠️ **A check that knew only Direction A would report every Direction B case as healthy** — worse than not having the check. Both are detected and labelled, and the output never gives one direction's remedy to the other's finding.
+
+⚠️ **Direction B findings are never asserted as defects.** Deliberate ambiguity is sometimes a teaching tool on this estate. They are candidates for a human.
+
+**Neither slot is English.** The check names no language and no axis; both are configuration.
 
 ```bash
-node tools/check-known-distinction-coverage.cjs <course_code>          # human-readable
-node tools/check-known-distinction-coverage.cjs <course_code> --json    # machine-readable
-node tools/check-known-distinction-coverage.cjs <course_code> --all-samples
+node tools/check-distinction-coverage.cjs <course_code>            # human-readable
+node tools/check-distinction-coverage.cjs <course_code> --json      # machine-readable
+node tools/check-distinction-coverage.cjs <course_code> --all-samples
+node tools/check-distinction-coverage.cjs --estate                  # which pairs fire, and how
 ```
 
-Courses with no configured distinction for their known/target pair print SKIPPED and exit 0. Only `hin`→`eng` is configured today; the table lives in `tools/known-side/known-distinctions.cjs`, its calibration cases in `known-distinctions.test.cjs` (`node tools/known-side/known-distinctions.test.cjs`).
+Config: `tools/distinctions/axes.cjs` (73 languages across the estate's 143 real courses, four axes, with a deliberate `partial` and `unknown` state — see below). Tests: `node tools/distinctions/axes.test.cjs` and `node tools/distinctions/reach-test.test.cjs`.
 
-**It PROPOSES; it never applies.** Nothing is written to course content — not by this check and not by anything downstream of it. That ordering is Kai's ruling of 2026-08-19: *"We should test it out properly as fixes before thinking about changing the actual course generation."* A rule at generation time acts on everything silently before anyone can look at it; a rule at fix time produces candidates a human can inspect. **Do not move this into the course builder.**
+##### THE GATE — every Direction A candidate must pass the reach test
 
-**Read the buckets, not the count.** Every row carrying a marked form lands in exactly one bucket and the totals are printed:
-- **PROPOSALS** — the untaught counterpart, deduped by prompt+answer, with the earliest seed that needs it.
-- **attested** — both sides already taught with the same answer. This is the calibration evidence: a run reporting zero attested on a course that demonstrably has some is a broken run, not a clean course.
-- **counterpart-with-different-answer** — the other form exists but is taught a *different* English answer. Usually a genuine distinction (`वह चाहता है`/`वह चाहती है` → he/she wants); occasionally a translation inconsistency worth a look.
-- **unanchored** — the phrase carries a marked form but nothing shows whose gender it is (subjectless build fragments like `चाहता था कि`). Reported, never proposed.
-- **rejected/<rule>** — disqualified, each by a named rule with its reasoning in `--json`. A raw hit count is not a finding.
+Kai's ruling, 2026-08-19, and the most important part of this check:
 
-**Known under-reports (deliberate — precision was bought with recall):**
-- A speaker-gendered form under a third-person subject: `वह मुझे अकेला नहीं छोड़ना चाहता था` — `अकेला` is the *speaker's* gender and English marks none of it, but the row is rejected because the answer says "he". Real, and missed.
-- `हम` groups (`हम चाहते` → `हम चाहती`) — the honorific table is keyed to the addressee.
-- Feminine→masculine proposals require the form to be locked to मैं. `-ती` is ambiguous between singular `-ता` and honorific `-ते`, and a guessed prompt is worse than a missed one.
+> "Just because the same word can be used in both ways, does not mean the learner will find the process painless."
 
-Report: bucket totals plus the first ~12 proposals. Action: hand the proposals to a proofreader or a build agent to author the counterpart phrases — this check does not create them, and creating them changes phrase counts, so it belongs before Step 6, not after.
+The question is **not** "is the target form genuinely the same?" — that is a fact about the language and it is not sufficient. The question is **will the learner reach for the thing they already know?**
+
+- **WORKS** — taught "she speaks" = *se puhuu*; later asked "he speaks", the learner thinks *"I only know how to say she speaks… I'll just say that"*, and it is the same. Surprise, reward, lesson learned.
+- **FAILS** — taught "I am learning" = *dw i'n dysgu*; later asked "I am teaching", the same Welsh word, the learner does **not** think "the closest thing I know is learning". They think *"I don't know that one, aaa!"* A wall, not a lesson.
+
+What separates them: in the gender case the two prompts are obviously neighbours **from the learner's side** — same sentence, one word different, relationship visible without being told. In learn/teach the connection exists only in the target language, which is exactly what the learner cannot see yet. Minimal pairs pass; accidental collisions do not; the middle ground is flagged rather than guessed.
+
+Every candidate carries an explicit reach verdict with its reasoning, and failures are reported **separately** as *"same target form, but not a drill candidate"* — never mixed in with the good ones. `tools/distinctions/reach-test.cjs` holds the gate and both of Kai's examples are pinned as tests.
+
+##### The four detectors
+
+| | direction | needs config | question |
+|---|---|---|---|
+| **A1** | A, generative | morphology on the known side | the counterpart prompt is missing — propose it |
+| **A2** | A, observational | **none — runs on every pair** | the course already reaches one answer from >1 prompt; is that a drill or a wall? |
+| **B1** | B, generative | morphology on the target side | this answer is marked, the prompt gives no cue, and the other form is never taught |
+| **B2** | B, observational | **none** | one prompt taught with two answers that are forms of one word |
+
+**B1 is the one that matters most, and B2 alone would miss it.** A collision detector can only see a distinction the course contradicts itself about. On `spa_for_eng` a hand pass found 690 rows putting an English first-person subject against a Spanish gender-marked adjective, with the feminine first-person form appearing **zero** times in 668 seeds — no collision, because the course is perfectly self-consistent in being masculine-only, and a female learner is drilled hundreds of times on a self-description wrong for her. `hin_for_eng` is the same shape and is measured: 912 under-determined rows, other form taught 0 times.
+
+##### Read the buckets, not the count
+
+Every row carrying a marked form lands in exactly one bucket and the totals print with a `coverage: classified/carrying` line. Nothing is silently dropped.
+
+- **attested** (A1) — both sides already taught with the same answer. The calibration signal: a run reporting zero attested on a course that demonstrably has some is a broken run, not a clean course.
+- **not a drill candidate** — failed the gate. Needs teaching properly, not drilling.
+- **rejected/<rule>** — each by a named rule whose reasoning is in `--json`.
+- **unanchored** — carries a marked form but nothing shows whose gender it is. Reported, never proposed.
+
+##### Axis states, and what does not fire
+
+`full` (morphology available) · `declared` (marked, no morphology) · **`partial`** (register-bound, optional or moribund — Japanese gender, Basque *hika*, Mandarin 您) · **`unknown`** (nobody has checked — Nepali gender, Hakka clusivity, Lombard/Romagnol/Venetian T-V). Only `full` and `declared` fire. `partial` and `unknown` are a deliberate third and fourth state: folding them into yes/no makes the check either too loud or blind, and a wrong entry silently turns a whole course's check on or off.
+
+**you-number is OFF estate-wide by default.** English's one "you" covers both numbers, so a *tú/vosotros* split genuinely collapses — but it is an accepted whole-estate feature, and ~79 of the 283 asymmetric (course, axis) hits are this axis alone. `directionsFor(k, t, { includeDisabled: true })` shows them.
+
+##### Known limits, stated rather than hidden
+
+- The gate works on surface form and has no semantic knowledge, so a near-synonym pair in the known language ("speak"/"talk") is called a wall when a learner might well connect them. It errs safe: withholding a proposal, not making a bad one.
+- Its relatedness measure is affix-based. A shared *ending* is weak evidence (Spanish *sostener*/*mantener* share an inflection, not a word) and is flagged rather than asserted. Templatic morphology (Arabic, Hebrew) and unspaced scripts (Japanese, Chinese, Thai) return `flag`, never a confident verdict they have not earned.
+- B1's "never taught" string is a mechanical swap and can over-swap non-participant agreement elsewhere in the same sentence. The finding is sound; treat the rendered counterpart as an illustration, not authored text.
+
+Report: bucket totals per detector plus the first ~10 of each. Action: hand proposals to a proofreader or build agent. **This check does not create phrases, and it must not be moved into the course builder** — Kai's ruling: *"We should test it out properly as fixes before thinking about changing the actual course generation."*
 
 ## Step 6: Post-scan pipeline — backfill, final pass, gender prep
 

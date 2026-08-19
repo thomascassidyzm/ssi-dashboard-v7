@@ -9,18 +9,49 @@
  *   node tools/known-side/known-distinctions.test.cjs
  */
 const assert = require('assert');
-const { distinctionsFor, swapSide, anchorsIn } = require('./known-distinctions.cjs');
+const {
+  directionsFor, swapSide, anchorsIn, cueFor,
+} = require('./axes.cjs');
 
-const [hin] = distinctionsFor('hin', 'eng');
-assert.ok(hin, 'hin→eng distinction must be configured');
-assert.strictEqual(distinctionsFor('hin', 'spa').length, 0, 'gendered target must be skipped');
-assert.strictEqual(distinctionsFor('eng', 'hin').length, 0, 'reverse course must be skipped');
+// DIRECTION, not language. The same axis is a different problem each way round.
+const [dirA] = directionsFor('hin', 'eng');
+assert.strictEqual(dirA.direction, 'A', 'Hindi known / English target: known is richer');
+assert.strictEqual(dirA.generative, true, 'and we have the morphology to propose from');
+const hin = dirA.morphology;
+assert.ok(hin, 'hin gender morphology must be configured');
+
+const [dirB] = directionsFor('eng', 'hin');
+assert.strictEqual(dirB.direction, 'B', 'the same pair reversed is the OPPOSITE problem');
+assert.strictEqual(dirB.richerSide, 'target');
+
+// An axis BOTH sides mark is not a finding: the learner carries it across.
+assert.strictEqual(
+  directionsFor('spa', 'spa').length, 0,
+  'no asymmetry means nothing to report',
+);
+// English known / Spanish target is Direction B on two axes at once.
+const engSpa = directionsFor('eng', 'spa');
+assert.deepStrictEqual(engSpa.map((d) => d.axis).sort(), ['formality', 'gender']);
+assert.ok(engSpa.every((d) => d.direction === 'B'));
+// you-number is a real asymmetry and deliberately OFF: English's one "you" covers both
+// numbers estate-wide, and firing on it would drown every other signal.
+assert.ok(directionsFor('eng', 'spa', { includeDisabled: true }).some((d) => d.axis === 'number'));
+
+// 'partial' and 'unknown' are not claims strong enough to fire on.
+// Nepali gender is flagged unknown — nobody has checked whether 1sg feminine agreement
+// is obligatory in the register nep_for_eng teaches.
+assert.ok(!directionsFor('eng', 'nep').some((d) => d.axis === 'gender'));
+// Japanese gender is register, not agreement, so it is 'partial' and does not fire.
+assert.ok(!directionsFor('jpn', 'eng').some((d) => d.axis === 'gender'));
+// Hebrew marks gender on every present-tense verb — the densest Direction B on the estate.
+assert.deepStrictEqual(directionsFor('eng', 'heb').map((d) => d.axis), ['gender']);
 
 const toFem = (t) => swapSide(t, hin, 'masculine').text;
+const engGenderCue = cueFor('eng', 'gender');
 const rejectIdFrom = (knownText, targetText, side) => {
   const { swapped } = swapSide(knownText, hin, side);
   const r = hin.rejects.find((rule) => rule.test({
-    knownText, targetText, swapped, side,
+    knownText, targetText, otherText: targetText, otherCue: engGenderCue, swapped, side,
   }));
   return r ? r.id : null;
 };
@@ -47,12 +78,22 @@ assert.strictEqual(toFem('मैंने शुरू किया'), 'मै�
 assert.strictEqual(toFem('मेरा नाम'), 'मेरा नाम');
 
 // --- REJECTIONS: the swap fires, but the row is still not a candidate -------
+// NOT an English rule — the cue comes from whichever language is on the other side.
 assert.strictEqual(
-  rejectId('वह चाहता है', 'he wants'), 'target-marks-gender',
-  'when English says he/she the two prompts do NOT share one answer',
+  rejectId('वह चाहता है', 'he wants'), 'other-side-marks-gender',
+  'when the other side says he/she the two prompts do NOT share one answer',
 );
+assert.strictEqual(cueFor('eng', 'gender').test('I want'), false, 'no cue, nothing to waive');
+assert.strictEqual(cueFor('hin', 'gender'), null, 'Hindi inflects gender, it does not gloss it');
+// "my daughter" names the gender on the other side, so the cue rule catches it first —
+// both rules are true of this row and either verdict is a correct rejection.
 assert.strictEqual(
   rejectId('मेरी बेटी अंग्रेज़ी सीख रही है।', 'my daughter is learning English'),
+  'other-side-marks-gender',
+);
+// With no gender word in the other language, the third-person rule is what fires.
+assert.strictEqual(
+  rejectId('वे कीचड़ में खेल रहे हैं', "they're playing in the mud"),
   'third-person-subject',
 );
 assert.strictEqual(
@@ -87,4 +128,4 @@ assert.strictEqual(
 // lookahead fail on every full sentence in the course — a silent zero.
 assert.strictEqual(toFem('मैं एक बूढ़ी औरत जानता हूँ।'), 'मैं एक बूढ़ी औरत जानती हूँ।');
 
-console.log('known-distinctions: all calibration cases pass');
+console.log('axes: all calibration cases pass');
