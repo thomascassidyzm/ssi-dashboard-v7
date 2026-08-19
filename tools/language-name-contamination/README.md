@@ -16,6 +16,16 @@ Four independent detectors; a finding is only trusted when several agree.
 
 Run: `DOTENV_CONFIG_QUIET=true node tools/language-name-contamination/scan6.cjs` (needs `.env.psql`).
 
+## Adjudicated exceptions
+
+`adjudicated-exceptions.cjs` holds cases that are true positives for the raw pattern
+match but were researched and judged NOT a defect (e.g. cym_for_yor's 14 "èdè Welsh"
+rows — Yoruba has no nativised word for Welsh, so the English name is correct; see
+the entry for the full reasoning and doc link). `scan5.cjs` consults this list and
+still prints the row, tagged `TGT(ADJUDICATED)`/`KNOWN(ADJUDICATED)` with the reason
+and doc link — a finding is never silently dropped, only explicitly marked. Add new
+entries here rather than hard-coding a course/name check into the detection logic.
+
 ## Traps these scripts already work around
 - JS `\b` is ASCII-only and a `\p{L}` lookbehind **wrongly rejects CJK/Thai/Arabic**, which have no
   spaces — `说中文` fails a left-boundary test. `match.cjs` demands boundaries only for Latin matches.
