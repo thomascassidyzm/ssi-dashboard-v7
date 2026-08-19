@@ -683,7 +683,7 @@ USE:
         workflow: [
           '1. Decompose next_seed into 3-6 SMALL LEGOs (not whole sentences!)',
           '2. For EACH LEGO: generate BUILD (flexible) + USE (min 5) phrases',
-          '3. USE phrases must be complete sentences with scores 5-9',
+          '3. USE phrases: standalone-sayable, full sentences preferred but NOT required (Kai 2026-08-17), scores 5-9',
           '4. Phrases can only use THIS LEGO + vocabulary from PREVIOUS LEGOs',
           `5. Submit as markdown: POST /api/seed/complete?course=${courseCode} with Content-Type: text/markdown`,
           '6. Post summary to chat after each seed, check for human feedback',
@@ -691,7 +691,7 @@ USE:
         ],
         phrase_requirements: {
           build: 'Flexible: LEGO + 1-5 syllables, fragments OK, debut only',
-          use: 'Minimum 5: LEGO + 5-10 syllables, COMPLETE SENTENCES, scored 5-9, reused in consolidate/review'
+          use: 'Minimum 5: LEGO + 5-10 syllables, standalone-sayable (full sentences preferred, not required), scored 5-9, reused in consolidate/review'
         },
         scoring: {
           '9': 'Native-natural both languages, high pedagogical value',
@@ -805,7 +805,7 @@ USE:
           target: 'Target language LEGO text',
           components: [{ known: '...', target: '...' }],
           build: '3-4 fragments: LEGO + prior vocab. Fragments OK.',
-          use: '8-12 complete sentences a real person would say.'
+          use: '8-12 phrases a real person would actually say on their own. Full sentences preferred, not required.'
         }
       },
       submit: {

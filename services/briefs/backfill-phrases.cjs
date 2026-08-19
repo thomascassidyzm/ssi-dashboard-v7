@@ -132,7 +132,7 @@ curl -s "http://localhost:3471/api/vocab/${courseCode}?seed=$N"
 - The two sides are in DIFFERENT languages. They must NEVER be identical. If ${knownName} ≠ ${langName}, writing the same string on both sides is a hard error.
 
 For each under-threshold LEGO, write the needed USE phrases. Each phrase MUST:
-- \`target_text\`: contain the exact LEGO target text, be a natural complete sentence, grammatically correct in ${langName}
+- \`target_text\`: contain the exact LEGO target text, be a natural, standalone-sayable phrase (a full sentence is preferred but not required), grammatically correct in ${langName}
 - \`known_text\`: the ${knownName} translation of that target_text, grammatically correct in ${knownName}
 - Use only vocabulary introduced up to this seed
 - No capitalisation, no trailing periods

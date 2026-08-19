@@ -46,7 +46,13 @@ The general rule behind every methodology call: **decide by least action to conf
 
 Reconstructability (Principle 1) holds in **both** languages. The English prompt is **not** free natural English — it is a designed, controlled language. Every prompt must compose from: (a) the known-glosses of introduced LEGOs, (b) the **free class** — glue words, ‑s/‑ed/‑ing inflection, NPI ("any/ever") under negation, dummy auxiliaries (do/does/did), and (c) constructions **licensed by a debuted carrier** — do-support questions, "have you been V-ing", "want to have", etc.
 
-Slightly stilted but tileable English is **correct** — it is the known-side mirror of "ZUT over naturalness". A prompt using unlicensed English machinery is *unmappable*: it forks or stalls production exactly like a target-side ZUT violation. "How do you say it?" cannot appear before its do-support carrier is introduced; "would you like…" smuggles the want/'d-like convergence in early. Compose prompts from what the learner has been given, not from natural English.
+A prompt using unlicensed English machinery is *unmappable*: it forks or stalls production exactly like a target-side ZUT violation. "How do you say it?" cannot appear before its do-support carrier is introduced; "would you like…" smuggles the want/'d-like convergence in early. Compose prompts from what the learner has been given, not from natural English.
+
+**But "controlled" does not license "stilted."** (Kai's ruling, 2026-08-06, settling this exact contradiction: *"It shouldn't sound very weird, especially when English is the target language. It should be grammatically correct — sometimes we might need to pick something slightly suboptimal for ZUT reasons, but usually that's not necessary."*)
+
+- **Grammatical correctness is HARD.** An ungrammatical prompt is a defect, never a tiling trade-off.
+- **Naturalness is near-HARD.** It should not sound weird — and least of all when English is the *target* language, where the learner is being asked to produce it.
+- **A ZUT compromise is a rare, per-case, justified exception — not a standing licence.** "Usually that's not necessary": the controlled vocabulary almost always admits a phrasing that is both grammatical and natural. Find it. If you genuinely cannot, say which ZUT collision forced the choice, in that seed, rather than reaching for stiltedness as a general permission.
 
 ---
 
@@ -224,10 +230,10 @@ BUILD:
 **Purpose:** Natural production. Put the LEGO "out."
 
 - **Mix of lengths required** to create smooth progression:
-  - **MEDIUM (2-3 phrases):** LEGO + 4-6 syllables - shorter complete sentences
+  - **MEDIUM (2-3 phrases):** LEGO + 4-6 syllables - shorter standalone-sayable phrases
   - **LONG (2-3 phrases):** LEGO + 7-10 syllables - fuller, richer sentences
 - **Minimum 5 per LEGO** - these get reused in CONSOLIDATE, REVIEW, and listening exercises
-- **MUST be complete, natural sentences** - NEVER fragments
+- **Full, natural sentences are PREFERRED — but this is not a hard rule** (Kai, 2026-08-17). The test is *standalone-sayability*: something you could say on its own in a conversation. People say incomplete things, so a shorter USE phrase passes if it is (a) clear, (b) unambiguous for the remainder of the course — forward-checked, not just backward — and (c) longish. A non-full USE phrase needs **more careful checking, not prohibition**.
 - No capitalisation, no trailing periods (spoken phrases, not written sentences)
 - A USE phrase is something a learner would ACTUALLY SAY in conversation
 - Must contain the LEGO (exact character match)
@@ -235,14 +241,22 @@ BUILD:
 
 **Why the mix matters:** The ~7 practice phrases per LEGO should form a progression:
 1. **BUILD (short):** LEGO + 1-3 syllables - lock in the pattern (fragments OK)
-2. **USE medium:** LEGO + 4-6 syllables - bridge to production (complete sentences)
+2. **USE medium:** LEGO + 4-6 syllables - bridge to production (full sentences preferred)
 3. **USE long:** LEGO + 7-10 syllables - natural, fluent production
 
 Without MEDIUM phrases, learners jump from short fragments to long sentences - a cognitive cliff. The medium phrases are the bridge.
 
 These are the "eternal" phrases that come back throughout the course. Quality matters more than quantity.
 
-> ⚠️ **CRITICAL**: Even with limited vocabulary in early seeds, a USE phrase must be a complete sentence. If you can't form enough complete sentences with available vocabulary, **reduce the USE count** rather than submitting fragments. "想说。" or "Speak." is NEVER acceptable as a USE phrase.
+> ⚠️ **The bar in early seeds** (Kai's ruling, 2026-08-17 — full phrases are preferred, not required):
+> a USE phrase must be **standalone-sayable** — "something that you could say on its own in a
+> conversation." It does not have to be grammatically complete; people say incomplete things. It
+> does have to be clear, unambiguous for the rest of the course, and longish.
+>
+> So "想说。" or "Speak." still fails — not because it is a fragment, but because it is neither
+> longish nor something a learner would say on its own. Where vocabulary is genuinely thin, prefer
+> **reducing the USE count** over padding, and check any non-full USE phrase more carefully rather
+> than rejecting it on shape alone.
 
 ```
 USE examples for "after you finish" → "despues de que termines":
@@ -278,8 +292,8 @@ USE examples for "after you finish" → "despues de que termines":
 | Role | Syllables | Complete Sentence? | Reused? | Eternal? |
 |------|-----------|-------------------|---------|----------|
 | BUILD | LEGO + 1-3 | No (fragments OK) | No (debut only) | No |
-| USE (medium) | LEGO + 4-6 | Yes (required) | Yes (consolidate, review) | Yes |
-| USE (long) | LEGO + 7-10 | Yes (required) | Yes (consolidate, review) | Yes |
+| USE (medium) | LEGO + 4-6 | Preferred, not required — must be standalone-sayable | Yes (consolidate, review) | Yes |
+| USE (long) | LEGO + 7-10 | Preferred, not required — must be standalone-sayable | Yes (consolidate, review) | Yes |
 
 **Key principle:** Syllable count is the proxy for cognitive load. The progression SHORT → MEDIUM → LONG creates a smooth ramp, not a cliff.
 
@@ -701,7 +715,7 @@ Error: "Vocabulary violation: '내일' not yet introduced"
 Action: Remove phrase using '내일' or reorder LEGOs
 
 Error: "USE phrases need minimum 5, got 3"
-Action: Add more complete sentences
+Action: Add more USE phrases (standalone-sayable; full sentences preferred)
 
 Error: "BUILD phrase 'I want' missing LEGO target '하고 싶어요'"
 Action: Ensure phrase contains exact LEGO target text
@@ -892,7 +906,7 @@ A LEGO caps at **13** phrases total (`MAX_PHRASES_PER_LEGO`). These are *minimum
 2. **Overlapping LEGOs enable inference** - word alone, then word inside phrase
 3. **Grammar is inferred** - from contrast, never explained
 4. **BUILD plugs the new LEGO into prior vocabulary** - fragments OK, shows connections
-5. **USE produces naturally** - complete sentences, eternal-eligible
+5. **USE produces naturally** - standalone-sayable, full sentences preferred, eternal-eligible
 6. **Errors are information** - they tell you exactly what to fix
 7. **The database is truth** - query it to see your progress
 
@@ -906,15 +920,23 @@ A LEGO caps at **13** phrases total (`MAX_PHRASES_PER_LEGO`). These are *minimum
 
 This section captures hard-won insights from QA checkpoints and production issues. **Read before each build.**
 
-### 2026-01-26: USE Phrases Must Be Complete Sentences
+### 2026-01-26: USE Phrases Must Be Standalone-Sayable — SUPERSEDED 2026-08-17
 
-**Issue:** QA found USE phrases like "想说。" (2 chars) and "Speak." scoring 5 - these are fragments, not sentences.
+> **Superseded in part.** This lesson originally read "USE phrases must ALWAYS be complete
+> sentences". Kai ruled on 2026-08-17 that full phrases are **preferred but not a hard rule**. The
+> defect it describes is real; the rule it drew from it was too strong. Restated below.
 
-**Root Cause:** Early seed vocabulary constraints led to accepting incomplete phrases rather than reducing count.
+**Issue:** QA found USE phrases like "想说。" (2 chars) and "Speak." scoring 5 - too thin to be
+worth saying, let alone worth eternal rotation.
 
-**Fix:**
-- USE phrases must ALWAYS be complete sentences regardless of seed position
-- If vocabulary limits prevent complete sentences, reduce USE count
+**Root Cause:** Early seed vocabulary constraints led to accepting throwaway phrases rather than reducing count.
+
+**Fix (as ruled):**
+- A USE phrase must be **standalone-sayable** — "something that you could say on its own in a
+  conversation." Not necessarily grammatically complete; people say incomplete things.
+- It must also be clear, unambiguous for the remainder of the course (forward-checked), and longish.
+- If vocabulary limits prevent that, reduce the USE count — don't pad.
+- A non-full USE phrase gets **more careful checking, not automatic rejection**.
 - Minimum practical lengths: Chinese 4+ chars, other languages 3+ words
 - Score 4 or below = rewrite, don't submit
 
@@ -1031,7 +1053,7 @@ USE:
 
 **Format rules:**
 - BUILD: `- known → target` (no periods, no scores, fragments OK)
-- USE: `- known。 → target. [score]` (periods, scores 5-9, complete sentences)
+- USE: `- known。 → target. [score]` (periods, scores 5-9, standalone-sayable)
 - Components line for M-LEGOs only
 - Submit: `curl -s -X POST "http://localhost:3471/api/seed/complete?course={code}" -H "Content-Type: text/markdown" --data-binary @/tmp/seedN.md`
 

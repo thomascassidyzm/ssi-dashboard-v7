@@ -362,7 +362,7 @@ These seeds require substantial vocabulary foundation (estimated 200-250 items b
    - LEGO targets from current seed
 3. **Phrase Quality**:
    - BUILD phrases: Fragments OK, flexible count (1-5+ syllables)
-   - USE phrases: Must score 5-9, complete sentences, natural Italian
+   - USE phrases: Must score 5-9, standalone-sayable (full sentences preferred, not required — Kai, 2026-08-17), natural Italian
 4. **Semantic Correspondence**: Known and target phrases express same meaning (no additions/omissions)
 5. **Phrase Count**: Minimum 5 USE phrases per LEGO with scores
 

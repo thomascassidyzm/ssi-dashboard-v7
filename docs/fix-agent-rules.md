@@ -37,7 +37,8 @@ else will not.
 7. **Calibrate before counting.** A detector that hasn't found a known-present case proves nothing.
 8. **Never report a raw hit count.** Hand-check, split high-confidence from possible, state method.
 9. **No TTS generation without explicit per-batch approval.** Orphaned audio gets listed and
-   unlinked, never regenerated.
+   **flagged for regeneration** (queue an audio pass) — never deleted, never hand-unlinked, never
+   rendered by you.
 10. When blocked or unsure: **say so explicitly**. Skip freely with a reason. Never force a fix.
 
 ---
@@ -125,9 +126,12 @@ you happened to edit.
 - **The KNOWN side is a controlled language too.** The English (or other known-language) prompt is
   not free natural English. It composes from the known-glosses of introduced LEGOs, a small free
   class (glue words, -s/-ed/-ing, do/does/did, "any/ever" under negation), and constructions
-  licensed by a carrier that has already debuted. *Slightly stilted but tileable is correct.* A
-  prompt using unlicensed known-side machinery is unmappable — it forks or stalls production
-  exactly like a target-side error.
+  licensed by a carrier that has already debuted. A prompt using unlicensed known-side machinery is
+  unmappable — it forks or stalls production exactly like a target-side error.
+  **Controlled does not mean stilted** (Kai, 2026-08-06): grammatical correctness is HARD and
+  naturalness near-HARD on the known side, and a ZUT compromise is a rare per-case exception, not a
+  standing licence. Reach a prompt that both tiles *and* reads properly; "usually that's not
+  necessary" is his estimate of how often you truly have to trade.
 - **Phrases tile from WHOLE already-introduced chunks — never re-split into words.** If your
   rewording needs a conjugation, inversion or contraction that has not been introduced as a whole
   chunk, it is not available to you.
@@ -315,20 +319,27 @@ candidate at sentence level, look at its tile before you close it.
 - **Supabase silently truncates `IN`-clause results past ~500 IDs.** Batch in chunks of 200 or your
   sweep will under-report and look clean.
 
-## 6. Audio — never generate, always unlink
+## 6. Audio — never generate, never delete, never hand-unlink: FLAG
 
 - **NO TTS GENERATION without explicit per-batch approval.** Every clip costs real money. This is
   not a formality and it is not yours to waive.
 - **If a text fix orphans existing audio, do NOT regenerate.** List the affected clips with a count
-  as a **separate section** of your report and stop there.
-- **You must still unlink.** When you change a `known_text` or `target_text`, the linked audio row
-  now has the *wrong* text but the link still exists. The dashboard counts links, so it will show
-  **0 missing** while the export breaks on the text mismatch. Set the relevant `known_audio_id` /
-  `target1_audio_id` / `target2_audio_id` / `presentation_audio_id` to `null` so the row correctly
-  reads as missing and a later approved pass can fulfil it.
+  as a **separate section** of your report.
+- **Do not delete the clip. Do not hand-unlink it either. Flag it for regeneration.** (Kai,
+  reaffirmed 2026-08-19.) When you change a `known_text` or `target_text`, live DB triggers already
+  re-resolve `known_audio_id` / `target1_audio_id` / `target2_audio_id` /
+  `presentation_audio_id` — re-pointing at a clip that already speaks the new text where one
+  exists, nulling otherwise. Hand-nulling races them and manufactures a silent slot for no gain.
+  Re-read the row to see where the link landed; don't assert the id you wrote.
+- **A content pass ENDS by queueing an audio pass**, which is the flag:
+  `node tools/course-optimization/queue-audio-pass.cjs <course> --reason "<what changed>"`
+  (or `queueAudioPass` from `services/shared/audio-pass-queue.cjs`). Phase 8 `/generate` fulfils it
+  once an approved pass completes. Text edits that are never flagged accumulate silently as a
+  missing-audio backlog.
 - **Make-before-break, always.** Never delete a clip before its replacement has been generated *and
   verified alive and correct*. Deletion never precedes a verified replacement — not even "we'll
-  regenerate right after."
+  regenerate right after." The 2026-08-03 `fra_for_eng` purge deleted 31,310 rows first and left
+  ~2,000 slots silent for two days. Doctrine: `docs/architecture/AUDIO_PIPELINE_ARCHITECTURE.md` §6b.
 - **Punctuation changes are audio-affecting.** Adding `?` changes TTS intonation; a trailing `.`
   changes phrasing. Treat them as text changes with audio consequences, not as cosmetics.
 
@@ -419,8 +430,8 @@ Every source below is in this repo. Line references are to the state of the file
 
 | Source | What came from it |
 |---|---|
-| `.claude/commands/scan-course.md` (1,477 lines) | **Primary.** The defect catalogue (§8) from Checks 1–18; the ZUT check and its gender-pair exemption and the strip-then-rescan ordering (Check 10, Remediation Guide); the four ZUT resolution approaches and their post-fix checks (§4); chunk-level protection and Cat A/B/C classification, incl. "new sense of an already-taught word" (Checks 11–12); the readiness-gate rule that a fix log is not proof of fix, and the `spa_for_eng` llevar coverage-hole story (§2); the audio unlink procedure and why the dashboard shows 0 missing (§6); the `IN`-clause truncation, `\b`-on-Unicode and apostrophe-regex gotchas (§5); LEGO-reorder handling and "don't preserve phrases across a reorder" (§7); slash resolution by category (§8); presentation/text drift (Check 18). |
-| `ralph-methodology.md` (repo root) | The canonical ZUT definition and the production/reception asymmetry (L37–39, L480–500); "ZUT outranks naturalness"; the known side as a controlled language and "slightly stilted but tileable is correct" (L45–49); consolidate-or-differentiate and the per-phrase hold-out enforcement (L492); vocabulary constraints, no-forward-references and whole-chunk tiling (L505–524); the graduated phrase-count ramp incl. seed 1 LEGO 1 → 0/0, the first-LEGO rule (L876–883); `is_new=false` as "a scalpel, not a cull" (L57); the "know → 알다" worked resolution (L497–500). |
+| `.claude/commands/scan-course.md` (1,477 lines) | **Primary.** The defect catalogue (§8) from Checks 1–18; the ZUT check and its gender-pair exemption and the strip-then-rescan ordering (Check 10, Remediation Guide); the four ZUT resolution approaches and their post-fix checks (§4); chunk-level protection and Cat A/B/C classification, incl. "new sense of an already-taught word" (Checks 11–12); the readiness-gate rule that a fix log is not proof of fix, and the `spa_for_eng` llevar coverage-hole story (§2); the stale-audio procedure and why the dashboard shows 0 missing (§6 — the delete-then-unlink sequence that file used to prescribe was corrected to make-before-break on 2026-08-19); the `IN`-clause truncation, `\b`-on-Unicode and apostrophe-regex gotchas (§5); LEGO-reorder handling and "don't preserve phrases across a reorder" (§7); slash resolution by category (§8); presentation/text drift (Check 18). |
+| `ralph-methodology.md` (repo root) | The canonical ZUT definition and the production/reception asymmetry (L37–39, L480–500); "ZUT outranks naturalness" on the *target* side; the known side as a controlled language, where controlled does not license stilted — grammatical HARD, natural near-HARD, ZUT compromise a rare per-case exception (Kai, 2026-08-06; L45–55); consolidate-or-differentiate and the per-phrase hold-out enforcement (L492); vocabulary constraints, no-forward-references and whole-chunk tiling (L505–524); the graduated phrase-count ramp incl. seed 1 LEGO 1 → 0/0, the first-LEGO rule (L876–883); `is_new=false` as "a scalpel, not a cull" (L57); the "know → 알다" worked resolution (L497–500). |
 | `docs/course-optimization/eng-for-x-zut-adjudication.md` | The ZUT false-positive classes and the 80%-of-2,315 figure; default-to-false-positive calibration; consolidate/differentiate/`fp_wrong_data` taxonomy; "USE rendering is canonical"; statement→question convergence as designed; the 78 items deliberately NOT auto-fixed because they need human disambiguation; Tom's rule (2026-06-15) that language classification is an agent, never a regex, with the ~52% regex result; reversible per-row backups. |
 | `docs/deborahs-findings.md` | The defect taxonomy and which categories are mechanically detectable vs LLM-only vs manual; "**Absence of findings does NOT mean no issues**" for unreviewed languages (§5); `deu_for_eng` S18 R59 — a vocab fix that immediately created a fresh violation at R100, the concrete case behind §0; `spa_for_eng` S53 R147 — BUILD/USE phrases vanishing after a LEGO edit (§7); the cognate allowlist concept behind the identical-known/target check. |
 | `docs/course-optimization/eng-for-x-known-side-findings.md` | Defects arrive in **generation-bug families**, identical across independently-built courses — the evidence for ladder rung 4 (§2); "the fix is upstream, not 1,000 manual edits"; the 2026-06-16 gated-regeneration proof that five known-defective seeds passed every golden-path gate, behind "a passing gate is not a clean row" (§5); confirmation that known-side remediation means re-sourcing and re-glossing the known text — i.e. the known side is authored and editable (§1). |
@@ -467,18 +478,23 @@ Reported rather than papered over.
    phrases. The block follows Kai and scan-course. `phrase-fixer.md` appears to describe a narrower,
    older role (an Opus fixer working a queue of Haiku QA flags) rather than a general content-fix
    agent; it should probably be updated or scoped, but that is outside this job.
-4. **Two sources disagree about how natural the known side must be, and it bears directly on §1.**
-   `course-methodology-analysis.md` (L21): *"The learner KNOWS this language. It must be natural,
-   idiomatic, trustworthy… the known language must never sound 'AI weird.'"* — known-language
-   quality is placed **above** target-language quality. `ralph-methodology.md` (L49): *"Slightly
-   stilted but tileable English is **correct** — it is the known-side mirror of 'ZUT over
-   naturalness'."* A fix agent rewording a known prompt gets opposite steers: polish it until it
-   reads naturally, or accept stiltedness in exchange for tileability. The block follows
-   `ralph-methodology` because it is the canonical methodology doc and its position is derived from
-   the ZUT law that everything else here rests on — but the tension is real and unresolved.
-   **Practical reading: tileability is the hard constraint and naturalness is the tie-breaker —
-   among prompts that tile, pick the most natural.** That reconciliation is the author's, not
-   either source's, and Kai may want to rule on it.
+4. **How natural must the known side be — RULED, 2026-08-06. No longer open.**
+   Two sources used to disagree: `course-methodology-analysis.md` (L21) placed known-language
+   quality above target-language quality, while `ralph-methodology.md` (L49) said *"slightly
+   stilted but tileable English is correct."* This document previously offered a "practical
+   reading" of its own and flagged it as needing Kai's ruling. **Kai has since ruled, the other
+   way**, and `ralph-methodology.md:49` has been corrected to match:
+
+   > *"It shouldn't sound very weird, especially when English is the target language. It should be
+   > grammatically correct — sometimes we might need to pick something slightly suboptimal for ZUT
+   > reasons, but usually that's not necessary."* — Kai, 2026-08-06
+
+   **The rule for a fix agent: grammatical correctness is HARD; naturalness is near-HARD; a ZUT
+   compromise is a rare, per-case, justified exception and NOT a standing licence.** Tileability
+   does not buy you stiltedness. Among prompts that tile, you are not picking "the most natural as
+   a tie-breaker" — you are required to reach a grammatical, non-weird prompt, and "usually that's
+   not necessary" means the controlled vocabulary almost always admits one. If you genuinely
+   cannot, name the ZUT collision that forced the choice in that seed.
 5. **The acronym is expanded two different ways.** "Zero **Uncertainty Test**" in
    `ralph-methodology.md`, `calibrate.md` and `scan-course.md`; "Zero **Unprompted Thinking**" in
    `course-methodology-analysis.md` (L25). Same concept, same direction, different name. Cosmetic,

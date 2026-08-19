@@ -63,7 +63,20 @@ PROVEN, with one honest boundary. The cue-bundling M-lego mechanism survived clo
 - **Verification fold-ins:** 651/653/655 CLEARED; 646 PARTIAL — extend the patch to build rows pos3/4/5 ('you're doing (formal)', 'you're doing something (formal)' or ', sir', 'what you're doing (formal)'). Parallel sweep owed: 651 build pos1/2 bare-but-unique (consistency, not a trap); seed 652 bare USE lines; bonus leak 642|2 'you feel' = se siente (bare, and a THIRD collision with te sientes@40 / te sientas@542).
 - **Romance transfer:** Identical mechanism: fra vous ('you (formal)' since English can't show it), ita Lei, por o senhor/a senhora (rides vocatively like señor). Both marker styles translate directly. Transfer-ready, with the full-ladder sweep encoded as a build-tool check rather than a per-patch discipline.
 
-### F8 LEXICAL TWINS (complement-bound pairs) — **NEEDS_WORK**
+### F8 LEXICAL TWINS (complement-bound pairs) — **NEEDS_WORK; the parenthetical mechanism is RULED OUT**
+
+> **Overruled, 2026-08-17.** F8's proposed mechanism put a parenthetical into learner-facing
+> `known_text` (`I know (people/places)` = conozco) as house style. Kai: **no parenthetical tags in
+> courses, ever** — *"they're a pet peeve of mine"* — and existing ones get removed. They are also
+> spoken aloud, so the bracket is read to the learner. The pilot proposed below must therefore NOT
+> test a parenthetical.
+>
+> **The replacement is a narrower plain gloss that survives being spoken**: `to know a person`,
+> not `to know (a person)`; `I know people` / `I know a place` rather than `I know (people/places)`.
+> The doc's own stated fallback — phrase-level discipline, only prompting `conozco` in phrases
+> whose English contains the person/place object explicitly — is compatible with the ruling and is
+> now the primary path, not the fallback.
+
 
 - **Trigger (the felt English cue):** One English word, two target lemmas — the COMPLEMENT/person is the cue: know+person/place (conozco) vs know+fact (sé); are+doing/location (estamos) vs are+identity (somos); feel bound to its matrix person (sentirme/sentirse)
 - **Mechanism:** Enrich the marked twin's gloss with the complement it always takes ('I know (people/places)' = conozco), leaving the other twin sole owner of the bare gloss; discipline the phrase inventory so the parenthetical is rehearsed into a felt collocation. UNTESTED: no F8 patch was generated or adversarially verified in this run — this is the only family with zero closed-loop evidence, and it carries a specific unproven assumption (that a parenthetical complement reads as a felt cue rather than an annotation, which is a weaker cue type than F1-F5's in-chunk English words or F7's established house marker).

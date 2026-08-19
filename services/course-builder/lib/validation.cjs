@@ -23,7 +23,8 @@ const METHODOLOGY_HINTS = {
    - Quantity depends on LEGO complexity
 
    USE: minimum 5 per LEGO (LEGO + 5-10 syllables)
-   - Complete sentences ONLY
+   - Full sentences PREFERRED, not required (Kai, 2026-08-17): the test is
+     standalone-sayable — clear, unambiguous course-wide, and longish
    - Reused in consolidate/review phases
    - ALL are eternal-eligible (go into spaced repetition)
 
@@ -39,7 +40,10 @@ const METHODOLOGY_HINTS = {
 
    USE phrases (minimum 5):
    - Natural production, put the LEGO "out"
-   - MUST be complete sentences (subject + verb)
+   - Full sentences PREFERRED but NOT a hard rule (Kai, 2026-08-17). The test is
+     "something you could say on its own in a conversation" — people say incomplete
+     things. A shorter USE phrase passes if it is clear, unambiguous for the rest of
+     the course (forward-checked), and longish. Check it harder; don't reject on shape.
    - LEGO + 5-10 syllables
    - ALL eternal-eligible (go into spaced repetition)
    - Reused in consolidate/review phases

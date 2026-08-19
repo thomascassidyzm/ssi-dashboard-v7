@@ -90,7 +90,7 @@ the known-language prompt.
 
 The known-language prompts are not free English. They compose only from the known-glosses of
 introduced LEGOs, a small free class (glue, inflection, NPI-under-negation, do-support), and
-constructions licensed by a debuted carrier. Slightly stilted but tileable prompts are correct.
+constructions licensed by a debuted carrier. Tileability does not license stiltedness: grammatical correctness is HARD and naturalness near-HARD on the known side, and a ZUT compromise is a rare per-case exception rather than a standing licence (Kai, 2026-08-06).
 Per-pair rules live in the pair-contract; the free class is known-language specific. Vocabulary
 is always **known / target / seed** — never "source".
 

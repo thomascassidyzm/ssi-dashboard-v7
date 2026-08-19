@@ -38,7 +38,7 @@ function generateGoldenExamplesSection(goldenDecompositions) {
 
 **BUILD phrases** = new LEGO + previously introduced LEGOs. Shows how the new piece "plugs in" to what the learner already knows. Fragments OK. NOT the LEGO by itself, NOT component build-up.
 
-**USE phrases** = complete sentences for eternal spaced repetition. Must be natural things a learner would say.
+**USE phrases** = the phrases that go into eternal spaced repetition. Must be natural things a learner would say on their own. Full sentences preferred but NOT required (Kai, 2026-08-17) — the test is standalone-sayable.
 
 **LEGO form is FIXED** — never conjugate or inflect a LEGO. Choose phrases where the exact LEGO form works naturally.
 
@@ -383,8 +383,9 @@ Use your linguistic expertise to:
 - Used ONCE at debut, never revisited
 - Flexible count (more when vocab is rich, fewer when sparse)
 
-**USE phrases** — complete sentences the learner will practise for weeks:
-- Must be **complete, natural sentences** a learner would actually say
+**USE phrases** — the phrases the learner will practise for weeks:
+- Must be **standalone-sayable** — a natural thing a learner would actually say on its own.
+  Full sentences are PREFERRED but NOT required (Kai, 2026-08-17): the test is standalone-sayable — something you could say on its own in a conversation, clear, unambiguous for the rest of the course, and longish.
 - Go into eternal spaced repetition
 - Aim for ~12 per LEGO (fewer for early seeds when vocab is sparse)
 - Start with shorter, simpler phrases and build up to longer, more complex ones

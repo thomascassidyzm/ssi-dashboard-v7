@@ -52,7 +52,19 @@ Run these checks in a single node script. Print results as you go.
 
 Pattern: `/\([^)]+\)/` in known_text
 
-These are grammar annotations like `(sentence end)`, `(2sg pronoun)`, `(past participle)` that the builder agent added. They should not be in learner-facing text.
+**NO PARENTHETICAL TAGS IN COURSES, EVER** (Kai, 2026-08-17: *"they're a pet peeve of mine"* —
+and existing ones get removed). This is a flat ban, not a preference: grammar annotations like
+`(sentence end)`, `(2sg pronoun)`, `(past participle)`, and register/plurality notes like
+`(formal)` are all out. Whatever the tag was carrying is carried **inside the sentence, or not at
+all**. They also get **spoken aloud** — bracketed English in narration is read to the learner
+exactly as written.
+
+When one word genuinely needs disambiguating, the answer is a **narrower plain gloss that survives
+being spoken**: `to know a person`, never `to know (a person)`.
+
+*Scope note:* this check is about parenthetical tags in course text. The separate objection to
+English brackets **in narration audio** is parked by Kai (*"they can't be pulled just like that,
+so let's look at it later"*) — do not sweep that up under this check.
 
 **Search independently** — do NOT combine with the slash check. A LEGO can have parentheticals only, slashes only, or both.
 
@@ -797,6 +809,11 @@ After the scan, the user will decide what to fix. Here's how to handle each issu
 
 Safe to bulk-strip with regex: `.replace(/\s*\([^)]*\)\s*/g, ' ').trim()`
 
+If stripping the tag leaves a gloss that is now ambiguous, **do not put the tag back**. Replace it
+with a narrower plain gloss that reads as ordinary spoken English (`to know a person`, not
+`to know (a person)`). And treat the need for a tag as a *diagnosis*: the LEGO may want more
+context, or to be merged with a sister LEGO.
+
 After stripping, check for artifacts — sometimes the parenthetical was between a slash and trailing words, leaving things like `"before /before that"`. Do a follow-up check for ` /` or `/ ` patterns.
 
 **Important:** After stripping, immediately re-run the ZUT conflict check. Two LEGOs with `"it was (imperfect)"` and `"it was (preterite)"` both become `"it was"` after stripping — that's a new ZUT conflict.
@@ -1437,38 +1454,50 @@ scan → fix → 6a-6e pipeline → scan again → 6a-6e again if needed
                                  Deborah
 ```
 
-## IMPORTANT: Clean Up Stale Audio After Text Changes
+## IMPORTANT: Flag Stale Audio After Text Changes — MAKE BEFORE BREAK
 
-When ANY fix changes the `known_text` or `target_text` of a seed, LEGO, or phrase, the old audio record becomes stale — it has the wrong text but is still linked via `audio_id`. The dashboard will show 0 missing (because the link exists), but the legacy export will fail because the text doesn't match.
+When ANY fix changes the `known_text` or `target_text` of a seed, LEGO, or phrase, the old audio
+record becomes stale — it has the wrong text. It must be **replaced**, and replacement is
+generate-verify-swap, never delete-then-hope.
 
-**After changing text, ALWAYS:**
+> **HARD RULE (Kai, reaffirmed 2026-08-19; Tom, 2026-08-05).** You do not delete an audio row.
+> You do not merely unlink one either. You flag it for regeneration. Deletion never precedes a
+> verified replacement — *not even "we'll regenerate right after."* On 2026-08-03 a bulk delete of
+> 31,310 `fra_for_eng` rows ran before the replacements existed and left ~2,000 course slots
+> **silent for two days**. Doctrine and the two tools that implement it correctly:
+> `docs/architecture/AUDIO_PIPELINE_ARCHITECTURE.md` §6b.
 
-1. **Delete the old `course_audio` record** (it has the wrong text):
-   ```javascript
-   await supabase.from('course_audio').delete().eq('id', oldAudioId);
+**After changing text, do this — and nothing else:**
+
+1. **Change the text — and stop there.** Do not hand-null any `*_audio_id`. Live DB triggers
+   already re-resolve those columns when the text changes (re-pointing at a clip that already
+   speaks the new text where one exists, nulling otherwise); hand-nulling races them, and an
+   unlinked-but-undeleted clip is exactly the half-state that reads as "0 missing" to one tool and
+   "silent" to a learner. Verify the post-state by re-reading the row, not by asserting the id you
+   wrote.
+
+2. **Queue an audio pass** — this is how a content pass *ends*, and it is the only step that
+   causes new audio to exist:
+   ```bash
+   node tools/course-optimization/queue-audio-pass.cjs <course> --reason "<what changed and why>"
    ```
+   (or `queueAudioPass` from `services/shared/audio-pass-queue.cjs`). Phase 8 `/generate` fulfils
+   the request once an approved pass completes. **Never run TTS yourself** — it costs money and
+   needs explicit approval.
 
-2. **Unlink from the parent** (set `audio_id` back to null):
-   ```javascript
-   // For seeds:
-   await supabase.from('course_seeds')
-     .update({ known_audio_id: null })  // or target_audio_id
-     .eq('course_code', CODE).eq('seed_number', N);
+3. **Leave the old clip alone.** It is orphaned, not harmful: it costs pennies in S3, it keeps the
+   change reversible, and it is the only thing standing between a bad render and a silent slot.
+   Retiring orphans is a separate, separately-approved job.
 
-   // For LEGOs (presentation):
-   await supabase.from('course_legos')
-     .update({ presentation_audio_id: null })
-     .eq('course_code', CODE).eq('lego_id', ID);
+**If you believe a clip genuinely must be replaced in place** (wrong voice, wrong language,
+corrupt bytes), you still do not delete first. Use `tools/revoice-clips.cjs` /
+`tools/repair-silent-clips.cjs` as the reference pattern: generate → verify alive and
+correct-voiced → swap every referencing link atomically → *only then* retire the old row.
 
-   // For phrases:
-   await supabase.from('course_practice_phrases')
-     .update({ known_audio_id: null })  // or target_audio_id
-     .eq('id', phraseId);
-   ```
-
-3. **Regenerate** from the dashboard (the record will now correctly show as missing).
-
-**Why this matters:** The dashboard's missing audio count checks `audio_id` links. The legacy export checks text matching. If you change text without cleaning up audio, the link still exists but points to audio with the OLD text — dashboard says 0 missing, export breaks.
+**Why this matters:** the dashboard's missing-audio count checks `audio_id` links; the legacy
+export checks text matching. A stale link reads as "0 missing" while the export breaks — but the
+cure for a wrong clip is a *new verified clip*, never an empty slot. An empty slot is silence in a
+learner's ear, and nothing in the pipeline is alarmed by it.
 
 ## What This Skill Does NOT Do
 

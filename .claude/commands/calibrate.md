@@ -103,9 +103,10 @@ This is how cumulative confidence builds - each new LEGO multiplies combinations
 - **Fragments are OK** — the point is showing connections, not complete thoughts
 - **3-4 phrases per LEGO**
 
-**USE phrases** — complete sentences the learner will practise for weeks:
+**USE phrases** — the phrases the learner will practise for weeks:
 - Used **REPEATEDLY** in spaced repetition reviews
-- **Must be complete sentences/thoughts** a learner would actually say
+- **Must be standalone-sayable** — something a learner would actually say on its own in a
+  conversation. Full sentences are PREFERRED but NOT required (Kai, 2026-08-17): the test is standalone-sayable — something you could say on its own in a conversation, clear, unambiguous for the rest of the course, and longish.
 - Average: LEGO + 10-12 syllables
 - **Minimum 5 phrases per new LEGO**
 - Scored 5-9 (4 or below = rewrite)
@@ -233,7 +234,7 @@ USE (5+ complete sentences, averaging LEGO + 10-12 syllables):
 
 **Remember:**
 - BUILD: LEGO + 1 word minimum, ~5 syllables max extra, 3-4 phrases
-- USE: Complete sentences, 5+ phrases, can use ALL prior vocabulary
+- USE: standalone-sayable (full sentences preferred, not required), 5+ phrases, can use ALL prior vocabulary
 
 ### E. Capture Contrastive Notes
 
