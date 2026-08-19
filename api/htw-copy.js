@@ -25,7 +25,7 @@ async function requireUser(req, res) {
   }
   const user = await verifySupabaseJWT(token);
   if (!user) {
-    res.status(403).json({ error: 'No dashboard access' });
+    res.status(403).json({ error: 'This sign-in has no Popty access — sign out and sign in with your Popty email' });
     return null;
   }
   return user;
