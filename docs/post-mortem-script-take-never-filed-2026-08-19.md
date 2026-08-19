@@ -128,21 +128,63 @@ automated check that a take becomes a playable clip.**
 **Because every one of them was examining clips that already exist. None asked whether a take
 becomes a clip at all.**
 
-Read the last month of audio work in the docs directory and the subject matter is remarkably
-consistent: voice matching and recasting, voice-gender forensics, relinking, cadence and trim,
-alignment and chunk counts, coverage censuses, mislinked audio, S3 object counts, per-language
-unification, presentation-clip reachability. Every one of those takes the existence of a clip as its
-starting point and asks whether it is the *right* clip — right voice, right text, right trim, right
-link. That is a completely reasonable question, and it was the question that kept finding real
-defects, which is exactly why it kept being asked.
+I classified the recording and audio reviews in the window. Of roughly 43 documents, **39 examined
+clips that already exist** — 16 on quality (tail clicks, clipping, loudness, wrong voice, veracity,
+alignment), 14 on links and coverage (unlinked FKs, cross-course mislinks, reuse accounting,
+regeneration relinking, glued-vs-whole), and 9 on the recording programme around the takes (casts,
+queues, routing, who has recorded what). Every one of those takes the existence of a clip as its
+starting point and asks whether it is the *right* clip. That is a completely reasonable question,
+and it was the question that kept finding real defects, which is exactly why it kept being asked.
 
 The prior question — does a recording become a clip in the first place? — has no natural home in
-that frame. And the estate's own recurring trap made it harder to see: row counts that look
-complete. A course with full `course_audio` coverage looks finished. Nothing in that count knows
-about the takes that never made it into it, because a take that was never filed leaves no gap in the
-clip table — it leaves no trace in the clip table at all.
+that frame, and the estate's recurring trap made it harder to see: **row counts that look complete.**
+A take that was never filed does not appear as a bad row in any of those audits. It does not appear
+as a row at all. It was never in the denominator, so every count they produced looked finished.
 
-### The near-miss
+There is also a reason the frame was inherited rather than chosen. The one architecture document a
+reviewer would open to learn what recording does — `docs/architecture/AUDIO_PIPELINE_ARCHITECTURE.md`
+§5, "Human Recording Workflow" — lists the writes an upload performs as: S3 object, update
+`audio_samples`, insert `recording_provenance`, update flag, emit socket event. There is no
+`course_audio` insert anywhere in the canonical picture, step 2 names a table `CLAUDE.md` lists as
+deprecated, and script mode does not appear in §5 at all. The document models recording as
+*replacing a sample*, never as *creating a clip*. A reviewer reading it would not know there was a
+third mode, let alone that it owed a row.
+
+### The near-misses
+
+Four documents had the seam in frame, and each had a good local reason to keep walking.
+
+**The 2026-06-10 audit did not just find it — it prescribed the fix.** Its fix list, item 1:
+
+> **Make the upload write the registry.** Upsert/insert a `course_audio` row … with `origin:'human'`,
+> real `s3_key`, `duration_ms`, `voice_id` of the *person*; key S3 objects by a server-minted UUID —
+> never a client string. Kills §2 dead-ends 1–2 and the `script-N` collision in one move.
+
+That is `b645b2da`, written 70 days early. What happened is that the item's second half — the
+server-minted UUID killing the `script-N` collision — was done immediately in `4d1823f4`, and the
+registry half was done for regeneration and pods but answered architecturally for script. One
+recommendation, two halves, and the half that got deferred is the one nothing else was watching.
+
+**The 2026-08-11 write-path review put it in a table and marked it "n/a".** Its P2 row reads
+`**neither** — no course_audio row is written at all`, then `n/a | n/a | n/a` across revision bumps,
+stamps and view refresh, and later `P2 writes no row, so nothing is keyed.` The absence is recorded
+precisely and correctly. It read as a non-event because of the question the doc set itself in its
+opening line: *what does the write path do to a clip that **already exists**?* Script mode was, by
+construction, the case with no clip — so it fell outside the question rather than answering it.
+
+**The 2026-08-10 autocue scoping review named it as a section heading** — "1.4 Upload writes no
+`course_audio` row" — and then met its consequence and scoped it as timing: "pruning only reflects a
+session *after* a synthesis job has run." It had the mechanism that made "late" plausible, quoting
+the engine's own comment that a recorded whole-phrase natural take always beats splicing it. The
+absence was read as **late**, not as **never**. It was load-bearing enough to shape a paragraph.
+
+**The Welsh state-of-the-nation on 2026-08-07 set up the subtraction and did not perform it.** It has
+a section headed "5. Take → stored clip" — exactly the right unit, named — and on the same page
+reports `recording_provenance` holds 142 rows estate-wide while counting clips from `course_audio`.
+A take count and a clip count, one page apart. The subtraction was out of scope because the doc's
+scope was Welsh, where the provenance figure was zero, so the 142 was reported and passed over.
+
+### The one that came within a single click
 
 One document came within a single mouse click, and it is worth quoting because it shows how
 reasonable the wrong turn was. `docs/pods/e2e-recording-proof-2026-07-17.md` saw the exact symptom
@@ -240,9 +282,14 @@ The reconciliation has no such blind spot, because it is written against the pop
 against a path. Every take checks itself. A new mode that forgets to file shows up on the day it
 ships without anyone writing a new test. A regression in the fix that just landed shows up the same
 way. And it is cheap: I wrote the query for this post-mortem in about ten lines of SQL, and it found
-191 unfiled takes going back to 17 July — four times more than the incident itself, five weeks
-earlier, across three courses nobody was looking at. It would have gone amber on 2026-07-17, the day
-the near-miss document was written, and Kai would not have lost 50 takes five weeks later.
+191 unfiled takes going back to 17 July — nearly four times the incident itself, five weeks earlier,
+across three courses nobody was looking at. It would have gone amber on 2026-07-17, the day the
+near-miss document was written, and Kai would not have lost 50 takes five weeks later.
+
+It is also the smallest possible addition to what the estate already does. The Welsh
+state-of-the-nation had both halves of this subtraction on one page on 7 August. The commit message
+that fixed the bug ran exactly this query, by hand, on one course, on one afternoon. All that is
+missing is running it on all of them, all the time.
 
 One number. It should be zero. When it is not, someone recorded something that will never be heard.
 
