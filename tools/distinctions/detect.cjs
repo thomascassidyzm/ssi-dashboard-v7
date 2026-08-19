@@ -27,7 +27,8 @@
  */
 
 const {
-  swapSide, anchorsIn, knownKey, targetKey, axisPairKeys, paradigmsOf, cueFor,
+  swapSide, strandedAfterSwap, anchorsIn, knownKey, targetKey, axisPairKeys,
+  paradigmsOf, cueFor,
 } = require('./axes.cjs');
 const { reachTest, VERDICTS } = require('./reach-test.cjs');
 
@@ -121,6 +122,24 @@ function detectA1(rows, dir, knownLang, otherLang) {
     const anchored = selfAnchored
       || (needed.length ? needed.every((n) => anchors.includes(n)) : anchors.length > 0);
     if (!anchored) { buckets.unanchored.push({ ...base, anchors }); continue; }
+
+    // A form we never swap, left stranded beside one we did, is mixed agreement — the
+    // counterpart is not well-formed Hindi and must not be offered as a drill however
+    // well it scores on reach.
+    const stranded = strandedAfterSwap(counterpart, d);
+    if (stranded) {
+      buckets.notADrill.push({
+        ...base,
+        anchors,
+        reach: {
+          verdict: 'unreachable',
+          reason: `the counterpart would leave ${stranded} unagreed beside a swapped verb `
+            + '— mixed agreement, so this is not a well-formed prompt to offer',
+          evidence: 'stranded-agreement',
+        },
+      });
+      continue;
+    }
 
     // THE GATE. Would the learner reach from the prompt they have to the one we propose?
     const reach = reachTest(known, cpKey, {

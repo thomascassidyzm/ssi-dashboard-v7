@@ -10,7 +10,7 @@
  */
 const assert = require('assert');
 const {
-  directionsFor, swapSide, anchorsIn, cueFor,
+  directionsFor, swapSide, strandedAfterSwap, anchorsIn, cueFor,
 } = require('./axes.cjs');
 
 // DIRECTION, not language. The same axis is a different problem each way round.
@@ -129,3 +129,37 @@ assert.strictEqual(
 assert.strictEqual(toFem('मैं एक बूढ़ी औरत जानता हूँ।'), 'मैं एक बूढ़ी औरत जानती हूँ।');
 
 console.log('axes: all calibration cases pass');
+
+/* ---- THE THREE DEFECTS WORKER #258 FOUND BY HAND, 2026-08-19 --------------
+ * An independent adjudicator read 80 rows of live output and found these. They are
+ * pinned here so they cannot come back.
+ */
+const swapM = (t) => swapSide(t, hin, 'masculine');
+
+// A21 — dative-experiencer. था agrees with पता, a masculine noun, so पता थी is
+// ungrammatical. The table has to list था for मैं चाहता था; the collocation guard is
+// what stops it firing one clause later.
+assert.strictEqual(
+  swapM('मैं जानना चाहता था, मुझे नहीं पता था कैसे।').text,
+  'मैं जानना चाहती थी, मुझे नहीं पता था कैसे।',
+);
+// …and the ordinary case must still swap both.
+assert.strictEqual(swapM('मैं चाहता था').text, 'मैं चाहती थी');
+
+// B6 — करते in करते रहना is an invariant compound, not the listener's agreement.
+// Swapping it dragged a first-person row into a third-person rejection and lost a
+// valid proposal. Classes needing an anchor no longer fire without one.
+assert.strictEqual(
+  swapM('मैं यह कुछ देर और करते रहना चाहूँगा').text,
+  'मैं यह कुछ देर और करते रहना चाहूँगी',
+);
+// The honorific class must still fire when the addressee IS present.
+assert.strictEqual(swapM('क्या आप चाहते थे?').text, 'क्या आप चाहती थीं?');
+
+// A29 — अच्छा is deliberately never swapped (it usually agrees with something else),
+// but left beside a swapped verb it is mixed agreement. The finding stands; the
+// PROPOSAL does not, so the row belongs in not-a-drill.
+assert.strictEqual(strandedAfterSwap(swapM('मैं अच्छा दिखना चाहता हूँ').text, hin), 'अच्छा');
+assert.strictEqual(strandedAfterSwap(swapM('मैं थका हुआ हूँ').text, hin), null);
+
+console.log('axes: the three adjudicated defects stay fixed');

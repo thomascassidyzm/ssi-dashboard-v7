@@ -207,6 +207,41 @@ A shared-affix measure called them relatives — they share an **ending**, which
 language is shared inflection, not a shared word. Shared endings are now weak evidence and flag
 rather than assert. Welsh initial mutation (*dysgu*/*ddysgu*) is the opposite case and still passes.
 
+### Three found by an independent adjudicator
+
+Worker **#258** read 80 rows of live output cold and adjudicated every one. **Section A
+false-positive rate: 2 of 40 (5.0%)**, both confirmed and both now fixed and pinned as tests:
+
+| row | defect | fix |
+|---|---|---|
+| A21 | `मुझे नहीं पता था` → `पता थी`. Dative-experiencer: था agrees with पता, a masculine noun. The table must list था for `मैं चाहता था`, so absence could not be the mechanism here. | collocation guard — a listed form can be blocked in a named context |
+| B6 | `मैं … करते रहना चाहूँगा` labelled `third-person-subject`. करते in `करते रहना` is an invariant compound, not the listener's agreement; swapping it broke the speaker-lock and dragged a valid first-person row into a rejection. | classes requiring an anchor no longer fire without one |
+| A29 | `मैं अच्छा दिखना चाहता हूँ` → proposal leaves अच्छा stranded masculine beside a feminine verb. Mixed agreement, ill-formed. | stranding guard — the FINDING stands, the PROPOSAL does not, so the row moves to not-a-drill |
+
+Effect on eng_for_hin: proposals 1,944 → **1,895**; not-a-drill 4 → **83**. On hin_for_eng the
+anchor fix recovered rows the broken swap had buried: under-determined 912 → **929**.
+
+Its structural criticisms that are **not** fixed, and are decisions rather than bugs:
+
+- **The unanchored bucket is a dumping ground.** 11 of 15 parked rows it read were not
+  ambiguous at all and should have been decided. A human wading through them to find the two
+  real questions is worse served than by a shorter list.
+- **`हम` is classified inconsistently** — rejected in some rows, parked in others, identical
+  grammar. It wants one rule. (Its own recommendation: reject — a mixed-group masculine default
+  is not the learner's own gender.)
+- **The other side's pronoun is the best unused signal.** "I'd like…" and "I used to know" both
+  name the speaker in English; reading it would anchor rows that currently park, and would
+  auto-reject every he/she/my-mother row without any Hindi analysis at all.
+- **Rule labels are unreliable even when the verdict is right** — a first-person row tagged
+  `third-person-subject`, inanimate agreement tagged `reverse-direction-needs-speaker-lock`.
+  Anyone auditing by rule name will draw wrong conclusions about coverage.
+- **Several source prompts are already broken Hindi** (`बहुत अच्छी पूरे दिन`, English word order).
+  Generating a feminine counterpart doubles the defect instead of surfacing it.
+
+Its net read: "the core speaker/addressee-verb case is solid — 38 of 40 proposals are well-formed
+and correctly scoped, including the harder discriminations. The gap is adjectival agreement and
+clause scoping, both narrow and both fixable."
+
 ### One silent zero
 
 U+0964, the danda, sits inside the Devanagari range. With it in the word-boundary class,

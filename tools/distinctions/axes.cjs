@@ -191,6 +191,22 @@ const HIN_GENDER = {
           requiresAnchor: 'addressee',
         },
       ],
+      // Forms that are in a swap table but must NOT swap in a particular collocation.
+      // मुझे नहीं पता था is dative-experiencer: था agrees with पता, a masculine noun, so
+      // "पता थी" is ungrammatical. The table lists था because मैं चाहता था needs it; the
+      // guard is what stops it firing one clause later. (Adjudicated as a live false
+      // positive by worker #258, row A21, 2026-08-19.)
+      invariantAfter: [
+        { form: 'था', after: ['पता'] },
+        { form: 'थी', after: ['पता'] },
+        { form: 'होता', after: ['पता'] },
+      ],
+      // Masculine predicate adjectives we do NOT swap (they usually agree with something
+      // other than a participant) but which, left behind next to a swapped feminine verb,
+      // produce mixed agreement: मैं अच्छा दिखना चाहती हूँ is ill-formed. Their presence
+      // does not block the finding — it blocks the PROPOSAL, which is a different thing.
+      // (Worker #258, row A29.)
+      strandingRisk: ['अच्छा', 'बुरा', 'छोटा', 'बड़ा', 'नया', 'पूरा', 'तैयार', 'खाली', 'सीधा', 'पक्का'],
       anchors: {
         // मैंने is deliberately NOT a speaker anchor — it is the ergative, and the
         // ergative is handled as a rejection, not an anchor.
@@ -453,19 +469,41 @@ function classMaps(cls) {
 function swapSide(text, distinction, fromSide) {
   let out = text;
   const swapped = [];
+  // A class that only makes sense under an anchor must not fire without one. करते in
+  // मैं ... करते रहना चाहूँगा is an invariant compound, not the listener's agreement;
+  // swapping it dragged the whole row into a third-person rejection and lost a valid
+  // first-person proposal. (Worker #258, row B6.)
+  const present = anchorsIn(text, distinction);
   for (const cls of distinction.classes) {
     if (cls.direction === 'toFeminine' && fromSide !== 'masculine') continue;
     if (cls.direction === 'toMasculine' && fromSide !== 'feminine') continue;
+    if (cls.requiresAnchor && !present.includes(cls.requiresAnchor)) continue;
     const { fwd, rev } = classMaps(cls);
     const map = fromSide === 'masculine' ? fwd : rev;
     for (const [from, to] of map) {
       const re = word(from);
       if (!re.test(out)) continue;
-      out = out.replace(word(from), to);
-      swapped.push({ from, to, class: cls.id });
+      out = out.replace(word(from), (m, offset, full) => {
+        const before = full.slice(0, offset).trim().split(/\s+/u).pop();
+        const blocked = (distinction.invariantAfter || [])
+          .some((g) => g.form === from && g.after.includes(before));
+        return blocked ? m : to;
+      });
+      if (out.includes(to)) swapped.push({ from, to, class: cls.id });
     }
   }
-  return { text: out, swapped };
+  // A form may have been blocked in every position it occurred in.
+  const kept = swapped.filter((sw) => !word(sw.from).test(out));
+  return { text: out, swapped: kept };
+}
+
+/**
+ * A form we deliberately never swap, left stranded next to one we did — mixed agreement,
+ * so the counterpart is not well-formed and must not be offered as a drill.
+ */
+function strandedAfterSwap(swappedText, distinction) {
+  if (!(distinction.strandingRisk || []).length) return null;
+  return distinction.strandingRisk.find((adj) => word(adj).test(swappedText)) || null;
 }
 
 /** Which anchor kinds this text carries. */
@@ -551,6 +589,7 @@ module.exports = {
   cueFor,
   marksOf,
   swapSide,
+  strandedAfterSwap,
   anchorsIn,
   knownKey,
   targetKey,
