@@ -100,6 +100,39 @@ describe('mic calibration: the gate follows the microphone', () => {
     expect(quiet.headroomDb).toBeCloseTo(hot.headroomDb, 6)
   })
 
+  // The finding from the 68-take measurement of 2026-08-19, pinned. This is the
+  // UNRECOVERABLE failure: a gate above the voice captures nothing at all, and
+  // says nothing while it does so. The old placement could reach it — measured
+  // room x4, clamped at 0.08 — on takes whose own speech p95 was under 0.08.
+  it('never places the gate where the recordist cannot be heard over it', () => {
+    // A real take from the archive: speech p95 0.0558, in a room loud enough
+    // that the old arithmetic would have clamped the gate to 0.08.
+    const squeezed = placeThreshold(0.0200, 0.0558)
+    expect(squeezed.threshold).toBeLessThan(0.0558)
+    expect(20 * Math.log10(0.0558 / squeezed.threshold)).toBeGreaterThan(8.99)  // floating point; the rule is exactly 9dB
+    // ...and it says so, rather than failing silently later.
+    expect(squeezed.quality).toBe('too-loud')
+
+    // True across the range, including rooms far too loud to work in.
+    for (const voice of [0.03, 0.0558, 0.113, 0.23, 0.6]) {
+      for (const floor of [0.0001, 0.001, 0.01, 0.04, voice * 0.9]) {
+        const p = placeThreshold(floor, voice)
+        expect(20 * Math.log10(voice / p.threshold)).toBeGreaterThan(8.99)  // floating point; the rule is exactly 9dB
+      }
+    }
+  })
+
+  // A room-only calibration has not heard this recordist, so its verdict is
+  // reckoned against an assumption. It may place a gate on that; it may not
+  // warn a recordist in a perfectly quiet room about background noise.
+  it('does not hand out a verdict it has not earned', () => {
+    const roomOnly = placeThreshold(0.0008, null)
+    expect(roomOnly.quality).toBe('ok')
+    expect(roomOnly.message).toMatch(/not checked/)
+    // ...but an obviously bad room is still worth saying out loud.
+    expect(placeThreshold(0.05, null).quality).toBe('too-loud')
+  })
+
   it('a mid-phrase breath does not close the take, on EITHER microphone', async () => {
     const phone = await replay({ gain: PHONE_GAIN, calibrateVoice: true, phrase, micCheck })
     const external = await replay({ gain: EXTERNAL_GAIN, calibrateVoice: true, phrase, micCheck })

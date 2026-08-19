@@ -190,7 +190,14 @@ describe('useVAD room calibration', () => {
     state.amplitude = 0.00075
     const result = await runCalibration(vad)
 
-    expect(result.quality).toBe('quiet')
+    // 'ok', not 'quiet', since 2026-08-19: a room-only calibration has not heard
+    // this recordist on this microphone, so its "headroom" is a gap between a
+    // real room and an assumed voice. It may not hand out a confident verdict on
+    // the strength of that — only measureVoice() earns 'quiet'. What it must
+    // still do is keep quiet about a room that is genuinely fine, which is what
+    // this pins.
+    expect(result.quality).toBe('ok')
+    expect(result.voiceLevel).toBeNull()
     // A very quiet room must not push the threshold arbitrarily low — a fan
     // spinning up mid-session would otherwise re-create the original bug.
     expect(result.threshold).toBeGreaterThanOrEqual(0.01)

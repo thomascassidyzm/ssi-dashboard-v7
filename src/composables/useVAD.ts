@@ -152,26 +152,25 @@ const defaultConfig: VADConfig = {
 
 // Calibration constants.
 //
-// SPEECH_RMS_REFERENCE is what ordinary speech measured on ONE real take
-// (2026-08-07, Kai, phone mic): p95 0.23 RMS. Until 2026-08-19 it was the only
-// speech level this file knew, and the threshold was placed against the room
-// alone. That is the bug Kai found: a microphone is a GAIN STAGE, and the room
-// and the voice both move through it together. Swap a phone for a quieter,
-// lower-output external mic and the voice can land at 0.05 while the room lands
-// at 0.0005 — at which point a threshold pinned to an absolute 0.01 is sitting
-// only 14dB under the voice instead of the 21dB it was designed for, ordinary
-// mid-phrase dips fall through it, and the take is cut in the middle of a
-// phrase. It still stands in when only the room has been measured, but a
-// calibration that has heard the recordist prefers what it heard.
-const SPEECH_RMS_REFERENCE = 0.23
+// SPEECH_RMS_REFERENCE is what ordinary speech ACTUALLY measures through this
+// pipeline. It was 0.23 — a p95 taken off one 2026-08-07 take — until the raw
+// MediaRecorder archives of 68 of Kai's takes were measured on 2026-08-19 and
+// came back at a p95 MEDIAN of 0.113, 2-4x under the constant, in every session
+// including all the ones that worked fine. The two numbers are probably not
+// measuring the same thing: mastering loudnorms by roughly 3x, so 0.23 is
+// consistent with a MASTERED file and 0.113 with what the browser's analyser
+// sees live. What the VAD gates is the live signal, so the live number is the
+// one that belongs here. The old figure was never wrong about the take it came
+// from; it was wrong about which take mattered.
+//
+// It now only stands in for a voice that was never measured — the room-only
+// fallback. A calibration that has heard the recordist ignores it entirely.
+const SPEECH_RMS_REFERENCE = 0.113
 // Where the gate goes, stated the only way that survives a change of
-// microphone: in dB BELOW the recordist's own measured speech. -21dB is what
-// the working configuration actually was (0.02 against 0.23), kept.
+// microphone: in dB BELOW the recordist's own measured speech.
 const GATE_BELOW_VOICE_DB = 21
 // ...and in dB ABOVE the measured room, which is the other end of the same
-// squeeze. Room tone has to read as silence, so the gate cannot sit on it. 12dB
-// is under the +16dB the working configuration had (0.02 against a 0.003 floor)
-// and is the minimum that kept room tone silent in the two-condition replay.
+// squeeze. Room tone has to read as silence, so the gate cannot sit on it.
 const GATE_ABOVE_FLOOR_DB = 12
 // When the gap between floor and voice is too small to satisfy both — anything
 // under 33dB — neither constraint can win outright, so the gate is placed
@@ -179,6 +178,21 @@ const GATE_ABOVE_FLOOR_DB = 12
 // difference is the least-bad placement: it is as far from the room as it is
 // from the voice.
 const MIN_WORKABLE_GAP_DB = GATE_BELOW_VOICE_DB + GATE_ABOVE_FLOOR_DB
+// The gate may NEVER come closer than this to the voice, whichever branch
+// placed it. This is the hard lesson from the 68-take measurement, and it is
+// about the CEILING rather than the floor: the old placement multiplied the
+// measured room by 4 and clamped at 0.08, so a calibration that happened to
+// catch a breath landed at 0.05-0.08 — and 3 of those 68 takes have a speech
+// p95 UNDER 0.08 outright. A gate above the voice does not truncate a take, it
+// makes the take completely inaudible to the VAD; nothing is ever captured and
+// the session is lost silently.
+//
+// Which is why the two failures are not weighed equally here. A gate too LOW
+// merges phrases into one blob — ugly, slow, but every syllable is still in the
+// file and a human can split it. A gate too HIGH loses the audio outright. So
+// when the squeeze is on, this cap wins and the recordist is told the room is
+// too noisy, rather than the arithmetic quietly choosing the unrecoverable side.
+const MIN_GATE_BELOW_VOICE_DB = 9
 // Absolute sanity clamps, deliberately far wider than the old [0.01, 0.08].
 // They exist only to catch a degenerate measurement — a muted mic reading
 // digital silence, or a calibration taken while something was blaring — not to
@@ -221,6 +235,11 @@ export function placeThreshold(noiseFloor: number, voiceLevel: number | null): {
     thresholdDb = db(noiseFloor) + headroomDb * share
   }
 
+  // The cap that keeps the gate under the voice, applied AFTER whichever branch
+  // ran — see MIN_GATE_BELOW_VOICE_DB. Nothing may place a gate the recordist
+  // cannot be heard over.
+  thresholdDb = Math.min(thresholdDb, db(voice) - MIN_GATE_BELOW_VOICE_DB)
+
   const threshold = Math.min(MAX_THRESHOLD, Math.max(MIN_THRESHOLD, Math.pow(10, thresholdDb / 20)))
 
   // Bands are set on the floor-to-voice gap, which is the quantity that decides
@@ -229,7 +248,20 @@ export function placeThreshold(noiseFloor: number, voiceLevel: number | null): {
   // below ~20dB the gate is inside the noise and takes start running together.
   let quality: VADCalibration['quality']
   let message: string
-  if (headroomDb < 20) {
+  if (!voiceLevel) {
+    // The voice was ASSUMED, so this "headroom" is a gap between a real room and
+    // a constant — it says nothing reliable about this recordist on this mic,
+    // and dressing it up as a verdict would put a warning about background noise
+    // in front of someone sitting in a perfectly quiet room. Only the extreme is
+    // worth saying, because at that point the room alone is the problem.
+    if (headroomDb < 20) {
+      quality = 'too-loud'
+      message = 'There is a lot of background noise in this room. Run the mic check so the recorder can work out where your voice sits against it.'
+    } else {
+      quality = 'ok'
+      message = 'Using the standard silence setting — microphone not checked.'
+    }
+  } else if (headroomDb < 20) {
     quality = 'too-loud'
     message = 'Your mic is picking up a lot of room noise — there is not enough difference between your voice and the background to tell them apart, so phrases will run together or get cut in half. Turn off fans, air-con or anything humming, move closer to the mic or away from the window, or use a headset, then check again.'
   } else if (headroomDb < MIN_WORKABLE_GAP_DB) {
