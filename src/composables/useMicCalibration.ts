@@ -28,7 +28,7 @@
  * tutorial can mount it as its own first step — see MicCheck.vue.
  */
 
-import { ref, computed } from 'vue'
+import { ref, shallowRef, computed } from 'vue'
 import { useVAD, type VADCalibration } from './useVAD'
 
 export type MicCheckStep = 'idle' | 'room' | 'voice' | 'done' | 'failed'
@@ -127,7 +127,12 @@ export function useMicCalibration(options: { existingVad?: ReturnType<typeof use
   const result = ref<VADCalibration | null>(null)
   const profile = ref<MicProfile | null>(null)
   const error = ref<string | null>(null)
-  const level = ref(0)
+  // The live input level, read straight off whichever VAD is doing the
+  // measuring. Deliberately NOT wired through vad.onLevelChange: that setter
+  // holds a single callback, so a mid-session re-check would silently unhook
+  // whatever the studio had registered there.
+  const activeVad = shallowRef<ReturnType<typeof useVAD> | null>(null)
+  const level = computed(() => activeVad.value?.currentLevel.value ?? 0)
 
   const isRunning = computed(() => step.value === 'room' || step.value === 'voice')
   // What the recordist is being asked to do right now, in their own terms.
@@ -159,9 +164,7 @@ export function useMicCalibration(options: { existingVad?: ReturnType<typeof use
         await vad.startListening(ownStream)
       }
       track = (options.stream || ownStream)?.getAudioTracks?.()[0]
-
-      const stopLevel = vad.onLevelChange((l: number) => { level.value = l })
-      void stopLevel
+      activeVad.value = vad
 
       step.value = 'room'
       await vad.calibrate(ROOM_MS)
@@ -209,6 +212,7 @@ export function useMicCalibration(options: { existingVad?: ReturnType<typeof use
         ownStream.getTracks().forEach(t => t.stop())
         ownStream = null
       }
+      activeVad.value = null
     }
   }
 
@@ -216,7 +220,6 @@ export function useMicCalibration(options: { existingVad?: ReturnType<typeof use
     step.value = 'idle'
     result.value = null
     error.value = null
-    level.value = 0
   }
 
   return {
