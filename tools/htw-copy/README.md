@@ -14,6 +14,7 @@ back into code under the founder content guardrails.
 | `popty.app/copy` | the index — every surface, with how much editing has happened to each |
 | `popty.app/copy/htw` | How This Works — the walkthrough pack (also at `popty.app/htw-copy`) |
 | `popty.app/copy/learner-walks` | the six guided walks a learner can ask for in the Library |
+| `popty.app/copy/onboarding` | the seven onboarding messages — five emails and two in-app tips |
 
 `popty.app/htw-copy` is a permanent alias for the first one. That link is already in an
 editor's inbox — **never remove it.**
@@ -31,6 +32,7 @@ editor's inbox — **never remove it.**
 | `tools/htw-copy/diff.cjs` | unified diff, original → current; takes a doc id, `--list`, `--export`, `--history` |
 | `tools/htw-copy/seed-doc.cjs` | seeds a surface byte-identically and refuses to touch an existing frozen original |
 | `tools/htw-copy/build-learner-walks.cjs` | regenerates the learner-walks seed from the app's walkthrough pack |
+| `tools/htw-copy/build-onboarding.cjs` | regenerates the onboarding seed from the `onboarding_messages` table |
 | `tools/htw-copy/setup-table.cjs` | one-off DDL (RLS on, no policies = service-role only) |
 
 The frozen originals are never overwritten — saves only ever append.
@@ -39,6 +41,7 @@ The frozen originals are never overwritten — saves only ever append.
 |---|---|---|
 | `htw` | `docs/htw-copy-for-aran.md` @ `270edaf6` in ssi-learning-app | `4b86893e64b674745900fd13dbf9f9bf` |
 | `learner-walks` | `packages/player-vue/src/walkthrough/pack.json` @ `281e8dea` in ssi-learning-app, flattened by `build-learner-walks.cjs` | `f6f2127ec7e406cc7aa2ed7ab5a1c927` |
+| `onboarding` | `public.onboarding_messages`, flattened by `build-onboarding.cjs` | `609ecdaf729c4d55823ac830ceaed854` |
 
 ## Seeing the edits
 

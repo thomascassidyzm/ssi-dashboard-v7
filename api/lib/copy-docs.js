@@ -26,6 +26,13 @@ export const COPY_DOCS = [
     blurb: 'The six guided walks in the Library — the words the app says while it points at things on the learner’s own screen. The other half of the How This Works copy: that one is the reading, this one is the pointing.',
     seedPath: 'docs/copy-surfaces/learner-walks.md',
     sourceRef: 'ssi-learning-app packages/player-vue/src/walkthrough/pack.json @ 281e8dea (branch a159-library-htw)'
+  },
+  {
+    id: 'onboarding',
+    title: 'The messages that meet a new learner',
+    blurb: 'The seven onboarding messages — five emails and two in-app tips, from the hour someone signs up to the end of the free part. Nothing is sending yet, so the words are still entirely open.',
+    seedPath: 'docs/copy-surfaces/onboarding-messages.md',
+    sourceRef: 'public.onboarding_messages, flattened by tools/htw-copy/build-onboarding.cjs'
   }
 ];
 
