@@ -92,7 +92,7 @@ export function useContinuousRecorder(config: Partial<ContinuousRecorderConfig> 
   // parked here between onSpeechEnd and the blob being assembled.
   let pendingChunkGaps: ChunkGap[] = []
   // Same parking problem as pendingChunkGaps — see above.
-  let pendingPauses: TakePauseReport = { shortPauses: 0, longestShortPauseMs: 0 }
+  let pendingPauses: TakePauseReport = { shortPauses: 0, longestShortPauseMs: 0, endedWhileLoud: false, dropAtCutDb: 99 }
 
   // iOS Safari records audio/mp4 (AAC), not webm/opus — pick the first
   // supported container; the server transcodes whatever arrives (the upload
@@ -182,7 +182,7 @@ export function useContinuousRecorder(config: Partial<ContinuousRecorderConfig> 
           chunks = []
           segmentStartTime = null
           pendingChunkGaps = []
-          pendingPauses = { shortPauses: 0, longestShortPauseMs: 0 }
+          pendingPauses = { shortPauses: 0, longestShortPauseMs: 0, endedWhileLoud: false, dropAtCutDb: 99 }
           isCapturing.value = false
           return
         }
@@ -210,7 +210,7 @@ export function useContinuousRecorder(config: Partial<ContinuousRecorderConfig> 
         chunks = []
         segmentStartTime = null
         pendingChunkGaps = []
-        pendingPauses = { shortPauses: 0, longestShortPauseMs: 0 }
+        pendingPauses = { shortPauses: 0, longestShortPauseMs: 0, endedWhileLoud: false, dropAtCutDb: 99 }
         isCapturing.value = false
 
         // If still in flow mode, we're ready for next segment
@@ -225,7 +225,7 @@ export function useContinuousRecorder(config: Partial<ContinuousRecorderConfig> 
         chunks = []
         segmentStartTime = Date.now()
         pendingChunkGaps = []
-        pendingPauses = { shortPauses: 0, longestShortPauseMs: 0 }
+        pendingPauses = { shortPauses: 0, longestShortPauseMs: 0, endedWhileLoud: false, dropAtCutDb: 99 }
         isCapturing.value = true
 
         if (mediaRecorder.state === 'inactive') {
@@ -238,7 +238,7 @@ export function useContinuousRecorder(config: Partial<ContinuousRecorderConfig> 
 
         // Carry the chunk boundaries into the blob this stop produces.
         pendingChunkGaps = chunkGaps || []
-        pendingPauses = pauses || { shortPauses: 0, longestShortPauseMs: 0 }
+        pendingPauses = pauses || { shortPauses: 0, longestShortPauseMs: 0, endedWhileLoud: false, dropAtCutDb: 99 }
 
         // Speech ended - stop capturing
         if (mediaRecorder.state === 'recording') {

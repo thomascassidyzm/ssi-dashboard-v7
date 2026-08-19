@@ -206,6 +206,20 @@
         @skip="skipRefusedTake"
       />
 
+      <!-- A take the TOOL ended, rather than one the recordist finished.
+           Silence about this is what made Sascha rush on 2026-08-19: the
+           autocue moved on identically either way, so the only thing they could
+           infer from being cut off was that they were reading too slowly. -->
+      <div v-if="cutOffNotice" class="cut-off-notice" role="status">
+        <strong>We stopped that take early — that one is on us, not you.</strong>
+        <p>
+          The recorder thought you had finished and cut in while you were still
+          reading. Please read the line again at your natural pace; there is no
+          need to hurry.
+        </p>
+        <button type="button" @click="cutOffNotice = null">Got it</button>
+      </div>
+
       <!-- Live chunk progression, while the phrase is being read. -->
       <ChunkProgress
         v-if="state.scriptMode && state.isRecording && !isCalibrating && expectedChunks > 1 && !slowReadRetry"
@@ -666,6 +680,13 @@ function judgeSlowTake(segment, phrase) {
   }
 }
 
+// A take that was ended while the recordist was still audibly speaking — the
+// VAD's own account of the cut it just made (useVAD TakePauseReport). The take
+// is still filed: it may be perfectly usable, and throwing away a recordist's
+// work on a heuristic is worse than keeping it. What changes is that they are
+// TOLD, so a truncation reads as a tool fault rather than as a hint to speed up.
+const cutOffNotice = ref(null)
+
 // The take now being refused, and the panel driven by it. Null when there is
 // nothing to answer for.
 const slowReadRetry = ref(null)
@@ -717,7 +738,11 @@ function skipRefusedTake() {
 // said what it had to say and the script underneath it is what they need now.
 watch(
   () => continuousRecorder.isCapturing.value,
-  (capturing) => { if (capturing && slowReadRetry.value) clearSlowReadRetry() }
+  (capturing) => {
+    if (capturing && slowReadRetry.value) clearSlowReadRetry()
+    // Reading again is the answer to "we cut you off"; get it out of the way.
+    if (capturing) cutOffNotice.value = null
+  }
 )
 
 // Leaving the line, or leaving the session, takes the refusal with it — it is
@@ -733,6 +758,12 @@ continuousRecorder.onSegmentCaptured((segment) => {
   const itemIndex = state.currentPhraseIndex
   const phrase = state.phrases[itemIndex]
   if (!phrase) return
+
+  // Say it out loud when we cut them off. Checked before anything else so the
+  // notice shows whether the take goes on to be filed or refused.
+  cutOffNotice.value = segment.pauses?.endedWhileLoud
+    ? { itemIndex, dropDb: segment.pauses.dropAtCutDb }
+    : null
 
   const verdict = judgeSlowTake(segment, phrase)
   if (!verdict.ok) {
@@ -1687,5 +1718,29 @@ onUnmounted(() => {
   .stat-value {
     font-size: 1.35rem;
   }
+}
+
+/* "We stopped that take early" — the tool owning a cut it made. Amber, not red:
+   nothing is broken and nothing is lost, but it must be impossible to miss on a
+   phone held at arm's length while reading. */
+.cut-off-notice {
+  background: #78350f;
+  border: 1px solid #f59e0b;
+  border-radius: 10px;
+  padding: 0.9rem 1rem;
+  margin-bottom: 0.75rem;
+  color: #fef3c7;
+}
+.cut-off-notice strong { display: block; font-size: 1rem; margin-bottom: 0.35rem; }
+.cut-off-notice p { margin: 0 0 0.6rem; font-size: 0.9rem; line-height: 1.45; }
+.cut-off-notice button {
+  background: #f59e0b;
+  color: #451a03;
+  border: none;
+  border-radius: 6px;
+  padding: 0.45rem 1.1rem;
+  font-weight: 600;
+  min-height: 40px;
+  cursor: pointer;
 }
 </style>

@@ -74,6 +74,19 @@ export interface TakePauseReport {
   shortPauses: number
   // The longest of those, so the studio can say how close they came.
   longestShortPauseMs: number
+  // TRUE when the take was ended while the signal was still close to this
+  // speaker's own speech level — i.e. we probably cut them off mid-phrase.
+  //
+  // This is the signal that was missing on 2026-08-19. A take ended for the
+  // recordist looked, to them, exactly like a take they finished themselves:
+  // the autocue moved on either way. Sitting with Sascha, Kai watched them
+  // start speeding up to beat a cut-off nobody had told them about. Whatever
+  // else is true, a take the tool ends early must SAY that it did.
+  endedWhileLoud: boolean
+  // How far below the take's own speech level the signal had fallen when the
+  // cut fired, in dB. A real end-of-phrase is far down (25dB+); a bad cut is
+  // only a few dB down. Descriptive — nothing branches on it.
+  dropAtCutDb: number
 }
 
 // What a room measured before recording. `threshold` is what the VAD will
@@ -158,6 +171,41 @@ const NOISE_MARGIN = 4
 const MIN_THRESHOLD = 0.01
 const MAX_THRESHOLD = 0.08
 
+// ── The relative end-of-speech floor ───────────────────────────────────────────
+//
+// silenceThreshold alone decides "is this silence?" on an ABSOLUTE level, and
+// that is what truncated real takes on 2026-08-19. In a room whose measured
+// floor reaches 0.02, calibrate() clamps the threshold to MAX_THRESHOLD (0.08),
+// and 0.08 sits INSIDE ordinary speech — Kai's own takes that day measure a p95
+// of 0.10-0.25, so the quieter half of a phrase reads as "silence". The 800ms
+// end-of-speech timer then runs to completion WHILE THE RECORDIST IS STILL
+// TALKING, and the take is cut mid-word.
+//
+// That is why the truncated takes end with no trailing silence at all: the
+// "silence" the VAD timed was never silence, it was speech below the threshold,
+// so the blob ends at full amplitude on the last syllable it managed to keep.
+// Measured on the raw browser uploads (raw/*.webm, before any server trim):
+// median trailing silence across 116 takes is 810ms — exactly what an 800ms cut
+// predicts — while the truncated ones sit at 0-30ms. Replaying THIS state
+// machine over that audio reproduces each truncated take's exact length only at
+// a threshold of 0.065 or above, and at no value at or below 0.06.
+//
+// So end-of-speech is now judged RELATIVE to the voice actually being heard, not
+// only against the absolute threshold: a pause has to be a real drop away from
+// this speaker's own level, not merely quieter than a constant that may be
+// sitting on top of them.
+//
+// The bounds keep the two known failure modes in view:
+//  - It can only ever LOWER the floor (min with silenceThreshold), so it cannot
+//    make the VAD cut more eagerly than it does today. The direction of any
+//    residual error is "takes run together", which is recoverable, rather than
+//    "the performance was truncated", which is not.
+//  - It is floored at twice the room's measured noise, so a quiet room cannot
+//    drive it under the room tone and re-create the 2026-08-07 failure where
+//    the VAD never saw silence and a whole read landed as one blob.
+const SPEECH_DROP_RATIO = 0.05   // ~26dB below the take's own speech level
+const NOISE_FLOOR_MARGIN = 2
+
 export function useVAD(config: Partial<VADConfig> = {}) {
   const cfg = { ...defaultConfig, ...config }
 
@@ -192,6 +240,15 @@ export function useVAD(config: Partial<VADConfig> = {}) {
   // Near-miss pauses in the take being captured — see SHORT_PAUSE_FLOOR_MS.
   const shortPauses = ref(0)
   const longestShortPauseMs = ref(0)
+  // The loudest level heard so far inside the take being captured. Reset per
+  // take, so it tracks THIS phrase as this person is reading it rather than a
+  // session-wide average that a single loud item would skew. See
+  // SPEECH_DROP_RATIO.
+  const speechLevel = ref(0)
+  // The end-of-speech floor actually in force at the last poll, after the
+  // relative rule. Published so the studio (and the VAD lab) can see the number
+  // the decision was really made on rather than the configured one.
+  const endOfSpeechFloor = ref(0)
 
   // Audio nodes
   let audioContext: AudioContext | null = null
@@ -268,6 +325,8 @@ export function useVAD(config: Partial<VADConfig> = {}) {
     chunkGaps = []
     shortPauses.value = 0
     longestShortPauseMs.value = 0
+    speechLevel.value = 0
+    endOfSpeechFloor.value = 0
   }
 
   let calibrationSamples: number[] = []
@@ -386,9 +445,30 @@ export function useVAD(config: Partial<VADConfig> = {}) {
     }
 
     const now = Date.now()
+
+    // ONSET still uses the configured threshold — starting a take on a relative
+    // rule would mean the room's own tone could bootstrap itself into "speech".
+    // Only the ENDING is judged relatively; see SPEECH_DROP_RATIO.
     const isAboveThreshold = rms > cfg.silenceThreshold
 
-    if (isAboveThreshold) {
+    // Track how loud this speaker actually is inside this take, and derive the
+    // floor that "have they stopped?" is judged against. Bounded above by the
+    // configured threshold (so this can never cut sooner than today) and below
+    // by the room's own measured tone (so it can never stop cutting at all).
+    if (isAboveThreshold && rms > speechLevel.value) speechLevel.value = rms
+    const roomFloor = calibration.value ? calibration.value.noiseFloor * NOISE_FLOOR_MARGIN : 0
+    const silenceFloor = speechLevel.value > 0
+      ? Math.min(cfg.silenceThreshold, Math.max(roomFloor, speechLevel.value * SPEECH_DROP_RATIO))
+      : cfg.silenceThreshold
+    endOfSpeechFloor.value = silenceFloor
+
+    // Starting a take needs the full threshold; SUSTAINING one only needs to
+    // stay above the relative floor. That asymmetry is the whole fix: the
+    // quieter half of a phrase no longer reads as a pause just because an
+    // absolute threshold was calibrated on top of it.
+    const isSound = isSpeaking.value ? rms > silenceFloor : isAboveThreshold
+
+    if (isSound) {
       // Sound detected. Before clearing the run of silence, measure it: a dip
       // that ends here without ever having been counted as a boundary is a
       // pause the recordist made and the recorder did not keep — the single
@@ -414,6 +494,7 @@ export function useVAD(config: Partial<VADConfig> = {}) {
         chunkGaps = []
         shortPauses.value = 0
         longestShortPauseMs.value = 0
+        speechLevel.value = rms
         if (onSpeechStart) {
           onSpeechStart()
         }
@@ -483,9 +564,17 @@ export function useVAD(config: Partial<VADConfig> = {}) {
               // the audio is the only one who can act on them, and this is the
               // last moment they exist.
               if (onSpeechEnd) {
+                // How far the signal had actually dropped when we called it an
+                // ending. A genuine end-of-phrase is far down into room tone; a
+                // few dB means we ended a take the recordist was still reading.
+                const dropAtCutDb = speechLevel.value > 0 && rms > 0
+                  ? 20 * Math.log10(speechLevel.value / rms)
+                  : Infinity
                 onSpeechEnd(speechDuration, chunkGaps.map(g => ({ ...g })), {
                   shortPauses: shortPauses.value,
-                  longestShortPauseMs: longestShortPauseMs.value
+                  longestShortPauseMs: longestShortPauseMs.value,
+                  endedWhileLoud: Number.isFinite(dropAtCutDb) && dropAtCutDb < 15,
+                  dropAtCutDb: Number.isFinite(dropAtCutDb) ? Math.round(dropAtCutDb) : 99
                 })
               }
             } else if (onSpeechAborted) {
@@ -509,6 +598,7 @@ export function useVAD(config: Partial<VADConfig> = {}) {
             chunkGaps = []
             shortPauses.value = 0
             longestShortPauseMs.value = 0
+            speechLevel.value = 0
           }
         }
       }
@@ -569,6 +659,11 @@ export function useVAD(config: Partial<VADConfig> = {}) {
     silenceMs,
     shortPauses,
     longestShortPauseMs,
+    // The relative end-of-speech floor and the level it is derived from, so the
+    // VAD lab and the studio can see the number the cut decision was really
+    // made on rather than the configured one. See SPEECH_DROP_RATIO.
+    speechLevel,
+    endOfSpeechFloor,
     // The two constants the recordist is being asked to hit, published so the
     // UI can DRAW the window instead of leaving it a secret. Reading them off
     // the live config means the picture cannot drift from the behaviour.
