@@ -247,3 +247,120 @@ test('a CLIP flagged rerecord_wanted re-opens the pod line of the same identity'
   assert.equal(line.rerecordReason, 'trim-chain damage', 'the reason rides along to the recordist')
   assert.equal(q.lines.filter((l) => l.kind === 'rerecord').length, 0, 'still ONE line, not two')
 })
+
+// ── dialect: the second filter (Tom, 2026-08-19) ────────────────────────────
+//
+// The 197 Southern lines that sat in Aran's and Catrin's queues were not a
+// casting mistake the queue could have caught: the queue is by LANGUAGE, cym_s
+// is Welsh, and cym_s named Aran and Catrin in its own cast, so every rule the
+// queue had said those lines were his. What was missing is that the SOUTHERN
+// course is Southern as a fact of its content, whoever is cast on it.
+//
+// The default is what makes this a no-op everywhere else: a course with no
+// dialect and a voice with no dialect are both 'standard', so the match is
+// trivially true for every language that has one accent — which is all of them
+// but Welsh. The first test below is the regression test for that, in miniature.
+
+/** The Welsh fixture with the dialects actually declared, plus a Southern cast. */
+function dialectFixture() {
+  const f = fixture()
+  f.courses.find((c) => c.course_code === 'cym_n_for_eng').dialect = 'north'
+  f.courses.find((c) => c.course_code === 'cym_s_for_eng').dialect = 'south'
+  f.language_recording_policy[0].voices = {
+    m: { name: 'Aran', voiceId: 'human_aran_cym_n', dialect: 'north' },
+    f: { name: 'Catrin', voiceId: 'human_catrinlliar_cym_n', dialect: 'north',
+      aliases: ['human_catrinlliar_cym_s'] },
+    'm:south': { name: 'Richard', voiceId: 'human_richard_cym_s', dialect: 'south' },
+    'f:south': { name: 'Mali', voiceId: 'human_mali_cym_s', dialect: 'south' },
+  }
+  return f
+}
+
+test('an undeclared dialect is the default on both sides, so nothing changes', async () => {
+  // The unmodified fixture declares no dialect anywhere — the shape every
+  // single-dialect language on the estate is in. Both courses and both voices
+  // fall to 'standard' and the queues are exactly what they were.
+  const db = stubDb(fixture())
+  const aran = await resolveRecordist(db, 'human_aran_cym_n')
+  assert.equal(aran.dialect, 'standard', 'an untagged voice has the default, never null')
+  const q = await buildQueue(db, aran, { includeRecorded: true })
+  assert.deepEqual(q.lines.map((l) => l.text).sort(), ['Bore da.', 'Nos da.'])
+  assert.equal(q.duplicatesCollapsed, 1, 'and one line still fills both courses')
+})
+
+test('a Southern line never enters a Northern queue', async () => {
+  const f = dialectFixture()
+  const aran = await buildQueue(stubDb(f), await resolveRecordist(stubDb(f), 'human_aran_cym_n'), { includeRecorded: true })
+  // 'Nos da.' is cym_s only; 'Bore da!' is the cym_s copy of a line Aran also
+  // has in cym_n. Neither may reach him through the Southern course.
+  assert.deepEqual(aran.lines.map((l) => l.text), ['Bore da.'])
+  assert.equal(aran.lines[0].courseCode, 'cym_n_for_eng')
+  assert.equal(aran.lines[0].alsoFills, 0,
+    'and his take is no longer promised to the Southern pod it must not fill')
+})
+
+test('the Southern voices get the Southern lines, in their own queue', async () => {
+  const f = dialectFixture()
+  const richard = await buildQueue(stubDb(f), await resolveRecordist(stubDb(f), 'human_richard_cym_s'), { includeRecorded: true })
+  assert.deepEqual(richard.lines.map((l) => l.text).sort(), ['Bore da!', 'Nos da.'])
+  assert.ok(richard.lines.every((l) => l.courseCode === 'cym_s_for_eng'))
+  // Casting a Southern man does not disturb the Northern one — the collision
+  // that made casting Mali and Richard impossible before this change.
+  const aran = await buildQueue(stubDb(f), await resolveRecordist(stubDb(f), 'human_aran_cym_n'), { includeRecorded: true })
+  assert.deepEqual(aran.lines.map((l) => l.text), ['Bore da.'])
+})
+
+test('the dialect comes from the course, never from who is cast on it', async () => {
+  // The original bug in one assertion. cym_s_for_eng names Aran (m, north) in
+  // its OWN cast — exactly the state the live course was in — and it is still
+  // Southern, so his queue must stay Northern-only.
+  const f = dialectFixture()
+  assert.equal(f.courses.find((c) => c.course_code === 'cym_s_for_eng').voice_config.podCast.Aran.voiceId,
+    'human_aran_cym_n', 'the Southern course really is cast to the Northern man')
+  const aran = await buildQueue(stubDb(f), await resolveRecordist(stubDb(f), 'human_aran_cym_n'), { includeRecorded: true })
+  assert.equal(aran.lines.some((l) => l.courseCode === 'cym_s_for_eng'), false)
+})
+
+test('a voice resolves to its own dialect, and an alias link opens the same queue', async () => {
+  const db = stubDb(dialectFixture())
+  const mali = await resolveRecordist(db, 'human_mali_cym_s')
+  assert.equal(mali.dialect, 'south')
+  assert.equal(mali.gender, 'f', 'gender is the slot key’s leading token')
+  const catrin = await resolveRecordist(db, 'human_catrinlliar_cym_s')
+  assert.equal(catrin.voiceId, 'human_catrinlliar_cym_n')
+  assert.equal(catrin.dialect, 'north',
+    'an OLD cym_s-spelt alias of the Northern woman is still the Northern woman')
+})
+
+test('a flagged re-record is routed by its course’s dialect, not just its gender', async () => {
+  const f = dialectFixture()
+  f.course_audio = [
+    { id: 'caS', course_code: 'cym_s_for_eng', role: 'presentation', language: 'cym',
+      voice_id: 'human', text: 'Shwmae.', rerecord_wanted: { reason: 'clipped', voice_gender: 'm' } },
+  ]
+  const aran = await buildQueue(stubDb(f), await resolveRecordist(stubDb(f), 'human_aran_cym_n'), { includeRecorded: true })
+  assert.equal(aran.lines.some((l) => l.id === 'caS'), false, 'a Southern clip is not Northern work')
+  const richard = await buildQueue(stubDb(f), await resolveRecordist(stubDb(f), 'human_richard_cym_s'), { includeRecorded: true })
+  assert.equal(richard.lines.some((l) => l.id === 'caS'), true)
+})
+
+test('a same-dialect line in two courses still collapses to one recording', async () => {
+  // Dialect narrows the collapse; it must not abolish it. Two NORTHERN courses
+  // sharing a line are still one read.
+  const f = dialectFixture()
+  f.courses.push({ course_code: 'cym_n2_for_eng', target_lang: 'cym', known_lang: 'eng', dialect: 'north', voice_config: CAST })
+  f.listening_pods.push({ id: 'p_n2', course_code: 'cym_n2_for_eng', slug: 'pod-0' })
+  f.listening_pod_sentences.push({ id: 's7', pod_id: 'p_n2', global_order: 1, speaker: 'Aran', target_text: 'Bore da.', known_text: 'Good morning.' })
+  const aran = await buildQueue(stubDb(f), await resolveRecordist(stubDb(f), 'human_aran_cym_n'), { includeRecorded: true })
+  assert.equal(aran.lines.length, 1)
+  assert.equal(aran.lines[0].alsoFills, 1, 'one Northern take still fills both Northern courses')
+})
+
+test('dialect tags are compared case- and space-insensitively', async () => {
+  const f = dialectFixture()
+  f.courses.find((c) => c.course_code === 'cym_n_for_eng').dialect = '  North '
+  f.language_recording_policy[0].voices.m.dialect = 'NORTH'
+  const aran = await buildQueue(stubDb(f), await resolveRecordist(stubDb(f), 'human_aran_cym_n'), { includeRecorded: true })
+  assert.deepEqual(aran.lines.map((l) => l.text), ['Bore da.'],
+    'spelling drift must never silently empty a recordist’s queue')
+})

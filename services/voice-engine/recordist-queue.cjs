@@ -10,14 +10,36 @@
  *
  * WHAT A RECORDIST'S QUEUE IS
  *
- *   1. voiceId → (language, gender) from language_recording_policy.voices.
+ *   1. voiceId → (language, gender, dialect) from language_recording_policy.voices.
  *   2. every pod sentence in EVERY course whose canonicalLanguage(target_lang)
  *      is that language — cym_n_for_eng and cym_s_for_eng are one Welsh queue,
  *      not two.
  *   3. kept when the sentence's speaker maps, through that course's own
- *      voice_config.podCast, to the recordist's GENDER. Gender is the filter,
- *      not the voice id: a course cast naming human_aran_cym_s and a policy
- *      naming human_aran_cym_n are the same man reading Welsh.
+ *      voice_config.podCast, to the recordist's GENDER, AND the course's own
+ *      dialect is the recordist's dialect. Gender is not the voice id: a course
+ *      cast naming human_aran_cym_s and a policy naming human_aran_cym_n are the
+ *      same man reading Welsh.
+ *
+ *      DIALECT IS THE SECOND FILTER (Tom, 2026-08-19). Rule 2 is what makes one
+ *      Welsh queue out of two Welsh courses, and until this filter existed that
+ *      was the whole story: 197 SOUTHERN pod lines sat in the two NORTHERN
+ *      speakers' lists, waiting to be read in the wrong accent, and nothing
+ *      flagged it because the queue was working exactly as built
+ *      (docs/welsh-south-pulled-from-northern-queues-2026-08-19.md). The fix is
+ *      not to split the queue by course — cym_n and cym_s still share one, and
+ *      still collapse a shared line into one recording. It is that a line's
+ *      DIALECT, a durable fact of the course's content (`courses.dialect`), must
+ *      equal the reading voice's own dialect tag.
+ *
+ *      Dialect is NOT keyed on the casting. Reading it off "who is cast" is what
+ *      re-encodes the course fact indirectly, and that indirection is the
+ *      original bug: cym_s_for_eng was cast to Aran and Catrin, so by that logic
+ *      it WAS Northern. The course says what it is; the cast does not.
+ *
+ *      Every language but Welsh has one dialect and every one of its courses and
+ *      voices carries the same default tag, so the match is trivially true and
+ *      this changes nothing for them — a no-op by construction, not by a special
+ *      case (services/shared/dialect.cjs).
  *   4. COLLAPSED BY CLIP IDENTITY. A clip's identity is
  *      (language, text_normalized, voice_id) — services/shared/clip-identity.cjs
  *      — and course_code is not in it here BY DESIGN: the same sentence in three
@@ -59,6 +81,7 @@ const { canonicalLanguage, canonicalVoiceId, tryCanonicalVoiceId } = require('..
 const { voiceSpellings } = require('../shared/clip-identity-lookup.cjs')
 const { normalizeForDb, audioKeyCandidates } = require('../shared/text-normalize.cjs')
 const { canonicalSpeakerName } = require('./pods-registration.cjs')
+const { canonicalDialect, courseDialect, bucketKey } = require('../shared/dialect.cjs')
 const langService = require('../language-code-service.cjs')
 
 /** Display name for a canonical database_code, falling back to the code itself. */
@@ -78,7 +101,9 @@ function languageName(language) {
 async function coursesForLanguage(db, language) {
   const { data, error } = await db
     .from('courses')
-    .select('course_code, target_lang, known_lang, voice_config')
+    // `dialect` rides along on every read of this list: it is a property of the
+    // course's content, and every consumer here routes on it.
+    .select('course_code, target_lang, known_lang, voice_config, dialect')
   if (error) throw new Error(`course list failed: ${error.message}`)
   return (data || []).filter((c) => {
     try {
@@ -146,9 +171,18 @@ async function resolveRecordist(db, voiceIdParam) {
 
   for (const policy of policies) {
     const voices = policy.voices || {}
-    for (const gender of Object.keys(voices)) {
-      const entry = voices[gender] || {}
+    // The key is a SLOT, not the gender. It was the gender when a language could
+    // hold one voice per gender; a two-dialect language holds four, so the slot
+    // is spelt 'm' / 'f' for the single-dialect default and 'm:south' / 'f:south'
+    // when it has to be distinguished. The authoritative gender and dialect are
+    // the entry's own fields — `gender` falls back to the slot's leading token
+    // precisely so every row written before this change keeps meaning what it
+    // meant, including Finnish's free-form 'test' slot.
+    for (const slot of Object.keys(voices)) {
+      const entry = voices[slot] || {}
       if (!entry.voiceId) continue
+      const gender = String(entry.gender || slot.split(':')[0] || '').toLowerCase()
+      const dialect = canonicalDialect(entry.dialect)
       // The policy row's own `aliases` are the FIRST source of truth — the
       // per-language decision lives in one table, so the older spellings of a
       // recordist's voice belong beside the voice, not scattered per course.
@@ -168,6 +202,8 @@ async function resolveRecordist(db, voiceIdParam) {
         displayName: entry.name || entry.voiceId,
         email: entry.email || null,
         gender,
+        dialect,
+        slot,
         language: policy.language,
         languageName: languageName(policy.language),
         humanOnly: !!policy.human_only,
@@ -223,8 +259,9 @@ function targetRerecordWanted(sentence) {
 }
 
 /**
- * Every pod line of a language, partitioned by the gender its course cast
- * names, collapsed by clip identity — computed ONCE per language.
+ * Every pod line of a language, partitioned by (DIALECT, GENDER) — the dialect
+ * its own course declares and the gender its own course cast names — collapsed
+ * by clip identity, computed ONCE per language.
  *
  * Both the recordist's queue and the coverage bar read this, so the number on
  * Tom's bar and the number on Aran's page cannot drift apart. It also means
@@ -232,12 +269,19 @@ function targetRerecordWanted(sentence) {
  * even for a language that has no cast at all yet (bre, pdc), where every line
  * is uncast and the old per-voice loop would have reported a flat zero.
  *
- * @returns {Promise<{byGender: Map<string, Array>, uncast, duplicatesCollapsed, courses: string[]}>}
+ * THE COLLAPSE IS PER BUCKET, and that is the point rather than a side effect:
+ * two courses of the SAME dialect sharing a line are still one recording, and
+ * two courses of DIFFERENT dialects sharing a spelling are not — a Northern take
+ * filed into a Southern pod is the same defect as a Northern queue holding a
+ * Southern line, one step further down the pipe. It is what `alsoFills` used to
+ * promise across cym_n and cym_s.
+ *
+ * @returns {Promise<{byBucket: Map<string, Array>, uncast, duplicatesCollapsed, courses: string[]}>}
  */
 async function buildLanguageLines(db, language) {
   const courses = await coursesForLanguage(db, language)
   const byCourse = new Map(courses.map((c) => [c.course_code, c]))
-  const empty = { byGender: new Map(), uncast: 0, duplicatesCollapsed: 0, courses: [...byCourse.keys()] }
+  const empty = { byBucket: new Map(), uncast: 0, duplicatesCollapsed: 0, courses: [...byCourse.keys()] }
   if (!courses.length) return empty
 
   const { data: pods, error: podErr } = await db
@@ -261,8 +305,8 @@ async function buildLanguageLines(db, language) {
       String(a.id).localeCompare(String(b.id))
   })
 
-  const byGender = new Map()
-  const seen = new Map()   // gender -> Map(normalized text -> representative line)
+  const byBucket = new Map()
+  const seen = new Map()   // bucket -> Map(normalized text -> representative line)
   let uncast = 0
   let duplicatesCollapsed = 0
 
@@ -278,9 +322,11 @@ async function buildLanguageLines(db, language) {
       uncast += 1
       continue
     }
-    if (!byGender.has(gender)) { byGender.set(gender, []); seen.set(gender, new Map()) }
+    // From the COURSE, never from the cast — the whole ruling in one line.
+    const bucket = bucketKey(courseDialect(course), gender)
+    if (!byBucket.has(bucket)) { byBucket.set(bucket, []); seen.set(bucket, new Map()) }
     const key = normalizeForDb(text)
-    const seenForGender = seen.get(gender)
+    const seenForGender = seen.get(bucket)
     if (seenForGender.has(key)) {
       // One recording, not three. The duplicate is remembered against the
       // representative so a finished take can fill every course's pod.
@@ -306,7 +352,7 @@ async function buildLanguageLines(db, language) {
       rerecordWanted: targetRerecordWanted(s),
     }
     seenForGender.set(key, line)
-    byGender.get(gender).push(line)
+    byBucket.get(bucket).push(line)
   }
 
   // ── SECOND SOURCE: anything else that needs re-recording ──────────────────
@@ -339,9 +385,14 @@ async function buildLanguageLines(db, language) {
       uncast += 1
       continue
     }
-    if (!byGender.has(gender)) { byGender.set(gender, []); seen.set(gender, new Map()) }
+    // A clip belongs to a course, and the course states the dialect. Nothing is
+    // read off the clip itself: a presentation clip is stored under the shared
+    // untagged voice 'human', so it carries no dialect of its own to trust.
+    const course = byCourse.get(w.course_code)
+    const bucket = bucketKey(courseDialect(course), gender)
+    if (!byBucket.has(bucket)) { byBucket.set(bucket, []); seen.set(bucket, new Map()) }
     const key = normalizeForDb(text)
-    const seenForGender = seen.get(gender)
+    const seenForGender = seen.get(bucket)
     if (seenForGender.has(key)) {
       // Same clip identity as a pod line already in the queue: the want belongs
       // to that line. This is the path that carries "re-record everything you
@@ -372,10 +423,10 @@ async function buildLanguageLines(db, language) {
       rerecordReason: w.rerecord_wanted.reason || null,
     }
     seenForGender.set(key, line)
-    byGender.get(gender).push(line)
+    byBucket.get(bucket).push(line)
   }
 
-  return { byGender, uncast, duplicatesCollapsed, courses: [...byCourse.keys()] }
+  return { byBucket, uncast, duplicatesCollapsed, courses: [...byCourse.keys()] }
 }
 
 /**
@@ -416,7 +467,7 @@ async function fetchRerecordWanted(db, courseCodes) {
  */
 async function buildQueue(db, recordist, { includeRecorded = false } = {}) {
   const language = await buildLanguageLines(db, recordist.language)
-  const mine = language.byGender.get(recordist.gender) || []
+  const mine = language.byBucket.get(bucketKey(recordist.dialect, recordist.gender)) || []
   return finishQueue(db, recordist, mine, language, { includeRecorded })
 }
 
@@ -566,21 +617,38 @@ async function buildCoverage(db) {
     // and bre's uncast lines are visible rather than reported as a flat zero.
     const language = await buildLanguageLines(db, policy.language)
 
-    const perVoice = (await Promise.all(Object.keys(voices).map(async (gender) => {
-      const recordist = await resolveRecordist(db, voices[gender].voiceId)
+    const claimed = new Set()
+    const perVoice = (await Promise.all(Object.keys(voices).map(async (slot) => {
+      const recordist = await resolveRecordist(db, voices[slot].voiceId)
       if (!recordist) return null
-      const q = await finishQueue(db, recordist, language.byGender.get(recordist.gender) || [], language, { includeRecorded: true })
+      const bucket = bucketKey(recordist.dialect, recordist.gender)
+      claimed.add(bucket)
+      const q = await finishQueue(db, recordist, language.byBucket.get(bucket) || [], language, { includeRecorded: true })
       return {
         voiceId: recordist.voiceId,
         name: recordist.displayName,
         gender: recordist.gender,
+        dialect: recordist.dialect,
         total: q.total,
         recorded: q.recorded,
       }
     }))).filter(Boolean)
 
-    // Ordered by gender so the bar does not reshuffle between two loads.
-    perVoice.sort((a, b) => String(a.gender).localeCompare(String(b.gender)))
+    // Ordered so the bar does not reshuffle between two loads. Dialect first,
+    // because a two-dialect language reads as two pairs, not four voices.
+    perVoice.sort((a, b) =>
+      String(a.dialect).localeCompare(String(b.dialect)) ||
+      String(a.gender).localeCompare(String(b.gender)))
+
+    // Lines that ARE cast to a gender, in a dialect this language has no voice
+    // for. Before dialects existed these could not occur; now they are exactly
+    // the Southern Welsh backlog, and counting them is what stops the fix from
+    // hiding what it moved. They are NOT folded into `uncast`, which means
+    // something different and narrower — no gender on the speaker at all.
+    let unrouted = 0
+    for (const [bucket, lines] of language.byBucket.entries()) {
+      if (!claimed.has(bucket)) unrouted += lines.length
+    }
 
     const total = perVoice.reduce((n, v) => n + v.total, 0)
     const recorded = perVoice.reduce((n, v) => n + v.recorded, 0)
@@ -591,6 +659,7 @@ async function buildCoverage(db) {
       total,
       recorded,
       uncast: language.uncast,
+      unrouted,
       pct: total ? Math.round((recorded / total) * 1000) / 10 : 0,
       voices: perVoice,
     }
@@ -631,7 +700,12 @@ async function propagateTakeToDuplicates({ db, recordist, sentenceId, text, s3Ke
     (() => {
       const course = byCourse.get(podById.get(s.pod_id).course_code)
       const entry = castEntryFor(course.voice_config && course.voice_config.podCast, s.speaker)
-      return entry && String(entry.gender || '').toLowerCase() === recordist.gender
+      if (!entry || String(entry.gender || '').toLowerCase() !== recordist.gender) return false
+      // The same filter as the queue, for the same reason. The queue only ever
+      // collapsed lines within one dialect, so this is the other half of that
+      // promise: without it a Northern take would be filed straight into the
+      // Southern pods it was deliberately never queued for.
+      return courseDialect(course) === canonicalDialect(recordist.dialect)
     })()
   )
 

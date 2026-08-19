@@ -37,13 +37,17 @@
         <p class="bar-caption">
           {{ row.recorded }} of {{ row.total }} recorded<span v-if="row.total"> — {{ Math.round(row.pct ?? (row.recorded / row.total * 100)) }}%</span>
           <span v-if="row.uncast" class="uncast"> · {{ row.uncast }} not cast to a voice</span>
+          <!-- Cast to a gender, but in a dialect this language has no voice for.
+               Counted separately from `uncast` because the remedy is different:
+               these lines need a voice tagged with their dialect, not a cast. -->
+          <span v-if="row.unrouted" class="uncast"> · {{ row.unrouted }} in a dialect with no voice cast</span>
         </p>
 
         <ul class="voices">
           <li v-for="(v, i) in row.voices || []" :key="v.voiceId" class="voice">
             <span class="swatch" :class="`seg-${i % 2}`"></span>
             <span class="voice-name">{{ v.name || v.voiceId }}</span>
-            <span class="voice-gender">{{ v.gender }}</span>
+            <span class="voice-gender">{{ v.gender }}<template v-if="v.dialect && v.dialect !== 'standard'"> · {{ v.dialect }}</template></span>
             <span class="voice-count">{{ v.recorded }} of {{ v.total }}</span>
             <button class="copy-btn" @click="copyLink(v.voiceId)">
               {{ copied === v.voiceId ? 'Copied' : 'Copy link' }}

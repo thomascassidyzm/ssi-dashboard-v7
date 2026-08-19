@@ -40,6 +40,7 @@ const {
 } = require('./recordist-queue.cjs')
 const { canonicalLanguage, canonicalVoiceId, ClipIdentityError } = require('../shared/clip-identity.cjs')
 const { audioKeyCandidates } = require('../shared/text-normalize.cjs')
+const { bucketKey } = require('../shared/dialect.cjs')
 
 const MAX_TAKE_BYTES = 60 * 1024 * 1024
 
@@ -128,6 +129,9 @@ module.exports = function createRecordistRouter({
         language: recordist.language,
         languageName: recordist.languageName,
         gender: recordist.gender,
+        // Which accent this queue is. The recordist should be able to see, on
+        // their own page, which of a language's dialects they are reading.
+        dialect: recordist.dialect,
         total: queue.total,
         recorded: queue.recorded,
         remaining: queue.remaining,
@@ -493,15 +497,36 @@ module.exports = function createRecordistRouter({
         if (!voices || typeof voices !== 'object' || Array.isArray(voices)) {
           return res.status(400).json({ error: 'voices must be an object keyed by gender' })
         }
-        for (const [gender, entry] of Object.entries(voices)) {
-          if (!['m', 'f'].includes(gender)) return res.status(400).json({ error: `voices key must be 'm' or 'f' (got ${gender})` })
-          if (!entry || !entry.voiceId) return res.status(400).json({ error: `voices.${gender}.voiceId required` })
+        // A slot is 'm' / 'f' for a single-dialect language, or 'm:<dialect>' /
+        // 'f:<dialect>' when the language has more than one — Welsh needs four
+        // slots, not two, and a key of 'm' alone cannot say which accent it
+        // means. The gender is the leading token; the dialect is stated on the
+        // ENTRY (entry.dialect), because the slot key is only a unique name and
+        // the tag is the thing the queue routes on.
+        const seenBuckets = new Set()
+        for (const [slot, entry] of Object.entries(voices)) {
+          const gender = String(slot).split(':')[0]
+          if (!['m', 'f'].includes(gender)) return res.status(400).json({ error: `voices key must be 'm', 'f', 'm:<dialect>' or 'f:<dialect>' (got ${slot})` })
+          if (!entry || !entry.voiceId) return res.status(400).json({ error: `voices.${slot}.voiceId required` })
+          if (entry.gender !== undefined && String(entry.gender).toLowerCase() !== gender) {
+            return res.status(400).json({ error: `voices.${slot}.gender (${entry.gender}) contradicts its slot key` })
+          }
+          if (entry.dialect !== undefined && (typeof entry.dialect !== 'string' || !entry.dialect.trim())) {
+            return res.status(400).json({ error: `voices.${slot}.dialect must be a non-empty string when given` })
+          }
+          // Two voices in one (dialect, gender) bucket is not a richer cast, it
+          // is an ambiguous queue: the second one would silently never be read.
+          const bucket = bucketKey(entry.dialect, gender)
+          if (seenBuckets.has(bucket)) {
+            return res.status(400).json({ error: `two voices share the bucket ${bucket} — one voice per gender per dialect` })
+          }
+          seenBuckets.add(bucket)
           try {
             // Refuse an unspellable voice here rather than mint a queue nobody
             // can be paid attribution under.
             canonicalVoiceId(entry.voiceId)
           } catch (e) {
-            return res.status(400).json({ error: `voices.${gender}.voiceId: ${e.message}` })
+            return res.status(400).json({ error: `voices.${slot}.voiceId: ${e.message}` })
           }
         }
       }
