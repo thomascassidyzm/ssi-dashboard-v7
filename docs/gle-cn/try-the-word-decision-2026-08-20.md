@@ -306,7 +306,49 @@ will flag it, and whoever applies this should expect the flag and not read it as
 
 **Nothing costs money. All three courses have zero audio rows — I checked each one.**
 
-### Connemara — 3 sentences, 1 building block, 13 practice phrases
+### ⚠ READ THIS BEFORE ANYONE SWEEPS: key on the ENGLISH, never on the Irish
+
+**A sweep that searches the Irish will silently corrupt this course, and nothing will look
+wrong afterwards.** This is the one instruction on this page that must not be skimmed.
+
+The reason is the whole point of the ruling: **`ag iarraidh` means both "want" and "trying".**
+In seed 195 alone it appears **3 times meaning *trying* and 17 times meaning *want***. Here are
+two rows from that seed, side by side:
+
+> *do you **want** to find the money?* → *an bhfuil tú **ag iarraidh** an t-airgead a fháil?*
+> *I'm **trying** to find the money* → *tá mé **ag iarraidh** an t-airgead a fháil*
+
+**The Irish is structurally identical. Only the English tells them apart.** A sweep keyed on the
+Irish string would rewrite "I want the money" into a try-form, and because both readings are
+perfectly grammatical Irish, **no gate, no reviewer and no learner would ever flag it.**
+
+**The rule, stated as the sweep must implement it:**
+
+1. **A row is in scope only if its ENGLISH contains *try / tried / trying* AND its IRISH
+   contains *iarracht*.** Both conditions, always.
+2. **Any row containing *iarraidh* is out of scope, whatever its English.** Those rows are
+   already correct under this ruling and must not be touched — this includes every "trying" row,
+   which needs no edit at all because it already says *ag iarraidh*.
+3. **Never write a rule that matches *iarraidh*.** It is not a typo of *iarracht*; it is the
+   word we are keeping.
+
+**Why this ruling is safer than it looks.** Because the recommended form is the one already in
+place for the progressive, **the dangerous rows are exactly the rows the sweep must leave
+alone.** The sweep only ever touches *iarracht* — a different word that never means "want".
+
+**I hunted the false positives rather than trusting the count.** All 23 matching phrases were
+read individually: every one has *try / trying* in its English, and *iarracht* matched no
+unintended word. **Zero false positives in this set** — but that is a fact about the course as it
+stands tonight, not a licence to skip the English condition, because the course is still moving.
+
+**The permanent cost, named honestly.** After this ruling, want and try are the same Irish string
+in Connemara **forever**. No future audit, QA pass or sweep will ever be able to separate the two
+senses by looking at the Irish. **Every future check on this part of the vocabulary must key on
+the English gloss.** That is a real maintenance cost of the decision, it is the direct price of
+the thing that makes the decision good, and it should go in the course's word register alongside
+the ruling itself.
+
+### Connemara — 3 sentences, 2 building blocks, 23 practice phrases
 
 The build has advanced to 300 translated sentences and chose *ag iarraidh* on its own for
 almost everything, so **only three sentences still carry the retired form**:
@@ -321,9 +363,18 @@ almost everything, so **only three sentences still carry the retired form**:
 > a*, and *ag goil a iarraidh* could be misread as "going to ask". It may want rephrasing rather
 > than substitution, and I am flagging it rather than pretending it is mechanical.
 
-Behind those: **one building block** (*to try → iarracht a dhéanamh*, replaced by *to try →
-iarraidh*) and **13 practice phrases** — 12 under seed 8, one under seed 25 (*"are you going to
-try"*). **All 695 phrases were counted, not sampled. Nothing else in the course carries it.**
+Behind those: **two building blocks** — *to try → iarracht a dhéanamh* (seed 8) and *to try to
+help → dhéanamh iarracht cabhrú* (seed 236) — and **23 practice phrases**, spread across seeds
+**8, 25, 190, 191 and 236**. Listed by their English, which is how the sweep must find them:
+*"I'm going to try"*, *"I'm going to try to speak Irish"*, *"are you going to try"*, *"do you
+mind trying to remember?"*, *"I don't mind trying to remember the whole sentence"*, *"she's
+going to try to help"*, and so on. **Every phrase was counted and read, not sampled.**
+
+**Two notes for whoever applies it.** Seed 236's block is malformed independently of this ruling
+— it bundles "to help" into the try-word and drops the genitive — so it wants rebuilding rather
+than substituting. And seeds **190 and 191** reached for the retired form only in the last hour;
+they are *"mind trying to…"*, a frame that takes the bare word: *an miste leat **iarraidh**
+cuimhneamh?*
 
 Seeds 2, 6 and 7 change nothing.
 
@@ -411,7 +462,7 @@ the dictionary, grammatically impossible, and entered on a ruling that was never
 ## 9. What I am asking you to say
 
 **Yes** — and *iarraidh* becomes the word for "try" in Connemara and Kerry, three Connemara
-sentences and thirteen phrases change, the 22 Ulster sentences come off the coined form, and the
+sentences and twenty-three phrases change, the 22 Ulster sentences come off the coined form, and the
 *iarraidh/iarracht* problem stops existing.
 
 **Or "use *traíáil* in Connemara"** — if the dialect rail should beat your earlier ban. One
