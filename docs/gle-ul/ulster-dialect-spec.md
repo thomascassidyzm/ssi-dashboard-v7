@@ -25,9 +25,14 @@ isn't ours, and any future TTS voice will be trained on standard spelling.
 So a **lexical** Donegal item that Ó Dónaill lists as a headword in standard orthography is IN.
 A **spelling-only** respelling of a word that has a standard form is OUT.
 
-- IN: `fosta`, `achan`, `uilig`, `caidé`, `domh`, `ábalta`, `amharc`, `dada` — every one of these is
-  an Ó Dónaill headword (probes in §2).
-- OUT: `aríst` → `arís`, `a'` → `ag`, `'bhfuil` → `an bhfuil`, `goidé` → `caidé` (see §1e).
+- IN: `fosta`, `achan`, `uilig`, `goidé`, `domh`, `ábalta`, `amharc`, `a dhath` — every one is an
+  Ó Dónaill headword (probes in §2) **and** attested in Donegal speech (counts in §2e).
+- OUT: `aríst` → `arís`, `a'` → `ag`, `'bhfuil` → `an bhfuil`, `caidé` → `goidé` (see §1e).
+
+**The headword test alone is NOT sufficient — see §2e.** It wrongly excluded `madadh`, which is the
+Donegal word for "dog" (`madra` is used *zero* times in Donegal), and it wrongly proposed removing
+`tuigbheáil`. Where the dictionary and attested Donegal speech disagree, **speech wins** — that is
+Kai's ruling #1 applied to our own method, not just to the learner's dictionary.
 
 ### 0b. Register
 
@@ -52,11 +57,11 @@ No bracketed glosses on the known side, ever — they get read aloud.
 
 | Meaning | Donegal (use this) | Connemara course uses | Standard | Evidence |
 |---|---|---|---|---|
-| what | `caidé` | `céard` | `cad é` | FGB headword: `caidé = cad é` |
+| what | `goidé` (§1e) | `céard` | `cad é` | corpus: `goidé` UL 1,477 / CO 0 / MU 0 |
 | how | `cad é mar` / `caidé mar` | `cén chaoi` | `conas` | Wikipedia Ulster Irish; §2 |
 | also | `fosta` | `freisin` | `freisin` | FGB: `fosta 2, adv. Also.` with 4 examples |
 | every | `achan` | `chuile` | `gach aon` | FGB headword: `achan = gach aon` |
-| all (the lot) | `uilig` | `ar fad` | `uile` | FGB headword: `uilig = uile` |
+| all (the lot) | `uilig` | `ar fad` | `uile` | FGB headword — but **NOT a dialect marker**: Connemara uses it nearly as much (UL 1,510 / CO 1,124) |
 | able to | `ábalta` | `in ann` | `in ann` | FGB: `ábalta, a3. Able, capable. ~ (ar) rud a dhéanamh` |
 | look / see (vb) | `amharc` | `breathnaigh` | `féach`/`amharc` | FGB full entry; Wikipedia gives W. Ulster `amhanc` |
 | sees | `tchí` / `tchíonn` | `feiceann` | `feiceann` | Wikipedia: `tchíom` "I see", independent form only |
@@ -64,7 +69,7 @@ No bracketed glosses on the known side, ever — they get read aloud.
 | we are | `tá muid` (analytic) | `tá muid` | `táimid` | FGB `muid`: "Tá, bhí, bheadh, ~" |
 | we (pron.) | `muid` | `muid` | `muid`/`sinn` | as above |
 | think | `síleann` / `sílim` | `ceapann`/`ceapaim` | either | FGB `síl 1`: "~im go bhfuil an ceart agat" |
-| nothing | `dada` | `tada` | `dada`/`tada` | FGB `dada` full entry with negative examples |
+| nothing | `a dhath` (§1e-bis) | `tada` | `dada`/`tada` | corpus: `dhath` UL 596 / CO 22 / MU 1 |
 | at all | `ar bith` | `ar bith` | `ar bith` | shared — no change |
 | again | `arís` | `arís` | `arís` | standard spelling; `aríst` is spelling-only, OUT |
 | can (be able) | `tig le` | `in ann` | `tig le`/`féad` | FGB `tar le 4`: "Tagann le, **tig le**, is able" |
@@ -94,9 +99,31 @@ Negation is the highest-frequency dialect feature in this seed set: the English 
 *didn't* ×25, *wouldn't* ×11, *doesn't* ×11, *couldn't* ×9, *I'm not* ×13. Whatever we choose here is
 668 seeds wide, and it is the single feature that most makes the course sound like Donegal.
 
-**This section is PROVISIONAL pending the measured ruling from job #536**, which is counting
-`cha`/`chan`/`char` against `ní`/`níor` in running Donegal text. What is already established from
-Ó Dónaill's `cha` entry and the Wikipedia Ulster Irish article:
+**RULED 2026-08-20 ON MEASURED EVIDENCE. The default negative is `ní` / `níl` / `níor`.**
+
+Job #536 never returned, but the question was settled twice over, independently:
+
+| | Donegal | Connemara | Kerry |
+|---|---|---|---|
+| `cha` + `chan` + `char` | **561** | 13 | 8 |
+| `ní` + `níor` + `níl` | **6,293** | 14,571 | 13,173 |
+
+`cha` **is** emphatically Ulster — better than 40:1 against the other two dialects. But `ní` is the
+default *even in Donegal*, by about 11:1; the cha-family is roughly **8%** of all negation, and
+`níl` alone outnumbers it fivefold. Job #530's separate corpus (1.36M tokens of Donegal speech,
+including the Béaloideas Beo folklore archive and the Doegen 1928–31 transcripts) reached the same
+answer from different material: `ní` ahead 3.2:1 in Gaeltacht speech and 9.1:1 in broadcast, and
+**`chan fhuil` is zero in both its Donegal sources** — "I'm not" is `níl mé`. Quiggin saw why as far
+back as 1906: in a single townland, `cha` predominated in one family and `ní` "almost exclusively"
+in another.
+
+So: **`ní` throughout, and a wholesale `ní`→`cha` sweep would be an error** — it would over-apply
+`cha` more than tenfold. The remaining open question is narrower: whether a *minority* of the 126
+independent-clause negatives should carry `cha` to reach the natural ~8%. That is a speaker's
+judgement on a marked subset, since natural `cha` use is conditioned by contradiction and emphasis,
+which cannot be read off the English.
+
+Background from Ó Dónaill's `cha` entry and the Wikipedia Ulster Irish article:
 
 - `cha` lenites b c f g m p s, eclipses d and t; `chan` before a vowel or before `f`+vowel;
   `char` with the past tense of regular verbs; `char`/`charbh` with the copula.
@@ -107,7 +134,7 @@ Negation is the highest-frequency dialect feature in this seed set: the English 
   *Chan fhuil sin ceart* · *Char ith sé é* · *Cha bhíonn do dheifir ort*.
 - `cha` is commonest in the **north** of the Donegal Gaeltacht — which is where Gaoth Dobhair is.
 
-**The overapplication trap, which holds whichever way #536 rules.** `cha` is an *independent-clause*
+**The overapplication trap, which holds regardless.** `cha` is an *independent-clause*
 particle. It does **not** replace:
 - subordinate "that…not" → `nach` / `nár`, never `cha`
 - negative relative clauses → `nach` / `nár`
@@ -116,13 +143,25 @@ particle. It does **not** replace:
 
 A translator who swaps every English negative for `cha` will produce confidently wrong Irish.
 
-### 1e. `caidé`, not `goidé`
+### 1e. `goidé`, not `caidé` — REVERSED 2026-08-20 on measured evidence
 
-Both are Ó Dónaill headwords and both resolve to `cad é`. `goidé` is the older Rann na Feirste
-literary spelling (Ó Grianna writes it); `caidé` is the modern Donegal standard-orthography spelling
-and is what Donegal writers and Ulster-dialect journalism use today. **Use `caidé` uniformly.** This
-is a consistency decision, not a correctness one — either would be defensible, but mixing them
-across 668 seeds would not be.
+**This section originally ruled the opposite way, and it was wrong.** It asserted that `caidé` "is
+what Donegal writers and Ulster-dialect journalism use today". That was an assertion with no
+evidence behind it, and two independent corpus counts contradict it flatly:
+
+| form | Donegal | Connemara | Kerry |
+|---|---|---|---|
+| `goidé` | **1,477** | 0 | 0 |
+| `caidé` | 45 | 3 | 0 |
+
+Donegal writes `goidé` **33 times as often**. Both are Ó Dónaill headwords resolving to `cad é`, so
+§0 admits either on the spelling test — which means Kai's ruling #1 decides it, and ruling #1 says
+what Donegal actually says wins. **Use `goidé` uniformly.** 43 seeds were normalised.
+
+### 1e-bis. `a dhath`, not `dada`
+
+Same correction, same evidence. `dada` is Connacht-leaning; the Donegal word for anything/nothing is
+`a dhath` — `dhath` UL 596 / CO 22 / MU 1 against `dada` UL 6 / CO 40 / MU 5. Four seeds normalised.
 
 ### 1f. Grammar rules Donegal requires
 

@@ -63,10 +63,17 @@ authority — it has never had a content pass and 0 of its 668 seeds are approve
 
 ### Authorities NOT consulted — stated plainly
 
-I did **not** open Ó Baoill, Quiggin's *Dialect of Donegal*, Hamilton's *Tory Island*, Wagner's
-*Gaeilge Theilinn*, Lucas's *Ros Goill*, Mac Congáil, the Doegen 1931 Donegal recordings, or any
-Ó Grianna / Mac Grianna prose. Two workers (#530, #536) were dispatched to reach exactly those and
-**neither returned** — see §5.
+**Job #530 returned at the very end of the build, and it read more than I did.** It reached
+`corpas.ie` at greater depth (1.36M tokens of specifically Donegal speech, including the
+**Béaloideas Beo** Donegal folklore archive), mined the **Doegen 1928–31 Donegal recordings** with
+their transcripts (98k characters), and read **Quiggin 1906**. It states plainly what it could not
+reach: Mac Grianna's *An Druma Mór* (access-restricted), *Caisleáin Óir* (not digitised), and
+Wagner, Hamilton, Lucas, Ó Baoill, Ó Searcaigh and Mac Congáil — **all print-only, all unread**.
+Sommerfelt's 1922 *Torr*, which is Gweedore itself, was rate-limited before it could be checked and
+is flagged as *unchecked, not absent* — the best unpursued lead.
+
+Job **#536, the `cha` ruling, never returned.** That question was instead settled by my own corpus
+work below, and #530's independent numbers agree with it.
 
 **A corpus WAS found, late in the job, and it changes this section.** `corpas.ie`'s CNG corpus has
 no dialect attribute, but RTÉ Raidió na Gaeltachta's regional desks are transcribed speech from
@@ -92,12 +99,12 @@ standard course's rendering of the *same* 668 English seeds:
 
 | | |
 |---|---|
-| Differs from the standard rendering | **555 / 668 (83.1%)** |
-| Word-for-word identical to standard | 113 (16.9%) |
-| Carrying an explicit Donegal lexical marker | **306 / 668 (45.8%)** |
+| Differs from the standard rendering | **558 / 668 (83.5%)** |
+| Word-for-word identical to standard | 110 (16.5%) |
+| Carrying an explicit Donegal lexical marker | **304 / 668 (45.5%)** |
 | Donegal marker types appearing at all | 20 of 23 |
 
-The 16.9% identical is mostly seeds where the dialects genuinely agree — `Tá mé ag iarraidh Gaeilge
+The 16.5% identical is mostly seeds where the dialects genuinely agree — `Tá mé ag iarraidh Gaeilge
 a labhairt leat anois` is the same line in all three dialects, and the Connemara course wrote it
 identically too. Inventing a difference there would be worse than useless.
 
@@ -116,10 +123,19 @@ because no seed says "sees". The third zero is `cha`, which is §5.
 ### Correctness
 
 Four independent workers re-checked seeds they did not translate, against Ó Dónaill and the spec.
-**Three have reported, covering 572 of the 668 seeds. The fourth — seeds 481–576, 96 seeds — was
-still running when this report was written, so that stretch has been translated and
-consistency-checked but NOT independently correctness-checked.** That is a real gap in coverage and
-it is named rather than smoothed over.
+**Three reported, covering 572 of the 668 seeds.** The fourth, on seeds 481–576, had still not
+returned, so **I read those 96 seeds myself**.
+
+That self-check found no new hard defects beyond the five block 6 had already flagged in its own
+output (`fíordhóchas` as a coinage at 481/482, a discontinuous predicate at 552, the supplied `orm`
+at 575/576, a `-fas` relative future at 493). The range carries the dialect strongly — `madadh`,
+`achan`, `cionn is go`, `goidé`, `iontach`, `úr`, `doiligh`, `foscailt`, `tríd an choill` and
+`ag an cheann` with Ulster lenition, `shíleadh mé` as an analytic past habitual.
+
+**But it is a weaker check than the other three ranges and should be treated as such.** I wrote the
+spec these seeds were judged against, so I am not an independent reviewer of them — that is exactly
+the blind spot that let `toisigh` and `caidé` through in the first place. Seeds 481–576 should be
+first in the queue if another checking pass is ever run.
 
 Across the 572 seeds actually checked, every one got a verdict — `ok` rows included, so coverage is
 demonstrated rather than asserted:
@@ -277,7 +293,24 @@ which is out; `Meas tú` is the natural Donegal move but is formally a question)
 "upsetting"** (575, 576 — FGB's `goill ar` requires a person, so an `orm` had to be supplied that
 the English deliberately lacks); **"bored"** (427 — `dubh dóite` is really "fed up").
 
-### 4. The dictionary rule was too strict, and it cost a word
+### 4. Two rulings of mine were REVERSED on evidence — including one I asserted without any
+
+**`caidé` → `goidé` (43 seeds).** Spec §1e originally ruled `caidé`, on my assertion that it is
+"what Donegal writers and Ulster-dialect journalism use today". **That was an assertion with no
+evidence behind it and it was wrong.** #530 contradicted it and my own partition reproduced the
+result exactly: **`goidé` UL 1,477 / CO 0 / MU 0** against **`caidé` UL 45 / CO 3 / MU 0**. Donegal
+writes `goidé` 33 times as often. Both are FGB headwords, so the spelling rule admits either — which
+means ruling #1 decides, and ruling #1 says what Donegal actually says wins. Reversed.
+
+**`dada` → `a dhath` (4 seeds).** Same correction from #530, same independent reproduction:
+`dhath` UL 596 / CO 22 / MU 1 against `dada` UL 6 / CO 40 / MU 5.
+
+**And one of the spec's "required Donegal forms" turns out not to be a dialect marker at all.**
+`uilig` is UL 1,510 but CO 1,124 — Connemara uses it nearly as much. It is correct Donegal, but it
+is not evidence the dialect landed, and #530 reached the same conclusion independently. `ábalta` is
+similar: Donegal *and* Munster (1,021 / 13 / 551), not Ulster-exclusive.
+
+### 5. The dictionary rule was too strict, and it cost a word
 
 The §0 rule "a form must be an Ó Dónaill headword" is what keeps the spelling standard, and it
 caught two real problems: `toisigh` is Ó Dónaill's variant of `tomhais` (*measure*), and
@@ -291,7 +324,7 @@ exactly what ruling #1 forbids. **Reversed; both seeds now read `madadh`.**
 The lesson, and it is a spec-level one: **the headword test is necessary but not sufficient, and
 corpus evidence outranks it.** Where they disagree, what Donegal actually says wins.
 
-### 5. Open spec questions a speaker should settle
+### 6. Open spec questions a speaker should settle
 
 - `cha bhfuil` vs `chan fhuil` for "is not" — FGB shows the second, Wikipedia gives the first as the
   Gweedore form.
