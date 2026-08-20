@@ -250,6 +250,60 @@ categorical *inside* Kerry, and the spec says so rather than overclaiming:
 
 ---
 
+## 7b. CORRECTIONS, 2026-08-20 — measured against Ó Sé + An tOileánach
+
+Two book-length Munster texts became available on this machine (~1.9M characters): **Ó Sé, *Gaeilge
+Chorca Dhuibhne*** (modern living West Kerry speech) and **Ó Criomhthain, *An tOileánach***. Where
+they disagree with the RnaG broadcast transcription, **Ó Sé wins for a learner's screen** — the RnaG
+source is transcribed speech and renders pronunciation, not orthography.
+
+Calibrated first, as required: `bhí` 1938, `agus` 4595, `duine` 380 — the search finds words known to
+be present, so its zeros are real.
+
+**Confirmed by the books, and now stated without hedging:**
+
+| | Ó Sé | An tOileánach | verdict |
+|---|---|---|---|
+| `bhí mé` / `tá mé` | **0** | **0** | the synthetic forms are **categorical**, not a preference |
+| `bhíos` | 45 | 100 | |
+| `dhein` vs `rinne` | 72 : 6 | 150 : 13 | `dhein` confirmed alive in both |
+| `ansan` vs `ansin` | 118 : 5 | 7 : 0 | confirmed |
+| `anso` vs `anseo` | 87 : 36 | 0 : 0 | confirmed |
+| `thar n-ais` vs `ar ais` | 12 : 3 | 20 : 1 | confirmed |
+| `chonac` / `ní fheaca` | 16 / 11 | 1 / 12 | confirmed; `fhaca` only 4 |
+| `Gaelainn` / **`Gaolainn` = 0** | 13 / 0 | 0 / 0 | confirmed — `Gaolainn` does not exist |
+| `tánn tú` vs **`tá tú` = 0** | 7 : 0 | 0 : 0 | confirmed |
+| `éigin` vs `éigint` | 125 : 12 | 70 : 0 | **`éigin`** — keep it |
+| `fé` vs `faoi` | 218 : 224 | 196 : 8 | `fé` confirmed (Ó Sé's `faoi` is largely his own prose) |
+
+**Two of my rulings are OVERTURNED and have been corrected in all rows:**
+
+1. **`inniubh` → `inniu`.** `inniubh` is **0** in both books; Ó Sé writes `inniu` 27×, An tOileánach
+   writes `indiu` 24×. My 1374:48 figure came from RnaG transcription, which is rendering the Kerry
+   pronunciation. It is not a written Munster form. **5 rows corrected.**
+2. **`muna` → `mara`.** Measured `mara` **148**, `muna` 15, `mura` 1. Neither my `muna` nor the other
+   operation's `mura` was right. **1 row corrected.**
+
+**One ruling weakened, honestly:** I wrote that `in ann` is Connacht. It is **not** — `in ann` is 37
+in the Munster books against `ábalta` at 15, and `ábalta ar` + VN (8) is as common as `ábalta` + bare
+VN (7). `ábalta` stays as the course's single choice for consistency, but the ban on `in ann` was
+too strong and the "bare verbal noun only" rule is not supported.
+
+**The `d'iarraidh` finding — this settles what "try" *means*, not yet how to spell it.** In the books
+`ag iarraidh` is **1** and `d'iarraidh` is **45**, and every concordance line is *trying*, never
+*wanting*: *"bhímíst d'iarraidh é a leanúint amach"*, *"Bhí báid an Oileán d'iarraidh iad a chur i
+dtír"*, *"d'iarraidh fanúint anáirde air"*. Ó Sé §686 states the dialect verbal noun is `d'iarraidh`
+with `ag` before it. So the lexeme is right for "try" and wrong for "want" — which is what §5 already
+says. The remaining question is purely orthographic (`ag iarraidh` / `d'iarraidh` / `ag d'iarraidh`)
+and belongs to job #552; every instance is annotated in `try-word-pending-552.md`.
+
+**Do not read `teastaíonn`'s low count in these books as evidence against it.** Ó Sé's book is a
+phonological and morphological description whose wordcount is dominated by metalanguage and phonetic
+transcription; An tOileánach is a century-old narrative. Neither is a balanced conversational text
+corpus. Modern spoken Kerry on RnaG gives `teastaíonn`-family 345 with verbatim *"teastaíonn uaim a
+bheith thar lear"*. The books do independently confirm the **preposition**: `uaim` 38, `uait` 13,
+in want-senses (*"an t-ábhar a bhí uaim"*).
+
 ## 8. Open questions a Kerry speaker should see first
 
 Carried forward into the build report. Ranked by how many sentences ride on them:
