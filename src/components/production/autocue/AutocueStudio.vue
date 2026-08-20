@@ -899,7 +899,11 @@ async function onBeginContinuous() {
 
 async function onToggleRecording() {
   if (state.isRecording) {
-    // Stop
+    // Stop. Pressing stop settles the question of where the script is — an
+    // advance armed a moment ago must not fire into a stopped session and move
+    // the line under the recordist after they walked away.
+    advanceGate.reset()
+    cutOffNotice.value = null
     if (state.scriptMode) {
       continuousRecorder.stopFlow()
     }
