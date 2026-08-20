@@ -29,17 +29,36 @@ for `éigin` are 1 indefinite pronoun and 44 tokens of `ar éigin` "barely" and
 import re
 import sys
 
-VOLS = {f'vol{i}': f'/tmp/vol{i}.txt' for i in (1, 2, 3, 4)}
+import os
+
+# /tmp is shared between dispatched workers and can be cleaned mid-run. If the extracted volumes
+# vanish, every probe silently returns 0 — and a zero from this tool is read as evidence of
+# non-attestation, so a missing file would quietly become a linguistic ruling. Prefer the durable
+# copy under $HOME, fall back to /tmp, and refuse to answer at all if neither is there.
+CORPUS_DIRS = [os.path.expanduser('~/.gle-cn-corpus'), '/tmp']
 CONTROLS = [('Gaeilge', 121), ('duine', 521), ('bhí', 3133)]
+
+
+def _find(vol):
+    for d in CORPUS_DIRS:
+        p = os.path.join(d, f'{vol}.txt')
+        if os.path.exists(p):
+            return p
+    return None
+
+
+VOLS = {f'vol{i}': _find(f'vol{i}') for i in (1, 2, 3, 4)}
 
 
 def load():
     out = {}
     for k, p in VOLS.items():
-        try:
-            out[k] = open(p, encoding='utf-8', errors='replace').read()
-        except FileNotFoundError:
-            print(f'GAP: {p} missing — extract it with docs/gle-cn/pdfx.py before trusting any zero.', file=sys.stderr)
+        if p is None:
+            print(f'GAP: {k}.txt not found in {" or ".join(CORPUS_DIRS)} — extract it with '
+                  f'docs/gle-cn/pdfx.py. Until then this volume contributes 0 to every count, '
+                  f'and that 0 is an artefact, not attestation.', file=sys.stderr)
+            continue
+        out[k] = open(p, encoding='utf-8', errors='replace').read()
     return out
 
 
