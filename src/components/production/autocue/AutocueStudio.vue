@@ -214,10 +214,17 @@
         <strong>We stopped that take early — that one is on us, not you.</strong>
         <p>
           The recorder thought you had finished and cut in while you were still
-          reading. Please read the line again at your natural pace; there is no
-          need to hurry.
+          reading. <strong>We have stayed on this line</strong> — read it again
+          from the start, at your natural pace. There is no need to hurry.
         </p>
-        <button type="button" @click="cutOffNotice = null">Got it</button>
+        <div class="cut-off-actions">
+          <button type="button" class="cut-off-primary" @click="cutOffNotice = null">
+            Read it again
+          </button>
+          <button type="button" class="cut-off-secondary" @click="acceptHeldTake">
+            That take was fine — move on
+          </button>
+        </div>
       </div>
 
       <!-- Live chunk progression, while the phrase is being read. -->
@@ -397,6 +404,7 @@ import RecordingControls from './recording/RecordingControls.vue'
 import RecordingStatus from './recording/RecordingStatus.vue'
 import ChunkProgress from './recording/ChunkProgress.vue'
 import SlowReadRetry from './recording/SlowReadRetry.vue'
+import { createAdvanceGate, HELD_CUT_OFF } from './advanceGate'
 import SessionReview from './review/SessionReview.vue'
 
 // Recording identity, threaded in by the Record Room shell. Absent when
@@ -680,12 +688,31 @@ function judgeSlowTake(segment, phrase) {
   }
 }
 
-// A take that was ended while the recordist was still audibly speaking — the
-// VAD's own account of the cut it just made (useVAD TakePauseReport). The take
-// is still filed: it may be perfectly usable, and throwing away a recordist's
-// work on a heuristic is worse than keeping it. What changes is that they are
+// A take that was ended while the recordist was still audibly speaking, or one
+// they carried on talking through. The take is still filed: it may be perfectly
+// usable, and throwing away a recordist's work on a heuristic is worse than
+// keeping it. What changes is that the autocue does NOT move on, and they are
 // TOLD, so a truncation reads as a tool fault rather than as a hint to speed up.
 const cutOffNotice = ref(null)
+
+// Closing a take and moving the script on are two decisions, not one. The gate
+// owns the second: it never advances immediately, and it refuses outright on a
+// take the VAD admits it cut short. The whole argument is in advanceGate.js.
+const advanceGate = createAdvanceGate({
+  advance: (itemIndex) => {
+    // Only move if the line the take belonged to is still the current one — a
+    // manual navigation while the advance was armed wins over a stale timer.
+    if (state.currentPhraseIndex === itemIndex) advanceToNext()
+  },
+  onHold: (held) => { cutOffNotice.value = held }
+})
+
+// "That take was fine — move on." The only path that advances a held line
+// without a re-read, and it is the recordist's own decision, not ours.
+function acceptHeldTake() {
+  cutOffNotice.value = null
+  advanceGate.releaseHold()
+}
 
 // The take now being refused, and the panel driven by it. Null when there is
 // nothing to answer for.
@@ -707,7 +734,10 @@ function fileTake(segment, itemIndex) {
   if (!phrase) return
   onSegmentCaptured(segment, itemIndex)
   queueTakeUpload(segment, phrase, itemIndex)
-  advanceToNext()
+  // ARM the advance; do not perform it. See advanceGate.js — this is the line
+  // that used to be advanceToNext(), and making it unconditional is what turned
+  // every VAD misjudgement into a mislabelled clip and a rattled recordist.
+  advanceGate.takeEnded(itemIndex, segment.pauses)
 }
 
 function clearSlowReadRetry() {
@@ -739,18 +769,35 @@ function skipRefusedTake() {
 watch(
   () => continuousRecorder.isCapturing.value,
   (capturing) => {
-    if (capturing && slowReadRetry.value) clearSlowReadRetry()
-    // Reading again is the answer to "we cut you off"; get it out of the way.
-    if (capturing) cutOffNotice.value = null
+    if (!capturing) return
+    if (slowReadRetry.value) clearSlowReadRetry()
+
+    // Speech, while an advance was armed. They never finished — the take we
+    // just closed was cut out from under them, and what they are saying now
+    // belongs to the line still on screen. The gate cancels the advance and
+    // raises its own notice, which must NOT be wiped by the line below.
+    if (advanceGate.speechStarted() === 'cancelled') return
+
+    // Otherwise: reading again is the answer to "we cut you off".
+    cutOffNotice.value = null
   }
 )
 
 // Leaving the line, or leaving the session, takes the refusal with it — it is
 // about ONE take of ONE line and must never outlive either.
-watch(() => state.currentPhraseIndex, () => { if (slowReadRetry.value) clearSlowReadRetry() })
+watch(() => state.currentPhraseIndex, () => {
+  if (slowReadRetry.value) clearSlowReadRetry()
+  // The line moved (by the gate, or by hand). A hold is about ONE take of ONE
+  // line and must never outlive it, and an armed advance for a line we have
+  // already left must never fire.
+  advanceGate.clearHold()
+  cutOffNotice.value = null
+})
 watch(() => state.currentPhase, () => {
   if (slowReadRetry.value) clearSlowReadRetry()
   slowReadAttempts.clear()
+  advanceGate.reset()
+  cutOffNotice.value = null
 })
 
 // Wire continuous recorder: on segment captured, store + queue upload + advance
@@ -760,9 +807,10 @@ continuousRecorder.onSegmentCaptured((segment) => {
   if (!phrase) return
 
   // Say it out loud when we cut them off. Checked before anything else so the
-  // notice shows whether the take goes on to be filed or refused.
+  // notice shows whether the take goes on to be filed or refused — a take
+  // refused for its pauses never reaches the gate, so this is its only chance.
   cutOffNotice.value = segment.pauses?.endedWhileLoud
-    ? { itemIndex, dropDb: segment.pauses.dropAtCutDb }
+    ? { itemIndex, reason: HELD_CUT_OFF, dropDb: segment.pauses.dropAtCutDb }
     : null
 
   const verdict = judgeSlowTake(segment, phrase)
@@ -951,6 +999,8 @@ onMounted(() => {
 
 onUnmounted(() => {
   document.removeEventListener('keydown', handleKeydown)
+  // An armed advance must not fire into a torn-down session.
+  advanceGate.reset()
   if (continuousRecorder.isFlowMode.value) {
     continuousRecorder.stopFlow()
   }
@@ -1733,14 +1783,21 @@ onUnmounted(() => {
 }
 .cut-off-notice strong { display: block; font-size: 1rem; margin-bottom: 0.35rem; }
 .cut-off-notice p { margin: 0 0 0.6rem; font-size: 0.9rem; line-height: 1.45; }
+.cut-off-actions { display: flex; gap: 0.5rem; flex-wrap: wrap; }
 .cut-off-notice button {
-  background: #f59e0b;
-  color: #451a03;
   border: none;
   border-radius: 6px;
   padding: 0.45rem 1.1rem;
   font-weight: 600;
   min-height: 40px;
   cursor: pointer;
+}
+.cut-off-primary { background: #f59e0b; color: #451a03; }
+/* Moving on without a re-read is the recordist's call and nobody else's, so it
+   is present but never the obvious button. */
+.cut-off-secondary {
+  background: transparent;
+  color: #fde68a;
+  border: 1px solid #b45309 !important;
 }
 </style>
