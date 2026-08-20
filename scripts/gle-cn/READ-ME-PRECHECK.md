@@ -82,3 +82,37 @@ So the field is quietly doing two jobs, and they disagree:
 Raising the number is legitimate: it is a quality score, and a short natural sentence is not a
 low-quality one. Do not lengthen good English to satisfy a syllable estimate the server never asked
 for.
+
+---
+
+## ⛔ CONTAINMENT ON "GOING TO" — read before you decompose anything (Tom, 2026-08-21)
+
+The course teaches **two contradictory constructions for "I'm going to"**, and the banned one is in
+the spine: `tá mé chun` is a taught unit at **seeds 5 and 25** with **83 practice phrases** behind
+it, while the ruled replacement `ag goil a` is taught from seed 82 with 105. A learner meets one at
+seed 5, drills it for seventy seeds, and meets the other for the same English at 82.
+
+The repair is upstream and is **Kai's call**. Until he rules:
+
+1. **Do NOT introduce `ag goil a` into any seed that does not already carry it.** Every new instance
+   makes the repair bigger and the contradiction worse.
+2. **If a seed's audited translation already carries the OLD `chun` form, decompose it AS WRITTEN
+   and annotate it. Do not rewrite it.**
+3. **Annotate every instance of both forms** so the sweep is surgical and sized.
+
+Rule 2 is not a compromise. "Correcting" seeds 79 or 81 to `ag goil a` would hand the learner a
+sentence they **cannot produce**, because the new form is not taught until seed 82.
+**THE GOVERNING TEST DECIDES, ALWAYS:** could a learner holding ONLY what the course has taught so
+far produce this sentence from the English prompt alone? A form that is more "correct" but untaught
+**fails that test**. Consistency with what the learner has been taught beats consistency with a
+ruling that has not reached the spine yet.
+
+## ⛔ THE "TRY" SWEEP MUST KEY ON THE ENGLISH GLOSS, NEVER THE IRISH STRING
+
+`ag iarraidh` appears in **1,421** practice phrases. **140** gloss *try*. **1,281** gloss *want*.
+A sweep keyed on the Irish string gets **ten wrong hits for every right one**. There is a third
+live sense too — *to ask for*, at seeds 212, 231 and 243 — and seed 231 carries two of the senses
+**in one sentence**: `a bhí ag iarraidh cabhair a iarraidh` (*wanted* … *to ask for*). No regex over
+the Irish can separate them. **Never write a pattern that matches the majority form.**
+
+Full detail, with the seed lists: `docs/gle-cn/going-to-containment-and-try-sweep-2026-08-21.md`.
