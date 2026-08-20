@@ -323,10 +323,16 @@ should expect the flag and not read it as a refusal.
 47 building blocks, 368 practice phrases, and zero audio clips**. Nothing that changes here can
 silence a learner, because there is no sound to lose.
 
-**Seed 8 is the only sentence that has to change.**
+**Seed 8 is the only full sentence that has to change.**
 
 > **now:** Tá mé chun **iarracht a dhéanamh** a mhíniú céard atá i gceist agam *(~18 syllables)*
 > **becomes:** Tá mé chun **iarraidh** a mhíniú céard atá i gceist agam *(~15 syllables)*
+
+**Behind it sit 13 practice phrases**, and that is the whole rest of the job: **12 under seed 8**
+(all the *"I'm going to try…"* variations) and **one under seed 25** — *"are you going to try"*,
+which currently says *an bhfuil tú chun iarracht a dhéanamh* and becomes *an bhfuil tú chun
+iarraidh*. **Nothing else in the course contains the retired form.** No other seed, no other
+phrase, and no audio anywhere.
 
 **Seed 2 changes nothing.** *Tá mé ag iarraidh foghlaim* is already right.
 **Seed 6 changes nothing.** *Tá mé ag iarraidh cuimhneamh ar fhocal* is already right.
@@ -401,8 +407,8 @@ Connemara speaker say.
   Connemara evidence for *ag iarraidh* meaning "trying" — *"Bhí muid ag iarraidh finiseáil
   stuf"* — could not be found in these four volumes. The three quoted in section 3 were each
   located and checked. The unverified one should stop being repeated.
-- **I did not read the 368 practice phrases one by one** for stray uses of the retired form.
-  That belongs to the applying job and, at 36 translated sentences, it is small.
+- **The practice phrases were counted, not sampled** — all 368 were checked, and exactly 13
+  carry the retired form. That is not a gap; it is in section 6.
 
 ---
 
