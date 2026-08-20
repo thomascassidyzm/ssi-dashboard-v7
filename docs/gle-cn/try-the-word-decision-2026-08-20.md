@@ -145,6 +145,27 @@ iarraidh foghlaim*.
 
 Seed 579 was the one with nothing after it. The bare word does it.
 
+### A datum that argues against your `ag triail` ban — reported because it exists
+
+A measurement came back claiming the legacy Irish translation memory is **62% `ag triail`**
+across the try-sentence matches, and calling that historical evidence against your ban. **That
+is true of that narrow slice and misleading about the corpus.** I went and counted the whole
+33MB file myself:
+
+| form, across the entire legacy Irish translation memory | count |
+|---|---|
+| **ag iarraidh** | **5,790** |
+| ag triail | 272 |
+| iarracht (all uses) | 271 |
+| iarracht a dhéanamh | 91 |
+
+**`ag iarraidh` outnumbers `ag triail` by more than twenty to one.** So the honest reading is
+two-sided: among the forms that mean *only* "try", `ag triail` does beat `iarracht a dhéanamh`
+about three to one — **your ban did cost something, and that is worth knowing** — but the form
+this document recommends dwarfs both by an order of magnitude. **It does not change the ruling**,
+and the Connemara-specific reason stands on its own: in this dialect Ó Curnáin's *triail* is the
+verb of *triall*, "journey, travel", and every occurrence in the corpus is that word.
+
 **And the strongest confirmation arrived while I was writing this.** The Connemara build
 translated 14 more "try" sentences tonight, with no knowledge of this ruling, and **chose
 *ag iarraidh* for 13 of them.** Including this one, which now carries both senses in a single
