@@ -135,7 +135,7 @@ across 668 seeds would not be.
   standard `tosóidh`. *(Marked for the evidence pass — this is an orthographic consequence of a
   phonological fact and may collide with §0's standard-spelling rule. See §3.)*
 - Interrogative + verb keeps its particle and mutation: `Cad é mar atá tú?`, `An bhfuil tú…?`,
-  `Ar thoisigh mé?` — never a bare verb after the question word.
+  `Ar thosaigh mé?` — never a bare verb after the question word.
 - Direct relative `a` + lenition; indirect relative `a` + eclipsis.
 - Object + `a` + verbal noun: `Gaeilge a labhairt`, not `labhairt Gaeilge`.
 
@@ -170,6 +170,118 @@ existing Donegal course corpus to count — this course starts from 668 empty sh
 stated plainly because papering it over would be poison. What jobs #530 and #536 are for is to close
 that gap with real running Donegal text; how far they get is reported in the final write-up rather
 than assumed here.
+
+---
+
+## 2c. Rulings made DURING the build (2026-08-20), from what block 1 threw up
+
+Block 1 (job #539) surfaced four things the spec had not settled. Ruled here so all seven blocks
+end up the same; anything already written the other way is normalised in the closing sweep.
+
+### `tosaigh`, NOT `toisigh` — and this was the spec's own fault
+
+§1f originally gave `Ar thoisigh mé?` as its worked example, and block 1 duly used `toisigh` eight
+times. **That example was wrong and it has been corrected above.** Checked against FGB:
+
+- `tosaigh 1, v.t. & i. **Begin, start.**`
+- `toisigh 2 = **tomhais** 1` — i.e. FGB reads `toisigh` as a variant of *measure*, a different word.
+
+`toisigh`/`toiseacht` is a real Donegal pronunciation of `tosaigh`/`tosú`, but it is a **spelling-only**
+variant of a word that has a standard spelling, which §0 puts firmly OUT — and unlike a harmless
+respelling this one collides with an existing headword meaning something else. **Use `tosaigh`,
+`tosú`, `thosaigh`.**
+
+### `tig le` vs `ábalta` — split by the ENGLISH, not by feel
+
+Both are Donegal and §3 q5 left the split open, which meant seven workers would invent seven splits.
+Block 1's split is adopted because it is mechanical and reproducible:
+
+- English has a finite **"can" / "could"** → `tig le` (`an dtig liom`, `chomh luath agus a thig leat`,
+  `an dtiocfadh leat` for the conditional).
+- English literally says **"be able to"** → `ábalta` (`a bheith ábalta`).
+
+Never `in ann` — that is the Connemara form.
+
+### `ag iarracht` for "trying" — KEPT, but flagged for Kai as unattested
+
+Block 1 is right on the evidence and it should be recorded: FGB has `iarracht` as a **noun only**
+(`iarracht a thabhairt ar rud a dhéanamh`, `iarracht a dhéanamh`). There is no attested progressive
+`ag iarracht` + verbal noun. The idiomatic form would be `ag déanamh iarrachta`.
+
+It is kept anyway, for one reason only: **it is Kai's own explicit ruling** for the sister course —
+*"no, not iarracht a dhéanamh, just ag iarracht"* (`docs/gle-cn/try-want-contrast-plan-2026-08-18.md`) —
+and having the two dialect courses say different things about the same English would be worse than
+having them share one questionable form. This is **not** a case for ruling #1 (dialect beats
+standard): `ag iarracht` is not a Donegal dialect form, it is a pedagogical coinage, so the
+"you can't look it up" defence does not apply to it. **Kai should rule.** It is roughly 20 seeds
+course-wide and a one-line sweep either way.
+
+### Donegal lexis from block 1, all FGB-verified and now binding on every block
+
+| Form | FGB says | Use for |
+|---|---|---|
+| `inteacht` | `inteacht = éigin 1` | "some-" (`rud inteacht`, `duine inteacht`) — NOT `eicínt` (Connemara) |
+| `pill`, `pilleadh` | `pill 2, ~eadh = fill 1` | return / come back |
+| `cluinstin` | `cluin, v. … vn. ~stin` | hear — NOT `cloisteáil` |
+| `doiligh` | full entry, "hard, difficult" | difficult |
+| `barraíocht` | full entry, "excess; too much" | too much / too many |
+| `cad chuige` | — | why (Ulster; not `cén fáth`) |
+| `gasta` | — | quickly (`go gasta`) |
+| `ag gabháil a` + vn | — | "going to" future |
+
+---
+
+## 2d. Rulings from block 2 (job #540) — and the biggest consistency risk in the job
+
+### `yes` / `no` — 58 seeds, and Irish has no word for either
+
+**Measured, not estimated:** 58 of the 668 seeds contain a bare English `yes` or `no`, and they are
+spread across every block (96, 97, 141, 172, 173, 183, 184, 189, 191, 268 … 408 and on). Left
+unruled, seven workers produce seven different "yes" and the course teaches all of them. This is the
+single largest consistency exposure on the job.
+
+**The rule: echo the verb.** Irish answers by repeating the verb of the question in the right tense
+and polarity. These seeds are answers whose question is not present, so the echo takes its verb from
+**the first finite verb of the clause that follows in the same seed**, then a comma, then the clause:
+
+| seed | English | Irish |
+|---|---|---|
+| 97 | yes I'm ready to go … | `Tá, tá mé réidh le himeacht …` |
+| 96 | no I'm not ready yet … | `Níl, níl mé réidh go fóill …` |
+| 268 | yes she sent me two emails … | `Chuir, chuir sí dhá ríomhphost chugam …` |
+| 172 | yes that would be very helpful | `Bheadh, bheadh sin iontach cuidiúil` |
+| 189 | yes that's a good idea | `Is ea, is maith an smaoineamh é` (copula → copula) |
+| 367 | no nobody told me | `Níor, níor inis duine ar bith domh` |
+
+**Exception — `yes`/`no` that is not an answer.** Seed 141 `no problem.` and seed 173 `no thank you`
+are English idioms, not polarity answers. Translate them as idioms (`Tá go maith`, `Níl, go raibh
+maith agat`) and do NOT force a verb echo. If the `no` cannot be read as answering a question,
+it is an idiom.
+
+**If the `cha` ruling lands and makes `cha` the default,** the echo is unaffected: the bare echoed
+verb is not a `cha` site, and only the following clause changes.
+
+### Ulster lenition after simple preposition + article — REQUIRED, and a validator must not "fix" it
+
+Ulster lenites after a simple preposition + singular article where the Caighdeán eclipses:
+`ar an **bh**us`, `ar an **ch**aint`, `den **ch**aint`, `leis an **mh**éid`, `ag an **d**oras`.
+The standard writes `ar an mbus`. **This is a genuine Donegal grammar feature, it is IN, and it is
+one of the strongest dialect signals in the whole set.** It is recorded here because block 2 rightly
+warned that a consistency pass ignorant of it would "correct" every instance back to the standard
+and silently delete the dialect.
+
+### §1a vs §3.4 contradicted each other on `tchí` — resolved
+
+§1a listed `tchí` as REQUIRED while §3.4 listed it as an open question. A validator built from §1a
+would have demanded a form the spec was not sure of. **Resolution: `tchí`/`tchíonn` is PERMITTED, not
+required.** It is genuine spoken Donegal but sits on the §0 line between dialect lexis and phonetic
+respelling, which is exactly what §3.4 asks a speaker to settle. Until then, neither require it nor
+forbid it, and `feiceann`/`chífidh` is acceptable. §1a's row is to be read as permitted.
+
+### `tosú`, not `toiseacht`
+
+Block 2 used `toiseacht`. Same ruling as §2c: the standard verbal noun `tosú` is used. Normalised in
+the closing sweep.
 
 ---
 
