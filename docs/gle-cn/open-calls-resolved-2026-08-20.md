@@ -64,17 +64,32 @@ At seed 9 of a beginner course, after eight seeds of wanting and trying to speak
 Irish now" is a claim about *proficiency*, not about *habit*. Those are two different sentences in
 Irish and the course currently has the other one.
 
-**What Ó Curnáin adds, and what it honestly does not.** `labhraím` **0** in all four volumes;
-`labhraíonn` **0**. More tellingly, volume IV's own index entry for the verb enumerates the paradigm
-he recorded — *impv, pst 3sg, 3pl `labhradar`, imprs `labhraíodh`, psthab `labhraíodh`, fut
-`labhróidh`, rel `labhrós`, cond 1sg, pstsbj, vadj `labhartha`, VN `labhairt`* — and there is **no
-present tense of any person in it**.
+**What Ó Curnáin adds — and he is not silent, which I first thought he was.** `labhraím` **0** in
+all four volumes; `labhraíonn` **0**.
 
 > **I am not leaning on that zero, and neither should anyone else.** Noise-floor controls, same
-> four volumes: `deirim` 28, `creidim` 30, `bím` 18, `faighim` 10, `ólaim` 9, `tuigim` 6 — but
-> `ceapaim` **0**, `cloisim` **0**, `smaoiním` **0**, and `déanaim` **1**, for verbs nobody doubts.
-> A bare 0 is inside the noise floor of a work that indexes the unusual. What decides this call is
-> Ó Dónaill's idiom, not Ó Curnáin's silence.
+> four volumes: `deirim`, `tuigim`, `ólaim`, `feicim`, `bím` all land between 2 and 9 — and
+> `ceapaim` scores 0 in volume IV *only because the index abbreviates it `~aim`*, which defeats
+> substring search. A bare 0 for `labhraím` sits inside that noise floor and refutes nothing.
+
+**The evidence that is not a count.** Volume IV's index gives a form-by-form paradigm for every verb.
+`abair` lists **`pres 1sg deirim`** and **`3sg abraíonn`**. `ceap` lists **`pres 1sg ~aim`** and
+**`3sg ~ann`**. The entry for `labhair` lists imperative, past, 3pl `labhradar`, impersonal,
+past-habitual, future `labhróidh`, relative `labhrós`, conditional, past-subjunctive, verbal
+adjective and verbal noun — **and no present tense at all, in any person.** Its one 1sg form,
+`labhrainn*`, carries Ó Curnáin's own *non-attested* asterisk.
+
+**And the idiom I am ruling *in* is alive in Connemara, in all four volumes** — which I had wrongly
+recorded as absent, having searched only the 1sg `agam`:
+
+> *tá Gaeilge **aici** chomh maith liomsa* (vol I, speaker 21Pt) · *daoiní TÁ Gaeilge **ACÚ*** ·
+> *níl aon Ghaeilge chomh maith sin **ACÚ*** (vol III) · *ní raibh Béarla mórán **ag** aon-nduine.
+> Is Gaeilge uiliug a bhí gach, ann* (vol IV, speaker 70M) · *bhí teanga mhaith Bhéarla **aige***
+> (vol I, 892M)
+
+So this ruling is not Ó Dónaill against Ó Curnáin's silence. It is both authorities pointing the
+same way: the dictionary supplies the idiom, and the dialect monograph shows Connemara speakers
+using it, while never once recording the form the course currently has.
 
 **Cost, measured:** 1 lego, 11 practice phrases, 1 seed. Job #477 confirms seed 9 is the **only** one
 of all 668 English seeds that is a bare first-person-singular *"I speak X"* statement — so this
@@ -145,11 +160,17 @@ by a bare verbal noun with no object — rested on a single hit in 15,904 items 
 **What I found.** Of 297 tokens of `chaoi` across the four volumes, what follows is overwhelmingly a
 finite verb: `a raibh` 24, `a bhfuil` 19, `an bhfuil`, `a mbeadh`, `a scanródh`, `a ndéantaí`,
 `ar imigh`, `a d'éirigh`. Citations read like *"Cén chaoi a ndíontaí im fadó?"*, *"Cén chaoi a
-scanródh mise í?"*, *"Sé an chaoi a bhfuil sé agam."* **But the bare verbal noun is not zero:**
-volume II and volume III both carry **`Sé chaoi hiumprú anuas é`** (speaker S85) — `chaoi` followed
-directly by a verbal noun, no particle, no object. Ó Curnáin discusses that neighbourhood as
-irregular, so it is thin support — but it is real support, and it is exactly the same weight as the
-single base-corpus hit the build was worried about.
+scanródh mise í?"*, *"Sé an chaoi a bhfuil sé agam."* Checked independently (job #476): of the
+interrogative `cén chaoi` uses, **48 of 48 take a particle plus a finite verb, and none takes a bare
+verbal noun.** `conas` is **0** in all four volumes, which separately confirms that the base course's
+279 `conas` really are a Munster import.
+
+**One qualification, and it is thin.** Volumes II and III both carry **`Sé chaoi hiumprú anuas é`**
+(speaker S85) — `chaoi` followed directly by a verbal noun, no particle, no object. That is *not* the
+interrogative `cén chaoi`, and Ó Curnáin discusses that neighbourhood as irregular. It shows the
+noun `caoi` can govern a bare verbal noun in this dialect; it does not show that `cén chaoi` can.
+Weigh it at about the same value as the single `conas foghlaim` hit the build was already worried
+about — which is to say, not much, in either direction.
 
 **Why keep it.** Three reasons, and the third is the one that decides it.
 1. The frame is not a different construction — it is `cén chaoi [object] a [verbal noun]`, which the
@@ -172,23 +193,38 @@ comfortable ruling "keep" rather than rebuilding it on thin evidence in the othe
 
 > **English:** I'm going to try to explain what I mean
 > **Currently:** `Tá mé chun iarracht a dhéanamh céard atá i gceist agam a mhíniú`
-> **Ruling:** **keep it, exactly as it is**
-> **Confidence: confident** on the Irish · **genuinely uncertain** on whether it is too long for
-> seed 8, which is a teaching-feel call
+> **Ruling:** **keep it for now — but it stays on the native-ear list, and it is the item on this
+> page I am least able to defend**
+> **Confidence: best attempt**
 
-The 18 August report called this *"my own Irish, unsupported (confidence C) — the ruling I most
-expect you to challenge."* **That flag can come off. The form is supported from three independent
-directions:**
+**I had this at "confident" and an independent check (job #476) knocked it down. The correction
+matters, so here it is plainly.** My first count found `iarracht` 38 times across the four volumes,
+including **`rinne sé a bhinniarracht`** — which I read as `déan` + `iarracht` incidentally attested
+in Connemara. That reading does not survive scrutiny. My 38 was inflated by compound prefix forms
+(`binn-`, `mór-`, `tréan-`, `fíor-`), and those are morphological examples elicited from Máire to
+demonstrate a *prefix* — a prefix Ó Curnáin explicitly flags as uncommon, used by one speaker only,
+and which three other speakers **do not permit**. That is not running speech.
 
-- **Ó Dónaill** gives `iarracht` = attempt, effort, with `iarracht a dhéanamh ar rud` as the frame.
-- **Ó Curnáin has the collocation in Connemara's own mouth.** `iarracht` appears 38 times across the
-  four volumes. Almost all are morphological examples of intensifier prefixes — and they include
-  **`rinne sé a bhinniarracht`** ("he made his utter attempt") and **`ar mo bhinniarracht`**, from
-  speakers 23B and Máire. That is `déan` + `iarracht`, incidentally attested, which is the strongest
-  kind of evidence: nobody was being asked about the collocation, so nobody was performing it.
-  (Ó Curnáin flags the *prefix* `binn-` as uncommon and disputed between speakers; the `déan`+
-  `iarracht` pairing inside it is not what was in question.)
-- **The legacy base corpus** carries `iarracht a dhéanamh` 38 times.
+**The bare-word count is 9, and all nine are non-evidence:** two are a **Seán Ó Ríordáin epigraph in
+Munster literary Irish** printed at the front of volume I; six are a single elicitation session about
+lenition after ordinals, using `iarracht` as the test noun in the sense "go, turn" (*his sixth go*),
+counted six times; one is a bare index line. **`iarracht a dhéanamh` is 0 in all four volumes, and
+`iarracht` has no unqualified running-speech attestation in Connemara at all.**
+
+**So where does that leave the form?** It is **correct standard Irish** — Ó Dónaill gives `iarracht`
+= attempt, effort, with `iarracht a dhéanamh ar rud` as the frame, and the legacy base corpus carries
+`iarracht a dhéanamh` 38 times. It is simply **unattested in this dialect**. Under the course's own
+rail — Connemara lexis, standard orthography — that is exactly the kind of choice the rail exists to
+catch. The 18 August report rated it confidence **C** and called it *"the ruling I most expect you to
+challenge"*; the corpus now agrees with that instinct rather than retiring it.
+
+**And the dialect has its own "try" word, which is a problem of its own.** Volume IV's glossary:
+*`traíáil2`, (triail2), v. 1. **Try**… Tá mé ag cheapadh go dtraíála mé síos í*; and
+*`traíáil1`, f. 1. **Attempt, chance at, go**. Ba mhaith liom ~ a fháil air.* That is a borrowing of
+English *try* — and it **collides head-on with the course's standing ban on `ag triail`**. I am not
+applying it. Whether a Connemara course should teach the dialect's real word when that word is an
+English borrowing the course has already banned is a judgement about what this course is *for*, and
+it needs either a speaker or Kai — it is not a call the corpus can make.
 
 **The honest cost, now measured rather than felt.** Seed 8's English is the same in every course
 built on these 668 seeds, so I measured what other released courses do with it:
@@ -213,8 +249,15 @@ Seed 8 then shows that "make an attempt" is a *different, related* word. That is
 minimal pairs work when the two items are close together. At seed 146 the learner would meet
 `iarracht` cold, 138 seeds later, with the contrast long forgotten.
 
-**What a speaker should be asked:** not whether the Irish is right — it is — but whether ~18
-syllables is bearable as the eighth thing a learner ever says.
+**Why "keep for now" rather than "change".** Nothing better is available that does not break
+something: `traíáil` is banned, ZUT fixes `chun` at seed 5, and moving the form to seed 146 leaves
+seed 8's English untranslatable. Keeping it costs nothing today and the reversal stays at 11 phrases
+and one seed. **But it should not be recorded as settled, and the 18 August flag stays on.**
+
+**What a speaker should be asked, in this order:** does `iarracht a dhéanamh` sound like Connemara or
+like schoolbook Irish? If it sounds imported, is `traíáil` what they would actually say — and does
+that override the `ag triail` ban? And separately, is ~18 syllables bearable as the eighth thing a
+learner ever says?
 
 ---
 
@@ -371,8 +414,11 @@ recording which variant a course is. Nothing in the codebase reads it today.
 
 **Yes — translation can resume now, on seeds 37 onward, and nothing in this document blocks it.**
 
-The five open calls are answered. Four are decided on named external authority and the fifth (§6) is
-a one-line policy ruling from Kai that costs nine rows today. Every one is reversible and the
+The five open calls are answered. Three are decided on named external authority and are safe to build
+on (§1/§2, §3, §5). §6 is a one-line policy ruling from Kai that costs nine rows today. **§4 is the
+one I could not close** — `iarracht a dhéanamh` is correct standard Irish with no attestation in
+Connemara, and the dialect's own word for it is one the course has banned. It is left standing
+because nothing better is available, not because it is settled. Every ruling is reversible and the
 before-images exist.
 
 **Resume with these in hand:**
@@ -403,8 +449,15 @@ hour of decision.
 ## 9. Gaps — what I could not get
 
 - **No native Connemara speaker has seen any of this.** Unchanged, and still the largest gap. Every
-  call above is labelled so a speaker can be pointed at the weak ones first: §3 (seed 3), then §4's
-  length question, then §1's wording.
+  call above is labelled so a speaker can be pointed at the weak ones first: **§4 (seed 8 — the one
+  genuinely unsupported form, and the `traíáil` question behind it)**, then §3 (seed 3), then §1's
+  exact wording.
+- **One of my own rulings was wrong and was corrected mid-pass.** I had §4 at "confident" on the
+  strength of `rinne sé a bhinniarracht`, having counted 38 hits for `iarracht`. An independent
+  check (job #476) showed my count was inflated by compound prefix forms, and that every remaining
+  hit is a Munster epigraph, an elicitation artefact or an index line. §4 now reads "best attempt"
+  and stays on the native-ear list. I have left the working visible rather than quietly restating
+  the conclusion.
 - **Ó Curnáin volumes I–III are only partly searchable.** Their bodies are phonetic transcription in
   a custom font; Irish orthography survives extraction only where he quotes it in running text or
   glossary. Counts from those volumes are therefore *floors*, not totals, and I have not treated any
