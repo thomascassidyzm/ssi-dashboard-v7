@@ -50,10 +50,11 @@ ruling was inherited rather than re-derived.
 **Ó Dónaill, *Foclóir Gaeilge–Béarla*, via teanglann.ie.** This is the backbone and it is a real
 one: every required Donegal form was fetched live and read, not recalled. Ó Dónaill was himself a
 Donegal man (Loughros, Ardara) and FGB carries Donegal forms as headwords. Verified as headwords:
-`achan` (= gach aon), `uilig` (= uile), `caidé` (= cad é), `domh` (= dom), `fosta`, `ábalta`,
-`amharc`, `dada`, `inteacht` (= éigin), `pill/pilleadh` (= fill), `cluin`/`cluinstin`, `doiligh`,
+`achan` (= gach aon), `uilig` (= uile), `goidé` and `caidé` (both = cad é), `domh` (= dom), `fosta`,
+`ábalta`, `amharc`, `inteacht` (= éigin), `pill/pilleadh` (= fill), `cluin`/`cluinstin`, `doiligh`,
 `barraíocht`, `scíste` (= scíth), `dóigh`, `tig le`, `síl`, `muid`, and the full grammatical entry
-for `cha`.
+for `cha`. (`caidé` and `dada` were later dropped in favour of `goidé` and `a dhath` on corpus
+evidence — see §5.4. The dictionary admitted both; only the corpus separated them.)
 
 **Wikipedia, *Ulster Irish*.** Used for the `cha` mutation rule and its distribution, the `-óch-`
 future stem, analytic verb forms, and `tchíom`/`bheiream`/`gheibhim`.
@@ -123,8 +124,9 @@ because no seed says "sees". The third zero is `cha`, which is §5.
 ### Correctness
 
 Four independent workers re-checked seeds they did not translate, against Ó Dónaill and the spec.
-**Three reported, covering 572 of the 668 seeds.** The fourth, on seeds 481–576, had still not
-returned, so **I read those 96 seeds myself**.
+**Three reported, covering 572 of the 668 seeds. The fourth, on seeds 481–576, FAILED** — it hit an
+account rate limit and never produced a check file. So **I read those 96 seeds myself**, and that
+self-check is the only correctness coverage that range has.
 
 That self-check found no new hard defects beyond the five block 6 had already flagged in its own
 output (`fíordhóchas` as a coinage at 481/482, a discontinuous predicate at 552, the supplied `orm`
