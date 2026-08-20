@@ -204,8 +204,14 @@ and here is the whole basis:
 - **Zero** across all four volumes of the Connemara corpus, 686 pages, calibrated.
 - **Zero** across every Munster corpus on this machine — Ó Sé, the Blasket prose, the beginners'
   course — calibrated.
-- **Ó Dónaill lists *iarracht* as a noun only.** Every frame he gives is a light-verb frame —
-  *iarracht a dhéanamh*, *iarracht a thabhairt ar* — and **never** *ag iarracht*.
+- **Ó Dónaill lists *iarracht* as a noun only — I checked the entry myself rather than taking
+  it second-hand.** It is a feminine noun; every frame he gives is a light-verb frame —
+  *iarracht a dhéanamh*, *iarracht a thabhairt ar*, *iarracht a shárú* — and **nowhere in the
+  entry does *ag iarracht* appear before a verb**.
+- **The same dictionary puts "attempt" on the other word.** *Iarraidh* is listed as **the verbal
+  noun of *iarr***, and its sense 3 is **"Attempt"**, with the example *"An rud a bhí sé **ag
+  iarraidh** a dhéanamh — what he was trying to do."* So the dictionary that refuses *ag
+  iarracht* hands the same job to *ag iarraidh*, in those words.
 - **The grammar forbids it.** *Ag* + a plain noun does not make a progressive in Irish; that
   needs a verbal noun. *Iarracht* has no verbal-noun function. The verbal noun of *iarr* is
   *iarraidh* — which is precisely the word this whole document is about.
