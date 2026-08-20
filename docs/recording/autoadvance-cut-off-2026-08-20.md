@@ -14,11 +14,11 @@ Kai was sitting with them:
 Five of nine takes from that session were reported as fragments. **That part
 turned out not to be true — see the next section.**
 
-The important thing about this failure is not the fragments. It is that **being
-cut off looked exactly like finishing**. The script scrolled either way. The only
-conclusion available to the person reading was *"I must be too slow"* — so they
-sped up, and every line after that was read by someone rattled. Nothing in the
-recording, and nothing in the database, says that happened.
+The defect this job went looking for is one where **being cut off looks exactly
+like finishing**. The script scrolls either way, so the only conclusion available
+to the person reading is *"I must be too slow"* — and nothing in the recording,
+and nothing in the database, says otherwise. That defect is real and I found it.
+What I could not find is any trace of it in Sascha's own takes.
 
 ## First, a correction: the German takes were NOT fragments
 
