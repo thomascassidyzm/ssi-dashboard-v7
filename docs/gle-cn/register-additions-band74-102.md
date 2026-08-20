@@ -99,6 +99,13 @@ now appended to `scripts/gle-cn/READ-ME-PRECHECK.md`.
   all rejected as unknown glosses. The true palette — 144 chunks at that point — comes from
   `scripts/gle-cn/w-D2/chunks.cjs <seed>`, which prints every `known → target` pair introduced so
   far. Writing from the word list produces a wall of rejections.
+- **Initial mutation breaks the containment gate.** A lego target `tuiscint` is not found inside
+  `a thuiscint`; `daoine` is a taught chunk, `dhaoine` is not; `foghlaim` is, `a fhoghlaim` is not.
+  Ordinary sentences are therefore unwritable, and the honest response is to write a plainer
+  sentence rather than Irish that tiles but is wrong. This shaped seed 74 (the *to understand* unit
+  is objectless throughout) and forced a real design choice at seed 88, where the unit was taught as
+  `bheith ag caint le daoine` specifically so the learner can assemble the seed's own sentence.
+
 ### ⚠️ `vocab.cjs` was silently wrong on the English side, and it is now fixed
 
 **Tom's ruling, 2026-08-21: a measure that lies is worse than no measure — fix the thing that claims
@@ -140,9 +147,27 @@ path is untouched — mutation handling on the target side was always correct an
 natural way to say something and the endpoint accepts it, **write the contraction** and note the
 checkpoint disagreement. Do not reword to satisfy the checker.
 
-- **Initial mutation breaks the containment gate.** A lego target `tuiscint` is not found inside
-  `a thuiscint`; `daoine` is a taught chunk, `dhaoine` is not; `foghlaim` is, `a fhoghlaim` is not.
-  Ordinary sentences are therefore unwritable, and the honest response is to write a plainer
-  sentence rather than Irish that tiles but is wrong. This shaped seed 74 (the *to understand* unit
-  is objectless throughout) and forced a real design choice at seed 88, where the unit was taught as
-  `bheith ag caint le daoine` specifically so the learner can assemble the seed's own sentence.
+
+---
+
+## 6. `Aontaím leis` — sized, because the ruling is still open
+
+The addendum lists *`Aontaím leat` vs `Tá an ceart agat`* as **still genuinely open, do not harden**.
+Seeds 83 and 84 were already translated with `aontaím` before this band began, so they were
+decomposed as translated — no worker took a vote it was not entitled to.
+
+**Blast radius, measured rather than estimated:** 2 teaching units (`aontaím leis` at S83,
+`ní aontaím leis` at S84) and **24 practice phrases** across the two seeds. Nothing else in the
+course uses the word.
+
+If the ruling lands on `Tá an ceart agat` this is **not a word swap** — the frame changes shape,
+so both units and all 24 phrases are rewritten. 83 and 84 are a matched positive/negative pair and
+must move together. Worth noting `aontú` scores **zero** in Ó Curnáin, though a bare zero is not
+evidence and this one has not been re-run against the apostrophe and binary-file traps.
+
+## 7. Band totals, for the record
+
+24 seeds decomposed in this band (74–77, 83–102): **63 teaching units, 514 practice phrases**.
+Including the five that were already banked (78–82), seeds 74–102 stand at 29/29 translated,
+29/29 decomposed, 73 units, 594 phrases. `course_audio`: **0 rows, before and after**.
+Annotated-`try` count: **14, all in seed 102**, all `tá muid ag iarraidh`, all under `<!--TRY-OPEN-->`.
