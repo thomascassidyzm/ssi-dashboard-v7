@@ -101,7 +101,7 @@ Texts on disk (gitignored): `scripts/gle-mu/corpus/{ose-gcd,tyi-alt,oileanach}.t
 | 55 | under / about | **fé** | confident | MU 2,573 / CO 25 |
 | 56 | X is a Y | **Y is ea X** | confident | *Múinteoir is ea mé*, not *is múinteoir mé* |
 | 57 | in the house | **sa tigh** | confident | `sa` LENITES. Connacht's *sa mbaile* is not Munster |
-| 58 | to try (as infinitive) | **iarracht a dhéanamh** | **genuinely uncertain** | **see §5 — the one real hole** |
+| 58 | to try (as infinitive) | **`d'iarraidh`** | confident | **§5 RESOLVED** by job #552: the word is `iarraidh`, and Kerry writes `d'iarraidh` — 41 hits in native Blasket prose. `iarracht` is a *discrete attempt*, not the frame. `féach le` meaning "try to" is 0 in Munster. |
 
 ---
 
@@ -152,7 +152,12 @@ DEPENDENT form and does NOT eclipse.**
 - *Ná fuil sé anso?* — "Isn't he here?"
 - *Deir sé ná fuil sé anso.* — "He says he isn't here."
 - Before a vowel: `ná h-`. Past: `nár`.
-- **Exception: the copula keeps `nach`** (`nach ea!`).
+- **Exception: the copula keeps `nach`** (`nach ea!`) — but the strength varies by predicate, and
+  a later build measured it rather than assuming:
+  - **`nach féidir` is decisive** — 6 across the three Kerry texts, **`ná féidir` 0**. Always `nach féidir`.
+  - **`maith` / `miste` are genuinely mixed** — `nach maith` 6 vs `ná maith` 5. The course uses
+    `ná maith leat` / `ná miste leat` and that is defensible; do not "correct" it toward `nach`.
+  So the exemption is real but is not a blanket rule. State the predicate before applying it.
 
 ### 4b. The indirect relative is `go` — **CONFIRMED, upgraded**
 #532 listed this as its #1 unverified claim. **It is now confirmed** — Teach Yourself Irish teaches it
