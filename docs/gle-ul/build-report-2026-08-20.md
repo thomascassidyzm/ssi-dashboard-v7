@@ -68,11 +68,20 @@ I did **not** open Ó Baoill, Quiggin's *Dialect of Donegal*, Hamilton's *Tory I
 Ó Grianna / Mac Grianna prose. Two workers (#530, #536) were dispatched to reach exactly those and
 **neither returned** — see §5.
 
-**The Donegal evidence base is materially thinner than the Connemara one.** The Connemara course had
-Ó Curnáin's *The Irish of Iorras Aithneach* vols I–IV as searchable PDFs plus a 608,947-character
-corpus to census for dialect markers. Neither exists here. **This work rests on a dictionary, not on
-a corpus of running Donegal speech.** That is the single most important limitation in this report
-and it is why the `cha` question below is still open.
+**A corpus WAS found, late in the job, and it changes this section.** `corpas.ie`'s CNG corpus has
+no dialect attribute, but RTÉ Raidió na Gaeltachta's regional desks are transcribed speech from
+known places and give a usable three-way partition: **`RnaG (Barrscéalta)`, ~65,000 tokens of
+Donegal speech**, against Connemara (~119k) and Kerry (~104k). Calibrated against a known positive
+before any count was trusted.
+
+That corpus settled the `cha` question, validated every required form in the spec, confirmed every
+forbidden form as belonging to another dialect, and **overturned one of my own decisions**. Full
+numbers: `docs/gle-ul/donegal-corpus-evidence-2026-08-20.md`.
+
+It is still thinner than the Connemara base — 65,000 tokens against Ó Curnáin vols I–IV plus a
+608,947-character corpus, and it is transcribed radio speech rather than a dialect grammar. **It is
+good evidence for lexis and for the negation ratio. It is not evidence that a Gaoth Dobhair speaker
+would phrase any particular seed the way we did.**
 
 ---
 
@@ -107,16 +116,54 @@ because no seed says "sees". The third zero is `cha`, which is §5.
 ### Correctness
 
 Four independent workers re-checked seeds they did not translate, against Ó Dónaill and the spec.
-**Their results were still in flight when this report was written** and are appended separately.
+**Three have reported, covering 572 of the 668 seeds. The fourth — seeds 481–576, 96 seeds — was
+still running when this report was written, so that stretch has been translated and
+consistency-checked but NOT independently correctness-checked.** That is a real gap in coverage and
+it is named rather than smoothed over.
+
+Across the 572 seeds actually checked, every one got a verdict — `ok` rows included, so coverage is
+demonstrated rather than asserted:
+
+| verdict | count |
+|---|---|
+| ok | 470 |
+| doubt (a speaker should look) | 54 |
+| defect | 48 |
+
+Of the 48 defects, **29 were graded "wrong"** (as against 72 style observations). Of those 29:
+**8 had already been fixed** by the normalisation sweeps, **19 were applied**, and **2 were
+REJECTED on corpus evidence** — see below, because a rejected finding is as much a result as an
+accepted one.
+
+**What the correctness pass caught that the consistency pass could not**, all genuine grammar:
+`Ba iontas` → `B'iontas` (the past copula elides before a vowel); an unlicensed `a` before `inse` in
+three seeds, where there is no fronted object to license it; a stranded partitive genitive
+(`gloine nó dhó uisce` → `gloine uisce nó dhó`); a wrong genitive (`na hiarnóine` → `na hiarnóna`);
+present indicative after `go dtí go` where the reference is future; and **three seeds where the
+English "yes" had been dropped from the Irish entirely** (386, 425, 448).
+
+It also caught **an error I had introduced myself**. My Ulster-lenition sweep changed seed 315 to
+`leis an charr` — but there `leis` is the prepositional pronoun "with him" and `an carr` is the
+fronted *object* of `a cheannach`. It was never a preposition-plus-article site, and the lenition
+broke the parse. Reverted, and the seed is now a permanent named exclusion in the detector so no
+future sweep re-breaks it.
+
+**The two rejected findings.** A checker proposed `tuigbheáil` → `tuiscint` on the FGB-headword
+test. The corpus says **`tuigbheáil` UL 57 / CO 0 / MU 0** against **`tuiscint` UL 4 / CO 122 /
+MU 180** — `tuigbheáil` *is* the Donegal form and the "fix" would have deleted a strong dialect
+marker. Rejected. (Same trap as `madadh`, third time; see §5.4.) The second, `an mhí seo caite` →
+`an mhí seo a chuaigh thart`, was rejected because `caite` is well attested in Donegal (UL 132) and
+the English differs from the seed it was being matched to — style, not defect.
 
 What the translation pass itself caught is worth recording: workers probed FGB before using a word
 and **three guesses died on the probe** — `gnaitheach` ("busy") is not an FGB headword, so seed 192
-uses `gnóthach`; `madadh` ("dog") is what Gaoth Dobhair says but is not a headword, so the course
-says `madra`; and `toisigh` failed in the most useful way of all (below).
+uses `gnóthach` (the corpus later confirmed `gnaitheach` at 0 in all three dialects); `toisigh`
+failed in the most useful way of all (below); and `madadh` ("dog") was dropped for `madra` — which
+the corpus then proved was the wrong call, and it has been reversed. See §5.4.
 
 ### Consistency — every row, no sampling
 
-Final state, after two normalisation rounds:
+Final state, after three normalisation rounds:
 
 | Check | Result |
 |---|---|
@@ -145,7 +192,7 @@ This is where most of the checking effort went, and it changed the answer every 
 Every detector is calibrated against a known positive *and* a known negative before it reports, and
 the script refuses to print counts if any calibration case fails.
 
-### The 23 real defects found and fixed
+### The 44 real defects found and fixed
 
 1. **`toisigh` / `toiseacht` → `tosaigh` / `tosú` (13 rows).** **This one was my error.** The spec's
    own §1f worked example said `Ar thoisigh mé?`, and blocks followed it. FGB reads `toisigh` as a
@@ -157,23 +204,38 @@ the script refuses to print counts if any calibration case fails.
    `cionn is`, which is unambiguous; `nó` reads as "or" outside Ulster. Seed-targeted, because
    seeds 38, 44, 217 and 524 also contain `nó` and it means *or* in every one of them.
 5. **"rest" split (2 rows)** — `scíste` vs `scíth`; both FGB-attested, standardised on `scíth`.
-6. **"dog" split (1 row)** — `madadh` vs `madra`; standardised on the headword form.
+6. **"dog" split (2 rows)** — `madadh` vs `madra`. Standardised first on the headword form
+   `madra`, then **reversed to `madadh`** when the corpus showed `madra` is used zero times in
+   Donegal. See §5.4 — this one is worth reading, because the rule that caused it is a spec rule.
+7. **19 grammar and consistency defects** from the independent correctness pass (above), including
+   one bad fix of my own reverted.
 
 ---
 
 ## 5. What a Donegal speaker should see FIRST
 
-### 1. `cha` vs `ní` — the open question, and the biggest one
+### 1. `cha` vs `ní` — now MEASURED, and the answer vindicates the seeds
 
-**Not a single `cha`, `chan` or `char` appears in all 668 seeds.** That was a deliberate, recorded
-decision, not an oversight. Negation is the highest-frequency dialect feature in this seed set — the
-English carries *I don't* ×47, *didn't* ×25, *I'm not* ×13, *wouldn't* ×11, *doesn't* ×11 — and it
-is the single feature that most makes Donegal sound like Donegal. Gaoth Dobhair sits in the north of
-the Gaeltacht, where `cha` is commonest.
+**Not a single `cha`, `chan` or `char` appears in all 668 seeds**, and the corpus says that is
+right. Counted in 65,000 tokens of transcribed Donegal speech:
 
-Job #536 was dispatched to *measure* `cha` against `ní` in running Donegal text before ruling. **It
-never returned.** Rather than improvise a form that would be 668 seeds wide, everything is `ní` /
-`níl` / `níor`, which is correct Donegal — merely the less distinctive of the two.
+| | Donegal | Connemara | Kerry |
+|---|---|---|---|
+| `cha` + `chan` + `char` | **561** | 13 | 8 |
+| `ní` + `níor` + `níl` | **6,293** | 14,571 | 13,173 |
+
+Two findings that pull opposite ways. `cha` **is** emphatically Ulster — 561 against 13 and 8, better
+than 40:1 discrimination. But **`ní` is the default negative even in Donegal, by about 11 to 1**;
+the cha-family is roughly **8%** of all negation, and `níl` alone outnumbers it five times over.
+
+So the interim decision was correct and is now evidence-backed rather than a fallback. **A wholesale
+`ní`→`cha` sweep would be a serious error** — it would over-apply `cha` more than tenfold and make
+the course a caricature of Donegal rather than Donegal.
+
+The open question is now narrower and better posed: **should a minority of the 126 independent-clause
+negatives carry `cha`, to reach the natural ~8%?** Natural `cha` use is conditioned by contradiction
+and emphasis, which cannot be read reliably off the English. That is a speaker's judgement on a
+marked subset — not a mechanical sweep.
 
 **The reversal is already engineered.** Every negative seed carries a clause-type annotation:
 
@@ -215,7 +277,21 @@ which is out; `Meas tú` is the natural Donegal move but is formally a question)
 "upsetting"** (575, 576 — FGB's `goill ar` requires a person, so an `orm` had to be supplied that
 the English deliberately lacks); **"bored"** (427 — `dubh dóite` is really "fed up").
 
-### 4. Open spec questions a speaker should settle
+### 4. The dictionary rule was too strict, and it cost a word
+
+The §0 rule "a form must be an Ó Dónaill headword" is what keeps the spelling standard, and it
+caught two real problems: `toisigh` is Ó Dónaill's variant of `tomhais` (*measure*), and
+`gnaitheach` is not a word at all (corpus: 0 in all three dialects).
+
+But it also made me normalise `madadh` → `madra` across seeds 69 and 546. The corpus:
+**`madadh` UL 48 / CO 0 / MU 0; `madra` UL 0 / CO 4 / MU 14.** `madra` is used **zero times** in
+Donegal. The rule excluded the correct Donegal word and installed one the dialect does not use —
+exactly what ruling #1 forbids. **Reversed; both seeds now read `madadh`.**
+
+The lesson, and it is a spec-level one: **the headword test is necessary but not sufficient, and
+corpus evidence outranks it.** Where they disagree, what Donegal actually says wins.
+
+### 5. Open spec questions a speaker should settle
 
 - `cha bhfuil` vs `chan fhuil` for "is not" — FGB shows the second, Wikipedia gives the first as the
   Gweedore form.
@@ -229,13 +305,21 @@ the English deliberately lacks); **"bored"** (427 — `dubh dóite` is really "f
 
 ## 6. Honest assessment against the Connemara work
 
-**Weaker on evidence, stronger on process.**
+**Comparable on lexical evidence, thinner on idiom, stronger on process.**
 
-Weaker where it counts most: Connemara had Ó Curnáin vols I–IV and a 609k-character corpus to
-census; this has a dictionary and nothing else. Every claim here about *lexis* is backed by a live
-FGB probe. **No claim here about *idiom* is backed by anything** — nothing proves a Gaoth Dobhair
-speaker would phrase seed 114 or 173 the way we did. Both evidence workers failed, so the deepest
-Donegal sources named in the brief went unread.
+The evidence gap narrowed sharply at the end. Every required form in the spec is now backed by BOTH
+a live Ó Dónaill probe AND a count in 65,000 tokens of transcribed Donegal speech, and the numbers
+are decisive rather than suggestive: `fosta` 1,792/0/0, `achan` 1,864/1/0, `domh` 480/0/1,
+`inteacht` 150/0/0. Every forbidden form is confirmed as belonging to another dialect.
+
+Still thinner than Connemara: 65k tokens of radio speech against Ó Curnáin vols I–IV plus a
+609k-character corpus, and the deepest Donegal sources named in the brief — Ó Baoill, Quiggin,
+Hamilton, Wagner, the Doegen 1931 recordings — **went unread**, because both workers dispatched to
+reach them failed.
+
+**And the idiom gap is real and unclosed.** The corpus proves which *words* Donegal uses. Nothing
+here proves a Gaoth Dobhair speaker would *phrase* seed 114, 173 or 593 the way we did. That is what
+a speaker is still needed for.
 
 Stronger on process: the dialect spec was written *before* the first seed, not retrofitted; the
 consistency pass read every row rather than sampling; every detector was calibrated and its false
@@ -243,9 +327,11 @@ positives hunted, which killed 39 apparent findings that were not real; and seve
 independently on the same conventions, which is the strongest consistency signal available without a
 native speaker.
 
-The most encouraging single fact is that the process caught its own author: the spec's own worked
-example was wrong, three workers independently flagged it against the dictionary, and it was fixed
-in 13 rows before it became 668.
+The most encouraging fact is that the process caught its own author twice. The spec's own worked
+example was wrong (`toisigh`), three workers independently flagged it against the dictionary, and it
+was fixed in 13 rows before it became 668. Then the corpus caught a normalisation *I* had made on
+the strength of that same dictionary rule (`madadh`→`madra`) and reversed it. Neither error survived
+to a learner.
 
 **How solid is this?** Solid enough to put in front of a Donegal speaker, and not solid enough to
 release. The 526 "confident" rows are confident about *lexis and grammar*, not about how Gaoth
