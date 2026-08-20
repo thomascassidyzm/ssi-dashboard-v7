@@ -317,8 +317,31 @@ inside a *written letter* (speaker 43Mlt), not speech.
 
 So the true ratio in running Connemara is not 58:18. It is about **213 : 1**.
 
-Same story for tomorrow: **`amáireach` 65, `amárach` 2** — and volume IV's own glossary headword for
-this dialect is *`amáireach, adv. Tomorrow.`*
+Same story for tomorrow: **`amáireach` 65, `amárach` 2**.
+
+### And there is something stronger than any count, which I nearly missed
+
+Ó Curnáin marks forms with an asterisk. His own abbreviation key, volume I preface:
+
+> **`*` … (ii) non-attested form, or, in query, impermissible or very doubtful form**
+
+The volume IV index entries read:
+
+> **`eicín, eicíneach, eicíneacht, eicínt, eicínteach, eicínteacht, eichín, eichíneacht, icín,
+> icíneach, cínt, éigin*, a., some`**
+>
+> **`amáireach, máireach, amárach*, adv, tomorrow`**
+
+**He lists eleven attested Connemara variants of "some" and marks `éigin` itself as non-attested.
+He gives `amáireach` as the headword and marks `amárach` as non-attested.** That is not a frequency
+argument I have assembled — it is the dialect's describer stating, in his own notation, that these
+two standard spellings are not forms of this dialect.
+
+*(Same notation, in the course's favour elsewhere: `deoicheall, deicheall, dicheall, dícheall,
+díthcheall*` — so `dícheall` at seed 7 is **unasterisked and attested**, and only `díthcheall` is
+not. And `pstsbj 1sg labhrainn*` in §1 is his asterisk too.)*
+
+**This is the strongest evidence against the recommendation I am about to make, so it goes first.**
 
 ### The fact that splits the call — and it is a dictionary fact, not a feeling
 
@@ -346,11 +369,17 @@ This is not a new policy. **It is the rule the course is already following in th
 four** — `chuile` and `céard` are both in the course and both are in Ó Dónaill; `eicínt` is not in
 either. **`amárach` is the single place it breaks.** So:
 
-- **`éigin` — keep standard.** No FGB entry for `eicínt`; a learner taught it is stranded.
-  **Confidence: confident** as a *policy* recommendation. It is the one place the course knowingly
-  runs against a 213-to-1 corpus, and Kai should see that plainly.
-- **`amárach` → `amáireach` — switch.** FGB carries it, so the lookup objection does not apply, and
-  Ó Curnáin's own headword for this dialect is `amáireach`.
+- **`amárach` → `amáireach` — switch.** This one I would call almost obligatory now. FGB carries
+  `amáireach = amárach`, so the lookup objection does not apply at all; `amáireach` is Ó Curnáin's
+  headword; and he marks `amárach` non-attested. There is no argument left on the other side.
+  **Confidence: confident.**
+- **`éigin` — keep standard, and know what you are keeping.** The lookup argument is the only thing
+  holding it up: `eicínt` has no FGB entry, so a learner taught it cannot find it in the dictionary
+  they will own. Against that stands 213-to-1 and Ó Curnáin's own asterisk. **This is the one place
+  the course would knowingly print a form the dialect's describer says the dialect does not have.**
+  **Confidence: best attempt** — and honestly, if Kai's instinct is that a Connemara course should
+  sound Connemara before it reads standard, the evidence is on his side and I would not argue. The
+  substitution is one pass over 59 rows today, and it is the cheapest it will ever be.
 
 ### What it costs, scanned across all 668 seeds and not just the 36 built
 
