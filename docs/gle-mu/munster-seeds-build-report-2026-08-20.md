@@ -168,11 +168,29 @@ that looks exactly like a dialect finding. The headline claims were re-run on th
 
 Ranked. These are where I would not bet the course.
 
-1. **"To try to" — the one real hole.** `féachaint le` is **0** in Ó Sé, 0 in TY, 0 in An tOileánach;
-   `triail` as a verb is 0 everywhere; and every `iarracht a dhéanamh` hit in Ó Sé is his own
-   standard-Irish prose, not dialect. The course uses `iarracht a dhéanamh` as a labelled best
-   attempt built only from attested pieces. **Every seed using it is marked genuinely uncertain.**
-   (`táim d'iarraidh` for the progressive "I'm trying to" is separate and is confident — Ó Sé §686.)
+1. ~~**"To try to" — the one real hole.**~~ **RESOLVED WHILE THIS BUILD WAS RUNNING, and the
+   resolution is now applied.** A parallel job (#552) settled "try" across all three dialect
+   courses: the word is **`iarraidh`**, and Kerry writes it **`d'iarraidh`** — **41 occurrences in
+   native Blasket prose** (*"d'iarraidh iad a chur isteach ar an dtráigh"*, *"ag rámhaidheacht
+   d'iarraidh teacht suas léi"*), and the West Munster beginners' course glosses the dialect shape
+   outright: *"a d'iarraidh (= ag iarraidh)"*.
+
+   This course had already ruled `táim d'iarraidh` for the progressive from Ó Sé §686, so the
+   progressive uses and all eleven `ag iarraidh`→`d'iarraidh` repairs were already correct. What
+   was **not** right was the four seeds that used `iarracht a dhéanamh` for the bare infinitive
+   (**8, 236, 407, 541**); *iarracht* is a discrete attempt, not the general frame. **All four were
+   moved to `d'iarraidh`**, so "try to" now has exactly one Munster form across the whole course.
+
+   Two things worth recording. **`féach le` is confirmed dead in Munster** — the real count of it
+   meaning "try to" is zero, and the number that suggested otherwise was a trap. And **Kerry has no
+   want/try overlap at all**, because "want" is `tá … uaim`, not `iarraidh` — so the one real cost
+   this decision carries in Connemara does not arise here.
+
+   **A correction to my own evidence, from the same ruling.** This report earlier leaned on
+   "`ag iarraidh` occurs zero times in Teach Yourself Irish". That zero is partly a **spelling
+   artefact** — Munster writes the same word `d'iarraidh`. The "want" ruling is unaffected because
+   it rests on positive evidence (TY teaches `tá … uaim` and `teastaíonn … uaim` in so many words),
+   not on that zero. But the zero should not be quoted as dialect evidence on its own.
 2. **The adjective "easy".** `éasca` and `furasta` are both 0 in all three texts; only the adverb
    `go héascaidh` and the comparative `fusa` are attested.
 3. **"I want to" = `teastaíonn uaim`.** Right dialect, but a thin count; the alternative
