@@ -204,3 +204,22 @@ pass. And **no Munster speaker has seen a single line of it.** The confidence la
 self-assessment, not verification.
 
 **No decomposition, no practice phrases, no audio** — seeds only, as ruled.
+
+---
+
+## 7. How much is done, and exactly where it stopped
+
+**540 of 668 seeds are translated and in the database.** Contiguous bands **1–500** and **523–562**.
+
+**Not translated: seeds 501–522 (22) and 563–668 (106)** — 128 seeds, all still empty shells with
+their English in place. They are untouched, not half-done.
+
+Why it stopped there rather than at 668: the translation was fanned out to ten workers, and seven of
+them were killed by an account usage limit partway through — several had already written good rows
+straight to the database, which is what survives. The remaining ranges were picked up by two
+replacement workers and by this session directly, until the 15-worker fan-out ceiling was reached.
+The brief's instruction was to do fewer seeds properly rather than all of them badly, so the
+remaining 128 were left clean rather than rushed.
+
+**Everything reported above — the clean dialect pass, the clean ZUT pass, the repairs, the forced
+pair — covers all 540 translated rows, every row, no sampling.**
