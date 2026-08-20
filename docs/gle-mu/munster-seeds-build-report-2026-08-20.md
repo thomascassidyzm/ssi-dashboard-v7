@@ -225,19 +225,53 @@ self-assessment, not verification.
 
 ---
 
-## 7. How much is done, and exactly where it stopped
+## 7. Coverage — all 668
 
-**540 of 668 seeds are translated and in the database.** Contiguous bands **1–500** and **523–562**.
+**All 668 seeds are translated and in the database. No empty rows.**
 
-**Not translated: seeds 501–522 (22) and 563–668 (106)** — 128 seeds, all still empty shells with
-their English in place. They are untouched, not half-done.
+The route there was not clean: ten translation workers were dispatched, seven were killed mid-run by
+an account usage limit, and several had already written good rows straight to the database — which
+is what survived. Two replacement workers covered 231–376 and 377–522, this session translated
+1–67 and 523–562 directly, and the remaining tail was completed after the fan-out ceiling was hit.
 
-Why it stopped there rather than at 668: the translation was fanned out to ten workers, and seven of
-them were killed by an account usage limit partway through — several had already written good rows
-straight to the database, which is what survives. The remaining ranges were picked up by two
-replacement workers and by this session directly, until the 15-worker fan-out ceiling was reached.
-The brief's instruction was to do fewer seeds properly rather than all of them badly, so the
-remaining 128 were left clean rather than rushed.
+**Everything below covers all 668 rows, every row, no sampling.**
 
-**Everything reported above — the clean dialect pass, the clean ZUT pass, the repairs, the forced
-pair — covers all 540 translated rows, every row, no sampling.**
+---
+
+## 8. Final state of the two check passes
+
+**Dialect: clean.** No banned standard or Connacht form survives anywhere in the course.
+**ZUT: clean.** No English prompt carries more than one Irish form. The forced pair (seeds 68 and
+194, identical English) carries identical Irish. No whitespace defects.
+
+### Consistency repairs, in total
+
+Each was measured before it was applied, never applied on a guess:
+
+| Fix | Rows | Evidence |
+|---|---|---|
+| `éigin` → `éigint` | 20 | Ó Sé's transcribed speech; his `éigin` is metalanguage |
+| `ag iarraidh` → `d'iarraidh` | 12 | every one checked against its English to confirm *trying*, not *wanting* |
+| `cad ina thaobh` → `canathaobh` | 8 | **`canathaobh` 18, `cad ina thaobh` 0** in the Kerry texts |
+| `amárach` → `amáireach` | 5 | `amárach` 0 in all three sources |
+| `tarlúint` → `tarlú` | 3 | `tarlúint` 0 everywhere; Ó Sé has `tarlú`/`tarlaíonn` |
+| `inniubh` → `inniu` | 3 | `inniubh` is a **fabrication** — 0 in all three sources |
+| `ná féidir` → `nach féidir` | 2 | `nach féidir` 6, `ná féidir` 0 — the copula keeps `nach` |
+| `go luath` → `gan mhoill` for "soon" | 2 | `go luath` was doing double duty for "early" (seed 277) |
+| `iarracht a dhéanamh` → `d'iarraidh` | 4 | job #552's cross-dialect ruling |
+
+**Two rulings were reversed by measurement, and both had already been written into the spec:**
+
+- **"Why" is not split by polarity.** A worker reported the course using `canathaobh` for positive
+  questions and `cad ina thaobh` for negative ones, and described it as the house rule. It is not a
+  rule — it is drift. `cad ina thaobh` is **0 in every Kerry source**. All eight rows moved.
+- **The copula's `nach` exemption is per-predicate, not a blanket.** `nach féidir` is decisive
+  (6 to 0), but `nach maith` vs `ná maith` is 6 to 5 — genuinely mixed. The course's existing
+  `ná maith leat` / `ná miste leat` were **deliberately left alone**, and the spec now names the
+  predicate so nobody "corrects" them later.
+
+### One defect I introduced and caught
+
+The `cad ina thaobh` sweep capitalised `Canathaobh` mid-sentence in three rows. The first repair
+over-corrected and lowercased the sentence-initial ones too (an empty start-of-string match reads as
+falsy). Both were fixed; capitals now appear only at a sentence start or after a full stop.
