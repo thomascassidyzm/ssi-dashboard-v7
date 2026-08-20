@@ -73,8 +73,16 @@ Wagner, Hamilton, Lucas, Ó Baoill, Ó Searcaigh and Mac Congáil — **all prin
 Sommerfelt's 1922 *Torr*, which is Gweedore itself, was rate-limited before it could be checked and
 is flagged as *unchecked, not absent* — the best unpursued lead.
 
-Job **#536, the `cha` ruling, never returned.** That question was instead settled by my own corpus
-work below, and #530's independent numbers agree with it.
+Job **#536, the `cha` ruling, FAILED** — an account rate limit, the same cause that killed the
+fourth correctness checker. Two of the fifteen workers on this job died that way, both late, and
+both on work that had been deliberately scheduled early *because* it was on the critical path.
+Worth knowing before the next dialect course is planned: the dedicated worker for the single most
+important question in the build produced nothing.
+
+It did not matter in the end, but only by luck and redundancy. The `cha` question was settled by my
+own corpus work below, and #530 — dispatched to a broader brief — reached the same answer from
+entirely different material. **A single-worker critical path would have left the biggest decision in
+this course unmeasured.**
 
 **A corpus WAS found, late in the job, and it changes this section.** `corpas.ie`'s CNG corpus has
 no dialect attribute, but RTÉ Raidió na Gaeltachta's regional desks are transcribed speech from
