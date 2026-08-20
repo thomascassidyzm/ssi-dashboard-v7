@@ -149,11 +149,24 @@ speaker 892M2419, and `labhróinnse` emphatic). **Only the finite present is aff
 1 lego, 11 practice phrases.** Seeds 13, 14 and 22 are `draft`, so they carry nothing downstream;
 all 11 phrases belong to seed 9.
 
-**And one thing a find-and-replace would get wrong.** Of seed 9's eleven phrases, ten convert
-cleanly to the possession idiom. The eleventh — *"I speak a little Irish with you now"* — does not:
-"a little Irish" is possession and "with you now" is a speech act, and no single Irish clause carries
-both without becoming clumsy. **It should be dropped rather than forced.** Whether to drop or rewrite
-it is Kai's call; that it should not ship as it stands is not in doubt.
+**But this is not a text swap, and I first wrote that it was.** Job #478 classified seed 9's eleven
+phrases and they do **not** all convert the same way:
+
+- **Four** are pure possession → `tá … agam`.
+- **Six** carry a `leat` / `le duine eile` complement, which makes them *speech acts*, not possession
+  — and **`*Tá Gaeilge agam leat` is not Irish.** Those need `bíonn mé ag caint`.
+- **One** — *"I speak a little Irish with you now"* — does not convert at all, because it is
+  possession and speech act in the same clause. It should be retired rather than forced.
+
+**So the lego `I speak || labhraím` has no single replacement: it splits in two.** That is a
+curriculum decision rather than an edit, and it is the largest consequence of this ruling — I had it
+down as "ten convert cleanly" and that was wrong.
+
+**One methodology flag that comes with it.** `agam` already appears 16 times in the course, but every
+single one is inside the frozen chunk `céard atá i gceist agam` — **the learner has never met
+`tá X agam` productively.** Ruling seed 9 this way introduces a major Irish construction. Better to
+introduce it deliberately at seed 9 than to have it arrive by accident, but that is Kai's call to
+make, not mine.
 
 ---
 
@@ -333,7 +346,16 @@ inside a *written letter* (speaker 43Mlt), not speech.
 
 So the true ratio in running Connemara is not 58:18. It is about **213 : 1**.
 
-Same story for tomorrow: **`amáireach` 65, `amárach` 2**.
+Same story for tomorrow: **`amáireach` 65, `amárach` 2** — and on a closer read of those two
+(job #476), **one is the asterisked index line itself and the other is a folklore transcription
+Ó Curnáin elsewhere warns has been normalised by the collector. `amárach` has zero unqualified
+attestation in this dialect.**
+
+*(Two independent runs counted these and differ in the tens — I make it `eicínt` 213 and `amáireach`
+65, job #476 makes it 166 and 73, on different word-boundary rules. The direction is identical and
+neither reading changes any ruling; treat the exact figures as approximate and the ratios as solid.
+Other standard-vs-Connemara pairs the same run turned up, for whenever they come round in the build:
+`aríst` 179:19, `chuile` 327:44, `céard` 324:24, and `tá muid` 34 against `táimid` **0**.)*
 
 ### And there is something stronger than any count, which I nearly missed
 
