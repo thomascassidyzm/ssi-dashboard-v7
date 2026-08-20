@@ -114,16 +114,26 @@ seeds use exactly that form, and the 18 August list did not name them:
 
 > **Seed 13 · English:** you speak Irish very well
 > **Currently:** `Labhraíonn tú Gaeilge go han-mhaith`
-> **Ruling:** **`Tá Gaeilge an-mhaith agat`** — the same proficiency idiom, the same authority
-> **Confidence: confident**
+> **Ruling:** **`Tá Gaeilge mhaith agat`** — the same proficiency idiom, the same authority
+> **Confidence: confident** on the frame · **genuinely uncertain** on how to carry "very"
+> My first draft was `Tá Gaeilge an-mhaith agat`. Checked (job #478), **`Gaeilge mhaith` is the
+> attested Connemara collocation** — Ó Curnáin has *"bhí teanga mhaith Bhéarla aige"* — while
+> `an-mhaith` in this frame is regular, unattested, and not contradicted. If "very" must survive on
+> the English side, `an-mhaith` is the best attempt; if the English can lose it, drop it.
 
 > **Seed 14 · English:** do you speak Irish all day?
 > **Currently:** `An labhraíonn tú Gaeilge an lá ar fad?`
-> **Ruling:** **`An mbíonn tú ag caint as Gaeilge an lá ar fad?`**
-> **Confidence: best attempt**
+> **Ruling:** **`An mbíonn tú ag caint i nGaeilge ar feadh an lae?`**
+> **Confidence: confident** on `bíonn` and `i nGaeilge` · **best attempt** on `ar feadh an lae`
 > This one genuinely *is* habitual, so a habitual present is right — but the dialect's habitual verb
 > is `bíonn` and its verb for talking is `caint`. Ó Curnáin, four volumes: `caint` **256**,
 > `ag caint` **79**, against `labhairt` **17** in ~2,700 pages. `bíonn` is 101 in vol IV alone.
+> **Two corrections to my own first draft, both from job #478's challenge.** I wrote `as Gaeilge`:
+> that is **0 across 2,700 pages**, and Ó Curnáin says in as many words that **`i nGaeilge` is the
+> more idiomatic form for this dialect**. The course already uses `i nGaeilge` in 37 rows and
+> `as Gaeilge` in none, so this keeps a clean record clean. I also kept `an lá ar fad`: that
+> collocation is **0** as well. The attested option is `ar feadh an lae`; the far commoner
+> `i gcónaí` (106) would be better attested still but shifts the English to "all the time".
 
 > **Seed 22 · English:** because I want to meet people who speak Irish
 > **Currently:** `Mar tá mé ag iarraidh bualadh le daoine a labhraíonn Gaeilge`
@@ -135,9 +145,15 @@ is Ó Dónaill's own frame (`Gaeilge a labhairt`), and is used correctly at seed
 So is seed 15's conditional `go labhrófá` — Ó Curnáin records this verb's conditional (`labhróinn`,
 speaker 892M2419, and `labhróinnse` emphatic). **Only the finite present is affected.**
 
-Seeds 13, 14 and 22 are `draft` — target text written, not yet decomposed into tiles — so the cost
-is three sentences and nothing downstream. An exhaustive sweep of every `labhair` form in the course,
-with a measured reversal cost, is running as job #478.
+**The measured cost of the whole class, from the exhaustive sweep (job #478): 16 rows — 4 seeds,
+1 lego, 11 practice phrases.** Seeds 13, 14 and 22 are `draft`, so they carry nothing downstream;
+all 11 phrases belong to seed 9.
+
+**And one thing a find-and-replace would get wrong.** Of seed 9's eleven phrases, ten convert
+cleanly to the possession idiom. The eleventh — *"I speak a little Irish with you now"* — does not:
+"a little Irish" is possession and "with you now" is a speech act, and no single Irish clause carries
+both without becoming clumsy. **It should be dropped rather than forced.** Whether to drop or rewrite
+it is Kai's call; that it should not ship as it stands is not in doubt.
 
 ---
 
