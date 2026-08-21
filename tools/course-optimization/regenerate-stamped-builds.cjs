@@ -42,7 +42,7 @@ const { createClient } = require('@supabase/supabase-js');
 const {
   classifyBuildPhrase, checkBuildRecombination, checkVocabViolations,
 } = require(path.join(REPO, 'services/course-builder/lib/validation.cjs'));
-const { normalizeForContainment, normalizeForZUT, checkWordContainment, extractVocab } = require(path.join(REPO, 'services/course-builder/lib/text-normalization.cjs'));
+const { normalizeForContainment, normalizeForZUT, checkWordContainment, checkSubstringContainment, extractVocab } = require(path.join(REPO, 'services/course-builder/lib/text-normalization.cjs'));
 const { isChinese } = require(path.join(REPO, 'services/course-builder/lib/language-config.cjs'));
 const { escalateBuildPhrases } = require(path.join(REPO, 'services/course-builder/lib/build-escalation.cjs'));
 const { queueAudioPass } = require(path.join(REPO, 'services/shared/audio-pass-queue.cjs'));
@@ -202,7 +202,7 @@ async function regenLego(courseCode, key, stampedRows, ctx) {
     const nT = normalizeForContainment(cand.target);
     if (!nT) return 'empty';
     if (existingNorms.has(nT) || acceptedSoFar.some(a => normalizeForContainment(a.target) === nT)) return 'duplicate';
-    if (chinese ? !nT.includes(normalizeForContainment(lego.target)) : !checkWordContainment(lego.target, cand.target)) return 'containment';
+    if (chinese ? !checkSubstringContainment(lego.target, cand.target, courseCode) : !checkWordContainment(lego.target, cand.target, courseCode)) return 'containment';
     if (checkVocabViolations([cand], withLego, courseCode).length > 0) return 'vocab';
     const useStemNorms = new Set(usePhrases.map(p => normalizeForContainment(p.target)));
     const { cls } = classifyBuildPhrase(cand.target, lego.target, useStemNorms, false);

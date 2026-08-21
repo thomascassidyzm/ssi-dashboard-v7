@@ -5,7 +5,7 @@
  */
 
 const { isChinese, getTargetLang, getCharThresholds, getGoldenSeedCount, CHARS_PER_SYLLABLE, PREPOSITIONS } = require('./language-config.cjs');
-const { extractVocab, normalizeForZUT, normalizeForStorage, normalizeForContainment, checkWordContainment } = require('./text-normalization.cjs');
+const { extractVocab, normalizeForZUT, normalizeForStorage, normalizeForContainment, checkWordContainment, checkSubstringContainment } = require('./text-normalization.cjs');
 
 // ─── Methodology command hints (guide agents on rejection) ─────────────
 
@@ -994,7 +994,7 @@ function checkBuildRecombination(lego, courseCode, seedNumber, priorVocab) {
     const target = p.target || '';
     const nT = normalizeForContainment(target);
     // Component rows (don't contain the lego) are filtered elsewhere — skip.
-    if (!chinese ? !checkWordContainment(legoTarget, target) : !nT.includes(nL)) return;
+    if (!chinese ? !checkWordContainment(legoTarget, target, courseCode) : !checkSubstringContainment(legoTarget, target, courseCode)) return;
     const { cls, detail } = classifyBuildPhrase(target, legoTarget, useStemNorms, i === 0);
     if (cls === 'bare-repeat' || cls === 'comma-tag' || cls === 'use-stem+tag') {
       rejects.push({ target, known: p.known, class: cls, detail });

@@ -212,3 +212,72 @@ describe('collectCasingEvidence', () => {
     expect(inherentlyCapitalised.has('deitsch')).toBe(true)
   })
 })
+
+// ── Gate fixes 2026-08-21 ─────────────────────────────────────────────────────
+// Two gates were misleading the workers trying to comply with them:
+//  1. containment accepted Irish eclipsis but rejected Irish lenition;
+//  2. dedup stripped sentence-final punctuation, so a statement and its
+//     question collapsed into one line.
+const { normalizePhrase, checkWordContainment, checkSubstringContainment } = require('./text-normalization.cjs')
+
+const GLE = 'gle_cn_for_eng';
+const CYM = 'cym_n_for_eng';
+
+describe('containment and Celtic initial mutations', () => {
+  // The defect: a bare substring test is arbitrary about mutations. Eclipsis
+  // PREFIXES the stem (bean → mbean, still contains "bean") so it passed;
+  // lenition INFIXES an h (bean → bhean) so it was rejected. Same grammar,
+  // opposite verdicts, unpredictable for the worker writing the phrase.
+  it('accepts lenition and eclipsis alike under substring containment', () => {
+    expect(checkSubstringContainment('bean', 'an bhean', GLE)).toBe(true);   // lenition
+    expect(checkSubstringContainment('bean', 'an mbean', GLE)).toBe(true);   // eclipsis
+    expect(checkSubstringContainment('cat', 'an chat', GLE)).toBe(true);
+    expect(checkSubstringContainment('cat', 'an gcat', GLE)).toBe(true);
+    expect(checkSubstringContainment('fear', 'an fhear', GLE)).toBe(true);
+    expect(checkSubstringContainment('fear', 'an bhfear', GLE)).toBe(true);
+  });
+
+  it('accepts lenition and eclipsis alike under word containment', () => {
+    expect(checkWordContainment('bean', 'an bhean', GLE)).toBe(true);
+    expect(checkWordContainment('bean', 'an mbean', GLE)).toBe(true);
+    expect(checkWordContainment('mynd', 'dw i eisiau fynd adref', CYM)).toBe(true); // Welsh soft m→f
+  });
+
+  it('still rejects a phrase that simply does not contain the LEGO', () => {
+    expect(checkSubstringContainment('bean', 'an fhear', GLE)).toBe(false);
+    expect(checkWordContainment('bean', 'an fhear', GLE)).toBe(false);
+  });
+
+  it('leaves non-mutating languages exactly as they were', () => {
+    expect(checkSubstringContainment('haus', 'das haus ist gross', 'deu_for_eng')).toBe(true);
+    // German has no mutations, so no variant of "haus" is ever tried — and the
+    // pre-existing sub-word substring semantics are untouched either way.
+    expect(checkSubstringContainment('haus', 'das auto ist gross', 'deu_for_eng')).toBe(false);
+    expect(checkWordContainment('das haus', 'ich sehe das haus', 'deu_for_eng')).toBe(true);
+    expect(checkWordContainment('das haus', 'ich sehe das auto', 'deu_for_eng')).toBe(false);
+  });
+});
+
+describe('normalizePhrase — duplicate detection', () => {
+  const same = (a, b) => normalizePhrase(a) === normalizePhrase(b);
+
+  it('keeps a statement and its question apart', () => {
+    expect(same('Tá tú ag dul.', 'Tá tú ag dul?')).toBe(false);
+    expect(same('Lernst du Deutsch', 'Lernst du Deutsch?')).toBe(false);
+    expect(same('Bhí sé go maith.', 'Bhí sé go maith!')).toBe(false);
+    expect(same('Cén iontas', 'Cén iontas!')).toBe(false);
+  });
+
+  it('still tolerates genuine noise', () => {
+    expect(same('I want', 'I want.')).toBe(true);
+    expect(same('I want', 'i want ,')).toBe(true);
+    expect(same('I want', '  I WANT  ')).toBe(true);
+    expect(same('全然分からない', '全然分からない。')).toBe(true);
+  });
+
+  it('treats the same question written noisily as one question', () => {
+    expect(same('An bhfuil tú go maith?', 'An bhfuil tú go maith??')).toBe(true);
+    expect(same('Quand as-tu commencé ?', 'Quand as-tu commencé?')).toBe(true);
+    expect(same('Vas a ir?', 'vas a ir ?')).toBe(true);
+  });
+});

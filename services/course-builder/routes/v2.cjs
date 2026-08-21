@@ -15,7 +15,7 @@ const path = require('path');
 const { claudeConfigExport } = require('../../shared/claude-config.cjs');
 
 const { isChinese, getGoldenSeedCount } = require('../lib/language-config.cjs');
-const { normalizeForZUT, normalizeForStorage, normalizeForContainment, extractVocab } = require('../lib/text-normalization.cjs');
+const { normalizeForZUT, normalizeForStorage, normalizeForContainment, checkSubstringContainment, extractVocab } = require('../lib/text-normalization.cjs');
 const { makePhraseId, computePhraseRole, computeLegoPosition, usesBuildUseFormat, checkBuildUsePhrases, generateBuildupPhrases, isBareLegoPhrase, partitionBareLegoPhrases } = require('../lib/phrase-structure.cjs');
 const { loadCourseVocab, loadTranslationVocab, addToCourseVocab, invalidateVocabCache } = require('../lib/vocab-cache.cjs');
 const { checkTiling, checkVocabViolations, formatDecompositionPatterns } = require('../lib/validation.cjs');
@@ -75,10 +75,9 @@ function runSeedChecks(seed, seedLegos, phrasesByLegoKey, cumulativeVocab, cours
     const legoLabel = `L${lego.lego_index}`;
 
     // Containment check
-    const legoTargetNorm = normalizeForContainment(lego.target_text);
     const buildUsePhrases = legoPhrases.filter(p => p.phrase_role === 'build' || p.phrase_role === 'use');
     const containmentFails = buildUsePhrases.filter(p =>
-      !normalizeForContainment(p.target_text).includes(legoTargetNorm)
+      !checkSubstringContainment(lego.target_text, p.target_text, courseCode)
     );
     if (containmentFails.length > 0) {
       issues.push(`${legoLabel}: ${containmentFails.length} phrase(s) fail containment`);
@@ -737,9 +736,8 @@ module.exports = function(ctx) {
         }
 
         // 4. Check LEGO containment — phrase target must contain LEGO target
-        const legoTargetNorm = normalizeForContainment(lego.target_text);
         const containmentFails = allPhrases.filter(p =>
-          !normalizeForContainment(p.target).includes(legoTargetNorm)
+          !checkSubstringContainment(lego.target_text, p.target, courseCode)
         );
         if (containmentFails.length > 0) {
           errors.push({

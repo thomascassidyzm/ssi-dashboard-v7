@@ -1118,7 +1118,7 @@ Apply gloss-edits (DIFFERENTIATE) first. Re-run the detector to confirm the coun
   // Finds under-threshold LEGOs and spawns a Sonnet agent to write missing USE phrases.
 
   const { makePhraseId, computeLegoPosition, partitionBareLegoPhrases } = require('../lib/phrase-structure.cjs');
-  const { normalizeForContainment } = require('../lib/text-normalization.cjs');
+  const { normalizeForContainment, checkSubstringContainment } = require('../lib/text-normalization.cjs');
 
   router.post('/build/backfill-submit/:courseCode', async (req, res) => {
     try {
@@ -1173,10 +1173,9 @@ Apply gloss-edits (DIFFERENTIATE) first. Re-run the detector to confirm the coun
         }
 
         // Check containment — each phrase must contain the LEGO target
-        const legoTargetNorm = normalizeForContainment(lego.target_text);
         const containmentFails = use.filter(p => {
           const target = p.target_text || p.target || '';
-          return !normalizeForContainment(target).includes(legoTargetNorm);
+          return !checkSubstringContainment(lego.target_text, target, courseCode);
         });
         if (containmentFails.length > 0) {
           errors.push({ entry: label, error: `${containmentFails.length} phrase(s) don't contain LEGO target "${lego.target_text}"` });

@@ -3,7 +3,7 @@
  * Pure functions (no DB, no state).
  */
 
-const { normalizeForContainment, checkWordContainment } = require('./text-normalization.cjs');
+const { normalizeForContainment, checkWordContainment, checkSubstringContainment, normalizePhrase } = require('./text-normalization.cjs');
 const { getTargetLang, getCharsPerSyllable, isParticle, isChinese } = require('./language-config.cjs');
 
 // Phrase role prefixes for deterministic IDs
@@ -162,9 +162,9 @@ function checkBuildUsePhrases(lego, courseCode, seedNumber) {
   const charBased = isChinese(courseCode);
   const containsLego = (phraseTarget) => {
     if (charBased) {
-      return normalizeForContainment(phraseTarget).includes(normalizeForContainment(legoTarget));
+      return checkSubstringContainment(legoTarget, phraseTarget, courseCode);
     }
-    return checkWordContainment(legoTarget, phraseTarget);
+    return checkWordContainment(legoTarget, phraseTarget, courseCode);
   };
   const buildContaining = buildRaw.filter(p => containsLego(p.target || ''));
   const useContaining = useRaw.filter(p => containsLego(p.target || ''));
@@ -237,7 +237,9 @@ function checkBuildUsePhrases(lego, courseCode, seedNumber) {
   const seen = new Set();
   const duplicates = [];
   for (const p of allPhrases) {
-    const norm = normalizeForContainment((p.target || '').trim());
+    // normalizePhrase, NOT normalizeForContainment: a statement and the question
+    // built from it are two different teaching items, so "?" must survive here.
+    const norm = normalizePhrase((p.target || '').trim());
     if (seen.has(norm)) {
       duplicates.push(p.target || p.known || '(empty)');
     }

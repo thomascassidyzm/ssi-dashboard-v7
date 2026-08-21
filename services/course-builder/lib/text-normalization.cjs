@@ -4,15 +4,40 @@
  */
 
 const { isChinese } = require('./language-config.cjs');
+const { mutatedWordForms, mutationVariants, hasInitialMutations } = require('./initial-mutations.cjs');
+
+// Sentence-final marks that CHANGE THE MEANING of a line. A question and the
+// statement it is built from are two different teaching items, so these survive
+// deduplication. Each family folds to one canonical character so that "?" and
+// "؟" and "？" are still the same question, and "??" is still one question.
+const MEANING_MARKS = [
+  { canonical: '?', chars: '?？؟¿;' },   // ; = Greek question mark
+  { canonical: '!', chars: '!！¡' },
+];
+// Punctuation that is genuinely noise when it hangs off the end of a line:
+// a trailing full stop, a stray comma, a dangling colon or semicolon.
+const TRAILING_NOISE = /[.,;:،؛。，、：； \s]+$/;
 
 /**
  * Normalize phrase text for deduplication comparison.
- * Strips trailing punctuation and lowercases.
- * e.g., "I want" == "I want." == "i want"
+ *
+ * Tolerates noise — case, trailing spaces, a stray comma, a trailing full stop:
+ *   "I want" == "I want." == "i want" == "I want,"
+ * but KEEPS sentence-final punctuation that changes the meaning:
+ *   "you are going" != "you are going?"   (statement vs question)
+ *   "you are going?" == "You are going??" (same question, noisy typing)
  */
 function normalizePhrase(text) {
   if (!text) return '';
-  return text.replace(/[.,!?;:؟،؛]+$/, '').toLowerCase().trim();
+  let t = String(text).toLowerCase().trim();
+  // Peel the trailing punctuation run off, decide what it MEANT, put back only that.
+  const run = (t.match(/[.,!?;:¿¡؟،؛。，！？、：；;\s]+$/) || [''])[0];
+  let mark = '';
+  for (const { canonical, chars } of MEANING_MARKS) {
+    if ([...run].some(c => chars.includes(c))) { mark = canonical; break; }
+  }
+  t = t.slice(0, t.length - run.length).replace(TRAILING_NOISE, '').trim();
+  return mark ? t + mark : t;
 }
 
 /**
@@ -39,8 +64,12 @@ function normalizeForContainment(text) {
 /**
  * Word-based containment check for languages with bracket structures (e.g. German).
  * Checks that ALL words from the LEGO target appear in the phrase (in any position).
+ *
+ * In a Celtic target language a word whose initial has mutated (Irish `bean` →
+ * `bhean` / `mbean`) is the SAME WORD, so a mutated surface counts as containing
+ * the LEGO. Pass `courseCode` to enable that; without it, behaviour is unchanged.
  */
-function checkWordContainment(legoTarget, phraseTarget) {
+function checkWordContainment(legoTarget, phraseTarget, courseCode) {
   const legoWords = normalizeForContainment(legoTarget).split(/\s+/);
   const phraseWords = normalizeForContainment(phraseTarget).split(/\s+/);
   const phraseWordCounts = {};
@@ -51,10 +80,34 @@ function checkWordContainment(legoTarget, phraseTarget) {
   for (const w of legoWords) {
     legoWordCounts[w] = (legoWordCounts[w] || 0) + 1;
   }
+  const mutating = hasInitialMutations(courseCode);
   for (const [word, count] of Object.entries(legoWordCounts)) {
-    if ((phraseWordCounts[word] || 0) < count) return false;
+    let available = phraseWordCounts[word] || 0;
+    if (available < count && mutating) {
+      for (const v of mutatedWordForms(word, courseCode)) available += phraseWordCounts[v] || 0;
+    }
+    if (available < count) return false;
   }
   return true;
+}
+
+/**
+ * Substring containment check — the LEGO target appears verbatim inside the phrase.
+ * Used for character-based languages (no word spaces) and by the legacy write paths.
+ *
+ * Celtic initial mutations are recognised here for the same reason as above. This
+ * matters more than it looks: a bare substring test is ARBITRARY about mutations —
+ * Irish eclipsis PREFIXES the stem (`bean` → `mbean`, which still contains "bean")
+ * so it slipped through, while lenition INFIXES an h (`bean` → `bhean`) so it was
+ * rejected. Same grammar, opposite verdicts, and no way for a worker to predict it.
+ */
+function checkSubstringContainment(legoTarget, phraseTarget, courseCode) {
+  const phrase = normalizeForContainment(phraseTarget);
+  const lego = normalizeForContainment(legoTarget);
+  if (phrase.includes(lego)) return true;
+  if (!hasInitialMutations(courseCode)) return false;
+  return mutationVariants(lego, courseCode)
+    .some(v => phrase.includes(normalizeForContainment(v)));
 }
 
 /**
@@ -266,6 +319,7 @@ module.exports = {
   normalizePhrase,
   normalizeForContainment,
   checkWordContainment,
+  checkSubstringContainment,
   normalizeForZUT,
   normalizeForStorage,
   normalizeText,

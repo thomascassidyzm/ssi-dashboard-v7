@@ -10,7 +10,7 @@ const { Router } = require('express');
 
 // Lib imports
 const { isChinese, getGoldenSeedCount, getLanguageName, getLangFamily, checkLegoSyllables } = require('../lib/language-config.cjs');
-const { extractVocab, normalizeForContainment, normalizePhrase, checkWordContainment, normalizeSubmissionCasing } = require('../lib/text-normalization.cjs');
+const { extractVocab, normalizeForContainment, normalizePhrase, checkWordContainment, checkSubstringContainment, normalizeSubmissionCasing } = require('../lib/text-normalization.cjs');
 const {
   makePhraseId, computePhraseRole, computeLegoPosition,
   extractNgrams, usesBuildUseFormat, checkBuildUsePhrases,
@@ -502,9 +502,8 @@ module.exports = function seedCompleteRoutes(ctx) {
       }
 
       if (phrases && phrases.length > 0 && !skipBaskets && !allowValidationBypass(req.body)) {
-        const legoTargetNorm = normalizeForContainment(target);
         const containmentFails = phrases.filter(p =>
-          !normalizeForContainment(p.target).includes(legoTargetNorm)
+          !checkSubstringContainment(target, p.target, course_code)
         );
         if (containmentFails.length > 0) {
           console.log(`✗ ${legoId}: REJECTED - ${containmentFails.length} phrases missing LEGO target "${target}"`);
@@ -1280,15 +1279,10 @@ module.exports = function seedCompleteRoutes(ctx) {
               // because they have no word spaces. Space-delimited languages use word-based containment.
               const charBased = isChinese(course_code);
               const useWordContainment = !charBased && req.query.strict_containment !== 'true';
-              const legoTargetNorm = normalizeForContainment(lego.target);
               const containmentFails = allPhrases.filter(p => {
-                if (charBased) {
-                  return !normalizeForContainment(p.target).includes(legoTargetNorm);
-                }
-                if (useWordContainment) {
-                  return !checkWordContainment(lego.target, p.target);
-                }
-                return !normalizeForContainment(p.target).includes(legoTargetNorm);
+                if (charBased) return !checkSubstringContainment(lego.target, p.target, course_code);
+                if (useWordContainment) return !checkWordContainment(lego.target, p.target, course_code);
+                return !checkSubstringContainment(lego.target, p.target, course_code);
               });
               if (containmentFails.length > 0) {
                 const mode = charBased ? 'substring' : (useWordContainment ? 'word-based' : 'substring');
@@ -1345,8 +1339,8 @@ module.exports = function seedCompleteRoutes(ctx) {
               });
               // Containment ran in section 3 before escalation — enforce it on fresh rows here.
               fresh = (fresh || []).filter(p => chinese
-                ? normalizeForContainment(p.target).includes(normalizeForContainment(f.lego.target))
-                : checkWordContainment(f.lego.target, p.target));
+                ? checkSubstringContainment(f.lego.target, p.target, course_code)
+                : checkWordContainment(f.lego.target, p.target, course_code));
               if (fresh && fresh.length > 0) {
                 const candidate = { ...f.lego, build: [...keptBuild, ...fresh] };
                 const regate = checkBuildRecombination(candidate, course_code, seed_number, f.priorVocab);

@@ -291,49 +291,10 @@ function findInsertSpan(targetText, parentTarget) {
   return { start: words[first].start, end: words[last].end, parentWordSpans, ghostWordSpans }
 }
 
-// Celtic initial-consonant mutations (Tom's rule: mutations are NOT errors — you
-// can't introduce every mutated form as its own LEGO). We forward-mutate the
-// LEGO's FIRST-WORD initial into each grammatical variant and retry the match,
-// so a mutated surface still anchors on its parent. Forward mutation of the
-// known LEGO is exact and bounded; de-mutation would be ambiguous (many-to-one).
-// Rules: [originalInitial, mutatedInitial], applied longest-initial-first.
-const MUTATION_RULES = {
-  cym: [ // Welsh: soft / nasal / aspirate
-    ['ll', 'l'], ['rh', 'r'],
-    ['c', 'g'], ['p', 'b'], ['t', 'd'], ['g', ''], ['b', 'f'], ['d', 'dd'], ['m', 'f'], // soft
-    ['c', 'ngh'], ['p', 'mh'], ['t', 'nh'], ['g', 'ng'], ['b', 'm'], ['d', 'n'],        // nasal
-    ['c', 'ch'], ['p', 'ph'], ['t', 'th'],                                              // aspirate
-  ],
-  gle: [ // Irish: lenition + eclipsis
-    ['b', 'bh'], ['c', 'ch'], ['d', 'dh'], ['f', 'fh'], ['g', 'gh'], ['m', 'mh'], ['p', 'ph'], ['s', 'sh'], ['t', 'th'], // lenition
-    ['b', 'mb'], ['c', 'gc'], ['d', 'nd'], ['f', 'bhf'], ['g', 'ng'], ['p', 'bp'], ['t', 'dt'],                          // eclipsis
-  ],
-  gla: [ // Scottish Gaelic: lenition
-    ['b', 'bh'], ['c', 'ch'], ['d', 'dh'], ['f', 'fh'], ['g', 'gh'], ['m', 'mh'], ['p', 'ph'], ['s', 'sh'], ['t', 'th'],
-  ],
-  bre: [ // Breton: soft + spirant (best-effort)
-    ['gw', 'w'], ['k', 'g'], ['p', 'b'], ['t', 'd'], ['g', "c'h"], ['b', 'v'], ['d', 'z'], ['m', 'v'], // soft
-    ['k', "c'h"], ['p', 'f'], ['t', 'z'],                                                              // spirant
-  ],
-}
-function mutationVariants(parentTarget, langPrefix) {
-  const rules = MUTATION_RULES[langPrefix]
-  if (!rules) return []
-  const m = parentTarget.match(/^(\s*)(\S+)([\s\S]*)$/)
-  if (!m) return []
-  const [, lead, firstWord, rest] = m
-  const lower = firstWord.toLowerCase()
-  const variants = new Set()
-  for (const [from, to] of rules) {
-    if (from.length > 0 && lower.startsWith(from)) {
-      // Mutation only rewrites the word-initial; the rest of the word keeps its
-      // surface (and casing). Mutated initials are inherently lower-case.
-      variants.add(lead + to + firstWord.slice(from.length) + rest)
-    }
-  }
-  variants.delete(parentTarget)
-  return [...variants]
-}
+// Celtic initial-consonant mutations. The rule table and the forward-mutation
+// helper now live in course-builder/lib/initial-mutations.cjs so that the
+// decomposer and the LEGO containment gate agree on what "the same word" means.
+const { mutationVariants } = require('./course-builder/lib/initial-mutations.cjs')
 
 // Unified parent anchor: exact → insert → mutation (retrying exact + insert with
 // each mutated LEGO surface). Returns a descriptor with `kind`, or null when the
