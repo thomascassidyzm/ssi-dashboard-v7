@@ -172,6 +172,39 @@ describe('processRecordingBuffer — silence trim (T-20 regression)', () => {
     expect(span).toBeGreaterThan(1.25)
   }, 60000)
 
+  // THE SHAPE THE BROWSER ACTUALLY SENDS. MediaRecorder muxes WebM as a live
+  // stream into a non-seekable sink, so it never returns to write the duration
+  // element and every uploaded take reports `Duration: N/A`. Read detection
+  // trusted that header, so on 2026-08-21 it returned null for every real take,
+  // the chain cut each one to 1ms, and the upload handler refused an 834-byte
+  // stub — takes that sounded perfect on playback came back "FAILED, not
+  // saved". The fixtures above are written by ffmpeg to a seekable FILE, which
+  // DOES carry the header, which is exactly why they stayed green through it.
+  //
+  // `-f webm pipe:1` makes ffmpeg mux to a non-seekable sink the same way, so
+  // this fixture has the defect's shape. Fails if length is ever taken from a
+  // container's declaration again instead of from what the decoder played out.
+  it('trims a stream-muxed take whose container declares no duration', async () => {
+    if (!tmpDir) return
+    const src = path.join(tmpDir, 'nodur.webm')
+    // 0.6s silence, 2.0s tone, 0.6s silence — muxed to a pipe, so no header.
+    fs.writeFileSync(src, execFileSync('ffmpeg', [
+      '-v', 'quiet', '-f', 'lavfi', '-i', `sine=f=440:d=${TONE_SEC * 2}:r=48000`,
+      '-af', `adelay=${PAD_SEC * 1000 + 100},apad=pad_dur=${PAD_SEC + 0.1}`,
+      '-c:a', 'libopus', '-b:a', '96k', '-f', 'webm', 'pipe:1',
+    ], { maxBuffer: 64 * 1024 * 1024 }))
+
+    const { buffer, metadata } = await processRecordingBuffer(fs.readFileSync(src), {
+      inputFormat: 'webm', trimSilence: true, normalize: false,
+    })
+    expect(metadata.processed).toBe(true)
+    // The read was FOUND. Before the fix this was false and the take died here.
+    expect(metadata.filters.trimFoundRead).toBe(true)
+    // And the tone survived whole rather than collapsing to a 1ms stub.
+    expect(metadata.durationMs).toBeGreaterThan(TONE_SEC * 2 * 1000)
+    expect(audibleSpan(buffer)).toBeGreaterThan(TONE_SEC * 2 - 0.03)
+  }, 60000)
+
   // An all-silent take must still collapse to nothing, so the MIN_TAKE_MS guard
   // in the upload handler keeps catching muted mics. Raising retention must not
   // reopen the 834-byte empty-stub hole that put 26 silent clips into cym_n.

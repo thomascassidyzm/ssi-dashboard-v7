@@ -1194,9 +1194,31 @@ async function detectReadBounds(inputPath) {
   );
   const log = `${stdout || ''}${stderr || ''}`;
 
+  // HOW LONG THE TAKE IS, MEASURED RATHER THAN DECLARED.
+  //
+  // The header's `Duration:` is not available on the audio this actually
+  // processes. A browser's MediaRecorder muxes WebM as a live stream into a
+  // non-seekable sink, so it never goes back to write the duration element:
+  // every take the recorders upload reports `Duration: N/A`. Trusting that
+  // header meant detection returned null for EVERY real take, the caller cut
+  // it to `atrim=start=0:end=0.001`, and the upload handler's silent-take
+  // guard then refused an 834-byte stub — a take that sounded perfect on
+  // playback came back "FAILED, not saved". Kai hit it on 2026-08-21 within
+  // minutes of the chain going live; the fixture takes the tests build are
+  // written by ffmpeg to a seekable FILE, which does carry the header, which
+  // is why the suite stayed green.
+  //
+  // `time=` is the far end of the same run: what the decoder actually played
+  // out. It is present whether or not the container declared anything, so it
+  // is the primary source here and the header is only the fallback. Take the
+  // LAST one — ffmpeg emits progress lines throughout.
+  const timeMatches = [...log.matchAll(/\btime=\s*(\d+):(\d+):([\d.]+)/g)];
+  const lastTime = timeMatches[timeMatches.length - 1];
   const durMatch = /Duration:\s*(\d+):(\d+):([\d.]+)/.exec(log);
-  if (!durMatch) return null;
-  const duration = (+durMatch[1]) * 3600 + (+durMatch[2]) * 60 + parseFloat(durMatch[3]);
+  const hms = (m) => (+m[1]) * 3600 + (+m[2]) * 60 + parseFloat(m[3]);
+  const duration = lastTime ? hms(lastTime) : (durMatch ? hms(durMatch) : NaN);
+  // Only a file ffmpeg could neither describe nor decode has no length at all.
+  if (!Number.isFinite(duration) || duration <= 0) return null;
 
   // Silence intervals, in order. A trailing silence_start with no end runs to
   // the end of the file.
