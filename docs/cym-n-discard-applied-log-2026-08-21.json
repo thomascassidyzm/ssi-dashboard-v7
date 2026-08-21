@@ -1,0 +1,51 @@
+{
+  "fixes": [
+    {
+      "lego_id": "S0264L02",
+      "rows": 1
+    },
+    {
+      "lego_id": "S0271L01",
+      "rows": 1
+    }
+  ],
+  "deletes": {
+    "course_practice_phrases": 1049,
+    "course_legos": 178,
+    "course_seeds": 38
+  },
+  "clone_counts_after": {
+    "course_seeds": 630,
+    "course_legos": 457,
+    "course_practice_phrases": 3948
+  },
+  "live_unchanged": true,
+  "homoglyphs": [
+    {
+      "lego_id": "S0264L02",
+      "from": "problеm",
+      "to": "problem",
+      "found": 1,
+      "before": {
+        "lego_id": "S0264L02",
+        "seed_number": 264,
+        "known_text": "problem",
+        "target_text": "problеm"
+      },
+      "in_discarded_range": false
+    },
+    {
+      "lego_id": "S0271L01",
+      "from": "hеr",
+      "to": "her",
+      "found": 1,
+      "before": {
+        "lego_id": "S0271L01",
+        "seed_number": 271,
+        "known_text": "a challenge",
+        "target_text": "hеr"
+      },
+      "in_discarded_range": true
+    }
+  ]
+}
