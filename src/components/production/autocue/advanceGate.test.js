@@ -111,13 +111,21 @@ describe('advanceGate — the script does not move while the recordist is speaki
   // 2026-08-19 that the recorder cut after "…ennen kuin", with "me muutettiin"
   // never recorded.
   //
-  // The room is set to a measured floor of 0.04 on purpose. useVAD's relative
-  // end-of-speech floor is bounded BELOW by twice the room's own tone (so a
-  // quiet room cannot drive it under the noise), and at 0.04 that lower bound
-  // meets the 0.08 threshold exactly — the relative rule is pinned back to the
-  // absolute one and the pre-fix cut reappears on real audio. That is not a
-  // contrived setting; it is an ordinary noisy room, and it is precisely the
-  // residual exposure the first fix leaves behind.
+  // The room is set to a measured floor of 0.04 on purpose: an ordinary noisy
+  // one. That setting used to reproduce the pre-fix cut on real audio all by
+  // itself, because useVAD's relative end-of-speech floor was bounded below by
+  // twice the room's tone and at 0.04 that bound met the 0.08 threshold exactly
+  // — the relative rule pinned back to the absolute one. It no longer does:
+  // the floor may never sit closer than MIN_SPEECH_DROP_RATIO to the speaker,
+  // so this take's floor is 0.054 and its longest quiet stretch (650ms) no
+  // longer runs the timer out. That is the residual exposure closed, and it is
+  // pinned in useVAD.truncation.test.js.
+  //
+  // So the cut here is now provoked by a SHORTER end-of-speech timer (600ms
+  // rather than 800ms) — a legitimate config, and the point stands either way.
+  // This file's subject is the second lock: a cut, HOWEVER it was decided, must
+  // not move the script on its own. The gate cannot depend on the VAD being
+  // wrong in one particular way, or fixing the VAD would silently unpin it.
   //
   // After the real trace the recordist keeps reading — they never stopped, so
   // "me muutettiin" is still coming. Those samples are SYNTHESISED at the
@@ -142,7 +150,9 @@ describe('advanceGate — the script does not move while the recordist is speaki
 
     const { g, advanced, holds } = gate()
     // silenceThreshold 0.08 = MAX_THRESHOLD, the clamp an ordinary room gets.
-    const vad = useVAD({ silenceThreshold: 0.08, pollInterval: 50, silenceDuration: 800, minSpeechDuration: 300 })
+    // silenceDuration 600 = short enough that this take's real 650ms quiet
+    // stretch still closes it under the corrected floor. See the note above.
+    const vad = useVAD({ silenceThreshold: 0.08, pollInterval: 50, silenceDuration: 600, minSpeechDuration: 300 })
     vad.onSpeechStart(() => { g.speechStarted() })
     vad.onSpeechEnd((_d, _gaps, pauses) => { g.takeEnded(12, pauses) })
 

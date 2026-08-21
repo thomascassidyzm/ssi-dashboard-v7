@@ -89,6 +89,61 @@ describe('useVAD — a take is not ended while the recordist is still speaking',
     h.vad.stopListening()
   })
 
+  // ── The residual exposure the relative floor left behind ────────────────────
+  //
+  // The relative floor is bounded below by twice the room's measured tone, so a
+  // quiet room cannot drive it under the noise. That bound is absolute and the
+  // protection it bounds is relative, and nothing tied the two together: as the
+  // input gets quieter the bound climbs through the protection and the VAD is
+  // back to timing speech as silence. At a measured floor of 0.04 the bound is
+  // 0.08 — the clamped threshold exactly — and the relative rule contributes
+  // nothing at all. 0.04 is not a contrived room; it is an ordinary noisy one,
+  // and it is the setting advanceGate.test.js used to reproduce a real cut.
+  it('does not cut the real take in a room whose tone pinned the relative rule back', async () => {
+    const h = mountVadOverTrace(fixture.rms, { silenceThreshold: 0.08, noiseFloor: 0.04 })
+    let endedAtMs = null
+    h.vad.onSpeechEnd((durationMs) => { if (endedAtMs === null) endedAtMs = durationMs })
+    await h.vad.startListening({ getTracks: () => [] })
+    h.primeCalibration()
+    for (let i = 0; i < h.length; i++) h.step()
+
+    // The floor may never sit closer than MIN_SPEECH_DROP_RATIO to the speaker.
+    // This take peaks at 0.216, so the floor is 0.054 rather than 0.08, and the
+    // longest quiet stretch in the trace is 650ms — under the 800ms timer.
+    expect(endedAtMs).toBeNull()
+    expect(h.vad.endOfSpeechFloor.value).toBeCloseTo(0.054, 3)
+    h.vad.stopListening()
+  })
+
+  it('still ends a take in that same noisy room when the recordist stops', async () => {
+    // Spending the room bound's margin must not cost the anti-blob guarantee:
+    // the floor is still never below the room's own measured tone, so real
+    // silence in a noisy room ends the phrase exactly as before.
+    const trace = [...fixture.rms, ...Array(40).fill(0.035)]
+    const h = mountVadOverTrace(trace, { silenceThreshold: 0.08, noiseFloor: 0.04 })
+    let ended = false
+    h.vad.onSpeechEnd(() => { ended = true })
+    await h.vad.startListening({ getTracks: () => [] })
+    h.primeCalibration()
+    for (let i = 0; i < trace.length; i++) h.step()
+
+    expect(ended).toBe(true)
+    h.vad.stopListening()
+  })
+
+  it('leaves the 26dB relative rule alone where the room permits it', async () => {
+    // The ceiling is a bound on the bound, not a new rule. Room 0.004, speech
+    // peaking 0.216: 5% of the speaker (0.0108) already clears twice the room
+    // tone, so it is what the floor is, unchanged.
+    const h = mountVadOverTrace(fixture.rms, { silenceThreshold: 0.08, noiseFloor: 0.004 })
+    await h.vad.startListening({ getTracks: () => [] })
+    h.primeCalibration()
+    for (let i = 0; i < h.length; i++) h.step()
+
+    expect(h.vad.endOfSpeechFloor.value).toBeCloseTo(0.216 * 0.05, 4)
+    h.vad.stopListening()
+  })
+
   it('reports a cut that landed while the signal was still loud', async () => {
     // Explicability: whatever else is true, a take the tool ends early has to
     // say so. Speech that stops dead with no decay at all — the shape of a

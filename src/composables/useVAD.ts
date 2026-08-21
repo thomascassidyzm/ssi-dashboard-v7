@@ -203,8 +203,35 @@ const MAX_THRESHOLD = 0.08
 //  - It is floored at twice the room's measured noise, so a quiet room cannot
 //    drive it under the room tone and re-create the 2026-08-07 failure where
 //    the VAD never saw silence and a whole read landed as one blob.
+//
+// ...but that room-tone lower bound is itself unbounded, and on a QUIET INPUT it
+// swallows the relative protection whole. The bound is 2x the measured room
+// tone, an absolute number; the protection it is bounding is 5% of the speaker,
+// a relative one. Nothing ties them together, so as the speaker gets quieter the
+// bound climbs through the protection and out the other side. Worked: a mic
+// running low into a room with a fan in it — noise 0.02, speech peaking 0.06 —
+// gives a room bound of 0.04, which is 3.5dB under the loudest thing in the
+// take. Every unstressed syllable in the phrase is below it, the 800ms timer
+// runs mid-sentence, and the take is cut exactly as it was on 2026-08-19. The
+// relative rule is still in the expression and is doing nothing.
+//
+// So the room bound now has a ceiling of its own, expressed in the same currency
+// as the thing it bounds: the end-of-speech floor may never sit closer than
+// MIN_SPEECH_DROP_RATIO to the level this speaker is actually being heard at. A
+// pause always has to be a real drop — at worst 12dB rather than at worst
+// nothing.
+//
+// The anti-blob guarantee survives because the ceiling can never pull the floor
+// below the room tone ITSELF: the raw measured noiseFloor is a hard backstop
+// under everything. What the ceiling can do is spend the 2x margin, and it only
+// ever does that in a room where 2x room tone is already within 12dB of the
+// speaker — a room calibrate() is warning about, and a room where the honest
+// choice is the recoverable failure (takes run together) over the unrecoverable
+// one (the performance was truncated). That is the same trade the paragraph
+// above makes; this only stops the room bound opting out of it.
 const SPEECH_DROP_RATIO = 0.05   // ~26dB below the take's own speech level
 const NOISE_FLOOR_MARGIN = 2
+const MIN_SPEECH_DROP_RATIO = 0.25   // ~12dB: the least drop we will ever call a pause
 
 export function useVAD(config: Partial<VADConfig> = {}) {
   const cfg = { ...defaultConfig, ...config }
@@ -454,11 +481,23 @@ export function useVAD(config: Partial<VADConfig> = {}) {
     // Track how loud this speaker actually is inside this take, and derive the
     // floor that "have they stopped?" is judged against. Bounded above by the
     // configured threshold (so this can never cut sooner than today) and below
-    // by the room's own measured tone (so it can never stop cutting at all).
+    // by the room's own measured tone (so it can never stop cutting at all) —
+    // with that room bound itself held under MIN_SPEECH_DROP_RATIO of the
+    // speaker, and the raw room tone as the hard backstop beneath the lot.
     if (isAboveThreshold && rms > speechLevel.value) speechLevel.value = rms
-    const roomFloor = calibration.value ? calibration.value.noiseFloor * NOISE_FLOOR_MARGIN : 0
+    const noiseFloor = calibration.value ? calibration.value.noiseFloor : 0
+    const roomFloor = noiseFloor * NOISE_FLOOR_MARGIN
     const silenceFloor = speechLevel.value > 0
-      ? Math.min(cfg.silenceThreshold, Math.max(roomFloor, speechLevel.value * SPEECH_DROP_RATIO))
+      ? Math.min(
+          cfg.silenceThreshold,
+          Math.max(
+            noiseFloor,
+            Math.min(
+              Math.max(roomFloor, speechLevel.value * SPEECH_DROP_RATIO),
+              speechLevel.value * MIN_SPEECH_DROP_RATIO
+            )
+          )
+        )
       : cfg.silenceThreshold
     endOfSpeechFloor.value = silenceFloor
 
