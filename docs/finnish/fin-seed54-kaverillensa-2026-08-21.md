@@ -67,12 +67,26 @@ lego card), so `-nsa` is licensed throughout. No edits.
 | 11 | S0052L04U07 | she wanted to write a letter to **her** friend | se halusi kirjoittaa kirjeen kaverillensa | kept — duplicates pos 4 |
 | — | S0052L05U01 | he wanted to write a letter to his friend last week | se halusi kirjoittaa kirjeen kaverillensa viime viikolla | kept |
 
-**On rows 9–11, deliberately not touched.** These three are exact Finnish duplicates of rows
-3, 5 and 4 — the same Class C defect as seed 54. But this is the lego's **introduction seed**,
-and re-prompting the freshly-taught word with *her* immediately after *his* is a plausible and
-useful way to show the learner that `-nsa` does not inflect for gender. Removing them would
-remove a teaching point, which Kai's ruling forbids doing without saying so. **Flagged for his
-word rather than changed** — if he wants them varied, that is a three-row edit at seed 52.
+**On rows 9–11, deliberately not touched — and Kai's own record decides it.** These three are
+exact Finnish duplicates of rows 3, 5 and 4, the same Class C defect as seed 54. Two things
+argue for leaving them: this is the lego's **introduction seed**, where re-prompting the
+freshly-taught word with *her* straight after *his* is a reasonable way to show the learner
+that `-nsa` does not inflect for gender; and removing them would remove a teaching point,
+which the ruling forbids doing unasked.
+
+But the decisive evidence is Kai's. Reading his live proofreading store **read-only** (nothing
+written — the flag file is not mine to edit), these three rows carry:
+
+```
+fin_for_eng:S0052L04B04  "ok"  2026-08-18T09:13:24Z
+fin_for_eng:S0052L04U06  "ok"  2026-08-18T09:13:26Z
+fin_for_eng:S0052L04U07  "ok"  2026-08-18T09:13:31Z
+```
+
+He read all three, passed all three, and then flagged `S0054L02U06` at **09:14** — about
+ninety seconds later. So the identical-Finnish pattern is not what bothered him; the unbound
+`-nsa` at seed 54 is. Changing seed 52 would overrule an explicit approval he gave minutes
+earlier. **Left exactly as he passed them.**
 
 ### Seed 54 — the flagged lego (3 rows, all 3 edited)
 
@@ -134,9 +148,17 @@ silently fixed: *that book* (`se kirja` / `sen kirjan`), *that person* (`se henk
 henkilö`), *very kind* (`tosi kiltti` / `tosi kilttiä`), *what do you think* (`mitä mieltä` /
 `mitä mieltä sä oot`).
 
-**Unbound `-nsa` — swept course-wide.** Every remaining `-nsa` / `itsensä` row in
-`fin_for_eng` (7 rows) has its possessive inside a clause with a third-person subject or in an
-impersonal construction. **Zero unbound possessives remain in the course.**
+**Unbound possessives — swept, with a correction and a gap.** My first sweep matched only the
+`-nsa` allomorph and I was about to write "zero unbound possessives remain in the course."
+**That would have been false.** Finnish writes the same 3sg suffix two ways, and the course
+uses both: `-nsa` (`kaverillensa`, `laukkuunsa`) and `-Vn` (`siskolleen`). Re-swept across
+both:
+
+- **Within the `kaverillensa` family — zero unbound possessives remain.** All 18 rows verified
+  live after the write.
+- **Outside it, two identical defects survive**, in the `siskolleen` family at **seed 332**,
+  and I did not touch them because Kai scoped this job to seed 54 and the `kaverillensa`
+  family. See the gap below.
 
 **Known side.** No new English word or structure. Every word in the four new prompts (*he
 wants*, *she wanted*, *we wanted*, *to give*, *something*, *now*, *her friend*, *I reckon
@@ -164,6 +186,34 @@ unapproved before this pass. **Nothing was approved.**
 
 **Kai's flag** on `S0054L02U06` was left untouched, as instructed — it closes itself now the
 edit has landed.
+
+---
+
+## Explicit gap — 2 rows, seed 332, not fixed
+
+The `siskolleen` family at seed 332 carries **exactly the two defect classes repaired above**,
+278 seeds later. `siskolleen` is taught as the lego *for his sister*; the same binding rule
+applies.
+
+| id | English | Finnish | Class |
+|---|---|---|---|
+| `S0332L04U02` | **I** want to build a new life for his sister | mä haluun rakentaa uuden elämän siskolleen | **A** — `mä` subject, `-Vn` has no binder |
+| `S0332L04U04` | **she** needs to build a new life for **his** sister | sen pitää rakentaa uuden elämän siskolleen | **B** — reflexive forces "her **own** sister" |
+
+**Not fixed: out of scope.** Kai scoped this job to seed 54 and the `kaverillensa` family, and
+seed 332 is a different lego with its own vocabulary window — `siskolle` / `sen siskolle` may
+or may not be reachable there, which is a separate check and a separate ruling. Both rows are
+in the same shape as the ones repaired here, so the same two repairs apply directly:
+`S0332L04U02` takes a third-person subject, `S0332L04U04` takes *her* instead of *his* on the
+English side with the Finnish untouched. **Seed 332 is already unapproved**, so nothing is
+sitting approved-but-wrong. Recommend a follow-up job.
+
+I want to be plain about how this was caught, because it bears on the count: my own sweep
+missed `S0332L04U02` — I matched `-nsa` and the `-Vn` allomorph slipped past. It surfaced from
+`docs/finnish/fin-possessor-systems-deep-dive-2026-08-18.md`, an uncommitted analysis already
+in this checkout, which reached the same Class A / Class B split independently and had already
+flagged both rows. I verified both live against the database rather than taking that document
+at its word.
 
 ---
 
