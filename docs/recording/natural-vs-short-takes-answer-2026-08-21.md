@@ -122,6 +122,30 @@ German, 1,732 in Finnish — and **components are never played to a learner**.
 22 human clips against a ~12,500-item delivery corpus. This is the very start of the campaign, which
 is exactly why the question is worth asking now rather than later.
 
+**Two facts about the current state that don't change the answer but do change the picture:**
+
+- **Nothing recorded so far has reached a learner yet.** For both `fin_for_eng` and `deu_at_for_eng`,
+  the filed human clips are **0% linked** to any `course_seeds` / `course_practice_phrases` /
+  `course_legos` audio-id column. They are registered clips sitting unlinked. Linking happens when a
+  synthesis job runs; none has run for these courses.
+- **The splice path has never once fired in production.** Across all 524 rows of
+  `recording_provenance`, all time, all courses, the count of takes with `method: 'spliced'` is
+  **zero**. Every mechanism described in §1 is real, wired and tested — but no phrase in any course
+  has yet been assembled by it. So the natural-take-preference is a design commitment we are
+  recording *for*, not yet a behaviour anyone has heard.
+
+Take counts recorded so far, from `recording_provenance.quality_notes` (cadence is stored there as
+JSON, not as a column on any audio table):
+
+| course | mode | natural takes | slow takes |
+|---|---|---|---|
+| `fin_for_eng` | script | 68 | 56 |
+| `deu_at_for_eng` | script | 37 | 45 |
+| `cym_n_for_eng` | pod | 113 | 0 — pods have no slow pass |
+
+`cym_n_for_eng`'s ~19,000 linked clips are not evidence about this system: they were bulk-created on
+2026-01-04, five months before cadence tracking existed, by an older pipeline.
+
 ---
 
 ## 5. The one thing here that IS a judgement call, not a fact
@@ -133,6 +157,12 @@ Everything above is settled by code and data. This is not:
 2-word line's slow pass is nearly pointless — there is at most one boundary in it. Nobody has ruled
 on whether those should be recorded as one natural take only. It is worth perhaps five minutes of
 booth time across the whole campaign, so it is not urgent, but it is a real call and it is Kai's.
+
+**Separate defect found on the way past, for whoever owns the dashboard script-view editor:**
+`services/production-api.cjs:6795/6815/6835` (`batchLookupAudioUuids`) queries a table called
+`audio_registry` for cadence and voice matching. **That table does not exist in the live schema** —
+`to_regclass('public.audio_registry')` returns null. It is not on the learner path, so nothing a
+learner hears is affected, but it is dead code that can only ever return empty.
 
 **Related, already open and bigger:** the chunk-size calibration for Austrian German — the recorded
 chunks are half single words, and 278 of 1,248 LEGOs (22.3%) are not extractable as standalone chunks
