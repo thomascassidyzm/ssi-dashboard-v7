@@ -20,8 +20,16 @@
     </div>
 
     <div class="controls-row secondary">
+      <!-- One button, two meanings — so it has to say both. See backTap.js:
+           a single tap restarts the take being read, a double tap is the only
+           thing that moves the script backwards. -->
       <button class="control-btn" @click="$emit('previous')" :disabled="!isRecording">
-        <span class="btn-icon">⬅️</span> Previous
+        <span class="btn-icon">⬅️</span>
+        <span v-if="backRestartsTake" class="btn-stack">
+          <span>Take it again</span>
+          <span class="btn-sub">double-tap = previous</span>
+        </span>
+        <span v-else>Previous</span>
       </button>
 
       <button class="control-btn" @click="$emit('pause')" :disabled="!isRecording">
@@ -36,7 +44,9 @@
 
     <div class="keyboard-hints">
       <span class="hint"><kbd>Space</kbd> Record</span>
-      <span class="hint"><kbd>←</kbd><kbd>→</kbd> Navigate</span>
+      <span class="hint" v-if="backRestartsTake"><kbd>←</kbd> Take again · <kbd>←←</kbd> Previous</span>
+      <span class="hint" v-else><kbd>←</kbd><kbd>→</kbd> Navigate</span>
+      <span class="hint" v-if="backRestartsTake"><kbd>→</kbd> Next</span>
       <span class="hint"><kbd>↑</kbd><kbd>↓</kbd> Speed</span>
       <span class="hint"><kbd>P</kbd> Pause</span>
     </div>
@@ -46,13 +56,30 @@
 <script setup>
 defineProps({
   isRecording: { type: Boolean, default: false },
-  isPaused: { type: Boolean, default: false }
+  isPaused: { type: Boolean, default: false },
+  // Autocue Studio gives Back the media-player behaviour (tap = restart this
+  // take, double-tap = previous take). Off by default so the surfaces that
+  // still step straight back — the tutorial — do not advertise a behaviour
+  // they do not have.
+  backRestartsTake: { type: Boolean, default: false }
 })
 
 defineEmits(['toggle-recording', 'pause', 'previous', 'next', 'slower', 'faster'])
 </script>
 
 <style scoped>
+.btn-stack {
+  display: inline-flex;
+  flex-direction: column;
+  line-height: 1.15;
+}
+
+.btn-sub {
+  font-size: 0.62rem;
+  opacity: 0.65;
+  letter-spacing: 0.02em;
+}
+
 .recording-controls {
   display: flex;
   flex-direction: column;

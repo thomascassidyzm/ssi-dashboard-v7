@@ -118,6 +118,11 @@ let mediaRecorder = null
 let audioStream = null
 let currentRecordingChunks = []
 let currentRecordingPhraseId = null
+// Set when a take is being ABANDONED rather than finished — a restart of the
+// line being read. MediaRecorder.stop() is asynchronous, so the flag has to
+// survive until onstop fires and tell it to bin the blob instead of filing it
+// as the phrase's recording.
+let discardCurrentCapture = false
 
 export function useAutocueState() {
   // Timer interval ref
@@ -263,6 +268,7 @@ export function useAutocueState() {
 
     currentRecordingChunks = []
     currentRecordingPhraseId = phrase.id
+    discardCurrentCapture = false
 
     // Prefer webm for compatibility, fallback to other formats
     const mimeType = MediaRecorder.isTypeSupported('audio/webm;codecs=opus')
@@ -280,6 +286,15 @@ export function useAutocueState() {
     }
 
     mediaRecorder.onstop = () => {
+      // An abandoned take leaves nothing behind. Storing it would put the
+      // fluffed read under the phrase's name until the restarted one lands,
+      // and if the recordist walked away in between that is what would ship.
+      if (discardCurrentCapture) {
+        discardCurrentCapture = false
+        currentRecordingChunks = []
+        return
+      }
+
       // Create blob from chunks
       const blob = new Blob(currentRecordingChunks, { type: mimeType })
       const url = URL.createObjectURL(blob)
@@ -504,6 +519,36 @@ export function useAutocueState() {
       // Last item — stop recording
       stopRecording()
     }
+  }
+
+  // Take it from the top. The line does NOT move — this is the first tap of
+  // the Back button (see components/production/autocue/backTap.js), the one
+  // that means "I fluffed that", not "skip me backwards".
+  //
+  // The two recording modes need different things from it:
+  //
+  //  * QUEUE MODE runs one MediaRecorder per phrase, so the fluffed read is
+  //    sitting in an open capture. It is abandoned and a fresh capture armed
+  //    on the same phrase.
+  //  * SCRIPT MODE runs one continuous recorder whose take boundaries belong
+  //    to the VAD (useContinuousRecorder — the capture boundary never cuts the
+  //    utterance). Nothing here reaches into that: the recordist simply reads
+  //    the line again and onSegmentCaptured supersedes the take in place, which
+  //    is the same path the re-record pass and the cut-off hold already use.
+  //    What the tap buys them is that the line STAYS PUT instead of skipping.
+  //
+  // Returns true when the capture was actually restarted, so the studio can
+  // say which of those two things just happened.
+  function restartCurrentTake() {
+    if (!state.phrases[state.currentPhraseIndex]) return false
+    if (!state.isRecording || state.scriptMode) return false
+
+    discardCurrentCapture = true
+    stopPhraseRecording()
+    // Same 100 ms breather navigatePhrase takes: the outgoing recorder's stop
+    // is asynchronous and a new one must not be built on top of it.
+    setTimeout(() => startPhraseRecording(), 100)
+    return true
   }
 
   function navigatePhrase(direction) {
@@ -1242,6 +1287,7 @@ export function useAutocueState() {
     toggleRecording,
     togglePause,
     navigatePhrase,
+    restartCurrentTake,
     adjustSpeed,
     onSegmentCaptured,
     advanceToNext,

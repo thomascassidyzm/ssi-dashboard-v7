@@ -253,17 +253,26 @@
         :uploaded-indices="uploadQueue.uploadedIndices"
       />
 
+      <!-- What Back just did. Said out loud because the two meanings of one
+           button are otherwise indistinguishable from the outside: a restart
+           leaves the screen looking exactly as it did a moment ago. ABOVE the
+           controls, not below them: on Kai's 390px phone the row of buttons is
+           a full screen tall, and a line under it is a line nobody reads. -->
+      <p v-if="backNote" class="back-note" role="status">{{ backNote }}</p>
+
       <!-- Controls -->
       <RecordingControls
         :is-recording="state.isRecording"
         :is-paused="state.isPaused"
         @toggle-recording="onToggleRecording"
         @pause="togglePause"
-        @previous="navigatePhrase(-1)"
+        :back-restarts-take="true"
+        @previous="backTap.tap()"
         @next="navigatePhrase(1)"
         @slower="adjustSpeed(-1)"
         @faster="adjustSpeed(1)"
       />
+
 
       <!-- Upload progress bar (script mode) -->
       <!-- (styles for .retake-banner live with the other in-session bars) -->
@@ -413,6 +422,7 @@ import RecordingStatus from './recording/RecordingStatus.vue'
 import ChunkProgress from './recording/ChunkProgress.vue'
 import SlowReadRetry from './recording/SlowReadRetry.vue'
 import { createAdvanceGate, HELD_CUT_OFF } from './advanceGate'
+import { createBackTap } from './backTap'
 import SessionReview from './review/SessionReview.vue'
 
 // Recording identity, threaded in by the Record Room shell. Absent when
@@ -450,6 +460,7 @@ const {
   stopRecording,
   togglePause,
   navigatePhrase,
+  restartCurrentTake,
   adjustSpeed,
   onSegmentCaptured,
   advanceToNext,
@@ -759,6 +770,37 @@ function dismissSlowReadRetry() {
   clearSlowReadRetry()
 }
 
+// ── Back: one tap restarts, two taps go back ─────────────────────────────────
+// Back used to skip to the previous take on the very first press. The argument
+// for the media-player convention, and the tap window, are in backTap.js.
+const backNote = ref(null)
+let backNoteTimer = null
+
+function sayBack(text) {
+  backNote.value = text
+  if (backNoteTimer) clearTimeout(backNoteTimer)
+  backNoteTimer = text ? setTimeout(() => { backNote.value = null }, 4000) : null
+}
+
+const backTap = createBackTap({
+  onRestart: () => {
+    // Both of these panels are about the read now being abandoned. Left up,
+    // they would ask the recordist to answer for a take that no longer exists.
+    cutOffNotice.value = null
+    clearSlowReadRetry()
+    sayBack(restartCurrentTake()
+      // Queue mode: the open capture really was binned.
+      ? 'Take it from the top — that take is discarded. Tap Back again for the previous line.'
+      // Script mode: nothing was thrown away, the line simply stayed put and
+      // the next read supersedes. Saying "discarded" there would be a lie.
+      : 'Staying on this line — read it again from the start. Tap Back again for the previous line.')
+  },
+  onPrevious: () => {
+    navigatePhrase(-1)
+    sayBack(null)
+  }
+})
+
 function keepRefusedTake() {
   const held = refusedSegment
   const itemIndex = slowReadRetry.value?.itemIndex
@@ -916,6 +958,10 @@ async function onToggleRecording() {
     // the line under the recordist after they walked away.
     advanceGate.reset()
     cutOffNotice.value = null
+    // A half-finished double-tap must not survive the stop: a tap before it and
+    // a tap after it are two separate presses, not a pair.
+    backTap.reset()
+    sayBack(null)
     if (state.scriptMode) {
       continuousRecorder.stopFlow()
     }
@@ -962,7 +1008,7 @@ function handleKeydown(e) {
       break
     case 'ArrowLeft':
       e.preventDefault()
-      navigatePhrase(-1)
+      backTap.tap()
       break
     case 'ArrowRight':
       e.preventDefault()
@@ -1460,6 +1506,17 @@ onUnmounted(() => {
   font-size: 0.8rem;
   letter-spacing: 0.04em;
   color: var(--color-film-red, #e63946);
+}
+
+/* Back's own feedback line. Quiet on purpose — it reports a navigation, not a
+   fault, and the teleprompter must stay the loudest thing on screen. */
+.back-note {
+  margin: 0.6rem 0 0.2rem;
+  text-align: center;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.78rem;
+  letter-spacing: 0.03em;
+  opacity: 0.75;
 }
 
 .retake-flag {
