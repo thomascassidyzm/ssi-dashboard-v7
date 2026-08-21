@@ -160,3 +160,141 @@ was sampled, capped or skipped.
 
 **TTS: zero.** All three Irish courses held zero audio rows before I started and zero after. Nothing
 was rendered and nothing was spent.
+
+---
+
+# Addendum — the "to read" break at unit level
+
+Handed to me after the sweep above. It is inside remit and the brief was right that I would not
+have surfaced it from a phrase-level lens — though my course-wide audit had in fact already caught
+it, filed under "real but minor". Having now measured it properly, **"minor" was wrong**, and the
+reading in the brief needs inverting.
+
+## Neither Irish form is wrong, and they are not alternatives
+
+The two units are:
+
+- seed 180, unit 2 — *to read* → `a léamh`
+- seed 239, unit 2 — *to read* → `léamh`
+
+I read all 33 practice sentences in the course containing either form. They are in **perfect
+complementary distribution, with not one counterexample**:
+
+- `a léamh` occurs **only** where an object comes first — `mo leabhar a léamh`, `an leabhar sin a
+  léamh`, `tada a léamh`.
+- bare `léamh` occurs **only** where there is no object — `is maith liom léamh`, `tá mé ag iarraidh
+  léamh`, `in ann léamh`, `ní maith le m'athair léamh`.
+
+That is ordinary Irish: the verbal noun takes the particle `a`, with lenition, when its object is
+fronted, and stands bare when there is no object. **So the question "which form should the course
+use" has no answer — it needs both**, and swapping either one for the other would produce Irish that
+is simply wrong.
+
+I checked the same thing on `athrú`, which has the identical split, across roughly fifty more
+sentences: `a athrú` always with a fronted object (`rud eicínt a athrú`, `an freagra a athrú`,
+`cruth m'inchinne a athrú`), bare `athrú` always without (`ní gá dom athrú`). Again no
+counterexamples.
+
+## The corpus agrees, but only if you read the lines
+
+Against the National Corpus of Irish, on the decisive frame — fronted object, particle present
+versus absent:
+
+| | occurrences |
+|---|---:|
+| `leabhar a léamh` | **306** |
+| `leabhar léamh` | 3 |
+| `rud a athrú` | **38** |
+| `rud athrú` | 3 |
+
+All six of the apparent counterexamples dissolve on inspection: they are the *noun* `léamh`
+("a reading") or an intransitive `athrú` ("everything could change"), not a particle-less fronted
+object. Ó Curnáin's Connemara grammar independently flags a particle-less example as doubtful, in
+his words a speaker who "changed in mid-sentence".
+
+Two measurement traps worth recording, because both would have produced a confident wrong answer.
+A plain substring count of `athrú` in Ó Curnáin returns 180 — but most of those are `ceathrú`
+("quarter") and `fiathrú`; with word boundaries it is 53. And raw corpus bigram counts *look* like
+both forms appear in both frames until you read the concordance lines, at which point every
+apparent exception turns out to have its object fronted a few words further left.
+
+## Which is the deviation — the opposite of the reading in the brief
+
+The brief's expectation was that seed 239, being later, is the deviation. **The measurement says the
+reverse.** `léamh` at 239 genuinely means *to read*, and every sentence built on it is correct.
+`a léamh` at 180 never means bare *to read* — it means *to read* **it**, with the object already
+spoken. Seed 180 carries the wrong English, and 239 is innocent.
+
+Seed 35 settles it. `tada a léamh` → *to read anything* is the **earliest** of the three, and it is
+**correct**: it puts the object into the English, so the particle in the Irish is earned. Seed 180
+broke a pattern seed 35 had already set, and seed 239 was never part of the break. The brief was
+right to fence seed 35 off, and the reason is stronger than "different gloss" — it is the model the
+other two should have followed.
+
+**Cosmetic or real: real.** But real **in the English only**. No Irish anywhere in the course needs
+to change, and no practice sentence needs rewriting.
+
+## This is a family, not a one-off
+
+**29 units** in the course teach a particle form `a X`. Five of them also have the bare form taught
+as its own separate unit. Of those five:
+
+- **2 collide outright** — *to read* (180 vs 239) and **`to change`, `a athrú` at 104 versus `athrú`
+  at 188**, which is the identical break and is not yet on anyone's list.
+- 3 escaped only because the English happened to differ — *to speak* / *speak*, *to explain* /
+  *explain*, *understand* / *to understand*. That differentiation is ad hoc, and in one case it is
+  inverted relative to the other two.
+
+So this is not two bad rows, it is **a missing convention** for glossing the fronted-object verbal
+noun. Whatever is decided for *to read* should be applied to *to change* in the same breath, and
+written down, or the next particle unit will collide too.
+
+## Blast radius — measured before writing anything, and it is one field
+
+I have written **nothing**. The recommended repair is to re-gloss seed 180's unit from *to read* to
+**"to read it"**, leaving both Irish forms untouched.
+
+- **Phrase ids are position-derived, not text-derived** — they are built from seed number, unit
+  index, role and position. Editing a unit's English therefore **reissues no phrase ids at all**.
+  The expensive case the brief was rightly worried about is a unit *rename or reindex*; a gloss edit
+  is not that.
+- **The 8 practice sentences under seed 180 unit 2 need no change.** Every one already carries the
+  object in its English — *I'd like to read my book*, *I want to read that book*. They were always
+  consistent with the Irish; only the unit's own gloss was not.
+- **Across the whole window between the two units, only 9 sentences involve reading at all** — the 8
+  above plus one at seed 181, which also already carries its object. (A naive search returns 14; five
+  are the word *ready*.)
+- **Only two units in the entire course are glossed exactly *to read*** — the two in question. There
+  is no third dependency.
+- **The proposed gloss needs no new convention**: seed 37 already teaches *to think about it* →
+  `ag smaoineamh air`, the same device of putting *it* in the English to mark an object-bearing
+  form. The word *it* appears in 36 unit glosses and 547 sentences before seed 180, so it is
+  thoroughly licensed.
+
+**Total: one field, on one row.** Zero Irish edits, zero sentence rewrites, zero ids reissued, zero
+audio — the course has none.
+
+The equivalent fix for *to change* would be the same shape and the same size, but I have not assumed
+the ruling extends there; that is one decision, not two.
+
+## One more thing the sweep caught while this was being measured
+
+Two identical sentences — *I like to be talking with people* and *I want to be talking with people*
+— were banked at **seed 286** having already been taught at **seed 88**, during this session, by one
+of the live workers. That took the twice-taught count from 23 to **25**.
+
+The phrase-aware check would **not** have stopped them, and that is worth being plain about: it
+hunts one English pointing at **conflicting** targets, whereas a duplicate is one English pointing at
+the **same** target twice. Same family of defect, and it had no gate of its own. **I have added one**
+— the pre-submit tool now warns when a submitted sentence of four words or more is already taught
+elsewhere in the course. It warns rather than fails, because a sentence equal to a taught chunk is a
+legitimate debut row.
+
+## Counts at close
+
+Still **10** normalised known-side splits and **12** raw, unchanged all session. Repeated targets are
+now 80 strings and 109 excess rows; the twice-taught count is **25**, the two arrivals named above.
+The course grew from 698 units and 5,657 phrases to **746 and 6,045** while all of this ran.
+
+**TTS: zero.** All three Irish courses hold zero audio rows, before and after, as they did at the
+start.
