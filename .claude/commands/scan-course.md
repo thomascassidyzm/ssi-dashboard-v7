@@ -194,6 +194,9 @@ for (const [known, entries] of byKnown) {
 
 Report: count + each conflict with LEGO IDs, known text, and both target texts.
 
+> **📖 Before you resolve a conflict here, check [`docs/language-mapping-index.md`](../../docs/language-mapping-index.md) — the answer is probably already written.**
+> A large share of Check-10 conflicts are one recurring class: one English word covering two target words that mean different things. `I know` → *weiß* **and** *Ich kenne* is the same defect in French (5 live), German (4), Portuguese (3) and a dozen more. The index gives the resolving English wording per problem, taken from shipped courses. **Do not resolve one by adding a bracketed tag** — brackets are stripped before TTS and read aloud to the learner, and this scan's own strip-then-rescan step (below) will turn them straight back into ZUT conflicts.
+
 **Important:** This check should run AFTER parentheticals and slashes are fixed, since stripping those can reveal hidden duplicates (e.g., two LEGOs both become "it was" after removing "(imperfect)" and "(preterite)").
 
 See `memory/methodology-zut-resolution.md` for the resolution patterns.

@@ -47,6 +47,9 @@ When an atom fails ZUT, bundle it with context that resolves the ambiguity.
 | "a" → "un" | "a word" → "un mot" | Noun determines gender |
 | "to" → "de" | "to learn" → "d'apprendre" | Preceding verb determines preposition |
 
+> **📖 When the ambiguity is SEMANTIC rather than grammatical, chunking up is not enough — read [`docs/language-mapping-index.md`](../../docs/language-mapping-index.md).**
+> The rows above are forks the *target grammar* creates. A different fork happens when one English word covers two target words that mean different things ("know" a fact vs a person, `ser` vs `estar`, formal vs familiar *you*). There the fix is to put the distinguishing sense into the English sentence as ordinary English — `to know a person => kennen` — and the index has the shipped, copy-pasteable wordings per language plus the rejected approaches.
+
 ---
 
 ### Principle 3: Preposition Enclosure

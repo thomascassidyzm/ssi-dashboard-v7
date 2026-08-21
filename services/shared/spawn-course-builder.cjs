@@ -528,6 +528,7 @@ You have access to these commands for guidance. **USE THEM** when unsure or afte
 
 - \`ralph-methodology.md\` - Complete course building methodology (decomposition, phrases, learner pattern)
 - \`synonym-choice-architecture.md\` - Eight-principle translation-choice checklist applied at the SEED→target step, BEFORE LEGO decomposition. Three pair-worked examples; tells you which of N valid target realisations creates the least-action path per pair.
+- \`docs/language-mapping-index.md\` - **READ THIS THE FIRST TIME ONE ENGLISH WORD WANTS TWO TARGET WORDS.** The estate's catalogue of that problem class ("I know" a fact vs a person, formal vs familiar *you*, singular vs plural *you*, "to be" splitting two ways, "know how to", a bare pronoun that cannot carry tense). Per problem: the fix in one line, which languages it bites in, real verbatim English prompt wordings from shipped courses you can copy, and the approaches tried and REJECTED — never a bracketed tag like \`I know (a person)\`, because brackets are stripped before TTS and spoken to the learner. If you resolve a new one, add it there.
 
 **Invoke these commands:**
 - Before starting if you need a refresher

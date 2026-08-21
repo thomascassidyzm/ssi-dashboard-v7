@@ -17,6 +17,9 @@ For each English SEED an agent translates into a target language, multiple defen
 
 Each choice implies different LEGO decomposition, different acquisition cost, different downstream curriculum shape. The criteria below tell the translator how to pick.
 
+> **📖 The mirror-image problem — one ENGLISH word with several defensible TARGET realisations that mean *different things* — has its own index: [`docs/language-mapping-index.md`](docs/language-mapping-index.md). READ IT BEFORE CHOOSING.**
+> This doc is about picking among realisations that mean the *same* thing (least action to confidence). When the candidates mean *different* things — "know" a fact vs a person, `ser` vs `estar`, formal vs familiar *you* — you are not choosing a synonym, you are holding a **fork**, and the fix belongs on the **English** side, not the target side. The index carries the fix for each known fork, the languages it bites in, real verbatim shipped English wordings to copy, and what was tried and rejected.
+
 The methodology applies **per pair**. The principles are pair-agnostic; the instantiations are pair-specific. Three worked examples per principle below — across Mandarin-for-English, Swedish-for-Romanian, and Hungarian-for-English — show how the principles instantiate differently. An agent applying the methodology to a new pair (e.g., Polish for Italian, Korean for English, Hebrew for Arabic) should extract the principle from the three and apply it to the new pair's phonology, morphology, and L1-transparency profile.
 
 ---

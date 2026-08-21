@@ -21,6 +21,7 @@ You are applying the SaySomethingin method — the thing every phrase a learner 
 - **Vocabulary is known / target / seed** — never "source".
 - **Work slowly, quality over throughput.** Course content is craftsmanship; don't batch/optimise it into mediocrity.
 - Doctrine + worked examples: `ralph-methodology.md` (decomposition, phrases, tiers) and `synonym-choice-architecture.md` (translation-choice, applied BEFORE decomposition). Read these before authoring/regenerating content.
+- **One English word → two target words? Read [`docs/language-mapping-index.md`](./docs/language-mapping-index.md) before solving it.** This is the most recurring class of course-building problem there is — "I know" a fact vs a person, formal vs familiar *you*, `ser`/`estar`, a bare pronoun that cannot carry tense — and we have already solved it in dozens of languages. The index has the fix in one line per problem, real shipped English prompt wordings to copy, and the approaches tried and **rejected** (bracketed tags like `I know (a person)` are rejected: the brackets are stripped before TTS and spoken to the learner). **Solve a new one → add it there.**
 
 ### Approval gates (cost / irreversibility)
 - **Never generate TTS audio** (costs money) without showing a plan and getting explicit approval.

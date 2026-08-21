@@ -17,6 +17,9 @@ Use this skill during Pass 1 of course building. Pass 1 is pure translation - yo
 
 ### 1. Problem Verbs
 
+> **📖 START FROM [`docs/language-mapping-index.md`](../../docs/language-mapping-index.md), not from a blank page.**
+> Most of your "problem verbs" have already been hit and solved in another language. The index gives you the fix in one line per problem, the languages it bites in, **copy-pasteable English prompt wordings from shipped courses**, and the rejected approaches. Fill your Pass-1 `disambiguation_rule` fields from it, then add anything new back.
+
 English verbs that map to MULTIPLE target language forms. Watch for:
 - **Verbs of cognition**: remember, think, know, understand, learn
 - **Verbs of perception**: see, hear, feel

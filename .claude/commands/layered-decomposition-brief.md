@@ -14,6 +14,9 @@
 > the target. **For `eng_for_jpn`, read `.claude/commands/eng-for-jpn-build.md` instead** —
 > there English is the target, so English order governs and these examples are backwards.
 
+> **📖 Before you gloss a chunk whose English side is ambiguous, read [`docs/language-mapping-index.md`](../../docs/language-mapping-index.md).**
+> Decomposition is where one-English-word-two-target-words defects get *created*: you gloss two different target chunks with the same English and the learner can no longer tell which to produce. The index lists the known forks ("know" fact vs person, formal vs familiar *you*, singular vs plural *you*, "to be" splitting two ways, a bare pronoun that cannot carry tense), the English wording that resolves each one in a shipped course, and the rejected fixes — **never a bracketed tag**, because the brackets are stripped and spoken aloud.
+
 ---
 
 ## The #1 Anti-Pattern: Giant Single M-LEGOs

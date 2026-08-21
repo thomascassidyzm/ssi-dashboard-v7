@@ -511,6 +511,10 @@ These verbs often have multiple translations. Disambiguate through natural phras
 - see / meet / notice
 - feel / sense / seem
 
+> **📖 Do not solve this from scratch — read [`docs/language-mapping-index.md`](docs/language-mapping-index.md) first.**
+> One English word mapping to two or more target words is the single most recurring class of problem in course building, and we have already solved it in dozens of languages. The index carries, per problem: the fix in one line, which languages it bites in, **real verbatim English prompt wordings from shipped courses** you can copy, and the approaches that were tried and rejected (bracketed tags such as `I know (a person)` are rejected — they are *spoken aloud* with the brackets stripped). "I know" a fact vs a person, formal vs familiar *you*, singular vs plural *you*, `ser`/`estar`, "know how to", and a bare pronoun that cannot carry tense all live there.
+> **When you resolve a new one, add it to the index and encode it in that pair's contract.**
+
 ---
 
 ## Vocabulary Constraints

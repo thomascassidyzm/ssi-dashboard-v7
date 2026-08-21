@@ -137,6 +137,10 @@ This is correct because English speakers already distinguish these.
 "I know him" → "Ich kenne ihn"
 ```
 
+> **📖 This is one instance of a whole problem class. The estate's index is [`docs/language-mapping-index.md`](../../docs/language-mapping-index.md) — READ IT BEFORE YOU INVENT AN ANSWER.**
+> It catalogues every English word we know of that maps to two or more target words, which languages each one bites in, and — most usefully — **real verbatim English prompt wordings from shipped courses that resolved the fork**, ready to copy. It also records what was tried and REJECTED: bracketed tags like `I know (a person)` or `you know (2sg pres)` are rejected, because the brackets are stripped before TTS and the tag gets read to the learner as *"I know am acquainted"*.
+> Add your resolution to it when you find a new one.
+
 ### Other common distinctions to preserve
 - remember (retain) vs remember (recall)
 - see (perceive) vs see (meet)

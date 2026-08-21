@@ -13,7 +13,9 @@ Read these files to build your understanding (in priority order):
 
 3. **Synonym-choice architecture**: `synonym-choice-architecture.md` (repo root) — the upstream step: how to pick which of N valid target realisations of an English SEED creates the least-action path for the specific pair. Eight-principle checklist with three pair-worked examples (zho_for_eng, swe_for_ron, hun_for_eng). Read alongside ralph-methodology for questions about translation choice (atomic-vs-chunked, AA reduplication, AB-compound trap, M-LEGO upchunking for grammatical particles, cliff front-loading, paradigm balance, L1-conditional sequencing, pod-decoupling, mid-course frame-opener placement).
 
-4. **Skills with methodology rules**:
+4. **The language-mapping index**: `docs/language-mapping-index.md` — the estate's catalogue of the single most recurring problem class: one English word mapping to two or more target words, so the English prompt cannot determine which form the learner should produce ("know" a fact vs a person, formal vs familiar *you*, singular vs plural *you*, `ser`/`estar`, "know how to", a bare pronoun that cannot carry tense). **Answer any question of this shape from here first** — it holds the fix in one line per problem, which languages each bites in, real verbatim English prompt wordings from shipped courses, and the approaches tried and rejected. Do not re-derive an answer the index already carries.
+
+5. **Skills with methodology rules**:
    - `.claude/commands/ssi-translation-methodology.md` — ZUT, translation rules
    - `.claude/commands/calibrate.md` — Golden decomposition, LEGO principles
    - `.claude/commands/course-audit.md` — What violations look like
@@ -21,7 +23,7 @@ Read these files to build your understanding (in priority order):
    - `.claude/commands/ssi-phrase-variety.md` — Phrase variety requirements
    - `.claude/commands/phrase-monitor.md` — Phrase quality checks
 
-5. **APML schema** (for structural understanding): `apml/core/audio-registry-v13.apml`
+6. **APML schema** (for structural understanding): `apml/core/audio-registry-v13.apml`
 
 ## How to Answer
 
