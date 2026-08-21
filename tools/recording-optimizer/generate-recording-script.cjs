@@ -277,6 +277,8 @@ function greedySetCover(universe, candidates) {
       known: best.known || '',
       source: best.source || '',
       seedNumber: best.seedNumber || null,
+      legoIndex: best.legoIndex ?? null,
+      position: best.position ?? null,
       coversCount: bestCoverage.length,
       covers: bestCoverage,
       wordCount: tokenize(best.phrase).length,
@@ -288,6 +290,38 @@ function greedySetCover(universe, candidates) {
   }
 
   return { selected, uncovered, iterations };
+}
+
+/**
+ * Reading ORDER for the selected phrases. Selection is not touched — this only
+ * decides what the recordist reads first.
+ *
+ * 'coverage' (default): the order greedy set cover produced — biggest LEGO
+ *   payoff first. Optimal for finishing a whole course in the fewest lines, and
+ *   the reason an uncapped script opens somewhere in the middle of the course.
+ *
+ * 'course': the same lines, sorted the way the course itself runs — seed 1
+ *   upwards, and within a seed the seed sentence before the practice phrases
+ *   built on it (lego_index, then position). A recordist reading straight
+ *   through produces usable audio for the START of the course first, and stops
+ *   at a seed number someone else can resume from.
+ *
+ * Ties and missing keys sort last and stably: a line with no seed number
+ * (shouldn't happen, but the data allows it) goes to the end rather than
+ * jumping to the front on a NaN comparison.
+ */
+function orderSelectedPhrases(selected, order = 'coverage') {
+  if (order !== 'course') return selected;
+  const key = (s, field) => (Number.isFinite(s[field]) ? s[field] : Number.MAX_SAFE_INTEGER);
+  // Seeds before practice phrases within the same seed, when lego_index ties.
+  const sourceRank = (s) => (s.source === 'seed' ? 0 : 1);
+  return [...selected].sort((a, b) =>
+    key(a, 'seedNumber') - key(b, 'seedNumber') ||
+    key(a, 'legoIndex') - key(b, 'legoIndex') ||
+    sourceRank(a) - sourceRank(b) ||
+    key(a, 'position') - key(b, 'position') ||
+    String(a.phrase).localeCompare(String(b.phrase))
+  );
 }
 
 // =============================================================================
@@ -387,10 +421,14 @@ async function getExistingHumanAudioTexts(courseCode, role = 'target1') {
 
 async function generateRecordingScript(courseCode, options = {}) {
   const { verbose = false, excludeRecorded = false, maxSeed = null, role = 'target1' } = options;
+  // Reading order only — never selection. 'coverage' is the default and the
+  // historical behaviour; 'course' reads the same lines in course sequence.
+  const order = options.order === 'course' ? 'course' : 'coverage';
 
   console.log(`\n🎙️  Recording Script Generator`);
   console.log(`   Course: ${courseCode}`);
   if (maxSeed) console.log(`   Capped to seeds 1-${maxSeed}`);
+  if (order === 'course') console.log(`   Reading order: course sequence (seed 1 upwards)`);
   console.log(`${'─'.repeat(50)}\n`);
 
   // 1. Get course info
@@ -442,6 +480,10 @@ async function generateRecordingScript(courseCode, options = {}) {
         known: seed.known_text,
         source: 'seed',
         seedNumber: seed.seed_number,
+        // A seed IS the sentence its LEGOs come from, so in course order it
+        // reads before any practice phrase built on those LEGOs.
+        legoIndex: 0,
+        position: 0,
       });
     }
   }
@@ -455,6 +497,8 @@ async function generateRecordingScript(courseCode, options = {}) {
         known: phrase.known_text,
         source: 'practice',
         seedNumber: phrase.seed_number,
+        legoIndex: phrase.lego_index ?? null,
+        position: phrase.position ?? null,
       });
     }
   }
@@ -510,6 +554,8 @@ async function generateRecordingScript(courseCode, options = {}) {
         known: phraseInfo.known,
         source: phraseInfo.source,
         seedNumber: phraseInfo.seedNumber,
+        legoIndex: phraseInfo.legoIndex ?? null,
+        position: phraseInfo.position ?? null,
         covers,
       });
     }
@@ -547,6 +593,9 @@ async function generateRecordingScript(courseCode, options = {}) {
   console.log(`✅ Algorithm complete in ${elapsed}ms`);
   console.log(`   Iterations: ${result.iterations}`);
 
+  // 5b. Reading order. Same lines either way — only the sequence changes.
+  result.selected = orderSelectedPhrases(result.selected, order);
+
   // 6. Identify direct record items (uncovered LEGOs)
   const directRecord = [];
   for (const normalized of result.uncovered) {
@@ -581,6 +630,7 @@ async function generateRecordingScript(courseCode, options = {}) {
     generatedAt: new Date().toISOString(),
     maxSeed,
     role,
+    order,
 
     statistics: {
       totalLegos,
@@ -705,6 +755,10 @@ Options:
   --gap             Exclude LEGOs already coverable by existing HUMAN
                     recordings — output is the residual gap list, not a
                     from-scratch script
+  --order <mode>    Reading order for the SAME selected lines:
+                    coverage (default, biggest LEGO payoff first) or
+                    course (seed 1 upwards, so a straight-through read
+                    finishes the start of the course first)
   --help            Show this help
 
 Examples:
@@ -725,9 +779,11 @@ Examples:
   const maxSeed = maxSeedIdx !== -1 ? parseInt(args[maxSeedIdx + 1], 10) : null;
   const roleIdx = args.indexOf('--role');
   const role = roleIdx !== -1 ? args[roleIdx + 1] : 'target1';
+  const orderIdx = args.indexOf('--order');
+  const order = orderIdx !== -1 ? args[orderIdx + 1] : 'coverage';
 
   try {
-    const result = await generateRecordingScript(courseCode, { verbose, excludeRecorded, maxSeed, role });
+    const result = await generateRecordingScript(courseCode, { verbose, excludeRecorded, maxSeed, role, order });
 
     if (result && outputFile) {
       const outputPath = path.resolve(outputFile);
@@ -748,4 +804,4 @@ if (require.main === module) {
 }
 
 // Export for API use
-module.exports = { generateRecordingScript, getExistingHumanAudioTexts };
+module.exports = { generateRecordingScript, getExistingHumanAudioTexts, orderSelectedPhrases };

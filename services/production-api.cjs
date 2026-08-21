@@ -8425,15 +8425,20 @@ app.get('/api/production/:courseCode/recording-script', async (req, res) => {
     // target voice needs its own complete set. Unknown/absent → target1, the
     // historical behaviour.
     const role = ['target1', 'target2'].includes(req.query.role) ? req.query.role : 'target1'
+    // ?order=course reads the SAME selected lines in course sequence (seed 1
+    // upwards) instead of coverage order. Selection, chunking and everything
+    // downstream are untouched — this is a reading order only. Default stays
+    // 'coverage', so nothing changes for anyone who doesn't ask for it.
+    const order = req.query.order === 'course' ? 'course' : 'coverage'
 
-    logger.log(`[Recording Script] Generating interleaved script for ${courseCode} [${role}]${excludeRecorded ? ' (gap only)' : ' (full)'}${maxSeed ? ` (seeds 1-${maxSeed})` : ''}`)
+    logger.log(`[Recording Script] Generating interleaved script for ${courseCode} [${role}]${excludeRecorded ? ' (gap only)' : ' (full)'}${maxSeed ? ` (seeds 1-${maxSeed})` : ''} (${order} order)`)
 
     // Run the optimizer (suppress console output)
     const originalLog = console.log
     const logs = []
     console.log = (...args) => logs.push(args.join(' '))
 
-    const result = await generateRecordingScript(courseCode, { verbose: false, excludeRecorded, maxSeed, role })
+    const result = await generateRecordingScript(courseCode, { verbose: false, excludeRecorded, maxSeed, role, order })
 
     console.log = originalLog
 
@@ -8528,6 +8533,7 @@ app.get('/api/production/:courseCode/recording-script', async (req, res) => {
       courseCode,
       maxSeed,
       role,
+      order,
       totalItems: items.length,
       totalPhrases: phrases.length,
       totalDirect: directItems.length,

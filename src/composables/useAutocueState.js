@@ -50,6 +50,13 @@ const state = reactive({
   // null = whole course.
   maxSeed: null,
 
+  // Reading order for the script (from ?order=course on the recorder link).
+  // 'coverage' (default) is the optimizer's own order — biggest LEGO payoff
+  // first, which is why an uncapped course opens mid-course. 'course' reads the
+  // SAME lines from seed 1 upwards, so a straight-through session finishes the
+  // start of the course first and stops somewhere another session can resume.
+  scriptOrder: 'coverage',
+
   // Session ID for grouping recordings
   scriptSessionId: null,
 
@@ -180,6 +187,13 @@ export function useAutocueState() {
   function setMaxSeed(value) {
     const n = parseInt(value, 10)
     state.maxSeed = Number.isInteger(n) && n > 0 ? n : null
+  }
+
+  // Reading order for this session's script (from ?order=course on the recorder
+  // link). Anything but the exact string 'course' means the default coverage
+  // order, so a typo can never silently reorder somebody's session.
+  function setScriptOrder(value) {
+    state.scriptOrder = value === 'course' ? 'course' : 'coverage'
   }
 
   function selectMode(mode) {
@@ -1037,9 +1051,10 @@ export function useAutocueState() {
     state.scriptMode = false
     state.scriptInfo = null
     state.scriptSessionId = null
-    // Singleton state: a stale cap or a previous mount's error banner would
-    // otherwise follow the user into a fresh session.
+    // Singleton state: a stale cap, a stale reading order or a previous mount's
+    // error banner would otherwise follow the user into a fresh session.
     state.maxSeed = null
+    state.scriptOrder = 'coverage'
     state.error = null
     state.currentPass = 1
     state.currentPhraseIndex = 0
@@ -1097,6 +1112,7 @@ export function useAutocueState() {
       const params = new URLSearchParams()
       if (state.maxSeed) params.set('maxSeed', String(state.maxSeed))
       if (state.selectedRole) params.set('role', state.selectedRole)
+      if (state.scriptOrder === 'course') params.set('order', 'course')
       const query = params.toString() ? `?${params}` : ''
       const res = await fetch(
         `${baseUrl}/api/production/${courseCode}/recording-script${query}`,
@@ -1116,7 +1132,8 @@ export function useAutocueState() {
         totalPhrases: data.totalPhrases,
         totalDirect: data.totalDirect,
         estimatedMinutes: data.estimatedMinutes,
-        maxSeed: data.maxSeed ?? null
+        maxSeed: data.maxSeed ?? null,
+        order: data.order || 'coverage'
       }
 
       // Transform items to autocue phrase format
@@ -1277,6 +1294,7 @@ export function useAutocueState() {
     setPhase,
     setRecordingIdentity,
     setMaxSeed,
+    setScriptOrder,
     selectMode,
     selectRole,
     beginSession,

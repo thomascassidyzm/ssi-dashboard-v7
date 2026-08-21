@@ -73,6 +73,12 @@
         <p v-if="state.scriptInfo?.maxSeed" class="script-cap-note">
           Limited to a quick sample from the early part of the course.
         </p>
+        <!-- Only shown when someone asked for it with ?order=course. Coverage
+             order is the default and says nothing, exactly as before. -->
+        <p v-if="state.scriptInfo?.order === 'course'" class="script-cap-note">
+          In course order — start to finish. Stop wherever you like; the rest is
+          still there next time.
+        </p>
         <div class="script-stats">
           <div class="script-stat">
             <span class="script-stat-value">{{ state.scriptInfo?.totalPhrases || 0 }}</span>
@@ -452,6 +458,7 @@ const {
   formattedTime,
   setRecordingIdentity,
   setMaxSeed,
+  setScriptOrder,
   selectMode,
   beginSession,
   beginContinuousSession,
@@ -940,6 +947,10 @@ function onModeSelect(mode, opts = {}) {
     .map(v => parseInt(v, 10))
     .filter(n => Number.isInteger(n) && n > 0)
   setMaxSeed(caps.length ? Math.min(...caps) : null)
+  // Same reason as the cap: resetSession() clears the reading order, so it has
+  // to be re-read from the link on every mode choice or a recorder who backs
+  // out and picks again silently drops back to coverage order.
+  setScriptOrder(route.query.order)
   selectMode(mode)
 }
 
@@ -1048,6 +1059,11 @@ onMounted(() => {
   // hand a tester a short, listenable session instead of the whole course.
   // Set after resetSession() so it survives the mount-time reset.
   setMaxSeed(route.query.maxSeed)
+
+  // ?order=course on the recorder link reads the same script lines in course
+  // sequence instead of coverage order — a straight-through weekend session
+  // that finishes the START of the course first. Absent = coverage, unchanged.
+  setScriptOrder(route.query.order)
 
   // Load course data if available from route
   const courseCode = route.params.courseCode
