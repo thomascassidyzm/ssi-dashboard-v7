@@ -44,6 +44,27 @@ It also runs as an audit over what is already banked — that is what produced P
 
 ## Part 2 — the sweep
 
+### The strings, as measured — not as quoted
+
+Every string below was read from the database, so the fadas are the course's own:
+
+| | Seeds | Irish | English |
+|---|---|---|---|
+| duplicate | 68, 194 | `céard atá tú a chuartú?` | *what are you looking for?* |
+| duplicate | 68, 194 | `céard atá tú a chuartú anois` / `…anois?` | *what are you looking for now* / *…now?* |
+| duplicate | 150, 161 | `an bhfuil tú in ann teacht ar ais` | *can you come back* |
+| split | 21 / 25 | `a bhfuil tú` / `an bhfuil tú` | *are you* |
+| split | 212 / 231 | `Ba mhaith liom cabhair a iarraidh` / `ba mhaith…` | *I'd like to ask for help* |
+| split | 208 / 119 / 223 | `fiafraí díot` / `a fhiafraí díot` / `fhiafraí díot` | *to ask you* |
+
+Two notes the raw strings make visible. The first *chuartú* pair at 68 and 194 is **byte-identical on
+both sides** — the same sentence, the same prompt, twice. The second differs **only by a question
+mark**, on the Irish and on the English alike, which is a duplicate wearing a disguise rather than
+two sentences. And `an bhfuil tú in ann teacht ar ais` is byte-identical at 150 and 161 too.
+
+On *to ask you*: the database holds **three** forms, not the two in the brief. The third is the
+teaching unit at seed 208, `fiafraí díot`, bare with no particle and no lenition.
+
 ### The three known-side splits — all three verified, one is cosmetic
 
 **1. "are you" — REAL, and the fix is not to touch the Irish.**
@@ -92,23 +113,23 @@ a capitalisation-only split is a live gate risk, not a cosmetic nothing. Three u
 ### The 74 repeated phrase targets, triaged
 
 Your measurement — 67 strings and 91 excess rows — has grown while the four live workers built; it
-now reads **74 distinct strings, 103 excess rows**. Flat, that number reads far worse than the course
+now reads **78 distinct strings, 107 excess rows**. Flat, that number reads far worse than the course
 actually is. Split by kind:
 
 | Kind | Groups | What it is |
 |---|---:|---|
 | **REAL-DUP** | **23** | Same Irish **and** same English, in seeds far apart. **The learner is taught the identical sentence twice.** This is the category that needs a ruling. |
-| KNOWN-SPLIT | 21 | One Irish, two different English prompts. Legal — the one-prompt-one-target rail governs the English→Irish direction, not the reverse — but worth a look. |
-| CHUNK | 28 | The repeated target **is itself a taught unit or component**. A bare-chunk drill, not a repeated sentence. **Benign** — this is the category you suspected. |
+| KNOWN-SPLIT | 24 | One Irish, two different English prompts. Legal — the one-prompt-one-target rail governs the English→Irish direction, not the reverse — but worth a look. |
+| CHUNK | 29 | The repeated target **is itself a taught unit or component**. A bare-chunk drill, not a repeated sentence. **Benign** — this is the category you suspected. |
 | ADJACENT | 2 | Same sentence in consecutive seeds. Normally a deliberate carry-over. |
 
-So of 103 excess rows, **the great majority are benign**, and the real problem is **23 sentences
+So of 107 excess rows, **the great majority are benign**, and the real problem is **23 sentences
 taught twice**. Both examples you named are in that 23 and are confirmed real: *what are you looking
 for* at seeds 68 and 194 (twice over — the bare question and its *now* variant), and *can you come
 back* at seeds 150 and 161. The heaviest clusters are seeds **184 and 216** and seeds **110 and
 219**, which share **three** sentences apiece; seeds 23/28, 212/231 and 68/194 share two each.
 
-One caution on the 21 KNOWN-SPLIT groups: **most of them are the want/trying alternation** — the same
+One caution on the 24 KNOWN-SPLIT groups: **most of them are the want/trying alternation** — the same
 Irish glossed *I want to* in one seed and *I'm trying to* in another, across seeds 1/2, 18/102,
 19/50, 20/67, 47/50 and 149/277. That is the **"try" ruling**, which two other workers own, and I
 have deliberately stayed off it. Whoever rules on *try* should expect those groups to resolve as a
@@ -125,10 +146,14 @@ mechanical from this list.
 
 ## Re-measured at the end
 
-Four workers were building throughout. Between my first audit and my last, the course grew by 25
-units and 209 phrases. **No new known-side split arrived** — still ten normalised, twelve raw. **One**
-new repeated target landed, and it is a benign bare-chunk drill. Nothing that arrived while I worked
-needs anyone to fight anyone.
+Four workers were building throughout. Between my first audit and my last, the course grew by **40
+units and 290 phrases** — 698 units and 5,657 phrases at the start, 738 and 5,989 at the end.
+
+**No new known-side split arrived** — still ten normalised and twelve raw, unchanged across the whole
+session. Repeated targets went from 73 distinct strings to 78, and the five arrivals are **all
+benign**: four bare-chunk drills and one one-Irish-two-English group. **The count that matters did not
+move — still exactly 23 sentences taught twice.** Nothing that arrived while I worked needs anyone to
+fight anyone.
 
 **No gaps.** Every unit, component and practice phrase in the course was read and checked; nothing
 was sampled, capped or skipped.
