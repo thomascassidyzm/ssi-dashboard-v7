@@ -278,6 +278,18 @@ coinage, 2 repairing the going-to frame), 6 left untouched by design. The course
 units, 0 practice phrases and 0 audio rows at the time, so seeds were the entire surface and no
 migration or regeneration was owed. ZUT clash count was 0 before and 0 after.
 
+**Word order in the going-to frame — settled 2026-08-21, do not "correct" it.** The frame writes
+its object **after** the verbal noun (`ag gabháil a dhéanamh iarracht`) while the independent
+infinitive writes it **before** (`iarracht a dhéanamh`). Both are right: in the frame the `a` is
+its own particle (`ag gabháil a` + lenited VN), so the object cannot front. Donegal desk:
+`(ag|a') gabháil a` + VN = **991**, with `déanamh` = **108**, `a dhéanamh rud` = **7**, and the
+exact sentence *"tá mé ag gabháil a dhéanamh iarracht arís…"* is attested; the corpus tags that `a`
+as a preposition and `iarracht` as **nominative**, not genitive.
+
+**⚠ These transcripts spell `ag` as `a'` more often than in full** — `a' gabháil` 2,398 vs
+`ag gabháil` 428 on the Donegal desk. **Match both spellings or you will get a false zero.** This
+is what made the evidence doc report 28 for a construction that has 108.
+
 **Open gap carried forward:** at *"I'm trying to think"* the *construction* is evidenced but the
 *verb* is not — Donegal commonly has `smaointiú`/`smaoitiú` for `smaoineamh`, and both are zero on
 the Donegal desk, so the corpus does not choose. The seed currently reads `smaoineamh`. This wants

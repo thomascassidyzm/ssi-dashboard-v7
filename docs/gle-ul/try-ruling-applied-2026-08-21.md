@@ -99,6 +99,57 @@ Seed 8's "explain" half was deliberately not touched: this course was already ch
 defective *"explain what I mean with someone else"* shape that appears at seed 8 in eight other
 courses on the estate, and it is clean here. I repaired only the going-to frame.
 
+#### The word order in these two, challenged and checked — it is right
+
+**The challenge, and it was a fair one.** These two put the object **after** the verbal noun
+(*ag gabháil a dhéanamh **iarracht***) while every other bare-form seed puts it **before**
+(*iarracht a dhéanamh*, seeds 407, 541, 579). That looks like an inconsistency, and I went back to
+the Donegal speech corpus rather than defend it from reasoning.
+
+**They are two different constructions, not two orders of one.** The `a` is doing a different job
+in each:
+
+| construction | shape | why the object sits where it does |
+|---|---|---|
+| independent infinitive — seeds 407, 541, 579 | ***iarracht* a dhéanamh** | `a` is the **object-fronting particle**, so `iarracht` fronts ahead of it |
+| the going-to frame — seeds 8, 236 | **ag gabháil a dhéanamh *iarracht*** | `a` is the **frame's own particle** (`ag gabháil a` + lenited VN). That slot is taken, so the object has nowhere to front to and stays postposed |
+
+**The evidence, on the Donegal desk** (calibrated `agus` = 30,776, negative control `xqzzy` = 0):
+
+- **The frame is robust: `(ag\|a') gabháil a` + verbal noun = 991**, and with `déanamh`
+  specifically **108**.
+- **The frame postposes its object generally** — this is a pattern, not a one-off:
+  *"a' gabháil a dhéanamh **rud ar bith** fá seo"*; *"a' gabháil a thabhairt **an duán**"*;
+  `a dhéanamh rud` = **7**.
+- **Our exact sentence is attested verbatim:** *"tá mé ag gabháil **a dhéanamh iarracht** arís le
+  gabháil le Fine Gael"* — An Comhairleoir Contae Neamhspleách, *RnaG Barrscéalta*.
+- **The morphology proves it rather than merely allowing it.** The corpus tags that `a` as **`Sp`,
+  a preposition** — the frame's particle, not the object particle — and tags `iarracht` as
+  **`Ncfsc`: feminine singular *common* case**, not the genitive `Ncfsg`. Independently,
+  *"ag déanamh iarracht **mhór**"* carries an adjective in feminine **nominative** agreement, which
+  is only possible if `iarracht` is a postposed noun rather than a fronted object.
+- **And the contrasting construction behaves the opposite way, consistently.** `iarracht a dhéanamh`
+  = **10** on the Donegal desk, and every complement fronts its own object too — *"iarracht a
+  dhéanamh **feabhas a chur** ar…"*, *"**na daoine a bhogadh** amach"*, *"**fostaíocht a
+  mhealladh**"*, *"**ainmniúchán a fháil**"*.
+
+So the expected alternative *ag gabháil iarracht a dhéanamh ar…* would require the frame to give up
+its own `a`. That is what seed 8 said **before** the fix, and it is why it was fixed.
+
+#### ⚠ A false zero I hit on the way, and the correction it forces
+
+My first query returned **`ag gabháil a dhéanamh` = 0 on the Donegal desk** — which would have
+"disproved" the construction. **It is a spelling artefact, not a fact.** These transcripts write
+*ag* as **`a'`** far more often than in full: on this desk `a' gabháil` = **2,398** against
+`ag gabháil` = **428**, so the apostrophe form is 5.6× the commoner one and an exact `ag`-initial
+match silently misses most of the construction.
+
+**This also corrects the evidence document's own figure.** It reports `ag gabháil a dhéanamh` = 28;
+matching both spellings gives **108**. The construction is nearly four times better attested than
+the ruling's own paperwork claims. The direction of that error is reassuring, but the lesson is the
+one that document keeps re-learning: **a zero from this corpus is worthless without its spelling
+variants tried and its control printed beside it.**
+
 ### The 6 I left alone, on purpose
 
 Seeds **7, 146, 407, 491, 541, 579**. **`iarracht` the noun is not banned — only the fake
@@ -153,6 +204,21 @@ between them. The frame itself is sound — the identical shape `ag iarraidh cui
 hits — so the sentence is not wrong, but its verb is unverified. **This wants a lexical check
 before that seed is decomposed.** It is recorded in the course's dialect spec as well as here, so
 it cannot be lost.
+
+**A second open question, surfaced 2026-08-21 while checking the word order, and deliberately NOT
+acted on.** Seed 8 reads `…a dhéanamh iarracht **a mhíniú** goidé atá i gceist agam`. The word
+*order* is settled (above); what is not settled is the **complement shape** right after `iarracht`.
+Donegal speech licenses a **bare** verbal noun there — *"ní dhéanfaidh siadsan **iarracht teacht**
+ar shocrú"*, *"dhéanfar **iarracht déanamh**…"* — and `iarracht a mhíniú` is **0** on the Donegal
+desk. But 0 for one collocation in a ~65k-token corpus is not evidence of ungrammaticality, and
+`a mhíniú` has a second, perfectly good reading in which `a` is the possessive "it", anticipating
+the clause that follows. **The two readings are:** "an attempt to explain what I mean" (intended)
+and "to explain the attempt" (the misparse). The alternative would be the bare
+`iarracht míniú goidé atá i gceist agam`.
+
+**The evidence is genuinely mixed, so the seed was left as it stands and the question is carried
+rather than guessed.** It affects one seed, it is not the coinage, and it wants a decision before
+that seed is decomposed.
 
 **Two limits inherited from the evidence base, neither of which I could close and neither of which
 affects the ban.** No native speaker of Donegal has reviewed any of this — it is dictionaries,
