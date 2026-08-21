@@ -101,6 +101,7 @@ function crossCheck(submission, built) {
   const seed = submission.seed_number;
   const collisions = [];
   const selfCollisions = [];
+  const duplicates = [];
   const submitted = new Map(); // normKnown -> { kind, tag, known, target }
 
   const consider = (kind, tag, known, target) => {
@@ -111,7 +112,17 @@ function crossCheck(submission, built) {
     // (a) against everything already in the course, ABOVE and BELOW.
     for (const e of index.get(k) || []) {
       if (e.seed === seed) continue;
-      if (normalizeForZUT(e.target) === nt) continue;
+      if (normalizeForZUT(e.target) === nt) {
+        // Same English AND same target is NOT a ZUT collision — it is a DUPLICATE, the learner
+        // being taught one sentence twice. A different defect with no gate of its own, and one
+        // that a phrase-level check looking only for *conflicting* targets will happily wave
+        // through. Warn rather than fail: a phrase equal to a taught chunk is a legitimate
+        // debut row, so only whole sentences are worth flagging.
+        if (kind === 'phrase' && e.source === 'phrase' && String(target).trim().split(/\s+/).length >= 4) {
+          duplicates.push({ tag, known, target, against_seed: e.seed });
+        }
+        continue;
+      }
       collisions.push({
         kind, tag, known, target,
         against: e.source, against_seed: e.seed, against_target: e.target,
@@ -136,7 +147,14 @@ function crossCheck(submission, built) {
     const basket = [...(lego.build || []), ...(lego.use || []), ...(lego.phrases || [])];
     for (const p of basket) consider('phrase', tag, p.known, p.target);
   }
-  return { collisions, selfCollisions };
+  // Dedupe: one warning per repeated sentence, not one per matching row.
+  const seenDup = new Set();
+  const dedupedDuplicates = duplicates.filter(d => {
+    const key = normalizeForZUT(d.target);
+    if (seenDup.has(key)) return false;
+    seenDup.add(key); return true;
+  });
+  return { collisions, selfCollisions, duplicates: dedupedDuplicates };
 }
 
 /**
@@ -283,9 +301,17 @@ async function main() {
   let bad = 0;
   for (const file of files) {
     const parsed = parseMarkdownSeed(fs.readFileSync(file, 'utf8'), course);
-    const { collisions, selfCollisions } = crossCheck(parsed, built);
+    const { collisions, selfCollisions, duplicates } = crossCheck(parsed, built);
     console.log(`\n=== ${path.basename(file)} — seed ${parsed.seed_number} — course-wide phrase-aware ZUT ===`);
-    if (!collisions.length && !selfCollisions.length) { console.log('  PASS — no collision against any lego or phrase, any seed.'); continue; }
+    for (const d of duplicates) {
+      console.log(`  ⚠ DUPLICATE ${d.tag}: "${d.target}" is already taught at seed ${d.against_seed}, same English`);
+    }
+    if (!collisions.length && !selfCollisions.length) {
+      console.log(duplicates.length
+        ? `  PASS on ZUT — but ${duplicates.length} sentence(s) above are already taught elsewhere.`
+        : '  PASS — no collision against any lego or phrase, any seed.');
+      continue;
+    }
     bad++;
     for (const c of collisions) {
       console.log(`  ✗ ${c.tag} ${c.kind} "${c.known}"`);
