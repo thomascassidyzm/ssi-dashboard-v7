@@ -32,13 +32,23 @@ export function useRecordistQueue() {
   const failed = reactive(new Map())
   let processing = false
 
-  function queueTake({ voiceId, lineId, text, blob }) {
+  // What recorded this take: the microphone the recordist chose and the browser
+  // it ran in. recording_device was NULL on all 154 archived takes when the
+  // clipping was being diagnosed, so the question "which device, which browser"
+  // could only be answered by guessing from the blob's mime string. It is one
+  // field on a form that is already being posted.
+  function describeDevice(micLabel) {
+    const ua = (typeof navigator !== 'undefined' && navigator.userAgent) || ''
+    return [micLabel || 'default mic', ua].filter(Boolean).join(' · ').slice(0, 300)
+  }
+
+  function queueTake({ voiceId, lineId, text, blob, micLabel }) {
     for (let i = queue.length - 1; i >= 1; i--) {
       if (queue[i].lineId === lineId) queue.splice(i, 1)
     }
     failed.delete(lineId)
     saved.delete(lineId)
-    queue.push({ voiceId, lineId, text, blob })
+    queue.push({ voiceId, lineId, text, blob, device: describeDevice(micLabel) })
     pendingCount.value = queue.length
     processQueue()
   }
@@ -90,6 +100,7 @@ export function useRecordistQueue() {
     form.append('audio', item.blob, `take-${item.lineId}.${extFor(item.blob)}`)
     form.append('lineId', String(item.lineId))
     form.append('text', item.text || '')
+    if (item.device) form.append('device', item.device)
     const res = await fetch(
       `${apiBase()}/api/recording/voice/${encodeURIComponent(item.voiceId)}/take`,
       { method: 'POST', headers: { 'ngrok-skip-browser-warning': 'true' }, body: form }

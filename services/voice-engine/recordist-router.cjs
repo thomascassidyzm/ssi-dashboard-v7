@@ -148,7 +148,7 @@ module.exports = function createRecordistRouter({
    * (narration, encouragement, instruction — see the note at the call site).
    * Regeneration mode: same upload seam, same raw archive, same refusals.
    */
-  async function recordRerecordClip({ req, res, recordist, lineId, text, audioBase64, mimeType }) {
+  async function recordRerecordClip({ req, res, recordist, lineId, text, audioBase64, mimeType, device }) {
     const { data: clip, error: clipErr } = await db()
       .from('course_audio')
       .select('id, course_code, text, role, language, voice_id, s3_key, rerecord_wanted')
@@ -190,7 +190,11 @@ module.exports = function createRecordistRouter({
         audioData: audioBase64,
         mimeType,
         metadata: { text: clipText, role: clip.role, voiceId: recordist.voiceId },
-        provenance: { recorded_by: recordist.email || recordist.displayName, mode: 'recordist' },
+        provenance: {
+          recorded_by: recordist.email || recordist.displayName,
+          mode: 'recordist',
+          recording_device: device || null,
+        },
       },
     }, innerRes)
     if (captured.status >= 400 || !captured.body || !captured.body.success) {
@@ -227,11 +231,16 @@ module.exports = function createRecordistRouter({
       if (!recordist) return
 
       const isMultipart = String(req.headers['content-type'] || '').includes('multipart/form-data')
-      let lineId, text, audioBase64, mimeType
+      // What recorded this take — the recordist's chosen mic and their browser.
+      // It was NULL on all 154 archived takes when the clipping was diagnosed,
+      // which made "which device, which browser" unanswerable and left a mime
+      // string standing in for a code path. The client sends it now.
+      let lineId, text, audioBase64, mimeType, device
       if (isMultipart) {
         const parsed = await parseMultipartTake(req)
         lineId = parsed.fields.lineId
         text = parsed.fields.text
+        device = parsed.fields.device || null
         mimeType = parsed.fields.mimeType || parsed.mimeType || 'audio/webm'
         if (!parsed.buffer || !parsed.buffer.length) {
           return res.status(400).json({ error: 'no audio part in the upload' })
@@ -244,6 +253,7 @@ module.exports = function createRecordistRouter({
         lineId = req.body.lineId
         text = req.body.text
         mimeType = req.body.mimeType || 'audio/webm'
+        device = req.body.device || null
         audioBase64 = req.body.audioData
         if (!audioBase64) return res.status(400).json({ error: 'audioData (base64) or a multipart audio part required' })
       }
@@ -273,7 +283,7 @@ module.exports = function createRecordistRouter({
       // for reversibility. Only a clip that ASKED for a new take is accepted —
       // this is a re-record path, never a way to overwrite arbitrary audio.
       if (!sentence) {
-        return recordRerecordClip({ req, res, recordist, lineId, text, audioBase64, mimeType })
+        return recordRerecordClip({ req, res, recordist, lineId, text, audioBase64, mimeType, device })
       }
 
       const { data: pod, error: podErr } = await db()
@@ -316,6 +326,7 @@ module.exports = function createRecordistRouter({
           provenance: {
             recorded_by: recordist.email || recordist.displayName,
             mode: 'recordist',
+            recording_device: device || null,
           },
         },
       }

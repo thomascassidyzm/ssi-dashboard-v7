@@ -269,6 +269,14 @@ const lines = ref([])
 
 const includeRecorded = ref(false)
 const selectedDeviceId = ref(null)
+// The mic this take was read into, for the take's provenance row.
+function micLabel() {
+  const list = recorder.devices.value || []
+  const chosen = selectedDeviceId.value
+    ? list.find(d => d.deviceId === selectedDeviceId.value)
+    : list[0]
+  return (chosen && chosen.label) || null
+}
 const index = ref(0)
 const busy = ref(false)
 const readThisSession = ref(0)
@@ -492,7 +500,7 @@ function commit(i, blob, hadSpeech) {
     lastLine.value = line
     return
   }
-  queue.queueTake({ voiceId: props.voiceId, lineId: line.id, text: line.text, blob })
+  queue.queueTake({ voiceId: props.voiceId, lineId: line.id, text: line.text, blob, micLabel: micLabel() })
   doneIds.value.add(line.id)
   doneIds.value = new Set(doneIds.value)
   if (!sessionIds.value.includes(line.id)) sessionIds.value = [...sessionIds.value, line.id]
