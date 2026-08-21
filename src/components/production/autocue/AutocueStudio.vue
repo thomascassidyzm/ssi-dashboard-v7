@@ -161,15 +161,22 @@
         </span>
       </div>
 
-      <!-- Room calibration: measured before the first phrase, so a room that
-           cannot be split into takes is caught now and not at the end. -->
-      <div v-if="state.scriptMode && isCalibrating" class="vad-calibrating">
-        <div class="vad-bar" :style="{ width: `${vadMeterPercent}%` }"></div>
-        <span class="vad-status">Listening to the room — stay quiet for a moment...</span>
-      </div>
+      <!-- ON AIR. One panel for the WHOLE session, deliberately outside every
+           per-take condition: the stream is live from startFlow and the lamp
+           says so continuously, including while the room is being measured and
+           in the gaps between takes. The recordist could previously see nothing
+           that told them the mic was hot, which is how Sascha read 34 takes
+           into a recorder they had no confirmation was hearing them. -->
+      <OnAirMeter
+        v-if="state.scriptMode && state.isRecording"
+        :level="vadLevel"
+        :live="state.isRecording"
+        :calibrating="isCalibrating"
+        :speaking="isSpeaking"
+      />
 
       <div
-        v-else-if="state.scriptMode && calibrationWarning"
+        v-if="state.scriptMode && calibrationWarning"
         class="vad-noise-warning"
         :class="`quality-${calibration.quality}`"
       >
@@ -177,11 +184,11 @@
         <span>{{ calibration.message }}</span>
       </div>
 
-      <!-- VAD Level Indicator (script mode) -->
-      <div v-if="state.scriptMode && state.isRecording && !isCalibrating" class="vad-indicator">
-        <div class="vad-bar" :style="{ width: `${vadMeterPercent}%` }"></div>
-        <span class="vad-status">{{ isSpeaking ? 'Speaking...' : 'Listening...' }}</span>
-      </div>
+      <!-- The old thin level bar and its "Speaking.../Listening..." caption
+           lived here. Both are now inside OnAirMeter above, which runs for the
+           whole session instead of only between calibration and the end. Two
+           meters saying the same thing in different places would have made the
+           on-air signal weaker, not stronger. -->
 
       <!-- A re-record pass looks exactly like a first pass on screen, except
            the script is three items long and out of order. Say which pass this
@@ -398,6 +405,7 @@ import {
 } from '@/utils/voiceSlots'
 
 import ModeSelector from './ModeSelector.vue'
+import OnAirMeter from './OnAirMeter.vue'
 import RoleSelector from './RoleSelector.vue'
 import TeleprompterDisplay from './teleprompter/TeleprompterDisplay.vue'
 import RecordingControls from './recording/RecordingControls.vue'
@@ -536,11 +544,10 @@ const continuousRecorder = useContinuousRecorder({
 const isSpeaking = continuousRecorder.isSpeaking
 const vadLevel = continuousRecorder.currentLevel
 
-// vadLevel is a time-domain RMS, so speech measures ~0.2-0.4 and would only
-// ever paint a third of the bar. Scale it for the meter (the DECISION still uses
-// the raw value against silenceThreshold — see useVAD.ts). x3 puts the 0.02
-// silence threshold at a visible 6% and normal speech near full.
-const vadMeterPercent = computed(() => Math.min(100, Math.round(vadLevel.value * 300)))
+// vadLevel is a time-domain RMS, so speech measures ~0.2-0.4. The x300 scaling
+// that turns it into something visible now lives in OnAirMeter, next to the
+// segments it drives. The DECISION still uses the raw value against
+// silenceThreshold — see useVAD.ts.
 
 // Live pause signals. useVAD has counted chunksSeen since the slow-cadence fix
 // landed; nothing ever showed it to the person doing the reading.
@@ -1408,50 +1415,8 @@ onUnmounted(() => {
   color: var(--color-emerald);
 }
 
-/* VAD Indicator */
-.vad-indicator {
-  background: var(--color-shadow);
-  border: 1px solid var(--color-graphite);
-  border-radius: 8px;
-  padding: 0.5rem 1rem;
-  margin-bottom: 1rem;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  overflow: hidden;
-  position: relative;
-}
-
-.vad-bar {
-  height: 4px;
-  background: var(--color-emerald);
-  border-radius: 2px;
-  transition: width 0.05s linear;
-  min-width: 2px;
-  box-shadow: 0 0 8px rgba(6, 255, 165, 0.5);
-}
-
-.vad-status {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 0.75rem;
-  color: var(--color-paper-dim);
-  white-space: nowrap;
-}
-
-/* Room calibration — same shell as the level indicator it replaces, so the
-   panel does not jump when measuring finishes and recording begins. */
-.vad-calibrating {
-  background: var(--color-shadow);
-  border: 1px solid var(--color-tungsten, var(--accent));
-  border-radius: 8px;
-  padding: 0.5rem 1rem;
-  margin-bottom: 1rem;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  overflow: hidden;
-  position: relative;
-}
+/* The level bar, its caption and the calibration shell that matched it were
+   replaced by OnAirMeter, which carries its own scoped styles. */
 
 .vad-noise-warning {
   border-radius: 8px;
