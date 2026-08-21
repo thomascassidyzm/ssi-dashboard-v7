@@ -75,6 +75,21 @@ For the record, a course-wide pass found **13** one-known-to-many-target splits 
 pre-existing and none involving the try-word. Several are capitalisation-only artefacts of the
 checker rather than real splits. **That list is not this job's to clear** and is reported as found.
 
+**One of the known splits is wider than it has been described.** The *to ask you* split is usually
+given as `a fhiafraí díot` against `fhiafraí díot`. It is **three-way**: the taught building block
+at seed 208 is the bare `fiafraí díot`, and the two lenited phrase forms sit at seeds 119 and 223.
+
+| known | target | where |
+|---|---|---|
+| to ask you | `fiafraí díot` | seed 208 — the taught block |
+| to ask you | `a fhiafraí díot` | seed 119 — particle *a* plus lenition |
+| to ask you | `fhiafraí díot` | seed 223 — lenited with no particle |
+
+The seed 223 form looks like a phrase clipped at the wrong boundary: it is lenited because
+*ag goil a* precedes it in the full sentence, and the lenition was carried into a phrase that no
+longer has the thing causing it. **Not touched here, and not this job's to fix** — recorded because
+whoever does fix it should know it is three rows, not two.
+
 ---
 
 ## 5. THE GAP: seed 236 still carries the retired word
