@@ -300,3 +300,118 @@ The course grew from 698 units and 5,657 phrases to **746 and 6,045** while all 
 
 **TTS: zero.** All three Irish courses hold zero audio rows, before and after, as they did at the
 start.
+
+---
+
+# Part 2, finished — the duplicates repaired
+
+The earlier document triaged and did not repair. This section is the repair.
+
+## What the repair had to be, and why it is not deletion
+
+Of the 27 unambiguous cross-seed duplicates — the ones whose English is identical once case and a
+trailing question mark are set aside — **exactly one** could have been deleted without consequence.
+**Twenty-one sat on a teaching unit already at the floor** of three BUILD and five USE sentences, so
+removing the duplicate row would have dropped the unit under the gate. That is the "remove or remap"
+fork, and at the floor it resolves to remap.
+
+That turns out to be the right answer for a second and better reason. **A practice sentence's id
+encodes its slot** — seed, unit index, role, position — and progress is filed under the slot, not the
+text. Deleting a row **orphans a slot**; editing its text **preserves one**. So the non-destructive
+repair is to rewrite the later duplicate, and deletion is the destructive option. I therefore
+rewrote all 22 rather than deleting even the one that could have gone.
+
+**Nothing was deleted. No id was reissued. No unit was touched.**
+
+## A warning about doing this automatically
+
+My first pass generated replacements mechanically, by appending an already-taught tail to the
+duplicate sentence. **All of them passed every gate — and several were nonsense**: *what are you
+looking for now now?*, *I saw that book now*, *I want to relax now now*.
+
+The gates check tiling, vocabulary, containment, known-side licensing and ZUT. **None of them can
+tell good English from bad.** I threw that batch away and hand-wrote all 22, then validated each
+against the same gates. Recording it because the automated route looks like it works right up until
+you read the output.
+
+I also re-read every affected basket *after* the repair, which caught two things the gates passed:
+two USE sentences at seed 194 had become restatements of that unit's own BUILD rows — and USE is
+supposed to buy a new pattern, not repeat one — and seed 216 had ended up with two sentences ending
+*on the table*. Both were rewritten again.
+
+## The 22 repairs
+
+| Slot | was | now |
+|---|---|---|
+| S0028L02B01 | I want to start talking | he wants to start talking |
+| S0028L02B02 | I'd like to start talking | we want to start talking |
+| S0057L05B01 | to say a few words | to say a few words with you |
+| S0057L05B02 | to say something in Irish | to say the answer |
+| S0067L02B01 | I don't want to stop | we don't want to stop |
+| S0067L02B03 | you want to stop | he wants to stop |
+| S0140L01B01 | I'm sorry today | I'm sorry this evening |
+| S0161L01B04 | can you come back | can you stop |
+| S0167L01B02 | I want to do something | I'd like to do something else |
+| S0193L01B02 | I'm sorry but I don't want to stop | I'm sorry but I'm not able to stop |
+| S0193L01U03 | I'm sorry but I'm not sure | I'm sorry but I'm not ready |
+| S0194L01U01 | what are you looking for? | can you look for that book? |
+| S0194L01U02 | what are you looking for now? | I'm not sure if I can look for the answer |
+| S0216L01B02 | I saw that book | I saw my book |
+| S0216L01U02 | I saw that book last week | I saw my book this evening |
+| S0216L01U03 | I saw someone else this evening | I saw someone else last week |
+| S0219L02B01 | I want to relax | he wants to relax |
+| S0219L02B02 | I'd like to relax | we want to relax |
+| S0219L02U01 | I want to relax now | I'd like to relax for a while |
+| S0222L01B03 | can you tell me | can you tell me now |
+| S0231L03B01 | I want to ask for help | he wants to ask for help |
+| S0231L03B02 | I'd like to ask for help | we want to ask for help |
+
+In every case the **earlier** seed keeps the sentence and the later one changes, so the seed that
+established the pattern is left alone.
+
+## The three numbers, before and after
+
+| | before | after |
+|---|---:|---:|
+| repeated practice-sentence targets | 80 | **58** |
+| excess rows | 109 | **87** |
+| twice-taught sentences (the count that matters) | 25 | **5** |
+| known-side splits (normalised) | 10 | 10 |
+| known-side splits (raw) | 12 | 12 |
+
+The **five** remaining twice-taught sentences are all in live worker bands, listed below. The
+known-side splits did not move because **every one of them needs a ruling** — they are the category I
+was told not to touch. The raw count stayed at 12 rather than falling to 11 because I repaired one
+(*I'd like to ask for help*) and a live worker banked a new capitalisation split at seed 288 while I
+worked.
+
+Measured against a course that grew from 746 units to **766** and from 6,045 sentences to **6,151**
+while this ran.
+
+## What I deliberately did NOT touch — the list for Kai
+
+1. **Five duplicates inside live worker bands** — seeds 30/204, 59/277, 88/286 (two), 139/274.
+   *Needs:* not a ruling, just coordination — a worker is in those seeds now and I will not edit
+   under them.
+2. **"to read": `a léamh` at 180 versus `léamh` at 239** — and **"to change": `a athrú` at 104 versus
+   `athrú` at 188**, the identical break. *Needs:* a decision on how the course glosses a
+   fronted-object verbal noun. Both Irish forms are correct and neither can be dropped; the fix is one
+   field on seed 180, but the convention is yours to set, and it should be set once for both.
+3. **"to ask you" — three forms at 208, 119 and 223.** *Needs:* an upchunk ruling to separate 208 from
+   119. Seed 223 additionally sits on the frozen *going to* construction.
+4. **"are you" — `a bhfuil tú` at 21 versus `an bhfuil tú` at 25.** *Needs:* an upchunk ruling. Both
+   are correct Irish in their own frame; the defect is that both seeds also split the fragment out as
+   a standalone component.
+5. **"I know" / "I don't know" — know-a-fact versus know-a-person**, seeds 59/230 and 60/85.
+   *Needs:* the English prompts differentiated. This is the one I would fix first.
+6. **"doing" — `ag déanamh` at 72 and 114 versus `a dhéanamh` at 100.** *Needs:* an upchunk ruling.
+7. **"I" and "you" glossed as both present and past** — seeds 1, 163, 20 versus 30, 31. *Needs:* a
+   ruling; a bare pronoun prompt cannot select a tense.
+8. **Three capitalisation-only splits at raw level** — *I wanted* (units at 30 and 204/246), *likes*
+   (288), and one sentence at 30/204. Cosmetic, but the server compares raw so they are live gate
+   risks. *Needs:* nothing but a moment — **except that all three are inside live worker bands**, which
+   is the only reason I left them.
+
+Items 2 through 7 all touch **teaching units**, not sentences. None was attempted.
+
+**TTS: zero.** All three Irish courses hold zero audio rows, before and after.
