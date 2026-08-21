@@ -384,6 +384,10 @@ async function loadRoom() {
   const params = new URLSearchParams()
   if (Number.isInteger(cap) && cap > 0) params.set('maxSeed', String(cap))
   if (assignedSlot.value) params.set('role', assignedSlot.value)
+  // ?order=course is a natural-only run — one take per line, not two. Without
+  // forwarding it the room would price the session at double the items and
+  // double the minutes the recordist is actually about to read.
+  if (route.query.order === 'course') params.set('order', 'course')
   const capQuery = params.toString() ? `?${params}` : ''
   try {
     const res = await fetch(`${base}/api/production/${props.courseCode}/recording-script${capQuery}`, { headers: FETCH_HEADERS })

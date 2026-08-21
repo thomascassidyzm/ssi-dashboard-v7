@@ -97,7 +97,15 @@
             <span class="script-stat-label">Minutes</span>
           </div>
         </div>
-        <p class="script-instructions">
+        <!-- Course order is a natural-only run: each line is read once and the
+             slow pass never appears, so promising amber text here would be a
+             lie the recordist notices on line one. -->
+        <p v-if="state.scriptInfo?.naturalOnly" class="script-instructions">
+          Each line appears once: read it at <strong>natural speed</strong>, then
+          straight on to the next. No slow reading in this session.
+          VAD will auto-detect pauses and advance automatically.
+        </p>
+        <p v-else class="script-instructions">
           Each phrase appears twice: <strong>white text</strong> for natural speed,
           then <strong class="amber-text">amber text</strong> for slow reading.
           VAD will auto-detect pauses and advance automatically.

@@ -8357,6 +8357,7 @@ app.patch('/api/production/:courseCode/phrase/:phraseId', async (req, res) => {
 
 // Import the recording optimizer algorithm
 const { generateRecordingScript } = require('../tools/recording-optimizer/generate-recording-script.cjs')
+const { buildScriptItems, isNaturalOnly } = require('./recording-script-items.cjs')
 
 // GET /api/production/:courseCode/recording-optimizer
 // Runs the GuaranteedCoverage algorithm to find minimum recording set
@@ -8426,12 +8427,14 @@ app.get('/api/production/:courseCode/recording-script', async (req, res) => {
     // historical behaviour.
     const role = ['target1', 'target2'].includes(req.query.role) ? req.query.role : 'target1'
     // ?order=course reads the SAME selected lines in course sequence (seed 1
-    // upwards) instead of coverage order. Selection, chunking and everything
-    // downstream are untouched — this is a reading order only. Default stays
+    // upwards) instead of coverage order, and — since Kai's ruling of
+    // 2026-08-21 — reads each of them ONCE, at natural speed, with no slow
+    // pass. Selection and chunking are still untouched. Default stays
     // 'coverage', so nothing changes for anyone who doesn't ask for it.
     const order = req.query.order === 'course' ? 'course' : 'coverage'
+    const naturalOnly = isNaturalOnly(order)
 
-    logger.log(`[Recording Script] Generating interleaved script for ${courseCode} [${role}]${excludeRecorded ? ' (gap only)' : ' (full)'}${maxSeed ? ` (seeds 1-${maxSeed})` : ''} (${order} order)`)
+    logger.log(`[Recording Script] Generating ${naturalOnly ? 'natural-only' : 'interleaved'} script for ${courseCode} [${role}]${excludeRecorded ? ' (gap only)' : ' (full)'}${maxSeed ? ` (seeds 1-${maxSeed})` : ''} (${order} order)`)
 
     // Run the optimizer (suppress console output)
     const originalLog = console.log
@@ -8453,78 +8456,10 @@ app.get('/api/production/:courseCode/recording-script', async (req, res) => {
     const phrases = result.recordingScript.phrases
     const directItems = result.directRecord.items
 
-    // Interleave: each phrase gets natural + slow pair
-    const items = []
-    let idx = 0
-
-    for (let i = 0; i < phrases.length; i++) {
-      const p = phrases[i]
-      // Pass chunk data through to the autocue so Pass 2 (slow) can render
-      // LEGO-level pause boundaries rather than word-level.
-      const chunkFields = {
-        recordingChunks: p.recordingChunks || null,
-        legoChunks: p.legoChunks || null,
-        chunksString: p.chunksString || null,
-        chunkCount: p.chunkCount || null,
-      }
-      items.push({
-        index: idx++,
-        text: p.target,
-        cadence: 'natural',
-        type: 'phrase',
-        phraseIndex: i,
-        wordCount: p.wordCount,
-        coversLegos: p.coversLegos,
-        known: p.known || '',
-        phraseOrigin: p.source || '',
-        seedNumber: p.seedNumber || null,
-        ...chunkFields
-      })
-      items.push({
-        index: idx++,
-        text: p.target,
-        cadence: 'slow',
-        type: 'phrase',
-        phraseIndex: i,
-        wordCount: p.wordCount,
-        coversLegos: p.coversLegos,
-        known: p.known || '',
-        phraseOrigin: p.source || '',
-        seedNumber: p.seedNumber || null,
-        ...chunkFields
-      })
-    }
-
-    // Append direct record items (also normal + slow pairs).
-    // A direct-record item is a single LEGO — one chunk by definition.
-    for (let i = 0; i < directItems.length; i++) {
-      const d = directItems[i]
-      const directChunk = [{ text: d.target, legoId: d.legoId || null, isLego: true }]
-      items.push({
-        index: idx++,
-        text: d.target,
-        cadence: 'natural',
-        type: 'direct',
-        known: d.known || '',
-        legoId: d.legoId || '',
-        recordingChunks: directChunk,
-        legoChunks: directChunk,
-        chunksString: d.target,
-        chunkCount: 1
-      })
-      items.push({
-        index: idx++,
-        text: d.target,
-        cadence: 'slow',
-        type: 'direct',
-        known: d.known || '',
-        legoId: d.legoId || '',
-        recordingChunks: directChunk,
-        legoChunks: directChunk,
-        chunksString: d.target,
-        chunkCount: 1
-      })
-    }
+    // Shape the reading list. In coverage order each line is read twice
+    // (natural, then slow); in course order it is read ONCE, natural only —
+    // see services/recording-script-items.cjs for what that costs downstream.
+    const items = buildScriptItems({ phrases, directItems, order })
 
     // Estimate: ~6 seconds per item (read + pause)
     const estimatedMinutes = Math.round((items.length * 6) / 60)
@@ -8534,6 +8469,9 @@ app.get('/api/production/:courseCode/recording-script', async (req, res) => {
       maxSeed,
       role,
       order,
+      // So the recorder can say so on screen rather than infer it from the
+      // absence of amber lines halfway through a session.
+      naturalOnly,
       totalItems: items.length,
       totalPhrases: phrases.length,
       totalDirect: directItems.length,

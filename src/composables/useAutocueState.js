@@ -1133,7 +1133,12 @@ export function useAutocueState() {
         totalDirect: data.totalDirect,
         estimatedMinutes: data.estimatedMinutes,
         maxSeed: data.maxSeed ?? null,
-        order: data.order || 'coverage'
+        order: data.order || 'coverage',
+        // The server decides this, not the link: course order means one
+        // natural read per line and no slow pass. Falling back to the order
+        // keeps an older API's response honest rather than promising a slow
+        // pass that isn't in the items.
+        naturalOnly: data.naturalOnly ?? (data.order === 'course')
       }
 
       // Transform items to autocue phrase format
