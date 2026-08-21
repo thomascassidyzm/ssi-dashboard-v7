@@ -433,6 +433,30 @@ export function useAutocueState() {
   // exactly the same audio.
   function takeChunkFields(segment, phrase) {
     const durationMs = segment.durationMs ?? 0
+
+    // Only a SLOW read is chunked at all. A natural-speed phrase is read
+    // straight through — the autocue draws it no gap markers, so the recordist
+    // was never asked to pause in it. But the voice detector still calls a
+    // chunk boundary at any silence over its threshold regardless of cadence,
+    // so one ordinary breath in a perfectly good natural take used to split it
+    // into two "pieces" on the review card AND raise a mismatch ⚠ against a
+    // script that asks for no pauses whatsoever. Kai, 2026-08-19: "it seems to
+    // be trying to split the fast ones, still?"
+    //
+    // The studio already gates on cadence in both places it decides anything
+    // about chunks — expectedChunks and judgeSlowTake in AutocueStudio.vue both
+    // return early unless cadence === 'slow'. This is the third reader, and it
+    // was the one that never had the gate.
+    if (phrase?.cadence !== 'slow') {
+      return {
+        takeDurationMs: durationMs,
+        chunkGaps: segment.chunkGaps || [],
+        chunks: [],
+        chunksExpected: 0,
+        chunksMatchScript: false
+      }
+    }
+
     const chunkTexts = resolvePhraseChunks(phrase).chunks.map(c => c.text)
     const built = buildTakeChunks({
       gaps: segment.chunkGaps || [],

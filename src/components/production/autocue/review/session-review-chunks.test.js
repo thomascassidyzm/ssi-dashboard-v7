@@ -134,14 +134,35 @@ describe('a captured take becomes pieces', () => {
 
   it('does not invent pieces from a phrase that has no LEGO map', () => {
     // A word-split fallback is not chunk information — the recordist was never
-    // shown gap markers for it, so nothing may be labelled from it.
-    const seg = capture({ id: 8, text: 'bore da iawn', cadence: 'natural' }, [
+    // shown gap markers for it, so nothing may be labelled from it. The take is
+    // still cut into anonymous pieces, because a slow read was asked to pause.
+    const seg = capture({ id: 8, text: 'bore da iawn', cadence: 'slow' }, [
       { startMs: 900, endMs: 1600 },
       { startMs: 2400, endMs: null }
     ], 3200)
     expect(seg.chunksExpected).toBe(0)
     expect(seg.chunksMatchScript).toBe(false)
     expect(seg.chunks.map(c => c.label)).toEqual(['Piece 1', 'Piece 2'])
+  })
+
+  it('never splits a natural-speed take, however it was breathed', () => {
+    // Kai, 2026-08-19: "it seems to be trying to split the fast ones, still?"
+    // A natural read is read straight through and shown no gap markers, so a
+    // breath in the middle of it is a breath, not a chunk boundary. It must
+    // yield no pieces AND no expectation — an expectation is what raises the
+    // false "2 heard, script has 3" warning on a perfectly good take.
+    const gaps = [{ startMs: 900, endMs: 1600 }, { startMs: 2400, endMs: null }]
+    const seg = capture(
+      { id: 9, text: 'dw i eisiau siarad', cadence: 'natural', chunksString: 'dw i|eisiau|siarad' },
+      gaps,
+      3200
+    )
+    expect(seg.chunks).toEqual([])
+    expect(seg.chunksExpected).toBe(0)
+    expect(seg.chunksMatchScript).toBe(false)
+    // The raw boundaries still travel with the upload — suppressing the review
+    // split is not the same as throwing the timing away.
+    expect(seg.chunkGaps).toEqual(gaps)
   })
 
   it('keeps the raw boundaries on the row, so they can travel with the upload', () => {
