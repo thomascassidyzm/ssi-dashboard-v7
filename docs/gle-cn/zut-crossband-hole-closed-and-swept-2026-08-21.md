@@ -101,7 +101,9 @@ look at units and phrases together across the whole course. Beyond the three abo
 - ***doing*** — the progressive form at seeds 72 and 114 versus the verbal-noun-object form at 100.
   Real; needs an upchunk.
 - ***to change*** (104 / 188) and ***to read*** (180 / 239) — the particle-present versus
-  particle-absent alternation, the same shape as *to ask you*. Real but minor.
+  particle-absent alternation, the same shape as *to ask you*. Both are REAL, and *to read* is
+  adjudicated in full in the addendum at the foot of this document — where "minor" turns out to be
+  the wrong word, and *to change* is shown to be the same break.
 - ***I*** and ***you*** — glossed as the present form at seeds 1, 163 and 20, and as the **past**
   form at seeds 30 and 31. Real: a bare pronoun prompt cannot select a tense.
 
@@ -110,20 +112,20 @@ lowercases. The extra two are capitalisation-only — but the server compares th
 a capitalisation-only split is a live gate risk, not a cosmetic nothing. Three units glossing
 *I wanted* differ only in an initial capital.
 
-### The 74 repeated phrase targets, triaged
+### The repeated phrase targets, triaged
 
 Your measurement — 67 strings and 91 excess rows — has grown while the four live workers built; it
-now reads **78 distinct strings, 107 excess rows**. Flat, that number reads far worse than the course
+now reads **80 distinct strings, 109 excess rows**. Flat, that number reads far worse than the course
 actually is. Split by kind:
 
 | Kind | Groups | What it is |
 |---|---:|---|
-| **REAL-DUP** | **23** | Same Irish **and** same English, in seeds far apart. **The learner is taught the identical sentence twice.** This is the category that needs a ruling. |
+| **REAL-DUP** | **25** | Same Irish **and** same English, in seeds far apart. **The learner is taught the identical sentence twice.** This is the category that needs a ruling. |
 | KNOWN-SPLIT | 24 | One Irish, two different English prompts. Legal — the one-prompt-one-target rail governs the English→Irish direction, not the reverse — but worth a look. |
 | CHUNK | 29 | The repeated target **is itself a taught unit or component**. A bare-chunk drill, not a repeated sentence. **Benign** — this is the category you suspected. |
 | ADJACENT | 2 | Same sentence in consecutive seeds. Normally a deliberate carry-over. |
 
-So of 107 excess rows, **the great majority are benign**, and the real problem is **23 sentences
+So of 109 excess rows, **the great majority are benign**, and the real problem is **25 sentences
 taught twice**. Both examples you named are in that 23 and are confirmed real: *what are you looking
 for* at seeds 68 and 194 (twice over — the bare question and its *now* variant), and *can you come
 back* at seeds 150 and 161. The heaviest clusters are seeds **184 and 216** and seeds **110 and
