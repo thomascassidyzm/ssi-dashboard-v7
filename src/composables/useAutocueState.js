@@ -230,10 +230,15 @@ export function useAutocueState() {
   // Initialize microphone access
   async function initializeMicrophone() {
     try {
+      // DSP OFF — the mic's own noise suppression gates exactly the quiet onset
+      // consonants a voice recording is there to capture, and it is the single
+      // biggest quality lever on the way in. Same request the pod and flow
+      // recorders make; the server is the only processing stage.
       audioStream = await navigator.mediaDevices.getUserMedia({
         audio: {
-          echoCancellation: true,
-          noiseSuppression: true,
+          echoCancellation: false,
+          noiseSuppression: false,
+          autoGainControl: false,
           sampleRate: 44100
         }
       })

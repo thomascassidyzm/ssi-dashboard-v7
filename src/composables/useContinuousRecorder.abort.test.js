@@ -129,26 +129,40 @@ describe('the recorder never ships a phantom take', () => {
     delete global.AudioContext
   })
 
+  // Blobs are assembled in a promise now (MediaRecorder.onstop is asynchronous
+  // in every real browser), so a test that advances timers must also let the
+  // microtask queue drain before it looks at what was shipped.
+  const flush = async () => { await Promise.resolve(); await Promise.resolve(); await Promise.resolve() }
+
   async function startedRecorder() {
     const captured = []
     const rec = useContinuousRecorder({ calibrationMs: 0, silenceThreshold: 0.02, silenceDuration: 800, minSpeechDuration: 300 })
     rec.onSegmentCaptured(s => captured.push(s))
     await rec.startFlow()
-    return { rec, captured, mr: () => FakeMediaRecorder.instances[0] }
+    return {
+      rec, captured,
+      mr: () => FakeMediaRecorder.instances[0],
+      live: () => FakeMediaRecorder.instances[FakeMediaRecorder.instances.length - 1],
+      recording: () => FakeMediaRecorder.instances.filter(i => i.state === 'recording').length
+    }
   }
 
   it('closes and drops the capture a cough opened', async () => {
-    const { rec, captured, mr } = await startedRecorder()
+    const { rec, captured, mr, live, recording } = await startedRecorder()
 
     state.amplitude = SPEECH
     advance(100)
-    expect(mr().state).toBe('recording')   // the burst opened a capture
-
     state.amplitude = ROOM
-    advance(1000)
+    advance(2000)                          // past the abort and its overlap
+    await flush()
 
-    expect(mr().state).toBe('inactive')    // ...and it is no longer left open
+    expect(mr().state).toBe('inactive')    // the cough's recorder is dropped
     expect(captured).toHaveLength(0)       // ...and nothing was shipped
+    // ...and the stream is still being captured, so the next phrase already has
+    // its pre-roll. Under the old model this was the point at which NOTHING was
+    // recording and the front of the next word was lost.
+    expect(live().state).toBe('recording')
+    expect(recording()).toBeGreaterThanOrEqual(1)
     rec.stopFlow()
   })
 
@@ -170,6 +184,7 @@ describe('the recorder never ships a phantom take', () => {
     state.amplitude = SPEECH
     advance(2000)
     rec.stopFlow()
+    await flush()
 
     expect(captured).toHaveLength(1)
     // ~2000ms less the poll that noticed the speech starting
@@ -182,10 +197,77 @@ describe('the recorder never ships a phantom take', () => {
     state.amplitude = SPEECH
     advance(1500)
     state.amplitude = ROOM
-    advance(1000)
+    advance(2000)                      // silence, then the tail run-on
+    await flush()
 
     expect(captured).toHaveLength(1)
     rec.stopFlow()
+    await flush()
     expect(captured).toHaveLength(1)   // Stop after a clean cut adds nothing
+  })
+
+  // THE PRE-ROLL. Every clipped take in the 2026-08-21 archive came from this
+  // path starting its encoder inside onSpeechStart: 101 of 101 with no room
+  // tone in front of the word at all. These are the assertions that stop it
+  // being reintroduced.
+  it('is already capturing before anyone has said anything', async () => {
+    const { rec, mr } = await startedRecorder()
+    expect(mr().state).toBe('recording')
+    rec.stopFlow()
+  })
+
+  it('ships the audio from before the first word, not just from it', async () => {
+    const { rec, captured } = await startedRecorder()
+
+    advance(1200)                      // the recordist reading the line
+    state.amplitude = SPEECH
+    advance(1000)
+    state.amplitude = ROOM
+    advance(2000)
+    await flush()
+
+    expect(captured).toHaveLength(1)
+    // The take carries the lead-in AND the run-on, so it is longer than the
+    // speech the VAD timed inside it.
+    expect(captured[0].preRollMs).toBeGreaterThanOrEqual(1000)
+    expect(captured[0].durationMs).toBeGreaterThan(captured[0].preRollMs + 1000)
+    rec.stopFlow()
+  })
+
+  it('starts the replacement before it stops the outgoing one', async () => {
+    const { rec, recording } = await startedRecorder()
+
+    state.amplitude = SPEECH
+    advance(1000)
+    state.amplitude = ROOM
+    advance(900)                       // the VAD has cut, the tail is running
+
+    // Both recorders live at the boundary: the stream is never unobserved, and
+    // that overlap IS the next phrase's pre-roll.
+    expect(recording()).toBe(2)
+    advance(2000)
+    await flush()
+    expect(recording()).toBe(1)
+    rec.stopFlow()
+  })
+
+  it('rolls the pre-roll over rather than shipping a long silence', async () => {
+    const { rec, captured, recording } = await startedRecorder()
+
+    advance(12000)                     // a long read-ahead with nothing said
+    await flush()
+    expect(captured).toHaveLength(0)   // nothing shipped from dead air
+    expect(recording()).toBeGreaterThanOrEqual(1)  // still always capturing
+
+    state.amplitude = SPEECH
+    advance(1000)
+    state.amplitude = ROOM
+    advance(2000)
+    await flush()
+
+    expect(captured).toHaveLength(1)
+    // Bounded by the roll-over, not by how long the recordist paused.
+    expect(captured[0].preRollMs).toBeLessThan(5000)
+    rec.stopFlow()
   })
 })
