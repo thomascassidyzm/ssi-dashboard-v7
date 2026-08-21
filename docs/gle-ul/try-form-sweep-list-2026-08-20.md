@@ -1,5 +1,12 @@
 # The "try" form — sweep list, sized and shaped
 
+> **✅ APPLIED 2026-08-21. This list is now a historical record, not a to-do.** All 14 rows below
+> were rewritten from `ag iarracht` to `ag iarraidh`, plus 2 further seeds (8 and 236) whose
+> going-to frame was repaired to the attested Donegal `ag gabháil a dhéanamh iarracht`. The ruling
+> and the applied state are in `docs/gle-ul/ulster-dialect-spec.md`. Zero `ag iarracht` remain in
+> `gle_ul_for_eng`. **Do not re-run this sweep** — and never key a future "try" check on the Irish,
+> because `ag iarraidh` now carries both "want" and "trying".
+
 **14 rows** carry `ag iarracht`. Job #552 decides the form; this is the exact set it lands on.
 
 `ag iarracht` is NOT a ruling and NOT a dialect form — see the spec's provenance correction.

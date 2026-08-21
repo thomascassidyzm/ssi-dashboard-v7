@@ -73,7 +73,7 @@ No bracketed glosses on the known side, ever — they get read aloud.
 | at all | `ar bith` | `ar bith` | `ar bith` | shared — no change |
 | again | `arís` | `arís` | `arís` | standard spelling; `aríst` is spelling-only, OUT |
 | can (be able) | `tig le` | `in ann` | `tig le`/`féad` | FGB `tar le 4`: "Tagann le, **tig le**, is able" |
-| want | `tá … ag iarraidh` | `tá … ag iarraidh` | `teastaíonn` | shared with Connemara; `teastaíonn` OUT |
+| want | `tá … ag iarraidh` | `tá … ag iarraidh` | `teastaíonn` | shared with Connemara; `teastaíonn` OUT. **Also the form for "trying to" — see the "try" ruling; check the English gloss, never the Irish** |
 | very (intensifier) | `iontach` | `an-` | `an-` | Wikipedia lists `iontach` as the Ulster intensifier |
 
 **`tá muid`, `ag iarraidh` and `ar bith` are shared with Connemara.** That is not a mistake and not
@@ -241,7 +241,51 @@ Block 1's split is adopted because it is mechanical and reproducible:
 
 Never `in ann` — that is the Connemara form.
 
-### `ag iarracht` for "trying" — OPEN, NOT RULED. Do not harden it.
+### "try" in Donegal — RULED AND APPLIED, 2026-08-21. `ag iarracht` is banned.
+
+**This section was "OPEN, NOT RULED" until 2026-08-21. It is now closed, and the course has been
+swept.** The original wording is left below the ruling rather than deleted, because the provenance
+correction it carries is the reason this went wrong in the first place.
+
+| English frame | Donegal form |
+|---|---|
+| **"trying to …"** (progressive, with or without complement) | **`ag iarraidh`** + verbal noun |
+| **"to try" / "tried" / bare, no complement** | **`iarracht`** with a light verb — `rinne … iarracht`, `iarracht a dhéanamh` |
+| **"going to try to …"** | **`ag gabháil a dhéanamh iarracht`** — nominative `iarracht`, never genitive `iarrachta` |
+| ~~`ag iarracht` + verbal noun~~ | **BANNED. It is a coinage, not a dialect form.** |
+| ~~`ag déanamh iarrachta`~~ | **Do not use.** Written-Ulster only; zero in Donegal speech. |
+| ~~`ag triail` / `traíáil` / `féach le`~~ | remain out |
+
+**Why the ban is certain.** In transcribed Donegal speech (RTÉ RnaG Donegal desk, calibrated —
+`agus` 30,776, `madadh` 49 / `madra` 0, negative control `xqzzy` 0) `ag iarracht` is **zero**
+against **1,165** for `ag iarraidh`. It is zero in Connemara speech (against 1,888) and zero in
+Kerry speech (against 290). It is in no dictionary, and `ag` + a plain noun cannot form a
+progressive in Irish — `iarracht` has no verbal-noun function; the verbal noun of `iarr` *is*
+`iarraidh`. Full evidence: `docs/gle-dialect-corpora/donegal-try-word-evidence-2026-08-20.md`;
+the cross-dialect decision: `docs/gle-cn/try-the-word-decision-2026-08-20.md`.
+
+**`iarracht` the noun is NOT banned.** Only the fake progressive `ag iarracht` is. Six seeds keep
+`iarracht` under a light verb and are correct as they stand.
+
+**⚠ Any future check on this vocabulary must key on the ENGLISH gloss, never the Irish.**
+`ag iarraidh` means both "want" and "trying" and is already 111 seeds in this course, mostly
+"want". A sweep keyed on the Irish would rewrite "want" rows into try-rows, and because both
+readings are perfectly grammatical Irish no gate, reviewer or learner would ever flag it. This is
+a permanent maintenance cost of the ruling and the direct price of the thing that makes it good.
+
+**Applied 2026-08-21** to `gle_ul_for_eng`: 16 of the 22 "try" seeds rewritten (14 removing the
+coinage, 2 repairing the going-to frame), 6 left untouched by design. The course had 0 teaching
+units, 0 practice phrases and 0 audio rows at the time, so seeds were the entire surface and no
+migration or regeneration was owed. ZUT clash count was 0 before and 0 after.
+
+**Open gap carried forward:** at *"I'm trying to think"* the *construction* is evidenced but the
+*verb* is not — Donegal commonly has `smaointiú`/`smaoitiú` for `smaoineamh`, and both are zero on
+the Donegal desk, so the corpus does not choose. The seed currently reads `smaoineamh`. This wants
+a lexical check before that seed is decomposed.
+
+---
+
+*Original section, retained for its provenance correction:*
 
 **Provenance correction, 2026-08-20.** An earlier version of this section said `ag iarracht` was
 "Kai's own explicit ruling". **It is not a ruling and that attribution was wrong.** What Kai
@@ -263,8 +307,8 @@ It also fails to cover its own domain: at seed 579 *"we've often tried"* has no 
 `ag iarracht` cannot be used at all and the line reads `is minic a rinne muid iarracht`. The course
 would teach two forms regardless.
 
-**Status: job #552 is deciding the word for "try" at a higher tier, with the full collision map and
-the length constraint.** All three dialect courses inherit ONE answer from it. Until it lands:
+**Status: SUPERSEDED — the answer landed and is at the top of this section.** The text below was
+the holding position while job #552 was out; it is no longer the instruction.
 
 - Do **not** add `ag iarracht` to the required or forbidden lists in `scripts/gle-ul/consistency.cjs`
   (it is absent from both — keep it that way).
@@ -405,6 +449,8 @@ If not, **the decomposition is wrong, not the learner.**
 Recycling a *"with someone else"* unit onto the verb **explain**, giving *"explain what I mean with
 someone else"*. This exact shape was found at **seed 8** in eight other courses on the estate.
 
-You **explain something TO someone**. Seed 8 here currently reads
-`Tá mé ag gabháil iarracht a dhéanamh ar a mhíniú goidé atá i gceist agam` — the Irish is clean and
-carries no "with someone else". Verified 2026-08-20. Keep it that way through decomposition.
+You **explain something TO someone**. Seed 8 here now reads
+`Tá mé ag gabháil a dhéanamh iarracht a mhíniú goidé atá i gceist agam` — the Irish is clean and
+carries no "with someone else". Verified 2026-08-20; the going-to frame was corrected to the
+attested Donegal shape on 2026-08-21 under the "try" ruling above, and the "explain" half was not
+touched. Keep it that way through decomposition.
