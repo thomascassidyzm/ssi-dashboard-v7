@@ -6,9 +6,17 @@
 
 ## The answer, first
 
-**The new canon has no Welsh in it.** Not for the North, not for the South, not at any seed number. What is filed in `canonical_seed_translations` under `cym_n` and `cym_s` is not a translation of the canon at all — it is **the old courses' own Welsh sentences dumped in positionally**, sitting under canon English sentences they have nothing to do with. Canon seed 267 reads *"Have you heard from your friend?"*; the Welsh filed against it is *"mae o wedi bod yn sâl ers ail ddiwrnod y gwyliau"* — "he's been sick since the second day of the holidays", which is the old course's seed 267. The two rows share a row number and nothing else. Spanish, Japanese, Dutch and Chinese in the same table are correctly aligned; Welsh, both dialects, is not.
+**The northern Welsh for the whole canon already exists. It is just not where anyone would look for it.**
 
-So the single biggest cost driver in this job has a straight answer: **Welsh North target text for canon seeds 268–668 does not exist anywhere and has to be written.** That is 401 canon sentences to translate into northern Welsh before a single lego can be decomposed — and it is translation work at the top of the funnel, the `synonym-choice-architecture.md` pass, not a machine job.
+The canon's own translation table is a dead end: what is filed in `canonical_seed_translations` under `cym_n` and `cym_s` is not a translation of the canon at all — it is **the old courses' own Welsh sentences dumped in positionally**, under canon English they have nothing to do with. Canon seed 267 reads *"Have you heard from your friend?"*; the Welsh filed against it is *"mae o wedi bod yn sâl ers ail ddiwrnod y gwyliau"* — "he's been sick since the second day of the holidays", the old course's seed 267. Spanish, Japanese, Dutch and Chinese in the same table are correctly aligned. Welsh, both dialects, is not. Every one of those 639 Welsh rows was stamped in a single batch at `2026-01-25T23:59:00Z` with `source_course` null — a raw positional dump, never a translation.
+
+**But the estate holds a complete, canon-aligned northern Welsh rendering of all 668 seeds**, sitting in the course table under nine `*_for_cym` course codes (`spa_for_cym`, `deu_for_cym`, `fra_for_cym`, `ita_for_cym`, `jpn_for_cym`, `kor_for_cym`, `por_for_cym`, `zho_for_cym`, `ara_for_cym` — where Welsh is the *known* side) and once more as the *target* side of `cym_for_yor`. It is one translation, not ten: the ten copies agree with each other on **654 of 668** seeds. It is genuinely aligned to the canon — canon 400 *"Do we want to eat something later on?"* → *"Ydan ni isio bwyta rhywbeth nes ymlaen?"*; canon 600 *"I'd have driven if you'd told me how tired you were."* → *"Faswn i wedi gyrru taset ti wedi deud wrtha i gymaint oeddet ti wedi blino."*
+
+**And it is cleanly northern.** Across the whole 668: *isio* 114, *efo* 40, *mae o* 27, *rŵan* 6 — and **zero** *moyn*, **zero** *gyda*, **zero** *mae e*, **zero** *nawr*. Not one southern marker in the file.
+
+It is also **not** the old course repackaged: **0 of 305** of its sentences match the old `cym_n_for_eng` targets. It is an independent rendering, batch-created on 2026-07-16, and the courses carrying it are `status: draft` with no decomposition behind it (`cym_for_yor` has legos for seeds 1–10 only, a calibration stub).
+
+So the biggest cost driver in this job has a straight answer, and it is the good one: **the 401 canon sentences past 267 do not need translating. They need a native taste pass and then decomposition.** That is proofreading, not authoring — a different order of cost. What nobody has established is whether this rendering is *good* Welsh; it went in as a batch in under a second and has never had a human read it.
 
 Three things that follow:
 
@@ -74,9 +82,31 @@ Verified against the canon English at the same seed number:
 
 The same is true of `cym_s`: canon seed 267 *"Have you heard from your friend?"* carries `ddwedes i fod e ddim yn moyn mynd`. Spanish at the same row reads `Has sabido de tu amigo?` — correctly translated. **The Welsh rows are the anomaly, and they are a live data-integrity hazard**: anything downstream that reads `canonical_seed_translations` for Welsh is reading mislabelled sentences. This applies to **Welsh South exactly as much as to Welsh North** — flagged, untouched.
 
-Dialect check on what is there: the North rows are cleanly northern (*isio*, *mae o*, *chdi*, *rŵan*, *efo*) and the South rows cleanly southern (*moyn*, *mae e*). The old courses are dialectally sound. There is simply no canon Welsh to be southern *or* northern about.
+Dialect check on what is there: the North rows are cleanly northern (*isio*, *mae o*, *chdi*, *rŵan*, *efo*) and the South rows cleanly southern (*moyn*, *mae e*). The old courses are dialectally sound.
 
-*(Estate-wide hunt for Welsh canon text outside the DB: worker #843's findings, folded in below.)*
+### 4a. Where the real canon Welsh actually is
+
+Worker **#843** found it and I verified it directly. Ten courses carry the same northern Welsh rendering of all 668 canon seeds:
+
+| course | Welsh side | seeds | built |
+|---|---|---|---|
+| `spa_for_cym`, `deu_for_cym`, `fra_for_cym`, `ita_for_cym`, `jpn_for_cym`, `kor_for_cym`, `por_for_cym`, `zho_for_cym`, `ara_for_cym` | **known** side | 668 | 668/668 |
+| `cym_for_yor` | **target** side | 668 | 668/668 |
+
+They agree with each other on 654 of 668 seeds, so treat it as **one asset with ten copies** — and note the 14 disagreements as the first thing to look at, since they mark where the copies drifted.
+
+| | evidence |
+|---|---|
+| aligned to canon? | yes — verified at seeds 1, 268, 306, 400, 480, 600, 665, 668 |
+| dialect | **northern, no contamination**: *isio* 114 / *efo* 40 / *mae o* 27 / *rŵan* 6; *moyn* 0 / *gyda* 0 / *mae e* 0 / *nawr* 0 |
+| same as the old course? | **no** — 0 of 305 sentences match `cym_n_for_eng`'s existing targets |
+| provenance | all 668 rows created `2026-07-16T19:38:09Z`, inside 0.3 seconds — a machine batch |
+| status | `draft`, `content_version 0.10.0`; decomposition exists for seeds 1–10 of `cym_for_yor` only (28 legos, a 2026-08-15 calibration stub) |
+| quality | **unknown. No human has read it.** |
+
+That last row is the honest one. The Welsh exists, it is the right dialect, and it is aligned — but it arrived as a machine batch and has had no native pass. It converts the job's biggest line item from *translate 401 sentences* to *proofread 401 sentences*, which is a large saving and not a free one.
+
+Outside the DB, #843 found nothing: no CSV, TSV or JSON export of Welsh canon text anywhere in the estate. `cym_anthem_for_jpn` is the national anthem, seven lines, irrelevant.
 
 ## 5. Two defects found in passing (kept range)
 
@@ -148,18 +178,18 @@ Each phase names what it touches, whether it can be undone, and what proves it l
 |---|---|---|---|---|
 | 0 | **Quarantine the fake canon Welsh.** Mark or remove the 305 `cym_n` and 334 `cym_s` rows in `canonical_seed_translations` so nothing downstream reads them as canon translations | `canonical_seed_translations` only — no course content | yes, trivially (snapshot the rows first) | the table holds zero Welsh rows, or they carry an explicit `source_course` naming the old course |
 | 1 | **Decomposition pilot on 40 canon seeds** — 20 from ≤267, 20 from 268+. Establishes the real new-lego rate and turns §6/§7's word-coverage approximation into a measured number | nothing; produces a document | yes — read-only | a per-seed table of legos actually needed vs predicted, and a revised build estimate |
-| 2 | **Translate canon 268–668 into northern Welsh** — 401 sentences, minus the 6 ZUT collisions and minus whatever phase 1 shows is fully duplicative. Top-of-funnel work under `synonym-choice-architecture.md`, before any decomposition | a staging table or a document; **not** `course_seeds` | yes | dialect audit — northern markers present (*isio, mae o, chdi, efo, rŵan*), southern markers absent (*moyn, mae e, gyda, nawr*) |
+| 2 | **Native proofread of the existing Welsh for 268–668** — 401 sentences already written (§4a), minus the 6 ZUT collisions and whatever phase 1 shows is duplicative. Start with the 14 seeds where the ten copies disagree. This is the `synonym-choice-architecture.md` pass, done as a read rather than as authoring | a staging table or a document; **not** `course_seeds` | yes | a native has signed off sentence by sentence; dialect audit stays clean (northern markers present, *moyn/gyda/mae e/nawr* still zero) |
 | 3 | **Backfill the ≤267 gap** — build the ~138 canon seeds that genuinely add something, appended after 267, never inserted among the kept seeds | `course_seeds`/`course_legos`/`course_practice_phrases`, append only | yes, by deletion of the appended range | no existing seed_number 1–267 changed; ZUT gate clean course-wide |
 | 4 | **Build the deduped tail** — canon 268–668 minus duplicates, at the floors | same tables, append only | yes | floors met per lego; `course_round_index` refreshed and extending past round 455 |
 | 5 | **Audio pass** — one queued request covering everything built in 3 and 4 | `course_audio` | expensive to redo; make-before-break applies | every new lego and phrase carries known + target1 ids; voice matches the human Welsh already in the course |
 | 6 | **Retire 268–305** — the old build-only tail | `course_legos`/`course_practice_phrases` for those 38 seeds | yes if snapshotted first | round index continuous; no orphaned phrases |
 
-Two ordering rules that are not negotiable: **phase 1 before phase 2** (translating 401 sentences you then discover are duplicates is the expensive mistake available here), and **phase 5 after everything textual is settled** — the standing gate is that content passes end by *queueing* an audio pass, never by running TTS.
+Two ordering rules that are not negotiable: **phase 1 before phase 2** (putting a native through 401 sentences you then discover are duplicates is the expensive mistake available here), and **phase 5 after everything textual is settled** — the standing gate is that content passes end by *queueing* an audio pass, never by running TTS.
 
 ## 10. What needs Tom — five questions, one word each
 
 1. **The 38 old seeds at 268–305 — discard them?** They hold 178 legos but only 14 USE phrases between them, and the canon will teach those intentions properly. One catch: *instead of* is taught there and nowhere else in 1–267, so it needs re-adding. *My recommendation: **discard**.*
-2. **Who writes the 401 Welsh sentences — a native, or a machine draft a native then checks?** This is the top of the funnel; every lego below inherits its choices, and the course already carries real human northern Welsh. *My recommendation: **native**.*
+2. **The 401 Welsh sentences already exist as a machine batch nobody has read — put a native through them before building?** Every lego below inherits their choices, and re-translating from scratch would throw away work that is already the right dialect. *My recommendation: **proofread**.*
 3. **Numbering — append the canon material after 267 and re-seat its seed numbers, keeping a canon-number mapping alongside?** The alternative is preserving canon numbers, which forces a renumber of the kept range. IDs are position-encoded; there is nobody on the course today, but the doctrine still says do not move slots. *My recommendation: **append**.*
 4. **Run the 40-seed decomposition pilot before committing to the translation spend?** It converts a 129-vs-258 word-coverage guess into a measured build size. *My recommendation: **yes**.*
 5. **Quarantine the mislabelled Welsh rows in `canonical_seed_translations`, South as well as North?** They are old-course sentences filed under unrelated canon English, and anything reading them is reading a lie. *My recommendation: **yes**.*
@@ -171,5 +201,8 @@ Two ordering rules that are not negotiable: **phase 1 before phase 2** (translat
 - **No doctrine exists for lego/seed-ID renumbering.** The pod protocol covers pod dialogue; the equivalent rule for position-encoded lego IDs is unwritten.
 - **Audio "complete" means the id columns are non-null.** No clip was fetched or played; nothing was verified as audible.
 - **The two `gfzdpspr5fdp` voice ids were not traced to a provider.**
-- **Welsh South was looked at only where it touched this question.** Its canon rows are corrupt in the same way; its enrolments were not counted.
+- **Welsh South was looked at only where it touched this question.** Its canon rows are corrupt in the same way; its enrolments were not counted. Note that the northern rendering in §4a covers the whole canon — **there is no southern equivalent**, so Welsh South's version of this job is a genuinely bigger one.
+- **The quality of the §4a Welsh is unassessed.** It is the right dialect and it is aligned; whether it is *good* is a native's call and nobody has made it. Neither #843 nor I read `courses.translation_analysis` for `cym_for_yor`, which may already hold register and ZUT notes from whoever produced it.
+- **The 14 seeds where the ten copies of that translation disagree were counted, not read.**
+- **No ZUT pass was run between the §4a Welsh and the kept old course.** The two are independent translations of overlapping English; where the backfill introduces a §4a sentence whose English echoes a kept seed, the Welsh forms will not automatically agree. This is the biggest unmeasured risk in the plan and phase 1 should size it.
 
