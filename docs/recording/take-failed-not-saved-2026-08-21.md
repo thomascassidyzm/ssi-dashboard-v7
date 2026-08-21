@@ -90,14 +90,26 @@ returns `N/A` on these files.
 
 `retainAndProcessTake` archives the untouched original to `raw/{UUID}.webm`
 **before** processing and before any refusal — written for exactly this case
-("orphans under `raw/` are wanted, orphans under `mastered/` are not"). All 22
+("orphans under `raw/` are wanted, orphans under `mastered/` are not"). All 13
 refused takes are intact in S3 and replay clean.
 
-They are real course reads, not test babble — Austrian German script lines for
-`deu_at_for_eng` target2, several of them retakes of the same line. Recovery is
-running as job **#832**: transcribe each raw, match it to its script line, and
-re-submit the original bytes through the now-fixed endpoint. Confident matches
-only; anything ambiguous goes back to Sascha rather than being guessed at.
+**Correction — the blast radius is 13 takes, not the 22 first reported here.**
+The original count came from grepping `REFUSED silent/empty` across the *whole*
+log rather than the incident window. 10 of those 22 are historical refusals from
+earlier, unrelated events (lines 8611–33795; the incident is 34131–34201, between
+the 12:30Z restart and the 13:01Z one). That is why 8 of them have no raw archive
+— they predate raw retention — and why two transcribe as "Copyright WDR 2021"
+and "[MUSIK]". **No re-reads are owed on account of those.**
+
+The 13 real takes are two script lines and one false start:
+`deu_at_for_eng` target2 seed 512 (*kannst d'Tür offen hoitn…*, 7 takes) and
+seed 544 (*wer a immer gsogt hot…*, 5 takes), plus one audible restart.
+
+Job **#832** recovered and filed the best take of each line. Both have since
+been superseded by Sascha's own fresh reads in the live session that followed
+the fix — `d08cc020` is on revision 3, `b84724bc` re-filed twice — with every
+previous object kept. So the recovery is now moot in the best way: **nothing
+from this incident is outstanding, and nobody has to re-read anything.**
 
 ## Estate check
 
@@ -160,6 +172,22 @@ immediately with the server's own wording. The message Kai saw in the "NOT saved
 bar should read *"This take contains no audible speech (0ms after silence
 trimming, minimum 100ms), so it was not saved."* — if it said anything else,
 there is more to find.
+
+## Confirmed in live use
+
+Sascha resumed recording at 13:10Z. Every take since has processed to a real
+duration and been stored — 10359, 11999, 8257, 11922, 13244, 4932, 4862, 5470,
+12177ms and counting. **Zero refusals since the fix.** That is the proof that
+matters; the probes above only predicted it.
+
+One thing that looks like a defect in the log and is not: several of those takes
+show no `[ScriptTake] filed` line. Those are the **slow-cadence** reads. Script
+mode records every phrase twice, natural then slow, and the slow read exists to
+give the aligner its pause boundaries. `course_audio` has no cadence column, so
+filing both would collide on the 5-column unique key and put a deliberately
+halting lego-by-lego read in front of a learner. `script-take-filing.cjs` marks
+that reason `deliberate: true`, so the recordist gets no alarm. Working as
+designed.
 
 ## The lesson worth keeping
 
