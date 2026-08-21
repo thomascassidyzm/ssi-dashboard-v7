@@ -159,11 +159,30 @@ function auditIndex(built) {
   return groups;
 }
 
-/** Repeated practice-phrase TARGET strings (the same Irish sentence taught twice). */
+/**
+ * Repeated practice-phrase TARGET strings, TRIAGED. Not every repeat is a defect, and a flat
+ * count of "excess rows" reads as far worse than the course actually is:
+ *
+ *   CHUNK       the repeated target IS a taught lego or component target — a debut/bare row.
+ *               Benign: the learner is drilling a chunk, not being taught a sentence twice.
+ *   SAME-SEED   both rows sit in one seed. A within-seed duplicate, cheap to drop.
+ *   KNOWN-SPLIT one Irish, two DIFFERENT English prompts. Legal under ZUT (which governs
+ *               known→target, not target→known) but usually a synonym-choice decision worth
+ *               a look — and in this course most of them are the want/trying alternation.
+ *   ADJACENT    same sentence in consecutive seeds — normally a deliberate carry-over.
+ *   REAL-DUP    same Irish AND same English in seeds far apart. The learner is taught the
+ *               identical sentence twice. This is the category that needs a ruling.
+ */
 async function auditRepeatedTargets(sb, course = DEFAULT_COURSE) {
   const phrases = await fetchAll(sb, 'course_practice_phrases', course, 'id,seed_number,lego_id,known_text,target_text');
-  const legos = await fetchAll(sb, 'course_legos', course, 'id,seed_number,lego_index,known_text,target_text');
-  const legoTargets = new Set(legos.map(l => normalizeForZUT(l.target_text)));
+  const legos = await fetchAll(sb, 'course_legos', course, 'id,seed_number,lego_index,known_text,target_text,components');
+  // A "chunk" is any whole taught unit — lego target OR component target. Components matter:
+  // classifying on lego targets alone mislabels bare-chunk drills like "ag iarraidh" as duplicates.
+  const chunk = new Set();
+  for (const l of legos) {
+    chunk.add(normalizeForZUT(l.target_text));
+    for (const c of l.components || []) if (c && c.target) chunk.add(normalizeForZUT(c.target));
+  }
   const byTarget = new Map();
   for (const p of phrases) {
     const t = normalizeForZUT(p.target_text);
@@ -174,15 +193,37 @@ async function auditRepeatedTargets(sb, course = DEFAULT_COURSE) {
   for (const [t, rows] of byTarget) {
     if (rows.length < 2) continue;
     const seeds = [...new Set(rows.map(r => r.seed_number))].sort((a, b) => a - b);
-    dupes.push({
-      target: rows[0].target_text, count: rows.length, seeds, rows,
-      // A phrase equal to a lego's own target is the benign "debut row" shape.
-      isBareLego: legoTargets.has(t),
-      crossSeed: seeds.length > 1,
-    });
+    const knowns = [...new Set(rows.map(r => r.known_text))];
+    const normKnowns = new Set(rows.map(r => normalizeForZUT(r.known_text)));
+    let cls;
+    if (chunk.has(t)) cls = 'CHUNK';
+    else if (seeds.length === 1) cls = 'SAME-SEED';
+    else if (normKnowns.size > 1) cls = 'KNOWN-SPLIT';
+    else if (seeds[seeds.length - 1] - seeds[0] <= 1) cls = 'ADJACENT';
+    else cls = 'REAL-DUP';
+    dupes.push({ target: rows[0].target_text, cls, count: rows.length, seeds, knowns, rows });
   }
-  dupes.sort((a, b) => b.count - a.count);
+  const order = ['REAL-DUP', 'ADJACENT', 'KNOWN-SPLIT', 'SAME-SEED', 'CHUNK'];
+  dupes.sort((a, b) => order.indexOf(a.cls) - order.indexOf(b.cls) || b.count - a.count);
   return dupes;
+}
+
+/**
+ * Known-side splits at RAW case/diacritic sensitivity. normalizeForZUT lowercases and strips
+ * fadas, so a capitalisation-only split is invisible to the normalised audit — but the SERVER
+ * compares `known_text`/`target_text` raw, so it is a live gate risk, not a cosmetic nothing.
+ */
+function auditRawSplits(rows) {
+  const m = new Map();
+  for (const r of rows) {
+    const k = (r.known_text || '').trim();
+    if (!m.has(k)) m.set(k, new Map());
+    const t = (r.target_text || '').trim();
+    if (!m.get(k).has(t)) m.get(k).set(t, []);
+    m.get(k).get(t).push(r);
+  }
+  return [...m.entries()].filter(([, ts]) => ts.size > 1)
+    .map(([known, ts]) => ({ known, variants: [...ts.entries()].map(([target, rows]) => ({ target, rows })) }));
 }
 
 // ─── CLI ────────────────────────────────────────────────────────────────────
@@ -208,15 +249,25 @@ async function main() {
         console.log(`      → "${v.target}"   [${where}]`);
       }
     }
+    const legos = await fetchAll(sb, 'course_legos', course, 'id,seed_number,lego_index,known_text,target_text');
+    const phrases = await fetchAll(sb, 'course_practice_phrases', course, 'id,seed_number,known_text,target_text');
+    const raw = auditRawSplits([...legos.map(r => ({ ...r, src: 'L' })), ...phrases.map(r => ({ ...r, src: 'P' }))]);
+    console.log(`\nRAW (case/fada-sensitive) KNOWN-SIDE SPLITS: ${raw.length} — the server compares raw, so these are live gate risks\n`);
+    for (const g of raw) {
+      console.log(`  "${g.known}"`);
+      for (const v of g.variants) console.log(`      → "${v.target}"   [${v.rows.map(r => r.src + r.seed_number).join(' ')}]`);
+    }
+
     if (argv.includes('--dupes')) {
       const dupes = await auditRepeatedTargets(sb, course);
-      const real = dupes.filter(d => d.crossSeed && !d.isBareLego);
+      const tally = {};
+      for (const d of dupes) tally[d.cls] = (tally[d.cls] || 0) + 1;
       console.log(`\nREPEATED PHRASE TARGETS: ${dupes.length} distinct strings, ` +
-        `${dupes.reduce((n, d) => n + d.count - 1, 0)} excess rows; ` +
-        `${real.length} cross-seed and not a bare-lego debut row\n`);
+        `${dupes.reduce((n, d) => n + d.count - 1, 0)} excess rows`);
+      console.log(`  ` + Object.entries(tally).map(([k, v]) => `${k}=${v}`).join('  ') + '\n');
       for (const d of dupes) {
-        const flag = d.isBareLego ? 'bare-lego' : (d.crossSeed ? 'CROSS-SEED' : 'same-seed');
-        console.log(`  [${flag}] x${d.count} seeds ${d.seeds.join(',')}  "${d.target}"`);
+        console.log(`  [${d.cls}] x${d.count} seeds ${d.seeds.join(',')}  "${d.target}"`);
+        if (d.knowns.length > 1) for (const k of d.knowns) console.log(`        EN: ${k}`);
       }
     }
     return;
@@ -258,6 +309,6 @@ async function main() {
 //
 // Re-run it IMMEDIATELY BEFORE the POST, not once at the start of the seed: the collision you are
 // racing is a phrase another worker banks while you write.
-module.exports = { buildIndex, crossCheck, auditIndex, auditRepeatedTargets, fetchAll, client, DEFAULT_COURSE };
+module.exports = { buildIndex, crossCheck, auditIndex, auditRepeatedTargets, auditRawSplits, fetchAll, client, DEFAULT_COURSE };
 
 if (require.main === module) main().catch(e => { console.error('FAILED:', e.message); process.exit(1); });
