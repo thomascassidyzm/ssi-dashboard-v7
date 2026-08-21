@@ -127,3 +127,35 @@ The dominant reason is that **a lego is a known-side intention bound to one targ
 - **Bare yes/no is never a lego.** Welsh response forms agree with the question's verb, so a bare "yes"/"no" gloss can never be ZUT-clean. The kept range already handles this correctly by only ever glossing bound forms ("yes, I'm ready", "no, we don't have"). The response particle is a construction-feature: absorbed into an M-lego with its carrier, never atomised.
 - **Orthographic normalisation, before decomposition, not after.** Roughly 100-120 points across the tail where the canon batch spells a kept word differently — *Nest/wnest*, *dwytha/diwetha*, *gwbod/gwybod*, *nath/wnaeth*. None is a conceptual collision; every one breaks a string-level ZUT check at submission time and would show a learner two spellings of one word. Exactly what survives an unproofread machine batch. One mechanical pass beats seed-by-seed repair.
 - **Fragment seeds cost more, not less.** Roughly 15% of the canon tail arrives as clause fragments, some lowercase and unpunctuated. USE phrases must be complete sentences, so a fragment seed cannot generate its own USE and the phrases have to be built by extension. Cheap-looking, dearer to author.
+
+## The reuse factor — what the pilot number becomes once seeds can teach each other
+
+Both pilot halves flagged the same limitation and both named closing it as the highest-value next measurement, so it was measured: canon seeds **300-339, contiguous**, decomposed in order, each seed drawing on the kept 457 **and** on everything introduced earlier in the run. Both counts taken on the same 40 seeds, which is what makes the ratio checkable.
+
+| | |
+|---|---|
+| new legos by the pilot's method (each seed vs the kept 457 alone) | 119 — 2.98/seed |
+| distinct new legos the run actually needs | **97 — 2.43/seed** |
+| **reuse factor** | **0.815** |
+| of the 97 — genuinely new vocabulary | 39 (0.98/seed) |
+| of the 97 — recombinant rows (new row, no new vocabulary) | 58 (1.45/seed) |
+
+**The build is about 18.5% smaller than the upper bound.** For the 316 new-content canon seeds: **roughly 750 new legos**, not the ~1,340 the raw pilot rate implied. At the 4 BUILD + 5 USE floor that is **roughly 6,700 new phrases**.
+
+Of those ~750, only about **310 need real vocabulary and translation-choice work**. The other **440 are recombinant** — rows like `dydy hi ddim isio` or `bod o angen`, assembled entirely from atoms already taught. They still cost a row and still need their nine phrases, but no lexical research, no synonym-choice pass, no ZUT adjudication against unfamiliar words. That is the cheap 58% of the build.
+
+**Where the reuse comes from.** It is not spread evenly — it concentrates in frame carriers the canon hits repeatedly. The conditional `y basai hi'n medru` debuts at seed 310 and is reused by 312, 314, 316, 317 and 318: six charges for one lego under the stratified method. The canon tail is built as paradigm drills, one modal worked through say/think/question/yes/no across eight or ten consecutive seeds. That structure is exactly what a stratified sample destroys.
+
+**Construction cost compresses harder still — to 0.53.** A carrier debuted once serves every later seed needing the same construction. About 118 of the 316 seeds will touch a known-side gap, but they need on the order of **63 carriers**, not 118. And each carrier is a design decision rather than rows of typing.
+
+**Which way the error runs.** A 40-seed run cannot see reuse at range 40+, and carriers debuted in the `could` block also serve the `can` block later. So 0.815 is more likely too high than too low, and **750 is more likely an overestimate than an underestimate**. The counterweight: the 39 new-vocabulary legos are close to irreducible — all the compression came out of the recombinant bucket.
+
+### The ruling this rests on
+
+The measurement applied one rule, permissive on vocabulary and strict on rows: *a form appearing inside an already-taught M-lego, or a different person-form of a taught verb, counts as already-taught vocabulary — but if it needs its own row to be produced, that row is counted, classified recombinant.* It decided 31 of 97 calls, all of them landing in the recombinant bucket.
+
+If Tom rules the other way, new vocabulary roughly doubles (39 → 70 on the sample) — **but the reuse factor and the total row count do not move at all**, because the row is counted either way. So the ~750 figure is robust to that ruling; only the split between "needs translation work" and "needs phrases only" moves.
+
+### Explicit gap in this measurement
+
+The kept inventory supplied was legos only — 457 rows, no component rows. The "bound inside a taught M-lego" test was therefore applied by reading each M-lego's target text rather than an authoritative component list. If those components exist for seeds 1-267, a handful of the 31 bound-form calls could flip in either direction. Phrase-authoring effort was also not sampled: the ~6,700 is floor arithmetic, not a measured cost, and it is the larger share of the real spend.
