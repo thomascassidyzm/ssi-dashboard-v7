@@ -1,0 +1,263 @@
+{
+  "pod_id": "hrv_for_eng:pod-0-unrecorded",
+  "applied": true,
+  "edits": [
+    {
+      "slot": "SC07-S004",
+      "job": 822,
+      "speaker": "Customer 1",
+      "known": "I'd like large, please. With oat milk if you have it.",
+      "from": "Željela bih veliku, molim. S zobenim mlijekom ako imate.",
+      "to": "Željela bih veliku, molim. Sa zobenim mlijekom, ako imate.",
+      "why": "sa before z — sibling SC08-S015 \"sa sirom\", SC06-S011 \"sa suprugom\"",
+      "had_clip": false
+    },
+    {
+      "slot": "SC11-S001",
+      "job": 822,
+      "speaker": "Guest",
+      "known": "Good afternoon. I have a booking under the name Jones.",
+      "from": "Dobro podne. Imam rezervaciju… na ime Jones.",
+      "to": "Dobar dan. Imam rezervaciju… na ime Jones.",
+      "why": "\"Dobro podne\" is not standard Croatian; siblings SC03-S001/S002 render \"Good afternoon\" as \"Dobar dan\"",
+      "had_clip": true
+    },
+    {
+      "slot": "SC09-S005",
+      "job": 822,
+      "speaker": "Customer 1",
+      "known": "Excuse me - do you have anything gluten-free? Or for vegetarians?",
+      "from": "Izvinite —… imate li nešto… bez glutena? Ili za… vegetarijance?",
+      "to": "Oprostite,… imate li nešto… bez glutena? Ili za… vegetarijance?",
+      "why": "\"Izvinite\" is Serbian; siblings SC02-S001/SC10-S001 render \"Excuse me\" as \"Oprostite\"",
+      "had_clip": false
+    },
+    {
+      "slot": "SC13-S001",
+      "job": 822,
+      "speaker": "Tourist",
+      "known": "Excuse me, do you know how to get to the nearest supermarket?",
+      "from": "Izvinite, znate li… kako doći do najbližeg… supermarketa?",
+      "to": "Oprostite, znate li… kako doći do najbližeg… supermarketa?",
+      "why": "same Serbianism, same sibling evidence",
+      "had_clip": false
+    },
+    {
+      "slot": "SC09-S013",
+      "job": 822,
+      "speaker": "Customer 2",
+      "known": "A bottle of the house red would be lovely.",
+      "from": "Jedna boca kućnog… crvenog bila bi divna.",
+      "to": "Jedna boca kućnog… crnog bila bi divna.",
+      "why": "red wine is crno vino in Croatian — siblings SC08-S009 \"crnog vina\", SC08-S007 \"kućno crno\"",
+      "had_clip": false
+    },
+    {
+      "slot": "SC13-S007",
+      "job": 822,
+      "speaker": "Local",
+      "known": "You'll see the supermarket on your left, just opposite the bus stop.",
+      "from": "Vidjet ćete supermarket… s lijeve strane, točno… nasuprot autobusnog… stajališta.",
+      "to": "Vidjet ćete supermarket… s lijeve strane, točno… nasuprot autobusnom… stajalištu.",
+      "why": "nasuprot governs the dative, not the genitive",
+      "had_clip": true
+    },
+    {
+      "slot": "SC12-S010",
+      "job": 822,
+      "speaker": "Narrator",
+      "known": "19. 20. 21. Wednesday. Thursday.",
+      "from": "19. 20. 21. Srijeda. Četvrtak.",
+      "to": "Devetnaest. Dvadeset. Dvadeset i jedan. Srijeda. Četvrtak.",
+      "why": "digit + full stop is the Croatian ordinal — TTS reads \"19.\" as devetnaesti; siblings are spelled out",
+      "had_clip": false
+    },
+    {
+      "slot": "SC14-S010",
+      "job": 822,
+      "speaker": "Narrator",
+      "known": "100. 200. 1000. Sunday. 12 o'clock.",
+      "from": "100. 200. 1000. Nedjelja. 12 sati.",
+      "to": "Sto. Dvjesto. Tisuća. Nedjelja. Dvanaest sati.",
+      "why": "same ordinal trap; nominative citation form matches sibling SC13-S011",
+      "had_clip": false
+    },
+    {
+      "slot": "SC07-S013",
+      "job": 822,
+      "speaker": "Customer 3",
+      "known": "Good morning. Two Americanos and a cup of tea, please.",
+      "from": "Dobro jutro. Dva americána… i jednu šalicu čaja,… molim.",
+      "to": "Dobro jutro. Dva americana… i jednu šalicu čaja,… molim.",
+      "why": "á is not a Croatian letter — the acute is a Spanish import and mis-cues TTS",
+      "had_clip": false
+    },
+    {
+      "slot": "SC08-S006",
+      "job": 822,
+      "speaker": "Customer 3",
+      "known": "Could I see the wine list? I want a glass of wine.",
+      "from": "Mogu li vidjeti kartu vina? Želim čašu vina.",
+      "to": "Mogu li vidjeti vinsku kartu? Želim čašu vina.",
+      "why": "this pod renders \"wine list\" as vinska karta at SC09-S012 — ZUT",
+      "had_clip": false
+    },
+    {
+      "slot": "SC03-S002",
+      "job": 822,
+      "speaker": "Sarah",
+      "known": "Good afternoon. I'd like a coffee, please. With milk but with no sugar. To take away.",
+      "from": "Dobar dan. Željela bih kavu, molim. S mlijekom ali bez šećera. Za van.",
+      "to": "Dobar dan. Željela bih kavu, molim. S mlijekom, ali bez šećera. Za van.",
+      "why": "Croatian orthography requires a comma before ali",
+      "had_clip": false
+    },
+    {
+      "slot": "SC04-S002",
+      "job": 822,
+      "speaker": "Sarah",
+      "known": "Hello! I'm sorry but I can't talk at the moment. I need to go home now. Can we talk tomorrow?",
+      "from": "Bok! Žao mi je ali ne mogu sada razgovarati. Moram sada ići kući. Možemo li razgovarati sutra?",
+      "to": "Bok! Žao mi je, ali ne mogu sada razgovarati. Moram sada ići kući. Možemo li razgovarati sutra?",
+      "why": "same rule — comma before ali is obligatory",
+      "had_clip": false
+    },
+    {
+      "slot": "SC15-S009",
+      "job": 823,
+      "speaker": "Learner",
+      "known": "I prefer to try to speak your language, I think it's polite.",
+      "from": "Radije bih pokušala govoriti vaš jezik, mislim da je to pristojno.",
+      "to": "Radije bih pokušao govoriti vaš jezik, mislim da je to pristojno.",
+      "why": "Learner is masculine in the recorded scene 22 (siguran / izrazio / sretan)",
+      "had_clip": false
+    },
+    {
+      "slot": "SC16-S002",
+      "job": 823,
+      "speaker": "Learner",
+      "known": "You spoke a little too quickly, so I'm not sure if I understood.",
+      "from": "Govorili ste malo prebrzo, pa nisam sigurna jesam li razumjela.",
+      "to": "Govorili ste malo prebrzo, pa nisam siguran jesam li razumio.",
+      "why": "same speaker as recorded SC22-S005 \"Nisam siguran\"",
+      "had_clip": false
+    },
+    {
+      "slot": "SC19-S001",
+      "job": 823,
+      "speaker": "Learner",
+      "known": "That makes me happy.",
+      "from": "To me čini sretnom.",
+      "to": "To me čini sretnim.",
+      "why": "masculine instrumental, matching recorded SC22-S011 \"sretan\"",
+      "had_clip": false
+    },
+    {
+      "slot": "SC19-S010",
+      "job": 823,
+      "speaker": "Learner",
+      "known": "I'd like two scoops of ice-cream, please.",
+      "from": "Željela bih dvije kuglice sladoleda, molim.",
+      "to": "Želio bih dvije kuglice sladoleda, molim.",
+      "why": "Learner gender — masculine conditional",
+      "had_clip": false
+    },
+    {
+      "slot": "SC21-S008",
+      "job": 823,
+      "speaker": "Learner",
+      "known": "Yes, I said it's over there.",
+      "from": "Da, rekla sam da je tamo.",
+      "to": "Da, rekao sam da je tamo.",
+      "why": "Learner gender",
+      "had_clip": false
+    },
+    {
+      "slot": "SC17-S001",
+      "job": 823,
+      "speaker": "Learner",
+      "known": "Is there a cash machine near here?",
+      "from": "Ima li bankomat blizu ovdje?",
+      "to": "Ima li tu negdje bankomat?",
+      "why": "\"blizu ovdje\" is not Croatian word order; recorded sibling SC13-S008 gives the natural form",
+      "had_clip": false
+    },
+    {
+      "slot": "SC15-S011",
+      "job": 823,
+      "speaker": "Narrator",
+      "known": "100,000. 60. 70. 1 o'clock. 11 o'clock.",
+      "from": "100.000. 60. 70. 1 sat. 11 sati.",
+      "to": "Sto tisuća. Šezdeset. Sedamdeset. Jedan sat. Jedanaest sati.",
+      "why": "digit + full stop is the Croatian ordinal — TTS reads \"60.\" as šezdeseti",
+      "had_clip": false
+    },
+    {
+      "slot": "SC16-S011",
+      "job": 823,
+      "speaker": "Narrator",
+      "known": "A million. 80. 90. 2 o'clock. 10 o'clock.",
+      "from": "Milijun. 80. 90. 2 sata. 10 sati.",
+      "to": "Milijun. Osamdeset. Devedeset. Dva sata. Deset sati.",
+      "why": "same; siblings spell numbers out in words",
+      "had_clip": false
+    },
+    {
+      "slot": "SC17-S011",
+      "job": 823,
+      "speaker": "Narrator",
+      "known": "3 o'clock. 9 o'clock. January. February.",
+      "from": "3 sata. 9 sati. Siječanj. Veljača.",
+      "to": "Tri sata. Devet sati. Siječanj. Veljača.",
+      "why": "same",
+      "had_clip": false
+    },
+    {
+      "slot": "SC18-S011",
+      "job": 823,
+      "speaker": "Narrator",
+      "known": "4 o'clock. 8 o'clock. March. April.",
+      "from": "4 sata. 8 sati. Ožujak. Travanj.",
+      "to": "Četiri sata. Osam sati. Ožujak. Travanj.",
+      "why": "same",
+      "had_clip": false
+    },
+    {
+      "slot": "SC19-S011",
+      "job": 823,
+      "speaker": "Narrator",
+      "known": "5 o'clock. 7 o'clock. May. June.",
+      "from": "5 sati. 7 sati. Svibanj. Lipanj.",
+      "to": "Pet sati. Sedam sati. Svibanj. Lipanj.",
+      "why": "same",
+      "had_clip": false
+    },
+    {
+      "slot": "SC20-S011",
+      "job": 823,
+      "speaker": "Narrator",
+      "known": "6 o'clock. July. August. September.",
+      "from": "6 sati. Srpanj. Kolovoz. Rujan.",
+      "to": "Šest sati. Srpanj. Kolovoz. Rujan.",
+      "why": "same",
+      "had_clip": false
+    }
+  ],
+  "unlinked": [
+    {
+      "slot": "SC11-S001",
+      "was_audio_id": "62e67b0a-7005-4d1f-9ae8-59db1c76cdf2"
+    },
+    {
+      "slot": "SC13-S007",
+      "was_audio_id": "7e66e3d2-3118-4b13-a5c3-000d17bec3f6"
+    }
+  ],
+  "deleted": [
+    {
+      "slot": "SC15-S012",
+      "speaker": "Narrator"
+    }
+  ],
+  "drift": []
+}

@@ -1,0 +1,219 @@
+{
+  "pod_id": "hrv_for_eng:pod-0-unrecorded",
+  "applied": true,
+  "null_stale": true,
+  "cast_changes": [
+    {
+      "speaker": "Barista",
+      "unchanged": "hr-HR-SreckoNeural|m"
+    },
+    {
+      "speaker": "Customer",
+      "before": "hr-HR-GabrijelaNeural|f",
+      "after": "hr-HR-SreckoNeural|m"
+    },
+    {
+      "speaker": "Customer 1",
+      "unchanged": "hr-HR-GabrijelaNeural|f"
+    },
+    {
+      "speaker": "Customer 2",
+      "unchanged": "hr-HR-GabrijelaNeural|f"
+    },
+    {
+      "speaker": "Customer 3",
+      "unchanged": "hr-HR-GabrijelaNeural|f"
+    },
+    {
+      "speaker": "Tourist",
+      "unchanged": "hr-HR-GabrijelaNeural|f"
+    },
+    {
+      "speaker": "Driver",
+      "unchanged": "hr-HR-GabrijelaNeural|f"
+    },
+    {
+      "speaker": "Assistant",
+      "unchanged": "hr-HR-GabrijelaNeural|f"
+    },
+    {
+      "speaker": "Pharmacist",
+      "unchanged": "hr-HR-GabrijelaNeural|f"
+    },
+    {
+      "speaker": "Learner",
+      "unchanged": "hr-HR-SreckoNeural|m"
+    },
+    {
+      "speaker": "Narrator",
+      "unchanged": "hr-HR-GabrijelaNeural|f"
+    },
+    {
+      "speaker": "Friend",
+      "unchanged": "hr-HR-SreckoNeural|m"
+    }
+  ],
+  "nulled": [],
+  "kept": [
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC01-S001",
+      "voice": "azure_hr-HR-SreckoNeural"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC01-S002",
+      "voice": "hr-HR-GabrijelaNeural"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC01-S003",
+      "voice": "hr-HR-SreckoNeural"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC01-S004",
+      "voice": "hr-HR-GabrijelaNeural"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC02-S001",
+      "voice": "hr-HR-GabrijelaNeural"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC03-S010",
+      "voice": "hr-HR-GabrijelaNeural"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC05-S001",
+      "voice": "hr-HR-SreckoNeural"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC05-S002",
+      "voice": "hr-HR-GabrijelaNeural"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC06-S003",
+      "voice": "hr-HR-SreckoNeural"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC06-S005",
+      "voice": "hr-HR-SreckoNeural"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC06-S007",
+      "voice": "hr-HR-SreckoNeural"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC06-S009",
+      "voice": "azure_hr-HR-SreckoNeural"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC06-S011",
+      "voice": "hr-HR-SreckoNeural"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC06-S013",
+      "voice": "hr-HR-GabrijelaNeural"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC07-S015",
+      "voice": "hr-HR-GabrijelaNeural"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC08-S007",
+      "voice": "hr-HR-SreckoNeural"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC08-S011",
+      "voice": "hr-HR-SreckoNeural"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC08-S013",
+      "voice": "azure_hr-HR-SreckoNeural"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC08-S016",
+      "voice": "hr-HR-GabrijelaNeural"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC09-S002",
+      "voice": "hr-HR-SreckoNeural"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC09-S006",
+      "voice": "hr-HR-SreckoNeural"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC09-S008",
+      "voice": "hr-HR-SreckoNeural"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC09-S011",
+      "voice": "hr-HR-SreckoNeural"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC09-S014",
+      "voice": "hr-HR-SreckoNeural"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC09-S015",
+      "voice": "hr-HR-SreckoNeural"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC09-S018",
+      "voice": "azure_hr-HR-GabrijelaNeural"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC10-S010",
+      "voice": "hr-HR-GabrijelaNeural"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC11-S001",
+      "voice": "hr-HR-SreckoNeural"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC11-S003",
+      "voice": "azure_hr-HR-SreckoNeural"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC11-S005",
+      "voice": "hr-HR-SreckoNeural"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC11-S007",
+      "voice": "hr-HR-SreckoNeural"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC11-S009",
+      "voice": "hr-HR-SreckoNeural"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC11-S011",
+      "voice": "hr-HR-SreckoNeural"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC11-S013",
+      "voice": "hr-HR-GabrijelaNeural"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC13-S002",
+      "voice": "hr-HR-SreckoNeural"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC13-S004",
+      "voice": "azure_hr-HR-SreckoNeural"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC13-S005",
+      "voice": "hr-HR-SreckoNeural"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC13-S007",
+      "voice": "hr-HR-SreckoNeural"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC13-S009",
+      "voice": "hr-HR-SreckoNeural"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC13-S011",
+      "voice": "hr-HR-GabrijelaNeural"
+    }
+  ]
+}
