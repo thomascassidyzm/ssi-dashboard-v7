@@ -75,9 +75,18 @@ describe('planScriptTakeFiling', () => {
 })
 
 describe('fileScriptTake', () => {
-  function fakeSupabase(onUpsert) {
+  // Filing now LOOKS FIRST, to tell a first take from a re-record. `existing`
+  // is what that lookup finds; null (the default here) means "no clip for this
+  // line yet", which is the first-take path these tests are about — a re-record
+  // has its own file, script-take-filing.retake.test.cjs.
+  function fakeSupabase(onUpsert, existing = null) {
+    const selectChain = {
+      eq: () => selectChain,
+      maybeSingle: async () => ({ data: existing, error: null }),
+    }
     return {
       from: () => ({
+        select: () => selectChain,
         upsert: (row, opts) => ({
           select: () => ({
             single: async () => onUpsert(row, opts),

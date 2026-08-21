@@ -146,6 +146,34 @@ async function fetchAudioRowsForRole(supabase, { courseCode, role }) {
 }
 
 /**
+ * Find the human course_audio row a take would land on, on the SAME 5-column
+ * key upsertHumanCourseAudio conflicts against, canonicalised the SAME way.
+ *
+ * That sameness is the whole contract: the caller uses this to decide between
+ * "first take of this line" (plain insert) and "a re-record superseding an
+ * existing clip" (versioned swap). If the two disagreed by so much as a
+ * normalisation, a re-record would look like a first take and overwrite the
+ * clip with no revision bump and no ledger row — which is exactly the bug the
+ * lookup exists to prevent. Any change to the upsert's canonicalisation must be
+ * made here in the same commit.
+ *
+ * @returns {Promise<{id, s3_key, audio_revision}|null>}
+ */
+async function findHumanCourseAudio(supabase, { courseCode, text, language, role, voiceId, provider }) {
+  const { data, error } = await supabase
+    .from('course_audio')
+    .select('id, s3_key, audio_revision')
+    .eq('course_code', courseCode)
+    .eq('text_normalized', normalizeForAudio(text))
+    .eq('language', canonicalLanguage(language))
+    .eq('role', role)
+    .eq('voice_id', canonicalVoiceId(voiceId, { provider }))
+    .maybeSingle()
+  if (error) throw new Error(`course_audio lookup failed for "${text}": ${error.message}`)
+  return data || null
+}
+
+/**
  * Upsert one human course_audio row. Same conflict key as phase8's working
  * upsert (the live 5-column unique index, audit 06 §1.3 — per-voice rows are
  * representable today). origin is ALWAYS 'human' here: this is the human
@@ -207,6 +235,7 @@ module.exports = {
   loadSeeds,
   fetchExistingAudioTexts,
   fetchAudioRowsForRole,
+  findHumanCourseAudio,
   upsertHumanCourseAudio,
   linkCourseAudio,
 }

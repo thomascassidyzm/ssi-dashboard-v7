@@ -61,6 +61,11 @@ function fromProvenanceRow(row) {
     method: ctx.method ?? row.method ?? 'take',
     durationMs: row.duration_ms ?? null,
     recordedAt: row.recorded_at ?? row.created_at ?? null,
+    // The take that replaced this one, when the recordist redid the line
+    // (services/take-supersede.cjs). Absent on every take recorded before
+    // 2026-08-21 and on every take that was never redone, so recency still
+    // decides those — see groupTakesByPhrase.
+    supersededBy: ctx.superseded_by ?? null,
   }
 }
 
@@ -111,6 +116,12 @@ function groupTakesByPhrase(takes) {
   for (const take of takes || []) {
     if (!take?.phraseText || !take.s3Key) continue
     if (take.method && take.method !== 'take') continue // never re-splice splices
+    // The recordist redid this line and a later take replaced this one. That is
+    // a DECISION, and it outranks the recency comparison below — which is
+    // ordered by a client-supplied `recorded_at` off the recordist's phone, so
+    // a skewed clock could otherwise re-promote the take they rejected.
+    // Marked, never deleted: the bytes are still in the bucket.
+    if (take.supersededBy) continue
     const key = normalizeForAudio(take.phraseText)
     if (!groups.has(key)) {
       groups.set(key, { phraseText: take.phraseText, chunksString: take.chunksString ?? null, natural: null, slow: null })

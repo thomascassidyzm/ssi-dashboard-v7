@@ -31,6 +31,7 @@ const languageCodeService = require('./language-code-service.cjs')
 const { decomposeText } = require('./phrase-decomposer.cjs')
 const { isScriptModeUpload, normalizeProvenance, buildProvenanceContext, resolveTakeVoiceId, retainAndProcessTake } = require('./recording-upload-helpers.cjs')
 const { planScriptTakeFiling, fileScriptTake } = require('./script-take-filing.cjs')
+const takeSupersede = require('./take-supersede.cjs')
 const podsRegistration = require('./voice-engine/pods-registration.cjs')
 const podVoiceApprovals = require('./pod-voice-approvals.cjs')
 const { resolvePoptyIdentity, hasAdminRole } = require('./shared/popty-identity.cjs')
@@ -5176,6 +5177,28 @@ async function handleRecordingUpload(req, res) {
     // Filing NEVER fails the upload: the bytes are already safe at s3Key and
     // refusing here would throw away a take to report a database problem. The
     // verdict rides back in the response instead, and the recorder shows it.
+    // Who recorded this take: the authenticated user's email when a session token
+    // is presented, else the client-sent recorded_by. Clients send snake_case
+    // provenance keys; the old camelCase-only gate meant recording_provenance was
+    // NEVER written (live: 0 rows ever).
+    //
+    // Resolved BEFORE filing, not after: a re-record now files through the
+    // versioned swap, whose history column accepted_by is NOT NULL — so the
+    // identity has to exist by the time the take is filed, not merely by the
+    // time provenance is written. Nothing between here and its old position
+    // read `prov`, so this is a pure hoist.
+    const prov = normalizeProvenance(provenance)
+    let recordedBy = prov.recordedBy || metadata.recordedBy || 'human'
+    const authToken = req.headers.authorization?.replace('Bearer ', '')
+    if (authToken) {
+      try {
+        const sessionUser = (await verifySupabaseJWT(authToken)) || (await authValidateSession(authToken))
+        if (sessionUser?.email) recordedBy = sessionUser.email
+      } catch (authErr) {
+        // Endpoint is not auth-gated — fall back to the client-sent identity
+      }
+    }
+
     let scriptFiling = null
     if (isScriptMode && supabaseClient.isInitialized()) {
       const plan = planScriptTakeFiling({ metadata, voiceId: slotVoiceId, course: courseRow })
@@ -5185,6 +5208,7 @@ async function handleRecordingUpload(req, res) {
         plan,
         s3Key,
         durationMs: (audioMeta.processed && audioMeta.durationMs) ? audioMeta.durationMs : null,
+        recordedBy,
         logger
       })
     } else if (isScriptMode) {
@@ -5196,22 +5220,6 @@ async function handleRecordingUpload(req, res) {
         message: 'This take was saved to storage but the database was unreachable, so it was not filed as a clip and will not play back. Tell whoever runs the course build — the recording itself is safe.'
       }
       logger.error(`[ScriptTake] FILING SKIPPED for ${courseCode}: Supabase not initialized — take ${s3Key} has no course_audio row`)
-    }
-
-    // Who recorded this take: the authenticated user's email when a session token
-    // is presented, else the client-sent recorded_by. Clients send snake_case
-    // provenance keys; the old camelCase-only gate meant recording_provenance was
-    // NEVER written (live: 0 rows ever).
-    const prov = normalizeProvenance(provenance)
-    let recordedBy = prov.recordedBy || metadata.recordedBy || 'human'
-    const authToken = req.headers.authorization?.replace('Bearer ', '')
-    if (authToken) {
-      try {
-        const sessionUser = (await verifySupabaseJWT(authToken)) || (await authValidateSession(authToken))
-        if (sessionUser?.email) recordedBy = sessionUser.email
-      } catch (authErr) {
-        // Endpoint is not auth-gated — fall back to the client-sent identity
-      }
     }
 
     // Update the sample flag in Supabase to mark as recorded.
@@ -5284,6 +5292,33 @@ async function handleRecordingUpload(req, res) {
           retakeCount: prov.retakeCount || 0
         })
         logger.log(`Provenance recorded for ${s3KeyUuid} (${provenanceContext.mode} mode)`)
+
+        // A redo must actually retire what it replaced. Mark every earlier take
+        // of this same line/cadence/voice as superseded by this one, so the take
+        // the recordist rejected can never be selected again — regardless of
+        // what their phone thought the time was. NOTHING IS DELETED: the
+        // superseded takes keep their rows and their S3 objects.
+        //
+        // Best-effort on purpose. A take whose bytes are safely stored is worth
+        // more than a tidy supersede ledger, so this never fails the upload; if
+        // it does not manage to mark, the reader falls back to recency exactly
+        // as before.
+        try {
+          const sup = await takeSupersede.supersedeEarlierTakes(supabaseClient.getClient(), {
+            courseCode,
+            text: metadata.text || null,
+            cadence: metadata.cadence || null,
+            voiceId: slotVoiceId,
+            role: metadata.role || null,
+            audioUuid: s3KeyUuid
+          })
+          if (sup.superseded.length) {
+            logger.log(`Superseded ${sup.superseded.length} earlier take(s) of this line by ${s3KeyUuid} (bytes kept)`)
+          }
+          if (sup.error) logger.error('Superseding earlier takes failed (upload kept):', sup.error)
+        } catch (supersedeError) {
+          logger.error('Superseding earlier takes threw (upload kept):', supersedeError)
+        }
       } catch (provenanceError) {
         // Log error but don't fail the upload
         logger.error('Error inserting provenance metadata:', provenanceError)

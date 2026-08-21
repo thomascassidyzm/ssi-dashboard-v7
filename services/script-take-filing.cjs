@@ -39,6 +39,7 @@
 // NO DDL. NO TTS. One course_audio upsert.
 
 const voiceEngineDb = require('./voice-engine/db.cjs')
+const { swapClipInPlace } = require('./shared/audio-revision-swap.cjs')
 
 // Reasons a take was not filed. `deliberate: true` means the outcome is
 // correct and the recordist needs no alarm; `deliberate: false` means
@@ -126,18 +127,60 @@ function planScriptTakeFiling({ metadata = {}, voiceId = null, course = null }) 
  *
  * @returns {Promise<{filed: boolean, courseAudioId: string|null, reason: string|null, deliberate: boolean, message: string|null}>}
  */
-async function fileScriptTake({ supabase, courseCode, plan, s3Key, durationMs = null, logger = console }) {
+async function fileScriptTake({ supabase, courseCode, plan, s3Key, durationMs = null, recordedBy = null, logger = console }) {
   if (!plan.file) return plan.filing
   try {
-    const courseAudioId = await voiceEngineDb.upsertHumanCourseAudio(supabase, {
-      courseCode,
-      text: plan.text,
-      language: plan.language,
-      role: plan.role,
-      voiceId: plan.voiceId,
-      s3Key,
-      durationMs,
-    })
+    const key = {
+      courseCode, text: plan.text, language: plan.language,
+      role: plan.role, voiceId: plan.voiceId,
+    }
+
+    // Is this the FIRST take of this line, or a re-record superseding one?
+    //
+    // It used to make no difference: both went through a bare upsert, so a
+    // re-record silently repointed the row's s3_key with NO revision bump and
+    // NO ledger row. Two things followed from that, both bad.
+    //
+    //   1. Nothing anywhere recorded that a take had been superseded — no
+    //      history, nothing to roll back to, no name against the decision.
+    //   2. audio_revision is the LEARNER'S CACHE KEY (<uuid>.v<rev>, served
+    //      immutable and held in the player's IndexedDB). Without the bump the
+    //      clip's address never changes, so a learner who had already played
+    //      the bad take went on hearing the bad take — the retake could not
+    //      reach them. The superseded take survived as the take that gets used,
+    //      which is precisely what Kai asked us to stop.
+    //
+    // The versioned path is the estate's standard mechanism and the
+    // regeneration branch of this same upload seam already uses it. It is
+    // make-before-break and it DELETES NOTHING: the previous object stays in
+    // the bucket and course_audio_revisions.previous_s3_key names it, so the
+    // swap is reversible.
+    const existing = await voiceEngineDb.findHumanCourseAudio(supabase, key)
+
+    if (existing && existing.s3_key !== s3Key) {
+      const out = await swapClipInPlace({
+        supabase,
+        audioId: existing.id,
+        newS3Key: s3Key,
+        durationMs,
+        patch: { origin: 'human' },
+        source: 'recordist-retake',
+        // NOT NULL in the history table. 'recordist' is an honest fallback when
+        // the upload carried no identity — better than failing the swap and
+        // dropping back to an unversioned overwrite.
+        acceptedBy: recordedBy || 'recordist',
+        reason: `re-record superseding ${existing.s3_key}`,
+        logger,
+      })
+      logger.log(
+        `[ScriptTake] re-record swapped course_audio ${existing.id} to revision ${out.revision} — ` +
+        `${courseCode} ${plan.role} s3=${s3Key} (previous ${existing.s3_key} kept) ` +
+        `"${plan.text.slice(0, 40)}"`
+      )
+      return { filed: true, courseAudioId: existing.id, reason: null, deliberate: false, message: null }
+    }
+
+    const courseAudioId = await voiceEngineDb.upsertHumanCourseAudio(supabase, { ...key, s3Key, durationMs })
     logger.log(
       `[ScriptTake] filed course_audio ${courseAudioId} — ${courseCode} ${plan.role} ` +
       `${plan.language} voice=${plan.voiceId} s3=${s3Key} "${plan.text.slice(0, 40)}"`
