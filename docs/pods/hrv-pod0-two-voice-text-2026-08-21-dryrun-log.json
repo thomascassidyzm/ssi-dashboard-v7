@@ -1,0 +1,281 @@
+{
+  "pod_id": "hrv_for_eng:pod-0-unrecorded",
+  "applied": false,
+  "ruling": "Tom 2026-08-21 — two voices; minimal text edits, only explicit gender conflicts",
+  "status": "PROPOSED — pending Aran's personal sign-off on each line before this is canon",
+  "edits": [
+    {
+      "slot": "SC03-S002",
+      "id": "hrv_for_eng:pod-0-unrecorded:SC03-S002",
+      "scene": 3,
+      "sentence": 2,
+      "speaker": "Sarah",
+      "voice": "A-male",
+      "field": "target_text",
+      "known_text": "Good afternoon. I'd like a coffee, please. With milk but with no sugar. To take away.",
+      "old": "Dobar dan. Željela bih kavu, molim. S mlijekom, ali bez šećera. Za van.",
+      "new": "Dobar dan. Želio bih kavu, molim. S mlijekom, ali bez šećera. Za van.",
+      "tokens": "Željela bih -> Želio bih",
+      "words_changed": [
+        "Željela -> Želio"
+      ],
+      "unlinked_target_audio_id": "d56b0cd0-a7b8-4ab5-a5fa-708d1f52c53e"
+    },
+    {
+      "slot": "SC05-S002",
+      "id": "hrv_for_eng:pod-0-unrecorded:SC05-S002",
+      "scene": 5,
+      "sentence": 2,
+      "speaker": "Sarah",
+      "voice": "A-male",
+      "field": "target_text",
+      "known_text": "Yes, very. I'm very tired now. Good night. See you tomorrow.",
+      "old": "Da, jako. Sad sam jako umorna. Laku noć. Vidimo se sutra.",
+      "new": "Da, jako. Sad sam jako umoran. Laku noć. Vidimo se sutra.",
+      "tokens": "umorna -> umoran",
+      "words_changed": [
+        "umorna. -> umoran."
+      ],
+      "unlinked_target_audio_id": "42036993-9b89-4aa6-b595-627ca4710f04"
+    },
+    {
+      "slot": "SC07-S004",
+      "id": "hrv_for_eng:pod-0-unrecorded:SC07-S004",
+      "scene": 7,
+      "sentence": 4,
+      "speaker": "Customer 1",
+      "voice": "A-male",
+      "field": "target_text",
+      "known_text": "I'd like large, please. With oat milk if you have it.",
+      "old": "Željela bih veliku, molim. Sa zobenim mlijekom, ako imate.",
+      "new": "Želio bih veliku, molim. Sa zobenim mlijekom, ako imate.",
+      "tokens": "Željela -> Želio",
+      "words_changed": [
+        "Željela -> Želio"
+      ],
+      "unlinked_target_audio_id": "310e9e77-a086-4b65-8cfe-3c1ab8f0fbc0"
+    },
+    {
+      "slot": "SC08-S002",
+      "id": "hrv_for_eng:pod-0-unrecorded:SC08-S002",
+      "scene": 8,
+      "sentence": 2,
+      "speaker": "Customer 1",
+      "voice": "A-male",
+      "field": "target_text",
+      "known_text": "I'd like a pint, please. What ales do you have on?",
+      "old": "Željela bih pintu, molim. Koja piva imate točena?",
+      "new": "Želio bih pintu, molim. Koja piva imate točena?",
+      "tokens": "Željela -> Želio",
+      "words_changed": [
+        "Željela -> Želio"
+      ],
+      "unlinked_target_audio_id": "ad2a8466-b1d9-4e23-a49c-09d88ceb7a00"
+    },
+    {
+      "slot": "SC08-S004",
+      "id": "hrv_for_eng:pod-0-unrecorded:SC08-S004",
+      "scene": 8,
+      "sentence": 4,
+      "speaker": "Customer 1",
+      "voice": "A-male",
+      "field": "target_text",
+      "known_text": "I'd like a pint of the bitter, please.",
+      "old": "Željela bih pintu gorkog piva, molim.",
+      "new": "Želio bih pintu gorkog piva, molim.",
+      "tokens": "Željela -> Želio",
+      "words_changed": [
+        "Željela -> Želio"
+      ],
+      "unlinked_target_audio_id": "12c5f3ea-496e-48a1-b154-1eb50119ac6b"
+    },
+    {
+      "slot": "SC08-S008",
+      "id": "hrv_for_eng:pod-0-unrecorded:SC08-S008",
+      "scene": 8,
+      "sentence": 8,
+      "speaker": "Customer 3",
+      "voice": "A-male",
+      "field": "target_text",
+      "known_text": "I'd like a large glass of white wine, please.",
+      "old": "Željela bih veliku… čašu bijelog vina,… molim.",
+      "new": "Želio bih veliku… čašu bijelog vina,… molim.",
+      "tokens": "Željela -> Želio",
+      "words_changed": [
+        "Željela -> Želio"
+      ],
+      "unlinked_target_audio_id": "3576b457-52bb-49ca-9252-5c8215f72747"
+    },
+    {
+      "slot": "SC08-S010",
+      "id": "hrv_for_eng:pod-0-unrecorded:SC08-S010",
+      "scene": 8,
+      "sentence": 10,
+      "speaker": "Customer 2",
+      "voice": "A-male",
+      "field": "target_text",
+      "known_text": "I'd like two more glasses of beer.",
+      "old": "Željela bih… još dvije čaše piva.",
+      "new": "Želio bih… još dvije čaše piva.",
+      "tokens": "Željela -> Želio",
+      "words_changed": [
+        "Željela -> Želio"
+      ],
+      "unlinked_target_audio_id": "00648ece-434a-4233-82bf-c41e7baf000a"
+    },
+    {
+      "slot": "SC08-S012",
+      "id": "hrv_for_eng:pod-0-unrecorded:SC08-S012",
+      "scene": 8,
+      "sentence": 12,
+      "speaker": "Customer 1",
+      "voice": "A-male",
+      "field": "target_text",
+      "known_text": "I'm not sure if I'm hungry. Do you have a menu?",
+      "old": "Nisam sigurna… jesam li gladna. Imate li jelovnik?",
+      "new": "Nisam siguran… jesam li gladan. Imate li jelovnik?",
+      "tokens": "sigurna -> siguran; gladna -> gladan",
+      "words_changed": [
+        "sigurna… -> siguran…",
+        "gladna. -> gladan."
+      ],
+      "unlinked_target_audio_id": "6d514447-5316-44d0-96fd-62342743eb93"
+    },
+    {
+      "slot": "SC08-S015",
+      "id": "hrv_for_eng:pod-0-unrecorded:SC08-S015",
+      "scene": 8,
+      "sentence": 15,
+      "speaker": "Customer 2",
+      "voice": "A-male",
+      "field": "target_text",
+      "known_text": "Do you have any sandwiches? I'd like a cheese sandwich, please.",
+      "old": "Imate li sendviče? Željela bih sendvič… sa sirom, molim.",
+      "new": "Imate li sendviče? Želio bih sendvič… sa sirom, molim.",
+      "tokens": "Željela -> Želio",
+      "words_changed": [
+        "Željela -> Želio"
+      ],
+      "unlinked_target_audio_id": "0adcbd09-32b0-48a4-8ec3-038eea945675"
+    },
+    {
+      "slot": "SC04-S003",
+      "id": "hrv_for_eng:pod-0-unrecorded:SC04-S003",
+      "scene": 4,
+      "sentence": 3,
+      "speaker": "Friend",
+      "voice": "B-female",
+      "field": "target_text",
+      "known_text": "No, I'm sorry, I'm busy tomorrow. But let's talk on Saturday. See you then.",
+      "old": "Ne, žao mi je,… sutra sam zauzet. Ali razgovarajmo… u subotu. Vidimo se tada.",
+      "new": "Ne, žao mi je,… sutra sam zauzeta. Ali razgovarajmo… u subotu. Vidimo se tada.",
+      "tokens": "zauzet -> zauzeta",
+      "words_changed": [
+        "zauzet. -> zauzeta."
+      ],
+      "unlinked_target_audio_id": "b9d0aa08-3751-4fd8-87c1-8448ad1b92a6"
+    },
+    {
+      "slot": "SC22-S006",
+      "id": "hrv_for_eng:pod-0-unrecorded:SC22-S006",
+      "scene": 22,
+      "sentence": 6,
+      "speaker": "Friend",
+      "voice": "B-female",
+      "field": "target_text",
+      "known_text": "I think you're doing very well. I'm impressed. I think you're ready to start speaking Croatian to anyone who speaks Croatian.",
+      "old": "Mislim… da se odlično snalaziš. Impresioniran sam. Mislim… da si spreman početi… govoriti hrvatski… s bilo kim… tko govori hrvatski.",
+      "new": "Mislim… da se odlično snalaziš. Impresionirana sam. Mislim… da si spreman početi… govoriti hrvatski… s bilo kim… tko govori hrvatski.",
+      "tokens": "Impresioniran -> Impresionirana",
+      "words_changed": [
+        "Impresioniran -> Impresionirana"
+      ],
+      "unlinked_target_audio_id": "9675993d-fb27-4b20-9259-017d8377d5b2"
+    },
+    {
+      "slot": "SC05-S001",
+      "id": "hrv_for_eng:pod-0-unrecorded:SC05-S001",
+      "scene": 5,
+      "sentence": 1,
+      "speaker": "Neighbour (10:30 pm)",
+      "voice": "B-female",
+      "field": "target_text",
+      "known_text": "Good evening, Sarah. Did you have a long day?",
+      "old": "Dobra večer, Sarah. Jesi li imala dug dan?",
+      "new": "Dobra večer, Sarah. Jesi li imao dug dan?",
+      "tokens": "imala -> imao",
+      "words_changed": [
+        "imala -> imao"
+      ],
+      "unlinked_target_audio_id": "36447d1f-ec0e-42eb-b525-ffacdbe4a8e3"
+    },
+    {
+      "slot": "SC20-S006",
+      "id": "hrv_for_eng:pod-0-unrecorded:SC20-S006",
+      "scene": 20,
+      "sentence": 6,
+      "speaker": "Learner",
+      "voice": "A-male",
+      "field": "target_text",
+      "known_text": "Thank you for helping me.",
+      "old": "Hvala ti što si mi pomogao.",
+      "new": "Hvala ti što si mi pomogla.",
+      "tokens": "pomogao -> pomogla",
+      "words_changed": [
+        "pomogao. -> pomogla."
+      ],
+      "unlinked_target_audio_id": "d1fe30e1-3474-4f4c-8f53-2a0bda7eb928"
+    },
+    {
+      "slot": "SC20-S009",
+      "id": "hrv_for_eng:pod-0-unrecorded:SC20-S009",
+      "scene": 20,
+      "sentence": 9,
+      "speaker": "Learner",
+      "voice": "A-male",
+      "field": "target_text",
+      "known_text": "You're very kind.",
+      "old": "Jako si ljubazan.",
+      "new": "Jako si ljubazna.",
+      "tokens": "ljubazan -> ljubazna",
+      "words_changed": [
+        "ljubazan. -> ljubazna."
+      ],
+      "unlinked_target_audio_id": "682d8582-8f92-45b2-835f-9206cb6c33ce"
+    },
+    {
+      "slot": "SC20-S010",
+      "id": "hrv_for_eng:pod-0-unrecorded:SC20-S010",
+      "scene": 20,
+      "sentence": 10,
+      "speaker": "Learner",
+      "voice": "A-male",
+      "field": "target_text",
+      "known_text": "Thank you for being so friendly.",
+      "old": "Hvala ti što si tako ljubazan.",
+      "new": "Hvala ti što si tako ljubazna.",
+      "tokens": "ljubazan -> ljubazna",
+      "words_changed": [
+        "ljubazan. -> ljubazna."
+      ],
+      "unlinked_target_audio_id": "80b7b763-78fb-4c74-9147-3ee7c7f1b18f"
+    },
+    {
+      "slot": "SC22-S001",
+      "id": "hrv_for_eng:pod-0-unrecorded:SC22-S001",
+      "scene": 22,
+      "sentence": 1,
+      "speaker": "Learner",
+      "voice": "A-male",
+      "field": "target_text",
+      "known_text": "Would you mind if I tried to practise speaking Croatian with you? I haven't been learning for very long, and I still feel a little nervous about speaking with other people.",
+      "old": "Bi li imao nešto protiv da pokušam vježbati hrvatski s tobom? Ne učim jako dugo, i još uvijek se osjećam malo nervozno kad govorim s drugim ljudima.",
+      "new": "Bi li imala nešto protiv da pokušam vježbati hrvatski s tobom? Ne učim jako dugo, i još uvijek se osjećam malo nervozno kad govorim s drugim ljudima.",
+      "tokens": "imao -> imala",
+      "words_changed": [
+        "imao -> imala"
+      ],
+      "unlinked_target_audio_id": "485d4724-a981-4f6d-8a2f-83a2d16aacb6"
+    }
+  ]
+}

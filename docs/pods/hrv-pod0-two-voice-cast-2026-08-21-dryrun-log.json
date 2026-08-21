@@ -1,0 +1,2049 @@
+{
+  "pod_id": "hrv_for_eng:pod-0-unrecorded",
+  "ruling": "Tom 2026-08-21 — exactly two voices; Voice A (male) is the learner/protagonist thread across the whole pod, Voice B (female) is every other character",
+  "applied": false,
+  "null_stale": false,
+  "relabelled": [
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC02-S002",
+      "scene": 2,
+      "sentence": 2,
+      "from": "Passenger",
+      "to": "Fellow passenger"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC02-S005",
+      "scene": 2,
+      "sentence": 5,
+      "from": "Passenger",
+      "to": "Fellow passenger"
+    }
+  ],
+  "cast_changes": [
+    {
+      "speaker": "_default",
+      "voice": "B-female",
+      "before": "hr-HR-SreckoNeural/gfzdpspr5fdp|n",
+      "after": "hr-HR-GabrijelaNeural/bedd6226|f"
+    },
+    {
+      "speaker": "Anna",
+      "voice": "B-female",
+      "unchanged": "hr-HR-GabrijelaNeural/bedd6226|f"
+    },
+    {
+      "speaker": "Assistant",
+      "voice": "B-female",
+      "before": "hr-HR-GabrijelaNeural/gfzdpspr5fdp|f",
+      "after": "hr-HR-GabrijelaNeural/bedd6226|f"
+    },
+    {
+      "speaker": "Barista",
+      "voice": "B-female",
+      "before": "hr-HR-SreckoNeural/bedd6226|m",
+      "after": "hr-HR-GabrijelaNeural/bedd6226|f"
+    },
+    {
+      "speaker": "Bartender",
+      "voice": "B-female",
+      "before": "hr-HR-SreckoNeural/gfzdpspr5fdp|m",
+      "after": "hr-HR-GabrijelaNeural/bedd6226|f"
+    },
+    {
+      "speaker": "Customer",
+      "voice": "A-male",
+      "unchanged": "hr-HR-SreckoNeural/gfzdpspr5fdp|m"
+    },
+    {
+      "speaker": "Customer 1",
+      "voice": "A-male",
+      "before": "hr-HR-GabrijelaNeural/gfzdpspr5fdp|f",
+      "after": "hr-HR-SreckoNeural/gfzdpspr5fdp|m"
+    },
+    {
+      "speaker": "Customer 2",
+      "voice": "A-male",
+      "before": "hr-HR-GabrijelaNeural/gfzdpspr5fdp|f",
+      "after": "hr-HR-SreckoNeural/gfzdpspr5fdp|m"
+    },
+    {
+      "speaker": "Customer 3",
+      "voice": "A-male",
+      "before": "hr-HR-GabrijelaNeural/gfzdpspr5fdp|f",
+      "after": "hr-HR-SreckoNeural/gfzdpspr5fdp|m"
+    },
+    {
+      "speaker": "Driver",
+      "voice": "B-female",
+      "before": "hr-HR-GabrijelaNeural/gfzdpspr5fdp|f",
+      "after": "hr-HR-GabrijelaNeural/bedd6226|f"
+    },
+    {
+      "speaker": "Fellow passenger",
+      "voice": "B-female",
+      "before": "(none)/(none)|?",
+      "after": "hr-HR-GabrijelaNeural/bedd6226|f"
+    },
+    {
+      "speaker": "Friend",
+      "voice": "B-female",
+      "before": "hr-HR-SreckoNeural/gfzdpspr5fdp|m",
+      "after": "hr-HR-GabrijelaNeural/bedd6226|f"
+    },
+    {
+      "speaker": "Guest",
+      "voice": "A-male",
+      "unchanged": "hr-HR-SreckoNeural/gfzdpspr5fdp|m"
+    },
+    {
+      "speaker": "James",
+      "voice": "A-male",
+      "unchanged": "hr-HR-SreckoNeural/gfzdpspr5fdp|m"
+    },
+    {
+      "speaker": "Learner",
+      "voice": "A-male",
+      "before": "hr-HR-SreckoNeural/bedd6226|m",
+      "after": "hr-HR-SreckoNeural/gfzdpspr5fdp|m"
+    },
+    {
+      "speaker": "Local",
+      "voice": "B-female",
+      "before": "hr-HR-SreckoNeural/gfzdpspr5fdp|m",
+      "after": "hr-HR-GabrijelaNeural/bedd6226|f"
+    },
+    {
+      "speaker": "Narrator",
+      "voice": "B-female",
+      "before": "hr-HR-GabrijelaNeural/gfzdpspr5fdp|f",
+      "after": "hr-HR-GabrijelaNeural/bedd6226|f"
+    },
+    {
+      "speaker": "Neighbour",
+      "voice": "B-female",
+      "before": "hr-HR-SreckoNeural/gfzdpspr5fdp|m",
+      "after": "hr-HR-GabrijelaNeural/bedd6226|f"
+    },
+    {
+      "speaker": "Passenger",
+      "voice": "A-male",
+      "before": "hr-HR-SreckoNeural/gfzdpspr5fdp|n",
+      "after": "hr-HR-SreckoNeural/gfzdpspr5fdp|m"
+    },
+    {
+      "speaker": "Pharmacist",
+      "voice": "B-female",
+      "before": "hr-HR-GabrijelaNeural/gfzdpspr5fdp|f",
+      "after": "hr-HR-GabrijelaNeural/bedd6226|f"
+    },
+    {
+      "speaker": "Receptionist",
+      "voice": "B-female",
+      "unchanged": "hr-HR-GabrijelaNeural/bedd6226|f"
+    },
+    {
+      "speaker": "Sarah",
+      "voice": "A-male",
+      "before": "hr-HR-GabrijelaNeural/bedd6226|f",
+      "after": "hr-HR-SreckoNeural/gfzdpspr5fdp|m"
+    },
+    {
+      "speaker": "Tourist",
+      "voice": "A-male",
+      "before": "hr-HR-GabrijelaNeural/gfzdpspr5fdp|f",
+      "after": "hr-HR-SreckoNeural/gfzdpspr5fdp|m"
+    },
+    {
+      "speaker": "Waiter",
+      "voice": "B-female",
+      "before": "hr-HR-SreckoNeural/gfzdpspr5fdp|m",
+      "after": "hr-HR-GabrijelaNeural/bedd6226|f"
+    }
+  ],
+  "nulled_target": [
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC01-S001",
+      "slot": "SC01-S001",
+      "speaker": "Neighbour (8 am)",
+      "was_voice": "azure_hr-HR-SreckoNeural",
+      "was_audio_id": "0c182e52-ece8-4ff8-9b6a-af684460e088",
+      "wanted": "hr-HR-GabrijelaNeural"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC01-S002",
+      "slot": "SC01-S002",
+      "speaker": "Sarah",
+      "was_voice": "hr-HR-GabrijelaNeural",
+      "was_audio_id": "e2cc098e-6ae2-4d1e-85c8-e32ef9c00121",
+      "wanted": "hr-HR-SreckoNeural"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC01-S003",
+      "slot": "SC01-S003",
+      "speaker": "Neighbour",
+      "was_voice": "hr-HR-SreckoNeural",
+      "was_audio_id": "8581bcfc-50a5-4f12-ab26-3234be66bad5",
+      "wanted": "hr-HR-GabrijelaNeural"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC01-S004",
+      "slot": "SC01-S004",
+      "speaker": "Sarah",
+      "was_voice": "hr-HR-GabrijelaNeural",
+      "was_audio_id": "88a85c14-802c-451b-9681-9c351b057089",
+      "wanted": "hr-HR-SreckoNeural"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC02-S001",
+      "slot": "SC02-S001",
+      "speaker": "Sarah",
+      "was_voice": "hr-HR-GabrijelaNeural",
+      "was_audio_id": "a9a73ce6-f5fd-47f9-abdc-7efa5a4e5b4f",
+      "wanted": "hr-HR-SreckoNeural"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC02-S002",
+      "slot": "SC02-S002",
+      "speaker": "Passenger",
+      "was_voice": "azure_hr-HR-SreckoNeural",
+      "was_audio_id": "60932e2e-a47e-4487-a661-a04487aff57f",
+      "wanted": "hr-HR-GabrijelaNeural"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC02-S003",
+      "slot": "SC02-S003",
+      "speaker": "Sarah",
+      "was_voice": "azure_hr-HR-GabrijelaNeural",
+      "was_audio_id": "ca652591-6a72-41ec-a847-e8693e855c4c",
+      "wanted": "hr-HR-SreckoNeural"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC02-S004",
+      "slot": "SC02-S004",
+      "speaker": "Sarah",
+      "was_voice": "azure_hr-HR-GabrijelaNeural",
+      "was_audio_id": "00b4b67a-fc3f-4718-a4ce-e39f4e8c1101",
+      "wanted": "hr-HR-SreckoNeural"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC02-S005",
+      "slot": "SC02-S005",
+      "speaker": "Passenger",
+      "was_voice": "azure_hr-HR-SreckoNeural",
+      "was_audio_id": "21ce725c-d385-43ff-9d6d-173b811cafef",
+      "wanted": "hr-HR-GabrijelaNeural"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC03-S001",
+      "slot": "SC03-S001",
+      "speaker": "Barista (3 pm)",
+      "was_voice": "azure_hr-HR-SreckoNeural",
+      "was_audio_id": "43870a94-6c3f-4827-9da1-ee40e3e9b019",
+      "wanted": "hr-HR-GabrijelaNeural"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC03-S002",
+      "slot": "SC03-S002",
+      "speaker": "Sarah",
+      "was_voice": "azure_hr-HR-GabrijelaNeural",
+      "was_audio_id": "d56b0cd0-a7b8-4ab5-a5fa-708d1f52c53e",
+      "wanted": "hr-HR-SreckoNeural"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC03-S003",
+      "slot": "SC03-S003",
+      "speaker": "Sarah",
+      "was_voice": "azure_hr-HR-GabrijelaNeural",
+      "was_audio_id": "b18cfbe8-6b50-4a1c-b459-493c20d81be9",
+      "wanted": "hr-HR-SreckoNeural"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC03-S004",
+      "slot": "SC03-S004",
+      "speaker": "Sarah",
+      "was_voice": "azure_hr-HR-GabrijelaNeural",
+      "was_audio_id": "0cec9bc0-7549-44d5-814a-5d9bc1174c88",
+      "wanted": "hr-HR-SreckoNeural"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC03-S005",
+      "slot": "SC03-S005",
+      "speaker": "Sarah",
+      "was_voice": "azure_hr-HR-GabrijelaNeural",
+      "was_audio_id": "eea4543b-a21f-4982-860d-1d33d397dd4e",
+      "wanted": "hr-HR-SreckoNeural"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC03-S006",
+      "slot": "SC03-S006",
+      "speaker": "Barista",
+      "was_voice": "azure_hr-HR-SreckoNeural",
+      "was_audio_id": "3d1507e7-d4cf-4f82-9ebf-9d0d361ede98",
+      "wanted": "hr-HR-GabrijelaNeural"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC03-S007",
+      "slot": "SC03-S007",
+      "speaker": "Barista",
+      "was_voice": "azure_hr-HR-SreckoNeural",
+      "was_audio_id": "e57edd51-d6eb-46b1-8ece-ae6ed55ed2af",
+      "wanted": "hr-HR-GabrijelaNeural"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC03-S008",
+      "slot": "SC03-S008",
+      "speaker": "Sarah",
+      "was_voice": "azure_hr-HR-GabrijelaNeural",
+      "was_audio_id": "fa1821e4-1c3f-42ea-8d9c-4b943a7e5db6",
+      "wanted": "hr-HR-SreckoNeural"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC03-S009",
+      "slot": "SC03-S009",
+      "speaker": "Barista",
+      "was_voice": "azure_hr-HR-SreckoNeural",
+      "was_audio_id": "4a9de29a-2d35-43fd-bc7c-1cad72ea7f27",
+      "wanted": "hr-HR-GabrijelaNeural"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC03-S010",
+      "slot": "SC03-S010",
+      "speaker": "Sarah",
+      "was_voice": "hr-HR-GabrijelaNeural",
+      "was_audio_id": "e42979bc-3ba8-4810-83e1-0f16720f0ac0",
+      "wanted": "hr-HR-SreckoNeural"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC04-S001",
+      "slot": "SC04-S001",
+      "speaker": "Friend (7 pm)",
+      "was_voice": "hr-HR-SreckoNeural",
+      "was_audio_id": "6b62f6a4-dd19-4077-9567-704ce29d5976",
+      "wanted": "hr-HR-GabrijelaNeural"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC04-S002",
+      "slot": "SC04-S002",
+      "speaker": "Sarah",
+      "was_voice": "azure_hr-HR-GabrijelaNeural",
+      "was_audio_id": "27e90894-bf50-4cca-9873-1b85bd4bf1c8",
+      "wanted": "hr-HR-SreckoNeural"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC04-S003",
+      "slot": "SC04-S003",
+      "speaker": "Friend",
+      "was_voice": "azure_hr-HR-SreckoNeural",
+      "was_audio_id": "b9d0aa08-3751-4fd8-87c1-8448ad1b92a6",
+      "wanted": "hr-HR-GabrijelaNeural"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC05-S001",
+      "slot": "SC05-S001",
+      "speaker": "Neighbour (10:30 pm)",
+      "was_voice": "hr-HR-SreckoNeural",
+      "was_audio_id": "36447d1f-ec0e-42eb-b525-ffacdbe4a8e3",
+      "wanted": "hr-HR-GabrijelaNeural"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC05-S002",
+      "slot": "SC05-S002",
+      "speaker": "Sarah",
+      "was_voice": "hr-HR-GabrijelaNeural",
+      "was_audio_id": "42036993-9b89-4aa6-b595-627ca4710f04",
+      "wanted": "hr-HR-SreckoNeural"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC07-S001",
+      "slot": "SC07-S001",
+      "speaker": "Barista",
+      "was_voice": "azure_hr-HR-SreckoNeural",
+      "was_audio_id": "82bc323d-4198-41ac-836e-bfb6f149d093",
+      "wanted": "hr-HR-GabrijelaNeural"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC07-S002",
+      "slot": "SC07-S002",
+      "speaker": "Customer 1",
+      "was_voice": "hr-HR-GabrijelaNeural",
+      "was_audio_id": "415c88b9-2c7e-4e29-9e7c-f8ca87471d9c",
+      "wanted": "hr-HR-SreckoNeural"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC07-S003",
+      "slot": "SC07-S003",
+      "speaker": "Barista",
+      "was_voice": "azure_hr-HR-SreckoNeural",
+      "was_audio_id": "b690e674-54e1-463b-ab42-77dad51d9d31",
+      "wanted": "hr-HR-GabrijelaNeural"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC07-S004",
+      "slot": "SC07-S004",
+      "speaker": "Customer 1",
+      "was_voice": "azure_hr-HR-GabrijelaNeural",
+      "was_audio_id": "310e9e77-a086-4b65-8cfe-3c1ab8f0fbc0",
+      "wanted": "hr-HR-SreckoNeural"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC07-S005",
+      "slot": "SC07-S005",
+      "speaker": "Barista",
+      "was_voice": "azure_hr-HR-SreckoNeural",
+      "was_audio_id": "cc9264a0-dafe-4115-8f74-db7d4b0fa67e",
+      "wanted": "hr-HR-GabrijelaNeural"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC07-S006",
+      "slot": "SC07-S006",
+      "speaker": "Customer 1",
+      "was_voice": "hr-HR-GabrijelaNeural",
+      "was_audio_id": "38c48712-5026-4155-be3e-83055d1e5384",
+      "wanted": "hr-HR-SreckoNeural"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC07-S007",
+      "slot": "SC07-S007",
+      "speaker": "Customer 2",
+      "was_voice": "azure_hr-HR-GabrijelaNeural",
+      "was_audio_id": "60072c9c-1e5b-4446-9c08-7061090216d9",
+      "wanted": "hr-HR-SreckoNeural"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC07-S008",
+      "slot": "SC07-S008",
+      "speaker": "Barista",
+      "was_voice": "azure_hr-HR-SreckoNeural",
+      "was_audio_id": "6018293f-6bd1-465f-aee6-29a0ae450557",
+      "wanted": "hr-HR-GabrijelaNeural"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC07-S009",
+      "slot": "SC07-S009",
+      "speaker": "Customer 2",
+      "was_voice": "azure_hr-HR-GabrijelaNeural",
+      "was_audio_id": "9dbb23ff-ac94-4296-8fd6-7a998f433c06",
+      "wanted": "hr-HR-SreckoNeural"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC07-S010",
+      "slot": "SC07-S010",
+      "speaker": "Barista",
+      "was_voice": "azure_hr-HR-SreckoNeural",
+      "was_audio_id": "3b9218fb-4d0f-4719-a679-9551adce60ac",
+      "wanted": "hr-HR-GabrijelaNeural"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC07-S011",
+      "slot": "SC07-S011",
+      "speaker": "Customer 2",
+      "was_voice": "azure_hr-HR-GabrijelaNeural",
+      "was_audio_id": "0e4f4f6a-ff26-4a4d-8667-1f0cc79bb2c4",
+      "wanted": "hr-HR-SreckoNeural"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC07-S012",
+      "slot": "SC07-S012",
+      "speaker": "Barista",
+      "was_voice": "azure_hr-HR-SreckoNeural",
+      "was_audio_id": "b02bdde9-54d9-43ff-afe5-8b4f11240709",
+      "wanted": "hr-HR-GabrijelaNeural"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC07-S013",
+      "slot": "SC07-S013",
+      "speaker": "Customer 3",
+      "was_voice": "azure_hr-HR-GabrijelaNeural",
+      "was_audio_id": "777dc171-97be-479a-95d1-25b629771735",
+      "wanted": "hr-HR-SreckoNeural"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC07-S014",
+      "slot": "SC07-S014",
+      "speaker": "Barista",
+      "was_voice": "azure_hr-HR-SreckoNeural",
+      "was_audio_id": "e2e757b5-0c3b-45f6-9c9a-04697a8d9994",
+      "wanted": "hr-HR-GabrijelaNeural"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC08-S001",
+      "slot": "SC08-S001",
+      "speaker": "Bartender",
+      "was_voice": "azure_hr-HR-SreckoNeural",
+      "was_audio_id": "f8e5cfe9-3f4a-430c-ae34-42fc48f45a84",
+      "wanted": "hr-HR-GabrijelaNeural"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC08-S002",
+      "slot": "SC08-S002",
+      "speaker": "Customer 1",
+      "was_voice": "azure_hr-HR-GabrijelaNeural",
+      "was_audio_id": "ad2a8466-b1d9-4e23-a49c-09d88ceb7a00",
+      "wanted": "hr-HR-SreckoNeural"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC08-S003",
+      "slot": "SC08-S003",
+      "speaker": "Bartender",
+      "was_voice": "hr-HR-SreckoNeural",
+      "was_audio_id": "24fc8797-d103-4dbd-ab69-d2abe16fc7e3",
+      "wanted": "hr-HR-GabrijelaNeural"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC08-S004",
+      "slot": "SC08-S004",
+      "speaker": "Customer 1",
+      "was_voice": "azure_hr-HR-GabrijelaNeural",
+      "was_audio_id": "12c5f3ea-496e-48a1-b154-1eb50119ac6b",
+      "wanted": "hr-HR-SreckoNeural"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC08-S005",
+      "slot": "SC08-S005",
+      "speaker": "Customer 2",
+      "was_voice": "azure_hr-HR-GabrijelaNeural",
+      "was_audio_id": "98f0e1ff-3ee9-489f-b415-d65fa0fb2192",
+      "wanted": "hr-HR-SreckoNeural"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC08-S006",
+      "slot": "SC08-S006",
+      "speaker": "Customer 3",
+      "was_voice": "azure_hr-HR-GabrijelaNeural",
+      "was_audio_id": "04bd3982-532f-4359-a1cc-59244482e0c5",
+      "wanted": "hr-HR-SreckoNeural"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC08-S007",
+      "slot": "SC08-S007",
+      "speaker": "Bartender",
+      "was_voice": "hr-HR-SreckoNeural",
+      "was_audio_id": "d1dfcf55-6b8b-4edf-a4dd-22dbdf36f763",
+      "wanted": "hr-HR-GabrijelaNeural"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC08-S008",
+      "slot": "SC08-S008",
+      "speaker": "Customer 3",
+      "was_voice": "azure_hr-HR-GabrijelaNeural",
+      "was_audio_id": "3576b457-52bb-49ca-9252-5c8215f72747",
+      "wanted": "hr-HR-SreckoNeural"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC08-S009",
+      "slot": "SC08-S009",
+      "speaker": "Customer 1",
+      "was_voice": "azure_hr-HR-GabrijelaNeural",
+      "was_audio_id": "47bdbe6c-f817-43f2-b8e6-ad266acbb9a8",
+      "wanted": "hr-HR-SreckoNeural"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC08-S010",
+      "slot": "SC08-S010",
+      "speaker": "Customer 2",
+      "was_voice": "azure_hr-HR-GabrijelaNeural",
+      "was_audio_id": "00648ece-434a-4233-82bf-c41e7baf000a",
+      "wanted": "hr-HR-SreckoNeural"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC08-S011",
+      "slot": "SC08-S011",
+      "speaker": "Bartender",
+      "was_voice": "hr-HR-SreckoNeural",
+      "was_audio_id": "c117f376-e394-4273-af15-7d7956cd012f",
+      "wanted": "hr-HR-GabrijelaNeural"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC08-S012",
+      "slot": "SC08-S012",
+      "speaker": "Customer 1",
+      "was_voice": "azure_hr-HR-GabrijelaNeural",
+      "was_audio_id": "6d514447-5316-44d0-96fd-62342743eb93",
+      "wanted": "hr-HR-SreckoNeural"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC08-S013",
+      "slot": "SC08-S013",
+      "speaker": "Bartender",
+      "was_voice": "azure_hr-HR-SreckoNeural",
+      "was_audio_id": "08c547a6-25ae-4b57-96eb-e32de341e541",
+      "wanted": "hr-HR-GabrijelaNeural"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC08-S014",
+      "slot": "SC08-S014",
+      "speaker": "Customer 1",
+      "was_voice": "azure_hr-HR-GabrijelaNeural",
+      "was_audio_id": "361cd520-1897-4f20-a12c-f33edc2cdaa0",
+      "wanted": "hr-HR-SreckoNeural"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC08-S015",
+      "slot": "SC08-S015",
+      "speaker": "Customer 2",
+      "was_voice": "azure_hr-HR-GabrijelaNeural",
+      "was_audio_id": "0adcbd09-32b0-48a4-8ec3-038eea945675",
+      "wanted": "hr-HR-SreckoNeural"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC09-S001",
+      "slot": "SC09-S001",
+      "speaker": "Customer 1",
+      "was_voice": "azure_hr-HR-GabrijelaNeural",
+      "was_audio_id": "88c03c4a-cd34-4a82-b607-103a4a0043ff",
+      "wanted": "hr-HR-SreckoNeural"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC09-S002",
+      "slot": "SC09-S002",
+      "speaker": "Waiter",
+      "was_voice": "hr-HR-SreckoNeural",
+      "was_audio_id": "d3e2f0e7-c014-49c4-afd5-11d4cab7fd01",
+      "wanted": "hr-HR-GabrijelaNeural"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC09-S003",
+      "slot": "SC09-S003",
+      "speaker": "Waiter",
+      "was_voice": "azure_hr-HR-SreckoNeural",
+      "was_audio_id": "0cf1480c-e6ef-4c3b-ba96-60193b3c4902",
+      "wanted": "hr-HR-GabrijelaNeural"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC09-S004",
+      "slot": "SC09-S004",
+      "speaker": "Customer 2",
+      "was_voice": "azure_hr-HR-GabrijelaNeural",
+      "was_audio_id": "866acb05-baf7-4b15-8558-30e098015f29",
+      "wanted": "hr-HR-SreckoNeural"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC09-S005",
+      "slot": "SC09-S005",
+      "speaker": "Customer 1",
+      "was_voice": "azure_hr-HR-GabrijelaNeural",
+      "was_audio_id": "1f711089-58e7-4bb5-bbd8-c8d85c536a5b",
+      "wanted": "hr-HR-SreckoNeural"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC09-S006",
+      "slot": "SC09-S006",
+      "speaker": "Waiter",
+      "was_voice": "hr-HR-SreckoNeural",
+      "was_audio_id": "2411639d-1f64-4ba7-b4cc-4af423f37cca",
+      "wanted": "hr-HR-GabrijelaNeural"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC09-S007",
+      "slot": "SC09-S007",
+      "speaker": "Customer 1",
+      "was_voice": "azure_hr-HR-GabrijelaNeural",
+      "was_audio_id": "65059eae-20b5-4e32-b381-3009550d8ff5",
+      "wanted": "hr-HR-SreckoNeural"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC09-S008",
+      "slot": "SC09-S008",
+      "speaker": "Waiter",
+      "was_voice": "hr-HR-SreckoNeural",
+      "was_audio_id": "93ad8e69-54ed-4333-84ac-b59cfeec7f77",
+      "wanted": "hr-HR-GabrijelaNeural"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC09-S009",
+      "slot": "SC09-S009",
+      "speaker": "Customer 1",
+      "was_voice": "azure_hr-HR-GabrijelaNeural",
+      "was_audio_id": "fa761c0b-67f4-48a2-b524-bd643eee7656",
+      "wanted": "hr-HR-SreckoNeural"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC09-S010",
+      "slot": "SC09-S010",
+      "speaker": "Customer 2",
+      "was_voice": "azure_hr-HR-GabrijelaNeural",
+      "was_audio_id": "187bb00b-4bdb-478f-a76f-d4eea33c8d59",
+      "wanted": "hr-HR-SreckoNeural"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC09-S011",
+      "slot": "SC09-S011",
+      "speaker": "Waiter",
+      "was_voice": "hr-HR-SreckoNeural",
+      "was_audio_id": "293598c0-d85b-42c2-a494-bf43d062d668",
+      "wanted": "hr-HR-GabrijelaNeural"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC09-S012",
+      "slot": "SC09-S012",
+      "speaker": "Customer 1",
+      "was_voice": "azure_hr-HR-GabrijelaNeural",
+      "was_audio_id": "957db1ac-c800-43a5-a5c7-014ad3a1b8ef",
+      "wanted": "hr-HR-SreckoNeural"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC09-S013",
+      "slot": "SC09-S013",
+      "speaker": "Customer 2",
+      "was_voice": "azure_hr-HR-GabrijelaNeural",
+      "was_audio_id": "0f120653-24d7-437b-b1b6-3a5d8cfa0b5c",
+      "wanted": "hr-HR-SreckoNeural"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC09-S014",
+      "slot": "SC09-S014",
+      "speaker": "Waiter",
+      "was_voice": "hr-HR-SreckoNeural",
+      "was_audio_id": "e692e04f-b618-437f-9706-12c448d523b3",
+      "wanted": "hr-HR-GabrijelaNeural"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC09-S015",
+      "slot": "SC09-S015",
+      "speaker": "Waiter",
+      "was_voice": "hr-HR-SreckoNeural",
+      "was_audio_id": "add5fdd2-84df-4d4b-b5df-c9b1dcd205f7",
+      "wanted": "hr-HR-GabrijelaNeural"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC09-S016",
+      "slot": "SC09-S016",
+      "speaker": "Customer 1",
+      "was_voice": "azure_hr-HR-GabrijelaNeural",
+      "was_audio_id": "56900d97-b352-4aea-9cba-1aa64bd46aba",
+      "wanted": "hr-HR-SreckoNeural"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC09-S017",
+      "slot": "SC09-S017",
+      "speaker": "Customer 2",
+      "was_voice": "azure_hr-HR-GabrijelaNeural",
+      "was_audio_id": "21defaf0-2f1c-4143-a712-dc2e067f47cb",
+      "wanted": "hr-HR-SreckoNeural"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC13-S001",
+      "slot": "SC13-S001",
+      "speaker": "Tourist",
+      "was_voice": "azure_hr-HR-GabrijelaNeural",
+      "was_audio_id": "231b6ef3-3666-4d6c-8911-2db2ef29d83a",
+      "wanted": "hr-HR-SreckoNeural"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC13-S002",
+      "slot": "SC13-S002",
+      "speaker": "Local",
+      "was_voice": "hr-HR-SreckoNeural",
+      "was_audio_id": "1c9c47f1-0820-42fa-8837-81d76b1a5e81",
+      "wanted": "hr-HR-GabrijelaNeural"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC13-S003",
+      "slot": "SC13-S003",
+      "speaker": "Tourist",
+      "was_voice": "hr-HR-GabrijelaNeural",
+      "was_audio_id": "8db921fb-51db-451d-aaca-34327a03322d",
+      "wanted": "hr-HR-SreckoNeural"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC13-S004",
+      "slot": "SC13-S004",
+      "speaker": "Local",
+      "was_voice": "azure_hr-HR-SreckoNeural",
+      "was_audio_id": "157e4328-6805-407e-9308-06bc2e46b0f3",
+      "wanted": "hr-HR-GabrijelaNeural"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC13-S005",
+      "slot": "SC13-S005",
+      "speaker": "Local",
+      "was_voice": "hr-HR-SreckoNeural",
+      "was_audio_id": "3f53d978-4c6d-4048-8f95-daf26f0ce2b4",
+      "wanted": "hr-HR-GabrijelaNeural"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC13-S006",
+      "slot": "SC13-S006",
+      "speaker": "Tourist",
+      "was_voice": "hr-HR-GabrijelaNeural",
+      "was_audio_id": "86376db1-095c-4799-b45b-4857037dcd15",
+      "wanted": "hr-HR-SreckoNeural"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC13-S007",
+      "slot": "SC13-S007",
+      "speaker": "Local",
+      "was_voice": "azure_hr-HR-SreckoNeural",
+      "was_audio_id": "85972769-45c2-4376-9376-0d803480857e",
+      "wanted": "hr-HR-GabrijelaNeural"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC13-S008",
+      "slot": "SC13-S008",
+      "speaker": "Tourist",
+      "was_voice": "azure_hr-HR-GabrijelaNeural",
+      "was_audio_id": "f1cbf01f-1464-4449-81dc-e07a3c1fbbfc",
+      "wanted": "hr-HR-SreckoNeural"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC13-S009",
+      "slot": "SC13-S009",
+      "speaker": "Local",
+      "was_voice": "hr-HR-SreckoNeural",
+      "was_audio_id": "2f97eff4-c16a-4076-9fdc-69581b060aaa",
+      "wanted": "hr-HR-GabrijelaNeural"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC13-S010",
+      "slot": "SC13-S010",
+      "speaker": "Tourist",
+      "was_voice": "azure_hr-HR-GabrijelaNeural",
+      "was_audio_id": "e841044a-091b-4ca2-95ef-84f282336d9b",
+      "wanted": "hr-HR-SreckoNeural"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC22-S002",
+      "slot": "SC22-S002",
+      "speaker": "Friend",
+      "was_voice": "azure_hr-HR-SreckoNeural",
+      "was_audio_id": "b481ff8e-c6a9-4f97-95b3-83501532d3b0",
+      "wanted": "hr-HR-GabrijelaNeural"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC22-S004",
+      "slot": "SC22-S004",
+      "speaker": "Friend",
+      "was_voice": "azure_hr-HR-SreckoNeural",
+      "was_audio_id": "0a9c3723-c54a-4b68-8115-569c82a56dea",
+      "wanted": "hr-HR-GabrijelaNeural"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC22-S006",
+      "slot": "SC22-S006",
+      "speaker": "Friend",
+      "was_voice": "azure_hr-HR-SreckoNeural",
+      "was_audio_id": "9675993d-fb27-4b20-9259-017d8377d5b2",
+      "wanted": "hr-HR-GabrijelaNeural"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC22-S008",
+      "slot": "SC22-S008",
+      "speaker": "Friend",
+      "was_voice": "azure_hr-HR-SreckoNeural",
+      "was_audio_id": "6331a262-d8a7-4df1-9344-6b35d7e3cca8",
+      "wanted": "hr-HR-GabrijelaNeural"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC22-S010",
+      "slot": "SC22-S010",
+      "speaker": "Friend",
+      "was_voice": "azure_hr-HR-SreckoNeural",
+      "was_audio_id": "e2708271-27fd-43ee-bd13-904bab7486b7",
+      "wanted": "hr-HR-GabrijelaNeural"
+    }
+  ],
+  "nulled_known": [
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC01-S001",
+      "slot": "SC01-S001",
+      "speaker": "Neighbour (8 am)",
+      "was_voice": "gfzdpspr5fdp",
+      "was_audio_id": "45803a41-9604-468d-b362-55801e4918fe",
+      "wanted": "bedd6226"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC01-S002",
+      "slot": "SC01-S002",
+      "speaker": "Sarah",
+      "was_voice": "bedd6226",
+      "was_audio_id": "a922ab90-b807-4ab1-b9e4-8742b8e66b1f",
+      "wanted": "gfzdpspr5fdp"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC01-S003",
+      "slot": "SC01-S003",
+      "speaker": "Neighbour",
+      "was_voice": "gfzdpspr5fdp",
+      "was_audio_id": "c810ef3e-491f-45ec-860e-173f32c61364",
+      "wanted": "bedd6226"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC01-S004",
+      "slot": "SC01-S004",
+      "speaker": "Sarah",
+      "was_voice": "bedd6226",
+      "was_audio_id": "9f0d80c1-c60f-43f8-8ce9-02f0b9963dee",
+      "wanted": "gfzdpspr5fdp"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC02-S001",
+      "slot": "SC02-S001",
+      "speaker": "Sarah",
+      "was_voice": "bedd6226",
+      "was_audio_id": "77a437ba-8c56-4b84-b805-851eb30735bf",
+      "wanted": "gfzdpspr5fdp"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC02-S002",
+      "slot": "SC02-S002",
+      "speaker": "Passenger",
+      "was_voice": "xai_gfzdpspr5fdp",
+      "was_audio_id": "91eacd3b-53be-4e92-83bd-59110b2c0995",
+      "wanted": "bedd6226"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC02-S003",
+      "slot": "SC02-S003",
+      "speaker": "Sarah",
+      "was_voice": "xai_bedd6226",
+      "was_audio_id": "dea6053e-d0f4-43b3-a79e-910a2cc32834",
+      "wanted": "gfzdpspr5fdp"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC02-S004",
+      "slot": "SC02-S004",
+      "speaker": "Sarah",
+      "was_voice": "xai_bedd6226",
+      "was_audio_id": "4617f844-22c9-456c-96cc-08f0041aaa01",
+      "wanted": "gfzdpspr5fdp"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC02-S005",
+      "slot": "SC02-S005",
+      "speaker": "Passenger",
+      "was_voice": "xai_gfzdpspr5fdp",
+      "was_audio_id": "8a15cb2c-85cc-43ef-93cb-0fd9e4eab446",
+      "wanted": "bedd6226"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC03-S002",
+      "slot": "SC03-S002",
+      "speaker": "Sarah",
+      "was_voice": "bedd6226",
+      "was_audio_id": "f1cca655-6ecc-4f5b-8997-e807fbd04835",
+      "wanted": "gfzdpspr5fdp"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC03-S003",
+      "slot": "SC03-S003",
+      "speaker": "Sarah",
+      "was_voice": "xai_bedd6226",
+      "was_audio_id": "e4aa6d53-078d-4fa6-af74-dadc9fe73800",
+      "wanted": "gfzdpspr5fdp"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC03-S004",
+      "slot": "SC03-S004",
+      "speaker": "Sarah",
+      "was_voice": "xai_bedd6226",
+      "was_audio_id": "aeaaa4b2-f89f-4966-965c-9b6aa7ac61a7",
+      "wanted": "gfzdpspr5fdp"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC03-S005",
+      "slot": "SC03-S005",
+      "speaker": "Sarah",
+      "was_voice": "xai_bedd6226",
+      "was_audio_id": "4008eccc-54fb-4451-ae0c-fdca27ca3ba0",
+      "wanted": "gfzdpspr5fdp"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC03-S008",
+      "slot": "SC03-S008",
+      "speaker": "Sarah",
+      "was_voice": "bedd6226",
+      "was_audio_id": "e903c016-7543-433f-8d94-ff7f368a9f37",
+      "wanted": "gfzdpspr5fdp"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC03-S010",
+      "slot": "SC03-S010",
+      "speaker": "Sarah",
+      "was_voice": "xai_bedd6226",
+      "was_audio_id": "17a992c0-3c01-4f83-8890-13a2f8dbbfbb",
+      "wanted": "gfzdpspr5fdp"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC04-S001",
+      "slot": "SC04-S001",
+      "speaker": "Friend (7 pm)",
+      "was_voice": "xai_gfzdpspr5fdp",
+      "was_audio_id": "0aef3f08-d4dd-4145-9550-e99c585d4eca",
+      "wanted": "bedd6226"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC04-S002",
+      "slot": "SC04-S002",
+      "speaker": "Sarah",
+      "was_voice": "bedd6226",
+      "was_audio_id": "ad1defd1-b0ed-436a-86cf-71875b6be58c",
+      "wanted": "gfzdpspr5fdp"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC04-S003",
+      "slot": "SC04-S003",
+      "speaker": "Friend",
+      "was_voice": "xai_gfzdpspr5fdp",
+      "was_audio_id": "15329f4d-5cb5-44c1-a2c7-7c545c6f9a7a",
+      "wanted": "bedd6226"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC05-S001",
+      "slot": "SC05-S001",
+      "speaker": "Neighbour (10:30 pm)",
+      "was_voice": "gfzdpspr5fdp",
+      "was_audio_id": "cc15f279-1999-4865-8615-9ac12cf27961",
+      "wanted": "bedd6226"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC05-S002",
+      "slot": "SC05-S002",
+      "speaker": "Sarah",
+      "was_voice": "bedd6226",
+      "was_audio_id": "dd3263ba-87b9-4f8f-bd35-e80537f2a4d0",
+      "wanted": "gfzdpspr5fdp"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC06-S013",
+      "slot": "SC06-S013",
+      "speaker": "Narrator",
+      "was_voice": "xai_gfzdpspr5fdp",
+      "was_audio_id": "18d602b3-1fc8-4ed5-a383-0d4b7ec5ad0c",
+      "wanted": "bedd6226"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC07-S015",
+      "slot": "SC07-S015",
+      "speaker": "Narrator",
+      "was_voice": "xai_gfzdpspr5fdp",
+      "was_audio_id": "74353f98-d1b4-45d1-98d6-042f2d4410fa",
+      "wanted": "bedd6226"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC08-S001",
+      "slot": "SC08-S001",
+      "speaker": "Bartender",
+      "was_voice": "gfzdpspr5fdp",
+      "was_audio_id": "e724cebb-968f-430e-abc3-66d4591e3478",
+      "wanted": "bedd6226"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC08-S003",
+      "slot": "SC08-S003",
+      "speaker": "Bartender",
+      "was_voice": "xai_gfzdpspr5fdp",
+      "was_audio_id": "5181e1f0-1b97-43b2-b553-be8df58ff4d2",
+      "wanted": "bedd6226"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC08-S007",
+      "slot": "SC08-S007",
+      "speaker": "Bartender",
+      "was_voice": "gfzdpspr5fdp",
+      "was_audio_id": "3894b34a-97ee-43a5-a8f8-d2c03bc8fba5",
+      "wanted": "bedd6226"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC08-S011",
+      "slot": "SC08-S011",
+      "speaker": "Bartender",
+      "was_voice": "gfzdpspr5fdp",
+      "was_audio_id": "55eb95d1-c2ee-45fb-bb47-d98dcbb7fa18",
+      "wanted": "bedd6226"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC08-S013",
+      "slot": "SC08-S013",
+      "speaker": "Bartender",
+      "was_voice": "gfzdpspr5fdp",
+      "was_audio_id": "ed266fc5-ab8f-4e1b-9343-ea1e62df970f",
+      "wanted": "bedd6226"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC08-S016",
+      "slot": "SC08-S016",
+      "speaker": "Narrator",
+      "was_voice": "xai_gfzdpspr5fdp",
+      "was_audio_id": "d4b3a2e1-9be2-47a6-8872-38d8af292482",
+      "wanted": "bedd6226"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC09-S002",
+      "slot": "SC09-S002",
+      "speaker": "Waiter",
+      "was_voice": "gfzdpspr5fdp",
+      "was_audio_id": "c6062dfb-00ce-4664-ae81-c338c69d831a",
+      "wanted": "bedd6226"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC09-S003",
+      "slot": "SC09-S003",
+      "speaker": "Waiter",
+      "was_voice": "gfzdpspr5fdp",
+      "was_audio_id": "67ad3a23-1bc2-44aa-bc6d-6291b8a85330",
+      "wanted": "bedd6226"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC09-S006",
+      "slot": "SC09-S006",
+      "speaker": "Waiter",
+      "was_voice": "gfzdpspr5fdp",
+      "was_audio_id": "aaea0565-2959-4d13-96ab-b63f2e2de06f",
+      "wanted": "bedd6226"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC09-S008",
+      "slot": "SC09-S008",
+      "speaker": "Waiter",
+      "was_voice": "gfzdpspr5fdp",
+      "was_audio_id": "a8063142-bd96-47a4-9ea9-bc3b93df7395",
+      "wanted": "bedd6226"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC09-S011",
+      "slot": "SC09-S011",
+      "speaker": "Waiter",
+      "was_voice": "gfzdpspr5fdp",
+      "was_audio_id": "be8d3700-4a48-461f-8f70-6469bd61d0ee",
+      "wanted": "bedd6226"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC09-S014",
+      "slot": "SC09-S014",
+      "speaker": "Waiter",
+      "was_voice": "xai_gfzdpspr5fdp",
+      "was_audio_id": "03365db6-176c-420f-a37b-ff7710a18e58",
+      "wanted": "bedd6226"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC09-S015",
+      "slot": "SC09-S015",
+      "speaker": "Waiter",
+      "was_voice": "gfzdpspr5fdp",
+      "was_audio_id": "d398bbdf-199c-477f-a6f8-334aa24a77ec",
+      "wanted": "bedd6226"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC09-S018",
+      "slot": "SC09-S018",
+      "speaker": "Narrator",
+      "was_voice": "xai_gfzdpspr5fdp",
+      "was_audio_id": "e2953429-b440-43ed-8c4f-51969b2e6abb",
+      "wanted": "bedd6226"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC10-S002",
+      "slot": "SC10-S002",
+      "speaker": "Assistant",
+      "was_voice": "gfzdpspr5fdp",
+      "was_audio_id": "e3affb2a-7237-4466-a31e-a48167101625",
+      "wanted": "bedd6226"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC10-S004",
+      "slot": "SC10-S004",
+      "speaker": "Assistant",
+      "was_voice": "gfzdpspr5fdp",
+      "was_audio_id": "806716ca-d7e9-4761-a1bb-8e58f554e4b7",
+      "wanted": "bedd6226"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC10-S006",
+      "slot": "SC10-S006",
+      "speaker": "Assistant",
+      "was_voice": "gfzdpspr5fdp",
+      "was_audio_id": "8b2f7281-b415-4b2f-9254-7e684bbd8e12",
+      "wanted": "bedd6226"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC10-S008",
+      "slot": "SC10-S008",
+      "speaker": "Assistant",
+      "was_voice": "gfzdpspr5fdp",
+      "was_audio_id": "b2912cbf-ec95-49ea-8f24-9eb2a98c91bd",
+      "wanted": "bedd6226"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC10-S010",
+      "slot": "SC10-S010",
+      "speaker": "Narrator",
+      "was_voice": "xai_gfzdpspr5fdp",
+      "was_audio_id": "3029b4d9-3be9-40b2-b28b-626a7b85659f",
+      "wanted": "bedd6226"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC11-S013",
+      "slot": "SC11-S013",
+      "speaker": "Narrator",
+      "was_voice": "xai_gfzdpspr5fdp",
+      "was_audio_id": "01569443-8c7b-4615-b906-217adb00959d",
+      "wanted": "bedd6226"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC12-S002",
+      "slot": "SC12-S002",
+      "speaker": "Pharmacist",
+      "was_voice": "gfzdpspr5fdp",
+      "was_audio_id": "529cc66b-faf3-478e-89ff-765e7f507f1e",
+      "wanted": "bedd6226"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC12-S004",
+      "slot": "SC12-S004",
+      "speaker": "Pharmacist",
+      "was_voice": "gfzdpspr5fdp",
+      "was_audio_id": "e492f255-ab87-46e2-a41a-130c8e3ea8dc",
+      "wanted": "bedd6226"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC12-S006",
+      "slot": "SC12-S006",
+      "speaker": "Pharmacist",
+      "was_voice": "xai_gfzdpspr5fdp",
+      "was_audio_id": "c635a6a5-3793-44bf-a15d-b9d219c09653",
+      "wanted": "bedd6226"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC12-S008",
+      "slot": "SC12-S008",
+      "speaker": "Pharmacist",
+      "was_voice": "gfzdpspr5fdp",
+      "was_audio_id": "a52ea7b7-f28a-44ac-9af0-93106c1ec052",
+      "wanted": "bedd6226"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC12-S010",
+      "slot": "SC12-S010",
+      "speaker": "Narrator",
+      "was_voice": "xai_gfzdpspr5fdp",
+      "was_audio_id": "d7086f29-9bd2-4037-a7d5-5ff1ffaeb46c",
+      "wanted": "bedd6226"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC13-S002",
+      "slot": "SC13-S002",
+      "speaker": "Local",
+      "was_voice": "gfzdpspr5fdp",
+      "was_audio_id": "c107eebc-5d85-44c9-b2b4-8ab5c981f5a0",
+      "wanted": "bedd6226"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC13-S004",
+      "slot": "SC13-S004",
+      "speaker": "Local",
+      "was_voice": "gfzdpspr5fdp",
+      "was_audio_id": "99c53cd4-4106-43c9-9ba5-8d6c214524aa",
+      "wanted": "bedd6226"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC13-S005",
+      "slot": "SC13-S005",
+      "speaker": "Local",
+      "was_voice": "gfzdpspr5fdp",
+      "was_audio_id": "62d88562-69b7-4f3f-a701-ef5c9f01a47c",
+      "wanted": "bedd6226"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC13-S007",
+      "slot": "SC13-S007",
+      "speaker": "Local",
+      "was_voice": "gfzdpspr5fdp",
+      "was_audio_id": "e3de4e63-35f2-4971-8831-05976c0101a1",
+      "wanted": "bedd6226"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC13-S009",
+      "slot": "SC13-S009",
+      "speaker": "Local",
+      "was_voice": "gfzdpspr5fdp",
+      "was_audio_id": "6e8b6e39-4545-4856-9cd3-239bf477bab6",
+      "wanted": "bedd6226"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC13-S011",
+      "slot": "SC13-S011",
+      "speaker": "Narrator",
+      "was_voice": "xai_gfzdpspr5fdp",
+      "was_audio_id": "03b2d90b-63f4-4422-9d84-0075ee5ffaea",
+      "wanted": "bedd6226"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC14-S002",
+      "slot": "SC14-S002",
+      "speaker": "Driver",
+      "was_voice": "xai_gfzdpspr5fdp",
+      "was_audio_id": "4f28fb24-6d2a-4053-a9c5-40f9ea688a66",
+      "wanted": "bedd6226"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC14-S004",
+      "slot": "SC14-S004",
+      "speaker": "Driver",
+      "was_voice": "gfzdpspr5fdp",
+      "was_audio_id": "9a188c17-1c3b-4e99-995e-ce781c128f13",
+      "wanted": "bedd6226"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC14-S006",
+      "slot": "SC14-S006",
+      "speaker": "Driver",
+      "was_voice": "gfzdpspr5fdp",
+      "was_audio_id": "74af78bc-65b1-48c9-9b2e-50ae65f388f9",
+      "wanted": "bedd6226"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC14-S007",
+      "slot": "SC14-S007",
+      "speaker": "Driver",
+      "was_voice": "xai_gfzdpspr5fdp",
+      "was_audio_id": "d6a71cb9-16f4-414e-9fe3-a3fffd30e3ae",
+      "wanted": "bedd6226"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC14-S009",
+      "slot": "SC14-S009",
+      "speaker": "Driver",
+      "was_voice": "xai_gfzdpspr5fdp",
+      "was_audio_id": "19f3cc42-ea0e-4a83-b3cb-17611d3050d1",
+      "wanted": "bedd6226"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC14-S010",
+      "slot": "SC14-S010",
+      "speaker": "Narrator",
+      "was_voice": "xai_gfzdpspr5fdp",
+      "was_audio_id": "000d416d-ca51-4ec9-b3fe-6d04b1e6b0dc",
+      "wanted": "bedd6226"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC15-S001",
+      "slot": "SC15-S001",
+      "speaker": "Learner",
+      "was_voice": "xai_bedd6226",
+      "was_audio_id": "4da0fb79-bf78-472b-b75e-05aaa8ddef33",
+      "wanted": "gfzdpspr5fdp"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC15-S002",
+      "slot": "SC15-S002",
+      "speaker": "Learner",
+      "was_voice": "xai_bedd6226",
+      "was_audio_id": "65cd2b55-2503-4e6d-9ab6-d923b14b8a9c",
+      "wanted": "gfzdpspr5fdp"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC15-S003",
+      "slot": "SC15-S003",
+      "speaker": "Learner",
+      "was_voice": "xai_bedd6226",
+      "was_audio_id": "c0f0de9a-0666-46ac-93d3-2b50370001b7",
+      "wanted": "gfzdpspr5fdp"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC15-S004",
+      "slot": "SC15-S004",
+      "speaker": "Learner",
+      "was_voice": "xai_bedd6226",
+      "was_audio_id": "2b6cba8e-c219-4078-907a-f533f8fa52aa",
+      "wanted": "gfzdpspr5fdp"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC15-S005",
+      "slot": "SC15-S005",
+      "speaker": "Learner",
+      "was_voice": "xai_bedd6226",
+      "was_audio_id": "a6104365-ef89-4f2d-9768-5326fb2873fe",
+      "wanted": "gfzdpspr5fdp"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC15-S006",
+      "slot": "SC15-S006",
+      "speaker": "Learner",
+      "was_voice": "xai_bedd6226",
+      "was_audio_id": "8911738e-79fb-4afb-882b-af0177b7d26a",
+      "wanted": "gfzdpspr5fdp"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC15-S007",
+      "slot": "SC15-S007",
+      "speaker": "Learner",
+      "was_voice": "xai_bedd6226",
+      "was_audio_id": "2cab7efe-9da3-465a-93b3-2f5de67ef84e",
+      "wanted": "gfzdpspr5fdp"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC15-S008",
+      "slot": "SC15-S008",
+      "speaker": "Learner",
+      "was_voice": "xai_bedd6226",
+      "was_audio_id": "a55e6631-3de1-4d0d-aaa6-bccad7a6a7c4",
+      "wanted": "gfzdpspr5fdp"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC15-S009",
+      "slot": "SC15-S009",
+      "speaker": "Learner",
+      "was_voice": "xai_bedd6226",
+      "was_audio_id": "bb970866-78d0-429a-a511-00b33d27361a",
+      "wanted": "gfzdpspr5fdp"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC15-S010",
+      "slot": "SC15-S010",
+      "speaker": "Learner",
+      "was_voice": "xai_bedd6226",
+      "was_audio_id": "4f29e819-bf6c-4168-89a1-8165714f94ed",
+      "wanted": "gfzdpspr5fdp"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC15-S011",
+      "slot": "SC15-S011",
+      "speaker": "Narrator",
+      "was_voice": "xai_gfzdpspr5fdp",
+      "was_audio_id": "f15c3491-73dd-4f73-abd6-c9948be97026",
+      "wanted": "bedd6226"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC16-S001",
+      "slot": "SC16-S001",
+      "speaker": "Learner",
+      "was_voice": "xai_bedd6226",
+      "was_audio_id": "f7ce3e9f-5a7a-4d01-8614-bfa64d8a340f",
+      "wanted": "gfzdpspr5fdp"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC16-S002",
+      "slot": "SC16-S002",
+      "speaker": "Learner",
+      "was_voice": "xai_bedd6226",
+      "was_audio_id": "e9c01f66-a986-4076-bc71-276de1e2d368",
+      "wanted": "gfzdpspr5fdp"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC16-S003",
+      "slot": "SC16-S003",
+      "speaker": "Learner",
+      "was_voice": "xai_bedd6226",
+      "was_audio_id": "42caa6a6-3c45-4dfe-a386-540dc71b7e64",
+      "wanted": "gfzdpspr5fdp"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC16-S004",
+      "slot": "SC16-S004",
+      "speaker": "Learner",
+      "was_voice": "xai_bedd6226",
+      "was_audio_id": "cace1789-0b00-4810-9e37-9a6577e8af9f",
+      "wanted": "gfzdpspr5fdp"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC16-S005",
+      "slot": "SC16-S005",
+      "speaker": "Learner",
+      "was_voice": "xai_bedd6226",
+      "was_audio_id": "bf50935f-c1b0-41e9-9760-dc9b9e449b14",
+      "wanted": "gfzdpspr5fdp"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC16-S006",
+      "slot": "SC16-S006",
+      "speaker": "Learner",
+      "was_voice": "xai_bedd6226",
+      "was_audio_id": "d2d26393-ba19-4cbf-9f1f-a508934a2ff0",
+      "wanted": "gfzdpspr5fdp"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC16-S007",
+      "slot": "SC16-S007",
+      "speaker": "Learner",
+      "was_voice": "xai_bedd6226",
+      "was_audio_id": "bee32d37-de7a-402e-a0b1-c2076d3bfa34",
+      "wanted": "gfzdpspr5fdp"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC16-S008",
+      "slot": "SC16-S008",
+      "speaker": "Learner",
+      "was_voice": "xai_bedd6226",
+      "was_audio_id": "1cd8d56e-3ace-4d78-a055-83da3d302b0e",
+      "wanted": "gfzdpspr5fdp"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC16-S009",
+      "slot": "SC16-S009",
+      "speaker": "Learner",
+      "was_voice": "xai_bedd6226",
+      "was_audio_id": "8fb6dc50-7337-47fc-a48d-b479f0b2ed2d",
+      "wanted": "gfzdpspr5fdp"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC16-S010",
+      "slot": "SC16-S010",
+      "speaker": "Learner",
+      "was_voice": "xai_bedd6226",
+      "was_audio_id": "742c049b-2213-4a4e-b89d-f49910b35ad5",
+      "wanted": "gfzdpspr5fdp"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC16-S011",
+      "slot": "SC16-S011",
+      "speaker": "Narrator",
+      "was_voice": "xai_gfzdpspr5fdp",
+      "was_audio_id": "1059fda2-08fb-4ea6-85c1-9da66b21e5ab",
+      "wanted": "bedd6226"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC17-S001",
+      "slot": "SC17-S001",
+      "speaker": "Learner",
+      "was_voice": "xai_bedd6226",
+      "was_audio_id": "6d4f2544-03e1-4f29-8ede-cc1bb98daf88",
+      "wanted": "gfzdpspr5fdp"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC17-S002",
+      "slot": "SC17-S002",
+      "speaker": "Learner",
+      "was_voice": "xai_bedd6226",
+      "was_audio_id": "347e8c04-76fa-4c21-91d0-d0d31f3828b7",
+      "wanted": "gfzdpspr5fdp"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC17-S003",
+      "slot": "SC17-S003",
+      "speaker": "Learner",
+      "was_voice": "xai_bedd6226",
+      "was_audio_id": "3c3444fa-9021-4f1e-a172-85292528617b",
+      "wanted": "gfzdpspr5fdp"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC17-S004",
+      "slot": "SC17-S004",
+      "speaker": "Learner",
+      "was_voice": "xai_bedd6226",
+      "was_audio_id": "0d02af25-052b-4474-8288-4dca8bfdbb67",
+      "wanted": "gfzdpspr5fdp"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC17-S005",
+      "slot": "SC17-S005",
+      "speaker": "Learner",
+      "was_voice": "xai_bedd6226",
+      "was_audio_id": "1ec04b2e-49e7-42d1-b3c6-6e3a6c9b0cc7",
+      "wanted": "gfzdpspr5fdp"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC17-S006",
+      "slot": "SC17-S006",
+      "speaker": "Learner",
+      "was_voice": "xai_bedd6226",
+      "was_audio_id": "271304e7-1596-44cd-add0-162e5a847564",
+      "wanted": "gfzdpspr5fdp"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC17-S007",
+      "slot": "SC17-S007",
+      "speaker": "Learner",
+      "was_voice": "xai_bedd6226",
+      "was_audio_id": "71676ca5-ee2d-4ad5-afa2-30c673b4ff8f",
+      "wanted": "gfzdpspr5fdp"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC17-S008",
+      "slot": "SC17-S008",
+      "speaker": "Learner",
+      "was_voice": "xai_bedd6226",
+      "was_audio_id": "da6a2f16-c7dc-4b8d-a8a5-843fd88e3b31",
+      "wanted": "gfzdpspr5fdp"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC17-S009",
+      "slot": "SC17-S009",
+      "speaker": "Learner",
+      "was_voice": "xai_bedd6226",
+      "was_audio_id": "d620f05d-f3d4-468e-99ba-3694342409ed",
+      "wanted": "gfzdpspr5fdp"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC17-S010",
+      "slot": "SC17-S010",
+      "speaker": "Learner",
+      "was_voice": "xai_bedd6226",
+      "was_audio_id": "9aafec8e-5b1c-4fa4-8465-10f6182501c9",
+      "wanted": "gfzdpspr5fdp"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC17-S011",
+      "slot": "SC17-S011",
+      "speaker": "Narrator",
+      "was_voice": "xai_gfzdpspr5fdp",
+      "was_audio_id": "794ae743-751e-4e46-9191-befaae782946",
+      "wanted": "bedd6226"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC18-S001",
+      "slot": "SC18-S001",
+      "speaker": "Learner",
+      "was_voice": "xai_bedd6226",
+      "was_audio_id": "d7386a83-fc6f-4916-a290-413e10576774",
+      "wanted": "gfzdpspr5fdp"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC18-S002",
+      "slot": "SC18-S002",
+      "speaker": "Learner",
+      "was_voice": "xai_bedd6226",
+      "was_audio_id": "60425023-d72e-4044-a78d-73a88d8bada4",
+      "wanted": "gfzdpspr5fdp"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC18-S003",
+      "slot": "SC18-S003",
+      "speaker": "Learner",
+      "was_voice": "xai_bedd6226",
+      "was_audio_id": "3a14384f-9fbd-49ff-8889-62df07a09294",
+      "wanted": "gfzdpspr5fdp"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC18-S004",
+      "slot": "SC18-S004",
+      "speaker": "Learner",
+      "was_voice": "xai_bedd6226",
+      "was_audio_id": "bedde8c8-8463-4566-bf4f-212731e95946",
+      "wanted": "gfzdpspr5fdp"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC18-S005",
+      "slot": "SC18-S005",
+      "speaker": "Learner",
+      "was_voice": "xai_bedd6226",
+      "was_audio_id": "32850ce4-81b4-4073-a74a-1010b7df9aee",
+      "wanted": "gfzdpspr5fdp"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC18-S006",
+      "slot": "SC18-S006",
+      "speaker": "Learner",
+      "was_voice": "xai_bedd6226",
+      "was_audio_id": "9bf37215-f229-4f8d-ab50-8d935182e413",
+      "wanted": "gfzdpspr5fdp"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC18-S007",
+      "slot": "SC18-S007",
+      "speaker": "Learner",
+      "was_voice": "xai_bedd6226",
+      "was_audio_id": "4dc96ef1-c03b-40d2-9075-2cde997d2ced",
+      "wanted": "gfzdpspr5fdp"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC18-S008",
+      "slot": "SC18-S008",
+      "speaker": "Learner",
+      "was_voice": "xai_bedd6226",
+      "was_audio_id": "4fb74247-1c55-4322-bee4-adb801dc0414",
+      "wanted": "gfzdpspr5fdp"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC18-S009",
+      "slot": "SC18-S009",
+      "speaker": "Learner",
+      "was_voice": "xai_bedd6226",
+      "was_audio_id": "b16a5ed5-c920-489c-93a7-5c006e8ef690",
+      "wanted": "gfzdpspr5fdp"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC18-S010",
+      "slot": "SC18-S010",
+      "speaker": "Learner",
+      "was_voice": "xai_bedd6226",
+      "was_audio_id": "1d0b2e90-81a3-4091-89fe-a70267e89831",
+      "wanted": "gfzdpspr5fdp"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC18-S011",
+      "slot": "SC18-S011",
+      "speaker": "Narrator",
+      "was_voice": "xai_gfzdpspr5fdp",
+      "was_audio_id": "2aa5bd29-cce8-45a7-804d-67d2d0ac479b",
+      "wanted": "bedd6226"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC19-S001",
+      "slot": "SC19-S001",
+      "speaker": "Learner",
+      "was_voice": "xai_bedd6226",
+      "was_audio_id": "fc6cbe7b-2e8d-4288-a588-90fae3b30e57",
+      "wanted": "gfzdpspr5fdp"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC19-S002",
+      "slot": "SC19-S002",
+      "speaker": "Learner",
+      "was_voice": "xai_bedd6226",
+      "was_audio_id": "61592cc3-93e9-4275-8920-387f4a2115ba",
+      "wanted": "gfzdpspr5fdp"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC19-S003",
+      "slot": "SC19-S003",
+      "speaker": "Learner",
+      "was_voice": "xai_bedd6226",
+      "was_audio_id": "8c4c0a13-860e-4ec5-aa05-d2a4fd4fe984",
+      "wanted": "gfzdpspr5fdp"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC19-S004",
+      "slot": "SC19-S004",
+      "speaker": "Learner",
+      "was_voice": "xai_bedd6226",
+      "was_audio_id": "0353d1a1-6337-4f49-8d58-affc6a74998c",
+      "wanted": "gfzdpspr5fdp"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC19-S005",
+      "slot": "SC19-S005",
+      "speaker": "Learner",
+      "was_voice": "xai_bedd6226",
+      "was_audio_id": "f067b71c-6e3f-47b0-b2df-2d49b51ea5d3",
+      "wanted": "gfzdpspr5fdp"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC19-S006",
+      "slot": "SC19-S006",
+      "speaker": "Learner",
+      "was_voice": "xai_bedd6226",
+      "was_audio_id": "76e3df76-940f-4e4c-bb30-162113d9f8fc",
+      "wanted": "gfzdpspr5fdp"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC19-S007",
+      "slot": "SC19-S007",
+      "speaker": "Learner",
+      "was_voice": "xai_bedd6226",
+      "was_audio_id": "0bc9e54e-0036-42f7-b729-5bc58872cb65",
+      "wanted": "gfzdpspr5fdp"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC19-S008",
+      "slot": "SC19-S008",
+      "speaker": "Learner",
+      "was_voice": "xai_bedd6226",
+      "was_audio_id": "d397d671-84cc-4055-8d9a-c83265422175",
+      "wanted": "gfzdpspr5fdp"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC19-S009",
+      "slot": "SC19-S009",
+      "speaker": "Learner",
+      "was_voice": "xai_bedd6226",
+      "was_audio_id": "6358bf42-6a64-4887-b84e-f42e1d5dc5dd",
+      "wanted": "gfzdpspr5fdp"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC19-S010",
+      "slot": "SC19-S010",
+      "speaker": "Learner",
+      "was_voice": "xai_bedd6226",
+      "was_audio_id": "52c46199-a3ff-4c8a-88cb-55b02efa8e09",
+      "wanted": "gfzdpspr5fdp"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC19-S011",
+      "slot": "SC19-S011",
+      "speaker": "Narrator",
+      "was_voice": "xai_gfzdpspr5fdp",
+      "was_audio_id": "49ee5b37-ef46-493d-9c37-05df8a067b00",
+      "wanted": "bedd6226"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC20-S001",
+      "slot": "SC20-S001",
+      "speaker": "Learner",
+      "was_voice": "xai_bedd6226",
+      "was_audio_id": "9227e244-b458-426c-a33f-1848dacc319d",
+      "wanted": "gfzdpspr5fdp"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC20-S002",
+      "slot": "SC20-S002",
+      "speaker": "Learner",
+      "was_voice": "xai_bedd6226",
+      "was_audio_id": "60f01b01-4737-423b-8581-39ff6e9e1f83",
+      "wanted": "gfzdpspr5fdp"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC20-S003",
+      "slot": "SC20-S003",
+      "speaker": "Learner",
+      "was_voice": "xai_bedd6226",
+      "was_audio_id": "74cae000-fd2c-4bee-beeb-dd251afcad16",
+      "wanted": "gfzdpspr5fdp"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC20-S004",
+      "slot": "SC20-S004",
+      "speaker": "Learner",
+      "was_voice": "xai_bedd6226",
+      "was_audio_id": "6b22facc-e075-46f6-9787-a53a035e74fb",
+      "wanted": "gfzdpspr5fdp"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC20-S005",
+      "slot": "SC20-S005",
+      "speaker": "Learner",
+      "was_voice": "xai_bedd6226",
+      "was_audio_id": "6d8c6798-ff0b-4a26-8051-e2cf69f20d0c",
+      "wanted": "gfzdpspr5fdp"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC20-S006",
+      "slot": "SC20-S006",
+      "speaker": "Learner",
+      "was_voice": "xai_bedd6226",
+      "was_audio_id": "1bbffa78-5d32-44a2-b23c-ad94d82fad53",
+      "wanted": "gfzdpspr5fdp"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC20-S007",
+      "slot": "SC20-S007",
+      "speaker": "Learner",
+      "was_voice": "xai_bedd6226",
+      "was_audio_id": "385fb57c-e066-472e-a388-83f6328ae893",
+      "wanted": "gfzdpspr5fdp"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC20-S008",
+      "slot": "SC20-S008",
+      "speaker": "Learner",
+      "was_voice": "xai_bedd6226",
+      "was_audio_id": "a6da8970-7f28-4d11-bf98-09c2c5098929",
+      "wanted": "gfzdpspr5fdp"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC20-S009",
+      "slot": "SC20-S009",
+      "speaker": "Learner",
+      "was_voice": "xai_bedd6226",
+      "was_audio_id": "22ec9cb8-4b80-40ae-8956-1e389122137a",
+      "wanted": "gfzdpspr5fdp"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC20-S010",
+      "slot": "SC20-S010",
+      "speaker": "Learner",
+      "was_voice": "xai_bedd6226",
+      "was_audio_id": "9daba5bc-64e6-418d-8e83-3963f7613093",
+      "wanted": "gfzdpspr5fdp"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC20-S011",
+      "slot": "SC20-S011",
+      "speaker": "Narrator",
+      "was_voice": "xai_gfzdpspr5fdp",
+      "was_audio_id": "aafc754a-d52d-4d84-842b-717f2fc753a5",
+      "wanted": "bedd6226"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC21-S001",
+      "slot": "SC21-S001",
+      "speaker": "Learner",
+      "was_voice": "xai_bedd6226",
+      "was_audio_id": "d4d1f1fe-ab0f-4b27-8f6c-3fa0aca2e2df",
+      "wanted": "gfzdpspr5fdp"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC21-S002",
+      "slot": "SC21-S002",
+      "speaker": "Learner",
+      "was_voice": "xai_bedd6226",
+      "was_audio_id": "c2ba22ff-30bc-4988-ac05-0d94a3911ed4",
+      "wanted": "gfzdpspr5fdp"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC21-S003",
+      "slot": "SC21-S003",
+      "speaker": "Learner",
+      "was_voice": "xai_bedd6226",
+      "was_audio_id": "211c5bc3-03fc-4ce4-a8e0-46748830f27e",
+      "wanted": "gfzdpspr5fdp"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC21-S004",
+      "slot": "SC21-S004",
+      "speaker": "Learner",
+      "was_voice": "xai_bedd6226",
+      "was_audio_id": "72c3d52c-5328-4e84-87a8-57b76bd07f62",
+      "wanted": "gfzdpspr5fdp"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC21-S005",
+      "slot": "SC21-S005",
+      "speaker": "Learner",
+      "was_voice": "xai_bedd6226",
+      "was_audio_id": "315350ca-440c-46b5-9540-b74692753286",
+      "wanted": "gfzdpspr5fdp"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC21-S006",
+      "slot": "SC21-S006",
+      "speaker": "Learner",
+      "was_voice": "xai_bedd6226",
+      "was_audio_id": "d6e004ae-c631-4249-a287-43eb98afe6db",
+      "wanted": "gfzdpspr5fdp"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC21-S007",
+      "slot": "SC21-S007",
+      "speaker": "Learner",
+      "was_voice": "xai_bedd6226",
+      "was_audio_id": "ad6191ae-23fc-446f-8913-484a7c1d30aa",
+      "wanted": "gfzdpspr5fdp"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC21-S008",
+      "slot": "SC21-S008",
+      "speaker": "Learner",
+      "was_voice": "xai_bedd6226",
+      "was_audio_id": "c64090dd-7089-4c43-b81a-33c5013d9290",
+      "wanted": "gfzdpspr5fdp"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC21-S009",
+      "slot": "SC21-S009",
+      "speaker": "Learner",
+      "was_voice": "xai_bedd6226",
+      "was_audio_id": "4dc721b3-00e1-4994-9968-fb756aa48194",
+      "wanted": "gfzdpspr5fdp"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC21-S010",
+      "slot": "SC21-S010",
+      "speaker": "Learner",
+      "was_voice": "xai_bedd6226",
+      "was_audio_id": "9414f5b0-2d15-4d99-abd2-a42f40954d12",
+      "wanted": "gfzdpspr5fdp"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC21-S011",
+      "slot": "SC21-S011",
+      "speaker": "Learner",
+      "was_voice": "xai_bedd6226",
+      "was_audio_id": "ecd0ee3b-0192-478e-a670-a134fb82d4b9",
+      "wanted": "gfzdpspr5fdp"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC21-S012",
+      "slot": "SC21-S012",
+      "speaker": "Learner",
+      "was_voice": "xai_bedd6226",
+      "was_audio_id": "c5a53bc1-a49f-4ac6-a609-550d5d52c2a9",
+      "wanted": "gfzdpspr5fdp"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC21-S013",
+      "slot": "SC21-S013",
+      "speaker": "Learner",
+      "was_voice": "xai_bedd6226",
+      "was_audio_id": "1c8629f9-d349-4c6e-a655-bcfa35205da2",
+      "wanted": "gfzdpspr5fdp"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC21-S014",
+      "slot": "SC21-S014",
+      "speaker": "Narrator",
+      "was_voice": "xai_gfzdpspr5fdp",
+      "was_audio_id": "8f3196e2-0ca5-4ea4-be0d-c80c257db48f",
+      "wanted": "bedd6226"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC22-S001",
+      "slot": "SC22-S001",
+      "speaker": "Learner",
+      "was_voice": "xai_bedd6226",
+      "was_audio_id": "abf76b85-74dd-4856-962f-978241f541d1",
+      "wanted": "gfzdpspr5fdp"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC22-S002",
+      "slot": "SC22-S002",
+      "speaker": "Friend",
+      "was_voice": "gfzdpspr5fdp",
+      "was_audio_id": "bf71a2b8-0cd5-4780-8664-c45652aa9b43",
+      "wanted": "bedd6226"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC22-S003",
+      "slot": "SC22-S003",
+      "speaker": "Learner",
+      "was_voice": "bedd6226",
+      "was_audio_id": "7a3158f1-85a1-4179-a456-c9e1c685e9cb",
+      "wanted": "gfzdpspr5fdp"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC22-S004",
+      "slot": "SC22-S004",
+      "speaker": "Friend",
+      "was_voice": "gfzdpspr5fdp",
+      "was_audio_id": "76711892-2c93-4245-88ea-aee7195e6ce3",
+      "wanted": "bedd6226"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC22-S005",
+      "slot": "SC22-S005",
+      "speaker": "Learner",
+      "was_voice": "bedd6226",
+      "was_audio_id": "45297656-d3c2-4718-b437-ad332aae3934",
+      "wanted": "gfzdpspr5fdp"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC22-S006",
+      "slot": "SC22-S006",
+      "speaker": "Friend",
+      "was_voice": "gfzdpspr5fdp",
+      "was_audio_id": "6471076a-e2dc-45f2-9c34-52cd3ba5c76a",
+      "wanted": "bedd6226"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC22-S007",
+      "slot": "SC22-S007",
+      "speaker": "Learner",
+      "was_voice": "bedd6226",
+      "was_audio_id": "4bc1fa66-73b3-4873-ad0e-1f9748630bb3",
+      "wanted": "gfzdpspr5fdp"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC22-S008",
+      "slot": "SC22-S008",
+      "speaker": "Friend",
+      "was_voice": "gfzdpspr5fdp",
+      "was_audio_id": "d83427f8-3263-42bc-9814-418c8839ec2e",
+      "wanted": "bedd6226"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC22-S009",
+      "slot": "SC22-S009",
+      "speaker": "Learner",
+      "was_voice": "bedd6226",
+      "was_audio_id": "2727ee78-5157-489a-b240-d7cbf06942e9",
+      "wanted": "gfzdpspr5fdp"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC22-S010",
+      "slot": "SC22-S010",
+      "speaker": "Friend",
+      "was_voice": "gfzdpspr5fdp",
+      "was_audio_id": "55b29abc-7637-4ea9-8a00-29302f799665",
+      "wanted": "bedd6226"
+    },
+    {
+      "id": "hrv_for_eng:pod-0-unrecorded:SC22-S011",
+      "slot": "SC22-S011",
+      "speaker": "Learner",
+      "was_voice": "xai_bedd6226",
+      "was_audio_id": "8fcd2ddc-cd51-4ead-a7a8-dea652da77be",
+      "wanted": "gfzdpspr5fdp"
+    }
+  ],
+  "kept_target": 146,
+  "kept_known": 81
+}

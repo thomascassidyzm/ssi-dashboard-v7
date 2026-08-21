@@ -1,0 +1,42 @@
+{
+  "pod_id": "hrv_for_eng:pod-0-unrecorded",
+  "checked_at": "2026-08-21T13:15:54.121Z",
+  "rows": 231,
+  "clips": 462,
+  "failures": [],
+  "live_pod": {
+    "pod_id": "hrv_for_eng:pod-0",
+    "rows": 142,
+    "target_clips": 142,
+    "known_clips": 142
+  },
+  "voice_distribution": {
+    "target:hr-HR-GabrijelaNeural": 81,
+    "known:bedd6226": 81,
+    "target:hr-HR-SreckoNeural": 150,
+    "known:gfzdpspr5fdp": 150
+  },
+  "notes": [
+    {
+      "slot": "SC09-S005",
+      "track": "known",
+      "note": "punctuation-only difference between clip and row",
+      "clip_text": "Excuse me — do you have anything gluten-free? Or for vegetarians?",
+      "row_text": "Excuse me - do you have anything gluten-free? Or for vegetarians?"
+    },
+    {
+      "slot": "SC12-S001",
+      "track": "known",
+      "note": "punctuation-only difference between clip and row",
+      "clip_text": "Good morning. I'm not feeling great — could you recommend something?",
+      "row_text": "Good morning. I'm not feeling great - could you recommend something?"
+    },
+    {
+      "slot": "SC20-S008",
+      "track": "known",
+      "note": "punctuation-only difference between clip and row",
+      "clip_text": "That's very kind of you!",
+      "row_text": "That's very kind of you."
+    }
+  ]
+}
