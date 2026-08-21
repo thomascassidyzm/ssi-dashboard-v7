@@ -1,0 +1,29 @@
+{
+  "src": "cym_n_for_eng",
+  "dst": "cym_n_for_eng_new",
+  "apply": false,
+  "at": "2026-08-21T16:50:03.913Z",
+  "steps": [
+    {
+      "label": "courses row",
+      "dryRun": true
+    },
+    {
+      "label": "course_seeds",
+      "dryRun": true
+    },
+    {
+      "label": "course_legos",
+      "dryRun": true
+    },
+    {
+      "label": "course_practice_phrases",
+      "dryRun": true
+    }
+  ],
+  "source_counts": {
+    "course_seeds": 668,
+    "course_legos": 635,
+    "course_practice_phrases": 4997
+  }
+}

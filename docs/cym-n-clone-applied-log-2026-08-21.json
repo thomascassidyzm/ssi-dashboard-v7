@@ -1,0 +1,35 @@
+{
+  "src": "cym_n_for_eng",
+  "dst": "cym_nnew_for_eng",
+  "apply": true,
+  "at": "2026-08-21T16:50:21.000Z",
+  "steps": [
+    {
+      "label": "courses row",
+      "rows": 1
+    },
+    {
+      "label": "course_seeds",
+      "rows": 668
+    },
+    {
+      "label": "course_legos",
+      "rows": 635
+    },
+    {
+      "label": "course_practice_phrases",
+      "rows": 4997
+    }
+  ],
+  "source_counts": {
+    "course_seeds": 668,
+    "course_legos": 635,
+    "course_practice_phrases": 4997
+  },
+  "clone_counts": {
+    "course_seeds": 668,
+    "course_legos": 635,
+    "course_practice_phrases": 4997
+  },
+  "live_unchanged": true
+}
