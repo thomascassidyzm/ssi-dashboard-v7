@@ -271,3 +271,46 @@ describe('the recorder never ships a phantom take', () => {
     rec.stopFlow()
   })
 })
+
+describe('a take can say what recorded it', () => {
+  beforeEach(() => {
+    vi.useFakeTimers()
+    makeAudioGraph()
+    FakeMediaRecorder.instances = []
+    vi.stubGlobal('MediaRecorder', FakeMediaRecorder)
+  })
+  afterEach(() => {
+    vi.useRealTimers()
+    vi.unstubAllGlobals()
+    delete global.AudioContext
+  })
+
+  async function withStream(stream) {
+    vi.stubGlobal('navigator', {
+      mediaDevices: { getUserMedia: async () => stream },
+      userAgent: 'TestBrowser/1.0'
+    })
+    const rec = useContinuousRecorder({ calibrationMs: 0 })
+    await rec.startFlow()
+    return rec
+  }
+
+  it('names the granted microphone and the browser', async () => {
+    const rec = await withStream({
+      getTracks: () => [{ stop() {} }],
+      getAudioTracks: () => [{ label: 'Scarlett Solo USB' }]
+    })
+    // The mic actually in use plus the browser it ran in — the field that was
+    // NULL on all 154 archived takes when the clipping had to be diagnosed.
+    expect(rec.deviceLabel.value).toBe('Scarlett Solo USB \u00b7 TestBrowser/1.0')
+    rec.stopFlow()
+  })
+
+  it('still records when the stream cannot describe itself', async () => {
+    // A browser that exposes no track label must not cost us the session.
+    const rec = await withStream({ getTracks: () => [{ stop() {} }] })
+    expect(rec.isFlowMode.value).toBe(true)
+    expect(rec.deviceLabel.value).toBe('default mic \u00b7 TestBrowser/1.0')
+    rec.stopFlow()
+  })
+})

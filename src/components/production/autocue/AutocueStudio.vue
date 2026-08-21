@@ -867,7 +867,12 @@ function queueTakeUpload(segment, phrase, itemIndex) {
       recorded_by: 'autocue-studio',
       recorded_at: new Date().toISOString(),
       session_id: state.scriptSessionId,
-      mode: 'continuous'
+      mode: 'continuous',
+      // The mic and browser this session captured on. The server already maps
+      // and stores this field for the recordist surface; the script surface was
+      // simply never sending it, which is why 154 archived takes could not say
+      // what recorded them.
+      recording_device: continuousRecorder.deviceLabel.value || null
     },
     itemIndex
   })

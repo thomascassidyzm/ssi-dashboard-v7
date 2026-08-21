@@ -77,6 +77,14 @@ export function useContinuousRecorder(config: Partial<ContinuousRecorderConfig> 
   const segmentCount = ref(0)
   const lastSegment = ref<RecordedSegment | null>(null)
   const error = ref<string | null>(null)
+  // What actually captured this session: the granted microphone plus the
+  // browser. recording_device was NULL on every archived script take, so when
+  // the clipping was diagnosed the code path had to be guessed from the blob's
+  // mime string — and the surface that was clipping was precisely the one that
+  // could not say what it ran on. The recordist surface fills this already;
+  // the script surface never did. Read off the granted track, so it is the mic
+  // in use rather than the one a picker last claimed.
+  const deviceLabel = ref<string | null>(null)
   // Reactive mirror of cfg.expectedChunks. cfg is a plain object, so a computed
   // over it would never re-evaluate — the studio's chunk indicator needs to
   // repaint when the autocue advances to a phrase with a different chunk count.
@@ -281,6 +289,18 @@ export function useContinuousRecorder(config: Partial<ContinuousRecorderConfig> 
           autoGainControl: false
         }
       })
+
+      // Name the take's origin while the track is in hand. Truncated to the
+      // provenance column's working width; never fatal — a session must not
+      // fail to record because it could not describe itself.
+      try {
+        const tracks = stream.getAudioTracks?.() || []
+        const label = tracks[0]?.label || 'default mic'
+        const ua = (typeof navigator !== 'undefined' && navigator.userAgent) || ''
+        deviceLabel.value = [label, ua].filter(Boolean).join(' · ').slice(0, 300)
+      } catch {
+        deviceLabel.value = null
+      }
 
       // Start VAD listening (share the stream)
       await vad.startListening(stream)
@@ -493,6 +513,7 @@ export function useContinuousRecorder(config: Partial<ContinuousRecorderConfig> 
     segmentCount,
     lastSegment,
     error,
+    deviceLabel,
 
     // Actions
     startFlow,
