@@ -24,6 +24,7 @@ const fs = require('fs');
 require('dotenv').config({ path: path.join(__dirname, '..', '..', '.env') });
 const express = require('express');
 const { createClient } = require('@supabase/supabase-js');
+const { reconcileFlags, resolveKeyFor } = require('./flag-resolution.cjs');
 
 const COURSE = (process.argv.find((a, i) => i >= 2 && !a.startsWith('--')) || 'fin_for_eng').trim();
 const ENFORCE_ON_LOAD = process.argv.includes('--enforce-on-load');
@@ -175,6 +176,37 @@ async function setApprovedAt(seedNumber, value) {
   if (seed) seed.approved_at = value;
 }
 
+// ---------- flags that close themselves ----------
+// A flag left on a row that has since been fixed (edited, deleted, or answered by
+// phrases added to its seed) closes here, on the live read, and the row goes back
+// to unchecked so it comes round again. If its seed was approved, that approval
+// goes too: Kai's ruling is that a resolved flag leaves the row UNACCEPTED, for
+// him to look at and approve, so nothing in this path ever approves anything.
+//
+// The unapproval is written BEFORE the progress file, so a database failure
+// leaves the flag open and the whole thing is simply retried on the next read,
+// rather than closing a flag while its seed keeps a stale approval.
+async function settleFlags(data, progress) {
+  if (data.offline) return { closed: [], unapproved: [] };
+  const { closed, adopted } = reconcileFlags(data, progress);
+  if (!closed.length && !adopted.length) return { closed: [], unapproved: [] };
+  const unapproved = [];
+  for (const c of closed) {
+    const seed = c.seedNumber != null && data.seeds.find((s) => s.seed_number === c.seedNumber);
+    if (seed && seed.approved_at) {
+      await setApprovedAt(c.seedNumber, null);
+      unapproved.push(c.seedNumber);
+    }
+  }
+  saveProgress(COURSE, progress);
+  for (const c of closed) {
+    console.log(`[flag closed] ${c.phraseId} — ${c.reason}${c.note ? ` (was: ${c.note})` : ''}`);
+  }
+  if (unapproved.length) console.log(`[flag closed] unapproved seed(s): ${unapproved.join(', ')}`);
+  if (adopted.length) console.log(`[flag] recorded what ${adopted.length} older flag(s) were left on`);
+  return { closed, unapproved };
+}
+
 // ---------- server ----------
 const app = express();
 app.use(express.json());
@@ -184,6 +216,7 @@ app.get('/api/state', async (req, res) => {
   try {
     const data = await loadCourse(req.query.refresh === '1');
     const progress = loadProgress(COURSE);
+    const settled = await settleFlags(data, progress);
     let stale = staleApprovals(data, progress);
     // Never bulk-write approvals off a stale snapshot — the seeds it names may
     // already have been reviewed in the window the snapshot cannot see.
@@ -192,7 +225,7 @@ app.get('/api/state', async (req, res) => {
       console.log(`[enforce-on-load] unapproved ${stale.length} seed(s) holding unchecked phrases`);
       stale = [];
     }
-    res.json({ ...data, progress, staleApprovals: stale });
+    res.json({ ...data, progress, staleApprovals: stale, closedFlags: settled.closed, flagUnapprovals: settled.unapproved });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
@@ -208,6 +241,9 @@ app.post('/api/decision', async (req, res) => {
   if (status === null) delete progress.decisions[phraseId];
   else progress.decisions[phraseId] = { status, note: note || '', at: new Date().toISOString() };
   progress.lastPhraseId = phraseId;
+  // He has looked at this row again, so the "a flag you left here was resolved"
+  // marker has done its job.
+  if (progress.resolvedFlags) delete progress.resolvedFlags[phraseId];
   saveProgress(COURSE, progress);
 
   // Clearing a decision can leave an approved seed with an unchecked phrase —
@@ -218,6 +254,15 @@ app.post('/api/decision', async (req, res) => {
     // On a stale snapshot approved_at may already have moved, and the write would
     // fail anyway — the decision above is saved, which is what matters offline.
     if (data.offline) return res.json({ ok: true, unapprovedSeed: null, offline: true });
+    // Record what the row said when it was flagged — this is what lets the flag
+    // close itself later, when the row is fixed by whoever fixes it.
+    if (status === 'flagged') {
+      const key = resolveKeyFor(data.phrases, phraseId);
+      if (key) {
+        progress.decisions[phraseId].resolve = key;
+        saveProgress(COURSE, progress);
+      }
+    }
     const phrase = data.phrases.find((p) => p.id === phraseId);
     const seed = phrase && data.seeds.find((s) => s.seed_number === phrase.seed_number);
     if (seed?.approved_at && uncheckedIn(data, progress, seed.seed_number).length) {

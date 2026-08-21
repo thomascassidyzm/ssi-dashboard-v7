@@ -82,6 +82,7 @@
   .decided.ok { color: var(--ok); }
   .decided.flagged { color: var(--flag); }
   .flagnote { margin-top: 14px; font-size: 13px; color: var(--flag); }
+  .resolvednote { margin-top: 14px; font-size: 13px; color: var(--ok); }
 
   .controls { display: flex; justify-content: center; gap: 14px; padding: 26px 0 12px; }
   .controls button {
@@ -228,6 +229,9 @@ let resumeIdx = 0;          // where forward reading was left off, so the queue 
 
 const $ = (id) => document.getElementById(id);
 const dec = (p) => S.progress.decisions[p.id];
+// A flag that closed itself because the row was fixed. The row is back to
+// unchecked — this is what tells him why it has come round again.
+const resolved = (p) => (S.progress.resolvedFlags || {})[p.id];
 
 async function api(url, body) {
   const res = await fetch(url, body ? {
@@ -454,7 +458,8 @@ function render() {
     <div class="known">${esc(p.known_text)}</div>
     <div class="target">${esc(p.target_text)}</div>
     ${lego ? `<div class="lego">LEGO ${p.lego_index}: <b>${esc(lego.target_text)}</b> = ${esc(lego.known_text)}</div>` : ''}
-    ${d?.status === 'flagged' && d.note ? `<div class="flagnote">⚑ ${esc(d.note)}</div>` : ''}`;
+    ${d?.status === 'flagged' && d.note ? `<div class="flagnote">⚑ ${esc(d.note)}</div>` : ''}
+    ${!d && resolved(p) ? `<div class="resolvednote">✔ a flag you left here has been resolved — ${esc(resolved(p).reason)}${resolved(p).note ? `. You wrote: “${esc(resolved(p).note)}”` : ''}</div>` : ''}`;
 
   // controls
   $('btnBack').disabled = idx === 0;
