@@ -24,12 +24,29 @@
       <h1 class="rc-hello">Hello {{ voice.displayName }}</h1>
       <p class="rc-progress-line">{{ progressWords }}</p>
 
+      <!-- Start is the FIRST thing on the card and the only thing needed. One
+           tap puts the mic live on the first line that still needs reading —
+           there is no line to pick, nothing to navigate to, and no second tap
+           before recording is running. (The tap itself is not removable: a
+           browser will not open a microphone without a user gesture.) -->
+      <button class="btn-begin" :disabled="startIndex === -1" @click="begin">
+        {{ startIndex === -1 ? 'Nothing left to read' : `Start recording — ${firstLinePreview}` }}
+      </button>
+      <p v-if="startIndex === -1" class="note done">Everything is recorded. Turn on "re-read" below to do another pass.</p>
+      <p v-if="micError" class="note error">{{ micError }}</p>
+
       <ol class="how-to">
-        <li>Tap <strong>Start</strong> and read the highlighted line aloud.</li>
-        <li>Finish the line, take a breath, then tap <strong>Next</strong> (or press <kbd>Space</kbd>).</li>
-        <li>Keep going — tap <strong>Again</strong> to re-read a line.</li>
-        <li>Tap <strong>Done</strong> at the end. It saves itself.</li>
+        <li>Tap <strong>Start</strong> and read the line aloud. It is already recording.</li>
+        <li>Stop talking and it moves on by itself — you do not have to tap anything.</li>
+        <li>Tap <strong>Again</strong> to re-read a line, <strong>Next</strong> to push on early.</li>
+        <li>Tap <strong>Stop here</strong> when you've had enough. It saves itself.</li>
       </ol>
+
+      <label class="toggle-row">
+        <input type="checkbox" v-model="autoAdvance" />
+        <span><strong>Move on by itself when I stop speaking</strong>
+          <small>On = just read, and keep reading. Turn it off in a noisy room and use Next instead.</small></span>
+      </label>
 
       <div v-if="recorder.devices.value.length > 1" class="mic-pick">
         <label class="mic-label">Microphone</label>
@@ -78,9 +95,6 @@
         <p v-if="playbackError" class="note error">{{ playbackError }}</p>
       </div>
 
-      <button class="btn-begin" :disabled="startIndex === -1" @click="begin">Start</button>
-      <p v-if="startIndex === -1" class="note done">Everything is recorded. Turn on "re-read" above to do another pass.</p>
-      <p v-if="micError" class="note error">{{ micError }}</p>
     </section>
 
     <!-- ── Recording: ONE line, big ───────────────────────────────────────── -->
@@ -93,7 +107,10 @@
           {{ recorder.clipping.value ? 'Too loud — back off the mic' : 'Mic live' }}
         </span>
       </div>
-      <p class="stage-progress">{{ progressWords }}</p>
+      <p class="stage-progress">
+        <span class="live-dot" :class="{ hot: recorder.lineHasSpeech.value }"></span>
+        Recording · {{ progressWords }}
+      </p>
 
       <div class="line-well">
         <!-- Narration lines carry <src>/<tgt> markup. Parsed into segments in
@@ -111,22 +128,52 @@
         <p v-if="current?.rerecordReason" class="line-why">{{ current.rerecordReason }}</p>
       </div>
 
+      <!-- WHAT IS COMING. A recordist reading blind, one line at a time, has to
+           re-orient at every single line. Seeing the next few makes the whole
+           run readable as a run: you know whether the next one is short, whether
+           three in a row belong together, and whether it is worth carrying on.
+           Dimmed and small on purpose — the line being read stays the biggest
+           thing on the screen. -->
+      <div v-if="upcoming.length" class="upnext">
+        <p class="upnext-head">Coming up · {{ remainingToRead }} still to read</p>
+        <ol class="upnext-list">
+          <li v-for="l in upcoming" :key="l.id">{{ plainText(l.text) }}</li>
+        </ol>
+      </div>
+
       <!-- Hear the STORED clip of the line just read: the served bytes, never
            the local blob. If it will not play, that failure is what shows —
            a green tick over an unplayable clip is the whole bug. -->
       <div v-if="lastLine" class="hear-bar">
         <span class="hear-label">You just read
-          <span class="hear-text">{{ lastLine.text }}</span>
+          <span class="hear-text">{{ plainText(lastLine.text) }}</span>
         </span>
-        <StoredTakeButton
-          :stored-url="storedUrlFor(lastLine.id)"
-          :pending="isPending(lastLine.id)"
-          :failed="hasFailed(lastLine.id)"
-          :allow-local="false"
-          :is-playing="playingId === lastLine.id"
-          @toggle="togglePlay(lastLine.id)"
-        />
+        <div class="hear-actions">
+          <StoredTakeButton
+            :stored-url="storedUrlFor(lastLine.id)"
+            :pending="isPending(lastLine.id)"
+            :failed="hasFailed(lastLine.id)"
+            :allow-local="false"
+            :is-playing="playingId === lastLine.id"
+            @toggle="togglePlay(lastLine.id)"
+          />
+          <!-- RAW FIRST, PROCESSED SECOND. Once the take has landed, the
+               untouched bytes the microphone gave us are playable in the same
+               place as the mastered clip — so "was that clipped?" is a question
+               the recordist can answer in the room, on the take they have just
+               this second read, instead of a suspicion carried to the end of a
+               session. Only offered once the upload is stored: there is no raw
+               original on the server until there is. -->
+          <button
+            v-if="queue.saved.has(lastLine.id)"
+            class="cmp-btn"
+            :class="{ open: comparingId === lastLine.id }"
+            type="button"
+            @click="toggleCompare(lastLine.id)"
+          >{{ comparingId === lastLine.id ? 'Hide' : 'Raw vs processed' }}</button>
+        </div>
       </div>
+      <RawVsProcessed v-if="lastLine && comparingId === lastLine.id" :voice-id="voiceId" :line-id="lastLine.id" />
       <p v-if="failedNote" class="note error">{{ failedNote }}</p>
       <p v-if="playbackError" class="note error">{{ playbackError }}</p>
 
@@ -146,18 +193,32 @@
 
       <div v-if="sessionLines.length" class="listen-back">
         <h3>Listen back</h3>
-        <p class="listen-note">These play the clip stored on the server, not your local recording.</p>
+        <p class="listen-note">These play the clip stored on the server, not your local recording.
+          Tap <strong>Raw vs processed</strong> on any of them to hear the untouched original first
+          and the mastered version second.</p>
         <ul>
-          <li v-for="l in sessionLines" :key="l.id" :class="{ playing: playingId === l.id }">
-            <span class="listen-text">{{ l.text }}</span>
-            <StoredTakeButton
-              :stored-url="storedUrlFor(l.id)"
-              :pending="isPending(l.id)"
-              :failed="hasFailed(l.id)"
-              :allow-local="false"
-              :is-playing="playingId === l.id"
-              @toggle="togglePlay(l.id)"
-            />
+          <li v-for="l in sessionLines" :key="l.id" :class="['stacked', { playing: playingId === l.id }]">
+            <div class="listen-row">
+              <span class="listen-text">{{ plainText(l.text) }}</span>
+              <div class="listen-actions">
+                <StoredTakeButton
+                  :stored-url="storedUrlFor(l.id)"
+                  :pending="isPending(l.id)"
+                  :failed="hasFailed(l.id)"
+                  :allow-local="false"
+                  :is-playing="playingId === l.id"
+                  @toggle="togglePlay(l.id)"
+                />
+                <button
+                  v-if="queue.saved.has(l.id)"
+                  class="cmp-btn"
+                  :class="{ open: comparingId === l.id }"
+                  type="button"
+                  @click="toggleCompare(l.id)"
+                >{{ comparingId === l.id ? 'Hide' : 'Raw vs processed' }}</button>
+              </div>
+            </div>
+            <RawVsProcessed v-if="comparingId === l.id" :voice-id="voiceId" :line-id="l.id" />
           </li>
         </ul>
         <p v-if="playbackError" class="note error">{{ playbackError }}</p>
@@ -259,6 +320,11 @@ function segmentsFor(text) {
 
 const currentSegments = computed(() => segmentsFor(current.value?.text))
 
+// The same text with the markup taken out, for the places that show a line as
+// one plain string (the coming-up list, the listen-back rows). Without this the
+// recordist reads `<tgt>` in the queue preview.
+function plainText(text) { return segmentsFor(text).map(s => s.text).join('') }
+
 const startIndex = computed(() => {
   if (!lines.value.length) return -1
   if (includeRecorded.value) return 0
@@ -273,6 +339,33 @@ function nextIndexFrom(i) {
   return -1
 }
 const hasNext = computed(() => nextIndexFrom(index.value) !== -1)
+
+// What the recordist is about to be asked for. Six is what fits under the line
+// on a phone without pushing the controls off the bottom of the screen.
+const UPCOMING_SHOWN = 6
+const upcoming = computed(() => {
+  const out = []
+  let k = index.value
+  while (out.length < UPCOMING_SHOWN) {
+    k = nextIndexFrom(k)
+    if (k === -1) break
+    out.push(lines.value[k])
+  }
+  return out
+})
+const remainingToRead = computed(() => {
+  let n = 0
+  for (let k = index.value; k < lines.value.length; k++) {
+    if (includeRecorded.value || !isRecorded(lines.value[k])) n++
+  }
+  return n
+})
+const firstLinePreview = computed(() => {
+  const l = startIndex.value === -1 ? null : lines.value[startIndex.value]
+  if (!l) return 'first line'
+  const t = plainText(l.text)
+  return t.length > 34 ? `${t.slice(0, 34)}…` : t
+})
 
 // ── Hearing the stored clip ─────────────────────────────────────────────────
 const playingId = ref(null)
@@ -382,11 +475,18 @@ function debounced() {
   return true
 }
 
-function commit(i, blob) {
+function commit(i, blob, hadSpeech) {
   const line = lines.value[i]
   if (!line) return
-  // Never save silence: a near-empty blob is a take that didn't happen.
-  if (!blob || blob.size < 1200) {
+  // Never save silence: a take with nothing said on it didn't happen.
+  //
+  // This used to be a blob-size test, and that test is now meaningless: every
+  // clip carries pre-roll and tail by design, so even a line nobody read comes
+  // back as several kilobytes of room. What the recorder KNOWS is whether it
+  // ever heard the voice while this line was open, and that is what decides it.
+  // The size floor stays underneath as a backstop for a capture that failed
+  // outright.
+  if (!blob || blob.size < 1200 || hadSpeech === false) {
     queue.markFailed(line.id, 'That take came out silent — read it again.')
     if (!sessionIds.value.includes(line.id)) sessionIds.value = [...sessionIds.value, line.id]
     lastLine.value = line
@@ -405,13 +505,40 @@ async function onNext() {
   if (phase.value !== 'recording' || busy.value || !debounced()) return
   busy.value = true
   try {
-    commit(index.value, await recorder.endLine())
-    const n = nextIndexFrom(index.value)
-    if (n === -1) { await finish(); return }
-    index.value = n
-    recorder.beginLine()
+    const i = index.value
+    // Snapshot BEFORE the next line opens: beginLine() resets it, and the blob
+    // does not land for up to a tail-length afterwards.
+    const hadSpeech = recorder.lineHasSpeech.value
+    // The blob is not awaited before advancing. endLine() keeps the outgoing
+    // recorder running for its tail — that is the whole point of it — so
+    // waiting here would put a visible pause on every line for audio that is
+    // already guaranteed. The screen moves now; the take files itself when the
+    // tail is done.
+    const pending = recorder.endLine()
+    const n = nextIndexFrom(i)
+    if (n !== -1) {
+      index.value = n
+      recorder.beginLine()
+    }
+    pending.then(blob => commit(i, blob, hadSpeech))
+    if (n === -1) { await pending; await finish() }
   } finally { busy.value = false }
 }
+
+// ── Moving on by itself ─────────────────────────────────────────────────────
+// The recordist reads; when they stop, the studio goes to the next line. No
+// tap. This is only safe because the capture no longer ends where the line
+// ends: the outgoing recorder runs on for its tail and the incoming one has
+// been running since before this decision was made, so advancing a beat too
+// early costs nothing but a slightly longer clip. Under the old per-line
+// recorder the same feature would have cut every take.
+const AUTO_ADVANCE_QUIET_MS = 1200
+const autoAdvance = ref(true)
+watch(() => recorder.quietMs.value, (ms) => {
+  if (!autoAdvance.value || phase.value !== 'recording' || busy.value) return
+  if (!recorder.lineHasSpeech.value) return
+  if (ms >= AUTO_ADVANCE_QUIET_MS) onNext()
+})
 
 async function onAgain() {
   if (phase.value !== 'recording' || busy.value || !debounced()) return
@@ -426,7 +553,12 @@ async function onFinish() {
   if (phase.value !== 'recording' || busy.value) return
   busy.value = true
   try {
-    commit(index.value, await recorder.endLine())
+    const i = index.value
+    const hadSpeech = recorder.lineHasSpeech.value
+    const blob = await recorder.endLine()
+    // Stop pressed on a line nobody read is not a failed take — it is the end
+    // of the session. Filing it would put a phantom red line on a clean run.
+    if (hadSpeech) commit(i, blob, hadSpeech)
     await finish()
   } finally { busy.value = false }
 }
@@ -620,6 +752,28 @@ kbd {
 }
 .hear-label { font-size: 0.7rem; color: var(--color-paper-dim, #c1c1bb); min-width: 0; }
 .hear-text { display: block; color: var(--color-paper, #f7f7f2); font-size: 0.85rem; }
+.hear-actions { display: flex; align-items: center; gap: 0.4rem; flex-shrink: 0; }
+
+/* Coming up: legible, but never competing with the line being read. */
+.upnext { margin-top: 0.15rem; }
+.upnext-head {
+  margin: 0 0 0.3rem; font-size: 0.7rem; letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--color-paper-dim, #c1c1bb); opacity: 0.75;
+}
+.upnext-list {
+  margin: 0; padding-left: 1.1rem; display: flex; flex-direction: column; gap: 0.22rem;
+}
+.upnext-list li {
+  font-size: 0.8rem; line-height: 1.35; color: var(--color-paper-dim, #c1c1bb);
+  opacity: 0.72; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.upnext-list li:first-child { opacity: 0.95; }
+
+.live-dot {
+  display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 0.4rem;
+  background: var(--color-graphite, #475569);
+}
+.live-dot.hot { background: var(--color-emerald, #06ffa5); }
 
 .controls { display: flex; gap: 0.75rem; }
 .ctl-again {
