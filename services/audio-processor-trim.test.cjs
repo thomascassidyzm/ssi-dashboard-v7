@@ -1,19 +1,23 @@
 /**
- * Regression test for the T-20 bug: the human-recording trim must not eat speech.
+ * The human-recording trim must not eat speech — at either end, at any level.
  *
- * ffmpeg's silenceremove has two easily-confused parameters. `start_silence` is
- * the amount of silence to RETAIN. `start_duration` is the amount of non-silence
- * that must accumulate before trimming stops — and it DISCARDS everything before
- * that point, including the audio that proved it was not silence. The upload
- * chain shipped with `start_duration=0.1` from 2026-01-19 to 2026-08-14 and so
- * destroyed exactly 100ms off each end of every human take. 107 cym_n clips were
- * butchered before anyone heard it, and the raw uploads are never stored, so the
- * damage was unrecoverable. See docs/audio-forensics-2026-08-14/.
+ * Two defects are guarded here, both of which shipped and were heard.
  *
- * This test drives the REAL processRecordingBuffer over a real WebM/Opus payload
- * (what the browser actually sends), so it fails if anyone reintroduces
- * start_duration, reorders the areverse sandwich, or raises the threshold enough
- * to bite into speech.
+ * T-20 (2026-01-19 to 2026-08-14): the chain used silenceremove's
+ * `start_duration`, which DISCARDS everything before the point where enough
+ * non-silence has accumulated — including the audio that proved it was not
+ * silence. It destroyed exactly 100ms off each end of every human take and
+ * butchered 107 cym_n clips whose originals were never archived.
+ * See docs/audio-forensics-2026-08-14/.
+ *
+ * The soft onset (heard by Tom 2026-08-21): the chain then cut at a fixed -40dB
+ * gate, so a word whose onset climbed underneath that level lost its front —
+ * 375-525ms of it on his own takes — even though the raw archive held seconds
+ * of clean lead-in. The trim now DETECTS the read and cuts a margin outside it.
+ *
+ * These drive the REAL processRecordingBuffer over real WebM/Opus payloads (what
+ * the browser actually sends), so they fail if anyone puts a bare level gate
+ * back in, drops an edge, or narrows the margin into the speech.
  *
  * Run: npx vitest run services/audio-processor-trim
  */
@@ -30,14 +34,15 @@ const PAD_SEC = 0.5
 const SAMPLE_RATE = 16000
 // -20dBFS: comfortably above the -40dB trim threshold, i.e. unambiguous "speech".
 const SPEECH_FLOOR = 3277
-// Must match start_silence in audio-processor.cjs's trim chain.
-const RETAIN_SEC = 0.05
+// Must match TRIM_MARGIN_SEC in audio-processor.cjs — the room the trim leaves
+// outside the detected read at each end.
+const RETAIN_SEC = 0.35
 
 let tmpDir
 let webmTake
 
-/** Length of the contiguous above-threshold region, in seconds. */
-function audibleSpan(mp3Buffer) {
+/** Length of the region above an arbitrary sample floor, in seconds. */
+function audibleSpanAt(mp3Buffer, floor) {
   const f = path.join(tmpDir, 'out.mp3')
   fs.writeFileSync(f, mp3Buffer)
   const pcm = execFileSync(
@@ -49,12 +54,17 @@ function audibleSpan(mp3Buffer) {
   let first = -1
   let last = -1
   for (let i = 0; i < a.length; i++) {
-    if (Math.abs(a[i]) > SPEECH_FLOOR) {
+    if (Math.abs(a[i]) > floor) {
       if (first < 0) first = i
       last = i
     }
   }
   return first < 0 ? 0 : (last - first) / SAMPLE_RATE
+}
+
+/** Length of the contiguous speech-level region, in seconds. */
+function audibleSpan(mp3Buffer) {
+  return audibleSpanAt(mp3Buffer, SPEECH_FLOOR)
 }
 
 beforeAll(async () => {
@@ -106,16 +116,14 @@ describe('processRecordingBuffer — silence trim (T-20 regression)', () => {
     expect(audibleSpan(untrimmed.buffer)).toBeGreaterThan(0.97)
   }, 60000)
 
-  // TAIL-SPECIFIC GUARD. The two silenceremove passes are separate filter
-  // strings — head, then areverse/trim/areverse for the tail — so a future edit
-  // can fix or break ONE side and leave the other alone. Tom heard exactly that
+  // TAIL-SPECIFIC GUARD. Head and tail are two ends of one atrim range, and an
+  // edit can still get one right and the other wrong. Tom heard exactly that
   // asymmetry ("the ends were clipped worse than the beginnings"), so the tail
   // gets its own assertion rather than riding on the head's.
   //
-  // Padding is on the TAIL ONLY here. If the tail pass reverts to
-  // start_duration it eats 100ms of the tone and this fails at ~0.90s; if the
-  // tail pass is dropped entirely, the padding survives and the duration check
-  // fails instead. Both directions are caught.
+  // Padding is on the TAIL ONLY here. A trim that bites the end fails the span
+  // check at ~0.90s; a trim that does nothing to the tail leaves the 1.0s of
+  // padding and fails the duration check. Both directions are caught.
   it('the TAIL pass trims padding without eating the end of the speech', async () => {
     if (!tmpDir) return
     const src = path.join(tmpDir, 'tailpad.webm')
@@ -133,6 +141,35 @@ describe('processRecordingBuffer — silence trim (T-20 regression)', () => {
     expect(audibleSpan(buffer)).toBeGreaterThan(0.97)
     // …and the 1.0s of tail padding must be gone bar the retained sliver.
     expect(metadata.durationMs).toBeLessThan((TONE_SEC + RETAIN_SEC) * 1000 + 150)
+  }, 60000)
+
+  // THE SOFT ONSET. The defect Tom heard on 2026-08-21 was not the T-20 bug
+  // coming back — his raw takes carried 1.3-4.7s of clean lead-in — it was the
+  // fixed -40dB gate cutting at the first sample loud enough to clear it and
+  // discarding the 375-525ms of onset climbing underneath. Here a tone ramps up
+  // from silence over 400ms before reaching full level: cutting a margin
+  // outside the DETECTED read keeps the ramp, a bare level gate eats most of
+  // it. Fails if anyone cuts at the detection point again.
+  it('keeps a quiet onset that climbs from under -40dB', async () => {
+    if (!tmpDir) return
+    const src = path.join(tmpDir, 'ramp.webm')
+    execFileSync('ffmpeg', [
+      '-v', 'quiet', '-y', '-f', 'lavfi', '-i', 'sine=f=440:d=1.4:r=48000',
+      // 0.5s silence, then 0.4s ramping in from silence, then 1.0s at level.
+      '-af', 'afade=t=in:st=0:d=0.4,adelay=500,apad=pad_dur=0.5',
+      '-c:a', 'libopus', '-b:a', '96k', src,
+    ])
+    const { buffer, metadata } = await processRecordingBuffer(fs.readFileSync(src), {
+      inputFormat: 'webm', trimSilence: true, normalize: false,
+    })
+    expect(metadata.processed).toBe(true)
+    // The gate must have been set from the take, not from the old constant.
+    expect(metadata.filters.trimFoundRead).toBe(true)
+    // Measured well below the tone's plateau, so this counts the ramp too: the
+    // 1.0s plateau plus most of the 0.4s ramp must survive. Cutting at the
+    // detection point lands around 1.05s here.
+    const span = audibleSpanAt(buffer, 328 /* ≈ -40dBFS */)
+    expect(span).toBeGreaterThan(1.25)
   }, 60000)
 
   // An all-silent take must still collapse to nothing, so the MIN_TAKE_MS guard

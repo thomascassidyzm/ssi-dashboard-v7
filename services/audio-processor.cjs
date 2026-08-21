@@ -1167,6 +1167,62 @@ async function getAudioMetadata(audioPath) {
  * @param {number} options.targetLUFS - Target loudness (default: -16)
  * @returns {Promise<{buffer: Buffer, metadata: object}>}
  */
+// DETECT THE READ, THEN CUT WIDE OF IT.
+//
+// A level gate cannot do this job on its own. Set it high and it cuts at the
+// first sample loud enough to clear it, throwing away the onset climbing
+// underneath; set it low and it stops on a chair creak three seconds before
+// the word and keeps all the dead air in between. Both were measured on real
+// takes. So the level only DETECTS where the read is, and the cut is made a
+// fixed margin outside it.
+const TRIM_DETECT_DB = -40;         // where the read plainly is, not where it starts
+const TRIM_MIN_SILENCE_SEC = 0.2;   // silence shorter than this is inside the read
+const TRIM_MIN_SPEECH_SEC = 0.3;    // shorter than this is a click, not a word
+const TRIM_MARGIN_SEC = 0.35;       // room left outside the read at each end
+
+/**
+ * Where the read actually is in this take, from ffmpeg's silencedetect.
+ *
+ * Returns {startSec, endSec} bounding the first-to-last substantial non-silent
+ * region, or null when nothing in the file qualifies as a read (a muted mic, a
+ * take of an empty room, a stray click) — which the caller turns into an empty
+ * output so the upload handler's silent-take guard refuses it.
+ */
+async function detectReadBounds(inputPath) {
+  const { stdout, stderr } = await execAsync(
+    `ffmpeg -v info -i "${inputPath}" -af silencedetect=noise=${TRIM_DETECT_DB}dB:d=${TRIM_MIN_SILENCE_SEC} -f null - 2>&1`
+  );
+  const log = `${stdout || ''}${stderr || ''}`;
+
+  const durMatch = /Duration:\s*(\d+):(\d+):([\d.]+)/.exec(log);
+  if (!durMatch) return null;
+  const duration = (+durMatch[1]) * 3600 + (+durMatch[2]) * 60 + parseFloat(durMatch[3]);
+
+  // Silence intervals, in order. A trailing silence_start with no end runs to
+  // the end of the file.
+  const silences = [];
+  const re = /silence_(start|end):\s*(-?[\d.]+)/g;
+  let m;
+  while ((m = re.exec(log)) !== null) {
+    if (m[1] === 'start') silences.push({ start: Math.max(0, parseFloat(m[2])), end: duration });
+    else if (silences.length) silences[silences.length - 1].end = parseFloat(m[2]);
+  }
+
+  // Invert to the non-silent regions, then keep only the ones long enough to be
+  // a word. This is what steps over the click, the chair and the false start
+  // that a plain level gate stops on.
+  const reads = [];
+  let cursor = 0;
+  for (const s of silences) {
+    if (s.start - cursor >= TRIM_MIN_SPEECH_SEC) reads.push({ start: cursor, end: s.start });
+    cursor = Math.max(cursor, s.end);
+  }
+  if (duration - cursor >= TRIM_MIN_SPEECH_SEC) reads.push({ start: cursor, end: duration });
+  if (!reads.length) return null;
+
+  return { startSec: reads[0].start, endSec: reads[reads.length - 1].end, durationSec: duration };
+}
+
 async function processRecordingBuffer(inputBuffer, options = {}) {
   const {
     inputFormat = 'webm',
@@ -1201,28 +1257,59 @@ async function processRecordingBuffer(inputBuffer, options = {}) {
     // Build filter chain
     const filters = [];
 
-    // 1. Trim silence from start and end, KEEPING the speech.
+    // 1. Trim to the read, leaving a margin of room at each end.
     //
-    // start_silence is the parameter that says "retain this much silence".
-    // start_duration is NOT its sibling: it is the amount of non-silence that
-    // must accumulate before trimming stops, and everything before that point
-    // is DISCARDED — including the audio that proved it was not silence. The
-    // old `start_duration=0.1` here therefore destroyed exactly 100ms off the
-    // front of every human take, and the areverse sandwich did the same to the
-    // tail. Measured on a 1.000s tone padded with silence: out at 0.799s.
-    // With start_silence the same tone comes out whole (see the T-20
-    // diagnosis, docs/audio-forensics-2026-08-14/).
+    // WHERE TOM'S CLIPPING ACTUALLY WAS. Measured on his own 22 takes
+    // (2026-08-21, /r/human_tom_zzz): the raw archived bytes carry 1.3-4.7s of
+    // clean lead-in and a room floor of -75 to -88 dBFS, so nothing was lost at
+    // capture on that surface at all. Every mastered clip nevertheless came out
+    // with a head margin of 5-40ms, starting flush against the old fixed -40dB
+    // gate's idea of where the word began. On several takes the onset was
+    // audibly climbing for 375-525ms BELOW -40dB before it crossed: "maybe
+    // tomorrow" (-40dB at 1115ms, audible from 740ms), "that is very kind of
+    // you" (2525 vs 2000ms), "is there somewhere I can sit" (1870 vs 1380ms).
+    // All of that is the front of the word, and this step threw it away.
     //
-    // That bug butchered 107 cym_n clips before anyone heard it, and the
-    // originals are not recoverable — the raw upload is never stored, so this
-    // filter is destructive-on-write with no undo. Do not reintroduce
-    // start_duration here. pod-explainer-composite.cjs has always used the
-    // correct form; this chain was the odd one out.
+    // Lowering the gate is not the fix — tried, measured, rejected. At -60dB the
+    // same takes stop on a click or a chair three seconds early and keep every
+    // bit of the dead air after it: one 2.4s read came out 10.9s long. A single
+    // level cannot tell an onset attached to a word from a noise that isn't.
+    //
+    // So the level DETECTS the read (detectReadBounds, above) and the cut is
+    // made TRIM_MARGIN_SEC outside it at both ends. The margin covers the onset
+    // climbing under the detector and leaves a real beat of the recordist's own
+    // room in front, which is what makes a clip sound whole rather than
+    // snatched. Tom's rule for this surface is to record around the signal and
+    // leave every boundary to this step; the raw original is archived before
+    // this runs (recording-upload-helpers.cjs), so keeping too much is
+    // reversible and keeping too little is not.
+    //
+    // A take with no read in it at all — muted mic, empty room, a stray click —
+    // yields no bounds and is cut to nothing, so the MIN_TAKE_MS guard in the
+    // upload handler still refuses it (the 2026-08-06 Welsh silent-clip bug).
+    //
+    // The filter is atrim, NOT silenceremove. silenceremove's start_duration
+    // once destroyed 100ms off each end of every human take and butchered 107
+    // cym_n clips before anyone heard it (T-20, docs/audio-forensics-2026-08-14/).
+    // Do not reintroduce either parameter here: the boundary is decided from a
+    // measurement, in code that can be read, not from a filter's own idea of
+    // where speech begins.
+    let trimBounds = null;
     if (trimSilence) {
-      filters.push('silenceremove=start_periods=1:start_threshold=-40dB:start_silence=0.05');
-      filters.push('areverse');
-      filters.push('silenceremove=start_periods=1:start_threshold=-40dB:start_silence=0.05');
-      filters.push('areverse');
+      try {
+        trimBounds = await detectReadBounds(inputPath);
+      } catch (err) {
+        console.warn(`[AudioProcessor] read detection failed (${err.message}) — take kept whole`);
+      }
+      if (trimBounds) {
+        const from = Math.max(0, trimBounds.startSec - TRIM_MARGIN_SEC);
+        const to = Math.min(trimBounds.durationSec, trimBounds.endSec + TRIM_MARGIN_SEC);
+        filters.push(`atrim=start=${from.toFixed(3)}:end=${to.toFixed(3)}`, 'asetpts=PTS-STARTPTS');
+      } else {
+        // Nothing in this file is a read. Cut it to nothing and let the upload
+        // handler refuse the take rather than storing an unplayable stub.
+        filters.push('atrim=start=0:end=0.001', 'asetpts=PTS-STARTPTS');
+      }
     }
 
     // 2. High-pass filter to remove low-frequency rumble (AC hum, handling noise)
@@ -1274,6 +1361,16 @@ async function processRecordingBuffer(inputBuffer, options = {}) {
         outputSize: outputBuffer.length,
         filters: {
           trimSilence,
+          // The gate this take was actually cut at, and the room left in front
+          // of it. Recorded so a clipped-sounding clip can be diagnosed from
+          // the row rather than re-measured from the audio.
+          // Where the read was found and how much room was left outside it.
+          // Recorded so a clip that sounds clipped can be diagnosed from the
+          // row rather than re-measured from the audio.
+          trimReadStartSec: trimBounds ? trimBounds.startSec : null,
+          trimReadEndSec: trimBounds ? trimBounds.endSec : null,
+          trimMarginSec: trimSilence ? TRIM_MARGIN_SEC : null,
+          trimFoundRead: trimSilence ? trimBounds !== null : null,
           normalize,
           targetLUFS,
           highpassHz: 80
