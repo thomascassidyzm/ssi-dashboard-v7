@@ -67,9 +67,29 @@ licensed. Your seed 52 duplicate pairs were left alone deliberately — you pass
 three rows at 09:13 and flagged the unbound one at 09:14, so the record says you had
 already ruled on them.
 
-**Still open, and worth a look:** the same defect sits in the `siskolleen` family at
-seed 332 (two rows). A worker is applying the same repair there now; it is a different
-lego with its own vocabulary window, so it is being swept and reported separately.
+### The same defect at seed 332, and the sweep rerun properly
+
+The seed 54 pass matched the `-nsa` spelling and so missed `siskolleen`, and withdrew its
+"none left in the course" claim. The sweep was rerun on the **morphology** rather than a
+string — every token ending `-nsa`/`-nsä`/`-nne` or in a long vowel + `n` — across all 668
+seeds and 14,120 phrase rows: 137 candidate tokens, 11 genuine third-person possessives,
+168 rows carrying one, all adjudicated by hand, **2 defective**, both at seed 332:
+
+| English before → after | Finnish before → after |
+|---|---|
+| *I want to build a new life for his sister* → **he wants** to build a new life for his sister | *mä haluun rakentaa uuden elämän siskolleen* → **se haluu** rakentaa uuden elämän siskolleen |
+| *she needs to build a new life for **his** sister* → …for **her** sister | *sen pitää rakentaa uuden elämän siskolleen* → **unchanged** |
+
+Same two repairs as seed 54 — swap the subject, or correct only the English. `sen siskolle`
+was blocked for the same reason `sen kaverille` was: the bare allative `siskolle` is never
+introduced anywhere in the course. Seed 332 was already unapproved. Nothing of this class
+now remains in the course, and this time the claim is spelling-agnostic.
+
+**Raised, not acted on — a register call for you.** Five rows freeze a third-person
+possessive under a *mä*/*sä* subject: *ootko sä tosissaan?*, *sä oot innoissaan siitä*,
+*olitko sä huolissaan siitä?* and two like them. These are lexicalised adverbials taught
+as single frozen cards, and the frozen form is the puhekieli norm — making them agree
+turns one card into a five-form paradigm. Left alone pending your word.
 
 ## 3. Seed 105 — the "she didn't know" mirrors
 
@@ -110,7 +130,7 @@ the object of other verbs. Nothing of the class remains anywhere in the course.
 
 ## Approvals and audio
 
-**One seed unapproved: seed 54.** Every other seed touched — 105, 185, 380, 382 — was
+**One seed unapproved: seed 54.** Every other seed touched — 105, 185, 332, 380, 382 — was
 already unapproved before this work. Counted independently: 102 approved seeds before,
 101 after. Nothing was approved by anyone.
 
