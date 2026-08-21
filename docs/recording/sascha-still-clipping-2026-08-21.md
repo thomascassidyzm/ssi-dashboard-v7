@@ -90,6 +90,27 @@ has still never been run.
 still running the old bundle. Sascha must hard-reload before re-recording, or
 the next session reproduces this one exactly.
 
+## 3b. Does Sascha's surface carry the pre-roll fix? Yes — but not this morning
+
+This was the named suspect, so stating it flatly.
+
+**Sascha is on the Autocue continuous recorder, not the tap recorder.** The
+chain is `AutocueStudio.vue` → `useContinuousRecorder`, and `useContinuousRecorder`
+is precisely the file `63cfcc52e` rewrote. So the surface does carry the
+pre-roll fix, and carries it in the bundle being served right now.
+
+What it did not carry was the fix **at 10:54–11:10Z**, when Sascha was reading.
+The two surfaces were fixed several hours apart:
+
+| Surface | Composable | Pre-roll fix | Time |
+|---|---|---|---|
+| Tap recorder (`/r/:voiceId`) | pod recorder | `241431feb` | 10:39:44Z |
+| **Autocue script (Sascha)** | `useContinuousRecorder` | **`63cfcc52e`** | **11:18:34Z** |
+
+Sascha recorded in the gap between them. The tap recorder had been fixed for
+15 minutes; the surface Sascha was actually using had not been touched yet.
+That is the whole of it.
+
 ## 4. A real remaining gap, found and fixed
 
 `d2ffec912` wired device provenance into the **recordist** surface
@@ -107,6 +128,51 @@ not describe itself.
 
 Two tests added; 12/12 in the recorder suite and 59/59 across `src/composables`
 pass, `vite build` clean.
+
+## 4b. ON AIR — the mic-is-hot indicator
+
+Tom's ruling: radio-show framing, a **continuous** live detected-volume display
+that moves the whole time the session is hot, not a per-take light. Shipped with
+the clipping fix.
+
+Sascha read 34 takes into a recorder that showed them nothing. The capture fix
+is what makes an early start *safe*; this is what makes it *visible*.
+
+**One panel for the whole session.** The lamp is lit from `startFlow` — through
+the room measurement, through every take, and through every gap between takes —
+because the stream genuinely is live throughout and takes are cut out of it
+afterwards. It sits outside every per-take condition in the template. A lamp
+that blinked off at a take boundary would teach the one thing this must not
+teach: that there are moments when speaking is not safe.
+
+**The meter is always moving.** Sixteen broadcast-style segments driven by the
+VAD's RMS, which updates every 50 ms whether or not anyone is speaking. Room
+tone deliberately lights the first segment — so stillness means a *dead mic*
+rather than a quiet moment, which is exactly the failure the recordist could not
+previously see. Green through the working range, amber high, red approaching
+clip.
+
+```
+measuring the room   [█···············]  ON AIR
+between takes        [█···············]  ON AIR
+reading              [██████████████··]  ON AIR
+loud                 [████████████████]  ON AIR
+```
+
+**Reassurance, not a gate.** No state of the panel contains *wait*, *ready*,
+*stand by*, *you may now*, or *begin when*. There is a test that holds that,
+because the copy is the part most likely to drift back into asking permission.
+The live line reads: *"On air — start whenever you like, takes are cut from the
+stream."* During calibration it still asks for quiet, because the room really is
+being measured, but it says **"On air —"** first so it cannot be read as "not
+live yet".
+
+This replaces the old thin `vad-indicator` bar and the separate calibration
+shell. They said less, in fewer moments, in two places; two meters saying the
+same thing would have made the on-air signal weaker rather than stronger. Same
+x300 level scaling recordists have already been reading, now sitting next to the
+segments it drives. 10 tests on the component; 165/165 across the autocue and
+composable suites; `vite build` clean.
 
 ## 5. Are Sascha's 34 takes worth keeping?
 
