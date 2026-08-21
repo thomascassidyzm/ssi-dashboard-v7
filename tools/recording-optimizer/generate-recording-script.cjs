@@ -26,6 +26,11 @@ require('dotenv').config();
 const { createClient } = require('@supabase/supabase-js');
 const fs = require('fs');
 const path = require('path');
+// The chunk floor lives with the engine's chunker so the two copies of the
+// tiling logic (this planner and services/voice-engine/chunking.cjs) cannot
+// drift on the one number a recordist actually hears. See SHORT_CHUNK_CHARS
+// there for the calibration behind it.
+const { mergeShortChunks } = require('../../services/voice-engine/chunking.cjs');
 
 const supabase = createClient(
   process.env.SUPABASE_URL,
@@ -604,7 +609,11 @@ async function generateRecordingScript(courseCode, options = {}) {
       ],
       phrases: result.selected.map((s, i) => {
         const rawChunks = chunkPhraseByLegos(s.phrase, universe);
-        const recordingChunks = mergeGlueIntoLegos(rawChunks, 'left');
+        // Glue first, then the short-chunk floor: a one-word LEGO that survived
+        // the glue pass is still a one-word chunk, and asking a recordist to
+        // stop dead around "des" is what made Sascha's first session sound
+        // unnatural.
+        const recordingChunks = mergeShortChunks(mergeGlueIntoLegos(rawChunks, 'left'));
         const glueCount = rawChunks.filter(c => !c.isLego).length;
         return {
           index: i + 1,
@@ -652,7 +661,8 @@ async function generateRecordingScript(courseCode, options = {}) {
   for (let i = 0; i < Math.min(10, result.selected.length); i++) {
     const s = result.selected[i];
     const raw = chunkPhraseByLegos(s.phrase, universe);
-    const merged = mergeGlueIntoLegos(raw, 'left');
+    // Same tiling as the script above, so the preview shows what is served.
+    const merged = mergeShortChunks(mergeGlueIntoLegos(raw, 'left'));
     const display = merged
       .map(c => c.mergedGlue ? `${c.text}*` : c.text)  // * marks chunks with absorbed glue
       .join(' | ');

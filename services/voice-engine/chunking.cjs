@@ -142,13 +142,116 @@ function mergeGlueIntoLegos(chunks, direction = 'left') {
   return result
 }
 
+// A chunk floor, in characters. A one-word chunk with this many letters or
+// fewer is absorbed into a neighbour rather than asked for as a pause-separated
+// piece of its own.
+//
+// Kai, 2026-08-19, after Sascha's first Austrian German session: "the Austrian
+// german has some VERY tiny chunks. that made the recording sound unnatural."
+//
+// Until now there was NO minimum chunk length anywhere. chunkPhraseByLegos
+// emits one chunk per LEGO, and the only merge step (mergeGlueIntoLegos) merges
+// non-LEGO glue exclusively — so two adjacent one-word LEGOs stayed two
+// one-word chunks. Measured over the real deu_at_for_eng script (496 lines,
+// 2250 chunks): 1144 chunks were a single word and 348 a single word of three
+// letters or fewer. The largest bucket in the distribution was the smallest
+// possible chunk.
+//
+// THREE is the calibrated line, not a guess. Over those same lines:
+//   ≤2 chars  removes  98 of 348 fragments  (+23 direct-record items)
+//   ≤3 chars  removes 346 of 348 fragments  (+124 items, ≈ +19 min)
+//   ≤4 chars  removes 346 of 348 fragments  (+253 items, ≈ +51 min)
+// ≤4 buys nothing over ≤3 at double the cost, and starts merging genuine
+// content words (iatz, Zeit, Tisch). ≤3 catches the function words this dialect
+// is full of — des, wos, ned, i, wia — and stops there.
+const SHORT_CHUNK_CHARS = 3
+
+// A merge is refused if it would make a chunk longer than this many words. The
+// ceiling is load-bearing: without it, eight lines gained a nine-word chunk,
+// which is a worse read than the fragment it removed and would fail Kai's
+// "defensibly better on every line" bar. With it, those merges are declined and
+// the fragment is left alone — which is why two ≤3-char fragments survive
+// rather than none.
+const MAX_MERGED_CHUNK_WORDS = 6
+
+const chunkWords = (text) => String(text || '').trim().split(/\s+/).filter(Boolean)
+// Letters and digits only: a chunk's size is its spoken weight, not its
+// punctuation. "wos," is a three-character chunk.
+const chunkLetters = (text) => String(text || '').replace(/[^\p{L}\p{N}]/gu, '').length
+
+/** Is this chunk too small to be worth asking the recordist to pause around? */
+function isShortChunk(text) {
+  return chunkWords(text).length === 1 && chunkLetters(text) <= SHORT_CHUNK_CHARS
+}
+
+/**
+ * Absorb too-short chunks into a neighbour, left-preferred (matching the glue
+ * direction above), refusing any merge that would breach the word ceiling.
+ *
+ * Runs to a fixpoint because absorbing one fragment can leave its neighbour
+ * still short. The guard is a belt-and-braces bound on that loop, not an
+ * expected limit — each pass strictly reduces the chunk count.
+ *
+ * NOT retrospective. The chunk map is computed per recording-script request and
+ * every already-recorded slow take carries its OWN chunks_string in its
+ * provenance row, which is what the aligner reads (synthesis-job.cjs uses
+ * group.chunksString). Verified live 2026-08-21: 40 of 40 deu_at_for_eng slow
+ * takes and 56 of 56 fin_for_eng slow takes carry their own map. So changing
+ * this rule cannot invalidate a take that already exists.
+ */
+function mergeShortChunks(chunks, { maxWords = MAX_MERGED_CHUNK_WORDS } = {}) {
+  if (!Array.isArray(chunks) || chunks.length <= 1) return chunks
+
+  let current = chunks.map(c => ({ ...c }))
+  let guard = 0
+
+  while (guard++ < 80) {
+    let merged = false
+    for (let i = 0; i < current.length; i++) {
+      if (!isShortChunk(current[i].text)) continue
+      // Left first, then right — a fragment reads most naturally as the tail of
+      // what came before it.
+      const candidates = i > 0 ? [i - 1, i + 1] : [i + 1]
+      let picked = -1
+      for (const j of candidates) {
+        if (j < 0 || j >= current.length) continue
+        if (chunkWords(current[i].text).length + chunkWords(current[j].text).length <= maxWords) {
+          picked = j
+          break
+        }
+      }
+      if (picked === -1) continue
+
+      const lo = Math.min(i, picked)
+      const a = current[lo]
+      const b = current[lo + 1]
+      current = [
+        ...current.slice(0, lo),
+        {
+          ...a,
+          text: `${a.text} ${b.text}`,
+          legoId: a.legoId || b.legoId,
+          isLego: true,
+          mergedGlue: [...(a.mergedGlue || []), ...(b.mergedGlue || [])],
+        },
+        ...current.slice(lo + 2),
+      ]
+      merged = true
+      break
+    }
+    if (!merged) break
+  }
+
+  return current
+}
+
 /**
  * Tile a phrase the way the recording script did: max-munch LEGO chunks with
- * glue merged left. These are the units the splicer looks up in the segment
- * store.
+ * glue merged left, then short chunks absorbed. These are the units the splicer
+ * looks up in the segment store.
  */
 function recordingChunksForPhrase(phraseText, universe) {
-  return mergeGlueIntoLegos(chunkPhraseByLegos(phraseText, universe), 'left')
+  return mergeShortChunks(mergeGlueIntoLegos(chunkPhraseByLegos(phraseText, universe), 'left'))
 }
 
 /**
@@ -193,6 +296,10 @@ module.exports = {
   parseChunks,
   chunkPhraseByLegos,
   mergeGlueIntoLegos,
+  mergeShortChunks,
+  isShortChunk,
+  SHORT_CHUNK_CHARS,
+  MAX_MERGED_CHUNK_WORDS,
   recordingChunksForPhrase,
   buildUniverse,
   getAllSubsequences,
