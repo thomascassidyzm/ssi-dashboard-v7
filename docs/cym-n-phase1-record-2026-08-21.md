@@ -80,3 +80,50 @@ All three dry-ran before they wrote, all three snapshot before they touch anythi
 - `tools/course-optimization/clone-cym-n-new-2026-08-21.cjs`
 - `tools/course-optimization/discard-tail-cym-nnew-2026-08-21.cjs`
 - `tools/course-optimization/quarantine-fake-welsh-canon-2026-08-21.cjs`
+
+---
+
+## The proofreading sheet
+
+**https://watson-1.tail4968cb.ts.net/d/29f90769** — 401 sentences, canon seeds 268-668, in seed order, laid out to be read on a phone.
+
+All ten copies of the canon Welsh were found and used (nine `*_for_cym` courses plus `cym_for_yor`), each verified at 668 seeds with non-empty text in range before being relied on.
+
+**Only 4 disagreements fall inside 268-668**, not the 14 the scout counted across the whole 668. All four are the same thing: template sentences ("she speaks {target}") where each source course fills in its own target-language name — Sbaeneg, Almaeneg, Ffrangeg. **None of the ten gives the right fill for this course**, which needs *Saesneg*. That is a real gap the ten copies cannot resolve between them, so the sheet asks the native reader to supply it rather than offering a pick-one choice.
+
+The six ZUT-collision seeds (464, 465, 466, 472, 474, 477) are shown in their own "likely drop" section and tagged again in the main list, since they duplicate English already taught at kept seeds 259, 260, 261, 264, 265 and 267.
+
+## The 40-seed decomposition pilot
+
+Sampling: every 10th canon seed from 272 to 662, stratified across the whole tail, then interleaved into two halves so the halves are directly comparable. Half A: https://watson-1.tail4968cb.ts.net/d/b412aec4 · Half B: https://watson-1.tail4968cb.ts.net/d/a12b09aa
+
+| | half A | half B | **combined 40** |
+|---|---|---|---|
+| proposed legos | 77 | 73 | **150** |
+| already taught by seeds 1-267 | 20 (26%) | 19 (26%) | **39 (26%)** |
+| genuinely new | 57 | 54 | **111** |
+| new legos per seed | 2.85 | 2.70 | **2.78** |
+| fully covered seeds | 1 of 20 (5%) | 2 of 20 (10%) | **3 of 40 (7.5%)** |
+| seeds with a known-side construction gap | 7 of 20 (35%) | 7 of 20 (35%) | **14 of 40 (35%)** |
+| borderline judgement calls | 12 of 77 (16%) | 10 of 73 (14%) | **22 of 150 (15%)** |
+
+The two halves were decomposed independently and landed within 0.15 of each other. That agreement is the main reason to trust the number.
+
+### How far out the word-coverage guess was
+
+The crude measure predicted **21% of canon seeds fully covered**. Measured: **7.5%**. It over-counted coverage by about **3x**, and the bias runs one way.
+
+The dominant reason is that **a lego is a known-side intention bound to one target form, not a bag of words**. In half A, 23 of the 57 new legos — 40% — contain no new vocabulary at all: *dach chi angen*, *nos fory*, *y tro dwytha* are each built entirely from taught atoms and each still costs a lego row and its phrases. Word-coverage scores every one of them as covered. Second, word-coverage cannot see the known side at all — it is looking at the wrong language, so it is structurally blind to the 35% of seeds needing an English construction the kept range never debuted. There is one counterweight, and it is smaller: Welsh mutation and spelling drift make taught items look new (*broblem*/*problem*, *gwbod*/*gwybod*), which pushes the other way.
+
+### What needs a ruling before phase 2
+
+1. **The conditional stem.** Seeds 1-267 teach "would" on the **bydd-** stem (*byddai fo*, *bydden ni'n licio*, *byddet ti'n deud*). The canon tail uses **bas-** throughout (*basai hi*, *fasai fo*, *fasen ni*). Both are good northern Welsh, but one English "would" now maps to two Welsh stems course-wide. 4 of 20 seeds in half A — roughly 80 seeds of the tail. One ruling, not eighty seeds of hand-work.
+2. **Does a lego bound inside a taught M-lego, or a different person-form of a taught verb, count as already taught?** Eight of half B's ten borderline calls hang on this one question, and it swings the whole build estimate by about ±11%.
+3. **"there" — `yno` (kept S0123L02) or `yna` (canon 562)?** Hard collision, 10/10 agreement in the canon copies so it is a genuine variant rather than a typo.
+4. **"everything" — `popeth` (kept S0171L01) or `bob dim` (canon 412)?** Hard collision, consolidate to one.
+
+### What needs no ruling, only doing
+
+- **Bare yes/no is never a lego.** Welsh response forms agree with the question's verb, so a bare "yes"/"no" gloss can never be ZUT-clean. The kept range already handles this correctly by only ever glossing bound forms ("yes, I'm ready", "no, we don't have"). The response particle is a construction-feature: absorbed into an M-lego with its carrier, never atomised.
+- **Orthographic normalisation, before decomposition, not after.** Roughly 100-120 points across the tail where the canon batch spells a kept word differently — *Nest/wnest*, *dwytha/diwetha*, *gwbod/gwybod*, *nath/wnaeth*. None is a conceptual collision; every one breaks a string-level ZUT check at submission time and would show a learner two spellings of one word. Exactly what survives an unproofread machine batch. One mechanical pass beats seed-by-seed repair.
+- **Fragment seeds cost more, not less.** Roughly 15% of the canon tail arrives as clause fragments, some lowercase and unpunctuated. USE phrases must be complete sentences, so a fragment seed cannot generate its own USE and the phrases have to be built by extension. Cheap-looking, dearer to author.
