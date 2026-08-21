@@ -60,14 +60,21 @@ module.exports = function (ctx) {
     // This applies to BOTH eng_for_X (type 2) AND X_for_Y (type 3) courses
     let knownTranslations = new Map();
     if (!knownIsEng) {
+      // Rows stamped QUARANTINE_* in source_course are known-bad and are never reused as
+      // canon. The Welsh cym_n/cym_s rows are the case this was written for: they are the
+      // old Welsh courses' sentences filed positionally under unrelated canon English, so
+      // reusing them would silently mistranslate a whole new course. Filtered here in JS
+      // rather than in the query, because `not like` also discards the NULL source_course
+      // rows, and NULL is what almost every legitimate row carries.
       const { data: translations } = await supabase
         .from('canonical_seed_translations')
-        .select('seed_number, translated_text')
+        .select('seed_number, translated_text, source_course')
         .eq('language_code', knownLang);
 
       if (translations && translations.length > 0) {
-        translations.forEach(t => knownTranslations.set(t.seed_number, t.translated_text));
-        console.log(`Found ${translations.length} canonical translations for ${knownLang}`);
+        const usable = translations.filter(t => !String(t.source_course || '').startsWith('QUARANTINE'));
+        usable.forEach(t => knownTranslations.set(t.seed_number, t.translated_text));
+        console.log(`Found ${usable.length} usable canonical translations for ${knownLang} (${translations.length - usable.length} quarantined)`);
       }
     }
 
@@ -77,12 +84,13 @@ module.exports = function (ctx) {
     if (!targetIsEng) {
       const { data: translations } = await supabase
         .from('canonical_seed_translations')
-        .select('seed_number, translated_text')
+        .select('seed_number, translated_text, source_course')
         .eq('language_code', targetLang);
 
       if (translations && translations.length > 0) {
-        translations.forEach(t => targetTranslations.set(t.seed_number, t.translated_text));
-        console.log(`Found ${translations.length} canonical translations for ${targetLang}`);
+        const usable = translations.filter(t => !String(t.source_course || '').startsWith('QUARANTINE'));
+        usable.forEach(t => targetTranslations.set(t.seed_number, t.translated_text));
+        console.log(`Found ${usable.length} usable canonical translations for ${targetLang} (${translations.length - usable.length} quarantined)`);
       }
     }
 
