@@ -148,10 +148,22 @@ naming because each one could have become a wrong ruling:**
   all correctly synthetic) or verbal noun (`feiscint`, 9 seeds, which is the form the spec
   requires). Nothing is missing.
 
-**And the copula-negative precedent holds exactly as ruled.** `nach` appears 3 times and
-**every one is `nach féidir`** — the predicate the evidence calls decisive. `ná maith` and
-`ná miste` are used where the evidence says they are genuinely mixed. Nothing to do here, and
-nothing to reopen.
+**And the copula-negative precedent holds exactly as ruled — the course splits by predicate,
+cleanly, in both directions.** Counted:
+
+| subordinate copula negative | `nach` | `ná` |
+|---|---|---|
+| **`féidir`** — the predicate the evidence calls decisive | **3** (333, 469, 526) | **0** |
+| **`maith` / `miste`** — the predicates the evidence calls genuinely mixed | **0** | **2** (63, 121) |
+
+That is 3 out of 3 the one way and 2 out of 2 the other. **No blanket rule was applied in
+either direction** — which is precisely what the settled ruling asks for, and it is better
+than "defensible". Nothing to do here, and nothing to reopen.
+
+Two neighbouring constructions are also correct and should not be confused with this one:
+`ní maith` / `ní miste` (6 seeds) is the **main-clause** copula negative, correctly
+unlenited; `níor mhaith` (4 seeds) is the **past** copula, correctly lenited. And `ná` never
+lenites here — `ná mhaith` / `ná mhiste` are zero.
 
 ---
 
