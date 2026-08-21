@@ -1138,7 +1138,12 @@ export function useAutocueState() {
         // natural read per line and no slow pass. Falling back to the order
         // keeps an older API's response honest rather than promising a slow
         // pass that isn't in the items.
-        naturalOnly: data.naturalOnly ?? (data.order === 'course')
+        naturalOnly: data.naturalOnly ?? (data.order === 'course'),
+        // Course-order only: the size of the whole course and how much of it
+        // this voice has already recorded, so the panel can say what is left
+        // rather than a phrase/direct split this script does not have.
+        totalInCourse: data.totalInCourse ?? null,
+        alreadyRecorded: data.alreadyRecorded ?? null
       }
 
       // Transform items to autocue phrase format
@@ -1151,6 +1156,12 @@ export function useAutocueState() {
         translation: '', // target only — clean autocue
         cadence: item.cadence,
         type: item.type,
+        // Course-order items ARE course rows, and say which one. The upload
+        // sends this straight back so the take is attached to that exact seed /
+        // LEGO / phrase rather than matched to it by text alone. Absent on the
+        // coverage script, whose lines are a splicing plan, not items.
+        itemKind: item.itemKind || null,
+        itemId: item.itemId || null,
         phraseIndex: item.phraseIndex,
         wordCount: item.wordCount,
         coversLegos: item.coversLegos,

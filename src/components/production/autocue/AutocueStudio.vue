@@ -76,18 +76,33 @@
         <!-- Only shown when someone asked for it with ?order=course. Coverage
              order is the default and says nothing, exactly as before. -->
         <p v-if="state.scriptInfo?.order === 'course'" class="script-cap-note">
-          In course order — start to finish. Stop wherever you like; the rest is
-          still there next time.
+          The course itself, in order — start to finish. Stop wherever you like;
+          the rest is still there next time.
         </p>
         <div class="script-stats">
-          <div class="script-stat">
-            <span class="script-stat-value">{{ state.scriptInfo?.totalPhrases || 0 }}</span>
-            <span class="script-stat-label">Phrases</span>
-          </div>
-          <div class="script-stat">
-            <span class="script-stat-value">{{ state.scriptInfo?.totalDirect || 0 }}</span>
-            <span class="script-stat-label">Direct Items</span>
-          </div>
+          <!-- Course order has no phrase/direct split: every line is a course
+               item. What is worth showing instead is how much is already in
+               the can. -->
+          <template v-if="state.scriptInfo?.order === 'course'">
+            <div class="script-stat">
+              <span class="script-stat-value">{{ state.scriptInfo?.totalInCourse || 0 }}</span>
+              <span class="script-stat-label">Items in course</span>
+            </div>
+            <div class="script-stat">
+              <span class="script-stat-value">{{ state.scriptInfo?.alreadyRecorded || 0 }}</span>
+              <span class="script-stat-label">Already recorded</span>
+            </div>
+          </template>
+          <template v-else>
+            <div class="script-stat">
+              <span class="script-stat-value">{{ state.scriptInfo?.totalPhrases || 0 }}</span>
+              <span class="script-stat-label">Phrases</span>
+            </div>
+            <div class="script-stat">
+              <span class="script-stat-value">{{ state.scriptInfo?.totalDirect || 0 }}</span>
+              <span class="script-stat-label">Direct Items</span>
+            </div>
+          </template>
           <div class="script-stat">
             <span class="script-stat-value">{{ state.scriptInfo?.totalItems || 0 }}</span>
             <span class="script-stat-label">Total Items</span>
@@ -167,7 +182,7 @@
           <span class="pass-label">Continuous Recording</span>
           <span class="pass-title">
             {{ currentPhrase?.cadence === 'slow' ? 'Slow Pass' : 'Natural Speed' }}
-            — {{ currentPhrase?.type === 'direct' ? 'Direct Item' : 'Phrase' }}
+            — {{ itemTypeLabel }}
           </span>
         </div>
         <span class="pass-progress">
@@ -660,6 +675,17 @@ const unfiledItems = computed(() =>
     }))
 )
 
+// What the recordist is looking at. The course-order script reads real course
+// items, so it can say which kind; the coverage script only ever had phrases
+// and single-LEGO direct items, and still says exactly what it always did.
+const ITEM_TYPE_LABELS = {
+  seed: 'Seed sentence',
+  lego: 'LEGO',
+  phrase: 'Phrase',
+  direct: 'Direct Item'
+}
+const itemTypeLabel = computed(() => ITEM_TYPE_LABELS[currentPhrase.value?.type] || 'Phrase')
+
 const latestFailureReason = computed(() => {
   let latest = null
   for (const idx of uploadQueue.failedIndices) {
@@ -911,6 +937,10 @@ function queueTakeUpload(segment, phrase, itemIndex) {
       cadence: phrase.cadence,
       text: phrase.text,
       type: phrase.type,
+      // The course row this line IS, when the script is the course itself.
+      // The server attaches the filed clip to this exact item.
+      itemKind: phrase.itemKind || null,
+      itemId: phrase.itemId || null,
       phraseIndex: phrase.phraseIndex,
       seedNumber: phrase.seedNumber ?? null,
       legoId: phrase.legoId || null,

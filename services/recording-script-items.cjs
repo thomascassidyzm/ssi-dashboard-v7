@@ -15,19 +15,21 @@
 //
 //   course order (?order=course)
 //     → every line appears ONCE, natural only. Kai's ruling, 2026-08-21: for a
-//       straight-through weekend session, read each line at natural speed and
-//       move on. Half the takes, half the booth time, start of the course
-//       first.
+//       straight-through session, read each line at natural speed and move on.
 //
-// WHAT NATURAL-ONLY COSTS, stated here because this is where the choice is made:
-// a line with no slow take can never be CHUNKED. synthesis-job.cjs:241 records
-// "no slow take uploaded — cannot align without pause boundaries" and skips
-// that line's alignment; nothing crashes and nothing is orphaned. The take is
-// still filed at upload as a real course_audio row and is still used WHOLE
-// wherever a course item matches its text ("a recorded whole-phrase natural
-// take ALWAYS beats splicing it", synthesis-job.cjs:303). What it cannot do is
-// donate chunks to OTHER phrases — until someone supplies alignment another
-// way, or the line is read slow later. That is an informed trade, not a bug.
+// Since the follow-up ruling of the same day, the course-order script is built
+// straight from the course by buildCourseScriptItems below — the coverage
+// optimiser is not run at all for it, because its output is a splicing plan and
+// these takes are never spliced (services/course-order-script.cjs says why).
+// buildScriptItems still shapes the coverage script, and still honours
+// natural-only if it is ever asked for one.
+//
+// WHAT NATURAL-ONLY COSTS: a line with no slow take can never be CHUNKED.
+// synthesis-job.cjs:241 records "no slow take uploaded — cannot align without
+// pause boundaries" and skips that line's alignment; nothing crashes and
+// nothing is orphaned. In the course-order mode that costs nothing at all,
+// because each take is attached directly as its item's audio and no chunk of it
+// is ever wanted.
 //
 // Pure function, no I/O: the endpoint runs the optimizer, this shapes the
 // result, and both halves stay testable without a database.
@@ -100,4 +102,32 @@ function buildScriptItems({ phrases = [], directItems = [], order = 'coverage' }
   return items
 }
 
-module.exports = { buildScriptItems, isNaturalOnly }
+/**
+ * Shape course-order items (services/course-order-script.cjs) into the autocue's
+ * item list: one natural read each, in the order they arrived.
+ *
+ * The item's own identity travels with it — `itemKind` and `itemId` — and comes
+ * back on the upload, which is what lets the take be attached to that exact
+ * seed / LEGO / phrase instead of being guessed at by text alone
+ * (services/script-take-attach.cjs).
+ *
+ * No chunk fields: nothing here is ever chunked, and a chunk map the recorder
+ * would render pause boundaries from would be a promise this mode does not keep.
+ */
+function buildCourseScriptItems(courseItems = []) {
+  return courseItems.map((it, index) => ({
+    index,
+    text: it.target,
+    cadence: 'natural',
+    type: it.kind,
+    itemKind: it.kind,
+    itemId: it.itemId,
+    known: it.known || '',
+    seedNumber: it.seedNumber ?? null,
+    legoIndex: it.legoIndex ?? null,
+    legoId: it.legoId || '',
+    phraseRole: it.phraseRole || '',
+  }))
+}
+
+module.exports = { buildScriptItems, buildCourseScriptItems, isNaturalOnly }

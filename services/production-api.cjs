@@ -31,6 +31,7 @@ const languageCodeService = require('./language-code-service.cjs')
 const { decomposeText } = require('./phrase-decomposer.cjs')
 const { isScriptModeUpload, normalizeProvenance, buildProvenanceContext, resolveTakeVoiceId, retainAndProcessTake } = require('./recording-upload-helpers.cjs')
 const { planScriptTakeFiling, fileScriptTake } = require('./script-take-filing.cjs')
+const { planAttach, attachScriptTake } = require('./script-take-attach.cjs')
 const takeSupersede = require('./take-supersede.cjs')
 const podsRegistration = require('./voice-engine/pods-registration.cjs')
 const podVoiceApprovals = require('./pod-voice-approvals.cjs')
@@ -5211,6 +5212,24 @@ async function handleRecordingUpload(req, res) {
         recordedBy,
         logger
       })
+
+      // ATTACH: a filed clip is a clip in the library; the item's FK is what
+      // makes it play. Takes recorded from the course-order script carry their
+      // item's identity, so the clip becomes that item's audio immediately —
+      // the same three tables and nine columns TTS links through
+      // (script-take-attach.cjs). A take with no item identity (the coverage
+      // script) is filed exactly as before and simply isn't attached.
+      if (scriptFiling?.filed) {
+        const attachPlan = planAttach({ metadata, courseAudioId: scriptFiling.courseAudioId })
+        const attachResult = await attachScriptTake({
+          supabase: supabaseClient.getClient(),
+          courseCode,
+          plan: attachPlan,
+          courseAudioId: scriptFiling.courseAudioId,
+          logger
+        })
+        scriptFiling = { ...scriptFiling, attached: attachResult.attached, itemsLinked: attachResult.linked }
+      }
     } else if (isScriptMode) {
       scriptFiling = {
         filed: false,
@@ -8357,7 +8376,8 @@ app.patch('/api/production/:courseCode/phrase/:phraseId', async (req, res) => {
 
 // Import the recording optimizer algorithm
 const { generateRecordingScript } = require('../tools/recording-optimizer/generate-recording-script.cjs')
-const { buildScriptItems, isNaturalOnly } = require('./recording-script-items.cjs')
+const { buildScriptItems, buildCourseScriptItems, isNaturalOnly } = require('./recording-script-items.cjs')
+const { loadCourseOrderScript } = require('./course-order-script.cjs')
 
 // GET /api/production/:courseCode/recording-optimizer
 // Runs the GuaranteedCoverage algorithm to find minimum recording set
@@ -8426,15 +8446,51 @@ app.get('/api/production/:courseCode/recording-script', async (req, res) => {
     // target voice needs its own complete set. Unknown/absent → target1, the
     // historical behaviour.
     const role = ['target1', 'target2'].includes(req.query.role) ? req.query.role : 'target1'
-    // ?order=course reads the SAME selected lines in course sequence (seed 1
-    // upwards) instead of coverage order, and — since Kai's ruling of
-    // 2026-08-21 — reads each of them ONCE, at natural speed, with no slow
-    // pass. Selection and chunking are still untouched. Default stays
+    // ?order=course is the straight-through recording mode (Kai, 2026-08-21):
+    // the COURSE in course sequence — each seed sentence, then each of its
+    // LEGOs, then the phrases built on that LEGO — read ONCE at natural speed,
+    // with every take filed and attached directly as that item's audio. It
+    // does not run the coverage optimiser at all: the optimiser's whole output
+    // is a splicing plan, and these takes are never spliced. Default stays
     // 'coverage', so nothing changes for anyone who doesn't ask for it.
     const order = req.query.order === 'course' ? 'course' : 'coverage'
     const naturalOnly = isNaturalOnly(order)
 
     logger.log(`[Recording Script] Generating ${naturalOnly ? 'natural-only' : 'interleaved'} script for ${courseCode} [${role}]${excludeRecorded ? ' (gap only)' : ' (full)'}${maxSeed ? ` (seeds 1-${maxSeed})` : ''} (${order} order)`)
+
+    if (order === 'course') {
+      if (!supabaseClient.isInitialized()) {
+        return res.status(503).json({ error: 'The database is unreachable, so the course script cannot be read.' })
+      }
+      const { items: courseItems, totalInCourse, alreadyRecorded } = await loadCourseOrderScript(
+        supabaseClient.getClient(), courseCode, { maxSeed, role, excludeRecorded }
+      )
+      if (!totalInCourse) {
+        return res.status(404).json({
+          error: maxSeed
+            ? `No course content found in seeds 1-${maxSeed} for ${courseCode}.`
+            : 'No course content found. Run Course Builder first.'
+        })
+      }
+      const items = buildCourseScriptItems(courseItems)
+      return res.json({
+        courseCode,
+        maxSeed,
+        role,
+        order,
+        naturalOnly,
+        totalItems: items.length,
+        // The course-order script has no phrase/direct split: every line is a
+        // course item, and the counts the recorder shows are of items, not of
+        // optimiser buckets.
+        totalPhrases: items.length,
+        totalDirect: 0,
+        totalInCourse,
+        alreadyRecorded,
+        estimatedMinutes: Math.round((items.length * 6) / 60),
+        items
+      })
+    }
 
     // Run the optimizer (suppress console output)
     const originalLog = console.log
