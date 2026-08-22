@@ -3,13 +3,19 @@
  * pod-switchover.cjs — promote a course's staged pod canon onto the live slug, and
  * put the old one beyond reach of a learner but not beyond reach of a rollback.
  *
- * THE POINTER ALREADY EXISTS AND IT IS THE SLUG `pod-0`. Every player read path
- * hardcodes the pod id `${courseCode}:pod-0` — useListeningPods.ts:161,
- * listeningMetaCache.ts:269, usePodLapScheduler.ts:483, generateLearningScript.ts:491,
- * usePodStage0.ts:96 — so there is nothing to add and nothing for those five call
- * sites to learn. The flip is: move the finished content into the slug they already
- * read, and move the old content out. `tools/pods/clone-pod.cjs` built the staging
- * half of this on 2026-08-06 and states the same convention in its header.
+ * THE POINTER IS THE SLUG THE PLAYER SERVES. It used to be `pod-0` everywhere: all five
+ * player read paths — useListeningPods.ts, listeningMetaCache.ts, usePodLapScheduler.ts,
+ * generateLearningScript.ts, usePodStage0.ts — hardcoded `${courseCode}:pod-0`. Since Tom's
+ * ruling of 2026-08-22 ("We want to not have a Pod 0 from now on. We want this first one to
+ * be called Pod 1.") those five sites share ONE resolver that prefers `pod-1` and falls back
+ * to `pod-0`, so the served slug is now a per-course fact. Croatian is the first course
+ * across; the other ~68 stay on `pod-0` and this tool's default keeps them byte-identical.
+ * Pass --promote-to= to land the staged pod on a different slug from the one being retired.
+ * The flip is still: move the finished content into the slug the player reads, and move the
+ * old content out. `tools/pods/clone-pod.cjs` built the staging half of this on 2026-08-06.
+ *
+ * IT WILL NOT PROMOTE ONTO AN OCCUPIED SLUG. If --promote-to names a pod that already
+ * exists, it refuses: archive the occupant first with `tools/pods/archive-pod.cjs`.
  *
  * MAKE BEFORE BREAK (docs/architecture/AUDIO_PIPELINE_ARCHITECTURE.md §6b). The staged
  * pod is proven complete BEFORE the live pod is touched, and the live pod is RENAMED,
@@ -54,6 +60,19 @@ const LIVE = arg('live') || 'pod-0'
 const STAGED = arg('staged') || 'pod-0-unrecorded'
 const STAMP = arg('stamp') || '2026-08-14'
 const RETIRED = `${LIVE}-retired-${STAMP}`
+/** THE SLUG THE STAGED POD LANDS ON. Defaults to LIVE, so every course that does not pass
+ *  this flag behaves byte-identically to how this tool behaved before the flag existed.
+ *
+ *  It exists because of Tom's ruling of 2026-08-22 — "We want to not have a Pod 0 from now
+ *  on. We want this first one to be called Pod 1." — which makes the convention 1-based.
+ *  Croatian is the first course across: it archives `pod-0` and promotes onto `pod-1`. The
+ *  other ~68 courses stay on `pod-0` until somebody decides to move them, so this is a
+ *  per-course fact, not a fleet rename, and the default keeps it that way. */
+const PROMOTE_TO = arg('promote-to') || LIVE
+/** Override the promoted pod's title. Without it the staged title is reused with the
+ *  "— UNRECORDED working copy" suffix stripped, which under the new convention would leave
+ *  a pod-1 titled "Pod 0". */
+const NEW_TITLE = arg('title')
 /** Escape hatch for a course we have consciously decided to swap without migrating
  *  (a draft course with throwaway state). Never use it on a released course.
  *  It does NOT mean "leave the rows alone" — leaving them alone is the mis-credit.
@@ -106,10 +125,13 @@ async function main () {
 
   if (ROLLBACK) {
     const retired = await podOf(RETIRED)
-    const live = await podOf(LIVE)
+    // The promoted pod sits on PROMOTE_TO, which is LIVE unless the flip moved the
+    // convention. Roll back from where the content actually is, not from where it used to go.
+    const live = await podOf(PROMOTE_TO)
     if (!retired) fail(`no retired pod ${COURSE}:${RETIRED} to roll back to`)
-    if (!live) fail(`no live pod ${COURSE}:${LIVE} — nothing to displace`)
-    log(`ROLLBACK ${COURSE}: ${LIVE} (${await countOf(LIVE)}) → ${STAGED}, ${RETIRED} (${await countOf(RETIRED)}) → ${LIVE}`)
+    if (!live) fail(`no promoted pod ${COURSE}:${PROMOTE_TO} — nothing to displace`)
+    if (PROMOTE_TO !== LIVE && await podOf(LIVE)) fail(`${COURSE}:${LIVE} already exists — the retired pod has nowhere to return to`)
+    log(`ROLLBACK ${COURSE}: ${PROMOTE_TO} (${await countOf(PROMOTE_TO)}) → ${STAGED}, ${RETIRED} (${await countOf(RETIRED)}) → ${LIVE}`)
 
     // Rollback has to migrate learner progress BACK, by the same rules. Restoring the old
     // content while leaving progress mapped to the new canon is the mis-credit in reverse,
@@ -120,7 +142,7 @@ async function main () {
     const { rows: backRows } = await db.query(
       `select learner_id, course_code, sentence_id, exposures, updated_at
          from learner_pod_state where course_code = $1 order by learner_id, sentence_id`, [COURSE])
-    const backPlan = backRows.length ? planMigration(await canon(LIVE), await canon(RETIRED), backRows) : null
+    const backPlan = backRows.length ? planMigration(await canon(PROMOTE_TO), await canon(RETIRED), backRows) : null
     if (backPlan) {
       const t = backPlan.actions.reduce((m, a) => { m[a.action] = (m[a.action] || 0) + 1; return m }, {})
       log(`  learner progress migrated back: carry ${t.carry || 0}, keep ${t.keep || 0}, merge ${t.merge || 0}, drop ${t.drop || 0}`)
@@ -128,8 +150,10 @@ async function main () {
     if (!APPLY) { log('\nDRY RUN — pass --apply to write.'); await db.end(); return }
     await db.query('begin')
     try {
-      await movePod(db, LIVE, STAGED, null)
-      await movePod(db, RETIRED, LIVE, null)
+      await movePod(db, PROMOTE_TO, STAGED, null)
+      // Strip the retirement marker as the pod comes back to life, so a rolled-back course
+      // is not left showing learners a title that says [RETIRED].
+      await movePod(db, RETIRED, LIVE, (retired.title || '').replace(/^\[RETIRED [^\]]+\] /, '') || null)
       if (backPlan) {
         for (const a of backPlan.actions) {
           const del = () => db.query(
@@ -165,6 +189,11 @@ async function main () {
   if (!live) fail(`no live pod ${COURSE}:${LIVE}`)
   if (!staged) fail(`no staged pod ${COURSE}:${STAGED} — nothing to promote`)
   if (await podOf(RETIRED)) fail(`${COURSE}:${RETIRED} already exists — this course looks already switched`)
+  // Promoting onto a slug that is already occupied would merge two pods into one id.
+  // The occupant must be archived out of the way first (tools/pods/archive-pod.cjs).
+  if (PROMOTE_TO !== LIVE && await podOf(PROMOTE_TO)) {
+    fail(`${COURSE}:${PROMOTE_TO} already exists — archive it out of the way first (tools/pods/archive-pod.cjs)`)
+  }
 
   const { rows: [s] } = await db.query(
     `select count(*) n,
@@ -217,21 +246,25 @@ async function main () {
     process.exit(1)
   }
 
-  const newTitle = (staged.title || '').replace(/ — UNRECORDED working copy, not learner-facing$/, '')
+  const newTitle = NEW_TITLE || (staged.title || '').replace(/ — UNRECORDED working copy, not learner-facing$/, '')
   log(`\nplan:`)
   log(`  1. ${COURSE}:${LIVE} (${liveN} sentences) → ${COURSE}:${RETIRED}   [archived, not deleted]`)
-  log(`  2. ${COURSE}:${STAGED} (${s.n} sentences) → ${COURSE}:${LIVE}      [now learner-facing]`)
-  if (plan) log(`  3. ${stateRows.length} learner pod state rows migrated by content + position`)
-  log(`  rollback: node tools/pods/pod-switchover.cjs --course=${COURSE} --rollback --apply`)
+  log(`  2. ${COURSE}:${STAGED} (${s.n} sentences) → ${COURSE}:${PROMOTE_TO}      [now learner-facing]`)
+  log(`     title: ${JSON.stringify(newTitle)}`)
+  if (plan) log(`  3. ${stateRows.length} learner pod state rows migrated by content + position, re-keyed onto ${PROMOTE_TO}`)
+  // The stamp is part of the rollback, because it is the name the old pod is archived
+  // under. Print it, so the line can be copied without silently defaulting to 2026-08-14.
+  log(`  rollback: node tools/pods/pod-switchover.cjs --course=${COURSE} --stamp=${STAMP}` +
+      (PROMOTE_TO !== LIVE ? ` --promote-to=${PROMOTE_TO}` : '') + ` --rollback --apply`)
 
   if (!APPLY) { log('\nDRY RUN — pass --apply to write.'); await db.end(); return }
 
   await db.query('begin')
   try {
     const archived = await movePod(db, LIVE, RETIRED, `[RETIRED ${STAMP}] ${live.title || LIVE}`)
-    const promoted = await movePod(db, STAGED, LIVE, newTitle || null)
+    const promoted = await movePod(db, STAGED, PROMOTE_TO, newTitle || null)
     // Post-conditions asserted inside the transaction: nothing lost, slug now live.
-    const after = Number((await db.query('select count(*) c from listening_pod_sentences where pod_id = $1', [`${COURSE}:${LIVE}`])).rows[0].c)
+    const after = Number((await db.query('select count(*) c from listening_pod_sentences where pod_id = $1', [`${COURSE}:${PROMOTE_TO}`])).rows[0].c)
     if (after !== Number(s.n)) throw new Error(`post-check failed: live pod holds ${after} sentences, expected ${s.n}`)
     const kept = Number((await db.query('select count(*) c from listening_pod_sentences where pod_id = $1', [`${COURSE}:${RETIRED}`])).rows[0].c)
     if (kept !== liveN) throw new Error(`post-check failed: archived pod holds ${kept} sentences, expected ${liveN}`)
@@ -249,7 +282,9 @@ async function main () {
           if (r.rowCount !== 1) throw new Error(`drift: expected 1 state row for ${a.sentence_id}, got ${r.rowCount}`)
           dropped++
         } else if (a.action === 'carry' || a.action === 'keep') {
-          const target = reslug(a.to.replace(/:s\d+$/, ''), STAGED, LIVE) + (/:s\d+$/.exec(a.to)?.[0] || '')
+          // `to` targets were planned against the STAGED canon; promotion re-keyed every
+          // sentence id onto PROMOTE_TO, so progress must follow onto the same slug.
+          const target = reslug(a.to.replace(/:s\d+$/, ''), STAGED, PROMOTE_TO) + (/:s\d+$/.exec(a.to)?.[0] || '')
           if (target === a.sentence_id) continue
           const r = await del()
           if (r.rowCount !== 1) throw new Error(`drift: expected 1 state row for ${a.sentence_id}, got ${r.rowCount}`)
@@ -272,7 +307,7 @@ async function main () {
     }
 
     await db.query('commit')
-    log(`\nswitched. archived ${archived}, promoted ${promoted}.`)
+    log(`\nswitched. archived ${archived} → ${RETIRED}, promoted ${promoted} → ${PROMOTE_TO}.`)
     if (plan) log(`learner progress: ${carried} carried, ${dropped} dropped.`)
   } catch (e) { await db.query('rollback'); throw e }
 
