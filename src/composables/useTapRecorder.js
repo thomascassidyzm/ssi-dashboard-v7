@@ -96,8 +96,31 @@ export const ROLL_QUIET_MS = 1000
 
 // Peak-level bars, on the raw meter peak (DSP is off, so these are the dry
 // signal). Only ever used for timing decisions, never to gate audio.
+//
+// These are the LOUD-MIC end of the scale, and they are absolute numbers on a
+// signal whose gain we deliberately do not control: autoGainControl is off, so
+// how high a real read peaks depends entirely on the device and how far away
+// the mouth is. A phone held at arm's length peaks well under 0.06 while
+// reading perfectly audibly, and every syllable of it then sits below
+// SPEECH_PEAK — the line is judged to have had nothing said on it, and the
+// audio, which exists and is fine, is thrown away.
+//
+// So SPEECH_PEAK is now a CEILING rather than the test: the working floor
+// tracks the loudest thing this session has actually heard, and only rises to
+// 0.06 for a mic that is genuinely running that hot. It never falls below
+// SPEECH_PEAK_MIN, which is set at the level of converter dither — below that
+// there is no signal at all, only the noise of the number itself.
 const FLOOR_PEAK = 0.02
 const SPEECH_PEAK = 0.06
+// The least peak we will ever call speech: ~-46dBFS. A read on any working mic
+// clears this by a wide margin; nothing but dither sits under it.
+const SPEECH_PEAK_MIN = 0.005
+// Speech is a real rise against the loudest thing heard so far this session.
+const SPEECH_PEAK_RATIO = 0.35
+// Quiet sits a third of the way under the speech floor, in the same currency,
+// so a quiet mic does not read as permanently silent and auto-advance off the
+// line the moment it opens.
+const QUIET_PEAK_RATIO = 0.33
 
 export function useTapRecorder() {
   const isRecording = ref(false) // a line is actively capturing
@@ -111,6 +134,19 @@ export function useTapRecorder() {
   // instead of a blob-size test — with pre-roll and tail on every clip, "small
   // blob" no longer means "silence".
   const lineHasSpeech = ref(false)
+  // Is the meter actually delivering samples? The meter is built best-effort
+  // and documented as optional — "even a dead meter never costs us audio" — and
+  // that stopped being true the moment lineHasSpeech became what decides
+  // whether a take is saved. A meter that reads nothing then refuses every
+  // take on a session where the microphone was working perfectly.
+  //
+  // A dead graph reads EXACTLY zero on every sample, forever: an AudioContext
+  // that never left suspended, an iOS MediaStreamAudioSourceNode that silently
+  // produces silence, a constructor that threw. A live graph on a silent mic
+  // does not — converter dither alone puts something in the low 1e-4s. So one
+  // frame with any non-zero sample in it is proof the meter is real, and until
+  // we have seen one, the meter gets no vote on anything irreversible.
+  const meterTrusted = ref(false)
   // Below the floor for this long, having already spoken on this line. This is
   // what drives auto-advance in the surface; it is NOT what ends the capture.
   const quietMs = ref(0)
@@ -124,6 +160,9 @@ export function useTapRecorder() {
   let meterCtx = null, analyser = null, meterBuf = null, rafId = null
   let clipTimer = null
   let wakeLock = null
+  // The loudest peak this session has heard. The speech and quiet floors are
+  // both derived from it, so a quiet mic gets a quiet scale.
+  let sessionPeak = 0
   // Instantaneous peak from the most recent meter frame — the decayed `level`
   // is for the eye, this is for the timing decisions.
   let peak = 0
@@ -230,6 +269,8 @@ export function useTapRecorder() {
 
     lastQuietSince = now()
     active = spawnRecorder()
+    sessionPeak = 0
+    meterTrusted.value = false
 
     try { if (navigator.wakeLock) wakeLock = await navigator.wakeLock.request('screen') } catch { /* unsupported */ }
   }
@@ -241,6 +282,10 @@ export function useTapRecorder() {
         let p = 0
         for (let i = 0; i < meterBuf.length; i++) { const a = Math.abs(meterBuf[i]); if (a > p) p = a }
         peak = p
+        // One non-zero sample is all it takes: the graph is delivering, and the
+        // meter may from now on be believed about what it did and did not hear.
+        if (p > 0) meterTrusted.value = true
+        if (p > sessionPeak) sessionPeak = p
         level.value = Math.max(p, level.value * 0.85)
         if (p >= 0.99) {
           clipping.value = true
@@ -257,10 +302,21 @@ export function useTapRecorder() {
   // Everything time-based hangs off the meter frame: whether the line has had
   // speech on it, how long it has been quiet since, and whether the pre-roll
   // should be rolled over.
+  // The peak a syllable has to clear to count as speech, on this microphone, at
+  // this distance, in this session. Bounded above by SPEECH_PEAK so a hot mic
+  // behaves exactly as it did before, and below by dither.
+  function speechFloor() {
+    return Math.min(SPEECH_PEAK, Math.max(SPEECH_PEAK_MIN, sessionPeak * SPEECH_PEAK_RATIO))
+  }
+  // The peak the room has to fall under to count as quiet, in the same currency.
+  function quietFloor() {
+    return Math.min(FLOOR_PEAK, speechFloor() * QUIET_PEAK_RATIO)
+  }
+
   function onMeterFrame(p) {
     const t = now()
-    if (p > FLOOR_PEAK) lastQuietSince = t
-    if (p > SPEECH_PEAK && isRecording.value) lineHasSpeech.value = true
+    if (p > quietFloor()) lastQuietSince = t
+    if (p > speechFloor() && isRecording.value) lineHasSpeech.value = true
 
     quietMs.value = lineHasSpeech.value ? t - lastQuietSince : 0
 
@@ -320,10 +376,10 @@ export function useTapRecorder() {
       const watcher = setInterval(() => {
         const elapsed = now() - openedAt
         if (elapsed >= TAIL_MS) { finish(); return }
-        if (peak <= FLOOR_PEAK) { heardSilence = true; return }
+        if (peak <= quietFloor()) { heardSilence = true; return }
         // Silence, and then sound again: the next line has begun. Close this
         // clip now rather than let its tail eat the next line's first word.
-        if (heardSilence && peak > SPEECH_PEAK) finish()
+        if (heardSilence && peak > speechFloor()) finish()
       }, 50)
     })
   }
@@ -355,11 +411,13 @@ export function useTapRecorder() {
     if (wakeLock) { try { await wakeLock.release() } catch {}; wakeLock = null }
     stream = null; meterCtx = null; analyser = null; meterBuf = null
     level.value = 0; clipping.value = false
+    sessionPeak = 0; peak = 0
+    meterTrusted.value = false
   }
 
   return {
     isRecording, level, clipping, devices, appliedSettings, error,
-    lineHasSpeech, quietMs,
+    lineHasSpeech, quietMs, meterTrusted,
     listDevices, start, beginLine, endLine, discardLine, stop,
   }
 }

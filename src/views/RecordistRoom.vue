@@ -103,8 +103,13 @@
         <div class="meter" :class="{ clip: recorder.clipping.value }">
           <div class="meter-fill" :style="{ width: `${Math.min(100, recorder.level.value * 100)}%` }"></div>
         </div>
+        <!-- "Mic live" was printed whether or not the meter was reading a
+             thing, so an empty bar next to it looked like a quiet room rather
+             than a broken meter. Say which it is. -->
         <span class="meter-tag" :class="{ clip: recorder.clipping.value }">
-          {{ recorder.clipping.value ? 'Too loud — back off the mic' : 'Mic live' }}
+          {{ recorder.clipping.value
+            ? 'Too loud — back off the mic'
+            : (recorder.meterTrusted.value ? 'Mic live' : 'Level meter not reading — every take will be saved') }}
         </span>
       </div>
       <p class="stage-progress">
@@ -494,6 +499,13 @@ function commit(i, blob, hadSpeech) {
   // ever heard the voice while this line was open, and that is what decides it.
   // The size floor stays underneath as a backstop for a capture that failed
   // outright.
+  //
+  // `hadSpeech` is TRUE, FALSE or NULL, and null means the recorder does not
+  // know — its meter never delivered a sample, so it heard nothing about
+  // anything. Only FALSE refuses a take. Not knowing is not the same as knowing
+  // there was silence, and on 2026-08-22 the difference was a whole session:
+  // every line read, every clip captured, every take refused, because the level
+  // meter was reading zero and the meter is the only witness this test has.
   if (!blob || blob.size < 1200 || hadSpeech === false) {
     queue.markFailed(line.id, 'That take came out silent — read it again.')
     if (!sessionIds.value.includes(line.id)) sessionIds.value = [...sessionIds.value, line.id]
@@ -509,6 +521,15 @@ function commit(i, blob, hadSpeech) {
   readThisSession.value++
 }
 
+// What the recorder can honestly say about whether this line was read: true,
+// false, or null for "no idea". Null is what a meter that is not delivering
+// samples is entitled to say, and it is the only answer that never destroys a
+// performance.
+function speechVerdict() {
+  if (!recorder.meterTrusted.value) return null
+  return recorder.lineHasSpeech.value
+}
+
 async function onNext() {
   if (phase.value !== 'recording' || busy.value || !debounced()) return
   busy.value = true
@@ -516,7 +537,7 @@ async function onNext() {
     const i = index.value
     // Snapshot BEFORE the next line opens: beginLine() resets it, and the blob
     // does not land for up to a tail-length afterwards.
-    const hadSpeech = recorder.lineHasSpeech.value
+    const hadSpeech = speechVerdict()
     // The blob is not awaited before advancing. endLine() keeps the outgoing
     // recorder running for its tail — that is the whole point of it — so
     // waiting here would put a visible pause on every line for audio that is
@@ -562,11 +583,14 @@ async function onFinish() {
   busy.value = true
   try {
     const i = index.value
-    const hadSpeech = recorder.lineHasSpeech.value
+    const hadSpeech = speechVerdict()
     const blob = await recorder.endLine()
     // Stop pressed on a line nobody read is not a failed take — it is the end
     // of the session. Filing it would put a phantom red line on a clean run.
-    if (hadSpeech) commit(i, blob, hadSpeech)
+    // But that only holds where the recorder KNOWS nobody read it: if the meter
+    // is not reading, a dropped final line is a lost take, and a phantom row on
+    // the done screen is the cheaper of the two mistakes.
+    if (hadSpeech !== false) commit(i, blob, hadSpeech)
     await finish()
   } finally { busy.value = false }
 }
