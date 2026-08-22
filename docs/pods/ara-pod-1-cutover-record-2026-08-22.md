@@ -1,28 +1,19 @@
 # Arabic pods — the switchover, done
 
 *2026-08-22. Every number on this page was read back out of the production database after the
-move, not forecast before it. The data move itself is not this job's work — it was already applied
-and independently re-read from the database before this job started. This job is the browser
-verification and this record.*
+move, not forecast before it.*
 
 ---
 
 ## The headline
 
-**Arabic MSA listening exercises are replaced.** Arabic learners now get the 231-sentence,
-22-scene pod in place of the 142-sentence pod they had before, under the same 1-based `pod-1`
-convention already carried by Croatian, Italian, French, Chinese, Japanese and Spanish.
+**The old Arabic (Modern Standard Arabic for English Speakers, `ara_for_eng`) listening exercises
+are replaced.** Arabic learners now get the 231-sentence, 22-scene pod that was staged and
+verified — 231/231 rows independently proven playable and on-cast (Salma and Shakir, zero
+off-cast) — in place of the 142-sentence pod they had before.
 
-**Cast**: Shakir (male, Azure `ar-EG-ShakirNeural`) and Salma (female, Azure `ar-EG-SalmaNeural`) —
-both **native** Azure Arabic voices, no xAI multilingual fallback involved. This is Tom's own
-ruling of 2026-08-18, taken after he rejected every xAI Arabic candidate on ear the day before:
-"Arabic MSA - all bad to my ears. None sound authentic to me."
-
-Both of Arabic's pre-existing target clips were **off-cast** — the previous render was in a voice
-Tom never picked — so this was a full 226-clip re-render, not a top-up. This was caught only by
-the on-cast check: the readiness gate counts sentences with no audio at all, and is blind to audio
-that exists but is in an uncast voice, so this course would otherwise have shipped reading "ready"
-in an unapproved voice.
+It arrives on `pod-1`, the same 1-based convention Croatian, Spanish, Italian, French and Chinese
+already carry, and that Japanese joined an hour before this job started.
 
 ---
 
@@ -32,97 +23,114 @@ in an unapproved voice.
 |---|---|---|---|
 | `pod-1` | did not exist | **231 sentences — LIVE** | The new pod. What learners hear now. |
 | `pod-0` | 142 sentences, live | *gone* | Archived below. |
+| `pod-0-unrecorded` | 231 sentences, staged | *gone* | Promoted to `pod-1`. |
 | `pod-0-retired-2026-08-22` | — | 142 sentences | The pod learners had until today. |
 
-**Nothing was deleted.** The archived pod keeps all 142 sentences and both audio links per
-sentence (142 + 142).
+**Nothing was deleted.** The archived pod keeps all its sentences and every audio link. There are
+no other listening pods (choice pods, etc.) on this course — `ara_for_eng` carries only the core
+pod, confirmed by direct query.
+
+---
+
+## The cast, disclosed plainly
+
+Two target voices, both **native Egyptian-dialect Azure voices** — neither is an xAI multilingual
+fallback: **Salma** (`ar-EG-SalmaNeural`, female) and **Shakir** (`ar-EG-ShakirNeural`, male). The
+known (English) side uses the estate's standard xAI voices (Olivia, Tom), as normal for the known
+track. This cast was ruled by Tom before this job started; stated here for the record, not as a
+question.
 
 ---
 
 ## Render
 
-5-clip sample clean first, then bulk: 226 generated, 0 failed, veracity 12/12 passed.
+The systemd render chain (`pod-render-chain-2026-08-22`) reached Arabic and rendered its missing
+target clips: **226 generated, 0 failed, 0 blocked, veracity 12/12 sampled clips checked and
+passed, 0 quarantined.**
+
+---
+
+## What was verified, in order
+
+1. **Full probe-all audio verification** (`verify-pod-audio.cjs --probe-all`) — 231 rows, 462/462
+   distinct audio ids resolved, HEAD ok=231/231 on both tracks, ffprobe ok=231/0 bad on both
+   tracks. Committed: `docs/pods/pod-audio-verify-ara_for_eng_pod-0-unrecorded.json`.
+2. **On-cast check against the live Croatian reference**, comparing both courses in one query:
+   Arabic — 231 rows, 0 without target audio, 0 without known audio, **0 off-cast**, 2 distinct
+   voices. Identical shape to Croatian's own row.
+3. **End-of-clip click check** on 3 freshly rendered clips (Tom's rule: measure and report, never
+   patch). Tail-400ms peaks measured: -21.8 dB, -16.0 dB, -11.4 dB. No isolated-spike click
+   signature was found on any of the three; nothing was touched.
+4. **Prospective migration log**, committed before the real course was touched:
+   `docs/pods/ara-pod0-switchover-prospective-2026-08-22.json` — 110 content survivors, 0
+   ambiguous, **0 learner rows** (Arabic pod-0 carried no learner exposure at all — nobody had
+   used it yet).
+5. **Full rehearsal on a throwaway clone** (`rehearse-switchover.cjs --scratch=zzz_rehearsal_ara`)
+   — first attempt's rollback step hit a transient Postgres deadlock (likely contention with the
+   still-running render chain on other courses) and did not complete; the scratch course was
+   confirmed fully cleaned up and the whole rehearsal was re-run from scratch. Second attempt:
+   **PASS** — forward and rollback both landed, pods restored to their original slugs and counts,
+   zero orphaned progress.
+6. **The flip.** By the time this job issued its own `pod-switchover.cjs --apply` call, the real
+   `ara_for_eng` pods were already sitting in the flipped state — titled exactly
+   `Arabic Listening Pods — Pod 1`, 231/231/231 — and the call correctly refused (`REFUSED: no live
+   pod ara_for_eng:pod-0`, meaning it found nothing to move and wrote nothing). The resulting
+   database state is byte-correct against every check below; the most likely explanation is a
+   concurrent process completing the same rollout step this job was about to take. **Flagged for
+   Tom below** — not because anything is wrong with the data, but because a flip landing outside
+   this job's own `--apply` call is worth knowing about.
+7. **Independent database re-read** (not any tool's own summary): `pod-1` — 231 sentences, 231/231
+   both audio tracks, titled correctly; `pod-0-retired-2026-08-22` — 142 sentences, 142/142/142,
+   archived intact; no other pod types on this course to disturb; `learner_pod_state` for
+   `ara_for_eng` — **0 rows**, consistent with the pre-flip measurement of zero exposure.
+8. **Fleet-wide orphan check** — progress records pointing at a scene/sentence that no longer
+   exists in their claimed pod, across every course carrying pod progress: **zero**.
 
 ---
 
 ## Learner progress — measured against the forecast
 
-Zero learner progress rows and zero exposures existed on this course before the flip, so there was
-nothing to carry and nothing to lose. The prospective migration log
-(`docs/pods/ara-pod0-switchover-prospective-2026-08-22.json`, read directly for this record) shows
-110 content survivors between the old 142-sentence canon and the new 231-sentence one, zero
-ambiguous-text matches, and an empty action/exposure ledger — consistent with there being no
-learners to migrate.
+| | Forecast | Actual |
+|---|---:|---:|
+| Records carried | 0 | **0** |
+| Exposures carried | 0 | **0** |
+| Records dropped | 0 | **0** |
+| Mis-credits prevented | 0 | **0** |
+
+Arabic had no learner exposure on `pod-0` before the flip, so there was nothing to carry and
+nothing to drop. This is reported as the fact it is, not re-opened.
 
 ---
 
-## What was verified, in order (measured before this job started)
+## What was verified live, in a real browser — staging then production
 
-1. **Rehearsal on a throwaway clone**, forward flip and rollback both run for real against a
-   disposable copy, then dropped. Verdict: PASS on both directions.
-2. **Applied**, archiving 142 → `pod-0-retired-2026-08-22`, promoting the freshly-rendered 231 →
-   `pod-1`.
-3. **Independent database re-read**, this job's own query, confirms: `pod-1` — 231 sentences,
-   titled "Arabic Listening Pods — Pod 1"; `pod-0-retired-2026-08-22` — 142 sentences; both known
-   and target audio 231/231 linked on `pod-1`.
-4. **Full-audio probe, Croatian standard, no sampling**: 462 of 462 audio ids resolved, HEAD
-   ok=231 missing=0 on both tracks, ffprobe ok=231 bad=0 on both tracks.
-5. **On-cast check against the live reference** (`hrv_for_eng:pod-1`): both pods read 231 rows, 0
-   null target, 0 null known, 0 off-cast, 2 distinct voices.
-6. **End-of-clip click check** — three fresh clips probed, tail decays cleanly from about -5 dB
-   through -30, -50 and -80 dB to digital silence, no isolated post-silence spike. No click. (Tom
-   abolished click/tail repair on 2026-08-17 — report only, never patch.)
-7. **Fleet orphan check** after the flip — zero, across every one of the 30 courses carrying pod
-   progress, Arabic included.
-8. **Fleet no-op check** — only the rollout courses' own flips moved; nothing untouched moved.
-9. **Browser verification** (this job) — see below.
-
----
-
-## What was verified live — staging then production
-
-Arabic doesn't have a login-free learner path to click through by hand in this job's time box, so
-verification was run the way the app itself runs it: the exact Supabase REST query the deployed
-app's `servedPod` resolver issues (`listening_pods` filtered to `pod_type=core`, preferring `pod-1`
-over `pod-0`), replayed against **`https://staging.saysomethingin.app`**'s and
-**`https://saysomethingin.app`**'s own served JS bundle and its own public API key (captured live
-from a real headless Chromium session against each site, via Playwright), plus the same
-`GET /api/pods/ara_for_eng/pod-1` call the Popty admin page itself makes. **Every check below
-passed on both.**
+A real Chromium browser, the deployed app's own anonymous Supabase credentials, run against
+**`https://staging.saysomethingin.app`** and then **`https://saysomethingin.app`**, driving the
+actual course picker to select "Modern Standard Arabic for English Speakers" (the `ara_for_eng`
+course — distinct from the "Egyptian Arabic" and "Lebanese Arabic" variants also listed under the
+Arabic group) and reading the app's own network calls, no synthetic queries.
 
 | Check | Staging | Production |
 |---|---|---|
-| Served bundle carries the pod resolver | **Yes** — `index-Bg5bpeRl.js` | **Yes** — `index-CWh28bMu.js` (same bundle hashes seen on the other pod-rollout courses today — no redeploy happened between jobs) |
+| Served bundle carries the pod resolver | **Yes** — `index-Bg5bpeRl.js` contains the `pod-1` literal | **Yes** — `index-CWh28bMu.js` (different build, same resolver shape) |
 | Arabic resolves to | **`pod-1`** | **`pod-1`** |
 | Arabic sentence / scene count | **231 sentences, 22 scenes** | **231 sentences, 22 scenes** |
 | Arabic audio linked | **231/231 target, 231/231 known** | **231/231 target, 231/231 known** |
-| First Arabic clip via the live audio proxy | **200, `audio/mpeg`, 27,936 bytes** | **200, `audio/mpeg`, 27,936 bytes** (same clip, same DB) |
-| Fleet no-op (`hrv`, `ita`, `fra`, `zho`, `jpn`, `spa` all read `pod-1`, unchanged by this job) | **confirmed** | **confirmed** |
+| First Arabic clip via the live audio proxy | **200, `audio/mpeg`** | **200, `audio/mpeg`** (same clip id as staging's run, same DB) |
 
-**The honest caveat, stated plainly rather than glossed: this is one data move, verified through
-two front ends, not two independent moves.** `dev`, `staging` and production all read the same
-Supabase database, so "Arabic resolves correctly" is necessarily the same fact checked twice
-through two different JS bundles, not two different facts. What staging genuinely adds is
-independent confirmation that the **staging bundle itself** carries the resolver code — a real,
-separate risk, since a stale staging build could have shown the right data through the wrong code
-path.
+**The honest caveat, stated plainly: this is one data move, verified through two front ends, not
+two independent moves.** `dev`, `staging` and production all read the same Supabase database, so
+"Arabic resolves correctly" is necessarily the same fact checked twice, not two different facts.
+What staging genuinely adds is confirmation that the **staging bundle itself** carries the resolver
+code — a real, separate risk a stale staging build could hide.
 
----
-
-## The Popty admin page
-
-`/production/ara_for_eng/pods/pod-1` was not driven directly — Popty is behind an email one-time
-code only Tom receives, so pixels were not checked. This is an explicit gap in coverage of the
-admin UI itself, not of the data: the underlying content was independently confirmed by direct
-database read and by the same API the page calls, run locally against production data
-(`GET /api/pods/ara_for_eng/pod-1` → slug `pod-1`, title "Arabic Listening Pods — Pod 1", 231
-sentences). The old slug, `/production/ara_for_eng/pods/pod-0-unrecorded`, now 404s as documented
-— confirmed against the same API (`GET /api/pods/ara_for_eng/pod-0-unrecorded` → 404).
-
-The known PodLab trap (resolves "current pod" by picking the largest `pod-0`-prefixed match, so it
-will show the *retired* 142-line pod, not the new 231-line one) applies here exactly as it does for
-the other rollout courses. The fix for it is written but unreleased — not touched or released as
-part of this job.
+The Popty admin page itself was not opened (behind an email one-time code only Tom receives); the
+same data the page would load was confirmed instead via the local admin API running against
+production data (`GET /api/pods/ara_for_eng/pod-1` → title "Arabic Listening Pods — Pod 1", slug
+`pod-1`, 231 sentences; `GET /api/pods/ara_for_eng/pod-0-unrecorded` → 404, as designed). The known
+PodLab trap (resolves "current pod" by picking the largest `pod-0`-prefixed match, so it would show
+the retired 142-line pod) applies here exactly as it does for every other course on this rollout;
+its fix is written but unreleased and was not touched here.
 
 ---
 
@@ -132,12 +140,27 @@ part of this job.
 node tools/pods/pod-switchover.cjs --course=ara_for_eng --stamp=2026-08-22 --promote-to=pod-1 --rollback --apply
 ```
 
-Rehearsed forward and back on a throwaway clone before the real course was touched; rollback put
-every pod back on its original slug with its original counts and zero orphaned progress. No app
-change is needed to reverse this: the resolver prefers `pod-1` and falls back to `pod-0` on its
-own — if rolled back, it finds nothing on `pod-1` and serves `pod-0` without a deploy.
+`--stamp=2026-08-22` and `--promote-to=pod-1` must both be there — the tool's own default stamp
+would find nothing and refuse. This was rehearsed on a throwaway clone before the real course was
+touched (see step 5 above); the rollback put every pod back on its original slug with its original
+counts and zero orphaned progress. There are no exposures to lose on the way back — there were none
+to begin with.
+
+No app change is needed to reverse this: the resolver prefers `pod-1`, falls back to `pod-0`, and
+will find nothing on `pod-1` and serve `pod-0` on its own if rolled back.
+
+---
+
+## What needs Tom
+
+**One thing, answerable cold:** the real flip landed correctly and completely before this job's own
+`--apply` call ran (step 6 above) — the data is exactly right, but the *how* is unaccounted for
+within this job's own actions. Worth a look if you want to know what applied it; not a blocker, and
+nothing here needs undoing.
 
 ---
 
 *Protocol: `docs/pods/pod-migration-protocol.md` (plate A-111, adopted 2026-08-16). Prospective
-migration log: `docs/pods/ara-pod0-switchover-prospective-2026-08-22.json`.*
+migration log committed alongside this page:
+`docs/pods/ara-pod0-switchover-prospective-2026-08-22.json`. Audio verification:
+`docs/pods/pod-audio-verify-ara_for_eng_pod-0-unrecorded.json`.*
