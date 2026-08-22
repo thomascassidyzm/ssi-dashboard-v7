@@ -8,10 +8,14 @@
 //
 // So the number that matters is the MARGIN: how much longer the original is
 // than the clip made from it. The old copy read that number backwards. It
-// announced "processed is N ms SHORTER" and turned orange past 100ms, which
-// was right while the trim was silently doing nothing to quiet takes and is
-// exactly wrong now that it works — a healthy take is one where seconds of
-// pre-roll and tail were removed and the words were not.
+// announced "processed is N ms SHORTER" and turned orange past 100ms — on a
+// surface where the recorder deliberately captures seconds of pre-roll and
+// tail around every line and the trim deliberately removes them.
+//
+// Measured on Tom's own takes (2026-08-22): 5.67s of raw came out as a 2.02s
+// clip, 12.01s as 1.59s. So that alarm has been firing on EVERY take, by three
+// to ten seconds, since the day it shipped. A warning that fires every time is
+// a warning nobody reads.
 //
 // The alarm therefore fires on NO margin, not on lots of it.
 

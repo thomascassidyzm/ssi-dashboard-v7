@@ -238,12 +238,14 @@ describe('processRecordingBuffer — silence trim (T-20 regression)', () => {
   // gated near-silent between words, and as AAC in MP4 rather than Opus in
   // WebM — Safari's only MediaRecorder container.
   //
-  // The old dry take never actually got trimmed: the read detector runs at a
-  // fixed -40dB and a take peaking at -50 has no sample above it, so every one
-  // of them fell through to "kept whole" and shipped with all its pre-roll and
-  // tail attached. That is the safety net working, not the trim working. This
-  // pins the difference: on a properly-levelled take the read is FOUND, the
-  // padding goes, the speech survives whole, and the clip lands on target.
+  // Measured on Tom's real dry takes (2026-08-22): they peak at -28.5dBFS, the
+  // detector found the read in all six, and the trim did its job. What did NOT
+  // work at that level was the gain — loudnorm needed a +30.6dB lift and could
+  // not deliver it in one pass, landing those clips at -26.2 LUFS against a -16
+  // target with an audibly raised floor. A take arriving at voice-chain level
+  // needs about +7.5dB, which one pass delivers. This pins the whole shape:
+  // read FOUND, padding gone, speech whole, and the level such that the
+  // normalise is a correction rather than a rescue.
   it('detects and trims a voice-processed iPhone take, AAC in MP4', async () => {
     if (!tmpDir) return
     const src = path.join(tmpDir, 'voiceprofile.m4a')

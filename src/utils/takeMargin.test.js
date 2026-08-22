@@ -5,13 +5,12 @@
 // about the TAKE, not an argument about whether our processing should exist.
 //
 // The old copy alarmed whenever the processed clip was more than 100ms shorter
-// than the original. That was survivable only while the trim was quietly doing
-// nothing — a quiet dry take fell through the read detector and was kept whole,
-// so the difference was always about zero. With capture at a proper level the
-// trim works, and a healthy take is now one where seconds of pre-roll and tail
-// were removed and none of the words were. Alarming on that would train the
-// recordist to ignore the one line on the panel that is trying to tell them
-// something.
+// than the original — on a surface that deliberately records seconds of
+// pre-roll and tail around every line so the trim can take them off. Measured
+// on Tom's real takes: 5.67s raw to a 2.02s clip, 12.01s to 1.59s. That alarm
+// has been firing on every take, by three to ten seconds, since it shipped,
+// which trains the recordist to ignore the one line on the panel that is
+// trying to tell them something.
 
 import { describe, it, expect } from 'vitest'
 import { marginVerdict, MIN_MARGIN_MS } from './takeMargin'

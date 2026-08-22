@@ -35,13 +35,35 @@ No. Audited end to end (job #927), and the answer was unambiguous.
 
 Tom's ruling settled the rest: the raw/processed playback is a **diagnostic** — raw meaning before *our* processing, not before the phone's — so there was no fork to bring back.
 
-## The second thing this fixes: the trim was never running
+## What Tom's real takes actually measure
 
-The server's read detector runs at a fixed −40 dB (`TRIM_DETECT_DB`). A dry take peaking under that has **no sample above it**, so `detectReadBounds` returns null, and the take falls through to the safety net that landed tonight and is **kept whole** — pre-roll, tail and all.
+Measured off S3 (job #933): six takes from his 2026-08-22 session, both raw and mastered, plus five AGC-on takes from the script-mode path as the only real-world A/B available.
 
-That net is doing exactly its job. But it means the dry path shipped untrimmed clips while looking like it was trimming, and the raw-vs-processed panel — which measures the difference between the two — read about zero every time and had nothing to say.
+| | dry (iPhone, no DSP) | AGC-on (script mode) |
+|---|---|---|
+| raw peak | **−28.5 dBFS** mean, spread 3.5 dB | −4.0 dBFS mean |
+| speech-segment LUFS | −46.6 | −23.5 |
+| noise floor | ~−88 dBFS | −80 to −131 dBFS |
+| gain loudnorm needed to reach −16 LUFS | **+30.6 dB** | **+7.5 dB** |
+| clipped | none | none |
 
-Both of those come right on their own once capture arrives at a proper level.
+Three things fall out of that, and two of them correct the record:
+
+**The −50 dBFS estimate was 20 dB too pessimistic, and so was the −1.2 to −37 dB range in the code comment.** The real distribution is a tight unimodal cluster at −28.5, exactly the shape of a fixed distance-driven attenuation with no AGC to compensate. Nothing was clipped, anywhere, in any of the eleven files.
+
+**The room and the microphone are not the bottleneck.** The floor sits at −88 dBFS with about 60 dB of clean headroom above it on every take. It is a gain problem and only a gain problem. That ~23 dB gap in required lift between the two populations *is* the missing `autoGainControl`.
+
+**And the mastering never actually reached target.** The dry takes come out of the chain at **−26.2 LUFS integrated** against a −16 target — ten decibels short, because a single loudnorm pass will not deliver a +30 dB lift. The AGC-on takes land at −17.8, near enough. So every dry take in the corpus is both quieter than it was meant to be *and* carrying an audibly raised floor from the lift that was applied: mastered floor −54 to −65 dBFS on the dry path against −71 to −96 on the AGC-on one. That is the lift making itself heard, and it is what "processing struggles" sounds like.
+
+All of this closes on its own once capture arrives at a level loudnorm can finish the job from.
+
+*Honest gap: the seventeen refused takes have no recoverable raw audio — the archiving feature was not yet live on that path when they died. These six are a same-session, same-device, moments-later proxy, not the refused files. And the A/B is confounded: different person, mic, room and day, so treat its size as an upper bound even though its direction is not in doubt.*
+
+## The raw/processed row was crying wolf on every take
+
+The trim was running — the measurements settle that: 5.67 s of raw came out as 2.02 s of clip, 12.01 s as 1.59 s. The read detector found the read.
+
+Which means the raw-vs-processed row, which alarmed whenever the processed clip was more than 100 ms shorter than the original, has been turning orange on **every single take** by three to ten seconds. A warning that fires every time is a warning nobody reads.
 
 ## What changed
 
@@ -58,7 +80,7 @@ The follow-up `applyConstraints()` call now comes from the same profile object a
 
 **`/admin/capture-ab`** — the same line recorded under each profile, back to back, decoded in the browser, with peak / speech RMS / room floor / **margin** printed next to a play button for each. The margin is the one that decides it: `loudnorm` can fix every other number afterwards and can never fix that one. Nothing is uploaded or stored — it is a measuring instrument, not a session.
 
-**The raw/processed row** now reads the margin instead of the shortfall. It used to say "processed is N ms SHORTER" and turn orange past 100 ms. With the trim working, a healthy take is one where *seconds* of pre-roll and tail came off and none of the words did — so the alarm now fires on **too little** room (under 250 ms), which is the case where the take began or ended on the words and there is nothing to lose at the front except the front of the phrase.
+**The raw/processed row** now reads the margin instead of the shortfall, so it fires on **too little** room (under 250 ms) rather than on a lot. That is the case where the take began or ended on the words and there is nothing to lose at the front except the front of the phrase — which is the diagnostic Tom actually wants out of it.
 
 **Untouched:** the server-side trim, the read detector, the safety net, `loudnorm`. They remain what they are — a net for what arrives, not the gain stage.
 
@@ -75,3 +97,5 @@ The follow-up `applyConstraints()` call now comes from the same profile object a
 The prototype-and-A/B was done the only way it can honestly be done: the A/B page runs on the device that decides. **The comparison has not been run yet** — it needs one iPhone, two reads, about ninety seconds. Until Tom does that, the case for `voice` rests on the WebKit source, the audit, and the physics, not on a measurement of his room.
 
 If the voice chain turns out to do something disliked to his voice — over-gating between words, a pumped noise floor — the toggle is right there in the room and the numbers to argue about are on `/admin/capture-ab`.
+
+**Also still open:** whether `loudnorm` should be two-pass. It did not reach target on the dry takes and will not need to on the new ones, so this is no longer urgent — but a single pass silently landing ten decibels short is worth knowing about before some other quiet source hits the same wall.
