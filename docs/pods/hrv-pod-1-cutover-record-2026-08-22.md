@@ -101,6 +101,32 @@ pod-bearing courses** before the flip: identical for every one. The release was 
 no-op, which is exactly what made it safe to put in front of real learners ahead of the
 database move.
 
+### Staging — and an ordering mistake I made
+
+**Tom's standing rule is that a player-facing change is verified on `staging` before it reaches
+`main`. I did not follow it.** I read the hotfix lane in CLAUDE.md — "straight to `main` via a
+`hotfix/` branch" — as licence to skip the staging soak, pushed to `main` first and `staging`
+second, and released to production before Tom's correction arrived. The commits were right and
+the diff was narrow; the order was wrong. The narrowness of a diff is not what makes a player
+change safe, and I have written the rule down so it does not recur.
+
+Staging is now verified in full, on `staging.saysomethingin.app`:
+
+| Check | Result |
+|---|---|
+| Staging's bundle actually carries the resolver | **Yes** — extracted from `index-Bg5bpeRl.js`: `.select("slug").eq("course_code",e).eq("pod_type","core").in("slug",…)` with a `pod-0` fallback |
+| Croatian on staging | **`pod-1` — 231 sentences, 22 scenes, 231/231 audio both tracks** |
+| First Croatian clip via staging's own audio proxy | **200, `audio/mpeg`, 23,040 bytes** |
+| Old-slug no-op, whole fleet | **67 of 68 courses resolve exactly as the old hardcoded `pod-0`**; only `hrv_for_eng` differs, by design |
+
+**One part of that verification is no longer reproducible anywhere, and it is worth being exact
+about why.** `dev`, `staging` and production share **one database**. So the "resolver is a no-op
+while Croatian is still on the old slug" half could only ever be observed *before* the data moved
+— and it was observed, twice, but on production rather than staging, because of the ordering
+mistake above. What staging can still prove, and does, is the same no-op property across the 67
+untouched courses, plus correct Pod 1 serving. The Croatian-specific pre-flip evidence is real
+but was gathered in the wrong place.
+
 A fleet-wide check for progress records pointing at a sentence that no longer exists returns
 **zero rows, across every course** — not just Croatian.
 
