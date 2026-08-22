@@ -1298,6 +1298,9 @@ const currentPod = computed(() => {
   const pods = casting.value?.pods || []
   return pods.find((p) => p.id === currentPodId.value) || pods[0] || null
 })
+// The slug of the pod on screen, stated rather than assumed: pod-0 on most
+// courses, pod-1 on the 1-based ones (Tom, 2026-08-22).
+const currentPodSlug = computed(() => String(currentPodId.value || '').split(':')[1] || '—')
 const castSpeakers = computed(() => currentPod.value?.speakers || {})
 // Pods beyond the current one are in the fingerprint but their lines are not
 // on this page.
@@ -2232,7 +2235,7 @@ loadLiveConfig()
         placeholder="Search courses…"
       />
       <span v-if="loading" class="chip">loading…</span>
-      <span v-else-if="sentences.length" class="chip ok">{{ sentences.length }} lines · pod-0</span>
+      <span v-else-if="sentences.length" class="chip ok">{{ sentences.length }} lines · {{ currentPodSlug }}</span>
       <span v-if="error" class="chip err">{{ error }}</span>
     </div>
 
@@ -2783,7 +2786,7 @@ loadLiveConfig()
     </div>
 
     <p v-else-if="!loading && selectedCourseCode" class="empty pad">
-      No pod-0 for this course yet.
+      No core pod for this course yet.
     </p>
     <p v-else-if="!selectedCourseCode" class="empty pad">Pick a course to load its pod.</p>
   </div>
