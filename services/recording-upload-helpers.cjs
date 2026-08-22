@@ -295,8 +295,40 @@ async function retainAndProcessTake({
 
   logger.log(`[Upload] Audio processed: ${audioMeta.inputSize} -> ${audioMeta.outputSize} bytes, duration: ${audioMeta.durationMs}ms`)
 
+  // A PROCESSING STAGE MAY NOT BE ITS OWN JUDGE.
+  //
+  // This guard used to read one number — the duration AFTER processing — and
+  // say one thing about it: your take had no audible speech in it. On
+  // 2026-08-22 that sentence was returned seventeen times in a row to a
+  // recordist reading into a live microphone, because the chain had reduced
+  // every take to an 834-byte stub and the stub is what got measured.
+  //
+  // The processor now reports what ARRIVED as well as what left. "Silent" is
+  // reserved for a take that was silent; a take that came in with audio and
+  // went out without it is a server fault, and is reported as one, in the
+  // recordist's own terms. Both still refuse before the mastered PUT, and the
+  // raw original is already archived above either way — so nothing said into
+  // the microphone is lost to either branch.
+  if ((!audioMeta.durationMs || audioMeta.durationMs < minTakeMs) && audioMeta.inputAudible) {
+    logger.error(`[Upload] PROCESSING DESTROYED an audible take ${audioId || s3KeyUuid}: arrived at ${audioMeta.inputPeakDb}dB, left as ${audioMeta.durationMs}ms / ${audioMeta.outputSize} bytes. Raw is safe at ${rawKey}`)
+    return {
+      rawKey, rawRetained: rawKey !== null, rawError, processedBuffer: null, audioMeta,
+      refused: {
+        status: 500,
+        body: {
+          error: `Your take recorded fine — the server could not process it. It arrived at ${audioMeta.inputPeakDb}dB and came out empty. The original is saved and this is a fault our end, not yours.`,
+          processed: true,
+          serverFault: true,
+          inputPeakDb: audioMeta.inputPeakDb,
+          durationMs: audioMeta.durationMs || 0,
+          rawKey
+        }
+      }
+    }
+  }
+
   if (!audioMeta.durationMs || audioMeta.durationMs < minTakeMs) {
-    logger.error(`[Upload] REFUSED silent/empty take for ${audioId || s3KeyUuid}: ${audioMeta.durationMs}ms after trim, ${audioMeta.outputSize} bytes`)
+    logger.error(`[Upload] REFUSED silent/empty take for ${audioId || s3KeyUuid}: ${audioMeta.durationMs}ms after trim, ${audioMeta.outputSize} bytes, input peak ${audioMeta.inputPeakDb}dB`)
     return {
       rawKey, rawRetained: rawKey !== null, rawError, processedBuffer: null, audioMeta,
       refused: {

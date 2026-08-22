@@ -205,6 +205,32 @@ describe('processRecordingBuffer — silence trim (T-20 regression)', () => {
     expect(audibleSpan(buffer)).toBeGreaterThan(TONE_SEC * 2 - 0.03)
   }, 60000)
 
+  // A TAKE THAT ARRIVED WITH AUDIO IS NEVER CUT TO NOTHING (Tom, 2026-08-22).
+  //
+  // Seventeen consecutive takes were refused as "no audible speech" on the
+  // evidence of an 834-byte stub the processing itself had made. "No read
+  // found" and "no audio present" are different findings; the second may not be
+  // asserted on the evidence of the first. Where the detector finds nothing but
+  // the file demonstrably has audio in it, the take is kept WHOLE — the trade
+  // this step already commits to, since the raw is archived before it runs.
+  it('keeps an audible take whole when the detector finds no read in it', async () => {
+    if (!tmpDir) return
+    const src = path.join(tmpDir, 'audible-undetected.webm')
+    // Continuous tone at a plainly audible level, with no silence anywhere for
+    // silencedetect to bound a read against.
+    execFileSync('ffmpeg', [
+      '-v', 'quiet', '-y', '-f', 'lavfi', '-i', 'sine=frequency=220:duration=3',
+      '-af', 'volume=-12dB', '-c:a', 'libopus', '-b:a', '96k', src,
+    ])
+    const { metadata } = await processRecordingBuffer(fs.readFileSync(src), {
+      inputFormat: 'webm', trimSilence: true, normalize: false,
+    })
+    expect(metadata.processed).toBe(true)
+    expect(metadata.inputAudible).toBe(true)
+    // Whatever the detector concluded, the audio survived.
+    expect(metadata.durationMs).toBeGreaterThan(100)
+  }, 60000)
+
   // An all-silent take must still collapse to nothing, so the MIN_TAKE_MS guard
   // in the upload handler keeps catching muted mics. Raising retention must not
   // reopen the 834-byte empty-stub hole that put 26 silent clips into cym_n.

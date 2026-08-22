@@ -1179,6 +1179,46 @@ const TRIM_DETECT_DB = -40;         // where the read plainly is, not where it s
 const TRIM_MIN_SILENCE_SEC = 0.2;   // silence shorter than this is inside the read
 const TRIM_MIN_SPEECH_SEC = 0.3;    // shorter than this is a click, not a word
 const TRIM_MARGIN_SEC = 0.35;       // room left outside the read at each end
+// A take whose raw input peaks above this has audible content in it, whatever
+// the detector later makes of it.
+//
+// This is only the LAST-RESORT net, under a detector that now adapts to the
+// take's own level and finds quiet reads on its own — a 3s read peaking at
+// -50dB is detected and trimmed correctly without ever reaching it. So the line
+// is drawn where the two real populations separate rather than as low as
+// possible: refused takes on 2026-08-22 measured -1.2 to -37dB, and the room
+// tone this must keep refusing sits around -55dB (the pink-noise fixture that
+// pins the cym_n empty-stub hole shut). Dropping it further reopens that hole,
+// which put 26 silent clips into a live course.
+const INPUT_AUDIBLE_PEAK_DB = -45;
+
+/**
+ * What the INPUT actually contains, measured before anything is done to it.
+ *
+ * Nothing downstream may call a take silent without having measured the take.
+ * On 2026-08-22 seventeen of Tom's takes were refused for containing no audible
+ * speech, on the evidence of an 834-byte stub the processing itself had made.
+ */
+async function measureInputLevel(inputPath) {
+  try {
+    // volumedetect reports on stderr, and ffmpeg's exit status is not the
+    // signal — a file it can only partly read still yields a measurement.
+    const res = await execAsync(
+      `ffmpeg -hide_banner -nostats -i "${inputPath}" -af volumedetect -f null -`,
+      { maxBuffer: 1 << 22 }
+    ).catch(e => e);
+    const out = `${(res && res.stdout) || ''}${(res && res.stderr) || ''}`;
+    const mean = /mean_volume:\s*(-?[\d.]+) dB/.exec(out);
+    const peak = /max_volume:\s*(-?[\d.]+) dB/.exec(out);
+    if (!peak) return null;
+    return {
+      meanDb: mean ? parseFloat(mean[1]) : null,
+      peakDb: parseFloat(peak[1]),
+    };
+  } catch {
+    return null;
+  }
+}
 
 /**
  * Where the read actually is in this take, from ffmpeg's silencedetect.
@@ -1276,6 +1316,11 @@ async function processRecordingBuffer(inputBuffer, options = {}) {
     // Write input buffer to temp file
     await fs.writeFile(inputPath, inputBuffer);
 
+    // Measure the INPUT before touching it, so every decision below — and every
+    // caller above — is made against what arrived rather than what came out.
+    const input = await measureInputLevel(inputPath);
+    const inputAudible = !!input && input.peakDb > INPUT_AUDIBLE_PEAK_DB;
+
     // Build filter chain
     const filters = [];
 
@@ -1317,6 +1362,7 @@ async function processRecordingBuffer(inputBuffer, options = {}) {
     // measurement, in code that can be read, not from a filter's own idea of
     // where speech begins.
     let trimBounds = null;
+    let keptWhole = false;
     if (trimSilence) {
       try {
         trimBounds = await detectReadBounds(inputPath);
@@ -1327,9 +1373,25 @@ async function processRecordingBuffer(inputBuffer, options = {}) {
         const from = Math.max(0, trimBounds.startSec - TRIM_MARGIN_SEC);
         const to = Math.min(trimBounds.durationSec, trimBounds.endSec + TRIM_MARGIN_SEC);
         filters.push(`atrim=start=${from.toFixed(3)}:end=${to.toFixed(3)}`, 'asetpts=PTS-STARTPTS');
+      } else if (inputAudible) {
+        // THE DETECTOR MAY NOT DESTROY A TAKE IT MERELY FAILED TO UNDERSTAND.
+        //
+        // "No read found" and "no audio present" are different findings, and
+        // cutting to nothing states the second on the evidence of the first. On
+        // 2026-08-22 that cost seventeen consecutive takes: every one arrived
+        // carrying audible signal and every one came back "no audible speech".
+        //
+        // Where the file demonstrably has audio in it, the take is kept WHOLE
+        // instead. That is the trade this step already commits to three
+        // paragraphs up — the raw original is archived before this runs, so
+        // keeping too much is reversible and keeping too little is not — and an
+        // untrimmed take is exactly what the catch above already falls back to.
+        console.warn(`[AudioProcessor] no read detected in an audible take (peak ${input.peakDb}dB) — kept whole rather than cut to nothing`);
+        keptWhole = true;
       } else {
-        // Nothing in this file is a read. Cut it to nothing and let the upload
-        // handler refuse the take rather than storing an unplayable stub.
+        // Nothing in this file is a read, and nothing in it is audible either.
+        // Cut it to nothing and let the upload handler refuse the take rather
+        // than storing an unplayable stub.
         filters.push('atrim=start=0:end=0.001', 'asetpts=PTS-STARTPTS');
       }
     }
@@ -1381,8 +1443,13 @@ async function processRecordingBuffer(inputBuffer, options = {}) {
         inputFormat,
         inputSize: inputBuffer.length,
         outputSize: outputBuffer.length,
+        // What arrived, so no caller has to infer it from what left.
+        inputPeakDb: input ? input.peakDb : null,
+        inputMeanDb: input ? input.meanDb : null,
+        inputAudible,
+        keptWhole,
         filters: {
-          trimSilence,
+          trimSilence: trimSilence && !keptWhole,
           // The gate this take was actually cut at, and the room left in front
           // of it. Recorded so a clipped-sounding clip can be diagnosed from
           // the row rather than re-measured from the audio.
