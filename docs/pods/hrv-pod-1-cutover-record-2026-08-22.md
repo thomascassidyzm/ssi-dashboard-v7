@@ -177,12 +177,21 @@ render — it is behind an email one-time code that only Tom can receive — so 
 the data the page loads, not the pixels. Stated plainly rather than glossed.*
 
 **One Popty thing is fixed but NOT released, and it needs a decision.** Popty surfaces that
-resolve "this course's current pod" *without* being given a slug — the voice-approvals view, and
-`/api/pod-content` called with no slug — still search the old pod-0 family, which no longer exists
-for Croatian. The fix is written, tested and pushed, but Popty's branch sits **138 commits ahead of
-its main**, so releasing it would ship a large amount of unrelated work. That is not a call to make
-quietly on the way past. **Nothing learner-facing is affected** — this is an admin surface only,
-and the pod-1 URL above works on the code already deployed.
+resolve "this course's current pod" *without* being given a slug — PodLab, the voice-approvals
+view, ListeningConfig, and `/api/pod-content` called with no slug — still search the old
+"pod-0 family". The fix is written, tested and pushed, but Popty's branch sits **138 commits ahead
+of its main**, so releasing it would ship a large amount of unrelated work. That is not a call to
+make quietly on the way past.
+
+**And it is worse than coming up empty, which is worth stating precisely.** `pod-0-retired-2026-08-22`
+*starts with* `pod-0` and keeps `pod_type='core'` through the archive rename, so the old
+family-match still finds it and picks it as the largest match. Confirmed against the live
+database: **the deployed PodLab resolves Croatian to the RETIRED 142-line pod, not the new
+231-line one.** Until the fix ships, do not judge the new pod from PodLab.
+
+**Use the direct URL instead — it is slug-driven and correct today:**
+`https://popty.app/production/hrv_for_eng/pods/pod-1` returns all 231 sentences from the deployed
+build. **Nothing learner-facing is affected by any of this**; it is an admin surface only.
 
 ---
 
