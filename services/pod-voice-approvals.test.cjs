@@ -367,4 +367,33 @@ describe('resolveCurrentPod0 — which pod actually holds the current content', 
     expect(resolveCurrentPod0([{ id: 'cym_n_for_eng:pod-0-unrecorded', sentence_count: 232 }]).id)
       .toBe('cym_n_for_eng:pod-0-unrecorded')
   })
+
+  // Tom's ruling 2026-08-22: pods are 1-based from now on, hrv_for_eng first
+  // across. After its cutover the course has NO pod-0 and NO pod-0-unrecorded.
+  it('resolves a course whose only core pod is pod-1 (the hrv_for_eng shape)', () => {
+    const got = resolveCurrentPod0([
+      p('pod-1', 231),
+      p('pod-0-retired-2026-08-22', 142),
+      p('pod-1-retired-2026-08-22', 180),
+    ])
+    expect(got.slug).toBe('pod-1')
+    expect(got.id).toBe('c:pod-1')
+  })
+
+  it('never serves an archived pod, however many lines it holds', () => {
+    // Archive keeps pod_type='core' through the rename, so only the slug
+    // allowlist stops a 300-line retired pod outranking the live one.
+    expect(resolveCurrentPod0([p('pod-0-retired-2026-08-22', 300), p('pod-1', 231)]).slug).toBe('pod-1')
+    expect(resolveCurrentPod0([p('pod-0-retired-2026-08-22', 300)])).toBeNull()
+  })
+
+  it('prefers pod-1 over a legacy pod-0 left in place', () => {
+    expect(resolveCurrentPod0([p('pod-0', 142), p('pod-1', 231)]).slug).toBe('pod-1')
+  })
+
+  it('ignores a non-core pod that happens to sit on a serving slug', () => {
+    const pods = [{ id: 'c:pod-1', slug: 'pod-1', sentence_count: 180, pod_type: 'themed' },
+      { id: 'c:pod-0', slug: 'pod-0', sentence_count: 142, pod_type: 'core' }]
+    expect(resolveCurrentPod0(pods).slug).toBe('pod-0')
+  })
 })

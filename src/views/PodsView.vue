@@ -21,20 +21,20 @@
       <!-- Generate from canonical -->
       <div class="bg-surface border border-line rounded-lg p-5 mb-6 flex items-center gap-4 flex-wrap">
         <div class="flex-1 min-w-0">
-          <!-- No pod-0 yet: this is the create step -->
-          <template v-if="!pod0">
+          <!-- No serving core pod yet: this is the create step -->
+          <template v-if="!corePod">
             <div class="text-sm font-semibold text-ink">Generate Pod 0 from canonical scenarios</div>
             <div class="text-xs text-muted mt-0.5">
               Flexes the 10 English scenarios into {{ courseCode }} (target dialogue + translation) via Claude. Generated text has no audio yet — review &amp; edit it, then run audio.
             </div>
           </template>
-          <!-- pod-0 exists: this is the manage/re-flex step -->
+          <!-- a serving core pod exists: this is the manage/re-flex step -->
           <template v-else>
-            <div class="text-sm font-semibold text-ink">Pod 0 — already generated</div>
+            <div class="text-sm font-semibold text-ink">{{ corePodLabel }} — already generated</div>
             <div class="text-xs text-muted mt-0.5">
-              {{ pod0.sentence_count }} sentences · audio {{ pod0.audio_coverage.target }}/{{ pod0.audio_coverage.total_sentences }} target, {{ pod0.audio_coverage.known }}/{{ pod0.audio_coverage.total_sentences }} known.
+              {{ corePod.sentence_count }} sentences · audio {{ corePod.audio_coverage.target }}/{{ corePod.audio_coverage.total_sentences }} target, {{ corePod.audio_coverage.known }}/{{ corePod.audio_coverage.total_sentences }} known.
               Edit sentences in the pod below, or re-flex the English in <span class="text-ink">Edit canonical</span>.
-              <span class="pv-warn text-amber-300/90">Regenerate replaces all sentences{{ pod0HasAudio ? ' and clears their audio' : '' }}.</span>
+              <span class="pv-warn text-amber-300/90">Regenerate replaces all sentences{{ corePodHasAudio ? ' and clears their audio' : '' }}.</span>
             </div>
           </template>
           <div v-if="genStatus" class="text-xs mt-2" :class="genError ? 'text-danger' : 'text-accent-2'">{{ genStatus }}</div>
@@ -42,9 +42,9 @@
         </div>
         <div class="flex items-center gap-2 flex-shrink-0">
           <router-link :to="`/production/${courseCode}/canonical/pod-0`" class="text-xs px-3 py-2 rounded border border-line text-ink hover:border-accent-2">Edit canonical</router-link>
-          <!-- Create (green) only when there's no pod-0 -->
+          <!-- Create (green) only when there's no serving core pod -->
           <button
-            v-if="!pod0"
+            v-if="!corePod"
             :disabled="generating"
             @click="generatePod(false)"
             class="text-sm px-4 py-2 rounded bg-emerald-600 hover:bg-emerald-500 disabled:opacity-50 text-white font-medium"
@@ -56,7 +56,7 @@
             v-else
             :disabled="generating"
             @click="regenerate"
-            :title="pod0HasAudio ? 'Wipe all sentences + audio and re-flex from canonical' : 'Wipe all sentences and re-flex from canonical'"
+            :title="corePodHasAudio ? 'Wipe all sentences + audio and re-flex from canonical' : 'Wipe all sentences and re-flex from canonical'"
             class="pv-regen text-sm px-4 py-2 rounded border border-amber-700 text-amber-300 hover:border-amber-500 disabled:opacity-50 font-medium"
           >
             {{ generating ? 'Regenerating…' : 'Regenerate' }}
@@ -155,6 +155,7 @@ import { useRoute } from 'vue-router'
 import { getApiUrl } from '@/services/api.js'
 import { useAuth } from '@/composables/useAuth.js'
 import PodCastPanel from '@/components/PodCastPanel.vue'
+import { pickServingPod, slugOfPod } from '@/lib/servingPod.js'
 
 const route = useRoute()
 const courseCode = route.params.courseCode
@@ -178,7 +179,12 @@ async function authedFetch(path, init = {}) {
 
 // Resumable poll loop — the endpoint generates a few scenes per call and
 // returns more_remaining. Mirrors the explainer-generate pattern.
-async function generatePod(force = false) {
+// `slug` is the pod being written. Creating a course's first core pod still
+// writes `pod-0`, because the generator flexes canonical_pod_scenarios rows
+// keyed on that same slug and only `pod-0` has them. Regenerating passes the
+// pod the course ACTUALLY serves, so a 1-based course can never have its
+// pod-1 content wiped into a fresh pod-0 behind its back.
+async function generatePod(force = false, slug = 'pod-0') {
   if (generating.value) return
   generating.value = true
   genError.value = ''
@@ -190,7 +196,7 @@ async function generatePod(force = false) {
         // force is a one-shot reset: wipe + restart on the first pass only, then
         // resume normally — otherwise every pass would re-wipe scenes 1..maxScenes
         // and never advance past the first batch.
-        body: JSON.stringify({ courseCode, slug: 'pod-0', force: force && pass === 0 }),
+        body: JSON.stringify({ courseCode, slug, force: force && pass === 0 }),
       })
       const body = await res.json()
       if (!res.ok) throw new Error(body?.error || `HTTP ${res.status}`)
@@ -207,9 +213,14 @@ async function generatePod(force = false) {
   }
 }
 
-const pod0 = computed(() => pods.value.find(p => p.slug === 'pod-0') || null)
-const pod0HasAudio = computed(() => {
-  const c = pod0.value?.audio_coverage
+// WHICH POD THIS CARD MANAGES. Not `pod-0` by assumption: Tom's 1-based ruling
+// of 2026-08-22 put hrv_for_eng onto `pod-1`, while the other ~68 courses stay
+// on `pod-0`. Hard-coding pod-0 showed Croatian the green "Generate Pod 0"
+// button on a course that already has a full, recorded pod.
+const corePod = computed(() => pickServingPod(pods.value))
+const corePodLabel = computed(() => corePod.value?.title || `Pod ${slugOfPod(corePod.value).replace(/^pod-/, '')}`)
+const corePodHasAudio = computed(() => {
+  const c = corePod.value?.audio_coverage
   return !!c && (c.target > 0 || c.known > 0)
 })
 
@@ -217,14 +228,14 @@ const pod0HasAudio = computed(() => {
 // and make the audio cost explicit when the pod is already voiced.
 function regenerate() {
   if (generating.value) return
-  const p = pod0.value
+  const p = corePod.value
   if (!p) return
   const c = p.audio_coverage || {}
-  const msg = pod0HasAudio.value
-    ? `Regenerate Pod 0 for ${courseCode}?\n\nThis DELETES all ${p.sentence_count} sentences and their audio (${c.target}/${c.total_sentences} target, ${c.known}/${c.total_sentences} known voiced), then re-flexes from the canonical English. Audio will need re-recording (TTS cost).`
-    : `Regenerate Pod 0 for ${courseCode}?\n\nThis replaces all ${p.sentence_count} sentences by re-flexing from the canonical English.`
+  const msg = corePodHasAudio.value
+    ? `Regenerate ${corePodLabel.value} for ${courseCode}?\n\nThis DELETES all ${p.sentence_count} sentences and their audio (${c.target}/${c.total_sentences} target, ${c.known}/${c.total_sentences} known voiced), then re-flexes from the canonical English. Audio will need re-recording (TTS cost).`
+    : `Regenerate ${corePodLabel.value} for ${courseCode}?\n\nThis replaces all ${p.sentence_count} sentences by re-flexing from the canonical English.`
   if (!window.confirm(msg)) return
-  generatePod(true)
+  generatePod(true, slugOfPod(p))
 }
 
 const totalSentences = computed(() =>

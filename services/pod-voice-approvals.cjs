@@ -225,9 +225,27 @@ function selectSample(workQueue, limit) {
 // emptied so no learner sees an unrecorded pod. Anything that hard-codes
 // `<course>:pod-0` therefore reads either a stale snapshot or nothing at all.
 //
-// Pure. `pods` is [{ id, slug?, sentence_count }].
+// SECOND, Tom's ruling of 2026-08-22: "We want to not have a Pod 0 from now on.
+// We want this first one to be called Pod 1." hrv_for_eng is the first course
+// across — after its cutover it has NO `pod-0` and NO `pod-0-unrecorded`; the
+// live pod is `hrv_for_eng:pod-1` (231 lines) and the old content is parked on
+// `pod-0-retired-2026-08-22` / `pod-1-retired-2026-08-22`. The other ~68
+// courses stay on `pod-0`. So the serving slug is a PER-COURSE fact, and this
+// resolver had two bugs against it: a course with only `pod-1` resolved to
+// null, and the `startsWith('pod-0')` family match happily picked an ARCHIVED
+// `pod-0-retired-…` pod (they keep pod_type='core' through the rename).
+//
+// Hence: an explicit allowlist of serving slugs in preference order, rather
+// than a prefix match plus a sentence-count sort. Retired/experimental slugs
+// can never win by being big.
+//
+// Pure. `pods` is [{ id, slug?, sentence_count, pod_type? }].
 
-const POD0_PREFIX = 'pod-0'
+// Preference order, most-preferred first:
+//   pod-0-unrecorded — the working copy three courses review before release
+//   pod-1            — the 1-based serving slug (Tom, 2026-08-22)
+//   pod-0            — the fleet's legacy serving slug
+const SERVING_SLUGS = ['pod-0-unrecorded', 'pod-1', 'pod-0']
 
 function slugOf(pod) {
   if (pod.slug) return pod.slug
@@ -235,22 +253,27 @@ function slugOf(pod) {
   return i < 0 ? String(pod.id || '') : String(pod.id).slice(i + 1)
 }
 
+// pod_type is absent from some callers' projections; absence is not evidence of
+// a non-core pod, so only an explicit non-'core' value disqualifies.
+function isCore(pod) {
+  return pod.pod_type == null || pod.pod_type === 'core'
+}
+
 /**
- * The pod-0-family pod whose sentences are the course's CURRENT pod-0 content.
- * Working copy first when it actually holds lines, then the most-populated
- * pod-0 variant, then plain pod-0. Returns null when the course has no
- * pod-0-family pod at all.
+ * The pod whose sentences are the course's CURRENT core-pod content.
+ * Working copy first when it actually holds lines, then pod-1, then pod-0.
+ * Returns null when the course has no serving core pod at all.
  */
 function resolveCurrentPod0(pods) {
-  const family = (pods || []).filter((p) => slugOf(p).startsWith(POD0_PREFIX))
+  const family = (pods || []).filter((p) => isCore(p) && SERVING_SLUGS.includes(slugOf(p)))
   if (!family.length) return null
   const populated = family.filter((p) => (p.sentence_count || 0) > 0)
   const pool = populated.length ? populated : family
-  const unrecorded = pool.find((p) => slugOf(p) === 'pod-0-unrecorded')
-  if (unrecorded) return unrecorded
-  return [...pool].sort(
-    (a, b) => (b.sentence_count || 0) - (a.sentence_count || 0) || slugOf(a).localeCompare(slugOf(b)),
-  )[0]
+  for (const slug of SERVING_SLUGS) {
+    const hit = pool.find((p) => slugOf(p) === slug)
+    if (hit) return hit
+  }
+  return null
 }
 
 // ---------------------------------------------------------------------------

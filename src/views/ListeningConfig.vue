@@ -232,6 +232,7 @@
 import { ref, computed, onMounted, defineComponent, h } from 'vue'
 import { useAuth } from '../composables/useAuth'
 import { composeArc, normSurface } from '../lib/podArcCompose'
+import { fetchServingPodId } from '../lib/servingPod'
 import CoursePicker from '../components/CoursePicker.vue'
 import { useAlgorithmConfig, NumField, NumListField, RowHeader } from './admin/algorithmConfigShared'
 
@@ -376,17 +377,26 @@ async function loadCoursePreview(courseCode) {
     }
     courseLegos.value = legos
 
-    // Pod sentences (for L2 audition). One pod per course; load whatever
-    // exists. Courses without pods still preview L1 fine.
-    const { data: podRows, error: podErr } = await sb
-      .from('listening_pod_sentences')
-      .select('global_order, target_text, known_text, target_audio_id, known_audio_id, explainer_audio_id, atom_map, sentence_audio_ids, sentence_known_audio_ids')
-      .eq('pod_id', `${courseCode}:pod-0`)
-      .order('global_order', { ascending: true })
-    if (podErr) {
+    // Pod sentences (for L2 audition). One serving pod per course; load
+    // whatever exists. Courses without pods still preview L1 fine.
+    //
+    // The serving slug is per-course since Tom's 1-based ruling of 2026-08-22 —
+    // hrv_for_eng serves `pod-1`, the rest still serve `pod-0` — so resolve it
+    // rather than hard-coding `<course>:pod-0`, which reads EMPTY for Croatian.
+    coursePodSentences.value = []
+    try {
+      const podId = await fetchServingPodId(sb, courseCode)
+      if (podId) {
+        const { data: podRows, error: podErr } = await sb
+          .from('listening_pod_sentences')
+          .select('global_order, target_text, known_text, target_audio_id, known_audio_id, explainer_audio_id, atom_map, sentence_audio_ids, sentence_known_audio_ids')
+          .eq('pod_id', podId)
+          .order('global_order', { ascending: true })
+        if (podErr) throw podErr
+        coursePodSentences.value = podRows || []
+      }
+    } catch (podErr) {
       console.warn('[preview] pod load failed:', podErr)
-    } else {
-      coursePodSentences.value = podRows || []
     }
 
     // Stage-0 clip maps for the full-arc preview — the SAME course-wide lookups

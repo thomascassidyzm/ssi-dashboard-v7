@@ -381,7 +381,10 @@ async function upsertPodRow({ podId, courseCode, podSlug, targetLanguage, canoni
   const priorHashes = (existing && existing.metadata && existing.metadata.scene_hashes) || {}
   const row = {
     id: podId, course_code: courseCode, pod_type: 'core', slug: podSlug,
-    title: `${targetLanguage} Listening Pods — Pod 0`,
+    // Titled from the slug, not hard-coded "Pod 0": pods are 1-based from
+    // Tom's ruling of 2026-08-22 and hrv_for_eng already serves `pod-1`, whose
+    // title a regeneration must not rewrite back to "Pod 0".
+    title: `${targetLanguage} Listening Pods — Pod ${String(podSlug).replace(/^pod-/, '')}`,
     speakers,
     metadata: { sections, generated_from: 'canonical_pod_scenarios', status: 'draft', consistency_ledger: ledger || null, name_map: nameMap.length ? nameMap : null, scene_hashes: priorHashes },
     source_file: 'generated:canonical',

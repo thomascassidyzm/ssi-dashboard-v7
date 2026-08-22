@@ -211,7 +211,12 @@ async function loadCourse(courseCode) {
     //
     // It is awaited, not fired-and-forgotten: the sentence query depends on it.
     await loadCasting(courseCode)
-    const podId = casting.value?.current_pod_id || `${courseCode}:pod-0`
+    // The server resolves this (services/pod-voice-approvals.cjs
+    // #resolveCurrentPod0, which prefers a working copy, then pod-1, then
+    // pod-0). The local fallback only fires if that call failed outright.
+    const podId = casting.value?.current_pod_id
+      || (casting.value?.pods || []).map((p) => p.id).find(Boolean)
+      || `${courseCode}:pod-0`
     currentPodId.value = podId
 
     // The voice picker's inventory. Not awaited: the dropdowns fill in when it
@@ -1305,7 +1310,8 @@ const otherPodIds = computed(() =>
 const podSource = computed(() => {
   const p = currentPod.value
   if (!p) return null
-  const family = (casting.value?.pods || []).filter((q) => (q.slug || q.id.split(':')[1] || '').startsWith('pod-0'))
+  // Serving-slug family, so a 1-based course lists its siblings too.
+  const family = (casting.value?.pods || []).filter((q) => /^pod-[01](-|$)/.test(q.slug || q.id.split(':')[1] || ''))
   const others = family.filter((q) => q.id !== p.id)
   return {
     id: p.id,
