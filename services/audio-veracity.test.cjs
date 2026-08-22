@@ -562,6 +562,49 @@ describe('numerals in the language the clip is actually in', () => {
       expect(V.lexiconFor('de').time).toBeUndefined()
     })
   })
+
+  describe('THREE numerals in a line still reach their own language (2026-08-22, por_for_eng)', () => {
+    // The lexicons were reached only through the cartesian product. Past
+    // MAX_NUMERAL_VARIANTS the code fell back to three fixed reading positions —
+    // raw, English long-form, digitwise — and the TARGET-language reading, the
+    // entire point of the lexicons, was never among them. Two numerals stayed
+    // under the cap and were fine; three fell through. These are the three real
+    // pod lines quarantined at CER 0.33-0.50 with every non-numeric word decoded
+    // exactly right.
+    const REAL_QUARANTINED = [
+      ['Dezanove. … Vinte. … Vinte e um. … Quarta-feira. … Quinta-feira.',
+        '19. 20. 21. Quarta-feira. Quinta-feira.'],
+      ['Trinta. … Quarenta. … Cinquenta. … Sexta-feira. … Sábado.',
+        '30 - 40 - 50 - sexta-feira - sábado'],
+      ['Cem mil. … Sessenta. … Setenta. … Uma hora. … Onze horas.',
+        '100 mil, 60, 70, uma hora, 11 horas.'],
+    ]
+    for (const [script, heard] of REAL_QUARANTINED) {
+      it(`passes: ${script.slice(0, 34)}…`, () => {
+        expect(V.verdictFromDecode(heard, script, 'pt').pass).toBe(true)
+      })
+    }
+
+    it('the fallback offers the target reading, not just raw/English/digitwise', () => {
+      // Three tokens x five readings = 125 combos, well past the cap, so this
+      // exercises the fallback and not the cartesian path.
+      const vars = V.numeralVariants('19. 20. 21. Quarta-feira.', 'pt')
+      expect(vars.some(v => v.includes('dezanove'))).toBe(true)
+    })
+
+    it('is not Portuguese-specific — every lexicon language gets the same rescue', () => {
+      expect(V.verdictFromDecode('19, 20, 21 personas.', 'diecinueve, veinte, veintiuno personas.', 'es').pass).toBe(true)
+      expect(V.verdictFromDecode('19, 20, 21 Personen.', 'neunzehn, zwanzig, einundzwanzig Personen.', 'de').pass).toBe(true)
+    })
+
+    it('a genuinely WRONG number in a three-numeral line is still convicted', () => {
+      // The rescue must not become a blanket amnesty for number-heavy lines:
+      // same shape, but the middle number is not what the script says.
+      const v = V.verdictFromDecode('19. 99. 21. Quarta-feira. Quinta-feira.',
+        'Dezanove. Vinte. Vinte e um. Quarta-feira. Quinta-feira.', 'pt')
+      expect(v.pass).toBe(false)
+    })
+  })
 })
 
 describe('speech rate — the clip being replaced is not a duration reference', () => {

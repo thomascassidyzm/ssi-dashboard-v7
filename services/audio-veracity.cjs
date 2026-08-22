@@ -879,10 +879,25 @@ function numeralVariants (text, iso1) {
 
   const readings = allTokens.map(t => t.readings)
   const combos = readings.reduce((acc, r) => acc * r.length, 1)
-  // Too many numerals to enumerate: score the plain text, the all-long-form
-  // reading and the all-digitwise reading, and let the best one speak.
+  // Too many numerals to enumerate: instead of the cartesian product, score the
+  // UNIFORM readings — every token read the same way — and let the best speak.
+  //
+  // This used to pick three positions only (raw, English long-form, digitwise),
+  // which silently dropped the target-language reading the lexicons exist to
+  // provide: `numeralReadings('19', 'pt')` offers ['19', 'nineteen', 'one nine',
+  // 'dezanove', 'um nove'] and position 3 was never picked. Two numerals in a
+  // line stayed under the cap and were fine; THREE fell through here and lost
+  // "dezanove" — which is how por_for_eng's number-drill lines ("Dezanove. Vinte.
+  // Vinte e um. Quarta-feira. Quinta-feira.", heard correctly as "19. 20. 21.
+  // Quarta-feira. Quinta-feira.") were quarantined at CER 0.33 for notation on
+  // 2026-08-22, with every non-numeric word decoded exactly right.
+  //
+  // Sweeping all positions is a SUPERSET of the old three, so no clip that passes
+  // today can fail tomorrow, and it is cheaper than the cap it replaces: one pick
+  // per reading position (five today) rather than up to MAX_NUMERAL_VARIANTS.
+  const widest = readings.reduce((m, r) => Math.max(m, r.length), 0)
   const picks = combos > MAX_NUMERAL_VARIANTS
-    ? [0, 1, readings[0].length - 1].map(i => readings.map(r => r[Math.min(i, r.length - 1)]))
+    ? Array.from({ length: widest }, (_, i) => readings.map(r => r[Math.min(i, r.length - 1)]))
     : cartesian(readings)
 
   const out = new Set([plain])
