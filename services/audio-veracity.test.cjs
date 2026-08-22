@@ -502,6 +502,66 @@ describe('numerals in the language the clip is actually in', () => {
       expect(V.verdictFromDecode("That's £48 altogether.", "That's forty-eight pounds altogether.", 'en').pass).toBe(true)
     })
   })
+
+  describe('Rule 4c — French clock time (2026-08-22, fra_for_eng SC11-S008)', () => {
+    // The actual quarantined clip: whisper wrote the standard French clock
+    // shorthand for a script that spelled the time out in full idiomatic
+    // words. CER on this pair is 0.1682 — well under the 0.3 gate — so Rule 4c
+    // was the only thing standing between this clip and a pass.
+    it('passes the real SC11-S008 pair', () => {
+      const script = "De sept heures et demie jusqu'à dix heures. Nous avons des fruits et des céréales ou un petit-déjeuner chaud."
+      const heard = "de 7h30 jusqu'à 10h. Nous avons des fruits et des céréales ou un petit-déjeuner chaud."
+      const v = V.verdictFromDecode(heard, script, 'fr')
+      expect(v.pass).toBe(true)
+    })
+
+    const SAME_TIME = [
+      ['7h30 = sept heures et demie', '7h30', 'sept heures et demie'],
+      ['7h30 = sept heures trente (digital reading also offered)', '7h30', 'sept heures trente'],
+      ['10h = dix heures', '10h', 'dix heures'],
+      ['15h = quinze heures OR trois heures (24h and 12h both offered)', '15h', 'trois heures'],
+      ['15h = quinze heures, the 24h reading', '15h', 'quinze heures'],
+      ['1h = une heure, never un heure', '1h', 'une heure'],
+      ['13h = une heure (12h reading of the 24h hour)', '13h', 'une heure'],
+      ['0h = minuit', '0h', 'minuit'],
+      ['12h = midi', '12h', 'midi'],
+      ['9h15 = neuf heures et quart', '9h15', 'neuf heures et quart'],
+      ['9h45 = neuf heures quarante-cinq', '9h45', 'neuf heures quarante-cinq'],
+      ['minuit et demie for 0h30', '0h30', 'minuit et demie'],
+    ]
+    for (const [label, heard, script] of SAME_TIME) {
+      it(label, () => {
+        expect(V.verdictFromDecode(`il est ${heard}.`, `il est ${script}.`, 'fr').pass).toBe(true)
+      })
+    }
+
+    it('still convicts a genuinely wrong time', () => {
+      // Same shape of clip, wrong hour — Rule 4c must not go blind just because
+      // it now tolerates notation. (On a clip this short the raw mismatch may
+      // trip Rule 2's CER floor before Rule 4c even runs — either is a correct
+      // refusal, so only the pass/fail is pinned, not which rule caught it.)
+      const v = V.verdictFromDecode('il est 8h30.', 'il est sept heures et demie.', 'fr')
+      expect(v.pass).toBe(false)
+    })
+
+    it('still convicts wrong minutes on the right hour', () => {
+      const v = V.verdictFromDecode('il est 7h45.', 'il est sept heures et demie.', 'fr')
+      expect(v.pass).toBe(false)
+    })
+
+    it('a plain non-time number is unaffected by the time lexicon', () => {
+      // "30" alone is not a clock — it must still read as "trente", not "demie".
+      const v = V.verdictFromDecode('trente personnes.', '30 personnes.', 'fr')
+      expect(v.pass).toBe(true)
+    })
+
+    it('other languages are untouched — no .time() means Rule 4c never runs', () => {
+      // Only French has clock-time vocabulary today; every other lexicon
+      // (including Dutch, which has cardinals) is exactly as it was.
+      expect(V.lexiconFor('nl').time).toBeUndefined()
+      expect(V.lexiconFor('de').time).toBeUndefined()
+    })
+  })
 })
 
 describe('speech rate — the clip being replaced is not a duration reference', () => {

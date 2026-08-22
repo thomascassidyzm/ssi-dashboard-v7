@@ -638,6 +638,37 @@ const FR = {
     const t = Math.floor(n / 1000); const rest = n % 1000
     return (t === 1 ? 'mille' : this.build(t) + ' mille') + (rest ? ' ' + this.build(rest) : '')
   },
+  /**
+   * Clock time, French spoken form — this is Rule 4c's payload (below), the
+   * fix for the 2026-08-22 fra_for_eng pod-0 render (SC11-S008, A-111 follow-up).
+   * "7h30" is one spoken unit, "sept heures et demie", not the two independent
+   * cardinals 7 and 30 — whisper writes it as digit-and-h shorthand regardless
+   * of how it was actually said, the same phenomenon as £48/forty-eight pounds,
+   * just idiomatic rather than a straight number reading. 0h/12h are words in
+   * their own right (minuit/midi), 1h takes the feminine singular (une heure,
+   * never un heure), and the three quarter-hours have their own idiom on top
+   * of the plain digital reading — both are offered, digital notation is
+   * spreading in casual French and the idiom is not guaranteed.
+   */
+  time (hh, mm) {
+    const h12 = hh % 12
+    const hourWords = new Set()
+    if (hh === 0) hourWords.add('minuit')
+    else if (hh === 12) hourWords.add('midi')
+    else hourWords.add(h12 === 1 ? 'une heure' : `${this.build(h12 || hh)} heures`)
+    // 13-23 also get their plain 24-hour reading alongside the 12-hour one.
+    if (hh >= 13) hourWords.add(`${this.build(hh)} heures`)
+
+    if (mm == null || mm === 0) return [...hourWords]
+    const minuteWords =
+      mm === 30 ? ['et demie', 'trente']
+        : mm === 15 ? ['et quart', 'quinze']
+          : mm === 45 ? ['quarante-cinq']
+            : [this.build(mm)]
+    const out = []
+    for (const h of hourWords) for (const m of minuteWords) out.push(`${h} ${m}`)
+    return out
+  },
 }
 
 /** Spanish: veintiuno as one word, cien vs ciento, the irregular hundreds. */
@@ -798,6 +829,14 @@ const NUMERAL_TOKEN = /[£$€¥₹₩₪₺₫₴₦]?\d+(?:\.\d+)?(?:st|nd|rd|
 function stripGrouping (s) { return String(s == null ? '' : s).replace(/(\d),(?=\d{3}(?:\D|$))/g, '$1') }
 
 /**
+ * Clock-time shorthand — "7h30", "10h", "14h05" — bounded to real hours (0-23)
+ * and minutes (00-59) so it cannot mistake a phone number or a room number for
+ * a time. Only consulted by languages whose lexicon defines `.time()` (see Rule
+ * 4c in numeralVerdictViaLexicon); every other language is untouched by this.
+ */
+const TIME_TOKEN = /\b([01]?\d|2[0-3])h([0-5]\d)?\b/gi
+
+/**
  * Every normalised reading of `text` worth scoring against. Index 0 is the plain
  * normalisation, so a text with no digits yields exactly one candidate and this
  * whole mechanism is a no-op — which is why the 5,341 remembered decodes re-judge
@@ -810,10 +849,35 @@ const MAX_NUMERAL_VARIANTS = 32
 function numeralVariants (text, iso1) {
   const raw = stripGrouping(text)
   const plain = normalise(raw)
-  const tokens = raw.match(NUMERAL_TOKEN)
-  if (!tokens || !tokens.length) return [plain]
+  const lex = lexiconFor(iso1)
 
-  const readings = tokens.map(t => numeralReadings(t, iso1))
+  // Clock-time tokens claim their span first — "7h30" is one spoken unit
+  // ("sept heures et demie") and must not also be seen as the two independent
+  // digit tokens "7" and "30", which would leave a stray "h" sitting in every
+  // candidate and cost CER points on short clips for no reason. Scoped to
+  // languages with `.time()` (French today); every other language collects
+  // tokens exactly as it did before this existed.
+  const timeMatches = lex && lex.time ? [...raw.matchAll(TIME_TOKEN)] : []
+  const claimed = timeMatches.map(m => [m.index, m.index + m[0].length])
+  const overlapsClaimed = (i, len) => claimed.some(([s, e]) => i < e && i + len > s)
+
+  const numTokens = []
+  NUMERAL_TOKEN.lastIndex = 0
+  let tm
+  while ((tm = NUMERAL_TOKEN.exec(raw))) {
+    if (!overlapsClaimed(tm.index, tm[0].length)) {
+      numTokens.push({ start: tm.index, end: tm.index + tm[0].length, readings: numeralReadings(tm[0], iso1) })
+    }
+  }
+  const timeTokens = timeMatches.map(m => ({
+    start: m.index,
+    end: m.index + m[0].length,
+    readings: [m[0], ...lex.time(Number(m[1]), m[2] ? Number(m[2]) : null)],
+  }))
+  const allTokens = [...numTokens, ...timeTokens].sort((a, b) => a.start - b.start)
+  if (!allTokens.length) return [plain]
+
+  const readings = allTokens.map(t => t.readings)
   const combos = readings.reduce((acc, r) => acc * r.length, 1)
   // Too many numerals to enumerate: score the plain text, the all-long-form
   // reading and the all-digitwise reading, and let the best one speak.
@@ -823,10 +887,15 @@ function numeralVariants (text, iso1) {
 
   const out = new Set([plain])
   for (const pick of picks) {
-    let i = 0
     // Padded, because whisper writes "12's" and an unpadded swap would make one
     // unparseable word of "twelve's".
-    out.add(normalise(raw.replace(NUMERAL_TOKEN, () => ` ${pick[i++]} `)))
+    let result = ''; let cursor = 0
+    allTokens.forEach((t, idx) => {
+      result += raw.slice(cursor, t.start) + ` ${pick[idx]} `
+      cursor = t.end
+    })
+    result += raw.slice(cursor)
+    out.add(normalise(result))
   }
   return [...out]
 }
@@ -1004,14 +1073,34 @@ function numeralVerdict (expectedText, decodeText, iso1) {
 function numeralVerdictViaLexicon (expectedText, decodeText, iso1) {
   const lex = lexiconFor(iso1)
   if (!lex) return { ok: true }
-  const dNums = cardinalsOf(decodeText)
-  if (!dNums.length) return { ok: true, via: 'decode_has_no_numerals' }
   // Only the digits the decode actually wrote are this rule's business — a
   // number the decode spelt out in words was never a notation problem.
   if (!/\d/.test(String(decodeText))) return { ok: true, via: 'decode_has_no_digits' }
 
   const squash = (s) => normalise(s).replace(/[\s'-]/g, '')
   const hay = squash(expectedText)
+
+  // Rule 4c: clock time is one spoken unit ("7h30" is "sept heures et demie"),
+  // not the two cardinals 7 and 30 — checked and consumed BEFORE the per-number
+  // rule below, so a time whose minutes are an idiom (demie/quart) is not then
+  // also demanded to appear as the bare number word ("trente") it never used.
+  // Additive and scoped to languages that define `.time()` — every other
+  // language's decode is untouched, exactly as before this existed.
+  let consumedText = decodeText
+  if (lex.time) {
+    for (const m of decodeText.matchAll(TIME_TOKEN)) {
+      const hh = Number(m[1]); const mm = m[2] ? Number(m[2]) : null
+      const readings = lex.time(hh, mm)
+      if (!readings.some(r => hay.includes(squash(r)))) {
+        return { ok: false, expected: null, heard: m[0] }
+      }
+      consumedText = consumedText.replace(m[0], ' ')
+    }
+  }
+
+  const dNums = cardinalsOf(consumedText)
+  if (!dNums.length) return { ok: true, via: 'decode_has_no_numerals' }
+
   const allFound = dNums.every(n => {
     const readings = [String(n), lexNumberToWords(n, lex), digitwiseWords(String(n), lex)]
     return readings.filter(Boolean).some(r => hay.includes(squash(r)))
