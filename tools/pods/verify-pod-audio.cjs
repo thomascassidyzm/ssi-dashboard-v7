@@ -153,7 +153,10 @@ async function main() {
     console.log(`ffprobe ok=${ok} bad=${bad}`)
   }
 
-  const outPath = path.join(REPO, 'docs', 'pods', `hrv-pod0-audio-verify-${POD_ID.replace(/[:]/g, '_')}.json`)
+  // Named after the pod it verified. It used to carry a hardcoded `hrv-pod0-`
+  // prefix, which made every other course's verification file read as if it
+  // were Croatia's (2026-08-22, the ita/spa/fra/zho rollout).
+  const outPath = path.join(REPO, 'docs', 'pods', `pod-audio-verify-${POD_ID.replace(/[:]/g, '_')}.json`)
   fs.writeFileSync(outPath, JSON.stringify({ podId: POD_ID, probeMode: PROBE_ALL ? 'full' : 'sample', probeSample: PROBE_SAMPLE, results }, null, 2))
   console.log(`\nWrote full detail to ${outPath}`)
 
