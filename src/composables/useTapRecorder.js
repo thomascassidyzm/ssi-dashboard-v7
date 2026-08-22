@@ -4,10 +4,44 @@
 //
 // Uses MediaRecorder (the battle-tested capture API — what the old dialogue studio
 // used) rather than an AudioWorklet PCM path, which proved flaky in the field
-// (it captured almost nothing → empty clips). The mic's own DSP (echo-cancel /
-// noise-suppress / auto-gain) is requested OFF — the single biggest quality
-// lever — so we capture the dry voice and let the server be the only processing
-// stage.
+// (it captured almost nothing → empty clips).
+//
+// THE MIC'S OWN DSP IS ON (Tom, 2026-08-22: "nowhere near an iPhone voice note").
+//
+// It used to be off — all three of echoCancellation, noiseSuppression and
+// autoGainControl requested false, on the reasoning that a dry capture is the
+// single biggest quality lever and the server should be the only processing
+// stage. On iOS that reasoning bought the opposite of what it wanted, because
+// of one fact about WebKit: `echoCancellation` is not a filter you switch, it
+// is the flag that PICKS THE AUDIO UNIT. false selects RemoteIO, the bare
+// hardware tap; true selects VoiceProcessingIO, Apple's voice chain. And Apple
+// puts the gain staging inside that chain along with the echo cancel and the
+// noise suppression. There is no partial mode, and there is no other route to
+// it — `autoGainControl` is unimplemented in WebKit entirely (bug 204444, open
+// since 2019), so requesting it changes nothing at all.
+//
+// So "DSP off" on an iPhone did not mean a clean dry voice. It meant a raw tap
+// with no gain, recording a room at reading distance tens of dB below where the
+// AAC encoder does its best work, which the server then lifted back up — room,
+// codec noise and all — with loudnorm. That is what Tom heard.
+//
+// A voice note effectively gets the voice-processed chain. So do we now. The
+// server-side normalise stays exactly where it is: it is a safety net for what
+// arrives, not the gain stage.
+//
+// Nothing downstream wanted the dry stream. It was never a pipeline
+// requirement — it entered on 2026-06-15 (e6ea5a8cc, useWavRecorder.js) as a
+// general opinion, "the DSP that wrecks a solo voice take", and was carried
+// forward unexamined. Everything past the upload reads the mastered -16 LUFS
+// MP3, by which point the capture chain is unrecoverable anyway; the splice
+// path has never fired on a human take; and the other half of this same
+// recording room (useContinuousRecorder.ts, script mode) has been capturing
+// with the full Apple voice bundle into the identical upload endpoint all
+// along, with nothing broken by it.
+//
+// The dry profile is kept, selectable, and A/B-able against this one on the
+// actual device (src/views/admin/CaptureAB.vue) — because the only place the
+// answer to "which of these sounds better on an iPhone" exists is an iPhone.
 //
 // THE CAPTURE BOUNDARY NEVER CUTS THE UTTERANCE (Tom's ruling, 2026-08-21).
 //
@@ -80,6 +114,24 @@ function pickMime() {
   return ''
 }
 
+// The two ways this recorder can ask for a microphone. Named, because the
+// difference is not three booleans — on iOS it is which audio unit Safari
+// builds, and everything about the resulting signal follows from that.
+export const CAPTURE_PROFILES = {
+  // Apple's voice chain (VoiceProcessingIO): echo cancel, noise suppression,
+  // and the gain staging that makes a phone at reading distance land at a
+  // usable level. What a voice note effectively gets.
+  voice: { echoCancellation: true, noiseSuppression: true, autoGainControl: true },
+  // The bare hardware tap (RemoteIO). No processing — and on iOS, no gain.
+  dry: { echoCancellation: false, noiseSuppression: false, autoGainControl: false },
+}
+export const DEFAULT_CAPTURE_PROFILE = 'voice'
+
+// Bitrate for the per-line encoder. Well above transparent for one mono voice
+// in either codec; the encoder was never the thing costing us quality, the
+// level going into it was.
+export const CAPTURE_BITRATE = 256000
+
 // How long the old recorder keeps running past a line boundary. Generous on
 // purpose: this is the margin that stops a tap landing on the last syllable.
 export const TAIL_MS = 900
@@ -94,8 +146,8 @@ export const PRE_ROLL_MAX_MS = 2500
 // even a wrong call here is covered by audio the new recorder already holds.
 export const ROLL_QUIET_MS = 1000
 
-// Peak-level bars, on the raw meter peak (DSP is off, so these are the dry
-// signal). Only ever used for timing decisions, never to gate audio.
+// Peak-level bars, on the raw meter peak. Only ever used for timing decisions,
+// never to gate audio.
 //
 // These are the LOUD-MIC end of the scale, and they are absolute numbers on a
 // signal whose gain we deliberately do not control: autoGainControl is off, so
@@ -155,6 +207,10 @@ export function useTapRecorder() {
   const clipping = ref(false)
   const devices = ref([])
   const appliedSettings = ref(null)
+  // Which capture profile this session actually asked for. Surfaced so the
+  // room can say it out loud — "voice-processed" and "dry" produce audio that
+  // sounds different enough that nobody should have to guess which they got.
+  const profile = ref(DEFAULT_CAPTURE_PROFILE)
   const error = ref(null)
   // Has the recordist actually said anything on the line now open? The surface
   // uses this to know a take exists before it advances, and commit() uses it
@@ -220,7 +276,7 @@ export function useTapRecorder() {
   function spawnRecorder() {
     const chunks = []
     const rec = mime
-      ? new MediaRecorder(stream, { mimeType: mime, audioBitsPerSecond: 256000 })
+      ? new MediaRecorder(stream, { mimeType: mime, audioBitsPerSecond: CAPTURE_BITRATE })
       : new MediaRecorder(stream)
     rec.ondataavailable = (e) => { if (e.data && e.data.size) chunks.push(e.data) }
     rec.start()
@@ -262,15 +318,15 @@ export function useTapRecorder() {
     return outgoing
   }
 
-  // Acquire the mic (DSP off) + start the meter + start capturing. Call from a
-  // user gesture. Capture begins HERE, not at the first line: the pre-roll for
-  // line one is the whole gap between tapping Start and the first word.
-  async function start(deviceId = null) {
+  // Acquire the mic + start the meter + start capturing. Call from a user
+  // gesture. Capture begins HERE, not at the first line: the pre-roll for line
+  // one is the whole gap between tapping Start and the first word.
+  async function start(deviceId = null, profileName = DEFAULT_CAPTURE_PROFILE) {
     error.value = null
+    const dsp = CAPTURE_PROFILES[profileName] || CAPTURE_PROFILES[DEFAULT_CAPTURE_PROFILE]
+    profile.value = CAPTURE_PROFILES[profileName] ? profileName : DEFAULT_CAPTURE_PROFILE
     const audio = {
-      echoCancellation: false,
-      noiseSuppression: false,
-      autoGainControl: false,
+      ...dsp,
       channelCount: 1,
       sampleRate: 48000,
     }
@@ -278,11 +334,17 @@ export function useTapRecorder() {
     stream = await navigator.mediaDevices.getUserMedia({ audio, video: false })
 
     const track = stream.getAudioTracks()[0]
+    // Re-asserted rather than left to the getUserMedia call alone: on WebKit
+    // echoCancellation is a real, handled constraint that rebuilds the audio
+    // unit, so it must say the same thing here as it did above. It always
+    // does — both come from the one profile — and that is the point of this
+    // call now: it can no longer contradict the acquisition.
     try {
-      await track.applyConstraints({ echoCancellation: false, noiseSuppression: false, autoGainControl: false })
+      await track.applyConstraints({ ...dsp })
     } catch { /* hints only */ }
     const s = track && track.getSettings ? track.getSettings() : {}
     appliedSettings.value = {
+      profile: profile.value,
       echoCancellation: s.echoCancellation, noiseSuppression: s.noiseSuppression,
       autoGainControl: s.autoGainControl, sampleRate: s.sampleRate,
     }
@@ -468,7 +530,7 @@ export function useTapRecorder() {
   }
 
   return {
-    isRecording, level, clipping, devices, appliedSettings, error,
+    isRecording, level, clipping, devices, appliedSettings, profile, error,
     lineHasSpeech, quietMs, meterTrusted, inputPeak, roomTone,
     listDevices, start, beginLine, endLine, discardLine, stop,
   }

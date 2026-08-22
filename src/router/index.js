@@ -564,6 +564,14 @@ const routes = [
     component: () => import('../views/admin/VadLab.vue'),
     meta: { title: 'VAD Lab - Admin' }
   },
+  {
+    // Capture A/B — record the same line under each mic profile and measure
+    // both, on the phone that actually does the recording.
+    path: '/admin/capture-ab',
+    name: 'CaptureAB',
+    component: () => import('../views/admin/CaptureAB.vue'),
+    meta: { title: 'Capture A/B - Admin' }
+  },
   // Legacy path — the old single Listening page lived here. Redirect bookmarks.
   { path: '/admin/listening', redirect: '/admin/configs/listening' },
   // (Stage 0 Tuner retired 2026-06-24 — absorbed into the Listening config,

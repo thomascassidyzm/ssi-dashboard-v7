@@ -56,6 +56,14 @@
       </div>
 
       <label class="toggle-row">
+        <input type="checkbox" :checked="captureProfile === 'dry'"
+               @change="captureProfile = $event.target.checked ? 'dry' : 'voice'" />
+        <span><strong>Record the raw microphone</strong>
+          <small>Off = the phone cleans up the sound as it records, the way a voice note does. Turn it on only to
+            capture the room exactly as it is — it will sound quieter and rougher.</small></span>
+      </label>
+
+      <label class="toggle-row">
         <input type="checkbox" v-model="includeRecorded" />
         <span><strong>Re-read lines I've already recorded</strong>
           <small>Off = only read the lines that still need a recording. New takes replace old ones; nothing is deleted.</small></span>
@@ -255,7 +263,7 @@
 // no course code appears anywhere on this page.
 import { ref, computed, onMounted, onBeforeUnmount, watch } from 'vue'
 import { recordingApiBase as apiBase } from '@/services/recordingApi'
-import { useTapRecorder } from '@/composables/useTapRecorder'
+import { useTapRecorder, DEFAULT_CAPTURE_PROFILE } from '@/composables/useTapRecorder'
 import { useRecordistQueue } from '@/composables/useRecordistQueue'
 import StoredTakeButton from '@/components/production/autocue/StoredTakeButton.vue'
 import RawVsProcessed from '@/components/production/autocue/RawVsProcessed.vue'
@@ -274,13 +282,27 @@ const lines = ref([])
 
 const includeRecorded = ref(false)
 const selectedDeviceId = ref(null)
-// The mic this take was read into, for the take's provenance row.
+// Which mic profile to ask for. Voice-processed by default — on a phone that
+// is what makes a take sound like a voice note rather than like a raw tap held
+// at arm's length. Remembered, because whoever changes it means it for the
+// session after this one too.
+const captureProfile = ref(
+  (typeof localStorage !== 'undefined' && localStorage.getItem('recordist.captureProfile')) || DEFAULT_CAPTURE_PROFILE
+)
+watch(captureProfile, v => {
+  try { localStorage.setItem('recordist.captureProfile', v) } catch { /* private mode */ }
+})
+// The mic this take was read into, and how it was asked for — the take's
+// provenance row. The profile belongs in it: two takes of the same line under
+// the two profiles are different recordings, and nothing else on the clip says
+// which one you are listening to.
 function micLabel() {
   const list = recorder.devices.value || []
   const chosen = selectedDeviceId.value
     ? list.find(d => d.deviceId === selectedDeviceId.value)
     : list[0]
-  return (chosen && chosen.label) || null
+  const mic = (chosen && chosen.label) || null
+  return [mic, `capture:${captureProfile.value}`].filter(Boolean).join(' · ')
 }
 const index = ref(0)
 const busy = ref(false)
@@ -458,7 +480,7 @@ async function begin() {
   if (startIndex.value === -1) return
   micError.value = null
   try {
-    await recorder.start(selectedDeviceId.value || null)
+    await recorder.start(selectedDeviceId.value || null, captureProfile.value)
   } catch (err) {
     micError.value = friendlyMicError(err)
     return
@@ -615,7 +637,7 @@ async function recordOne(lineId) {
   if (i === -1) return
   micError.value = null
   try {
-    await recorder.start(selectedDeviceId.value || null)
+    await recorder.start(selectedDeviceId.value || null, captureProfile.value)
   } catch (err) { micError.value = friendlyMicError(err); return }
   index.value = i
   phase.value = 'recording'
