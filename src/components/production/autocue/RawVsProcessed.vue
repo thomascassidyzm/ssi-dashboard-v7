@@ -37,11 +37,11 @@
         <span class="ab-dur">{{ durationText(durations.processed) }}</span>
       </div>
 
-      <!-- The number IS the deliverable: the head-loss is ~200ms, which is easy
+      <!-- The number IS the deliverable: room either side of the phrase is easy
            to miss by ear on a phone in a kitchen and impossible to miss written
            down. Only shown once both sides have really loaded. -->
-      <p v-if="deltaMs !== null" class="ab-delta" :class="{ alarm: Math.abs(deltaMs) >= 100 }">
-        Processed is {{ deltaMs > 0 ? `${deltaMs} ms SHORTER` : `${-deltaMs} ms longer` }} than the original.
+      <p v-if="margin" class="ab-delta" :class="{ alarm: margin.state !== 'ok' }">
+        {{ margin.text }}
       </p>
 
       <p v-if="playbackError" class="ab-note error">{{ playbackError }}</p>
@@ -65,6 +65,7 @@ import {
   RAW_VARIANT_LABEL,
   PROCESSED_VARIANT_LABEL,
 } from '@/composables/useStoredClip'
+import { marginVerdict } from '@/utils/takeMargin'
 
 const props = defineProps({
   voiceId: { type: String, required: true },
@@ -87,12 +88,9 @@ function durationText(seconds) {
   return `${seconds.toFixed(2)}s`
 }
 
-const deltaMs = computed(() => {
-  const r = durations.raw
-  const p = durations.processed
-  if (typeof r !== 'number' || typeof p !== 'number') return null
-  return Math.round((r - p) * 1000)
-})
+// The margin, not the shortfall. See src/utils/takeMargin.js for why the
+// alarm now fires on too LITTLE difference rather than too much.
+const margin = computed(() => marginVerdict(durations.raw, durations.processed))
 
 /**
  * A clip's duration, without playing it.

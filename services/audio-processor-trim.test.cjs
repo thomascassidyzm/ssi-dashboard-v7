@@ -231,6 +231,44 @@ describe('processRecordingBuffer — silence trim (T-20 regression)', () => {
     expect(metadata.durationMs).toBeGreaterThan(100)
   }, 60000)
 
+  // THE SHAPE THE VOICE-PROFILE RECORDER NOW SENDS (2026-08-22).
+  //
+  // Capture was switched from the bare hardware tap to Apple's voice chain
+  // (useTapRecorder.js, CAPTURE_PROFILES), so an iPhone take now arrives loud,
+  // gated near-silent between words, and as AAC in MP4 rather than Opus in
+  // WebM — Safari's only MediaRecorder container.
+  //
+  // The old dry take never actually got trimmed: the read detector runs at a
+  // fixed -40dB and a take peaking at -50 has no sample above it, so every one
+  // of them fell through to "kept whole" and shipped with all its pre-roll and
+  // tail attached. That is the safety net working, not the trim working. This
+  // pins the difference: on a properly-levelled take the read is FOUND, the
+  // padding goes, the speech survives whole, and the clip lands on target.
+  it('detects and trims a voice-processed iPhone take, AAC in MP4', async () => {
+    if (!tmpDir) return
+    const src = path.join(tmpDir, 'voiceprofile.m4a')
+    // 0.5s of gated near-silence, 1.0s of speech-level tone, 0.5s more — hot,
+    // the way the voice chain delivers it.
+    execFileSync('ffmpeg', [
+      '-v', 'quiet', '-y', '-f', 'lavfi', '-i', `sine=f=440:d=${TONE_SEC}:r=48000`,
+      // ffmpeg's sine source sits at -18dBFS; +12 puts the read at about -6,
+      // which is where the voice chain actually delivers a phone at reading
+      // distance and nothing like the -50 the bare tap was handing us.
+      '-af', `volume=12dB,adelay=${PAD_SEC * 1000},apad=pad_dur=${PAD_SEC}`,
+      '-c:a', 'aac', '-b:a', '256k', '-ac', '1', src,
+    ])
+    const { buffer, metadata } = await processRecordingBuffer(fs.readFileSync(src), {
+      inputFormat: 'mp4', trimSilence: true, normalize: true, targetLUFS: -16,
+    })
+    expect(metadata.processed).toBe(true)
+    // Arrived hot enough that the detector could do its job for once.
+    expect(metadata.inputPeakDb).toBeGreaterThan(-12)
+    expect(metadata.filters.trimFoundRead).toBe(true)
+    // The whole read survives, and the padding beyond the retained margin does not.
+    expect(audibleSpan(buffer)).toBeGreaterThan(0.97)
+    expect(metadata.durationMs).toBeLessThan((TONE_SEC + 2 * RETAIN_SEC) * 1000 + 150)
+  }, 60000)
+
   // An all-silent take must still collapse to nothing, so the MIN_TAKE_MS guard
   // in the upload handler keeps catching muted mics. Raising retention must not
   // reopen the 834-byte empty-stub hole that put 26 silent clips into cym_n.
