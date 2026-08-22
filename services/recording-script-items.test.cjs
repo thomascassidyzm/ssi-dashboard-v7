@@ -113,3 +113,78 @@ describe('buildScriptItems — empty input', () => {
     expect(buildScriptItems({ phrases: [], directItems: [], order: 'course' })).toEqual([])
   })
 })
+
+// ---------------------------------------------------------------------------
+// THE TWO-POOL SCRIPT (Kai, 2026-08-21)
+// ---------------------------------------------------------------------------
+
+const { buildTwoPoolScriptItems, ISOLATED_CADENCE } = require('./recording-script-items.cjs')
+const { planScriptTakeFiling } = require('./script-take-filing.cjs')
+const { groupTakesByPhrase } = require('./voice-engine/provenance-adapter.cjs')
+
+const POOL_A = [
+  { target: 'seit zirka ana Wochn', known: 'for about a week', kind: 'lego', legoId: 'S0038L02' },
+  { target: 'zirka', known: 'about', kind: 'component', legoId: 'S0038L02' },
+]
+const POOL_B = [
+  { target: 'i lern seit zirka ana Wochn', known: "i've been learning for about a week", seedNumber: 38,
+    source: 'seed', wordCount: 5, chunks: [{ text: 'i lern' }, { text: 'seit zirka ana Wochn' }],
+    chunksString: 'i lern|seit zirka ana Wochn', chunkCount: 2 },
+]
+
+describe('buildTwoPoolScriptItems', () => {
+  it('reads a Pool A item ONCE and a Pool B line twice', () => {
+    const items = buildTwoPoolScriptItems({ poolA: POOL_A, poolB: POOL_B })
+    expect(items.filter(i => i.pool === 'A')).toHaveLength(POOL_A.length)
+    expect(items.filter(i => i.pool === 'B')).toHaveLength(POOL_B.length * 2)
+    expect(items.filter(i => i.pool === 'B').map(i => i.cadence)).toEqual(['natural', 'slow'])
+  })
+
+  it('marks Pool A unspliceable and gives it its own cadence, never "slow"', () => {
+    const items = buildTwoPoolScriptItems({ poolA: POOL_A, poolB: POOL_B })
+    for (const item of items.filter(i => i.pool === 'A')) {
+      expect(item.cadence).toBe(ISOLATED_CADENCE)
+      expect(item.cadence).not.toBe('slow')
+      expect(item.spliceable).toBe(false)
+      expect(item.chunkCount).toBe(1)   // an isolated read has no internal pause
+    }
+  })
+
+  it('numbers items in reading order and can put Pool A last', () => {
+    const first = buildTwoPoolScriptItems({ poolA: POOL_A, poolB: POOL_B })
+    expect(first[0].pool).toBe('A')
+    const last = buildTwoPoolScriptItems({ poolA: POOL_A, poolB: POOL_B, poolAFirst: false })
+    expect(last[0].pool).toBe('B')
+    expect(last[last.length - 1].pool).toBe('A')
+    expect(last.map(i => i.index)).toEqual(last.map((_, n) => n))
+  })
+})
+
+describe('the two guards that make Kai\'s ruling true', () => {
+  const course = { target_lang: 'de-AT', known_lang: 'en' }
+
+  it('FILES an isolated take — it is the unit\'s teaching clip', () => {
+    const plan = planScriptTakeFiling({
+      metadata: { cadence: ISOLATED_CADENCE, text: 'zirka', role: 'target1' },
+      voiceId: 'human_sasha', course,
+    })
+    expect(plan.file).toBe(true)
+    expect(plan.text).toBe('zirka')
+  })
+
+  it('still refuses a slow take, so the two cadences cannot be confused', () => {
+    const plan = planScriptTakeFiling({
+      metadata: { cadence: 'slow', text: 'zirka', role: 'target1' }, voiceId: 'human_sasha', course,
+    })
+    expect(plan.file).toBe(false)
+  })
+
+  it('keeps an isolated take OUT of the splicer entirely', () => {
+    const takes = [
+      { phraseText: 'zirka', s3Key: 'a.mp3', cadence: ISOLATED_CADENCE, chunksString: 'zirka', recordedAt: '2026-08-22' },
+      { phraseText: 'i lern', s3Key: 'b.mp3', cadence: 'natural', chunksString: 'i lern', recordedAt: '2026-08-22' },
+    ]
+    const groups = groupTakesByPhrase(takes)
+    expect([...groups.keys()]).toEqual(['i lern'])
+  })
+})

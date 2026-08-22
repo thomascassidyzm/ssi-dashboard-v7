@@ -130,4 +130,92 @@ function buildCourseScriptItems(courseItems = []) {
   }))
 }
 
-module.exports = { buildScriptItems, buildCourseScriptItems, isNaturalOnly }
+/**
+ * The cadence an isolated Pool A read is filed under.
+ *
+ * NOT 'slow', and that is load-bearing twice over:
+ *   - services/script-take-filing.cjs refuses `cadence === 'slow'` outright
+ *     (reason 'slow_cadence'), so a Pool A read tagged slow would go to S3 and
+ *     then never become a clip at all — silently. Kai's isolated read IS the
+ *     unit's teaching clip; it has to file.
+ *   - services/voice-engine/provenance-adapter.cjs drops this cadence from take
+ *     grouping, which is what keeps an isolated read out of the segment store
+ *     and therefore out of every spliced phrase. That is Kai's explicit ruling:
+ *     read on its own it carries no phrase prosody, and spliced in it sounds
+ *     strange.
+ * It is still read SLOWLY — the word here is a filing key, not a tempo.
+ */
+const ISOLATED_CADENCE = 'isolated'
+
+/**
+ * Build the autocue's item list for the TWO-POOL script (Kai, 2026-08-21).
+ *
+ * Pool A: ONE item per LEGO/component — a single clear read, never a pair.
+ * Pool B: the usual natural + slow pair per line.
+ *
+ * Pool A is emitted FIRST by default. Kai does not mind which end it goes on;
+ * first means the recordist banks every teaching clip even if the session is
+ * cut short, and it warms them into the dialect before the sentences start.
+ * `poolAFirst: false` puts it after the phrases.
+ *
+ * @param {object} args
+ * @param {Array} args.poolA - [{ target, known, kind, legoId }]
+ * @param {Array} args.poolB - [{ target, known, seedNumber, source, chunks, chunksString, chunkCount }]
+ * @param {boolean} [args.poolAFirst]
+ */
+function buildTwoPoolScriptItems({ poolA = [], poolB = [], poolAFirst = true } = {}) {
+  const isolatedItems = poolA.map((item) => {
+    // One chunk by definition — an isolated read has no internal pause, and
+    // saying so explicitly stops the autocue rendering pause boundaries it
+    // never asked for.
+    const chunk = [{ text: item.target, legoId: item.legoId || null, isLego: true }]
+    return {
+      text: item.target,
+      cadence: ISOLATED_CADENCE,
+      type: 'isolated',
+      pool: 'A',
+      itemKind: item.kind || 'lego',
+      known: item.known || '',
+      legoId: item.legoId || '',
+      recordingChunks: chunk,
+      legoChunks: chunk,
+      chunksString: item.target,
+      chunkCount: 1,
+      // The one field the splicer must never ignore.
+      spliceable: false,
+    }
+  })
+
+  const phraseItems = []
+  for (let i = 0; i < poolB.length; i++) {
+    const line = poolB[i]
+    const base = {
+      text: line.target,
+      type: 'phrase',
+      pool: 'B',
+      phraseIndex: i,
+      wordCount: line.wordCount ?? null,
+      known: line.known || '',
+      phraseOrigin: line.source || '',
+      seedNumber: line.seedNumber ?? null,
+      recordingChunks: line.chunks || null,
+      legoChunks: line.chunks || null,
+      chunksString: line.chunksString || null,
+      chunkCount: line.chunkCount ?? null,
+      spliceable: true,
+    }
+    phraseItems.push({ ...base, cadence: 'natural' })
+    phraseItems.push({ ...base, cadence: 'slow' })
+  }
+
+  const ordered = poolAFirst ? [...isolatedItems, ...phraseItems] : [...phraseItems, ...isolatedItems]
+  return ordered.map((item, index) => ({ index, ...item }))
+}
+
+module.exports = {
+  buildScriptItems,
+  buildCourseScriptItems,
+  buildTwoPoolScriptItems,
+  isNaturalOnly,
+  ISOLATED_CADENCE,
+}

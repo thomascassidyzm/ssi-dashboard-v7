@@ -31,6 +31,13 @@ const path = require('path');
 // drift on the one number a recordist actually hears. See SHORT_CHUNK_CHARS
 // there for the calibration behind it.
 const { mergeShortChunks } = require('../../services/voice-engine/chunking.cjs');
+// The two-pool script (Kai's ruling, 2026-08-21) and the honest coverage test.
+const {
+  buildPoolA,
+  buildPoolB,
+  verifyAssembly,
+  DEFAULT_MIN_PIECE_WORDS,
+} = require('../../services/recording-pools.cjs');
 
 const supabase = createClient(
   process.env.SUPABASE_URL,
@@ -362,6 +369,22 @@ async function getAllLegos(courseCode, maxSeed) {
   return data || [];
 }
 
+/**
+ * EVERY lego row, is_new or not, with its components. Pool A teaches from the
+ * `components` jsonb as well as the row itself, and an is_new:false row still
+ * carries components worth a clip. The is_new filter belongs to the SPLICING
+ * universe (getAllLegos), not to the teaching list.
+ */
+async function getAllLegoRows(courseCode, maxSeed) {
+  const { data, error } = await applySeedCap(supabase
+    .from('course_legos')
+    .select('target_text, known_text, type, is_new, seed_number, lego_index, components')
+    .eq('course_code', courseCode), maxSeed);
+
+  if (error) throw error;
+  return data || [];
+}
+
 async function getAllPracticePhrases(courseCode, maxSeed) {
   const { data, error } = await applySeedCap(supabase
     .from('course_practice_phrases')
@@ -618,6 +641,31 @@ async function generateRecordingScript(courseCode, options = {}) {
   const coverage = gapLegos === 0 ? '100.0' : ((gapLegos - result.uncovered.size) / gapLegos * 100).toFixed(1);
   const reduction = gapLegos === 0 ? '100.0' : ((1 - totalRecordings / gapLegos) * 100).toFixed(1);
 
+  // 7b. THE HONEST COVERAGE NUMBER.
+  //
+  // `coverage` above says a LEGO is covered when its text appears SOMEWHERE in
+  // what will be read. That is not the same thing as being able to cut it back
+  // out, because audio can only be cut at a pause — and it is why the tool said
+  // "100% coverage, 0 extra items" for deu_at_for_eng while 411 of its 1,248
+  // blocks could never be separated out at all. Measured 2026-08-22, on the
+  // script this very function returns: 837 of 1,248 LEGOs extractable (67.1%),
+  // and only 3,350 of 11,858 course phrases (28.3%) actually reassemblable.
+  // The chunk floor that landed 2026-08-21 to shorten the read is part of that:
+  // without it the same script reassembles 42.0%, with it 28.3%.
+  //
+  // These fields never gate anything. They exist so nobody reads a 100% off
+  // this tool again without also seeing what it is 100% of.
+  const shippedLines = result.selected.map((s) => ({
+    target: s.phrase,
+    chunks: mergeShortChunks(mergeGlueIntoLegos(chunkPhraseByLegos(s.phrase, universe), 'left')).map(c => c.text),
+  }));
+  const allCoursePhrases = [
+    ...seeds.map(s => ({ target_text: s.target_text })),
+    ...practicePhrases.map(p => ({ target_text: p.target_text })),
+  ];
+  const realCheck = verifyAssembly(allCoursePhrases, shippedLines);
+  const extractableLegos = [...universeKeys].filter(k => realCheck.extractable.has(k)).length;
+
   // Estimated time (rough)
   const phraseTime = result.selected.length * CONFIG.SECONDS_PER_PHRASE;
   const directTime = directRecord.length * CONFIG.SECONDS_PER_DIRECT;
@@ -643,6 +691,17 @@ async function generateRecordingScript(courseCode, options = {}) {
       algorithmIterations: result.iterations,
       excludeRecorded,
       alreadyCoveredByExistingRecordings: alreadyCoveredCount,
+
+      // Extractability, not text presence — see 7b. `coveragePercent` above is
+      // the old, generous number and is kept only so existing callers do not
+      // change shape.
+      extractableLegos,
+      extractableLegoPercent: totalLegos ? +((extractableLegos / totalLegos) * 100).toFixed(1) : 0,
+      coursePhrases: allCoursePhrases.length,
+      phrasesAssemblable: realCheck.assemblable,
+      realCoveragePercent: allCoursePhrases.length
+        ? +((realCheck.assemblable / allCoursePhrases.length) * 100).toFixed(1)
+        : 0,
     },
 
     recordingScript: {
@@ -736,6 +795,124 @@ async function generateRecordingScript(courseCode, options = {}) {
 }
 
 // =============================================================================
+// TWO POOLS (Kai's ruling, 2026-08-21)
+// =============================================================================
+
+/**
+ * Build the two-pool script for a course.
+ *
+ * POOL A is the isolated teaching list — every LEGO and every component, ONE
+ * clear read each. POOL B is the slow phrase reads, and its only obligation is
+ * that every phrase in the course can be reassembled from its pieces with no
+ * phrase incomplete. The greedy LEGO set cover is not run at all: it optimises
+ * for "isolate every teaching unit", which is exactly the job Pool A has taken
+ * over, and it is what produced the one-word stops.
+ *
+ * See services/recording-pools.cjs for the algorithm and why spans (not
+ * chunks) are the unit of reassembly.
+ */
+async function generateTwoPoolScript(courseCode, options = {}) {
+  const { verbose = false, maxSeed = null, minPieceWords = DEFAULT_MIN_PIECE_WORDS } = options;
+
+  console.log(`\n🎙️  Recording Script Generator — TWO POOLS`);
+  console.log(`   Course: ${courseCode}`);
+  if (maxSeed) console.log(`   Capped to seeds 1-${maxSeed}`);
+  console.log(`${'─'.repeat(50)}\n`);
+
+  const course = await getCourseInfo(courseCode);
+  const legoRows = await getAllLegoRows(courseCode, maxSeed);
+  if (!legoRows.length) {
+    console.log(maxSeed
+      ? `❌ No LEGOs found in seeds 1-${maxSeed} for ${courseCode}.`
+      : '❌ No LEGOs found for course. Run Phase 1 & 2 first.');
+    return null;
+  }
+
+  // The splicing universe is the is_new rows, exactly as the shipped path.
+  const universe = new Map();
+  for (const lego of legoRows) {
+    if (!lego.is_new) continue;
+    const normalized = normalizeForMatching(lego.target_text);
+    if (universe.has(normalized)) continue;
+    universe.set(normalized, {
+      original: lego.target_text,
+      known: lego.known_text,
+      type: lego.type,
+      legoId: `S${String(lego.seed_number).padStart(4, '0')}L${String(lego.lego_index).padStart(2, '0')}`,
+    });
+  }
+
+  const seeds = await getAllSeeds(courseCode, maxSeed);
+  const practicePhrases = await getAllPracticePhrases(courseCode, maxSeed);
+  const phrases = [
+    ...seeds.map(s => ({ ...s, source: 'seed' })),
+    ...practicePhrases.map(p => ({ ...p, source: 'practice' })),
+  ];
+
+  if (verbose) console.log(`📚 ${legoRows.length} lego rows, ${phrases.length} phrases`);
+
+  const poolA = buildPoolA(legoRows);
+  const poolB = buildPoolB({ phrases, universe, minPieceWords });
+
+  // Independent re-check of the hard rule, off the emitted chunk maps rather
+  // than off buildPoolB's own working state. If these two ever disagree, the
+  // script is wrong and must not ship.
+  const check = verifyAssembly(phrases, poolB.lines, minPieceWords);
+
+  const poolASeconds = poolA.length * CONFIG.SECONDS_PER_DIRECT;
+  const poolBSeconds = poolB.lines.length * CONFIG.SECONDS_PER_PHRASE * 2; // natural + slow
+
+  console.log(`\n${'═'.repeat(50)}`);
+  console.log('📊 TWO-POOL RESULTS');
+  console.log('═'.repeat(50));
+  console.log(`Pool A (isolated, one read):  ${poolA.length} items`);
+  console.log(`Pool B (phrases, two reads):  ${poolB.lines.length} lines`);
+  console.log(`Internal stops in Pool B:     ${poolB.stats.internalStops}`);
+  console.log(`  of which one-word pieces:   ${poolB.stats.oneWordChunksInStoppedLines}`);
+  console.log(`Lines read with NO stop:      ${poolB.stats.linesWithNoStop}`);
+  console.log(`REAL phrase coverage:         ${poolB.stats.realCoveragePercent}% (${poolB.stats.phrasesAssemblable}/${poolB.stats.coursePhrases})`);
+  if (poolB.failures.length) {
+    console.log(`\n❌ ${poolB.failures.length} PHRASES CANNOT BE ASSEMBLED — the hard rule is NOT met:`);
+    for (const f of poolB.failures.slice(0, 10)) console.log(`   - ${f}`);
+  }
+
+  return {
+    courseCode,
+    generatedAt: new Date().toISOString(),
+    maxSeed,
+    mode: 'two-pool',
+    statistics: {
+      ...poolB.stats,
+      poolAItems: poolA.length,
+      poolALegos: poolA.filter(i => i.kind === 'lego').length,
+      poolAComponents: poolA.filter(i => i.kind === 'component').length,
+      estimatedMinutesPoolA: Math.ceil(poolASeconds / 60),
+      estimatedMinutesPoolB: Math.ceil(poolBSeconds / 60),
+      estimatedMinutes: Math.ceil((poolASeconds + poolBSeconds) / 60),
+      independentCheckAssemblable: check.assemblable,
+      independentCheckFailures: check.failures.length,
+    },
+    poolA: {
+      instructions: [
+        'Read each item ONCE, clearly and unhurried, as its own line.',
+        'This is the teaching clip for that block — it is never spliced into a phrase.',
+      ],
+      items: poolA,
+    },
+    poolB: {
+      instructions: [
+        'Record each line twice: natural speed, then slow with a pause at each |.',
+        'A line with no | has no internal pause — read it straight through.',
+        'The pauses are the only place this audio can be cut, and every pause here',
+        'is one some other phrase genuinely needs.',
+      ],
+      lines: poolB.lines,
+    },
+    failures: poolB.failures,
+  };
+}
+
+// =============================================================================
 // CLI
 // =============================================================================
 
@@ -755,6 +932,13 @@ Options:
   --gap             Exclude LEGOs already coverable by existing HUMAN
                     recordings — output is the residual gap list, not a
                     from-scratch script
+  --two-pools       Emit the two-pool script: Pool A (every LEGO and every
+                    component, one clear read each) plus Pool B (slow phrase
+                    reads sized only by what reassembly needs)
+  --min-piece-words <n>
+                    Smallest piece a phrase may be spliced from (default 1).
+                    2 forbids word-sized splice material — better splices,
+                    far more lines to read.
   --order <mode>    Reading order for the SAME selected lines:
                     coverage (default, biggest LEGO payoff first) or
                     course (seed 1 upwards, so a straight-through read
@@ -781,9 +965,14 @@ Examples:
   const role = roleIdx !== -1 ? args[roleIdx + 1] : 'target1';
   const orderIdx = args.indexOf('--order');
   const order = orderIdx !== -1 ? args[orderIdx + 1] : 'coverage';
+  const twoPools = args.includes('--two-pools');
+  const minIdx = args.indexOf('--min-piece-words');
+  const minPieceWords = minIdx !== -1 ? parseInt(args[minIdx + 1], 10) : DEFAULT_MIN_PIECE_WORDS;
 
   try {
-    const result = await generateRecordingScript(courseCode, { verbose, excludeRecorded, maxSeed, role, order });
+    const result = twoPools
+      ? await generateTwoPoolScript(courseCode, { verbose, maxSeed, minPieceWords })
+      : await generateRecordingScript(courseCode, { verbose, excludeRecorded, maxSeed, role, order });
 
     if (result && outputFile) {
       const outputPath = path.resolve(outputFile);
@@ -804,4 +993,9 @@ if (require.main === module) {
 }
 
 // Export for API use
-module.exports = { generateRecordingScript, getExistingHumanAudioTexts, orderSelectedPhrases };
+module.exports = {
+  generateRecordingScript,
+  generateTwoPoolScript,
+  getExistingHumanAudioTexts,
+  orderSelectedPhrases,
+};

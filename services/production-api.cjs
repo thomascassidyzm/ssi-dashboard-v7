@@ -8375,8 +8375,8 @@ app.patch('/api/production/:courseCode/phrase/:phraseId', async (req, res) => {
 // =============================================================================
 
 // Import the recording optimizer algorithm
-const { generateRecordingScript } = require('../tools/recording-optimizer/generate-recording-script.cjs')
-const { buildScriptItems, buildCourseScriptItems, isNaturalOnly } = require('./recording-script-items.cjs')
+const { generateRecordingScript, generateTwoPoolScript } = require('../tools/recording-optimizer/generate-recording-script.cjs')
+const { buildScriptItems, buildCourseScriptItems, buildTwoPoolScriptItems, isNaturalOnly } = require('./recording-script-items.cjs')
 const { loadCourseOrderScript } = require('./course-order-script.cjs')
 
 // GET /api/production/:courseCode/recording-optimizer
@@ -8455,6 +8455,58 @@ app.get('/api/production/:courseCode/recording-script', async (req, res) => {
     // 'coverage', so nothing changes for anyone who doesn't ask for it.
     const order = req.query.order === 'course' ? 'course' : 'coverage'
     const naturalOnly = isNaturalOnly(order)
+    // ?pools=true is the TWO-POOL script (Kai's ruling, 2026-08-21): Pool A,
+    // every LEGO and every component read once on its own as that unit's
+    // teaching clip; then Pool B, the slow phrase reads, sized ONLY by what it
+    // takes to reassemble every phrase in the course. It replaces both the
+    // coverage optimiser and the direct-record list, because both of those
+    // exist to isolate teaching units and Pool A now does that job.
+    const twoPools = req.query.pools === 'true'
+    // Smallest piece a phrase may be spliced from. 1 (default) allows a
+    // word-sized piece; 2 forbids them, which reads far better and costs a much
+    // longer script — the exchange rate is measured per course, see
+    // docs/recording/two-pool-redesign-2026-08-22.md.
+    const rawMinPiece = parseInt(req.query.minPieceWords, 10)
+    const minPieceWords = Number.isInteger(rawMinPiece) && rawMinPiece > 0 ? rawMinPiece : 1
+
+    if (twoPools) {
+      const originalLogTP = console.log
+      console.log = () => {}
+      let poolResult
+      try {
+        poolResult = await generateTwoPoolScript(courseCode, { verbose: false, maxSeed, minPieceWords })
+      } finally {
+        console.log = originalLogTP
+      }
+      if (!poolResult) {
+        return res.status(404).json({
+          error: maxSeed
+            ? `No LEGOs found in seeds 1-${maxSeed} for ${courseCode}.`
+            : 'No LEGOs found for course. Run Course Builder first.'
+        })
+      }
+      const poolItems = buildTwoPoolScriptItems({
+        poolA: poolResult.poolA.items,
+        poolB: poolResult.poolB.lines,
+      })
+      return res.json({
+        courseCode,
+        maxSeed,
+        role,
+        mode: 'two-pool',
+        naturalOnly: false,
+        minPieceWords,
+        totalItems: poolItems.length,
+        totalPoolA: poolResult.poolA.items.length,
+        totalPoolB: poolResult.poolB.lines.length,
+        estimatedMinutes: poolResult.statistics.estimatedMinutes,
+        statistics: poolResult.statistics,
+        // Never silent: if the hard rule is not met, the caller sees which
+        // phrases failed rather than a slightly smaller percentage.
+        unassemblablePhrases: poolResult.failures,
+        items: poolItems
+      })
+    }
 
     logger.log(`[Recording Script] Generating ${naturalOnly ? 'natural-only' : 'interleaved'} script for ${courseCode} [${role}]${excludeRecorded ? ' (gap only)' : ' (full)'}${maxSeed ? ` (seeds 1-${maxSeed})` : ''} (${order} order)`)
 

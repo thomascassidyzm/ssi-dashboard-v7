@@ -97,7 +97,16 @@ function reasonPayload(reason, detail = null) {
  */
 function planScriptTakeFiling({ metadata = {}, voiceId = null, course = null }) {
   const cadence = metadata.cadence || 'natural'
+  // A slow take is a measurement, not a clip — it exists to give the aligner
+  // pause boundaries and is deliberately never filed.
   if (cadence === 'slow') return { file: false, filing: reasonPayload('slow_cadence') }
+  // 'isolated' (Pool A) DOES file, and deliberately so: it is the teaching clip
+  // for that LEGO or component, and the whole point of the two-pool split is
+  // that it exists as a clip in its own right. It reaches the splicer never —
+  // that guard is in voice-engine/provenance-adapter.cjs, not here. Spelled out
+  // rather than left to fall through the ELSE branch, because "anything that
+  // isn't the string 'slow' gets filed" is how a cadence nobody meant to file
+  // would file itself.
 
   const text = typeof metadata.text === 'string' ? metadata.text.trim() : ''
   if (!text) return { file: false, filing: reasonPayload('no_text') }

@@ -116,6 +116,15 @@ function groupTakesByPhrase(takes) {
   for (const take of takes || []) {
     if (!take?.phraseText || !take.s3Key) continue
     if (take.method && take.method !== 'take') continue // never re-splice splices
+    // POOL A NEVER FEEDS THE SPLICER. Kai's ruling, 2026-08-21: an isolated
+    // read is the unit's own teaching clip, and spliced into a phrase it sounds
+    // strange because it carries no phrase prosody. It still files as a
+    // course_audio clip (script-take-filing.cjs) — it just never becomes splice
+    // material. Dropping it HERE is what makes that true: everything downstream
+    // (synthesis-job's groupsToAlign, segment-store's index, splicer's plan)
+    // keys on chunk text alone and would otherwise treat a one-chunk isolated
+    // take as indistinguishable from a chunk cut out of a real sentence.
+    if (take.cadence === 'isolated') continue
     // The recordist redid this line and a later take replaced this one. That is
     // a DECISION, and it outranks the recency comparison below — which is
     // ordered by a client-supplied `recorded_at` off the recordist's phone, so
