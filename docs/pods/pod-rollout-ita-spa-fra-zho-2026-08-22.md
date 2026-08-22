@@ -73,6 +73,22 @@ Spanish is the course that proves the pipeline with no human in the loop, becaus
 
 ---
 
+## The second finding: the readiness gate cannot see a clip in the wrong voice
+
+This one is worth your attention because it would have shipped quietly.
+
+The readiness SELECT that `pod-switchover.cjs` uses counts sentences with **no** audio. It cannot see a sentence whose audio **exists but is in a voice nobody cast**. So a pod can read a perfect `n=231, no_text=0, draft=0, no_target_audio=0, no_known_audio=0` while a third of it plays in voices you never approved.
+
+Spanish did exactly that. After the bulk render it passed readiness with all zeros, and passed full audio verification — 231/231 alive, 231/231 decodable, both tracks. And **80 of its 231 target clips were on Eve, Ara and four other voices outside your approved Manuel + Elvira pair.** They were old clips, generated back in June before the pod was collapsed to two voices, and nothing in the pipeline was ever going to notice them.
+
+Croatian is the proof of what the standard should be: `hrv_for_eng:pod-1` is **231/231 on-cast, zero off-cast.**
+
+So the check now exists. `tools/pods/unlink-off-cast-pod-clips.cjs` nulls the pod *link* of any target clip whose voice is outside the pod's cast, so the generator refills it on the cast voices. No `course_audio` row is deleted — every clip survives and every link is restorable from the committed per-row log. It refuses any slug that is not `*-unrecorded`, so a live pod cannot be reached.
+
+Spanish's 80 off-cast clips were unlinked and re-rendered on Manuel and Elvira. The same correction is queued for Italian (66 off-cast), French (58) and Chinese (63) — it runs as part of their bulk render once you have ruled on their voices.
+
+---
+
 ## Verification standard
 
 For every row of each pod, both tracks: resolve to a `course_audio` row, HTTP-fetch the object (200, non-trivial size), then download and `ffprobe` it for decodability and a plausible duration.
