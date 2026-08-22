@@ -22,7 +22,7 @@
             (lines of dialogue, each with a speaker).
           </p>
           <ul class="space-y-2 mb-4 list-disc pl-5 text-muted">
-            <li><strong class="text-ink">Core pod</strong> (<code class="font-mono">pod-0</code>) - every learner does this one.</li>
+            <li><strong class="text-ink">Core pod</strong> (<code class="font-mono">pod-1</code> on courses built since Tom's 1-based ruling of 2026-08-22, <code class="font-mono">pod-0</code> on the rest) - every learner does this one. Which slug a course serves is a per-course fact: resolve it, never assume it.</li>
             <li><strong class="text-ink">Choice pods</strong> (e.g. <code class="font-mono">travel</code>, <code class="font-mono">sport</code>) - the learner picks one after the core pod.</li>
           </ul>
           <p class="text-muted">
