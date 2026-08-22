@@ -53,6 +53,19 @@ const s3 = new S3Client({
   },
 })
 
+// Serving slugs, most-preferred first. An explicit allowlist, never a prefix
+// match: an archived `pod-0-retired-…` keeps pod_type='core' through the
+// rename and must never be served.
+const SERVING_SLUGS = ['pod-1', 'pod-0']
+
+async function servingSlug(supabase, courseCode) {
+  const { data } = await supabase
+    .from('listening_pods').select('slug, pod_type')
+    .eq('course_code', courseCode).in('slug', SERVING_SLUGS)
+  const core = (data || []).filter((p) => p.pod_type == null || p.pod_type === 'core')
+  return SERVING_SLUGS.find((s) => core.some((p) => p.slug === s)) || 'pod-0'
+}
+
 export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*')
   res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS')
@@ -62,13 +75,18 @@ export default async function handler(req, res) {
   if (req.method !== 'GET') return res.status(405).json({ error: 'Method not allowed' })
 
   const courseCode = req.query.course
-  const slug = req.query.slug || 'pod-0'
   if (!courseCode) {
     return res.status(400).json({ error: 'course is required' })
   }
 
   const supabase = getSupabase()
   if (!supabase) return res.status(500).json({ error: 'Supabase not configured' })
+
+  // An omitted slug means "the pod this course serves", which stopped being
+  // `pod-0` for everyone on Tom's 1-based ruling of 2026-08-22: hrv_for_eng
+  // serves `pod-1` and the rest still serve `pod-0`. Same preference order as
+  // src/lib/servingPod.js. An explicit ?slug= is honoured untouched.
+  const slug = req.query.slug || await servingSlug(supabase, courseCode)
 
   const podId = `${courseCode}:${slug}`
 
