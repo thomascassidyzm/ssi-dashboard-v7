@@ -556,8 +556,8 @@ function digitwiseWords (digits, lex) {
  * And a number that is genuinely wrong or genuinely absent is still wrong under
  * every reading in every language, so Rule 4 keeps its teeth.
  *
- * THE GAP, stated rather than papered over: seven languages have a lexicon here
- * (en, nl, de, fr, es, it, pt) and the estate renders eighty-six. A language
+ * THE GAP, stated rather than papered over: eight languages have a lexicon here
+ * (en, nl, de, fr, es, it, pt, is) and the estate renders eighty-six. A language
  * without one behaves EXACTLY as it does today — English readings only — so it
  * is no worse off, but its digit-vs-word clips can still be refused for
  * notation. There is no language-independent fix available: neutralising the
@@ -741,8 +741,57 @@ const IT = {
   },
 }
 
+/**
+ * Icelandic: cardinals 1-4 inflect for grammatical gender — einn/ein/eitt,
+ * tveir/tvær/tvö, þrír/þrjár/þrjú, fjórir/fjórar/fjögur — and the decode gives
+ * no way to know which gender was spoken. Neuter is `build`'s default reading
+ * (the form used for standalone counting, e.g. reading a sequence "19, 20,
+ * 21"), and masculine/feminine are offered as ADDITIONAL readings via
+ * `genderVariants`, never chosen over it — the comparator scores whichever
+ * fits (Tom, 2026-08-22, isl_for_eng free-tier unblock). Only the number's
+ * own trailing digit inflects; hundred/thousand multipliers stay neuter
+ * (hundrað/þúsund are themselves neuter nouns), so gender threads through
+ * `build`'s recursion into `rest` only, never into a multiplier position.
+ * Tens and units join with "og" — tuttugu og eitt, aldrei "tuttuguogeitt".
+ */
+const IS_ONES = {
+  neut: ['núll', 'eitt', 'tvö', 'þrjú', 'fjögur', 'fimm', 'sex', 'sjö', 'átta', 'níu',
+    'tíu', 'ellefu', 'tólf', 'þrettán', 'fjórtán', 'fimmtán', 'sextán', 'sautján', 'átján', 'nítján'],
+  masc: ['núll', 'einn', 'tveir', 'þrír', 'fjórir', 'fimm', 'sex', 'sjö', 'átta', 'níu',
+    'tíu', 'ellefu', 'tólf', 'þrettán', 'fjórtán', 'fimmtán', 'sextán', 'sautján', 'átján', 'nítján'],
+  fem: ['núll', 'ein', 'tvær', 'þrjár', 'fjórar', 'fimm', 'sex', 'sjö', 'átta', 'níu',
+    'tíu', 'ellefu', 'tólf', 'þrettán', 'fjórtán', 'fimmtán', 'sextán', 'sautján', 'átján', 'nítján'],
+}
+const IS_TENS = ['', '', 'tuttugu', 'þrjátíu', 'fjörutíu', 'fimmtíu', 'sextíu', 'sjötíu', 'áttatíu', 'níutíu']
+const IS = {
+  ones: IS_ONES.neut, // digitwiseWords (phone/room-number style) reads plain neuter digits.
+  build (n, form = 'neut') {
+    const ones = IS_ONES[form] || IS_ONES.neut
+    if (n < 20) return ones[n]
+    if (n < 100) {
+      const u = n % 10
+      return IS_TENS[Math.floor(n / 10)] + (u ? ' og ' + ones[u] : '')
+    }
+    if (n < 1000) {
+      const h = Math.floor(n / 100); const rest = n % 100
+      const head = h === 1 ? 'hundrað' : IS_ONES.neut[h] + ' hundruð'
+      return head + (rest ? ' og ' + this.build(rest, form) : '')
+    }
+    const t = Math.floor(n / 1000); const rest = n % 1000
+    const head = t === 1 ? 'þúsund' : this.build(t, 'neut') + ' þúsund'
+    return head + (rest ? (rest < 100 ? ' og ' : ' ') + this.build(rest, form) : '')
+  },
+  genderVariants (n) {
+    const u = n % 10
+    const tensDigit = Math.floor((n % 100) / 10)
+    // Teens (11-19, tensDigit === 1) never inflect — "ellefu" etc are invariant.
+    if (u < 1 || u > 4 || tensDigit === 1) return []
+    return ['masc', 'fem'].map(form => this.build(n, form))
+  },
+}
+
 /** ISO-639-1 -> lexicon. Absent = English readings only, exactly as before. */
-const NUMERAL_LEXICONS = { de: DE, nl: NL, fr: FR, es: ES, pt: PT, it: IT }
+const NUMERAL_LEXICONS = { de: DE, nl: NL, fr: FR, es: ES, pt: PT, it: IT, is: IS }
 
 /** The lexicon for a decode language, or null when there is none. */
 function lexiconFor (iso1) {
@@ -819,6 +868,9 @@ function numeralReadings (token, iso1) {
   // The same two readings again, in the language the clip is actually in.
   if (lex) {
     out.push(lexNumberToWords(n, lex))
+    // Gendered lexicons (Icelandic: einn/ein/eitt) offer every inflected form
+    // as an alternative reading — the decode never says which was spoken.
+    if (lex.genderVariants) out.push(...lex.genderVariants(n))
     if (token.length >= 2) out.push(digitwiseWords(token, lex))
   }
   return [...new Set(out.filter(Boolean))]

@@ -605,6 +605,54 @@ describe('numerals in the language the clip is actually in', () => {
       expect(v.pass).toBe(false)
     })
   })
+
+  describe('Icelandic gendered cardinals (2026-08-22, isl_for_eng free-tier unblock)', () => {
+    // SC12-S010 was one of the 11 clips quarantined in the 2026-08-22
+    // isl_for_eng free-tier render. Whisper (medium) heard the numerals
+    // spelt out correctly but the CER-only comparator scored the digits
+    // against garbled Icelandic — the exact class of bug 5668ddb7c fixed
+    // for por_for_eng, just with no `is` entry in NUMERAL_LEXICONS to reach.
+    it('passes the real quarantined SC12-S010 line once medium hears the numerals', () => {
+      const v = V.verdictFromDecode(
+        'Nítján, tyftu, tyftu og eitt, milvikudáur, fintudáur.',
+        '19. 20. 21. Miðvikudagur. Fimmtudagur.', 'is')
+      expect(v.pass).toBe(true)
+    })
+
+    it('offers neuter as the default reading — the form used for standalone counting', () => {
+      const vars = V.numeralVariants('21 manns.', 'is')
+      expect(vars.some(v => v.includes('tuttugu og eitt'))).toBe(true)
+    })
+
+    it('offers masculine and feminine as alternative readings, not the default', () => {
+      const vars = V.numeralVariants('21 manns.', 'is')
+      expect(vars.some(v => v.includes('tuttugu og einn'))).toBe(true)
+      expect(vars.some(v => v.includes('tuttugu og ein'))).toBe(true)
+    })
+
+    it('teens never inflect — ellefu, not "einn-ellefu"', () => {
+      const v = V.lexiconFor('is')
+      expect(v.genderVariants(11)).toEqual([])
+      expect(v.genderVariants(14)).toEqual([])
+    })
+
+    it('hundred/thousand multipliers stay neuter regardless of the trailing gender', () => {
+      const v = V.lexiconFor('is')
+      // 121: "hundrað og tuttugu og eitt/einn/ein" — the hundred-count itself
+      // (bare "hundrað" here, "tvö hundruð" etc for higher hundreds) never
+      // takes the masc/fem form, only the trailing units digit does.
+      expect(v.build(121)).toBe('hundrað og tuttugu og eitt')
+      expect(v.genderVariants(121)).toEqual(['hundrað og tuttugu og einn', 'hundrað og tuttugu og ein'])
+    })
+
+    it('a genuinely WRONG number is still convicted, gendered forms included', () => {
+      // Same shape as the por_for_eng negative test above: same sentence,
+      // middle number wrong (99, not 20).
+      const v = V.verdictFromDecode('19. 99. 21. Miðvikudagur. Fimmtudagur.',
+        'Nítján. Tuttugu. Tuttugu og eitt. Miðvikudagur. Fimmtudagur.', 'is')
+      expect(v.pass).toBe(false)
+    })
+  })
 })
 
 describe('speech rate — the clip being replaced is not a duration reference', () => {
