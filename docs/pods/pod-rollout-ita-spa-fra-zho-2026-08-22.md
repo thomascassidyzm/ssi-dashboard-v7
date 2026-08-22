@@ -152,3 +152,30 @@ Separately: the fleet-wide draft-flag census shows **36 other courses** still ca
 ## One observation on the French text, for the record
 
 The French pod's dialogue uses **vous** in places where your tu-first ruling would prefer **tu** ("Vous avez de la nourriture ?", "Vous pouvez me dire à quelle distance est la ville ?"). Your standing ruling is that we trust the LLM-generated pod text and do not gate on proofreading, and the brief limits text work here to draft flags. So I have changed nothing. Flagging it only because tu-first is your ruling and this is the kind of thing it was aimed at.
+
+---
+
+## Update, 2026-08-22 ~13:00Z — Spanish finished and verified. The report the last worker owed.
+
+The worker that wrote everything above ended its session at 12:22Z with five render tasks still running in the background. Ending a session kills anything backgrounded inside it, so those five tasks died with it. This section is the report that was never delivered, written after re-establishing the truth from scratch rather than trusting the dead session's last words.
+
+**The good news: the render had already moved off the killed session before it died.** The off-cast re-render was being carried out by the genuinely detached `popty-phase8-audio` systemd service, not by anything inside the worker's own session — clip-creation timestamps continue past 12:22Z (21 clips at 12:20, 23 at 12:21, 22 at 12:22, 9 at 12:23, 3 at 12:24), which is only possible if a process outside the session kept writing. Ending the session did not truncate the work; it only truncated the report.
+
+**Verification performed fresh, this session, ~12:55–13:05Z, against `spa_for_eng:pod-0-unrecorded`:**
+
+* **Row/link state** (direct query, `listening_pod_sentences` joined to `course_audio`): 231 rows, **0 with a null target link, 0 with a null known link.**
+* **Cast conformance**: every one of the 231 target clips resolves to a voice in `{yis75yfp, es-ES-ElviraNeural}` after provider-prefix normalisation — **171 on Manuel, 60 on Elvira, 0 off-cast.** Checked against `hrv_for_eng:pod-1` in the same query as the reference standard (231 rows, 0 null, 0 off-cast on its own two-voice cast) — Spanish now matches it exactly.
+* **Phase-8 service state**: `systemctl --user status popty-phase8-audio` shows the service running but idle; `GET /status` on port 3465 returns `{"active":false,"total":0}` — nothing queued, nothing running, for Spanish or anything else.
+* **Full HTTP + ffprobe verification, no sampling** (`tools/pods/verify-pod-audio.cjs --pod=spa_for_eng:pod-0-unrecorded --probe-all`, all 462 clips across both tracks): resolved 462/462 audio ids; HEAD ok 231/231 target, 231/231 known; ffprobe ok 231/231 target, 231/231 known. Zero failures on any check. Output committed at `docs/pods/pod-audio-verify-spa_for_eng_pod-0-unrecorded.json`.
+
+**Nothing needed finishing.** No render was issued this session — the render was already complete and there was nothing left to scope or queue. Step 2 of the brief ("finish only what is genuinely missing") had nothing to do, which is recorded here as the good outcome it is, not skipped over.
+
+**Spanish now meets the Croatian standard in full: 231/231 alive, 231/231 decodable, both tracks, 231/231 on-cast, 0 null links.** The 12:22Z prior version of this section's headline table already read "Spanish: READY TO FLIP" — that line was accurate even though it went undelivered; it is now independently reconfirmed rather than taken on trust.
+
+**Nothing else moved.** No `pod-switchover.cjs` call was made, in dry-run or apply mode. No live pod-0 was touched on any of the four courses. Italian, French and Chinese remain exactly where the earlier section left them — cast collapsed to two voices, sample clips rendered and published for Tom's ear, full render withheld pending his ruling. The 50%-carry flag on Spanish's learner-progress mapping (26 of 52 rows) stands unchanged from the section above and is restated here: it is Tom's call at flip time, not a blocker to this report.
+
+**Still waiting on Tom:**
+1. His ear on the Italian, French and Chinese two-voice casts (sample docs already published).
+2. The one batched flip yes for all four courses, once he's ready — including a view on whether Spanish's 50% learner-progress carry counts as "mostly covered."
+
+No flip was run. No learner-facing content changed.
