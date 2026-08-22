@@ -45,6 +45,26 @@ const S3_BUCKET = process.env.S3_AUDIO_BUCKET || 'ssi-audio-stage'
 const AWS_REGION = process.env.AWS_REGION || 'eu-west-1'
 const URL_TTL = 3600
 
+/**
+ * The identity of the pod-explainer store, read side.
+ *
+ * The canonical spellings are what services/shared/clip-identity.cjs produces
+ * for this store — canonicalVoiceId('comp:leo') === 'comp:xai_leo' and
+ * canonicalLanguage('en') === 'eng'. They are literals here rather than library
+ * calls because .vercelignore excludes tools/, and the language service loads
+ * its reference CSV from there at require time; the literals are pinned to the
+ * library by api/pod-content.identity.test.js instead.
+ *
+ * TEMPORARY — the pre-canonical members ('comp:leo', 'en'). The writers
+ * (tools/build-shared-known-store.cjs, tools/persist-stage0-pod0.cjs) now emit
+ * the canonical spelling, but every row written before them still carries the
+ * old one. Dropping the old members before the approved back-fill has rewritten
+ * those rows silences every pod explainer. Remove them — and turn these `.in()`s
+ * back into `.eq()` — only after that back-fill has run and been verified.
+ */
+const EXPLAINER_VOICE_IDS = ['comp:xai_leo', 'comp:leo']
+const SHARED_KNOWN_LANGS = ['eng', 'en']
+
 const s3 = new S3Client({
   region: AWS_REGION,
   credentials: {
@@ -110,7 +130,7 @@ export default async function handler(req, res) {
     if (lErr) return res.status(500).json({ error: lErr.message })
     const legoByKey = new Map((legos || []).map(l => [l.lego_key, l]))
 
-    // 3. this course's comp:leo pod-explainer rows in ONE small query.
+    // 3. this course's composite pod-explainer rows in ONE small query.
     //    These are the per-LANGUAGE assets: the File-2 atom-target slices keyed by
     //    "[atom] <target>" text (and, for legacy courses, the per-course means-X).
     const { data: caRows, error: caErr } = await supabase
@@ -118,7 +138,7 @@ export default async function handler(req, res) {
       .select('id, text, s3_key')
       .eq('course_code', courseCode)
       .eq('role', 'pod_explainer')
-      .eq('voice_id', 'comp:leo')
+      .in('voice_id', EXPLAINER_VOICE_IDS)
     if (caErr) return res.status(500).json({ error: caErr.message })
 
     const targetRowByText = new Map()  // "[atom] <target>" -> { id, s3_key }
@@ -140,9 +160,9 @@ export default async function handler(req, res) {
       .from('course_audio')
       .select('id, text, s3_key')
       .eq('course_code', 'pod_known_en')
-      .eq('language', 'en')
+      .in('language', SHARED_KNOWN_LANGS)
       .eq('role', 'pod_explainer')
-      .eq('voice_id', 'comp:leo')
+      .in('voice_id', EXPLAINER_VOICE_IDS)
     if (shErr) return res.status(500).json({ error: shErr.message })
     for (const r of sharedRows || []) {
       s3KeyById.set(r.id, r.s3_key)

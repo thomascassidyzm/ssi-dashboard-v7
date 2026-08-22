@@ -19,6 +19,17 @@ import { useAuth } from '../../composables/useAuth'
 //
 // opts.onLoaded(drafts)  — backfill defaults after the rows land.
 // opts.onReset(key, drafts) — per-key fix-up after a Reset (same backfill).
+//
+// VERSIONING (2026-08-06, additive). Every save is content-addressed server-
+// side, so a row now carries a config_hash and a key has a history. Three new
+// actions expose it — saveDraft(key), loadVersions(key), rollback(key, hash) —
+// plus a reactive `versions` object keyed by config key. Nothing existing
+// changed: save() still publishes, the same fields come back in the same
+// shapes, and ListeningConfig / SpeakingConfig / VadLab need no edits.
+//
+// saveDraft is the one worth knowing about: it records the config and moves a
+// DRAFT pointer without touching the live row, so tuning on a bench no longer
+// deploys to every learner within the learning app's five-minute cache.
 // ============================================================================
 export function useAlgorithmConfig(opts = {}) {
   const { getAccessToken } = useAuth()
@@ -36,9 +47,31 @@ export function useAlgorithmConfig(opts = {}) {
 
   function deepClone(v) { return JSON.parse(JSON.stringify(v)) }
 
+  /**
+   * JSON with object keys in a stable order. Arrays keep their order — for
+   * spacedRepOffsets the order IS the value.
+   *
+   * The dirty-check needs this because algorithm_config.config is a Postgres
+   * `jsonb` column, and jsonb stores object keys in ITS canonical order (by key
+   * length, then bytewise), not the order they were written in. So the config
+   * that comes back from a save is never the same STRING as the draft that was
+   * sent, even when it is the same value. A plain JSON.stringify comparison
+   * therefore reports a row as permanently dirty from the moment it gains a new
+   * key — Save works, the row updates, and the button stays lit as though
+   * nothing happened. Observed live on 2026-08-07 when easy_mode gained
+   * post_voice2_gap_ms and maxPhraseSyllables.
+   */
+  function stableStringify(v) {
+    if (Array.isArray(v)) return `[${v.map(stableStringify).join(',')}]`
+    if (v && typeof v === 'object') {
+      return `{${Object.keys(v).sort().map(k => `${JSON.stringify(k)}:${stableStringify(v[k])}`).join(',')}}`
+    }
+    return JSON.stringify(v) ?? 'null'
+  }
+
   function isDirty(key) {
     if (!drafts[key] || !rowMap.value[key]) return false
-    return JSON.stringify(drafts[key]) !== JSON.stringify(rowMap.value[key].config)
+    return stableStringify(drafts[key]) !== stableStringify(rowMap.value[key].config)
   }
 
   function reset(key) {
@@ -48,24 +81,118 @@ export function useAlgorithmConfig(opts = {}) {
     opts.onReset?.(key, drafts)
   }
 
+  async function authedFetch(url, options = {}) {
+    const token = await getAccessToken()
+    if (!token) throw new Error('Not signed in')
+    const res = await fetch(url, {
+      ...options,
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`,
+        ...(options.headers || {}),
+      },
+    })
+    const data = await res.json().catch(() => ({}))
+    if (!res.ok) throw new Error(data.error || `${res.status} ${res.statusText}`)
+    return data
+  }
+
   async function save(key) {
     savingKey.value = key
     rowErrors[key] = null
     try {
-      const token = await getAccessToken()
-      if (!token) throw new Error('Not signed in')
-      const res = await fetch('/api/algorithm-config', {
+      const data = await authedFetch('/api/algorithm-config', {
         method: 'PATCH',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`,
-        },
         body: JSON.stringify({ key, config: deepClone(drafts[key]) }),
       })
+      const idx = rows.value.findIndex(r => r.key === key)
+      if (idx >= 0 && data.row) {
+        // The PATCH response is the algorithm_config row, which carries no
+        // config_hash — keep the one the server just named so the history view
+        // and the "you are running X" line agree without a reload.
+        rows.value[idx] = { ...data.row, config_hash: data.config_hash ?? rows.value[idx].config_hash ?? null }
+      }
+      if (versions[key]) await loadVersions(key)
+      return data
+    } catch (e) {
+      rowErrors[key] = e.message || String(e)
+    } finally {
+      savingKey.value = null
+    }
+  }
+
+  // ==========================================================================
+  // Versioning — additive. A draft is recorded and pointed at WITHOUT touching
+  // the live row, so nothing reaches a learner; rollback repoints published.
+  // ==========================================================================
+
+  // key → array of { config_hash, config, created_at, created_by, note,
+  //                  is_published, is_draft }, newest first.
+  const versions = reactive({})
+  const versionsLoading = reactive({})
+
+  /**
+   * Save the current form draft as a DRAFT version: it gets a hash and a draft
+   * pointer, and the live config is untouched. Returns { key, config_hash,
+   * config }; the form stays dirty on purpose, because the live value has not
+   * changed and pretending otherwise would be the lie this whole change removes.
+   */
+  async function saveDraft(key) {
+    savingKey.value = key
+    rowErrors[key] = null
+    try {
+      const data = await authedFetch('/api/algorithm-config', {
+        method: 'PATCH',
+        body: JSON.stringify({ key, config: deepClone(drafts[key]), channel: 'draft' }),
+      })
+      if (versions[key]) await loadVersions(key)
+      return data.draft
+    } catch (e) {
+      rowErrors[key] = e.message || String(e)
+    } finally {
+      savingKey.value = null
+    }
+  }
+
+  /** Load a key's history (newest first). Unauthenticated — reads are public. */
+  async function loadVersions(key) {
+    versionsLoading[key] = true
+    try {
+      const res = await fetch(`/api/algorithm-config-versions?key=${encodeURIComponent(key)}`)
       const data = await res.json().catch(() => ({}))
       if (!res.ok) throw new Error(data.error || `${res.status} ${res.statusText}`)
+      versions[key] = data.versions || []
+      return versions[key]
+    } catch (e) {
+      rowErrors[key] = e.message || String(e)
+      versions[key] = versions[key] || []
+    } finally {
+      versionsLoading[key] = false
+    }
+  }
+
+  /**
+   * Roll `key` back to an earlier version: the server repoints published and
+   * rewrites the live config, minting no new version. The form is reset to the
+   * restored value, because after a rollback the editor should show what is
+   * actually live.
+   */
+  async function rollback(key, hash) {
+    savingKey.value = key
+    rowErrors[key] = null
+    try {
+      const data = await authedFetch('/api/algorithm-config-versions', {
+        method: 'POST',
+        body: JSON.stringify({ key, config_hash: hash }),
+      })
       const idx = rows.value.findIndex(r => r.key === key)
-      if (idx >= 0 && data.row) rows.value[idx] = data.row
+      if (idx >= 0 && data.row) rows.value[idx] = { ...data.row, config_hash: data.config_hash }
+      if (data.row) {
+        drafts[key] = deepClone(data.row.config)
+        opts.onReset?.(key, drafts)
+      }
+      await loadVersions(key)
+      return data
     } catch (e) {
       rowErrors[key] = e.message || String(e)
     } finally {
@@ -96,6 +223,8 @@ export function useAlgorithmConfig(opts = {}) {
   return {
     rows, loading, loadError, savingKey, rowErrors,
     drafts, rowMap, isDirty, reset, save, loadAll, deepClone,
+    // Versioning (additive — every field above is unchanged).
+    versions, versionsLoading, saveDraft, loadVersions, rollback,
   }
 }
 
@@ -136,10 +265,15 @@ export const NumField = defineComponent({
 // ============================================================================
 export const NumListField = defineComponent({
   name: 'NumListField',
-  props: { modelValue: { type: Array, required: true } },
+  // A config row that has never carried this key reads as undefined, and a
+  // missing list is a normal state — it means "inherit", not "broken". Reading
+  // it unguarded took the whole Speaking page to a blank screen below the
+  // header on 2026-08-08, so the empty list lives here rather than at each
+  // call site, where the next one added will forget it again.
+  props: { modelValue: { type: Array, default: () => [] } },
   emits: ['update:modelValue'],
   setup(props, { emit }) {
-    const text = ref(props.modelValue.join(', '))
+    const text = ref((props.modelValue || []).join(', '))
     return () => h('input', {
       type: 'text',
       class: 'num-list-input',

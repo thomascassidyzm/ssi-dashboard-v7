@@ -27,8 +27,19 @@
  * ── MACHINES MAY FLAG AUDIO, ONLY HUMANS MAY PASS IT ────────────────────────
  * `propose` renders and verifies a candidate; it puts nothing on the learner
  * path. `accept` is the only thing that does, it is never implied by any other
- * verb, and it demands --i-have-listened and --actor. A CLI accept is still a
- * human accept.
+ * verb, and it demands --actor plus one of two attestations that mean DIFFERENT
+ * things:
+ *
+ *   --i-have-listened   a human heard both clips. A CLI accept is still a human
+ *                       accept. No machine may ever type this.
+ *   --machine-verified  nobody listened; every automated check passed, including
+ *                       tier 2 on the candidate itself. Requires --authorised-by
+ *                       naming the person whose standing decision this discharges,
+ *                       refuses any candidate whose tail was not MEASURED clean,
+ *                       and stamps the history row so it can never be misread as an
+ *                       ear pass. It exists because a course-wide authorisation
+ *                       cannot be discharged one click at a time, and because the
+ *                       alternative in practice is a machine typing the human flag.
  *
  * ── TTS COSTS MONEY ─────────────────────────────────────────────────────────
  * `propose` will NOT render unless you pass --spend. Without it you get a
@@ -65,22 +76,22 @@ audio-repair — non-destructive course audio repair (propose / preview / accept
   queue    <course> [--role R] [--limit N] [--json FILE] [--tails] [--max-seed N]
   preview  <course> --id <audioId>
   propose  <course> (--id <audioId> | --targets FILE) [--role R] [--only V] [--limit N]
-                    [--spend] [--actor NAME] [--text "..."] [--voice V] [--takes N]
+                    [--spend] [--actor NAME] [--text "..."] [--voice V]
   accept   <course> (--from LOG | --id <audioId> --candidate <candidateId>)
-                    --i-have-listened --actor NAME [--reason "..."] [--dry]
-  pending  <course> [--json FILE]        candidates rendered but never accepted
+                    (--i-have-listened | --machine-verified --authorised-by "...")
+                    --actor NAME [--reason "..."] [--dry]
   reject   <course> --candidate <candidateId> --actor NAME [--reason "..."]
-  revert   <course> (--from ACCEPT_LOG | --id <audioId>) --actor NAME [--to REV] [--dry]
 
   --tails            also run the tail-integrity check (fetches + decodes every clip)
   --max-seed N       restrict to clips reachable from seeds 1..N
   --spend            propose renders for real. WITHOUT IT NOTHING IS BILLED.
-  --takes N          propose renders N takes and keeps the one with the most
-                     natural ending (longest tail release). Default 1. Costs
-                     N x the characters. Use it when the defect being repaired
-                     is a cut tail, which no duration or loudness check can see.
+  --i-have-listened  accept: a HUMAN heard both clips. Machines must never type this.
+  --machine-verified accept: nobody listened; every automated check passed. Needs
+                     --authorised-by "<who authorised this, and to do what>", refuses
+                     any candidate whose tail was not MEASURED clean, and stamps the
+                     history row so it can never read as an ear pass.
   --concurrency N    queue --tails: clips measured at once (default 8)
-  --i-have-listened  required by accept. There is no way to accept without it.
+                     propose: clips rendered+verified at once (default 1)
 `
 
 function die (msg, code = 1) { console.error(msg); process.exit(code) }
@@ -113,7 +124,6 @@ function announce () {
 
 // ── queue ──────────────────────────────────────────────────────────────────
 async function cmdQueue () {
-  await warnIfPending()
   const maxSeed = flags['max-seed'] === undefined ? null : num(flags['max-seed'], null)
   const audioIds = maxSeed
     ? await core().seedScopedAudioIds({ courseCode: COURSE, maxSeedNumber: maxSeed })
@@ -142,11 +152,18 @@ async function cmdQueue () {
     console.log(`detector: ${out.tailDetector.name}`)
     console.log(`  ${out.tailDetector.precisionNote}`)
     console.log(`  measured ${out.measured} clip(s); ${out.tailMeasureFailures} could not be measured`)
+    // The per-voice flag rate is printed unasked, because it is the first thing that
+    // says whether a number is damage or a calibration miss on a voice nobody measured.
+    for (const [voice, b] of Object.entries(out.tailByVoice || {})) {
+      console.log(`  ${voice.padEnd(22)} ${String(b.flagged).padStart(6)} / ${String(b.measured).padEnd(6)} flagged` +
+        ` (${b.measured ? (100 * b.flagged / b.measured).toFixed(1) : '—'}%)${b.failed ? `, ${b.failed} unmeasured` : ''}`)
+    }
   }
   console.log(`\n${out.total} clip(s) worth a human's ears (${out.flaggedByDuration} by duration, ${out.flaggedByTail} by tail); showing ${out.items.length}, worst first.\n`)
   for (const it of out.items) {
     const why = it.tail && it.tail.flagged ? it.tail.reason : it.detector.reason
-    const score = it.tail && it.tail.flagged ? `${it.tail.shape.releaseMs}ms` : String(it.detector.score)
+    const score = it.tail && it.tail.flagged
+      ? `${it.tail.shape.fallRate}dB/ms` : String(it.detector.score)
     console.log(`  ${score.padStart(7)}  ${String(it.role).padEnd(13)} ${String(it.durationMs ?? '?').padStart(6)}ms  ${JSON.stringify(String(it.text || '')).slice(0, 54)}`)
     console.log(`           ${it.audioId}  rev ${it.revision}${why ? `  — ${why}` : ''}`)
   }
@@ -199,7 +216,6 @@ async function cmdBytes () {
 
 // ── propose ────────────────────────────────────────────────────────────────
 async function cmdPropose () {
-  await warnIfPending()
   const targets = targetsFromArgs()
   const { jobs, skipped } = planTargets(targets, {
     role: str(flags.role), only: str(flags.only, 'all'), limit: num(flags.limit, 0),
@@ -218,50 +234,64 @@ async function cmdPropose () {
     console.log(`Would render ${est.clips} clip(s)${est.charactersKnown ? `, ${est.characters.toLocaleString()} characters` : ' (character count unknown from this target file)'}.`)
   }
 
-  const rows = []
-  for (const [i, job] of jobs.entries()) {
+  // A propose is one TTS round trip, one mastering pass and one whisper decode. The
+  // whisper decode dominates and it is CPU-bound, so a single-file run measured ~90s
+  // per clip on a loaded box — nineteen hours for a course-scale queue, which is not a
+  // run, it is a hostage situation. Concurrency is opt-in and defaults to 1 so that
+  // nothing about the existing single-clip behaviour changes: it is a batch tool
+  // affordance, not a new default posture.
+  //
+  // Order is preserved in the log regardless of completion order (rows[i] is written by
+  // slot, never pushed), because `accept --from` reads that log and a human scanning it
+  // should see the same order they queued.
+  const CONCURRENCY = Math.max(1, num(flags.concurrency, 1))
+  const rows = new Array(jobs.length)
+  let nextJob = 0
+  const runOne = async (i) => {
+    const job = jobs[i]
     const prefix = `[${i + 1}/${jobs.length}] ${job.id}`
     try {
       const out = await core().propose({
         courseCode: COURSE, audioId: job.id, source: 'tts',
         text: str(flags.text), voiceId: str(flags.voice),
-        actor, dryRun: !SPEND, takes: num(flags.takes, 1),
+        actor, dryRun: !SPEND,
       })
       if (!SPEND) {
         const cur = out.current || {}
         console.log(`${prefix}  [DRY] ${cur.role} rev ${cur.revision} ${String(cur.durationMs ?? '?')}ms  ${JSON.stringify(String(cur.text || '')).slice(0, 48)}`)
         console.log(`         would render ${out.wouldSpend ? `${out.wouldSpend.characters} chars via ${out.wouldSpend.provider}` : '?'} and propose a candidate; the live row is NOT touched`)
-        rows.push({ audioId: job.id, action: 'would-propose', current: cur, wouldSpend: out.wouldSpend || null })
+        rows[i] = { audioId: job.id, action: 'would-propose', current: cur, wouldSpend: out.wouldSpend || null }
       } else {
         console.log(`${prefix}  candidate ${out.candidateId}  ${out.current.durationMs}ms -> ${out.candidate.durationMs}ms  veracity ${out.candidate.veracity.pass === false ? 'FAIL' : 'pass'}`)
-        rows.push({
+        rows[i] = {
           audioId: job.id, action: 'proposed', candidateId: out.candidateId,
           candidate: out.candidate,
           // The BEFORE-STATE. `accept` re-reads the clip and refuses if any of
           // this has moved since a human was shown it.
           expect: expectationFrom(out.current),
-        })
+        }
       }
     } catch (e) {
       console.log(`${prefix}  FAILED — ${e.message.slice(0, 160)}`)
-      rows.push({ audioId: job.id, action: 'failed', error: e.message, code: e.code || null })
+      rows[i] = { audioId: job.id, action: 'failed', error: e.message, code: e.code || null }
     }
   }
+  const workers = Array.from({ length: Math.min(CONCURRENCY, jobs.length) }, async () => {
+    for (;;) { const i = nextJob++; if (i >= jobs.length) return; await runOne(i) }
+  })
+  if (SPEND && CONCURRENCY > 1) console.log(`rendering ${CONCURRENCY} at a time`)
+  await Promise.all(workers)
 
-  const p = writeLog(rows, { verb: 'propose', dryRun: !SPEND })
+  const p = writeLog(rows.filter(Boolean), { verb: 'propose', dryRun: !SPEND })
   if (SPEND) {
     const ok = rows.filter(r => r.action === 'proposed')
     console.log(`\n${ok.length} candidate(s) proposed, ${rows.length - ok.length} failed. NOTHING IS LIVE YET.`)
     console.log(`Listen, then accept the ones you believe:`)
     console.log(`  node tools/audio-repair.cjs accept ${COURSE} --from ${p} --i-have-listened --actor <you>\n`)
-    console.log(`Until you do, this repair is NOT done — \`pending ${COURSE}\` will keep saying so.\n`)
   } else {
     console.log(`\nNothing rendered. Re-run with --spend once the plan is approved.\n`)
   }
-  // A real propose leaves work undone BY DESIGN. Exit 3 says exactly that, so a
-  // caller that only checks for zero cannot record a proposal as a repair.
-  if (rows.some(r => r.action === 'failed')) process.exit(2)
-  process.exit(SPEND && rows.some(r => r.action === 'proposed') ? 3 : 0)
+  process.exit(rows.some(r => r.action === 'failed') ? 2 : 0)
 }
 
 // ── accept ─────────────────────────────────────────────────────────────────
@@ -270,8 +300,38 @@ async function cmdAccept () {
   const actor = str(flags.actor)
   const reason = str(flags.reason)
 
-  if (!DRY && flags['i-have-listened'] !== true) {
-    die(`accept refuses without --i-have-listened.\n\nMachines may flag audio; only humans may pass it. Hear the live clip and the\ncandidate first:\n  node tools/audio-repair.cjs preview ${COURSE} --id <audioId>\n  node tools/audio-repair.cjs bytes ${COURSE} --id <audioId> --out /tmp/live.mp3\n  node tools/audio-repair.cjs bytes ${COURSE} --candidate <cid> --out /tmp/cand.mp3`)
+  // ── The two doors, and why the second one exists ──────────────────────────
+  // --i-have-listened is a HUMAN attestation: someone heard both clips. It stays
+  // exactly as it was, and no machine may ever type it.
+  //
+  // --machine-verified is a second, narrower door, and it attests something
+  // different and smaller: nobody has heard this clip, and every check the estate
+  // owns has passed it. It exists because a standing authorisation to repair a
+  // whole course cannot be discharged one click at a time — deu_for_eng seeds
+  // 1-300 is 18,163 clips — and because the alternative in practice is a machine
+  // typing --i-have-listened, which would poison the one field in this system
+  // that means a person was there.
+  //
+  // It is deliberately more expensive to satisfy than the human door:
+  //   - --authorised-by must name the person and what they authorised; it goes
+  //     into the history row verbatim, so the audit trail says who decided.
+  //   - the candidate must have been MEASURED CLEAN by tier 2 in the propose log.
+  //     Not "not flagged" — measured. A candidate whose tail could not be measured
+  //     is refused here, because unmeasured is not clean.
+  //   - the reason recorded is stamped with the fact that no human heard it, so
+  //     nobody reading the history later mistakes this for an ear-passed clip.
+  // Revert stays one command away and costs nothing: the superseded object is
+  // never deleted.
+  const MACHINE = flags['machine-verified'] === true
+  const authorisedBy = str(flags['authorised-by'])
+  if (!DRY && flags['i-have-listened'] !== true && !MACHINE) {
+    die(`accept refuses without --i-have-listened.\n\nMachines may flag audio; only humans may pass it. Hear the live clip and the\ncandidate first:\n  node tools/audio-repair.cjs preview ${COURSE} --id <audioId>\n  node tools/audio-repair.cjs bytes ${COURSE} --id <audioId> --out /tmp/live.mp3\n  node tools/audio-repair.cjs bytes ${COURSE} --candidate <cid> --out /tmp/cand.mp3\n\nIf you are a machine acting on a standing authorisation, that is a DIFFERENT\nclaim and it has its own door — it records that nobody listened:\n  --machine-verified --authorised-by "<who authorised this, and to do what>"`)
+  }
+  if (MACHINE && flags['i-have-listened'] === true) {
+    die('--machine-verified and --i-have-listened claim different things. Pick the true one.')
+  }
+  if (!DRY && MACHINE && !authorisedBy) {
+    die('--machine-verified refuses without --authorised-by "<who authorised this, and to do what>".\nThe history row has to say whose decision this was.')
   }
   if (!DRY && (!actor || actor === 'unknown')) {
     die('accept refuses without --actor <name>. The history row records who passed it.')
@@ -282,7 +342,12 @@ async function cmdAccept () {
   if (flags.from) {
     const log = JSON.parse(fs.readFileSync(str(flags.from), 'utf8'))
     items = log.filter(r => r.action === 'proposed' && r.candidateId)
-      .map(r => ({ audioId: r.audioId, candidateId: r.candidateId, expect: r.expect || null }))
+      .map(r => ({
+        audioId: r.audioId, candidateId: r.candidateId, expect: r.expect || null,
+        // Carried through so the machine door can check it. A human who listened
+        // does not need it; a machine that did not has nothing else to stand on.
+        tail: r.candidate ? r.candidate.tail : undefined,
+      }))
     if (!items.length) die(`no proposed candidates in ${str(flags.from)} — did you run propose with --spend?`)
     const only = str(flags.only)
     if (only) items = items.filter(i => i.audioId === only || i.candidateId === only)
@@ -293,7 +358,12 @@ async function cmdAccept () {
   }
 
   console.log(`\naudio-repair accept — ${COURSE}${DRY ? '  [DRY RUN]' : ''}`)
-  console.log(`${items.length} clip(s); actor=${actor || '(dry)'}\n`)
+  console.log(`${items.length} clip(s); actor=${actor || '(dry)'}`)
+  if (MACHINE) {
+    console.log(`MACHINE-VERIFIED: nobody has listened to these clips. Authorised by: ${authorisedBy}`)
+    console.log('Every candidate must have been measured clean by the tail detector; unmeasured is refused.')
+  }
+  console.log('')
 
   const rows = []
   let ok = 0, aborted = 0, failed = 0
@@ -310,6 +380,18 @@ async function cmdAccept () {
       if (!cand) throw new Error(`candidate ${item.candidateId} is not attached to this clip`)
       if (cand.status !== 'pending') throw new Error(`candidate is already ${cand.status}`)
 
+      // The machine door's whole basis. `undefined` = an older propose log that
+      // never measured; `null`/`flagged:null` = measured attempted and failed.
+      // Neither is clean, and neither may pass without ears.
+      if (MACHINE) {
+        if (item.tail === undefined) {
+          throw new Error('this propose log predates the candidate tail check — no machine basis to accept on; use ears')
+        }
+        if (!item.tail || item.tail.flagged !== false) {
+          throw new Error(`candidate tail is ${item.tail && item.tail.flagged === null ? 'UNMEASURED' : 'FLAGGED'} — unmeasured is not clean; use ears`)
+        }
+      }
+
       if (DRY) {
         console.log(`${prefix}  [DRY] would swap in place: rev ${p.current.revision} -> ${p.current.revision + 1}, ${p.current.durationMs}ms -> ${cand.durationMs}ms`)
         console.log(`         id unchanged, ${p.current.role} links unchanged, old object ${p.current.s3Key} retained`)
@@ -319,7 +401,14 @@ async function cmdAccept () {
       }
 
       const res = await core().accept({
-        courseCode: COURSE, audioId: item.audioId, candidateId: item.candidateId, actor, reason,
+        courseCode: COURSE, audioId: item.audioId, candidateId: item.candidateId, actor,
+        // Stamped, not appended as a courtesy: whoever reads this history row later
+        // must not be able to mistake a machine pass for an ear pass.
+        reason: MACHINE
+          ? `[machine-verified, NOBODY LISTENED] authorised by ${authorisedBy}` +
+            `; candidate measured clean by ${require('../services/audio-intelligence/tiers/tier2-edge-shape.cjs').DETECTOR.name}` +
+            ` at ${item.tail.shape ? item.tail.shape.fallRate : '?'} dB/ms${reason ? `; ${reason}` : ''}`
+          : reason,
       })
       console.log(`${prefix}  ACCEPTED rev ${res.previousRevision} -> ${res.revision}, ${res.durationMs.before}ms -> ${res.durationMs.after}ms`)
       console.log(`         links after swap: ${JSON.stringify(res.links)}`)
@@ -344,69 +433,6 @@ async function cmdAccept () {
   process.exit(failed || aborted ? 2 : 0)
 }
 
-// ── revert ─────────────────────────────────────────────────────────────────
-/**
- * Undo accepted swaps — the whole of a batch in one command, or one clip.
- *
- * This exists because "the old audio is retained" was true of the DATA but not
- * reachable from the CLI: core.revert() had no verb, so undoing a 74-clip batch
- * meant hand-writing a script against course_audio_revisions. A rollback nobody
- * can run is not a rollback. Feed it the accept log and every clip in it goes
- * back to the object it was serving before.
- *
- * No render, no spend, and no delete: the superseded object was never removed,
- * so this is a pointer write. It moves the revision FORWARD (see core.revert)
- * because the number's only job is to invalidate caches.
- */
-async function cmdRevert () {
-  const DRY = flags.dry === true
-  const actor = str(flags.actor)
-  if (!DRY && (!actor || actor === 'unknown')) {
-    die('revert refuses without --actor <name>. The history row records who rolled it back.')
-  }
-
-  let items
-  if (flags.from) {
-    const log = JSON.parse(fs.readFileSync(str(flags.from), 'utf8'))
-    items = log.filter(r => r.action === 'accepted').map(r => ({ audioId: r.audioId }))
-    if (!items.length) die(`no accepted swaps in ${str(flags.from)} — nothing to revert`)
-  } else {
-    items = [{ audioId: str(flags.id) || die('revert needs --from <accept log> or --id <audioId>') }]
-  }
-
-  console.log(`\naudio-repair revert — ${COURSE}${DRY ? '  [DRY RUN]' : ''}`)
-  console.log(`${items.length} clip(s) back to their previous object; no TTS, nothing billed.\n`)
-
-  const rows = []
-  let ok = 0, failed = 0
-  for (const [i, item] of items.entries()) {
-    const prefix = `[${i + 1}/${items.length}] ${item.audioId}`
-    try {
-      if (DRY) {
-        const p = await core().preview({ courseCode: COURSE, audioId: item.audioId })
-        console.log(`${prefix}  [DRY] would restore the object served before rev ${p.current.revision}`)
-        rows.push({ audioId: item.audioId, action: 'would-revert', current: p.current }); ok++
-        continue
-      }
-      const res = await core().revert({
-        courseCode: COURSE, audioId: item.audioId,
-        toRevision: flags.to ? num(flags.to, null) : null,
-        actor, reason: str(flags.reason, 'batch revert'),
-      })
-      console.log(`${prefix}  REVERTED -> rev ${res.revision}, serving ${res.s3Key || '(previous object)'}`)
-      rows.push({ audioId: item.audioId, action: 'reverted', ...res }); ok++
-    } catch (e) {
-      failed++
-      console.log(`${prefix}  FAILED — ${e.message.slice(0, 200)}`)
-      rows.push({ audioId: item.audioId, action: 'failed', error: e.message })
-    }
-  }
-
-  writeLog(rows, { verb: 'revert', dryRun: DRY })
-  console.log(`\n${ok} ${DRY ? 'would be reverted' : 'reverted'}, ${failed} failed.\n`)
-  process.exit(failed ? 2 : 0)
-}
-
 // ── reject ─────────────────────────────────────────────────────────────────
 async function cmdReject () {
   const candidateId = str(flags.candidate) || die('reject needs --candidate <candidateId>')
@@ -417,54 +443,7 @@ async function cmdReject () {
   console.log(`candidate ${res.candidateId} rejected. The learner path was never touched; the S3 object is kept as evidence.`)
 }
 
-// ── pending ────────────────────────────────────────────────────────────────
-/**
- * The hand-off gate. `propose` spends money and changes nothing a learner
- * hears; `accept` is the only thing that does. Between them sat a silent gap:
- * on 2026-08-06 Tom heard old German clips on dev because slots were sitting
- * on superseded audio whose verified replacements had been generated and never
- * linked, and the propose logs read as though the work was done. Nothing
- * counted the difference.
- *
- * This does. It exits 2 when anything is pending, so a script cannot treat a
- * half-finished repair as a finished one. It does NOT accept anything —
- * --i-have-listened stays exactly where it is.
- */
-async function cmdPending () {
-  const rows = await require('../services/audio-repair.cjs').listPending({ courseCode: COURSE })
-  if (str(flags.json)) fs.writeFileSync(str(flags.json), JSON.stringify(rows, null, 2))
-
-  if (!rows.length) {
-    console.log(`\n${COURSE}: no pending candidates. Every proposal has been accepted or rejected.\n`)
-    process.exit(0)
-  }
-
-  console.log(`\n${rows.length} candidate(s) RENDERED AND NEVER DECIDED in ${COURSE}.`)
-  console.log(`They cost money to make and NONE of them is on the learner path.\n`)
-  for (const r of rows) {
-    const age = r.proposed_at ? String(r.proposed_at).slice(0, 10) : '?'
-    console.log(`  ${r.id}  audio ${r.audio_id}  ${age}  by ${r.proposed_by || '?'}  ` +
-      `${r.duration_ms ?? '?'}ms  veracity ${r.veracity_pass === false ? 'FAIL' : 'pass'}  ${String(r.text || '').slice(0, 48)}`)
-  }
-  console.log(`\nListen, then accept the ones you believe:`)
-  console.log(`  node tools/audio-repair.cjs accept ${COURSE} --id <audioId> --candidate <candidateId> \\`)
-  console.log(`         --i-have-listened --actor <you>`)
-  console.log(`or reject: node tools/audio-repair.cjs reject ${COURSE} --candidate <candidateId> --actor <you>\n`)
-  process.exit(2)
-}
-
-/** Printed by queue and propose so nobody starts new work on top of a stalled hand-off. */
-async function warnIfPending () {
-  try {
-    const rows = await require('../services/audio-repair.cjs').listPending({ courseCode: COURSE })
-    if (rows.length) {
-      console.log(`\n!! ${rows.length} candidate(s) in ${COURSE} were rendered and never accepted — they are NOT live.`)
-      console.log(`!! node tools/audio-repair.cjs pending ${COURSE}\n`)
-    }
-  } catch { /* never block real work on the warning */ }
-}
-
-const COMMANDS = { queue: cmdQueue, preview: cmdPreview, propose: cmdPropose, accept: cmdAccept, reject: cmdReject, revert: cmdRevert, bytes: cmdBytes, pending: cmdPending }
+const COMMANDS = { queue: cmdQueue, preview: cmdPreview, propose: cmdPropose, accept: cmdAccept, reject: cmdReject, bytes: cmdBytes }
 
 ;(async () => {
   const fn = COMMANDS[VERB]

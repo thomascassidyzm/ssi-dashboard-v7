@@ -22,11 +22,18 @@
  *   (course_enrollments.completed_pod_rounds) — a course-level projection
  *   cannot model them. PodsView owns pods.
  * - Optional learner audio view (options.learnerView): applies the learner's
- *   audio gates — LEGOs/phrases missing any of known/target1/target2 audio are
- *   dropped BEFORE the walk, so round numbers compress exactly as the
- *   learner's do (generateLearningScript.ts:816-823 / :726-768). Default
- *   (production view) keeps every row, flagged hasAudio:false — that is the
- *   review tool's job.
+ *   audio gates PER ITEM — a missing clip costs that item, never its round.
+ *   An unvoiced intro or debut is skipped on its own; the round keeps its
+ *   number and everything else it has (builds, reviews, consolidates), and
+ *   only a round left with nothing playable disappears. Unvoiced phrases never
+ *   enter the BUILD/USE pools. Default (production view) keeps every row,
+ *   flagged hasAudio:false — that is the review tool's job.
+ *   Learner parity: ssi-learning-app 269d2d19 (2026-08-06), "a missing clip
+ *   costs that item, never the round or the course".
+ * - ALWAYS-ON player-delivery annotation (annotatePlayerDelivery, below): every
+ *   row and every round carries playerCanDeliver / playerDropReason /
+ *   missingAudioRoles, and each round carries the round number the learner
+ *   would actually see. Intent is never hidden; reality is annotated on top.
  *
  * ROUND structure (verified line-by-line against the learner):
  * 1. INTRO  - presentation audio ("The Japanese for X is...")
@@ -42,9 +49,16 @@
 const createLogger = require('./shared/logger.cjs')
 const logger = createLogger('LearningScriptGenerator')
 const {
-  MODE_KEYS, MODE_FALLBACKS, DEFAULT_MODE, DEFAULT_MAX_PHRASE_LENGTH_FRACTION,
+  MODE_KEYS, MODE_FALLBACKS, DEFAULT_MODE,
+  DEFAULT_MAX_PHRASE_LENGTH_FRACTION, DEFAULT_REVIEW_MAX_KNOWN_SYLLABLES,
+  DEFAULT_REVIEW_FILTER_MAX_ROUND, DEFAULT_FILTER_BUILD_PHRASES,
+  DEFAULT_PHRASE_REPEAT_COUNT, DEFAULT_REPEATED_CYCLE_TYPES, CYCLE_TYPE_ALIASES,
   MIN_BUILD_PHRASES_AFTER_CAP, MIN_USE_PHRASES_AFTER_CAP,
-  resolveScriptShape, resolveMaxPhraseLengthFraction, phraseLengthOf, courseMaxPhraseLength, applyPhraseLengthCap,
+  resolveScriptShape, resolveMaxPhraseLengthFraction,
+  resolveReviewMaxKnownSyllables, resolveReviewFilterMaxRound, resolveFilterBuildPhrases,
+  resolvePhraseRepeatCount, resolveRepeatedCycleTypes, repeatPhraseCycles,
+  phraseLengthOf, courseMaxPhraseLength, applyPhraseLengthCap,
+  makeKnownSyllableResolver, filterReviewPool,
 } = require('./learning-modes.cjs')
 
 // FALLBACK spaced-rep offsets — used ONLY when algorithm_config.script_shape
@@ -116,6 +130,11 @@ async function loadAlgorithmConfig(supabase, mode = DEFAULT_MODE) {
   let listening = { ...DEFAULT_LISTENING }
   let scriptShapeSource = 'fallback'
   let maxPhraseLengthFraction = DEFAULT_MAX_PHRASE_LENGTH_FRACTION
+  let reviewMaxKnownSyllables = DEFAULT_REVIEW_MAX_KNOWN_SYLLABLES
+  let reviewFilterMaxRound = DEFAULT_REVIEW_FILTER_MAX_ROUND
+  let filterBuildPhrases = DEFAULT_FILTER_BUILD_PHRASES
+  let phraseRepeatCount = DEFAULT_PHRASE_REPEAT_COUNT
+  let repeatedCycleTypes = new Set(DEFAULT_REPEATED_CYCLE_TYPES.map(t => CYCLE_TYPE_ALIASES[t] || t))
 
   // Mode rows are fetched alongside the global shape so the per-mode override
   // layers in one round-trip. The fallback chain lets fast_mode degrade to
@@ -131,7 +150,7 @@ async function loadAlgorithmConfig(supabase, mode = DEFAULT_MODE) {
 
     if (error) {
       logger.warn(`algorithm_config fetch failed (${error.message}) — using built-in fallback shape [${FIBONACCI.join(',')}]. Script View may diverge from the learner.`)
-      return { scriptShape, listening, scriptShapeSource, maxPhraseLengthFraction, mode }
+      return { scriptShape, listening, scriptShapeSource, maxPhraseLengthFraction, reviewMaxKnownSyllables, reviewFilterMaxRound, filterBuildPhrases, phraseRepeatCount, repeatedCycleTypes, mode }
     }
 
     const byKey = new Map((data || []).map(r => [r.key, r.config || {}]))
@@ -154,6 +173,11 @@ async function loadAlgorithmConfig(supabase, mode = DEFAULT_MODE) {
       const modeConfig = byKey.get(resolvedKey)
       scriptShape = resolveScriptShape(scriptShape, modeConfig)
       maxPhraseLengthFraction = resolveMaxPhraseLengthFraction(modeConfig)
+      reviewMaxKnownSyllables = resolveReviewMaxKnownSyllables(modeConfig)
+      reviewFilterMaxRound = resolveReviewFilterMaxRound(modeConfig)
+      filterBuildPhrases = resolveFilterBuildPhrases(modeConfig)
+      phraseRepeatCount = resolvePhraseRepeatCount(modeConfig)
+      repeatedCycleTypes = resolveRepeatedCycleTypes(modeConfig)
       if (resolvedKey !== modeKey) {
         logger.warn(`algorithm_config.${modeKey} row MISSING — fell back to ${resolvedKey}. Expected during the learning-app promotion window; fix the row once it ships.`)
       }
@@ -164,13 +188,21 @@ async function loadAlgorithmConfig(supabase, mode = DEFAULT_MODE) {
     logger.warn(`algorithm_config fetch threw (${err.message}) — using built-in fallback shape.`)
   }
 
-  return { scriptShape, listening, scriptShapeSource, maxPhraseLengthFraction, mode }
+  return { scriptShape, listening, scriptShapeSource, maxPhraseLengthFraction, reviewMaxKnownSyllables, reviewFilterMaxRound, filterBuildPhrases, phraseRepeatCount, repeatedCycleTypes, mode }
 }
 
 /**
- * Count syllables in target text.
- * CJK characters count as 1 syllable each.
- * Latin text uses vowel cluster heuristic.
+ * Count syllables in TARGET text — the shortest-first SORT key, and nothing
+ * else since 2026-08-07.
+ *
+ * CJK characters count as 1 syllable each; Latin text uses a vowel-cluster
+ * heuristic; every other script measures 1 per phrase. That is fine for a sort
+ * (a coarse key still orders a pool sensibly and has ordered it this way
+ * forever) and was NOT fine as a ceiling, which is why the target-side
+ * `maxPhraseSyllables` ceiling this used to feed is gone. Any FILTER on
+ * syllables now counts the KNOWN side with the per-language registry —
+ * see filterReviewPool / makeKnownSyllableResolver in learning-modes.cjs.
+ * Do not re-attach this counter to a filter.
  */
 function countTargetSyllables(targetText) {
   if (!targetText) return 0
@@ -223,6 +255,247 @@ function calculateSpacedRepReviews(roundNumber, offsets = FIBONACCI) {
 }
 
 /**
+ * The literal gloss alignment a row can SHOW — PURE.
+ *
+ * Tom's ruling, 2026-08-12: "word order of target must be preserved and known
+ * language will look wrong when the orders differ (cosa azul = blue thing maps
+ * literally to thing blue)." So the target's own words are fixed columns, left
+ * to right, and the known-language gloss is cut into chunks that sit UNDER
+ * them. Basque `hitz bat` reads `word` `a`. Nothing is ever reordered to make
+ * the known side read naturally — reading wrong is the point.
+ *
+ * A chunk may span several target words (many-to-one) and may be empty beside a
+ * wide neighbour (one-to-many). Both fall out of where the breaks are; neither
+ * is a special case, and the two sides' word counts need not match.
+ *
+ * Storage is `known_gloss_segments`, and it is deliberately NOT `decomposition`:
+ * decomposition is chunked by LEGO, not by word (`hitz bat esan nahi dut` is 3
+ * blocks over 5 words), and the learner's player renders those blocks as tiles
+ * that require the salient LEGO to stay whole. See the migration for the full
+ * reasoning. When no human has segmented a row yet, we DERIVE a faithful start
+ * from decomposition/components — each block's gloss spanning exactly that
+ * block's own target words — rather than guessing a per-word split, because
+ * guessing a split is precisely the drift bug this tool exists to fix.
+ *
+ * "When appropriate" (Tom): a row with fewer than two target words has no
+ * alignment to look at, so it returns null and shows no glyph rather than a
+ * dead one.
+ *
+ * And ONLY an M-LEGO intro can be mapped at all (Tom, 2026-08-13): "A-LEGOs
+ * can't be mappable by definition — an A-LEGO has only one word in at least one
+ * language, and therefore cannot be split and mapped." So the refusal on `a
+ * word = hitz bat` was right all along. `type` is the authored declaration of
+ * exactly that splittability, so it is what gates the glyph — NOT the absence
+ * of components, which only looks equivalent: 72 A-LEGOs estate-wide carry
+ * components anyway and 16 of those have a multi-word target, so a
+ * components-only test hands a glyph to rows that must never have one
+ * (afr S0113L01 "why can't I", ita S0288L01 "to most people", …).
+ */
+
+/** Target words are the columns. Split on whitespace; nothing else is a word. */
+function targetWordsOf(targetText) {
+  return String(targetText || '').trim().split(/\s+/).filter(Boolean)
+}
+
+/** Do these chunks exactly cover `wordCount` columns? */
+function segmentsCoverWords(segments, wordCount) {
+  if (!Array.isArray(segments) || segments.length === 0) return false
+  let total = 0
+  for (const seg of segments) {
+    if (!seg || !Number.isInteger(seg.span) || seg.span < 1) return false
+    if (typeof seg.known !== 'string') return false
+    total += seg.span
+  }
+  return total === wordCount
+}
+
+/**
+ * Compare two target strings as the SAME words, ignoring case and the
+ * punctuation that rides along with a word. Nothing else is normalised — a
+ * component either is the row's own words or it is not.
+ */
+function sameTargetWords(a, b) {
+  const flat = s => String(s || '')
+    .toLowerCase()
+    .replace(/[^\p{L}\p{N}\s']/gu, '')
+    .trim()
+    .replace(/\s+/g, ' ')
+  return flat(a) === flat(b) && flat(a) !== ''
+}
+
+/**
+ * Where does this block's own target text sit in the target's word list?
+ * Returns the start column of the first UNCLAIMED contiguous run that reads as
+ * exactly this block's target, or -1 when it is not there at all.
+ */
+function locateBlock(words, blockTarget, claimedBy) {
+  const span = targetWordsOf(blockTarget).length
+  if (span < 1) return -1
+  for (let start = 0; start + span <= words.length; start++) {
+    let free = true
+    for (let i = start; i < start + span; i++) if (claimedBy[i] !== -1) { free = false; break }
+    if (!free) continue
+    if (sameTargetWords(words.slice(start, start + span).join(' '), blockTarget)) return start
+  }
+  return -1
+}
+
+/**
+ * Derive a starting segmentation from LEGO-chunked blocks — PURE.
+ *
+ * Tom's amendment, 2026-08-14: "the DEFAULT mapping is auto-generated from the
+ * existing LEGO components - no human effort to create the initial alignment";
+ * the drag tool exists only to fix what this gets wrong. So this is not
+ * scaffolding, it is the feature, and it is worth being careful here.
+ *
+ * The old rule claimed columns SEQUENTIALLY: block 1 took the first N columns,
+ * block 2 the next, and so on. That silently assumes the components are stored
+ * in the TARGET's word order, and estate-wide they very often are not — they
+ * are stored in the KNOWN language's order. `eng_for_pan S0178L01` is
+ * "didn't have time" with components [time, didn't have], so sequential
+ * claiming put the gloss for "time" underneath "didn't". Measured across 92
+ * courses, 8,542 of 35,166 derivable rows opened visibly wrong that way.
+ *
+ * So each block is now LOCATED by its own target text: it claims the columns
+ * that actually read as its words, wherever they are. Longest blocks go first,
+ * so a one-word block cannot steal a column out of the middle of a longer one.
+ * A block placed this way is correct by construction — the columns under its
+ * gloss ARE its target words.
+ *
+ * The refusal to guess is untouched (7892dce5). Locating uses only what the
+ * component already says; a block whose target does not occur in the row's own
+ * target text is not invented into place — it falls back to the leftover
+ * columns in its given order, exactly where the old rule would have put it, and
+ * a row with nothing to derive still opens blank for a human to author.
+ *
+ * `words` may be passed as the target-word ARRAY (locating possible) or as a
+ * plain count (sequential only — no words to match against).
+ */
+function segmentsFromBlocks(blocks, words) {
+  const wordList = Array.isArray(words) ? words : null
+  const wordCount = wordList ? wordList.length : words
+
+  const usable = (Array.isArray(blocks) ? blocks : [])
+    .map((b, order) => ({
+      order,
+      span: targetWordsOf(b && b.target).length,
+      target: b && b.target,
+      known: typeof (b && b.known) === 'string' ? b.known : '',
+    }))
+    .filter(b => b.span >= 1)
+
+  // Fill the columns left to right from a list of blocks, ignoring where their
+  // words actually are — the old rule, kept for the blocks that cannot be
+  // located and for callers that pass only a count.
+  const sequential = (list, limit) => {
+    const segments = []
+    let claimed = 0
+    for (const b of list) {
+      if (claimed + b.span > limit) break
+      segments.push({ span: b.span, known: b.known })
+      claimed += b.span
+    }
+    for (let i = claimed; i < limit; i++) segments.push({ span: 1, known: '' })
+    return segments
+  }
+
+  if (!wordList) return sequential(usable, wordCount)
+
+  const claimedBy = new Array(wordCount).fill(-1)
+  const placed = new Map()   // start column -> { span, known }
+  const unplaced = []
+
+  // Longest first: a block spanning three columns must take them before a
+  // one-word block can claim a column from inside it.
+  for (const b of [...usable].sort((x, y) => y.span - x.span || x.order - y.order)) {
+    const start = locateBlock(wordList, b.target, claimedBy)
+    if (start === -1) { unplaced.push(b); continue }
+    for (let i = start; i < start + b.span; i++) claimedBy[i] = b.order
+    placed.set(start, { span: b.span, known: b.known })
+  }
+
+  // Nothing located — the components describe something other than this row's
+  // own target text (a LEGO glossed from its components rather than tiled by
+  // them). The old sequential start is then the only honest one available.
+  if (placed.size === 0) return sequential(usable, wordCount)
+
+  // Walk the columns in target order. A located block emits its own segment;
+  // each maximal run of leftover columns emits one segment, and the blocks that
+  // could not be located fill those runs in their given order.
+  const segments = []
+  const leftovers = unplaced.sort((x, y) => x.order - y.order)
+  let li = 0
+  for (let col = 0; col < wordCount;) {
+    const hit = placed.get(col)
+    if (hit) { segments.push({ span: hit.span, known: hit.known }); col += hit.span; continue }
+    let run = 0
+    while (col + run < wordCount && !placed.has(col + run) && claimedBy[col + run] === -1) run++
+    if (li < leftovers.length) {
+      // An unlocatable block still has a gloss and it has to go somewhere; this
+      // run is where the old rule would have put it.
+      segments.push({ span: run, known: leftovers[li++].known })
+    } else {
+      // No gloss for these columns. One column each, never one wide empty
+      // chunk: a target word with no gloss must stay visible AND must be able
+      // to receive a tile of its own.
+      for (let i = 0; i < run; i++) segments.push({ span: 1, known: '' })
+    }
+    col += run
+  }
+  return segments
+}
+
+/**
+ * @returns {{source:'phrase'|'lego', words:string[], segments:Array<{span:number,known:string}>, segmented:boolean}|null}
+ */
+function glossAlignment(source, targetText, blocks, storedSegments) {
+  const words = targetWordsOf(targetText)
+  if (words.length < 2) return null
+
+  if (segmentsCoverWords(storedSegments, words.length)) {
+    return {
+      source,
+      words,
+      segments: storedSegments.map(s => ({ span: s.span, known: s.known })),
+      segmented: true,
+    }
+  }
+
+  const usable = Array.isArray(blocks) ? blocks : []
+  const segments = segmentsFromBlocks(usable, words)
+  // Nothing to look at if no column carries any gloss at all.
+  if (!segments.some(s => s.known.trim())) return null
+  return { source, words, segments, segmented: false }
+}
+
+/** An A-LEGO is one word in at least one language, so it cannot be split and
+ *  mapped — the declared type IS the splittability test (Tom, 2026-08-13). */
+function legoIsMappable(lego) {
+  return !!lego && lego.type === 'M'
+}
+
+/**
+ * Candidacy, not derivation (Tom, 2026-08-13: "it's just classification that
+ * feeds the mapping"). A declared M-LEGO with no components has nothing
+ * FAITHFUL to derive — but it is splittable by declaration, so the editor must
+ * still open on it with empty columns for a human to author. The refusal to
+ * guess a split stays exactly where it was: every column starts blank, and
+ * nothing here invents a gloss. Returns null when there is no grid to show.
+ */
+function blankAlignment(source, targetText) {
+  const words = targetWordsOf(targetText)
+  if (words.length < 2) return null
+  return { source, words, segments: words.map(() => ({ span: 1, known: '' })), segmented: false }
+}
+
+function mappingFromLego(lego) {
+  if (!legoIsMappable(lego)) return null
+  return glossAlignment(
+    'lego', lego.target_text, lego.components, lego.known_gloss_segments)
+    || blankAlignment('lego', lego.target_text)
+}
+
+/**
  * Resolve the FULL PARENT SEED SENTENCE for a LEGO id — PURE, unit tested.
  *
  * Parent seed id = first 5 chars of the LEGO id (`S` + 4-digit seed number),
@@ -253,11 +526,25 @@ function seedSentenceFor(legoId, seedSentenceMap) {
 
 /**
  * Learner audio-completeness gates — PURE, unit tested.
- * Mirrors ssi-learning-app generateLearningScript.ts:
- * - LEGOs: "a cycle must never present without all three audio IDs" (:820-822)
- * - Phrases: phraseHasFullAudio (:726-727)
+ *
+ * The invariant is unchanged from day one: never SCHEDULE an unplayable cycle.
+ * What changed on 2026-08-06 (ssi-learning-app 269d2d19, Tom's ruling "always
+ * play what it HAS") is the GRANULARITY — these are now per-ITEM tests, not a
+ * whole-LEGO filter. A LEGO short of one clip keeps its round and its round
+ * NUMBER; only the specific unplayable cycle is skipped.
+ *
+ * - INTRO plays prompt → target1 → target2 with no pause, so it needs a prompt
+ *   clip (presentation audio, or known audio as the documented fallback) and
+ *   the first target voice. A missing second voice is a phase the player skips
+ *   gracefully (generateLearningScript.ts:1139).
+ * - DEBUT asks the learner to produce, so it needs all three (:1140).
+ * - Phrases still need all three to enter the BUILD/USE pools (:670-671).
  */
-function legoHasFullAudio(lego) {
+function legoIntroIsPlayable(lego, presentationAudioId) {
+  return !!((presentationAudioId || lego.known_audio_uuid) && lego.target1_audio_uuid)
+}
+
+function legoDebutIsPlayable(lego) {
   return !!(lego.known_audio_uuid && lego.target1_audio_uuid && lego.target2_audio_uuid)
 }
 
@@ -266,15 +553,18 @@ function phraseHasFullAudio(phrase) {
 }
 
 /**
- * Apply the learner's audio gates to the loaded course content — PURE.
- * LEGOs missing any of known/target1/target2 audio are dropped BEFORE the
- * round walk (so survivors take consecutive round numbers — the learner's
- * round compression, generateLearningScript.ts:816-823). BUILD/USE pools are
- * filtered to fully-voiced phrases (:761-764). Original maps are not mutated.
+ * Apply the learner's PHRASE audio gate to the loaded pools — PURE.
+ * Phrases missing any of known/target1/target2 never enter the BUILD/USE pools
+ * (generateLearningScript.ts:706-711), so they consume no build slot and no
+ * review round-robin turn. Original maps are not mutated.
+ *
+ * There is deliberately no LEGO half any more: the whole-LEGO pre-filter that
+ * used to live here dropped a round BEFORE round numbers were assigned, so one
+ * audio gap slid every later round down by one and re-paired the entire
+ * Fibonacci review schedule. Intro/debut playability is now decided per item at
+ * emit time (legoIntroIsPlayable / legoDebutIsPlayable).
  */
-function applyLearnerAudioGate(legoRecords, buildMap, useMap) {
-  const legos = legoRecords.filter(rec => legoHasFullAudio(rec.lego))
-
+function applyLearnerPhraseAudioGate(buildMap, useMap) {
   const gateMap = (map) => {
     const out = new Map()
     for (const [key, phrases] of map.entries()) {
@@ -285,18 +575,103 @@ function applyLearnerAudioGate(legoRecords, buildMap, useMap) {
   }
 
   return {
-    legos,
     buildMap: gateMap(buildMap),
     useMap: gateMap(useMap),
   }
 }
 
 /**
+ * ---------------------------------------------------------------------------
+ * Player-delivery annotation — PURE, unit tested.
+ * ---------------------------------------------------------------------------
+ * The Script Viewer always shows the FULL intended course. These helpers say,
+ * per row and per round, whether the live player can actually deliver it today,
+ * so a reviewer sees the gap without the row disappearing.
+ *
+ * Mirrors the learner's per-ITEM gates (generateLearningScript.ts, as of
+ * 269d2d19 2026-08-06):
+ * - :1139 an INTRO needs a prompt clip (presentation, or known as the
+ *         documented fallback) plus target1, else that intro alone is skipped.
+ * - :1140 a DEBUT needs all three voices, else that debut alone is skipped.
+ * - :706  phrases missing any of the three never enter the BUILD/USE pools →
+ *         build / consolidate / use-phrase review rows vanish.
+ * - :1277 a seed-phase review needs the seed's target1 audio, else the player
+ *         falls back to a use-phrase — the seed row shown here never plays.
+ *
+ * NOTE what is deliberately absent: there is no whole-round drop and no
+ * "reviewed LEGO was dropped" case. Every is_new LEGO now keeps its round, its
+ * round NUMBER and its place in legoState, so its later reviews still fire on
+ * their own audio.
+ */
+const AUDIO_ROLE_FIELDS = { known: 'known_audio_uuid', target1: 'target1_audio_uuid', target2: 'target2_audio_uuid' }
+const ALL_AUDIO_ROLES = ['known', 'target1', 'target2']
+
+function missingAudioRoles(record, roles = ALL_AUDIO_ROLES) {
+  if (!record) return [...roles]
+  return roles.filter(role => !record[AUDIO_ROLE_FIELDS[role]])
+}
+
+/**
+ * Which voices an INTRO is missing — PURE. The prompt clip is presentation
+ * audio with known audio as the documented fallback, so 'known' is only
+ * reported absent when BOTH are; target2 is not required (the player skips
+ * that phase gracefully).
+ */
+function missingIntroAudioRoles(lego, presentationAudioId) {
+  const missing = []
+  if (!(presentationAudioId || (lego && lego.known_audio_uuid))) missing.push('known')
+  if (!(lego && lego.target1_audio_uuid)) missing.push('target1')
+  return missing
+}
+
+/**
+ * Annotate one round's items — PURE. Returns NEW item objects; never mutates.
+ *
+ * @param {Array}  items
+ * @param {object} ctx
+ * @param {object} ctx.lego                 the round's own LEGO record (audio uuids)
+ * @param {string} ctx.presentationAudioId  the intro's prompt clip, if any
+ */
+function annotatePlayerDelivery(items, ctx = {}) {
+  const lego = ctx.lego
+  const introMissing = missingIntroAudioRoles(lego, ctx.presentationAudioId)
+  const debutMissing = missingAudioRoles(lego)
+
+  return (items || []).map(item => {
+    // Intro and debut each stand or fall on their own clips — a gap in one
+    // costs that cycle only, never the round.
+    if (item.type === 'intro') {
+      if (introMissing.length === 0) return { ...item, playerCanDeliver: true }
+      return { ...item, playerCanDeliver: false, playerDropReason: 'intro-audio', missingAudioRoles: introMissing }
+    }
+
+    if (item.type === 'debut') {
+      if (debutMissing.length === 0) return { ...item, playerCanDeliver: true }
+      return { ...item, playerCanDeliver: false, playerDropReason: 'debut-audio', missingAudioRoles: debutMissing }
+    }
+
+    // Seed-sentence reviews need only the seed's target1; without it the
+    // player silently substitutes a use-phrase, so this row never plays.
+    const roles = (item.type === 'review' && item.reviewItemKind === 'seed') ? ['target1'] : ALL_AUDIO_ROLES
+    const missing = missingAudioRoles(item, roles)
+    if (missing.length === 0) return { ...item, playerCanDeliver: true }
+
+    return {
+      ...item,
+      playerCanDeliver: false,
+      playerDropReason: (item.type === 'review' && item.reviewItemKind === 'seed') ? 'seed-audio' : 'phrase-audio',
+      missingAudioRoles: missing,
+    }
+  })
+}
+
+/**
  * Assign round numbers to a LEGO walk — PURE, unit tested.
  * Mirrors the generator walk's numbering: every is_new LEGO takes the next
  * consecutive round; non-new LEGOs are skipped without consuming a number.
- * Run AFTER applyLearnerAudioGate and the numbering compresses exactly the
- * way the learner's does (dropped LEGOs leave no gap).
+ * Audio never enters this: a LEGO short of a clip still takes its number, in
+ * both views, exactly as the player does since 2026-08-06. Never pre-filter
+ * the walk by audio again — that is what slid every later round down by one.
  */
 function numberRounds(legoRecords, startRound = 0) {
   let n = startRound
@@ -361,6 +736,10 @@ async function loadAllUniqueLegos(supabase, courseCode, maxLegos = 1000, offset 
           known_duration_ms: null,
           target1_duration_ms: record.target1_duration_ms,
           target2_duration_ms: record.target2_duration_ms,
+          // M-LEGO internal tiling — carried so intro/debut rows can derive a
+          // starting gloss alignment. NULL on every A-LEGO.
+          components: record.components || null,
+          known_gloss_segments: record.known_gloss_segments || null,
         },
         seed: {
           seed_id: seedId,
@@ -444,6 +823,14 @@ async function loadAllPracticePhrasesGrouped(supabase, courseCode) {
         known_duration_ms: null,
         target1_duration_ms: row.target1_duration_ms,
         target2_duration_ms: row.target2_duration_ms,
+        // The stored per-chunk known/target breakdown — the LEGO-chunked tiling
+        // the player renders. This projection is a fixed shape, not a
+        // passthrough: leaving a column out here is exactly why the mapping was
+        // absent from every phrase row on the first pass.
+        decomposition: row.decomposition || null,
+        // The human-made per-target-word gloss alignment, when one exists.
+        // Falls back to deriving from decomposition when NULL.
+        known_gloss_segments: row.known_gloss_segments || null,
       }))
 
       const componentPhrases = allPhrases.filter(p => p.phrase_role === 'component')
@@ -597,6 +984,33 @@ async function loadSeedSentences(supabase, courseCode) {
 }
 
 /**
+ * The course's KNOWN language — the side the known-side review filter counts.
+ *
+ * Same read the learner app makes (courses.known_lang). Any failure returns
+ * null, which makes the filter declare itself inert and warn rather than guess
+ * a language; a wrong-language syllable count is worse than no count, because
+ * it produces a plausible number nobody checks.
+ */
+async function loadCourseKnownLang(supabase, courseCode) {
+  if (!supabase) return null
+  try {
+    const { data, error } = await supabase
+      .from('courses')
+      .select('known_lang')
+      .eq('course_code', courseCode)
+      .limit(1)
+    if (error) {
+      logger.warn(`Could not read courses.known_lang for ${courseCode} (${error.message}) — the known-side review filter will be inert.`)
+      return null
+    }
+    return (data && data[0] && data[0].known_lang) || null
+  } catch (err) {
+    logger.warn(`loadCourseKnownLang threw for ${courseCode} (${err.message}) — the known-side review filter will be inert.`)
+    return null
+  }
+}
+
+/**
  * Generate the complete learning script with ROUNDs and spaced repetition.
  *
  * Mirrors generateLearningScript.ts in ssi-learning-app:
@@ -607,9 +1021,11 @@ async function loadSeedSentences(supabase, courseCode) {
  * - No component priming / listening clusters / pod laps (see header)
  *
  * @param {object} options
- * @param {boolean} options.learnerView  Apply the learner's audio gates: drop
- *   LEGOs/phrases missing any audio ID and compress round numbers the way the
- *   learner does. Default false = production view (gaps shown, flagged).
+ * @param {boolean} options.learnerView  Apply the learner's audio gates PER
+ *   ITEM: skip the specific unplayable intro/debut cycle and any unvoiced
+ *   phrase, keeping every round's number and everything else it has — exactly
+ *   what the player does since 2026-08-06. Default false = production view
+ *   (gaps shown, flagged).
  */
 async function generateLearningScript(supabase, courseCode, maxLegos = 50, offset = 0, options = {}) {
   if (!supabase) {
@@ -624,8 +1040,11 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
   // which mode row layers its scriptShape override on top of the global one;
   // defaults to fast, which is the old normal_mode behaviour unchanged.
   const mode = options.mode || DEFAULT_MODE
-  const { scriptShape, listening, scriptShapeSource, maxPhraseLengthFraction } =
-    await loadAlgorithmConfig(supabase, mode)
+  const {
+    scriptShape, listening, scriptShapeSource, maxPhraseLengthFraction,
+    reviewMaxKnownSyllables, reviewFilterMaxRound, filterBuildPhrases,
+    phraseRepeatCount, repeatedCycleTypes,
+  } = await loadAlgorithmConfig(supabase, mode)
   const SPACED_REP_OFFSETS = scriptShape.spacedRepOffsets
   const MAX_BUILD_PHRASES = scriptShape.maxBuildPhrases
   const CONSOLIDATE_COUNT = scriptShape.useConsolidationCount
@@ -644,30 +1063,35 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
   const lookbackCount = offset - lookbackStart  // how many extra LEGOs to pre-process
   const totalToLoad = lookbackCount + maxLegos
 
-  // Load the FULL unique-LEGO list, then window AFTER the (optional) audio
-  // gate — gating must happen course-wide so learner-view round numbers match
-  // the learner's full-course compressed numbering.
-  let allLegoRecords = await loadAllUniqueLegos(supabase, courseCode, Number.MAX_SAFE_INTEGER, 0)
+  // Load the FULL unique-LEGO list, then window it. The list is never gated by
+  // audio: every is_new LEGO takes a round and a round NUMBER whatever its
+  // clips, in both views, exactly as the player now does.
+  const allLegoRecords = await loadAllUniqueLegos(supabase, courseCode, Number.MAX_SAFE_INTEGER, 0)
   if (allLegoRecords.length === 0) {
     return { rounds: [], allItems: [], stats: { legosLoaded: 0 } }
   }
 
+  // The round number the LEARNER sees. Since 2026-08-06 an audio gap costs no
+  // round number, so this is simply the course-wide walk — kept as an explicit
+  // course-wide computation (rather than reusing the windowed `n`) so it stays
+  // correct for paginated windows and so any future divergence has one home.
+  const playerRoundNumbers = new Map()
+  for (const { record, roundNumber } of numberRounds(allLegoRecords)) {
+    playerRoundNumbers.set(record.lego.id, roundNumber)
+  }
+
   let { buildMap, useMap } = await loadAllPracticePhrasesGrouped(supabase, courseCode)
 
-  let legosDroppedForAudio = 0
   let phrasesDroppedForAudio = 0
   if (learnerView) {
-    const legosBefore = allLegoRecords.length
     const countPhrases = (m) => { let c = 0; for (const arr of m.values()) c += arr.length; return c }
     const phrasesBefore = countPhrases(buildMap) + countPhrases(useMap)
-    const gated = applyLearnerAudioGate(allLegoRecords, buildMap, useMap)
-    allLegoRecords = gated.legos
+    const gated = applyLearnerPhraseAudioGate(buildMap, useMap)
     buildMap = gated.buildMap
     useMap = gated.useMap
-    legosDroppedForAudio = legosBefore - allLegoRecords.length
     phrasesDroppedForAudio = phrasesBefore - (countPhrases(buildMap) + countPhrases(useMap))
-    if (legosDroppedForAudio > 0 || phrasesDroppedForAudio > 0) {
-      logger.info(`Learner view: dropped ${legosDroppedForAudio} LEGOs + ${phrasesDroppedForAudio} phrases awaiting audio (rounds renumbered)`)
+    if (phrasesDroppedForAudio > 0) {
+      logger.info(`Learner view: skipped ${phrasesDroppedForAudio} phrases awaiting audio (their rounds still play)`)
     }
   }
 
@@ -680,6 +1104,41 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
     : courseMaxPhraseLength([...buildMap.values(), ...useMap.values()]) * maxPhraseLengthFraction
   if (Number.isFinite(phraseLengthLimit)) {
     logger.info(`Mode '${mode}': phrase length capped at ${phraseLengthLimit.toFixed(0)} chars of target text (${Math.round(maxPhraseLengthFraction * 100)}% of the course's longest phrase)`)
+  }
+  if (phraseRepeatCount > 1) {
+    logger.info(`Mode '${mode}': every ${[...repeatedCycleTypes].sort().join('/')} cycle plays ${phraseRepeatCount}x back to back, so a round is about ${phraseRepeatCount} times its single-play length.`)
+  }
+  // "No filtering on BLD phrases" (Tom, 2026-08-07). Easy passes
+  // filterBuildPhrases:false and keeps its whole BUILD pool; passing Infinity
+  // rather than branching keeps the sort in one place, because
+  // applyPhraseLengthCap with no finite limit IS the plain historic pool.
+  const buildLengthLimit = filterBuildPhrases ? phraseLengthLimit : Infinity
+  if (!filterBuildPhrases && Number.isFinite(phraseLengthLimit)) {
+    logger.info(`Mode '${mode}': BUILD phrases are NOT length-filtered — the cap above applies to USE pools only.`)
+  }
+
+  // The KNOWN-side pull filter on REVIEW and CONSOLIDATE slots (Tom,
+  // 2026-08-07: "the syllable cap, as measured in the known language"). It
+  // counts the learner's own language with the per-language registry, applies
+  // to the pull rather than the whole script, and lifts after
+  // reviewFilterMaxRound. The target-side ceiling it replaced is gone; do not
+  // bring it back.
+  let reviewPullFilter = null
+  if (Number.isFinite(reviewMaxKnownSyllables)) {
+    const knownLang = await loadCourseKnownLang(supabase, courseCode)
+    const resolver = makeKnownSyllableResolver(knownLang)
+    if (resolver.countable) {
+      reviewPullFilter = {
+        limit: reviewMaxKnownSyllables,
+        maxRound: reviewFilterMaxRound,
+        syllablesOf: p => resolver.syllablesOf(p),
+      }
+      logger.info(`Mode '${mode}': review and consolidate pulls prefer phrases of <=${reviewMaxKnownSyllables} known-language syllables (${resolver.lang}) up to round ${reviewFilterMaxRound}, then the filter lifts.`)
+    } else {
+      // Loud inertness. The retired target-side ceiling failed silently on most
+      // of the estate; this one says so instead.
+      logger.warn(`Mode '${mode}': the known-side syllable filter is INERT for ${courseCode} — no syllable counter registered for known language '${resolver.lang || '(unknown)'}'. Review and consolidate pulls are NOT filtered; maxPhraseLengthFraction is the only length control in force. Add a counter to tools/lib/syllable-counters.cjs and mirror it into the learning app's packages/core/src/text/syllables.ts.`)
+    }
   }
 
   const legos = allLegoRecords.slice(lookbackStart, lookbackStart + totalToLoad)
@@ -738,6 +1197,10 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
   // numberRounds is the pure helper that owns the compression behaviour.
   const numbered = numberRounds(legos, lookbackStart)
 
+  // Carries the last deduped row ACROSS rounds — learner view only (see the
+  // dedup block below for why the two views differ here).
+  let lastDedupItem = null
+
   for (const { record: currentLego, roundNumber: n, sourceIndex } of numbered) {
     const currentBuildPhrases = buildMap.get(currentLego.lego.id) || []
     const currentUsePhrases = useMap.get(currentLego.lego.id) || []
@@ -766,28 +1229,49 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
     const effectiveIntroAudio = (learnerView && !introAudio && currentLego.lego.known_audio_uuid)
       ? { id: currentLego.lego.known_audio_uuid, s3_key: null }
       : introAudio
-    roundItems.push({
-      ...baseItem,
-      type: 'intro',
-      known_text: currentLego.lego.known_text,
-      target_text: currentLego.lego.target_text,
-      presentation_audio: effectiveIntroAudio,
-      target1_audio_uuid: currentLego.lego.target1_audio_uuid,
-      target2_audio_uuid: currentLego.lego.target2_audio_uuid,
-      hasAudio: !!(effectiveIntroAudio && currentLego.lego.target1_audio_uuid),
-    })
+
+    // Per-ITEM audio gate in learner view: an unplayable intro or debut is
+    // skipped ON ITS OWN. The round keeps its number and its other cycles.
+    const introPlayable = legoIntroIsPlayable(currentLego.lego, introAudio && introAudio.id)
+    const debutPlayable = legoDebutIsPlayable(currentLego.lego)
+
+    if (!learnerView || introPlayable) {
+      roundItems.push({
+        ...baseItem,
+        type: 'intro',
+        known_text: currentLego.lego.known_text,
+        target_text: currentLego.lego.target_text,
+        presentation_audio: effectiveIntroAudio,
+        target1_audio_uuid: currentLego.lego.target1_audio_uuid,
+        target2_audio_uuid: currentLego.lego.target2_audio_uuid,
+        hasAudio: !!(effectiveIntroAudio && currentLego.lego.target1_audio_uuid),
+        // The ONLY row that carries a mapping (Tom, 2026-08-13: "it's only the
+        // INTROS that need mapping - no regular phrases need the mapping"), and
+        // only an M-LEGO's intro at that — an A-LEGO cannot be split, so it can
+        // never be mapped. The intro's mapping is the feed for the learner's
+        // tile assembler, so it is the one place authoring it changes what a
+        // learner sees. The debut renders the same LEGO from the same row, so
+        // authoring here covers it too without a second glyph saying the same
+        // thing twice.
+        mapping: mappingFromLego(currentLego.lego),
+      })
+    }
 
     // Phase 2: DEBUT
-    roundItems.push({
-      ...baseItem,
-      type: 'debut',
-      known_text: currentLego.lego.known_text,
-      target_text: currentLego.lego.target_text,
-      known_audio_uuid: currentLego.lego.known_audio_uuid,
-      target1_audio_uuid: currentLego.lego.target1_audio_uuid,
-      target2_audio_uuid: currentLego.lego.target2_audio_uuid,
-      hasAudio: !!(currentLego.lego.known_audio_uuid && currentLego.lego.target1_audio_uuid),
-    })
+    if (!learnerView || debutPlayable) {
+      roundItems.push({
+        ...baseItem,
+        type: 'debut',
+        known_text: currentLego.lego.known_text,
+        target_text: currentLego.lego.target_text,
+        known_audio_uuid: currentLego.lego.known_audio_uuid,
+        target1_audio_uuid: currentLego.lego.target1_audio_uuid,
+        target2_audio_uuid: currentLego.lego.target2_audio_uuid,
+        hasAudio: !!(currentLego.lego.known_audio_uuid && currentLego.lego.target1_audio_uuid),
+      })
+    }
+    // The debut IS the bare LEGO — claim it whether or not it was emitted, so
+    // no later phase replays it (learner parity, :1191).
     usedPhrasesInRound.add(getPhraseId(currentLego.lego.known_text, currentLego.lego.target_text))
 
     // Phase 3: BUILD — BUILD phrases first, sorted by syllable count
@@ -800,9 +1284,11 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
     // filter to "match the app" — the app has no such gate; removing it IS the parity fix.
     // Length cap first (Easy halves the longest phrase available for this
     // LEGO; Fast is uncapped), then the historic shortest-first sort. The cap
-    // yields to the phrase floor rather than starving the round.
+    // yields to the phrase floor rather than starving the round. Easy sets
+    // filterBuildPhrases:false, which makes buildLengthLimit Infinity and
+    // hands the whole BUILD pool through untouched.
     const sortedBuildPhrases = applyPhraseLengthCap(
-      currentBuildPhrases, phraseLengthLimit, phraseLengthOf, MIN_BUILD_PHRASES_AFTER_CAP
+      currentBuildPhrases, buildLengthLimit, phraseLengthOf, MIN_BUILD_PHRASES_AFTER_CAP
     ).slice().sort(byPhraseLength)
 
     let practiceCount = 0
@@ -891,8 +1377,11 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
       }
 
       if (!reviewLegoState) continue
-      // Graduated seeds have dropped out of spaced rep (learner :1340)
-      if (graduatedSeeds.has(reviewLegoState.lego.seed.seed_number)) continue
+      const reviewOffset = n - review.legoIndex
+      // Graduated seeds drop out of USE-PHRASE review but stay eligible for
+      // SEED-PHASE production review (offset >= SEED_PHASE_START_OFFSET) —
+      // nothing truly retires (generateLearningScript.ts:1251,1439).
+      if (graduatedSeeds.has(reviewLegoState.lego.seed.seed_number) && !reviewItemIsSeed(reviewOffset)) continue
       if (seenReviewLegos.has(reviewLegoState.legoId)) continue
       seenReviewLegos.add(reviewLegoState.legoId)
 
@@ -902,10 +1391,15 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
       // LEGOs crossing the threshold => same seed a few rounds running) is
       // DESIRED — no de-clustering/dedup here. Falls back to the use-phrase path
       // if the seed record is missing (never render an empty seed card).
-      const reviewOffset = n - review.legoIndex
+      //
+      // Learner view also honours the player's seed-audio gate
+      // (generateLearningScript.ts:1316): without the seed's first target voice
+      // the player falls back to a use-phrase, so the preview must too — else
+      // it shows a review cycle the learner never hears, and counts a round as
+      // playable that the player finds empty.
       if (reviewItemIsSeed(reviewOffset)) {
         const seed = seedSentenceFor(reviewLegoState.legoId, seedSentenceMap)
-        if (seed) {
+        if (seed && (!learnerView || seed.target1_audio_uuid)) {
           const seedPhraseId = getPhraseId(seed.known_text, seed.target_text)
           reviewIndices.push(review.legoIndex)
           if (!usedPhrasesInRound.has(seedPhraseId)) {
@@ -933,24 +1427,33 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
           }
           continue
         }
-        logger.warn(`Seed-phase review (offset ${reviewOffset}) for ${reviewLegoState.legoId} has no parent seed sentence (${reviewLegoState.legoId.slice(0, 5)}) — falling back to use-phrase.`)
+        if (!seed) {
+          logger.warn(`Seed-phase review (offset ${reviewOffset}) for ${reviewLegoState.legoId} has no parent seed sentence (${reviewLegoState.legoId.slice(0, 5)}) — falling back to use-phrase.`)
+        }
       }
 
       if (reviewLegoState.usePhrases.length === 0) continue
+
+      // The known-side pull filter (Tom, 2026-08-07): early rounds draw from
+      // the short end of the basket, measured in the LEARNER'S language. Past
+      // the configured round the whole basket is back in play. The filter can
+      // never empty the pool — it falls back to the basket's shortest phrase —
+      // so no LEGO loses a review to it.
+      const reviewPool = filterReviewPool(reviewLegoState.usePhrases, n, reviewPullFilter)
 
       const isN1 = review.legoIndex === n - 1
       const targetPhraseCount = isN1 ? N1_PHRASE_COUNT : 1
       const phrasesToAdd = Math.min(
         targetPhraseCount,
         MAX_SPACED_REP_PHRASES - reviewCount,
-        reviewLegoState.usePhrases.length
+        reviewPool.length
       )
 
       reviewIndices.push(review.legoIndex)
 
       for (let p = 0; p < phrasesToAdd; p++) {
         // Round-robin selection (deterministic)
-        const phrase = reviewLegoState.usePhrases[reviewLegoState.useIndex % reviewLegoState.usePhrases.length]
+        const phrase = reviewPool[reviewLegoState.useIndex % reviewPool.length]
         reviewLegoState.useIndex++
 
         const phraseId = getPhraseId(phrase.known_text, phrase.target_text)
@@ -997,8 +1500,11 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
         hasAudio: !!(phrase.known_audio_uuid && phrase.target1_audio_uuid),
       })
     }
+    // Consolidate is a REVIEW-class pull, so it takes the same known-side
+    // filter as the spaced-rep block above.
+    const consolidatePool = filterReviewPool(sortedUsePhrases, n, reviewPullFilter)
     // First pass: unused USE phrases
-    for (const phrase of sortedUsePhrases) {
+    for (const phrase of consolidatePool) {
       if (consolidateCount >= CONSOLIDATE_COUNT) break
       const phraseId = getPhraseId(phrase.known_text, phrase.target_text)
       if (usedPhrasesInRound.has(phraseId)) continue
@@ -1007,7 +1513,7 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
     }
     // Second pass: reuse USE phrases already used in BUILD (pool was too small)
     if (consolidateCount < CONSOLIDATE_COUNT) {
-      for (const phrase of sortedUsePhrases) {
+      for (const phrase of consolidatePool) {
         if (consolidateCount >= CONSOLIDATE_COUNT) break
         emitConsolidate(phrase)
       }
@@ -1026,9 +1532,19 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
       }
     }
 
-    // Remove consecutive duplicates
+    // Remove consecutive duplicates.
+    //
+    // SCOPE differs by view, deliberately. The learner's dedup runs over the
+    // WHOLE item stream (generateLearningScript.ts:1642-1660), so a sentence
+    // repeated across a round boundary — a seed-phase review of the same seed
+    // in successive rounds, which the clustering rule makes common — is
+    // dropped, and a round left with only that duplicate never plays. Learner
+    // view carries lastItem across rounds to match exactly. The production
+    // view keeps the per-round scope: it shows the intended course, and a row
+    // a reviewer may need to edit must not vanish because the previous round
+    // happened to end with the same sentence.
     const dedupedItems = []
-    let lastItem = null
+    let lastItem = learnerView ? lastDedupItem : null
 
     for (const item of roundItems) {
       if (item.type === 'intro' || item.type === 'debut') {
@@ -1045,9 +1561,43 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
       dedupedItems.push(item)
       lastItem = item
     }
+    lastDedupItem = lastItem
+
+    // ── EASY doubling (Tom, 2026-08-07) ──────────────────────────────────────
+    // "in EASY mode, double up every phrase, every BLD, every USE, every
+    // REVIEW, every CONSOLIDATE". Script View must show the round the learner
+    // actually hears, so it repeats the same cycles, by the same rule, at the
+    // same point in the pipeline as the learner's repeatPhraseCycles: AFTER the
+    // consecutive-duplicate pass above, which would otherwise strip the second
+    // copy on sight. Both the count and the eligible types come off the mode
+    // row; Fast's count of 1 returns the list untouched.
+    //
+    // Cross-round dedup state (`lastDedupItem`) is deliberately taken from the
+    // list BEFORE doubling: a repeat is byte-identical to the item it follows,
+    // so either choice compares the same, and reading it pre-doubling keeps the
+    // learner-parity carry-over exactly as it was.
+    const playedItems = repeatPhraseCycles(dedupedItems, {
+      count: phraseRepeatCount,
+      types: repeatedCycleTypes,
+    })
 
     // Only emit rounds past the lookback range (i.e. at the requested offset)
     if (n > offset) {
+      // Annotate reality on top of intent — never filters, only labels.
+      const annotatedItems = annotatePlayerDelivery(playedItems, {
+        lego: currentLego.lego,
+        presentationAudioId: introAudio && introAudio.id,
+      })
+      const undeliverableItemCount = annotatedItems.filter(i => i.playerCanDeliver === false).length
+      // The player emits this round unless it has nothing playable at all — the
+      // learner's `cycles.length === 0` guard in toSimpleRounds. A round with
+      // SOME gaps still plays, keeping its number.
+      const playerDelivers = annotatedItems.length > undeliverableItemCount
+
+      // Learner view mirrors that guard literally: a round with nothing
+      // playable is not shown, and its absence renumbers nothing.
+      if (learnerView && annotatedItems.length === 0) continue
+
       rounds.push({
         roundNumber: n,
         legoId: currentLego.lego.id,
@@ -1055,12 +1605,16 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
         seedId: currentLego.seed.seed_id,
         legoType: currentLego.lego.type,
         isNew: currentLego.lego.new,
-        items: dedupedItems,
+        items: annotatedItems,
         spacedRepReviews: reviewIndices,
-        itemCount: dedupedItems.length,
+        itemCount: annotatedItems.length,
+        playerDelivers,
+        ...(playerDelivers ? {} : { playerDropReason: 'round-empty', missingAudioRoles: missingAudioRoles(currentLego.lego) }),
+        playerRoundNumber: playerRoundNumbers.get(currentLego.lego.id) ?? null,
+        undeliverableItemCount,
       })
 
-      allItems.push(...dedupedItems)
+      allItems.push(...annotatedItems)
     }
   }
 
@@ -1080,11 +1634,16 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
     },
     itemsWithAudio: allItems.filter(i => i.hasAudio).length,
     itemsMissingAudio: allItems.filter(i => !i.hasAudio && i.type !== 'intro').length,
+    // Player-delivery annotation totals (always on, both views).
+    // roundsPlayerDrops now counts only rounds with NOTHING playable — a round
+    // with an audio gap still plays, so it is not a dropped round.
+    itemsPlayerCannotDeliver: allItems.filter(i => i.playerCanDeliver === false).length,
+    roundsPlayerDrops: rounds.filter(r => r.playerDelivers === false).length,
     graduatedSeeds: graduatedSeeds.size,
     spacedRepOffsets: SPACED_REP_OFFSETS,
     scriptShapeSource,
     learnerView,
-    ...(learnerView ? { legosDroppedForAudio, phrasesDroppedForAudio } : {}),
+    ...(learnerView ? { phrasesDroppedForAudio } : {}),
     generationTimeMs: elapsed,
   }
 
@@ -1100,10 +1659,23 @@ module.exports = {
   loadAlgorithmConfig,
   calculateSpacedRepReviews,
   seedSentenceFor,
+  glossAlignment,
+  blankAlignment,
+  targetWordsOf,
+  segmentsCoverWords,
+  segmentsFromBlocks,
+  sameTargetWords,
+  locateBlock,
+  mappingFromLego,
+  legoIsMappable,
   reviewItemIsSeed,
-  legoHasFullAudio,
+  legoIntroIsPlayable,
+  legoDebutIsPlayable,
   phraseHasFullAudio,
-  applyLearnerAudioGate,
+  applyLearnerPhraseAudioGate,
+  annotatePlayerDelivery,
+  missingAudioRoles,
+  missingIntroAudioRoles,
   numberRounds,
   FIBONACCI,
   SEED_PHASE_START_OFFSET,

@@ -99,7 +99,7 @@
               </td>
               <td class="col-seed">{{ flag.seed_number }}</td>
               <td class="col-known">{{ flag.phrase?.known_text || flag.details?.known_text || '—' }}</td>
-              <td class="col-target">{{ flag.phrase?.target_text || flag.details?.target_text || '—' }}</td>
+              <td class="col-target" :dir="dirFor(flagTargetText(flag))" style="text-align: left">{{ flagTargetText(flag) || '—' }}</td>
               <td class="col-issue">
                 <span class="issue-text">{{ flag.issue }}</span>
                 <span v-if="flag.check_type" class="check-type">{{ flag.check_type }}</span>
@@ -132,6 +132,11 @@
 <script setup>
 import { ref, onMounted, watch } from 'vue'
 import { getApiUrl, fetchJson } from '@/services/api'
+import { dirFor } from '@/utils/textDirection.js'
+
+// The target string a flag row paints, resolved once so the `dir` binding and the
+// rendered text can never disagree about which string they are describing.
+const flagTargetText = (flag) => flag.phrase?.target_text || flag.details?.target_text || ''
 import { isConfigured as isSupabaseConfigured, getQASummary } from '@/services/supabase'
 
 const props = defineProps({

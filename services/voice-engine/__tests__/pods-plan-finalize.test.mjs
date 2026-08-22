@@ -59,3 +59,65 @@ describe('finalizeRecordingPlan (canonical wire shape + recorded stamping)', () 
     expect(normalized.items[1].recorded).toBe(false)
   })
 })
+
+// ── RE-RECORD WANTED reads as OUTSTANDING (make-before-break, 2026-08-14) ────
+// The line's own human take is linked, real and playable — and it still has to
+// appear as work to do, because "record this again" must not mean "unlink the
+// audio the learner is currently hearing".
+describe('finalizeRecordingPlan — rerecord_wanted', () => {
+  const WANT_ROWS = ROWS.map(r =>
+    r.id === 's2' ? { ...r, rerecord_wanted: { target: 'human_catrin_cym' } } : r)
+
+  const fetchLiveTake = async (ids) => ids.includes('AUD-HUMAN')
+    ? [{ id: 'AUD-HUMAN', origin: 'human', voice_id: 'human_catrin_cym', file_size_bytes: 48000 }]
+    : []
+
+  it('a wanted target is outstanding though a real human take is still linked', async () => {
+    const plan = buildRecordingPlan({ pods: [POD], sentences: WANT_ROWS, podCast: CAST, voiceId: 'human_catrin_cym' })
+    const final = await finalizeRecordingPlan({
+      plan, sentences: WANT_ROWS, voiceId: 'human_catrin_cym', fetchAudioRows: fetchLiveTake,
+    })
+    const s2 = final.items.find(i => i.sentenceId === 's2' && i.kind === 'target')
+    expect(s2.recorded).toBe(false)
+    expect(s2.audioId).toBe('AUD-HUMAN')      // audio stays LINKED — nothing unlinked
+    expect(final.totals).toEqual({ items: 2, recorded: 0, remaining: 2 })
+  })
+
+  it('without the want, that same take counts as recorded', async () => {
+    const plan = buildRecordingPlan({ pods: [POD], sentences: ROWS, podCast: CAST, voiceId: 'human_catrin_cym' })
+    const final = await finalizeRecordingPlan({
+      plan, sentences: ROWS, voiceId: 'human_catrin_cym', fetchAudioRows: fetchLiveTake,
+    })
+    expect(final.items.find(i => i.sentenceId === 's2').recorded).toBe(true)
+    expect(final.totals.remaining).toBe(1)
+  })
+
+  it('a wanted KNOWN line reaches a non-explainer voice and reads as outstanding', async () => {
+    const rows = ROWS.map(r =>
+      r.id === 's1' ? { ...r, rerecord_wanted: { known: 'human_catrin_cym' }, known_audio_id: 'AUD-KNOWN' } : r)
+    const plan = buildRecordingPlan({ pods: [POD], sentences: rows, podCast: CAST, voiceId: 'human_catrin_cym' })
+    const final = await finalizeRecordingPlan({
+      plan, sentences: rows, voiceId: 'human_catrin_cym',
+      fetchAudioRows: async () => [
+        { id: 'AUD-KNOWN', origin: 'human', voice_id: 'human_catrin_cym', file_size_bytes: 48000 },
+        { id: 'AUD-HUMAN', origin: 'human', voice_id: 'human_catrin_cym', file_size_bytes: 48000 },
+      ],
+    })
+    const known = final.items.find(i => i.kind === 'known')
+    expect(known.sentenceId).toBe('s1')
+    expect(known.line).toEqual({ targetText: null, knownText: 'Good morning!' })
+    expect(known.recorded).toBe(false)
+    expect(known.audioId).toBe('AUD-KNOWN')
+  })
+
+  it('a want named for a collapsed-away alias counts for its survivor queue', async () => {
+    const rows = ROWS.map(r => r.id === 's2' ? { ...r, rerecord_wanted: { target: 'human_catrin_cym_old' } } : r)
+    const plan = buildRecordingPlan({ pods: [POD], sentences: rows, podCast: CAST, voiceId: 'human_catrin_cym' })
+    const final = await finalizeRecordingPlan({
+      plan, sentences: rows, voiceId: 'human_catrin_cym',
+      acceptVoiceIds: new Set(['human_catrin_cym', 'human_catrin_cym_old']),
+      fetchAudioRows: fetchLiveTake,
+    })
+    expect(final.items.find(i => i.sentenceId === 's2').recorded).toBe(false)
+  })
+})

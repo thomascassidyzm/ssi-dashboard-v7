@@ -6,7 +6,7 @@
         <div class="flex items-center justify-between mb-4">
           <div>
             <h1 class="text-4xl font-bold text-emerald-400 mb-2">Quality Review Dashboard</h1>
-            <p class="text-muted">{{ courseCode }} - {{ totalSeeds }} SEEDs</p>
+            <p class="text-muted">{{ getCourseName(courseCode) }} - {{ totalSeeds }} SEEDs</p>
           </div>
           <div class="flex gap-3">
             <button
@@ -428,8 +428,10 @@
 <script setup>
 import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { useRouter } from 'vue-router'
+import { useCourses } from '../../composables/useCourses'
 
 const router = useRouter()
+const { getCourseName } = useCourses()
 const props = defineProps({
   courseCode: {
     type: String,

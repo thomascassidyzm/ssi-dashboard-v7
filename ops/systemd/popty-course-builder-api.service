@@ -5,7 +5,19 @@ Wants=network-online.target
 
 [Service]
 Type=simple
-WorkingDirectory=/home/tomcassidy/SSi/ssi-dashboard-v7-clean
+# 2026-08-05: repointed from the developer's working checkout
+# (…/ssi-dashboard-v7-clean) to the clean deployed one, matching
+# popty-production-api and popty-phase8-audio. Until now this service alone
+# served whatever a developer happened to have checked out and uncommitted —
+# so it could never be judged or updated by the staleness watchdog, which
+# skips units loaded from another clone.
+# Cutover was byte-verified: of the 59 files in this service's require graph,
+# 57 were identical between the two trees and 1 (course-builder-api.cjs)
+# differed only by the /health build-identity hunk from c051a509. The two
+# dirty files in the graph (services/shared/claude-{cli,config}.cjs) held the
+# watson-1 homedir/OAuth auth fix, which had already landed on main — so the
+# clean tree carries it too and the cutover loses no behaviour.
+WorkingDirectory=/home/tomcassidy/SSi/ssi-dashboard-v7-clean-prod
 Environment=NODE_OPTIONS=--max-old-space-size=4096
 Environment=COURSE_BUILDER_PORT=3471
 # watson-1 is LINUX. Every agent-spawn route defaults to
@@ -16,6 +28,11 @@ Environment=COURSE_BUILDER_PORT=3471
 # "spawn osascript ENOENT" and the Terminal.app fallback fails the same way.
 # That is what actually stopped the 2026-08-04 nld_for_eng component backfill.
 Environment=SPAWN_MODE=headless
+# PRE-RESTART SYNTAX GUARD — see the fuller note in popty-production-api.service.
+# Restart=always cannot restart its way out of a parse error, so a broken merge
+# turns into a silent crash-loop. ExecStartPre refuses the start and writes a
+# loud banner naming the file and the SyntaxError.
+ExecStartPre=/usr/bin/node tools/check-service-syntax.cjs services/course-builder-api.cjs
 ExecStart=/usr/bin/node services/course-builder-api.cjs
 Restart=always
 RestartSec=5

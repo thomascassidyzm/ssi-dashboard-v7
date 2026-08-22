@@ -94,7 +94,11 @@
           <Transition name="fade-up">
             <div v-if="currentPhase === 'target2'" class="content-block target2-block">
               <div class="language-badge target reveal">Target</div>
-              <p class="primary-text reveal-text">{{ currentCycle?.targetText }}</p>
+              <!-- The reveal is the one place a learner READS the target
+                   sentence, so it is the place the misplaced `!` was most
+                   visible. `.content-block` centres its text, so binding `dir`
+                   changes ordering only — no alignment shift. -->
+              <p class="primary-text reveal-text" :dir="dirFor(currentCycle?.targetText)">{{ currentCycle?.targetText }}</p>
               <div class="audio-indicator" :class="{ active: isPlaying }">
                 <span class="pulse"></span>
               </div>
@@ -154,6 +158,7 @@
 <script setup>
 import { ref, computed, watch, onUnmounted } from 'vue'
 import api from '../services/api.js'
+import { dirFor } from '../utils/textDirection.js'
 
 const props = defineProps({
   courseCode: {

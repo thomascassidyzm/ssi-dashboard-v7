@@ -216,6 +216,32 @@
           <span class="card-arrow">&rarr;</span>
         </router-link>
 
+        <router-link :to="`/production/${courseCode}/audio-preview`" class="workflow-card">
+          <div class="card-icon audio">P</div>
+          <div class="card-content">
+            <h3>Audio Preview</h3>
+            <p>Listen to rendered clips &mdash; spot-check a random sample</p>
+          </div>
+          <span class="card-arrow">&rarr;</span>
+        </router-link>
+
+        <!-- The approval gate. No course reaches learners without a human
+             having played its first X rounds through in the real app
+             (Tom, 2026-08-05). Status is shown here so a course's standing is
+             readable without running anything. -->
+        <router-link :to="`/production/${courseCode}/qa-gate`" class="workflow-card">
+          <div class="card-icon" :class="qaGateIconClass">A</div>
+          <div class="card-content">
+            <h3>Approval Gate &mdash; {{ qaGateLabel }}</h3>
+            <p v-if="qaGateStatus">
+              {{ qaGateStatus.signed_off_rounds }} of {{ qaGateStatus.gate_window_rounds }}
+              required rounds signed off by a human
+            </p>
+            <p v-else>Play through the first rounds and sign each one off</p>
+          </div>
+          <span class="card-arrow">&rarr;</span>
+        </router-link>
+
         <button @click="launchLearningApp" class="workflow-card action">
           <div class="card-icon launch">L</div>
           <div class="card-content">
@@ -253,10 +279,13 @@
 import { ref, computed, onMounted, watch } from 'vue'
 import { useRouter } from 'vue-router'
 import { getApiUrl } from '@/services/api'
+import { buildLearningAppUrl } from '@/utils/learningAppUrl'
 import { isConfigured as isSupabaseConfigured, getCourseProgress, getQASummary } from '@/services/supabase'
 import { useProductionStore } from '@/stores/production'
 import { useAuth } from '@/composables/useAuth'
+import { getLanguageName } from '@/composables/useCourses'
 import LegacyExportDialog from '@/components/production/LegacyExportDialog.vue'
+import { qaGate, GATE_STATUS_LABEL } from '@/services/qaGate'
 
 const props = defineProps({
   courseCode: { type: String, required: true }
@@ -297,6 +326,15 @@ const pricingTiers = [
 
 const localStats = ref({ completeSeeds: 0, totalSeeds: 0, legos: 0, phrases: 0 })
 const qaStats = ref({ flags: 0, checked: 0 })
+// The approval gate's row from course_qa_estate, or null if it could not be
+// read — the card degrades to generic copy rather than the overview failing.
+const qaGateStatus = ref(null)
+const qaGateLabel = computed(() =>
+  GATE_STATUS_LABEL[qaGateStatus.value?.gate_status] || 'not passed')
+const qaGateIconClass = computed(() => ({
+  passed: 'gate-passed',
+  in_progress: 'gate-progress',
+}[qaGateStatus.value?.gate_status] || 'gate-unpassed'))
 const isLoadingStats = ref(true)  // Start true, set false when loaded
 const audioStatsLoaded = ref(false)  // Track if audio stats have been fetched
 
@@ -370,6 +408,19 @@ async function loadStats() {
   }
 }
 
+/**
+ * The approval gate's standing for this course. Read-only and non-blocking —
+ * if it fails, the card falls back to its generic copy rather than taking the
+ * overview down.
+ */
+async function loadQAGate() {
+  try {
+    qaGateStatus.value = (await qaGate.course(props.courseCode)).estate
+  } catch (err) {
+    qaGateStatus.value = null
+  }
+}
+
 async function loadQAStats() {
   try {
     if (isSupabaseConfigured()) {
@@ -409,8 +460,7 @@ async function setPricingTier(tier) {
 }
 
 function launchLearningApp() {
-  const url = import.meta.env.VITE_LEARNING_APP_URL || 'https://saysomethingin.app'
-  window.open(`${url}/?course=${props.courseCode}`, '_blank')
+  window.open(buildLearningAppUrl({ courseCode: props.courseCode }), '_blank')
 }
 
 async function runAudit() {
@@ -441,9 +491,14 @@ const podDraftLink = computed(() => {
     ? { path: `/production/${props.courseCode}/pods/${first.podSlug}`, query: { drafts: '1' } }
     : { path: `/production/${props.courseCode}/pods` }
 })
-const targetLanguageName = computed(() =>
-  store.courseInfo?.targetLang || store.courseInfo?.target_lang || 'target-language'
-)
+// The course's target language by name, not by ISO code — this goes into a
+// sentence a human reads ("machine-written Welsh"), and the code is derived
+// from the course code so it works before courseInfo has loaded.
+const targetLanguageName = computed(() => {
+  const code = String(props.courseCode || '').split('_for_')[0]
+    || store.courseInfo?.targetLang || store.courseInfo?.target_lang
+  return getLanguageName(code, 'target-language')
+})
 
 async function loadPodDrafts() {
   podDrafts.value = { total: 0, items: [] }
@@ -465,6 +520,7 @@ onMounted(() => {
   store.loadCourseInfo(props.courseCode)
   loadStats()
   loadQAStats()
+  loadQAGate()
   loadPodDrafts()
 })
 
@@ -473,6 +529,7 @@ watch(() => props.courseCode, () => {
   store.loadCourseInfo(props.courseCode)
   loadStats()
   loadQAStats()
+  loadQAGate()
   loadPodDrafts()
 })
 </script>
@@ -861,6 +918,11 @@ watch(() => props.courseCode, () => {
 .card-icon.pods { background: #a855f7; color: white; }
 .card-icon.listening-config { background: #ec4899; color: white; }
 .card-icon.launch { background: var(--color-graphite, var(--surface-3)); color: var(--color-tungsten, var(--accent)); }
+/* Approval gate — red until a human has signed the course off, deliberately.
+   Every course starts unpassed and the card should say so at a glance. */
+.card-icon.gate-passed { background: #10b981; color: white; }
+.card-icon.gate-progress { background: #f59e0b; color: white; }
+.card-icon.gate-unpassed { background: #dc2626; color: white; }
 
 .card-content {
   flex: 1;

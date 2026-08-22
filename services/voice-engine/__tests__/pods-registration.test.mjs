@@ -110,10 +110,13 @@ function mockSupabase(state) {
   // state: { sentences: {id: row}, pods: {id: row}, courses: {code: row},
   //          audioRows: [rows at conflict keys], upserted: [], updates: [] }
   function builder(table) {
-    const q = { table, filters: {}, op: 'select', payload: null }
+    const q = { table, filters: {}, inFilters: {}, op: 'select', payload: null }
     const api = {
       select() { return api },
       eq(col, val) { q.filters[col] = val; return api },
+      // The prior-row lookup reaches BOTH voice spellings, so the mock needs
+      // set membership as well as equality.
+      in(col, vals) { q.inFilters[col] = vals; return api },
       limit() { return resolveRows().then(rows => ({ data: rows, error: null })) },
       maybeSingle() { return resolveRows().then(rows => ({ data: rows[0] || null, error: null })) },
       single() { return resolveRows().then(rows => ({ data: rows[0] || null, error: rows[0] ? null : { message: 'no row' } })) },
@@ -156,7 +159,8 @@ function mockSupabase(state) {
       }
       if (table === 'course_audio') {
         return (state.audioRows || []).filter(r =>
-          Object.entries(q.filters).every(([k, v]) => r[k] === v))
+          Object.entries(q.filters).every(([k, v]) => r[k] === v) &&
+          Object.entries(q.inFilters).every(([k, vals]) => vals.includes(r[k])))
       }
       return []
     }
@@ -284,6 +288,38 @@ describe('commitPodRegistration', () => {
     expect(result.repointedExistingRow).toBe(false)
   })
 
+  // ── RE-RECORD WANTED fulfilment (2026-08-14) ──────────────────────────────
+  // The take IS the re-record that was wanted, so the want is cleared in the
+  // SAME statement that re-points the FK — a line can never be left both
+  // freshly recorded and still queued for its recordist.
+
+  it('clears this track\'s rerecord_wanted key in the same write as the FK repoint', async () => {
+    const state = fixtureState()
+    state.sentences['cym_n_for_eng:pod-0:SC01-S001'].rerecord_wanted = { target: 'human_catrin_cym' }
+    await prepareAndCommit(state)
+    expect(state.updates).toEqual([{
+      table: 'listening_pod_sentences',
+      patch: { target_audio_id: 'NEW-AUDIO-UUID', rerecord_wanted: null },
+      where: { id: 'cym_n_for_eng:pod-0:SC01-S001' },
+    }])
+  })
+
+  it('leaves a want for the OTHER track alone — that is a different job', async () => {
+    const state = fixtureState()
+    state.sentences['cym_n_for_eng:pod-0:SC01-S001'].rerecord_wanted =
+      { target: 'human_catrin_cym', known: 'human_catrin_cym' }
+    await prepareAndCommit(state)
+    expect(state.updates[0].patch).toEqual({
+      target_audio_id: 'NEW-AUDIO-UUID',
+      rerecord_wanted: { known: 'human_catrin_cym' },
+    })
+  })
+
+  it('writes no rerecord_wanted key when nothing was wanted', async () => {
+    const { state } = await prepareAndCommit(fixtureState())
+    expect(state.updates[0].patch).toEqual({ target_audio_id: 'NEW-AUDIO-UUID' })
+  })
+
   it('re-record of the same line+voice repoints the SAME row (5-col key) and records the old s3_key', async () => {
     const state = fixtureState()
     // First human take already registered + linked
@@ -299,5 +335,50 @@ describe('commitPodRegistration', () => {
     // Old object stays at its key — recorded for reversibility, FK unchanged in effect
     expect(result.replacedS3Key).toBe('mastered/FIRST-TAKE.mp3')
     expect(result.replacedAudioId).toBeNull()
+  })
+
+  // ── canonical identity ────────────────────────────────────────────────────
+  // The write narrows to one spelling; the prior-row READ must stay wide, or a
+  // take recorded before the conversion becomes invisible and its s3_key never
+  // reaches recording_provenance — the reversibility leg of make-before-break.
+
+  it('writes the canonical language and voice spelling', async () => {
+    const state = fixtureState()
+    state.courses['cym_n_for_eng'].known_lang = 'en-GB'
+    const { state: after } = await prepareAndCommit(state)
+    // 'cym' is already canonical; the voice keeps its human_ scheme untouched.
+    expect(after.upserted[0].language).toBe('cym')
+    expect(after.upserted[0].voice_id).toBe('human_catrin_cym')
+  })
+
+  it('still FINDS a prior take stored under a non-canonical language spelling', async () => {
+    const state = fixtureState()
+    state.audioRows = [{
+      id: 'HUMAN-ROW-1', course_code: 'cym_n_for_eng', text_normalized: 'bore da',
+      language: 'cym', role: 'target1', voice_id: 'human_catrin_cym',
+      origin: 'human', s3_key: 'mastered/FIRST-TAKE.mp3',
+    }]
+    const { result } = await prepareAndCommit(state, 'mastered/SECOND-TAKE.mp3')
+    expect(result.replacedS3Key).toBe('mastered/FIRST-TAKE.mp3')
+  })
+
+  it('never deletes a prior take it could not repoint — the old row survives', async () => {
+    // A prior row under a DIFFERENT voice spelling cannot share the upsert's
+    // conflict key, so the new take lands as a fresh row and the old one is
+    // left intact at its own s3_key. Nothing is overwritten, which is the
+    // make-before-break-safe outcome.
+    const state = fixtureState()
+    state.audioRows = [{
+      id: 'HUMAN-ROW-OLD', course_code: 'cym_n_for_eng', text_normalized: 'bore da',
+      language: 'cym', role: 'target1', voice_id: 'catrin_cym',
+      origin: 'human', s3_key: 'mastered/OLD-SPELLING-TAKE.mp3',
+    }]
+    const { state: after, result } = await prepareAndCommit(state, 'mastered/NEW.mp3')
+
+    expect(result.audioRow.id).toBe('NEW-AUDIO-UUID')
+    expect(result.repointedExistingRow).toBe(false)
+    // The old row is untouched — it is still in audioRows at its original key.
+    expect(after.audioRows[0].s3_key).toBe('mastered/OLD-SPELLING-TAKE.mp3')
+    expect(after.upserted[0].s3_key).toBe('mastered/NEW.mp3')
   })
 })

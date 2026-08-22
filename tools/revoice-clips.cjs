@@ -84,6 +84,7 @@ const { execFile } = require('child_process')
 const { v4: uuidv4 } = require('uuid')
 const { PutObjectCommand } = require('@aws-sdk/client-s3')
 const { AUDIO_CACHE_CONTROL } = require('../services/shared/audio-cache-control.cjs')
+const { canonicalVoiceId } = require('../services/shared/clip-identity.cjs')
 const { createClient } = require('@supabase/supabase-js')
 const ttsService = require('../services/tts-service.cjs')
 const p8 = require('../services/phases/phase8-audio-v13.cjs')
@@ -100,7 +101,14 @@ const ATTEMPTS = Number(arg('--attempts', 3))
 const ROLES = (arg('--roles', '') || '').split(',').filter(Boolean)
 /** Deliberately low: sustained xAI load is the root cause of the whole incident. */
 const CONCURRENCY = Number(arg('--concurrency', 3))
-/** 'bare' (eve/ara/leo) or 'prefixed' (xai_eve). deu is overwhelmingly bare. */
+/**
+ * ACCEPTED but no longer consulted. It used to choose the spelling a re-voiced
+ * row was STORED under ('bare' eve/ara/leo vs 'prefixed' xai_eve), i.e. it let a
+ * course's local habit mint a second identity for one voice. Storage is now
+ * always canonical (storedVoiceId) and matching accepts every spelling
+ * (voiceSpellings), so the flag only survives so existing invocations and
+ * runbooks keep working. Delete it once those are updated.
+ */
 const SPELLING = arg('--spelling', 'bare')
 /**
  * --ids <path>: an explicit JSON array of course_audio ids to re-voice, INSTEAD
@@ -201,9 +209,26 @@ const ROLE_SLOT = {
   bookend_listen_outro: 'known',
 }
 
-/** Store the voice under the spelling this course already predominantly uses. */
-function storedVoiceId(bare) {
-  return SPELLING === 'prefixed' ? `xai_${bare}` : bare
+/**
+ * The spelling a re-voiced row is STORED under: always canonical
+ * (services/shared/clip-identity.cjs), never the course's local habit.
+ *
+ * This used to follow `--spelling`, storing the bare id when that was what the
+ * course predominantly used — which is how a course's habit became a second
+ * identity for the same voice. The flag now only affects which EXISTING
+ * spellings are recognised (see voiceSpellings), not what gets written.
+ */
+function storedVoiceId(target) {
+  const bare = typeof target === 'string' ? target : target.voiceId
+  const provider = typeof target === 'string' ? undefined : target.provider
+  return canonicalVoiceId(bare, provider ? { provider } : undefined)
+}
+
+/** Every spelling an existing row may carry for this voice — for matching only. */
+function voiceSpellings(target) {
+  const bare = typeof target === 'string' ? target : target.voiceId
+  const set = new Set([bare, `xai_${bare}`, storedVoiceId(target)])
+  return [...set]
 }
 
 /**
@@ -347,7 +372,7 @@ async function relink(links, newId, durationMs) {
 
   console.log(`\nrevoice-clips — ${COURSE}`)
   console.log(`configured voices: ${Object.entries(voices).map(([k, v]) => `${k}=${v.voiceId}/${v.provider}`).join(', ')}`)
-  console.log(`storing voice_id as: ${storedVoiceId('eve')}-style (--spelling ${SPELLING})\n`)
+  console.log(`storing voice_id in its canonical form (e.g. ${storedVoiceId('eve')}); --spelling ${SPELLING} is accepted and ignored\n`)
 
   // Every clip in the course, paged; then the ones on a legacy voice.
   let all = [], from = 0
@@ -368,7 +393,7 @@ async function relink(links, newId, durationMs) {
     const missing = wanted.filter(id => !byId.has(id))
     jobs = wanted.map(id => byId.get(id)).filter(Boolean)
     console.log(`--ids ${IDS_FILE}: ${wanted.length} requested, ${jobs.length} found in ${COURSE}${missing.length ? `, ${missing.length} not in this course (skipped)` : ''}`)
-    const already = jobs.filter(r => ROLE_SLOT[r.role] && voices[ROLE_SLOT[r.role]] && r.voice_id === storedVoiceId(voices[ROLE_SLOT[r.role]].voiceId))
+    const already = jobs.filter(r => ROLE_SLOT[r.role] && voices[ROLE_SLOT[r.role]] && voiceSpellings(voices[ROLE_SLOT[r.role]]).includes(r.voice_id))
     if (already.length) { console.log(`SKIPPING ${already.length} clip(s) already on the configured voice — re-run safe.`); jobs = jobs.filter(r => !already.includes(r)) }
   } else {
     jobs = all.filter(r => isLegacyVoice(r.voice_id))
@@ -401,10 +426,10 @@ async function relink(links, newId, durationMs) {
   for (const r of jobs) {
     const slot = ROLE_SLOT[r.role]
     r._target = voices[slot]
-    r._targetVoiceId = storedVoiceId(r._target.voiceId)
+    r._targetVoiceId = storedVoiceId(r._target)
     const twin = all.find(x => x.id !== r.id && x.role === r.role && x.language === r.language &&
       x.text_normalized === r.text_normalized &&
-      (x.voice_id === r._target.voiceId || x.voice_id === `xai_${r._target.voiceId}`))
+      voiceSpellings(r._target).includes(x.voice_id))
     r._merge = twin || null
     const k = `${r.role} ${r.voice_id} -> ${r._targetVoiceId}${twin ? ' (merge)' : ''}`
     byRole[k] = (byRole[k] || 0) + 1
@@ -416,8 +441,7 @@ async function relink(links, newId, durationMs) {
     if (!r.duration_ms || r.duration_ms <= FLOOR_MS || !r.text) continue
     const slot = ROLE_SLOT[r.role]
     if (!slot || !voices[slot]) continue
-    const bare = voices[slot].voiceId
-    if (r.voice_id !== bare && r.voice_id !== `xai_${bare}`) continue
+    if (!voiceSpellings(voices[slot]).includes(r.voice_id)) continue
     const key = `${r.role}|${bare}`
     if (!buckets.has(key)) buckets.set(key, [])
     buckets.get(key).push(r)

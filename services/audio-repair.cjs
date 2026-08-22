@@ -74,33 +74,29 @@ function measureLevel (buffer) {
   })
 }
 
-const FRAME_SAMPLE_RATE = 16000
-const FRAME_MS = 5 // must match TAIL_THRESHOLDS.frameMs in audio-repair-core
+/** The rate the tail detector is calibrated at. Decoding to anything else moves its numbers. */
+const PCM_SAMPLE_RATE = require('./audio-intelligence/tiers/tier2-edge-shape.cjs').SAMPLE_RATE
 
 /**
- * The clip's amplitude envelope: per-frame RMS in dBFS, oldest first. This is
- * the only thing the tail-integrity detector needs, and keeping the decode here
- * keeps the core's maths pure and testable without audio.
+ * The clip as mono 16 kHz samples. This is the ONE decode in the repair path, and it
+ * hands the core raw samples rather than a pre-cooked envelope on purpose: the tail
+ * detector measures at 1 ms and counts exact-zero samples in the trailing pad, and
+ * neither survives an envelope. Keeping the decode here still keeps the core's maths
+ * pure — the core takes an Int16Array, so its tests need no audio and no ffmpeg.
  */
-function frameDb (buffer) {
+function pcm (buffer) {
   return new Promise((resolve, reject) => {
     const child = execFile(FFMPEG,
       ['-hide_banner', '-nostats', '-loglevel', 'error', '-i', 'pipe:0',
-        '-ac', '1', '-ar', String(FRAME_SAMPLE_RATE), '-f', 's16le', 'pipe:1'],
+        '-ac', '1', '-ar', String(PCM_SAMPLE_RATE), '-f', 's16le', 'pipe:1'],
       { encoding: 'buffer', maxBuffer: 1 << 28 },
       (err, stdout) => {
         if (err) return reject(err)
-        const samples = stdout.length / 2
-        const per = FRAME_SAMPLE_RATE * FRAME_MS / 1000
-        const out = []
-        for (let i = 0; i < samples; i += per) {
-          let sum = 0, n = 0
-          for (let j = i; j < Math.min(i + per, samples); j++) {
-            const v = stdout.readInt16LE(j * 2) / 32768
-            sum += v * v; n++
-          }
-          out.push(n ? 20 * Math.log10(Math.sqrt(sum / n) + 1e-9) : -180)
-        }
+        // Copy rather than view: ffmpeg's buffer may not be 2-byte aligned in its pool,
+        // and an odd byteOffset makes the Int16Array constructor throw.
+        const n = Math.floor(stdout.length / 2)
+        const out = new Int16Array(n)
+        for (let i = 0; i < n; i++) out[i] = stdout.readInt16LE(i * 2)
         resolve(out)
       })
     child.stdin.on('error', () => {})
@@ -164,7 +160,7 @@ const render = {
 
 const verify = {
   measure: measureLevel,
-  frameDb,
+  pcm,
   veracity: (buffer, text, language) => veracity.checkAudioVeracity(buffer, text, language),
 }
 
@@ -182,36 +178,13 @@ function core () {
   return _core
 }
 
-/**
- * Candidates that were rendered and never decided on.
- *
- * `propose` spends money and puts a candidate in `audio_repair_candidates`
- * with status 'pending'. Only `accept` promotes one, and only a human can run
- * it. Nothing used to COUNT the ones left in between, so a batch that got
- * proposed and never accepted read, in every log and every report, exactly
- * like a batch that had been fixed — while the learner still heard the old
- * clip. This is the query that makes that gap visible.
- */
-async function listPending ({ courseCode = null } = {}) {
-  let q = supabaseClient()
-    .from('audio_repair_candidates')
-    .select('id, audio_id, course_code, text, voice_id, duration_ms, veracity_pass, proposed_by, proposed_at')
-    .eq('status', 'pending')
-    .order('proposed_at', { ascending: true })
-  if (courseCode) q = q.eq('course_code', courseCode)
-  const { data, error } = await q
-  if (error) throw new Error(`listPending: ${error.message}`)
-  return data || []
-}
-
 module.exports = {
   core,
-  listPending,
   storage,
   render,
   verify,
   measureLevel,
-  frameDb,
+  pcm,
   ttsOptionsFor,
   RepairError,
   // Thin pass-throughs so callers can `require('./audio-repair.cjs').accept(...)`.

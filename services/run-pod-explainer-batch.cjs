@@ -29,6 +29,7 @@ require('dotenv').config({ path: require('path').join(__dirname, '..', '.env') }
 const { createClient } = require('@supabase/supabase-js')
 const podExplainer = require('./pod-explainer-generator.cjs')
 const { resolveExplainerLanguage } = require('../tools/pod-voice-coverage.cjs')
+const { canonicalLanguage } = require('./shared/clip-identity.cjs')
 
 // =============================================================================
 // CONFIG
@@ -384,8 +385,17 @@ async function runAudioPass(courseCode) {
   const connector = podExplainer.getConnectorForLearnerLang(learner)
   // Explicit target-language cue (fr / pt-PT / es-MX / …) so ambiguous tokens
   // pronounce correctly; 'auto' only for languages xAI can't speak.
+  //
+  // This is a TTS TUNING PARAMETER, not the clip's language. It used to be both
+  // — the same string steered xAI and was written into course_audio.language,
+  // which is where the 7,847 language='auto' rows came from. It now travels as
+  // ttsLanguageCue and the identity column gets the course's own target
+  // language. resolveExplainerLanguage is a pure function of that target
+  // (tools/pod-voice-coverage.cjs: TARGET table → locale → XAI_EXPLAINER_LANGS),
+  // so the cue stays derivable from the identity and nothing is lost.
   const explainerLanguage = resolveExplainerLanguage(target)
-  log(`[${courseCode}] audio: scanning rows ready for TTS... (connector="${connector}", language="${explainerLanguage}")`)
+  const identityLanguage = canonicalLanguage(target)
+  log(`[${courseCode}] audio: scanning rows ready for TTS... (connector="${connector}", cue="${explainerLanguage}", language="${identityLanguage}")`)
   // Pull sentences where explainer_text is non-empty AND explainer_audio_id is NULL.
   // Empty explainer_text rows are intentional skips (one-chunk sentences) and
   // shouldn't generate audio. explainer_decomposition is the structured form
@@ -417,7 +427,8 @@ async function runAudioPass(courseCode) {
     const result = await generatePodAudio({
       courseCode,
       text: ttsText,
-      language: explainerLanguage,
+      language: identityLanguage,
+      ttsLanguageCue: explainerLanguage,
       role: EXPLAINER_ROLE,
       voice: {
         voice_id: EXPLAINER_VOICE_ID,

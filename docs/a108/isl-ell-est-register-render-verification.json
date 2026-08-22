@@ -1,0 +1,3531 @@
+{
+  "job": "A-108 isl/ell/est render — independent post-hoc verification",
+  "date": "2026-08-14",
+  "read_only": true,
+  "clips": 36,
+  "passed": 36,
+  "failed": 0,
+  "pod_rows": 71,
+  "results": [
+    {
+      "clip_id": "6474f500-315f-4449-891e-089b701ac0bc",
+      "course": "ell_for_eng",
+      "voice_id": "el-GR-NestorasNeural",
+      "superseded_text": "Όχι, είναι ελεύθερη. Παρακαλώ, κάτσε.",
+      "live_text": "Όχι, είναι ελεύθερη. Παρακαλώ, καθίστε.",
+      "decode": "Όχι, είναι ελεύθερη.  Παρακαλώ, καθίστε.",
+      "previous_s3_key": "mastered/6F67DFD4-A959-4373-B706-F924F7C4647D.mp3",
+      "s3_key": "mastered/04BCD1BD-FA75-4155-A972-A2AEB9A8A62C.mp3",
+      "previous_revision": 1,
+      "revision": 2,
+      "pod_rows": [
+        {
+          "id": "ell_for_eng:pod-0-unrecorded:SC02-S002",
+          "pod": "pod-0-unrecorded",
+          "scene": 2,
+          "sentence": 2,
+          "speaker": "Passenger",
+          "target_text": "Όχι, είναι ελεύθερη. Παρακαλώ, καθίστε."
+        },
+        {
+          "id": "ell_for_eng:pod-0:SC02-S002",
+          "pod": "pod-0",
+          "scene": 2,
+          "sentence": 2,
+          "speaker": "Passenger",
+          "target_text": "Όχι, είναι ελεύθερη. Παρακαλώ, καθίστε."
+        }
+      ],
+      "checks": [
+        {
+          "name": "voice_is_incumbent_azure",
+          "ok": true,
+          "detail": "el-GR-NestorasNeural"
+        },
+        {
+          "name": "revision_bumped",
+          "ok": true,
+          "detail": "1 -> 2"
+        },
+        {
+          "name": "key_moved",
+          "ok": true,
+          "detail": "mastered/6F67DFD4-A959-4373-B706-F924F7C4647D.mp3 -> mastered/04BCD1BD-FA75-4155-A972-A2AEB9A8A62C.mp3"
+        },
+        {
+          "name": "text_audio_in_sync",
+          "ok": true,
+          "detail": "2 pod row(s), all byte-identical to course_audio.text"
+        },
+        {
+          "name": "superseded_object_retained",
+          "ok": true,
+          "detail": "mastered/6F67DFD4-A959-4373-B706-F924F7C4647D.mp3"
+        },
+        {
+          "name": "alive_on_s3",
+          "ok": true,
+          "detail": "ContentLength 61920 = file_size_bytes 61920"
+        },
+        {
+          "name": "decodable",
+          "ok": true,
+          "detail": "ffprobe 5112ms"
+        },
+        {
+          "name": "duration_agrees",
+          "ok": true,
+          "detail": "ffprobe 5112ms vs stored 5112ms"
+        },
+        {
+          "name": "not_truncated",
+          "ok": true,
+          "detail": "5112ms vs length-scaled expectation 5338ms (ratio 0.96)"
+        },
+        {
+          "name": "asr_decoded",
+          "ok": true,
+          "detail": "\"Όχι, είναι ελεύθερη.  Παρακαλώ, καθίστε.\""
+        },
+        {
+          "name": "asr_is_speech",
+          "ok": true,
+          "detail": "CER vs live text 0.000"
+        },
+        {
+          "name": "asr_speaks_new_form",
+          "ok": true,
+          "detail": "CER 0.000 vs live < 0.091 vs superseded"
+        },
+        {
+          "name": "asr_changed_words",
+          "ok": true,
+          "detail": "\"καθιστε\" is 0 from καθιστε and 3 from superseded κατσε"
+        }
+      ],
+      "pass": true
+    },
+    {
+      "clip_id": "77088330-5197-4369-8f16-421de1b093b1",
+      "course": "ell_for_eng",
+      "voice_id": "el-GR-AthinaNeural",
+      "superseded_text": "Θα σε πείραζε αν προσπαθούσα να εξασκηθώ στα ελληνικά μαζί σου; Δεν μαθαίνω πολύ καιρό, και ακόμα νιώθω λίγο νευρικός να μιλάω με άλλους ανθρώπους.",
+      "live_text": "Θα σε πείραζε αν προσπαθούσα να εξασκηθώ στα ελληνικά μαζί σου; Δεν μαθαίνω πολύ καιρό, και ακόμα νιώθω λίγο νευρική να μιλάω με άλλους ανθρώπους.",
+      "decode": "Θα σε πείραζε αν προσπαθούσανε εξασκηθώς τα ελληνικά μαζί σου;  Δεν μαθαίνω πολύ καιρό και ακόμα νιώθω λίγο νευρική να μιλάω με άλλους ανθρώπους.",
+      "previous_s3_key": "mastered/747C7592-1694-438F-B314-0AB14CE32B80.mp3",
+      "s3_key": "mastered/D1735CF4-9DCC-42D5-B43E-5EABD12D55B4.mp3",
+      "previous_revision": 1,
+      "revision": 2,
+      "pod_rows": [
+        {
+          "id": "ell_for_eng:pod-0:SC15-S001",
+          "pod": "pod-0",
+          "scene": 15,
+          "sentence": 1,
+          "speaker": "Learner",
+          "target_text": "Θα σε πείραζε αν προσπαθούσα να εξασκηθώ στα ελληνικά μαζί σου; Δεν μαθαίνω πολύ καιρό, και ακόμα νιώθω λίγο νευρική να μιλάω με άλλους ανθρώπους."
+        },
+        {
+          "id": "ell_for_eng:pod-0-unrecorded:SC22-S001",
+          "pod": "pod-0-unrecorded",
+          "scene": 22,
+          "sentence": 1,
+          "speaker": "Learner",
+          "target_text": "Θα σε πείραζε αν προσπαθούσα να εξασκηθώ στα ελληνικά μαζί σου; Δεν μαθαίνω πολύ καιρό, και ακόμα νιώθω λίγο νευρική να μιλάω με άλλους ανθρώπους."
+        }
+      ],
+      "checks": [
+        {
+          "name": "voice_is_incumbent_azure",
+          "ok": true,
+          "detail": "el-GR-AthinaNeural"
+        },
+        {
+          "name": "revision_bumped",
+          "ok": true,
+          "detail": "1 -> 2"
+        },
+        {
+          "name": "key_moved",
+          "ok": true,
+          "detail": "mastered/747C7592-1694-438F-B314-0AB14CE32B80.mp3 -> mastered/D1735CF4-9DCC-42D5-B43E-5EABD12D55B4.mp3"
+        },
+        {
+          "name": "text_audio_in_sync",
+          "ok": true,
+          "detail": "2 pod row(s), all byte-identical to course_audio.text"
+        },
+        {
+          "name": "superseded_object_retained",
+          "ok": true,
+          "detail": "mastered/747C7592-1694-438F-B314-0AB14CE32B80.mp3"
+        },
+        {
+          "name": "alive_on_s3",
+          "ok": true,
+          "detail": "ContentLength 101376 = file_size_bytes 101376"
+        },
+        {
+          "name": "decodable",
+          "ok": true,
+          "detail": "ffprobe 8388ms"
+        },
+        {
+          "name": "duration_agrees",
+          "ok": true,
+          "detail": "ffprobe 8388ms vs stored 8388ms"
+        },
+        {
+          "name": "not_truncated",
+          "ok": true,
+          "detail": "8388ms vs length-scaled expectation 8391ms (ratio 1.00)"
+        },
+        {
+          "name": "asr_decoded",
+          "ok": true,
+          "detail": "\"Θα σε πείραζε αν προσπαθούσανε εξασκηθώς τα ελληνικά μαζί σου;  Δεν μαθαίνω πολύ καιρό και ακόμα νιώθω λίγο νευρική να μιλάω με άλλους ανθρώπους.\""
+        },
+        {
+          "name": "asr_is_speech",
+          "ok": true,
+          "detail": "CER vs live text 0.028"
+        },
+        {
+          "name": "asr_speaks_new_form",
+          "ok": true,
+          "detail": "CER 0.028 vs live < 0.042 vs superseded"
+        },
+        {
+          "name": "asr_changed_words",
+          "ok": true,
+          "detail": "\"νευρικη\" is 0 from νευρικη and 2 from superseded νευρικος"
+        }
+      ],
+      "pass": true
+    },
+    {
+      "clip_id": "3f288231-184d-4a32-bd36-e772578840cf",
+      "course": "ell_for_eng",
+      "voice_id": "el-GR-AthinaNeural",
+      "superseded_text": "Ναι, ευχαριστώ. Είναι πιο εύκολο να μιλάω με ένα άτομο μόνο. Είναι λίγο δύσκολο να σκέφτομαι κάτι να πω, όμως. Δεν είμαι σίγουρος τι να πω, αλλά νιώθω σαν να μπορώ να μιλάω αρκετά για να αρχίσω να κάνω συνομιλίες.",
+      "live_text": "Ναι, ευχαριστώ. Είναι πιο εύκολο να μιλάω με ένα άτομο μόνο. Είναι λίγο δύσκολο να σκέφτομαι κάτι να πω, όμως. Δεν είμαι σίγουρη τι να πω, αλλά νιώθω σαν να μπορώ να μιλάω αρκετά για να αρχίσω να κάνω συνομιλίες.",
+      "decode": "- Ναι, ευχαριστώ. Είναι πιο εύκολο να μιλάω με ένα άτομο μόνο.  Είναι λίγο δύσκολο να σκέφτομαι κάτι να πω, όμως.  Δεν είμαι σίγουρη τι να πω, αλλά νιώθω σαν να μπορώ να μιλάω αρκετά για να αρχίσω να κάνω συνομιλίες.",
+      "previous_s3_key": "mastered/A35DEA9E-6334-4094-BE8C-189D1783768A.mp3",
+      "s3_key": "mastered/F98EF979-E73E-43FA-ADD8-11492B5E9E84.mp3",
+      "previous_revision": 1,
+      "revision": 2,
+      "pod_rows": [
+        {
+          "id": "ell_for_eng:pod-0-unrecorded:SC22-S005",
+          "pod": "pod-0-unrecorded",
+          "scene": 22,
+          "sentence": 5,
+          "speaker": "Learner",
+          "target_text": "Ναι, ευχαριστώ. Είναι πιο εύκολο να μιλάω με ένα άτομο μόνο. Είναι λίγο δύσκολο να σκέφτομαι κάτι να πω, όμως. Δεν είμαι σίγουρη τι να πω, αλλά νιώθω σαν να μπορώ να μιλάω αρκετά για να αρχίσω να κάνω συνομιλίες."
+        },
+        {
+          "id": "ell_for_eng:pod-0:SC15-S005",
+          "pod": "pod-0",
+          "scene": 15,
+          "sentence": 5,
+          "speaker": "Learner",
+          "target_text": "Ναι, ευχαριστώ. Είναι πιο εύκολο να μιλάω με ένα άτομο μόνο. Είναι λίγο δύσκολο να σκέφτομαι κάτι να πω, όμως. Δεν είμαι σίγουρη τι να πω, αλλά νιώθω σαν να μπορώ να μιλάω αρκετά για να αρχίσω να κάνω συνομιλίες."
+        }
+      ],
+      "checks": [
+        {
+          "name": "voice_is_incumbent_azure",
+          "ok": true,
+          "detail": "el-GR-AthinaNeural"
+        },
+        {
+          "name": "revision_bumped",
+          "ok": true,
+          "detail": "1 -> 2"
+        },
+        {
+          "name": "key_moved",
+          "ok": true,
+          "detail": "mastered/A35DEA9E-6334-4094-BE8C-189D1783768A.mp3 -> mastered/F98EF979-E73E-43FA-ADD8-11492B5E9E84.mp3"
+        },
+        {
+          "name": "text_audio_in_sync",
+          "ok": true,
+          "detail": "2 pod row(s), all byte-identical to course_audio.text"
+        },
+        {
+          "name": "superseded_object_retained",
+          "ok": true,
+          "detail": "mastered/A35DEA9E-6334-4094-BE8C-189D1783768A.mp3"
+        },
+        {
+          "name": "alive_on_s3",
+          "ok": true,
+          "detail": "ContentLength 167040 = file_size_bytes 167040"
+        },
+        {
+          "name": "decodable",
+          "ok": true,
+          "detail": "ffprobe 13860ms"
+        },
+        {
+          "name": "duration_agrees",
+          "ok": true,
+          "detail": "ffprobe 13860ms vs stored 13860ms"
+        },
+        {
+          "name": "not_truncated",
+          "ok": true,
+          "detail": "13860ms vs length-scaled expectation 13902ms (ratio 1.00)"
+        },
+        {
+          "name": "asr_decoded",
+          "ok": true,
+          "detail": "\"- Ναι, ευχαριστώ. Είναι πιο εύκολο να μιλάω με ένα άτομο μόνο.  Είναι λίγο δύσκολο να σκέφτομαι κάτι να πω, όμως.  Δεν είμαι σίγουρη τι να πω, αλλά νιώθω σαν να μπορώ να μιλάω αρκετά για να αρχίσω να κάνω συνομιλίες.\""
+        },
+        {
+          "name": "asr_is_speech",
+          "ok": true,
+          "detail": "CER vs live text 0.000"
+        },
+        {
+          "name": "asr_speaks_new_form",
+          "ok": true,
+          "detail": "CER 0.000 vs live < 0.010 vs superseded"
+        },
+        {
+          "name": "asr_changed_words",
+          "ok": true,
+          "detail": "\"σιγουρη\" is 0 from σιγουρη and 2 from superseded σιγουρος"
+        }
+      ],
+      "pass": true
+    },
+    {
+      "clip_id": "a922964c-252a-4290-af20-ad342dc30bcc",
+      "course": "ell_for_eng",
+      "voice_id": "el-GR-NestorasNeural",
+      "superseded_text": "Νομίζω ότι τα πας πολύ καλά. Εντυπωσιάζομαι. Νομίζω ότι είσαι έτοιμος να αρχίσεις να μιλάς ελληνικά με οποιονδήποτε που μιλάει ελληνικά.",
+      "live_text": "Νομίζω ότι τα πας πολύ καλά. Εντυπωσιάζομαι. Νομίζω ότι είσαι έτοιμη να αρχίσεις να μιλάς ελληνικά με οποιονδήποτε που μιλάει ελληνικά.",
+      "decode": "Νομίζω ότι τα πας πολύ καλά.  Εντυπωσιάζομαι.  Νομίζω ότι είσαι έτοιμη να αρχίσεις να μιλάς ελληνικά με οποιοδήποτε που μιλάει ελληνικά.",
+      "previous_s3_key": "mastered/3137E6F0-C0EA-4231-BA7E-406956E7CF16.mp3",
+      "s3_key": "mastered/D350FF6E-8ED1-4A12-9731-7C4C0DFBC7E8.mp3",
+      "previous_revision": 1,
+      "revision": 2,
+      "pod_rows": [
+        {
+          "id": "ell_for_eng:pod-0:SC15-S006",
+          "pod": "pod-0",
+          "scene": 15,
+          "sentence": 6,
+          "speaker": "Friend",
+          "target_text": "Νομίζω ότι τα πας πολύ καλά. Εντυπωσιάζομαι. Νομίζω ότι είσαι έτοιμη να αρχίσεις να μιλάς ελληνικά με οποιονδήποτε που μιλάει ελληνικά."
+        },
+        {
+          "id": "ell_for_eng:pod-0-unrecorded:SC22-S006",
+          "pod": "pod-0-unrecorded",
+          "scene": 22,
+          "sentence": 6,
+          "speaker": "Friend",
+          "target_text": "Νομίζω ότι τα πας πολύ καλά. Εντυπωσιάζομαι. Νομίζω ότι είσαι έτοιμη να αρχίσεις να μιλάς ελληνικά με οποιονδήποτε που μιλάει ελληνικά."
+        }
+      ],
+      "checks": [
+        {
+          "name": "voice_is_incumbent_azure",
+          "ok": true,
+          "detail": "el-GR-NestorasNeural"
+        },
+        {
+          "name": "revision_bumped",
+          "ok": true,
+          "detail": "1 -> 2"
+        },
+        {
+          "name": "key_moved",
+          "ok": true,
+          "detail": "mastered/3137E6F0-C0EA-4231-BA7E-406956E7CF16.mp3 -> mastered/D350FF6E-8ED1-4A12-9731-7C4C0DFBC7E8.mp3"
+        },
+        {
+          "name": "text_audio_in_sync",
+          "ok": true,
+          "detail": "2 pod row(s), all byte-identical to course_audio.text"
+        },
+        {
+          "name": "superseded_object_retained",
+          "ok": true,
+          "detail": "mastered/3137E6F0-C0EA-4231-BA7E-406956E7CF16.mp3"
+        },
+        {
+          "name": "alive_on_s3",
+          "ok": true,
+          "detail": "ContentLength 113760 = file_size_bytes 113760"
+        },
+        {
+          "name": "decodable",
+          "ok": true,
+          "detail": "ffprobe 9432ms"
+        },
+        {
+          "name": "duration_agrees",
+          "ok": true,
+          "detail": "ffprobe 9432ms vs stored 9432ms"
+        },
+        {
+          "name": "not_truncated",
+          "ok": true,
+          "detail": "9432ms vs length-scaled expectation 9434ms (ratio 1.00)"
+        },
+        {
+          "name": "asr_decoded",
+          "ok": true,
+          "detail": "\"Νομίζω ότι τα πας πολύ καλά.  Εντυπωσιάζομαι.  Νομίζω ότι είσαι έτοιμη να αρχίσεις να μιλάς ελληνικά με οποιοδήποτε που μιλάει ελληνικά.\""
+        },
+        {
+          "name": "asr_is_speech",
+          "ok": true,
+          "detail": "CER vs live text 0.008"
+        },
+        {
+          "name": "asr_speaks_new_form",
+          "ok": true,
+          "detail": "CER 0.008 vs live < 0.023 vs superseded"
+        },
+        {
+          "name": "asr_changed_words",
+          "ok": true,
+          "detail": "\"ετοιμη\" is 0 from ετοιμη and 2 from superseded ετοιμος"
+        }
+      ],
+      "pass": true
+    },
+    {
+      "clip_id": "a75c8b21-8cf2-4cf5-9836-46e6edaeb116",
+      "course": "ell_for_eng",
+      "voice_id": "el-GR-NestorasNeural",
+      "superseded_text": "Θα έπρεπε να είσαι ήδη σίγουρος. Νομίζω ότι τα πας πολύ καλύτερα από ό,τι καταλαβαίνεις. Νιώθω άνετα να μιλάω μαζί σου, και δεν μιλάω πολύ αργά.",
+      "live_text": "Θα έπρεπε να είσαι ήδη σίγουρη. Νομίζω ότι τα πας πολύ καλύτερα από ό,τι καταλαβαίνεις. Νιώθω άνετα να μιλάω μαζί σου, και δεν μιλάω πολύ αργά.",
+      "decode": "Θα έπρεπε να είσαι ήδη σίγουρη.  Νομίζω ότι τα πας πολύ καλύτερα από μικρό με τόνο, τη καταλαβαίνεις.  Νιώθω άνετα να μιλάω μαζί σου, και δε μιλάω πολύ αργά.",
+      "previous_s3_key": "mastered/43599CDB-5FFA-475A-82DA-A1B8DDEDBC6E.mp3",
+      "s3_key": "mastered/29E8ACF4-7B3A-4B1C-A57F-004CDD70983E.mp3",
+      "previous_revision": 1,
+      "revision": 2,
+      "pod_rows": [
+        {
+          "id": "ell_for_eng:pod-0-unrecorded:SC22-S008",
+          "pod": "pod-0-unrecorded",
+          "scene": 22,
+          "sentence": 8,
+          "speaker": "Friend",
+          "target_text": "Θα έπρεπε να είσαι ήδη σίγουρη. Νομίζω ότι τα πας πολύ καλύτερα από ό,τι καταλαβαίνεις. Νιώθω άνετα να μιλάω μαζί σου, και δεν μιλάω πολύ αργά."
+        },
+        {
+          "id": "ell_for_eng:pod-0:SC15-S008",
+          "pod": "pod-0",
+          "scene": 15,
+          "sentence": 8,
+          "speaker": "Friend",
+          "target_text": "Θα έπρεπε να είσαι ήδη σίγουρη. Νομίζω ότι τα πας πολύ καλύτερα από ό,τι καταλαβαίνεις. Νιώθω άνετα να μιλάω μαζί σου, και δεν μιλάω πολύ αργά."
+        }
+      ],
+      "checks": [
+        {
+          "name": "voice_is_incumbent_azure",
+          "ok": true,
+          "detail": "el-GR-NestorasNeural"
+        },
+        {
+          "name": "revision_bumped",
+          "ok": true,
+          "detail": "1 -> 2"
+        },
+        {
+          "name": "key_moved",
+          "ok": true,
+          "detail": "mastered/43599CDB-5FFA-475A-82DA-A1B8DDEDBC6E.mp3 -> mastered/29E8ACF4-7B3A-4B1C-A57F-004CDD70983E.mp3"
+        },
+        {
+          "name": "text_audio_in_sync",
+          "ok": true,
+          "detail": "2 pod row(s), all byte-identical to course_audio.text"
+        },
+        {
+          "name": "superseded_object_retained",
+          "ok": true,
+          "detail": "mastered/43599CDB-5FFA-475A-82DA-A1B8DDEDBC6E.mp3"
+        },
+        {
+          "name": "alive_on_s3",
+          "ok": true,
+          "detail": "ContentLength 128448 = file_size_bytes 128448"
+        },
+        {
+          "name": "decodable",
+          "ok": true,
+          "detail": "ffprobe 10656ms"
+        },
+        {
+          "name": "duration_agrees",
+          "ok": true,
+          "detail": "ffprobe 10656ms vs stored 10656ms"
+        },
+        {
+          "name": "not_truncated",
+          "ok": true,
+          "detail": "10656ms vs length-scaled expectation 10654ms (ratio 1.00)"
+        },
+        {
+          "name": "asr_decoded",
+          "ok": true,
+          "detail": "\"Θα έπρεπε να είσαι ήδη σίγουρη.  Νομίζω ότι τα πας πολύ καλύτερα από μικρό με τόνο, τη καταλαβαίνεις.  Νιώθω άνετα να μιλάω μαζί σου, και δε μιλάω πολύ αργά.\""
+        },
+        {
+          "name": "asr_is_speech",
+          "ok": true,
+          "detail": "CER vs live text 0.101"
+        },
+        {
+          "name": "asr_speaks_new_form",
+          "ok": true,
+          "detail": "CER 0.101 vs live < 0.114 vs superseded"
+        },
+        {
+          "name": "asr_changed_words",
+          "ok": true,
+          "detail": "\"σιγουρη\" is 0 from σιγουρη and 2 from superseded σιγουρος"
+        }
+      ],
+      "pass": true
+    },
+    {
+      "clip_id": "a2333c79-5934-4cd0-8989-6b6bb88f8a1f",
+      "course": "ell_for_eng",
+      "voice_id": "el-GR-AthinaNeural",
+      "superseded_text": "Πραγματικά είναι. Είμαι πολύ χαρούμενος που μπορώ να κάνω τόση συνομιλία. Και ελπίζω να μπορέσουμε να έχουμε περισσότερες συνομιλίες στο μέλλον καθώς συνεχίζω να βελτιώνομαι.",
+      "live_text": "Πραγματικά είναι. Είμαι πολύ χαρούμενη που μπορώ να κάνω τόση συνομιλία. Και ελπίζω να μπορέσουμε να έχουμε περισσότερες συνομιλίες στο μέλλον καθώς συνεχίζω να βελτιώνομαι.",
+      "decode": "Πραγματικά είναι! Είμαι πολύ χαρούμενη που μπορώ να κάνω τόση συνομιλία.  Και ελπίζω να μπορέσουμε να έχουμε περισσότερες συνομιλίες στο μέλλον, καθώς συνεχίζω να βελτιώνομαι.",
+      "previous_s3_key": "mastered/FA1CFD26-0E17-4DE7-B077-FB4AACA4ECB5.mp3",
+      "s3_key": "mastered/89A78723-3A7A-454F-A9BF-827C9DC08107.mp3",
+      "previous_revision": 1,
+      "revision": 2,
+      "pod_rows": [
+        {
+          "id": "ell_for_eng:pod-0-unrecorded:SC22-S011",
+          "pod": "pod-0-unrecorded",
+          "scene": 22,
+          "sentence": 11,
+          "speaker": "Learner",
+          "target_text": "Πραγματικά είναι. Είμαι πολύ χαρούμενη που μπορώ να κάνω τόση συνομιλία. Και ελπίζω να μπορέσουμε να έχουμε περισσότερες συνομιλίες στο μέλλον καθώς συνεχίζω να βελτιώνομαι."
+        },
+        {
+          "id": "ell_for_eng:pod-0:SC15-S011",
+          "pod": "pod-0",
+          "scene": 15,
+          "sentence": 11,
+          "speaker": "Learner",
+          "target_text": "Πραγματικά είναι. Είμαι πολύ χαρούμενη που μπορώ να κάνω τόση συνομιλία. Και ελπίζω να μπορέσουμε να έχουμε περισσότερες συνομιλίες στο μέλλον καθώς συνεχίζω να βελτιώνομαι."
+        }
+      ],
+      "checks": [
+        {
+          "name": "voice_is_incumbent_azure",
+          "ok": true,
+          "detail": "el-GR-AthinaNeural"
+        },
+        {
+          "name": "revision_bumped",
+          "ok": true,
+          "detail": "1 -> 2"
+        },
+        {
+          "name": "key_moved",
+          "ok": true,
+          "detail": "mastered/FA1CFD26-0E17-4DE7-B077-FB4AACA4ECB5.mp3 -> mastered/89A78723-3A7A-454F-A9BF-827C9DC08107.mp3"
+        },
+        {
+          "name": "text_audio_in_sync",
+          "ok": true,
+          "detail": "2 pod row(s), all byte-identical to course_audio.text"
+        },
+        {
+          "name": "superseded_object_retained",
+          "ok": true,
+          "detail": "mastered/FA1CFD26-0E17-4DE7-B077-FB4AACA4ECB5.mp3"
+        },
+        {
+          "name": "alive_on_s3",
+          "ok": true,
+          "detail": "ContentLength 125568 = file_size_bytes 125568"
+        },
+        {
+          "name": "decodable",
+          "ok": true,
+          "detail": "ffprobe 10404ms"
+        },
+        {
+          "name": "duration_agrees",
+          "ok": true,
+          "detail": "ffprobe 10404ms vs stored 10404ms"
+        },
+        {
+          "name": "not_truncated",
+          "ok": true,
+          "detail": "10404ms vs length-scaled expectation 10523ms (ratio 0.99)"
+        },
+        {
+          "name": "asr_decoded",
+          "ok": true,
+          "detail": "\"Πραγματικά είναι! Είμαι πολύ χαρούμενη που μπορώ να κάνω τόση συνομιλία.  Και ελπίζω να μπορέσουμε να έχουμε περισσότερες συνομιλίες στο μέλλον, καθώς συνεχίζω να βελτιώνομαι.\""
+        },
+        {
+          "name": "asr_is_speech",
+          "ok": true,
+          "detail": "CER vs live text 0.000"
+        },
+        {
+          "name": "asr_speaks_new_form",
+          "ok": true,
+          "detail": "CER 0.000 vs live < 0.012 vs superseded"
+        },
+        {
+          "name": "asr_changed_words",
+          "ok": true,
+          "detail": "\"χαρουμενη\" is 0 from χαρουμενη and 2 from superseded χαρουμενος"
+        }
+      ],
+      "pass": true
+    },
+    {
+      "clip_id": "c8a3df46-13f5-4732-b823-d9731d3b32a4",
+      "course": "ell_for_eng",
+      "voice_id": "el-GR-NestorasNeural",
+      "superseded_text": "Συγγνώμη, ξέρεις πώς να πάω στο κοντινότερο σούπερ μάρκετ;",
+      "live_text": "Συγγνώμη, ξέρετε πώς να πάω στο κοντινότερο σούπερ μάρκετ;",
+      "decode": "Συγγνώμη, ξέρετε πως να πάω στο κοντινότερο σούπερ μάρκετ;",
+      "previous_s3_key": "mastered/43486C47-43D3-45ED-AB49-1C00DC6382F9.mp3",
+      "s3_key": "mastered/8C52F6CA-E333-4727-99AD-351835B9DC0E.mp3",
+      "previous_revision": 1,
+      "revision": 2,
+      "pod_rows": [
+        {
+          "id": "ell_for_eng:pod-0:SC13-S001",
+          "pod": "pod-0",
+          "scene": 13,
+          "sentence": 1,
+          "speaker": "Tourist",
+          "target_text": "Συγγνώμη, ξέρετε πώς να πάω στο κοντινότερο σούπερ μάρκετ;"
+        },
+        {
+          "id": "ell_for_eng:pod-0-unrecorded:SC13-S001",
+          "pod": "pod-0-unrecorded",
+          "scene": 13,
+          "sentence": 1,
+          "speaker": "Tourist",
+          "target_text": "Συγγνώμη, ξέρετε πώς να πάω στο κοντινότερο σούπερ μάρκετ;"
+        }
+      ],
+      "checks": [
+        {
+          "name": "voice_is_incumbent_azure",
+          "ok": true,
+          "detail": "el-GR-NestorasNeural"
+        },
+        {
+          "name": "revision_bumped",
+          "ok": true,
+          "detail": "1 -> 2"
+        },
+        {
+          "name": "key_moved",
+          "ok": true,
+          "detail": "mastered/43486C47-43D3-45ED-AB49-1C00DC6382F9.mp3 -> mastered/8C52F6CA-E333-4727-99AD-351835B9DC0E.mp3"
+        },
+        {
+          "name": "text_audio_in_sync",
+          "ok": true,
+          "detail": "2 pod row(s), all byte-identical to course_audio.text"
+        },
+        {
+          "name": "superseded_object_retained",
+          "ok": true,
+          "detail": "mastered/43486C47-43D3-45ED-AB49-1C00DC6382F9.mp3"
+        },
+        {
+          "name": "alive_on_s3",
+          "ok": true,
+          "detail": "ContentLength 50688 = file_size_bytes 50688"
+        },
+        {
+          "name": "decodable",
+          "ok": true,
+          "detail": "ffprobe 4176ms"
+        },
+        {
+          "name": "duration_agrees",
+          "ok": true,
+          "detail": "ffprobe 4176ms vs stored 4176ms"
+        },
+        {
+          "name": "not_truncated",
+          "ok": true,
+          "detail": "4176ms vs length-scaled expectation 4176ms (ratio 1.00)"
+        },
+        {
+          "name": "asr_decoded",
+          "ok": true,
+          "detail": "\"Συγγνώμη, ξέρετε πως να πάω στο κοντινότερο σούπερ μάρκετ;\""
+        },
+        {
+          "name": "asr_is_speech",
+          "ok": true,
+          "detail": "CER vs live text 0.000"
+        },
+        {
+          "name": "asr_speaks_new_form",
+          "ok": true,
+          "detail": "CER 0.000 vs live < 0.036 vs superseded"
+        },
+        {
+          "name": "asr_changed_words",
+          "ok": true,
+          "detail": "\"ξερετε\" is 0 from ξερετε and 2 from superseded ξερεις"
+        }
+      ],
+      "pass": true
+    },
+    {
+      "clip_id": "7243deb2-578c-4449-a4cc-407a9725bf0d",
+      "course": "ell_for_eng",
+      "voice_id": "el-GR-NestorasNeural",
+      "superseded_text": "Ναι, είναι περίπου δέκα λεπτά με τα πόδια. Πήγαινε ίσια σε αυτόν τον δρόμο.",
+      "live_text": "Ναι, είναι περίπου δέκα λεπτά με τα πόδια. Πηγαίνετε ίσια σε αυτόν τον δρόμο.",
+      "decode": "Ναι, είναι περίπου δέκα λεπτά με τα πόδια.  Πηγαίνετε ίσια σε αυτόν τον δρόμο.",
+      "previous_s3_key": "mastered/EF81956F-0CD8-4A81-B8FD-00C34C5D49E7.mp3",
+      "s3_key": "mastered/6D50455B-3620-47F7-9257-76555C386ED3.mp3",
+      "previous_revision": 1,
+      "revision": 2,
+      "pod_rows": [
+        {
+          "id": "ell_for_eng:pod-0:SC13-S002",
+          "pod": "pod-0",
+          "scene": 13,
+          "sentence": 2,
+          "speaker": "Local",
+          "target_text": "Ναι, είναι περίπου δέκα λεπτά με τα πόδια. Πηγαίνετε ίσια σε αυτόν τον δρόμο."
+        },
+        {
+          "id": "ell_for_eng:pod-0-unrecorded:SC13-S002",
+          "pod": "pod-0-unrecorded",
+          "scene": 13,
+          "sentence": 2,
+          "speaker": "Local",
+          "target_text": "Ναι, είναι περίπου δέκα λεπτά με τα πόδια. Πηγαίνετε ίσια σε αυτόν τον δρόμο."
+        }
+      ],
+      "checks": [
+        {
+          "name": "voice_is_incumbent_azure",
+          "ok": true,
+          "detail": "el-GR-NestorasNeural"
+        },
+        {
+          "name": "revision_bumped",
+          "ok": true,
+          "detail": "1 -> 2"
+        },
+        {
+          "name": "key_moved",
+          "ok": true,
+          "detail": "mastered/EF81956F-0CD8-4A81-B8FD-00C34C5D49E7.mp3 -> mastered/6D50455B-3620-47F7-9257-76555C386ED3.mp3"
+        },
+        {
+          "name": "text_audio_in_sync",
+          "ok": true,
+          "detail": "2 pod row(s), all byte-identical to course_audio.text"
+        },
+        {
+          "name": "superseded_object_retained",
+          "ok": true,
+          "detail": "mastered/EF81956F-0CD8-4A81-B8FD-00C34C5D49E7.mp3"
+        },
+        {
+          "name": "alive_on_s3",
+          "ok": true,
+          "detail": "ContentLength 72000 = file_size_bytes 72000"
+        },
+        {
+          "name": "decodable",
+          "ok": true,
+          "detail": "ffprobe 5940ms"
+        },
+        {
+          "name": "duration_agrees",
+          "ok": true,
+          "detail": "ffprobe 5940ms vs stored 5940ms"
+        },
+        {
+          "name": "not_truncated",
+          "ok": true,
+          "detail": "5940ms vs length-scaled expectation 5938ms (ratio 1.00)"
+        },
+        {
+          "name": "asr_decoded",
+          "ok": true,
+          "detail": "\"Ναι, είναι περίπου δέκα λεπτά με τα πόδια.  Πηγαίνετε ίσια σε αυτόν τον δρόμο.\""
+        },
+        {
+          "name": "asr_is_speech",
+          "ok": true,
+          "detail": "CER vs live text 0.000"
+        },
+        {
+          "name": "asr_speaks_new_form",
+          "ok": true,
+          "detail": "CER 0.000 vs live < 0.028 vs superseded"
+        },
+        {
+          "name": "asr_changed_words",
+          "ok": true,
+          "detail": "\"πηγαινετε\" is 0 from πηγαινετε and 2 from superseded πηγαινε"
+        }
+      ],
+      "pass": true
+    },
+    {
+      "clip_id": "7e506506-0b82-400f-9371-079c57376961",
+      "course": "ell_for_eng",
+      "voice_id": "el-GR-NestorasNeural",
+      "superseded_text": "Στον δεύτερο κυκλικό κόμβο, πάρε την πρώτη έξοδο.",
+      "live_text": "Στον δεύτερο κυκλικό κόμβο, πάρτε την πρώτη έξοδο.",
+      "decode": "Στο δεύτερο κυκλικό κόμβο, πάρτε την πρώτη έξοδο.",
+      "previous_s3_key": "mastered/06533E35-F6A1-4C76-9EB5-5AD690F34318.mp3",
+      "s3_key": "mastered/B0986C2E-808D-41B2-8C5C-E8C5C83B73F7.mp3",
+      "previous_revision": 1,
+      "revision": 2,
+      "pod_rows": [
+        {
+          "id": "ell_for_eng:pod-0:SC13-S005",
+          "pod": "pod-0",
+          "scene": 13,
+          "sentence": 5,
+          "speaker": "Local",
+          "target_text": "Στον δεύτερο κυκλικό κόμβο, πάρτε την πρώτη έξοδο."
+        },
+        {
+          "id": "ell_for_eng:pod-0-unrecorded:SC13-S005",
+          "pod": "pod-0-unrecorded",
+          "scene": 13,
+          "sentence": 5,
+          "speaker": "Local",
+          "target_text": "Στον δεύτερο κυκλικό κόμβο, πάρτε την πρώτη έξοδο."
+        }
+      ],
+      "checks": [
+        {
+          "name": "voice_is_incumbent_azure",
+          "ok": true,
+          "detail": "el-GR-NestorasNeural"
+        },
+        {
+          "name": "revision_bumped",
+          "ok": true,
+          "detail": "1 -> 2"
+        },
+        {
+          "name": "key_moved",
+          "ok": true,
+          "detail": "mastered/06533E35-F6A1-4C76-9EB5-5AD690F34318.mp3 -> mastered/B0986C2E-808D-41B2-8C5C-E8C5C83B73F7.mp3"
+        },
+        {
+          "name": "text_audio_in_sync",
+          "ok": true,
+          "detail": "2 pod row(s), all byte-identical to course_audio.text"
+        },
+        {
+          "name": "superseded_object_retained",
+          "ok": true,
+          "detail": "mastered/06533E35-F6A1-4C76-9EB5-5AD690F34318.mp3"
+        },
+        {
+          "name": "alive_on_s3",
+          "ok": true,
+          "detail": "ContentLength 47232 = file_size_bytes 47232"
+        },
+        {
+          "name": "decodable",
+          "ok": true,
+          "detail": "ffprobe 3888ms"
+        },
+        {
+          "name": "duration_agrees",
+          "ok": true,
+          "detail": "ffprobe 3888ms vs stored 3888ms"
+        },
+        {
+          "name": "not_truncated",
+          "ok": true,
+          "detail": "3888ms vs length-scaled expectation 3992ms (ratio 0.97)"
+        },
+        {
+          "name": "asr_decoded",
+          "ok": true,
+          "detail": "\"Στο δεύτερο κυκλικό κόμβο, πάρτε την πρώτη έξοδο.\""
+        },
+        {
+          "name": "asr_is_speech",
+          "ok": true,
+          "detail": "CER vs live text 0.021"
+        },
+        {
+          "name": "asr_speaks_new_form",
+          "ok": true,
+          "detail": "CER 0.021 vs live < 0.043 vs superseded"
+        },
+        {
+          "name": "asr_changed_words",
+          "ok": true,
+          "detail": "\"παρτε\" is 0 from παρτε and 1 from superseded παρε"
+        }
+      ],
+      "pass": true
+    },
+    {
+      "clip_id": "dd0303cb-783e-45a1-8f54-c6cd5b737fdf",
+      "course": "ell_for_eng",
+      "voice_id": "el-GR-NestorasNeural",
+      "superseded_text": "Θα δεις το σούπερ μάρκετ στα αριστερά σου, ακριβώς απέναντι από τη στάση του λεωφορείου.",
+      "live_text": "Θα δείτε το σούπερ μάρκετ στα αριστερά σας, ακριβώς απέναντι από τη στάση του λεωφορείου.",
+      "decode": "Θα δείτε το σούπερ μάρκετ στ' αριστερά σας, ακριβώς απέναντι από τη στάση του λεωφορίου.",
+      "previous_s3_key": "mastered/92A3CA08-E266-4D34-884B-C494E660EA44.mp3",
+      "s3_key": "mastered/A2C35FD2-061A-4861-94CD-E0A6A8F7CC35.mp3",
+      "previous_revision": 1,
+      "revision": 2,
+      "pod_rows": [
+        {
+          "id": "ell_for_eng:pod-0-unrecorded:SC13-S007",
+          "pod": "pod-0-unrecorded",
+          "scene": 13,
+          "sentence": 7,
+          "speaker": "Local",
+          "target_text": "Θα δείτε το σούπερ μάρκετ στα αριστερά σας, ακριβώς απέναντι από τη στάση του λεωφορείου."
+        },
+        {
+          "id": "ell_for_eng:pod-0:SC13-S007",
+          "pod": "pod-0",
+          "scene": 13,
+          "sentence": 7,
+          "speaker": "Local",
+          "target_text": "Θα δείτε το σούπερ μάρκετ στα αριστερά σας, ακριβώς απέναντι από τη στάση του λεωφορείου."
+        }
+      ],
+      "checks": [
+        {
+          "name": "voice_is_incumbent_azure",
+          "ok": true,
+          "detail": "el-GR-NestorasNeural"
+        },
+        {
+          "name": "revision_bumped",
+          "ok": true,
+          "detail": "1 -> 2"
+        },
+        {
+          "name": "key_moved",
+          "ok": true,
+          "detail": "mastered/92A3CA08-E266-4D34-884B-C494E660EA44.mp3 -> mastered/A2C35FD2-061A-4861-94CD-E0A6A8F7CC35.mp3"
+        },
+        {
+          "name": "text_audio_in_sync",
+          "ok": true,
+          "detail": "2 pod row(s), all byte-identical to course_audio.text"
+        },
+        {
+          "name": "superseded_object_retained",
+          "ok": true,
+          "detail": "mastered/92A3CA08-E266-4D34-884B-C494E660EA44.mp3"
+        },
+        {
+          "name": "alive_on_s3",
+          "ok": true,
+          "detail": "ContentLength 62784 = file_size_bytes 62784"
+        },
+        {
+          "name": "decodable",
+          "ok": true,
+          "detail": "ffprobe 5184ms"
+        },
+        {
+          "name": "duration_agrees",
+          "ok": true,
+          "detail": "ffprobe 5184ms vs stored 5184ms"
+        },
+        {
+          "name": "not_truncated",
+          "ok": true,
+          "detail": "5184ms vs length-scaled expectation 5194ms (ratio 1.00)"
+        },
+        {
+          "name": "asr_decoded",
+          "ok": true,
+          "detail": "\"Θα δείτε το σούπερ μάρκετ στ' αριστερά σας, ακριβώς απέναντι από τη στάση του λεωφορίου.\""
+        },
+        {
+          "name": "asr_is_speech",
+          "ok": true,
+          "detail": "CER vs live text 0.023"
+        },
+        {
+          "name": "asr_speaks_new_form",
+          "ok": true,
+          "detail": "CER 0.023 vs live < 0.070 vs superseded"
+        },
+        {
+          "name": "asr_changed_words",
+          "ok": true,
+          "detail": "\"δειτε\" is 0 from δειτε and 2 from superseded δεις; \"σας\" is 0 from σας and 2 from superseded σου"
+        }
+      ],
+      "pass": true
+    },
+    {
+      "clip_id": "f99feb7e-1702-49fe-a6ce-d8a3c089c006",
+      "course": "est_for_eng",
+      "voice_id": "et-EE-KertNeural",
+      "superseded_text": "Muidugi. Kas sa istud siin või võtad kaasa?",
+      "live_text": "Muidugi. Kas te istute siin või võtate kaasa?",
+      "decode": "Muidugi, kas te istutte siin või võtate kaasa.",
+      "previous_s3_key": "mastered/6388FB5B-3D1C-4871-97FA-CEB11E95A6E3.mp3",
+      "s3_key": "mastered/A0D4E49C-166C-4EF4-B032-D5DA5D3581E6.mp3",
+      "previous_revision": 1,
+      "revision": 2,
+      "pod_rows": [
+        {
+          "id": "est_for_eng:pod-0-unrecorded:SC07-S005",
+          "pod": "pod-0-unrecorded",
+          "scene": 7,
+          "sentence": 5,
+          "speaker": "Barista",
+          "target_text": "Muidugi. Kas te istute siin või võtate kaasa?"
+        },
+        {
+          "id": "est_for_eng:pod-0:SC07-S005",
+          "pod": "pod-0",
+          "scene": 7,
+          "sentence": 5,
+          "speaker": "Barista",
+          "target_text": "Muidugi. Kas te istute siin või võtate kaasa?"
+        }
+      ],
+      "checks": [
+        {
+          "name": "voice_is_incumbent_azure",
+          "ok": true,
+          "detail": "et-EE-KertNeural"
+        },
+        {
+          "name": "revision_bumped",
+          "ok": true,
+          "detail": "1 -> 2"
+        },
+        {
+          "name": "key_moved",
+          "ok": true,
+          "detail": "mastered/6388FB5B-3D1C-4871-97FA-CEB11E95A6E3.mp3 -> mastered/A0D4E49C-166C-4EF4-B032-D5DA5D3581E6.mp3"
+        },
+        {
+          "name": "text_audio_in_sync",
+          "ok": true,
+          "detail": "2 pod row(s), all byte-identical to course_audio.text"
+        },
+        {
+          "name": "superseded_object_retained",
+          "ok": true,
+          "detail": "mastered/6388FB5B-3D1C-4871-97FA-CEB11E95A6E3.mp3"
+        },
+        {
+          "name": "alive_on_s3",
+          "ok": true,
+          "detail": "ContentLength 53280 = file_size_bytes 53280"
+        },
+        {
+          "name": "decodable",
+          "ok": true,
+          "detail": "ffprobe 4392ms"
+        },
+        {
+          "name": "duration_agrees",
+          "ok": true,
+          "detail": "ffprobe 4392ms vs stored 4392ms"
+        },
+        {
+          "name": "not_truncated",
+          "ok": true,
+          "detail": "4392ms vs length-scaled expectation 4446ms (ratio 0.99)"
+        },
+        {
+          "name": "asr_decoded",
+          "ok": true,
+          "detail": "\"Muidugi, kas te istutte siin või võtate kaasa.\""
+        },
+        {
+          "name": "asr_is_speech",
+          "ok": true,
+          "detail": "CER vs live text 0.023"
+        },
+        {
+          "name": "asr_speaks_new_form",
+          "ok": true,
+          "detail": "CER 0.023 vs live < 0.171 vs superseded"
+        },
+        {
+          "name": "asr_changed_words",
+          "ok": true,
+          "detail": "\"te\" is 0 from te and 2 from superseded sa; \"istutte\" is 1 from istute and 3 from superseded istud; \"votate\" is 0 from votate and 2 from superseded votad"
+        }
+      ],
+      "pass": true
+    },
+    {
+      "clip_id": "38a328d3-7c85-4fed-90a6-66f600b5381d",
+      "course": "est_for_eng",
+      "voice_id": "et-EE-KertNeural",
+      "superseded_text": "Kohe. Kas soovid veel midagi?",
+      "live_text": "Kohe. Kas soovite veel midagi?",
+      "decode": "Kohe, kas soovite veel midagi?",
+      "previous_s3_key": "mastered/B7618690-C6F6-4DE2-99DF-003F40D8C200.mp3",
+      "s3_key": "mastered/F008979B-8E37-4F35-947B-8280994EF28D.mp3",
+      "previous_revision": 1,
+      "revision": 2,
+      "pod_rows": [
+        {
+          "id": "est_for_eng:pod-0:SC07-S008",
+          "pod": "pod-0",
+          "scene": 7,
+          "sentence": 8,
+          "speaker": "Barista",
+          "target_text": "Kohe. Kas soovite veel midagi?"
+        },
+        {
+          "id": "est_for_eng:pod-0-unrecorded:SC07-S008",
+          "pod": "pod-0-unrecorded",
+          "scene": 7,
+          "sentence": 8,
+          "speaker": "Barista",
+          "target_text": "Kohe. Kas soovite veel midagi?"
+        }
+      ],
+      "checks": [
+        {
+          "name": "voice_is_incumbent_azure",
+          "ok": true,
+          "detail": "et-EE-KertNeural"
+        },
+        {
+          "name": "revision_bumped",
+          "ok": true,
+          "detail": "1 -> 2"
+        },
+        {
+          "name": "key_moved",
+          "ok": true,
+          "detail": "mastered/B7618690-C6F6-4DE2-99DF-003F40D8C200.mp3 -> mastered/F008979B-8E37-4F35-947B-8280994EF28D.mp3"
+        },
+        {
+          "name": "text_audio_in_sync",
+          "ok": true,
+          "detail": "2 pod row(s), all byte-identical to course_audio.text"
+        },
+        {
+          "name": "superseded_object_retained",
+          "ok": true,
+          "detail": "mastered/B7618690-C6F6-4DE2-99DF-003F40D8C200.mp3"
+        },
+        {
+          "name": "alive_on_s3",
+          "ok": true,
+          "detail": "ContentLength 41760 = file_size_bytes 41760"
+        },
+        {
+          "name": "decodable",
+          "ok": true,
+          "detail": "ffprobe 3420ms"
+        },
+        {
+          "name": "duration_agrees",
+          "ok": true,
+          "detail": "ffprobe 3420ms vs stored 3420ms"
+        },
+        {
+          "name": "not_truncated",
+          "ok": true,
+          "detail": "3420ms vs length-scaled expectation 3501ms (ratio 0.98)"
+        },
+        {
+          "name": "asr_decoded",
+          "ok": true,
+          "detail": "\"Kohe, kas soovite veel midagi?\""
+        },
+        {
+          "name": "asr_is_speech",
+          "ok": true,
+          "detail": "CER vs live text 0.000"
+        },
+        {
+          "name": "asr_speaks_new_form",
+          "ok": true,
+          "detail": "CER 0.000 vs live < 0.074 vs superseded"
+        },
+        {
+          "name": "asr_changed_words",
+          "ok": true,
+          "detail": "\"soovite\" is 0 from soovite and 2 from superseded soovid"
+        }
+      ],
+      "pass": true
+    },
+    {
+      "clip_id": "18965e8c-6930-48ac-8396-2564ca0964fb",
+      "course": "est_for_eng",
+      "voice_id": "azure_et-EE-KertNeural",
+      "superseded_text": "Kas sa soovid siin istuda? Laud akna juures on vaba.",
+      "live_text": "Kas te soovite siin istuda? Laud akna juures on vaba.",
+      "decode": "Kas te soovite siin istuda?  Laud aknajuures on vaba.",
+      "previous_s3_key": "mastered/868D7886-1DB2-4AD9-8375-24F3BB5D452C.mp3",
+      "s3_key": "mastered/5DA2A5A7-0372-4C32-9B3A-AC68DE4A5D82.mp3",
+      "previous_revision": 1,
+      "revision": 2,
+      "pod_rows": [
+        {
+          "id": "est_for_eng:pod-0-unrecorded:SC07-S014",
+          "pod": "pod-0-unrecorded",
+          "scene": 7,
+          "sentence": 14,
+          "speaker": "Barista",
+          "target_text": "Kas te soovite siin istuda? Laud akna juures on vaba."
+        },
+        {
+          "id": "est_for_eng:pod-0:SC07-S014",
+          "pod": "pod-0",
+          "scene": 7,
+          "sentence": 14,
+          "speaker": "Barista",
+          "target_text": "Kas te soovite siin istuda? Laud akna juures on vaba."
+        }
+      ],
+      "checks": [
+        {
+          "name": "voice_is_incumbent_azure",
+          "ok": true,
+          "detail": "azure_et-EE-KertNeural"
+        },
+        {
+          "name": "revision_bumped",
+          "ok": true,
+          "detail": "1 -> 2"
+        },
+        {
+          "name": "key_moved",
+          "ok": true,
+          "detail": "mastered/868D7886-1DB2-4AD9-8375-24F3BB5D452C.mp3 -> mastered/5DA2A5A7-0372-4C32-9B3A-AC68DE4A5D82.mp3"
+        },
+        {
+          "name": "text_audio_in_sync",
+          "ok": true,
+          "detail": "2 pod row(s), all byte-identical to course_audio.text"
+        },
+        {
+          "name": "superseded_object_retained",
+          "ok": true,
+          "detail": "mastered/868D7886-1DB2-4AD9-8375-24F3BB5D452C.mp3"
+        },
+        {
+          "name": "alive_on_s3",
+          "ok": true,
+          "detail": "ContentLength 56736 = file_size_bytes 56736"
+        },
+        {
+          "name": "decodable",
+          "ok": true,
+          "detail": "ffprobe 4680ms"
+        },
+        {
+          "name": "duration_agrees",
+          "ok": true,
+          "detail": "ffprobe 4680ms vs stored 4680ms"
+        },
+        {
+          "name": "not_truncated",
+          "ok": true,
+          "detail": "4680ms vs length-scaled expectation 4648ms (ratio 1.01)"
+        },
+        {
+          "name": "asr_decoded",
+          "ok": true,
+          "detail": "\"Kas te soovite siin istuda?  Laud aknajuures on vaba.\""
+        },
+        {
+          "name": "asr_is_speech",
+          "ok": true,
+          "detail": "CER vs live text 0.020"
+        },
+        {
+          "name": "asr_speaks_new_form",
+          "ok": true,
+          "detail": "CER 0.020 vs live < 0.100 vs superseded"
+        },
+        {
+          "name": "asr_changed_words",
+          "ok": true,
+          "detail": "\"te\" is 0 from te and 2 from superseded sa; \"soovite\" is 0 from soovite and 2 from superseded soovid"
+        }
+      ],
+      "pass": true
+    },
+    {
+      "clip_id": "6c07d214-4ef0-4c0e-b59c-ccf297bee637",
+      "course": "est_for_eng",
+      "voice_id": "et-EE-AnuNeural",
+      "superseded_text": "Ja mida sa täna õhtul soovitaksid?",
+      "live_text": "Ja mida te täna õhtul soovitaksite?",
+      "decode": "Ja mida te täna õhtul soovitaksite?",
+      "previous_s3_key": "mastered/74C93644-7D8C-4FF2-9EFE-0C992923A613.mp3",
+      "s3_key": "mastered/00D3DEF9-072B-4DD6-BC8E-9FC724BB7096.mp3",
+      "previous_revision": 1,
+      "revision": 2,
+      "pod_rows": [
+        {
+          "id": "est_for_eng:pod-0:SC09-S007",
+          "pod": "pod-0",
+          "scene": 9,
+          "sentence": 7,
+          "speaker": "Customer 1",
+          "target_text": "Ja mida te täna õhtul soovitaksite?"
+        },
+        {
+          "id": "est_for_eng:pod-0-unrecorded:SC09-S007",
+          "pod": "pod-0-unrecorded",
+          "scene": 9,
+          "sentence": 7,
+          "speaker": "Customer 1",
+          "target_text": "Ja mida te täna õhtul soovitaksite?"
+        }
+      ],
+      "checks": [
+        {
+          "name": "voice_is_incumbent_azure",
+          "ok": true,
+          "detail": "et-EE-AnuNeural"
+        },
+        {
+          "name": "revision_bumped",
+          "ok": true,
+          "detail": "1 -> 2"
+        },
+        {
+          "name": "key_moved",
+          "ok": true,
+          "detail": "mastered/74C93644-7D8C-4FF2-9EFE-0C992923A613.mp3 -> mastered/00D3DEF9-072B-4DD6-BC8E-9FC724BB7096.mp3"
+        },
+        {
+          "name": "text_audio_in_sync",
+          "ok": true,
+          "detail": "2 pod row(s), all byte-identical to course_audio.text"
+        },
+        {
+          "name": "superseded_object_retained",
+          "ok": true,
+          "detail": "mastered/74C93644-7D8C-4FF2-9EFE-0C992923A613.mp3"
+        },
+        {
+          "name": "alive_on_s3",
+          "ok": true,
+          "detail": "ContentLength 36000 = file_size_bytes 36000"
+        },
+        {
+          "name": "decodable",
+          "ok": true,
+          "detail": "ffprobe 2952ms"
+        },
+        {
+          "name": "duration_agrees",
+          "ok": true,
+          "detail": "ffprobe 2952ms vs stored 2952ms"
+        },
+        {
+          "name": "not_truncated",
+          "ok": true,
+          "detail": "2952ms vs length-scaled expectation 2915ms (ratio 1.01)"
+        },
+        {
+          "name": "asr_decoded",
+          "ok": true,
+          "detail": "\"Ja mida te täna õhtul soovitaksite?\""
+        },
+        {
+          "name": "asr_is_speech",
+          "ok": true,
+          "detail": "CER vs live text 0.000"
+        },
+        {
+          "name": "asr_speaks_new_form",
+          "ok": true,
+          "detail": "CER 0.000 vs live < 0.121 vs superseded"
+        },
+        {
+          "name": "asr_changed_words",
+          "ok": true,
+          "detail": "\"te\" is 0 from te and 2 from superseded sa; \"soovitaksite\" is 0 from soovitaksite and 2 from superseded soovitaksid"
+        }
+      ],
+      "pass": true
+    },
+    {
+      "clip_id": "1aafc19d-acc2-4b44-9992-96539651bab3",
+      "course": "est_for_eng",
+      "voice_id": "azure_et-EE-AnuNeural",
+      "superseded_text": "Ja arve, kui oled valmis. Kas me saame arve jagada?",
+      "live_text": "Ja arve, kui olete valmis. Kas me saame arve jagada?",
+      "decode": "ja arve, kui olete valmis.  Kas me saame arve jagada?",
+      "previous_s3_key": "mastered/BABBD1CB-D80A-4256-8D06-7ED1B1CE8F92.mp3",
+      "s3_key": "mastered/4A7B4C35-E502-4394-B420-B249AF59257B.mp3",
+      "previous_revision": 1,
+      "revision": 2,
+      "pod_rows": [
+        {
+          "id": "est_for_eng:pod-0:SC09-S017",
+          "pod": "pod-0",
+          "scene": 9,
+          "sentence": 17,
+          "speaker": "Customer 2",
+          "target_text": "Ja arve, kui olete valmis. Kas me saame arve jagada?"
+        },
+        {
+          "id": "est_for_eng:pod-0-unrecorded:SC09-S017",
+          "pod": "pod-0-unrecorded",
+          "scene": 9,
+          "sentence": 17,
+          "speaker": "Customer 2",
+          "target_text": "Ja arve, kui olete valmis. Kas me saame arve jagada?"
+        }
+      ],
+      "checks": [
+        {
+          "name": "voice_is_incumbent_azure",
+          "ok": true,
+          "detail": "azure_et-EE-AnuNeural"
+        },
+        {
+          "name": "revision_bumped",
+          "ok": true,
+          "detail": "1 -> 2"
+        },
+        {
+          "name": "key_moved",
+          "ok": true,
+          "detail": "mastered/BABBD1CB-D80A-4256-8D06-7ED1B1CE8F92.mp3 -> mastered/4A7B4C35-E502-4394-B420-B249AF59257B.mp3"
+        },
+        {
+          "name": "text_audio_in_sync",
+          "ok": true,
+          "detail": "2 pod row(s), all byte-identical to course_audio.text"
+        },
+        {
+          "name": "superseded_object_retained",
+          "ok": true,
+          "detail": "mastered/BABBD1CB-D80A-4256-8D06-7ED1B1CE8F92.mp3"
+        },
+        {
+          "name": "alive_on_s3",
+          "ok": true,
+          "detail": "ContentLength 57600 = file_size_bytes 57600"
+        },
+        {
+          "name": "decodable",
+          "ok": true,
+          "detail": "ffprobe 4752ms"
+        },
+        {
+          "name": "duration_agrees",
+          "ok": true,
+          "detail": "ffprobe 4752ms vs stored 4752ms"
+        },
+        {
+          "name": "not_truncated",
+          "ok": true,
+          "detail": "4752ms vs length-scaled expectation 4796ms (ratio 0.99)"
+        },
+        {
+          "name": "asr_decoded",
+          "ok": true,
+          "detail": "\"ja arve, kui olete valmis.  Kas me saame arve jagada?\""
+        },
+        {
+          "name": "asr_is_speech",
+          "ok": true,
+          "detail": "CER vs live text 0.000"
+        },
+        {
+          "name": "asr_speaks_new_form",
+          "ok": true,
+          "detail": "CER 0.000 vs live < 0.042 vs superseded"
+        },
+        {
+          "name": "asr_changed_words",
+          "ok": true,
+          "detail": "\"olete\" is 0 from olete and 2 from superseded oled"
+        }
+      ],
+      "pass": true
+    },
+    {
+      "clip_id": "f37d9e16-9e7b-49b3-9720-088ef8e339cb",
+      "course": "est_for_eng",
+      "voice_id": "et-EE-KertNeural",
+      "superseded_text": "Ma arvan küll, aga pead kindluse mõttes ise vaatama.",
+      "live_text": "Ma arvan küll, aga peate kindluse mõttes ise vaatama.",
+      "decode": "Ma arvan küll, aga peate kindluse mõtte sisevaatama.",
+      "previous_s3_key": "mastered/57CF9BB4-3921-4CDF-9B61-F7F88561A14F.mp3",
+      "s3_key": "mastered/03E1B89C-D775-43C4-9068-BB09F0F07E19.mp3",
+      "previous_revision": 1,
+      "revision": 2,
+      "pod_rows": [
+        {
+          "id": "est_for_eng:pod-0:SC10-S004",
+          "pod": "pod-0",
+          "scene": 10,
+          "sentence": 4,
+          "speaker": "Assistant",
+          "target_text": "Ma arvan küll, aga peate kindluse mõttes ise vaatama."
+        },
+        {
+          "id": "est_for_eng:pod-0-unrecorded:SC10-S004",
+          "pod": "pod-0-unrecorded",
+          "scene": 10,
+          "sentence": 4,
+          "speaker": "Assistant",
+          "target_text": "Ma arvan küll, aga peate kindluse mõttes ise vaatama."
+        }
+      ],
+      "checks": [
+        {
+          "name": "voice_is_incumbent_azure",
+          "ok": true,
+          "detail": "et-EE-KertNeural"
+        },
+        {
+          "name": "revision_bumped",
+          "ok": true,
+          "detail": "1 -> 2"
+        },
+        {
+          "name": "key_moved",
+          "ok": true,
+          "detail": "mastered/57CF9BB4-3921-4CDF-9B61-F7F88561A14F.mp3 -> mastered/03E1B89C-D775-43C4-9068-BB09F0F07E19.mp3"
+        },
+        {
+          "name": "text_audio_in_sync",
+          "ok": true,
+          "detail": "2 pod row(s), all byte-identical to course_audio.text"
+        },
+        {
+          "name": "superseded_object_retained",
+          "ok": true,
+          "detail": "mastered/57CF9BB4-3921-4CDF-9B61-F7F88561A14F.mp3"
+        },
+        {
+          "name": "alive_on_s3",
+          "ok": true,
+          "detail": "ContentLength 47232 = file_size_bytes 47232"
+        },
+        {
+          "name": "decodable",
+          "ok": true,
+          "detail": "ffprobe 3888ms"
+        },
+        {
+          "name": "duration_agrees",
+          "ok": true,
+          "detail": "ffprobe 3888ms vs stored 3888ms"
+        },
+        {
+          "name": "not_truncated",
+          "ok": true,
+          "detail": "3888ms vs length-scaled expectation 3914ms (ratio 0.99)"
+        },
+        {
+          "name": "asr_decoded",
+          "ok": true,
+          "detail": "\"Ma arvan küll, aga peate kindluse mõtte sisevaatama.\""
+        },
+        {
+          "name": "asr_is_speech",
+          "ok": true,
+          "detail": "CER vs live text 0.059"
+        },
+        {
+          "name": "asr_speaks_new_form",
+          "ok": true,
+          "detail": "CER 0.059 vs live < 0.100 vs superseded"
+        },
+        {
+          "name": "asr_changed_words",
+          "ok": true,
+          "detail": "\"peate\" is 0 from peate and 2 from superseded pead"
+        }
+      ],
+      "pass": true
+    },
+    {
+      "clip_id": "e6e336b5-84b4-4676-9b8e-55eea3173fab",
+      "course": "est_for_eng",
+      "voice_id": "et-EE-AnuNeural",
+      "superseded_text": "Aitäh, sa oled olnud väga abistav. Olen väga tänulik.",
+      "live_text": "Aitäh, te olete olnud väga abistav. Olen väga tänulik.",
+      "decode": "Aitäh, te olete olnud väga apistav.  Olen väga tänulik.",
+      "previous_s3_key": "mastered/89BAB360-7DB6-4B64-B61A-1CFCC765B16A.mp3",
+      "s3_key": "mastered/8F86ACF6-7FD4-4FF3-AFFE-D1E7852C28E8.mp3",
+      "previous_revision": 1,
+      "revision": 2,
+      "pod_rows": [
+        {
+          "id": "est_for_eng:pod-0:SC10-S007",
+          "pod": "pod-0",
+          "scene": 10,
+          "sentence": 7,
+          "speaker": "Customer",
+          "target_text": "Aitäh, te olete olnud väga abistav. Olen väga tänulik."
+        },
+        {
+          "id": "est_for_eng:pod-0-unrecorded:SC10-S007",
+          "pod": "pod-0-unrecorded",
+          "scene": 10,
+          "sentence": 7,
+          "speaker": "Customer",
+          "target_text": "Aitäh, te olete olnud väga abistav. Olen väga tänulik."
+        }
+      ],
+      "checks": [
+        {
+          "name": "voice_is_incumbent_azure",
+          "ok": true,
+          "detail": "et-EE-AnuNeural"
+        },
+        {
+          "name": "revision_bumped",
+          "ok": true,
+          "detail": "1 -> 2"
+        },
+        {
+          "name": "key_moved",
+          "ok": true,
+          "detail": "mastered/89BAB360-7DB6-4B64-B61A-1CFCC765B16A.mp3 -> mastered/8F86ACF6-7FD4-4FF3-AFFE-D1E7852C28E8.mp3"
+        },
+        {
+          "name": "text_audio_in_sync",
+          "ok": true,
+          "detail": "2 pod row(s), all byte-identical to course_audio.text"
+        },
+        {
+          "name": "superseded_object_retained",
+          "ok": true,
+          "detail": "mastered/89BAB360-7DB6-4B64-B61A-1CFCC765B16A.mp3"
+        },
+        {
+          "name": "alive_on_s3",
+          "ok": true,
+          "detail": "ContentLength 61056 = file_size_bytes 61056"
+        },
+        {
+          "name": "decodable",
+          "ok": true,
+          "detail": "ffprobe 5040ms"
+        },
+        {
+          "name": "duration_agrees",
+          "ok": true,
+          "detail": "ffprobe 5040ms vs stored 5040ms"
+        },
+        {
+          "name": "not_truncated",
+          "ok": true,
+          "detail": "5040ms vs length-scaled expectation 5135ms (ratio 0.98)"
+        },
+        {
+          "name": "asr_decoded",
+          "ok": true,
+          "detail": "\"Aitäh, te olete olnud väga apistav.  Olen väga tänulik.\""
+        },
+        {
+          "name": "asr_is_speech",
+          "ok": true,
+          "detail": "CER vs live text 0.020"
+        },
+        {
+          "name": "asr_speaks_new_form",
+          "ok": true,
+          "detail": "CER 0.020 vs live < 0.100 vs superseded"
+        },
+        {
+          "name": "asr_changed_words",
+          "ok": true,
+          "detail": "\"te\" is 0 from te and 2 from superseded sa; \"olete\" is 0 from olete and 2 from superseded oled"
+        }
+      ],
+      "pass": true
+    },
+    {
+      "clip_id": "0f57d45c-62cf-4b31-945a-982184b8de81",
+      "course": "est_for_eng",
+      "voice_id": "azure_et-EE-KertNeural",
+      "superseded_text": "Pole tänu väärt. Kas sa oled siin puhkusel? Sa räägid väga head eesti keelt.",
+      "live_text": "Pole tänu väärt. Kas te olete siin puhkusel? Te räägite väga head eesti keelt.",
+      "decode": "Poletanu väärt!  Kas te olete siin puhkusel?  Te räägite väga hea teistikeelt!",
+      "previous_s3_key": "mastered/34B2C920-1D73-45C7-A637-EA1626906996.mp3",
+      "s3_key": "mastered/FBBA852D-84F2-4011-B8AB-4C3548F95CFA.mp3",
+      "previous_revision": 1,
+      "revision": 2,
+      "pod_rows": [
+        {
+          "id": "est_for_eng:pod-0:SC10-S008",
+          "pod": "pod-0",
+          "scene": 10,
+          "sentence": 8,
+          "speaker": "Assistant",
+          "target_text": "Pole tänu väärt. Kas te olete siin puhkusel? Te räägite väga head eesti keelt."
+        },
+        {
+          "id": "est_for_eng:pod-0-unrecorded:SC10-S008",
+          "pod": "pod-0-unrecorded",
+          "scene": 10,
+          "sentence": 8,
+          "speaker": "Assistant",
+          "target_text": "Pole tänu väärt. Kas te olete siin puhkusel? Te räägite väga head eesti keelt."
+        }
+      ],
+      "checks": [
+        {
+          "name": "voice_is_incumbent_azure",
+          "ok": true,
+          "detail": "azure_et-EE-KertNeural"
+        },
+        {
+          "name": "revision_bumped",
+          "ok": true,
+          "detail": "1 -> 2"
+        },
+        {
+          "name": "key_moved",
+          "ok": true,
+          "detail": "mastered/34B2C920-1D73-45C7-A637-EA1626906996.mp3 -> mastered/FBBA852D-84F2-4011-B8AB-4C3548F95CFA.mp3"
+        },
+        {
+          "name": "text_audio_in_sync",
+          "ok": true,
+          "detail": "2 pod row(s), all byte-identical to course_audio.text"
+        },
+        {
+          "name": "superseded_object_retained",
+          "ok": true,
+          "detail": "mastered/34B2C920-1D73-45C7-A637-EA1626906996.mp3"
+        },
+        {
+          "name": "alive_on_s3",
+          "ok": true,
+          "detail": "ContentLength 82656 = file_size_bytes 82656"
+        },
+        {
+          "name": "decodable",
+          "ok": true,
+          "detail": "ffprobe 6840ms"
+        },
+        {
+          "name": "duration_agrees",
+          "ok": true,
+          "detail": "ffprobe 6840ms vs stored 6840ms"
+        },
+        {
+          "name": "not_truncated",
+          "ok": true,
+          "detail": "6840ms vs length-scaled expectation 6946ms (ratio 0.98)"
+        },
+        {
+          "name": "asr_decoded",
+          "ok": true,
+          "detail": "\"Poletanu väärt!  Kas te olete siin puhkusel?  Te räägite väga hea teistikeelt!\""
+        },
+        {
+          "name": "asr_is_speech",
+          "ok": true,
+          "detail": "CER vs live text 0.067"
+        },
+        {
+          "name": "asr_speaks_new_form",
+          "ok": true,
+          "detail": "CER 0.067 vs live < 0.178 vs superseded"
+        },
+        {
+          "name": "asr_changed_words",
+          "ok": true,
+          "detail": "\"te\" is 0 from te and 2 from superseded sa; \"olete\" is 0 from olete and 2 from superseded oled; \"raagite\" is 0 from raagite and 2 from superseded raagid"
+        }
+      ],
+      "pass": true
+    },
+    {
+      "clip_id": "0b28f96f-75f4-40f6-94ef-5c5a487a92d8",
+      "course": "est_for_eng",
+      "voice_id": "azure_et-EE-AnuNeural",
+      "superseded_text": "See on väga lahke sinult! Jah, ma olen puhkusel, ja pean rohkem harjutama, et eesti keelt paremini rääkida. Suur aitäh ja nägemist.",
+      "live_text": "See on väga lahke teist! Jah, ma olen puhkusel, ja pean rohkem harjutama, et eesti keelt paremini rääkida. Suur aitäh ja nägemist.",
+      "decode": "See on väga lahke teist.  Jah, ma olen puhkusel ja pean rohkem harjutama, et eesti keelt paremini rääkida.  Suurait tähe ja nägemist!",
+      "previous_s3_key": "mastered/3913520F-D7D8-4DB3-9BF6-9F1526126658.mp3",
+      "s3_key": "mastered/DDE5B8EF-D853-4BCD-B665-F598745B0CFE.mp3",
+      "previous_revision": 1,
+      "revision": 2,
+      "pod_rows": [
+        {
+          "id": "est_for_eng:pod-0:SC10-S009",
+          "pod": "pod-0",
+          "scene": 10,
+          "sentence": 9,
+          "speaker": "Customer",
+          "target_text": "See on väga lahke teist! Jah, ma olen puhkusel, ja pean rohkem harjutama, et eesti keelt paremini rääkida. Suur aitäh ja nägemist."
+        }
+      ],
+      "checks": [
+        {
+          "name": "voice_is_incumbent_azure",
+          "ok": true,
+          "detail": "azure_et-EE-AnuNeural"
+        },
+        {
+          "name": "revision_bumped",
+          "ok": true,
+          "detail": "1 -> 2"
+        },
+        {
+          "name": "key_moved",
+          "ok": true,
+          "detail": "mastered/3913520F-D7D8-4DB3-9BF6-9F1526126658.mp3 -> mastered/DDE5B8EF-D853-4BCD-B665-F598745B0CFE.mp3"
+        },
+        {
+          "name": "text_audio_in_sync",
+          "ok": true,
+          "detail": "1 pod row(s), all byte-identical to course_audio.text"
+        },
+        {
+          "name": "superseded_object_retained",
+          "ok": true,
+          "detail": "mastered/3913520F-D7D8-4DB3-9BF6-9F1526126658.mp3"
+        },
+        {
+          "name": "alive_on_s3",
+          "ok": true,
+          "detail": "ContentLength 124704 = file_size_bytes 124704"
+        },
+        {
+          "name": "decodable",
+          "ok": true,
+          "detail": "ffprobe 10332ms"
+        },
+        {
+          "name": "duration_agrees",
+          "ok": true,
+          "detail": "ffprobe 10332ms vs stored 10332ms"
+        },
+        {
+          "name": "not_truncated",
+          "ok": true,
+          "detail": "10332ms vs length-scaled expectation 10241ms (ratio 1.01)"
+        },
+        {
+          "name": "asr_decoded",
+          "ok": true,
+          "detail": "\"See on väga lahke teist.  Jah, ma olen puhkusel ja pean rohkem harjutama, et eesti keelt paremini rääkida.  Suurait tähe ja nägemist!\""
+        },
+        {
+          "name": "asr_is_speech",
+          "ok": true,
+          "detail": "CER vs live text 0.032"
+        },
+        {
+          "name": "asr_speaks_new_form",
+          "ok": true,
+          "detail": "CER 0.032 vs live < 0.072 vs superseded"
+        },
+        {
+          "name": "asr_changed_words",
+          "ok": true,
+          "detail": "\"teist\" is 0 from teist and 5 from superseded sinult"
+        }
+      ],
+      "pass": true
+    },
+    {
+      "clip_id": "d89e4249-9227-4f66-bfbb-b0808161969f",
+      "course": "est_for_eng",
+      "voice_id": "et-EE-KertNeural",
+      "superseded_text": "Muidugi. Millised on sinu sümptomid?",
+      "live_text": "Muidugi. Millised on teie sümptomid?",
+      "decode": "Muidugi, millised on teie sümtomid?",
+      "previous_s3_key": "mastered/D61F6E58-8810-4D75-B1B0-798B86058911.mp3",
+      "s3_key": "mastered/9302BF48-E6C2-4DDB-BFED-7FF22BB64667.mp3",
+      "previous_revision": 1,
+      "revision": 2,
+      "pod_rows": [
+        {
+          "id": "est_for_eng:pod-0:SC12-S002",
+          "pod": "pod-0",
+          "scene": 12,
+          "sentence": 2,
+          "speaker": "Pharmacist",
+          "target_text": "Muidugi. Millised on teie sümptomid?"
+        },
+        {
+          "id": "est_for_eng:pod-0-unrecorded:SC12-S002",
+          "pod": "pod-0-unrecorded",
+          "scene": 12,
+          "sentence": 2,
+          "speaker": "Pharmacist",
+          "target_text": "Muidugi. Millised on teie sümptomid?"
+        }
+      ],
+      "checks": [
+        {
+          "name": "voice_is_incumbent_azure",
+          "ok": true,
+          "detail": "et-EE-KertNeural"
+        },
+        {
+          "name": "revision_bumped",
+          "ok": true,
+          "detail": "1 -> 2"
+        },
+        {
+          "name": "key_moved",
+          "ok": true,
+          "detail": "mastered/D61F6E58-8810-4D75-B1B0-798B86058911.mp3 -> mastered/9302BF48-E6C2-4DDB-BFED-7FF22BB64667.mp3"
+        },
+        {
+          "name": "text_audio_in_sync",
+          "ok": true,
+          "detail": "2 pod row(s), all byte-identical to course_audio.text"
+        },
+        {
+          "name": "superseded_object_retained",
+          "ok": true,
+          "detail": "mastered/D61F6E58-8810-4D75-B1B0-798B86058911.mp3"
+        },
+        {
+          "name": "alive_on_s3",
+          "ok": true,
+          "detail": "ContentLength 47808 = file_size_bytes 47808"
+        },
+        {
+          "name": "decodable",
+          "ok": true,
+          "detail": "ffprobe 3924ms"
+        },
+        {
+          "name": "duration_agrees",
+          "ok": true,
+          "detail": "ffprobe 3924ms vs stored 3924ms"
+        },
+        {
+          "name": "not_truncated",
+          "ok": true,
+          "detail": "3924ms vs length-scaled expectation 3960ms (ratio 0.99)"
+        },
+        {
+          "name": "asr_decoded",
+          "ok": true,
+          "detail": "\"Muidugi, millised on teie sümtomid?\""
+        },
+        {
+          "name": "asr_is_speech",
+          "ok": true,
+          "detail": "CER vs live text 0.029"
+        },
+        {
+          "name": "asr_speaks_new_form",
+          "ok": true,
+          "detail": "CER 0.029 vs live < 0.147 vs superseded"
+        },
+        {
+          "name": "asr_changed_words",
+          "ok": true,
+          "detail": "\"teie\" is 0 from teie and 4 from superseded sinu"
+        }
+      ],
+      "pass": true
+    },
+    {
+      "clip_id": "18e851d3-444c-4763-b367-51f6b05c3cd8",
+      "course": "est_for_eng",
+      "voice_id": "azure_et-EE-KertNeural",
+      "superseded_text": "Proovi peavalu vastu paratsetamooli ja neid kurguimindustablette kurgu jaoks.",
+      "live_text": "Proovige peavalu vastu paratsetamooli ja neid kurguimindustablette kurgu jaoks.",
+      "decode": "Proovige peavalu vastu paradseta mooli ja neid kurkuimindu stablette kurkujaoks.",
+      "previous_s3_key": "mastered/FA7DF735-6687-4D52-A773-21E3A877C418.mp3",
+      "s3_key": "mastered/443A4673-7724-449D-AC25-1C76AC1CF7EF.mp3",
+      "previous_revision": 1,
+      "revision": 2,
+      "pod_rows": [
+        {
+          "id": "est_for_eng:pod-0:SC12-S004",
+          "pod": "pod-0",
+          "scene": 12,
+          "sentence": 4,
+          "speaker": "Pharmacist",
+          "target_text": "Proovige peavalu vastu paratsetamooli ja neid kurguimindustablette kurgu jaoks."
+        },
+        {
+          "id": "est_for_eng:pod-0-unrecorded:SC12-S004",
+          "pod": "pod-0-unrecorded",
+          "scene": 12,
+          "sentence": 4,
+          "speaker": "Pharmacist",
+          "target_text": "Proovige peavalu vastu paratsetamooli ja neid kurguimindustablette kurgu jaoks."
+        }
+      ],
+      "checks": [
+        {
+          "name": "voice_is_incumbent_azure",
+          "ok": true,
+          "detail": "azure_et-EE-KertNeural"
+        },
+        {
+          "name": "revision_bumped",
+          "ok": true,
+          "detail": "1 -> 2"
+        },
+        {
+          "name": "key_moved",
+          "ok": true,
+          "detail": "mastered/FA7DF735-6687-4D52-A773-21E3A877C418.mp3 -> mastered/443A4673-7724-449D-AC25-1C76AC1CF7EF.mp3"
+        },
+        {
+          "name": "text_audio_in_sync",
+          "ok": true,
+          "detail": "2 pod row(s), all byte-identical to course_audio.text"
+        },
+        {
+          "name": "superseded_object_retained",
+          "ok": true,
+          "detail": "mastered/FA7DF735-6687-4D52-A773-21E3A877C418.mp3"
+        },
+        {
+          "name": "alive_on_s3",
+          "ok": true,
+          "detail": "ContentLength 65952 = file_size_bytes 65952"
+        },
+        {
+          "name": "decodable",
+          "ok": true,
+          "detail": "ffprobe 5436ms"
+        },
+        {
+          "name": "duration_agrees",
+          "ok": true,
+          "detail": "ffprobe 5436ms vs stored 5436ms"
+        },
+        {
+          "name": "not_truncated",
+          "ok": true,
+          "detail": "5436ms vs length-scaled expectation 5491ms (ratio 0.99)"
+        },
+        {
+          "name": "asr_decoded",
+          "ok": true,
+          "detail": "\"Proovige peavalu vastu paradseta mooli ja neid kurkuimindu stablette kurkujaoks.\""
+        },
+        {
+          "name": "asr_is_speech",
+          "ok": true,
+          "detail": "CER vs live text 0.077"
+        },
+        {
+          "name": "asr_speaks_new_form",
+          "ok": true,
+          "detail": "CER 0.077 vs live < 0.105 vs superseded"
+        },
+        {
+          "name": "asr_changed_words",
+          "ok": true,
+          "detail": "\"proovige\" is 0 from proovige and 2 from superseded proovi"
+        }
+      ],
+      "pass": true
+    },
+    {
+      "clip_id": "84da83a3-4290-4ce1-a10c-088d2d77d8b8",
+      "course": "est_for_eng",
+      "voice_id": "et-EE-AnuNeural",
+      "superseded_text": "Vabandust, kas sa tead, kuidas saada lähima supermarketini?",
+      "live_text": "Vabandust, kas te teate, kuidas saada lähima supermarketini?",
+      "decode": "Vabandust kas te teate, kuidas saada lähima supermarketini?",
+      "previous_s3_key": "mastered/408EF9D3-F91A-4E1D-BB5E-95A7A061C462.mp3",
+      "s3_key": "mastered/0C313700-9C9E-42BD-9F96-B1D4FA00C40C.mp3",
+      "previous_revision": 1,
+      "revision": 2,
+      "pod_rows": [
+        {
+          "id": "est_for_eng:pod-0:SC13-S001",
+          "pod": "pod-0",
+          "scene": 13,
+          "sentence": 1,
+          "speaker": "Tourist",
+          "target_text": "Vabandust, kas te teate, kuidas saada lähima supermarketini?"
+        },
+        {
+          "id": "est_for_eng:pod-0-unrecorded:SC13-S001",
+          "pod": "pod-0-unrecorded",
+          "scene": 13,
+          "sentence": 1,
+          "speaker": "Tourist",
+          "target_text": "Vabandust, kas te teate, kuidas saada lähima supermarketini?"
+        }
+      ],
+      "checks": [
+        {
+          "name": "voice_is_incumbent_azure",
+          "ok": true,
+          "detail": "et-EE-AnuNeural"
+        },
+        {
+          "name": "revision_bumped",
+          "ok": true,
+          "detail": "1 -> 2"
+        },
+        {
+          "name": "key_moved",
+          "ok": true,
+          "detail": "mastered/408EF9D3-F91A-4E1D-BB5E-95A7A061C462.mp3 -> mastered/0C313700-9C9E-42BD-9F96-B1D4FA00C40C.mp3"
+        },
+        {
+          "name": "text_audio_in_sync",
+          "ok": true,
+          "detail": "2 pod row(s), all byte-identical to course_audio.text"
+        },
+        {
+          "name": "superseded_object_retained",
+          "ok": true,
+          "detail": "mastered/408EF9D3-F91A-4E1D-BB5E-95A7A061C462.mp3"
+        },
+        {
+          "name": "alive_on_s3",
+          "ok": true,
+          "detail": "ContentLength 54144 = file_size_bytes 54144"
+        },
+        {
+          "name": "decodable",
+          "ok": true,
+          "detail": "ffprobe 4464ms"
+        },
+        {
+          "name": "duration_agrees",
+          "ok": true,
+          "detail": "ffprobe 4464ms vs stored 4464ms"
+        },
+        {
+          "name": "not_truncated",
+          "ok": true,
+          "detail": "4464ms vs length-scaled expectation 4466ms (ratio 1.00)"
+        },
+        {
+          "name": "asr_decoded",
+          "ok": true,
+          "detail": "\"Vabandust kas te teate, kuidas saada lähima supermarketini?\""
+        },
+        {
+          "name": "asr_is_speech",
+          "ok": true,
+          "detail": "CER vs live text 0.000"
+        },
+        {
+          "name": "asr_speaks_new_form",
+          "ok": true,
+          "detail": "CER 0.000 vs live < 0.071 vs superseded"
+        },
+        {
+          "name": "asr_changed_words",
+          "ok": true,
+          "detail": "\"te\" is 0 from te and 2 from superseded sa; \"teate\" is 0 from teate and 2 from superseded tead"
+        }
+      ],
+      "pass": true
+    },
+    {
+      "clip_id": "352a0ec2-5178-4653-8895-657f18e081a7",
+      "course": "est_for_eng",
+      "voice_id": "et-EE-KertNeural",
+      "superseded_text": "Jah, see on umbes kümme minutit jalgsi. Mine mööda seda teed otse edasi.",
+      "live_text": "Jah, see on umbes kümme minutit jalgsi. Minge mööda seda teed otse edasi.",
+      "decode": "Jah, see on umbes kymmen minutit jalgsi.  Minge mööda seda teed otsedasi.",
+      "previous_s3_key": "mastered/3F62ECB3-FB66-476B-A859-DB5328E52E3B.mp3",
+      "s3_key": "mastered/38A3601A-F2D3-44A9-AC5C-3129196B0E5A.mp3",
+      "previous_revision": 1,
+      "revision": 2,
+      "pod_rows": [
+        {
+          "id": "est_for_eng:pod-0:SC13-S002",
+          "pod": "pod-0",
+          "scene": 13,
+          "sentence": 2,
+          "speaker": "Local",
+          "target_text": "Jah, see on umbes kümme minutit jalgsi. Minge mööda seda teed otse edasi."
+        },
+        {
+          "id": "est_for_eng:pod-0-unrecorded:SC13-S002",
+          "pod": "pod-0-unrecorded",
+          "scene": 13,
+          "sentence": 2,
+          "speaker": "Local",
+          "target_text": "Jah, see on umbes kümme minutit jalgsi. Minge mööda seda teed otse edasi."
+        }
+      ],
+      "checks": [
+        {
+          "name": "voice_is_incumbent_azure",
+          "ok": true,
+          "detail": "et-EE-KertNeural"
+        },
+        {
+          "name": "revision_bumped",
+          "ok": true,
+          "detail": "1 -> 2"
+        },
+        {
+          "name": "key_moved",
+          "ok": true,
+          "detail": "mastered/3F62ECB3-FB66-476B-A859-DB5328E52E3B.mp3 -> mastered/38A3601A-F2D3-44A9-AC5C-3129196B0E5A.mp3"
+        },
+        {
+          "name": "text_audio_in_sync",
+          "ok": true,
+          "detail": "2 pod row(s), all byte-identical to course_audio.text"
+        },
+        {
+          "name": "superseded_object_retained",
+          "ok": true,
+          "detail": "mastered/3F62ECB3-FB66-476B-A859-DB5328E52E3B.mp3"
+        },
+        {
+          "name": "alive_on_s3",
+          "ok": true,
+          "detail": "ContentLength 74016 = file_size_bytes 74016"
+        },
+        {
+          "name": "decodable",
+          "ok": true,
+          "detail": "ffprobe 6120ms"
+        },
+        {
+          "name": "duration_agrees",
+          "ok": true,
+          "detail": "ffprobe 6120ms vs stored 6120ms"
+        },
+        {
+          "name": "not_truncated",
+          "ok": true,
+          "detail": "6120ms vs length-scaled expectation 6229ms (ratio 0.98)"
+        },
+        {
+          "name": "asr_decoded",
+          "ok": true,
+          "detail": "\"Jah, see on umbes kymmen minutit jalgsi.  Minge mööda seda teed otsedasi.\""
+        },
+        {
+          "name": "asr_is_speech",
+          "ok": true,
+          "detail": "CER vs live text 0.057"
+        },
+        {
+          "name": "asr_speaks_new_form",
+          "ok": true,
+          "detail": "CER 0.057 vs live < 0.072 vs superseded"
+        },
+        {
+          "name": "asr_changed_words",
+          "ok": true,
+          "detail": "\"minge\" is 0 from minge and 1 from superseded mine"
+        }
+      ],
+      "pass": true
+    },
+    {
+      "clip_id": "444d8fea-32ad-477b-8efa-c3019f9da1fc",
+      "course": "est_for_eng",
+      "voice_id": "et-EE-KertNeural",
+      "superseded_text": "Teise ringtee juures võta esimene väljapääs.",
+      "live_text": "Teise ringtee juures võtke esimene väljapääs.",
+      "decode": "Teise ringte juures võtke esimene väljapääs.",
+      "previous_s3_key": "mastered/1A8DABEB-4B34-4ADC-9249-87850FA95D58.mp3",
+      "s3_key": "mastered/4CCD857A-E58A-41B6-B2D8-B3A46647300C.mp3",
+      "previous_revision": 1,
+      "revision": 2,
+      "pod_rows": [
+        {
+          "id": "est_for_eng:pod-0:SC13-S005",
+          "pod": "pod-0",
+          "scene": 13,
+          "sentence": 5,
+          "speaker": "Local",
+          "target_text": "Teise ringtee juures võtke esimene väljapääs."
+        },
+        {
+          "id": "est_for_eng:pod-0-unrecorded:SC13-S005",
+          "pod": "pod-0-unrecorded",
+          "scene": 13,
+          "sentence": 5,
+          "speaker": "Local",
+          "target_text": "Teise ringtee juures võtke esimene väljapääs."
+        }
+      ],
+      "checks": [
+        {
+          "name": "voice_is_incumbent_azure",
+          "ok": true,
+          "detail": "et-EE-KertNeural"
+        },
+        {
+          "name": "revision_bumped",
+          "ok": true,
+          "detail": "1 -> 2"
+        },
+        {
+          "name": "key_moved",
+          "ok": true,
+          "detail": "mastered/1A8DABEB-4B34-4ADC-9249-87850FA95D58.mp3 -> mastered/4CCD857A-E58A-41B6-B2D8-B3A46647300C.mp3"
+        },
+        {
+          "name": "text_audio_in_sync",
+          "ok": true,
+          "detail": "2 pod row(s), all byte-identical to course_audio.text"
+        },
+        {
+          "name": "superseded_object_retained",
+          "ok": true,
+          "detail": "mastered/1A8DABEB-4B34-4ADC-9249-87850FA95D58.mp3"
+        },
+        {
+          "name": "alive_on_s3",
+          "ok": true,
+          "detail": "ContentLength 42624 = file_size_bytes 42624"
+        },
+        {
+          "name": "decodable",
+          "ok": true,
+          "detail": "ffprobe 3492ms"
+        },
+        {
+          "name": "duration_agrees",
+          "ok": true,
+          "detail": "ffprobe 3492ms vs stored 3492ms"
+        },
+        {
+          "name": "not_truncated",
+          "ok": true,
+          "detail": "3492ms vs length-scaled expectation 3608ms (ratio 0.97)"
+        },
+        {
+          "name": "asr_decoded",
+          "ok": true,
+          "detail": "\"Teise ringte juures võtke esimene väljapääs.\""
+        },
+        {
+          "name": "asr_is_speech",
+          "ok": true,
+          "detail": "CER vs live text 0.023"
+        },
+        {
+          "name": "asr_speaks_new_form",
+          "ok": true,
+          "detail": "CER 0.023 vs live < 0.070 vs superseded"
+        },
+        {
+          "name": "asr_changed_words",
+          "ok": true,
+          "detail": "\"votke\" is 0 from votke and 2 from superseded vota"
+        }
+      ],
+      "pass": true
+    },
+    {
+      "clip_id": "a14348af-df9d-4e5a-987d-509a01b591ed",
+      "course": "est_for_eng",
+      "voice_id": "et-EE-KertNeural",
+      "superseded_text": "Sa näed supermarketit oma vasakul käel, täpselt bussipeatuse vastas.",
+      "live_text": "Te näete supermarketit oma vasakul käel, täpselt bussipeatuse vastas.",
+      "decode": "Te näete Supermarketit oma vasakul käel, täpselt pussipeatuse vastas.",
+      "previous_s3_key": "mastered/ABCC840B-46EF-45C6-A804-ACA0B046041D.mp3",
+      "s3_key": "mastered/07CF6BAB-B8FF-42BC-9B1A-48C66BD5590C.mp3",
+      "previous_revision": 1,
+      "revision": 2,
+      "pod_rows": [
+        {
+          "id": "est_for_eng:pod-0:SC13-S007",
+          "pod": "pod-0",
+          "scene": 13,
+          "sentence": 7,
+          "speaker": "Local",
+          "target_text": "Te näete supermarketit oma vasakul käel, täpselt bussipeatuse vastas."
+        },
+        {
+          "id": "est_for_eng:pod-0-unrecorded:SC13-S007",
+          "pod": "pod-0-unrecorded",
+          "scene": 13,
+          "sentence": 7,
+          "speaker": "Local",
+          "target_text": "Te näete supermarketit oma vasakul käel, täpselt bussipeatuse vastas."
+        }
+      ],
+      "checks": [
+        {
+          "name": "voice_is_incumbent_azure",
+          "ok": true,
+          "detail": "et-EE-KertNeural"
+        },
+        {
+          "name": "revision_bumped",
+          "ok": true,
+          "detail": "1 -> 2"
+        },
+        {
+          "name": "key_moved",
+          "ok": true,
+          "detail": "mastered/ABCC840B-46EF-45C6-A804-ACA0B046041D.mp3 -> mastered/07CF6BAB-B8FF-42BC-9B1A-48C66BD5590C.mp3"
+        },
+        {
+          "name": "text_audio_in_sync",
+          "ok": true,
+          "detail": "2 pod row(s), all byte-identical to course_audio.text"
+        },
+        {
+          "name": "superseded_object_retained",
+          "ok": true,
+          "detail": "mastered/ABCC840B-46EF-45C6-A804-ACA0B046041D.mp3"
+        },
+        {
+          "name": "alive_on_s3",
+          "ok": true,
+          "detail": "ContentLength 62784 = file_size_bytes 62784"
+        },
+        {
+          "name": "decodable",
+          "ok": true,
+          "detail": "ffprobe 5184ms"
+        },
+        {
+          "name": "duration_agrees",
+          "ok": true,
+          "detail": "ffprobe 5184ms vs stored 5184ms"
+        },
+        {
+          "name": "not_truncated",
+          "ok": true,
+          "detail": "5184ms vs length-scaled expectation 5260ms (ratio 0.99)"
+        },
+        {
+          "name": "asr_decoded",
+          "ok": true,
+          "detail": "\"Te näete Supermarketit oma vasakul käel, täpselt pussipeatuse vastas.\""
+        },
+        {
+          "name": "asr_is_speech",
+          "ok": true,
+          "detail": "CER vs live text 0.015"
+        },
+        {
+          "name": "asr_speaks_new_form",
+          "ok": true,
+          "detail": "CER 0.015 vs live < 0.076 vs superseded"
+        },
+        {
+          "name": "asr_changed_words",
+          "ok": true,
+          "detail": "\"te\" is 0 from te and 2 from superseded sa; \"naete\" is 0 from naete and 2 from superseded naed"
+        }
+      ],
+      "pass": true
+    },
+    {
+      "clip_id": "a97ebd99-9bf7-4206-b449-6b1e4a9a1d2f",
+      "course": "est_for_eng",
+      "voice_id": "et-EE-AnuNeural",
+      "superseded_text": "Suur aitäh. Sa oled olnud väga abistav.",
+      "live_text": "Suur aitäh. Te olete olnud väga abistav.",
+      "decode": "Suureite! Te olete onnud väga apista!",
+      "previous_s3_key": "mastered/C140DBF8-3BED-4627-93A4-F94F6CD540F4.mp3",
+      "s3_key": "mastered/97CA4491-DCE1-4EBE-A6F6-E145A6CF619D.mp3",
+      "previous_revision": 1,
+      "revision": 2,
+      "pod_rows": [
+        {
+          "id": "est_for_eng:pod-0:SC13-S010",
+          "pod": "pod-0",
+          "scene": 13,
+          "sentence": 10,
+          "speaker": "Tourist",
+          "target_text": "Suur aitäh. Te olete olnud väga abistav."
+        },
+        {
+          "id": "est_for_eng:pod-0-unrecorded:SC13-S010",
+          "pod": "pod-0-unrecorded",
+          "scene": 13,
+          "sentence": 10,
+          "speaker": "Tourist",
+          "target_text": "Suur aitäh. Te olete olnud väga abistav."
+        }
+      ],
+      "checks": [
+        {
+          "name": "voice_is_incumbent_azure",
+          "ok": true,
+          "detail": "et-EE-AnuNeural"
+        },
+        {
+          "name": "revision_bumped",
+          "ok": true,
+          "detail": "1 -> 2"
+        },
+        {
+          "name": "key_moved",
+          "ok": true,
+          "detail": "mastered/C140DBF8-3BED-4627-93A4-F94F6CD540F4.mp3 -> mastered/97CA4491-DCE1-4EBE-A6F6-E145A6CF619D.mp3"
+        },
+        {
+          "name": "text_audio_in_sync",
+          "ok": true,
+          "detail": "2 pod row(s), all byte-identical to course_audio.text"
+        },
+        {
+          "name": "superseded_object_retained",
+          "ok": true,
+          "detail": "mastered/C140DBF8-3BED-4627-93A4-F94F6CD540F4.mp3"
+        },
+        {
+          "name": "alive_on_s3",
+          "ok": true,
+          "detail": "ContentLength 49824 = file_size_bytes 49824"
+        },
+        {
+          "name": "decodable",
+          "ok": true,
+          "detail": "ffprobe 4104ms"
+        },
+        {
+          "name": "duration_agrees",
+          "ok": true,
+          "detail": "ffprobe 4104ms vs stored 4104ms"
+        },
+        {
+          "name": "not_truncated",
+          "ok": true,
+          "detail": "4104ms vs length-scaled expectation 4234ms (ratio 0.97)"
+        },
+        {
+          "name": "asr_decoded",
+          "ok": true,
+          "detail": "\"Suureite! Te olete onnud väga apista!\""
+        },
+        {
+          "name": "asr_is_speech",
+          "ok": true,
+          "detail": "CER vs live text 0.184"
+        },
+        {
+          "name": "asr_speaks_new_form",
+          "ok": true,
+          "detail": "CER 0.184 vs live < 0.297 vs superseded"
+        },
+        {
+          "name": "asr_changed_words",
+          "ok": true,
+          "detail": "\"te\" is 0 from te and 2 from superseded sa; \"olete\" is 0 from olete and 2 from superseded oled"
+        }
+      ],
+      "pass": true
+    },
+    {
+      "clip_id": "e0a51d26-46cf-42cf-883e-f7099142cf68",
+      "course": "est_for_eng",
+      "voice_id": "et-EE-KertNeural",
+      "superseded_text": "Tere. Kas saad mind viia rongijaama, palun?",
+      "live_text": "Tere. Kas saate mind viia rongijaama, palun?",
+      "decode": "Tere, kas saate mind viia rongiama, palun?",
+      "previous_s3_key": "mastered/60152247-A9ED-4438-81A4-8B5360F408CA.mp3",
+      "s3_key": "mastered/751B9180-5265-42B6-B19C-AE52E9C0474C.mp3",
+      "previous_revision": 1,
+      "revision": 2,
+      "pod_rows": [
+        {
+          "id": "est_for_eng:pod-0:SC14-S001",
+          "pod": "pod-0",
+          "scene": 14,
+          "sentence": 1,
+          "speaker": "Passenger",
+          "target_text": "Tere. Kas saate mind viia rongijaama, palun?"
+        },
+        {
+          "id": "est_for_eng:pod-0-unrecorded:SC14-S001",
+          "pod": "pod-0-unrecorded",
+          "scene": 14,
+          "sentence": 1,
+          "speaker": "Passenger",
+          "target_text": "Tere. Kas saate mind viia rongijaama, palun?"
+        }
+      ],
+      "checks": [
+        {
+          "name": "voice_is_incumbent_azure",
+          "ok": true,
+          "detail": "et-EE-KertNeural"
+        },
+        {
+          "name": "revision_bumped",
+          "ok": true,
+          "detail": "1 -> 2"
+        },
+        {
+          "name": "key_moved",
+          "ok": true,
+          "detail": "mastered/60152247-A9ED-4438-81A4-8B5360F408CA.mp3 -> mastered/751B9180-5265-42B6-B19C-AE52E9C0474C.mp3"
+        },
+        {
+          "name": "text_audio_in_sync",
+          "ok": true,
+          "detail": "2 pod row(s), all byte-identical to course_audio.text"
+        },
+        {
+          "name": "superseded_object_retained",
+          "ok": true,
+          "detail": "mastered/60152247-A9ED-4438-81A4-8B5360F408CA.mp3"
+        },
+        {
+          "name": "alive_on_s3",
+          "ok": true,
+          "detail": "ContentLength 51264 = file_size_bytes 51264"
+        },
+        {
+          "name": "decodable",
+          "ok": true,
+          "detail": "ffprobe 4212ms"
+        },
+        {
+          "name": "duration_agrees",
+          "ok": true,
+          "detail": "ffprobe 4212ms vs stored 4212ms"
+        },
+        {
+          "name": "not_truncated",
+          "ok": true,
+          "detail": "4212ms vs length-scaled expectation 4273ms (ratio 0.99)"
+        },
+        {
+          "name": "asr_decoded",
+          "ok": true,
+          "detail": "\"Tere, kas saate mind viia rongiama, palun?\""
+        },
+        {
+          "name": "asr_is_speech",
+          "ok": true,
+          "detail": "CER vs live text 0.049"
+        },
+        {
+          "name": "asr_speaks_new_form",
+          "ok": true,
+          "detail": "CER 0.049 vs live < 0.100 vs superseded"
+        },
+        {
+          "name": "asr_changed_words",
+          "ok": true,
+          "detail": "\"saate\" is 0 from saate and 2 from superseded saad"
+        }
+      ],
+      "pass": true
+    },
+    {
+      "clip_id": "ad148ea3-55b5-46d3-92ea-e7da6d4c5764",
+      "course": "est_for_eng",
+      "voice_id": "et-EE-KertNeural",
+      "superseded_text": "Kuidas arvad, kui kaua see võtab?",
+      "live_text": "Kuidas arvate, kui kaua see võtab?",
+      "decode": "Kuidas arvate, kui kaua see võtab?",
+      "previous_s3_key": "mastered/4918D357-04DD-4624-9BA8-852502953A2C.mp3",
+      "s3_key": "mastered/D961FFAF-8315-4118-87B6-E0AF65B989FD.mp3",
+      "previous_revision": 1,
+      "revision": 2,
+      "pod_rows": [
+        {
+          "id": "est_for_eng:pod-0:SC14-S003",
+          "pod": "pod-0",
+          "scene": 14,
+          "sentence": 3,
+          "speaker": "Passenger",
+          "target_text": "Kuidas arvate, kui kaua see võtab?"
+        },
+        {
+          "id": "est_for_eng:pod-0-unrecorded:SC14-S003",
+          "pod": "pod-0-unrecorded",
+          "scene": 14,
+          "sentence": 3,
+          "speaker": "Passenger",
+          "target_text": "Kuidas arvate, kui kaua see võtab?"
+        }
+      ],
+      "checks": [
+        {
+          "name": "voice_is_incumbent_azure",
+          "ok": true,
+          "detail": "et-EE-KertNeural"
+        },
+        {
+          "name": "revision_bumped",
+          "ok": true,
+          "detail": "1 -> 2"
+        },
+        {
+          "name": "key_moved",
+          "ok": true,
+          "detail": "mastered/4918D357-04DD-4624-9BA8-852502953A2C.mp3 -> mastered/D961FFAF-8315-4118-87B6-E0AF65B989FD.mp3"
+        },
+        {
+          "name": "text_audio_in_sync",
+          "ok": true,
+          "detail": "2 pod row(s), all byte-identical to course_audio.text"
+        },
+        {
+          "name": "superseded_object_retained",
+          "ok": true,
+          "detail": "mastered/4918D357-04DD-4624-9BA8-852502953A2C.mp3"
+        },
+        {
+          "name": "alive_on_s3",
+          "ok": true,
+          "detail": "ContentLength 34848 = file_size_bytes 34848"
+        },
+        {
+          "name": "decodable",
+          "ok": true,
+          "detail": "ffprobe 2844ms"
+        },
+        {
+          "name": "duration_agrees",
+          "ok": true,
+          "detail": "ffprobe 2844ms vs stored 2844ms"
+        },
+        {
+          "name": "not_truncated",
+          "ok": true,
+          "detail": "2844ms vs length-scaled expectation 2844ms (ratio 1.00)"
+        },
+        {
+          "name": "asr_decoded",
+          "ok": true,
+          "detail": "\"Kuidas arvate, kui kaua see võtab?\""
+        },
+        {
+          "name": "asr_is_speech",
+          "ok": true,
+          "detail": "CER vs live text 0.000"
+        },
+        {
+          "name": "asr_speaks_new_form",
+          "ok": true,
+          "detail": "CER 0.000 vs live < 0.065 vs superseded"
+        },
+        {
+          "name": "asr_changed_words",
+          "ok": true,
+          "detail": "\"arvate\" is 0 from arvate and 2 from superseded arvad"
+        }
+      ],
+      "pass": true
+    },
+    {
+      "clip_id": "b5738c17-c5a6-4ae5-8097-18ddccca8ae4",
+      "course": "est_for_eng",
+      "voice_id": "et-EE-KertNeural",
+      "superseded_text": "Kas sa tead, kust saan jaamas pileti?",
+      "live_text": "Kas te teate, kust saan jaamas pileti?",
+      "decode": "Kas te teate, kus saan jaamas pileti?",
+      "previous_s3_key": "mastered/B7AFA437-64F4-4507-997A-35EA9D4B1548.mp3",
+      "s3_key": "mastered/5D511294-DB52-4997-87AD-5D2252184BB6.mp3",
+      "previous_revision": 1,
+      "revision": 2,
+      "pod_rows": [
+        {
+          "id": "est_for_eng:pod-0:SC14-S005",
+          "pod": "pod-0",
+          "scene": 14,
+          "sentence": 5,
+          "speaker": "Passenger",
+          "target_text": "Kas te teate, kust saan jaamas pileti?"
+        },
+        {
+          "id": "est_for_eng:pod-0-unrecorded:SC14-S005",
+          "pod": "pod-0-unrecorded",
+          "scene": 14,
+          "sentence": 5,
+          "speaker": "Passenger",
+          "target_text": "Kas te teate, kust saan jaamas pileti?"
+        }
+      ],
+      "checks": [
+        {
+          "name": "voice_is_incumbent_azure",
+          "ok": true,
+          "detail": "et-EE-KertNeural"
+        },
+        {
+          "name": "revision_bumped",
+          "ok": true,
+          "detail": "1 -> 2"
+        },
+        {
+          "name": "key_moved",
+          "ok": true,
+          "detail": "mastered/B7AFA437-64F4-4507-997A-35EA9D4B1548.mp3 -> mastered/5D511294-DB52-4997-87AD-5D2252184BB6.mp3"
+        },
+        {
+          "name": "text_audio_in_sync",
+          "ok": true,
+          "detail": "2 pod row(s), all byte-identical to course_audio.text"
+        },
+        {
+          "name": "superseded_object_retained",
+          "ok": true,
+          "detail": "mastered/B7AFA437-64F4-4507-997A-35EA9D4B1548.mp3"
+        },
+        {
+          "name": "alive_on_s3",
+          "ok": true,
+          "detail": "ContentLength 37440 = file_size_bytes 37440"
+        },
+        {
+          "name": "decodable",
+          "ok": true,
+          "detail": "ffprobe 3060ms"
+        },
+        {
+          "name": "duration_agrees",
+          "ok": true,
+          "detail": "ffprobe 3060ms vs stored 3060ms"
+        },
+        {
+          "name": "not_truncated",
+          "ok": true,
+          "detail": "3060ms vs length-scaled expectation 3106ms (ratio 0.99)"
+        },
+        {
+          "name": "asr_decoded",
+          "ok": true,
+          "detail": "\"Kas te teate, kus saan jaamas pileti?\""
+        },
+        {
+          "name": "asr_is_speech",
+          "ok": true,
+          "detail": "CER vs live text 0.028"
+        },
+        {
+          "name": "asr_speaks_new_form",
+          "ok": true,
+          "detail": "CER 0.028 vs live < 0.143 vs superseded"
+        },
+        {
+          "name": "asr_changed_words",
+          "ok": true,
+          "detail": "\"te\" is 0 from te and 2 from superseded sa; \"teate\" is 0 from teate and 2 from superseded tead"
+        }
+      ],
+      "pass": true
+    },
+    {
+      "clip_id": "f34deaec-a756-4d76-9a06-61c9319840d4",
+      "course": "est_for_eng",
+      "voice_id": "et-EE-AnuNeural",
+      "superseded_text": "Jah, jätan su just piletikassa juurde maha.",
+      "live_text": "Jah, jätan teid just piletikassa juurde maha.",
+      "decode": "Jah, jätan teid just pileti kas sa juurde maha.",
+      "previous_s3_key": "mastered/3FAFDD3D-9A94-4282-BE42-482071F0D36A.mp3",
+      "s3_key": "mastered/105E707D-A257-4AE8-93D2-B582802EA202.mp3",
+      "previous_revision": 1,
+      "revision": 2,
+      "pod_rows": [
+        {
+          "id": "est_for_eng:pod-0:SC14-S006",
+          "pod": "pod-0",
+          "scene": 14,
+          "sentence": 6,
+          "speaker": "Driver",
+          "target_text": "Jah, jätan teid just piletikassa juurde maha."
+        },
+        {
+          "id": "est_for_eng:pod-0-unrecorded:SC14-S006",
+          "pod": "pod-0-unrecorded",
+          "scene": 14,
+          "sentence": 6,
+          "speaker": "Driver",
+          "target_text": "Jah, jätan teid just piletikassa juurde maha."
+        }
+      ],
+      "checks": [
+        {
+          "name": "voice_is_incumbent_azure",
+          "ok": true,
+          "detail": "et-EE-AnuNeural"
+        },
+        {
+          "name": "revision_bumped",
+          "ok": true,
+          "detail": "1 -> 2"
+        },
+        {
+          "name": "key_moved",
+          "ok": true,
+          "detail": "mastered/3FAFDD3D-9A94-4282-BE42-482071F0D36A.mp3 -> mastered/105E707D-A257-4AE8-93D2-B582802EA202.mp3"
+        },
+        {
+          "name": "text_audio_in_sync",
+          "ok": true,
+          "detail": "2 pod row(s), all byte-identical to course_audio.text"
+        },
+        {
+          "name": "superseded_object_retained",
+          "ok": true,
+          "detail": "mastered/3FAFDD3D-9A94-4282-BE42-482071F0D36A.mp3"
+        },
+        {
+          "name": "alive_on_s3",
+          "ok": true,
+          "detail": "ContentLength 42912 = file_size_bytes 42912"
+        },
+        {
+          "name": "decodable",
+          "ok": true,
+          "detail": "ffprobe 3528ms"
+        },
+        {
+          "name": "duration_agrees",
+          "ok": true,
+          "detail": "ffprobe 3528ms vs stored 3528ms"
+        },
+        {
+          "name": "not_truncated",
+          "ok": true,
+          "detail": "3528ms vs length-scaled expectation 3692ms (ratio 0.96)"
+        },
+        {
+          "name": "asr_decoded",
+          "ok": true,
+          "detail": "\"Jah, jätan teid just pileti kas sa juurde maha.\""
+        },
+        {
+          "name": "asr_is_speech",
+          "ok": true,
+          "detail": "CER vs live text 0.046"
+        },
+        {
+          "name": "asr_speaks_new_form",
+          "ok": true,
+          "detail": "CER 0.046 vs live < 0.146 vs superseded"
+        },
+        {
+          "name": "asr_changed_words",
+          "ok": true,
+          "detail": "\"teid\" is 0 from teid and 4 from superseded su"
+        }
+      ],
+      "pass": true
+    },
+    {
+      "clip_id": "ea182cf6-0e71-470a-9258-bbeca1a38c94",
+      "course": "est_for_eng",
+      "voice_id": "et-EE-KertNeural",
+      "superseded_text": "Päikesekaitsekreem on seal all paremal, ja hambapastat leiad kohe nurga tagant.",
+      "live_text": "Päikesekaitsekreem on seal all paremal, ja hambapastat leiate kohe nurga tagant.",
+      "decode": "Täikesekaitse kreema on sealal paremal ja hambapastat leijate kohe nurga tagant.",
+      "previous_s3_key": "mastered/AE226331-1220-40B4-BBA4-BF3E16B5510A.mp3",
+      "s3_key": "mastered/BB9983A5-0670-4873-A059-C3F659A98B91.mp3",
+      "previous_revision": 1,
+      "revision": 2,
+      "pod_rows": [
+        {
+          "id": "est_for_eng:pod-0:SC10-S006",
+          "pod": "pod-0",
+          "scene": 10,
+          "sentence": 6,
+          "speaker": "Assistant",
+          "target_text": "Päikesekaitsekreem on seal all paremal, ja hambapastat leiate kohe nurga tagant."
+        },
+        {
+          "id": "est_for_eng:pod-0-unrecorded:SC10-S006",
+          "pod": "pod-0-unrecorded",
+          "scene": 10,
+          "sentence": 6,
+          "speaker": "Assistant",
+          "target_text": "Päikesekaitsekreem on seal all paremal, ja hambapastat leiate kohe nurga tagant."
+        }
+      ],
+      "checks": [
+        {
+          "name": "voice_is_incumbent_azure",
+          "ok": true,
+          "detail": "et-EE-KertNeural"
+        },
+        {
+          "name": "revision_bumped",
+          "ok": true,
+          "detail": "1 -> 2"
+        },
+        {
+          "name": "key_moved",
+          "ok": true,
+          "detail": "mastered/AE226331-1220-40B4-BBA4-BF3E16B5510A.mp3 -> mastered/BB9983A5-0670-4873-A059-C3F659A98B91.mp3"
+        },
+        {
+          "name": "text_audio_in_sync",
+          "ok": true,
+          "detail": "2 pod row(s), all byte-identical to course_audio.text"
+        },
+        {
+          "name": "superseded_object_retained",
+          "ok": true,
+          "detail": "mastered/AE226331-1220-40B4-BBA4-BF3E16B5510A.mp3"
+        },
+        {
+          "name": "alive_on_s3",
+          "ok": true,
+          "detail": "ContentLength 67680 = file_size_bytes 67680"
+        },
+        {
+          "name": "decodable",
+          "ok": true,
+          "detail": "ffprobe 5580ms"
+        },
+        {
+          "name": "duration_agrees",
+          "ok": true,
+          "detail": "ffprobe 5580ms vs stored 5580ms"
+        },
+        {
+          "name": "not_truncated",
+          "ok": true,
+          "detail": "5580ms vs length-scaled expectation 5566ms (ratio 1.00)"
+        },
+        {
+          "name": "asr_decoded",
+          "ok": true,
+          "detail": "\"Täikesekaitse kreema on sealal paremal ja hambapastat leijate kohe nurga tagant.\""
+        },
+        {
+          "name": "asr_is_speech",
+          "ok": true,
+          "detail": "CER vs live text 0.077"
+        },
+        {
+          "name": "asr_speaks_new_form",
+          "ok": true,
+          "detail": "CER 0.077 vs live < 0.104 vs superseded"
+        },
+        {
+          "name": "asr_changed_words",
+          "ok": true,
+          "detail": "\"leijate\" is 1 from leiate and 3 from superseded leiad"
+        }
+      ],
+      "pass": true
+    },
+    {
+      "clip_id": "effea725-703b-451b-90ee-5194a08ced2e",
+      "course": "est_for_eng",
+      "voice_id": "et-EE-KertNeural",
+      "superseded_text": "Meil on majapunane, majavalge, või võid võtta ühe meie pudelitest.",
+      "live_text": "Meil on majapunane, majavalge, või võite võtta ühe meie pudelitest.",
+      "decode": "Meil on majapunane, majavalge või võitte võtta ühe meie pudelitest.",
+      "previous_s3_key": "mastered/EFFEA725-703B-451B-90EE-5194A08CED2E.mp3",
+      "s3_key": "mastered/E0645F43-1236-42EA-9159-98FB132621C2.mp3",
+      "previous_revision": 1,
+      "revision": 2,
+      "pod_rows": [
+        {
+          "id": "est_for_eng:pod-0-unrecorded:SC08-S007",
+          "pod": "pod-0-unrecorded",
+          "scene": 8,
+          "sentence": 7,
+          "speaker": "Bartender",
+          "target_text": "Meil on majapunane, majavalge, või võite võtta ühe meie pudelitest."
+        },
+        {
+          "id": "est_for_eng:pod-0:SC08-S007",
+          "pod": "pod-0",
+          "scene": 8,
+          "sentence": 7,
+          "speaker": "Bartender",
+          "target_text": "Meil on majapunane, majavalge, või võite võtta ühe meie pudelitest."
+        }
+      ],
+      "checks": [
+        {
+          "name": "voice_is_incumbent_azure",
+          "ok": true,
+          "detail": "et-EE-KertNeural"
+        },
+        {
+          "name": "revision_bumped",
+          "ok": true,
+          "detail": "1 -> 2"
+        },
+        {
+          "name": "key_moved",
+          "ok": true,
+          "detail": "mastered/EFFEA725-703B-451B-90EE-5194A08CED2E.mp3 -> mastered/E0645F43-1236-42EA-9159-98FB132621C2.mp3"
+        },
+        {
+          "name": "text_audio_in_sync",
+          "ok": true,
+          "detail": "2 pod row(s), all byte-identical to course_audio.text"
+        },
+        {
+          "name": "superseded_object_retained",
+          "ok": true,
+          "detail": "mastered/EFFEA725-703B-451B-90EE-5194A08CED2E.mp3"
+        },
+        {
+          "name": "alive_on_s3",
+          "ok": true,
+          "detail": "ContentLength 60192 = file_size_bytes 60192"
+        },
+        {
+          "name": "decodable",
+          "ok": true,
+          "detail": "ffprobe 4968ms"
+        },
+        {
+          "name": "duration_agrees",
+          "ok": true,
+          "detail": "ffprobe 4968ms vs stored 4968ms"
+        },
+        {
+          "name": "not_truncated",
+          "ok": true,
+          "detail": "4968ms vs length-scaled expectation 4921ms (ratio 1.01)"
+        },
+        {
+          "name": "asr_decoded",
+          "ok": true,
+          "detail": "\"Meil on majapunane, majavalge või võitte võtta ühe meie pudelitest.\""
+        },
+        {
+          "name": "asr_is_speech",
+          "ok": true,
+          "detail": "CER vs live text 0.016"
+        },
+        {
+          "name": "asr_speaks_new_form",
+          "ok": true,
+          "detail": "CER 0.016 vs live < 0.048 vs superseded"
+        },
+        {
+          "name": "asr_changed_words",
+          "ok": true,
+          "detail": "\"voitte\" is 1 from voite and 3 from superseded void"
+        }
+      ],
+      "pass": true
+    },
+    {
+      "clip_id": "ec2a029e-1c44-4edc-af50-821d507a3f2f",
+      "course": "isl_for_eng",
+      "voice_id": "is-IS-GunnarNeural",
+      "superseded_text": "Þú ættir nú þegar að vera fullur af sjálfstrausti. Ég held að þú sért að gera það miklu betur en þú gerir þér grein fyrir. Mér líður vel við að tala við þig, og ég er ekki að tala mjög hægt.",
+      "live_text": "Þú ættir nú þegar að vera full af sjálfstrausti. Ég held að þú sért að gera það miklu betur en þú gerir þér grein fyrir. Mér líður vel við að tala við þig, og ég er ekki að tala mjög hægt.",
+      "decode": "Þú ættir nú þegar að vera full af sjálfstrústi.  Ég held að þú sjöft að gera það miklu betur en þú gerir þér grein fyrir.  Mér líður vel við að tala við þig og ég er ekki að tala mjög hægt.",
+      "previous_s3_key": "mastered/A71CB5F1-87A5-4899-A7C0-90A8465BDDF9.mp3",
+      "s3_key": "mastered/F93F5FB6-48F4-4761-8FE1-FBA00D5E0D5F.mp3",
+      "previous_revision": 1,
+      "revision": 2,
+      "pod_rows": [
+        {
+          "id": "isl_for_eng:pod-0-unrecorded:SC22-S008",
+          "pod": "pod-0-unrecorded",
+          "scene": 22,
+          "sentence": 8,
+          "speaker": "Friend",
+          "target_text": "Þú ættir nú þegar að vera full af sjálfstrausti. Ég held að þú sért að gera það miklu betur en þú gerir þér grein fyrir. Mér líður vel við að tala við þig, og ég er ekki að tala mjög hægt."
+        },
+        {
+          "id": "isl_for_eng:pod-0:SC15-S008",
+          "pod": "pod-0",
+          "scene": 15,
+          "sentence": 8,
+          "speaker": "Friend",
+          "target_text": "Þú ættir nú þegar að vera full af sjálfstrausti. Ég held að þú sért að gera það miklu betur en þú gerir þér grein fyrir. Mér líður vel við að tala við þig, og ég er ekki að tala mjög hægt."
+        }
+      ],
+      "checks": [
+        {
+          "name": "voice_is_incumbent_azure",
+          "ok": true,
+          "detail": "is-IS-GunnarNeural"
+        },
+        {
+          "name": "revision_bumped",
+          "ok": true,
+          "detail": "1 -> 2"
+        },
+        {
+          "name": "key_moved",
+          "ok": true,
+          "detail": "mastered/A71CB5F1-87A5-4899-A7C0-90A8465BDDF9.mp3 -> mastered/F93F5FB6-48F4-4761-8FE1-FBA00D5E0D5F.mp3"
+        },
+        {
+          "name": "text_audio_in_sync",
+          "ok": true,
+          "detail": "2 pod row(s), all byte-identical to course_audio.text"
+        },
+        {
+          "name": "superseded_object_retained",
+          "ok": true,
+          "detail": "mastered/A71CB5F1-87A5-4899-A7C0-90A8465BDDF9.mp3"
+        },
+        {
+          "name": "alive_on_s3",
+          "ok": true,
+          "detail": "ContentLength 141408 = file_size_bytes 141408"
+        },
+        {
+          "name": "decodable",
+          "ok": true,
+          "detail": "ffprobe 11736ms"
+        },
+        {
+          "name": "duration_agrees",
+          "ok": true,
+          "detail": "ffprobe 11736ms vs stored 11736ms"
+        },
+        {
+          "name": "not_truncated",
+          "ok": true,
+          "detail": "11736ms vs length-scaled expectation 11755ms (ratio 1.00)"
+        },
+        {
+          "name": "asr_decoded",
+          "ok": true,
+          "detail": "\"Þú ættir nú þegar að vera full af sjálfstrústi.  Ég held að þú sjöft að gera það miklu betur en þú gerir þér grein fyrir.  Mér líður vel við að tala við þig og ég er ekki að tala mjög hægt.\""
+        },
+        {
+          "name": "asr_is_speech",
+          "ok": true,
+          "detail": "CER vs live text 0.022"
+        },
+        {
+          "name": "asr_speaks_new_form",
+          "ok": true,
+          "detail": "CER 0.022 vs live < 0.032 vs superseded"
+        },
+        {
+          "name": "asr_changed_words",
+          "ok": true,
+          "detail": "\"full\" is 0 from full and 2 from superseded fullur"
+        }
+      ],
+      "pass": true
+    },
+    {
+      "clip_id": "403a4a3f-8742-4b9a-9dc0-ba6eb3877228",
+      "course": "isl_for_eng",
+      "voice_id": "is-IS-GudrunNeural",
+      "superseded_text": "Ég er ekki viss hvort ég sé svangur. Eruð þið með matseðil?",
+      "live_text": "Ég er ekki viss hvort ég sé svöng. Eruð þið með matseðil?",
+      "decode": "Ég er ekki viss hvort ég síð svung.  Er þið með matseðil?",
+      "previous_s3_key": "mastered/AF2DE3E7-FF73-4A2A-91A8-44F0880A7800.mp3",
+      "s3_key": "mastered/D340FDA2-16A6-4438-BF7B-C01B2FEDD520.mp3",
+      "previous_revision": 1,
+      "revision": 2,
+      "pod_rows": [
+        {
+          "id": "isl_for_eng:pod-0:SC08-S012",
+          "pod": "pod-0",
+          "scene": 8,
+          "sentence": 12,
+          "speaker": "Customer 1",
+          "target_text": "Ég er ekki viss hvort ég sé svöng. Eruð þið með matseðil?"
+        },
+        {
+          "id": "isl_for_eng:pod-0-unrecorded:SC08-S012",
+          "pod": "pod-0-unrecorded",
+          "scene": 8,
+          "sentence": 12,
+          "speaker": "Customer 1",
+          "target_text": "Ég er ekki viss hvort ég sé svöng. Eruð þið með matseðil?"
+        }
+      ],
+      "checks": [
+        {
+          "name": "voice_is_incumbent_azure",
+          "ok": true,
+          "detail": "is-IS-GudrunNeural"
+        },
+        {
+          "name": "revision_bumped",
+          "ok": true,
+          "detail": "1 -> 2"
+        },
+        {
+          "name": "key_moved",
+          "ok": true,
+          "detail": "mastered/AF2DE3E7-FF73-4A2A-91A8-44F0880A7800.mp3 -> mastered/D340FDA2-16A6-4438-BF7B-C01B2FEDD520.mp3"
+        },
+        {
+          "name": "text_audio_in_sync",
+          "ok": true,
+          "detail": "2 pod row(s), all byte-identical to course_audio.text"
+        },
+        {
+          "name": "superseded_object_retained",
+          "ok": true,
+          "detail": "mastered/AF2DE3E7-FF73-4A2A-91A8-44F0880A7800.mp3"
+        },
+        {
+          "name": "alive_on_s3",
+          "ok": true,
+          "detail": "ContentLength 59904 = file_size_bytes 59904"
+        },
+        {
+          "name": "decodable",
+          "ok": true,
+          "detail": "ffprobe 4932ms"
+        },
+        {
+          "name": "duration_agrees",
+          "ok": true,
+          "detail": "ffprobe 4932ms vs stored 4932ms"
+        },
+        {
+          "name": "not_truncated",
+          "ok": true,
+          "detail": "4932ms vs length-scaled expectation 4823ms (ratio 1.02)"
+        },
+        {
+          "name": "asr_decoded",
+          "ok": true,
+          "detail": "\"Ég er ekki viss hvort ég síð svung.  Er þið með matseðil?\""
+        },
+        {
+          "name": "asr_is_speech",
+          "ok": true,
+          "detail": "CER vs live text 0.091"
+        },
+        {
+          "name": "asr_speaks_new_form",
+          "ok": true,
+          "detail": "CER 0.091 vs live < 0.123 vs superseded"
+        },
+        {
+          "name": "asr_changed_words",
+          "ok": true,
+          "detail": "\"svung\" is 1 from svong and 3 from superseded svangur"
+        }
+      ],
+      "pass": true
+    },
+    {
+      "clip_id": "1251f159-4b15-4e12-a5e9-a2743c2c52d4",
+      "course": "isl_for_eng",
+      "voice_id": "azure_is-IS-GudrunNeural",
+      "superseded_text": "Takk, þú hefur verið mjög hjálplegur. Ég er mjög þakklátur.",
+      "live_text": "Takk, þú hefur verið mjög hjálplegur. Ég er mjög þakklát.",
+      "decode": "Takk, þú hef við verið mjög hjáfnblöfur, ég er mjög þakklaðt.",
+      "previous_s3_key": "mastered/4FF91A7F-17D3-41BB-8FBD-42759253DD5B.mp3",
+      "s3_key": "mastered/9B0C0999-14C1-4AE1-A53C-F78CE6CAFFC9.mp3",
+      "previous_revision": 1,
+      "revision": 2,
+      "pod_rows": [
+        {
+          "id": "isl_for_eng:pod-0:SC10-S007",
+          "pod": "pod-0",
+          "scene": 10,
+          "sentence": 7,
+          "speaker": "Customer",
+          "target_text": "Takk, þú hefur verið mjög hjálplegur. Ég er mjög þakklát."
+        },
+        {
+          "id": "isl_for_eng:pod-0-unrecorded:SC10-S007",
+          "pod": "pod-0-unrecorded",
+          "scene": 10,
+          "sentence": 7,
+          "speaker": "Customer",
+          "target_text": "Takk, þú hefur verið mjög hjálplegur. Ég er mjög þakklát."
+        }
+      ],
+      "checks": [
+        {
+          "name": "voice_is_incumbent_azure",
+          "ok": true,
+          "detail": "azure_is-IS-GudrunNeural"
+        },
+        {
+          "name": "revision_bumped",
+          "ok": true,
+          "detail": "1 -> 2"
+        },
+        {
+          "name": "key_moved",
+          "ok": true,
+          "detail": "mastered/4FF91A7F-17D3-41BB-8FBD-42759253DD5B.mp3 -> mastered/9B0C0999-14C1-4AE1-A53C-F78CE6CAFFC9.mp3"
+        },
+        {
+          "name": "text_audio_in_sync",
+          "ok": true,
+          "detail": "2 pod row(s), all byte-identical to course_audio.text"
+        },
+        {
+          "name": "superseded_object_retained",
+          "ok": true,
+          "detail": "mastered/4FF91A7F-17D3-41BB-8FBD-42759253DD5B.mp3"
+        },
+        {
+          "name": "alive_on_s3",
+          "ok": true,
+          "detail": "ContentLength 60192 = file_size_bytes 60192"
+        },
+        {
+          "name": "decodable",
+          "ok": true,
+          "detail": "ffprobe 4968ms"
+        },
+        {
+          "name": "duration_agrees",
+          "ok": true,
+          "detail": "ffprobe 4968ms vs stored 4968ms"
+        },
+        {
+          "name": "not_truncated",
+          "ok": true,
+          "detail": "4968ms vs length-scaled expectation 4869ms (ratio 1.02)"
+        },
+        {
+          "name": "asr_decoded",
+          "ok": true,
+          "detail": "\"Takk, þú hef við verið mjög hjáfnblöfur, ég er mjög þakklaðt.\""
+        },
+        {
+          "name": "asr_is_speech",
+          "ok": true,
+          "detail": "CER vs live text 0.185"
+        },
+        {
+          "name": "asr_speaks_new_form",
+          "ok": true,
+          "detail": "CER 0.185 vs live < 0.214 vs superseded"
+        },
+        {
+          "name": "asr_changed_words",
+          "ok": true,
+          "detail": "\"þakklaðt\" is 1 from þakklat and 3 from superseded þakklatur"
+        }
+      ],
+      "pass": true
+    },
+    {
+      "clip_id": "474cb6fb-c158-46a5-a833-cbc8ee7a63b0",
+      "course": "isl_for_eng",
+      "voice_id": "is-IS-GudrunNeural",
+      "superseded_text": "Það er það virkilega. Ég er mjög ánægður með að ég get átt svona mikla samræðu. Og ég vona að við getum átt fleiri samræður í framtíðinni þegar ég held áfram að batna.",
+      "live_text": "Það er það virkilega. Ég er mjög ánægð með að ég get átt svona mikla samræðu. Og ég vona að við getum átt fleiri samræður í framtíðinni þegar ég held áfram að batna.",
+      "decode": "Það er það virkilega.  Ég er mjög ánef með að ég gett átt svona mykla samræðu.  Og ég vona að við getum átt fleiri samræður í framtíðinni þegar ég held áfram að barna.",
+      "previous_s3_key": "mastered/9654504C-563C-47FB-9EF7-1A73C5CC0BCC.mp3",
+      "s3_key": "mastered/B76A17A3-D125-4B0F-82D7-37783CC605B0.mp3",
+      "previous_revision": 1,
+      "revision": 2,
+      "pod_rows": [
+        {
+          "id": "isl_for_eng:pod-0:SC15-S011",
+          "pod": "pod-0",
+          "scene": 15,
+          "sentence": 11,
+          "speaker": "Learner",
+          "target_text": "Það er það virkilega. Ég er mjög ánægð með að ég get átt svona mikla samræðu. Og ég vona að við getum átt fleiri samræður í framtíðinni þegar ég held áfram að batna."
+        },
+        {
+          "id": "isl_for_eng:pod-0-unrecorded:SC22-S011",
+          "pod": "pod-0-unrecorded",
+          "scene": 22,
+          "sentence": 11,
+          "speaker": "Learner",
+          "target_text": "Það er það virkilega. Ég er mjög ánægð með að ég get átt svona mikla samræðu. Og ég vona að við getum átt fleiri samræður í framtíðinni þegar ég held áfram að batna."
+        }
+      ],
+      "checks": [
+        {
+          "name": "voice_is_incumbent_azure",
+          "ok": true,
+          "detail": "is-IS-GudrunNeural"
+        },
+        {
+          "name": "revision_bumped",
+          "ok": true,
+          "detail": "1 -> 2"
+        },
+        {
+          "name": "key_moved",
+          "ok": true,
+          "detail": "mastered/9654504C-563C-47FB-9EF7-1A73C5CC0BCC.mp3 -> mastered/B76A17A3-D125-4B0F-82D7-37783CC605B0.mp3"
+        },
+        {
+          "name": "text_audio_in_sync",
+          "ok": true,
+          "detail": "2 pod row(s), all byte-identical to course_audio.text"
+        },
+        {
+          "name": "superseded_object_retained",
+          "ok": true,
+          "detail": "mastered/9654504C-563C-47FB-9EF7-1A73C5CC0BCC.mp3"
+        },
+        {
+          "name": "alive_on_s3",
+          "ok": true,
+          "detail": "ContentLength 129888 = file_size_bytes 129888"
+        },
+        {
+          "name": "decodable",
+          "ok": true,
+          "detail": "ffprobe 10764ms"
+        },
+        {
+          "name": "duration_agrees",
+          "ok": true,
+          "detail": "ffprobe 10764ms vs stored 10764ms"
+        },
+        {
+          "name": "not_truncated",
+          "ok": true,
+          "detail": "10764ms vs length-scaled expectation 10694ms (ratio 1.01)"
+        },
+        {
+          "name": "asr_decoded",
+          "ok": true,
+          "detail": "\"Það er það virkilega.  Ég er mjög ánef með að ég gett átt svona mykla samræðu.  Og ég vona að við getum átt fleiri samræður í framtíðinni þegar ég held áfram að barna.\""
+        },
+        {
+          "name": "asr_is_speech",
+          "ok": true,
+          "detail": "CER vs live text 0.037"
+        },
+        {
+          "name": "asr_speaks_new_form",
+          "ok": true,
+          "detail": "CER 0.037 vs live < 0.049 vs superseded"
+        },
+        {
+          "name": "asr_changed_words",
+          "ok": true,
+          "detail": "\"anef\" is 3 from anægð and 5 from superseded anægður"
+        }
+      ],
+      "pass": true
+    }
+  ]
+}

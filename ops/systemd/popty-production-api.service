@@ -5,14 +5,23 @@ Wants=network-online.target
 
 [Service]
 Type=simple
-WorkingDirectory=/home/tomcassidy/SSi/ssi-dashboard-v7-clean
+WorkingDirectory=/home/tomcassidy/SSi/ssi-dashboard-v7-clean-prod
 Environment=NODE_OPTIONS=--max-old-space-size=4096
 Environment=PRODUCTION_API_PORT=3470
 # ONE-WRITER GUARD — Camberley Mac is the live production writer.
 # Leave this off on watson-1 until real cutover. See docs/watson-1-environment.md
 Environment=AUDIT_ARCHIVE_CRON=off
-# Tail-repair gate — see the fuller note in popty-phase8-audio.service. Mirrors the
-# installed unit on watson-1, whose repo copy had drifted without this line.
+# 2026-08-05 (Tom): repairTailDefect measured to damage ~42x more clips than it
+# fixes (docs/audio-tail-gate-decision-memo-2026-08-04.md). Flag-only until the
+# padding + human-review-queue follow-up lands.
+Environment=TAIL_REPAIR_MODE=flag
+# PRE-RESTART SYNTAX GUARD (2026-08-08). Merge 186af122 put two
+# `const MIN_TAKE_MS = 100` in one scope of production-api.cjs — both parents
+# parsed, the merge did not — and the file sat on main until this service next
+# restarted. Restart=always cannot restart its way out of a parse error, so the
+# supervisor was never the missing piece; legibility was. ExecStartPre refuses
+# the start and writes a loud banner naming the file and the SyntaxError.
+ExecStartPre=/usr/bin/node tools/check-service-syntax.cjs services/production-api.cjs
 ExecStart=/usr/bin/node services/production-api.cjs
 Restart=always
 RestartSec=5

@@ -16,11 +16,21 @@ const {
   MODE_FALLBACKS,
   DEFAULT_MODE,
   DEFAULT_MAX_PHRASE_LENGTH_FRACTION,
+  DEFAULT_REVIEW_FILTER_MAX_ROUND,
   resolveScriptShape,
   resolveMaxPhraseLengthFraction,
+  resolveReviewMaxKnownSyllables,
+  resolveReviewFilterMaxRound,
+  resolveFilterBuildPhrases,
+  resolvePhraseRepeatCount,
+  resolveRepeatedCycleTypes,
+  repeatPhraseCycles,
+  MAX_PHRASE_REPEAT_COUNT,
   phraseLengthOf,
   courseMaxPhraseLength,
   applyPhraseLengthCap,
+  makeKnownSyllableResolver,
+  filterReviewPool,
 } = require('./learning-modes.cjs')
 
 // The live algorithm_config.script_shape row, read 2026-08-06.
@@ -184,5 +194,252 @@ describe('applyPhraseLengthCap — Easy halves the longest possible phrase', () 
     const before = JSON.stringify(pool)
     applyPhraseLengthCap(pool, 5, len, 4)
     expect(JSON.stringify(pool)).toBe(before)
+  })
+})
+
+
+// ============================================================================
+// THE KNOWN-SIDE PULL FILTER (Tom, 2026-08-07: "the parameterization should be
+// on things like the syllable cap, as measured in the known language").
+//
+// DELIBERATELY FLIPPED: this block replaces the resolveMaxPhraseSyllables and
+// applyPhraseCaps suites, which asserted an ABSOLUTE TARGET-syllable ceiling
+// applied to the whole script. That ceiling was retired hours after it shipped
+// — it counted the side the learner is not reading, it never lifted, and it
+// leant on a heuristic that returns 1 for every non-Latin, non-CJK script, so
+// it silently did nothing on most of the estate. Its tests went with it; the
+// claims below are the replacements.
+// ============================================================================
+describe('resolveReviewMaxKnownSyllables', () => {
+  it('reads a real ceiling off the mode row', () => {
+    expect(resolveReviewMaxKnownSyllables({ reviewMaxKnownSyllables: 15 })).toBe(15)
+  })
+
+  it('floors a fractional ceiling — 15.9 syllables is a ceiling of 15', () => {
+    expect(resolveReviewMaxKnownSyllables({ reviewMaxKnownSyllables: 15.9 })).toBe(15)
+  })
+
+  it('degrades anything absent, blank or invalid to NO FILTER, never to a filter', () => {
+    // A filter that appears by omission would silently shorten every review
+    // pull in the estate the moment a row was hand-edited.
+    for (const bad of [undefined, null, {}, { reviewMaxKnownSyllables: 0 },
+                       { reviewMaxKnownSyllables: null }, { reviewMaxKnownSyllables: '' },
+                       { reviewMaxKnownSyllables: -4 }, { reviewMaxKnownSyllables: 'fifteen' },
+                       { reviewMaxKnownSyllables: NaN }]) {
+      expect(resolveReviewMaxKnownSyllables(bad)).toBe(Infinity)
+    }
+  })
+
+  it('the live Fast row carries 0 and so runs unfiltered', () => {
+    expect(resolveReviewMaxKnownSyllables({ ...FAST_CONFIG, reviewMaxKnownSyllables: 0 })).toBe(Infinity)
+  })
+})
+
+describe('resolveReviewFilterMaxRound', () => {
+  it('reads the window off the mode row', () => {
+    expect(resolveReviewFilterMaxRound({ reviewSyllableFilterMaxRound: 100 })).toBe(100)
+    expect(resolveReviewFilterMaxRound({ reviewSyllableFilterMaxRound: 250 })).toBe(250)
+  })
+
+  it('degrades to a WINDOW, not to forever — the filter is meant to come off', () => {
+    // The asymmetry with the ceiling above is deliberate. A bad ceiling must
+    // fall back to "no filter"; a bad WINDOW must fall back to a finite one,
+    // because a filter that never lifts is the failure the whole design fixes.
+    for (const bad of [undefined, null, {}, { reviewSyllableFilterMaxRound: 0 },
+                       { reviewSyllableFilterMaxRound: -1 },
+                       { reviewSyllableFilterMaxRound: NaN },
+                       { reviewSyllableFilterMaxRound: Infinity }]) {
+      expect(resolveReviewFilterMaxRound(bad)).toBe(DEFAULT_REVIEW_FILTER_MAX_ROUND)
+      expect(resolveReviewFilterMaxRound(bad)).toBe(100)
+    }
+  })
+})
+
+describe('resolveFilterBuildPhrases — "no filtering on BLD phrases"', () => {
+  it('only an explicit false turns it off', () => {
+    expect(resolveFilterBuildPhrases({ filterBuildPhrases: false })).toBe(false)
+  })
+
+  it('absent, null or true keeps the historic path', () => {
+    for (const cfg of [undefined, null, {}, { filterBuildPhrases: true },
+                       { filterBuildPhrases: null }]) {
+      expect(resolveFilterBuildPhrases(cfg)).toBe(true)
+    }
+  })
+})
+
+describe('makeKnownSyllableResolver — the learner\'s own language, or nothing', () => {
+  it('counts English on an eng-known course', () => {
+    const r = makeKnownSyllableResolver('eng')
+    expect(r.countable).toBe(true)
+    expect(r.syllablesOf({ known_text: 'I want to speak' })).toBe(4)
+  })
+
+  it('normalises a tagged language code', () => {
+    expect(makeKnownSyllableResolver('eng-GB').lang).toBe('eng')
+    expect(makeKnownSyllableResolver('ENG_US').countable).toBe(true)
+  })
+
+  it('is INERT rather than wrong for an unregistered known language', () => {
+    // A wrong-language count is worse than no count: it produces a plausible
+    // number nobody checks. It must not throw either — the script still builds.
+    const r = makeKnownSyllableResolver('ara')
+    expect(r.countable).toBe(false)
+    expect(r.syllablesOf({ known_text: 'مرحبا كيف حالك' })).toBeNull()
+    expect(makeKnownSyllableResolver(null).countable).toBe(false)
+    expect(makeKnownSyllableResolver(undefined).syllablesOf({ known_text: 'x' })).toBeNull()
+  })
+
+  it('returns null for a phrase with no known text at all', () => {
+    expect(makeKnownSyllableResolver('eng').syllablesOf({})).toBeNull()
+  })
+})
+
+describe('filterReviewPool — the pull filter itself', () => {
+  const syllablesOf = p => p.syll
+  const filter = { limit: 15, maxRound: 100, syllablesOf }
+  const pool = [{ id: 'a', syll: 6 }, { id: 'b', syll: 14 }, { id: 'c', syll: 22 }]
+
+  it('keeps only the short end while the filter is in force', () => {
+    expect(filterReviewPool(pool, 12, filter).map(p => p.id)).toEqual(['a', 'b'])
+  })
+
+  it('is inclusive of the limit itself', () => {
+    expect(filterReviewPool([{ id: 'x', syll: 15 }], 1, filter).map(p => p.id)).toEqual(['x'])
+  })
+
+  it('LIFTS past the window — the whole basket is back, with nothing backlogged', () => {
+    // Round 101 gets the untouched pool, by identity. Nothing cascades: the
+    // LEGO is what is being practised, so an unmet phrase is fine.
+    expect(filterReviewPool(pool, 101, filter)).toBe(pool)
+    expect(filterReviewPool(pool, 100, filter).map(p => p.id)).toEqual(['a', 'b'])
+  })
+
+  it('is the identity when the filter is off or absent', () => {
+    expect(filterReviewPool(pool, 1, null)).toBe(pool)
+    expect(filterReviewPool(pool, 1, { limit: Infinity, maxRound: 100, syllablesOf })).toBe(pool)
+    expect(filterReviewPool(pool, 1, { limit: 0, maxRound: 100, syllablesOf })).toBe(pool)
+  })
+
+  it('SHORTEST-IN-BASKET FALLBACK: a LEGO is never skipped for want of a short phrase', () => {
+    const allLong = [{ id: 'p', syll: 40 }, { id: 'q', syll: 25 }, { id: 'r', syll: 33 }]
+    const out = filterReviewPool(allLong, 5, filter)
+    expect(out).toHaveLength(1)
+    expect(out[0].id).toBe('q')
+  })
+
+  it('passes an uncountable phrase rather than dropping it — inertness is per phrase', () => {
+    const mixed = [{ id: 'a', syll: 6 }, { id: 'u', syll: null }, { id: 'c', syll: 22 }]
+    expect(filterReviewPool(mixed, 5, filter).map(p => p.id)).toEqual(['a', 'u'])
+  })
+
+  it('handles an empty basket without inventing one', () => {
+    expect(filterReviewPool([], 5, filter)).toEqual([])
+  })
+
+  it('never mutates the basket it is given', () => {
+    const before = JSON.stringify(pool)
+    filterReviewPool(pool, 5, filter)
+    expect(JSON.stringify(pool)).toBe(before)
+  })
+})
+
+// ── Easy doubling, mirrored into Script View ────────────────────────────────
+// The live easy_mode row, read 2026-08-08: phraseRepeatCount 2, and the three
+// cycle types spelled in the LEARNER'S vocabulary, which is what the DB carries.
+const LIVE_EASY_REPEAT = {
+  phraseRepeatCount: 2,
+  repeatedCycleTypes: ['build', 'spaced_rep', 'use'],
+}
+
+describe('resolvePhraseRepeatCount — the ceiling config cannot raise', () => {
+  it('reads the live Easy row as 2', () => {
+    expect(resolvePhraseRepeatCount(LIVE_EASY_REPEAT)).toBe(2)
+  })
+
+  it('reads Fast as 1, so Fast plays each cycle once', () => {
+    expect(resolvePhraseRepeatCount({ phraseRepeatCount: 1 })).toBe(1)
+  })
+
+  it('degrades every bad or absent value to 1, never to a repeat', () => {
+    for (const bad of [undefined, null, {}, NaN, Infinity, 0, -3, '2']) {
+      expect(resolvePhraseRepeatCount(typeof bad === 'object' && bad !== null ? bad : { phraseRepeatCount: bad })).toBe(1)
+    }
+  })
+
+  it('clamps a row asking for 3 — "a phrase repeated 3x would drive people nuts"', () => {
+    expect(resolvePhraseRepeatCount({ phraseRepeatCount: 3 })).toBe(MAX_PHRASE_REPEAT_COUNT)
+    expect(resolvePhraseRepeatCount({ phraseRepeatCount: 99 })).toBe(2)
+  })
+})
+
+describe('resolveRepeatedCycleTypes — one setting, two vocabularies', () => {
+  it('translates the learner spelling into Script View\'s own type names', () => {
+    const types = resolveRepeatedCycleTypes(LIVE_EASY_REPEAT)
+    expect([...types].sort()).toEqual(['build', 'consolidate', 'review'])
+  })
+
+  it('leaves intro and debut out — "the intro LEGO and not the LEGO alone"', () => {
+    const types = resolveRepeatedCycleTypes(LIVE_EASY_REPEAT)
+    expect(types.has('intro')).toBe(false)
+    expect(types.has('debut')).toBe(false)
+  })
+
+  it('defaults to the four Tom named when the key is absent', () => {
+    expect([...resolveRepeatedCycleTypes({})].sort()).toEqual(['build', 'consolidate', 'review'])
+  })
+
+  it('honours an EMPTY array as "repeat nothing" — a decision, not a bad value', () => {
+    expect(resolveRepeatedCycleTypes({ repeatedCycleTypes: [] }).size).toBe(0)
+  })
+})
+
+describe('repeatPhraseCycles — the round Script View shows is the round played', () => {
+  const round = [
+    { type: 'intro', known_text: 'to speak' },
+    { type: 'debut', known_text: 'to speak' },
+    { type: 'build', known_text: 'I want to speak' },
+    { type: 'review', known_text: 'I can speak' },
+    { type: 'review', reviewItemKind: 'seed', known_text: 'I want to speak Welsh' },
+    { type: 'consolidate', known_text: 'I would like to speak' },
+  ]
+  const easyTypes = resolveRepeatedCycleTypes(LIVE_EASY_REPEAT)
+
+  it('doubles every practice cycle and leaves the two teaching cycles alone', () => {
+    const out = repeatPhraseCycles(round, { count: 2, types: easyTypes })
+    const counts = {}
+    for (const i of out) counts[i.type] = (counts[i.type] || 0) + 1
+    expect(counts.intro).toBe(1)
+    expect(counts.debut).toBe(1)
+    expect(counts.build).toBe(2)
+    expect(counts.consolidate).toBe(2)
+    // Three review rows in: one ordinary (doubled) and one seed-phase (not).
+    expect(counts.review).toBe(3)
+  })
+
+  it('never repeats the seed-phase review — already a multi-cycle sandwich', () => {
+    const out = repeatPhraseCycles(round, { count: 2, types: easyTypes })
+    expect(out.filter(i => i.reviewItemKind === 'seed')).toHaveLength(1)
+  })
+
+  it('puts each copy immediately after its original, and marks it', () => {
+    const out = repeatPhraseCycles(round, { count: 2, types: easyTypes })
+    const i = out.findIndex(x => x.type === 'build')
+    expect(out[i].repeatOf).toBeUndefined()
+    expect(out[i + 1].known_text).toBe(out[i].known_text)
+    expect(out[i + 1].repeatOf).toBe(2)
+  })
+
+  it('returns Fast\'s list untouched, by identity — Fast is provably unchanged', () => {
+    expect(repeatPhraseCycles(round, { count: 1, types: easyTypes })).toBe(round)
+  })
+
+  it('roughly doubles a round, which is the whole point of the mirror', () => {
+    // 6 cycles in; the 3 eligible ones gain a copy each. The two teaching
+    // cycles and the seed-phase review keep their single play, which is why a
+    // real Easy round grows by a bit under 2x rather than exactly 2x.
+    const out = repeatPhraseCycles(round, { count: 2, types: easyTypes })
+    expect(out).toHaveLength(9)
+    expect(out.filter(i => i.repeatOf === 2)).toHaveLength(3)
   })
 })

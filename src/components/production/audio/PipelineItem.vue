@@ -10,7 +10,10 @@
 
       <div class="item-info">
         <span class="item-id">{{ item.seedId || item.uuid?.slice(0, 8) }}</span>
-        <span class="item-text">{{ truncateText(item.targetText) }}</span>
+        <!-- Sits on one row beside the LTR seed id, so the run needs isolating
+             as well as directing: without it the trailing neutral resolves
+             against the row, not the sentence. -->
+        <span class="item-text bidi-isolate" :dir="dirFor(item.targetText)">{{ truncateText(item.targetText) }}</span>
       </div>
 
       <div class="item-progress" v-if="item.status === 'processing'">
@@ -36,7 +39,7 @@
         </div>
         <div class="detail-row">
           <span class="detail-label">Target:</span>
-          <span class="detail-value">{{ item.targetText }}</span>
+          <span class="detail-value bidi-isolate" :dir="dirFor(item.targetText)">{{ item.targetText }}</span>
         </div>
         <div class="detail-row">
           <span class="detail-label">Known:</span>
@@ -76,6 +79,7 @@
 
 <script setup>
 import { ref } from 'vue'
+import { dirFor } from '@/utils/textDirection.js'
 
 const props = defineProps({
   item: { type: Object, required: true }
@@ -173,6 +177,8 @@ function formatTime(timestamp) {
 }
 
 .item-text {
+  /* text-align pinned: the span binds `dir`, alignment must not move. */
+  text-align: left;
   font-family: 'Crimson Pro', serif;
   font-size: 1rem;
   color: var(--ink);
@@ -255,6 +261,7 @@ function formatTime(timestamp) {
 
 .detail-value {
   color: var(--ink);
+  text-align: left;
 }
 
 .detail-value.mono {

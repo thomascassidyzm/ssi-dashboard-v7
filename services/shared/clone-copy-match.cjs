@@ -17,6 +17,7 @@
  * actual render and must not be silently treated as canonical.
  */
 const { normalizeForAudio } = require('./text-normalize.cjs')
+const { canonicalLanguage, canonicalVoiceId, ClipIdentityError } = require('./clip-identity.cjs')
 
 // Tom's ruling: the xAI clone is the estate-wide English voice (known-side in
 // X_for_eng, target-side in eng_for_X — same voice, same content, either role).
@@ -42,9 +43,31 @@ function isTrusted1xEngine(engine) {
 /**
  * Build the identity key for an English audio slot or a candidate source row.
  * Two slots are copy-compatible iff their keys are byte-identical.
+ *
+ * `language` and `voiceId` are CANONICALISED before interpolation (see
+ * clip-identity.cjs). Byte-identical keys are the whole mechanism here, so
+ * interpolating the raw values made the key inherit the estate's spelling
+ * drift: a slot asking for 'eng'/'gfzdpspr5fdp' could not match a row stored
+ * as 'en'/'xai_gfzdpspr5fdp' even though they are the same clip, and every
+ * such miss is a paid re-render of audio that already exists.
+ *
+ * The text side deliberately still uses normalizeForAudio: course_audio's
+ * text_normalized column holds two incompatible conventions and picking one
+ * here would change which rows match, which is a separate (and gated) problem
+ * — see text-normalize.cjs.
+ *
+ * THROWS ClipIdentityError when either field cannot be canonicalised. That is
+ * the point: a key built from a value we had to guess at would match the wrong
+ * clip. Callers that must survive bad data use decideCopy (which reports
+ * SKIP_UNIDENTIFIABLE) rather than catching this themselves.
+ *
+ * @param {object} slot
+ * @param {string} [slot.provider] provider for an opaque voice id that carries
+ *   no prefix — pass it from the same config the voiceId came from
+ *   (courses.voice_config.voices.<role>.provider).
  */
-function computeAudioKey({ text, language, voiceId }) {
-  return `${normalizeForAudio(text)}|${language}|${voiceId}`
+function computeAudioKey({ text, language, voiceId, provider }) {
+  return `${normalizeForAudio(text)}|${canonicalLanguage(language)}|${canonicalVoiceId(voiceId, { provider })}`
 }
 
 /**
@@ -60,7 +83,23 @@ function computeAudioKey({ text, language, voiceId }) {
  * @returns {{ action: string, key: string, source: object|null, reason: string }}
  */
 function decideCopy(slot, sourceIndex) {
-  const key = computeAudioKey(slot)
+  let key
+  try {
+    key = computeAudioKey(slot)
+  } catch (e) {
+    if (!(e instanceof ClipIdentityError)) throw e
+    // The slot's own language or voice is not a canonicalisable value (a
+    // sentinel like 'auto'/'legacy_import', or an opaque voice id with no
+    // provider). Refusing loudly beats keying on the raw string and matching
+    // some other voice's clip — but it must not take the whole pass down, so
+    // it lands in the caller's decision summary like any other SKIP.
+    return {
+      action: 'SKIP_UNIDENTIFIABLE',
+      key: null,
+      source: null,
+      reason: `slot identity cannot be canonicalised: ${e.message}`,
+    }
+  }
   const candidates = sourceIndex.get(key) || []
 
   // A matching row already owned by the destination course itself isn't a

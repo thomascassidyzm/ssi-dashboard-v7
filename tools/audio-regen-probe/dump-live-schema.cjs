@@ -35,6 +35,9 @@ const FUNCTIONS = [
   'null_phrase_audio_on_text_change',
   'null_seed_audio_on_text_change',
   'pull_audio_duration_on_link',
+  // Added 2026-08-18 for the unlink-then-generate reproduction: this is the RPC
+  // /generate Step A (phase8:1985) calls BEFORE it ever asks what needs TTS.
+  'link_all_audio_ids',
 ]
 
 const TRIGGER_TABLES = ['course_audio', 'course_legos', 'course_practice_phrases', 'course_seeds']
@@ -72,7 +75,7 @@ const KEEP_TRIGGERS = new Set([
 
   // --- language_canonical seed rows, for canonical_language() ---
   const lc = await c.query(
-    `select raw, canonical from language_canonical where raw in ('en','es','cy','fr','de') order by raw`)
+    `select raw, canonical from language_canonical where raw in ('en','es','cy','fr','de','eng','spa','cym','fra','deu') order by raw`)
   out.push('-- language_canonical rows copied from live (only the codes the tests use)')
   for (const r of lc.rows) {
     out.push(`INSERT INTO language_canonical (raw, canonical) VALUES ('${r.raw}', '${r.canonical}');`)

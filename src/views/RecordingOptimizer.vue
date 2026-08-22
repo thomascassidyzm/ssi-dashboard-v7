@@ -11,7 +11,7 @@
           <span class="text-faint">|</span>
           <h1 class="text-xl font-semibold text-ink">Recording Optimizer</h1>
           <span class="px-3 py-1 bg-emerald-500/20 text-emerald-400 rounded text-sm font-medium">
-            {{ courseCode }}
+            {{ getCourseName(courseCode) }}
           </span>
           <div class="ml-auto flex items-center gap-6 text-sm">
             <div class="text-right">
@@ -290,9 +290,11 @@
 import { ref, computed, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 import { getApiUrl } from '@/services/api'
+import { useCourses } from '@/composables/useCourses'
 
 const route = useRoute()
 const courseCode = computed(() => route.params.courseCode || 'cym_n_for_eng')
+const { getCourseName } = useCourses()
 
 // API base URL
 const API_BASE = getApiUrl()

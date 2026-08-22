@@ -1,0 +1,19 @@
+FAIL no_text_audio_desync_in_the_five_courses: 2 row(s), e.g. lav_for_eng:pod-0:SC15-S011
+OK   no_annotated_pod_text: zero pod rows carry a slash or parenthetical
+FAIL no_annotated_clip_text: 1 clip(s), e.g. 99c2328a-d711-4a7d-b36a-fb41c14c28dd "Tiešām jā. Esmu tiešām priecīgs(-a), ka varu vest tik daudz sarunas. Un es ceru, ka mēs varēsim vest vairāk sarunu nākotnē, kamēr es turpinu uzlaboties."
+OK   all_79_rows_present: 79 of 79
+OK   all_79_rows_still_released: target_text_draft = false on every row
+FAIL all_79_rows_in_sync: 2 disagree
+
+scope by course:
+  ara_for_eng   2 rows   2 clips  0 without audio
+  lav_for_eng  12 rows   6 clips  0 without audio
+  pol_for_eng  49 rows  25 clips  0 without audio
+  por_for_eng  12 rows   6 clips  0 without audio
+  spa_for_eng   4 rows   0 clips  4 without audio
+
+served bytes: checking 39 clip(s) with whisper decode
+OK   every_clip_alive_on_s3: 39 alive, 0 dead of 39
+OK   every_clip_decodes_as_its_text: 39 decoded, 0 problem(s)
+
+3 CHECK(S) FAILED

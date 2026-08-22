@@ -105,7 +105,7 @@ const lastCheckedAt = ref(null)
 const lastCheckedLabel = ref('')
 
 const healthUrl = (() => {
-  const base = getApiUrl() || 'https://ssi-machine.ngrok.app'
+  const base = getApiUrl() || 'https://watson-1.tail4968cb.ts.net:8443'
   return `${base.replace(/\/$/, '')}/health`
 })()
 

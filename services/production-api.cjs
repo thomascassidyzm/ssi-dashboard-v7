@@ -9,11 +9,14 @@ const { Server } = require('socket.io')
 const createLogger = require('./shared/logger.cjs')
 const { normalizeForAudio } = require('./shared/text-normalize.cjs')
 const { isPunctuationOnly } = require('./shared/text-classification.cjs')
+const { identity: buildIdentity } = require('./shared/build-identity.cjs')
 
 const logger = createLogger('ProductionAPI')
 
 const s3Service = require('./s3-production-service.cjs')
 const supabaseClient = require('./supabase-client.cjs')
+const { canonicalLanguage } = require('./shared/clip-identity.cjs')
+const { swapClipInPlace } = require('./shared/audio-revision-swap.cjs')
 const manifestGenerator = require('./manifest-generator.cjs')
 const courseDataService = require('./course-data-service.cjs')
 const { SchemaValidator } = require('./schema-validator.cjs')
@@ -26,8 +29,12 @@ const publishManifestService = require('./publish-manifest-service.cjs')
 const manifestDiffService = require('./manifest-diff-service.cjs')
 const languageCodeService = require('./language-code-service.cjs')
 const { decomposeText } = require('./phrase-decomposer.cjs')
-const { isScriptModeUpload, normalizeProvenance, buildProvenanceContext } = require('./recording-upload-helpers.cjs')
+const { isScriptModeUpload, normalizeProvenance, buildProvenanceContext, resolveTakeVoiceId, retainAndProcessTake } = require('./recording-upload-helpers.cjs')
+const { planScriptTakeFiling, fileScriptTake } = require('./script-take-filing.cjs')
+const { planAttach, attachScriptTake } = require('./script-take-attach.cjs')
+const takeSupersede = require('./take-supersede.cjs')
 const podsRegistration = require('./voice-engine/pods-registration.cjs')
+const podVoiceApprovals = require('./pod-voice-approvals.cjs')
 const { resolvePoptyIdentity, hasAdminRole } = require('./shared/popty-identity.cjs')
 const presentationAuthor = require('./phases/presentation-author.cjs')
 
@@ -434,6 +441,48 @@ app.use('/api/production/:courseCode/pods',
     getDb: () => supabaseClient.getClient(),
     logger,
   }))
+
+// Audio preview: the human listening pass over rendered clips (READ-ONLY —
+// pure SELECTs plus the veracity quarantine ledger; no writes, no TTS).
+// Same app.param course-scope gate coverage as the mounts above.
+app.use('/api/production/:courseCode/audio-preview',
+  require('./audio-preview-router.cjs')({
+    getDb: () => supabaseClient.getClient(),
+    logger,
+  }))
+
+// The ONE recordist surface. Top-level /api/recording/* on purpose: this queue
+// is derived BY LANGUAGE across every course (language_recording_policy), so it
+// has no :courseCode to be scoped by, and its three recordist routes are
+// deliberately unauthenticated — the link IS the identity. The admin routes it
+// carries (/languages) take requireAdmin.
+// Mounted AFTER handleRecordingUpload is defined (hoisted function declaration),
+// which it calls rather than duplicating the upload seam.
+app.use('/api/recording',
+  require('./voice-engine/recordist-router.cjs')({
+    getDb: () => (supabaseClient.isInitialized() ? supabaseClient.getClient() : null),
+    logger,
+    requireAdmin,
+    handleRecordingUpload,
+  }))
+
+// Course QA / approval gate: per-round human play-through sign-off, derived
+// per-cycle verification status, and the publish block that stops a course
+// reaching learners unsigned. Mounted on its own top-level /api/qa-gate/*
+// prefix rather than under /api/production/:courseCode so the estate view
+// (every course at once) has somewhere to live.
+// Schema + why: ops/sql/20260805-course-qa-gate.sql.
+require('./api/course-qa-gate-routes.cjs').mount(app, {
+  requireAdmin,
+  requireDashboardUser,
+  getDb: () => supabaseClient.getClient(),
+  logger,
+})
+
+/** The gate, for the publish path below. Lazy: see the mount note above. */
+let _qaGate = null
+const qaGate = () => (_qaGate || (_qaGate = require('./course-qa-gate.cjs')
+  .createGate({ getDb: () => supabaseClient.getClient(), logger })))
 
 // POST /api/auth/login — login with email + code
 app.post('/api/auth/login', async (req, res) => {
@@ -967,6 +1016,298 @@ app.get('/api/courses', async (req, res) => {
   }
 })
 
+// =============================================================================
+// THE DERIVED ESTATE MAP — GET /api/estate-map
+// =============================================================================
+// The questions workers on this estate keep getting wrong, answered from the
+// database on every read. Tom's ruling, 2026-08-13: "Code >> Doctrine - we
+// basically moved to deprecate doctrine docs as much as possible because of our
+// speed of iteration. It's too difficult to keep docs up to date." So this is a
+// query, not a document: no cache, no snapshot, no materialised view, no cron.
+// Every field below is recomputed per request (public.estate_map(), see
+// database/migrations/20260813_estate_map.sql).
+//
+// The SEMANTICS block below is the one human-authored part, and it is here rather
+// than in a doc on purpose: the meaning of a field lives in the same file as the
+// query that produces it, so a change to one lands next to the other. Most of this
+// week's estate errors were wrong MEANINGS, not wrong numbers — "blocked" read as
+// unreleased, "veracity" read as quality, "draft lines" read as missing content.
+
+const ESTATE_MAP_SEMANTICS = {
+  released:
+    "new_app_status IN ('live','beta'). Tom: \"Live + Beta = released in the DB status.\" "
+    + 'A course that is not marked released is not necessarily unbuilt — it may be fully built and simply not switched on.',
+  blocked:
+    'In the casting docs and the premium queue, "blocked" means AWAITING VOICE CASTING. It says nothing '
+    + 'whatsoever about whether the course is released — released courses are routinely blocked, and blocked '
+    + 'courses are routinely live. Reading "blocked" as "unreleased" is one of the specific errors this endpoint exists to stop.',
+  blocked_reasons:
+    'EVERY applicable blocker for the course, not just the top one. `blocked_reason` is the first and the one to '
+    + 'act on; this list is the whole truth. They sum to more than the blocked course count.',
+  blocked_reason:
+    'Machine-readable blocker, most-blocking first: no_audio | pod0_awaiting_voice_approval | '
+    + 'pod0_stale_voice_approval | pod0_known_track_incomplete | pod0_target_track_incomplete | null. '
+    + 'Every value is about AUDIO PRODUCTION, never about release state.',
+  veracity_checked:
+    'Clips that have been through the veracity QA process. NOT a quality signal, and NOT a coverage target: '
+    + 'blanket per-clip whisper checking was deliberately removed from phase8, and the standing model is '
+    + 'graduated sampling (see `render_qa_policy`). A low figure here is the policy working as intended — it '
+    + 'does NOT mean the audio is bad, unchecked in any meaningful sense, or in need of repair, and it is not '
+    + 'a backlog to burn down.',
+  render_qa_policy:
+    'STANDING MODEL for render/QA, Tom 2026-08-13: GRADUATED SAMPLING. Veracity-check ~10% of the FIRST '
+    + 'job/course in a render run; if that sample comes back clean, drop to ~1% across the remaining 90%; keep '
+    + 'relaxing the rate as trust accumulates course by course through the run. Neither blanket per-clip '
+    + 'whisper on everything (removed from phase8 last week) nor zero checking. Trust is earned within a run '
+    + 'and spent on the run — a clean first sample buys the cheaper rate for what follows it, and a FAILURE '
+    + 'snaps the rate straight back. Implemented in services/audio-veracity.cjs (createSampler); phase8 marks '
+    + 'the course boundaries. What it catches is a bad RUN — a voice gone silent, a truncating provider — not '
+    + 'one bad clip among healthy ones; do not sell it as the latter.',
+  voice_mode:
+    'tts | human | mixed | unknown, derived from course_audio.origin. "unknown" means the course has no audio '
+    + 'rows at all — it is not a guess at TTS. "mixed" is a real and common state on this estate, not a defect.',
+  voices_of_record:
+    'The voice ids actually carrying this course\'s clips, read from course_audio. NOT the stored cast: only 16 of '
+    + '119 Spanish pod clips sit on the stored listening_pods.speakers cast, and 0 of 110 on cym_n. If you want to '
+    + 'know what a learner hears, this is the field; the stored cast is INTENDED casting and is a different thing.',
+  human_clips:
+    "Aran's and Catrin's recordings are PROTECTED SLOTS. Those are their real voices, and TTS never overwrites "
+    + 'them, even when a clip is dead. Tom\'s standing position on the 23 dead Welsh English stubs is that they '
+    + "remain his voice's slots until Aran says otherwise.",
+  welsh_is_human_voice:
+    'HARD RULE, Tom 2026-08-13: WELSH IS A HUMAN-VOICE LANGUAGE. Its gaps are RECORDING TASKS FOR '
+    + 'ARAN AND CATRIN, NOT RENDER TASKS. Every cym_* course is permanently excluded from every TTS '
+    + 'render queue — recount, render plan, audio-pass request, all of it — and Aran\'s and Catrin\'s '
+    + 'recordings are never overwritten by synthesis. A low Welsh audio-coverage figure in this '
+    + 'response is a recording backlog and must never be costed, queued or proposed as renders. '
+    + 'Enforced in code at services/shared/human-voice-courses.cjs (isHumanVoiceCourse / '
+    + 'isHumanVoiceLang / assertNoHumanVoiceInQueue), with no runtime override by design: including '
+    + 'Welsh would take a code change signed off by Tom. Breton (bre_for_fra) is the same class '
+    + '(2026-07-27), and so is Pennsylvania Dutch (pdc_for_eng, 2026-08-14) — admitted to clip '
+    + 'identity the same day it was ruled human-voice-only, so its clips can be written but never '
+    + 'synthesised. The trigger was the 2026-08-13 recount proposing 23,442 Welsh renders while 91% '
+    + 'of Welsh distinct texts were already humanly recorded and 23,960 slots already pointed at '
+    + 'origin=\'human\' clips.',
+  known_dead_stubs:
+    'Slots linked to a clip whose file is under 2KB — linked in the database, silent to the learner. The 23 on the '
+    + 'Welsh pod-0 English track are 834-byte files from a bad write on 2026-06-15. A linked slot is not a filled slot.',
+  draft_lines:
+    'Pod lines whose target text is machine-translated and no human has read yet. The text EXISTS; it is '
+    + 'unconfirmed, not missing.',
+  english_audio:
+    'English renders once, estate-wide, and links everywhere: there is one English clone pool shared across the '
+    + 'estate. Do not assume a course\'s English audio was rendered for that course.',
+  pods_by_language:
+    'STANDING FACT, Tom 2026-08-13: PODS ARE PER LANGUAGE, NOT PER COURSE. Each language\'s pod content renders '
+    + 'ONCE and is shared across every course in that language — the English pod-0 dedupe generalised to the '
+    + 'whole estate. The player handles pod delivery speed; per-course pod duplication is not the answer to '
+    + 'anything. This block is the ruling made countable: `slots_per_course_counting` is the OLD unit, '
+    + '`distinct_lines` is the real render cost, and `collapse_factor` is the ratio between them.',
+  collapse_factor:
+    'slots_per_course_counting / distinct_lines for a language\'s pod-0 content. It is how much a per-course '
+    + 'count over-states the render. CONSEQUENCE Tom flagged: the ~210k-clip premium-first non-English rebuild '
+    + 'queue was counted per-course and should collapse significantly under per-language dedupe. That number '
+    + 'wants recounting and publishing BEFORE anyone proposes spend against it.',
+  pod_0:
+    'Per-COURSE pod state — still the right unit for "can a learner play this course\'s pod 0", and the WRONG '
+    + 'unit for costing a render. To cost a render, read `pods_by_language`. Both are in this response on '
+    + 'purpose, because conflating them is what produced a per-course render queue.',
+  lego_types:
+    'An A-LEGO is one word on at least one side, and is therefore unmappable. An M-LEGO is two or more words on '
+    + 'BOTH sides, is mappable, and mapping is offered on Intros only. Tom: "It\'s just classification that feeds the mapping."',
+  mapping:
+    'Presentational segmentation of the known text in target word order. Never a text change, never word-pairing. '
+    + 'Editing a mapping is segmentation, not translation.',
+  code_over_doctrine:
+    'Tom: "Code >> Doctrine - we basically moved to deprecate doctrine docs as much as possible because of our '
+    + 'speed of iteration. It\'s too difficult to keep docs up to date." Where a doc and the live database disagree, '
+    + 'the doc is stale. This endpoint being derived rather than written is that principle applied to the estate map itself.',
+}
+
+/**
+ * Decide what a course is blocked on, from its already-derived row plus the live
+ * pod-0 voice-approval verdict. Pure — no I/O — so the ordering is readable and testable.
+ *
+ * Returns EVERY applicable blocker, not just the first. Reporting only the highest
+ * would be the bug this endpoint exists to prevent: every one of the 67 pod-0 courses
+ * is awaiting voice approval, which would mask the fact that the Welsh pod-0 English
+ * track is separately silent. `blocked_reason` is the one to act on; `blocked_reasons`
+ * is the truth.
+ */
+function estateMapBlockers(course, approval) {
+  const pod0 = course.pod_0 || { exists: false }
+  const out = []
+  if ((course.audio?.clips || 0) === 0) {
+    out.push({ reason: 'no_audio', detail: 'No audio rows exist for this course at all.' })
+  }
+  if (pod0.exists && approval && !approval.ok) {
+    out.push({
+      reason: approval.reason === 'stale_approval' ? 'pod0_stale_voice_approval' : 'pod0_awaiting_voice_approval',
+      detail: approval.message,
+    })
+  }
+  if (pod0.exists && (pod0.known_empty > 0 || pod0.known_dead_stubs > 0)) {
+    out.push({
+      reason: 'pod0_known_track_incomplete',
+      detail: `Pod 0's known-language track has ${pod0.known_empty} empty slots and `
+        + `${pod0.known_dead_stubs} linked-but-dead clips out of ${pod0.slots}.`,
+    })
+  }
+  if (pod0.exists && pod0.target_empty > 0) {
+    out.push({
+      reason: 'pod0_target_track_incomplete',
+      detail: `Pod 0's target-language track has ${pod0.target_empty} empty slots out of ${pod0.slots}.`,
+    })
+  }
+  return out
+}
+
+/** Skimmable text rendering, so a worker can eyeball the map without jq. */
+function estateMapAsText(payload) {
+  const t = payload.totals
+  const lines = [
+    `ESTATE MAP — computed ${payload.generated_at} (fresh per read, never cached)`,
+    '',
+    `courses ${t.courses} | released ${t.released} (live ${t.new_app_live} + beta ${t.new_app_beta}) | `
+      + `unreleased ${t.courses - t.released} (drafts/never-shipped) | `
+      + `tts ${t.voice_mode.tts} human ${t.voice_mode.human} mixed ${t.voice_mode.mixed} unknown ${t.voice_mode.unknown}`,
+    `pod 0: ${t.with_pod_0} courses have one | blocked: ${t.blocked}`,
+    ...Object.entries(t.blocked_by_reason).map(([r, n]) => `    ${n}  ${r}`),
+    '',
+    `pod lines, per-course counting ${t.pod_0_lines.per_course_counting} -> per-LANGUAGE `
+      + `${t.pod_0_lines.distinct_per_language} distinct. Pods are per language, not per course.`,
+    ...payload.pods_by_language.slice(0, 8).map(l =>
+      `    ${l.lang.padEnd(5)} ${String(l.slots_per_course_counting).padStart(6)} slots -> `
+      + `${String(l.distinct_lines).padStart(5)} lines  (${l.collapse_factor}x)  across `
+      + `${l.courses_with_pod_0} courses`),
+    '',
+    'COURSE                          REL  VOICE   CLIPS    POD-0 (tgt/known of slots)  BLOCKED ON',
+  ]
+  for (const c of payload.courses) {
+    const pod = c.pod_0.exists
+      ? `${c.pod_0.target_linked}/${c.pod_0.known_linked} of ${c.pod_0.slots}`.padEnd(26)
+      : '—'.padEnd(26)
+    lines.push(
+      c.course_code.padEnd(32)
+      + (c.released ? 'yes' : 'no ').padEnd(5)
+      + c.audio.voice_mode.padEnd(8)
+      + String(c.audio.clips).padEnd(9)
+      + pod
+      + c.blocked_reasons.join(', '),
+    )
+  }
+  lines.push('', 'SEMANTICS — what these words mean here', '')
+  for (const [k, v] of Object.entries(payload.semantics)) lines.push(`${k}:`, `  ${v}`, '')
+  return lines.join('\n')
+}
+
+// GET /api/estate-map — the derived map. No auth, by design: any worker with a curl
+// must be able to read it, or they will go back to inferring estate facts instead.
+app.get('/api/estate-map', async (req, res) => {
+  try {
+    if (!supabaseClient.isInitialized()) {
+      return res.status(503).json({ error: 'Supabase not initialized' })
+    }
+    const supabase = supabaseClient.getClient()
+
+    // 1. The derived rows — one round trip, aggregated in SQL (~1.8s over ~2.5M audio rows).
+    //    Returns { courses, pods_by_language }: pods are counted per LANGUAGE as well
+    //    as per course, because per-language is the unit a render is actually costed in.
+    const { data: derived, error } = await supabase.rpc('estate_map')
+    if (error) throw new Error(`estate_map(): ${error.message}`)
+    const rows = derived?.courses || []
+    const podsByLanguage = derived?.pods_by_language || []
+
+    // 2. Overlay the live pod-0 voice-approval verdict. Same code path the real
+    //    generation gate uses, so a course reported as awaiting approval here is a
+    //    course /generate-pods will actually refuse.
+    const [{ data: pods, error: podErr }, approvals] = await Promise.all([
+      supabase.from('listening_pods').select('id, course_code, speakers'),
+      podVoiceApprovals.loadApprovals(supabase),
+    ])
+    if (podErr) throw new Error(`load pods: ${podErr.message}`)
+    const podsByCourse = new Map()
+    for (const p of pods || []) {
+      if (!podsByCourse.has(p.course_code)) podsByCourse.set(p.course_code, [])
+      podsByCourse.get(p.course_code).push(p)
+    }
+
+    let courses = (rows || []).map(c => {
+      const coursePods = podsByCourse.get(c.course_code) || []
+      const approval = coursePods.length
+        ? podVoiceApprovals.evaluateApproval(
+          approvals[c.course_code] || null,
+          podVoiceApprovals.castFingerprint(coursePods),
+        )
+        : null
+      const blockers = estateMapBlockers(c, approval)
+      return {
+        ...c,
+        pod_voice_approval: approval ? approval.reason : 'no_pods',
+        blocked: blockers.length > 0,
+        blocked_reason: blockers.length ? blockers[0].reason : null,
+        blocked_detail: blockers.length ? blockers[0].detail : null,
+        blocked_reasons: blockers.map(b => b.reason),
+        blockers,
+      }
+    })
+
+    // 3. Cheap conveniences. The unfiltered read stays the default.
+    if (req.query.released === 'true') courses = courses.filter(c => c.released)
+    if (req.query.course) courses = courses.filter(c => c.course_code === req.query.course)
+
+    const payload = {
+      generated_at: new Date().toISOString(),
+      derived: 'Computed from the database on every read. Never cached, never a snapshot. '
+        + 'If this disagrees with a document, the document is stale.',
+      totals: {
+        courses: courses.length,
+        released: courses.filter(c => c.released).length,
+        new_app_live: courses.filter(c => c.new_app_status === 'live').length,
+        new_app_beta: courses.filter(c => c.new_app_status === 'beta').length,
+        legacy_released: courses.filter(c => ['live', 'beta', 'released'].includes(c.legacy_app_status)).length,
+        voice_mode: {
+          tts: courses.filter(c => c.audio.voice_mode === 'tts').length,
+          human: courses.filter(c => c.audio.voice_mode === 'human').length,
+          mixed: courses.filter(c => c.audio.voice_mode === 'mixed').length,
+          unknown: courses.filter(c => c.audio.voice_mode === 'unknown').length,
+        },
+        with_pod_0: courses.filter(c => c.pod_0.exists).length,
+        blocked: courses.filter(c => c.blocked).length,
+        // Counted over every applicable blocker, so a course blocked three ways
+        // appears under all three. These will sum to more than `blocked`.
+        blocked_by_reason: courses.reduce((acc, c) => {
+          for (const r of c.blocked_reasons) acc[r] = (acc[r] || 0) + 1
+          return acc
+        }, {}),
+        clips: courses.reduce((n, c) => n + (c.audio.clips || 0), 0),
+        // Pods counted in BOTH units, so the gap between them is impossible to miss.
+        // The per-course number is what a render queue gets costed at when nobody
+        // remembers that pods are per language.
+        pod_0_lines: {
+          per_course_counting: podsByLanguage.reduce((n, l) => n + l.slots_per_course_counting, 0),
+          distinct_per_language: podsByLanguage.reduce((n, l) => n + l.distinct_lines, 0),
+        },
+      },
+      // Tom, 2026-08-13: pods are per LANGUAGE. This is the unit to cost a render in.
+      pods_by_language: podsByLanguage,
+      semantics: ESTATE_MAP_SEMANTICS,
+      courses,
+    }
+
+    logger.info(`Estate map: ${payload.totals.courses} courses, ${payload.totals.released} released, ${payload.totals.blocked} blocked`)
+
+    if (req.query.format === 'text' || (req.accepts(['json', 'text']) === 'text' && !req.query.format)) {
+      res.type('text/plain').send(estateMapAsText(payload))
+      return
+    }
+    res.json(payload)
+  } catch (err) {
+    logger.error('Failed to build estate map:', err)
+    res.status(500).json({ error: err.message })
+  }
+})
+
 // Course content stats — per-course endpoint for progressive loading
 app.get('/api/courses/:courseCode/stats', async (req, res) => {
   try {
@@ -1290,8 +1631,40 @@ app.get('/health', (req, res) => {
     service: 'Production API',
     port: PORT || 3470,
     timestamp: new Date().toISOString(),
-    supabase: supabaseClient.isInitialized() ? 'connected' : 'not initialized'
+    supabase: supabaseClient.isInitialized() ? 'connected' : 'not initialized',
+    // Which commit is THIS PROCESS running? Frozen at start, never re-read —
+    // see services/shared/build-identity.cjs. This is what the staleness
+    // watchdog compares against origin/main.
+    build: buildIdentity()
   })
+})
+
+// Staleness state, as last written by ops/watchdog/popty-staleness-watchdog.sh.
+// Read-only and cheap by design: this serves a cached file the cron job wrote,
+// it never shells out to git inside a request handler.
+// Keyed by checkout basename — the watchdog script derives the identical path
+// from its own repo root, so the two meet with no shared config. watson-1 runs
+// services from more than one clone; a single fixed path would let one
+// checkout's verdict be served as another's.
+const STALENESS_STATE_FILE = process.env.POPTY_STALENESS_STATE ||
+  `/tmp/popty-staleness-${path.basename(require('./shared/build-identity.cjs').REPO_ROOT)}.json`
+
+app.get('/api/ops/staleness', (req, res) => {
+  try {
+    const raw = fs.readFileSync(STALENESS_STATE_FILE, 'utf8')
+    const state = JSON.parse(raw)
+    // Age matters as much as content: a "fresh" verdict from six hours ago
+    // means the watchdog itself stopped running, which is its own alarm.
+    const checkedAt = state.checked_at ? Date.parse(state.checked_at) : NaN
+    const ageSeconds = Number.isNaN(checkedAt) ? null : Math.round((Date.now() - checkedAt) / 1000)
+    res.json({ ...state, age_seconds: ageSeconds, build: buildIdentity() })
+  } catch (err) {
+    res.json({
+      status: 'unknown',
+      reason: `no staleness state at ${STALENESS_STATE_FILE} (${err.code || err.message})`,
+      build: buildIdentity()
+    })
+  }
 })
 
 // =============================================================================
@@ -1983,6 +2356,9 @@ app.get('/api/services', proxyOrchestrator)
 app.post('/api/services/:name/restart', proxyOrchestrator)
 app.get('/api/services/:name/logs', proxyOrchestrator)
 app.post('/api/deploy', proxyOrchestrator)
+// Repair fallback — only offered after a deploy has failed on the target machine
+app.post('/api/deploy/repair', proxyOrchestrator)
+app.get('/api/deploy/history', proxyOrchestrator)
 
 // Get content stats for all courses (seeds, legos, baskets counts)
 // Used by dashboard course listings to show real counts
@@ -2131,6 +2507,51 @@ app.post('/api/production/:courseCode/status', async (req, res) => {
       'released': 'live'
     }
     const newAppStatus = appStatusMap[dbStatus]
+
+    // ── THE APPROVAL GATE ───────────────────────────────────────────────────
+    // "No course should EVER go out to learners unless it has passed a manual
+    // approval gate." (Tom, 2026-08-05.) new_app_status IN ('live','beta') is
+    // what actually makes a course learner-visible — that is the predicate
+    // ssi-learning-app/api/courses/available.ts selects on — so that is where
+    // this bites.
+    //
+    // It bites on PROMOTION only. Demotion is always allowed (you must always
+    // be able to pull a course back), and re-saving a course at the status it
+    // already holds is a no-op: 78 courses were already learner-visible when
+    // this gate was built and Tom's ruling explicitly accepts that they
+    // cannot be pulled back in. Blocking an unrelated re-save of one of them
+    // would be the gate punishing the wrong thing.
+    let gateDecision = null
+    try {
+      const { data: currentRow } = await supabaseClient.getClient()
+        .from('courses').select('new_app_status').eq('course_code', courseCode).maybeSingle()
+      gateDecision = await qaGate().checkPublishAllowed({
+        courseCode,
+        targetAppStatus: newAppStatus,
+        currentAppStatus: currentRow?.new_app_status || 'not_available',
+      })
+    } catch (gateErr) {
+      // A gate that cannot be read must not silently wave a course through.
+      logger.error(`[qa-gate] publish check failed for ${courseCode}:`, gateErr)
+      return res.status(503).json({
+        error: 'QA approval gate could not be evaluated, so publication is refused',
+        code: 'gate_unavailable',
+        detail: gateErr.message,
+      })
+    }
+
+    if (!gateDecision.allowed) {
+      logger.warn(`[qa-gate] BLOCKED promotion of ${courseCode} to ${newAppStatus}: ${gateDecision.reason}`)
+      return res.status(409).json({
+        error: gateDecision.message,
+        code: 'qa_gate_unpassed',
+        gate: gateDecision.gate,
+      })
+    }
+    if (gateDecision.reason === 'overridden') {
+      logger.warn(`[qa-gate] ${courseCode} promoted to ${newAppStatus} under an OVERRIDE by ` +
+        `${gateDecision.gate?.override_by}: ${gateDecision.gate?.override_reason}`)
+    }
 
     const updatedCourse = await supabaseClient.updateCourseStatus(courseCode, dbStatus, newAppStatus)
     logger.info(`Updated ${courseCode} status to ${dbStatus} (new_app_status: ${newAppStatus})`)
@@ -4036,7 +4457,16 @@ app.post('/api/admin/pods/:courseCode/generate-audio', async (req, res) => {
 // xAI→Azure fallback + retry resilience); PHASE8_NO_LISTEN keeps it from
 // grabbing port 3465 when required here.
 const EXPLAINER_VOICE_ID = 'gfzdpspr5fdp'
-const EXPLAINER_LANGUAGE = 'auto'
+// The xAI language CUE, not the clip's language. 'auto' means "detect" to the
+// provider and is meaningless as an identity — it is what put 'auto' on 7,847
+// course_audio.language rows. It now travels as ttsLanguageCue (so this
+// endpoint's renders are bit-for-bit what they were) while the row gets the
+// course's own target language. Deliberately NOT switched to
+// resolveExplainerLanguage here: that would change the cue, and therefore the
+// audio, which this change is not allowed to do. The batch runner
+// (run-pod-explainer-batch.cjs) does cue per course; the divergence between the
+// two paths predates this change and is worth a ruling.
+const EXPLAINER_TTS_LANGUAGE_CUE = 'auto'
 const EXPLAINER_ROLE = 'pod_explainer'
 const EXPLAINER_PROVIDER = 'xai'
 const EXPLAINER_AUDIO_PARALLEL = 4
@@ -4045,6 +4475,21 @@ app.post('/api/admin/pods/:courseCode/generate-explainer-audio', async (req, res
   const { courseCode } = req.params
   try {
     const supabase = supabaseClient.getClient()
+
+    // The clip's IDENTITY language — the course's own target language, read
+    // from the courses row rather than inferred from the cue. Separate from
+    // EXPLAINER_TTS_LANGUAGE_CUE above, which is what xAI is told.
+    const { data: courseRow, error: courseErr } = await supabase
+      .from('courses').select('target_lang').eq('course_code', courseCode).single()
+    if (courseErr || !courseRow) {
+      return res.status(404).json({ error: `Course not found: ${courseCode}` })
+    }
+    let identityLanguage
+    try {
+      identityLanguage = canonicalLanguage(courseRow.target_lang)
+    } catch (identityErr) {
+      return res.status(400).json({ error: `course ${courseCode}: ${identityErr.message}` })
+    }
 
     // Scope: explicit pod_ids list, or a single pod via ?slug / body slug
     // (pod id is `${courseCode}:${slug}`). No scope = every pod in the course.
@@ -4093,7 +4538,8 @@ app.post('/api/admin/pods/:courseCode/generate-explainer-audio', async (req, res
           const result = await generatePodAudio({
             courseCode,
             text: row.explainer_text,
-            language: EXPLAINER_LANGUAGE,
+            language: identityLanguage,
+            ttsLanguageCue: EXPLAINER_TTS_LANGUAGE_CUE,
             role: EXPLAINER_ROLE,
             voice: {
               voice_id: EXPLAINER_VOICE_ID,
@@ -4280,10 +4726,30 @@ app.get('/api/production/audio/:uuid/stream', async (req, res) => {
     if (supabaseClient.isInitialized()) {
       const supabase = supabaseClient.getClient()
       const { data } = await supabase
-        .from('course_audio').select('s3_key').eq('id', uuid).single()
+        .from('course_audio').select('s3_key').eq('id', uuid).maybeSingle()
       if (data?.s3_key) s3Key = data.s3_key
+      if (!s3Key) {
+        // TAKE FALLBACK (2026-08-19). Not every recorded take is a clip: a
+        // script-mode SLOW read is deliberately never filed as course_audio
+        // (services/script-take-filing.cjs), and a take whose filing failed has
+        // bytes but no row. Both are things a recordist has just spoken and must
+        // be able to play back — "there is no clip" is not an answer to "let me
+        // hear that again". recording_provenance holds the take's s3_key in its
+        // quality_notes context, keyed by the minted take uuid.
+        //
+        // READ-ONLY, and it files nothing: it makes existing bytes audible, it
+        // does not create or backfill any course_audio row.
+        const { data: takeRow } = await supabase
+          .from('recording_provenance').select('quality_notes').eq('audio_uuid', uuid).maybeSingle()
+        if (takeRow?.quality_notes && typeof takeRow.quality_notes === 'string' && takeRow.quality_notes[0] === '{') {
+          try {
+            const ctx = JSON.parse(takeRow.quality_notes)
+            if (ctx?.s3_key) s3Key = ctx.s3_key
+          } catch { /* a non-JSON quality_notes is an old plain-text row — no key to find */ }
+        }
+      }
     }
-    if (!s3Key) return res.status(404).json({ error: `no course_audio row or s3_key for ${uuid}` })
+    if (!s3Key) return res.status(404).json({ error: `no course_audio row, recorded take or s3_key for ${uuid}` })
     if (s3Key.startsWith('pending/')) return res.status(409).json({ error: 'clip has no rendered audio yet' })
     const url = await s3Service.getAudioSignedUrl(uuid, 3600, { s3Key })
     // no-store: the signed URL expires, and a cached redirect would pin a
@@ -4439,7 +4905,15 @@ app.get('/api/production/:courseCode/audio/by-text', async (req, res) => {
 
 // Upload human recording
 // POST /api/production/:courseCode/recording/upload
-app.post('/api/production/:courseCode/recording/upload', async (req, res) => {
+//
+// Extracted from its route closure so the recordist surface
+// (/api/recording/voice/:voiceId/take, services/voice-engine/recordist-router.cjs)
+// can hand a take to THIS handler instead of growing a second uploader. The
+// recordist route adapts its multipart body into the shape below and calls
+// handleRecordingUpload directly — which is what keeps raw/{UUID}.{ext}
+// archive-before-process, the two refusals, provenance and pod registration
+// identical on both surfaces, with one set of tests over them.
+async function handleRecordingUpload(req, res) {
   try {
     const { courseCode } = req.params
     const {
@@ -4482,7 +4956,11 @@ app.post('/api/production/:courseCode/recording/upload', async (req, res) => {
         return res.status(503).json({ error: 'Supabase not initialized — pod recordings cannot be registered' })
       }
       const prep = await podsRegistration.preparePodRegistration({
-        supabase: supabaseClient.getClient(), courseCode, metadata, logger
+        supabase: supabaseClient.getClient(), courseCode, metadata, logger,
+        // Set ONLY by the recordist surface, which resolved the voice from
+        // language_recording_policy before it got here (req.recordistVoiceId).
+        // Absent on every other caller, so the cast stays authoritative there.
+        forcedVoiceId: req.recordistVoiceId || null
       })
       if (prep.error) return res.status(prep.status || 400).json({ error: prep.error })
       podContext = prep.context
@@ -4514,94 +4992,121 @@ app.post('/api/production/:courseCode/recording/upload', async (req, res) => {
     const rawBuffer = Buffer.from(audioData, 'base64')
     logger.log(`[Upload] Received ${rawBuffer.length} bytes for ${audioId}${isScriptMode ? ' (script mode, server-minted)' : ''}`)
 
-    // Determine input format from MIME type
-    let inputFormat = 'webm'
-    if (mimeType.includes('mp3')) inputFormat = 'mp3'
-    else if (mimeType.includes('wav')) inputFormat = 'wav'
-    else if (mimeType.includes('m4a') || mimeType.includes('mp4')) inputFormat = 'm4a'
-    else if (mimeType.includes('ogg')) inputFormat = 'ogg'
-
-    // Process audio: convert to MP3, normalize, trim silence
-    logger.log(`[Upload] Processing audio (format: ${inputFormat})...`)
-    const { buffer: processedBuffer, metadata: audioMeta } = await audioProcessor.processRecordingBuffer(
-      rawBuffer,
-      {
-        inputFormat,
-        trimSilence: true,
-        normalize: true,
-        targetLUFS: -16
-      }
-    )
-
-    // REFUSE unprocessed audio. processRecordingBuffer falls back to returning
-    // the ORIGINAL buffer when ffmpeg/lame are missing or the encode fails —
-    // storing that would put raw WebM/Opus bytes at a mastered/*.mp3 key,
-    // un-normalised and un-trimmed, while the recorder got a 200 and moved on.
-    // That is the silent-corruption case: a whole session can be lost before
-    // anyone notices. Fail BEFORE the S3 PUT (same principle as the uuid
-    // lookup above — a bad take must never orphan bytes) so the client's
-    // upload queue marks it failed and the take stays visible as missing.
-    if (!audioMeta.processed) {
-      logger.error(`[Upload] REFUSED unprocessed audio for ${audioId}: ${audioMeta.reason}`)
-      return res.status(500).json({
-        error: `Audio processing failed on the server, so this take was not saved: ${audioMeta.reason || 'unknown reason'}`,
-        processed: false,
-      })
-    }
-
-    // REFUSE a take that processed "successfully" into no audio. The trim filter
-    // (silenceremove at -40dB) strips a silent or muted-mic take down to nothing:
-    // ffmpeg exits 0, lame writes an 834-byte header-only MP3 that ffprobe cannot
-    // even decode ("Failed to find two consecutive MPEG audio frames"), and the
-    // recorder got a 200 with success:true. That is the 2026-08-06 Welsh bug —
-    // bookkeeping said recorded, the learner got silence. In regeneration/pod mode
-    // it repoints a real phrase row at an unplayable stub. Refuse BEFORE the S3 PUT,
-    // same as the checks above, so the client's queue marks the take failed and it
-    // stays visible as missing. Threshold is deliberately low because the trim is
-    // aggressive — a synthesised 350ms tone comes out the far side at 150ms — so
-    // 100ms only catches silence, muted mics and stray clicks, never a real word.
+    // The silent-take floor, enforced inside retainAndProcessTake below.
+    //
+    // A take that processed "successfully" into no audio is refused: the trim
+    // filter (silenceremove at -40dB) strips a silent or muted-mic take down to
+    // nothing — ffmpeg exits 0, lame writes an 834-byte header-only MP3 that
+    // ffprobe cannot even decode ("Failed to find two consecutive MPEG audio
+    // frames"), and the recorder got a 200 with success:true. That is the
+    // 2026-08-06 Welsh bug — bookkeeping said recorded, the learner got silence.
+    // In regeneration/pod mode it repoints a real phrase row at an unplayable
+    // stub. Refused BEFORE the S3 PUT (same principle as the uuid lookup above —
+    // a bad take must never orphan bytes) so the client's upload queue marks it
+    // failed and the take stays visible as missing. Threshold is deliberately low
+    // so that it only catches silence, muted mics and stray clicks, never a word.
+    //
+    // The old note here read "the trim is aggressive — a synthesised 350ms tone
+    // comes out the far side at 150ms". That was the T-20 bug being observed and
+    // worked around rather than fixed: the trim was destroying 100ms at each end
+    // (start_duration, since corrected to start_silence — see audio-processor.cjs).
+    // A 350ms tone now survives as ~350ms, so this guard has MORE headroom than
+    // when it was written, not less. It stays as the silent-take backstop.
     const MIN_TAKE_MS = 100
-    if (!audioMeta.durationMs || audioMeta.durationMs < MIN_TAKE_MS) {
-      logger.error(`[Upload] REFUSED silent/empty take for ${audioId}: ${audioMeta.durationMs}ms after trim, ${audioMeta.outputSize} bytes`)
-      return res.status(422).json({
-        error: `This take contains no audible speech (${audioMeta.durationMs || 0}ms after silence trimming, minimum ${MIN_TAKE_MS}ms), so it was not saved. Check the microphone is live and record it again.`,
-        processed: true,
-        silent: true,
-        durationMs: audioMeta.durationMs || 0,
-      })
-    }
 
-    logger.log(`[Upload] Audio processed: ${audioMeta.inputSize} -> ${audioMeta.outputSize} bytes, duration: ${audioMeta.durationMs}ms`)
+    // RETAIN THE RAW TAKE, THEN PROCESS — the order is deliberate and load-bearing.
+    //
+    // Until now the raw container lived only in this request-local buffer and was
+    // gone the moment the handler returned; only the processed MP3 was ever PUT.
+    // That is why the originals of 107 butchered Welsh clips do not exist anywhere
+    // in ssi-audio-stage (T-20 post-mortem): every destructive step in the chain
+    // had no undo. A voice actor's take is irreplaceable — archive it first.
+    //
+    // The archive write happens BEFORE processing so that even a take this handler
+    // goes on to REFUSE (unprocessable, or nothing audible after the trim — both
+    // below, both unchanged) still has its original kept. A refused take is exactly
+    // the one someone will want to recover or diagnose. Orphans under raw/ are
+    // acceptable and wanted; orphans under mastered/ are not, which is why the two
+    // refusals still sit before the mastered PUT.
+    //
+    // A failed archive write does NOT fail the take (retainAndProcessTake swallows
+    // and logs it) — losing the upload because the archive PUT failed would be
+    // worse than the problem being solved.
+    logger.log(`[Upload] Retaining raw take + processing (mimeType: ${mimeType})...`)
+    const take = await retainAndProcessTake({
+      rawBuffer,
+      mimeType,
+      s3KeyUuid,
+      audioId,
+      minTakeMs: MIN_TAKE_MS,
+      logger,
+      retainRaw: ({ rawKey, buffer, contentType }) => s3Service.uploadRawTake({
+        key: rawKey,
+        buffer,
+        contentType,
+        metadata: {
+          courseCode,
+          audioId,
+          masteredKey: s3Key,
+          mimeType,
+          via: 'recording'
+        }
+      }),
+      processRecording: (buffer, options) => audioProcessor.processRecordingBuffer(buffer, options)
+    })
+
+    const rawKey = take.rawKey
+    const { audioMeta } = take
+
+    // Both refusals are the pre-existing ones, verbatim: unprocessable audio (500)
+    // and a take that trimmed down to nothing (422). They still fire BEFORE the
+    // mastered PUT — the raw is already archived by this point, and the response
+    // now carries its key so a refused take is recoverable.
+    if (take.refused) {
+      return res.status(take.refused.status).json(take.refused.body)
+    }
+    const processedBuffer = take.processedBuffer
 
     // Upload processed audio to S3 at the canon mastered/{UUID}.mp3 key.
     // S3 user metadata rides in HTTP headers with a 2KB total cap — long target
     // text and chunk maps percent-encode at ~6-9 bytes per non-Latin char and
     // would 400 the PUT. Supabase (recording_provenance) holds the truth; keep
     // only short identifiers on the object.
-    const { text: _metaText, chunksString: _metaChunks, ...s3SafeMetadata } = metadata
+    const { text: _metaText, chunksString: _metaChunks, chunkBoundariesMs: _metaBounds, ...s3SafeMetadata } = metadata
     const result = await s3Service.uploadRecording(courseCode, audioId, processedBuffer, {
       ...s3SafeMetadata,
       recordedBy: 'human',
       via: 'recording',
-      audioProcessing: audioMeta
+      audioProcessing: audioMeta,
+      // Pointer to this clip's untouched original (raw/{UUID}.{ext}). A short
+      // key, never text — S3 caps TOTAL user metadata at 2KB. Null when the
+      // archive write failed, so the object never claims an original it lacks.
+      rawKey: rawKey || null
     }, { s3Key })
 
     // Regeneration mode: repoint the course_audio row at the fresh human take.
     // origin='human' marks it precious (allowed by the live CHECK: 'tts'|'human').
     // The old s3_key is recorded in recording_provenance below for reversibility.
     if (existingRow) {
-      const rowUpdate = { s3_key: s3Key, origin: 'human' }
-      if (audioMeta.processed && audioMeta.durationMs) {
-        rowUpdate.duration_ms = audioMeta.durationMs
-        rowUpdate.file_size_bytes = processedBuffer.length
-      }
-      const { error: updateError } = await supabaseClient.getClient()
-        .from('course_audio')
-        .update(rowUpdate)
-        .eq('id', uuid)
-        .eq('course_code', courseCode)
-      if (updateError) throw updateError
-      logger.log(`[Upload] course_audio ${uuid} repointed ${existingRow.s3_key} -> ${s3Key} (origin=human)`)
+      // VERSIONED. A retake replaces the bytes under an unchanged row id, and
+      // the learner's address for that clip is <uuid>.v<audio_revision> — held
+      // in the browser cache under `immutable` and in player-vue's IndexedDB
+      // under the bare ref string. Repointing s3_key without bumping the
+      // revision means the recordist hears their new take and every learner who
+      // already played the old one never does. Same versioned swap the repair
+      // panel and the reuse-first render use.
+      const swap = await swapClipInPlace({
+        supabase: supabaseClient.getClient(),
+        audioId: uuid,
+        newS3Key: s3Key,
+        durationMs: (audioMeta.processed && audioMeta.durationMs) ? audioMeta.durationMs : null,
+        fileSizeBytes: (audioMeta.processed && audioMeta.durationMs) ? processedBuffer.length : null,
+        patch: { origin: 'human' },
+        source: 'recordist-retake',
+        acceptedBy: 'production-api /upload (recording)',
+        reason: 'human retake replacing an existing clip',
+      })
+      logger.log(`[Upload] course_audio ${uuid} repointed ${existingRow.s3_key} -> ${s3Key} (origin=human, revision ${swap.previousRevision} -> ${swap.revision})`)
     }
 
     // Pod mode: register the human take (course_audio upsert, origin='human',
@@ -4622,10 +5127,67 @@ app.post('/api/production/:courseCode/recording/upload', async (req, res) => {
       })
     }
 
+    // Which voice this take belongs to, resolved SERVER-side from the course's
+    // voice_config slot — the client's metadata.voiceId is advisory (used only
+    // when the slot has no human voice assigned yet, e.g. recording ahead of
+    // roster assignment). A slot still holding its TTS voice lends nothing:
+    // see resolveTakeVoiceId.
+    //
+    // HOISTED (2026-08-19) out of the provenance block below, because script-mode
+    // filing now needs it too and it must be resolved ONCE, from one place, so a
+    // take's course_audio row and its provenance row can never name two different
+    // voices. The course row is fetched here for the same reason: filing needs
+    // its target_lang/known_lang, and one read serves both.
+    let slotVoiceId = null
+    let courseRow = null
+    if (supabaseClient.isInitialized()) {
+      try {
+        const { data } = await supabaseClient.getClient()
+          .from('courses').select('voice_config, target_lang, known_lang')
+          .eq('course_code', courseCode).single()
+        courseRow = data || null
+      } catch (courseReadError) {
+        logger.warn('[Recording] course row read failed:', courseReadError.message)
+      }
+    }
+    if (isPodMode && podContext) {
+      // Pod mode already resolved the cast voice server-side in prepare
+      // (voice_config.podCast[speaker] / podCast.__explainer__).
+      slotVoiceId = podContext.voiceId
+    } else {
+      const slotRole = metadata?.role || null
+      if (slotRole) {
+        const resolved = resolveTakeVoiceId({
+          voiceConfig: courseRow?.voice_config || null,
+          role: slotRole,
+          clientVoiceId: metadata?.voiceId || null
+        })
+        slotVoiceId = resolved.voiceId
+        if (resolved.warning) logger.warn(`[Recording] ${resolved.warning}`)
+      }
+      if (!slotVoiceId && metadata?.voiceId) slotVoiceId = metadata.voiceId
+    }
+
+    // SCRIPT MODE: file the take as a course_audio row so it can actually be
+    // served. Until 2026-08-19 this branch did not exist — script takes got
+    // bytes in S3 and a provenance row and nothing that could play them back,
+    // which is why 50 takes recorded on 2026-08-19 have no clip and why the
+    // review screen's play button was dead. See services/script-take-filing.cjs
+    // for why the slow cadence is deliberately not filed.
+    //
+    // Filing NEVER fails the upload: the bytes are already safe at s3Key and
+    // refusing here would throw away a take to report a database problem. The
+    // verdict rides back in the response instead, and the recorder shows it.
     // Who recorded this take: the authenticated user's email when a session token
     // is presented, else the client-sent recorded_by. Clients send snake_case
     // provenance keys; the old camelCase-only gate meant recording_provenance was
     // NEVER written (live: 0 rows ever).
+    //
+    // Resolved BEFORE filing, not after: a re-record now files through the
+    // versioned swap, whose history column accepted_by is NOT NULL — so the
+    // identity has to exist by the time the take is filed, not merely by the
+    // time provenance is written. Nothing between here and its old position
+    // read `prov`, so this is a pure hoist.
     const prov = normalizeProvenance(provenance)
     let recordedBy = prov.recordedBy || metadata.recordedBy || 'human'
     const authToken = req.headers.authorization?.replace('Bearer ', '')
@@ -4636,6 +5198,47 @@ app.post('/api/production/:courseCode/recording/upload', async (req, res) => {
       } catch (authErr) {
         // Endpoint is not auth-gated — fall back to the client-sent identity
       }
+    }
+
+    let scriptFiling = null
+    if (isScriptMode && supabaseClient.isInitialized()) {
+      const plan = planScriptTakeFiling({ metadata, voiceId: slotVoiceId, course: courseRow })
+      scriptFiling = await fileScriptTake({
+        supabase: supabaseClient.getClient(),
+        courseCode,
+        plan,
+        s3Key,
+        durationMs: (audioMeta.processed && audioMeta.durationMs) ? audioMeta.durationMs : null,
+        recordedBy,
+        logger
+      })
+
+      // ATTACH: a filed clip is a clip in the library; the item's FK is what
+      // makes it play. Takes recorded from the course-order script carry their
+      // item's identity, so the clip becomes that item's audio immediately —
+      // the same three tables and nine columns TTS links through
+      // (script-take-attach.cjs). A take with no item identity (the coverage
+      // script) is filed exactly as before and simply isn't attached.
+      if (scriptFiling?.filed) {
+        const attachPlan = planAttach({ metadata, courseAudioId: scriptFiling.courseAudioId })
+        const attachResult = await attachScriptTake({
+          supabase: supabaseClient.getClient(),
+          courseCode,
+          plan: attachPlan,
+          courseAudioId: scriptFiling.courseAudioId,
+          logger
+        })
+        scriptFiling = { ...scriptFiling, attached: attachResult.attached, itemsLinked: attachResult.linked }
+      }
+    } else if (isScriptMode) {
+      scriptFiling = {
+        filed: false,
+        courseAudioId: null,
+        reason: 'no_database',
+        deliberate: false,
+        message: 'This take was saved to storage but the database was unreachable, so it was not filed as a clip and will not play back. Tell whoever runs the course build — the recording itself is safe.'
+      }
+      logger.error(`[ScriptTake] FILING SKIPPED for ${courseCode}: Supabase not initialized — take ${s3Key} has no course_audio row`)
     }
 
     // Update the sample flag in Supabase to mark as recorded.
@@ -4662,40 +5265,21 @@ app.post('/api/production/:courseCode/recording/upload', async (req, res) => {
       // context (course, seed/phrase identity, chunks_string pause map, replaced
       // s3_key). The live table has no dedicated columns for that context, so it
       // rides in quality_notes as JSON. Keyed by the take's fresh S3 uuid so every
-      // re-record gets its own row.
-      // voice_id is resolved SERVER-side from the course's voice_config slot —
-      // the client's metadata.voiceId is advisory (used only when the slot has
-      // no human voice assigned yet, e.g. recording ahead of roster assignment).
-      let slotVoiceId = null
-      if (isPodMode && podContext) {
-        // Pod mode already resolved the cast voice server-side in prepare
-        // (voice_config.podCast[speaker] / podCast.__explainer__).
-        slotVoiceId = podContext.voiceId
-      } else {
-        try {
-          const slotRole = metadata?.role || null
-          if (slotRole) {
-            const { data: courseRow } = await supabaseClient.getClient()
-              .from('courses').select('voice_config').eq('course_code', courseCode).single()
-            slotVoiceId = courseRow?.voice_config?.voices?.[slotRole]?.voiceId || null
-            if (metadata?.voiceId && slotVoiceId && metadata.voiceId !== slotVoiceId) {
-              logger.warn(`[Recording] client voiceId ${metadata.voiceId} disagrees with voice_config ${slotRole}=${slotVoiceId} — server value wins`)
-            }
-          }
-        } catch (voiceResolveError) {
-          logger.warn('[Recording] voice_config resolve failed, falling back to client voiceId:', voiceResolveError.message)
-        }
-        if (!slotVoiceId && metadata?.voiceId) slotVoiceId = metadata.voiceId
-      }
+      // re-record gets its own row. voice_id was resolved above (hoisted so
+      // filing and provenance can never disagree about the voice).
       const provenanceContext = buildProvenanceContext({
         courseCode,
         isScriptMode,
         metadata,
         provenance: prov,
         s3Key,
+        rawS3Key: rawKey,
         courseAudioId: isPodMode
           ? (podResult ? podResult.audioRow.id : null)
-          : (existingRow ? uuid : null),
+          // Script mode now HAS a course_audio row (natural cadence), so the
+          // provenance row names it — the join from a take to its clip used to
+          // be an honest null here only because the clip did not exist.
+          : (isScriptMode ? (scriptFiling?.courseAudioId || null) : (existingRow ? uuid : null)),
         replacedS3Key: isPodMode
           ? (podResult ? podResult.replacedS3Key : null)
           : (existingRow ? existingRow.s3_key : null),
@@ -4727,6 +5311,33 @@ app.post('/api/production/:courseCode/recording/upload', async (req, res) => {
           retakeCount: prov.retakeCount || 0
         })
         logger.log(`Provenance recorded for ${s3KeyUuid} (${provenanceContext.mode} mode)`)
+
+        // A redo must actually retire what it replaced. Mark every earlier take
+        // of this same line/cadence/voice as superseded by this one, so the take
+        // the recordist rejected can never be selected again — regardless of
+        // what their phone thought the time was. NOTHING IS DELETED: the
+        // superseded takes keep their rows and their S3 objects.
+        //
+        // Best-effort on purpose. A take whose bytes are safely stored is worth
+        // more than a tidy supersede ledger, so this never fails the upload; if
+        // it does not manage to mark, the reader falls back to recency exactly
+        // as before.
+        try {
+          const sup = await takeSupersede.supersedeEarlierTakes(supabaseClient.getClient(), {
+            courseCode,
+            text: metadata.text || null,
+            cadence: metadata.cadence || null,
+            voiceId: slotVoiceId,
+            role: metadata.role || null,
+            audioUuid: s3KeyUuid
+          })
+          if (sup.superseded.length) {
+            logger.log(`Superseded ${sup.superseded.length} earlier take(s) of this line by ${s3KeyUuid} (bytes kept)`)
+          }
+          if (sup.error) logger.error('Superseding earlier takes failed (upload kept):', sup.error)
+        } catch (supersedeError) {
+          logger.error('Superseding earlier takes threw (upload kept):', supersedeError)
+        }
       } catch (provenanceError) {
         // Log error but don't fail the upload
         logger.error('Error inserting provenance metadata:', provenanceError)
@@ -4736,7 +5347,15 @@ app.post('/api/production/:courseCode/recording/upload', async (req, res) => {
 
     // Pod mode: the take's canonical identity is the course_audio row the
     // sentence FK now points at (clients carry this, not the minted s3 uuid).
-    const responseUuid = (isPodMode && podResult) ? podResult.audioRow.id : audioId
+    // Script mode: the course_audio row's id when the take was filed, so the
+    // review screen's play button resolves through /api/production/audio/:uuid
+    // /stream like every other clip in the estate. A take that was NOT filed
+    // (the slow cadence, or a filing failure) falls back to the minted take
+    // uuid, which that route resolves through recording_provenance — so the
+    // recordist can always hear what they just recorded, filed or not.
+    const responseUuid = (isPodMode && podResult)
+      ? podResult.audioRow.id
+      : (isScriptMode && scriptFiling?.courseAudioId) ? scriptFiling.courseAudioId : audioId
 
     // Emit recording_completed event
     io.to(`course:${courseCode}`).emit('recording_completed', {
@@ -4755,6 +5374,11 @@ app.post('/api/production/:courseCode/recording/upload', async (req, res) => {
       // Script mode: the server-minted identity — clients must carry this, not script-N
       // Pod mode: the course_audio row id now linked on the pod sentence
       uuid: responseUuid,
+      // SCRIPT MODE ONLY. Whether this take became a clip, and if not, why —
+      // in words a recordist can act on. The recorder shows this; a `filed:
+      // false` with `deliberate: false` is a warning they must not be able to
+      // miss. Absent on pod/regeneration uploads, which have always filed.
+      ...(scriptFiling ? { filing: scriptFiling } : {}),
       ...(isPodMode && podResult ? {
         pod: {
           podId: podContext.podId,
@@ -4766,6 +5390,7 @@ app.post('/api/production/:courseCode/recording/upload', async (req, res) => {
         }
       } : {}),
       s3Key: s3Key || null,
+      rawKey: rawKey || null,
       uploaded: true,
       audioProcessing: audioMeta.processed ? {
         durationMs: audioMeta.durationMs,
@@ -4777,7 +5402,9 @@ app.post('/api/production/:courseCode/recording/upload', async (req, res) => {
     logger.error('Error uploading recording:', error)
     res.status(500).json({ error: error.message })
   }
-})
+}
+
+app.post('/api/production/:courseCode/recording/upload', handleRecordingUpload)
 
 // Helper function to proxy requests to Phase 8 Audio Generator (port 3465)
 async function proxyToPhase8(method, path, body = null) {
@@ -5573,6 +6200,28 @@ app.get('/api/audio/reuse-run/:runId', async (req, res) => {
 require('./api/audio-repair-routes.cjs').mount(app, { requireAdmin, requireDashboardUser, logger })
 
 // =============================================================================
+// VOICELAB — /api/voicelab/*
+// =============================================================================
+// A bench for voices and gate thresholds: parameters, runs, and every run kept as
+// an experiment. Reads are open to dashboard users; POST /runs and /rerun are
+// admin-only because they are the calls that spend money. It writes no course_audio
+// and no algorithm_config — /export hands a config back for a human to apply.
+require('./voicelab/router.cjs').mount(app, { requireAdmin, requireDashboardUser, logger })
+
+// =============================================================================
+// TAIL-TRUNCATION SCAN — /api/audio/tail-scan/*
+// =============================================================================
+// A whole-course tail scan is one S3 GET plus one ffmpeg decode per clip, so it
+// is a JOB (start / poll / read the report), never a synchronous request. Every
+// route is a read: no TTS, no writes, nothing on the learner path. Job state is
+// in-process and does not survive a restart — see services/audio-tail-scan.cjs.
+// getDb because /raise-flags writes its findings through the QA gate, which owns
+// audio_clip_flags — the same client the gate surface above is mounted with.
+require('./api/audio-tail-scan-routes.cjs').mount(app, {
+  requireDashboardUser, getDb: () => supabaseClient.getClient(), logger,
+})
+
+// =============================================================================
 // VOICE MANAGEMENT ENDPOINTS
 // =============================================================================
 
@@ -5861,6 +6510,20 @@ app.post('/api/production/:courseCode/audio-pipeline/start', async (req, res) =>
       return res.status(503).json({ error: 'Phase 8 audio service not running' })
     }
     res.status(error.response?.status || 500).json(error.response?.data || { error: error.message })
+  }
+})
+
+// GET /api/audio/health — proxy phase 8's own /health, which carries
+// tail_repair_mode. Without this, the only way to learn whether a machine's
+// render service still mutates audio is a shell on that machine — which is
+// exactly what we do not have for the Camberley Mac. Port 3470 is the single
+// public door, so the answer has to come through it.
+app.get('/api/audio/health', async (req, res) => {
+  try {
+    const response = await axios.get(`${PHASE8_URL}/health`, { timeout: 8000 })
+    res.json(response.data)
+  } catch (e) {
+    res.status(503).json({ status: 'unreachable', service: 'phase8-audio-v13', error: e.message })
   }
 })
 
@@ -7209,6 +7872,234 @@ app.get('/api/production/:courseCode/script-view', async (req, res) => {
 // Generate learning script showing how the course looks to a learner
 // Shows rounds with spaced repetition (Fibonacci-based reviews)
 // Ported from ssi-learning-app's generateLearningScript()
+// =============================================================================
+// GLOSS ALIGNMENT — read on the row, re-segment in place
+//
+// The alignment is the literal known-language gloss cut into chunks that sit
+// UNDER the target's own words, in the target's own order (Tom, 2026-08-12:
+// "word order of target must be preserved and known language will look wrong
+// when the orders differ"). Deborah reported it wrong on Basque `hitz bat`
+// (2026-08-12) and asked to be able to fix it herself; this is that write path.
+//
+// Editing is SEGMENTATION, not pairing. The target words are fixed columns and
+// are never touched. All this endpoint can change is where the breaks fall and
+// which known words land in each chunk. Consequences, all deliberate:
+//
+//  - no target text and no known text changes anywhere, on any row, ever;
+//  - no row is deleted or recreated, and `decomposition` is not touched at all,
+//    so the learner's LEGO tiling and its salient highlight are untouched;
+//  - therefore no audio clip can go stale and no audio pass is owed;
+//  - it can never reach a re-translate or a TTS render.
+//
+// Two hard gates buy all of that, so neither is a nicety:
+//  1. the chunk spans must sum to the row's actual target word count — the
+//     alignment can never claim more or fewer columns than the target has;
+//  2. the gloss words must be exactly the words already there, as a multiset.
+//     Order is deliberately NOT compared — re-cutting to follow the target's
+//     order is what reorders the gloss ("a word" -> `word` `a`), so comparing
+//     order would refuse the very edit this exists to make. Words may move
+//     anywhere; none may be invented, dropped or edited.
+// A request failing either is a 4xx, never a partial write.
+//
+// REVERT (2026-08-12): both gates police a re-PAIRING, and neither can express
+// "nobody has segmented this row" — so before this, one tap marked a row as
+// hand-segmented for good and only raw SQL could undo it. A body sending
+// `segments` as null or as an empty list is an explicit revert: the row's
+// `known_gloss_segments` goes back to NULL and the gloss reads as whatever the
+// generator derives. It writes that one column and nothing else, and it still
+// answers to the editor gate, the unknown-row 404 and the nothing-to-align 409.
+// =============================================================================
+
+const MAPPING_EDIT_ROLES = ['admin', 'editor']
+function canEditMapping(user) {
+  return !!user && MAPPING_EDIT_ROLES.includes(user.role)
+}
+
+const glossWords = str => String(str || '').trim().split(/\s+/).filter(Boolean)
+
+// The gloss as a word MULTISET, independent of order and of where the breaks
+// are. Order deliberately plays no part: re-segmenting to follow the target's
+// word order is exactly what reorders the gloss — Basque `hitz bat` turns
+// "a word" into `word` `a` — so an ordered comparison would refuse the very
+// edit this tool exists to make. What must not change is WHICH words are there.
+function glossWordMultiset(segments) {
+  return segments.flatMap(s => glossWords(s.known)).sort().join(' ')
+}
+
+// An explicit "put this row back to how it was before anyone touched it" —
+// `segments` sent as null or as an empty list. Pure and unit-tested next door.
+const { isRevertRequest } = require('./shared/mapping-revert-intent.cjs')
+
+function invalidSegments(segments, wordCount) {
+  if (!Array.isArray(segments) || segments.length === 0) return 'segments must be a non-empty array'
+  let total = 0
+  for (const seg of segments) {
+    if (!seg || typeof seg !== 'object') return 'each segment must be an object'
+    if (!Number.isInteger(seg.span) || seg.span < 1) return 'each segment needs a whole span of at least 1'
+    if (typeof seg.known !== 'string') return 'each segment needs a known string'
+    total += seg.span
+  }
+  if (total !== wordCount) {
+    return `the segments cover ${total} target words but this row has ${wordCount}`
+  }
+  return null
+}
+
+app.post('/api/production/:courseCode/mapping/:rowId', async (req, res) => {
+  const { courseCode, rowId } = req.params
+  const { source, segments } = req.body || {}
+
+  const editor = await resolveDashboardUserCached(req)
+  if (!canEditMapping(editor)) {
+    return res.status(403).json({ error: 'You need editor access to change a word mapping.' })
+  }
+  if (source !== 'phrase' && source !== 'lego') {
+    return res.status(400).json({ error: "source must be 'phrase' or 'lego'" })
+  }
+
+  try {
+    if (!supabaseClient.isInitialized()) {
+      return res.status(503).json({ error: 'Supabase not initialized' })
+    }
+    const supabase = supabaseClient.getClient()
+
+    const table = source === 'phrase' ? 'course_practice_phrases' : 'course_legos'
+    const blockColumn = source === 'phrase' ? 'decomposition' : 'components'
+    const idColumn = source === 'phrase' ? 'id' : 'lego_id'
+    // Only course_legos has a type; the A/M split is what decides mappability.
+    const typeColumn = source === 'lego' ? 'type, ' : ''
+
+    const { data: row, error: fetchError } = await supabase
+      .from(table)
+      .select(`${idColumn}, known_text, target_text, ${typeColumn}${blockColumn}, known_gloss_segments`)
+      .eq(idColumn, rowId)
+      .eq('course_code', courseCode)
+      .maybeSingle()
+
+    if (fetchError) throw fetchError
+    if (!row) return res.status(404).json({ error: `No such row ${rowId} in ${courseCode}` })
+
+    // The columns are the target's words, read from the row itself — never from
+    // the request. The client cannot widen or narrow the grid.
+    const words = learningScriptGenerator.targetWordsOf(row.target_text)
+    if (words.length < 2) {
+      return res.status(409).json({ error: 'This row has no alignment to change.' })
+    }
+
+    // An A-LEGO is one word in at least one language, so it cannot be split and
+    // mapped (Tom, 2026-08-13). The viewer shows it no glyph; this is the same
+    // rule at the write end, so a stray call cannot author one behind the UI's
+    // back. Checked on the row's own declared type, never on the request.
+    if (source === 'lego' && !learningScriptGenerator.legoIsMappable(row)) {
+      return res.status(409).json({
+        error: 'An A-LEGO is a single word on one side, so it has no mapping to change.',
+      })
+    }
+
+    const reverting = isRevertRequest(req.body)
+
+    if (!reverting) {
+      const shapeError = invalidSegments(segments, words.length)
+      if (shapeError) return res.status(400).json({ error: shapeError })
+    }
+
+    // What the gloss reads NOW: the stored segmentation if a human has made one,
+    // otherwise the same derivation the viewer showed them.
+    // A declared M-LEGO with no components has no DERIVED start — but it is a
+    // mapping candidate all the same (Tom, 2026-08-13: "it's just classification
+    // that feeds the mapping"), so the editor opens on blank columns and the
+    // save must not 409. 1,354 of the 4,088 rows reclassified that day are
+    // exactly this shape, `a word = hitz bat` among them. The blank start
+    // carries no words of its own, so the multiset check below falls through to
+    // the row's own known text — which is the only source an author may draw on.
+    const current = learningScriptGenerator.glossAlignment(
+      source, row.target_text, row[blockColumn], row.known_gloss_segments)
+      || learningScriptGenerator.blankAlignment(source, row.target_text)
+    if (!current) {
+      return res.status(409).json({ error: 'This row has no alignment to change.' })
+    }
+
+    // The multiset check polices a RE-PAIRING: the same words, cut differently.
+    // A revert submits no words at all, so there is nothing to compare — the
+    // row simply stops carrying a human cut and goes back to what the generator
+    // derives. Every other guard above still applies to it.
+    //
+    // TWO multisets are acceptable, and the second one is the point. What is
+    // being segmented is the row's OWN KNOWN TEXT against the target's word
+    // order — never a word-pairing exercise, and never a re-translation. The
+    // derived start is usually that same text cut by LEGO blocks, so the two
+    // agree and nothing changes. But a LEGO whose components do not occur in
+    // its own target text derives its start from the COMPONENTS' glosses
+    // instead, and then the only words on offer are words the sentence does not
+    // contain: eus_for_eng `gogoratzen saiatzen ari naiz` starts as "to
+    // remember" + "wishing to" while its known text reads "I'm trying to
+    // remember". Under one multiset that row can never be given a correct
+    // literal build — which is exactly the sentence Tom photographed on
+    // 2026-08-13 and asked to see mapped. Accepting the row's own known words
+    // unblocks it while keeping the guard's whole purpose: every word must come
+    // from this row, and no edit may invent or re-translate one.
+    const acceptable = [
+      glossWordMultiset(current.segments),
+      glossWordMultiset([{ known: row.known_text || '' }]),
+    ]
+    if (!reverting && !acceptable.includes(glossWordMultiset(segments))) {
+      return res.status(400).json({
+        error: 'A mapping edit may only move the existing words around, not change them.',
+      })
+    }
+
+    const cleaned = reverting ? null : segments.map(s => ({ span: s.span, known: s.known.trim() }))
+
+    const { error: updateError } = await supabase
+      .from(table)
+      .update({ known_gloss_segments: cleaned })
+      .eq(idColumn, rowId)
+      .eq('course_code', courseCode)
+
+    if (updateError) throw updateError
+
+    // Read back. An /api/* path that is not routed on this estate answers 200
+    // with the SPA's HTML, so a 200 is not proof a write landed — the caller is
+    // told what the database now holds and can check it itself.
+    const { data: after, error: reReadError } = await supabase
+      .from(table)
+      .select('known_gloss_segments')
+      .eq(idColumn, rowId)
+      .eq('course_code', courseCode)
+      .maybeSingle()
+    if (reReadError) throw reReadError
+
+    const stored = after ? after.known_gloss_segments : cleaned
+
+    // On a revert the stored value is NULL, which is the point — so answer with
+    // what the row now READS as, the generator's own derivation, and the caller
+    // can render the honest state without a second request.
+    const derived = reverting
+      ? (learningScriptGenerator.glossAlignment(source, row.target_text, row[blockColumn], null)
+         || learningScriptGenerator.blankAlignment(source, row.target_text))
+      : null
+
+    logger.info(
+      `[Mapping] ${editor.email || 'unknown'} ${reverting ? 'reverted' : 're-segmented'} ` +
+      `${source} ${rowId} in ${courseCode}`)
+
+    io.to(`course:${courseCode}`).emit('mapping_updated', { courseCode, source, rowId })
+
+    res.json({
+      success: true,
+      source,
+      rowId,
+      words,
+      segments: reverting ? (derived ? derived.segments : []) : stored,
+      segmented: !reverting,
+      ...(reverting ? { reverted: true } : {}),
+    })
+  } catch (error) {
+    logger.error(`[Mapping] Failed to re-segment ${source} ${rowId} in ${courseCode}:`, error.message)
+    res.status(500).json({ error: 'The mapping could not be saved. Nothing was changed.' })
+  }
+})
+
 app.get('/api/production/:courseCode/learning-journey', async (req, res) => {
   const { courseCode } = req.params
   const { maxLegos, offset, learnerView } = req.query
@@ -7216,9 +8107,10 @@ app.get('/api/production/:courseCode/learning-journey', async (req, res) => {
   // Parse query params
   const maxLegosNum = maxLegos ? parseInt(maxLegos, 10) : 50
   const offsetNum = offset ? parseInt(offset, 10) : 0
-  // learnerView=1 applies the learner app's audio gates: LEGOs/phrases missing
-  // any audio ID are dropped and round numbers compress, exactly as the
-  // learner's script does. Default (production view) keeps + flags the gaps.
+  // learnerView=1 applies the learner app's audio gates PER ITEM: an unvoiced
+  // intro/debut cycle or phrase is skipped on its own while its round keeps its
+  // number and everything else it has, exactly as the player does since
+  // 2026-08-06. Default (production view) keeps + flags the gaps.
   const learnerViewFlag = learnerView === '1' || learnerView === 'true'
 
   try {
@@ -7250,6 +8142,10 @@ app.get('/api/production/:courseCode/learning-journey', async (req, res) => {
       allItems,
       stats,
       totalLegoCount,
+      // Whether THIS caller may re-pair a row's word mapping. Read is open to
+      // any course-scoped dashboard user; the write is editor/admin only, and
+      // the viewer hides the editing gesture (not the mapping) when false.
+      canEditMapping: canEditMapping(req.dashboardUser || await resolveDashboardUserCached(req)),
       pagination: {
         maxLegos: maxLegosNum,
         offset: offsetNum,
@@ -7479,7 +8375,9 @@ app.patch('/api/production/:courseCode/phrase/:phraseId', async (req, res) => {
 // =============================================================================
 
 // Import the recording optimizer algorithm
-const { generateRecordingScript } = require('../tools/recording-optimizer/generate-recording-script.cjs')
+const { generateRecordingScript, generateTwoPoolScript } = require('../tools/recording-optimizer/generate-recording-script.cjs')
+const { buildScriptItems, buildCourseScriptItems, buildTwoPoolScriptItems, isNaturalOnly } = require('./recording-script-items.cjs')
+const { loadCourseOrderScript } = require('./course-order-script.cjs')
 
 // GET /api/production/:courseCode/recording-optimizer
 // Runs the GuaranteedCoverage algorithm to find minimum recording set
@@ -7548,15 +8446,110 @@ app.get('/api/production/:courseCode/recording-script', async (req, res) => {
     // target voice needs its own complete set. Unknown/absent → target1, the
     // historical behaviour.
     const role = ['target1', 'target2'].includes(req.query.role) ? req.query.role : 'target1'
+    // ?order=course is the straight-through recording mode (Kai, 2026-08-21):
+    // the COURSE in course sequence — each seed sentence, then each of its
+    // LEGOs, then the phrases built on that LEGO — read ONCE at natural speed,
+    // with every take filed and attached directly as that item's audio. It
+    // does not run the coverage optimiser at all: the optimiser's whole output
+    // is a splicing plan, and these takes are never spliced. Default stays
+    // 'coverage', so nothing changes for anyone who doesn't ask for it.
+    const order = req.query.order === 'course' ? 'course' : 'coverage'
+    const naturalOnly = isNaturalOnly(order)
+    // ?pools=true is the TWO-POOL script (Kai's ruling, 2026-08-21): Pool A,
+    // every LEGO and every component read once on its own as that unit's
+    // teaching clip; then Pool B, the slow phrase reads, sized ONLY by what it
+    // takes to reassemble every phrase in the course. It replaces both the
+    // coverage optimiser and the direct-record list, because both of those
+    // exist to isolate teaching units and Pool A now does that job.
+    const twoPools = req.query.pools === 'true'
+    // Smallest piece a phrase may be spliced from. 1 (default) allows a
+    // word-sized piece; 2 forbids them, which reads far better and costs a much
+    // longer script — the exchange rate is measured per course, see
+    // docs/recording/two-pool-redesign-2026-08-22.md.
+    const rawMinPiece = parseInt(req.query.minPieceWords, 10)
+    const minPieceWords = Number.isInteger(rawMinPiece) && rawMinPiece > 0 ? rawMinPiece : 1
 
-    logger.log(`[Recording Script] Generating interleaved script for ${courseCode} [${role}]${excludeRecorded ? ' (gap only)' : ' (full)'}${maxSeed ? ` (seeds 1-${maxSeed})` : ''}`)
+    if (twoPools) {
+      const originalLogTP = console.log
+      console.log = () => {}
+      let poolResult
+      try {
+        poolResult = await generateTwoPoolScript(courseCode, { verbose: false, maxSeed, minPieceWords })
+      } finally {
+        console.log = originalLogTP
+      }
+      if (!poolResult) {
+        return res.status(404).json({
+          error: maxSeed
+            ? `No LEGOs found in seeds 1-${maxSeed} for ${courseCode}.`
+            : 'No LEGOs found for course. Run Course Builder first.'
+        })
+      }
+      const poolItems = buildTwoPoolScriptItems({
+        poolA: poolResult.poolA.items,
+        poolB: poolResult.poolB.lines,
+      })
+      return res.json({
+        courseCode,
+        maxSeed,
+        role,
+        mode: 'two-pool',
+        naturalOnly: false,
+        minPieceWords,
+        totalItems: poolItems.length,
+        totalPoolA: poolResult.poolA.items.length,
+        totalPoolB: poolResult.poolB.lines.length,
+        estimatedMinutes: poolResult.statistics.estimatedMinutes,
+        statistics: poolResult.statistics,
+        // Never silent: if the hard rule is not met, the caller sees which
+        // phrases failed rather than a slightly smaller percentage.
+        unassemblablePhrases: poolResult.failures,
+        items: poolItems
+      })
+    }
+
+    logger.log(`[Recording Script] Generating ${naturalOnly ? 'natural-only' : 'interleaved'} script for ${courseCode} [${role}]${excludeRecorded ? ' (gap only)' : ' (full)'}${maxSeed ? ` (seeds 1-${maxSeed})` : ''} (${order} order)`)
+
+    if (order === 'course') {
+      if (!supabaseClient.isInitialized()) {
+        return res.status(503).json({ error: 'The database is unreachable, so the course script cannot be read.' })
+      }
+      const { items: courseItems, totalInCourse, alreadyRecorded } = await loadCourseOrderScript(
+        supabaseClient.getClient(), courseCode, { maxSeed, role, excludeRecorded }
+      )
+      if (!totalInCourse) {
+        return res.status(404).json({
+          error: maxSeed
+            ? `No course content found in seeds 1-${maxSeed} for ${courseCode}.`
+            : 'No course content found. Run Course Builder first.'
+        })
+      }
+      const items = buildCourseScriptItems(courseItems)
+      return res.json({
+        courseCode,
+        maxSeed,
+        role,
+        order,
+        naturalOnly,
+        totalItems: items.length,
+        // The course-order script has no phrase/direct split: every line is a
+        // course item, and the counts the recorder shows are of items, not of
+        // optimiser buckets.
+        totalPhrases: items.length,
+        totalDirect: 0,
+        totalInCourse,
+        alreadyRecorded,
+        estimatedMinutes: Math.round((items.length * 6) / 60),
+        items
+      })
+    }
 
     // Run the optimizer (suppress console output)
     const originalLog = console.log
     const logs = []
     console.log = (...args) => logs.push(args.join(' '))
 
-    const result = await generateRecordingScript(courseCode, { verbose: false, excludeRecorded, maxSeed, role })
+    const result = await generateRecordingScript(courseCode, { verbose: false, excludeRecorded, maxSeed, role, order })
 
     console.log = originalLog
 
@@ -7571,78 +8564,10 @@ app.get('/api/production/:courseCode/recording-script', async (req, res) => {
     const phrases = result.recordingScript.phrases
     const directItems = result.directRecord.items
 
-    // Interleave: each phrase gets natural + slow pair
-    const items = []
-    let idx = 0
-
-    for (let i = 0; i < phrases.length; i++) {
-      const p = phrases[i]
-      // Pass chunk data through to the autocue so Pass 2 (slow) can render
-      // LEGO-level pause boundaries rather than word-level.
-      const chunkFields = {
-        recordingChunks: p.recordingChunks || null,
-        legoChunks: p.legoChunks || null,
-        chunksString: p.chunksString || null,
-        chunkCount: p.chunkCount || null,
-      }
-      items.push({
-        index: idx++,
-        text: p.target,
-        cadence: 'natural',
-        type: 'phrase',
-        phraseIndex: i,
-        wordCount: p.wordCount,
-        coversLegos: p.coversLegos,
-        known: p.known || '',
-        phraseOrigin: p.source || '',
-        seedNumber: p.seedNumber || null,
-        ...chunkFields
-      })
-      items.push({
-        index: idx++,
-        text: p.target,
-        cadence: 'slow',
-        type: 'phrase',
-        phraseIndex: i,
-        wordCount: p.wordCount,
-        coversLegos: p.coversLegos,
-        known: p.known || '',
-        phraseOrigin: p.source || '',
-        seedNumber: p.seedNumber || null,
-        ...chunkFields
-      })
-    }
-
-    // Append direct record items (also normal + slow pairs).
-    // A direct-record item is a single LEGO — one chunk by definition.
-    for (let i = 0; i < directItems.length; i++) {
-      const d = directItems[i]
-      const directChunk = [{ text: d.target, legoId: d.legoId || null, isLego: true }]
-      items.push({
-        index: idx++,
-        text: d.target,
-        cadence: 'natural',
-        type: 'direct',
-        known: d.known || '',
-        legoId: d.legoId || '',
-        recordingChunks: directChunk,
-        legoChunks: directChunk,
-        chunksString: d.target,
-        chunkCount: 1
-      })
-      items.push({
-        index: idx++,
-        text: d.target,
-        cadence: 'slow',
-        type: 'direct',
-        known: d.known || '',
-        legoId: d.legoId || '',
-        recordingChunks: directChunk,
-        legoChunks: directChunk,
-        chunksString: d.target,
-        chunkCount: 1
-      })
-    }
+    // Shape the reading list. In coverage order each line is read twice
+    // (natural, then slow); in course order it is read ONCE, natural only —
+    // see services/recording-script-items.cjs for what that costs downstream.
+    const items = buildScriptItems({ phrases, directItems, order })
 
     // Estimate: ~6 seconds per item (read + pause)
     const estimatedMinutes = Math.round((items.length * 6) / 60)
@@ -7651,6 +8576,10 @@ app.get('/api/production/:courseCode/recording-script', async (req, res) => {
       courseCode,
       maxSeed,
       role,
+      order,
+      // So the recorder can say so on screen rather than infer it from the
+      // absence of amber lines halfway through a session.
+      naturalOnly,
       totalItems: items.length,
       totalPhrases: phrases.length,
       totalDirect: directItems.length,
@@ -11193,8 +12122,18 @@ app.post('/api/admin/audit-archive', async (req, res) => {
 //
 // Returns:
 //   null_count    — phrases with decomposition IS NULL (never computed)
-//   stale_count   — decomposition_course_version < courses.version
+//   stale_count   — decomposition present AND its version stamp is NULL or
+//                   older than courses.version
 //   clean_count   — decomposition present AND version is current
+//
+// An UNSTAMPED row (decomposition present, decomposition_course_version NULL)
+// counts as STALE. It used to count as neither: `< version` and `>= version`
+// are both NULL — hence false — for a NULL stamp, so those rows fell out of
+// every bucket and total != null + stale + clean. 71% of decomposed phrases
+// estate-wide are unstamped, so the audit was hiding most of its own subject:
+// eus_for_eng reported 49 stale where content inspection found 502
+// (docs/gloss-mapping-bug-2026-08-12.md). Reporting a small clean number is
+// precisely what stopped anyone looking.
 //   total         — total phrases in this course
 //   course_version — current courses.version (the target)
 //
@@ -11229,7 +12168,7 @@ app.get('/api/admin/decomposition-audit/:courseCode', async (req, res) => {
         .select('*', { count: 'exact', head: true })
         .eq('course_code', courseCode)
         .not('decomposition', 'is', null)
-        .lt('decomposition_course_version', courseVersion),
+        .or(`decomposition_course_version.is.null,decomposition_course_version.lt.${courseVersion}`),
       sb.from('course_practice_phrases')
         .select('*', { count: 'exact', head: true })
         .eq('course_code', courseCode)
@@ -11331,8 +12270,28 @@ app.post('/api/admin/decomposition-backfill', async (req, res) => {
       const courseVersion = course.version ?? 1
 
       // Page through phrases needing work. The "needs work" predicate is
-      // decomposition IS NULL OR decomposition_course_version < courseVersion.
+      // decomposition IS NULL OR its version stamp is NULL or < courseVersion.
       // PostgREST's `or()` handles that compactly.
+      //
+      // NOTE — deliberately NOT widened to unstamped rows, even though the
+      // audit endpoint above now counts them as stale.
+      //
+      // `decomposition_course_version.lt.N` is NULL — not true — for an
+      // unstamped row, so a phrase that HAS a decomposition and NO stamp
+      // matches neither leg and is never backfilled. That is 71% of decomposed
+      // phrases estate-wide. Widening this predicate looks like the fix and is
+      // not: this loop writes with decomposeText, which has no parent LEGO and
+      // so cannot restore a salient anchor. Turning it loose on ~435k
+      // previously-untouched rows would overwrite correct anchored
+      // decompositions with weaker unanchored ones — a regression bigger than
+      // the drift it repairs.
+      //
+      // Widening is safe only once this loop decomposes with decomposeAnchored
+      // (needs lego_index in the select for the parent LEGO, plus the
+      // kind==='error' skip so a phrase that does not contain its own LEGO is
+      // left alone rather than silently flattened). Until then the content-keyed
+      // repair path is tools/course-optimization/refresh-stale-phrase-decompositions.cjs.
+      // See docs/gloss-mapping-bug-2026-08-12.md.
       // We don't use offset/range because we mutate as we go — keep refetching
       // the first page until it stops returning rows.
       while (true) {
@@ -12085,9 +13044,14 @@ app.get('/api/release-notes/drafts', async (req, res) => {
 })
 
 const PORT = process.env.PRODUCTION_API_PORT || 3470
+// Bind loopback-only by default. watson-1 has a public IP; public access to this
+// service is meant to arrive via the tailscale funnel on :8443, which proxies to
+// http://localhost:3470 — so loopback keeps the funnel working while removing the
+// raw 0.0.0.0 path. Override with BIND_HOST only with a deliberate reason.
+const HOST = process.env.BIND_HOST || '127.0.0.1'
 
-httpServer.listen(PORT, () => {
-  logger.log(`Production API server running on port ${PORT}`)
+httpServer.listen(PORT, HOST, () => {
+  logger.log(`Production API server running on ${HOST}:${PORT}`)
   logger.log(`WebSocket path: /api/production/websocket`)
   scheduleNightlyArchive()
 })

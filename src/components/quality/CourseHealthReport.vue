@@ -13,7 +13,7 @@
         <div class="flex items-start justify-between">
           <div>
             <h1 class="text-4xl font-bold text-emerald-400 mb-2">Course Health Report</h1>
-            <p class="text-muted">{{ courseCode }} - Last updated {{ lastUpdated }}</p>
+            <p class="text-muted">{{ getCourseName(courseCode) }} - Last updated {{ lastUpdated }}</p>
           </div>
 
           <!-- Overall Health Score -->
@@ -396,9 +396,11 @@
 
 <script setup>
 import { ref, computed, onMounted } from 'vue'
+import { useCourses } from '../../composables/useCourses'
 import { useRouter } from 'vue-router'
 
 const router = useRouter()
+const { getCourseName } = useCourses()
 const props = defineProps({
   courseCode: {
     type: String,

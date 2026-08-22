@@ -25,6 +25,7 @@ import { describe, it, expect } from 'vitest'
 const {
   castFingerprint, canonicalSpeaker, trackKey, evaluateApproval,
   parseSampleLimit, selectSample, selectExchange, EXCHANGE_MAX, SAMPLE_LIMIT_MAX, resolveCurrentPod0,
+  findUncastSpeakers, describeUncastSpeakers,
 } = require('./pod-voice-approvals.cjs')
 
 const pod = (id, speakers) => ({ id, speakers })
@@ -395,5 +396,104 @@ describe('resolveCurrentPod0 — which pod actually holds the current content', 
     const pods = [{ id: 'c:pod-1', slug: 'pod-1', sentence_count: 180, pod_type: 'themed' },
       { id: 'c:pod-0', slug: 'pod-0', sentence_count: 142, pod_type: 'core' }]
     expect(resolveCurrentPod0(pods).slug).toBe('pod-0')
+  })
+})
+
+// ---------------------------------------------------------------------------
+// findUncastSpeakers — the uncast-speaker gate (Tom's ruling, 2026-08-14)
+// ---------------------------------------------------------------------------
+//
+// The real case this was built from: tha_for_eng:pod-0-unrecorded uses generic
+// labels ('Customer 1', 'Passenger') where the cast holds the recorded pod's
+// scene-specific ones ('Cafe customer 1', 'Bus passenger'). 43 lines had no cast
+// entry and would have rendered on speakers._default — one male voice, over 18
+// lines written female.
+
+const voice = { gender: 'f', target: { provider: 'xai', voice_id: 'x1' } }
+const spoken = (...names) => names.map((speaker, i) => ({ id: `s${i}`, speaker }))
+
+describe('findUncastSpeakers — an unnamed speaker is an error, not a shrug', () => {
+  it('finds nothing when every sentence speaker is cast', () => {
+    expect(findUncastSpeakers([
+      { id: 'p:pod-0', speakers: { Anna: voice, Guest: voice }, sentences: spoken('Anna', 'Guest', 'Anna') },
+    ])).toEqual([])
+  })
+
+  it('flags a label present in the sentences but absent from the cast', () => {
+    const got = findUncastSpeakers([
+      { id: 'tha_for_eng:pod-0-unrecorded', speakers: { 'Cafe customer 1': voice },
+        sentences: spoken('Cafe customer 1', 'Customer 1', 'Customer 1', 'Passenger') },
+    ])
+    expect(got).toEqual([
+      { pod_id: 'tha_for_eng:pod-0-unrecorded', speaker: 'Customer 1', lines: 2, labels: ['Customer 1'] },
+      { pod_id: 'tha_for_eng:pod-0-unrecorded', speaker: 'Passenger', lines: 1, labels: ['Passenger'] },
+    ])
+  })
+
+  it('does NOT let _default rescue an uncast label — that is the failure mode', () => {
+    const got = findUncastSpeakers([
+      { id: 'p:pod-0', speakers: { _default: voice }, sentences: spoken('Customer') },
+    ])
+    expect(got).toHaveLength(1)
+    expect(got[0].speaker).toBe('Customer')
+  })
+
+  it('resolves a parenthesised label against its canonical cast entry', () => {
+    // 'Barista (3 pm)' is what phase8 canonicalises to 'Barista' before lookup,
+    // so it is cast and must NOT be flagged.
+    expect(findUncastSpeakers([
+      { id: 'p:pod-0', speakers: { Barista: voice }, sentences: spoken('Barista (3 pm)', 'Barista') },
+    ])).toEqual([])
+  })
+
+  it('accepts a legacy raw key that does not survive canonicalisation', () => {
+    expect(findUncastSpeakers([
+      { id: 'p:pod-0', speakers: { 'Susjed (M)': voice }, sentences: spoken('Susjed (M)') },
+    ])).toEqual([])
+  })
+
+  it('collapses variant labels of one role into a single row and counts every line', () => {
+    const got = findUncastSpeakers([
+      { id: 'p:pod-0', speakers: {}, sentences: spoken('Neighbour (8 am)', 'Neighbour (10:30 pm)', 'Neighbour') },
+    ])
+    expect(got).toEqual([
+      { pod_id: 'p:pod-0', speaker: 'Neighbour', lines: 3,
+        labels: ['Neighbour', 'Neighbour (10:30 pm)', 'Neighbour (8 am)'] },
+    ])
+  })
+
+  it('orders by line count so the worst gap is named first', () => {
+    const got = findUncastSpeakers([
+      { id: 'p:pod-0', speakers: {}, sentences: spoken('B', 'A', 'A', 'A', 'B') },
+    ])
+    expect(got.map(u => [u.speaker, u.lines])).toEqual([['A', 3], ['B', 2]])
+  })
+
+  it('flags a blank speaker rather than skipping it — it also falls to _default', () => {
+    const got = findUncastSpeakers([{ id: 'p:pod-0', speakers: { Anna: voice }, sentences: spoken('', '  ') }])
+    expect(got).toEqual([{ pod_id: 'p:pod-0', speaker: '(blank speaker)', lines: 2, labels: ['', '  '] }])
+  })
+
+  it('reports each pod separately', () => {
+    const got = findUncastSpeakers([
+      { id: 'p:pod-0', speakers: { Anna: voice }, sentences: spoken('Anna') },
+      { id: 'p:pod-1', speakers: { Anna: voice }, sentences: spoken('Ghost') },
+    ])
+    expect(got).toEqual([{ pod_id: 'p:pod-1', speaker: 'Ghost', lines: 1, labels: ['Ghost'] }])
+  })
+
+  it('is null-safe and empty-safe', () => {
+    expect(findUncastSpeakers(null)).toEqual([])
+    expect(findUncastSpeakers([])).toEqual([])
+    expect(findUncastSpeakers([{ id: 'p:pod-0' }])).toEqual([])
+  })
+
+  it('describes the refusal by naming the roles and the line count', () => {
+    const msg = describeUncastSpeakers(findUncastSpeakers([
+      { id: 'tha_for_eng:pod-0-unrecorded', speakers: {}, sentences: spoken('Customer 1', 'Customer 1', 'Passenger') },
+    ]))
+    expect(msg).toContain('Customer 1 (2 lines, tha_for_eng:pod-0-unrecorded)')
+    expect(msg).toContain('Passenger (1 line, tha_for_eng:pod-0-unrecorded)')
+    expect(msg).toContain('3 line(s)')
   })
 })

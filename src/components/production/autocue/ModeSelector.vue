@@ -18,6 +18,14 @@
         <li>AI-powered segmentation</li>
         <li>Batch review and approval</li>
       </ul>
+
+      <!-- Short warm-up run so a new recorder (and whoever is reviewing them)
+           can hear real audio back within a couple of minutes, instead of
+           committing to the whole course before anyone has checked the mic,
+           the room or the accent. -->
+      <button class="test-batch-btn" @click.stop="startTestBatch">
+        Test batch first — a quick sample of the course
+      </button>
     </div>
 
     <div
@@ -73,9 +81,38 @@ const route = useRoute()
 const router = useRouter()
 const courseCode = route.params.courseCode || null
 
+// Seed ceiling for the warm-up run: the script optimizer picks phrases by LEGO
+// coverage from seeds at or below this number, so the sample is a subset of
+// them, NOT seeds 1..N in order. Small on purpose — the point is to hear
+// something back quickly, not to make a dent in the course.
+const TEST_BATCH_SEEDS = 5
+
 function selectMode(mode) {
   selectedMode.value = mode
   emit('select', mode)
+}
+
+// Same flow as Mode 1, capped. @click.stop keeps the card's own handler from
+// also firing and starting the uncapped run.
+//
+// The cap goes into the URL as well as the emitted opts: RecordRoom reads
+// ?maxSeed from the route to size its own totals, so a cap that only ever
+// lived in component state left the room counting the whole course.
+// A narrower cap already on the link wins — pressing "test batch" must never
+// widen a scope the recorder was deliberately handed.
+function startTestBatch() {
+  selectedMode.value = 'new-course'
+
+  const linkCap = parseInt(route.query.maxSeed, 10)
+  const maxSeed = Number.isInteger(linkCap) && linkCap > 0
+    ? Math.min(linkCap, TEST_BATCH_SEEDS)
+    : TEST_BATCH_SEEDS
+
+  if (String(route.query.maxSeed ?? '') !== String(maxSeed)) {
+    router.replace({ query: { ...route.query, maxSeed: String(maxSeed) } })
+  }
+
+  emit('select', 'new-course', { maxSeed })
 }
 
 // Dialogue recording is cast-first: the pods page's Cast panel hands out the
@@ -191,6 +228,29 @@ function goToPods() {
   left: 0;
   color: var(--color-tungsten, var(--accent));
   font-weight: bold;
+}
+
+/* Secondary to the card itself — this is the cautious path, not the headline
+   action, so it reads as an outline button rather than competing with the card. */
+.test-batch-btn {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  margin-top: 1.5rem;
+  padding: 0.625rem 1rem;
+  background: transparent;
+  border: 1px solid var(--color-tungsten, var(--accent));
+  border-radius: 8px;
+  color: var(--color-tungsten, var(--accent));
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.8125rem;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.test-batch-btn:hover {
+  background: var(--color-tungsten, var(--accent));
+  color: var(--color-void, var(--canvas));
 }
 
 @media (max-width: 768px) {

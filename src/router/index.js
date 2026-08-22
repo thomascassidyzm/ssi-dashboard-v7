@@ -94,6 +94,14 @@ const routes = [
     component: () => import('../views/BoardReportDetail.vue'),
     meta: { title: 'Board Report - Admin' }
   },
+  // Human recording, Tom's side: the per-language flag, the coverage bar, and
+  // the link to send each recordist. Normal auth — only the /r/ surface is open.
+  {
+    path: '/admin/recording',
+    name: 'AdminRecording',
+    component: () => import('../views/AdminRecording.vue'),
+    meta: { title: 'Human Recording - Admin' }
+  },
   {
     path: '/maintenance',
     name: 'Maintenance',
@@ -330,6 +338,29 @@ const routes = [
     props: true,
     meta: { title: 'Course Progress' }
   },
+  // The Copy area — every learner-facing copy surface, editable in place. Behind
+  // the normal OTP gate: any Popty user can edit; every save is versioned in
+  // htw_copy_versions and diffable against the frozen original.
+  {
+    path: '/copy',
+    name: 'CopyIndex',
+    component: () => import('../views/CopyIndex.vue'),
+    meta: { title: 'Copy' }
+  },
+  {
+    path: '/copy/:docId',
+    name: 'CopyEditor',
+    component: () => import('../views/CopyEditor.vue'),
+    meta: { title: 'Copy' }
+  },
+  // Permanent alias: this link is already in an editor's inbox. Never remove it.
+  {
+    path: '/htw-copy',
+    name: 'HtwCopyEditor',
+    component: () => import('../views/CopyEditor.vue'),
+    props: { doc: 'htw' },
+    meta: { title: 'How This Works copy' }
+  },
   {
     path: '/edit/introductions',
     name: 'IntroductionsEditor',
@@ -373,14 +404,35 @@ const routes = [
     redirect: '/'
   },
 
-  // Record Room — minimal recording shell for voice helpers (role 'recorder').
-  // A recorder is confined here by the router guard; editors/admins can use it too.
-  // courseCode is optional so an unassigned recorder still has somewhere to land.
+  // ============================================
+  // THE ONE RECORDIST SURFACE (Tom, 2026-08-14)
+  // ============================================
+  // Link-is-identity: whoever holds /r/:voiceId IS that voice. `public: true`
+  // is doing two jobs deliberately — it exempts the route from the auth guard
+  // (no login) AND from the recorder-confinement block below (which would
+  // otherwise force-redirect role 'recorder' straight back to /record/:course),
+  // and it also hides the app navbar (AppNavbar.isHidden), so the recordist
+  // sees the line and nothing else. The queue is by LANGUAGE, never by course.
+  {
+    path: '/r/:voiceId',
+    name: 'RecordistRoom',
+    component: () => import('../views/RecordistRoom.vue'),
+    props: true,
+    meta: { title: 'Recording', public: true }
+  },
+
+  // Record Room — the OLD recording shell. Kept alive so nothing Aran already
+  // holds 404s, but a link carrying ?podVoice= (every link the cast panel ever
+  // produced) now lands on the one surface instead.
   {
     path: '/record/:courseCode?',
     name: 'RecordRoom',
     component: () => import('../views/RecordRoom.vue'),
     props: true,
+    // The ?podVoice= redirect lives in the global guard below, NOT here: a
+    // route-level beforeEnter runs AFTER beforeEach, so an anonymous Aran
+    // opening the link he already holds would be sent to Login and never reach
+    // the redirect at all.
     meta: { title: 'Record Room', requiresAuth: true }
   },
   {
@@ -501,10 +553,24 @@ const routes = [
     meta: { title: 'Pod Lab - Admin' }
   },
   {
+    path: '/admin/configs/voice',
+    name: 'VoiceLab',
+    component: () => import('../views/admin/VoiceLab.vue'),
+    meta: { title: 'Voice Lab - Admin' }
+  },
+  {
     path: '/admin/configs/vad',
     name: 'VadLab',
     component: () => import('../views/admin/VadLab.vue'),
     meta: { title: 'VAD Lab - Admin' }
+  },
+  {
+    // Capture A/B — record the same line under each mic profile and measure
+    // both, on the phone that actually does the recording.
+    path: '/admin/capture-ab',
+    name: 'CaptureAB',
+    component: () => import('../views/admin/CaptureAB.vue'),
+    meta: { title: 'Capture A/B - Admin' }
   },
   // Legacy path — the old single Listening page lived here. Redirect bookmarks.
   { path: '/admin/listening', redirect: '/admin/configs/listening' },
@@ -522,6 +588,24 @@ const routes = [
     redirect: '/'
   },
   {
+    // Courseless entry to the listening pass: "a sample of ANY course's audio"
+    // shouldn't require already being inside a course. Renders the course
+    // picker, or jumps straight to the remembered course.
+    path: '/audio-preview',
+    name: 'AudioPreviewEntry',
+    component: () => import('../views/production/AudioPreview.vue'),
+    meta: { title: 'Audio Preview' }
+  },
+  {
+    // The approval gate across the whole estate (Part 4). Not per-course, so
+    // it sits outside ProductionLayout: this is the view the retrofit of the
+    // already-published courses is prioritised from.
+    path: '/qa-gate',
+    name: 'QAGateEstate',
+    component: () => import('../views/production/QAGateEstate.vue'),
+    meta: { title: 'Approval Gate - Estate' }
+  },
+  {
     // Diagnostic listening artefact (2026-08-06): German seed-1 clips played at
     // the original speed, the belt ramp alone, and the ramp × course global —
     // so the beginner speed can be ruled on by ear. Read-only, public S3 clips,
@@ -530,6 +614,7 @@ const routes = [
     name: 'GermanSpeedCheck',
     component: () => import('../views/production/GermanSpeedCheck.vue'),
     meta: { title: 'German seed-1 speed A/B', public: true }
+
   },
   // Nested routes under ProductionLayout - keeps layout mounted while switching tabs
   {
@@ -575,6 +660,15 @@ const routes = [
         component: () => import('../views/production/TextGeneration.vue'),
         props: true,
         meta: { title: 'Text Generation - Production Suite' }
+      },
+      {
+        // The manual approval gate for this course: the round-by-round
+        // play-through worklist, sign-off, and who is listening to what.
+        path: 'qa-gate',
+        name: 'CourseQAGate',
+        component: () => import('../views/production/CourseQAGate.vue'),
+        props: true,
+        meta: { title: 'Approval Gate - Production Suite' }
       },
       {
         path: 'phrase-qa',
@@ -657,6 +751,16 @@ const routes = [
         meta: { title: 'QA Review - Production Suite' }
       },
       {
+        // The human listening pass over rendered clips. Read-only; the
+        // courseless entry point is /audio-preview (below), which remembers
+        // the last course and routes on here.
+        path: 'audio-preview',
+        name: 'AudioPreview',
+        component: () => import('../views/production/AudioPreview.vue'),
+        props: true,
+        meta: { title: 'Audio Preview - Production Suite' }
+      },
+      {
         path: 'pods',
         name: 'Pods',
         component: () => import('../views/PodsView.vue'),
@@ -709,6 +813,17 @@ router.beforeEach(async (to, from, next) => {
   document.title = to.meta.title
     ? `${to.meta.title} - Popty`
     : 'Popty v14.0.0 - SSi Course Production Dashboard'
+
+  // Every record link ever sent carried ?podVoice= — those are Aran's and
+  // Catrin's bookmarks, and they now land on the one recordist surface. This
+  // runs BEFORE the auth check on purpose: the whole point of the new surface
+  // is that holding the link is enough, so sending its old shape to Login
+  // first would break exactly the people it exists for.
+  if (to.name === 'RecordRoom' && to.query.podVoice) {
+    const v = to.query.podVoice
+    const voiceId = Array.isArray(v) ? v[0] : v
+    if (voiceId) return next({ name: 'RecordistRoom', params: { voiceId }, replace: true })
+  }
 
   // Public routes (login, auth verify) don't need auth
   if (to.meta.public) return next()

@@ -12,11 +12,34 @@
 The learner KNOWS Japanese. They are learning to SPEAK English. So:
 - **Known text** = Japanese (what they already understand)
 - **Target text** = English (what they're learning to produce)
-- **LEGOs** decompose the Japanese known text into chunks, each mapping to an English target chunk
+- **LEGOs** decompose the **English target text** into chunks, each carrying a Japanese known gloss
 - **Phrases** have Japanese on the known side, English on the target side
 - The learner hears the Japanese prompt and produces the English response
 
 This is the REVERSE of jpn_for_eng. All the Japanese grammar complexity lives in the known text (which the learner already understands). The teaching challenge is English — word order, articles, prepositions, phrasal verbs.
+
+### Which side gets decomposed — the TARGET, always
+
+**Decompositions preserve TARGET word order.** The chunk sequence follows the English sentence, and the Japanese glosses are segmented to sit underneath their English chunks — so where the two orders differ, the Japanese side deliberately reads out of order. That is the teaching: the learner sees how English grammar maps onto what they already know.
+
+This is the same law that gives `cosa azul` the literal reading "thing blue" in a Spanish target — the known side is allowed to read wrong so the target order stays true. Applied to eng_for_jpn, English is the target, so English order wins:
+
+```
+Known:  英語を話したいです        (English-を speak-want)
+Target: I want to speak English
+
+CORRECT — chunks in English order, Japanese glosses reordered to follow:
+  "I want to speak" ← 話したい
+  " English"        ← 英語
+
+WRONG — chunks in Japanese order:
+  "English"         ← 英語
+  "I want to speak" ← 話したい
+```
+
+Concatenating the chunks' **target** text must rebuild the English sentence exactly, in order. Concatenating the **known** glosses will NOT rebuild the Japanese sentence in its own order, and must not be expected to.
+
+Ralph's "reconstructability is sacred" still holds in both languages — both sides rebuild from the same chunk set. What is fixed is the *sequence*, and the sequence is the target's.
 
 ---
 

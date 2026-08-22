@@ -86,10 +86,29 @@
 
           <!-- Total -->
           <div class="flex items-center justify-between bg-surface-2 border border-line rounded-lg px-4 py-2">
-            <span class="text-muted text-sm">Total Missing</span>
+            <span class="text-muted text-sm">Total Missing <span class="text-faint">— no audio exists, needs TTS</span></span>
             <span class="text-xl font-bold" :class="totalMissing > 0 ? 'text-amber-400' : 'text-emerald-400'">
               {{ totalMissing }}
             </span>
+          </div>
+
+          <!-- Unlinked — audio already rendered and confirmed in storage, slot
+               just isn't bound to it. Never TTS these; Generate links them free. -->
+          <div v-if="totalUnlinked > 0" class="flex items-center justify-between bg-blue-900/20 border border-blue-500/30 rounded-lg px-4 py-2">
+            <span class="text-sm text-blue-300">Unlinked <span class="text-faint">— audio exists in storage, just needs linking</span></span>
+            <span class="text-xl font-bold text-blue-400">{{ totalUnlinked }}</span>
+          </div>
+
+          <!-- Copyable — voiced for another course in this course's own voice. -->
+          <div v-if="copyable > 0" class="flex items-center justify-between bg-surface-2 border border-line rounded-lg px-4 py-2">
+            <span class="text-sm text-muted">Copyable <span class="text-faint">— same voice already rendered elsewhere, no TTS</span></span>
+            <span class="text-lg font-bold text-cyan-400">{{ copyable }}</span>
+          </div>
+
+          <!-- Storage-broken — the row promises audio the bucket doesn't have. -->
+          <div v-if="storageBroken > 0" class="flex items-center justify-between bg-red-900/20 border border-red-500/30 rounded-lg px-4 py-2">
+            <span class="text-sm text-red-300">Storage broken <span class="text-faint">— audio row points at a file that no longer exists</span></span>
+            <span class="text-lg font-bold text-red-400">{{ storageBroken }}</span>
           </div>
 
           <!-- Orphan LEGOs Warning -->
@@ -429,6 +448,14 @@ const isPlaying = ref({
 
 // Computed properties
 const totalMissing = computed(() => data.value?.totalMissing || 0)
+// Slots whose audio is already rendered and confirmed present in storage —
+// they were never missing, just unbound. Linking them costs nothing.
+const totalUnlinked = computed(() => data.value?.totalUnlinked || 0)
+// Text already voiced for another course in this course's own voice: /generate
+// binds these by copy, no TTS.
+const copyable = computed(() => data.value?.copyable || 0)
+// Bound slots whose course_audio row names an object the bucket doesn't have.
+const storageBroken = computed(() => data.value?.storageBroken || 0)
 const releaseTarget = computed(() => data.value?.releaseTarget || 300)
 
 // Phrase missing counts - from phase8 /plan (single source of truth)

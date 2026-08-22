@@ -62,7 +62,7 @@ const COURSES = ['cym_n_for_eng', 'cym_s_for_eng']
       const final = await finalizeRecordingPlan({
         plan, sentences, voiceId: v.voiceId,
         acceptVoiceIds: new Set([v.voiceId, ...(aliases[v.voiceId] || [])]),
-        fetchAudioRows: async (ids) => (await db.from('course_audio').select('id,origin,voice_id').in('id', ids)).data || [],
+        fetchAudioRows: async (ids) => (await db.from('course_audio').select('id,origin,voice_id,duration_ms,file_size_bytes').in('id', ids)).data || [],
       })
       const bad = {
         englishNotCanonical: [], oldEnglish: [], welshMismatched: [], emptyLine: [],

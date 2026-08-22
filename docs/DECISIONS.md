@@ -515,6 +515,114 @@ under a live dashboard is a bigger blast radius than a unit-file line).
 **Search width:** visible-options
 **Decided by:** agent (reversible ops change, no spend)
 
+## 2026-08-05 — tail-repair flag mode becomes the DEFAULT, not an env var somebody has to remember
+
+**Move:** flipped `TAIL_REPAIR_MODE`'s default in `services/audio-processor.cjs` from `'repair'`
+to `'flag'`, added a load-time log line naming the active mode, and made `tools/declick-tail.cjs`
+opt itself back into `'repair'` before it loads the module. `TAIL_REPAIR_MODE=repair` remains the
+explicit opt-back-in.
+**Better:** the measured case against repair-mode is settled (`d5ad9f2c`, and the memo it cites):
+detector precision by ear 9%, 83% of flags vanish under a padding test that cannot remove a real
+click, 16/20 fresh TTS renders trip it, and the repair itself removes trailing words — whisper
+final-word retention 0.52 for clips bearing its fingerprint vs 0.93 for the rest, p=0.00001. The
+defect it chases is ~42x rarer than the one it causes. When the evidence says a behaviour is
+wrong, the wrong behaviour should not be what you get by doing nothing. Concretely: `d5ad9f2c`
+shipped flag mode default-off, activated by an environment variable set on the render service.
+watson-1's phase8 had `TAIL_REPAIR_MODE=flag`, but only in live host config that no artifact
+records: a hand-edited systemd *user* unit at `~/.config/systemd/user/popty-phase8-audio.service`
+plus a drop-in `…service.d/tail-repair-mode.conf`. It is in no committed file — the repo's own
+`ops/systemd/popty-phase8-audio.service` carries neither the variable nor, as it turns out, the
+right `WorkingDirectory` (repo says `ssi-dashboard-v7-clean`; the live unit runs the service from
+`ssi-dashboard-v7-clean-prod`). The Camberley Mac, which also renders and publishes production
+audio, had none of it. So the fix protected exactly one machine, by hand, invisibly, via config
+that had already drifted from the version-controlled copy.
+**Simpler:** one constant instead of per-machine environment archaeology on every host that ever
+renders audio. Reading `/proc/<pid>/environ` to find out whether a render service is mutating
+audio is not a thing anyone should have to do; the startup log line replaces it.
+**Cheaper (total):** nothing to set, nothing to forget, and no second failure mode where the code
+deployed but the variable did not. That failure mode was live: Camberley's `*/15` deploy cron
+pulls `main` and restarts, so it would have taken the flag-mode CODE and carried on rendering in
+repair mode indefinitely, because a cron cannot carry a hand-set environment variable. With the
+default flipped, that same cron completes the fix with no action from anyone.
+**Searched & rejected:** committing `Environment=TAIL_REPAIR_MODE=flag` into the systemd unit and
+whatever pm2 config Camberley uses (rejected — it fixes the two hosts we currently know about and
+leaves the next one to be discovered the same expensive way; it also needs `pm2 restart all
+--update-env`, and the dashboard's own `/api/admin/git-pull` restarts *without* `--update-env`, so
+the deploy path we have would land the config and not apply it). Reaching Camberley over SSH to
+set it live (rejected by Tom — the deploy path is the route, and a live setting no artifact
+records is the problem, not the solution). Removing `repairTailDefect` outright (rejected — the
+detector's *reporting* is still wanted, `declick-tail.cjs` is a legitimate targeted repair tool,
+and deleting the code would throw away the escape hatch along with the bug).
+**Blast radius checked:** `repairTailDefect` has exactly two callers — `phase8-audio-v13.cjs:945`
+(the automatic gate, which is precisely what should stop mutating) and `tools/declick-tail.cjs`
+(human-invoked, dry-by-default, explicit id list, whisper + amputation guards), which now opts back
+in so it still repairs. Flag mode returns `action:'held'`, which every call site already treats as
+"shipped untouched".
+**Search width:** visible-options
+**Decided by:** agent (reversible, no spend; overrulable in one sentence — revert the default)
+
+## 2026-08-05 — course-wide missing clips live on the audio-preview page
+
+**Move:** the whole course's missing clips are now one server-computed list
+(`GET /api/production/:course/audio-preview/missing-clips`) rendered on the audio-preview page,
+next to the pod-slot MISSING scan — rather than a dedicated view, and rather than a smarter
+Script Viewer filter. Tom's ask was to stop having to "wade through the script view"; Script
+Viewer's "Missing audio only" toggle can only ever filter the 20 LEGOs it has loaded
+(`ScriptViewer.vue` `journeyPageSize = 20`, confirmed against the code and the live API).
+
+**Better:** one number a person can act on — fra_for_eng: 1,459 clips the learner cannot hear
+across 963 of 1,529 rounds — instead of a per-page filter that can never state a course total.
+**Simpler:** one audio-health surface, not a new destination to remember; and the gap test is
+the SAME `hasAudio` the Script Viewer filter uses (learning-script-generator), so the two
+surfaces cannot disagree.
+**Cheaper (total):** no new data path — it reuses the journey generator the journey-search
+endpoint already runs whole-course, and no new database objects. ~8s cold per course, cached
+60s, on a page that is opened deliberately.
+
+**Searched & rejected:**
+- Dedicated "missing audio" view — rejected on simpler: a second place to look for the same
+  question the audio-preview page already answers for pods.
+- Paginate the Script Viewer filter server-side — rejected on better: it fixes the paging and
+  still never produces a total, which is the thing Tom asked for.
+- Direct SQL count of `course_practice_phrases` with null audio — rejected on better: counts
+  rows the learner never plays and misses LEGO intro/debut gaps entirely; kept instead as the
+  independent CROSS-CHECK, and the delta is printed on the page rather than hidden.
+
+**Search width:** visible-options
+**Decided by:** agent (taste call on placement, per the brief's "take that call yourself")
+
+---
+
+## 2026-08-05 — "Recently rendered" becomes a real window; the listening page opens on the gate
+
+**Decision:** make the audio-preview `recent` filter an actual 7-day predicate, default the page
+to "Rendered under the gate", and print how much of a mixed filter predates the gate.
+
+**Why:** Tom reported the gate as working ("rendered under the gate in the French course is
+basically excellent") but "when I played recently rendered I got a whole load of bad ones".
+The cause was in `applyFilter`: `recent` applied NO predicate at all, so "Recently rendered" was
+byte-identical to "All". Newest-first paging hides that; `/sample` does not — it draws uniformly
+over the filtered set, and 47,876 of fra_for_eng's 49,098 clips (97.5%) predate the gate. The
+label promised the newest renders and the button served the entire pre-gate history.
+
+**Better:** the page can no longer make a claim the query does not back, and the first thing a
+listener hears is the set the gate actually covers.
+**Simpler:** one predicate added, one default flipped — the per-clip pre-gate badge already
+existed, so nothing new had to be invented to mark provenance.
+**Cheaper (total):** one extra head-count per request, only on the mixed filters; no schema
+change, no re-render, no TTS.
+
+**Searched & rejected:**
+- Delete the `recent` tab (two tabs: gated / all) — rejected on better: "what did we just
+  render" is a real question Tom asks, and newest-first over the whole course is not an answer.
+- Persist a per-clip veracity verdict so `gated` becomes a verdict lookup rather than a time
+  window — genuinely better, and NOT rejected: it is the real fix for the residual dishonesty
+  that a gate-era clip may have been *unchecked*, and for render paths that write `course_audio`
+  without passing through the gate at all. Out of scope for a UI honesty fix; carried as the
+  next move.
+
+**Search width:** visible-options
+**Decided by:** agent
 ## 2026-08-05 — Make-before-break written into audio operations doctrine
 
 **Move:** added an explicit ordering rule — generate the replacement, verify it, swap links
@@ -538,6 +646,70 @@ right thing and needed no fix.
 **Search width:** visible-options
 **Decided by:** Tom (founder ruling, 2026-08-05)
 
+## 2026-08-05 — Deploy gets a Repair fallback for jammed checkouts
+
+**Decision:** when a machine's normal Deploy fails, the Deploy UI offers **Repair**, which
+force-resets that machine's checkout to `origin/main` and restarts services — behind four
+guardrails: fallback-only (single-use token issued by the failed deploy; no token → 409),
+explicit confirm (`confirm:true` or 400), a verified safety snapshot before anything is
+touched (abort if it can't be made), and a deploy-history audit trail.
+**Move:** `services/deploy-repair.cjs` + 9 tests, `POST /api/deploy/repair` and
+`GET /api/deploy/history` in the orchestrator (proxied by production-api), Repair button +
+confirm panel in `EnvironmentSwitcher.vue`. Written up in `docs/deploy-repair-2026-08-05.md`.
+**Better:** Camberley's Deploy failed five times today with nobody at the Mac; the repair path
+existed only as a shell command on a machine no one could reach. Now the app can do it.
+**Simpler:** one module, one endpoint, one button — reusing the existing deploy restart path
+rather than a second deploy mechanism. No new service, no scripts to remember.
+**Cheaper (total):** no running cost; it removes the "someone has to go to the Mac" trip, which
+is the expensive part. Snapshots are bounded (a ref, a bundle, a tarball per repair) and the
+history log self-trims at 500 rows.
+**Searched & rejected:** (a) always force-reset on deploy — cheaper to build, but silently
+destroys local work and makes every deploy a loaded gun; (b) an ops script + docs — no cost, but
+it needs a shell on the jammed machine, which is exactly what was missing; (c) auto-repair on
+failure — removes the human, and a hard reset on a production machine must never be automatic.
+**Search width:** visible-options
+**Decided by:** Tom (sign-off, 2026-08-05: "Yes. Build the repair option.")
+
+## 2026-08-05 — No course reaches learners without a human play-through
+
+**Decision:** a manual approval gate, per course, blocking promotion to learner-visible
+(`new_app_status IN ('live','beta')`) until a human has played through the first **X rounds**
+in the REAL learning app and signed each one off. X is stored per course, seeded 100 for paid
+and 20 for free/community. Sampling remains fine for the body of a course; the first X rounds
+are not sampleable. All 143 existing courses start honestly **unpassed** — nothing
+grandfathered, nothing backfilled, no live course's status touched.
+**Move:** `ops/sql/20260805-course-qa-gate.sql` (five tables, five derived views, applied live),
+`services/course-qa-gate.cjs`, `services/api/course-qa-gate-routes.cjs`, the block in
+`POST /api/production/:courseCode/status`, plus `CourseQAGate.vue` (the play-through worklist),
+`QAGateEstate.vue` (the retrofit's priority list) and status badges in Production Overview and
+Script View.
+**Better:** Tom played ten minutes of live `deu_for_eng` and found it "an unmitigated disaster".
+Two failures caused it and both are now structurally impossible rather than merely discouraged.
+(1) An agent overruled six real detector flags as "transcription artifacts";
+`audio_clip_flags.resolution` now has exactly two values — `cleared_by_human` and `replaced` —
+so there is no column an automated re-judgement can write to. (2) Nobody had ever listened.
+The gate makes "a human played it and signed it off" a first-class, queryable fact.
+**Simpler:** cycle and round verification status are VIEWS, never stored, so they cannot drift
+from the clips they describe. Invalidation is arithmetic, not a hook: clip sign-off keys on
+`(audio_id, audio_revision)` and round sign-off stores an md5 over every `(audio_id, revision)`
+in the round, so accepting an audio repair moves the fingerprint and the sign-off goes stale on
+its own. Nothing was added to `audio-repair-core.cjs` — a coupling that has to fire is one that
+can fail to fire. A round is a LEGO and cycle keys are byte-identical to the ids the learner API
+emits, so no new vocabulary was invented and no "seed position" is named.
+**Cheaper (total):** no running cost. One 40ms query decides a course's gate; the estate view
+covers 143 courses / 86,733 rounds in well under a second (the exact per-round view timed out at
+that width, so the estate uses a conservative course-level staleness test that under-reports and
+never over-reports). The real cost is human listening time, and Part 3 exists to divide it — a
+partial gist exclusion constraint makes two people being handed the same rounds impossible.
+**Searched & rejected:** (a) check every clip — Tom explicitly ruled sampling acceptable for the
+body of a course, and it would make the gate undeliverable; (b) trust an automated audio check —
+no check here has a measured miss rate against human-labelled ground truth, so ordering the
+queue for human ears is the only job one may legitimately hold; (c) grandfather the 78 live
+courses as passed — it would make the gate a lie on the day it shipped; (d) hook invalidation
+into the repair flow's accept path — more code, more coupling, and it can silently not fire.
+**Search width:** visible-options
+**Decided by:** Tom (ruling, 2026-08-05: "No course should EVER go out to learners unless it has
+passed a manual approval gate" / "we MUST manually play through the first X ROUNDS").
 ## 2026-08-05 — delete tail-repair, keep read-only flagging
 
 **Move:** removed `repairTailDefect`, `verifyTrimKeepsText`, the `TAIL_REPAIR_MODE` switch and
@@ -680,6 +852,37 @@ recording more complicated makes community courses harder — "If we are making 
 complicated to even get the recordings done, it's going to be harder for people to do community
 courses, isn't it?"
 
+## 2026-08-06 — a phrase that IS the LEGO never counts
+
+**Move:** the course generator was meeting the per-LEGO phrase floor (3+ BUILD / 5+ USE) with a
+copy of the LEGO's own text — 20-32% of rows in generated courses, vs 0.1% in hand-built Welsh.
+The floor now excludes bare-LEGO phrases and every course-builder write path drops them, so the
+floor can only be met by real practice. `generateBuildupPhrases` no longer emits the LEGO itself
+as a build row. Code fix only — the 4,172 known existing rows are untouched, a separate content
+call.
+
+**Better:** the floor now measures what it claims to. A bare-LEGO row was never played anyway —
+the round generator renders intro and debut from `course_legos` and claims that phrase id
+(`learning-script-generator.cjs`: "the debut IS the bare LEGO"), so the rows inflated counts and
+audio backlogs while teaching nothing. Same rule ralph-methodology.md already states for BUILD.
+**Simpler:** one predicate (`isBareLegoPhrase`) in the pure-function library the gate and every
+write path already import; the counting rule and the writing rule are the same line of code.
+**Cheaper (total):** removes rows from future courses — fewer phrases to store, to decompose, and
+to voice at TTS cost. No migration, no regeneration, no new service.
+
+**Searched & rejected:**
+- Retroactively delete the existing bare rows — out of scope by the brief and a content call, not
+  a tool call; deleting rows also drags audio behind it (make-before-break).
+- Let the generator auto-synthesise a replacement phrase to keep the count — failed *better*: a
+  machine-written filler phrase is the same padding wearing a better disguise. Rejecting with a
+  named reason puts the work back on the author, which is where phrase quality lives.
+- Hard-reject a first-row bare LEGO in `checkBuildRecombination` (it already hard-rejects one in
+  rows 2+, blessing row 1 as a 'debut-row') — failed *simpler*: it would reject otherwise-good
+  seeds for a row we can simply not count and not write. The count is the lever; the row is noise.
+
+**Search width:** visible-options
+**Decided by:** agent — a tool/process bug against a rule already written down, not a content
+judgement.
 ## 2026-08-06 — TTS spend: small sample run first, always
 
 **Move:** the standing "never generate TTS without a plan and explicit approval" gate is replaced,
@@ -738,6 +941,212 @@ owns a service during an incident.
 **Decided by:** agent — Tom's brief specified the migration; the watchdog line and the empty
 `dump.pm2` force-save are the agent's calls, both reversible.
 
+## 2026-08-11 — merge and deploy the recorder review flow before Catrin's first session
+
+**Move:** merged four pieces of unmerged recorder work into `main` and deployed them —
+the flag-then-re-record-only-the-flagged review pass
+(`fix/autocue-reject-flag-2026-08-11`, including the e2e spec that drives flag → re-record
+→ supersede through the real app), removal of the fake `Math.random()` confidence badge and
+its ID-derived waveform (`fix/autocue-remove-fake-confidence-2026-08-11`), per-LEGO chunk
+playback on the review card (`feat/autocue-chunk-review-playback-2026-08-11`), and the
+draft-badge wording fix cherry-picked from `fix/recorder-draft-badge-name-2026-08-11`.
+Tom ruled: merge it. Catrin starts her first recording session today.
+
+**Better:** the review screen's Redo button previously coloured a card and changed nothing —
+a recorder could flag takes all session and none of it meant anything, while a badge that was
+only a 1KB file-size check told them the app had listened and approved. Both are now honest:
+flagging drives a real second pass, and the screen says nothing about quality it cannot observe.
+**Simpler:** three branches, one shared set of files, resolved to one lineage rather than left
+as three forks of `SessionReview.vue`/`SegmentCard.vue`/`useAutocueState.js` diverging further
+each day. The fake-confidence removal deleted 246 lines against 166 added.
+**Cheaper (total):** one bad LEGO now costs one chunk of re-reading instead of a whole phrase,
+and a flagged-only second pass replaces the existing "re-read every line from the top" walk —
+recorder time is the scarce input here. No new services, no schema change: the new
+`chunk_boundaries_ms` witness rides inside the `quality_notes` JSON blob that
+`buildProvenanceContext` already serialises.
+
+**Searched & rejected:**
+- Deploy the frontend only, leave the API on the old commit — fails Better: the new SPA sends
+  `chunkBoundariesMs` in the upload metadata and only the new `production-api` strips it before
+  the S3 PUT, so an old backend risks 400ing uploads. Frontend and backend were moved together.
+- Merge the badge branch wholesale — fails Cheaper: that branch carries ten unrelated pdc/ell/pod
+  commits. Cherry-picked the single one-line commit instead.
+- Also merge `feat/autocue-record-everything` and `feat/autocue-concat-listening-test` while in
+  there — out of scope for today's ask, and untested against this merge. Left unmerged.
+
+**Search width:** visible-options
+**Decided by:** Tom — "merge it", ahead of Catrin's first session on 2026-08-11.
+
+## 2026-08-11 — Insert-path capitals decided by evidence, not a word list
+
+**Move:** the course-builder insert path no longer lowercases the first word of a LEGO or phrase
+unless the submission itself proves the capital is accidental. Casing is decided per side from
+the author's own writing — a word capitalised mid-sentence anywhere in the submission is never
+lowercased; a word written lowercase anywhere may be lowercased at position 0; with no evidence
+the author's capital stands. The old hard-coded `KEEP_CAP_WORDS` list survives only as a
+backstop and never needs to grow.
+
+**Better:** it stops producing wrong text. Pennsylvania Dutch and German capitalise nouns, so
+"Deitsch schwetze" was being stored as "deitsch schwetze" and "I'm waiting" as "i'm waiting";
+the evidence rule protects every proper noun and every German-style noun in every language pair,
+including ones nobody has thought of yet.
+**Simpler:** one rule replaces a 30-entry list of language names that could never be complete —
+and the leading-capital check now reads Unicode capitals (É, Ä, Ц), not just A–Z.
+**Cheaper (total):** no per-language maintenance, no new lookup, no DB read — the evidence is
+the submission already in memory; zero added latency.
+
+**Searched & rejected:**
+- Add 'Deitsch' and the I-contractions to the allowlist — fails Cheaper: the list grows forever
+  and the next language's nouns break again.
+- Skip lowercasing for noun-capitalising languages by language code — fails Simpler: swaps a word
+  list for a language-code list, and pdc was exactly the code that would have been missing.
+- Drop the lowercasing entirely — fails Better: the step has a real job, undoing sentence-case an
+  author put on a fragment.
+
+**Search width:** component-redesign
+**Decided by:** agent (bug reported by Kai on pdc_for_eng; confirmed present in deu_for_eng)
+
+## 2026-08-12 — stale phrase glosses fixed by content, not version stamp
+
+**Move:** Deborah's eus_for_eng report ("the English gloss under 'hitz bat' is wrong") traced to
+frozen `course_practice_phrases.decomposition` rows, and fixed by a new gated tool
+(`tools/course-optimization/refresh-stale-phrase-decompositions.cjs`) that detects drift by
+COMPARING EACH BLOCK'S STORED GLOSS TO THE LEGO IT NAMES, then recomputes with `decomposeAnchored`.
+Applied to eus_for_eng: 447 phrases rewritten, 543 → 46 stale blocks, residual reconciles exactly
+to the 44 rows the tool deliberately declined.
+
+The decomposition is computed once at phrase-write time and each block is bound to a lego_id SLOT
+carrying the gloss that slot held then. Re-author or re-index the LEGO and the frozen gloss stays,
+now labelling a different word — and the player renders those stored strings verbatim
+(`LearningPlayer.vue` "Strategy 0 (authoritative)"), so it reaches the learner.
+
+**Better:** the existing detector (`/api/admin/decomposition-audit`) keys off
+`decomposition_course_version < courses.version`; only 29% of decomposed phrases estate-wide carry
+that stamp and a NULL fails the `<` test, so it saw 49 stale eus rows where content comparison sees
+502. Content keying cannot be defeated by a missing stamp.
+**Simpler:** no new decomposer — it calls the one the build path already uses, and unlike the
+version-keyed backfill it uses `decomposeAnchored` rather than plain `decomposeText`, so a lost
+salient anchor is restored rather than re-lost.
+**Cheaper (total):** one query per course, writes only the `decomposition` column (no phrase text,
+no LEGO, no audio row — verified: eus audio links unchanged at 6449/6450), and the applied log
+keeps every pre-write value so `--undo` is exact. No TTS, no regeneration, no spend.
+
+**Searched & rejected:**
+- Stamp every phrase and let the existing version-keyed backfill run — fails Better: a stamp
+  written now says "current" about a decomposition computed against long-gone LEGOs.
+- Drop the stored decomposition and let the player's runtime fallback decompose — fails Better:
+  the runtime path is the one the stored tiling was introduced to replace.
+- Hand-edit the reported row — fails Cheaper: 502 eus phrases and ~22k blocks estate-wide behind it.
+
+**Search width:** component-redesign
+**Decided by:** agent
+
+
+## 2026-08-12 — Decompositions preserve target word order
+
+**Move:** recorded Tom's ruling that a phrase decomposition always follows **target-language**
+word order — the chunk sequence rebuilds the target sentence exactly, and the known-side glosses
+are segmented to sit underneath their target chunks, reading deliberately out of order where the
+two languages diverge (his example: `cosa azul` maps literally as "thing blue"). Applied to
+`eng_for_X`, where English is the target, this means the **English** side is decomposed, not the
+known side. Corrected the two briefs that said otherwise: `.claude/commands/eng-for-jpn-build.md`
+told builders "LEGOs decompose the Japanese known text", and
+`.claude/commands/layered-decomposition-brief.md` was headed `eng_for_jpn` while every LEGO in it
+decomposed the Japanese side — it is a `jpn_for_eng` brief and is now labelled as one.
+
+**Better:** the learner sees how target grammar maps onto what they already know, which is the
+whole point of showing a breakdown; a known-ordered breakdown teaches nothing about the target.
+**Simpler:** one rule for all 178 courses, and it is the rule the writer already implements —
+`decomposeText(p.target_text, vocab)` in `services/phrase-decomposer.cjs` has always tiled the
+target. The briefs were the only place the other side was written down.
+**Cheaper (total):** no data migration and no re-render. Audited all 19 `eng_for_X` courses,
+193,201 stored decompositions: **zero** decompose the known side, so the ruling costs nothing to
+adopt (`scripts/engforx-decompose/audit-side.cjs`, 99.2–100% target-recomposing per course).
+
+**Searched & rejected:**
+- Rewrite the layered brief's Japanese examples into English-target ones — fails Cheaper: it
+  invents new worked content when the brief is already correct for `jpn_for_eng`; relabelling is
+  free and loses nothing.
+- Enforce target-order at the gate — fails Simpler: nothing violates it, so a gate would be a
+  check with no defects to catch. The real residue is stale drift, not wrong-side (below).
+
+**Search width:** visible-options
+**Decided by:** Tom — ruling given 2026-08-12; also relayed to job #389 (component-mapping editor)
+as "target-order-preserving display, segmentation-of-known-text as the edit model".
+
+## 2026-08-16 — Verifier agent approves drafted pod text for audio
+
+**Move:** implemented Tom's A-109 ruling — a human proofread of every line is rejected as policy;
+instead an agent independent of the translator judges each machine-written draft for
+"reasonableness", clean lines are marked approved to generate audio, and only the flagged tail
+reaches a human. One predicate (`services/pod-text-approval.cjs`) refuses the target track of any
+unapproved draft in `/generate-pods`, `/plan-pods` and `pod-bulk-migrate`'s in-process mode.
+
+**Better:** 4,852 drafted lines across 42 pods could be rendered by any unscoped bulk call; the
+gate makes that structurally impossible rather than a thing someone must remember, and blocked
+lines are reported as a number (`blocked_unapproved_target`) instead of silence.
+**Simpler:** one boolean condition in one pure, tested module, mirroring the existing voice gate
+next to it; approval is a single timestamp, so there is no second flag to disagree with it.
+**Cheaper (total):** the alternative — humans reading 4,852 lines — was never going to happen, and
+its non-happening was the blocker. The verifier cost 8 subscription CLI calls for 128 lines
+(~5 min), no metered API, no TTS. The gate adds one map lookup per queue item.
+
+**Searched & rejected:**
+- Human proofread of every line — Tom's own word: "lunacy". Fails Cheaper on the only cost that
+  matters here, attention, and it had already stalled the estate for ten days.
+- A boolean `approved_for_audio` column alongside a timestamp — fails Simpler: two sources of
+  truth that can disagree, for no gain over `approved_at IS NOT NULL`.
+- Gate only `/generate-pods` — fails Better: the estimate would promise clips the render refuses,
+  and `pod-bulk-migrate`'s DEFAULT in-process mode rebuilds the queue itself, so it would have
+  remained a full bypass on the bulk driver.
+- Gate the known (English) track too — fails Better: `known_text` was never drafted, so it would
+  block the English side of 4,852 lines to no purpose.
+- Trust a zero-flag verifier result — rejected as unproven; calibrated against 8 control lines
+  carrying 5 planted defects (5/5 caught, 0 false positives) before the result was believed.
+
+**Search width:** visible-options
+**Decided by:** Tom — ruling given 2026-08-16 on A-109, verbatim in
+`docs/pods/text-approval-policy-2026-08-16.md`.
+## 2026-08-16 — Voice pools carry a locale, and the Spanish pool says Manuel
+
+`app_config.pod_voice_pools` entries may now carry an optional `locale`, which `resolveCast` copies
+onto the cast voice; the `spa` pool now leads with xAI Manuel `yis75yfp` @ `es-ES` (male) and Azure
+Elvira @ `es-ES` (female), the cast Tom approved by ear on 2026-08-14. Before this, the approved
+cast lived only in `listening_pods.speakers` and any re-sync of `spa_for_eng` from its markdown
+would have recast Manuel back to Azure Alvaro, moving the fingerprint and self-invalidating Tom's
+own approval. Named in `docs/pods/spa-t17-cast-approval-2026-08-14.md` and again in the 2026-08-16
+A-109 re-check; measured here as 55 target seats that would have moved, now 0.
+
+**Better:** the pool and the approved reality agree, so the stomp is structurally impossible rather
+than merely unlikely; a malformed locale throws instead of being silently dropped. **Simpler:** the
+field the fingerprint already digests and phase8 already honours now exists in the one place casting
+reads from — `pod-recolour` already assumed pools could carry one, so this removes a discrepancy
+rather than adding a concept. **Cheaper (total):** no migration, no new table, no render; 144 of the
+146 pool entries carry no locale and cast byte-identically to before, verified by casting all 46
+pool keys under old and new code.
+
+**Searched & rejected:**
+- Reorder the pool to put Alvaro/Elvira first without a locale — failed *better*: it records a
+  different cast from the one Tom listened to (plain `es` is a different handle from `es-ES`).
+- Derive the locale in `resolveCast` from the voice id — failed *better*: it works for Azure and is
+  exactly wrong for xAI, where the tag IS the Iberian-vs-Mexican choice and must be the human's.
+- Rewrite the stored cast, or raise `POD_VOICES_PER_GENDER`, to make the known side match too —
+  failed *better*: both fake a passing acceptance test, and Tom's ruling the same day settled that
+  neither is wanted anyway ("in the re-casting to 2 voices for the PODS, there should only be one
+  voice per gender, right? this may well be different from the voices in the main course").
+
+**Amended the same day by that ruling.** One voice per gender per pod IS the design, and the pod
+pool is independent of main-course voices, so the 6 English voices in `spa_for_eng`'s stored cast
+are earlier casting leakage rather than something to preserve. Converging them to Tom's clone (male)
+and Olivia (female) is the intended end state, not a regression. The target side still pins Manuel @
+`es-ES` and Elvira exactly. Applying that convergence will legitimately move the fingerprint
+`29cc217afb5fa101` → `92ab0ed61dbc6741` and so requires a fresh approval — the gate working as
+designed. Not applied here: this pass wrote no cast.
+
+**Search width:** visible-options
+**Decided by:** Tom (the approach was his commission); the insertion order, the throw-on-malformed
+rule and the `pod-recast` explicit-beats-derived precedence are the agent's calls, all reversible —
+the apply log holds a full backup of the pool row.
 ## 2026-08-17 — TTS clips master without the compressor
 
 **Move:** phase8's `masterAudio` — the one mastering step every generated clip passes through —
@@ -816,3 +1225,50 @@ miscast the column exists to stop.
 the enumeration moved the question from *which tag* to *which column*)
 **Decided by:** agent — Tom's brief delegated the (a)/(b) choice explicitly and called it
 reversible. The casting rulings applied are Tom's own.
+
+## 2026-08-19 — publication is two nullable columns on the rows that already exist
+
+**Decision:** publishing learner-facing copy is a `published_at` / `published_by` stamp on the
+existing append-only version rows, and "the live text" is the row with the greatest non-null
+`published_at`. No publish table, no pointer row, no content copy, no status enum.
+
+**Better:** rollback falls out of the model rather than being built — stamping an older row
+makes it the newest published, so undo is the same click as publish and cannot lose anything.
+Every publish is attributable and every past state is reachable, because content is never
+copied, edited or deleted. Save stays exactly what it was: a draft that reaches nobody.
+**Simpler:** two nullable columns and one ordering rule, expressed once in
+`api/lib/copy-publish.js` and imported by both the editor endpoint and the learner endpoint —
+so the two surfaces cannot disagree about what a learner is reading. A pointer row would have
+been a second source of truth to keep consistent with the history it points into.
+**Cheaper (total):** nothing new to back up, migrate or reconcile; the store stays one table
+of plain text. The learner path costs one indexed read per edge-cache miss at
+`s-maxage=60` — and the alternative it replaces, a code deploy per wording change, costs a
+branch, a review and a release train for every comma.
+
+**Searched & rejected:**
+- A `published` boolean per row — rejected: publishing then has to unset the flag on the old
+  row, which is two writes that can half-fail, and the history of what was live when is gone.
+- A separate `htw_copy_published` pointer table — rejected: a second source of truth, and it
+  buys nothing the timestamp does not already give.
+- Copy the published content into a new row — rejected outright: it duplicates text, and it
+  makes "which version is this" unanswerable after two rollbacks.
+- Auto-publish on save (Tom raised it: *"we could just have the save auto-publish in the
+  app?"*) — rejected in the source conversation in favour of his own second option: autosave
+  stays the draft safety net, Publish is a separate button. A 2s autosave that reached
+  learners would put half-typed sentences in front of them.
+
+**A real bug the tests found:** a rollback clicked in the same millisecond as the publish it
+undoes ties on `published_at`, and the rollback target — being the *older* row — loses any
+id-based tie-break, silently leaving the wrong words live. Fixed by preventing the tie rather
+than resolving it: `nextPublishStamp()` makes every publish strictly later than the one it
+replaces.
+
+**Verification:** 30 unit tests over the rules and both endpoints, plus a probe against the
+real PostgREST on throwaway rows confirming that the rollback ordering and the
+`published_at is not null` filter behave as the test double does, and that an unpublished
+draft is unreachable through the public filter. 112/112 across the whole `api/` suite.
+
+**Search width:** four options enumerated above; the pointer-table option was the one to beat
+and lost on having a second source of truth.
+**Decided by:** agent — the brief pre-decided the column shape and called it reversible. The
+save-vs-publish split is Tom's own ruling of 2026-08-19.

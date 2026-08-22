@@ -37,9 +37,10 @@ const MEANS_ONLY = process.argv.includes('--means-only') // re-voice means from 
 const POD = require('./lib/pod-arg.cjs').parsePod(process.argv)
 const MODEL = process.env.BD_MODEL || 'opus'
 const ROLE = 'pod_explainer'
-// xAI officially supports these (per services/voice-discovery-service.cjs); use
-// xAI wherever the language is supported (known OR target), Azure only as fallback.
-const XAI_OFFICIAL = new Set(['en', 'es', 'fr', 'de', 'it', 'pt', 'nl', 'ru', 'zh', 'ja', 'ko', 'vi', 'hi', 'bn', 'ar', 'tr', 'pl'])
+// xAI officially supports these (tools/pod-voices-xai.json, via the shared
+// catalogue helper); use xAI wherever the language is supported (known OR
+// target), Azure only as fallback.
+const { XAI_OFFICIAL } = require('../services/shared/xai-catalogue.cjs')
 const TOM_CLONE = 'gfzdpspr5fdp' // Tom's cloned xAI voice — the teacher voice for the English "means" line
 if (!COURSE) { console.error('usage: breakdown-flat.cjs <course> [orders] [--dry] [--pod=pod-N]'); process.exit(1) }
 const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY)

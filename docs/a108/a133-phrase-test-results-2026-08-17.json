@@ -1,0 +1,2470 @@
+[
+  {
+    "key": "nld-noor-p1",
+    "voiceKey": "nld-noor",
+    "voice": "Noor",
+    "group": "Dutch",
+    "note": "xAI Dutch female \u2014 THE CLICKER (330 clips in nld_for_eng)",
+    "provider": "xai",
+    "voiceId": "247783ebdd51",
+    "phraseId": "p1",
+    "tail": "CONTROL \u2014 the clicker reference line, /t/ after a fricative",
+    "text": "Ik wil graag een glas bitter, alstublieft.",
+    "guard": {
+      "refused": null,
+      "trimmed": true,
+      "removedMs": 67,
+      "eosMs": 2851
+    },
+    "before": {
+      "durationMs": 3168,
+      "eosMs": 2856,
+      "postEosMs": 312,
+      "roomFloorDb": -64.9,
+      "impulses": [],
+      "lufs": -16.6
+    },
+    "after": {
+      "durationMs": 3101,
+      "eosMs": 2851,
+      "postEosMs": 250,
+      "roomFloorDb": -64.8,
+      "impulses": [],
+      "lufs": -16.5
+    },
+    "finalWord": {
+      "ok": true,
+      "unit": "alstublieft",
+      "scriptOk": true,
+      "scriptWord": "alstublieft",
+      "heardBefore": "Ik wil graag een glas bitter, alstublieft.",
+      "heardAfter": "Ik wil graag een glas bitter, alstublieft."
+    },
+    "deltaMs": 67
+  },
+  {
+    "key": "nld-noor-p2",
+    "voiceKey": "nld-noor",
+    "voice": "Noor",
+    "group": "Dutch",
+    "note": "xAI Dutch female \u2014 THE CLICKER (330 clips in nld_for_eng)",
+    "provider": "xai",
+    "voiceId": "247783ebdd51",
+    "phraseId": "p2",
+    "tail": "HARD \u2014 word-final voiceless plosive /p/, the burst the 40ms rule could mislabel",
+    "text": "Ik denk dat het beter is als we nu even stoppen.",
+    "guard": {
+      "refused": null,
+      "trimmed": true,
+      "removedMs": 569,
+      "eosMs": 2661
+    },
+    "before": {
+      "durationMs": 3480,
+      "eosMs": 2696,
+      "postEosMs": 784,
+      "roomFloorDb": -60.4,
+      "impulses": [
+        {
+          "startMs": 2917,
+          "peakDb": -27.9,
+          "overFloorDb": 32.5
+        },
+        {
+          "startMs": 3052,
+          "peakDb": -28.9,
+          "overFloorDb": 31.5
+        }
+      ],
+      "lufs": -17.3
+    },
+    "after": {
+      "durationMs": 2911,
+      "eosMs": 2696,
+      "postEosMs": 215,
+      "roomFloorDb": -60.8,
+      "impulses": [],
+      "lufs": -17.5
+    },
+    "finalWord": {
+      "ok": true,
+      "unit": "stoppen",
+      "scriptOk": true,
+      "scriptWord": "stoppen",
+      "heardBefore": "Ik denk dat het beter is als we nu even stoppen.",
+      "heardAfter": "Ik denk dat het beter is als we nu even stoppen."
+    },
+    "deltaMs": 569
+  },
+  {
+    "key": "nld-noor-p3",
+    "voiceKey": "nld-noor",
+    "voice": "Noor",
+    "group": "Dutch",
+    "note": "xAI Dutch female \u2014 THE CLICKER (330 clips in nld_for_eng)",
+    "provider": "xai",
+    "voiceId": "247783ebdd51",
+    "phraseId": "p3",
+    "tail": "HARD \u2014 final /s/ into a stop, sibilant trail",
+    "text": "Kun je me vertellen waar het station is, alsjeblieft?",
+    "guard": {
+      "refused": null,
+      "trimmed": false,
+      "removedMs": 0,
+      "eosMs": 2932
+    },
+    "before": {
+      "durationMs": 3096,
+      "eosMs": 2937,
+      "postEosMs": 159,
+      "roomFloorDb": -78.3,
+      "impulses": [],
+      "lufs": -16.5
+    },
+    "after": {
+      "durationMs": 3096,
+      "eosMs": 2937,
+      "postEosMs": 159,
+      "roomFloorDb": -78.3,
+      "impulses": [],
+      "lufs": -16.5
+    },
+    "finalWord": {
+      "ok": true,
+      "unit": "alsjeblieft",
+      "scriptOk": true,
+      "scriptWord": "alsjeblieft",
+      "heardBefore": "Kun je me vertellen waar het station is alsjeblieft?",
+      "heardAfter": "Kun je me vertellen waar het station is alsjeblieft?"
+    },
+    "deltaMs": 0
+  },
+  {
+    "key": "nld-noor-p4",
+    "voiceKey": "nld-noor",
+    "voice": "Noor",
+    "group": "Dutch",
+    "note": "xAI Dutch female \u2014 THE CLICKER (330 clips in nld_for_eng)",
+    "provider": "xai",
+    "voiceId": "247783ebdd51",
+    "phraseId": "p4",
+    "tail": "HARD \u2014 quiet unstressed final schwa, no consonant to mark the end",
+    "text": "Ik probeer dit nu al ongeveer drie maanden te leren.",
+    "guard": {
+      "refused": null,
+      "trimmed": true,
+      "removedMs": 612,
+      "eosMs": 2786
+    },
+    "before": {
+      "durationMs": 3648,
+      "eosMs": 2811,
+      "postEosMs": 837,
+      "roomFloorDb": -63.3,
+      "impulses": [
+        {
+          "startMs": 3167,
+          "peakDb": -28.8,
+          "overFloorDb": 34.5
+        },
+        {
+          "startMs": 3207,
+          "peakDb": -40.2,
+          "overFloorDb": 23.1
+        },
+        {
+          "startMs": 3287,
+          "peakDb": -31.2,
+          "overFloorDb": 32.1
+        }
+      ],
+      "lufs": -16.5
+    },
+    "after": {
+      "durationMs": 3036,
+      "eosMs": 2811,
+      "postEosMs": 225,
+      "roomFloorDb": -62.8,
+      "impulses": [],
+      "lufs": -16.5
+    },
+    "finalWord": {
+      "ok": true,
+      "unit": "leren",
+      "scriptOk": true,
+      "scriptWord": "leren",
+      "heardBefore": "Ik probeer dit nu al ongeveer drie maanden te leren.",
+      "heardAfter": "Ik probeer dit nu al ongeveer drie maanden te leren."
+    },
+    "deltaMs": 612
+  },
+  {
+    "key": "nld-noor-p5",
+    "voiceKey": "nld-noor",
+    "voice": "Noor",
+    "group": "Dutch",
+    "note": "xAI Dutch female \u2014 THE CLICKER (330 clips in nld_for_eng)",
+    "provider": "xai",
+    "voiceId": "247783ebdd51",
+    "phraseId": "p5",
+    "tail": "HARD \u2014 Dutch final devoicing, /d/ surfacing as a weak /t/",
+    "text": "Dat had ik echt nooit tegen hem gezegd.",
+    "guard": {
+      "refused": null,
+      "trimmed": true,
+      "removedMs": 456,
+      "eosMs": 2150
+    },
+    "before": {
+      "durationMs": 2856,
+      "eosMs": 2591,
+      "postEosMs": 265,
+      "roomFloorDb": -63.8,
+      "impulses": [],
+      "lufs": -16.6
+    },
+    "after": {
+      "durationMs": 2400,
+      "eosMs": 2155,
+      "postEosMs": 245,
+      "roomFloorDb": -62.8,
+      "impulses": [],
+      "lufs": -16.5
+    },
+    "finalWord": {
+      "ok": true,
+      "unit": "gezegd",
+      "scriptOk": true,
+      "scriptWord": "gezegd",
+      "heardBefore": "Dat had ik echt nooit tegen hem gezegd.",
+      "heardAfter": "Dat had ik echt nooit tegen hem gezegd."
+    },
+    "deltaMs": 456
+  },
+  {
+    "key": "nld-femke-p1",
+    "voiceKey": "nld-femke",
+    "voice": "Femke",
+    "group": "Dutch",
+    "note": "xAI Dutch female (159 clips)",
+    "provider": "xai",
+    "voiceId": "58d27475085e",
+    "phraseId": "p1",
+    "tail": "CONTROL \u2014 the clicker reference line, /t/ after a fricative",
+    "text": "Ik wil graag een glas bitter, alstublieft.",
+    "guard": {
+      "refused": null,
+      "trimmed": false,
+      "removedMs": 0,
+      "eosMs": 2536
+    },
+    "before": {
+      "durationMs": 2688,
+      "eosMs": 2541,
+      "postEosMs": 147,
+      "roomFloorDb": -70.3,
+      "impulses": [],
+      "lufs": -17.4
+    },
+    "after": {
+      "durationMs": 2688,
+      "eosMs": 2541,
+      "postEosMs": 147,
+      "roomFloorDb": -70.3,
+      "impulses": [],
+      "lufs": -17.4
+    },
+    "finalWord": {
+      "ok": true,
+      "unit": "alstublieft",
+      "scriptOk": true,
+      "scriptWord": "alstublieft",
+      "heardBefore": "Ik wil graag een glas bitter, alstublieft.",
+      "heardAfter": "Ik wil graag een glas bitter, alstublieft."
+    },
+    "deltaMs": 0
+  },
+  {
+    "key": "nld-femke-p2",
+    "voiceKey": "nld-femke",
+    "voice": "Femke",
+    "group": "Dutch",
+    "note": "xAI Dutch female (159 clips)",
+    "provider": "xai",
+    "voiceId": "58d27475085e",
+    "phraseId": "p2",
+    "tail": "HARD \u2014 word-final voiceless plosive /p/, the burst the 40ms rule could mislabel",
+    "text": "Ik denk dat het beter is als we nu even stoppen.",
+    "guard": {
+      "refused": null,
+      "trimmed": false,
+      "removedMs": 0,
+      "eosMs": 2666
+    },
+    "before": {
+      "durationMs": 2856,
+      "eosMs": 2671,
+      "postEosMs": 185,
+      "roomFloorDb": -64.3,
+      "impulses": [],
+      "lufs": -16.6
+    },
+    "after": {
+      "durationMs": 2856,
+      "eosMs": 2671,
+      "postEosMs": 185,
+      "roomFloorDb": -64.3,
+      "impulses": [],
+      "lufs": -16.6
+    },
+    "finalWord": {
+      "ok": true,
+      "unit": "stoppen",
+      "scriptOk": true,
+      "scriptWord": "stoppen",
+      "heardBefore": "Ik denk dat het beter is als we nu even stoppen.",
+      "heardAfter": "Ik denk dat het beter is als we nu even stoppen."
+    },
+    "deltaMs": 0
+  },
+  {
+    "key": "nld-femke-p3",
+    "voiceKey": "nld-femke",
+    "voice": "Femke",
+    "group": "Dutch",
+    "note": "xAI Dutch female (159 clips)",
+    "provider": "xai",
+    "voiceId": "58d27475085e",
+    "phraseId": "p3",
+    "tail": "HARD \u2014 final /s/ into a stop, sibilant trail",
+    "text": "Kun je me vertellen waar het station is, alsjeblieft?",
+    "guard": {
+      "refused": null,
+      "trimmed": false,
+      "removedMs": 0,
+      "eosMs": 2741
+    },
+    "before": {
+      "durationMs": 2856,
+      "eosMs": 2741,
+      "postEosMs": 115,
+      "roomFloorDb": -88.4,
+      "impulses": [],
+      "lufs": -16.9
+    },
+    "after": {
+      "durationMs": 2856,
+      "eosMs": 2741,
+      "postEosMs": 115,
+      "roomFloorDb": -88.4,
+      "impulses": [],
+      "lufs": -16.9
+    },
+    "finalWord": {
+      "ok": true,
+      "unit": "alsjeblieft",
+      "scriptOk": true,
+      "scriptWord": "alsjeblieft",
+      "heardBefore": "Kun je me vertellen waar het station is alsjeblieft?",
+      "heardAfter": "Kun je me vertellen waar het station is alsjeblieft?"
+    },
+    "deltaMs": 0
+  },
+  {
+    "key": "nld-femke-p4",
+    "voiceKey": "nld-femke",
+    "voice": "Femke",
+    "group": "Dutch",
+    "note": "xAI Dutch female (159 clips)",
+    "provider": "xai",
+    "voiceId": "58d27475085e",
+    "phraseId": "p4",
+    "tail": "HARD \u2014 quiet unstressed final schwa, no consonant to mark the end",
+    "text": "Ik probeer dit nu al ongeveer drie maanden te leren.",
+    "guard": {
+      "refused": null,
+      "trimmed": true,
+      "removedMs": 35,
+      "eosMs": 2811
+    },
+    "before": {
+      "durationMs": 3096,
+      "eosMs": 2811,
+      "postEosMs": 285,
+      "roomFloorDb": -63.3,
+      "impulses": [],
+      "lufs": -16.5
+    },
+    "after": {
+      "durationMs": 3061,
+      "eosMs": 2811,
+      "postEosMs": 250,
+      "roomFloorDb": -63.3,
+      "impulses": [],
+      "lufs": -16.5
+    },
+    "finalWord": {
+      "ok": true,
+      "unit": "leren",
+      "scriptOk": true,
+      "scriptWord": "leren",
+      "heardBefore": "Ik probeer dit nu al ongeveer drie maanden te leren.",
+      "heardAfter": "Ik probeer dit nu al ongeveer drie maanden te leren."
+    },
+    "deltaMs": 35
+  },
+  {
+    "key": "nld-femke-p5",
+    "voiceKey": "nld-femke",
+    "voice": "Femke",
+    "group": "Dutch",
+    "note": "xAI Dutch female (159 clips)",
+    "provider": "xai",
+    "voiceId": "58d27475085e",
+    "phraseId": "p5",
+    "tail": "HARD \u2014 Dutch final devoicing, /d/ surfacing as a weak /t/",
+    "text": "Dat had ik echt nooit tegen hem gezegd.",
+    "guard": {
+      "refused": null,
+      "trimmed": false,
+      "removedMs": 0,
+      "eosMs": 2225
+    },
+    "before": {
+      "durationMs": 2376,
+      "eosMs": 2225,
+      "postEosMs": 151,
+      "roomFloorDb": -66.1,
+      "impulses": [],
+      "lufs": -16.6
+    },
+    "after": {
+      "durationMs": 2376,
+      "eosMs": 2225,
+      "postEosMs": 151,
+      "roomFloorDb": -66.1,
+      "impulses": [],
+      "lufs": -16.6
+    },
+    "finalWord": {
+      "ok": true,
+      "unit": "gezegd",
+      "scriptOk": true,
+      "scriptWord": "gezegd",
+      "heardBefore": "Dat had ik echt nooit tegen hem gezegd.",
+      "heardAfter": "Dat had ik echt nooit tegen hem gezegd."
+    },
+    "deltaMs": 0
+  },
+  {
+    "key": "nld-thijs-p1",
+    "voiceKey": "nld-thijs",
+    "voice": "Thijs",
+    "group": "Dutch",
+    "note": "xAI Dutch male (285 clips)",
+    "provider": "xai",
+    "voiceId": "a13662ba951c",
+    "phraseId": "p1",
+    "tail": "CONTROL \u2014 the clicker reference line, /t/ after a fricative",
+    "text": "Ik wil graag een glas bitter, alstublieft.",
+    "guard": {
+      "refused": null,
+      "trimmed": true,
+      "removedMs": 96,
+      "eosMs": 2270
+    },
+    "before": {
+      "durationMs": 2616,
+      "eosMs": 2280,
+      "postEosMs": 336,
+      "roomFloorDb": -59.5,
+      "impulses": [
+        {
+          "startMs": 2516,
+          "peakDb": -31.3,
+          "overFloorDb": 28.2
+        }
+      ],
+      "lufs": -19.2
+    },
+    "after": {
+      "durationMs": 2520,
+      "eosMs": 2280,
+      "postEosMs": 240,
+      "roomFloorDb": -59.2,
+      "impulses": [],
+      "lufs": -19.2
+    },
+    "finalWord": {
+      "ok": true,
+      "unit": "alsjeblieft",
+      "scriptOk": false,
+      "scriptWord": "alstublieft",
+      "heardBefore": "Ik wil graag een glas bitter, alsjeblieft.",
+      "heardAfter": "Ik wil graag een glas bitter, alsjeblieft."
+    },
+    "deltaMs": 96
+  },
+  {
+    "key": "nld-thijs-p2",
+    "voiceKey": "nld-thijs",
+    "voice": "Thijs",
+    "group": "Dutch",
+    "note": "xAI Dutch male (285 clips)",
+    "provider": "xai",
+    "voiceId": "a13662ba951c",
+    "phraseId": "p2",
+    "tail": "HARD \u2014 word-final voiceless plosive /p/, the burst the 40ms rule could mislabel",
+    "text": "Ik denk dat het beter is als we nu even stoppen.",
+    "guard": {
+      "refused": null,
+      "trimmed": false,
+      "removedMs": 0,
+      "eosMs": 2466
+    },
+    "before": {
+      "durationMs": 2688,
+      "eosMs": 2491,
+      "postEosMs": 197,
+      "roomFloorDb": -62.5,
+      "impulses": [],
+      "lufs": -17.9
+    },
+    "after": {
+      "durationMs": 2688,
+      "eosMs": 2491,
+      "postEosMs": 197,
+      "roomFloorDb": -62.5,
+      "impulses": [],
+      "lufs": -17.9
+    },
+    "finalWord": {
+      "ok": true,
+      "unit": "stoppen",
+      "scriptOk": true,
+      "scriptWord": "stoppen",
+      "heardBefore": "Ik denk dat het beter is als we nu even stoppen.",
+      "heardAfter": "Ik denk dat het beter is als we nu even stoppen."
+    },
+    "deltaMs": 0
+  },
+  {
+    "key": "nld-thijs-p3",
+    "voiceKey": "nld-thijs",
+    "voice": "Thijs",
+    "group": "Dutch",
+    "note": "xAI Dutch male (285 clips)",
+    "provider": "xai",
+    "voiceId": "a13662ba951c",
+    "phraseId": "p3",
+    "tail": "HARD \u2014 final /s/ into a stop, sibilant trail",
+    "text": "Kun je me vertellen waar het station is, alsjeblieft?",
+    "guard": {
+      "refused": null,
+      "trimmed": false,
+      "removedMs": 0,
+      "eosMs": 2656
+    },
+    "before": {
+      "durationMs": 2856,
+      "eosMs": 2706,
+      "postEosMs": 150,
+      "roomFloorDb": -61.5,
+      "impulses": [
+        {
+          "startMs": 2746,
+          "peakDb": -42.4,
+          "overFloorDb": 19.2
+        }
+      ],
+      "lufs": -17.1
+    },
+    "after": {
+      "durationMs": 2856,
+      "eosMs": 2706,
+      "postEosMs": 150,
+      "roomFloorDb": -61.5,
+      "impulses": [
+        {
+          "startMs": 2746,
+          "peakDb": -42.4,
+          "overFloorDb": 19.2
+        }
+      ],
+      "lufs": -17.1
+    },
+    "finalWord": {
+      "ok": true,
+      "unit": "alsjeblieft",
+      "scriptOk": true,
+      "scriptWord": "alsjeblieft",
+      "heardBefore": "Wil je me vertellen waar het station is, alsjeblieft?",
+      "heardAfter": "Wil je me vertellen waar het station is, alsjeblieft?"
+    },
+    "deltaMs": 0
+  },
+  {
+    "key": "nld-thijs-p4",
+    "voiceKey": "nld-thijs",
+    "voice": "Thijs",
+    "group": "Dutch",
+    "note": "xAI Dutch male (285 clips)",
+    "provider": "xai",
+    "voiceId": "a13662ba951c",
+    "phraseId": "p4",
+    "tail": "HARD \u2014 quiet unstressed final schwa, no consonant to mark the end",
+    "text": "Ik probeer dit nu al ongeveer drie maanden te leren.",
+    "guard": {
+      "refused": null,
+      "trimmed": false,
+      "removedMs": 0,
+      "eosMs": 2791
+    },
+    "before": {
+      "durationMs": 3000,
+      "eosMs": 2791,
+      "postEosMs": 209,
+      "roomFloorDb": -60.4,
+      "impulses": [],
+      "lufs": -16.5
+    },
+    "after": {
+      "durationMs": 3000,
+      "eosMs": 2791,
+      "postEosMs": 209,
+      "roomFloorDb": -60.4,
+      "impulses": [],
+      "lufs": -16.5
+    },
+    "finalWord": {
+      "ok": true,
+      "unit": "leren",
+      "scriptOk": true,
+      "scriptWord": "leren",
+      "heardBefore": "Ik probeer dit nu al ongeveer drie maanden te leren.",
+      "heardAfter": "Ik probeer dit nu al ongeveer drie maanden te leren."
+    },
+    "deltaMs": 0
+  },
+  {
+    "key": "nld-thijs-p5",
+    "voiceKey": "nld-thijs",
+    "voice": "Thijs",
+    "group": "Dutch",
+    "note": "xAI Dutch male (285 clips)",
+    "provider": "xai",
+    "voiceId": "a13662ba951c",
+    "phraseId": "p5",
+    "tail": "HARD \u2014 Dutch final devoicing, /d/ surfacing as a weak /t/",
+    "text": "Dat had ik echt nooit tegen hem gezegd.",
+    "guard": {
+      "refused": null,
+      "trimmed": true,
+      "removedMs": 4,
+      "eosMs": 1954
+    },
+    "before": {
+      "durationMs": 2208,
+      "eosMs": 1959,
+      "postEosMs": 249,
+      "roomFloorDb": -58.8,
+      "impulses": [],
+      "lufs": -17.5
+    },
+    "after": {
+      "durationMs": 2204,
+      "eosMs": 1969,
+      "postEosMs": 235,
+      "roomFloorDb": -59.6,
+      "impulses": [],
+      "lufs": -17.5
+    },
+    "finalWord": {
+      "ok": true,
+      "unit": "gezegd",
+      "scriptOk": true,
+      "scriptWord": "gezegd",
+      "heardBefore": "Dat had ik echt nooit tegen hem gezegd.",
+      "heardAfter": "Dat had ik echt nooit tegen hem gezegd."
+    },
+    "deltaMs": 4
+  },
+  {
+    "key": "nld-ruben-p1",
+    "voiceKey": "nld-ruben",
+    "voice": "Ruben",
+    "group": "Dutch",
+    "note": "xAI Dutch male (46 clips)",
+    "provider": "xai",
+    "voiceId": "244e27b39200",
+    "phraseId": "p1",
+    "tail": "CONTROL \u2014 the clicker reference line, /t/ after a fricative",
+    "text": "Ik wil graag een glas bitter, alstublieft.",
+    "guard": {
+      "refused": null,
+      "trimmed": true,
+      "removedMs": 525,
+      "eosMs": 2225
+    },
+    "before": {
+      "durationMs": 3000,
+      "eosMs": 2325,
+      "postEosMs": 675,
+      "roomFloorDb": -58.3,
+      "impulses": [
+        {
+          "startMs": 2566,
+          "peakDb": -33.6,
+          "overFloorDb": 24.7
+        },
+        {
+          "startMs": 2651,
+          "peakDb": -20.4,
+          "overFloorDb": 37.9
+        }
+      ],
+      "lufs": -18
+    },
+    "after": {
+      "durationMs": 2475,
+      "eosMs": 2325,
+      "postEosMs": 150,
+      "roomFloorDb": -58.3,
+      "impulses": [],
+      "lufs": -17.9
+    },
+    "finalWord": {
+      "ok": true,
+      "unit": "alsjeblieft",
+      "scriptOk": false,
+      "scriptWord": "alstublieft",
+      "heardBefore": "Ik wil graag een glas bitter alsjeblieft.",
+      "heardAfter": "Ik wil graag een glas bitter alsjeblieft."
+    },
+    "deltaMs": 525
+  },
+  {
+    "key": "nld-ruben-p2",
+    "voiceKey": "nld-ruben",
+    "voice": "Ruben",
+    "group": "Dutch",
+    "note": "xAI Dutch male (46 clips)",
+    "provider": "xai",
+    "voiceId": "244e27b39200",
+    "phraseId": "p2",
+    "tail": "HARD \u2014 word-final voiceless plosive /p/, the burst the 40ms rule could mislabel",
+    "text": "Ik denk dat het beter is als we nu even stoppen.",
+    "guard": {
+      "refused": null,
+      "trimmed": true,
+      "removedMs": 172,
+      "eosMs": 2506
+    },
+    "before": {
+      "durationMs": 2928,
+      "eosMs": 2551,
+      "postEosMs": 377,
+      "roomFloorDb": -54.1,
+      "impulses": [],
+      "lufs": -17.1
+    },
+    "after": {
+      "durationMs": 2756,
+      "eosMs": 2551,
+      "postEosMs": 205,
+      "roomFloorDb": -53.7,
+      "impulses": [],
+      "lufs": -17.1
+    },
+    "finalWord": {
+      "ok": true,
+      "unit": "stoppen",
+      "scriptOk": true,
+      "scriptWord": "stoppen",
+      "heardBefore": "Ik denk dat het beter is als we nu even stoppen.",
+      "heardAfter": "Ik denk dat het beter is als we nu even stoppen."
+    },
+    "deltaMs": 172
+  },
+  {
+    "key": "nld-ruben-p3",
+    "voiceKey": "nld-ruben",
+    "voice": "Ruben",
+    "group": "Dutch",
+    "note": "xAI Dutch male (46 clips)",
+    "provider": "xai",
+    "voiceId": "244e27b39200",
+    "phraseId": "p3",
+    "tail": "HARD \u2014 final /s/ into a stop, sibilant trail",
+    "text": "Kun je me vertellen waar het station is, alsjeblieft?",
+    "guard": {
+      "refused": null,
+      "trimmed": true,
+      "removedMs": 124,
+      "eosMs": 2626
+    },
+    "before": {
+      "durationMs": 3000,
+      "eosMs": 2656,
+      "postEosMs": 344,
+      "roomFloorDb": -60.2,
+      "impulses": [],
+      "lufs": -17
+    },
+    "after": {
+      "durationMs": 2876,
+      "eosMs": 2656,
+      "postEosMs": 220,
+      "roomFloorDb": -60.4,
+      "impulses": [],
+      "lufs": -16.8
+    },
+    "finalWord": {
+      "ok": true,
+      "unit": "alsjeblieft",
+      "scriptOk": true,
+      "scriptWord": "alsjeblieft",
+      "heardBefore": "Kun je me vertellen waar het station is, alsjeblieft?",
+      "heardAfter": "Kun je me vertellen waar het station is, alsjeblieft?"
+    },
+    "deltaMs": 124
+  },
+  {
+    "key": "nld-ruben-p4",
+    "voiceKey": "nld-ruben",
+    "voice": "Ruben",
+    "group": "Dutch",
+    "note": "xAI Dutch male (46 clips)",
+    "provider": "xai",
+    "voiceId": "244e27b39200",
+    "phraseId": "p4",
+    "tail": "HARD \u2014 quiet unstressed final schwa, no consonant to mark the end",
+    "text": "Ik probeer dit nu al ongeveer drie maanden te leren.",
+    "guard": {
+      "refused": null,
+      "trimmed": true,
+      "removedMs": 119,
+      "eosMs": 2871
+    },
+    "before": {
+      "durationMs": 3240,
+      "eosMs": 2877,
+      "postEosMs": 363,
+      "roomFloorDb": -63.8,
+      "impulses": [],
+      "lufs": -16.9
+    },
+    "after": {
+      "durationMs": 3122,
+      "eosMs": 2877,
+      "postEosMs": 245,
+      "roomFloorDb": -63.3,
+      "impulses": [],
+      "lufs": -16.9
+    },
+    "finalWord": {
+      "ok": true,
+      "unit": "leren",
+      "scriptOk": true,
+      "scriptWord": "leren",
+      "heardBefore": "Ik probeer dit nu al ongeveer drie maanden te leren.",
+      "heardAfter": "Ik probeer dit nu al ongeveer drie maanden te leren."
+    },
+    "deltaMs": 118
+  },
+  {
+    "key": "nld-ruben-p5",
+    "voiceKey": "nld-ruben",
+    "voice": "Ruben",
+    "group": "Dutch",
+    "note": "xAI Dutch male (46 clips)",
+    "provider": "xai",
+    "voiceId": "244e27b39200",
+    "phraseId": "p5",
+    "tail": "HARD \u2014 Dutch final devoicing, /d/ surfacing as a weak /t/",
+    "text": "Dat had ik echt nooit tegen hem gezegd.",
+    "guard": {
+      "refused": null,
+      "trimmed": true,
+      "removedMs": 551,
+      "eosMs": 2295
+    },
+    "before": {
+      "durationMs": 3096,
+      "eosMs": 2305,
+      "postEosMs": 791,
+      "roomFloorDb": -61.1,
+      "impulses": [
+        {
+          "startMs": 2561,
+          "peakDb": -19,
+          "overFloorDb": 42.1
+        },
+        {
+          "startMs": 2636,
+          "peakDb": -14.9,
+          "overFloorDb": 46.3
+        }
+      ],
+      "lufs": -16.9
+    },
+    "after": {
+      "durationMs": 2545,
+      "eosMs": 2305,
+      "postEosMs": 240,
+      "roomFloorDb": -61.5,
+      "impulses": [],
+      "lufs": -16.9
+    },
+    "finalWord": {
+      "ok": true,
+      "unit": "gezegd",
+      "scriptOk": true,
+      "scriptWord": "gezegd",
+      "heardBefore": "Dat had ik echt nooit tegen hem gezegd.",
+      "heardAfter": "Dat had ik echt nooit tegen hem gezegd."
+    },
+    "deltaMs": 551
+  },
+  {
+    "key": "nld-fenna-p1",
+    "voiceKey": "nld-fenna",
+    "voice": "Fenna",
+    "group": "Dutch",
+    "note": "Azure Dutch female \u2014 the heaviest Dutch voice in the estate (4,798 clips)",
+    "provider": "azure",
+    "voiceId": "nl-NL-FennaNeural",
+    "phraseId": "p1",
+    "tail": "CONTROL \u2014 the clicker reference line, /t/ after a fricative",
+    "text": "Ik wil graag een glas bitter, alstublieft.",
+    "guard": {
+      "refused": null,
+      "trimmed": true,
+      "removedMs": 609,
+      "eosMs": 2741
+    },
+    "before": {
+      "durationMs": 3600,
+      "eosMs": 2746,
+      "postEosMs": 854,
+      "roomFloorDb": -58,
+      "impulses": [],
+      "lufs": -16.6
+    },
+    "after": {
+      "durationMs": 2991,
+      "eosMs": 2746,
+      "postEosMs": 245,
+      "roomFloorDb": -57.7,
+      "impulses": [],
+      "lufs": -16.5
+    },
+    "finalWord": {
+      "ok": true,
+      "unit": "alsjeblieft",
+      "scriptOk": false,
+      "scriptWord": "alstublieft",
+      "heardBefore": "Ik wil graag een glas bitter, alsjeblieft.",
+      "heardAfter": "Ik wil graag een glas bitter, alsjeblieft."
+    },
+    "deltaMs": 609
+  },
+  {
+    "key": "nld-fenna-p2",
+    "voiceKey": "nld-fenna",
+    "voice": "Fenna",
+    "group": "Dutch",
+    "note": "Azure Dutch female \u2014 the heaviest Dutch voice in the estate (4,798 clips)",
+    "provider": "azure",
+    "voiceId": "nl-NL-FennaNeural",
+    "phraseId": "p2",
+    "tail": "HARD \u2014 word-final voiceless plosive /p/, the burst the 40ms rule could mislabel",
+    "text": "Ik denk dat het beter is als we nu even stoppen.",
+    "guard": {
+      "refused": null,
+      "trimmed": true,
+      "removedMs": 623,
+      "eosMs": 2691
+    },
+    "before": {
+      "durationMs": 3564,
+      "eosMs": 2691,
+      "postEosMs": 873,
+      "roomFloorDb": -53.9,
+      "impulses": [],
+      "lufs": -16.5
+    },
+    "after": {
+      "durationMs": 2941,
+      "eosMs": 2691,
+      "postEosMs": 250,
+      "roomFloorDb": -54.1,
+      "impulses": [],
+      "lufs": -16.5
+    },
+    "finalWord": {
+      "ok": true,
+      "unit": "stoppen",
+      "scriptOk": true,
+      "scriptWord": "stoppen",
+      "heardBefore": "Ik denk dat het beter is als we nu even stoppen.",
+      "heardAfter": "Ik denk dat het beter is als we nu even stoppen."
+    },
+    "deltaMs": 623
+  },
+  {
+    "key": "nld-fenna-p3",
+    "voiceKey": "nld-fenna",
+    "voice": "Fenna",
+    "group": "Dutch",
+    "note": "Azure Dutch female \u2014 the heaviest Dutch voice in the estate (4,798 clips)",
+    "provider": "azure",
+    "voiceId": "nl-NL-FennaNeural",
+    "phraseId": "p3",
+    "tail": "HARD \u2014 final /s/ into a stop, sibilant trail",
+    "text": "Kun je me vertellen waar het station is, alsjeblieft?",
+    "guard": {
+      "refused": null,
+      "trimmed": true,
+      "removedMs": 630,
+      "eosMs": 3152
+    },
+    "before": {
+      "durationMs": 4032,
+      "eosMs": 3152,
+      "postEosMs": 880,
+      "roomFloorDb": -64,
+      "impulses": [],
+      "lufs": -16.5
+    },
+    "after": {
+      "durationMs": 3402,
+      "eosMs": 3152,
+      "postEosMs": 250,
+      "roomFloorDb": -63.4,
+      "impulses": [],
+      "lufs": -16.5
+    },
+    "finalWord": {
+      "ok": true,
+      "unit": "alsjeblieft",
+      "scriptOk": true,
+      "scriptWord": "alsjeblieft",
+      "heardBefore": "Kun je me vertellen waar het station is, alsjeblieft?",
+      "heardAfter": "Kun je me vertellen waar het station is, alsjeblieft?"
+    },
+    "deltaMs": 630
+  },
+  {
+    "key": "nld-fenna-p4",
+    "voiceKey": "nld-fenna",
+    "voice": "Fenna",
+    "group": "Dutch",
+    "note": "Azure Dutch female \u2014 the heaviest Dutch voice in the estate (4,798 clips)",
+    "provider": "azure",
+    "voiceId": "nl-NL-FennaNeural",
+    "phraseId": "p4",
+    "tail": "HARD \u2014 quiet unstressed final schwa, no consonant to mark the end",
+    "text": "Ik probeer dit nu al ongeveer drie maanden te leren.",
+    "guard": {
+      "refused": null,
+      "trimmed": true,
+      "removedMs": 635,
+      "eosMs": 2967
+    },
+    "before": {
+      "durationMs": 3852,
+      "eosMs": 2967,
+      "postEosMs": 885,
+      "roomFloorDb": -79.9,
+      "impulses": [],
+      "lufs": -16.5
+    },
+    "after": {
+      "durationMs": 3217,
+      "eosMs": 2967,
+      "postEosMs": 250,
+      "roomFloorDb": -80,
+      "impulses": [],
+      "lufs": -16.4
+    },
+    "finalWord": {
+      "ok": true,
+      "unit": "leren",
+      "scriptOk": true,
+      "scriptWord": "leren",
+      "heardBefore": "Ik probeer dit nu al ongeveer drie maanden te leren.",
+      "heardAfter": "Ik probeer dit nu al ongeveer drie maanden te leren."
+    },
+    "deltaMs": 635
+  },
+  {
+    "key": "nld-fenna-p5",
+    "voiceKey": "nld-fenna",
+    "voice": "Fenna",
+    "group": "Dutch",
+    "note": "Azure Dutch female \u2014 the heaviest Dutch voice in the estate (4,798 clips)",
+    "provider": "azure",
+    "voiceId": "nl-NL-FennaNeural",
+    "phraseId": "p5",
+    "tail": "HARD \u2014 Dutch final devoicing, /d/ surfacing as a weak /t/",
+    "text": "Dat had ik echt nooit tegen hem gezegd.",
+    "guard": {
+      "refused": null,
+      "trimmed": true,
+      "removedMs": 600,
+      "eosMs": 2210
+    },
+    "before": {
+      "durationMs": 3060,
+      "eosMs": 2210,
+      "postEosMs": 850,
+      "roomFloorDb": -57.7,
+      "impulses": [],
+      "lufs": -16.6
+    },
+    "after": {
+      "durationMs": 2460,
+      "eosMs": 2210,
+      "postEosMs": 250,
+      "roomFloorDb": -57.8,
+      "impulses": [],
+      "lufs": -16.5
+    },
+    "finalWord": {
+      "ok": true,
+      "unit": "gezegd",
+      "scriptOk": true,
+      "scriptWord": "gezegd",
+      "heardBefore": "Dat had ik echt nooit tegen hem gezegd.",
+      "heardAfter": "Dat had ik echt nooit tegen hem gezegd."
+    },
+    "deltaMs": 600
+  },
+  {
+    "key": "nld-maarten-p1",
+    "voiceKey": "nld-maarten",
+    "voice": "Maarten",
+    "group": "Dutch",
+    "note": "Azure Dutch male (4,787 clips)",
+    "provider": "azure",
+    "voiceId": "nl-NL-MaartenNeural",
+    "phraseId": "p1",
+    "tail": "CONTROL \u2014 the clicker reference line, /t/ after a fricative",
+    "text": "Ik wil graag een glas bitter, alstublieft.",
+    "guard": {
+      "refused": null,
+      "trimmed": true,
+      "removedMs": 636,
+      "eosMs": 2606
+    },
+    "before": {
+      "durationMs": 3492,
+      "eosMs": 2606,
+      "postEosMs": 886,
+      "roomFloorDb": -54.4,
+      "impulses": [],
+      "lufs": -16.6
+    },
+    "after": {
+      "durationMs": 2856,
+      "eosMs": 2606,
+      "postEosMs": 250,
+      "roomFloorDb": -54.3,
+      "impulses": [],
+      "lufs": -16.5
+    },
+    "finalWord": {
+      "ok": true,
+      "unit": "alsjeblieft",
+      "scriptOk": false,
+      "scriptWord": "alstublieft",
+      "heardBefore": "Ik wil graag een glas pitter, alsjeblieft.",
+      "heardAfter": "Ik wil graag een glas pitter, alsjeblieft."
+    },
+    "deltaMs": 636
+  },
+  {
+    "key": "nld-maarten-p2",
+    "voiceKey": "nld-maarten",
+    "voice": "Maarten",
+    "group": "Dutch",
+    "note": "Azure Dutch male (4,787 clips)",
+    "provider": "azure",
+    "voiceId": "nl-NL-MaartenNeural",
+    "phraseId": "p2",
+    "tail": "HARD \u2014 word-final voiceless plosive /p/, the burst the 40ms rule could mislabel",
+    "text": "Ik denk dat het beter is als we nu even stoppen.",
+    "guard": {
+      "refused": null,
+      "trimmed": true,
+      "removedMs": 646,
+      "eosMs": 2596
+    },
+    "before": {
+      "durationMs": 3492,
+      "eosMs": 2601,
+      "postEosMs": 891,
+      "roomFloorDb": -54.9,
+      "impulses": [],
+      "lufs": -16.7
+    },
+    "after": {
+      "durationMs": 2846,
+      "eosMs": 2601,
+      "postEosMs": 245,
+      "roomFloorDb": -55,
+      "impulses": [],
+      "lufs": -16.6
+    },
+    "finalWord": {
+      "ok": true,
+      "unit": "stoppen",
+      "scriptOk": true,
+      "scriptWord": "stoppen",
+      "heardBefore": "Ik denk dat het beter is als we nu even stoppen.",
+      "heardAfter": "Ik denk dat het beter is als we nu even stoppen."
+    },
+    "deltaMs": 646
+  },
+  {
+    "key": "nld-maarten-p3",
+    "voiceKey": "nld-maarten",
+    "voice": "Maarten",
+    "group": "Dutch",
+    "note": "Azure Dutch male (4,787 clips)",
+    "provider": "azure",
+    "voiceId": "nl-NL-MaartenNeural",
+    "phraseId": "p3",
+    "tail": "HARD \u2014 final /s/ into a stop, sibilant trail",
+    "text": "Kun je me vertellen waar het station is, alsjeblieft?",
+    "guard": {
+      "refused": null,
+      "trimmed": true,
+      "removedMs": 645,
+      "eosMs": 2957
+    },
+    "before": {
+      "durationMs": 3852,
+      "eosMs": 2957,
+      "postEosMs": 895,
+      "roomFloorDb": -53.5,
+      "impulses": [],
+      "lufs": -16.5
+    },
+    "after": {
+      "durationMs": 3207,
+      "eosMs": 2957,
+      "postEosMs": 250,
+      "roomFloorDb": -53.6,
+      "impulses": [],
+      "lufs": -16.4
+    },
+    "finalWord": {
+      "ok": true,
+      "unit": "alsjeblieft",
+      "scriptOk": true,
+      "scriptWord": "alsjeblieft",
+      "heardBefore": "Kun je me vertellen waar het station is, alsjeblieft?",
+      "heardAfter": "Kun je me vertellen waar het station is, alsjeblieft?"
+    },
+    "deltaMs": 645
+  },
+  {
+    "key": "nld-maarten-p4",
+    "voiceKey": "nld-maarten",
+    "voice": "Maarten",
+    "group": "Dutch",
+    "note": "Azure Dutch male (4,787 clips)",
+    "provider": "azure",
+    "voiceId": "nl-NL-MaartenNeural",
+    "phraseId": "p4",
+    "tail": "HARD \u2014 quiet unstressed final schwa, no consonant to mark the end",
+    "text": "Ik probeer dit nu al ongeveer drie maanden te leren.",
+    "guard": {
+      "refused": null,
+      "trimmed": true,
+      "removedMs": 632,
+      "eosMs": 2826
+    },
+    "before": {
+      "durationMs": 3708,
+      "eosMs": 2826,
+      "postEosMs": 882,
+      "roomFloorDb": -54.2,
+      "impulses": [],
+      "lufs": -16.5
+    },
+    "after": {
+      "durationMs": 3076,
+      "eosMs": 2826,
+      "postEosMs": 250,
+      "roomFloorDb": -54.3,
+      "impulses": [],
+      "lufs": -16.4
+    },
+    "finalWord": {
+      "ok": true,
+      "unit": "leren",
+      "scriptOk": true,
+      "scriptWord": "leren",
+      "heardBefore": "Ik probeer dit nu al ongeveer drie maanden te leren.",
+      "heardAfter": "Ik probeer dit nu al ongeveer drie maanden te leren."
+    },
+    "deltaMs": 632
+  },
+  {
+    "key": "nld-maarten-p5",
+    "voiceKey": "nld-maarten",
+    "voice": "Maarten",
+    "group": "Dutch",
+    "note": "Azure Dutch male (4,787 clips)",
+    "provider": "azure",
+    "voiceId": "nl-NL-MaartenNeural",
+    "phraseId": "p5",
+    "tail": "HARD \u2014 Dutch final devoicing, /d/ surfacing as a weak /t/",
+    "text": "Dat had ik echt nooit tegen hem gezegd.",
+    "guard": {
+      "refused": null,
+      "trimmed": true,
+      "removedMs": 638,
+      "eosMs": 2280
+    },
+    "before": {
+      "durationMs": 3168,
+      "eosMs": 2285,
+      "postEosMs": 883,
+      "roomFloorDb": -54.4,
+      "impulses": [],
+      "lufs": -16.6
+    },
+    "after": {
+      "durationMs": 2530,
+      "eosMs": 2285,
+      "postEosMs": 245,
+      "roomFloorDb": -54.2,
+      "impulses": [],
+      "lufs": -16.5
+    },
+    "finalWord": {
+      "ok": true,
+      "unit": "gezegd",
+      "scriptOk": true,
+      "scriptWord": "gezegd",
+      "heardBefore": "Dat had ik echt nooit tegen hem gezegd.",
+      "heardAfter": "Dat had ik echt nooit tegen hem gezegd."
+    },
+    "deltaMs": 638
+  },
+  {
+    "key": "eng-tom-p1",
+    "voiceKey": "eng-tom",
+    "voice": "Tom \u2014 your own clone",
+    "group": "Your clone and Olivia",
+    "note": "xAI clone, en-GB male \u2014 1,500 clips in nld_for_eng alone, 325k estate-wide",
+    "provider": "xai",
+    "voiceId": "gfzdpspr5fdp",
+    "phraseId": "p1",
+    "tail": "CONTROL \u2014 ordinary voiced declarative ending",
+    "text": "I've been trying to learn this for about three months now.",
+    "guard": {
+      "refused": null,
+      "trimmed": true,
+      "removedMs": 32,
+      "eosMs": 2646
+    },
+    "before": {
+      "durationMs": 2928,
+      "eosMs": 2666,
+      "postEosMs": 262,
+      "roomFloorDb": -51.9,
+      "impulses": [],
+      "lufs": -17.4
+    },
+    "after": {
+      "durationMs": 2896,
+      "eosMs": 2666,
+      "postEosMs": 230,
+      "roomFloorDb": -51.7,
+      "impulses": [],
+      "lufs": -17.4
+    },
+    "finalWord": {
+      "ok": true,
+      "unit": "now",
+      "scriptOk": true,
+      "scriptWord": "now",
+      "heardBefore": "I've been trying to learn this for about three months now.",
+      "heardAfter": "I've been trying to learn this for about three months now."
+    },
+    "deltaMs": 32
+  },
+  {
+    "key": "eng-tom-p2",
+    "voiceKey": "eng-tom",
+    "voice": "Tom \u2014 your own clone",
+    "group": "Your clone and Olivia",
+    "note": "xAI clone, en-GB male \u2014 1,500 clips in nld_for_eng alone, 325k estate-wide",
+    "provider": "xai",
+    "voiceId": "gfzdpspr5fdp",
+    "phraseId": "p2",
+    "tail": "HARD \u2014 word-final /p/ burst after an unstressed syllable",
+    "text": "I think that after all of this we should probably just stop.",
+    "guard": {
+      "refused": null,
+      "trimmed": true,
+      "removedMs": 23,
+      "eosMs": 3207
+    },
+    "before": {
+      "durationMs": 3480,
+      "eosMs": 3247,
+      "postEosMs": 233,
+      "roomFloorDb": -50.3,
+      "impulses": [
+        {
+          "startMs": 3292,
+          "peakDb": -23.2,
+          "overFloorDb": 27.1
+        }
+      ],
+      "lufs": -17.3
+    },
+    "after": {
+      "durationMs": 3457,
+      "eosMs": 3247,
+      "postEosMs": 210,
+      "roomFloorDb": -50.2,
+      "impulses": [
+        {
+          "startMs": 3292,
+          "peakDb": -23.2,
+          "overFloorDb": 27
+        }
+      ],
+      "lufs": -17.3
+    },
+    "finalWord": {
+      "ok": true,
+      "unit": "stop",
+      "scriptOk": true,
+      "scriptWord": "stop",
+      "heardBefore": "I think that after all of this we should probably just stop.",
+      "heardAfter": "I think that after all of this we should probably just stop."
+    },
+    "deltaMs": 23
+  },
+  {
+    "key": "eng-tom-p3",
+    "voiceKey": "eng-tom",
+    "voice": "Tom \u2014 your own clone",
+    "group": "Your clone and Olivia",
+    "note": "xAI clone, en-GB male \u2014 1,500 clips in nld_for_eng alone, 325k estate-wide",
+    "provider": "xai",
+    "voiceId": "gfzdpspr5fdp",
+    "phraseId": "p3",
+    "tail": "HARD \u2014 voiceless fricative /\u03b8/, the quietest ending English has",
+    "text": "By the end of it, what she said was barely more than a breath.",
+    "guard": {
+      "refused": null,
+      "trimmed": true,
+      "removedMs": 0,
+      "eosMs": 3398
+    },
+    "before": {
+      "durationMs": 3648,
+      "eosMs": 3413,
+      "postEosMs": 235,
+      "roomFloorDb": -57.4,
+      "impulses": [],
+      "lufs": -17.5
+    },
+    "after": {
+      "durationMs": 3648,
+      "eosMs": 3413,
+      "postEosMs": 235,
+      "roomFloorDb": -57.3,
+      "impulses": [],
+      "lufs": -17.5
+    },
+    "finalWord": {
+      "ok": true,
+      "unit": "breath",
+      "scriptOk": true,
+      "scriptWord": "breath",
+      "heardBefore": "By the end of it, what she said was barely more than a breath.",
+      "heardAfter": "By the end of it, what she said was barely more than a breath."
+    },
+    "deltaMs": 0
+  },
+  {
+    "key": "eng-tom-p4",
+    "voiceKey": "eng-tom",
+    "voice": "Tom \u2014 your own clone",
+    "group": "Your clone and Olivia",
+    "note": "xAI clone, en-GB male \u2014 1,500 clips in nld_for_eng alone, 325k estate-wide",
+    "provider": "xai",
+    "voiceId": "gfzdpspr5fdp",
+    "phraseId": "p4",
+    "tail": "HARD \u2014 final sibilant cluster, high-frequency and low-energy",
+    "text": "She told me the buses always leave from the other entrance.",
+    "guard": {
+      "refused": null,
+      "trimmed": true,
+      "removedMs": 39,
+      "eosMs": 3047
+    },
+    "before": {
+      "durationMs": 3336,
+      "eosMs": 3052,
+      "postEosMs": 284,
+      "roomFloorDb": -60.1,
+      "impulses": [],
+      "lufs": -16.9
+    },
+    "after": {
+      "durationMs": 3297,
+      "eosMs": 3052,
+      "postEosMs": 245,
+      "roomFloorDb": -60.5,
+      "impulses": [],
+      "lufs": -16.8
+    },
+    "finalWord": {
+      "ok": true,
+      "unit": "entrance",
+      "scriptOk": true,
+      "scriptWord": "entrance",
+      "heardBefore": "She told me the buses always leave from the other entrance.",
+      "heardAfter": "She told me the buses always leave from the other entrance."
+    },
+    "deltaMs": 39
+  },
+  {
+    "key": "eng-tom-p5",
+    "voiceKey": "eng-tom",
+    "voice": "Tom \u2014 your own clone",
+    "group": "Your clone and Olivia",
+    "note": "xAI clone, en-GB male \u2014 1,500 clips in nld_for_eng alone, 325k estate-wide",
+    "provider": "xai",
+    "voiceId": "gfzdpspr5fdp",
+    "phraseId": "p5",
+    "tail": "HARD \u2014 final /t/ closing a /pt/ cluster",
+    "text": "I'd rather wait here until the rain has completely stopped.",
+    "guard": {
+      "refused": null,
+      "trimmed": true,
+      "removedMs": 8,
+      "eosMs": 2982
+    },
+    "before": {
+      "durationMs": 3240,
+      "eosMs": 2992,
+      "postEosMs": 248,
+      "roomFloorDb": -60.5,
+      "impulses": [],
+      "lufs": -17.6
+    },
+    "after": {
+      "durationMs": 3232,
+      "eosMs": 2992,
+      "postEosMs": 240,
+      "roomFloorDb": -60.5,
+      "impulses": [],
+      "lufs": -17.6
+    },
+    "finalWord": {
+      "ok": true,
+      "unit": "stopped",
+      "scriptOk": true,
+      "scriptWord": "stopped",
+      "heardBefore": "I'd rather wait here until the rain has completely stopped.",
+      "heardAfter": "I'd rather wait here until the rain has completely stopped."
+    },
+    "deltaMs": 8
+  },
+  {
+    "key": "eng-olivia-p1",
+    "voiceKey": "eng-olivia",
+    "voice": "Olivia",
+    "group": "Your clone and Olivia",
+    "note": "xAI en-GB female \u2014 150,237 clips estate-wide",
+    "provider": "xai",
+    "voiceId": "bedd6226",
+    "phraseId": "p1",
+    "tail": "CONTROL \u2014 ordinary voiced declarative ending",
+    "text": "I've been trying to learn this for about three months now.",
+    "guard": {
+      "refused": null,
+      "trimmed": false,
+      "removedMs": 0,
+      "eosMs": 3102
+    },
+    "before": {
+      "durationMs": 3168,
+      "eosMs": 3102,
+      "postEosMs": 66,
+      "roomFloorDb": -88.4,
+      "impulses": [],
+      "lufs": -16.5
+    },
+    "after": {
+      "durationMs": 3168,
+      "eosMs": 3102,
+      "postEosMs": 66,
+      "roomFloorDb": -88.4,
+      "impulses": [],
+      "lufs": -16.5
+    },
+    "finalWord": {
+      "ok": true,
+      "unit": "now",
+      "scriptOk": true,
+      "scriptWord": "now",
+      "heardBefore": "I've been trying to learn this for about three months now.",
+      "heardAfter": "I've been trying to learn this for about three months now."
+    },
+    "deltaMs": 0
+  },
+  {
+    "key": "eng-olivia-p2",
+    "voiceKey": "eng-olivia",
+    "voice": "Olivia",
+    "group": "Your clone and Olivia",
+    "note": "xAI en-GB female \u2014 150,237 clips estate-wide",
+    "provider": "xai",
+    "voiceId": "bedd6226",
+    "phraseId": "p2",
+    "tail": "HARD \u2014 word-final /p/ burst after an unstressed syllable",
+    "text": "I think that after all of this we should probably just stop.",
+    "guard": {
+      "refused": null,
+      "trimmed": true,
+      "removedMs": 193,
+      "eosMs": 3613
+    },
+    "before": {
+      "durationMs": 4056,
+      "eosMs": 3769,
+      "postEosMs": 287,
+      "roomFloorDb": -48.8,
+      "impulses": [
+        {
+          "startMs": 3794,
+          "peakDb": -43,
+          "overFloorDb": 5.8
+        }
+      ],
+      "lufs": -17.8
+    },
+    "after": {
+      "durationMs": 3863,
+      "eosMs": 3769,
+      "postEosMs": 95,
+      "roomFloorDb": -48.6,
+      "impulses": [
+        {
+          "startMs": 3794,
+          "peakDb": -42.7,
+          "overFloorDb": 5.8
+        }
+      ],
+      "lufs": -17.8
+    },
+    "finalWord": {
+      "ok": true,
+      "unit": "stop",
+      "scriptOk": true,
+      "scriptWord": "stop",
+      "heardBefore": "I think that after all of this, we should probably just stop.",
+      "heardAfter": "I think that after all of this, we should probably just stop."
+    },
+    "deltaMs": 193
+  },
+  {
+    "key": "eng-olivia-p3",
+    "voiceKey": "eng-olivia",
+    "voice": "Olivia",
+    "group": "Your clone and Olivia",
+    "note": "xAI en-GB female \u2014 150,237 clips estate-wide",
+    "provider": "xai",
+    "voiceId": "bedd6226",
+    "phraseId": "p3",
+    "tail": "HARD \u2014 voiceless fricative /\u03b8/, the quietest ending English has",
+    "text": "By the end of it, what she said was barely more than a breath.",
+    "guard": {
+      "refused": null,
+      "trimmed": false,
+      "removedMs": 0,
+      "eosMs": 3252
+    },
+    "before": {
+      "durationMs": 3408,
+      "eosMs": 3277,
+      "postEosMs": 131,
+      "roomFloorDb": -59.2,
+      "impulses": [],
+      "lufs": -17.6
+    },
+    "after": {
+      "durationMs": 3408,
+      "eosMs": 3277,
+      "postEosMs": 131,
+      "roomFloorDb": -59.2,
+      "impulses": [],
+      "lufs": -17.6
+    },
+    "finalWord": {
+      "ok": true,
+      "unit": "breath",
+      "scriptOk": true,
+      "scriptWord": "breath",
+      "heardBefore": "By the end of it, what she said was barely more than a breath.",
+      "heardAfter": "By the end of it, what she said was barely more than a breath."
+    },
+    "deltaMs": 0
+  },
+  {
+    "key": "eng-olivia-p4",
+    "voiceKey": "eng-olivia",
+    "voice": "Olivia",
+    "group": "Your clone and Olivia",
+    "note": "xAI en-GB female \u2014 150,237 clips estate-wide",
+    "provider": "xai",
+    "voiceId": "bedd6226",
+    "phraseId": "p4",
+    "tail": "HARD \u2014 final sibilant cluster, high-frequency and low-energy",
+    "text": "She told me the buses always leave from the other entrance.",
+    "guard": {
+      "refused": null,
+      "trimmed": true,
+      "removedMs": 139,
+      "eosMs": 3187
+    },
+    "before": {
+      "durationMs": 3576,
+      "eosMs": 3483,
+      "postEosMs": 93,
+      "roomFloorDb": -63.8,
+      "impulses": [],
+      "lufs": -16.9
+    },
+    "after": {
+      "durationMs": 3437,
+      "eosMs": 3423,
+      "postEosMs": 14,
+      "roomFloorDb": null,
+      "impulses": [],
+      "lufs": -16.9
+    },
+    "finalWord": {
+      "ok": true,
+      "unit": "entrance",
+      "scriptOk": true,
+      "scriptWord": "entrance",
+      "heardBefore": "She told me the bosses always leave from the other entrance.",
+      "heardAfter": "She told me the bosses always leave from the other entrance."
+    },
+    "deltaMs": 139
+  },
+  {
+    "key": "eng-olivia-p5",
+    "voiceKey": "eng-olivia",
+    "voice": "Olivia",
+    "group": "Your clone and Olivia",
+    "note": "xAI en-GB female \u2014 150,237 clips estate-wide",
+    "provider": "xai",
+    "voiceId": "bedd6226",
+    "phraseId": "p5",
+    "tail": "HARD \u2014 final /t/ closing a /pt/ cluster",
+    "text": "I'd rather wait here until the rain has completely stopped.",
+    "guard": {
+      "refused": null,
+      "trimmed": false,
+      "removedMs": 0,
+      "eosMs": 3277
+    },
+    "before": {
+      "durationMs": 3408,
+      "eosMs": 3302,
+      "postEosMs": 106,
+      "roomFloorDb": -88.5,
+      "impulses": [
+        {
+          "startMs": 3333,
+          "peakDb": -29.5,
+          "overFloorDb": 59
+        }
+      ],
+      "lufs": -17.4
+    },
+    "after": {
+      "durationMs": 3408,
+      "eosMs": 3302,
+      "postEosMs": 106,
+      "roomFloorDb": -88.5,
+      "impulses": [
+        {
+          "startMs": 3333,
+          "peakDb": -29.5,
+          "overFloorDb": 59
+        }
+      ],
+      "lufs": -17.4
+    },
+    "finalWord": {
+      "ok": true,
+      "unit": "stopped",
+      "scriptOk": true,
+      "scriptWord": "stopped",
+      "heardBefore": "I'd rather wait here until the rain has completely stopped.",
+      "heardAfter": "I'd rather wait here until the rain has completely stopped."
+    },
+    "deltaMs": 0
+  },
+  {
+    "key": "eng-eve-p1",
+    "voiceKey": "eng-eve",
+    "voice": "Eve",
+    "group": "Other xAI voices",
+    "note": "xAI English female \u2014 162,906 clips",
+    "provider": "xai",
+    "voiceId": "eve",
+    "phraseId": "p1",
+    "tail": "CONTROL \u2014 ordinary voiced declarative ending",
+    "text": "I've been trying to learn this for about three months now.",
+    "guard": {
+      "refused": null,
+      "trimmed": false,
+      "removedMs": 0,
+      "eosMs": 2932
+    },
+    "before": {
+      "durationMs": 3168,
+      "eosMs": 2932,
+      "postEosMs": 236,
+      "roomFloorDb": -60.6,
+      "impulses": [],
+      "lufs": -16.5
+    },
+    "after": {
+      "durationMs": 3168,
+      "eosMs": 2932,
+      "postEosMs": 236,
+      "roomFloorDb": -60.6,
+      "impulses": [],
+      "lufs": -16.5
+    },
+    "finalWord": {
+      "ok": true,
+      "unit": "now",
+      "scriptOk": true,
+      "scriptWord": "now",
+      "heardBefore": "I've been trying to learn this for about three months now.",
+      "heardAfter": "I've been trying to learn this for about three months now."
+    },
+    "deltaMs": 0
+  },
+  {
+    "key": "eng-eve-p2",
+    "voiceKey": "eng-eve",
+    "voice": "Eve",
+    "group": "Other xAI voices",
+    "note": "xAI English female \u2014 162,906 clips",
+    "provider": "xai",
+    "voiceId": "eve",
+    "phraseId": "p2",
+    "tail": "HARD \u2014 word-final /p/ burst after an unstressed syllable",
+    "text": "I think that after all of this we should probably just stop.",
+    "guard": {
+      "refused": null,
+      "trimmed": true,
+      "removedMs": 71,
+      "eosMs": 3879
+    },
+    "before": {
+      "durationMs": 4200,
+      "eosMs": 4059,
+      "postEosMs": 141,
+      "roomFloorDb": -66.2,
+      "impulses": [],
+      "lufs": -17.1
+    },
+    "after": {
+      "durationMs": 4129,
+      "eosMs": 4059,
+      "postEosMs": 70,
+      "roomFloorDb": -59.1,
+      "impulses": [],
+      "lufs": -17.1
+    },
+    "finalWord": {
+      "ok": true,
+      "unit": "stop",
+      "scriptOk": true,
+      "scriptWord": "stop",
+      "heardBefore": "I think that after all of this we should probably just stop.",
+      "heardAfter": "I think that after all of this we should probably just stop."
+    },
+    "deltaMs": 71
+  },
+  {
+    "key": "eng-eve-p3",
+    "voiceKey": "eng-eve",
+    "voice": "Eve",
+    "group": "Other xAI voices",
+    "note": "xAI English female \u2014 162,906 clips",
+    "provider": "xai",
+    "voiceId": "eve",
+    "phraseId": "p3",
+    "tail": "HARD \u2014 voiceless fricative /\u03b8/, the quietest ending English has",
+    "text": "By the end of it, what she said was barely more than a breath.",
+    "guard": {
+      "refused": null,
+      "trimmed": false,
+      "removedMs": 0,
+      "eosMs": 3613
+    },
+    "before": {
+      "durationMs": 3816,
+      "eosMs": 3613,
+      "postEosMs": 203,
+      "roomFloorDb": -62.8,
+      "impulses": [],
+      "lufs": -16.5
+    },
+    "after": {
+      "durationMs": 3816,
+      "eosMs": 3613,
+      "postEosMs": 203,
+      "roomFloorDb": -62.8,
+      "impulses": [],
+      "lufs": -16.5
+    },
+    "finalWord": {
+      "ok": true,
+      "unit": "breath",
+      "scriptOk": true,
+      "scriptWord": "breath",
+      "heardBefore": "By the end of it, what she said was barely more than a breath.",
+      "heardAfter": "By the end of it, what she said was barely more than a breath."
+    },
+    "deltaMs": 0
+  },
+  {
+    "key": "eng-eve-p4",
+    "voiceKey": "eng-eve",
+    "voice": "Eve",
+    "group": "Other xAI voices",
+    "note": "xAI English female \u2014 162,906 clips",
+    "provider": "xai",
+    "voiceId": "eve",
+    "phraseId": "p4",
+    "tail": "HARD \u2014 final sibilant cluster, high-frequency and low-energy",
+    "text": "She told me the buses always leave from the other entrance.",
+    "guard": {
+      "refused": null,
+      "trimmed": true,
+      "removedMs": 19,
+      "eosMs": 3307
+    },
+    "before": {
+      "durationMs": 3576,
+      "eosMs": 3307,
+      "postEosMs": 269,
+      "roomFloorDb": -61.5,
+      "impulses": [],
+      "lufs": -16.5
+    },
+    "after": {
+      "durationMs": 3557,
+      "eosMs": 3307,
+      "postEosMs": 250,
+      "roomFloorDb": -61.5,
+      "impulses": [],
+      "lufs": -16.5
+    },
+    "finalWord": {
+      "ok": true,
+      "unit": "entrance",
+      "scriptOk": true,
+      "scriptWord": "entrance",
+      "heardBefore": "She told me the buses always leave from the other entrance.",
+      "heardAfter": "She told me the buses always leave from the other entrance."
+    },
+    "deltaMs": 19
+  },
+  {
+    "key": "eng-eve-p5",
+    "voiceKey": "eng-eve",
+    "voice": "Eve",
+    "group": "Other xAI voices",
+    "note": "xAI English female \u2014 162,906 clips",
+    "provider": "xai",
+    "voiceId": "eve",
+    "phraseId": "p5",
+    "tail": "HARD \u2014 final /t/ closing a /pt/ cluster",
+    "text": "I'd rather wait here until the rain has completely stopped.",
+    "guard": {
+      "refused": null,
+      "trimmed": false,
+      "removedMs": 0,
+      "eosMs": 3302
+    },
+    "before": {
+      "durationMs": 3504,
+      "eosMs": 3302,
+      "postEosMs": 202,
+      "roomFloorDb": -54.5,
+      "impulses": [],
+      "lufs": -16.5
+    },
+    "after": {
+      "durationMs": 3504,
+      "eosMs": 3302,
+      "postEosMs": 202,
+      "roomFloorDb": -54.5,
+      "impulses": [],
+      "lufs": -16.5
+    },
+    "finalWord": {
+      "ok": true,
+      "unit": "stopped",
+      "scriptOk": true,
+      "scriptWord": "stopped",
+      "heardBefore": "I'd rather wait here until the rain has completely stopped.",
+      "heardAfter": "I'd rather wait here until the rain has completely stopped."
+    },
+    "deltaMs": 0
+  },
+  {
+    "key": "eng-leo-p1",
+    "voiceKey": "eng-leo",
+    "voice": "Leo",
+    "group": "Other xAI voices",
+    "note": "xAI English male \u2014 90,044 clips",
+    "provider": "xai",
+    "voiceId": "leo",
+    "phraseId": "p1",
+    "tail": "CONTROL \u2014 ordinary voiced declarative ending",
+    "text": "I've been trying to learn this for about three months now.",
+    "guard": {
+      "refused": null,
+      "trimmed": true,
+      "removedMs": 38,
+      "eosMs": 3192
+    },
+    "before": {
+      "durationMs": 3480,
+      "eosMs": 3207,
+      "postEosMs": 273,
+      "roomFloorDb": -59.2,
+      "impulses": [],
+      "lufs": -17.1
+    },
+    "after": {
+      "durationMs": 3442,
+      "eosMs": 3207,
+      "postEosMs": 235,
+      "roomFloorDb": -59.3,
+      "impulses": [],
+      "lufs": -17
+    },
+    "finalWord": {
+      "ok": true,
+      "unit": "now",
+      "scriptOk": true,
+      "scriptWord": "now",
+      "heardBefore": "I've been trying to learn this for about three months now.",
+      "heardAfter": "I've been trying to learn this for about three months now."
+    },
+    "deltaMs": 38
+  },
+  {
+    "key": "eng-leo-p2",
+    "voiceKey": "eng-leo",
+    "voice": "Leo",
+    "group": "Other xAI voices",
+    "note": "xAI English male \u2014 90,044 clips",
+    "provider": "xai",
+    "voiceId": "leo",
+    "phraseId": "p2",
+    "tail": "HARD \u2014 word-final /p/ burst after an unstressed syllable",
+    "text": "I think that after all of this we should probably just stop.",
+    "guard": {
+      "refused": null,
+      "trimmed": true,
+      "removedMs": 67,
+      "eosMs": 3403
+    },
+    "before": {
+      "durationMs": 3720,
+      "eosMs": 3548,
+      "postEosMs": 172,
+      "roomFloorDb": -62,
+      "impulses": [],
+      "lufs": -16.9
+    },
+    "after": {
+      "durationMs": 3653,
+      "eosMs": 3548,
+      "postEosMs": 105,
+      "roomFloorDb": -60.5,
+      "impulses": [],
+      "lufs": -16.9
+    },
+    "finalWord": {
+      "ok": true,
+      "unit": "stop",
+      "scriptOk": true,
+      "scriptWord": "stop",
+      "heardBefore": "I think that after all of this, we should probably just stop.",
+      "heardAfter": "I think that after all of this, we should probably just stop."
+    },
+    "deltaMs": 67
+  },
+  {
+    "key": "eng-leo-p3",
+    "voiceKey": "eng-leo",
+    "voice": "Leo",
+    "group": "Other xAI voices",
+    "note": "xAI English male \u2014 90,044 clips",
+    "provider": "xai",
+    "voiceId": "leo",
+    "phraseId": "p3",
+    "tail": "HARD \u2014 voiceless fricative /\u03b8/, the quietest ending English has",
+    "text": "By the end of it, what she said was barely more than a breath.",
+    "guard": {
+      "refused": null,
+      "trimmed": true,
+      "removedMs": 23,
+      "eosMs": 3543
+    },
+    "before": {
+      "durationMs": 3816,
+      "eosMs": 3568,
+      "postEosMs": 248,
+      "roomFloorDb": -60.1,
+      "impulses": [],
+      "lufs": -16.7
+    },
+    "after": {
+      "durationMs": 3793,
+      "eosMs": 3568,
+      "postEosMs": 225,
+      "roomFloorDb": -60.1,
+      "impulses": [],
+      "lufs": -16.7
+    },
+    "finalWord": {
+      "ok": true,
+      "unit": "breath",
+      "scriptOk": true,
+      "scriptWord": "breath",
+      "heardBefore": "By the end of it, what she said was barely more than a breath.",
+      "heardAfter": "By the end of it, what she said was barely more than a breath."
+    },
+    "deltaMs": 23
+  },
+  {
+    "key": "eng-leo-p4",
+    "voiceKey": "eng-leo",
+    "voice": "Leo",
+    "group": "Other xAI voices",
+    "note": "xAI English male \u2014 90,044 clips",
+    "provider": "xai",
+    "voiceId": "leo",
+    "phraseId": "p4",
+    "tail": "HARD \u2014 final sibilant cluster, high-frequency and low-energy",
+    "text": "She told me the buses always leave from the other entrance.",
+    "guard": {
+      "refused": null,
+      "trimmed": true,
+      "removedMs": 113,
+      "eosMs": 3453
+    },
+    "before": {
+      "durationMs": 3816,
+      "eosMs": 3458,
+      "postEosMs": 358,
+      "roomFloorDb": -60.4,
+      "impulses": [],
+      "lufs": -17.6
+    },
+    "after": {
+      "durationMs": 3703,
+      "eosMs": 3458,
+      "postEosMs": 245,
+      "roomFloorDb": -60.1,
+      "impulses": [],
+      "lufs": -17.6
+    },
+    "finalWord": {
+      "ok": true,
+      "unit": "entrance",
+      "scriptOk": true,
+      "scriptWord": "entrance",
+      "heardBefore": "She told me the buses always leave from the other entrance.",
+      "heardAfter": "She told me the buses always leave from the other entrance."
+    },
+    "deltaMs": 113
+  },
+  {
+    "key": "eng-leo-p5",
+    "voiceKey": "eng-leo",
+    "voice": "Leo",
+    "group": "Other xAI voices",
+    "note": "xAI English male \u2014 90,044 clips",
+    "provider": "xai",
+    "voiceId": "leo",
+    "phraseId": "p5",
+    "tail": "HARD \u2014 final /t/ closing a /pt/ cluster",
+    "text": "I'd rather wait here until the rain has completely stopped.",
+    "guard": {
+      "refused": null,
+      "trimmed": true,
+      "removedMs": 44,
+      "eosMs": 3282
+    },
+    "before": {
+      "durationMs": 3576,
+      "eosMs": 3287,
+      "postEosMs": 289,
+      "roomFloorDb": -62.8,
+      "impulses": [],
+      "lufs": -17.4
+    },
+    "after": {
+      "durationMs": 3532,
+      "eosMs": 3287,
+      "postEosMs": 245,
+      "roomFloorDb": -62.4,
+      "impulses": [],
+      "lufs": -17.3
+    },
+    "finalWord": {
+      "ok": true,
+      "unit": "stopped",
+      "scriptOk": true,
+      "scriptWord": "stopped",
+      "heardBefore": "I'd rather wait here until the rain has completely stopped.",
+      "heardAfter": "I'd rather wait here until the rain has completely stopped."
+    },
+    "deltaMs": 44
+  },
+  {
+    "key": "eng-sal-p1",
+    "voiceKey": "eng-sal",
+    "voice": "Sal",
+    "group": "Other xAI voices",
+    "note": "xAI English \u2014 91 clips in nld_for_eng",
+    "provider": "xai",
+    "voiceId": "sal",
+    "phraseId": "p1",
+    "tail": "CONTROL \u2014 ordinary voiced declarative ending",
+    "text": "I've been trying to learn this for about three months now.",
+    "guard": {
+      "refused": null,
+      "trimmed": false,
+      "removedMs": 0,
+      "eosMs": 2851
+    },
+    "before": {
+      "durationMs": 3000,
+      "eosMs": 2856,
+      "postEosMs": 144,
+      "roomFloorDb": -63.8,
+      "impulses": [],
+      "lufs": -17.1
+    },
+    "after": {
+      "durationMs": 3000,
+      "eosMs": 2856,
+      "postEosMs": 144,
+      "roomFloorDb": -63.8,
+      "impulses": [],
+      "lufs": -17.1
+    },
+    "finalWord": {
+      "ok": true,
+      "unit": "now",
+      "scriptOk": true,
+      "scriptWord": "now",
+      "heardBefore": "I've been trying to learn this for about three months now.",
+      "heardAfter": "I've been trying to learn this for about three months now."
+    },
+    "deltaMs": 0
+  },
+  {
+    "key": "eng-sal-p2",
+    "voiceKey": "eng-sal",
+    "voice": "Sal",
+    "group": "Other xAI voices",
+    "note": "xAI English \u2014 91 clips in nld_for_eng",
+    "provider": "xai",
+    "voiceId": "sal",
+    "phraseId": "p2",
+    "tail": "HARD \u2014 word-final /p/ burst after an unstressed syllable",
+    "text": "I think that after all of this we should probably just stop.",
+    "guard": {
+      "refused": null,
+      "trimmed": true,
+      "removedMs": 20,
+      "eosMs": 3378
+    },
+    "before": {
+      "durationMs": 3648,
+      "eosMs": 3488,
+      "postEosMs": 160,
+      "roomFloorDb": -63.3,
+      "impulses": [],
+      "lufs": -16.9
+    },
+    "after": {
+      "durationMs": 3628,
+      "eosMs": 3483,
+      "postEosMs": 145,
+      "roomFloorDb": -62.9,
+      "impulses": [],
+      "lufs": -16.9
+    },
+    "finalWord": {
+      "ok": true,
+      "unit": "stop",
+      "scriptOk": true,
+      "scriptWord": "stop",
+      "heardBefore": "I think that after all of this, we should probably just stop.",
+      "heardAfter": "I think that after all of this, we should probably just stop."
+    },
+    "deltaMs": 20
+  },
+  {
+    "key": "eng-sal-p3",
+    "voiceKey": "eng-sal",
+    "voice": "Sal",
+    "group": "Other xAI voices",
+    "note": "xAI English \u2014 91 clips in nld_for_eng",
+    "provider": "xai",
+    "voiceId": "sal",
+    "phraseId": "p3",
+    "tail": "HARD \u2014 voiceless fricative /\u03b8/, the quietest ending English has",
+    "text": "By the end of it, what she said was barely more than a breath.",
+    "guard": {
+      "refused": null,
+      "trimmed": false,
+      "removedMs": 0,
+      "eosMs": 3292
+    },
+    "before": {
+      "durationMs": 3480,
+      "eosMs": 3297,
+      "postEosMs": 183,
+      "roomFloorDb": -62.4,
+      "impulses": [],
+      "lufs": -16.5
+    },
+    "after": {
+      "durationMs": 3480,
+      "eosMs": 3297,
+      "postEosMs": 183,
+      "roomFloorDb": -62.4,
+      "impulses": [],
+      "lufs": -16.5
+    },
+    "finalWord": {
+      "ok": true,
+      "unit": "breath",
+      "scriptOk": true,
+      "scriptWord": "breath",
+      "heardBefore": "By the end of it, what she said was barely more than a breath.",
+      "heardAfter": "By the end of it, what she said was barely more than a breath."
+    },
+    "deltaMs": 0
+  },
+  {
+    "key": "eng-sal-p4",
+    "voiceKey": "eng-sal",
+    "voice": "Sal",
+    "group": "Other xAI voices",
+    "note": "xAI English \u2014 91 clips in nld_for_eng",
+    "provider": "xai",
+    "voiceId": "sal",
+    "phraseId": "p4",
+    "tail": "HARD \u2014 final sibilant cluster, high-frequency and low-energy",
+    "text": "She told me the buses always leave from the other entrance.",
+    "guard": {
+      "refused": null,
+      "trimmed": false,
+      "removedMs": 0,
+      "eosMs": 3302
+    },
+    "before": {
+      "durationMs": 3480,
+      "eosMs": 3307,
+      "postEosMs": 173,
+      "roomFloorDb": -59.1,
+      "impulses": [],
+      "lufs": -16.6
+    },
+    "after": {
+      "durationMs": 3480,
+      "eosMs": 3307,
+      "postEosMs": 173,
+      "roomFloorDb": -59.1,
+      "impulses": [],
+      "lufs": -16.6
+    },
+    "finalWord": {
+      "ok": true,
+      "unit": "entrance",
+      "scriptOk": true,
+      "scriptWord": "entrance",
+      "heardBefore": "She told me the buses always leave from the other entrance.",
+      "heardAfter": "She told me the buses always leave from the other entrance."
+    },
+    "deltaMs": 0
+  },
+  {
+    "key": "eng-sal-p5",
+    "voiceKey": "eng-sal",
+    "voice": "Sal",
+    "group": "Other xAI voices",
+    "note": "xAI English \u2014 91 clips in nld_for_eng",
+    "provider": "xai",
+    "voiceId": "sal",
+    "phraseId": "p5",
+    "tail": "HARD \u2014 final /t/ closing a /pt/ cluster",
+    "text": "I'd rather wait here until the rain has completely stopped.",
+    "guard": {
+      "refused": null,
+      "trimmed": false,
+      "removedMs": 0,
+      "eosMs": 3167
+    },
+    "before": {
+      "durationMs": 3408,
+      "eosMs": 3167,
+      "postEosMs": 241,
+      "roomFloorDb": -63.6,
+      "impulses": [],
+      "lufs": -17
+    },
+    "after": {
+      "durationMs": 3408,
+      "eosMs": 3167,
+      "postEosMs": 241,
+      "roomFloorDb": -63.6,
+      "impulses": [],
+      "lufs": -17
+    },
+    "finalWord": {
+      "ok": true,
+      "unit": "stopped",
+      "scriptOk": true,
+      "scriptWord": "stopped",
+      "heardBefore": "I'd rather wait here until the rain has completely stopped.",
+      "heardAfter": "I'd rather wait here until the rain has completely stopped."
+    },
+    "deltaMs": 0
+  }
+]

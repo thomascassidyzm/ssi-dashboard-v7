@@ -71,6 +71,7 @@ const veracity = require('../services/audio-veracity.cjs')
 process.env.PHASE8_NO_LISTEN = '1'
 const p8 = require('../services/phases/phase8-audio-v13.cjs')
 const { toBcp47 } = require('../services/voice-discovery-service.cjs')
+const { tryCanonicalLanguage, tryCanonicalVoiceId } = require('../services/shared/clip-identity.cjs')
 
 const arg = (f) => { const i = process.argv.indexOf(f); return i > -1 ? process.argv[i + 1] : null }
 const COURSE = process.argv[2]
@@ -175,6 +176,22 @@ async function renderVerified (row, tmpDir) {
       if (error || !row) { console.log(`${prefix} gone — skip`); continue }
       if (row.role !== 'presentation') { console.log(`${prefix} role=${row.role}, not presentation — REFUSED`); continue }
       if (row.origin === 'human') { console.log(`${prefix} origin=human — REFUSED`); continue }
+      // The replacement is written under the CANONICAL identity instead of
+      // copying the old row's spelling verbatim — a repair that faithfully
+      // preserves the drift it found is how both spellings stay alive. The
+      // check runs BEFORE the render, so a row whose own language or voice
+      // cannot be canonicalised is refused at zero TTS cost and nothing is
+      // touched. (The render itself still decodes the OLD row's voice_id, so
+      // the replacement is the same voice — decodeVoiceId, above.)
+      const canonical = {
+        language: tryCanonicalLanguage(row.language),
+        voice_id: tryCanonicalVoiceId(row.voice_id),
+      }
+      if (!canonical.language || !canonical.voice_id) {
+        console.log(`${prefix} language=${JSON.stringify(row.language)} voice_id=${JSON.stringify(row.voice_id)} not canonicalisable — REFUSED`)
+        log.push({ id, action: 'refused-uncanonicalisable', language: row.language, voice_id: row.voice_id })
+        continue
+      }
       old = row
       const label = `${prefix} ${JSON.stringify(row.text).slice(0, 46)}`
 
@@ -239,9 +256,9 @@ async function renderVerified (row, tmpDir) {
           text: row.text,
           text_normalized: row.text_normalized,
           // text_stripped is a GENERATED column — inserting it is an error.
-          language: row.language,
+          language: canonical.language,
           role: row.role,
-          voice_id: row.voice_id,
+          voice_id: canonical.voice_id,
           origin: row.origin,
           lego_id: row.lego_id,
           sequence: row.sequence,

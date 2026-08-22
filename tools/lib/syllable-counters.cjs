@@ -3,6 +3,26 @@
  * pod tooling (tools/insert-ellipsis-seams.cjs). Text-only heuristics, no
  * external dependency or dictionary lookup.
  *
+ * ┌───────────────────────────────────────────────────────────────────────┐
+ * │ KNOWN, NAMED DUPLICATION — this file has a TWIN in the other repo:    │
+ * │   ssi-learning-app/packages/core/src/text/syllables.ts                │
+ * │ That file is a VERBATIM TypeScript port of this one — same registry,  │
+ * │ same per-language options, same throw-on-unregistered contract — and  │
+ * │ the fixtures in syllable-counters.test.cjs are ported alongside it    │
+ * │ (packages/core/src/text/syllables.test.ts) so equivalence is provable │
+ * │ rather than assumed. The player uses it for Easy mode's max-syllables │
+ * │ phrase skip.                                                          │
+ * │                                                                       │
+ * │ This is DEBT, not a resolved design. Two repos, two copies, no build- │
+ * │ time link: a rule changed here and not there silently diverges the    │
+ * │ player's phrase-skip from this tooling. It is deliberate for now      │
+ * │ because @ssi/core cannot be imported from these CommonJS tool scripts │
+ * │ and this repo is not a publishable dependency of the player. THE FIX, │
+ * │ when someone pays for it, is to make ONE of them the package the      │
+ * │ other consumes. Until then: any change to either file MUST be         │
+ * │ mirrored to the other, fixtures included.                             │
+ * └───────────────────────────────────────────────────────────────────────┘
+ *
  * hrv is the ORIGINAL Croatian counter (kept byte-identical to the version
  * insert-ellipsis-seams.cjs shipped with before this registry existed — same
  * vowel + syllabic-r rule, same output for the same input). Every other
@@ -159,4 +179,33 @@ function countSyllables(text, langCode) {
   return fn(text)
 }
 
-module.exports = { countSyllables, registerCounter, REGISTRY, makeVowelGroupCounter, countSyllablesHrv }
+/**
+ * Is there a counter for this language? Ask this BEFORE countSyllables in any
+ * caller that must not throw — that is exactly how the speaking script's
+ * known-side review filter stays INERT (and says so) on a course whose known
+ * language has no counter, instead of silently counting it with another
+ * language's rules.
+ *
+ * Mirrors hasSyllableCounter in the twin (packages/core/src/text/syllables.ts).
+ */
+function hasSyllableCounter(langCode) {
+  return Boolean(REGISTRY[langCode])
+}
+
+/**
+ * Normalise a course's language tag to a registry key: 'eng-GB' / 'eng_US' /
+ * 'ENG' all resolve to 'eng'. Mirrors syllableLangOf in the twin.
+ */
+function syllableLangOf(lang) {
+  return String(lang || '').split(/[-_]/)[0].toLowerCase()
+}
+
+module.exports = {
+  countSyllables,
+  hasSyllableCounter,
+  syllableLangOf,
+  registerCounter,
+  REGISTRY,
+  makeVowelGroupCounter,
+  countSyllablesHrv,
+}

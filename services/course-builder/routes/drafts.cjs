@@ -6,7 +6,7 @@
 const { Router } = require('express');
 const { isChinese } = require('../lib/language-config.cjs');
 const { normalizePhrase, normalizeForZUT, normalizeForStorage, normalizeForContainment, extractVocab } = require('../lib/text-normalization.cjs');
-const { makePhraseId, computePhraseRole, computeLegoPosition, usesBuildUseFormat, generateBuildupPhrases } = require('../lib/phrase-structure.cjs');
+const { makePhraseId, computePhraseRole, computeLegoPosition, usesBuildUseFormat, generateBuildupPhrases, partitionBareLegoPhrases } = require('../lib/phrase-structure.cjs');
 const { loadTranslationVocab, invalidateVocabCache } = require('../lib/vocab-cache.cjs');
 
 module.exports = function(ctx) {
@@ -385,8 +385,16 @@ Submit each fixed seed: curl -s -X POST "http://localhost:3471/api/seed/complete
 
           // BUILD/USE format
           if (usesBuildUseFormat(lego)) {
-            const buildPhrases = lego.build || [];
-            const usePhrases = lego.use || [];
+            // A phrase that IS the LEGO is padding, never practice — drop it
+            // before it reaches a row (phrase-structure.cjs isBareLegoPhrase).
+            const buildSplit = partitionBareLegoPhrases(lego.build || [], lego.target);
+            const useSplit = partitionBareLegoPhrases(lego.use || [], lego.target);
+            const droppedBare = buildSplit.bare.length + useSplit.bare.length;
+            if (droppedBare > 0) {
+              console.log(`  ⚠ S${draft.seed_number}L${lego.idx}: dropped ${droppedBare} bare-LEGO phrase(s) ("${lego.target}")`);
+            }
+            const buildPhrases = buildSplit.kept;
+            const usePhrases = useSplit.kept;
 
             const buildRows = buildPhrases.map((p, i) => {
               roleCounts.build++;
@@ -438,9 +446,13 @@ Submit each fixed seed: curl -s -X POST "http://localhost:3471/api/seed/complete
 
           } else if (lego.phrases && lego.phrases.length > 0) {
             // Legacy format
+            const legacyBare = partitionBareLegoPhrases(lego.phrases, lego.target);
+            if (legacyBare.bare.length > 0) {
+              console.log(`  ⚠ S${draft.seed_number}L${lego.idx}: dropped ${legacyBare.bare.length} bare-LEGO phrase(s) ("${lego.target}")`);
+            }
             const buildupNormalized = new Set(allPhraseRows.map(p => normalizePhrase(p.target_text)));
             const seenNormalized = new Set();
-            const dedupedPhrases = lego.phrases.filter(p => {
+            const dedupedPhrases = legacyBare.kept.filter(p => {
               const norm = normalizePhrase(p.target);
               if (buildupNormalized.has(norm) || seenNormalized.has(norm)) return false;
               seenNormalized.add(norm);

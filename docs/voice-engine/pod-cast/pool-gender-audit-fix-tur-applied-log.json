@@ -1,0 +1,2607 @@
+{
+  "ran_at": "2026-08-11T23:35:17.296Z",
+  "mode": "applied",
+  "counts": {
+    "pools": 46,
+    "entries": 145,
+    "ok": 95,
+    "mismatch": 2,
+    "absent": 0,
+    "unverifiable": 48
+  },
+  "rows": [
+    {
+      "pool": "ara",
+      "slot": "f",
+      "index": 0,
+      "provider": "xai",
+      "voice_id": "025a38c5",
+      "name": "Yasmin",
+      "verdict": "unverifiable",
+      "catalogue_gender": null
+    },
+    {
+      "pool": "ara",
+      "slot": "f",
+      "index": 1,
+      "provider": "azure",
+      "voice_id": "ar-SA-ZariyahNeural",
+      "name": "Zariyah",
+      "verdict": "ok",
+      "catalogue_gender": "f",
+      "locale": "ar-SA"
+    },
+    {
+      "pool": "ara",
+      "slot": "m",
+      "index": 0,
+      "provider": "xai",
+      "voice_id": "5f0c2251",
+      "name": "Youssef",
+      "verdict": "unverifiable",
+      "catalogue_gender": null
+    },
+    {
+      "pool": "ara",
+      "slot": "m",
+      "index": 1,
+      "provider": "xai",
+      "voice_id": "f4b9d6fc",
+      "name": "Omar",
+      "verdict": "unverifiable",
+      "catalogue_gender": null
+    },
+    {
+      "pool": "ara",
+      "slot": "m",
+      "index": 2,
+      "provider": "azure",
+      "voice_id": "ar-SA-HamedNeural",
+      "name": "Hamed",
+      "verdict": "ok",
+      "catalogue_gender": "m",
+      "locale": "ar-SA"
+    },
+    {
+      "pool": "ben",
+      "slot": "f",
+      "index": 0,
+      "provider": "azure",
+      "voice_id": "bn-IN-TanishaaNeural",
+      "name": "Tanishaa",
+      "verdict": "ok",
+      "catalogue_gender": "f",
+      "locale": "bn-IN"
+    },
+    {
+      "pool": "ben",
+      "slot": "m",
+      "index": 0,
+      "provider": "azure",
+      "voice_id": "bn-IN-BashkarNeural",
+      "name": "Bashkar",
+      "verdict": "ok",
+      "catalogue_gender": "m",
+      "locale": "bn-IN"
+    },
+    {
+      "pool": "bul",
+      "slot": "f",
+      "index": 0,
+      "provider": "azure",
+      "voice_id": "bg-BG-KalinaNeural",
+      "name": "Kalina",
+      "verdict": "ok",
+      "catalogue_gender": "f",
+      "locale": "bg-BG"
+    },
+    {
+      "pool": "bul",
+      "slot": "m",
+      "index": 0,
+      "provider": "azure",
+      "voice_id": "bg-BG-BorislavNeural",
+      "name": "Borislav",
+      "verdict": "ok",
+      "catalogue_gender": "m",
+      "locale": "bg-BG"
+    },
+    {
+      "pool": "cat",
+      "slot": "f",
+      "index": 0,
+      "provider": "xai",
+      "voice_id": "4d3af3e1",
+      "name": "Mireia",
+      "verdict": "unverifiable",
+      "catalogue_gender": null
+    },
+    {
+      "pool": "cat",
+      "slot": "f",
+      "index": 1,
+      "provider": "xai",
+      "voice_id": "155d4e9b",
+      "name": "Nuria",
+      "verdict": "unverifiable",
+      "catalogue_gender": null
+    },
+    {
+      "pool": "cat",
+      "slot": "f",
+      "index": 2,
+      "provider": "azure",
+      "voice_id": "ca-ES-AlbaNeural",
+      "name": "Alba",
+      "verdict": "ok",
+      "catalogue_gender": "f",
+      "locale": "ca-ES"
+    },
+    {
+      "pool": "cat",
+      "slot": "m",
+      "index": 0,
+      "provider": "xai",
+      "voice_id": "c630b236",
+      "name": "Jordi",
+      "verdict": "unverifiable",
+      "catalogue_gender": null
+    },
+    {
+      "pool": "cat",
+      "slot": "m",
+      "index": 1,
+      "provider": "xai",
+      "voice_id": "e5d4f53e",
+      "name": "Pol",
+      "verdict": "unverifiable",
+      "catalogue_gender": null
+    },
+    {
+      "pool": "cat",
+      "slot": "m",
+      "index": 2,
+      "provider": "azure",
+      "voice_id": "ca-ES-EnricNeural",
+      "name": "Enric",
+      "verdict": "ok",
+      "catalogue_gender": "m",
+      "locale": "ca-ES"
+    },
+    {
+      "pool": "dan",
+      "slot": "f",
+      "index": 0,
+      "provider": "xai",
+      "voice_id": "a69bdfe7",
+      "name": "Astrid",
+      "verdict": "unverifiable",
+      "catalogue_gender": null
+    },
+    {
+      "pool": "dan",
+      "slot": "f",
+      "index": 1,
+      "provider": "xai",
+      "voice_id": "47519c37",
+      "name": "Freja",
+      "verdict": "unverifiable",
+      "catalogue_gender": null
+    },
+    {
+      "pool": "dan",
+      "slot": "f",
+      "index": 2,
+      "provider": "azure",
+      "voice_id": "da-DK-ChristelNeural",
+      "name": "Christel",
+      "verdict": "ok",
+      "catalogue_gender": "f",
+      "locale": "da-DK"
+    },
+    {
+      "pool": "dan",
+      "slot": "m",
+      "index": 0,
+      "provider": "xai",
+      "voice_id": "cfccf16b",
+      "name": "Mads",
+      "verdict": "unverifiable",
+      "catalogue_gender": null
+    },
+    {
+      "pool": "dan",
+      "slot": "m",
+      "index": 1,
+      "provider": "xai",
+      "voice_id": "524f4cb1",
+      "name": "Lucas",
+      "verdict": "unverifiable",
+      "catalogue_gender": null
+    },
+    {
+      "pool": "dan",
+      "slot": "m",
+      "index": 2,
+      "provider": "azure",
+      "voice_id": "da-DK-JeppeNeural",
+      "name": "Jeppe",
+      "verdict": "ok",
+      "catalogue_gender": "m",
+      "locale": "da-DK"
+    },
+    {
+      "pool": "deu",
+      "slot": "f",
+      "index": 0,
+      "provider": "xai",
+      "voice_id": "44c91d64",
+      "name": "Sonja",
+      "verdict": "unverifiable",
+      "catalogue_gender": null
+    },
+    {
+      "pool": "deu",
+      "slot": "f",
+      "index": 1,
+      "provider": "azure",
+      "voice_id": "de-DE-KatjaNeural",
+      "name": "Katja",
+      "verdict": "ok",
+      "catalogue_gender": "f",
+      "locale": "de-DE"
+    },
+    {
+      "pool": "deu",
+      "slot": "m",
+      "index": 0,
+      "provider": "xai",
+      "voice_id": "e1fc5a89",
+      "name": "Felix",
+      "verdict": "unverifiable",
+      "catalogue_gender": null
+    },
+    {
+      "pool": "deu",
+      "slot": "m",
+      "index": 1,
+      "provider": "azure",
+      "voice_id": "de-DE-ConradNeural",
+      "name": "Conrad",
+      "verdict": "ok",
+      "catalogue_gender": "m",
+      "locale": "de-DE"
+    },
+    {
+      "pool": "ell",
+      "slot": "f",
+      "index": 0,
+      "provider": "azure",
+      "voice_id": "el-GR-AthinaNeural",
+      "name": "Athina",
+      "verdict": "ok",
+      "catalogue_gender": "f",
+      "locale": "el-GR"
+    },
+    {
+      "pool": "ell",
+      "slot": "m",
+      "index": 0,
+      "provider": "azure",
+      "voice_id": "el-GR-NestorasNeural",
+      "name": "Nestoras",
+      "verdict": "ok",
+      "catalogue_gender": "m",
+      "locale": "el-GR"
+    },
+    {
+      "pool": "eng",
+      "slot": "f",
+      "index": 0,
+      "provider": "xai",
+      "voice_id": "bedd6226",
+      "name": "Olivia",
+      "verdict": "unverifiable",
+      "catalogue_gender": null
+    },
+    {
+      "pool": "eng",
+      "slot": "f",
+      "index": 1,
+      "provider": "azure",
+      "voice_id": "en-GB-SoniaNeural",
+      "name": "Sonia",
+      "verdict": "ok",
+      "catalogue_gender": "f",
+      "locale": "en-GB"
+    },
+    {
+      "pool": "eng",
+      "slot": "f",
+      "index": 2,
+      "provider": "azure",
+      "voice_id": "en-GB-LibbyNeural",
+      "name": "Libby",
+      "verdict": "ok",
+      "catalogue_gender": "f",
+      "locale": "en-GB"
+    },
+    {
+      "pool": "eng",
+      "slot": "f",
+      "index": 3,
+      "provider": "azure",
+      "voice_id": "en-GB-HollieNeural",
+      "name": "Hollie",
+      "verdict": "ok",
+      "catalogue_gender": "f",
+      "locale": "en-GB"
+    },
+    {
+      "pool": "eng",
+      "slot": "f",
+      "index": 4,
+      "provider": "azure",
+      "voice_id": "en-GB-MaisieNeural",
+      "name": "Maisie",
+      "verdict": "ok",
+      "catalogue_gender": "f",
+      "locale": "en-GB"
+    },
+    {
+      "pool": "eng",
+      "slot": "m",
+      "index": 0,
+      "provider": "xai",
+      "voice_id": "gfzdpspr5fdp",
+      "name": "Tom",
+      "verdict": "unverifiable",
+      "catalogue_gender": null
+    },
+    {
+      "pool": "eng",
+      "slot": "m",
+      "index": 1,
+      "provider": "xai",
+      "voice_id": "f15c6a6a",
+      "name": "Henry",
+      "verdict": "unverifiable",
+      "catalogue_gender": null
+    },
+    {
+      "pool": "eng",
+      "slot": "m",
+      "index": 2,
+      "provider": "azure",
+      "voice_id": "en-GB-RyanNeural",
+      "name": "Ryan",
+      "verdict": "ok",
+      "catalogue_gender": "m",
+      "locale": "en-GB"
+    },
+    {
+      "pool": "eng",
+      "slot": "m",
+      "index": 3,
+      "provider": "azure",
+      "voice_id": "en-GB-ThomasNeural",
+      "name": "Thomas",
+      "verdict": "ok",
+      "catalogue_gender": "m",
+      "locale": "en-GB"
+    },
+    {
+      "pool": "eng",
+      "slot": "m",
+      "index": 4,
+      "provider": "azure",
+      "voice_id": "en-GB-AlfieNeural",
+      "name": "Alfie",
+      "verdict": "ok",
+      "catalogue_gender": "m",
+      "locale": "en-GB"
+    },
+    {
+      "pool": "est",
+      "slot": "f",
+      "index": 0,
+      "provider": "azure",
+      "voice_id": "et-EE-AnuNeural",
+      "name": "Anu",
+      "verdict": "ok",
+      "catalogue_gender": "f",
+      "locale": "et-EE"
+    },
+    {
+      "pool": "est",
+      "slot": "m",
+      "index": 0,
+      "provider": "azure",
+      "voice_id": "et-EE-KertNeural",
+      "name": "Kert",
+      "verdict": "ok",
+      "catalogue_gender": "m",
+      "locale": "et-EE"
+    },
+    {
+      "pool": "eus",
+      "slot": "f",
+      "index": 0,
+      "provider": "azure",
+      "voice_id": "eu-ES-AinhoaNeural",
+      "name": "Ainhoa",
+      "verdict": "ok",
+      "catalogue_gender": "f",
+      "locale": "eu-ES"
+    },
+    {
+      "pool": "eus",
+      "slot": "m",
+      "index": 0,
+      "provider": "azure",
+      "voice_id": "eu-ES-AnderNeural",
+      "name": "Ander",
+      "verdict": "ok",
+      "catalogue_gender": "m",
+      "locale": "eu-ES"
+    },
+    {
+      "pool": "fas",
+      "slot": "f",
+      "index": 0,
+      "provider": "azure",
+      "voice_id": "fa-IR-DilaraNeural",
+      "name": "Dilara",
+      "verdict": "ok",
+      "catalogue_gender": "f",
+      "locale": "fa-IR"
+    },
+    {
+      "pool": "fas",
+      "slot": "m",
+      "index": 0,
+      "provider": "azure",
+      "voice_id": "fa-IR-FaridNeural",
+      "name": "Farid",
+      "verdict": "ok",
+      "catalogue_gender": "m",
+      "locale": "fa-IR"
+    },
+    {
+      "pool": "fin",
+      "slot": "f",
+      "index": 0,
+      "provider": "azure",
+      "voice_id": "fi-FI-SelmaNeural",
+      "name": "Selma",
+      "verdict": "ok",
+      "catalogue_gender": "f",
+      "locale": "fi-FI"
+    },
+    {
+      "pool": "fin",
+      "slot": "m",
+      "index": 0,
+      "provider": "azure",
+      "voice_id": "fi-FI-HarriNeural",
+      "name": "Harri",
+      "verdict": "ok",
+      "catalogue_gender": "m",
+      "locale": "fi-FI"
+    },
+    {
+      "pool": "fra",
+      "slot": "f",
+      "index": 0,
+      "provider": "azure",
+      "voice_id": "fr-FR-CelesteNeural",
+      "name": "Celeste",
+      "verdict": "ok",
+      "catalogue_gender": "f",
+      "locale": "fr-FR"
+    },
+    {
+      "pool": "fra",
+      "slot": "m",
+      "index": 0,
+      "provider": "azure",
+      "voice_id": "fr-FR-HenriNeural",
+      "name": "Henri",
+      "verdict": "ok",
+      "catalogue_gender": "m",
+      "locale": "fr-FR"
+    },
+    {
+      "pool": "gle",
+      "slot": "f",
+      "index": 0,
+      "provider": "azure",
+      "voice_id": "ga-IE-OrlaNeural",
+      "name": "Orla",
+      "verdict": "ok",
+      "catalogue_gender": "f",
+      "locale": "ga-IE"
+    },
+    {
+      "pool": "gle",
+      "slot": "m",
+      "index": 0,
+      "provider": "azure",
+      "voice_id": "ga-IE-ColmNeural",
+      "name": "Colm",
+      "verdict": "ok",
+      "catalogue_gender": "m",
+      "locale": "ga-IE"
+    },
+    {
+      "pool": "guj",
+      "slot": "f",
+      "index": 0,
+      "provider": "azure",
+      "voice_id": "gu-IN-DhwaniNeural",
+      "name": "Dhwani",
+      "verdict": "ok",
+      "catalogue_gender": "f",
+      "locale": "gu-IN"
+    },
+    {
+      "pool": "guj",
+      "slot": "m",
+      "index": 0,
+      "provider": "azure",
+      "voice_id": "gu-IN-NiranjanNeural",
+      "name": "Niranjan",
+      "verdict": "ok",
+      "catalogue_gender": "m",
+      "locale": "gu-IN"
+    },
+    {
+      "pool": "heb",
+      "slot": "f",
+      "index": 0,
+      "provider": "azure",
+      "voice_id": "he-IL-HilaNeural",
+      "name": "Hila",
+      "verdict": "ok",
+      "catalogue_gender": "f",
+      "locale": "he-IL"
+    },
+    {
+      "pool": "heb",
+      "slot": "m",
+      "index": 0,
+      "provider": "azure",
+      "voice_id": "he-IL-AvriNeural",
+      "name": "Avri",
+      "verdict": "ok",
+      "catalogue_gender": "m",
+      "locale": "he-IL"
+    },
+    {
+      "pool": "hin",
+      "slot": "f",
+      "index": 0,
+      "provider": "xai",
+      "voice_id": "a00ce99a",
+      "name": "Priya",
+      "verdict": "unverifiable",
+      "catalogue_gender": null
+    },
+    {
+      "pool": "hin",
+      "slot": "f",
+      "index": 1,
+      "provider": "xai",
+      "voice_id": "0735ff93",
+      "name": "Diya",
+      "verdict": "unverifiable",
+      "catalogue_gender": null
+    },
+    {
+      "pool": "hin",
+      "slot": "f",
+      "index": 2,
+      "provider": "azure",
+      "voice_id": "hi-IN-AartiNeural",
+      "name": "Aarti",
+      "verdict": "ok",
+      "catalogue_gender": "f",
+      "locale": "hi-IN"
+    },
+    {
+      "pool": "hin",
+      "slot": "m",
+      "index": 0,
+      "provider": "xai",
+      "voice_id": "bcf738e4",
+      "name": "Vihaan",
+      "verdict": "unverifiable",
+      "catalogue_gender": null
+    },
+    {
+      "pool": "hin",
+      "slot": "m",
+      "index": 1,
+      "provider": "azure",
+      "voice_id": "hi-IN-KunalNeural",
+      "name": "Kunal",
+      "verdict": "ok",
+      "catalogue_gender": "m",
+      "locale": "hi-IN"
+    },
+    {
+      "pool": "hrv",
+      "slot": "f",
+      "index": 0,
+      "provider": "azure",
+      "voice_id": "hr-HR-GabrijelaNeural",
+      "name": "Gabrijela",
+      "verdict": "ok",
+      "catalogue_gender": "f",
+      "locale": "hr-HR"
+    },
+    {
+      "pool": "hrv",
+      "slot": "m",
+      "index": 0,
+      "provider": "azure",
+      "voice_id": "hr-HR-SreckoNeural",
+      "name": "Srecko",
+      "verdict": "ok",
+      "catalogue_gender": "m",
+      "locale": "hr-HR"
+    },
+    {
+      "pool": "hye",
+      "slot": "f",
+      "index": 0,
+      "provider": "azure",
+      "voice_id": "hy-AM-AnahitNeural",
+      "name": "Anahit",
+      "verdict": "ok",
+      "catalogue_gender": "f",
+      "locale": "hy-AM"
+    },
+    {
+      "pool": "hye",
+      "slot": "m",
+      "index": 0,
+      "provider": "azure",
+      "voice_id": "hy-AM-HaykNeural",
+      "name": "Hayk",
+      "verdict": "ok",
+      "catalogue_gender": "m",
+      "locale": "hy-AM"
+    },
+    {
+      "pool": "isl",
+      "slot": "f",
+      "index": 0,
+      "provider": "azure",
+      "voice_id": "is-IS-GudrunNeural",
+      "name": "Gudrun",
+      "verdict": "ok",
+      "catalogue_gender": "f",
+      "locale": "is-IS"
+    },
+    {
+      "pool": "isl",
+      "slot": "m",
+      "index": 0,
+      "provider": "azure",
+      "voice_id": "is-IS-GunnarNeural",
+      "name": "Gunnar",
+      "verdict": "ok",
+      "catalogue_gender": "m",
+      "locale": "is-IS"
+    },
+    {
+      "pool": "ita",
+      "slot": "f",
+      "index": 0,
+      "provider": "xai",
+      "voice_id": "43423dee",
+      "name": "Giulia",
+      "verdict": "unverifiable",
+      "catalogue_gender": null
+    },
+    {
+      "pool": "ita",
+      "slot": "f",
+      "index": 1,
+      "provider": "azure",
+      "voice_id": "it-IT-ElsaNeural",
+      "name": "Elsa",
+      "verdict": "ok",
+      "catalogue_gender": "f",
+      "locale": "it-IT"
+    },
+    {
+      "pool": "ita",
+      "slot": "m",
+      "index": 0,
+      "provider": "xai",
+      "voice_id": "57700f39",
+      "name": "Leon",
+      "verdict": "unverifiable",
+      "catalogue_gender": null
+    },
+    {
+      "pool": "ita",
+      "slot": "m",
+      "index": 1,
+      "provider": "xai",
+      "voice_id": "1ebfec36",
+      "name": "Marco",
+      "verdict": "unverifiable",
+      "catalogue_gender": null
+    },
+    {
+      "pool": "ita",
+      "slot": "m",
+      "index": 2,
+      "provider": "azure",
+      "voice_id": "it-IT-BenignoNeural",
+      "name": "Benigno",
+      "verdict": "ok",
+      "catalogue_gender": "m",
+      "locale": "it-IT"
+    },
+    {
+      "pool": "jpn",
+      "slot": "f",
+      "index": 0,
+      "provider": "azure",
+      "voice_id": "ja-JP-MayuNeural",
+      "name": "Mayu",
+      "verdict": "ok",
+      "catalogue_gender": "f",
+      "locale": "ja-JP"
+    },
+    {
+      "pool": "jpn",
+      "slot": "m",
+      "index": 0,
+      "provider": "azure",
+      "voice_id": "ja-JP-NaokiNeural",
+      "name": "Naoki",
+      "verdict": "ok",
+      "catalogue_gender": "m",
+      "locale": "ja-JP"
+    },
+    {
+      "pool": "kor",
+      "slot": "f",
+      "index": 0,
+      "provider": "azure",
+      "voice_id": "ko-KR-YuJinNeural",
+      "name": "YuJin",
+      "verdict": "ok",
+      "catalogue_gender": "f",
+      "locale": "ko-KR"
+    },
+    {
+      "pool": "kor",
+      "slot": "m",
+      "index": 0,
+      "provider": "xai",
+      "voice_id": "d74461c6",
+      "name": "Hyun-woo",
+      "verdict": "unverifiable",
+      "catalogue_gender": null
+    },
+    {
+      "pool": "kor",
+      "slot": "m",
+      "index": 1,
+      "provider": "azure",
+      "voice_id": "ko-KR-GookMinNeural",
+      "name": "GookMin",
+      "verdict": "ok",
+      "catalogue_gender": "m",
+      "locale": "ko-KR"
+    },
+    {
+      "pool": "lav",
+      "slot": "f",
+      "index": 0,
+      "provider": "azure",
+      "voice_id": "lv-LV-EveritaNeural",
+      "name": "Everita",
+      "verdict": "ok",
+      "catalogue_gender": "f",
+      "locale": "lv-LV"
+    },
+    {
+      "pool": "lav",
+      "slot": "m",
+      "index": 0,
+      "provider": "azure",
+      "voice_id": "lv-LV-NilsNeural",
+      "name": "Nils",
+      "verdict": "ok",
+      "catalogue_gender": "m",
+      "locale": "lv-LV"
+    },
+    {
+      "pool": "lit",
+      "slot": "f",
+      "index": 0,
+      "provider": "azure",
+      "voice_id": "lt-LT-OnaNeural",
+      "name": "Ona",
+      "verdict": "ok",
+      "catalogue_gender": "f",
+      "locale": "lt-LT"
+    },
+    {
+      "pool": "lit",
+      "slot": "m",
+      "index": 0,
+      "provider": "azure",
+      "voice_id": "lt-LT-LeonasNeural",
+      "name": "Leonas",
+      "verdict": "ok",
+      "catalogue_gender": "m",
+      "locale": "lt-LT"
+    },
+    {
+      "pool": "nep",
+      "slot": "f",
+      "index": 0,
+      "provider": "azure",
+      "voice_id": "ne-NP-HemkalaNeural",
+      "name": "Hemkala",
+      "verdict": "ok",
+      "catalogue_gender": "f",
+      "locale": "ne-NP"
+    },
+    {
+      "pool": "nep",
+      "slot": "m",
+      "index": 0,
+      "provider": "azure",
+      "voice_id": "ne-NP-SagarNeural",
+      "name": "Sagar",
+      "verdict": "ok",
+      "catalogue_gender": "m",
+      "locale": "ne-NP"
+    },
+    {
+      "pool": "nld",
+      "slot": "f",
+      "index": 0,
+      "provider": "xai",
+      "voice_id": "cdb1cec8",
+      "name": "Lieke",
+      "verdict": "unverifiable",
+      "catalogue_gender": null
+    },
+    {
+      "pool": "nld",
+      "slot": "f",
+      "index": 1,
+      "provider": "xai",
+      "voice_id": "6fe32f8a",
+      "name": "Sophie",
+      "verdict": "unverifiable",
+      "catalogue_gender": null
+    },
+    {
+      "pool": "nld",
+      "slot": "f",
+      "index": 2,
+      "provider": "azure",
+      "voice_id": "nl-NL-FennaNeural",
+      "name": "Fenna",
+      "verdict": "ok",
+      "catalogue_gender": "f",
+      "locale": "nl-NL"
+    },
+    {
+      "pool": "nld",
+      "slot": "m",
+      "index": 0,
+      "provider": "xai",
+      "voice_id": "18245f0d",
+      "name": "Bas",
+      "verdict": "unverifiable",
+      "catalogue_gender": null
+    },
+    {
+      "pool": "nld",
+      "slot": "m",
+      "index": 1,
+      "provider": "xai",
+      "voice_id": "ef4ce33e",
+      "name": "Daan",
+      "verdict": "unverifiable",
+      "catalogue_gender": null
+    },
+    {
+      "pool": "nld",
+      "slot": "m",
+      "index": 2,
+      "provider": "azure",
+      "voice_id": "nl-NL-MaartenNeural",
+      "name": "Maarten",
+      "verdict": "ok",
+      "catalogue_gender": "m",
+      "locale": "nl-NL"
+    },
+    {
+      "pool": "nor",
+      "slot": "f",
+      "index": 0,
+      "provider": "azure",
+      "voice_id": "nb-NO-IselinNeural",
+      "name": "Iselin",
+      "verdict": "ok",
+      "catalogue_gender": "f",
+      "locale": "nb-NO"
+    },
+    {
+      "pool": "nor",
+      "slot": "m",
+      "index": 0,
+      "provider": "azure",
+      "voice_id": "nb-NO-FinnNeural",
+      "name": "Finn",
+      "verdict": "ok",
+      "catalogue_gender": "m",
+      "locale": "nb-NO"
+    },
+    {
+      "pool": "pan",
+      "slot": "f",
+      "index": 0,
+      "provider": "azure",
+      "voice_id": "pa-IN-VaaniNeural",
+      "name": "Vaani",
+      "verdict": "ok",
+      "catalogue_gender": "f",
+      "locale": "pa-IN"
+    },
+    {
+      "pool": "pan",
+      "slot": "m",
+      "index": 0,
+      "provider": "azure",
+      "voice_id": "pa-IN-OjasNeural",
+      "name": "Ojas",
+      "verdict": "ok",
+      "catalogue_gender": "m",
+      "locale": "pa-IN"
+    },
+    {
+      "pool": "pol",
+      "slot": "f",
+      "index": 0,
+      "provider": "xai",
+      "voice_id": "ce19f825",
+      "name": "Magdalena",
+      "verdict": "unverifiable",
+      "catalogue_gender": null
+    },
+    {
+      "pool": "pol",
+      "slot": "f",
+      "index": 1,
+      "provider": "xai",
+      "voice_id": "4984accb",
+      "name": "Zofia",
+      "verdict": "unverifiable",
+      "catalogue_gender": null
+    },
+    {
+      "pool": "pol",
+      "slot": "f",
+      "index": 2,
+      "provider": "azure",
+      "voice_id": "pl-PL-ZofiaNeural",
+      "name": "Zofia",
+      "verdict": "ok",
+      "catalogue_gender": "f",
+      "locale": "pl-PL"
+    },
+    {
+      "pool": "pol",
+      "slot": "m",
+      "index": 0,
+      "provider": "xai",
+      "voice_id": "70071d42",
+      "name": "Tomasz",
+      "verdict": "unverifiable",
+      "catalogue_gender": null
+    },
+    {
+      "pool": "pol",
+      "slot": "m",
+      "index": 1,
+      "provider": "xai",
+      "voice_id": "2902bcfd",
+      "name": "Piotr",
+      "verdict": "unverifiable",
+      "catalogue_gender": null
+    },
+    {
+      "pool": "pol",
+      "slot": "m",
+      "index": 2,
+      "provider": "azure",
+      "voice_id": "pl-PL-MarekNeural",
+      "name": "Marek",
+      "verdict": "ok",
+      "catalogue_gender": "m",
+      "locale": "pl-PL"
+    },
+    {
+      "pool": "por",
+      "slot": "f",
+      "index": 0,
+      "provider": "azure",
+      "voice_id": "pt-PT-RaquelNeural",
+      "name": "Raquel",
+      "verdict": "ok",
+      "catalogue_gender": "f",
+      "locale": "pt-PT"
+    },
+    {
+      "pool": "por",
+      "slot": "m",
+      "index": 0,
+      "provider": "azure",
+      "voice_id": "pt-PT-DuarteNeural",
+      "name": "Duarte",
+      "verdict": "ok",
+      "catalogue_gender": "m",
+      "locale": "pt-PT"
+    },
+    {
+      "pool": "ron",
+      "slot": "f",
+      "index": 0,
+      "provider": "azure",
+      "voice_id": "ro-RO-AlinaNeural",
+      "name": "Alina",
+      "verdict": "ok",
+      "catalogue_gender": "f",
+      "locale": "ro-RO"
+    },
+    {
+      "pool": "ron",
+      "slot": "m",
+      "index": 0,
+      "provider": "azure",
+      "voice_id": "ro-RO-EmilNeural",
+      "name": "Emil",
+      "verdict": "ok",
+      "catalogue_gender": "m",
+      "locale": "ro-RO"
+    },
+    {
+      "pool": "sin",
+      "slot": "f",
+      "index": 0,
+      "provider": "azure",
+      "voice_id": "si-LK-ThiliniNeural",
+      "name": "Thilini",
+      "verdict": "ok",
+      "catalogue_gender": "f",
+      "locale": "si-LK"
+    },
+    {
+      "pool": "sin",
+      "slot": "m",
+      "index": 0,
+      "provider": "azure",
+      "voice_id": "si-LK-SameeraNeural",
+      "name": "Sameera",
+      "verdict": "ok",
+      "catalogue_gender": "m",
+      "locale": "si-LK"
+    },
+    {
+      "pool": "spa",
+      "slot": "f",
+      "index": 0,
+      "provider": "azure",
+      "voice_id": "es-ES-ElviraNeural",
+      "name": "Elvira",
+      "verdict": "ok",
+      "catalogue_gender": "f",
+      "locale": "es-ES"
+    },
+    {
+      "pool": "spa",
+      "slot": "f",
+      "index": 1,
+      "provider": "xai",
+      "voice_id": "f2f41225",
+      "name": "Maria",
+      "verdict": "unverifiable",
+      "catalogue_gender": null
+    },
+    {
+      "pool": "spa",
+      "slot": "f",
+      "index": 2,
+      "provider": "xai",
+      "voice_id": "46a802e3",
+      "name": "Lucia",
+      "verdict": "unverifiable",
+      "catalogue_gender": null
+    },
+    {
+      "pool": "spa",
+      "slot": "m",
+      "index": 0,
+      "provider": "azure",
+      "voice_id": "es-ES-AlvaroNeural",
+      "name": "Alvaro",
+      "verdict": "ok",
+      "catalogue_gender": "m",
+      "locale": "es-ES"
+    },
+    {
+      "pool": "spa",
+      "slot": "m",
+      "index": 1,
+      "provider": "xai",
+      "voice_id": "d2313a0d",
+      "name": "Pablo",
+      "verdict": "unverifiable",
+      "catalogue_gender": null
+    },
+    {
+      "pool": "spa",
+      "slot": "m",
+      "index": 2,
+      "provider": "xai",
+      "voice_id": "1a59f327",
+      "name": "Carlos",
+      "verdict": "unverifiable",
+      "catalogue_gender": null
+    },
+    {
+      "pool": "swa",
+      "slot": "f",
+      "index": 0,
+      "provider": "azure",
+      "voice_id": "sw-KE-ZuriNeural",
+      "name": "Zuri",
+      "verdict": "ok",
+      "catalogue_gender": "f",
+      "locale": "sw-KE"
+    },
+    {
+      "pool": "swa",
+      "slot": "m",
+      "index": 0,
+      "provider": "azure",
+      "voice_id": "sw-KE-RafikiNeural",
+      "name": "Rafiki",
+      "verdict": "ok",
+      "catalogue_gender": "m",
+      "locale": "sw-KE"
+    },
+    {
+      "pool": "swe",
+      "slot": "f",
+      "index": 0,
+      "provider": "xai",
+      "voice_id": "3b312632",
+      "name": "Alice",
+      "verdict": "unverifiable",
+      "catalogue_gender": null
+    },
+    {
+      "pool": "swe",
+      "slot": "f",
+      "index": 1,
+      "provider": "xai",
+      "voice_id": "bab9c92f",
+      "name": "Elsa",
+      "verdict": "unverifiable",
+      "catalogue_gender": null
+    },
+    {
+      "pool": "swe",
+      "slot": "f",
+      "index": 2,
+      "provider": "azure",
+      "voice_id": "sv-SE-SofieNeural",
+      "name": "Sofie",
+      "verdict": "ok",
+      "catalogue_gender": "f",
+      "locale": "sv-SE"
+    },
+    {
+      "pool": "swe",
+      "slot": "m",
+      "index": 0,
+      "provider": "xai",
+      "voice_id": "4c7f16ff",
+      "name": "Oscar",
+      "verdict": "unverifiable",
+      "catalogue_gender": null
+    },
+    {
+      "pool": "swe",
+      "slot": "m",
+      "index": 1,
+      "provider": "xai",
+      "voice_id": "93bea908",
+      "name": "William",
+      "verdict": "unverifiable",
+      "catalogue_gender": null
+    },
+    {
+      "pool": "swe",
+      "slot": "m",
+      "index": 2,
+      "provider": "azure",
+      "voice_id": "sv-SE-MattiasNeural",
+      "name": "Mattias",
+      "verdict": "ok",
+      "catalogue_gender": "m",
+      "locale": "sv-SE"
+    },
+    {
+      "pool": "tam",
+      "slot": "f",
+      "index": 0,
+      "provider": "azure",
+      "voice_id": "ta-LK-SaranyaNeural",
+      "name": "Saranya",
+      "verdict": "ok",
+      "catalogue_gender": "f",
+      "locale": "ta-LK"
+    },
+    {
+      "pool": "tam",
+      "slot": "m",
+      "index": 0,
+      "provider": "azure",
+      "voice_id": "ta-LK-KumarNeural",
+      "name": "Kumar",
+      "verdict": "ok",
+      "catalogue_gender": "m",
+      "locale": "ta-LK"
+    },
+    {
+      "pool": "tha",
+      "slot": "f",
+      "index": 0,
+      "provider": "xai",
+      "voice_id": "a5341c30",
+      "name": "Nicha",
+      "verdict": "unverifiable",
+      "catalogue_gender": null
+    },
+    {
+      "pool": "tha",
+      "slot": "f",
+      "index": 1,
+      "provider": "xai",
+      "voice_id": "330f1e6d",
+      "name": "Pim",
+      "verdict": "unverifiable",
+      "catalogue_gender": null
+    },
+    {
+      "pool": "tha",
+      "slot": "f",
+      "index": 2,
+      "provider": "azure",
+      "voice_id": "th-TH-PremwadeeNeural",
+      "name": "Premwadee",
+      "verdict": "ok",
+      "catalogue_gender": "f",
+      "locale": "th-TH"
+    },
+    {
+      "pool": "tha",
+      "slot": "m",
+      "index": 0,
+      "provider": "xai",
+      "voice_id": "4b7af2d7",
+      "name": "Somchai",
+      "verdict": "unverifiable",
+      "catalogue_gender": null
+    },
+    {
+      "pool": "tha",
+      "slot": "m",
+      "index": 1,
+      "provider": "xai",
+      "voice_id": "0463086e",
+      "name": "Thanawat",
+      "verdict": "unverifiable",
+      "catalogue_gender": null
+    },
+    {
+      "pool": "tha",
+      "slot": "m",
+      "index": 2,
+      "provider": "azure",
+      "voice_id": "th-TH-NiwatNeural",
+      "name": "Niwat",
+      "verdict": "ok",
+      "catalogue_gender": "m",
+      "locale": "th-TH"
+    },
+    {
+      "pool": "tur",
+      "slot": "f",
+      "index": 0,
+      "provider": "azure",
+      "voice_id": "tr-TR-AhmetNeural",
+      "name": "Ahmet",
+      "verdict": "mismatch",
+      "catalogue_gender": "m",
+      "locale": "tr-TR"
+    },
+    {
+      "pool": "tur",
+      "slot": "m",
+      "index": 0,
+      "provider": "xai",
+      "voice_id": "f331ee80",
+      "name": "Ahmet",
+      "verdict": "unverifiable",
+      "catalogue_gender": null
+    },
+    {
+      "pool": "tur",
+      "slot": "m",
+      "index": 1,
+      "provider": "azure",
+      "voice_id": "tr-TR-EmelNeural",
+      "name": "Emel",
+      "verdict": "mismatch",
+      "catalogue_gender": "f",
+      "locale": "tr-TR"
+    },
+    {
+      "pool": "ukr",
+      "slot": "f",
+      "index": 0,
+      "provider": "azure",
+      "voice_id": "uk-UA-PolinaNeural",
+      "name": "Polina",
+      "verdict": "ok",
+      "catalogue_gender": "f",
+      "locale": "uk-UA"
+    },
+    {
+      "pool": "ukr",
+      "slot": "m",
+      "index": 0,
+      "provider": "azure",
+      "voice_id": "uk-UA-OstapNeural",
+      "name": "Ostap",
+      "verdict": "ok",
+      "catalogue_gender": "m",
+      "locale": "uk-UA"
+    },
+    {
+      "pool": "urd",
+      "slot": "f",
+      "index": 0,
+      "provider": "azure",
+      "voice_id": "ur-PK-UzmaNeural",
+      "name": "Uzma",
+      "verdict": "ok",
+      "catalogue_gender": "f",
+      "locale": "ur-PK"
+    },
+    {
+      "pool": "urd",
+      "slot": "m",
+      "index": 0,
+      "provider": "azure",
+      "voice_id": "ur-PK-AsadNeural",
+      "name": "Asad",
+      "verdict": "ok",
+      "catalogue_gender": "m",
+      "locale": "ur-PK"
+    },
+    {
+      "pool": "zho",
+      "slot": "f",
+      "index": 0,
+      "provider": "xai",
+      "voice_id": "e521cc67",
+      "name": "Hui",
+      "verdict": "unverifiable",
+      "catalogue_gender": null
+    },
+    {
+      "pool": "zho",
+      "slot": "f",
+      "index": 1,
+      "provider": "xai",
+      "voice_id": "09b02491",
+      "name": "Mei",
+      "verdict": "unverifiable",
+      "catalogue_gender": null
+    },
+    {
+      "pool": "zho",
+      "slot": "f",
+      "index": 2,
+      "provider": "azure",
+      "voice_id": "zh-CN-XiaoxiaoMultilingualNeural",
+      "name": "Xiaoxiao Multilingual",
+      "verdict": "ok",
+      "catalogue_gender": "f",
+      "locale": "zh-CN"
+    },
+    {
+      "pool": "zho",
+      "slot": "m",
+      "index": 0,
+      "provider": "xai",
+      "voice_id": "9ab26871",
+      "name": "Wei",
+      "verdict": "unverifiable",
+      "catalogue_gender": null
+    },
+    {
+      "pool": "zho",
+      "slot": "m",
+      "index": 1,
+      "provider": "xai",
+      "voice_id": "6997b0ec",
+      "name": "Yang",
+      "verdict": "unverifiable",
+      "catalogue_gender": null
+    },
+    {
+      "pool": "zho",
+      "slot": "m",
+      "index": 2,
+      "provider": "azure",
+      "voice_id": "zh-CN-YunyiMultilingualNeural",
+      "name": "Yunyi Multilingual",
+      "verdict": "ok",
+      "catalogue_gender": "m",
+      "locale": "zh-CN"
+    },
+    {
+      "pool": "ara_sy",
+      "slot": "f",
+      "index": 0,
+      "provider": "azure",
+      "voice_id": "ar-SY-AmanyNeural",
+      "name": "Amany",
+      "verdict": "ok",
+      "catalogue_gender": "f",
+      "locale": "ar-SY"
+    },
+    {
+      "pool": "ara_sy",
+      "slot": "m",
+      "index": 0,
+      "provider": "azure",
+      "voice_id": "ar-SY-LaithNeural",
+      "name": "Laith",
+      "verdict": "ok",
+      "catalogue_gender": "m",
+      "locale": "ar-SY"
+    },
+    {
+      "pool": "fra_ca",
+      "slot": "f",
+      "index": 0,
+      "provider": "azure",
+      "voice_id": "fr-CA-SylvieNeural",
+      "name": "Sylvie",
+      "verdict": "ok",
+      "catalogue_gender": "f",
+      "locale": "fr-CA"
+    },
+    {
+      "pool": "fra_ca",
+      "slot": "m",
+      "index": 0,
+      "provider": "azure",
+      "voice_id": "fr-CA-AntoineNeural",
+      "name": "Antoine",
+      "verdict": "ok",
+      "catalogue_gender": "m",
+      "locale": "fr-CA"
+    },
+    {
+      "pool": "por_br",
+      "slot": "f",
+      "index": 0,
+      "provider": "azure",
+      "voice_id": "pt-BR-BrendaNeural",
+      "name": "Brenda",
+      "verdict": "ok",
+      "catalogue_gender": "f",
+      "locale": "pt-BR"
+    },
+    {
+      "pool": "por_br",
+      "slot": "m",
+      "index": 0,
+      "provider": "azure",
+      "voice_id": "pt-BR-JulioNeural",
+      "name": "Julio",
+      "verdict": "ok",
+      "catalogue_gender": "m",
+      "locale": "pt-BR"
+    },
+    {
+      "pool": "spa_mx",
+      "slot": "f",
+      "index": 0,
+      "provider": "azure",
+      "voice_id": "es-MX-CarlotaNeural",
+      "name": "Carlota",
+      "verdict": "ok",
+      "catalogue_gender": "f",
+      "locale": "es-MX"
+    },
+    {
+      "pool": "spa_mx",
+      "slot": "m",
+      "index": 0,
+      "provider": "azure",
+      "voice_id": "es-MX-LucianoNeural",
+      "name": "Luciano",
+      "verdict": "ok",
+      "catalogue_gender": "m",
+      "locale": "es-MX"
+    }
+  ],
+  "fix": "tur",
+  "before": {
+    "f": [
+      {
+        "name": "Ahmet",
+        "provider": "azure",
+        "voice_id": "tr-TR-AhmetNeural"
+      }
+    ],
+    "m": [
+      {
+        "name": "Ahmet",
+        "provider": "xai",
+        "voice_id": "f331ee80"
+      },
+      {
+        "name": "Emel",
+        "provider": "azure",
+        "voice_id": "tr-TR-EmelNeural"
+      }
+    ]
+  },
+  "after": {
+    "f": [
+      {
+        "name": "Emel",
+        "provider": "azure",
+        "voice_id": "tr-TR-EmelNeural"
+      }
+    ],
+    "m": [
+      {
+        "name": "Ahmet",
+        "provider": "xai",
+        "voice_id": "f331ee80"
+      },
+      {
+        "name": "Ahmet",
+        "provider": "azure",
+        "voice_id": "tr-TR-AhmetNeural"
+      }
+    ]
+  },
+  "pools_before": {
+    "ara": {
+      "f": [
+        {
+          "name": "Yasmin",
+          "provider": "xai",
+          "voice_id": "025a38c5"
+        },
+        {
+          "name": "Zariyah",
+          "provider": "azure",
+          "voice_id": "ar-SA-ZariyahNeural"
+        }
+      ],
+      "m": [
+        {
+          "name": "Youssef",
+          "provider": "xai",
+          "voice_id": "5f0c2251"
+        },
+        {
+          "name": "Omar",
+          "provider": "xai",
+          "voice_id": "f4b9d6fc"
+        },
+        {
+          "name": "Hamed",
+          "provider": "azure",
+          "voice_id": "ar-SA-HamedNeural"
+        }
+      ]
+    },
+    "ben": {
+      "f": [
+        {
+          "name": "Tanishaa",
+          "provider": "azure",
+          "voice_id": "bn-IN-TanishaaNeural"
+        }
+      ],
+      "m": [
+        {
+          "name": "Bashkar",
+          "provider": "azure",
+          "voice_id": "bn-IN-BashkarNeural"
+        }
+      ]
+    },
+    "bul": {
+      "f": [
+        {
+          "name": "Kalina",
+          "provider": "azure",
+          "voice_id": "bg-BG-KalinaNeural"
+        }
+      ],
+      "m": [
+        {
+          "name": "Borislav",
+          "provider": "azure",
+          "voice_id": "bg-BG-BorislavNeural"
+        }
+      ]
+    },
+    "cat": {
+      "f": [
+        {
+          "name": "Mireia",
+          "provider": "xai",
+          "voice_id": "4d3af3e1"
+        },
+        {
+          "name": "Nuria",
+          "provider": "xai",
+          "voice_id": "155d4e9b"
+        },
+        {
+          "name": "Alba",
+          "provider": "azure",
+          "voice_id": "ca-ES-AlbaNeural"
+        }
+      ],
+      "m": [
+        {
+          "name": "Jordi",
+          "provider": "xai",
+          "voice_id": "c630b236"
+        },
+        {
+          "name": "Pol",
+          "provider": "xai",
+          "voice_id": "e5d4f53e"
+        },
+        {
+          "name": "Enric",
+          "provider": "azure",
+          "voice_id": "ca-ES-EnricNeural"
+        }
+      ]
+    },
+    "dan": {
+      "f": [
+        {
+          "name": "Astrid",
+          "provider": "xai",
+          "voice_id": "a69bdfe7"
+        },
+        {
+          "name": "Freja",
+          "provider": "xai",
+          "voice_id": "47519c37"
+        },
+        {
+          "name": "Christel",
+          "provider": "azure",
+          "voice_id": "da-DK-ChristelNeural"
+        }
+      ],
+      "m": [
+        {
+          "name": "Mads",
+          "provider": "xai",
+          "voice_id": "cfccf16b"
+        },
+        {
+          "name": "Lucas",
+          "provider": "xai",
+          "voice_id": "524f4cb1"
+        },
+        {
+          "name": "Jeppe",
+          "provider": "azure",
+          "voice_id": "da-DK-JeppeNeural"
+        }
+      ]
+    },
+    "deu": {
+      "f": [
+        {
+          "name": "Sonja",
+          "provider": "xai",
+          "voice_id": "44c91d64"
+        },
+        {
+          "name": "Katja",
+          "provider": "azure",
+          "voice_id": "de-DE-KatjaNeural"
+        }
+      ],
+      "m": [
+        {
+          "name": "Felix",
+          "provider": "xai",
+          "voice_id": "e1fc5a89"
+        },
+        {
+          "name": "Conrad",
+          "provider": "azure",
+          "voice_id": "de-DE-ConradNeural"
+        }
+      ]
+    },
+    "ell": {
+      "f": [
+        {
+          "name": "Athina",
+          "provider": "azure",
+          "voice_id": "el-GR-AthinaNeural"
+        }
+      ],
+      "m": [
+        {
+          "name": "Nestoras",
+          "provider": "azure",
+          "voice_id": "el-GR-NestorasNeural"
+        }
+      ]
+    },
+    "eng": {
+      "f": [
+        {
+          "name": "Olivia",
+          "provider": "xai",
+          "voice_id": "bedd6226"
+        },
+        {
+          "name": "Sonia",
+          "provider": "azure",
+          "voice_id": "en-GB-SoniaNeural"
+        },
+        {
+          "name": "Libby",
+          "provider": "azure",
+          "voice_id": "en-GB-LibbyNeural"
+        },
+        {
+          "name": "Hollie",
+          "provider": "azure",
+          "voice_id": "en-GB-HollieNeural"
+        },
+        {
+          "name": "Maisie",
+          "provider": "azure",
+          "voice_id": "en-GB-MaisieNeural"
+        }
+      ],
+      "m": [
+        {
+          "name": "Tom",
+          "provider": "xai",
+          "voice_id": "gfzdpspr5fdp"
+        },
+        {
+          "name": "Henry",
+          "provider": "xai",
+          "voice_id": "f15c6a6a"
+        },
+        {
+          "name": "Ryan",
+          "provider": "azure",
+          "voice_id": "en-GB-RyanNeural"
+        },
+        {
+          "name": "Thomas",
+          "provider": "azure",
+          "voice_id": "en-GB-ThomasNeural"
+        },
+        {
+          "name": "Alfie",
+          "provider": "azure",
+          "voice_id": "en-GB-AlfieNeural"
+        }
+      ]
+    },
+    "est": {
+      "f": [
+        {
+          "name": "Anu",
+          "provider": "azure",
+          "voice_id": "et-EE-AnuNeural"
+        }
+      ],
+      "m": [
+        {
+          "name": "Kert",
+          "provider": "azure",
+          "voice_id": "et-EE-KertNeural"
+        }
+      ]
+    },
+    "eus": {
+      "f": [
+        {
+          "name": "Ainhoa",
+          "provider": "azure",
+          "voice_id": "eu-ES-AinhoaNeural"
+        }
+      ],
+      "m": [
+        {
+          "name": "Ander",
+          "provider": "azure",
+          "voice_id": "eu-ES-AnderNeural"
+        }
+      ]
+    },
+    "fas": {
+      "f": [
+        {
+          "name": "Dilara",
+          "provider": "azure",
+          "voice_id": "fa-IR-DilaraNeural"
+        }
+      ],
+      "m": [
+        {
+          "name": "Farid",
+          "provider": "azure",
+          "voice_id": "fa-IR-FaridNeural"
+        }
+      ]
+    },
+    "fin": {
+      "f": [
+        {
+          "name": "Selma",
+          "provider": "azure",
+          "voice_id": "fi-FI-SelmaNeural"
+        }
+      ],
+      "m": [
+        {
+          "name": "Harri",
+          "provider": "azure",
+          "voice_id": "fi-FI-HarriNeural"
+        }
+      ]
+    },
+    "fra": {
+      "f": [
+        {
+          "name": "Celeste",
+          "provider": "azure",
+          "voice_id": "fr-FR-CelesteNeural"
+        }
+      ],
+      "m": [
+        {
+          "name": "Henri",
+          "provider": "azure",
+          "voice_id": "fr-FR-HenriNeural"
+        }
+      ]
+    },
+    "gle": {
+      "f": [
+        {
+          "name": "Orla",
+          "provider": "azure",
+          "voice_id": "ga-IE-OrlaNeural"
+        }
+      ],
+      "m": [
+        {
+          "name": "Colm",
+          "provider": "azure",
+          "voice_id": "ga-IE-ColmNeural"
+        }
+      ]
+    },
+    "guj": {
+      "f": [
+        {
+          "name": "Dhwani",
+          "provider": "azure",
+          "voice_id": "gu-IN-DhwaniNeural"
+        }
+      ],
+      "m": [
+        {
+          "name": "Niranjan",
+          "provider": "azure",
+          "voice_id": "gu-IN-NiranjanNeural"
+        }
+      ]
+    },
+    "heb": {
+      "f": [
+        {
+          "name": "Hila",
+          "provider": "azure",
+          "voice_id": "he-IL-HilaNeural"
+        }
+      ],
+      "m": [
+        {
+          "name": "Avri",
+          "provider": "azure",
+          "voice_id": "he-IL-AvriNeural"
+        }
+      ]
+    },
+    "hin": {
+      "f": [
+        {
+          "name": "Priya",
+          "provider": "xai",
+          "voice_id": "a00ce99a"
+        },
+        {
+          "name": "Diya",
+          "provider": "xai",
+          "voice_id": "0735ff93"
+        },
+        {
+          "name": "Aarti",
+          "provider": "azure",
+          "voice_id": "hi-IN-AartiNeural"
+        }
+      ],
+      "m": [
+        {
+          "name": "Vihaan",
+          "provider": "xai",
+          "voice_id": "bcf738e4"
+        },
+        {
+          "name": "Kunal",
+          "provider": "azure",
+          "voice_id": "hi-IN-KunalNeural"
+        }
+      ]
+    },
+    "hrv": {
+      "f": [
+        {
+          "name": "Gabrijela",
+          "provider": "azure",
+          "voice_id": "hr-HR-GabrijelaNeural"
+        }
+      ],
+      "m": [
+        {
+          "name": "Srecko",
+          "provider": "azure",
+          "voice_id": "hr-HR-SreckoNeural"
+        }
+      ]
+    },
+    "hye": {
+      "f": [
+        {
+          "name": "Anahit",
+          "provider": "azure",
+          "voice_id": "hy-AM-AnahitNeural"
+        }
+      ],
+      "m": [
+        {
+          "name": "Hayk",
+          "provider": "azure",
+          "voice_id": "hy-AM-HaykNeural"
+        }
+      ]
+    },
+    "isl": {
+      "f": [
+        {
+          "name": "Gudrun",
+          "provider": "azure",
+          "voice_id": "is-IS-GudrunNeural"
+        }
+      ],
+      "m": [
+        {
+          "name": "Gunnar",
+          "provider": "azure",
+          "voice_id": "is-IS-GunnarNeural"
+        }
+      ]
+    },
+    "ita": {
+      "f": [
+        {
+          "name": "Giulia",
+          "provider": "xai",
+          "voice_id": "43423dee"
+        },
+        {
+          "name": "Elsa",
+          "provider": "azure",
+          "voice_id": "it-IT-ElsaNeural"
+        }
+      ],
+      "m": [
+        {
+          "name": "Leon",
+          "provider": "xai",
+          "voice_id": "57700f39"
+        },
+        {
+          "name": "Marco",
+          "provider": "xai",
+          "voice_id": "1ebfec36"
+        },
+        {
+          "name": "Benigno",
+          "provider": "azure",
+          "voice_id": "it-IT-BenignoNeural"
+        }
+      ]
+    },
+    "jpn": {
+      "f": [
+        {
+          "name": "Mayu",
+          "provider": "azure",
+          "voice_id": "ja-JP-MayuNeural"
+        }
+      ],
+      "m": [
+        {
+          "name": "Naoki",
+          "provider": "azure",
+          "voice_id": "ja-JP-NaokiNeural"
+        }
+      ]
+    },
+    "kor": {
+      "f": [
+        {
+          "name": "YuJin",
+          "provider": "azure",
+          "voice_id": "ko-KR-YuJinNeural"
+        }
+      ],
+      "m": [
+        {
+          "name": "Hyun-woo",
+          "provider": "xai",
+          "voice_id": "d74461c6"
+        },
+        {
+          "name": "GookMin",
+          "provider": "azure",
+          "voice_id": "ko-KR-GookMinNeural"
+        }
+      ]
+    },
+    "lav": {
+      "f": [
+        {
+          "name": "Everita",
+          "provider": "azure",
+          "voice_id": "lv-LV-EveritaNeural"
+        }
+      ],
+      "m": [
+        {
+          "name": "Nils",
+          "provider": "azure",
+          "voice_id": "lv-LV-NilsNeural"
+        }
+      ]
+    },
+    "lit": {
+      "f": [
+        {
+          "name": "Ona",
+          "provider": "azure",
+          "voice_id": "lt-LT-OnaNeural"
+        }
+      ],
+      "m": [
+        {
+          "name": "Leonas",
+          "provider": "azure",
+          "voice_id": "lt-LT-LeonasNeural"
+        }
+      ]
+    },
+    "nep": {
+      "f": [
+        {
+          "name": "Hemkala",
+          "provider": "azure",
+          "voice_id": "ne-NP-HemkalaNeural"
+        }
+      ],
+      "m": [
+        {
+          "name": "Sagar",
+          "provider": "azure",
+          "voice_id": "ne-NP-SagarNeural"
+        }
+      ]
+    },
+    "nld": {
+      "f": [
+        {
+          "name": "Lieke",
+          "provider": "xai",
+          "voice_id": "cdb1cec8"
+        },
+        {
+          "name": "Sophie",
+          "provider": "xai",
+          "voice_id": "6fe32f8a"
+        },
+        {
+          "name": "Fenna",
+          "provider": "azure",
+          "voice_id": "nl-NL-FennaNeural"
+        }
+      ],
+      "m": [
+        {
+          "name": "Bas",
+          "provider": "xai",
+          "voice_id": "18245f0d"
+        },
+        {
+          "name": "Daan",
+          "provider": "xai",
+          "voice_id": "ef4ce33e"
+        },
+        {
+          "name": "Maarten",
+          "provider": "azure",
+          "voice_id": "nl-NL-MaartenNeural"
+        }
+      ]
+    },
+    "nor": {
+      "f": [
+        {
+          "name": "Iselin",
+          "provider": "azure",
+          "voice_id": "nb-NO-IselinNeural"
+        }
+      ],
+      "m": [
+        {
+          "name": "Finn",
+          "provider": "azure",
+          "voice_id": "nb-NO-FinnNeural"
+        }
+      ]
+    },
+    "pan": {
+      "f": [
+        {
+          "name": "Vaani",
+          "provider": "azure",
+          "voice_id": "pa-IN-VaaniNeural"
+        }
+      ],
+      "m": [
+        {
+          "name": "Ojas",
+          "provider": "azure",
+          "voice_id": "pa-IN-OjasNeural"
+        }
+      ]
+    },
+    "pol": {
+      "f": [
+        {
+          "name": "Magdalena",
+          "provider": "xai",
+          "voice_id": "ce19f825"
+        },
+        {
+          "name": "Zofia",
+          "provider": "xai",
+          "voice_id": "4984accb"
+        },
+        {
+          "name": "Zofia",
+          "provider": "azure",
+          "voice_id": "pl-PL-ZofiaNeural"
+        }
+      ],
+      "m": [
+        {
+          "name": "Tomasz",
+          "provider": "xai",
+          "voice_id": "70071d42"
+        },
+        {
+          "name": "Piotr",
+          "provider": "xai",
+          "voice_id": "2902bcfd"
+        },
+        {
+          "name": "Marek",
+          "provider": "azure",
+          "voice_id": "pl-PL-MarekNeural"
+        }
+      ]
+    },
+    "por": {
+      "f": [
+        {
+          "name": "Raquel",
+          "provider": "azure",
+          "voice_id": "pt-PT-RaquelNeural"
+        }
+      ],
+      "m": [
+        {
+          "name": "Duarte",
+          "provider": "azure",
+          "voice_id": "pt-PT-DuarteNeural"
+        }
+      ]
+    },
+    "ron": {
+      "f": [
+        {
+          "name": "Alina",
+          "provider": "azure",
+          "voice_id": "ro-RO-AlinaNeural"
+        }
+      ],
+      "m": [
+        {
+          "name": "Emil",
+          "provider": "azure",
+          "voice_id": "ro-RO-EmilNeural"
+        }
+      ]
+    },
+    "sin": {
+      "f": [
+        {
+          "name": "Thilini",
+          "provider": "azure",
+          "voice_id": "si-LK-ThiliniNeural"
+        }
+      ],
+      "m": [
+        {
+          "name": "Sameera",
+          "provider": "azure",
+          "voice_id": "si-LK-SameeraNeural"
+        }
+      ]
+    },
+    "spa": {
+      "f": [
+        {
+          "name": "Elvira",
+          "provider": "azure",
+          "voice_id": "es-ES-ElviraNeural"
+        },
+        {
+          "name": "Maria",
+          "provider": "xai",
+          "voice_id": "f2f41225"
+        },
+        {
+          "name": "Lucia",
+          "provider": "xai",
+          "voice_id": "46a802e3"
+        }
+      ],
+      "m": [
+        {
+          "name": "Alvaro",
+          "provider": "azure",
+          "voice_id": "es-ES-AlvaroNeural"
+        },
+        {
+          "name": "Pablo",
+          "provider": "xai",
+          "voice_id": "d2313a0d"
+        },
+        {
+          "name": "Carlos",
+          "provider": "xai",
+          "voice_id": "1a59f327"
+        }
+      ]
+    },
+    "swa": {
+      "f": [
+        {
+          "name": "Zuri",
+          "provider": "azure",
+          "voice_id": "sw-KE-ZuriNeural"
+        }
+      ],
+      "m": [
+        {
+          "name": "Rafiki",
+          "provider": "azure",
+          "voice_id": "sw-KE-RafikiNeural"
+        }
+      ]
+    },
+    "swe": {
+      "f": [
+        {
+          "name": "Alice",
+          "provider": "xai",
+          "voice_id": "3b312632"
+        },
+        {
+          "name": "Elsa",
+          "provider": "xai",
+          "voice_id": "bab9c92f"
+        },
+        {
+          "name": "Sofie",
+          "provider": "azure",
+          "voice_id": "sv-SE-SofieNeural"
+        }
+      ],
+      "m": [
+        {
+          "name": "Oscar",
+          "provider": "xai",
+          "voice_id": "4c7f16ff"
+        },
+        {
+          "name": "William",
+          "provider": "xai",
+          "voice_id": "93bea908"
+        },
+        {
+          "name": "Mattias",
+          "provider": "azure",
+          "voice_id": "sv-SE-MattiasNeural"
+        }
+      ]
+    },
+    "tam": {
+      "f": [
+        {
+          "name": "Saranya",
+          "provider": "azure",
+          "voice_id": "ta-LK-SaranyaNeural"
+        }
+      ],
+      "m": [
+        {
+          "name": "Kumar",
+          "provider": "azure",
+          "voice_id": "ta-LK-KumarNeural"
+        }
+      ]
+    },
+    "tha": {
+      "f": [
+        {
+          "name": "Nicha",
+          "provider": "xai",
+          "voice_id": "a5341c30"
+        },
+        {
+          "name": "Pim",
+          "provider": "xai",
+          "voice_id": "330f1e6d"
+        },
+        {
+          "name": "Premwadee",
+          "provider": "azure",
+          "voice_id": "th-TH-PremwadeeNeural"
+        }
+      ],
+      "m": [
+        {
+          "name": "Somchai",
+          "provider": "xai",
+          "voice_id": "4b7af2d7"
+        },
+        {
+          "name": "Thanawat",
+          "provider": "xai",
+          "voice_id": "0463086e"
+        },
+        {
+          "name": "Niwat",
+          "provider": "azure",
+          "voice_id": "th-TH-NiwatNeural"
+        }
+      ]
+    },
+    "tur": {
+      "f": [
+        {
+          "name": "Ahmet",
+          "provider": "azure",
+          "voice_id": "tr-TR-AhmetNeural"
+        }
+      ],
+      "m": [
+        {
+          "name": "Ahmet",
+          "provider": "xai",
+          "voice_id": "f331ee80"
+        },
+        {
+          "name": "Emel",
+          "provider": "azure",
+          "voice_id": "tr-TR-EmelNeural"
+        }
+      ]
+    },
+    "ukr": {
+      "f": [
+        {
+          "name": "Polina",
+          "provider": "azure",
+          "voice_id": "uk-UA-PolinaNeural"
+        }
+      ],
+      "m": [
+        {
+          "name": "Ostap",
+          "provider": "azure",
+          "voice_id": "uk-UA-OstapNeural"
+        }
+      ]
+    },
+    "urd": {
+      "f": [
+        {
+          "name": "Uzma",
+          "provider": "azure",
+          "voice_id": "ur-PK-UzmaNeural"
+        }
+      ],
+      "m": [
+        {
+          "name": "Asad",
+          "provider": "azure",
+          "voice_id": "ur-PK-AsadNeural"
+        }
+      ]
+    },
+    "zho": {
+      "f": [
+        {
+          "name": "Hui",
+          "provider": "xai",
+          "voice_id": "e521cc67"
+        },
+        {
+          "name": "Mei",
+          "provider": "xai",
+          "voice_id": "09b02491"
+        },
+        {
+          "name": "Xiaoxiao Multilingual",
+          "provider": "azure",
+          "voice_id": "zh-CN-XiaoxiaoMultilingualNeural"
+        }
+      ],
+      "m": [
+        {
+          "name": "Wei",
+          "provider": "xai",
+          "voice_id": "9ab26871"
+        },
+        {
+          "name": "Yang",
+          "provider": "xai",
+          "voice_id": "6997b0ec"
+        },
+        {
+          "name": "Yunyi Multilingual",
+          "provider": "azure",
+          "voice_id": "zh-CN-YunyiMultilingualNeural"
+        }
+      ]
+    },
+    "ara_sy": {
+      "f": [
+        {
+          "name": "Amany",
+          "provider": "azure",
+          "voice_id": "ar-SY-AmanyNeural"
+        }
+      ],
+      "m": [
+        {
+          "name": "Laith",
+          "provider": "azure",
+          "voice_id": "ar-SY-LaithNeural"
+        }
+      ]
+    },
+    "fra_ca": {
+      "f": [
+        {
+          "name": "Sylvie",
+          "provider": "azure",
+          "voice_id": "fr-CA-SylvieNeural"
+        }
+      ],
+      "m": [
+        {
+          "name": "Antoine",
+          "provider": "azure",
+          "voice_id": "fr-CA-AntoineNeural"
+        }
+      ]
+    },
+    "por_br": {
+      "f": [
+        {
+          "name": "Brenda",
+          "provider": "azure",
+          "voice_id": "pt-BR-BrendaNeural"
+        }
+      ],
+      "m": [
+        {
+          "name": "Julio",
+          "provider": "azure",
+          "voice_id": "pt-BR-JulioNeural"
+        }
+      ]
+    },
+    "spa_mx": {
+      "f": [
+        {
+          "name": "Carlota",
+          "provider": "azure",
+          "voice_id": "es-MX-CarlotaNeural"
+        }
+      ],
+      "m": [
+        {
+          "name": "Luciano",
+          "provider": "azure",
+          "voice_id": "es-MX-LucianoNeural"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "mode": "DRY RUN",
+  "summary": {
+    "course": "cym_s_for_eng",
+    "promote": "cym_s_for_eng:pod-0-unrecorded  ->  cym_s_for_eng:pod-0",
+    "archive": "cym_s_for_eng:pod-0  ->  cym_s_for_eng:pod-0-gated-2026-08-06",
+    "source_rows": 232,
+    "source_scenes": 22,
+    "source_with_target_text": 231,
+    "source_draft_rows": 104,
+    "source_with_target_audio": 0,
+    "archived_rows": 0,
+    "overrides": [
+      "allow-drafts",
+      "allow-missing-audio",
+      "allow-empty-target=1"
+    ]
+  }
+}

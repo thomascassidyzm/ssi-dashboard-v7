@@ -1,0 +1,844 @@
+/**
+ * recordist-queue.cjs — the ONE recording queue, derived BY LANGUAGE.
+ *
+ * Tom, 2026-08-14: "we only need the PODS recorded by language, not by course
+ * from now on". Human recording exists for the languages we decide we have no
+ * TTS voice for; which languages those are, and who reads them, lives in ONE
+ * place — the `language_recording_policy` table (ops/sql/20260814-language-
+ * recording-policy.sql). There is deliberately no per-course and no per-pod
+ * toggle anywhere in this file.
+ *
+ * WHAT A RECORDIST'S QUEUE IS
+ *
+ *   1. voiceId → (language, gender, dialect) from language_recording_policy.voices.
+ *   2. every pod sentence in EVERY course whose canonicalLanguage(target_lang)
+ *      is that language — cym_n_for_eng and cym_s_for_eng are one Welsh queue,
+ *      not two.
+ *   3. kept when the sentence's speaker maps, through that course's own
+ *      voice_config.podCast, to the recordist's GENDER, AND the course's own
+ *      dialect is the recordist's dialect. Gender is not the voice id: a course
+ *      cast naming human_aran_cym_s and a policy naming human_aran_cym_n are the
+ *      same man reading Welsh.
+ *
+ *      DIALECT IS THE SECOND FILTER (Tom, 2026-08-19). Rule 2 is what makes one
+ *      Welsh queue out of two Welsh courses, and until this filter existed that
+ *      was the whole story: 197 SOUTHERN pod lines sat in the two NORTHERN
+ *      speakers' lists, waiting to be read in the wrong accent, and nothing
+ *      flagged it because the queue was working exactly as built
+ *      (docs/welsh-south-pulled-from-northern-queues-2026-08-19.md). The fix is
+ *      not to split the queue by course — cym_n and cym_s still share one, and
+ *      still collapse a shared line into one recording. It is that a line's
+ *      DIALECT, a durable fact of the course's content (`courses.dialect`), must
+ *      equal the reading voice's own dialect tag.
+ *
+ *      Dialect is NOT keyed on the casting. Reading it off "who is cast" is what
+ *      re-encodes the course fact indirectly, and that indirection is the
+ *      original bug: cym_s_for_eng was cast to Aran and Catrin, so by that logic
+ *      it WAS Northern. The course says what it is; the cast does not.
+ *
+ *      Every language but Welsh has one dialect and every one of its courses and
+ *      voices carries the same default tag, so the match is trivially true and
+ *      this changes nothing for them — a no-op by construction, not by a special
+ *      case (services/shared/dialect.cjs).
+ *   4. COLLAPSED BY CLIP IDENTITY. A clip's identity is
+ *      (language, text_normalized, voice_id) — services/shared/clip-identity.cjs
+ *      — and course_code is not in it here BY DESIGN: the same sentence in three
+ *      courses is ONE recording. That collapse is the entire point of the
+ *      canonical identity work; without it a recordist reads the same line
+ *      three times.
+ *   5. recorded = a course_audio row exists under (language, text_normalized,
+ *      voice) for ANY spelling of that voice. Aran's 111 Welsh takes are split
+ *      across human_aran_cym_n and human_aran_cym_n_2; a lookup that asks for
+ *      one spelling would ask him to record 42 clips he has already given us.
+ *      Reads widen, writes narrow (services/shared/clip-identity-lookup.cjs).
+ *   6. UNLESS THE TAKE IS WANTED AGAIN. "A clip exists" and "the clip is good"
+ *      are different facts, and until 2026-08-16 this queue only knew the first
+ *      one — so the 90 re-record wants written for T-20 were invisible here and
+ *      Aran's link showed 71 of his lines as done when every one of them was
+ *      queued for a re-record. A want makes a line outstanding WITHOUT
+ *      unlinking anything: the old take stays linked and playable until the new
+ *      one lands, which is make-before-break by construction
+ *      (docs/architecture/AUDIO_PIPELINE_ARCHITECTURE.md §6b).
+ *      Two places carry a want, and both are honoured:
+ *        - listening_pod_sentences.rerecord_wanted — {kind: voiceId}, the pod
+ *          line's own flag, shared with the per-course studio (pods-plan.cjs)
+ *          so the two surfaces cannot disagree about what is outstanding;
+ *        - course_audio.rerecord_wanted — the clip's flag, which is the only
+ *          one that can reach content types that are not pod dialogue.
+ *
+ * TARGET SIDE ONLY. The known side of every one of these courses is English,
+ * 'eng' is not human_only, and so it never enters a queue. known_text rides
+ * along on each line as the recordist's crib, never as something to record.
+ *
+ * A speaker with no podCast gender entry is NOT guessed at and NOT silently
+ * dropped: it lands in neither queue and is counted as `uncast` on the coverage
+ * endpoint, where a human can see it and cast it.
+ */
+
+'use strict'
+
+const { canonicalLanguage, canonicalVoiceId, tryCanonicalVoiceId } = require('../shared/clip-identity.cjs')
+const { voiceSpellings } = require('../shared/clip-identity-lookup.cjs')
+const { normalizeForDb, audioKeyCandidates } = require('../shared/text-normalize.cjs')
+const { canonicalSpeakerName } = require('./pods-registration.cjs')
+const { canonicalDialect, courseDialect, bucketKey } = require('../shared/dialect.cjs')
+const langService = require('../language-code-service.cjs')
+
+/** Display name for a canonical database_code, falling back to the code itself. */
+function languageName(language) {
+  try {
+    return langService.getName(language) || language
+  } catch {
+    return language
+  }
+}
+
+/**
+ * Every course whose TARGET language canonicalises to `language`.
+ * Canonicalisation is JS-side (clip-identity.cjs owns it), so this reads the
+ * course list once and filters in memory rather than guessing in SQL.
+ */
+async function coursesForLanguage(db, language) {
+  const { data, error } = await db
+    .from('courses')
+    // `dialect` rides along on every read of this list: it is a property of the
+    // course's content, and every consumer here routes on it.
+    .select('course_code, target_lang, known_lang, voice_config, dialect')
+  if (error) throw new Error(`course list failed: ${error.message}`)
+  return (data || []).filter((c) => {
+    try {
+      return canonicalLanguage(c.target_lang) === language
+    } catch {
+      return false
+    }
+  })
+}
+
+/**
+ * Merge every course's voice_config.podCastAliases into one
+ * canonical voice id → [older spellings] map.
+ *
+ * cym_n_for_eng carries {"human_aran_cym_n": ["human_aran_cym_n_2",
+ * "human_aranv3_cym_n"], ...}. The map is estate-wide because a recordist's
+ * link is estate-wide: Aran's old per-course link must keep resolving to him.
+ */
+async function loadAliasMap(db) {
+  const { data, error } = await db.from('courses').select('course_code, voice_config')
+  if (error) throw new Error(`alias map load failed: ${error.message}`)
+  const map = new Map()
+  for (const row of data || []) {
+    const aliases = row.voice_config && row.voice_config.podCastAliases
+    if (!aliases || typeof aliases !== 'object') continue
+    for (const [canonical, list] of Object.entries(aliases)) {
+      const set = map.get(canonical) || new Set()
+      for (const a of Array.isArray(list) ? list : []) set.add(a)
+      map.set(canonical, set)
+    }
+  }
+  return map
+}
+
+/** All policy rows, newest schema shape: {language, human_only, voices, notes}. */
+async function loadPolicies(db, { humanOnlyOnly = false } = {}) {
+  let q = db.from('language_recording_policy').select('*').order('language')
+  if (humanOnlyOnly) q = q.eq('human_only', true)
+  const { data, error } = await q
+  if (error) throw new Error(`language_recording_policy read failed: ${error.message}`)
+  return data || []
+}
+
+/**
+ * Resolve a link's :voiceId to the person behind it.
+ *
+ * LINK IS IDENTITY: there is no login here. The voice id in the URL IS the
+ * claim, and it is checked against language_recording_policy — the only place
+ * that says who reads a language. Alias spellings resolve to their canonical
+ * voice so a link handed out weeks ago still opens the right queue.
+ *
+ * @returns {Promise<null | {voiceId, displayName, email, gender, language, languageName, spellings: string[]}>}
+ */
+async function resolveRecordist(db, voiceIdParam) {
+  const asked = String(voiceIdParam || '').trim()
+  if (!asked) return null
+
+  const [policies, aliasMap] = await Promise.all([loadPolicies(db), loadAliasMap(db)])
+
+  // An alias in the URL → the canonical voice it stands for.
+  let canonical = asked
+  for (const [canon, aliases] of aliasMap.entries()) {
+    if (aliases.has(asked)) { canonical = canon; break }
+  }
+
+  for (const policy of policies) {
+    const voices = policy.voices || {}
+    // The key is a SLOT, not the gender. It was the gender when a language could
+    // hold one voice per gender; a two-dialect language holds four, so the slot
+    // is spelt 'm' / 'f' for the single-dialect default and 'm:south' / 'f:south'
+    // when it has to be distinguished. The authoritative gender and dialect are
+    // the entry's own fields — `gender` falls back to the slot's leading token
+    // precisely so every row written before this change keeps meaning what it
+    // meant, including Finnish's free-form 'test' slot.
+    for (const slot of Object.keys(voices)) {
+      const entry = voices[slot] || {}
+      if (!entry.voiceId) continue
+      const gender = String(entry.gender || slot.split(':')[0] || '').toLowerCase()
+      const dialect = canonicalDialect(entry.dialect)
+      // The policy row's own `aliases` are the FIRST source of truth — the
+      // per-language decision lives in one table, so the older spellings of a
+      // recordist's voice belong beside the voice, not scattered per course.
+      // voice_config.podCastAliases is still merged in, because links handed
+      // out before the policy existed must keep opening the right queue.
+      const declared = new Set(Array.isArray(entry.aliases) ? entry.aliases : [])
+      const matches = entry.voiceId === canonical || entry.voiceId === asked ||
+        declared.has(asked) || (aliasMap.get(entry.voiceId) || new Set()).has(asked)
+      if (!matches) continue
+      for (const a of declared) {
+        const set = aliasMap.get(entry.voiceId) || new Set()
+        set.add(a)
+        aliasMap.set(entry.voiceId, set)
+      }
+      return {
+        voiceId: entry.voiceId,
+        displayName: entry.name || entry.voiceId,
+        email: entry.email || null,
+        gender,
+        dialect,
+        slot,
+        language: policy.language,
+        languageName: languageName(policy.language),
+        humanOnly: !!policy.human_only,
+        spellings: recordedSpellings(entry.voiceId, aliasMap),
+      }
+    }
+  }
+  return null
+}
+
+/**
+ * Every voice_id spelling a stored clip of this recordist might carry.
+ *
+ * Three sources, all read-side only (nothing here is ever written):
+ *   - the canonical id and its bare/prefixed twins (voiceSpellings)
+ *   - the podCastAliases this estate records for it
+ *   - each alias's own twins
+ * Missing one of these is not cosmetic: it is a recordist being asked to
+ * re-read clips they already recorded.
+ */
+function recordedSpellings(voiceId, aliasMap) {
+  const out = new Set(voiceSpellings(voiceId))
+  for (const alias of aliasMap.get(voiceId) || []) {
+    for (const s of voiceSpellings(alias)) out.add(s)
+  }
+  return [...out]
+}
+
+/**
+ * The cast entry governing a pod sentence, by the same rule the recording path
+ * uses (pods-registration.resolvePodCastVoiceId): canonical speaker name first,
+ * raw key as the safety net.
+ */
+function castEntryFor(podCast, speaker) {
+  if (!podCast) return null
+  return podCast[canonicalSpeakerName(speaker)] || podCast[speaker] || null
+}
+
+/**
+ * Does this pod sentence want its TARGET track recorded again?
+ *
+ * listening_pod_sentences.rerecord_wanted is {kind: voiceId} — e.g.
+ * {"target": "human_aran_cym_n"}. Only the target track is ever read here: the
+ * known side of every human_only course is English and never enters a queue
+ * (see the header). Voice-blind on purpose — the queue is already partitioned
+ * by the CAST's gender, and a want written against an older spelling of the
+ * same person's voice must not be lost to a string comparison.
+ */
+function targetRerecordWanted(sentence) {
+  const wanted = sentence && sentence.rerecord_wanted
+  if (!wanted || typeof wanted !== 'object') return false
+  return !!wanted.target
+}
+
+/**
+ * Every pod line of a language, partitioned by (DIALECT, GENDER) — the dialect
+ * its own course declares and the gender its own course cast names — collapsed
+ * by clip identity, computed ONCE per language.
+ *
+ * Both the recordist's queue and the coverage bar read this, so the number on
+ * Tom's bar and the number on Aran's page cannot drift apart. It also means
+ * `uncast` is what it actually is — a property of the LANGUAGE's pods, visible
+ * even for a language that has no cast at all yet (bre, pdc), where every line
+ * is uncast and the old per-voice loop would have reported a flat zero.
+ *
+ * THE COLLAPSE IS PER BUCKET, and that is the point rather than a side effect:
+ * two courses of the SAME dialect sharing a line are still one recording, and
+ * two courses of DIFFERENT dialects sharing a spelling are not — a Northern take
+ * filed into a Southern pod is the same defect as a Northern queue holding a
+ * Southern line, one step further down the pipe. It is what `alsoFills` used to
+ * promise across cym_n and cym_s.
+ *
+ * @returns {Promise<{byBucket: Map<string, Array>, uncast, duplicatesCollapsed, courses: string[]}>}
+ */
+async function buildLanguageLines(db, language) {
+  const courses = await coursesForLanguage(db, language)
+  const byCourse = new Map(courses.map((c) => [c.course_code, c]))
+  const empty = { byBucket: new Map(), uncast: 0, duplicatesCollapsed: 0, courses: [...byCourse.keys()] }
+  if (!courses.length) return empty
+
+  const { data: pods, error: podErr } = await db
+    .from('listening_pods')
+    .select('id, course_code, slug')
+    .in('course_code', [...byCourse.keys()])
+  if (podErr) throw new Error(`pod list failed: ${podErr.message}`)
+  const podById = new Map((pods || []).map((p) => [p.id, p]))
+  if (!podById.size) return empty
+
+  const sentences = await fetchAllSentences(db, [...podById.keys()])
+
+  // Deterministic and stable, oldest-needed first: course, then pod, then the
+  // line's own order within the pod. The recordist's queue must not reshuffle
+  // between two loads of the same page.
+  sentences.sort((a, b) => {
+    const pa = podById.get(a.pod_id), pb = podById.get(b.pod_id)
+    return (pa.course_code).localeCompare(pb.course_code) ||
+      String(pa.slug || pa.id).localeCompare(String(pb.slug || pb.id)) ||
+      (a.global_order - b.global_order) ||
+      String(a.id).localeCompare(String(b.id))
+  })
+
+  const byBucket = new Map()
+  const seen = new Map()   // bucket -> Map(normalized text -> representative line)
+  let uncast = 0
+  let duplicatesCollapsed = 0
+
+  for (const s of sentences) {
+    const text = (s.target_text || '').trim()
+    if (!text) continue
+    const pod = podById.get(s.pod_id)
+    const course = byCourse.get(pod.course_code)
+    const entry = castEntryFor(course.voice_config && course.voice_config.podCast, s.speaker)
+    const gender = entry && entry.gender ? String(entry.gender).toLowerCase() : null
+    if (!gender) {
+      // Never guessed, never silently dropped — surfaced as `uncast`.
+      uncast += 1
+      continue
+    }
+    // From the COURSE, never from the cast — the whole ruling in one line.
+    const bucket = bucketKey(courseDialect(course), gender)
+    if (!byBucket.has(bucket)) { byBucket.set(bucket, []); seen.set(bucket, new Map()) }
+    const key = normalizeForDb(text)
+    const seenForGender = seen.get(bucket)
+    if (seenForGender.has(key)) {
+      // One recording, not three. The duplicate is remembered against the
+      // representative so a finished take can fill every course's pod.
+      const rep = seenForGender.get(key)
+      rep.duplicateOf.push({ sentenceId: s.id, podId: s.pod_id, courseCode: pod.course_code })
+      // A want on ANY copy of this text wants the one recording that fills them
+      // all — the collapse is by clip identity, so the flag has to collapse with
+      // it or a want on cym_s's copy would be silently dropped.
+      if (targetRerecordWanted(s)) rep.rerecordWanted = true
+      duplicatesCollapsed += 1
+      continue
+    }
+    const line = {
+      id: s.id,
+      podId: s.pod_id,
+      order: s.global_order,
+      text,
+      knownText: s.known_text || null,
+      speaker: s.speaker,
+      courseCode: pod.course_code,
+      textNormalized: key,
+      duplicateOf: [],
+      rerecordWanted: targetRerecordWanted(s),
+    }
+    seenForGender.set(key, line)
+    byBucket.get(bucket).push(line)
+  }
+
+  // ── SECOND SOURCE: anything else that needs re-recording ──────────────────
+  //
+  // Tom, 2026-08-14: the 18 failing LEGO-narration clips should "just ride the
+  // new queue's existing design, since it's content-type-agnostic by language
+  // and voice role" — explicitly NOT a bespoke path on the old system.
+  //
+  // So a queue item is not "a pod sentence". It is "a piece of this language
+  // that needs a human voice". course_audio.rerecord_wanted carries the second
+  // kind: any clip of any content type — presentation narration, encouragement,
+  // instruction, course audio — flagged as needing a new take.
+  //
+  // ROUTED BY REQUIRED VOICE, NOT BY AUTHORSHIP. Who recorded the original is
+  // frequently unknowable (presentation narration is stored under the shared
+  // untagged voice 'human'), but which voice the REPLACEMENT needs is always
+  // known, and that is what rerecord_wanted.voice_gender states. Guessing at
+  // authorship is how a clip gets filed under the wrong person.
+  //
+  // These deliberately share the dedupe map above: if a wanted re-record has the
+  // same normalised text as a pod line, it is the same clip identity and one
+  // take serves both.
+  const wanted = await fetchRerecordWanted(db, [...byCourse.keys()])
+  for (const w of wanted) {
+    const text = (w.text || '').trim()
+    if (!text) continue
+    const gender = String(w.rerecord_wanted.voice_gender || '').toLowerCase()
+    if (gender !== 'm' && gender !== 'f') {
+      // No required voice stated — the one thing that would have to be guessed.
+      uncast += 1
+      continue
+    }
+    // A clip belongs to a course, and the course states the dialect. Nothing is
+    // read off the clip itself: a presentation clip is stored under the shared
+    // untagged voice 'human', so it carries no dialect of its own to trust.
+    const course = byCourse.get(w.course_code)
+    const bucket = bucketKey(courseDialect(course), gender)
+    if (!byBucket.has(bucket)) { byBucket.set(bucket, []); seen.set(bucket, new Map()) }
+    const key = normalizeForDb(text)
+    const seenForGender = seen.get(bucket)
+    if (seenForGender.has(key)) {
+      // Same clip identity as a pod line already in the queue: the want belongs
+      // to that line. This is the path that carries "re-record everything you
+      // already recorded" — the text IS a live pod line, a take of it exists, and
+      // without propagating the flag here finishQueue would score it recorded.
+      const rep = seenForGender.get(key)
+      rep.duplicateOf.push({ audioId: w.id, courseCode: w.course_code })
+      rep.rerecordWanted = true
+      if (!rep.rerecordReason && w.rerecord_wanted.reason) rep.rerecordReason = w.rerecord_wanted.reason
+      duplicatesCollapsed += 1
+      continue
+    }
+    const line = {
+      id: w.id,
+      podId: null,
+      order: Number.MAX_SAFE_INTEGER,   // after the pod lines, stably
+      text,
+      knownText: null,
+      speaker: null,
+      courseCode: w.course_code,
+      textNormalized: key,
+      duplicateOf: [],
+      // `kind` tells the surface how to READ this line. Narration text carries
+      // <src>/<tgt> markup — it must be rendered, never read aloud as tags.
+      kind: 'rerecord',
+      role: w.role,
+      rerecordWanted: true,
+      rerecordReason: w.rerecord_wanted.reason || null,
+    }
+    seenForGender.set(key, line)
+    byBucket.get(bucket).push(line)
+  }
+
+  return { byBucket, uncast, duplicatesCollapsed, courses: [...byCourse.keys()] }
+}
+
+/**
+ * Clips flagged as needing a new take, for the given courses. Paged, because the
+ * flag is deliberately not limited to any one content type and a bad day could
+ * flag thousands.
+ */
+async function fetchRerecordWanted(db, courseCodes) {
+  if (!courseCodes.length) return []
+  const out = []
+  const PAGE = 1000
+  for (let from = 0; ; from += PAGE) {
+    const { data, error } = await db
+      .from('course_audio')
+      .select('id, course_code, role, text, rerecord_wanted')
+      .in('course_code', courseCodes)
+      .not('rerecord_wanted', 'is', null)
+      .order('course_code', { ascending: true })
+      .order('id', { ascending: true })
+      .range(from, from + PAGE - 1)
+    if (error) throw new Error(`rerecord_wanted read failed: ${error.message}`)
+    const rows = (data || []).filter((r) => r && r.rerecord_wanted)
+    out.push(...rows)
+    if ((data || []).length < PAGE) break
+  }
+  return out
+}
+
+/**
+ * Build the language-wide queue for one recordist.
+ *
+ * @param {object} db supabase client
+ * @param {object} recordist from resolveRecordist()
+ * @param {object} [opts]
+ * @param {boolean} [opts.includeRecorded] keep already-recorded lines in `lines`
+ *        (they are always counted; this only decides whether they are listed).
+ * @returns {Promise<{lines: Array, total, recorded, remaining, uncast, duplicatesCollapsed}>}
+ */
+async function buildQueue(db, recordist, { includeRecorded = false } = {}) {
+  const language = await buildLanguageLines(db, recordist.language)
+  const mine = language.byBucket.get(bucketKey(recordist.dialect, recordist.gender)) || []
+  return finishQueue(db, recordist, mine, language, { includeRecorded })
+}
+
+/**
+ * Score a gender's lines against what this recordist has already recorded, and
+ * shape them for the wire. Split out so buildQueue and buildCoverage share one
+ * definition of `recorded`.
+ */
+async function finishQueue(db, recordist, mine, language, { includeRecorded = false } = {}) {
+  const recordedKeys = await recordedTextKeys(db, recordist)
+
+  let recorded = 0
+  const lines = []
+  for (const line of mine) {
+    // Both conventions on both sides — the queue's text and the stored key are
+    // each widened, so neither spelling of the same sentence can hide the other.
+    const hasTake = audioKeyCandidates(line.text).some((k) => recordedKeys.has(k))
+    // A wanted line is outstanding even though a take exists. The take is not
+    // touched — it stays linked and playable, and the recordist can A/B it on
+    // this very page — it simply stops counting as done.
+    const isRecorded = hasTake && !line.rerecordWanted
+    if (isRecorded) recorded += 1
+    if (!isRecorded || includeRecorded) {
+      lines.push({
+        id: line.id,
+        order: line.order,
+        text: line.text,
+        knownText: line.knownText,
+        speaker: line.speaker,
+        courseCode: line.courseCode,
+        recorded: isRecorded,
+        // Playback of the STORED bytes, never a local blob (route 3). Keyed off
+        // hasTake, NOT isRecorded: a line queued for a re-record still has an
+        // old take, and hearing it is the whole point of re-recording it.
+        clipUrl: hasTake ? `/api/recording/voice/${encodeURIComponent(recordist.voiceId)}/line/${line.id}/clip` : null,
+        // There is an existing take AND we are asking for it again — the surface
+        // badges these as "re-record" rather than "not recorded yet", and it is
+        // the flag the A/B preview hangs off.
+        rerecordWanted: !!(hasTake && line.rerecordWanted),
+        // How many other pod lines, in any course of this language, this one
+        // recording also fills.
+        alsoFills: line.duplicateOf.length,
+        // What KIND of thing this is to read. 'pod' is dialogue; 'rerecord' is
+        // any other content type flagged as needing a new take — narration,
+        // encouragement, instruction. The surface needs this because narration
+        // text carries <src>/<tgt> markup that must be RENDERED, never read
+        // aloud as tags, and because a re-record deserves to say why.
+        kind: line.kind || 'pod',
+        role: line.role || null,
+        rerecordReason: line.rerecordReason || null,
+      })
+    }
+  }
+
+  return {
+    lines,
+    total: mine.length,
+    recorded,
+    remaining: mine.length - recorded,
+    uncast: language.uncast,
+    duplicatesCollapsed: language.duplicatesCollapsed,
+    courses: language.courses,
+  }
+}
+
+/** Page through listening_pod_sentences — PostgREST caps a single read at 1000. */
+async function fetchAllSentences(db, podIds) {
+  const PAGE = 1000
+  const out = []
+  for (let from = 0; ; from += PAGE) {
+    const { data, error } = await db
+      .from('listening_pod_sentences')
+      .select('id, pod_id, global_order, speaker, target_text, known_text, target_audio_id, rerecord_wanted')
+      .in('pod_id', podIds)
+      .order('id')
+      .range(from, from + PAGE - 1)
+    if (error) throw new Error(`pod sentence read failed: ${error.message}`)
+    out.push(...(data || []))
+    if (!data || data.length < PAGE) break
+  }
+  return out
+}
+
+/**
+ * Which of these texts this recordist has ALREADY recorded, as normalised keys.
+ *
+ * Matched on (language, voice_id) with the voice widened to every spelling
+ * (see recordedSpellings), then reduced to normalised text keys in JS.
+ * course_code is deliberately NOT part of this match: a Welsh line recorded
+ * against cym_n_for_eng is recorded for Welsh.
+ *
+ * The filter is deliberately BROAD — the voice's whole body of work, not the
+ * queue's texts. Asking `text_normalized IN (<every line>)` builds a query
+ * string long enough to fail the request outright, and a human voice's clip
+ * count is small by definition (this exists for languages we have no TTS for),
+ * so one paged read is both cheaper and less brittle. Normalising each stored
+ * key again on the way in makes the match reach both of the conventions that
+ * column holds.
+ */
+async function recordedTextKeys(db, recordist) {
+  const keys = new Set()
+  const PAGE = 1000
+  const page = (from) => db
+    .from('course_audio')
+    .select('text_normalized')
+    .eq('language', recordist.language)
+    .in('voice_id', recordist.spellings)
+    .order('text_normalized')
+    .range(from, from + PAGE - 1)
+
+  for (let from = 0; ; from += PAGE) {
+    let { data, error } = await page(from)
+    // course_audio is ~2.5M rows and this read has been seen to lose a race
+    // with the statement timeout on a cold cache (it plans at ~150ms warm).
+    // One retry, because the failure mode otherwise is a recordist opening
+    // their link to a broken page.
+    if (error && /timeout/i.test(error.message || '')) {
+      ;({ data, error } = await page(from))
+    }
+    if (error) throw new Error(`recorded lookup failed: ${error.message}`)
+    for (const row of data || []) {
+      for (const key of audioKeyCandidates(row.text_normalized)) keys.add(key)
+    }
+    if (!data || data.length < PAGE) break
+  }
+  return keys
+}
+
+/**
+ * Per-language coverage for every human_only language: the bar Tom reads.
+ * Built from the same derivation as the queues, so the numbers on the bar and
+ * the numbers in a recordist's page can never disagree.
+ */
+async function buildCoverage(db) {
+  const policies = await loadPolicies(db, { humanOnlyOnly: true })
+
+  // CONCURRENTLY, because this is Tom's dashboard and it was costing him the
+  // page. Done language-by-language it took 7.7s cold against the live estate —
+  // inside the estate's own 8s statement budget by a hair, which is to say it
+  // failed for whoever loaded it first with a cold cache. The languages share no
+  // state, so the wall clock should be the slowest ONE, not the sum of all of
+  // them. Same reasoning for the two voices inside a language.
+  const out = await Promise.all(policies.map(async (policy) => {
+    const voices = policy.voices || {}
+    // ONE pass over the language's pods, whatever the cast size — and it runs
+    // even when the language has no cast at all, which is the only way pdc's
+    // and bre's uncast lines are visible rather than reported as a flat zero.
+    const language = await buildLanguageLines(db, policy.language)
+
+    const claimed = new Set()
+    const perVoice = (await Promise.all(Object.keys(voices).map(async (slot) => {
+      const recordist = await resolveRecordist(db, voices[slot].voiceId)
+      if (!recordist) return null
+      const bucket = bucketKey(recordist.dialect, recordist.gender)
+      claimed.add(bucket)
+      const q = await finishQueue(db, recordist, language.byBucket.get(bucket) || [], language, { includeRecorded: true })
+      return {
+        voiceId: recordist.voiceId,
+        name: recordist.displayName,
+        gender: recordist.gender,
+        dialect: recordist.dialect,
+        total: q.total,
+        recorded: q.recorded,
+      }
+    }))).filter(Boolean)
+
+    // Ordered so the bar does not reshuffle between two loads. Dialect first,
+    // because a two-dialect language reads as two pairs, not four voices.
+    perVoice.sort((a, b) =>
+      String(a.dialect).localeCompare(String(b.dialect)) ||
+      String(a.gender).localeCompare(String(b.gender)))
+
+    // Lines that ARE cast to a gender, in a dialect this language has no voice
+    // for. Before dialects existed these could not occur; now they are exactly
+    // the Southern Welsh backlog, and counting them is what stops the fix from
+    // hiding what it moved. They are NOT folded into `uncast`, which means
+    // something different and narrower — no gender on the speaker at all.
+    let unrouted = 0
+    for (const [bucket, lines] of language.byBucket.entries()) {
+      if (!claimed.has(bucket)) unrouted += lines.length
+    }
+
+    const total = perVoice.reduce((n, v) => n + v.total, 0)
+    const recorded = perVoice.reduce((n, v) => n + v.recorded, 0)
+    return {
+      language: policy.language,
+      languageName: languageName(policy.language),
+      humanOnly: true,
+      total,
+      recorded,
+      uncast: language.uncast,
+      unrouted,
+      pct: total ? Math.round((recorded / total) * 1000) / 10 : 0,
+      voices: perVoice,
+    }
+  }))
+
+  // Stable order for the dashboard.
+  out.sort((a, b) => a.language.localeCompare(b.language))
+  return out
+}
+
+/**
+ * After a take lands: fill the SAME line in every other course of this language.
+ *
+ * The queue collapsed those lines into one recording, so this is the other half
+ * of that promise — without it, cym_s pods stay silent while their recordist is
+ * told the work is done. One course_audio row per affected course (course_code
+ * IS part of a stored clip's identity on this estate) pointing at the SAME s3
+ * object: one read, no re-render, no duplicate bytes.
+ *
+ * MAKE BEFORE BREAK: the take is already stored and verified by the time this
+ * runs, nothing old is deleted, and each sentence's previous audio id is
+ * returned so the move is reversible.
+ */
+async function propagateTakeToDuplicates({ db, recordist, sentenceId, text, s3Key, durationMs = null, fileSizeBytes = null, role = 'target1', logger = console }) {
+  const textNormalized = normalizeForDb(text)
+  const courses = await coursesForLanguage(db, recordist.language)
+  const byCourse = new Map(courses.map((c) => [c.course_code, c]))
+  if (!byCourse.size) return { linked: [], skipped: 0 }
+
+  const { data: pods } = await db.from('listening_pods').select('id, course_code').in('course_code', [...byCourse.keys()])
+  const podById = new Map((pods || []).map((p) => [p.id, p]))
+  if (!podById.size) return { linked: [], skipped: 0 }
+
+  const sentences = await fetchAllSentences(db, [...podById.keys()])
+  const targets = sentences.filter((s) =>
+    s.id !== sentenceId &&
+    normalizeForDb((s.target_text || '').trim()) === textNormalized &&
+    (() => {
+      const course = byCourse.get(podById.get(s.pod_id).course_code)
+      const entry = castEntryFor(course.voice_config && course.voice_config.podCast, s.speaker)
+      if (!entry || String(entry.gender || '').toLowerCase() !== recordist.gender) return false
+      // The same filter as the queue, for the same reason. The queue only ever
+      // collapsed lines within one dialect, so this is the other half of that
+      // promise: without it a Northern take would be filed straight into the
+      // Southern pods it was deliberately never queued for.
+      return courseDialect(course) === canonicalDialect(recordist.dialect)
+    })()
+  )
+
+  const linked = []
+  for (const s of targets) {
+    const courseCode = podById.get(s.pod_id).course_code
+    const row = {
+      course_code: courseCode,
+      text: text,
+      text_normalized: textNormalized,
+      language: recordist.language,
+      role,
+      voice_id: canonicalVoiceId(recordist.voiceId),
+      origin: 'human',
+      s3_key: s3Key,
+      // Explicit: this upsert lands on the SAME clip identity as the take it
+      // replaces, so an omitted column would leave the old row's want in place
+      // and re-queue a line the recordist has just finished.
+      rerecord_wanted: null,
+    }
+    if (durationMs) row.duration_ms = durationMs
+    if (fileSizeBytes) row.file_size_bytes = fileSizeBytes
+    const { data: audioRow, error: upsertErr } = await db
+      .from('course_audio')
+      .upsert(row, { onConflict: 'course_code,text_normalized,language,role,voice_id' })
+      .select()
+      .single()
+    if (upsertErr) {
+      logger.error(`[Recordist] propagation upsert failed for ${courseCode}/${s.id}: ${upsertErr.message}`)
+      continue
+    }
+    const previous = s.target_audio_id || null
+    const { error: linkErr } = await db
+      .from('listening_pod_sentences')
+      .update({ target_audio_id: audioRow.id })
+      .eq('id', s.id)
+    if (linkErr) {
+      logger.error(`[Recordist] propagation link failed for ${s.id}: ${linkErr.message}`)
+      continue
+    }
+    linked.push({ sentenceId: s.id, courseCode, audioId: audioRow.id, replacedAudioId: previous })
+  }
+  if (linked.length) {
+    logger.log(`[Recordist] one take filled ${linked.length} duplicate line(s) in ${new Set(linked.map((l) => l.courseCode)).size} course(s)`)
+  }
+  return { linked, skipped: targets.length - linked.length }
+}
+
+/**
+ * After a take lands: retire the wants it satisfies.
+ *
+ * The other half of rule 6. A want makes a line outstanding; without this the
+ * line would stay outstanding forever, because the new take upserts onto the
+ * SAME clip identity as the old one (propagateTakeToDuplicates' onConflict) and
+ * would inherit its own re-record flag.
+ *
+ * Retired by CLIP IDENTITY, not by row id — the same reason the queue collapses
+ * by identity in the first place. One take of a text satisfies every want on
+ * that text across every course of the language, which is exactly what the
+ * recordist was promised when the queue showed them the line once.
+ *
+ * MAKE BEFORE BREAK: called only after the take is stored and linked, and it
+ * clears a flag rather than deleting anything. A failure here leaves a line
+ * queued a second time — visible and harmless — so it never fails the take.
+ */
+async function clearRerecordWants({ db, recordist, text, sentenceId = null, logger = console }) {
+  const keys = audioKeyCandidates(String(text || '').trim())
+  const cleared = { clips: 0, sentences: 0 }
+  if (!keys.length) return cleared
+
+  // 1. The clip flag, for every course of this language and every spelling of
+  //    this voice — the widened read, narrow write rule.
+  const { data: clips, error: clipErr } = await db
+    .from('course_audio')
+    .select('id')
+    .eq('language', recordist.language)
+    .in('voice_id', recordist.spellings)
+    .in('text_normalized', keys)
+    .not('rerecord_wanted', 'is', null)
+  if (clipErr) {
+    logger.error(`[Recordist] want lookup failed: ${clipErr.message}`)
+  } else if (clips && clips.length) {
+    const { error } = await db
+      .from('course_audio')
+      .update({ rerecord_wanted: null })
+      .in('id', clips.map((c) => c.id))
+    if (error) logger.error(`[Recordist] clip want clear failed: ${error.message}`)
+    else cleared.clips = clips.length
+  }
+
+  // 2. The pod line's own flag, on every copy of this line in the language.
+  //    Only the 'target' key is dropped: a want on the known track belongs to
+  //    the English explainer queue and is not this recordist's to retire.
+  const courses = await coursesForLanguage(db, recordist.language)
+  const { data: pods } = await db
+    .from('listening_pods').select('id').in('course_code', courses.map((c) => c.course_code))
+  const podIds = (pods || []).map((p) => p.id)
+  if (podIds.length) {
+    const normalized = new Set(keys)
+    const sentences = await fetchAllSentences(db, podIds)
+    const hits = sentences.filter((s) =>
+      s.rerecord_wanted && s.rerecord_wanted.target &&
+      (s.id === sentenceId || audioKeyCandidates((s.target_text || '').trim()).some((k) => normalized.has(k))))
+    for (const s of hits) {
+      const { target: _retired, ...rest } = s.rerecord_wanted
+      const next = Object.keys(rest).length ? rest : null
+      const { error } = await db
+        .from('listening_pod_sentences').update({ rerecord_wanted: next }).eq('id', s.id)
+      if (error) logger.error(`[Recordist] line want clear failed for ${s.id}: ${error.message}`)
+      else cleared.sentences += 1
+    }
+  }
+
+  if (cleared.clips || cleared.sentences) {
+    logger.log(`[Recordist] retired re-record wants: ${cleared.clips} clip(s), ${cleared.sentences} line(s)`)
+  }
+  return cleared
+}
+
+module.exports = {
+  clearRerecordWants,
+  targetRerecordWanted,
+  languageName,
+  loadPolicies,
+  loadAliasMap,
+  coursesForLanguage,
+  resolveRecordist,
+  recordedSpellings,
+  castEntryFor,
+  buildLanguageLines,
+  buildQueue,
+  buildCoverage,
+  recordedTextKeys,
+  propagateTakeToDuplicates,
+  tryCanonicalVoiceId,
+}

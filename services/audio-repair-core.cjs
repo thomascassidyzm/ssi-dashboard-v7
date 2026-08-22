@@ -94,37 +94,34 @@ const DETECTOR = {
 }
 
 /**
- * The second detector: tail integrity. `duration-vs-expected` cannot see a soft
- * tail amputation and never could — losing the final consonant of "want" costs
- * ~100 ms on a 1.4 s clip, well inside the 15% the duration check tolerates, and
- * the queue's own chars/14 expectation is coarser still. Tom heard three such
- * clips in deu_for_eng on 2026-08-05 ("I wan'" for "I want"); all three sit at
- * duration ratios the duration check calls healthy.
+ * The second detector: TAIL TRUNCATION, via the audio-intelligence engine's tier 2.
  *
- * What it measures instead is the SHAPE of the ending. A clip that was cut ends
- * at full speech level and is taken to silence by the mastering chain's 8 ms
- * anti-click fade; a clip that was allowed to finish decays over the natural
- * release of its final phoneme. So: the time from the last frame above
- * peak−10 dB to the first frame at or below peak−50 dB.
+ * `duration-vs-expected` cannot see a soft tail amputation and never could — losing
+ * the final consonant of "want" costs ~100 ms on a 1.4 s clip, well inside the 15%
+ * the duration check tolerates, and the queue's own chars/14 expectation is coarser
+ * still. Tom heard such clips in deu_for_eng on 2026-08-05 ("I wan'" for "I want");
+ * all of them sit at duration ratios the duration check calls healthy.
  *
- * Prior measurement on this estate (docs/audio-tail-gate-decision-memo-2026-08-04.md,
- * 104 blind-judged clips) put that release at a median of 30 ms for clips heard
- * as cut off against 80 ms for clips heard as natural, p = 0.0037. The threshold
- * here is that measured boundary, not a guess.
+ * ⚠️ THIS REPLACED AN EARLIER TAIL CHECK IN THIS FILE, and the replacement is the
+ * whole point rather than a tidy-up. That check measured release time from the global
+ * peak at 5 ms resolution and reported 40-65 ms for clips whose fall actually takes
+ * 21-36 ms. It scored CLEAN on the clips Tom confirmed damaged by ear on 2026-08-06,
+ * playing them outside the app. Two detectors that disagree about the same clip is
+ * how this estate spent a week unsure which of its own gates to believe, so there is
+ * now exactly one tail measurement and it lives in the engine:
  *
- * `speechRateCps` is carried as a SECOND, corroborating leg — chars of text per
- * second of speech, flagged when well above the role's own median. The same memo
- * measured steep-and-fast together at 79% precision / 68% recall. It is kept
- * separate rather than required, because rate is a whole-clip average and goes
- * blind on long clips: the S0001L04 introduction lost its final word "is" and
- * still reads as a normal speaking rate across 3.9 s.
+ *     services/audio-intelligence/tiers/tier2-edge-shape.cjs
+ *
+ * Read that file's header for what it measures, what it is calibrated on, and the
+ * four ear-confirmed-clean clips it flags that cannot be excluded. The short version:
+ * recall 16/16 against every clip Tom has ever labelled damaged, 0 false flags on 316
+ * clips that are clean or presumed clean, and 80% precision on the listened set. It
+ * detects that a clip was TRIMMED; on the labelled set 4 in 20 were trimmed
+ * harmlessly. That makes it triage — it orders clips for repair or for a human ear,
+ * and like everything else in this file it never passes or deletes audio.
  */
-const TAIL_DETECTOR = {
-  name: 'tail-integrity',
-  precision: null,
-  precisionNote:
-    'Recall 3/3 against the only human-labelled ground truth that exists (Tom, deu_for_eng, 2026-08-05) — three clips is far too few for a precision figure, and none is claimed. Like-for-like control: fresh renders of the same 93 texts through the same voices moved the median release 20ms -> 115ms, and 92 of 93 stopped tripping this check, so the flags are not an artefact of which phoneme a word ends on. That says the shipped clips are anomalous; it does NOT say a human hears all 93 as damaged. Orders the queue only; it never passes audio.',
-}
+const tier2 = require('./audio-intelligence/tiers/tier2-edge-shape.cjs')
+const TAIL_DETECTOR = tier2.DETECTOR
 
 class RepairError extends Error {
   constructor (message, code = 'repair_failed', status = 400) {
@@ -144,87 +141,32 @@ function decodeVoiceId (storedVoiceId) {
   return { provider: 'xai', voiceId: raw }
 }
 
-/** Defaults for the tail-integrity check, each one a measured boundary. */
-const TAIL_THRESHOLDS = {
-  frameMs: 5,
-  onsetDb: -10,        // relative to the clip's own peak: "still at speech level"
-  offsetDb: -50,       // relative to the clip's own peak: "gone"
-  silenceFloorDb: -70, // a clip peaking below this has no speech to measure
-  steepReleaseMs: 30,  // measured median for clips heard as cut off
-  fastRateFactor: 1.2, // chars/sec this far above the role median = suspiciously fast
-}
-
 /**
- * Where the speech stops and how fast it gets there, from a frame-RMS envelope
- * in dBFS. Pure: takes numbers, returns numbers, so the tests need no audio.
+ * The tail verdict for one clip, delegated to the engine's tier 2.
  *
- * @param {number[]} frameDb   per-frame RMS in dBFS, oldest first
- * @param {object} [opts]      overrides for TAIL_THRESHOLDS
- * @returns {{peakDb:number, releaseMs:number, speechEndMs:number, durMs:number,
- *            trailingMs:number}|null}  null when the clip has no audible content
- */
-function tailShape (frameDb, opts = {}) {
-  const { frameMs, onsetDb, offsetDb, silenceFloorDb } = { ...TAIL_THRESHOLDS, ...opts }
-  if (!Array.isArray(frameDb) || frameDb.length === 0) return null
-  const peakDb = Math.max(...frameDb)
-  // A silent clip has no tail to judge. It is a real defect, but it is the
-  // silence check's defect — saying nothing here beats inventing a verdict.
-  if (!Number.isFinite(peakDb) || peakDb < silenceFloorDb) return null
-  const hi = peakDb + onsetDb
-  const lo = peakDb + offsetDb
-
-  let lastHi = -1
-  for (let i = frameDb.length - 1; i >= 0; i--) { if (frameDb[i] > hi) { lastHi = i; break } }
-  if (lastHi < 0) return null
-
-  let firstLo = frameDb.length - 1
-  for (let i = lastHi; i < frameDb.length; i++) { if (frameDb[i] <= lo) { firstLo = i; break } }
-
-  return {
-    peakDb: Number(peakDb.toFixed(1)),
-    releaseMs: (firstLo - lastHi) * frameMs,
-    speechEndMs: (lastHi + 1) * frameMs,
-    durMs: frameDb.length * frameMs,
-    trailingMs: (frameDb.length - 1 - firstLo) * frameMs,
-  }
-}
-
-/**
- * The tail-integrity verdict for one clip. Steepness alone flags; a fast
- * speaking rate is carried alongside as corroboration, never as a requirement
- * (see TAIL_DETECTOR for why rate goes blind on long clips).
+ * The measurement deliberately does NOT live here. It takes 1 ms frames and a count of
+ * exact-zero samples in the trailing pad, neither of which survives being handed around
+ * as a 5 ms dB envelope — which is precisely how the superseded check lost the falls it
+ * was supposed to see. So the core asks for samples and passes them straight through.
  *
- * @param {number[]} frameDb
+ * @param {Int16Array} samples  mono PCM at tier2.SAMPLE_RATE
  * @param {object} [ctx]
- * @param {number} [ctx.textChars]     characters of the clip's own text
- * @param {number} [ctx.baselineCps]   median chars/sec for this role, if known
- * @param {object} [ctx.thresholds]
+ * @param {string} [ctx.text]        the clip's own script, carried into the reason only
+ * @param {object} [ctx.thresholds]  overrides; changing one needs the ground-truth rerun
+ *                                   (tools/verify-edge-shape-ground-truth.cjs)
  */
-function tailVerdict (frameDb, ctx = {}) {
-  const T = { ...TAIL_THRESHOLDS, ...(ctx.thresholds || {}) }
-  const shape = tailShape(frameDb, T)
-  if (!shape) {
-    return { flagged: null, score: null, reason: 'no audible content to measure a tail on', shape: null }
-  }
-  const cps = shape.speechEndMs
-    ? Number(((ctx.textChars || 0) / (shape.speechEndMs / 1000)).toFixed(1))
-    : null
-  const fast = !!(cps && ctx.baselineCps && cps >= T.fastRateFactor * ctx.baselineCps)
-  const steep = shape.releaseMs <= T.steepReleaseMs
-
-  const reason = steep
-    ? `ends abruptly — ${shape.releaseMs}ms from full speech level to silence (natural endings measure ~80ms)${fast ? `; and speaks ${cps} chars/sec against a ${ctx.baselineCps} baseline` : ''}`
-    : `tail decays over ${shape.releaseMs}ms — the shape of a clip allowed to finish`
-
+function tailVerdict (samples, ctx = {}) {
+  const T = ctx.thresholds || {}
+  const m = tier2.measure(samples, T)
+  const v = tier2.verdict(m, T)
   return {
-    flagged: steep,
-    // Lower sorts worse. A corroborated flag sorts ahead of a bare one.
-    score: Number((shape.releaseMs - (fast ? 5 : 0)).toFixed(3)),
-    reason,
-    steep,
-    fast,
-    speechRateCps: cps,
-    shape,
+    flagged: v.flagged,
+    score: v.score,
+    reason: v.reason,
+    category: v.category,
+    steep: v.steep,
+    padded: v.padded,
+    shape: m.error ? null : m,
   }
 }
 
@@ -259,10 +201,6 @@ function createRepairCore (deps) {
     nearSilencePeakDb: -9,  // the fra_for_eng near-silence signature
     suspectRatio: 0.85,     // shipped/expected below this = queue it for ears
     attempts: 3,
-    // Best-of-N. 1 preserves the original "first clean take wins" behaviour, so
-    // every existing caller is unaffected; >1 renders that many takes and keeps
-    // the one with the most natural ending. See selectTake().
-    takes: 1,
   }, deps.thresholds || {})
 
   // ── reads ────────────────────────────────────────────────────────────────
@@ -324,7 +262,7 @@ function createRepairCore (deps) {
    */
   async function propose ({
     courseCode, audioId, source = 'tts', text, voiceId,
-    buffer, filename, actor = 'unknown', dryRun = false, takes,
+    buffer, filename, actor = 'unknown', dryRun = false,
   }) {
     const row = await loadClip(courseCode, audioId)
     const useText = (text && String(text).trim()) || row.text
@@ -337,10 +275,6 @@ function createRepairCore (deps) {
     let candidateBuffer = null
     let durationMs = null
     let attemptLog = []
-    // Set by the TTS path, which has already veracity-checked the take it chose.
-    // Re-running whisper on the same bytes below would only buy a second copy of
-    // an answer we hold. Uploads leave it null and are checked from scratch.
-    let knownVerdict = null
 
     if (source === 'upload') {
       if (!buffer || !buffer.length) throw new RepairError('upload carried no bytes', 'empty_upload')
@@ -364,97 +298,44 @@ function createRepairCore (deps) {
           current: currentFacts(row),
         }
       }
-      // Render up to `takes` takes, then keep the best ENDING among the clean
-      // ones. With takes=1 this is exactly the old loop: re-roll on a bad render
-      // rather than handing a human a broken candidate, first clean take wins.
-      //
-      // With takes>1 it is a selection, not a retry. That matters here because
-      // the defect being repaired — a tail cut that silences the ending without
-      // shortening the file — is invisible to faultOf(): the clip is the right
-      // length, the right loudness, and carries the right words. Only the SHAPE
-      // of the ending separates a cut take from a whole one, so the shape is
-      // what ranks them. TTS is stochastic, so re-rolling and picking the
-      // best-shaped take is the cheapest defence available.
-      const takesWanted = Math.max(1, Number(takes ?? T.takes) || 1)
-      // A clean take still costs a re-roll allowance; budget for both.
-      const maxRenders = takesWanted === 1 ? T.attempts : takesWanted + T.attempts - 1
-
-      // Pass 1 — render, and screen on the CHEAP checks only (duration, level,
-      // tail shape). Veracity is deliberately NOT run here: it is an unprimed
-      // whisper round-trip, by far the slowest step, and running it on takes
-      // that are about to lose the ranking is most of the wall-clock for none
-      // of the safety. The winner is still veracity-checked below, and a
-      // failure there walks down the ranking, so the guarantee is unchanged:
-      // no candidate is ever recorded without passing veracity.
-      const candidates = []
+      // Re-roll on a bad render rather than handing a human a broken candidate.
       let last = null
-      for (let attempt = 1; attempt <= maxRenders && candidates.length < takesWanted; attempt++) {
+      for (let attempt = 1; attempt <= T.attempts; attempt++) {
         const out = await render.render({
           text: useText, voiceId: useVoice, language: row.language, role: row.role,
         })
         const level = await verify.measure(out.buffer)
-        const fault = faultOf(out.durationMs, level, null)
-        const tail = await tailOf(out.buffer, useText)
-        attemptLog.push({
-          attempt, durationMs: out.durationMs, level, fault,
-          releaseMs: tail ? tail.shape.releaseMs : null,
-          tailReason: tail ? tail.reason : null,
-        })
-        last = { ...out, level, tail, attempt }
-        if (fault) {
-          logger.log?.(`[repair] ${audioId} take ${attempt}: ${fault} — re-roll`)
-          continue
-        }
-        candidates.push(last)
-        if (takesWanted === 1) break
+        const verdict = await verify.veracity(out.buffer, useText, row.language)
+        const tail = await tailOf(out.buffer)
+        const fault = faultOf(out.durationMs, level, verdict, tail)
+        attemptLog.push({ attempt, durationMs: out.durationMs, level, tail, fault })
+        last = { ...out, level, verdict, tail }
+        if (!fault) break
+        logger.log?.(`[repair] ${audioId} attempt ${attempt}: ${fault} — re-roll`)
       }
-      if (!candidates.length) {
+      const fault = faultOf(last.durationMs, last.level, last.verdict, last.tail)
+      if (fault) {
         throw new RepairError(
-          `no take produced a clean candidate (${faultOf(last.durationMs, last.level, null)}, last ${last.durationMs}ms)`,
+          `no attempt produced a clean candidate (${fault}, last ${last.durationMs}ms)`,
           'candidate_failed_verification')
       }
-
-      // Pass 2 — best tail first, and veracity-check down the ranking until one
-      // passes. Usually that is exactly one whisper call.
-      const ranked = rankTakes(candidates)
-      let chosen = null, lastVerdict = null
-      for (const take of ranked) {
-        const verdict = await verify.veracity(take.buffer, useText, row.language)
-        lastVerdict = verdict
-        const fault = faultOf(take.durationMs, take.level, verdict)
-        if (!fault) { chosen = { ...take, verdict }; break }
-        logger.log?.(`[repair] ${audioId} take ${take.attempt}: ${fault} — next best tail`)
-        const entry = attemptLog.find(a => a.attempt === take.attempt)
-        if (entry) entry.fault = fault
-      }
-      if (!chosen) {
-        throw new RepairError(
-          `no take produced an acceptable candidate — none passed veracity (${faultOf(ranked[0].durationMs, ranked[0].level, lastVerdict)})`,
-          'candidate_failed_verification')
-      }
-      attemptLog.push({
-        selected: chosen.attempt,
-        of: candidates.length,
-        rankedBy: 'tail release (longest natural decay wins), then veracity',
-        releaseMs: chosen.tail ? chosen.tail.shape.releaseMs : null,
-      })
-      candidateBuffer = chosen.buffer
-      durationMs = chosen.durationMs
-      knownVerdict = chosen.verdict
+      candidateBuffer = last.buffer
+      durationMs = last.durationMs
     }
 
     // Verify whatever we ended up with — uploads included, which is the only
     // check standing between a mis-recorded file and a human's ears.
     const level = await verify.measure(candidateBuffer)
-    const verdict = knownVerdict || await verify.veracity(candidateBuffer, useText, row.language)
-    const fault = faultOf(durationMs, level, verdict)
+    const verdict = await verify.veracity(candidateBuffer, useText, row.language)
+    const tail = await tailOf(candidateBuffer)
+    const fault = faultOf(durationMs, level, verdict, tail)
     if (fault) {
       throw new RepairError(`candidate rejected: ${fault} (${durationMs}ms)`,
         'candidate_failed_verification')
     }
 
     if (dryRun) {
-      return { dryRun: true, audioId, source, durationMs, level, verdict, current: currentFacts(row) }
+      return { dryRun: true, audioId, source, durationMs, level, verdict, tail, current: currentFacts(row) }
     }
 
     const candidateId = newId()
@@ -493,6 +374,9 @@ function createRepairCore (deps) {
         durationMs,
         source,
         veracity: { pass: verdict.pass, reason: verdict.reason, cer: verdict.cer },
+        // Carried out to the caller so a repair log records that the replacement was
+        // re-measured for the very defect it replaces, rather than leaving it implied.
+        tail: tail ? { flagged: tail.flagged, reason: tail.reason, shape: tail.shape } : null,
         level,
         s3Key,
       },
@@ -501,47 +385,35 @@ function createRepairCore (deps) {
   }
 
   /**
-   * Tail shape for a rendered buffer, or null when it cannot be measured.
-   * Never throws: a missing frameDb adapter (or an ffmpeg hiccup) must degrade
-   * take selection to "first clean take wins", not fail the whole repair.
+   * @param {object} [tail]  the candidate's own tier-2 verdict, when it was measured.
+   *   A repair that hands back a clip with the SAME defect it was repairing is worse
+   *   than no repair: it costs a render, burns the revision, and reports success. The
+   *   damage this whole path exists for was written at render time, so the fresh
+   *   candidate is exactly the thing that has to be re-measured — not assumed clean
+   *   because it is new.
    */
-  async function tailOf (buffer, text) {
-    if (typeof verify.frameDb !== 'function') return null
-    try {
-      const v = tailVerdict(await verify.frameDb(buffer), { textChars: String(text || '').length })
-      return v && v.shape ? v : null
-    } catch (err) {
-      logger.log?.(`[repair] tail measurement unavailable: ${err.message}`)
-      return null
-    }
-  }
-
-  /**
-   * Takes ordered best ending first: the longest release, i.e. the one that
-   * decays furthest rather than stepping into silence. Takes whose tail could
-   * not be measured sort last but stay eligible, so an unmeasurable batch still
-   * yields a candidate (the first clean take) instead of an error.
-   *
-   * Returns the whole ordering, not just the winner, so the caller can walk
-   * down it when the best-shaped take fails a later check.
-   */
-  function rankTakes (takes) {
-    return takes.slice().sort((a, b) => {
-      const ar = a.tail ? a.tail.shape.releaseMs : -1
-      const br = b.tail ? b.tail.shape.releaseMs : -1
-      if (br !== ar) return br - ar
-      return (b.durationMs || 0) - (a.durationMs || 0) // longer = less likely clipped
-    })
-  }
-
-  function faultOf (durationMs, level, verdict) {
+  function faultOf (durationMs, level, verdict, tail) {
     if (!durationMs || durationMs < T.floorMs) return 'too short'
     if (level && level.meanDb < T.silenceMeanDb) return 'silent'
     if (level && level.peakDb < T.nearSilencePeakDb) return 'near-silent'
     if (verdict && verdict.checked === true && verdict.pass === false) {
       return `words missing (${verdict.reason || 'veracity fail'})`
     }
+    if (tail && tail.flagged === true) return `tail truncated (${tail.reason})`
     return null
+  }
+
+  /** The candidate's tier-2 verdict, or null when there is no decoder to ask. */
+  async function tailOf (buffer) {
+    if (!verify || typeof verify.pcm !== 'function') return null
+    try {
+      return tailVerdict(await verify.pcm(buffer))
+    } catch (err) {
+      // A decode failure is not a pass. It is reported as unmeasured and the
+      // candidate goes to a human with that said out loud.
+      logger.warn?.(`[repair] could not measure candidate tail: ${err.message}`)
+      return { flagged: null, reason: `tail not measured: ${err.message}`, score: null }
+    }
   }
 
   function currentFacts (row) {
@@ -975,9 +847,13 @@ function createRepairCore (deps) {
     const PAGE = 1000
     const data = []
     if (audioIds && audioIds.length) {
-      // `.in()` goes in the query string, and a uuid is 36 characters, so a
-      // 1,000-id filter is a ~37 KB URL and PostgREST answers 400 Bad Request.
-      // 200 keeps it well inside every proxy's limit.
+      // `.in()` sends the ids in the QUERY STRING, so the limit here is URL length,
+      // not row count — a different constraint from PAGE and it needs its own number.
+      // Measured against this Supabase instance on 2026-08-06: 1,000 uuids is a hard
+      // 400 Bad Request, 500 fails in fetch, 300 is fine. That is why a seed-1-300
+      // deu_for_eng scan (18,163 clips) died on its first chunk. 200 leaves headroom
+      // and costs 91 round trips instead of 19, which is nothing next to one S3 GET
+      // and one ffmpeg decode per clip.
       const ID_CHUNK = 200
       for (let i = 0; i < audioIds.length; i += ID_CHUNK) {
         const chunk = audioIds.slice(i, i + ID_CHUNK)
@@ -1063,21 +939,20 @@ function createRepairCore (deps) {
     })
 
     // The tail check needs the bytes, so it is opt-in: one S3 GET and one
-    // decode per clip. Everything is measured first, because the "fast" leg is
-    // relative to the role's own median speaking rate and that is not knowable
-    // until the whole set has been measured.
+    // decode per clip. Each clip is measured and judged in the same pass and
+    // only the verdict is kept — a 50,000-clip course cannot hold 50,000
+    // envelopes in memory, and the verdict needs no cross-clip context.
     let tailFailures = 0
+    const tailByVoice = new Map()
     if (tails) {
-      if (!verify || typeof verify.frameDb !== 'function') {
-        throw new RepairError('tail check needs a verify.frameDb dependency', 'no_tail_support', 500)
+      if (!verify || typeof verify.pcm !== 'function') {
+        throw new RepairError('tail check needs a verify.pcm dependency', 'no_tail_support', 500)
       }
       const byId = new Map(scored.map(s => [s.audioId, s]))
-      const envelopes = new Map()
       // Concurrent, because this is one S3 GET plus one ffmpeg decode per clip
       // and the courses in scope are ~50,000 clips each. Serially that is a
       // day and a half per course; the work is entirely IO- and subprocess-bound
-      // so a small pool turns it into hours. Ordering does not matter here —
-      // every envelope is keyed by id and the verdict pass runs afterwards.
+      // so a small pool turns it into hours.
       let next = 0
       let done = 0
       const worker = async () => {
@@ -1085,11 +960,19 @@ function createRepairCore (deps) {
           const i = next++
           if (i >= rendered.length) return
           const r = rendered[i]
+          const voice = r.voice_id || 'unknown'
+          if (!tailByVoice.has(voice)) tailByVoice.set(voice, { measured: 0, flagged: 0, failed: 0 })
+          const bucket = tailByVoice.get(voice)
           try {
             const { buffer } = await storage.get(r.s3_key)
-            envelopes.set(r.id, await verify.frameDb(buffer))
+            const v = tailVerdict(await verify.pcm(buffer), { text: r.text })
+            const item = byId.get(r.id)
+            if (item) item.tail = v
+            bucket.measured++
+            if (v.flagged) bucket.flagged++
           } catch (err) {
             tailFailures++
+            bucket.failed++
             logger.warn?.(`[repair] tail measure failed for ${r.id}: ${err.message}`)
           }
           if (onProgress && ++done % 250 === 0) onProgress(done, rendered.length)
@@ -1097,38 +980,14 @@ function createRepairCore (deps) {
       }
       await Promise.all(Array.from(
         { length: Math.max(1, Math.min(tailConcurrency, rendered.length)) }, worker))
-      // Median chars/sec per role, from this run's own measurements. Pass 1
-      // measures with no baseline; pass 2 re-runs the verdict with it.
-      const rateByRole = new Map()
-      for (const r of rendered) {
-        const env = envelopes.get(r.id)
-        if (!env) continue
-        const v = tailVerdict(env, { textChars: String(r.text || '').length })
-        if (!v.speechRateCps) continue
-        if (!rateByRole.has(r.role)) rateByRole.set(r.role, [])
-        rateByRole.get(r.role).push(v.speechRateCps)
-      }
-      const medians = new Map([...rateByRole].map(([roleName, xs]) => {
-        const s = [...xs].sort((a, b) => a - b)
-        return [roleName, s[Math.floor(s.length / 2)]]
-      }))
-      for (const r of rendered) {
-        const item = byId.get(r.id)
-        const env = envelopes.get(r.id)
-        if (!item || !env) continue
-        item.tail = tailVerdict(env, {
-          textChars: String(r.text || '').length,
-          baselineCps: medians.get(r.role) || null,
-        })
-      }
     }
 
     const kept = scored.filter(x =>
       x.detector.flagged || x.pendingCandidateId || (x.tail && x.tail.flagged))
 
     // Tail-flagged clips sort by their own (smaller = worse) score; the
-    // duration detector's ratio and the tail's milliseconds are different
-    // units, so they are never mixed into one number.
+    // duration detector's ratio and the tail's fall rate are different units,
+    // so they are never mixed into one number.
     kept.sort((a, b) => {
       const at = a.tail && a.tail.flagged, bt = b.tail && b.tail.flagged
       if (at && bt) return a.tail.score - b.tail.score
@@ -1145,6 +1004,16 @@ function createRepairCore (deps) {
       flaggedByTail: kept.filter(x => x.tail && x.tail.flagged).length,
       measured: tails ? rendered.length - tailFailures : 0,
       tailMeasureFailures: tailFailures,
+      // The flag rate PER VOICE, because that is the first thing to read out of
+      // any sweep that leaves the course this detector was calibrated on. A voice
+      // whose renders naturally fall steeply lights up wholesale, and that is a
+      // calibration finding rather than ten thousand damaged clips. Reported
+      // whether or not it looks alarming, so nobody has to ask for it.
+      tailByVoice: tails
+        ? Object.fromEntries([...tailByVoice].map(([v, b]) => [v, {
+            ...b, flagRate: b.measured ? Number((b.flagged / b.measured).toFixed(4)) : null,
+          }]))
+        : null,
       // Named, not silently dropped: a queue that quietly excluded rows would
       // read as "nothing else to look at" when there is.
       excludedUnrendered: includeUnrendered ? 0 : unrendered.length,
@@ -1214,8 +1083,6 @@ module.exports = {
   RepairError,
   DETECTOR,
   TAIL_DETECTOR,
-  TAIL_THRESHOLDS,
-  tailShape,
   tailVerdict,
   DURATION_HOLDERS,
   UPLOAD_EXTENSIONS,

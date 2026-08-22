@@ -4,7 +4,7 @@
       <router-link to="/production/courses" class="back-link">
         &larr; Courses
       </router-link>
-      <h1 class="course-title">{{ courseCode }}</h1>
+      <h1 class="course-title">{{ getCourseName(courseCode) }}</h1>
     </header>
 
     <ProductionNav :course-code="courseCode" />
@@ -17,6 +17,7 @@
 
 <script setup>
 import ProductionNav from './ProductionNav.vue'
+import { useCourses } from '@/composables/useCourses'
 
 defineProps({
   courseCode: {
@@ -24,6 +25,8 @@ defineProps({
     required: true
   }
 })
+
+const { getCourseName } = useCourses()
 </script>
 
 <style scoped>

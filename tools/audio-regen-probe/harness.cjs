@@ -121,36 +121,91 @@ async function phase8IgnoreDuplicatesUpsert(db, item) {
  * The S3 HEAD check of step 2 is replaced by `storageOk`, a caller-supplied
  * predicate — the fixture has no bucket.
  */
-async function getAudioNeeds(db, courseCode, { storageOk = () => true } = {}) {
+async function getAudioNeeds(db, courseCode, { storageOk = () => true, forceGenerate = false } = {}) {
+  // courses.known_lang / target_lang are 3-letter estate-wide (146/146 rows), and
+  // course_audio.language is canonicalised to the same 3-letter form by the
+  // course_audio_canonical_identity trigger — so these keys really do meet.
+  const KNOWN = 'eng', TARGET = 'spa'
   const slotDefs = [
-    { table: 'course_practice_phrases', textCol: 'known_text', audioCol: 'known_audio_id', role: 'known' },
-    { table: 'course_practice_phrases', textCol: 'target_text', audioCol: 'target1_audio_id', role: 'target1' },
-    { table: 'course_legos', textCol: 'known_text', audioCol: 'known_audio_id', role: 'known' },
-    { table: 'course_legos', textCol: 'target_text', audioCol: 'target1_audio_id', role: 'target1' },
-    { table: 'course_seeds', textCol: 'known_text', audioCol: 'known_audio_id', role: 'known' },
-    { table: 'course_seeds', textCol: 'target_text', audioCol: 'target1_audio_id', role: 'target1' },
+    { table: 'course_practice_phrases', textCol: 'known_text', audioCol: 'known_audio_id', role: 'known', lang: KNOWN },
+    { table: 'course_practice_phrases', textCol: 'target_text', audioCol: 'target1_audio_id', role: 'target1', lang: TARGET },
+    { table: 'course_legos', textCol: 'known_text', audioCol: 'known_audio_id', role: 'known', lang: KNOWN },
+    { table: 'course_legos', textCol: 'target_text', audioCol: 'target1_audio_id', role: 'target1', lang: TARGET },
+    { table: 'course_seeds', textCol: 'known_text', audioCol: 'known_audio_id', role: 'known', lang: KNOWN },
+    { table: 'course_seeds', textCol: 'target_text', audioCol: 'target1_audio_id', role: 'target1', lang: TARGET },
   ]
   const unlinked = []
   for (const s of slotDefs) {
     const r = await db.query(
       `SELECT ${s.textCol} AS text FROM ${s.table} WHERE course_code = $1 AND ${s.audioCol} IS NULL`,
       [courseCode])
-    for (const row of r.rows) if (row.text) unlinked.push({ text: row.text, role: s.role, table: s.table })
+    for (const row of r.rows) if (row.text) unlinked.push({ text: row.text, role: s.role, lang: s.lang, table: s.table })
   }
   // getExistingAudioSet(): every course_audio row for this course, keyed the
-  // same way the slot is keyed.
+  // same way the slot is keyed — normalizeText(text)|language|role, phase8:295.
   const ex = await db.query(
-    `SELECT id, text_normalized, role, s3_key FROM course_audio WHERE course_code = $1`, [courseCode])
+    `SELECT id, text, text_normalized, language, role, s3_key FROM course_audio
+      WHERE course_code = $1 AND s3_key NOT LIKE 'pending/%'`, [courseCode])
   const existing = new Map()
-  for (const a of ex.rows) existing.set(`${a.text_normalized}|${a.role}`, a)
+  for (const a of ex.rows) {
+    const key = `${normalizeForAudio(a.text)}|${a.language}|${a.role}`
+    if (!existing.has(key)) existing.set(key, a)
+  }
 
   const toLink = [], toGenerate = []
   for (const item of unlinked) {
-    const hit = existing.get(`${normalizeForAudio(item.text)}|${item.role}`)
+    const hit = forceGenerate ? null : existing.get(`${normalizeForAudio(item.text)}|${item.lang}|${item.role}`)
     if (hit && storageOk(hit.s3_key)) toLink.push({ ...item, audioId: hit.id, s3Key: hit.s3_key })
     else toGenerate.push(item)
   }
   return { unlinkedCount: unlinked.length, toLink, toGenerate }
+}
+
+/**
+ * /generate Step A, phase8-audio-v13.cjs:1985 — linkAudioIds(courseCode), which
+ * is `supabase.rpc('link_all_audio_ids', ...)`. The function body in schema.sql
+ * is pg_get_functiondef output from the live database, so Postgres itself
+ * decides which row a NULL slot gets bound to.
+ *
+ * Returns BOTH the raw jsonb the RPC emits and `loggedTotal` — the number
+ * phase8:1396-1399 actually computes from it and shows the operator.
+ */
+async function linkAudioIdsStepA(db, courseCode) {
+  const r = await db.query(`SELECT link_all_audio_ids($1) AS result`, [courseCode])
+  const raw = r.rows[0].result
+  // phase8:1396-1398, verbatim key names.
+  const rpcTotal = (raw.phrases_known || 0) + (raw.phrases_target1 || 0) + (raw.phrases_target2 || 0)
+    + (raw.legos_known || 0) + (raw.legos_target1 || 0) + (raw.legos_target2 || 0)
+    + (raw.seeds_known || 0) + (raw.seeds_target1 || 0) + (raw.seeds_target2 || 0)
+  const actuallyLinked = ['legos', 'phrases', 'seeds']
+    .reduce((n, t) => n + Object.values(raw[t] || {}).reduce((a, b) => a + b, 0), 0)
+  return { raw, loggedTotal: rpcTotal, actuallyLinked }
+}
+
+/**
+ * The whole /generate flow, in the order phase8 runs it:
+ *   Step A  linkAudioIds RPC                        :1985-1992
+ *   Step B  getAudioNeeds                           :1995
+ *   Step B2 stuck-linkable escape hatch             :2073-2079
+ *   render  phase8MainGenerateUpsert per item       :2417
+ */
+async function runGenerate(db, courseCode, { storageOk = () => true, voiceId = 'azure_es-ES-ElviraNeural' } = {}) {
+  const ttsBefore = ttsCallCount()
+  const stepA = await linkAudioIdsStepA(db, courseCode)
+  let needs = await getAudioNeeds(db, courseCode, { storageOk })
+  let escapeHatchFired = false
+  if (needs.toLink.length > 0 && needs.toGenerate.length === 0) {
+    escapeHatchFired = true
+    needs = await getAudioNeeds(db, courseCode, { storageOk, forceGenerate: true })
+  }
+  const rendered = []
+  for (const item of needs.toGenerate) {
+    const r = await phase8MainGenerateUpsert(db, {
+      courseCode, text: item.text, language: item.lang, role: item.role, voiceId, tag: 'regen',
+    })
+    rendered.push({ text: item.text, role: item.role, s3Key: r.s3Key })
+  }
+  return { stepA, needs, escapeHatchFired, rendered, ttsCalls: ttsCallCount() - ttsBefore }
 }
 
 // ---------------------------------------------------------------------------
@@ -160,14 +215,14 @@ async function createFixture() {
   const db = await PGlite.create()
   await db.exec(SCHEMA)
   await db.query(
-    `INSERT INTO courses (course_code, known_lang, target_lang, seed_count) VALUES ($1,'en','es',10)`,
+    `INSERT INTO courses (course_code, known_lang, target_lang, seed_count) VALUES ($1,'eng','spa',10)`,
     [COURSE])
   return db
 }
 
 /** Insert a course_audio row directly, as an already-existing (possibly BAD) clip. */
 async function seedAudio(db, {
-  text, role = 'target1', language = 'es', voiceId = 'azure_es-ES-ElviraNeural',
+  text, role = 'target1', language = 'spa', voiceId = 'azure_es-ES-ElviraNeural',
   s3Key = 'mastered/OLD-BAD-0001.mp3', origin = 'tts', createdAt = '2026-01-01T00:00:00Z',
   legoId = null, durationMs = 1234,
 }) {
@@ -206,5 +261,6 @@ async function audioRows(db, role = 'target1') {
 module.exports = {
   COURSE, createFixture, upsert, fakeTts, ttsCallCount, resetTts, normalizeForAudio,
   phase8MainGenerateUpsert, phase8IgnoreDuplicatesUpsert, getAudioNeeds,
+  linkAudioIdsStepA, runGenerate,
   seedAudio, seedLego, legoRow, audioRows,
 }

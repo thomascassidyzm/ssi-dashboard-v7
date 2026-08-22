@@ -43,6 +43,13 @@ async function main() {
     metadata: rows ? { rowsTouched: Number(rows) } : {}
   })
   if (result.error) { console.error(`FAILED: ${result.error}`); process.exit(1) }
+  if (result.refused) {
+    console.error(
+      `REFUSED: ${courseCode} is a human-voice course — no TTS is ever queued for it ` +
+      '(Tom 2026-08-13). Changed content there is a recording task for Aran and Catrin.'
+    )
+    process.exit(2)
+  }
   console.log(result.queued ? `Queued audio-pass request for ${courseCode}.` : `Pending request for ${courseCode} already existed — touched it.`)
 }
 

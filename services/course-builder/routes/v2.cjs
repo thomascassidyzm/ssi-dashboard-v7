@@ -16,7 +16,7 @@ const { claudeConfigExport } = require('../../shared/claude-config.cjs');
 
 const { isChinese, getGoldenSeedCount } = require('../lib/language-config.cjs');
 const { normalizeForZUT, normalizeForStorage, normalizeForContainment, extractVocab } = require('../lib/text-normalization.cjs');
-const { makePhraseId, computePhraseRole, computeLegoPosition, usesBuildUseFormat, checkBuildUsePhrases, generateBuildupPhrases } = require('../lib/phrase-structure.cjs');
+const { makePhraseId, computePhraseRole, computeLegoPosition, usesBuildUseFormat, checkBuildUsePhrases, generateBuildupPhrases, isBareLegoPhrase, partitionBareLegoPhrases } = require('../lib/phrase-structure.cjs');
 const { loadCourseVocab, loadTranslationVocab, addToCourseVocab, invalidateVocabCache } = require('../lib/vocab-cache.cjs');
 const { checkTiling, checkVocabViolations, formatDecompositionPatterns } = require('../lib/validation.cjs');
 const { getBuildProgress, startBuildManager } = require('../lib/build-manager.cjs');
@@ -535,7 +535,9 @@ module.exports = function(ctx) {
             }
           }
 
-          if (bestSeedNum >= 0) {
+          if (bestSeedNum >= 0 && isBareLegoPhrase(draft.target_text, bestLegoTarget)) {
+            console.log(`  Empty seed ${draft.seed_number} skipped — its sentence IS the LEGO "${bestLegoTarget}", which the learner already meets at debut`);
+          } else if (bestSeedNum >= 0) {
             const { data: existingPhrases } = await ctx.supabase
               .from('course_practice_phrases')
               .select('position, phrase_role')
@@ -716,6 +718,20 @@ module.exports = function(ctx) {
           errors.push({
             entry: entryLabel,
             error: `Vocab violations: ${vocabViolations.map(v => `"${v.phrase}" uses unknown: ${v.unknown}`).join('; ')}`
+          });
+          continue;
+        }
+
+        // 3b. Reject bare-LEGO phrases — a phrase that IS the LEGO pads the
+        // count without practising anything (phrase-structure.cjs).
+        const bareSubmitted = [
+          ...partitionBareLegoPhrases(build, lego.target_text).bare,
+          ...partitionBareLegoPhrases(use, lego.target_text).bare,
+        ];
+        if (bareSubmitted.length > 0) {
+          errors.push({
+            entry: entryLabel,
+            error: `${bareSubmitted.length} phrase(s) are the bare LEGO "${lego.target_text}" — the learner already meets it at intro and debut. A BUILD/USE phrase uses the LEGO IN a phrase with already-introduced vocabulary.`,
           });
           continue;
         }

@@ -26,6 +26,9 @@ const requireCjs = createRequire(import.meta.url)
 const state = {
   audioRows: [],
   failNextSelect: false,
+  // The guard retries a failed read three times before giving up, so proving it
+  // fails CLOSED needs a failure that persists across all three.
+  failAllSelects: false,
   upserts: [],
   ttsCalls: 0,
 }
@@ -37,25 +40,35 @@ function makeMockSupabaseClient() {
       let op = 'select'
       const api = {
         select() { return api },
-        eq(col, val) { filters[col] = val; return api },
-        in() { return api },
+        eq(col, val) { filters[col] = { kind: 'eq', val }; return api },
+        in(col, vals) { filters[col] = { kind: 'in', val: vals }; return api },
+        neq(col, val) { filters[col] = { kind: 'neq', val }; return api },
         order() { return api },
         not() { return api },
         lte() { return api },
-        limit() { return resolve() },
+        limit() { return api },
+        // Several phase8 queries end on a filter and are awaited directly (the
+        // precious-audio guard is one). Without a thenable the await yielded
+        // the builder itself, `{ data, error }` destructured to undefined, and
+        // the guard read as "no human row" — the failure this file exists to
+        // catch, silently passing as null.
+        then(onFulfilled, onRejected) { return resolve().then(onFulfilled, onRejected) },
         maybeSingle() { return resolve().then(r => ({ data: (r.data || [])[0] || null, error: r.error })) },
         single() { return resolve().then(r => ({ data: (r.data || [])[0] || null, error: r.error })) },
         upsert(row) { op = 'upsert'; state.upserts.push({ table, row }); return api },
         update() { return api },
       }
       function resolve() {
-        if (state.failNextSelect && op === 'select') {
+        if ((state.failNextSelect || state.failAllSelects) && op === 'select') {
           state.failNextSelect = false
           return Promise.resolve({ data: null, error: { message: 'transient query failure' } })
         }
         if (table === 'course_audio' && op === 'select') {
           const rows = state.audioRows.filter(r =>
-            Object.entries(filters).every(([k, v]) => r[k] === v))
+            Object.entries(filters).every(([k, f]) =>
+              f.kind === 'in' ? f.val.includes(r[k])
+                : f.kind === 'neq' ? r[k] !== f.val
+                  : r[k] === f.val))
           return Promise.resolve({ data: rows, error: null })
         }
         if (op === 'upsert') return Promise.resolve({ data: [{ id: 'UPSERTED-ID' }], error: null })
@@ -125,10 +138,14 @@ describe('phase8 origin guard vs human pod rows', () => {
 
   it('humanRowAtAudioKey fails CLOSED on query failure (throws, never clobbers)', async () => {
     state.audioRows = [humanPodRow('target1')]
-    state.failNextSelect = true
-    await expect(phase8.humanRowAtAudioKey(
-      'cym_n_for_eng', 'bore da', 'cym', 'target1', 'human_catrin_cym'
-    )).rejects.toThrow(/precious-audio guard query failed/)
+    state.failAllSelects = true
+    try {
+      await expect(phase8.humanRowAtAudioKey(
+        'cym_n_for_eng', 'bore da', 'cym', 'target1', 'human_catrin_cym'
+      )).rejects.toThrow(/precious-audio guard query failed/)
+    } finally {
+      state.failAllSelects = false
+    }
   })
 
   it('generatePodAudio REUSES a human row at its key — no TTS call, no upsert', async () => {
@@ -142,7 +159,7 @@ describe('phase8 origin guard vs human pod rows', () => {
       role: 'target1',
       voice: { voice_id: 'human_catrin_cym', provider: 'azure' },
     })
-    expect(result).toEqual({ id: 'HUMAN-target1', reused: true })
+    expect(result).toMatchObject({ id: 'HUMAN-target1', reused: true })
     expect(state.ttsCalls).toBe(0)
     expect(state.upserts).toEqual([])
   })

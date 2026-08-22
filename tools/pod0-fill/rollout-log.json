@@ -1,0 +1,520 @@
+[
+  {
+    "course": "deu_at_for_eng",
+    "role": "known",
+    "pod_ids": [
+      "deu_at_for_eng:pod-0"
+    ],
+    "expected_slots": 129,
+    "approved": true,
+    "result": {
+      "course_code": "deu_at_for_eng",
+      "mode": "bulk",
+      "sample_limit": null,
+      "queued_before_sample": 129,
+      "generated": 2,
+      "reused": 127,
+      "reused_cross_course": 126,
+      "failed": 0,
+      "total": 129,
+      "elapsed_ms": 12654,
+      "errors": []
+    },
+    "revoked": true
+  },
+  {
+    "course": "fra_ca_for_eng",
+    "role": "known",
+    "pod_ids": [
+      "fra_ca_for_eng:pod-0"
+    ],
+    "expected_slots": 119,
+    "approved": true,
+    "result": {
+      "course_code": "fra_ca_for_eng",
+      "mode": "bulk",
+      "sample_limit": null,
+      "queued_before_sample": 119,
+      "generated": 116,
+      "reused": 2,
+      "reused_cross_course": 0,
+      "failed": 1,
+      "total": 119,
+      "elapsed_ms": 46259,
+      "errors": [
+        {
+          "sentence_id": "fra_ca_for_eng:pod-0:SC15-S012",
+          "kind": "known",
+          "error": "[STAGE=tts:azure-fallback,xai-also-failed] TTS generation failed after 3 attempts: Text cannot be empty"
+        }
+      ]
+    },
+    "revoked": true
+  },
+  {
+    "course": "ara_sy_for_eng",
+    "role": "known",
+    "pod_ids": [
+      "ara_sy_for_eng:pod-0"
+    ],
+    "expected_slots": 116,
+    "approved": true,
+    "result": {
+      "course_code": "ara_sy_for_eng",
+      "mode": "bulk",
+      "sample_limit": null,
+      "queued_before_sample": 116,
+      "generated": 114,
+      "reused": 1,
+      "reused_cross_course": 0,
+      "failed": 1,
+      "total": 116,
+      "elapsed_ms": 44535,
+      "errors": [
+        {
+          "sentence_id": "ara_sy_for_eng:pod-0:SC15-S012",
+          "kind": "known",
+          "error": "[STAGE=tts:azure-fallback,xai-also-failed] TTS generation failed after 3 attempts: Text cannot be empty"
+        }
+      ]
+    },
+    "revoked": true
+  },
+  {
+    "course": "fra_for_eng",
+    "role": "known",
+    "pod_ids": [
+      "fra_for_eng:pod-0"
+    ],
+    "expected_slots": 74,
+    "approved": true,
+    "result": {
+      "course_code": "fra_for_eng",
+      "mode": "bulk",
+      "sample_limit": null,
+      "queued_before_sample": 74,
+      "generated": 73,
+      "reused": 1,
+      "reused_cross_course": 0,
+      "failed": 0,
+      "total": 74,
+      "elapsed_ms": 32249,
+      "errors": []
+    },
+    "revoked": true
+  },
+  {
+    "course": "spa_for_eng",
+    "role": "known",
+    "pod_ids": [
+      "spa_for_eng:pod-0"
+    ],
+    "expected_slots": 9,
+    "approved": true,
+    "result": {
+      "course_code": "spa_for_eng",
+      "mode": "bulk",
+      "sample_limit": null,
+      "queued_before_sample": 9,
+      "generated": 4,
+      "reused": 5,
+      "reused_cross_course": 0,
+      "failed": 0,
+      "total": 9,
+      "elapsed_ms": 4319,
+      "errors": []
+    },
+    "revoked": true
+  },
+  {
+    "course": "eng_for_fra",
+    "role": "target",
+    "pod_ids": [
+      "eng_for_fra:pod-0"
+    ],
+    "expected_slots": 3,
+    "approved": true,
+    "result": {
+      "course_code": "eng_for_fra",
+      "mode": "bulk",
+      "sample_limit": null,
+      "queued_before_sample": 3,
+      "generated": 3,
+      "reused": 0,
+      "reused_cross_course": 0,
+      "failed": 0,
+      "total": 3,
+      "elapsed_ms": 1759,
+      "errors": []
+    },
+    "revoked": true
+  },
+  {
+    "course": "eng_for_por",
+    "role": "target",
+    "pod_ids": [
+      "eng_for_por:pod-0"
+    ],
+    "expected_slots": 3,
+    "approved": true,
+    "result": {
+      "course_code": "eng_for_por",
+      "mode": "bulk",
+      "sample_limit": null,
+      "queued_before_sample": 3,
+      "generated": 3,
+      "reused": 0,
+      "reused_cross_course": 0,
+      "failed": 0,
+      "total": 3,
+      "elapsed_ms": 1624,
+      "errors": []
+    },
+    "revoked": true
+  },
+  {
+    "course": "eng_for_spa",
+    "role": "target",
+    "pod_ids": [
+      "eng_for_spa:pod-0"
+    ],
+    "expected_slots": 3,
+    "approved": true,
+    "result": {
+      "course_code": "eng_for_spa",
+      "mode": "bulk",
+      "sample_limit": null,
+      "queued_before_sample": 3,
+      "generated": 3,
+      "reused": 0,
+      "reused_cross_course": 0,
+      "failed": 0,
+      "total": 3,
+      "elapsed_ms": 1842,
+      "errors": []
+    },
+    "revoked": true
+  },
+  {
+    "course": "eng_for_ita",
+    "role": "target",
+    "pod_ids": [
+      "eng_for_ita:pod-0"
+    ],
+    "expected_slots": 3,
+    "approved": true,
+    "result": {
+      "course_code": "eng_for_ita",
+      "mode": "bulk",
+      "sample_limit": null,
+      "queued_before_sample": 3,
+      "generated": 3,
+      "reused": 0,
+      "reused_cross_course": 0,
+      "failed": 0,
+      "total": 3,
+      "elapsed_ms": 1650,
+      "errors": []
+    },
+    "revoked": true
+  },
+  {
+    "course": "eng_for_kor",
+    "role": "target",
+    "pod_ids": [
+      "eng_for_kor:pod-0"
+    ],
+    "expected_slots": 3,
+    "approved": true,
+    "result": {
+      "course_code": "eng_for_kor",
+      "mode": "bulk",
+      "sample_limit": null,
+      "queued_before_sample": 3,
+      "generated": 3,
+      "reused": 0,
+      "reused_cross_course": 0,
+      "failed": 0,
+      "total": 3,
+      "elapsed_ms": 1619,
+      "errors": []
+    },
+    "revoked": true
+  },
+  {
+    "course": "eng_for_zho",
+    "role": "target",
+    "pod_ids": [
+      "eng_for_zho:pod-0"
+    ],
+    "expected_slots": 3,
+    "approved": true,
+    "result": {
+      "course_code": "eng_for_zho",
+      "mode": "bulk",
+      "sample_limit": null,
+      "queued_before_sample": 3,
+      "generated": 3,
+      "reused": 0,
+      "reused_cross_course": 0,
+      "failed": 0,
+      "total": 3,
+      "elapsed_ms": 1714,
+      "errors": []
+    },
+    "revoked": true
+  },
+  {
+    "course": "eng_for_urd",
+    "role": "target",
+    "pod_ids": [
+      "eng_for_urd:pod-0"
+    ],
+    "expected_slots": 3,
+    "approved": true,
+    "result": {
+      "course_code": "eng_for_urd",
+      "mode": "bulk",
+      "sample_limit": null,
+      "queued_before_sample": 3,
+      "generated": 3,
+      "reused": 0,
+      "reused_cross_course": 0,
+      "failed": 0,
+      "total": 3,
+      "elapsed_ms": 1660,
+      "errors": []
+    },
+    "revoked": true
+  },
+  {
+    "course": "eng_for_ara",
+    "role": "target",
+    "pod_ids": [
+      "eng_for_ara:pod-0"
+    ],
+    "expected_slots": 3,
+    "approved": true,
+    "result": {
+      "course_code": "eng_for_ara",
+      "mode": "bulk",
+      "sample_limit": null,
+      "queued_before_sample": 3,
+      "generated": 3,
+      "reused": 0,
+      "reused_cross_course": 0,
+      "failed": 0,
+      "total": 3,
+      "elapsed_ms": 1650,
+      "errors": []
+    },
+    "revoked": true
+  },
+  {
+    "course": "eng_for_jpn",
+    "role": "target",
+    "pod_ids": [
+      "eng_for_jpn:pod-0"
+    ],
+    "expected_slots": 3,
+    "approved": true,
+    "result": {
+      "course_code": "eng_for_jpn",
+      "mode": "bulk",
+      "sample_limit": null,
+      "queued_before_sample": 3,
+      "generated": 3,
+      "reused": 0,
+      "reused_cross_course": 0,
+      "failed": 0,
+      "total": 3,
+      "elapsed_ms": 1822,
+      "errors": []
+    },
+    "revoked": true
+  },
+  {
+    "course": "eng_for_guj",
+    "role": "target",
+    "pod_ids": [
+      "eng_for_guj:pod-0"
+    ],
+    "expected_slots": 3,
+    "approved": true,
+    "result": {
+      "course_code": "eng_for_guj",
+      "mode": "bulk",
+      "sample_limit": null,
+      "queued_before_sample": 3,
+      "generated": 3,
+      "reused": 0,
+      "reused_cross_course": 0,
+      "failed": 0,
+      "total": 3,
+      "elapsed_ms": 1670,
+      "errors": []
+    },
+    "revoked": true
+  },
+  {
+    "course": "eng_for_deu",
+    "role": "target",
+    "pod_ids": [
+      "eng_for_deu:pod-0"
+    ],
+    "expected_slots": 3,
+    "approved": true,
+    "result": {
+      "course_code": "eng_for_deu",
+      "mode": "bulk",
+      "sample_limit": null,
+      "queued_before_sample": 3,
+      "generated": 3,
+      "reused": 0,
+      "reused_cross_course": 0,
+      "failed": 0,
+      "total": 3,
+      "elapsed_ms": 1678,
+      "errors": []
+    },
+    "revoked": true
+  },
+  {
+    "course": "eng_for_pan",
+    "role": "target",
+    "pod_ids": [
+      "eng_for_pan:pod-0"
+    ],
+    "expected_slots": 3,
+    "approved": true,
+    "result": {
+      "course_code": "eng_for_pan",
+      "mode": "bulk",
+      "sample_limit": null,
+      "queued_before_sample": 3,
+      "generated": 3,
+      "reused": 0,
+      "reused_cross_course": 0,
+      "failed": 0,
+      "total": 3,
+      "elapsed_ms": 1862,
+      "errors": []
+    },
+    "revoked": true
+  },
+  {
+    "course": "eng_for_sin",
+    "role": "target",
+    "pod_ids": [
+      "eng_for_sin:pod-0"
+    ],
+    "expected_slots": 3,
+    "approved": true,
+    "result": {
+      "course_code": "eng_for_sin",
+      "mode": "bulk",
+      "sample_limit": null,
+      "queued_before_sample": 3,
+      "generated": 3,
+      "reused": 0,
+      "reused_cross_course": 0,
+      "failed": 0,
+      "total": 3,
+      "elapsed_ms": 1758,
+      "errors": []
+    },
+    "revoked": true
+  },
+  {
+    "course": "eng_for_tam",
+    "role": "target",
+    "pod_ids": [
+      "eng_for_tam:pod-0"
+    ],
+    "expected_slots": 3,
+    "approved": true,
+    "result": {
+      "course_code": "eng_for_tam",
+      "mode": "bulk",
+      "sample_limit": null,
+      "queued_before_sample": 3,
+      "generated": 3,
+      "reused": 0,
+      "reused_cross_course": 0,
+      "failed": 0,
+      "total": 3,
+      "elapsed_ms": 1592,
+      "errors": []
+    },
+    "revoked": true
+  },
+  {
+    "course": "eng_for_hin",
+    "role": "target",
+    "pod_ids": [
+      "eng_for_hin:pod-0"
+    ],
+    "expected_slots": 3,
+    "approved": true,
+    "result": {
+      "course_code": "eng_for_hin",
+      "mode": "bulk",
+      "sample_limit": null,
+      "queued_before_sample": 3,
+      "generated": 3,
+      "reused": 0,
+      "reused_cross_course": 0,
+      "failed": 0,
+      "total": 3,
+      "elapsed_ms": 1708,
+      "errors": []
+    },
+    "revoked": true
+  },
+  {
+    "course": "eng_for_ben",
+    "role": "target",
+    "pod_ids": [
+      "eng_for_ben:pod-0"
+    ],
+    "expected_slots": 3,
+    "approved": true,
+    "result": {
+      "course_code": "eng_for_ben",
+      "mode": "bulk",
+      "sample_limit": null,
+      "queued_before_sample": 3,
+      "generated": 3,
+      "reused": 0,
+      "reused_cross_course": 0,
+      "failed": 0,
+      "total": 3,
+      "elapsed_ms": 1646,
+      "errors": []
+    },
+    "revoked": true
+  },
+  {
+    "course": "pol_for_eng",
+    "role": "known",
+    "pod_ids": [
+      "pol_for_eng:pod-0"
+    ],
+    "expected_slots": 1,
+    "approved": true,
+    "result": {
+      "course_code": "pol_for_eng",
+      "mode": "bulk",
+      "sample_limit": null,
+      "queued_before_sample": 1,
+      "generated": 1,
+      "reused": 0,
+      "reused_cross_course": 0,
+      "failed": 0,
+      "total": 1,
+      "elapsed_ms": 1516,
+      "errors": []
+    },
+    "revoked": true
+  }
+]

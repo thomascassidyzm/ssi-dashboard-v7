@@ -46,6 +46,7 @@ const { normalizeForAudio } = require('../../services/shared/text-normalize.cjs'
 const { isPunctuationOnly } = require('../../services/shared/text-classification.cjs')
 const { CLONE_VOICE_ID, decideCopy } = require('../../services/shared/clone-copy-match.cjs')
 const { buildSourceIndex } = require('../../services/shared/clone-copy-index.cjs')
+const { canonicalVoiceId } = require('../../services/shared/clip-identity.cjs')
 
 const PAGE = 2000
 
@@ -179,6 +180,18 @@ async function insertOwnedRowsBatch(items) {
 }
 
 async function run(courseCode, { apply, voiceId }) {
+  // The --voice argument was entirely unvalidated, and it is the ONE string
+  // that decides both what gets written and — via the `voices` registry lookup
+  // inside buildSourceIndex — whether the run is trusted at all, so a typo or a
+  // wrong spelling silently downgraded a whole run to SKIP_UNTRUSTED_VOICE.
+  // canonicalVoiceId now validates it at intake (an unresolvable voice stops
+  // the run instead of quietly copying nothing) and gives the spelling to
+  // WRITE. The lookup and the source match deliberately keep the argument AS
+  // GIVEN: the `voices` registry holds 161 bare ids to 29 prefixed (checked
+  // 2026-08-06), so prefixing what we ask it would break a working run until
+  // that table is canonicalised too.
+  const canonicalVoice = canonicalVoiceId(voiceId)
+
   const { data: course, error: courseErr } = await supabase
     .from('courses').select('course_code, known_lang, target_lang').eq('course_code', courseCode).maybeSingle()
   if (courseErr) throw courseErr
@@ -194,7 +207,7 @@ async function run(courseCode, { apply, voiceId }) {
   const { byRoleAndNormText, totalMissing } = await fetchMissingEnglishSlots(course)
   const texts = [...byRoleAndNormText.values()].map(g => normalizeForAudio(g.text))
   const { index: sourceIndex, trusted, engine } = await buildSourceIndex(supabase, { voiceId, language: 'eng', texts })
-  console.log(`[${courseCode}] family=${family} voice=${voiceId} engine=${engine || 'unknown'} trusted1x=${trusted}`)
+  console.log(`[${courseCode}] family=${family} voice=${voiceId} (stored as ${canonicalVoice}) engine=${engine || 'unknown'} trusted1x=${trusted}`)
   console.log(`[${courseCode}] ${totalMissing} missing English slots -> ${byRoleAndNormText.size} unique (role,text) groups`)
   if (!trusted) {
     console.log(`[${courseCode}] REFUSING to source copies from voice=${voiceId} (engine=${engine || 'unknown'} not verified speed-invariant at render — see clone-copy-match.cjs isTrusted1xEngine). All slots will report SKIP_UNTRUSTED_VOICE.`)
@@ -215,7 +228,9 @@ async function run(courseCode, { apply, voiceId }) {
   let linked = null
   if (apply) {
     const toInsert = decisions.filter(d => d.action === 'COPY')
-    const items = toInsert.map(d => ({ courseCode, text: d.text, language: 'eng', role: d.role, voiceId, source: d.source }))
+    // Written under the CANONICAL spelling — matching still happens on the
+    // argument as given (see the intake note above).
+    const items = toInsert.map(d => ({ courseCode, text: d.text, language: 'eng', role: d.role, voiceId: canonicalVoice, source: d.source }))
     const failed = await insertOwnedRowsBatch(items)
     const failedByKey = new Map(failed.map(f => [`${f.item.role}|${f.item.text}`, f.error]))
     for (const d of toInsert) {
@@ -249,7 +264,7 @@ async function run(courseCode, { apply, voiceId }) {
     }
   }
 
-  return { courseCode, family, apply, voiceId, engine, trusted, totalMissing, uniqueGroups: byRoleAndNormText.size, summary, copied, linked, decisions }
+  return { courseCode, family, apply, voiceId, storedVoiceId: canonicalVoice, engine, trusted, totalMissing, uniqueGroups: byRoleAndNormText.size, summary, copied, linked, decisions }
 }
 
 function parseArgs(argv) {

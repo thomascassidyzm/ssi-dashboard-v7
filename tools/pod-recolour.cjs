@@ -18,7 +18,7 @@
 
 require('dotenv').config({ path: require('path').resolve(__dirname, '../.env') })
 const { createClient } = require('@supabase/supabase-js')
-const { resolveTargetPool, resolveKnownPool } = require('./pod-voice-coverage.cjs')
+const { resolveTargetPool, resolveKnownPool, loadVerifiedGenders } = require('./pod-voice-coverage.cjs')
 const {
   buildAdjacency, buildTurnWeights, countAdjacentCollisions, assignVoicesColoured, trimPoolPerGender,
 } = require('./pod-voice-colour.cjs')
@@ -300,13 +300,17 @@ async function main() {
   const voicesPerGender = Math.max(1, parseInt(getArg('--voices-per-gender') || '1', 10) || 1)
   const poolFromPod = getArg('--pool-from') === 'pod'
   const keepAudio = !!getArg('--keep-audio')
+  // Read the provider's own gender for every voice (voices.gender) BEFORE
+  // resolving, so which voice fills a female slot is a fact rather than a
+  // catalogue label. SELECT only; it changes nothing until this run applies.
+  await loadVerifiedGenders()
   const targetPool = trimPoolPerGender(resolveTargetPool(targetLang), voicesPerGender)
   const knownPool = trimPoolPerGender(resolveKnownPool(knownLang), voicesPerGender)
 
   console.log(`\n🎨 Pod recolour: ${courseCode}  (${apply ? 'APPLY' : 'DRY-RUN'})`)
   console.log(`   Casting BY SPEAKER on ${voicesPerGender} voice(s) per gender` +
     `${voicesPerGender === 1 ? ' — the two-voice pod-0 rule' : ''}`)
-  console.log(`   Target pool: tier ${targetPool.tier} · ${targetPool.note}`)
+  console.log(`   Target pool: tier ${targetPool.tier} · ${targetPool.note} · gender from ${targetPool.genderSource}`)
   console.log(`     F: ${targetPool.f.map(v => v.name).join(', ') || '(none)'}`)
   console.log(`     M: ${targetPool.m.map(v => v.name).join(', ') || '(none)'}`)
   console.log(`     locale → ${targetPool.locale}`)

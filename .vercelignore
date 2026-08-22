@@ -24,9 +24,24 @@ samples_database/
 
 # Scripts and tools (not needed at runtime)
 scripts/
-tools/
+tools/*
 validators/
 tests/
+
+# ...except the ONE casting implementation. api/pod-cast-voices.js imports
+# assignVoices from it, and a plain `tools/` prunes the directory so hard that
+# the negation below could not re-include anything inside it — the route
+# deployed and answered 500 FUNCTION_INVOCATION_FAILED on every request
+# (2026-08-11). `tools/*` excludes every child instead, which leaves the
+# directory itself in place for the un-ignore to work, git-ignore style.
+#
+# Adding a second entry here is cheaper than a second copy of the casting
+# rules. Anything re-included must be self-contained: pod-sync.cjs requires
+# only dotenv, fs, path and @supabase/supabase-js, nothing else under tools/.
+# The general rule still stands and is documented at api/pod-content.js and
+# api/import-course.js — do not import tools/ from a Vercel function unless
+# you also un-ignore it here and verify the deployed route live.
+!tools/pod-sync.cjs
 
 # Documentation (root docs/, NOT public/docs/ which is used in build)
 # /docs/pods stays IN the upload: src/content/pod-thinking-docs.js imports from it at build time

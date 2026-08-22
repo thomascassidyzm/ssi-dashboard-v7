@@ -152,11 +152,11 @@
                   </div>
                   <div>
                     <span class="text-muted">Known Language:</span>
-                    <span class="text-ink ml-2">{{ validationResult.knownLang }}</span>
+                    <span class="text-ink ml-2">{{ getLanguageName(validationResult.knownLang) }}</span>
                   </div>
                   <div>
                     <span class="text-muted">Target Language:</span>
-                    <span class="text-ink ml-2">{{ validationResult.targetLang }}</span>
+                    <span class="text-ink ml-2">{{ getLanguageName(validationResult.targetLang) }}</span>
                   </div>
                   <div class="col-span-2">
                     <span class="text-muted">Display Name:</span>
@@ -368,6 +368,9 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue';
 import { getApiUrl } from '@/services/api';
+import { useCourses } from '../composables/useCourses';
+
+const { getLanguageName } = useCourses();
 
 // Props
 const props = defineProps<{

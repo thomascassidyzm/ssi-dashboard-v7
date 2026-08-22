@@ -5,7 +5,7 @@
       <div class="flex items-center gap-3 mb-6 text-sm">
         <router-link to="/" class="link-emerald">Home</router-link>
         <span class="text-faint">/</span>
-        <router-link :to="`/production/${courseCode}`" class="link-emerald">{{ courseCode }}</router-link>
+        <router-link :to="`/production/${courseCode}`" class="link-emerald">{{ getCourseName(courseCode) }}</router-link>
         <span class="text-faint">/</span>
         <router-link :to="`/production/${courseCode}/pods`" class="link-emerald">Pods</router-link>
         <span class="text-faint">/</span>
@@ -56,7 +56,11 @@
           </div>
         </div>
         <div v-else-if="draftsLoaded" class="mb-6 bg-surface border border-line rounded-lg px-4 py-2 text-xs text-muted">
-          No lines are awaiting proofread — every {{ targetName }} line here has been read by a human.
+          <!-- "No drafts left" is all this can honestly claim. The marker column dates from
+               2026-08-06 and defaults to false, so an unmarked line is one nobody recorded a
+               verdict on — it is not evidence that a human read it. -->
+          No lines are marked as awaiting proofread. Lines are only marked from 6 August 2026
+          onward, so anything older is unmarked whether or not a human has read it.
         </div>
 
         <!-- Metadata (hosts / design notes) -->
@@ -221,7 +225,14 @@
                     <!-- Unproofread machine draft: say so before the words, so
                          nobody reads them believing they are final. -->
                     <div v-if="isDraft(sent)" class="draft-badge">DRAFT — AWAITING PROOFREAD</div>
-                    <div class="text-ink truncate" :title="sent.target_text">{{ sent.target_text }}</div>
+                    <!-- Target text carries its OWN direction. Arabic under an
+                         LTR paragraph pushes trailing neutrals (! . , quotes)
+                         to the visual right; `dir` on the painting element is
+                         the fix. `text-left` pins the alignment back, because
+                         dir="rtl" would otherwise right-align this line while
+                         the known line below it stayed left — a layout change
+                         nobody asked for. -->
+                    <div class="text-ink truncate text-left bidi-isolate" :dir="dirFor(sent.target_text)" :title="sent.target_text">{{ sent.target_text }}</div>
                     <div class="text-faint text-xs truncate" :title="sent.known_text">{{ sent.known_text }}</div>
                     <!-- Stage-1 explainer (inline, only when populated) -->
                     <div
@@ -229,12 +240,15 @@
                       class="explainer-note text-xs mt-1 italic leading-snug"
                       :title="sent.explainer_text"
                     >
-                      <span class="explainer-icon not-italic mr-1">ⓘ</span>{{ sent.explainer_text }}
+                      <!-- Mixed-language narration sharing a line with the ⓘ
+                           glyph: isolate just the text run so the icon keeps
+                           its place whichever way the narration reads. -->
+                      <span class="explainer-icon not-italic mr-1">ⓘ</span><span class="bidi-isolate" :dir="dirFor(sent.explainer_text)">{{ sent.explainer_text }}</span>
                     </div>
                   </template>
                   <!-- Edit mode -->
                   <div v-else class="space-y-1.5">
-                    <textarea v-model="editBuf.target" rows="1" dir="auto"
+                    <textarea v-model="editBuf.target" rows="1" :dir="dirFor(editBuf.target)"
                       class="w-full bg-canvas border border-emerald-700 rounded px-2 py-1 text-ink text-sm resize-y outline-none" placeholder="target" />
                     <textarea v-model="editBuf.known" rows="1"
                       class="w-full bg-canvas border border-line rounded px-2 py-1 text-muted text-xs resize-y outline-none" placeholder="known / translation" />
@@ -311,10 +325,13 @@ import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { useRoute } from 'vue-router'
 import { getApiUrl } from '@/services/api.js'
 import { useAuth } from '@/composables/useAuth.js'
+import { getLanguageName, useCourses } from '@/composables/useCourses.js'
+import { dirFor } from '@/utils/textDirection.js'
 
 const route = useRoute()
 const courseCode = route.params.courseCode
 const slug = route.params.slug
+const { getCourseName } = useCourses()
 
 // Flag + name for each SSi language code. England/Wales/Scotland use regional
 // tag sequences — NOT 🇬🇧 — so an English course shows St George's cross.
@@ -326,19 +343,16 @@ const LANG_FLAGS = {
   ara: '🇸🇦', ara_sy: '🇸🇾',
   gle: '🇮🇪', nld: '🇳🇱', hrv: '🇭🇷',
 }
-const LANG_NAMES = {
-  eng: 'English', cym: 'Welsh', gae: 'Scottish Gaelic',
-  spa: 'Spanish', fra: 'French', deu: 'German', ita: 'Italian',
-  por: 'Portuguese', por_br: 'Brazilian Portuguese',
-  zho: 'Chinese', jpn: 'Japanese', kor: 'Korean',
-  ara: 'Arabic', ara_sy: 'Syrian Arabic',
-  gle: 'Irish', nld: 'Dutch', hrv: 'Croatian',
-}
 const [targetLang, knownLang] = String(courseCode).split('_for_')
-const targetFlag = LANG_FLAGS[targetLang] || '🌐'
-const knownFlag = LANG_FLAGS[knownLang] || '🌐'
-const targetName = LANG_NAMES[targetLang] || targetLang || 'target'
-const knownName = LANG_NAMES[knownLang] || knownLang || 'known'
+// Dialect codes fall back to their base language for the flag: cym_n flies the
+// same Welsh flag as cym. Names come from the shared course table, which knows
+// the dialects by name ("Welsh (North)") — a private copy here once left the
+// drafts panel counting "109 cym_n lines".
+const flagFor = (code) => LANG_FLAGS[code] || LANG_FLAGS[String(code || '').split('_')[0]] || '🌐'
+const targetFlag = flagFor(targetLang)
+const knownFlag = flagFor(knownLang)
+const targetName = computed(() => getLanguageName(targetLang, 'target'))
+const knownName = computed(() => getLanguageName(knownLang, 'known'))
 
 const pod = ref(null)
 const sentences = ref([])

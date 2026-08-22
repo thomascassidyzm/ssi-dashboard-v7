@@ -9,7 +9,7 @@
         <div class="flex items-start justify-between">
           <div>
             <h1 class="text-4xl font-bold text-accent-2 mb-2">Course Compilation</h1>
-            <p class="text-muted">{{ courseCode }} • Prepare course for app deployment</p>
+            <p class="text-muted">{{ getCourseName(courseCode) }} • Prepare course for app deployment</p>
           </div>
         </div>
       </div>
@@ -341,6 +341,7 @@
 import { ref, computed, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 import api, { getApiUrl } from '../services/api'
+import { useCourses } from '../composables/useCourses'
 
 // Fetch with timeout support (1 hour default for long-running audio operations)
 async function fetchWithTimeout(url, options = {}, timeoutMs = 3600000) {
@@ -360,6 +361,7 @@ async function fetchWithTimeout(url, options = {}, timeoutMs = 3600000) {
 
 const route = useRoute()
 const courseCode = route.params.courseCode
+const { getCourseName } = useCourses()
 
 const loading = ref(true)
 const error = ref(null)

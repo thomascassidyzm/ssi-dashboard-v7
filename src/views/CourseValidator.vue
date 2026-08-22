@@ -40,7 +40,7 @@
           >
             <option value="">-- All Courses Overview --</option>
             <option v-for="courseCode in availableCourses" :key="courseCode" :value="courseCode">
-              {{ courseCode }}
+              {{ getCourseName(courseCode) }}
             </option>
           </select>
         </div>
@@ -54,7 +54,7 @@
             class="bg-surface border border-line rounded-lg p-6 cursor-pointer hover:border-emerald-500 transition-all hover:-translate-y-0.5 group"
           >
             <div class="flex items-start justify-between mb-4">
-              <h3 class="text-lg font-semibold text-ink group-hover:text-emerald-400 transition">{{ courseCode }}</h3>
+              <h3 class="text-lg font-semibold text-ink group-hover:text-emerald-400 transition">{{ getCourseName(courseCode) }}</h3>
               <span
                 v-if="validation.canProgress"
                 class="px-2 py-1 bg-yellow-900/30 text-yellow-400 text-xs rounded-full border border-yellow-400/20"
@@ -113,7 +113,7 @@
           <div class="bg-surface border border-line rounded-lg p-6">
             <div class="flex items-center justify-between mb-6">
               <div class="flex items-center gap-4">
-                <h2 class="text-2xl font-bold text-emerald-400">{{ courseReport.courseCode }}</h2>
+                <h2 class="text-2xl font-bold text-emerald-400">{{ getCourseName(courseReport.courseCode) }}</h2>
                 <button
                   @click="loadDeepValidation(courseReport.courseCode)"
                   class="px-3 py-1 bg-blue-600 hover:bg-blue-500 text-sm rounded-lg transition text-white flex items-center gap-1"
@@ -502,9 +502,11 @@
 import { ref, computed, onMounted } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import { getApiUrl } from '@/services/api'
+import { useCourses } from '../composables/useCourses'
 
 const router = useRouter()
 const route = useRoute()
+const { getCourseName } = useCourses()
 
 const loading = ref(true)
 const error = ref(null)
@@ -632,7 +634,7 @@ async function onCourseChange() {
 
 async function triggerPhase(phase) {
   const confirmed = confirm(
-    `Are you sure you want to trigger ${getPhaseLabel(phase)} for ${courseReport.value.courseCode}?\n\n` +
+    `Are you sure you want to trigger ${getPhaseLabel(phase)} for ${getCourseName(courseReport.value.courseCode)}?\n\n` +
     `This will start the phase generation process.`
   )
 

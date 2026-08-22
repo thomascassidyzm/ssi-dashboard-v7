@@ -9,6 +9,15 @@
       <div class="room-user">
         <HowThisWorks section="record-room" />
         <span class="user-name">{{ userName }}</span>
+        <!-- The way OUT that isn't a way out of Popty. Sign out used to be the
+             only button here, so finishing a session read as "log out". -->
+        <button
+          v-if="hasMainOptions"
+          class="btn-main-options"
+          :disabled="stillSaving"
+          @click="goToMainOptions"
+        >Back to main menu</button>
+        <span v-if="hasMainOptions && stillSaving" class="saving-hint">Saving your recording — hold on</span>
         <button class="btn-signout" @click="handleSignOut">Sign out</button>
       </div>
     </header>
@@ -179,7 +188,9 @@ import { useAuth } from '@/composables/useAuth'
 import { useCourses } from '@/composables/useCourses'
 import { useAutocueState } from '@/composables/useAutocueState'
 import { useUploadQueue } from '@/composables/useAudioUpload'
+import { useMainOptions } from '@/composables/useMainOptions'
 import { getApiUrl } from '@/services/api'
+import { resolveAssignedSlot, humanVoiceIdForSlot } from '@/utils/voiceSlots'
 import pack from '@/explainer/pack.json'
 import HowThisWorks from '@/components/explainer/HowThisWorks.vue'
 import NoticingInvitations from '@/components/explainer/NoticingInvitations.vue'
@@ -199,7 +210,12 @@ const { getCourseName } = useCourses()
 
 // Live session counters (shared singletons with the embedded studio)
 const { recordedCount: sessionRecordedCount } = useAutocueState()
-const { uploadedCount: sessionUploadedCount } = useUploadQueue()
+const { uploadedCount: sessionUploadedCount, pendingCount } = useUploadQueue()
+
+// Never navigate away from audio that hasn't reached the server yet.
+const stillSaving = computed(() => pendingCount.value > 0)
+
+const { hasMainOptions, goToMainOptions } = useMainOptions()
 
 const loading = ref(true)
 const courseInfo = ref(null)
@@ -249,26 +265,18 @@ const courseDisplayName = computed(() => {
 // is THIS course's record of who holds the slot. dashboard_users.voice_id is
 // only a mirror of the person's LATEST mint (a recorder assigned on a second
 // course gets re-minted there), so it is the fallback, not the primary match.
-const assignedSlot = computed(() => {
-  const voices = voiceConfig.value?.voices
-  if (!voices) return null
-  const myEmail = learner.value?.email || null
-  for (const slot of ['target1', 'target2', 'known', 'presentation']) {
-    const v = voices[slot]
-    if (!v?.voiceId) continue
-    if (myEmail && v.assignedEmail && v.assignedEmail === myEmail) return slot
-    if (!v.assignedEmail && learner.value?.voice_id && v.voiceId === learner.value.voice_id) return slot
-  }
-  return null
-})
+// (Resolution shared with the studio's own console mount — src/utils/voiceSlots.js.)
+const assignedSlot = computed(() => resolveAssignedSlot(voiceConfig.value, {
+  email: learner.value?.email || null,
+  voiceId: learner.value?.voice_id || null
+}))
 
-// The voice id everything I record is saved under: the SLOT's voiceId for
-// THIS course (per-course canonical), not my latest cross-course mint.
-const myVoiceId = computed(() => {
-  const slot = assignedSlot.value
-  const slotVoiceId = slot ? voiceConfig.value?.voices?.[slot]?.voiceId : null
-  return slotVoiceId || learner.value?.voice_id || null
-})
+// The voice id everything I record is saved under: the SLOT's HUMAN voiceId for
+// THIS course (per-course canonical), not my latest cross-course mint — and
+// never the slot's TTS voice, which would credit a synthetic voice with my take.
+const myVoiceId = computed(() =>
+  humanVoiceIdForSlot(voiceConfig.value, assignedSlot.value) || learner.value?.voice_id || null
+)
 
 // ── Dialogue (pod) recording mode ────────────────────────────────────────────
 // Activated by ?podVoice=<voiceId> (leader-sent link) or automatically when
@@ -364,9 +372,25 @@ async function loadRoom() {
 
   loading.value = false
 
-  // Reading script totals (slower — loads after the room renders)
+  // Reading script totals (slower — loads after the room renders).
+  // Must carry the same ?maxSeed cap the autocue session will use, or the room
+  // advertises the WHOLE course ("0 of 1000 read", "about 100 minutes") while
+  // the capped session is a few minutes long — and pays for an uncapped
+  // optimizer run just to print a number the recorder will never reach.
+  // `role` keeps the count honest too: already-recorded pruning is per voice
+  // slot, so asking without it would price this person's session off another
+  // voice's takes. voiceConfig is loaded above, so assignedSlot is settled.
+  const cap = parseInt(route.query.maxSeed, 10)
+  const params = new URLSearchParams()
+  if (Number.isInteger(cap) && cap > 0) params.set('maxSeed', String(cap))
+  if (assignedSlot.value) params.set('role', assignedSlot.value)
+  // ?order=course is a natural-only run — one take per line, not two. Without
+  // forwarding it the room would price the session at double the items and
+  // double the minutes the recordist is actually about to read.
+  if (route.query.order === 'course') params.set('order', 'course')
+  const capQuery = params.toString() ? `?${params}` : ''
   try {
-    const res = await fetch(`${base}/api/production/${props.courseCode}/recording-script`, { headers: FETCH_HEADERS })
+    const res = await fetch(`${base}/api/production/${props.courseCode}/recording-script${capQuery}`, { headers: FETCH_HEADERS })
     if (res.ok) {
       const data = await res.json()
       scriptTotal.value = data.totalItems ?? null
@@ -433,14 +457,46 @@ onMounted(loadRoom)
   color: var(--color-paper-dim, var(--muted));
 }
 
+/* The primary way out of a session. Sign out sits beside it, deliberately
+   quieter — it used to be the only button and therefore read as "done". */
+.btn-main-options {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--color-void, var(--canvas));
+  background: var(--color-paper, var(--ink));
+  border: 1px solid var(--color-paper, var(--ink));
+  border-radius: 8px;
+  /* thumb-sized on a phone — Aran records on real hardware */
+  min-height: 44px;
+  padding: 0.5rem 1.1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-main-options:hover:not(:disabled) {
+  opacity: 0.85;
+}
+
+.btn-main-options:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.saving-hint {
+  font-size: 0.75rem;
+  color: var(--color-paper-dim, var(--muted));
+}
+
 .btn-signout {
   font-family: 'Josefin Sans', sans-serif;
   font-size: 0.8125rem;
   color: var(--color-paper-dim, var(--muted));
   background: transparent;
-  border: 1px solid var(--line);
+  border: none;
   border-radius: 6px;
-  padding: 0.4rem 0.85rem;
+  padding: 0.4rem 0.5rem;
+  text-decoration: underline;
   cursor: pointer;
   transition: all 0.2s ease;
 }
@@ -609,6 +665,13 @@ onMounted(loadRoom)
 
   .room-studio {
     margin: 0 -1rem -1rem;
+  }
+
+  /* Two controls now live here — let them wrap rather than squeeze */
+  .room-header,
+  .room-user {
+    flex-wrap: wrap;
+    gap: 0.6rem;
   }
 }
 .room-list {
