@@ -6,10 +6,16 @@ directly as that line's clip, no chunking and no splicing. This document tests a
 Tom asked — if the existing splice-and-dice machinery were pointed at those same natural-only takes,
 how well would it find the LEGO boundaries?
 
-Answer, up front: **it finds none of them.** Not "finds them badly" — the shipped aligner rejected
-100% of the takes at its own QA gate, and of the 88 real LEGO boundaries in the sample it placed
-zero within 80ms of a true one. The slow pass is not a refinement on top of the natural take. It is
-the only thing in the pipeline that knows where a LEGO ends.
+Answer, up front: **it doesn't find them.** The shipped aligner rejected 100% of the takes at its own
+QA gate, and across 88 real LEGO boundaries it proposed only 15 candidate boundaries at all — a
+recall ceiling of 17% before accuracy is even asked about. The slow pass is not a refinement on top
+of the natural take. It is the only thing in the pipeline that knows where a LEGO ends.
+
+> **Corrected 2026-08-22, after job #913.** An earlier revision of this document reported "0 of 88
+> boundaries within 80ms" and "14% of edges clean within 50ms". Both tolerances are finer than the
+> measuring instrument can resolve — whisper's own word timings carry ~120–150ms median error on this
+> audio. Those two figures have been withdrawn and restated at tolerances the instrument supports.
+> The verdict is unchanged, and the finding that carries it (Result 1) never used whisper at all.
 
 ---
 
@@ -88,19 +94,31 @@ A sweep of five silence settings, from `-40dB/200ms` to `-20dB/60ms`, does not r
 any single setting managed was **1/17**, and the whole sweep is chasing the wrong signal anyway —
 see the next number.
 
-## Result 2 — the boundaries it *does* find are not LEGO boundaries
+## Result 2 — it doesn't propose enough boundaries to matter
 
 Across the 17 takes the detector proposed **15 internal boundaries**. The takes contain **88 real
 internal LEGO boundaries**.
 
-- proposed boundaries within 80ms of a real LEGO boundary: **0 of 15 (0%)**
-- real LEGO boundaries recovered: **0 of 88 (0% recall)**
+**This is the instrument-free part, and it is the part that counts: even if every one of those 15
+were perfectly placed, recall would be 15/88 = 17%.** Five sixths of the LEGO boundaries have no
+detectable silence at them at any threshold in the sweep. The pauses a natural take contains are
+breaths and hesitations, and they sit where a speaker breathes, not where a LEGO ends.
 
-This is the finding that settles it. Tuning the threshold until the *count* matches would be
-coincidence dressed as alignment — the pauses a natural take contains are breaths and hesitations,
-and they sit where a speaker breathes, not where a LEGO ends. In a natural read of a LEGO-tiled
-sentence there is simply no acoustic event at the boundary to detect. The slow pass exists to
-*create* that event.
+**How accurate the few it finds are cannot be resolved here.** Restricted to the 14 takes with
+trustworthy ground truth, the detector proposed 8 internal boundaries against 69 real ones:
+
+| tolerance | proposed boundaries matching a real one |
+|---|---|
+| 80ms | 0 of 8 |
+| 150ms | 1 of 8 |
+| 250ms | 3 of 8 |
+| 400ms | 5 of 8 |
+| 600ms | 8 of 8 |
+
+Whisper's own error is ~120–150ms median (job #913), so every row above 150ms is at or inside the
+noise floor and the 80ms row should not be quoted. The honest reading: at fine tolerance the
+detector's boundaries look unrelated to LEGO boundaries, but this evidence cannot prove it, and it
+does not need to. A 17% recall ceiling ends the question on its own.
 
 ## Result 3 — proportional split, the natural-only stand-in for path 3
 
@@ -113,45 +131,49 @@ script text by character-level Needleman–Wunsch (whisper returns standard Germ
 Austrian, so word-for-word matching is too brittle). Slots whose local alignment identity fell below
 0.5 were dropped rather than scored against fiction — see "how far to trust this" below.
 
-**78 LEGO slots scored, from 14 takes.**
+**78 LEGO slots — 156 edges — scored, from 14 takes.** Reported only at tolerances above the
+instrument's ~145ms noise floor; anything finer is withdrawn.
 
-| | by syllables | by characters |
+| edge error | by syllables | by characters |
 |---|---|---|
-| clean — both edges within 50ms | 6 (**7.7%**) | 11 (**14.1%**) |
-| degraded — within 150ms | 26 (33.3%) | 25 (32.1%) |
-| wrong — over 150ms | 46 (**59.0%**) | 42 (**53.8%**) |
-| clip actually usable¹ | 13 (**16.7%**) | 18 (**23.1%**) |
-| median edge error | 120ms | 106ms |
-| mean edge error | 207ms | 229ms |
-| p90 / max | 490ms / 1309ms | 552ms / 1562ms |
+| within 50ms | *(28.8%)* | *(34.0%)* — **below resolution, not reportable** |
+| within 150ms | *(59.0%)* | *(57.7%)* — at the noise floor, not reportable |
+| within 300ms — 2× noise floor | 80.1% | 76.9% |
+| **beyond 300ms — cannot be instrument noise** | **19.9%** | **23.1%** |
+| beyond 500ms | 9.6% | 13.5% |
+| median | *120ms* | *106ms* — **unresolvable; the true value may be anywhere from ~0 to ~250ms** |
+| p75 / p90 / max | 260 / 490 / 1309ms | 283 / 552 / 1562ms |
 
-¹ *usable* = the proposed clip covers ≥90% of its own LEGO and bleeds ≤80ms into a neighbour.
+So the weaker but defensible claim: **roughly a fifth to a quarter of LEGO edges are misplaced by
+more than 300ms, and that cannot be blamed on the measuring stick.** The median is genuinely unknown.
+An earlier revision's "14% clean / 23% of clips usable" figures rested on a 50ms threshold and are
+withdrawn.
 
-Take-level, which is what a recordist would feel: **1 of 14 takes** yielded a complete set of usable
-chunks. Ten of fourteen yielded at least one.
-
-### Why 106ms is fatal rather than merely untidy
+### Why that still ends it
 
 The LEGO slots in this sample have a **median true duration of 440ms**; the 10th percentile is 180ms
-and the shortest is 75ms. **35 of 105 slots are under 300ms.** A 106ms median error is a quarter of a
-median LEGO and more than half of a short one — and the splicer's crossfade is 20ms, so a 106ms error
-is five times the seam it has to hide it in. Over half the slots land >150ms out, which means the
-clip starts or ends inside the wrong word.
+and the shortest is 75ms. **35 of 105 slots are under 300ms.** An error beyond 300ms is therefore
+longer than a whole short LEGO — the clip does not merely clip an onset, it lands on the wrong word.
+The splicer's crossfade is 20ms, so there is no seam wide enough to hide any of this in.
 
-The error is also **systematic, not noisy**: the proportional model runs early, and it drifts
-worst in the middle of the phrase.
+The error is also **systematic, not noisy**, and this survives the calibration cleanly:
 
-| position in phrase | median signed error |
-|---|---|
-| first quartile | 0ms (anchored) |
-| second quartile | **−106ms** |
-| third quartile | **−219ms** |
-| fourth quartile | −90ms (re-anchored by the end) |
+| position in phrase | mean signed error | standard error |
+|---|---|---|
+| first quartile | −87ms | ±45ms |
+| second quartile | **−263ms** | ±77ms |
+| third quartile | **−314ms** | ±74ms |
+| fourth quartile | −232ms | ±89ms |
 
-Both ends are pinned to the voiced span, so the model can only be wrong in the middle — and it is,
-because natural speech is not uniform. Speakers lengthen before a boundary, compress function words,
-and pause where the sense-group ends rather than where the LEGO does. There is no weighting that
-fixes this, because the information is not in the text.
+The third quartile sits **more than four standard errors** from zero. Random instrument noise has no
+shape and no sign; this has both. A constant whisper lag also cancels here by construction — the
+predictions are anchored to whisper-derived `voicedStart`/`voicedEnd`, so shifting every timestamp
+moves prediction and truth together.
+
+The model runs early through the middle because both ends are pinned and natural speech is not
+uniform: speakers lengthen before a boundary, compress function words, and pause where the
+sense-group ends rather than where the LEGO does. There is no weighting that fixes this, because the
+information is not in the text.
 
 ---
 
@@ -168,11 +190,31 @@ Whisper is the measuring stick here, so its failures are stated rather than hidd
   and −23.5dB against a −16 to −17dB norm). Both carry real voiced energy on `silencedetect`, and
   whisper bails at exactly 2.000s on each, which reads as a decoder giving up rather than a silent
   file. I could not determine from the audio alone whether these are quiet reads or false starts.
-- A calibration of whisper's own word-timestamp error against Azure TTS clips that carry
-  authoritative `word_boundaries` is running as **job #913**; it will say whether the 50ms "clean"
-  tolerance is measurable with this instrument or lost in its noise. **It cannot change the
-  verdict** — Results 1 and 2 do not use whisper at all, and the Result 3 errors are an order of
-  magnitude above any plausible whisper jitter.
+### Job #913 — the calibration, and what it took away
+
+Whisper's own word-timestamp error was measured against 30 Azure TTS clips carrying authoritative
+`word_boundaries` (178 words, none dropped). The result forced the corrections above:
+
+- **median absolute error ~120ms on word starts, ~150ms on ends.** Only ~18% of word boundaries land
+  within 50ms; ~8% within 30ms.
+- the error is **systematically signed positive** — whisper runs 110–145ms *late*, not just noisily.
+- it is a **real property of the instrument, not dialect noise leaking in**: the timing error is the
+  same whether whisper got the word right or wrong.
+- the **last word's end** is far worse than interior words (325ms vs 145ms median) — a clip-edge
+  artefact. It does not contaminate this evaluation, because the final boundary is an anchor here
+  and carries zero error by construction.
+- separately: run as standard German, whisper mistranscribes this Austrian audio to a *different
+  word* about two-thirds of the time. Distinct from the timing problem, and the per-slot alignment
+  gates above are what kept it out of the numbers.
+
+Its own stated limits: ground truth is Azure's declared SSML boundaries rather than an independent
+forced aligner; the content-match check covers 126 of 178 words; n=30 on one course, one voice, one
+model size. Full write-up: https://watson-1.tail4968cb.ts.net/d/54c5776e
+
+**What survives:** Result 1 is pure ffmpeg and never touches whisper. Result 2's recall ceiling is
+arithmetic over silence counts and chunk counts, also whisper-free. Result 3's >300ms tail and its
+signed mid-phrase drift are both above the noise floor. **What does not survive:** any claim at 50ms
+or 150ms tolerance, and the median error figures.
 
 ---
 
@@ -182,21 +224,31 @@ Whisper is the measuring stick here, so its failures are stated rather than hidd
 
 The evidence, plainly:
 
-1. The shipped aligner extracts **nothing** from a natural-only take — 0/17, rejected at its own QA
-   gate. It is not degraded without the slow pass; it is inoperative, deliberately.
-2. The reason is physical, not a tuning problem: **0 of 88** real LEGO boundaries have a detectable
-   silence at them. A natural read does not put a pause where a LEGO ends. The slow pass is what
-   manufactures the boundary the detector needs.
-3. The best text-only substitute gets **14% of LEGO edges clean and 23% of clips usable**, with a
-   median error of 106ms against a median LEGO of 440ms, and it fails *systematically* mid-phrase
-   rather than randomly. No weighting fixes it, because the timing information is not in the text.
+1. The shipped aligner extracts **nothing** from a natural-only take — **0 of 17**, rejected at its
+   own QA gate. It is not degraded without the slow pass; it is inoperative, deliberately. This
+   measurement is pure ffmpeg and depends on no model.
+2. The reason is physical, not a tuning problem: the detector finds only **15 candidate boundaries
+   where 88 exist**, a **17% recall ceiling** before accuracy is even asked about. A natural read
+   does not put a pause where a LEGO ends. The slow pass is what manufactures the boundary the
+   detector needs.
+3. The best text-only substitute misplaces **a fifth to a quarter of LEGO edges by more than 300ms**
+   — longer than a whole short LEGO, against a 20ms splicer crossfade — and it fails *systematically*
+   mid-phrase, four standard errors from zero, rather than randomly. No weighting fixes it, because
+   the timing information is not in the text.
 
 The one natural-only path this evidence does *not* close off is **forced alignment** — a model that
 reads the audio and the canonical text together, which is what produced the ground truth in this
 document. That is a different tool from anything in the pipeline today (align.cjs is explicitly
 zero-ML, and the header notes aeneas and whisper were not available when it was written; whisper-cli
-*is* on this box now). It would need its own evaluation, and its floor is already visible here:
-whisper failed outright on 3 of 17 of these takes.
+*is* on this box now).
+
+**But job #913 has now put a hard floor under that option too, and it is a low one.** Off-the-shelf
+whisper on this material carries **~120–150ms median word-boundary error** against LEGOs whose median
+duration is 440ms, mistranscribes the Austrian dialect two thirds of the time when run as standard
+German, and failed outright on 3 of these 17 takes. It is not accurate enough to cut clips with as
+it stands. A forced-alignment route would need a genuinely better aligner — a dialect-adapted or
+purpose-built one — and that is a project, not a switch. It would need its own evaluation before
+anyone counted on it.
 
 So the shape for future recordists is unchanged by this evaluation. If a course wants spliceable
 chunks, it needs the slow pass. If it wants what Sascha is doing this weekend — a whole natural take
