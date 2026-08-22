@@ -144,7 +144,19 @@ deleted — all 180 sentences and their audio are intact at `pod-1-retired-2026-
 
 **Two Popty URLs stopped working, by design.** `/production/hrv_for_eng/pods/pod-0-unrecorded` —
 the link Tom was sent this morning — now 404s, because that slug no longer exists. The pod is at
-**`/production/hrv_for_eng/pods/pod-1`**.
+**`/production/hrv_for_eng/pods/pod-1`**, and that page's data is confirmed live: the deployed
+Popty API returns all 231 sentences across 22 scenes for it, opening on "Dobro jutro! / Good
+morning!" — the Friend rename already in place. *I could not log in to Popty to see the page
+render — it is behind an email one-time code that only Tom can receive — so what is verified is
+the data the page loads, not the pixels. Stated plainly rather than glossed.*
+
+**One Popty thing is fixed but NOT released, and it needs a decision.** Popty surfaces that
+resolve "this course's current pod" *without* being given a slug — the voice-approvals view, and
+`/api/pod-content` called with no slug — still search the old pod-0 family, which no longer exists
+for Croatian. The fix is written, tested and pushed, but Popty's branch sits **138 commits ahead of
+its main**, so releasing it would ship a large amount of unrelated work. That is not a call to make
+quietly on the way past. **Nothing learner-facing is affected** — this is an admin surface only,
+and the pod-1 URL above works on the code already deployed.
 
 ---
 
