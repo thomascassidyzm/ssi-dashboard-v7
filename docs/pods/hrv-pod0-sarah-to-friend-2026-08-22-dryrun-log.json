@@ -1,0 +1,153 @@
+{
+  "pod_id": "hrv_for_eng:pod-0-unrecorded",
+  "applied": false,
+  "ruling": "Tom 2026-08-22 — the FRIEND is the character who is female and named; the protagonist stays male-voiced and unnamed",
+  "supersedes": "docs/pods/hrv-pod0-two-voice-recast-2026-08-21.md §3 (the open question)",
+  "status": "PROPOSED — pending Aran's personal sign-off on each line before this is canon",
+  "live_pod_before": {
+    "pod_id": "hrv_for_eng:pod-0",
+    "n": 142,
+    "t": 142,
+    "k": 142
+  },
+  "course_audio_rows_before": 2566055,
+  "edits": [
+    {
+      "slot": "SC01-S001",
+      "id": "hrv_for_eng:pod-0-unrecorded:SC01-S001",
+      "scene": 1,
+      "sentence": 1,
+      "speaker": "Neighbour (8 am)",
+      "voice": "B-female",
+      "why": "the Neighbour greets the protagonist, who is male-voiced and is no longer named",
+      "known": {
+        "old": "Good morning, Sarah!",
+        "new": "Good morning!"
+      },
+      "target": {
+        "old": "Dobro jutro, Sarah!",
+        "new": "Dobro jutro!"
+      },
+      "unlinked_target_audio_id": "5c9b4aa1-d488-4fb9-80f7-9848edbe0526",
+      "unlinked_known_audio_id": "64ae15fc-7a1c-4164-9fff-60407579f94a"
+    },
+    {
+      "slot": "SC05-S001",
+      "id": "hrv_for_eng:pod-0-unrecorded:SC05-S001",
+      "scene": 5,
+      "sentence": 1,
+      "speaker": "Neighbour (10:30 pm)",
+      "voice": "B-female",
+      "why": "same greeting, evening; `imao` already agrees with the male addressee and stays",
+      "known": {
+        "old": "Good evening, Sarah. Did you have a long day?",
+        "new": "Good evening. Did you have a long day?"
+      },
+      "target": {
+        "old": "Dobra večer, Sarah. Jesi li imao dug dan?",
+        "new": "Dobra večer. Jesi li imao dug dan?"
+      },
+      "unlinked_target_audio_id": "cbff8004-102d-4757-9a84-b40473551c7b",
+      "unlinked_known_audio_id": "b7f3b703-fffa-4338-9edd-c8f576883584"
+    },
+    {
+      "slot": "SC04-S002",
+      "id": "hrv_for_eng:pod-0-unrecorded:SC04-S002",
+      "scene": 4,
+      "sentence": 2,
+      "speaker": "Sarah",
+      "voice": "A-male",
+      "why": "the one place the protagonist greets the Friend — the name lands here, on her",
+      "known": {
+        "old": "Hello! I'm sorry but I can't talk at the moment. I need to go home now. Can we talk tomorrow?",
+        "new": "Hello, Sarah! I'm sorry but I can't talk at the moment. I need to go home now. Can we talk tomorrow?"
+      },
+      "target": {
+        "old": "Bok! Žao mi je, ali ne mogu sada razgovarati. Moram sada ići kući. Možemo li razgovarati sutra?",
+        "new": "Bok, Sarah! Žao mi je, ali ne mogu sada razgovarati. Moram sada ići kući. Možemo li razgovarati sutra?"
+      },
+      "unlinked_target_audio_id": "e22bbcc1-77c0-42e0-95cd-a6b667c484a2",
+      "unlinked_known_audio_id": "faeb6611-fb1e-41af-9177-e2570c4501b4"
+    }
+  ],
+  "relabelled": [
+    {
+      "slot": "SC01-S002",
+      "id": "hrv_for_eng:pod-0-unrecorded:SC01-S002",
+      "from": "Sarah",
+      "to": "Learner"
+    },
+    {
+      "slot": "SC01-S004",
+      "id": "hrv_for_eng:pod-0-unrecorded:SC01-S004",
+      "from": "Sarah",
+      "to": "Learner"
+    },
+    {
+      "slot": "SC02-S001",
+      "id": "hrv_for_eng:pod-0-unrecorded:SC02-S001",
+      "from": "Sarah",
+      "to": "Learner"
+    },
+    {
+      "slot": "SC02-S003",
+      "id": "hrv_for_eng:pod-0-unrecorded:SC02-S003",
+      "from": "Sarah",
+      "to": "Learner"
+    },
+    {
+      "slot": "SC02-S004",
+      "id": "hrv_for_eng:pod-0-unrecorded:SC02-S004",
+      "from": "Sarah",
+      "to": "Learner"
+    },
+    {
+      "slot": "SC03-S002",
+      "id": "hrv_for_eng:pod-0-unrecorded:SC03-S002",
+      "from": "Sarah",
+      "to": "Learner"
+    },
+    {
+      "slot": "SC03-S003",
+      "id": "hrv_for_eng:pod-0-unrecorded:SC03-S003",
+      "from": "Sarah",
+      "to": "Learner"
+    },
+    {
+      "slot": "SC03-S004",
+      "id": "hrv_for_eng:pod-0-unrecorded:SC03-S004",
+      "from": "Sarah",
+      "to": "Learner"
+    },
+    {
+      "slot": "SC03-S005",
+      "id": "hrv_for_eng:pod-0-unrecorded:SC03-S005",
+      "from": "Sarah",
+      "to": "Learner"
+    },
+    {
+      "slot": "SC03-S008",
+      "id": "hrv_for_eng:pod-0-unrecorded:SC03-S008",
+      "from": "Sarah",
+      "to": "Learner"
+    },
+    {
+      "slot": "SC03-S010",
+      "id": "hrv_for_eng:pod-0-unrecorded:SC03-S010",
+      "from": "Sarah",
+      "to": "Learner"
+    },
+    {
+      "slot": "SC04-S002",
+      "id": "hrv_for_eng:pod-0-unrecorded:SC04-S002",
+      "from": "Sarah",
+      "to": "Learner"
+    },
+    {
+      "slot": "SC05-S002",
+      "id": "hrv_for_eng:pod-0-unrecorded:SC05-S002",
+      "from": "Sarah",
+      "to": "Learner"
+    }
+  ]
+}
