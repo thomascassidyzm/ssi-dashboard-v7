@@ -134,8 +134,12 @@ describe('a quiet microphone is still a microphone', () => {
     await r.start()
     r.beginLine()
 
-    // A real read, well under the fixed absolute threshold that used to be the
-    // test. Under the old rule this line was refused and the audio discarded.
+    // The room first — a session always opens on one, and it is what the floor
+    // is measured against.
+    sampleLevel = 0.0004
+    meterFrames(120)
+    // Then a real read, well under the fixed absolute threshold that used to be
+    // the test. Under the old rule this line was refused and the audio binned.
     sampleLevel = 0.03
     meterFrames(20)
 
@@ -147,8 +151,10 @@ describe('a quiet microphone is still a microphone', () => {
     const r = useTapRecorder()
     await r.start()
 
-    // Establish the session's scale with a real read on line one...
+    // Establish the session's scale with a room and a real read on line one...
     r.beginLine()
+    sampleLevel = 0.0004
+    meterFrames(120)
     sampleLevel = 0.03
     meterFrames(20)
     expect(r.lineHasSpeech.value).toBe(true)
@@ -161,20 +167,43 @@ describe('a quiet microphone is still a microphone', () => {
     expect(r.lineHasSpeech.value).toBe(false)
   })
 
+  it('hears a whisper-level signal that no fixed floor could have been set under', async () => {
+    const r = useTapRecorder()
+    await r.start()
+
+    // Tom's iPhone, 2026-08-22: "a very, very small but definite signal". The
+    // room is quieter still. Any absolute threshold chosen in advance sits over
+    // BOTH of these, which is why the threshold is not absolute any more.
+    r.beginLine()
+    sampleLevel = 0.0006          // room, ~-64dBFS
+    meterFrames(120)
+    sampleLevel = 0.004           // the read, ~-48dBFS
+    meterFrames(20)
+
+    expect(r.lineHasSpeech.value).toBe(true)
+  })
+
+  it('does not call that same room speech when nobody reads', async () => {
+    const r = useTapRecorder()
+    await r.start()
+    r.beginLine()
+
+    sampleLevel = 0.0006
+    meterFrames(200)
+
+    expect(r.meterTrusted.value).toBe(true)   // the graph is alive...
+    expect(r.lineHasSpeech.value).toBe(false) // ...and it heard a room, not a read
+  })
+
   it('behaves exactly as before on a mic that is running hot', async () => {
     const r = useTapRecorder()
     await r.start()
     r.beginLine()
 
+    sampleLevel = 0.0004
+    meterFrames(120)
     sampleLevel = 0.5
     meterFrames(20)
     expect(r.lineHasSpeech.value).toBe(true)
-
-    // On a hot mic the floor is capped at the old absolute threshold, so
-    // something at 0.04 — below 0.06 — is not speech here, as it never was.
-    r.beginLine()
-    sampleLevel = 0.04
-    meterFrames(60)
-    expect(r.lineHasSpeech.value).toBe(false)
   })
 })

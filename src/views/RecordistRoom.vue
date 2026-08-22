@@ -109,7 +109,7 @@
         <span class="meter-tag" :class="{ clip: recorder.clipping.value }">
           {{ recorder.clipping.value
             ? 'Too loud — back off the mic'
-            : (recorder.meterTrusted.value ? 'Mic live' : 'Level meter not reading — every take will be saved') }}
+            : (recorder.meterTrusted.value ? `Mic live · ${micDb}` : 'Level meter not reading — every take will be saved') }}
         </span>
       </div>
       <p class="stage-progress">
@@ -520,6 +520,15 @@ function commit(i, blob, hadSpeech) {
   lastLine.value = line
   readThisSession.value++
 }
+
+// The bar as a number. "Barely moving" and "not moving" look the same on a
+// phone at arm's length and mean opposite things; this is what told us which
+// one Tom was looking at on 2026-08-22, and it costs a label.
+function db(v) {
+  if (!(v > 0)) return '−∞'
+  return `${(20 * Math.log10(v)).toFixed(0)} dB`
+}
+const micDb = computed(() => `${db(recorder.inputPeak.value)} · room ${db(recorder.roomTone.value)}`)
 
 // What the recorder can honestly say about whether this line was read: true,
 // false, or null for "no idea". Null is what a meter that is not delivering

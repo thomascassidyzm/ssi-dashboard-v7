@@ -105,22 +105,49 @@ export const ROLL_QUIET_MS = 1000
 // SPEECH_PEAK — the line is judged to have had nothing said on it, and the
 // audio, which exists and is fine, is thrown away.
 //
-// So SPEECH_PEAK is now a CEILING rather than the test: the working floor
-// tracks the loudest thing this session has actually heard, and only rises to
-// 0.06 for a mic that is genuinely running that hot. It never falls below
-// SPEECH_PEAK_MIN, which is set at the level of converter dither — below that
-// there is no signal at all, only the noise of the number itself.
+// So SPEECH_PEAK is now a CEILING rather than the test, and the test itself is
+// not an absolute amplitude at all. It cannot be. Tom, 2026-08-22, watching the
+// bar while reading: "a very, very small but definite signal" — the audio is
+// arriving, at a level any fixed floor picked in advance sits above. Kai hit the
+// same thing the day before and worked around it by turning the input up.
+//
+// What separates a read from a silent room is not how loud the read is; it is
+// how far the read rises ABOVE THAT ROOM. That number is stable across a mic
+// running at -60dBFS and one running at -12, and it is the only thing here that
+// is. So the floor is now measured, not chosen: it sits a fixed number of dB
+// over this room's own tracked noise, held under the loudest thing the session
+// has actually heard, and capped at the old absolute threshold so a hot mic
+// behaves precisely as it always did.
+//
+// There is deliberately NO lower bound on it beyond "not exactly zero". A floor
+// with a bottom is a floor that can sit over a real voice, which is the whole
+// defect. If the room is silent enough that a whisper clears it, the whisper is
+// speech.
 const FLOOR_PEAK = 0.02
 const SPEECH_PEAK = 0.06
-// The least peak we will ever call speech: ~-46dBFS. A read on any working mic
-// clears this by a wide margin; nothing but dither sits under it.
-const SPEECH_PEAK_MIN = 0.005
-// Speech is a real rise against the loudest thing heard so far this session.
-const SPEECH_PEAK_RATIO = 0.35
+// Speech has to clear the room by this much: ~12dB. Room tone, breath and
+// handling noise do not do that; the quietest deliberate read does.
+const NOISE_SPEECH_MULT = 4
+// The room is never allowed to claim it is louder than this fraction of the
+// loudest thing the session has heard. Without it, a mic that opens mid-word
+// seeds its room estimate at speech level and then gates the voice that seeded
+// it. Note 0.25 x 4 = 1 exactly, and that is the point: a perfectly flat signal
+// lands precisely ON the floor and is never speech, at any amplitude. Speech
+// has peaks above its own troughs; a tone does not.
+const NOISE_CEIL_RATIO = 0.25
+// Below this there is no signal, only the noise of the number itself (~-80dBFS).
+// This is not a speech threshold — it is the difference between a live graph and
+// a dead one, and nothing else may live under it.
+const EPSILON_PEAK = 0.0001
 // Quiet sits a third of the way under the speech floor, in the same currency,
 // so a quiet mic does not read as permanently silent and auto-advance off the
 // line the moment it opens.
 const QUIET_PEAK_RATIO = 0.33
+// How fast the tracked room tone follows the input. It drops to a new quiet
+// quickly and rises out of one very slowly, so that a long read cannot pull the
+// room estimate up behind it and gate its own second half.
+const NOISE_FALL = 0.1
+const NOISE_RISE = 0.0006
 
 export function useTapRecorder() {
   const isRecording = ref(false) // a line is actively capturing
@@ -147,6 +174,11 @@ export function useTapRecorder() {
   // frame with any non-zero sample in it is proof the meter is real, and until
   // we have seen one, the meter gets no vote on anything irreversible.
   const meterTrusted = ref(false)
+  // The raw numbers behind the bar, exposed so the surface can show them. A bar
+  // that is "barely moving" and a bar that is "not moving" look identical on a
+  // phone and mean completely different things; printing the dB ends that.
+  const inputPeak = ref(0)
+  const roomTone = ref(0)
   // Below the floor for this long, having already spoken on this line. This is
   // what drives auto-advance in the surface; it is NOT what ends the capture.
   const quietMs = ref(0)
@@ -163,6 +195,9 @@ export function useTapRecorder() {
   // The loudest peak this session has heard. The speech and quiet floors are
   // both derived from it, so a quiet mic gets a quiet scale.
   let sessionPeak = 0
+  // This room's tracked noise tone, in the same units. Seeded by the first frame
+  // and then followed asymmetrically — see NOISE_FALL / NOISE_RISE.
+  let noiseEst = 0
   // Instantaneous peak from the most recent meter frame — the decayed `level`
   // is for the eye, this is for the timing decisions.
   let peak = 0
@@ -270,7 +305,10 @@ export function useTapRecorder() {
     lastQuietSince = now()
     active = spawnRecorder()
     sessionPeak = 0
+    noiseEst = 0
     meterTrusted.value = false
+    inputPeak.value = 0
+    roomTone.value = 0
 
     try { if (navigator.wakeLock) wakeLock = await navigator.wakeLock.request('screen') } catch { /* unsupported */ }
   }
@@ -286,6 +324,14 @@ export function useTapRecorder() {
         // meter may from now on be believed about what it did and did not hear.
         if (p > 0) meterTrusted.value = true
         if (p > sessionPeak) sessionPeak = p
+        // Track the room. Seeded by the first frame that carries anything, so
+        // that a mic which opens mid-sentence still converges downward onto the
+        // room rather than sitting at zero and calling everything speech.
+        if (noiseEst === 0) noiseEst = p
+        else if (p < noiseEst) noiseEst += (p - noiseEst) * NOISE_FALL
+        else noiseEst += (p - noiseEst) * NOISE_RISE
+        inputPeak.value = p
+        roomTone.value = noiseEst
         level.value = Math.max(p, level.value * 0.85)
         if (p >= 0.99) {
           clipping.value = true
@@ -303,10 +349,15 @@ export function useTapRecorder() {
   // speech on it, how long it has been quiet since, and whether the pre-roll
   // should be rolled over.
   // The peak a syllable has to clear to count as speech, on this microphone, at
-  // this distance, in this session. Bounded above by SPEECH_PEAK so a hot mic
-  // behaves exactly as it did before, and below by dither.
+  // this distance, in this room. Measured, not chosen: a fixed rise over the
+  // tracked room tone, never more than a real drop under the loudest thing the
+  // session has heard, capped at the old absolute threshold for a hot mic, and
+  // floored only at "not exactly zero".
   function speechFloor() {
-    return Math.min(SPEECH_PEAK, Math.max(SPEECH_PEAK_MIN, sessionPeak * SPEECH_PEAK_RATIO))
+    const room = sessionPeak > 0
+      ? Math.min(noiseEst, sessionPeak * NOISE_CEIL_RATIO)
+      : noiseEst
+    return Math.max(EPSILON_PEAK, Math.min(SPEECH_PEAK, room * NOISE_SPEECH_MULT))
   }
   // The peak the room has to fall under to count as quiet, in the same currency.
   function quietFloor() {
@@ -411,13 +462,14 @@ export function useTapRecorder() {
     if (wakeLock) { try { await wakeLock.release() } catch {}; wakeLock = null }
     stream = null; meterCtx = null; analyser = null; meterBuf = null
     level.value = 0; clipping.value = false
-    sessionPeak = 0; peak = 0
+    sessionPeak = 0; peak = 0; noiseEst = 0
     meterTrusted.value = false
+    inputPeak.value = 0; roomTone.value = 0
   }
 
   return {
     isRecording, level, clipping, devices, appliedSettings, error,
-    lineHasSpeech, quietMs, meterTrusted,
+    lineHasSpeech, quietMs, meterTrusted, inputPeak, roomTone,
     listDevices, start, beginLine, endLine, discardLine, stop,
   }
 }
