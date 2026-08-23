@@ -46,8 +46,18 @@ const COURSE = arg('course')
 const FROM = arg('from') || 'pod-0'
 const TO = arg('to')
 const TITLE_SUFFIX = arg('title-suffix') || ' — UNRECORDED working copy, not learner-facing'
+// listening_pods.visibility DEFAULTS TO 'live', so an insert that omits the column
+// creates a learner-visible pod. This tool's whole purpose is a copy that is NOT
+// learner-facing, so it writes the column explicitly and defaults it to 'held'.
+// (Omitting it is how 40 non-serving pods came to be 'live' and needed the
+// 2026-08-23 sweep: docs/pods/hold-40-non-serving-pods-2026-08-23.md.)
+const VISIBILITY = arg('visibility') || 'held'
 if (!COURSE || !TO) {
   console.error('FAILED: --course=<code> and --to=<slug> are both required')
+  process.exit(1)
+}
+if (!['held', 'live', 'draft'].includes(VISIBILITY)) {
+  console.error(`FAILED: --visibility=${VISIBILITY} is not one of held|live|draft`)
   process.exit(1)
 }
 if (TO === FROM) {
@@ -65,7 +75,7 @@ const dstPodId = `${COURSE}:${TO}`
     const src = (await db.query(`select * from listening_pods where id=$1`, [srcPodId])).rows[0]
     if (!src) throw new Error(`${srcPodId}: no such pod`)
 
-    const dstExisting = (await db.query(`select id from listening_pods where id=$1`, [dstPodId])).rows[0]
+    const dstExisting = (await db.query(`select id, visibility from listening_pods where id=$1`, [dstPodId])).rows[0]
     const dstRows = Number((await db.query(
       `select count(*) n from listening_pod_sentences where pod_id=$1`, [dstPodId])).rows[0].n)
     if (dstRows > 0) throw new Error(`${dstPodId} already holds ${dstRows} sentence row(s); refusing to clone over it`)
@@ -98,6 +108,7 @@ const dstPodId = `${COURSE}:${TO}`
     const summary = {
       course: COURSE, from: srcPodId, to: dstPodId,
       destination_pod_row: dstExisting ? 'already exists, will be left as-is' : 'will be created',
+      destination_visibility: dstExisting ? `${dstExisting.visibility} (existing row, NOT changed)` : VISIBILITY,
       sentences_to_insert: sentences.length,
       with_target_text: sentences.filter(s => String(s.target_text || '').trim()).length,
       with_target_audio: sentences.filter(s => s.target_audio_id).length,
@@ -114,11 +125,12 @@ const dstPodId = `${COURSE}:${TO}`
     try {
       if (!dstExisting) {
         await db.query(
-          `insert into listening_pods (id, course_code, pod_type, slug, pod_order, title, scene, difficulty, speakers, source_file, metadata)
-           values ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11)`,
+          `insert into listening_pods (id, course_code, pod_type, slug, pod_order, title, scene, difficulty, speakers, source_file, metadata, visibility)
+           values ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12)`,
           [dstPodId, src.course_code, src.pod_type, TO, src.pod_order,
             `${src.title}${TITLE_SUFFIX}`, src.scene, src.difficulty,
-            enc(podJson, 'speakers', src.speakers), src.source_file, enc(podJson, 'metadata', src.metadata)])
+            enc(podJson, 'speakers', src.speakers), src.source_file, enc(podJson, 'metadata', src.metadata),
+            VISIBILITY])
       }
       const cols = ['id', 'pod_id', ...copyCols]
       const placeholders = cols.map((_, i) => `$${i + 1}`).join(',')
@@ -136,7 +148,11 @@ const dstPodId = `${COURSE}:${TO}`
     const after = Number((await db.query(
       `select count(*) n from listening_pod_sentences where pod_id=$1`, [dstPodId])).rows[0].n)
     if (after !== sentences.length) throw new Error(`post-check: ${dstPodId} holds ${after} rows, expected ${sentences.length}`)
-    console.log(JSON.stringify({ mode: 'APPLIED', summary, verified_rows: after }, null, 2))
+    // Read the visibility back rather than trusting the insert: a clone that is
+    // reachable by a learner is the one way this tool can do harm.
+    const vis = (await db.query(`select visibility from listening_pods where id=$1`, [dstPodId])).rows[0].visibility
+    if (!dstExisting && vis !== VISIBILITY) throw new Error(`post-check: ${dstPodId} is '${vis}', expected '${VISIBILITY}'`)
+    console.log(JSON.stringify({ mode: 'APPLIED', summary, verified_rows: after, verified_visibility: vis }, null, 2))
   } finally {
     await db.end()
   }

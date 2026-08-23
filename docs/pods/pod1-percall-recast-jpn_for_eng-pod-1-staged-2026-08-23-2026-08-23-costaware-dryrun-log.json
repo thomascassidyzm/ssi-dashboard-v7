@@ -1,0 +1,2235 @@
+{
+  "pod": "jpn_for_eng:pod-1-staged-2026-08-23",
+  "course": "jpn_for_eng",
+  "slug": "pod-1-staged-2026-08-23",
+  "visibility": "held",
+  "mode": "dryrun",
+  "rows": 231,
+  "linkedTarget": 231,
+  "linkedKnown": 231,
+  "gluedRows": 0,
+  "voicePairTarget": {
+    "f": "ja-JP-MayuNeural",
+    "m": "ja-JP-NaokiNeural",
+    "single": "ja-JP-NaokiNeural",
+    "counts": {
+      "ja-JP-NaokiNeural": 116,
+      "ja-JP-MayuNeural": 115
+    },
+    "countsByLine": {
+      "ja-JP-NaokiNeural": 116,
+      "ja-JP-MayuNeural": 115
+    },
+    "discarded": [],
+    "ungendered": [],
+    "distinct": 2
+  },
+  "voicePairKnown": {
+    "f": "bedd6226",
+    "m": "gfzdpspr5fdp",
+    "single": "gfzdpspr5fdp",
+    "counts": {
+      "gfzdpspr5fdp": 116,
+      "bedd6226": 115
+    },
+    "countsByLine": {
+      "gfzdpspr5fdp": 116,
+      "bedd6226": 115
+    },
+    "discarded": [],
+    "ungendered": [],
+    "distinct": 2
+  },
+  "knownTrackInScope": true,
+  "voiceGender": {
+    "ja-JP-NaokiNeural": "m",
+    "ja-JP-MayuNeural": "f",
+    "gfzdpspr5fdp": "m",
+    "bedd6226": "f"
+  },
+  "genderConflicts": [],
+  "baselineDeliveredCollisions": {
+    "rawPairs": 20,
+    "rawTurns": 71,
+    "exchangePairs": 15,
+    "exchangeTurns": 61
+  },
+  "proposedExchangeCollisions": {
+    "pairs": 0,
+    "turns": 0
+  },
+  "proposedRawLabelCollisions": {
+    "pairs": 5,
+    "turns": 10
+  },
+  "nonExchangePairsDropped": [
+    {
+      "tag": "7:6->7:7",
+      "a": "Cafe Customer 1",
+      "b": "Cafe Customer 2",
+      "aText": "I'd like takeaway, please.",
+      "bText": "Could I have two white coffees and two black coffees and one of those, please?"
+    },
+    {
+      "tag": "8:4->8:5",
+      "a": "Bar Customer 1",
+      "b": "Bar Customer 2",
+      "aText": "I'd like a pint of the bitter, please.",
+      "bText": "Can I have a half of cider?"
+    },
+    {
+      "tag": "8:5->8:6",
+      "a": "Bar Customer 2",
+      "b": "Bar Customer 3",
+      "aText": "Can I have a half of cider?",
+      "bText": "Could I see the wine list? I want a glass of wine."
+    },
+    {
+      "tag": "8:8->8:9",
+      "a": "Bar Customer 3",
+      "b": "Bar Customer 1",
+      "aText": "I'd like a large glass of white wine, please.",
+      "bText": "Can I have a small glass of red wine?"
+    },
+    {
+      "tag": "8:9->8:10",
+      "a": "Bar Customer 1",
+      "b": "Bar Customer 2",
+      "aText": "Can I have a small glass of red wine?",
+      "bText": "I'd like two more glasses of beer."
+    },
+    {
+      "tag": "8:14->8:15",
+      "a": "Bar Customer 1",
+      "b": "Bar Customer 2",
+      "aText": "Can we have some bread? And a bowl of chips for the table.",
+      "bText": "Do you have any sandwiches? I'd like a cheese sandwich, please."
+    },
+    {
+      "tag": "9:4->9:5",
+      "a": "Diner 2",
+      "b": "Diner 1",
+      "aText": "We'd like one bottle of sparkling water and one bottle of still water, please.",
+      "bText": "Excuse me - do you have anything gluten-free? Or for vegetarians?"
+    },
+    {
+      "tag": "9:9->9:10",
+      "a": "Diner 1",
+      "b": "Diner 2",
+      "aText": "I'll have the lamb, please. With a side of greens.",
+      "bText": "And the risotto for me. With a small green salad to start."
+    },
+    {
+      "tag": "9:12->9:13",
+      "a": "Diner 1",
+      "b": "Diner 2",
+      "aText": "Could we see the wine list?",
+      "bText": "A bottle of the house red would be lovely."
+    },
+    {
+      "tag": "9:16->9:17",
+      "a": "Diner 1",
+      "b": "Diner 2",
+      "aText": "Just two coffees, please. Decaf for me.",
+      "bText": "And the bill, when you're ready. Could we split it?"
+    }
+  ],
+  "sameVoiceConsecutiveResidue": [
+    {
+      "tag": "7:6->7:7",
+      "a": "Cafe Customer 1",
+      "b": "Cafe Customer 2",
+      "voice": "ja-JP-NaokiNeural",
+      "exchange": false
+    },
+    {
+      "tag": "8:4->8:5",
+      "a": "Bar Customer 1",
+      "b": "Bar Customer 2",
+      "voice": "ja-JP-MayuNeural",
+      "exchange": false
+    },
+    {
+      "tag": "8:5->8:6",
+      "a": "Bar Customer 2",
+      "b": "Bar Customer 3",
+      "voice": "ja-JP-MayuNeural",
+      "exchange": false
+    },
+    {
+      "tag": "8:8->8:9",
+      "a": "Bar Customer 3",
+      "b": "Bar Customer 1",
+      "voice": "ja-JP-MayuNeural",
+      "exchange": false
+    },
+    {
+      "tag": "8:9->8:10",
+      "a": "Bar Customer 1",
+      "b": "Bar Customer 2",
+      "voice": "ja-JP-MayuNeural",
+      "exchange": false
+    },
+    {
+      "tag": "8:14->8:15",
+      "a": "Bar Customer 1",
+      "b": "Bar Customer 2",
+      "voice": "ja-JP-MayuNeural",
+      "exchange": false
+    },
+    {
+      "tag": "9:4->9:5",
+      "a": "Diner 2",
+      "b": "Diner 1",
+      "voice": "ja-JP-MayuNeural",
+      "exchange": false
+    },
+    {
+      "tag": "9:9->9:10",
+      "a": "Diner 1",
+      "b": "Diner 2",
+      "voice": "ja-JP-MayuNeural",
+      "exchange": false
+    },
+    {
+      "tag": "9:12->9:13",
+      "a": "Diner 1",
+      "b": "Diner 2",
+      "voice": "ja-JP-MayuNeural",
+      "exchange": false
+    },
+    {
+      "tag": "9:16->9:17",
+      "a": "Diner 1",
+      "b": "Diner 2",
+      "voice": "ja-JP-MayuNeural",
+      "exchange": false
+    }
+  ],
+  "componentsOriented": [
+    {
+      "size": 28,
+      "flipped": true,
+      "decidedBy": "delivered-clips",
+      "deliveredClipsKept": {
+        "asColoured": 88,
+        "flipped": 374,
+        "chosen": 374
+      },
+      "scriptGenderScore": {
+        "asColoured": -3,
+        "flipped": 3
+      },
+      "clipsInComponent": 462,
+      "scriptFixedNames": [
+        {
+          "name": "Sarah",
+          "gender": "f"
+        },
+        {
+          "name": "Anna",
+          "gender": "f"
+        },
+        {
+          "name": "James",
+          "gender": "m"
+        }
+      ],
+      "members": [
+        "Neighbour",
+        "Sarah",
+        "Passenger",
+        "Barista",
+        "Friend",
+        "Driver",
+        "Learner",
+        "Narrator",
+        "Anna",
+        "Cafe Barista",
+        "Bar Customer 2",
+        "Diner 2",
+        "Customer",
+        "Receptionist",
+        "Tourist",
+        "James",
+        "Cafe Customer 1",
+        "Cafe Customer 2",
+        "Cafe Customer 3",
+        "Bartender",
+        "Waiter",
+        "Assistant",
+        "Pharmacist",
+        "Guest",
+        "Local",
+        "Bar Customer 1",
+        "Bar Customer 3",
+        "Diner 1"
+      ]
+    }
+  ],
+  "forcedGenderMismatch": [],
+  "relabelCount": 0,
+  "relabels": [],
+  "regenLines": 88,
+  "regenLinesTarget": 44,
+  "regenLinesKnown": 44,
+  "regenCausedByThisRecast": 0,
+  "regenPreexistingDrift": 88,
+  "regenAttributionFromBaseline": 0,
+  "regenDistinctClips": 88,
+  "regenDistinctClipsCausedByRecast": 0,
+  "deliveredClipsKeptByOrientation": 374,
+  "deliveredClipsKeptIfUnflipped": 88,
+  "regenQueue": [
+    {
+      "course": "jpn_for_eng",
+      "pod": "jpn_for_eng:pod-1-staged-2026-08-23",
+      "global_order": 10,
+      "scene": 3,
+      "sentence": 1,
+      "track": "target",
+      "clipId": "6904af59-83dc-47e9-bbb6-45d4f5c8d9d3",
+      "speakerBefore": "Barista (3 pm)",
+      "speakerAfter": "Barista",
+      "voiceBefore": "ja-JP-MayuNeural",
+      "voiceAfter": "ja-JP-NaokiNeural",
+      "castVoiceBefore": "ja-JP-NaokiNeural",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": false
+    },
+    {
+      "course": "jpn_for_eng",
+      "pod": "jpn_for_eng:pod-1-staged-2026-08-23",
+      "global_order": 10,
+      "scene": 3,
+      "sentence": 1,
+      "track": "known",
+      "clipId": "1c7f88a3-8588-43c6-a514-be2d9cde5733",
+      "speakerBefore": "Barista (3 pm)",
+      "speakerAfter": "Barista",
+      "voiceBefore": "bedd6226",
+      "voiceAfter": "gfzdpspr5fdp",
+      "castVoiceBefore": "gfzdpspr5fdp",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": false
+    },
+    {
+      "course": "jpn_for_eng",
+      "pod": "jpn_for_eng:pod-1-staged-2026-08-23",
+      "global_order": 15,
+      "scene": 3,
+      "sentence": 6,
+      "track": "target",
+      "clipId": "03640c95-a90c-4c45-9754-9adf7e8add73",
+      "speakerBefore": "Barista",
+      "speakerAfter": "Barista",
+      "voiceBefore": "ja-JP-MayuNeural",
+      "voiceAfter": "ja-JP-NaokiNeural",
+      "castVoiceBefore": "ja-JP-NaokiNeural",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": false
+    },
+    {
+      "course": "jpn_for_eng",
+      "pod": "jpn_for_eng:pod-1-staged-2026-08-23",
+      "global_order": 15,
+      "scene": 3,
+      "sentence": 6,
+      "track": "known",
+      "clipId": "a7f81bb8-7c36-4ec3-a4f8-c5671e056d59",
+      "speakerBefore": "Barista",
+      "speakerAfter": "Barista",
+      "voiceBefore": "bedd6226",
+      "voiceAfter": "gfzdpspr5fdp",
+      "castVoiceBefore": "gfzdpspr5fdp",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": false
+    },
+    {
+      "course": "jpn_for_eng",
+      "pod": "jpn_for_eng:pod-1-staged-2026-08-23",
+      "global_order": 16,
+      "scene": 3,
+      "sentence": 7,
+      "track": "target",
+      "clipId": "59f1654e-a3eb-4eb8-815b-160e6e39d071",
+      "speakerBefore": "Barista",
+      "speakerAfter": "Barista",
+      "voiceBefore": "ja-JP-MayuNeural",
+      "voiceAfter": "ja-JP-NaokiNeural",
+      "castVoiceBefore": "ja-JP-NaokiNeural",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": false
+    },
+    {
+      "course": "jpn_for_eng",
+      "pod": "jpn_for_eng:pod-1-staged-2026-08-23",
+      "global_order": 16,
+      "scene": 3,
+      "sentence": 7,
+      "track": "known",
+      "clipId": "a2e982d4-3c1c-4748-973e-3b4eceb1a3fa",
+      "speakerBefore": "Barista",
+      "speakerAfter": "Barista",
+      "voiceBefore": "bedd6226",
+      "voiceAfter": "gfzdpspr5fdp",
+      "castVoiceBefore": "gfzdpspr5fdp",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": false
+    },
+    {
+      "course": "jpn_for_eng",
+      "pod": "jpn_for_eng:pod-1-staged-2026-08-23",
+      "global_order": 18,
+      "scene": 3,
+      "sentence": 9,
+      "track": "target",
+      "clipId": "feeff632-4e1c-4de3-b12a-a94c8fdfcb62",
+      "speakerBefore": "Barista",
+      "speakerAfter": "Barista",
+      "voiceBefore": "ja-JP-MayuNeural",
+      "voiceAfter": "ja-JP-NaokiNeural",
+      "castVoiceBefore": "ja-JP-NaokiNeural",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": false
+    },
+    {
+      "course": "jpn_for_eng",
+      "pod": "jpn_for_eng:pod-1-staged-2026-08-23",
+      "global_order": 18,
+      "scene": 3,
+      "sentence": 9,
+      "track": "known",
+      "clipId": "dfde0e6f-c5ba-4dd1-ba39-c025caa3ef3d",
+      "speakerBefore": "Barista",
+      "speakerAfter": "Barista",
+      "voiceBefore": "bedd6226",
+      "voiceAfter": "gfzdpspr5fdp",
+      "castVoiceBefore": "gfzdpspr5fdp",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": false
+    },
+    {
+      "course": "jpn_for_eng",
+      "pod": "jpn_for_eng:pod-1-staged-2026-08-23",
+      "global_order": 54,
+      "scene": 8,
+      "sentence": 2,
+      "track": "target",
+      "clipId": "24f9fabf-f4f1-44f4-8a92-4aa8a25cce22",
+      "speakerBefore": "Bar Customer 1",
+      "speakerAfter": "Bar Customer 1",
+      "voiceBefore": "ja-JP-NaokiNeural",
+      "voiceAfter": "ja-JP-MayuNeural",
+      "castVoiceBefore": "ja-JP-MayuNeural",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": false
+    },
+    {
+      "course": "jpn_for_eng",
+      "pod": "jpn_for_eng:pod-1-staged-2026-08-23",
+      "global_order": 54,
+      "scene": 8,
+      "sentence": 2,
+      "track": "known",
+      "clipId": "40b1a7b0-770d-4294-934f-44babc910096",
+      "speakerBefore": "Bar Customer 1",
+      "speakerAfter": "Bar Customer 1",
+      "voiceBefore": "gfzdpspr5fdp",
+      "voiceAfter": "bedd6226",
+      "castVoiceBefore": "bedd6226",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": false
+    },
+    {
+      "course": "jpn_for_eng",
+      "pod": "jpn_for_eng:pod-1-staged-2026-08-23",
+      "global_order": 56,
+      "scene": 8,
+      "sentence": 4,
+      "track": "target",
+      "clipId": "e0b09bf6-3ada-4d2d-81e5-76e277b4cc3c",
+      "speakerBefore": "Bar Customer 1",
+      "speakerAfter": "Bar Customer 1",
+      "voiceBefore": "ja-JP-NaokiNeural",
+      "voiceAfter": "ja-JP-MayuNeural",
+      "castVoiceBefore": "ja-JP-MayuNeural",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": false
+    },
+    {
+      "course": "jpn_for_eng",
+      "pod": "jpn_for_eng:pod-1-staged-2026-08-23",
+      "global_order": 56,
+      "scene": 8,
+      "sentence": 4,
+      "track": "known",
+      "clipId": "7e3abf6c-9d60-4ee6-8f3e-51eb50e90be4",
+      "speakerBefore": "Bar Customer 1",
+      "speakerAfter": "Bar Customer 1",
+      "voiceBefore": "gfzdpspr5fdp",
+      "voiceAfter": "bedd6226",
+      "castVoiceBefore": "bedd6226",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": false
+    },
+    {
+      "course": "jpn_for_eng",
+      "pod": "jpn_for_eng:pod-1-staged-2026-08-23",
+      "global_order": 57,
+      "scene": 8,
+      "sentence": 5,
+      "track": "target",
+      "clipId": "73172c8f-0494-49a1-99b1-ae3f207d61b1",
+      "speakerBefore": "Bar Customer 2",
+      "speakerAfter": "Bar Customer 2",
+      "voiceBefore": "ja-JP-NaokiNeural",
+      "voiceAfter": "ja-JP-MayuNeural",
+      "castVoiceBefore": "ja-JP-MayuNeural",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": false
+    },
+    {
+      "course": "jpn_for_eng",
+      "pod": "jpn_for_eng:pod-1-staged-2026-08-23",
+      "global_order": 57,
+      "scene": 8,
+      "sentence": 5,
+      "track": "known",
+      "clipId": "efea76bf-7889-491d-ba6c-40230fd42bff",
+      "speakerBefore": "Bar Customer 2",
+      "speakerAfter": "Bar Customer 2",
+      "voiceBefore": "gfzdpspr5fdp",
+      "voiceAfter": "bedd6226",
+      "castVoiceBefore": "bedd6226",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": false
+    },
+    {
+      "course": "jpn_for_eng",
+      "pod": "jpn_for_eng:pod-1-staged-2026-08-23",
+      "global_order": 58,
+      "scene": 8,
+      "sentence": 6,
+      "track": "target",
+      "clipId": "e188277b-9aa6-4a02-8394-fa67fb0ac6ad",
+      "speakerBefore": "Bar Customer 3",
+      "speakerAfter": "Bar Customer 3",
+      "voiceBefore": "ja-JP-NaokiNeural",
+      "voiceAfter": "ja-JP-MayuNeural",
+      "castVoiceBefore": "ja-JP-MayuNeural",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": false
+    },
+    {
+      "course": "jpn_for_eng",
+      "pod": "jpn_for_eng:pod-1-staged-2026-08-23",
+      "global_order": 58,
+      "scene": 8,
+      "sentence": 6,
+      "track": "known",
+      "clipId": "ce1c5789-9cc1-48b6-8ee0-78255f1b5d86",
+      "speakerBefore": "Bar Customer 3",
+      "speakerAfter": "Bar Customer 3",
+      "voiceBefore": "gfzdpspr5fdp",
+      "voiceAfter": "bedd6226",
+      "castVoiceBefore": "bedd6226",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": false
+    },
+    {
+      "course": "jpn_for_eng",
+      "pod": "jpn_for_eng:pod-1-staged-2026-08-23",
+      "global_order": 60,
+      "scene": 8,
+      "sentence": 8,
+      "track": "target",
+      "clipId": "f5f365ca-1088-4056-8e91-97ac90c59946",
+      "speakerBefore": "Bar Customer 3",
+      "speakerAfter": "Bar Customer 3",
+      "voiceBefore": "ja-JP-NaokiNeural",
+      "voiceAfter": "ja-JP-MayuNeural",
+      "castVoiceBefore": "ja-JP-MayuNeural",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": false
+    },
+    {
+      "course": "jpn_for_eng",
+      "pod": "jpn_for_eng:pod-1-staged-2026-08-23",
+      "global_order": 60,
+      "scene": 8,
+      "sentence": 8,
+      "track": "known",
+      "clipId": "29e9f5d1-8954-4fab-8da2-b1d26a62fd01",
+      "speakerBefore": "Bar Customer 3",
+      "speakerAfter": "Bar Customer 3",
+      "voiceBefore": "gfzdpspr5fdp",
+      "voiceAfter": "bedd6226",
+      "castVoiceBefore": "bedd6226",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": false
+    },
+    {
+      "course": "jpn_for_eng",
+      "pod": "jpn_for_eng:pod-1-staged-2026-08-23",
+      "global_order": 61,
+      "scene": 8,
+      "sentence": 9,
+      "track": "target",
+      "clipId": "09c956f2-ba7f-417c-967d-383bde632354",
+      "speakerBefore": "Bar Customer 1",
+      "speakerAfter": "Bar Customer 1",
+      "voiceBefore": "ja-JP-NaokiNeural",
+      "voiceAfter": "ja-JP-MayuNeural",
+      "castVoiceBefore": "ja-JP-MayuNeural",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": false
+    },
+    {
+      "course": "jpn_for_eng",
+      "pod": "jpn_for_eng:pod-1-staged-2026-08-23",
+      "global_order": 61,
+      "scene": 8,
+      "sentence": 9,
+      "track": "known",
+      "clipId": "e7bc44aa-b143-4dbf-9bf2-5f0e776f9c6f",
+      "speakerBefore": "Bar Customer 1",
+      "speakerAfter": "Bar Customer 1",
+      "voiceBefore": "gfzdpspr5fdp",
+      "voiceAfter": "bedd6226",
+      "castVoiceBefore": "bedd6226",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": false
+    },
+    {
+      "course": "jpn_for_eng",
+      "pod": "jpn_for_eng:pod-1-staged-2026-08-23",
+      "global_order": 62,
+      "scene": 8,
+      "sentence": 10,
+      "track": "target",
+      "clipId": "abc271c0-1933-4860-ae67-04e167845e8f",
+      "speakerBefore": "Bar Customer 2",
+      "speakerAfter": "Bar Customer 2",
+      "voiceBefore": "ja-JP-NaokiNeural",
+      "voiceAfter": "ja-JP-MayuNeural",
+      "castVoiceBefore": "ja-JP-MayuNeural",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": false
+    },
+    {
+      "course": "jpn_for_eng",
+      "pod": "jpn_for_eng:pod-1-staged-2026-08-23",
+      "global_order": 62,
+      "scene": 8,
+      "sentence": 10,
+      "track": "known",
+      "clipId": "5a64ee15-216e-4329-9c25-1ed75570cc6d",
+      "speakerBefore": "Bar Customer 2",
+      "speakerAfter": "Bar Customer 2",
+      "voiceBefore": "gfzdpspr5fdp",
+      "voiceAfter": "bedd6226",
+      "castVoiceBefore": "bedd6226",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": false
+    },
+    {
+      "course": "jpn_for_eng",
+      "pod": "jpn_for_eng:pod-1-staged-2026-08-23",
+      "global_order": 64,
+      "scene": 8,
+      "sentence": 12,
+      "track": "target",
+      "clipId": "5b806641-6cf5-42ee-bac2-42258a1b4d7e",
+      "speakerBefore": "Bar Customer 1",
+      "speakerAfter": "Bar Customer 1",
+      "voiceBefore": "ja-JP-NaokiNeural",
+      "voiceAfter": "ja-JP-MayuNeural",
+      "castVoiceBefore": "ja-JP-MayuNeural",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": false
+    },
+    {
+      "course": "jpn_for_eng",
+      "pod": "jpn_for_eng:pod-1-staged-2026-08-23",
+      "global_order": 64,
+      "scene": 8,
+      "sentence": 12,
+      "track": "known",
+      "clipId": "f6ea62a2-2ff0-4f28-9e6b-17ae066d05cf",
+      "speakerBefore": "Bar Customer 1",
+      "speakerAfter": "Bar Customer 1",
+      "voiceBefore": "gfzdpspr5fdp",
+      "voiceAfter": "bedd6226",
+      "castVoiceBefore": "bedd6226",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": false
+    },
+    {
+      "course": "jpn_for_eng",
+      "pod": "jpn_for_eng:pod-1-staged-2026-08-23",
+      "global_order": 66,
+      "scene": 8,
+      "sentence": 14,
+      "track": "target",
+      "clipId": "6d760174-41d4-4f4e-b923-321f8b333ffb",
+      "speakerBefore": "Bar Customer 1",
+      "speakerAfter": "Bar Customer 1",
+      "voiceBefore": "ja-JP-NaokiNeural",
+      "voiceAfter": "ja-JP-MayuNeural",
+      "castVoiceBefore": "ja-JP-MayuNeural",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": false
+    },
+    {
+      "course": "jpn_for_eng",
+      "pod": "jpn_for_eng:pod-1-staged-2026-08-23",
+      "global_order": 66,
+      "scene": 8,
+      "sentence": 14,
+      "track": "known",
+      "clipId": "b6405070-09d4-4838-8e5b-9eefa37581a1",
+      "speakerBefore": "Bar Customer 1",
+      "speakerAfter": "Bar Customer 1",
+      "voiceBefore": "gfzdpspr5fdp",
+      "voiceAfter": "bedd6226",
+      "castVoiceBefore": "bedd6226",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": false
+    },
+    {
+      "course": "jpn_for_eng",
+      "pod": "jpn_for_eng:pod-1-staged-2026-08-23",
+      "global_order": 67,
+      "scene": 8,
+      "sentence": 15,
+      "track": "target",
+      "clipId": "7de5f2a2-78f6-4899-a9bd-d7f1b06d16e2",
+      "speakerBefore": "Bar Customer 2",
+      "speakerAfter": "Bar Customer 2",
+      "voiceBefore": "ja-JP-NaokiNeural",
+      "voiceAfter": "ja-JP-MayuNeural",
+      "castVoiceBefore": "ja-JP-MayuNeural",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": false
+    },
+    {
+      "course": "jpn_for_eng",
+      "pod": "jpn_for_eng:pod-1-staged-2026-08-23",
+      "global_order": 67,
+      "scene": 8,
+      "sentence": 15,
+      "track": "known",
+      "clipId": "586d8b71-31e3-4c7f-9916-f593a4110781",
+      "speakerBefore": "Bar Customer 2",
+      "speakerAfter": "Bar Customer 2",
+      "voiceBefore": "gfzdpspr5fdp",
+      "voiceAfter": "bedd6226",
+      "castVoiceBefore": "bedd6226",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": false
+    },
+    {
+      "course": "jpn_for_eng",
+      "pod": "jpn_for_eng:pod-1-staged-2026-08-23",
+      "global_order": 69,
+      "scene": 9,
+      "sentence": 1,
+      "track": "target",
+      "clipId": "5bc9469b-4acd-418f-933c-987af0104a6a",
+      "speakerBefore": "Diner 1",
+      "speakerAfter": "Diner 1",
+      "voiceBefore": "ja-JP-NaokiNeural",
+      "voiceAfter": "ja-JP-MayuNeural",
+      "castVoiceBefore": "ja-JP-MayuNeural",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": false
+    },
+    {
+      "course": "jpn_for_eng",
+      "pod": "jpn_for_eng:pod-1-staged-2026-08-23",
+      "global_order": 69,
+      "scene": 9,
+      "sentence": 1,
+      "track": "known",
+      "clipId": "e8c6ab88-fbca-413f-855f-726175ad1dfb",
+      "speakerBefore": "Diner 1",
+      "speakerAfter": "Diner 1",
+      "voiceBefore": "gfzdpspr5fdp",
+      "voiceAfter": "bedd6226",
+      "castVoiceBefore": "bedd6226",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": false
+    },
+    {
+      "course": "jpn_for_eng",
+      "pod": "jpn_for_eng:pod-1-staged-2026-08-23",
+      "global_order": 72,
+      "scene": 9,
+      "sentence": 4,
+      "track": "target",
+      "clipId": "775b7162-880a-444d-acab-819683b7313e",
+      "speakerBefore": "Diner 2",
+      "speakerAfter": "Diner 2",
+      "voiceBefore": "ja-JP-NaokiNeural",
+      "voiceAfter": "ja-JP-MayuNeural",
+      "castVoiceBefore": "ja-JP-MayuNeural",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": false
+    },
+    {
+      "course": "jpn_for_eng",
+      "pod": "jpn_for_eng:pod-1-staged-2026-08-23",
+      "global_order": 72,
+      "scene": 9,
+      "sentence": 4,
+      "track": "known",
+      "clipId": "fe602343-bac6-4831-9b4b-bb602f85fd4c",
+      "speakerBefore": "Diner 2",
+      "speakerAfter": "Diner 2",
+      "voiceBefore": "gfzdpspr5fdp",
+      "voiceAfter": "bedd6226",
+      "castVoiceBefore": "bedd6226",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": false
+    },
+    {
+      "course": "jpn_for_eng",
+      "pod": "jpn_for_eng:pod-1-staged-2026-08-23",
+      "global_order": 73,
+      "scene": 9,
+      "sentence": 5,
+      "track": "target",
+      "clipId": "f9aa19c9-7841-4324-91d8-64a1c649d024",
+      "speakerBefore": "Diner 1",
+      "speakerAfter": "Diner 1",
+      "voiceBefore": "ja-JP-NaokiNeural",
+      "voiceAfter": "ja-JP-MayuNeural",
+      "castVoiceBefore": "ja-JP-MayuNeural",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": false
+    },
+    {
+      "course": "jpn_for_eng",
+      "pod": "jpn_for_eng:pod-1-staged-2026-08-23",
+      "global_order": 73,
+      "scene": 9,
+      "sentence": 5,
+      "track": "known",
+      "clipId": "69abb93a-1493-4324-8676-b2b131936384",
+      "speakerBefore": "Diner 1",
+      "speakerAfter": "Diner 1",
+      "voiceBefore": "gfzdpspr5fdp",
+      "voiceAfter": "bedd6226",
+      "castVoiceBefore": "bedd6226",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": false
+    },
+    {
+      "course": "jpn_for_eng",
+      "pod": "jpn_for_eng:pod-1-staged-2026-08-23",
+      "global_order": 75,
+      "scene": 9,
+      "sentence": 7,
+      "track": "target",
+      "clipId": "7a259651-5d6e-44f1-b099-e0c216c9b81b",
+      "speakerBefore": "Diner 1",
+      "speakerAfter": "Diner 1",
+      "voiceBefore": "ja-JP-NaokiNeural",
+      "voiceAfter": "ja-JP-MayuNeural",
+      "castVoiceBefore": "ja-JP-MayuNeural",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": false
+    },
+    {
+      "course": "jpn_for_eng",
+      "pod": "jpn_for_eng:pod-1-staged-2026-08-23",
+      "global_order": 75,
+      "scene": 9,
+      "sentence": 7,
+      "track": "known",
+      "clipId": "ee48cbc1-7ff3-49e8-b337-9919be7b34b2",
+      "speakerBefore": "Diner 1",
+      "speakerAfter": "Diner 1",
+      "voiceBefore": "gfzdpspr5fdp",
+      "voiceAfter": "bedd6226",
+      "castVoiceBefore": "bedd6226",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": false
+    },
+    {
+      "course": "jpn_for_eng",
+      "pod": "jpn_for_eng:pod-1-staged-2026-08-23",
+      "global_order": 77,
+      "scene": 9,
+      "sentence": 9,
+      "track": "target",
+      "clipId": "a3e4550f-ba13-4afc-be57-e9c879078943",
+      "speakerBefore": "Diner 1",
+      "speakerAfter": "Diner 1",
+      "voiceBefore": "ja-JP-NaokiNeural",
+      "voiceAfter": "ja-JP-MayuNeural",
+      "castVoiceBefore": "ja-JP-MayuNeural",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": false
+    },
+    {
+      "course": "jpn_for_eng",
+      "pod": "jpn_for_eng:pod-1-staged-2026-08-23",
+      "global_order": 77,
+      "scene": 9,
+      "sentence": 9,
+      "track": "known",
+      "clipId": "2ff87acd-050d-4a62-921b-3b0985069e9a",
+      "speakerBefore": "Diner 1",
+      "speakerAfter": "Diner 1",
+      "voiceBefore": "gfzdpspr5fdp",
+      "voiceAfter": "bedd6226",
+      "castVoiceBefore": "bedd6226",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": false
+    },
+    {
+      "course": "jpn_for_eng",
+      "pod": "jpn_for_eng:pod-1-staged-2026-08-23",
+      "global_order": 78,
+      "scene": 9,
+      "sentence": 10,
+      "track": "target",
+      "clipId": "58ac3895-4a12-4702-b276-c32e06e2015c",
+      "speakerBefore": "Diner 2",
+      "speakerAfter": "Diner 2",
+      "voiceBefore": "ja-JP-NaokiNeural",
+      "voiceAfter": "ja-JP-MayuNeural",
+      "castVoiceBefore": "ja-JP-MayuNeural",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": false
+    },
+    {
+      "course": "jpn_for_eng",
+      "pod": "jpn_for_eng:pod-1-staged-2026-08-23",
+      "global_order": 78,
+      "scene": 9,
+      "sentence": 10,
+      "track": "known",
+      "clipId": "0d5fb02b-7424-4227-b3d2-fa62a2cf483e",
+      "speakerBefore": "Diner 2",
+      "speakerAfter": "Diner 2",
+      "voiceBefore": "gfzdpspr5fdp",
+      "voiceAfter": "bedd6226",
+      "castVoiceBefore": "bedd6226",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": false
+    },
+    {
+      "course": "jpn_for_eng",
+      "pod": "jpn_for_eng:pod-1-staged-2026-08-23",
+      "global_order": 80,
+      "scene": 9,
+      "sentence": 12,
+      "track": "target",
+      "clipId": "545a9959-fc2e-419a-98b1-a414f36da261",
+      "speakerBefore": "Diner 1",
+      "speakerAfter": "Diner 1",
+      "voiceBefore": "ja-JP-NaokiNeural",
+      "voiceAfter": "ja-JP-MayuNeural",
+      "castVoiceBefore": "ja-JP-MayuNeural",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": false
+    },
+    {
+      "course": "jpn_for_eng",
+      "pod": "jpn_for_eng:pod-1-staged-2026-08-23",
+      "global_order": 80,
+      "scene": 9,
+      "sentence": 12,
+      "track": "known",
+      "clipId": "c348545e-ba63-4c8d-9b26-b72b464a9168",
+      "speakerBefore": "Diner 1",
+      "speakerAfter": "Diner 1",
+      "voiceBefore": "gfzdpspr5fdp",
+      "voiceAfter": "bedd6226",
+      "castVoiceBefore": "bedd6226",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": false
+    },
+    {
+      "course": "jpn_for_eng",
+      "pod": "jpn_for_eng:pod-1-staged-2026-08-23",
+      "global_order": 81,
+      "scene": 9,
+      "sentence": 13,
+      "track": "target",
+      "clipId": "8fb831ed-11ac-45ae-838c-f72026d89515",
+      "speakerBefore": "Diner 2",
+      "speakerAfter": "Diner 2",
+      "voiceBefore": "ja-JP-NaokiNeural",
+      "voiceAfter": "ja-JP-MayuNeural",
+      "castVoiceBefore": "ja-JP-MayuNeural",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": false
+    },
+    {
+      "course": "jpn_for_eng",
+      "pod": "jpn_for_eng:pod-1-staged-2026-08-23",
+      "global_order": 81,
+      "scene": 9,
+      "sentence": 13,
+      "track": "known",
+      "clipId": "6c327746-7c0b-4330-8b3e-f0a7f0b36722",
+      "speakerBefore": "Diner 2",
+      "speakerAfter": "Diner 2",
+      "voiceBefore": "gfzdpspr5fdp",
+      "voiceAfter": "bedd6226",
+      "castVoiceBefore": "bedd6226",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": false
+    },
+    {
+      "course": "jpn_for_eng",
+      "pod": "jpn_for_eng:pod-1-staged-2026-08-23",
+      "global_order": 84,
+      "scene": 9,
+      "sentence": 16,
+      "track": "target",
+      "clipId": "9c4bb851-d10d-4765-bb4f-e691e286f51e",
+      "speakerBefore": "Diner 1",
+      "speakerAfter": "Diner 1",
+      "voiceBefore": "ja-JP-NaokiNeural",
+      "voiceAfter": "ja-JP-MayuNeural",
+      "castVoiceBefore": "ja-JP-MayuNeural",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": false
+    },
+    {
+      "course": "jpn_for_eng",
+      "pod": "jpn_for_eng:pod-1-staged-2026-08-23",
+      "global_order": 84,
+      "scene": 9,
+      "sentence": 16,
+      "track": "known",
+      "clipId": "f656eac3-78a8-409e-a50c-e59ab02e6dc1",
+      "speakerBefore": "Diner 1",
+      "speakerAfter": "Diner 1",
+      "voiceBefore": "gfzdpspr5fdp",
+      "voiceAfter": "bedd6226",
+      "castVoiceBefore": "bedd6226",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": false
+    },
+    {
+      "course": "jpn_for_eng",
+      "pod": "jpn_for_eng:pod-1-staged-2026-08-23",
+      "global_order": 85,
+      "scene": 9,
+      "sentence": 17,
+      "track": "target",
+      "clipId": "589fe98e-4e1b-4bd5-a68e-dd582a152001",
+      "speakerBefore": "Diner 2",
+      "speakerAfter": "Diner 2",
+      "voiceBefore": "ja-JP-NaokiNeural",
+      "voiceAfter": "ja-JP-MayuNeural",
+      "castVoiceBefore": "ja-JP-MayuNeural",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": false
+    },
+    {
+      "course": "jpn_for_eng",
+      "pod": "jpn_for_eng:pod-1-staged-2026-08-23",
+      "global_order": 85,
+      "scene": 9,
+      "sentence": 17,
+      "track": "known",
+      "clipId": "afb775b9-bcbc-409b-a9d1-f03113373026",
+      "speakerBefore": "Diner 2",
+      "speakerAfter": "Diner 2",
+      "voiceBefore": "gfzdpspr5fdp",
+      "voiceAfter": "bedd6226",
+      "castVoiceBefore": "bedd6226",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": false
+    },
+    {
+      "course": "jpn_for_eng",
+      "pod": "jpn_for_eng:pod-1-staged-2026-08-23",
+      "global_order": 87,
+      "scene": 10,
+      "sentence": 1,
+      "track": "target",
+      "clipId": "6a461909-c7cf-4ef8-907a-a282ea148d2d",
+      "speakerBefore": "Customer",
+      "speakerAfter": "Customer",
+      "voiceBefore": "ja-JP-NaokiNeural",
+      "voiceAfter": "ja-JP-MayuNeural",
+      "castVoiceBefore": "ja-JP-MayuNeural",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": false
+    },
+    {
+      "course": "jpn_for_eng",
+      "pod": "jpn_for_eng:pod-1-staged-2026-08-23",
+      "global_order": 87,
+      "scene": 10,
+      "sentence": 1,
+      "track": "known",
+      "clipId": "170a3287-7c7d-4a7d-9253-93a0ba459fd2",
+      "speakerBefore": "Customer",
+      "speakerAfter": "Customer",
+      "voiceBefore": "gfzdpspr5fdp",
+      "voiceAfter": "bedd6226",
+      "castVoiceBefore": "bedd6226",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": false
+    },
+    {
+      "course": "jpn_for_eng",
+      "pod": "jpn_for_eng:pod-1-staged-2026-08-23",
+      "global_order": 89,
+      "scene": 10,
+      "sentence": 3,
+      "track": "target",
+      "clipId": "994e9497-b769-4664-9a5f-035faf3165f0",
+      "speakerBefore": "Customer",
+      "speakerAfter": "Customer",
+      "voiceBefore": "ja-JP-NaokiNeural",
+      "voiceAfter": "ja-JP-MayuNeural",
+      "castVoiceBefore": "ja-JP-MayuNeural",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": false
+    },
+    {
+      "course": "jpn_for_eng",
+      "pod": "jpn_for_eng:pod-1-staged-2026-08-23",
+      "global_order": 89,
+      "scene": 10,
+      "sentence": 3,
+      "track": "known",
+      "clipId": "0a7dca46-be1e-47ed-b4a1-2f1256ea20e4",
+      "speakerBefore": "Customer",
+      "speakerAfter": "Customer",
+      "voiceBefore": "gfzdpspr5fdp",
+      "voiceAfter": "bedd6226",
+      "castVoiceBefore": "bedd6226",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": false
+    },
+    {
+      "course": "jpn_for_eng",
+      "pod": "jpn_for_eng:pod-1-staged-2026-08-23",
+      "global_order": 91,
+      "scene": 10,
+      "sentence": 5,
+      "track": "target",
+      "clipId": "20640283-425c-41df-8ee9-a9649fc4cdf9",
+      "speakerBefore": "Customer",
+      "speakerAfter": "Customer",
+      "voiceBefore": "ja-JP-NaokiNeural",
+      "voiceAfter": "ja-JP-MayuNeural",
+      "castVoiceBefore": "ja-JP-MayuNeural",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": false
+    },
+    {
+      "course": "jpn_for_eng",
+      "pod": "jpn_for_eng:pod-1-staged-2026-08-23",
+      "global_order": 91,
+      "scene": 10,
+      "sentence": 5,
+      "track": "known",
+      "clipId": "477b7d18-fa36-44bb-893b-397c225626b6",
+      "speakerBefore": "Customer",
+      "speakerAfter": "Customer",
+      "voiceBefore": "gfzdpspr5fdp",
+      "voiceAfter": "bedd6226",
+      "castVoiceBefore": "bedd6226",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": false
+    },
+    {
+      "course": "jpn_for_eng",
+      "pod": "jpn_for_eng:pod-1-staged-2026-08-23",
+      "global_order": 93,
+      "scene": 10,
+      "sentence": 7,
+      "track": "target",
+      "clipId": "15ea2214-51ba-4cff-9fb7-6c9ac773cbad",
+      "speakerBefore": "Customer",
+      "speakerAfter": "Customer",
+      "voiceBefore": "ja-JP-NaokiNeural",
+      "voiceAfter": "ja-JP-MayuNeural",
+      "castVoiceBefore": "ja-JP-MayuNeural",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": false
+    },
+    {
+      "course": "jpn_for_eng",
+      "pod": "jpn_for_eng:pod-1-staged-2026-08-23",
+      "global_order": 93,
+      "scene": 10,
+      "sentence": 7,
+      "track": "known",
+      "clipId": "892e586e-a307-411d-a21e-0ac5b7865a23",
+      "speakerBefore": "Customer",
+      "speakerAfter": "Customer",
+      "voiceBefore": "gfzdpspr5fdp",
+      "voiceAfter": "bedd6226",
+      "castVoiceBefore": "bedd6226",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": false
+    },
+    {
+      "course": "jpn_for_eng",
+      "pod": "jpn_for_eng:pod-1-staged-2026-08-23",
+      "global_order": 95,
+      "scene": 10,
+      "sentence": 9,
+      "track": "target",
+      "clipId": "d99e1c2f-fe94-47ce-8c69-0f5c6cc84d0f",
+      "speakerBefore": "Customer",
+      "speakerAfter": "Customer",
+      "voiceBefore": "ja-JP-NaokiNeural",
+      "voiceAfter": "ja-JP-MayuNeural",
+      "castVoiceBefore": "ja-JP-MayuNeural",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": false
+    },
+    {
+      "course": "jpn_for_eng",
+      "pod": "jpn_for_eng:pod-1-staged-2026-08-23",
+      "global_order": 95,
+      "scene": 10,
+      "sentence": 9,
+      "track": "known",
+      "clipId": "7d5e3712-92d7-4f9d-beeb-7218c6b32a71",
+      "speakerBefore": "Customer",
+      "speakerAfter": "Customer",
+      "voiceBefore": "gfzdpspr5fdp",
+      "voiceAfter": "bedd6226",
+      "castVoiceBefore": "bedd6226",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": false
+    },
+    {
+      "course": "jpn_for_eng",
+      "pod": "jpn_for_eng:pod-1-staged-2026-08-23",
+      "global_order": 110,
+      "scene": 12,
+      "sentence": 1,
+      "track": "target",
+      "clipId": "7534ba24-43e4-4374-bade-aa4a6c613d11",
+      "speakerBefore": "Customer",
+      "speakerAfter": "Customer",
+      "voiceBefore": "ja-JP-NaokiNeural",
+      "voiceAfter": "ja-JP-MayuNeural",
+      "castVoiceBefore": "ja-JP-MayuNeural",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": false
+    },
+    {
+      "course": "jpn_for_eng",
+      "pod": "jpn_for_eng:pod-1-staged-2026-08-23",
+      "global_order": 110,
+      "scene": 12,
+      "sentence": 1,
+      "track": "known",
+      "clipId": "878ce19c-d676-4a14-8e55-4e3a5a7189ca",
+      "speakerBefore": "Customer",
+      "speakerAfter": "Customer",
+      "voiceBefore": "gfzdpspr5fdp",
+      "voiceAfter": "bedd6226",
+      "castVoiceBefore": "bedd6226",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": false
+    },
+    {
+      "course": "jpn_for_eng",
+      "pod": "jpn_for_eng:pod-1-staged-2026-08-23",
+      "global_order": 112,
+      "scene": 12,
+      "sentence": 3,
+      "track": "target",
+      "clipId": "f1acd166-f81d-484e-85ff-6ab7e15be5ba",
+      "speakerBefore": "Customer",
+      "speakerAfter": "Customer",
+      "voiceBefore": "ja-JP-NaokiNeural",
+      "voiceAfter": "ja-JP-MayuNeural",
+      "castVoiceBefore": "ja-JP-MayuNeural",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": false
+    },
+    {
+      "course": "jpn_for_eng",
+      "pod": "jpn_for_eng:pod-1-staged-2026-08-23",
+      "global_order": 112,
+      "scene": 12,
+      "sentence": 3,
+      "track": "known",
+      "clipId": "6f196779-37a7-40ce-afcd-11ffece6733d",
+      "speakerBefore": "Customer",
+      "speakerAfter": "Customer",
+      "voiceBefore": "gfzdpspr5fdp",
+      "voiceAfter": "bedd6226",
+      "castVoiceBefore": "bedd6226",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": false
+    },
+    {
+      "course": "jpn_for_eng",
+      "pod": "jpn_for_eng:pod-1-staged-2026-08-23",
+      "global_order": 114,
+      "scene": 12,
+      "sentence": 5,
+      "track": "target",
+      "clipId": "d75d26e2-f9bf-4155-8b4c-0b16432b719b",
+      "speakerBefore": "Customer",
+      "speakerAfter": "Customer",
+      "voiceBefore": "ja-JP-NaokiNeural",
+      "voiceAfter": "ja-JP-MayuNeural",
+      "castVoiceBefore": "ja-JP-MayuNeural",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": false
+    },
+    {
+      "course": "jpn_for_eng",
+      "pod": "jpn_for_eng:pod-1-staged-2026-08-23",
+      "global_order": 114,
+      "scene": 12,
+      "sentence": 5,
+      "track": "known",
+      "clipId": "981fc827-1a75-45fe-afaf-e757e966f7a5",
+      "speakerBefore": "Customer",
+      "speakerAfter": "Customer",
+      "voiceBefore": "gfzdpspr5fdp",
+      "voiceAfter": "bedd6226",
+      "castVoiceBefore": "bedd6226",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": false
+    },
+    {
+      "course": "jpn_for_eng",
+      "pod": "jpn_for_eng:pod-1-staged-2026-08-23",
+      "global_order": 116,
+      "scene": 12,
+      "sentence": 7,
+      "track": "target",
+      "clipId": "18d341ec-2daa-4b9b-b5a6-d617dc7c6c12",
+      "speakerBefore": "Customer",
+      "speakerAfter": "Customer",
+      "voiceBefore": "ja-JP-NaokiNeural",
+      "voiceAfter": "ja-JP-MayuNeural",
+      "castVoiceBefore": "ja-JP-MayuNeural",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": false
+    },
+    {
+      "course": "jpn_for_eng",
+      "pod": "jpn_for_eng:pod-1-staged-2026-08-23",
+      "global_order": 116,
+      "scene": 12,
+      "sentence": 7,
+      "track": "known",
+      "clipId": "ae5503dc-c1f8-4457-b7a2-87a0d2adb58a",
+      "speakerBefore": "Customer",
+      "speakerAfter": "Customer",
+      "voiceBefore": "gfzdpspr5fdp",
+      "voiceAfter": "bedd6226",
+      "castVoiceBefore": "bedd6226",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": false
+    },
+    {
+      "course": "jpn_for_eng",
+      "pod": "jpn_for_eng:pod-1-staged-2026-08-23",
+      "global_order": 118,
+      "scene": 12,
+      "sentence": 9,
+      "track": "target",
+      "clipId": "b68142b1-e07a-4cd0-8770-82b3a36af047",
+      "speakerBefore": "Customer",
+      "speakerAfter": "Customer",
+      "voiceBefore": "ja-JP-NaokiNeural",
+      "voiceAfter": "ja-JP-MayuNeural",
+      "castVoiceBefore": "ja-JP-MayuNeural",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": false
+    },
+    {
+      "course": "jpn_for_eng",
+      "pod": "jpn_for_eng:pod-1-staged-2026-08-23",
+      "global_order": 118,
+      "scene": 12,
+      "sentence": 9,
+      "track": "known",
+      "clipId": "ba2a2e13-80a4-4c70-997f-a4f1fb8a2cb3",
+      "speakerBefore": "Customer",
+      "speakerAfter": "Customer",
+      "voiceBefore": "gfzdpspr5fdp",
+      "voiceAfter": "bedd6226",
+      "castVoiceBefore": "bedd6226",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": false
+    },
+    {
+      "course": "jpn_for_eng",
+      "pod": "jpn_for_eng:pod-1-staged-2026-08-23",
+      "global_order": 120,
+      "scene": 13,
+      "sentence": 1,
+      "track": "target",
+      "clipId": "158d020d-8c1a-4bed-8a2c-a67afb06a528",
+      "speakerBefore": "Tourist",
+      "speakerAfter": "Tourist",
+      "voiceBefore": "ja-JP-NaokiNeural",
+      "voiceAfter": "ja-JP-MayuNeural",
+      "castVoiceBefore": "ja-JP-MayuNeural",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": false
+    },
+    {
+      "course": "jpn_for_eng",
+      "pod": "jpn_for_eng:pod-1-staged-2026-08-23",
+      "global_order": 120,
+      "scene": 13,
+      "sentence": 1,
+      "track": "known",
+      "clipId": "b628eac2-2f32-4047-a75b-a01674f13c33",
+      "speakerBefore": "Tourist",
+      "speakerAfter": "Tourist",
+      "voiceBefore": "gfzdpspr5fdp",
+      "voiceAfter": "bedd6226",
+      "castVoiceBefore": "bedd6226",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": false
+    },
+    {
+      "course": "jpn_for_eng",
+      "pod": "jpn_for_eng:pod-1-staged-2026-08-23",
+      "global_order": 122,
+      "scene": 13,
+      "sentence": 3,
+      "track": "target",
+      "clipId": "a2b3a8f3-d129-4b2f-b3fb-0a795eb6afd4",
+      "speakerBefore": "Tourist",
+      "speakerAfter": "Tourist",
+      "voiceBefore": "ja-JP-NaokiNeural",
+      "voiceAfter": "ja-JP-MayuNeural",
+      "castVoiceBefore": "ja-JP-MayuNeural",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": false
+    },
+    {
+      "course": "jpn_for_eng",
+      "pod": "jpn_for_eng:pod-1-staged-2026-08-23",
+      "global_order": 122,
+      "scene": 13,
+      "sentence": 3,
+      "track": "known",
+      "clipId": "f43772fd-3bca-4ed8-8f9b-460b80f19973",
+      "speakerBefore": "Tourist",
+      "speakerAfter": "Tourist",
+      "voiceBefore": "gfzdpspr5fdp",
+      "voiceAfter": "bedd6226",
+      "castVoiceBefore": "bedd6226",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": false
+    },
+    {
+      "course": "jpn_for_eng",
+      "pod": "jpn_for_eng:pod-1-staged-2026-08-23",
+      "global_order": 125,
+      "scene": 13,
+      "sentence": 6,
+      "track": "target",
+      "clipId": "344b0fa5-72e3-4b3e-83df-aaa275959b8f",
+      "speakerBefore": "Tourist",
+      "speakerAfter": "Tourist",
+      "voiceBefore": "ja-JP-NaokiNeural",
+      "voiceAfter": "ja-JP-MayuNeural",
+      "castVoiceBefore": "ja-JP-MayuNeural",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": false
+    },
+    {
+      "course": "jpn_for_eng",
+      "pod": "jpn_for_eng:pod-1-staged-2026-08-23",
+      "global_order": 125,
+      "scene": 13,
+      "sentence": 6,
+      "track": "known",
+      "clipId": "b9998b58-f311-4ebf-a611-828eacf036db",
+      "speakerBefore": "Tourist",
+      "speakerAfter": "Tourist",
+      "voiceBefore": "gfzdpspr5fdp",
+      "voiceAfter": "bedd6226",
+      "castVoiceBefore": "bedd6226",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": false
+    },
+    {
+      "course": "jpn_for_eng",
+      "pod": "jpn_for_eng:pod-1-staged-2026-08-23",
+      "global_order": 127,
+      "scene": 13,
+      "sentence": 8,
+      "track": "target",
+      "clipId": "68243c30-bc4e-467f-b124-ea0c716a3e3a",
+      "speakerBefore": "Tourist",
+      "speakerAfter": "Tourist",
+      "voiceBefore": "ja-JP-NaokiNeural",
+      "voiceAfter": "ja-JP-MayuNeural",
+      "castVoiceBefore": "ja-JP-MayuNeural",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": false
+    },
+    {
+      "course": "jpn_for_eng",
+      "pod": "jpn_for_eng:pod-1-staged-2026-08-23",
+      "global_order": 127,
+      "scene": 13,
+      "sentence": 8,
+      "track": "known",
+      "clipId": "195c0568-df6f-48e5-85f6-c0c7acced94d",
+      "speakerBefore": "Tourist",
+      "speakerAfter": "Tourist",
+      "voiceBefore": "gfzdpspr5fdp",
+      "voiceAfter": "bedd6226",
+      "castVoiceBefore": "bedd6226",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": false
+    },
+    {
+      "course": "jpn_for_eng",
+      "pod": "jpn_for_eng:pod-1-staged-2026-08-23",
+      "global_order": 129,
+      "scene": 13,
+      "sentence": 10,
+      "track": "target",
+      "clipId": "686488df-ae17-40b5-a0da-47da26a5f2f0",
+      "speakerBefore": "Tourist",
+      "speakerAfter": "Tourist",
+      "voiceBefore": "ja-JP-NaokiNeural",
+      "voiceAfter": "ja-JP-MayuNeural",
+      "castVoiceBefore": "ja-JP-MayuNeural",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": false
+    },
+    {
+      "course": "jpn_for_eng",
+      "pod": "jpn_for_eng:pod-1-staged-2026-08-23",
+      "global_order": 129,
+      "scene": 13,
+      "sentence": 10,
+      "track": "known",
+      "clipId": "15d3920c-67e1-4cbf-bee0-3a6269ac5bd3",
+      "speakerBefore": "Tourist",
+      "speakerAfter": "Tourist",
+      "voiceBefore": "gfzdpspr5fdp",
+      "voiceAfter": "bedd6226",
+      "castVoiceBefore": "bedd6226",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": false
+    },
+    {
+      "course": "jpn_for_eng",
+      "pod": "jpn_for_eng:pod-1-staged-2026-08-23",
+      "global_order": 132,
+      "scene": 14,
+      "sentence": 2,
+      "track": "target",
+      "clipId": "01ccda3a-cc3d-4bba-a271-3eefb523ae35",
+      "speakerBefore": "Driver",
+      "speakerAfter": "Driver",
+      "voiceBefore": "ja-JP-NaokiNeural",
+      "voiceAfter": "ja-JP-MayuNeural",
+      "castVoiceBefore": "ja-JP-MayuNeural",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": false
+    },
+    {
+      "course": "jpn_for_eng",
+      "pod": "jpn_for_eng:pod-1-staged-2026-08-23",
+      "global_order": 132,
+      "scene": 14,
+      "sentence": 2,
+      "track": "known",
+      "clipId": "4f28fb24-6d2a-4053-a9c5-40f9ea688a66",
+      "speakerBefore": "Driver",
+      "speakerAfter": "Driver",
+      "voiceBefore": "gfzdpspr5fdp",
+      "voiceAfter": "bedd6226",
+      "castVoiceBefore": "bedd6226",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": false
+    },
+    {
+      "course": "jpn_for_eng",
+      "pod": "jpn_for_eng:pod-1-staged-2026-08-23",
+      "global_order": 134,
+      "scene": 14,
+      "sentence": 4,
+      "track": "target",
+      "clipId": "5fdf61f1-9ccc-47a8-a815-8584d5f2cfeb",
+      "speakerBefore": "Driver",
+      "speakerAfter": "Driver",
+      "voiceBefore": "ja-JP-NaokiNeural",
+      "voiceAfter": "ja-JP-MayuNeural",
+      "castVoiceBefore": "ja-JP-MayuNeural",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": false
+    },
+    {
+      "course": "jpn_for_eng",
+      "pod": "jpn_for_eng:pod-1-staged-2026-08-23",
+      "global_order": 134,
+      "scene": 14,
+      "sentence": 4,
+      "track": "known",
+      "clipId": "0e6356d9-5979-4409-a7c5-3bfc49112713",
+      "speakerBefore": "Driver",
+      "speakerAfter": "Driver",
+      "voiceBefore": "gfzdpspr5fdp",
+      "voiceAfter": "bedd6226",
+      "castVoiceBefore": "bedd6226",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": false
+    },
+    {
+      "course": "jpn_for_eng",
+      "pod": "jpn_for_eng:pod-1-staged-2026-08-23",
+      "global_order": 136,
+      "scene": 14,
+      "sentence": 6,
+      "track": "target",
+      "clipId": "596e8aec-23c4-41a3-84e0-e0f7c8e4df82",
+      "speakerBefore": "Driver",
+      "speakerAfter": "Driver",
+      "voiceBefore": "ja-JP-NaokiNeural",
+      "voiceAfter": "ja-JP-MayuNeural",
+      "castVoiceBefore": "ja-JP-MayuNeural",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": false
+    },
+    {
+      "course": "jpn_for_eng",
+      "pod": "jpn_for_eng:pod-1-staged-2026-08-23",
+      "global_order": 136,
+      "scene": 14,
+      "sentence": 6,
+      "track": "known",
+      "clipId": "7c3d755b-7dca-475e-9c6c-577781c75dd7",
+      "speakerBefore": "Driver",
+      "speakerAfter": "Driver",
+      "voiceBefore": "gfzdpspr5fdp",
+      "voiceAfter": "bedd6226",
+      "castVoiceBefore": "bedd6226",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": false
+    },
+    {
+      "course": "jpn_for_eng",
+      "pod": "jpn_for_eng:pod-1-staged-2026-08-23",
+      "global_order": 137,
+      "scene": 14,
+      "sentence": 7,
+      "track": "target",
+      "clipId": "aaafbf0a-c296-4b13-acd2-a109dcec3f04",
+      "speakerBefore": "Driver",
+      "speakerAfter": "Driver",
+      "voiceBefore": "ja-JP-NaokiNeural",
+      "voiceAfter": "ja-JP-MayuNeural",
+      "castVoiceBefore": "ja-JP-MayuNeural",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": false
+    },
+    {
+      "course": "jpn_for_eng",
+      "pod": "jpn_for_eng:pod-1-staged-2026-08-23",
+      "global_order": 137,
+      "scene": 14,
+      "sentence": 7,
+      "track": "known",
+      "clipId": "d6a71cb9-16f4-414e-9fe3-a3fffd30e3ae",
+      "speakerBefore": "Driver",
+      "speakerAfter": "Driver",
+      "voiceBefore": "gfzdpspr5fdp",
+      "voiceAfter": "bedd6226",
+      "castVoiceBefore": "bedd6226",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": false
+    },
+    {
+      "course": "jpn_for_eng",
+      "pod": "jpn_for_eng:pod-1-staged-2026-08-23",
+      "global_order": 139,
+      "scene": 14,
+      "sentence": 9,
+      "track": "target",
+      "clipId": "e0a71d37-8a80-4b24-8c36-28680871099d",
+      "speakerBefore": "Driver",
+      "speakerAfter": "Driver",
+      "voiceBefore": "ja-JP-NaokiNeural",
+      "voiceAfter": "ja-JP-MayuNeural",
+      "castVoiceBefore": "ja-JP-MayuNeural",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": false
+    },
+    {
+      "course": "jpn_for_eng",
+      "pod": "jpn_for_eng:pod-1-staged-2026-08-23",
+      "global_order": 139,
+      "scene": 14,
+      "sentence": 9,
+      "track": "known",
+      "clipId": "19f3cc42-ea0e-4a83-b3cb-17611d3050d1",
+      "speakerBefore": "Driver",
+      "speakerAfter": "Driver",
+      "voiceBefore": "gfzdpspr5fdp",
+      "voiceAfter": "bedd6226",
+      "castVoiceBefore": "bedd6226",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": false
+    }
+  ],
+  "blockers": [],
+  "oldStoredCastKeys": [
+    "Anna",
+    "Assistant",
+    "Bar Customer 1",
+    "Bar Customer 2",
+    "Bar Customer 3",
+    "Barista",
+    "Bartender",
+    "Cafe Barista",
+    "Cafe Customer 1",
+    "Cafe Customer 2",
+    "Cafe Customer 3",
+    "Customer",
+    "Diner 1",
+    "Diner 2",
+    "Driver",
+    "Friend",
+    "Guest",
+    "James",
+    "Learner",
+    "Local",
+    "Narrator",
+    "Neighbour",
+    "Passenger",
+    "Pharmacist",
+    "Receptionist",
+    "Sarah",
+    "Tourist",
+    "Waiter"
+  ],
+  "newStoredCast": {
+    "Neighbour": {
+      "gender": "m",
+      "variants": [
+        "Neighbour (8 am)",
+        "Neighbour",
+        "Neighbour (10:30 pm)"
+      ],
+      "target": {
+        "name": "Naoki",
+        "locale": "ja-JP",
+        "provider": "azure",
+        "voice_id": "ja-JP-NaokiNeural"
+      },
+      "known": {
+        "name": "Tom",
+        "locale": "en",
+        "provider": "xai",
+        "voice_id": "gfzdpspr5fdp"
+      }
+    },
+    "Sarah": {
+      "gender": "f",
+      "variants": [
+        "Sarah"
+      ],
+      "target": {
+        "name": "Mayu",
+        "locale": "ja-JP",
+        "provider": "azure",
+        "voice_id": "ja-JP-MayuNeural"
+      },
+      "known": {
+        "name": "Olivia",
+        "locale": "en",
+        "provider": "xai",
+        "voice_id": "bedd6226"
+      }
+    },
+    "Passenger": {
+      "gender": "m",
+      "variants": [
+        "Passenger"
+      ],
+      "target": {
+        "name": "Naoki",
+        "locale": "ja-JP",
+        "provider": "azure",
+        "voice_id": "ja-JP-NaokiNeural"
+      },
+      "known": {
+        "name": "Tom",
+        "locale": "en",
+        "provider": "xai",
+        "voice_id": "gfzdpspr5fdp"
+      }
+    },
+    "Barista": {
+      "gender": "m",
+      "variants": [
+        "Barista (3 pm)",
+        "Barista"
+      ],
+      "target": {
+        "name": "Naoki",
+        "locale": "ja-JP",
+        "provider": "azure",
+        "voice_id": "ja-JP-NaokiNeural"
+      },
+      "known": {
+        "name": "Tom",
+        "locale": "en",
+        "provider": "xai",
+        "voice_id": "gfzdpspr5fdp"
+      }
+    },
+    "Friend": {
+      "gender": "m",
+      "variants": [
+        "Friend (7 pm)",
+        "Friend"
+      ],
+      "target": {
+        "name": "Naoki",
+        "locale": "ja-JP",
+        "provider": "azure",
+        "voice_id": "ja-JP-NaokiNeural"
+      },
+      "known": {
+        "name": "Tom",
+        "locale": "en",
+        "provider": "xai",
+        "voice_id": "gfzdpspr5fdp"
+      }
+    },
+    "James": {
+      "gender": "m",
+      "variants": [
+        "James"
+      ],
+      "target": {
+        "name": "Naoki",
+        "locale": "ja-JP",
+        "provider": "azure",
+        "voice_id": "ja-JP-NaokiNeural"
+      },
+      "known": {
+        "name": "Tom",
+        "locale": "en",
+        "provider": "xai",
+        "voice_id": "gfzdpspr5fdp"
+      }
+    },
+    "Anna": {
+      "gender": "f",
+      "variants": [
+        "Anna"
+      ],
+      "target": {
+        "name": "Mayu",
+        "locale": "ja-JP",
+        "provider": "azure",
+        "voice_id": "ja-JP-MayuNeural"
+      },
+      "known": {
+        "name": "Olivia",
+        "locale": "en",
+        "provider": "xai",
+        "voice_id": "bedd6226"
+      }
+    },
+    "Narrator": {
+      "gender": "m",
+      "variants": [
+        "Narrator"
+      ],
+      "target": {
+        "name": "Naoki",
+        "locale": "ja-JP",
+        "provider": "azure",
+        "voice_id": "ja-JP-NaokiNeural"
+      },
+      "known": {
+        "name": "Tom",
+        "locale": "en",
+        "provider": "xai",
+        "voice_id": "gfzdpspr5fdp"
+      }
+    },
+    "Cafe Barista": {
+      "gender": "f",
+      "variants": [
+        "Cafe Barista"
+      ],
+      "target": {
+        "name": "Mayu",
+        "locale": "ja-JP",
+        "provider": "azure",
+        "voice_id": "ja-JP-MayuNeural"
+      },
+      "known": {
+        "name": "Olivia",
+        "locale": "en",
+        "provider": "xai",
+        "voice_id": "bedd6226"
+      }
+    },
+    "Cafe Customer 1": {
+      "gender": "m",
+      "variants": [
+        "Cafe Customer 1"
+      ],
+      "target": {
+        "name": "Naoki",
+        "locale": "ja-JP",
+        "provider": "azure",
+        "voice_id": "ja-JP-NaokiNeural"
+      },
+      "known": {
+        "name": "Tom",
+        "locale": "en",
+        "provider": "xai",
+        "voice_id": "gfzdpspr5fdp"
+      }
+    },
+    "Cafe Customer 2": {
+      "gender": "m",
+      "variants": [
+        "Cafe Customer 2"
+      ],
+      "target": {
+        "name": "Naoki",
+        "locale": "ja-JP",
+        "provider": "azure",
+        "voice_id": "ja-JP-NaokiNeural"
+      },
+      "known": {
+        "name": "Tom",
+        "locale": "en",
+        "provider": "xai",
+        "voice_id": "gfzdpspr5fdp"
+      }
+    },
+    "Cafe Customer 3": {
+      "gender": "m",
+      "variants": [
+        "Cafe Customer 3"
+      ],
+      "target": {
+        "name": "Naoki",
+        "locale": "ja-JP",
+        "provider": "azure",
+        "voice_id": "ja-JP-NaokiNeural"
+      },
+      "known": {
+        "name": "Tom",
+        "locale": "en",
+        "provider": "xai",
+        "voice_id": "gfzdpspr5fdp"
+      }
+    },
+    "Bartender": {
+      "gender": "m",
+      "variants": [
+        "Bartender"
+      ],
+      "target": {
+        "name": "Naoki",
+        "locale": "ja-JP",
+        "provider": "azure",
+        "voice_id": "ja-JP-NaokiNeural"
+      },
+      "known": {
+        "name": "Tom",
+        "locale": "en",
+        "provider": "xai",
+        "voice_id": "gfzdpspr5fdp"
+      }
+    },
+    "Bar Customer 1": {
+      "gender": "f",
+      "variants": [
+        "Bar Customer 1"
+      ],
+      "target": {
+        "name": "Mayu",
+        "locale": "ja-JP",
+        "provider": "azure",
+        "voice_id": "ja-JP-MayuNeural"
+      },
+      "known": {
+        "name": "Olivia",
+        "locale": "en",
+        "provider": "xai",
+        "voice_id": "bedd6226"
+      }
+    },
+    "Bar Customer 2": {
+      "gender": "f",
+      "variants": [
+        "Bar Customer 2"
+      ],
+      "target": {
+        "name": "Mayu",
+        "locale": "ja-JP",
+        "provider": "azure",
+        "voice_id": "ja-JP-MayuNeural"
+      },
+      "known": {
+        "name": "Olivia",
+        "locale": "en",
+        "provider": "xai",
+        "voice_id": "bedd6226"
+      }
+    },
+    "Bar Customer 3": {
+      "gender": "f",
+      "variants": [
+        "Bar Customer 3"
+      ],
+      "target": {
+        "name": "Mayu",
+        "locale": "ja-JP",
+        "provider": "azure",
+        "voice_id": "ja-JP-MayuNeural"
+      },
+      "known": {
+        "name": "Olivia",
+        "locale": "en",
+        "provider": "xai",
+        "voice_id": "bedd6226"
+      }
+    },
+    "Diner 1": {
+      "gender": "f",
+      "variants": [
+        "Diner 1"
+      ],
+      "target": {
+        "name": "Mayu",
+        "locale": "ja-JP",
+        "provider": "azure",
+        "voice_id": "ja-JP-MayuNeural"
+      },
+      "known": {
+        "name": "Olivia",
+        "locale": "en",
+        "provider": "xai",
+        "voice_id": "bedd6226"
+      }
+    },
+    "Waiter": {
+      "gender": "m",
+      "variants": [
+        "Waiter"
+      ],
+      "target": {
+        "name": "Naoki",
+        "locale": "ja-JP",
+        "provider": "azure",
+        "voice_id": "ja-JP-NaokiNeural"
+      },
+      "known": {
+        "name": "Tom",
+        "locale": "en",
+        "provider": "xai",
+        "voice_id": "gfzdpspr5fdp"
+      }
+    },
+    "Diner 2": {
+      "gender": "f",
+      "variants": [
+        "Diner 2"
+      ],
+      "target": {
+        "name": "Mayu",
+        "locale": "ja-JP",
+        "provider": "azure",
+        "voice_id": "ja-JP-MayuNeural"
+      },
+      "known": {
+        "name": "Olivia",
+        "locale": "en",
+        "provider": "xai",
+        "voice_id": "bedd6226"
+      }
+    },
+    "Customer": {
+      "gender": "f",
+      "variants": [
+        "Customer"
+      ],
+      "target": {
+        "name": "Mayu",
+        "locale": "ja-JP",
+        "provider": "azure",
+        "voice_id": "ja-JP-MayuNeural"
+      },
+      "known": {
+        "name": "Olivia",
+        "locale": "en",
+        "provider": "xai",
+        "voice_id": "bedd6226"
+      }
+    },
+    "Assistant": {
+      "gender": "m",
+      "variants": [
+        "Assistant"
+      ],
+      "target": {
+        "name": "Naoki",
+        "locale": "ja-JP",
+        "provider": "azure",
+        "voice_id": "ja-JP-NaokiNeural"
+      },
+      "known": {
+        "name": "Tom",
+        "locale": "en",
+        "provider": "xai",
+        "voice_id": "gfzdpspr5fdp"
+      }
+    },
+    "Guest": {
+      "gender": "m",
+      "variants": [
+        "Guest"
+      ],
+      "target": {
+        "name": "Naoki",
+        "locale": "ja-JP",
+        "provider": "azure",
+        "voice_id": "ja-JP-NaokiNeural"
+      },
+      "known": {
+        "name": "Tom",
+        "locale": "en",
+        "provider": "xai",
+        "voice_id": "gfzdpspr5fdp"
+      }
+    },
+    "Receptionist": {
+      "gender": "f",
+      "variants": [
+        "Receptionist"
+      ],
+      "target": {
+        "name": "Mayu",
+        "locale": "ja-JP",
+        "provider": "azure",
+        "voice_id": "ja-JP-MayuNeural"
+      },
+      "known": {
+        "name": "Olivia",
+        "locale": "en",
+        "provider": "xai",
+        "voice_id": "bedd6226"
+      }
+    },
+    "Pharmacist": {
+      "gender": "m",
+      "variants": [
+        "Pharmacist"
+      ],
+      "target": {
+        "name": "Naoki",
+        "locale": "ja-JP",
+        "provider": "azure",
+        "voice_id": "ja-JP-NaokiNeural"
+      },
+      "known": {
+        "name": "Tom",
+        "locale": "en",
+        "provider": "xai",
+        "voice_id": "gfzdpspr5fdp"
+      }
+    },
+    "Tourist": {
+      "gender": "f",
+      "variants": [
+        "Tourist"
+      ],
+      "target": {
+        "name": "Mayu",
+        "locale": "ja-JP",
+        "provider": "azure",
+        "voice_id": "ja-JP-MayuNeural"
+      },
+      "known": {
+        "name": "Olivia",
+        "locale": "en",
+        "provider": "xai",
+        "voice_id": "bedd6226"
+      }
+    },
+    "Local": {
+      "gender": "m",
+      "variants": [
+        "Local"
+      ],
+      "target": {
+        "name": "Naoki",
+        "locale": "ja-JP",
+        "provider": "azure",
+        "voice_id": "ja-JP-NaokiNeural"
+      },
+      "known": {
+        "name": "Tom",
+        "locale": "en",
+        "provider": "xai",
+        "voice_id": "gfzdpspr5fdp"
+      }
+    },
+    "Driver": {
+      "gender": "f",
+      "variants": [
+        "Driver"
+      ],
+      "target": {
+        "name": "Mayu",
+        "locale": "ja-JP",
+        "provider": "azure",
+        "voice_id": "ja-JP-MayuNeural"
+      },
+      "known": {
+        "name": "Olivia",
+        "locale": "en",
+        "provider": "xai",
+        "voice_id": "bedd6226"
+      }
+    },
+    "Learner": {
+      "gender": "f",
+      "variants": [
+        "Learner"
+      ],
+      "target": {
+        "name": "Mayu",
+        "locale": "ja-JP",
+        "provider": "azure",
+        "voice_id": "ja-JP-MayuNeural"
+      },
+      "known": {
+        "name": "Olivia",
+        "locale": "en",
+        "provider": "xai",
+        "voice_id": "bedd6226"
+      }
+    }
+  },
+  "oldPodCastKeys": []
+}
