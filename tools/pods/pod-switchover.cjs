@@ -37,6 +37,14 @@
  * observed against a canon it was not mapped to. Rules and rationale:
  * docs/pods/pod-migration-protocol.md.
  *
+ * IT WILL NOT PROMOTE AN UNCAST POD. Since Part B of Tom's Pod 1 rulings (2026-08-23)
+ * the staged pod must be cast PER CONVERSATION before it can go live: zero same-voice
+ * exchange pairs, exactly two voices. movePod() carries `speakers` across verbatim, so
+ * without this gate a flip promotes whatever cast the staged pod happens to hold — which
+ * is why casting has been a separate recast sweep after every flip. The measurement lives
+ * in `pod-cast-gate.cjs` and is shared with the solver (`pod1-percall-recast.cjs`).
+ * Escape hatch, for a pod consciously shipping otherwise: --accept-uncast-pod.
+ *
  * DRY RUN BY DEFAULT. Pass --apply to write. Everything happens in one transaction.
  *
  *   node tools/pods/pod-switchover.cjs --course=fra_for_eng
@@ -49,6 +57,7 @@ require('dotenv').config({ path: require('path').join(__dirname, '..', '..', '.e
 const { Client } = require('pg')
 const { planMigration, POSITION_BOUND } = require('./pod-state-migrate.cjs')
 const { realHumanLearners } = require('../../services/shared/learner-counts.cjs')
+const { checkPodCast, loadPodForCastCheck } = require('./pod-cast-gate.cjs')
 
 const APPLY = process.argv.includes('--apply')
 const ROLLBACK = process.argv.includes('--rollback')
@@ -88,6 +97,13 @@ const FORCE_NO_MIGRATION = process.argv.includes('--accept-miscredit')
 // duplicate-text ambiguity in particular, which is a migration correctness gate,
 // not a content one.
 const REHEARSAL = process.argv.includes('--rehearsal')
+/** THE CAST GATE'S ONLY ESCAPE HATCH (2026-08-23, Part B of Tom's Pod 1 rulings).
+ *  movePod() carries `speakers` across verbatim, so before this gate existed a flip
+ *  promoted whatever cast the staged pod happened to hold — including none — and the
+ *  casting had to be bolted on afterwards by a separate recast sweep, per flip, forever.
+ *  The gate is ON BY DEFAULT and refuses the flip; this flag is for the conscious
+ *  exception (a pod deliberately shipping on one voice), and it says so in the log. */
+const ACCEPT_UNCAST = process.argv.includes('--accept-uncast-pod')
 
 if (!COURSE) {
   console.error('FAILED: --course=<code> is required')
@@ -235,6 +251,38 @@ async function main () {
     if (Number(s.no_target_audio) > 0) blockers.push(`${s.no_target_audio} staged sentences have no target audio`)
   }
 
+  // ---- the cast gate ---------------------------------------------------------
+  // The pod being promoted must already be cast per conversation: ZERO same-voice
+  // exchange pairs and EXACTLY TWO voices (Tom, 2026-08-23 — "there's always male
+  // talking to female, so that two voices can actually do the whole thing, rather
+  // than per character, which was the problem previously").
+  //
+  // Measured here rather than SOLVED here on purpose. Re-solving inside the flip
+  // would mean rewriting speaker labels and courses.voice_config.podCast in the
+  // same transaction that moves learner progress — three unrelated failure modes
+  // sharing one commit — and it would swallow the recast's own blockers (a
+  // non-bipartite exchange graph, glued rows inside the relabel set) that need a
+  // human. The solver stays tools/pods/pod1-percall-recast.cjs; this refuses to
+  // promote anything it has not been run on. Both share one definition of an
+  // exchange edge, in pod-cast-gate.cjs, so they cannot drift.
+  //
+  // NOT applied on --rollback: a rollback restores a pod that was already live,
+  // and a gate that can block the way back is worse than the thing it prevents.
+  const castCheck = checkPodCast(await loadPodForCastCheck(db, `${COURSE}:${STAGED}`))
+  log(`  staged cast: ${castCheck.voicesInUse.length} voice(s) [${castCheck.voicesInUse.join(', ')}], ` +
+      `${castCheck.sameVoicePairs.length} same-voice exchange pair(s) across ${castCheck.exchangePairs} exchange pair(s), ` +
+      `${castCheck.uncast.length} uncast character(s)`)
+  if (!castCheck.ok) {
+    if (ACCEPT_UNCAST) {
+      log('  --accept-uncast-pod given: promoting a pod that is NOT cast-correct. Reasons:')
+      for (const f of castCheck.failures) log(`    - ${f}`)
+    } else {
+      for (const f of castCheck.failures) blockers.push(`cast: ${f}`)
+      blockers.push('run tools/pods/pod1-percall-recast.cjs --pod=' + `${COURSE}:${STAGED}` +
+        ' --apply first (or pass --accept-uncast-pod to promote an uncast pod deliberately)')
+    }
+  }
+
   // ---- the learner-progress migration, planned before anything moves ----------
   // Planned here, against the two canons as they stand now, and applied inside the same
   // transaction as the move. `to` targets are computed against the STAGED slug and
@@ -301,6 +349,13 @@ async function main () {
     if (after !== Number(s.n)) throw new Error(`post-check failed: live pod holds ${after} sentences, expected ${s.n}`)
     const kept = Number((await db.query('select count(*) c from listening_pod_sentences where pod_id = $1', [`${COURSE}:${RETIRED}`])).rows[0].c)
     if (kept !== liveN) throw new Error(`post-check failed: archived pod holds ${kept} sentences, expected ${liveN}`)
+    // The cast gate again, re-derived from the promoted pod inside the transaction.
+    // The pre-flight check read the staged pod; this reads what a learner would
+    // actually get, so a bug in movePod's cast carry-across cannot land silently.
+    if (!ACCEPT_UNCAST) {
+      const after2 = checkPodCast(await loadPodForCastCheck(db, `${COURSE}:${PROMOTE_TO}`))
+      if (!after2.ok) throw new Error(`post-check failed: promoted pod is not cast-correct — ${after2.failures.join(' | ')}`)
+    }
 
     // The learner-progress migration, in the same transaction as the move so progress is
     // never observable against a canon it was not mapped to.

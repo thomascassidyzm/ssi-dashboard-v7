@@ -36,6 +36,7 @@
 
 require('dotenv').config({ path: require('path').join(__dirname, '..', '..', '.env.psql') })
 const { Client } = require('pg')
+const { checkPodCast } = require('./pod-cast-gate.cjs')
 
 const APPLY = process.argv.includes('--apply')
 const arg = (n) => {
@@ -115,6 +116,17 @@ const dstPodId = `${COURSE}:${TO}`
       with_known_audio: sentences.filter(s => s.known_audio_id).length,
       columns_copied: copyCols.length,
     }
+
+    // `speakers` is copied verbatim, so the clone inherits the source's casting —
+    // good or bad. REPORTED, NOT REFUSED: cloning a badly-cast pod in order to fix
+    // it off the live slug is the whole point of this tool, so a hard gate here
+    // would block the repair. The gate that matters is on the way OUT, in
+    // pod-switchover.cjs, which will not promote a pod that fails this same check.
+    const cast = checkPodCast({ rows: sentences, speakers: src.speakers })
+    summary.cast_inherited = cast.ok
+      ? `cast-correct (${cast.voicesInUse.length} voices, 0 same-voice exchange pairs)`
+      : `NOT cast-correct — ${cast.failures.join(' | ')}; recast the clone with ` +
+        `tools/pods/pod1-percall-recast.cjs --pod=${dstPodId} before it can be promoted`
 
     if (!APPLY) {
       console.log(JSON.stringify({ mode: 'DRY RUN', summary }, null, 2))
