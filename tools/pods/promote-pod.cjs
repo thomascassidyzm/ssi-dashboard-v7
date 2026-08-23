@@ -34,6 +34,15 @@
  *   node tools/pods/promote-pod.cjs --course=cym_n_for_eng \
  *     --from=pod-0-unrecorded --to=pod-0 --archive-as=pod-0-gated-2026-08-06
  *   ... --apply
+ *
+ * PROMOTION IS NOT RELEASE (2026-08-23). listening_pods.visibility decides
+ * whether learners can reach a pod at all, and this tool does NOT decide it:
+ * the promoted pod inherits the source pod's visibility, so a pod held back
+ * while a human is still recording it is still held after promotion. Pass
+ * --release to make it live in the same run, or release it from the Popty pods
+ * page. Either way it is a human act — passing the fitness checks above is a
+ * precondition for release, never a trigger for it. The dry-run summary always
+ * states, in words, what a learner will be able to see.
  */
 'use strict'
 
@@ -52,6 +61,13 @@ const FROM = arg('from')
 const TO = arg('to') || 'pod-0'
 const ARCHIVE_AS = arg('archive-as')
 const TITLE = arg('title')
+// Promotion moves content onto the live slug. It does NOT decide reachability:
+// the promoted pod inherits whatever visibility the source pod had, so a pod
+// held back while a human records it stays held after promotion. --release is
+// the deliberate human act that makes it live, and it is the only thing here
+// that can. Passing every fitness check is a PRECONDITION for release, never a
+// trigger for it (Tom's ruling, 2026-08-23).
+const RELEASE = has('release')
 const ALLOW_DRAFTS = has('allow-drafts')
 const ALLOW_EMPTY_TARGET = Number(arg('allow-empty-target') || 0)
 const ALLOW_MISSING_AUDIO = has('allow-missing-audio')
@@ -135,9 +151,17 @@ function retail(id) {
       [wouldBe, srcId, dstId])).rows
     if (clash.length) blockers.push(`${clash.length} target id(s) already exist on other pods (e.g. ${clash[0].id} on ${clash[0].pod_id})`)
 
+    // Never silent about reachability: a dry run states what learners will be
+    // able to see, in words, before anyone types --apply.
+    const promotedVisibility = RELEASE ? 'live' : (src.visibility || 'live')
     const summary = {
       course: COURSE,
       promote: `${srcId}  ->  ${dstId}`,
+      visibility: promotedVisibility === 'live'
+        ? (RELEASE
+            ? 'LIVE — --release given, learners will be able to see this pod'
+            : `LIVE — inherited from ${srcId}, which was already live`)
+        : `HELD — inherited from ${srcId}. Learners will NOT see this pod. Pass --release to make it live, or release it from the Popty pods page.`,
       archive: dst ? `${dstId}  ->  ${arcId}` : `${dstId} has no pod row; nothing to archive`,
       source_rows: srcRows.length,
       source_scenes: new Set(srcRows.map(r => r.scene_number)).size,
@@ -168,13 +192,14 @@ function retail(id) {
      * rewriting the slug segment of the child's id, then drop the old header —
      * only after asserting it is childless.
      */
-    const renamePod = async (pod, rows, newId, newSlug, newTitle, note) => {
+    const renamePod = async (pod, rows, newId, newSlug, newTitle, note, visibility) => {
       const metadata = { ...(pod.metadata || {}), ...note }
       await db.query(
-        `insert into listening_pods (id, course_code, pod_type, slug, pod_order, title, scene, difficulty, speakers, source_file, metadata)
-         values ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11)`,
+        `insert into listening_pods (id, course_code, pod_type, slug, pod_order, title, scene, difficulty, speakers, source_file, metadata, visibility)
+         values ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12)`,
         [newId, pod.course_code, pod.pod_type, newSlug, pod.pod_order, newTitle, pod.scene, pod.difficulty,
-          enc('speakers', pod.speakers), pod.source_file, enc('metadata', metadata)])
+          enc('speakers', pod.speakers), pod.source_file, enc('metadata', metadata),
+          visibility || pod.visibility || 'live'])
       for (const r of rows) {
         const res = await db.query(
           `update listening_pod_sentences set id=$1, pod_id=$2 where id=$3 and pod_id=$4`,
@@ -203,7 +228,9 @@ function retail(id) {
       }
       await renamePod(src, srcRows, dstId, TO,
         TITLE || String(src.title || '').replace(/\s*—\s*UNRECORDED.*$/i, '').replace(/\s*\[GATED[^\]]*\]\s*/i, '').trim() || dstId,
-        { gated: false, promoted_on: stamp, promoted_from: FROM, previous_live_archived_as: dst ? ARCHIVE_AS : null })
+        { gated: false, promoted_on: stamp, promoted_from: FROM, previous_live_archived_as: dst ? ARCHIVE_AS : null,
+          ...(RELEASE ? { released_at: new Date().toISOString(), released_by: 'promote-pod.cjs --release' } : {}) },
+        promotedVisibility)
 
       const live = Number((await db.query(
         `select count(*) n from listening_pod_sentences where pod_id=$1`, [dstId])).rows[0].n)

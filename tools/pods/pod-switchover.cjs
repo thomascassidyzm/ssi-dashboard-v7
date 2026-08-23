@@ -96,14 +96,22 @@ const reslug = (id, oldSlug, newSlug) => {
 
 /** Move a whole pod — header row and every sentence — from one slug to another.
  *  Insert-then-delete rather than UPDATE, because listening_pod_sentences.pod_id is a
- *  foreign key with no ON UPDATE CASCADE. */
+ *  foreign key with no ON UPDATE CASCADE.
+ *
+ *  `visibility` is CARRIED FORWARD explicitly (2026-08-23). It is a real column
+ *  now, and this is an insert-then-delete with a hand-written column list, so a
+ *  column left off the list does not "stay as it was" — the new row silently
+ *  takes the table default 'live'. A pod held back because a human is still
+ *  recording it would have come out the other side of a switchover LIVE, with
+ *  nothing in the output saying so. Moving a pod must never decide its
+ *  reachability; only a deliberate human release does that. */
 async function movePod (db, fromSlug, toSlug, title) {
   const fromId = `${COURSE}:${fromSlug}`
   const toId = `${COURSE}:${toSlug}`
 
   await db.query(
-    `insert into listening_pods (id, course_code, pod_type, slug, pod_order, title, scene, difficulty, speakers, source_file, metadata)
-     select $1, course_code, pod_type, $2, pod_order, coalesce($3, title), scene, difficulty, speakers, source_file, metadata
+    `insert into listening_pods (id, course_code, pod_type, slug, pod_order, title, scene, difficulty, speakers, source_file, metadata, visibility)
+     select $1, course_code, pod_type, $2, pod_order, coalesce($3, title), scene, difficulty, speakers, source_file, metadata, visibility
        from listening_pods where id = $4`,
     [toId, toSlug, title, fromId]
   )
