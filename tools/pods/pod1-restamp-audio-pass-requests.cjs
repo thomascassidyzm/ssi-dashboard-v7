@@ -45,12 +45,14 @@ if (!['live', 'staged'].includes(SCOPE)) { console.error(`FAILED: --scope=${SCOP
 const QUEUE_REL = SCOPE === 'live'
   ? `docs/pods/pod1-recast-regen-queue-by-language-${STAMP}.json`
   : `docs/pods/pod1-recast-regen-queue-by-language-staged-${STAMP}.json`
-// Staged pods share course_audio rows with the pods that are live RIGHT NOW
-// (clone-pod copies audio ids, and the pod-0-unrecorded drafts were built the
-// same way). Whoever fulfils this request must render to NEW clip rows, or a
-// same-text re-render replaces the object in place and changes what live
-// learners hear — the exact thing Tom's 21:15Z ruling forbids.
-const STAGED_GATE = 'GATE: render to NEW clip rows only. These staged pods share course_audio rows with the LIVE pods, so an in-place re-render would change what live learners hear.'
+// The staged pods do share course_audio rows with the pods that are live right
+// now (clone-pod copies audio ids, and the pod-0-unrecorded drafts were built
+// the same way), and an earlier pass stamped that as a gate forbidding in-place
+// re-render. Tom overruled it, 2026-08-23 21:58Z: "Pod 1 is the staging name.
+// There are no pod 1 live. There is also no risk of affecting live courses. It
+// doesn't matter." So an in-place same-uuid regen is ACCEPTED and the request
+// says what the pass IS rather than warning against firing it.
+const STAGED_GATE = 'PASS: per-conversation recast of the held staging pod — one male and one female voice per conversation, re-rendered in place on the existing clip rows. Approved by Tom, 2026-08-23 22:00Z.'
 
 async function main() {
   require('dotenv').config({ path: path.join(__dirname, '../../.env') })
@@ -100,7 +102,7 @@ async function main() {
         unit: 'distinct course_audio clip',
         grouping: 'per-language',
         scope: SCOPE,
-        ...(SCOPE === 'staged' ? { renderTarget: 'staged held pod', sharedClipGate: STAGED_GATE } : {}),
+        ...(SCOPE === 'staged' ? { renderTarget: 'staged held pod', passDescription: STAGED_GATE } : {}),
         derivation: 'cost-aware orientation — component orientation chosen to keep the most delivered clips; zero same-voice exchanges unchanged and asserted live',
         languages: langs,
         queueFile: QUEUE_REL,
