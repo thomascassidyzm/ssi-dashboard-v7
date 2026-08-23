@@ -150,6 +150,45 @@ SET <only the payload's columns>`, so `pod-dialogue-generator.cjs` and
 none can un-hold a pod in the background; the two fixed above were the only ones
 that could do it as a side effect of a human action.
 
+## Appended — 42 pods nobody serves are marked live
+
+Closing out the learner-app half turned up a measurement worth keeping. Counting
+every `core` pod that is **not** the one its course serves, and is nevertheless
+`visibility='live'`:
+
+| slug | pods | courses | sentences |
+|---|---|---|---|
+| `pod-0-unrecorded` | 21 | 21 | **4,871** |
+| `pod-0-retired-2026-08-22` | 16 | 16 | 2,272 |
+| `pod-0-gated-2026-08-06` | 2 | 2 | 0 |
+| `pod-1-retired-2026-08-22` | 1 | 1 | 180 |
+| `music` (spa) | 1 | 1 | 749 |
+| `travel-situations` (spa) | 1 | 1 | 72 |
+| **total** | **42** | **39 courses** | |
+
+Counted independently against the live DB and agreeing exactly with the
+learner-app job's own figure of 42 across 39.
+
+**The client is not affected** — `servedPod.ts` only ever reads `pod-1`/`pod-0`,
+so none of these reach a learner through the app. The exposure is the bundle
+route, which filtered on `course_code` alone and therefore multi-matched every
+one of them into the offline bundle.
+
+The interesting row is `pod-0-unrecorded`: **21 courses, 4,871 sentences** of
+content that is by its own slug not recorded yet. That is precisely the
+not-ready-for-learners case this gate was built for, sitting marked live.
+
+Two of the 42 are **legitimate pods that must stay live** — Spanish `music` and
+`travel-situations` are real content, not archives. The other 40 are working
+copies and archives. Flipping those 40 to `held` would close the multi-match
+leak with no code at all, which is why the bundle route's own bug is not being
+chased with a code fix: the pods are not distinguishable by any column
+(`pod_order` is NULL on all 110), so any id-pattern filter would be guesswork,
+whereas the visibility column already says exactly the right thing.
+
+Not done. One ruling, one hold — this is Tom's call, and it is logged here rather
+than acted on.
+
 ## Naming
 
 Tom calls the Welsh north pod **Pod 1**. In the data it is still on the slug
