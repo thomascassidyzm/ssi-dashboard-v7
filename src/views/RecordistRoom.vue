@@ -191,11 +191,14 @@
       <p v-if="playbackError" class="note error">{{ playbackError }}</p>
 
       <div class="controls">
+        <button v-if="canGoBack" class="ctl-back" :disabled="busy" @click="onBack">Back</button>
         <button class="ctl-again" :disabled="busy" @click="onAgain">Again</button>
-        <button class="ctl-next" :disabled="busy" @click="onNext">{{ hasNext ? 'Next' : 'Done' }}</button>
+        <button class="ctl-next" :disabled="busy" @click="onNext()">{{ hasNext ? 'Next' : 'Done' }}</button>
       </div>
       <button class="btn-finish" :disabled="busy" @click="onFinish">Stop here</button>
-      <p class="kbd-hint"><kbd>Space</kbd> next · <kbd>R</kbd> again</p>
+      <p class="kbd-hint">
+        <kbd>Space</kbd> next · <kbd>R</kbd> again<template v-if="canGoBack"> · <kbd>B</kbd> back</template>
+      </p>
     </section>
 
     <!-- ── Done ───────────────────────────────────────────────────────────── -->
@@ -268,6 +271,7 @@ import { useRecordistQueue } from '@/composables/useRecordistQueue'
 import StoredTakeButton from '@/components/production/autocue/StoredTakeButton.vue'
 import RawVsProcessed from '@/components/production/autocue/RawVsProcessed.vue'
 import { recordistClipUrl, diagnoseRecordistClip } from '@/composables/useStoredClip'
+import { createAdvanceLock } from './recordist/advance-lock'
 
 const props = defineProps({ voiceId: { type: String, required: true } })
 
@@ -305,6 +309,11 @@ function micLabel() {
   return [mic, `capture:${captureProfile.value}`].filter(Boolean).join(' · ')
 }
 const index = ref(0)
+// THE PATH HE ACTUALLY WALKED, not index arithmetic. nextIndexFrom() skips
+// lines that are already recorded, and the re-read toggle can change which those
+// are mid-session, so `index - 1` would hand him lines he has never seen. Back
+// pops this instead: whatever he was last looking at is what he goes back to.
+const visited = ref([])
 const busy = ref(false)
 const readThisSession = ref(0)
 // Lines read in THIS session, in order — the only ones we can honestly offer a
@@ -489,6 +498,8 @@ async function begin() {
   readThisSession.value = 0
   sessionIds.value = []
   lastLine.value = null
+  visited.value = []
+  advanceLock.reset()
   index.value = startIndex.value
   phase.value = 'recording'
   recorder.beginLine()
@@ -501,6 +512,20 @@ function friendlyMicError(err) {
   if (n === 'NotReadableError') return 'Your microphone is in use by another app. Close it and try again.'
   return (err && err.message) || 'Microphone unavailable.'
 }
+
+// One line, one step forward — see src/views/recordist/advance-lock.js for the
+// race it closes and why a debounce could not.
+const advanceLock = createAdvanceLock()
+// What the lock knows a line by. The id the server gave it, which is also what
+// the take is filed under; the index is only a fallback for a line that somehow
+// arrived without one, and a line with neither is never advanced from.
+function lineKeyAt(i) {
+  const l = lines.value[i]
+  if (!l) return null
+  return l.id ?? `#${i}`
+}
+
+const canGoBack = computed(() => phase.value === 'recording' && visited.value.length > 0)
 
 let lastTapAt = 0
 function debounced() {
@@ -534,13 +559,18 @@ function commit(i, blob, hadSpeech) {
     lastLine.value = line
     return
   }
+  // A line he came BACK to and read again is one line read, not two. The queue
+  // already supersedes the earlier take of the same lineId and sessionIds
+  // already refuses to list it twice; this is the last of the three counts that
+  // was still double-counting a re-read.
+  const firstTakeOfThisLine = !sessionIds.value.includes(line.id)
   queue.queueTake({ voiceId: props.voiceId, lineId: line.id, text: line.text, blob, micLabel: micLabel() })
   doneIds.value.add(line.id)
   doneIds.value = new Set(doneIds.value)
-  if (!sessionIds.value.includes(line.id)) sessionIds.value = [...sessionIds.value, line.id]
+  if (firstTakeOfThisLine) sessionIds.value = [...sessionIds.value, line.id]
   if (playingId.value === line.id) stopPlayback()
   lastLine.value = line
-  readThisSession.value++
+  if (firstTakeOfThisLine) readThisSession.value++
 }
 
 // The bar as a number. "Barely moving" and "not moving" look the same on a
@@ -561,8 +591,12 @@ function speechVerdict() {
   return recorder.lineHasSpeech.value
 }
 
-async function onNext() {
+async function onNext(source = 'tap') {
   if (phase.value !== 'recording' || busy.value || !debounced()) return
+  // Exactly one step away from any one line. `busy` cannot do this job: on the
+  // normal path there is no await inside the try, so it is true for a
+  // synchronous instant and a watcher flushing on the next tick sails past it.
+  if (!advanceLock.claim(lineKeyAt(index.value), source)) return
   busy.value = true
   try {
     const i = index.value
@@ -577,6 +611,7 @@ async function onNext() {
     const pending = recorder.endLine()
     const n = nextIndexFrom(i)
     if (n !== -1) {
+      visited.value = [...visited.value, i]
       index.value = n
       recorder.beginLine()
     }
@@ -597,7 +632,12 @@ const autoAdvance = ref(true)
 watch(() => recorder.quietMs.value, (ms) => {
   if (!autoAdvance.value || phase.value !== 'recording' || busy.value) return
   if (!recorder.lineHasSpeech.value) return
-  if (ms >= AUTO_ADVANCE_QUIET_MS) onNext()
+  // No cooldown on a freshly-opened line, deliberately: beginLine() sets
+  // lineHasSpeech back to false and quietMs to 0, and the guard above means the
+  // watcher cannot fire again until the recordist has actually said something on
+  // the NEW line. A timer here would be doing nothing that the recorder is not
+  // already doing, so there isn't one.
+  if (ms >= AUTO_ADVANCE_QUIET_MS) onNext('auto')
 })
 
 async function onAgain() {
@@ -605,6 +645,37 @@ async function onAgain() {
   busy.value = true
   try {
     await recorder.discardLine()
+    recorder.beginLine()
+  } finally { busy.value = false }
+}
+
+// ── Back ────────────────────────────────────────────────────────────────────
+// Aran, mid-session on 2026-08-23: there was no way back. A line read badly, or
+// a line skipped by the double-advance, was simply gone until the whole queue
+// came round again.
+//
+// The take on the line he is leaving is DISCARDED, not filed. He presses Back
+// because the line behind him is the one that needs fixing — the line he is
+// standing on is one he has not read yet, so there is nothing here worth
+// keeping, and filing a half-second of room tone under it would put a red
+// "that take came out silent" on a line he never attempted. Same call Again
+// makes, for the same reason.
+//
+// The line he lands on may already have a take from this session. That is fine
+// and is the point: queueTake supersedes any earlier take of the same lineId,
+// drops its stored clip until the new one lands, and commit() no longer counts
+// the re-read as a second line.
+async function onBack() {
+  if (phase.value !== 'recording' || busy.value || !visited.value.length || !debounced()) return
+  busy.value = true
+  try {
+    await recorder.discardLine()
+    const prev = visited.value[visited.value.length - 1]
+    visited.value = visited.value.slice(0, -1)
+    index.value = prev
+    // He has come back here on purpose, so this line gets its step forward back.
+    advanceLock.release(lineKeyAt(prev))
+    stopPlayback()
     recorder.beginLine()
   } finally { busy.value = false }
 }
@@ -639,6 +710,11 @@ async function recordOne(lineId) {
   try {
     await recorder.start(selectedDeviceId.value || null, captureProfile.value)
   } catch (err) { micError.value = friendlyMicError(err); return }
+  // A jump from the done screen is not a step along the path he walked, so it
+  // starts its own: Back must never take him from here into a queue position he
+  // left ten minutes ago.
+  visited.value = []
+  advanceLock.release(lineKeyAt(i))
   index.value = i
   phase.value = 'recording'
   recorder.beginLine()
@@ -654,6 +730,7 @@ function onKey(e) {
   if (phase.value !== 'recording' || e.repeat) return
   if (e.code === 'Space') { e.preventDefault(); onNext() }
   else if (e.key === 'r' || e.key === 'R') { e.preventDefault(); onAgain() }
+  else if (e.key === 'b' || e.key === 'B') { e.preventDefault(); onBack() }
 }
 function beforeUnloadGuard(e) {
   if (phase.value === 'recording' || queue.pendingCount.value > 0) { e.preventDefault(); e.returnValue = '' }
@@ -680,6 +757,8 @@ async function load() {
     doneIds.value = new Set()
     sessionIds.value = []
     lastLine.value = null
+    visited.value = []
+    advanceLock.reset()
     phase.value = 'ready'
   } catch (err) {
     loadError.value = (err && err.message) || 'Network error'
@@ -838,9 +917,13 @@ kbd {
 }
 .live-dot.hot { background: var(--color-emerald, #06ffa5); }
 
-.controls { display: flex; gap: 0.75rem; }
+/* Three across on a phone, and Next still the biggest thing in the row. Back and
+   Again share the left side by percentage rather than content width, so the row
+   never wraps and no button ever falls under a thumb-sized target. */
+.controls { display: flex; gap: 0.6rem; }
+.ctl-back,
 .ctl-again {
-  flex: 0 0 32%; min-height: 68px;
+  flex: 0 0 26%; min-height: 68px;
   font-family: 'Josefin Sans', sans-serif; font-size: 1.05rem; font-weight: 600;
   border-radius: 14px; cursor: pointer;
   background: var(--color-shadow, #1e293b); color: var(--color-paper, #f7f7f2);
@@ -853,7 +936,7 @@ kbd {
   border-radius: 14px; border: none; cursor: pointer;
   background: var(--color-emerald, #06ffa5); color: var(--color-void, #0f172a);
 }
-.ctl-again:disabled, .ctl-next:disabled, .btn-finish:disabled { opacity: 0.5; cursor: default; }
+.ctl-back:disabled, .ctl-again:disabled, .ctl-next:disabled, .btn-finish:disabled { opacity: 0.5; cursor: default; }
 .btn-finish {
   align-self: center; font-family: 'Josefin Sans', sans-serif; font-size: 0.85rem;
   color: var(--color-paper-dim, #c1c1bb); background: transparent;
@@ -909,5 +992,6 @@ kbd {
 :root[data-theme="light"] .meter,
 :root[data-theme="light"] .btn-ghost,
 :root[data-theme="light"] .btn-finish,
+:root[data-theme="light"] .ctl-back,
 :root[data-theme="light"] .ctl-again { border-color: var(--line); }
 </style>
