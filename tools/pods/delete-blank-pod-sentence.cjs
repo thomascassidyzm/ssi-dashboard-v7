@@ -40,15 +40,29 @@ const arg = (n) => {
   const a = process.argv.find((x) => x.startsWith(`--${n}=`))
   return a ? a.split('=').slice(1).join('=') : null
 }
+/**
+ * Slugs this tool may touch. `*-unrecorded` was the whole list until 2026-08-23,
+ * when the same textless row turned up on two Group 1 STAGED clones whose slug is
+ * `pod-1-staged-2026-08-23`. The allowlist is deliberately literal: a new staging
+ * convention has to be added here on purpose, and everything else — above all a
+ * live `pod-0` — stays out of reach. The slug is no longer the only lock: the run
+ * also reads the pod's visibility and refuses anything that is not `held`.
+ */
+const STAGING_SLUGS = ['pod-1-staged-2026-08-23']
+function podSlugAllowed(podId) {
+  const slug = String(podId || '').split(':').slice(1).join(':')
+  return /-unrecorded$/.test(slug) || STAGING_SLUGS.includes(slug)
+}
+
 const SENTENCE_ID = arg('id')
-if (!SENTENCE_ID) {
+if (require.main === module && !SENTENCE_ID) {
   console.error('FAILED: --id=<sentence_id> is required')
   process.exit(1)
 }
 // pod_id is everything before the final ':SCnn-Snnn' segment.
-const POD_ID = SENTENCE_ID.split(':').slice(0, 2).join(':')
-if (!/-unrecorded$/.test(POD_ID)) {
-  console.error(`FAILED: ${POD_ID} is not an *-unrecorded staging pod. This tool will not touch a live pod.`)
+const POD_ID = String(SENTENCE_ID || '').split(':').slice(0, 2).join(':')
+if (require.main === module && !podSlugAllowed(POD_ID)) {
+  console.error(`FAILED: ${POD_ID} is not a sanctioned staging pod (${['*-unrecorded', ...STAGING_SLUGS].join(', ')}). This tool will not touch a live pod.`)
   process.exit(1)
 }
 const LOG_PREFIX = arg('log-prefix') || POD_ID.replace(/:/g, '-')
@@ -59,6 +73,17 @@ async function main() {
   const c = new Client({ connectionString: process.env.DATABASE_URL })
   await c.connect()
   try {
+    // Belt and braces to the slug allowlist: ask the DATABASE what this pod is.
+    // A held pod is serving nobody; anything else is a live pod wearing a
+    // staging-shaped slug, and this tool has no business there.
+    const { rows: pods } = await c.query(
+      `select id, slug, course_code, visibility from listening_pods where id = $1`, [POD_ID]
+    )
+    if (pods.length !== 1) throw new Error(`expected exactly 1 pod row for ${POD_ID}, found ${pods.length}`)
+    if (pods[0].visibility !== 'held') {
+      throw new Error(`pod ${POD_ID} has visibility=${JSON.stringify(pods[0].visibility)}, not 'held' — refusing to touch a pod that may be serving learners`)
+    }
+
     const { rows } = await c.query(
       `select id, pod_id, scene_number, sentence_number, global_order, speaker,
               target_text, known_text, target_audio_id, known_audio_id
@@ -139,4 +164,6 @@ async function main() {
   }
 }
 
-main()
+if (require.main === module) main()
+
+module.exports = { podSlugAllowed, STAGING_SLUGS }
