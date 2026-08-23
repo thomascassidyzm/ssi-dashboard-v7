@@ -109,6 +109,47 @@ makes every held pod live again the instant it runs — including this one and i
 unfinished takes. Restoring the two policies alone is enough if that is all you
 want.
 
+## Appended — the release tool did not know the flag existed
+
+An audit of every code path that writes a pod row (job #113) found the gap that
+mattered most, and it was in the release path rather than anywhere exotic.
+
+`promote-pod.cjs` and `pod-switchover.cjs` both rename a pod onto the live slug
+by inserting a new header row with a hand-written column list and deleting the
+old one. A column left off that list does not survive the move — the new row
+takes the table default, `live`. So a pod held back mid-recording would have come
+out of a promotion **live**, and nothing in the tool's output, blockers or dry-run
+summary would have mentioned visibility at all.
+
+`promote-pod.cjs` is the sharp end: its own docstring gives `cym_n_for_eng` as the
+worked example, so it is the command someone will actually run to release the
+Welsh north pod. Passing its fitness checks and typing `--apply` was functionally
+"go live" — completeness triggering release, the exact pattern the ruling forbids.
+
+Both now carry the source pod's visibility forward, so **moving content is never a
+release**. `promote-pod` gains `--release` as the deliberate act that makes a pod
+live, stamping `released_at` and `released_by`; its dry run now always says in
+words what a learner will be able to see:
+
+```
+"visibility": "HELD — inherited from zzz_vis_probe:pod-0-unrecorded.
+               Learners will NOT see this pod. Pass --release to make it live,
+               or release it from the Popty pods page."
+```
+
+Verified end to end on a throwaway course: a held pod promoted with `--apply`
+stayed held (it landed live before the change); the same pod with `--release`
+came out live and stamped; the switchover insert carried `held` across a move.
+Scratch rows deleted afterwards; `cym_n_for_eng:pod-0` untouched and still held
+throughout.
+
+The audit also proved the safe half empirically rather than by reasoning: a
+supabase-js `.upsert()` that omits `visibility` compiles to `ON CONFLICT DO UPDATE
+SET <only the payload's columns>`, so `pod-dialogue-generator.cjs` and
+`pod-sync.cjs` leave a held row held. Of the 16 write sites on `origin/main`,
+none can un-hold a pod in the background; the two fixed above were the only ones
+that could do it as a side effect of a human action.
+
 ## Naming
 
 Tom calls the Welsh north pod **Pod 1**. In the data it is still on the slug
