@@ -82,7 +82,21 @@ Not touched: `target_text`, `known_text`, every `*_audio_id`, and `voice_config.
 
 The pod's `visibility` is `held`, checked in the same transaction as a refuse-condition rather than assumed — that hold is what makes an in-place edit safe under the content-change migration protocol, and progress is slot-keyed so a speaker-label change cannot mis-credit anyone.
 
-## 6. One reconciliation, stated rather than smoothed
+## 6. Independent check of the blast radius (job #132)
+
+Before renaming any label I had a separate sonnet worker trace every read of the speaker string across both repos. It came back clean on the three questions that mattered:
+
+- **Audio identity does not touch speaker.** `services/shared/clip-identity.cjs` keys a clip on `(language, text_normalized, voice_id)` and nothing else; no S3-key builder in `services/voice-engine/*` references a speaker field. A rename cannot orphan or collide a clip.
+- **Learner progress does not touch speaker.** `learner_pod_state.sentence_id` is the slot id `${podId}:SC{scene}-S{sentence}` — scene and sentence number only. Zero progress rows are affected and no migration is owed.
+- **No DB constraint, enum, CHECK or FK on the value.** Just `text NOT NULL`.
+
+It also confirmed independently what I had read in the code: the "already recorded" test is voice-based.
+
+**One risk it surfaced that is worth knowing, and is not created by this job.** `tools/pod-sync.cjs` re-syncs a pod by deleting and re-inserting every sentence row from a markdown source, and its insert carries neither the speaker labels we just wrote nor the existing `target_audio_id` / `known_audio_id`. If anyone ever re-syncs `cym_n_for_eng:pod-0` from markdown, it would revert these labels **and null the audio links** — the second of those is the serious half, and it is true today regardless of this recast. I found no live markdown source for this pod, so nothing is pending; flagging it as a trap rather than an action.
+
+Second, smaller: the learner app builds its own speaker-colour dots pod-wide in `useListeningPods.ts`, keyed on the cleaned speaker name. "Customer 1" was one key across scenes 7/8/9 and is now three, so the pod will render three separate characters there instead of one. That is the intended effect of per-scene casting, but it is a visible change on first listen-through, not just a label swap.
+
+## 7. One reconciliation, stated rather than smoothed
 
 The brief carried a prior figure of ~125 lines in Aran's queue and ~101 lines with a human take. Derived fresh from the live DB through `buildRecordingPlan`, the pre-recast numbers are **87 Welsh lines for Aran** and **91 rows with a target take**. I could not reproduce 125 or 101 from any read path I have, and I have not chased where they came from — the numbers above are the ones I derived myself and can show working for. Flagging the gap rather than papering it.
 
