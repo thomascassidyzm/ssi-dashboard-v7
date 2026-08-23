@@ -30,6 +30,7 @@ const manifestDiffService = require('./manifest-diff-service.cjs')
 const languageCodeService = require('./language-code-service.cjs')
 const { decomposeText } = require('./phrase-decomposer.cjs')
 const { isScriptModeUpload, normalizeProvenance, buildProvenanceContext, resolveTakeVoiceId, retainAndProcessTake } = require('./recording-upload-helpers.cjs')
+const speechGate = require('./recording-speech-gate.cjs')
 const { planScriptTakeFiling, fileScriptTake } = require('./script-take-filing.cjs')
 const { planAttach, attachScriptTake } = require('./script-take-attach.cjs')
 const takeSupersede = require('./take-supersede.cjs')
@@ -5066,6 +5067,47 @@ async function handleRecordingUpload(req, res) {
       return res.status(take.refused.status).json(take.refused.body)
     }
     const processedBuffer = take.processedBuffer
+
+    // SPEECH-CONTENT GATE. Every check above this line is a LEVEL check, and a
+    // level check cannot see the 2026-08-23 defect: three of Catrin's four
+    // cym_n pod takes were 31-97 seconds of an empty room, recorded through
+    // Apple/Chrome's voice profile whose automatic gain control lifts a quiet
+    // room to voice level. They measured healthy — -18 to -21 dBFS RMS — and
+    // Tom's ear found a sheep in one of them. See services/recording-speech-gate.cjs
+    // for the measurement and for why neither the veracity check nor the VAD
+    // can referee this on their own.
+    //
+    // Server-side deliberately: a stale client bundle cannot bypass it, which
+    // matters because the capture path that produced those takes shipped the
+    // day before and the recordist's browser version was itself in question.
+    //
+    // Refuses BEFORE the S3 PUT, same as every check above — a refused take
+    // orphans no bytes, and retainAndProcessTake has already archived the raw
+    // original, so nothing said into the microphone is lost to this branch.
+    // An UNCHECKED result (no script text, no decoder) is logged and let
+    // through: an infrastructure absence must never cost a recordist a read.
+    const gateText = metadata.text || (podContext && podContext.text) || null
+    const speech = await speechGate.checkTakeHasSpeech({
+      buffer: processedBuffer,
+      expectedText: gateText,
+      language: speechGate.languageForTake(courseCode, metadata.kind),
+      durationMs: audioMeta.durationMs,
+    })
+    if (speech.checked === false) {
+      logger.warn(`[Upload] Speech gate NOT RUN for ${audioId}: ${speech.reason} — this take was saved UNCHECKED for speech content. ${JSON.stringify(speech.detail)}`)
+    } else if (speech.pass === false) {
+      logger.error(`[Upload] REFUSED speechless take ${audioId}: ${speech.reason} ${JSON.stringify(speech.detail)}`)
+      return res.status(422).json({
+        error: speech.message,
+        processed: true,
+        noSpeech: true,
+        reason: speech.reason,
+        detail: speech.detail,
+        // Same as the two refusals above: the raw original is already archived,
+        // so a refused take is recoverable rather than lost.
+        rawKey: rawKey || null,
+      })
+    }
 
     // Upload processed audio to S3 at the canon mastered/{UUID}.mp3 key.
     // S3 user metadata rides in HTTP headers with a 2KB total cap — long target
