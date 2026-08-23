@@ -82,7 +82,7 @@
         <ul>
           <li v-for="l in alreadyRecorded" :key="l.id" :class="['stacked', { playing: playingId === l.id }]">
             <div class="listen-row">
-              <span class="listen-text">{{ l.text }}</span>
+              <span class="listen-text">{{ plainText(l.text) }}</span>
               <div class="listen-actions">
                 <StoredTakeButton
                   :stored-url="storedUrlFor(l.id)"
@@ -137,7 +137,7 @@
             :class="['seg', 'seg-' + seg.kind]"
           >{{ seg.text }}</span>
         </p>
-        <p v-if="current?.knownText" class="line-known">{{ current.knownText }}</p>
+        <p v-if="current?.knownText" class="line-known">{{ plainText(current.knownText) }}</p>
         <p v-if="current?.rerecordReason" class="line-why">{{ current.rerecordReason }}</p>
       </div>
 
@@ -244,7 +244,7 @@
         <h3>{{ failedList.length }} {{ failedList.length === 1 ? 'line' : 'lines' }} did not save</h3>
         <ul>
           <li v-for="l in failedList" :key="l.id">
-            <span class="redo-text">{{ l.text }}</span>
+            <span class="redo-text">{{ plainText(l.text) }}</span>
             <span class="redo-why">{{ queue.failed.get(l.id) }}</span>
             <button class="redo-btn" @click="recordOne(l.id)">Record it again</button>
           </li>
@@ -272,6 +272,7 @@ import StoredTakeButton from '@/components/production/autocue/StoredTakeButton.v
 import RawVsProcessed from '@/components/production/autocue/RawVsProcessed.vue'
 import { recordistClipUrl, diagnoseRecordistClip } from '@/composables/useStoredClip'
 import { createAdvanceLock } from './recordist/advance-lock'
+import { stripBreakdownMarkers } from '@/utils/breakdownMarkers'
 
 const props = defineProps({ voiceId: { type: String, required: true } })
 
@@ -343,9 +344,16 @@ const current = computed(() => lines.value[index.value] || null)
  * target part look different on screen, and the recordist just reads the words.
  * Done with a parser rather than v-html because this is database content and
  * v-html on database content is an injection waiting to happen.
+ *
+ * Same reasoning takes the learner-facing breakdown ellipses out here: they are
+ * markup for the learner's ear, not for the reader's mouth, and a recordist who
+ * sees them reads them as "hesitate". Every display of a line goes through this
+ * function, so stripping once at the top is the whole change — and it is
+ * DISPLAY ONLY. `line.text` keeps its markers everywhere else, because they are
+ * part of the clip's identity when the take is posted back.
  */
 function segmentsFor(text) {
-  const raw = String(text || '')
+  const raw = stripBreakdownMarkers(text)
   if (!raw) return []
   const out = []
   const re = /<(src|tgt)>([\s\S]*?)<\/\1>/g
