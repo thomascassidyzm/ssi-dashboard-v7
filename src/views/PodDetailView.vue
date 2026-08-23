@@ -24,11 +24,47 @@
           <div class="flex items-center gap-3 mb-2">
             <h1 class="text-3xl font-bold text-emerald">{{ pod.title }}</h1>
             <span :class="podTypeClass(pod.pod_type)" class="text-xs px-2 py-0.5 rounded-full">{{ pod.pod_type }}</span>
+            <span :class="isHeld ? 'vis-held' : 'vis-live'" class="vis-badge">{{ isHeld ? 'HELD' : 'LIVE' }}</span>
           </div>
           <div class="text-muted text-sm">
             <code class="text-emerald">{{ pod.id }}</code>
             · {{ sentences.length }} sentences
             <span v-if="pod.source_file"> · from <code>{{ pod.source_file }}</code></span>
+          </div>
+        </div>
+
+        <!-- HOLD / RELEASE (Tom, 2026-08-23: keep a pod back "until … after all
+             until they exist!!!"). Held = RLS hides this pod and every line in
+             it from the learner app. Popty reads with the service role, so this
+             page keeps working on a held pod — that is the point. Releasing is a
+             human act and asks first; holding is one tap. -->
+        <div class="mb-6 rounded-lg p-4 text-sm" :class="isHeld ? 'vis-panel-held' : 'bg-surface border border-line'">
+          <div class="flex items-center justify-between gap-3 flex-wrap">
+            <div class="min-w-0">
+              <div class="font-semibold" :class="isHeld ? '' : 'text-ink'">
+                {{ isHeld ? 'Held back — no learner can reach this pod' : 'Live — learners can reach this pod now' }}
+              </div>
+              <div class="text-xs mt-1" :class="isHeld ? '' : 'text-muted'">
+                <template v-if="isHeld">
+                  The pod and every line in it are invisible in the app. Release it when it is
+                  finished and you have listened to it — nothing releases itself.
+                </template>
+                <template v-else>
+                  Hold it back to take it off learners while it is being recorded or fixed. Nothing
+                  is deleted and no progress moves.
+                </template>
+              </div>
+              <div v-if="visTrail" class="text-xs mt-1 opacity-80">{{ visTrail }}</div>
+              <div v-if="visError" class="text-xs mt-1 text-danger">{{ visError }}</div>
+            </div>
+            <button
+              :disabled="visBusy"
+              @click="setVisibility(isHeld ? 'live' : 'held')"
+              class="px-4 py-2 text-sm rounded border font-medium whitespace-nowrap disabled:opacity-50"
+              :class="isHeld ? 'vis-btn-release' : 'vis-btn-hold'"
+            >
+              {{ visBusy ? 'Saving…' : (isHeld ? 'Release to learners' : 'Hold back from learners') }}
+            </button>
           </div>
         </div>
 
@@ -524,6 +560,57 @@ async function loadPod() {
   }
 }
 
+// --- Hold / release: learner reachability (Tom, 2026-08-23) ---------------
+// `listening_pods.visibility`, gated in RLS. Fail closed to match
+// src/lib/servingPod.js: anything that is not explicitly 'live' reads as held.
+const visBusy = ref(false)
+const visError = ref('')
+const isHeld = computed(() => pod.value?.visibility !== 'live')
+
+// The trail the endpoint writes into metadata — who did it and when. Shown so
+// "why is this held?" has an answer on the page rather than in a log.
+const visTrail = computed(() => {
+  const m = pod.value?.metadata
+  if (!m) return ''
+  const parts = []
+  if (m.held_at) parts.push(`Held ${shortDate(m.held_at)}${m.held_by ? ` by ${m.held_by}` : ''}`)
+  if (m.released_at) parts.push(`Released ${shortDate(m.released_at)}${m.released_by ? ` by ${m.released_by}` : ''}`)
+  return parts.join(' · ')
+})
+
+function shortDate(iso) {
+  const d = new Date(iso)
+  return Number.isNaN(d.getTime()) ? iso : d.toISOString().slice(0, 10)
+}
+
+async function setVisibility(next) {
+  if (!pod.value || visBusy.value) return
+  // Releasing puts content in front of learners and cannot be un-seen, so it
+  // asks. Holding does not: erring towards invisible is always the safe way.
+  if (next === 'live') {
+    const msg = `Release ${pod.value.title || slug} to learners on ${courseCode}?\n\n`
+      + 'From the moment you confirm, every learner on this course can hear this pod. '
+      + 'Only release it if it is finished and you have listened to it.'
+    if (!window.confirm(msg)) return
+  }
+  visBusy.value = true
+  visError.value = ''
+  try {
+    const res = await authedFetch(`/api/admin/pods/${courseCode}/${slug}/visibility`, {
+      method: 'POST',
+      // `confirm` is the endpoint's deliberate-act token — it must name the pod.
+      body: JSON.stringify({ visibility: next, ...(next === 'live' ? { confirm: pod.value.id } : {}) }),
+    })
+    const body = await res.json()
+    if (!res.ok) throw new Error(body?.error || `HTTP ${res.status}`)
+    await loadPod()
+  } catch (err) {
+    visError.value = err?.message || String(err)
+  } finally {
+    visBusy.value = false
+  }
+}
+
 // --- The recording cast (who actually reads these lines) ---
 // courses.voice_config.podCast maps CHARACTER → human voice. Two voices is the
 // default (Tom 2026-08-06), so this resolves 22 characters down to the two
@@ -817,6 +904,22 @@ onUnmounted(() => {
 .pill-emerald { background: rgba(6, 78, 59, 0.4); color: #6ee7b7; border: 1px solid #047857; }
 .pill-purple { background: rgba(59, 7, 100, 0.4); color: #d8b4fe; border: 1px solid #7e22ce; }
 .pill-amber { background: rgba(120, 53, 15, 0.3); color: #fcd34d; border: 1px solid #92400e; }
+
+/* HELD / LIVE — learner reachability (Tom, 2026-08-23). HELD is red and solid:
+   "nobody can reach this" is the surprising state and the one that must never
+   be missed on a phone. LIVE stays quiet, in the same emerald as pill-emerald. */
+.vis-badge { font-weight: 800; letter-spacing: 0.08em; font-size: 0.7rem; border-radius: 3px; padding: 0.1rem 0.4rem; }
+.vis-held { background: #dc2626; color: #fff; }
+.vis-live { background: rgba(6, 78, 59, 0.4); color: #6ee7b7; border: 1px solid #047857; }
+.vis-panel-held { background: rgba(127, 29, 29, 0.35); border: 1px solid #b91c1c; color: #fecaca; }
+.vis-btn-hold { border-color: #b91c1c; color: #fca5a5; }
+.vis-btn-hold:hover { border-color: #dc2626; }
+.vis-btn-release { border-color: #047857; color: #6ee7b7; }
+.vis-btn-release:hover { border-color: #34d399; }
+[data-theme="light"] .vis-live { background: #d1fae5; color: #065f46; border-color: #6ee7b7; }
+[data-theme="light"] .vis-panel-held { background: #fef2f2; border-color: #dc2626; color: #991b1b; }
+[data-theme="light"] .vis-btn-hold { color: #991b1b; border-color: #dc2626; }
+[data-theme="light"] .vis-btn-release { color: #065f46; border-color: #047857; }
 
 /* Big error banner + inline error rows. Dark = red-900/red-700/red-200/300. */
 .err-box { background: rgba(127, 29, 29, 0.4); border: 1px solid #b91c1c; color: #fecaca; }

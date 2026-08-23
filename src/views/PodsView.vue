@@ -31,7 +31,20 @@
           </template>
           <!-- a serving core pod exists: this is the manage/re-flex step -->
           <template v-else>
-            <div class="text-sm font-semibold text-ink">{{ corePodLabel }} — already generated</div>
+            <div class="text-sm font-semibold text-ink flex items-center gap-2 flex-wrap">
+              <span>{{ corePodLabel }} — already generated</span>
+              <span :class="visClass(corePod)" class="pv-vis">{{ isHeld(corePod) ? 'HELD' : 'LIVE' }}</span>
+            </div>
+            <!-- The hold gate, in plain words. Tom reads this on a phone, so it
+                 says what a learner can and cannot reach, not what a column
+                 says. (Tom, 2026-08-23.) -->
+            <div v-if="isHeld(corePod)" class="pv-vis-note text-xs mt-1.5 rounded px-2 py-1.5">
+              <strong>No learner can reach this pod.</strong> It is held back — the pod and every
+              line in it are invisible in the app until a human releases it.
+            </div>
+            <div v-else class="text-xs text-muted mt-1.5">
+              Live — learners on {{ courseCode }} can reach this pod now.
+            </div>
             <div class="text-xs text-muted mt-0.5">
               {{ corePod.sentence_count }} sentences · audio {{ corePod.audio_coverage.target }}/{{ corePod.audio_coverage.total_sentences }} target, {{ corePod.audio_coverage.known }}/{{ corePod.audio_coverage.total_sentences }} known.
               Edit sentences in the pod below, or re-flex the English in <span class="text-ink">Edit canonical</span>.
@@ -42,6 +55,20 @@
           <div v-if="genError" class="text-xs text-danger mt-1">{{ genError }}</div>
         </div>
         <div class="flex items-center gap-2 flex-shrink-0">
+          <!-- Hold / release. Holding is one tap: erring towards invisible is
+               always safe. Releasing asks first — it puts content in front of
+               learners and cannot be un-seen. -->
+          <button
+            v-if="corePod"
+            :disabled="visBusy"
+            @click="setVisibility(corePod, isHeld(corePod) ? 'live' : 'held')"
+            :class="isHeld(corePod)
+              ? 'pv-release border-emerald-700 text-emerald-300 hover:border-emerald-500'
+              : 'pv-hold border-red-700 text-red-300 hover:border-red-500'"
+            class="text-sm px-4 py-2 rounded border disabled:opacity-50 font-medium"
+          >
+            {{ visBusy ? 'Saving…' : (isHeld(corePod) ? 'Release to learners' : 'Hold back from learners') }}
+          </button>
           <router-link :to="`/production/${courseCode}/canonical/pod-0`" class="text-xs px-3 py-2 rounded border border-line text-ink hover:border-accent-2">Edit canonical</router-link>
           <!-- Create (green) only when there's no serving core pod -->
           <button
@@ -98,6 +125,10 @@
                 <span :class="podTypeClass(pod.pod_type)" class="text-xs px-2 py-0.5 rounded-full flex-shrink-0">
                   {{ pod.pod_type }}
                 </span>
+                <!-- HELD is loud; LIVE is quiet. A pod nobody can reach is the
+                     surprising state, and it is the one that must never be
+                     missed on a phone. -->
+                <span v-if="isHeld(pod)" :class="visClass(pod)" class="pv-vis flex-shrink-0">HELD</span>
               </div>
               <div class="text-sm text-muted mb-3">
                 <code class="text-accent-2">{{ pod.slug }}</code>
@@ -117,6 +148,9 @@
               <!-- Lines whose target text is an unproofread machine draft.
                    Loud on the card, because a pod with drafts in it is not
                    recordable yet however good its audio coverage looks. -->
+              <div v-if="isHeld(pod)" class="pv-vis-note mb-3 text-xs rounded px-2 py-1.5">
+                Held back — no learner can reach this pod or any line in it.
+              </div>
               <div v-if="draftCounts[pod.id] > 0" class="pv-draft mb-3 inline-flex items-center gap-2 text-xs rounded px-2 py-1">
                 <span class="pv-draft-badge">DRAFT</span>
                 <span>{{ draftCounts[pod.id] }} line{{ draftCounts[pod.id] === 1 ? '' : 's' }} awaiting proofread — open the pod to read them</span>
@@ -221,7 +255,11 @@ async function generatePod(force = false, slug = 'pod-0') {
 // of 2026-08-22 put hrv_for_eng onto `pod-1`, while the other ~68 courses stay
 // on `pod-0`. Hard-coding pod-0 showed Croatian the green "Generate Pod 0"
 // button on a course that already has a full, recorded pod.
-const corePod = computed(() => pickServingPod(pods.value))
+// includeHeld: this card MANAGES the pod, it does not serve it. A held pod is
+// exactly the one being worked on (Tom, 2026-08-23), so hiding it here would
+// show the green "Generate Pod 0" button over a pod that already exists — the
+// same Croatian failure the ruling above fixed, with a different cause.
+const corePod = computed(() => pickServingPod(pods.value, { includeHeld: true }))
 const corePodLabel = computed(() => corePod.value?.title || `Pod ${slugOfPod(corePod.value).replace(/^pod-/, '')}`)
 const corePodHasAudio = computed(() => {
   const c = corePod.value?.audio_coverage
@@ -240,6 +278,50 @@ function regenerate() {
     : `Regenerate ${corePodLabel.value} for ${getCourseName(courseCode)}?\n\nThis replaces all ${p.sentence_count} sentences by re-flexing from the canonical English.`
   if (!window.confirm(msg)) return
   generatePod(true, slugOfPod(p))
+}
+
+// --- Hold / release (Tom, 2026-08-23) -------------------------------------
+// `listening_pods.visibility`. Held means RLS hides the pod AND its sentences
+// from the learner app entirely; Popty reads with the service role, so this
+// page still sees it, badged. GOING LIVE IS A HUMAN ACT — this control is the
+// human, and the endpoint behind it is the only write path to the column.
+const visBusy = ref(false)
+
+// Fail closed, exactly like the resolver: anything that is not explicitly
+// 'live' reads as held. A pod whose row somehow arrives without the column is
+// better shown as HELD-and-wrong than live-and-wrong.
+const isHeld = (pod) => !!pod && pod.visibility !== 'live'
+const visClass = (pod) => (isHeld(pod) ? 'pv-vis-held' : 'pv-vis-live')
+
+async function setVisibility(pod, next) {
+  if (!pod || visBusy.value) return
+  // Release asks; hold does not. Undoing a hold costs a tap — undoing a release
+  // means learners have already seen it.
+  if (next === 'live') {
+    const msg = `Release ${pod.title || pod.slug} to learners on ${courseCode}?\n\n`
+      + 'From the moment you confirm, every learner on this course can hear this pod. '
+      + 'Only release it if it is finished and you have listened to it.'
+    if (!window.confirm(msg)) return
+  }
+  visBusy.value = true
+  genError.value = ''
+  try {
+    const res = await authedFetch(`/api/admin/pods/${courseCode}/${pod.slug}/visibility`, {
+      method: 'POST',
+      // `confirm` is the endpoint's deliberate-act token — it must name the pod.
+      body: JSON.stringify({ visibility: next, ...(next === 'live' ? { confirm: pod.id } : {}) }),
+    })
+    const body = await res.json()
+    if (!res.ok) throw new Error(body?.error || `HTTP ${res.status}`)
+    genStatus.value = next === 'held'
+      ? `Held — no learner can reach ${pod.title || pod.slug}.`
+      : `Released — learners can now reach ${pod.title || pod.slug}.`
+    await loadPods()
+  } catch (err) {
+    genError.value = err?.message || String(err)
+  } finally {
+    visBusy.value = false
+  }
 }
 
 const totalSentences = computed(() =>
@@ -291,6 +373,29 @@ onMounted(() => { loadPods(); loadDraftCounts() })
 </script>
 
 <style>
+/* HELD / LIVE — learner reachability (Tom, 2026-08-23). HELD borrows the DRAFT
+   badge's shape but not its colour: DRAFT is amber and means "not ready to
+   record", HELD is red and means "nobody can reach it". Two different facts,
+   two different reads, and they routinely appear on the same card. */
+.pv-vis {
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  font-size: 0.7rem;
+  border-radius: 3px;
+  padding: 0.1rem 0.4rem;
+}
+.pv-vis-held { background: #dc2626; color: #fff; }
+.pv-vis-live { background: rgba(52, 211, 153, 0.15); color: #34d399; border: 1px solid #047857; }
+.pv-vis-note {
+  background: rgba(127, 29, 29, 0.35);
+  border: 1px solid #b91c1c;
+  color: #fecaca;
+}
+:root[data-theme="light"] .pv-vis-live { background: #d1fae5; color: #065f46; border-color: #6ee7b7; }
+:root[data-theme="light"] .pv-vis-note { background: #fef2f2; border-color: #dc2626; color: #991b1b; }
+:root[data-theme="light"] .pv-hold { color: #991b1b; border-color: #dc2626; }
+:root[data-theme="light"] .pv-release { color: #065f46; border-color: #047857; }
+
 /* DRAFT — unproofread machine target text. Tungsten, same identity the record
    room and the pod detail page use for the same state. */
 .pv-draft {
