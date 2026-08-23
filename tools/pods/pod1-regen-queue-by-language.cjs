@@ -20,7 +20,17 @@
  * is a measurement of the estate as it now stands, not a replay of the recast
  * tool's own arithmetic. It writes nothing and renders nothing.
  *
- * Usage: node tools/pods/pod1-regen-queue-by-language.cjs
+ * SCOPE (added 2026-08-23 under Tom's 21:15Z ruling, "We're not fixing any live
+ * courses. All we're doing is fixing the staged courses"). The burden a human
+ * is about to pay for is the burden of the pods that will actually be RENDERED,
+ * and those are now the held staging pods, not the serving ones:
+ *   --scope=live    (default) the serving pods: visibility live, slug pod-0/pod-1
+ *   --scope=staged  the held staging pods this wave fixes: pod-0-unrecorded and
+ *                   pod-1-staged-2026-08-23
+ * Each scope writes its own file, so re-pointing the queue never overwrites the
+ * other scope's measurement.
+ *
+ * Usage: node tools/pods/pod1-regen-queue-by-language.cjs [--scope=live|staged]
  */
 
 'use strict'
@@ -33,6 +43,12 @@ const { canonicalSpeakerName } = require('../pod-voice-colour-n.cjs')
 const OUT_DIR = path.join(__dirname, '../../docs/pods')
 const STAMP = '2026-08-23'
 const norm = (v) => String(v || '').replace(/^(xai_|azure_)/, '')
+
+const SCOPE = ((process.argv.find(a => a.startsWith('--scope=')) || '--scope=live').split('=')[1])
+if (!['live', 'staged'].includes(SCOPE)) { console.error(`FAILED: --scope=${SCOPE} is not live|staged`); process.exit(1) }
+const SCOPE_SQL = SCOPE === 'live'
+  ? `p.visibility = 'live' and p.slug in ('pod-0','pod-1')`
+  : `p.visibility = 'held' and p.slug in ('pod-0-unrecorded','pod-1-staged-2026-08-23')`
 
 async function main() {
   require('dotenv').config({ path: path.join(__dirname, '../../.env.psql') })
@@ -53,7 +69,7 @@ async function main() {
       join listening_pod_sentences s on s.pod_id = p.id
       left join course_audio ta on ta.id = s.target_audio_id
       left join course_audio ka on ka.id = s.known_audio_id
-     where p.visibility = 'live' and p.slug in ('pod-0','pod-1')
+     where ${SCOPE_SQL}
        and p.course_code not like 'zzz%'
      order by p.id, s.global_order`)).rows
 
@@ -177,6 +193,9 @@ async function main() {
 
   const report = {
     generated: STAMP,
+    scope: SCOPE,
+    scopeSql: SCOPE_SQL,
+    scopePods: [...new Set(rows.map(r => r.pod))].sort(),
     appliedLogsRead,
     unit: 'distinct course_audio clip — the thing phase-8 actually re-renders',
     grouping: 'per LANGUAGE (Tom, 2026-08-23): pod 1 is language-scoped, so a voice flip is fixed once per language',
@@ -191,7 +210,9 @@ async function main() {
     groups,
   }
 
-  const out = path.join(OUT_DIR, `pod1-recast-regen-queue-by-language-${STAMP}.json`)
+  const out = path.join(OUT_DIR, SCOPE === 'live'
+    ? `pod1-recast-regen-queue-by-language-${STAMP}.json`
+    : `pod1-recast-regen-queue-by-language-staged-${STAMP}.json`)
   fs.writeFileSync(out, JSON.stringify(report, null, 2))
 
   console.log(`DISTINCT CLIPS TO RE-RENDER: ${totalClips}  ` +

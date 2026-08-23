@@ -19,9 +19,15 @@
  * This tool queues work. It renders NOTHING: TTS stays approval-gated and is
  * Tom's to fire (CLAUDE.md approval gate).
  *
+ * SCOPE (2026-08-23, Tom's 21:15Z ruling "We're not fixing any live courses.
+ * All we're doing is fixing the staged courses"). --scope=staged re-points the
+ * request at the STAGED queue file, so the request a human eventually fulfils
+ * describes the held staging pods rather than the serving ones.
+ *
  * Usage:
  *   node tools/pods/pod1-restamp-audio-pass-requests.cjs           # dry run
  *   node tools/pods/pod1-restamp-audio-pass-requests.cjs --apply
+ *   node tools/pods/pod1-restamp-audio-pass-requests.cjs --scope=staged --apply
  */
 
 'use strict'
@@ -34,7 +40,17 @@ const { queueAudioPass } = require('../../services/shared/audio-pass-queue.cjs')
 const APPLY = process.argv.includes('--apply')
 const OUT_DIR = path.join(__dirname, '../../docs/pods')
 const STAMP = '2026-08-23'
-const QUEUE_REL = `docs/pods/pod1-recast-regen-queue-by-language-${STAMP}.json`
+const SCOPE = ((process.argv.find(a => a.startsWith('--scope=')) || '--scope=live').split('=')[1])
+if (!['live', 'staged'].includes(SCOPE)) { console.error(`FAILED: --scope=${SCOPE} is not live|staged`); process.exit(1) }
+const QUEUE_REL = SCOPE === 'live'
+  ? `docs/pods/pod1-recast-regen-queue-by-language-${STAMP}.json`
+  : `docs/pods/pod1-recast-regen-queue-by-language-staged-${STAMP}.json`
+// Staged pods share course_audio rows with the pods that are live RIGHT NOW
+// (clone-pod copies audio ids, and the pod-0-unrecorded drafts were built the
+// same way). Whoever fulfils this request must render to NEW clip rows, or a
+// same-text re-render replaces the object in place and changes what live
+// learners hear — the exact thing Tom's 21:15Z ruling forbids.
+const STAGED_GATE = 'GATE: render to NEW clip rows only. These staged pods share course_audio rows with the LIVE pods, so an in-place re-render would change what live learners hear.'
 
 async function main() {
   require('dotenv').config({ path: path.join(__dirname, '../../.env') })
@@ -74,14 +90,17 @@ async function main() {
       const g = langOf.get(l)
       return `${l}=${g.clips}${g.courses.length > 1 ? `/shared×${g.courses.length}` : ''}`
     })
+    const target = SCOPE === 'staged' ? ' TARGET: the STAGED (held) pod, never the live one. ' + STAGED_GATE : ''
     const reason = clips === 0
-      ? `pod-1 per-conversation recast ${STAMP}, re-derived to keep existing audio — ZERO clips to re-render for this course. Row kept as the record of the decision. Work list: ${QUEUE_REL}`
-      : `pod-1 per-conversation recast ${STAMP}, re-derived to keep existing audio (Tom: "Can't be 184 clips for Croatian") — organised PER LANGUAGE. Languages: ${langBits.join(' ')}. Distinct clips for this course: ${clips}. Full work list: ${QUEUE_REL}`
+      ? `pod-1 per-conversation recast ${STAMP}, re-derived to keep existing audio — ZERO clips to re-render for this course. Row kept as the record of the decision.${target} Work list: ${QUEUE_REL}`
+      : `pod-1 per-conversation recast ${STAMP}, re-derived to keep existing audio (Tom: "Can't be 184 clips for Croatian") — organised PER LANGUAGE. Languages: ${langBits.join(' ')}. Distinct clips for this course: ${clips}.${target} Full work list: ${QUEUE_REL}`
     const metadata = {
       rowsTouched: clips,
       pod1Recast: {
         unit: 'distinct course_audio clip',
         grouping: 'per-language',
+        scope: SCOPE,
+        ...(SCOPE === 'staged' ? { renderTarget: 'staged held pod', sharedClipGate: STAGED_GATE } : {}),
         derivation: 'cost-aware orientation — component orientation chosen to keep the most delivered clips; zero same-voice exchanges unchanged and asserted live',
         languages: langs,
         queueFile: QUEUE_REL,
@@ -103,7 +122,7 @@ async function main() {
     }
   }
 
-  const out = path.join(OUT_DIR, `pod1-audio-pass-restamp-${STAMP}-${APPLY ? 'applied' : 'dryrun'}-log.json`)
+  const out = path.join(OUT_DIR, `pod1-audio-pass-restamp-${SCOPE === 'staged' ? 'staged-' : ''}${STAMP}-${APPLY ? 'applied' : 'dryrun'}-log.json`)
   fs.writeFileSync(out, JSON.stringify(log, null, 2))
   console.log(`${APPLY ? 'stamped' : 'would stamp'} ${log.length} course requests ` +
     `(${log.filter(l => l.clips === 0).length} at zero)\nlog: ${out}`)
