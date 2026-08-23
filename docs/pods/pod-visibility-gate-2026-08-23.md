@@ -155,3 +155,98 @@ that could do it as a side effect of a human action.
 Tom calls the Welsh north pod **Pod 1**. In the data it is still on the slug
 `pod-0` (`cym_n_for_eng:pod-0`, 231 sentence rows). His name in anything a person
 reads; the real slug in code.
+
+## Appended — the Popty half: Tom can now hold and release a pod himself
+
+The RLS half made a hold *possible*. This makes it *doable* — from the pods page,
+on a phone, without a psql prompt.
+
+### The control
+
+**Pods list** (`/production/<course>/pods`) — every pod card carries a solid red
+**HELD** badge and one line of plain English under it: *Held back — no learner can
+reach this pod or any line in it.* LIVE stays quiet; a pod nobody can reach is the
+surprising state and the one that must never be missed. The manage card at the top
+gains a **Hold back from learners** / **Release to learners** button.
+
+**Pod detail** (`/production/<course>/pods/<slug>`) — the same badge next to the
+title, plus a panel that states the current position, the button, and the trail:
+who held or released it and when. So *"why is this held?"* has an answer on the
+page rather than in a log.
+
+HELD deliberately does **not** reuse the amber DRAFT identity. DRAFT means "not
+ready to record"; HELD means "nobody can reach it". They appear on the same card
+routinely and they are different facts.
+
+Holding is one tap. **Releasing asks first**, by name:
+
+> Release Welsh Listening Pods — Pod 0 to learners on cym_n_for_eng?
+> From the moment you confirm, every learner on this course can hear this pod.
+> Only release it if it is finished and you have listened to it.
+
+### The endpoint
+
+`POST /api/admin/pods/:courseCode/:slug/visibility`, behind `requireAdmin` — the
+same gate every other admin pod endpoint uses. Release refuses a bare
+`{"visibility":"live"}`; the caller must name the pod in `confirm`. A hold costs a
+tap to undo and a release cannot be un-seen, so a replayed request or a
+copy-pasted curl aimed at the wrong course cannot release a pod it did not
+deliberately name. Holding needs no token — erring towards invisible is safe.
+
+The trail is written into `listening_pods.metadata` as `held_at`/`held_by` or
+`released_at`/`released_by`, by read-modify-write of the whole jsonb. Both
+timestamps are kept forever, so a pod held on Tuesday and released on Thursday
+reads as exactly that. `scene_hashes` — pod-sync's diff baseline — and every other
+key survive untouched.
+
+### The resolvers
+
+`src/lib/servingPod.js` now excludes held pods **by default and fails closed**: a
+row is servable only when it says `visibility === 'live'`, so a caller with a thin
+projection gets `null` rather than the pod. Admin listings pass
+`{ includeHeld: true }` and see the held pod, badged — both existing callers do,
+because they *manage* the pod rather than serve it.
+
+`resolveCurrentPod0()` takes the same option with the **opposite default**: it
+includes held pods. Every caller is voice approval or PodLab casting, and both
+review content *before* release. Excluding held pods there would mean you could
+not approve the voices of the pod you are holding — so the only route to an
+approved pod would be to make it live first. That is automatic-live pressure, and
+it is the thing the ruling forbids.
+
+### Four more automatic-live paths, closed
+
+The earlier audit covered the two tools that *move* a pod. Four writers that
+*create or copy* one were still leaving the column off, so anything they made came
+out reachable:
+
+| Writer | Was | Now |
+|---|---|---|
+| `services/pod-dialogue-generator.cjs` | a generated draft — no audio, no proofread — was live the instant it existed | born **held** |
+| `tools/pod-sync.cjs` | syncing a new markdown file created a live pod | born **held** |
+| `tools/pods/clone-pod.cjs` | a clone of a held pod came out live | inherits |
+| `tools/pods/archive-pod.cjs` | an archive of a held pod came out live | inherits |
+| `tools/pods/rehearse-switchover.cjs` | a rehearsal copy was all-live, so it rehearsed the wrong thing | inherits |
+
+The two creation paths set `visibility` **on creation only**. On a re-flex or
+re-sync the key is left off the row entirely, so a live pod stays live and a held
+pod stays held.
+
+The DB default stays `'live'` for backward safety — that is what kept the 110
+existing pods behaving identically. The generator overrides it. Nothing becomes
+learner-reachable merely by being created.
+
+### Two write paths, not one
+
+`promote-pod.cjs --release` (landed earlier today) and this endpoint both write
+the column. Both are deliberate human acts that stamp the trail, so the ruling
+holds — but *"one write path"* is now *"two doors, both locked"*, and that is
+worth knowing before a third appears. **Tom's call whether to keep the CLI door.**
+
+### Still open — the one learner-facing path a hold does not close
+
+`ssi-learning-app`'s `api/courses/[code]/bundle.ts` builds the offline bundle with
+the service-role key, so RLS does not apply to it. On the checkout here it queries
+`listening_pods` with **no `visibility` filter**. Until that filter is deployed, a
+held pod can still reach a learner through the offline bundle. Not fixed here —
+different repo, and a branch already carries it.
