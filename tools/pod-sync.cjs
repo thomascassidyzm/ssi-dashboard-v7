@@ -827,6 +827,18 @@ async function syncPod(markdownPath, options) {
     source_file: path.basename(markdownPath),
     updated_at: new Date().toISOString(),
   };
+  // A POD IS BORN HELD (Tom, 2026-08-23). Syncing a markdown file into a pod
+  // that does not exist yet CREATES it, and the column's DB default is 'live' —
+  // so without this, running pod-sync on a new file would put unproofread,
+  // unrecorded content in front of learners the instant it landed. `visibility`
+  // is set on creation ONLY; on a re-sync it is left out of the row entirely,
+  // and PostgREST's merge-duplicates update touches only the columns it is
+  // sent, so a live pod stays live and a held pod stays held.
+  //
+  // Release is a human act: POST /api/admin/pods/:course/:slug/visibility.
+  const { data: existingPod } = await db()
+    .from('listening_pods').select('id').eq('id', podId).maybeSingle();
+  if (!existingPod) podRow.visibility = 'held';
   const { error: podErr } = await db().from('listening_pods').upsert(podRow, { onConflict: 'id' });
   if (podErr) throw new Error(`Pod upsert failed: ${podErr.message}`);
 
