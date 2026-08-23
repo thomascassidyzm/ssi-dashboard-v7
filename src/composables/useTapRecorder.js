@@ -193,13 +193,43 @@ const NOISE_CEIL_RATIO = 0.25
 const EPSILON_PEAK = 0.0001
 // Quiet sits a third of the way under the speech floor, in the same currency,
 // so a quiet mic does not read as permanently silent and auto-advance off the
-// line the moment it opens.
+// line the moment it opens. This is the FLOOR under the quiet threshold now,
+// not the threshold itself — see roomCeil below.
 const QUIET_PEAK_RATIO = 0.33
 // How fast the tracked room tone follows the input. It drops to a new quiet
 // quickly and rises out of one very slowly, so that a long read cannot pull the
 // room estimate up behind it and gate its own second half.
 const NOISE_FALL = 0.1
 const NOISE_RISE = 0.0006
+
+// THE ROOM'S UPPER EDGE, WHICH IS WHAT "QUIET" HAS TO CLEAR (Aran, 2026-08-23:
+// auto-advance "only seems to work about half the time").
+//
+// `noiseEst` above falls fast and rises glacially. That asymmetry is exactly
+// right for the SPEECH floor — it makes the floor chase the quietest thing in
+// the room, so nothing a person says can ever be gated by it. But it means
+// noiseEst converges on the room's TROUGHS, not on the room. A real room's
+// frame peaks wander over 6-10dB; noiseEst settles near the bottom of that
+// range, and the old quiet threshold, at noiseEst x 4 x 0.33 = x1.32, sat about
+// 2.4dB over it. The room's own ordinary frames are louder than that. Each one
+// reset the quiet timer, so `quietMs` never got past a frame or two and the
+// line waited for a tap — intermittently, depending on how far that line's read
+// had dragged noiseEst down and how the room happened to be behaving.
+//
+// So the quiet decision gets its own estimate, tracking the OTHER edge of the
+// same distribution: how loud this room gets when nobody is speaking. It is fed
+// only by frames that are not speech, so a read cannot drag it up; it rises
+// quickly so a session learns its room in a fraction of a second; and it falls
+// slowly, so the silences BETWEEN a read's syllables cannot pull it under the
+// room during the very line it is about to judge. It is held under the same
+// sessionPeak ceiling as noiseEst, so a mic that opens mid-word cannot seed it
+// at speech level.
+const ROOM_CEIL_RISE = 0.25
+const ROOM_CEIL_FALL = 0.002
+// Quiet has to sit clear of the room's upper edge by this much (~4dB) — enough
+// that ordinary room-tone wander does not keep restarting the timer, and still
+// well under the ~12dB that makes something speech.
+const QUIET_ROOM_MULT = 1.6
 
 export function useTapRecorder() {
   const isRecording = ref(false) // a line is actively capturing
@@ -254,6 +284,9 @@ export function useTapRecorder() {
   // This room's tracked noise tone, in the same units. Seeded by the first frame
   // and then followed asymmetrically — see NOISE_FALL / NOISE_RISE.
   let noiseEst = 0
+  // The loud edge of that same room: how high a frame gets when nobody is
+  // speaking. Followed the opposite way round — see ROOM_CEIL_RISE / FALL.
+  let roomCeil = 0
   // Instantaneous peak from the most recent meter frame — the decayed `level`
   // is for the eye, this is for the timing decisions.
   let peak = 0
@@ -368,6 +401,7 @@ export function useTapRecorder() {
     active = spawnRecorder()
     sessionPeak = 0
     noiseEst = 0
+    roomCeil = 0
     meterTrusted.value = false
     inputPeak.value = 0
     roomTone.value = 0
@@ -392,6 +426,14 @@ export function useTapRecorder() {
         if (noiseEst === 0) noiseEst = p
         else if (p < noiseEst) noiseEst += (p - noiseEst) * NOISE_FALL
         else noiseEst += (p - noiseEst) * NOISE_RISE
+        // And the room's loud edge, from non-speech frames only. Capped at the
+        // same fraction of sessionPeak as noiseEst, so it can never claim the
+        // room is as loud as the loudest thing the session has heard.
+        if (p <= speechFloor()) {
+          const capped = sessionPeak > 0 ? Math.min(p, sessionPeak * NOISE_CEIL_RATIO) : p
+          if (roomCeil === 0) roomCeil = capped
+          else roomCeil += (capped - roomCeil) * (capped > roomCeil ? ROOM_CEIL_RISE : ROOM_CEIL_FALL)
+        }
         inputPeak.value = p
         roomTone.value = noiseEst
         level.value = Math.max(p, level.value * 0.85)
@@ -422,8 +464,14 @@ export function useTapRecorder() {
     return Math.max(EPSILON_PEAK, Math.min(SPEECH_PEAK, room * NOISE_SPEECH_MULT))
   }
   // The peak the room has to fall under to count as quiet, in the same currency.
+  //
+  // Clear of this room's own upper edge, never under the old third-of-the-speech
+  // -floor value, and never ABOVE the speech floor — the two have to agree about
+  // what a given frame is, or a frame could be speech and silence at once and
+  // the studio could advance out from under a voice it can still hear.
   function quietFloor() {
-    return Math.min(FLOOR_PEAK, speechFloor() * QUIET_PEAK_RATIO)
+    const sf = speechFloor()
+    return Math.min(FLOOR_PEAK, sf, Math.max(sf * QUIET_PEAK_RATIO, roomCeil * QUIET_ROOM_MULT))
   }
 
   function onMeterFrame(p) {
@@ -524,7 +572,7 @@ export function useTapRecorder() {
     if (wakeLock) { try { await wakeLock.release() } catch {}; wakeLock = null }
     stream = null; meterCtx = null; analyser = null; meterBuf = null
     level.value = 0; clipping.value = false
-    sessionPeak = 0; peak = 0; noiseEst = 0
+    sessionPeak = 0; peak = 0; noiseEst = 0; roomCeil = 0
     meterTrusted.value = false
     inputPeak.value = 0; roomTone.value = 0
   }
