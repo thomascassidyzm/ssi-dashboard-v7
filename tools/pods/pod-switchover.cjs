@@ -79,9 +79,22 @@ const NEW_TITLE = arg('title')
  *  It does NOT mean "leave the rows alone" — leaving them alone is the mis-credit.
  *  It means "discard this course's pod progress outright". */
 const FORCE_NO_MIGRATION = process.argv.includes('--accept-miscredit')
+// --rehearsal waives the staged pod's CONTENT-readiness blockers (untranslated,
+// draft, unrecorded) so that the progress migration itself can be proved end to
+// end on a throwaway clone. Those blockers exist to stop a half-empty pod
+// reaching a learner; a zzz_ scratch course has no learners and is dropped when
+// the rehearsal ends. It is therefore refused outright on anything else, so it
+// can never waive a gate on a real course. Every OTHER blocker still binds —
+// duplicate-text ambiguity in particular, which is a migration correctness gate,
+// not a content one.
+const REHEARSAL = process.argv.includes('--rehearsal')
 
 if (!COURSE) {
   console.error('FAILED: --course=<code> is required')
+  process.exit(1)
+}
+if (REHEARSAL && !/^zzz_/.test(COURSE)) {
+  console.error(`FAILED: --rehearsal is only accepted on a zzz_ scratch course, not '${COURSE}'`)
   process.exit(1)
 }
 
@@ -212,9 +225,15 @@ async function main () {
 
   const blockers = []
   if (Number(s.n) === 0) blockers.push('staged pod has no sentences')
-  if (Number(s.no_text) > 0) blockers.push(`${s.no_text} staged sentences have no target text`)
-  if (Number(s.draft) > 0) blockers.push(`${s.draft} staged sentences are still marked draft`)
-  if (Number(s.no_target_audio) > 0) blockers.push(`${s.no_target_audio} staged sentences have no target audio`)
+  if (REHEARSAL) {
+    log(`  --rehearsal: content-readiness blockers WAIVED on scratch course ${COURSE} ` +
+        `(${s.no_text} untranslated, ${s.draft} draft, ${s.no_target_audio} unrecorded). ` +
+        'Migration-correctness blockers still bind.')
+  } else {
+    if (Number(s.no_text) > 0) blockers.push(`${s.no_text} staged sentences have no target text`)
+    if (Number(s.draft) > 0) blockers.push(`${s.draft} staged sentences are still marked draft`)
+    if (Number(s.no_target_audio) > 0) blockers.push(`${s.no_target_audio} staged sentences have no target audio`)
+  }
 
   // ---- the learner-progress migration, planned before anything moves ----------
   // Planned here, against the two canons as they stand now, and applied inside the same
@@ -234,7 +253,16 @@ async function main () {
     const distinctLearnerIds = new Set(stateRows.map(r => r.learner_id)).size
     // NOT a headcount: distinct learner_ids on the raw progress rows. See
     // services/shared/learner-counts.cjs for the honest real-human-learner figure.
-    const { humans, excluded } = await realHumanLearners(db, COURSE)
+    // realHumanLearners() refuses a zzz_ scratch code outright, which is correct
+    // for reporting — a fixture must never be counted as a person — but it is the
+    // code rehearse-switchover.cjs runs under, so calling it unconditionally made
+    // the rehearsal tool unusable on any course that HAS progress to rehearse
+    // (i.e. every course worth rehearsing). A scratch course has no real humans by
+    // definition, so say that instead of asking.
+    const isScratch = /^zzz_/.test(COURSE)
+    const { humans, excluded } = isScratch
+      ? { humans: 0, excluded: { scratch_rehearsal_fixture: distinctLearnerIds } }
+      : await realHumanLearners(db, COURSE)
     log(`  learner state: ${stateRows.length} rows across ${distinctLearnerIds} distinct learner ids ` +
         `(${humans} real human learners — excluded ${JSON.stringify(excluded)})`)
     log(`    migration (${POSITION_BOUND}):`)

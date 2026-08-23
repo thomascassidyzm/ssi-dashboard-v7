@@ -90,7 +90,13 @@ async function main () {
 
   const tool = path.join(__dirname, 'pod-switchover.cjs')
   const run = (extra) => {
-    const args = [tool, `--course=${SCRATCH}`, `--stamp=${STAMP}`, ...(PROMOTE_TO ? [`--promote-to=${PROMOTE_TO}`] : []), ...extra]
+    // A rehearsal exists to prove the PROGRESS MIGRATION, and every course worth
+    // rehearsing today has a staged pod that is still untranslated/unrecorded —
+    // so without waiving the content-readiness blockers the tool can never run
+    // at all. --rehearsal is refused by pod-switchover on anything but a zzz_
+    // scratch code, so it cannot waive a gate on a real course.
+    const args = [tool, `--course=${SCRATCH}`, `--stamp=${STAMP}`, '--rehearsal',
+      ...(PROMOTE_TO ? [`--promote-to=${PROMOTE_TO}`] : []), ...extra]
     const out = execFileSync('node', args, { encoding: 'utf8', cwd: path.join(__dirname, '..', '..') })
     process.stdout.write(out.split('\n').map(l => '    ' + l).join('\n') + '\n')
     return out
