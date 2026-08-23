@@ -821,5 +821,60 @@
    "id_b": "cym_n_for_eng:pod-0:SC14-S010",
    "audio_linked_a": true
   }
- ]
+ ],
+ "zero_tolerance_standard": true,
+ "total_defects_under_zero_tolerance": 45,
+ "structurally_impossible_scenes_with_2_voices": [
+  {
+   "scene": 7,
+   "location": "cafe",
+   "speakers": [
+    "Barista",
+    "Customer 1",
+    "Customer 2",
+    "Customer 3",
+    "Narrator"
+   ],
+   "triangle": [
+    "Barista",
+    "Customer 1",
+    "Customer 2"
+   ],
+   "reason": "3-way mutual adjacency forms an odd cycle; no 2-coloring avoids a same-voice edge"
+  },
+  {
+   "scene": 8,
+   "location": "bar",
+   "speakers": [
+    "Bartender",
+    "Customer 1",
+    "Customer 2",
+    "Customer 3",
+    "Narrator"
+   ],
+   "triangle": [
+    "Customer 1",
+    "Customer 2",
+    "Customer 3"
+   ],
+   "reason": "the three customers are mutually adjacent-turn connected; genuine odd cycle"
+  },
+  {
+   "scene": 9,
+   "location": "restaurant (Aran's named scene)",
+   "speakers": [
+    "Customer 1",
+    "Customer 2",
+    "Waiter",
+    "Narrator"
+   ],
+   "triangle": [
+    "Customer 1",
+    "Customer 2",
+    "Waiter"
+   ],
+   "reason": "two diners and the waiter all directly address each other; genuine odd cycle"
+  }
+ ],
+ "conclusion": "The pod-0 conversation graph is non-bipartite: zero adjacent-turn collisions is mathematically unreachable with exactly 2 voices, in at least 3 scenes, independent of casting assignment. A 3rd voice (or a script change removing direct customer-to-customer address in these 3 scenes) is required to hit Tom's zero-tolerance bar."
 }
