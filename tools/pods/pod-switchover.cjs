@@ -48,6 +48,7 @@
 require('dotenv').config({ path: require('path').join(__dirname, '..', '..', '.env.psql') })
 const { Client } = require('pg')
 const { planMigration, POSITION_BOUND } = require('./pod-state-migrate.cjs')
+const { realHumanLearners } = require('../../services/shared/learner-counts.cjs')
 
 const APPLY = process.argv.includes('--apply')
 const ROLLBACK = process.argv.includes('--rollback')
@@ -230,8 +231,12 @@ async function main () {
          from listening_pod_sentences where pod_id = $1 order by global_order`, [`${COURSE}:${slug}`])).rows
     plan = planMigration(await canon(LIVE), await canon(STAGED), stateRows)
     const t = plan.actions.reduce((m, a) => { m[a.action] = (m[a.action] || 0) + 1; return m }, {})
-    const learners = new Set(stateRows.map(r => r.learner_id)).size
-    log(`  learner state: ${stateRows.length} rows across ${learners} learners`)
+    const distinctLearnerIds = new Set(stateRows.map(r => r.learner_id)).size
+    // NOT a headcount: distinct learner_ids on the raw progress rows. See
+    // services/shared/learner-counts.cjs for the honest real-human-learner figure.
+    const { humans, excluded } = await realHumanLearners(db, COURSE)
+    log(`  learner state: ${stateRows.length} rows across ${distinctLearnerIds} distinct learner ids ` +
+        `(${humans} real human learners — excluded ${JSON.stringify(excluded)})`)
     log(`    migration (${POSITION_BOUND}):`)
     log(`      carry ${t.carry || 0}, keep ${t.keep || 0}, merge ${t.merge || 0}, drop ${t.drop || 0}` +
         `  — prevents ${plan.actions.filter(a => a.miscredit_avoided).length} mis-credits`)

@@ -171,3 +171,44 @@ both out.
 *Protocol: `docs/pods/pod-migration-protocol.md` (plate A-111, adopted 2026-08-16). Prospective
 migration log: `docs/pods/ron-pod0-switchover-prospective-2026-08-22.json`. Audio verification:
 `docs/pods/pod-audio-verify-ron_for_eng_pod-0-unrecorded.json`.*
+
+---
+
+## Correction, appended 2026-08-23 — "109 rows" and "91 rows" both meant 2 people
+
+The line above reading *"Romanian has real learners (109 rows, 3,779 exposures before the flip —
+the largest progress base…)"* is being left in place rather than edited, per standing doctrine —
+this section corrects it rather than launders it.
+
+**The 109-vs-91 reconciliation.** Both figures are real and both are `learner_pod_state` ROW
+counts, not learner counts, and they don't disagree — they describe two different moments:
+- **109** = rows that existed under the OLD `pod-0` canon before this job ran (`tally.carry`: 91 +
+  `tally.drop`: 18, from `docs/pods/ron-pod0-switchover-prospective-2026-08-22.json`).
+- **91** = rows that survived onto the new canon (the 18 dropped rows pointed at sentences with no
+  match in the new pod content — a normal, intended consequence of `pod-state-migrate.cjs`'s
+  carry/drop logic, not data loss or an error).
+
+**Both counts belong to exactly 2 `learner_id`s.** Live re-check (2026-08-23): `learner_pod_state`
+for `ron_for_eng` today has 91 rows across 2 distinct learner ids —
+`33344e24-4ae5-40ba-9611-178dbb5421c8` (73 rows) and `be652f81-a95a-4f78-91fa-3162b49e2609` (18
+rows). "109 rows — the largest progress base" was never 109 people; it was always 2.
+
+**Watson's same-day "looks synthetic" read does not hold up.** Both learner ids DO join to real
+`auth.users` rows with real-looking personal emails (a Gmail and a proton.me address); this is
+visible once the join uses `learners.user_id = auth.users.id` rather than `learners.id` (the exact
+trap documented at `services/insight-discovery.cjs:72-74`). The pre-migration exposure counts for
+the larger account (`ron_for_eng:pod-0:SC01-S001`=81, `S002:s0`=81, `S002:s1`=80, `S003:s0`=79, …,
+gradually declining across the pod) are the shape of a real person listening through a pod in
+order, not a scripted burst. That account is however flagged `is_internal=true` in `learners` — an
+SSi team/tester account by the platform's own flag, which is why the honest counter below still
+excludes it, just not as "fake".
+
+**The honest number, computed by `services/shared/learner-counts.cjs` (2026-08-23):**
+
+| Course | Rows reported as "learners" | Real human learners |
+|---|---:|---:|
+| `ron_for_eng` | 91 (2 distinct ids) | **1** (`33344e24…`, real Gmail auth account) — the other id (`be652f81…`) is `is_internal=true`, excluded as SSi staff |
+
+So Romania's honest headline is **1 real human learner**, not 109, not 91, and not 2. See the job
+report that shipped this correction for the same figure on `swe_for_eng` / `isl_for_eng` /
+`eus_for_eng`.
