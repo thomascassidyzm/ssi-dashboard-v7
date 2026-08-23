@@ -230,11 +230,11 @@ async function recastPod(db, podId) {
   ].filter(Boolean))]
   const voicesRow = allVoiceIds.length
     ? (await db.query(
-        `select voice_id, display_name, gender from voices
+        `select voice_id, display_name, gender, tts_engine, tts_locale from voices
           where regexp_replace(voice_id,'^(xai_|azure_)','') = any($1::text[])`, [allVoiceIds])).rows
     : []
   const tableGender = new Map(voicesRow.filter(v => v.gender === 'f' || v.gender === 'm').map(v => [norm(v.voice_id), v.gender]))
-  const displayName = new Map(voicesRow.map(v => [norm(v.voice_id), v.display_name]))
+  const voiceMeta = new Map(voicesRow.map(v => [norm(v.voice_id), v]))
 
   const genderConflicts = []
   const voiceGender = new Map()
@@ -268,12 +268,25 @@ async function recastPod(db, podId) {
     const discarded = ranked.filter(([v]) => v !== (f && f[0]) && v !== (m && m[0]))
     return {
       f: f ? f[0] : null, m: m ? m[0] : null,
+      single: ranked.length ? ranked[0][0] : null,
       counts: Object.fromEntries(ranked), discarded, ungendered,
       distinct: ranked.length,
     }
   }
   const tgtPair = pickPair(deliveredTarget)
   const knwPair = pickPair(deliveredKnown)
+  /**
+   * Does the known track have a gender split to make at all? The eng_for_*
+   * shape is one target-language narrator reading every character's known
+   * line — there are no known-side exchanges to fix, so this job has no
+   * business touching that track. When there is no resolvable f/m pair the
+   * known cast entry is carried across from the stored cast UNCHANGED, per
+   * speaker. That matters: pod-recast.cjs corrected 16 eng_for_* known casts
+   * forward on 2026-08-07, and rewriting them from the shipped audio would
+   * silently revert somebody else's fix over a question this ruling never
+   * asked.
+   */
+  const knownTrackInScope = !!(knwPair.f && knwPair.m)
 
   // ---- graph ---------------------------------------------------------------
   const oldName = (r) => canonicalSpeakerName(r.speaker)
@@ -334,9 +347,7 @@ async function recastPod(db, podId) {
 
   const newVoiceTarget = (n) => (genderOf(n) === 'f' ? tgtPair.f : tgtPair.m)
   const newVoiceKnown = (n) => {
-    // A single-voice known track (the eng_for_* shape) stays single-voice: one
-    // narrator for every speaker is a design fact, not a collision.
-    if (!knwPair.f || !knwPair.m) return knwPair.f || knwPair.m || null
+    if (!knownTrackInScope) return null
     return genderOf(n) === 'f' ? knwPair.f : knwPair.m
   }
   const proposedExchange = countAdjacentCollisions(exWeights, newVoiceTarget)
@@ -364,31 +375,68 @@ async function recastPod(db, podId) {
   }
   const gluedInRelabel = glued.filter(g => relabels.some(r => r.id === g.id))
 
+  // The regen queue holds every line whose EXISTING CLIP is now in the wrong
+  // voice — delivered voice ≠ the voice the new cast names. Nothing here is
+  // re-rendered, unlinked or deleted: the old clip keeps serving until a
+  // verified replacement exists (make before break).
+  //
+  // `causedByRecast` separates the two reasons a line can be in the queue:
+  //   true  — this recast moved the character to the other voice;
+  //   false — the clip already disagreed with the pod's OWN stored cast before
+  //           this job ran (pre-existing drift, e.g. audio rendered before
+  //           pod-recast.cjs corrected the cast on 2026-08-07). Counting that
+  //           as this job's burden would inflate the number Tom is waiting for.
+  const oldCastVoice = (r, track) => {
+    const e = storedCast[canonicalSpeakerName(r.speaker)] || storedCast._default
+    const t = e && (track === 'target' ? e.target : e.known)
+    return t ? norm(t.voice_id) : null
+  }
   const regenQueue = []
   for (const r of rows) {
     const n = newName(r)
-    const dT = deliveredTarget(r), dK = deliveredKnown(r)
-    const nT = newVoiceTarget(n), nK = newVoiceKnown(n)
-    if (dT && nT && dT !== nT) {
+    for (const track of ['target', 'known']) {
+      const delivered = track === 'target' ? deliveredTarget(r) : deliveredKnown(r)
+      const next = track === 'target' ? newVoiceTarget(n) : newVoiceKnown(n)
+      if (!delivered || !next || delivered === next) continue
+      const prevCast = oldCastVoice(r, track)
       regenQueue.push({ course: pod.course_code, pod: podId, global_order: r.global_order,
-        scene: r.scene_number, sentence: r.sentence_number, track: 'target',
-        speakerBefore: r.speaker, speakerAfter: n, voiceBefore: dT, voiceAfter: nT })
-    }
-    if (dK && nK && dK !== nK) {
-      regenQueue.push({ course: pod.course_code, pod: podId, global_order: r.global_order,
-        scene: r.scene_number, sentence: r.sentence_number, track: 'known',
-        speakerBefore: r.speaker, speakerAfter: n, voiceBefore: dK, voiceAfter: nK })
+        scene: r.scene_number, sentence: r.sentence_number, track,
+        speakerBefore: r.speaker, speakerAfter: n,
+        voiceBefore: delivered, voiceAfter: next, castVoiceBefore: prevCast,
+        causedByRecast: prevCast ? prevCast !== next : true })
     }
   }
+  const causedByRecast = regenQueue.filter(q => q.causedByRecast)
+  const preexistingDrift = regenQueue.filter(q => !q.causedByRecast)
 
   // ---- the new stored cast -------------------------------------------------
+  // A cast entry reproduces the voice EXACTLY as the pod already spells it
+  // where the stored cast already names that voice; otherwise it is rebuilt
+  // from the `voices` table so provider/locale reach the render path. The
+  // voice written is the one ACTUALLY SERVING today (from course_audio), so
+  // this also stops a stored cast that has drifted from its own audio lying.
   const templateFor = (vid, track) => {
     for (const e of Object.values(storedCast)) {
       if (!e) continue
       const t = track === 'target' ? e.target : e.known
       if (t && norm(t.voice_id) === vid) return { ...t }
     }
-    return { voice_id: vid, name: displayName.get(vid) || vid }
+    const v = voiceMeta.get(vid)
+    if (!v) return { voice_id: vid, name: vid }
+    return {
+      name: v.display_name || vid,
+      ...(v.tts_locale ? { locale: v.tts_locale } : {}),
+      ...(v.tts_engine ? { provider: v.tts_engine } : {}),
+      voice_id: vid,
+    }
+  }
+  // Out-of-scope known track: carry each speaker's stored known entry across
+  // untouched, matched on the speaker's PRE-relabel canonical name.
+  const storedKnownFor = (newLabel) => {
+    if (knownTrackInScope) return null
+    const row = rows.find(r => newName(r) === newLabel)
+    const e = (row && storedCast[canonicalSpeakerName(row.speaker)]) || storedCast._default
+    return e && e.known ? { ...e.known } : null
   }
   const newSpeakers = {}
   for (const n of allNew) {
@@ -398,7 +446,7 @@ async function recastPod(db, podId) {
       gender: g,
       variants: [...variantsOf.get(n)].map(v => (RELABEL[0] ? v : v)).filter(Boolean),
       ...(t ? { target: templateFor(t, 'target') } : {}),
-      ...(k ? { known: templateFor(k, 'known') } : {}),
+      ...(k ? { known: templateFor(k, 'known') } : storedKnownFor(n) ? { known: storedKnownFor(n) } : {}),
     }
     // After relabelling, the row's own speaker string IS the scene-unique name.
     newSpeakers[n].variants = [...new Set(rows.filter(r => newName(r) === n).map(r => (relabels.some(x => x.id === r.id) ? n : r.speaker)))]
@@ -421,7 +469,7 @@ async function recastPod(db, podId) {
     linkedTarget: rows.filter(r => r.target_audio_id).length,
     linkedKnown: rows.filter(r => r.known_audio_id).length,
     gluedRows: glued.length,
-    voicePairTarget: tgtPair, voicePairKnown: knwPair,
+    voicePairTarget: tgtPair, voicePairKnown: knwPair, knownTrackInScope,
     voiceGender: Object.fromEntries(voiceGender), genderConflicts,
     baselineDeliveredCollisions: oldCollisions,
     proposedExchangeCollisions: proposedExchange,
@@ -434,6 +482,8 @@ async function recastPod(db, podId) {
     regenLines: regenQueue.length,
     regenLinesTarget: regenQueue.filter(q => q.track === 'target').length,
     regenLinesKnown: regenQueue.filter(q => q.track === 'known').length,
+    regenCausedByThisRecast: causedByRecast.length,
+    regenPreexistingDrift: preexistingDrift.length,
     regenQueue,
     blockers,
     oldStoredCastKeys: Object.keys(storedCast).sort(),
@@ -543,7 +593,7 @@ async function main() {
     console.log([r.pod, `rows=${r.rows}`, `relabel=${r.relabelCount}`,
       `before(ex)=${r.baselineDeliveredCollisions.exchangePairs}p/${r.baselineDeliveredCollisions.exchangeTurns}t`,
       `after(ex)=${r.proposedExchangeCollisions.pairs}p/${r.proposedExchangeCollisions.turns}t`,
-      `regen=${r.regenLines}(t${r.regenLinesTarget}/k${r.regenLinesKnown})`,
+      `regen=${r.regenLines}(mine=${r.regenCausedByThisRecast}/drift=${r.regenPreexistingDrift})`,
       `voices=${r.voicePairTarget.distinct}`,
       r.blockers.length ? `BLOCKED: ${r.blockers.join(' | ')}` : 'ok',
     ].join('\t'))
