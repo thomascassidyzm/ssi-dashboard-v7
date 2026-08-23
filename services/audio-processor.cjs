@@ -1361,8 +1361,21 @@ async function processRecordingBuffer(inputBuffer, options = {}) {
     // Do not reintroduce either parameter here: the boundary is decided from a
     // measurement, in code that can be read, not from a filter's own idea of
     // where speech begins.
+    //
+    // THE MARGIN IS ASKED FOR, NOT GUARANTEED, and the difference is the whole
+    // of the 2026-08-23 Aran finding. `from` clamps at 0 and `to` clamps at the
+    // end of the input, so a raw take whose speaker started or stopped over
+    // their own voice gets whatever room it had — which may be none. Nothing
+    // here can invent the missing audio, and padding the gap with synthesised
+    // silence would only make an amputated word LOOK unclipped to every
+    // downstream check. So the ACHIEVED margin is measured and reported below
+    // (trimLeadMarginSec / trimTailMarginSec) and the boundary gate on the
+    // upload path (services/recording-speech-gate.cjs, checkTakeBoundaries)
+    // refuses the take, which is the only honest repair: read it again.
     let trimBounds = null;
     let keptWhole = false;
+    let achievedLeadSec = null;
+    let achievedTailSec = null;
     if (trimSilence) {
       try {
         trimBounds = await detectReadBounds(inputPath);
@@ -1372,6 +1385,11 @@ async function processRecordingBuffer(inputBuffer, options = {}) {
       if (trimBounds) {
         const from = Math.max(0, trimBounds.startSec - TRIM_MARGIN_SEC);
         const to = Math.min(trimBounds.durationSec, trimBounds.endSec + TRIM_MARGIN_SEC);
+        achievedLeadSec = +(trimBounds.startSec - from).toFixed(3);
+        achievedTailSec = +(to - trimBounds.endSec).toFixed(3);
+        if (achievedLeadSec < TRIM_MARGIN_SEC || achievedTailSec < TRIM_MARGIN_SEC) {
+          console.warn(`[AudioProcessor] take had less room than asked for — lead ${achievedLeadSec}s tail ${achievedTailSec}s against a ${TRIM_MARGIN_SEC}s margin; the capture, not the trim, is what is short`);
+        }
         filters.push(`atrim=start=${from.toFixed(3)}:end=${to.toFixed(3)}`, 'asetpts=PTS-STARTPTS');
       } else if (inputAudible) {
         // THE DETECTOR MAY NOT DESTROY A TAKE IT MERELY FAILED TO UNDERSTAND.
@@ -1459,6 +1477,10 @@ async function processRecordingBuffer(inputBuffer, options = {}) {
           trimReadStartSec: trimBounds ? trimBounds.startSec : null,
           trimReadEndSec: trimBounds ? trimBounds.endSec : null,
           trimMarginSec: trimSilence ? TRIM_MARGIN_SEC : null,
+          // What was actually left outside the read, which is what the margin
+          // above asked for only when the raw capture had that much to give.
+          trimLeadMarginSec: achievedLeadSec,
+          trimTailMarginSec: achievedTailSec,
           trimFoundRead: trimSilence ? trimBounds !== null : null,
           normalize,
           targetLUFS,

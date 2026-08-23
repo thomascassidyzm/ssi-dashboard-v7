@@ -5109,6 +5109,32 @@ async function handleRecordingUpload(req, res) {
       })
     }
 
+    // BOUNDARY GATE. The gate above asks whether there is a read in the take;
+    // this one asks whether the read runs off the edge of the file. They are
+    // different defects and neither check sees the other's: a truncated take
+    // has a perfectly respectable speech span, healthy levels and a clean
+    // decode, which is why the 2026-08-14 technical QC pass declared all 111
+    // of Aran's Welsh takes clean and Tom's ear, nine days later, called them
+    // "all junk. All clipped badly at either or both ends".
+    //
+    // Same three outcomes and the same placement: BEFORE the S3 PUT, so a
+    // refused take orphans no bytes and the raw original is already archived.
+    // An UNCHECKED result is logged and let through.
+    const bounds = await speechGate.checkTakeBoundaries({ buffer: processedBuffer })
+    if (bounds.checked === false) {
+      logger.warn(`[Upload] Boundary gate NOT RUN for ${audioId}: ${bounds.reason} — this take was saved UNCHECKED for truncation. ${JSON.stringify(bounds.detail)}`)
+    } else if (bounds.pass === false) {
+      logger.error(`[Upload] REFUSED truncated take ${audioId}: ${bounds.reason} ${JSON.stringify(bounds.detail)}`)
+      return res.status(422).json({
+        error: bounds.message,
+        processed: true,
+        truncated: true,
+        reason: bounds.reason,
+        detail: bounds.detail,
+        rawKey: rawKey || null,
+      })
+    }
+
     // Upload processed audio to S3 at the canon mastered/{UUID}.mp3 key.
     // S3 user metadata rides in HTTP headers with a 2KB total cap — long target
     // text and chunk maps percent-encode at ~6-9 bytes per non-Latin char and
