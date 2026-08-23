@@ -239,7 +239,28 @@ function selectSample(workQueue, limit) {
 // than a prefix match plus a sentence-count sort. Retired/experimental slugs
 // can never win by being big.
 //
-// Pure. `pods` is [{ id, slug?, sentence_count, pod_type? }].
+// HELD PODS (Tom, 2026-08-23). `listening_pods.visibility` gates learner
+// reachability: 'held' pods are invisible to the learner app through RLS. The
+// browser-side twin (src/lib/servingPod.js) EXCLUDES held pods by default,
+// because its callers sit on pages that describe what a learner gets.
+//
+// This one does the opposite, on purpose. Every caller of resolveCurrentPod0 is
+// voice approval or PodLab casting — api/pod-voice-approval.js and
+// api/pod-cast-voices.js — and both exist to review content BEFORE it is
+// released. That is precisely what a held pod is. Excluding held pods here
+// would break the workflow the hold was invented to protect: you would be
+// unable to approve the voices of the pod you are holding, so the only way to
+// get a pod approved would be to make it live first — an automatic-live
+// pressure, which is the exact thing Tom's ruling forbids.
+//
+// So the option exists and is shaped identically (`{ includeHeld }`), and the
+// DEFAULT is `true` here and `false` there. Same word, opposite default,
+// because the two resolvers answer different questions: "what may a learner
+// reach?" vs "what is this course's current content?". A future caller that
+// wants the learner-facing answer from this module passes
+// `{ includeHeld: false }` and gets it.
+//
+// Pure. `pods` is [{ id, slug?, sentence_count, pod_type?, visibility? }].
 
 // Preference order, most-preferred first:
 //   pod-0-unrecorded — the working copy three courses review before release
@@ -263,9 +284,18 @@ function isCore(pod) {
  * The pod whose sentences are the course's CURRENT core-pod content.
  * Working copy first when it actually holds lines, then pod-1, then pod-0.
  * Returns null when the course has no serving core pod at all.
+ *
+ * @param {Array} pods
+ * @param {{includeHeld?:boolean}} [opts] defaults to INCLUDING held pods — see
+ *   the note above. Pass `{ includeHeld: false }` for a learner-facing answer,
+ *   and select `visibility` when you do: the exclusion fails closed, so a row
+ *   without the column does not count as live.
  */
-function resolveCurrentPod0(pods) {
-  const family = (pods || []).filter((p) => isCore(p) && SERVING_SLUGS.includes(slugOf(p)))
+function resolveCurrentPod0(pods, opts = {}) {
+  const includeHeld = opts.includeHeld !== false
+  const family = (pods || [])
+    .filter((p) => isCore(p) && SERVING_SLUGS.includes(slugOf(p)))
+    .filter((p) => includeHeld || p.visibility === 'live')
   if (!family.length) return null
   const populated = family.filter((p) => (p.sentence_count || 0) > 0)
   const pool = populated.length ? populated : family

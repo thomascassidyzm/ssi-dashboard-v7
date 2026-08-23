@@ -391,7 +391,11 @@ async function loadCoursePreview(courseCode) {
     // rather than hard-coding `<course>:pod-0`, which reads EMPTY for Croatian.
     coursePodSentences.value = []
     try {
-      const podId = await fetchServingPodId(sb, courseCode)
+      // includeHeld: this is an ADMIN audition, and auditioning a pod before
+      // you release it is the entire point of holding one (Tom, 2026-08-23).
+      // Learner reachability is gated in RLS and in the resolver's default;
+      // neither is what this preview is.
+      const podId = await fetchServingPodId(sb, courseCode, { includeHeld: true })
       if (podId) {
         const { data: podRows, error: podErr } = await sb
           .from('listening_pod_sentences')
