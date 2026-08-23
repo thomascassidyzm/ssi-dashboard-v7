@@ -155,6 +155,20 @@
                 <span class="pv-draft-badge">DRAFT</span>
                 <span>{{ draftCounts[pod.id] }} line{{ draftCounts[pod.id] === 1 ? '' : 's' }} awaiting proofread — open the pod to read them</span>
               </div>
+              <!-- LISTEN. Hearing a pod's recordings used to mean opening the
+                   recording room and ticking "Re-read lines I've already
+                   recorded" (Aran, via Tom, 2026-08-23). The pod page could
+                   always play them; nothing on this card said so. Voices are
+                   read from the CLIPS (course_audio.voice_id via the coverage
+                   endpoint), never from the cast, which is the plan for the
+                   next render and routinely disagrees. -->
+              <div v-if="listen[pod.id]" class="pv-listen mb-3 inline-flex items-center gap-2 text-xs rounded px-2 py-1">
+                <span>▶</span>
+                <span v-if="listen[pod.id].human">
+                  {{ listen[pod.id].human }} human take{{ listen[pod.id].human === 1 ? '' : 's' }}<span v-if="listen[pod.id].voices.length"> by {{ listen[pod.id].voices.join(' and ') }}</span> — tap to listen
+                </span>
+                <span v-else>{{ listen[pod.id].voiced }} recorded line{{ listen[pod.id].voiced === 1 ? '' : 's' }} — tap to listen</span>
+              </div>
               <div class="flex gap-4 text-xs">
                 <div class="flex items-center gap-1.5">
                   <span class="text-faint">Target:</span>
@@ -369,7 +383,34 @@ async function loadDraftCounts() {
   } catch { /* non-fatal */ }
 }
 
-onMounted(() => { loadPods(); loadDraftCounts() })
+// Per-pod listening summary: how many clips are human takes, and whose voices.
+// One read of the pods coverage endpoint (read-only; no writes anywhere on this
+// path). Non-fatal — the cards render fully without it.
+const listen = ref({})
+async function loadListenSummary() {
+  try {
+    const res = await authedFetch(`/api/production/${courseCode}/pods/coverage`)
+    if (!res.ok) return
+    const body = await res.json()
+    const names = {}
+    for (const v of body.voices || []) if (v.voiceId && v.name) names[v.voiceId] = v.name
+    const out = {}
+    for (const p of body.pods || []) {
+      let human = 0, voiced = 0
+      const voices = new Set()
+      for (const s of p.sentences || []) {
+        for (const k of Object.values(s.kinds || {})) {
+          if (k.audioId) voiced++
+          if (k.recorded) { human++; if (k.voiceId) voices.add(names[k.voiceId] || k.voiceId) }
+        }
+      }
+      if (voiced > 0) out[p.podId] = { human, voiced, voices: [...voices] }
+    }
+    listen.value = out
+  } catch { /* non-fatal */ }
+}
+
+onMounted(() => { loadPods(); loadDraftCounts(); loadListenSummary() })
 </script>
 
 <style>
@@ -395,6 +436,17 @@ onMounted(() => { loadPods(); loadDraftCounts() })
 :root[data-theme="light"] .pv-vis-note { background: #fef2f2; border-color: #dc2626; color: #991b1b; }
 :root[data-theme="light"] .pv-hold { color: #991b1b; border-color: #dc2626; }
 :root[data-theme="light"] .pv-release { color: #065f46; border-color: #047857; }
+
+/* LISTEN — this pod has playable audio. Emerald and quiet: it is an invitation,
+   not a warning, and it shares a card with HELD (red) and DRAFT (amber). */
+.pv-listen {
+  background: rgba(52, 211, 153, 0.1);
+  border: 1px solid #047857;
+  color: #34d399;
+}
+:root[data-theme="light"] .pv-listen {
+  background: #d1fae5; border-color: #6ee7b7; color: #065f46;
+}
 
 /* DRAFT — unproofread machine target text. Tungsten, same identity the record
    room and the pod detail page use for the same state. */

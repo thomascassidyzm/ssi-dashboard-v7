@@ -233,6 +233,41 @@
           <div v-if="audioError" class="mt-3 text-xs err-inline rounded px-2 py-1">{{ audioError }}</div>
         </div>
 
+        <!-- LISTEN. Hearing a pod's recordings used to mean opening the
+             recording room and ticking "Re-read lines I've already recorded" —
+             a box that reads like "I am about to overwrite my work" (Aran, via
+             Tom, 2026-08-23). The per-line play buttons below always worked;
+             what was missing was a way in that says so, whose voice you are
+             hearing, and being able to let a run of lines play on a phone.
+             Playback only — nothing on this page writes. -->
+        <div class="mb-6 bg-surface border border-line rounded-lg p-4 text-sm card-sep">
+          <div class="flex items-center justify-between gap-3 flex-wrap">
+            <div class="flex flex-col gap-1 min-w-0">
+              <div class="text-ink font-semibold">Listen to this pod</div>
+              <div class="text-faint text-xs">
+                <template v-if="humanClipCount">
+                  {{ humanClipCount }} human take{{ humanClipCount === 1 ? '' : 's' }}<span v-if="humanVoiceNames.length"> by {{ humanVoiceNames.join(' and ') }}</span> ·
+                </template>
+                {{ playableTargets.length }} of {{ sentences.length }} {{ targetName }} lines have audio.
+                Tap ▶ on a line to hear it, or ▶▶ to play on down the list.
+              </div>
+            </div>
+            <div class="flex gap-2">
+              <button
+                @click="playAllTargets"
+                :disabled="!playableTargets.length"
+                class="px-3 py-1.5 text-xs rounded bg-emerald-700 hover:bg-emerald-600 text-emerald-100 disabled:opacity-50 disabled:cursor-not-allowed"
+                :title="`Play every ${targetName} line that has audio, in order`"
+              >▶ Play all {{ targetName }} lines ({{ playableTargets.length }})</button>
+              <button
+                v-if="isPlaying"
+                @click="stopPlayback"
+                class="px-3 py-1.5 text-xs rounded border border-line text-ink hover:border-emerald-600"
+              >Stop</button>
+            </div>
+          </div>
+        </div>
+
         <!-- Scenes and sentences -->
         <div v-for="scene in groupedScenes" :key="scene.number" class="mb-8">
           <h2 class="text-sm uppercase tracking-wide text-faint mb-2 flex items-center gap-3">
@@ -251,7 +286,7 @@
               <!-- Sentence row -->
               <div
                 class="bg-surface border rounded px-3 py-2 grid grid-cols-[32px_110px_1fr_auto] gap-3 items-start text-sm row-sep"
-                :class="isDraft(sent) ? 'draft-row' : 'border-line'"
+                :class="[isDraft(sent) ? 'draft-row' : 'border-line', isRowPlaying(sent) ? 'row-playing' : '']"
               >
                 <div class="text-faint font-mono text-xs tabular-nums pt-0.5">{{ sent.global_order }}</div>
                 <div class="text-muted text-xs truncate pt-0.5" :title="sent.speaker">{{ sent.speaker }}</div>
@@ -310,15 +345,23 @@
                     v-if="sent.target_audio_id"
                     @click="playAudio(sent.target_audio_id)"
                     :class="['px-2 py-1 text-xs rounded transition-colors', playingId === sent.target_audio_id ? 'bg-emerald-700 text-emerald-100' : 'bg-surface-2 hover:bg-emerald-700 text-ink hover:text-emerald-100']"
-                    :title="`Play target (${targetName})`"
-                  >{{ targetFlag }}</button>
+                    :title="clipTitle(sent, 'target')"
+                  >▶{{ targetFlag }}</button>
                   <span v-else class="px-2 py-1 text-xs text-faint" title="No target audio">{{ targetFlag }}</span>
+                  <!-- Play on down the list from this line. The whole point of
+                       listening on a phone is not tapping 231 times. -->
+                  <button
+                    v-if="sent.target_audio_id"
+                    @click="playFrom(sent)"
+                    class="px-2 py-1 text-xs rounded transition-colors bg-surface-2 hover:bg-emerald-700 text-ink hover:text-emerald-100"
+                    :title="`Play from here to the end of the pod (${targetName} lines)`"
+                  >▶▶</button>
                   <button
                     v-if="sent.known_audio_id"
                     @click="playAudio(sent.known_audio_id)"
                     :class="['px-2 py-1 text-xs rounded transition-colors', playingId === sent.known_audio_id ? 'bg-emerald-700 text-emerald-100' : 'bg-surface-2 hover:bg-emerald-700 text-ink hover:text-emerald-100']"
-                    :title="`Play known (${knownName})`"
-                  >{{ knownFlag }}</button>
+                    :title="clipTitle(sent, 'known')"
+                  >▶{{ knownFlag }}</button>
                   <span v-else class="px-2 py-1 text-xs text-faint" title="No known audio">{{ knownFlag }}</span>
                   <button
                     v-if="sent.explainer_audio_id"
@@ -526,6 +569,39 @@ async function playAudio(audioId) {
 function playPair(targetId, knownId) {
   playQueue.value = [targetId, knownId]
   playNext()
+}
+
+// --- Play-through -----------------------------------------------------------
+// Same queue playPair already used, over a run of lines instead of a pair.
+// Display order, not row order: what you hear must match what you are reading,
+// including when the DRAFT filter is on.
+const orderedSentences = computed(() => groupedScenes.value.flatMap(s => s.sentences))
+const playableTargets = computed(() =>
+  orderedSentences.value.map(s => s.target_audio_id).filter(Boolean)
+)
+const isPlaying = computed(() => playingId.value !== null)
+const isRowPlaying = (sent) => !!playingId.value && [
+  sent.target_audio_id, sent.known_audio_id, sent.explainer_audio_id,
+].includes(playingId.value)
+
+function startQueue(ids) {
+  if (!ids.length) return
+  playQueue.value = ids.slice()
+  playNext()
+}
+
+function playAllTargets() { startQueue(playableTargets.value) }
+
+function playFrom(sent) {
+  const list = orderedSentences.value
+  const i = list.findIndex(s => s.id === sent.id)
+  startQueue(list.slice(i < 0 ? 0 : i).map(s => s.target_audio_id).filter(Boolean))
+}
+
+function stopPlayback() {
+  playQueue.value = []
+  if (audioEl.value) { audioEl.value.pause(); audioEl.value.src = '' }
+  playingId.value = null
 }
 
 function playNext() {
@@ -857,23 +933,67 @@ async function loadRecordingStatus() {
     const map = {}
     for (const s of podReport.sentences || []) map[s.sentenceId] = s.kinds || {}
     recBySentence.value = map
+    // Pretty names for voice IDS THE CLIPS ACTUALLY CARRY. The cast is only a
+    // lookup table here: it is the plan for the NEXT render and disagrees with
+    // the audio already on the pod (cym_n pod-0 was cast to five HUMAN_*
+    // placeholders while every clip was Aran's own human_aran_cym_n), so a
+    // voice that isn't in the cast shows its raw id rather than a cast name.
+    const names = {}
+    for (const v of data.voices || []) if (v.voiceId && v.name) names[v.voiceId] = v.name
+    voiceNames.value = names
   } catch { /* coverage is additive — never block the page */ }
 }
 
-// One compact status chip per sentence: human a/n (recorded lines / lines),
-// tts when machine-voiced only, dim em-dash when nothing is voiced yet.
+const voiceNames = ref({})
+const voiceLabel = (voiceId) => (voiceId ? (voiceNames.value[voiceId] || voiceId) : null)
+
+/** Every human take on this pod, and the distinct voices that recorded them. */
+const humanKinds = computed(() => {
+  const map = recBySentence.value
+  if (!map) return []
+  return Object.values(map).flatMap(kinds => Object.values(kinds)).filter(k => k.recorded)
+})
+const humanClipCount = computed(() => humanKinds.value.length)
+const humanVoiceNames = computed(() =>
+  [...new Set(humanKinds.value.map(k => voiceLabel(k.voiceId)).filter(Boolean))]
+)
+
+/** Play-button tooltip: whose voice this clip is, read from the clip. */
+function clipTitle(sent, kind) {
+  const langName = kind === 'target' ? targetName.value : knownName.value
+  const k = recBySentence.value?.[sent.id]?.[kind]
+  if (!k) return `Play ${kind} (${langName})`
+  if (k.recorded) return `Play ${kind} (${langName}) — human take by ${voiceLabel(k.voiceId) || 'an unnamed voice'}`
+  if (k.origin === 'tts') return `Play ${kind} (${langName}) — TTS voice ${voiceLabel(k.voiceId) || 'unknown'}`
+  return `Play ${kind} (${langName})`
+}
+
+// One compact status chip per sentence. When a line has human takes it names
+// the VOICE — that is the whole reason for listening — falling back to the
+// human n/m count when the clip carries no voice id.
 function recChip(sent) {
   const kinds = recBySentence.value?.[sent.id]
   if (!kinds) return null
   const entries = Object.values(kinds)
   if (!entries.length) return null
-  const human = entries.filter(k => k.recorded).length
+  const humanEntries = entries.filter(k => k.recorded)
+  const human = humanEntries.length
   const tts = entries.filter(k => k.origin === 'tts').length
   const title = Object.entries(kinds)
-    .map(([kind, k]) => `${kind}: ${k.recorded ? 'human' : (k.origin || 'missing')}`)
+    .map(([kind, k]) => `${kind}: ` + (k.recorded
+      ? `human take by ${voiceLabel(k.voiceId) || 'an unnamed voice'}`
+      : (k.origin === 'tts' ? `tts (${voiceLabel(k.voiceId) || 'unknown voice'})` : 'not recorded')))
     .join(' · ')
-  if (human === entries.length) return { text: `human ${human}/${entries.length}`, cls: 'pill-emerald', title }
-  if (human > 0) return { text: `human ${human}/${entries.length}`, cls: 'pill-amber', title }
+  if (human > 0) {
+    const voices = [...new Set(humanEntries.map(k => voiceLabel(k.voiceId)).filter(Boolean))]
+    const who = voices.length ? voices.join(' + ') : 'human'
+    const partial = human < entries.length
+    return {
+      text: partial ? `${who} ${human}/${entries.length}` : who,
+      cls: partial ? 'pill-amber' : 'pill-emerald',
+      title,
+    }
+  }
   if (tts > 0) return { text: 'tts', cls: 'bg-surface text-faint border border-line', title }
   return { text: '—', cls: 'bg-surface text-faint border border-line', title }
 }
@@ -988,6 +1108,12 @@ onUnmounted(() => {
   letter-spacing: 0.07em;
 }
 .draft-row { border-color: var(--color-tungsten, #ffa630); }
+/* The line you are hearing right now. Emerald edge only — during a play-through
+   down 231 lines this is the only thing telling you where you are. */
+.row-playing {
+  border-color: #10b981;
+  box-shadow: inset 3px 0 0 #10b981;
+}
 .draft-filter-btn {
   border: 1px solid var(--color-tungsten, #ffa630);
   color: var(--color-tungsten, #ffa630);
