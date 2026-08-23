@@ -68,6 +68,61 @@
  * measured, so a normal take costs nothing at all — no decode, no ffmpeg, no
  * model. Only a take that trips the ceiling is decoded, and only to confirm
  * that the length is real speech-span rather than padding before refusing it.
+ *
+ * ── THE SECOND DEFECT: A TAKE CUT AT ITS OWN BOUNDARY (2026-08-23, Aran) ─────
+ *
+ * Tom, the same evening, having listened to Aran's Welsh-north Pod 1 takes:
+ *
+ *   "Aran's are all junk. All clipped badly at either or both ends"
+ *
+ * checkTakeBoundaries below is the instrument for that one, and it is a
+ * DIFFERENT question from the one above: not "is there a read in here" but
+ * "does the read run off the edge of the file". A truncated take has a
+ * perfectly respectable speech span — the VAD's own header says so — so the
+ * check above passes it, every level gate passes it, and the technical QC pass
+ * of 2026-08-14 declared all 111 of these clips clean because it measured
+ * decode, silence and levels and never measured the boundary.
+ *
+ * WHY NOT AN ABSOLUTE dB GATE, and this is the whole design. Automatic gain
+ * control lifts a quiet room until it reads at voice level (the case above), so
+ * "how loud is the first frame" is not a question with a stable answer across
+ * takes. What IS stable is the ratio inside one file: the margin is measured
+ * against a NEAR-SPEECH level derived from the take's own speech level, so it
+ * means the same thing on a whispered take, a shouted one, and an AGC-lifted
+ * one. No absolute threshold appears in it.
+ *
+ * WHAT IT MEASURED, on the real clips, mastered bytes pulled from S3
+ * (scripts/measure-boundaries.cjs, 2026-08-23, 20 clips):
+ *
+ *   Catrin take 1, the read Tom called perfect   lead 0.35 s   tail 0.41 s
+ *   Aran, 16 clips across both his voices and
+ *   both his recording days                      lead 0.00-0.08 s
+ *                                                tail 0.015-0.264 s
+ *
+ * Aran's clips are flush against the file at the front — 13 of the 16 begin at
+ * frame zero — and inside 40 ms of the end on 15 of 16. Tom's ear and the
+ * measurement agree exactly, and the separation from the known-good take is a
+ * factor of four at its narrowest.
+ *
+ * WHY THAT NUMBER IS 0.35 ON THE GOOD TAKE AND NOT AN ACCIDENT: the server's
+ * own trim (audio-processor.cjs, TRIM_MARGIN_SEC) cuts 0.35 s OUTSIDE the read
+ * it detects. Every take mastered since 2026-08-21 carries that margin by
+ * construction unless the raw capture had no margin to give. Aran's takes are
+ * all from 2026-06-15/16 and 2026-08-10 — every one predates that fix and went
+ * through the old flush cut. So this gate fires on exactly two populations: a
+ * legacy clip, and a live take whose recordist started or stopped over their
+ * own voice. Both need re-reading and no server-side repair can invent the
+ * missing audio.
+ *
+ * WHY NOT PAD THE GAP INSTEAD, which is the obvious cheaper move: silence
+ * bolted onto the front of an amputated consonant makes the clip LOOK unclipped
+ * to every downstream check while sounding exactly as wrong to a learner. It
+ * would hide this defect rather than catch it. The chain leaves real room where
+ * real room exists and this gate refuses the take where it does not.
+ *
+ * COST of this second check: one decode per upload, unconditionally — unlike
+ * the ceiling above there is no free precondition to test first. That is ~50 ms
+ * of ffmpeg on a human-paced path that already does several S3 round trips.
  */
 
 const fs = require('fs')
@@ -76,6 +131,7 @@ const path = require('path')
 const crypto = require('crypto')
 const decode = require('./audio-intelligence/decode.cjs')
 const vad = require('./audio-intelligence/tiers/vad.cjs')
+const envelope = require('./audio-intelligence/envelope.cjs')
 const syllables = require('./audio-intelligence/syllables.cjs')
 
 /**
@@ -136,6 +192,12 @@ const MESSAGES = {
     "That take didn't capture any speech — check the right microphone is selected, then read the line again.",
   speech_span_far_exceeds_script:
     "That take came out far longer than the line, so it looks like it caught the room rather than your voice. It hasn't been saved — please read the line again.",
+  speech_truncated_at_start:
+    "That take starts right on your first word, so the beginning of it is cut off. It hasn't been saved — press record, take a breath, then read the line again.",
+  speech_truncated_at_end:
+    "That take runs off the end, so your last word is cut off. It hasn't been saved — leave a beat after the line before you stop recording, then read the line again.",
+  speech_truncated_at_both_ends:
+    "That take is cut off at both ends, the first word and the last. It hasn't been saved — press record, take a breath, read the line again, then wait a beat before you stop.",
 }
 
 /**
@@ -262,11 +324,175 @@ async function checkTakeHasSpeech ({ buffer, filePath, expectedText, language, d
   }
 }
 
+// ── BOUNDARY TRUNCATION ──────────────────────────────────────────────────────
+// See the second half of the header for the case, the measurements and the
+// reason none of these numbers is an absolute level.
+
+/**
+ * How far under the take's own speech level counts as "the read has begun".
+ *
+ * Relative, never absolute — that is the whole point. 10 dB under the speech
+ * level is still unmistakably part of the read (a word's onset climbs through
+ * it in tens of milliseconds) and is far above any noise floor this estate has
+ * measured on a real take, INCLUDING the AGC-lifted ones: Catrin's worst empty
+ * take had 19.9 dB of range, so its floor still sits a clear 10 dB under this
+ * line. A gate placed at the noise floor instead would move with the room.
+ *
+ * DEFAULT, not a ruling.
+ */
+const NEAR_SPEECH_BELOW_DB = Number(process.env.RECORDING_GATE_NEAR_SPEECH_DB || 10)
+
+/**
+ * The margin of room a take must have outside its read, at each end.
+ *
+ * 0.10 s. Chosen from the two real populations rather than from taste: the
+ * known-good take carries 0.35 s and 0.41 s, and the 16 measured Aran clips
+ * carry 0.00-0.08 s at the front. 0.10 sits above every clipped clip and at
+ * less than a third of what the server's own trim leaves on a healthy take, so
+ * it has to be a genuinely flush boundary to fire, not a tight one.
+ *
+ * DEFAULT, not a ruling.
+ */
+const BOUNDARY_MIN_MARGIN_SEC = Number(process.env.RECORDING_GATE_BOUNDARY_MARGIN_SEC || 0.10)
+
+/**
+ * Below this much dynamic range the near-speech line is meaningless — a hard-
+ * limited or constant-level file has no "under the speech" to measure, and the
+ * margin would read as zero on every such take whether or not it is truncated.
+ * Those come back UNCHECKED. Refusing a take on a measurement that cannot
+ * separate is the failure mode this whole module exists to avoid.
+ */
+const BOUNDARY_MIN_RANGE_DB = Number(process.env.RECORDING_GATE_BOUNDARY_MIN_RANGE_DB || 12)
+
+/**
+ * How much room is there outside the read, at each end? Pure — this is the part
+ * the tests pin, and it takes samples so a test can build its own signal.
+ *
+ * @returns {{leadSec, tailSec, totalSec, speechDb, noiseDb, rangeDb,
+ *            nearSpeechDb, found: boolean}}
+ */
+function boundaryMargins (samples, sampleRate, opts = {}) {
+  const belowDb = opts.belowDb != null ? opts.belowDb : NEAR_SPEECH_BELOW_DB
+  const fr = envelope.frames(samples, sampleRate)
+  const lv = envelope.levels(fr.db)
+  const totalSec = samples.length / sampleRate
+  const base = {
+    totalSec,
+    speechDb: lv.speechDb,
+    noiseDb: lv.noiseDb,
+    rangeDb: (lv.speechDb != null && lv.noiseDb != null) ? lv.speechDb - lv.noiseDb : null,
+  }
+  if (!fr.db.length || lv.speechDb == null || lv.speechDb <= -119) {
+    return { ...base, nearSpeechDb: null, leadSec: null, tailSec: null, found: false }
+  }
+  const nearSpeechDb = lv.speechDb - belowDb
+  let first = -1
+  let last = -1
+  for (let i = 0; i < fr.db.length; i++) {
+    if (fr.db[i] >= nearSpeechDb) { if (first < 0) first = i; last = i }
+  }
+  if (first < 0) return { ...base, nearSpeechDb, leadSec: null, tailSec: null, found: false }
+  const hopSec = fr.hopMs / 1000
+  return {
+    ...base,
+    nearSpeechDb,
+    // Frame i covers [i*hop, i*hop + window). The lead is the time before the
+    // first near-speech frame opens; the tail is the time after the last one
+    // closes, measured at its hop edge so the two are symmetric.
+    leadSec: first * hopSec,
+    tailSec: Math.max(0, totalSec - (last + 1) * hopSec),
+    found: true,
+  }
+}
+
+/**
+ * Is this take cut off at either end?
+ *
+ * Same three-outcome contract as checkTakeHasSpeech: `pass: true`,
+ * `pass: false`, `pass: null` with `checked: false` when the instrument could
+ * not run. An unchecked take is FLAGGED by the caller, never refused.
+ *
+ * @param {object} o
+ * @param {Buffer} [o.buffer]   the mastered take's bytes
+ * @param {string} [o.filePath] ...or a path to it. One of the two is required.
+ * @param {number} [o.minMarginSec] override, for calibration
+ * @returns {Promise<{pass:boolean|null, checked:boolean, reason:string,
+ *                    message:string|null, detail:object}>}
+ */
+async function checkTakeBoundaries ({ buffer, filePath, minMarginSec } = {}) {
+  const minMargin = minMarginSec != null ? minMarginSec : BOUNDARY_MIN_MARGIN_SEC
+  const detail = { minMarginSec: minMargin }
+
+  const av = await decode.availability()
+  if (!av.available) {
+    return { pass: null, checked: false, reason: 'unchecked_no_decoder', message: null, detail: { ...detail, missing: av.missing } }
+  }
+
+  let spilled = null
+  let d = null
+  try {
+    if (!filePath) {
+      if (!buffer) {
+        return { pass: null, checked: false, reason: 'unchecked_no_audio', message: null, detail }
+      }
+      spilled = path.join(os.tmpdir(), `take-bounds-${crypto.randomBytes(8).toString('hex')}.audio`)
+      fs.writeFileSync(spilled, buffer)
+    }
+    d = await decode.decode(filePath || spilled)
+  } catch (e) {
+    if (spilled) { try { fs.unlinkSync(spilled) } catch { /* already gone */ } }
+    return {
+      pass: null, checked: false, reason: 'unchecked_decode_error', message: null,
+      detail: { ...detail, error: String(e && e.message).slice(0, 200) },
+    }
+  }
+
+  try {
+    const m = boundaryMargins(d.samples, d.sampleRate)
+    detail.durationSec = +m.totalSec.toFixed(3)
+    detail.speechDb = m.speechDb == null ? null : +m.speechDb.toFixed(1)
+    detail.noiseDb = m.noiseDb == null ? null : +m.noiseDb.toFixed(1)
+    detail.dynamicRangeDb = m.rangeDb == null ? null : +m.rangeDb.toFixed(1)
+    detail.nearSpeechDb = m.nearSpeechDb == null ? null : +m.nearSpeechDb.toFixed(1)
+    detail.leadMarginSec = m.leadSec == null ? null : +m.leadSec.toFixed(3)
+    detail.tailMarginSec = m.tailSec == null ? null : +m.tailSec.toFixed(3)
+
+    // Nothing that reads as a voice in here at all. That is checkTakeHasSpeech's
+    // verdict to give, not this one's — this check has no opinion on it.
+    if (!m.found) {
+      return { pass: null, checked: false, reason: 'unchecked_no_speech_level', message: null, detail }
+    }
+
+    // No usable dynamic range: the near-speech line cannot separate anything.
+    if (m.rangeDb == null || m.rangeDb < BOUNDARY_MIN_RANGE_DB) {
+      return { pass: null, checked: false, reason: 'unchecked_low_dynamic_range', message: null, detail }
+    }
+
+    const startCut = m.leadSec < minMargin
+    const endCut = m.tailSec < minMargin
+    if (!startCut && !endCut) {
+      return { pass: true, checked: true, reason: 'boundaries_have_room', message: null, detail }
+    }
+    const reason = (startCut && endCut) ? 'speech_truncated_at_both_ends'
+      : startCut ? 'speech_truncated_at_start'
+        : 'speech_truncated_at_end'
+    return { pass: false, checked: true, reason, message: MESSAGES[reason], detail }
+  } finally {
+    d.dispose()
+    if (spilled) { try { fs.unlinkSync(spilled) } catch { /* already gone */ } }
+  }
+}
+
 module.exports = {
   checkTakeHasSpeech,
+  checkTakeBoundaries,
+  boundaryMargins,
   ceilingFor,
   languageForTake,
   MESSAGES,
   MAX_SEC_PER_SYLLABLE,
   GRACE_SEC,
+  NEAR_SPEECH_BELOW_DB,
+  BOUNDARY_MIN_MARGIN_SEC,
+  BOUNDARY_MIN_RANGE_DB,
 }

@@ -140,3 +140,115 @@ describe('languageForTake', () => {
     expect(G.languageForTake(null, 'target')).toBeNull()
   })
 })
+
+/**
+ * BOUNDARY TRUNCATION — Aran's cym_n takes, 2026-08-23.
+ *
+ * Tom, by ear: "Aran's are all junk. All clipped badly at either or both ends".
+ *
+ * These pin the operating point measured on the real mastered bytes that
+ * evening (scripts/measure-boundaries.cjs over 20 clips pulled from S3):
+ * Catrin's known-good take carries 0.35 s of lead and 0.41 s of tail, and 16
+ * decodable Aran clips carry 0.00-0.08 s of lead. If one of these fails after a
+ * threshold change, the gate no longer separates the two real populations and
+ * the header's table must be re-measured in the same commit.
+ *
+ * boundaryMargins is pure and takes samples, so the signals here are built
+ * rather than decoded — no ffmpeg, no S3. The end-to-end run against the real
+ * clips is tools/recording/validate-boundary-gate-aran.cjs.
+ */
+describe('boundaryMargins', () => {
+  const SR = 16000
+
+  /** A tone of `speechSec` at -6 dBFS, with `leadSec`/`tailSec` of quiet room. */
+  function take ({ leadSec = 0, speechSec = 1, tailSec = 0, roomDb = -70 } = {}) {
+    const n = Math.round((leadSec + speechSec + tailSec) * SR)
+    const s = new Float32Array(n)
+    const room = Math.pow(10, roomDb / 20)
+    // Deterministic pseudo-room rather than Math.random, so a failure repeats.
+    for (let i = 0; i < n; i++) s[i] = room * Math.sin(i * 0.7331)
+    const from = Math.round(leadSec * SR)
+    const to = Math.round((leadSec + speechSec) * SR)
+    for (let i = from; i < to; i++) s[i] = 0.5 * Math.sin((2 * Math.PI * 200 * i) / SR)
+    return s
+  }
+
+  it('measures the room outside the read, at both ends', () => {
+    const m = G.boundaryMargins(take({ leadSec: 0.35, speechSec: 1, tailSec: 0.41 }), SR)
+    expect(m.found).toBe(true)
+    expect(m.leadSec).toBeGreaterThan(0.3)
+    expect(m.leadSec).toBeLessThan(0.4)
+    expect(m.tailSec).toBeGreaterThan(0.35)
+    expect(m.tailSec).toBeLessThan(0.46)
+  })
+
+  it('reads a flush start as no room at all', () => {
+    const m = G.boundaryMargins(take({ leadSec: 0, speechSec: 1, tailSec: 0.4 }), SR)
+    expect(m.leadSec).toBeLessThan(0.02)
+    expect(m.tailSec).toBeGreaterThan(0.3)
+  })
+
+  it('reads a flush end as no room at all', () => {
+    const m = G.boundaryMargins(take({ leadSec: 0.4, speechSec: 1, tailSec: 0 }), SR)
+    expect(m.leadSec).toBeGreaterThan(0.3)
+    expect(m.tailSec).toBeLessThan(0.05)
+  })
+
+  it('is measured against the take\'s own speech level, not an absolute one', () => {
+    // The same shape 30 dB quieter throughout — an AGC-lifted room and a
+    // whispered read both land here, and both must measure the same margins.
+    const loud = G.boundaryMargins(take({ leadSec: 0.3, speechSec: 1, tailSec: 0.3, roomDb: -70 }), SR)
+    const quiet = G.boundaryMargins(take({ leadSec: 0.3, speechSec: 1, tailSec: 0.3, roomDb: -40 }), SR)
+    expect(Math.abs(loud.leadSec - quiet.leadSec)).toBeLessThan(0.03)
+    expect(Math.abs(loud.tailSec - quiet.tailSec)).toBeLessThan(0.03)
+  })
+
+  it('finds nothing in digital silence rather than claiming a margin', () => {
+    const m = G.boundaryMargins(new Float32Array(SR), SR)
+    expect(m.found).toBe(false)
+    expect(m.leadSec).toBeNull()
+  })
+})
+
+describe('checkTakeBoundaries — the operating point', () => {
+  const MIN = G.BOUNDARY_MIN_MARGIN_SEC
+
+  it('sits above every measured Aran clip and well under the known-good take', () => {
+    // Real numbers, mastered bytes, 2026-08-23. The gate has to fall in the gap.
+    const ARAN_WORST_LEAD = 0.08   // 3C2D90C2, the roomiest front of 16 clips
+    const CATRIN_GOOD_LEAD = 0.35  // the read Tom called perfect
+    const CATRIN_GOOD_TAIL = 0.41
+    expect(MIN).toBeGreaterThan(ARAN_WORST_LEAD)
+    expect(MIN).toBeLessThan(CATRIN_GOOD_LEAD / 3)
+    expect(MIN).toBeLessThan(CATRIN_GOOD_TAIL / 3)
+  })
+
+  it('is never checked against an absolute level', () => {
+    // The near-speech line is a ratio under the take's own speech level.
+    expect(G.NEAR_SPEECH_BELOW_DB).toBeGreaterThan(0)
+    expect(G.NEAR_SPEECH_BELOW_DB).toBeLessThan(20)
+  })
+
+  it('returns UNCHECKED, never a refusal, when it has no audio to read', async () => {
+    const r = await G.checkTakeBoundaries({})
+    expect(r.pass).toBeNull()
+    expect(r.checked).toBe(false)
+    expect(r.reason).toMatch(/^unchecked_/)
+    expect(r.message).toBeNull()
+  })
+
+  it('returns UNCHECKED, never a refusal, on bytes ffmpeg cannot read', async () => {
+    const r = await G.checkTakeBoundaries({ buffer: Buffer.from('not audio') })
+    expect(r.pass).toBeNull()
+    expect(r.checked).toBe(false)
+    expect(r.reason).toMatch(/^unchecked_/)
+    expect(r.message).toBeNull()
+  })
+
+  it('has a plain-English refusal message for each of its three verdicts', () => {
+    for (const reason of ['speech_truncated_at_start', 'speech_truncated_at_end', 'speech_truncated_at_both_ends']) {
+      expect(G.MESSAGES[reason]).toBeTruthy()
+      expect(G.MESSAGES[reason]).not.toMatch(/dBFS|VAD|margin|ffmpeg|truncat/i)
+    }
+  })
+})

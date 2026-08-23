@@ -114,11 +114,16 @@ const dstPodId = `${COURSE}:${TO}`
     try {
       if (!dstExisting) {
         await db.query(
-          `insert into listening_pods (id, course_code, pod_type, slug, pod_order, title, scene, difficulty, speakers, source_file, metadata)
-           values ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11)`,
+          // `visibility` is COPIED from the source, never defaulted (Tom,
+          // 2026-08-23): the DB default is 'live', so a clone of a HELD pod
+          // would come out live — an automatic-live path. A clone of a live pod
+          // stays live, which is what a clone means.
+          `insert into listening_pods (id, course_code, pod_type, slug, pod_order, title, scene, difficulty, speakers, source_file, metadata, visibility)
+           values ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12)`,
           [dstPodId, src.course_code, src.pod_type, TO, src.pod_order,
             `${src.title}${TITLE_SUFFIX}`, src.scene, src.difficulty,
-            enc(podJson, 'speakers', src.speakers), src.source_file, enc(podJson, 'metadata', src.metadata)])
+            enc(podJson, 'speakers', src.speakers), src.source_file, enc(podJson, 'metadata', src.metadata),
+            src.visibility || 'held'])
       }
       const cols = ['id', 'pod_id', ...copyCols]
       const placeholders = cols.map((_, i) => `$${i + 1}`).join(',')

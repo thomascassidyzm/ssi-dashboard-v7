@@ -1,0 +1,188 @@
+{
+  "dryRun": false,
+  "markedAt": "2026-08-23T17:15:00Z",
+  "podId": "cym_n_for_eng:pod-0",
+  "clipsInScope": 100,
+  "byVoice": {
+    "human_aran_cym_n": 78,
+    "human_aran_cym_n_2": 22
+  },
+  "updates": [],
+  "inserts": [
+    {
+      "audio_uuid": "9763189B-D7EF-42BE-A3E5-1984D621527F",
+      "recorded_by": "aran@hey.com",
+      "recorded_at": "2026-06-15T14:21:16.035555+00:00",
+      "quality_notes": {
+        "sentence_id": "cym_n_for_eng:pod-0:SC07-S009",
+        "text": "Ydw, ga i wydraid o ddŵr hefyd, os gwelwch yn dda.",
+        "note": "Row CREATED by mark-aran-clipped-takes-2026-08-23 because the take had no provenance row. Only the fields evidenced from course_audio are set; nothing about the capture itself is claimed.",
+        "take_quality": {
+          "verdict": "bad",
+          "status": "superseded-pending-rerecord",
+          "reason": "Clipped at the boundary. Tom listened to the Welsh north Pod 1 recordings on 2026-08-23 and ruled: \"Aran's are all junk. All clipped badly at either or both ends\" — and, on whether to salvage any: \"None are salvageable. It's not even worth looking.\"",
+          "found_by": "Tom Cassidy, by ear, 2026-08-23",
+          "marked_at": "2026-08-23T17:15:00Z",
+          "marked_by": "mark-aran-clipped-takes-2026-08-23 (boundary-truncation job)",
+          "evidence": {
+            "basis": "Tom's ear. NO per-clip measurement was made for this mark and none should be read into it — the ruling was course-wide for this recordist and the marking is wholesale.",
+            "corroboration": "A boundary measurement taken on 18 of these clips while building the gate found lead margins of 0.00-0.08s and tail margins of 0.015-0.264s, against 0.35s / 0.41s on the Catrin take Tom called perfect. Every one of Aran's takes predates the 2026-08-21 trim-margin fix (5102c0780) and went through the old flush cut.",
+            "recorded_on": "2026-06-15T14:21:16.035555+00:00",
+            "pod_sentence_id": "cym_n_for_eng:pod-0:SC07-S009",
+            "pod_side": "target",
+            "voice_id": "human_aran_cym_n_2",
+            "gate": "services/recording-speech-gate.cjs, checkTakeBoundaries — would now refuse this take at save time"
+          },
+          "action_taken": "Provenance mark only. No audio deleted, no pointer moved, no re-record or regeneration triggered. rerecord_wanted not written."
+        }
+      },
+      "applied": true
+    },
+    {
+      "audio_uuid": "FFFC8BB5-E5CF-411D-ADAC-274650D545BA",
+      "recorded_by": "aran@hey.com",
+      "recorded_at": "2026-06-15T14:21:17.428432+00:00",
+      "quality_notes": {
+        "sentence_id": "cym_n_for_eng:pod-0:SC08-S015",
+        "text": "Oes gynnoch chi frechdanau? Liciwn i frechdan gaws, os gwelwch yn dda.",
+        "note": "Row CREATED by mark-aran-clipped-takes-2026-08-23 because the take had no provenance row. Only the fields evidenced from course_audio are set; nothing about the capture itself is claimed.",
+        "take_quality": {
+          "verdict": "bad",
+          "status": "superseded-pending-rerecord",
+          "reason": "Clipped at the boundary. Tom listened to the Welsh north Pod 1 recordings on 2026-08-23 and ruled: \"Aran's are all junk. All clipped badly at either or both ends\" — and, on whether to salvage any: \"None are salvageable. It's not even worth looking.\"",
+          "found_by": "Tom Cassidy, by ear, 2026-08-23",
+          "marked_at": "2026-08-23T17:15:00Z",
+          "marked_by": "mark-aran-clipped-takes-2026-08-23 (boundary-truncation job)",
+          "evidence": {
+            "basis": "Tom's ear. NO per-clip measurement was made for this mark and none should be read into it — the ruling was course-wide for this recordist and the marking is wholesale.",
+            "corroboration": "A boundary measurement taken on 18 of these clips while building the gate found lead margins of 0.00-0.08s and tail margins of 0.015-0.264s, against 0.35s / 0.41s on the Catrin take Tom called perfect. Every one of Aran's takes predates the 2026-08-21 trim-margin fix (5102c0780) and went through the old flush cut.",
+            "recorded_on": "2026-06-15T14:21:17.428432+00:00",
+            "pod_sentence_id": "cym_n_for_eng:pod-0:SC08-S015",
+            "pod_side": "target",
+            "voice_id": "human_aran_cym_n_2",
+            "gate": "services/recording-speech-gate.cjs, checkTakeBoundaries — would now refuse this take at save time"
+          },
+          "action_taken": "Provenance mark only. No audio deleted, no pointer moved, no re-record or regeneration triggered. rerecord_wanted not written."
+        }
+      },
+      "applied": true
+    },
+    {
+      "audio_uuid": "979F967E-6C71-410F-8162-76C663EA1F3D",
+      "recorded_by": "aran@hey.com",
+      "recorded_at": "2026-06-15T14:21:17.793151+00:00",
+      "quality_notes": {
+        "sentence_id": "cym_n_for_eng:pod-0:SC09-S004",
+        "text": "Mi fasen ni'n licio un botel o ddŵr pefriog ac un botel o ddŵr llonydd, os gwelwch yn dda.",
+        "note": "Row CREATED by mark-aran-clipped-takes-2026-08-23 because the take had no provenance row. Only the fields evidenced from course_audio are set; nothing about the capture itself is claimed.",
+        "take_quality": {
+          "verdict": "bad",
+          "status": "superseded-pending-rerecord",
+          "reason": "Clipped at the boundary. Tom listened to the Welsh north Pod 1 recordings on 2026-08-23 and ruled: \"Aran's are all junk. All clipped badly at either or both ends\" — and, on whether to salvage any: \"None are salvageable. It's not even worth looking.\"",
+          "found_by": "Tom Cassidy, by ear, 2026-08-23",
+          "marked_at": "2026-08-23T17:15:00Z",
+          "marked_by": "mark-aran-clipped-takes-2026-08-23 (boundary-truncation job)",
+          "evidence": {
+            "basis": "Tom's ear. NO per-clip measurement was made for this mark and none should be read into it — the ruling was course-wide for this recordist and the marking is wholesale.",
+            "corroboration": "A boundary measurement taken on 18 of these clips while building the gate found lead margins of 0.00-0.08s and tail margins of 0.015-0.264s, against 0.35s / 0.41s on the Catrin take Tom called perfect. Every one of Aran's takes predates the 2026-08-21 trim-margin fix (5102c0780) and went through the old flush cut.",
+            "recorded_on": "2026-06-15T14:21:17.793151+00:00",
+            "pod_sentence_id": "cym_n_for_eng:pod-0:SC09-S004",
+            "pod_side": "target",
+            "voice_id": "human_aran_cym_n_2",
+            "gate": "services/recording-speech-gate.cjs, checkTakeBoundaries — would now refuse this take at save time"
+          },
+          "action_taken": "Provenance mark only. No audio deleted, no pointer moved, no re-record or regeneration triggered. rerecord_wanted not written."
+        }
+      },
+      "applied": true
+    },
+    {
+      "audio_uuid": "23C30920-6B1B-4F9F-81D8-35B39A1EB7EF",
+      "recorded_by": "aran@hey.com",
+      "recorded_at": "2026-06-15T14:21:15.694518+00:00",
+      "quality_notes": {
+        "sentence_id": "cym_n_for_eng:pod-0:SC07-S007",
+        "text": "Ga i ddau goffi gwyn a dau goffi du ac un o'r rheina, os gwelwch yn dda?",
+        "note": "Row CREATED by mark-aran-clipped-takes-2026-08-23 because the take had no provenance row. Only the fields evidenced from course_audio are set; nothing about the capture itself is claimed.",
+        "take_quality": {
+          "verdict": "bad",
+          "status": "superseded-pending-rerecord",
+          "reason": "Clipped at the boundary. Tom listened to the Welsh north Pod 1 recordings on 2026-08-23 and ruled: \"Aran's are all junk. All clipped badly at either or both ends\" — and, on whether to salvage any: \"None are salvageable. It's not even worth looking.\"",
+          "found_by": "Tom Cassidy, by ear, 2026-08-23",
+          "marked_at": "2026-08-23T17:15:00Z",
+          "marked_by": "mark-aran-clipped-takes-2026-08-23 (boundary-truncation job)",
+          "evidence": {
+            "basis": "Tom's ear. NO per-clip measurement was made for this mark and none should be read into it — the ruling was course-wide for this recordist and the marking is wholesale.",
+            "corroboration": "A boundary measurement taken on 18 of these clips while building the gate found lead margins of 0.00-0.08s and tail margins of 0.015-0.264s, against 0.35s / 0.41s on the Catrin take Tom called perfect. Every one of Aran's takes predates the 2026-08-21 trim-margin fix (5102c0780) and went through the old flush cut.",
+            "recorded_on": "2026-06-15T14:21:15.694518+00:00",
+            "pod_sentence_id": "cym_n_for_eng:pod-0:SC07-S007",
+            "pod_side": "target",
+            "voice_id": "human_aran_cym_n_2",
+            "gate": "services/recording-speech-gate.cjs, checkTakeBoundaries — would now refuse this take at save time"
+          },
+          "action_taken": "Provenance mark only. No audio deleted, no pointer moved, no re-record or regeneration triggered. rerecord_wanted not written."
+        }
+      },
+      "applied": true
+    },
+    {
+      "audio_uuid": "DEA7FCEE-5BFA-4A1C-B224-43EBA588B852",
+      "recorded_by": "aran@hey.com",
+      "recorded_at": "2026-06-15T14:21:16.72696+00:00",
+      "quality_notes": {
+        "sentence_id": "cym_n_for_eng:pod-0:SC08-S005",
+        "text": "Ga i hanner seidr?",
+        "note": "Row CREATED by mark-aran-clipped-takes-2026-08-23 because the take had no provenance row. Only the fields evidenced from course_audio are set; nothing about the capture itself is claimed.",
+        "take_quality": {
+          "verdict": "bad",
+          "status": "superseded-pending-rerecord",
+          "reason": "Clipped at the boundary. Tom listened to the Welsh north Pod 1 recordings on 2026-08-23 and ruled: \"Aran's are all junk. All clipped badly at either or both ends\" — and, on whether to salvage any: \"None are salvageable. It's not even worth looking.\"",
+          "found_by": "Tom Cassidy, by ear, 2026-08-23",
+          "marked_at": "2026-08-23T17:15:00Z",
+          "marked_by": "mark-aran-clipped-takes-2026-08-23 (boundary-truncation job)",
+          "evidence": {
+            "basis": "Tom's ear. NO per-clip measurement was made for this mark and none should be read into it — the ruling was course-wide for this recordist and the marking is wholesale.",
+            "corroboration": "A boundary measurement taken on 18 of these clips while building the gate found lead margins of 0.00-0.08s and tail margins of 0.015-0.264s, against 0.35s / 0.41s on the Catrin take Tom called perfect. Every one of Aran's takes predates the 2026-08-21 trim-margin fix (5102c0780) and went through the old flush cut.",
+            "recorded_on": "2026-06-15T14:21:16.72696+00:00",
+            "pod_sentence_id": "cym_n_for_eng:pod-0:SC08-S005",
+            "pod_side": "target",
+            "voice_id": "human_aran_cym_n_2",
+            "gate": "services/recording-speech-gate.cjs, checkTakeBoundaries — would now refuse this take at save time"
+          },
+          "action_taken": "Provenance mark only. No audio deleted, no pointer moved, no re-record or regeneration triggered. rerecord_wanted not written."
+        }
+      },
+      "applied": true
+    },
+    {
+      "audio_uuid": "99ECE3B5-4BF9-4022-85D0-07E94FE42DFF",
+      "recorded_by": "aran@hey.com",
+      "recorded_at": "2026-06-15T14:21:17.069727+00:00",
+      "quality_notes": {
+        "sentence_id": "cym_n_for_eng:pod-0:SC08-S010",
+        "text": "Liciwn i ddau wydraid arall o gwrw.",
+        "note": "Row CREATED by mark-aran-clipped-takes-2026-08-23 because the take had no provenance row. Only the fields evidenced from course_audio are set; nothing about the capture itself is claimed.",
+        "take_quality": {
+          "verdict": "bad",
+          "status": "superseded-pending-rerecord",
+          "reason": "Clipped at the boundary. Tom listened to the Welsh north Pod 1 recordings on 2026-08-23 and ruled: \"Aran's are all junk. All clipped badly at either or both ends\" — and, on whether to salvage any: \"None are salvageable. It's not even worth looking.\"",
+          "found_by": "Tom Cassidy, by ear, 2026-08-23",
+          "marked_at": "2026-08-23T17:15:00Z",
+          "marked_by": "mark-aran-clipped-takes-2026-08-23 (boundary-truncation job)",
+          "evidence": {
+            "basis": "Tom's ear. NO per-clip measurement was made for this mark and none should be read into it — the ruling was course-wide for this recordist and the marking is wholesale.",
+            "corroboration": "A boundary measurement taken on 18 of these clips while building the gate found lead margins of 0.00-0.08s and tail margins of 0.015-0.264s, against 0.35s / 0.41s on the Catrin take Tom called perfect. Every one of Aran's takes predates the 2026-08-21 trim-margin fix (5102c0780) and went through the old flush cut.",
+            "recorded_on": "2026-06-15T14:21:17.069727+00:00",
+            "pod_sentence_id": "cym_n_for_eng:pod-0:SC08-S010",
+            "pod_side": "target",
+            "voice_id": "human_aran_cym_n_2",
+            "gate": "services/recording-speech-gate.cjs, checkTakeBoundaries — would now refuse this take at save time"
+          },
+          "action_taken": "Provenance mark only. No audio deleted, no pointer moved, no re-record or regeneration triggered. rerecord_wanted not written."
+        }
+      },
+      "applied": true
+    }
+  ],
+  "alreadyMarked": 94
+}
