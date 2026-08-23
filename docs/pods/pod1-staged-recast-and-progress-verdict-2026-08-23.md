@@ -5,6 +5,12 @@ fixing the staged courses. Then when done we will flip them all and retire the p
 any of those courses. Double checking we've done the proper mapping of learner progress for the POD
 cutover."*
 
+*Sequenced to your 21:21Z ruling: "first we want to recast those ones we did today. Regenerate any
+required audios. They will then be usable and a course can be flipped when both known and target
+PODS have been completed. Then we should go back to making sure all languages have the new 231 line
+pods and recast them properly by conversation, generate any audio and then repeat the course flipping
+process." The flip-readiness checklist you can flip from is section 5.*
+
 **No live pod was edited tonight.** Not a cast, not a speaker label, not a sentence, not an audio
 link. Everything below happened on held, non-serving pods. The estate's live-pod count is unchanged
 at 69, and every pod this job created is `held`.
@@ -200,6 +206,103 @@ part of it.
 
 ---
 
+## 5. Flip readiness — the checklist to flip from
+
+Your rule: a course may flip only when **both** its target-language pod and its known-language pod
+are complete — recast correct *and* audio complete. Measured live against every staged pod, both
+tracks.
+
+**Nothing is ready to flip tonight — 0 of 40.** Every pod is recast-correct; none has finished audio.
+That is the honest state, and the table says exactly what each course still needs.
+
+Three things stand between here and the first flip, and they are very different sizes.
+
+**The known side is ONE job, not forty.** Every course's known-track blocker is the same shared
+English clip pool: **366 distinct clips, pooled across all 40 courses** (7.5 line-links per clip). No
+non-English language has a single known-track clip in the queue. Re-render those 366 once and the
+known pod completes for every course on this list simultaneously. That is the highest-leverage item
+in the whole rollout.
+
+**The target side is per course**, and for your step-one cohort it is the *only* remaining work:
+**16 Group 1 courses need nothing but clip regeneration** — no translation, no drafts, no missing
+renders. Those are `ara_eg, ara, deu, eus, fra, hrv, ita, jpn, kor, por_br, por, ron, spa, spa_mx,
+swe, zho`, and they are exactly the "recast those ones we did today, regenerate any required audios"
+set. Together with the shared English pool, that is the shortest path to your first flips.
+
+**A blank row blocks 22 pods on a technicality.** Scene 15 / sentence 12 (`SC15-S012`) is empty on
+*both* sides with no audio on either track, on 20 staged Group 2 pods and 2 of the Group 1 clones
+(`ara_sy`, `fra_ca`). It is unrenderable and unshowable, so it sits in the readiness gate as a
+permanent blocker, and it is also the whole of each of those courses' "1 missing known audio". This
+is a known class: `tools/pods/delete-blank-pod-sentence.cjs` exists for exactly it, is triple-locked
+(the row must match the id, be empty on both sides, and have NULL audio on both tracks), refuses any
+slug that is not `*-unrecorded`, and aborts if any learner progress touches the row. It was already
+applied to `ita/spa/fra/zho` on 2026-08-22. Zero learner progress touches any of the 22. **I have not
+run it — deletion is yours.**
+
+**Priority order, per your sequencing.** Group 1 first (below), then Group 2.
+
+**Group 1 — step one: the pods recast today, needing audio**
+
+| course | target pod | known pod | ready to flip |
+|---|---|---|---|
+| ara_eg | 30 clips to regen | 123 clips to regen | no |
+| ara | 44 clips to regen | 123 clips to regen | no |
+| ara_sy | 1 untranslated, 108 draft, 107 unrendered, 34 clips to regen | 1 unrendered, 123 clips to regen | no |
+| deu_at | 155 draft, 131 unrendered, 29 clips to regen | 44 clips to regen | no |
+| deu | 34 clips to regen | 44 clips to regen | no |
+| eus | 14 clips to regen | 44 clips to regen | no |
+| fra_ca | 1 untranslated, 112 draft, 111 unrendered, 80 clips to regen | 1 unrendered, 44 clips to regen | no |
+| fra | 25 clips to regen | 44 clips to regen | no |
+| hrv | 47 clips to regen | 47 clips to regen | no |
+| ita | 29 clips to regen | 123 clips to regen | no |
+| jpn | 44 clips to regen | 44 clips to regen | no |
+| kor | 44 clips to regen | 44 clips to regen | no |
+| por_br | 36 clips to regen | 123 clips to regen | no |
+| por | 36 clips to regen | 123 clips to regen | no |
+| ron | 25 clips to regen | 44 clips to regen | no |
+| spa | 105 clips to regen | 123 clips to regen | no |
+| spa_mx | 44 clips to regen | 123 clips to regen | no |
+| swe | 44 clips to regen | 44 clips to regen | no |
+| zho | 26 clips to regen | 44 clips to regen | no |
+
+**Group 2 — step two: the 21 courses still on the 142-line pod**
+
+| course | target pod | known pod | ready to flip |
+|---|---|---|---|
+| bul | 1 untranslated, 109 draft, 2 unrendered, 21 clips to regen | 1 unrendered, 44 clips to regen | no |
+| cat | 1 untranslated, 116 draft, 117 unrendered, 42 clips to regen | 1 unrendered, 123 clips to regen | no |
+| dan | 1 untranslated, 129 draft, 130 unrendered, 40 clips to regen | 1 unrendered, 44 clips to regen | no |
+| ell | 1 untranslated, 114 draft, 115 unrendered, 15 clips to regen | 1 unrendered, 44 clips to regen | no |
+| est | 1 untranslated, 109 draft, 5 unrendered, 14 clips to regen | 1 unrendered, 44 clips to regen | no |
+| fas | 1 untranslated, 122 draft, 123 unrendered, 10 clips to regen | 1 unrendered, 44 clips to regen | no |
+| gle | 1 untranslated, 117 draft, 118 unrendered, 10 clips to regen | 1 unrendered, 44 clips to regen | no |
+| heb | 1 untranslated, 126 draft, 127 unrendered, 35 clips to regen | 1 unrendered, 123 clips to regen | no |
+| hin | 1 untranslated, 132 draft, 133 unrendered, 40 clips to regen | 1 unrendered, 126 clips to regen | no |
+| hye | 1 untranslated, 126 draft, 3 unrendered, 14 clips to regen | 1 unrendered, 44 clips to regen | no |
+| isl | 10 unrendered, 19 clips to regen | 44 clips to regen | no |
+| lav | 1 untranslated, 101 draft, 102 unrendered, 22 clips to regen | 1 unrendered, 44 clips to regen | no |
+| lit | 1 untranslated, 109 draft, 110 unrendered, 23 clips to regen | 1 unrendered, 44 clips to regen | no |
+| nep | 1 untranslated, 100 draft, 101 unrendered, 12 clips to regen | 1 unrendered, 44 clips to regen | no |
+| nld | 1 untranslated, 115 draft, 116 unrendered, 42 clips to regen | 1 unrendered, 44 clips to regen | no |
+| nor | 1 untranslated, 113 draft, 114 unrendered, 34 clips to regen | 1 unrendered, 44 clips to regen | no |
+| pol | 1 untranslated, 123 draft, 124 unrendered, 46 clips to regen | 1 unrendered, 123 clips to regen | no |
+| swa | 1 untranslated, 113 draft, 114 unrendered, 11 clips to regen | 1 unrendered, 44 clips to regen | no |
+| tha | 1 untranslated, 106 draft, 107 unrendered, 76 clips to regen | 1 unrendered, 62 clips to regen | no |
+| tur | 1 untranslated, 118 draft, 119 unrendered, 41 clips to regen | 1 unrendered, 44 clips to regen | no |
+| ukr | 1 untranslated, 109 draft, 110 unrendered, 15 clips to regen | 1 unrendered, 44 clips to regen | no |
+
+### Also worth your eye: five live courses are serving incomplete pods
+
+Not caused by anything tonight, and not on the flip path, but it showed up while measuring and you
+should know. Five courses that were built straight at the new size are **live** with substantial
+missing target audio: `cym_s_for_eng` 231 of 231 lines unrendered, `fin_for_eng` 213 of 232,
+`deu_at_for_eng` 131 of 231, `fra_ca_for_eng` 111 of 232, `ara_sy_for_eng` 107 of 232. For Welsh and
+Finnish that is expected — they are awaiting human recording, and Welsh is in Aran and Catrin's live
+queues. For `deu_at`, `fra_ca` and `ara_sy` it is a genuine gap: they are TTS courses serving a pod
+where roughly half the target lines have no audio at all.
+
+---
+
 ## What failed, and what needs you
 
 **Failed:** nothing. Every pod that was attempted landed.
@@ -213,8 +316,13 @@ by the same mechanism, so treat them as exposed until measured.
 
 1. **FORK the 4,639 shared clips before any staged render?** My recommendation: **yes** — it is the
    only thing between "fix the staged courses" and changing live audio, and it is a small script.
-2. **Wire the cast solve into the switchover path** before the next 21 flips, rather than running an
+2. **DELETE the blank `SC15-S012` row on the 22 pods it blocks?** My recommendation: **yes** — it is
+   empty on both sides with no audio and no learner progress, it can never be rendered or shown, the
+   precedent was already set on four courses on 2026-08-22, and the tool refuses everything except
+   exactly this. It is a permanent readiness blocker on 22 of the 40 pods until it goes. (The tool
+   only accepts `*-unrecorded` slugs, so the two Group 1 clones would need a one-line widening.)
+3. **Wire the cast solve into the switchover path** before the next 21 flips, rather than running an
    after-the-fact recast sweep 21 more times? Carried over from job #136 and still open. My
    recommendation: **yes**, for the same reason as last time — 21 courses are queued to go through
    exactly this path.
-3. **`pod-1-staged-2026-08-23` as the staged slug** — a naming call, flagged rather than assumed.
+4. **`pod-1-staged-2026-08-23` as the staged slug** — a naming call, flagged rather than assumed.
