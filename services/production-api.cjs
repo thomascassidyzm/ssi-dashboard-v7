@@ -18,6 +18,7 @@ const supabaseClient = require('./supabase-client.cjs')
 const { canonicalLanguage } = require('./shared/clip-identity.cjs')
 const { swapClipInPlace } = require('./shared/audio-revision-swap.cjs')
 const manifestGenerator = require('./manifest-generator.cjs')
+const podVisibility = require('./pod-visibility.cjs')
 const courseDataService = require('./course-data-service.cjs')
 const { SchemaValidator } = require('./schema-validator.cjs')
 const learningScriptGenerator = require('./learning-script-generator.cjs')
@@ -4288,7 +4289,9 @@ app.get('/api/pods/:courseCode', async (req, res) => {
 
     const { data: pods, error: podsErr } = await supabase
       .from('listening_pods')
-      .select('id, course_code, pod_type, slug, title, scene, difficulty, speakers, metadata, source_file, updated_at')
+      // `visibility` (Tom, 2026-08-23): admin listings must SEE a held pod and
+      // badge it, which they can only do if the column comes down the wire.
+      .select('id, course_code, pod_type, slug, title, scene, difficulty, speakers, metadata, source_file, updated_at, visibility')
       .eq('course_code', courseCode)
       .order('pod_type').order('slug')
 
@@ -4351,6 +4354,59 @@ app.get('/api/pods/:courseCode/:slug', async (req, res) => {
   } catch (err) {
     logger.error(`[Pod detail] ${err.message}`)
     res.status(500).json({ error: err.message })
+  }
+})
+
+// POST /api/admin/pods/:courseCode/:slug/visibility — hold a pod back from
+// learners, or release it to them.
+//
+// Tom's ruling of 2026-08-23: a pod a human is still recording must be
+// unreachable until it is finished AND a human has decided to release it.
+// GOING LIVE IS A HUMAN ACT — nothing may flip a pod live because it looks
+// complete. This endpoint is THE ONLY WRITE PATH to listening_pods.visibility
+// in the codebase; the decision logic and the confirm-token rationale live in
+// services/pod-visibility.cjs.
+//
+// The gate itself is RLS (database/changes/20260823_listening_pod_visibility.sql):
+// held means the learner app's anon key cannot see the pod row OR its
+// sentences. This service reads with the service role and still sees
+// everything, which is why the admin pages keep working on a held pod.
+app.post('/api/admin/pods/:courseCode/:slug/visibility', async (req, res) => {
+  const admin = await requireAdmin(req, res)
+  if (!admin) return
+  const { courseCode, slug } = req.params
+  const podId = `${courseCode}:${slug}`
+
+  const parsed = podVisibility.parseVisibilityRequest(req.body, podId)
+  if (!parsed.ok) return res.status(parsed.status).json({ error: parsed.error })
+
+  try {
+    const sb = supabaseClient.getClient()
+    const { data: pod, error: readErr } = await sb
+      .from('listening_pods').select('id, metadata, visibility').eq('id', podId).maybeSingle()
+    if (readErr) throw readErr
+    if (!pod) return res.status(404).json({ error: `Pod not found: ${podId}` })
+
+    // Read-modify-write of the jsonb — every other metadata key survives.
+    const metadata = podVisibility.nextVisibilityMetadata(pod.metadata, {
+      visibility: parsed.visibility,
+      actor: admin,
+      nowIso: new Date().toISOString(),
+    })
+
+    const { data: updated, error: writeErr } = await sb
+      .from('listening_pods')
+      .update({ visibility: parsed.visibility, metadata, updated_at: new Date().toISOString() })
+      .eq('id', podId)
+      .select('id, visibility, metadata')
+      .maybeSingle()
+    if (writeErr) throw writeErr
+
+    logger.info(`[PodVisibility] ${podId}: ${pod.visibility} -> ${parsed.visibility} by ${podVisibility.describeActor(admin)}`)
+    res.json({ ok: true, pod: updated, was: pod.visibility })
+  } catch (e) {
+    logger.error('[PodVisibility] error:', e?.message || e)
+    res.status(500).json({ error: e?.message || 'unknown error' })
   }
 })
 
