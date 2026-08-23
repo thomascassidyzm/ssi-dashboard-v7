@@ -64,6 +64,11 @@ const ALL = ARGS.includes('--all')
 const POD_ARG = (ARGS.find(a => a.startsWith('--pod=')) || '').slice('--pod='.length)
 const OUT_DIR = path.join(__dirname, '../../docs/pods')
 const STAMP = '2026-08-23'
+// Run tag. The cost-aware orientation (below) is a second pass over the same
+// estate, so its logs must not overwrite the first pass's — that log is also
+// the ONLY surviving record of the pre-recast cast, and this run reads it.
+const RUN = 'costaware'
+const BASELINE_LOG = path.join(OUT_DIR, `pod1-percall-recast-estate-${STAMP}-dryrun-log.json`)
 
 // ---------------------------------------------------------------------------
 // Scene-unique relabelling. Only labels reused across scenes that need
@@ -99,6 +104,113 @@ const NAME_GENDER = {
 }
 
 const norm = (v) => String(v || '').replace(/^(xai_|azure_)/, '')
+
+/**
+ * The ORIGINAL (pre-recast) cast voice per slot, recovered from the first
+ * pass's dry-run log. Needed so the three re-render categories keep their
+ * meaning on a second pass: once pass 1 is applied, `listening_pods.speakers`
+ * IS pass 1's cast, so comparing against it would relabel genuine recast
+ * burden as "pre-existing drift" and flatter the number Tom is reading.
+ * Key: `${pod}|${scene}|${sentence}|${track}` → normalised voice id.
+ */
+let baselineCastBySlot = null
+function loadBaselineCast() {
+  if (baselineCastBySlot) return baselineCastBySlot
+  baselineCastBySlot = new Map()
+  try {
+    const reps = JSON.parse(fs.readFileSync(BASELINE_LOG, 'utf8'))
+    for (const rep of (Array.isArray(reps) ? reps : [reps])) {
+      for (const q of rep.regenQueue || []) {
+        if (q.castVoiceBefore) baselineCastBySlot.set(`${q.pod}|${q.scene}|${q.sentence}|${q.track}`, norm(q.castVoiceBefore))
+      }
+    }
+  } catch { /* no baseline on disk — fall back to the pod's stored cast */ }
+  return baselineCastBySlot
+}
+
+/**
+ * ORIENT ONE COMPONENT (the fix, 2026-08-23 — Tom: "Can't be 184 clips for
+ * Croatian").
+ *
+ * Every connected component of the exchange graph has two equally collision-
+ * free orientations. The first pass chose between them on SCRIPT GENDER alone
+ * — with no term at all for what the clips already sound like — and in Croatian
+ * that landed exactly backwards, queueing all 184 pod clips for a straight
+ * voice swap.
+ *
+ * The objective here is DELIVERED CLIPS KEPT, counted in DISTINCT CLIPS (a clip
+ * serving several slots is one asset and one re-render, so it must not be
+ * counted once per slot). Script gender is demoted to a TIEBREAK: it decides
+ * only when the two orientations keep the same number of clips, which includes
+ * the case of a component with no delivered audio at all. That is legitimate
+ * because Tom has already ruled a character voiced against apparent gender an
+ * ACCEPTED COST — keeping "Anna" female is worth less than keeping 92 clips.
+ *
+ * This is a strictly-better objective on the SAME feasible set: both
+ * orientations of a 2-colouring are collision-free by construction, so zero
+ * same-voice exchanges is untouched by this choice (and asserted downstream).
+ *
+ * Pure and exported for unit test.
+ *   members       — the component's speaker labels
+ *   colourOf(n)   — 0|1 from the two-colouring (0 ⇒ female before flipping)
+ *   clips         — [{ name, track, audioId, voice, wantF, wantM }] for the
+ *                   whole pod; entries outside `members` are ignored. `voice`
+ *                   is the DELIVERED voice, normalised; wantF/wantM are the
+ *                   voices this track assigns to female/male.
+ *   scriptGenderOf(n) — 'f'|'m'|null
+ */
+function orientComponent({ members, colourOf, clips, scriptGenderOf }) {
+  const memberSet = new Set(members)
+  const mine = (clips || []).filter(c => memberSet.has(c.name))
+  const genderUnder = (n, flip) => (((flip ? 1 - colourOf(n) : colourOf(n)) === 0) ? 'f' : 'm')
+
+  // Distinct clips kept. A clip is kept only if EVERY slot it serves still
+  // wants its delivered voice — one slot moving away is one re-render.
+  const keptUnder = (flip) => {
+    const byClip = new Map()
+    for (const c of mine) {
+      const want = genderUnder(c.name, flip) === 'f' ? c.wantF : c.wantM
+      const keep = !!want && c.voice === want
+      const key = `${c.track}|${c.audioId}`
+      byClip.set(key, (byClip.has(key) ? byClip.get(key) : true) && keep)
+    }
+    let n = 0
+    for (const v of byClip.values()) if (v) n++
+    return n
+  }
+  const scriptUnder = (flip) => {
+    let score = 0
+    const fixed = []
+    for (const n of members) {
+      const g = scriptGenderOf(n)
+      if (g !== 'f' && g !== 'm') continue
+      fixed.push({ name: n, gender: g })
+      score += (genderUnder(n, flip) === g ? 1 : -1)
+    }
+    return { score, fixed }
+  }
+
+  const dBase = keptUnder(false), dFlip = keptUnder(true)
+  const sBase = scriptUnder(false), sFlip = scriptUnder(true)
+  let flip, decidedBy
+  if (dFlip !== dBase) {
+    flip = dFlip > dBase
+    decidedBy = 'delivered-clips'
+  } else if (sFlip.score !== sBase.score) {
+    flip = sFlip.score > sBase.score
+    decidedBy = mine.length ? 'script-gender (delivered tied)' : 'script-gender (no delivered audio)'
+  } else {
+    flip = false
+    decidedBy = 'tied — kept as coloured'
+  }
+  return {
+    flip, decidedBy,
+    deliveredClipsKept: { asColoured: dBase, flipped: dFlip, chosen: flip ? dFlip : dBase },
+    scriptGenderScore: { asColoured: sBase.score, flipped: sFlip.score },
+    clipsInComponent: new Set(mine.map(c => `${c.track}|${c.audioId}`)).size,
+    scriptFixedNames: sBase.fixed,
+  }
+}
 
 // ---------------------------------------------------------------------------
 
@@ -249,10 +361,20 @@ async function recastPod(db, podId) {
 
   // ---- pick the two voices per track ---------------------------------------
   // Taste-safe default: where a track currently uses more than two voices, keep
-  // the male and the female with the most delivered lines. Discards reported.
-  function pickPair(deliveredOf) {
-    const counts = new Map()
-    for (const r of rows) { const v = deliveredOf(r); if (v) counts.set(v, (counts.get(v) || 0) + 1) }
+  // the male and the female with the most delivered DISTINCT CLIPS. Ranking by
+  // rows would over-value a voice whose few clips are reused across many slots,
+  // and the clip is what phase 8 re-renders. Discards reported.
+  function pickPair(deliveredOf, audioIdOf) {
+    const clipsPerVoice = new Map()
+    const linesPerVoice = new Map()
+    for (const r of rows) {
+      const v = deliveredOf(r), id = audioIdOf(r)
+      if (!v || !id) continue
+      if (!clipsPerVoice.has(v)) clipsPerVoice.set(v, new Set())
+      clipsPerVoice.get(v).add(id)
+      linesPerVoice.set(v, (linesPerVoice.get(v) || 0) + 1)
+    }
+    const counts = new Map([...clipsPerVoice.entries()].map(([v, s]) => [v, s.size]))
     if (!counts.size) {
       // No delivered audio: fall back to the stored cast's own voices.
       for (const e of Object.values(storedCast)) {
@@ -269,12 +391,14 @@ async function recastPod(db, podId) {
     return {
       f: f ? f[0] : null, m: m ? m[0] : null,
       single: ranked.length ? ranked[0][0] : null,
-      counts: Object.fromEntries(ranked), discarded, ungendered,
+      counts: Object.fromEntries(ranked), // DISTINCT CLIPS per voice
+      countsByLine: Object.fromEntries([...linesPerVoice.entries()].sort((a, b) => b[1] - a[1])),
+      discarded, ungendered,
       distinct: ranked.length,
     }
   }
-  const tgtPair = pickPair(deliveredTarget)
-  const knwPair = pickPair(deliveredKnown)
+  const tgtPair = pickPair(deliveredTarget, (r) => r.target_audio_id)
+  const knwPair = pickPair(deliveredKnown, (r) => r.known_audio_id)
   /**
    * Does the known track have a gender split to make at all? The eng_for_*
    * shape is one target-language narrator reading every character's known
@@ -302,23 +426,38 @@ async function recastPod(db, podId) {
   const { weights: exWeights, dropped } = buildExchangeWeights(rows, newName)
   const { colour, components, oddCycle } = twoColour(exWeights, allNew)
 
-  // ---- orient each component by the genders the script fixes ---------------
-  // Both orientations are equally collision-free, so this is free: flip a
-  // component if that makes more script-fixed genders land on their own gender.
+  // ---- orient each component to KEEP THE AUDIO THAT ALREADY EXISTS ---------
+  // Both orientations of a component are equally collision-free, so the choice
+  // is free of the hard rule and is spent on the delivered clips instead.
+  // Orientation is PER COMPONENT: each one chooses independently.
+  const orientClips = []
+  for (const r of rows) {
+    const n = newName(r)
+    for (const track of ['target', 'known']) {
+      const audioId = track === 'target' ? r.target_audio_id : r.known_audio_id
+      const delivered = track === 'target' ? deliveredTarget(r) : deliveredKnown(r)
+      if (!audioId || !delivered) continue
+      // The out-of-scope known track is carried across untouched, so its clips
+      // cannot be moved by an orientation and must not vote on one.
+      const wantF = track === 'target' ? tgtPair.f : (knownTrackInScope ? knwPair.f : null)
+      const wantM = track === 'target' ? tgtPair.m : (knownTrackInScope ? knwPair.m : null)
+      if (!wantF || !wantM) continue
+      orientClips.push({ name: n, track, audioId, voice: delivered, wantF, wantM })
+    }
+  }
   const orientation = []
   for (const comp of components) {
-    let score = 0
-    const fixed = []
-    for (const n of comp) {
-      const g = scriptGender(n, variantsOf.get(n))
-      if (!g) continue
-      fixed.push({ name: n, gender: g })
-      // colour 0 -> female by convention before flipping
-      score += (colour.get(n) === 0 ? (g === 'f' ? 1 : -1) : (g === 'm' ? 1 : -1))
-    }
-    const flip = score < 0
-    if (flip) for (const n of comp) colour.set(n, 1 - colour.get(n))
-    orientation.push({ size: comp.length, flipped: flip, scriptFixedNames: fixed, members: comp })
+    const d = orientComponent({
+      members: comp,
+      colourOf: (n) => colour.get(n),
+      clips: orientClips,
+      scriptGenderOf: (n) => scriptGender(n, variantsOf.get(n)),
+    })
+    if (d.flip) for (const n of comp) colour.set(n, 1 - colour.get(n))
+    orientation.push({ size: comp.length, flipped: d.flip, decidedBy: d.decidedBy,
+      deliveredClipsKept: d.deliveredClipsKept, scriptGenderScore: d.scriptGenderScore,
+      clipsInComponent: d.clipsInComponent,
+      scriptFixedNames: d.scriptFixedNames, members: comp })
   }
   const genderOf = (n) => (colour.get(n) === 0 ? 'f' : 'm')
   const forcedMismatch = allNew
@@ -386,11 +525,17 @@ async function recastPod(db, podId) {
   //           this job ran (pre-existing drift, e.g. audio rendered before
   //           pod-recast.cjs corrected the cast on 2026-08-07). Counting that
   //           as this job's burden would inflate the number Tom is waiting for.
+  //
+  // The comparison is against the ORIGINAL (pre-recast) cast wherever the first
+  // pass's log records it — see loadBaselineCast(). On a second pass the pod's
+  // stored cast is already a recast cast, so it is no longer a baseline.
   const oldCastVoice = (r, track) => {
     const e = storedCast[canonicalSpeakerName(r.speaker)] || storedCast._default
     const t = e && (track === 'target' ? e.target : e.known)
     return t ? norm(t.voice_id) : null
   }
+  const baseline = loadBaselineCast()
+  let baselineHits = 0
   const regenQueue = []
   for (const r of rows) {
     const n = newName(r)
@@ -398,12 +543,19 @@ async function recastPod(db, podId) {
       const delivered = track === 'target' ? deliveredTarget(r) : deliveredKnown(r)
       const next = track === 'target' ? newVoiceTarget(n) : newVoiceKnown(n)
       if (!delivered || !next || delivered === next) continue
-      const prevCast = oldCastVoice(r, track)
+      const fromBaseline = baseline.get(`${podId}|${r.scene_number}|${r.sentence_number}|${track}`) || null
+      if (fromBaseline) baselineHits++
+      const prevCast = fromBaseline || oldCastVoice(r, track)
+      // Pre-existing drift = the clip already disagreed with its OWN cast before
+      // any recast ran. Everything else queued is this recast's burden.
+      const drift = !!prevCast && prevCast !== delivered
       regenQueue.push({ course: pod.course_code, pod: podId, global_order: r.global_order,
         scene: r.scene_number, sentence: r.sentence_number, track,
+        clipId: track === 'target' ? r.target_audio_id : r.known_audio_id,
         speakerBefore: r.speaker, speakerAfter: n,
         voiceBefore: delivered, voiceAfter: next, castVoiceBefore: prevCast,
-        causedByRecast: prevCast ? prevCast !== next : true })
+        castVoiceBeforeSource: fromBaseline ? 'pre-recast-baseline' : 'stored-cast',
+        causedByRecast: !drift })
     }
   }
   const causedByRecast = regenQueue.filter(q => q.causedByRecast)
@@ -462,6 +614,11 @@ async function recastPod(db, podId) {
   }
   if (oddCycle) blockers.push(`exchange graph is NOT bipartite: ${oddCycle.a} — ${oddCycle.b}; two voices cannot reach zero without a script rewrite`)
   if (gluedInRelabel.length) blockers.push(`${gluedInRelabel.length} glued rows fall inside the relabel set — the player chains glue by raw speaker string`)
+  // The hard rule, asserted rather than assumed. Cost-aware orientation cannot
+  // reach it (both orientations are collision-free) but nothing here trusts that.
+  if (proposedExchange.pairs || proposedExchange.turns) {
+    blockers.push(`proposed cast leaves ${proposedExchange.pairs} same-voice exchange pair(s) / ${proposedExchange.turns} turn(s) — the zero rule is non-negotiable`)
+  }
 
   const report = {
     pod: podId, course: pod.course_code, slug: pod.slug, visibility: pod.visibility,
@@ -484,6 +641,12 @@ async function recastPod(db, podId) {
     regenLinesKnown: regenQueue.filter(q => q.track === 'known').length,
     regenCausedByThisRecast: causedByRecast.length,
     regenPreexistingDrift: preexistingDrift.length,
+    regenAttributionFromBaseline: baselineHits,
+    // Distinct clips, not line-links: the unit phase 8 re-renders.
+    regenDistinctClips: new Set(regenQueue.map(q => `${q.track}|${q.clipId}`)).size,
+    regenDistinctClipsCausedByRecast: new Set(causedByRecast.map(q => `${q.track}|${q.clipId}`)).size,
+    deliveredClipsKeptByOrientation: orientation.reduce((n, o) => n + o.deliveredClipsKept.chosen, 0),
+    deliveredClipsKeptIfUnflipped: orientation.reduce((n, o) => n + o.deliveredClipsKept.asColoured, 0),
     regenQueue,
     blockers,
     oldStoredCastKeys: Object.keys(storedCast).sort(),
@@ -569,10 +732,15 @@ async function main() {
   let podIds = []
   if (POD_ARG) podIds = [POD_ARG]
   else if (ALL) {
+    // cym_n_for_eng is human-voiced by Aran and Catrin and its casting is
+    // settled by their live recording queues (jobs #131/#132) — excluded
+    // explicitly, not left to the visibility filter that happens to hide it
+    // today (both its pods are 'held' as of 2026-08-23).
     podIds = (await db.query(
       `select id from listening_pods
         where visibility = 'live' and slug in ('pod-0','pod-1')
           and course_code not like 'zzz%'
+          and course_code <> 'cym_n_for_eng'
         order by id`)).rows.map(r => r.id)
   } else { throw new Error('need --pod=<podId> or --all') }
 
@@ -583,8 +751,8 @@ async function main() {
   }
 
   const suffix = APPLY ? 'applied' : 'dryrun'
-  const name = POD_ARG ? `pod1-percall-recast-${POD_ARG.replace(/[:]/g, '-')}-${STAMP}-${suffix}-log.json`
-                       : `pod1-percall-recast-estate-${STAMP}-${suffix}-log.json`
+  const name = POD_ARG ? `pod1-percall-recast-${POD_ARG.replace(/[:]/g, '-')}-${STAMP}-${RUN}-${suffix}-log.json`
+                       : `pod1-percall-recast-estate-${STAMP}-${RUN}-${suffix}-log.json`
   const out = path.join(OUT_DIR, name)
   fs.writeFileSync(out, JSON.stringify(reports.length === 1 ? reports[0] : reports, null, 2))
 
@@ -594,6 +762,7 @@ async function main() {
       `before(ex)=${r.baselineDeliveredCollisions.exchangePairs}p/${r.baselineDeliveredCollisions.exchangeTurns}t`,
       `after(ex)=${r.proposedExchangeCollisions.pairs}p/${r.proposedExchangeCollisions.turns}t`,
       `regen=${r.regenLines}(mine=${r.regenCausedByThisRecast}/drift=${r.regenPreexistingDrift})`,
+      `clips=${r.regenDistinctClips}`, `kept=${r.deliveredClipsKeptByOrientation}`,
       `voices=${r.voicePairTarget.distinct}`,
       r.blockers.length ? `BLOCKED: ${r.blockers.join(' | ')}` : 'ok',
     ].join('\t'))
@@ -602,4 +771,6 @@ async function main() {
   await db.end()
 }
 
-main().catch(e => { console.error(e); process.exit(1) })
+module.exports = { orientComponent, buildExchangeWeights, twoColour, scriptGender, norm }
+
+if (require.main === module) main().catch(e => { console.error(e); process.exit(1) })

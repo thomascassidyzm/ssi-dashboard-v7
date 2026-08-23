@@ -65,13 +65,31 @@ async function main() {
   //                eng_for_* known side), where cast and audio disagreed
   //                before the job and still do. Not this job's burden; listed
   //                so the number is complete rather than flattering.
-  const applied = JSON.parse(fs.readFileSync(
-    path.join(OUT_DIR, `pod1-percall-recast-estate-${STAMP}-applied-log.json`), 'utf8'))
+  //
+  // Provenance is layered: the first estate pass, then every later cost-aware
+  // apply log in filename order. A pod that was recast again has its earlier
+  // provenance DROPPED before the newer log is laid down, so a slot the second
+  // pass rescued cannot leave a stale reason behind.
+  const logs = [`pod1-percall-recast-estate-${STAMP}-applied-log.json`]
+    .concat(fs.readdirSync(OUT_DIR)
+      .filter(f => /^pod1-percall-recast-.*-costaware-applied-log\.json$/.test(f)).sort())
   const provenance = new Map()
-  for (const rep of applied) {
-    for (const q of rep.regenQueue || []) {
-      provenance.set(`${q.pod}|${q.scene}|${q.sentence}|${q.track}`,
-        q.causedByRecast ? 'recast' : 'drift')
+  const appliedLogsRead = []
+  for (const file of logs) {
+    const full = path.join(OUT_DIR, file)
+    if (!fs.existsSync(full)) continue
+    const parsed = JSON.parse(fs.readFileSync(full, 'utf8'))
+    const reps = Array.isArray(parsed) ? parsed : [parsed]
+    appliedLogsRead.push(file)
+    for (const rep of reps) {
+      if (rep.error || !rep.pod) continue
+      for (const k of [...provenance.keys()]) if (k.startsWith(`${rep.pod}|`)) provenance.delete(k)
+    }
+    for (const rep of reps) {
+      for (const q of rep.regenQueue || []) {
+        provenance.set(`${q.pod}|${q.scene}|${q.sentence}|${q.track}`,
+          q.causedByRecast ? 'recast' : 'drift')
+      }
     }
   }
 
@@ -159,6 +177,7 @@ async function main() {
 
   const report = {
     generated: STAMP,
+    appliedLogsRead,
     unit: 'distinct course_audio clip — the thing phase-8 actually re-renders',
     grouping: 'per LANGUAGE (Tom, 2026-08-23): pod 1 is language-scoped, so a voice flip is fixed once per language',
     totalClips, totalLineLinks: totalLinks,
