@@ -71,6 +71,35 @@ function similarity(a, b) {
   return (2 * hit) / (A.length + B.length)
 }
 
+/**
+ * course_audio.language is a mixture of ISO-639-3 ('spa'), ISO-639-1 ('es'),
+ * locales ('es-ES') and the literal 'auto'. Whisper wants 639-1. Slicing the
+ * first two characters looks like it works — 'fra'→'fr', 'ita'→'it' — and then
+ * quietly hands whisper 'sp' for Spanish (not a language), 'jp' for Japanese
+ * (not a language) and 'sw' for Swedish, which IS a language: Swahili. Whisper
+ * answers an impossible request with an empty decode, and an empty decode reads
+ * as "this clip says nothing" — which is how a correct spa_for_eng render got
+ * skipped as unverifiable. Unknown codes fall back to 'auto' rather than to a
+ * guess, because detection beats a confident wrong answer.
+ */
+const ISO3_TO_ISO1 = {
+  ara: 'ar', bul: 'bg', cat: 'ca', cym: 'cy', dan: 'da', deu: 'de', ell: 'el',
+  eng: 'en', est: 'et', eus: 'eu', fas: 'fa', fin: 'fi', fra: 'fr', gle: 'ga',
+  heb: 'he', hin: 'hi', hrv: 'hr', hye: 'hy', isl: 'is', ita: 'it', jpn: 'ja',
+  kor: 'ko', lav: 'lv', lit: 'lt', mkd: 'mk', nep: 'ne', nld: 'nl', nor: 'no',
+  pol: 'pl', por: 'pt', ron: 'ro', rus: 'ru', slk: 'sk', slv: 'sl', spa: 'es',
+  swa: 'sw', swe: 'sv', tha: 'th', tur: 'tr', ukr: 'uk', vie: 'vi', zho: 'zh',
+}
+const WHISPER_ISO1 = new Set(Object.values(ISO3_TO_ISO1))
+function whisperLang(language) {
+  const raw = String(language || '').trim().toLowerCase()
+  if (!raw || raw === 'auto') return 'auto'
+  const base = raw.split(/[-_]/)[0]
+  if (ISO3_TO_ISO1[base]) return ISO3_TO_ISO1[base]
+  if (base.length === 2 && WHISPER_ISO1.has(base)) return base
+  return 'auto'
+}
+
 function sh(cmd, args, opts = {}) {
   return execFileSync(cmd, args, { encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'], ...opts })
 }
@@ -154,7 +183,7 @@ async function main() {
         ? Number((dur - lastSilenceStart).toFixed(2)) : 0
       res.has_speech = res.mean_db !== null && res.mean_db > -50 && dur > 0.25
 
-      const lang = String(r.language || '').slice(0, 2) || 'auto'
+      const lang = whisperLang(r.language)
       const w = sh(WHISPER, ['-m', MODEL_PATH, '-f', wav, '-l', lang, '-nt', '-np', '-t', '2'],
         { env: { ...process.env, WHISPER_MAX_THREADS: '2' } })
       res.stt = w.replace(/\s+/g, ' ').trim()
