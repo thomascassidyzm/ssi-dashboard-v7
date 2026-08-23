@@ -47,14 +47,24 @@ if (!POD_ID) { console.error('FAILED: --pod=<pod_id> is required'); process.exit
 
 const BUCKET = process.env.S3_AUDIO_BUCKET || process.env.S3_BUCKET || 'ssi-audio-stage'
 const REGION = process.env.AWS_REGION || 'eu-west-1'
-const MODEL_PATH = path.join(os.homedir(), '.local/share/whisper-models', `ggml-${MODEL}.bin`)
+const modelPath = (m) => path.join(os.homedir(), '.local/share/whisper-models', `ggml-${m}.bin`)
+const MODEL_PATH = modelPath(MODEL)
+const STT_THRESHOLD = 0.60
 const WHISPER = path.join(os.homedir(), '.local/bin/whisper-cli')
 
 const norm = (v) => String(v || '').replace(/^(xai_|azure_|eleven_)/, '')
 const canonicalSpeaker = (s) => String(s || '').replace(/\s*\([^)]*\)\s*/g, ' ').replace(/\s+/g, ' ').trim()
 
-/** Loose text compare: what survives is word content, not punctuation or case. */
+/**
+ * Loose text compare: what survives is word content, not punctuation, case or
+ * diacritics. Whisper routinely returns a correct decode unaccented — Romanian
+ * "Da, poti sa am si un pahar cu apa" for "Da, pot sa am si un pahar cu apa" —
+ * and comparing accented forms token-by-token scores that at 0.55 and calls a
+ * clean clip suspect. Folding is the honest comparison: it cannot hide a wrong
+ * WORD, only a missing accent.
+ */
 const words = (s) => String(s || '')
+  .normalize('NFD').replace(/\p{M}+/gu, '')
   .toLowerCase()
   .replace(/[^\p{L}\p{N}\s]/gu, ' ')
   .split(/\s+/).filter(Boolean)
@@ -184,11 +194,29 @@ async function main() {
       res.has_speech = res.mean_db !== null && res.mean_db > -50 && dur > 0.25
 
       const lang = whisperLang(r.language)
-      const w = sh(WHISPER, ['-m', MODEL_PATH, '-f', wav, '-l', lang, '-nt', '-np', '-t', '2'],
-        { env: { ...process.env, WHISPER_MAX_THREADS: '2' } })
-      res.stt = w.replace(/\s+/g, ' ').trim()
+      const decode = (model) => sh(WHISPER, ['-m', modelPath(model), '-f', wav, '-l', lang, '-nt', '-np', '-t', '2'],
+        { env: { ...process.env, WHISPER_MAX_THREADS: '2' } }).replace(/\s+/g, ' ').trim()
+
+      res.stt = decode(MODEL)
+      res.stt_model = MODEL
       res.stt_similarity = Number(similarity(r.text, res.stt).toFixed(3))
-      res.stt_ok = res.stt_similarity >= 0.60
+
+      // ESCALATE BEFORE ACCUSING. A weak decode is far more often the model than
+      // the clip: whisper-small stops at the " … " pause cue that pod turns are
+      // deliberately rendered with, so a perfectly good multi-sentence line comes
+      // back as its first sentence. ron_for_eng SC07-S013 scored 0.364 on small
+      // and 1.000 on medium, same bytes. Re-decode once on the bigger model
+      // before anything is called suspect — this is the estate's "read the decode
+      // before you re-render" rail, spending CPU instead of TTS money.
+      if (res.stt_similarity < STT_THRESHOLD && MODEL !== 'medium' && fs.existsSync(modelPath('medium'))) {
+        const better = decode('medium')
+        const sim = Number(similarity(r.text, better).toFixed(3))
+        res.stt_small = res.stt
+        res.stt_similarity_small = res.stt_similarity
+        if (sim > res.stt_similarity) { res.stt = better; res.stt_similarity = sim; res.stt_model = 'medium' }
+        res.escalated = true
+      }
+      res.stt_ok = res.stt_similarity >= STT_THRESHOLD
     } catch (e) {
       res.error = e.message.split('\n')[0]
     }
