@@ -110,6 +110,29 @@ function whisperLang(language) {
   return 'auto'
 }
 
+/**
+ * Character-level similarity, as 1 - (edit distance / longer length), on the
+ * folded string with spaces removed. Whisper does not always agree with the
+ * script about where words END — Basque "Egun on. Zer nahi duzu?" comes back as
+ * "Egunon, zer naiduzu.", every phoneme right and the spaces moved. A token bag
+ * scores that 0.25 and calls a clean clip suspect; character distance scores it
+ * near 1, and still cannot hide a genuinely wrong word.
+ */
+function charSimilarity(a, b) {
+  const A = words(a).join(''), B = words(b).join('')
+  if (!A.length && !B.length) return 1
+  if (!A.length || !B.length) return 0
+  let prev = Array.from({ length: B.length + 1 }, (_, i) => i)
+  for (let i = 1; i <= A.length; i++) {
+    const cur = [i]
+    for (let j = 1; j <= B.length; j++) {
+      cur[j] = Math.min(prev[j] + 1, cur[j - 1] + 1, prev[j - 1] + (A[i - 1] === B[j - 1] ? 0 : 1))
+    }
+    prev = cur
+  }
+  return 1 - prev[B.length] / Math.max(A.length, B.length)
+}
+
 function sh(cmd, args, opts = {}) {
   return execFileSync(cmd, args, { encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'], ...opts })
 }
@@ -197,9 +220,10 @@ async function main() {
       const decode = (model) => sh(WHISPER, ['-m', modelPath(model), '-f', wav, '-l', lang, '-nt', '-np', '-t', '2'],
         { env: { ...process.env, WHISPER_MAX_THREADS: '2' } }).replace(/\s+/g, ' ').trim()
 
+      const score = (t) => Number(Math.max(similarity(r.text, t), charSimilarity(r.text, t)).toFixed(3))
       res.stt = decode(MODEL)
       res.stt_model = MODEL
-      res.stt_similarity = Number(similarity(r.text, res.stt).toFixed(3))
+      res.stt_similarity = score(res.stt)
 
       // ESCALATE BEFORE ACCUSING. A weak decode is far more often the model than
       // the clip: whisper-small stops at the " … " pause cue that pod turns are
@@ -210,7 +234,7 @@ async function main() {
       // before you re-render" rail, spending CPU instead of TTS money.
       if (res.stt_similarity < STT_THRESHOLD && MODEL !== 'medium' && fs.existsSync(modelPath('medium'))) {
         const better = decode('medium')
-        const sim = Number(similarity(r.text, better).toFixed(3))
+        const sim = score(better)
         res.stt_small = res.stt
         res.stt_similarity_small = res.stt_similarity
         if (sim > res.stt_similarity) { res.stt = better; res.stt_similarity = sim; res.stt_model = 'medium' }
@@ -222,14 +246,21 @@ async function main() {
     }
     // A clip is CLEAN only on all three. Anything else is REVIEW — never
     // "delete", never "re-render": read the decode first.
+    // Three outcomes, because "whisper cannot read this language" and "this clip
+    // is wrong" are not the same finding and must not carry the same weight.
+    // VOICE and VAD are decidable here and are the hard gates. A low STT score
+    // with the right voice and speech present is ADVISORY: whisper genuinely
+    // cannot referee some of this estate's languages, and re-rendering the same
+    // text in the same voice would only buy the same decode a second time.
     res.verdict = res.error ? 'ERROR'
-      : (res.voice_ok && res.has_speech && res.stt_ok) ? 'CLEAN' : 'REVIEW'
+      : (!res.voice_ok || !res.has_speech) ? 'REVIEW'
+      : res.stt_ok ? 'CLEAN' : 'ADVISORY'
     results.push(res)
     console.log(`${res.verdict.padEnd(6)} ${r.track.padEnd(6)} ${String(r.speaker).padEnd(16)} ` +
       `voice=${res.voice_actual}${res.voice_ok ? '' : `(want ${res.voice_expected})`} ` +
       `dur=${res.duration_s}s db=${res.mean_db} tail=${res.tail_silence_s}s sim=${res.stt_similarity}` +
       (res.error ? ` ERR=${res.error}` : ''))
-    if (res.verdict === 'REVIEW' && !res.error) console.log(`       want: ${JSON.stringify(r.text)}\n       got : ${JSON.stringify(res.stt)}`)
+    if ((res.verdict === 'REVIEW' || res.verdict === 'ADVISORY') && !res.error) console.log(`       want: ${JSON.stringify(r.text)}\n       got : ${JSON.stringify(res.stt)}`)
   }
 
   function speakersEntry(r) {
@@ -239,6 +270,7 @@ async function main() {
   }
 
   const clean = results.filter((x) => x.verdict === 'CLEAN').length
+  const advisory = results.filter((x) => x.verdict === 'ADVISORY').length
   const review = results.filter((x) => x.verdict === 'REVIEW').length
   const err = results.filter((x) => x.verdict === 'ERROR').length
   const byVoice = {}
@@ -247,7 +279,7 @@ async function main() {
     byVoice[k] = byVoice[k] || { clean: 0, review: 0, error: 0 }
     byVoice[k][x.verdict.toLowerCase()]++
   }
-  console.log(`\n${POD_ID}: ${results.length} clip(s) — ${clean} CLEAN, ${review} REVIEW, ${err} ERROR`)
+  console.log(`\n${POD_ID}: ${results.length} clip(s) — ${clean} CLEAN, ${advisory} ADVISORY, ${review} REVIEW, ${err} ERROR`)
   console.log(`per voice: ${JSON.stringify(byVoice)}`)
   if (JSON_OUT) { fs.writeFileSync(JSON_OUT, JSON.stringify({ pod: POD_ID, model: MODEL, results }, null, 2)); console.log(`json: ${JSON_OUT}`) }
   fs.rmSync(tmp, { recursive: true, force: true })

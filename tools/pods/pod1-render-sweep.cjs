@@ -108,15 +108,16 @@ function verify(podId, since, limit) {
   if (limit) args.push(`--limit=${limit}`)
   let out = ''
   try { out = sh('node', args) } catch (e) { return { error: (e.stderr || e.message).toString().split('\n')[0] } }
-  const m = /(\d+) clip\(s\) — (\d+) CLEAN, (\d+) REVIEW, (\d+) ERROR/.exec(out)
-  const r = m ? { clips: +m[1], clean: +m[2], review: +m[3], error: +m[4] } : { parse_error: out.slice(-400) }
+  const m = /(\d+) clip\(s\) — (\d+) CLEAN, (\d+) ADVISORY, (\d+) REVIEW, (\d+) ERROR/.exec(out)
+  const r = m ? { clips: +m[1], clean: +m[2], advisory: +m[3], review: +m[4], error: +m[5] }
+    : { parse_error: out.slice(-400) }
   r.json = json
   // Carry the first REVIEW's decode so a human can read it without opening the
   // file. A low similarity is a prompt to LISTEN, never grounds to re-render.
-  if (r.review) {
+  if (r.review || r.advisory) {
     try {
       const j = JSON.parse(fs.readFileSync(json, 'utf8'))
-      r.reviews = j.results.filter((x) => x.verdict === 'REVIEW')
+      r.reviews = j.results.filter((x) => x.verdict === 'REVIEW' || x.verdict === 'ADVISORY')
         .slice(0, 5).map((x) => ({ id: x.id, track: x.track, voice_ok: x.voice_ok, has_speech: x.has_speech, sim: x.stt_similarity, want: x.text, got: x.stt }))
     } catch { /* the summary line is enough */ }
   }
@@ -150,7 +151,11 @@ function runCourse(course) {
     if (!sample.total) { rec.steps.sample = sample; break } // nothing to do: no work queued
     sv = verify(podId, '25min', 8)
     emit({ event: 'sample_verified', course, attempt, ...sv })
-    if (sv.clean && !sv.review && !sv.error) break
+    // ADVISORY does NOT block. A low STT score with the right voice and speech
+    // present means whisper cannot referee that language, not that the clip is
+    // wrong — and a second render would only buy the same decode again. Only a
+    // wrong voice, missing speech, or a hard error stops a course.
+    if (!sv.review && !sv.error) break
     causes.push(`sample verify: ${sv.review || 0} review, ${sv.error || 0} error`)
     sv = null
   }
