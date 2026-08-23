@@ -534,6 +534,18 @@ function debounced() {
   lastTapAt = now
   return true
 }
+// Back keeps its OWN window. The one above is shared between Next and Again to
+// swallow a bouncy tap on the same control; Back is not that — "Next, no, back"
+// is one of the fastest and most deliberate things a recordist does, and on the
+// shared window it simply did not happen. Verified in the browser: a Back tap
+// inside 250ms of a Next tap was silently dropped.
+let lastBackTapAt = 0
+function backDebounced() {
+  const now = Date.now()
+  if (now - lastBackTapAt < 250) return false
+  lastBackTapAt = now
+  return true
+}
 
 function commit(i, blob, hadSpeech) {
   const line = lines.value[i]
@@ -666,7 +678,7 @@ async function onAgain() {
 // drops its stored clip until the new one lands, and commit() no longer counts
 // the re-read as a second line.
 async function onBack() {
-  if (phase.value !== 'recording' || busy.value || !visited.value.length || !debounced()) return
+  if (phase.value !== 'recording' || busy.value || !visited.value.length || !backDebounced()) return
   busy.value = true
   try {
     await recorder.discardLine()
@@ -675,6 +687,10 @@ async function onBack() {
     index.value = prev
     // He has come back here on purpose, so this line gets its step forward back.
     advanceLock.release(lineKeyAt(prev))
+    // And so does the Next/Again bounce guard. That window exists to swallow a
+    // second tap on the SAME control; a Back in between is a deliberate change
+    // of mind, so the Next that follows it is a fresh intention and must land.
+    lastTapAt = 0
     stopPlayback()
     recorder.beginLine()
   } finally { busy.value = false }
