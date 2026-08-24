@@ -125,21 +125,8 @@ function buildCourseOrderItems({ seeds = [], legos = [], phrases = [] } = {}) {
  */
 async function loadCourseOrderScript(supabase, courseCode, opts = {}) {
   const { maxSeed = null, role = 'target1', excludeRecorded = true } = opts
-  const cap = (q) => (maxSeed ? q.lte('seed_number', maxSeed) : q)
 
-  const [seeds, legos, phrases] = await Promise.all([
-    fetchAll(() => cap(supabase.from('course_seeds')
-      .select('id, seed_number, target_text, known_text')
-      .eq('course_code', courseCode))),
-    fetchAll(() => cap(supabase.from('course_legos')
-      .select('id, lego_id, seed_number, lego_index, type, target_text, known_text')
-      .eq('course_code', courseCode))),
-    fetchAll(() => cap(supabase.from('course_practice_phrases')
-      .select('id, seed_number, lego_index, position, phrase_role, lego_id, target_text, known_text')
-      .eq('course_code', courseCode))),
-  ])
-
-  let items = buildCourseOrderItems({ seeds, legos, phrases })
+  let items = buildCourseOrderItems(await fetchCourseRows(supabase, courseCode, maxSeed))
   const totalInCourse = items.length
 
   let alreadyRecorded = 0
@@ -151,6 +138,49 @@ async function loadCourseOrderScript(supabase, courseCode, opts = {}) {
   }
 
   return { items, totalInCourse, alreadyRecorded }
+}
+
+/**
+ * How much of this course this voice slot has already recorded — WITHOUT
+ * building a script. Read-only, and deliberately independent of which reading
+ * order the session is in: the number of lines in the can is a fact about the
+ * course and the voice, not about the script the recordist happens to be
+ * holding. That is what lets the coverage-order screen show the same count the
+ * course-order screen shows, instead of showing nothing (Sascha, 2026-08-23:
+ * a coverage-order screen with no already-recorded stat read as a fresh start
+ * to someone who had 225 clips recorded).
+ *
+ * @returns {{ totalInCourse: number, alreadyRecorded: number }}
+ */
+async function loadRecordedProgress(supabase, courseCode, opts = {}) {
+  const { maxSeed = null, role = 'target1' } = opts
+  const [rows, recorded] = await Promise.all([
+    fetchCourseRows(supabase, courseCode, maxSeed),
+    fetchRecordedKeys(supabase, courseCode, role),
+  ])
+  const items = buildCourseOrderItems(rows)
+  let alreadyRecorded = 0
+  for (const i of items) {
+    if (recorded.has(normalizeForAudio(i.target))) alreadyRecorded++
+  }
+  return { totalInCourse: items.length, alreadyRecorded }
+}
+
+/** The three content tables a course's reading list is built from. Read-only. */
+async function fetchCourseRows(supabase, courseCode, maxSeed = null) {
+  const cap = (q) => (maxSeed ? q.lte('seed_number', maxSeed) : q)
+  const [seeds, legos, phrases] = await Promise.all([
+    fetchAll(() => cap(supabase.from('course_seeds')
+      .select('id, seed_number, target_text, known_text')
+      .eq('course_code', courseCode))),
+    fetchAll(() => cap(supabase.from('course_legos')
+      .select('id, lego_id, seed_number, lego_index, type, target_text, known_text')
+      .eq('course_code', courseCode))),
+    fetchAll(() => cap(supabase.from('course_practice_phrases')
+      .select('id, seed_number, lego_index, position, phrase_role, lego_id, target_text, known_text')
+      .eq('course_code', courseCode))),
+  ])
+  return { seeds, legos, phrases }
 }
 
 /**
@@ -183,4 +213,9 @@ async function fetchAll(makeQuery, pageSize = 1000) {
   return out
 }
 
-module.exports = { buildCourseOrderItems, loadCourseOrderScript, SKIPPED_PHRASE_ROLES }
+module.exports = {
+  buildCourseOrderItems,
+  loadCourseOrderScript,
+  loadRecordedProgress,
+  SKIPPED_PHRASE_ROLES
+}

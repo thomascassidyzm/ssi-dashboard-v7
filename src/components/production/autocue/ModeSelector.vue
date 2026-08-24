@@ -19,6 +19,32 @@
         <li>Batch review and approval</li>
       </ul>
 
+      <!-- Which reading order this session uses. It lived ONLY in the link's
+           ?order= query, so a recordist who opened the page without it had no
+           way to see which of the two they were in, and no way to change it —
+           which is how a session with 225 takes behind it opened mid-course
+           and read as a fresh start (2026-08-23). Named by what each one asks
+           of the reader, never by its internal name: nobody will be standing
+           next to a volunteer to explain "coverage". -->
+      <div class="order-choice" @click.stop>
+        <span class="order-choice-label" id="order-choice-label">How would you like to read?</span>
+        <div class="order-options" role="radiogroup" aria-labelledby="order-choice-label">
+          <button
+            v-for="opt in ORDER_OPTIONS"
+            :key="opt.value"
+            class="order-option"
+            :class="{ active: scriptOrder === opt.value }"
+            type="button"
+            role="radio"
+            :aria-checked="scriptOrder === opt.value"
+            @click.stop="chooseOrder(opt.value)"
+          >
+            <span class="order-option-title">{{ opt.title }}</span>
+            <span class="order-option-detail">{{ opt.detail }}</span>
+          </button>
+        </div>
+      </div>
+
       <!-- Short warm-up run so a new recorder (and whoever is reviewing them)
            can hear real audio back within a couple of minutes, instead of
            committing to the whole course before anyone has checked the mic,
@@ -87,9 +113,43 @@ const courseCode = route.params.courseCode || null
 // something back quickly, not to make a dent in the course.
 const TEST_BATCH_SEEDS = 5
 
+// The two reading orders, said in words a volunteer can act on without anyone
+// there to explain them. 'coverage' stays the default (Kai's ruling,
+// 2026-08-24: the toggle exists so the mode is visible and changeable, NOT to
+// change which mode is normal).
+const ORDER_OPTIONS = [
+  {
+    value: 'coverage',
+    title: 'A shorter set of lines, cut up afterwards',
+    detail: 'You read the fewest lines that between them contain every piece of the course. They jump around rather than starting at the beginning, and afterwards we cut them into pieces and reassemble them to voice everything else. This is the usual choice.'
+  },
+  {
+    value: 'course',
+    title: 'The course itself, straight through from the start',
+    detail: 'You read every line in the order a learner meets it, beginning at seed 1. Each line is used exactly as you read it — nothing is cut up. Stop whenever you like; next time picks up where you left off.'
+  }
+]
+
+// Reflects the link on load, so an existing ?order=course link still opens in
+// course mode and the toggle SHOWS that rather than contradicting it.
+const scriptOrder = ref(route.query.order === 'course' ? 'course' : 'coverage')
+
+// The URL stays the source of truth (RecordRoom sizes its own totals from
+// ?order, and the link is what gets shared), so a choice here is written back
+// to the query — dropping the param entirely for the default, which is exactly
+// what a plain link looks like today.
+function chooseOrder(order) {
+  const next = order === 'course' ? 'course' : 'coverage'
+  scriptOrder.value = next
+  const query = { ...route.query }
+  if (next === 'course') query.order = 'course'
+  else delete query.order
+  router.replace({ query })
+}
+
 function selectMode(mode) {
   selectedMode.value = mode
-  emit('select', mode)
+  emit('select', mode, { order: scriptOrder.value })
 }
 
 // Same flow as Mode 1, capped. @click.stop keeps the card's own handler from
@@ -112,7 +172,7 @@ function startTestBatch() {
     router.replace({ query: { ...route.query, maxSeed: String(maxSeed) } })
   }
 
-  emit('select', 'new-course', { maxSeed })
+  emit('select', 'new-course', { maxSeed, order: scriptOrder.value })
 }
 
 // Dialogue recording is cast-first: the pods page's Cast panel hands out the
@@ -228,6 +288,78 @@ function goToPods() {
   left: 0;
   color: var(--color-tungsten, var(--accent));
   font-weight: bold;
+}
+
+/* Reading-order chooser. Stacked full-width rows rather than a segmented pill:
+   each option carries its own explanation, and a phone has no room to put two
+   sentences side by side. */
+.order-choice {
+  position: relative;
+  z-index: 1;
+  margin-top: 1.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--color-graphite, var(--surface-3));
+}
+
+.order-choice-label {
+  display: block;
+  margin-bottom: 0.75rem;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-paper-dim, var(--muted));
+}
+
+.order-options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+}
+
+.order-option {
+  display: block;
+  width: 100%;
+  /* Comfortably tappable on a phone — the whole row is the target, not a
+     radio dot. */
+  min-height: 44px;
+  padding: 0.75rem 0.875rem;
+  text-align: left;
+  background: transparent;
+  border: 1px solid var(--color-graphite, var(--surface-3));
+  border-radius: 10px;
+  cursor: pointer;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.order-option:hover {
+  border-color: var(--color-tungsten, var(--accent));
+}
+
+.order-option.active {
+  border-color: var(--color-tungsten, var(--accent));
+  background: rgba(255, 166, 48, 0.08);
+}
+
+.order-option-title {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--color-paper, var(--ink));
+}
+
+.order-option.active .order-option-title::before {
+  content: '✓ ';
+  color: var(--color-tungsten, var(--accent));
+}
+
+.order-option-detail {
+  display: block;
+  margin-top: 0.35rem;
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: var(--color-paper-dim, var(--muted));
 }
 
 /* Secondary to the card itself — this is the cautious path, not the headline

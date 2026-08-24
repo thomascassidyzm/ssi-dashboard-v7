@@ -139,6 +139,14 @@
               <span class="card-value">
                 {{ sessionRecordedCount }} <span class="value-dim">of {{ scriptTotal }} read</span>
               </span>
+              <!-- "read" above counts THIS sitting only. Without the line
+                   below, a recordist returning to a course they have already
+                   put hours into sees "0 of 511" and reads it as having lost
+                   the lot (2026-08-23). It shows in every reading mode. -->
+              <span v-if="alreadyRecorded > 0" class="card-hint card-hint-strong">
+                {{ alreadyRecorded }} lines already recorded in your voice for this
+                course — those are skipped, this is what's left.
+              </span>
               <span class="card-hint">
                 About {{ scriptMinutes }} minutes of reading in total
                 <template v-if="sessionUploadedCount > 0"> · {{ sessionUploadedCount }} saved</template>
@@ -182,7 +190,7 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted } from 'vue'
+import { ref, computed, onMounted, watch } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import { useAuth } from '@/composables/useAuth'
 import { useCourses } from '@/composables/useCourses'
@@ -223,6 +231,9 @@ const voiceConfig = ref(null)
 const scriptTotal = ref(null)
 const scriptMinutes = ref(null)
 const scriptError = ref(null)
+// Lines already recorded in this person's voice for this course, in whichever
+// reading mode is selected. null = not known (shown as such, never as 0).
+const alreadyRecorded = ref(null)
 
 const userName = computed(() => learner.value?.name || learner.value?.email || '')
 
@@ -372,6 +383,15 @@ async function loadRoom() {
 
   loading.value = false
 
+  await loadScriptTotals(base)
+}
+
+// Reading script totals. Split out of loadRoom() because the reading order is
+// now a choice made INSIDE the room (the chooser writes ?order), so these
+// totals have to be re-read when it changes or the strip keeps quoting the
+// other mode's numbers.
+async function loadScriptTotals(base = apiBase()) {
+  if (!props.courseCode) return
   // Reading script totals (slower — loads after the room renders).
   // Must carry the same ?maxSeed cap the autocue session will use, or the room
   // advertises the WHOLE course ("0 of 1000 read", "about 100 minutes") while
@@ -389,12 +409,16 @@ async function loadRoom() {
   // double the minutes the recordist is actually about to read.
   if (route.query.order === 'course') params.set('order', 'course')
   const capQuery = params.toString() ? `?${params}` : ''
+  scriptError.value = null
   try {
     const res = await fetch(`${base}/api/production/${props.courseCode}/recording-script${capQuery}`, { headers: FETCH_HEADERS })
     if (res.ok) {
       const data = await res.json()
       scriptTotal.value = data.totalItems ?? null
       scriptMinutes.value = data.estimatedMinutes ?? null
+      // What this voice already has recorded for the course, in BOTH reading
+      // modes. null = the server couldn't check; it is never rendered as 0.
+      alreadyRecorded.value = typeof data.alreadyRecorded === 'number' ? data.alreadyRecorded : null
     } else {
       scriptError.value = 'Your reading script is still being prepared.'
     }
@@ -409,6 +433,10 @@ async function handleSignOut() {
 }
 
 onMounted(loadRoom)
+
+// The reading-order chooser in the studio writes ?order, so the strip's totals
+// and already-recorded count follow the mode the recordist just picked.
+watch(() => route.query.order, () => { loadScriptTotals() })
 </script>
 
 <style scoped>
@@ -621,6 +649,13 @@ onMounted(loadRoom)
   color: var(--color-paper-dim, var(--muted));
   margin-top: 0.5rem;
   line-height: 1.5;
+}
+
+/* Reassurance that has to survive a glance on a phone — the dim hint colour
+   is exactly where "you already recorded 225 lines" gets missed. */
+.card-hint-strong {
+  color: var(--color-paper, var(--ink));
+  font-weight: 600;
 }
 
 .room-spinner {

@@ -79,18 +79,21 @@
           The course itself, in order — start to finish. Stop wherever you like;
           the rest is still there next time.
         </p>
+        <!-- The other mode used to say nothing at all, which is what let a
+             session open somewhere in the middle of a course with no
+             explanation of why. -->
+        <p v-else class="script-cap-note">
+          A shorter set of lines that between them cover the whole course. They
+          jump around rather than starting at the beginning, and are cut up and
+          reassembled afterwards to voice everything else.
+        </p>
         <div class="script-stats">
           <!-- Course order has no phrase/direct split: every line is a course
-               item. What is worth showing instead is how much is already in
-               the can. -->
+               item, so it shows the size of the course instead. -->
           <template v-if="state.scriptInfo?.order === 'course'">
             <div class="script-stat">
               <span class="script-stat-value">{{ state.scriptInfo?.totalInCourse || 0 }}</span>
               <span class="script-stat-label">Items in course</span>
-            </div>
-            <div class="script-stat">
-              <span class="script-stat-value">{{ state.scriptInfo?.alreadyRecorded || 0 }}</span>
-              <span class="script-stat-label">Already recorded</span>
             </div>
           </template>
           <template v-else>
@@ -103,6 +106,14 @@
               <span class="script-stat-label">Direct Items</span>
             </div>
           </template>
+          <!-- EVERY reading mode, always. This stat used to be course-order
+               only, so a coverage session opened on a screen that said nothing
+               about the 225 lines already in the can and read as a fresh start
+               (2026-08-23). A dash means "we could not check", never zero. -->
+          <div class="script-stat">
+            <span class="script-stat-value">{{ alreadyRecordedDisplay }}</span>
+            <span class="script-stat-label">Already recorded</span>
+          </div>
           <div class="script-stat">
             <span class="script-stat-value">{{ state.scriptInfo?.totalItems || 0 }}</span>
             <span class="script-stat-label">Total Items</span>
@@ -112,6 +123,18 @@
             <span class="script-stat-label">Minutes</span>
           </div>
         </div>
+        <!-- Say the same thing in a sentence, in both modes: a stat tile is
+             easy to miss on a phone, and "you have recorded nothing" is the
+             one impression this screen must never leave. -->
+        <p v-if="state.scriptInfo?.alreadyRecorded === null" class="script-cap-note">
+          We couldn't check how many lines you've already recorded for this course
+          just now. Anything you recorded before is still saved — this doesn't mean
+          none exist.
+        </p>
+        <p v-else-if="state.scriptInfo?.alreadyRecorded > 0" class="script-cap-note">
+          {{ state.scriptInfo.alreadyRecorded }} lines are already recorded in your
+          voice for this course. They're skipped — what's below is what's left.
+        </p>
         <!-- Course order is a natural-only run: each line is read once and the
              slow pass never appears, so promising amber text here would be a
              lie the recordist notices on line one. -->
@@ -547,6 +570,14 @@ const recordingAs = computed(() => {
     || learner.value?.name
     || learner.value?.email
   return { label: slotLabel(slot, languages), voiceName }
+})
+
+// How many lines this voice already has in the can for this course. null means
+// the server could not compute it — shown as a dash, never as 0, because "0"
+// here is the exact false statement this stat exists to prevent.
+const alreadyRecordedDisplay = computed(() => {
+  const n = state.scriptInfo?.alreadyRecorded
+  return (typeof n === 'number' && Number.isFinite(n)) ? n : '—'
 })
 
 const slotOptions = computed(() => recordableSlotOptions(courseVoiceConfig.value, {
@@ -986,9 +1017,11 @@ function onModeSelect(mode, opts = {}) {
     .filter(n => Number.isInteger(n) && n > 0)
   setMaxSeed(caps.length ? Math.min(...caps) : null)
   // Same reason as the cap: resetSession() clears the reading order, so it has
-  // to be re-read from the link on every mode choice or a recorder who backs
-  // out and picks again silently drops back to coverage order.
-  setScriptOrder(route.query.order)
+  // to be re-read on every mode choice or a recorder who backs out and picks
+  // again silently drops back to coverage order. The chooser's own value wins
+  // over the link — it writes the link too, but router.replace lands a tick
+  // later and the mode choice must not race it.
+  setScriptOrder(opts.order ?? route.query.order)
   selectMode(mode)
 }
 

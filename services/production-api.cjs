@@ -8545,7 +8545,7 @@ app.patch('/api/production/:courseCode/phrase/:phraseId', async (req, res) => {
 // Import the recording optimizer algorithm
 const { generateRecordingScript, generateTwoPoolScript } = require('../tools/recording-optimizer/generate-recording-script.cjs')
 const { buildScriptItems, buildCourseScriptItems, buildTwoPoolScriptItems, isNaturalOnly } = require('./recording-script-items.cjs')
-const { loadCourseOrderScript } = require('./course-order-script.cjs')
+const { loadCourseOrderScript, loadRecordedProgress } = require('./course-order-script.cjs')
 
 // GET /api/production/:courseCode/recording-optimizer
 // Runs the GuaranteedCoverage algorithm to find minimum recording set
@@ -8591,6 +8591,25 @@ app.get('/api/production/:courseCode/recording-optimizer', async (req, res) => {
     res.status(500).json({ error: error.message })
   }
 })
+
+// How much of a course one voice slot has already recorded, for ANY reading
+// mode's response. NO SCREEN MAY EVER TELL A RECORDIST THEY HAVE RECORDED
+// NOTHING WHEN CLIPS EXIST: the course-order response has carried this count
+// since it was written, the coverage response never did, and on 2026-08-23 a
+// recordist with 225 takes in the can opened the coverage screen and saw a
+// display that read as a fresh start.
+//
+// Read-only. Returns nulls — never zeros — when it cannot be computed, so the
+// screen says "not available" instead of asserting that nothing is recorded.
+async function readRecordedProgress(courseCode, { maxSeed = null, role = 'target1' } = {}) {
+  if (!supabaseClient.isInitialized()) return { totalInCourse: null, alreadyRecorded: null }
+  try {
+    return await loadRecordedProgress(supabaseClient.getClient(), courseCode, { maxSeed, role })
+  } catch (err) {
+    logger.warn(`[Recording Script] already-recorded count unavailable for ${courseCode}: ${err.message}`)
+    return { totalInCourse: null, alreadyRecorded: null }
+  }
+}
 
 // GET /api/production/:courseCode/recording-script
 // Returns the optimizer's script formatted for the autocue — interleaved normal/slow pairs
@@ -8657,12 +8676,15 @@ app.get('/api/production/:courseCode/recording-script', async (req, res) => {
         poolA: poolResult.poolA.items,
         poolB: poolResult.poolB.lines,
       })
+      const poolProgress = await readRecordedProgress(courseCode, { maxSeed, role })
       return res.json({
         courseCode,
         maxSeed,
         role,
         mode: 'two-pool',
         naturalOnly: false,
+        totalInCourse: poolProgress.totalInCourse,
+        alreadyRecorded: poolProgress.alreadyRecorded,
         minPieceWords,
         totalItems: poolItems.length,
         totalPoolA: poolResult.poolA.items.length,
@@ -8693,6 +8715,12 @@ app.get('/api/production/:courseCode/recording-script', async (req, res) => {
         })
       }
       const items = buildCourseScriptItems(courseItems)
+      // With ?full=true nothing is pruned, so loadCourseOrderScript has no
+      // already-recorded figure to report and returns 0 — which is the very
+      // claim this screen must never make when clips exist. Count it directly.
+      const recordedSoFar = excludeRecorded
+        ? alreadyRecorded
+        : (await readRecordedProgress(courseCode, { maxSeed, role })).alreadyRecorded
       return res.json({
         courseCode,
         maxSeed,
@@ -8706,7 +8734,7 @@ app.get('/api/production/:courseCode/recording-script', async (req, res) => {
         totalPhrases: items.length,
         totalDirect: 0,
         totalInCourse,
-        alreadyRecorded,
+        alreadyRecorded: recordedSoFar,
         estimatedMinutes: Math.round((items.length * 6) / 60),
         items
       })
@@ -8732,6 +8760,11 @@ app.get('/api/production/:courseCode/recording-script', async (req, res) => {
     const phrases = result.recordingScript.phrases
     const directItems = result.directRecord.items
 
+    // Same count the course-order response carries, computed the same way, so
+    // switching reading mode never changes what a recordist is told they have
+    // already recorded. See readRecordedProgress above for why it exists.
+    const progress = await readRecordedProgress(courseCode, { maxSeed, role })
+
     // Shape the reading list. In coverage order each line is read twice
     // (natural, then slow); in course order it is read ONCE, natural only —
     // see services/recording-script-items.cjs for what that costs downstream.
@@ -8751,6 +8784,8 @@ app.get('/api/production/:courseCode/recording-script', async (req, res) => {
       totalItems: items.length,
       totalPhrases: phrases.length,
       totalDirect: directItems.length,
+      totalInCourse: progress.totalInCourse,
+      alreadyRecorded: progress.alreadyRecorded,
       estimatedMinutes,
       items
     })
