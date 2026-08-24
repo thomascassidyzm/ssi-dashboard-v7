@@ -144,6 +144,45 @@ at exactly the turns the free path measurably could not do.
 
 The refusal rate came in at **4.8% against the census's ~8%**.
 
+## The one thing that went wrong, and the repair
+
+**28 existing clip rows were repointed at spliced audio without anyone intending it.** Found by
+checking, not by a symptom — nothing sounded wrong, and no gate fired.
+
+The splicer looks up every sentence before cutting, so an already-rendered clip is reused and never
+re-made. That lookup compares the voice with phase8's `sameVoice`, which canonicalises through
+`tryCanonicalClipVoiceId(v)` — **one argument, no provider**. A pod cast stores raw voice ids
+(`bf9fe5b5f981`); `course_audio` stores canonical ones (`xai_bf9fe5b5f981`). Without the provider the
+canonicaliser cannot bridge them, so the lookup **missed rows that existed**.
+
+The write used the other spelling. `publishPiece` inserts with `canonicalClipVoiceId(id, provider)` —
+two arguments, so it *does* produce `xai_…` — and the upsert's conflict key
+`(course_code, text_normalized, language, role, voice_id)` matched the very row the lookup had just
+failed to find. The upsert became an UPDATE: same row, same text, same voice, **new `s3_key`**.
+
+**Nothing was deleted or overwritten in S3.** `publishPiece` uploads to a fresh `mastered/<uuid>.mp3`
+and never touches an existing object, so all 28 original recordings are still exactly where they
+were. What changed was which object 28 rows *pointed at*: a spliced piece instead of the original
+standalone render. Same sentence, same voice, different take — which is precisely why nothing caught
+it, and precisely why it needed catching anyway. Make-before-break has no "the audio was fine
+anyway" clause.
+
+**Repaired.** `content_audit_log.old_row` keeps the pre-update values, so every original `s3_key`,
+`duration_ms` and `file_size_bytes` was recoverable exactly. All 28 rows are back on their true
+pre-run clips — verified against the *earliest* in-window audit entry, because one row (`nld`
+"Dank u wel.") was hit twice by two different turns at concurrency 4, so the naive "previous value"
+was itself a spliced key. 10/10 sampled restored clips serve HTTP 200.
+
+Tool: `tools/pods/restore-clobbered-clip-pointers.cjs`. Log:
+`docs/pods/clobbered-clip-pointer-restore-2026-08-24-applied-log.json`.
+
+**Prevented.** The splicer now looks up with the same canonical voice id the write uses, so the read
+and the conflict key cannot disagree again.
+
+**Worth a separate look:** `generatePodAudio` has the identical asymmetry — it also looks up with the
+raw voice id and writes the canonical one. This is a phase8 shape, not something the splicer
+invented, and every pod render goes through it.
+
 ## Progress
 
 Carried forward per the standing content-change migration protocol, GREATEST-guarded, one
@@ -160,6 +199,34 @@ Through the real learner path — `saysomethingin.app/api/audio/<id>`, not S3 �
 stored text is **exactly its own sentence** (this is what catches a reversed or off-by-one array);
 **app parity**, by reproducing `splitRowUnits` so it knows what the player will actually build;
 **seams**, re-measured on the delivered bytes; and **speech**, via whisper.
+
+### Result — the six non-Latin courses, every split row
+
+I checked ara, ara_eg, hin, jpn, kor and zho myself at full coverage; workers **#355 / #356 / #357**
+have the other 15.
+
+**666 rows verified. 0 serve failures. 0 seam failures. 0 rows where the app would collapse or
+mis-order a split.**
+
+18 hard text/parity failures, of which **9 are attributable to this pass — and all 9 are punctuation
+only**, on clips that were REUSED rather than spliced:
+
+| stored on the reused clip | this row's sentence |
+|---|---|
+| 안녕하세요. | 안녕하세요! |
+| 물론이죠 | 물론이죠. |
+| こんにちは！ | こんにちは。 |
+| Bonjour. | Bonjour! |
+
+The estate's dedup key is deliberately punctuation-insensitive (`audioKeyCandidates`), so a sentence
+ending "!" legitimately reuses the clip stored with ".". The audio is the right words in the right
+voice; the card displays the clip's punctuation rather than the script's. Reported rather than
+"fixed", because forking that dedup rule to chase a full stop would create near-duplicate clips
+estate-wide — a worse trade than the cosmetic difference.
+
+The other 9 are pre-existing splits, not this pass's work. So are all **44 whitespace-only**
+findings: Hindi clips from earlier work stored with a leading space (`" क्या आप…"`), which indents
+the card. Minor, real, and not mine to change here.
 
 ### Reading the STT number
 
@@ -189,3 +256,12 @@ results are recorded but never counted.
    known side is the same free method and is a follow-on pass — not something to slip in silently.
 3. **Italian's 1 residual turn** was left alone with the rest of Italian.
 4. The 5 pre-existing known-mismatch rows above are reported, not fixed.
+5. **The splicer is blind to the Devanagari danda "।"**, because the app's `POD_SENTENCE_BOUNDARY`
+   is. So most multi-sentence Hindi turns were seen as single sentences and skipped — Hindi offered
+   only 7 candidates where the text has far more. Under-detection, which is the safe direction:
+   nothing was cut wrongly, some work simply wasn't done. Teaching it the danda means changing
+   shared learner-facing code and is a decision, not a tidy-up. Hindi is largely already split by
+   earlier work (48 rows), so the practical shortfall is small.
+6. **The 15 Latin-script courses were verified by workers #355/#356/#357**, not by me. Their
+   findings are folded into the chat report; this document's verification numbers are the 666 rows
+   I checked directly.
