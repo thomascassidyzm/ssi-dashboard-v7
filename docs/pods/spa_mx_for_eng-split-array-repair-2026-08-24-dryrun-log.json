@@ -1,0 +1,26 @@
+{
+ "pod": "spa_mx_for_eng:pod-1",
+ "course": "spa_mx_for_eng",
+ "mode": "dryrun",
+ "generated_at": "2026-08-24T11:28:01.574Z",
+ "rows_total": 231,
+ "rows_repaired": 0,
+ "cast": {
+  "target": [
+   "es-MX-CarlotaNeural",
+   "es-MX-LucianoNeural"
+  ],
+  "known": [
+   "bedd6226",
+   "gfzdpspr5fdp"
+  ]
+ },
+ "by_scene": {},
+ "skipped_rows_needing_rerender": [
+  "s22/1 target_audio_id text mismatch",
+  "s22/5 target_audio_id text mismatch",
+  "s22/9 target_audio_id text mismatch",
+  "s22/11 target_audio_id text mismatch"
+ ],
+ "rows": []
+}

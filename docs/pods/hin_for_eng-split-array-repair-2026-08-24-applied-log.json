@@ -1,0 +1,3059 @@
+{
+ "pod": "hin_for_eng:pod-1",
+ "course": "hin_for_eng",
+ "mode": "applied",
+ "generated_at": "2026-08-24T11:23:27.564Z",
+ "rows_total": 231,
+ "rows_repaired": 109,
+ "cast": {
+  "target": [
+   "ara",
+   "89q2pnko"
+  ],
+  "known": [
+   "bedd6226",
+   "gfzdpspr5fdp"
+  ]
+ },
+ "by_scene": {
+  "1": 3,
+  "2": 2,
+  "3": 3,
+  "4": 2,
+  "5": 2,
+  "6": 13,
+  "7": 12,
+  "8": 12,
+  "9": 15,
+  "10": 9,
+  "11": 8,
+  "12": 6,
+  "13": 6,
+  "14": 5,
+  "15": 11
+ },
+ "rows": [
+  {
+   "id": "hin_for_eng:pod-1:SC01-S002",
+   "scene": 1,
+   "sentence": 2,
+   "speaker": "Sarah",
+   "target_text": "सुप्रभात। आप कैसी हैं?",
+   "clear": [
+    "sentence_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice 73xd5dum",
+    "takeg_audio_ids: off-cast voice 73xd5dum"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "82ec8f0a-91e9-4fc9-a17a-69adf36ea29c",
+     "309a083d-2474-464a-9ea5-a057b5b08f4c"
+    ],
+    "sentence_known_audio_ids": [
+     "e0448714-4748-4c03-a501-4a85f17b1900",
+     "d43ace32-2654-44b0-ba6b-1c935fb49677"
+    ],
+    "takeg_audio_ids": [
+     "c0af7091-20eb-4417-a74e-44119c7684aa"
+    ]
+   }
+  },
+  {
+   "id": "hin_for_eng:pod-1:SC01-S003",
+   "scene": 1,
+   "sentence": 3,
+   "speaker": "Neighbour",
+   "target_text": "मैं बिल्कुल ठीक हूँ, शुक्रिया। क्या आप काम पर जा रही हैं?",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice leo"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "85c9f2c4-c9a6-4513-9bdb-e00803f88be8",
+     "c24796d4-e002-4664-a330-2e9c1d48bbe4"
+    ],
+    "sentence_known_audio_ids": [
+     "25924e81-2375-4b52-9979-ab6e55aa5a7c",
+     "ac2f4996-c05e-446f-95f9-f9ebf56fba2a"
+    ],
+    "takeg_audio_ids": [
+     "686fb473-11f0-4053-92e9-7a65c01dbe30"
+    ]
+   }
+  },
+  {
+   "id": "hin_for_eng:pod-1:SC01-S004",
+   "scene": 1,
+   "sentence": 4,
+   "speaker": "Sarah",
+   "target_text": "हाँ, आज मेरा दिन व्यस्त है। मुझे उम्मीद है आपका दिन अच्छा रहेगा। फिर मिलते हैं।",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "63d36b95-7667-4d19-9c9e-be766f638221",
+     "445a032f-76af-48f6-9b72-2f9fdeb540ff",
+     "7354b896-bbfc-4b83-9d2a-371a25eead71"
+    ],
+    "sentence_known_audio_ids": [
+     "a3c5109f-e3b5-425e-ba22-e5a62a6ad3a5",
+     "7eb11ce4-ad25-4b41-b763-bdf935abb602",
+     "e7343be9-d377-4a4f-8b36-30ff487f2537"
+    ],
+    "takeg_audio_ids": [
+     "5b78d941-a396-47dd-8dcd-5184b578d1d2"
+    ]
+   }
+  },
+  {
+   "id": "hin_for_eng:pod-1:SC02-S001",
+   "scene": 2,
+   "sentence": 1,
+   "speaker": "Sarah",
+   "target_text": "माफ़ कीजिए, क्या यह सीट ली हुई है?",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: off-cast voice 73xd5dum"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "2c891f64-6896-4f13-af0a-d33020dec62e"
+    ]
+   }
+  },
+  {
+   "id": "hin_for_eng:pod-1:SC02-S002",
+   "scene": 2,
+   "sentence": 2,
+   "speaker": "Passenger",
+   "target_text": "नहीं, यह खाली है। कृपया, बैठिए।",
+   "clear": [
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": [
+     "3e460330-6f20-4c89-9902-620af7538b52",
+     "7c00d366-d1b9-4a3a-a543-59edff2bf5b7"
+    ],
+    "takeg_audio_ids": [
+     "0e522c00-e53f-4272-81d5-070e7472e598"
+    ]
+   }
+  },
+  {
+   "id": "hin_for_eng:pod-1:SC03-S001",
+   "scene": 3,
+   "sentence": 1,
+   "speaker": "Barista (3 pm)",
+   "target_text": "नमस्ते। मैं आपको क्या दे सकता हूँ?",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice azure_en-GB-HollieNeural/en-GB-HollieNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "57eba7d2-17a0-43de-ab2b-0dc12fb0f839",
+     "1856342c-2678-498f-8510-6b058379fa25"
+    ],
+    "sentence_known_audio_ids": [
+     "0a051ec9-024b-448a-89c5-a2fd5a8d96db",
+     "6fae672c-7d6b-43ee-90f7-fdd60ac31a7c"
+    ],
+    "takeg_audio_ids": [
+     "081dcce3-8660-4ee9-aaa8-139cb3b65443"
+    ]
+   }
+  },
+  {
+   "id": "hin_for_eng:pod-1:SC03-S002",
+   "scene": 3,
+   "sentence": 2,
+   "speaker": "Sarah",
+   "target_text": "नमस्कार। मुझे एक कॉफ़ी चाहिए, कृपया। दूध के साथ लेकिन चीनी के बिना। पैक करके।",
+   "clear": [
+    "sentence_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "8f3ea9f7-2383-4576-ae7d-f453a02695d7",
+     "15efff30-68e3-4f3a-a90d-369abbb6bdac",
+     "447ab4fa-9b23-4cd3-a470-8a8ce2eafe92",
+     "277d36af-2057-4a39-9117-012e027936f0"
+    ],
+    "sentence_known_audio_ids": [
+     "bcf5422c-3006-42da-858f-416234411d3f",
+     "6432f95e-a5e5-497c-92e4-2881dbf85e15",
+     "c548b135-30d9-4701-83c2-78d8e940835b",
+     "1dc0a491-ba89-4f19-9f1e-45864b2226fb"
+    ],
+    "takeg_audio_ids": [
+     "b32e841f-a082-463e-9d5e-4b6e15daac6a"
+    ]
+   }
+  },
+  {
+   "id": "hin_for_eng:pod-1:SC03-S003",
+   "scene": 3,
+   "sentence": 3,
+   "speaker": "Sarah",
+   "target_text": "क्या आपके पास कुछ खाने के लिए है?",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "c20799bd-5aef-4b89-b6ec-9d0df8ea8b3b",
+     "54138d7c-59b5-4b55-a9f0-3bf9b25954f2"
+    ],
+    "sentence_known_audio_ids": [
+     "e7fe5507-7f6b-4021-8aed-3ea8bb04f3cc",
+     "d91a5d3b-afb4-4acf-90f8-7ed7600355ae"
+    ],
+    "takeg_audio_ids": [
+     "72d13264-f82c-4e7d-a774-9b083eef5ab0"
+    ]
+   }
+  },
+  {
+   "id": "hin_for_eng:pod-1:SC04-S002",
+   "scene": 4,
+   "sentence": 2,
+   "speaker": "Sarah",
+   "target_text": "हेलो! माफ़ कीजिए, लेकिन मैं अभी बात नहीं कर सकती। मुझे अभी घर जाना है। क्या हम कल बात कर सकते हैं?",
+   "clear": [
+    "sentence_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice 73xd5dum",
+    "takeg_audio_ids: off-cast voice 73xd5dum"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "4899c8cb-72a9-4a3a-950b-4ad3c278f61d",
+     "944a0c5b-156f-4ffc-92ee-312593bc1237"
+    ],
+    "sentence_known_audio_ids": [
+     "f764b6c8-7828-402a-8414-8bab849e43dc",
+     "dfe95c05-410d-4431-8046-876efda1857d",
+     "1887b37d-413c-46aa-9e57-41722744db75",
+     "3f7c4f71-9451-4102-9d17-22b90fb0f5d1"
+    ],
+    "takeg_audio_ids": [
+     "dea30986-fabc-4325-abda-944935f63920"
+    ]
+   }
+  },
+  {
+   "id": "hin_for_eng:pod-1:SC04-S003",
+   "scene": 4,
+   "sentence": 3,
+   "speaker": "Friend",
+   "target_text": "नहीं, माफ़ करना, मैं कल व्यस्त हूँ। लेकिन शनिवार को बात करते हैं। तब मिलते हैं।",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice leo"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "33d6dc32-b70e-453f-ae35-c747da455ace",
+     "df058e9d-f64f-4bcb-877b-30211fd4931d",
+     "ea7c4b29-fc9b-4444-96a4-6c7079ee7dc4"
+    ],
+    "sentence_known_audio_ids": [
+     "0691e665-8297-4901-a4cb-5961c905e9a8",
+     "83a41207-97a1-44ba-8db1-eaaed21019ab",
+     "df89d094-1eb3-458e-9bbf-55ee472e5883"
+    ],
+    "takeg_audio_ids": [
+     "b2e795c1-916b-44a7-9785-06d3d4d36706"
+    ]
+   }
+  },
+  {
+   "id": "hin_for_eng:pod-1:SC05-S001",
+   "scene": 5,
+   "sentence": 1,
+   "speaker": "Neighbour (10:30 pm)",
+   "target_text": "नमस्कार, सारा। क्या आपका दिन लंबा रहा?",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "08fb3d9d-1e5f-4c21-a9aa-2d84f9e45132",
+     "bbdaca99-d8d2-4d6a-8a79-4a3d43f7da3f"
+    ],
+    "sentence_known_audio_ids": [
+     "83da4693-9d2a-445b-b67c-0a6eef1aafad",
+     "dbc840cb-1e85-4dcb-be5a-867a66e4501e"
+    ],
+    "takeg_audio_ids": [
+     "2c0d189a-50c0-45d0-bfdc-d6343b182f34"
+    ]
+   }
+  },
+  {
+   "id": "hin_for_eng:pod-1:SC05-S002",
+   "scene": 5,
+   "sentence": 2,
+   "speaker": "Sarah",
+   "target_text": "हाँ, बहुत। मैं अभी बहुत थकी हुई हूँ। शुभ रात्रि। कल मिलते हैं।",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice 73xd5dum",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: off-cast voice 73xd5dum"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "3e484183-29af-4d74-a376-24e655b0190f",
+     "4a12284a-7df9-4c23-a401-5616378b43df",
+     "29bc7064-0e55-4f4f-b291-3911bdb1f6b3",
+     "daa9ab48-4bff-4d24-b6f2-101a3ee803a2"
+    ],
+    "sentence_known_audio_ids": [
+     "9dd62c3b-b8cb-4721-aa74-c330c3940f37",
+     "6f851fad-d3f8-454c-b783-77416433f7fc",
+     "f31245f9-f5dc-4ee8-8e14-4a05ed59353f",
+     "58eb2286-aee1-4f8c-a89a-80e252b5a0c5"
+    ],
+    "takeg_audio_ids": [
+     "7d4532bd-e177-4c76-9eca-07dd26c8a772"
+    ]
+   }
+  },
+  {
+   "id": "hin_for_eng:pod-1:SC06-S001",
+   "scene": 6,
+   "sentence": 1,
+   "speaker": "James",
+   "target_text": "माफ़ कीजिए। नमस्ते। आपका नाम क्या है?",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "676e9f0c-48ea-4021-86a5-996ffdd55b9f",
+     "57eba7d2-17a0-43de-ab2b-0dc12fb0f839",
+     "89869af9-ce6c-47d7-b47a-12feac7dd902"
+    ],
+    "sentence_known_audio_ids": [
+     "5cee9e5a-765c-440e-94a0-75abb9dc1a91",
+     "1545b0eb-1ee3-45f1-b246-3ed1ada7964b",
+     "6282fda6-145a-438e-bdbe-aaf4950ae756"
+    ],
+    "takeg_audio_ids": [
+     "496e60ca-772d-4a76-a6cf-f2bca4b64c21"
+    ]
+   }
+  },
+  {
+   "id": "hin_for_eng:pod-1:SC06-S002",
+   "scene": 6,
+   "sentence": 2,
+   "speaker": "Anna",
+   "target_text": "मेरा नाम अन्ना है। और आप?",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice azure_en-GB-SoniaNeural/en-GB-SoniaNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "092427bc-7f82-4d28-8401-c80835a9c7d4",
+     "f222d8a7-440b-49ac-a9e6-7250464fec15"
+    ],
+    "sentence_known_audio_ids": [
+     "0e6fd8a9-a4e7-4191-84e9-ba48d70334a9",
+     "b3a91f1d-afeb-4844-a656-8ceb635b91d4"
+    ],
+    "takeg_audio_ids": [
+     "8f7b7773-4d3e-4d68-b877-678a8a5f67ce"
+    ]
+   }
+  },
+  {
+   "id": "hin_for_eng:pod-1:SC06-S003",
+   "scene": 6,
+   "sentence": 3,
+   "speaker": "James",
+   "target_text": "मैं जेम्स हूँ। आपसे मिलकर खुशी हुई।",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "93bac311-01ce-4f3d-a5dc-5b616e627db4",
+     "d8716650-e945-4e43-8824-15801582c93c"
+    ],
+    "sentence_known_audio_ids": [
+     "4e6784a3-2760-43c3-a0c6-1df82de696a8",
+     "f54c4c2a-6f51-4a91-9aa0-113eb0c3c2f8"
+    ],
+    "takeg_audio_ids": [
+     "72290878-5250-4d5f-b419-ff07da73936f"
+    ]
+   }
+  },
+  {
+   "id": "hin_for_eng:pod-1:SC06-S004",
+   "scene": 6,
+   "sentence": 4,
+   "speaker": "Anna",
+   "target_text": "मुझे भी आपसे मिलकर खुशी हुई। आप कहाँ से हैं?",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice en-GB-SoniaNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "80da8cd9-a6f8-4632-90c7-16e8cca90622",
+     "bcb429fb-e91e-4691-9e9c-61e204d5b2e4"
+    ],
+    "sentence_known_audio_ids": [
+     "cfb302ee-c97b-45f7-a96a-7e58143c0c76",
+     "434ab366-2ed0-45e4-a1dc-81b6914d36c0"
+    ],
+    "takeg_audio_ids": [
+     "816c8682-da1a-42a4-8b0d-5eb33dc3d358"
+    ]
+   }
+  },
+  {
+   "id": "hin_for_eng:pod-1:SC06-S005",
+   "scene": 6,
+   "sentence": 5,
+   "speaker": "James",
+   "target_text": "मैं मैनचेस्टर से हूँ, लेकिन अब लंदन में रहता हूँ। और आप?",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "3b53de64-bad3-45e5-81e0-64f0832d3146",
+     "31d7c332-ef11-4908-8e00-b3d6bb699fab"
+    ],
+    "sentence_known_audio_ids": [
+     "4d213293-b3a0-4f3b-a308-1be73e2be0c0",
+     "a443a9e7-1694-423d-98f9-9444569c832d"
+    ],
+    "takeg_audio_ids": [
+     "f835f95d-87ab-4547-a5d5-bb715775927b"
+    ]
+   }
+  },
+  {
+   "id": "hin_for_eng:pod-1:SC06-S006",
+   "scene": 6,
+   "sentence": 6,
+   "speaker": "Anna",
+   "target_text": "मैं फ्रांस से हूँ। मैं यहाँ दो साल से हूँ।",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "cd5de8a1-8367-4cc7-ad5a-a98baf92833d",
+     "3f40a754-b4a6-41ca-89cc-6bf7e1f9c141"
+    ],
+    "sentence_known_audio_ids": [
+     "2bc35298-4bf4-4a3d-bcf0-18508f761c6f",
+     "485a02b0-b7ae-432b-aa69-0a8c10ba1f16"
+    ],
+    "takeg_audio_ids": [
+     "6cbd5700-5e64-4c84-8db7-63d74872ff71"
+    ]
+   }
+  },
+  {
+   "id": "hin_for_eng:pod-1:SC06-S007",
+   "scene": 6,
+   "sentence": 7,
+   "speaker": "James",
+   "target_text": "यह बहुत सुंदर शहर है। आप क्या करती हैं?",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice leo"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "f2ca807b-e8d2-49d1-aa82-26233c87bebd",
+     "9acb3175-1a14-4099-a91e-ccd6000f8460"
+    ],
+    "sentence_known_audio_ids": [
+     "e5d9e542-0827-4cff-9bb8-8c8fe3f2e5dc",
+     "fbfc31ce-2a37-4f70-85cc-da3d36fd78fc"
+    ],
+    "takeg_audio_ids": [
+     "e9d46878-86df-4854-96fa-b198f96931ff"
+    ]
+   }
+  },
+  {
+   "id": "hin_for_eng:pod-1:SC06-S008",
+   "scene": 6,
+   "sentence": 8,
+   "speaker": "Anna",
+   "target_text": "मैं नर्स हूँ, बिल्कुल पास वाले अस्पताल में। और आप?",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "9295680c-52fc-4a63-a3d6-4e05477ecede",
+     "f222d8a7-440b-49ac-a9e6-7250464fec15"
+    ],
+    "sentence_known_audio_ids": [
+     "03edfa7c-681e-47ff-baec-7e89f9aa9526",
+     "b3a91f1d-afeb-4844-a656-8ceb635b91d4"
+    ],
+    "takeg_audio_ids": [
+     "ab0dff75-9aab-4afa-9804-3f570d9b58b9"
+    ]
+   }
+  },
+  {
+   "id": "hin_for_eng:pod-1:SC06-S009",
+   "scene": 6,
+   "sentence": 9,
+   "speaker": "James",
+   "target_text": "माफ़ कीजिए, मैं आपको समझ नहीं पाया। मैं हिंदी सीख रहा हूँ। क्या आप वह फिर से धीरे से बोल सकते हैं?",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "3ef7dc67-5a6d-410c-90ce-de52407a4ef7",
+     "a6be31c2-efc2-41e8-a69f-fb317971c4ef",
+     "4bbe0a43-24e6-464d-a778-603fe4b8eead"
+    ],
+    "sentence_known_audio_ids": [
+     "19887370-ffdb-4389-ba9e-821d74e6fa29",
+     "4d6e7704-8f50-4711-8ad0-4909836dfb3f",
+     "5e5a44ef-c3cb-4066-a7a7-5ba70c9bc450"
+    ],
+    "takeg_audio_ids": [
+     "8945b756-8da6-4ebb-afaf-d1070d2d87ce"
+    ]
+   }
+  },
+  {
+   "id": "hin_for_eng:pod-1:SC06-S010",
+   "scene": 6,
+   "sentence": 10,
+   "speaker": "Anna",
+   "target_text": "हाँ, बिल्कुल। मैं नर्स हूँ। मैं अस्पताल में काम करती हूँ। यह यहाँ के पास है। और आप क्या करते हैं?",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "8f6a6542-0eb7-4914-9d99-52339bc9191c",
+     "d3216e9c-62d9-46b8-a18a-90618986c7b1",
+     "2fa351d3-a3be-4f22-b6ce-0b7b6719d88c",
+     "4b167282-0b35-4398-8fee-e6514340451e",
+     "17284c91-5ee3-41e2-b094-81d564ecc5f3"
+    ],
+    "sentence_known_audio_ids": [
+     "1654ff74-471a-4b65-adfc-83581e7d9b30",
+     "7e174606-c0c0-41e8-add9-36dad2d5f12d",
+     "bc759344-9370-46dd-9dd1-449957246678",
+     "0fb3479f-34d7-479e-89eb-aa17af76dc98",
+     "824ff302-3c7f-4f5f-b2f7-44faff367d59"
+    ],
+    "takeg_audio_ids": [
+     "7e42d4a3-fb7f-4165-906f-351f7c9bc859"
+    ]
+   }
+  },
+  {
+   "id": "hin_for_eng:pod-1:SC06-S011",
+   "scene": 6,
+   "sentence": 11,
+   "speaker": "James",
+   "target_text": "मैं अंग्रेज़ी पढ़ाता हूँ, लेकिन स्कूल में नहीं। मैं वयस्कों के साथ काम करता हूँ। मैं यहाँ अपनी पत्नी और बच्चों के साथ छुट्टी पर हूँ। हम बहुत अच्छा समय बिता रहे हैं।",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "da367d80-bf2b-4488-9f78-647366d9f8b2",
+     "7d4696b3-ae28-46f0-abc2-639c93a27ece",
+     "c2743123-3079-4c8b-8c80-091e32650f05",
+     "39f233f3-6fbe-4f28-8554-7eb7d9ceada4"
+    ],
+    "sentence_known_audio_ids": [
+     "b3f8ffd5-a72c-43ec-9657-06c81cbd7450",
+     "4f731e72-a0cd-40ac-b131-af1116862795",
+     "dc576b9b-13fa-4777-b0ba-794aac8e0118",
+     "f53ce63c-dee4-4b37-9474-e7f521810cea"
+    ],
+    "takeg_audio_ids": [
+     "abcebdb6-b898-4a26-ad59-1a038cb31c21"
+    ]
+   }
+  },
+  {
+   "id": "hin_for_eng:pod-1:SC06-S012",
+   "scene": 6,
+   "sentence": 12,
+   "speaker": "Anna",
+   "target_text": "कितनी दिलचस्प बात है। अच्छा, आपसे मिलकर बहुत खुशी हुई।",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice en-GB-SoniaNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "299de845-b083-48d7-a87d-79eff5f483bf",
+     "6e376a59-9ab2-44d6-94cf-d2ea74d9ac09"
+    ],
+    "sentence_known_audio_ids": [
+     "24b33f69-22ae-4210-9af4-da2e053d39ec",
+     "437fc075-c239-4ef0-b923-62174cf2176f"
+    ],
+    "takeg_audio_ids": [
+     "f7f17401-e6c7-42bd-92c8-ec5a6efe0c91"
+    ]
+   }
+  },
+  {
+   "id": "hin_for_eng:pod-1:SC06-S013",
+   "scene": 6,
+   "sentence": 13,
+   "speaker": "Narrator",
+   "target_text": "एक। दो। तीन। सफ़ेद। काला।",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice 73xd5dum",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: off-cast voice 73xd5dum"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "d163f2d7-7508-423c-87af-6ffcdae06193",
+     "563765ad-cb9d-4cb6-9a11-7a8eb8a2a658",
+     "3c29b3fb-d722-4e70-8ff2-dbde5c2570c6",
+     "88c41d6a-bc35-47ef-a49f-311fa5072309",
+     "eee816c4-b191-4efd-8b56-6f8d9b4b9773"
+    ],
+    "sentence_known_audio_ids": [
+     "1da3dac3-5e02-45e6-9407-8866871fca8b",
+     "1b3d2fe2-873b-44f8-93f6-ff1b0f57472e",
+     "d297aaa4-5a13-423e-86f6-8f46116367ca",
+     "f353a8e2-33b1-43e3-a33a-8a5c1f2290dc",
+     "7c3ddb2f-1c76-4b16-9682-fd886dd6f48e"
+    ],
+    "takeg_audio_ids": [
+     "408bce72-02e9-4e65-87ea-d14b6436a7b5"
+    ]
+   }
+  },
+  {
+   "id": "hin_for_eng:pod-1:SC07-S001",
+   "scene": 7,
+   "sentence": 1,
+   "speaker": "Cafe Barista",
+   "target_text": "नमस्ते। मैं आपको क्या दे सकता हूँ?",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice en-GB-HollieNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "57eba7d2-17a0-43de-ab2b-0dc12fb0f839",
+     "1856342c-2678-498f-8510-6b058379fa25"
+    ],
+    "sentence_known_audio_ids": [
+     "f03ef31f-58e9-43d9-815d-d108f0627ded",
+     "6fae672c-7d6b-43ee-90f7-fdd60ac31a7c"
+    ],
+    "takeg_audio_ids": [
+     "081dcce3-8660-4ee9-aaa8-139cb3b65443"
+    ]
+   }
+  },
+  {
+   "id": "hin_for_eng:pod-1:SC07-S004",
+   "scene": 7,
+   "sentence": 4,
+   "speaker": "Cafe Customer 1",
+   "target_text": "मुझे बड़ी वाली चाहिए, कृपया। अगर आपके पास ओट मिल्क हो तो उसी के साथ।",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: off-cast voice azure_en-GB-SoniaNeural/en-GB-SoniaNeural",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "fecae9a1-fda5-4c20-9ebf-ae4ad2abdb2d",
+     "0289c3c4-70f6-4020-9059-c8b6a39b6927"
+    ],
+    "sentence_known_audio_ids": [
+     "09ad05e0-c0c3-4568-80bf-2b131d96e9cc",
+     "e1b0747a-2b54-4622-8bf0-9dd3695453c7"
+    ],
+    "takeg_audio_ids": [
+     "e06e3c10-d541-42ac-a3a5-a50f2a14c857"
+    ]
+   }
+  },
+  {
+   "id": "hin_for_eng:pod-1:SC07-S005",
+   "scene": 7,
+   "sentence": 5,
+   "speaker": "Cafe Barista",
+   "target_text": "बिल्कुल। क्या यहीं बैठेंगे या ले जाएँगे?",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice en-GB-HollieNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "b20d3432-8248-4fd7-a61a-8370dec79303",
+     "f5cef76b-46ff-4e5a-9494-a28372a11fe7"
+    ],
+    "sentence_known_audio_ids": [
+     "fa1ff837-d59b-46ff-a431-1c1e84c796d6",
+     "cbf6dc95-2719-4765-8ca2-23f0a149c9f0"
+    ],
+    "takeg_audio_ids": [
+     "7f171013-9e04-4f6c-9df2-674e0130bbe9"
+    ]
+   }
+  },
+  {
+   "id": "hin_for_eng:pod-1:SC07-S007",
+   "scene": 7,
+   "sentence": 7,
+   "speaker": "Cafe Customer 2",
+   "target_text": "क्या मुझे दो व्हाइट कॉफ़ी और दो ब्लैक कॉफ़ी और उनमें से एक मिल सकती है, कृपया?",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "51b83371-260b-4679-8e9d-c97b5b30f2dc"
+    ]
+   }
+  },
+  {
+   "id": "hin_for_eng:pod-1:SC07-S008",
+   "scene": 7,
+   "sentence": 8,
+   "speaker": "Cafe Barista",
+   "target_text": "अभी लाता हूँ। और कुछ चाहिए?",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice en-GB-HollieNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "604b4da1-5d2c-47b3-bfd4-0660d2aff95b",
+     "3581be17-8f62-41ca-a809-2b44bc81a22c"
+    ],
+    "sentence_known_audio_ids": [
+     "ff71fd6d-75c2-4c91-b1ec-e44ee5b8ce46",
+     "4b766051-169c-4db2-af58-224e46dd520e"
+    ],
+    "takeg_audio_ids": [
+     "d453427f-5596-45e4-9786-0fb0ef76a8d9"
+    ]
+   }
+  },
+  {
+   "id": "hin_for_eng:pod-1:SC07-S009",
+   "scene": 7,
+   "sentence": 9,
+   "speaker": "Cafe Customer 2",
+   "target_text": "हाँ, क्या मुझे एक गिलास पानी भी मिल सकता है, कृपया।",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "7b67b3eb-dd94-4623-a67d-81a6f014b379"
+    ]
+   }
+  },
+  {
+   "id": "hin_for_eng:pod-1:SC07-S010",
+   "scene": 7,
+   "sentence": 10,
+   "speaker": "Cafe Barista",
+   "target_text": "कुल मिलाकर आठ पाउंड चालीस हुए।",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "e1512c08-3716-433f-82b4-36d038736d8e"
+    ]
+   }
+  },
+  {
+   "id": "hin_for_eng:pod-1:SC07-S011",
+   "scene": 7,
+   "sentence": 11,
+   "speaker": "Cafe Customer 2",
+   "target_text": "क्या मैं कार्ड से भुगतान कर सकती हूँ? क्या आपके पास कॉन्टैक्टलेस है?",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "0a56c8f2-f603-48d7-8de6-c986112f0500",
+     "b9321699-88cd-4948-9437-7bfbc122421d"
+    ],
+    "sentence_known_audio_ids": [
+     "effc092e-6d11-4fca-931f-754e37012274",
+     "98cf77d8-485c-4e9e-ab9c-090dfbea46b4"
+    ],
+    "takeg_audio_ids": [
+     "79d30d63-1dc8-4fdb-975e-bbeb4b614f25",
+     null
+    ]
+   }
+  },
+  {
+   "id": "hin_for_eng:pod-1:SC07-S012",
+   "scene": 7,
+   "sentence": 12,
+   "speaker": "Cafe Barista",
+   "target_text": "बिल्कुल। यह रही मशीन।",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice en-GB-HollieNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "b20d3432-8248-4fd7-a61a-8370dec79303",
+     "7ba3a4c4-2b98-445a-b9ab-9c99990a04aa"
+    ],
+    "sentence_known_audio_ids": [
+     "fa1ff837-d59b-46ff-a431-1c1e84c796d6",
+     "4e4f5239-3830-443e-b32b-89a07b409dbd"
+    ],
+    "takeg_audio_ids": [
+     "dccddfa0-124c-46ab-846b-44eeba390292"
+    ]
+   }
+  },
+  {
+   "id": "hin_for_eng:pod-1:SC07-S013",
+   "scene": 7,
+   "sentence": 13,
+   "speaker": "Cafe Customer 3",
+   "target_text": "सुप्रभात। दो अमेरिकानो और एक कप चाय, कृपया।",
+   "clear": [
+    "sentence_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "32ba4922-6565-4ac7-b916-09a6651f54af",
+     "f7ad263a-9053-4335-b543-a388c6dabf3d"
+    ],
+    "sentence_known_audio_ids": [
+     "a85aa3e9-ad8b-4339-ab3f-71f253f8e195",
+     "89e90b96-86ee-4314-8f74-161c1964dbc3"
+    ],
+    "takeg_audio_ids": [
+     "9ffbd5a3-d71f-4399-b287-d7505c65fcbb"
+    ]
+   }
+  },
+  {
+   "id": "hin_for_eng:pod-1:SC07-S014",
+   "scene": 7,
+   "sentence": 14,
+   "speaker": "Cafe Barista",
+   "target_text": "क्या यहीं बैठेंगे? खिड़की के पास वाली टेबल खाली है।",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice azure_en-GB-HollieNeural/en-GB-HollieNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "72cc8285-679a-4e14-a99e-f2a0269dde8c",
+     "7e9526b1-01f3-40b9-8e56-9971e1edfb4b"
+    ],
+    "sentence_known_audio_ids": [
+     "0c9ed333-1855-45ef-95a7-a68540559923",
+     "74fcdf90-3e7b-4fee-83cf-88fdf98a3f16"
+    ],
+    "takeg_audio_ids": [
+     "2f29086e-ecdd-44b9-855b-164604f29d05"
+    ]
+   }
+  },
+  {
+   "id": "hin_for_eng:pod-1:SC07-S015",
+   "scene": 7,
+   "sentence": 15,
+   "speaker": "Narrator",
+   "target_text": "पाँच। दस। पंद्रह। लाल। हरा।",
+   "clear": [
+    "sentence_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice 73xd5dum",
+    "takeg_audio_ids: off-cast voice 73xd5dum"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "3e168aea-8ccc-4b0a-9c0d-53eb00efe9ca",
+     "43cbe226-071d-427b-8a84-09c0be46d7f2",
+     "f4461010-1f80-4a73-8a98-bc83a1863365",
+     "1418c80d-93ea-45ff-9499-f463653bebf0",
+     "9d4952b4-7a3a-42ff-b93c-541c622250ec"
+    ],
+    "sentence_known_audio_ids": [
+     "74257780-6604-457b-a963-2bcc17afd990",
+     "f6b292c7-28c4-488f-a4df-2f38699c0086",
+     "e3f63c23-06b5-428c-a0d0-9feda2350301",
+     "488b8495-66cf-4848-8aa4-4429ec34a604",
+     "4ac18968-2401-4e2b-a476-3a00b8f0d7b7"
+    ],
+    "takeg_audio_ids": [
+     "0e4eeb00-8672-4fff-9366-630dd1b4905a"
+    ]
+   }
+  },
+  {
+   "id": "hin_for_eng:pod-1:SC08-S001",
+   "scene": 8,
+   "sentence": 1,
+   "speaker": "Bartender",
+   "target_text": "नमस्ते। मैं आपको क्या दे सकता हूँ?",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice leo"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "57eba7d2-17a0-43de-ab2b-0dc12fb0f839",
+     "1856342c-2678-498f-8510-6b058379fa25"
+    ],
+    "sentence_known_audio_ids": [
+     "7e6b51c0-00b4-4d93-929f-22ce4f3047a4",
+     "04fc6ed4-b707-4311-a7d6-645e2859bbfa"
+    ],
+    "takeg_audio_ids": [
+     "940566f4-0582-4e5a-8b35-593c5eb5678f"
+    ]
+   }
+  },
+  {
+   "id": "hin_for_eng:pod-1:SC08-S002",
+   "scene": 8,
+   "sentence": 2,
+   "speaker": "Bar Customer 1",
+   "target_text": "मुझे एक पाइंट चाहिए, कृपया। आपके पास कौन-कौन सी एल्स हैं?",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "bf8f94a5-adfd-400d-b247-f03b9f7889c5",
+     "30ecd709-3fdd-42e2-a6fb-9bd517468bf3"
+    ],
+    "sentence_known_audio_ids": [
+     "f3b533c4-78d5-4d68-9d6d-c53e603a8b9c",
+     "5cca2f5c-a28e-4620-aa01-01a65ec21c8f"
+    ],
+    "takeg_audio_ids": [
+     "a5dc964e-8b14-4adc-a5f5-fce79c433b97",
+     "5c8a8601-50c4-4226-9fe1-c47925404dc0"
+    ]
+   }
+  },
+  {
+   "id": "hin_for_eng:pod-1:SC08-S004",
+   "scene": 8,
+   "sentence": 4,
+   "speaker": "Bar Customer 1",
+   "target_text": "मुझे बिटर का एक पाइंट चाहिए, कृपया।",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "679b2a4d-0b5c-4902-b0d1-60d922c001b4"
+    ]
+   }
+  },
+  {
+   "id": "hin_for_eng:pod-1:SC08-S005",
+   "scene": 8,
+   "sentence": 5,
+   "speaker": "Bar Customer 2",
+   "target_text": "क्या मुझे साइडर का एक हाफ़ मिल सकता है?",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "d5686040-2ee2-4255-8abb-bf5c7cb9fd1c"
+    ]
+   }
+  },
+  {
+   "id": "hin_for_eng:pod-1:SC08-S006",
+   "scene": 8,
+   "sentence": 6,
+   "speaker": "Bar Customer 3",
+   "target_text": "क्या मैं वाइन लिस्ट देख सकता हूँ? मुझे एक गिलास वाइन चाहिए।",
+   "clear": [
+    "sentence_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice rex",
+    "takeg_audio_ids: off-cast voice rex"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "e00d91df-46b2-46bb-be58-7b27bec351d3",
+     "ad10d210-abd6-422f-84d7-123348e876c9"
+    ],
+    "sentence_known_audio_ids": [
+     "0dcf5754-c2eb-48f3-8894-3ccd4a2f35e5",
+     "288e763d-609c-49f9-b819-eaf0d0138380"
+    ],
+    "takeg_audio_ids": [
+     "c0b8a222-8f9e-43eb-8789-1e90c95ad8bc"
+    ]
+   }
+  },
+  {
+   "id": "hin_for_eng:pod-1:SC08-S008",
+   "scene": 8,
+   "sentence": 8,
+   "speaker": "Bar Customer 3",
+   "target_text": "एक बड़ा गिलास व्हाइट वाइन देंगे।",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: off-cast voice rex"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "05a279a8-6e48-48c4-90f3-458b3e653608"
+    ]
+   }
+  },
+  {
+   "id": "hin_for_eng:pod-1:SC08-S010",
+   "scene": 8,
+   "sentence": 10,
+   "speaker": "Bar Customer 2",
+   "target_text": "मुझे दो और गिलास बीयर चाहिए।",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: off-cast voice eve"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "70792fcf-bd3c-4c7b-9832-b3627bda6124"
+    ]
+   }
+  },
+  {
+   "id": "hin_for_eng:pod-1:SC08-S012",
+   "scene": 8,
+   "sentence": 12,
+   "speaker": "Bar Customer 1",
+   "target_text": "मुझे नहीं पता कि मुझे भूख है या नहीं। क्या आपके पास मेन्यू है?",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice azure_en-GB-SoniaNeural/en-GB-SoniaNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "b1001b95-347f-45cf-9394-ccf04ee88481",
+     "4f9c531d-042f-4a9a-a9bc-6548d9a1378b"
+    ],
+    "sentence_known_audio_ids": [
+     "08f0e5d8-8213-44a2-b583-f1328d2d0e54",
+     "8ff9b841-025d-4a93-b33a-264c482836a6"
+    ],
+    "takeg_audio_ids": [
+     "e06b9ee2-b780-4718-bd88-dcdbe240f5aa"
+    ]
+   }
+  },
+  {
+   "id": "hin_for_eng:pod-1:SC08-S013",
+   "scene": 8,
+   "sentence": 13,
+   "speaker": "Bartender",
+   "target_text": "जी हाँ, बिल्कुल। लीजिए। फ़िश एंड चिप्स बहुत अच्छे हैं।",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice leo"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "34d408d0-5c8e-498b-afcc-e304927cc991",
+     "0a7f8e08-54e6-41a0-80b9-6a84459912c7",
+     "5100bb3e-ac43-4eee-b689-33470baa46c1"
+    ],
+    "sentence_known_audio_ids": [
+     "7e5e14ac-afd9-41fa-ad5d-976ca55906cc",
+     "0de75338-9902-4f76-bb83-8aa04222a0a1",
+     "998bc10d-715b-4989-9f98-71ab74c5ffe7"
+    ],
+    "takeg_audio_ids": [
+     "9b17375e-2121-4169-a676-d4bbb56feda4"
+    ]
+   }
+  },
+  {
+   "id": "hin_for_eng:pod-1:SC08-S014",
+   "scene": 8,
+   "sentence": 14,
+   "speaker": "Bar Customer 1",
+   "target_text": "क्या हमें थोड़ी ब्रेड मिल सकती है? और टेबल के लिए एक बाउल चिप्स भी।",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice azure_en-GB-SoniaNeural/en-GB-SoniaNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "213bee9b-929d-41ed-839d-b338a5acb6dd",
+     "8a5db47d-1f80-4ea2-86a5-e717fa637477"
+    ],
+    "sentence_known_audio_ids": [
+     "13bd1c19-c644-4a39-b054-0115622609ff",
+     "6155b721-dc20-42c8-97b0-92f6f5cfaac5"
+    ],
+    "takeg_audio_ids": [
+     "bbabcd2e-4ad2-4a9e-a488-cf561cf174a4"
+    ]
+   }
+  },
+  {
+   "id": "hin_for_eng:pod-1:SC08-S015",
+   "scene": 8,
+   "sentence": 15,
+   "speaker": "Bar Customer 2",
+   "target_text": "क्या आपके पास सैंडविच है? मुझे एक चीज़ सैंडविच चाहिए।",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice eve",
+    "sentence_known_audio_ids: off-cast voice en-GB-LibbyNeural",
+    "takeg_audio_ids: off-cast voice eve"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "206208e5-7b6e-455c-90c2-0d94a5c9cfd9",
+     "801933df-d985-49d8-a7b2-5a5273965796"
+    ],
+    "sentence_known_audio_ids": [
+     "c930dea6-dbb0-4133-877e-aac0066b3277",
+     "a81f67fa-acff-46d4-8d70-ce359f15a9a8"
+    ],
+    "takeg_audio_ids": [
+     "e3c1db23-7314-41fc-8f81-188168ed0719",
+     null
+    ]
+   }
+  },
+  {
+   "id": "hin_for_eng:pod-1:SC08-S016",
+   "scene": 8,
+   "sentence": 16,
+   "speaker": "Narrator",
+   "target_text": "चार। छह। आठ। नीला। पीला।",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice 73xd5dum",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: off-cast voice 73xd5dum"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "fa54ea2a-7842-46b4-81d8-1b8ee3dee19d",
+     "70278aae-ca05-494e-8538-f9bd94c27d94",
+     "8d90532d-cc21-4063-83b7-386aa3b121c7",
+     "b1c0a0e9-3c00-4a7a-8f26-09425a05f699",
+     "376a9945-eac9-40f8-b9ae-c66f898bd0d1"
+    ],
+    "sentence_known_audio_ids": [
+     "71dcca09-e5f3-446b-a315-9f2ae8f09dcb",
+     "1f5a329f-e361-4ee0-9a13-d6888efd2b0b",
+     "ff9fa90d-c48c-4332-b767-cc9d640b0027",
+     "a0c6c0f6-0036-4a84-8fa1-99bf6d69d8b1",
+     "7d308053-dafb-4180-873c-3158982ef81e"
+    ],
+    "takeg_audio_ids": [
+     "494dc558-fdc2-4661-a453-9046532ee096"
+    ]
+   }
+  },
+  {
+   "id": "hin_for_eng:pod-1:SC09-S001",
+   "scene": 9,
+   "sentence": 1,
+   "speaker": "Diner 1",
+   "target_text": "शुभ संध्या। हमने दो लोगों के लिए बुकिंग की है, डेविस के नाम पर।",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice en-GB-SoniaNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "01c49015-03cb-46cb-8a05-019a48a749dd",
+     "76aee765-960b-46b4-bc32-dee0b87a2f90"
+    ],
+    "sentence_known_audio_ids": [
+     "79691ec1-738d-46b2-835b-1b6b22d54958",
+     "adaf1db2-74a6-4718-8cc5-a29bafc376c4"
+    ],
+    "takeg_audio_ids": [
+     "8bda4d33-3698-49b5-b5c1-897be538afdf"
+    ]
+   }
+  },
+  {
+   "id": "hin_for_eng:pod-1:SC09-S002",
+   "scene": 9,
+   "sentence": 2,
+   "speaker": "Waiter",
+   "target_text": "स्वागत है। कृपया मेरे साथ आइए। यह रहे आपके मेनू।",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice leo"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "349d52d0-c23c-400c-b0a6-f10746f9a8c2",
+     "47774727-a8cd-4a70-bf8f-71c3acbeb60e",
+     "4d4b3c9b-8dd8-4006-af57-79f745185dea"
+    ],
+    "sentence_known_audio_ids": [
+     "10425f81-da1c-4ad5-86a6-f10f91c9c8fa",
+     "63c6633e-9362-4aae-8c23-9f60fe27016f",
+     "c35ecc64-1ee3-4196-ba25-d5172a243c51"
+    ],
+    "takeg_audio_ids": [
+     "3131d2f4-26b7-44b6-9f9b-6f71401d7ae3"
+    ]
+   }
+  },
+  {
+   "id": "hin_for_eng:pod-1:SC09-S004",
+   "scene": 9,
+   "sentence": 4,
+   "speaker": "Diner 2",
+   "target_text": "हमें एक बोतल स्पार्कलिंग पानी और एक बोतल सादा पानी चाहिए, कृपया।",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "740f801b-701c-4c83-a6d2-73501368ff0f"
+    ]
+   }
+  },
+  {
+   "id": "hin_for_eng:pod-1:SC09-S005",
+   "scene": 9,
+   "sentence": 5,
+   "speaker": "Diner 1",
+   "target_text": "माफ़ कीजिए — क्या आपके पास ग्लूटेन-फ्री कुछ है? या शाकाहारियों के लिए?",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice en-GB-SoniaNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "baac7892-73e5-400b-bf2f-5506debfc755",
+     "18952425-bffc-4662-aeab-3534a7acb4d6"
+    ],
+    "sentence_known_audio_ids": [
+     "f08b1235-65ad-44fa-b8b0-e31a7b43625a",
+     "e80bf3aa-b76b-4905-b9fb-c6fc51b9a408"
+    ],
+    "takeg_audio_ids": [
+     "b666188d-def1-44cb-abd2-5a1cefd210fb",
+     null
+    ]
+   }
+  },
+  {
+   "id": "hin_for_eng:pod-1:SC09-S006",
+   "scene": 9,
+   "sentence": 6,
+   "speaker": "Waiter",
+   "target_text": "जी हाँ, सैल्मन और रिसोट्टो — दोनों ग्लूटेन-फ्री हैं। हमारे पास कुछ सलाद भी हैं।",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice leo"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "646e80cd-bd62-4d8f-adaf-fb6fe78490e1",
+     "4375c023-9abc-4f91-b3ec-487b148ffb3d"
+    ],
+    "sentence_known_audio_ids": [
+     "f0ece687-efad-443c-b262-e7c58dca16ff",
+     "4b061a2e-7b7a-4b18-a6dc-fd9b0af0071c"
+    ],
+    "takeg_audio_ids": [
+     "2300abaa-c8fd-4705-b9c4-4a7d3683693c"
+    ]
+   }
+  },
+  {
+   "id": "hin_for_eng:pod-1:SC09-S008",
+   "scene": 9,
+   "sentence": 8,
+   "speaker": "Waiter",
+   "target_text": "लैम्ब बहुत अच्छा है। इसे धीमी आँच पर पकाया गया है, रोज़मेरी के साथ।",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice leo"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "4fbb686e-fced-40b8-95fd-8ed6a09cce15",
+     "a7c34c52-fa56-4b73-bb96-33063492ed59"
+    ],
+    "sentence_known_audio_ids": [
+     "41fb5446-dde3-4129-a116-1e8a8970e4dd",
+     "5cc6a8cc-ea34-4d5e-b9ba-e9852a794006"
+    ],
+    "takeg_audio_ids": [
+     "04f81f21-201a-4500-801a-02a70b7c8b8f"
+    ]
+   }
+  },
+  {
+   "id": "hin_for_eng:pod-1:SC09-S009",
+   "scene": 9,
+   "sentence": 9,
+   "speaker": "Diner 1",
+   "target_text": "मैं लैम्ब लूँगी, कृपया। साथ में हरी सब्ज़ियाँ।",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: off-cast voice en-GB-SoniaNeural",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "e542f399-1d07-4061-85c8-0b723456789f",
+     "6edd8ddc-743b-4195-9feb-4972c8516bc1"
+    ],
+    "sentence_known_audio_ids": [
+     "4923ac81-8aff-410d-b1a5-7d8df6964a27",
+     "ac73e2ec-6c34-466f-b5de-18815b93a9a3"
+    ],
+    "takeg_audio_ids": [
+     "f451eb3f-dcef-4d78-82ef-0a364b52ec0d"
+    ]
+   }
+  },
+  {
+   "id": "hin_for_eng:pod-1:SC09-S010",
+   "scene": 9,
+   "sentence": 10,
+   "speaker": "Diner 2",
+   "target_text": "और मेरे लिए रिसोट्टो। शुरुआत में एक छोटा हरा सलाद भी।",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice eve",
+    "sentence_known_audio_ids: off-cast voice en-GB-LibbyNeural",
+    "takeg_audio_ids: off-cast voice eve"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "71a79058-56da-486e-9c36-6aafa7be1ac0",
+     "a7893492-fb9b-4ae0-b581-5ff5bd73945a"
+    ],
+    "sentence_known_audio_ids": [
+     "96374021-ecea-49f4-86a2-2f44908196e9",
+     "4ac503ef-d0f2-4c56-b3b3-03484f7d17b3"
+    ],
+    "takeg_audio_ids": [
+     "6a000f89-7cde-4ed8-b0e5-49bb85aa8fd6"
+    ]
+   }
+  },
+  {
+   "id": "hin_for_eng:pod-1:SC09-S011",
+   "scene": 9,
+   "sentence": 11,
+   "speaker": "Waiter",
+   "target_text": "बिल्कुल। और आप क्या पीना चाहेंगे?",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice leo"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "b20d3432-8248-4fd7-a61a-8370dec79303",
+     "c086f72d-33a2-4fb1-b46f-7a7f15a4015c"
+    ],
+    "sentence_known_audio_ids": [
+     "c77fc888-8a2a-4bfb-a052-b189389c1d28",
+     "3f932fa5-0856-4af7-90ca-08904e41ef65"
+    ],
+    "takeg_audio_ids": [
+     "7ff1f92b-f6aa-4521-b544-775858432dc3"
+    ]
+   }
+  },
+  {
+   "id": "hin_for_eng:pod-1:SC09-S013",
+   "scene": 9,
+   "sentence": 13,
+   "speaker": "Diner 2",
+   "target_text": "हाउस रेड की एक बोतल बहुत अच्छी रहेगी।",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: off-cast voice eve"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "5240fe59-f3a2-458a-b462-046235c54b5d"
+    ]
+   }
+  },
+  {
+   "id": "hin_for_eng:pod-1:SC09-S014",
+   "scene": 9,
+   "sentence": 14,
+   "speaker": "Waiter",
+   "target_text": "बहुत अच्छा चुनाव। मैं अभी लाता हूँ।",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice leo"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "3ad5f68c-90d1-4efe-b31b-d9fbd984f2f6",
+     "b6f82563-33c1-42d8-aa78-f2ad87262534"
+    ],
+    "sentence_known_audio_ids": [
+     "e8d22556-0ca4-4078-a905-b0368d640ae7",
+     "f9e86038-4e80-4a94-8c24-dd4b1689abfd"
+    ],
+    "takeg_audio_ids": [
+     "0a13f724-f0b9-465f-aaff-0345367c2ad9"
+    ]
+   }
+  },
+  {
+   "id": "hin_for_eng:pod-1:SC09-S015",
+   "scene": 9,
+   "sentence": 15,
+   "speaker": "Waiter",
+   "target_text": "सब कुछ ठीक है? क्या आप डेज़र्ट लेंगे?",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice leo"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "c48d9065-17ec-4518-8743-e838b3c2271e",
+     "fa0ad25c-cd03-421c-a127-6c2dbda862be"
+    ],
+    "sentence_known_audio_ids": [
+     "a3739b05-ae15-4cb9-92b2-f9407092274e",
+     "1ce60c20-b1f6-4736-88fd-2dab3fcf2055"
+    ],
+    "takeg_audio_ids": [
+     "786bb012-db9a-43c6-9bc3-cc5737fc7a9b"
+    ]
+   }
+  },
+  {
+   "id": "hin_for_eng:pod-1:SC09-S016",
+   "scene": 9,
+   "sentence": 16,
+   "speaker": "Diner 1",
+   "target_text": "बस दो कॉफ़ी, कृपया। मेरे लिए डिकैफ़।",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: off-cast voice azure_en-GB-SoniaNeural/en-GB-SoniaNeural",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "8e705558-1695-497d-bbc5-ef15a0dfc940",
+     "77ab8459-ab6a-4721-b87a-cf564fad8b31"
+    ],
+    "sentence_known_audio_ids": [
+     "0346c6ff-2189-4567-81bf-379cdae96454",
+     "aff2f8d1-cb04-4662-8759-16c9c44235d4"
+    ],
+    "takeg_audio_ids": [
+     "7b494053-d547-4463-955e-ef495dabdfbd"
+    ]
+   }
+  },
+  {
+   "id": "hin_for_eng:pod-1:SC09-S017",
+   "scene": 9,
+   "sentence": 17,
+   "speaker": "Diner 2",
+   "target_text": "और जब तैयार हों तो बिल भी। क्या हम अलग-अलग पेमेंट कर सकते हैं?",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice eve",
+    "sentence_known_audio_ids: off-cast voice en-GB-LibbyNeural",
+    "takeg_audio_ids: off-cast voice eve"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "c6e5825d-a061-419f-980d-e3d60648e611",
+     "b533f9a2-a306-4d28-8a4f-13b346a9dd4b"
+    ],
+    "sentence_known_audio_ids": [
+     "c8a25cd2-d3e6-48f6-97fe-a83b05949983",
+     "a2755873-3f24-44fd-a5ca-2b32349ba64e"
+    ],
+    "takeg_audio_ids": [
+     "e3ef02a8-e629-488b-b146-601ae3ae707c"
+    ]
+   }
+  },
+  {
+   "id": "hin_for_eng:pod-1:SC09-S018",
+   "scene": 9,
+   "sentence": 18,
+   "speaker": "Narrator",
+   "target_text": "सात। नौ। ग्यारह। नारंगी। बैंगनी।",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice 73xd5dum",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: off-cast voice 73xd5dum"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "78306972-7758-4aa6-8413-2d244fecfbff",
+     "fa686ab9-cffa-4f71-bcac-f4936d61cd10",
+     "d5afe004-f700-47b5-83a6-7ed5a08fab41",
+     "eb52c0e4-e438-452c-9d7c-b27077183414",
+     "be78eb0b-dca5-4486-b4d2-d84fac30c7eb"
+    ],
+    "sentence_known_audio_ids": [
+     "771a447a-0337-4bb6-937b-aa44450f800c",
+     "5d1fbc11-9721-4eff-aeb8-af6cda24ff89",
+     "815fa751-ce9a-403f-8f99-a1af549ee104",
+     "17230f88-b6c5-4718-81ee-b8c4df109f25",
+     "4676898f-4be4-4df9-9d8f-a8de39d0fc49"
+    ],
+    "takeg_audio_ids": [
+     "20a12aec-87a8-4915-b0f4-fbe471903809"
+    ]
+   }
+  },
+  {
+   "id": "hin_for_eng:pod-1:SC10-S001",
+   "scene": 10,
+   "sentence": 1,
+   "speaker": "Customer",
+   "target_text": "माफ़ कीजिए। क्या आपके पास कोई दर्द की दवाई है?",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice azure_en-GB-SoniaNeural/en-GB-SoniaNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "755672ab-cf91-45ba-b8f4-fb75f2768458",
+     "ad6d042b-3675-4c22-ba0c-621f12a5eabf"
+    ],
+    "sentence_known_audio_ids": [
+     "00c2f67f-d68c-4f7d-aaba-b46a6f39aaeb",
+     "85621266-3f26-40dc-b820-d06d0b013e6c"
+    ],
+    "takeg_audio_ids": [
+     "f5c1373f-7f7d-4ead-b6bb-adf5eef74eba"
+    ]
+   }
+  },
+  {
+   "id": "hin_for_eng:pod-1:SC10-S002",
+   "scene": 10,
+   "sentence": 2,
+   "speaker": "Assistant",
+   "target_text": "जी हाँ, वो उस गलियारे में हैं, बाईं तरफ़।",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: off-cast voice eve"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "1d0af17c-5eeb-4f1c-bbdc-d442b5718fb6"
+    ]
+   }
+  },
+  {
+   "id": "hin_for_eng:pod-1:SC10-S003",
+   "scene": 10,
+   "sentence": 3,
+   "speaker": "Customer",
+   "target_text": "शुक्रिया। और क्या आपके पास बच्चों के लिए भी कोई दर्द की दवाई है?",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice en-GB-SoniaNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "4ea7d674-96f6-433e-badc-6065323ad518",
+     "616f8248-e00e-424a-a7ec-32afd668a7ae"
+    ],
+    "sentence_known_audio_ids": [
+     "c1f4fd8f-6054-4ce6-9ce6-848a50ed3586",
+     "f8a1d081-3471-4153-a860-215c9a4b11f0"
+    ],
+    "takeg_audio_ids": [
+     "7b66f558-2ba8-45d4-ad6e-33922bca2eed"
+    ]
+   }
+  },
+  {
+   "id": "hin_for_eng:pod-1:SC10-S004",
+   "scene": 10,
+   "sentence": 4,
+   "speaker": "Assistant",
+   "target_text": "मुझे लगता है हाँ, लेकिन आपको ख़ुद देखना होगा पक्का करने के लिए।",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: off-cast voice eve"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "92c8fb53-bed1-40e1-b6db-07c538e7d737"
+    ]
+   }
+  },
+  {
+   "id": "hin_for_eng:pod-1:SC10-S006",
+   "scene": 10,
+   "sentence": 6,
+   "speaker": "Assistant",
+   "target_text": "सनस्क्रीन वहाँ आपकी दाईं तरफ़ है, और टूथपेस्ट बस कोने के पास मिलेगा।",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: off-cast voice eve"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "65c61aa3-8126-4342-9e0c-b86e7531bd2f"
+    ]
+   }
+  },
+  {
+   "id": "hin_for_eng:pod-1:SC10-S007",
+   "scene": 10,
+   "sentence": 7,
+   "speaker": "Customer",
+   "target_text": "शुक्रिया, आपने बहुत मदद की। मैं बहुत आभारी हूँ।",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice en-GB-SoniaNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "d2891ae3-77ab-4635-87ea-66f04a632700",
+     "48d1b565-3058-4d58-92d5-321d4a951208"
+    ],
+    "sentence_known_audio_ids": [
+     "56db88b3-4f35-4417-b82d-6fdfd3eb6fd7",
+     "9111d5b1-cf68-4fee-8bec-ba8cb12873a1"
+    ],
+    "takeg_audio_ids": [
+     "b596bf05-827c-4254-b65a-74fcc48d5682"
+    ]
+   }
+  },
+  {
+   "id": "hin_for_eng:pod-1:SC10-S008",
+   "scene": 10,
+   "sentence": 8,
+   "speaker": "Assistant",
+   "target_text": "कोई बात नहीं। क्या आप यहाँ छुट्टियों पर हैं? आप बहुत अच्छी हिंदी बोलते हैं।",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice eve",
+    "sentence_known_audio_ids: off-cast voice en-GB-LibbyNeural",
+    "takeg_audio_ids: off-cast voice eve"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "79a72d3c-a919-422e-9daf-50ebf09d0d43",
+     "b08d2a84-9834-4413-8ec8-0aed3c8f374d"
+    ],
+    "sentence_known_audio_ids": [
+     "5ddbcf35-07f9-4f96-9e2f-23bbd89aeebe",
+     "4c10197b-1af6-4fae-9763-119f4e4dc825",
+     "2534328d-fd1d-4fb7-9385-33531a05692f"
+    ],
+    "takeg_audio_ids": [
+     "5d4c353c-39e6-44fe-a57b-c9b6f80fce14",
+     "39d19315-8e85-4545-8b49-0fcf5d2e355a"
+    ]
+   }
+  },
+  {
+   "id": "hin_for_eng:pod-1:SC10-S009",
+   "scene": 10,
+   "sentence": 9,
+   "speaker": "Customer",
+   "target_text": "आप बहुत अच्छे हैं! जी हाँ, मैं छुट्टियों पर हूँ, और मुझे और अभ्यास करना है ताकि मैं हिंदी बेहतर बोल सकूँ। बहुत-बहुत शुक्रिया, और अलविदा।",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice en-GB-SoniaNeural/azure_en-GB-SoniaNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "4b8e958f-f1c6-4257-8bcb-b12cf439cc09",
+     "b5600170-bd58-4b9b-818f-e7c848f56960"
+    ],
+    "sentence_known_audio_ids": [
+     "02927307-99bd-4770-a405-cd334269c0aa",
+     "122a8dcc-83db-4996-9aaf-04d7eb87950a",
+     "ea719c84-2a4b-44f4-bc29-5f6dff415336"
+    ],
+    "takeg_audio_ids": [
+     "a5db2f44-bb3c-4783-927a-ce2c4890e1c1"
+    ]
+   }
+  },
+  {
+   "id": "hin_for_eng:pod-1:SC10-S010",
+   "scene": 10,
+   "sentence": 10,
+   "speaker": "Narrator",
+   "target_text": "बारह। तेरह। चौदह। गुलाबी। स्लेटी।",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice 73xd5dum",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: off-cast voice 73xd5dum"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "922dad7f-2467-4545-8db9-b86c7073f254",
+     "73818559-b1d2-46b0-b930-6c4f97dc0ef1",
+     "3d072cc5-3a55-48e5-8668-1a447e9c1070",
+     "40ec48a1-3324-4448-90c3-f5a657ee1fdc",
+     "a6c3cbf9-7307-439c-8f22-9947b197014c"
+    ],
+    "sentence_known_audio_ids": [
+     "15f01ad1-fe27-4353-87ae-ca748906a879",
+     "84901c11-3c29-4c85-81b0-443602b7122d",
+     "06c23795-6612-45b4-b3c3-e8b3b713de86",
+     "08e23c12-07a8-4f62-b153-48e7ed72899a",
+     "abf8a1ee-ff3a-4895-b527-74c54e7aba02"
+    ],
+    "takeg_audio_ids": [
+     "5b6dd8ac-02f5-4ef5-8d73-9eac97447bf9"
+    ]
+   }
+  },
+  {
+   "id": "hin_for_eng:pod-1:SC11-S001",
+   "scene": 11,
+   "sentence": 1,
+   "speaker": "Guest",
+   "target_text": "नमस्ते। मेरे नाम से एक बुकिंग है — जोन्स।",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice leo"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "57eba7d2-17a0-43de-ab2b-0dc12fb0f839",
+     "6fe297a8-7d71-4421-8472-659a1ebd9b04"
+    ],
+    "sentence_known_audio_ids": [
+     "6168f819-a69a-4ba8-8c75-43b4d5160988",
+     "edf12de1-64f5-42bf-9ca4-2e56d8b171ab"
+    ],
+    "takeg_audio_ids": [
+     "ccf7a7e8-f5f4-416f-881e-0ddc0cb7a6a5"
+    ]
+   }
+  },
+  {
+   "id": "hin_for_eng:pod-1:SC11-S002",
+   "scene": 11,
+   "sentence": 2,
+   "speaker": "Receptionist",
+   "target_text": "स्वागत है। जी हाँ, आपके पास तीन रातों के लिए डबल रूम है। क्या मैं आपकी कोई पहचान देख सकती हूँ, कृपया?",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: off-cast voice azure_en-GB-SoniaNeural/en-GB-SoniaNeural",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "182a5e9c-ba2b-41b7-9694-e9c385c8d746",
+     "d06d5e63-ff5d-4a78-aff2-ba61a9308674",
+     "33e5f17c-4b60-435b-a932-c86a31fba159"
+    ],
+    "sentence_known_audio_ids": [
+     "1a3f6cdf-4c65-4fac-bdd5-d9652b103e97",
+     "e5152287-3a31-41f3-ba09-8aaa7f4bbd85",
+     "fc36f146-8c2c-4c0e-a822-d6cd09abcafe"
+    ],
+    "takeg_audio_ids": [
+     "ca2d4317-9057-44f7-af85-13b553f26c26"
+    ]
+   }
+  },
+  {
+   "id": "hin_for_eng:pod-1:SC11-S003",
+   "scene": 11,
+   "sentence": 3,
+   "speaker": "Guest",
+   "target_text": "बिल्कुल। यह लीजिए मेरा पासपोर्ट।",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "b20d3432-8248-4fd7-a61a-8370dec79303",
+     "1cf4bf8a-6624-402b-8c22-97e09f714abb"
+    ],
+    "sentence_known_audio_ids": [
+     "c77fc888-8a2a-4bfb-a052-b189389c1d28",
+     "ccc62f31-413c-4f06-99dd-84bea45f1767"
+    ],
+    "takeg_audio_ids": [
+     "ea356a7b-1e34-4685-aeb8-c13fb98c0a44"
+    ]
+   }
+  },
+  {
+   "id": "hin_for_eng:pod-1:SC11-S004",
+   "scene": 11,
+   "sentence": 4,
+   "speaker": "Receptionist",
+   "target_text": "बहुत बढ़िया। कमरा तीसरी मंज़िल पर है, कमरा नंबर सात शून्य नौ।",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "4ea7d674-96f6-433e-badc-6065323ad518",
+     "4d95000b-57ef-43a9-9278-410beb8de409"
+    ],
+    "sentence_known_audio_ids": [
+     "9083f737-6e29-4a13-944f-7dc04e5ce815",
+     "6722a81c-0ab1-416e-8a58-13e9fcddd5fa"
+    ],
+    "takeg_audio_ids": [
+     "ab4249c5-a18c-494f-9efb-c43013410e98"
+    ]
+   }
+  },
+  {
+   "id": "hin_for_eng:pod-1:SC11-S008",
+   "scene": 11,
+   "sentence": 8,
+   "speaker": "Receptionist",
+   "target_text": "साढ़े सात बजे से दस बजे तक। हमारे यहाँ फल और सीरियल्स हैं, या पका हुआ नाश्ता भी मिलता है।",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice azure_en-GB-SoniaNeural/en-GB-SoniaNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "5bc4c6a6-a7cb-47ee-bea9-01e6986dc44f",
+     "1f40a009-e0ad-4a2d-bb12-df7a8fa8457a"
+    ],
+    "sentence_known_audio_ids": [
+     "128ea667-a4b4-4bf1-863a-ca9b4a2d1442",
+     "ef6ab435-b172-4d48-82c8-b1b36e2a7bb4"
+    ],
+    "takeg_audio_ids": [
+     "2e902faf-eceb-455f-b833-a4ed599718e9"
+    ]
+   }
+  },
+  {
+   "id": "hin_for_eng:pod-1:SC11-S009",
+   "scene": 11,
+   "sentence": 9,
+   "speaker": "Guest",
+   "target_text": "बहुत अच्छा। क्या हम थोड़ी देर से चेक-आउट कर सकते हैं?",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice leo"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "17653cc6-3852-410d-9e1a-9fb877b3feb3",
+     "420537cd-2fbe-4178-b249-520076f00671"
+    ],
+    "sentence_known_audio_ids": [
+     "ba836496-046b-4ff0-b513-274c35a332b4",
+     "988b30ae-9143-49ea-8d09-09ed62e24b15"
+    ],
+    "takeg_audio_ids": [
+     "cdd93099-5454-4153-a303-908fd23f3d15"
+    ]
+   }
+  },
+  {
+   "id": "hin_for_eng:pod-1:SC11-S012",
+   "scene": 11,
+   "sentence": 12,
+   "speaker": "Receptionist",
+   "target_text": "वो आपके कमरे में वेलकम कार्ड पर लिखा है। आपका यहाँ अच्छा समय बीते।",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice azure_en-GB-SoniaNeural/en-GB-SoniaNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "e0cf6305-3313-46c1-a6bc-be0fdf7b6581",
+     "3b5ade13-7706-4ac3-a567-5df4a9002811"
+    ],
+    "sentence_known_audio_ids": [
+     "11a1c098-7a9b-42ca-8920-f07bf7247a24",
+     "b00df853-db46-4e37-ae15-1beb7643d138"
+    ],
+    "takeg_audio_ids": [
+     "d234c774-18bd-41a9-bb15-64d4e5322089"
+    ]
+   }
+  },
+  {
+   "id": "hin_for_eng:pod-1:SC11-S013",
+   "scene": 11,
+   "sentence": 13,
+   "speaker": "Narrator",
+   "target_text": "सोलह। सत्रह। अठारह। सोमवार। मंगलवार।",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice 73xd5dum",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: off-cast voice 73xd5dum"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "870ea6b2-2773-4493-816e-01b29ef54e14",
+     "b53d9d7a-c341-4f8c-8d35-0c448acb1b34",
+     "967ba162-02a3-41c3-8796-2cefc1e085b4",
+     "d4162353-a3c7-4144-af48-73a2d5461a1c",
+     "7b56c320-23b6-4993-ae6f-5ab7f318286a"
+    ],
+    "sentence_known_audio_ids": [
+     "5bcddd7f-4987-4e1d-9dfe-057940d8e204",
+     "f48bee72-5d7e-43de-b677-53d43cb386c4",
+     "3228d4bc-d101-4775-85c7-741d354a1ab7",
+     "d716e372-570a-48e1-9dba-f9bc22838798",
+     "0439b1cd-c4a4-4cb0-ad2b-751b41d672de"
+    ],
+    "takeg_audio_ids": [
+     "88312fd4-888a-4491-9b63-a43c68ab5eb4"
+    ]
+   }
+  },
+  {
+   "id": "hin_for_eng:pod-1:SC12-S001",
+   "scene": 12,
+   "sentence": 1,
+   "speaker": "Customer",
+   "target_text": "सुप्रभात। मुझे तबीयत ठीक नहीं लग रही - क्या आप कुछ सुझा सकते हैं?",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "5d445e79-c9f4-428b-81d6-5308e2ddaf62",
+     "bc299f94-11e6-4fbb-8396-d1300f89017d"
+    ],
+    "sentence_known_audio_ids": [
+     "72140930-268d-479f-b9a9-85c3a07ea347",
+     "0858a6c5-1eda-4cef-b038-f96e0e0f469e"
+    ],
+    "takeg_audio_ids": [
+     "2a870462-3691-4bca-ab9d-6d5472da3c3c"
+    ]
+   }
+  },
+  {
+   "id": "hin_for_eng:pod-1:SC12-S002",
+   "scene": 12,
+   "sentence": 2,
+   "speaker": "Pharmacist",
+   "target_text": "बिल्कुल। आपके क्या लक्षण हैं?",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice leo"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "b20d3432-8248-4fd7-a61a-8370dec79303",
+     "5aa9cbf8-1802-4d3c-8217-f04d2487199a"
+    ],
+    "sentence_known_audio_ids": [
+     "c77fc888-8a2a-4bfb-a052-b189389c1d28",
+     "48879bdc-1e29-44fe-b1ec-4ee7971d24d9"
+    ],
+    "takeg_audio_ids": [
+     "88f89400-889c-45d3-b812-428ad2578fc9"
+    ]
+   }
+  },
+  {
+   "id": "hin_for_eng:pod-1:SC12-S003",
+   "scene": 12,
+   "sentence": 3,
+   "speaker": "Customer",
+   "target_text": "मुझे कल से सिरदर्द और गले में खराश है।",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "876370c1-80fe-4a17-8e45-41d2e1ca9b5d"
+    ]
+   }
+  },
+  {
+   "id": "hin_for_eng:pod-1:SC12-S004",
+   "scene": 12,
+   "sentence": 4,
+   "speaker": "Pharmacist",
+   "target_text": "सिरदर्द के लिए पैरासिटामोल लीजिए, और गले के लिए ये लोज़ेंज।",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "baf9a765-f191-4299-a6a9-0507ed190835"
+    ]
+   }
+  },
+  {
+   "id": "hin_for_eng:pod-1:SC12-S009",
+   "scene": 12,
+   "sentence": 9,
+   "speaker": "Customer",
+   "target_text": "शुक्रिया। क्या मुझे एक पैकेट प्लास्टर भी मिल सकता है?",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice en-GB-SoniaNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "4ea7d674-96f6-433e-badc-6065323ad518",
+     "1cbbbfce-21dd-49a8-a660-3c326a30ad9f"
+    ],
+    "sentence_known_audio_ids": [
+     "c1f4fd8f-6054-4ce6-9ce6-848a50ed3586",
+     "528f6d3e-3cda-476a-88e5-ed1f7884fdf8"
+    ],
+    "takeg_audio_ids": [
+     "5dd62e17-370d-4e45-a4ce-730519d89c38"
+    ]
+   }
+  },
+  {
+   "id": "hin_for_eng:pod-1:SC12-S010",
+   "scene": 12,
+   "sentence": 10,
+   "speaker": "Narrator",
+   "target_text": "उन्नीस। बीस। इक्कीस। बुधवार। गुरुवार।",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: off-cast voice 73xd5dum"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "e9dbccc3-2128-45cc-93cf-ad5e211ef9d8",
+     "cec7371a-da6d-4485-b321-e97e53fd2d61",
+     "a57545a6-fc93-4f01-8221-53644061be71",
+     "9e177186-7578-4c13-b300-1bd93ea923c5",
+     "0bc7b203-19e8-4914-9b56-6b62c5339fff"
+    ],
+    "sentence_known_audio_ids": [
+     "1585ce47-de6f-4fa8-8923-e80ef4ce7861",
+     "af7b4f11-ae49-420c-a26b-3dff4cb7ebd2",
+     "0fd6a0a3-7108-418d-934e-baf65e698473",
+     "913fbb8d-fed4-4528-873a-1d7b70e45332",
+     "401c0307-92db-4211-a428-f7d176b9f339"
+    ],
+    "takeg_audio_ids": [
+     "1f9e1b06-5c56-4a09-a423-5033dc4bdbb6"
+    ]
+   }
+  },
+  {
+   "id": "hin_for_eng:pod-1:SC13-S001",
+   "scene": 13,
+   "sentence": 1,
+   "speaker": "Tourist",
+   "target_text": "माफ़ कीजिए, क्या आप जानते हैं कि सबसे नज़दीकी सुपरमार्केट कैसे जाएँ?",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: off-cast voice rex"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "23bb8567-b2d4-4a2f-9d01-66a833cee4f7"
+    ]
+   }
+  },
+  {
+   "id": "hin_for_eng:pod-1:SC13-S002",
+   "scene": 13,
+   "sentence": 2,
+   "speaker": "Local",
+   "target_text": "हाँ, यहाँ से लगभग दस मिनट की पैदल दूरी है। इस सड़क पर सीधे चलते जाइए।",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice leo"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "50591a13-6466-438f-9b45-66989174d933",
+     "c6e2fa10-82ae-4a29-8351-672915d38145"
+    ],
+    "sentence_known_audio_ids": [
+     "6843486d-5f24-4a6f-a331-c87d51c867ad",
+     "b61b1e42-1107-4ec0-9ea9-0ef6505635a8"
+    ],
+    "takeg_audio_ids": [
+     "22a2a57e-2150-493d-a462-448c5fef8c2a"
+    ]
+   }
+  },
+  {
+   "id": "hin_for_eng:pod-1:SC13-S008",
+   "scene": 13,
+   "sentence": 8,
+   "speaker": "Tourist",
+   "target_text": "बहुत अच्छा। और क्या यहाँ पास में कोई एटीएम है?",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice rex",
+    "sentence_known_audio_ids: off-cast voice en-GB-RyanNeural",
+    "takeg_audio_ids: off-cast voice rex"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "dfec1a90-5551-4aec-bed7-f4e8972d0d43",
+     "8ba36f35-a6a1-40ee-8de1-388bff1cf2b0"
+    ],
+    "sentence_known_audio_ids": [
+     "d7fb8b70-7e05-41bd-a5a8-03b5a835d149",
+     "f9247efd-2c95-46b1-97a7-19601a37d9d8"
+    ],
+    "takeg_audio_ids": [
+     "ff51791e-ea39-4923-82ff-58dfe0cd2e0f"
+    ]
+   }
+  },
+  {
+   "id": "hin_for_eng:pod-1:SC13-S009",
+   "scene": 13,
+   "sentence": 9,
+   "speaker": "Local",
+   "target_text": "हाँ, एक हाई स्ट्रीट पर है, बेकरी के बगल में।",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "ca88f135-6a8e-4390-b019-1e73f7bd7f36"
+    ]
+   }
+  },
+  {
+   "id": "hin_for_eng:pod-1:SC13-S010",
+   "scene": 13,
+   "sentence": 10,
+   "speaker": "Tourist",
+   "target_text": "बहुत-बहुत शुक्रिया। आपने बड़ी मदद की।",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice rex",
+    "sentence_known_audio_ids: off-cast voice en-GB-RyanNeural",
+    "takeg_audio_ids: off-cast voice rex"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "dbaa3a75-7e97-4755-bab1-2f28d8960979",
+     "5a5d0597-b377-4fd2-b583-42c2d36d0fa2"
+    ],
+    "sentence_known_audio_ids": [
+     "f69626e2-0ea3-46b6-a296-4eb58d9d6bad",
+     "b23d5e6d-3337-489c-ac64-ce49e9a1008f"
+    ],
+    "takeg_audio_ids": [
+     "81ce2156-bb7f-4c35-888c-619a1947921f"
+    ]
+   }
+  },
+  {
+   "id": "hin_for_eng:pod-1:SC13-S011",
+   "scene": 13,
+   "sentence": 11,
+   "speaker": "Narrator",
+   "target_text": "तीस। चालीस। पचास। शुक्रवार। शनिवार।",
+   "clear": [
+    "sentence_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice 73xd5dum",
+    "takeg_audio_ids: off-cast voice 73xd5dum"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "068d9d18-39f1-404f-92e6-9cc058c63d89",
+     "ce8ad2aa-1a42-4cef-9cef-ab325c3f777f",
+     "5f943131-0ffd-427e-82eb-1bdaf03bc681",
+     "925da928-ecb8-4d23-9da1-7005b0732017",
+     "6abcd577-a588-4424-9d9b-ba117f027c46"
+    ],
+    "sentence_known_audio_ids": [
+     "b1dabc10-33a8-4586-80a6-b0bdb6282f1e",
+     "314b73fe-8660-4c10-a21b-5555ae1f4bb9",
+     "6a40f6b3-c9b5-4441-b24a-3e4b32e93d5a",
+     "132d7960-fc0c-451f-ba53-fef3fc0778c9",
+     "2ab97278-b631-4405-a394-117637f6974f"
+    ],
+    "takeg_audio_ids": [
+     "0df41a95-782f-4966-86d0-ade188a0b9bf"
+    ]
+   }
+  },
+  {
+   "id": "hin_for_eng:pod-1:SC14-S001",
+   "scene": 14,
+   "sentence": 1,
+   "speaker": "Passenger",
+   "target_text": "नमस्ते। क्या आप मुझे रेलवे स्टेशन ले जा सकते हैं, कृपया?",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "5d445e79-c9f4-428b-81d6-5308e2ddaf62",
+     "ddf09998-607d-4ed3-a0db-55e8a9dba101"
+    ],
+    "sentence_known_audio_ids": [
+     "cf6b1243-ecf6-4dd8-8d16-63098b577e33",
+     "f383c9a7-e6e0-447a-b000-fa16a3ba3598"
+    ],
+    "takeg_audio_ids": [
+     "5e5cc35c-42bd-4915-979e-b654e4a6e12a"
+    ]
+   }
+  },
+  {
+   "id": "hin_for_eng:pod-1:SC14-S002",
+   "scene": 14,
+   "sentence": 2,
+   "speaker": "Driver",
+   "target_text": "हाँ, बिल्कुल। थोड़ा समय लग सकता है, अभी बहुत ट्रैफ़िक है।",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice leo"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "2a32b4e3-fbb0-468b-9604-0d005d458243",
+     "799e14b9-54d8-467c-9d5e-e890bb5fcb27"
+    ],
+    "sentence_known_audio_ids": [
+     "7e5e14ac-afd9-41fa-ad5d-976ca55906cc",
+     "e15e840a-b385-4f18-b65b-4770464ad663"
+    ],
+    "takeg_audio_ids": [
+     "d0195135-b2e0-49ae-959d-0f0607967e97"
+    ]
+   }
+  },
+  {
+   "id": "hin_for_eng:pod-1:SC14-S007",
+   "scene": 14,
+   "sentence": 7,
+   "speaker": "Driver",
+   "target_text": "आ गए हम। बारह पाउंड पचास हुए।",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "35efc067-5fd0-4a37-a248-cb1bbb7176b0",
+     "ca80ff06-cdcd-4795-af59-698534f62fd8"
+    ],
+    "sentence_known_audio_ids": [
+     "1a41dd84-93db-424d-8777-992f6198728c",
+     "801f0d72-0382-42fd-b1ce-ce6b06743fb2"
+    ],
+    "takeg_audio_ids": [
+     "e3a214db-731e-4f19-b89f-7103112bf77c"
+    ]
+   }
+  },
+  {
+   "id": "hin_for_eng:pod-1:SC14-S009",
+   "scene": 14,
+   "sentence": 9,
+   "speaker": "Driver",
+   "target_text": "हाँ, बिल्कुल। मशीन यहीं है।",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice leo"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "2a32b4e3-fbb0-468b-9604-0d005d458243",
+     "5d009d41-ac66-45b8-bc80-6c691f9d631d"
+    ],
+    "sentence_known_audio_ids": [
+     "7e5e14ac-afd9-41fa-ad5d-976ca55906cc",
+     "906c5f8a-2b74-4a6e-ab25-30dbf3a9b484"
+    ],
+    "takeg_audio_ids": [
+     "c7c30c94-39ca-43e1-8978-b1eef5569507"
+    ]
+   }
+  },
+  {
+   "id": "hin_for_eng:pod-1:SC14-S010",
+   "scene": 14,
+   "sentence": 10,
+   "speaker": "Narrator",
+   "target_text": "एक सौ। दो सौ। एक हज़ार। रविवार। बारह बजे।",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice 73xd5dum",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: off-cast voice 73xd5dum"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "4958f1ca-79ab-4d41-8e89-788985ac05b3",
+     "1278cb08-9b8f-4d73-95e4-638c5ea10681",
+     "0f413f46-651d-4d24-9391-80cb673c07f4",
+     "55cfab39-cf8e-4f4b-ba9e-c3fed30df804",
+     "8e700b31-8dac-4e42-809b-f4bdc3a40300"
+    ],
+    "sentence_known_audio_ids": [
+     "dc184d89-f22b-4ead-b3ed-064a5b81ec08",
+     "19d25953-d33e-42a9-a48a-c6f543eeb65a",
+     "37767212-57a9-40c0-a47e-94e8a3760ae4",
+     "4c57e5c9-79cf-4ec8-a24a-3e673582c866",
+     "d66ad54b-c221-4af7-9daf-07dcaf7968b3"
+    ],
+    "takeg_audio_ids": [
+     "b912c3ee-4362-44bd-94f2-c51babd3a8a3"
+    ]
+   }
+  },
+  {
+   "id": "hin_for_eng:pod-1:SC15-S001",
+   "scene": 15,
+   "sentence": 1,
+   "speaker": "Learner",
+   "target_text": "वह कितने का है?",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "691acb93-ace7-4865-804d-20e80d0fb890",
+     "9ad2ca54-d81f-456a-a276-072cf98ddbeb"
+    ],
+    "sentence_known_audio_ids": [
+     "a93e8285-944e-4fdb-b9c8-ab749e6733d5",
+     "ec815389-fffa-4296-932e-4a629db184df"
+    ],
+    "takeg_audio_ids": [
+     "c1c3b191-5dea-4a1e-aec7-6edbf084210f",
+     "466de784-0077-4476-af0e-b29759f73b53"
+    ]
+   }
+  },
+  {
+   "id": "hin_for_eng:pod-1:SC15-S002",
+   "scene": 15,
+   "sentence": 2,
+   "speaker": "Learner",
+   "target_text": "क्या आप मुझे बता सकते हैं कि वह कितने का है?",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "29f309c0-5da9-4b72-895d-829e5c5e78d2",
+     "c13e8ef3-d9f9-4f35-af63-9c382d390ef0",
+     "d8856de4-6432-4f41-9769-d328e9a6ec9d"
+    ],
+    "sentence_known_audio_ids": [
+     "d999866c-6ea7-4848-9eb0-f2599d9c7a2b",
+     "0616b1bb-bb44-4da2-9a19-0c636d6202a4",
+     "99488aa7-093e-44d9-9f50-4571e1686783"
+    ],
+    "takeg_audio_ids": [
+     "6b6e5989-400b-49b2-aed6-1f8bcf297616"
+    ]
+   }
+  },
+  {
+   "id": "hin_for_eng:pod-1:SC15-S003",
+   "scene": 15,
+   "sentence": 3,
+   "speaker": "Learner",
+   "target_text": "शहर तक टैक्सी लेने में कितना खर्चा होता है?",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "e37ff118-a00e-4bd2-aa97-f9a57ccd1349",
+     "60133e84-8db5-494b-a024-f7b0b89bca81",
+     "9ad9069a-59ee-47f2-ad58-511718b00951"
+    ],
+    "sentence_known_audio_ids": [
+     "235bc2a6-2b34-450d-abf3-c29f322f8a74",
+     "6b4ee843-3c49-4ff3-bfb3-667b6fa4fc29",
+     "409c091b-9a60-4cb6-95cc-91c5d256d8a4"
+    ],
+    "takeg_audio_ids": [
+     "8d1d9f5c-58bb-4cb7-81cb-e204575809e8"
+    ]
+   }
+  },
+  {
+   "id": "hin_for_eng:pod-1:SC15-S004",
+   "scene": 15,
+   "sentence": 4,
+   "speaker": "Learner",
+   "target_text": "शहर तक बस लेने में कितना खर्चा होता है?",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "044fe547-9c17-458e-97e1-b1ef1ab316c8"
+    ]
+   }
+  },
+  {
+   "id": "hin_for_eng:pod-1:SC15-S005",
+   "scene": 15,
+   "sentence": 5,
+   "speaker": "Learner",
+   "target_text": "हमें बस कहाँ मिल सकती है?",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "82c86c7c-e918-4604-a70f-ebdf94847b72",
+     "8cca2b6a-a93c-4fbe-9ce4-c387f21770a9",
+     "315978d4-6f4f-44f7-86e1-644b82ff7b01",
+     "5cc97958-3741-4059-9a86-fabf41954148"
+    ],
+    "sentence_known_audio_ids": [
+     "c1b6d8e8-5abd-4c77-93bd-b390a3e5cfb4",
+     "7cb8c55b-9d32-449a-896c-2355d588e3e0",
+     "f836eebe-4ece-44e9-8e02-ffe118db25c1",
+     "88d1517e-7148-4674-bce4-349950db3d5a"
+    ],
+    "takeg_audio_ids": [
+     "e68912b5-2754-4676-be9e-b33669542970"
+    ]
+   }
+  },
+  {
+   "id": "hin_for_eng:pod-1:SC15-S006",
+   "scene": 15,
+   "sentence": 6,
+   "speaker": "Learner",
+   "target_text": "हमें टैक्सी कहाँ मिल सकती है?",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "e048d428-e7be-4b68-82a6-1ddeeb7587c9",
+     "1ceaa292-3318-4d52-8595-447186431b8c",
+     "3572e3c8-8906-45da-bdd0-23a2495ab519"
+    ],
+    "sentence_known_audio_ids": [
+     "2240d91e-6c01-46fb-878e-5eb9352e4415",
+     "4011aaa0-26fc-4439-b467-19b0ff9c7f32",
+     "fbbac626-c836-459a-a078-f884fc2e3501"
+    ],
+    "takeg_audio_ids": [
+     "eaf1b900-5f57-43a1-8f6f-4c5caf5cc9b1"
+    ]
+   }
+  },
+  {
+   "id": "hin_for_eng:pod-1:SC15-S007",
+   "scene": 15,
+   "sentence": 7,
+   "speaker": "Learner",
+   "target_text": "शहर के लिए चार सिंगल टिकट, कृपया।",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "80cfb6a2-e55a-4511-ae7e-5adf304572a0",
+     "15936145-b076-4b6f-8cf8-f3364e925363"
+    ],
+    "sentence_known_audio_ids": [
+     "87a0b0af-c5d8-47ad-bd7f-74cac5a7c747",
+     "d80eace4-22b6-4c47-9830-96216d8a7f63"
+    ],
+    "takeg_audio_ids": [
+     "b93a5336-0a09-450f-827d-db62817ce111"
+    ]
+   }
+  },
+  {
+   "id": "hin_for_eng:pod-1:SC15-S008",
+   "scene": 15,
+   "sentence": 8,
+   "speaker": "Learner",
+   "target_text": "शहर के लिए दो रिटर्न टिकट, कृपया।",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "18e95dce-3360-4fa9-a691-d2758f89bc2d",
+     "2498ef3d-2f4d-4661-b67d-d94f03ff8719",
+     "cfe2fe11-6b13-4477-99c7-ea0de7109a6a"
+    ],
+    "sentence_known_audio_ids": [
+     "995331f6-03c3-4949-b5f9-f80ea391d203",
+     "58560599-7fc0-4699-ba6a-667b0b9b3da2",
+     "d096a866-3485-427b-ae8d-5e2bee66f513"
+    ],
+    "takeg_audio_ids": [
+     "44622762-d6dd-4bf5-9593-6fcbb43bdf6a"
+    ]
+   }
+  },
+  {
+   "id": "hin_for_eng:pod-1:SC15-S009",
+   "scene": 15,
+   "sentence": 9,
+   "speaker": "Learner",
+   "target_text": "मैं आपकी भाषा बोलने की कोशिश करना पसंद करती हूँ, मुझे लगता है यह विनम्रता है।",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "153fdec5-ac02-465d-b424-92834e7ff106",
+     "f246fcd1-3fc4-48f8-8b97-c94320fa365d"
+    ],
+    "sentence_known_audio_ids": [
+     "22964127-7fd0-421d-9dc4-c79cecffac83",
+     "b1a07057-29ba-4902-9e0a-fddd4e810552",
+     "ca63b6ea-440e-4e0e-9483-dd4103bbbd50",
+     "d5e5bd3e-4b5c-43b4-9937-d9badac12aa7"
+    ],
+    "takeg_audio_ids": [
+     "a0dce2cf-2ec3-4595-8373-bf5e1182e84c",
+     "63abaa74-cbc3-4d48-98fd-fa124f2edc44"
+    ]
+   }
+  },
+  {
+   "id": "hin_for_eng:pod-1:SC15-S010",
+   "scene": 15,
+   "sentence": 10,
+   "speaker": "Learner",
+   "target_text": "माफ़ कीजिए मैं बहुत तेज़ नहीं बोल सकती।",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "939472eb-0941-4dca-bcea-73442b8e597f",
+     "78372744-7bff-4268-878b-51b4cce95641",
+     "157e006e-ee1f-4dc2-8682-d6328ac9f60b"
+    ],
+    "sentence_known_audio_ids": [
+     "ec4819f1-7144-4404-9a56-9abd90070075",
+     "adb37d1a-1e36-4113-9206-4a5e0973b9b4",
+     "0d7f2a44-9690-490b-b3fb-c781d7e886d6"
+    ],
+    "takeg_audio_ids": [
+     "edd56480-3ef4-4597-b9a3-93f4c04953a0"
+    ]
+   }
+  },
+  {
+   "id": "hin_for_eng:pod-1:SC15-S011",
+   "scene": 15,
+   "sentence": 11,
+   "speaker": "Narrator",
+   "target_text": "एक लाख। साठ। सत्तर। एक बजे। ग्यारह बजे।",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "c14a49d9-ef5c-465e-84c1-029ee752d0cb",
+     "c230243f-966c-43c1-975c-0dbd6b0bd845",
+     "33acf646-ed69-434d-9a9c-66807852bf53"
+    ],
+    "sentence_known_audio_ids": [
+     "cabbc0ea-6b25-4edb-adc2-9d217eb5d372",
+     "00736361-2f15-47df-b513-7d67c557d4f9",
+     "d4ba139f-ee7b-43a1-b8e4-06ac50c81a09"
+    ],
+    "takeg_audio_ids": [
+     "a353378d-85e4-4fa7-9699-3617da6b8178"
+    ]
+   }
+  }
+ ]
+}

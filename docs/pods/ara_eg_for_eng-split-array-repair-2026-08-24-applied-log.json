@@ -1,0 +1,2929 @@
+{
+ "pod": "ara_eg_for_eng:pod-1",
+ "course": "ara_eg_for_eng",
+ "mode": "applied",
+ "generated_at": "2026-08-24T11:22:51.825Z",
+ "rows_total": 231,
+ "rows_repaired": 102,
+ "cast": {
+  "target": [
+   "eve",
+   "rex"
+  ],
+  "known": [
+   "bedd6226",
+   "gfzdpspr5fdp"
+  ]
+ },
+ "by_scene": {
+  "1": 3,
+  "2": 2,
+  "3": 3,
+  "4": 2,
+  "5": 2,
+  "6": 13,
+  "7": 12,
+  "8": 11,
+  "9": 14,
+  "10": 6,
+  "11": 8,
+  "12": 4,
+  "13": 5,
+  "14": 6,
+  "15": 11
+ },
+ "rows": [
+  {
+   "id": "ara_eg_for_eng:pod-1:SC01-S002",
+   "scene": 1,
+   "sentence": 2,
+   "speaker": "Sarah",
+   "target_text": "صباح الخير. إزيك؟",
+   "clear": [
+    "sentence_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice ara",
+    "takeg_audio_ids: off-cast voice ara"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "cad3863c-3e79-4fdf-865f-4c634297b4a0",
+     "3f3af57a-a87e-49d7-b888-476b67a4d592"
+    ],
+    "sentence_known_audio_ids": [
+     "bbace17d-6ab7-4a7a-82a1-15778ef70e55",
+     "75b0169c-f992-4db0-8f94-5e87facb60a5"
+    ],
+    "takeg_audio_ids": [
+     "62fd7e16-35ee-42b1-8f93-55a626d04a3c"
+    ]
+   }
+  },
+  {
+   "id": "ara_eg_for_eng:pod-1:SC01-S003",
+   "scene": 1,
+   "sentence": 3,
+   "speaker": "Neighbour",
+   "target_text": "أنا كويس جداً، شكراً. رايحة الشغل؟",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice leo"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "91356210-b3aa-4069-9d44-1c8b98c33e1b",
+     "9c7f57a7-64f2-4120-911d-672c6bb366f5"
+    ],
+    "sentence_known_audio_ids": [
+     "3bf63f03-6a72-4288-ae49-25dc8bb40db8",
+     "9a15e22e-9335-4535-abad-59efa70cd8dd"
+    ],
+    "takeg_audio_ids": [
+     "4b635f66-7bbe-4781-8bd1-28ab1aec926b",
+     null
+    ]
+   }
+  },
+  {
+   "id": "ara_eg_for_eng:pod-1:SC01-S004",
+   "scene": 1,
+   "sentence": 4,
+   "speaker": "Sarah",
+   "target_text": "أيوه، عندي يوم مزحوم النهارده. ربنا يجعلك في يوم كويس. أشوفك بعدين.",
+   "clear": [
+    "sentence_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice ara",
+    "takeg_audio_ids: off-cast voice ara"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "591ac556-5414-4f39-bb28-f588b9856880",
+     "693dae03-7571-47ef-888f-6ae85f8cd48f",
+     "02ee0d60-b39c-4408-a560-fd9b73c72e18"
+    ],
+    "sentence_known_audio_ids": [
+     "2029c149-253a-4ec4-b527-5ba8f6ca4523",
+     "9b8d7fbb-5ec0-41a7-ac7b-d538e0e14189",
+     "638c4232-70fb-4c4f-9689-5f8b36704b65"
+    ],
+    "takeg_audio_ids": [
+     "b33b01fe-7bc1-43b2-9b70-4eaee574be88",
+     "0b71d667-0128-47e7-8284-104fb8bd78b1",
+     null
+    ]
+   }
+  },
+  {
+   "id": "ara_eg_for_eng:pod-1:SC02-S001",
+   "scene": 2,
+   "sentence": 1,
+   "speaker": "Sarah",
+   "target_text": "لو سمحت، الكرسي ده مشغول؟",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: off-cast voice ara"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "bfa5336b-b49f-445b-beae-54ffa7c64f27"
+    ]
+   }
+  },
+  {
+   "id": "ara_eg_for_eng:pod-1:SC02-S002",
+   "scene": 2,
+   "sentence": 2,
+   "speaker": "Passenger",
+   "target_text": "لا، فاضي. اتفضل.",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice en-GB-SoniaNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "5f0e4c12-4d5f-4b92-9508-57c19d7fdb30",
+     "06c1161a-c97b-4e01-9ce1-54562fc5ce3b"
+    ],
+    "sentence_known_audio_ids": [
+     "c96633af-c710-4660-8fb3-68ac18d6b7c7",
+     "d1102c6b-4583-4ec8-8c48-101d70c2e4d2"
+    ],
+    "takeg_audio_ids": [
+     "d129a2f1-e038-4e7f-9d47-cfd668dd4e5e",
+     null
+    ]
+   }
+  },
+  {
+   "id": "ara_eg_for_eng:pod-1:SC03-S001",
+   "scene": 3,
+   "sentence": 1,
+   "speaker": "Barista (3 pm)",
+   "target_text": "مساء الخير. إيه اللي تأخذه؟",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice sal",
+    "sentence_known_audio_ids: off-cast voice azure_en-GB-HollieNeural/en-GB-HollieNeural",
+    "takeg_audio_ids: off-cast voice sal"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "b70620d2-d607-4ffc-8c19-d46fbd809575",
+     "f88d3b33-a218-4474-acca-64ed936c03b4"
+    ],
+    "sentence_known_audio_ids": [
+     "0d9f9a67-0137-4905-83b8-c04bc6b04173",
+     "4a498fc2-b978-4004-a0df-35cd514bfcc1"
+    ],
+    "takeg_audio_ids": [
+     "c9eb9a6c-73e5-47f1-824e-64ca539960c3"
+    ]
+   }
+  },
+  {
+   "id": "ara_eg_for_eng:pod-1:SC03-S002",
+   "scene": 3,
+   "sentence": 2,
+   "speaker": "Sarah",
+   "target_text": "مساء الخير. عايزة قهوة من فضلك. بلبن بس من غير سكر. تيك أواي.",
+   "clear": [
+    "sentence_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice ara",
+    "takeg_audio_ids: off-cast voice ara"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "eefc2f7e-8227-4f4e-87f1-a36587dfaf31",
+     "a46d76c7-5e15-4b7a-8b2e-df5d45dc1475",
+     "f35f8b9c-dc54-4523-9460-f5167a6b91a9",
+     "9672e578-cd69-4481-b3a7-82d9a7d6bf04"
+    ],
+    "sentence_known_audio_ids": [
+     "cc745bf3-768c-4a45-b619-75c679eaf7d8",
+     "2cac4bdf-8a5c-4846-97fe-fa0a2305cffb",
+     "6702a0e5-579b-4595-bb97-fa679d0108a0",
+     "5ab3cba4-502a-42e3-b339-356bd82c77bf"
+    ],
+    "takeg_audio_ids": [
+     "e72c860f-fbca-4e8b-8207-68ca546492b7",
+     "807e8eea-f095-49bd-a1a0-39744bcc8126",
+     null
+    ]
+   }
+  },
+  {
+   "id": "ara_eg_for_eng:pod-1:SC03-S003",
+   "scene": 3,
+   "sentence": 3,
+   "speaker": "Sarah",
+   "target_text": "عندكو أكل؟",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "871261d9-bb11-4087-bf17-db0b0b277ee1",
+     "44e631da-65a3-4ebd-a354-322b82556715"
+    ],
+    "sentence_known_audio_ids": [
+     "50bc39f5-fbfa-4de0-8ad3-909686ff5a8b",
+     "3d9e1b74-fa44-43c8-b92c-aaa24973f8b7"
+    ],
+    "takeg_audio_ids": [
+     "a210a44c-53c6-4e55-9f6c-85099f55d47b"
+    ]
+   }
+  },
+  {
+   "id": "ara_eg_for_eng:pod-1:SC04-S002",
+   "scene": 4,
+   "sentence": 2,
+   "speaker": "Sarah",
+   "target_text": "أهلاً! آسفة بس مش قادرة أتكلم دلوقتي. لازم أروح البيت دلوقتي. نتكلم بكرة؟",
+   "clear": [
+    "sentence_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice ara",
+    "takeg_audio_ids: off-cast voice ara"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "1ea18be9-73a4-4bc2-9c56-4812dd1464ab",
+     "ed9d4d8f-4dd5-4ce7-a867-0a07ffe4a8f5",
+     "fd0a1baa-5013-4272-b276-7fb154a38cec",
+     "6cdea7f4-bd37-49a8-bc0d-9656f2537757"
+    ],
+    "sentence_known_audio_ids": [
+     "e26a9b20-3f01-4b90-81b8-398db2537219",
+     "8d53da0e-9d0b-44dc-a0d9-97dbb1196d55",
+     "0919e620-ec8f-4997-8472-c82686d0b342",
+     "4b0baf9a-4d43-495d-a479-8e30de8e5580"
+    ],
+    "takeg_audio_ids": [
+     "e3b30761-9cfb-4ff8-b22d-48d180a0d87d",
+     null,
+     null
+    ]
+   }
+  },
+  {
+   "id": "ara_eg_for_eng:pod-1:SC04-S003",
+   "scene": 4,
+   "sentence": 3,
+   "speaker": "Friend",
+   "target_text": "لأ، آسف، أنا مزحوم بكرة. بس نتكلم السبت. أشوفك السبت.",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice leo"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "1657fcb5-9b24-4755-ba4e-aab1960e92a9",
+     "8a24ee9a-5f12-49c7-823c-3cde652c37af",
+     "ca35a595-c033-44ba-b93d-c9c96ef8eb9a"
+    ],
+    "sentence_known_audio_ids": [
+     "4a006c2e-d32c-4a40-ae51-867cc339ac56",
+     "ce7c3027-f7f5-4118-b5af-88ffbc5824d0",
+     "8dbe0023-7d4b-4413-a452-29621da1e8aa"
+    ],
+    "takeg_audio_ids": [
+     "303fe0d4-84c4-412f-a705-a797e26ed06a",
+     null,
+     null
+    ]
+   }
+  },
+  {
+   "id": "ara_eg_for_eng:pod-1:SC05-S001",
+   "scene": 5,
+   "sentence": 1,
+   "speaker": "Neighbour (10:30 pm)",
+   "target_text": "مساء الخير يا سارة. كان عندك يوم مزحوم؟",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice leo"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "0d8fdc87-24cb-4390-8f98-c2f40ed31b48",
+     "3074c56c-899b-4531-b25d-3564a266b5ba"
+    ],
+    "sentence_known_audio_ids": [
+     "c6256421-e82f-4ac2-93bb-8487b21b75e9",
+     "2ae54aee-12e4-4536-9f78-5e8d1b350ed1"
+    ],
+    "takeg_audio_ids": [
+     "0daa7eb9-b095-4c46-b427-d06c3d00ee5a"
+    ]
+   }
+  },
+  {
+   "id": "ara_eg_for_eng:pod-1:SC05-S002",
+   "scene": 5,
+   "sentence": 2,
+   "speaker": "Sarah",
+   "target_text": "أيوه، جداً. أنا تعبانة أوي دلوقتي. تصبحي على خير. أشوفك بكره.",
+   "clear": [
+    "sentence_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice ara",
+    "takeg_audio_ids: off-cast voice ara"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "206a1269-6b14-491f-9db0-247a2644be12",
+     "3eaf1146-a7f3-4eef-85ea-398334658655",
+     "e4701b62-2695-4b64-b0f6-3d0dc31ee5a0",
+     "6ad0ba3e-5416-4076-a8bb-84e4f2dead73"
+    ],
+    "sentence_known_audio_ids": [
+     "95a24c70-5ef4-46a8-8835-14506dc0360b",
+     "15d27f79-49db-4c07-9dd7-8dea950700fe",
+     "90487167-2431-4758-8812-d9bda0ba7ac0",
+     "8b165d03-d89e-4447-9f9d-dc77383f2516"
+    ],
+    "takeg_audio_ids": [
+     "6fab11a5-3f1d-4a1d-af2c-b507b1068776",
+     null,
+     null,
+     null
+    ]
+   }
+  },
+  {
+   "id": "ara_eg_for_eng:pod-1:SC06-S001",
+   "scene": 6,
+   "sentence": 1,
+   "speaker": "James",
+   "target_text": "لو سمحت. أهلاً. إيه اسمك؟",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice leo"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "42763962-129a-42ed-b6c4-3db9ff880ca1",
+     "af2931a5-4a85-4c37-9406-ffea004e7204",
+     "3080d891-727c-4140-8bdf-c7a03acf4d5c"
+    ],
+    "sentence_known_audio_ids": [
+     "c7716906-00fe-4b26-b576-28f8f40ad917",
+     "6e5d966f-a235-4dec-a9d3-201b1fb7c20a",
+     "ee9fb8b6-be00-4d59-b2dd-04157e1305ac"
+    ],
+    "takeg_audio_ids": [
+     "e0e01080-f8e7-49f2-bbf7-10c4ee60254a"
+    ]
+   }
+  },
+  {
+   "id": "ara_eg_for_eng:pod-1:SC06-S002",
+   "scene": 6,
+   "sentence": 2,
+   "speaker": "Anna",
+   "target_text": "اسمي آنا. وأنت؟",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice en-GB-SoniaNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "5fc05d61-c9ae-4361-ba51-970ed8cf03fd",
+     "c946aa1c-c8c4-43a7-ad30-e41fbbb8d005"
+    ],
+    "sentence_known_audio_ids": [
+     "a4a959aa-affa-4d6a-8f18-a0bd5e3e98bb",
+     "ee052b1b-8e3f-4139-b648-b21b07b0f2ab"
+    ],
+    "takeg_audio_ids": [
+     "ce012318-1374-4df8-b3e6-33e495abcf81",
+     null
+    ]
+   }
+  },
+  {
+   "id": "ara_eg_for_eng:pod-1:SC06-S003",
+   "scene": 6,
+   "sentence": 3,
+   "speaker": "James",
+   "target_text": "أنا جيمس. تشرفت بمعرفتك.",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice leo"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "3eb72433-ad96-4c20-86af-945dcbbf3615",
+     "718e8f53-94a2-435f-83d2-1988be61e58e"
+    ],
+    "sentence_known_audio_ids": [
+     "4ea43559-b9f4-42ee-aaf5-ba7a1b7de077",
+     "2ad9e9d3-380d-469c-91c6-fa111e007516"
+    ],
+    "takeg_audio_ids": [
+     "f270f342-97d0-4f08-b207-1fd245410423"
+    ]
+   }
+  },
+  {
+   "id": "ara_eg_for_eng:pod-1:SC06-S004",
+   "scene": 6,
+   "sentence": 4,
+   "speaker": "Anna",
+   "target_text": "أنا كمان تشرفت. إنت من فين؟",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice en-GB-SoniaNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "be4c1c43-b14a-4a35-b992-bcfb70e9afe0",
+     "5d2d12b1-9104-4875-a02d-3b04fd2ab11a"
+    ],
+    "sentence_known_audio_ids": [
+     "fb2be3f3-a669-4b45-928c-dedffd73e0be",
+     "46c118cf-cc9f-4199-9adc-ebf00dcd144e"
+    ],
+    "takeg_audio_ids": [
+     "023840b1-c344-4cb9-9107-7be8fe52ea6a"
+    ]
+   }
+  },
+  {
+   "id": "ara_eg_for_eng:pod-1:SC06-S005",
+   "scene": 6,
+   "sentence": 5,
+   "speaker": "James",
+   "target_text": "أنا من مانشستر، بس دلوقتي ساكن في لندن. وأنت؟",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice leo"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "5393f9f1-2e8b-4e75-9760-8256aa54d853",
+     "0b9375e4-ebb8-434c-b421-52be8045aa31"
+    ],
+    "sentence_known_audio_ids": [
+     "6ec7ac77-9469-47a5-a850-785c1fad1d12",
+     "9e31d71b-ff0c-40f1-9591-572c0e2e0d0e"
+    ],
+    "takeg_audio_ids": [
+     "29ef813d-80da-435d-98a9-ef4d4a4c2f06",
+     null
+    ]
+   }
+  },
+  {
+   "id": "ara_eg_for_eng:pod-1:SC06-S006",
+   "scene": 6,
+   "sentence": 6,
+   "speaker": "Anna",
+   "target_text": "أنا من فرنسا. أنا هنا من سنتين.",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice en-GB-SoniaNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "03954ed7-5a7c-435d-8d45-673fde5d99df",
+     "ac9b7900-d023-4914-bbf4-53b275bfe3cd"
+    ],
+    "sentence_known_audio_ids": [
+     "c3b84158-f5a4-4033-b8a3-c58f24d947c8",
+     "8b562806-8a4a-4f25-9caf-d49ec2aac7d3"
+    ],
+    "takeg_audio_ids": [
+     "abe2b1ba-dccc-44f0-bf85-1d2cf0cbd391"
+    ]
+   }
+  },
+  {
+   "id": "ara_eg_for_eng:pod-1:SC06-S007",
+   "scene": 6,
+   "sentence": 7,
+   "speaker": "James",
+   "target_text": "دي مدينة حلوة جداً. بتشتغل إيه؟",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice leo"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "4c5a37c6-f9d4-43dd-aecd-9fbd40205633",
+     "df7c0576-4c5c-4cd8-a00b-4c5b47790474"
+    ],
+    "sentence_known_audio_ids": [
+     "d3aab728-a65f-4a41-9243-83e255f87561",
+     "3840ef5b-068a-4f07-ad30-c871086b6623"
+    ],
+    "takeg_audio_ids": [
+     "b2a3232f-5b29-4c85-a283-57e193b98641"
+    ]
+   }
+  },
+  {
+   "id": "ara_eg_for_eng:pod-1:SC06-S008",
+   "scene": 6,
+   "sentence": 8,
+   "speaker": "Anna",
+   "target_text": "أنا ممرضة، في المستشفى اللي هنا قريب. وأنت؟",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice azure_en-GB-SoniaNeural/en-GB-SoniaNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "63459de8-2450-4031-a716-cde24eef165a",
+     "c946aa1c-c8c4-43a7-ad30-e41fbbb8d005"
+    ],
+    "sentence_known_audio_ids": [
+     "15e56a51-e95e-4475-b3af-9ff10d545ff1",
+     "ee052b1b-8e3f-4139-b648-b21b07b0f2ab"
+    ],
+    "takeg_audio_ids": [
+     "dfe87803-b87f-4ef7-b73a-74ecd66b2268",
+     null
+    ]
+   }
+  },
+  {
+   "id": "ara_eg_for_eng:pod-1:SC06-S009",
+   "scene": 6,
+   "sentence": 9,
+   "speaker": "James",
+   "target_text": "آسف، أنا مفهمتش. أنا بتعلم اللغة المصرية. ممكن تقول ده تاني بشوية أكتر؟",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice leo"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "69ae4736-3864-432a-a1d3-9dea646bf7c5",
+     "3d6c2a83-3de3-4bfd-b835-cac93f1e386b",
+     "4cd23840-c64c-4ce9-b871-0c77215f0608"
+    ],
+    "sentence_known_audio_ids": [
+     "16835a54-65cd-4ea4-a598-26f5b95ae805",
+     "29830e62-f40f-4d40-a09e-7789f0308faf",
+     "a387ea5f-6868-4c8d-bf72-f515bd2df299"
+    ],
+    "takeg_audio_ids": [
+     "1dd3a242-1c1a-4e99-ab24-ff60078bdda1",
+     null,
+     "bd308996-de42-4b8c-a882-e993885f4e97"
+    ]
+   }
+  },
+  {
+   "id": "ara_eg_for_eng:pod-1:SC06-S010",
+   "scene": 6,
+   "sentence": 10,
+   "speaker": "Anna",
+   "target_text": "تمام، بالتأكيد. أنا ممرضة. بشتغل في المستشفى. هو قريب من هنا. وأنت بتشتغل إيه؟",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice en-GB-SoniaNeural/azure_en-GB-SoniaNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "9ac3e0b5-d56f-44f3-a1e0-3511ff4893bb",
+     "538c7ee8-b4ed-4fd8-9902-2cacc11ac6a6",
+     "0bf2bc4e-b768-4433-9806-9289d31158cf",
+     "0c110141-98c0-4e7c-b34d-ac2f0fdbc0da",
+     "5c64baf2-d364-4e2a-8ad6-43554f683e27"
+    ],
+    "sentence_known_audio_ids": [
+     "b3696f6a-aacd-4df1-b63c-40ee3c95d867",
+     "0d363d01-a388-44b4-bd6e-2f481508eb94",
+     "abc268c7-82bb-49d5-97bf-e85c0f15da48",
+     "3247e1ca-0685-4ccb-8468-e4ce0ffb9f70",
+     "f175d481-8fe4-4170-aaab-7267bb3e2b99"
+    ],
+    "takeg_audio_ids": [
+     "8d7c97b9-d75f-4fbf-992b-29bc68c2a2a1",
+     null,
+     null,
+     null,
+     null
+    ]
+   }
+  },
+  {
+   "id": "ara_eg_for_eng:pod-1:SC06-S011",
+   "scene": 6,
+   "sentence": 11,
+   "speaker": "James",
+   "target_text": "أنا بدرّس إنجليزي، بس مش في مدرسة. بشتغل مع كبار. أنا هنا في أجازة مع مراتي والأولاد. إحنا بنقضي وقت حلو جداً.",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice leo"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "e777728f-ba4a-425a-b4f8-0010f4af688f",
+     "d0b54f79-7d73-4edf-8c90-42a4ec0af6b9",
+     "7d2a65ae-5998-4c6b-bebd-b3ae9cf0bff5",
+     "e082be40-764c-4e9c-8373-28c0dfae7b5b"
+    ],
+    "sentence_known_audio_ids": [
+     "dbd3ac0a-cd96-4fa8-92a0-31672eca6a30",
+     "49907b6e-449a-4875-af1c-e0baa551caa4",
+     "e7a6e40c-544d-4d1b-93da-109a79be87a0",
+     "91c5eee3-e36e-497d-b16e-9b50a0a7ba44"
+    ],
+    "takeg_audio_ids": [
+     "78baf072-5520-4f18-b2a8-62250c4b6d4d",
+     null,
+     "d30c3a89-631a-4cd2-a84c-822749cb3686",
+     null
+    ]
+   }
+  },
+  {
+   "id": "ara_eg_for_eng:pod-1:SC06-S012",
+   "scene": 6,
+   "sentence": 12,
+   "speaker": "Anna",
+   "target_text": "ده كلام مثير للاهتمام. يلا، تشرفت بمعرفتك.",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice azure_en-GB-SoniaNeural/en-GB-SoniaNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "26d23f28-768a-4c31-8f1f-7cd69ccb0138",
+     "3e254b5e-91ca-4d6e-b17b-1b6d4a58cc79"
+    ],
+    "sentence_known_audio_ids": [
+     "02be47bd-13f2-4746-a7c7-b775c37eab53",
+     "b6c7666c-2ff2-4f9c-95db-3dd3ddbb8d79"
+    ],
+    "takeg_audio_ids": [
+     "2eabc84f-a5d3-443e-baaf-c3a44312f29d"
+    ]
+   }
+  },
+  {
+   "id": "ara_eg_for_eng:pod-1:SC06-S013",
+   "scene": 6,
+   "sentence": 13,
+   "speaker": "Narrator",
+   "target_text": "واحد. اتنين. تلاتة. أبيض. أسود.",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice ara",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: off-cast voice ara"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "00e1c811-b419-4bb2-b337-feb869a46f52",
+     "be5add6b-ea51-4e33-85ce-a698c6661d8a",
+     "a7998c6f-89a9-40ee-8da0-3657124420e0",
+     "1a6437e1-610a-4233-baf4-67db282c906b",
+     "106e7a4a-fe2a-48e5-8495-0b131fc19ddc"
+    ],
+    "sentence_known_audio_ids": [
+     "82dd41f4-e2b2-4663-bc49-25242b49f199",
+     "4b1d3dae-a3bb-469b-9ce1-a861bd2f1d7b",
+     "dcd38815-b834-48c4-ba39-8e1a501e4b86",
+     "d741ca93-2473-4cc2-bcb5-9e75f0ea77fc",
+     "ddf0a893-4195-4a85-8282-7852a507156c"
+    ],
+    "takeg_audio_ids": [
+     "78a8de4a-723c-4dda-a102-3de96aff7869"
+    ]
+   }
+  },
+  {
+   "id": "ara_eg_for_eng:pod-1:SC07-S001",
+   "scene": 7,
+   "sentence": 1,
+   "speaker": "Cafe Barista",
+   "target_text": "صباح الخير. إيه اللي تأخذه؟",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice sal",
+    "sentence_known_audio_ids: off-cast voice en-GB-HollieNeural",
+    "takeg_audio_ids: off-cast voice sal"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "dae6b5f1-071f-4d15-9592-e15d78fdd9ea",
+     "f88d3b33-a218-4474-acca-64ed936c03b4"
+    ],
+    "sentence_known_audio_ids": [
+     "da068daa-8df4-4e9d-8a2a-a8f53c5a9dc7",
+     "4a498fc2-b978-4004-a0df-35cd514bfcc1"
+    ],
+    "takeg_audio_ids": [
+     "4daaade8-cc61-46bf-a680-176e176ec1ca"
+    ]
+   }
+  },
+  {
+   "id": "ara_eg_for_eng:pod-1:SC07-S002",
+   "scene": 7,
+   "sentence": 2,
+   "speaker": "Cafe Customer 1",
+   "target_text": "عايزة قهوة سادة، من فضلك.",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "1153f08c-cba3-4b11-a43e-8f58db294851"
+    ]
+   }
+  },
+  {
+   "id": "ara_eg_for_eng:pod-1:SC07-S003",
+   "scene": 7,
+   "sentence": 3,
+   "speaker": "Cafe Barista",
+   "target_text": "عايز عادي ولا كبير؟",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: off-cast voice sal"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "0fc2c760-9e16-488e-8e2f-09173ae0f4ac"
+    ]
+   }
+  },
+  {
+   "id": "ara_eg_for_eng:pod-1:SC07-S004",
+   "scene": 7,
+   "sentence": 4,
+   "speaker": "Cafe Customer 1",
+   "target_text": "عايز كبير، من فضلك. مع لبن الشوفان لو عندك.",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice en-GB-SoniaNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "a90a941e-ffef-4a8f-b8eb-d11d5ee9eef2",
+     "8488aee1-2819-4219-85f4-0ebde2dba347"
+    ],
+    "sentence_known_audio_ids": [
+     "7fcc51d4-5f22-4e8a-b317-b401be9fb940",
+     "afa4fb26-7933-4001-bae3-dc634204b6c1"
+    ],
+    "takeg_audio_ids": [
+     "b559de43-211d-4da4-a4ee-df23bb82f507",
+     "ea5753e7-83c3-490b-9111-bb0a89aecb45"
+    ]
+   }
+  },
+  {
+   "id": "ara_eg_for_eng:pod-1:SC07-S005",
+   "scene": 7,
+   "sentence": 5,
+   "speaker": "Cafe Barista",
+   "target_text": "بالتأكيد. هتقعد هنا ولا تيك أواي؟",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice sal",
+    "sentence_known_audio_ids: off-cast voice en-GB-HollieNeural",
+    "takeg_audio_ids: off-cast voice sal"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "11880173-8220-470b-a328-9d97124913a6",
+     "059b0fdf-2bce-4803-b922-6218acca9658"
+    ],
+    "sentence_known_audio_ids": [
+     "dd8fba20-dbb5-4099-aee7-e82df97b1893",
+     "c0142235-515f-4ee2-90b4-2db1007c9880"
+    ],
+    "takeg_audio_ids": [
+     "c670a01a-50ee-4630-95f2-14714b422c44"
+    ]
+   }
+  },
+  {
+   "id": "ara_eg_for_eng:pod-1:SC07-S008",
+   "scene": 7,
+   "sentence": 8,
+   "speaker": "Cafe Barista",
+   "target_text": "حاضر. في حاجة تانية؟",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice sal",
+    "sentence_known_audio_ids: off-cast voice en-GB-HollieNeural/azure_en-GB-HollieNeural",
+    "takeg_audio_ids: off-cast voice sal"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "d19d07a4-b9cf-4f5f-8690-6c9f064c5047",
+     "47d23aa8-fac4-4e8d-8a55-adaf7b7a006f"
+    ],
+    "sentence_known_audio_ids": [
+     "1f7237ee-84e7-493c-bacc-c5bf14c56eee",
+     "092fcc93-4a1d-4fc6-b03a-39c2b6b4059c"
+    ],
+    "takeg_audio_ids": [
+     "e64c16be-728d-4f52-811f-0b801734c18e"
+    ]
+   }
+  },
+  {
+   "id": "ara_eg_for_eng:pod-1:SC07-S010",
+   "scene": 7,
+   "sentence": 10,
+   "speaker": "Cafe Barista",
+   "target_text": "الحساب كله تمنية جنيه واربعين قرش.",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "bf028e81-7cf4-4d5b-99e9-9bb959a8a76d"
+    ]
+   }
+  },
+  {
+   "id": "ara_eg_for_eng:pod-1:SC07-S011",
+   "scene": 7,
+   "sentence": 11,
+   "speaker": "Cafe Customer 2",
+   "target_text": "أدفع بالكارت؟ عندك كونتاكتلس؟",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice en-GB-LibbyNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": [
+     "71f429d1-3531-4085-8587-7ccdf4abc2c3",
+     "a082284f-8cbf-4946-ba17-79a2ce42c97f"
+    ],
+    "takeg_audio_ids": [
+     "0c2a6df5-b165-440d-95a0-e95804925775"
+    ]
+   }
+  },
+  {
+   "id": "ara_eg_for_eng:pod-1:SC07-S012",
+   "scene": 7,
+   "sentence": 12,
+   "speaker": "Cafe Barista",
+   "target_text": "بالتأكيد. اتفضل الماكينة.",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice sal",
+    "sentence_known_audio_ids: off-cast voice en-GB-HollieNeural",
+    "takeg_audio_ids: off-cast voice sal"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "11880173-8220-470b-a328-9d97124913a6",
+     "ece4db13-da06-439c-9046-66be046f1543"
+    ],
+    "sentence_known_audio_ids": [
+     "dd8fba20-dbb5-4099-aee7-e82df97b1893",
+     "2ec427f5-5fc3-40d6-9d16-6a5f355bade9"
+    ],
+    "takeg_audio_ids": [
+     "13ca6e4c-6465-4ca2-9420-dfb74d5f5490"
+    ]
+   }
+  },
+  {
+   "id": "ara_eg_for_eng:pod-1:SC07-S013",
+   "scene": 7,
+   "sentence": 13,
+   "speaker": "Cafe Customer 3",
+   "target_text": "صباح الخير. اتنين أمريكانو وكوباية شاي، من فضلك.",
+   "clear": [
+    "sentence_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice ara",
+    "takeg_audio_ids: off-cast voice ara"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "cad3863c-3e79-4fdf-865f-4c634297b4a0",
+     "73def986-5124-48a9-88e6-dd3c24526d1c"
+    ],
+    "sentence_known_audio_ids": [
+     "e9c651c1-81a6-46cd-8b93-829b8daea745",
+     "d8c942aa-2e8e-47e2-ab77-8f3da70ede86"
+    ],
+    "takeg_audio_ids": [
+     "95177445-cd49-4d64-842f-c8809429fa0a"
+    ]
+   }
+  },
+  {
+   "id": "ara_eg_for_eng:pod-1:SC07-S014",
+   "scene": 7,
+   "sentence": 14,
+   "speaker": "Cafe Barista",
+   "target_text": "هتقعد هنا؟ التربيزة جنب الشباك فاضية.",
+   "clear": [
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice en-GB-HollieNeural",
+    "takeg_audio_ids: off-cast voice sal"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": [
+     "aa1db251-b01a-425a-81df-435fd455702b",
+     "f4ba6033-afda-4f8f-85ad-729f15a9d932"
+    ],
+    "takeg_audio_ids": [
+     "c2951c5d-2d00-4797-84fd-3880f4431ff3"
+    ]
+   }
+  },
+  {
+   "id": "ara_eg_for_eng:pod-1:SC07-S015",
+   "scene": 7,
+   "sentence": 15,
+   "speaker": "Narrator",
+   "target_text": "خمسة. عشرة. خمستاشر. أحمر. أخضر.",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice ara",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: off-cast voice ara"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "88f72cfd-6428-4a72-afcb-fb569e6b35a4",
+     "7540a97d-a671-424a-a063-64618e29015f",
+     "0e95ee20-bc16-4b26-b062-89fa51d61554",
+     "3fc061fb-3272-4c4d-a3c2-fbb44e41bf18",
+     "428ca676-e6e4-49d5-9d20-3e6063246205"
+    ],
+    "sentence_known_audio_ids": [
+     "06708436-f620-440f-8cba-a7919b2a5ada",
+     "c1f9264d-d257-46fa-82d7-90b078982069",
+     "88d2ec39-aaaa-4b8d-9dae-dc7e0275b833",
+     "f30803c8-23f1-4c6b-b9cc-d09505a4dd9b",
+     "acfcd389-9bc8-40d5-a8ad-de53fa45eefa"
+    ],
+    "takeg_audio_ids": [
+     "0f0a01ed-8758-47a9-9292-87cd53bdea4e"
+    ]
+   }
+  },
+  {
+   "id": "ara_eg_for_eng:pod-1:SC08-S001",
+   "scene": 8,
+   "sentence": 1,
+   "speaker": "Bartender",
+   "target_text": "مساء الخير. إيه اللي تأخذوه؟",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice sal",
+    "sentence_known_audio_ids: off-cast voice leo",
+    "takeg_audio_ids: off-cast voice sal"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "b70620d2-d607-4ffc-8c19-d46fbd809575",
+     "1142df81-feb6-456c-ab37-e0059d779b46"
+    ],
+    "sentence_known_audio_ids": [
+     "bb4c4118-52fa-4a0e-947a-c4981e017e61",
+     "805ec4d7-fa16-42ba-9cea-2d2c0b208042"
+    ],
+    "takeg_audio_ids": [
+     "f3b64cbc-b103-46fe-a10a-0103178be950"
+    ]
+   }
+  },
+  {
+   "id": "ara_eg_for_eng:pod-1:SC08-S002",
+   "scene": 8,
+   "sentence": 2,
+   "speaker": "Bar Customer 1",
+   "target_text": "عايز بينت من فضلك. إيه الـبيرة الـمحلية اللي عندك؟",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice en-GB-SoniaNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "874945f3-82fa-4d42-b0da-ca1352cd7dd6",
+     "3559289c-cddc-4ac8-882a-5a61999d2893"
+    ],
+    "sentence_known_audio_ids": [
+     "dc80b0a0-092c-4297-b4ce-1976cabfded7",
+     "8c7bbede-dc02-4eb2-96d8-27012c60135f"
+    ],
+    "takeg_audio_ids": [
+     "a603343b-38ea-49d3-8232-2659958aa95b",
+     "8509d935-088d-4a8f-aed3-0f3657634f16"
+    ]
+   }
+  },
+  {
+   "id": "ara_eg_for_eng:pod-1:SC08-S003",
+   "scene": 8,
+   "sentence": 3,
+   "speaker": "Bartender",
+   "target_text": "عندنا بيرة مُرّة وبيرة ستاوت، والاتنين محليين.",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: off-cast voice sal"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "098cc3aa-4529-452e-9288-99ba46638444"
+    ]
+   }
+  },
+  {
+   "id": "ara_eg_for_eng:pod-1:SC08-S006",
+   "scene": 8,
+   "sentence": 6,
+   "speaker": "Bar Customer 3",
+   "target_text": "ممكن أشوف قايمة النبيت؟ أنا عايز كوباية نبيت.",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: off-cast voice ara"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": [
+     "87adfad6-a8ca-4874-a996-eacf56522ab7",
+     "337bbb3c-7b4a-4ea1-85ad-064a76600a18"
+    ],
+    "takeg_audio_ids": [
+     "df61af16-f80f-4745-91a4-75a70340c86d",
+     "696df267-7021-4508-a44a-1bb0f1bebdbb"
+    ]
+   }
+  },
+  {
+   "id": "ara_eg_for_eng:pod-1:SC08-S007",
+   "scene": 8,
+   "sentence": 7,
+   "speaker": "Bartender",
+   "target_text": "عندنا نبيت أحمر بيتي، ونبيت أبيض بيتي، أو تقدر تاخد زجاجة من عندنا.",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: off-cast voice sal"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "c4c67528-ef4e-4754-8ff9-27ca455384b9"
+    ]
+   }
+  },
+  {
+   "id": "ara_eg_for_eng:pod-1:SC08-S008",
+   "scene": 8,
+   "sentence": 8,
+   "speaker": "Bar Customer 3",
+   "target_text": "عايزة كوباية كبيرة نبيت أبيض من فضلك.",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: off-cast voice ara"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "d248a701-8f10-42b5-88c5-552652ee0def"
+    ]
+   }
+  },
+  {
+   "id": "ara_eg_for_eng:pod-1:SC08-S012",
+   "scene": 8,
+   "sentence": 12,
+   "speaker": "Bar Customer 1",
+   "target_text": "مش عارف إذا كنت جعان. عندك منيو؟",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice en-GB-SoniaNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "adb6a901-be61-4342-8137-7052e9c195e8",
+     "026dadfe-859e-41b6-a807-962a10df99b0"
+    ],
+    "sentence_known_audio_ids": [
+     "b76af6e6-92de-4232-b5a3-a5582953fc05",
+     "699e60ec-2a79-4273-be13-e0964bb796ec"
+    ],
+    "takeg_audio_ids": [
+     "e8ff389a-9e79-4207-811e-c8470bcbf370",
+     null
+    ]
+   }
+  },
+  {
+   "id": "ara_eg_for_eng:pod-1:SC08-S013",
+   "scene": 8,
+   "sentence": 13,
+   "speaker": "Bartender",
+   "target_text": "تمام، بالتأكيد. اتفضل. السمك مع البطاطس كويس جداً.",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice sal",
+    "sentence_known_audio_ids: off-cast voice leo",
+    "takeg_audio_ids: off-cast voice sal"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "74174af3-e8e2-49ba-82bb-1d2a8e44724e",
+     "ed00a6ff-1f75-4f62-8368-cc2d3b2d1bfd",
+     "b1283aab-9f4f-4519-ae35-75aa8def0f9a"
+    ],
+    "sentence_known_audio_ids": [
+     "e8fdd9a1-a82a-4e82-ab27-758ea5d99f44",
+     "3f72276a-76f6-4468-be9b-3a553561e867",
+     "43385180-e5df-4a46-bdc9-5000d2e15b84"
+    ],
+    "takeg_audio_ids": [
+     "9bcce487-abc2-44e9-990b-70e3ccf21097",
+     null,
+     "f401ca31-5ddb-406a-a520-b922467ac905"
+    ]
+   }
+  },
+  {
+   "id": "ara_eg_for_eng:pod-1:SC08-S014",
+   "scene": 8,
+   "sentence": 14,
+   "speaker": "Bar Customer 1",
+   "target_text": "ممكن ناخذ عيش؟ وطبق بطاطس للترابيزة.",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice en-GB-SoniaNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": [
+     "989a207e-c5be-4ccc-abc3-fa8b665da51a",
+     "1ae8d058-5c60-432a-a6d5-eb3b12556361"
+    ],
+    "takeg_audio_ids": [
+     "df321dd0-6465-41c6-8d0b-14608e93c274"
+    ]
+   }
+  },
+  {
+   "id": "ara_eg_for_eng:pod-1:SC08-S015",
+   "scene": 8,
+   "sentence": 15,
+   "speaker": "Bar Customer 2",
+   "target_text": "عندك سندوتشات؟ عايز سندوتش جبنة من فضلك.",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice en-GB-LibbyNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": [
+     "e339f782-3b77-4b7a-ae5f-d84ca5bcaa1d",
+     "27c91764-3d5f-4f18-afb0-a0fc614639bc"
+    ],
+    "takeg_audio_ids": [
+     "64e25986-9310-4698-afee-88d07d0914af"
+    ]
+   }
+  },
+  {
+   "id": "ara_eg_for_eng:pod-1:SC08-S016",
+   "scene": 8,
+   "sentence": 16,
+   "speaker": "Narrator",
+   "target_text": "أربعة. ستة. تمانية. أزرق. أصفر.",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice ara",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: off-cast voice ara"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "ef283d08-bf52-4b8e-b485-a1089e5242e7",
+     "8f8001f8-011a-4384-96a4-c7bc88a0c743",
+     "ac4583ed-90c7-4725-a7ee-8f14d62eab1b",
+     "a304a1cf-4425-4b8a-8158-b9a2230a9e08",
+     "0bc28fd6-2ce5-4370-81f6-3c0980c63570"
+    ],
+    "sentence_known_audio_ids": [
+     "6bd94a96-3c3e-46cf-9c37-1aa89990f10f",
+     "46dadeb6-68c1-497d-8709-b5d90352d67e",
+     "cdbdf6ca-fa2c-41cc-906f-71975e743547",
+     "07bbcc45-c9f7-4859-a522-27cfc4d87ae6",
+     "3c3f745f-3327-4702-95b1-b3ca870fcbbf"
+    ],
+    "takeg_audio_ids": [
+     "424fb2af-046c-4028-a8f1-ab71c05f0687"
+    ]
+   }
+  },
+  {
+   "id": "ara_eg_for_eng:pod-1:SC09-S001",
+   "scene": 9,
+   "sentence": 1,
+   "speaker": "Diner 1",
+   "target_text": "مساء الخير. عندنا حجز لاتنين باسم ديفز.",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice azure_en-GB-SoniaNeural/en-GB-SoniaNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "56ec457a-7156-447d-85ff-af8a65360513",
+     "7af6b39a-3056-4c9d-98e0-6b8330d9e6c7"
+    ],
+    "sentence_known_audio_ids": [
+     "0d7d6bd3-ac0d-4aee-961f-6966ad164c3a",
+     "3547c7c3-6bb8-4d54-a8fd-9e530b1ed9e3"
+    ],
+    "takeg_audio_ids": [
+     "5b3912a6-f10e-4ad9-a2cd-0db40a6d93b7"
+    ]
+   }
+  },
+  {
+   "id": "ara_eg_for_eng:pod-1:SC09-S002",
+   "scene": 9,
+   "sentence": 2,
+   "speaker": "Waiter",
+   "target_text": "أهلاً بيكم. تفضلوا وراي. اتفضلوا المنيو.",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice sal",
+    "sentence_known_audio_ids: off-cast voice leo",
+    "takeg_audio_ids: off-cast voice sal"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "801dc6ec-a089-46bc-8fdf-ce432bee634c",
+     "892214ab-3245-4ea1-acf3-cc140c11f776",
+     "81541459-4867-420a-b9d5-c55ec00259eb"
+    ],
+    "sentence_known_audio_ids": [
+     "489966c3-690b-4782-952e-681879d30305",
+     "d6172555-0864-41ca-8e0a-f4ec6b736429",
+     "2bf173e3-457a-4cc4-ac93-b73a99f99731"
+    ],
+    "takeg_audio_ids": [
+     "c45fd073-4ded-4071-895b-72db69e0879d"
+    ]
+   }
+  },
+  {
+   "id": "ara_eg_for_eng:pod-1:SC09-S003",
+   "scene": 9,
+   "sentence": 3,
+   "speaker": "Waiter",
+   "target_text": "حضراتكم تحبوا مياه عادية ولا مياه غازية في الأول؟",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: off-cast voice sal"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "2499e1a1-a8ea-440c-ad10-022d21fdff88"
+    ]
+   }
+  },
+  {
+   "id": "ara_eg_for_eng:pod-1:SC09-S005",
+   "scene": 9,
+   "sentence": 5,
+   "speaker": "Diner 1",
+   "target_text": "لو سمحت — عندكم حاجة خالية من الجلوتين؟ ولا للنباتيين؟",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice azure_en-GB-SoniaNeural/en-GB-SoniaNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": [
+     "1756ba6c-32da-4b82-8d7c-c978ee7d4b1f",
+     "75663fda-2e8b-4667-9827-d75345507dcd"
+    ],
+    "takeg_audio_ids": [
+     "85e8445f-797a-4f0c-a8b1-b34b1b3f477b",
+     null
+    ]
+   }
+  },
+  {
+   "id": "ara_eg_for_eng:pod-1:SC09-S006",
+   "scene": 9,
+   "sentence": 6,
+   "speaker": "Waiter",
+   "target_text": "أيوه، السلمون والريزوتو الاتنين خاليين من الجلوتين. وعندنا كمان بعض السلطات.",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice sal",
+    "sentence_known_audio_ids: off-cast voice leo",
+    "takeg_audio_ids: off-cast voice sal"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "93686664-cc21-4ae6-995c-3f1f85a3b87e",
+     "baf98499-96c1-4b51-ac9d-b767941ae27b"
+    ],
+    "sentence_known_audio_ids": [
+     "24b18e8d-448b-411c-823e-17cf6f4b09b5",
+     "a817405a-127b-47f0-a0d8-0a0f4abef502"
+    ],
+    "takeg_audio_ids": [
+     "2f727d19-28b4-4ff0-a506-8c5f6a01c013",
+     null
+    ]
+   }
+  },
+  {
+   "id": "ara_eg_for_eng:pod-1:SC09-S008",
+   "scene": 9,
+   "sentence": 8,
+   "speaker": "Waiter",
+   "target_text": "الخروف ممتاز. اتطبخ على نار هادية مع الروزماري.",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice sal",
+    "sentence_known_audio_ids: off-cast voice leo",
+    "takeg_audio_ids: off-cast voice sal"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "c474b853-fd61-4ffd-9832-0a15e2bc135c",
+     "f0e076dd-6b4a-4aad-a675-239dda303a4f"
+    ],
+    "sentence_known_audio_ids": [
+     "d0c3236e-8dcf-41ad-af62-8ab06f5a0965",
+     "fd896acb-6916-41d1-918c-4353617494bb"
+    ],
+    "takeg_audio_ids": [
+     "c31540ca-009f-4959-a119-54ccdc33ebf6"
+    ]
+   }
+  },
+  {
+   "id": "ara_eg_for_eng:pod-1:SC09-S009",
+   "scene": 9,
+   "sentence": 9,
+   "speaker": "Diner 1",
+   "target_text": "هاخد الخروف، من فضلك. مع طبق خضار.",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice en-GB-SoniaNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "1820c7d0-2df0-4412-b286-a44d836a2625",
+     "aae39d18-8a88-4192-b79e-eccc88e7744e"
+    ],
+    "sentence_known_audio_ids": [
+     "39f91541-0f1a-4c3f-9a7c-807cf933c510",
+     "b5f9e3c0-4d60-4289-8232-6e03a7c97fe9"
+    ],
+    "takeg_audio_ids": [
+     "7cd3fe70-e0c2-4693-951b-08202df16b78",
+     null
+    ]
+   }
+  },
+  {
+   "id": "ara_eg_for_eng:pod-1:SC09-S010",
+   "scene": 9,
+   "sentence": 10,
+   "speaker": "Diner 2",
+   "target_text": "وأنا هاخد الريزوتو. مع سلطة خضرا صغيرة في الأول.",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice en-GB-LibbyNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "00feb22c-a861-4312-b777-09e8f07ab091",
+     "51bae6e3-04a2-4383-be29-da5bd770405d"
+    ],
+    "sentence_known_audio_ids": [
+     "9f20a97e-9225-4494-b6ce-5c838e91872f",
+     "bb87f7f0-d9ac-4896-82d5-8c05264393aa"
+    ],
+    "takeg_audio_ids": [
+     "688067ed-3ed9-4ed7-8f29-49e8ae74c4d7"
+    ]
+   }
+  },
+  {
+   "id": "ara_eg_for_eng:pod-1:SC09-S011",
+   "scene": 9,
+   "sentence": 11,
+   "speaker": "Waiter",
+   "target_text": "حاضر. وحضراتكم تحبوا تشربوا إيه؟",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice sal",
+    "sentence_known_audio_ids: off-cast voice leo",
+    "takeg_audio_ids: off-cast voice sal"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "d19d07a4-b9cf-4f5f-8690-6c9f064c5047",
+     "39765df1-f247-4e65-be73-d4de73794edd"
+    ],
+    "sentence_known_audio_ids": [
+     "bb61c9ce-cd53-4f14-973c-84c3f0e136d7",
+     "8e1ac3ae-70e8-415a-9945-f9229202a381"
+    ],
+    "takeg_audio_ids": [
+     "6326e298-dbb2-4fd4-89ff-78e78b736d46"
+    ]
+   }
+  },
+  {
+   "id": "ara_eg_for_eng:pod-1:SC09-S014",
+   "scene": 9,
+   "sentence": 14,
+   "speaker": "Waiter",
+   "target_text": "اختيار ممتاز. هجيبها دلوقتي.",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice sal",
+    "sentence_known_audio_ids: off-cast voice leo",
+    "takeg_audio_ids: off-cast voice sal"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "9c5e21ae-7352-41e1-8628-5459e1d2896a",
+     "4cb4f023-83fa-4d70-85b1-2b3753ce3945"
+    ],
+    "sentence_known_audio_ids": [
+     "08e9b3cf-47a3-44b8-9b24-2a71d1e7837b",
+     "cbc024e4-d608-44d8-a58a-fe22ccec3eb2"
+    ],
+    "takeg_audio_ids": [
+     "ad415c6c-ed5c-4a31-8f17-4dadafaec68f"
+    ]
+   }
+  },
+  {
+   "id": "ara_eg_for_eng:pod-1:SC09-S015",
+   "scene": 9,
+   "sentence": 15,
+   "speaker": "Waiter",
+   "target_text": "كل شي تمام؟ عندكم مكان للحلو؟",
+   "clear": [
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice leo",
+    "takeg_audio_ids: off-cast voice sal"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": [
+     "8674b33a-3b3f-4b7b-8ca2-793c939f6c1c",
+     "2c073f07-599d-46b1-a120-adf8a68173f5"
+    ],
+    "takeg_audio_ids": [
+     "468919df-5149-48a2-a446-ee5c1e606717"
+    ]
+   }
+  },
+  {
+   "id": "ara_eg_for_eng:pod-1:SC09-S016",
+   "scene": 9,
+   "sentence": 16,
+   "speaker": "Diner 1",
+   "target_text": "بس قهوتين، من فضلك. واحدة ديكاف ليا.",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice en-GB-SoniaNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "1b33f6e1-5af3-439e-ae97-39676a049f13",
+     "a2356156-7d42-4736-a0cb-5f7d9db5f6ce"
+    ],
+    "sentence_known_audio_ids": [
+     "fe847d1f-8e53-46d7-875b-3583d5ef8e2d",
+     "c928e824-ebef-479b-89de-b3e75965784f"
+    ],
+    "takeg_audio_ids": [
+     "40859ab8-9235-4e25-80ca-62dfa57c2515",
+     null
+    ]
+   }
+  },
+  {
+   "id": "ara_eg_for_eng:pod-1:SC09-S017",
+   "scene": 9,
+   "sentence": 17,
+   "speaker": "Diner 2",
+   "target_text": "والحساب لما يكون جاهز. ممكن نقسمه؟",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice en-GB-LibbyNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "a13663fe-7dfe-40da-ace0-045ee3fa7f4d",
+     "6e7fc80b-03ec-46fc-9ed7-e6805b5a512c"
+    ],
+    "sentence_known_audio_ids": [
+     "9a412e7e-b34d-419f-8b59-fa4c16075572",
+     "2928029d-b9c2-4836-a415-7dcf3ab3c238"
+    ],
+    "takeg_audio_ids": [
+     "5cdc99cc-1a55-440a-b49e-eb4cba86e82c",
+     null
+    ]
+   }
+  },
+  {
+   "id": "ara_eg_for_eng:pod-1:SC09-S018",
+   "scene": 9,
+   "sentence": 18,
+   "speaker": "Narrator",
+   "target_text": "سبعة. تسعة. أحداشر. برتقالي. بنفسجي.",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice ara",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: off-cast voice ara"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "570e434c-3e40-4cee-84c6-1dec1e06b97a",
+     "4fe075e2-9bd3-49ef-bc0c-14eafef6f082",
+     "d9fefe73-91bb-4839-81f0-d3ed22d8a896",
+     "7ee205fa-c939-4996-bc10-4391952d197d",
+     "b6d0ace1-7777-451d-8ab2-682c2dd483d3"
+    ],
+    "sentence_known_audio_ids": [
+     "682e33fc-6740-4d19-aa0c-65e8e3eacfe9",
+     "641c11f5-8c39-430c-8c70-0336e3fc55e2",
+     "9ed84e28-a348-4723-9436-a825a9879e95",
+     "0329f8d0-e046-44ad-9c26-cb2ec2c845ce",
+     "7b9529b1-680e-44f7-b4e8-6525102e230f"
+    ],
+    "takeg_audio_ids": [
+     "15a506fb-d769-498b-86f6-40f53e3125c0"
+    ]
+   }
+  },
+  {
+   "id": "ara_eg_for_eng:pod-1:SC10-S001",
+   "scene": 10,
+   "sentence": 1,
+   "speaker": "Customer",
+   "target_text": "لو سمحت. عندك مسكنات ألم؟",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice en-GB-SoniaNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "d473a613-427e-4873-afab-d38af35684da",
+     "a3fe0912-68cd-47ef-bc5d-b2f6c819add7"
+    ],
+    "sentence_known_audio_ids": [
+     "ab5300c8-9754-4741-b100-63909786bc0e",
+     "b02a429b-8b41-44ea-920a-9982281dd266"
+    ],
+    "takeg_audio_ids": [
+     "64ba0bf2-9611-4beb-a653-93396794326f"
+    ]
+   }
+  },
+  {
+   "id": "ara_eg_for_eng:pod-1:SC10-S003",
+   "scene": 10,
+   "sentence": 3,
+   "speaker": "Customer",
+   "target_text": "شكراً. وعندك مسكنات ألم للأطفال؟",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice en-GB-SoniaNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "066b756a-3102-4740-af81-7afb37f4bfff",
+     "3af6b484-84b4-444a-8cf0-61949db657af"
+    ],
+    "sentence_known_audio_ids": [
+     "3b5f948c-dc7f-459c-86ed-f1ce7a5d97a3",
+     "95cd6e5a-a7cf-45cf-9ef4-9d85022e6ae9"
+    ],
+    "takeg_audio_ids": [
+     "de42dc1c-62cb-4cba-8dc4-1661c784deee"
+    ]
+   }
+  },
+  {
+   "id": "ara_eg_for_eng:pod-1:SC10-S006",
+   "scene": 10,
+   "sentence": 6,
+   "speaker": "Assistant",
+   "target_text": "واقي الشمس هناك على يمينك، والمعجون هتلاقيه بعد الناصية.",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "cad2059e-31dd-4dfd-bc14-422adede8f33"
+    ]
+   }
+  },
+  {
+   "id": "ara_eg_for_eng:pod-1:SC10-S008",
+   "scene": 10,
+   "sentence": 8,
+   "speaker": "Assistant",
+   "target_text": "أهلاً بيك. أنت هنا في أجازة؟ أنت بتتكلم لغة مصري تمام التمام.",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice en-GB-LibbyNeural/azure_en-GB-LibbyNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "fc598f80-0086-43d4-91f7-da1c460673d9",
+     "3c91ee81-26db-4e70-acb1-e4b0b2f8b3d2"
+    ],
+    "sentence_known_audio_ids": [
+     "6547aee7-6074-4859-8a19-01b7c7a52530",
+     "072ebc06-60d7-47c2-80cf-ac0d419615b6",
+     "4450aaf8-3ae2-4d1d-b9bc-01b6335cc900"
+    ],
+    "takeg_audio_ids": [
+     "5ebbc13a-196f-4cf8-9d17-d6f715120bcf"
+    ]
+   }
+  },
+  {
+   "id": "ara_eg_for_eng:pod-1:SC10-S009",
+   "scene": 10,
+   "sentence": 9,
+   "speaker": "Customer",
+   "target_text": "ده كلام حلو منك! أيوه، أنا هنا في أجازة، ومحتاج أتمرن أكتر عشان أتكلم لغة مصري أحسن. شكراً جزيلاً، ومع السلامة.",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice en-GB-SoniaNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "c5fd18d1-54e0-4b8d-8e14-506b530fe59d",
+     "7ebe6942-e31e-4181-a804-af605449420f",
+     "93fe9fa1-a0db-434b-84bb-0a44e2786542"
+    ],
+    "sentence_known_audio_ids": [
+     "0a465c8c-5d49-4933-9d98-980aa0492fae",
+     "e08808ca-e83f-4f03-be92-a981f983dc0a",
+     "63eba0ef-23c4-4173-ba0e-aae83d3711a2"
+    ],
+    "takeg_audio_ids": [
+     "4b44c7a6-a4c2-435f-b957-607d8a40890a",
+     "c61ac6d8-c8fe-4e75-a072-728c9479c360"
+    ]
+   }
+  },
+  {
+   "id": "ara_eg_for_eng:pod-1:SC10-S010",
+   "scene": 10,
+   "sentence": 10,
+   "speaker": "Narrator",
+   "target_text": "اتناشر. تلاتاشر. أربعتاشر. بمبي. رمادي.",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice ara",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: off-cast voice ara"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "26dc41f5-1aed-4a7e-97a4-3e89ab37808a",
+     "2b029c6c-7ff3-489c-a672-82af277d06cd",
+     "48f00478-5bbd-4ea9-a6e0-00c6ae5c522b",
+     "88ae1159-8161-4122-b764-da8a546186c1",
+     "e603f1b9-330a-4de3-9ec9-05bf83f0a67c"
+    ],
+    "sentence_known_audio_ids": [
+     "f183774a-4bc2-4cff-8df3-60399ee1bd45",
+     "a683f54c-b45a-47b8-bc4b-d604d91070d6",
+     "7ecee613-6f52-4b4b-8aba-37bb111e2837",
+     "90a867e9-1cd0-4ae0-ba58-1db2bbfebd71",
+     "31851806-b148-4cee-82f1-94fa17e6efb7"
+    ],
+    "takeg_audio_ids": [
+     "08b3a771-b1dd-4e28-a5c8-912c6ec41ea9"
+    ]
+   }
+  },
+  {
+   "id": "ara_eg_for_eng:pod-1:SC11-S001",
+   "scene": 11,
+   "sentence": 1,
+   "speaker": "Guest",
+   "target_text": "مساء الخير. عندي حجز بإسم جونز.",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice leo"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "968ef08e-92e2-4789-b62a-07a61e3df4a0",
+     "568c4f13-46ba-485a-acbc-617f55590e58"
+    ],
+    "sentence_known_audio_ids": [
+     "7fac06a8-4821-40ae-ba0f-c9ef7891869e",
+     "5f8f742f-1d99-46e1-aac2-4e7d099dab53"
+    ],
+    "takeg_audio_ids": [
+     "5c28082f-6139-4703-adae-fc772d0a49ef"
+    ]
+   }
+  },
+  {
+   "id": "ara_eg_for_eng:pod-1:SC11-S002",
+   "scene": 11,
+   "sentence": 2,
+   "speaker": "Receptionist",
+   "target_text": "أهلاً بيك. آه، عندك أوضة دبل لتلات ليالي. ممكن أشوف بطاقة هويتك، من فضلك؟",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice en-GB-SoniaNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "72c7e9fd-c3a8-4f11-b585-c4c14b7dc9fa",
+     "451d5bfe-34d1-45d3-a3bd-d3f180527f9f",
+     "7fe07a44-982c-4ab1-9394-9fdf67bd1136"
+    ],
+    "sentence_known_audio_ids": [
+     "6c703195-f029-4403-b181-1cf29ccc067d",
+     "6dfb1e14-25fd-4dee-bab5-31070f1ce10c",
+     "1f665cd1-ff25-4273-87ac-f9a24bda4136"
+    ],
+    "takeg_audio_ids": [
+     "6b3bed22-a70b-4c0d-a0d7-b320b6653420",
+     "65faab88-3f0e-42b6-9cff-d226f50d30ef"
+    ]
+   }
+  },
+  {
+   "id": "ara_eg_for_eng:pod-1:SC11-S003",
+   "scene": 11,
+   "sentence": 3,
+   "speaker": "Guest",
+   "target_text": "طبعاً. اتفضل، ده جواز سفري.",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice leo"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "43029c24-bd92-407c-8ed7-806fe95a4e20",
+     "dce4f66a-fd9d-46bc-9891-0ae04ac12457"
+    ],
+    "sentence_known_audio_ids": [
+     "bb61c9ce-cd53-4f14-973c-84c3f0e136d7",
+     "e586dc09-6add-4192-b0eb-eff7605af365"
+    ],
+    "takeg_audio_ids": [
+     "17928adc-491a-47df-bb22-984e34543dfb"
+    ]
+   }
+  },
+  {
+   "id": "ara_eg_for_eng:pod-1:SC11-S004",
+   "scene": 11,
+   "sentence": 4,
+   "speaker": "Receptionist",
+   "target_text": "تمام. الأوضة في الدور التالت، أوضة سبعمية وتسعة.",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice azure_en-GB-SoniaNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "66b8d6f0-f566-4c8e-b4cc-4debfa69276f",
+     "a0c3ba02-ecc1-46ba-9236-0b43bb2df478"
+    ],
+    "sentence_known_audio_ids": [
+     "1a6a048c-00e4-4aa9-9761-256419a11077",
+     "0dcd7e04-3ce2-4568-bbd2-e0f72ff8f7f2"
+    ],
+    "takeg_audio_ids": [
+     "499a9cb9-7115-4d3c-8c0b-79dddb578140"
+    ]
+   }
+  },
+  {
+   "id": "ara_eg_for_eng:pod-1:SC11-S008",
+   "scene": 11,
+   "sentence": 8,
+   "speaker": "Receptionist",
+   "target_text": "من نص ثمانية لحد الساعة عشرة. عندنا فاكهة وكورن فليكس أو فطار مصري.",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice en-GB-SoniaNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "8c2cf27a-5160-4d63-89a1-09685f5d8f24",
+     "d29c03ea-a9ee-4790-b5cd-3bf777ba9b5e"
+    ],
+    "sentence_known_audio_ids": [
+     "69a98b5d-d771-4a00-abab-13ee8766f1e3",
+     "9c40e6af-10e1-4cc5-8238-d58a68b49260"
+    ],
+    "takeg_audio_ids": [
+     "68881f9d-caa4-41cd-9639-24ba85773b83",
+     "2108f792-9dac-4c22-9838-b521b349f6b9"
+    ]
+   }
+  },
+  {
+   "id": "ara_eg_for_eng:pod-1:SC11-S009",
+   "scene": 11,
+   "sentence": 9,
+   "speaker": "Guest",
+   "target_text": "رائع. ممكن نعمل ليت تشيك أواي؟",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice leo"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "4ca3b59e-faf0-4d9a-927c-0e3abfadfc64",
+     "0ce14de9-bd3d-4e14-9f5b-2df3d0a4340e"
+    ],
+    "sentence_known_audio_ids": [
+     "f7297eab-29f9-4b27-8ab4-dbc3edf07ab4",
+     "c26ac2ac-af02-490c-92b9-391f09f6bd72"
+    ],
+    "takeg_audio_ids": [
+     "264a2d62-844b-472f-a752-2c9d67cc9c6c"
+    ]
+   }
+  },
+  {
+   "id": "ara_eg_for_eng:pod-1:SC11-S012",
+   "scene": 11,
+   "sentence": 12,
+   "speaker": "Receptionist",
+   "target_text": "موجود على الكارت الترحيبي في أوضتك. إقامة سعيدة.",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice en-GB-SoniaNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "e4f11e84-3e58-4cd8-8c87-d0338dbc008e",
+     "db342dab-115a-4d24-8491-f82240de80b5"
+    ],
+    "sentence_known_audio_ids": [
+     "b3f92e59-9c5b-47b4-bb27-51eedd51a836",
+     "30087dfc-86bd-44cb-8c03-285b93935903"
+    ],
+    "takeg_audio_ids": [
+     "c78e3527-d903-4795-a103-15a2a102f946",
+     null
+    ]
+   }
+  },
+  {
+   "id": "ara_eg_for_eng:pod-1:SC11-S013",
+   "scene": 11,
+   "sentence": 13,
+   "speaker": "Narrator",
+   "target_text": "ستاشر. سبعتاشر. تمنتاشر. الإتنين. التلاتا.",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice ara",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: off-cast voice ara"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "b4e952e2-fd24-460d-b758-36b8951913a2",
+     "3924117b-7645-480b-ae32-4e5ee46f154a",
+     "64ff9247-2016-4771-8b9c-cc282dfde10b",
+     "45768f4d-7406-42bf-a65c-bcde1861a7f2",
+     "f4012318-c524-4509-9c9f-529d0843196b"
+    ],
+    "sentence_known_audio_ids": [
+     "179fc77e-58ed-4cd2-a8a5-916d6f25966b",
+     "e41a5ac9-9549-4324-b255-4703a1daa6b4",
+     "ca460427-e1c1-46e5-bd38-cb5d43bb4050",
+     "76fb36ea-db8a-4034-b378-1a08a80942db",
+     "83d16054-3704-4c0d-b515-f093aa572b72"
+    ],
+    "takeg_audio_ids": [
+     "a82ff8e6-fddf-4b78-a44c-d09fa59d09b3"
+    ]
+   }
+  },
+  {
+   "id": "ara_eg_for_eng:pod-1:SC12-S001",
+   "scene": 12,
+   "sentence": 1,
+   "speaker": "Customer",
+   "target_text": "صباح الخير. أنا مش حاسة إني كويسة، ممكن ترشح لي حاجة؟",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "ed904893-3e53-43e9-bca5-7b444073154a",
+     "f94430d7-e6d2-409c-b923-f758b66552f9"
+    ],
+    "sentence_known_audio_ids": [
+     "7cecf602-2f46-4df9-8700-8a1357164ac6",
+     "59fa8e67-7df8-4a29-bfed-15fc5ba4c2dd"
+    ],
+    "takeg_audio_ids": [
+     "e68247ac-4609-40b1-bc40-c418194b0683"
+    ]
+   }
+  },
+  {
+   "id": "ara_eg_for_eng:pod-1:SC12-S002",
+   "scene": 12,
+   "sentence": 2,
+   "speaker": "Pharmacist",
+   "target_text": "طبعاً. إيه الأعراض اللي عندك؟",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice leo"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "43029c24-bd92-407c-8ed7-806fe95a4e20",
+     "55070ab3-69ac-4af5-88ac-638ceedb4da7"
+    ],
+    "sentence_known_audio_ids": [
+     "bb61c9ce-cd53-4f14-973c-84c3f0e136d7",
+     "ee087864-54cb-4639-b5e3-47915289d41a"
+    ],
+    "takeg_audio_ids": [
+     "6d36b6e7-f859-466e-bed5-d9f4beb4998a"
+    ]
+   }
+  },
+  {
+   "id": "ara_eg_for_eng:pod-1:SC12-S009",
+   "scene": 12,
+   "sentence": 9,
+   "speaker": "Customer",
+   "target_text": "شكراً. أقدر كمان آخذ علبة لصقات؟",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice en-GB-SoniaNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "066b756a-3102-4740-af81-7afb37f4bfff",
+     "1e38c189-2d1f-4878-af33-ea8be614f8b7"
+    ],
+    "sentence_known_audio_ids": [
+     "3b5f948c-dc7f-459c-86ed-f1ce7a5d97a3",
+     "3d6a879b-2e8a-49fb-b714-529a6d37ef4f"
+    ],
+    "takeg_audio_ids": [
+     "0e5f54cc-f613-44f1-8b10-638874924f61"
+    ]
+   }
+  },
+  {
+   "id": "ara_eg_for_eng:pod-1:SC12-S010",
+   "scene": 12,
+   "sentence": 10,
+   "speaker": "Narrator",
+   "target_text": "19. 20. 21. الأربعاء. الخميس.",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "fec7fc56-4ff1-48e6-ae06-939d32019a4b",
+     "f4f47ca5-1075-4151-ba01-901e22c45828",
+     "8605a3d0-c518-4a5d-9322-6ffd2eba72ae",
+     "0ef37fab-ea14-498d-9c11-9add1c3ecae0",
+     "4ac50c57-ccce-43e2-bcdf-72354bbc6f01"
+    ],
+    "sentence_known_audio_ids": [
+     "d13a1c41-1d7b-4e87-9218-44c6e2ab7100",
+     "cd37f457-d2aa-4560-adea-12dcf89f5182",
+     "37b34101-d58b-49e5-b4ec-722f337e9923",
+     "dcdb2bbf-f3ab-47e4-8f47-93fb14742161",
+     "fa9fc8dd-0bc6-40a0-ac96-2e7c669fe971"
+    ],
+    "takeg_audio_ids": [
+     "1d93f200-a592-48d4-ac4d-676f89a472ea"
+    ]
+   }
+  },
+  {
+   "id": "ara_eg_for_eng:pod-1:SC13-S001",
+   "scene": 13,
+   "sentence": 1,
+   "speaker": "Tourist",
+   "target_text": "لو سمحت، تعرف إزاي أوصل لأقرب سوبرماركت؟",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: off-cast voice sal"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "73b8fdbf-be07-425b-96ea-9a3df1861d0e"
+    ]
+   }
+  },
+  {
+   "id": "ara_eg_for_eng:pod-1:SC13-S002",
+   "scene": 13,
+   "sentence": 2,
+   "speaker": "Local",
+   "target_text": "أيوا، على بُعد تقريباً عشر دقايق مشي. امشي على طول في الشارع ده.",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice leo"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "7d40e120-6355-498a-9c5c-e6f254deab22",
+     "6d618b80-39a1-4218-b7bd-13f19ffad868"
+    ],
+    "sentence_known_audio_ids": [
+     "7e7ccf1f-caec-4e7f-b95e-5755ca80d1ab",
+     "faaead06-19eb-4351-88cc-9a7cfbcd7f75"
+    ],
+    "takeg_audio_ids": [
+     "4600e162-2595-4562-bc05-8a4d9d751fd6",
+     "ee81b194-5802-4fe6-9595-eee59c15debc"
+    ]
+   }
+  },
+  {
+   "id": "ara_eg_for_eng:pod-1:SC13-S008",
+   "scene": 13,
+   "sentence": 8,
+   "speaker": "Tourist",
+   "target_text": "تمام. وفيه ماكينة صراف أوتوماتيكي قريب هنا؟",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice sal",
+    "sentence_known_audio_ids: off-cast voice azure_en-GB-RyanNeural/en-GB-RyanNeural",
+    "takeg_audio_ids: off-cast voice sal"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "b1e364d2-cef2-457c-a81e-b9b5b08b5a71",
+     "d19e5b31-64ae-4a88-a0e4-480215d01c95"
+    ],
+    "sentence_known_audio_ids": [
+     "0244a233-cfba-440e-9ed2-1afb2583f123",
+     "7c0a7820-f303-43fc-8d5c-517761c763b6"
+    ],
+    "takeg_audio_ids": [
+     "39bc7c22-1af4-432b-8985-fe06ac3d4d63"
+    ]
+   }
+  },
+  {
+   "id": "ara_eg_for_eng:pod-1:SC13-S010",
+   "scene": 13,
+   "sentence": 10,
+   "speaker": "Tourist",
+   "target_text": "شكراً جزيلاً. إنت كنت متعاون جداً.",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice sal",
+    "sentence_known_audio_ids: off-cast voice en-GB-RyanNeural",
+    "takeg_audio_ids: off-cast voice sal"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "553a3a5e-a6e3-4d9d-9072-7e50c24d229d",
+     "ea2cab0e-4b40-44ab-bf00-2fb2cce63b10"
+    ],
+    "sentence_known_audio_ids": [
+     "9ed752bc-e5d2-4bfa-8336-70658c880aa6",
+     "e9483c86-9623-4a26-9ae3-b857453dd515"
+    ],
+    "takeg_audio_ids": [
+     "a00e82aa-6ba1-46f6-8785-09ef45974c38"
+    ]
+   }
+  },
+  {
+   "id": "ara_eg_for_eng:pod-1:SC13-S011",
+   "scene": 13,
+   "sentence": 11,
+   "speaker": "Narrator",
+   "target_text": "تلاتين. أربعين. خمسين. الجمعة. السبت.",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice ara",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: off-cast voice ara"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "6817170d-a1b7-493b-954f-06e8078b183c",
+     "10933521-9eda-4c03-9610-56a6d9eafa50",
+     "1c885300-d1b6-412f-920f-511875218bee",
+     "17b2bd65-8248-4ae0-ad4a-1534305bb338",
+     "1d896ea9-00dd-4036-9adf-55f8d1f09c39"
+    ],
+    "sentence_known_audio_ids": [
+     "37e895e5-760c-49f8-ae4c-57a0b8110b70",
+     "3765b935-c66c-4dbd-9553-3de259bbef6d",
+     "d8309e9a-8793-4378-b37e-ee358c2eeddd",
+     "1d822f06-a1ea-424f-8134-a89bd17d64b3",
+     "0561a46e-9bb2-4597-b80d-383d6cb188a7"
+    ],
+    "takeg_audio_ids": [
+     "5b2aa5c1-98d5-48d5-8672-b4688b056835"
+    ]
+   }
+  },
+  {
+   "id": "ara_eg_for_eng:pod-1:SC14-S001",
+   "scene": 14,
+   "sentence": 1,
+   "speaker": "Passenger",
+   "target_text": "أهلاً. تقدر توصلني لمحطة القطر، من فضلك؟",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice en-GB-SoniaNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "3530cf9e-6e65-45a8-8dcd-50ed467c31b9",
+     "a1d8d5ec-227e-4055-b910-be39addd1ff9"
+    ],
+    "sentence_known_audio_ids": [
+     "3303727e-f2cc-41bb-b3c2-2c97159be069",
+     "7ceb7841-bbb6-4eab-b3aa-fd3f3f27f43b"
+    ],
+    "takeg_audio_ids": [
+     "638d9b2e-cef8-46f6-abde-539b387b198f"
+    ]
+   }
+  },
+  {
+   "id": "ara_eg_for_eng:pod-1:SC14-S002",
+   "scene": 14,
+   "sentence": 2,
+   "speaker": "Driver",
+   "target_text": "تمام، بالتأكيد. ممكن ياخد شوية وقت، في زحمة كتير دلوقتي.",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice leo"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "eae7f749-2ca7-4bf6-9f85-eee2ea3d11f6",
+     "f124b53d-0676-4117-a7ae-d91275a6cbbd"
+    ],
+    "sentence_known_audio_ids": [
+     "e8fdd9a1-a82a-4e82-ab27-758ea5d99f44",
+     "619eed88-f7d7-4a9d-be4c-bf797e3bec59"
+    ],
+    "takeg_audio_ids": [
+     "df42d0ab-6f33-4eac-bdd6-b41383c19db4",
+     "ba303695-7dac-422e-90e9-aebfb18e4558"
+    ]
+   }
+  },
+  {
+   "id": "ara_eg_for_eng:pod-1:SC14-S004",
+   "scene": 14,
+   "sentence": 4,
+   "speaker": "Driver",
+   "target_text": "يمكن حوالي عشرين دقيقة، لو الإشارات ماكانتش وحشة معانا.",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "16ac4253-d7f2-4ef0-a710-26cfdfc1885e"
+    ]
+   }
+  },
+  {
+   "id": "ara_eg_for_eng:pod-1:SC14-S007",
+   "scene": 14,
+   "sentence": 7,
+   "speaker": "Driver",
+   "target_text": "وصلنا. الحساب اتناشر جنيه ونص.",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "77f7d2a3-0936-4ba2-b3c2-d2f512e62f06",
+     "4ffdb40e-0442-4af1-bb1c-13405b9960e9"
+    ],
+    "sentence_known_audio_ids": [
+     "0854867b-79e5-42f0-9bf1-e0d3fae64b9c",
+     "b01f87f3-810a-4f24-a044-bb78228f5400"
+    ],
+    "takeg_audio_ids": [
+     "fe7e2e9d-e55f-43e1-9a77-4c0e2996f1ae",
+     null
+    ]
+   }
+  },
+  {
+   "id": "ara_eg_for_eng:pod-1:SC14-S009",
+   "scene": 14,
+   "sentence": 9,
+   "speaker": "Driver",
+   "target_text": "أيوه طبعاً. الماكينة هنا أهي.",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "eae7f749-2ca7-4bf6-9f85-eee2ea3d11f6",
+     "6a235769-290f-4359-a596-bc5e456096a0"
+    ],
+    "sentence_known_audio_ids": [
+     "e8fdd9a1-a82a-4e82-ab27-758ea5d99f44",
+     "979d73c9-a1c4-4b16-9d01-0147234979f4"
+    ],
+    "takeg_audio_ids": [
+     "df42d0ab-6f33-4eac-bdd6-b41383c19db4",
+     "f3c196bc-e163-4dcc-9fce-6a0101290517"
+    ]
+   }
+  },
+  {
+   "id": "ara_eg_for_eng:pod-1:SC14-S010",
+   "scene": 14,
+   "sentence": 10,
+   "speaker": "Narrator",
+   "target_text": "مية. ميتين. ألف. الأحد. الساعة اتناشر.",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice ara",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: off-cast voice ara"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "716f6011-cddd-4f10-b3d1-be7dd9a6895a",
+     "6cf967f4-7105-421b-9005-1eb228f12cdc",
+     "c1e47006-bc46-400e-b85f-f8bcd1a492de",
+     "2e1cf7d3-5d34-4cb9-aafd-600f92591671",
+     "104a73ef-f38c-4da9-91b0-04071deac02b"
+    ],
+    "sentence_known_audio_ids": [
+     "6896205f-729c-46d3-9b4b-c00d24d64a0d",
+     "6d70d102-f315-41d2-b07d-204f65ec82f2",
+     "e7c1490d-5670-42e2-87ef-cb602c19b62d",
+     "e1b6f536-73f5-4ca9-a405-6a71ce6567cb",
+     "2db373e1-ed84-4929-86b7-40418debeebb"
+    ],
+    "takeg_audio_ids": [
+     "ee5b38aa-1203-4dcc-9349-af734407a5bb"
+    ]
+   }
+  },
+  {
+   "id": "ara_eg_for_eng:pod-1:SC15-S001",
+   "scene": 15,
+   "sentence": 1,
+   "speaker": "Learner",
+   "target_text": "ده بكام؟",
+   "clear": [
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": [
+     "c988712d-edc3-40b3-aef9-bacd38bfa332",
+     "1a493717-e14a-4003-ab50-bc10735b3491"
+    ],
+    "takeg_audio_ids": [
+     "fd0fef09-eb4d-49e2-8995-50f573cb9186",
+     "de875b51-442b-4852-a669-525dd2fb608d"
+    ]
+   }
+  },
+  {
+   "id": "ara_eg_for_eng:pod-1:SC15-S002",
+   "scene": 15,
+   "sentence": 2,
+   "speaker": "Learner",
+   "target_text": "ممكن تقولّي ده بكام؟",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "5590fa66-d5d6-4812-b96e-54e3118a8c26",
+     "216652f7-686a-4054-a0fe-fe902851a64b",
+     "8a0f6ec5-4a29-41cc-97af-3450df46a849"
+    ],
+    "sentence_known_audio_ids": [
+     "140bc386-bef9-44d5-8c0b-c76e44eb6f91",
+     "9ed0cc5f-16d2-40ad-9a0a-81d9c7036d5e",
+     "e210f061-6382-4316-ad1b-f26beeffcfdc"
+    ],
+    "takeg_audio_ids": [
+     "e4ec8e1a-4b29-4557-a564-98483d2f2f48",
+     "d63ff4a7-0bf5-48bf-8e17-b60e2aa96b31",
+     null
+    ]
+   }
+  },
+  {
+   "id": "ara_eg_for_eng:pod-1:SC15-S003",
+   "scene": 15,
+   "sentence": 3,
+   "speaker": "Learner",
+   "target_text": "التاكسي للوسط بكام؟",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "a27f51c4-3b05-4568-ac60-2d869265b923",
+     "8ac40e56-fb25-4f8a-bcab-7356f60f5811",
+     "9c010520-921e-46a0-bc15-d02bf2a52033"
+    ],
+    "sentence_known_audio_ids": [
+     "383ec34d-ca68-4bc8-af73-3b5a6dd140ff",
+     "fa16f2f9-a0b8-42dc-9a3a-b9ae9f8c175a",
+     "77aff1bd-8383-4a33-8803-db074b3cadab"
+    ],
+    "takeg_audio_ids": [
+     "81e1a198-804c-4fda-9143-ae7eb7aab995",
+     "e2fb352d-2d34-48cf-a962-b6c1bad7bd3d",
+     "82fa5d9e-f9d7-4020-ae8e-2c4cde2ca548"
+    ]
+   }
+  },
+  {
+   "id": "ara_eg_for_eng:pod-1:SC15-S004",
+   "scene": 15,
+   "sentence": 4,
+   "speaker": "Learner",
+   "target_text": "الأتوبيس للوسط بكام؟",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "4a933ce4-6044-4299-b69d-aba066038fbe"
+    ]
+   }
+  },
+  {
+   "id": "ara_eg_for_eng:pod-1:SC15-S005",
+   "scene": 15,
+   "sentence": 5,
+   "speaker": "Learner",
+   "target_text": "نلاقي الأتوبيس فين؟",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "72231e93-3ebd-4984-ad1e-dfe922c2b3eb",
+     "e5360f85-c006-4066-94b2-d760b5076d75",
+     "8e4ec2a8-6cbf-4084-91ed-632dd1667538",
+     "ab1c5e90-dbed-4136-bea9-6cdebb2179b9"
+    ],
+    "sentence_known_audio_ids": [
+     "a6a70854-407f-487f-8e8a-c9c741c2a218",
+     "69165fd1-8112-4940-add0-8bdb99a56c38",
+     "c548c0b8-cb78-4e28-acd9-2f2db70464bd",
+     "81c7bcf6-60f4-42d4-91cf-f455a9bb7181"
+    ],
+    "takeg_audio_ids": [
+     "ca5711eb-a5c8-4a19-91e8-dcc715f955f0",
+     "ae5b2409-ca08-426f-8ea7-e4994735a5b7",
+     "31bcd4d7-24c8-4f89-81d8-8f3ea62a3a9c",
+     "08220595-cb3c-4647-b130-b170b7f8890f"
+    ]
+   }
+  },
+  {
+   "id": "ara_eg_for_eng:pod-1:SC15-S006",
+   "scene": 15,
+   "sentence": 6,
+   "speaker": "Learner",
+   "target_text": "نلاقي التاكسي فين؟",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "78deec78-35f7-43a1-a776-ba523d979250",
+     "fa4138f6-7c2d-4410-ad2d-759ff4ef152a",
+     "7d94e99e-1704-41af-af5e-31d8b8046c07"
+    ],
+    "sentence_known_audio_ids": [
+     "d801c0c5-cdd9-4826-bbf8-a711a1f34bb4",
+     "b0e6d3fe-c662-4ed9-b3e4-fe8d4a7f3c56",
+     "b7a60bc4-1673-4194-8ea5-0c638ae964c2"
+    ],
+    "takeg_audio_ids": [
+     "da128e6a-700c-45d1-a1db-fe000702acec",
+     null,
+     "e667f13c-916c-4f30-b2b3-2dab47a8efc5"
+    ]
+   }
+  },
+  {
+   "id": "ara_eg_for_eng:pod-1:SC15-S007",
+   "scene": 15,
+   "sentence": 7,
+   "speaker": "Learner",
+   "target_text": "أربع تذاكر رايح بس للوسط، لو سمحت.",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "97a56531-eb6a-4bd0-bcdb-dbcf920e1cc7",
+     "255ee0ed-76b1-4b73-a752-a41d69913f11"
+    ],
+    "sentence_known_audio_ids": [
+     "96e81487-7b30-4b26-ae62-efcccbf938e6",
+     "eb112e49-2263-46d0-a891-8581e0ffa6cc"
+    ],
+    "takeg_audio_ids": [
+     "9b28dcd4-7b3f-4682-a104-d20d29a9281a",
+     "68ba3101-ed42-4069-95f0-29e2484a5d2e"
+    ]
+   }
+  },
+  {
+   "id": "ara_eg_for_eng:pod-1:SC15-S008",
+   "scene": 15,
+   "sentence": 8,
+   "speaker": "Learner",
+   "target_text": "تذكرتين رايح جاي للوسط، لو سمحت.",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "196c6f89-3dc2-4a90-8973-873cb58169a5",
+     "851870ce-2e1e-4074-b15b-ea5633b2a4bb",
+     "c26a9e2b-70de-4a9b-9f5a-bb5afa870039"
+    ],
+    "sentence_known_audio_ids": [
+     "e01fdab4-7023-4be3-a125-8c1e5d38f078",
+     "818a0859-7239-4a2d-8d28-6b5967104665",
+     "fa03613d-c205-479b-a7a5-26d95938060b"
+    ],
+    "takeg_audio_ids": [
+     "629aebac-c6f9-4958-bf94-7fa6b4dc4269",
+     "5c14136a-5745-475c-9eac-f9c9851ebe68",
+     "eb942f96-c496-4a0e-8bc9-847357e9a226"
+    ]
+   }
+  },
+  {
+   "id": "ara_eg_for_eng:pod-1:SC15-S009",
+   "scene": 15,
+   "sentence": 9,
+   "speaker": "Learner",
+   "target_text": "أنا بفضل أحاول أتكلم لغتك، حاسة إن ده أدب.",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "657fda4d-59ec-4193-bf99-bff79a74759f",
+     "6502982e-8e67-4186-843d-ab63399251ad",
+     "69cfda55-d175-4505-ac69-b69aa0c4d69b",
+     "abbf1ee4-0a00-4c99-9def-092ba102652e"
+    ],
+    "sentence_known_audio_ids": [
+     "1fb9c352-1f1d-4e41-8d89-fe48fad6977d",
+     "f34a323e-9920-444d-afdd-c55adec23de4",
+     "f06db71c-073b-460e-b4f4-8bb54865b520",
+     "7791889b-cafe-4e4b-9b8c-044683cea0b6"
+    ],
+    "takeg_audio_ids": [
+     "719909d7-3a1b-44a7-b413-bac15ad9c8bf",
+     "127393a7-0b78-486a-9b28-3a01044469ba",
+     null,
+     "18a4fc2b-f6b6-4a8f-b42a-68dac3d5a455"
+    ]
+   }
+  },
+  {
+   "id": "ara_eg_for_eng:pod-1:SC15-S010",
+   "scene": 15,
+   "sentence": 10,
+   "speaker": "Learner",
+   "target_text": "آسفة، مش قادرة أتكلم بسرعة قوي.",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "97455b66-39c1-453b-a74c-185248195a29",
+     "cb17d8f3-26ca-4d20-8830-eaead67243a3",
+     "f80f8ad7-d2a8-45a2-8231-efb5486a8d30"
+    ],
+    "sentence_known_audio_ids": [
+     "4dc8783d-1307-4c38-96a1-166238bda260",
+     "d25dd00e-079c-4f04-862c-e5273d86e7af",
+     "e374be2e-b370-4fc7-a0fd-aa11b69c184f"
+    ],
+    "takeg_audio_ids": [
+     "294a21c6-c6a6-44d9-821b-d02baab38970"
+    ]
+   }
+  },
+  {
+   "id": "ara_eg_for_eng:pod-1:SC15-S011",
+   "scene": 15,
+   "sentence": 11,
+   "speaker": "Narrator",
+   "target_text": "100,000. 60. 70. الساعة واحدة. الساعة حداشر.",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "13e483d2-5640-4898-8f7d-33b626c0dba7",
+     "854d73bb-6e91-4bb3-a832-51b9a7978dce",
+     "94e68583-70af-4c58-b802-a82bd1fa2903"
+    ],
+    "sentence_known_audio_ids": [
+     "1c9b6c77-2b23-497b-acab-6184ac9b625a",
+     "b0f666cf-56e2-4726-b013-4297a64337eb",
+     "6f2b9921-3cee-41af-a350-150f643b5e9f"
+    ],
+    "takeg_audio_ids": [
+     "6ad393de-021f-4098-b4b8-27f4a99449c2",
+     "632fe3c2-f2b0-4ef9-a52a-cfeb7018997b"
+    ]
+   }
+  }
+ ]
+}

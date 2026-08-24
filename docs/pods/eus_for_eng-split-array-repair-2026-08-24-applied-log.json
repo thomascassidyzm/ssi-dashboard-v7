@@ -1,0 +1,2344 @@
+{
+ "pod": "eus_for_eng:pod-1",
+ "course": "eus_for_eng",
+ "mode": "applied",
+ "generated_at": "2026-08-24T11:26:07.791Z",
+ "rows_total": 231,
+ "rows_repaired": 80,
+ "cast": {
+  "target": [
+   "eu-ES-AinhoaNeural",
+   "eu-ES-AnderNeural"
+  ],
+  "known": [
+   "bedd6226",
+   "gfzdpspr5fdp"
+  ]
+ },
+ "by_scene": {
+  "1": 1,
+  "2": 1,
+  "3": 2,
+  "4": 1,
+  "5": 1,
+  "6": 13,
+  "7": 5,
+  "8": 7,
+  "9": 13,
+  "10": 6,
+  "11": 8,
+  "12": 3,
+  "13": 3,
+  "14": 5,
+  "15": 11
+ },
+ "skipped_rows_needing_rerender": [],
+ "rows": [
+  {
+   "id": "eus_for_eng:pod-1:SC01-S003",
+   "scene": 1,
+   "sentence": 3,
+   "speaker": "Neighbour",
+   "target_text": "Oso ondo nago, eskerrik asko. Lanera zoaz?",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice leo"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "dd787b24-9ef9-4a42-a403-37091d3c4e2c",
+     "4b1ea344-c513-4e96-bab3-e38d68bdb394"
+    ],
+    "sentence_known_audio_ids": [
+     "efdaad68-d99b-48f0-92d3-7c4e20817f13",
+     "24f449a4-8ef0-4169-8c00-4f845d072e03"
+    ],
+    "takeg_audio_ids": [
+     "ed812073-418c-47ed-b82e-3a432be4c037",
+     null
+    ]
+   }
+  },
+  {
+   "id": "eus_for_eng:pod-1:SC02-S002",
+   "scene": 2,
+   "sentence": 2,
+   "speaker": "Passenger",
+   "target_text": "Ez, librea dago. Aurrera, mesedez.",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "fd66a824-0810-4a76-9777-47e2c8d7ee40",
+     "6643aa21-1f57-454d-9a07-124a689af3b6"
+    ],
+    "sentence_known_audio_ids": [
+     "0a6a983e-6ede-4263-9a86-290f4f9a04c9",
+     "5b0575af-c19b-4db2-a1e0-c8fafbfeb523"
+    ],
+    "takeg_audio_ids": [
+     "df8b877f-c3f5-4f7b-acc4-672d6e6f723d",
+     "3c310ea7-e8a4-43f9-b3f0-6e62d16511b8"
+    ]
+   }
+  },
+  {
+   "id": "eus_for_eng:pod-1:SC03-S001",
+   "scene": 3,
+   "sentence": 1,
+   "speaker": "Barista (3 pm)",
+   "target_text": "Arratsalde on. Zer nahi duzu?",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "6ee5be58-a017-42d8-83cd-797b42d92daa",
+     "535b89f6-8b49-4c21-ba69-20929cf6fbb8"
+    ],
+    "sentence_known_audio_ids": [
+     "52252dae-9658-479c-b4d2-95ee911e9974",
+     "e4157413-b9fc-46aa-b1d9-2dd8c966fd58"
+    ],
+    "takeg_audio_ids": [
+     "bd3bbcfa-5af4-440e-9cde-747d04c3138e"
+    ]
+   }
+  },
+  {
+   "id": "eus_for_eng:pod-1:SC03-S003",
+   "scene": 3,
+   "sentence": 3,
+   "speaker": "Sarah",
+   "target_text": "Baduzu janaririk?",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "5490aabd-e6d8-4538-9501-c3be261456f2",
+     "5d8f0a1e-69df-47f4-bf09-41023528482e"
+    ],
+    "sentence_known_audio_ids": [
+     "0e61a46f-d6c1-4d8b-86f1-17e85c6e6ef4",
+     "48512c34-a2f2-43d0-9911-352c94d1b24a"
+    ],
+    "takeg_audio_ids": [
+     "a975a7ae-49b4-488a-9601-b8cbf361bb4b"
+    ]
+   }
+  },
+  {
+   "id": "eus_for_eng:pod-1:SC04-S003",
+   "scene": 4,
+   "sentence": 3,
+   "speaker": "Friend",
+   "target_text": "Ez, barkatu, bihar lanpetuta nago. Baina hitz egin dezagun larunbatean. Orduan arte.",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "6ceed032-1b38-4ecb-9ac4-ae4659fce9cf",
+     "ecb18c94-128b-4229-b0a6-5542b6867f5b",
+     "38cc3c81-512e-4b23-8a00-d419d4ccfbe2"
+    ],
+    "sentence_known_audio_ids": [
+     "6a20b8e3-ce08-4feb-a753-631e37c988e6",
+     "2c4d56a6-50da-4b2b-9a4f-d66eeefb0ce4",
+     "55b13b15-28de-4f73-9a87-92a5082907fc"
+    ],
+    "takeg_audio_ids": [
+     "3e2d2c4f-72e4-4c32-bf74-ad71af2244c6",
+     "e1d07b8f-2e22-4565-9c3f-7551504f39ec",
+     null
+    ]
+   }
+  },
+  {
+   "id": "eus_for_eng:pod-1:SC05-S001",
+   "scene": 5,
+   "sentence": 1,
+   "speaker": "Neighbour (10:30 pm)",
+   "target_text": "Gabon, Sarah. Egun luzea izan al duzu?",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice leo"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "ccd07b1d-7bc5-4a5e-8d1c-5a8e505b7872",
+     "6937dcf1-4612-4ee0-b874-d993d3aef4f6"
+    ],
+    "sentence_known_audio_ids": [
+     "476f8708-8af3-44b2-8eec-7123d073b15d",
+     "879b456f-31d2-4176-8420-d44d8f40538a"
+    ],
+    "takeg_audio_ids": [
+     "78c93624-8a78-4afa-a421-bd4ebb6d2940",
+     "53f3e00a-bb88-44df-9b27-ff7f69252cf9"
+    ]
+   }
+  },
+  {
+   "id": "eus_for_eng:pod-1:SC06-S001",
+   "scene": 6,
+   "sentence": 1,
+   "speaker": "James",
+   "target_text": "Barkatu. Kaixo. Nola duzu izena?",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "92f46cd2-00e8-4d74-b38f-948b0c1c4b0e",
+     "d0403553-da92-47ac-a4b8-d0f0513754d8",
+     "28207188-3956-4508-b1ce-5096390836b6"
+    ],
+    "sentence_known_audio_ids": [
+     "ca50d90d-f1c0-4c8f-b76c-5929a06aee56",
+     "c17732bc-cf8f-4373-a093-0aa713fe1fc8",
+     "8626145c-2b15-4b73-b74d-581112548f1d"
+    ],
+    "takeg_audio_ids": [
+     "492d854a-236b-4c0c-96e6-80fb6b7274e2"
+    ]
+   }
+  },
+  {
+   "id": "eus_for_eng:pod-1:SC06-S002",
+   "scene": 6,
+   "sentence": 2,
+   "speaker": "Anna",
+   "target_text": "Nire izena Anna da. Eta zuk?",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "5bc8f6d9-15e2-4ed7-980b-26531f7005f7",
+     "620b1633-3c43-4fd5-8b42-3924d4268315"
+    ],
+    "sentence_known_audio_ids": [
+     "e30befde-c2d4-427e-a579-3642e178258b",
+     "9d0ce571-2d7d-4cf0-8ec2-a7f5939ba83b"
+    ],
+    "takeg_audio_ids": [
+     "e96042dc-c63d-47fb-aba6-94e4b6e59589",
+     null
+    ]
+   }
+  },
+  {
+   "id": "eus_for_eng:pod-1:SC06-S003",
+   "scene": 6,
+   "sentence": 3,
+   "speaker": "James",
+   "target_text": "James naiz. Poztu naiz zu ezagutzeaz.",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice leo"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "e6cf45bb-ae86-41a2-bf22-eb2516b06dd4",
+     "1ecc81fa-e60d-4dcd-8245-39eaf55d1ac1"
+    ],
+    "sentence_known_audio_ids": [
+     "47a8fc17-d53f-4da2-93e4-d8695d99f9df",
+     "b6b0e69d-4aee-463d-a173-73ee25bc0fc1"
+    ],
+    "takeg_audio_ids": [
+     "d5311e7c-d122-4616-aa80-63b61b75bfdd"
+    ]
+   }
+  },
+  {
+   "id": "eus_for_eng:pod-1:SC06-S004",
+   "scene": 6,
+   "sentence": 4,
+   "speaker": "Anna",
+   "target_text": "Ni ere pozten naiz zu ezagutzeaz. Nongoa zara?",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "65ca4660-7643-442d-824c-e48f8d00d77f",
+     "0e7ee60d-a415-4904-bb7d-1f025ebc4c5f"
+    ],
+    "sentence_known_audio_ids": [
+     "be152f2f-1c61-4601-9ae2-c513e48729d7",
+     "df1428d8-1e6c-4d0d-a1fa-06dada54a011"
+    ],
+    "takeg_audio_ids": [
+     "af74b7d5-764f-4a04-93ad-bd8237753221",
+     null
+    ]
+   }
+  },
+  {
+   "id": "eus_for_eng:pod-1:SC06-S005",
+   "scene": 6,
+   "sentence": 5,
+   "speaker": "James",
+   "target_text": "Manchesterrekoa naiz, baina orain Londresen bizi naiz. Eta zu?",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice leo"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "2f8e05e0-19de-473c-8e24-d5e84c61146c",
+     "701e0d91-f0b7-4195-b125-6a08c2e89368"
+    ],
+    "sentence_known_audio_ids": [
+     "a40a286c-3413-4610-a957-f1daa8533a5a",
+     "331c1227-8409-46a8-a40e-e1e744d35cbf"
+    ],
+    "takeg_audio_ids": [
+     "32518f24-9f5c-483c-a886-2331b68ee749",
+     null
+    ]
+   }
+  },
+  {
+   "id": "eus_for_eng:pod-1:SC06-S006",
+   "scene": 6,
+   "sentence": 6,
+   "speaker": "Anna",
+   "target_text": "Frantziakoa naiz. Bi urte daramatzat hemen.",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice en-GB-SoniaNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "30560f72-9880-46d2-b2db-b8ba4e30f30f",
+     "6ea18ddb-6933-4ecc-a80e-d6813a0813e8"
+    ],
+    "sentence_known_audio_ids": [
+     "b741c603-0da4-456a-bba3-288d137b1b52",
+     "0004b05c-4c21-4cc0-a372-4f7cc0a3b83f"
+    ],
+    "takeg_audio_ids": [
+     "51a68b65-cf31-447c-b2b3-811a2daf5a15"
+    ]
+   }
+  },
+  {
+   "id": "eus_for_eng:pod-1:SC06-S007",
+   "scene": 6,
+   "sentence": 7,
+   "speaker": "James",
+   "target_text": "Hiri eder bat da hau. Zer egiten duzu?",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice leo"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "c8c0c30b-6022-4e3b-9f12-eaee33637b50",
+     "6943b7a4-b3ea-4c32-8b64-b74e2f4e8f55"
+    ],
+    "sentence_known_audio_ids": [
+     "f60859ec-033f-475d-9215-ac6b1f449dee",
+     "c7e62c4e-3ed7-440d-b934-7ca6b91eb788"
+    ],
+    "takeg_audio_ids": [
+     "5f9a40f0-2f38-4eff-b059-74038d9abb07"
+    ]
+   }
+  },
+  {
+   "id": "eus_for_eng:pod-1:SC06-S008",
+   "scene": 6,
+   "sentence": 8,
+   "speaker": "Anna",
+   "target_text": "Erizaina naiz, hemen inguruko ospitalean. Eta zu?",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice en-GB-SoniaNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "71430637-e434-4f51-a3b4-32b5bb3c4450",
+     "2ebb828d-63f1-4bb7-97a8-ad1f708865ae"
+    ],
+    "sentence_known_audio_ids": [
+     "e514ad93-766f-4c87-b7e8-f97b70136eb5",
+     "b69e044f-6e18-44fd-af54-e80147afeb26"
+    ],
+    "takeg_audio_ids": [
+     "57dafcaa-3382-4f57-b3fd-ad647153f98c",
+     null
+    ]
+   }
+  },
+  {
+   "id": "eus_for_eng:pod-1:SC06-S009",
+   "scene": 6,
+   "sentence": 9,
+   "speaker": "James",
+   "target_text": "Barkatu, ez dut ulertu. Euskara ikasten ari naiz. Berriz esango al zenuke, poliki-poliki?",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice leo"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "dbf2b9cb-2153-4272-bcad-38590970d06f",
+     "6fc9e974-6320-48a0-a483-6b116c2277c4",
+     "ec1c11aa-7c39-4c10-8e79-2b164cef1c84"
+    ],
+    "sentence_known_audio_ids": [
+     "1edc50c1-94bb-412b-ae54-33fdc9b98cd1",
+     "f3774387-22d2-4e49-a29f-720fdee69c54",
+     "fbccbeaf-d4ae-4b48-b014-6645411c372e"
+    ],
+    "takeg_audio_ids": [
+     "58c449ef-c988-405f-8763-a0cb282695b7",
+     null,
+     "a178c35b-07cd-4997-b189-1184c0d75c42"
+    ]
+   }
+  },
+  {
+   "id": "eus_for_eng:pod-1:SC06-S010",
+   "scene": 6,
+   "sentence": 10,
+   "speaker": "Anna",
+   "target_text": "Bai, jakina. Erizaina naiz. Ospitalean lan egiten dut. Hemen gertu dago. Eta zuk zer egiten duzu?",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice en-GB-SoniaNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "f67f9e80-32b2-4b99-81c8-e8f32249033a",
+     "1b5fc354-b4d1-4793-9717-8acfaabdad15",
+     "97d4c4ae-73ae-4792-b1cb-cee6c7a262dd",
+     "232fdaf5-77af-4336-9de6-7fe9e23772c8",
+     "21b01bdf-b61c-43d2-925c-c29c3ff9bbc4"
+    ],
+    "sentence_known_audio_ids": [
+     "d4798d9a-d93c-411f-8ffa-98dff5debd42",
+     "4e4c5334-b558-42db-86b3-597f8e1ea839",
+     "57906296-1e48-4ca6-8907-d9a7d8370776",
+     "dc5d9187-d5d0-422c-a282-93e5b8793f45",
+     "674f5427-c654-4fb3-bc2c-421e91652584"
+    ],
+    "takeg_audio_ids": [
+     "9adc26be-fb01-4610-8045-dfcd555eeb09",
+     null,
+     null,
+     null,
+     null
+    ]
+   }
+  },
+  {
+   "id": "eus_for_eng:pod-1:SC06-S011",
+   "scene": 6,
+   "sentence": 11,
+   "speaker": "James",
+   "target_text": "Ingelesa irakasten dut, baina ez eskola batean. Helduekin lan egiten dut. Hemen nago oporretan, emazte eta seme-alabekin. Oso ondo pasatzen ari gara.",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice leo"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "de454be2-4035-4352-bfce-f984a4cfdcf7",
+     "24323d02-cf20-401e-bd8a-71b2ddd8e9a7",
+     "db883a91-a9e5-4063-9ecb-9c93a3e010ea",
+     "d92a4b41-f31e-40ec-81ed-15ae4a3de112"
+    ],
+    "sentence_known_audio_ids": [
+     "f836348d-a32e-45e1-800b-b242190579ce",
+     "73d26567-0a97-443d-8fa1-5f53bc808652",
+     "dd75928e-1730-479c-8d06-1bb04f728078",
+     "047e28a3-ab3f-4c8b-a3f9-51a7f7535246"
+    ],
+    "takeg_audio_ids": [
+     "00f44664-a703-4de4-b785-21c10f035cbb",
+     null,
+     "e85650d8-f81a-4715-b007-05479e2473b7",
+     null
+    ]
+   }
+  },
+  {
+   "id": "eus_for_eng:pod-1:SC06-S012",
+   "scene": 6,
+   "sentence": 12,
+   "speaker": "Anna",
+   "target_text": "Bai interesgarria. Beno, pozten naiz zu ezagutzeaz.",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "b48ecc27-4574-4a95-890f-a4ef12bd402d",
+     "470431ff-5ad9-4a33-8ecb-c7290c144473"
+    ],
+    "sentence_known_audio_ids": [
+     "c431d2de-9b52-4f6e-b5fd-f67d9868fe58",
+     "2e0fefa9-1522-4966-a92e-7b3f353116d8"
+    ],
+    "takeg_audio_ids": [
+     "0043d38e-cc09-4eec-89f9-2d3a89a542f2"
+    ]
+   }
+  },
+  {
+   "id": "eus_for_eng:pod-1:SC06-S013",
+   "scene": 6,
+   "sentence": 13,
+   "speaker": "Narrator",
+   "target_text": "Bat. Bi. Hiru. Zuria. Beltza.",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "369f9cf6-adb7-4b40-b635-d5951e3823eb",
+     "72b6d7fd-5fbf-4165-a827-d474334f2c4a",
+     "79958bda-2afb-4c1e-9b56-441119f6d933",
+     "9012cd2a-ec38-4402-95bb-de6fe63718ae",
+     "1fa1bb55-f086-4fd7-99e6-bd9cc81320cb"
+    ],
+    "sentence_known_audio_ids": [
+     "30eb491f-9637-434a-8220-c9885779e2de",
+     "61114ae2-a31b-409c-b15f-3d7163f4907e",
+     "d8b35dc4-823b-475c-9308-883628599103",
+     "b5051908-7be5-49ba-b7b1-fdd26ecdef26",
+     "d87236f2-8b81-4262-9eac-a8d89de11957"
+    ],
+    "takeg_audio_ids": [
+     "0fd7e660-6af5-4fda-b16b-0ed7e6a897b7"
+    ]
+   }
+  },
+  {
+   "id": "eus_for_eng:pod-1:SC07-S001",
+   "scene": 7,
+   "sentence": 1,
+   "speaker": "Cafe Barista",
+   "target_text": "Egun on. Zer nahi duzu?",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "d66797ac-ed49-4be9-9661-89e8cc0fcba8",
+     "535b89f6-8b49-4c21-ba69-20929cf6fbb8"
+    ],
+    "sentence_known_audio_ids": [
+     "c428c915-f03e-4227-af8e-c27b203f3893",
+     "e4157413-b9fc-46aa-b1d9-2dd8c966fd58"
+    ],
+    "takeg_audio_ids": [
+     "452459a7-eb1d-4caf-9238-0c0e39d0a498"
+    ]
+   }
+  },
+  {
+   "id": "eus_for_eng:pod-1:SC07-S008",
+   "scene": 7,
+   "sentence": 8,
+   "speaker": "Cafe Barista",
+   "target_text": "Oraintxe. Beste zerbait nahi duzu?",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice en-GB-HollieNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "06c58933-6893-4948-a10c-751cab3af1a2",
+     "98430582-629b-441a-b34f-c98d75bfd4a8"
+    ],
+    "sentence_known_audio_ids": [
+     "521a1fef-e329-409b-8381-beb20b127979",
+     "7e142f46-cf52-489d-ac1e-c25dd19ed08c"
+    ],
+    "takeg_audio_ids": [
+     "986ad0e9-330d-406e-8f4f-2900f2880d66"
+    ]
+   }
+  },
+  {
+   "id": "eus_for_eng:pod-1:SC07-S010",
+   "scene": 7,
+   "sentence": 10,
+   "speaker": "Cafe Barista",
+   "target_text": "Guztira, zortzi libra eta berrogei zentimo dira.",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "9e24882b-258b-4a2d-a81f-5c4d49fe348c"
+    ]
+   }
+  },
+  {
+   "id": "eus_for_eng:pod-1:SC07-S012",
+   "scene": 7,
+   "sentence": 12,
+   "speaker": "Cafe Barista",
+   "target_text": "Jakina. Horra makina.",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice en-GB-HollieNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "bade9adf-2ed6-4ee2-8b71-fa962730b02b",
+     "7f8aafa8-76ab-490b-a743-5036c0c445c8"
+    ],
+    "sentence_known_audio_ids": [
+     "a5272889-c172-461e-9f32-0d98cfc242c5",
+     "98e76f5a-a4bd-40b3-afd9-a14ac5c3acdb"
+    ],
+    "takeg_audio_ids": [
+     "ed2e2fa8-4980-4a7f-9ccb-64ab1767ccfa"
+    ]
+   }
+  },
+  {
+   "id": "eus_for_eng:pod-1:SC07-S015",
+   "scene": 7,
+   "sentence": 15,
+   "speaker": "Narrator",
+   "target_text": "Bost. Hamar. Hamabost. Gorria. Berdea.",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "3a602521-71be-44b6-bd0a-30c1c6bb445a",
+     "095042a2-8d34-4ea9-9ca3-ff3633ce40c3",
+     "61e54063-cb88-476a-a9e1-77e01e15b23a",
+     "c139e384-cd38-4b1c-a388-ea60b821306f",
+     "2b471183-7dd4-4c47-b3d8-345605b2c30f"
+    ],
+    "sentence_known_audio_ids": [
+     "75dc30ac-fa99-48e8-8525-00a1e2a5eb0f",
+     "d056cd60-d100-4937-850a-eaa34d6bda65",
+     "d8245588-ee20-4a7c-ab14-713e4c9e3c69",
+     "52e7e3a8-2d8e-4e83-a8d0-ed0693c8a829",
+     "0a958419-8cec-4966-9950-27be426c5d12"
+    ],
+    "takeg_audio_ids": [
+     "b72159da-6a91-44e6-9373-b42a4e3e4ec8"
+    ]
+   }
+  },
+  {
+   "id": "eus_for_eng:pod-1:SC08-S001",
+   "scene": 8,
+   "sentence": 1,
+   "speaker": "Bartender",
+   "target_text": "Gabon. Zer nahi duzu?",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "0d930c1a-a253-40b8-9df2-70cec0d760a0",
+     "2bde3639-2c86-465d-80ac-221766493093"
+    ],
+    "sentence_known_audio_ids": [
+     "0b6d4073-271b-4d5e-945f-92c18bea0923",
+     "4820cf4f-66de-42f8-b5aa-dfc170aa8410"
+    ],
+    "takeg_audio_ids": [
+     "0428135c-236e-4fe8-bd32-95b52d41a850"
+    ]
+   }
+  },
+  {
+   "id": "eus_for_eng:pod-1:SC08-S002",
+   "scene": 8,
+   "sentence": 2,
+   "speaker": "Bar Customer 1",
+   "target_text": "Pinta bat nahi dut, mesedez. Zer garagardo mota dituzue barrilean?",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "2817eb41-f8a1-4f72-a47f-de33b6997355",
+     "454953e4-16d7-4b7e-b7fa-2d7f2cee4747"
+    ],
+    "sentence_known_audio_ids": [
+     "fe44cc62-19c1-4b67-81bf-0fd4b8bb19b1",
+     "2b0620c9-aac8-43dc-9ba6-e397db875ad1"
+    ],
+    "takeg_audio_ids": [
+     "2d023be6-a902-4383-bf86-984bec5198f7",
+     "029a1d0a-dd90-45d2-8af7-012c63fe0801"
+    ]
+   }
+  },
+  {
+   "id": "eus_for_eng:pod-1:SC08-S004",
+   "scene": 8,
+   "sentence": 4,
+   "speaker": "Bar Customer 1",
+   "target_text": "Garagardo garratzaren pinta bat nahi dut, mesedez.",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "9da7652a-da54-4776-a58a-469674d1d05a"
+    ]
+   }
+  },
+  {
+   "id": "eus_for_eng:pod-1:SC08-S012",
+   "scene": 8,
+   "sentence": 12,
+   "speaker": "Bar Customer 1",
+   "target_text": "Ez nago ziur gose naizen. Menurik baduzue?",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice en-GB-SoniaNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "cca1bcce-ebd4-4aab-bf38-48fb4f60245e",
+     "485bbb61-6bc7-4674-9854-3356d0614952"
+    ],
+    "sentence_known_audio_ids": [
+     "9c091cd7-e57a-4083-bd3c-cf8913c19c6b",
+     "2a630bb0-9dff-4947-a737-56fd680fc83d"
+    ],
+    "takeg_audio_ids": [
+     "d9b535ae-a792-4142-9573-c21c632855a5",
+     null
+    ]
+   }
+  },
+  {
+   "id": "eus_for_eng:pod-1:SC08-S013",
+   "scene": 8,
+   "sentence": 13,
+   "speaker": "Bartender",
+   "target_text": "Bai, jakina. Hemen dago. Arraina eta patata frijituak oso onak dira.",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice leo"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "e88c4470-b123-490b-a3ef-35a2c4786e64",
+     "486725db-fa2b-4b3e-b588-c8a6a814b36e",
+     "bb15d70c-5dd8-4f50-bdc0-97d041d9a8a3"
+    ],
+    "sentence_known_audio_ids": [
+     "cd48f5e7-4483-4d7c-a311-1646f815d45b",
+     "e1882cdd-1fb1-417f-adb5-08de0f7228c2",
+     "036cc389-b8f5-4218-ba73-4e8fe298cf35"
+    ],
+    "takeg_audio_ids": [
+     "a11ef22f-0fc8-48dc-98a3-af0a79aed074",
+     null,
+     "cb9730d8-c2f4-4bbc-a783-23df50f6f1b3"
+    ]
+   }
+  },
+  {
+   "id": "eus_for_eng:pod-1:SC08-S014",
+   "scene": 8,
+   "sentence": 14,
+   "speaker": "Bar Customer 1",
+   "target_text": "Ogia ekar zenezake? Eta mahaiarentzat patata frijitu saski bat.",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice en-GB-SoniaNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "7f953e9e-0fa2-4918-a8cf-c4862fe8d621",
+     "f86d086b-d212-41b2-b0d7-853063794983"
+    ],
+    "sentence_known_audio_ids": [
+     "9b69cd21-c1d8-4647-95c2-50fd40aa16d7",
+     "f875d21c-7cb6-4106-9c29-73cf1facd779"
+    ],
+    "takeg_audio_ids": [
+     "98a44303-8e19-4739-a9ea-4aea66324b80"
+    ]
+   }
+  },
+  {
+   "id": "eus_for_eng:pod-1:SC08-S015",
+   "scene": 8,
+   "sentence": 15,
+   "speaker": "Bar Customer 2",
+   "target_text": "Ogitartekoak badituzu? Gazta ogitarteko bat nahi nuke, mesedez.",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice en-GB-LibbyNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "766128d7-2dee-48f2-84c0-17dedff96d0c",
+     "37ef62fa-64c8-45cd-91dc-d3da4135de20"
+    ],
+    "sentence_known_audio_ids": [
+     "f8a12aee-2bbb-428d-84fd-2b9a06f5d272",
+     "48b94c65-6c1d-4002-aeb0-01a03895c7a8"
+    ],
+    "takeg_audio_ids": [
+     "26e32e90-52ec-4c12-be92-fa1c64438640"
+    ]
+   }
+  },
+  {
+   "id": "eus_for_eng:pod-1:SC09-S001",
+   "scene": 9,
+   "sentence": 1,
+   "speaker": "Diner 1",
+   "target_text": "Gabon. Bi lagunentzako erreserba dugu, Davies izenean.",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "2a8593db-8568-419d-bbbd-6dddc9f8200e",
+     "87eb6d97-3d77-4813-a579-0da2bbecec2b"
+    ],
+    "sentence_known_audio_ids": [
+     "b2a39a16-2050-41df-a29b-f76ed4d4eb44",
+     "a980710c-0be6-4e73-afba-83c8a4d3aa49"
+    ],
+    "takeg_audio_ids": [
+     "483b38c2-eb5d-4437-89b0-8fde3c5d45e5"
+    ]
+   }
+  },
+  {
+   "id": "eus_for_eng:pod-1:SC09-S002",
+   "scene": 9,
+   "sentence": 2,
+   "speaker": "Waiter",
+   "target_text": "Ongi etorri. Mesedez, jarraitu niri. Hemen dituzue menuak.",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice leo"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "a2dcb380-0e97-4065-8166-ee9ac5f0aa71",
+     "06341209-fa91-4f68-ba3f-8699d70b6e4e",
+     "54398701-ffda-4ced-8d1f-b5ef39fe44a4"
+    ],
+    "sentence_known_audio_ids": [
+     "57d1cda6-5603-46ab-a60c-84d58771ee3c",
+     "21356319-0503-426e-ae8b-6ec5a4322e61",
+     "4aff5eac-d887-4981-b943-99b911317473"
+    ],
+    "takeg_audio_ids": [
+     "0c5d1d2c-7e68-4b2d-b6de-114958598ac9",
+     null
+    ]
+   }
+  },
+  {
+   "id": "eus_for_eng:pod-1:SC09-S005",
+   "scene": 9,
+   "sentence": 5,
+   "speaker": "Diner 1",
+   "target_text": "Barkatu — baduzue glutenik gabekorik? Edo begetarianoentzat?",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice en-GB-SoniaNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "0222c7c2-f0dd-4a46-98db-afba6eb66c68",
+     "273c2e6e-6a0a-4c40-84c8-3334ee03c719"
+    ],
+    "sentence_known_audio_ids": [
+     "ce56e60f-6db4-4249-9020-18c4dce3eb20",
+     "f8979cfa-2f0a-4341-8d2d-b0bdf4d52945"
+    ],
+    "takeg_audio_ids": [
+     "b2cf3004-3b44-48d4-9938-cb858bbe9e86",
+     null
+    ]
+   }
+  },
+  {
+   "id": "eus_for_eng:pod-1:SC09-S006",
+   "scene": 9,
+   "sentence": 6,
+   "speaker": "Waiter",
+   "target_text": "Bai, izokina eta arroz-krema biak dira glutenik gabeko. Entzalada batzuk ere baditugu.",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice leo"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "2834cd89-4e67-4665-8da0-5696c572f8d5",
+     "3ca2d56a-479a-4b35-bb1a-d8e9b66920c6"
+    ],
+    "sentence_known_audio_ids": [
+     "ffbd2093-ca15-45e2-8add-3a3ee246d4f9",
+     "316f0240-3621-4a1a-a92f-8f61b75621a1"
+    ],
+    "takeg_audio_ids": [
+     "80cda675-58c0-49b8-9bac-197e4f1b9469",
+     "dcb6a4a9-f52b-490c-bb89-b2707548b701"
+    ]
+   }
+  },
+  {
+   "id": "eus_for_eng:pod-1:SC09-S008",
+   "scene": 9,
+   "sentence": 8,
+   "speaker": "Waiter",
+   "target_text": "Arkumea bikaina da. Giro baxuan egosita dago, erromerinarekin.",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice leo"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "e17909df-a90e-428f-81b4-80afa26c926e",
+     "4884e7d3-054c-40b6-b832-417b7ad6e29c"
+    ],
+    "sentence_known_audio_ids": [
+     "b44e0f3a-0b05-4a8a-902f-3e3a1cf1c1be",
+     "b83075c8-29d3-4164-b070-45303e3ebd68"
+    ],
+    "takeg_audio_ids": [
+     "2a1b6b17-2b4a-4c7e-ab68-e75099f2e9e0"
+    ]
+   }
+  },
+  {
+   "id": "eus_for_eng:pod-1:SC09-S009",
+   "scene": 9,
+   "sentence": 9,
+   "speaker": "Diner 1",
+   "target_text": "Arkumea hartuko dut, mesedez. Berde-barazkien guarnizio batekin.",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice en-GB-SoniaNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "afd581b4-e53b-4655-9fd0-83436a8b08fb",
+     "1ad2948c-8514-457e-b122-842be51a31a0"
+    ],
+    "sentence_known_audio_ids": [
+     "e169303a-4037-4459-958f-47c2f4272f96",
+     "272687b0-45d0-4f6e-8ae6-b10bd4f40614"
+    ],
+    "takeg_audio_ids": [
+     "d3aa1cfe-4313-4cb9-9220-895fe9058207",
+     null
+    ]
+   }
+  },
+  {
+   "id": "eus_for_eng:pod-1:SC09-S010",
+   "scene": 9,
+   "sentence": 10,
+   "speaker": "Diner 2",
+   "target_text": "Eta arroz-krema niretzat. Entzalada berde txiki batekin hasteko.",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice en-GB-LibbyNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "cb08b4ae-05c0-4130-a807-c0584f37e2ba",
+     "8262cb31-3650-4add-8e55-c81427d75b47"
+    ],
+    "sentence_known_audio_ids": [
+     "9592006a-ba66-4058-a223-20165ae8ca5d",
+     "db393070-69ea-4232-80f1-f54a223e6782"
+    ],
+    "takeg_audio_ids": [
+     "3d1a5257-83f1-4b01-bd2c-7dfb72ddbb8f"
+    ]
+   }
+  },
+  {
+   "id": "eus_for_eng:pod-1:SC09-S011",
+   "scene": 9,
+   "sentence": 11,
+   "speaker": "Waiter",
+   "target_text": "Jakina. Eta zer nahi duzue edateko?",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice leo"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "bade9adf-2ed6-4ee2-8b71-fa962730b02b",
+     "8c13e38a-fe2b-406d-895e-7a9529ddb35a"
+    ],
+    "sentence_known_audio_ids": [
+     "e930e0b7-4fbe-4d76-9388-61b17f218655",
+     "f8cc673b-4c36-4dd1-b076-9d31f9e5fbe7"
+    ],
+    "takeg_audio_ids": [
+     "db4151d3-7169-42c1-861a-733cd009e9b3"
+    ]
+   }
+  },
+  {
+   "id": "eus_for_eng:pod-1:SC09-S014",
+   "scene": 9,
+   "sentence": 14,
+   "speaker": "Waiter",
+   "target_text": "Aukera bikaina. Bertan ekarriko dizuet.",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice leo"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "d39cff39-c09c-4789-9829-ca71948a8d16",
+     "d2ad3b40-324d-448a-b49f-591c23909b4e"
+    ],
+    "sentence_known_audio_ids": [
+     "6184c20c-4502-4a79-abea-2dcec0456907",
+     "419435bd-851d-4a7c-88b2-7a973a161ac3"
+    ],
+    "takeg_audio_ids": [
+     "e791eef3-1dd5-461e-a8ed-96e7bd328523"
+    ]
+   }
+  },
+  {
+   "id": "eus_for_eng:pod-1:SC09-S015",
+   "scene": 9,
+   "sentence": 15,
+   "speaker": "Waiter",
+   "target_text": "Dena ondo dago? Postre hartzeko gogorik baduzue?",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice leo"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "da1dd333-02ac-4add-a638-e4019b63d018",
+     "5be2ebf3-93cc-4948-be69-dc779f00709d"
+    ],
+    "sentence_known_audio_ids": [
+     "a52a0d8f-fb4a-463e-90e2-3cac124a1ac4",
+     "308d1c25-eefb-47cb-b086-b115fb001a01"
+    ],
+    "takeg_audio_ids": [
+     "e2ab0134-4ac9-40a9-bdb6-4c85163d1109"
+    ]
+   }
+  },
+  {
+   "id": "eus_for_eng:pod-1:SC09-S016",
+   "scene": 9,
+   "sentence": 16,
+   "speaker": "Diner 1",
+   "target_text": "Bi kafe besterik ez, mesedez. Kofeinik gabeko bat niretzat.",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice en-GB-SoniaNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "16f60be2-0f93-4a96-8974-27cd80e87d89",
+     "201fd3b3-942b-406c-9a19-c718297d32ae"
+    ],
+    "sentence_known_audio_ids": [
+     "a173f93a-12de-4b61-a798-62489af21695",
+     "ddd1ec05-4814-4fab-a25d-4c6dc6d5a4f5"
+    ],
+    "takeg_audio_ids": [
+     "6486856b-5f7e-4fa7-a70c-a4d5995fea0f",
+     null
+    ]
+   }
+  },
+  {
+   "id": "eus_for_eng:pod-1:SC09-S017",
+   "scene": 9,
+   "sentence": 17,
+   "speaker": "Diner 2",
+   "target_text": "Eta kontua, prest zaudenean. Bereiz ordaindu ahal dugu?",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice en-GB-LibbyNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "a9b34396-25cc-4f2c-b5f3-e85b74af7a9e",
+     "aee40676-b438-463a-8110-ad9960c323d7"
+    ],
+    "sentence_known_audio_ids": [
+     "e080cafb-b5d1-4027-88bb-4ea649986f98",
+     "0e0dd69d-21a3-40db-9f1b-df03a8c8326d"
+    ],
+    "takeg_audio_ids": [
+     "465c0301-8d23-4433-92e3-597c5fb1eaf3",
+     null
+    ]
+   }
+  },
+  {
+   "id": "eus_for_eng:pod-1:SC09-S018",
+   "scene": 9,
+   "sentence": 18,
+   "speaker": "Narrator",
+   "target_text": "Zazpi. Bederatzi. Hamaika. Laranja. More.",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "890da321-7b48-4b61-8ed8-8f5f94fc670e",
+     "d939293d-aa99-4885-8f0b-c2d07e551c86",
+     "a51f99d0-ac04-4828-adc4-0452c18485e9",
+     "e3e81b51-85eb-4b3b-b163-986ade2f4290",
+     "1974913e-eb5f-4470-be30-6fd9e1832da3"
+    ],
+    "sentence_known_audio_ids": [
+     "e3ba0d52-4797-4c02-94e1-e68d2562bcdd",
+     "d2a6f3a2-e0b6-4771-aabf-f8e4ec67d6f8",
+     "45851d80-301d-453a-850f-e51e6fa4bdf5",
+     "50b47cb4-77f6-4240-b790-479b046555d4",
+     "7032f9cc-e62a-4112-ad60-0503836cbde9"
+    ],
+    "takeg_audio_ids": [
+     "6d0f2356-8201-4f2e-9c2d-59a520ce4a63"
+    ]
+   }
+  },
+  {
+   "id": "eus_for_eng:pod-1:SC10-S001",
+   "scene": 10,
+   "sentence": 1,
+   "speaker": "Customer",
+   "target_text": "Barkatu. Ba al duzue analgesikoak?",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice en-GB-SoniaNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "b6c1f3a4-4953-49f5-a25d-c3ff70559657",
+     "5f7f26e4-2a4c-4dae-a327-bb58442c4544"
+    ],
+    "sentence_known_audio_ids": [
+     "f7539255-70d6-4eb4-a44f-66e0a39ff7c7",
+     "6aece7ab-d656-46c8-a0fb-f5ba1100f337"
+    ],
+    "takeg_audio_ids": [
+     "7e4c8f44-fd6f-440d-b2d1-da6b8a55ea81"
+    ]
+   }
+  },
+  {
+   "id": "eus_for_eng:pod-1:SC10-S003",
+   "scene": 10,
+   "sentence": 3,
+   "speaker": "Customer",
+   "target_text": "Eskerrik asko. Eta ba al duzue haurrentzako analgesikoak?",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice en-GB-SoniaNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "5490aabd-e6d8-4538-9501-c3be261456f2",
+     "cc447e51-2720-4b3d-986a-00ec2e5b2769"
+    ],
+    "sentence_known_audio_ids": [
+     "57340be7-503f-4bcb-ad1d-39871d5e6a3e",
+     "2459fff7-82f2-4baa-9509-6342b15a3fe2"
+    ],
+    "takeg_audio_ids": [
+     "3b0f4782-60aa-4722-b055-821200d3f4c7"
+    ]
+   }
+  },
+  {
+   "id": "eus_for_eng:pod-1:SC10-S007",
+   "scene": 10,
+   "sentence": 7,
+   "speaker": "Customer",
+   "target_text": "Eskerrik asko, oso lagungarria izan zara. Oso eskertuta nago.",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice en-GB-SoniaNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "8be63da3-e8cd-4c7c-b368-5da92ab5bd65",
+     "2141a7a9-a82a-46a2-8e90-7cb16b20c148"
+    ],
+    "sentence_known_audio_ids": [
+     "3b1712ab-73ea-4e4e-9d4d-b34f569b04ae",
+     "ba798cb0-d8a7-4997-a5da-01a3cb8c2ee6"
+    ],
+    "takeg_audio_ids": [
+     "34c574d5-f79c-4d93-bdfb-38bbafdffbb7",
+     null
+    ]
+   }
+  },
+  {
+   "id": "eus_for_eng:pod-1:SC10-S008",
+   "scene": 10,
+   "sentence": 8,
+   "speaker": "Assistant",
+   "target_text": "Ez da axola. Oporretan zaude hemen? Oso euskera ona hitz egiten duzu.",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice en-GB-LibbyNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "6d4c5d87-f652-449c-b02d-60f60365a6c6",
+     "61ed5c7b-9617-43c5-b4c6-b641e34647d9",
+     "62fefda5-89f7-4fce-b667-fc57e1653e98"
+    ],
+    "sentence_known_audio_ids": [
+     "61b22b61-e7c1-42aa-8c5d-68d67d2029ac",
+     "51bc0ab3-0a37-4f4e-9cfa-2b669b43e604",
+     "289eeff3-6414-4372-ab24-665ba507fcb5"
+    ],
+    "takeg_audio_ids": [
+     "b61c6d2c-b501-4314-b92b-72d51bcdddd5"
+    ]
+   }
+  },
+  {
+   "id": "eus_for_eng:pod-1:SC10-S009",
+   "scene": 10,
+   "sentence": 9,
+   "speaker": "Customer",
+   "target_text": "Oso eskuzabala zara! Bai, oporretan nago, eta gehiago praktikatu behar dut euskera hobeto hitz egiteko. Eskerrik asko, eta agur.",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice en-GB-SoniaNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "e1bedf39-561d-45fa-b8d6-dae15f6eeb91",
+     "a7369c00-6d06-4da4-9ec2-776d11cb2b73",
+     "583f2c40-9341-4ea9-b5f9-94d84b2dd356"
+    ],
+    "sentence_known_audio_ids": [
+     "74f2a323-ef8a-4abb-a20a-256810e0276e",
+     "4d4556b3-4d55-49d0-8903-f1c103bddfc4",
+     "da590998-bc88-4603-b533-183db16baf82"
+    ],
+    "takeg_audio_ids": [
+     "a43530f9-81e5-46da-b6b4-18570fa5ff72",
+     "3f141020-7968-4420-ae9b-bea7ce74db64"
+    ]
+   }
+  },
+  {
+   "id": "eus_for_eng:pod-1:SC10-S010",
+   "scene": 10,
+   "sentence": 10,
+   "speaker": "Narrator",
+   "target_text": "Hamabi. Hamahiru. Hamalau. Arrosa. Grisa.",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "cd7c29c1-3b8c-40fd-83d7-daba82019d89",
+     "1ea24e78-bc56-4a21-93e2-cb02f00575f2",
+     "37f000c9-dc6f-4b81-a5df-8e8b637af349",
+     "a2440c47-2f42-4acc-b773-e99c6b533da3",
+     "8e29c714-b7d7-4f8f-9288-fbf9765d60ff"
+    ],
+    "sentence_known_audio_ids": [
+     "af573930-122d-42e2-a932-70ee957ab58a",
+     "a2659b8e-1986-446f-97a0-579e8dac461b",
+     "52147e3a-164a-4d57-8e93-e02d0a17c937",
+     "0eeb7be9-c57d-4f78-9d1c-c244aa986cc5",
+     "fb8ffe1d-591f-4929-b35c-e50cbd33c991"
+    ],
+    "takeg_audio_ids": [
+     "401c2c95-cae2-4174-896e-343f3e014678"
+    ]
+   }
+  },
+  {
+   "id": "eus_for_eng:pod-1:SC11-S001",
+   "scene": 11,
+   "sentence": 1,
+   "speaker": "Guest",
+   "target_text": "Arratsalde on. Erreserbak Jones izenean daukat.",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice leo"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "6ee5be58-a017-42d8-83cd-797b42d92daa",
+     "b08b9c73-913d-492f-b6a2-0aeda0da2fe0"
+    ],
+    "sentence_known_audio_ids": [
+     "4cfada41-de53-45b3-98cb-03bcb7c3e85f",
+     "abe11cb4-babf-4c5e-aa74-978689ae579c"
+    ],
+    "takeg_audio_ids": [
+     "349b8eea-9bc2-45d8-ad39-c0d26d60e7f8"
+    ]
+   }
+  },
+  {
+   "id": "eus_for_eng:pod-1:SC11-S002",
+   "scene": 11,
+   "sentence": 2,
+   "speaker": "Receptionist",
+   "target_text": "Ongi etorri. Bai, gela bikoitz bat daukazu hiru gauetarako. Nortasun agiria ikus nezake, mesedez?",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice en-GB-SoniaNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "21723007-128c-4c26-8b8a-c7e3201aed50",
+     "889b33ec-30af-420e-bd3a-64fbad83ff8f",
+     "7e6dbf38-fd47-4e7f-bcb0-913cd520aa17"
+    ],
+    "sentence_known_audio_ids": [
+     "e6da3340-abf8-42f2-b38e-63c9f86c7b57",
+     "c67d9266-50c4-42ef-84b2-5e3d40a2ad9b",
+     "22d68663-0f0b-4eab-9d3b-e837a0d3a729"
+    ],
+    "takeg_audio_ids": [
+     "9bf4ce2a-b36a-4b7b-997e-14d02e9f5d9a",
+     "9a19529e-b9ce-4bab-98a4-1b7b8294224e"
+    ]
+   }
+  },
+  {
+   "id": "eus_for_eng:pod-1:SC11-S003",
+   "scene": 11,
+   "sentence": 3,
+   "speaker": "Guest",
+   "target_text": "Noski. Hemen dut nire pasaportea.",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "bade9adf-2ed6-4ee2-8b71-fa962730b02b",
+     "739f8336-7c44-4899-9206-13a2c1c0f8cb"
+    ],
+    "sentence_known_audio_ids": [
+     "e930e0b7-4fbe-4d76-9388-61b17f218655",
+     "cf042bd3-7a1c-4b6b-9a1d-2eb5aa526b84"
+    ],
+    "takeg_audio_ids": [
+     "74596e3b-5478-4f36-8e96-ce4305d7941c"
+    ]
+   }
+  },
+  {
+   "id": "eus_for_eng:pod-1:SC11-S004",
+   "scene": 11,
+   "sentence": 4,
+   "speaker": "Receptionist",
+   "target_text": "Ondo da. Gela hirugarren pisuan dago, zazpiehun eta bederatzigarren gela.",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice en-GB-SoniaNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "f6b1ac97-d2b5-4c45-8fed-d348bf193e5e",
+     "c90c3906-1dd2-4d44-8ea6-c6d26cee1505"
+    ],
+    "sentence_known_audio_ids": [
+     "b5dcc53f-82d1-4c4e-9635-3a80b5f96e29",
+     "a08d1989-9130-4336-a391-362abfff87af"
+    ],
+    "takeg_audio_ids": [
+     "d9204ec5-6dff-4cb2-9c56-79c294e13e48"
+    ]
+   }
+  },
+  {
+   "id": "eus_for_eng:pod-1:SC11-S008",
+   "scene": 11,
+   "sentence": 8,
+   "speaker": "Receptionist",
+   "target_text": "Zazpi eta erditik hamarrak arte. Fruta eta zerealak ditugu, edo gosari beroa.",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice en-GB-SoniaNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "c09c42bb-5aaf-4a59-9366-9e0db2f553ff",
+     "6b7cbe16-3674-4979-aa19-7aa3f12c1091"
+    ],
+    "sentence_known_audio_ids": [
+     "982abbd1-c85a-4e0f-aef9-e5b03e731e01",
+     "9f9602d8-663c-47b1-bd56-009239222f60"
+    ],
+    "takeg_audio_ids": [
+     "1c23240e-7a89-48ca-8d37-da67e1df842d",
+     "b4aa8a17-35d8-444c-a37b-863ad01c8f3d"
+    ]
+   }
+  },
+  {
+   "id": "eus_for_eng:pod-1:SC11-S009",
+   "scene": 11,
+   "sentence": 9,
+   "speaker": "Guest",
+   "target_text": "Zoragarria. Posible al da berandu irtetea?",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice leo"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "431e2a39-887e-4852-be34-5effc511cd05",
+     "c311c7c8-b4e0-4e7c-b2e0-05e43d01c616"
+    ],
+    "sentence_known_audio_ids": [
+     "f1b418f9-4b69-40b8-8ada-e5b88c76e771",
+     "1b570f11-f925-469c-8a2d-5f0f3a85c990"
+    ],
+    "takeg_audio_ids": [
+     "8490200d-1d3c-43c2-bc19-3d72c15ab2c3"
+    ]
+   }
+  },
+  {
+   "id": "eus_for_eng:pod-1:SC11-S012",
+   "scene": 11,
+   "sentence": 12,
+   "speaker": "Receptionist",
+   "target_text": "Zure gelako ongietorri-txartelean dago. Egonaldi ona izan.",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "61d6b40f-e682-4e74-9a91-530db51a14e0",
+     "285088fd-b30d-4f41-954f-bfc9e31ba4e5"
+    ],
+    "sentence_known_audio_ids": [
+     "7ecdfe65-4378-4e58-bca3-f6e43e26013c",
+     "24328fe9-0058-4b13-a553-0119fc6d0038"
+    ],
+    "takeg_audio_ids": [
+     "9db65079-6eff-4296-ba21-be5ce54141c8"
+    ]
+   }
+  },
+  {
+   "id": "eus_for_eng:pod-1:SC11-S013",
+   "scene": 11,
+   "sentence": 13,
+   "speaker": "Narrator",
+   "target_text": "Hamasei. Hamazazpi. Hemezortzi. Astelehena. Asteartea.",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "261d245b-7db7-446c-bc8e-38614f0a4ced",
+     "14c775bc-b650-4fda-b6fd-bb35d23383e9",
+     "57ca0c20-05ce-4412-8dd5-90d666a87710",
+     "072a28bb-373a-49d5-a2ab-41528e073fb4",
+     "d16a96b7-a3c4-44d9-8b8e-441c60ba17e3"
+    ],
+    "sentence_known_audio_ids": [
+     "9148dac3-2493-45ff-b812-74a1b62324fe",
+     "5f3cf941-6f02-4ae7-a371-02a779ca180b",
+     "40503f95-05d6-4cc9-b9db-2b9f750fb22b",
+     "fc29f31a-3c27-4a6c-b7fb-7ec2bec7b148",
+     "1094c0fc-791f-4c6e-9f04-a64c30e02b1a"
+    ],
+    "takeg_audio_ids": [
+     "361820e0-3fb3-4abc-8e08-a88431133a94"
+    ]
+   }
+  },
+  {
+   "id": "eus_for_eng:pod-1:SC12-S001",
+   "scene": 12,
+   "sentence": 1,
+   "speaker": "Customer",
+   "target_text": "Egun on. Ez nago oso ondo — zerbait gomendatu al didazu?",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice en-GB-SoniaNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "cb0a36b2-e99b-4a15-b3f6-6050dcc35769",
+     "51bf6062-75fc-487e-9525-c06f2f508066"
+    ],
+    "sentence_known_audio_ids": [
+     "0a4559c7-fcf8-41cf-9a10-1ed525305070",
+     "d2a47cfb-08d1-444f-af8b-b74eb982c79c"
+    ],
+    "takeg_audio_ids": [
+     "996707a1-dd5b-4502-92be-b83183703639"
+    ]
+   }
+  },
+  {
+   "id": "eus_for_eng:pod-1:SC12-S002",
+   "scene": 12,
+   "sentence": 2,
+   "speaker": "Pharmacist",
+   "target_text": "Noski. Zer sintoma dituzu?",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "e88c4470-b123-490b-a3ef-35a2c4786e64",
+     "50c6166c-395e-4db1-92bc-f8fcfc79fca5"
+    ],
+    "sentence_known_audio_ids": [
+     "cd48f5e7-4483-4d7c-a311-1646f815d45b",
+     "dc6abde3-bdc4-4a9a-a0d3-668c7925d698"
+    ],
+    "takeg_audio_ids": [
+     "a11ef22f-0fc8-48dc-98a3-af0a79aed074",
+     null
+    ]
+   }
+  },
+  {
+   "id": "eus_for_eng:pod-1:SC12-S010",
+   "scene": 12,
+   "sentence": 10,
+   "speaker": "Narrator",
+   "target_text": "19. 20. 21. Asteazkena. Osteguna.",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "75e56e0d-5b9d-4516-b7e6-c7ded8afb5fd",
+     "87114492-1ff3-467b-95aa-b38fe6417cda",
+     "6eead1f4-b6ef-4f2b-aa5c-55634b950700",
+     "561e1148-a142-427f-810d-cebc336cd0a3",
+     "bb2ea458-e95d-41b6-add2-b215af8002ef"
+    ],
+    "sentence_known_audio_ids": [
+     "60c072c7-826c-4307-bf73-b0ae2658aac4",
+     "e8fd39bc-4b0a-41cc-a798-bbab61239aa7",
+     "2ba8ee6f-7418-4d9b-bee0-8a823b6d163e",
+     "99534d5c-6624-4602-8fb6-4cbb0f8526c4",
+     "7216cff0-548a-4183-9772-091a15596845"
+    ],
+    "takeg_audio_ids": [
+     "90b52492-1c6c-4e27-bbbb-0c29f504d648"
+    ]
+   }
+  },
+  {
+   "id": "eus_for_eng:pod-1:SC13-S002",
+   "scene": 13,
+   "sentence": 2,
+   "speaker": "Local",
+   "target_text": "Bai, hamar minutuko ibilaldira dago gutxi gorabehera. Zuzen jarraitu errepide honetatik.",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice leo"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "b895e4a8-c9a3-42ab-94a4-f44a549ce666",
+     "09687572-d3b7-43c4-89a0-9f694d1d8485"
+    ],
+    "sentence_known_audio_ids": [
+     "0e96ac48-11e7-4d2c-90b0-82ac977b8f9c",
+     "b1c9d015-14bb-4445-9128-0ac1d0afb46b"
+    ],
+    "takeg_audio_ids": [
+     "ae46ad73-b918-434b-a50a-e31fcc7926b9",
+     "f99a6cd6-c077-4507-a89e-5872f7a5ac2a"
+    ]
+   }
+  },
+  {
+   "id": "eus_for_eng:pod-1:SC13-S008",
+   "scene": 13,
+   "sentence": 8,
+   "speaker": "Tourist",
+   "target_text": "Zoragarria. Eta badago kutxazain automatikorik inguruan?",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice en-GB-RyanNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "e33eaddd-1a2e-4cce-a89c-8abf32fa244d",
+     "3ae7c527-11d1-4c49-b753-42b723708904"
+    ],
+    "sentence_known_audio_ids": [
+     "03ef9f56-fdff-4d3a-83b2-8bfac87b21ab",
+     "6bafc9c4-12ce-4524-86d8-dd4694a9105c"
+    ],
+    "takeg_audio_ids": [
+     "c730fe61-69c0-4686-9301-e39574ed1997"
+    ]
+   }
+  },
+  {
+   "id": "eus_for_eng:pod-1:SC13-S010",
+   "scene": 13,
+   "sentence": 10,
+   "speaker": "Tourist",
+   "target_text": "Eskerrik asko. Oso lagungarria izan zara.",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice en-GB-RyanNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "5490aabd-e6d8-4538-9501-c3be261456f2",
+     "36a5743a-e337-4af8-9aff-01d6804d1cf6"
+    ],
+    "sentence_known_audio_ids": [
+     "4a7180e2-fc34-40d0-9b20-027f51a2c36c",
+     "f428c990-48d8-4b9d-9d6f-797c817d456c"
+    ],
+    "takeg_audio_ids": [
+     "8f95c666-6d48-4951-a74e-5524380a6e60"
+    ]
+   }
+  },
+  {
+   "id": "eus_for_eng:pod-1:SC14-S001",
+   "scene": 14,
+   "sentence": 1,
+   "speaker": "Passenger",
+   "target_text": "Kaixo. Tren geltokira eraman nazakezu, mesedez?",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: off-cast voice en-GB-SoniaNeural",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "d0403553-da92-47ac-a4b8-d0f0513754d8",
+     "ce357a0a-39bc-4b5f-a586-0c76f76428d2"
+    ],
+    "sentence_known_audio_ids": [
+     "d5326178-7d7a-41ac-98f4-1692b401da9a",
+     "7efca7aa-35dd-4bea-adb7-ccc8fce89b9f"
+    ],
+    "takeg_audio_ids": [
+     "c26b9c20-ee3e-4fb5-9ce3-14a814f3f5e9"
+    ]
+   }
+  },
+  {
+   "id": "eus_for_eng:pod-1:SC14-S002",
+   "scene": 14,
+   "sentence": 2,
+   "speaker": "Driver",
+   "target_text": "Bai, jakina. Denbora pixka bat har dezake, une honetan trafiko asko dago.",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice leo"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "f67f9e80-32b2-4b99-81c8-e8f32249033a",
+     "001a70ab-d5cb-4a63-b5c2-b5684e48e7e2"
+    ],
+    "sentence_known_audio_ids": [
+     "cd48f5e7-4483-4d7c-a311-1646f815d45b",
+     "e1eeded1-157b-4702-bdae-302ddbb52a8a"
+    ],
+    "takeg_audio_ids": [
+     "9adc26be-fb01-4610-8045-dfcd555eeb09",
+     "0437c1f0-1ebb-4731-a132-5d8cd1d9607a"
+    ]
+   }
+  },
+  {
+   "id": "eus_for_eng:pod-1:SC14-S007",
+   "scene": 14,
+   "sentence": 7,
+   "speaker": "Driver",
+   "target_text": "Hemen gaude. Hamabi libra eta berrogeita hamar zentimo dira.",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "ca6727d0-8ddf-49b6-83d1-ac8e9e9322d5",
+     "654dfce4-1a43-47f7-848f-948ee8f25c17"
+    ],
+    "sentence_known_audio_ids": [
+     "95139e98-04df-4b2e-8bcb-cd05bcab41a5",
+     "e4d2314c-e1da-4d58-ab83-c18d76bd0ab4"
+    ],
+    "takeg_audio_ids": [
+     "3d9f5e5c-3b0f-47e8-aa66-1d819398cb82"
+    ]
+   }
+  },
+  {
+   "id": "eus_for_eng:pod-1:SC14-S009",
+   "scene": 14,
+   "sentence": 9,
+   "speaker": "Driver",
+   "target_text": "Bai, jakina. Makina hemen dago.",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice leo"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "f67f9e80-32b2-4b99-81c8-e8f32249033a",
+     "c46eb7b3-a697-4ab4-b529-70fa9b44180a"
+    ],
+    "sentence_known_audio_ids": [
+     "cd48f5e7-4483-4d7c-a311-1646f815d45b",
+     "37866a91-af56-4821-8041-023ea0eb6e77"
+    ],
+    "takeg_audio_ids": [
+     "9adc26be-fb01-4610-8045-dfcd555eeb09",
+     null
+    ]
+   }
+  },
+  {
+   "id": "eus_for_eng:pod-1:SC14-S010",
+   "scene": 14,
+   "sentence": 10,
+   "speaker": "Narrator",
+   "target_text": "100. 200. 1000. Igandea. Hamabiak.",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "e0851cfd-16a5-48c4-b53c-c82f0d525706",
+     "d902043b-2a6f-42db-9e55-f822244e20ca",
+     "8527cb01-4e7b-4501-897d-3303e8a79b02",
+     "6823ae6b-ed27-4865-8529-2b491d39decb",
+     "8f692fa7-6797-4c85-b14e-dedb03ca310d"
+    ],
+    "sentence_known_audio_ids": [
+     "5567736a-ca4d-49de-959e-ff38f52e8342",
+     "cf9e689a-a42d-4e59-b2e3-6a0d6f36b007",
+     "d005fc6e-01af-43f0-b027-e6740dc6d6d3",
+     "b7edc2fc-78dd-42ab-a47c-819b673636bd",
+     "e5d6fc77-f7d6-4cc8-b71c-eab846205cbd"
+    ],
+    "takeg_audio_ids": [
+     "ba42eeaf-9752-4fc7-acb6-eacd65f10f2c"
+    ]
+   }
+  },
+  {
+   "id": "eus_for_eng:pod-1:SC15-S001",
+   "scene": 15,
+   "sentence": 1,
+   "speaker": "Learner",
+   "target_text": "Zenbat da hori?",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "2191d573-5640-4f20-9beb-de108c75719c",
+     "f4d9fc07-ed6a-4966-bb29-a38a18c6f9fd"
+    ],
+    "sentence_known_audio_ids": [
+     "77098f5a-fcce-463f-9059-4306ada9fcdd",
+     "b81c2f43-c2d1-4e94-8a7f-6dbe147c7adb"
+    ],
+    "takeg_audio_ids": [
+     "2f34c1e0-fc36-48ab-9904-81668622efdf",
+     "7f1d791d-4ddb-4a49-af3f-eac4c0223090"
+    ]
+   }
+  },
+  {
+   "id": "eus_for_eng:pod-1:SC15-S002",
+   "scene": 15,
+   "sentence": 2,
+   "speaker": "Learner",
+   "target_text": "Esan diezadakezu zenbat den hori?",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "4aa58b5d-d6b6-424c-8aee-e402af1d291e",
+     "f48c330d-f379-44cd-b90d-2f9ffa31732b",
+     "ba2f1aab-5e95-4a30-b0e3-2a09b29c86d5"
+    ],
+    "sentence_known_audio_ids": [
+     "1c3f0f5c-54eb-465e-8ba1-e8d21cea4996",
+     "1356f28a-954a-49c0-9cbe-b560a9ed97ed",
+     "77cffb05-417a-40a0-9f1c-2f3542bdca1c"
+    ],
+    "takeg_audio_ids": [
+     "e2309408-0bd3-4fee-97e4-84d9d16346b7",
+     null,
+     null
+    ]
+   }
+  },
+  {
+   "id": "eus_for_eng:pod-1:SC15-S003",
+   "scene": 15,
+   "sentence": 3,
+   "speaker": "Learner",
+   "target_text": "Zenbat balio du taxi batek hirira joateko?",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "147ea472-002b-4d29-a02a-46c75c08424d",
+     "9e069b47-08a2-4ba3-b052-491244579c51",
+     "c97caf23-d24d-4615-ade4-05119be0a07b"
+    ],
+    "sentence_known_audio_ids": [
+     "d21a3f45-d109-40d0-a8f5-e1f6ad65ee38",
+     "5420cbb7-152f-44eb-825a-b0420e4ec4df",
+     "170a906c-2307-4518-96cd-9ffa01019f6d"
+    ],
+    "takeg_audio_ids": [
+     "c288becd-6095-4195-8547-0aae06a338bb",
+     "f77f54d0-6cb2-417a-935e-8f904ee3295a",
+     "51af59fb-fb0c-45ea-8429-f78e09df63f3"
+    ]
+   }
+  },
+  {
+   "id": "eus_for_eng:pod-1:SC15-S004",
+   "scene": 15,
+   "sentence": 4,
+   "speaker": "Learner",
+   "target_text": "Zenbat balio du autobus batek hirira joateko?",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "eda37b35-dba9-44bb-bcd2-0ab22fb50326"
+    ]
+   }
+  },
+  {
+   "id": "eus_for_eng:pod-1:SC15-S005",
+   "scene": 15,
+   "sentence": 5,
+   "speaker": "Learner",
+   "target_text": "Non har dezakegu autobusa?",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "5af87260-2c1b-4f10-be1c-561511826869",
+     "71260079-354e-4c79-a726-c6aa8315e1cf",
+     "7e5c07ca-c5eb-486b-b3f0-ff9612e159a1",
+     "a5d17ee2-1673-4757-839d-65fd68172b2d"
+    ],
+    "sentence_known_audio_ids": [
+     "63e19dec-7af7-462a-bc23-debd727d1caa",
+     "9dc95be6-4b3e-44ff-a41b-0214fc07897e",
+     "367053ae-4649-44b8-ba18-ca43dfc0d1cb",
+     "85d1822d-bac4-4358-adc8-0d1a7ae2bef9"
+    ],
+    "takeg_audio_ids": [
+     "39036f6e-04ab-4c4d-afca-8261f89288d7",
+     "0b50a47e-5fa9-4e02-94c8-0dd38fd11724",
+     "6b6c34ed-f470-4289-acf6-ff9c5787424d",
+     "cfcd48eb-be0e-49ab-9936-c986001791ad"
+    ]
+   }
+  },
+  {
+   "id": "eus_for_eng:pod-1:SC15-S006",
+   "scene": 15,
+   "sentence": 6,
+   "speaker": "Learner",
+   "target_text": "Non har dezakegu taxia?",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "af15e720-b29a-4c45-9f93-bb5d852bfe59",
+     "77e9c799-350c-43eb-8d96-5ae1f4a5d954",
+     "df2a8b6b-86ab-498d-b936-c619af5b9ecb"
+    ],
+    "sentence_known_audio_ids": [
+     "61a3e589-05b5-43f9-9e68-eda08b0c8a1f",
+     "1d087d20-bfaa-41c8-926c-aef46c14228f",
+     "03b3695b-e0eb-4617-b5f5-120015ee7c01"
+    ],
+    "takeg_audio_ids": [
+     "103b9b0b-f08f-4263-8b0d-8e7a818b7555",
+     null,
+     "0280a40e-4f9f-4f99-ac04-5f980e8db117"
+    ]
+   }
+  },
+  {
+   "id": "eus_for_eng:pod-1:SC15-S007",
+   "scene": 15,
+   "sentence": 7,
+   "speaker": "Learner",
+   "target_text": "Lau txartel joanekoa hirira, mesedez.",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "cbfe9e4a-2217-495d-bdd5-06f10194a21d",
+     "ddf44874-28d0-418a-bf9c-2c94beca4a61"
+    ],
+    "sentence_known_audio_ids": [
+     "e5fc180a-7e9c-4b04-9466-c4bcf0da97c0",
+     "8004d1a1-6e90-48e8-8a04-55eebaa283e1"
+    ],
+    "takeg_audio_ids": [
+     "f752f4b7-e7dd-4bb6-a5f3-227c7c38c9f8",
+     "ceded848-cd30-4660-9828-73038f30e9f7"
+    ]
+   }
+  },
+  {
+   "id": "eus_for_eng:pod-1:SC15-S008",
+   "scene": 15,
+   "sentence": 8,
+   "speaker": "Learner",
+   "target_text": "Bi txartel joan-etorrikoa hirira, mesedez.",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "8e50fad7-10b1-4805-ba11-8c339f98244f",
+     "3af5de07-348e-43fa-bad9-b7d61f534e79",
+     "22f4fc58-7eaf-426d-9337-d924c81bb7a1"
+    ],
+    "sentence_known_audio_ids": [
+     "b5507c9c-da4f-41ca-916f-dcdee0d4bd21",
+     "c56dc520-b1fd-4f19-9813-a33937ef79ab",
+     "e6e0f002-acc3-44d2-bd67-3e30f4ada19e"
+    ],
+    "takeg_audio_ids": [
+     "5b1ddda1-b98d-4664-9439-1fa4720f3052",
+     "0bff72b4-1cac-4424-88ac-bb91ead6eb0d"
+    ]
+   }
+  },
+  {
+   "id": "eus_for_eng:pod-1:SC15-S009",
+   "scene": 15,
+   "sentence": 9,
+   "speaker": "Learner",
+   "target_text": "Nahiago dut zure hizkuntza hitz egiten saiatu, uste dut edukazkoa dela.",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "0b82013d-4a8c-469e-ad5a-e6c05b8ec4f1",
+     "42b805f4-89eb-4b27-a418-f96009b808e5",
+     "55ecc597-fea1-4189-a82e-6f95b222b7a3",
+     "fa0cc6c7-d767-4ecf-90e6-4f4646b331b0"
+    ],
+    "sentence_known_audio_ids": [
+     "45a3e8bb-079a-4b58-890c-7d99bd3b61d5",
+     "fb41980b-9de3-4773-9b05-1e85722f5a72",
+     "3809ebbb-d231-43fa-9a56-23f4b241a819",
+     "e85bfacc-e75e-4f67-a673-b90182729736"
+    ],
+    "takeg_audio_ids": [
+     "c91a90a5-95ee-4b16-ac0c-7431a37c255d",
+     "e0f299e3-538c-4716-b5de-17fb99d92233",
+     "f190177a-144f-4c79-9a54-d7c2c891bf6f",
+     "2477aac3-eee7-4fab-9a08-8685f6ddcc7b"
+    ]
+   }
+  },
+  {
+   "id": "eus_for_eng:pod-1:SC15-S010",
+   "scene": 15,
+   "sentence": 10,
+   "speaker": "Learner",
+   "target_text": "Sentitzen dut ezin dudala oso azkar hitz egin.",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "961ddea9-8dcb-40b0-8a7f-a7d0c4734034",
+     "02b3fde2-07bd-43ac-ac3b-7565f0e48025",
+     "69011c71-c89c-4398-93aa-76327bea0ba2"
+    ],
+    "sentence_known_audio_ids": [
+     "ed70ebda-e356-4cb3-9b42-1a83422ca47c",
+     "7a43e824-c36c-401b-a63b-729fa1ed5a38",
+     "4154227b-18f5-4151-beb8-da19c03a9289"
+    ],
+    "takeg_audio_ids": [
+     "4860aa9b-8e5b-49b2-8f45-1fc2669c2776",
+     "93e32da9-644b-4eb5-840c-120b3a903d4f",
+     "9f61130f-65ed-4e52-8e5c-06085bc459fb"
+    ]
+   }
+  },
+  {
+   "id": "eus_for_eng:pod-1:SC15-S011",
+   "scene": 15,
+   "sentence": 11,
+   "speaker": "Narrator",
+   "target_text": "100.000. 60. 70. Ordubata. Hamaikak.",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "c15a3bd5-b1e5-40e9-a624-0d9994d10173",
+     "8834dcde-4783-4a62-9451-651691ccb8db",
+     "506d2c3d-1f94-42c2-aa99-89da8fbff4de"
+    ],
+    "sentence_known_audio_ids": [
+     "e46a67d6-c002-4257-bc94-31efdad50de3",
+     "b44d8bd4-b85b-41df-891f-73368b49a7a5",
+     "d5168d5d-09dd-4f1c-9232-d18d973693a4"
+    ],
+    "takeg_audio_ids": [
+     "33c8ce78-2b82-40b5-a123-5e88692e8491",
+     "39d0eea4-9592-4dfa-9ce8-0136d0cd19fb"
+    ]
+   }
+  }
+ ]
+}

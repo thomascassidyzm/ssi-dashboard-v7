@@ -1,0 +1,3136 @@
+{
+ "pod": "fra_ca_for_eng:pod-1",
+ "course": "fra_ca_for_eng",
+ "mode": "applied",
+ "generated_at": "2026-08-24T11:26:18.488Z",
+ "rows_total": 231,
+ "rows_repaired": 111,
+ "cast": {
+  "target": [
+   "fr-CA-SylvieNeural",
+   "fr-CA-JeanNeural"
+  ],
+  "known": [
+   "bedd6226",
+   "gfzdpspr5fdp"
+  ]
+ },
+ "by_scene": {
+  "1": 2,
+  "2": 1,
+  "3": 2,
+  "4": 2,
+  "5": 2,
+  "6": 13,
+  "7": 12,
+  "8": 10,
+  "9": 16,
+  "10": 9,
+  "11": 10,
+  "12": 8,
+  "13": 6,
+  "14": 7,
+  "15": 11
+ },
+ "skipped_rows_needing_rerender": [],
+ "rows": [
+  {
+   "id": "fra_ca_for_eng:pod-1:SC01-S002",
+   "scene": 1,
+   "sentence": 2,
+   "speaker": "Sarah",
+   "target_text": "Bonjour. Comment tu vas?",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "55423767-e58b-40b4-8081-9b7f13fd0ec0",
+     "fd40a60f-a2ee-4929-983f-4b73654fbd05"
+    ],
+    "sentence_known_audio_ids": [
+     "cebfae2a-2678-4bdf-940b-ce72de16d7ff",
+     "ffce4711-4382-46f7-8977-a6482d511a2f"
+    ],
+    "takeg_audio_ids": [
+     "019f318f-44ff-4968-ab38-562ffd795e6c"
+    ]
+   }
+  },
+  {
+   "id": "fra_ca_for_eng:pod-1:SC01-S003",
+   "scene": 1,
+   "sentence": 3,
+   "speaker": "Neighbour",
+   "target_text": "Je vais très bien, merci. Tu t'en vas travailler?",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice leo"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "d8a41f25-e2bd-48e4-8d2f-47ea01388c78",
+     "85d2b274-9370-41be-8e35-d4fcef680e65"
+    ],
+    "sentence_known_audio_ids": [
+     "b591cc6b-b3a6-4904-aa19-a05fa2592a5d",
+     "4b8c0498-71ea-4102-813d-a22adb30fa21"
+    ],
+    "takeg_audio_ids": [
+     "b9a8436a-4833-4d6a-a4d2-d90fac3c6922",
+     null
+    ]
+   }
+  },
+  {
+   "id": "fra_ca_for_eng:pod-1:SC02-S002",
+   "scene": 2,
+   "sentence": 2,
+   "speaker": "Passenger",
+   "target_text": "Non, c'est libre. Allez-y, je vous en prie.",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "ed099cd4-3ef4-466a-b1bf-5e678807c155",
+     "df636a3e-7512-4186-9038-7c3329864672"
+    ],
+    "sentence_known_audio_ids": [
+     "cb473e0f-7080-484b-bd51-813e07fee0f8",
+     "5c0e93bf-51d5-415a-888a-f41147f93a9b"
+    ],
+    "takeg_audio_ids": [
+     "bb4a6b84-48ca-4863-bd30-d6de03269b84",
+     "7d3420e4-fd88-4c48-bc94-8acc383edb08"
+    ]
+   }
+  },
+  {
+   "id": "fra_ca_for_eng:pod-1:SC03-S001",
+   "scene": 3,
+   "sentence": 1,
+   "speaker": "Barista (3 pm)",
+   "target_text": "Bonjour! Qu'est-ce que je peux te servir?",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice fr-CA-ThierryNeural",
+    "sentence_known_audio_ids: off-cast voice en-GB-HollieNeural",
+    "takeg_audio_ids: off-cast voice fr-CA-ThierryNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "ff7346e4-f82e-4b49-b974-e00a62d3a988",
+     "e35642fe-e8e5-4780-9180-bfee290397ac"
+    ],
+    "sentence_known_audio_ids": [
+     "62ca2a97-fc1b-4729-94ad-959e7abdd832",
+     "c246e42b-b7da-461d-882b-a26ff2ea11bf"
+    ],
+    "takeg_audio_ids": [
+     "2d8fe0aa-b646-46a9-a4f4-361f918bc725"
+    ]
+   }
+  },
+  {
+   "id": "fra_ca_for_eng:pod-1:SC03-S003",
+   "scene": 3,
+   "sentence": 3,
+   "speaker": "Sarah",
+   "target_text": "Avez-vous du manger?",
+   "clear": [
+    "sentence_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "c704767f-817e-4590-bc47-a6134d1e4830",
+     "a6b4d501-5943-4fec-a640-be13f21ee8c8"
+    ],
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "f551a965-7bbb-4fd8-a17b-ea536006a03e"
+    ]
+   }
+  },
+  {
+   "id": "fra_ca_for_eng:pod-1:SC04-S002",
+   "scene": 4,
+   "sentence": 2,
+   "speaker": "Sarah",
+   "target_text": "Allô! Je m'excuse, mais je peux pas parler là. Faut que je rentre à la maison. On peut se parler demain?",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "ee5162ee-2ed5-4264-9140-fd6827bb40b1",
+     "a8aff4f6-e3c6-4c3a-99ce-8b00c252ecbf",
+     "1e82e39f-541c-490d-aa26-16c1bec69ce7",
+     "5b74ec90-3761-413f-8f2d-fc7d8dff8525"
+    ],
+    "sentence_known_audio_ids": [
+     "4984258c-88bb-428e-996d-29e1cdea7ed3",
+     "ed1487ae-b739-47d1-be20-a59331756737",
+     "10fab9da-45f9-4f94-95ad-37e660530ed0",
+     "e4ba5aff-325d-4af4-864d-df62a7604dd0"
+    ],
+    "takeg_audio_ids": [
+     "db86181a-6b5b-4871-879d-5f400b215f12",
+     "f6f39088-b237-4d73-b29f-42fb3db11070",
+     "045b604f-2d8e-4d75-8c07-8c002fe17690"
+    ]
+   }
+  },
+  {
+   "id": "fra_ca_for_eng:pod-1:SC04-S003",
+   "scene": 4,
+   "sentence": 3,
+   "speaker": "Friend",
+   "target_text": "Non, je suis désolé, je suis occupé demain. Mais on va se parler samedi. À tantôt!",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice leo"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "b4ccc8a7-3435-485a-a590-4f7eb5144070",
+     "44a4fb18-ef0e-49a8-bfe8-b20bb040e20f",
+     "aa24daab-667b-419d-889a-394483abdc4f"
+    ],
+    "sentence_known_audio_ids": [
+     "a8a1ec2a-4dc3-403f-a908-8bc5a656b924",
+     "73fcadb1-c16b-46ad-a189-595ad04000dd",
+     "3bb76746-f025-46d9-8a5b-c63f74300646"
+    ],
+    "takeg_audio_ids": [
+     "72e2fcf5-ff19-494a-84a5-0448cc8048fe",
+     "0b1cb013-bd99-4bbd-b95d-2d73c262a6b0",
+     null
+    ]
+   }
+  },
+  {
+   "id": "fra_ca_for_eng:pod-1:SC05-S001",
+   "scene": 5,
+   "sentence": 1,
+   "speaker": "Neighbour (10:30 pm)",
+   "target_text": "Bonsoir, Sarah. T'as eu une longue journée?",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice leo"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "c0fcbaa6-fd72-4ecc-89af-404c7ac25df5",
+     "c7d22598-ae19-4c0a-9d0c-da232eea855c"
+    ],
+    "sentence_known_audio_ids": [
+     "7e34b81f-9670-4c6b-94eb-18c98383c41c",
+     "08b54bf7-8873-4316-b14b-93cf58c6bb51"
+    ],
+    "takeg_audio_ids": [
+     "c3444487-1056-42d5-b455-09b81f31381d"
+    ]
+   }
+  },
+  {
+   "id": "fra_ca_for_eng:pod-1:SC05-S002",
+   "scene": 5,
+   "sentence": 2,
+   "speaker": "Sarah",
+   "target_text": "Oui, ben fatiguée. Chus ben fatiguée là. Bonne nuit. On se voit demain.",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "498d555d-210d-45ef-88c1-bdf4c1bef735",
+     "c9455a8c-247a-4787-a251-1bb583b165a5",
+     "11388bf6-1544-461e-a7b7-3a000ebe293c",
+     "41b7fb45-c7a4-489c-8c31-07f57ddd68a9"
+    ],
+    "sentence_known_audio_ids": [
+     "f13769c9-c5b0-4224-80cf-00095e90d592",
+     "549bcac4-9668-4617-9f70-f779a8468caf",
+     "d77a2868-4814-40b8-b4be-e61528a8b963",
+     "ba752e4e-c084-4fb4-86b6-e4c54d49fa54"
+    ],
+    "takeg_audio_ids": [
+     "385bfb36-ef82-47f6-b4ca-03bad5ab0caf",
+     "640c3245-60e3-4275-884e-6c0f65b2eecd",
+     null,
+     null
+    ]
+   }
+  },
+  {
+   "id": "fra_ca_for_eng:pod-1:SC06-S001",
+   "scene": 6,
+   "sentence": 1,
+   "speaker": "James",
+   "target_text": "Excuse-moi. Bonjour. Comment tu t'appelles?",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice fr-CA-AntoineNeural",
+    "sentence_known_audio_ids: off-cast voice leo",
+    "takeg_audio_ids: off-cast voice fr-CA-AntoineNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "bff2259e-cb94-4fed-96f6-6882b6e0b487",
+     "c85f1085-0320-4181-bd9c-12a98ea95e50",
+     "13f2d63f-c945-4e7f-883d-4e5771bc63ab"
+    ],
+    "sentence_known_audio_ids": [
+     "ad987098-e89b-4d94-9b7b-6eeebc297df9",
+     "062169bb-6bd7-4010-b3f5-d1a2b800a8e5",
+     "4797faac-99ea-4d78-86b7-4dcf9dec7ac8"
+    ],
+    "takeg_audio_ids": [
+     "595bf855-2239-4f41-a404-b2f1a9c630d6"
+    ]
+   }
+  },
+  {
+   "id": "fra_ca_for_eng:pod-1:SC06-S002",
+   "scene": 6,
+   "sentence": 2,
+   "speaker": "Anna",
+   "target_text": "Je m'appelle Anna. Et toi?",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice en-GB-SoniaNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "40c6851e-25d4-458f-8d9b-3c37f04dd15b",
+     "eb6fb4b1-28d1-4f06-9931-9b2ec94b3d28"
+    ],
+    "sentence_known_audio_ids": [
+     "6afb54c6-773a-44e4-bf43-f97e7480d58c",
+     "9353ba9d-5bec-451d-a4aa-1dea589626df"
+    ],
+    "takeg_audio_ids": [
+     "6a1d57d2-ec0a-45ed-ba0c-be99a1c93f28"
+    ]
+   }
+  },
+  {
+   "id": "fra_ca_for_eng:pod-1:SC06-S003",
+   "scene": 6,
+   "sentence": 3,
+   "speaker": "James",
+   "target_text": "Moi, c'est James. Enchanté.",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice fr-CA-AntoineNeural",
+    "sentence_known_audio_ids: off-cast voice leo",
+    "takeg_audio_ids: off-cast voice fr-CA-AntoineNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "dfa7b04d-7443-49ad-863b-044f58ad7da3",
+     "d5e4a3a8-70cc-4512-b5b0-60f0f248f130"
+    ],
+    "sentence_known_audio_ids": [
+     "58584117-72bc-483a-80db-8abc7eee287a",
+     "52f29a52-02ff-43fc-a4b3-fe79f645859b"
+    ],
+    "takeg_audio_ids": [
+     "6a8bfd54-42bb-4f9e-a008-775269f69b9d"
+    ]
+   }
+  },
+  {
+   "id": "fra_ca_for_eng:pod-1:SC06-S004",
+   "scene": 6,
+   "sentence": 4,
+   "speaker": "Anna",
+   "target_text": "Enchantée moi aussi. T'es d'où?",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice en-GB-SoniaNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "95552602-5fe1-4528-9da5-daf93cde8f7b",
+     "a6c81ab0-1992-4477-b16d-f60196bf6934"
+    ],
+    "sentence_known_audio_ids": [
+     "0cf94ee1-ff6e-4f91-bddb-23dff035bace",
+     "6e36738a-0676-465f-bb33-791ac8f43bd1"
+    ],
+    "takeg_audio_ids": [
+     "285f9345-c743-43c2-8d2d-836fd501d8d5",
+     null
+    ]
+   }
+  },
+  {
+   "id": "fra_ca_for_eng:pod-1:SC06-S005",
+   "scene": 6,
+   "sentence": 5,
+   "speaker": "James",
+   "target_text": "Je suis de Manchester, mais j'habite à Londres maintenant. Et toi?",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice fr-CA-AntoineNeural",
+    "sentence_known_audio_ids: off-cast voice leo",
+    "takeg_audio_ids: off-cast voice fr-CA-AntoineNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "8d0dfa0c-0634-4d51-a938-6602418dc8a6",
+     "6d435e6f-d0fc-4344-a43f-5384d0e70146"
+    ],
+    "sentence_known_audio_ids": [
+     "ce1c9a92-ee0c-456c-9425-a231f6d0ff50",
+     "9f76ffc7-d8fb-4593-9c68-d67880999561"
+    ],
+    "takeg_audio_ids": [
+     "13f2acdf-0c1f-47ac-91c9-69f2829d0c46",
+     null
+    ]
+   }
+  },
+  {
+   "id": "fra_ca_for_eng:pod-1:SC06-S006",
+   "scene": 6,
+   "sentence": 6,
+   "speaker": "Anna",
+   "target_text": "Je suis de France. Ça fait deux ans que je suis ici.",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice en-GB-SoniaNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "b67ce242-d36f-4fa5-a256-4e29aaae444e",
+     "7d45b21e-aa37-49b0-8539-332df8c3d5e1"
+    ],
+    "sentence_known_audio_ids": [
+     "5a63be74-7b7e-4a24-afd8-9400b1c8f33e",
+     "aa95600f-82fa-4213-8a35-b4b458a60b51"
+    ],
+    "takeg_audio_ids": [
+     "4b689072-903a-49e3-97f3-3cee7bdce8b4"
+    ]
+   }
+  },
+  {
+   "id": "fra_ca_for_eng:pod-1:SC06-S007",
+   "scene": 6,
+   "sentence": 7,
+   "speaker": "James",
+   "target_text": "C'est une belle ville. Tu fais quoi dans la vie?",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice fr-CA-AntoineNeural",
+    "sentence_known_audio_ids: off-cast voice leo",
+    "takeg_audio_ids: off-cast voice fr-CA-AntoineNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "3eecaf31-2176-40be-8314-782054f1e997",
+     "69a70421-46df-4143-8aaa-cc755139ce6f"
+    ],
+    "sentence_known_audio_ids": [
+     "4cc8288e-48da-4113-b8d0-e1e6b5243fb7",
+     "a0e7b9c1-5e35-4a83-8dfa-4611fad05d63"
+    ],
+    "takeg_audio_ids": [
+     "b7b37459-7c60-44ca-a7a3-044e83444c93"
+    ]
+   }
+  },
+  {
+   "id": "fra_ca_for_eng:pod-1:SC06-S008",
+   "scene": 6,
+   "sentence": 8,
+   "speaker": "Anna",
+   "target_text": "Je suis infirmière, à l'hôpital juste au coin. Et toi?",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice en-GB-SoniaNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "8107910b-de1a-4d4b-aff6-afd414d53a79",
+     "eb6fb4b1-28d1-4f06-9931-9b2ec94b3d28"
+    ],
+    "sentence_known_audio_ids": [
+     "bf48413d-8ead-4c53-a009-5509b995d475",
+     "9353ba9d-5bec-451d-a4aa-1dea589626df"
+    ],
+    "takeg_audio_ids": [
+     "9f1951a3-d5e3-4d43-8835-b9e459911da9",
+     null
+    ]
+   }
+  },
+  {
+   "id": "fra_ca_for_eng:pod-1:SC06-S009",
+   "scene": 6,
+   "sentence": 9,
+   "speaker": "James",
+   "target_text": "Je m'excuse, j'ai pas compris. Je suis en train d'apprendre le français québécois. Tu pourrais répéter ça plus lentement, s'il te plaît?",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice fr-CA-AntoineNeural",
+    "sentence_known_audio_ids: off-cast voice leo",
+    "takeg_audio_ids: off-cast voice fr-CA-AntoineNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "96443021-fb54-4ffe-8265-f395ad3baeb6",
+     "608b1314-03ff-4e99-93f8-0f8c8b8c5960",
+     "5d090b24-9ee4-4521-85a2-b397dc1ec663"
+    ],
+    "sentence_known_audio_ids": [
+     "74ef2587-6b23-40c7-a4b3-db6ccb5457fa",
+     "c703b063-aaa8-4658-b381-80dd3d90013e",
+     "2d4cefa2-b98a-4ec9-8b01-83c93c7926b8"
+    ],
+    "takeg_audio_ids": [
+     "980719b8-9d8d-4cc1-9c47-e5f548884a60",
+     "0b6fe5ed-0ab5-499c-b9ee-3e284e088f47",
+     "6900ce18-ccb3-4b89-8e91-cb9341963f11"
+    ]
+   }
+  },
+  {
+   "id": "fra_ca_for_eng:pod-1:SC06-S010",
+   "scene": 6,
+   "sentence": 10,
+   "speaker": "Anna",
+   "target_text": "Oui, bien sûr. Je suis infirmière. Je travaille à l'hôpital. C'est proche d'ici. Et toi, tu fais quoi?",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice en-GB-SoniaNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "01c30836-866b-4c16-a95c-abe07e63490a",
+     "f0dc65e9-cf81-4365-a5e0-d4b1c8779ce4",
+     "3a5cec7a-8d5a-43a7-b41a-0a5528819180",
+     "5b44af50-6e2d-43a0-bee3-4c6da9db6d6e",
+     "8683efed-4908-4f0a-aa6b-4f08b3fb2403"
+    ],
+    "sentence_known_audio_ids": [
+     "629e31f3-cdb7-41ef-a715-b3beb7b811b1",
+     "1de12e32-040d-4ef9-b3a1-65e9df6e4e56",
+     "255c9dbf-0f11-48a5-a059-923efede2e5e",
+     "9810f024-dcf1-4f98-a0c7-896ec5a23919",
+     "1995d581-e4a6-4c5b-8f59-8f87ec91cfff"
+    ],
+    "takeg_audio_ids": [
+     "6c79660a-57e8-419e-a667-1be5bf78cc25",
+     null,
+     null,
+     null,
+     "265940c9-847d-4274-a249-84bd1e87e4e3"
+    ]
+   }
+  },
+  {
+   "id": "fra_ca_for_eng:pod-1:SC06-S011",
+   "scene": 6,
+   "sentence": 11,
+   "speaker": "James",
+   "target_text": "J'enseigne l'anglais, mais pas dans une école. Je travaille avec des adultes. Je suis en vacances ici avec ma femme et mes enfants. On passe un excellent moment.",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice fr-CA-AntoineNeural",
+    "sentence_known_audio_ids: off-cast voice leo",
+    "takeg_audio_ids: off-cast voice fr-CA-AntoineNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "fcb32eb9-5528-496f-aa58-b6f91f0c80f3",
+     "6a246b0f-c794-4ba2-bd30-ef6be1dc8f7b",
+     "22eb4e38-c5b3-416b-bf0c-603412b9cc4d",
+     "4ac29b57-7473-48cd-a196-308d98d5e6a6"
+    ],
+    "sentence_known_audio_ids": [
+     "fd4c0be6-97d0-46d6-aa73-f10dbc569c7f",
+     "b9a83209-b7a0-4b85-ac73-96e6231faa93",
+     "ddc15fb3-a28d-4d52-8c8b-8fa91e2e6dec",
+     "c0090aa0-7768-4a68-b2eb-3100fc477067"
+    ],
+    "takeg_audio_ids": [
+     "673b2d17-5fa8-4d04-ac7b-8ec4999c4122",
+     null,
+     "0c0e79eb-75b9-43d9-871f-30d5b81f6fb9",
+     null
+    ]
+   }
+  },
+  {
+   "id": "fra_ca_for_eng:pod-1:SC06-S012",
+   "scene": 6,
+   "sentence": 12,
+   "speaker": "Anna",
+   "target_text": "Comme c'est intéressant. Bon, c'était un plaisir de te rencontrer.",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice en-GB-SoniaNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "1ea38f73-4e50-4db2-94d6-1882e07ac53b",
+     "64535f7e-b889-44d8-b523-80c58dd31235"
+    ],
+    "sentence_known_audio_ids": [
+     "e9380647-48ad-441c-8914-7db00903c9d3",
+     "5bf6a5ad-2e12-4095-ba40-9a33f36a4270"
+    ],
+    "takeg_audio_ids": [
+     "f35fdd8c-6aef-44e3-83e7-b2937a4976b6"
+    ]
+   }
+  },
+  {
+   "id": "fra_ca_for_eng:pod-1:SC06-S013",
+   "scene": 6,
+   "sentence": 13,
+   "speaker": "Narrator",
+   "target_text": "Un. Deux. Trois. Blanc. Noir.",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "e578cb9e-3b12-4089-b841-24e68bc005fd",
+     "2086d58d-ac50-48ec-9082-7cf816d9333a",
+     "34283137-f89a-4a43-af4a-9ea1dc4b3100",
+     "6d24db9c-c2e0-4766-978c-b0de93165edb",
+     "7c1ec625-3e1f-4e4c-87c4-fc335df6482f"
+    ],
+    "sentence_known_audio_ids": [
+     "ed8f2710-20ae-4a4b-a38c-b315cc100402",
+     "e64fda3c-1009-43b6-9bea-c37121fafee0",
+     "ab4e4c6b-5324-4651-af7f-a2bb0ff464e7",
+     "b62cc7d3-73a7-4694-91af-97ab0f606d81",
+     "c6f71d5e-5bcd-47c8-829a-00f839452128"
+    ],
+    "takeg_audio_ids": [
+     "f62d441c-5f0c-4611-9581-66d08b8e4a34"
+    ]
+   }
+  },
+  {
+   "id": "fra_ca_for_eng:pod-1:SC07-S001",
+   "scene": 7,
+   "sentence": 1,
+   "speaker": "Cafe Barista",
+   "target_text": "Bonjour! Qu'est-ce que je peux te servir?",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice fr-CA-ThierryNeural",
+    "sentence_known_audio_ids: off-cast voice en-GB-HollieNeural",
+    "takeg_audio_ids: off-cast voice fr-CA-ThierryNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "ff7346e4-f82e-4b49-b974-e00a62d3a988",
+     "e35642fe-e8e5-4780-9180-bfee290397ac"
+    ],
+    "sentence_known_audio_ids": [
+     "9f5f00f0-6b3b-4ef1-bd69-14eaaa9219f1",
+     "c246e42b-b7da-461d-882b-a26ff2ea11bf"
+    ],
+    "takeg_audio_ids": [
+     "39992d56-e1b1-4a96-b527-8a1b73d1a501"
+    ]
+   }
+  },
+  {
+   "id": "fra_ca_for_eng:pod-1:SC07-S003",
+   "scene": 7,
+   "sentence": 3,
+   "speaker": "Cafe Barista",
+   "target_text": "Tu veux un régulier ou un grand?",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: off-cast voice fr-CA-ThierryNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "89de86c9-b4ce-4e6c-b000-76dad5ef53fa"
+    ]
+   }
+  },
+  {
+   "id": "fra_ca_for_eng:pod-1:SC07-S004",
+   "scene": 7,
+   "sentence": 4,
+   "speaker": "Cafe Customer 1",
+   "target_text": "J'aimerais un grand, s'il vous plaît. Avec du lait d'avoine si vous en avez.",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "45dfc272-afb9-44dc-bb30-49bcf20bdcfd",
+     "20550bdc-9965-47a2-8afd-4a79f755fb67"
+    ],
+    "sentence_known_audio_ids": [
+     "3ec2b2ea-e9b9-454b-87ab-7e1c7f43dd31",
+     "9cd95d59-a381-4d5c-bba5-7b5bef0d62f0"
+    ],
+    "takeg_audio_ids": [
+     "b9791205-dc54-421d-a7d0-292231cea045",
+     "682b08b9-1a91-4851-9a23-2817aa3ee89b"
+    ]
+   }
+  },
+  {
+   "id": "fra_ca_for_eng:pod-1:SC07-S005",
+   "scene": 7,
+   "sentence": 5,
+   "speaker": "Cafe Barista",
+   "target_text": "Bien sûr. C'est pour manger ici ou pour emporter?",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "65d6d0e4-d3e9-4b56-b524-765defd179af",
+     "93400bfd-bff8-404b-9f63-6b8ca13d6ada"
+    ],
+    "sentence_known_audio_ids": [
+     "f84327bd-8566-4b49-b61b-b41658589a10",
+     "cd85d649-fd28-48da-b14b-110a774fceaa"
+    ],
+    "takeg_audio_ids": [
+     "d76124de-1c5d-4a8d-b736-bf86f5e3f788"
+    ]
+   }
+  },
+  {
+   "id": "fra_ca_for_eng:pod-1:SC07-S007",
+   "scene": 7,
+   "sentence": 7,
+   "speaker": "Cafe Customer 2",
+   "target_text": "Est-ce que je pourrais avoir deux cafés au lait et deux cafés noirs et un de ceux-là, s'il te plaît?",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: off-cast voice fr-CA-AntoineNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "09ef64c7-d4e2-4b2a-93b8-3165c8fbbb49"
+    ]
+   }
+  },
+  {
+   "id": "fra_ca_for_eng:pod-1:SC07-S008",
+   "scene": 7,
+   "sentence": 8,
+   "speaker": "Cafe Barista",
+   "target_text": "Tout de suite. Tu veux autre chose?",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice fr-CA-ThierryNeural",
+    "sentence_known_audio_ids: off-cast voice en-GB-HollieNeural",
+    "takeg_audio_ids: off-cast voice fr-CA-ThierryNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "b12b17ce-6955-423d-bc11-7b5d8abb1819",
+     "2dd66e55-d016-4de8-bb89-d24eaf319a94"
+    ],
+    "sentence_known_audio_ids": [
+     "b4833d01-c0a2-4835-9faa-5d215cf8b3ce",
+     "f8f7889b-b1f1-4949-8a89-e815ae7eb09c"
+    ],
+    "takeg_audio_ids": [
+     "8bb66bc3-98fe-4935-8553-f4da4c6d0b5b"
+    ]
+   }
+  },
+  {
+   "id": "fra_ca_for_eng:pod-1:SC07-S009",
+   "scene": 7,
+   "sentence": 9,
+   "speaker": "Cafe Customer 2",
+   "target_text": "Oui, est-ce que je pourrais avoir un verre d'eau aussi, s'il te plaît.",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: off-cast voice fr-CA-AntoineNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "e8f76b81-e93f-419e-98cd-660bf414f23e"
+    ]
+   }
+  },
+  {
+   "id": "fra_ca_for_eng:pod-1:SC07-S010",
+   "scene": 7,
+   "sentence": 10,
+   "speaker": "Cafe Barista",
+   "target_text": "Ça fait huit livres quarante en tout.",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "559925e2-9b1e-4b48-a4c1-69134d4ad3b3"
+    ]
+   }
+  },
+  {
+   "id": "fra_ca_for_eng:pod-1:SC07-S011",
+   "scene": 7,
+   "sentence": 11,
+   "speaker": "Cafe Customer 2",
+   "target_text": "Je pourrais payer avec ma carte? T'as du sans contact?",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice fr-CA-AntoineNeural",
+    "sentence_known_audio_ids: off-cast voice en-GB-LibbyNeural",
+    "takeg_audio_ids: off-cast voice fr-CA-AntoineNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "71e05598-4112-4219-a48b-efc6cf814386",
+     "59c13ee6-a72e-48e4-88b9-c8874725725c"
+    ],
+    "sentence_known_audio_ids": [
+     "ecf23e31-7e0d-4eb0-b53d-11b696964ab3",
+     "4f68c144-4940-43be-987d-36ee0049504e"
+    ],
+    "takeg_audio_ids": [
+     "141446b1-e268-4afd-813a-8cecb3877c78",
+     null
+    ]
+   }
+  },
+  {
+   "id": "fra_ca_for_eng:pod-1:SC07-S012",
+   "scene": 7,
+   "sentence": 12,
+   "speaker": "Cafe Barista",
+   "target_text": "Bien sûr. V'là la machine.",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice fr-CA-ThierryNeural",
+    "sentence_known_audio_ids: off-cast voice en-GB-HollieNeural",
+    "takeg_audio_ids: off-cast voice fr-CA-ThierryNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "b1512766-9799-45a3-9fa0-42616221745e",
+     "58202a43-d3af-4057-bd58-4f8a306bf21e"
+    ],
+    "sentence_known_audio_ids": [
+     "e68e55f6-9ec6-40f3-996e-28e13c6a4740",
+     "b1f36673-37d3-4d87-bd18-bc206f1a02bd"
+    ],
+    "takeg_audio_ids": [
+     "87c4e9dc-d80f-453f-9262-2abed6c5d188"
+    ]
+   }
+  },
+  {
+   "id": "fra_ca_for_eng:pod-1:SC07-S014",
+   "scene": 7,
+   "sentence": 14,
+   "speaker": "Cafe Barista",
+   "target_text": "Aimeriez-vous manger ici? La table près de la fenêtre est libre.",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "3ced4688-8c01-4d26-b8ce-eda19f18427f",
+     "28436572-2052-4c46-be7c-c14ae35fc78c"
+    ],
+    "sentence_known_audio_ids": [
+     "1fad6544-19e9-4c49-9c39-e76160764f67",
+     "ae922806-85b0-4581-acbe-ca9467455f50"
+    ],
+    "takeg_audio_ids": [
+     "e97c29f7-aa5f-4be7-8ba8-14db68298b71"
+    ]
+   }
+  },
+  {
+   "id": "fra_ca_for_eng:pod-1:SC07-S015",
+   "scene": 7,
+   "sentence": 15,
+   "speaker": "Narrator",
+   "target_text": "Cinq. Dix. Quinze. Rouge. Vert.",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "b79e0ae5-5f54-4c1a-ae99-d9365b19a752",
+     "60ae8bd7-e3dc-46bf-bf0e-d63b19d05f8f",
+     "481ff2aa-5d54-4043-a7b1-8af8c3d99768",
+     "e5d102c8-cc91-4e3a-83ae-ed1a96cb6cdb",
+     "be293da7-a840-484c-aa35-81bf5f5f2324"
+    ],
+    "sentence_known_audio_ids": [
+     "f0cb8abe-b826-4e74-af5c-bc59cb3aa07a",
+     "629872d7-884f-45f4-a945-097f247d65fc",
+     "4d982cb0-560b-4614-93ed-1271d28961d0",
+     "6e9b0205-328a-4f10-8d16-f330d4bf5919",
+     "a28d2cdc-f23c-4092-8118-d507066654af"
+    ],
+    "takeg_audio_ids": [
+     "f568d4ef-e3cf-4e51-9c28-8f06ff0dbb4b"
+    ]
+   }
+  },
+  {
+   "id": "fra_ca_for_eng:pod-1:SC08-S001",
+   "scene": 8,
+   "sentence": 1,
+   "speaker": "Bartender",
+   "target_text": "Bonsoir. Qu'est-ce que je peux te servir?",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice fr-CA-ThierryNeural",
+    "sentence_known_audio_ids: off-cast voice leo",
+    "takeg_audio_ids: off-cast voice fr-CA-ThierryNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "f0b85eab-a9e7-49bc-bbdf-67327bb455dc",
+     "e35642fe-e8e5-4780-9180-bfee290397ac"
+    ],
+    "sentence_known_audio_ids": [
+     "7b7b885c-a6e1-4799-bb3f-086c1ef3fb2c",
+     "f7ff04cd-db91-453c-91e4-2a9c8a487a0a"
+    ],
+    "takeg_audio_ids": [
+     "93d786e5-7eb8-475f-b44f-dd99206980b0"
+    ]
+   }
+  },
+  {
+   "id": "fra_ca_for_eng:pod-1:SC08-S002",
+   "scene": 8,
+   "sentence": 2,
+   "speaker": "Bar Customer 1",
+   "target_text": "Je voudrais une pinte, s'il te plaît. T'as quelles ales en fût?",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice en-GB-SoniaNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "8b8293a9-cebd-4f04-99e0-a87d23725057",
+     "f2c2845e-c381-463e-b546-86431c139e25"
+    ],
+    "sentence_known_audio_ids": [
+     "aa0242ca-d0fe-4319-bdd3-265fdcc1027e",
+     "e94787c7-46ea-4aa1-8885-c10baeba22b0"
+    ],
+    "takeg_audio_ids": [
+     "b36cebe3-ece4-4113-a778-a315a05cb31c",
+     "01b12151-9915-4cc9-80db-31d2d5c6cad8"
+    ]
+   }
+  },
+  {
+   "id": "fra_ca_for_eng:pod-1:SC08-S003",
+   "scene": 8,
+   "sentence": 3,
+   "speaker": "Bartender",
+   "target_text": "On a une bitter et une stout, puis elles sont toutes les deux locales.",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: off-cast voice fr-CA-ThierryNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "e0ca90b8-459e-4f27-a635-c201f5a23bec"
+    ]
+   }
+  },
+  {
+   "id": "fra_ca_for_eng:pod-1:SC08-S005",
+   "scene": 8,
+   "sentence": 5,
+   "speaker": "Bar Customer 2",
+   "target_text": "Je pourrais avoir une demi-pinte de cidre?",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: off-cast voice fr-CA-AntoineNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "265544ab-6ba1-4775-b40a-61959d02a96b"
+    ]
+   }
+  },
+  {
+   "id": "fra_ca_for_eng:pod-1:SC08-S007",
+   "scene": 8,
+   "sentence": 7,
+   "speaker": "Bartender",
+   "target_text": "On a un rouge maison, un blanc maison, ou tu pourrais prendre une de nos bouteilles.",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: off-cast voice fr-CA-ThierryNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "aaf38a60-41d4-490e-820b-806f207d5034"
+    ]
+   }
+  },
+  {
+   "id": "fra_ca_for_eng:pod-1:SC08-S010",
+   "scene": 8,
+   "sentence": 10,
+   "speaker": "Bar Customer 2",
+   "target_text": "Je voudrais deux autres verres de bière.",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: off-cast voice fr-CA-AntoineNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "0be4f0a5-cd9d-407c-8d1e-0009e28be854"
+    ]
+   }
+  },
+  {
+   "id": "fra_ca_for_eng:pod-1:SC08-S012",
+   "scene": 8,
+   "sentence": 12,
+   "speaker": "Bar Customer 1",
+   "target_text": "Je suis pas sûr si j'ai faim. T'as un menu?",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice en-GB-SoniaNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "eb6feccf-58db-4429-a430-c8b84fe8e0e7",
+     "e54ad8e0-cc6e-4080-8a3e-d3e3ffb7d7aa"
+    ],
+    "sentence_known_audio_ids": [
+     "741f5ccc-2ca1-450e-a04f-2fd3895f9c09",
+     "6a3f8739-bf62-42f7-ad86-248299e2dbe4"
+    ],
+    "takeg_audio_ids": [
+     "b22c9554-bd88-49b4-9340-70f258805c84",
+     null
+    ]
+   }
+  },
+  {
+   "id": "fra_ca_for_eng:pod-1:SC08-S013",
+   "scene": 8,
+   "sentence": 13,
+   "speaker": "Bartender",
+   "target_text": "Oui, certain. Le voici. Le fish and chips est ben bon.",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "6420ebbd-7390-499c-9bea-da5fb07ae619",
+     "6ee651cc-e659-4531-9399-7149be13e54e",
+     "ceece23b-452e-445f-8992-500a0ba5b17c"
+    ],
+    "sentence_known_audio_ids": [
+     "8e7bf423-72ec-4d56-91cf-abb687a1a1bf",
+     "6299dfe7-c8ce-4b59-8fbd-04ab5a4beba1",
+     "7a39088e-ce93-4821-9864-d2e3427778ce"
+    ],
+    "takeg_audio_ids": [
+     "493be8a4-0565-4774-8620-9cd50d5a693f",
+     null,
+     "72c326f0-34e9-4071-8223-0c202bdbff55"
+    ]
+   }
+  },
+  {
+   "id": "fra_ca_for_eng:pod-1:SC08-S014",
+   "scene": 8,
+   "sentence": 14,
+   "speaker": "Bar Customer 1",
+   "target_text": "On peut avoir du pain? Pis un bol de frites pour la table.",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "6709a9ee-4b87-4bec-ae58-180ba80f0ff4",
+     "37480d6c-e4fe-4d93-acf6-04da9e1ee2da"
+    ],
+    "sentence_known_audio_ids": [
+     "3e1b9361-7696-4779-a45d-3151d0139112",
+     "9389bf1e-eaf6-4be1-b9a3-c7fe80e3c50d"
+    ],
+    "takeg_audio_ids": [
+     "09cec641-710b-453b-81c6-83cf7704e609"
+    ]
+   }
+  },
+  {
+   "id": "fra_ca_for_eng:pod-1:SC08-S015",
+   "scene": 8,
+   "sentence": 15,
+   "speaker": "Bar Customer 2",
+   "target_text": "T'as des sandwichs? Je voudrais un sandwich au fromage, s'il te plaît.",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice fr-CA-AntoineNeural",
+    "sentence_known_audio_ids: off-cast voice en-GB-LibbyNeural",
+    "takeg_audio_ids: off-cast voice fr-CA-AntoineNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "34c37ea4-0b9a-49b6-8258-49745e9a9c85",
+     "a86b3a26-38a4-4cf5-b6b6-8d91aeac2242"
+    ],
+    "sentence_known_audio_ids": [
+     "cccb7638-de81-4f89-b6f3-ecf41b23c097",
+     "e87baf82-640e-4929-9da5-fc826577f0ec"
+    ],
+    "takeg_audio_ids": [
+     "fe074d6c-25d0-4e34-9a65-6346d5ffc0a4"
+    ]
+   }
+  },
+  {
+   "id": "fra_ca_for_eng:pod-1:SC09-S001",
+   "scene": 9,
+   "sentence": 1,
+   "speaker": "Diner 1",
+   "target_text": "Bonsoir. On a une réservation pour deux, au nom de Davies.",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "ffaaf845-4318-444c-8c0e-bd603844fb8f",
+     "fbcd94dc-c3b3-40a0-a6eb-1d0bf2ae6b9f"
+    ],
+    "sentence_known_audio_ids": [
+     "342cc886-557c-4f04-a6b8-12ddfc69410b",
+     "df80063d-cdb4-416a-a740-d7772f04eac3"
+    ],
+    "takeg_audio_ids": [
+     "88f79f35-d9f5-4487-b631-fc0a9327120e"
+    ]
+   }
+  },
+  {
+   "id": "fra_ca_for_eng:pod-1:SC09-S002",
+   "scene": 9,
+   "sentence": 2,
+   "speaker": "Waiter",
+   "target_text": "Bienvenue. Suivez-moi, s'il vous plaît. Voici les menus.",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice fr-CA-ThierryNeural",
+    "sentence_known_audio_ids: off-cast voice leo",
+    "takeg_audio_ids: off-cast voice fr-CA-ThierryNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "f9c8192c-d8cd-451f-9d38-b0427d6458ab",
+     "0ef5908d-d522-425a-8ac5-707aaedc24fb",
+     "cd028590-b0d3-4c36-af37-9937d3702501"
+    ],
+    "sentence_known_audio_ids": [
+     "f553a2f8-8dc2-4733-8fd3-a1e2e1c2e45e",
+     "86a0b49d-62cc-47f8-ad1c-ae5c678fe15c",
+     "2b72a12c-1379-4e01-8ba6-0140c7492a4c"
+    ],
+    "takeg_audio_ids": [
+     "9fd967c0-bb3b-4e33-ab21-f617e84dfb80",
+     "c55aad64-443a-4c9d-a1af-e31eedba6b7d"
+    ]
+   }
+  },
+  {
+   "id": "fra_ca_for_eng:pod-1:SC09-S003",
+   "scene": 9,
+   "sentence": 3,
+   "speaker": "Waiter",
+   "target_text": "Aimeriez-vous de l'eau plate ou pétillante pour commencer?",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "e4ed5cd4-6596-4d89-b062-8bcd14445f9e"
+    ]
+   }
+  },
+  {
+   "id": "fra_ca_for_eng:pod-1:SC09-S004",
+   "scene": 9,
+   "sentence": 4,
+   "speaker": "Diner 2",
+   "target_text": "On voudrait une bouteille d'eau pétillante et une bouteille d'eau plate, s'il vous plaît.",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: off-cast voice fr-CA-AntoineNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "c3bddceb-8afd-478f-9e71-2ca59039e1b5"
+    ]
+   }
+  },
+  {
+   "id": "fra_ca_for_eng:pod-1:SC09-S005",
+   "scene": 9,
+   "sentence": 5,
+   "speaker": "Diner 1",
+   "target_text": "Excusez-moi — est-ce que vous avez des plats sans gluten? Ou pour les végétariens?",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice en-GB-SoniaNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "388ae700-6188-4271-b534-b4d4cdf41fce",
+     "e9c6f0bb-a51e-41fd-adba-948ec2d6463b"
+    ],
+    "sentence_known_audio_ids": [
+     "a43276d5-edd9-44fb-8477-9e95dab6cbb8",
+     "6f3e63e2-34c9-4942-99fc-a27663ea6654"
+    ],
+    "takeg_audio_ids": [
+     "2d3aed64-c7ae-43af-83c7-a7fd7fe5bc49",
+     null
+    ]
+   }
+  },
+  {
+   "id": "fra_ca_for_eng:pod-1:SC09-S006",
+   "scene": 9,
+   "sentence": 6,
+   "speaker": "Waiter",
+   "target_text": "Oui, le saumon et le risotto sont tous les deux sans gluten. On a aussi quelques salades.",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice fr-CA-ThierryNeural",
+    "sentence_known_audio_ids: off-cast voice leo",
+    "takeg_audio_ids: off-cast voice fr-CA-ThierryNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "44457cd1-ca01-45e7-9680-eb8d8a97c811",
+     "46cf155d-a6a8-4db2-acc6-bd78a1eaa784"
+    ],
+    "sentence_known_audio_ids": [
+     "6c9fb5b5-1627-45b9-963f-70ebcfae7436",
+     "6fa56c8c-5e2a-49e5-9db6-831dd7ff67c8"
+    ],
+    "takeg_audio_ids": [
+     "1bc8ba81-8307-4e7c-8db9-b753c4f72377",
+     null
+    ]
+   }
+  },
+  {
+   "id": "fra_ca_for_eng:pod-1:SC09-S008",
+   "scene": 9,
+   "sentence": 8,
+   "speaker": "Waiter",
+   "target_text": "L'agneau est excellent. Il a été cuit lentement, avec du romarin.",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice fr-CA-ThierryNeural",
+    "sentence_known_audio_ids: off-cast voice leo",
+    "takeg_audio_ids: off-cast voice fr-CA-ThierryNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "f52a5635-a01f-47c8-a0e9-62486396f8ec",
+     "13fdacab-b087-425d-a03f-e2a6aca8e811"
+    ],
+    "sentence_known_audio_ids": [
+     "ddcafd60-865a-4145-9709-dac00aed354c",
+     "0218ec7d-e1ea-4105-8f2f-b9d615000557"
+    ],
+    "takeg_audio_ids": [
+     "006065c8-63b4-4e23-97c4-183170bc578b"
+    ]
+   }
+  },
+  {
+   "id": "fra_ca_for_eng:pod-1:SC09-S009",
+   "scene": 9,
+   "sentence": 9,
+   "speaker": "Diner 1",
+   "target_text": "Je vais prendre l'agneau, s'il vous plaît. Avec des légumes verts en accompagnement.",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice en-GB-SoniaNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "f81c87ab-c1cf-4e8f-b70c-2d6c6f7f2614",
+     "b7bbc5a1-45ef-4747-880b-6baf5043c898"
+    ],
+    "sentence_known_audio_ids": [
+     "4a3f4d08-a7da-4ceb-8b54-8851bbca616d",
+     "54aca04f-f17f-49d7-b822-db13844b2022"
+    ],
+    "takeg_audio_ids": [
+     "21cbceb7-76ce-4c99-af2a-e5110571a0ca",
+     "dd043cba-5b6b-4536-9e69-dd2c9d28dc37"
+    ]
+   }
+  },
+  {
+   "id": "fra_ca_for_eng:pod-1:SC09-S010",
+   "scene": 9,
+   "sentence": 10,
+   "speaker": "Diner 2",
+   "target_text": "Et le risotto pour moi. Avec une petite salade verte pour commencer.",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice fr-CA-AntoineNeural",
+    "sentence_known_audio_ids: off-cast voice en-GB-LibbyNeural",
+    "takeg_audio_ids: off-cast voice fr-CA-AntoineNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "dfa879ce-e39e-4c73-a79f-fd24cf28f593",
+     "768c70ef-ac34-4f05-b9f4-6d6d7780a8ef"
+    ],
+    "sentence_known_audio_ids": [
+     "fe332dc2-4177-45e2-8c59-ac819cd0edb2",
+     "a2d6f9ae-a25e-405b-b766-42dd83fc083b"
+    ],
+    "takeg_audio_ids": [
+     "cde5d728-8444-48aa-8dcd-2b4795d67cfe",
+     "de20405c-1798-4cfd-a170-a227369f2a47"
+    ]
+   }
+  },
+  {
+   "id": "fra_ca_for_eng:pod-1:SC09-S011",
+   "scene": 9,
+   "sentence": 11,
+   "speaker": "Waiter",
+   "target_text": "Bien sûr. Et qu'est-ce que vous voulez boire?",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice fr-CA-ThierryNeural",
+    "sentence_known_audio_ids: off-cast voice leo",
+    "takeg_audio_ids: off-cast voice fr-CA-ThierryNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "b1512766-9799-45a3-9fa0-42616221745e",
+     "4c7ace06-98e2-4908-bb03-71f17e9f04d9"
+    ],
+    "sentence_known_audio_ids": [
+     "12b6cfab-b203-4d19-bb25-2cd8f2ef7b41",
+     "166e688a-9697-4aac-824e-b830d54cf970"
+    ],
+    "takeg_audio_ids": [
+     "3dd51f9a-6c88-43a7-b3e1-d6c062bca60a"
+    ]
+   }
+  },
+  {
+   "id": "fra_ca_for_eng:pod-1:SC09-S013",
+   "scene": 9,
+   "sentence": 13,
+   "speaker": "Diner 2",
+   "target_text": "Une bouteille du rouge de la maison, ce serait parfait.",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: off-cast voice fr-CA-AntoineNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "d7f2ebc8-8e33-48f1-929a-2d195bed2fa9"
+    ]
+   }
+  },
+  {
+   "id": "fra_ca_for_eng:pod-1:SC09-S014",
+   "scene": 9,
+   "sentence": 14,
+   "speaker": "Waiter",
+   "target_text": "Excellent choix. Je vous l'apporte tout de suite.",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice fr-CA-ThierryNeural",
+    "sentence_known_audio_ids: off-cast voice leo",
+    "takeg_audio_ids: off-cast voice fr-CA-ThierryNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "ad67b50c-7fb0-4036-a56a-e2e1f40b087c",
+     "10f471f2-90fc-49c6-a71f-b8d2e905bb6f"
+    ],
+    "sentence_known_audio_ids": [
+     "31ccb877-ce07-474d-8131-62101b13631e",
+     "a33db454-f8d6-43e9-a2fe-6f5e6d51c31d"
+    ],
+    "takeg_audio_ids": [
+     "c5930934-dbcc-4e77-a895-ad1ca21d2676"
+    ]
+   }
+  },
+  {
+   "id": "fra_ca_for_eng:pod-1:SC09-S015",
+   "scene": 9,
+   "sentence": 15,
+   "speaker": "Waiter",
+   "target_text": "Est-ce que tout se passe bien? Est-ce que vous avez de la place pour le dessert?",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice fr-CA-ThierryNeural",
+    "sentence_known_audio_ids: off-cast voice leo",
+    "takeg_audio_ids: off-cast voice fr-CA-ThierryNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "eb0b9212-eb3b-4ed5-8b91-10b8cb06c4ea",
+     "a758759a-7bf1-4cb8-a890-8b60b246d6d9"
+    ],
+    "sentence_known_audio_ids": [
+     "0b889dee-d2a1-4bba-93e2-f62983342bf5",
+     "04b107e0-cba1-47db-ad2f-dd54e0a45944"
+    ],
+    "takeg_audio_ids": [
+     "16d6143e-4ce6-4248-a8e3-a2b3a1c52b9c"
+    ]
+   }
+  },
+  {
+   "id": "fra_ca_for_eng:pod-1:SC09-S016",
+   "scene": 9,
+   "sentence": 16,
+   "speaker": "Diner 1",
+   "target_text": "Juste deux cafés, s'il vous plaît. Décaf pour moi.",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "6bffc7cc-0bf6-4b76-9a26-06fdc2ddfa74",
+     "73ddec03-f19d-4325-afb6-9eb776019dd3"
+    ],
+    "sentence_known_audio_ids": [
+     "f45293bf-59b0-4cf1-a376-4d275698d680",
+     "435748cf-461e-48b3-8dee-7aa607ead442"
+    ],
+    "takeg_audio_ids": [
+     "a8571a20-92fd-4b36-97dc-961a62fc468f",
+     "62f394c4-10f4-45d6-94c5-be6343d096ce"
+    ]
+   }
+  },
+  {
+   "id": "fra_ca_for_eng:pod-1:SC09-S017",
+   "scene": 9,
+   "sentence": 17,
+   "speaker": "Diner 2",
+   "target_text": "Et l'addition, quand vous êtes prêt. Est-ce qu'on peut séparer ça?",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice fr-CA-AntoineNeural",
+    "sentence_known_audio_ids: off-cast voice en-GB-LibbyNeural",
+    "takeg_audio_ids: off-cast voice fr-CA-AntoineNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "b51974cf-62b9-41c0-9ed2-fb2522d3f61d",
+     "f333e802-af3e-4dca-9e0d-abf1da234a91"
+    ],
+    "sentence_known_audio_ids": [
+     "4991f372-427d-472c-a578-1ae0ce98ffd8",
+     "9b13b454-65e9-4fa4-9fb7-d74d9c12cfa6"
+    ],
+    "takeg_audio_ids": [
+     "a8d74746-8b60-47f3-a4ce-01da3d101011",
+     null
+    ]
+   }
+  },
+  {
+   "id": "fra_ca_for_eng:pod-1:SC09-S018",
+   "scene": 9,
+   "sentence": 18,
+   "speaker": "Narrator",
+   "target_text": "Sept. Neuf. Onze. Orange. Violet.",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "2c128605-c507-452f-af72-d7c036fb54ac",
+     "9a091719-aabe-4ec5-a1cc-c353215e99c7",
+     "bca44796-3642-45d1-bd49-abf8f39501b3",
+     "ecc4c326-ebe5-4557-a18b-4da622b470e2",
+     "ab54d52b-931c-4f44-a809-24fb080f25a6"
+    ],
+    "sentence_known_audio_ids": [
+     "07b3db7f-2a34-4c55-b039-354667c7ca59",
+     "5eb52b18-cff6-416f-aa23-8a7640a89000",
+     "e65b77a8-fddc-4e0b-9f16-5f89c9c0449c",
+     "20fb68c9-83e1-4c0b-aba6-f018352d3a81",
+     "529c4658-cac5-4431-8914-21ee6590970a"
+    ],
+    "takeg_audio_ids": [
+     "73363321-cb28-46c6-9c0d-06e172919773"
+    ]
+   }
+  },
+  {
+   "id": "fra_ca_for_eng:pod-1:SC10-S001",
+   "scene": 10,
+   "sentence": 1,
+   "speaker": "Customer",
+   "target_text": "Excuse-moi. T'as-tu des analgésiques?",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice en-GB-SoniaNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "7fb5327f-8a3b-4d6f-b405-092ac0bf6039",
+     "a2c077d5-73ca-4296-ba53-c31e70393092"
+    ],
+    "sentence_known_audio_ids": [
+     "d586b780-e58f-4f6e-b06a-52941b072990",
+     "5743de91-0736-471c-bfff-0d204ce32a5d"
+    ],
+    "takeg_audio_ids": [
+     "d80faa6a-81ec-4c8e-b74c-1f05cbe1b0a3"
+    ]
+   }
+  },
+  {
+   "id": "fra_ca_for_eng:pod-1:SC10-S002",
+   "scene": 10,
+   "sentence": 2,
+   "speaker": "Assistant",
+   "target_text": "Oui, ils sont dans cette allée-là, à gauche.",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: off-cast voice fr-CA-AntoineNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "71218b6e-3fa1-403a-a224-114cdba9de44"
+    ]
+   }
+  },
+  {
+   "id": "fra_ca_for_eng:pod-1:SC10-S003",
+   "scene": 10,
+   "sentence": 3,
+   "speaker": "Customer",
+   "target_text": "Merci. Pis t'as-tu des analgésiques pour les enfants?",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice en-GB-SoniaNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "8786e84f-1f47-4b9b-87be-f23e5d344db2",
+     "245c77a5-e1aa-44bf-810c-66b12c258c27"
+    ],
+    "sentence_known_audio_ids": [
+     "d443ba4d-bf8b-4173-affb-27e4d16166a1",
+     "2da1be6b-cb4d-4763-8866-c8fb9752e149"
+    ],
+    "takeg_audio_ids": [
+     "72925fa7-2b80-4ee2-bd64-08d6c507fd6f"
+    ]
+   }
+  },
+  {
+   "id": "fra_ca_for_eng:pod-1:SC10-S004",
+   "scene": 10,
+   "sentence": 4,
+   "speaker": "Assistant",
+   "target_text": "Je pense que oui, mais tu vas devoir vérifier pour être sûr.",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: off-cast voice fr-CA-AntoineNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "2732993a-9f0c-4b1e-867b-9d4f87698b60"
+    ]
+   }
+  },
+  {
+   "id": "fra_ca_for_eng:pod-1:SC10-S006",
+   "scene": 10,
+   "sentence": 6,
+   "speaker": "Assistant",
+   "target_text": "La crème solaire, c'est là-bas à ta droite, et tu vas trouver le dentifrice juste au coin.",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: off-cast voice fr-CA-AntoineNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "74a207ab-3f61-47b5-9d0a-621c65c13de2"
+    ]
+   }
+  },
+  {
+   "id": "fra_ca_for_eng:pod-1:SC10-S007",
+   "scene": 10,
+   "sentence": 7,
+   "speaker": "Customer",
+   "target_text": "Merci, t'as été vraiment utile. Je t'en suis très reconnaissant.",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice en-GB-SoniaNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "d80ae046-401d-460b-83b1-73ed3ad80bfb",
+     "e23370c2-e0a3-4bf9-8495-23e7cb637bb7"
+    ],
+    "sentence_known_audio_ids": [
+     "8d3a71a7-76ba-49b5-80e6-e54bfd3e0da6",
+     "f4a1edeb-a89d-4b87-a3ff-59e96cc9fe17"
+    ],
+    "takeg_audio_ids": [
+     "bbe5ab92-892c-4c89-a951-319e1c7c5ff3",
+     null
+    ]
+   }
+  },
+  {
+   "id": "fra_ca_for_eng:pod-1:SC10-S008",
+   "scene": 10,
+   "sentence": 8,
+   "speaker": "Assistant",
+   "target_text": "De rien. T'es ici en vacances? Tu parles très bien le français québécois.",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice fr-CA-AntoineNeural",
+    "sentence_known_audio_ids: off-cast voice en-GB-LibbyNeural",
+    "takeg_audio_ids: off-cast voice fr-CA-AntoineNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "fd6b1077-c362-4d1e-add1-95cd4231f0fd",
+     "f3b5bb98-dfbf-4fd1-95b1-b9e9c4b68f3c",
+     "c67e5d6c-9b68-42e1-8480-9f1f9594a7ff"
+    ],
+    "sentence_known_audio_ids": [
+     "c824c08d-7e75-4b87-972f-f068ab8f1177",
+     "771ddcab-cff7-4d7d-a730-bcce27176f20",
+     "d0462455-87e2-400a-bd08-807678805c47"
+    ],
+    "takeg_audio_ids": [
+     "8a4eb0e9-2a7e-4aca-beb1-6487bab589f6",
+     "859594b2-e168-4f93-ab05-03f6a049101e"
+    ]
+   }
+  },
+  {
+   "id": "fra_ca_for_eng:pod-1:SC10-S009",
+   "scene": 10,
+   "sentence": 9,
+   "speaker": "Customer",
+   "target_text": "C'est vraiment gentil! Oui, je suis en vacances, pis j'ai besoin de pratiquer plus pour parler le français québécois encore mieux. Merci beaucoup, et bonne journée!",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice en-GB-SoniaNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "95b04ce1-94e9-4ca7-8d35-3dee23f96674",
+     "b03786af-6f82-4416-83c9-d680bd442548",
+     "6c750af5-6ddb-4037-8642-d86b79c5ffdc"
+    ],
+    "sentence_known_audio_ids": [
+     "a4b3af08-9c5e-43c3-b9be-475986071e02",
+     "44197057-e264-406f-a9aa-bd855dd4f1bf",
+     "c1233b8a-6cc1-4b81-a8d8-9c02141b6cd8"
+    ],
+    "takeg_audio_ids": [
+     "1f2cb10f-6e24-45a9-8422-615479f97355",
+     "77f0b098-ba0f-4eb0-a250-5b511ebd51a4"
+    ]
+   }
+  },
+  {
+   "id": "fra_ca_for_eng:pod-1:SC10-S010",
+   "scene": 10,
+   "sentence": 10,
+   "speaker": "Narrator",
+   "target_text": "Douze. Treize. Quatorze. Rose. Gris.",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "a3d6d544-93d5-45cc-bac6-8a9b0872e7a3",
+     "a260a8b1-efab-4fa9-8335-f68749d72ec2",
+     "b698f57d-6524-4bdf-ad1b-61a5d08aeed3",
+     "eba272f5-a5eb-4cb7-8530-385642232af4",
+     "1201977b-e6ff-4c83-ba29-ac9d2135ece9"
+    ],
+    "sentence_known_audio_ids": [
+     "97b3fa4e-a6cf-4e3f-9244-8a8258a786a2",
+     "1fd2d29e-bcaa-4e74-97b9-6fa2e47d4790",
+     "805eba07-2ac4-43e6-bd40-1f93ea5bd64d",
+     "2ae4e749-80b7-42fe-b23e-23b738370fbb",
+     "58f22ebc-d357-4cd6-acc2-ea2517e68e66"
+    ],
+    "takeg_audio_ids": [
+     "d59ae3ec-7c99-4d50-9095-9ec6018c40bb"
+    ]
+   }
+  },
+  {
+   "id": "fra_ca_for_eng:pod-1:SC11-S001",
+   "scene": 11,
+   "sentence": 1,
+   "speaker": "Guest",
+   "target_text": "Bonne après-midi. J'ai une réservation au nom de Jones.",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice leo"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "7560c103-19f0-4b8f-be22-27cb63035a0c",
+     "c069ef9d-99bc-43c0-a1a8-058a32847c9f"
+    ],
+    "sentence_known_audio_ids": [
+     "2117b039-0ea9-4da5-96ec-dd927ae54166",
+     "498e298b-b727-4932-8864-1a18d80951e3"
+    ],
+    "takeg_audio_ids": [
+     "90bce191-a4fc-4cc2-9eb3-5f3ae3557d1f"
+    ]
+   }
+  },
+  {
+   "id": "fra_ca_for_eng:pod-1:SC11-S002",
+   "scene": 11,
+   "sentence": 2,
+   "speaker": "Receptionist",
+   "target_text": "Bienvenue. Oui, vous avez une chambre double pour trois nuits. Est-ce que je pourrais voir une pièce d'identité, s'il vous plaît?",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice fr-CA-AntoineNeural",
+    "sentence_known_audio_ids: off-cast voice en-GB-SoniaNeural",
+    "takeg_audio_ids: off-cast voice fr-CA-AntoineNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "08559d45-9b88-4129-bd75-8db6a4b1bca3",
+     "c7eed4dc-8be5-40fb-8fa3-fea894ae2ff0",
+     "9c2432f8-c650-4fc7-896f-77ed0aeae2c1"
+    ],
+    "sentence_known_audio_ids": [
+     "9f9612ba-232e-468f-be6b-95ef1003f690",
+     "a386ad6c-3bde-42c5-902a-209404807667",
+     "f290e1cd-cc00-4264-9fff-0222d04b7876"
+    ],
+    "takeg_audio_ids": [
+     "b869ece3-610c-4a92-82d8-6f6f1d866e58",
+     "9726f50e-33d0-420f-9f2b-6f8b6474cac5"
+    ]
+   }
+  },
+  {
+   "id": "fra_ca_for_eng:pod-1:SC11-S003",
+   "scene": 11,
+   "sentence": 3,
+   "speaker": "Guest",
+   "target_text": "Bien sûr. Voici mon passeport.",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice leo"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "8798074a-6f91-401a-b9ce-c81e42e810e4",
+     "392928d9-8d00-4646-8a32-b90d86fff46e"
+    ],
+    "sentence_known_audio_ids": [
+     "12b6cfab-b203-4d19-bb25-2cd8f2ef7b41",
+     "f9133d9d-b91c-4c5e-a3f0-d89cbc245a5c"
+    ],
+    "takeg_audio_ids": [
+     "ea21c5c4-ad52-4219-9ef7-f96a9730a868"
+    ]
+   }
+  },
+  {
+   "id": "fra_ca_for_eng:pod-1:SC11-S004",
+   "scene": 11,
+   "sentence": 4,
+   "speaker": "Receptionist",
+   "target_text": "Parfait. La chambre est au troisième étage, chambre sept cent neuf.",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice fr-CA-AntoineNeural",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: off-cast voice fr-CA-AntoineNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "c7ccccbf-fcb9-4f2f-80fc-46f3d10ad36f",
+     "b0c635f1-cce3-4a54-b067-8f3808d60e22"
+    ],
+    "sentence_known_audio_ids": [
+     "fa321bfa-a039-4b02-8bb3-b0e2555d8fd3",
+     "3fd8bf62-ef78-4463-9b39-90f4940c365a"
+    ],
+    "takeg_audio_ids": [
+     "21c60c8e-6114-45c1-ab67-ecde034267f9"
+    ]
+   }
+  },
+  {
+   "id": "fra_ca_for_eng:pod-1:SC11-S006",
+   "scene": 11,
+   "sentence": 6,
+   "speaker": "Receptionist",
+   "target_text": "Oui, elle donne sur le jardin.",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: off-cast voice fr-CA-AntoineNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "fb9176fd-a1d7-4c04-a206-0e560c1810b7"
+    ]
+   }
+  },
+  {
+   "id": "fra_ca_for_eng:pod-1:SC11-S008",
+   "scene": 11,
+   "sentence": 8,
+   "speaker": "Receptionist",
+   "target_text": "De sept heures et demie jusqu'à dix heures. On a des fruits et des céréales ou un déjeuner chaud.",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice fr-CA-AntoineNeural",
+    "sentence_known_audio_ids: off-cast voice en-GB-SoniaNeural",
+    "takeg_audio_ids: off-cast voice fr-CA-AntoineNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "5a4b1c87-4611-40ae-a609-e0837274b3c6",
+     "87f40397-5451-4de1-84fe-13ebc6ac792d"
+    ],
+    "sentence_known_audio_ids": [
+     "93da78b7-ac1b-46e3-aff9-0638cb1808d3",
+     "5eee7944-d2ef-42e2-a59e-1a6f6df90701"
+    ],
+    "takeg_audio_ids": [
+     "8c4f7695-f223-492e-acbe-1c544eecdfd9",
+     "46bf4de8-e347-4766-8e52-7ed44f378af1"
+    ]
+   }
+  },
+  {
+   "id": "fra_ca_for_eng:pod-1:SC11-S009",
+   "scene": 11,
+   "sentence": 9,
+   "speaker": "Guest",
+   "target_text": "Formidable. Est-ce qu'il nous est possible d'avoir un départ tardif?",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice leo"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "c608826d-776c-4330-9587-6e1c287de814",
+     "ea823144-4005-4918-8538-0dbc2005306f"
+    ],
+    "sentence_known_audio_ids": [
+     "142a04ea-b918-44dc-92eb-372ac13bb51e",
+     "eb9bb790-b0d7-450c-87f1-ce4568ac03bb"
+    ],
+    "takeg_audio_ids": [
+     "da1d004a-789f-4912-b8c0-a914ace0bf5c"
+    ]
+   }
+  },
+  {
+   "id": "fra_ca_for_eng:pod-1:SC11-S010",
+   "scene": 11,
+   "sentence": 10,
+   "speaker": "Receptionist",
+   "target_text": "Oui, vous pouvez rester jusqu'à midi, sans frais supplémentaires.",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: off-cast voice fr-CA-AntoineNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "25254d32-af4d-4a2d-9546-d7ccc0f5f071"
+    ]
+   }
+  },
+  {
+   "id": "fra_ca_for_eng:pod-1:SC11-S012",
+   "scene": 11,
+   "sentence": 12,
+   "speaker": "Receptionist",
+   "target_text": "C'est sur la carte de bienvenue dans votre chambre. Bon séjour!",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice fr-CA-AntoineNeural",
+    "sentence_known_audio_ids: off-cast voice en-GB-SoniaNeural",
+    "takeg_audio_ids: off-cast voice fr-CA-AntoineNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "203d411d-0767-47a4-853a-ef5411b167b8",
+     "bc87c579-4da1-4565-9698-609402c98347"
+    ],
+    "sentence_known_audio_ids": [
+     "e36f6be0-77d5-4fc0-a78c-631470699464",
+     "2bc738ed-2e3b-4162-8e81-be5d90253065"
+    ],
+    "takeg_audio_ids": [
+     "c55c8c3d-4a47-4b63-a5cf-b6c04ad145a4",
+     null
+    ]
+   }
+  },
+  {
+   "id": "fra_ca_for_eng:pod-1:SC11-S013",
+   "scene": 11,
+   "sentence": 13,
+   "speaker": "Narrator",
+   "target_text": "Seize. Dix-sept. Dix-huit. Lundi. Mardi.",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "a4bfdbdb-4a38-4738-a165-aafaa03d0482",
+     "4a44ffc9-8c26-4e56-a840-da7f082b8fbd",
+     "15b0930d-c31f-4f79-b0dc-343bd07dc80d",
+     "66bbc231-406b-4b3c-ab22-402e1b822211",
+     "5d28efea-d2a6-4592-b127-4833e1c87408"
+    ],
+    "sentence_known_audio_ids": [
+     "5b216cad-4ac2-4469-8dbc-89bcef7884fa",
+     "52d11d60-dc63-4f64-9c7b-ce1aecb61f55",
+     "e15aafb1-5475-4d7b-93d5-0e6a83596904",
+     "1e28c739-290b-4703-b986-e4be6145d2d8",
+     "fc795f9a-55ed-4a52-b21d-bf7635abab5b"
+    ],
+    "takeg_audio_ids": [
+     "0e789855-43e8-4beb-959c-92c764bfd0cf"
+    ]
+   }
+  },
+  {
+   "id": "fra_ca_for_eng:pod-1:SC12-S001",
+   "scene": 12,
+   "sentence": 1,
+   "speaker": "Customer",
+   "target_text": "Bonjour. Je me sens pas super bien — tu pourrais me recommander quelque chose?",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice en-GB-SoniaNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "9066f2bd-d0b0-4442-9d3e-b67ad9b06a0f",
+     "06de5547-984e-41e0-8dd8-2a5f4e52c57f"
+    ],
+    "sentence_known_audio_ids": [
+     "4084d62b-76e0-483a-9fda-c7f2fe3d61a4",
+     "469908f8-34af-42f6-812b-6229e3cb9cbf"
+    ],
+    "takeg_audio_ids": [
+     "12b29176-4f5c-4ed3-941a-51b7e01efc58"
+    ]
+   }
+  },
+  {
+   "id": "fra_ca_for_eng:pod-1:SC12-S002",
+   "scene": 12,
+   "sentence": 2,
+   "speaker": "Pharmacist",
+   "target_text": "Bien sûr. T'as quels symptômes?",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice fr-CA-AntoineNeural",
+    "sentence_known_audio_ids: off-cast voice leo",
+    "takeg_audio_ids: off-cast voice fr-CA-AntoineNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "166982c4-73ca-4b8f-b559-f2640c9f8286",
+     "a9372a0e-ca53-4b09-8d5e-ec16bb5a0754"
+    ],
+    "sentence_known_audio_ids": [
+     "12b6cfab-b203-4d19-bb25-2cd8f2ef7b41",
+     "b4af13de-b013-40a6-8776-56f084275db2"
+    ],
+    "takeg_audio_ids": [
+     "fda3213e-1d7e-490f-9178-0e65bc6d6acc"
+    ]
+   }
+  },
+  {
+   "id": "fra_ca_for_eng:pod-1:SC12-S004",
+   "scene": 12,
+   "sentence": 4,
+   "speaker": "Pharmacist",
+   "target_text": "Essayez du paracétamol pour le mal de tête, pis ces pastilles-là pour la gorge.",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "3f9ff256-9865-4d83-9774-c74049bc6fbb"
+    ]
+   }
+  },
+  {
+   "id": "fra_ca_for_eng:pod-1:SC12-S005",
+   "scene": 12,
+   "sentence": 5,
+   "speaker": "Customer",
+   "target_text": "Je devrais prendre l'acétaminophène à quelle fréquence?",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "8f009fc1-d6cb-4f9d-8f51-b4a0b7250690"
+    ]
+   }
+  },
+  {
+   "id": "fra_ca_for_eng:pod-1:SC12-S006",
+   "scene": 12,
+   "sentence": 6,
+   "speaker": "Pharmacist",
+   "target_text": "Un comprimé à toutes les quatre à six heures, pas plus que huit par jour.",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: off-cast voice fr-CA-AntoineNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "811adf3a-edd6-4ff4-98a8-3747f59d84ac"
+    ]
+   }
+  },
+  {
+   "id": "fra_ca_for_eng:pod-1:SC12-S008",
+   "scene": 12,
+   "sentence": 8,
+   "speaker": "Pharmacist",
+   "target_text": "Oui, avec de la nourriture ou après avoir mangé, c'est ce qu'il y a de mieux.",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: off-cast voice fr-CA-AntoineNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "92747b78-ec40-45dd-a534-4a8c1a947503"
+    ]
+   }
+  },
+  {
+   "id": "fra_ca_for_eng:pod-1:SC12-S009",
+   "scene": 12,
+   "sentence": 9,
+   "speaker": "Customer",
+   "target_text": "Merci. Je pourrais aussi avoir un paquet de diachylons?",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "8786e84f-1f47-4b9b-87be-f23e5d344db2",
+     "bb8c7ba4-b259-4e64-a145-a5ed13b8abbb"
+    ],
+    "sentence_known_audio_ids": [
+     "d443ba4d-bf8b-4173-affb-27e4d16166a1",
+     "75d0dce1-56aa-402c-99fb-23292234c026"
+    ],
+    "takeg_audio_ids": [
+     "3b5a7449-ca15-44b5-ab09-21307399bd11"
+    ]
+   }
+  },
+  {
+   "id": "fra_ca_for_eng:pod-1:SC12-S010",
+   "scene": 12,
+   "sentence": 10,
+   "speaker": "Narrator",
+   "target_text": "19. 20. 21. Mercredi. Jeudi.",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "45bbf576-994e-4433-8bf7-efaeb8c28eda",
+     "29d71883-0e10-4784-b968-17b8caffe427",
+     "9a783d24-5231-4cc2-9a6b-aba902d75368",
+     "5e6adb56-76fe-4800-ab01-a018aebdd5d9",
+     "c0e2ed51-4c1d-4ca1-9abe-cd998bbd24b2"
+    ],
+    "sentence_known_audio_ids": [
+     "be0bb2b3-c7e1-45ec-afca-d7b3b87c4005",
+     "8209dc94-1501-4dca-b5ee-44bd76256a90",
+     "1f5bd19f-249a-422f-9d6c-87738d90fa93",
+     "667ef977-f0bd-4ae4-a161-30bf4cf411cc",
+     "48940478-225e-4763-b282-e93d6477d5ae"
+    ],
+    "takeg_audio_ids": [
+     "b3bf666b-0c33-44b4-acb9-41c8ae5f673d"
+    ]
+   }
+  },
+  {
+   "id": "fra_ca_for_eng:pod-1:SC13-S001",
+   "scene": 13,
+   "sentence": 1,
+   "speaker": "Tourist",
+   "target_text": "Excuse-moi, tu saurais comment aller au supermarché le plus proche?",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: off-cast voice fr-CA-AntoineNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "309659ba-d990-4129-9855-cf2c76dd8d5c"
+    ]
+   }
+  },
+  {
+   "id": "fra_ca_for_eng:pod-1:SC13-S002",
+   "scene": 13,
+   "sentence": 2,
+   "speaker": "Local",
+   "target_text": "Oui, c'est à environ dix minutes à pied. Tu continues tout droit sur cette rue.",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice leo"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "aa89e29b-203e-4f50-b10a-9ee83d944542",
+     "79a439c0-2388-46bf-8b9c-13cdebba0cd0"
+    ],
+    "sentence_known_audio_ids": [
+     "a9f6d2e2-344b-4747-a5ef-87eaf6b6567d",
+     "89891855-890c-4dd3-8bea-35bc87ec975b"
+    ],
+    "takeg_audio_ids": [
+     "a261653d-9a38-4cd9-aef3-29bb2dd82c30",
+     "bc6fe0a2-bb04-4014-ab01-5af65891f6d2"
+    ]
+   }
+  },
+  {
+   "id": "fra_ca_for_eng:pod-1:SC13-S003",
+   "scene": 13,
+   "sentence": 3,
+   "speaker": "Tourist",
+   "target_text": "En passant devant cette église?",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: off-cast voice fr-CA-AntoineNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "064ac88a-a49a-409d-bb66-1dc527ceef0c"
+    ]
+   }
+  },
+  {
+   "id": "fra_ca_for_eng:pod-1:SC13-S008",
+   "scene": 13,
+   "sentence": 8,
+   "speaker": "Tourist",
+   "target_text": "Parfait. Et est-ce qu'y'a un guichet automatique pas loin?",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice fr-CA-AntoineNeural",
+    "sentence_known_audio_ids: off-cast voice en-GB-RyanNeural",
+    "takeg_audio_ids: off-cast voice fr-CA-AntoineNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "c7ccccbf-fcb9-4f2f-80fc-46f3d10ad36f",
+     "7077d962-dc6b-4c4b-bba1-4341a8c6576b"
+    ],
+    "sentence_known_audio_ids": [
+     "2d0784ba-5e50-4989-ac5b-bab9620b94d4",
+     "b3082ec7-c06a-4e82-9e8d-42d374f62a22"
+    ],
+    "takeg_audio_ids": [
+     "c9cb8d5a-6a27-48d9-b05a-98831926dbed"
+    ]
+   }
+  },
+  {
+   "id": "fra_ca_for_eng:pod-1:SC13-S009",
+   "scene": 13,
+   "sentence": 9,
+   "speaker": "Local",
+   "target_text": "Oui, il y en a un sur la rue principale, à côté de la boulangerie.",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "fcaa0aeb-4b9b-4023-9f74-4db978ed380f"
+    ]
+   }
+  },
+  {
+   "id": "fra_ca_for_eng:pod-1:SC13-S010",
+   "scene": 13,
+   "sentence": 10,
+   "speaker": "Tourist",
+   "target_text": "Merci beaucoup. T'as été vraiment très utile.",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice fr-CA-AntoineNeural",
+    "sentence_known_audio_ids: off-cast voice en-GB-RyanNeural",
+    "takeg_audio_ids: off-cast voice fr-CA-AntoineNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "e3bd39a5-8cd2-4bab-856a-7ee0c976350a",
+     "5f97f4b3-c021-498f-9d9c-0fa7c99b5370"
+    ],
+    "sentence_known_audio_ids": [
+     "d6f23bc1-6c38-4222-9ce5-8c24c0cd56a4",
+     "ee54678e-3c28-4e0f-a04d-55a58914d8b0"
+    ],
+    "takeg_audio_ids": [
+     "c67af449-b11b-4e37-bbdb-39b489d3db4f"
+    ]
+   }
+  },
+  {
+   "id": "fra_ca_for_eng:pod-1:SC14-S001",
+   "scene": 14,
+   "sentence": 1,
+   "speaker": "Passenger",
+   "target_text": "Bonjour. Tu peux m'amener à la gare, s'il te plaît?",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice en-GB-SoniaNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "9066f2bd-d0b0-4442-9d3e-b67ad9b06a0f",
+     "d74dd77b-70ff-4225-bcdc-a0e654d64fa4"
+    ],
+    "sentence_known_audio_ids": [
+     "3c5f7115-3731-4b62-905f-f54310c09f86",
+     "aab306ce-827f-4a7f-bacd-0f96e9e59b95"
+    ],
+    "takeg_audio_ids": [
+     "0b578870-5910-42e8-a4ab-c395ba3cd70c"
+    ]
+   }
+  },
+  {
+   "id": "fra_ca_for_eng:pod-1:SC14-S002",
+   "scene": 14,
+   "sentence": 2,
+   "speaker": "Driver",
+   "target_text": "Oui, bien sûr. Ça va prendre un peu de temps, y'a beaucoup de trafic en ce moment.",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice fr-CA-AntoineNeural",
+    "sentence_known_audio_ids: off-cast voice leo",
+    "takeg_audio_ids: off-cast voice fr-CA-AntoineNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "a171deba-aea9-4b5b-84f2-8103289871b9",
+     "eaf1f7b5-49c1-48c6-9a9f-105a15787b9e"
+    ],
+    "sentence_known_audio_ids": [
+     "8e7bf423-72ec-4d56-91cf-abb687a1a1bf",
+     "f1b90b60-9614-4b16-b886-7960986d183a"
+    ],
+    "takeg_audio_ids": [
+     "2e29b7e6-6617-43f8-bf0a-7d6098c8b987",
+     "eb98215a-d295-4096-a2ef-f13241e7daa7"
+    ]
+   }
+  },
+  {
+   "id": "fra_ca_for_eng:pod-1:SC14-S004",
+   "scene": 14,
+   "sentence": 4,
+   "speaker": "Driver",
+   "target_text": "Peut-être une vingtaine de minutes, si on n'a pas de malchance avec les feux de circulation.",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: off-cast voice fr-CA-AntoineNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "37a3f9c9-b2af-46c3-8d64-74d56efc889a"
+    ]
+   }
+  },
+  {
+   "id": "fra_ca_for_eng:pod-1:SC14-S006",
+   "scene": 14,
+   "sentence": 6,
+   "speaker": "Driver",
+   "target_text": "Oui, je vais te déposer juste à côté du guichet.",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: off-cast voice fr-CA-AntoineNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "754d0882-0709-46c8-b8a1-ecafab9c5de0"
+    ]
+   }
+  },
+  {
+   "id": "fra_ca_for_eng:pod-1:SC14-S007",
+   "scene": 14,
+   "sentence": 7,
+   "speaker": "Driver",
+   "target_text": "Voilà. Ça fait douze livres cinquante.",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "66a06b56-5417-48bf-9870-427b03bd522c",
+     "0d511967-f5bc-49d4-8af9-691df00ed41b"
+    ],
+    "sentence_known_audio_ids": [
+     "e19eb89f-9a69-4424-8d7e-5c1b80251512",
+     "9cdf5f4c-c1d3-43a3-8069-6b97534c095b"
+    ],
+    "takeg_audio_ids": [
+     "4d532a95-f654-40d4-9e90-ec32b9ca76e5"
+    ]
+   }
+  },
+  {
+   "id": "fra_ca_for_eng:pod-1:SC14-S009",
+   "scene": 14,
+   "sentence": 9,
+   "speaker": "Driver",
+   "target_text": "Oui, bien sûr. La machine est juste ici.",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice fr-CA-AntoineNeural",
+    "sentence_known_audio_ids: off-cast voice leo",
+    "takeg_audio_ids: off-cast voice fr-CA-AntoineNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "a171deba-aea9-4b5b-84f2-8103289871b9",
+     "2b9bf3eb-9973-4338-8612-89171484b552"
+    ],
+    "sentence_known_audio_ids": [
+     "8e7bf423-72ec-4d56-91cf-abb687a1a1bf",
+     "45383a06-8ae5-42db-9a27-07c736e1dc61"
+    ],
+    "takeg_audio_ids": [
+     "2e29b7e6-6617-43f8-bf0a-7d6098c8b987",
+     "8a4b47bf-ed45-48e1-8639-d54916f4b2c7"
+    ]
+   }
+  },
+  {
+   "id": "fra_ca_for_eng:pod-1:SC14-S010",
+   "scene": 14,
+   "sentence": 10,
+   "speaker": "Narrator",
+   "target_text": "100. 200. 1000. Dimanche. 12 heures.",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "646fdfc0-72ea-4e4b-a07b-69f5e25228c3",
+     "a09252c4-45bd-477f-b912-a798190bc06e",
+     "e2ed9c63-c41d-4028-a9f5-76ba4c0a26f8",
+     "e68cb4b7-b40e-48e6-bc26-d2ba5914fe1d",
+     "bc255112-177c-4135-bfa7-f694d7108917"
+    ],
+    "sentence_known_audio_ids": [
+     "51e88234-77fa-489f-8715-dcf31ed548bf",
+     "03b48fa2-a4e7-4867-81e7-dc5b1c1b223a",
+     "cdb1b78d-8023-47a9-83e2-4286699d3a39",
+     "fe97ced3-6104-4b62-9c16-61dfd7fc8c75",
+     "0499e07e-2309-43f5-9f6c-49d76fadee31"
+    ],
+    "takeg_audio_ids": [
+     "1696bd94-33a1-41ae-b45a-cd0c09227b58"
+    ]
+   }
+  },
+  {
+   "id": "fra_ca_for_eng:pod-1:SC15-S001",
+   "scene": 15,
+   "sentence": 1,
+   "speaker": "Learner",
+   "target_text": "Ça coûte combien?",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "dc86d385-4c4a-4499-947e-320a9497656a",
+     "4f4b939c-f125-4676-a0ee-7effcebb35d6"
+    ],
+    "sentence_known_audio_ids": [
+     "eda632a1-582b-448c-8323-2f9fd49d5b01",
+     "534e0e2e-b404-47c0-b1f3-cff195f3921e"
+    ],
+    "takeg_audio_ids": [
+     "e135c2ef-5b4f-4508-a8d1-a6e04b913e53",
+     "9f18db82-9f98-4eaf-a06d-e65816423d4f"
+    ]
+   }
+  },
+  {
+   "id": "fra_ca_for_eng:pod-1:SC15-S002",
+   "scene": 15,
+   "sentence": 2,
+   "speaker": "Learner",
+   "target_text": "Pouvez-vous me dire combien ça coûte?",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "4153144c-d394-4c51-bae1-e1eeea9186b8",
+     "1710e8f6-0a79-469c-b4e3-1a116f4b04f6",
+     "705caf8e-1d05-49ed-b2b2-9537c53c44c2"
+    ],
+    "sentence_known_audio_ids": [
+     "4ba27490-75fe-4ed1-99f6-583f31d033e5",
+     "0917172d-e2cf-4451-832a-c6b39dfe21e0",
+     "582fc951-a5fb-4a29-8ba0-619ad760204b"
+    ],
+    "takeg_audio_ids": [
+     "df9f1463-c229-4008-ba5a-eb31fe973ab4",
+     "13dc5f6a-f7dd-4cdf-b623-3e82c633943e",
+     "376ee514-885d-49af-aad1-289e762d94c3"
+    ]
+   }
+  },
+  {
+   "id": "fra_ca_for_eng:pod-1:SC15-S003",
+   "scene": 15,
+   "sentence": 3,
+   "speaker": "Learner",
+   "target_text": "Ça coûte combien pour prendre un taxi jusqu'au centre-ville?",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "662d6db3-b715-4bda-a823-401c8b507a91",
+     "2f82d403-3729-4e39-82cf-39c6acfe48e9",
+     "837ebcb1-6697-41e4-9391-29d3d3f87751"
+    ],
+    "sentence_known_audio_ids": [
+     "dc2782a6-1297-4582-9598-760633f92ae7",
+     "e1f5d544-5d97-43d1-9ed5-a22db9b72e2f",
+     "d71e6c53-7fde-4cd6-a822-a2162e9e7f7f"
+    ],
+    "takeg_audio_ids": [
+     "4c82d993-33d1-4628-8b70-8070da0d6744",
+     "9a959206-8feb-4b0b-94a3-ab83d56d02a2",
+     "de3fe600-dbc0-48be-be4a-6250c5920b86"
+    ]
+   }
+  },
+  {
+   "id": "fra_ca_for_eng:pod-1:SC15-S004",
+   "scene": 15,
+   "sentence": 4,
+   "speaker": "Learner",
+   "target_text": "Ça coûte combien pour prendre l'autobus jusqu'au centre-ville?",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "08c65967-d7b5-4d64-b92f-ef606295dbe9"
+    ]
+   }
+  },
+  {
+   "id": "fra_ca_for_eng:pod-1:SC15-S005",
+   "scene": 15,
+   "sentence": 5,
+   "speaker": "Learner",
+   "target_text": "Où c'est qu'on peut prendre l'autobus?",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "14bbff17-7b35-492d-8ba1-33875d0e7de9",
+     "b1d24feb-316d-46e4-9e9d-c19ae2d6555b",
+     "4de9e9d0-5f17-49da-84b9-9ccad2553069",
+     "58633c09-34a5-4c68-bfa4-a905c0002709"
+    ],
+    "sentence_known_audio_ids": [
+     "3f536214-caef-4761-89b5-fd6d6a2f8eb8",
+     "fe836508-27ee-4187-9243-deee5525e7ff",
+     "42168576-3e7f-4cb1-b8e2-aef723dd2b8a",
+     "dae7fcda-2f20-4b26-9e10-7b7a36c53058"
+    ],
+    "takeg_audio_ids": [
+     "75c94177-005c-4c37-96fd-eb08be97b14b",
+     "6a84ceaa-aca6-49d9-9b8c-8eb427afe966",
+     "2cc0331a-6f2e-47f4-97eb-7f8bb3db8db1",
+     "25c37a7c-06d8-4006-8452-0fc20e486e20"
+    ]
+   }
+  },
+  {
+   "id": "fra_ca_for_eng:pod-1:SC15-S006",
+   "scene": 15,
+   "sentence": 6,
+   "speaker": "Learner",
+   "target_text": "Où c'est qu'on peut prendre un taxi?",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "a5566a3c-b074-4c9c-b4cd-c8d98dd59da6",
+     "8b7f3196-3cd9-4f35-8abc-734b0b9ae312",
+     "de7ea451-4d6a-4fe9-8e48-86edde94e897"
+    ],
+    "sentence_known_audio_ids": [
+     "f7c8ceb2-3e16-402d-84d6-8a4e8cd98774",
+     "19cd3c31-5427-45a1-80d1-01e3dce20edf",
+     "33facc0c-8aef-4154-9746-4e870e6c8370"
+    ],
+    "takeg_audio_ids": [
+     "c1aeea1b-96d0-492e-90df-d31efa29fc71",
+     null,
+     "8d6089a9-7f78-4894-afb3-7c7c8e9a174d"
+    ]
+   }
+  },
+  {
+   "id": "fra_ca_for_eng:pod-1:SC15-S007",
+   "scene": 15,
+   "sentence": 7,
+   "speaker": "Learner",
+   "target_text": "Quatre billets simples pour le centre-ville, s'il vous plaît.",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "11fe444e-2eba-4e85-a832-400d7971442c",
+     "de4ca1bc-eb28-4943-aa90-15e94949f4d6"
+    ],
+    "sentence_known_audio_ids": [
+     "0dda1d74-c335-4729-9912-d9f595520ac3",
+     "96eca73e-87b2-48fc-9372-33a9028a3bbd"
+    ],
+    "takeg_audio_ids": [
+     "e06b528c-69e1-448d-b88c-add8d81476a9",
+     "2ee2441e-f745-467a-8be8-89f199326b1f"
+    ]
+   }
+  },
+  {
+   "id": "fra_ca_for_eng:pod-1:SC15-S008",
+   "scene": 15,
+   "sentence": 8,
+   "speaker": "Learner",
+   "target_text": "Deux billets aller-retour pour le centre-ville, s'il vous plaît.",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "3047f032-fe5b-414c-9950-d3d432afd478",
+     "3e214c43-06ff-41cb-b5ff-f4f8823b6f30",
+     "fc0e1e7a-f248-4018-a8dc-a8afe27819b2"
+    ],
+    "sentence_known_audio_ids": [
+     "146fe6dc-78d2-49d3-b5f2-3b9373c556de",
+     "de28f9fa-ea68-4fe4-a613-087a850e4286",
+     "12b911db-bc97-41dd-9c4a-1b5312da5d18"
+    ],
+    "takeg_audio_ids": [
+     "f59405fa-a252-4e6a-a26a-d7400fd7f1ba",
+     "32f91628-af62-44e3-a18f-0df453e56257"
+    ]
+   }
+  },
+  {
+   "id": "fra_ca_for_eng:pod-1:SC15-S009",
+   "scene": 15,
+   "sentence": 9,
+   "speaker": "Learner",
+   "target_text": "J'aime mieux essayer de parler votre langue, je trouve ça poli.",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "8b536b57-76bd-4f67-8656-d9d3d8586702",
+     "62ca5386-2623-4be9-b1ed-24a6b2ba4748",
+     "df1e9ef6-1218-4d51-b159-2732983cc6b6",
+     "11076656-32ce-472a-b875-9e9b24fe4a98"
+    ],
+    "sentence_known_audio_ids": [
+     "8e212d7f-1d85-43b8-af0b-7432bc135043",
+     "1c5b1cdb-9103-4cb5-8036-6818e52c658c",
+     "84fa3617-f474-4233-a904-33ffed6a49d4",
+     "23b4bccc-249f-42b8-86b2-0bf76606b1e6"
+    ],
+    "takeg_audio_ids": [
+     "ca757e6c-df5c-4106-be5a-31672c6952b5",
+     "363c3b5e-2d2f-4ee0-bc50-98bcc1b9e622",
+     "7568d433-65f9-4d05-b8ae-9a0bbdff01e3",
+     "3cbca9fb-a837-476d-b233-33893ccfe387"
+    ]
+   }
+  },
+  {
+   "id": "fra_ca_for_eng:pod-1:SC15-S010",
+   "scene": 15,
+   "sentence": 10,
+   "speaker": "Learner",
+   "target_text": "Désolée, chus pas capable de parler ben vite.",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "fba3bee6-949b-46dc-9001-1f5921759ee7",
+     "1481abc9-956d-4c12-a616-268ab3f6f70c",
+     "50f466ea-c9e6-420b-a7c1-76bd6e0a20bf"
+    ],
+    "sentence_known_audio_ids": [
+     "65305e05-957f-4302-b22a-8269b2b60dd8",
+     "4f2cb9a2-1411-4c72-b9e1-3957402254fd",
+     "2680153f-4af0-4fef-b2c0-a65c1b902148"
+    ],
+    "takeg_audio_ids": [
+     "4c9e0a5a-96bd-49d5-9623-3f55afdee3fe",
+     "d9011b21-dd3b-44eb-99cc-1c8e09b437ca",
+     "ad736219-8ab0-4fd1-913d-dc286114f216"
+    ]
+   }
+  },
+  {
+   "id": "fra_ca_for_eng:pod-1:SC15-S011",
+   "scene": 15,
+   "sentence": 11,
+   "speaker": "Narrator",
+   "target_text": "100 000. 60. 70. 1 heure. 11 heures.",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "751a0e44-5e83-4124-a0f9-29cb1a889f78",
+     "afb14308-9760-48b0-b46a-35b248efe8f2",
+     "d87a928c-7e43-4c51-976a-eeced9e59461"
+    ],
+    "sentence_known_audio_ids": [
+     "03553732-4f3f-4d6b-b9c7-bc785b256f44",
+     "db4a40f7-bce7-4e9b-a82b-e7a8feb36df7",
+     "310f101a-96e7-462b-8e8e-9b92ef02da64"
+    ],
+    "takeg_audio_ids": [
+     "9d8f9c40-449a-454a-aac6-3b2d778c363e",
+     "7caa9fbc-1547-4900-ab2a-1cffff9de73b"
+    ]
+   }
+  }
+ ]
+}

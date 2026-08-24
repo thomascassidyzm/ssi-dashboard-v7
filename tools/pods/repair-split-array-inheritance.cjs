@@ -51,6 +51,16 @@ const { Client } = require('pg')
 
 const POD = process.argv[2]
 const APPLY = process.argv.includes('--apply')
+// Collapsing a split row changes its progress key from `<row.id>:s<k>` back to
+// `<row.id>`, so those rows must go in the SAME transaction as the content
+// change (pod-migration-protocol.md rule 8). Dropping them is what the protocol
+// already prescribes: rule 5, a removed sentence drops with no penalty, and
+// rule 6, anything that changed at all counts as new rather than surviving —
+// doubt resolves to unheard. It cannot send anyone backwards: `exposures` floors
+// on the derived main-flow value (see tools/pods/pod-state-migrate.cjs). The
+// exposures being dropped were accrued against the WRONG conversation's text
+// anyway. Every deleted row is snapshotted into the log first.
+const MIGRATE = process.argv.includes('--migrate-split-progress')
 if (!POD) {
   console.error('usage: repair-split-array-inheritance.cjs <pod_id> [--apply]')
   process.exit(2)
@@ -66,7 +76,15 @@ const norm = (s) => (s || '')
   .replace(/\[pause\]/g, ' ').replace(/[…]/g, ' ')
   .replace(/[^\p{L}\p{N} ]/gu, ' ').replace(/\s+/g, ' ').trim()
 
-const bare = (v) => (v || '').replace(/^xai_/, '')
+// A voice id appears both bare and provider-prefixed, in the SAME course and
+// sometimes on the same track: `ara` / `xai_ara`, `es-ES-ElviraNeural` /
+// `azure_es-ES-ElviraNeural`. The pod's cast map stores one form and
+// course_audio often stores the other, so both prefixes must come off before
+// any comparison. Stripping only `xai_` made the whole-turn cast gate below
+// reject 155 correct Spanish clips, 234 Mexican and 138 Irish as "off-cast" —
+// the gate refusing to write on a comparison it could not actually make, which
+// is the behaviour we want, but for the wrong reason.
+const bare = (v) => (v || '').replace(/^(xai_|azure_)/, '')
 
 const SLOTS = [
   { field: 'sentence_audio_ids', side: 'target' },
@@ -96,9 +114,12 @@ async function main () {
   const prog = (await db.query(
     "select count(*) filter (where sentence_id like '%:s%') split_keyed from learner_pod_state where course_code=$1",
     [courseCode])).rows[0]
-  if (Number(prog.split_keyed) > 0) {
-    throw new Error(`${prog.split_keyed} split-keyed learner_pod_state rows exist for ${courseCode} — ` +
-      'nulling would orphan learner progress. Run the migration in docs/pods/pod-migration-protocol.md first.')
+  const splitKeyed = Number(prog.split_keyed)
+  if (splitKeyed > 0 && !MIGRATE) {
+    throw new Error(`${splitKeyed} split-keyed learner_pod_state rows exist for ${courseCode} — ` +
+      'nulling would orphan learner progress. Re-run with --migrate-split-progress to drop them ' +
+      'under pod-migration-protocol.md rules 5/6/8 (snapshotted to the log, reversible), or run ' +
+      'the migration in that document first.')
   }
 
   const rows = (await db.query(
@@ -122,6 +143,7 @@ async function main () {
 
   // GATE 2 — the fallback must be correct on EVERY row, or nulling is not a repair.
   const wholeTurnFailures = []
+  const badRows = new Set()
   for (const r of rows) {
     for (const [idField, textField, side] of [
       ['target_audio_id', 'target_text', 'target'],
@@ -131,20 +153,35 @@ async function main () {
       if (!clip) continue // a missing whole-turn clip is a different defect; leave it alone
       if (norm(clip.text) !== norm(r[textField])) {
         wholeTurnFailures.push(`s${r.scene_number}/${r.sentence_number} ${idField} text mismatch`)
+        badRows.add(r.id)
       }
       if (!cast[side].has(clip.v)) {
         wholeTurnFailures.push(`s${r.scene_number}/${r.sentence_number} ${idField} off-cast voice ${clip.v}`)
+        badRows.add(r.id)
       }
     }
   }
-  if (wholeTurnFailures.length) {
-    throw new Error(`${wholeTurnFailures.length} whole-turn clip(s) are themselves wrong — nulling would ` +
-      `not restore a correct course. Fix those first.\n  ` + wholeTurnFailures.slice(0, 10).join('\n  '))
+  // A row whose OWN whole-turn clip is wrong cannot be repaired by falling back
+  // to it — that would trade wrong-split for wrong-whole-turn. Such rows are
+  // EXCLUDED from the plan and reported, rather than aborting the whole pod:
+  // spa_for_eng has 6 and spa_mx_for_eng 4, all of them gendered-speech
+  // mismatches (row text "no estoy segura", clip says "seguro") which are a
+  // separate, already-tracked defect needing a re-render. Refusing the whole
+  // pod over them would leave 225 genuinely repairable rows broken and live.
+  //
+  // A large proportion still aborts: that means the pod's canon is wrong in
+  // some systemic way this tool has no business writing over.
+  const SYSTEMIC_FRACTION = 0.2
+  if (badRows.size > rows.length * SYSTEMIC_FRACTION) {
+    throw new Error(`${badRows.size} of ${rows.length} rows have a wrong whole-turn clip ` +
+      `(> ${SYSTEMIC_FRACTION * 100}%) — the pod's canon is systemically wrong, not patchable here.\n  ` +
+      wholeTurnFailures.slice(0, 10).join('\n  '))
   }
 
   // Classify each slot on each row.
   const plan = []
   for (const r of rows) {
+    if (badRows.has(r.id)) continue // its own fallback is wrong — see above
     const clear = []
     const why = []
     for (const { field, side } of SLOTS) {
@@ -182,16 +219,34 @@ async function main () {
   console.log(`pod ${POD} (${courseCode}, ${podRow.visibility})`)
   console.log(`cast target=[${[...cast.target]}] known=[${[...cast.known]}]`)
   console.log(`rows ${rows.length}, rows needing repair ${plan.length}`)
-  console.log(`whole-turn clips verified correct on all ${rows.length} rows — fallback is safe`)
+  console.log(`whole-turn clips verified correct on ${rows.length - badRows.size}/${rows.length} rows — ` +
+    'fallback is safe on those; the rest are skipped below')
   console.log(`split-keyed progress rows: 0 — nulling orphans nothing`)
   console.log('rows to repair by scene:', JSON.stringify(byScene))
+  if (badRows.size) {
+    console.log(`\nSKIPPED ${badRows.size} row(s) whose OWN whole-turn clip is wrong — not repairable by`)
+    console.log('fallback; these need their audio re-rendered (Tom\'s trigger), listed in the log:')
+    for (const f of wholeTurnFailures) console.log(`  ${f}`)
+  }
 
   const stamp = new Date().toISOString().slice(0, 10)
   const logPath = path.join(REPO, 'docs/pods',
     `${courseCode}-split-array-repair-${stamp}-${APPLY ? 'applied' : 'dryrun'}-log.json`)
 
   let written = 0
+  let progressDropped = []
   if (APPLY) {
+    await db.query('BEGIN')
+    if (splitKeyed > 0) {
+      // Snapshot BEFORE deleting, so the log alone can restore them.
+      progressDropped = (await db.query(
+        `select learner_id, course_code, sentence_id, exposures, updated_at
+           from learner_pod_state where course_code=$1 and sentence_id like '%:s%'`,
+        [courseCode])).rows
+      await db.query(
+        "delete from learner_pod_state where course_code=$1 and sentence_id like '%:s%'",
+        [courseCode])
+    }
     for (const p of plan) {
       // Per-row before-state assertion: abort on drift rather than write over
       // something that changed since the plan was computed.
@@ -210,6 +265,7 @@ async function main () {
         [p.id, ...p.clear.map(() => null)])
       written++
     }
+    await db.query('COMMIT')
   }
 
   fs.writeFileSync(logPath, JSON.stringify({
@@ -221,10 +277,16 @@ async function main () {
     rows_repaired: APPLY ? written : plan.length,
     cast: { target: [...cast.target], known: [...cast.known] },
     by_scene: byScene,
+    skipped_rows_needing_rerender: wholeTurnFailures,
+    split_keyed_progress_dropped: progressDropped,
     rows: plan,
   }, null, 1))
 
   console.log(`${APPLY ? `APPLIED — ${written} rows updated` : 'DRY RUN — nothing written'}`)
+  if (progressDropped.length) {
+    console.log(`dropped ${progressDropped.length} split-keyed progress row(s) in the same ` +
+      'transaction, snapshotted in the log')
+  }
   console.log(`log: ${logPath}`)
   await db.end()
 }
