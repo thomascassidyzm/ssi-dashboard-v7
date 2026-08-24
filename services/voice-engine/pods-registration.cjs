@@ -15,9 +15,9 @@
  *        voice_config.voices[role] slots)
  *   commit (AFTER the mastered take is at its fresh S3 key)
  *     → upsert course_audio  origin='human', role per kind (recon §1:
- *       target→'target1', known→'known', explainer→'pod_explainer' — never
- *       invented), conflict on the live 5-column unique key
- *     → set listening_pod_sentences.{target|known|explainer}_audio_id
+ *       target→'target1', known→'known' — never invented), conflict on the
+ *       live 5-column unique key
+ *     → set listening_pod_sentences.{target|known}_audio_id
  *       EXPLICITLY (recon §2: the audio_autolink trigger never touches
  *       listening_pod_sentences — phase8 links explicitly too, we mirror it)
  *
@@ -29,10 +29,14 @@
  * key and is recorded as replaced_s3_key (same reversibility contract as
  * regeneration mode).
  *
+ * Explainer narration was deprecated on 2026-08-24: kind 'explainer' is no
+ * longer a registerable pod track, so no new 'pod_explainer' rows are written
+ * and explainer_audio_id is never set. Existing rows and clips are untouched.
+ *
  * Known side-effect (recon §2, pre-existing, same as TTS pod inserts):
  * inserting role 'target1'/'known' fires the audio_autolink trigger, which
  * may opportunistically claim a NULL-audio lego/phrase with identical
- * normalized text. 'pod_explainer' falls through the trigger (no-op).
+ * normalized text.
  *
  * No DDL. No TTS. Writes: course_audio upsert + one sentence FK update.
  */
@@ -45,23 +49,21 @@ const { voiceSpellings } = require('../shared/clip-identity-lookup.cjs')
 const POD_KIND_ROLES = Object.freeze({
   target: 'target1',
   known: 'known',
-  explainer: 'pod_explainer',
 })
 
 const POD_KIND_LINK_COLUMNS = Object.freeze({
   target: 'target_audio_id',
   known: 'known_audio_id',
-  explainer: 'explainer_audio_id',
 })
 
 const POD_KIND_TEXT_COLUMNS = Object.freeze({
   target: 'target_text',
   known: 'known_text',
-  explainer: 'explainer_text',
 })
 
-// The explainer voice's cast key (keystone §1) — known-language lines and
-// explainer narration are recorded by this cast entry, not a character.
+// The explainer voice's cast key (keystone §1) — the known-language lines are
+// recorded by this cast entry, not a character. SURVIVES the 2026-08-24
+// explainer deprecation: it routes the known (English) leg, which is live.
 const EXPLAINER_CAST_KEY = '__explainer__'
 
 /** Pod-mode upload detection — explicit metadata.mode only (no legacy shapes). */
@@ -98,9 +100,9 @@ function canonicalSpeakerName(speaker) {
  * courses.voice_config.podCast (keystone §1 shape:
  * { "<speakerName>": { voiceId, name, email }, "__explainer__": {...} }).
  *
- * target lines    → podCast[canonical speaker] (raw key fallback for safety)
- * known/explainer → podCast["__explainer__"] (the explainer voice owns all
- *                   known-language lines + explainer narration)
+ * target lines → podCast[canonical speaker] (raw key fallback for safety)
+ * known lines  → podCast["__explainer__"] (the explainer voice owns all
+ *                known-language lines)
  *
  * The client's metadata.voiceId is ADVISORY: used only when the cast has no
  * entry yet (recording ahead of casting — same trust model as the
@@ -168,7 +170,7 @@ async function preparePodRegistration({ supabase, courseCode, metadata = {}, log
 
   const { data: sentence, error: sentErr } = await supabase
     .from('listening_pod_sentences')
-    .select('id, pod_id, speaker, target_text, known_text, explainer_text, rerecord_wanted, target_audio_id, known_audio_id, explainer_audio_id')
+    .select('id, pod_id, speaker, target_text, known_text, rerecord_wanted, target_audio_id, known_audio_id')
     .eq('id', metadata.sentenceId)
     .maybeSingle()
   if (sentErr) return { error: `sentence lookup failed: ${sentErr.message}`, status: 500 }
@@ -190,8 +192,6 @@ async function preparePodRegistration({ supabase, courseCode, metadata = {}, log
 
   const text = (sentence[textColumn] || '').trim()
   if (!text) {
-    // explainer_text='' is the deliberate "no explainer" stamp (recon §5) —
-    // a take for it has no registerable text.
     return { error: `Sentence ${sentence.id} has no ${textColumn} — nothing to register for kind '${kind}'`, status: 400 }
   }
 
@@ -217,9 +217,8 @@ async function preparePodRegistration({ supabase, courseCode, metadata = {}, log
     return { error: `No voice resolvable for ${kind} line ${sentence.id}: no podCast entry and no client voiceId`, status: 400 }
   }
 
-  // ASSUMPTION (flagged): human known/explainer takes carry the course's
-  // known_lang as course_audio.language (TTS explainer rows carry the xAI
-  // resolved cue instead, e.g. 'ar-EG' — a human take has no cue to record).
+  // ASSUMPTION (flagged): human known takes carry the course's known_lang as
+  // course_audio.language.
   const language = kind === 'target' ? course.target_lang : course.known_lang
 
   return {

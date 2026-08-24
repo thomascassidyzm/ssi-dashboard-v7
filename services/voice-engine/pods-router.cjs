@@ -30,7 +30,8 @@
  *                             machine DRAFT, course-wide, with the English
  *                             beside it and who is cast to read it
  *   GET /recording-plan       ?voiceId= → ordered autocue queue with cues,
- *                             glue grouping, explainer queue, estimated minutes
+ *                             glue grouping, known-language queue, estimated
+ *                             minutes
  *
  * Writes touch ONLY voice_config.podCast — an additive key TTS serving never
  * reads — so no course-version bump is needed (serving output is unchanged).
@@ -59,8 +60,11 @@ const {
 } = require('./pods-cast.cjs')
 const { buildRecordingPlan, finalizeRecordingPlan, DEFAULT_CUE_COUNT } = require('./pods-plan.cjs')
 
+// Explainer narration is deprecated (2026-08-24): explainer_text /
+// explainer_audio_id are deliberately NOT selected — the columns and their rows
+// stay in the DB, they simply stop being read here.
 const SENTENCE_COLUMNS =
-  'id, pod_id, scene_number, global_order, speaker, target_text, target_text_draft, known_text, explainer_text, glue_to_next, rerecord_wanted, target_audio_id, known_audio_id, explainer_audio_id'
+  'id, pod_id, scene_number, global_order, speaker, target_text, target_text_draft, known_text, glue_to_next, rerecord_wanted, target_audio_id, known_audio_id'
 const PAGE_SIZE = 1000 // PostgREST max-rows silently truncates — always paginate
 
 /**
@@ -167,7 +171,7 @@ module.exports = function createPodsCastRouter({
   async function countHumanTakes(db, sentences) {
     const ids = new Set()
     for (const s of sentences) {
-      for (const col of ['target_audio_id', 'known_audio_id', 'explainer_audio_id']) {
+      for (const col of ['target_audio_id', 'known_audio_id']) {
         if (s[col]) ids.add(s[col])
       }
     }
@@ -575,21 +579,24 @@ module.exports = function createPodsCastRouter({
 
   // ── PATCH /sentence/:sentenceId — community script editing ───────────────
   // Course editors fix the generated script BEFORE (or after) recording:
-  // target/known/explainer text. Clearing the edited line's audio pointer is
-  // what resurfaces it in the recording plan; the old audio ROW is never
-  // deleted. (The legacy admin-only /api/admin/pod-sentences/:id stays for
+  // target/known text. Clearing the edited line's audio pointer is what
+  // resurfaces it in the recording plan; the old audio ROW is never deleted.
+  // explainer_text is no longer editable (deprecated 2026-08-24) and an
+  // explainer_audio_id link is deliberately left alone by an edit: nothing
+  // plays it and nothing will re-record it, so nulling it would be a DB
+  // mutation with no purpose. (The legacy admin-only /api/admin/pod-sentences/:id stays for
   // back-compat; this is the per-course-scoped door community leaders use.)
   router.patch('/sentence/:sentenceId', async (req, res) => {
     const { courseCode, sentenceId } = req.params
     const patch = buildSentenceEditPatch(req.body || {})
-    if (!patch) return res.status(400).json({ error: 'target_text, known_text or explainer_text required' })
+    if (!patch) return res.status(400).json({ error: 'target_text or known_text required' })
     try {
       const db = getDb()
       // The sentence must belong to a pod of THIS course — the URL's course
       // is what the gate authorized, so verify before writing.
       const { data: sentence, error: fetchError } = await db
         .from('listening_pod_sentences')
-        .select('id, pod_id, target_audio_id, known_audio_id, explainer_audio_id')
+        .select('id, pod_id, target_audio_id, known_audio_id')
         .eq('id', sentenceId)
         .maybeSingle()
       if (fetchError) throw new Error(fetchError.message)
@@ -605,14 +612,14 @@ module.exports = function createPodsCastRouter({
       }
 
       const cleared = {}
-      for (const col of ['target_audio_id', 'known_audio_id', 'explainer_audio_id']) {
+      for (const col of ['target_audio_id', 'known_audio_id']) {
         if (col in patch && sentence[col]) cleared[col] = sentence[col]
       }
       const { data: updated, error: updateError } = await db
         .from('listening_pod_sentences')
         .update(patch)
         .eq('id', sentenceId)
-        .select('id, target_text, target_text_draft, known_text, explainer_text, target_audio_id, known_audio_id, explainer_audio_id')
+        .select('id, target_text, target_text_draft, known_text, target_audio_id, known_audio_id')
         .single()
       if (updateError) throw new Error(updateError.message)
       if (Object.keys(cleared).length) {

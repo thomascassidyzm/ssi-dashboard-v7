@@ -1,6 +1,6 @@
 /**
  * Unit tests: per-voice recording-plan construction (keystone §2) —
- * cue lines, scene boundaries, glue grouping, explainer queue, estimates.
+ * cue lines, scene boundaries, glue grouping, known-language queue, estimates.
  * Run: npx vitest run services/voice-engine
  */
 
@@ -13,7 +13,9 @@ const {
   estimateSeconds,
 } = require('../pods-plan.cjs')
 
-// ── Fixture: one course, two pods, cast of two humans + explainer ───────────
+// ── Fixture: one course, two pods, cast of two humans + the __explainer__
+// (known-language) voice. explainer_text still sits on the fixture rows on
+// purpose: the plan must IGNORE it, and a fixture with none could not show that.
 
 const PODS = [
   {
@@ -71,7 +73,7 @@ describe('buildRecordingPlan — queue', () => {
     expect(p.items.map(i => i.sentenceId)).toEqual(['p0-1', 'p0-3', 'p0-7', 'p1-1'])
     expect(p.items.every(i => i.kind === 'target')).toBe(true)
     expect(p.castSpeakers).toEqual(['Anna'])
-    expect(p.counts).toEqual({ target: 4, known: 0, explainer: 0, total: 4 })
+    expect(p.counts).toEqual({ target: 4, known: 0, total: 4 })
   })
 
   it('variants collapse: Neighbour (8 am) lines land on the Neighbour cast entry', () => {
@@ -157,24 +159,25 @@ describe('buildRecordingPlan — glue_to_next', () => {
   })
 })
 
-// ── Explainer queue ──────────────────────────────────────────────────────────
+// ── The __explainer__ (known-language) queue ─────────────────────────────────
 
-describe('buildRecordingPlan — explainer queue (__explainer__)', () => {
-  it('carries every known line + every non-empty explainer_text', () => {
+describe('buildRecordingPlan — known-language queue (__explainer__)', () => {
+  // FLIPPED 2026-08-24 (was 'carries every known line + every non-empty
+  // explainer_text'): explainer narration is deprecated, so the __explainer__
+  // voice's sitting is the known-language lines and nothing else. p0-1 still
+  // carries explainer prose in the fixture and must produce NO item for it.
+  it('carries every known line and NO explainer_text item', () => {
     const p = plan('human_tom_eng')
     expect(p.isExplainer).toBe(true)
     const known = p.items.filter(i => i.kind === 'known')
-    const explainers = p.items.filter(i => i.kind === 'explainer')
     // 8 dialogue items (glue chain = one) each with known text
     expect(known.length).toBe(8)
     expect(known.find(i => i.sentenceId === 'p0-5').line).toBe('Hello — how are you?')
-    // explainer_text: p0-1 has prose, p0-4 is '' (deliberately none, recon §5)
-    expect(explainers.map(i => i.sentenceId)).toEqual(['p0-1'])
-    expect(explainers[0].line).toMatch(/all-day opener/)
-    expect(p.counts).toEqual({ target: 0, known: 8, explainer: 1, total: 9 })
+    expect(p.items.some(i => i.kind === 'explainer')).toBe(false)
+    expect(p.counts).toEqual({ target: 0, known: 8, total: 8 })
   })
 
-  it('a voice cast as BOTH a character and the explainer gets both queues', () => {
+  it('a voice cast as BOTH a character and the known voice gets both queues', () => {
     const cast = { ...POD_CAST, '__explainer__': { voiceId: 'human_catrin_cym', name: 'Catrin' } }
     const p = buildRecordingPlan({ pods: PODS, sentences: SENTENCES, podCast: cast, voiceId: 'human_catrin_cym' })
     expect(p.counts.target).toBe(4)
@@ -270,13 +273,12 @@ describe('buildRecordingPlan — rerecord_wanted', () => {
     const known = p.items.filter(i => i.kind === 'known')
     expect(known.map(i => i.sentenceId)).toEqual(['p0-2'])
     expect(known[0].line).toBe('Welcome')
-    // and it does NOT drag the explainer_text queue along with it
     expect(p.items.some(i => i.kind === 'explainer')).toBe(false)
   })
 
   it('wants only reach the named voice, and only the named track', () => {
     const sentences = withWant('p0-1', { target: 'human_aran_cym' })
-    // Tom (explainer) queue is unchanged by an Aran target want
+    // Tom (the __explainer__ known-language voice) is unchanged by an Aran target want
     const tom = wantPlan(sentences, 'human_tom_eng')
     expect(tom.items.filter(i => i.kind === 'target')).toHaveLength(0)
     // no known item appears for Aran off a target want

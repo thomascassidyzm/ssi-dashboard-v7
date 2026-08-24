@@ -131,10 +131,14 @@ describe('speakerInventory', () => {
     { id: 's3', pod_id: 'c:pod-0', scene_number: 1, global_order: 3, speaker: 'Anna', target_text: 'c', known_text: 'k3', explainer_text: null, glue_to_next: false },
   ]
 
-  it('counts lines per canonical character + explainer workload', () => {
+  it('counts lines per canonical character + the __explainer__ known workload', () => {
     const inv = speakerInventory({ pods, sentences })
     expect(inv.speakers.map(s => [s.speaker, s.lineCount])).toEqual([['Anna', 2], ['Waiter', 1]])
-    expect(inv.explainer).toMatchObject({ knownLines: 3, explainerLines: 1 }) // '' = deliberately none
+    // DEPRECATION 2026-08-24: the __explainer__ cast entry's workload is the
+    // KNOWN-LANGUAGE lines and nothing else. explainer_text is never counted,
+    // so no explainerLines field is reported even though s1 still carries prose.
+    expect(inv.explainer).toMatchObject({ knownLines: 3 })
+    expect(inv.explainer.explainerLines).toBeUndefined()
     // Sitting-size estimates ride along (people-first panel shows minutes).
     expect(inv.explainer.estimatedSeconds).toBeGreaterThan(0)
     for (const s of inv.speakers) expect(s.estimatedSeconds).toBeGreaterThan(0)
@@ -161,16 +165,21 @@ describe('buildSentenceEditPatch (community script editing)', () => {
       target_text: 'Bore da!', target_audio_id: null, target_text_draft: false,
       target_text_approved_at: null, target_text_approved_by: null, target_text_review: null,
     })
-    expect(buildSentenceEditPatch({ known_text: 'Hi', explainer_text: 'Note the mutation' })).toEqual({
+    expect(buildSentenceEditPatch({ known_text: 'Hi' })).toEqual({
       known_text: 'Hi', known_audio_id: null,
-      explainer_text: 'Note the mutation', explainer_audio_id: null,
     })
   })
 
-  it('empty explainer is a deliberate "no explainer", not a no-op', () => {
-    expect(buildSentenceEditPatch({ explainer_text: '' })).toEqual({
-      explainer_text: '', explainer_audio_id: null,
-    })
+  // DEPRECATION 2026-08-24 (flipped from 'empty explainer is a deliberate "no
+  // explainer"'): explainer_text is no longer editable at all. It is ignored
+  // rather than rejected, so an old client sending it edits nothing — and
+  // crucially never touches explainer_audio_id, which we do not mutate.
+  it('explainer_text is ignored — never written, never clears explainer audio', () => {
+    expect(buildSentenceEditPatch({ explainer_text: 'Note the mutation' })).toBe(null)
+    expect(buildSentenceEditPatch({ explainer_text: '' })).toBe(null)
+    const patch = buildSentenceEditPatch({ known_text: 'Hi', explainer_text: 'x' })
+    expect(patch).toEqual({ known_text: 'Hi', known_audio_id: null })
+    expect('explainer_audio_id' in patch).toBe(false)
   })
 
   // Tom 2026-08-06, "opus drafts, Aran proofreads": the human editing the target
@@ -189,14 +198,13 @@ describe('buildSentenceEditPatch (community script editing)', () => {
     expect(patch.target_text_review).toBe(null)
   })
 
-  it('editing only known/explainer leaves the approval alone', () => {
+  it('editing only known leaves the approval alone', () => {
     expect('target_text_approved_at' in buildSentenceEditPatch({ known_text: 'How much is that?' })).toBe(false)
-    expect('target_text_review' in buildSentenceEditPatch({ explainer_text: 'x' })).toBe(false)
+    expect('target_text_review' in buildSentenceEditPatch({ known_text: 'How much is that?' })).toBe(false)
   })
 
-  it('editing only known/explainer leaves the DRAFT marker alone', () => {
+  it('editing only known leaves the DRAFT marker alone', () => {
     expect('target_text_draft' in buildSentenceEditPatch({ known_text: 'How much is that?' })).toBe(false)
-    expect('target_text_draft' in buildSentenceEditPatch({ explainer_text: 'x' })).toBe(false)
   })
 
   it('nothing editable → null (router 400s)', () => {

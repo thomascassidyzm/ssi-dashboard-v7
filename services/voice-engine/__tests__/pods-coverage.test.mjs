@@ -27,10 +27,9 @@ function sentence(id, podId, speaker, over = {}) {
 }
 
 describe('castEntryForLine', () => {
-  it('routes target lines via canonical speaker, known/explainer via __explainer__', () => {
+  it('routes target lines via canonical speaker, known via __explainer__', () => {
     expect(castEntryForLine(podCast, 'Anna (8 am)', 'target').voiceId).toBe('human_catrin_cym')
     expect(castEntryForLine(podCast, 'Anna', 'known').voiceId).toBe('human_tom_eng')
-    expect(castEntryForLine(podCast, 'Anna', 'explainer').voiceId).toBe('human_tom_eng')
     expect(castEntryForLine(podCast, 'Stranger', 'target')).toBeNull()
   })
 })
@@ -66,13 +65,13 @@ describe('summarizePodCoverage', () => {
       { podId: 'c:pod-1', slug: 'pod-1', total: 2, recorded: 1, remaining: 1 },
     ])
 
-    // Tom (explainer voice) owns every known line: 4 sentences × known
+    // Tom (the __explainer__ cast voice) owns every known line: 4 sentences × known
     const tom = r.voices.find(v => v.voiceId === 'human_tom_eng')
     expect(tom.lines.total).toBe(4)
     expect(tom.lines.recorded).toBe(0)
     expect(tom.lines.missing).toBe(4)
 
-    // totals = 4 target + 4 known lines (explainer_text '' → not a line)
+    // totals = 4 target + 4 known lines (explainer_text is not a line at all)
     expect(r.totals.lines).toBe(8)
     expect(r.totals.recorded).toBe(2)
     expect(r.totals.tts).toBe(1)
@@ -84,7 +83,7 @@ describe('summarizePodCoverage', () => {
       sentence('s1', 'c:pod-0', 'Anna', {
         target_audio_id: 'H', known_audio_id: 'T',
         explainer_text: 'Bore da means good morning', explainer_audio_id: null,
-      }),
+      }),   // explainer_* deliberately populated: coverage must ignore it
     ]
     const audioById = new Map([
       ['H', { origin: 'human', voice_id: 'human_other_voice' }], // human but NOT the cast voice
@@ -96,18 +95,25 @@ describe('summarizePodCoverage', () => {
       origin: 'human', recorded: true, castVoiceId: 'human_catrin_cym', voiceMatch: false,
     })
     expect(sent.kinds.known).toMatchObject({ origin: 'tts', recorded: false })
-    // explainer text present, no audio → a missing line for the explainer voice
-    expect(sent.kinds.explainer).toMatchObject({ origin: null, recorded: false, castVoiceId: 'human_tom_eng' })
+    // FLIPPED 2026-08-24 (was: 'explainer text present, no audio → a missing
+    // line for the explainer voice'). Deprecation: explainer narration is never
+    // a line, so populated explainer_text reports nothing and never shows up as
+    // work outstanding against anybody's name.
+    expect(sent.kinds.explainer).toBeUndefined()
   })
 
-  it('explainer_text empty string (deliberately none) is NOT a line', () => {
-    const r = summarizePodCoverage({
-      podCast, pods,
-      sentences: [sentence('s1', 'c:pod-0', 'Anna', { explainer_text: '' })],
-      audioById: new Map(),
-    })
-    expect(r.pods[0].sentences[0].kinds.explainer).toBeUndefined()
-    expect(r.totals.lines).toBe(2) // target + known only
+  // FLIPPED 2026-08-24 (was: "explainer_text empty string is NOT a line").
+  // Now NO explainer_text is a line, empty or not.
+  it('explainer_text is never a line, populated or empty', () => {
+    for (const explainer_text of ['', 'Bore da means good morning']) {
+      const r = summarizePodCoverage({
+        podCast, pods,
+        sentences: [sentence('s1', 'c:pod-0', 'Anna', { explainer_text })],
+        audioById: new Map(),
+      })
+      expect(r.pods[0].sentences[0].kinds.explainer).toBeUndefined()
+      expect(r.totals.lines).toBe(2) // target + known only
+    }
   })
 
   it('uncast lines count as unassigned (empty podCast = casting not done yet)', () => {

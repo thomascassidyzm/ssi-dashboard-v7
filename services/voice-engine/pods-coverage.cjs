@@ -4,11 +4,14 @@
  *
  * For every cast voice in courses.voice_config.podCast: lines recorded
  * (origin='human') / remaining, with a per-pod breakdown, plus the human-vs-tts
- * status of every sentence line (target / known / explainer).
+ * status of every sentence line (target / known).
+ *
+ * Explainer narration was deprecated 2026-08-24: it is no longer a line, no
+ * longer counted and no longer reported. Existing rows and clips are untouched.
  *
  * Line → voice assignment mirrors registration (pods-registration.cjs):
- *   target lines    → podCast[canonical speaker]
- *   known/explainer → podCast["__explainer__"]
+ *   target lines → podCast[canonical speaker]
+ *   known lines  → podCast["__explainer__"]
  * Lines with no cast entry are counted under unassigned (cast UI work-to-do).
  *
  * Pure math in summarizePodCoverage (unit-testable, no DB); computePodsCoverage
@@ -20,10 +23,10 @@ const {
   EXPLAINER_CAST_KEY,
 } = require('./pods-registration.cjs')
 
-const KINDS = ['target', 'known', 'explainer']
+const KINDS = ['target', 'known']
 
-const KIND_TEXT = { target: 'target_text', known: 'known_text', explainer: 'explainer_text' }
-const KIND_AUDIO = { target: 'target_audio_id', known: 'known_audio_id', explainer: 'explainer_audio_id' }
+const KIND_TEXT = { target: 'target_text', known: 'known_text' }
+const KIND_AUDIO = { target: 'target_audio_id', known: 'known_audio_id' }
 
 /** Cast entry (voiceId/name) for one line, or null when uncast. */
 function castEntryForLine(podCast, speaker, kind) {
@@ -79,7 +82,7 @@ function summarizePodCoverage({ podCast = {}, pods = [], sentences = [], audioBy
     const sentReport = { sentenceId: s.id, speaker: s.speaker || null, kinds: {} }
     for (const kind of KINDS) {
       const text = (s[KIND_TEXT[kind]] || '').trim()
-      if (!text) continue // explainer_text ''/null = deliberately none; empty lines aren't lines
+      if (!text) continue // empty lines aren't lines
       const audioId = s[KIND_AUDIO[kind]] || null
       const audio = lookupAudio(audioId)
       const origin = audio ? (audio.origin || null) : null
@@ -172,7 +175,7 @@ async function computePodsCoverage(deps, courseCode) {
     for (let from = 0; ; from += PAGE) {
       const { data: page, error: sErr } = await supabase
         .from('listening_pod_sentences')
-        .select('id, pod_id, speaker, target_text, known_text, explainer_text, target_audio_id, known_audio_id, explainer_audio_id, global_order')
+        .select('id, pod_id, speaker, target_text, known_text, target_audio_id, known_audio_id, global_order')
         .in('pod_id', podIds)
         .order('pod_id').order('global_order')
         .range(from, from + PAGE - 1)
@@ -184,7 +187,7 @@ async function computePodsCoverage(deps, courseCode) {
 
   // origin/voice for every linked clip.
   const audioIds = [...new Set(sentences.flatMap(s =>
-    [s.target_audio_id, s.known_audio_id, s.explainer_audio_id].filter(Boolean)))]
+    [s.target_audio_id, s.known_audio_id].filter(Boolean)))]
   const audioById = new Map()
   for (const ids of chunk(audioIds, 200)) {
     const { data: rows, error: aErr } = await supabase

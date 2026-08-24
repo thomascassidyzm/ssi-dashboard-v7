@@ -798,7 +798,8 @@ async function clearRerecordWants({ db, recordist, text, sentenceId = null, logg
 
   // 2. The pod line's own flag, on every copy of this line in the language.
   //    Only the 'target' key is dropped: a want on the known track belongs to
-  //    the English explainer queue and is not this recordist's to retire.
+  //    the known-language (English) queue cast under __explainer__ and is not
+  //    this recordist's to retire.
   const courses = await coursesForLanguage(db, recordist.language)
   const { data: pods } = await db
     .from('listening_pods').select('id').in('course_code', courses.map((c) => c.course_code))

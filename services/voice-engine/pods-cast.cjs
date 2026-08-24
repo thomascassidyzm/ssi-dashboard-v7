@@ -14,8 +14,10 @@
  * voice-slots.cjs slot merges: deep-clone, touch only the podCast entries
  * being written, preserve every other key byte-for-byte.
  *
- * The EXPLAINER voice (known-language lines + explainer_text) is its own cast
- * entry under the reserved key "__explainer__".
+ * The EXPLAINER voice is its own cast entry under the reserved key
+ * "__explainer__". It carries the KNOWN-LANGUAGE (English) lines. It used to
+ * also carry explainer narration; that workload was deprecated 2026-08-24 and
+ * the cast key survives for the known-language leg alone.
  *
  * Pure module — no DB, no I/O. Vocabulary: known / target / seed.
  */
@@ -191,7 +193,9 @@ function castVoiceFor(podCast, rawSpeaker) {
 
 /**
  * Character inventory across a course's pods: who appears, how many recording
- * items each carries, plus the explainer workload.
+ * items each carries, plus the __explainer__ cast entry's workload — which is
+ * the KNOWN-LANGUAGE lines and nothing else. (Explainer narration was
+ * deprecated 2026-08-24: no longer counted, planned or recorded.)
  *
  * Line counting matches the recording plan: a glue chain (glue_to_next) by
  * one character is ONE item. Gender resolution per recon §4: the pods'
@@ -203,7 +207,7 @@ function castVoiceFor(podCast, rawSpeaker) {
  * @returns {{
  *   speakers: Array<{speaker:string, gender:string, variants:string[],
  *                    lineCount:number, podIds:string[]}>,
- *   explainer: { knownLines:number, explainerLines:number },
+ *   explainer: { knownLines:number, estimatedSeconds:number },
  * }}
  */
 function speakerInventory({ pods, sentences }) {
@@ -224,8 +228,7 @@ function speakerInventory({ pods, sentences }) {
 
   const byCanon = new Map()
   let knownLines = 0
-  let explainerLines = 0
-  let explainerSeconds = 0
+  let explainerSeconds = 0   // the __explainer__ voice's sitting = known lines only
   let prev = null
   for (const s of rows) {
     const canon = canonicalSpeakerName(s.speaker)
@@ -235,11 +238,6 @@ function speakerInventory({ pods, sentences }) {
     if (knownText) {
       if (!continuesGlue) knownLines++
       explainerSeconds += continuesGlue ? continuationSeconds(knownText) : estimateItemSeconds(knownText)
-    }
-    const explainerText = (s.explainer_text || '').trim()
-    if (explainerText) {
-      explainerLines++
-      explainerSeconds += estimateItemSeconds(explainerText)
     }
     if (canon) {
       if (!byCanon.has(canon)) byCanon.set(canon, { variants: new Set(), lineCount: 0, podIds: new Set(), seconds: 0 })
@@ -273,7 +271,7 @@ function speakerInventory({ pods, sentences }) {
 
   return {
     speakers,
-    explainer: { knownLines, explainerLines, estimatedSeconds: Math.round(explainerSeconds * 10) / 10 },
+    explainer: { knownLines, estimatedSeconds: Math.round(explainerSeconds * 10) / 10 },
   }
 }
 
@@ -299,7 +297,10 @@ function hasGenerationColouring(pods) {
  * Editing a line clears THAT line's audio pointer so the recording plan
  * resurfaces it (recorded=false) and TTS refills stay null-only — the old
  * audio ROW is never deleted (origin guard keeps human takes; provenance
- * keeps history). explainer_text edits clear explainer audio likewise.
+ * keeps history).
+ *
+ * explainer_text is NOT editable (deprecated 2026-08-24): the column and its
+ * existing rows stay exactly as they are, they simply stop being written.
  * Returns null when the body carries nothing editable.
  */
 function buildSentenceEditPatch(body = {}) {
@@ -324,11 +325,6 @@ function buildSentenceEditPatch(body = {}) {
   if (typeof body.known_text === 'string') {
     patch.known_text = body.known_text.trim()
     patch.known_audio_id = null
-  }
-  if (typeof body.explainer_text === 'string') {
-    // '' is meaningful: "deliberately no explainer" (canon convention)
-    patch.explainer_text = body.explainer_text.trim()
-    patch.explainer_audio_id = null
   }
   return Object.keys(patch).length ? patch : null
 }
@@ -434,8 +430,8 @@ function mintPeopleVoiceIds({ people, courseCode, existingCast = null }) {
  * @param {string} args.courseCode
  * @param {Object<string,'f'|'m'|'n'>} [args.genderBySpeaker] - character genders
  * @param {object|null} [args.existingCast] - saved voice_config.podCast (id stability)
- * @param {{knownLines:number, explainerLines:number, estimatedSeconds:number}|null}
- *   [args.explainerWorkload] - from speakerInventory().explainer
+ * @param {{knownLines:number, estimatedSeconds:number}|null}
+ *   [args.explainerWorkload] - from speakerInventory().explainer (known lines)
  *
  * @returns {{
  *   people: Array,            // normalised, each with voiceId
@@ -447,7 +443,7 @@ function mintPeopleVoiceIds({ people, courseCode, existingCast = null }) {
  *   feasibility: { minimumActors:number, collisions:{count:number, pairs:number,
  *                  turns:number, details:Array} },
  *   explainer: { person:string|null, suggested:boolean, knownLines:number,
- *                explainerLines:number, estimatedMinutes:number },
+ *                estimatedMinutes:number },
  *   report: object,           // raw solver report (solver-literate callers)
  * }}
  */
@@ -522,7 +518,7 @@ function proposePeopleCast({
     guideIdx = assignments.reduce((best, a, i) =>
       a._seconds < assignments[best]._seconds ? i : best, 0)
   }
-  const exWork = explainerWorkload || { knownLines: 0, explainerLines: 0, estimatedSeconds: 0 }
+  const exWork = explainerWorkload || { knownLines: 0, estimatedSeconds: 0 }
   if (guideIdx >= 0) {
     assignments[guideIdx].isGuide = true
     assignments[guideIdx].guideSuggested = markedIdx < 0
@@ -599,7 +595,6 @@ function proposePeopleCast({
       person: guideIdx >= 0 ? pool[guideIdx].name : null,
       suggested: guideIdx >= 0 && markedIdx < 0,
       knownLines: exWork.knownLines || 0,
-      explainerLines: exWork.explainerLines || 0,
       estimatedMinutes: Math.round(((exWork.estimatedSeconds || 0) / 60) * 10) / 10,
     },
     report,

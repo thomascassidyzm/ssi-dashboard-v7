@@ -136,7 +136,7 @@ describe('proposePeopleCast — 3 people, feasible (doubling allowed)', () => {
     sentences: twoPodSentences(),
     courseCode: COURSE,
     genderBySpeaker: { Anna: 'f', Friend: 'f', Waiter: 'm', Neighbour: 'n' },
-    explainerWorkload: { knownLines: 12, explainerLines: 2, estimatedSeconds: 120 },
+    explainerWorkload: { knownLines: 12, estimatedSeconds: 120 },
   })
 
   it('covers every character with exactly the declared people', () => {
@@ -174,7 +174,7 @@ describe('proposePeopleCast — 3 people, feasible (doubling allowed)', () => {
     expect(guide.guideSuggested).toBe(true) // no row was marked
     expect(proposal.explainer.suggested).toBe(true)
     expect(proposal.podCast[EXPLAINER_SPEAKER].voiceId).toBe(guide.voiceId)
-    // Guide minutes include the explainer workload (120s = 2 min)
+    // Guide minutes include the known-language workload (120s = 2 min)
     expect(proposal.explainer.estimatedMinutes).toBe(2)
     // 3 people / 4 characters: the guide also plays dialogue → gentle note
     if (guide.characters.length) {
@@ -263,7 +263,7 @@ describe('proposePeopleCast — marked bilingual guide', () => {
       people,
       sentences: twoPodSentences(),
       courseCode: COURSE,
-      explainerWorkload: { knownLines: 12, explainerLines: 0, estimatedSeconds: 60 },
+      explainerWorkload: { knownLines: 12, estimatedSeconds: 60 },
     })
     const guide = proposal.assignments.find(a => a.isGuide)
     expect(guide.name).toBe('Catrin')

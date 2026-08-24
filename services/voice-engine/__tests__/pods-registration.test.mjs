@@ -25,27 +25,32 @@ describe('pod mode detection + kind routing (pure)', () => {
     expect(isPodModeUpload(undefined)).toBe(false)
   })
 
+  // FLIPPED 2026-08-24 (explainer deprecation): 'explainer' is no longer a
+  // registerable pod kind, so it maps to NOTHING and a take claiming it is
+  // rejected by validatePodUploadMetadata. The 'pod_explainer' role string and
+  // the explainer_audio_id column both still exist in the DB with every one of
+  // their rows — we simply never write them again.
   it('maps kinds to the EXACT roles phase8 writes for TTS pod rows (recon §1)', () => {
-    // target→target1, known→known, explainer→pod_explainer. Never invented.
+    // target→target1, known→known. Never invented.
     expect(podRoleForKind('target')).toBe('target1')
     expect(podRoleForKind('known')).toBe('known')
-    expect(podRoleForKind('explainer')).toBe('pod_explainer')
+    expect(podRoleForKind('explainer')).toBeNull()
     expect(podRoleForKind('presentation')).toBeNull()
     expect(podRoleForKind(undefined)).toBeNull()
-    expect(Object.keys(POD_KIND_ROLES).sort()).toEqual(['explainer', 'known', 'target'])
+    expect(Object.keys(POD_KIND_ROLES).sort()).toEqual(['known', 'target'])
   })
 
   it('maps kinds to the sentence audio FK columns (set explicitly — recon §2)', () => {
     expect(podLinkColumnForKind('target')).toBe('target_audio_id')
     expect(podLinkColumnForKind('known')).toBe('known_audio_id')
-    expect(podLinkColumnForKind('explainer')).toBe('explainer_audio_id')
+    expect(podLinkColumnForKind('explainer')).toBeNull()
     expect(podLinkColumnForKind('nope')).toBeNull()
   })
 
   it('maps kinds to text columns', () => {
     expect(podTextColumnForKind('target')).toBe('target_text')
     expect(podTextColumnForKind('known')).toBe('known_text')
-    expect(podTextColumnForKind('explainer')).toBe('explainer_text')
+    expect(podTextColumnForKind('explainer')).toBeNull()
   })
 
   it('validates pod upload metadata', () => {
@@ -80,12 +85,12 @@ describe('resolvePodCastVoiceId (server-side, podCast — client advisory)', () 
     expect(r).toEqual({ voiceId: 'human_aran_cym', source: 'cast', disagreement: false })
   })
 
-  it('known and explainer lines resolve via the __explainer__ cast entry', () => {
-    for (const kind of ['known', 'explainer']) {
-      const r = resolvePodCastVoiceId({ voiceConfig, speaker: 'Anna', kind, clientVoiceId: null })
-      expect(r.voiceId).toBe('human_tom_eng')
-      expect(r.source).toBe('cast')
-    }
+  // The __explainer__ cast key SURVIVES the explainer deprecation — it is what
+  // routes the KNOWN-LANGUAGE (English) lines, which are very much alive.
+  it('known lines resolve via the __explainer__ cast entry', () => {
+    const r = resolvePodCastVoiceId({ voiceConfig, speaker: 'Anna', kind: 'known', clientVoiceId: null })
+    expect(r.voiceId).toBe('human_tom_eng')
+    expect(r.source).toBe('cast')
   })
 
   it('server cast wins over a disagreeing client voiceId (advisory)', () => {
@@ -227,12 +232,16 @@ describe('preparePodRegistration', () => {
     expect(r.context).toMatchObject({ role: 'known', linkColumn: 'known_audio_id', text: 'Good morning', language: 'eng', voiceId: 'human_tom_eng', replacedAudioId: null })
   })
 
-  it("rejects explainer takes for sentences stamped explainer_text='' (deliberately none)", async () => {
+  // FLIPPED 2026-08-24: an explainer take used to be rejected only when the
+  // sentence had no explainer_text. Now the KIND itself is refused — the
+  // fixture's explainer_text is irrelevant, so no new pod_explainer clip can be
+  // registered for any sentence at all.
+  it('rejects explainer takes outright — the kind no longer exists', async () => {
     const r = await preparePodRegistration({
       supabase: mockSupabase(fixtureState()), courseCode: 'cym_n_for_eng',
       metadata: { ...metadata, kind: 'explainer' }, logger: quiet,
     })
-    expect(r.error).toMatch(/no explainer_text/)
+    expect(r.error).toMatch(/metadata\.kind must be one of target\|known/)
     expect(r.status).toBe(400)
   })
 

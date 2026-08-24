@@ -7,14 +7,15 @@
  *   - cues: the preceding N (default 2) dialogue lines of the SAME scene —
  *     speaker label + target_text + known_text gloss (context never bleeds
  *     across a scene boundary; the boundary itself carries the scene title)
- *   - line: the text to record (target / known / explainer per kind)
- *   - identity: podId, sentenceId, kind ('target'|'known'|'explainer');
+ *   - line: the text to record (target / known per kind)
+ *   - identity: podId, sentenceId, kind ('target'|'known');
  *     glue_to_next chains are ONE item (sentenceIds lists every glued row)
  *   - scene: { number, title } + sceneStart flag on scene boundaries
  *
- * Explainer queue: when the requested voice is cast as __explainer__, the
- * plan carries every known-language line (kind 'known') plus every non-empty
- * explainer_text (kind 'explainer') — keystone §1's explainer cast entry.
+ * Explainer-cast queue: when the requested voice is cast as __explainer__, the
+ * plan carries every known-language line (kind 'known') — keystone §1's
+ * explainer cast entry. The explainer-narration track it also used to carry was
+ * deprecated on 2026-08-24; explainer_text is never queued for recording.
  *
  * Pure module — no DB, no I/O. Vocabulary: known / target / seed.
  */
@@ -114,7 +115,7 @@ function isRerecordWanted(rows, kind, voices) {
  * @param {Array} args.pods       listening_pods rows ({ id, slug, title, pod_order, metadata })
  * @param {Array} args.sentences  listening_pod_sentences rows for those pods
  *   ({ id, pod_id, scene_number, global_order, speaker, target_text,
- *      known_text, explainer_text, glue_to_next })
+ *      known_text, glue_to_next })
  * @param {object} args.podCast   courses.voice_config.podCast (may be {} / null)
  * @param {string} args.voiceId   the human voice whose queue this is
  * @param {number} [args.cueCount=2]
@@ -128,7 +129,7 @@ function isRerecordWanted(rows, kind, voices) {
  *     knownGloss, cues:[{speaker,target,known}], scene:{number,title},
  *     sceneStart:boolean, estimatedSeconds:number,
  *   }>,
- *   counts: { target:number, known:number, explainer:number, total:number },
+ *   counts: { target:number, known:number, total:number },
  *   estimatedMinutes: number,
  * }}
  */
@@ -147,7 +148,7 @@ function buildRecordingPlan({ pods, sentences, podCast, voiceId, cueCount = DEFA
 
   const castSpeakers = new Set()
   const items = []
-  const counts = { target: 0, known: 0, explainer: 0 }
+  const counts = { target: 0, known: 0 }
   let totalSeconds = 0
   let lastSceneKey = null   // scene boundaries relative to THIS voice's queue
 
@@ -206,16 +207,6 @@ function buildRecordingPlan({ pods, sentences, podCast, voiceId, cueCount = DEFA
         }
       }
 
-      if (isExplainer) {
-        for (const r of di.rows) {
-          const explainer = (r.explainer_text || '').trim()
-          if (!explainer) continue   // '' = deliberately none (recon §5)
-          push({
-            ...base, sentenceId: r.id, sentenceIds: [r.id],
-            kind: 'explainer', line: explainer, knownGloss: null,
-          })
-        }
-      }
 
       // The dialogue context everyone reads against — every line enters the
       // cue trail regardless of whose voice records it.
@@ -300,7 +291,7 @@ function isEmptyTake(a) {
  */
 async function finalizeRecordingPlan({ plan, sentences, voiceId, acceptVoiceIds = null, fetchAudioRows }) {
   const accept = acceptVoiceIds && acceptVoiceIds.size ? acceptVoiceIds : new Set([voiceId])
-  const AUDIO_COL = { target: 'target_audio_id', known: 'known_audio_id', explainer: 'explainer_audio_id' }
+  const AUDIO_COL = { target: 'target_audio_id', known: 'known_audio_id' }
   const rowById = new Map((sentences || []).map(r => [r.id, r]))
 
   const wanted = new Set()
@@ -319,8 +310,7 @@ async function finalizeRecordingPlan({ plan, sentences, voiceId, acceptVoiceIds 
     const a = audioId ? audioById.get(audioId) : null
     // A WANTED track is outstanding whatever its audio says — that is the whole
     // point of rerecord_wanted: the old take stays linked and playable while the
-    // line waits for its fresh one. (Never applies to 'explainer': the column
-    // carries target/known only.)
+    // line waits for its fresh one.
     const isWanted = isRerecordWanted(
       (it.sentenceIds || [it.sentenceId]).map(id => rowById.get(id)).filter(Boolean),
       it.kind, accept)
