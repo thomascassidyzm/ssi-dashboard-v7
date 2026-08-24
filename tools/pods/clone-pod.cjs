@@ -37,6 +37,7 @@
 require('dotenv').config({ path: require('path').join(__dirname, '..', '..', '.env.psql') })
 const { Client } = require('pg')
 const { checkPodCast } = require('./pod-cast-gate.cjs')
+const { carrySplitAudio, SPLIT_AUDIO_FIELDS } = require('./split-audio-inheritance.cjs')
 
 const APPLY = process.argv.includes('--apply')
 const arg = (n) => {
@@ -115,6 +116,12 @@ const dstPodId = `${COURSE}:${TO}`
       with_target_audio: sentences.filter(s => s.target_audio_id).length,
       with_known_audio: sentences.filter(s => s.known_audio_id).length,
       columns_copied: copyCols.length,
+      split_audio_slots_carried: sentences.reduce((n, s) => {
+        const kept = carrySplitAudio(s, s)
+        return n + SPLIT_AUDIO_FIELDS.filter(f => kept[f] != null).length
+      }, 0),
+      split_audio_slots_present_on_source: sentences.reduce((n, s) =>
+        n + SPLIT_AUDIO_FIELDS.filter(f => s[f] != null).length, 0),
     }
 
     // `speakers` is copied verbatim, so the clone inherits the source's casting —
@@ -147,7 +154,17 @@ const dstPodId = `${COURSE}:${TO}`
       const cols = ['id', 'pod_id', ...copyCols]
       const placeholders = cols.map((_, i) => `$${i + 1}`).join(',')
       for (const s of sentences) {
-        const vals = [reId(s.id), dstPodId, ...copyCols.map(c => enc(sentenceJson, c, s[c]))]
+        // Split audio follows the TEXT, never the slot
+        // (tools/pods/split-audio-inheritance.cjs). This clone copies both texts
+        // verbatim, so every slot is carried and this is a no-op today — which is
+        // the point of running it rather than assuming it. The moment anyone
+        // makes this tool transform text on the way through, the split arrays
+        // drop to NULL instead of following the slot into a new conversation, and
+        // the player falls back to the whole-turn clip. That transform, done
+        // downstream by align-pod0-to-canonical.cjs on a clone exactly like this
+        // one, is what produced the ita pod-1 scene-15 defect.
+        const row = { ...s, ...carrySplitAudio(s, s) }
+        const vals = [reId(s.id), dstPodId, ...copyCols.map(c => enc(sentenceJson, c, row[c]))]
         const r = await db.query(
           `insert into listening_pod_sentences (${cols.map(c => `"${c}"`).join(',')}) values (${placeholders})`, vals)
         if (r.rowCount !== 1) throw new Error(`insert of ${reId(s.id)} affected ${r.rowCount} rows`)
