@@ -7,8 +7,8 @@ Group 1 is finished and verified. Group 2 is still rendering as this is written.
 
 ## The short version
 
-**18 courses are flip-ready right now** — both tracks complete, every clip in the voice
-cast for its own speaker. All of Group 1 except Syrian Arabic.
+**19 courses are flip-ready right now** — both tracks complete, every clip in the voice
+cast for its own speaker: all of Group 1 except Syrian Arabic, plus Irish.
 
 The render had never happened because the tool that decides what to re-render was asking
 the wrong question. It asked *"is this clip's voice anywhere in the pod's cast?"* — and the
@@ -121,7 +121,7 @@ re-rendering the same text in the same voice only buys the same decode again.
 **Ready now — 19.** Both tracks complete, every clip on-cast for its own speaker:
 
 `fra` · `spa` · `ita` · `deu` · `deu_at` · `por` · `por_br` · `ron` · `swe` · `hrv` ·
-`eus` · `ara` · `ara_eg` · `ara`* · `fra_ca` · `jpn` · `kor` · `zho` · `spa_mx` · `gle`
+`eus` · `ara` · `ara_eg` · `fra_ca` · `jpn` · `kor` · `zho` · `spa_mx` · `gle`
 
 (All of Group 1 except `ara_sy`, plus Irish from Group 2.)
 
