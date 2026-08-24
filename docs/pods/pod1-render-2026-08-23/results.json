@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-24T01:24:28.474Z",
+  "generated_at": "2026-08-24T02:05:00.469Z",
   "excluded": [
     {
       "course": "isl_for_eng",
@@ -1421,6 +1421,303 @@
         }
       },
       "status": "complete"
+    },
+    {
+      "course": "hin_for_eng",
+      "pod_id": "hin_for_eng:pod-0-unrecorded",
+      "steps": {
+        "unlinked": {
+          "target": 40,
+          "known": 126
+        },
+        "sample": {
+          "mode": "sample",
+          "total": 5,
+          "generated": 3,
+          "reused": 2,
+          "reused_cross_course": 1,
+          "failed": 0,
+          "blocked_unapproved_target": 0,
+          "queued_before_sample": 298,
+          "errors": []
+        },
+        "sample_verify": {
+          "clips": 3,
+          "clean": 3,
+          "advisory": 0,
+          "review": 0,
+          "error": 0,
+          "json": "docs/pods/pod1-render-2026-08-23/hin_for_eng-pod-0-unrecorded-verify-25min.json"
+        },
+        "bulk": {
+          "mode": "bulk",
+          "total": 293,
+          "generated": 166,
+          "reused": 127,
+          "reused_cross_course": 120,
+          "failed": 0,
+          "blocked_unapproved_target": 0,
+          "queued_before_sample": 293,
+          "errors": []
+        },
+        "bulk_verify": {
+          "clips": 10,
+          "clean": 10,
+          "advisory": 0,
+          "review": 0,
+          "error": 0,
+          "json": "docs/pods/pod1-render-2026-08-23/hin_for_eng-pod-0-unrecorded-verify-25min.json"
+        }
+      },
+      "status": "complete"
+    },
+    {
+      "course": "hye_for_eng",
+      "pod_id": "hye_for_eng:pod-0-unrecorded",
+      "steps": {
+        "unlinked": {
+          "target": 14,
+          "known": 44
+        },
+        "sample": {
+          "mode": "sample",
+          "total": 5,
+          "generated": 0,
+          "reused": 4,
+          "reused_cross_course": 3,
+          "failed": 1,
+          "blocked_unapproved_target": 2,
+          "queued_before_sample": 58,
+          "errors": [
+            {
+              "sentence_id": "hye_for_eng:pod-0-unrecorded:SC07-S001",
+              "kind": "target",
+              "error": "[STAGE=veracity] quarantined after 3 attempts (cer_above_threshold, CER 0.4, heard \"բարի առավոդ, ինչկը մատությմ ձեմզ այս.\")"
+            }
+          ]
+        },
+        "sample_verify": {
+          "parse_error": "[dotenv@17.2.3] injecting env (1) from .env.psql -- tip: 🔄 add secrets lifecycle management: https://dotenvx.com/ops\nNo clips on hye_for_eng:pod-0-unrecorded newer than 25min.\n",
+          "json": "docs/pods/pod1-render-2026-08-23/hye_for_eng-pod-0-unrecorded-verify-25min.json"
+        },
+        "bulk": {
+          "mode": "bulk",
+          "total": 54,
+          "generated": 11,
+          "reused": 42,
+          "reused_cross_course": 37,
+          "failed": 1,
+          "blocked_unapproved_target": 2,
+          "queued_before_sample": 54,
+          "errors": [
+            {
+              "sentence_id": "hye_for_eng:pod-0-unrecorded:SC07-S001",
+              "kind": "target",
+              "error": "[STAGE=veracity] quarantined after 3 attempts (cer_above_threshold, CER 0.5, heard \"բարի արավոտ, ինչկը մատության ձեմձ այս.\")"
+            }
+          ]
+        },
+        "bulk_verify": {
+          "clips": 10,
+          "clean": 10,
+          "advisory": 0,
+          "review": 0,
+          "error": 0,
+          "json": "docs/pods/pod1-render-2026-08-23/hye_for_eng-pod-0-unrecorded-verify-25min.json"
+        }
+      },
+      "status": "complete_with_failures"
+    },
+    {
+      "course": "lav_for_eng",
+      "pod_id": "lav_for_eng:pod-0-unrecorded",
+      "steps": {
+        "unlinked": {
+          "target": 22,
+          "known": 44
+        },
+        "sample": {
+          "mode": "sample",
+          "total": 5,
+          "generated": 3,
+          "reused": 2,
+          "reused_cross_course": 2,
+          "failed": 0,
+          "blocked_unapproved_target": 2,
+          "queued_before_sample": 165,
+          "errors": []
+        },
+        "sample_verify": {
+          "clips": 3,
+          "clean": 3,
+          "advisory": 0,
+          "review": 0,
+          "error": 0,
+          "json": "docs/pods/pod1-render-2026-08-23/lav_for_eng-pod-0-unrecorded-verify-25min.json"
+        },
+        "bulk": {
+          "mode": "bulk",
+          "total": 160,
+          "generated": 111,
+          "reused": 49,
+          "reused_cross_course": 38,
+          "failed": 0,
+          "blocked_unapproved_target": 2,
+          "queued_before_sample": 160,
+          "errors": []
+        },
+        "bulk_verify": {
+          "clips": 10,
+          "clean": 10,
+          "advisory": 0,
+          "review": 0,
+          "error": 0,
+          "json": "docs/pods/pod1-render-2026-08-23/lav_for_eng-pod-0-unrecorded-verify-25min.json"
+        }
+      },
+      "status": "complete"
+    },
+    {
+      "course": "lit_for_eng",
+      "pod_id": "lit_for_eng:pod-0-unrecorded",
+      "steps": {
+        "unlinked": {
+          "target": 23,
+          "known": 44
+        },
+        "sample": {
+          "mode": "sample",
+          "total": 5,
+          "generated": 2,
+          "reused": 2,
+          "reused_cross_course": 2,
+          "failed": 1,
+          "blocked_unapproved_target": 2,
+          "queued_before_sample": 174,
+          "errors": [
+            {
+              "sentence_id": "lit_for_eng:pod-0-unrecorded:SC02-S003",
+              "kind": "target",
+              "error": "[STAGE=veracity] quarantined after 3 attempts (cer_above_threshold, CER 0.35, heard \"Kaip tolikin jas to?\")"
+            }
+          ]
+        },
+        "sample_verify": {
+          "clips": 2,
+          "clean": 2,
+          "advisory": 0,
+          "review": 0,
+          "error": 0,
+          "json": "docs/pods/pod1-render-2026-08-23/lit_for_eng-pod-0-unrecorded-verify-25min.json"
+        },
+        "bulk": {
+          "mode": "bulk",
+          "total": 170,
+          "generated": 119,
+          "reused": 50,
+          "reused_cross_course": 37,
+          "failed": 1,
+          "blocked_unapproved_target": 2,
+          "queued_before_sample": 170,
+          "errors": [
+            {
+              "sentence_id": "lit_for_eng:pod-0-unrecorded:SC14-S010",
+              "kind": "target",
+              "error": "[STAGE=veracity] quarantined after 3 attempts (cer_above_threshold, CER 0.6341, heard \"šimtas, du šimtai, tūkstantis, sekmadinis, dvyliktą valandą.\")"
+            }
+          ]
+        },
+        "bulk_verify": {
+          "clips": 10,
+          "clean": 10,
+          "advisory": 0,
+          "review": 0,
+          "error": 0,
+          "json": "docs/pods/pod1-render-2026-08-23/lit_for_eng-pod-0-unrecorded-verify-25min.json"
+        }
+      },
+      "status": "complete_with_failures"
+    },
+    {
+      "course": "nep_for_eng",
+      "pod_id": "nep_for_eng:pod-0-unrecorded",
+      "steps": {
+        "unlinked": {
+          "target": 12,
+          "known": 44
+        },
+        "sample": {
+          "mode": "sample",
+          "total": 5,
+          "generated": 2,
+          "reused": 2,
+          "reused_cross_course": 2,
+          "failed": 1,
+          "blocked_unapproved_target": 0,
+          "queued_before_sample": 156,
+          "errors": [
+            {
+              "sentence_id": "nep_for_eng:pod-0-unrecorded:SC02-S003",
+              "kind": "target",
+              "error": "[STAGE=veracity] quarantined after 3 attempts (cer_above_threshold, CER 0.5625, heard \"सो हो सो मगो टी तारा चा\")"
+            }
+          ]
+        },
+        "sample_verify": {
+          "clips": 2,
+          "clean": 2,
+          "advisory": 0,
+          "review": 0,
+          "error": 0,
+          "json": "docs/pods/pod1-render-2026-08-23/nep_for_eng-pod-0-unrecorded-verify-25min.json"
+        },
+        "bulk": {
+          "mode": "bulk",
+          "total": 152,
+          "generated": 92,
+          "reused": 48,
+          "reused_cross_course": 38,
+          "failed": 12,
+          "blocked_unapproved_target": 0,
+          "queued_before_sample": 152,
+          "errors": [
+            {
+              "sentence_id": "nep_for_eng:pod-0-unrecorded:SC02-S005",
+              "kind": "target",
+              "error": "[STAGE=veracity] quarantined after 3 attempts (cer_above_threshold, CER 0.3548, heard \"देरे तारा साईना  साए तीन वाट्सार माईल\")"
+            },
+            {
+              "sentence_id": "nep_for_eng:pod-0-unrecorded:SC15-S002",
+              "kind": "target",
+              "error": "[STAGE=veracity] quarantined after 3 attempts (cer_above_threshold, CER 0.4167, heard \"त्ये तबाई मालै बनन सक्नोंचा त्यो को तिवो\")"
+            },
+            {
+              "sentence_id": "nep_for_eng:pod-0-unrecorded:SC15-S008",
+              "kind": "target",
+              "error": "[STAGE=veracity] quarantined after 3 attempts (cer_above_threshold, CER 0.3333, heard \"सहर कु लागी दूयोटा फिर्टी ती कर्ट्क्रिपाया\")"
+            },
+            {
+              "sentence_id": "nep_for_eng:pod-0-unrecorded:SC19-S001",
+              "kind": "target",
+              "error": "[STAGE=veracity] quarantined after 3 attempts (cer_above_threshold, CER 0.381, heard \"तेस्ले माले कुसी बनाुता\")"
+            },
+            {
+              "sentence_id": "nep_for_eng:pod-0-unrecorded:SC03-S006",
+              "kind": "target",
+              "error": "[STAGE=veracity] quarantined after 3 attempts (cer_above_threshold, CER 0.3226, heard \"उइना हमी सम्मब्या पदार्टा मात्रसा\")"
+            }
+          ]
+        },
+        "bulk_verify": {
+          "clips": 10,
+          "clean": 10,
+          "advisory": 0,
+          "review": 0,
+          "error": 0,
+          "json": "docs/pods/pod1-render-2026-08-23/nep_for_eng-pod-0-unrecorded-verify-25min.json"
+        }
+      },
+      "status": "complete_with_failures"
     }
   ]
 }

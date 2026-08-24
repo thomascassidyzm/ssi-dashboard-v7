@@ -1,14 +1,14 @@
 # Pod 1 render — what happened, and what can flip
 
-**2026-08-24, ~01:15 UTC.** Rendering the staged Pod 1 recast, on Tom's 22:00Z ruling.
+**2026-08-24, ~02:10 UTC.** Rendering the staged Pod 1 recast, on Tom's 22:00Z ruling.
 Group 1 is finished and verified. Group 2 is still rendering as this is written.
 
 ---
 
 ## The short version
 
-**19 courses are flip-ready right now** — both tracks complete, every clip in the voice
-cast for its own speaker: all of Group 1 except Syrian Arabic, plus Irish.
+**20 courses are flip-ready right now** — both tracks complete, every clip in the voice
+cast for its own speaker: all of Group 1 except Syrian Arabic, plus Irish and Hindi.
 
 The render had never happened because the tool that decides what to re-render was asking
 the wrong question. It asked *"is this clip's voice anywhere in the pod's cast?"* — and the
@@ -118,22 +118,24 @@ re-rendering the same text in the same voice only buys the same decode again.
 
 > "A course can be flipped when both known and target PODS have been completed."
 
-**Ready now — 19.** Both tracks complete, every clip on-cast for its own speaker:
+**Ready now — 20.** Both tracks complete, every clip on-cast for its own speaker:
 
 `fra` · `spa` · `ita` · `deu` · `deu_at` · `por` · `por_br` · `ron` · `swe` · `hrv` ·
-`eus` · `ara` · `ara_eg` · `fra_ca` · `jpn` · `kor` · `zho` · `spa_mx` · `gle`
+`eus` · `ara` · `ara_eg` · `fra_ca` · `jpn` · `kor` · `zho` · `spa_mx` · `gle` · `hin`
 
-(All of Group 1 except `ara_sy`, plus Irish from Group 2.)
+**Near-ready — 12, every one with ZERO off-cast clips.** The casting is finished and
+correct on all of them; they differ only in a few missing target lines:
 
-**Near-ready — 7, all with zero off-cast clips**, differing only in a handful of missing
-target lines: `ara_sy` 4, `est` 4, `ell` 3, `cat` 2, `heb` 2, `bul` 1, `dan` 1.
-Every one of these is either a veracity quarantine or a line awaiting text approval — the
-casting itself is finished and correct on all of them. Your call whether a pod with one or
-two silent target lines is flippable; my read is that `bul`, `cat`, `dan` and `heb` are one
-short proofread away, and the rest want the veracity-gate decision first.
+`bul` 1 · `dan` 1 · `cat` 2 · `heb` 2 · `lav` 2 · `ell` 3 · `hye` 3 · `lit` 3 ·
+`ara_sy` 4 · `est` 4 · `fas` 6 · `nep` 12
 
-**Group 2 is still rendering.** 8 of 20 done, 12 to go, roughly an hour and a half at the
-current rate. It is running detached and logging, so it finishes whether or not anyone is
+Every one of those gaps is a veracity quarantine or a line awaiting text approval — never a
+failed render. Your call whether a pod with one or two silent target lines is flippable; my
+read is that `bul`, `cat`, `dan`, `heb` and `lav` are one short proofread away, and `nep`
+(12 lines, all Devanagari CER quarantines) wants the veracity-gate decision first.
+
+**Still rendering — 6:** `nor`, `pol`, `swa`, `tha`, `tur`, `ukr`. Roughly 45 minutes at
+the current rate. Running detached and logging, so it finishes whether or not anyone is
 watching.
 
 ## 5. What actually needs you
