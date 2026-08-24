@@ -69,6 +69,51 @@ https://saysomethingin.app/api/audio/9b8575ae-5545-4437-9fd3-a9136552a13c
 
 https://saysomethingin.app/api/audio/46bf25a1-ad00-47fe-894a-0ad85d6c912f
 
+## The trained speaker embedding — it agrees, and it sharpens one thing
+
+A second measurement leg got a genuine speaker-verification model running (SpeechBrain ECAPA-TDNN
+x-vector, 192-dim, `speechbrain/spkrec-ecapa-voxceleb`, CPU torch in a venv on real disk). This is
+the trained embedding the previous section says we didn't have — we do now.
+
+**It confirms the identity verdict outright.** All ten scene-15 clips sit in the Ara family
+(cosine 0.48–0.70 to Ara references) and nowhere near Eve — 0.16–0.44 against Eve/Italian and
+0.05–0.28 against Eve/English. A voice swap is eliminated on trained-embedding evidence, not
+inference.
+
+**Whisper's language-ID was properly calibrated on this population** and it works: Arabic
+references detect `ar` at p≥0.98, English references `en` at p≥0.99, Italian references `it`. All
+ten scene-15 clips detect `it` at p>0.9 with clean, correctly-spelled Italian transcripts and zero
+English bleed. Language steering is exonerated by measurement, not just by reading the config.
+
+**And it independently reproduces the delivery split.** Hierarchical clustering (average-linkage,
+cosine, stable at k=2 across a duration-controlled re-run) splits the scene as:
+
+> **{15.1, 15.2} vs {15.3 … 15.10}**
+
+Those two clips are 3.62 and 4.05 syllables/sec. Every one of the other eight is ≥4.86. The
+embedding, which knows nothing about my rate measurement, cuts the scene at exactly the same place
+your ear did when you said "the first couple are the good voice". Two independent instruments,
+same boundary.
+
+**Where it complicates the picture, honestly.** The embedding does *not* isolate 15.9 and 15.10 as
+their own cluster — they group with 15.7 and 15.8, and the falloff from 15.1/15.2 is gradual rather
+than a step. It also flags one clip you did not: **15.8** ("Due biglietti di andata e ritorno per il
+centro, grazie.", `13f62ca9…`) is numerically the *most* divergent clip from your two good ones
+(cosine 0.367 to 15.1) — more divergent than 15.9. It is worth thirty seconds of your ear:
+
+https://saysomethingin.app/api/audio/13f62ca9-77b4-42c4-8c28-8f9ebd8a0b10
+
+The directional signal still backs you: 15.9's and 15.10's two lowest similarities in the entire
+matrix are, in both cases, 15.1 and 15.2. "Furthest from the good ones" does rank your rubbish
+clips near the bottom. It just isn't a clean two-speaker boundary, because there aren't two
+speakers — it is one speaker drifting across a batch.
+
+Limit worth stating: an x-vector is trained to be *phonetically invariant*, and Whisper is a phone
+recogniser. Neither is built to isolate accent or intonation, which is where "sounds American"
+actually lives. They can tell you it is the same woman and the right language — they cannot
+measure the thing you objected to. The rate and pitch-range numbers above can, which is why those
+carry the verdict and these carry the corroboration.
+
 ## Why scene 15 in particular
 
 Scene 15 is not a defective scene. It is the scene where you hear the **whole spread** back to back.
@@ -179,19 +224,21 @@ same voice. That is one clip's worth of TTS. Say the word and I will spec it; I 
 
 ## What I could not do
 
-- **No trained speaker embedding.** There is no pip on watson-1 and no torch wheel for Python 3.14;
-  the preferred Resemblyzer/ECAPA route was time-boxed and abandoned. The identity claim rests on
-  f0 statistics, pitch-contour dispersion, delivery rate and spectral measures — timbre and prosody,
-  not a trained x-vector. That is weaker evidence for "same speaker" than an embedding would be,
-  and I would rather say so than dress it up. It is, however, strong evidence for *what varies*,
-  which is the actionable part.
-- **whisper's language-ID field** was not recoverable from the CLI wrapper's output on this box; I
-  have the transcripts (clean Italian, both flagged clips) but not the detected-language code.
-  Transcript quality is the stronger signal of the two anyway.
+- **Resemblyzer** could not be built (its `webrtcvad` C-extension needs `Python.h`; no
+  `python3.14-dev`, no sudo). SpeechBrain ECAPA-TDNN was used instead and worked, so the trained
+  embedding gap is **closed** — but it is one model's opinion, not two.
+- **No accent or prosody model.** Nothing on this box targets accent directly. The x-vector is
+  phonetically invariant by design and Whisper is a phone recogniser; neither measures the quality
+  you objected to. The rate and pitch-range numbers do, but they are hand-rolled measures validated
+  against your ear on ten clips, not an established instrument. That is the real remaining
+  weakness in this report.
 - **Male voices not analysed.** The Narrator line and the Enzo/Matteo cast are outside this job.
 
 ## What needs you
 
+0. **Thirty seconds of your ear on 15.8** (`13f62ca9…`, linked above) — the embedding says it is
+   the most divergent clip in the scene and you did not flag it. If it sounds fine to you, the
+   rate metric is the better guide and the list stays at two. If it sounds off, the list grows.
 1. **Keep Ara, or not.** My read: keep her. The evidence says the voice is not the problem.
 2. **Scope of the re-render**: the two scene-15 clips, or the 30-clip pod-wide pass at the same
    threshold.
