@@ -129,6 +129,10 @@ are 100/200/300/1000 ms. Aran set those zeros on 2026-06-30 and they have never 
 main flow, because the row went dark six weeks later. The fade will sound relentless until they are
 tuned. This is the one thing likely to need a second pass by ear.
 
+`gapBetweenMs` is the one that bites: `glue_to_next` is **false on all 12,278 live pod rows**, so
+nothing is glued, `gapGluedMs` never fires, and every sentence boundary in every stage of the fade
+is a hard cut.
+
 **c. Speed becomes per-role again, not per-phrase.** On the stage path `uniformSpeed` is undefined
 (line 827), so the target clips ride 1.0/2.0 while `trans` stays at 1.0. That is the authored
 design — and it contradicts the 2026-08-07 "all four clips at the same speed" ruling. The course
@@ -147,10 +151,27 @@ for `ps2x` / `stagePlaylist` / `layer1StagePlaylist`; and every row of `algorith
 `listening`, `stage0`, `script_shape`, `normal_mode`, `fast_mode`, `easy_mode`, `adaptation_v2`,
 `voice_declarations`).
 
-A wider estate sweep (**worker #395**) is still running to check for any *other* implementation —
-an earlier version, a course spec, a Popty-side generator. Its result cannot change the finding
-above; it can only add siblings. **This section will be short one line until it reports, and I will
-say so rather than quietly leaving it out.**
+**The wider estate sweep is now complete** (worker #395; full detail:
+https://watson-1.tail4968cb.ts.net/d/d95628df). It found **two more encodings of the same shape,
+both written by Tom himself, both admin-preview-only and never written to `algorithm_config`:**
+
+- **`PROPOSED_STAGE_PLAYLIST`** — Popty `src/views/admin/PodLab.vue:56`, commit `ee759557b`,
+  **2026-07-01**, one day after Aran's live row. Eight stages, and Tom's own inline comments spell
+  the shape out: `t · k · t · t` → `t · k · t · t@2×` → … → `t@2×  (eternal)`. Reachable only by a
+  preset button; exports to clipboard.
+- **"The unified ladder"** (`ladderRungs`) — same file, line 612, commit `97e8e09a5`, **2026-07-03**,
+  whose commit message is *"the unified ladder — one t·k·t·t climb from finest units to pure-2×
+  turn"*. A continuous fusion-then-speed climb that supersedes the draft above in code, and is
+  referenced nowhere outside that one file.
+
+**That draft answers call 4 below.** Tom's `PROPOSED_STAGE_PLAYLIST` does *not* have the duplicated
+stage 1/2 — it goes straight from `t·k·t·t` to `t·k·t·t@2×`, and adds a `ps2x · trans · ps2x` step
+later. So a version of this schedule with the fossil already collapsed exists, in Tom's own hand,
+one day newer than the live one.
+
+Ruled out with reasons: `learning-script-generator.cjs`'s `phraseRepeatCount` (whole-phrase repeat,
+a different mechanism), the retired `stage0Sequence.ts` atom breakdown, `layer1-explorer.html`'s
+fallback playlist, and every remaining `algorithm_config` row.
 
 Two things I did **not** find, stated as gaps rather than glossed:
 - No per-course or per-pod drill pattern anywhere — no column on `courses`, nothing in
@@ -175,7 +196,9 @@ Two things I did **not** find, stated as gaps rather than glossed:
    pods explicitly, or the flag does it silently.
 4. **Stages 1 and 2 are identical playlists.** That is the fossil of the old explainer stage 1.
    Five laps of the same thing before anything changes may be exactly right — or it may be an
-   accident worth collapsing. Your ear.
+   accident worth collapsing. Your own `PROPOSED_STAGE_PLAYLIST` (PodLab, 2026-07-01) collapses
+   them; Aran's live row does not. Which of the two goes in the row is a taste call, and it is
+   yours.
 
 ---
 
