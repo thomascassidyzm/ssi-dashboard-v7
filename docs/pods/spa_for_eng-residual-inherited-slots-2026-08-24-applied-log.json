@@ -1,0 +1,138 @@
+{
+ "pod": "spa_for_eng:pod-1",
+ "course": "spa_for_eng",
+ "mode": "applied",
+ "generated_at": "2026-08-24T12:00:01.891Z",
+ "ancestors": [
+  "spa_for_eng:pod-0-retired-2026-08-22",
+  "spa_for_eng:pod-1-retired-2026-08-24"
+ ],
+ "rows_total": 231,
+ "measured_inherited_slots": {
+  "sentence_audio_ids": 0,
+  "sentence_known_audio_ids": 4,
+  "takeg_audio_ids": 0,
+  "explainer_audio_id": 47
+ },
+ "scope_note": "explainer_audio_id is MEASURED ONLY — owned by the explainer relink worker",
+ "split_keyed_progress_rows": 0,
+ "stopped": null,
+ "whole_turn_failures": [
+  "s8/5 target_audio_id voice es-ES-ElviraNeural is not Bar Customer 2's cast target voice yis75yfp",
+  "s8/10 target_audio_id voice es-ES-ElviraNeural is not Bar Customer 2's cast target voice yis75yfp",
+  "s8/15 target_audio_id voice es-ES-ElviraNeural is not Bar Customer 2's cast target voice yis75yfp",
+  "s9/4 target_audio_id voice es-ES-ElviraNeural is not Diner 2's cast target voice yis75yfp",
+  "s9/10 target_audio_id voice es-ES-ElviraNeural is not Diner 2's cast target voice yis75yfp",
+  "s9/13 target_audio_id voice es-ES-ElviraNeural is not Diner 2's cast target voice yis75yfp",
+  "s9/17 target_audio_id voice es-ES-ElviraNeural is not Diner 2's cast target voice yis75yfp",
+  "s16/2 target_audio_id text mismatch",
+  "s19/2 target_audio_id text mismatch",
+  "s22/1 target_audio_id text mismatch",
+  "s22/5 target_audio_id text mismatch",
+  "s22/9 target_audio_id text mismatch",
+  "s22/11 target_audio_id text mismatch"
+ ],
+ "rows_excluded_bad_whole_turn": [
+  "spa_for_eng:pod-1:SC08-S005",
+  "spa_for_eng:pod-1:SC08-S010",
+  "spa_for_eng:pod-1:SC08-S015",
+  "spa_for_eng:pod-1:SC09-S004",
+  "spa_for_eng:pod-1:SC09-S010",
+  "spa_for_eng:pod-1:SC09-S013",
+  "spa_for_eng:pod-1:SC09-S017",
+  "spa_for_eng:pod-1:SC16-S002",
+  "spa_for_eng:pod-1:SC19-S002",
+  "spa_for_eng:pod-1:SC22-S001",
+  "spa_for_eng:pod-1:SC22-S005",
+  "spa_for_eng:pod-1:SC22-S009",
+  "spa_for_eng:pod-1:SC22-S011"
+ ],
+ "slots_planned": 4,
+ "slots_written": 4,
+ "rows": [
+  {
+   "id": "spa_for_eng:pod-1:SC01-S003",
+   "scene": 1,
+   "sentence": 3,
+   "speaker": "Neighbour",
+   "target_text": "Muy bien, gracias. ¿Vas al trabajo?",
+   "known_text": "I'm very well, thank you. Are you going to work?",
+   "slots": [
+    {
+     "field": "sentence_known_audio_ids",
+     "changed": "known_text",
+     "before": [
+      "e2c7c04d-e7be-4adf-8217-e35b8f8ab542",
+      "24a88739-9846-4f95-b02b-60a7a4dd0d6f"
+     ],
+     "after": null,
+     "action": "null",
+     "why": "no alive, in-cast clip set exists for this row's known text; falling back to the verified whole-turn clip"
+    }
+   ]
+  },
+  {
+   "id": "spa_for_eng:pod-1:SC07-S014",
+   "scene": 7,
+   "sentence": 14,
+   "speaker": "Cafe Barista",
+   "target_text": "¿Quieren sentarse? La mesa junto a la ventana está libre.",
+   "known_text": "Would you like to sit-in? The table by the window is free.",
+   "slots": [
+    {
+     "field": "sentence_known_audio_ids",
+     "changed": "known_text",
+     "before": [
+      "a10b55f8-6f6d-4e89-b694-a942faa5df3e",
+      "9cefa047-4767-41ba-80a2-75d8667886d6"
+     ],
+     "after": null,
+     "action": "null",
+     "why": "no alive, in-cast clip set exists for this row's known text; falling back to the verified whole-turn clip"
+    }
+   ]
+  },
+  {
+   "id": "spa_for_eng:pod-1:SC09-S005",
+   "scene": 9,
+   "sentence": 5,
+   "speaker": "Diner 1",
+   "target_text": "Perdón, ¿tienen algo sin gluten? ¿O para vegetarianos?",
+   "known_text": "Excuse me - do you have anything gluten-free? Or for vegetarians?",
+   "slots": [
+    {
+     "field": "sentence_known_audio_ids",
+     "changed": "known_text",
+     "before": [
+      "db4350d1-ed11-47e4-9971-1b26c19421ed",
+      "453fee3a-d8a6-43b7-8457-b7249bfb9583"
+     ],
+     "after": null,
+     "action": "null",
+     "why": "no alive, in-cast clip set exists for this row's known text; falling back to the verified whole-turn clip"
+    }
+   ]
+  },
+  {
+   "id": "spa_for_eng:pod-1:SC11-S008",
+   "scene": 11,
+   "sentence": 8,
+   "speaker": "Receptionist",
+   "target_text": "Desde las siete y media hasta las diez. Tenemos fruta y cereales o un desayuno caliente.",
+   "known_text": "From half-past seven until ten o'clock. We have fruit and cereals or a cooked breakfast.",
+   "slots": [
+    {
+     "field": "sentence_known_audio_ids",
+     "changed": "known_text",
+     "before": [
+      "f8487b61-2947-4492-8b01-cbe27916b89c",
+      "1a1785e8-64b1-4cb8-847a-8e1dc1e66b5c"
+     ],
+     "after": null,
+     "action": "null",
+     "why": "no alive, in-cast clip set exists for this row's known text; falling back to the verified whole-turn clip"
+    }
+   ]
+  }
+ ]
+}
