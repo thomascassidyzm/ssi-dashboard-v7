@@ -45,6 +45,20 @@
  * in `pod-cast-gate.cjs` and is shared with the solver (`pod1-percall-recast.cjs`).
  * Escape hatch, for a pod consciously shipping otherwise: --accept-uncast-pod.
  *
+ * IT FOLDS IN WRITES THAT LAND WHILE IT IS WORKING. The migration is PLANNED from a
+ * snapshot of `learner_pod_state` taken before the transaction opens, so a learner who
+ * is mid-session while the flip runs can write rows the plan has never seen. On
+ * 2026-08-24 that happened to nld_for_eng: learner 33344e24 wrote 14 rows against the
+ * pod-0 canon around the 08:34:44Z switchover, and they were left keyed to a slug that
+ * no longer existed — repaired by hand afterwards (job #227,
+ * docs/pods/nld-inflight-session-repair-2026-08-24-applied-log.json).
+ * So: immediately before the plan is applied — after the pods have moved, inside the
+ * same transaction — every state row touched since the snapshot is re-read. Rows the
+ * plan already knows about have their exposures refreshed (GREATEST then protects any
+ * row that got BETTER in the window); rows it has never seen are run through one more
+ * planMigration pass, retired canon → promoted canon, and folded into the same commit.
+ * One extra pass, no retry loop, nothing for an operator to watch.
+ *
  * DRY RUN BY DEFAULT. Pass --apply to write. Everything happens in one transaction.
  *
  *   node tools/pods/pod-switchover.cjs --course=fra_for_eng
@@ -105,13 +119,17 @@ const REHEARSAL = process.argv.includes('--rehearsal')
  *  exception (a pod deliberately shipping on one voice), and it says so in the log. */
 const ACCEPT_UNCAST = process.argv.includes('--accept-uncast-pod')
 
-if (!COURSE) {
-  console.error('FAILED: --course=<code> is required')
-  process.exit(1)
-}
-if (REHEARSAL && !/^zzz_/.test(COURSE)) {
-  console.error(`FAILED: --rehearsal is only accepted on a zzz_ scratch course, not '${COURSE}'`)
-  process.exit(1)
+// Argument validation belongs to the CLI, not to the module: `planInflightFold` is
+// exported for its unit tests, and a require() must not exit the process.
+if (require.main === module) {
+  if (!COURSE) {
+    console.error('FAILED: --course=<code> is required')
+    process.exit(1)
+  }
+  if (REHEARSAL && !/^zzz_/.test(COURSE)) {
+    console.error(`FAILED: --rehearsal is only accepted on a zzz_ scratch course, not '${COURSE}'`)
+    process.exit(1)
+  }
 }
 
 const log = (...a) => console.log(...a)
@@ -144,6 +162,71 @@ async function movePod (db, fromSlug, toSlug, title) {
   }
   await db.query('delete from listening_pods where id = $1', [fromId])
   return rows.length
+}
+
+/**
+ * THE GRACE GUARD, as a pure function so it can be tested without a database.
+ *
+ * `stragglers` are the `learner_pod_state` rows for this course that were written or
+ * updated after the migration plan's snapshot was taken — read back inside the
+ * transaction, after the pods have moved and before the plan is applied. Two kinds:
+ *
+ *   1. a row the plan ALREADY covers, whose exposures moved in the window. The planned
+ *      action's exposures are stale, and the delete-by-exact-exposures would abort the
+ *      whole flip on `drift:`. Reported as `refresh` so the caller can restamp the
+ *      action; the insert's `greatest(...)` then keeps whichever count is higher, so a
+ *      row that got BETTER in the window is never walked backwards.
+ *   2. a row the plan has NEVER seen — the in-flight session case. It is keyed under the
+ *      slug that has just been archived, so it is rekeyed onto the retired slug and run
+ *      through planMigration against the promoted canon: exactly the mapping the flip
+ *      itself would have given it had it existed a second earlier.
+ *
+ * Rows already sitting on the promoted slug are left alone (`ignored`) — they are
+ * already where they belong. Anything under neither slug is returned as `unknown` and
+ * the caller must refuse rather than guess.
+ */
+function planInflightFold ({ course, liveSlug, retiredSlug, promoteTo, plannedKeys, stragglers, retiredCanon, promotedCanon }) {
+  const livePrefix = `${course}:${liveSlug}:`
+  const promotedPrefix = `${course}:${promoteTo}:`
+  const suffixOf = (id) => /:s\d+$/.exec(id)?.[0] || ''
+  const base = (id) => id.replace(/:s\d+$/, '')
+
+  const refresh = []      // rows the plan covers whose exposures moved
+  const unseen = []       // rows the plan has never seen, on the old canon
+  const ignored = []      // rows already on the promoted canon
+  const unknown = []      // rows under neither slug — caller refuses
+
+  for (const r of stragglers) {
+    const key = `${r.learner_id}|${r.sentence_id}`
+    if (plannedKeys.has(key)) {
+      if (Number(plannedKeys.get(key)) !== Number(r.exposures)) refresh.push(r)
+      continue
+    }
+    // Order matters when promoteTo === liveSlug (the default): the two prefixes are the
+    // same string, and a learner mid-session was necessarily served the OLD canon, so the
+    // old reading wins. When they differ, a row on the promoted slug is genuinely new.
+    if (r.sentence_id.startsWith(livePrefix)) unseen.push(r)
+    else if (r.sentence_id.startsWith(promotedPrefix)) ignored.push(r)
+    else unknown.push(r)
+  }
+
+  let actions = []
+  if (unseen.length) {
+    // Rekey the lookups onto the retired slug — that is where the canon those rows were
+    // written against now lives — and reuse planMigration verbatim. `to` therefore comes
+    // back already keyed on the promoted slug; no reslugging afterwards.
+    // planMigration spreads the input row onto every action, so `stored_sentence_id`
+    // rides along with it — the row is deleted by the id actually in the table, never by
+    // the rekeyed one used for the lookup.
+    const rekeyed = unseen.map(r => ({
+      ...r,
+      stored_sentence_id: r.sentence_id,
+      sentence_id: `${course}:${retiredSlug}:${base(r.sentence_id).slice(livePrefix.length)}${suffixOf(r.sentence_id)}`
+    }))
+    actions = planMigration(retiredCanon, promotedCanon, rekeyed).actions
+    if (actions.some(a => !a.stored_sentence_id)) throw new Error('in-flight fold: action lost its stored sentence id')
+  }
+  return { actions, refresh, ignored, unknown }
 }
 
 async function main () {
@@ -287,6 +370,10 @@ async function main () {
   // Planned here, against the two canons as they stand now, and applied inside the same
   // transaction as the move. `to` targets are computed against the STAGED slug and
   // reslugged onto LIVE at apply time, because promotion re-keys every sentence id.
+  // The snapshot's high-water mark, taken BEFORE the snapshot rather than after: a row
+  // written in between then shows up in both, and the fold treats an already-planned row
+  // at unchanged exposures as a no-op. The other order would lose it entirely.
+  const { rows: [{ t: planAt }] } = await db.query('select now() t')
   const { rows: stateRows } = await db.query(
     `select learner_id, course_code, sentence_id, exposures, updated_at
        from learner_pod_state where course_code = $1 order by learner_id, sentence_id`, [COURSE]
@@ -357,14 +444,58 @@ async function main () {
       if (!after2.ok) throw new Error(`post-check failed: promoted pod is not cast-correct — ${after2.failures.join(' | ')}`)
     }
 
+    // ---- the grace guard, immediately before the plan is applied ---------------
+    // Everything above this line moved pods; nothing has touched learner_pod_state yet.
+    // So this is the last moment at which a straggler is still distinguishable from our
+    // own work — re-read, fold in, and let the one commit carry both.
+    // Runs whether or not there was progress to plan: a learner can start a session
+    // during the flip, and a course with no state rows at snapshot time can have some by
+    // the time it commits.
+    let folded = null
+    {
+      const plannedKeys = new Map(stateRows.map(r => [`${r.learner_id}|${r.sentence_id}`, r.exposures]))
+      const { rows: stragglers } = await db.query(
+        `select learner_id, course_code, sentence_id, exposures, updated_at
+           from learner_pod_state where course_code = $1 and updated_at > $2
+           order by learner_id, sentence_id`, [COURSE, planAt])
+      if (stragglers.length) {
+        const canonOf = async (slug) => (await db.query(
+          `select id, scene_number, sentence_number, global_order, known_text
+             from listening_pod_sentences where pod_id = $1 order by global_order`, [`${COURSE}:${slug}`])).rows
+        folded = planInflightFold({
+          course: COURSE, liveSlug: LIVE, retiredSlug: RETIRED, promoteTo: PROMOTE_TO,
+          plannedKeys, stragglers,
+          retiredCanon: await canonOf(RETIRED), promotedCanon: await canonOf(PROMOTE_TO)
+        })
+        if (folded.unknown.length) {
+          throw new Error(`in-flight fold: ${folded.unknown.length} state row(s) under neither ${LIVE} nor ${PROMOTE_TO} ` +
+            `(first: ${folded.unknown[0].sentence_id}) — refusing to guess`)
+        }
+        // A row the plan covers whose exposures moved in the window: restamp the planned
+        // action, or its exact-exposures delete aborts the flip on drift. GREATEST on the
+        // insert then keeps whichever count is higher, so the newer read never loses.
+        const byKey = new Map(folded.refresh.map(r => [`${r.learner_id}|${r.sentence_id}`, r.exposures]))
+        for (const a of plan.actions) {
+          const now = byKey.get(`${a.learner_id}|${a.sentence_id}`)
+          if (now !== undefined) a.exposures = now
+        }
+        log(`  in-flight writes since the plan: ${stragglers.length} row(s) — ` +
+            `${folded.actions.length} folded into the migration, ${folded.refresh.length} exposure refresh(es), ` +
+            `${folded.ignored.length} already on ${PROMOTE_TO}`)
+      }
+    }
+
     // The learner-progress migration, in the same transaction as the move so progress is
     // never observable against a canon it was not mapped to.
     let carried = 0, dropped = 0
-    if (plan) {
-      for (const a of plan.actions) {
+    if (plan || (folded && folded.actions.length)) {
+      for (const a of (plan ? plan.actions : []).concat(folded ? folded.actions : [])) {
+        // Folded actions were planned against a rekeyed lookup id; the row in the table
+        // still carries the id the learner wrote, so delete by that.
+        const storedId = a.stored_sentence_id || a.sentence_id
         const del = () => db.query(
           `delete from learner_pod_state where learner_id=$1 and course_code=$2 and sentence_id=$3 and exposures=$4`,
-          [a.learner_id, COURSE, a.sentence_id, a.exposures])
+          [a.learner_id, COURSE, storedId, a.exposures])
         if (FORCE_NO_MIGRATION || a.action === 'drop' || a.action === 'merge') {
           const r = await del()
           if (r.rowCount !== 1) throw new Error(`drift: expected 1 state row for ${a.sentence_id}, got ${r.rowCount}`)
@@ -372,8 +503,12 @@ async function main () {
         } else if (a.action === 'carry' || a.action === 'keep') {
           // `to` targets were planned against the STAGED canon; promotion re-keyed every
           // sentence id onto PROMOTE_TO, so progress must follow onto the same slug.
-          const target = reslug(a.to.replace(/:s\d+$/, ''), STAGED, PROMOTE_TO) + (/:s\d+$/.exec(a.to)?.[0] || '')
-          if (target === a.sentence_id) continue
+          // Folded actions were already planned against the PROMOTED canon, so their `to`
+          // needs no reslugging — only the main plan's staged-canon targets do.
+          const target = a.stored_sentence_id
+            ? a.to
+            : reslug(a.to.replace(/:s\d+$/, ''), STAGED, PROMOTE_TO) + (/:s\d+$/.exec(a.to)?.[0] || '')
+          if (target === storedId) continue
           const r = await del()
           if (r.rowCount !== 1) throw new Error(`drift: expected 1 state row for ${a.sentence_id}, got ${r.rowCount}`)
           await db.query(
@@ -402,4 +537,8 @@ async function main () {
   await db.end()
 }
 
-main().catch(e => { console.error('FAILED:', e.message); process.exit(1) })
+module.exports = { planInflightFold }
+
+if (require.main === module) {
+  main().catch(e => { console.error('FAILED:', e.message); process.exit(1) })
+}
