@@ -3,7 +3,7 @@
  * pod-bulk-migrate.cjs — resumable bulk migration of Listening Pod 0 across
  * every pod-0 course, onto the canonical-generated pipeline.
  *
- * Per course, four stages run in order:
+ * Per course, three stages run in order:
  *   1. regen      — full dialogue rebuild from canonical_pod_scenarios:
  *                     node services/pod-dialogue-generator.cjs <course> --force
  *                   (mode:'full' = wipe + re-flex every scene; afterwards the
@@ -17,10 +17,12 @@
  *                   exported generatePodAudio (PHASE8_NO_LISTEN=1) — no running
  *                   server required — or, with --tts=http, by POSTing to a live
  *                   Phase 8 on localhost:3465.
- *   4. explainers — null explainer_audio_id for this course's pod-0 rows, then
- *                     node services/run-pod-explainer-batch.cjs <course>
- *                   (FULL batch: text pass first — regen wipes explainer_text/
- *                    decomposition with the rows — then the audio pass).
+ *
+ * A fourth stage used to render the pod explainer narration track. Explainers
+ * were deprecated on 2026-08-24 (Tom: "Explainers do not exist anymore… let's
+ * deprecate them completely"), so the stage is gone: nothing here generates,
+ * nulls or verifies explainer audio any more. Existing rows and clips are left
+ * exactly as they are.
  *
  * RESUMABLE + IDEMPOTENT. A per-course ledger (scripts/pod-bulk-migrate-ledger.json)
  * records each course's stage state (pending → running → done | failed). On
@@ -36,9 +38,9 @@
  *
  * SKIPPED courses: all Welsh (cym, cym_n, cym_s — no Welsh pods + TTS
  * voice-quality blocker). hrv_for_eng was skipped while Aran's hand-authored
- * Croatian was in livecast use; canon v2 (2026-06-10) supersedes it. This
- * reuses pod-explainer-generator.shouldSkipCourse, the same skip authority
- * the explainer batch already honours.
+ * Croatian was in livecast use; canon v2 (2026-06-10) supersedes it. The rule
+ * lived in the explainer generator until that file was deleted on 2026-08-24;
+ * it is a migration-wide skip, not an explainer one, so it now lives here.
  *
  * Usage:
  *   node services/pod-bulk-migrate.cjs --dry-run            # plan only, touch nothing
@@ -59,8 +61,18 @@ const fs = require('fs')
 const { spawn } = require('child_process')
 const { createClient } = require('@supabase/supabase-js')
 const { CLAUDE_CONFIG_DIR } = require('./shared/claude-config.cjs')
-const { shouldSkipCourse, parseCourseCode, getConnectorForLearnerLang } = require('./pod-explainer-generator.cjs')
-const { resolveExplainerLanguage } = require('../tools/pod-voice-coverage.cjs')
+
+// Welsh has no Welsh pods and an unresolved TTS voice-quality blocker, so it is
+// held out of the bulk migration entirely.
+const SKIPPED_TARGET_LANGS = new Set(['cym', 'cym_n', 'cym_s'])
+
+/** "ita_for_eng" → target "ita"; "fra_ca_for_eng" → target "fra_ca". */
+function shouldSkipCourse (courseCode) {
+  const m = String(courseCode).match(/^(.+)_for_(.+)$/)
+  const target = m ? m[1] : String(courseCode)
+  if (SKIPPED_TARGET_LANGS.has(target)) return { skip: true, reason: 'welsh-tts-blocker' }
+  return { skip: false }
+}
 
 // =============================================================================
 // CONFIG
@@ -69,7 +81,7 @@ const { resolveExplainerLanguage } = require('../tools/pod-voice-coverage.cjs')
 const REPO_ROOT = path.join(__dirname, '..')
 const LEDGER_PATH = path.join(REPO_ROOT, 'scripts', 'pod-bulk-migrate-ledger.json')
 const POD_SLUG = 'pod-0'
-const STAGES = ['regen', 'recolour', 'tts', 'explainers']
+const STAGES = ['regen', 'recolour', 'tts']
 const PHASE8_PORT = Number(process.env.PHASE8_PORT) || 3465
 
 const supabase = createClient(
@@ -112,7 +124,7 @@ function stageLog(course, stage, ...a) { console.log(`[${ts().slice(11, 19)}] [$
 //   courses: {
 //     <course_code>: {
 //       skip?: <reason>,
-//       stages: { regen: 'done'|'pending'|'running'|'failed', recolour: ..., tts: ..., explainers: ... },
+//       stages: { regen: 'done'|'pending'|'running'|'failed', recolour: ..., tts: ... },
 //       errors: { <stage>: <message> },
 //       finished_at?: <iso>
 //     }
@@ -139,9 +151,9 @@ function saveLedger(led) {
 
 function ensureCourse(led, course) {
   if (!led.courses[course]) {
-    led.courses[course] = { stages: { regen: 'pending', recolour: 'pending', tts: 'pending', explainers: 'pending' }, errors: {} }
+    led.courses[course] = { stages: { regen: 'pending', recolour: 'pending', tts: 'pending' }, errors: {} }
   }
-  if (!led.courses[course].stages) led.courses[course].stages = { regen: 'pending', recolour: 'pending', tts: 'pending', explainers: 'pending' }
+  if (!led.courses[course].stages) led.courses[course].stages = { regen: 'pending', recolour: 'pending', tts: 'pending' }
   if (!led.courses[course].errors) led.courses[course].errors = {}
   return led.courses[course]
 }
@@ -181,8 +193,6 @@ async function countSentences(podId, filterCb) {
  *               (The canonical-pipeline marker — distinguishes a re-flexed pod
  *                from a hand-authored markdown pod that merely has sentences.)
  * tts     done  ⟺ every sentence has BOTH target_audio_id and known_audio_id.
- * explainers done ⟺ every sentence WITH explainer_text has explainer_audio_id
- *               AND at least one explainer_audio_id exists (avoids "0/0 = done").
  *
  * recolour is not separately observable in the DB (it just rewrites speakers +
  * nulls changed audio, which tts then refills) — it's tracked in the ledger only.
@@ -195,23 +205,19 @@ async function detectState(pod) {
   const total = await countSentences(podId)
   const tgtAudio = await countSentences(podId, q => q.not('target_audio_id', 'is', null))
   const knownAudio = await countSentences(podId, q => q.not('known_audio_id', 'is', null))
-  const expText = await countSentences(podId, q => q.not('explainer_text', 'is', null).neq('explainer_text', ''))
-  const expAudioOfText = await countSentences(podId, q => q.not('explainer_text', 'is', null).neq('explainer_text', '').not('explainer_audio_id', 'is', null))
 
   const regenDone = isGenerated && hashCount > 0 && total > 0
   const ttsDone = total > 0 && tgtAudio >= total && knownAudio >= total
-  const explainersDone = expText > 0 && expAudioOfText >= expText
 
   return {
     source_file: pod.source_file,
     hand_authored: !isGenerated,
-    counts: { total, tgtAudio, knownAudio, expText, expAudioOfText, hashCount },
+    counts: { total, tgtAudio, knownAudio, hashCount },
     observed: {
       regen: regenDone ? 'done' : 'pending',
       // recolour can't be observed independently; if tts is done it's implied done.
       recolour: ttsDone ? 'done' : 'pending',
       tts: ttsDone ? 'done' : 'pending',
-      explainers: explainersDone ? 'done' : 'pending',
     },
   }
 }
@@ -228,10 +234,10 @@ async function detectState(pod) {
 function bootstrapStages(entry, observed) {
   // Stages whose completion is directly observable in the DB. For these,
   // observation is authoritative: a ledger 'done' with a pending observation
-  // means the DB state regressed under it (e.g. explainer clips that failed
-  // after the stage runner exited 0) — re-run, don't trust the stamp.
+  // means the DB state regressed under it (e.g. clips that failed after the
+  // stage runner exited 0) — re-run, don't trust the stamp.
   // recolour is NOT here: it isn't observable, its ledger entry must win.
-  const OBSERVABLE = new Set(['regen', 'tts', 'explainers'])
+  const OBSERVABLE = new Set(['regen', 'tts'])
   let upstreamAllDone = true
   for (const stage of STAGES) {
     const ledgerDone = entry.stages[stage] === 'done'
@@ -294,7 +300,7 @@ async function stageRegen(course) {
   // from sentence 1 of the NEW content (Tom 2026-06-10: "reset completed pods
   // for existing learners when we do wholesale changes"). Without this, a
   // learner with a high pod-round counter computes the new sentences at
-  // advanced stages and never hears their Phase-0 explainers.
+  // advanced stages and never hears their early rounds.
   const { data: reset, error } = await supabase
     .from('course_enrollments')
     .update({ completed_pod_rounds: 0, pod_activation_round: null })
@@ -307,34 +313,6 @@ async function stageRegen(course) {
 
 async function stageRecolour(course) {
   await runProcess('node', ['tools/pod-recolour.cjs', `--course=${course}`, '--apply'], { course, stage: 'recolour' })
-}
-
-async function stageExplainers(course) {
-  // Null any existing explainer_audio_id for this course's pod-0 rows (the
-  // dialogue text changed under them in regen, so old explainer audio is stale),
-  // then run the FULL explainer batch: regen wipes explainer_text +
-  // explainer_decomposition with the rows, so the text pass must run before
-  // the audio pass has anything to voice (--no-text would be a silent no-op).
-  const podId = `${course}:${POD_SLUG}`
-  const { error } = await supabase
-    .from('listening_pod_sentences')
-    .update({ explainer_audio_id: null })
-    .eq('pod_id', podId)
-    .not('explainer_audio_id', 'is', null)
-  if (error) throw new Error(`null explainer_audio_id: ${error.message}`)
-  // Azure-tail targets the clone can't speak now go through the COMPOSITE
-  // path inside the batch (pod-explainer-composite.cjs: target-voice chunks
-  // + known-voice glosses spliced into one file) — every texted row gets
-  // audio either way, so the voiced-count verify below applies uniformly.
-  await runProcess('node', ['services/run-pod-explainer-batch.cjs', course], { course, stage: 'explainers' })
-  // VERIFY: the explainer batch exits 0 even when individual clips fail (xAI
-  // ECONNRESET spells can drop most of a course). Re-observe and throw on a
-  // shortfall so the ledger marks this course failed and a relaunch retries —
-  // otherwise an unlucky course is silently stamped done with explainers missing.
-  const expText = await countSentences(podId, q => q.not('explainer_text', 'is', null).neq('explainer_text', ''))
-  const expVoiced = await countSentences(podId, q => q.not('explainer_text', 'is', null).neq('explainer_text', '').not('explainer_audio_id', 'is', null))
-  if (expText === 0) throw new Error('explainers incomplete: text pass produced 0 rows')
-  if (expVoiced < expText) throw new Error(`explainers incomplete: ${expVoiced}/${expText} voiced (TTS failures — re-run to fill)`)
 }
 
 // ---- TTS stage ----------------------------------------------------------------
@@ -474,7 +452,7 @@ async function stageTtsInproc(course) {
 
   // Default 5 (matches POD_GEN_CONCURRENCY_DEFAULT; xAI flaky above ~6), but
   // env-tunable for mop-up when the connection pool resets under load —
-  // TTS_CONCURRENCY=1 fully serialises, mirroring the explainer AUDIO_PARALLEL=1 knob.
+  // TTS_CONCURRENCY=1 fully serialises.
   const concurrency = Number(process.env.TTS_CONCURRENCY) > 0
     ? Math.floor(Number(process.env.TTS_CONCURRENCY))
     : 5
@@ -546,7 +524,7 @@ async function stageTts(course) {
   return TTS_MODE === 'http' ? stageTtsHttp(course) : stageTtsInproc(course)
 }
 
-const STAGE_FNS = { regen: stageRegen, recolour: stageRecolour, tts: stageTts, explainers: stageExplainers }
+const STAGE_FNS = { regen: stageRegen, recolour: stageRecolour, tts: stageTts }
 
 // =============================================================================
 // PLAN (shared by dry-run + real run)
@@ -615,7 +593,7 @@ async function dryRun() {
     const stageStr = STAGES.map(s => `${s[0]}${mark(p.stages[s])}`).join(' ')
     const todoStr = p.todo.length ? p.todo.join(',') : '(nothing — complete)'
     const ha = p.hand_authored ? '  ⚠HAND-AUTHORED→will-be-WIPED-by-regen' : ''
-    console.log(`  ${p.course.padEnd(18)} ${stageStr}   sent=${c.total} tgtA=${c.tgtAudio} knoA=${c.knownAudio} expTxt=${c.expText} expAud=${c.expAudioOfText} hash=${c.hashCount}`)
+    console.log(`  ${p.course.padEnd(18)} ${stageStr}   sent=${c.total} tgtA=${c.tgtAudio} knoA=${c.knownAudio} hash=${c.hashCount}`)
     console.log(`  ${' '.repeat(18)}   → todo: ${todoStr}${ha}`)
   }
 

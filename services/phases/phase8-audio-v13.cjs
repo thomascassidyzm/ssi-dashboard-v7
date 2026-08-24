@@ -8349,8 +8349,8 @@ app.get('/reuse-run/:runId', (req, res) => {
 // =============================================================================
 // START SERVER (suppressed when require()d as a library)
 // =============================================================================
-// Gated on PHASE8_NO_LISTEN so other tools (e.g. the pod-explainer overnight
-// runner) can require this file purely for its named helpers — masterAudio,
+// Gated on PHASE8_NO_LISTEN so other tools (e.g. the pod bulk migration's TTS
+// stage) can require this file purely for its named helpers — masterAudio,
 // generatePodAudio etc. — without triggering EADDRINUSE on PORT 3465.
 //
 // We use an explicit env-var rather than `require.main === module` because
@@ -8385,8 +8385,8 @@ module.exports.linkAudioIds = linkAudioIds
 // PRECIOUS-AUDIO GUARD helper (G1) — exported so the pods recording stream can
 // unit-test that TTS paths refuse to write over human pod rows (additive).
 module.exports.humanRowAtAudioKey = humanRowAtAudioKey
-// Shared with pod-explainer-composite so the composite recipe's parts are spelt
-// exactly the way every other voice id in a course_audio row is.
+// The identity spelling of a voice — shared with the render/repair tools so a
+// voice id is spelt exactly the same way in every course_audio row.
 module.exports.canonicalClipVoiceId = canonicalClipVoiceId
 module.exports.findSiblingCourseClip = findSiblingCourseClip
 module.exports.lookupSiblingClip = lookupSiblingClip
