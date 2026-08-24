@@ -371,7 +371,10 @@ function buildPodScript ({ pod, rows, track = 'target', clips = null }) {
       const a = audioFor(r)
       if (a.target) audioSummary.with_target++; else audioSummary.without_target++
       if (a.target_splits.length) { audioSummary.with_splits++; audioSummary.split_clips += a.target_splits.length } else audioSummary.without_splits++
-      for (const c of [a.target, a.known, a.explainer, ...a.target_splits, ...a.known_splits]) {
+      // explainer excluded: the pod-sentence explainer narration track is
+      // deprecated (2026-08-24) and out of scope for this coverage count,
+      // though its raw clip reference is still shown per-line above.
+      for (const c of [a.target, a.known, ...a.target_splits, ...a.known_splits]) {
         if (c && c.found === false) audioSummary.dangling++
       }
     }
