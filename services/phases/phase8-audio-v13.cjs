@@ -7150,6 +7150,40 @@ function englishColumnFor(ctx) {
 }
 
 /**
+ * Split a pod TURN into its sentences, for the pause-cue insertion below.
+ *
+ * This expression is deliberately IDENTICAL to the one the splicer cuts on
+ * (tools/pods/splice-sentence-clips.cjs SENTENCE_SPLIT, and the same in
+ * tools/render-sentence-takes.cjs). Whatever puts the pause cue IN and whatever
+ * cuts ON it must agree, or the splicer looks for a silence the generator never
+ * engineered — which is exactly the bug this replaces: the old Latin-only
+ * /(?<=[.!?…])\s+/ has neither the CJK terminals 。！？ nor a way to fire
+ * without following whitespace, so NO Chinese or Japanese turn ever received a
+ * pause cue. The 2026-08-24 Pod 1 splice pass had to withdraw 3 Chinese turns
+ * because of it: with no engineered sentence pause, the splice margin could not
+ * tell a comma pause from a sentence end (1.75 broken vs 1.65 fine).
+ *
+ * CJK terminals split with or without a following space; Latin marks keep
+ * requiring whitespace, so "3.5" and abbreviations stay safe; Arabic ؟ behaves
+ * like a Latin ?. Korean uses Latin marks with spaces and was never affected.
+ *
+ * NOT handled, deliberately: the Devanagari danda ।/॥ — the splicer does not
+ * handle it either, and consistency between the two is worth more than a
+ * unilateral improvement here. Changing both in one commit is the follow-up.
+ *
+ * Exported purely so it can be unit-tested without standing up TTS and S3.
+ *
+ * @param {string} text
+ * @returns {string[]} trimmed, non-empty sentences
+ */
+function splitPodTurnSentences (text) {
+  return String(text || '')
+    .split(/(?<=[。！？])\s*(?=\S)|(?<=[.!?…؟])\s+(?=\S)/)
+    .map(s => s.trim())
+    .filter(Boolean)
+}
+
+/**
  * Generate one audio clip and insert into course_audio. Returns the audio_id.
  *
  * Resilience: the primary voice (often xAI for known/English clips) is tried
@@ -7202,7 +7236,7 @@ async function generatePodAudio({ courseCode, text, language, ttsLanguageCue, ro
   // listening_pod_sentences, not course_audio, so it stays clean.
   let ttsText = text
   if (track === 'target' || track === 'known') {
-    const sents = String(text || '').split(/(?<=[.!?…])\s+/).map(s => s.trim()).filter(Boolean)
+    const sents = splitPodTurnSentences(text)
     if (sents.length > 1) ttsText = sents.join(' … ')
   }
 
@@ -8274,6 +8308,8 @@ module.exports.podCanonReuseTexts = podCanonReuseTexts
 module.exports.englishColumnFor = englishColumnFor
 module.exports.loadPod0Canon = loadPod0Canon
 module.exports.generatePodAudio = generatePodAudio
+// Pure helper behind generatePodAudio's pause cue — exported for unit tests.
+module.exports.splitPodTurnSentences = splitPodTurnSentences
 module.exports.s3 = s3
 module.exports.S3_BUCKET = S3_BUCKET
 // Human-first FK link pass (G2 pre-pass + RPC) — the voice engine's link
