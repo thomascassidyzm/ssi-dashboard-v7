@@ -13,7 +13,17 @@ takes were downloaded read-only and cut on copies.
 
 ---
 
-## 1. There are not two cutters. There is one cutter and two piece sizes.
+## 1. Superseded — read `splice-bench-2026-08-24.md` §1 instead
+
+> **Correction, later the same day.** This section answers the wrong question.
+> Kai then named the two mechanisms himself — cut the slow take at its pauses,
+> versus cut the natural take guided by the slow take's rhythm — and **both are
+> real**, as two branches of `alignTakePair()`. What follows below is still true
+> about the two-pool work (piece SIZE), but it is not the distinction he was
+> making. The corrected account, with the history from job #266, is in
+> `docs/recording/splice-bench-2026-08-24.md` §1.
+
+### The original (wrong-question) section: one cutter, two piece sizes
 
 The brief guessed at "a pause-based mechanism" and "a newer two-pool mechanism
 that extracts segments differently". That is close but not right, and the
@@ -50,14 +60,26 @@ It is tagged `cadence: 'isolated'`, is dropped from take grouping in
 `provenance-adapter.cjs`, and can never reach the segment store. It is never
 spliced, by construction.
 
-### One thing found in passing, worth a line
+### One thing found in passing — and the correction to it
 
-`chunk_boundaries_ms` — the recordist's own pause timings, captured live by the
-Autocue Studio (`AutocueStudio.vue:957`) and stored on 299 of Sascha's 309
-takes — **is written and never read.** `align.cjs` re-derives the boundaries
-from scratch with `silencedetect` instead. That is not the cause of anything on
-this page, but it is a measured signal being thrown away by the exact code that
-then has to guess.
+I reported that `chunk_boundaries_ms` — the recordist's own pause timings,
+captured live by the Autocue Studio and stored on 299 of Sascha's 309 takes — is
+"written and never read", and implied that was an oversight.
+
+**That was half right and the implication was wrong.** Job #266 found the commit
+that wrote it, `45a3711ef` (2026-08-11, "hear one LEGO piece of a slow take"),
+which is explicit that nothing server-side would read it: *"align.cjs still
+measures the audio for itself; this is the speaker's own cheaper account of the
+same cut, kept rather than binned."* It IS read — in the browser, by
+`takeChunks.js`, for review playback. It is deliberate spare capacity, not a
+misunderstanding. Nothing follows from it for the splicing decision.
+
+The real seam is elsewhere, and both #266 and my own measurement found it
+independently: the studio judges a recordist's pauses with the browser VAD's
+adaptive RMS (`useVAD.ts`), while `align.cjs` judges with ffmpeg silencedetect at
+an absolute -35 dBFS. The duration floor is reconciled between them; the level
+test is not. Measured over 15 staged Sascha lines, the two verdicts agree 14
+times and disagree once. See `docs/recording/splice-bench-2026-08-24.md` §3.
 
 ---
 

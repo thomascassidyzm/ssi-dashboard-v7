@@ -39,9 +39,26 @@ chunk map can come from — and then the code tries, in order:
 
 The file's own header calls the natural-cut path *the model*, and (a) is written
 as the no-natural-take fallback. So (b) is the designed path in the code as it
-stands today. Whether it is also the chronologically *original* one is being
-checked against the history by job **#266**; that report is not in yet and this
-document does not claim it either way.
+stands today.
+
+**But it is not the original one, and Kai's memory of that is wrong.** Job #266
+walked the history: (a) is the original by five months. The recording optimiser
+was born on 2026-01-12 (`d64c463e6`) and its generated script already said
+*"Pass 2: Slow with gaps between words (for splicing)"* — the deliberate-pause
+slow take existed on day one, and existed for splicing. Boundaries moved from
+whisper word timestamps to LEGO chunks on 2026-04-21 (`8271ddd60`), which also
+wrote `align-audio.cjs` with a `natural` mode — but that mode used aeneas forced
+alignment and never consulted the slow take, so it is not (b) either. (b) first
+exists on **2026-06-10, `4c9a950f9`**, whose own message introduces it: *"natural-take
+cutting via direct detection or proportional transfer from the slow alignment"*.
+`alignTakePair` and `transferBoundaries` are both born in that commit, so at
+align.cjs's birth both branches are present together — neither is a bolt-on to
+the other.
+
+So: (b) is **primary in policy and second in history**. That is almost certainly
+what Kai is remembering — since June the code has preferred it whenever a clear
+take exists — but nothing before 2026-06-10 cut a natural take by transferred
+slow rhythm.
 
 ### The crux, and it cuts against the obvious move
 
@@ -55,6 +72,15 @@ both mechanisms depend on. That is the single most decision-relevant thing on
 this page, and the bench is built so Kai can watch it happen rather than take my
 word for it: record a clear read with no slow read and both panels say the same
 thing — nothing can start.
+
+Job #266 reached the same conclusion from the history rather than from the code:
+`align.cjs:213` on origin/main still reads `throw new Error('alignTakePair:
+slowPath required (alignment runs on the slow take)')`; `543e76664` (2026-08-10)
+states it outright — *"The slow take is the only source of chunk boundaries"*;
+and `c37496593` (2026-08-22) measured the counterfactual on this very material:
+**0 of 17** natural-only takes produced a chunk map, and 0 of 88 LEGO boundaries
+had a detectable silence within 80 ms. *"The slow pass is not a refinement. It
+manufactures the pause the detector needs."*
 
 ### Measured, and it is not a small effect
 
@@ -119,12 +145,26 @@ line where the browser's detector counts six gaps where the script asked for
 five, and it is worth seeing. The bench marks it with a cross in the line picker
 and never lands on it by default.
 
-**The wrinkle, stated because it will otherwise look like a bug.** The server's
-cutter and the browser port do not agree on every take. The server uses an
-absolute −35 dBFS on a loudness-normalised mp3; the browser peak-normalises
-first and guards against a noisy room floor. Measured over the 15 staged lines:
-**14 agree, 1 does not.** So a line the server can cut may still refuse on the
-bench. Nothing here papers over that.
+**The wrinkle, and it turns out to be a real open question rather than a bench
+artefact.** The server's cutter and the browser port do not agree on every take.
+The server uses an absolute -35 dBFS on a loudness-normalised mp3; the browser
+peak-normalises first and guards against a noisy room floor. Measured over the 15
+staged lines: **14 agree, 1 does not.**
+
+Job #266 reached the same seam from the other direction, without knowing that
+measurement. The studio's in-session refusal (`d9659b6fe`) judges pauses with the
+browser VAD's adaptive time-domain RMS (`useVAD.ts`, threshold 0.02, clamped
+0.01-0.08). `align.cjs` judges with ffmpeg silencedetect at an absolute -35 dBFS.
+`useVAD.ts` deliberately reconciles the *duration* floor to align.cjs's 150 ms —
+and **nothing reconciles the *level* test.** #266 called that genuinely open
+rather than a confirmed defect, because the repo never tests browser against
+server.
+
+The 14-of-15 measurement above is, as far as I can tell, the first evidence
+either way: they mostly agree, and they can disagree. It means a recordist can be
+told in the studio that a slow read is good and have the server refuse it later,
+or the reverse. That is worth a decision from Kai separately from the splicing
+question, and it is not something this bench fixes.
 
 ---
 
