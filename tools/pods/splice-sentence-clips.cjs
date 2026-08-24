@@ -101,7 +101,23 @@ const { normalizeForAudio } = require('../../services/shared/text-normalize.cjs'
 
 const execFileP = promisify(execFile)
 const REPO = path.resolve(__dirname, '../..')
-const SPLICER = path.join(REPO, 'scripts', 'splice-fork', 'splice.py')
+/**
+ * The splicer lives in tools/ because this tool cannot run without it.
+ *
+ * It was written in scripts/splice-fork/ during job #343, and scripts/ is the
+ * GITIGNORED workspace — so the committed version of this tool would have
+ * shipped to main pointing at a file that does not exist in the repo. Caught by
+ * running the test suite from a fresh checkout off main rather than from the
+ * working tree that happened to have it.
+ *
+ * The copy is byte-identical to the one #343 measured (md5
+ * e2f61cf3bdcd344cc187d3a7e7af94e1). That matters: its thresholds — -35 dB /
+ * 100 ms detection, N-1 longest interior gaps, cut at the midpoint, 50 ms of
+ * pause kept either side, 15 ms fade — are the ones the splice-vs-render
+ * evidence was gathered with, and re-typing them would quietly decouple the
+ * tool from its justification.
+ */
+const SPLICER = path.join(__dirname, 'splice.py')
 
 const COURSE = process.argv[2]
 const APPLY = process.argv.includes('--apply')
