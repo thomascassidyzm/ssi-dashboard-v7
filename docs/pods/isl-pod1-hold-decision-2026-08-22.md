@@ -1,5 +1,24 @@
 # Icelandic (isl_for_eng) free-tier pod — HOLD, not flipped, 2026-08-22
 
+> ## ⚠️ SUPERSEDED 2026-08-24 — the numbers below are history, not state
+>
+> **This page's "10 of 231 quarantined" is no longer true and must not be quoted
+> in any report.** The hold was lifted under Tom's A-230 ruling on 2026-08-24.
+> Measured from the database at 2026-08-24 10:05Z:
+>
+> - `isl_for_eng:pod-0-unrecorded` is **231/231 target and 231/231 known**, with
+>   **zero off-cast clips on either track** (`unlink-off-cast-pod-clips` dry-run,
+>   both tracks: "231 on-cast, 0 OFF-CAST").
+> - The last two holdouts closed today: `SC17-S008` ("Er vatnið volgt?") rendered
+>   at 08:34Z, and `SC20-S007` was **rephrased and re-rendered** at 09:59Z —
+>   see [`isl-sc20-s007-rephrase-2026-08-24.md`](./isl-sc20-s007-rephrase-2026-08-24.md).
+> - The 2026-08-22 diagnosis below — `whisper-small` is too weak for Icelandic,
+>   and the gate was refusing audio it could not read — still stands and is not
+>   overturned. What is stale is only the count.
+>
+> Keep reading for the decoder-strength evidence; ignore the counts.
+> Intermediate record: [`isl-pod1-a230-2026-08-24.md`](./isl-pod1-a230-2026-08-24.md).
+
 Romanian, Swedish and Basque all flipped to `pod-1` tonight. Icelandic did not.
 This is the decision record for why, and the fork for what happens next.
 
