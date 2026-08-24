@@ -1,0 +1,27 @@
+{
+  "pod": "est_for_eng:pod-0-unrecorded",
+  "model": "small",
+  "results": [
+    {
+      "id": "est_for_eng:pod-0-unrecorded:SC07-S001",
+      "track": "target",
+      "speaker": "Cafe Barista",
+      "clip_id": "8123cae3-8f58-4212-8d93-fee4ac043dbe",
+      "text": "Tere hommikust. Mida soovite?",
+      "voice_actual": "et-EE-AnuNeural",
+      "voice_expected": "et-EE-AnuNeural",
+      "voice_ok": true,
+      "bytes": 42336,
+      "duration_s": 3.47,
+      "mean_db": -17.9,
+      "lead_silence_s": 0.14,
+      "tail_silence_s": 0.27,
+      "has_speech": true,
+      "stt": "Tere homikust! Mida sovite?",
+      "stt_model": "small",
+      "stt_similarity": 0.917,
+      "stt_ok": true,
+      "verdict": "CLEAN"
+    }
+  ]
+}

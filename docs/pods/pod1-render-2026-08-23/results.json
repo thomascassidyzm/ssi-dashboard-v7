@@ -1,0 +1,1138 @@
+{
+  "generated_at": "2026-08-24T01:12:58.809Z",
+  "excluded": [
+    {
+      "course": "isl_for_eng",
+      "reason": "documented veracity hold"
+    }
+  ],
+  "results": [
+    {
+      "course": "fra_for_eng",
+      "pod_id": "fra_for_eng:pod-1-staged-2026-08-23",
+      "steps": {
+        "unlinked": {
+          "target": 0,
+          "known": 0
+        },
+        "sample": {
+          "mode": "sample",
+          "total": 0,
+          "generated": 0,
+          "reused": 0,
+          "reused_cross_course": 0,
+          "failed": 0,
+          "blocked_unapproved_target": 0,
+          "queued_before_sample": 0,
+          "errors": []
+        },
+        "sample_verify": null,
+        "bulk": {
+          "mode": "bulk",
+          "total": 0,
+          "generated": 0,
+          "reused": 0,
+          "reused_cross_course": 0,
+          "failed": 0,
+          "blocked_unapproved_target": 0,
+          "queued_before_sample": 0,
+          "errors": []
+        },
+        "bulk_verify": {
+          "parse_error": "[dotenv@17.2.3] injecting env (1) from .env.psql -- tip: 🔄 add secrets lifecycle management: https://dotenvx.com/ops\nNo clips on fra_for_eng:pod-1-staged-2026-08-23 newer than 25min.\n",
+          "json": "docs/pods/pod1-render-2026-08-23/fra_for_eng-pod-1-staged-2026-08-23-verify-25min.json"
+        }
+      },
+      "status": "complete"
+    },
+    {
+      "course": "spa_for_eng",
+      "pod_id": "spa_for_eng:pod-1-staged-2026-08-23",
+      "steps": {
+        "unlinked": {
+          "target": 0,
+          "known": 0
+        },
+        "sample": {
+          "mode": "sample",
+          "total": 0,
+          "generated": 0,
+          "reused": 0,
+          "reused_cross_course": 0,
+          "failed": 0,
+          "blocked_unapproved_target": 0,
+          "queued_before_sample": 0,
+          "errors": []
+        },
+        "sample_verify": null,
+        "bulk": {
+          "mode": "bulk",
+          "total": 0,
+          "generated": 0,
+          "reused": 0,
+          "reused_cross_course": 0,
+          "failed": 0,
+          "blocked_unapproved_target": 0,
+          "queued_before_sample": 0,
+          "errors": []
+        },
+        "bulk_verify": {
+          "parse_error": "[dotenv@17.2.3] injecting env (1) from .env.psql -- tip: 🗂️ backup and recover secrets: https://dotenvx.com/ops\nNo clips on spa_for_eng:pod-1-staged-2026-08-23 newer than 25min.\n",
+          "json": "docs/pods/pod1-render-2026-08-23/spa_for_eng-pod-1-staged-2026-08-23-verify-25min.json"
+        }
+      },
+      "status": "complete"
+    },
+    {
+      "course": "ita_for_eng",
+      "pod_id": "ita_for_eng:pod-1-staged-2026-08-23",
+      "steps": {
+        "unlinked": {
+          "target": 0,
+          "known": 0
+        },
+        "sample": {
+          "mode": "sample",
+          "total": 0,
+          "generated": 0,
+          "reused": 0,
+          "reused_cross_course": 0,
+          "failed": 0,
+          "blocked_unapproved_target": 0,
+          "queued_before_sample": 0,
+          "errors": []
+        },
+        "sample_verify": null,
+        "bulk": {
+          "mode": "bulk",
+          "total": 0,
+          "generated": 0,
+          "reused": 0,
+          "reused_cross_course": 0,
+          "failed": 0,
+          "blocked_unapproved_target": 0,
+          "queued_before_sample": 0,
+          "errors": []
+        },
+        "bulk_verify": {
+          "parse_error": "[dotenv@17.2.3] injecting env (1) from .env.psql -- tip: 🔐 encrypt with Dotenvx: https://dotenvx.com\nNo clips on ita_for_eng:pod-1-staged-2026-08-23 newer than 25min.\n",
+          "json": "docs/pods/pod1-render-2026-08-23/ita_for_eng-pod-1-staged-2026-08-23-verify-25min.json"
+        }
+      },
+      "status": "complete"
+    },
+    {
+      "course": "deu_for_eng",
+      "pod_id": "deu_for_eng:pod-1-staged-2026-08-23",
+      "steps": {
+        "unlinked": {
+          "target": 0,
+          "known": 0
+        },
+        "sample": {
+          "mode": "sample",
+          "total": 0,
+          "generated": 0,
+          "reused": 0,
+          "reused_cross_course": 0,
+          "failed": 0,
+          "blocked_unapproved_target": 0,
+          "queued_before_sample": 0,
+          "errors": []
+        },
+        "sample_verify": null,
+        "bulk": {
+          "mode": "bulk",
+          "total": 0,
+          "generated": 0,
+          "reused": 0,
+          "reused_cross_course": 0,
+          "failed": 0,
+          "blocked_unapproved_target": 0,
+          "queued_before_sample": 0,
+          "errors": []
+        },
+        "bulk_verify": {
+          "parse_error": "[dotenv@17.2.3] injecting env (1) from .env.psql -- tip: 🛠️  run anywhere with `dotenvx run -- yourcommand`\nNo clips on deu_for_eng:pod-1-staged-2026-08-23 newer than 25min.\n",
+          "json": "docs/pods/pod1-render-2026-08-23/deu_for_eng-pod-1-staged-2026-08-23-verify-25min.json"
+        }
+      },
+      "status": "complete"
+    },
+    {
+      "course": "por_for_eng",
+      "pod_id": "por_for_eng:pod-1-staged-2026-08-23",
+      "steps": {
+        "unlinked": {
+          "target": 0,
+          "known": 0
+        },
+        "sample": {
+          "mode": "sample",
+          "total": 0,
+          "generated": 0,
+          "reused": 0,
+          "reused_cross_course": 0,
+          "failed": 0,
+          "blocked_unapproved_target": 0,
+          "queued_before_sample": 0,
+          "errors": []
+        },
+        "sample_verify": null,
+        "bulk": {
+          "mode": "bulk",
+          "total": 0,
+          "generated": 0,
+          "reused": 0,
+          "reused_cross_course": 0,
+          "failed": 0,
+          "blocked_unapproved_target": 0,
+          "queued_before_sample": 0,
+          "errors": []
+        },
+        "bulk_verify": {
+          "parse_error": "[dotenv@17.2.3] injecting env (1) from .env.psql -- tip: ⚙️  specify custom .env file path with { path: '/custom/path/.env' }\nNo clips on por_for_eng:pod-1-staged-2026-08-23 newer than 25min.\n",
+          "json": "docs/pods/pod1-render-2026-08-23/por_for_eng-pod-1-staged-2026-08-23-verify-25min.json"
+        }
+      },
+      "status": "complete"
+    },
+    {
+      "course": "por_br_for_eng",
+      "pod_id": "por_br_for_eng:pod-1-staged-2026-08-23",
+      "steps": {
+        "unlinked": {
+          "target": 0,
+          "known": 0
+        },
+        "sample": {
+          "mode": "sample",
+          "total": 0,
+          "generated": 0,
+          "reused": 0,
+          "reused_cross_course": 0,
+          "failed": 0,
+          "blocked_unapproved_target": 0,
+          "queued_before_sample": 0,
+          "errors": []
+        },
+        "sample_verify": null,
+        "bulk": {
+          "mode": "bulk",
+          "total": 0,
+          "generated": 0,
+          "reused": 0,
+          "reused_cross_course": 0,
+          "failed": 0,
+          "blocked_unapproved_target": 0,
+          "queued_before_sample": 0,
+          "errors": []
+        },
+        "bulk_verify": {
+          "parse_error": "[dotenv@17.2.3] injecting env (1) from .env.psql -- tip: 🔐 prevent building .env in docker: https://dotenvx.com/prebuild\nNo clips on por_br_for_eng:pod-1-staged-2026-08-23 newer than 25min.\n",
+          "json": "docs/pods/pod1-render-2026-08-23/por_br_for_eng-pod-1-staged-2026-08-23-verify-25min.json"
+        }
+      },
+      "status": "complete"
+    },
+    {
+      "course": "ron_for_eng",
+      "pod_id": "ron_for_eng:pod-1-staged-2026-08-23",
+      "steps": {
+        "unlinked": {
+          "target": 0,
+          "known": 0
+        },
+        "sample": {
+          "mode": "sample",
+          "total": 5,
+          "generated": 4,
+          "reused": 1,
+          "reused_cross_course": 0,
+          "failed": 0,
+          "blocked_unapproved_target": 0,
+          "queued_before_sample": 59,
+          "errors": []
+        },
+        "sample_verify": {
+          "clips": 4,
+          "clean": 4,
+          "advisory": 0,
+          "review": 0,
+          "error": 0,
+          "json": "docs/pods/pod1-render-2026-08-23/ron_for_eng-pod-1-staged-2026-08-23-verify-25min.json"
+        },
+        "bulk": {
+          "mode": "bulk",
+          "total": 54,
+          "generated": 48,
+          "reused": 6,
+          "reused_cross_course": 0,
+          "failed": 0,
+          "blocked_unapproved_target": 0,
+          "queued_before_sample": 54,
+          "errors": []
+        },
+        "bulk_verify": {
+          "clips": 10,
+          "clean": 10,
+          "advisory": 0,
+          "review": 0,
+          "error": 0,
+          "json": "docs/pods/pod1-render-2026-08-23/ron_for_eng-pod-1-staged-2026-08-23-verify-25min.json"
+        }
+      },
+      "status": "complete"
+    },
+    {
+      "course": "swe_for_eng",
+      "pod_id": "swe_for_eng:pod-1-staged-2026-08-23",
+      "steps": {
+        "unlinked": {
+          "target": 0,
+          "known": 0
+        },
+        "sample": {
+          "mode": "sample",
+          "total": 0,
+          "generated": 0,
+          "reused": 0,
+          "reused_cross_course": 0,
+          "failed": 0,
+          "blocked_unapproved_target": 0,
+          "queued_before_sample": 0,
+          "errors": []
+        },
+        "sample_verify": null,
+        "bulk": {
+          "mode": "bulk",
+          "total": 0,
+          "generated": 0,
+          "reused": 0,
+          "reused_cross_course": 0,
+          "failed": 0,
+          "blocked_unapproved_target": 0,
+          "queued_before_sample": 0,
+          "errors": []
+        },
+        "bulk_verify": {
+          "parse_error": "[dotenv@17.2.3] injecting env (1) from .env.psql -- tip: ⚙️  specify custom .env file path with { path: '/custom/path/.env' }\nNo clips on swe_for_eng:pod-1-staged-2026-08-23 newer than 25min.\n",
+          "json": "docs/pods/pod1-render-2026-08-23/swe_for_eng-pod-1-staged-2026-08-23-verify-25min.json"
+        }
+      },
+      "status": "complete"
+    },
+    {
+      "course": "hrv_for_eng",
+      "pod_id": "hrv_for_eng:pod-1-staged-2026-08-23",
+      "steps": {
+        "unlinked": {
+          "target": 0,
+          "known": 0
+        },
+        "sample": {
+          "mode": "sample",
+          "total": 0,
+          "generated": 0,
+          "reused": 0,
+          "reused_cross_course": 0,
+          "failed": 0,
+          "blocked_unapproved_target": 0,
+          "queued_before_sample": 0,
+          "errors": []
+        },
+        "sample_verify": null,
+        "bulk": {
+          "mode": "bulk",
+          "total": 0,
+          "generated": 0,
+          "reused": 0,
+          "reused_cross_course": 0,
+          "failed": 0,
+          "blocked_unapproved_target": 0,
+          "queued_before_sample": 0,
+          "errors": []
+        },
+        "bulk_verify": {
+          "parse_error": "[dotenv@17.2.3] injecting env (1) from .env.psql -- tip: 👥 sync secrets across teammates & machines: https://dotenvx.com/ops\nNo clips on hrv_for_eng:pod-1-staged-2026-08-23 newer than 25min.\n",
+          "json": "docs/pods/pod1-render-2026-08-23/hrv_for_eng-pod-1-staged-2026-08-23-verify-25min.json"
+        }
+      },
+      "status": "complete"
+    },
+    {
+      "course": "eus_for_eng",
+      "pod_id": "eus_for_eng:pod-1-staged-2026-08-23",
+      "steps": {
+        "unlinked": {
+          "target": 0,
+          "known": 0
+        },
+        "sample": {
+          "mode": "sample",
+          "total": 5,
+          "generated": 4,
+          "reused": 1,
+          "reused_cross_course": 0,
+          "failed": 0,
+          "blocked_unapproved_target": 0,
+          "queued_before_sample": 48,
+          "errors": []
+        },
+        "sample_verify": {
+          "clips": 4,
+          "clean": 4,
+          "advisory": 0,
+          "review": 0,
+          "error": 0,
+          "json": "docs/pods/pod1-render-2026-08-23/eus_for_eng-pod-1-staged-2026-08-23-verify-25min.json"
+        },
+        "bulk": {
+          "mode": "bulk",
+          "total": 43,
+          "generated": 39,
+          "reused": 4,
+          "reused_cross_course": 0,
+          "failed": 0,
+          "blocked_unapproved_target": 0,
+          "queued_before_sample": 43,
+          "errors": []
+        },
+        "bulk_verify": {
+          "clips": 10,
+          "clean": 10,
+          "advisory": 0,
+          "review": 0,
+          "error": 0,
+          "json": "docs/pods/pod1-render-2026-08-23/eus_for_eng-pod-1-staged-2026-08-23-verify-25min.json"
+        }
+      },
+      "status": "complete"
+    },
+    {
+      "course": "ara_for_eng",
+      "pod_id": "ara_for_eng:pod-1-staged-2026-08-23",
+      "steps": {
+        "unlinked": {
+          "target": 0,
+          "known": 0
+        },
+        "sample": {
+          "mode": "sample",
+          "total": 0,
+          "generated": 0,
+          "reused": 0,
+          "reused_cross_course": 0,
+          "failed": 0,
+          "blocked_unapproved_target": 0,
+          "queued_before_sample": 0,
+          "errors": []
+        },
+        "sample_verify": null,
+        "bulk": {
+          "mode": "bulk",
+          "total": 0,
+          "generated": 0,
+          "reused": 0,
+          "reused_cross_course": 0,
+          "failed": 0,
+          "blocked_unapproved_target": 0,
+          "queued_before_sample": 0,
+          "errors": []
+        },
+        "bulk_verify": {
+          "clips": 10,
+          "clean": 10,
+          "advisory": 0,
+          "review": 0,
+          "error": 0,
+          "json": "docs/pods/pod1-render-2026-08-23/ara_for_eng-pod-1-staged-2026-08-23-verify-25min.json"
+        }
+      },
+      "status": "complete"
+    },
+    {
+      "course": "ara_eg_for_eng",
+      "pod_id": "ara_eg_for_eng:pod-1-staged-2026-08-23",
+      "steps": {
+        "unlinked": {
+          "target": 0,
+          "known": 0
+        },
+        "sample": {
+          "mode": "sample",
+          "total": 0,
+          "generated": 0,
+          "reused": 0,
+          "reused_cross_course": 0,
+          "failed": 0,
+          "blocked_unapproved_target": 0,
+          "queued_before_sample": 0,
+          "errors": []
+        },
+        "sample_verify": null,
+        "bulk": {
+          "mode": "bulk",
+          "total": 0,
+          "generated": 0,
+          "reused": 0,
+          "reused_cross_course": 0,
+          "failed": 0,
+          "blocked_unapproved_target": 0,
+          "queued_before_sample": 0,
+          "errors": []
+        },
+        "bulk_verify": {
+          "clips": 10,
+          "clean": 10,
+          "advisory": 0,
+          "review": 0,
+          "error": 0,
+          "json": "docs/pods/pod1-render-2026-08-23/ara_eg_for_eng-pod-1-staged-2026-08-23-verify-25min.json"
+        }
+      },
+      "status": "complete"
+    },
+    {
+      "course": "ara_sy_for_eng",
+      "pod_id": "ara_sy_for_eng:pod-1-staged-2026-08-23",
+      "steps": {
+        "unlinked": {
+          "target": 0,
+          "known": 0
+        },
+        "sample": {
+          "mode": "sample",
+          "total": 5,
+          "generated": 5,
+          "reused": 0,
+          "reused_cross_course": 0,
+          "failed": 0,
+          "blocked_unapproved_target": 1,
+          "queued_before_sample": 253,
+          "errors": []
+        },
+        "sample_verify": {
+          "clips": 8,
+          "clean": 6,
+          "advisory": 2,
+          "review": 0,
+          "error": 0,
+          "json": "docs/pods/pod1-render-2026-08-23/ara_sy_for_eng-pod-1-staged-2026-08-23-verify-25min.json",
+          "reviews": [
+            {
+              "id": "ara_sy_for_eng:pod-1-staged-2026-08-23:SC03-S003",
+              "track": "target",
+              "voice_ok": true,
+              "has_speech": true,
+              "sim": 0.25,
+              "want": "عندكن أكل؟",
+              "got": "ونقرأ"
+            },
+            {
+              "id": "ara_sy_for_eng:pod-1-staged-2026-08-23:SC03-S004",
+              "track": "target",
+              "voice_ok": true,
+              "has_speech": true,
+              "sim": 0.5,
+              "want": "عندكن شي سناكس؟",
+              "got": "وكنشي سنقص"
+            }
+          ]
+        },
+        "bulk": {
+          "mode": "bulk",
+          "total": 248,
+          "generated": 232,
+          "reused": 13,
+          "reused_cross_course": 0,
+          "failed": 3,
+          "blocked_unapproved_target": 1,
+          "queued_before_sample": 248,
+          "errors": [
+            {
+              "sentence_id": "ara_sy_for_eng:pod-1-staged-2026-08-23:SC15-S011",
+              "kind": "target",
+              "error": "[STAGE=veracity] quarantined after 3 attempts (cer_above_threshold, CER 0.5, heard \"ميت ألف  ستون، تبان، ساع أفدى  ساع أفداش\")"
+            },
+            {
+              "sentence_id": "ara_sy_for_eng:pod-1-staged-2026-08-23:SC18-S011",
+              "kind": "target",
+              "error": "[STAGE=veracity] quarantined after 3 attempts (cer_above_threshold, CER 0.3684, heard \"ساء ألبان  ساء تمني  أزال  نيسان\")"
+            },
+            {
+              "sentence_id": "ara_sy_for_eng:pod-1-staged-2026-08-23:SC18-S002",
+              "kind": "target",
+              "error": "[STAGE=veracity] quarantined after 3 attempts (cer_above_threshold, CER 0.7647, heard \"ونحن نقوم بعمل بردقاء\")"
+            }
+          ]
+        },
+        "bulk_verify": {
+          "clips": 10,
+          "clean": 8,
+          "advisory": 2,
+          "review": 0,
+          "error": 0,
+          "json": "docs/pods/pod1-render-2026-08-23/ara_sy_for_eng-pod-1-staged-2026-08-23-verify-25min.json",
+          "reviews": [
+            {
+              "id": "ara_sy_for_eng:pod-1-staged-2026-08-23:SC03-S003",
+              "track": "target",
+              "voice_ok": true,
+              "has_speech": true,
+              "sim": 0.25,
+              "want": "عندكن أكل؟",
+              "got": "ونقرأ"
+            },
+            {
+              "id": "ara_sy_for_eng:pod-1-staged-2026-08-23:SC03-S004",
+              "track": "target",
+              "voice_ok": true,
+              "has_speech": true,
+              "sim": 0.5,
+              "want": "عندكن شي سناكس؟",
+              "got": "وكنشي سنقص"
+            }
+          ]
+        }
+      },
+      "status": "complete_with_failures"
+    },
+    {
+      "course": "deu_at_for_eng",
+      "pod_id": "deu_at_for_eng:pod-1-staged-2026-08-23",
+      "steps": {
+        "unlinked": {
+          "target": 0,
+          "known": 0
+        },
+        "sample": {
+          "mode": "sample",
+          "total": 5,
+          "generated": 5,
+          "reused": 0,
+          "reused_cross_course": 0,
+          "failed": 0,
+          "blocked_unapproved_target": 0,
+          "queued_before_sample": 194,
+          "errors": []
+        },
+        "sample_verify": {
+          "clips": 8,
+          "clean": 8,
+          "advisory": 0,
+          "review": 0,
+          "error": 0,
+          "json": "docs/pods/pod1-render-2026-08-23/deu_at_for_eng-pod-1-staged-2026-08-23-verify-25min.json"
+        },
+        "bulk": {
+          "mode": "bulk",
+          "total": 189,
+          "generated": 189,
+          "reused": 0,
+          "reused_cross_course": 0,
+          "failed": 0,
+          "blocked_unapproved_target": 0,
+          "queued_before_sample": 189,
+          "errors": []
+        },
+        "bulk_verify": {
+          "clips": 10,
+          "clean": 10,
+          "advisory": 0,
+          "review": 0,
+          "error": 0,
+          "json": "docs/pods/pod1-render-2026-08-23/deu_at_for_eng-pod-1-staged-2026-08-23-verify-25min.json"
+        }
+      },
+      "status": "complete"
+    },
+    {
+      "course": "fra_ca_for_eng",
+      "pod_id": "fra_ca_for_eng:pod-1-staged-2026-08-23",
+      "steps": {
+        "unlinked": {
+          "target": 81,
+          "known": 44
+        },
+        "sample": {
+          "mode": "sample",
+          "total": 5,
+          "generated": 5,
+          "reused": 0,
+          "reused_cross_course": 0,
+          "failed": 0,
+          "blocked_unapproved_target": 0,
+          "queued_before_sample": 235,
+          "errors": []
+        },
+        "sample_verify": {
+          "clips": 5,
+          "clean": 5,
+          "advisory": 0,
+          "review": 0,
+          "error": 0,
+          "json": "docs/pods/pod1-render-2026-08-23/fra_ca_for_eng-pod-1-staged-2026-08-23-verify-25min.json"
+        },
+        "bulk": {
+          "mode": "bulk",
+          "total": 230,
+          "generated": 226,
+          "reused": 4,
+          "reused_cross_course": 0,
+          "failed": 0,
+          "blocked_unapproved_target": 0,
+          "queued_before_sample": 230,
+          "errors": []
+        },
+        "bulk_verify": {
+          "clips": 10,
+          "clean": 10,
+          "advisory": 0,
+          "review": 0,
+          "error": 0,
+          "json": "docs/pods/pod1-render-2026-08-23/fra_ca_for_eng-pod-1-staged-2026-08-23-verify-25min.json"
+        }
+      },
+      "status": "complete"
+    },
+    {
+      "course": "jpn_for_eng",
+      "pod_id": "jpn_for_eng:pod-1-staged-2026-08-23",
+      "steps": {
+        "unlinked": {
+          "target": 44,
+          "known": 44
+        },
+        "sample": {
+          "mode": "sample",
+          "total": 5,
+          "generated": 5,
+          "reused": 0,
+          "reused_cross_course": 0,
+          "failed": 0,
+          "blocked_unapproved_target": 0,
+          "queued_before_sample": 88,
+          "errors": []
+        },
+        "sample_verify": {
+          "clips": 5,
+          "clean": 5,
+          "advisory": 0,
+          "review": 0,
+          "error": 0,
+          "json": "docs/pods/pod1-render-2026-08-23/jpn_for_eng-pod-1-staged-2026-08-23-verify-25min.json"
+        },
+        "bulk": {
+          "mode": "bulk",
+          "total": 83,
+          "generated": 82,
+          "reused": 1,
+          "reused_cross_course": 0,
+          "failed": 0,
+          "blocked_unapproved_target": 0,
+          "queued_before_sample": 83,
+          "errors": []
+        },
+        "bulk_verify": {
+          "clips": 10,
+          "clean": 10,
+          "advisory": 0,
+          "review": 0,
+          "error": 0,
+          "json": "docs/pods/pod1-render-2026-08-23/jpn_for_eng-pod-1-staged-2026-08-23-verify-25min.json"
+        }
+      },
+      "status": "complete"
+    },
+    {
+      "course": "kor_for_eng",
+      "pod_id": "kor_for_eng:pod-1-staged-2026-08-23",
+      "steps": {
+        "unlinked": {
+          "target": 44,
+          "known": 44
+        },
+        "sample": {
+          "mode": "sample",
+          "total": 5,
+          "generated": 5,
+          "reused": 0,
+          "reused_cross_course": 0,
+          "failed": 0,
+          "blocked_unapproved_target": 0,
+          "queued_before_sample": 88,
+          "errors": []
+        },
+        "sample_verify": {
+          "clips": 5,
+          "clean": 5,
+          "advisory": 0,
+          "review": 0,
+          "error": 0,
+          "json": "docs/pods/pod1-render-2026-08-23/kor_for_eng-pod-1-staged-2026-08-23-verify-25min.json"
+        },
+        "bulk": {
+          "mode": "bulk",
+          "total": 83,
+          "generated": 83,
+          "reused": 0,
+          "reused_cross_course": 0,
+          "failed": 0,
+          "blocked_unapproved_target": 0,
+          "queued_before_sample": 83,
+          "errors": []
+        },
+        "bulk_verify": {
+          "clips": 10,
+          "clean": 10,
+          "advisory": 0,
+          "review": 0,
+          "error": 0,
+          "json": "docs/pods/pod1-render-2026-08-23/kor_for_eng-pod-1-staged-2026-08-23-verify-25min.json"
+        }
+      },
+      "status": "complete"
+    },
+    {
+      "course": "zho_for_eng",
+      "pod_id": "zho_for_eng:pod-1-staged-2026-08-23",
+      "steps": {
+        "unlinked": {
+          "target": 26,
+          "known": 44
+        },
+        "sample": {
+          "mode": "sample",
+          "total": 5,
+          "generated": 5,
+          "reused": 0,
+          "reused_cross_course": 0,
+          "failed": 0,
+          "blocked_unapproved_target": 0,
+          "queued_before_sample": 70,
+          "errors": []
+        },
+        "sample_verify": {
+          "clips": 5,
+          "clean": 5,
+          "advisory": 0,
+          "review": 0,
+          "error": 0,
+          "json": "docs/pods/pod1-render-2026-08-23/zho_for_eng-pod-1-staged-2026-08-23-verify-25min.json"
+        },
+        "bulk": {
+          "mode": "bulk",
+          "total": 65,
+          "generated": 63,
+          "reused": 2,
+          "reused_cross_course": 0,
+          "failed": 0,
+          "blocked_unapproved_target": 0,
+          "queued_before_sample": 65,
+          "errors": []
+        },
+        "bulk_verify": {
+          "clips": 10,
+          "clean": 7,
+          "advisory": 3,
+          "review": 0,
+          "error": 0,
+          "json": "docs/pods/pod1-render-2026-08-23/zho_for_eng-pod-1-staged-2026-08-23-verify-25min.json",
+          "reviews": [
+            {
+              "id": "zho_for_eng:pod-1-staged-2026-08-23:SC07-S005",
+              "track": "target",
+              "voice_ok": true,
+              "has_speech": true,
+              "sim": 0.364,
+              "want": "没问题。在这儿喝还是外带？",
+              "got": "沒問題 在這喝還是外帶"
+            },
+            {
+              "id": "zho_for_eng:pod-1-staged-2026-08-23:SC07-S006",
+              "track": "target",
+              "voice_ok": true,
+              "has_speech": true,
+              "sim": 0.5,
+              "want": "外带。",
+              "got": "外代"
+            },
+            {
+              "id": "zho_for_eng:pod-1-staged-2026-08-23:SC07-S010",
+              "track": "target",
+              "voice_ok": true,
+              "has_speech": true,
+              "sim": 0.4,
+              "want": "一共是八英镑四十便士。",
+              "got": "一共是8英鎊40辨識"
+            }
+          ]
+        }
+      },
+      "status": "complete"
+    },
+    {
+      "course": "spa_mx_for_eng",
+      "pod_id": "spa_mx_for_eng:pod-1-staged-2026-08-23",
+      "steps": {
+        "unlinked": {
+          "target": 44,
+          "known": 123
+        },
+        "sample": {
+          "mode": "sample",
+          "total": 5,
+          "generated": 5,
+          "reused": 0,
+          "reused_cross_course": 0,
+          "failed": 0,
+          "blocked_unapproved_target": 0,
+          "queued_before_sample": 167,
+          "errors": []
+        },
+        "sample_verify": {
+          "clips": 5,
+          "clean": 5,
+          "advisory": 0,
+          "review": 0,
+          "error": 0,
+          "json": "docs/pods/pod1-render-2026-08-23/spa_mx_for_eng-pod-1-staged-2026-08-23-verify-25min.json"
+        },
+        "bulk": {
+          "mode": "bulk",
+          "total": 162,
+          "generated": 161,
+          "reused": 1,
+          "reused_cross_course": 0,
+          "failed": 0,
+          "blocked_unapproved_target": 0,
+          "queued_before_sample": 162,
+          "errors": []
+        },
+        "bulk_verify": {
+          "clips": 10,
+          "clean": 10,
+          "advisory": 0,
+          "review": 0,
+          "error": 0,
+          "json": "docs/pods/pod1-render-2026-08-23/spa_mx_for_eng-pod-1-staged-2026-08-23-verify-25min.json"
+        }
+      },
+      "status": "complete"
+    },
+    {
+      "course": "bul_for_eng",
+      "pod_id": "bul_for_eng:pod-0-unrecorded",
+      "steps": {
+        "unlinked": {
+          "target": 21,
+          "known": 44
+        },
+        "sample": {
+          "mode": "sample",
+          "total": 5,
+          "generated": 2,
+          "reused": 3,
+          "reused_cross_course": 2,
+          "failed": 0,
+          "blocked_unapproved_target": 1,
+          "queued_before_sample": 65,
+          "errors": []
+        },
+        "sample_verify": {
+          "clips": 4,
+          "clean": 4,
+          "advisory": 0,
+          "review": 0,
+          "error": 0,
+          "json": "docs/pods/pod1-render-2026-08-23/bul_for_eng-pod-0-unrecorded-verify-25min.json"
+        },
+        "bulk": {
+          "mode": "bulk",
+          "total": 60,
+          "generated": 15,
+          "reused": 45,
+          "reused_cross_course": 38,
+          "failed": 0,
+          "blocked_unapproved_target": 1,
+          "queued_before_sample": 60,
+          "errors": []
+        },
+        "bulk_verify": {
+          "clips": 10,
+          "clean": 10,
+          "advisory": 0,
+          "review": 0,
+          "error": 0,
+          "json": "docs/pods/pod1-render-2026-08-23/bul_for_eng-pod-0-unrecorded-verify-25min.json"
+        }
+      },
+      "status": "complete"
+    },
+    {
+      "course": "cat_for_eng",
+      "pod_id": "cat_for_eng:pod-0-unrecorded",
+      "steps": {
+        "unlinked": {
+          "target": 42,
+          "known": 123
+        },
+        "sample": {
+          "mode": "sample",
+          "total": 5,
+          "generated": 3,
+          "reused": 2,
+          "reused_cross_course": 2,
+          "failed": 0,
+          "blocked_unapproved_target": 1,
+          "queued_before_sample": 280,
+          "errors": []
+        },
+        "sample_verify": {
+          "clips": 5,
+          "clean": 5,
+          "advisory": 0,
+          "review": 0,
+          "error": 0,
+          "json": "docs/pods/pod1-render-2026-08-23/cat_for_eng-pod-0-unrecorded-verify-25min.json"
+        },
+        "bulk": {
+          "mode": "bulk",
+          "total": 275,
+          "generated": 144,
+          "reused": 130,
+          "reused_cross_course": 116,
+          "failed": 1,
+          "blocked_unapproved_target": 1,
+          "queued_before_sample": 275,
+          "errors": [
+            {
+              "sentence_id": "cat_for_eng:pod-0-unrecorded:SC16-S011",
+              "kind": "target",
+              "error": "[STAGE=veracity] quarantined after 3 attempts (cer_above_threshold, CER 0.3333, heard \"Un milió.  Vulltanta.  Nuranta.  Les dues.  Les deu.\")"
+            }
+          ]
+        },
+        "bulk_verify": {
+          "clips": 10,
+          "clean": 10,
+          "advisory": 0,
+          "review": 0,
+          "error": 0,
+          "json": "docs/pods/pod1-render-2026-08-23/cat_for_eng-pod-0-unrecorded-verify-25min.json"
+        }
+      },
+      "status": "complete_with_failures"
+    },
+    {
+      "course": "dan_for_eng",
+      "pod_id": "dan_for_eng:pod-0-unrecorded",
+      "steps": {
+        "unlinked": {
+          "target": 40,
+          "known": 44
+        },
+        "sample": {
+          "mode": "sample",
+          "total": 5,
+          "generated": 3,
+          "reused": 2,
+          "reused_cross_course": 2,
+          "failed": 0,
+          "blocked_unapproved_target": 1,
+          "queued_before_sample": 212,
+          "errors": []
+        },
+        "sample_verify": {
+          "clips": 3,
+          "clean": 3,
+          "advisory": 0,
+          "review": 0,
+          "error": 0,
+          "json": "docs/pods/pod1-render-2026-08-23/dan_for_eng-pod-0-unrecorded-verify-25min.json"
+        },
+        "bulk": {
+          "mode": "bulk",
+          "total": 207,
+          "generated": 162,
+          "reused": 45,
+          "reused_cross_course": 40,
+          "failed": 0,
+          "blocked_unapproved_target": 1,
+          "queued_before_sample": 207,
+          "errors": []
+        },
+        "bulk_verify": {
+          "clips": 10,
+          "clean": 10,
+          "advisory": 0,
+          "review": 0,
+          "error": 0,
+          "json": "docs/pods/pod1-render-2026-08-23/dan_for_eng-pod-0-unrecorded-verify-25min.json"
+        }
+      },
+      "status": "complete"
+    },
+    {
+      "course": "ell_for_eng",
+      "pod_id": "ell_for_eng:pod-0-unrecorded",
+      "steps": {
+        "unlinked": {
+          "target": 15,
+          "known": 44
+        },
+        "sample": {
+          "mode": "sample",
+          "total": 5,
+          "generated": 3,
+          "reused": 2,
+          "reused_cross_course": 2,
+          "failed": 0,
+          "blocked_unapproved_target": 1,
+          "queued_before_sample": 172,
+          "errors": []
+        },
+        "sample_verify": {
+          "clips": 3,
+          "clean": 3,
+          "advisory": 0,
+          "review": 0,
+          "error": 0,
+          "json": "docs/pods/pod1-render-2026-08-23/ell_for_eng-pod-0-unrecorded-verify-25min.json"
+        },
+        "bulk": {
+          "mode": "bulk",
+          "total": 167,
+          "generated": 112,
+          "reused": 53,
+          "reused_cross_course": 39,
+          "failed": 2,
+          "blocked_unapproved_target": 1,
+          "queued_before_sample": 167,
+          "errors": [
+            {
+              "sentence_id": "ell_for_eng:pod-0-unrecorded:SC03-S009",
+              "kind": "target",
+              "error": "[STAGE=veracity] quarantined after 3 attempts (last_word_missing, CER 0.2222, heard \"Ορίστο καφέσας.\")"
+            },
+            {
+              "sentence_id": "ell_for_eng:pod-0-unrecorded:SC14-S007",
+              "kind": "target",
+              "error": "[STAGE=veracity] quarantined after 3 attempts (cer_above_threshold, CER 0.3514, heard \"Ορίστε.  Κάνει 12 καλύρες και 50.\")"
+            }
+          ]
+        },
+        "bulk_verify": {
+          "clips": 10,
+          "clean": 10,
+          "advisory": 0,
+          "review": 0,
+          "error": 0,
+          "json": "docs/pods/pod1-render-2026-08-23/ell_for_eng-pod-0-unrecorded-verify-25min.json"
+        }
+      },
+      "status": "complete_with_failures"
+    }
+  ]
+}
