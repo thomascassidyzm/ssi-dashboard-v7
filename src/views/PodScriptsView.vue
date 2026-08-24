@@ -197,6 +197,50 @@
             </div>
           </div>
 
+          <!-- ================= LISTEN BAR =================
+               Sticky, because on a phone Stop has to be reachable without
+               scrolling back — and because the now-playing line below it is
+               what Tom is actually judging: which voice, saying what, how loud.
+               Still read-only: this plays the learner's bytes and writes
+               nothing. -->
+          <div class="ps-listen sticky top-0 z-20 bg-surface border border-line rounded-lg mb-5">
+            <div class="px-3 py-2 flex items-center gap-2 flex-wrap">
+              <button
+                @click="toggleRun"
+                :disabled="!runnable"
+                class="ps-run-btn"
+                :class="running ? 'ps-run-on' : ''"
+                :title="running ? 'Stop — the highlight stays where it stops' : 'Play every clip on screen, scene into scene, to the end'"
+              >{{ running ? '■ Stop' : '▶▶ Play all' }}</button>
+
+              <span class="text-xs text-faint">{{ liveQueue.length }} clips queued</span>
+
+              <span class="w-2"></span>
+
+              <!-- What the run includes. Small set, on purpose. -->
+              <span class="text-xs text-muted uppercase tracking-wide">Play</span>
+              <button
+                v-for="o in RUN_TOGGLES"
+                :key="o.key"
+                @click="setOpt(o.key, !runOpts[o.key])"
+                class="ps-toggle"
+                :class="runOpts[o.key] ? 'ps-toggle-on' : ''"
+                :title="o.title"
+              >{{ o.label }}</button>
+            </div>
+
+            <!-- One line tall: scene, speaker, voice, which clip, its text. -->
+            <div v-if="nowEntry" class="ps-now px-3 py-1.5 border-t border-line flex items-center gap-2 text-xs">
+              <span class="ps-now-dot">●</span>
+              <span class="text-muted">Sc {{ nowEntry.sceneNumber ?? '—' }}</span>
+              <span class="text-ink font-medium">{{ nowEntry.speaker }}</span>
+              <span v-if="nowEntry.voiceName" class="ps-now-voice">{{ nowEntry.voiceName }}</span>
+              <span class="text-faint">{{ nowEntry.label }}</span>
+              <span class="text-ink truncate">{{ nowEntry.text }}</span>
+              <span class="text-faint ml-auto shrink-0">{{ runIndex + 1 }}/{{ runQueue.length }}</span>
+            </div>
+          </div>
+
           <!-- Scenes -->
           <div
             v-for="scene in visibleScenes"
@@ -223,8 +267,9 @@
             <div
               v-for="line in scene.lines"
               :key="line.id"
+              :id="`ps-line-${cssId(line.id)}`"
               class="border-t border-line px-3 py-3"
-              :class="rowClass(line)"
+              :class="[rowClass(line), isNowLine(line) && 'ps-row-now']"
             >
               <div class="flex items-baseline gap-2 flex-wrap mb-1">
                 <span class="text-faint text-xs w-6 text-right">{{ line.sentence_number }}</span>
@@ -248,12 +293,22 @@
                      learner is served: the learning-app proxy, with the same
                      per-clip revision ref the learner app builds. -->
                 <div class="flex items-center gap-1.5 flex-wrap mt-2">
+                  <!-- Play from here: the run starts on this line and carries
+                       on to the end of the pod. Sits first so it is the same
+                       thumb position on every row. -->
+                  <button
+                    @click="playFrom(line)"
+                    class="clip-btn ps-from"
+                    :class="isNowLine(line) && running && 'ps-from-on'"
+                    title="Play from here — this line, then on to the end of the pod"
+                  >▶▶</button>
+
                   <button
                     v-if="line.audio.target"
-                    @click="play(line.audio.target)"
-                    :class="['clip-btn', 'clip-primary', isPlaying(line.audio.target) && 'clip-on', line.audio.target.found === false && 'clip-dead']"
+                    @click="play(line.audio.target, line)"
+                    :class="['clip-btn', 'clip-primary', isPlaying(line.audio.target, line) && 'clip-on', line.audio.target.found === false && 'clip-dead']"
                     :title="clipTitle(line.audio.target)"
-                  >{{ isPlaying(line.audio.target) ? '■' : '▶' }} Whole turn{{ dur(line.audio.target) }}</button>
+                  >{{ isPlaying(line.audio.target, line) ? '■' : '▶' }} Whole turn{{ dur(line.audio.target) }}</button>
                   <span v-else class="clip-none">no target clip</span>
 
                   <template v-if="line.audio.target_splits.length">
@@ -261,10 +316,10 @@
                     <button
                       v-for="(c, i) in line.audio.target_splits"
                       :key="c.id + i"
-                      @click="play(c)"
-                      :class="['clip-btn', isPlaying(c) && 'clip-on', c.found === false && 'clip-dead']"
+                      @click="play(c, line)"
+                      :class="['clip-btn', isPlaying(c, line) && 'clip-on', c.found === false && 'clip-dead']"
                       :title="clipTitle(c)"
-                    >{{ isPlaying(c) ? '■' : '▶' }} {{ i + 1 }}</button>
+                    >{{ isPlaying(c, line) ? '■' : '▶' }} {{ i + 1 }}</button>
                   </template>
                   <span v-else class="clip-none">no split clips</span>
 
@@ -272,26 +327,26 @@
 
                   <button
                     v-if="line.audio.known"
-                    @click="play(line.audio.known)"
-                    :class="['clip-btn', isPlaying(line.audio.known) && 'clip-on', line.audio.known.found === false && 'clip-dead']"
+                    @click="play(line.audio.known, line)"
+                    :class="['clip-btn', isPlaying(line.audio.known, line) && 'clip-on', line.audio.known.found === false && 'clip-dead']"
                     :title="clipTitle(line.audio.known)"
-                  >{{ isPlaying(line.audio.known) ? '■' : '▶' }} English</button>
+                  >{{ isPlaying(line.audio.known, line) ? '■' : '▶' }} English</button>
                   <span v-else class="clip-none">no English clip</span>
 
                   <button
                     v-for="(c, i) in line.audio.known_splits"
                     :key="'k' + c.id + i"
-                    @click="play(c)"
-                    :class="['clip-btn', isPlaying(c) && 'clip-on', c.found === false && 'clip-dead']"
+                    @click="play(c, line)"
+                    :class="['clip-btn', isPlaying(c, line) && 'clip-on', c.found === false && 'clip-dead']"
                     :title="clipTitle(c)"
-                  >{{ isPlaying(c) ? '■' : '▶' }} EN {{ i + 1 }}</button>
+                  >{{ isPlaying(c, line) ? '■' : '▶' }} EN {{ i + 1 }}</button>
 
                   <button
                     v-if="line.audio.explainer"
-                    @click="play(line.audio.explainer)"
-                    :class="['clip-btn', isPlaying(line.audio.explainer) && 'clip-on', line.audio.explainer.found === false && 'clip-dead']"
+                    @click="play(line.audio.explainer, line)"
+                    :class="['clip-btn', isPlaying(line.audio.explainer, line) && 'clip-on', line.audio.explainer.found === false && 'clip-dead']"
                     :title="clipTitle(line.audio.explainer)"
-                  >{{ isPlaying(line.audio.explainer) ? '■' : '▶' }} Explainer</button>
+                  >{{ isPlaying(line.audio.explainer, line) ? '■' : '▶' }} Explainer</button>
                 </div>
 
                 <div v-if="playError && playErrorId === lastTried" class="text-danger text-xs mt-1">{{ playError }}</div>
@@ -319,10 +374,11 @@
  * estate's one definition of "cast correctly". This component renders; it does
  * not judge, and it never writes.
  */
-import { ref, computed, onMounted, onBeforeUnmount, watch } from 'vue'
+import { ref, computed, onMounted, onBeforeUnmount, watch, nextTick } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { getApiUrl } from '@/services/api.js'
 import { useAuth } from '@/composables/useAuth.js'
+import { buildPlayQueue, nextPlayable, indexOfLine, isPlayable } from '@/lib/podPlayQueue.js'
 
 // Both routes are read-only, but the per-course one carries a :courseCode param
 // and so passes through the API's course-scope gate — which 401s anything that
@@ -379,6 +435,16 @@ const LABELS = {
   'same-voice-run': 'Same voice, run of lines',
   'single-voice-scene': 'Whole scene, one voice',
 }
+// What a continuous listen can include. Four, kept short enough to sit on one
+// phone line. The default — target whole turn only — is the conversation as the
+// learner hears it, which is what Tom was doing by hand.
+const RUN_TOGGLES = [
+  { key: 'target', label: 'Target', title: 'The target whole-turn clip of every line' },
+  { key: 'splits', label: 'Splits', title: 'Play the split clips INSTEAD of the whole turn' },
+  { key: 'known', label: 'English', title: 'Add the English clip after each line' },
+  { key: 'explainer', label: 'Explainer', title: 'Add the explainer clip after each line' },
+]
+
 const FAILS = new Set(['same-voice-exchange', 'same-gender-exchange', 'cast-size', 'uncast-character'])
 const label = (t) => LABELS[t] || t
 const severityOf = (t) => (FAILS.has(t) ? 'fail' : 'warn')
@@ -411,40 +477,184 @@ const rowClass = (line) =>
 // bytes from a different path, and the whole point of this page is that what
 // Tom hears is what the learner hears.
 //
-// One <audio> element for the whole page: tapping a second clip stops the
-// first, which is what you want when you are comparing two voices.
+// ONE <audio> element for the whole page, and it is the same element for every
+// clip of a continuous run. That is not tidiness, it is the only thing that
+// makes hands-free listening work on Tom's phone: mobile Safari allows
+// playback only inside a user gesture, and REUSING the element the opening tap
+// unlocked keeps that permission alive for every clip after it. A `new Audio()`
+// per clip would play the first one and then go silent from clip two onward.
+// It is also what makes tapping a second clip stop the first, which is what you
+// want when you are comparing two voices.
 const audioEl = ref(null)
 const playingRef = ref(null)
 const playError = ref(null)
 const playErrorId = ref(null)
 const lastTried = ref(null)
 
-const isPlaying = (c) => Boolean(c && playingRef.value === c.ref)
+// ── CONTINUOUS PLAY ─────────────────────────────────────────────────────────
+// Tom, 2026-08-24: "Can we have the Popty pod script view tool play
+// continuously? And also make it a bit easier to see the clips we're playing."
+//
+// He is auditioning Italian Pod 1 by ear — judging which voice is on which line
+// and hearing that Enzo sits quieter than Ara — so the run plays the TARGET
+// WHOLE-TURN clip of each line, scene into scene, to the end of the pod. The
+// toggles below let him add English and the explainer, or hear the splits
+// instead of the whole turn.
+const runOpts = ref({ target: true, splits: false, known: false, explainer: false })
+const runQueue = ref([])   // the run as it was when it started — a snapshot
+const runIndex = ref(-1)   // where we are in it
+const running = ref(false)
+const nowLineId = ref(null) // the line that is SOUNDING, run or single tap
+let advanceTimer = null
 
-function play (clip) {
-  if (!clip || !clip.url) return
-  if (!audioEl.value) {
-    audioEl.value = new Audio()
-    audioEl.value.addEventListener('ended', () => { playingRef.value = null })
-    audioEl.value.addEventListener('error', () => {
-      playError.value = 'That clip would not play from the learner proxy.'
-      playErrorId.value = lastTried.value
-      playingRef.value = null
-    })
-  }
-  const el = audioEl.value
-  if (playingRef.value === clip.ref) { el.pause(); playingRef.value = null; return }
+// The queue is built from visibleScenes, so the violation filter narrows the
+// listen exactly as it narrows the page: continuous play plays what is on
+// screen, never what is hidden.
+const liveQueue = computed(() => buildPlayQueue(visibleScenes.value, runOpts.value))
+const runnable = computed(() => nextPlayable(liveQueue.value, 0) !== -1)
+const nowEntry = computed(() =>
+  (running.value && runIndex.value >= 0 && runQueue.value[runIndex.value]) || null)
+
+// A line lights up when it is the one sounding. The button keeps its own light
+// too, so whole turn stays tellable from split 2 from Explainer — but only on
+// the sounding line, because one clip ref can legitimately appear on two rows.
+const isPlaying = (c, line) => Boolean(
+  c && playingRef.value === c.ref && (!line || !nowLineId.value || nowLineId.value === line.id)
+)
+const isNowLine = (line) => Boolean(nowLineId.value && nowLineId.value === line.id)
+
+function ensureAudio () {
+  if (audioEl.value) return audioEl.value
+  const el = new Audio()
+  el.addEventListener('ended', () => {
+    playingRef.value = null
+    if (running.value) advance(runIndex.value + 1)
+    else nowLineId.value = null
+  })
+  el.addEventListener('error', () => {
+    playError.value = 'That clip would not play from the learner proxy.'
+    playErrorId.value = lastTried.value
+    playingRef.value = null
+    // A clip that will not load must never end the run — surface it on its own
+    // row and carry on after a beat, or one bad reference ends the listen.
+    if (running.value) advanceSoon(runIndex.value + 1)
+  })
+  audioEl.value = el
+  return el
+}
+
+/** Send one clip to the shared element. Returns false if it could not start. */
+function sound (clip, lineId, { scroll = false } = {}) {
+  if (!isPlayable(clip)) return false
+  const el = ensureAudio()
   playError.value = null
   lastTried.value = clip.ref
   el.src = clip.url
-  el.currentTime = 0
+  try { el.currentTime = 0 } catch { /* not seekable before metadata; harmless */ }
   playingRef.value = clip.ref
+  nowLineId.value = lineId || null
   el.play().catch((e) => {
     playError.value = `Could not play: ${e && e.message ? e.message : e}`
     playErrorId.value = clip.ref
     playingRef.value = null
+    if (running.value) advanceSoon(runIndex.value + 1)
+  })
+  if (scroll) scrollToLine(lineId)
+  return true
+}
+
+// A single tap behaves exactly as it always has: play that one clip, stop at
+// the end. That is the two-clips-side-by-side comparison Tom already relies on,
+// so tapping a clip mid-run stops the run rather than fighting it.
+function play (clip, line) {
+  if (!clip || !clip.url) return
+  if (running.value) stopRun()
+  const el = ensureAudio()
+  if (playingRef.value === clip.ref) {
+    el.pause(); playingRef.value = null; nowLineId.value = null; return
+  }
+  sound(clip, line && line.id)
+}
+
+/** Step to queue position `i`, skipping anything dead, and stop at the end. */
+function advance (i) {
+  clearTimeout(advanceTimer)
+  const q = runQueue.value
+  const at = nextPlayable(q, i)
+  if (at === -1) { finishRun(); return }
+  runIndex.value = at
+  const entry = q[at]
+  if (!sound(entry.clip, entry.lineId, { scroll: true })) advanceSoon(at + 1)
+}
+
+/** The same step, after a beat — used when a clip errored, so it is audible. */
+function advanceSoon (i) {
+  clearTimeout(advanceTimer)
+  advanceTimer = setTimeout(() => { if (running.value) advance(i) }, 700)
+}
+
+function startRun (fromIndex = 0) {
+  const q = liveQueue.value
+  if (!q.length) return
+  runQueue.value = q
+  running.value = true
+  advance(fromIndex)
+}
+
+/** ▶▶ on a row: start the whole run at this line and keep going to the end. */
+function playFrom (line) {
+  const q = liveQueue.value
+  const at = indexOfLine(q, line.id)
+  runQueue.value = q
+  running.value = true
+  advance(at === -1 ? 0 : at)
+}
+
+/** Stop leaves the highlight exactly where it stopped — that is the point. */
+function stopRun () {
+  clearTimeout(advanceTimer)
+  running.value = false
+  if (audioEl.value) audioEl.value.pause()
+  playingRef.value = null
+}
+
+function finishRun () {
+  clearTimeout(advanceTimer)
+  running.value = false
+  playingRef.value = null
+}
+
+function toggleRun () { running.value ? stopRun() : startRun(0) }
+
+// Changing what the run includes mid-listen restarts it from the line he is on,
+// rather than dumping him back at scene 1.
+function setOpt (key, value) {
+  runOpts.value = { ...runOpts.value, [key]: value }
+  if (!running.value) return
+  const here = nowLineId.value
+  stopRun()
+  nextTick(() => {
+    const q = liveQueue.value
+    const at = here ? indexOfLine(q, here) : 0
+    runQueue.value = q
+    running.value = true
+    advance(at === -1 ? 0 : at)
   })
 }
+
+// Auto-scroll follows the RUN only. A single tap never moves the page under
+// Tom's thumb — he taps a clip because he is already looking at it.
+function scrollToLine (lineId) {
+  if (!lineId) return
+  nextTick(() => {
+    const el = document.getElementById(`ps-line-${cssId(lineId)}`)
+    if (el && el.scrollIntoView) el.scrollIntoView({ block: 'center', behavior: 'smooth' })
+  })
+}
+
+// Line ids are `course:pod-1:SC01-S001` — the colons are legal in an id
+// attribute but a nuisance everywhere else, so they travel as dashes.
+const cssId = (id) => String(id).replace(/[^A-Za-z0-9_-]/g, '-')
 
 const dur = (c) => (c && c.duration_ms ? ` ${(c.duration_ms / 1000).toFixed(1)}s` : '')
 
@@ -461,7 +671,16 @@ const clipTitle = (c) => {
   return bits.join(' · ')
 }
 
-onBeforeUnmount(() => { if (audioEl.value) { audioEl.value.pause(); audioEl.value.src = '' } })
+onBeforeUnmount(() => {
+  clearTimeout(advanceTimer)
+  running.value = false
+  if (audioEl.value) { audioEl.value.pause(); audioEl.value.src = '' }
+})
+
+// Changing the violation filter changes what is on screen, and therefore what
+// the run would play. Stop rather than carry on through lines he can no longer
+// see; the highlight stays where it was.
+watch(filter, () => { if (running.value) stopRun() })
 
 async function loadFleet () {
   fleetLoading.value = true
@@ -484,7 +703,8 @@ async function loadScript () {
   loading.value = true
   error.value = null
   filter.value = null
-  if (audioEl.value) { audioEl.value.pause(); playingRef.value = null }
+  stopRun()
+  nowLineId.value = null
   try {
     const q = new URLSearchParams({ track: track.value })
     if (route.query.slug) q.set('slug', String(route.query.slug))
@@ -541,6 +761,56 @@ onMounted(() => {
 /* A dangling reference is shown, never hidden and never made to look playable. */
 .clip-dead { border-color: #b91c1c; color: #f87171; text-decoration: line-through; }
 .clip-none { font-size: 0.7rem; opacity: 0.6; font-style: italic; }
+
+/* ── LISTEN BAR + NOW PLAYING ───────────────────────────────────────────────
+   The now-playing treatment is a LEFT BAR and a ring, never a background fill.
+   That is deliberate: .ps-row-fail / .ps-row-warn carry their own tint and must
+   stay readable underneath, so the highlight has to sit beside the row colour
+   rather than paint over it. */
+.ps-run-btn {
+  font-size: 0.8rem;
+  font-weight: 600;
+  line-height: 1;
+  padding: 0.55rem 0.9rem;
+  border-radius: 0.375rem;
+  border: 1px solid #059669;
+  color: #34d399;
+}
+.ps-run-btn:disabled { opacity: 0.4; border-color: rgb(var(--line, 63 63 70) / 1); color: inherit; }
+.ps-run-on { background-color: #059669; border-color: #059669; color: #fff; }
+
+.ps-toggle {
+  font-size: 0.7rem;
+  line-height: 1;
+  padding: 0.45rem 0.6rem;      /* thumb-sized, same reason as .clip-btn */
+  border-radius: 999px;
+  border: 1px solid rgb(var(--line, 63 63 70) / 1);
+  opacity: 0.75;
+}
+.ps-toggle-on { background-color: #065f46; border-color: #34d399; color: #fff; opacity: 1; }
+
+.ps-from { color: #34d399; border-color: #065f46; font-weight: 700; }
+.ps-from-on { background-color: #065f46; color: #fff; }
+
+.ps-now-dot { color: #34d399; }
+.ps-now-voice { color: #34d399; font-weight: 600; }
+
+/* The row you are hearing. Bar + ring + a lift, all outside the fill. */
+.ps-row-now {
+  box-shadow: inset 4px 0 0 0 #10b981, 0 0 0 1px #10b981;
+  border-radius: 0.25rem;
+}
+
+:global([data-theme="light"]) .ps-run-btn { color: #047857; }
+:global([data-theme="light"]) .ps-run-on { color: #fff; }
+:global([data-theme="light"]) .ps-toggle-on { background-color: #047857; border-color: #047857; color: #fff; }
+:global([data-theme="light"]) .ps-from { color: #047857; border-color: #6ee7b7; }
+:global([data-theme="light"]) .ps-from-on { background-color: #047857; color: #fff; }
+:global([data-theme="light"]) .ps-now-dot,
+:global([data-theme="light"]) .ps-now-voice { color: #047857; }
+/* #10b981 on near-white is ~2.1:1 — fine as a 4px bar, too pale as a hairline
+   ring, so light mode takes the darker emerald for both. */
+:global([data-theme="light"]) .ps-row-now { box-shadow: inset 4px 0 0 0 #047857, 0 0 0 1px #047857; }
 
 :global([data-theme="light"]) .ps-f { color: #be123c; border-color: #fda4af; }
 :global([data-theme="light"]) .ps-m { color: #0369a1; border-color: #7dd3fc; }
