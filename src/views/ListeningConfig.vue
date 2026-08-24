@@ -67,6 +67,23 @@
             <strong>V1</strong> target voice 1 · <strong>V2</strong> target voice 2 · <strong>known</strong> the meaning (known-language clip) · <strong>·2×</strong> double-speed stretch rep. A seed with no second voice plays V1 for V2; no known audio drops the known slot.
           </p>
         </div>
+
+        <!-- Lives on the LAYER 1 row, governs LAYER 2 — so it sits in this card,
+             whose Save is the one that writes it. Until 2026-08-24 this field was
+             absent from the row entirely, which defaults it false, which is why
+             the pod fade below existed for eight weeks and reached nobody. -->
+        <div class="field-block">
+          <label>Layer 2 pod fade <span class="hint">the master switch for the stage ladder in the Pods card below · lives on this row, so Save this card</span></label>
+          <label class="master-switch">
+            <input type="checkbox" v-model="drafts.listening.listeningUseStagePlaylist" />
+            <span>
+              <strong>Run the stage playlist.</strong>
+              On — each pod sentence climbs the stage ladder as it ages: t·k·t·t at 1×, thinning
+              rung by rung to bare target at 2×, for ever. Off — every sentence, at every age,
+              plays the same single four-slot pattern at 1×.
+            </span>
+          </label>
+        </div>
       </section>
 
       <!-- ==================== STAGE 0 (pod breakdown ladder) ==================== -->
@@ -671,6 +688,12 @@ function backfillDefaults(d) {
     const l1d = { cups: 30, activationCount: 30, maxSeedsPerCup: 20, clusterStep: 5 }
     for (const k in l1d) if (d.listening[k] == null) d.listening[k] = l1d[k]
   }
+  // The Layer-2 fade master switch. Absent ⇒ false in the learner's resolver
+  // (resolveListeningPlayPolicy), so bind it to a real boolean rather than
+  // undefined — an undefined v-model silently saves the field away again.
+  if (typeof d.listening.listeningUseStagePlaylist !== 'boolean') {
+    d.listening.listeningUseStagePlaylist = false
+  }
   // Per-seed sandwich — default to the comprehensible-input order. Mirrors
   // DEFAULT_SEED_PLAYLIST in useLayer1Scheduler.ts (V1 → known → V2 → V1·2×).
   if (!Array.isArray(d.listening.seedPlaylist) || !d.listening.seedPlaylist.length) {
@@ -952,6 +975,22 @@ h1 { font-size: 1.25rem; margin: 0 0 0.25rem; letter-spacing: -0.01em; }
   letter-spacing: 0.06em;
   color: var(--color-paper-dim, var(--muted));
   margin-bottom: 0.5rem;
+}
+.field-block label.master-switch {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: var(--color-paper, var(--ink));
+  cursor: pointer;
+  margin-bottom: 0;
+}
+.field-block label.master-switch input {
+  margin-top: 0.25rem;
+  flex: none;
 }
 .hint {
   text-transform: none;
