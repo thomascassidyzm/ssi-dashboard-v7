@@ -18,6 +18,7 @@
  * no refcounting, ever, by design).
  */
 const { computeAudioKey, isTrusted1xEngine } = require('./clone-copy-match.cjs')
+const { voiceSpellings } = require('./clip-identity-lookup.cjs')
 
 const PAGE = 2000
 const MAX_RETRIES = 3
@@ -32,13 +33,34 @@ function chunk(arr, size) {
 }
 
 /**
+ * Look up a voice's TTS engine in the `voices` registry.
+ *
+ * This lookup decides `trusted` below, and an unregistered voice makes the
+ * whole pass report SKIP_UNTRUSTED_VOICE — so a spelling miss here is not a
+ * cosmetic failure, it silently refuses every copy and sends the slots to paid
+ * TTS instead. A course carrying the bare spelling ('es-ES-ElviraNeural') was
+ * missing its own registry row for exactly that reason.
+ *
+ * Every known spelling is tried, canonical first, because THE REGISTRY ITSELF
+ * IS NOT CLEAN: as of 2026-08-06 six voices are present under both their
+ * canonical and their bare spelling (e.g. 'azure_es-ES-ElviraNeural' AND
+ * 'es-ES-ElviraNeural' are both rows). Assuming either spelling alone loses
+ * real rows. Read-only — this never writes the registry; reconciling those
+ * duplicate rows is a data change and is not done here.
+ *
  * @param {object} supabase - Supabase client
  * @param {string} voiceId
+ * @param {object} [opts]
+ * @param {string} [opts.provider] provider for an unprefixed, opaque voice id
  * @returns {Promise<string|null>} tts_engine for the voice (e.g. 'xai'), or null if unregistered
  */
-async function getEngineForVoice(supabase, voiceId) {
-  const { data } = await supabase.from('voices').select('tts_engine').eq('voice_id', voiceId).maybeSingle()
-  return data?.tts_engine || null
+async function getEngineForVoice(supabase, voiceId, opts = {}) {
+  // Canonical first so the clean spelling wins when the registry holds both.
+  for (const spelling of voiceSpellings(voiceId, opts)) {
+    const { data } = await supabase.from('voices').select('tts_engine').eq('voice_id', spelling).maybeSingle()
+    if (data?.tts_engine) return data.tts_engine
+  }
+  return null
 }
 
 async function fetchRowsWithRetry(buildQuery) {
@@ -61,11 +83,30 @@ async function fetchRowsWithRetry(buildQuery) {
   }
 }
 
-function rowsToIndex(rows, voiceId) {
+function rowsToIndex(rows, voiceId, provider) {
   const real = rows.filter(r => r.s3_key && !r.s3_key.startsWith('pending/'))
   const index = new Map()
+  const skipped = []
   for (const r of real) {
-    const key = computeAudioKey({ text: r.text, language: r.language, voiceId })
+    let key
+    try {
+      // Key on the ROW'S OWN voice_id, not the caller's. The query below now
+      // reaches both spellings of the requested voice, so assuming the
+      // caller's spelling for every row would be filing rows under a voice
+      // they don't state. Both spellings canonicalise to the same value, so
+      // matching is unaffected — but a row that canonicalises to a DIFFERENT
+      // voice now simply fails to match instead of being mislabelled.
+      key = computeAudioKey({ text: r.text, language: r.language, voiceId: r.voice_id || voiceId, provider })
+    } catch (e) {
+      // A candidate SOURCE row whose own language is not canonicalisable (an
+      // 'auto' row, say) cannot be identified, so it cannot be proven to be
+      // the same clip. Leaving it out of the index is the safe direction — the
+      // slot reports SKIP_NO_SOURCE exactly as it does today — but it is
+      // returned to the caller rather than swallowed, because a large skip
+      // count means the index is quietly smaller than it looks.
+      skipped.push({ id: r.id, courseCode: r.course_code, language: r.language, reason: e.message })
+      continue
+    }
     const entry = {
       courseCode: r.course_code,
       s3Key: r.s3_key,
@@ -81,10 +122,10 @@ function rowsToIndex(rows, voiceId) {
     if (!index.has(key)) index.set(key, [])
     index.get(key).push(entry)
   }
-  return index
+  return { index, skipped }
 }
 
-const SELECT_COLS = 'id, course_code, text, language, role, s3_key, created_at, duration_ms, file_size_bytes, word_boundaries, text_stripped'
+const SELECT_COLS = 'id, course_code, text, language, voice_id, role, s3_key, created_at, duration_ms, file_size_bytes, word_boundaries, text_stripped'
 
 /**
  * Build the index of rendered course_audio rows for (language, voiceId) that
@@ -106,12 +147,26 @@ const SELECT_COLS = 'id, course_code, text, language, role, s3_key, created_at, 
  * persisted per-row speed to check, so it cannot be trusted as a canonical
  * copy source. Callers get { index: empty Map, trusted: false } in that case
  * and should report/flag it rather than silently proceeding.
+ *
+ * The voice filter matches EVERY known spelling of the requested voice
+ * (canonical, the caller's own, and bare) — 414,061 rows are split between
+ * 'azure_en-GB-SoniaNeural' and 'en-GB-SoniaNeural' alone, and an index that
+ * sees only one half re-renders the other half. Every row that comes back is
+ * still keyed by its canonical identity, so widening the filter widens what can
+ * be FOUND without widening what counts as a MATCH.
+ *
+ * @returns {Promise<{index: Map, trusted: boolean, engine: string|null,
+ *   skipped: object[]}>} `skipped` lists candidate rows left out because their
+ *   own identity could not be canonicalised — a non-empty list means the index
+ *   is smaller than the row count suggests.
  */
-async function buildSourceIndex(supabase, { voiceId, language, texts = null }) {
-  const engine = await getEngineForVoice(supabase, voiceId)
+async function buildSourceIndex(supabase, { voiceId, language, texts = null, provider }) {
+  const engine = await getEngineForVoice(supabase, voiceId, { provider })
   if (!isTrusted1xEngine(engine)) {
-    return { index: new Map(), trusted: false, engine }
+    return { index: new Map(), trusted: false, engine, skipped: [] }
   }
+
+  const voiceIds = voiceSpellings(voiceId, { provider })
 
   let rows
   if (texts) {
@@ -120,7 +175,7 @@ async function buildSourceIndex(supabase, { voiceId, language, texts = null }) {
       if (!textChunk.length) continue
       const data = await fetchRowsWithRetry(() =>
         supabase.from('course_audio').select(SELECT_COLS)
-          .eq('voice_id', voiceId).eq('language', language)
+          .in('voice_id', voiceIds).eq('language', language)
           .in('text_normalized', textChunk)
       )
       rows.push(...data)
@@ -131,7 +186,7 @@ async function buildSourceIndex(supabase, { voiceId, language, texts = null }) {
     while (true) {
       const data = await fetchRowsWithRetry(() =>
         supabase.from('course_audio').select(SELECT_COLS)
-          .eq('voice_id', voiceId).eq('language', language)
+          .in('voice_id', voiceIds).eq('language', language)
           .range(offset, offset + PAGE - 1)
       )
       rows.push(...data)
@@ -140,7 +195,8 @@ async function buildSourceIndex(supabase, { voiceId, language, texts = null }) {
     }
   }
 
-  return { index: rowsToIndex(rows, voiceId), trusted: true, engine }
+  const { index, skipped } = rowsToIndex(rows, voiceId, provider)
+  return { index, trusted: true, engine, skipped }
 }
 
 module.exports = { getEngineForVoice, buildSourceIndex }

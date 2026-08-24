@@ -22,7 +22,7 @@
 import { describe, it, expect, beforeEach } from 'vitest'
 
 const {
-  createRepairCore, tailShape, tailVerdict, TAIL_DETECTOR,
+  createRepairCore, tailVerdict, TAIL_DETECTOR,
 } = require('./audio-repair-core.cjs')
 
 // ── a minimal, honest supabase double ──────────────────────────────────────
@@ -184,7 +184,7 @@ function makeCore (db, opts = {}) {
       verify: {
         measure: async () => opts.level ?? { meanDb: -21, peakDb: -1.5 },
         veracity: async () => opts.verdict ?? { checked: true, pass: true, reason: null, cer: 0.03 },
-        frameDb: opts.frameDb,
+        pcm: opts.pcm,
       },
       newId: () => `cand-${++ids}`,
       now: () => '2026-08-05T22:00:00.000Z',
@@ -239,6 +239,37 @@ describe('propose', () => {
     expect(d2.snapshot()).toEqual(before)
   })
 
+  it('refuses a replacement that carries the very defect it is replacing', async () => {
+    // The damage this path exists for was written AT RENDER. A fresh candidate is
+    // therefore exactly the thing that must be re-measured — a repair that returns a
+    // clip with the same amputated tail costs a render, burns a revision, and reports
+    // success. propose re-rolls, then refuses rather than handing it on.
+    const d2 = seedDb()
+    const before = d2.snapshot()
+    const { core: c2 } = makeCore(d2, { pcm: async () => pcmClip({ decayMs: 0 }) })
+    await expect(c2.propose({ courseCode: 'deu_for_eng', audioId: CLIP.id, source: 'tts', actor: 'test' }))
+      .rejects.toThrow(/tail truncated/i)
+    expect(d2.snapshot()).toEqual(before)
+  })
+
+  it('records on the candidate that the replacement was re-measured for that defect', async () => {
+    const d2 = seedDb()
+    const { core: c2 } = makeCore(d2, { pcm: async () => pcmClip({ decayMs: 250, noisyPad: true }) })
+    const r = await c2.propose({ courseCode: 'deu_for_eng', audioId: CLIP.id, source: 'tts', actor: 'test' })
+    expect(r.candidate.tail.flagged).toBe(false)
+    expect(r.candidate.tail.shape.fallRate).toBeLessThan(0.7)
+  })
+
+  it('proposes without a tail check rather than blocking when there is no decoder', async () => {
+    // No verify.pcm means no way to ask. That is stated on the candidate as "not
+    // measured", never rounded up to clean, and it does not stop a human being handed
+    // the candidate they asked for.
+    const d2 = seedDb()
+    const { core: c2 } = makeCore(d2, {})
+    const r = await c2.propose({ courseCode: 'deu_for_eng', audioId: CLIP.id, source: 'tts', actor: 'test' })
+    expect(r.candidate.tail).toBe(null)
+  })
+
   it('a silent candidate is refused', async () => {
     const d2 = seedDb()
     const { core: c2 } = makeCore(d2, { level: { meanDb: -70, peakDb: -60 } })
@@ -284,106 +315,6 @@ describe('propose', () => {
   it('refuses a clip that belongs to another course', async () => {
     await expect(core.propose({ courseCode: 'fra_for_eng', audioId: CLIP.id, source: 'tts' }))
       .rejects.toThrow(/belongs to deu_for_eng/)
-  })
-})
-
-// ── PROPOSE --takes: best-of-N by tail shape ───────────────────────────────
-//
-// The point of best-of-N is that faultOf() cannot see the defect it exists to
-// beat. A tail cut leaves the clip the right length, the right loudness and
-// carrying the right words, so every take below is "clean" — they differ ONLY
-// in the shape of the ending. If selection ever regresses to "first clean take
-// wins", these tests fail.
-
-describe('propose --takes', () => {
-  /**
-   * A core whose Nth render has the Nth release in `releases` (in decay frames).
-   * The buffer length encodes which take it is, so frameDb can hand back that
-   * take's envelope without any shared mutable counter.
-   */
-  function takesCore (db, releases, opts = {}) {
-    let n = 0
-    return createRepairCore({
-      supabase: db.client,
-      storage: { put: async (key) => ({ key }), head: async () => ({ exists: true }), get: async () => ({ buffer: Buffer.alloc(1) }) },
-      render: {
-        render: async () => ({ buffer: Buffer.alloc(1000 + (n++), 1), durationMs: 4100 }),
-        master: async (buf) => ({ buffer: buf, durationMs: 4100 }),
-      },
-      verify: {
-        measure: async () => ({ meanDb: -21, peakDb: -1.5 }),
-        veracity: async () => opts.onVeracity?.() || { checked: true, pass: true, reason: null, cer: 0.03 },
-        frameDb: async (buf) => envelope({ decayFrames: releases[buf.length - 1000] }),
-      },
-      newId: () => 'cand-1',
-      now: () => '2026-08-05T22:00:00.000Z',
-      logger: { log () {}, warn () {}, error () {} },
-    })
-  }
-
-  const notesOf = (db) => db.snapshot().audio_repair_candidates[0].notes
-  const chosen = (db) => notesOf(db).attempts.find(a => a.selected)
-
-  it('picks the best-shaped take, not the first clean one', async () => {
-    const db = seedDb()
-    // Take 1 is clean but ends abruptly (2 decay frames); take 3 decays fully.
-    const core = takesCore(db, [2, 8, 30])
-    await core.propose({ courseCode: 'deu_for_eng', audioId: CLIP.id, source: 'tts', actor: 'test', takes: 3 })
-    expect(chosen(db).selected).toBe(3)
-    expect(chosen(db).of).toBe(3)
-  })
-
-  it('renders exactly `takes` takes when every one is clean', async () => {
-    const db = seedDb()
-    const core = takesCore(db, [10, 12, 14])
-    await core.propose({ courseCode: 'deu_for_eng', audioId: CLIP.id, source: 'tts', actor: 'test', takes: 3 })
-    expect(notesOf(db).attempts.filter(a => a.attempt).length).toBe(3)
-  })
-
-  it('records every take\'s release, so the selection is auditable', async () => {
-    const db = seedDb()
-    const core = takesCore(db, [2, 30])
-    await core.propose({ courseCode: 'deu_for_eng', audioId: CLIP.id, source: 'tts', actor: 'test', takes: 2 })
-    const releases = notesOf(db).attempts.filter(a => a.attempt).map(a => a.releaseMs)
-    expect(releases).toHaveLength(2)
-    expect(releases[1]).toBeGreaterThan(releases[0])
-  })
-
-  it('defaults to one take — existing callers render exactly once', async () => {
-    const db = seedDb()
-    const core = takesCore(db, [2, 30])
-    await core.propose({ courseCode: 'deu_for_eng', audioId: CLIP.id, source: 'tts', actor: 'test' })
-    expect(notesOf(db).attempts.filter(a => a.attempt).length).toBe(1)
-  })
-
-  it('veracity-checks only the winner, not every take', async () => {
-    const db = seedDb()
-    let whisperCalls = 0
-    const core = takesCore(db, [2, 8, 30], { onVeracity: () => { whisperCalls++ } })
-    await core.propose({ courseCode: 'deu_for_eng', audioId: CLIP.id, source: 'tts', actor: 'test', takes: 3 })
-    // Three renders, one whisper round-trip. Veracity is the slow step, and
-    // running it on takes that lose the ranking buys nothing.
-    expect(notesOf(db).attempts.filter(a => a.attempt).length).toBe(3)
-    expect(whisperCalls).toBe(1)
-  })
-
-  it('walks down the ranking when the best-shaped take fails veracity', async () => {
-    const db = seedDb()
-    let n = 0
-    // The best tail (take 2, 30 frames) is missing words; the runner-up is fine.
-    const core = takesCore(db, [8, 30], {
-      onVeracity: () => (++n === 1 ? { checked: true, pass: false, reason: 'missing final word', cer: 0.9 } : null),
-    })
-    await core.propose({ courseCode: 'deu_for_eng', audioId: CLIP.id, source: 'tts', actor: 'test', takes: 2 })
-    expect(chosen(db).selected).toBe(1) // fell back to take 1
-    expect(n).toBe(2)
-  })
-
-  it('still produces a candidate when the tail cannot be measured', async () => {
-    const db = seedDb()
-    const { core } = makeCore(db) // no frameDb adapter at all
-    const r = await core.propose({ courseCode: 'deu_for_eng', audioId: CLIP.id, source: 'tts', actor: 'test', takes: 3 })
-    expect(r.candidateId).toBeTruthy()
   })
 })
 
@@ -693,95 +624,85 @@ describe('queue', () => {
   })
 })
 
-// ── the tail-integrity detector ────────────────────────────────────────────
+// ── the tail-truncation detector (engine tier 2) ────────────────────────────
 //
-// The defect it exists for is a SOFT amputation: the final consonant of the
-// last word is gone, there is no click, and the clip is only ~100ms short — so
-// duration-vs-expected calls it healthy. What separates the two is the shape of
-// the ending, and these tests are written in that shape directly.
+// The defect it exists for is a SOFT amputation: the final consonant of the last
+// word is gone, there is no click, and the clip is only ~100ms short — so
+// duration-vs-expected calls it healthy. What separates a trim from an ending is
+// the SHAPE of the fall plus what the silence afterwards is made of, so the
+// fixtures are built in exactly those two dimensions.
+//
+// The tier's own maths is pinned in tools/audio-truncation-detector.test.js against
+// ffmpeg-synthesised audio, and its recall against Tom's ear-labelled clips is
+// re-checked by tools/verify-edge-shape-ground-truth.cjs. What these tests own is
+// the SEAM: that the queue asks for samples, judges every clip, reports the flag
+// rate per voice, names what it could not measure, and refuses to run rather than
+// skip silently.
 
-/** A frame envelope: `speechFrames` at speech level, then a decay to silence. */
-function envelope ({ speechFrames = 200, decayFrames, peakDb = -12, tailSilenceFrames = 24 }) {
-  const db = new Array(speechFrames).fill(peakDb)
-  for (let i = 1; i <= decayFrames; i++) db.push(peakDb - (60 * i) / decayFrames)
-  return db.concat(new Array(tailSilenceFrames).fill(-180))
+const SR = 16000
+/**
+ * Synthesised PCM, in the two shapes that matter.
+ *
+ *   decayMs 0, silent pad  — full level to the last sample, then exact digital
+ *                            zeros: both fingerprints of a trim.
+ *   decayMs 250, noisy pad — the same tone allowed to decay, then a live noise
+ *                            floor: a clip that ended on its own.
+ */
+function pcmClip ({ speechMs = 400, decayMs = 0, padMs = 100, noisyPad = false } = {}) {
+  const n = Math.round(SR * (speechMs + decayMs + padMs) / 1000)
+  const speech = Math.round(SR * speechMs / 1000)
+  const decay = Math.round(SR * decayMs / 1000)
+  const x = new Int16Array(n)
+  for (let i = 0; i < speech + decay; i++) {
+    const env = i < speech ? 1 : Math.pow(10, (-60 * (i - speech) / Math.max(1, decay)) / 20)
+    x[i] = Math.round(12000 * env * Math.sin(2 * Math.PI * 220 * i / SR))
+  }
+  if (noisyPad) {
+    // A provider's own noise floor: small, and crucially never exactly zero.
+    for (let i = speech + decay; i < n; i++) x[i] = (((i * 2654435761) % 7) - 3) || 1
+  }
+  return x
 }
 
-describe('tailShape', () => {
-  it('measures the release as the fall from speech level to gone', () => {
-    // 12 decay frames at 5ms = 60ms to fall 60dB, i.e. 5dB per frame; the last
-    // frame above peak-10 to the first at or below peak-50 is 9 of them.
-    const s = tailShape(envelope({ decayFrames: 12 }))
-    expect(s.releaseMs).toBe(45)
-    expect(s.peakDb).toBe(-12)
-  })
-
-  it('reports a cut ending as a near-instant release', () => {
-    expect(tailShape(envelope({ decayFrames: 2 })).releaseMs).toBeLessThanOrEqual(10)
-  })
-
-  it('returns null rather than a number when there is nothing audible to measure', () => {
-    expect(tailShape(new Array(50).fill(-180))).toBe(null)
-    expect(tailShape([])).toBe(null)
-    expect(tailShape(null)).toBe(null)
-  })
-
-  it('is blind to trailing silence — padding a clip cannot change its release', () => {
-    const short = tailShape(envelope({ decayFrames: 12, tailSilenceFrames: 4 }))
-    const padded = tailShape(envelope({ decayFrames: 12, tailSilenceFrames: 200 }))
-    expect(padded.releaseMs).toBe(short.releaseMs)
-    // This is the failure that sank the old tail-click gate: 96% of its `rise`
-    // flags vanished when the clip was padded. Whatever this check is worth, it
-    // is not measuring trailing room.
-  })
-})
-
 describe('tailVerdict', () => {
-  it('flags a clip that stops at full speech level', () => {
-    const v = tailVerdict(envelope({ decayFrames: 2 }), { textChars: 24 })
+  it('flags a clip that stops at full level into digital silence', () => {
+    const v = tailVerdict(pcmClip({ decayMs: 0 }), { text: 'ich will Deutsch lernen' })
     expect(v.flagged).toBe(true)
-    expect(v.steep).toBe(true)
-    expect(v.reason).toMatch(/ends abruptly/)
+    expect(v.category).toBe('tail-truncation')
+    expect(v.reason).toMatch(/the shape of a trim/)
   })
 
-  it('passes a clip whose final phoneme is allowed to decay', () => {
-    const v = tailVerdict(envelope({ decayFrames: 30 }), { textChars: 24 })
+  it('passes a clip whose final phoneme is allowed to decay into a live noise floor', () => {
+    const v = tailVerdict(pcmClip({ decayMs: 250, noisyPad: true }), { text: 'ich will Deutsch lernen' })
     expect(v.flagged).toBe(false)
     expect(v.reason).toMatch(/allowed to finish/)
   })
 
-  it('flags on steepness ALONE — the rate leg goes blind on long clips', () => {
-    // A 4s introduction that lost one short word reads as a normal speaking
-    // rate; requiring both legs would miss it. deu_for_eng S0001L04 is exactly
-    // this clip: its spoken "is:" is gone and its rate is unremarkable.
-    const v = tailVerdict(envelope({ speechFrames: 780, decayFrames: 4 }), {
-      textChars: 62, baselineCps: 17.4,
-    })
-    expect(v.flagged).toBe(true)
-    expect(v.fast).toBe(false)
-  })
-
-  it('sorts a corroborated flag ahead of a bare one at the same steepness', () => {
-    const bare = tailVerdict(envelope({ speechFrames: 200, decayFrames: 4 }), { textChars: 10, baselineCps: 18 })
-    const both = tailVerdict(envelope({ speechFrames: 200, decayFrames: 4 }), { textChars: 40, baselineCps: 18 })
-    expect(both.fast).toBe(true)
-    expect(both.score).toBeLessThan(bare.score)
+  it('requires BOTH legs — a steep fall into a live noise floor is not the trim signature', () => {
+    // The zero-pad fingerprint alone flagged 7 of 30 healthy controls: it says the
+    // clip went through the pad, not that the trim ate anything. Hence the AND.
+    const v = tailVerdict(pcmClip({ decayMs: 0, noisyPad: true }))
+    expect(v.steep).toBe(true)
+    expect(v.padded).toBe(false)
+    expect(v.flagged).toBe(false)
   })
 
   it('says it cannot judge a silent clip rather than flagging it', () => {
-    const v = tailVerdict(new Array(50).fill(-180))
+    const v = tailVerdict(new Int16Array(SR / 2))
     expect(v.flagged).toBe(null)
     expect(v.reason).toMatch(/no audible content/)
   })
 
-  it('ships its precision claim, and claims no precision', () => {
-    expect(TAIL_DETECTOR.precision).toBe(null)
-    expect(TAIL_DETECTOR.precisionNote).toMatch(/never passes audio/i)
-    expect(TAIL_DETECTOR.precisionNote).toMatch(/three clips/i)
+  it('ships its measured performance next to every verdict, caveat included', () => {
+    expect(TAIL_DETECTOR.name).toBe('edge-shape')
+    expect(TAIL_DETECTOR.recall).toMatch(/16\/16/)
+    expect(TAIL_DETECTOR.precision).toBe(0.8)
+    expect(TAIL_DETECTOR.precisionNote).toMatch(/never passes or deletes audio/i)
+    expect(TAIL_DETECTOR.precisionNote).toMatch(/per voice/i)
   })
 })
 
-describe('queue — tail integrity', () => {
+describe('queue — tail truncation', () => {
   const audio = (over) => ({
     course_code: 'deu_for_eng', text: 'Ich will jetzt Deutsch lernen', role: 'phrase_target',
     voice_id: 'xai_eve', language: 'deu', duration_ms: 2100, s3_key: 'mastered/X.mp3',
@@ -794,23 +715,38 @@ describe('queue — tail integrity', () => {
       course_audio: [audio({ id: 'cut' }), audio({ id: 'clean' })],
       audio_repair_candidates: [],
     })
-    // Distinct envelopes per clip, in the order the queue reads them.
-    const envelopes = [envelope({ decayFrames: 2 }), envelope({ decayFrames: 30 })]
+    const clips = [pcmClip({ decayMs: 0 }), pcmClip({ decayMs: 250, noisyPad: true })]
     let n = 0
     const { core } = makeCore(db, {})
-    const { core: core2 } = makeCore(db, { frameDb: async () => envelopes[n++] })
+    const { core: core2 } = makeCore(db, { pcm: async () => clips[n++] })
     const plain = await core.queue({ courseCode: 'deu_for_eng' })
     expect(plain.items).toEqual([]) // duration-vs-expected sees nothing wrong
 
     const withTails = await core2.queue({ courseCode: 'deu_for_eng', tails: true })
     expect(withTails.items.map(i => i.audioId)).toEqual(['cut'])
     expect(withTails.flaggedByTail).toBe(1)
-    expect(withTails.tailDetector.name).toBe('tail-integrity')
+    expect(withTails.tailDetector.name).toBe('edge-shape')
+  })
+
+  it('reports the flag rate per voice, because that is the calibration read-out', async () => {
+    // The threshold is calibrated on three voices of one course. A voice that lights
+    // up wholesale is a calibration finding, and nobody should have to ask for the
+    // number that would show it.
+    const db = makeDb({
+      course_audio: [audio({ id: 'a', voice_id: 'xai_eve' }), audio({ id: 'b', voice_id: 'xai_leo' })],
+      audio_repair_candidates: [],
+    })
+    const clips = [pcmClip({ decayMs: 0 }), pcmClip({ decayMs: 250, noisyPad: true })]
+    let n = 0
+    const { core } = makeCore(db, { pcm: async () => clips[n++] })
+    const q = await core.queue({ courseCode: 'deu_for_eng', tails: true })
+    expect(q.tailByVoice.xai_eve).toMatchObject({ measured: 1, flagged: 1, flagRate: 1 })
+    expect(q.tailByVoice.xai_leo).toMatchObject({ measured: 1, flagged: 0, flagRate: 0 })
   })
 
   it('names how many clips it could not measure instead of quietly dropping them', async () => {
     const db = makeDb({ course_audio: [audio({ id: 'a' })], audio_repair_candidates: [] })
-    const { core } = makeCore(db, { frameDb: async () => { throw new Error('decode failed') } })
+    const { core } = makeCore(db, { pcm: async () => { throw new Error('decode failed') } })
     const q = await core.queue({ courseCode: 'deu_for_eng', tails: true })
     expect(q.tailMeasureFailures).toBe(1)
     expect(q.measured).toBe(0)
@@ -820,7 +756,7 @@ describe('queue — tail integrity', () => {
     const db = makeDb({ course_audio: [audio({ id: 'a' })], audio_repair_candidates: [] })
     const { core } = makeCore(db, {})
     await expect(core.queue({ courseCode: 'deu_for_eng', tails: true }))
-      .rejects.toThrow(/verify.frameDb/)
+      .rejects.toThrow(/verify.pcm/)
   })
 
   it('leaves the tail detector off, and says so, unless it was asked for', async () => {

@@ -963,6 +963,9 @@ const FILLER_TAG_RE = /,\s*¿?[^,]{1,18}$/;
 function classifyBuildPhrase(target, legoTarget, useStemNorms, isFirstRow) {
   const nT = normalizeForContainment(target);
   const nL = normalizeForContainment(legoTarget);
+  // A first-row bare LEGO is not hard-rejected here (agents lead with it), but it
+  // is never counted toward the phrase floor and never written as a row — see
+  // isBareLegoPhrase in phrase-structure.cjs. 'debut-row' means tolerated, not kept.
   if (nT === nL) return { cls: isFirstRow ? 'debut-row' : 'bare-repeat' };
   if (FILLER_TAG_RE.test((target || '').trim())) {
     const stem = normalizeForContainment((target || '').trim().replace(/,[^,]*$/, ''));

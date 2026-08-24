@@ -5,7 +5,7 @@
       <div class="flex items-center gap-4">
         <h2 class="text-lg font-semibold text-ink">Calibration Review</h2>
         <span class="px-3 py-1 bg-surface-2/50 border border-line/50 rounded text-sm font-mono text-emerald-400">
-          {{ courseCode }}
+          {{ getCourseName(courseCode) }}
         </span>
       </div>
       <div class="flex items-center gap-3 text-sm">
@@ -71,7 +71,11 @@
         <div class="bg-surface/30 border border-line/50 rounded-lg p-5">
           <div class="text-xs text-faint uppercase tracking-wide mb-2">Seed {{ selectedDraft.seed_number }}</div>
           <div class="text-ink mb-1">{{ selectedDraft.known_text }}</div>
-          <div class="text-lg text-emerald-400 font-medium">{{ selectedDraft.target_text }}</div>
+          <div
+            class="text-lg text-emerald-400 font-medium text-left"
+            :dir="dirFor(selectedDraft.target_text)"
+            style="unicode-bidi: isolate"
+          >{{ selectedDraft.target_text }}</div>
           <div v-if="selectedDraft.attempt_number > 1" class="mt-2 text-xs text-amber-400">
             Attempt {{ selectedDraft.attempt_number }}
           </div>
@@ -92,7 +96,11 @@
             </span>
             <span class="text-muted text-sm">{{ lego.known }}</span>
             <span class="text-faint">&rarr;</span>
-            <span class="text-ink font-medium">{{ lego.target }}</span>
+            <span
+              class="text-ink font-medium"
+              :dir="dirFor(lego.target)"
+              style="unicode-bidi: isolate"
+            >{{ lego.target }}</span>
             <span v-if="lego.is_new === false" class="text-xs text-faint ml-auto">reused</span>
           </div>
 
@@ -100,7 +108,11 @@
           <div v-if="lego.components && lego.components.length" class="mb-3 pl-4 border-l-2 border-purple-500/20">
             <div class="text-xs text-faint uppercase tracking-wide mb-1">Components</div>
             <div v-for="(comp, ci) in lego.components" :key="ci" class="text-sm text-muted">
-              {{ comp.known }} &rarr; <span class="text-ink">{{ comp.target }}</span>
+              {{ comp.known }} &rarr; <span
+                class="text-ink"
+                :dir="dirFor(comp.target)"
+                style="unicode-bidi: isolate"
+              >{{ comp.target }}</span>
             </div>
           </div>
 
@@ -110,7 +122,11 @@
             <div v-for="(p, pi) in buildPhrases(lego)" :key="'b-'+pi" class="text-sm py-0.5">
               <span class="text-muted">{{ p.known_text }}</span>
               <span class="text-faint mx-1">&rarr;</span>
-              <span class="text-ink">{{ p.target_text }}</span>
+              <span
+                class="text-ink"
+                :dir="dirFor(p.target_text)"
+                style="unicode-bidi: isolate"
+              >{{ p.target_text }}</span>
             </div>
           </div>
 
@@ -122,7 +138,11 @@
             <div v-for="(p, pi) in usePhrases(lego)" :key="'u-'+pi" class="text-sm py-0.5">
               <span class="text-muted">{{ p.known_text }}</span>
               <span class="text-faint mx-1">&rarr;</span>
-              <span class="text-ink">{{ p.target_text }}</span>
+              <span
+                class="text-ink"
+                :dir="dirFor(p.target_text)"
+                style="unicode-bidi: isolate"
+              >{{ p.target_text }}</span>
               <span v-if="p.score" class="text-xs text-faint ml-2">{{ p.score }}</span>
             </div>
           </div>
@@ -192,11 +212,14 @@
 <script setup>
 import { ref, computed, onMounted, onUnmounted, watch } from 'vue'
 import { getApiUrl } from '@/services/api'
+import { useCourses } from '@/composables/useCourses'
+import { dirFor } from '@/utils/textDirection.js'
 
 const props = defineProps({
   courseCode: { type: String, required: true }
 })
 
+const { getCourseName } = useCourses()
 const builderApiUrl = getApiUrl()
 
 const loading = ref(true)

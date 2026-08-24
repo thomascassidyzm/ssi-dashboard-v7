@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.ssi.popty-ngrok</string>
+
+    <!-- No ordering against the backend on purpose. ngrok binds the reserved
+         domain and forwards to a local port; if 3470 is not listening yet the
+         tunnel is still healthy and starts serving the moment the backend comes
+         up (it answers ERR_NGROK_8012 in the meantime). What matters is that if
+         ngrok itself exits, KeepAlive brings it straight back. -->
+    <key>ProgramArguments</key>
+    <array>
+        <string>__NGROK__</string>
+        <string>http</string>
+        <string>--url=popty.ngrok.app</string>
+        <string>3470</string>
+    </array>
+
+    <key>RunAtLoad</key>
+    <true/>
+    <key>KeepAlive</key>
+    <true/>
+    <key>ThrottleInterval</key>
+    <integer>10</integer>
+
+    <key>WorkingDirectory</key>
+    <string>__HOME__</string>
+
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>PATH</key>
+        <string>__NGROK_DIR__/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin</string>
+        <!-- ngrok reads its authtoken from
+             $HOME/Library/Application Support/ngrok/ngrok.yml. Without HOME it
+             starts unauthenticated and cannot claim the reserved domain. -->
+        <key>HOME</key>
+        <string>__HOME__</string>
+    </dict>
+
+    <key>StandardOutPath</key>
+    <string>__LOGDIR__/popty-ngrok.log</string>
+    <key>StandardErrorPath</key>
+    <string>__LOGDIR__/popty-ngrok.err.log</string>
+</dict>
+</plist>

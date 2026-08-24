@@ -61,3 +61,51 @@ The one-day patch from §5 landed on `tidy/community-nav` (`learning-script-gene
 - INF-PLAY revival tail and the transient bootstrap window: still not modelled (out of Script View's review scope).
 
 **Remaining cosmetic deltas:** roman-text display (`target_text_roman` ignored by dashboard); Turbo `turboOmit` tags not surfaced; learner's per-LEGO presentation-audio backfill from `course_audio` (dashboard only falls back to `lego_introductions` when a course has zero linked presentations) — a Script-View "missing intro" can still play for the learner; learner drops empty-text cycles in its final pass (no dashboard equivalent — moot for QA, the text IS what's being reviewed). The §5 golden-fixture parity test remains the recommended lock and is NOT yet built.
+
+---
+
+## §7 — D3 RE-CONVERGED, 2026-08-06: per-item degradation, and full live parity
+
+The player stopped amputating rounds for missing audio (`ssi-learning-app`
+269d2d19, Tom's ruling: "always play what it HAS"). §6's D3 toggle — which
+dropped an unvoiced LEGO before the walk so round numbers compressed — became
+the stale side: on any course with an audio gap it showed round numbers the
+learner no longer sees and dropped rounds the learner no longer drops.
+
+**What Popty now does in learner view**, matched item for item to the player:
+- No LEGO is ever removed from the walk. Every `is_new` LEGO takes its round
+  and its round NUMBER whatever its clips, in both views.
+- The audio invariant is enforced per ITEM at emit time: an INTRO needs a
+  prompt clip — presentation audio, or known audio as the documented fallback —
+  plus target1 (`.ts:1139`); a DEBUT needs all three (`.ts:1140`); phrases still
+  need all three to enter the BUILD/USE pools (`.ts:706`).
+- A seed-phase review is only emitted when the seed has its first target voice;
+  without it the player falls back to a use-phrase, and so does the preview
+  (`.ts:1316`). This gate was missing from the toggle before today.
+- Consecutive-duplicate dedup runs over the WHOLE stream in learner view, not
+  per round (`.ts:1642-1660`) — clustered seed reviews repeat across a round
+  boundary, and a round left with only that duplicate never plays. Production
+  view keeps the per-round scope on purpose: it shows the intended course, and
+  a row a reviewer may need to edit must not vanish because the previous round
+  ended with the same sentence.
+- A round with nothing playable at all is dropped, mirroring `toSimpleRounds`'
+  `cycles.length === 0` guard — and its absence renumbers nothing.
+
+**Live parity, verified 2026-08-06** by running the dashboard generator and the
+player's own `generateLearningScript` against the same live data and diffing
+round-by-round:
+
+| course | learner rounds | Popty learner view | round-set diff | LEGO-at-round mismatches | per-round item-count diffs |
+|---|---|---|---|---|---|
+| `ara_lb_for_eng` | 1,331 | 1,331 | 0 | 0 | 0 |
+| `fra_for_eng` | 1,529 | 1,529 | 0 | 0 | 0 |
+
+`fra_for_eng` also lands S0015L01 at R46, S0047L01 at R134 and S0100L01 at R256
+— the exact numbers the player's own fix recorded, and the post-gap slide of one
+is gone.
+
+The §5 golden-fixture parity test now exists in part: `services/learning-script-generator.test.cjs`
+pins that an audio gap renumbers nothing, that intro/debut fall independently,
+that a review still fires for a LEGO whose own debut was skipped, and that the
+two dedup scopes differ. Fifteen of those tests fail against the pre-2026-08-06
+generator.

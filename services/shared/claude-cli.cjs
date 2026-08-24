@@ -11,7 +11,7 @@
  */
 
 const { execFile } = require('child_process')
-const { CLAUDE_CONFIG_DIR } = require('./claude-config.cjs')
+const { claudeEnv } = require('./claude-config.cjs')
 
 // The installed `claude` CLI's own alias resolution for 'haiku' can lag
 // behind Anthropic's model retirements (seen 2026-07: CLI 2.0.8 resolved
@@ -39,15 +39,11 @@ function claudeChat(prompt, options = {}) {
       args.push('--system', system)
     }
 
-    // Strip ANTHROPIC_API_KEY so the CLI authenticates via the Max Plan
-    // login, not the API key from .env (which would bill per-token and
-    // fail with "Credit balance is too low"). CLAUDECODE is deleted, not
-    // set to '', so nested CLI calls work.
-    const env = { ...process.env }
-    delete env.ANTHROPIC_API_KEY
-    delete env.CLAUDECODE
-    // CLAUDE_CONFIG_DIR pins the claude@ account (see claude-config.cjs).
-    env.CLAUDE_CONFIG_DIR = CLAUDE_CONFIG_DIR
+    // claudeEnv() pins the claude@ account config dir, injects the machine's
+    // OAuth token where one exists, and strips ANTHROPIC_API_KEY/CLAUDECODE
+    // so the CLI bills the Max Plan login and nested calls work
+    // (see claude-config.cjs).
+    const env = claudeEnv()
     // MAX_THINKING_TOKENS=0 disables extended thinking. Without it, the
     // global effortLevel:high setting flows into every headless `claude
     // --print` call, so a simple translation-flex spends ~11K hidden

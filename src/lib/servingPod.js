@@ -14,6 +14,34 @@
  * copy, because voice approval reviews unrecorded content before release; these
  * pages want what is LIVE, so the working copy is deliberately not preferred
  * here.
+ *
+ * HELD PODS (Tom, 2026-08-23: "keep them back in a human course until … after
+ * all until they exist!!!"). `listening_pods.visibility` is 'live' or 'held';
+ * RLS already makes a held pod's row and sentences invisible to the learner
+ * app's anon key. This resolver is the ADMIN-side half of the same gate, and it
+ * runs under a service-role client that sees held pods perfectly well — so the
+ * exclusion has to be written here, explicitly, or an admin page reading "the
+ * serving pod" would quietly hand a held pod to something learner-shaped.
+ *
+ * The default is EXCLUSION, and it FAILS CLOSED: in default mode a pod counts
+ * as servable only when its row says `visibility === 'live'`. A missing
+ * `visibility` key is treated as not-live, not as "probably fine" — the
+ * opposite of how `pod_type` is handled two comments down, deliberately, because
+ * a thin projection getting pod_type wrong shows an admin the wrong pill, while
+ * a thin projection getting THIS wrong puts held content in front of a learner.
+ * Any caller in default mode must therefore select the column; `fetchServingPodId`
+ * does.
+ *
+ * Admin listings pass `{ includeHeld: true }` and get the old behaviour back
+ * unchanged — they SHOULD see the held pod, badged HELD, because it is the pod
+ * they are working on. The two callers today are both of that kind and both opt
+ * in: PodsView.vue (the manage/regenerate card must point at the pod the course
+ * actually has) and ListeningConfig.vue (auditioning a pod before release is the
+ * whole point of the audition). The default exists for what comes next, not for
+ * them.
+ *
+ * Nothing here writes the column. Release is a human act through the one write
+ * path, POST /api/admin/pods/:courseCode/:slug/visibility.
  */
 
 // Serving slugs, most-preferred first. An explicit allowlist, not a prefix
@@ -29,12 +57,21 @@ export function slugOfPod(pod) {
   return i < 0 ? id : id.slice(i + 1)
 }
 
+/** A pod is servable to learners only if it SAYS it is live. See the header. */
+export function isLivePod(pod) {
+  return !!pod && pod.visibility === 'live'
+}
+
 /**
- * @param {Array<{id?:string, slug?:string, pod_type?:string, sentence_count?:number}>} pods
+ * @param {Array<{id?:string, slug?:string, pod_type?:string, visibility?:string, sentence_count?:number}>} pods
+ * @param {{includeHeld?:boolean}} [opts] `includeHeld: true` for ADMIN listings
+ *   that must show the held pod; omit it for anything learner-shaped.
  * @returns the pod row the course serves, or null.
  */
-export function pickServingPod(pods) {
-  const core = (pods || []).filter((p) => p && (p.pod_type == null || p.pod_type === 'core'))
+export function pickServingPod(pods, opts = {}) {
+  const core = (pods || [])
+    .filter((p) => p && (p.pod_type == null || p.pod_type === 'core'))
+    .filter((p) => opts.includeHeld || isLivePod(p))
   for (const slug of SERVING_SLUGS) {
     const hit = core.find((p) => slugOfPod(p) === slug)
     if (hit) return hit
@@ -46,16 +83,20 @@ export function pickServingPod(pods) {
  * One small query against listening_pods, then the same preference order.
  * Returns `<course>:<slug>` or null when the course has no serving core pod.
  *
+ * `visibility` is always selected, so the default fail-closed rule above has the
+ * evidence it needs; pass `{ includeHeld: true }` from an admin surface.
+ *
  * @param {import('@supabase/supabase-js').SupabaseClient} sb
  * @param {string} courseCode
+ * @param {{includeHeld?:boolean}} [opts]
  */
-export async function fetchServingPodId(sb, courseCode) {
+export async function fetchServingPodId(sb, courseCode, opts = {}) {
   const { data, error } = await sb
     .from('listening_pods')
-    .select('id, slug, pod_type')
+    .select('id, slug, pod_type, visibility')
     .eq('course_code', courseCode)
     .in('slug', SERVING_SLUGS)
   if (error) throw error
-  const pod = pickServingPod(data || [])
+  const pod = pickServingPod(data || [], opts)
   return pod ? pod.id : null
 }

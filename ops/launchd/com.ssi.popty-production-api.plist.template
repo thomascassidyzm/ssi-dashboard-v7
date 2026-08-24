@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.ssi.popty-production-api</string>
+
+    <!-- Absolute path to node, baked in by install-holmes-agents.sh. NOT "node".
+         launchd agents get a minimal PATH that does not include either Homebrew
+         prefix, and a bare "node" is the single most common way a first launchd
+         attempt dies silently. Holmes already carries a live example: the
+         pre-existing com.ssi.orchestrator agent points at /usr/local/bin/node on
+         an Apple Silicon machine where node is /opt/homebrew/bin/node, and it
+         has been exiting 78 ever since. -->
+    <key>ProgramArguments</key>
+    <array>
+        <string>__NODE__</string>
+        <string>__CHECKOUT__/services/production-api.cjs</string>
+    </array>
+
+    <!-- The service resolves .env and its relative paths from cwd, so this must
+         be the checkout exactly as it is when Tom runs the command by hand. -->
+    <key>WorkingDirectory</key>
+    <string>__CHECKOUT__</string>
+
+    <key>RunAtLoad</key>
+    <true/>
+    <key>KeepAlive</key>
+    <true/>
+
+    <!-- Not zero: a genuinely broken config (bad .env, port in use) would
+         otherwise respawn as fast as the machine allows. -->
+    <key>ThrottleInterval</key>
+    <integer>10</integer>
+
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>PATH</key>
+        <string>__NODE_DIR__/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin</string>
+        <key>HOME</key>
+        <string>__HOME__</string>
+        <key>NODE_ENV</key>
+        <string>production</string>
+    </dict>
+
+    <key>StandardOutPath</key>
+    <string>__LOGDIR__/popty-production-api.log</string>
+    <key>StandardErrorPath</key>
+    <string>__LOGDIR__/popty-production-api.err.log</string>
+</dict>
+</plist>

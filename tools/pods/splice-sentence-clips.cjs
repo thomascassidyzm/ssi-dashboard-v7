@@ -280,12 +280,45 @@ async function spliceAndGate (src, n, outbase) {
   return { ok: true, measure, files }
 }
 
-/** Put one spliced piece in S3 and give it a course_audio row. Returns its id. */
-async function publishPiece (file, { text, language, role, voiceId }) {
+/**
+ * Put one spliced piece in S3 and give it a course_audio row. Returns its id.
+ *
+ * `courseCode` defaults to this run's course; the KNOWN-side pass
+ * (splice-known-sentence-clips.cjs) passes its own, which is why it is a
+ * parameter rather than the module-level constant it used to read directly.
+ *
+ * THE PRE-UPSERT CONFLICT-KEY CHECK is the structural version of the comment
+ * at the `findExistingAudio` call site. The upsert below resolves a conflict on
+ * (course_code, text_normalized, language, role, voice_id) by UPDATING — so if
+ * a row already exists on that exact key and the caller's free-first lookup did
+ * not see it, the upsert silently repoints an existing, possibly learner-linked
+ * clip at our spliced bytes. That happened on the first fleet run (28 rows,
+ * restored by restore-clobbered-clip-pointers.cjs) and was invisible: same text,
+ * same voice, no gate fires. Reaching this state means the read and the write
+ * disagree about identity, which is a defect in the caller, so it THROWS: the
+ * row lands in the run's error list and keeps its whole-turn fallback. Refusing
+ * costs one split; clobbering costs somebody else's clip.
+ */
+async function publishPiece (file, { courseCode = COURSE, text, language, role, voiceId }) {
   const body = fs.readFileSync(file)
   const durationMs = Math.round((await ffprobeDur(file)) * 1000)
   const audioId = randomUUID().toUpperCase()
   const s3Key = `mastered/${audioId}.mp3`
+  const textNormalized = normalizeForAudio(text)
+
+  const { data: clash, error: clashErr } = await supabase.from('course_audio')
+    .select('id, s3_key')
+    .eq('course_code', courseCode).eq('text_normalized', textNormalized)
+    .eq('language', language).eq('role', role).eq('voice_id', voiceId)
+    .maybeSingle()
+  // Fail closed on a failed lookup too — an unreadable check is not a passed one.
+  if (clashErr) throw new Error(`[conflict-key check] ${clashErr.message}`)
+  if (clash) {
+    throw new Error(`[conflict-key] clip ${clash.id} already holds ` +
+      `${courseCode}/${role}/${language}/${voiceId} for this text — the free-first lookup ` +
+      'missed it, so the upsert would repoint an existing clip. Refusing.')
+  }
+
   for (let attempt = 1; ; attempt++) {
     try {
       await p8.s3.send(new PutObjectCommand({
@@ -302,9 +335,9 @@ async function publishPiece (file, { text, language, role, voiceId }) {
     }
   }
   const { data, error } = await supabase.from('course_audio').upsert({
-    course_code: COURSE,
+    course_code: courseCode,
     text,
-    text_normalized: normalizeForAudio(text),
+    text_normalized: textNormalized,
     language,
     role,
     voice_id: voiceId,
@@ -322,7 +355,12 @@ async function publishPiece (file, { text, language, role, voiceId }) {
 // Exported so the tests can drive the split and the measurement directly.
 // Both are pure enough to test and both are places where a wrong answer is
 // SILENT — the seam gate shipped fail-open twice during this tool's build.
-module.exports = { SENTENCE_SPLIT, KNOWN_SPLIT, splitOn, peakDb, ffprobeDur, spliceAndGate }
+// `spliceAndGate` and `publishPiece` are exported so the KNOWN-side pass can
+// use the SAME cut, the same four gates and the same publisher rather than a
+// second copy of them. A gate that exists twice is a gate that drifts.
+module.exports = {
+  SENTENCE_SPLIT, KNOWN_SPLIT, splitOn, peakDb, ffprobeDur, spliceAndGate, publishPiece,
+}
 
 // Only run the fleet job when invoked as a command, never on require().
 if (require.main !== module) return

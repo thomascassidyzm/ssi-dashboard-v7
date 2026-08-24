@@ -132,7 +132,7 @@ async function getAudioSignedUrl(uuid, expiresIn = 3600, options = {}) {
     Key: key
   })
 
-  return getSignedUrl(s3Client, command, { expiresIn })
+  return getSignedUrl(options.client || s3Client, command, { expiresIn })
 }
 
 // Check if audio file exists
@@ -195,6 +195,88 @@ async function uploadRecording(courseCode, uuid, audioBuffer, metadata = {}, opt
   return { uuid, key, uploaded: true }
 }
 
+// Retain a voice actor's UNTOUCHED take at raw/{UUID}.{ext}.
+// The bytes are stored exactly as the client sent them — no transcode, no trim,
+// no normalisation — because every destructive step downstream has no undo
+// (T-20: 107 butchered Welsh clips, zero recoverable originals). Same uuid as
+// the mastered object, so the join is a string swap.
+// Metadata stays short (the mastered key + a couple of ids): S3 caps TOTAL user
+// metadata at 2KB, and Supabase holds the truth.
+async function uploadRawTake({ key, buffer, contentType = 'application/octet-stream', metadata = {} }) {
+  const command = new PutObjectCommand({
+    Bucket: BUCKET,
+    Key: key,
+    Body: buffer,
+    ContentType: contentType,
+    Metadata: toS3Metadata({
+      retainedAt: new Date().toISOString(),
+      ...metadata
+    })
+  })
+  await s3Client.send(command)
+  return { key, bytes: buffer.length, uploaded: true }
+}
+
+// ── The raw original of a mastered take ──────────────────────────────────────
+// There is NO raw_key column anywhere: the link from a mastered object back to
+// the untouched take lives in the mastered object's own S3 user metadata, keyed
+// `rawKey` at write time (uploadRecording → toS3Metadata) and handed back
+// lowercased as `rawkey` by the SDK. So the ONLY way to find a raw original is
+// to HEAD the mastered object — which is why nothing does it per-line on a page
+// load, and everything does it lazily when a human asks to compare.
+//
+// Takes made before 2026-08-14 (commit 0d76bd5c) have no raw original at all.
+// That is a real, permanent absence — resolveRawKey returns null for it, and
+// callers MUST say "no original was kept" rather than showing a dead player.
+const RAW_KEY_SHAPE = /^raw\/[^\s]+$/
+
+/**
+ * The raw original's S3 key for a mastered object, or null if none was kept.
+ * `notFound` distinguishes "the mastered object isn't there" from "it is there
+ * and carries no rawKey" — a caller wanting to explain itself needs both.
+ */
+async function resolveRawKey(masteredKey, options = {}) {
+  if (!masteredKey) return { rawKey: null, notFound: true }
+  const bucket = options.bucket || BUCKET
+  const client = options.client || s3Client
+  let head
+  try {
+    head = await client.send(new HeadObjectCommand({ Bucket: bucket, Key: masteredKey }))
+  } catch (error) {
+    if (error.name === 'NotFound' || error.$metadata?.httpStatusCode === 404) {
+      return { rawKey: null, notFound: true }
+    }
+    throw error
+  }
+
+  const meta = head.Metadata || {}
+  // The SDK lowercases metadata keys, but a hand-written object (or another
+  // SDK) may not have been through it, so accept both spellings.
+  let value = meta.rawkey != null ? meta.rawkey : meta.rawKey
+  if (typeof value !== 'string') return { rawKey: null, notFound: false }
+  value = value.trim()
+  // toS3Metadata percent-encodes any non-ASCII value and truncates at 512
+  // chars; decode defensively so a key that went through that path still joins.
+  if (value.includes('%')) {
+    try { value = decodeURIComponent(value) } catch { /* keep the raw string */ }
+  }
+  // Anything that is not a raw/ key is metadata damage, not a pointer: refuse it
+  // rather than sign a URL for an object that was never the original.
+  if (!RAW_KEY_SHAPE.test(value)) return { rawKey: null, notFound: false }
+  return { rawKey: value, notFound: false }
+}
+
+/**
+ * Signed URL for the raw original behind a mastered object, or null if there
+ * isn't one. Same expiry semantics as getAudioSignedUrl.
+ */
+async function getRawSignedUrl(masteredKey, expiresIn = 3600, options = {}) {
+  const { rawKey, notFound } = await resolveRawKey(masteredKey, options)
+  if (!rawKey) return { url: null, rawKey: null, notFound }
+  const url = await getAudioSignedUrl(null, expiresIn, { ...options, s3Key: rawKey })
+  return { url, rawKey, notFound: false }
+}
+
 // Batch check if audio files exist in ssi-audio-stage bucket
 async function batchCheckAudio(uuids, bucket = process.env.S3_BUCKET || 'ssi-audio-stage') {
   const results = {}
@@ -234,7 +316,10 @@ module.exports = {
   saveAudioMetadata,
   batchCheckAudio,
   getAudioSignedUrl,
+  resolveRawKey,
+  getRawSignedUrl,
   audioFileExists,
   uploadRecording,
+  uploadRawTake,
   toS3Metadata
 }

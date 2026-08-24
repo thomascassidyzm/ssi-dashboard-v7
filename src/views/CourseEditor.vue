@@ -18,7 +18,7 @@
         <div v-if="course" class="flex items-start justify-between">
           <div>
             <h1 class="text-4xl font-bold text-accent-2 mb-2">
-              {{ formatCourseCode(course.course_code) }}
+              {{ getCourseName(course.course_code) }}
             </h1>
             <p class="text-muted">
               <template v-if="course.isEmpty">
@@ -98,11 +98,11 @@
             </div>
             <div>
               <div class="text-faint">Target Language</div>
-              <div class="text-ink">{{ course.target_lang }}</div>
+              <div class="text-ink">{{ getLanguageName(course.target_lang) }}</div>
             </div>
             <div>
               <div class="text-faint">Known Language</div>
-              <div class="text-ink">{{ course.known_lang }}</div>
+              <div class="text-ink">{{ getLanguageName(course.known_lang) }}</div>
             </div>
             <div>
               <div class="text-faint">Status</div>
@@ -1056,7 +1056,7 @@ const generatorLink = computed(() => {
   return '/generate'
 })
 
-const { getCourseName } = useCourses()
+const { getCourseName, getLanguageName } = useCourses()
 
 const course = ref(null)
 const translations = ref([])
@@ -1571,12 +1571,6 @@ async function generateBaskets() {
   } finally {
     generatingBaskets.value = false
   }
-}
-
-function formatCourseCode(code) {
-  // Just return the course code as-is (e.g., "spa_for_eng")
-  // This is a builder's tool, so showing the actual code is clearest
-  return code
 }
 
 function formatStatus(status) {

@@ -1,0 +1,3899 @@
+{
+  "job": "A-119 released slash-form clips — render the audio to match the corrected text",
+  "date": "2026-08-16",
+  "mode": "apply",
+  "approval": {
+    "by": "tom",
+    "when": "2026-08-16",
+    "verbatim": "A119 - yes go ahead. Regenerate all audio necessary."
+  },
+  "scope_rows": 79,
+  "text_only_rows": [
+    {
+      "id": "spa_for_eng:travel-situations:SC01-S053",
+      "course": "spa_for_eng",
+      "pod": "travel-situations",
+      "target_text": "¿Llevas líquidos?"
+    },
+    {
+      "id": "spa_for_eng:travel-situations:SC01-S057",
+      "course": "spa_for_eng",
+      "pod": "travel-situations",
+      "target_text": "Señor, por aquí, por favor."
+    },
+    {
+      "id": "spa_for_eng:travel-situations:SC01-S059",
+      "course": "spa_for_eng",
+      "pod": "travel-situations",
+      "target_text": "Menudo alivio. ¿Todo bien?"
+    },
+    {
+      "id": "spa_for_eng:travel-situations:SC01-S065",
+      "course": "spa_for_eng",
+      "pod": "travel-situations",
+      "target_text": "Aquí tienes. Hay cola hasta para eso."
+    }
+  ],
+  "already_synced_rows": [
+    {
+      "id": "ara_for_eng:pod-0:SC08-S001",
+      "clip_id": "d3af89ab-73ee-4d2e-8a5b-89fb8b8dbb8f",
+      "course": "ara_for_eng"
+    },
+    {
+      "id": "pol_for_eng:pod-0-unrecorded:SC01-S002",
+      "clip_id": "5c84eea6-220a-48b7-b61a-5737c868f024",
+      "course": "pol_for_eng"
+    },
+    {
+      "id": "pol_for_eng:pod-0:SC01-S002",
+      "clip_id": "5c84eea6-220a-48b7-b61a-5737c868f024",
+      "course": "pol_for_eng"
+    }
+  ],
+  "clips": [
+    {
+      "clip_id": "42702c3e-1767-470f-801e-95b9ed059102",
+      "course": "ara_for_eng",
+      "voice_id": "70013edeb8e8",
+      "before": "صباح الخير. عايز/عايزة إيه؟",
+      "after": "صباح الخير. عايزة إيه؟",
+      "new_s3_key": "mastered/500732B7-67A2-4EAD-B79C-BA131658D939.mp3",
+      "applied": false,
+      "action": "VERIFICATION FAILED — new object left on S3 as evidence, live row untouched, old clip still serving",
+      "checks": [
+        {
+          "name": "s3_alive",
+          "ok": true,
+          "detail": "HTTP ok, ContentLength 31968"
+        },
+        {
+          "name": "s3_bytes_match",
+          "ok": true,
+          "detail": "31968 vs local 31968"
+        },
+        {
+          "name": "decodable",
+          "ok": true,
+          "detail": "ffprobe 2616ms"
+        },
+        {
+          "name": "duration_agrees",
+          "ok": true,
+          "detail": "ffprobe 2616ms vs mastered 2616ms"
+        },
+        {
+          "name": "not_truncated",
+          "ok": true,
+          "detail": "2616ms vs length-scaled expectation 2405ms (ratio 1.09, old 2952ms)"
+        },
+        {
+          "name": "shorter_than_superseded",
+          "ok": true,
+          "detail": "2616ms vs superseded 2952ms — a clip still speaking both gendered forms cannot be shorter"
+        },
+        {
+          "name": "asr_decoded",
+          "ok": true,
+          "detail": "\"صباح الخير  هاي زئي\""
+        },
+        {
+          "name": "asr_is_speech",
+          "ok": true,
+          "detail": "CER vs corrected text 0.286 (<0.6 = real speech of this content, not silence or the wrong language)"
+        },
+        {
+          "name": "asr_closer_to_corrected",
+          "ok": true,
+          "detail": "CER 0.286 vs corrected < 0.346 vs superseded"
+        },
+        {
+          "name": "asr_slash_form_gone",
+          "ok": false,
+          "detail": "\"عايز\": nearest decode word \"هاي\" is 2 from it and 3 from the nearest retained word — STILL SPOKEN"
+        }
+      ],
+      "asr": {
+        "decode": "صباح الخير  هاي زئي",
+        "cer_vs_new": 0.2857,
+        "cer_vs_old": 0.34615384615384615,
+        "reason": "last_word_missing",
+        "deleted_forms": [
+          {
+            "deleted_token": "عايز",
+            "closest_decode_word": "هاي",
+            "distance_to_deleted": 2,
+            "distance_to_nearest_retained": 3,
+            "still_spoken": true
+          }
+        ],
+        "deleted_forms_advisory": [],
+        "substituted_forms": []
+      }
+    },
+    {
+      "clip_id": "074c6c7b-9ffd-4cb7-a749-29a95a830314",
+      "course": "lav_for_eng",
+      "action": "render",
+      "voice_id": "azure_lv-LV-EveritaNeural",
+      "provider": "azure",
+      "language": "lav",
+      "before": "Vai jums nebūtu iebildumu, ja es mēģinātu ar jums praktizēt latviešu valodas runāšanu? Es neesmu mācījies(-usies) jau ļoti ilgi, un man joprojām ir mazliet bail runāt ar citiem cilvēkiem.",
+      "after": "Vai jums nebūtu iebildumu, ja es mēģinātu ar jums praktizēt latviešu valodas runāšanu? Es neesmu mācījusies jau ļoti ilgi, un man joprojām ir mazliet bail runāt ar citiem cilvēkiem.",
+      "previous_s3_key": "mastered/EE8B43CB-1C9D-404F-BD00-6C066397133E.mp3",
+      "new_s3_key": "mastered/811FF27E-0F70-467C-ACA2-30B1D35B9ADD.mp3",
+      "previous_duration_ms": 13824,
+      "new_duration_ms": 13212,
+      "previous_revision": 1,
+      "revision": 2,
+      "chars": 181,
+      "cost_usd": 0.002896,
+      "rows": [
+        {
+          "id": "lav_for_eng:pod-0-unrecorded:SC22-S001",
+          "pod": "pod-0-unrecorded",
+          "scene": 22,
+          "sentence": 1,
+          "speaker": "Learner"
+        },
+        {
+          "id": "lav_for_eng:pod-0:SC15-S001",
+          "pod": "pod-0",
+          "scene": 15,
+          "sentence": 1,
+          "speaker": "Learner"
+        }
+      ],
+      "checks": [
+        {
+          "name": "s3_alive",
+          "ok": true,
+          "detail": "HTTP ok, ContentLength 159264"
+        },
+        {
+          "name": "s3_bytes_match",
+          "ok": true,
+          "detail": "159264 vs local 159264"
+        },
+        {
+          "name": "decodable",
+          "ok": true,
+          "detail": "ffprobe 13212ms"
+        },
+        {
+          "name": "duration_agrees",
+          "ok": true,
+          "detail": "ffprobe 13212ms vs mastered 13212ms"
+        },
+        {
+          "name": "not_truncated",
+          "ok": true,
+          "detail": "13212ms vs length-scaled expectation 13380ms (ratio 0.99, old 13824ms)"
+        },
+        {
+          "name": "shorter_than_superseded",
+          "ok": true,
+          "detail": "13212ms vs superseded 13824ms — a clip still speaking both gendered forms cannot be shorter"
+        },
+        {
+          "name": "asr_decoded",
+          "ok": true,
+          "detail": "\"Vai jums nebūt iebildumu, jās mēģināt ar jums praktizēt Latvieša valodas runāšan?  Es nēs mācījusies jau ļoti ilgi, un man jau projām ir mazliet bāju runāt ar citiem cilvēkiem.\""
+        },
+        {
+          "name": "asr_is_speech",
+          "ok": true,
+          "detail": "CER vs corrected text 0.079 (<0.6 = real speech of this content, not silence or the wrong language)"
+        },
+        {
+          "name": "asr_closer_to_corrected",
+          "ok": true,
+          "detail": "CER 0.079 vs corrected < 0.099 vs superseded"
+        },
+        {
+          "name": "asr_slash_form_gone",
+          "ok": true,
+          "detail": "\"macijies\": nearest decode word \"macijusies\" is 2 from it and 0 from the nearest retained word; \"usies\": nearest decode word \"es\" is 3 from it and 0 from the nearest retained word"
+        },
+        {
+          "name": "asr_speaks_fused_form",
+          "ok": true,
+          "detail": "\"macijusies\" is 0 from macijusies and 2 from superseded macijies"
+        }
+      ],
+      "asr": {
+        "decode": "Vai jums nebūt iebildumu, jās mēģināt ar jums praktizēt Latvieša valodas runāšan?  Es nēs mācījusies jau ļoti ilgi, un man jau projām ir mazliet bāju runāt ar citiem cilvēkiem.",
+        "cer_vs_new": 0.0791,
+        "cer_vs_old": 0.09944751381215469,
+        "reason": "ok",
+        "deleted_forms": [
+          {
+            "deleted_token": "macijies",
+            "closest_decode_word": "macijusies",
+            "distance_to_deleted": 2,
+            "distance_to_nearest_retained": 0,
+            "still_spoken": false
+          },
+          {
+            "deleted_token": "usies",
+            "closest_decode_word": "es",
+            "distance_to_deleted": 3,
+            "distance_to_nearest_retained": 0,
+            "still_spoken": false
+          }
+        ],
+        "deleted_forms_advisory": [],
+        "substituted_forms": [
+          {
+            "newTok": "macijusies",
+            "oldTok": "macijies",
+            "heard": "macijusies",
+            "distance_to_new": 0,
+            "distance_to_superseded": 2,
+            "ok": true
+          }
+        ]
+      },
+      "applied": true
+    },
+    {
+      "clip_id": "f6efe0d8-42e5-469a-9aac-84864374cd2d",
+      "course": "lav_for_eng",
+      "action": "render",
+      "voice_id": "lv-LV-EveritaNeural",
+      "provider": "azure",
+      "language": "lav",
+      "before": "Jā, paldies. Runāt tikai ar vienu cilvēku ir vieglāk. Gan jau, ir mazliet grūti izdomāt, ko teikt. Es neesmu pārliecināts(-a), ko teikt, bet man šķiet, ka es varu runāt pietiekami, lai sāktu sarunas.",
+      "after": "Jā, paldies. Runāt tikai ar vienu cilvēku ir vieglāk. Gan jau, ir mazliet grūti izdomāt, ko teikt. Es neesmu pārliecināta, ko teikt, bet man šķiet, ka es varu runāt pietiekami, lai sāktu sarunas.",
+      "previous_s3_key": "mastered/06649A3C-2E45-49D0-A91E-E3865665C1CB.mp3",
+      "new_s3_key": "mastered/DCB69AD2-0D30-41F9-8B52-D0483863D882.mp3",
+      "previous_duration_ms": 16296,
+      "new_duration_ms": 16092,
+      "previous_revision": 1,
+      "revision": 2,
+      "chars": 195,
+      "cost_usd": 0.00312,
+      "rows": [
+        {
+          "id": "lav_for_eng:pod-0-unrecorded:SC22-S005",
+          "pod": "pod-0-unrecorded",
+          "scene": 22,
+          "sentence": 5,
+          "speaker": "Learner"
+        },
+        {
+          "id": "lav_for_eng:pod-0:SC15-S005",
+          "pod": "pod-0",
+          "scene": 15,
+          "sentence": 5,
+          "speaker": "Learner"
+        }
+      ],
+      "checks": [
+        {
+          "name": "s3_alive",
+          "ok": true,
+          "detail": "HTTP ok, ContentLength 193824"
+        },
+        {
+          "name": "s3_bytes_match",
+          "ok": true,
+          "detail": "193824 vs local 193824"
+        },
+        {
+          "name": "decodable",
+          "ok": true,
+          "detail": "ffprobe 16092ms"
+        },
+        {
+          "name": "duration_agrees",
+          "ok": true,
+          "detail": "ffprobe 16092ms vs mastered 16092ms"
+        },
+        {
+          "name": "not_truncated",
+          "ok": true,
+          "detail": "16092ms vs length-scaled expectation 15968ms (ratio 1.01, old 16296ms)"
+        },
+        {
+          "name": "shorter_than_superseded",
+          "ok": true,
+          "detail": "16092ms vs superseded 16296ms — a clip still speaking both gendered forms cannot be shorter"
+        },
+        {
+          "name": "asr_decoded",
+          "ok": true,
+          "detail": "\"Jāpaldies. Runāt tikai ar vienu cilvēku ir vieglāk.  Gan jau ir mazliet grūti izdomāt ko teikt.  Es nēsim pārlecināta ko teikt, bet man šķetkais varu runāt pietiekami, lai sāktu sarunas.\""
+        },
+        {
+          "name": "asr_is_speech",
+          "ok": true,
+          "detail": "CER vs corrected text 0.049 (<0.6 = real speech of this content, not silence or the wrong language)"
+        },
+        {
+          "name": "asr_closer_to_corrected",
+          "ok": true,
+          "detail": "CER 0.049 vs corrected < 0.059 vs superseded"
+        },
+        {
+          "name": "asr_slash_form_gone",
+          "ok": true,
+          "detail": "\"parliecinats\": nearest decode word \"parlecinata\" is 2 from it and 1 from the nearest retained word"
+        },
+        {
+          "name": "asr_speaks_fused_form",
+          "ok": true,
+          "detail": "\"parlecinata\" is 1 from parliecinata and 2 from superseded parliecinats"
+        }
+      ],
+      "asr": {
+        "decode": "Jāpaldies. Runāt tikai ar vienu cilvēku ir vieglāk.  Gan jau ir mazliet grūti izdomāt ko teikt.  Es nēsim pārlecināta ko teikt, bet man šķetkais varu runāt pietiekami, lai sāktu sarunas.",
+        "cer_vs_new": 0.0489,
+        "cer_vs_old": 0.05913978494623656,
+        "reason": "ok",
+        "deleted_forms": [
+          {
+            "deleted_token": "parliecinats",
+            "closest_decode_word": "parlecinata",
+            "distance_to_deleted": 2,
+            "distance_to_nearest_retained": 1,
+            "still_spoken": false
+          }
+        ],
+        "deleted_forms_advisory": [
+          {
+            "deleted_token": "a",
+            "closest_decode_word": "ar",
+            "distance_to_deleted": 1,
+            "distance_to_nearest_retained": 0,
+            "still_spoken": false
+          }
+        ],
+        "substituted_forms": [
+          {
+            "newTok": "parliecinata",
+            "oldTok": "parliecinats",
+            "heard": "parlecinata",
+            "distance_to_new": 1,
+            "distance_to_superseded": 2,
+            "ok": true
+          }
+        ]
+      },
+      "applied": true
+    },
+    {
+      "clip_id": "9fa9a29b-f798-4b7e-86ce-d66c2752b7dc",
+      "course": "lav_for_eng",
+      "voice_id": "lv-LV-NilsNeural",
+      "before": "Es domāju, ka tu dari ļoti labi. Esmu pārsteigts(-a). Es domāju, ka tu esi gatavs(-a) sākt runāt latviešu valodā ar ikvienu, kas runā latviski.",
+      "after": "Es domāju, ka tu dari ļoti labi. Esmu pārsteigts. Es domāju, ka tu esi gatava sākt runāt latviešu valodā ar ikvienu, kas runā latviski.",
+      "new_s3_key": "mastered/C3DD7EAD-FE90-45DA-A6F3-53269277D938.mp3",
+      "applied": false,
+      "action": "VERIFICATION FAILED — new object left on S3 as evidence, live row untouched, old clip still serving",
+      "checks": [
+        {
+          "name": "s3_alive",
+          "ok": true,
+          "detail": "HTTP ok, ContentLength 121248"
+        },
+        {
+          "name": "s3_bytes_match",
+          "ok": true,
+          "detail": "121248 vs local 121248"
+        },
+        {
+          "name": "decodable",
+          "ok": true,
+          "detail": "ffprobe 10044ms"
+        },
+        {
+          "name": "duration_agrees",
+          "ok": true,
+          "detail": "ffprobe 10044ms vs mastered 10044ms"
+        },
+        {
+          "name": "not_truncated",
+          "ok": true,
+          "detail": "10044ms vs length-scaled expectation 10286ms (ratio 0.98, old 10896ms)"
+        },
+        {
+          "name": "shorter_than_superseded",
+          "ok": true,
+          "detail": "10044ms vs superseded 10896ms — a clip still speaking both gendered forms cannot be shorter"
+        },
+        {
+          "name": "asr_decoded",
+          "ok": true,
+          "detail": "\"Es domāju, ka tu daru ļoti labi. Esmu pārsteikts.  Es domāju, ka to esi gatavasāk trunāt Latvijaiša valodā arī kvienu, kas runā Latviski.\""
+        },
+        {
+          "name": "asr_is_speech",
+          "ok": true,
+          "detail": "CER vs corrected text 0.093 (<0.6 = real speech of this content, not silence or the wrong language)"
+        },
+        {
+          "name": "asr_closer_to_corrected",
+          "ok": true,
+          "detail": "CER 0.093 vs corrected < 0.120 vs superseded"
+        },
+        {
+          "name": "asr_slash_form_gone",
+          "ok": true,
+          "detail": "\"gatavs\": nearest decode word \"gatavasak\" is 3 from it and 3 from the nearest retained word"
+        },
+        {
+          "name": "asr_speaks_fused_form",
+          "ok": false,
+          "detail": "\"gatavasak\" is 3 from gatava and 3 from superseded gatavs"
+        }
+      ],
+      "asr": {
+        "decode": "Es domāju, ka tu daru ļoti labi. Esmu pārsteikts.  Es domāju, ka to esi gatavasāk trunāt Latvijaiša valodā arī kvienu, kas runā Latviski.",
+        "cer_vs_new": 0.093,
+        "cer_vs_old": 0.12030075187969924,
+        "reason": "ok",
+        "deleted_forms": [
+          {
+            "deleted_token": "gatavs",
+            "closest_decode_word": "gatavasak",
+            "distance_to_deleted": 3,
+            "distance_to_nearest_retained": 3,
+            "still_spoken": false
+          }
+        ],
+        "deleted_forms_advisory": [
+          {
+            "deleted_token": "a",
+            "closest_decode_word": "ka",
+            "distance_to_deleted": 1,
+            "distance_to_nearest_retained": 0,
+            "still_spoken": false
+          }
+        ],
+        "substituted_forms": [
+          {
+            "newTok": "gatava",
+            "oldTok": "gatavs",
+            "heard": "gatavasak",
+            "distance_to_new": 3,
+            "distance_to_superseded": 3,
+            "ok": false
+          }
+        ]
+      }
+    },
+    {
+      "clip_id": "1e11f1e7-888b-44b0-acac-df20ef9f0ebc",
+      "course": "lav_for_eng",
+      "action": "render",
+      "voice_id": "lv-LV-NilsNeural",
+      "provider": "azure",
+      "language": "lav",
+      "before": "Tev jau vajadzētu būt pārliecinātam(-ai). Es domāju, ka tu dari daudz labāk, nekā tu apzinies. Man ir ērti ar tevi runāt, un es nerunāju ļoti lēni.",
+      "after": "Tev jau vajadzētu būt pārliecinātai. Es domāju, ka tu dari daudz labāk, nekā tu apzinies. Man ir ērti ar tevi runāt, un es nerunāju ļoti lēni.",
+      "previous_s3_key": "mastered/89110D46-DE59-476E-A0A5-9F735B6E83F8.mp3",
+      "new_s3_key": "mastered/036FB12E-F53E-46E0-B5B0-258BAE901EFE.mp3",
+      "previous_duration_ms": 10800,
+      "new_duration_ms": 10440,
+      "previous_revision": 1,
+      "revision": 2,
+      "chars": 142,
+      "cost_usd": 0.002272,
+      "rows": [
+        {
+          "id": "lav_for_eng:pod-0-unrecorded:SC22-S008",
+          "pod": "pod-0-unrecorded",
+          "scene": 22,
+          "sentence": 8,
+          "speaker": "Friend"
+        },
+        {
+          "id": "lav_for_eng:pod-0:SC15-S008",
+          "pod": "pod-0",
+          "scene": 15,
+          "sentence": 8,
+          "speaker": "Friend"
+        }
+      ],
+      "checks": [
+        {
+          "name": "s3_alive",
+          "ok": true,
+          "detail": "HTTP ok, ContentLength 125856"
+        },
+        {
+          "name": "s3_bytes_match",
+          "ok": true,
+          "detail": "125856 vs local 125856"
+        },
+        {
+          "name": "decodable",
+          "ok": true,
+          "detail": "ffprobe 10440ms"
+        },
+        {
+          "name": "duration_agrees",
+          "ok": true,
+          "detail": "ffprobe 10440ms vs mastered 10440ms"
+        },
+        {
+          "name": "not_truncated",
+          "ok": true,
+          "detail": "10440ms vs length-scaled expectation 10433ms (ratio 1.00, old 10800ms)"
+        },
+        {
+          "name": "shorter_than_superseded",
+          "ok": true,
+          "detail": "10440ms vs superseded 10800ms — a clip still speaking both gendered forms cannot be shorter"
+        },
+        {
+          "name": "asr_decoded",
+          "ok": true,
+          "detail": "\"Tev jau vajadzētu būt pārlēcinātai.  Es domāju, ka tu dari daudz labāk nekā tu apzinies.  Man ir ērt ir tevi runāt, un es nerunāju ļoti lēni.\""
+        },
+        {
+          "name": "asr_is_speech",
+          "ok": true,
+          "detail": "CER vs corrected text 0.022 (<0.6 = real speech of this content, not silence or the wrong language)"
+        },
+        {
+          "name": "asr_closer_to_corrected",
+          "ok": true,
+          "detail": "CER 0.022 vs corrected < 0.043 vs superseded"
+        },
+        {
+          "name": "asr_slash_form_gone",
+          "ok": true,
+          "detail": "\"parliecinatam\": nearest decode word \"parlecinatai\" is 2 from it and 1 from the nearest retained word"
+        },
+        {
+          "name": "asr_speaks_fused_form",
+          "ok": true,
+          "detail": "\"parlecinatai\" is 1 from parliecinatai and 2 from superseded parliecinatam"
+        }
+      ],
+      "asr": {
+        "decode": "Tev jau vajadzētu būt pārlēcinātai.  Es domāju, ka tu dari daudz labāk nekā tu apzinies.  Man ir ērt ir tevi runāt, un es nerunāju ļoti lēni.",
+        "cer_vs_new": 0.0221,
+        "cer_vs_old": 0.04316546762589928,
+        "reason": "ok",
+        "deleted_forms": [
+          {
+            "deleted_token": "parliecinatam",
+            "closest_decode_word": "parlecinatai",
+            "distance_to_deleted": 2,
+            "distance_to_nearest_retained": 1,
+            "still_spoken": false
+          }
+        ],
+        "deleted_forms_advisory": [
+          {
+            "deleted_token": "ai",
+            "closest_decode_word": "jau",
+            "distance_to_deleted": 2,
+            "distance_to_nearest_retained": 0,
+            "still_spoken": false
+          }
+        ],
+        "substituted_forms": [
+          {
+            "newTok": "parliecinatai",
+            "oldTok": "parliecinatam",
+            "heard": "parlecinatai",
+            "distance_to_new": 1,
+            "distance_to_superseded": 2,
+            "ok": true
+          }
+        ]
+      },
+      "applied": true
+    },
+    {
+      "clip_id": "cf2329ee-4895-4796-b88e-07306a641753",
+      "course": "lav_for_eng",
+      "action": "render",
+      "voice_id": "lv-LV-EveritaNeural",
+      "provider": "azure",
+      "language": "lv",
+      "before": "Tieši tāds treniņš man ir vajadzīgs. Man šķiet, ka es varu sajust, kā tas maina manas smadzenes, kamēr mēs runājam! Es patiešām novērtēju tavu palīdzību. Bet ir pārsteidzoši, cik noguris(-usi) es kļūstu, kad runāju valodā, ko es nerunāju ļoti labi.",
+      "after": "Tieši tāds treniņš man ir vajadzīgs. Man šķiet, ka es varu sajust, kā tas maina manas smadzenes, kamēr mēs runājam! Es patiešām novērtēju tavu palīdzību. Bet ir pārsteidzoši, cik nogurusi es kļūstu, kad runāju valodā, ko es nerunāju ļoti labi.",
+      "previous_s3_key": "mastered/CF2329EE-4895-4796-B88E-07306A641753.mp3",
+      "new_s3_key": "mastered/B46911C0-6B1C-45FF-95E2-E8533955C476.mp3",
+      "previous_duration_ms": 19224,
+      "new_duration_ms": 18792,
+      "previous_revision": 1,
+      "revision": 2,
+      "chars": 243,
+      "cost_usd": 0.003888,
+      "rows": [
+        {
+          "id": "lav_for_eng:pod-0-unrecorded:SC22-S009",
+          "pod": "pod-0-unrecorded",
+          "scene": 22,
+          "sentence": 9,
+          "speaker": "Learner"
+        },
+        {
+          "id": "lav_for_eng:pod-0:SC15-S009",
+          "pod": "pod-0",
+          "scene": 15,
+          "sentence": 9,
+          "speaker": "Learner"
+        }
+      ],
+      "checks": [
+        {
+          "name": "s3_alive",
+          "ok": true,
+          "detail": "HTTP ok, ContentLength 226080"
+        },
+        {
+          "name": "s3_bytes_match",
+          "ok": true,
+          "detail": "226080 vs local 226080"
+        },
+        {
+          "name": "decodable",
+          "ok": true,
+          "detail": "ffprobe 18792ms"
+        },
+        {
+          "name": "duration_agrees",
+          "ok": true,
+          "detail": "ffprobe 18792ms vs mastered 18792ms"
+        },
+        {
+          "name": "not_truncated",
+          "ok": true,
+          "detail": "18792ms vs length-scaled expectation 18836ms (ratio 1.00, old 19224ms)"
+        },
+        {
+          "name": "shorter_than_superseded",
+          "ok": true,
+          "detail": "18792ms vs superseded 19224ms — a clip still speaking both gendered forms cannot be shorter"
+        },
+        {
+          "name": "asr_decoded",
+          "ok": true,
+          "detail": "\"Tieši tāds treniņš man ir vajadzīks.  Man šķietkais varu sajust, kā tas maina manas smadzenas, kamēr mēs runājām.  Es patiešām novertēja tāpālīdzību.  Bet ir pārstēj dzosikcik nogurusi es kļūstu, kad runāja valodā, ko es nerunāja ļoti labi.\""
+        },
+        {
+          "name": "asr_is_speech",
+          "ok": true,
+          "detail": "CER vs corrected text 0.060 (<0.6 = real speech of this content, not silence or the wrong language)"
+        },
+        {
+          "name": "asr_closer_to_corrected",
+          "ok": true,
+          "detail": "CER 0.060 vs corrected < 0.072 vs superseded"
+        },
+        {
+          "name": "asr_slash_form_gone",
+          "ok": true,
+          "detail": "\"noguris\": nearest decode word \"nogurusi\" is 2 from it and 0 from the nearest retained word; \"usi\": nearest decode word \"es\" is 2 from it and 0 from the nearest retained word"
+        },
+        {
+          "name": "asr_speaks_fused_form",
+          "ok": true,
+          "detail": "\"nogurusi\" is 0 from nogurusi and 2 from superseded noguris"
+        }
+      ],
+      "asr": {
+        "decode": "Tieši tāds treniņš man ir vajadzīks.  Man šķietkais varu sajust, kā tas maina manas smadzenas, kamēr mēs runājām.  Es patiešām novertēja tāpālīdzību.  Bet ir pārstēj dzosikcik nogurusi es kļūstu, kad runāja valodā, ko es nerunāja ļoti labi.",
+        "cer_vs_new": 0.0601,
+        "cer_vs_old": 0.07203389830508475,
+        "reason": "ok",
+        "deleted_forms": [
+          {
+            "deleted_token": "noguris",
+            "closest_decode_word": "nogurusi",
+            "distance_to_deleted": 2,
+            "distance_to_nearest_retained": 0,
+            "still_spoken": false
+          },
+          {
+            "deleted_token": "usi",
+            "closest_decode_word": "es",
+            "distance_to_deleted": 2,
+            "distance_to_nearest_retained": 0,
+            "still_spoken": false
+          }
+        ],
+        "deleted_forms_advisory": [],
+        "substituted_forms": [
+          {
+            "newTok": "nogurusi",
+            "oldTok": "noguris",
+            "heard": "nogurusi",
+            "distance_to_new": 0,
+            "distance_to_superseded": 2,
+            "ok": true
+          }
+        ]
+      },
+      "applied": true
+    },
+    {
+      "clip_id": "99c2328a-d711-4a7d-b36a-fb41c14c28dd",
+      "course": "lav_for_eng",
+      "voice_id": "lv-LV-EveritaNeural",
+      "before": "Tiešām jā. Esmu tiešām priecīgs(-a), ka varu vest tik daudz sarunas. Un es ceru, ka mēs varēsim vest vairāk sarunu nākotnē, kamēr es turpinu uzlaboties.",
+      "after": "Tiešām jā. Esmu tiešām priecīga, ka varu vest tik daudz sarunas. Un es ceru, ka mēs varēsim vest vairāk sarunu nākotnē, kamēr es turpinu uzlaboties.",
+      "new_s3_key": "mastered/3A0FAD16-219F-4003-8D3A-E38289371ABE.mp3",
+      "applied": false,
+      "action": "VERIFICATION FAILED — new object left on S3 as evidence, live row untouched, old clip still serving",
+      "checks": [
+        {
+          "name": "s3_alive",
+          "ok": true,
+          "detail": "HTTP ok, ContentLength 143136"
+        },
+        {
+          "name": "s3_bytes_match",
+          "ok": true,
+          "detail": "143136 vs local 143136"
+        },
+        {
+          "name": "decodable",
+          "ok": true,
+          "detail": "ffprobe 11880ms"
+        },
+        {
+          "name": "duration_agrees",
+          "ok": true,
+          "detail": "ffprobe 11880ms vs mastered 11880ms"
+        },
+        {
+          "name": "not_truncated",
+          "ok": true,
+          "detail": "11880ms vs length-scaled expectation 11941ms (ratio 0.99, old 12264ms)"
+        },
+        {
+          "name": "shorter_than_superseded",
+          "ok": true,
+          "detail": "11880ms vs superseded 12264ms — a clip still speaking both gendered forms cannot be shorter"
+        },
+        {
+          "name": "asr_decoded",
+          "ok": true,
+          "detail": "\"Tiešām jā. Esmu tiešām priecīgi, ka varu vēst tik daudz sarunas.  Un es ceru, ka mēs varēsim vēst vai rāk sarunu nākotnē, ka mēres turpina uzlaboties.\""
+        },
+        {
+          "name": "asr_is_speech",
+          "ok": true,
+          "detail": "CER vs corrected text 0.035 (<0.6 = real speech of this content, not silence or the wrong language)"
+        },
+        {
+          "name": "asr_closer_to_corrected",
+          "ok": true,
+          "detail": "CER 0.035 vs corrected < 0.049 vs superseded"
+        },
+        {
+          "name": "asr_slash_form_gone",
+          "ok": true,
+          "detail": "\"priecigs\": nearest decode word \"priecigi\" is 1 from it and 1 from the nearest retained word"
+        },
+        {
+          "name": "asr_speaks_fused_form",
+          "ok": false,
+          "detail": "\"priecigi\" is 1 from prieciga and 1 from superseded priecigs"
+        }
+      ],
+      "asr": {
+        "decode": "Tiešām jā. Esmu tiešām priecīgi, ka varu vēst tik daudz sarunas.  Un es ceru, ka mēs varēsim vēst vai rāk sarunu nākotnē, ka mēres turpina uzlaboties.",
+        "cer_vs_new": 0.0352,
+        "cer_vs_old": 0.04861111111111111,
+        "reason": "ok",
+        "deleted_forms": [
+          {
+            "deleted_token": "priecigs",
+            "closest_decode_word": "priecigi",
+            "distance_to_deleted": 1,
+            "distance_to_nearest_retained": 1,
+            "still_spoken": false
+          }
+        ],
+        "deleted_forms_advisory": [
+          {
+            "deleted_token": "a",
+            "closest_decode_word": "ja",
+            "distance_to_deleted": 1,
+            "distance_to_nearest_retained": 0,
+            "still_spoken": false
+          }
+        ],
+        "substituted_forms": [
+          {
+            "newTok": "prieciga",
+            "oldTok": "priecigs",
+            "heard": "priecigi",
+            "distance_to_new": 1,
+            "distance_to_superseded": 1,
+            "ok": false
+          }
+        ]
+      }
+    },
+    {
+      "clip_id": "95d88b19-9f23-45f8-ad8f-bd8d80848aca",
+      "course": "pol_for_eng",
+      "voice_id": "eve",
+      "before": "Dzień dobry. Co Pan/Pani chce?",
+      "after": "Dzień dobry. Co Pani chce?",
+      "new_s3_key": "mastered/FF29EB84-084F-407F-9A6A-72D2E8C91A73.mp3",
+      "applied": false,
+      "action": "VERIFICATION FAILED — new object left on S3 as evidence, live row untouched, old clip still serving",
+      "checks": [
+        {
+          "name": "s3_alive",
+          "ok": true,
+          "detail": "HTTP ok, ContentLength 27936"
+        },
+        {
+          "name": "s3_bytes_match",
+          "ok": true,
+          "detail": "27936 vs local 27936"
+        },
+        {
+          "name": "decodable",
+          "ok": true,
+          "detail": "ffprobe 2280ms"
+        },
+        {
+          "name": "duration_agrees",
+          "ok": true,
+          "detail": "ffprobe 2280ms vs mastered 2280ms"
+        },
+        {
+          "name": "not_truncated",
+          "ok": true,
+          "detail": "2280ms vs length-scaled expectation 1851ms (ratio 1.23, old 2136ms)"
+        },
+        {
+          "name": "shorter_than_superseded",
+          "ok": false,
+          "detail": "2280ms vs superseded 2136ms — a clip still speaking both gendered forms cannot be shorter"
+        },
+        {
+          "name": "asr_decoded",
+          "ok": true,
+          "detail": "\"Dzień dobry. Co Pani chce?\""
+        },
+        {
+          "name": "asr_is_speech",
+          "ok": true,
+          "detail": "CER vs corrected text 0.000 (<0.6 = real speech of this content, not silence or the wrong language)"
+        },
+        {
+          "name": "asr_closer_to_corrected",
+          "ok": true,
+          "detail": "CER 0.000 vs corrected < 0.143 vs superseded"
+        },
+        {
+          "name": "asr_slash_form_gone",
+          "ok": true,
+          "detail": "\"pan\": nearest decode word \"pani\" is 1 from it and 0 from the nearest retained word"
+        }
+      ],
+      "asr": {
+        "decode": "Dzień dobry. Co Pani chce?",
+        "cer_vs_new": 0,
+        "cer_vs_old": 0.14285714285714285,
+        "reason": "ok",
+        "deleted_forms": [
+          {
+            "deleted_token": "pan",
+            "closest_decode_word": "pani",
+            "distance_to_deleted": 1,
+            "distance_to_nearest_retained": 0,
+            "still_spoken": false
+          }
+        ],
+        "deleted_forms_advisory": [],
+        "substituted_forms": []
+      }
+    },
+    {
+      "clip_id": "29afbcee-aa20-473a-a1bc-d6e3d1e08ae2",
+      "course": "pol_for_eng",
+      "action": "render",
+      "voice_id": "eve",
+      "provider": "xai",
+      "language": "pol",
+      "before": "Czy chce Pan/Pani zwykłą czy dużą?",
+      "after": "Czy chce Pani zwykłą czy dużą?",
+      "previous_s3_key": "mastered/C6BF8480-E1AE-4CB3-B0B5-3706F277FD15.mp3",
+      "new_s3_key": "mastered/6E920F91-9A90-4FBE-9279-B6A1DE9E3341.mp3",
+      "previous_duration_ms": 2280,
+      "new_duration_ms": 2208,
+      "previous_revision": 1,
+      "revision": 2,
+      "chars": 30,
+      "cost_usd": 0.00048,
+      "rows": [
+        {
+          "id": "pol_for_eng:pod-0-unrecorded:SC07-S003",
+          "pod": "pod-0-unrecorded",
+          "scene": 7,
+          "sentence": 3,
+          "speaker": "Barista"
+        },
+        {
+          "id": "pol_for_eng:pod-0:SC07-S003",
+          "pod": "pod-0",
+          "scene": 7,
+          "sentence": 3,
+          "speaker": "Barista"
+        }
+      ],
+      "checks": [
+        {
+          "name": "s3_alive",
+          "ok": true,
+          "detail": "HTTP ok, ContentLength 27072"
+        },
+        {
+          "name": "s3_bytes_match",
+          "ok": true,
+          "detail": "27072 vs local 27072"
+        },
+        {
+          "name": "decodable",
+          "ok": true,
+          "detail": "ffprobe 2208ms"
+        },
+        {
+          "name": "duration_agrees",
+          "ok": true,
+          "detail": "ffprobe 2208ms vs mastered 2208ms"
+        },
+        {
+          "name": "not_truncated",
+          "ok": true,
+          "detail": "2208ms vs length-scaled expectation 2012ms (ratio 1.10, old 2280ms)"
+        },
+        {
+          "name": "shorter_than_superseded",
+          "ok": true,
+          "detail": "2208ms vs superseded 2280ms — a clip still speaking both gendered forms cannot be shorter"
+        },
+        {
+          "name": "asr_decoded",
+          "ok": true,
+          "detail": "\"Czy chce pani zwykłą, czy dużą?\""
+        },
+        {
+          "name": "asr_is_speech",
+          "ok": true,
+          "detail": "CER vs corrected text 0.000 (<0.6 = real speech of this content, not silence or the wrong language)"
+        },
+        {
+          "name": "asr_closer_to_corrected",
+          "ok": true,
+          "detail": "CER 0.000 vs corrected < 0.121 vs superseded"
+        },
+        {
+          "name": "asr_slash_form_gone",
+          "ok": true,
+          "detail": "\"pan\": nearest decode word \"pani\" is 1 from it and 0 from the nearest retained word"
+        }
+      ],
+      "asr": {
+        "decode": "Czy chce pani zwykłą, czy dużą?",
+        "cer_vs_new": 0,
+        "cer_vs_old": 0.12121212121212122,
+        "reason": "ok",
+        "deleted_forms": [
+          {
+            "deleted_token": "pan",
+            "closest_decode_word": "pani",
+            "distance_to_deleted": 1,
+            "distance_to_nearest_retained": 0,
+            "still_spoken": false
+          }
+        ],
+        "deleted_forms_advisory": [],
+        "substituted_forms": []
+      },
+      "applied": true
+    },
+    {
+      "clip_id": "830e9169-663f-426b-9139-f0c43bae8987",
+      "course": "pol_for_eng",
+      "action": "render",
+      "voice_id": "1b12d5daee6b",
+      "provider": "xai",
+      "language": "pol",
+      "before": "Poproszę dużą. Z mlekiem owsianym, jeśli Pan/Pani ma.",
+      "after": "Poproszę dużą. Z mlekiem owsianym, jeśli Pani ma.",
+      "previous_s3_key": "mastered/E837CD49-9CE0-4EC4-A669-91DC7DF89445.mp3",
+      "new_s3_key": "mastered/155956CE-7091-498D-A3E3-0930DA671E61.mp3",
+      "previous_duration_ms": 4992,
+      "new_duration_ms": 3480,
+      "previous_revision": 1,
+      "revision": 2,
+      "chars": 49,
+      "cost_usd": 0.000784,
+      "rows": [
+        {
+          "id": "pol_for_eng:pod-0-unrecorded:SC07-S004",
+          "pod": "pod-0-unrecorded",
+          "scene": 7,
+          "sentence": 4,
+          "speaker": "Customer 1"
+        },
+        {
+          "id": "pol_for_eng:pod-0:SC07-S004",
+          "pod": "pod-0",
+          "scene": 7,
+          "sentence": 4,
+          "speaker": "Customer 1"
+        }
+      ],
+      "checks": [
+        {
+          "name": "s3_alive",
+          "ok": true,
+          "detail": "HTTP ok, ContentLength 42336"
+        },
+        {
+          "name": "s3_bytes_match",
+          "ok": true,
+          "detail": "42336 vs local 42336"
+        },
+        {
+          "name": "decodable",
+          "ok": true,
+          "detail": "ffprobe 3480ms"
+        },
+        {
+          "name": "duration_agrees",
+          "ok": true,
+          "detail": "ffprobe 3480ms vs mastered 3480ms"
+        },
+        {
+          "name": "not_truncated",
+          "ok": true,
+          "detail": "3480ms vs length-scaled expectation 4615ms (ratio 0.75, old 4992ms)"
+        },
+        {
+          "name": "shorter_than_superseded",
+          "ok": true,
+          "detail": "3480ms vs superseded 4992ms — a clip still speaking both gendered forms cannot be shorter"
+        },
+        {
+          "name": "asr_decoded",
+          "ok": true,
+          "detail": "\"Poproszę dużą z mlekiem owsianym, jeśli pani ma.\""
+        },
+        {
+          "name": "asr_is_speech",
+          "ok": true,
+          "detail": "CER vs corrected text 0.000 (<0.6 = real speech of this content, not silence or the wrong language)"
+        },
+        {
+          "name": "asr_closer_to_corrected",
+          "ok": true,
+          "detail": "CER 0.000 vs corrected < 0.080 vs superseded"
+        },
+        {
+          "name": "asr_slash_form_gone",
+          "ok": true,
+          "detail": "\"pan\": nearest decode word \"pani\" is 1 from it and 0 from the nearest retained word"
+        }
+      ],
+      "asr": {
+        "decode": "Poproszę dużą z mlekiem owsianym, jeśli pani ma.",
+        "cer_vs_new": 0,
+        "cer_vs_old": 0.08,
+        "reason": "ok",
+        "deleted_forms": [
+          {
+            "deleted_token": "pan",
+            "closest_decode_word": "pani",
+            "distance_to_deleted": 1,
+            "distance_to_nearest_retained": 0,
+            "still_spoken": false
+          }
+        ],
+        "deleted_forms_advisory": [],
+        "substituted_forms": []
+      },
+      "applied": true
+    },
+    {
+      "clip_id": "dca2c832-ac2a-4f36-aa24-90c7a967c321",
+      "course": "pol_for_eng",
+      "action": "render",
+      "voice_id": "eve",
+      "provider": "xai",
+      "language": "pol",
+      "before": "Oczywiście. Czy chce Pan/Pani na miejscu czy na wynos?",
+      "after": "Oczywiście. Czy chce Pani na miejscu czy na wynos?",
+      "previous_s3_key": "mastered/E7C65561-7266-4597-98ED-B3BBF9C4B154.mp3",
+      "new_s3_key": "mastered/0C3ADF56-CBA0-4608-9FFD-39224B6C6A9E.mp3",
+      "previous_duration_ms": 4344,
+      "new_duration_ms": 3240,
+      "previous_revision": 1,
+      "revision": 2,
+      "chars": 50,
+      "cost_usd": 0.0008,
+      "rows": [
+        {
+          "id": "pol_for_eng:pod-0-unrecorded:SC07-S005",
+          "pod": "pod-0-unrecorded",
+          "scene": 7,
+          "sentence": 5,
+          "speaker": "Barista"
+        },
+        {
+          "id": "pol_for_eng:pod-0:SC07-S005",
+          "pod": "pod-0",
+          "scene": 7,
+          "sentence": 5,
+          "speaker": "Barista"
+        }
+      ],
+      "checks": [
+        {
+          "name": "s3_alive",
+          "ok": true,
+          "detail": "HTTP ok, ContentLength 39456"
+        },
+        {
+          "name": "s3_bytes_match",
+          "ok": true,
+          "detail": "39456 vs local 39456"
+        },
+        {
+          "name": "decodable",
+          "ok": true,
+          "detail": "ffprobe 3240ms"
+        },
+        {
+          "name": "duration_agrees",
+          "ok": true,
+          "detail": "ffprobe 3240ms vs mastered 3240ms"
+        },
+        {
+          "name": "not_truncated",
+          "ok": true,
+          "detail": "3240ms vs length-scaled expectation 4022ms (ratio 0.81, old 4344ms)"
+        },
+        {
+          "name": "shorter_than_superseded",
+          "ok": true,
+          "detail": "3240ms vs superseded 4344ms — a clip still speaking both gendered forms cannot be shorter"
+        },
+        {
+          "name": "asr_decoded",
+          "ok": true,
+          "detail": "\"Oczywiście. Czy chce pani na miejscu czy na wynos?\""
+        },
+        {
+          "name": "asr_is_speech",
+          "ok": true,
+          "detail": "CER vs corrected text 0.000 (<0.6 = real speech of this content, not silence or the wrong language)"
+        },
+        {
+          "name": "asr_closer_to_corrected",
+          "ok": true,
+          "detail": "CER 0.000 vs corrected < 0.077 vs superseded"
+        },
+        {
+          "name": "asr_slash_form_gone",
+          "ok": true,
+          "detail": "\"pan\": nearest decode word \"pani\" is 1 from it and 0 from the nearest retained word"
+        }
+      ],
+      "asr": {
+        "decode": "Oczywiście. Czy chce pani na miejscu czy na wynos?",
+        "cer_vs_new": 0,
+        "cer_vs_old": 0.07692307692307693,
+        "reason": "ok",
+        "deleted_forms": [
+          {
+            "deleted_token": "pan",
+            "closest_decode_word": "pani",
+            "distance_to_deleted": 1,
+            "distance_to_nearest_retained": 0,
+            "still_spoken": false
+          }
+        ],
+        "deleted_forms_advisory": [],
+        "substituted_forms": []
+      },
+      "applied": true
+    },
+    {
+      "clip_id": "919e9eab-f83a-404d-9106-6a31d10eb031",
+      "course": "pol_for_eng",
+      "voice_id": "eve",
+      "before": "Już się robi. Czy chce Pan/Pani coś jeszcze?",
+      "after": "Już się robi. Czy chce Pani coś jeszcze?",
+      "new_s3_key": "mastered/D6D7C6E4-9ADA-41DF-9742-052F8F656BF2.mp3",
+      "applied": false,
+      "action": "VERIFICATION FAILED — new object left on S3 as evidence, live row untouched, old clip still serving",
+      "checks": [
+        {
+          "name": "s3_alive",
+          "ok": true,
+          "detail": "HTTP ok, ContentLength 34848"
+        },
+        {
+          "name": "s3_bytes_match",
+          "ok": true,
+          "detail": "34848 vs local 34848"
+        },
+        {
+          "name": "decodable",
+          "ok": true,
+          "detail": "ffprobe 2856ms"
+        },
+        {
+          "name": "duration_agrees",
+          "ok": true,
+          "detail": "ffprobe 2856ms vs mastered 2856ms"
+        },
+        {
+          "name": "not_truncated",
+          "ok": true,
+          "detail": "2856ms vs length-scaled expectation 2422ms (ratio 1.18, old 2664ms)"
+        },
+        {
+          "name": "shorter_than_superseded",
+          "ok": false,
+          "detail": "2856ms vs superseded 2664ms — a clip still speaking both gendered forms cannot be shorter"
+        },
+        {
+          "name": "asr_decoded",
+          "ok": true,
+          "detail": "\"Już się robi. Czy chce pani coś jeszcze?\""
+        },
+        {
+          "name": "asr_is_speech",
+          "ok": true,
+          "detail": "CER vs corrected text 0.000 (<0.6 = real speech of this content, not silence or the wrong language)"
+        },
+        {
+          "name": "asr_closer_to_corrected",
+          "ok": true,
+          "detail": "CER 0.000 vs corrected < 0.095 vs superseded"
+        },
+        {
+          "name": "asr_slash_form_gone",
+          "ok": true,
+          "detail": "\"pan\": nearest decode word \"pani\" is 1 from it and 0 from the nearest retained word"
+        }
+      ],
+      "asr": {
+        "decode": "Już się robi. Czy chce pani coś jeszcze?",
+        "cer_vs_new": 0,
+        "cer_vs_old": 0.09523809523809523,
+        "reason": "ok",
+        "deleted_forms": [
+          {
+            "deleted_token": "pan",
+            "closest_decode_word": "pani",
+            "distance_to_deleted": 1,
+            "distance_to_nearest_retained": 0,
+            "still_spoken": false
+          }
+        ],
+        "deleted_forms_advisory": [],
+        "substituted_forms": []
+      }
+    },
+    {
+      "clip_id": "632e58b4-d4e1-4aeb-b24b-0ffe3278672a",
+      "course": "pol_for_eng",
+      "voice_id": "eve",
+      "before": "Czy chce Pan/Pani usiąść? Stolik przy oknie jest wolny.",
+      "after": "Czy chce Pan usiąść? Stolik przy oknie jest wolny.",
+      "new_s3_key": "mastered/FC48F0E4-C12D-4F57-A4C4-D1CA68ADFACB.mp3",
+      "applied": false,
+      "action": "VERIFICATION FAILED — new object left on S3 as evidence, live row untouched, old clip still serving",
+      "checks": [
+        {
+          "name": "s3_alive",
+          "ok": true,
+          "detail": "HTTP ok, ContentLength 44352"
+        },
+        {
+          "name": "s3_bytes_match",
+          "ok": true,
+          "detail": "44352 vs local 44352"
+        },
+        {
+          "name": "decodable",
+          "ok": true,
+          "detail": "ffprobe 3648ms"
+        },
+        {
+          "name": "duration_agrees",
+          "ok": true,
+          "detail": "ffprobe 3648ms vs mastered 3648ms"
+        },
+        {
+          "name": "not_truncated",
+          "ok": true,
+          "detail": "3648ms vs length-scaled expectation 3316ms (ratio 1.10, old 3648ms)"
+        },
+        {
+          "name": "shorter_than_superseded",
+          "ok": false,
+          "detail": "3648ms vs superseded 3648ms — a clip still speaking both gendered forms cannot be shorter"
+        },
+        {
+          "name": "asr_decoded",
+          "ok": true,
+          "detail": "\"Czy chce Pan usiąść? Stolik przy oknie jest wolny.\""
+        },
+        {
+          "name": "asr_is_speech",
+          "ok": true,
+          "detail": "CER vs corrected text 0.000 (<0.6 = real speech of this content, not silence or the wrong language)"
+        },
+        {
+          "name": "asr_closer_to_corrected",
+          "ok": true,
+          "detail": "CER 0.000 vs corrected < 0.094 vs superseded"
+        },
+        {
+          "name": "asr_slash_form_gone",
+          "ok": true,
+          "detail": "\"pani\": nearest decode word \"pan\" is 1 from it and 0 from the nearest retained word"
+        }
+      ],
+      "asr": {
+        "decode": "Czy chce Pan usiąść? Stolik przy oknie jest wolny.",
+        "cer_vs_new": 0,
+        "cer_vs_old": 0.09433962264150944,
+        "reason": "ok",
+        "deleted_forms": [
+          {
+            "deleted_token": "pani",
+            "closest_decode_word": "pan",
+            "distance_to_deleted": 1,
+            "distance_to_nearest_retained": 0,
+            "still_spoken": false
+          }
+        ],
+        "deleted_forms_advisory": [],
+        "substituted_forms": []
+      }
+    },
+    {
+      "clip_id": "2da6557b-2e6d-4056-a06e-38ae1a8b3a66",
+      "course": "pol_for_eng",
+      "action": "render",
+      "voice_id": "1b12d5daee6b",
+      "provider": "xai",
+      "language": "pol",
+      "before": "Nie jestem pewny/pewna, czy jestem głodny/głodna. Czy macie menu?",
+      "after": "Nie jestem pewna, czy jestem głodna. Czy macie menu?",
+      "previous_s3_key": "mastered/B47AF3F9-C9D7-443F-8C22-EE858DC6183F.mp3",
+      "new_s3_key": "mastered/12EA5B5C-45E7-4FED-9715-B075B7B02E44.mp3",
+      "previous_duration_ms": 5280,
+      "new_duration_ms": 3480,
+      "previous_revision": 1,
+      "revision": 2,
+      "chars": 52,
+      "cost_usd": 0.000832,
+      "rows": [
+        {
+          "id": "pol_for_eng:pod-0-unrecorded:SC08-S012",
+          "pod": "pod-0-unrecorded",
+          "scene": 8,
+          "sentence": 12,
+          "speaker": "Customer 1"
+        },
+        {
+          "id": "pol_for_eng:pod-0:SC08-S012",
+          "pod": "pod-0",
+          "scene": 8,
+          "sentence": 12,
+          "speaker": "Customer 1"
+        }
+      ],
+      "checks": [
+        {
+          "name": "s3_alive",
+          "ok": true,
+          "detail": "HTTP ok, ContentLength 42336"
+        },
+        {
+          "name": "s3_bytes_match",
+          "ok": true,
+          "detail": "42336 vs local 42336"
+        },
+        {
+          "name": "decodable",
+          "ok": true,
+          "detail": "ffprobe 3480ms"
+        },
+        {
+          "name": "duration_agrees",
+          "ok": true,
+          "detail": "ffprobe 3480ms vs mastered 3480ms"
+        },
+        {
+          "name": "not_truncated",
+          "ok": true,
+          "detail": "3480ms vs length-scaled expectation 4224ms (ratio 0.82, old 5280ms)"
+        },
+        {
+          "name": "shorter_than_superseded",
+          "ok": true,
+          "detail": "3480ms vs superseded 5280ms — a clip still speaking both gendered forms cannot be shorter"
+        },
+        {
+          "name": "asr_decoded",
+          "ok": true,
+          "detail": "\"Nie jestem pewna czy jestem głodna, czy macie menu?\""
+        },
+        {
+          "name": "asr_is_speech",
+          "ok": true,
+          "detail": "CER vs corrected text 0.000 (<0.6 = real speech of this content, not silence or the wrong language)"
+        },
+        {
+          "name": "asr_closer_to_corrected",
+          "ok": true,
+          "detail": "CER 0.000 vs corrected < 0.210 vs superseded"
+        },
+        {
+          "name": "asr_slash_form_gone",
+          "ok": true,
+          "detail": "\"pewny\": nearest decode word \"pewna\" is 1 from it and 0 from the nearest retained word; \"głodny\": nearest decode word \"głodna\" is 1 from it and 0 from the nearest retained word"
+        }
+      ],
+      "asr": {
+        "decode": "Nie jestem pewna czy jestem głodna, czy macie menu?",
+        "cer_vs_new": 0,
+        "cer_vs_old": 0.20967741935483872,
+        "reason": "ok",
+        "deleted_forms": [
+          {
+            "deleted_token": "pewny",
+            "closest_decode_word": "pewna",
+            "distance_to_deleted": 1,
+            "distance_to_nearest_retained": 0,
+            "still_spoken": false
+          },
+          {
+            "deleted_token": "głodny",
+            "closest_decode_word": "głodna",
+            "distance_to_deleted": 1,
+            "distance_to_nearest_retained": 0,
+            "still_spoken": false
+          }
+        ],
+        "deleted_forms_advisory": [],
+        "substituted_forms": []
+      },
+      "applied": true
+    },
+    {
+      "clip_id": "45927109-b31f-49ba-a455-52a90bbe9f96",
+      "course": "pol_for_eng",
+      "action": "render",
+      "voice_id": "1b12d5daee6b",
+      "provider": "xai",
+      "language": "pol",
+      "before": "Przepraszam. Czy ma Pan/Pani jakieś środki przeciwbólowe?",
+      "after": "Przepraszam. Czy ma Pani jakieś środki przeciwbólowe?",
+      "previous_s3_key": "mastered/5393D419-63C8-411B-BBF3-9950F4333D7A.mp3",
+      "new_s3_key": "mastered/5818891C-CE1E-4189-96FE-36D718C0B8B6.mp3",
+      "previous_duration_ms": 4440,
+      "new_duration_ms": 3816,
+      "previous_revision": 1,
+      "revision": 2,
+      "chars": 53,
+      "cost_usd": 0.000848,
+      "rows": [
+        {
+          "id": "pol_for_eng:pod-0-unrecorded:SC10-S001",
+          "pod": "pod-0-unrecorded",
+          "scene": 10,
+          "sentence": 1,
+          "speaker": "Customer"
+        },
+        {
+          "id": "pol_for_eng:pod-0:SC10-S001",
+          "pod": "pod-0",
+          "scene": 10,
+          "sentence": 1,
+          "speaker": "Customer"
+        }
+      ],
+      "checks": [
+        {
+          "name": "s3_alive",
+          "ok": true,
+          "detail": "HTTP ok, ContentLength 46368"
+        },
+        {
+          "name": "s3_bytes_match",
+          "ok": true,
+          "detail": "46368 vs local 46368"
+        },
+        {
+          "name": "decodable",
+          "ok": true,
+          "detail": "ffprobe 3816ms"
+        },
+        {
+          "name": "duration_agrees",
+          "ok": true,
+          "detail": "ffprobe 3816ms vs mastered 3816ms"
+        },
+        {
+          "name": "not_truncated",
+          "ok": true,
+          "detail": "3816ms vs length-scaled expectation 4128ms (ratio 0.92, old 4440ms)"
+        },
+        {
+          "name": "shorter_than_superseded",
+          "ok": true,
+          "detail": "3816ms vs superseded 4440ms — a clip still speaking both gendered forms cannot be shorter"
+        },
+        {
+          "name": "asr_decoded",
+          "ok": true,
+          "detail": "\"Przepraszam. Czy ma pani jakieś środki przeciwbólowe?\""
+        },
+        {
+          "name": "asr_is_speech",
+          "ok": true,
+          "detail": "CER vs corrected text 0.000 (<0.6 = real speech of this content, not silence or the wrong language)"
+        },
+        {
+          "name": "asr_closer_to_corrected",
+          "ok": true,
+          "detail": "CER 0.000 vs corrected < 0.073 vs superseded"
+        },
+        {
+          "name": "asr_slash_form_gone",
+          "ok": true,
+          "detail": "\"pan\": nearest decode word \"pani\" is 1 from it and 0 from the nearest retained word"
+        }
+      ],
+      "asr": {
+        "decode": "Przepraszam. Czy ma pani jakieś środki przeciwbólowe?",
+        "cer_vs_new": 0,
+        "cer_vs_old": 0.07272727272727272,
+        "reason": "ok",
+        "deleted_forms": [
+          {
+            "deleted_token": "pan",
+            "closest_decode_word": "pani",
+            "distance_to_deleted": 1,
+            "distance_to_nearest_retained": 0,
+            "still_spoken": false
+          }
+        ],
+        "deleted_forms_advisory": [],
+        "substituted_forms": []
+      },
+      "applied": true
+    },
+    {
+      "clip_id": "6361fe3c-65e4-40da-b489-ea1f198f9223",
+      "course": "pol_for_eng",
+      "action": "render",
+      "voice_id": "1b12d5daee6b",
+      "provider": "xai",
+      "language": "pol",
+      "before": "Dziękuję. A czy ma Pan/Pani jakieś środki przeciwbólowe dla dzieci?",
+      "after": "Dziękuję. A czy ma Pani jakieś środki przeciwbólowe dla dzieci?",
+      "previous_s3_key": "mastered/C7168CF6-E925-47DB-9F19-0F6E8ED24CB4.mp3",
+      "new_s3_key": "mastered/79290FAE-2D38-4C38-B23A-771DE23B0010.mp3",
+      "previous_duration_ms": 5280,
+      "new_duration_ms": 4536,
+      "previous_revision": 1,
+      "revision": 2,
+      "chars": 63,
+      "cost_usd": 0.001008,
+      "rows": [
+        {
+          "id": "pol_for_eng:pod-0-unrecorded:SC10-S003",
+          "pod": "pod-0-unrecorded",
+          "scene": 10,
+          "sentence": 3,
+          "speaker": "Customer"
+        },
+        {
+          "id": "pol_for_eng:pod-0:SC10-S003",
+          "pod": "pod-0",
+          "scene": 10,
+          "sentence": 3,
+          "speaker": "Customer"
+        }
+      ],
+      "checks": [
+        {
+          "name": "s3_alive",
+          "ok": true,
+          "detail": "HTTP ok, ContentLength 55008"
+        },
+        {
+          "name": "s3_bytes_match",
+          "ok": true,
+          "detail": "55008 vs local 55008"
+        },
+        {
+          "name": "decodable",
+          "ok": true,
+          "detail": "ffprobe 4536ms"
+        },
+        {
+          "name": "duration_agrees",
+          "ok": true,
+          "detail": "ffprobe 4536ms vs mastered 4536ms"
+        },
+        {
+          "name": "not_truncated",
+          "ok": true,
+          "detail": "4536ms vs length-scaled expectation 4965ms (ratio 0.91, old 5280ms)"
+        },
+        {
+          "name": "shorter_than_superseded",
+          "ok": true,
+          "detail": "4536ms vs superseded 5280ms — a clip still speaking both gendered forms cannot be shorter"
+        },
+        {
+          "name": "asr_decoded",
+          "ok": true,
+          "detail": "\"Dziękuję. A czy ma pani jakieś środki przeciwbólowe dla dzieci?\""
+        },
+        {
+          "name": "asr_is_speech",
+          "ok": true,
+          "detail": "CER vs corrected text 0.000 (<0.6 = real speech of this content, not silence or the wrong language)"
+        },
+        {
+          "name": "asr_closer_to_corrected",
+          "ok": true,
+          "detail": "CER 0.000 vs corrected < 0.062 vs superseded"
+        },
+        {
+          "name": "asr_slash_form_gone",
+          "ok": true,
+          "detail": "\"pan\": nearest decode word \"pani\" is 1 from it and 0 from the nearest retained word"
+        }
+      ],
+      "asr": {
+        "decode": "Dziękuję. A czy ma pani jakieś środki przeciwbólowe dla dzieci?",
+        "cer_vs_new": 0,
+        "cer_vs_old": 0.06153846153846154,
+        "reason": "ok",
+        "deleted_forms": [
+          {
+            "deleted_token": "pan",
+            "closest_decode_word": "pani",
+            "distance_to_deleted": 1,
+            "distance_to_nearest_retained": 0,
+            "still_spoken": false
+          }
+        ],
+        "deleted_forms_advisory": [],
+        "substituted_forms": []
+      },
+      "applied": true
+    },
+    {
+      "clip_id": "716f7f96-0120-4b29-bb1d-a81ad2105205",
+      "course": "pol_for_eng",
+      "action": "render",
+      "voice_id": "ara",
+      "provider": "xai",
+      "language": "pol",
+      "before": "Myślę, że tak, ale będzie Pan/Pani musiał/musiała sprawdzić.",
+      "after": "Myślę, że tak, ale będzie Pani musiała sprawdzić.",
+      "previous_s3_key": "mastered/70CF5417-D7E9-4A21-99C8-0CC8EA2A3217.mp3",
+      "new_s3_key": "mastered/C29AEC05-A80C-4D0F-9DE9-20BDCB985A73.mp3",
+      "previous_duration_ms": 4128,
+      "new_duration_ms": 3576,
+      "previous_revision": 1,
+      "revision": 2,
+      "chars": 49,
+      "cost_usd": 0.000784,
+      "rows": [
+        {
+          "id": "pol_for_eng:pod-0-unrecorded:SC10-S004",
+          "pod": "pod-0-unrecorded",
+          "scene": 10,
+          "sentence": 4,
+          "speaker": "Assistant"
+        },
+        {
+          "id": "pol_for_eng:pod-0:SC10-S004",
+          "pod": "pod-0",
+          "scene": 10,
+          "sentence": 4,
+          "speaker": "Assistant"
+        }
+      ],
+      "checks": [
+        {
+          "name": "s3_alive",
+          "ok": true,
+          "detail": "HTTP ok, ContentLength 43488"
+        },
+        {
+          "name": "s3_bytes_match",
+          "ok": true,
+          "detail": "43488 vs local 43488"
+        },
+        {
+          "name": "decodable",
+          "ok": true,
+          "detail": "ffprobe 3576ms"
+        },
+        {
+          "name": "duration_agrees",
+          "ok": true,
+          "detail": "ffprobe 3576ms vs mastered 3576ms"
+        },
+        {
+          "name": "not_truncated",
+          "ok": true,
+          "detail": "3576ms vs length-scaled expectation 3371ms (ratio 1.06, old 4128ms)"
+        },
+        {
+          "name": "shorter_than_superseded",
+          "ok": true,
+          "detail": "3576ms vs superseded 4128ms — a clip still speaking both gendered forms cannot be shorter"
+        },
+        {
+          "name": "asr_decoded",
+          "ok": true,
+          "detail": "\"Myślę, że tak, ale będzie pani musiała sprawdzić.\""
+        },
+        {
+          "name": "asr_is_speech",
+          "ok": true,
+          "detail": "CER vs corrected text 0.000 (<0.6 = real speech of this content, not silence or the wrong language)"
+        },
+        {
+          "name": "asr_closer_to_corrected",
+          "ok": true,
+          "detail": "CER 0.000 vs corrected < 0.193 vs superseded"
+        },
+        {
+          "name": "asr_slash_form_gone",
+          "ok": true,
+          "detail": "\"pan\": nearest decode word \"pani\" is 1 from it and 0 from the nearest retained word; \"musiał\": nearest decode word \"musiała\" is 1 from it and 0 from the nearest retained word"
+        }
+      ],
+      "asr": {
+        "decode": "Myślę, że tak, ale będzie pani musiała sprawdzić.",
+        "cer_vs_new": 0,
+        "cer_vs_old": 0.19298245614035087,
+        "reason": "ok",
+        "deleted_forms": [
+          {
+            "deleted_token": "pan",
+            "closest_decode_word": "pani",
+            "distance_to_deleted": 1,
+            "distance_to_nearest_retained": 0,
+            "still_spoken": false
+          },
+          {
+            "deleted_token": "musiał",
+            "closest_decode_word": "musiała",
+            "distance_to_deleted": 1,
+            "distance_to_nearest_retained": 0,
+            "still_spoken": false
+          }
+        ],
+        "deleted_forms_advisory": [],
+        "substituted_forms": []
+      },
+      "applied": true
+    },
+    {
+      "clip_id": "364d6024-de22-427c-aa9d-554ecbd21b36",
+      "course": "pol_for_eng",
+      "voice_id": "ara",
+      "before": "Krem z filtrem jest tam po prawej stronie, a pastę do zębów znajdzie Pan/Pani zaraz za rogiem.",
+      "after": "Krem z filtrem jest tam po prawej stronie, a pastę do zębów znajdzie Pani zaraz za rogiem.",
+      "new_s3_key": "mastered/D4FBD0F7-1F86-4BA2-B7AB-38445B9093D5.mp3",
+      "applied": false,
+      "action": "VERIFICATION FAILED — new object left on S3 as evidence, live row untouched, old clip still serving",
+      "checks": [
+        {
+          "name": "s3_alive",
+          "ok": true,
+          "detail": "HTTP ok, ContentLength 71136"
+        },
+        {
+          "name": "s3_bytes_match",
+          "ok": true,
+          "detail": "71136 vs local 71136"
+        },
+        {
+          "name": "decodable",
+          "ok": true,
+          "detail": "ffprobe 5880ms"
+        },
+        {
+          "name": "duration_agrees",
+          "ok": true,
+          "detail": "ffprobe 5880ms vs mastered 5880ms"
+        },
+        {
+          "name": "not_truncated",
+          "ok": true,
+          "detail": "5880ms vs length-scaled expectation 5607ms (ratio 1.05, old 5856ms)"
+        },
+        {
+          "name": "shorter_than_superseded",
+          "ok": false,
+          "detail": "5880ms vs superseded 5856ms — a clip still speaking both gendered forms cannot be shorter"
+        },
+        {
+          "name": "asr_decoded",
+          "ok": true,
+          "detail": "\"Krem z filtrem jest tam po prawej stronie, a pastę do zębów znajdzie pani zaraz za rogiem.\""
+        },
+        {
+          "name": "asr_is_speech",
+          "ok": true,
+          "detail": "CER vs corrected text 0.000 (<0.6 = real speech of this content, not silence or the wrong language)"
+        },
+        {
+          "name": "asr_closer_to_corrected",
+          "ok": true,
+          "detail": "CER 0.000 vs corrected < 0.043 vs superseded"
+        },
+        {
+          "name": "asr_slash_form_gone",
+          "ok": true,
+          "detail": "\"pan\": nearest decode word \"pani\" is 1 from it and 0 from the nearest retained word"
+        }
+      ],
+      "asr": {
+        "decode": "Krem z filtrem jest tam po prawej stronie, a pastę do zębów znajdzie pani zaraz za rogiem.",
+        "cer_vs_new": 0,
+        "cer_vs_old": 0.043478260869565216,
+        "reason": "ok",
+        "deleted_forms": [
+          {
+            "deleted_token": "pan",
+            "closest_decode_word": "pani",
+            "distance_to_deleted": 1,
+            "distance_to_nearest_retained": 0,
+            "still_spoken": false
+          }
+        ],
+        "deleted_forms_advisory": [],
+        "substituted_forms": []
+      }
+    },
+    {
+      "clip_id": "ef8ed74c-c6d3-4708-80ae-489b9f21ac59",
+      "course": "pol_for_eng",
+      "action": "render",
+      "voice_id": "1b12d5daee6b",
+      "provider": "xai",
+      "language": "pol",
+      "before": "Dziękuję, był Pan/była Pani bardzo pomocny/pomocna. Jestem bardzo wdzięczny/wdzięczna.",
+      "after": "Dziękuję, była Pani bardzo pomocna. Jestem bardzo wdzięczna.",
+      "previous_s3_key": "mastered/098D941D-7173-42FD-86D9-94F0988094BE.mp3",
+      "new_s3_key": "mastered/4375E8C6-2AEB-4795-9DB7-91936C7BD454.mp3",
+      "previous_duration_ms": 6816,
+      "new_duration_ms": 4296,
+      "previous_revision": 1,
+      "revision": 2,
+      "chars": 60,
+      "cost_usd": 0.00096,
+      "rows": [
+        {
+          "id": "pol_for_eng:pod-0-unrecorded:SC10-S007",
+          "pod": "pod-0-unrecorded",
+          "scene": 10,
+          "sentence": 7,
+          "speaker": "Customer"
+        },
+        {
+          "id": "pol_for_eng:pod-0:SC10-S007",
+          "pod": "pod-0",
+          "scene": 10,
+          "sentence": 7,
+          "speaker": "Customer"
+        }
+      ],
+      "checks": [
+        {
+          "name": "s3_alive",
+          "ok": true,
+          "detail": "HTTP ok, ContentLength 52128"
+        },
+        {
+          "name": "s3_bytes_match",
+          "ok": true,
+          "detail": "52128 vs local 52128"
+        },
+        {
+          "name": "decodable",
+          "ok": true,
+          "detail": "ffprobe 4296ms"
+        },
+        {
+          "name": "duration_agrees",
+          "ok": true,
+          "detail": "ffprobe 4296ms vs mastered 4296ms"
+        },
+        {
+          "name": "not_truncated",
+          "ok": true,
+          "detail": "4296ms vs length-scaled expectation 4755ms (ratio 0.90, old 6816ms)"
+        },
+        {
+          "name": "shorter_than_superseded",
+          "ok": true,
+          "detail": "4296ms vs superseded 6816ms — a clip still speaking both gendered forms cannot be shorter"
+        },
+        {
+          "name": "asr_decoded",
+          "ok": true,
+          "detail": "\"Dziękuję. Była pani bardzo pomocna. Jestem bardzo wdzięczna.\""
+        },
+        {
+          "name": "asr_is_speech",
+          "ok": true,
+          "detail": "CER vs corrected text 0.000 (<0.6 = real speech of this content, not silence or the wrong language)"
+        },
+        {
+          "name": "asr_closer_to_corrected",
+          "ok": true,
+          "detail": "CER 0.000 vs corrected < 0.313 vs superseded"
+        },
+        {
+          "name": "asr_slash_form_gone",
+          "ok": true,
+          "detail": "\"był\": nearest decode word \"była\" is 1 from it and 0 from the nearest retained word; \"pan\": nearest decode word \"pani\" is 1 from it and 0 from the nearest retained word; \"pomocny\": nearest decode word \"pomocna\" is 1 from it and 0 from the nearest retained word; \"wdzieczny\": nearest decode word \"wdzieczna\" is 1 from it and 0 from the nearest retained word"
+        }
+      ],
+      "asr": {
+        "decode": "Dziękuję. Była pani bardzo pomocna. Jestem bardzo wdzięczna.",
+        "cer_vs_new": 0,
+        "cer_vs_old": 0.3132530120481928,
+        "reason": "ok",
+        "deleted_forms": [
+          {
+            "deleted_token": "był",
+            "closest_decode_word": "była",
+            "distance_to_deleted": 1,
+            "distance_to_nearest_retained": 0,
+            "still_spoken": false
+          },
+          {
+            "deleted_token": "pan",
+            "closest_decode_word": "pani",
+            "distance_to_deleted": 1,
+            "distance_to_nearest_retained": 0,
+            "still_spoken": false
+          },
+          {
+            "deleted_token": "pomocny",
+            "closest_decode_word": "pomocna",
+            "distance_to_deleted": 1,
+            "distance_to_nearest_retained": 0,
+            "still_spoken": false
+          },
+          {
+            "deleted_token": "wdzieczny",
+            "closest_decode_word": "wdzieczna",
+            "distance_to_deleted": 1,
+            "distance_to_nearest_retained": 0,
+            "still_spoken": false
+          }
+        ],
+        "deleted_forms_advisory": [],
+        "substituted_forms": []
+      },
+      "applied": true
+    },
+    {
+      "clip_id": "d639d7ed-602f-49b8-af1c-bcd119f26560",
+      "course": "pol_for_eng",
+      "action": "render",
+      "voice_id": "ara",
+      "provider": "xai",
+      "language": "pol",
+      "before": "Proszę. Czy jest Pan/Pani tu na wakacjach? Bardzo dobrze Pan/Pani mówi po polsku.",
+      "after": "Proszę. Czy jest Pani tu na wakacjach? Bardzo dobrze Pani mówi po polsku.",
+      "previous_s3_key": "mastered/5DE394C9-7B0E-4C02-B8EA-6446F4B8709B.mp3",
+      "new_s3_key": "mastered/8FA5F245-E122-4A53-AD92-F03E4C89E9A6.mp3",
+      "previous_duration_ms": 5400,
+      "new_duration_ms": 5160,
+      "previous_revision": 1,
+      "revision": 2,
+      "chars": 73,
+      "cost_usd": 0.001168,
+      "rows": [
+        {
+          "id": "pol_for_eng:pod-0-unrecorded:SC10-S008",
+          "pod": "pod-0-unrecorded",
+          "scene": 10,
+          "sentence": 8,
+          "speaker": "Assistant"
+        },
+        {
+          "id": "pol_for_eng:pod-0:SC10-S008",
+          "pod": "pod-0",
+          "scene": 10,
+          "sentence": 8,
+          "speaker": "Assistant"
+        }
+      ],
+      "checks": [
+        {
+          "name": "s3_alive",
+          "ok": true,
+          "detail": "HTTP ok, ContentLength 62496"
+        },
+        {
+          "name": "s3_bytes_match",
+          "ok": true,
+          "detail": "62496 vs local 62496"
+        },
+        {
+          "name": "decodable",
+          "ok": true,
+          "detail": "ffprobe 5160ms"
+        },
+        {
+          "name": "duration_agrees",
+          "ok": true,
+          "detail": "ffprobe 5160ms vs mastered 5160ms"
+        },
+        {
+          "name": "not_truncated",
+          "ok": true,
+          "detail": "5160ms vs length-scaled expectation 4867ms (ratio 1.06, old 5400ms)"
+        },
+        {
+          "name": "shorter_than_superseded",
+          "ok": true,
+          "detail": "5160ms vs superseded 5400ms — a clip still speaking both gendered forms cannot be shorter"
+        },
+        {
+          "name": "asr_decoded",
+          "ok": true,
+          "detail": "\"Proszę, czy jest pani tu na wakacjach?  Bardzo dobrze pani mówi po polsku.\""
+        },
+        {
+          "name": "asr_is_speech",
+          "ok": true,
+          "detail": "CER vs corrected text 0.000 (<0.6 = real speech of this content, not silence or the wrong language)"
+        },
+        {
+          "name": "asr_closer_to_corrected",
+          "ok": true,
+          "detail": "CER 0.000 vs corrected < 0.103 vs superseded"
+        },
+        {
+          "name": "asr_slash_form_gone",
+          "ok": true,
+          "detail": "\"pan\": nearest decode word \"pani\" is 1 from it and 0 from the nearest retained word"
+        }
+      ],
+      "asr": {
+        "decode": "Proszę, czy jest pani tu na wakacjach?  Bardzo dobrze pani mówi po polsku.",
+        "cer_vs_new": 0,
+        "cer_vs_old": 0.10256410256410256,
+        "reason": "ok",
+        "deleted_forms": [
+          {
+            "deleted_token": "pan",
+            "closest_decode_word": "pani",
+            "distance_to_deleted": 1,
+            "distance_to_nearest_retained": 0,
+            "still_spoken": false
+          }
+        ],
+        "deleted_forms_advisory": [],
+        "substituted_forms": []
+      },
+      "applied": true
+    },
+    {
+      "clip_id": "b306d089-2ff3-4765-b34d-e10647caa9ef",
+      "course": "pol_for_eng",
+      "action": "render",
+      "voice_id": "1b12d5daee6b",
+      "provider": "xai",
+      "language": "pol",
+      "before": "To bardzo miłe z Pana/Pani strony! Tak, jestem na wakacjach i muszę więcej ćwiczyć, żeby lepiej mówić po polsku. Dziękuję bardzo i do widzenia.",
+      "after": "To bardzo miłe z Pani strony! Tak, jestem na wakacjach i muszę więcej ćwiczyć, żeby lepiej mówić po polsku. Dziękuję bardzo i do widzenia.",
+      "previous_s3_key": "mastered/7E22BA3B-BC3E-4BE2-BADB-50E693476F35.mp3",
+      "new_s3_key": "mastered/F51C95CC-066E-4940-B116-C0BA969EAA00.mp3",
+      "previous_duration_ms": 10752,
+      "new_duration_ms": 8928,
+      "previous_revision": 1,
+      "revision": 2,
+      "chars": 138,
+      "cost_usd": 0.002208,
+      "rows": [
+        {
+          "id": "pol_for_eng:pod-0-unrecorded:SC10-S009",
+          "pod": "pod-0-unrecorded",
+          "scene": 10,
+          "sentence": 9,
+          "speaker": "Customer"
+        },
+        {
+          "id": "pol_for_eng:pod-0:SC10-S009",
+          "pod": "pod-0",
+          "scene": 10,
+          "sentence": 9,
+          "speaker": "Customer"
+        }
+      ],
+      "checks": [
+        {
+          "name": "s3_alive",
+          "ok": true,
+          "detail": "HTTP ok, ContentLength 107712"
+        },
+        {
+          "name": "s3_bytes_match",
+          "ok": true,
+          "detail": "107712 vs local 107712"
+        },
+        {
+          "name": "decodable",
+          "ok": true,
+          "detail": "ffprobe 8928ms"
+        },
+        {
+          "name": "duration_agrees",
+          "ok": true,
+          "detail": "ffprobe 8928ms vs mastered 8928ms"
+        },
+        {
+          "name": "not_truncated",
+          "ok": true,
+          "detail": "8928ms vs length-scaled expectation 10376ms (ratio 0.86, old 10752ms)"
+        },
+        {
+          "name": "shorter_than_superseded",
+          "ok": true,
+          "detail": "8928ms vs superseded 10752ms — a clip still speaking both gendered forms cannot be shorter"
+        },
+        {
+          "name": "asr_decoded",
+          "ok": true,
+          "detail": "\"To bardzo miłe z Pani strony.  Tak, jestem na wakacjach i muszę więcej ćwiczyć, żeby lepiej mówić po polsku.  Dziękuję bardzo i do widzenia.\""
+        },
+        {
+          "name": "asr_is_speech",
+          "ok": true,
+          "detail": "CER vs corrected text 0.000 (<0.6 = real speech of this content, not silence or the wrong language)"
+        },
+        {
+          "name": "asr_closer_to_corrected",
+          "ok": true,
+          "detail": "CER 0.000 vs corrected < 0.036 vs superseded"
+        },
+        {
+          "name": "asr_slash_form_gone",
+          "ok": true,
+          "detail": "\"pana\": nearest decode word \"pani\" is 1 from it and 0 from the nearest retained word"
+        }
+      ],
+      "asr": {
+        "decode": "To bardzo miłe z Pani strony.  Tak, jestem na wakacjach i muszę więcej ćwiczyć, żeby lepiej mówić po polsku.  Dziękuję bardzo i do widzenia.",
+        "cer_vs_new": 0,
+        "cer_vs_old": 0.036231884057971016,
+        "reason": "ok",
+        "deleted_forms": [
+          {
+            "deleted_token": "pana",
+            "closest_decode_word": "pani",
+            "distance_to_deleted": 1,
+            "distance_to_nearest_retained": 0,
+            "still_spoken": false
+          }
+        ],
+        "deleted_forms_advisory": [],
+        "substituted_forms": []
+      },
+      "applied": true
+    },
+    {
+      "clip_id": "d86468c8-c36a-4d63-89d0-e089f2fd98da",
+      "course": "pol_for_eng",
+      "action": "render",
+      "voice_id": "1b12d5daee6b",
+      "provider": "xai",
+      "language": "pol",
+      "before": "Witamy. Tak, ma Pan/Pani pokój dwuosobowy na trzy noce. Czy mogę prosić o dowód tożsamości?",
+      "after": "Witamy. Tak, ma Pan pokój dwuosobowy na trzy noce. Czy mogę prosić o dowód tożsamości?",
+      "previous_s3_key": "mastered/E53283F1-7148-4960-8928-D2766BDC7C85.mp3",
+      "new_s3_key": "mastered/F547732C-70DC-4245-AD91-D00C7A5CD585.mp3",
+      "previous_duration_ms": 9096,
+      "new_duration_ms": 6600,
+      "previous_revision": 1,
+      "revision": 2,
+      "chars": 86,
+      "cost_usd": 0.001376,
+      "rows": [
+        {
+          "id": "pol_for_eng:pod-0-unrecorded:SC11-S002",
+          "pod": "pod-0-unrecorded",
+          "scene": 11,
+          "sentence": 2,
+          "speaker": "Receptionist"
+        },
+        {
+          "id": "pol_for_eng:pod-0:SC11-S002",
+          "pod": "pod-0",
+          "scene": 11,
+          "sentence": 2,
+          "speaker": "Receptionist"
+        }
+      ],
+      "checks": [
+        {
+          "name": "s3_alive",
+          "ok": true,
+          "detail": "HTTP ok, ContentLength 79776"
+        },
+        {
+          "name": "s3_bytes_match",
+          "ok": true,
+          "detail": "79776 vs local 79776"
+        },
+        {
+          "name": "decodable",
+          "ok": true,
+          "detail": "ffprobe 6600ms"
+        },
+        {
+          "name": "duration_agrees",
+          "ok": true,
+          "detail": "ffprobe 6600ms vs mastered 6600ms"
+        },
+        {
+          "name": "not_truncated",
+          "ok": true,
+          "detail": "6600ms vs length-scaled expectation 8596ms (ratio 0.77, old 9096ms)"
+        },
+        {
+          "name": "shorter_than_superseded",
+          "ok": true,
+          "detail": "6600ms vs superseded 9096ms — a clip still speaking both gendered forms cannot be shorter"
+        },
+        {
+          "name": "asr_decoded",
+          "ok": true,
+          "detail": "\"Witamy. Tak, ma pan pokój dwuosobowy na trzy noce. Czy mogę prosić o dowód tożsamości?\""
+        },
+        {
+          "name": "asr_is_speech",
+          "ok": true,
+          "detail": "CER vs corrected text 0.000 (<0.6 = real speech of this content, not silence or the wrong language)"
+        },
+        {
+          "name": "asr_closer_to_corrected",
+          "ok": true,
+          "detail": "CER 0.000 vs corrected < 0.057 vs superseded"
+        },
+        {
+          "name": "asr_slash_form_gone",
+          "ok": true,
+          "detail": "\"pani\": nearest decode word \"pan\" is 1 from it and 0 from the nearest retained word"
+        }
+      ],
+      "asr": {
+        "decode": "Witamy. Tak, ma pan pokój dwuosobowy na trzy noce. Czy mogę prosić o dowód tożsamości?",
+        "cer_vs_new": 0,
+        "cer_vs_old": 0.05747126436781609,
+        "reason": "ok",
+        "deleted_forms": [
+          {
+            "deleted_token": "pani",
+            "closest_decode_word": "pan",
+            "distance_to_deleted": 1,
+            "distance_to_nearest_retained": 0,
+            "still_spoken": false
+          }
+        ],
+        "deleted_forms_advisory": [],
+        "substituted_forms": []
+      },
+      "applied": true
+    },
+    {
+      "clip_id": "b0cb7844-07ba-4da1-bb6b-5c44b9b4d588",
+      "course": "pol_for_eng",
+      "action": "render",
+      "voice_id": "1b12d5daee6b",
+      "provider": "xai",
+      "language": "pol",
+      "before": "Tak, może Pan/Pani zostać do południa, bez dodatkowych opłat.",
+      "after": "Tak, może Pan zostać do południa, bez dodatkowych opłat.",
+      "previous_s3_key": "mastered/1DD6A561-794E-46D9-BA4E-6EFAF88D8A8D.mp3",
+      "new_s3_key": "mastered/F550CCB6-1F74-4471-B947-B88F2BCE4395.mp3",
+      "previous_duration_ms": 4776,
+      "new_duration_ms": 4296,
+      "previous_revision": 1,
+      "revision": 2,
+      "chars": 56,
+      "cost_usd": 0.000896,
+      "rows": [
+        {
+          "id": "pol_for_eng:pod-0-unrecorded:SC11-S010",
+          "pod": "pod-0-unrecorded",
+          "scene": 11,
+          "sentence": 10,
+          "speaker": "Receptionist"
+        },
+        {
+          "id": "pol_for_eng:pod-0:SC11-S010",
+          "pod": "pod-0",
+          "scene": 11,
+          "sentence": 10,
+          "speaker": "Receptionist"
+        }
+      ],
+      "checks": [
+        {
+          "name": "s3_alive",
+          "ok": true,
+          "detail": "HTTP ok, ContentLength 52128"
+        },
+        {
+          "name": "s3_bytes_match",
+          "ok": true,
+          "detail": "52128 vs local 52128"
+        },
+        {
+          "name": "decodable",
+          "ok": true,
+          "detail": "ffprobe 4296ms"
+        },
+        {
+          "name": "duration_agrees",
+          "ok": true,
+          "detail": "ffprobe 4296ms vs mastered 4296ms"
+        },
+        {
+          "name": "not_truncated",
+          "ok": true,
+          "detail": "4296ms vs length-scaled expectation 4385ms (ratio 0.98, old 4776ms)"
+        },
+        {
+          "name": "shorter_than_superseded",
+          "ok": true,
+          "detail": "4296ms vs superseded 4776ms — a clip still speaking both gendered forms cannot be shorter"
+        },
+        {
+          "name": "asr_decoded",
+          "ok": true,
+          "detail": "\"Tak, może pan zostać do południa, bez dodatkowych opłat.\""
+        },
+        {
+          "name": "asr_is_speech",
+          "ok": true,
+          "detail": "CER vs corrected text 0.000 (<0.6 = real speech of this content, not silence or the wrong language)"
+        },
+        {
+          "name": "asr_closer_to_corrected",
+          "ok": true,
+          "detail": "CER 0.000 vs corrected < 0.086 vs superseded"
+        },
+        {
+          "name": "asr_slash_form_gone",
+          "ok": true,
+          "detail": "\"pani\": nearest decode word \"pan\" is 1 from it and 0 from the nearest retained word"
+        }
+      ],
+      "asr": {
+        "decode": "Tak, może pan zostać do południa, bez dodatkowych opłat.",
+        "cer_vs_new": 0,
+        "cer_vs_old": 0.08620689655172414,
+        "reason": "ok",
+        "deleted_forms": [
+          {
+            "deleted_token": "pani",
+            "closest_decode_word": "pan",
+            "distance_to_deleted": 1,
+            "distance_to_nearest_retained": 0,
+            "still_spoken": false
+          }
+        ],
+        "deleted_forms_advisory": [],
+        "substituted_forms": []
+      },
+      "applied": true
+    },
+    {
+      "clip_id": "a2c35586-c7b1-4fb3-94c9-6d4627e32992",
+      "course": "pol_for_eng",
+      "action": "render",
+      "voice_id": "37329fd8895a",
+      "provider": "xai",
+      "language": "pol",
+      "before": "Oczywiście. Jakie ma Pan/Pani objawy?",
+      "after": "Oczywiście. Jakie ma Pani objawy?",
+      "previous_s3_key": "mastered/3CA0A068-4E63-492A-B9A6-89011243529F.mp3",
+      "new_s3_key": "mastered/E6A00C50-4DA2-4C9B-B1B4-977D0A8AF3A5.mp3",
+      "previous_duration_ms": 3840,
+      "new_duration_ms": 2928,
+      "previous_revision": 1,
+      "revision": 2,
+      "chars": 33,
+      "cost_usd": 0.000528,
+      "rows": [
+        {
+          "id": "pol_for_eng:pod-0-unrecorded:SC12-S002",
+          "pod": "pod-0-unrecorded",
+          "scene": 12,
+          "sentence": 2,
+          "speaker": "Pharmacist"
+        },
+        {
+          "id": "pol_for_eng:pod-0:SC12-S002",
+          "pod": "pod-0",
+          "scene": 12,
+          "sentence": 2,
+          "speaker": "Pharmacist"
+        }
+      ],
+      "checks": [
+        {
+          "name": "s3_alive",
+          "ok": true,
+          "detail": "HTTP ok, ContentLength 35712"
+        },
+        {
+          "name": "s3_bytes_match",
+          "ok": true,
+          "detail": "35712 vs local 35712"
+        },
+        {
+          "name": "decodable",
+          "ok": true,
+          "detail": "ffprobe 2928ms"
+        },
+        {
+          "name": "duration_agrees",
+          "ok": true,
+          "detail": "ffprobe 2928ms vs mastered 2928ms"
+        },
+        {
+          "name": "not_truncated",
+          "ok": true,
+          "detail": "2928ms vs length-scaled expectation 3425ms (ratio 0.85, old 3840ms)"
+        },
+        {
+          "name": "shorter_than_superseded",
+          "ok": true,
+          "detail": "2928ms vs superseded 3840ms — a clip still speaking both gendered forms cannot be shorter"
+        },
+        {
+          "name": "asr_decoded",
+          "ok": true,
+          "detail": "\"Oczywiście. Jakie ma pani objawy?\""
+        },
+        {
+          "name": "asr_is_speech",
+          "ok": true,
+          "detail": "CER vs corrected text 0.000 (<0.6 = real speech of this content, not silence or the wrong language)"
+        },
+        {
+          "name": "asr_closer_to_corrected",
+          "ok": true,
+          "detail": "CER 0.000 vs corrected < 0.114 vs superseded"
+        },
+        {
+          "name": "asr_slash_form_gone",
+          "ok": true,
+          "detail": "\"pan\": nearest decode word \"pani\" is 1 from it and 0 from the nearest retained word"
+        }
+      ],
+      "asr": {
+        "decode": "Oczywiście. Jakie ma pani objawy?",
+        "cer_vs_new": 0,
+        "cer_vs_old": 0.11428571428571428,
+        "reason": "ok",
+        "deleted_forms": [
+          {
+            "deleted_token": "pan",
+            "closest_decode_word": "pani",
+            "distance_to_deleted": 1,
+            "distance_to_nearest_retained": 0,
+            "still_spoken": false
+          }
+        ],
+        "deleted_forms_advisory": [],
+        "substituted_forms": []
+      },
+      "applied": true
+    },
+    {
+      "clip_id": "a7317303-b61b-4574-9985-690d7515c04e",
+      "course": "pol_for_eng",
+      "action": "render",
+      "voice_id": "1b12d5daee6b",
+      "provider": "xai",
+      "language": "pol",
+      "before": "Jak często powinnam/powinienem brać paracetamol?",
+      "after": "Jak często powinnam brać paracetamol?",
+      "previous_s3_key": "mastered/1700113F-D444-47A7-BA5E-6945A2A9EB19.mp3",
+      "new_s3_key": "mastered/0067A45F-EEEC-4798-A5DD-6A5356A599D0.mp3",
+      "previous_duration_ms": 4104,
+      "new_duration_ms": 2856,
+      "previous_revision": 1,
+      "revision": 2,
+      "chars": 37,
+      "cost_usd": 0.000592,
+      "rows": [
+        {
+          "id": "pol_for_eng:pod-0-unrecorded:SC12-S005",
+          "pod": "pod-0-unrecorded",
+          "scene": 12,
+          "sentence": 5,
+          "speaker": "Customer"
+        },
+        {
+          "id": "pol_for_eng:pod-0:SC12-S005",
+          "pod": "pod-0",
+          "scene": 12,
+          "sentence": 5,
+          "speaker": "Customer"
+        }
+      ],
+      "checks": [
+        {
+          "name": "s3_alive",
+          "ok": true,
+          "detail": "HTTP ok, ContentLength 34848"
+        },
+        {
+          "name": "s3_bytes_match",
+          "ok": true,
+          "detail": "34848 vs local 34848"
+        },
+        {
+          "name": "decodable",
+          "ok": true,
+          "detail": "ffprobe 2856ms"
+        },
+        {
+          "name": "duration_agrees",
+          "ok": true,
+          "detail": "ffprobe 2856ms vs mastered 2856ms"
+        },
+        {
+          "name": "not_truncated",
+          "ok": true,
+          "detail": "2856ms vs length-scaled expectation 3164ms (ratio 0.90, old 4104ms)"
+        },
+        {
+          "name": "shorter_than_superseded",
+          "ok": true,
+          "detail": "2856ms vs superseded 4104ms — a clip still speaking both gendered forms cannot be shorter"
+        },
+        {
+          "name": "asr_decoded",
+          "ok": true,
+          "detail": "\"Jak często powinna brać paracetamol?\""
+        },
+        {
+          "name": "asr_is_speech",
+          "ok": true,
+          "detail": "CER vs corrected text 0.028 (<0.6 = real speech of this content, not silence or the wrong language)"
+        },
+        {
+          "name": "asr_closer_to_corrected",
+          "ok": true,
+          "detail": "CER 0.028 vs corrected < 0.255 vs superseded"
+        },
+        {
+          "name": "asr_slash_form_gone",
+          "ok": true,
+          "detail": "\"powinienem\": nearest decode word \"powinna\" is 4 from it and 1 from the nearest retained word"
+        }
+      ],
+      "asr": {
+        "decode": "Jak często powinna brać paracetamol?",
+        "cer_vs_new": 0.0278,
+        "cer_vs_old": 0.2553191489361702,
+        "reason": "ok",
+        "deleted_forms": [
+          {
+            "deleted_token": "powinienem",
+            "closest_decode_word": "powinna",
+            "distance_to_deleted": 4,
+            "distance_to_nearest_retained": 1,
+            "still_spoken": false
+          }
+        ],
+        "deleted_forms_advisory": [],
+        "substituted_forms": []
+      },
+      "applied": true
+    },
+    {
+      "clip_id": "2f7da626-5947-4db6-9f44-67fcbe135cf3",
+      "course": "pol_for_eng",
+      "action": "render",
+      "voice_id": "2badb5f46b1e",
+      "provider": "xai",
+      "language": "pol",
+      "before": "Przepraszam, czy wie Pan/Pani, jak dojść do najbliższego supermarketu?",
+      "after": "Przepraszam, czy wie Pan, jak dojść do najbliższego supermarketu?",
+      "previous_s3_key": "mastered/A10319E0-8C5D-4C87-BA41-8E5CB544E2E2.mp3",
+      "new_s3_key": "mastered/96894445-66CD-4601-BB3D-AB1BD343FA1E.mp3",
+      "previous_duration_ms": 4272,
+      "new_duration_ms": 3912,
+      "previous_revision": 1,
+      "revision": 2,
+      "chars": 65,
+      "cost_usd": 0.00104,
+      "rows": [
+        {
+          "id": "pol_for_eng:pod-0-unrecorded:SC13-S001",
+          "pod": "pod-0-unrecorded",
+          "scene": 13,
+          "sentence": 1,
+          "speaker": "Tourist"
+        },
+        {
+          "id": "pol_for_eng:pod-0:SC13-S001",
+          "pod": "pod-0",
+          "scene": 13,
+          "sentence": 1,
+          "speaker": "Tourist"
+        }
+      ],
+      "checks": [
+        {
+          "name": "s3_alive",
+          "ok": true,
+          "detail": "HTTP ok, ContentLength 47520"
+        },
+        {
+          "name": "s3_bytes_match",
+          "ok": true,
+          "detail": "47520 vs local 47520"
+        },
+        {
+          "name": "decodable",
+          "ok": true,
+          "detail": "ffprobe 3912ms"
+        },
+        {
+          "name": "duration_agrees",
+          "ok": true,
+          "detail": "ffprobe 3912ms vs mastered 3912ms"
+        },
+        {
+          "name": "not_truncated",
+          "ok": true,
+          "detail": "3912ms vs length-scaled expectation 3967ms (ratio 0.99, old 4272ms)"
+        },
+        {
+          "name": "shorter_than_superseded",
+          "ok": true,
+          "detail": "3912ms vs superseded 4272ms — a clip still speaking both gendered forms cannot be shorter"
+        },
+        {
+          "name": "asr_decoded",
+          "ok": true,
+          "detail": "\"Przepraszam, czy wie pan jak dojść do najbliższego supermarketu?\""
+        },
+        {
+          "name": "asr_is_speech",
+          "ok": true,
+          "detail": "CER vs corrected text 0.000 (<0.6 = real speech of this content, not silence or the wrong language)"
+        },
+        {
+          "name": "asr_closer_to_corrected",
+          "ok": true,
+          "detail": "CER 0.000 vs corrected < 0.075 vs superseded"
+        },
+        {
+          "name": "asr_slash_form_gone",
+          "ok": true,
+          "detail": "\"pani\": nearest decode word \"pan\" is 1 from it and 0 from the nearest retained word"
+        }
+      ],
+      "asr": {
+        "decode": "Przepraszam, czy wie pan jak dojść do najbliższego supermarketu?",
+        "cer_vs_new": 0,
+        "cer_vs_old": 0.07462686567164178,
+        "reason": "ok",
+        "deleted_forms": [
+          {
+            "deleted_token": "pani",
+            "closest_decode_word": "pan",
+            "distance_to_deleted": 1,
+            "distance_to_nearest_retained": 0,
+            "still_spoken": false
+          }
+        ],
+        "deleted_forms_advisory": [],
+        "substituted_forms": []
+      },
+      "applied": true
+    },
+    {
+      "clip_id": "dafdafbc-70cb-4b98-942c-3cc75f7b832a",
+      "course": "pol_for_eng",
+      "action": "render",
+      "voice_id": "37329fd8895a",
+      "provider": "xai",
+      "language": "pol",
+      "before": "Zobaczy Pan/Pani supermarket po lewej stronie, tuż naprzeciwko przystanku autobusowego.",
+      "after": "Zobaczy Pan supermarket po lewej stronie, tuż naprzeciwko przystanku autobusowego.",
+      "previous_s3_key": "mastered/3DFF8BB2-699D-41B2-BFD0-1A2ED0C93BA2.mp3",
+      "new_s3_key": "mastered/349E457E-1EF9-4191-A7E2-A82C62810767.mp3",
+      "previous_duration_ms": 6672,
+      "new_duration_ms": 5568,
+      "previous_revision": 1,
+      "revision": 2,
+      "chars": 82,
+      "cost_usd": 0.001312,
+      "rows": [
+        {
+          "id": "pol_for_eng:pod-0-unrecorded:SC13-S007",
+          "pod": "pod-0-unrecorded",
+          "scene": 13,
+          "sentence": 7,
+          "speaker": "Local"
+        },
+        {
+          "id": "pol_for_eng:pod-0:SC13-S007",
+          "pod": "pod-0",
+          "scene": 13,
+          "sentence": 7,
+          "speaker": "Local"
+        }
+      ],
+      "checks": [
+        {
+          "name": "s3_alive",
+          "ok": true,
+          "detail": "HTTP ok, ContentLength 67392"
+        },
+        {
+          "name": "s3_bytes_match",
+          "ok": true,
+          "detail": "67392 vs local 67392"
+        },
+        {
+          "name": "decodable",
+          "ok": true,
+          "detail": "ffprobe 5568ms"
+        },
+        {
+          "name": "duration_agrees",
+          "ok": true,
+          "detail": "ffprobe 5568ms vs mastered 5568ms"
+        },
+        {
+          "name": "not_truncated",
+          "ok": true,
+          "detail": "5568ms vs length-scaled expectation 6289ms (ratio 0.89, old 6672ms)"
+        },
+        {
+          "name": "shorter_than_superseded",
+          "ok": true,
+          "detail": "5568ms vs superseded 6672ms — a clip still speaking both gendered forms cannot be shorter"
+        },
+        {
+          "name": "asr_decoded",
+          "ok": true,
+          "detail": "\"Zobaczy pan super market po lewej stronie, tuż naprzeciwko przystanku autobusowego.\""
+        },
+        {
+          "name": "asr_is_speech",
+          "ok": true,
+          "detail": "CER vs corrected text 0.013 (<0.6 = real speech of this content, not silence or the wrong language)"
+        },
+        {
+          "name": "asr_closer_to_corrected",
+          "ok": true,
+          "detail": "CER 0.013 vs corrected < 0.071 vs superseded"
+        },
+        {
+          "name": "asr_slash_form_gone",
+          "ok": true,
+          "detail": "\"pani\": nearest decode word \"pan\" is 1 from it and 0 from the nearest retained word"
+        }
+      ],
+      "asr": {
+        "decode": "Zobaczy pan super market po lewej stronie, tuż naprzeciwko przystanku autobusowego.",
+        "cer_vs_new": 0.0125,
+        "cer_vs_old": 0.07058823529411765,
+        "reason": "ok",
+        "deleted_forms": [
+          {
+            "deleted_token": "pani",
+            "closest_decode_word": "pan",
+            "distance_to_deleted": 1,
+            "distance_to_nearest_retained": 0,
+            "still_spoken": false
+          }
+        ],
+        "deleted_forms_advisory": [],
+        "substituted_forms": []
+      },
+      "applied": true
+    },
+    {
+      "clip_id": "cdd67292-54dc-4b74-92f2-7adac6f90f8a",
+      "course": "pol_for_eng",
+      "action": "relink",
+      "relink_to": "41e6c049-85e6-4a89-9ae6-d7a246701bdb",
+      "voice_id": "2badb5f46b1e",
+      "before": "Dziękuję bardzo. Był Pan/Pani bardzo pomocny/pomocna.",
+      "after": "Dziękuję bardzo. Był Pan bardzo pomocny.",
+      "chars": 0,
+      "cost_usd": 0,
+      "rows": [
+        {
+          "id": "pol_for_eng:pod-0-unrecorded:SC13-S010",
+          "pod": "pod-0-unrecorded",
+          "scene": 13,
+          "sentence": 10,
+          "speaker": "Tourist"
+        },
+        {
+          "id": "pol_for_eng:pod-0:SC13-S010",
+          "pod": "pod-0",
+          "scene": 13,
+          "sentence": 10,
+          "speaker": "Tourist"
+        }
+      ],
+      "checks": [
+        {
+          "name": "relink_target_s3_alive",
+          "ok": true,
+          "detail": "mastered/DC6A16D2-17A1-4C82-8440-29964B56A944.mp3 ContentLength 34272"
+        },
+        {
+          "name": "relink_target_decodable",
+          "ok": true,
+          "detail": "ffprobe 2808ms"
+        },
+        {
+          "name": "relink_target_asr",
+          "ok": true,
+          "detail": "\"Dziękuję bardzo. Był Pan bardzo pomocny.\""
+        },
+        {
+          "name": "relink_target_is_speech",
+          "ok": true,
+          "detail": "CER 0.000 vs corrected text"
+        },
+        {
+          "name": "relink_target_closer_to_corrected",
+          "ok": true,
+          "detail": "CER 0.000 vs corrected < 0.255 vs superseded"
+        },
+        {
+          "name": "relink_target_slash_form_gone",
+          "ok": true,
+          "detail": "\"pani\": nearest \"pan\" 1 vs retained 0; \"pomocna\": nearest \"pomocny\" 1 vs retained 0"
+        }
+      ],
+      "asr": {
+        "decode": "Dziękuję bardzo. Był Pan bardzo pomocny.",
+        "cer_vs_new": 0,
+        "cer_vs_old": 0.2549019607843137,
+        "deleted_forms": [
+          {
+            "deleted_token": "pani",
+            "closest_decode_word": "pan",
+            "distance_to_deleted": 1,
+            "distance_to_nearest_retained": 0,
+            "still_spoken": false
+          },
+          {
+            "deleted_token": "pomocna",
+            "closest_decode_word": "pomocny",
+            "distance_to_deleted": 1,
+            "distance_to_nearest_retained": 0,
+            "still_spoken": false
+          }
+        ],
+        "deleted_forms_advisory": []
+      },
+      "applied": true
+    },
+    {
+      "clip_id": "04c73f5a-7e57-487a-8c11-fd8f53548eb5",
+      "course": "pol_for_eng",
+      "action": "render",
+      "voice_id": "2badb5f46b1e",
+      "provider": "xai",
+      "language": "pol",
+      "before": "Dobry wieczór. Co Pan/Pani chce?",
+      "after": "Dobry wieczór. Co Pani chce?",
+      "previous_s3_key": "mastered/1C7D0896-5DDF-480E-8980-5D27A005854E.mp3",
+      "new_s3_key": "mastered/7BB48BF3-FE3B-4971-BED1-0436BBDC751C.mp3",
+      "previous_duration_ms": 2568,
+      "new_duration_ms": 2280,
+      "previous_revision": 1,
+      "revision": 2,
+      "chars": 28,
+      "cost_usd": 0.000448,
+      "rows": [
+        {
+          "id": "pol_for_eng:pod-0:SC08-S001",
+          "pod": "pod-0",
+          "scene": 8,
+          "sentence": 1,
+          "speaker": "Bartender"
+        }
+      ],
+      "checks": [
+        {
+          "name": "s3_alive",
+          "ok": true,
+          "detail": "HTTP ok, ContentLength 27936"
+        },
+        {
+          "name": "s3_bytes_match",
+          "ok": true,
+          "detail": "27936 vs local 27936"
+        },
+        {
+          "name": "decodable",
+          "ok": true,
+          "detail": "ffprobe 2280ms"
+        },
+        {
+          "name": "duration_agrees",
+          "ok": true,
+          "detail": "ffprobe 2280ms vs mastered 2280ms"
+        },
+        {
+          "name": "not_truncated",
+          "ok": true,
+          "detail": "2280ms vs length-scaled expectation 2247ms (ratio 1.01, old 2568ms)"
+        },
+        {
+          "name": "shorter_than_superseded",
+          "ok": true,
+          "detail": "2280ms vs superseded 2568ms — a clip still speaking both gendered forms cannot be shorter"
+        },
+        {
+          "name": "asr_decoded",
+          "ok": true,
+          "detail": "\"Dobry wieczór, co Pani chce.\""
+        },
+        {
+          "name": "asr_is_speech",
+          "ok": true,
+          "detail": "CER vs corrected text 0.000 (<0.6 = real speech of this content, not silence or the wrong language)"
+        },
+        {
+          "name": "asr_closer_to_corrected",
+          "ok": true,
+          "detail": "CER 0.000 vs corrected < 0.133 vs superseded"
+        },
+        {
+          "name": "asr_slash_form_gone",
+          "ok": true,
+          "detail": "\"pan\": nearest decode word \"pani\" is 1 from it and 0 from the nearest retained word"
+        }
+      ],
+      "asr": {
+        "decode": "Dobry wieczór, co Pani chce.",
+        "cer_vs_new": 0,
+        "cer_vs_old": 0.13333333333333333,
+        "reason": "ok",
+        "deleted_forms": [
+          {
+            "deleted_token": "pan",
+            "closest_decode_word": "pani",
+            "distance_to_deleted": 1,
+            "distance_to_nearest_retained": 0,
+            "still_spoken": false
+          }
+        ],
+        "deleted_forms_advisory": [],
+        "substituted_forms": []
+      },
+      "applied": true
+    },
+    {
+      "clip_id": "0d63d580-40bd-4624-8b8c-3d01e1814e1e",
+      "course": "pol_for_eng",
+      "action": "render",
+      "voice_id": "2badb5f46b1e",
+      "provider": "xai",
+      "language": "pol",
+      "before": "Mamy domowe czerwone, domowe białe albo może Pan/Pani wybrać jedno z naszych butelek.",
+      "after": "Mamy domowe czerwone, domowe białe albo może Pan wybrać jedno z naszych butelek.",
+      "previous_s3_key": "mastered/23224397-83D8-4BC4-97FC-2F5CD5BEE1F6.mp3",
+      "new_s3_key": "mastered/1015C9BC-2626-4B6A-8CD8-3C1A7C5E7CDF.mp3",
+      "previous_duration_ms": 6192,
+      "new_duration_ms": 5328,
+      "previous_revision": 1,
+      "revision": 2,
+      "chars": 80,
+      "cost_usd": 0.00128,
+      "rows": [
+        {
+          "id": "pol_for_eng:pod-0:SC08-S007",
+          "pod": "pod-0",
+          "scene": 8,
+          "sentence": 7,
+          "speaker": "Bartender"
+        }
+      ],
+      "checks": [
+        {
+          "name": "s3_alive",
+          "ok": true,
+          "detail": "HTTP ok, ContentLength 64512"
+        },
+        {
+          "name": "s3_bytes_match",
+          "ok": true,
+          "detail": "64512 vs local 64512"
+        },
+        {
+          "name": "decodable",
+          "ok": true,
+          "detail": "ffprobe 5328ms"
+        },
+        {
+          "name": "duration_agrees",
+          "ok": true,
+          "detail": "ffprobe 5328ms vs mastered 5328ms"
+        },
+        {
+          "name": "not_truncated",
+          "ok": true,
+          "detail": "5328ms vs length-scaled expectation 5828ms (ratio 0.91, old 6192ms)"
+        },
+        {
+          "name": "shorter_than_superseded",
+          "ok": true,
+          "detail": "5328ms vs superseded 6192ms — a clip still speaking both gendered forms cannot be shorter"
+        },
+        {
+          "name": "asr_decoded",
+          "ok": true,
+          "detail": "\"Mamy domowe czerwone, domowe białe, albo może pan wybrać jedno z naszych butelek.\""
+        },
+        {
+          "name": "asr_is_speech",
+          "ok": true,
+          "detail": "CER vs corrected text 0.000 (<0.6 = real speech of this content, not silence or the wrong language)"
+        },
+        {
+          "name": "asr_closer_to_corrected",
+          "ok": true,
+          "detail": "CER 0.000 vs corrected < 0.060 vs superseded"
+        },
+        {
+          "name": "asr_slash_form_gone",
+          "ok": true,
+          "detail": "\"pani\": nearest decode word \"pan\" is 1 from it and 0 from the nearest retained word"
+        }
+      ],
+      "asr": {
+        "decode": "Mamy domowe czerwone, domowe białe, albo może pan wybrać jedno z naszych butelek.",
+        "cer_vs_new": 0,
+        "cer_vs_old": 0.060240963855421686,
+        "reason": "ok",
+        "deleted_forms": [
+          {
+            "deleted_token": "pani",
+            "closest_decode_word": "pan",
+            "distance_to_deleted": 1,
+            "distance_to_nearest_retained": 0,
+            "still_spoken": false
+          }
+        ],
+        "deleted_forms_advisory": [],
+        "substituted_forms": []
+      },
+      "applied": true
+    },
+    {
+      "clip_id": "cd1070cc-0d06-45d3-907d-2e3d9fa877a7",
+      "course": "pol_for_eng",
+      "action": "render",
+      "voice_id": "1b12d5daee6b",
+      "provider": "xai",
+      "language": "pol",
+      "before": "Dzień dobry. Niezbyt dobrze się czuję — czy może mi Pan/Pani coś polecić?",
+      "after": "Dzień dobry. Niezbyt dobrze się czuję — czy może mi Pan coś polecić?",
+      "previous_s3_key": "mastered/E128182B-3BDA-4A4A-8F39-6602D8F780B9.mp3",
+      "new_s3_key": "mastered/D8094E46-CFE8-4A29-8F2B-C910083848C1.mp3",
+      "previous_duration_ms": 6312,
+      "new_duration_ms": 4848,
+      "previous_revision": 1,
+      "revision": 2,
+      "chars": 68,
+      "cost_usd": 0.001088,
+      "rows": [
+        {
+          "id": "pol_for_eng:pod-0:SC12-S001",
+          "pod": "pod-0",
+          "scene": 12,
+          "sentence": 1,
+          "speaker": "Customer"
+        }
+      ],
+      "checks": [
+        {
+          "name": "s3_alive",
+          "ok": true,
+          "detail": "HTTP ok, ContentLength 58752"
+        },
+        {
+          "name": "s3_bytes_match",
+          "ok": true,
+          "detail": "58752 vs local 58752"
+        },
+        {
+          "name": "decodable",
+          "ok": true,
+          "detail": "ffprobe 4848ms"
+        },
+        {
+          "name": "duration_agrees",
+          "ok": true,
+          "detail": "ffprobe 4848ms vs mastered 4848ms"
+        },
+        {
+          "name": "not_truncated",
+          "ok": true,
+          "detail": "4848ms vs length-scaled expectation 5880ms (ratio 0.82, old 6312ms)"
+        },
+        {
+          "name": "shorter_than_superseded",
+          "ok": true,
+          "detail": "4848ms vs superseded 6312ms — a clip still speaking both gendered forms cannot be shorter"
+        },
+        {
+          "name": "asr_decoded",
+          "ok": true,
+          "detail": "\"Dzień dobry. Niezbyt dobrze się czuję. Czy może mi pan coś polecić?\""
+        },
+        {
+          "name": "asr_is_speech",
+          "ok": true,
+          "detail": "CER vs corrected text 0.000 (<0.6 = real speech of this content, not silence or the wrong language)"
+        },
+        {
+          "name": "asr_closer_to_corrected",
+          "ok": true,
+          "detail": "CER 0.000 vs corrected < 0.072 vs superseded"
+        },
+        {
+          "name": "asr_slash_form_gone",
+          "ok": true,
+          "detail": "\"pani\": nearest decode word \"pan\" is 1 from it and 0 from the nearest retained word"
+        }
+      ],
+      "asr": {
+        "decode": "Dzień dobry. Niezbyt dobrze się czuję. Czy może mi pan coś polecić?",
+        "cer_vs_new": 0,
+        "cer_vs_old": 0.07246376811594203,
+        "reason": "ok",
+        "deleted_forms": [
+          {
+            "deleted_token": "pani",
+            "closest_decode_word": "pan",
+            "distance_to_deleted": 1,
+            "distance_to_nearest_retained": 0,
+            "still_spoken": false
+          }
+        ],
+        "deleted_forms_advisory": [],
+        "substituted_forms": []
+      },
+      "applied": true
+    },
+    {
+      "clip_id": "b66d5008-77c4-43a2-b3e3-00b4aca9ae7a",
+      "course": "por_for_eng",
+      "action": "render",
+      "voice_id": "eve",
+      "provider": "xai",
+      "language": "por",
+      "before": "Importava-se que eu tentasse praticar a falar português consigo? Não estou a aprender há muito tempo, e ainda me sinto um pouco nervoso/a a falar com outras pessoas.",
+      "after": "Importava-se que eu tentasse praticar a falar português consigo? Não estou a aprender há muito tempo, e ainda me sinto um pouco nervosa a falar com outras pessoas.",
+      "previous_s3_key": "mastered/AC9835FB-28CB-481C-A856-5A24E2AC18BB.mp3",
+      "new_s3_key": "mastered/FAB621FD-A49D-4B6E-B488-A0D65F7041DA.mp3",
+      "previous_duration_ms": 9360,
+      "new_duration_ms": 8856,
+      "previous_revision": 1,
+      "revision": 2,
+      "chars": 163,
+      "cost_usd": 0.002608,
+      "rows": [
+        {
+          "id": "por_for_eng:pod-0-unrecorded:SC22-S001",
+          "pod": "pod-0-unrecorded",
+          "scene": 22,
+          "sentence": 1,
+          "speaker": "Learner"
+        },
+        {
+          "id": "por_for_eng:pod-0:SC15-S001",
+          "pod": "pod-0",
+          "scene": 15,
+          "sentence": 1,
+          "speaker": "Learner"
+        }
+      ],
+      "checks": [
+        {
+          "name": "s3_alive",
+          "ok": true,
+          "detail": "HTTP ok, ContentLength 106848"
+        },
+        {
+          "name": "s3_bytes_match",
+          "ok": true,
+          "detail": "106848 vs local 106848"
+        },
+        {
+          "name": "decodable",
+          "ok": true,
+          "detail": "ffprobe 8856ms"
+        },
+        {
+          "name": "duration_agrees",
+          "ok": true,
+          "detail": "ffprobe 8856ms vs mastered 8856ms"
+        },
+        {
+          "name": "not_truncated",
+          "ok": true,
+          "detail": "8856ms vs length-scaled expectation 9247ms (ratio 0.96, old 9360ms)"
+        },
+        {
+          "name": "shorter_than_superseded",
+          "ok": true,
+          "detail": "8856ms vs superseded 9360ms — a clip still speaking both gendered forms cannot be shorter"
+        },
+        {
+          "name": "asr_decoded",
+          "ok": true,
+          "detail": "\"importava-se que eu tentasse praticar a falar português consigo,  não estou a aprender há muito tempo e ainda me sinto um pouco nervosa a falar com outras pessoas.\""
+        },
+        {
+          "name": "asr_is_speech",
+          "ok": true,
+          "detail": "CER vs corrected text 0.000 (<0.6 = real speech of this content, not silence or the wrong language)"
+        },
+        {
+          "name": "asr_closer_to_corrected",
+          "ok": true,
+          "detail": "CER 0.000 vs corrected < 0.012 vs superseded"
+        },
+        {
+          "name": "asr_slash_form_gone",
+          "ok": true,
+          "detail": "\"nervoso\": nearest decode word \"nervosa\" is 1 from it and 0 from the nearest retained word"
+        },
+        {
+          "name": "asr_speaks_fused_form",
+          "ok": true,
+          "detail": "\"nervosa\" is 0 from nervosa and 1 from superseded nervoso"
+        }
+      ],
+      "asr": {
+        "decode": "importava-se que eu tentasse praticar a falar português consigo,  não estou a aprender há muito tempo e ainda me sinto um pouco nervosa a falar com outras pessoas.",
+        "cer_vs_new": 0,
+        "cer_vs_old": 0.012345679012345678,
+        "reason": "ok",
+        "deleted_forms": [
+          {
+            "deleted_token": "nervoso",
+            "closest_decode_word": "nervosa",
+            "distance_to_deleted": 1,
+            "distance_to_nearest_retained": 0,
+            "still_spoken": false
+          }
+        ],
+        "deleted_forms_advisory": [],
+        "substituted_forms": [
+          {
+            "newTok": "nervosa",
+            "oldTok": "nervoso",
+            "heard": "nervosa",
+            "distance_to_new": 0,
+            "distance_to_superseded": 1,
+            "ok": true
+          }
+        ]
+      },
+      "applied": true
+    },
+    {
+      "clip_id": "ecb25ca6-d120-4bd8-9daa-58b6387227e9",
+      "course": "por_for_eng",
+      "action": "render",
+      "voice_id": "rex",
+      "provider": "xai",
+      "language": "por",
+      "before": "Claro que não, sem problema. Parece que fala muito bem. Consigo percebê-lo/a facilmente.",
+      "after": "Claro que não, sem problema. Parece que fala muito bem. Consigo percebê-la facilmente.",
+      "previous_s3_key": "mastered/97DF5792-3688-4EFC-9826-347EAA5A1109.mp3",
+      "new_s3_key": "mastered/2C9114E9-18F3-4251-AF5A-BE1FF19330C9.mp3",
+      "previous_duration_ms": 5640,
+      "new_duration_ms": 5160,
+      "previous_revision": 1,
+      "revision": 2,
+      "chars": 86,
+      "cost_usd": 0.001376,
+      "rows": [
+        {
+          "id": "por_for_eng:pod-0-unrecorded:SC22-S002",
+          "pod": "pod-0-unrecorded",
+          "scene": 22,
+          "sentence": 2,
+          "speaker": "Friend"
+        },
+        {
+          "id": "por_for_eng:pod-0:SC15-S002",
+          "pod": "pod-0",
+          "scene": 15,
+          "sentence": 2,
+          "speaker": "Friend"
+        }
+      ],
+      "checks": [
+        {
+          "name": "s3_alive",
+          "ok": true,
+          "detail": "HTTP ok, ContentLength 62496"
+        },
+        {
+          "name": "s3_bytes_match",
+          "ok": true,
+          "detail": "62496 vs local 62496"
+        },
+        {
+          "name": "decodable",
+          "ok": true,
+          "detail": "ffprobe 5160ms"
+        },
+        {
+          "name": "duration_agrees",
+          "ok": true,
+          "detail": "ffprobe 5160ms vs mastered 5160ms"
+        },
+        {
+          "name": "not_truncated",
+          "ok": true,
+          "detail": "5160ms vs length-scaled expectation 5512ms (ratio 0.94, old 5640ms)"
+        },
+        {
+          "name": "shorter_than_superseded",
+          "ok": true,
+          "detail": "5160ms vs superseded 5640ms — a clip still speaking both gendered forms cannot be shorter"
+        },
+        {
+          "name": "asr_decoded",
+          "ok": true,
+          "detail": "\"Claro que não, sem problema. Parece que fala muito bem, consigo prossegui-la facilmente.\""
+        },
+        {
+          "name": "asr_is_speech",
+          "ok": true,
+          "detail": "CER vs corrected text 0.085 (<0.6 = real speech of this content, not silence or the wrong language)"
+        },
+        {
+          "name": "asr_closer_to_corrected",
+          "ok": true,
+          "detail": "CER 0.085 vs corrected < 0.095 vs superseded"
+        },
+        {
+          "name": "asr_slash_form_gone",
+          "ok": true,
+          "detail": "no deleted token long enough to gate on; carried by CER-vs-superseded and the duration check (advisory: \"lo\" absent, \"a\" absent)"
+        },
+        {
+          "name": "asr_speaks_fused_form",
+          "ok": true,
+          "detail": "\"la\" is 0 from la and 1 from superseded lo"
+        }
+      ],
+      "asr": {
+        "decode": "Claro que não, sem problema. Parece que fala muito bem, consigo prossegui-la facilmente.",
+        "cer_vs_new": 0.0854,
+        "cer_vs_old": 0.09523809523809523,
+        "reason": "ok",
+        "deleted_forms": [],
+        "deleted_forms_advisory": [
+          {
+            "deleted_token": "lo",
+            "closest_decode_word": "la",
+            "distance_to_deleted": 1,
+            "distance_to_nearest_retained": 0,
+            "still_spoken": false
+          },
+          {
+            "deleted_token": "a",
+            "closest_decode_word": "la",
+            "distance_to_deleted": 1,
+            "distance_to_nearest_retained": 0,
+            "still_spoken": false
+          }
+        ],
+        "substituted_forms": [
+          {
+            "newTok": "la",
+            "oldTok": "lo",
+            "heard": "la",
+            "distance_to_new": 0,
+            "distance_to_superseded": 1,
+            "ok": true
+          }
+        ]
+      },
+      "applied": true
+    },
+    {
+      "clip_id": "4d3a7d4c-4496-46f0-b88c-67889365c5cd",
+      "course": "por_for_eng",
+      "action": "render",
+      "voice_id": "eve",
+      "provider": "xai",
+      "language": "por",
+      "before": "Obrigado/a, é bom saber. Preciso de aprender mais palavras, e preciso de praticar a ouvir. Não percebo as pessoas muito bem quando não falam devagar.",
+      "after": "Obrigada, é bom saber. Preciso de aprender mais palavras, e preciso de praticar a ouvir. Não percebo as pessoas muito bem quando não falam devagar.",
+      "previous_s3_key": "mastered/E73951EC-7705-4F43-B65B-2A4B498E58D6.mp3",
+      "new_s3_key": "mastered/4E82325E-B506-4726-93E9-4812B964E0CF.mp3",
+      "previous_duration_ms": 9192,
+      "new_duration_ms": 8856,
+      "previous_revision": 1,
+      "revision": 2,
+      "chars": 147,
+      "cost_usd": 0.002352,
+      "rows": [
+        {
+          "id": "por_for_eng:pod-0-unrecorded:SC22-S003",
+          "pod": "pod-0-unrecorded",
+          "scene": 22,
+          "sentence": 3,
+          "speaker": "Learner"
+        },
+        {
+          "id": "por_for_eng:pod-0:SC15-S003",
+          "pod": "pod-0",
+          "scene": 15,
+          "sentence": 3,
+          "speaker": "Learner"
+        }
+      ],
+      "checks": [
+        {
+          "name": "s3_alive",
+          "ok": true,
+          "detail": "HTTP ok, ContentLength 106848"
+        },
+        {
+          "name": "s3_bytes_match",
+          "ok": true,
+          "detail": "106848 vs local 106848"
+        },
+        {
+          "name": "decodable",
+          "ok": true,
+          "detail": "ffprobe 8856ms"
+        },
+        {
+          "name": "duration_agrees",
+          "ok": true,
+          "detail": "ffprobe 8856ms vs mastered 8856ms"
+        },
+        {
+          "name": "not_truncated",
+          "ok": true,
+          "detail": "8856ms vs length-scaled expectation 9069ms (ratio 0.98, old 9192ms)"
+        },
+        {
+          "name": "shorter_than_superseded",
+          "ok": true,
+          "detail": "8856ms vs superseded 9192ms — a clip still speaking both gendered forms cannot be shorter"
+        },
+        {
+          "name": "asr_decoded",
+          "ok": true,
+          "detail": "\"Obrigada, é bom saber.  Preciso de aprender mais palavras e preciso de praticar a ouvir.  Não perceba as pessoas muito bem quando não falam devagar.\""
+        },
+        {
+          "name": "asr_is_speech",
+          "ok": true,
+          "detail": "CER vs corrected text 0.007 (<0.6 = real speech of this content, not silence or the wrong language)"
+        },
+        {
+          "name": "asr_closer_to_corrected",
+          "ok": true,
+          "detail": "CER 0.007 vs corrected < 0.021 vs superseded"
+        },
+        {
+          "name": "asr_slash_form_gone",
+          "ok": true,
+          "detail": "\"obrigado\": nearest decode word \"obrigada\" is 1 from it and 0 from the nearest retained word"
+        },
+        {
+          "name": "asr_speaks_fused_form",
+          "ok": true,
+          "detail": "\"obrigada\" is 0 from obrigada and 1 from superseded obrigado"
+        }
+      ],
+      "asr": {
+        "decode": "Obrigada, é bom saber.  Preciso de aprender mais palavras e preciso de praticar a ouvir.  Não perceba as pessoas muito bem quando não falam devagar.",
+        "cer_vs_new": 0.007,
+        "cer_vs_old": 0.020833333333333332,
+        "reason": "ok",
+        "deleted_forms": [
+          {
+            "deleted_token": "obrigado",
+            "closest_decode_word": "obrigada",
+            "distance_to_deleted": 1,
+            "distance_to_nearest_retained": 0,
+            "still_spoken": false
+          }
+        ],
+        "deleted_forms_advisory": [],
+        "substituted_forms": [
+          {
+            "newTok": "obrigada",
+            "oldTok": "obrigado",
+            "heard": "obrigada",
+            "distance_to_new": 0,
+            "distance_to_superseded": 1,
+            "ok": true
+          }
+        ]
+      },
+      "applied": true
+    },
+    {
+      "clip_id": "1f390ed4-6434-449e-b508-7d9e144d5aca",
+      "course": "por_for_eng",
+      "voice_id": "eve",
+      "before": "Sim, obrigado/a. É mais fácil falar com apenas uma pessoa. É um pouco difícil pensar em algo p'ra dizer, porém. Não sei bem o que dizer, mas sinto que consigo falar o suficiente p'ra começar a ter conversas.",
+      "after": "Sim, obrigada. É mais fácil falar com apenas uma pessoa. É um pouco difícil pensar em algo p'ra dizer, porém. Não sei bem o que dizer, mas sinto que consigo falar o suficiente p'ra começar a ter conversas.",
+      "new_s3_key": "mastered/7448C990-A990-4E6B-B258-16437680A7D3.mp3",
+      "applied": false,
+      "action": "VERIFICATION FAILED — new object left on S3 as evidence, live row untouched, old clip still serving",
+      "checks": [
+        {
+          "name": "s3_alive",
+          "ok": true,
+          "detail": "HTTP ok, ContentLength 148032"
+        },
+        {
+          "name": "s3_bytes_match",
+          "ok": true,
+          "detail": "148032 vs local 148032"
+        },
+        {
+          "name": "decodable",
+          "ok": true,
+          "detail": "ffprobe 12288ms"
+        },
+        {
+          "name": "duration_agrees",
+          "ok": true,
+          "detail": "ffprobe 12288ms vs mastered 12288ms"
+        },
+        {
+          "name": "not_truncated",
+          "ok": true,
+          "detail": "12288ms vs length-scaled expectation 11337ms (ratio 1.08, old 11448ms)"
+        },
+        {
+          "name": "shorter_than_superseded",
+          "ok": false,
+          "detail": "12288ms vs superseded 11448ms — a clip still speaking both gendered forms cannot be shorter"
+        },
+        {
+          "name": "asr_decoded",
+          "ok": true,
+          "detail": "\"Sim, obrigada. É mais fácil falar com apenas uma pessoa.  É um pouco difícil pensar em algo para dizer, porém.  Não sei bem o que dizer, mas sinto que consigo falar o suficiente para começar a ter conversas.\""
+        },
+        {
+          "name": "asr_is_speech",
+          "ok": true,
+          "detail": "CER vs corrected text 0.010 (<0.6 = real speech of this content, not silence or the wrong language)"
+        },
+        {
+          "name": "asr_closer_to_corrected",
+          "ok": true,
+          "detail": "CER 0.010 vs corrected < 0.020 vs superseded"
+        },
+        {
+          "name": "asr_slash_form_gone",
+          "ok": true,
+          "detail": "\"obrigado\": nearest decode word \"obrigada\" is 1 from it and 0 from the nearest retained word"
+        },
+        {
+          "name": "asr_speaks_fused_form",
+          "ok": true,
+          "detail": "\"obrigada\" is 0 from obrigada and 1 from superseded obrigado"
+        }
+      ],
+      "asr": {
+        "decode": "Sim, obrigada. É mais fácil falar com apenas uma pessoa.  É um pouco difícil pensar em algo para dizer, porém.  Não sei bem o que dizer, mas sinto que consigo falar o suficiente para começar a ter conversas.",
+        "cer_vs_new": 0.0101,
+        "cer_vs_old": 0.02,
+        "reason": "ok",
+        "deleted_forms": [
+          {
+            "deleted_token": "obrigado",
+            "closest_decode_word": "obrigada",
+            "distance_to_deleted": 1,
+            "distance_to_nearest_retained": 0,
+            "still_spoken": false
+          }
+        ],
+        "deleted_forms_advisory": [],
+        "substituted_forms": [
+          {
+            "newTok": "obrigada",
+            "oldTok": "obrigado",
+            "heard": "obrigada",
+            "distance_to_new": 0,
+            "distance_to_superseded": 1,
+            "ok": true
+          }
+        ]
+      }
+    },
+    {
+      "clip_id": "d8278819-0801-45bf-af45-6f8474396eb7",
+      "course": "por_for_eng",
+      "voice_id": "rex",
+      "before": "Acho que está a fazer muito bem. Estou impressionado/a. Acho que está pronto/a p'ra começar a falar português com qualquer pessoa que fale português.",
+      "after": "Acho que está a fazer muito bem. Estou impressionado. Acho que está pronta p'ra começar a falar português com qualquer pessoa que fale português.",
+      "new_s3_key": "mastered/5E338048-AE34-4E29-944D-0E3CF7CA9E93.mp3",
+      "applied": false,
+      "action": "VERIFICATION FAILED — new object left on S3 as evidence, live row untouched, old clip still serving",
+      "checks": [
+        {
+          "name": "s3_alive",
+          "ok": true,
+          "detail": "HTTP ok, ContentLength 91296"
+        },
+        {
+          "name": "s3_bytes_match",
+          "ok": true,
+          "detail": "91296 vs local 91296"
+        },
+        {
+          "name": "decodable",
+          "ok": true,
+          "detail": "ffprobe 7560ms"
+        },
+        {
+          "name": "duration_agrees",
+          "ok": true,
+          "detail": "ffprobe 7560ms vs mastered 7560ms"
+        },
+        {
+          "name": "not_truncated",
+          "ok": true,
+          "detail": "7560ms vs length-scaled expectation 6983ms (ratio 1.08, old 7176ms)"
+        },
+        {
+          "name": "shorter_than_superseded",
+          "ok": false,
+          "detail": "7560ms vs superseded 7176ms — a clip still speaking both gendered forms cannot be shorter"
+        },
+        {
+          "name": "asr_decoded",
+          "ok": true,
+          "detail": "\"Acho que está a fazer muito bem. Estou impressionado.  Acho que está pronta para começar a falar português com qualquer pessoa que fala português.\""
+        },
+        {
+          "name": "asr_is_speech",
+          "ok": true,
+          "detail": "CER vs corrected text 0.014 (<0.6 = real speech of this content, not silence or the wrong language)"
+        },
+        {
+          "name": "asr_closer_to_corrected",
+          "ok": true,
+          "detail": "CER 0.014 vs corrected < 0.041 vs superseded"
+        },
+        {
+          "name": "asr_slash_form_gone",
+          "ok": true,
+          "detail": "\"pronto\": nearest decode word \"pronta\" is 1 from it and 0 from the nearest retained word"
+        },
+        {
+          "name": "asr_speaks_fused_form",
+          "ok": true,
+          "detail": "\"pronta\" is 0 from pronta and 1 from superseded pronto"
+        }
+      ],
+      "asr": {
+        "decode": "Acho que está a fazer muito bem. Estou impressionado.  Acho que está pronta para começar a falar português com qualquer pessoa que fala português.",
+        "cer_vs_new": 0.0141,
+        "cer_vs_old": 0.0410958904109589,
+        "reason": "ok",
+        "deleted_forms": [
+          {
+            "deleted_token": "pronto",
+            "closest_decode_word": "pronta",
+            "distance_to_deleted": 1,
+            "distance_to_nearest_retained": 0,
+            "still_spoken": false
+          }
+        ],
+        "deleted_forms_advisory": [],
+        "substituted_forms": [
+          {
+            "newTok": "pronta",
+            "oldTok": "pronto",
+            "heard": "pronta",
+            "distance_to_new": 0,
+            "distance_to_superseded": 1,
+            "ok": true
+          }
+        ]
+      }
+    },
+    {
+      "clip_id": "6f864b1f-e016-4be2-87a0-14dc4040046f",
+      "course": "por_for_eng",
+      "action": "render",
+      "voice_id": "eve",
+      "provider": "xai",
+      "language": "por",
+      "before": "É exatamente o tipo de prática de que preciso. Acho que consigo sentir que está a mudar o meu cérebro enquanto falamos! Agradeço mesmo a sua ajuda. Mas é surpreendente como fico cansado/a quando estou a falar numa língua que não falo muito bem.",
+      "after": "É exatamente o tipo de prática de que preciso. Acho que consigo sentir que está a mudar o meu cérebro enquanto falamos! Agradeço mesmo a sua ajuda. Mas é surpreendente como fico cansada quando estou a falar numa língua que não falo muito bem.",
+      "previous_s3_key": "mastered/7C7FB676-2303-475B-8059-ED550B0CF4DE.mp3",
+      "new_s3_key": "mastered/BE58EA92-7E68-4648-8B11-7072DB653D0C.mp3",
+      "previous_duration_ms": 14040,
+      "new_duration_ms": 13896,
+      "previous_revision": 1,
+      "revision": 2,
+      "chars": 242,
+      "cost_usd": 0.003872,
+      "rows": [
+        {
+          "id": "por_for_eng:pod-0-unrecorded:SC22-S009",
+          "pod": "pod-0-unrecorded",
+          "scene": 22,
+          "sentence": 9,
+          "speaker": "Learner"
+        },
+        {
+          "id": "por_for_eng:pod-0:SC15-S009",
+          "pod": "pod-0",
+          "scene": 15,
+          "sentence": 9,
+          "speaker": "Learner"
+        }
+      ],
+      "checks": [
+        {
+          "name": "s3_alive",
+          "ok": true,
+          "detail": "HTTP ok, ContentLength 167328"
+        },
+        {
+          "name": "s3_bytes_match",
+          "ok": true,
+          "detail": "167328 vs local 167328"
+        },
+        {
+          "name": "decodable",
+          "ok": true,
+          "detail": "ffprobe 13896ms"
+        },
+        {
+          "name": "duration_agrees",
+          "ok": true,
+          "detail": "ffprobe 13896ms vs mastered 13896ms"
+        },
+        {
+          "name": "not_truncated",
+          "ok": true,
+          "detail": "13896ms vs length-scaled expectation 13925ms (ratio 1.00, old 14040ms)"
+        },
+        {
+          "name": "shorter_than_superseded",
+          "ok": true,
+          "detail": "13896ms vs superseded 14040ms — a clip still speaking both gendered forms cannot be shorter"
+        },
+        {
+          "name": "asr_decoded",
+          "ok": true,
+          "detail": "\"É exatamente o tipo de prática de que preciso.  Acho que consigo sentir que está a mudar o meu cérebro enquanto falamos.  Agradeço mesmo à sua ajuda.  Mas é surpreendente como fico cansada quando estou a falar numa língua que não falo muito bem.\""
+        },
+        {
+          "name": "asr_is_speech",
+          "ok": true,
+          "detail": "CER vs corrected text 0.000 (<0.6 = real speech of this content, not silence or the wrong language)"
+        },
+        {
+          "name": "asr_closer_to_corrected",
+          "ok": true,
+          "detail": "CER 0.000 vs corrected < 0.008 vs superseded"
+        },
+        {
+          "name": "asr_slash_form_gone",
+          "ok": true,
+          "detail": "\"cansado\": nearest decode word \"cansada\" is 1 from it and 0 from the nearest retained word"
+        },
+        {
+          "name": "asr_speaks_fused_form",
+          "ok": true,
+          "detail": "\"cansada\" is 0 from cansada and 1 from superseded cansado"
+        }
+      ],
+      "asr": {
+        "decode": "É exatamente o tipo de prática de que preciso.  Acho que consigo sentir que está a mudar o meu cérebro enquanto falamos.  Agradeço mesmo à sua ajuda.  Mas é surpreendente como fico cansada quando estou a falar numa língua que não falo muito bem.",
+        "cer_vs_new": 0,
+        "cer_vs_old": 0.008333333333333333,
+        "reason": "ok",
+        "deleted_forms": [
+          {
+            "deleted_token": "cansado",
+            "closest_decode_word": "cansada",
+            "distance_to_deleted": 1,
+            "distance_to_nearest_retained": 0,
+            "still_spoken": false
+          }
+        ],
+        "deleted_forms_advisory": [],
+        "substituted_forms": [
+          {
+            "newTok": "cansada",
+            "oldTok": "cansado",
+            "heard": "cansada",
+            "distance_to_new": 0,
+            "distance_to_superseded": 1,
+            "ok": true
+          }
+        ]
+      },
+      "applied": true
+    }
+  ],
+  "summary": {
+    "rendered": 27,
+    "relinked": 1,
+    "failed": 9,
+    "chars": 2551,
+    "cost_usd": 0.0408
+  }
+}

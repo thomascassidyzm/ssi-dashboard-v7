@@ -3,14 +3,19 @@
   <router-view />
 
   <!-- Theme toggle now lives in the account menu (AppNavbar) — see ThemeToggle item there. -->
-  <div class="build-label">
+  <!-- The build sha is for us, not for a recordist. On a public surface it is
+       one more piece of internal bookkeeping on a human's screen, which is the
+       whole thing Tom asked us to take off it. -->
+  <div v-if="!route.meta.public" class="build-label">
     {{ gitCommit }}
   </div>
 </template>
 
 <script setup>
+import { useRoute } from 'vue-router'
 import AppNavbar from './components/AppNavbar.vue'
 
+const route = useRoute()
 const gitCommit = __GIT_COMMIT__
 </script>
 

@@ -158,7 +158,7 @@
                   <td class="px-3 py-2 text-muted whitespace-nowrap">{{ c.role }}</td>
                   <td class="px-3 py-2 text-muted whitespace-nowrap">
                     <code class="bg-surface px-1 py-0.5 rounded">{{ c.voiceId }}</code>
-                    <div class="text-faint mt-0.5">{{ c.language }}</div>
+                    <div class="text-faint mt-0.5">{{ getLanguageName(c.language) }}</div>
                   </td>
                   <td class="px-3 py-2 text-ink max-w-xs">
                     {{ c.text }}
@@ -174,7 +174,7 @@
                   <td class="px-3 py-2 text-muted max-w-xs">{{ c.reason }}</td>
                   <td class="px-3 py-2 text-muted whitespace-nowrap">
                     <template v-if="c.decision === 'REUSE_CROSS' && c.reuseSource">
-                      <span class="text-blue-400">{{ c.reuseSource.courseCode }}</span>
+                      <span class="text-blue-400">{{ getCourseName(c.reuseSource.courseCode) }}</span>
                     </template>
                     <template v-else-if="c.decision === 'REUSE_OWN'">
                       <span class="text-faint">this course</span>
@@ -274,6 +274,7 @@
 <script setup lang="ts">
 import { ref, computed, watch } from 'vue'
 import { getApiUrl } from '@/services/api'
+import { useCourses } from '@/composables/useCourses'
 import VoiceCoverageTable from './VoiceCoverageTable.vue'
 
 const props = defineProps<{
@@ -283,6 +284,7 @@ const props = defineProps<{
 
 const emit = defineEmits<{ (e: 'started'): void }>()
 
+const { getCourseName, getLanguageName } = useCourses()
 const apiBaseUrl = getApiUrl()
 const HEADERS = { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' }
 
@@ -437,7 +439,7 @@ const loadPlan = async () => {
 const runGeneration = async () => {
   if (!canGenerate.value) return
   const confirmed = confirm(
-    `This will render ${summary.value.render} new clips for ${props.courseCode} ` +
+    `This will render ${summary.value.render} new clips for ${getCourseName(props.courseCode)} ` +
     `(rounds 1-${plan.value?.rounds}), about ${plan.value?.estimate?.characters || 0} characters of TTS.\n\n` +
     `${(summary.value.reuseOwn || 0) + (summary.value.reuseCross || 0)} clips will be relinked from existing recordings first. Nothing is deleted.\n\n` +
     `This costs money. Continue?`

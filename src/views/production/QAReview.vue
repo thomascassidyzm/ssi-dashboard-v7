@@ -5,7 +5,7 @@
       <div class="flex items-center gap-4">
         <h2 class="text-lg font-semibold text-ink">QA Review</h2>
         <span class="px-3 py-1 bg-surface-2 border border-line rounded text-sm font-mono text-accent-2 qa-code">
-          {{ courseCode }}
+          {{ getCourseName(courseCode) }}
         </span>
       </div>
       <div class="flex items-center gap-3 text-sm">
@@ -150,11 +150,13 @@ import { getApiUrl } from '@/services/api'
 import { isConfigured as isSupabaseConfigured, getQAFlags, getQASummary } from '@/services/supabase'
 import HowThisWorks from '@/components/explainer/HowThisWorks.vue'
 import NoticingInvitations from '@/components/explainer/NoticingInvitations.vue'
+import { useCourses } from '@/composables/useCourses'
 
 const props = defineProps({
   courseCode: { type: String, required: true }
 })
 
+const { getCourseName } = useCourses()
 const builderApiUrl = getApiUrl()
 
 const loading = ref(true)

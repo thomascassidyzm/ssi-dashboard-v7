@@ -67,39 +67,6 @@
  * Exit code 0 = fully verified (informational-only issues may still be
  * printed); exit code 1 = at least one scored failure (dangling ref, text
  * mismatch, off-cast, or unserved clip).
- *
- * ---------------------------------------------------------------------------
- * VARIANT RUNS SPLIT ACROSS TWO VOICES (added 2026-08-24, Tom's ruling)
- *
- * A defect class of its own, and NOT an off-cast clip. In the Italian pod-1
- * case both voices were legitimately in the cast, every clip was on-cast, and
- * `checkPodCast` went green — while scene 21 had one character saying "It's
- * down there on the left", then "It's down there on the right", then, asked to
- * repeat, "Yes, I said it's over there". Nothing on the estate could see it,
- * because nothing was measuring the RUN. Tom, on being told the rule had been
- * written down: "That's just common sense though. Should just be what happens
- * in casting, right?"
- *
- * So this gate now reports, per pod, every variant run whose lines are split
- * across two voices on either track, naming the rows and quoting the
- * contradiction in plain English. The rule itself lives in
- * tools/pods/variant-run.cjs and is not restated here.
- *
- * IT IS COUNTED SEPARATELY AND DOES NOT FLIP THE VERDICT. Two reasons, and the
- * second is the load-bearing one. First, it is a content-attribution defect,
- * not a broken clip — nothing is missing, mis-served or off-cast. Second, this
- * is a PERMANENT release gate that people run to decide whether pod work is
- * safe to ship, and quietly widening what FAIL means would retro-fail work that
- * is fine today; the read-only fleet census of all 22 live pod-1 courses on
- * 2026-08-24 found 462 variant runs and ZERO of them split, so the count is
- * expected to be 0 and a non-zero one is news. `--variant-runs-blocking` makes
- * it scored, for whoever wants it in a pipeline.
- *
- * A variant run wholly on ONE voice is the CORRECT state and is never reported.
- * The all-learner practice scenes (Italian 18 and 19) have no second speaker by
- * design — Aran's chunk ruling of 2026-08-06 — and produce nothing here.
- *
- * READ-ONLY, unchanged: this check adds no write of any kind.
  */
 
 'use strict'
@@ -107,7 +74,6 @@
 const fs = require('fs')
 const path = require('path')
 const { Client } = require('pg')
-const { splitVariantRuns } = require('./variant-run.cjs')
 
 const COURSE = process.argv[2]
 const jsonOutIdx = process.argv.indexOf('--json-out')
@@ -115,11 +81,9 @@ const JSON_OUT = jsonOutIdx > -1 ? process.argv[jsonOutIdx + 1] : null
 const concIdx = process.argv.indexOf('--concurrency')
 const CONCURRENCY = concIdx > -1 ? Number(process.argv[concIdx + 1]) : 24
 const PROD_BASE = process.env.POD_AUDIO_BASE || 'https://saysomethingin.app/api/audio'
-/** Variant-run splits are counted separately by default — see the header. */
-const VARIANT_RUNS_BLOCKING = process.argv.includes('--variant-runs-blocking')
 
 if (!COURSE) {
-  console.error('usage: verify-pod-audio-fidelity.cjs <course_code> [--json-out <path>] [--concurrency N] [--variant-runs-blocking]')
+  console.error('usage: verify-pod-audio-fidelity.cjs <course_code> [--json-out <path>] [--concurrency N]')
   process.exit(2)
 }
 
@@ -263,23 +227,7 @@ async function main () {
     if (!clips[id]) continue // already counted as dangling
   }
 
-  // --- VARIANT RUNS SPLIT ACROSS TWO VOICES (see header) --------------------
-  // Not an off-cast clip: both voices are legitimately in the cast, which is
-  // exactly why nothing caught this. Measured per track from the whole-turn
-  // link each row actually holds.
-  const voiceOn = (col) => (r) => {
-    const clip = clips[r[col]]
-    return clip ? clip.voice : null
-  }
-  const variantSplits = []
-  for (const [track, col] of [['target', 'target_audio_id'], ['known', 'known_audio_id']]) {
-    for (const split of splitVariantRuns(rows, voiceOn(col))) {
-      variantSplits.push({ ...split, track, column: col })
-    }
-  }
-
   const scored = findings.filter((f) => f.mode !== 'informational')
-    .concat(VARIANT_RUNS_BLOCKING ? variantSplits.map((v) => ({ row: `s${v.scene}`, col: v.column, kind: 'variant-run-split', detail: v.reason, mode: 'variant' })) : [])
   const informational = findings.filter((f) => f.mode === 'informational')
 
   const summary = {
@@ -290,31 +238,17 @@ async function main () {
     scored_failures: scored.length,
     by_kind: scored.reduce((acc, f) => { acc[f.kind] = (acc[f.kind] || 0) + 1; return acc }, {}),
     informational_count: informational.length,
-    variant_run_splits: variantSplits.length,
-    variant_runs_blocking: VARIANT_RUNS_BLOCKING,
     verdict: scored.length === 0 ? 'REPAIRED+VERIFIED' : 'FAILED',
   }
 
   console.log(JSON.stringify(summary, null, 1))
-
-  if (variantSplits.length) {
-    console.log(`\nVARIANT RUNS SPLIT ACROSS TWO VOICES: ${variantSplits.length}` +
-      (VARIANT_RUNS_BLOCKING ? '  [BLOCKING — --variant-runs-blocking]' : '  [counted separately, does not flip the verdict]'))
-    console.log('  This is NOT an off-cast clip. Both voices are in the cast — that is why nothing caught it.')
-    console.log("  Tom's ruling, 2026-08-24: a variant drill gives its alternative responses in ONE voice.")
-    for (const v of variantSplits) {
-      console.log(`  ${v.track} ${v.runId} ${v.speaker}: lines ${v.labels.join(', ')} split across ${v.voices.join(' / ')}`)
-      for (const [voice, labels] of Object.entries(v.byVoice)) console.log(`      ${voice}: ${labels.join(', ')}`)
-      console.log(`      ${v.reason}`)
-    }
-  }
   if (scored.length) {
     console.log('\nFAILURES (first 30):')
     for (const f of scored.slice(0, 30)) console.log(`  ${f.row} ${f.col} [${f.kind}] id=${f.id} ${f.detail}`)
   }
 
   if (JSON_OUT) {
-    fs.writeFileSync(JSON_OUT, JSON.stringify({ summary, findings, variantSplits, generated_at: new Date().toISOString() }, null, 1))
+    fs.writeFileSync(JSON_OUT, JSON.stringify({ summary, findings, generated_at: new Date().toISOString() }, null, 1))
     console.log(`\nfull report: ${JSON_OUT}`)
   }
 

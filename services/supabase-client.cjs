@@ -17,6 +17,8 @@ const { createClient } = require('@supabase/supabase-js')
 const createLogger = require('./shared/logger.cjs')
 const { generateSampleId, normalizeText: uuidNormalizeText } = require('./uuid-v11.cjs')
 const { normalizeForAudio } = require('./shared/text-normalize.cjs')
+const { canonicalLanguage, canonicalVoiceId } = require('./shared/clip-identity.cjs')
+const { pickPreferredAudioRow } = require('./shared/audio-link-preference.cjs')
 
 const logger = createLogger('Supabase')
 
@@ -268,32 +270,77 @@ async function updateCourseStatus(courseCode, status, newAppStatus = null) {
 // =============================================================================
 
 /**
- * Check if course audio exists by course, text, language, and role
+ * Why these lookups no longer use `.single()`.
+ *
+ * PostgREST returns the SAME error code — PGRST116 — for "zero rows" and for
+ * "more than one row". This file used to write `if (error.code !== 'PGRST116')
+ * throw` and then treat the row as absent, which reads the second case as the
+ * first: where spelling drift has put two rows on one identity, the lookup
+ * reported the clip MISSING and the caller went and paid to render it again.
+ * Exactly the wrong answer, in the expensive direction, and silent.
+ *
+ * So: select up to two rows and decide explicitly. Zero is absent. One is the
+ * answer. Two or more is a real, reportable condition — the row is present, it
+ * is logged with the colliding ids, and the preferred row (human beats TTS,
+ * then newest) is returned rather than the arbitrary first.
+ */
+const MULTIPLICITY_PROBE = 2
+
+function logMultiplicity(fn, rows, filters) {
+  logger.warn(
+    `${fn}: ${rows.length}+ rows share one identity ${JSON.stringify(filters)} — ` +
+    `ids ${rows.map(r => r.id).join(', ')}. Reporting PRESENT and returning the preferred row; ` +
+    `previously this reported ABSENT and caused a repeat render.`
+  )
+}
+
+/**
+ * Check if course audio exists by course, text, language, role and voice.
  *
  * @param {string} courseCode
  * @param {string} text
- * @param {string} language
+ * @param {string} language canonicalised before the query
  * @param {string} role
+ * @param {string} [voiceId] canonicalised; when given, scopes the check to one voice
  * @returns {Promise<boolean>}
  */
-async function courseAudioExists(courseCode, text, language, role) {
+async function courseAudioExists(courseCode, text, language, role, voiceId) {
   if (!supabase) throw new Error('Supabase not initialized')
 
-  const textNormalized = normalizeText(text)
+  // Named explicitly because there IS a caller doing this: phase9-manifest-
+  // compiler.cjs (:274, :302, :434, :450) passes a single UUID against this
+  // four-argument signature, so `language` and `role` arrive undefined and the
+  // query becomes `language=eq.undefined` — an existence check that can never
+  // return true. It has been silently answering "missing" for every clip. Now
+  // it says so instead of lying.
+  if (language == null) {
+    throw new Error(
+      'courseAudioExists(courseCode, text, language, role, voiceId): language is required. ' +
+      'A single-argument call (see phase9-manifest-compiler.cjs) has never worked — ' +
+      'it queried language=eq.undefined and always reported the clip missing.'
+    )
+  }
 
-  const { data, error } = await supabase
+  const textNormalized = normalizeText(text)
+  const lang = canonicalLanguage(language)
+
+  let query = supabase
     .from('course_audio')
     .select('id')
     .eq('course_code', courseCode)
     .eq('text_normalized', textNormalized)
-    .eq('language', language)
+    .eq('language', lang)
     .eq('role', role)
-    .single()
+  if (voiceId != null) query = query.eq('voice_id', canonicalVoiceId(voiceId))
 
-  if (error && error.code !== 'PGRST116') {
-    throw error
+  const { data, error } = await query.limit(MULTIPLICITY_PROBE)
+  if (error) throw error
+
+  const rows = data || []
+  if (rows.length >= MULTIPLICITY_PROBE) {
+    logMultiplicity('courseAudioExists', rows, { courseCode, textNormalized, language: lang, role, voiceId })
   }
-  return !!data
+  return rows.length > 0
 }
 
 /**
@@ -318,32 +365,51 @@ async function getCourseAudio(id) {
 }
 
 /**
- * Find course audio by text, language, and role
+ * Find course audio by text, language, role and voice.
+ *
+ * `voiceId` is part of a clip's identity, and leaving it out of this lookup was
+ * a live defect: upsertCourseAudio uses this as its pre-check, so a row found
+ * without regard to voice was then UPDATEd — rewriting an existing clip's
+ * voice_id and s3_key in place instead of creating the sibling row a different
+ * voice deserves. The row for voice A silently became a row for voice B, and
+ * anything already linked to it started playing the wrong voice.
+ *
+ * Pass `voiceId` whenever you have it. It stays optional only because this is
+ * an exported helper with callers outside this repo's view; omitting it means
+ * the result is NOT identity-scoped and must not be used as an upsert target.
  *
  * @param {string} courseCode
  * @param {string} text
- * @param {string} language
+ * @param {string} language canonicalised before the query
  * @param {string} role
+ * @param {string} [voiceId] canonicalised; scopes the lookup to one voice
  * @returns {Promise<Object|null>}
  */
-async function findCourseAudio(courseCode, text, language, role) {
+async function findCourseAudio(courseCode, text, language, role, voiceId) {
   if (!supabase) throw new Error('Supabase not initialized')
 
   const textNormalized = normalizeText(text)
+  const lang = canonicalLanguage(language)
 
-  const { data, error } = await supabase
+  let query = supabase
     .from('course_audio')
     .select('*')
     .eq('course_code', courseCode)
     .eq('text_normalized', textNormalized)
-    .eq('language', language)
+    .eq('language', lang)
     .eq('role', role)
-    .single()
+  if (voiceId != null) query = query.eq('voice_id', canonicalVoiceId(voiceId))
 
-  if (error && error.code !== 'PGRST116') {
-    throw error
+  const { data, error } = await query.limit(MULTIPLICITY_PROBE)
+  if (error) throw error
+
+  const rows = data || []
+  if (!rows.length) return null
+  if (rows.length >= MULTIPLICITY_PROBE) {
+    logMultiplicity('findCourseAudio', rows, { courseCode, textNormalized, language: lang, role, voiceId })
+    return rows.reduce((a, b) => pickPreferredAudioRow(a, b), null)
   }
-  return data
+  return rows[0]
 }
 
 /**
@@ -358,6 +424,7 @@ async function insertCourseAudio({
   language,
   role,
   voiceId,
+  provider,
   origin,
   s3Key,
   durationMs = null,
@@ -373,9 +440,9 @@ async function insertCourseAudio({
       course_code: courseCode,
       text,
       text_normalized: textNormalized,
-      language,
+      language: canonicalLanguage(language),
       role,
-      voice_id: voiceId,
+      voice_id: canonicalVoiceId(voiceId, { provider }),
       origin,
       s3_key: s3Key,
       duration_ms: durationMs,
@@ -389,9 +456,17 @@ async function insertCourseAudio({
 }
 
 /**
- * Upsert course audio (insert or update on conflict)
+ * Upsert course audio (insert or update on conflict).
+ *
+ * The pre-check is VOICE-SCOPED. It did not used to be, and that made this
+ * function a clip-clobberer: it found the row for whatever voice happened to
+ * hold the (course, text, language, role) slot and UPDATEd its voice_id and
+ * s3_key to the new voice's, instead of inserting the sibling row a second
+ * voice needs. Scoping the lookup means a different voice now finds nothing and
+ * inserts — one row per voice, which is what the identity key says.
  *
  * @param {Object} params
+ * @param {string} [params.provider] provider for an unprefixed voice id
  * @returns {Promise<Object>}
  */
 async function upsertCourseAudio({
@@ -400,6 +475,7 @@ async function upsertCourseAudio({
   language,
   role,
   voiceId,
+  provider,
   origin,
   s3Key,
   durationMs = null,
@@ -407,17 +483,17 @@ async function upsertCourseAudio({
 }) {
   if (!supabase) throw new Error('Supabase not initialized')
 
-  const textNormalized = normalizeText(text)
+  const canonicalVoice = canonicalVoiceId(voiceId, { provider })
 
-  // First try to find existing
-  const existing = await findCourseAudio(courseCode, text, language, role)
+  // First try to find existing — same voice only (see the note above).
+  const existing = await findCourseAudio(courseCode, text, language, role, canonicalVoice)
 
   if (existing) {
     // Update existing
     const { data, error } = await supabase
       .from('course_audio')
       .update({
-        voice_id: voiceId,
+        voice_id: canonicalVoice,
         origin,
         s3_key: s3Key,
         duration_ms: durationMs,
@@ -437,6 +513,7 @@ async function upsertCourseAudio({
       language,
       role,
       voiceId,
+      provider,
       origin,
       s3Key,
       durationMs,

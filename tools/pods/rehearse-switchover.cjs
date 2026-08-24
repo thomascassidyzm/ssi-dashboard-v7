@@ -62,8 +62,10 @@ async function main () {
   try {
     await dropScratch(db)
     await db.query(
-      `insert into listening_pods (id, course_code, pod_type, slug, pod_order, title, scene, difficulty, speakers, source_file, metadata)
-       select replace(id, $1 || ':', $2 || ':'), $2, pod_type, slug, pod_order, title, scene, difficulty, speakers, source_file, metadata
+      // `visibility` copied too — a rehearsal against a copy whose pods are all
+      // live would not rehearse a held course at all (Tom, 2026-08-23).
+      `insert into listening_pods (id, course_code, pod_type, slug, pod_order, title, scene, difficulty, speakers, source_file, metadata, visibility)
+       select replace(id, $1 || ':', $2 || ':'), $2, pod_type, slug, pod_order, title, scene, difficulty, speakers, source_file, metadata, visibility
          from listening_pods where course_code = $1`, [COURSE, SCRATCH])
     // Copy every column so the clone's canon — text, audio ids, ordering — is identical to
     // the real one. A rehearsal against a thinner copy would prove less than it looks.

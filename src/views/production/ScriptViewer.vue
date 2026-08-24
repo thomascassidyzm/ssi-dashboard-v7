@@ -88,6 +88,18 @@
               >
                 {{ missingAudioOnly ? 'Missing audio only ✓' : 'Missing audio only' }}
               </button>
+              <!-- Whole-course sweep. "Missing audio only" above can only filter
+                   the 20 rounds this page has loaded, so a 1,400-round course
+                   takes 70 pages to audit. This runs the same check over every
+                   round at once, server-side (audio-preview/missing-clips). -->
+              <button
+                @click="toggleCourseGaps"
+                :class="courseGapsOpen ? 'bg-amber-700 text-amber-50 hover:bg-amber-600' : 'text-ink hover:text-ink bg-surface-2 hover:bg-surface-3'"
+                class="px-3 py-1.5 text-sm rounded transition-colors"
+                title="Every missing clip in the WHOLE course in one report — the same check as Missing audio only, run across every round instead of the 20 on this page. Takes a few seconds the first time."
+              >
+                {{ courseGapsOpen ? 'Whole-course audio report ✓' : 'Whole-course audio report' }}
+              </button>
               <button
                 @click="exportLearnerScript"
                 :disabled="!learningJourneyData"
@@ -194,6 +206,16 @@
 
       <!-- Learning Journey View Mode -->
       <template v-else>
+        <!-- Whole-course missing-audio report — every round at once, not just
+             the 20 loaded here. Same component the Audio Preview page uses, so
+             the two surfaces can never quote different numbers. -->
+        <AudioPreviewCourseGaps
+          v-if="courseGapsOpen"
+          :gaps="courseGaps"
+          :loading="courseGapsLoading"
+          :error="courseGapsError"
+        />
+
         <!-- Loading Journey -->
         <div v-if="isLoadingJourney" class="loading-state flex items-center justify-center h-64">
           <div class="text-center">
@@ -233,6 +255,7 @@
           :is-loading="isLoadingJourney"
           :hide-controls="true"
           :flagged-phrase-ids="journeyFlaggedPhraseIds"
+          :can-edit-mapping="canEditMapping"
           @playback-state="onJourneyPlaybackState"
           @item-edit="onJourneyItemEdit"
           @presentation-edit="onJourneyPresentationEdit"
@@ -302,9 +325,13 @@
           <!-- Current Item Text -->
           <div class="item-text flex-1 min-w-0">
             <div class="flex items-center gap-2 text-sm">
-              <span class="text-muted truncate">{{ journeyPlayback.currentItem.known_text || '' }}</span>
+              <span class="text-muted truncate bidi-isolate" :dir="dirFor(journeyPlayback.currentItem.known_text)">{{ journeyPlayback.currentItem.known_text || '' }}</span>
               <span class="text-faint flex-shrink-0">&rarr;</span>
-              <span class="text-ink truncate">{{ journeyPlayback.currentItem.target_text || '' }}</span>
+              <span
+                class="text-ink truncate text-left"
+                :dir="dirFor(journeyPlayback.currentItem.target_text || '')"
+                style="unicode-bidi: isolate"
+              >{{ journeyPlayback.currentItem.target_text || '' }}</span>
             </div>
           </div>
 
@@ -442,7 +469,11 @@
               <div class="text-sm text-muted">
                 <span class="text-ink">{{ presentationKnownText }}</span>
                 <span class="mx-2 text-faint">&rarr;</span>
-                <span class="text-ink">{{ presentationTargetText }}</span>
+                <span
+                  class="text-ink"
+                  :dir="dirFor(presentationTargetText)"
+                  style="unicode-bidi: isolate"
+                >{{ presentationTargetText }}</span>
               </div>
 
               <!-- Loading current text -->
@@ -562,7 +593,11 @@
                 <div class="text-sm">
                   <span class="text-ink">{{ legoAudioKnownText }}</span>
                   <span class="mx-2 text-faint">&rarr;</span>
-                  <span class="text-ink">{{ legoAudioTargetText }}</span>
+                  <span
+                    class="text-ink"
+                    :dir="dirFor(legoAudioTargetText)"
+                    style="unicode-bidi: isolate"
+                  >{{ legoAudioTargetText }}</span>
                 </div>
                 <p class="text-xs text-faint">
                   The LEGO text cannot be edited here — every BUILD phrase contains it, so a change would cascade across the course.
@@ -601,6 +636,7 @@
                 <input
                   v-model="legoSpokenTarget"
                   type="text"
+                  :dir="dirFor(legoSpokenTarget)"
                   class="w-full px-3 py-2 text-sm bg-canvas text-ink rounded border border-line focus:border-purple-500 focus:outline-none"
                 />
                 <div class="flex items-center gap-1.5">
@@ -641,7 +677,11 @@
                   <span class="voice-badge inline-flex items-center gap-0.5 text-xs font-medium text-muted px-1.5 py-0.5 bg-surface-3 rounded">
                     <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 7a3 3 0 11-6 0 3 3 0 016 0zM6 20a6 6 0 0112 0"/></svg>Voice 1
                   </span>
-                  <span class="text-xs text-faint truncate">{{ legoSpokenTarget }}</span>
+                  <span
+                    class="text-xs text-faint truncate text-left"
+                    :dir="dirFor(legoSpokenTarget)"
+                    style="unicode-bidi: isolate"
+                  >{{ legoSpokenTarget }}</span>
                 </label>
                 <label class="flex items-center gap-3 p-3 rounded-lg border-2 cursor-pointer"
                   :class="legoRegenFlags.target2 ? 'border-emerald-500 bg-emerald-500 bg-opacity-10' : 'border-line'">
@@ -649,12 +689,19 @@
                   <span class="voice-badge inline-flex items-center gap-0.5 text-xs font-medium text-muted px-1.5 py-0.5 bg-surface-3 rounded">
                     <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 7a3 3 0 11-6 0 3 3 0 016 0zM6 20a6 6 0 0112 0"/></svg>Voice 2
                   </span>
-                  <span class="text-xs text-faint truncate">{{ legoSpokenTarget }}</span>
+                  <span
+                    class="text-xs text-faint truncate text-left"
+                    :dir="dirFor(legoSpokenTarget)"
+                    style="unicode-bidi: isolate"
+                  >{{ legoSpokenTarget }}</span>
                 </label>
               </div>
 
               <!-- Result / audition per role -->
               <div v-if="legoAudioResults.length" class="bg-emerald-900 bg-opacity-20 border border-emerald-800 rounded-lg p-3 space-y-3">
+                <div class="text-xs text-emerald-400">
+                  Live on this LEGO already — nothing to save. Not right? Change the punctuation and regenerate again.
+                </div>
                 <div v-for="r in legoAudioResults" :key="r.role" class="space-y-1">
                   <div class="text-sm text-emerald-300">
                     {{ r.label }} — {{ r.durationMs }}ms · spoke &ldquo;{{ r.spoken }}&rdquo;
@@ -662,6 +709,11 @@
                   <audio v-if="r.url" :src="r.url" controls class="w-full h-9"></audio>
                   <div v-else class="text-xs text-faint">Regenerated, but no audition URL available.</div>
                 </div>
+              </div>
+
+              <!-- Nothing went wrong, but a role was deliberately left alone -->
+              <div v-if="legoAudioNotice" class="bg-amber-900 bg-opacity-20 border border-amber-800 rounded-lg p-3 text-sm text-amber-200">
+                {{ legoAudioNotice }}
               </div>
 
               <div v-if="legoAudioError" class="bg-red-900 bg-opacity-20 border border-red-800 rounded-lg p-3 text-sm text-red-300">
@@ -806,9 +858,13 @@
                   :key="item.phrase_id"
                   class="flex items-center gap-3 p-2 bg-surface-2 rounded text-sm"
                 >
-                  <span class="text-muted truncate flex-1">{{ item.known_text }}</span>
+                  <span class="text-muted truncate flex-1 bidi-isolate" :dir="dirFor(item.known_text)">{{ item.known_text }}</span>
                   <span class="text-faint">&rarr;</span>
-                  <span class="text-ink truncate flex-1">{{ item.target_text }}</span>
+                  <span
+                    class="text-ink truncate flex-1 text-left"
+                    :dir="dirFor(item.target_text)"
+                    style="unicode-bidi: isolate"
+                  >{{ item.target_text }}</span>
                   <button
                     @click="onRemoveJourneyFlaggedPhrase(item.phrase_id)"
                     class="text-faint hover:text-red-400 flex-shrink-0"
@@ -921,8 +977,10 @@ import { useRoute } from 'vue-router';
 import AudioPlayer from './components/AudioPlayer.vue';
 import PhraseEditModal from './components/PhraseEditModal.vue';
 import LearningJourneyView from './components/LearningJourneyView.vue';
+import AudioPreviewCourseGaps from './components/AudioPreviewCourseGaps.vue';
 import { getApiUrl } from '@/services/api';
 import { useAuth } from '@/composables/useAuth.js';
+import { dirFor } from '@/utils/textDirection.js';
 // CyclePlayer removed - not useful for QA workflow
 import type {
   SeedRowData,
@@ -989,6 +1047,10 @@ const learningJourneyData = ref<{
   totalLegoCount?: number;
 } | null>(null);
 const isLoadingJourney = ref(false);
+// Whether this user may re-pair a word mapping in the journey rows. Decided by
+// the API (editor/admin), not by the client; the client only uses it to avoid
+// offering a gesture that would be refused.
+const canEditMapping = ref(false);
 const journeyError = ref<string | null>(null);
 
 // Server-side pagination for journey view (20 LEGOs per page)
@@ -1299,9 +1361,59 @@ const toggleMissingAudioOnly = () => {
   }
 };
 
+// ── Whole-course missing-audio report ─────────────────────────────────────
+// "Missing audio only" above can only filter the rounds this page has loaded —
+// 20 at a time — so auditing a 1,400-round course by hand means 70 pages. The
+// server already runs the same check over the whole journey for the Audio
+// Preview page (audio-preview/missing-clips, ~7.5s uncached, cached 60s); this
+// just brings that report to the surface where a reviewer is already reading
+// the script. Read-only, and it never touches what the rounds view shows.
+const courseGapsOpen = ref(false);
+const courseGaps = ref(null);
+const courseGapsLoading = ref(false);
+const courseGapsError = ref('');
+
+const fetchCourseGaps = async () => {
+  if (!courseCode.value) return;
+  courseGapsLoading.value = true;
+  courseGapsError.value = '';
+  try {
+    const resp = await authedFetch(
+      `/api/production/${courseCode.value}/audio-preview/missing-clips`
+    );
+    if (!resp.ok) throw new Error(`missing-clips ${resp.status}`);
+    courseGaps.value = await resp.json();
+  } catch (err) {
+    // Shown in the block's own place: a report that silently renders nothing
+    // is indistinguishable from a course with no gaps.
+    courseGapsError.value = err.message;
+    console.error('[ScriptViewer] whole-course missing-clip scan failed', err);
+  } finally {
+    courseGapsLoading.value = false;
+  }
+};
+
+const toggleCourseGaps = () => {
+  courseGapsOpen.value = !courseGapsOpen.value;
+  if (courseGapsOpen.value && !courseGaps.value && !courseGapsLoading.value) {
+    fetchCourseGaps();
+  }
+};
+
+// A different course is a different report.
+watch(courseCode, () => {
+  courseGaps.value = null;
+  courseGapsError.value = '';
+  if (courseGapsOpen.value) fetchCourseGaps();
+});
+
 // Keep only items awaiting audio; intros are INCLUDED here (unlike the default
 // amber/stats view which exempts them, since intro audio has a fallback).
-const keepMissingAudio = (items) => (items || []).filter((it) => !it.hasAudio);
+// Prefer the generator's player-delivery annotation when present: hasAudio only
+// checks known+target1, so a row missing its SECOND target voice looks fine
+// here yet is dropped by the live player.
+const keepMissingAudio = (items) =>
+  (items || []).filter((it) => (it.playerCanDeliver !== undefined ? !it.playerCanDeliver : !it.hasAudio));
 
 // Export learner script as markdown download
 const exportLearnerScript = () => {
@@ -1465,14 +1577,12 @@ const loadLearningJourney = async (opts: { silent?: boolean } = {}) => {
   journeyError.value = null;
 
   try {
-    const apiBaseUrl = getApiBaseUrl();
-    const url = `${apiBaseUrl}/api/production/${courseCode.value}/learning-journey?maxLegos=${journeyPageSize}&offset=${journeyOffset.value}${learnerAudioView.value ? '&learnerView=1' : ''}`;
-
-    const response = await fetch(url, {
-      headers: {
-        'ngrok-skip-browser-warning': 'true'
-      }
-    });
+    // Authed: the response now carries canEditMapping, which the API can only
+    // decide if it knows who is asking. The course-scope gate accepts this
+    // token on every other /api/production route already.
+    const response = await authedFetch(
+      `/api/production/${courseCode.value}/learning-journey?maxLegos=${journeyPageSize}&offset=${journeyOffset.value}${learnerAudioView.value ? '&learnerView=1' : ''}`
+    );
 
     if (!response.ok) throw new Error('Failed to load learning journey');
 
@@ -1483,6 +1593,8 @@ const loadLearningJourney = async (opts: { silent?: boolean } = {}) => {
       stats: data.stats || null,
       totalLegoCount: data.totalLegoCount || 0,
     };
+    // A reader still sees every mapping; only the re-pairing gesture is gated.
+    canEditMapping.value = !!data.canEditMapping;
 
     // Detect if there are more pages
     journeyHasMore.value = (data.pagination?.returned || 0) >= journeyPageSize;
@@ -1504,9 +1616,19 @@ const reloadLearningJourney = () => {
 // 4-phase player (allItems) and review copies in other rounds stale — a full
 // re-fetch is the only way to true everything up. Done silently (list stays
 // mounted) with the scroll position restored, so the editor keeps their spot.
+//
+// When a search is ACTIVE the screen is rendered from journeySearchResults /
+// journeySearchAllItems, NOT from learningJourneyData — refreshing only the
+// paginated page left the visible rows and the player on the old audio (the
+// 2026-08-08 "regenerate doesn't save" report: the LEGO was found by searching
+// "explain", so nothing on screen was ever trued up). Re-run the search too.
 const refreshJourneyInPlace = async () => {
   const scrollTop = scriptContentRef.value?.scrollTop ?? 0;
-  await loadLearningJourney({ silent: true });
+  const activeSearch = journeySearch.value.trim();
+  await Promise.all([
+    loadLearningJourney({ silent: true }),
+    activeSearch ? searchJourney(activeSearch) : Promise.resolve(),
+  ]);
   await nextTick();
   if (scriptContentRef.value) scriptContentRef.value.scrollTop = scrollTop;
 };
@@ -1819,6 +1941,11 @@ const savePhraseEdit = async (data: { known_text: string; target_text: string; r
 
       const durationMs: number | null = result.durations?.[role] ?? null;
       if (newUuid) {
+        // The upsert on the audio table can land on the SAME row id when the
+        // regenerated text/voice key is unchanged (writes a fresh s3_key in
+        // place) — the round player's resolvedUrlCache would otherwise keep
+        // serving the pre-regen object for its 5-minute TTL.
+        learningJourneyRef.value?.player?.forgetAudioUrl(newUuid);
         const url = await fetchAuditionUrl(newUuid);
         phraseEditModalRef.value?.setAuditionResult(role, { url, durationMs });
       } else {
@@ -1966,6 +2093,9 @@ const savePresentationAndRegen = async () => {
     }
 
     console.log(`Regenerated presentation for ${presentationLegoId.value} → audio ${result.audio_id} (${result.duration_ms}ms)`);
+    // The presentation row is keyed by lego_id, so a regen usually lands on the
+    // SAME audio id with a fresh s3_key — drop any cached URL before reload.
+    if (result.audio_id) learningJourneyRef.value?.player?.forgetAudioUrl(result.audio_id);
     // Refresh the journey so the intro item picks up the new audio
     reloadLearningJourney();
   } catch (err) {
@@ -1992,6 +2122,10 @@ const legoSpokenTarget = ref<string>('');
 const legoRegenFlags = ref({ known: false, target1: true, target2: true });
 const legoAudioBusy = ref(false);
 const legoAudioError = ref<string | null>(null);
+// Not an error: the server deliberately declined a role (a human recording is
+// precious, or the whole course is human-voiced). Said in plain words, in its
+// own panel — a red box read as "the regeneration broke".
+const legoAudioNotice = ref<string | null>(null);
 const legoAudioResults = ref<Array<{ role: string; label: string; durationMs: number | null; url: string | null; spoken: string }>>([]);
 const legoAudioSourceItem = ref<any>(null);
 
@@ -2025,6 +2159,7 @@ const onJourneyLegoAudioEdit = (item: any) => {
   legoSpokenTarget.value = item.target_text || '';
   legoRegenFlags.value = { known: false, target1: true, target2: true };
   legoAudioError.value = null;
+  legoAudioNotice.value = null;
   legoAudioResults.value = [];
   legoAudioSourceItem.value = item;
   legoAudioModalVisible.value = true;
@@ -2034,11 +2169,34 @@ const closeLegoAudioModal = () => {
   legoAudioModalVisible.value = false;
 };
 
+// A LEGO's own clips (known / Voice 1 / Voice 2) are carried by its intro and
+// debut rows, and the same LEGO is rendered from several separate arrays:
+// the paginated rounds, the paginated allItems the player reads, and — when a
+// search is active — the search rounds and search allItems. They are distinct
+// objects, so a new clip has to be written into all of them for auto-accept to
+// mean anything on screen. Phrase rows carry their own clips and are left alone.
+const rebindLegoAudioEverywhere = (legoId: string, uuidField: string, audioId: string) => {
+  const lists: any[][] = [
+    learningJourneyData.value?.allItems || [],
+    journeySearchAllItems.value || [],
+    ...(learningJourneyData.value?.rounds || []).map((r: any) => r.items || []),
+    ...(journeySearchResults.value || []).map((r: any) => r.items || []),
+  ];
+  for (const items of lists) {
+    for (const item of items) {
+      if (item?.legoId !== legoId) continue;
+      if (item.type !== 'intro' && item.type !== 'debut') continue;
+      item[uuidField] = audioId;
+    }
+  }
+};
+
 const regenerateLegoAudio = async () => {
   const roles = legoSelectedRoles.value;
   if (legoAudioBusy.value || !roles.length) return;
   legoAudioBusy.value = true;
   legoAudioError.value = null;
+  legoAudioNotice.value = null;
   legoAudioResults.value = [];
 
   const ROLE_LABEL: Record<string, string> = { known: 'Known', target1: 'Voice 1', target2: 'Voice 2' };
@@ -2063,7 +2221,9 @@ const regenerateLegoAudio = async () => {
     }
     const result = await resp.json();
     if (result.skipped) {
-      legoAudioError.value = `Skipped: ${result.reason}`;
+      legoAudioNotice.value = result.reason === 'human-voice-only-course'
+        ? 'Nothing regenerated: this course is voiced by people, so it never gets TTS.'
+        : `Nothing regenerated: ${result.reason}.`;
       return;
     }
 
@@ -2076,9 +2236,19 @@ const regenerateLegoAudio = async () => {
 
     for (const role of roles) {
       const audioId = result[COLUMN[role]];
-      // Rebind the live journey row in place so its play buttons hit the new clip.
-      if (audioId && legoAudioSourceItem.value) {
-        legoAudioSourceItem.value[UUID_FIELD[role]] = audioId;
+      // AUTO-ACCEPT: the new clip IS the LEGO's clip the moment it renders, so
+      // every loaded copy of that LEGO's row moves with it, immediately — the
+      // row under the dialog, the intro row above it, the 4-phase player's
+      // allItems, and the search arrays when a search is what's on screen.
+      // Rebinding only legoAudioSourceItem left every other copy on the old
+      // clip until (or unless) a re-fetch landed.
+      if (audioId) {
+        rebindLegoAudioEverywhere(legoAudioLegoId.value, UUID_FIELD[role], audioId);
+        if (legoAudioSourceItem.value) legoAudioSourceItem.value[UUID_FIELD[role]] = audioId;
+        // Text is locked for LEGO regen, so the upsert key is usually unchanged
+        // and lands on the SAME audio row with a fresh s3_key — drop any cached
+        // URL so the round player re-resolves instead of riding out the TTL.
+        learningJourneyRef.value?.player?.forgetAudioUrl(audioId);
       }
       let url: string | null = null;
       if (audioId) {
@@ -2100,7 +2270,10 @@ const regenerateLegoAudio = async () => {
     }
 
     if (result.skipped_human?.length) {
-      legoAudioError.value = `Kept human recording(s) for: ${result.skipped_human.join(', ')} — no TTS written.`;
+      const kept = result.skipped_human
+        .map((r: string) => ({ known: 'Known', target1: 'Voice 1', target2: 'Voice 2' } as any)[r] || r)
+        .join(', ');
+      legoAudioNotice.value = `${kept}: kept the human recording — it is precious, so no TTS was written and that clip is unchanged.`;
     }
 
     // True up the journey (other rows referencing this LEGO's clips).
@@ -2129,12 +2302,24 @@ const onJourneyPhraseFlag = (item: any) => {
   journeyFlaggedPhraseIds.value = newSet;
 };
 
-// Build details for the review modal from allItems
+// Build details for the review modal from allItems.
+//
+// ONE ROW PER PHRASE, not per appearance. A phrase legitimately appears many
+// times across the journey — reviewed at every Fibonacci offset, and since
+// 2026-08-08 played twice back to back in every Easy round — but this modal
+// lists what you are about to DELETE, and a phrase is deleted once. It is also
+// keyed by phrase_id in the template, so duplicates were duplicate Vue keys.
 const journeyFlaggedPhraseDetails = computed(() => {
   if (!learningJourneyData.value?.allItems) return [];
-  return learningJourneyData.value.allItems
-    .filter((item: any) => item.phrase_id && journeyFlaggedPhraseIds.value.has(item.phrase_id))
-    .map((item: any) => ({ phrase_id: item.phrase_id, known_text: item.known_text, target_text: item.target_text }));
+  const byId = new Map<string, any>();
+  for (const item of learningJourneyData.value.allItems as any[]) {
+    if (!item.phrase_id || byId.has(item.phrase_id)) continue;
+    if (!journeyFlaggedPhraseIds.value.has(item.phrase_id)) continue;
+    byId.set(item.phrase_id, {
+      phrase_id: item.phrase_id, known_text: item.known_text, target_text: item.target_text,
+    });
+  }
+  return [...byId.values()];
 });
 
 const onRemoveJourneyFlaggedPhrase = (phraseId: string) => {

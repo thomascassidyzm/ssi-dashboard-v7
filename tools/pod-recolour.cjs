@@ -18,7 +18,7 @@
 
 require('dotenv').config({ path: require('path').resolve(__dirname, '../.env') })
 const { createClient } = require('@supabase/supabase-js')
-const { resolveTargetPool, resolveKnownPool } = require('./pod-voice-coverage.cjs')
+const { resolveTargetPool, resolveKnownPool, loadVerifiedGenders } = require('./pod-voice-coverage.cjs')
 const {
   buildAdjacency, buildTurnWeights, countAdjacentCollisions, assignVoicesColoured, trimPoolPerGender,
 } = require('./pod-voice-colour.cjs')
@@ -218,25 +218,6 @@ async function recolourPod(pod, targetPool, knownPool, opts) {
       known:  { provider: defK.provider, voice_id: defK.voice_id, name: defK.name, locale: defK.locale },
     }
   }
-  // --track=target: recolour the target cast only, and carry every speaker's
-  // EXISTING known voice through untouched.
-  //
-  // Why (2026-08-22, the ita/spa/fra/zho rollout): those pods' known track is
-  // already complete — 231/231 clips on Olivia + Tom — while the target track
-  // is on five voices and needs collapsing to the two-voice pod-0 rule. But the
-  // eng known pool currently resolves Tom for BOTH genders, so a whole-pod
-  // recolour would replace Olivia with Tom and null ~200 finished known clips
-  // per course to re-render them worse. The target problem and the known pool's
-  // problem are separate; this flag stops the fix for one becoming a regression
-  // in the other.
-  if (opts && opts.trackOnly === 'target') {
-    for (const [canon, a] of Object.entries(assignments)) {
-      const existing = cur[canon] || cur._default
-      if (existing && existing.known) a.known = existing.known
-      else delete a.known
-    }
-  }
-
   const newVoice = (track) => (canon) => assignments[canon] && assignments[canon][track] ? assignments[canon][track].voice_id : null
   const afterT = countCollisions(adj, newVoice('target'))
   const afterK = countCollisions(adj, newVoice('known'))
@@ -319,18 +300,17 @@ async function main() {
   const voicesPerGender = Math.max(1, parseInt(getArg('--voices-per-gender') || '1', 10) || 1)
   const poolFromPod = getArg('--pool-from') === 'pod'
   const keepAudio = !!getArg('--keep-audio')
-  const trackOnly = getArg('--track')
-  if (trackOnly && trackOnly !== 'target') {
-    console.error(`❌ --track=${trackOnly} is not supported; only --track=target (recolour the target cast, carry the known cast through unchanged)`)
-    process.exit(1)
-  }
+  // Read the provider's own gender for every voice (voices.gender) BEFORE
+  // resolving, so which voice fills a female slot is a fact rather than a
+  // catalogue label. SELECT only; it changes nothing until this run applies.
+  await loadVerifiedGenders()
   const targetPool = trimPoolPerGender(resolveTargetPool(targetLang), voicesPerGender)
   const knownPool = trimPoolPerGender(resolveKnownPool(knownLang), voicesPerGender)
 
   console.log(`\n🎨 Pod recolour: ${courseCode}  (${apply ? 'APPLY' : 'DRY-RUN'})`)
   console.log(`   Casting BY SPEAKER on ${voicesPerGender} voice(s) per gender` +
     `${voicesPerGender === 1 ? ' — the two-voice pod-0 rule' : ''}`)
-  console.log(`   Target pool: tier ${targetPool.tier} · ${targetPool.note}`)
+  console.log(`   Target pool: tier ${targetPool.tier} · ${targetPool.note} · gender from ${targetPool.genderSource}`)
   console.log(`     F: ${targetPool.f.map(v => v.name).join(', ') || '(none)'}`)
   console.log(`     M: ${targetPool.m.map(v => v.name).join(', ') || '(none)'}`)
   console.log(`     locale → ${targetPool.locale}`)
@@ -347,7 +327,7 @@ async function main() {
 
   let totBefore = 0, totAfter = 0, totReassign = 0
   for (const pod of pods) {
-    const r = await recolourPod(pod, targetPool, knownPool, { verbose, targetLang, poolFromPod, voiceGenderById, trackOnly })
+    const r = await recolourPod(pod, targetPool, knownPool, { verbose, targetLang, poolFromPod, voiceGenderById })
     if (r.skipped) { console.log(`\n   ${pod.id}: skipped (${r.skipped})`); continue }
     totBefore += r.before.target + r.before.known
     totAfter += r.after.target + r.after.known

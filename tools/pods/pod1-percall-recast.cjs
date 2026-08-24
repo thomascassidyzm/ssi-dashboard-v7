@@ -96,29 +96,6 @@ const NON_EXCHANGE = new Set([
   '9:4->9:5', '9:9->9:10', '9:12->9:13', '9:16->9:17',
 ])
 
-/**
- * Characters who are never a party to an exchange, whoever they stand next to.
- *
- * The Narrator does not converse. Every one of its lines is a scene sign-off
- * reading the clock and the calendar — "6 o'clock. July. August. September." —
- * and MEASURED across the 22 live pod-1 pods on 2026-08-24, 352 of 352 Narrator
- * lines are the LAST line of their scene. Nobody ever answers it; the only
- * adjacency it can form is (scene's last speaker → Narrator).
- *
- * Until now that adjacency counted as an exchange, and the gate passed on it by
- * ACCIDENT: the Narrator sits on the second voice in every course and the last
- * speaker of every scene happened to sit on the other one. Casting `Interlocutor`
- * — who closes scene 21 — to the second voice under Tom's two-voice ruling ends
- * the accident and fired a same-voice "Interlocutor↔Narrator (1 turn)" on all 22
- * courses: a sign-off counted as a character answering themselves.
- *
- * Dropping it is not a loosening. It removes an edge that was never an exchange,
- * on exactly the rule NON_EXCHANGE already encodes (adjacent, different, not
- * talking to each other) — it just cannot be enumerated by scene:sentence tag,
- * because the sign-off's sentence number differs per structural class.
- */
-const NON_CONVERSANT = new Set(['Narrator'])
-
 // Names whose gender the script itself fixes. Used ONLY to orient a 2-colouring
 // (both orientations are equally collision-free); never to override the graph.
 const NAME_GENDER = {
@@ -262,11 +239,7 @@ function buildExchangeWeights(rows, nameOf) {
     const a = nameOf(prev), b = nameOf(cur)
     if (!a || !b || a === b) continue
     const tag = `${prev.scene_number}:${prev.sentence_number}->${cur.scene_number}:${cur.sentence_number}`
-    if (NON_EXCHANGE.has(tag)) { dropped.push({ tag, a, b, aText: prev.known_text, bText: cur.known_text, reason: 'shared-hub' }); continue }
-    if (NON_CONVERSANT.has(a) || NON_CONVERSANT.has(b)) {
-      dropped.push({ tag, a, b, aText: prev.known_text, bText: cur.known_text, reason: 'non-conversant' })
-      continue
-    }
+    if (NON_EXCHANGE.has(tag)) { dropped.push({ tag, a, b, aText: prev.known_text, bText: cur.known_text }); continue }
     const key = a < b ? `${a}|${b}` : `${b}|${a}`
     w.set(key, (w.get(key) || 0) + 1)
   }

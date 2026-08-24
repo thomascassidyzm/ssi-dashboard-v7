@@ -27,7 +27,7 @@
             :key="course.course_code"
             :value="course.course_code"
           >
-            {{ course.target_language }} for {{ course.source_language }} ({{ course.course_code }})
+            {{ getLanguageName(course.target_language) }} for {{ getLanguageName(course.source_language) }} ({{ course.course_code }})
           </option>
         </select>
       </div>
@@ -35,7 +35,7 @@
       <!-- Course Context Header -->
       <div v-if="currentCourse" class="mb-4 pb-4 border-b border-line">
         <h2 class="text-xl font-semibold text-ink">
-          {{ currentCourse.target_language }} for {{ currentCourse.source_language }}
+          {{ getLanguageName(currentCourse.target_language) }} for {{ getLanguageName(currentCourse.source_language) }}
           <span class="text-faint text-sm ml-2">({{ currentCourse.course_code }})</span>
         </h2>
       </div>
@@ -284,7 +284,7 @@
                     <div class="text-lg font-bold">
                       <span class="text-ink">{{ Array.isArray(legoData.lego) ? legoData.lego[0] : legoData.lego.known }}</span>
                       <span class="mx-2 text-faint">→</span>
-                      <span class="text-accent-2">{{ Array.isArray(legoData.lego) ? legoData.lego[1] : legoData.lego.target }}</span>
+                      <span class="text-accent-2 bidi-isolate" :dir="dirFor(Array.isArray(legoData.lego) ? legoData.lego[1] : legoData.lego.target)">{{ Array.isArray(legoData.lego) ? legoData.lego[1] : legoData.lego.target }}</span>
                     </div>
                   </div>
                   <div class="text-right text-xs space-y-1">
@@ -326,7 +326,7 @@
                       <span class="text-blue-300">{{ idx + 1 }}.</span>
                       <span class="text-ink">{{ Array.isArray(component) ? component[0] : component.known }}</span>
                       <span class="text-faint">→</span>
-                      <span class="text-accent-2">{{ Array.isArray(component) ? component[1] : component.target }}</span>
+                      <span class="text-accent-2 bidi-isolate" :dir="dirFor(Array.isArray(component) ? component[1] : component.target)">{{ Array.isArray(component) ? component[1] : component.target }}</span>
                     </div>
                   </div>
                 </div>
@@ -357,6 +357,7 @@
                         />
                         <input
                           v-model="getEditedPhrase(seedData.seedId, legoKey, idx).target"
+                          :dir="dirFor(getEditedPhrase(seedData.seedId, legoKey, idx).target)"
                           @blur="savePhrase(seedData.seedId, legoKey, idx)"
                           @keyup.enter="savePhrase(seedData.seedId, legoKey, idx)"
                           class="w-full px-2 py-1 bg-surface-2 text-accent-2 border border-line rounded text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -369,7 +370,10 @@
                           <span class="text-faint text-xs mr-2">{{ idx + 1 }}.</span>
                           {{ getDisplayPhrase(seedData.seedId, legoKey, idx, phrase, 0) }}
                         </div>
-                        <div class="text-accent-2 mt-1">
+                        <div
+                          class="text-accent-2 mt-1 text-left"
+                          :dir="dirFor(getDisplayPhrase(seedData.seedId, legoKey, idx, phrase, 1))"
+                        >
                           {{ getDisplayPhrase(seedData.seedId, legoKey, idx, phrase, 1) }}
                         </div>
                       </div>
@@ -478,6 +482,8 @@
 import api, { getApiUrl } from '@/services/api'
 import { isMolecularLego, getLegoComponents } from '@/services/legoFormatAdapter'
 import { useToast } from 'vue-toastification'
+import { languageName } from '@/utils/languageNames'
+import { dirFor } from '@/utils/textDirection.js'
 import AudioPreviewPlayer from './AudioPreviewPlayer.vue'
 
 const toast = useToast()
@@ -560,6 +566,13 @@ export default {
     }
   },
   methods: {
+    // Direction of a target string, read from its script. Exposed as a method
+    // because this component is Options API — see src/utils/textDirection.js.
+    dirFor,
+
+    getLanguageName(code) {
+      return languageName(code)
+    },
     formatPattern(pattern) {
       if (!pattern) return ''
       // Format P_NEW_* patterns to be more readable

@@ -4,86 +4,39 @@ import { getApiUrl } from '../services/api'
 import { isConfigured as isSupabaseConfigured, getAllCourses } from '../services/supabase'
 import { useAuth } from './useAuth'
 
-// Hardcoded fallback for immediate use before API responds
-const fallbackNames = {
-  // Core
-  'eng': 'English', 'spa': 'Spanish', 'fra': 'French', 'deu': 'German',
-  'ita': 'Italian', 'por': 'Portuguese', 'nld': 'Dutch', 'pol': 'Polish',
-  'rus': 'Russian', 'cym': 'Welsh', 'gle': 'Irish', 'gla': 'Scottish Gaelic',
-  'zho': 'Chinese', 'cmn': 'Mandarin', 'jpn': 'Japanese', 'kor': 'Korean',
-  'ara': 'Arabic', 'hin': 'Hindi', 'tur': 'Turkish', 'swa': 'Swahili',
-  // Romance
-  'ron': 'Romanian', 'cat': 'Catalan', 'eus': 'Basque', 'glg': 'Galician',
-  // Germanic
-  'swe': 'Swedish', 'nor': 'Norwegian', 'dan': 'Danish', 'fin': 'Finnish', 'isl': 'Icelandic',
-  'nob': 'Norwegian (Bokmål)', 'nno': 'Norwegian (Nynorsk)',
-  // Slavic
-  'hrv': 'Croatian', 'srp': 'Serbian', 'bos': 'Bosnian', 'slv': 'Slovenian',
-  'ces': 'Czech', 'slk': 'Slovak', 'ukr': 'Ukrainian', 'bul': 'Bulgarian', 'mkd': 'Macedonian',
-  // Other European
-  'ell': 'Greek', 'hun': 'Hungarian', 'heb': 'Hebrew', 'sqi': 'Albanian',
-  'lit': 'Lithuanian', 'lav': 'Latvian', 'est': 'Estonian',
-  // Asian
-  'tha': 'Thai', 'vie': 'Vietnamese', 'ind': 'Indonesian', 'fil': 'Filipino',
-  'ben': 'Bengali', 'urd': 'Urdu', 'tam': 'Tamil', 'tel': 'Telugu', 'msa': 'Malay',
-  'yue': 'Cantonese',
-  // Other
-  'fas': 'Persian', 'kur': 'Kurdish', 'amh': 'Amharic', 'hau': 'Hausa',
-  'yor': 'Yoruba', 'zul': 'Zulu', 'kat': 'Georgian', 'hye': 'Armenian',
-  'bre': 'Breton', 'cor': 'Cornish',
-  // Dialect variants
-  'cym_n': 'Welsh (North)', 'cym_s': 'Welsh (South)',
-  'por_br': 'Portuguese (Brazil)', 'spa_mx': 'Spanish (Mexico)',
-  'ara_eg': 'Arabic (Egypt)', 'ara_sy': 'Arabic (Syria)',
-  'deu_at': 'German (Austria)'
-}
 
-// Live language name map — starts with fallback, enriched from API
-const languageNames = { ...fallbackNames }
-let languagesLoaded = false
-
-// Reactive version counter — bumped when language/display names change
-// Forces computed properties that call getCourseName() to re-evaluate
-const nameVersion = ref(0)
-
-// Fetch full language name map from backend (CSV-backed, all ISO 639 codes)
-async function loadLanguageNames() {
-  if (languagesLoaded) return
-  try {
-    const baseUrl = getApiUrl()
-    const res = await fetch(`${baseUrl}/api/languages?format=legacy`)
-    if (!res.ok) return
-    const languages = await res.json()
-    for (const lang of languages) {
-      if (lang.code && lang.name) {
-        languageNames[lang.code] = lang.name
-      }
-    }
-    languagesLoaded = true
-    nameVersion.value++
-  } catch {
-    // Fallback map is already populated — no-op
-  }
-}
-
-// Fire immediately (non-blocking)
-loadLanguageNames()
-
-// Popty (this dashboard) always renders course names in English.
-// The database `display_name` is the localized native-language label used by
-// the learner-facing app — never use it here. Localization belongs to
+// Language and course display names live in ONE place: src/utils/languageNames.
+// This composable used to keep its own map, which is how the Pennsylvania Dutch
+// course reached the volunteers checking it as `PDC for English Speakers` — the
+// map had never heard of the language. Every name Popty shows now comes from
+// that util, and the two helpers below are the composable's window onto it.
+//
+// Popty (this dashboard) always renders course names in English. The database
+// `display_name` is the localized native-language label used by the
+// learner-facing app — never use it here. Localization belongs to
 // ssi-learning-app, where the player picks names by interface language.
+import { courseName, languageName, loadLanguageNames, nameVersion } from '../utils/languageNames'
+
+// `pdc_for_eng` → "Pennsylvania Dutch for English Speakers".
 function getCourseName(code) {
-  // Touch reactive dep so computed properties re-evaluate when names load
+  // Touch the reactive dep so computeds re-evaluate when the API names land.
   void nameVersion.value
-  if (!code || !code.includes('_for_')) return code
-  const [targetPart, knownPart] = code.split('_for_')
-  // Try full dialect code first (por_br, spa_mx), then base code (por, spa)
-  const targetBase = targetPart.split('_')[0]
-  const targetName = languageNames[targetPart] || languageNames[targetBase] || targetPart.toUpperCase()
-  const knownName = languageNames[knownPart] || knownPart.toUpperCase()
-  return `${targetName} for ${knownName} Speakers`
+  return courseName(code)
 }
+
+// One language's own English name, dialect code first then base code, so
+// cym_n → "Welsh (North)" and a plain cym → "Welsh". Views that print a
+// language into a sentence use this rather than keeping their own table —
+// the drafts strip said "machine-written cym" while a private table went
+// unmaintained.
+export function getLanguageName(code, fallback = '') {
+  void nameVersion.value
+  if (!code) return fallback
+  const name = languageName(code)
+  // An unknown code comes back unchanged; the caller's fallback wins there.
+  return name === code ? (fallback || code) : name
+}
+
 
 // Module-level singleton state — shared across all consumers
 const courses = ref([])
@@ -176,6 +129,6 @@ export function useCourses() {
     courseCount,
     inProductionCount,
     getCourseName,
-    languageNames
+    getLanguageName
   }
 }

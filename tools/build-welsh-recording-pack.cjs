@@ -42,7 +42,7 @@ async function buildFor(course) {
     const final = await finalizeRecordingPlan({
       plan, sentences, voiceId: v.voiceId, acceptVoiceIds: accept,
       fetchAudioRows: async (ids) => {
-        const { data } = await db.from('course_audio').select('id,origin,voice_id').in('id', ids)
+        const { data } = await db.from('course_audio').select('id,origin,voice_id,duration_ms,file_size_bytes').in('id', ids)
         return data || []
       },
     })

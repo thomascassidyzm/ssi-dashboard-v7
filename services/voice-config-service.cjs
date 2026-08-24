@@ -11,6 +11,7 @@
 
 const { createClient } = require('@supabase/supabase-js');
 const { bumpCourseVersion } = require('./shared/course-version.cjs');
+const { voiceSpellings } = require('./shared/clip-identity-lookup.cjs');
 
 // Initialize Supabase client
 const supabaseUrl = process.env.SUPABASE_URL;
@@ -198,12 +199,17 @@ async function ensureVoiceRegistered(voiceSettings) {
   // from the id. Own insert path, then return (skips the Azure locale parsing).
   if (provider === 'xai') {
     try {
+      // Match EITHER spelling. An exact match on the caller's spelling alone is
+      // how the registry ended up holding six voices twice over: the voice was
+      // already there under its other spelling, this check missed it, and a
+      // second row went in. The insert below still writes the caller's
+      // spelling — this only stops a duplicate being created.
       const { data: existing } = await supabase
         .from('voices')
         .select('voice_id')
-        .eq('voice_id', voiceId)
-        .single();
-      if (existing) return;
+        .in('voice_id', voiceSpellings(voiceId, { provider }))
+        .limit(1);
+      if (existing && existing.length) return;
 
       const lang = voiceSettings.language || '';
       const xaiLocaleToLang = {
@@ -248,14 +254,14 @@ async function ensureVoiceRegistered(voiceSettings) {
   if (provider !== 'azure') return;
 
   try {
-    // Check if voice already exists
+    // Check if voice already exists — either spelling (see the xAI branch).
     const { data: existing } = await supabase
       .from('voices')
       .select('voice_id')
-      .eq('voice_id', voiceId)
-      .single();
+      .in('voice_id', voiceSpellings(voiceId, { provider }))
+      .limit(1);
 
-    if (existing) {
+    if (existing && existing.length) {
       // Voice already registered
       return;
     }

@@ -1,0 +1,282 @@
+{
+ "pod": "por_for_eng:pod-1",
+ "course": "por_for_eng",
+ "mode": "applied",
+ "generated_at": "2026-08-24T12:09:33.122Z",
+ "ancestors": [
+  "por_for_eng:pod-0-retired-2026-08-22",
+  "por_for_eng:pod-1-retired-2026-08-24"
+ ],
+ "rows_total": 231,
+ "measured_inherited_slots": {
+  "sentence_audio_ids": 0,
+  "sentence_known_audio_ids": 0,
+  "takeg_audio_ids": 0,
+  "explainer_audio_id": 23
+ },
+ "scope_note": "explainer_audio_id repaired on the INHERITED test only; #312's sixteen protected rows and any explainer still quoting its own row are held, never written",
+ "held": [
+  {
+   "id": "por_for_eng:pod-1:SC01-S004",
+   "scene": 1,
+   "sentence": 4,
+   "global_order": 4,
+   "field": "explainer_audio_id",
+   "why": "inherited, but the clip still quotes this row's own text — a gloss that explains its row is not a defect"
+  },
+  {
+   "id": "por_for_eng:pod-1:SC04-S002",
+   "scene": 4,
+   "sentence": 2,
+   "global_order": 21,
+   "field": "explainer_audio_id",
+   "why": "inherited, but the clip still quotes this row's own text — a gloss that explains its row is not a defect"
+  },
+  {
+   "id": "por_for_eng:pod-1:SC07-S004",
+   "scene": 7,
+   "sentence": 4,
+   "global_order": 41,
+   "field": "explainer_audio_id",
+   "why": "inherited, but the clip still quotes this row's own text — a gloss that explains its row is not a defect"
+  },
+  {
+   "id": "por_for_eng:pod-1:SC07-S005",
+   "scene": 7,
+   "sentence": 5,
+   "global_order": 42,
+   "field": "explainer_audio_id",
+   "why": "inherited, but the clip still quotes this row's own text — a gloss that explains its row is not a defect"
+  },
+  {
+   "id": "por_for_eng:pod-1:SC07-S009",
+   "scene": 7,
+   "sentence": 9,
+   "global_order": 46,
+   "field": "explainer_audio_id",
+   "why": "inherited, but the clip still quotes this row's own text — a gloss that explains its row is not a defect"
+  },
+  {
+   "id": "por_for_eng:pod-1:SC07-S010",
+   "scene": 7,
+   "sentence": 10,
+   "global_order": 47,
+   "field": "explainer_audio_id",
+   "why": "inherited, but the clip still quotes this row's own text — a gloss that explains its row is not a defect"
+  },
+  {
+   "id": "por_for_eng:pod-1:SC07-S012",
+   "scene": 7,
+   "sentence": 12,
+   "global_order": 49,
+   "field": "explainer_audio_id",
+   "why": "inherited, but the clip still quotes this row's own text — a gloss that explains its row is not a defect"
+  },
+  {
+   "id": "por_for_eng:pod-1:SC07-S014",
+   "scene": 7,
+   "sentence": 14,
+   "global_order": 51,
+   "field": "explainer_audio_id",
+   "why": "inherited, but the clip still quotes this row's own text — a gloss that explains its row is not a defect"
+  },
+  {
+   "id": "por_for_eng:pod-1:SC08-S006",
+   "scene": 8,
+   "sentence": 6,
+   "global_order": 58,
+   "field": "explainer_audio_id",
+   "why": "inherited, but the clip still quotes this row's own text — a gloss that explains its row is not a defect"
+  },
+  {
+   "id": "por_for_eng:pod-1:SC09-S003",
+   "scene": 9,
+   "sentence": 3,
+   "global_order": 71,
+   "field": "explainer_audio_id",
+   "why": "inherited, but the clip still quotes this row's own text — a gloss that explains its row is not a defect"
+  },
+  {
+   "id": "por_for_eng:pod-1:SC09-S005",
+   "scene": 9,
+   "sentence": 5,
+   "global_order": 73,
+   "field": "explainer_audio_id",
+   "why": "inherited, but the clip still quotes this row's own text — a gloss that explains its row is not a defect"
+  },
+  {
+   "id": "por_for_eng:pod-1:SC10-S009",
+   "scene": 10,
+   "sentence": 9,
+   "global_order": 95,
+   "field": "explainer_audio_id",
+   "why": "inherited, but the clip still quotes this row's own text — a gloss that explains its row is not a defect"
+  },
+  {
+   "id": "por_for_eng:pod-1:SC11-S004",
+   "scene": 11,
+   "sentence": 4,
+   "global_order": 100,
+   "field": "explainer_audio_id",
+   "why": "inherited, but the clip still quotes this row's own text — a gloss that explains its row is not a defect"
+  },
+  {
+   "id": "por_for_eng:pod-1:SC12-S001",
+   "scene": 12,
+   "sentence": 1,
+   "global_order": 110,
+   "field": "explainer_audio_id",
+   "why": "inherited, but the clip still quotes this row's own text — a gloss that explains its row is not a defect"
+  },
+  {
+   "id": "por_for_eng:pod-1:SC12-S006",
+   "scene": 12,
+   "sentence": 6,
+   "global_order": 115,
+   "field": "explainer_audio_id",
+   "why": "inherited, but the clip still quotes this row's own text — a gloss that explains its row is not a defect"
+  },
+  {
+   "id": "por_for_eng:pod-1:SC12-S007",
+   "scene": 12,
+   "sentence": 7,
+   "global_order": 116,
+   "field": "explainer_audio_id",
+   "why": "inherited, but the clip still quotes this row's own text — a gloss that explains its row is not a defect"
+  }
+ ],
+ "split_keyed_progress_rows": 0,
+ "stopped": null,
+ "whole_turn_failures": [],
+ "rows_excluded_bad_whole_turn": [],
+ "slots_planned": 7,
+ "slots_written": 7,
+ "rows": [
+  {
+   "id": "por_for_eng:pod-1:SC08-S002",
+   "scene": 8,
+   "sentence": 2,
+   "speaker": "Bar Customer 1",
+   "target_text": "Queria uma caneca, por favor. Que cervejas artesanais têm?",
+   "known_text": "I'd like a pint, please. What ales do you have on?",
+   "slots": [
+    {
+     "field": "explainer_audio_id",
+     "changed": "target_text+known_text",
+     "before": "1582fd18-047d-4253-9b41-d3ab60db53b9",
+     "after": null,
+     "action": "null",
+     "why": "no alive, verified clip exists for this row's current text; falling back (explainer slot plays the translation)"
+    }
+   ]
+  },
+  {
+   "id": "por_for_eng:pod-1:SC12-S008",
+   "scene": 12,
+   "sentence": 8,
+   "speaker": "Pharmacist",
+   "target_text": "Sim, o melhor é com ou depois da comida.",
+   "known_text": "Yes, with or after food is best.",
+   "slots": [
+    {
+     "field": "explainer_audio_id",
+     "changed": "target_text+known_text",
+     "before": "48313f8f-c709-4797-94c6-78bc7d3bd9df",
+     "after": null,
+     "action": "null",
+     "why": "no alive, verified clip exists for this row's current text; falling back (explainer slot plays the translation)"
+    }
+   ]
+  },
+  {
+   "id": "por_for_eng:pod-1:SC14-S007",
+   "scene": 14,
+   "sentence": 7,
+   "speaker": "Driver",
+   "target_text": "Aqui está. São doze libras e cinquenta.",
+   "known_text": "Here we are. That's twelve pound fifty.",
+   "slots": [
+    {
+     "field": "explainer_audio_id",
+     "changed": "target_text+known_text",
+     "before": "1eb1e0c0-2a3e-4734-b6e0-4c4251941e9d",
+     "after": null,
+     "action": "null",
+     "why": "no alive, verified clip exists for this row's current text; falling back (explainer slot plays the translation)"
+    }
+   ]
+  },
+  {
+   "id": "por_for_eng:pod-1:SC15-S001",
+   "scene": 15,
+   "sentence": 1,
+   "speaker": "Learner",
+   "target_text": "Quanto custa isso?",
+   "known_text": "How much is that?",
+   "slots": [
+    {
+     "field": "explainer_audio_id",
+     "changed": "target_text+known_text",
+     "before": "bc099068-1398-4eb3-8a1f-979319596396",
+     "after": null,
+     "action": "null",
+     "why": "no alive, verified clip exists for this row's current text; falling back (explainer slot plays the translation)"
+    }
+   ]
+  },
+  {
+   "id": "por_for_eng:pod-1:SC15-S002",
+   "scene": 15,
+   "sentence": 2,
+   "speaker": "Learner",
+   "target_text": "Pode dizer-me quanto custa isso?",
+   "known_text": "Can you tell me how much that is?",
+   "slots": [
+    {
+     "field": "explainer_audio_id",
+     "changed": "target_text+known_text",
+     "before": "cc0d8078-1d3a-4feb-ad53-1f1fa54a7f73",
+     "after": null,
+     "action": "null",
+     "why": "no alive, verified clip exists for this row's current text; falling back (explainer slot plays the translation)"
+    }
+   ]
+  },
+  {
+   "id": "por_for_eng:pod-1:SC15-S003",
+   "scene": 15,
+   "sentence": 3,
+   "speaker": "Learner",
+   "target_text": "Quanto custa apanhar um táxi até à cidade?",
+   "known_text": "How much does it cost to get a taxi into town?",
+   "slots": [
+    {
+     "field": "explainer_audio_id",
+     "changed": "target_text+known_text",
+     "before": "edc6ca4e-d979-43f1-b053-b99bd4e6c0d6",
+     "after": null,
+     "action": "null",
+     "why": "no alive, verified clip exists for this row's current text; falling back (explainer slot plays the translation)"
+    }
+   ]
+  },
+  {
+   "id": "por_for_eng:pod-1:SC15-S004",
+   "scene": 15,
+   "sentence": 4,
+   "speaker": "Learner",
+   "target_text": "Quanto custa apanhar um autocarro até à cidade?",
+   "known_text": "How much does it cost to get a bus into town?",
+   "slots": [
+    {
+     "field": "explainer_audio_id",
+     "changed": "target_text+known_text",
+     "before": "8a414978-560d-4c10-8ba5-4738496f6d80",
+     "after": null,
+     "action": "null",
+     "why": "no alive, verified clip exists for this row's current text; falling back (explainer slot plays the translation)"
+    }
+   ]
+  }
+ ]
+}

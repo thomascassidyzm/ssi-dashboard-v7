@@ -1,0 +1,266 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>English two-voice sample pack — existing clips only</title>
+<style>
+ :root{color-scheme:light dark}
+ body{font:16px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;margin:0;padding:16px 14px 64px;max-width:760px;margin-inline:auto}
+ h1{font-size:22px;margin:0 0 4px} h2{font-size:17px;margin:30px 0 10px}
+ .sub{opacity:.72;margin:0 0 20px;font-size:14px}
+ .nums{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:10px;margin:0 0 20px}
+ .num{border:1px solid #8883;border-radius:10px;padding:10px 12px}
+ .num b{display:block;font-size:24px;line-height:1.1} .num span{font-size:12px;opacity:.7}
+ .note{border-left:3px solid #f5a623;padding:8px 12px;margin:0 0 20px;font-size:14px;background:#f5a62312}
+ .good{border-left-color:#1e8449;background:#1e844912}
+ table{border-collapse:collapse;width:100%;font-size:13px;margin:0 0 18px}
+ th,td{border:1px solid #8883;padding:5px 7px;text-align:right} th:first-child,td:first-child{text-align:left}
+ .clip{border:1px solid #8883;border-radius:12px;padding:14px;margin:0 0 14px}
+ .n{font-size:11px;opacity:.55;letter-spacing:.06em}
+ .text{font-size:17px;font-weight:600;margin:5px 0 10px}
+ .ab{display:grid;gap:12px}
+ .lbl{font-size:11px;letter-spacing:.06em;opacity:.75;margin-bottom:3px}
+ .sub2{font-size:11px;opacity:.5;margin-top:2px}
+ audio{width:100%}
+ footer{margin-top:34px;font-size:13px;opacity:.75;border-top:1px solid #8883;padding-top:14px}
+</style></head><body>
+<h1>English two-voice sample pack</h1>
+<p class="sub">Tom's clone (<code>gfzdpspr5fdp</code>) against Olivia (<code>bedd6226</code>), on English lines
+that <b>already exist</b> in the database. Nothing here was rendered for this page — no TTS was run.
+Every clip plays through the app's own versioned URL (<code>/api/audio/&lt;id&gt;.v&lt;rev&gt;</code>), not a
+bucket link, so what you hear is what a learner is served.</p>
+
+<div class="nums">
+  <div class="num"><b>36</b><span>clips on this page</span></div>
+  <div class="num"><b>15</b><span>true A/B pairs</span></div>
+  <div class="num"><b>141</b><span>A/B pairs available in the pool</span></div>
+  <div class="num"><b>0</b><span>candidates dropped as dead</span></div>
+</div>
+
+<div class="note good"><b>The pool does give you enough to judge.</b> Of 507
+distinct texts across the two voices, <b>141</b> exist in <i>both</i> voices — so the clone-vs-Olivia
+comparison is on identical sentences, not on vibes. Both voices carry all four length bands and plenty of
+questions. Two honest limits: this is <b>pod-0 conversational English only</b> (greetings, class-talk, numbers
+and colours drills — no narration, no course prompts), and <b>exclamations are thin</b>
+(9 clone / 3 Olivia distinct texts), so the
+exclamation cells below may repeat a band. Nothing was rendered to fill either gap.</div>
+
+<h2>The whole pool, characterised</h2>
+<table>
+<tr><th>voice</th><th>distinct texts</th><th>1–4 words</th><th>5–8 words</th><th>9–11 words</th><th>12+ words</th><th>stmt</th><th>?</th><th>!</th></tr>
+<tr><td><b>Tom's clone</b></td><td>277</td><td>18</td><td>105</td><td>71</td><td>83</td><td>148</td><td>120</td><td>9</td></tr>
+<tr><td><b>Olivia</b></td><td>230</td><td>16</td><td>102</td><td>41</td><td>71</td><td>129</td><td>98</td><td>3</td></tr>
+</table>
+<p class="sub">Counts are distinct <i>texts</i> after de-duplication; the raw pool is 1,667 clip
+rows, because the same English line is re-used across many <code>*_for_eng</code> courses.</p>
+
+<h2>A/B — same sentence, both voices</h2>
+<p class="sub">Clone first, Olivia second, every time.</p>
+
+  <div class="clip">
+    <div class="n">A/B 1 / 15 · 1–4 words · statement</div>
+    <div class="text">I'd like takeaway, please.</div>
+    <div class="ab"><div class="side"><div class="lbl">Tom's clone</div>
+      <audio controls preload="none" src="https://staging.saysomethingin.app/api/audio/17da5100-2e79-480f-858f-217f6cfd5305.v1"></audio>
+      <div class="sub2">1.9s · fra_for_eng</div></div><div class="side"><div class="lbl">Olivia</div>
+      <audio controls preload="none" src="https://staging.saysomethingin.app/api/audio/1195d71e-a716-41f7-9e9b-56a82f54eef8.v1"></audio>
+      <div class="sub2">1.6s · bul_for_eng</div></div></div>
+  </div>
+
+  <div class="clip">
+    <div class="n">A/B 2 / 15 · 1–4 words · question</div>
+    <div class="text">Can we pay?</div>
+    <div class="ab"><div class="side"><div class="lbl">Tom's clone</div>
+      <audio controls preload="none" src="https://staging.saysomethingin.app/api/audio/cb9377f6-8391-4da5-96dd-53a7df682261.v1"></audio>
+      <div class="sub2">1.2s · ara_sy_for_eng</div></div><div class="side"><div class="lbl">Olivia</div>
+      <audio controls preload="none" src="https://staging.saysomethingin.app/api/audio/bee32d37-de7a-402e-a0b1-c2076d3bfa34.v1"></audio>
+      <div class="sub2">1.2s · fra_ca_for_eng</div></div></div>
+  </div>
+
+  <div class="clip">
+    <div class="n">A/B 3 / 15 · 1–4 words · exclamation</div>
+    <div class="text">Good luck with that!</div>
+    <div class="ab"><div class="side"><div class="lbl">Tom's clone</div>
+      <audio controls preload="none" src="https://staging.saysomethingin.app/api/audio/f4a2aa62-1128-4cdd-8d90-a3f7672776eb.v1"></audio>
+      <div class="sub2">1.2s · ara_sy_for_eng</div></div><div class="side"><div class="lbl">Olivia</div>
+      <audio controls preload="none" src="https://staging.saysomethingin.app/api/audio/385fb57c-e066-472e-a388-83f6328ae893.v1"></audio>
+      <div class="sub2">1.7s · fin_for_eng</div></div></div>
+  </div>
+
+  <div class="clip">
+    <div class="n">A/B 4 / 15 · 5–8 words · statement</div>
+    <div class="text">Four single tickets to town, please.</div>
+    <div class="ab"><div class="side"><div class="lbl">Tom's clone</div>
+      <audio controls preload="none" src="https://staging.saysomethingin.app/api/audio/bbeceea8-6f75-4e95-8037-9593d5d24065.v1"></audio>
+      <div class="sub2">2.5s · ara_sy_for_eng</div></div><div class="side"><div class="lbl">Olivia</div>
+      <audio controls preload="none" src="https://staging.saysomethingin.app/api/audio/2cab7efe-9da3-465a-93b3-2f5de67ef84e.v1"></audio>
+      <div class="sub2">2.7s · fin_for_eng</div></div></div>
+  </div>
+
+  <div class="clip">
+    <div class="n">A/B 5 / 15 · 5–8 words · question</div>
+    <div class="text">Am I wrong about that?</div>
+    <div class="ab"><div class="side"><div class="lbl">Tom's clone</div>
+      <audio controls preload="none" src="https://staging.saysomethingin.app/api/audio/01eed790-9c13-4d55-a9f7-bb2198e08b5c.v1"></audio>
+      <div class="sub2">1.6s · ara_sy_for_eng</div></div><div class="side"><div class="lbl">Olivia</div>
+      <audio controls preload="none" src="https://staging.saysomethingin.app/api/audio/4fb74247-1c55-4322-bee4-adb801dc0414.v1"></audio>
+      <div class="sub2">1.7s · fra_ca_for_eng</div></div></div>
+  </div>
+
+  <div class="clip">
+    <div class="n">A/B 6 / 15 · 9–11 words · statement</div>
+    <div class="text">A bottle of the house red would be lovely.</div>
+    <div class="ab"><div class="side"><div class="lbl">Tom's clone</div>
+      <audio controls preload="none" src="https://staging.saysomethingin.app/api/audio/2bb30c3b-cb33-4640-b1e2-0d7e81b3624a.v1"></audio>
+      <div class="sub2">2.5s · fin_for_eng</div></div><div class="side"><div class="lbl">Olivia</div>
+      <audio controls preload="none" src="https://staging.saysomethingin.app/api/audio/6c8b40f2-e7a1-4918-98aa-d8b57e7743ff.v1"></audio>
+      <div class="sub2">2.4s · swe_for_eng</div></div></div>
+  </div>
+
+  <div class="clip">
+    <div class="n">A/B 7 / 15 · 9–11 words · question</div>
+    <div class="text">Can I have one scoop of chocolate and one of strawberry?</div>
+    <div class="ab"><div class="side"><div class="lbl">Tom's clone</div>
+      <audio controls preload="none" src="https://staging.saysomethingin.app/api/audio/291d1093-f0ea-4f8c-84bb-b7e5c453830e.v1"></audio>
+      <div class="sub2">3.2s · ara_sy_for_eng</div></div><div class="side"><div class="lbl">Olivia</div>
+      <audio controls preload="none" src="https://staging.saysomethingin.app/api/audio/9227e244-b458-426c-a33f-1848dacc319d.v1"></audio>
+      <div class="sub2">3.3s · fin_for_eng</div></div></div>
+  </div>
+
+  <div class="clip">
+    <div class="n">A/B 8 / 15 · 12+ words · statement</div>
+    <div class="text">And the risotto for me. With a small green salad to start.</div>
+    <div class="ab"><div class="side"><div class="lbl">Tom's clone</div>
+      <audio controls preload="none" src="https://staging.saysomethingin.app/api/audio/175b6809-451b-489b-9504-50f2ea084282.v1"></audio>
+      <div class="sub2">4.4s · fin_for_eng</div></div><div class="side"><div class="lbl">Olivia</div>
+      <audio controls preload="none" src="https://staging.saysomethingin.app/api/audio/2cb0ca6f-f240-47fa-b6b5-71fdae8bc5c8.v1"></audio>
+      <div class="sub2">3.7s · isl_for_eng</div></div></div>
+  </div>
+
+  <div class="clip">
+    <div class="n">A/B 9 / 15 · 12+ words · question</div>
+    <div class="text">Could I have two white coffees and two black coffees and one of those, please?</div>
+    <div class="ab"><div class="side"><div class="lbl">Tom's clone</div>
+      <audio controls preload="none" src="https://staging.saysomethingin.app/api/audio/ca43c180-0f9c-410d-8f0a-c3fdc530ab35.v1"></audio>
+      <div class="sub2">4.8s · fra_for_eng</div></div><div class="side"><div class="lbl">Olivia</div>
+      <audio controls preload="none" src="https://staging.saysomethingin.app/api/audio/53302863-2aab-46f1-b878-bc1872e7d4ba.v1"></audio>
+      <div class="sub2">4.5s · swe_for_eng</div></div></div>
+  </div>
+
+  <div class="clip">
+    <div class="n">A/B 10 / 15 · 12+ words · exclamation</div>
+    <div class="text">This is exactly the kind of practice I need. I think I can feel it changing my brain while we're talking! I really appreciate your help. But it's surprising how tired I get when I'm talking in a language I don't speak very well.</div>
+    <div class="ab"><div class="side"><div class="lbl">Tom's clone</div>
+      <audio controls preload="none" src="https://staging.saysomethingin.app/api/audio/55849d91-d260-41c7-b235-7b5d2d430d8a.v1"></audio>
+      <div class="sub2">13.3s · hrv_for_eng</div></div><div class="side"><div class="lbl">Olivia</div>
+      <audio controls preload="none" src="https://staging.saysomethingin.app/api/audio/2727ee78-5157-489a-b240-d7cbf06942e9.v1"></audio>
+      <div class="sub2">14.2s · lav_for_eng</div></div></div>
+  </div>
+
+  <div class="clip">
+    <div class="n">A/B 11 / 15 · 1–4 words · statement</div>
+    <div class="text">It's hot today, again.</div>
+    <div class="ab"><div class="side"><div class="lbl">Tom's clone</div>
+      <audio controls preload="none" src="https://staging.saysomethingin.app/api/audio/197d49cc-21da-4385-a2ec-a691228697e9.v1"></audio>
+      <div class="sub2">1.9s · ara_sy_for_eng</div></div><div class="side"><div class="lbl">Olivia</div>
+      <audio controls preload="none" src="https://staging.saysomethingin.app/api/audio/2df0610a-0b4c-4d2c-8936-6f9df73d7b8f.v1"></audio>
+      <div class="sub2">2.0s · fra_ca_for_eng</div></div></div>
+  </div>
+
+  <div class="clip">
+    <div class="n">A/B 12 / 15 · 1–4 words · question</div>
+    <div class="text">Can we try again?</div>
+    <div class="ab"><div class="side"><div class="lbl">Tom's clone</div>
+      <audio controls preload="none" src="https://staging.saysomethingin.app/api/audio/c0dffe68-c394-4db6-b09f-275f752bae5e.v1"></audio>
+      <div class="sub2">1.3s · ara_sy_for_eng</div></div><div class="side"><div class="lbl">Olivia</div>
+      <audio controls preload="none" src="https://staging.saysomethingin.app/api/audio/42caa6a6-3c45-4dfe-a386-540dc71b7e64.v1"></audio>
+      <div class="sub2">1.6s · fra_ca_for_eng</div></div></div>
+  </div>
+
+  <div class="clip">
+    <div class="n">A/B 13 / 15 · 5–8 words · statement</div>
+    <div class="text">How interesting. Well, lovely to meet you.</div>
+    <div class="ab"><div class="side"><div class="lbl">Tom's clone</div>
+      <audio controls preload="none" src="https://staging.saysomethingin.app/api/audio/f3123bce-58cf-42ca-9f49-7de092fb168d.v1"></audio>
+      <div class="sub2">2.7s · hrv_for_eng</div></div><div class="side"><div class="lbl">Olivia</div>
+      <audio controls preload="none" src="https://staging.saysomethingin.app/api/audio/d91c2078-0cd5-4b28-96db-e4fc387e009b.v1"></audio>
+      <div class="sub2">5.4s · gle_for_eng</div></div></div>
+  </div>
+
+  <div class="clip">
+    <div class="n">A/B 14 / 15 · 5–8 words · question</div>
+    <div class="text">Are we going to be late?</div>
+    <div class="ab"><div class="side"><div class="lbl">Tom's clone</div>
+      <audio controls preload="none" src="https://staging.saysomethingin.app/api/audio/63038800-aa65-4e87-a4f3-170eb1a58c66.v1"></audio>
+      <div class="sub2">1.6s · ara_sy_for_eng</div></div><div class="side"><div class="lbl">Olivia</div>
+      <audio controls preload="none" src="https://staging.saysomethingin.app/api/audio/0bc9e54e-0036-42f7-b729-5bc58872cb65.v1"></audio>
+      <div class="sub2">1.8s · fin_for_eng</div></div></div>
+  </div>
+
+  <div class="clip">
+    <div class="n">A/B 15 / 15 · 9–11 words · statement</div>
+    <div class="text">I also need to get some sunscreen and some toothpaste.</div>
+    <div class="ab"><div class="side"><div class="lbl">Tom's clone</div>
+      <audio controls preload="none" src="https://staging.saysomethingin.app/api/audio/477b7d18-fa36-44bb-893b-397c225626b6.v1"></audio>
+      <div class="sub2">3.5s · hrv_for_eng</div></div><div class="side"><div class="lbl">Olivia</div>
+      <audio controls preload="none" src="https://staging.saysomethingin.app/api/audio/af280874-8912-454d-b5fa-45dd7f10c894.v1"></audio>
+      <div class="sub2">3.4s · ara_eg_for_eng</div></div></div>
+  </div>
+
+<h2>Solo — lines that exist in one voice only</h2>
+
+  <div class="clip">
+    <div class="n">solo 1 / 6 · 33 words · question</div>
+    <div class="text">Would it bother you if I tried to practise speaking Croatian with you? I haven't been learning it for very long, and I still feel a little nervous about speaking with other people.</div>
+    <div class="ab"><div class="side"><div class="lbl">Tom's clone</div>
+      <audio controls preload="none" src="https://staging.saysomethingin.app/api/audio/0ea7f52e-e6ff-483f-99ef-bcc2a54b77c8.v1"></audio>
+      <div class="sub2">9.5s · hrv_for_eng</div></div></div>
+  </div>
+
+  <div class="clip">
+    <div class="n">solo 2 / 6 · 11 words · question</div>
+    <div class="text">And the bill, when you're ready. … Could we split it?</div>
+    <div class="ab"><div class="side"><div class="lbl">Tom's clone</div>
+      <audio controls preload="none" src="https://staging.saysomethingin.app/api/audio/57659c22-1fa7-463a-a0f0-c2cb94d1229e.v1"></audio>
+      <div class="sub2">3.8s · fin_for_eng</div></div></div>
+  </div>
+
+  <div class="clip">
+    <div class="n">solo 3 / 6 · 2 words · question</div>
+    <div class="text">And then?</div>
+    <div class="ab"><div class="side"><div class="lbl">Tom's clone</div>
+      <audio controls preload="none" src="https://staging.saysomethingin.app/api/audio/dfb61713-4807-4bf3-a3ff-8eb003a0ca9e.v1"></audio>
+      <div class="sub2">0.9s · fin_for_eng</div></div></div>
+  </div>
+
+  <div class="clip">
+    <div class="n">solo 4 / 6 · 33 words · question</div>
+    <div class="text">Would you mind if I tried to practise speaking Canadian French with you? … I haven't been learning for very long, and I still feel a little nervous about speaking with other people.</div>
+    <div class="ab"><div class="side"><div class="lbl">Olivia</div>
+      <audio controls preload="none" src="https://staging.saysomethingin.app/api/audio/743ebb40-462c-44ca-84c1-93d6546818a0.v1"></audio>
+      <div class="sub2">9.4s · fra_ca_for_eng</div></div></div>
+  </div>
+
+  <div class="clip">
+    <div class="n">solo 5 / 6 · 11 words · question</div>
+    <div class="text">I'd like a half-litre, please. What ales do you have on?</div>
+    <div class="ab"><div class="side"><div class="lbl">Olivia</div>
+      <audio controls preload="none" src="https://staging.saysomethingin.app/api/audio/1fbf9bd0-adb1-4638-9a21-6e9bc06b8689.v1"></audio>
+      <div class="sub2">3.6s · est_for_eng</div></div></div>
+  </div>
+
+  <div class="clip">
+    <div class="n">solo 6 / 6 · 2 words · statement</div>
+    <div class="text">Yes, please.</div>
+    <div class="ab"><div class="side"><div class="lbl">Olivia</div>
+      <audio controls preload="none" src="https://staging.saysomethingin.app/api/audio/db91d68f-5e7f-415c-a916-5fe0eb0924b3.v1"></audio>
+      <div class="sub2">1.4s · fin_for_eng</div></div></div>
+  </div>
+
+<footer>Selection is stated, not silent: A/B pairs were chosen by walking a
+4&times;3 grid of length band &times; sentence type, one pair per cell per pass, so no populated
+cell of the spread is missing by accident; solos are the longest line, a mid-length question and a short line
+unique to each voice. Every clip was verified alive by an HTTP request on both URL forms — the app player path
+used above, and the S3 object used by the published markdown twin — before being included.
+No audio was generated at any point.<br><br>
+Generated 2026-08-13 06:49 UTC by
+<code>tools/eng-sample-pack-page.cjs</code>.</footer>
+</body></html>

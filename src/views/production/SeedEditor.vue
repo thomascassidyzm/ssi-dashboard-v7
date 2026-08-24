@@ -71,7 +71,7 @@
                 </template>
                 <template v-else>
                   <span :class="{ empty: !seed.known_text }">
-                    {{ seed.known_text || '—' }}
+                    <span :dir="dirFor(seed.known_text)" class="bidi-isolate">{{ seed.known_text || '—' }}</span>
                   </span>
                 </template>
                 <transition name="tick">
@@ -89,15 +89,18 @@
                     ref="editInput"
                     v-model="editValue"
                     class="cell-input"
+                    :dir="dirFor(editValue)"
                     @blur="saveEdit(seed, 'target_text')"
                     @keydown.enter="saveEdit(seed, 'target_text')"
                     @keydown.escape="cancelEdit"
                   />
                 </template>
                 <template v-else>
-                  <span :class="{ empty: !seed.target_text }">
-                    {{ seed.target_text || '—' }}
-                  </span>
+                  <span
+                    class="target-run"
+                    :class="{ empty: !seed.target_text }"
+                    :dir="dirFor(seed.target_text)"
+                  >{{ seed.target_text || '—' }}</span>
                   <button
                     v-if="seed.target_text"
                     class="rebuild-btn"
@@ -132,10 +135,10 @@
         </p>
 
         <label class="cascade-label">Known (unchanged)</label>
-        <div class="cascade-readonly">{{ cascade.seed?.known_text || '—' }}</div>
+        <div class="cascade-readonly" :dir="dirFor(cascade.seed?.known_text)">{{ cascade.seed?.known_text || '—' }}</div>
 
         <label class="cascade-label">New target translation</label>
-        <textarea v-model="cascade.target" class="cascade-input" rows="2"
+        <textarea v-model="cascade.target" class="cascade-input" rows="2" :dir="dirFor(cascade.target)"
                   placeholder="Revised target-language translation…"></textarea>
 
         <label class="cascade-checkbox">
@@ -220,6 +223,7 @@
 <script setup>
 import { ref, computed, onMounted, watch, nextTick } from 'vue'
 import { getApiUrl } from '@/services/api'
+import { dirFor } from '@/utils/textDirection.js'
 
 const props = defineProps({
   courseCode: { type: String, required: true }
@@ -680,6 +684,18 @@ onMounted(loadSeeds)
   display: flex;
   align-items: center;
   gap: 0.5rem;
+}
+
+/*
+ * RTL target text carries dir="rtl" so trailing NEUTRAL punctuation (`!` `.` `,`)
+ * resolves against the Arabic run instead of the LTR paragraph. `.cell-wrap` is a
+ * flex container, so this span is blockified and dir="rtl" would otherwise also
+ * flip its default text-align — pin it back to left so the fix moves the mark
+ * without moving the column.
+ */
+.target-run {
+  unicode-bidi: isolate;
+  text-align: left;
 }
 
 .save-tick {

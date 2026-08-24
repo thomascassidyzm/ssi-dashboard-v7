@@ -11,6 +11,21 @@ Type=simple
 WorkingDirectory=/home/tomcassidy/SSi/ssi-dashboard-v7-clean
 Environment=NODE_OPTIONS=--max-old-space-size=4096
 Environment=PORT=3456
+# PRE-RESTART SYNTAX GUARD — see the fuller note in popty-production-api.service.
+# Restart=always cannot restart its way out of a parse error, so a broken merge
+# turns into a silent crash-loop. ExecStartPre refuses the start and writes a
+# loud banner naming the file and the SyntaxError.
+#
+# ABSOLUTE PATHS, unlike the three sibling units, and for the reason called out
+# in the WorkingDirectory note above: this service alone runs from the DEV
+# checkout, which sits on whatever branch a developer left it on and therefore
+# does NOT reliably contain tools/check-service-syntax.cjs. A relative
+# ExecStartPre would resolve against that checkout, fail to find the tool, and
+# refuse every start — the guard would become the outage. So the TOOL is run
+# from the deployed checkout (always on main, always has it) and pointed at the
+# FILE this unit actually executes. If orchestrator is ever cut over to
+# …-clean-prod like its siblings, collapse both paths back to relative.
+ExecStartPre=/usr/bin/node /home/tomcassidy/SSi/ssi-dashboard-v7-clean-prod/tools/check-service-syntax.cjs /home/tomcassidy/SSi/ssi-dashboard-v7-clean/services/orchestration/orchestrator.cjs
 ExecStart=/usr/bin/node services/orchestration/orchestrator.cjs
 Restart=always
 RestartSec=5

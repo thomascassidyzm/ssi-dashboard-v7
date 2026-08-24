@@ -26,7 +26,6 @@
 require('dotenv').config({ path: require('path').join(__dirname, '..', '..', '.env.psql') })
 const fs = require('fs')
 const { Client } = require('pg')
-const { realHumanLearners } = require('../../services/shared/learner-counts.cjs')
 
 const arg = (n) => {
   const a = process.argv.find(x => x.startsWith(`--${n}=`))
@@ -67,10 +66,7 @@ async function main () {
             (select count(*) from listening_pod_sentences s where s.pod_id = l.course_code || ':' || $1) live_n,
             (select count(*) from listening_pod_sentences s where s.pod_id = l.course_code || ':' || $2) staged_n,
             (select count(*) from learner_pod_state ls where ls.course_code = l.course_code) state_rows,
-            -- NOT a headcount — distinct learner_ids, no auth/demo/burst filtering. See
-            -- services/shared/learner-counts.cjs for the honest "real human learners" count
-            -- computed per course below.
-            (select count(distinct ls.learner_id) from learner_pod_state ls where ls.course_code = l.course_code) distinct_learner_ids
+            (select count(distinct ls.learner_id) from learner_pod_state ls where ls.course_code = l.course_code) learners
        from listening_pods l
       where l.slug = $2 and ($3::text is null or l.course_code = $3)
       order by state_rows desc, l.course_code`,
@@ -161,17 +157,12 @@ async function main () {
         duplicate_texts_staged: dupStaged
       },
       slot_trap: { slot_same_text: slotSame, slot_different_text: slotChanged, slot_absent: slotGone },
-      // "learners" is demoted to a distinct-id count of who is ON THIS COURSE'S
-      // PROGRESS ROWS (unfiltered — includes non-auth/test/internal ids, needed to
-      // scope the miscredit analysis below), never presented as a headline headcount.
-      // real_human_learners (below) is the honest number for that.
-      learner_ids: {
+      learners: {
         count: perLearner.size,
         state_rows: state.length,
         // anonymised: rank by exposure volume, never an id
         profiles: [...perLearner.values()].sort((a, b) => b.exposures - a.exposures)
-      },
-      real_human_learners: await realHumanLearners(db, c.course_code)
+      }
     })
   }
 
@@ -182,10 +173,10 @@ async function main () {
     console.log(`  overlap by text : ${r.overlap.survives_normalised} survive, ${r.overlap.dropped} dropped, ${r.overlap.brand_new} new` +
       (r.overlap.survives_strict_verbatim !== r.overlap.survives_normalised ? `  [strict verbatim: ${r.overlap.survives_strict_verbatim}]` : ''))
     console.log(`  slot trap       : ${r.slot_trap.slot_same_text} slots keep their sentence, ${r.slot_trap.slot_different_text} SWAP SENTENCE UNDER THE LEARNER`)
-    if (r.learner_ids.count) {
-      const mis = r.learner_ids.profiles.reduce((a, p) => a + p.miscredited, 0)
-      const misE = r.learner_ids.profiles.reduce((a, p) => a + p.miscreditedExposures, 0)
-      console.log(`  learner ids     : ${r.learner_ids.count} on ${r.learner_ids.state_rows} rows (${r.real_human_learners.humans} real human learners) — do-nothing swap mis-credits ${mis} rows / ${misE} exposures`)
+    if (r.learners.count) {
+      const mis = r.learners.profiles.reduce((a, p) => a + p.miscredited, 0)
+      const misE = r.learners.profiles.reduce((a, p) => a + p.miscreditedExposures, 0)
+      console.log(`  learners        : ${r.learners.count} on ${r.learners.state_rows} rows — do-nothing swap mis-credits ${mis} rows / ${misE} exposures`)
     }
   }
 

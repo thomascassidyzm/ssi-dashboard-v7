@@ -719,5 +719,21 @@ onUnmounted(() => {
     font-size: 0.8125rem;
     padding: 0.375rem 0.625rem;
   }
+
+  /* .navbar-right's contents (env select + remote control + course switcher +
+     avatar) measure 458px. With flex-shrink:0 that widened the whole DOCUMENT
+     to 470px on a 390px phone, so every page under this navbar — including
+     /record, the page a recordist stands in front of — scrolled sideways.
+     Let the row shrink and scroll its own controls instead of the page. */
+  .navbar-right {
+    flex-shrink: 1;
+    min-width: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .navbar-right::-webkit-scrollbar {
+    display: none;
+  }
 }
 </style>

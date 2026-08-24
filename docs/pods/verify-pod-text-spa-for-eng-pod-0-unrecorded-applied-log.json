@@ -1,0 +1,910 @@
+{
+  "mode": "APPLIED",
+  "summary": {
+    "pod": "spa_for_eng:pod-0-unrecorded",
+    "model": "claude-opus-5",
+    "total": 128,
+    "ok": 128,
+    "flagged": 0,
+    "unjudged": 0,
+    "rows_written": 128
+  },
+  "log": [
+    {
+      "id": "spa_for_eng:pod-0-unrecorded:SC01-S003",
+      "english": "I'm very well, thank you. Are you going to work?",
+      "draft": "Muy bien, gracias. ¿Vas al trabajo?",
+      "verdict": "ok",
+      "reason": null
+    },
+    {
+      "id": "spa_for_eng:pod-0-unrecorded:SC01-S004",
+      "english": "Yes, I've got a busy day today. I hope you have a good day. See you later.",
+      "draft": "Sí, tengo un día ocupado hoy. Espero que tengas un buen día. Hasta luego.",
+      "verdict": "ok",
+      "reason": null
+    },
+    {
+      "id": "spa_for_eng:pod-0-unrecorded:SC02-S003",
+      "english": "How far is it into town?",
+      "draft": "¿A qué distancia está el centro?",
+      "verdict": "ok",
+      "reason": null
+    },
+    {
+      "id": "spa_for_eng:pod-0-unrecorded:SC02-S004",
+      "english": "Can you tell me how far it is into town?",
+      "draft": "¿Me puede decir a qué distancia está el centro?",
+      "verdict": "ok",
+      "reason": null
+    },
+    {
+      "id": "spa_for_eng:pod-0-unrecorded:SC02-S005",
+      "english": "It's not very far. Maybe three or four miles.",
+      "draft": "No está muy lejos. Quizás tres o cuatro millas.",
+      "verdict": "ok",
+      "reason": null
+    },
+    {
+      "id": "spa_for_eng:pod-0-unrecorded:SC03-S001",
+      "english": "Good afternoon. What can I get you?",
+      "draft": "Buenas tardes. ¿Qué le pongo?",
+      "verdict": "ok",
+      "reason": null
+    },
+    {
+      "id": "spa_for_eng:pod-0-unrecorded:SC03-S002",
+      "english": "Good afternoon. I'd like a coffee, please. With milk but with no sugar. To take away.",
+      "draft": "Buenas tardes. Me gustaría un café, por favor. Con leche pero sin azúcar. Para llevar.",
+      "verdict": "ok",
+      "reason": null
+    },
+    {
+      "id": "spa_for_eng:pod-0-unrecorded:SC03-S003",
+      "english": "Do you have any food?",
+      "draft": "¿Tienen algo de comer?",
+      "verdict": "ok",
+      "reason": null
+    },
+    {
+      "id": "spa_for_eng:pod-0-unrecorded:SC03-S004",
+      "english": "Do you have any snacks?",
+      "draft": "¿Tienen algo para picar?",
+      "verdict": "ok",
+      "reason": null
+    },
+    {
+      "id": "spa_for_eng:pod-0-unrecorded:SC03-S005",
+      "english": "Do you have crisps, or nuts, or anything?",
+      "draft": "¿Tienen patatas fritas, o frutos secos, o algo así?",
+      "verdict": "ok",
+      "reason": null
+    },
+    {
+      "id": "spa_for_eng:pod-0-unrecorded:SC03-S006",
+      "english": "No, we've only got drinks.",
+      "draft": "No, solo tenemos bebidas.",
+      "verdict": "ok",
+      "reason": null
+    },
+    {
+      "id": "spa_for_eng:pod-0-unrecorded:SC03-S007",
+      "english": "Yes, would you like the menu?",
+      "draft": "Sí, ¿quiere la carta?",
+      "verdict": "ok",
+      "reason": null
+    },
+    {
+      "id": "spa_for_eng:pod-0-unrecorded:SC03-S008",
+      "english": "Yes, please.",
+      "draft": "Sí, por favor.",
+      "verdict": "ok",
+      "reason": null
+    },
+    {
+      "id": "spa_for_eng:pod-0-unrecorded:SC03-S009",
+      "english": "Here's your coffee.",
+      "draft": "Aquí tiene su café.",
+      "verdict": "ok",
+      "reason": null
+    },
+    {
+      "id": "spa_for_eng:pod-0-unrecorded:SC05-S001",
+      "english": "Good evening, Sarah. Did you have a long day?",
+      "draft": "Buenas noches, Sarah. ¿Has tenido un día largo?",
+      "verdict": "ok",
+      "reason": null
+    },
+    {
+      "id": "spa_for_eng:pod-0-unrecorded:SC05-S002",
+      "english": "Yes, very. I'm very tired now. Good night. See you tomorrow.",
+      "draft": "Sí, muy largo. Estoy muy cansada ahora. Buenas noches. Hasta mañana.",
+      "verdict": "ok",
+      "reason": null
+    },
+    {
+      "id": "spa_for_eng:pod-0-unrecorded:SC07-S001",
+      "english": "Good morning. What can I get you?",
+      "draft": "Buenos días. ¿Qué le pongo?",
+      "verdict": "ok",
+      "reason": null
+    },
+    {
+      "id": "spa_for_eng:pod-0-unrecorded:SC07-S006",
+      "english": "I'd like takeaway, please.",
+      "draft": "Para llevar, por favor.",
+      "verdict": "ok",
+      "reason": null
+    },
+    {
+      "id": "spa_for_eng:pod-0-unrecorded:SC07-S010",
+      "english": "That's eight pound forty altogether.",
+      "draft": "Son ocho libras con cuarenta en total.",
+      "verdict": "ok",
+      "reason": null
+    },
+    {
+      "id": "spa_for_eng:pod-0-unrecorded:SC07-S012",
+      "english": "Of course. There's the machine.",
+      "draft": "Por supuesto. Ahí tiene el datáfono.",
+      "verdict": "ok",
+      "reason": null
+    },
+    {
+      "id": "spa_for_eng:pod-0-unrecorded:SC08-S001",
+      "english": "Good evening. What can I get you?",
+      "draft": "Buenas noches. ¿Qué van a tomar?",
+      "verdict": "ok",
+      "reason": null
+    },
+    {
+      "id": "spa_for_eng:pod-0-unrecorded:SC08-S002",
+      "english": "I'd like a pint, please. What ales do you have on?",
+      "draft": "Me gustaría una pinta, por favor. ¿Qué cervezas tienen de barril?",
+      "verdict": "ok",
+      "reason": null
+    },
+    {
+      "id": "spa_for_eng:pod-0-unrecorded:SC08-S005",
+      "english": "Can I have a half of cider?",
+      "draft": "¿Me pone media pinta de sidra?",
+      "verdict": "ok",
+      "reason": null
+    },
+    {
+      "id": "spa_for_eng:pod-0-unrecorded:SC08-S006",
+      "english": "Could I see the wine list? I want a glass of wine.",
+      "draft": "¿Podría ver la carta de vinos? Quiero una copa de vino.",
+      "verdict": "ok",
+      "reason": null
+    },
+    {
+      "id": "spa_for_eng:pod-0-unrecorded:SC08-S007",
+      "english": "We have a house red, a house white, or you could have one of our bottles.",
+      "draft": "Tenemos un tinto de la casa, un blanco de la casa, o pueden tomar una de nuestras botellas.",
+      "verdict": "ok",
+      "reason": null
+    },
+    {
+      "id": "spa_for_eng:pod-0-unrecorded:SC08-S014",
+      "english": "Can we have some bread? And a bowl of chips for the table.",
+      "draft": "¿Nos pone un poco de pan? Y un plato de patatas fritas para la mesa.",
+      "verdict": "ok",
+      "reason": null
+    },
+    {
+      "id": "spa_for_eng:pod-0-unrecorded:SC09-S001",
+      "english": "Good evening. We have a booking for two, under the name Davies.",
+      "draft": "Buenas noches. Tenemos una reserva para dos, a nombre de Davies.",
+      "verdict": "ok",
+      "reason": null
+    },
+    {
+      "id": "spa_for_eng:pod-0-unrecorded:SC09-S003",
+      "english": "Would you like still or sparkling water to start?",
+      "draft": "¿Quieren agua sin gas o con gas para empezar?",
+      "verdict": "ok",
+      "reason": null
+    },
+    {
+      "id": "spa_for_eng:pod-0-unrecorded:SC09-S009",
+      "english": "I'll have the lamb, please. With a side of greens.",
+      "draft": "Yo tomaré el cordero, por favor. Con una guarnición de verduras.",
+      "verdict": "ok",
+      "reason": null
+    },
+    {
+      "id": "spa_for_eng:pod-0-unrecorded:SC09-S012",
+      "english": "Could we see the wine list?",
+      "draft": "¿Podríamos ver la carta de vinos?",
+      "verdict": "ok",
+      "reason": null
+    },
+    {
+      "id": "spa_for_eng:pod-0-unrecorded:SC09-S015",
+      "english": "Is everything alright? Do you have any room for dessert?",
+      "draft": "¿Está todo bien? ¿Les queda sitio para el postre?",
+      "verdict": "ok",
+      "reason": null
+    },
+    {
+      "id": "spa_for_eng:pod-0-unrecorded:SC11-S003",
+      "english": "Of course. Here's my passport.",
+      "draft": "Por supuesto. Aquí tiene mi pasaporte.",
+      "verdict": "ok",
+      "reason": null
+    },
+    {
+      "id": "spa_for_eng:pod-0-unrecorded:SC11-S004",
+      "english": "Lovely. The room is on the third floor, room 709.",
+      "draft": "Estupendo. La habitación está en la tercera planta, la 709.",
+      "verdict": "ok",
+      "reason": null
+    },
+    {
+      "id": "spa_for_eng:pod-0-unrecorded:SC11-S012",
+      "english": "It's on the welcome card in your room. Have a lovely stay.",
+      "draft": "Está en la tarjeta de bienvenida de su habitación. Que tenga una estancia estupenda.",
+      "verdict": "ok",
+      "reason": null
+    },
+    {
+      "id": "spa_for_eng:pod-0-unrecorded:SC12-S001",
+      "english": "Good morning. I'm not feeling great - could you recommend something?",
+      "draft": "Buenos días. No me encuentro muy bien, ¿me podría recomendar algo?",
+      "verdict": "ok",
+      "reason": null
+    },
+    {
+      "id": "spa_for_eng:pod-0-unrecorded:SC12-S004",
+      "english": "Try paracetamol for the headache, and these lozenges for the throat.",
+      "draft": "Pruebe con paracetamol para el dolor de cabeza, y estas pastillas para la garganta.",
+      "verdict": "ok",
+      "reason": null
+    },
+    {
+      "id": "spa_for_eng:pod-0-unrecorded:SC12-S006",
+      "english": "One every four to six hours, no more than eight in a day.",
+      "draft": "Una cada cuatro o seis horas, no más de ocho al día.",
+      "verdict": "ok",
+      "reason": null
+    },
+    {
+      "id": "spa_for_eng:pod-0-unrecorded:SC12-S007",
+      "english": "Are they all right to take with food?",
+      "draft": "¿Se pueden tomar con comida?",
+      "verdict": "ok",
+      "reason": null
+    },
+    {
+      "id": "spa_for_eng:pod-0-unrecorded:SC12-S008",
+      "english": "Yes, with or after food is best.",
+      "draft": "Sí, mejor con la comida o después de comer.",
+      "verdict": "ok",
+      "reason": null
+    },
+    {
+      "id": "spa_for_eng:pod-0-unrecorded:SC12-S009",
+      "english": "Thank you. Could I also get a packet of plasters?",
+      "draft": "Gracias. ¿Me podría dar también un paquete de tiritas?",
+      "verdict": "ok",
+      "reason": null
+    },
+    {
+      "id": "spa_for_eng:pod-0-unrecorded:SC12-S010",
+      "english": "19. 20. 21. Wednesday. Thursday.",
+      "draft": "Diecinueve. Veinte. Veintiuno. Miércoles. Jueves.",
+      "verdict": "ok",
+      "reason": null
+    },
+    {
+      "id": "spa_for_eng:pod-0-unrecorded:SC14-S002",
+      "english": "Yes, of course. It may take some time, there's a lot of traffic at the moment.",
+      "draft": "Sí, por supuesto. Puede que tardemos un poco, hay mucho tráfico ahora mismo.",
+      "verdict": "ok",
+      "reason": null
+    },
+    {
+      "id": "spa_for_eng:pod-0-unrecorded:SC14-S007",
+      "english": "Here we are. That's twelve pound fifty.",
+      "draft": "Ya hemos llegado. Son doce libras con cincuenta.",
+      "verdict": "ok",
+      "reason": null
+    },
+    {
+      "id": "spa_for_eng:pod-0-unrecorded:SC14-S009",
+      "english": "Yes, of course. The machine is just here.",
+      "draft": "Sí, por supuesto. El datáfono está aquí mismo.",
+      "verdict": "ok",
+      "reason": null
+    },
+    {
+      "id": "spa_for_eng:pod-0-unrecorded:SC14-S010",
+      "english": "100. 200. 1000. Sunday. 12 o'clock.",
+      "draft": "Cien. Doscientos. Mil. Domingo. Las doce.",
+      "verdict": "ok",
+      "reason": null
+    },
+    {
+      "id": "spa_for_eng:pod-0-unrecorded:SC15-S001",
+      "english": "How much is that?",
+      "draft": "¿Cuánto es?",
+      "verdict": "ok",
+      "reason": null
+    },
+    {
+      "id": "spa_for_eng:pod-0-unrecorded:SC15-S002",
+      "english": "Can you tell me how much that is?",
+      "draft": "¿Me puede decir cuánto es?",
+      "verdict": "ok",
+      "reason": null
+    },
+    {
+      "id": "spa_for_eng:pod-0-unrecorded:SC15-S003",
+      "english": "How much does it cost to get a taxi into town?",
+      "draft": "¿Cuánto cuesta ir en taxi al centro?",
+      "verdict": "ok",
+      "reason": null
+    },
+    {
+      "id": "spa_for_eng:pod-0-unrecorded:SC15-S004",
+      "english": "How much does it cost to get a bus into town?",
+      "draft": "¿Cuánto cuesta ir en autobús al centro?",
+      "verdict": "ok",
+      "reason": null
+    },
+    {
+      "id": "spa_for_eng:pod-0-unrecorded:SC15-S005",
+      "english": "Where can we get a bus?",
+      "draft": "¿Dónde podemos coger un autobús?",
+      "verdict": "ok",
+      "reason": null
+    },
+    {
+      "id": "spa_for_eng:pod-0-unrecorded:SC15-S006",
+      "english": "Where can we get a taxi?",
+      "draft": "¿Dónde podemos coger un taxi?",
+      "verdict": "ok",
+      "reason": null
+    },
+    {
+      "id": "spa_for_eng:pod-0-unrecorded:SC15-S007",
+      "english": "Four single tickets to town, please.",
+      "draft": "Cuatro billetes de ida al centro, por favor.",
+      "verdict": "ok",
+      "reason": null
+    },
+    {
+      "id": "spa_for_eng:pod-0-unrecorded:SC15-S008",
+      "english": "Two return tickets to town, please.",
+      "draft": "Dos billetes de ida y vuelta al centro, por favor.",
+      "verdict": "ok",
+      "reason": null
+    },
+    {
+      "id": "spa_for_eng:pod-0-unrecorded:SC15-S009",
+      "english": "I prefer to try to speak your language, I think it's polite.",
+      "draft": "Prefiero intentar hablar tu idioma, me parece más educado.",
+      "verdict": "ok",
+      "reason": null
+    },
+    {
+      "id": "spa_for_eng:pod-0-unrecorded:SC15-S010",
+      "english": "I'm sorry I can't speak very quickly.",
+      "draft": "Lo siento, no puedo hablar muy rápido.",
+      "verdict": "ok",
+      "reason": null
+    },
+    {
+      "id": "spa_for_eng:pod-0-unrecorded:SC15-S011",
+      "english": "100,000. 60. 70. 1 o'clock. 11 o'clock.",
+      "draft": "Cien mil. Sesenta. Setenta. La una. Las once.",
+      "verdict": "ok",
+      "reason": null
+    },
+    {
+      "id": "spa_for_eng:pod-0-unrecorded:SC16-S001",
+      "english": "But if you can speak slowly I think we'll be able to manage.",
+      "draft": "Pero si puedes hablar despacio creo que nos las arreglaremos.",
+      "verdict": "ok",
+      "reason": null
+    },
+    {
+      "id": "spa_for_eng:pod-0-unrecorded:SC16-S002",
+      "english": "You spoke a little too quickly, so I'm not sure if I understood.",
+      "draft": "Has hablado un poco demasiado rápido, así que no estoy seguro de si te he entendido.",
+      "verdict": "ok",
+      "reason": null
+    },
+    {
+      "id": "spa_for_eng:pod-0-unrecorded:SC16-S003",
+      "english": "Can we try again?",
+      "draft": "¿Podemos intentarlo otra vez?",
+      "verdict": "ok",
+      "reason": null
+    },
+    {
+      "id": "spa_for_eng:pod-0-unrecorded:SC16-S004",
+      "english": "Can we see the menu?",
+      "draft": "¿Podemos ver la carta?",
+      "verdict": "ok",
+      "reason": null
+    },
+    {
+      "id": "spa_for_eng:pod-0-unrecorded:SC16-S005",
+      "english": "Can we see the dessert menu also?",
+      "draft": "¿Podemos ver también la carta de postres?",
+      "verdict": "ok",
+      "reason": null
+    },
+    {
+      "id": "spa_for_eng:pod-0-unrecorded:SC16-S006",
+      "english": "Do you have anything to eat?",
+      "draft": "¿Tienen algo de comer?",
+      "verdict": "ok",
+      "reason": null
+    },
+    {
+      "id": "spa_for_eng:pod-0-unrecorded:SC16-S007",
+      "english": "Can we pay?",
+      "draft": "¿Podemos pagar?",
+      "verdict": "ok",
+      "reason": null
+    },
+    {
+      "id": "spa_for_eng:pod-0-unrecorded:SC16-S008",
+      "english": "Can we pay by card?",
+      "draft": "¿Podemos pagar con tarjeta?",
+      "verdict": "ok",
+      "reason": null
+    },
+    {
+      "id": "spa_for_eng:pod-0-unrecorded:SC16-S009",
+      "english": "No, we only take cash.",
+      "draft": "No, solo aceptamos efectivo.",
+      "verdict": "ok",
+      "reason": null
+    },
+    {
+      "id": "spa_for_eng:pod-0-unrecorded:SC16-S010",
+      "english": "I'm sorry, I don't have any cash.",
+      "draft": "Lo siento, no llevo efectivo.",
+      "verdict": "ok",
+      "reason": null
+    },
+    {
+      "id": "spa_for_eng:pod-0-unrecorded:SC16-S011",
+      "english": "A million. 80. 90. 2 o'clock. 10 o'clock.",
+      "draft": "Un millón. Ochenta. Noventa. Las dos. Las diez.",
+      "verdict": "ok",
+      "reason": null
+    },
+    {
+      "id": "spa_for_eng:pod-0-unrecorded:SC17-S001",
+      "english": "Is there a cash machine near here?",
+      "draft": "¿Hay un cajero automático cerca de aquí?",
+      "verdict": "ok",
+      "reason": null
+    },
+    {
+      "id": "spa_for_eng:pod-0-unrecorded:SC17-S002",
+      "english": "Do you want to pay by cash or card or put it on the room?",
+      "draft": "¿Quiere pagar en efectivo o con tarjeta, o lo cargamos a la habitación?",
+      "verdict": "ok",
+      "reason": null
+    },
+    {
+      "id": "spa_for_eng:pod-0-unrecorded:SC17-S003",
+      "english": "Can we put it on the room, please?",
+      "draft": "¿Lo pueden cargar a la habitación, por favor?",
+      "verdict": "ok",
+      "reason": null
+    },
+    {
+      "id": "spa_for_eng:pod-0-unrecorded:SC17-S004",
+      "english": "Would you like to pay by cash or card or on the room?",
+      "draft": "¿Le gustaría pagar en efectivo, con tarjeta o cargarlo a la habitación?",
+      "verdict": "ok",
+      "reason": null
+    },
+    {
+      "id": "spa_for_eng:pod-0-unrecorded:SC17-S005",
+      "english": "Did you want to pay by cash or card?",
+      "draft": "¿Quería pagar en efectivo o con tarjeta?",
+      "verdict": "ok",
+      "reason": null
+    },
+    {
+      "id": "spa_for_eng:pod-0-unrecorded:SC17-S006",
+      "english": "We'll pay by card again, please.",
+      "draft": "Pagaremos con tarjeta otra vez, por favor.",
+      "verdict": "ok",
+      "reason": null
+    },
+    {
+      "id": "spa_for_eng:pod-0-unrecorded:SC17-S007",
+      "english": "It's hot today, again.",
+      "draft": "Hace calor hoy, otra vez.",
+      "verdict": "ok",
+      "reason": null
+    },
+    {
+      "id": "spa_for_eng:pod-0-unrecorded:SC17-S008",
+      "english": "Is the water warm?",
+      "draft": "¿Está templada el agua?",
+      "verdict": "ok",
+      "reason": null
+    },
+    {
+      "id": "spa_for_eng:pod-0-unrecorded:SC17-S009",
+      "english": "No, it's a little cold today.",
+      "draft": "No, está un poco fría hoy.",
+      "verdict": "ok",
+      "reason": null
+    },
+    {
+      "id": "spa_for_eng:pod-0-unrecorded:SC17-S010",
+      "english": "It's not bad.",
+      "draft": "No está mal.",
+      "verdict": "ok",
+      "reason": null
+    },
+    {
+      "id": "spa_for_eng:pod-0-unrecorded:SC17-S011",
+      "english": "3 o'clock. 9 o'clock. January. February.",
+      "draft": "Las tres. Las nueve. Enero. Febrero.",
+      "verdict": "ok",
+      "reason": null
+    },
+    {
+      "id": "spa_for_eng:pod-0-unrecorded:SC18-S001",
+      "english": "That's a bad idea.",
+      "draft": "Eso es mala idea.",
+      "verdict": "ok",
+      "reason": null
+    },
+    {
+      "id": "spa_for_eng:pod-0-unrecorded:SC18-S002",
+      "english": "Do you have any orange juice?",
+      "draft": "¿Tienen zumo de naranja?",
+      "verdict": "ok",
+      "reason": null
+    },
+    {
+      "id": "spa_for_eng:pod-0-unrecorded:SC18-S003",
+      "english": "Do you have any apple juice?",
+      "draft": "¿Tienen zumo de manzana?",
+      "verdict": "ok",
+      "reason": null
+    },
+    {
+      "id": "spa_for_eng:pod-0-unrecorded:SC18-S004",
+      "english": "Does the boat leave from here?",
+      "draft": "¿El barco sale de aquí?",
+      "verdict": "ok",
+      "reason": null
+    },
+    {
+      "id": "spa_for_eng:pod-0-unrecorded:SC18-S005",
+      "english": "Does the bus leave from here?",
+      "draft": "¿El autobús sale de aquí?",
+      "verdict": "ok",
+      "reason": null
+    },
+    {
+      "id": "spa_for_eng:pod-0-unrecorded:SC18-S006",
+      "english": "Where does the bus leave from?",
+      "draft": "¿De dónde sale el autobús?",
+      "verdict": "ok",
+      "reason": null
+    },
+    {
+      "id": "spa_for_eng:pod-0-unrecorded:SC18-S007",
+      "english": "Is that correct? Am I correct?",
+      "draft": "¿Es correcto? ¿Tengo razón?",
+      "verdict": "ok",
+      "reason": null
+    },
+    {
+      "id": "spa_for_eng:pod-0-unrecorded:SC18-S008",
+      "english": "Am I wrong about that?",
+      "draft": "¿Me equivoco en eso?",
+      "verdict": "ok",
+      "reason": null
+    },
+    {
+      "id": "spa_for_eng:pod-0-unrecorded:SC18-S009",
+      "english": "I'm sorry, my son lost his ticket.",
+      "draft": "Lo siento, mi hijo ha perdido su billete.",
+      "verdict": "ok",
+      "reason": null
+    },
+    {
+      "id": "spa_for_eng:pod-0-unrecorded:SC18-S010",
+      "english": "We have paid, but my daughter has lost her ticket.",
+      "draft": "Hemos pagado, pero mi hija ha perdido su billete.",
+      "verdict": "ok",
+      "reason": null
+    },
+    {
+      "id": "spa_for_eng:pod-0-unrecorded:SC18-S011",
+      "english": "4 o'clock. 8 o'clock. March. April.",
+      "draft": "Las cuatro. Las ocho. Marzo. Abril.",
+      "verdict": "ok",
+      "reason": null
+    },
+    {
+      "id": "spa_for_eng:pod-0-unrecorded:SC19-S001",
+      "english": "That makes me happy.",
+      "draft": "Eso me hace feliz.",
+      "verdict": "ok",
+      "reason": null
+    },
+    {
+      "id": "spa_for_eng:pod-0-unrecorded:SC19-S002",
+      "english": "That makes me feel a little worried.",
+      "draft": "Eso me hace sentir un poco preocupado.",
+      "verdict": "ok",
+      "reason": null
+    },
+    {
+      "id": "spa_for_eng:pod-0-unrecorded:SC19-S003",
+      "english": "When you talk quickly, it makes me feel stupid.",
+      "draft": "Cuando hablas rápido, me hace sentir tonto.",
+      "verdict": "ok",
+      "reason": null
+    },
+    {
+      "id": "spa_for_eng:pod-0-unrecorded:SC19-S004",
+      "english": "Is it okay if I sit here?",
+      "draft": "¿Está bien si me siento aquí?",
+      "verdict": "ok",
+      "reason": null
+    },
+    {
+      "id": "spa_for_eng:pod-0-unrecorded:SC19-S005",
+      "english": "Is it okay if we put this here?",
+      "draft": "¿Está bien si ponemos esto aquí?",
+      "verdict": "ok",
+      "reason": null
+    },
+    {
+      "id": "spa_for_eng:pod-0-unrecorded:SC19-S006",
+      "english": "I don't want to be late.",
+      "draft": "No quiero llegar tarde.",
+      "verdict": "ok",
+      "reason": null
+    },
+    {
+      "id": "spa_for_eng:pod-0-unrecorded:SC19-S007",
+      "english": "Are we going to be late?",
+      "draft": "¿Vamos a llegar tarde?",
+      "verdict": "ok",
+      "reason": null
+    },
+    {
+      "id": "spa_for_eng:pod-0-unrecorded:SC19-S008",
+      "english": "I promise I won't be late.",
+      "draft": "Prometo que no llegaré tarde.",
+      "verdict": "ok",
+      "reason": null
+    },
+    {
+      "id": "spa_for_eng:pod-0-unrecorded:SC19-S009",
+      "english": "I promise we won't be late.",
+      "draft": "Prometo que no llegaremos tarde.",
+      "verdict": "ok",
+      "reason": null
+    },
+    {
+      "id": "spa_for_eng:pod-0-unrecorded:SC19-S010",
+      "english": "I'd like two scoops of ice-cream, please.",
+      "draft": "Quería dos bolas de helado, por favor.",
+      "verdict": "ok",
+      "reason": null
+    },
+    {
+      "id": "spa_for_eng:pod-0-unrecorded:SC19-S011",
+      "english": "5 o'clock. 7 o'clock. May. June.",
+      "draft": "Las cinco. Las siete. Mayo. Junio.",
+      "verdict": "ok",
+      "reason": null
+    },
+    {
+      "id": "spa_for_eng:pod-0-unrecorded:SC20-S001",
+      "english": "Can I have one scoop of chocolate and one of strawberry?",
+      "draft": "¿Me pone una bola de chocolate y una de fresa?",
+      "verdict": "ok",
+      "reason": null
+    },
+    {
+      "id": "spa_for_eng:pod-0-unrecorded:SC20-S002",
+      "english": "And then another cone with one scoop of lemon and one of blueberry.",
+      "draft": "Y luego otro cucurucho con una bola de limón y una de arándanos.",
+      "verdict": "ok",
+      "reason": null
+    },
+    {
+      "id": "spa_for_eng:pod-0-unrecorded:SC20-S003",
+      "english": "Do you have any ice-cream?",
+      "draft": "¿Tienen helado?",
+      "verdict": "ok",
+      "reason": null
+    },
+    {
+      "id": "spa_for_eng:pod-0-unrecorded:SC20-S004",
+      "english": "Thank you for all your work.",
+      "draft": "Gracias por todo tu trabajo.",
+      "verdict": "ok",
+      "reason": null
+    },
+    {
+      "id": "spa_for_eng:pod-0-unrecorded:SC20-S005",
+      "english": "I wish you good luck with everything.",
+      "draft": "Te deseo mucha suerte con todo.",
+      "verdict": "ok",
+      "reason": null
+    },
+    {
+      "id": "spa_for_eng:pod-0-unrecorded:SC20-S006",
+      "english": "Thank you for helping me.",
+      "draft": "Gracias por ayudarme.",
+      "verdict": "ok",
+      "reason": null
+    },
+    {
+      "id": "spa_for_eng:pod-0-unrecorded:SC20-S007",
+      "english": "Good luck with that!",
+      "draft": "¡Mucha suerte con eso!",
+      "verdict": "ok",
+      "reason": null
+    },
+    {
+      "id": "spa_for_eng:pod-0-unrecorded:SC20-S008",
+      "english": "That's very kind of you.",
+      "draft": "Es muy amable de tu parte.",
+      "verdict": "ok",
+      "reason": null
+    },
+    {
+      "id": "spa_for_eng:pod-0-unrecorded:SC20-S009",
+      "english": "You're very kind.",
+      "draft": "Eres muy amable.",
+      "verdict": "ok",
+      "reason": null
+    },
+    {
+      "id": "spa_for_eng:pod-0-unrecorded:SC20-S010",
+      "english": "Thank you for being so friendly.",
+      "draft": "Gracias por ser tan simpático.",
+      "verdict": "ok",
+      "reason": null
+    },
+    {
+      "id": "spa_for_eng:pod-0-unrecorded:SC20-S011",
+      "english": "6 o'clock. July. August. September.",
+      "draft": "Las seis. Julio. Agosto. Septiembre.",
+      "verdict": "ok",
+      "reason": null
+    },
+    {
+      "id": "spa_for_eng:pod-0-unrecorded:SC21-S001",
+      "english": "It sounds as though we need to leave soon.",
+      "draft": "Parece que tenemos que irnos pronto.",
+      "verdict": "ok",
+      "reason": null
+    },
+    {
+      "id": "spa_for_eng:pod-0-unrecorded:SC21-S002",
+      "english": "It sounds as though you want us not to do that.",
+      "draft": "Parece que quieres que no hagamos eso.",
+      "verdict": "ok",
+      "reason": null
+    },
+    {
+      "id": "spa_for_eng:pod-0-unrecorded:SC21-S003",
+      "english": "Is there a toilet here?",
+      "draft": "¿Hay un baño aquí?",
+      "verdict": "ok",
+      "reason": null
+    },
+    {
+      "id": "spa_for_eng:pod-0-unrecorded:SC21-S004",
+      "english": "Can you tell me where the toilet is?",
+      "draft": "¿Me puedes decir dónde está el baño?",
+      "verdict": "ok",
+      "reason": null
+    },
+    {
+      "id": "spa_for_eng:pod-0-unrecorded:SC21-S005",
+      "english": "It's down there on the left.",
+      "draft": "Está por allí a la izquierda.",
+      "verdict": "ok",
+      "reason": null
+    },
+    {
+      "id": "spa_for_eng:pod-0-unrecorded:SC21-S006",
+      "english": "It's down there on the right.",
+      "draft": "Está por allí a la derecha.",
+      "verdict": "ok",
+      "reason": null
+    },
+    {
+      "id": "spa_for_eng:pod-0-unrecorded:SC21-S007",
+      "english": "Can you say that again?",
+      "draft": "¿Puedes repetir eso?",
+      "verdict": "ok",
+      "reason": null
+    },
+    {
+      "id": "spa_for_eng:pod-0-unrecorded:SC21-S008",
+      "english": "Yes, I said it's over there.",
+      "draft": "Sí, he dicho que está por allí.",
+      "verdict": "ok",
+      "reason": null
+    },
+    {
+      "id": "spa_for_eng:pod-0-unrecorded:SC21-S009",
+      "english": "What is that?",
+      "draft": "¿Qué es eso?",
+      "verdict": "ok",
+      "reason": null
+    },
+    {
+      "id": "spa_for_eng:pod-0-unrecorded:SC21-S010",
+      "english": "What is that over there?",
+      "draft": "¿Qué es aquello?",
+      "verdict": "ok",
+      "reason": null
+    },
+    {
+      "id": "spa_for_eng:pod-0-unrecorded:SC21-S011",
+      "english": "Would you like to order some drinks?",
+      "draft": "¿Le gustaría pedir algo de beber?",
+      "verdict": "ok",
+      "reason": null
+    },
+    {
+      "id": "spa_for_eng:pod-0-unrecorded:SC21-S012",
+      "english": "Do you want to order some drinks first?",
+      "draft": "¿Quieres pedir algo de beber primero?",
+      "verdict": "ok",
+      "reason": null
+    },
+    {
+      "id": "spa_for_eng:pod-0-unrecorded:SC21-S013",
+      "english": "Did you want something to drink first?",
+      "draft": "¿Querías algo de beber primero?",
+      "verdict": "ok",
+      "reason": null
+    },
+    {
+      "id": "spa_for_eng:pod-0-unrecorded:SC21-S014",
+      "english": "October. November. December.",
+      "draft": "Octubre. Noviembre. Diciembre.",
+      "verdict": "ok",
+      "reason": null
+    },
+    {
+      "id": "spa_for_eng:pod-0-unrecorded:SC22-S001",
+      "english": "Would you mind if I tried to practise speaking Spanish with you? I haven't been learning for very long, and I still feel a little nervous about speaking with other people.",
+      "draft": "¿Te importaría que intentara practicar el español hablando contigo? No llevo mucho tiempo aprendiendo, y todavía me siento un poco nervioso por hablar con otras personas.",
+      "verdict": "ok",
+      "reason": null
+    },
+    {
+      "id": "spa_for_eng:pod-0-unrecorded:SC22-S002",
+      "english": "Of course, no problem. You seem to speak it very well. I can understand you easily.",
+      "draft": "Claro, ningún problema. Parece que lo hablas muy bien. Te entiendo sin dificultad.",
+      "verdict": "ok",
+      "reason": null
+    },
+    {
+      "id": "spa_for_eng:pod-0-unrecorded:SC22-S003",
+      "english": "Thank you, that's good to know. I need to learn more words, and I need to practise listening. I don't understand people very well when they don't speak slowly.",
+      "draft": "Gracias, me alegra saberlo. Necesito aprender más palabras, y necesito practicar la escucha. No entiendo muy bien a la gente cuando no habla despacio.",
+      "verdict": "ok",
+      "reason": null
+    }
+  ]
+}

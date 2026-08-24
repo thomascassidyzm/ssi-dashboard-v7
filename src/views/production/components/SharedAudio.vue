@@ -68,7 +68,7 @@
               <span class="text-xs text-faint italic">Not required for this course</span>
             </div>
             <div class="text-xs text-faint mt-0.5">
-              Course target language ({{ status.targetLang }}) is not in the paid set — paywall content not used.
+              Course target language ({{ getLanguageName(status.targetLang) }}) is not in the paid set — paywall content not used.
             </div>
           </div>
         </div>
@@ -93,6 +93,7 @@
 <script setup lang="ts">
 import { ref, watch, onMounted, h, defineComponent } from 'vue'
 import { getApiUrl } from '@/services/api'
+import { useCourses } from '@/composables/useCourses'
 
 interface SharedAudioStatus {
   knownLang: string
@@ -104,6 +105,8 @@ interface SharedAudioStatus {
 }
 
 const props = defineProps<{ courseCode: string }>()
+
+const { getLanguageName } = useCourses()
 
 const status = ref<SharedAudioStatus | null>(null)
 const loading = ref(true)

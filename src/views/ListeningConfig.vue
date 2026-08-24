@@ -128,7 +128,12 @@
         <div class="arc-controls">
           <label class="arc-pick">Sentence
             <select v-model.number="arcSentenceIdx">
-              <option v-for="(s, i) in coursePodSentences" :key="i" :value="i">{{ i + 1 }}. {{ s.target_text }}</option>
+              <!-- An <option> holds text, not elements, so there is no child to
+                   bind `dir` on and the LTR "12. " index would move if we
+                   directed the option itself. `isolateText` wraps the sentence
+                   in Unicode isolate controls instead — the plaintext form of
+                   the same fix, index stays put, trailing `!` lands correctly. -->
+              <option v-for="(s, i) in coursePodSentences" :key="i" :value="i">{{ i + 1 }}. {{ isolateText(s.target_text) }}</option>
             </select>
           </label>
           <button class="arc-play" :disabled="!arcIndexed.length || arcPlayingIdx >= 0" @click="playArc">▶ Play {{ showFullArc ? 'full arc' : 'breakdown' }} · {{ arcIndexed.length }} plays</button>
@@ -235,6 +240,7 @@ import { composeArc, normSurface } from '../lib/podArcCompose'
 import { fetchServingPodId } from '../lib/servingPod'
 import CoursePicker from '../components/CoursePicker.vue'
 import { useAlgorithmConfig, NumField, NumListField, RowHeader } from './admin/algorithmConfigShared'
+import { isolateText } from '../utils/textDirection.js'
 
 const { isAdmin, learner: currentUser } = useAuth()
 
@@ -385,7 +391,11 @@ async function loadCoursePreview(courseCode) {
     // rather than hard-coding `<course>:pod-0`, which reads EMPTY for Croatian.
     coursePodSentences.value = []
     try {
-      const podId = await fetchServingPodId(sb, courseCode)
+      // includeHeld: this is an ADMIN audition, and auditioning a pod before
+      // you release it is the entire point of holding one (Tom, 2026-08-23).
+      // Learner reachability is gated in RLS and in the resolver's default;
+      // neither is what this preview is.
+      const podId = await fetchServingPodId(sb, courseCode, { includeHeld: true })
       if (podId) {
         const { data: podRows, error: podErr } = await sb
           .from('listening_pod_sentences')

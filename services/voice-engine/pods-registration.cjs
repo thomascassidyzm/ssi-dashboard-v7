@@ -38,6 +38,8 @@
  */
 
 const { normalizeForAudio } = require('../shared/text-normalize.cjs')
+const { canonicalLanguage, canonicalVoiceId } = require('../shared/clip-identity.cjs')
+const { voiceSpellings } = require('../shared/clip-identity-lookup.cjs')
 
 // recon §1: the EXACT role strings phase8's pod generator writes. Do not invent.
 const POD_KIND_ROLES = Object.freeze({
@@ -104,10 +106,20 @@ function canonicalSpeakerName(speaker) {
  * entry yet (recording ahead of casting — same trust model as the
  * voice_config.voices[role] slot fallback in the upload seam).
  *
- * @returns {{ voiceId: string|null, source: 'cast'|'client'|null, disagreement: boolean }}
+ * A forcedVoiceId outranks BOTH. It exists for the recordist surface, where the
+ * voice is decided per LANGUAGE (language_recording_policy.voices) rather than
+ * per course: whoever holds the recording link IS that voice, and a course cast
+ * naming a per-course spelling of the same person (human_aran_cym_s beside
+ * human_aran_cym_n) must not re-fragment one person's clips across courses —
+ * that fragmentation is what the by-language queue exists to end.
+ *
+ * @returns {{ voiceId: string|null, source: 'forced'|'cast'|'client'|null, disagreement: boolean }}
  */
-function resolvePodCastVoiceId({ voiceConfig = {}, speaker = '', kind, clientVoiceId = null }) {
+function resolvePodCastVoiceId({ voiceConfig = {}, speaker = '', kind, clientVoiceId = null, forcedVoiceId = null }) {
   const podCast = (voiceConfig && voiceConfig.podCast) || {}
+  if (forcedVoiceId) {
+    return { voiceId: forcedVoiceId, source: 'forced', disagreement: false }
+  }
   let entry = null
   if (kind === 'target') {
     entry = podCast[canonicalSpeakerName(speaker)] || podCast[speaker] || null
@@ -145,7 +157,7 @@ function validatePodUploadMetadata(metadata = {}) {
  *
  * @returns {Promise<{ context: object }|{ error: string, status: number }>}
  */
-async function preparePodRegistration({ supabase, courseCode, metadata = {}, logger = console }) {
+async function preparePodRegistration({ supabase, courseCode, metadata = {}, logger = console, forcedVoiceId = null }) {
   const valid = validatePodUploadMetadata(metadata)
   if (!valid.ok) return { error: valid.error, status: 400 }
 
@@ -156,7 +168,7 @@ async function preparePodRegistration({ supabase, courseCode, metadata = {}, log
 
   const { data: sentence, error: sentErr } = await supabase
     .from('listening_pod_sentences')
-    .select('id, pod_id, speaker, target_text, known_text, explainer_text, target_audio_id, known_audio_id, explainer_audio_id')
+    .select('id, pod_id, speaker, target_text, known_text, explainer_text, rerecord_wanted, target_audio_id, known_audio_id, explainer_audio_id')
     .eq('id', metadata.sentenceId)
     .maybeSingle()
   if (sentErr) return { error: `sentence lookup failed: ${sentErr.message}`, status: 500 }
@@ -196,6 +208,7 @@ async function preparePodRegistration({ supabase, courseCode, metadata = {}, log
     speaker: sentence.speaker,
     kind,
     clientVoiceId: metadata.voiceId || null,
+    forcedVoiceId,
   })
   if (resolved.disagreement) {
     logger.warn(`[PodRecording] client voiceId ${metadata.voiceId} disagrees with podCast → ${resolved.voiceId} — server value wins`)
@@ -234,18 +247,27 @@ async function preparePodRegistration({ supabase, courseCode, metadata = {}, log
  */
 async function commitPodRegistration({ supabase, courseCode, context, s3Key, durationMs = null, fileSizeBytes = null, logger = console }) {
   const textNormalized = normalizeForAudio(context.text)
+  const language = canonicalLanguage(context.language)
+  const voiceId = canonicalVoiceId(context.voiceId, { provider: context.provider })
 
   // Reversibility: if a row already occupies this exact 5-column key, the
   // upsert below repoints it — capture its current s3_key first so provenance
   // can record where the previous take lives.
+  //
+  // The lookup is deliberately WIDER than the write. The write now stores the
+  // canonical voice spelling, but a take recorded before this change is sitting
+  // under the raw one; asking only for the canonical form would find nothing,
+  // report "no prior take", and lose the replaced s3_key — which is exactly the
+  // reversibility leg of make-before-break going quietly missing. So the read
+  // reaches both spellings and the write still narrows to one.
   const { data: priorRows, error: priorErr } = await supabase
     .from('course_audio')
     .select('id, s3_key, origin')
     .eq('course_code', courseCode)
     .eq('text_normalized', textNormalized)
-    .eq('language', context.language)
+    .eq('language', language)
     .eq('role', context.role)
-    .eq('voice_id', context.voiceId)
+    .in('voice_id', voiceSpellings(context.voiceId, { provider: context.provider }))
     .limit(1)
   if (priorErr) throw new Error(`pod registration prior-row lookup failed: ${priorErr.message}`)
   const priorRow = priorRows && priorRows[0] ? priorRows[0] : null
@@ -254,9 +276,9 @@ async function commitPodRegistration({ supabase, courseCode, context, s3Key, dur
     course_code: courseCode,
     text: context.text,
     text_normalized: textNormalized,
-    language: context.language,
+    language,
     role: context.role,
-    voice_id: context.voiceId,
+    voice_id: voiceId,
     origin: 'human',
     s3_key: s3Key,
   }
@@ -270,18 +292,50 @@ async function commitPodRegistration({ supabase, courseCode, context, s3Key, dur
     .single()
   if (upsertErr) throw new Error(`pod course_audio upsert failed: ${upsertErr.message}`)
 
+  // FULFILMENT. This take IS the re-record that was wanted for this track, so
+  // the want is cleared in the same write that re-points the FK — one statement,
+  // so the line can never be left both freshly recorded and still queued.
+  // Only this kind's key goes: a want for the OTHER track is a different job.
+  const patch = { [context.linkColumn]: audioRow.id }
+  const { data: wantRow, error: wantErr } = await supabase
+    .from('listening_pod_sentences')
+    .select('rerecord_wanted')
+    .eq('id', context.sentenceId)
+    .maybeSingle()
+  if (wantErr) throw new Error(`pod rerecord_wanted lookup failed: ${wantErr.message}`)
+  const wanted = wantRow && wantRow.rerecord_wanted
+  if (wanted && typeof wanted === 'object' && wanted[context.kind] != null) {
+    const rest = { ...wanted }
+    delete rest[context.kind]
+    patch.rerecord_wanted = Object.keys(rest).length ? rest : null
+  }
+
   // Link explicitly — recon §2: the autolink trigger NEVER touches
   // listening_pod_sentences (mirrors phase8's update at generate-pods).
   const { error: linkErr } = await supabase
     .from('listening_pod_sentences')
-    .update({ [context.linkColumn]: audioRow.id })
+    .update(patch)
     .eq('id', context.sentenceId)
   if (linkErr) throw new Error(`pod sentence link failed: ${linkErr.message}`)
 
   const repointedExistingRow = !!(priorRow && priorRow.id === audioRow.id)
+
+  // A prior take found under the OTHER voice spelling cannot be repointed by
+  // the upsert — its conflict key differs, so the new take lands as a fresh
+  // row. That is the make-before-break-safe outcome (the old take still exists
+  // at its own s3_key, nothing was overwritten) but the sentence FK has moved
+  // off it, so say so rather than let it become a silent orphan.
+  if (priorRow && !repointedExistingRow) {
+    logger.log(
+      `[PodRecording] WARNING: prior take ${priorRow.id} (${priorRow.s3_key}) matched on a ` +
+      `different voice spelling than the canonical ${voiceId} now written, so it was NOT ` +
+      `repointed — the new take is row ${audioRow.id} and the old row survives, unlinked.`
+    )
+  }
+
   logger.log(
     `[PodRecording] ${context.sentenceId} ${context.kind} → course_audio ${audioRow.id} ` +
-    `(role=${context.role}, voice=${context.voiceId}, origin=human` +
+    `(role=${context.role}, voice=${voiceId}, origin=human` +
     `${repointedExistingRow ? `, repointed ${priorRow.s3_key} -> ${s3Key}` : ''}` +
     `${context.replacedAudioId && context.replacedAudioId !== audioRow.id ? `, replaces ${context.replacedAudioId}` : ''})`
   )

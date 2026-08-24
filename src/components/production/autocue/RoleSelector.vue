@@ -6,22 +6,29 @@
 
       <div class="course-info">
         <span class="course-label">Course:</span>
-        <span class="course-name">{{ courseName }}</span>
+        <span class="course-name">{{ courseNameDisplay }}</span>
       </div>
 
       <div class="role-selection">
         <label class="selection-label">Recording Role:</label>
+
+        <!-- Cast on this course puts you in one slot. Showing the other slots
+             as equal choices is how a voice-2 recordist files takes as voice 1. -->
+        <p v-if="assignedSlot" class="assigned-note">
+          You're cast as <strong>{{ assignedRole?.voiceName || assignedRole?.type }}</strong>
+          on this course.
+        </p>
 
         <div class="role-options">
           <div
             v-for="role in roles"
             :key="role.id"
             class="role-option"
-            :class="{ selected: selectedRole === role.id }"
+            :class="{ selected: selectedRole === role.id, mine: role.id === assignedSlot }"
             @click="selectRole(role.id)"
           >
             <div class="role-type">{{ role.type }}</div>
-            <div class="role-language">{{ role.language }}</div>
+            <div class="role-language">{{ role.voiceName || role.language }}</div>
             <div class="role-radio"></div>
           </div>
         </div>
@@ -29,7 +36,7 @@
 
       <div class="session-summary">
         <div class="summary-line">
-          This session: <strong>{{ phraseCount }} {{ targetLanguage }} phrases</strong>
+          This session: <strong>{{ phraseCount }} {{ targetLabel }}phrases</strong>
         </div>
         <div class="summary-line">
           Estimated time: <strong>~{{ estimatedTime }} minutes</strong>
@@ -48,24 +55,62 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, watch } from 'vue'
 
+// No language defaults here — this component is course-agnostic, and a
+// hardcoded fallback (it used to say Welsh) mislabels every other course.
+// The parent supplies real values once /info resolves; until then we show
+// neutral placeholders rather than a confident wrong answer.
 const props = defineProps({
-  courseName: { type: String, default: 'Welsh for English Speakers' },
-  knownLanguage: { type: String, default: 'English' },
-  targetLanguage: { type: String, default: 'Welsh' },
-  phraseCount: { type: Number, default: 287 }
+  courseName: { type: String, default: '' },
+  knownLanguage: { type: String, default: '' },
+  targetLanguage: { type: String, default: '' },
+  phraseCount: { type: Number, default: 0 },
+  // The slot this recordist is cast in on this course (courses.voice_config),
+  // pre-selected so the default is their OWN voice rather than voice 1.
+  assignedSlot: { type: String, default: null },
+  // The course's configured slots with the voice actually in each — lets a
+  // multi-voice cast be read off the screen instead of guessed at.
+  // [{ slot, label, voiceName, isHuman }]
+  slotOptions: { type: Array, default: () => [] }
 })
 
 const emit = defineEmits(['begin', 'back'])
 
-const selectedRole = ref(null)
+const courseNameDisplay = computed(() => props.courseName || 'This course')
+// "12 phrases" reads fine; "12 Welsh phrases" does not when it isn't Welsh.
+const targetLabel = computed(() => props.targetLanguage ? `${props.targetLanguage} ` : '')
 
-const roles = computed(() => [
-  { id: 'known', type: 'Known', language: props.knownLanguage },
-  { id: 'target1', type: 'Target 1', language: props.targetLanguage },
-  { id: 'target2', type: 'Target 2', language: props.targetLanguage }
-])
+// Pre-select the recordist's own slot; re-select if the cast arrives late
+// (voice_config is fetched asynchronously by the studio).
+const selectedRole = ref(props.assignedSlot)
+watch(() => props.assignedSlot, slot => { if (slot) selectedRole.value = slot }, { immediate: true })
+
+const ROLE_TYPES = { known: 'Known', target1: 'Target 1', target2: 'Target 2', presentation: 'Presenter' }
+
+const roles = computed(() => {
+  const language = id => (id === 'known'
+    ? (props.knownLanguage || 'Known language')
+    : (props.targetLanguage || 'Target language'))
+
+  // Prefer the course's real cast when the studio supplied it — a course with
+  // one voice shouldn't offer three, and a voice with a name shouldn't show
+  // as a slot number.
+  if (props.slotOptions.length) {
+    return props.slotOptions.map(o => ({
+      id: o.slot,
+      type: ROLE_TYPES[o.slot] || o.label,
+      language: language(o.slot),
+      voiceName: o.voiceName || null
+    }))
+  }
+
+  return ['known', 'target1', 'target2'].map(id => ({
+    id, type: ROLE_TYPES[id], language: language(id), voiceName: null
+  }))
+})
+
+const assignedRole = computed(() => roles.value.find(r => r.id === props.assignedSlot) || null)
 
 const estimatedTime = computed(() => {
   // Rough estimate: 3 seconds per phrase for both passes
@@ -180,6 +225,19 @@ function beginSession() {
   border-color: var(--color-tungsten, var(--accent));
   background: linear-gradient(135deg, rgba(255, 166, 48, 0.15), transparent);
   box-shadow: 0 0 30px rgba(255, 166, 48, 0.3);
+}
+
+/* The slot this recordist is cast in — readable at a glance even unselected. */
+.role-option.mine {
+  border-style: dashed;
+  border-color: var(--color-tungsten, var(--accent));
+}
+
+.assigned-note {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.85rem;
+  color: var(--color-paper-dim, var(--muted));
+  margin: 0 0 0.75rem;
 }
 
 .role-type {

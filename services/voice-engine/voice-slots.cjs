@@ -91,11 +91,17 @@ function clone(obj) {
  * Assign a human voice to one slot of a voice_config. NON-DESTRUCTIVE:
  * - returns a new object; the input is never mutated
  * - every key outside `voices[slot]` is preserved exactly
- * - inside the slot, existing keys (settings, language, name, ...) are preserved;
- *   only provider/voiceId (+ assignedEmail) change
+ * - inside the slot, existing keys (settings, language, ...) are preserved;
+ *   provider/voiceId (+ assignedEmail, + the display name) change
  * - the displaced non-human voice is stashed under `previousVoice` so an
  *   unassign can restore it (if the slot already held a human, its own
  *   previousVoice is carried forward — chains back to the original TTS voice)
+ * - the slot's DISPLAY NAME becomes the person's, and the displaced voice's
+ *   `gender` is dropped. Preserving them made every voice UI announce the
+ *   departed TTS voice as the human on the slot ("Jonas — HUMAN" for a slot
+ *   Sascha actually holds, deu_at_for_eng 2026-08), which is exactly how a
+ *   leader loses the ability to see or pick their own cast. Both ride into
+ *   previousVoice so an unassign restores the TTS voice intact.
  * - `assignedEmail` rides on the slot because dashboard_users.voice_id is a
  *   SINGLE column mirroring only the latest mint: a recorder assigned on two
  *   courses with different target langs no longer matches the first course's
@@ -106,9 +112,11 @@ function clone(obj) {
  * @param {string} slot - 'target1' | 'target2'
  * @param {string} voiceId - minted human voice id
  * @param {string|null} [assignedEmail] - the person holding the slot
+ * @param {string|null} [assignedName] - the person's display name (falls back
+ *   to the email's local part, then the voice id — never the displaced voice)
  * @returns {object} new voice_config
  */
-function assignVoiceToSlot(voiceConfig, slot, voiceId, assignedEmail = null) {
+function assignVoiceToSlot(voiceConfig, slot, voiceId, assignedEmail = null, assignedName = null) {
   if (!ASSIGNABLE_SLOTS.includes(slot)) {
     throw new Error(`Slot must be one of ${ASSIGNABLE_SLOTS.join(', ')} (got: ${slot})`)
   }
@@ -122,9 +130,19 @@ function assignVoiceToSlot(voiceConfig, slot, voiceId, assignedEmail = null) {
   if (assignedEmail) entry.assignedEmail = assignedEmail
   else delete entry.assignedEmail
 
+  // The name every voice UI shows for this slot is now the PERSON's.
+  entry.name = assignedName
+    || (assignedEmail ? String(assignedEmail).split('@')[0] : null)
+    || voiceId
+  // `gender` described the displaced synthetic voice, not this person.
+  delete entry.gender
+
   if (existing.voiceId && existing.provider !== 'human') {
-    // Displacing a TTS voice — remember it so unassign can restore.
+    // Displacing a TTS voice — remember it (name and gender included) so
+    // unassign can restore the slot exactly as it was.
     entry.previousVoice = { provider: existing.provider || null, voiceId: existing.voiceId }
+    if (existing.name) entry.previousVoice.name = existing.name
+    if (existing.gender) entry.previousVoice.gender = existing.gender
   }
   // (If the slot already held a human, ...existing already carried its previousVoice.)
 
@@ -149,9 +167,18 @@ function vacateSlot(voiceConfig, slot) {
   const existing = config.voices && config.voices[slot]
   if (!existing || existing.provider !== 'human') return config
 
-  const { previousVoice, assignedEmail, ...rest } = existing
+  // `name`/`gender` on a human slot describe the PERSON — they must not
+  // survive them leaving. The displaced voice's own name/gender come back
+  // from previousVoice when it stashed them.
+  const { previousVoice, assignedEmail, name, gender, ...rest } = existing
   if (previousVoice && previousVoice.voiceId) {
-    config.voices[slot] = { ...rest, provider: previousVoice.provider || 'azure', voiceId: previousVoice.voiceId }
+    config.voices[slot] = {
+      ...rest,
+      provider: previousVoice.provider || 'azure',
+      voiceId: previousVoice.voiceId,
+      ...(previousVoice.name ? { name: previousVoice.name } : {}),
+      ...(previousVoice.gender ? { gender: previousVoice.gender } : {})
+    }
   } else {
     config.voices[slot] = { ...rest, provider: 'azure', voiceId: '' }
   }

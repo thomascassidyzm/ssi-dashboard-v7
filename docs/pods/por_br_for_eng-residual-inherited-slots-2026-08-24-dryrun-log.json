@@ -1,0 +1,187 @@
+{
+ "pod": "por_br_for_eng:pod-1",
+ "course": "por_br_for_eng",
+ "mode": "dryrun",
+ "generated_at": "2026-08-24T12:10:28.962Z",
+ "ancestors": [
+  "por_br_for_eng:pod-0-retired-2026-08-22",
+  "por_br_for_eng:pod-1-retired-2026-08-24"
+ ],
+ "rows_total": 231,
+ "measured_inherited_slots": {
+  "sentence_audio_ids": 0,
+  "sentence_known_audio_ids": 0,
+  "takeg_audio_ids": 0,
+  "explainer_audio_id": 20
+ },
+ "scope_note": "explainer_audio_id repaired on the INHERITED test only; #312's sixteen protected rows and any explainer still quoting its own row are held, never written",
+ "held": [
+  {
+   "id": "por_br_for_eng:pod-1:SC03-S001",
+   "scene": 3,
+   "sentence": 1,
+   "global_order": 10,
+   "field": "explainer_audio_id",
+   "why": "inherited, but the clip still quotes this row's own text — a gloss that explains its row is not a defect"
+  },
+  {
+   "id": "por_br_for_eng:pod-1:SC03-S002",
+   "scene": 3,
+   "sentence": 2,
+   "global_order": 11,
+   "field": "explainer_audio_id",
+   "why": "inherited, but the clip still quotes this row's own text — a gloss that explains its row is not a defect"
+  },
+  {
+   "id": "por_br_for_eng:pod-1:SC04-S002",
+   "scene": 4,
+   "sentence": 2,
+   "global_order": 21,
+   "field": "explainer_audio_id",
+   "why": "inherited, but the clip still quotes this row's own text — a gloss that explains its row is not a defect"
+  },
+  {
+   "id": "por_br_for_eng:pod-1:SC06-S009",
+   "scene": 6,
+   "sentence": 9,
+   "global_order": 33,
+   "field": "explainer_audio_id",
+   "why": "inherited, but the clip still quotes this row's own text — a gloss that explains its row is not a defect"
+  },
+  {
+   "id": "por_br_for_eng:pod-1:SC07-S010",
+   "scene": 7,
+   "sentence": 10,
+   "global_order": 47,
+   "field": "explainer_audio_id",
+   "why": "inherited, but the clip still quotes this row's own text — a gloss that explains its row is not a defect"
+  },
+  {
+   "id": "por_br_for_eng:pod-1:SC08-S002",
+   "scene": 8,
+   "sentence": 2,
+   "global_order": 54,
+   "field": "explainer_audio_id",
+   "why": "inherited, but the clip still quotes this row's own text — a gloss that explains its row is not a defect"
+  },
+  {
+   "id": "por_br_for_eng:pod-1:SC08-S003",
+   "scene": 8,
+   "sentence": 3,
+   "global_order": 55,
+   "field": "explainer_audio_id",
+   "why": "inherited, but the clip still quotes this row's own text — a gloss that explains its row is not a defect"
+  },
+  {
+   "id": "por_br_for_eng:pod-1:SC08-S013",
+   "scene": 8,
+   "sentence": 13,
+   "global_order": 65,
+   "field": "explainer_audio_id",
+   "why": "inherited, but the clip still quotes this row's own text — a gloss that explains its row is not a defect"
+  },
+  {
+   "id": "por_br_for_eng:pod-1:SC09-S001",
+   "scene": 9,
+   "sentence": 1,
+   "global_order": 69,
+   "field": "explainer_audio_id",
+   "why": "inherited, but the clip still quotes this row's own text — a gloss that explains its row is not a defect"
+  },
+  {
+   "id": "por_br_for_eng:pod-1:SC09-S005",
+   "scene": 9,
+   "sentence": 5,
+   "global_order": 73,
+   "field": "explainer_audio_id",
+   "why": "inherited, but the clip still quotes this row's own text — a gloss that explains its row is not a defect"
+  },
+  {
+   "id": "por_br_for_eng:pod-1:SC11-S004",
+   "scene": 11,
+   "sentence": 4,
+   "global_order": 100,
+   "field": "explainer_audio_id",
+   "why": "inherited, but the clip still quotes this row's own text — a gloss that explains its row is not a defect"
+  },
+  {
+   "id": "por_br_for_eng:pod-1:SC12-S004",
+   "scene": 12,
+   "sentence": 4,
+   "global_order": 113,
+   "field": "explainer_audio_id",
+   "why": "inherited, but the clip still quotes this row's own text — a gloss that explains its row is not a defect"
+  },
+  {
+   "id": "por_br_for_eng:pod-1:SC12-S005",
+   "scene": 12,
+   "sentence": 5,
+   "global_order": 114,
+   "field": "explainer_audio_id",
+   "why": "inherited, but the clip still quotes this row's own text — a gloss that explains its row is not a defect"
+  },
+  {
+   "id": "por_br_for_eng:pod-1:SC12-S006",
+   "scene": 12,
+   "sentence": 6,
+   "global_order": 115,
+   "field": "explainer_audio_id",
+   "why": "inherited, but the clip still quotes this row's own text — a gloss that explains its row is not a defect"
+  },
+  {
+   "id": "por_br_for_eng:pod-1:SC12-S007",
+   "scene": 12,
+   "sentence": 7,
+   "global_order": 116,
+   "field": "explainer_audio_id",
+   "why": "inherited, but the clip still quotes this row's own text — a gloss that explains its row is not a defect"
+  },
+  {
+   "id": "por_br_for_eng:pod-1:SC12-S008",
+   "scene": 12,
+   "sentence": 8,
+   "global_order": 117,
+   "field": "explainer_audio_id",
+   "why": "inherited, but the clip still quotes this row's own text — a gloss that explains its row is not a defect"
+  },
+  {
+   "id": "por_br_for_eng:pod-1:SC12-S009",
+   "scene": 12,
+   "sentence": 9,
+   "global_order": 118,
+   "field": "explainer_audio_id",
+   "why": "inherited, but the clip still quotes this row's own text — a gloss that explains its row is not a defect"
+  },
+  {
+   "id": "por_br_for_eng:pod-1:SC14-S001",
+   "scene": 14,
+   "sentence": 1,
+   "global_order": 131,
+   "field": "explainer_audio_id",
+   "why": "inherited, but the clip still quotes this row's own text — a gloss that explains its row is not a defect"
+  },
+  {
+   "id": "por_br_for_eng:pod-1:SC14-S002",
+   "scene": 14,
+   "sentence": 2,
+   "global_order": 132,
+   "field": "explainer_audio_id",
+   "why": "inherited, but the clip still quotes this row's own text — a gloss that explains its row is not a defect"
+  },
+  {
+   "id": "por_br_for_eng:pod-1:SC14-S007",
+   "scene": 14,
+   "sentence": 7,
+   "global_order": 137,
+   "field": "explainer_audio_id",
+   "why": "inherited, but the clip still quotes this row's own text — a gloss that explains its row is not a defect"
+  }
+ ],
+ "split_keyed_progress_rows": 0,
+ "stopped": null,
+ "whole_turn_failures": [],
+ "rows_excluded_bad_whole_turn": [],
+ "slots_planned": 0,
+ "slots_written": 0,
+ "rows": []
+}

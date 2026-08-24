@@ -12,14 +12,21 @@
       <div v-if="isSlowCadence" class="cadence-label">SLOW</div>
 
       <!-- Normal display -->
-      <div v-if="!showGaps" class="phrase-text" :class="{ 'slow-cadence': isSlowCadence }">
+      <!-- The line the speaker reads ALOUD. Under an LTR paragraph an Arabic
+           phrase puts its trailing neutral (`!` `.` `,`) on the visual right;
+           `dir` from the phrase's own script fixes it. -->
+      <div v-if="!showGaps" class="phrase-text" :class="{ 'slow-cadence': isSlowCadence }" :dir="dirFor(phrase.text)">
         {{ phrase.text }}
       </div>
 
       <!-- Chunk-level gap display for Pass 2.
            Each chunk is a group of words the speaker reads without pausing;
            pauses (gap markers) fall BETWEEN chunks. -->
-      <div v-else class="phrase-with-gaps" :class="{ 'slow-cadence': isSlowCadence }">
+      <!-- Chunks are sibling elements with gap markers BETWEEN them, so the
+           order they lay out in IS the reading order — an LTR container renders
+           an Arabic phrase back-to-front and puts every pause in the wrong
+           place. `dir` belongs on the container here, not on each chunk. -->
+      <div v-else class="phrase-with-gaps" :class="{ 'slow-cadence': isSlowCadence }" :dir="dirFor(phrase.text)">
         <template v-for="(chunk, i) in displayChunks" :key="i">
           <span class="chunk-segment" :class="{ 'has-absorbed-glue': chunk.mergedGlue && chunk.mergedGlue.length > 0 }">
             {{ chunk.text }}
@@ -28,7 +35,7 @@
         </template>
       </div>
 
-      <div class="phrase-translation" v-if="phrase.translation">
+      <div class="phrase-translation" v-if="phrase.translation" :dir="dirFor(phrase.translation)">
         {{ phrase.translation }}
       </div>
     </div>
@@ -37,6 +44,8 @@
 
 <script setup>
 import { computed } from 'vue'
+import { resolvePhraseChunks } from '@/utils/phraseChunks'
+import { dirFor } from '@/utils/textDirection.js'
 
 const props = defineProps({
   phrase: { type: Object, required: true },
@@ -48,33 +57,11 @@ const props = defineProps({
 // Slow cadence detection — from phrase's own cadence field (optimizer mode)
 const isSlowCadence = computed(() => props.phrase.cadence === 'slow')
 
-// Resolve chunks from whichever format the phrase provides.
-// Priority: recordingChunks (objects) > chunks (objects or strings) > chunksString (pipe-delimited) > text (whitespace fallback)
-const displayChunks = computed(() => {
-  // Preferred: recordingChunks with glue absorbed into adjacent LEGOs
-  if (Array.isArray(props.phrase.recordingChunks) && props.phrase.recordingChunks.length > 0) {
-    return props.phrase.recordingChunks.map(c => ({
-      text: typeof c === 'string' ? c : c.text,
-      mergedGlue: typeof c === 'object' ? c.mergedGlue : null,
-      legoId: typeof c === 'object' ? c.legoId : null,
-    }))
-  }
-  // Next: raw chunks array (strings or objects)
-  if (Array.isArray(props.phrase.chunks) && props.phrase.chunks.length > 0) {
-    return props.phrase.chunks.map(c => ({
-      text: typeof c === 'string' ? c : c.text,
-      mergedGlue: typeof c === 'object' ? c.mergedGlue : null,
-      legoId: typeof c === 'object' ? c.legoId : null,
-    }))
-  }
-  // Next: pipe-delimited string from the optimiser output
-  if (typeof props.phrase.chunksString === 'string' && props.phrase.chunksString.length > 0) {
-    return props.phrase.chunksString.split('|').map(s => ({ text: s.trim(), mergedGlue: null, legoId: null }))
-  }
-  // Fallback: legacy word-level split (no LEGO info available)
-  if (!props.phrase.text) return []
-  return props.phrase.text.split(' ').map(w => ({ text: w, mergedGlue: null, legoId: null }))
-})
+// Resolve chunks from whichever format the phrase provides. Shared with the
+// recorder (src/utils/phraseChunks.js) so the gap markers drawn here and the
+// silence the VAD will tolerate are computed from the same chunk map — the UI
+// must never invite a pause the recorder cannot survive.
+const displayChunks = computed(() => resolvePhraseChunks(props.phrase).chunks)
 </script>
 
 <style scoped>
@@ -123,12 +110,20 @@ const displayChunks = computed(() => {
   font-size: 1.5rem;
 }
 
+/* The current card's amber highlight used to be painted onto the TEXT, which
+   made the natural-speed line amber too — so natural and slow read identically
+   and the "white for natural, amber for slow" promise on the script-loaded
+   screen was false. The current-card cue now lives in the card (border, wash,
+   marker); the text itself stays white for natural, and .slow-cadence below
+   repaints only the slow pass amber. */
 .phrase-card.current .phrase-text,
 .phrase-card.current .phrase-with-gaps {
   font-size: 2rem;
   font-weight: 600;
-  color: var(--color-tungsten, var(--accent));
-  text-shadow: 0 0 20px rgba(255, 186, 92, 0.4);
+  color: var(--color-paper, var(--ink));
+  /* One rule for both themes — a white glow is invisible on the light canvas,
+     so this needs no :root[data-theme=light] override. */
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.25);
 }
 
 /* State: Upcoming */
@@ -145,6 +140,9 @@ const displayChunks = computed(() => {
 }
 
 .phrase-text {
+  /* text-align pinned: the line binds `dir` so its punctuation resolves
+     correctly, but the teleprompter's left-hung column must not move. */
+  text-align: left;
   font-family: 'Crimson Pro', serif;
   font-size: 1.6rem;
   font-weight: 500;
@@ -154,6 +152,9 @@ const displayChunks = computed(() => {
 }
 
 .phrase-with-gaps {
+  /* text-align pinned — see .phrase-text. The chunk ORDER mirrors for an RTL
+     phrase, which is the fix; the column itself must stay where it is. */
+  text-align: left;
   font-family: 'Crimson Pro', serif;
   font-size: 1.6rem;
   font-weight: 500;
@@ -254,6 +255,7 @@ const displayChunks = computed(() => {
 }
 
 .phrase-translation {
+  text-align: left;
   font-family: 'Josefin Sans', sans-serif;
   font-size: 1rem;
   color: var(--color-paper-dim, var(--muted));

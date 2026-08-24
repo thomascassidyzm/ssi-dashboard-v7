@@ -19,9 +19,31 @@
  *
  * Pools are gender-split for soft preference, but DISTINCTNESS > GENDER per Tom:
  * the colouring (tools/pod-voice-colour.cjs) guarantees conversants never share
- * a voice; gender is only a tie-break. Where a native set lacks a gender (es and
- * it natives are all-male), we top the missing gender up from multilingual voices
- * carrying the same locale handle.
+ * a voice; gender is only a tie-break. Where a native set genuinely lacks a
+ * gender, we top the missing gender up from multilingual voices carrying the
+ * same locale handle.
+ *
+ * WHERE A VOICE'S GENDER COMES FROM (Tom, 2026-08-11). It is READ, never
+ * assumed: `voices.gender` holds the PROVIDER's own word, filled by
+ * tools/xai-voice-metadata-sync.cjs from GET /v1/tts/voices/{id} (and by the
+ * Azure catalogue read in tools/pod-voice-pool-gender-audit.cjs). Call
+ * `await loadVerifiedGenders()` before resolving a pool and every voice in
+ * every tier — xAI native, xAI multilingual, Azure, ElevenLabs — carries the
+ * gender the provider states; the JSON catalogues are only the fallback for a
+ * voice the provider has stated nothing about.
+ *
+ * This file used to carry the opposite: a hard-coded "es and it natives are
+ * all-male" belief, written into two comments and silently true in the data.
+ * The 2026-08-11 metadata reconciliation proved it wrong — `hqxr4yub` (Luca,
+ * it) is FEMALE by xAI's own answer — so an Italian scene was topping its
+ * female slots up from multilingual voices while a native female voice sat
+ * unused in the male list. No language is special-cased here any more: an
+ * empty gender list is a fact about the data, discovered per resolve, and the
+ * only thing that triggers a top-up.
+ *
+ * Resolving is READ-ONLY. Nothing in this module writes: no listening_pods,
+ * no courses.voice_config, no app_config. Correcting a live cast is a separate,
+ * deliberate run of the casting/approval flow.
  */
 
 const path = require('path')
@@ -32,14 +54,76 @@ const AZURE = require(path.join(__dirname, 'pod-voices-azure.json'))  // { <loca
 // KNOWN pool, so it is excluded here to avoid the same voice playing a target
 // character AND an English narration line (cross-track collision).
 const MULTI = (XAI.multilingual || []).filter(v => v.voice_id !== 'leo')
-const MULTI_F = MULTI.filter(v => v.gender === 'f')
-const MULTI_M = MULTI.filter(v => v.gender === 'm')
 
-function xaiVoice(v, locale) {
-  return { provider: 'xai', voice_id: v.voice_id, name: v.name, gender: v.gender, locale }
+// -----------------------------------------------------------------------------
+// Provider-verified gender — `voices.gender`, the provider's own word.
+//
+// A Map<voice_id, 'f'|'m'>, loaded once per process and then consulted by every
+// resolve. NULL in the column means the provider has stated nothing (Tom's
+// clone, which xAI 404s on) — such a voice is simply absent from the map and
+// keeps whatever the JSON catalogue says, rather than becoming a guess.
+//
+// Not loaded (`null`) is deliberately distinct from loaded-and-empty: resolve
+// still works without a database — the JSON catalogues are the fallback — and
+// says so in `genderSource`, so a caller that forgot to load can tell.
+// -----------------------------------------------------------------------------
+let _verified = null
+
+function defaultClient() {
+  require('dotenv').config({ path: path.resolve(__dirname, '../.env') })
+  const { createClient } = require('@supabase/supabase-js')
+  return createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY)
 }
-function azureVoice(v) {
-  return { provider: 'azure', voice_id: v.voice_id, name: v.name, gender: v.gender, locale: v.locale }
+
+/**
+ * Read every provider-stated gender out of `voices` and cache it for this
+ * process. SELECT only — this module never writes anything, anywhere.
+ * Call it once before resolving pools in a casting run.
+ */
+async function loadVerifiedGenders({ client, reload = false } = {}) {
+  if (_verified && !reload) return _verified
+  const db = client || defaultClient()
+  const { data, error } = await db.from('voices').select('voice_id,gender').not('gender', 'is', null)
+  if (error) throw new Error(`pod-voice-coverage: load voices.gender: ${error.message}`)
+  _verified = new Map((data || [])
+    .filter(r => r.gender === 'f' || r.gender === 'm')
+    .map(r => [r.voice_id, r.gender]))
+  return _verified
+}
+
+/** Inject a gender map directly (tests, or a caller that already read the column). */
+function setVerifiedGenders(map) {
+  _verified = map == null ? null : new Map(map instanceof Map ? map : Object.entries(map))
+}
+
+/** What the CURRENT process knows: the loaded map, or null if nobody has loaded it. */
+function verifiedGenders() {
+  return _verified
+}
+
+// The provider's word if we have it, else the catalogue label we shipped with.
+function genderOf(v, genders) {
+  const g = genders && genders.get(v.voice_id)
+  return g || v.gender
+}
+
+// Split any catalogue list into f/m by RESOLVED gender — the one place gender
+// is decided, shared by every tier, so no tier can grow its own assumption.
+function splitByGender(list, genders, make) {
+  const out = { f: [], m: [] }
+  for (const v of list) {
+    const gender = genderOf(v, genders)
+    if (gender !== 'f' && gender !== 'm') continue
+    out[gender].push(make(v, gender))
+  }
+  return out
+}
+
+function xaiVoice(v, locale, gender) {
+  return { provider: 'xai', voice_id: v.voice_id, name: v.name, gender: gender || v.gender, locale }
+}
+function azureVoice(v, gender) {
+  return { provider: 'azure', voice_id: v.voice_id, name: v.name, gender: gender || v.gender, locale: v.locale }
 }
 
 // ElevenLabs multilingual_v2 voices — the PREMIUM top-up (Tom 2026-06-30). xAI
@@ -57,8 +141,8 @@ const ELEVEN_M = [
   { voice_id: 'IKne3meq5aSn9XLyUdCD', name: 'Charlie', gender: 'm' },
   { voice_id: 'CwhRBWXzGAHq8TQ4Fs17', name: 'Roger',   gender: 'm' },
 ]
-function elevenVoice(v, locale) {
-  return { provider: 'elevenlabs', voice_id: v.voice_id, name: v.name, gender: v.gender, locale }
+function elevenVoice(v, locale, gender) {
+  return { provider: 'elevenlabs', voice_id: v.voice_id, name: v.name, gender: gender || v.gender, locale }
 }
 
 // -----------------------------------------------------------------------------
@@ -91,14 +175,24 @@ const TARGET = {
   fin:    { native: 'fi',    locale: 'fi'    },
   fra:    { native: 'fr',    locale: 'fr'    },
   hin:    { native: 'hi',    locale: 'hi'    },
-  ita:    { native: 'it',    locale: 'it'    },          // natives all-male → F from multilingual
+  ita:    { native: 'it',    locale: 'it'    },
   jpn:    { native: 'ja',    locale: 'ja'    },
   kor:    { native: 'ko',    locale: 'ko'    },
   nld:    { native: 'nl',    locale: 'nl'    },
   pol:    { native: 'pl',    locale: 'pl'    },
   por_br: { native: 'pt',    locale: 'pt-BR' },          // native pt IS Brazilian
   rus:    { native: 'ru',    locale: 'ru'    },
-  spa:    { native: 'es',    locale: 'es-ES' },          // natives all-male → F from multilingual; accent assumed Castilian (verify by ear like pt)
+  // ⚠️ The "assumed Castilian" here is NOT verified, and one Spanish pod cast
+  // off this shape was rejected by ear on 2026-08-11: "the sampled pronunciation
+  // is Mexican Spanish, but spa_for_eng is an IBERIAN Spanish course."
+  // What that pod actually carried was the bare handle `es`, not `es-ES` — the
+  // same region-stripping that made `por` render Brazilian — so the rejection
+  // does not by itself convict the es-ES path below; nobody has heard it.
+  // Until someone does, the live pool (app_config.pod_voice_pools.spa) leads
+  // with the Azure es-ES pair Elvira/Alvaro, which is provider-guaranteed
+  // "Spanish (Spain)" and what the spa_for_eng course itself is rendered on.
+  // docs/pods/spa-cast-iberian-2026-08-11.md
+  spa:    { native: 'es',    locale: 'es-ES' },
   swe:    { native: 'sv-SE', locale: 'sv'    },
   tha:    { native: 'th',    locale: 'th'    },
   tur:    { native: 'tr',    locale: 'tr'    },
@@ -162,50 +256,65 @@ function targetKey(code) {
 
 /**
  * Resolve the TARGET voice pool for a course target language.
- * Returns { tier, provider, locale, f:[voice], m:[voice], human, humanPreferred, note }.
+ * Returns { tier, provider, locale, f:[voice], m:[voice], human, humanPreferred,
+ *           genderSource, note }.
  * Each voice = { provider, voice_id, name, gender, locale }.
+ *
+ * Gender per voice comes from `voices.gender` when that has been loaded
+ * (`await loadVerifiedGenders()`, or `opts.genders`), otherwise from the JSON
+ * catalogue — `genderSource` says which. Read-only: resolving writes nothing.
  */
-function resolveTargetPool(targetLang) {
+function resolveTargetPool(targetLang, opts = {}) {
   const key = targetKey(targetLang)
   const e = TARGET[key]
   if (!e) {
     throw new Error(`pod-voice-coverage: no resolution for target "${targetLang}" (add it to TARGET)`)
   }
+  const genders = opts.genders === undefined ? _verified : opts.genders
+  const genderSource = genders ? 'voices.gender' : 'catalogue'
   if (e.human) {
-    return { tier: 0, provider: 'human', locale: null, f: [], m: [], human: true,
+    return { tier: 0, provider: 'human', locale: null, f: [], m: [], human: true, genderSource,
              note: `${targetLang}: no xAI or Azure voice — human recording required` }
   }
   if (e.azure) {
     const pick = AZURE[e.azure] || { f: [], m: [] }
-    let f = (pick.f || []).map(azureVoice)
-    let m = (pick.m || []).map(azureVoice)
+    // The catalogue ships f/m lists, but the LIST a voice sits in is not
+    // evidence — its provider-stated gender is, exactly as for xAI. Re-split
+    // both lists so a mislabelled Azure entry lands where the provider says.
+    const split = splitByGender([...(pick.f || []), ...(pick.m || [])], genders,
+                                (v, gender) => azureVoice(v, gender))
+    let { f, m } = split
     // Premium top-up: ElevenLabs voices AFTER the native Azure (cheaper-first),
     // for thin languages that opt in — the colourer only reaches them when a
     // scene needs more colours than the native pool provides.
     if (e.eleven) {
-      f = f.concat(ELEVEN_F.map(v => elevenVoice(v, e.azure)))
-      m = m.concat(ELEVEN_M.map(v => elevenVoice(v, e.azure)))
+      const ev = splitByGender([...ELEVEN_F, ...ELEVEN_M], genders, (v, gender) => elevenVoice(v, e.azure, gender))
+      f = f.concat(ev.f)
+      m = m.concat(ev.m)
     }
     return { tier: 3, provider: 'azure', locale: e.azure, f, m,
-             humanPreferred: !!e.humanPreferred,
+             humanPreferred: !!e.humanPreferred, genderSource,
              note: `${targetLang}: Azure ${e.azure}${e.eleven ? ' + ElevenLabs top-up' : ''}${e.humanPreferred ? ' (course audio is human; pods fall back to Azure)' : ''}` }
   }
+  const multi = splitByGender(MULTI, genders, (v, gender) => xaiVoice(v, e.locale, gender))
   if (e.multi) {
-    const f = MULTI_F.map(v => xaiVoice(v, e.locale))
-    const m = MULTI_M.map(v => xaiVoice(v, e.locale))
-    return { tier: 2, provider: 'xai', locale: e.locale, f, m,
+    return { tier: 2, provider: 'xai', locale: e.locale, f: multi.f, m: multi.m, genderSource,
              note: `${targetLang}: xAI multilingual + ${e.locale}` }
   }
-  // tier 1 native, topped up with multilingual where a gender is thin
+  // Tier 1 native, topped up with multilingual only where a gender is EMPTY.
+  // Which languages those are is discovered from the data every time — there is
+  // no list of "all-male" languages here, and there must never be one again.
   const nat = XAI[e.native] || []
-  let f = nat.filter(v => v.gender === 'f').map(v => xaiVoice(v, e.locale))
-  let m = nat.filter(v => v.gender === 'm').map(v => xaiVoice(v, e.locale))
-  const toppedF = f.length === 0
+  const split = splitByGender(nat, genders, (v, gender) => xaiVoice(v, e.locale, gender))
+  const topped = ['f', 'm'].filter(g => split[g].length === 0)
   // multilingual overflow AFTER natives (natives preferred; multilingual only when a scene needs more colours)
-  f = f.concat(MULTI_F.map(v => xaiVoice(v, e.locale)))
-  m = m.concat(MULTI_M.map(v => xaiVoice(v, e.locale)))
-  return { tier: 1, provider: 'xai', locale: e.locale, f, m,
-           note: `${targetLang}: xAI native ${e.native}${toppedF ? ' (no native F → F from multilingual)' : ''}, locale ${e.locale}` }
+  const f = split.f.concat(multi.f)
+  const m = split.m.concat(multi.m)
+  const toppedNote = topped.length
+    ? ` (no native ${topped.map(g => g.toUpperCase()).join('/')} → from multilingual)`
+    : ''
+  return { tier: 1, provider: 'xai', locale: e.locale, f, m, genderSource,
+           note: `${targetLang}: xAI native ${e.native}${toppedNote}, locale ${e.locale}` }
 }
 
 // The known pool must speak the KNOWN language. English is the default and
@@ -213,10 +322,12 @@ function resolveTargetPool(targetLang) {
 // target language). Any OTHER known language resolves exactly like a target,
 // so e.g. _for_jpn pods get Japanese known voices instead of (wrong) English
 // ones that produce empty (Azure) or wrong-language (xAI) audio.
-function resolveKnownPool(knownLang) {
+function resolveKnownPool(knownLang, opts = {}) {
   const c = String(knownLang || 'eng').toLowerCase().trim()
+  // The English pool is one voice in BOTH slots by design (a translator, not a
+  // character), so no gender lookup applies to it — there is nothing to split.
   if (!knownLang || c === 'eng' || c === 'en') return { ...KNOWN_POOL }
-  return resolveTargetPool(knownLang)
+  return resolveTargetPool(knownLang, opts)
 }
 
 // The explainer narration (Tom's xAI clone, mostly the English gloss + quoted
@@ -239,5 +350,6 @@ function resolveExplainerLanguage(targetLang) {
 
 module.exports = {
   resolveTargetPool, resolveKnownPool, resolveExplainerLanguage, targetKey,
+  loadVerifiedGenders, setVerifiedGenders, verifiedGenders,
   TARGET, KNOWN_POOL, MULTI, XAI_EXPLAINER_LANGS,
 }

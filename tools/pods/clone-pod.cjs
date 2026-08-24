@@ -36,7 +36,8 @@
 
 require('dotenv').config({ path: require('path').join(__dirname, '..', '..', '.env.psql') })
 const { Client } = require('pg')
-const { checkPodCast } = require('./pod-cast-gate.cjs')
+const { checkPodCast, loadClipsForRows } = require('./pod-cast-gate.cjs')
+const { carrySplitAudio, SPLIT_AUDIO_FIELDS } = require('./split-audio-inheritance.cjs')
 
 const APPLY = process.argv.includes('--apply')
 const arg = (n) => {
@@ -52,13 +53,13 @@ const TITLE_SUFFIX = arg('title-suffix') || ' — UNRECORDED working copy, not l
 // learner-facing, so it writes the column explicitly and defaults it to 'held'.
 // (Omitting it is how 40 non-serving pods came to be 'live' and needed the
 // 2026-08-23 sweep: docs/pods/hold-40-non-serving-pods-2026-08-23.md.)
-const VISIBILITY = arg('visibility') || 'held'
+const VISIBILITY_FLAG = arg('visibility')
 if (!COURSE || !TO) {
   console.error('FAILED: --course=<code> and --to=<slug> are both required')
   process.exit(1)
 }
-if (!['held', 'live', 'draft'].includes(VISIBILITY)) {
-  console.error(`FAILED: --visibility=${VISIBILITY} is not one of held|live|draft`)
+if (VISIBILITY_FLAG && !['held', 'live', 'draft'].includes(VISIBILITY_FLAG)) {
+  console.error(`FAILED: --visibility=${VISIBILITY_FLAG} is not one of held|live|draft`)
   process.exit(1)
 }
 if (TO === FROM) {
@@ -74,6 +75,10 @@ const dstPodId = `${COURSE}:${TO}`
   await db.connect()
   try {
     const src = (await db.query(`select * from listening_pods where id=$1`, [srcPodId])).rows[0]
+    // The effective visibility of the clone. An explicit --visibility wins; otherwise
+    // the source's own visibility is copied, so copying a held pod can never release it
+    // and copying a live pod gives a live copy; with neither, 'held'.
+    const VISIBILITY = VISIBILITY_FLAG || (src && src.visibility) || 'held'
     if (!src) throw new Error(`${srcPodId}: no such pod`)
 
     const dstExisting = (await db.query(`select id, visibility from listening_pods where id=$1`, [dstPodId])).rows[0]
@@ -115,6 +120,12 @@ const dstPodId = `${COURSE}:${TO}`
       with_target_audio: sentences.filter(s => s.target_audio_id).length,
       with_known_audio: sentences.filter(s => s.known_audio_id).length,
       columns_copied: copyCols.length,
+      split_audio_slots_carried: sentences.reduce((n, s) => {
+        const kept = carrySplitAudio(s, s)
+        return n + SPLIT_AUDIO_FIELDS.filter(f => kept[f] != null).length
+      }, 0),
+      split_audio_slots_present_on_source: sentences.reduce((n, s) =>
+        n + SPLIT_AUDIO_FIELDS.filter(f => s[f] != null).length, 0),
     }
 
     // `speakers` is copied verbatim, so the clone inherits the source's casting —
@@ -122,7 +133,11 @@ const dstPodId = `${COURSE}:${TO}`
     // it off the live slug is the whole point of this tool, so a hard gate here
     // would block the repair. The gate that matters is on the way OUT, in
     // pod-switchover.cjs, which will not promote a pod that fails this same check.
-    const cast = checkPodCast({ rows: sentences, speakers: src.speakers })
+    const cast = checkPodCast({
+      rows: sentences,
+      speakers: src.speakers,
+      clips: await loadClipsForRows(db, sentences),
+    })
     summary.cast_inherited = cast.ok
       ? `cast-correct (${cast.voicesInUse.length} voices, 0 same-voice exchange pairs)`
       : `NOT cast-correct — ${cast.failures.join(' | ')}; recast the clone with ` +
@@ -137,6 +152,11 @@ const dstPodId = `${COURSE}:${TO}`
     try {
       if (!dstExisting) {
         await db.query(
+          // `visibility` is COPIED from the source unless --visibility says otherwise
+          // (Tom, 2026-08-23, both halves): the DB default is 'live', so an insert that
+          // omits the column would make a clone of a HELD pod live — an automatic-live
+          // path. A clone of a live pod stays live, which is what a clone means; an
+          // explicit --visibility still wins, and with neither the answer is 'held'.
           `insert into listening_pods (id, course_code, pod_type, slug, pod_order, title, scene, difficulty, speakers, source_file, metadata, visibility)
            values ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12)`,
           [dstPodId, src.course_code, src.pod_type, TO, src.pod_order,
@@ -147,7 +167,17 @@ const dstPodId = `${COURSE}:${TO}`
       const cols = ['id', 'pod_id', ...copyCols]
       const placeholders = cols.map((_, i) => `$${i + 1}`).join(',')
       for (const s of sentences) {
-        const vals = [reId(s.id), dstPodId, ...copyCols.map(c => enc(sentenceJson, c, s[c]))]
+        // Split audio follows the TEXT, never the slot
+        // (tools/pods/split-audio-inheritance.cjs). This clone copies both texts
+        // verbatim, so every slot is carried and this is a no-op today — which is
+        // the point of running it rather than assuming it. The moment anyone
+        // makes this tool transform text on the way through, the split arrays
+        // drop to NULL instead of following the slot into a new conversation, and
+        // the player falls back to the whole-turn clip. That transform, done
+        // downstream by align-pod0-to-canonical.cjs on a clone exactly like this
+        // one, is what produced the ita pod-1 scene-15 defect.
+        const row = { ...s, ...carrySplitAudio(s, s) }
+        const vals = [reId(s.id), dstPodId, ...copyCols.map(c => enc(sentenceJson, c, row[c]))]
         const r = await db.query(
           `insert into listening_pod_sentences (${cols.map(c => `"${c}"`).join(',')}) values (${placeholders})`, vals)
         if (r.rowCount !== 1) throw new Error(`insert of ${reId(s.id)} affected ${r.rowCount} rows`)

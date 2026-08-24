@@ -9,6 +9,9 @@
  */
 
 import { createClient } from '@supabase/supabase-js';
+// The identity canonicaliser is shared with the services/ writers on purpose:
+// two copies of this rule is how the estate got 137 spellings of 60 languages.
+import { canonicalLanguage, canonicalVoiceId } from '../../services/shared/clip-identity.cjs';
 
 const supabaseUrl = process.env.SUPABASE_URL;
 const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.SUPABASE_SERVICE_KEY;
@@ -132,25 +135,48 @@ export async function getCourseAudio(id) {
 }
 
 /**
- * Find course audio by text, language, and role
+ * Mirrors services/supabase-client.cjs. Two things are deliberate here and the
+ * reasoning lives in that file's comments:
+ *
+ *  - `voiceId` is part of a clip's identity, so it belongs in the filter;
+ *  - `.single()` is gone. PostgREST returns PGRST116 for BOTH "zero rows" and
+ *    "more than one row", so the old `if (error.code !== 'PGRST116') throw`
+ *    reported a drift-created pair of rows as NO ROW AT ALL. Two rows are now
+ *    logged and the first is returned, rather than the clip being called absent.
  */
-export async function findCourseAudio(courseCode, text, language, role) {
+const MULTIPLICITY_PROBE = 2;
+
+/**
+ * Find course audio by text, language, role and voice
+ */
+export async function findCourseAudio(courseCode, text, language, role, voiceId) {
   const supabase = getSupabase();
   if (!supabase) throw new Error('Supabase not configured');
 
   const textNormalized = normalizeText(text);
+  const lang = canonicalLanguage(language);
 
-  const { data, error } = await supabase
+  let query = supabase
     .from('course_audio')
     .select('*')
     .eq('course_code', courseCode)
     .eq('text_normalized', textNormalized)
-    .eq('language', language)
-    .eq('role', role)
-    .single();
+    .eq('language', lang)
+    .eq('role', role);
+  if (voiceId != null) query = query.eq('voice_id', canonicalVoiceId(voiceId));
 
-  if (error && error.code !== 'PGRST116') throw error;
-  return data;
+  const { data, error } = await query.limit(MULTIPLICITY_PROBE);
+  if (error) throw error;
+
+  const rows = data || [];
+  if (rows.length >= MULTIPLICITY_PROBE) {
+    console.warn(
+      `[supabase] findCourseAudio: ${rows.length}+ rows share one identity ` +
+      `(${courseCode}, ${textNormalized}, ${lang}, ${role}, ${voiceId ?? 'any voice'}) — ` +
+      `ids ${rows.map(r => r.id).join(', ')}. Returning the first; previously this reported ABSENT.`
+    );
+  }
+  return rows[0] || null;
 }
 
 /**
@@ -201,17 +227,26 @@ export async function findSharedAudio(text, language, audioType) {
   if (!supabase) throw new Error('Supabase not configured');
 
   const textNormalized = normalizeText(text);
+  const lang = canonicalLanguage(language);
 
   const { data, error } = await supabase
     .from('shared_audio')
     .select('*')
     .eq('text_normalized', textNormalized)
-    .eq('language', language)
+    .eq('language', lang)
     .eq('audio_type', audioType)
-    .single();
+    .limit(MULTIPLICITY_PROBE);
 
-  if (error && error.code !== 'PGRST116') throw error;
-  return data;
+  if (error) throw error;
+
+  const rows = data || [];
+  if (rows.length >= MULTIPLICITY_PROBE) {
+    console.warn(
+      `[supabase] findSharedAudio: ${rows.length}+ rows share (${textNormalized}, ${lang}, ${audioType}) — ` +
+      `ids ${rows.map(r => r.id).join(', ')}. Returning the first; previously this reported ABSENT.`
+    );
+  }
+  return rows[0] || null;
 }
 
 // =============================================================================

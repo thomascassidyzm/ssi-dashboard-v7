@@ -68,9 +68,9 @@
                 <span
                   class="target-text font-medium"
                   :class="currentPhraseIndex === index ? 'text-amber-300 target-active' : 'text-ink'"
-                >
-                  {{ phrase.target_text }}
-                </span>
+                  :dir="dirFor(phrase.target_text)"
+                  style="unicode-bidi: isolate"
+                >{{ phrase.target_text }}</span>
               </div>
 
               <!-- Rep Count (for practice phrases) -->
@@ -139,6 +139,7 @@
 import { ref, computed, watch, onUnmounted } from 'vue';
 import type { LegoRowData, PhraseRowData } from '@/types/production';
 import { getApiUrl } from '@/services/api';
+import { dirFor } from '@/utils/textDirection.js';
 
 interface Props {
   visible: boolean;

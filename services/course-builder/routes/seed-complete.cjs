@@ -10,11 +10,11 @@ const { Router } = require('express');
 
 // Lib imports
 const { isChinese, getGoldenSeedCount, getLanguageName, getLangFamily, checkLegoSyllables } = require('../lib/language-config.cjs');
-const { extractVocab, normalizeForContainment, normalizePhrase, checkWordContainment, stripBookendPunctuation } = require('../lib/text-normalization.cjs');
+const { extractVocab, normalizeForContainment, normalizePhrase, checkWordContainment, normalizeSubmissionCasing } = require('../lib/text-normalization.cjs');
 const {
   makePhraseId, computePhraseRole, computeLegoPosition,
   extractNgrams, usesBuildUseFormat, checkBuildUsePhrases,
-  generateBuildupPhrases,
+  generateBuildupPhrases, partitionBareLegoPhrases,
 } = require('../lib/phrase-structure.cjs');
 const {
   METHODOLOGY_HINTS, checkTiling, checkPhraseComplexity,
@@ -95,7 +95,9 @@ const allowValidationBypass = (body) => body.SKIP_VALIDATION === true && (body.s
 // Languages with no capitalisation concept — skip target lowercasing
 const NO_CAP_TARGET_LANGS = new Set(['jpn', 'zho', 'cmn', 'ara', 'kor', 'heb', 'tha', 'mya', 'lao', 'khm']);
 
-// Static allowlist of inherently capitalised words
+// Legacy backstop list of inherently capitalised words. NOT the main defence —
+// capitalisation is decided from evidence in the submission itself
+// (collectCasingEvidence), so this list never needs to grow.
 const KEEP_CAP_WORDS = new Set([
   'I',
   'English', 'French', 'German', 'Dutch', 'Spanish', 'Portuguese', 'Italian',
@@ -108,29 +110,16 @@ const KEEP_CAP_WORDS = new Set([
 ]);
 
 /**
- * Strip bookend punctuation from all text fields in a LEGO submission.
+ * Strip bookend punctuation and undo accidental sentence-case across a LEGO submission.
  * Mutates in place for efficiency.
  */
 function normalizeLegoTexts(legos, courseCode) {
-  if (!legos || !Array.isArray(legos)) return;
-  const parts = courseCode.split('_for_');
-  const targetLang = parts[0] || '';
-  const knownLang = parts[1] || '';
-  const skipTarget = NO_CAP_TARGET_LANGS.has(targetLang);
-  const skipKnown = NO_CAP_TARGET_LANGS.has(knownLang);
-
-  for (const lego of legos) {
-    if (lego.known) lego.known = stripBookendPunctuation(lego.known, skipKnown ? null : KEEP_CAP_WORDS);
-    if (lego.target) lego.target = stripBookendPunctuation(lego.target, skipTarget ? null : KEEP_CAP_WORDS);
-
-    const phraseArrays = [lego.build, lego.use, lego.phrases].filter(Boolean);
-    for (const arr of phraseArrays) {
-      for (const p of arr) {
-        if (p.known) p.known = stripBookendPunctuation(p.known, skipKnown ? null : KEEP_CAP_WORDS);
-        if (p.target) p.target = stripBookendPunctuation(p.target, skipTarget ? null : KEEP_CAP_WORDS);
-      }
-    }
-  }
+  const parts = (courseCode || '').split('_for_');
+  normalizeSubmissionCasing(legos, {
+    skipTarget: NO_CAP_TARGET_LANGS.has(parts[0] || ''),
+    skipKnown: NO_CAP_TARGET_LANGS.has(parts[1] || ''),
+    keepCapSet: KEEP_CAP_WORDS,
+  });
 }
 
 /**
@@ -412,10 +401,23 @@ module.exports = function seedCompleteRoutes(ctx) {
         normalizeLegoTexts([req.body], req.body.course_code);
       }
 
-      const { course_code, seed, idx, type, known, target, components, phrases } = req.body;
+      const { course_code, seed, idx, type, known, target, components } = req.body;
+      let phrases = req.body.phrases;
 
       if (!course_code || !seed || !idx || !known || !target) {
         return res.status(400).json({ error: 'Missing required fields' });
+      }
+
+      // Drop bare-LEGO copies BEFORE the count check — the floor is a floor of
+      // real practice, never met by copying the LEGO out as its own phrase.
+      let droppedBare = 0;
+      if (phrases && phrases.length > 0) {
+        const bareSplit = partitionBareLegoPhrases(phrases, target);
+        droppedBare = bareSplit.bare.length;
+        phrases = bareSplit.kept;
+        if (droppedBare > 0) {
+          console.log(`  ⚠ S${String(seed).padStart(4,'0')}L${String(idx).padStart(2,'0')}: dropped ${droppedBare} bare-LEGO phrase(s) ("${target}") — the LEGO alone is not a practice phrase`);
+        }
       }
 
       const phraseCount = phrases?.length || 0;
@@ -603,7 +605,7 @@ module.exports = function seedCompleteRoutes(ctx) {
           buildupCount = buildupResult.buildupPhrases.length;
           practiceStartPosition = buildupResult.startPosition;
           roleCounts = { ...buildupResult.roleCounts };
-          console.log(`  M-LEGO build-up: ${buildupCount} phrases (${buildupResult.buildupPhrases.length - 1} components + LEGO)`);
+          console.log(`  M-LEGO build-up: ${buildupCount} component phrase(s)`);
         }
 
         if (phrases && phrases.length > 0) {
@@ -680,6 +682,10 @@ module.exports = function seedCompleteRoutes(ctx) {
         phrases: totalPhrases,
         buildup_phrases: buildupCount,
         practice_phrases: practiceCount,
+        ...(droppedBare > 0 ? {
+          bare_lego_phrases_dropped: droppedBare,
+          bare_lego_hint: 'A practice phrase that IS the LEGO teaches nothing — the learner meets the bare LEGO at intro and debut. Submit the LEGO used IN a phrase with already-introduced vocabulary instead.',
+        } : {}),
         ...(frameWarnings.length > 0 ? {
           frame_warnings: frameWarnings,
           frame_hint: 'Non-blocking. 7th principle: vary along the axis that carries the new distinction — see ralph-methodology.md.',
@@ -1824,6 +1830,7 @@ module.exports = function seedCompleteRoutes(ctx) {
       let totalPhrases = 0;
       let totalBuildupPhrases = 0;
       let skippedDuplicates = 0;
+      let droppedBarePhrases = 0;
 
       for (const lego of legos) {
         const legoId = `${seedId}L${String(lego.idx).padStart(2, '0')}`;
@@ -1875,8 +1882,16 @@ module.exports = function seedCompleteRoutes(ctx) {
         if (usesBuildUseFormat(lego)) {
           // Dedup against already-inserted buildup phrases (e.g. LEGO debut)
           const buildupNorms = new Set(allPhraseRows.map(p => normalizePhrase(p.target_text)));
-          const rawBuild = lego.build || [];
-          const rawUse = lego.use || [];
+          // Never write the LEGO out as its own practice phrase — it pads the
+          // per-LEGO count without adding practice (phrase-structure.cjs).
+          const buildBare = partitionBareLegoPhrases(lego.build || [], lego.target);
+          const useBare = partitionBareLegoPhrases(lego.use || [], lego.target);
+          if (buildBare.bare.length + useBare.bare.length > 0) {
+            console.log(`    ⚠ ${legoId}: dropped ${buildBare.bare.length + useBare.bare.length} bare-LEGO phrase(s) ("${lego.target}") — not practice, not padding`);
+            droppedBarePhrases += buildBare.bare.length + useBare.bare.length;
+          }
+          const rawBuild = buildBare.kept;
+          const rawUse = useBare.kept;
           const buildPhrases = rawBuild.filter(p => {
             const norm = normalizePhrase(p.target);
             if (buildupNorms.has(norm)) { console.log(`    Deduped BUILD phrase (matches buildup): "${p.target}"`); return false; }
@@ -1949,15 +1964,20 @@ module.exports = function seedCompleteRoutes(ctx) {
 
         } else if (lego.phrases && lego.phrases.length > 0) {
           // Legacy format
+          const legacyBare = partitionBareLegoPhrases(lego.phrases, lego.target);
+          if (legacyBare.bare.length > 0) {
+            console.log(`    ⚠ ${legoId}: dropped ${legacyBare.bare.length} bare-LEGO phrase(s) ("${lego.target}") — the LEGO alone is not a practice phrase`);
+            droppedBarePhrases += legacyBare.bare.length;
+          }
           const buildupNormalized = new Set(allPhraseRows.map(p => normalizePhrase(p.target_text)));
           const seenNormalized = new Set();
-          const dedupedPhrases = lego.phrases.filter(p => {
+          const dedupedPhrases = legacyBare.kept.filter(p => {
             const norm = normalizePhrase(p.target);
             if (buildupNormalized.has(norm) || seenNormalized.has(norm)) return false;
             seenNormalized.add(norm);
             return true;
           });
-          const dedupedCount = lego.phrases.length - dedupedPhrases.length;
+          const dedupedCount = legacyBare.kept.length - dedupedPhrases.length;
           if (dedupedCount > 0) {
             console.log(`    Deduped ${dedupedCount} phrases (normalized: case/punctuation insensitive)`);
           }
@@ -2204,6 +2224,10 @@ module.exports = function seedCompleteRoutes(ctx) {
         duplicates_skipped: skippedDuplicates,
         phrases: totalPhrases,
         buildup_phrases: totalBuildupPhrases,
+        ...(droppedBarePhrases > 0 ? {
+          bare_lego_phrases_dropped: droppedBarePhrases,
+          bare_lego_hint: 'A practice phrase that IS the LEGO teaches nothing — the learner meets the bare LEGO at intro and debut. Use the LEGO IN a phrase with already-introduced vocabulary.',
+        } : {}),
 
         warnings: warnings.length > 0 ? {
           note: 'THESE ARE FOR YOUR NEXT SEED - this seed is already saved. Do NOT resubmit.',

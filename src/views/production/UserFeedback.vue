@@ -15,7 +15,7 @@
           </router-link>
           <h1 class="text-2xl font-bold">User Feedback</h1>
           <span class="px-3 py-1 bg-emerald-600 text-white rounded-lg text-sm font-medium">
-            {{ courseCode }}
+            {{ getCourseName(courseCode) }}
           </span>
         </div>
 
@@ -149,7 +149,7 @@
               <!-- Text Content -->
               <div v-if="issue.text" class="text-content mb-2">
                 <span class="text-ink font-medium">{{ issue.text }}</span>
-                <span v-if="issue.language" class="ml-2 text-xs text-faint">({{ issue.language }})</span>
+                <span v-if="issue.language" class="ml-2 text-xs text-faint">({{ getLanguageName(issue.language) }})</span>
               </div>
               <div v-else class="text-faint italic mb-2">
                 General feedback (no specific audio)
@@ -273,10 +273,12 @@ import { ref, onMounted, computed } from 'vue';
 import { useRoute } from 'vue-router';
 import { getApiUrl } from '@/services/api';
 import { isConfigured as isSupabaseConfigured, getFeedbackAggregated, getFeedbackStats } from '@/services/supabase';
+import { useCourses } from '@/composables/useCourses';
 
 // Route
 const route = useRoute();
 const courseCode = computed(() => route.params.courseCode as string);
+const { getCourseName, getLanguageName } = useCourses();
 
 // State
 const isLoading = ref(false);

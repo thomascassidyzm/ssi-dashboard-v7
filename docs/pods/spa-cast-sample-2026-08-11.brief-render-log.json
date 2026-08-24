@@ -1,0 +1,347 @@
+{
+  "course_code": "spa_for_eng",
+  "rendered_at": "2026-08-11T22:59:40.957Z",
+  "db_writes": "none — S3 objects only, no course_audio rows, no pod links",
+  "clips": [
+    {
+      "cast_key": "azure-elvira-alvaro",
+      "cast_label": "Azure Elvira + Alvaro @ es-ES — the live cast, awaiting approval",
+      "line_id": "L1",
+      "speaker": "Neighbour",
+      "gender": "m",
+      "known": "Good morning, Sarah!",
+      "target": "¡Buenos días, Sarah!",
+      "voice": {
+        "provider": "azure",
+        "voice_id": "es-ES-AlvaroNeural",
+        "name": "Alvaro",
+        "locale": "es-ES"
+      },
+      "ok": true,
+      "s3_key": "mastered/2B9BD707-7F36-4ADF-8F91-C2BFDD65EB8F.mp3",
+      "url": "https://ssi-audio-stage.s3.eu-west-1.amazonaws.com/mastered/2B9BD707-7F36-4ADF-8F91-C2BFDD65EB8F.mp3",
+      "duration_ms": 2520,
+      "bytes": 30816
+    },
+    {
+      "cast_key": "azure-elvira-alvaro",
+      "cast_label": "Azure Elvira + Alvaro @ es-ES — the live cast, awaiting approval",
+      "line_id": "L2",
+      "speaker": "Sarah",
+      "gender": "f",
+      "known": "Good morning. How are you?",
+      "target": "Buenos días. ¿Cómo estás?",
+      "voice": {
+        "provider": "azure",
+        "voice_id": "es-ES-ElviraNeural",
+        "name": "Elvira",
+        "locale": "es-ES"
+      },
+      "ok": true,
+      "s3_key": "mastered/1A803AD4-1C39-4C65-8A4B-F21B0B9EBAAE.mp3",
+      "url": "https://ssi-audio-stage.s3.eu-west-1.amazonaws.com/mastered/1A803AD4-1C39-4C65-8A4B-F21B0B9EBAAE.mp3",
+      "duration_ms": 3564,
+      "bytes": 43488
+    },
+    {
+      "cast_key": "azure-elvira-alvaro",
+      "cast_label": "Azure Elvira + Alvaro @ es-ES — the live cast, awaiting approval",
+      "line_id": "L3",
+      "speaker": "Neighbour",
+      "gender": "m",
+      "known": "I'm very well, thank you. Are you going to work?",
+      "target": "Muy bien, gracias. ¿Vas al trabajo?",
+      "voice": {
+        "provider": "azure",
+        "voice_id": "es-ES-AlvaroNeural",
+        "name": "Alvaro",
+        "locale": "es-ES"
+      },
+      "ok": true,
+      "s3_key": "mastered/B445F00E-4B5D-487E-B77A-F8D56279BDE9.mp3",
+      "url": "https://ssi-audio-stage.s3.eu-west-1.amazonaws.com/mastered/B445F00E-4B5D-487E-B77A-F8D56279BDE9.mp3",
+      "duration_ms": 4428,
+      "bytes": 53856
+    },
+    {
+      "cast_key": "azure-elvira-alvaro",
+      "cast_label": "Azure Elvira + Alvaro @ es-ES — the live cast, awaiting approval",
+      "line_id": "L4",
+      "speaker": "Sarah",
+      "gender": "f",
+      "known": "Yes, I've got a busy day today. I hope you have a good day. See you later.",
+      "target": "Sí, tengo un día ocupado hoy. Espero que tengas un buen día. Hasta luego.",
+      "voice": {
+        "provider": "azure",
+        "voice_id": "es-ES-ElviraNeural",
+        "name": "Elvira",
+        "locale": "es-ES"
+      },
+      "ok": true,
+      "s3_key": "mastered/C0F2843A-7B49-4741-B58B-1C9590642F65.mp3",
+      "url": "https://ssi-audio-stage.s3.eu-west-1.amazonaws.com/mastered/C0F2843A-7B49-4741-B58B-1C9590642F65.mp3",
+      "duration_ms": 6984,
+      "bytes": 84384
+    },
+    {
+      "cast_key": "azure-elvira-alvaro",
+      "cast_label": "Azure Elvira + Alvaro @ es-ES — the live cast, awaiting approval",
+      "line_id": "L5",
+      "speaker": "Sarah",
+      "gender": "f",
+      "known": "Excuse me, is this seat taken?",
+      "target": "Perdón, ¿está ocupado este asiento?",
+      "voice": {
+        "provider": "azure",
+        "voice_id": "es-ES-ElviraNeural",
+        "name": "Elvira",
+        "locale": "es-ES"
+      },
+      "ok": true,
+      "s3_key": "mastered/1B15B54B-9BC8-4F1A-A8A3-125745B01BD8.mp3",
+      "url": "https://ssi-audio-stage.s3.eu-west-1.amazonaws.com/mastered/1B15B54B-9BC8-4F1A-A8A3-125745B01BD8.mp3",
+      "duration_ms": 3276,
+      "bytes": 40032
+    },
+    {
+      "cast_key": "azure-elvira-alvaro",
+      "cast_label": "Azure Elvira + Alvaro @ es-ES — the live cast, awaiting approval",
+      "line_id": "L6",
+      "speaker": "Passenger",
+      "gender": "m",
+      "known": "No, it's free. Please, go ahead.",
+      "target": "No, está libre. Por favor, pase.",
+      "voice": {
+        "provider": "azure",
+        "voice_id": "es-ES-AlvaroNeural",
+        "name": "Alvaro",
+        "locale": "es-ES"
+      },
+      "ok": true,
+      "s3_key": "mastered/0241A13B-FB1B-462A-A216-DEADC03DEF80.mp3",
+      "url": "https://ssi-audio-stage.s3.eu-west-1.amazonaws.com/mastered/0241A13B-FB1B-462A-A216-DEADC03DEF80.mp3",
+      "duration_ms": 4644,
+      "bytes": 56448
+    },
+    {
+      "cast_key": "azure-elvira-alvaro",
+      "cast_label": "Azure Elvira + Alvaro @ es-ES — the live cast, awaiting approval",
+      "line_id": "L7",
+      "speaker": "Passenger",
+      "gender": "m",
+      "known": "It's not very far. Maybe three or four miles.",
+      "target": "No está muy lejos. Quizás tres o cuatro millas.",
+      "voice": {
+        "provider": "azure",
+        "voice_id": "es-ES-AlvaroNeural",
+        "name": "Alvaro",
+        "locale": "es-ES"
+      },
+      "ok": true,
+      "s3_key": "mastered/76A01110-BB61-415E-89A1-36463C728105.mp3",
+      "url": "https://ssi-audio-stage.s3.eu-west-1.amazonaws.com/mastered/76A01110-BB61-415E-89A1-36463C728105.mp3",
+      "duration_ms": 4788,
+      "bytes": 58176
+    },
+    {
+      "cast_key": "xai-eve-manuel",
+      "cast_label": "xAI Eve + Manuel @ es-ES — the untested explicit handle",
+      "line_id": "L1",
+      "speaker": "Neighbour",
+      "gender": "m",
+      "known": "Good morning, Sarah!",
+      "target": "¡Buenos días, Sarah!",
+      "voice": {
+        "provider": "xai",
+        "voice_id": "yis75yfp",
+        "name": "Manuel",
+        "locale": "es-ES"
+      },
+      "ok": true,
+      "s3_key": "mastered/374C79B6-F933-4BE9-A378-0FD766CDF9C2.mp3",
+      "url": "https://ssi-audio-stage.s3.eu-west-1.amazonaws.com/mastered/374C79B6-F933-4BE9-A378-0FD766CDF9C2.mp3",
+      "duration_ms": 1560,
+      "bytes": 19296
+    },
+    {
+      "cast_key": "xai-eve-manuel",
+      "cast_label": "xAI Eve + Manuel @ es-ES — the untested explicit handle",
+      "line_id": "L2",
+      "speaker": "Sarah",
+      "gender": "f",
+      "known": "Good morning. How are you?",
+      "target": "Buenos días. ¿Cómo estás?",
+      "voice": {
+        "provider": "xai",
+        "voice_id": "eve",
+        "name": "Eve",
+        "locale": "es-ES"
+      },
+      "ok": true,
+      "s3_key": "mastered/16B07547-0A23-4DF3-98DA-8FF55462B7B7.mp3",
+      "url": "https://ssi-audio-stage.s3.eu-west-1.amazonaws.com/mastered/16B07547-0A23-4DF3-98DA-8FF55462B7B7.mp3",
+      "duration_ms": 1800,
+      "bytes": 22176
+    },
+    {
+      "cast_key": "xai-eve-manuel",
+      "cast_label": "xAI Eve + Manuel @ es-ES — the untested explicit handle",
+      "line_id": "L3",
+      "speaker": "Neighbour",
+      "gender": "m",
+      "known": "I'm very well, thank you. Are you going to work?",
+      "target": "Muy bien, gracias. ¿Vas al trabajo?",
+      "voice": {
+        "provider": "xai",
+        "voice_id": "yis75yfp",
+        "name": "Manuel",
+        "locale": "es-ES"
+      },
+      "ok": true,
+      "s3_key": "mastered/BCD4B824-E4CA-491B-B16A-82AE710525C8.mp3",
+      "url": "https://ssi-audio-stage.s3.eu-west-1.amazonaws.com/mastered/BCD4B824-E4CA-491B-B16A-82AE710525C8.mp3",
+      "duration_ms": 2928,
+      "bytes": 35712
+    },
+    {
+      "cast_key": "xai-eve-manuel",
+      "cast_label": "xAI Eve + Manuel @ es-ES — the untested explicit handle",
+      "line_id": "L4",
+      "speaker": "Sarah",
+      "gender": "f",
+      "known": "Yes, I've got a busy day today. I hope you have a good day. See you later.",
+      "target": "Sí, tengo un día ocupado hoy. Espero que tengas un buen día. Hasta luego.",
+      "voice": {
+        "provider": "xai",
+        "voice_id": "eve",
+        "name": "Eve",
+        "locale": "es-ES"
+      },
+      "ok": true,
+      "s3_key": "mastered/9255E694-5EE8-446B-84F7-F5ADE7E11ADC.mp3",
+      "url": "https://ssi-audio-stage.s3.eu-west-1.amazonaws.com/mastered/9255E694-5EE8-446B-84F7-F5ADE7E11ADC.mp3",
+      "duration_ms": 4680,
+      "bytes": 56736
+    },
+    {
+      "cast_key": "xai-eve-manuel",
+      "cast_label": "xAI Eve + Manuel @ es-ES — the untested explicit handle",
+      "line_id": "L5",
+      "speaker": "Sarah",
+      "gender": "f",
+      "known": "Excuse me, is this seat taken?",
+      "target": "Perdón, ¿está ocupado este asiento?",
+      "voice": {
+        "provider": "xai",
+        "voice_id": "eve",
+        "name": "Eve",
+        "locale": "es-ES"
+      },
+      "ok": true,
+      "s3_key": "mastered/124B229A-CE77-4CB6-9BF3-FCB7C7B38482.mp3",
+      "url": "https://ssi-audio-stage.s3.eu-west-1.amazonaws.com/mastered/124B229A-CE77-4CB6-9BF3-FCB7C7B38482.mp3",
+      "duration_ms": 2448,
+      "bytes": 29952
+    },
+    {
+      "cast_key": "xai-eve-manuel",
+      "cast_label": "xAI Eve + Manuel @ es-ES — the untested explicit handle",
+      "line_id": "L6",
+      "speaker": "Passenger",
+      "gender": "m",
+      "known": "No, it's free. Please, go ahead.",
+      "target": "No, está libre. Por favor, pase.",
+      "voice": {
+        "provider": "xai",
+        "voice_id": "yis75yfp",
+        "name": "Manuel",
+        "locale": "es-ES"
+      },
+      "ok": true,
+      "s3_key": "mastered/DF3872EC-3B5E-47C4-8EB0-DF98647DB6AE.mp3",
+      "url": "https://ssi-audio-stage.s3.eu-west-1.amazonaws.com/mastered/DF3872EC-3B5E-47C4-8EB0-DF98647DB6AE.mp3",
+      "duration_ms": 3096,
+      "bytes": 37728
+    },
+    {
+      "cast_key": "xai-eve-manuel",
+      "cast_label": "xAI Eve + Manuel @ es-ES — the untested explicit handle",
+      "line_id": "L7",
+      "speaker": "Passenger",
+      "gender": "m",
+      "known": "It's not very far. Maybe three or four miles.",
+      "target": "No está muy lejos. Quizás tres o cuatro millas.",
+      "voice": {
+        "provider": "xai",
+        "voice_id": "yis75yfp",
+        "name": "Manuel",
+        "locale": "es-ES"
+      },
+      "ok": true,
+      "s3_key": "mastered/5D91645A-6391-41C0-A929-F446B7B37D75.mp3",
+      "url": "https://ssi-audio-stage.s3.eu-west-1.amazonaws.com/mastered/5D91645A-6391-41C0-A929-F446B7B37D75.mp3",
+      "duration_ms": 4296,
+      "bytes": 52128
+    },
+    {
+      "cast_key": "xai-ara-female-alt",
+      "cast_label": "xAI Ara @ es-ES — second female candidate; xAI has no native Spanish female at all, so the female seat is the weak link and gets two shots",
+      "line_id": "L2",
+      "speaker": "Sarah",
+      "gender": "f",
+      "known": "Good morning. How are you?",
+      "target": "Buenos días. ¿Cómo estás?",
+      "voice": {
+        "provider": "xai",
+        "voice_id": "ara",
+        "name": "Ara",
+        "locale": "es-ES"
+      },
+      "ok": true,
+      "s3_key": "mastered/8A150341-45A7-4E2E-AE17-6B24EDD7D62F.mp3",
+      "url": "https://ssi-audio-stage.s3.eu-west-1.amazonaws.com/mastered/8A150341-45A7-4E2E-AE17-6B24EDD7D62F.mp3",
+      "duration_ms": 1896,
+      "bytes": 23328
+    },
+    {
+      "cast_key": "xai-ara-female-alt",
+      "cast_label": "xAI Ara @ es-ES — second female candidate; xAI has no native Spanish female at all, so the female seat is the weak link and gets two shots",
+      "line_id": "L4",
+      "speaker": "Sarah",
+      "gender": "f",
+      "known": "Yes, I've got a busy day today. I hope you have a good day. See you later.",
+      "target": "Sí, tengo un día ocupado hoy. Espero que tengas un buen día. Hasta luego.",
+      "voice": {
+        "provider": "xai",
+        "voice_id": "ara",
+        "name": "Ara",
+        "locale": "es-ES"
+      },
+      "ok": true,
+      "s3_key": "mastered/83E1FC1B-7063-471F-989B-FC955056EC22.mp3",
+      "url": "https://ssi-audio-stage.s3.eu-west-1.amazonaws.com/mastered/83E1FC1B-7063-471F-989B-FC955056EC22.mp3",
+      "duration_ms": 4608,
+      "bytes": 55872
+    },
+    {
+      "cast_key": "xai-ara-female-alt",
+      "cast_label": "xAI Ara @ es-ES — second female candidate; xAI has no native Spanish female at all, so the female seat is the weak link and gets two shots",
+      "line_id": "L5",
+      "speaker": "Sarah",
+      "gender": "f",
+      "known": "Excuse me, is this seat taken?",
+      "target": "Perdón, ¿está ocupado este asiento?",
+      "voice": {
+        "provider": "xai",
+        "voice_id": "ara",
+        "name": "Ara",
+        "locale": "es-ES"
+      },
+      "ok": true,
+      "s3_key": "mastered/35E59912-0BBA-4CCF-AA0B-C3CD47EDD193.mp3",
+      "url": "https://ssi-audio-stage.s3.eu-west-1.amazonaws.com/mastered/35E59912-0BBA-4CCF-AA0B-C3CD47EDD193.mp3",
+      "duration_ms": 2376,
+      "bytes": 29088
+    }
+  ]
+}

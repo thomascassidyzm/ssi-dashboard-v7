@@ -15,6 +15,8 @@
  */
 
 const { normalizeForAudio } = require('../shared/text-normalize.cjs')
+const { canonicalLanguage, canonicalVoiceId } = require('../shared/clip-identity.cjs')
+const { voiceSpellings } = require('../shared/clip-identity-lookup.cjs')
 
 const PAGE_SIZE = 1000
 
@@ -105,11 +107,19 @@ async function loadSeeds(supabase, courseCode) {
  * A Map (not a Set) so the job can tell "registered from THIS take" apart
  * from "registered from an older take or a splice" — re-records supersede.
  * (.has() keeps working for the splice planner.)
+ *
+ * The voice filter matches EITHER spelling (see clip-identity-lookup.cjs).
+ * This drives "which texts still need recording", so a spelling miss tells the
+ * recordist a text is unrecorded when a take already exists — a wasted human
+ * session, and a second human row on the same text. Widening the read is the
+ * cheap side of that trade: the worst case is correctly reporting a text as
+ * already recorded.
  */
 async function fetchExistingAudioTexts(supabase, { courseCode, role, voiceId }) {
+  const spellings = voiceId ? voiceSpellings(voiceId) : null
   const filters = (q) => {
     q = q.eq('course_code', courseCode).eq('role', role)
-    return voiceId ? q.eq('voice_id', voiceId) : q
+    return spellings ? q.in('voice_id', spellings) : q
   }
   const rows = await fetchAll(
     () => filters(supabase.from('course_audio').select('id', { count: 'exact', head: true })),
@@ -136,6 +146,34 @@ async function fetchAudioRowsForRole(supabase, { courseCode, role }) {
 }
 
 /**
+ * Find the human course_audio row a take would land on, on the SAME 5-column
+ * key upsertHumanCourseAudio conflicts against, canonicalised the SAME way.
+ *
+ * That sameness is the whole contract: the caller uses this to decide between
+ * "first take of this line" (plain insert) and "a re-record superseding an
+ * existing clip" (versioned swap). If the two disagreed by so much as a
+ * normalisation, a re-record would look like a first take and overwrite the
+ * clip with no revision bump and no ledger row — which is exactly the bug the
+ * lookup exists to prevent. Any change to the upsert's canonicalisation must be
+ * made here in the same commit.
+ *
+ * @returns {Promise<{id, s3_key, audio_revision}|null>}
+ */
+async function findHumanCourseAudio(supabase, { courseCode, text, language, role, voiceId, provider }) {
+  const { data, error } = await supabase
+    .from('course_audio')
+    .select('id, s3_key, audio_revision')
+    .eq('course_code', courseCode)
+    .eq('text_normalized', normalizeForAudio(text))
+    .eq('language', canonicalLanguage(language))
+    .eq('role', role)
+    .eq('voice_id', canonicalVoiceId(voiceId, { provider }))
+    .maybeSingle()
+  if (error) throw new Error(`course_audio lookup failed for "${text}": ${error.message}`)
+  return data || null
+}
+
+/**
  * Upsert one human course_audio row. Same conflict key as phase8's working
  * upsert (the live 5-column unique index, audit 06 §1.3 — per-voice rows are
  * representable today). origin is ALWAYS 'human' here: this is the human
@@ -143,16 +181,16 @@ async function fetchAudioRowsForRole(supabase, { courseCode, role }) {
  * manifest spliced ledger (keystone decision 6 — 'splice' origin is a
  * deferred migration).
  */
-async function upsertHumanCourseAudio(supabase, { courseCode, text, language, role, voiceId, s3Key, durationMs }) {
+async function upsertHumanCourseAudio(supabase, { courseCode, text, language, role, voiceId, provider, s3Key, durationMs }) {
   const { data, error } = await supabase
     .from('course_audio')
     .upsert({
       course_code: courseCode,
       text,
       text_normalized: normalizeForAudio(text),
-      language,
+      language: canonicalLanguage(language),
       role,
-      voice_id: voiceId,
+      voice_id: canonicalVoiceId(voiceId, { provider }),
       origin: 'human',
       s3_key: s3Key,
       duration_ms: durationMs ?? null,
@@ -197,6 +235,7 @@ module.exports = {
   loadSeeds,
   fetchExistingAudioTexts,
   fetchAudioRowsForRole,
+  findHumanCourseAudio,
   upsertHumanCourseAudio,
   linkCourseAudio,
 }

@@ -37,3 +37,52 @@ export async function loginAsTestUser(page) {
   await page.getByRole('button', { name: 'Sign In' }).click()
   await page.waitForURL((url) => !url.pathname.startsWith('/login'), { timeout: 20_000 })
 }
+
+// ─── DB reads ──────────────────────────────────────────────────────────────
+// The specs used to shell out to `/opt/homebrew/opt/postgresql@17/bin/psql`,
+// a hardcoded macOS path. On any Linux box (watson-1, CI) every spec that read
+// the DB died with `spawnSync ... ENOENT` before it exercised anything — the
+// suite looked broken when the product was fine. These read through the
+// Supabase REST API with the SERVICE key instead (the anon key silently hides
+// rows), so the suite runs anywhere the rest of the dashboard runs.
+import 'dotenv/config'
+
+const SUPABASE_URL = process.env.SUPABASE_URL
+const SERVICE_KEY = process.env.SUPABASE_SERVICE_KEY
+
+async function rest(pathAndQuery, { head = false } = {}) {
+  if (!SUPABASE_URL || !SERVICE_KEY) {
+    throw new Error('SUPABASE_URL / SUPABASE_SERVICE_KEY missing from .env — E2E DB reads cannot run')
+  }
+  const res = await fetch(`${SUPABASE_URL}/rest/v1/${pathAndQuery}`, {
+    method: head ? 'HEAD' : 'GET',
+    headers: {
+      apikey: SERVICE_KEY,
+      Authorization: `Bearer ${SERVICE_KEY}`,
+      ...(head ? { Prefer: 'count=exact' } : {})
+    }
+  })
+  if (!res.ok) throw new Error(`Supabase REST ${res.status}: ${await res.text()}`)
+  if (head) {
+    // content-range looks like "*/12"
+    return Number((res.headers.get('content-range') || '/0').split('/')[1] || 0)
+  }
+  return res.json()
+}
+
+/** One column of one row, or null. */
+export async function dbScalar(table, column, filters) {
+  const q = new URLSearchParams({ select: column, limit: '1' })
+  for (const [k, v] of Object.entries(filters)) q.append(k, `eq.${v}`)
+  const rows = await rest(`${table}?${q}`)
+  return rows.length ? rows[0][column] : null
+}
+
+/** Exact row count matching the filters. `is.` filters are passed through verbatim. */
+export async function dbCount(table, filters) {
+  const q = new URLSearchParams({ select: 'id' })
+  for (const [k, v] of Object.entries(filters)) {
+    q.append(k, typeof v === 'string' && /^(eq|is|not|gt|lt)\./.test(v) ? v : `eq.${v}`)
+  }
+  return rest(`${table}?${q}`, { head: true })
+}

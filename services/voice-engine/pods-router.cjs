@@ -60,7 +60,7 @@ const {
 const { buildRecordingPlan, finalizeRecordingPlan, DEFAULT_CUE_COUNT } = require('./pods-plan.cjs')
 
 const SENTENCE_COLUMNS =
-  'id, pod_id, scene_number, global_order, speaker, target_text, target_text_draft, known_text, explainer_text, glue_to_next, target_audio_id, known_audio_id, explainer_audio_id'
+  'id, pod_id, scene_number, global_order, speaker, target_text, target_text_draft, known_text, explainer_text, glue_to_next, rerecord_wanted, target_audio_id, known_audio_id, explainer_audio_id'
 const PAGE_SIZE = 1000 // PostgREST max-rows silently truncates — always paginate
 
 /**
@@ -503,7 +503,7 @@ module.exports = function createPodsCastRouter({
           const out = []
           for (let i = 0; i < ids.length; i += 200) {
             const { data, error } = await db.from('course_audio')
-              .select('id, origin, voice_id').in('id', ids.slice(i, i + 200))
+              .select('id, origin, voice_id, duration_ms, file_size_bytes').in('id', ids.slice(i, i + 200))
             if (error) throw new Error(error.message)
             out.push(...(data || []))
           }

@@ -82,6 +82,32 @@ function joinedText(rows, field) {
 }
 
 /**
+ * Is this track WANTED, freshly recorded, by one of these voices?
+ *
+ * listening_pod_sentences.rerecord_wanted is {"target":"<voiceId>","known":"<voiceId>"}
+ * (either key optional). It is the make-before-break lever: a line can be
+ * pending for a named recordist while its existing audio stays linked and
+ * playable, where the old lever — nulling {kind}_audio_id — took working audio
+ * off the learner's path first.
+ *
+ * A glued chain is one recording item, so a want on ANY row in the chain wants
+ * the whole utterance: the recordist reads it as one take either way.
+ *
+ * @param {Array} rows - the sentence rows behind one plan item
+ * @param {string} kind - 'target' | 'known'
+ * @param {Set<string>|string} voices - accepted voice id(s)
+ */
+function isRerecordWanted(rows, kind, voices) {
+  const accept = voices instanceof Set ? voices : new Set([voices])
+  for (const r of rows || []) {
+    const w = r && r.rerecord_wanted
+    if (!w || typeof w !== 'object') continue
+    if (w[kind] && accept.has(w[kind])) return true
+  }
+  return false
+}
+
+/**
  * Build the recording queue for one voice across a course's pods.
  *
  * @param {object} args
@@ -162,15 +188,25 @@ function buildRecordingPlan({ pods, sentences, podCast, voiceId, cueCount = DEFA
       const targetIsDraft = di.rows.some(r => r.target_text_draft === true)
 
       const entry = castVoiceFor(cast, di.speaker)
-      if (entry && entry.voiceId === voiceId && target) {
-        castSpeakers.add(di.canon)
+      const castHolds = !!(entry && entry.voiceId === voiceId)
+      // A wanted track routes to the named voice REGARDLESS of the cast — that
+      // is what lets a known (English) line reach a non-explainer recordist at
+      // all, since every known line otherwise routes to __explainer__.
+      const targetWanted = isRerecordWanted(di.rows, 'target', voiceId)
+      const knownWanted = isRerecordWanted(di.rows, 'known', voiceId)
+
+      if ((castHolds || targetWanted) && target) {
+        if (castHolds) castSpeakers.add(di.canon)
         push({ ...base, kind: 'target', line: target, knownGloss: known || null, draft: targetIsDraft })
       }
 
-      if (isExplainer) {
+      if (isExplainer || knownWanted) {
         if (known) {
           push({ ...base, kind: 'known', line: known, knownGloss: null })
         }
+      }
+
+      if (isExplainer) {
         for (const r of di.rows) {
           const explainer = (r.explainer_text || '').trim()
           if (!explainer) continue   // '' = deliberately none (recon §5)
@@ -201,13 +237,54 @@ function buildRecordingPlan({ pods, sentences, podCast, voiceId, cueCount = DEFA
 }
 
 /**
+ * Smallest byte count we will accept as a real take. The silent-stub MP3 that
+ * the 2026-06-15 cym_n_for_eng upload wrote is 834 bytes — a frame header, an
+ * Info tag and padding, no speech. Even a half-second take at the lowest
+ * bitrate we master to clears 4 KB, so 2 KB separates "stub" from "short" with
+ * room to spare.
+ */
+const MIN_TAKE_BYTES = 2048
+
+/**
+ * Is this course_audio row a pointer to silence?
+ *
+ * WHY THIS EXISTS. On 2026-06-15 a recording-room upload wrote 27
+ * cym_n_for_eng human takes as the SAME 834-byte silent stub, under 27
+ * different ids and 27 different S3 keys — an upload that failed without
+ * failing. `recorded` used to ask only origin+voice_id, so all 27 counted as
+ * done and the recorder would never have been served them again. The takes are
+ * unrecoverable (no raw/ objects survive; only the empty mastered/ file), so
+ * the only repair is to re-record — which needs the queue to admit they are
+ * missing.
+ *
+ * Bytes, not duration, is the test. 25 of the 27 carry duration_ms NULL, but
+ * two carry a confident 10867 ms and 12251 ms against the same 834 bytes, so a
+ * duration check passes the two worst rows — the ones the player waits twelve
+ * silent seconds for. Conversely a NULL duration on its own means nothing: the
+ * zzz_test pod takes are NULL-duration and 40 KB of real speech.
+ *
+ * Absent columns are treated as unknown rather than empty, so a caller that
+ * has not been taught to select them keeps the old behaviour instead of
+ * silently reporting a whole queue as unrecorded.
+ */
+function isEmptyTake(a) {
+  if (!a) return true
+  const bytes = a.file_size_bytes
+  if (bytes != null && Number(bytes) < MIN_TAKE_BYTES) return true
+  const ms = a.duration_ms
+  if (ms != null && Number(ms) <= 0) return true
+  return false
+}
+
+/**
  * Finalize a plan for the wire: canonical item shape (pinned by
  * pod-recording-plan-contract.test.mjs — drift here rendered empty cue lines,
  * integration map fix #1) + recorded/audioId stamping (fix #2: resume and
  * progress need to know what this voice already recorded).
  *
  * recorded = the sentence's {kind}_audio_id points at a HUMAN course_audio
- * row carrying THIS queue's voiceId. audioId is the current pointer either way
+ * row carrying THIS queue's voiceId, whose bytes are real audio and not the
+ * silent stub (see isEmptyTake). audioId is the current pointer either way
  * (the client echoes it as replacesAudioId provenance on re-records).
  *
  * @param {object} args
@@ -217,7 +294,9 @@ function buildRecordingPlan({ pods, sentences, podCast, voiceId, cueCount = DEFA
  * @param {Set<string>} [args.acceptVoiceIds] - voice ids whose takes count as
  *   recorded (the queue's id plus its collapsed-away aliases); defaults to
  *   just voiceId
- * @param {(ids:string[])=>Promise<Array<{id,origin,voice_id}>>} args.fetchAudioRows
+ * @param {(ids:string[])=>Promise<Array<{id,origin,voice_id,duration_ms,file_size_bytes}>>} args.fetchAudioRows
+ *   — select file_size_bytes and duration_ms too, or silent stubs keep counting
+ *   as recorded.
  */
 async function finalizeRecordingPlan({ plan, sentences, voiceId, acceptVoiceIds = null, fetchAudioRows }) {
   const accept = acceptVoiceIds && acceptVoiceIds.size ? acceptVoiceIds : new Set([voiceId])
@@ -238,7 +317,14 @@ async function finalizeRecordingPlan({ plan, sentences, voiceId, acceptVoiceIds 
     const row = rowById.get(it.sentenceId) || {}
     const audioId = row[AUDIO_COL[it.kind]] || null
     const a = audioId ? audioById.get(audioId) : null
-    const isRecorded = !!(a && a.origin === 'human' && accept.has(a.voice_id))
+    // A WANTED track is outstanding whatever its audio says — that is the whole
+    // point of rerecord_wanted: the old take stays linked and playable while the
+    // line waits for its fresh one. (Never applies to 'explainer': the column
+    // carries target/known only.)
+    const isWanted = isRerecordWanted(
+      (it.sentenceIds || [it.sentenceId]).map(id => rowById.get(id)).filter(Boolean),
+      it.kind, accept)
+    const isRecorded = !isWanted && !!(a && a.origin === 'human' && accept.has(a.voice_id) && !isEmptyTake(a))
     if (isRecorded) recorded++
     const isTarget = it.kind === 'target'
     const out = {
@@ -282,6 +368,9 @@ async function finalizeRecordingPlan({ plan, sentences, voiceId, acceptVoiceIds 
 module.exports = {
   DEFAULT_CUE_COUNT,
   finalizeRecordingPlan,
+  isEmptyTake,
+  isRerecordWanted,
+  MIN_TAKE_BYTES,
   estimateSeconds,
   sceneTitleFor,
   groupGlueItems,

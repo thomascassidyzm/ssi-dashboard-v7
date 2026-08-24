@@ -418,20 +418,56 @@ async function stageTtsInproc(course) {
   }
   stageLog(course, 'tts', `voice approval OK: cast ${gate.live_fingerprint}, approved by ${gate.approval.approved_by}`)
 
-  const { generatePodAudio } = getPhase8()
+  const phase8 = getPhase8()
+  const { generatePodAudio } = phase8
   const ctx = await getCourseContext(course)
   const pod = await loadPod0WithSentences(course)
   const roles = ['target', 'known']
 
+  // CROSS-COURSE CANON REUSE (Tom, 2026-08-11). Same proof the /generate-pods
+  // endpoint builds: the set of this pod's lines that are byte-identical
+  // canonical pod-0 English, and only when the pod is aligned end to end. A line
+  // in that set may point at a sibling course's identical clip instead of paying
+  // to render it again. Unavailable canon costs reuse, never correctness.
+  let canonTexts = null
+  try {
+    const englishCol = phase8.englishColumnFor(ctx)
+    if (englishCol) {
+      canonTexts = phase8.podCanonReuseTexts(await phase8.loadPod0Canon(), pod.sentences, englishCol)
+    }
+    stageLog(course, 'tts', canonTexts
+      ? `canon reuse: ${canonTexts.size} shareable canon line(s) — sibling-course clips are eligible`
+      : 'canon reuse: pod not aligned to canon — course-scoped matching only')
+  } catch (e) {
+    stageLog(course, 'tts', `canon reuse unavailable (${e.message}) — course-scoped matching only`)
+    canonTexts = null
+  }
+
+  // TEXT APPROVAL GATE (Tom's A-109 ruling, 2026-08-16). Same reasoning as the
+  // voice gate above: the http mode inherits this from /generate-pods, but
+  // in-process is the DEFAULT mode and rebuilds the endpoint's work queue, so
+  // without this it is a full bypass of the gate on the bulk driver — the one
+  // place it matters most. Withheld lines are counted and logged, never fatal.
+  const podTextApproval = require('./pod-text-approval.cjs')
+
   const workQueue = []
+  let blockedUnapprovedTarget = 0
   for (const s of pod.sentences) {
-    if (!s.target_audio_id && s.target_text) {
+    // Target only. The line's KNOWN track drops through to the branch below and
+    // renders as normal — the draft marker is about target words, and the
+    // English side of a drafted line was never in doubt.
+    if (!s.target_audio_id && s.target_text && !podTextApproval.targetTextRenderable(s)) {
+      blockedUnapprovedTarget++
+    } else if (!s.target_audio_id && s.target_text) {
       workQueue.push({ kind: 'target', sentence_id: s.id, text: s.target_text, language: ctx.targetLang, role: 'target1', voice: resolvePodSpeakerVoice(pod.speakers, s.speaker, 'target'), link_column: 'target_audio_id' })
     }
     if (!s.known_audio_id && s.known_text) {
       const knownVoice = resolvePodSpeakerVoice(pod.speakers, s.speaker, 'known') || ctx.knownVoice
       workQueue.push({ kind: 'known', sentence_id: s.id, text: s.known_text, language: ctx.knownLang, role: 'known', voice: knownVoice, link_column: 'known_audio_id' })
     }
+  }
+  if (blockedUnapprovedTarget) {
+    stageLog(course, 'tts', `TEXT GATE: ${blockedUnapprovedTarget} target clip(s) withheld — unapproved draft target_text (verify with tools/pods/verify-pod-text.cjs)`)
   }
   stageLog(course, 'tts', `${workQueue.length} clips to render (${pod.sentences.length} sentences)`)
   if (workQueue.length === 0) return { generated: 0, reused: 0, failed: 0 }
@@ -449,7 +485,7 @@ async function stageTtsInproc(course) {
       try {
         const result = await generatePodAudio({
           courseCode: course, text: item.text, language: item.language, role: item.role,
-          voice: item.voice, ctx, track: item.kind, sentenceId: item.sentence_id,
+          voice: item.voice, ctx, track: item.kind, sentenceId: item.sentence_id, canonTexts,
         })
         const { error: linkErr } = await supabase
           .from('listening_pod_sentences').update({ [item.link_column]: result.id }).eq('id', item.sentence_id)

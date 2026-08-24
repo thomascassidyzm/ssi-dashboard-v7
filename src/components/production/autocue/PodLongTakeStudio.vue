@@ -36,8 +36,20 @@
            discovers it a hundred lines in. -->
       <p v-if="draftCount > 0" class="draft-warning">
         <span class="draft-warning-badge">DRAFT</span>
-        {{ draftCount }} of your {{ totals.total }} lines are machine-written drafts nobody has
-        proofread yet. They are marked line by line below — don't record one until it has been read.
+        {{ draftCount }} of your {{ totals.total }} lines are marked as machine-written drafts
+        nobody has proofread yet. They are marked line by line below — don't record one until it
+        has been read.
+      </p>
+
+      <!-- The absence of a badge is NOT a clearance. The marker column was added on
+           2026-08-06 defaulting to false, so every line older than that reads as
+           "proofread" whether or not a human ever saw it — which is how machine-written
+           June Welsh reached Aran's queue wearing no badge at all. Until approval is
+           recorded per line, the only honest thing this screen can say is that a missing
+           badge means nobody marked it. -->
+      <p class="draft-caveat">
+        No badge does not mean checked. Lines are only marked from 6 August 2026 onward, so an
+        unbadged line means nobody recorded a verdict either way — not that someone approved it.
       </p>
 
       <ol class="how-to">
@@ -106,7 +118,7 @@
             <span v-if="it.speaker && it.kind === 'target'" class="cue-speaker" :style="{ color: speakerColor(it.speaker) }">{{ it.speaker }}</span>
             <!-- These words are a machine draft nobody has proofread yet. Say so
                  loudly: a recorder must never read one believing it is final. -->
-            <span v-if="it.draft" class="cue-draft-badge">DRAFT — AWAITING ARAN</span>
+            <span v-if="it.draft" class="cue-draft-badge">DRAFT — AWAITING PROOFREAD</span>
             <span class="cue-text">{{ it.lineText }}</span>
             <span v-if="it.lineGloss" class="cue-gloss">{{ it.lineGloss }}</span>
             <button
@@ -116,9 +128,41 @@
               @click="redoDrop(i)"
             >⚠ silent — redo</button>
             <span v-else-if="isDone(it) && i !== currentIndex" class="cue-tick" aria-hidden="true">✓</span>
+            <!-- Play back THIS line's stored clip. Only offered for lines read
+                 in this session, because only those have an upload whose uuid
+                 we hold. -->
+            <StoredTakeButton
+              v-if="committedIndices.has(i)"
+              class="cue-play"
+              :uuid="storedUuid(i)"
+              :pending="uploadQueue.pendingCount.value > 0 && !storedUuid(i) && !uploadQueue.failedIndices.has(i)"
+              :failed="uploadQueue.failedIndices.has(i)"
+              :allow-local="false"
+              :is-playing="playingIndex === i"
+              @toggle="togglePlay(i)"
+            />
           </div>
         </template>
       </div>
+
+      <!-- The last take, always to hand: the first few lines of a session are
+           meant to check the trim chain by ear, and hunting up the autocue for
+           the line you just read is how that check gets skipped. -->
+      <div v-if="lastCommittedIndex !== -1" class="last-take-bar">
+        <span class="last-take-label">Last take —
+          <span class="last-take-text">{{ items[lastCommittedIndex]?.lineText }}</span>
+        </span>
+        <StoredTakeButton
+          :uuid="storedUuid(lastCommittedIndex)"
+          :pending="uploadQueue.pendingCount.value > 0 && !storedUuid(lastCommittedIndex) && !uploadQueue.failedIndices.has(lastCommittedIndex)"
+          :failed="uploadQueue.failedIndices.has(lastCommittedIndex)"
+          :allow-local="false"
+          :is-playing="playingIndex === lastCommittedIndex"
+          @toggle="togglePlay(lastCommittedIndex)"
+        />
+      </div>
+      <p v-if="playbackError" class="playback-error" role="status">{{ playbackError }}</p>
+      <p class="stored-note">Playback plays the processed clip stored on the server — the same bytes the learner will hear — never your raw local recording.</p>
 
       <!-- controls: thumb-reachable -->
       <div class="lt-controls">
@@ -141,6 +185,27 @@
       <p v-if="uploadQueue.pendingCount.value > 0" class="resume-note">Keep this page open until everything has saved.</p>
       <p v-if="micError" class="mic-error">{{ micError }}</p>
 
+      <!-- Check the session by ear before leaving: every line read, played
+           back from the stored clip. -->
+      <div v-if="sortedCommittedIndices.length > 0" class="takes-list">
+        <h3 class="takes-list-title">Listen back to what you recorded</h3>
+        <p class="takes-list-note">These play the processed clip stored on the server, not your raw local take.</p>
+        <ul>
+          <li v-for="idx in sortedCommittedIndices" :key="idx" class="take-item" :class="{ playing: playingIndex === idx }">
+            <span class="take-text">{{ items[idx]?.lineText }}</span>
+            <StoredTakeButton
+              :uuid="storedUuid(idx)"
+              :pending="uploadQueue.pendingCount.value > 0 && !storedUuid(idx) && !uploadQueue.failedIndices.has(idx)"
+              :failed="uploadQueue.failedIndices.has(idx)"
+              :allow-local="false"
+              :is-playing="playingIndex === idx"
+              @toggle="togglePlay(idx)"
+            />
+          </li>
+        </ul>
+        <p v-if="playbackError" class="playback-error" role="status">{{ playbackError }}</p>
+      </div>
+
       <!-- Specific lines that came out silent — named, not just counted, with a way back in -->
       <div v-if="droppedIndices.size > 0" class="dropped-list">
         <h3 class="dropped-list-title">{{ droppedIndices.size }} line{{ droppedIndices.size === 1 ? '' : 's' }} came out silent — need a re-take</h3>
@@ -154,6 +219,13 @@
 
       <div class="summary-actions">
         <button class="btn-ghost" @click="reloadAfterSession">Back to my lines</button>
+        <!-- Finishing a session must never mean signing out of Popty. -->
+        <button
+          v-if="hasMainOptions"
+          class="btn-main-options"
+          :disabled="uploadQueue.pendingCount.value > 0"
+          @click="goToMainOptions"
+        >Done — back to main menu</button>
       </div>
     </section>
   </div>
@@ -172,6 +244,9 @@ import {
 } from '@/utils/podRecordingPlan'
 import { useUploadQueue } from '@/composables/useAudioUpload'
 import { useTapRecorder } from '@/composables/useTapRecorder'
+import { useMainOptions } from '@/composables/useMainOptions'
+import StoredTakeButton from './StoredTakeButton.vue'
+import { storedClipUrl, diagnoseStoredClip } from '@/composables/useStoredClip'
 
 // Long-take pod recorder: continuous autocue, tap-to-advance. Each line is its own
 // MediaRecorder take (reliable) — on tap we close the current line's take, upload it
@@ -185,6 +260,7 @@ const emit = defineEmits(['progress'])
 
 const recorder = useTapRecorder()
 const uploadQueue = useUploadQueue()
+const { hasMainOptions, goToMainOptions } = useMainOptions()
 
 const phase = ref('loading') // loading | no-plan | error | ready | recording | done
 const loadError = ref(null)
@@ -226,6 +302,56 @@ let dropNoticeTimer = null
 const sortedDroppedIndices = computed(() => Array.from(droppedIndices.value).sort((a, b) => a - b))
 
 const autocueEl = ref(null)
+
+// ── Hearing the stored clip ──────────────────────────────────────────────────
+// Lines read in THIS session, by item index — the only ones whose upload we
+// hold a uuid for, and so the only ones that can be played back from the
+// server. Deliberately no raw-blob fallback: the studio keeps no local copy,
+// and offering one would reintroduce exactly the preview that made a butchered
+// trim chain sound perfect (docs/audio-forensics-2026-08-14/).
+const committedIndices = ref(new Set())
+const sortedCommittedIndices = computed(() => Array.from(committedIndices.value).sort((a, b) => a - b))
+const lastCommittedIndex = ref(-1)
+const playingIndex = ref(-1)
+const playbackError = ref(null)
+let playbackAudio = null
+
+function storedUuid(index) {
+  return uploadQueue.uploadedUuids.get(index) || null
+}
+
+function stopPlayback() {
+  if (playbackAudio) {
+    playbackAudio.onended = null
+    playbackAudio.onerror = null
+    playbackAudio.pause()
+  }
+  playingIndex.value = -1
+}
+
+function togglePlay(index) {
+  playbackError.value = null
+  if (playingIndex.value === index) { stopPlayback(); return }
+  const uuid = storedUuid(index)
+  if (!uuid) return
+  stopPlayback()
+  if (!playbackAudio) playbackAudio = new Audio()
+  // The stream route 302s to a signed S3 url; <audio> follows that itself.
+  playbackAudio.src = storedClipUrl(uuid)
+  playingIndex.value = index
+  playbackAudio.onended = () => { if (playingIndex.value === index) playingIndex.value = -1 }
+  playbackAudio.onerror = async () => {
+    if (playingIndex.value === index) playingIndex.value = -1
+    playbackError.value = await diagnoseStoredClip(uuid)
+  }
+  const started = playbackAudio.play()
+  if (started && typeof started.catch === 'function') {
+    started.catch(async () => {
+      if (playingIndex.value === index) playingIndex.value = -1
+      playbackError.value = await diagnoseStoredClip(uuid)
+    })
+  }
+}
 
 function isDone(it) {
   return it.recorded || sessionRecorded.value.has(it.sentenceId)
@@ -331,6 +457,11 @@ function commitLine(index, blob) {
   })
   sessionRecorded.value.add(item.sentenceId)
   sessionRecorded.value = new Set(sessionRecorded.value)
+  committedIndices.value.add(index)
+  committedIndices.value = new Set(committedIndices.value)
+  lastCommittedIndex.value = index
+  // A re-read of a line that is currently playing back is now the wrong bytes.
+  if (playingIndex.value === index) stopPlayback()
   committedCount.value++
   readThisSession.value++
 }
@@ -466,8 +597,11 @@ async function loadPlan() {
 }
 
 async function reloadAfterSession() {
+  stopPlayback()
   sessionRecorded.value = new Set()
   droppedIndices.value = new Set()
+  committedIndices.value = new Set()
+  lastCommittedIndex.value = -1
   dropNotice.value = null
   await loadPlan()
 }
@@ -483,13 +617,17 @@ onBeforeUnmount(() => {
 })
 
 watch(() => [props.courseCode, props.voiceId], () => {
+  stopPlayback()
   sessionRecorded.value = new Set()
   droppedIndices.value = new Set()
+  committedIndices.value = new Set()
+  lastCommittedIndex.value = -1
   dropNotice.value = null
   loadPlan()
 }, { immediate: true })
 
 onUnmounted(() => {
+  stopPlayback()
   if (dropNoticeTimer) clearTimeout(dropNoticeTimer)
   if (recorder.isRecording.value) recorder.stop()
   if (uploadQueue.pendingCount.value === 0) uploadQueue.resetQueue()
@@ -557,7 +695,16 @@ kbd {
 .toggle-row strong { display: block; font-size: 0.9rem; }
 .toggle-row small { display: block; font-size: 0.75rem; color: var(--color-paper-dim, #c1c1bb); line-height: 1.45; margin-top: 0.15rem; }
 
-.summary-actions { display: flex; justify-content: center; gap: 1rem; margin-top: 1rem; }
+.summary-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; margin-top: 1rem; }
+/* The route out of the session that ISN'T sign out. Disabled while the upload
+   queue still has audio in it — the "keep this page open" note above says why. */
+.btn-main-options {
+  font-family: 'Josefin Sans', sans-serif; font-size: 0.95rem; font-weight: 700;
+  color: var(--color-void, #0f172a); background: var(--color-emerald, #06ffa5);
+  border: none; border-radius: 8px; padding: 0.7rem 1.6rem; cursor: pointer;
+  margin-top: 0.75rem; min-height: 44px;
+}
+.btn-main-options:disabled { opacity: 0.4; cursor: not-allowed; }
 .btn-begin {
   font-family: 'Josefin Sans', sans-serif; font-size: 1.05rem; font-weight: 700;
   text-transform: uppercase; letter-spacing: 0.05em;
@@ -590,6 +737,28 @@ kbd {
 }
 
 /* Recording stage */
+/* Hearing the stored clip */
+.cue-play { margin-top: 0.5rem; }
+.last-take-bar {
+  display: flex; align-items: center; justify-content: space-between; gap: 0.75rem;
+  padding: 0.6rem 0.75rem; border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.14);
+}
+.last-take-label { font-size: 0.72rem; color: var(--color-paper-dim, #c1c1bb); min-width: 0; }
+.last-take-text { display: block; color: var(--color-paper, #f7f7f2); font-size: 0.85rem; }
+.stored-note { font-size: 0.7rem; color: var(--color-paper-dim, #c1c1bb); line-height: 1.45; margin: 0; }
+.playback-error { font-size: 0.75rem; color: #ff9d9d; margin: 0.35rem 0 0; }
+.takes-list { margin-top: 1.25rem; text-align: left; }
+.takes-list-title { font-size: 0.9rem; margin: 0 0 0.2rem; }
+.takes-list-note { font-size: 0.72rem; color: var(--color-paper-dim, #c1c1bb); margin: 0 0 0.6rem; }
+.takes-list ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.5rem; }
+.take-item {
+  display: flex; align-items: center; gap: 0.75rem; justify-content: space-between;
+  padding: 0.5rem 0.65rem; border-radius: 6px; background: rgba(255, 255, 255, 0.04);
+}
+.take-item.playing { background: rgba(6, 255, 165, 0.14); }
+.take-text { font-size: 0.85rem; min-width: 0; }
+
 .recording-stage { display: flex; flex-direction: column; gap: 0.85rem; }
 
 /* Silent-take toast: immediate, non-blocking, redo right there */
@@ -664,6 +833,15 @@ kbd {
   font-size: 0.85rem;
   line-height: 1.5;
   text-align: left;
+}
+/* Quieter than .draft-warning on purpose: it qualifies the badge, it is not itself
+   an alarm about any particular line. */
+.draft-caveat {
+  margin: 0.5rem 0 0;
+  font-size: 0.78rem;
+  line-height: 1.5;
+  text-align: left;
+  color: var(--color-paper-dim, #c1c1bb);
 }
 .draft-warning-badge {
   display: inline-block;

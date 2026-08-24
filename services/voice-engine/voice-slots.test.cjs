@@ -158,9 +158,62 @@ describe('assignVoiceToSlot', () => {
 
   it('handles a null voice_config (course never configured) without inventing siblings', () => {
     const next = assignVoiceToSlot(null, 'target2', 'human_maria_mkd')
-    expect(next.voices.target2).toEqual({ provider: 'human', voiceId: 'human_maria_mkd' })
+    // `name` is now always written (it defaults to the voice id when no
+    // person name is supplied) — a slot with no name at all shows as blank
+    // in every voice UI.
+    expect(next.voices.target2).toEqual({ provider: 'human', voiceId: 'human_maria_mkd', name: 'human_maria_mkd' })
     expect(Object.keys(next)).toEqual(['voices'])
     expect(Object.keys(next.voices)).toEqual(['target2'])
+  })
+
+  // deu_at_for_eng, 2026-08: Sascha held target2 while every voice UI still
+  // announced "Jonas — HUMAN" (the Azure voice she displaced), so a leader
+  // could not see or pick their own cast.
+  it('names the slot after the PERSON, not the TTS voice they displaced', () => {
+    const config = liveShapedConfig()
+    config.voices.target2.name = 'Yunyi'
+    config.voices.target2.gender = 'Male'
+    const next = assignVoiceToSlot(config, 'target2', 'human_sasha_zho', 'sasha@a.com', 'Sasha')
+    expect(next.voices.target2.name).toBe('Sasha')
+    expect('gender' in next.voices.target2).toBe(false)
+    // ...and the displaced voice's own name/gender survive for the restore.
+    expect(next.voices.target2.previousVoice).toEqual({
+      provider: 'azure',
+      voiceId: 'zh-CN-YunyiMultilingualNeural',
+      name: 'Yunyi',
+      gender: 'Male',
+    })
+  })
+
+  it('falls back to the email local part, then the voice id, for the display name', () => {
+    const byEmail = assignVoiceToSlot(liveShapedConfig(), 'target1', 'human_kai_zho', 'kai@a.com')
+    expect(byEmail.voices.target1.name).toBe('kai')
+    const byVoiceId = assignVoiceToSlot(liveShapedConfig(), 'target1', 'human_kai_zho')
+    expect(byVoiceId.voices.target1.name).toBe('human_kai_zho')
+  })
+
+  it('vacating restores the TTS voice complete with its own name and gender', () => {
+    const config = liveShapedConfig()
+    config.voices.target2.name = 'Yunyi'
+    config.voices.target2.gender = 'Male'
+    const assigned = assignVoiceToSlot(config, 'target2', 'human_sasha_zho', 'sasha@a.com', 'Sasha')
+    const vacated = vacateSlot(assigned, 'target2')
+    expect(vacated.voices.target2).toMatchObject({
+      provider: 'azure',
+      voiceId: 'zh-CN-YunyiMultilingualNeural',
+      name: 'Yunyi',
+      gender: 'Male',
+    })
+    // The person leaves nothing behind.
+    expect('assignedEmail' in vacated.voices.target2).toBe(false)
+    expect('previousVoice' in vacated.voices.target2).toBe(false)
+  })
+
+  it('vacating a slot that never had a TTS name leaves no stale human name', () => {
+    const assigned = assignVoiceToSlot(liveShapedConfig(), 'target1', 'human_kai_zho', 'kai@a.com', 'Kai')
+    const vacated = vacateSlot(assigned, 'target1')
+    expect(vacated.voices.target1.voiceId).toBe('zh-CN-XiaoxiaoMultilingualNeural')
+    expect('name' in vacated.voices.target1).toBe(false)
   })
 
   it('rejects non-target slots and missing voiceId', () => {

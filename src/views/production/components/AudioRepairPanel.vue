@@ -41,6 +41,17 @@
         </div>
       </div>
 
+      <!--
+        The machine step that fills a reviewer's ears queue: a per-course tail
+        scan. It lives here rather than in a panel of its own because its output
+        IS this panel's input — "Open in repair" drops a flagged clip straight
+        into the preview/accept workspace below, which is the only place audio
+        may be passed.
+      -->
+      <div class="mb-5">
+        <AudioTailScanSection :course-code="courseCode" @select-clip="selectFromScan" />
+      </div>
+
       <!-- Loading -->
       <div v-if="loading" class="text-center py-8">
         <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-emerald-500 mx-auto"></div>
@@ -66,7 +77,7 @@
 
         <!-- Empty -->
         <div v-if="queue.length === 0" class="py-8 text-center text-faint">
-          No clips flagged for repair in {{ courseCode }}.
+          No clips flagged for repair in {{ getCourseName(courseCode) }}.
         </div>
 
         <!-- Queue -->
@@ -334,6 +345,8 @@
 <script setup>
 import { ref, computed, watch } from 'vue'
 import { getApiUrl } from '@/services/api'
+import { useCourses } from '@/composables/useCourses'
+import AudioTailScanSection from './AudioTailScanSection.vue'
 
 function getApiBaseUrl() {
   return getApiUrl()
@@ -349,6 +362,8 @@ const props = defineProps({
     default: 0
   }
 })
+
+const { getCourseName } = useCourses()
 
 const emit = defineEmits(['accepted'])
 
@@ -530,6 +545,15 @@ function selectClip(item) {
   activeCandidateId.value = null
   resetActionState()
   fetchPreview()
+}
+
+/**
+ * A clip picked out of the scan report. The scan's row is not in `queue` — the
+ * queue is its own read — so the clip is selected directly rather than looked
+ * up, which is also what stops a scan result implying it has been triaged.
+ */
+function selectFromScan(item) {
+  selectClip(item)
 }
 
 function clearSelection() {

@@ -1,0 +1,428 @@
+{
+ "pod": "fra_for_eng:pod-1",
+ "course": "fra_for_eng",
+ "mode": "applied",
+ "generated_at": "2026-08-24T12:09:24.793Z",
+ "ancestors": [
+  "fra_for_eng:pod-0-retired-2026-08-22",
+  "fra_for_eng:pod-1-retired-2026-08-24"
+ ],
+ "rows_total": 231,
+ "measured_inherited_slots": {
+  "sentence_audio_ids": 0,
+  "sentence_known_audio_ids": 0,
+  "takeg_audio_ids": 0,
+  "explainer_audio_id": 30
+ },
+ "scope_note": "explainer_audio_id repaired on the INHERITED test only; #312's sixteen protected rows and any explainer still quoting its own row are held, never written",
+ "held": [
+  {
+   "id": "fra_for_eng:pod-1:SC05-S002",
+   "scene": 5,
+   "sentence": 2,
+   "global_order": 24,
+   "field": "explainer_audio_id",
+   "why": "inherited, but the clip still quotes this row's own text — a gloss that explains its row is not a defect"
+  },
+  {
+   "id": "fra_for_eng:pod-1:SC07-S004",
+   "scene": 7,
+   "sentence": 4,
+   "global_order": 41,
+   "field": "explainer_audio_id",
+   "why": "inherited, but the clip still quotes this row's own text — a gloss that explains its row is not a defect"
+  },
+  {
+   "id": "fra_for_eng:pod-1:SC07-S010",
+   "scene": 7,
+   "sentence": 10,
+   "global_order": 47,
+   "field": "explainer_audio_id",
+   "why": "inherited, but the clip still quotes this row's own text — a gloss that explains its row is not a defect"
+  },
+  {
+   "id": "fra_for_eng:pod-1:SC08-S006",
+   "scene": 8,
+   "sentence": 6,
+   "global_order": 58,
+   "field": "explainer_audio_id",
+   "why": "inherited, but the clip still quotes this row's own text — a gloss that explains its row is not a defect"
+  },
+  {
+   "id": "fra_for_eng:pod-1:SC08-S013",
+   "scene": 8,
+   "sentence": 13,
+   "global_order": 65,
+   "field": "explainer_audio_id",
+   "why": "inherited, but the clip still quotes this row's own text — a gloss that explains its row is not a defect"
+  },
+  {
+   "id": "fra_for_eng:pod-1:SC09-S001",
+   "scene": 9,
+   "sentence": 1,
+   "global_order": 69,
+   "field": "explainer_audio_id",
+   "why": "inherited, but the clip still quotes this row's own text — a gloss that explains its row is not a defect"
+  },
+  {
+   "id": "fra_for_eng:pod-1:SC09-S005",
+   "scene": 9,
+   "sentence": 5,
+   "global_order": 73,
+   "field": "explainer_audio_id",
+   "why": "inherited, but the clip still quotes this row's own text — a gloss that explains its row is not a defect"
+  },
+  {
+   "id": "fra_for_eng:pod-1:SC09-S016",
+   "scene": 9,
+   "sentence": 16,
+   "global_order": 84,
+   "field": "explainer_audio_id",
+   "why": "inherited, but the clip still quotes this row's own text — a gloss that explains its row is not a defect"
+  },
+  {
+   "id": "fra_for_eng:pod-1:SC10-S002",
+   "scene": 10,
+   "sentence": 2,
+   "global_order": 88,
+   "field": "explainer_audio_id",
+   "why": "inherited, but the clip still quotes this row's own text — a gloss that explains its row is not a defect"
+  },
+  {
+   "id": "fra_for_eng:pod-1:SC11-S004",
+   "scene": 11,
+   "sentence": 4,
+   "global_order": 100,
+   "field": "explainer_audio_id",
+   "why": "inherited, but the clip still quotes this row's own text — a gloss that explains its row is not a defect"
+  },
+  {
+   "id": "fra_for_eng:pod-1:SC12-S001",
+   "scene": 12,
+   "sentence": 1,
+   "global_order": 110,
+   "field": "explainer_audio_id",
+   "why": "inherited, but the clip still quotes this row's own text — a gloss that explains its row is not a defect"
+  },
+  {
+   "id": "fra_for_eng:pod-1:SC12-S004",
+   "scene": 12,
+   "sentence": 4,
+   "global_order": 113,
+   "field": "explainer_audio_id",
+   "why": "inherited, but the clip still quotes this row's own text — a gloss that explains its row is not a defect"
+  },
+  {
+   "id": "fra_for_eng:pod-1:SC12-S006",
+   "scene": 12,
+   "sentence": 6,
+   "global_order": 115,
+   "field": "explainer_audio_id",
+   "why": "inherited, but the clip still quotes this row's own text — a gloss that explains its row is not a defect"
+  },
+  {
+   "id": "fra_for_eng:pod-1:SC12-S007",
+   "scene": 12,
+   "sentence": 7,
+   "global_order": 116,
+   "field": "explainer_audio_id",
+   "why": "inherited, but the clip still quotes this row's own text — a gloss that explains its row is not a defect"
+  }
+ ],
+ "split_keyed_progress_rows": 0,
+ "stopped": null,
+ "whole_turn_failures": [],
+ "rows_excluded_bad_whole_turn": [],
+ "slots_planned": 16,
+ "slots_written": 16,
+ "rows": [
+  {
+   "id": "fra_for_eng:pod-1:SC03-S003",
+   "scene": 3,
+   "sentence": 3,
+   "speaker": "Sarah",
+   "target_text": "Vous avez de la nourriture ?",
+   "known_text": "Do you have any food?",
+   "slots": [
+    {
+     "field": "explainer_audio_id",
+     "changed": "target_text+known_text",
+     "before": "fb01d4ab-ba6c-4226-a6ac-cc103add82f7",
+     "after": null,
+     "action": "null",
+     "why": "no alive, verified clip exists for this row's current text; falling back (explainer slot plays the translation)"
+    }
+   ]
+  },
+  {
+   "id": "fra_for_eng:pod-1:SC08-S002",
+   "scene": 8,
+   "sentence": 2,
+   "speaker": "Bar Customer 1",
+   "target_text": "Je voudrais une pinte, s'il vous plaît. Quelles bières pression avez-vous ?",
+   "known_text": "I'd like a pint, please. What ales do you have on?",
+   "slots": [
+    {
+     "field": "explainer_audio_id",
+     "changed": "target_text+known_text",
+     "before": "9af6238a-4fc8-4515-8c4e-b76d5a9311eb",
+     "after": null,
+     "action": "null",
+     "why": "no alive, verified clip exists for this row's current text; falling back (explainer slot plays the translation)"
+    }
+   ]
+  },
+  {
+   "id": "fra_for_eng:pod-1:SC08-S004",
+   "scene": 8,
+   "sentence": 4,
+   "speaker": "Bar Customer 1",
+   "target_text": "Je voudrais une pinte de la bière amère, s'il vous plaît.",
+   "known_text": "I'd like a pint of the bitter, please.",
+   "slots": [
+    {
+     "field": "explainer_audio_id",
+     "changed": "target_text+known_text",
+     "before": "31ba29f9-ec10-4afb-8eac-d5c60d0e0726",
+     "after": null,
+     "action": "null",
+     "why": "no alive, verified clip exists for this row's current text; falling back (explainer slot plays the translation)"
+    }
+   ]
+  },
+  {
+   "id": "fra_for_eng:pod-1:SC12-S008",
+   "scene": 12,
+   "sentence": 8,
+   "speaker": "Pharmacist",
+   "target_text": "Oui, pendant ou après le repas, c'est mieux.",
+   "known_text": "Yes, with or after food is best.",
+   "slots": [
+    {
+     "field": "explainer_audio_id",
+     "changed": "target_text+known_text",
+     "before": "910eee41-ab60-445e-9457-4bc4236c725c",
+     "after": null,
+     "action": "null",
+     "why": "no alive, verified clip exists for this row's current text; falling back (explainer slot plays the translation)"
+    }
+   ]
+  },
+  {
+   "id": "fra_for_eng:pod-1:SC14-S007",
+   "scene": 14,
+   "sentence": 7,
+   "speaker": "Driver",
+   "target_text": "Voilà. Ça fait douze livres cinquante.",
+   "known_text": "Here we are. That's twelve pound fifty.",
+   "slots": [
+    {
+     "field": "explainer_audio_id",
+     "changed": "target_text+known_text",
+     "before": "6510df58-a4a5-4ac7-8ab7-8b9d2c7c0a03",
+     "after": null,
+     "action": "null",
+     "why": "no alive, verified clip exists for this row's current text; falling back (explainer slot plays the translation)"
+    }
+   ]
+  },
+  {
+   "id": "fra_for_eng:pod-1:SC15-S001",
+   "scene": 15,
+   "sentence": 1,
+   "speaker": "Learner",
+   "target_text": "Combien ça coûte ?",
+   "known_text": "How much is that?",
+   "slots": [
+    {
+     "field": "explainer_audio_id",
+     "changed": "target_text+known_text",
+     "before": "b41bef56-f51d-4472-81f3-a11793b545a3",
+     "after": null,
+     "action": "null",
+     "why": "no alive, verified clip exists for this row's current text; falling back (explainer slot plays the translation)"
+    }
+   ]
+  },
+  {
+   "id": "fra_for_eng:pod-1:SC15-S002",
+   "scene": 15,
+   "sentence": 2,
+   "speaker": "Learner",
+   "target_text": "Vous pouvez me dire combien ça coûte ?",
+   "known_text": "Can you tell me how much that is?",
+   "slots": [
+    {
+     "field": "explainer_audio_id",
+     "changed": "target_text+known_text",
+     "before": "ac37871c-cf7f-4b3f-856e-fe5f8eecb6af",
+     "after": null,
+     "action": "null",
+     "why": "no alive, verified clip exists for this row's current text; falling back (explainer slot plays the translation)"
+    }
+   ]
+  },
+  {
+   "id": "fra_for_eng:pod-1:SC15-S003",
+   "scene": 15,
+   "sentence": 3,
+   "speaker": "Learner",
+   "target_text": "Combien ça coûte de prendre un taxi jusqu'en ville ?",
+   "known_text": "How much does it cost to get a taxi into town?",
+   "slots": [
+    {
+     "field": "explainer_audio_id",
+     "changed": "target_text+known_text",
+     "before": "73188f40-b3eb-4708-b638-20a07be16e5c",
+     "after": null,
+     "action": "null",
+     "why": "no alive, verified clip exists for this row's current text; falling back (explainer slot plays the translation)"
+    }
+   ]
+  },
+  {
+   "id": "fra_for_eng:pod-1:SC15-S004",
+   "scene": 15,
+   "sentence": 4,
+   "speaker": "Learner",
+   "target_text": "Combien ça coûte de prendre un bus jusqu'en ville ?",
+   "known_text": "How much does it cost to get a bus into town?",
+   "slots": [
+    {
+     "field": "explainer_audio_id",
+     "changed": "target_text+known_text",
+     "before": "f3b1b2de-67ee-4c94-bfe5-622ed1bc8e74",
+     "after": null,
+     "action": "null",
+     "why": "no alive, verified clip exists for this row's current text; falling back (explainer slot plays the translation)"
+    }
+   ]
+  },
+  {
+   "id": "fra_for_eng:pod-1:SC15-S005",
+   "scene": 15,
+   "sentence": 5,
+   "speaker": "Learner",
+   "target_text": "Où est-ce qu'on peut prendre un bus ?",
+   "known_text": "Where can we get a bus?",
+   "slots": [
+    {
+     "field": "explainer_audio_id",
+     "changed": "target_text+known_text",
+     "before": "44d481a8-df5f-4011-8417-a1d34887b307",
+     "after": null,
+     "action": "null",
+     "why": "no alive, verified clip exists for this row's current text; falling back (explainer slot plays the translation)"
+    }
+   ]
+  },
+  {
+   "id": "fra_for_eng:pod-1:SC15-S006",
+   "scene": 15,
+   "sentence": 6,
+   "speaker": "Learner",
+   "target_text": "Où est-ce qu'on peut prendre un taxi ?",
+   "known_text": "Where can we get a taxi?",
+   "slots": [
+    {
+     "field": "explainer_audio_id",
+     "changed": "target_text+known_text",
+     "before": "e20abbff-442c-46a8-a4cd-eee9fce1d16c",
+     "after": null,
+     "action": "null",
+     "why": "no alive, verified clip exists for this row's current text; falling back (explainer slot plays the translation)"
+    }
+   ]
+  },
+  {
+   "id": "fra_for_eng:pod-1:SC15-S007",
+   "scene": 15,
+   "sentence": 7,
+   "speaker": "Learner",
+   "target_text": "Quatre billets aller simple pour la ville, s'il te plaît.",
+   "known_text": "Four single tickets to town, please.",
+   "slots": [
+    {
+     "field": "explainer_audio_id",
+     "changed": "target_text+known_text",
+     "before": "a5676e41-9390-46ed-8367-398cc3e43ac9",
+     "after": null,
+     "action": "null",
+     "why": "no alive, verified clip exists for this row's current text; falling back (explainer slot plays the translation)"
+    }
+   ]
+  },
+  {
+   "id": "fra_for_eng:pod-1:SC15-S008",
+   "scene": 15,
+   "sentence": 8,
+   "speaker": "Learner",
+   "target_text": "Deux billets aller-retour pour la ville, s'il te plaît.",
+   "known_text": "Two return tickets to town, please.",
+   "slots": [
+    {
+     "field": "explainer_audio_id",
+     "changed": "target_text+known_text",
+     "before": "acbd0b16-3611-42f4-af02-a64780cd2ad0",
+     "after": null,
+     "action": "null",
+     "why": "no alive, verified clip exists for this row's current text; falling back (explainer slot plays the translation)"
+    }
+   ]
+  },
+  {
+   "id": "fra_for_eng:pod-1:SC15-S009",
+   "scene": 15,
+   "sentence": 9,
+   "speaker": "Learner",
+   "target_text": "Je préfère essayer de parler votre langue, je trouve ça poli.",
+   "known_text": "I prefer to try to speak your language, I think it's polite.",
+   "slots": [
+    {
+     "field": "explainer_audio_id",
+     "changed": "target_text+known_text",
+     "before": "f34da2df-3235-4ae0-bc96-8d6f6a43bdab",
+     "after": null,
+     "action": "null",
+     "why": "no alive, verified clip exists for this row's current text; falling back (explainer slot plays the translation)"
+    }
+   ]
+  },
+  {
+   "id": "fra_for_eng:pod-1:SC15-S010",
+   "scene": 15,
+   "sentence": 10,
+   "speaker": "Learner",
+   "target_text": "Je suis désolé, je ne peux pas parler très vite.",
+   "known_text": "I'm sorry I can't speak very quickly.",
+   "slots": [
+    {
+     "field": "explainer_audio_id",
+     "changed": "target_text+known_text",
+     "before": "2a69a57f-cef7-46cd-acdc-266b06bcd3a1",
+     "after": null,
+     "action": "null",
+     "why": "no alive, verified clip exists for this row's current text; falling back (explainer slot plays the translation)"
+    }
+   ]
+  },
+  {
+   "id": "fra_for_eng:pod-1:SC15-S011",
+   "scene": 15,
+   "sentence": 11,
+   "speaker": "Narrator",
+   "target_text": "100 000. 60. 70. 1 heure. 11 heures.",
+   "known_text": "100,000. 60. 70. 1 o'clock. 11 o'clock.",
+   "slots": [
+    {
+     "field": "explainer_audio_id",
+     "changed": "target_text+known_text",
+     "before": "1a67e93a-c536-45aa-a9f6-9892850656a5",
+     "after": null,
+     "action": "null",
+     "why": "no alive, verified clip exists for this row's current text; falling back (explainer slot plays the translation)"
+    }
+   ]
+  }
+ ]
+}

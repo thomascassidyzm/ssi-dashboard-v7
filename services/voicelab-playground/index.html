@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0b0d10">
+<title>VOICELAB playground</title>
+<style>
+  :root {
+    --bg: #0b0d10; --panel: #14181d; --line: #232a32; --ink: #e8edf2; --dim: #8b98a5;
+    --pass: #3fb950; --fail: #f85149; --warn: #d29922; --na: #6e7681; --accent: #58a6ff;
+  }
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink);
+    font: 16px/1.45 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    padding: env(safe-area-inset-top) 0 calc(env(safe-area-inset-bottom) + 32px);
+  }
+  header { padding: 18px 16px 6px; }
+  h1 { margin: 0; font-size: 19px; letter-spacing: .01em; }
+  .sub { color: var(--dim); font-size: 13px; margin-top: 4px; }
+  main { padding: 12px 16px; max-width: 720px; margin: 0 auto; }
+  .card { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 14px; margin-bottom: 14px; }
+  label { display: block; font-size: 12px; text-transform: uppercase; letter-spacing: .06em; color: var(--dim); margin: 0 0 6px; }
+  textarea, select {
+    width: 100%; background: #0e1116; color: var(--ink); border: 1px solid var(--line);
+    border-radius: 9px; padding: 11px 12px; font-size: 16px; font-family: inherit;
+  }
+  textarea { min-height: 84px; resize: vertical; }
+  .row { display: flex; gap: 10px; margin-top: 12px; }
+  .row > div { flex: 1; min-width: 0; }
+  button {
+    width: 100%; margin-top: 14px; padding: 14px; font-size: 16px; font-weight: 600;
+    background: var(--accent); color: #05080c; border: 0; border-radius: 10px;
+  }
+  button[disabled] { opacity: .5; }
+  .meta { display: flex; justify-content: space-between; gap: 8px; color: var(--dim); font-size: 12px; margin-top: 8px; }
+  .err { color: var(--fail); font-size: 14px; margin-top: 10px; }
+  audio { width: 100%; margin: 10px 0 4px; }
+  .verdict { font-weight: 700; font-size: 13px; letter-spacing: .06em; }
+  .verdict.admitted { color: var(--pass); }
+  .verdict.quarantined { color: var(--fail); }
+  .verdict.pending { color: var(--dim); }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+  .chip {
+    font-size: 12px; padding: 4px 9px; border-radius: 999px; border: 1px solid var(--line);
+    background: #0e1116; color: var(--dim); white-space: nowrap;
+  }
+  .chip.pass { color: var(--pass); border-color: #1c3b23; }
+  .chip.fail { color: var(--fail); border-color: #4b1f1f; }
+  .chip.unchecked { color: var(--warn); border-color: #4a3a12; }
+  .chip.na { color: var(--na); }
+  .clip-head { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; }
+  .clip-text { font-size: 17px; margin: 0 0 2px; }
+  .clip-sub { color: var(--dim); font-size: 12px; }
+  details { margin-top: 10px; }
+  summary { color: var(--accent); font-size: 13px; cursor: pointer; }
+  .why { font-size: 13px; color: var(--dim); margin-top: 8px; }
+  .why b { color: var(--ink); font-weight: 600; }
+  .why div { padding: 5px 0; border-top: 1px solid var(--line); }
+  .note { color: var(--dim); font-size: 12px; padding: 0 16px 20px; max-width: 720px; margin: 0 auto; }
+  .spin { display: inline-block; width: 13px; height: 13px; border: 2px solid #05080c40; border-top-color: #05080c; border-radius: 50%; animation: s .7s linear infinite; vertical-align: -2px; margin-right: 7px; }
+  @keyframes s { to { transform: rotate(360deg); } }
+</style>
+</head>
+<body>
+<header>
+  <h1>VOICELAB playground</h1>
+  <div class="sub">Type anything. Pick a voice. Hear it mastered exactly as the course pipeline would, and read what the six gates make of it.</div>
+</header>
+
+<main>
+  <div class="card">
+    <label for="text">Sentence</label>
+    <textarea id="text" placeholder="Ich will jetzt mit dir Deutsch sprechen"></textarea>
+    <div class="row">
+      <div>
+        <label for="lang">Language</label>
+        <select id="lang"></select>
+      </div>
+      <div>
+        <label for="voice">Voice</label>
+        <select id="voice"></select>
+      </div>
+    </div>
+    <button id="go">Generate</button>
+    <div class="meta">
+      <span id="chars">0 / 300 characters</span>
+      <span id="spend"></span>
+    </div>
+    <div class="err" id="err" hidden></div>
+  </div>
+
+  <div id="clips"></div>
+</main>
+
+<div class="note" id="note"></div>
+
+<script>
+const $ = (id) => document.getElementById(id);
+let CONFIG = null;
+
+const GATE_WHAT = {
+  'speech-span': 'where the speech actually is',
+  'loudness': 'integrated LUFS in band, true peak under the ceiling',
+  'tail-shape': 'did the voice stop, or was it cut',
+  'syllable-rate': 'could this voice say those syllables in that time',
+  'phonology': 'is it the right language',
+  'words': 'are the right words in there',
+};
+
+function chipClass(g) {
+  if (!g.applicable) return 'na';
+  if (g.pass === null) return 'unchecked';
+  return g.pass ? 'pass' : 'fail';
+}
+function chipLabel(g) {
+  if (!g.applicable) return g.id + ' n/a';
+  if (g.pass === null) return g.id + ' unchecked';
+  return g.id + (g.pass ? ' ✓' : ' ✗') + (g.calibrated === false ? ' (advisory)' : '');
+}
+
+function renderClip(c) {
+  const el = document.createElement('div');
+  el.className = 'card';
+  el.id = 'clip-' + c.id;
+  el.innerHTML = clipHtml(c);
+  return el;
+}
+
+function clipHtml(c) {
+  const v = c.verdict;
+  const head =
+    '<div class="clip-head">' +
+      '<div><p class="clip-text">' + escapeHtml(c.text) + '</p>' +
+      '<div class="clip-sub">' + escapeHtml(c.languageName || c.language) + ' · ' + escapeHtml(c.voiceName || c.voiceId) +
+      ' · ' + escapeHtml(c.provider) + ' · steered ' + escapeHtml(c.steeredLanguage || '') + '</div></div>' +
+      '<div class="verdict ' + (v ? v.outcome : 'pending') + '">' + (v ? v.outcome.toUpperCase() : (c.gateError ? 'NO VERDICT' : 'GATING…')) + '</div>' +
+    '</div>' +
+    '<audio controls preload="none" src="' + c.url + '"></audio>';
+
+  if (!v) {
+    return head + '<div class="clip-sub" style="margin-top:6px">' +
+      (c.gateError ? escapeHtml(c.summary) : 'Listen now — the six gates take about a minute of whisper on this box, and will appear here.') +
+      '</div>';
+  }
+  const gates = v.order.map((id) => {
+    const g = v.gates[id];
+    return '<span class="chip ' + chipClass(g) + '">' + chipLabel(g) + '</span>';
+  }).join('');
+  const why = v.order.map((id) => {
+    const g = v.gates[id];
+    return '<div><b>' + id + '</b> — ' + (GATE_WHAT[id] || '') + '<br>' + escapeHtml(g.reason || '—') + '</div>';
+  }).join('');
+  const cost = c.costUsd != null ? ' · $' + c.costUsd.toFixed(5) : '';
+  return head +
+    '<div class="chips">' + gates + '</div>' +
+    '<div class="clip-sub" style="margin-top:8px">' + escapeHtml(v.reason) + '</div>' +
+    '<details><summary>Gate by gate</summary><div class="why">' + why +
+      '<div><b>timing</b> — render ' + c.renderMs + 'ms, master ' + (c.masterMs || 0) + 'ms, gates ' + (c.gateMs || 0) + 'ms · ' + c.chars + ' chars' + cost + '</div>' +
+    '</div></details>';
+}
+
+/**
+ * Poll for the verdict without disturbing the player: the audio element is left in
+ * place and only the verdict rows around it are replaced, so a clip playing on a phone
+ * does not stop when its verdict lands.
+ */
+async function awaitVerdict(id) {
+  for (let i = 0; i < 90; i++) {
+    await new Promise((r) => setTimeout(r, 2000));
+    let data;
+    try { data = await (await fetch('/api/verdict/' + id)).json(); } catch { continue; }
+    const c = data.clip;
+    if (!c || (!c.verdict && !c.gateError)) continue;
+    const el = document.getElementById('clip-' + id);
+    if (!el) return;
+    const audio = el.querySelector('audio');
+    const playing = audio && !audio.paused;
+    const at = audio ? audio.currentTime : 0;
+    el.innerHTML = clipHtml(c);
+    if (playing) {
+      const a2 = el.querySelector('audio');
+      a2.currentTime = at;
+      a2.play().catch(() => {});
+    }
+    return;
+  }
+}
+
+function escapeHtml(s) {
+  return String(s == null ? '' : s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+}
+
+function fillVoices() {
+  const lang = CONFIG.languages.find((l) => l.code === $('lang').value);
+  const sel = $('voice');
+  sel.innerHTML = '';
+  let group = null, og = null;
+  for (const v of lang.voices) {
+    if (v.group !== group) {
+      group = v.group;
+      og = document.createElement('optgroup');
+      og.label = group;
+      sel.appendChild(og);
+    }
+    const o = document.createElement('option');
+    o.value = v.provider + ':' + v.id;
+    o.textContent = v.name + (v.gender ? ' (' + v.gender + ')' : '') + (v.clips ? ' · ' + v.clips.toLocaleString() + ' clips' : '');
+    og.appendChild(o);
+  }
+  localStorage.setItem('vl.lang', lang.code);
+}
+
+async function boot() {
+  CONFIG = await (await fetch('/api/voices')).json();
+  const ls = $('lang');
+  for (const l of CONFIG.languages) {
+    const o = document.createElement('option');
+    o.value = l.code; o.textContent = l.name;
+    ls.appendChild(o);
+  }
+  ls.value = localStorage.getItem('vl.lang') || 'deu';
+  ls.onchange = fillVoices;
+  fillVoices();
+  $('spend').textContent = 'today: $' + CONFIG.spend.usdToday + ' (' + CONFIG.spend.charsToday + '/' + CONFIG.spend.ceiling + ' chars)';
+  $('note').textContent = 'Nothing here writes to course_audio, binds a slot or deletes anything. One clip per press, ' +
+    CONFIG.maxChars + ' characters max. Voices: ' + CONFIG.productionNote + '.';
+
+  const history = await (await fetch('/api/history')).json();
+  for (const c of history.clips) {
+    $('clips').appendChild(renderClip(c));
+    if (!c.verdict && !c.gateError) awaitVerdict(c.id); // a clip still gating when the page was reloaded
+  }
+}
+
+$('text').addEventListener('input', () => {
+  $('chars').textContent = $('text').value.length + ' / ' + (CONFIG ? CONFIG.maxChars : 300) + ' characters';
+});
+
+$('go').onclick = async () => {
+  const btn = $('go'), err = $('err');
+  err.hidden = true;
+  const [provider, voiceId] = $('voice').value.split(':');
+  btn.disabled = true;
+  btn.innerHTML = '<span class="spin"></span>Generating and gating…';
+  try {
+    const opt = $('voice').selectedOptions[0];
+    const voiceName = opt ? opt.textContent.split(' · ')[0] : voiceId;
+    const r = await fetch('/api/generate', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({ text: $('text').value, language: $('lang').value, voiceId, provider, voiceName }),
+    });
+    const data = await r.json();
+    if (!r.ok) throw new Error(data.error || ('HTTP ' + r.status));
+    $('clips').prepend(renderClip(data.clip));
+    awaitVerdict(data.clip.id);
+    const usd = (data.spend.charsToday / 1e6 * 15).toFixed(4);
+    $('spend').textContent = 'today: $' + usd + ' (' + data.spend.charsToday + '/' + data.spend.ceiling + ' chars)';
+  } catch (e) {
+    err.textContent = e.message;
+    err.hidden = false;
+  } finally {
+    btn.disabled = false;
+    btn.textContent = 'Generate';
+  }
+};
+
+boot();
+</script>
+</body>
+</html>

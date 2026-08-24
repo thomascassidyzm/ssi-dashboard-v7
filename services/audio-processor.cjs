@@ -549,6 +549,314 @@ async function flagTailDefect(inputPath, { text, mode } = {}) {
   };
 }
 
+// =============================================================================
+// END-OF-SPEECH TAIL (A-133) — the ONLY sanctioned trim in this module
+// =============================================================================
+//
+// Read the deletion notice above detectTailClick first. That notice bans a
+// REPAIR pass that cut already-shipped clips at a 9%-precise detector's guess.
+// This is a different operation and must stay different:
+//
+//   - it decides where a BRAND-NEW file ends, at render time, on a clip that
+//     does not exist yet. It never reads, rewrites or re-masters a shipped clip;
+//   - the only operation permitted is "stop the file earlier". Nothing is
+//     patched, padded, crossfaded, de-clicked, synthesised or rewritten;
+//   - it cuts on SUSTAINED SPEECH ENERGY, not on flagTailDefect. That detector
+//     is instrumentation and never decides a byte here;
+//   - every guard FAILS OPEN. Uncertain detection, a decode error, a suspicious
+//     cut — the clip passes through untouched and the reason is returned. There
+//     is no input for which this function may produce a shorter clip than it can
+//     justify, and no error path that ends in a cut.
+//
+// WHAT IT IS FOR (A-133, 2026-08-17, Tom's ruling after the ear check). The xAI
+// clone cast on nld_for_eng pod-0 emits two isolated impulses in the RAW
+// provider bytes, 260ms and 380ms after the last phonation, 42dB above the room
+// floor they interrupt — the click Tom placed by ear as "after the voice ends".
+// The 8ms ANTI_CLICK_FADE never touched them because the fade is at EOF and the
+// impulses are half a second upstream of it. Ending the file at end-of-speech
+// + 250ms leaves them outside the file. On clean voices the same pass removes
+// only the provider's dead room tone (0-730ms observed across 18 voices) and on
+// the tightest voices removes nothing at all.
+// Evidence: docs/a108/a133-end-of-speech-tail-2026-08-17.md and
+// docs/a108/a133-money-voices-ear-check-2026-08-17.md.
+
+// Detection constants, lifted verbatim from tools/a108/a133-tail-probe.cjs so
+// the render chain cuts at exactly the point the published ear-check measured.
+const EOS_SR = 44100;
+// Speech threshold, dB RELATIVE TO THE CLIP'S OWN SPEECH PEAK — not a fixed
+// dBFS number, because xAI clones are peaky (crest factor ~19dB) and a fixed
+// floor means something different on every voice.
+const EOS_SPEECH_DB = -45;
+const EOS_WIN_MS = 5;
+// An event counts as SPEECH only if this much of it is ACTUALLY above threshold
+// (summed window time, not the event's span). This is the load-bearing rule.
+// The naive "last sample over -45dB" detector fails here because the clicks ARE
+// over -45dB — they hit -25dB — but they are 10-20ms of energy. Speech is
+// sustained. A word-final plosive burst can be shorter than 40ms and so could be
+// mis-labelled an impulse; it is still protected, because EOS_DECAY_MS keeps
+// 250ms past the previous speech event and no language has a 250ms word-internal
+// closure. The trim can only ever reach something standing MORE than 250ms clear
+// of the last sustained speech.
+const EOS_MIN_SPEECH_MS = 40;
+// Windows this close together belong to the same event (intra-word closures).
+const EOS_EVENT_GAP_MS = 20;
+// Natural decay kept past end-of-speech. 250ms, not the probe's original 150ms,
+// and the reason is the learning app: at the cycle player's voice1→voice2 seam
+// the app contributes NO gap at all (`transition_gap_ms` is dead config with no
+// consumer), so this pad IS the entire audible separation between two
+// consecutive phrases. 250ms separates them audibly on its own and still ends
+// the file 10ms short of the earliest impulse on the known clicker.
+const EOS_DECAY_MS = 250;
+// Refusal guards. These bound a DETECTION FAILURE, not normal operation: the
+// provider's dead tail is routinely 20%+ of a short clip, so a 15% fraction
+// guard would refuse every good cut.
+const EOS_MAX_TRIM_FRAC = 0.40;
+const EOS_MAX_TRIM_MS = 2000;
+
+// ── The trailing-artefact rule (A-133 iteration 2, Tom-approved 2026-08-17) ──
+//
+// The detector above asks one question of a trailing event: "is it long enough
+// to be speech?" Noor's clicks carry 35-50ms and sit exactly on the 40ms line,
+// so on 2 of her 5 lines they read as SPEECH — end-of-speech moves out past
+// them, the chain then protects them, and pads a further 250ms beyond. Once a
+// trailing artefact is long enough to be mistaken for speech, it is protected,
+// and so is every artefact in front of it.
+//
+// So ask the question the detector is missing: DOES ANYTHING REAL PRECEDE IT?
+// Take the speech BODY — the last event carrying >= EOS_BODY_MS of energy. If
+// everything after the body is short AND the cluster starts >= EOS_MIN_CLEAR_MS
+// after the body ends, the whole trailing cluster is artefact, whatever the
+// individual event lengths say.
+//
+// THE CLUSTER FORM IS LOAD-BEARING, and I only know that because the pairwise
+// form failed. Testing each trailing event against its immediate PREDECESSOR
+// leaves Noor p1 untouched: her two artefacts are only 100ms apart, so they
+// protect each other. Measuring the cluster against the speech body fixes it.
+//
+// THE ONE THING THIS COULD GET WRONG, stated rather than smoothed over: a line
+// that genuinely ends in a short tag after a pause — "..., toch?", "..., hè?" —
+// has the same shape to this rule as an artefact cluster. That is why the tag
+// case is rendered fresh and ASR-checked in the validation batch, not asserted
+// safe. The numbers below are set from that batch: real tags measured 150-430ms
+// of energy, artefacts 35-50ms, and the 120ms line sits in the gap.
+const EOS_BODY_MS = 150;          // what counts as the main speech body
+const EOS_MAX_ARTEFACT_MS = 120;  // a trailing event longer than this is never dropped
+const EOS_MIN_CLEAR_MS = 200;     // clearance the whole cluster needs from the body
+// Companion rule, which Noor p3 needs on its own: NEVER PAD INTO A DETECTED
+// ARTEFACT. p3's 45dB click at 2711ms sits inside the 250ms pad measured from a
+// corrected end-of-speech at 2480ms, so a correct end-of-speech alone does not
+// save it — the pad has to stop short of the artefact onset too.
+//
+// The clamp CANNOT amputate, and that is arithmetic rather than luck: the rule
+// only fires when the cluster stands >= EOS_MIN_CLEAR_MS clear of end-of-speech,
+// so the retained decay is never less than 200 - 10 = 190ms. Measured over the
+// 55-clip sweep the tightest it ever went was 206ms.
+const EOS_ARTEFACT_GUARD_MS = 10;
+
+/** Decode to mono 16-bit PCM at EOS_SR. Streamed — no execSync buffer ceiling. */
+function decodePcmMono(inputPath) {
+  return new Promise((resolve, reject) => {
+    const ff = spawn('ffmpeg', ['-v', 'quiet', '-i', inputPath, '-ac', '1',
+      '-ar', String(EOS_SR), '-f', 's16le', '-']);
+    const chunks = [];
+    let err = '';
+    ff.stdout.on('data', d => chunks.push(d));
+    ff.stderr.on('data', d => { err += d.toString(); });
+    ff.on('error', reject);
+    ff.on('close', code => {
+      if (code !== 0) return reject(new Error(`ffmpeg decode exited ${code}: ${err.slice(-300)}`));
+      const pcm = Buffer.concat(chunks);
+      const n = pcm.length >> 1;
+      const s = new Int16Array(n);
+      for (let i = 0; i < n; i++) s[i] = pcm.readInt16LE(i * 2);
+      let peak = 1;
+      for (let i = 0; i < n; i++) peak = Math.max(peak, Math.abs(s[i]));
+      resolve({ s, n, peak });
+    });
+  });
+}
+
+const eosDb = (v, peak) => 20 * Math.log10(Math.max(v, 1) / peak);
+
+function eosWinPeak(s, from, to) {
+  let p = 0;
+  for (let i = Math.max(0, from); i < Math.min(s.length, to); i++) p = Math.max(p, Math.abs(s[i]));
+  return p;
+}
+
+/** Envelope of 5ms window peaks, dB relative to the clip's own peak. */
+function eosEnvelope(s, n, peak) {
+  const win = Math.round(EOS_SR * EOS_WIN_MS / 1000);
+  const e = [];
+  for (let i = 0; i + win <= n; i += win) e.push({ i, end: i + win, db: eosDb(eosWinPeak(s, i, i + win), peak) });
+  return e;
+}
+
+/** Group above-threshold windows into events; label each SPEECH or IMPULSE. */
+function eosEvents(env) {
+  const gapWin = Math.max(1, Math.round(EOS_EVENT_GAP_MS / EOS_WIN_MS));
+  const out = [];
+  let cur = null, gap = 0;
+  for (const w of env) {
+    if (w.db > EOS_SPEECH_DB) {
+      if (cur && gap <= gapWin) { cur.end = w.end; cur.peakDb = Math.max(cur.peakDb, w.db); cur.aboveWins++; }
+      else { if (cur) out.push(cur); cur = { start: w.i, end: w.end, peakDb: w.db, aboveWins: 1 }; }
+      gap = 0;
+    } else if (cur) gap++;
+  }
+  if (cur) out.push(cur);
+  return out.map(e => ({
+    ...e,
+    ms: (e.end - e.start) / EOS_SR * 1000,
+    aboveMs: e.aboveWins * EOS_WIN_MS,
+    kind: e.aboveWins * EOS_WIN_MS >= EOS_MIN_SPEECH_MS ? 'speech' : 'impulse',
+  }));
+}
+
+/** End of speech = end of the LAST event long enough to be speech. */
+function endOfSpeech(env) {
+  const sp = eosEvents(env).filter(e => e.kind === 'speech');
+  return sp.length ? sp[sp.length - 1].end : null;
+}
+
+/**
+ * End of speech, WITH the trailing-artefact rule applied.
+ *
+ * Returns the plain end-of-speech unchanged unless a trailing artefact cluster
+ * is detected, in which case end-of-speech becomes the end of the speech body
+ * and `artefactStart` marks where the pad must stop. Never moves end-of-speech
+ * LATER, and never returns an eos the plain detector would not have reached.
+ *
+ * @param {Array} env - the 5ms envelope
+ * @returns {{eos: number|null, artefactStart: number|null, dropped: Array}}
+ */
+function endOfSpeechWithArtefacts(env) {
+  const evs = eosEvents(env);
+  const sp = evs.filter(e => e.kind === 'speech');
+  const plain = sp.length ? sp[sp.length - 1].end : null;
+  const none = { eos: plain, artefactStart: null, dropped: [] };
+  if (plain === null) return none;
+
+  // The speech body: the last event carrying real, sustained energy.
+  const bodies = evs.filter(e => e.aboveMs >= EOS_BODY_MS);
+  if (!bodies.length) return none;          // nothing substantial to measure against
+  const body = bodies[bodies.length - 1];
+
+  const after = evs.filter(e => e.start >= body.end);
+  if (!after.length) return none;           // the body IS the ending
+
+  // Everything after the body must be short, and the FIRST of them must stand
+  // clear of the body. Measured against the body, not against each other —
+  // that is what stops two adjacent artefacts protecting one another.
+  if (!after.every(e => e.aboveMs <= EOS_MAX_ARTEFACT_MS)) return none;
+  const clearMs = (after[0].start - body.end) / EOS_SR * 1000;
+  if (clearMs < EOS_MIN_CLEAR_MS) return none;
+
+  return { eos: body.end, artefactStart: after[0].start, dropped: after };
+}
+
+/** Write mono 16-bit PCM as a WAV file. */
+async function writeMonoWav(file, s, n) {
+  const data = Buffer.alloc(n * 2);
+  for (let i = 0; i < n; i++) data.writeInt16LE(s[i], i * 2);
+  const h = Buffer.alloc(44);
+  h.write('RIFF', 0); h.writeUInt32LE(36 + data.length, 4); h.write('WAVE', 8);
+  h.write('fmt ', 12); h.writeUInt32LE(16, 16); h.writeUInt16LE(1, 20); h.writeUInt16LE(1, 22);
+  h.writeUInt32LE(EOS_SR, 24); h.writeUInt32LE(EOS_SR * 2, 28); h.writeUInt16LE(2, 32); h.writeUInt16LE(16, 34);
+  h.write('data', 36); h.writeUInt32LE(data.length, 40);
+  await fs.writeFile(file, Buffer.concat([h, data]));
+}
+
+/**
+ * trimToEndOfSpeech — end a NEW render at end-of-speech + 250ms.
+ *
+ * FAILS OPEN, always. Four refusal guards, any one of which keeps the clip
+ * whole, plus a catch-all: no detected speech; a cut larger than 40% of the
+ * clip; a cut longer than 2000ms; a cut whose removed region contains a speech
+ * event (an independent second opinion on the plan — by construction it cannot,
+ * so if it ever fires the detector has contradicted itself and we keep the take);
+ * and any thrown error whatsoever.
+ *
+ * @param {string} inputPath - the raw provider bytes
+ * @param {string} outputPath - where the trimmed WAV is written (only on a cut)
+ * @returns {Promise<{trimmed: boolean, path: string, refused: string|null,
+ *   removedMs: number, durationMs: number|null, eosMs: number|null}>}
+ *   `path` is what the caller should master: outputPath on a cut, inputPath on
+ *   any refusal. A refusal is never an error.
+ */
+async function trimToEndOfSpeech(inputPath, outputPath) {
+  const untouched = (refused, extra = {}) => ({
+    trimmed: false, path: inputPath, refused, removedMs: 0,
+    durationMs: null, eosMs: null, ...extra,
+  });
+  try {
+    const { s, n, peak } = await decodePcmMono(inputPath);
+    if (!n) return untouched('decoded to zero samples — refused, kept untrimmed');
+    const env = eosEnvelope(s, n, peak);
+    const durationMs = Math.round(n / EOS_SR * 1000);
+
+    // GUARD 1 — nothing in this clip reads as sustained speech. Could be a very
+    // short take, a whisper, a decode we do not understand. We do not cut what
+    // we cannot see.
+    const { eos, artefactStart, dropped } = endOfSpeechWithArtefacts(env);
+    if (eos === null) return untouched('no sustained speech event detected — refused, kept untrimmed', { durationMs });
+
+    let want = Math.min(n, eos + Math.round(EOS_SR * EOS_DECAY_MS / 1000));
+    // NEVER PAD INTO A DETECTED ARTEFACT. The pad stops 10ms short of the
+    // artefact onset even when that is tighter than the 250ms it wants.
+    if (artefactStart !== null) {
+      want = Math.min(want, artefactStart - Math.round(EOS_SR * EOS_ARTEFACT_GUARD_MS / 1000));
+    }
+    want = Math.max(want, eos);
+    const removed = n - want;
+    const eosMs = Math.round(eos / EOS_SR * 1000);
+    if (removed <= 0) return untouched(null, { durationMs, eosMs });   // already ends tight — no cut needed, not a refusal
+
+    // GUARD 2 — removing this much of the clip means the detector, not the
+    // provider's dead air, is driving the number.
+    if (removed / n > EOS_MAX_TRIM_FRAC) {
+      return untouched(`would remove ${(removed / n * 100).toFixed(1)}% of the clip (guard ${EOS_MAX_TRIM_FRAC * 100}%) — refused, kept untrimmed`, { durationMs, eosMs });
+    }
+    // GUARD 3 — same reasoning in absolute time, for long clips where a huge
+    // cut is still a small fraction.
+    const removedMs = Math.round(removed / EOS_SR * 1000);
+    if (removedMs > EOS_MAX_TRIM_MS) {
+      return untouched(`would remove ${removedMs}ms (guard ${EOS_MAX_TRIM_MS}ms) — refused, kept untrimmed`, { durationMs, eosMs });
+    }
+    // Never end before the detected end of speech, whatever the arithmetic says.
+    const end = Math.max(want, eos);
+    // GUARD 4 — independent assertion on the finished plan: whatever we are
+    // about to drop must contain no speech event OTHER than the trailing
+    // artefacts the rule has just ruled on. Without that exemption this guard
+    // would veto the whole iteration, because dropping a 40ms burst the length
+    // rule miscalled "speech" IS the fix. Everything in front of the artefact
+    // cluster is still fully protected: an event that starts before
+    // `artefactStart` and ends past the cut still refuses, exactly as before.
+    const speechOutside = eosEvents(env).some(e =>
+      e.kind === 'speech' && e.end > end && (artefactStart === null || e.start < artefactStart));
+    if (speechOutside) {
+      return untouched('planned cut would remove a speech event — refused, kept untrimmed', { durationMs, eosMs });
+    }
+
+    await writeMonoWav(outputPath, s.subarray(0, end), end);
+    return {
+      trimmed: true, path: outputPath, refused: null,
+      removedMs: Math.round((n - end) / EOS_SR * 1000), durationMs, eosMs,
+      // What the trailing-artefact rule ruled on, so a caller can report the
+      // decision rather than infer it from the durations.
+      artefacts: dropped.map(e => ({
+        startMs: Math.round(e.start / EOS_SR * 1000),
+        aboveMs: e.aboveMs,
+        peakDb: +e.peakDb.toFixed(1),
+        calledSpeechByLength: e.kind === 'speech',
+      })),
+    };
+  } catch (error) {
+    // FAIL OPEN. A trim we could not compute is a trim we do not do.
+    return untouched(`detection failed (${error.message}) — refused, kept untrimmed`);
+  }
+}
+
 async function normalizeAudio(inputPath, outputPath, targetLUFS = -16.0) {
   try {
     const measured = await measureIntegratedLoudness(inputPath, PRE_COMPRESS);
@@ -859,6 +1167,124 @@ async function getAudioMetadata(audioPath) {
  * @param {number} options.targetLUFS - Target loudness (default: -16)
  * @returns {Promise<{buffer: Buffer, metadata: object}>}
  */
+// DETECT THE READ, THEN CUT WIDE OF IT.
+//
+// A level gate cannot do this job on its own. Set it high and it cuts at the
+// first sample loud enough to clear it, throwing away the onset climbing
+// underneath; set it low and it stops on a chair creak three seconds before
+// the word and keeps all the dead air in between. Both were measured on real
+// takes. So the level only DETECTS where the read is, and the cut is made a
+// fixed margin outside it.
+const TRIM_DETECT_DB = -40;         // where the read plainly is, not where it starts
+const TRIM_MIN_SILENCE_SEC = 0.2;   // silence shorter than this is inside the read
+const TRIM_MIN_SPEECH_SEC = 0.3;    // shorter than this is a click, not a word
+const TRIM_MARGIN_SEC = 0.35;       // room left outside the read at each end
+// A take whose raw input peaks above this has audible content in it, whatever
+// the detector later makes of it.
+//
+// This is only the LAST-RESORT net, under a detector that now adapts to the
+// take's own level and finds quiet reads on its own — a 3s read peaking at
+// -50dB is detected and trimmed correctly without ever reaching it. So the line
+// is drawn where the two real populations separate rather than as low as
+// possible: refused takes on 2026-08-22 measured -1.2 to -37dB, and the room
+// tone this must keep refusing sits around -55dB (the pink-noise fixture that
+// pins the cym_n empty-stub hole shut). Dropping it further reopens that hole,
+// which put 26 silent clips into a live course.
+const INPUT_AUDIBLE_PEAK_DB = -45;
+
+/**
+ * What the INPUT actually contains, measured before anything is done to it.
+ *
+ * Nothing downstream may call a take silent without having measured the take.
+ * On 2026-08-22 seventeen of Tom's takes were refused for containing no audible
+ * speech, on the evidence of an 834-byte stub the processing itself had made.
+ */
+async function measureInputLevel(inputPath) {
+  try {
+    // volumedetect reports on stderr, and ffmpeg's exit status is not the
+    // signal — a file it can only partly read still yields a measurement.
+    const res = await execAsync(
+      `ffmpeg -hide_banner -nostats -i "${inputPath}" -af volumedetect -f null -`,
+      { maxBuffer: 1 << 22 }
+    ).catch(e => e);
+    const out = `${(res && res.stdout) || ''}${(res && res.stderr) || ''}`;
+    const mean = /mean_volume:\s*(-?[\d.]+) dB/.exec(out);
+    const peak = /max_volume:\s*(-?[\d.]+) dB/.exec(out);
+    if (!peak) return null;
+    return {
+      meanDb: mean ? parseFloat(mean[1]) : null,
+      peakDb: parseFloat(peak[1]),
+    };
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * Where the read actually is in this take, from ffmpeg's silencedetect.
+ *
+ * Returns {startSec, endSec} bounding the first-to-last substantial non-silent
+ * region, or null when nothing in the file qualifies as a read (a muted mic, a
+ * take of an empty room, a stray click) — which the caller turns into an empty
+ * output so the upload handler's silent-take guard refuses it.
+ */
+async function detectReadBounds(inputPath) {
+  const { stdout, stderr } = await execAsync(
+    `ffmpeg -v info -i "${inputPath}" -af silencedetect=noise=${TRIM_DETECT_DB}dB:d=${TRIM_MIN_SILENCE_SEC} -f null - 2>&1`
+  );
+  const log = `${stdout || ''}${stderr || ''}`;
+
+  // HOW LONG THE TAKE IS, MEASURED RATHER THAN DECLARED.
+  //
+  // The header's `Duration:` is not available on the audio this actually
+  // processes. A browser's MediaRecorder muxes WebM as a live stream into a
+  // non-seekable sink, so it never goes back to write the duration element:
+  // every take the recorders upload reports `Duration: N/A`. Trusting that
+  // header meant detection returned null for EVERY real take, the caller cut
+  // it to `atrim=start=0:end=0.001`, and the upload handler's silent-take
+  // guard then refused an 834-byte stub — a take that sounded perfect on
+  // playback came back "FAILED, not saved". Kai hit it on 2026-08-21 within
+  // minutes of the chain going live; the fixture takes the tests build are
+  // written by ffmpeg to a seekable FILE, which does carry the header, which
+  // is why the suite stayed green.
+  //
+  // `time=` is the far end of the same run: what the decoder actually played
+  // out. It is present whether or not the container declared anything, so it
+  // is the primary source here and the header is only the fallback. Take the
+  // LAST one — ffmpeg emits progress lines throughout.
+  const timeMatches = [...log.matchAll(/\btime=\s*(\d+):(\d+):([\d.]+)/g)];
+  const lastTime = timeMatches[timeMatches.length - 1];
+  const durMatch = /Duration:\s*(\d+):(\d+):([\d.]+)/.exec(log);
+  const hms = (m) => (+m[1]) * 3600 + (+m[2]) * 60 + parseFloat(m[3]);
+  const duration = lastTime ? hms(lastTime) : (durMatch ? hms(durMatch) : NaN);
+  // Only a file ffmpeg could neither describe nor decode has no length at all.
+  if (!Number.isFinite(duration) || duration <= 0) return null;
+
+  // Silence intervals, in order. A trailing silence_start with no end runs to
+  // the end of the file.
+  const silences = [];
+  const re = /silence_(start|end):\s*(-?[\d.]+)/g;
+  let m;
+  while ((m = re.exec(log)) !== null) {
+    if (m[1] === 'start') silences.push({ start: Math.max(0, parseFloat(m[2])), end: duration });
+    else if (silences.length) silences[silences.length - 1].end = parseFloat(m[2]);
+  }
+
+  // Invert to the non-silent regions, then keep only the ones long enough to be
+  // a word. This is what steps over the click, the chair and the false start
+  // that a plain level gate stops on.
+  const reads = [];
+  let cursor = 0;
+  for (const s of silences) {
+    if (s.start - cursor >= TRIM_MIN_SPEECH_SEC) reads.push({ start: cursor, end: s.start });
+    cursor = Math.max(cursor, s.end);
+  }
+  if (duration - cursor >= TRIM_MIN_SPEECH_SEC) reads.push({ start: cursor, end: duration });
+  if (!reads.length) return null;
+
+  return { startSec: reads[0].start, endSec: reads[reads.length - 1].end, durationSec: duration };
+}
+
 async function processRecordingBuffer(inputBuffer, options = {}) {
   const {
     inputFormat = 'webm',
@@ -890,15 +1316,102 @@ async function processRecordingBuffer(inputBuffer, options = {}) {
     // Write input buffer to temp file
     await fs.writeFile(inputPath, inputBuffer);
 
+    // Measure the INPUT before touching it, so every decision below — and every
+    // caller above — is made against what arrived rather than what came out.
+    const input = await measureInputLevel(inputPath);
+    const inputAudible = !!input && input.peakDb > INPUT_AUDIBLE_PEAK_DB;
+
     // Build filter chain
     const filters = [];
 
-    // 1. Trim silence from start and end (gentle threshold for speech)
+    // 1. Trim to the read, leaving a margin of room at each end.
+    //
+    // WHERE TOM'S CLIPPING ACTUALLY WAS. Measured on his own 22 takes
+    // (2026-08-21, /r/human_tom_zzz): the raw archived bytes carry 1.3-4.7s of
+    // clean lead-in and a room floor of -75 to -88 dBFS, so nothing was lost at
+    // capture on that surface at all. Every mastered clip nevertheless came out
+    // with a head margin of 5-40ms, starting flush against the old fixed -40dB
+    // gate's idea of where the word began. On several takes the onset was
+    // audibly climbing for 375-525ms BELOW -40dB before it crossed: "maybe
+    // tomorrow" (-40dB at 1115ms, audible from 740ms), "that is very kind of
+    // you" (2525 vs 2000ms), "is there somewhere I can sit" (1870 vs 1380ms).
+    // All of that is the front of the word, and this step threw it away.
+    //
+    // Lowering the gate is not the fix — tried, measured, rejected. At -60dB the
+    // same takes stop on a click or a chair three seconds early and keep every
+    // bit of the dead air after it: one 2.4s read came out 10.9s long. A single
+    // level cannot tell an onset attached to a word from a noise that isn't.
+    //
+    // So the level DETECTS the read (detectReadBounds, above) and the cut is
+    // made TRIM_MARGIN_SEC outside it at both ends. The margin covers the onset
+    // climbing under the detector and leaves a real beat of the recordist's own
+    // room in front, which is what makes a clip sound whole rather than
+    // snatched. Tom's rule for this surface is to record around the signal and
+    // leave every boundary to this step; the raw original is archived before
+    // this runs (recording-upload-helpers.cjs), so keeping too much is
+    // reversible and keeping too little is not.
+    //
+    // A take with no read in it at all — muted mic, empty room, a stray click —
+    // yields no bounds and is cut to nothing, so the MIN_TAKE_MS guard in the
+    // upload handler still refuses it (the 2026-08-06 Welsh silent-clip bug).
+    //
+    // The filter is atrim, NOT silenceremove. silenceremove's start_duration
+    // once destroyed 100ms off each end of every human take and butchered 107
+    // cym_n clips before anyone heard it (T-20, docs/audio-forensics-2026-08-14/).
+    // Do not reintroduce either parameter here: the boundary is decided from a
+    // measurement, in code that can be read, not from a filter's own idea of
+    // where speech begins.
+    //
+    // THE MARGIN IS ASKED FOR, NOT GUARANTEED, and the difference is the whole
+    // of the 2026-08-23 Aran finding. `from` clamps at 0 and `to` clamps at the
+    // end of the input, so a raw take whose speaker started or stopped over
+    // their own voice gets whatever room it had — which may be none. Nothing
+    // here can invent the missing audio, and padding the gap with synthesised
+    // silence would only make an amputated word LOOK unclipped to every
+    // downstream check. So the ACHIEVED margin is measured and reported below
+    // (trimLeadMarginSec / trimTailMarginSec) and the boundary gate on the
+    // upload path (services/recording-speech-gate.cjs, checkTakeBoundaries)
+    // refuses the take, which is the only honest repair: read it again.
+    let trimBounds = null;
+    let keptWhole = false;
+    let achievedLeadSec = null;
+    let achievedTailSec = null;
     if (trimSilence) {
-      filters.push('silenceremove=start_periods=1:start_threshold=-40dB:start_duration=0.1');
-      filters.push('areverse');
-      filters.push('silenceremove=start_periods=1:start_threshold=-40dB:start_duration=0.1');
-      filters.push('areverse');
+      try {
+        trimBounds = await detectReadBounds(inputPath);
+      } catch (err) {
+        console.warn(`[AudioProcessor] read detection failed (${err.message}) — take kept whole`);
+      }
+      if (trimBounds) {
+        const from = Math.max(0, trimBounds.startSec - TRIM_MARGIN_SEC);
+        const to = Math.min(trimBounds.durationSec, trimBounds.endSec + TRIM_MARGIN_SEC);
+        achievedLeadSec = +(trimBounds.startSec - from).toFixed(3);
+        achievedTailSec = +(to - trimBounds.endSec).toFixed(3);
+        if (achievedLeadSec < TRIM_MARGIN_SEC || achievedTailSec < TRIM_MARGIN_SEC) {
+          console.warn(`[AudioProcessor] take had less room than asked for — lead ${achievedLeadSec}s tail ${achievedTailSec}s against a ${TRIM_MARGIN_SEC}s margin; the capture, not the trim, is what is short`);
+        }
+        filters.push(`atrim=start=${from.toFixed(3)}:end=${to.toFixed(3)}`, 'asetpts=PTS-STARTPTS');
+      } else if (inputAudible) {
+        // THE DETECTOR MAY NOT DESTROY A TAKE IT MERELY FAILED TO UNDERSTAND.
+        //
+        // "No read found" and "no audio present" are different findings, and
+        // cutting to nothing states the second on the evidence of the first. On
+        // 2026-08-22 that cost seventeen consecutive takes: every one arrived
+        // carrying audible signal and every one came back "no audible speech".
+        //
+        // Where the file demonstrably has audio in it, the take is kept WHOLE
+        // instead. That is the trade this step already commits to three
+        // paragraphs up — the raw original is archived before this runs, so
+        // keeping too much is reversible and keeping too little is not — and an
+        // untrimmed take is exactly what the catch above already falls back to.
+        console.warn(`[AudioProcessor] no read detected in an audible take (peak ${input.peakDb}dB) — kept whole rather than cut to nothing`);
+        keptWhole = true;
+      } else {
+        // Nothing in this file is a read, and nothing in it is audible either.
+        // Cut it to nothing and let the upload handler refuse the take rather
+        // than storing an unplayable stub.
+        filters.push('atrim=start=0:end=0.001', 'asetpts=PTS-STARTPTS');
+      }
     }
 
     // 2. High-pass filter to remove low-frequency rumble (AC hum, handling noise)
@@ -948,8 +1461,27 @@ async function processRecordingBuffer(inputBuffer, options = {}) {
         inputFormat,
         inputSize: inputBuffer.length,
         outputSize: outputBuffer.length,
+        // What arrived, so no caller has to infer it from what left.
+        inputPeakDb: input ? input.peakDb : null,
+        inputMeanDb: input ? input.meanDb : null,
+        inputAudible,
+        keptWhole,
         filters: {
-          trimSilence,
+          trimSilence: trimSilence && !keptWhole,
+          // The gate this take was actually cut at, and the room left in front
+          // of it. Recorded so a clipped-sounding clip can be diagnosed from
+          // the row rather than re-measured from the audio.
+          // Where the read was found and how much room was left outside it.
+          // Recorded so a clip that sounds clipped can be diagnosed from the
+          // row rather than re-measured from the audio.
+          trimReadStartSec: trimBounds ? trimBounds.startSec : null,
+          trimReadEndSec: trimBounds ? trimBounds.endSec : null,
+          trimMarginSec: trimSilence ? TRIM_MARGIN_SEC : null,
+          // What was actually left outside the read, which is what the margin
+          // above asked for only when the raw capture had that much to give.
+          trimLeadMarginSec: achievedLeadSec,
+          trimTailMarginSec: achievedTailSec,
+          trimFoundRead: trimSilence ? trimBounds !== null : null,
           normalize,
           targetLUFS,
           highpassHz: 80
@@ -984,6 +1516,20 @@ module.exports = {
   // block above detectTailClick. A stale caller must fail loudly on an undefined
   // function, never silently fall back to something that looks like it worked.
   flagTailDefect,
+  // A-133 end-of-speech tail. The one sanctioned trim, render-time only, fails
+  // open on every guard — read the block above trimToEndOfSpeech before reusing.
+  trimToEndOfSpeech,
+  endOfSpeech,
+  endOfSpeechWithArtefacts,
+  // Exported so a validation tool measures with the CHAIN'S detector rather
+  // than a second copy of it that can agree with itself while the chain differs.
+  eosEnvelope,
+  eosEvents,
+  EOS_DECAY_MS,
+  EOS_BODY_MS,
+  EOS_MAX_ARTEFACT_MS,
+  EOS_MIN_CLEAR_MS,
+  EOS_ARTEFACT_GUARD_MS,
   checkSoxInstalled,
   getAudioDuration,
   checkMp3Format,

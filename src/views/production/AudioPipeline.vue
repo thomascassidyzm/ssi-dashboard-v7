@@ -84,7 +84,7 @@
             <div class="text-xs text-muted mt-1">
               Only one audio job can run at a time. Currently
               {{ audioProgress.operation === 'regenerate-role' ? 'regenerating' : audioProgress.operation === 'reuse-first' ? 'running reuse-first regeneration on' : 'generating' }}
-              audio for <span class="text-amber-400 font-medium">{{ audioProgress.courseCode }}</span>
+              audio for <span class="text-amber-400 font-medium">{{ getCourseName(audioProgress.courseCode) }}</span>
               — {{ audioProgress.current }}/{{ audioProgress.total }} processed.
             </div>
           </div>
@@ -592,6 +592,7 @@ import { useRoute } from 'vue-router'
 import { getApiUrl } from '@/services/api'
 import { isConfigured as isSupabaseConfigured, getAudioStats as sbGetAudioStats } from '@/services/supabase'
 import { useProductionStore } from '@/stores/production'
+import { useCourses } from '@/composables/useCourses'
 import PipelineProgress from './components/PipelineProgress.vue'
 import MissingAudio from './components/MissingAudio.vue'
 import SharedAudio from './components/SharedAudio.vue'
@@ -600,6 +601,7 @@ import VoiceConfiguration from '@/components/VoiceConfiguration.vue'
 
 const route = useRoute()
 const productionStore = useProductionStore()
+const { getCourseName } = useCourses()
 
 const courseCode = computed(() => route.params.courseCode as string)
 const loading = ref(true)
@@ -882,7 +884,7 @@ const canStartGeneration = computed(() => {
 const generateButtonLabel = computed(() => {
   if (isGenerating.value) return 'Generating...'
   if (startingGeneration.value) return 'Starting...'
-  if (otherCourseJobActive.value) return `Busy (${audioProgress.value.courseCode})`
+  if (otherCourseJobActive.value) return `Busy (${getCourseName(audioProgress.value.courseCode)})`
   const ps = progressStats.value
   if (ps.readyForGenerate === false) return 'Presentation text required'
   if (ps.pending === 0 && (ps.linkable || 0) > 0) return `Link ${ps.linkable} audios (no TTS)`
@@ -1028,7 +1030,7 @@ const executeRegenerate = async () => {
   const count = regenerateResult.value?.count || 'unknown number of'
   const scope = regenerateFlaggedOnly.value ? 'FLAGGED' : 'ALL'
   const confirmed = confirm(
-    `This will regenerate ${count} ${scope} ${regenerateRole.value} audio files for ${courseCode.value}.\n\n` +
+    `This will regenerate ${count} ${scope} ${regenerateRole.value} audio files for ${getCourseName(courseCode.value)}.\n\n` +
     `Existing audio files will be replaced.\n\n` +
     `Continue?`
   )
@@ -1091,7 +1093,7 @@ const executeRegenerate = async () => {
 // production-api clears each clip's flag once its job completes.
 const regenerateFlagged = async () => {
   const confirmed = confirm(
-    `This will re-voice ${genderPrepFlagCount.value} flagged clips for ${courseCode.value} ` +
+    `This will re-voice ${genderPrepFlagCount.value} flagged clips for ${getCourseName(courseCode.value)} ` +
     `using the gendered text (Voice 1 = feminine forms, Voice 2 = masculine forms).\n\n` +
     `This costs TTS. Continue?`
   )

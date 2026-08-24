@@ -377,7 +377,7 @@ async function upsertPodRow({ podId, courseCode, podSlug, targetLanguage, canoni
     number: s.number, label: s.label, title: s.title, subtitle: s.subtitle, sentence_count: s.lines.length,
   }))
   // Preserve scene_hashes (the sync diff baseline) across header re-writes.
-  const { data: existing } = await supabase.from('listening_pods').select('metadata').eq('id', podId).maybeSingle()
+  const { data: existing } = await supabase.from('listening_pods').select('id, metadata').eq('id', podId).maybeSingle()
   const priorHashes = (existing && existing.metadata && existing.metadata.scene_hashes) || {}
   const row = {
     id: podId, course_code: courseCode, pod_type: 'core', slug: podSlug,
@@ -390,6 +390,18 @@ async function upsertPodRow({ podId, courseCode, podSlug, targetLanguage, canoni
     source_file: 'generated:canonical',
     updated_at: new Date().toISOString(),
   }
+  // A POD IS BORN HELD (Tom, 2026-08-23). The column's DB default is 'live' so
+  // that the 110 pods that already existed keep behaving exactly as they did —
+  // but nothing should become learner-reachable merely by being CREATED, least
+  // of all a machine-written draft with no audio and no proofread. So the
+  // generator overrides the default on creation, and creation only: on a
+  // regeneration `existing` is set and `visibility` is left out of the row
+  // entirely, which means the upsert's UPDATE path never touches it. A live pod
+  // stays live when you re-flex it; a held pod stays held.
+  //
+  // Release is a human act through POST /api/admin/pods/:course/:slug/visibility.
+  // Do not add a "…and set it live when it's finished" branch here.
+  if (!existing) row.visibility = 'held'
   const { error } = await supabase.from('listening_pods').upsert(row, { onConflict: 'id' })
   if (error) throw new Error(`pod upsert: ${error.message}`)
   return { speakers, voiceNote }

@@ -18,20 +18,7 @@
  * without a fine map. Known-side sentences render only when their count
  * matches the target side (splitRowUnits pairs by index).
  *
- *   PHASE8_NO_LISTEN=1 node tools/render-sentence-takes.cjs <course> [orders] [--dry] [--pod=<slug>]
- *
- * --pod (2026-08-24): the tool was hard-wired to `<course>:pod-0`. The live
- * learner-facing pod is now `pod-1` on 22 courses, and its split arrays were
- * NULLed by the inheritance repair (1053db318) — leaving multi-sentence turns
- * playing to the learner as one undifferentiated block (podSentenceSplit.ts
- * returns a single whole-turn unit when a row has fewer than 2 sentence clips).
- * The pod slug is now selectable so a rebuild derives from the LIVE pod's own
- * rows and its OWN cast — never positionally from another pod, which was the
- * original disease. Default stays pod-0 for every existing caller.
- *
- * --dry now COSTS the run: each sentence is looked up through the same
- * findExistingAudio dedup key generatePodAudio uses, so the reuse-vs-new split
- * is known before a penny is spent (the TTS approval gate in CLAUDE.md).
+ *   PHASE8_NO_LISTEN=1 node tools/render-sentence-takes.cjs <course> [orders] [--dry]
  *
  * Idempotent: target-side sentence_audio_ids that are already fully linked
  * are never re-rendered. The known side is re-resolved through
@@ -48,21 +35,6 @@ const p8 = require('../services/phases/phase8-audio-v13.cjs')
 const COURSE = process.argv[2]
 const ORDERS = (process.argv[3] || '').split(',').map(Number).filter(Boolean)
 const dry = process.argv.includes('--dry')
-const POD_SLUG = (process.argv.find((a) => a.startsWith('--pod=')) || '--pod=pod-0').slice(6)
-// --only-missing (2026-08-24): touch ONLY turns whose target side is unlinked.
-// A turn that is already correctly split is not this job's problem, and the
-// known-side re-resolve below would spend real TTS on it for nothing. Verified
-// before adding: all 611 surviving split rows across the 22 live Pod 1s carry
-// clips whose text is contained in their OWN row's text — they are correct.
-const onlyMissing = process.argv.includes('--only-missing')
-// --free-only (2026-08-24): link ONLY the turns whose every sentence clip
-// already exists under the dedup key — zero TTS calls, so no spend gate. Lets
-// the ungated half of a rebuild land while the paid half waits for approval.
-// On the Pod 1 fleet this is a thin seam (15 turns of 1,516): pod-1's
-// per-sentence clips were never rendered in the first place, so there is very
-// little to relink for free. Measuring it is the point — it is what says the
-// rebuild is a render job, not a linking job.
-const freeOnly = process.argv.includes('--free-only')
 if (!COURSE) { console.error('usage: render-sentence-takes.cjs <course> [orders] [--dry]'); process.exit(1) }
 const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY)
 
@@ -113,9 +85,8 @@ function sentenceTextsFromGroups(turnText, groups) {
 }
 
 ;(async () => {
-  const POD_ID = `${COURSE}:${POD_SLUG}`
-  const { data: pod } = await supabase.from('listening_pods').select('speakers, visibility').eq('id', POD_ID).single()
-  if (!pod || !pod.speakers) { console.error(`ERR: no speakers cast on ${POD_ID}`); process.exit(1) }
+  const { data: pod } = await supabase.from('listening_pods').select('speakers').eq('id', `${COURSE}:pod-0`).single()
+  if (!pod || !pod.speakers) { console.error(`ERR: no speakers cast on ${COURSE}:pod-0`); process.exit(1) }
   const { data: course } = await supabase.from('courses').select('voice_config').eq('course_code', COURSE).single()
   const vc = ((course || {}).voice_config || {}).voices || {}
   const targetLang = vc.target1?.language || COURSE.split('_')[0]
@@ -123,39 +94,23 @@ function sentenceTextsFromGroups(turnText, groups) {
 
   let q = supabase.from('listening_pod_sentences')
     .select('id, global_order, speaker, target_text, known_text, atom_map_fine, sentence_audio_ids, sentence_known_audio_ids')
-    .eq('pod_id', POD_ID).order('global_order')
+    .eq('pod_id', `${COURSE}:pod-0`).order('global_order')
   if (ORDERS.length) q = q.in('global_order', ORDERS)
   const { data: sents, error } = await q
   if (error) { console.error(error.message); process.exit(1) }
 
-  let rendered = 0, reused = 0, singles = 0, linked = 0, failed = 0, skipped = 0, fellBack = 0
+  let rendered = 0, reused = 0, singles = 0, linked = 0, failed = 0, skipped = 0
   async function processTurn(s) {
     const atoms = (s.atom_map_fine || []).filter((a) => a.kind !== 'note' && a.target_surface)
-    const regexSplit = () => (s.target_text || '').split(SENTENCE_SPLIT).map((x) => x.trim()).filter(Boolean)
-    let tSents = atoms.length
+    const tSents = atoms.length
       ? sentenceTextsFromGroups(s.target_text || '', atomGroups(s.target_text, atoms))
-      : regexSplit()
-    // A fine map that does NOT walk this row's own text cannot be trusted to
-    // partition it. On the Pod 1 fleet that is not a rare authoring slip: on
-    // ita_for_eng:pod-1, 27 of 141 fine maps fail the walk, and some describe a
-    // completely different turn (S141's text is "Quanto costa?" while its fine
-    // map is a long request about practising Italian) — atom_map_fine was
-    // inherited positionally by the same clone that scrambled the split arrays.
-    // Falling back to the regex split of the row's OWN text keeps the rule the
-    // brief demands: derive from this row, never from another pod's data. The
-    // regex is also exactly the app's own boundary (POD_SENTENCE_BOUNDARY in
-    // podSentenceSplit.ts), so text and clips cannot disagree.
-    if (!tSents) {
-      tSents = regexSplit()
-      console.log(`S${s.global_order}: ⚠ fine map doesn't walk own text — using own-text sentence split (${tSents.length})`)
-      fellBack++
-    }
+      : (s.target_text || '').split(SENTENCE_SPLIT).map((x) => x.trim()).filter(Boolean)
+    if (!tSents) { console.log(`S${s.global_order}: ✗ fine units don't walk the turn text`); failed++; return }
     if (tSents.length < 2) { singles++; return } // whole-turn take IS the sentence
 
     const kSents = (s.known_text || '').split(SENTENCE_SPLIT).map((x) => x.trim()).filter(Boolean)
     const doKnown = kSents.length === tSents.length
     const targetLinked = Array.isArray(s.sentence_audio_ids) && s.sentence_audio_ids.filter(Boolean).length === tSents.length
-    if (targetLinked && onlyMissing) { skipped++; return } // already split correctly — not this run's business
     if (targetLinked && !doKnown) { skipped++; return } // nothing this run can do for a mismatched known side
 
     const tVoice = p8.resolvePodSpeakerVoice(pod.speakers, s.speaker, 'target')
@@ -163,34 +118,10 @@ function sentenceTextsFromGroups(turnText, groups) {
     if (!targetLinked && !tVoice) { console.log(`S${s.global_order}: ✗ no target voice for "${s.speaker}"`); failed++; return }
 
     if (dry) {
-      // Cost the run on the SAME dedup key generatePodAudio uses, so the
-      // reuse-vs-new split reported here is the real spend, not an estimate.
-      // A single sentence never gets the multi-sentence " … " pause cue, so
-      // the lookup text is the sentence text verbatim.
-      let willRender = 0, willReuse = 0
-      if (!targetLinked) {
-        for (const text of tSents) {
-          const hit = await p8.findExistingAudio(COURSE, text, targetLang, 'target1', tVoice.voice_id)
-          hit ? willReuse++ : willRender++
-        }
-      }
-      if (doKnown && kVoice) {
-        for (const text of kSents) {
-          const hit = await p8.findExistingAudio(COURSE, text, knownLang, 'known', kVoice.voice_id)
-          hit ? willReuse++ : willRender++
-        }
-      }
-      rendered += willRender; reused += willReuse; if (!targetLinked) linked++; else skipped++
-      console.log(`S${s.global_order} [${s.speaker}]: ${tSents.length} sentences${targetLinked ? ' (target linked)' : ''} — new=${willRender} reuse=${willReuse}${doKnown ? '' : '  (known side skipped)'}`)
+      console.log(`S${s.global_order} [${s.speaker}]: ${tSents.length} sentences${targetLinked ? ' (target linked)' : ''} — ${tSents.join(' ‖ ')}${doKnown ? '' : '  (known side skipped)'}`)
       return
     }
     try {
-      if (freeOnly) {
-        const need = []
-        if (!targetLinked) for (const t of tSents) need.push(p8.findExistingAudio(COURSE, t, targetLang, 'target1', tVoice.voice_id))
-        if (doKnown && kVoice) for (const t of kSents) need.push(p8.findExistingAudio(COURSE, t, knownLang, 'known', kVoice.voice_id))
-        if ((await Promise.all(need)).some((id) => !id)) { skipped++; return }
-      }
       let tIds = s.sentence_audio_ids
       if (!targetLinked) {
         tIds = []
@@ -229,6 +160,6 @@ function sentenceTextsFromGroups(turnText, groups) {
   let next = 0
   const worker = async () => { while (next < (sents || []).length) await processTurn(sents[next++]) }
   await Promise.all(Array.from({ length: Math.min(CONC, (sents || []).length) }, worker))
-  console.log(`\n${dry ? '[DRY] ' : ''}${COURSE}: ${linked} turns linked (${rendered} rendered, ${reused} reused), ${singles} single-sentence, ${skipped} already linked, ${fellBack} own-text fallback, ${failed} failed.`)
+  console.log(`\n${dry ? '[DRY] ' : ''}${COURSE}: ${linked} turns linked (${rendered} rendered, ${reused} reused), ${singles} single-sentence, ${skipped} already linked, ${failed} failed.`)
   process.exit(failed ? 2 : 0)
 })().catch((e) => { console.error('ERR:', e.message); process.exit(1) })

@@ -140,11 +140,15 @@ Tables:
 | GET | `/validate/:courseCode` | Validate audio coverage |
 | GET | `/health` | Health check |
 
-### Services (PM2)
+### Services (systemd)
+
+PM2 is gone (2026-07-30 to 2026-08-07 migration, `docs/DECISIONS.md` "orchestrator off pm2, onto
+systemd" — `ecosystem.config.cjs` no longer exists and pm2 manages nothing). Services run as
+per-user systemd units, prefixed `popty-`, watched by a cron watchdog:
 
 ```bash
-pm2 start ecosystem.config.cjs
-pm2 status
+systemctl --user list-units 'popty-*'
+systemctl --user status popty-orchestrator.service
 ```
 
 | Service | Port | Description | Status |

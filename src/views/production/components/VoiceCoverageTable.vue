@@ -60,7 +60,7 @@
         <span v-for="k in layerKeys" :key="k">
           {{ layerLabel(k) }}:
           <span class="text-ink">{{ n(coverage.layers[k]?.needed) }}</span> clips
-          <code class="text-teal-400 bg-surface px-1.5 py-0.5 rounded ml-1">{{ coverage.layers[k]?.language }}</code>
+          <code class="text-teal-400 bg-surface px-1.5 py-0.5 rounded ml-1">{{ getLanguageName(coverage.layers[k]?.language) }}</code>
         </span>
       </div>
 
@@ -70,7 +70,7 @@
           <svg class="w-4 h-4 text-sky-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5-2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
           </svg>
-          <span class="text-sm font-medium text-sky-300">Your call: which voice does {{ courseCode }} get?</span>
+          <span class="text-sm font-medium text-sky-300">Your call: which voice does {{ getCourseName(courseCode) }} get?</span>
         </div>
         <p class="text-sm text-ink mb-2">
           Best existing coverage:
@@ -181,7 +181,7 @@
               <td class="px-3 py-2 text-muted">
                 <template v-if="row.topSourceCourses?.length">
                   <div v-for="s in row.topSourceCourses" :key="s.courseCode" class="whitespace-nowrap">
-                    {{ s.courseCode }} <span class="text-faint">{{ n(s.clips) }}</span>
+                    {{ getCourseName(s.courseCode) }} <span class="text-faint">{{ n(s.clips) }}</span>
                   </div>
                 </template>
                 <template v-else><span class="text-faint">—</span></template>
@@ -210,12 +210,14 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
 import { getApiUrl } from '@/services/api'
+import { useCourses } from '@/composables/useCourses'
 
 const props = defineProps<{
   courseCode: string
   rounds: number
 }>()
 
+const { getCourseName, getLanguageName } = useCourses()
 const apiBaseUrl = getApiUrl()
 const HEADERS = { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' }
 

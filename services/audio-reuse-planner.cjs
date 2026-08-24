@@ -88,6 +88,13 @@
 const { generateLearningScript } = require('./learning-script-generator.cjs')
 const { normalizeForAudio, audioKeyCandidates } = require('./shared/text-normalize.cjs')
 const { pickPreferredAudioRow } = require('./shared/audio-link-preference.cjs')
+const {
+  PROVIDER_PREFIX,
+  bareVoiceId,
+  resolveVoices,
+  voicesMatch,
+  voiceCandidates,
+} = require('./shared/relink-voice-guard.cjs')
 const createLogger = require('./shared/logger.cjs')
 
 const logger = createLogger('AudioReusePlanner')
@@ -162,32 +169,12 @@ function sameLanguage(wantedLang, candidateLang) {
     .includes(String(candidateLang).trim().toLowerCase())
 }
 
-/**
- * Resolve the voice_id string phase8 would write for each role, from
- * courses.voice_config. Mirrors phase8-audio-v13.cjs getVoiceForRole exactly:
- * `${provider}_${voiceId}` when a provider is set, bare voiceId otherwise,
- * never the config object.
- */
-function resolveVoices(course) {
-  const voices = course?.voice_config?.voices || {}
-  const out = {}
-  for (const role of CLIP_ROLES) {
-    const v = voices[role]
-    if (!v) { out[role] = null; continue }
-    if (v.provider && v.voiceId) out[role] = `${v.provider}_${v.voiceId}`
-    else out[role] = v.voiceId || null
-  }
-  return out
-}
-
-// Provider prefixes phase 8 has written at various times. Stripping one yields
-// the voice's bare legacy id, which the estate also holds directly.
-const PROVIDER_PREFIX = /^(xai|azure|elevenlabs|google)_/
-
-/** The bare voice id, with any provider-era prefix removed. */
-function bareVoiceId(voiceId) {
-  return voiceId ? String(voiceId).replace(PROVIDER_PREFIX, '') : ''
-}
+// resolveVoices / bareVoiceId / voicesMatch / voiceCandidates now live in
+// services/shared/relink-voice-guard.cjs — Kai's relink voice-match ruling of
+// 2026-08-19 needs the SAME answer to "do these two ids name the same voice?"
+// in every relink path, so there is now exactly one definition and this planner
+// (which already got the rule right) is one of its callers rather than a second
+// copy. The re-exports below keep this module's public API unchanged.
 
 /**
  * Human labels for the voices that matter, so a coverage table reads as people
@@ -221,19 +208,7 @@ function voiceLabel(voiceId) {
  * it correct, not invisible. `mergeProviderEras: false` restores strict exact
  * matching. `aliases` remains for equivalences the prefix rule cannot express.
  */
-function voicesMatch(wanted, candidate, aliases = [], { mergeProviderEras = true } = {}) {
-  if (!wanted || !candidate) return { match: false, viaAlias: false }
-  if (wanted === candidate) return { match: true, viaAlias: false }
-  if (mergeProviderEras && bareVoiceId(wanted) === bareVoiceId(candidate)) {
-    return { match: true, viaAlias: true, via: 'provider-era' }
-  }
-  for (const group of aliases) {
-    if (group.includes(wanted) && group.includes(candidate)) {
-      return { match: true, viaAlias: true, via: 'explicit-alias' }
-    }
-  }
-  return { match: false, viaAlias: false }
-}
+// (implementation: services/shared/relink-voice-guard.cjs)
 
 /**
  * Can this voice's clips be trusted to be at natural (1x) pace, so a clip may
@@ -262,15 +237,7 @@ function isSpeedTrustedVoice(voiceId) {
   return true
 }
 
-/** All voice_id strings that are acceptable for `wanted` under `aliases`. */
-function voiceCandidates(wanted, aliases = []) {
-  if (!wanted) return []
-  const out = new Set([wanted])
-  for (const group of aliases) {
-    if (group.includes(wanted)) for (const v of group) out.add(v)
-  }
-  return [...out]
-}
+/* voiceCandidates: see services/shared/relink-voice-guard.cjs */
 
 /**
  * The clip identity key. Text is normalised with normalizeForAudio (the JS
@@ -719,7 +686,38 @@ function decideClip(clip, candidates, opts = {}) {
     preferredSourceCourses = [],// e.g. ['deu_for_eng'] — queried first, not as an afterthought
     rebuild = false,            // force a fresh render of every clip (Tom's ruling)
     freshRoles = [],            // roles that may never BORROW from another course
+    // THIS COURSE'S OWN CLIPS ARE NOT A SOURCE (Tom, 2026-08-08 02:02Z):
+    // "we are not checking any internal clips first from French or German ...
+    // because we KNOW that both French and German are bobbins. all French and
+    // German clips in the current courses are being wiped and replaced —
+    // either from other courses contributions to the pool, or by regeneration."
+    //
+    // The damage is OURS, not the TTS provider's: until 2026-08-05 masterAudio
+    // called audioProcessor.repairTailDefect, which trimmed at the tail
+    // detector's timestamp and re-padded. The detector cannot tell a tail click
+    // from a natural mid-sentence pause, so the trim ate every word after the
+    // pause — that is how deu_for_eng shipped "Ich will jetzt mit dir Deutsch
+    // sprechen" without "sprechen". Reusing those clips re-imports the damage.
+    //
+    // So this is a DATE, not a boolean. A row written after that path was
+    // deleted ships exactly as rendered and is not suspect; only rows that
+    // could have been through the mutation are. Making it a date is also what
+    // keeps a banded overnight run IDEMPOTENT — a blanket "never trust own"
+    // would re-render this run's own fresh output every time a band restarted,
+    // re-buying the whole course on each resume.
+    distrustOwnBefore = null,   // ISO date; own rows older than this are not a source
+    ownRevisedSince = null,     // Set of audio ids re-rendered in place since that date
   } = opts
+
+  // created_at is NOT sufficient on its own: an in-place swap bumps
+  // audio_revision and writes a history row but deliberately leaves created_at
+  // alone (the row was not created again). So a clip re-rendered tonight still
+  // carries its original date, and a date-only test would distrust it forever.
+  const ownRowIsTrusted = (row) => {
+    if (!distrustOwnBefore) return true
+    if (row.created_at && String(row.created_at) >= distrustOwnBefore) return true
+    return !!(ownRevisedSince && ownRevisedSince.has(row.id))
+  }
 
   if (clip.blocked) {
     return { decision: 'BLOCKED', reason: clip.blocked, source: null, viaAlias: false }
@@ -806,7 +804,14 @@ function decideClip(clip, candidates, opts = {}) {
   //      by luck behind a generic estate sweep;
   //   3. an exact-voice row over an aliased one;
   //   4. the standard link preference (human > newest > deterministic id).
-  const own = viable.filter(r => r.course_code === courseCode)
+  // Own rows that predate the post-processing fix are removed from the SOURCE
+  // pool but stay eligible as the swap target below, so make-before-break still
+  // holds: the fresh render publishes into the same row id and no holder FK
+  // ever moves. Distrust changes where a clip may come FROM, never whether the
+  // course keeps pointing at something real.
+  const ownAll = viable.filter(r => r.course_code === courseCode)
+  const own = ownAll.filter(ownRowIsTrusted)
+  const ownDistrusted = ownAll.length - own.length
   let pool = own
   if (!pool.length && preferredSourceCourses.length) {
     for (const pref of preferredSourceCourses) {
@@ -814,7 +819,35 @@ function decideClip(clip, candidates, opts = {}) {
       if (hit.length) { pool = hit; break }
     }
   }
-  if (!pool.length) pool = viable
+  // The fallback pool must also exclude the distrusted own rows, or a clip with
+  // no foreign candidate would quietly fall back onto the very row the policy
+  // just rejected and report it as a reuse.
+  const sourceable = viable.filter(r => r.course_code !== courseCode || ownRowIsTrusted(r))
+  if (!pool.length) pool = sourceable
+
+  // Nothing left to source from — every candidate was one of this course's own
+  // distrusted rows. Render fresh, and swap into the best own row so the course
+  // never points at nothing for an instant.
+  if (!pool.length) {
+    const ownPool = (ownAll.filter(r => !r.viaAlias).length ? ownAll.filter(r => !r.viaAlias) : ownAll)
+    const ownRow = ownPool.length ? ownPool.reduce((best, r) => pickPreferredAudioRow(best, r), null) : null
+    return {
+      decision: 'RENDER',
+      reason: ownRow
+        ? `own clip distrusted (predates the 2026-08-05 post-processing fix); re-rendering fresh into row ${ownRow.id} as revision ${(ownRow.audio_revision ?? 1) + 1}`
+        : 'own clip distrusted (predates the 2026-08-05 post-processing fix); no usable row anywhere',
+      source: ownRow
+        ? { audioId: ownRow.id, courseCode, s3Key: ownRow.s3_key, voiceId: ownRow.voice_id,
+            role: ownRow.role, language: ownRow.language, durationMs: ownRow.duration_ms || null,
+            wordBoundaries: ownRow.word_boundaries || null, text: ownRow.text,
+            createdAt: ownRow.created_at, origin: ownRow.origin,
+            swapTargetAudioId: ownRow.id, currentRevision: ownRow.audio_revision ?? 1 }
+        : null,
+      viaAlias: false,
+      ownDistrusted,
+    }
+  }
+
   const exact = pool.filter(r => !r.viaAlias)
   const finalPool = exact.length ? exact : pool
   const winner = finalPool.reduce((best, r) => pickPreferredAudioRow(best, r), null)
@@ -887,7 +920,8 @@ function decideClip(clip, candidates, opts = {}) {
  */
 async function buildReusePlan(supabase, courseCode, roundCount, options = {}) {
   const { crossRole = true, voiceAliases = [], mode, codeService = null,
-          preferredSourceCourses = [], rebuild = false, freshRoles = [], fromRound = 1 } = options
+          preferredSourceCourses = [], rebuild = false, freshRoles = [], fromRound = 1,
+          distrustOwnBefore = null } = options
 
   const { clips, shape, voices, course } = await enumerateRoundClips(
     supabase, courseCode, roundCount, { crossRole: false, mode, fromRound }
@@ -897,10 +931,41 @@ async function buildReusePlan(supabase, courseCode, roundCount, options = {}) {
 
   const candidates = await findCandidates(supabase, clips)
 
+  // Which of this course's own rows have been RE-RENDERED IN PLACE since the
+  // cutoff. The swap path bumps audio_revision and writes a history row but
+  // leaves created_at alone, so without this a clip re-rendered by tonight's
+  // own run still looks old and would be bought again on every band restart.
+  let ownRevisedSince = null
+  if (distrustOwnBefore) {
+    ownRevisedSince = new Set()
+    const PAGE = 1000
+    for (let from = 0; ; from += PAGE) {
+      const { data, error } = await supabase
+        .from('course_audio_revisions')
+        .select('audio_id')
+        .eq('course_code', courseCode)
+        .gte('created_at', distrustOwnBefore)
+        // ORDER IS LOAD-BEARING. .range() paging without a stable sort lets
+        // PostgREST return rows in arbitrary order per page, so pages overlap
+        // and rows are silently skipped — the set comes back INCOMPLETE and
+        // non-deterministically so. Measured 2026-08-08: the same course, with
+        // nothing rendered in between, planned 3,750 clips as distrusted on one
+        // run and 0 on the next. Under-reading this set is safe in the sense
+        // that it only re-renders clips that did not need it, but it wastes
+        // money and it makes verification meaningless.
+        .order('audio_id')
+        .range(from, from + PAGE - 1)
+      if (error) throw new Error(`revisions since ${distrustOwnBefore}: ${error.message}`)
+      for (const r of data || []) ownRevisedSince.add(r.audio_id)
+      if (!data || data.length < PAGE) break
+    }
+  }
+
   const decided = []
   for (const clip of clips.values()) {
     const d = decideClip(clip, candidates.get(clip.clipKey) || [], {
       courseCode, crossRole, voiceAliases, languageFilter, preferredSourceCourses, rebuild, freshRoles,
+      distrustOwnBefore, ownRevisedSince,
     })
     decided.push({
       clipKey: clip.clipKey,

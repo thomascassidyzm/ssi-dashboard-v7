@@ -15,11 +15,6 @@
  *
  *   node tools/pods/waive-proofread-draft-flag.cjs --pod=hrv_for_eng:pod-0-unrecorded
  *   node tools/pods/waive-proofread-draft-flag.cjs --pod=hrv_for_eng:pod-0-unrecorded --apply
- *
- * The per-row log path defaults to docs/pods/<pod-with-colon-as-dash>-proofread-waiver-
- * {dryrun,applied}-log.json, overridable with --log-prefix=<name>. It used to be
- * hardcoded to the Croatian name, which would have made every later course
- * overwrite Croatia's log (2026-08-22, rolling out to ita/spa/fra/zho).
  */
 'use strict'
 
@@ -39,9 +34,6 @@ if (!POD_ID) {
   console.error('FAILED: --pod=<pod_id> is required')
   process.exit(1)
 }
-const LOG_PREFIX = arg('log-prefix') || POD_ID.replace(/[:]/g, '-')
-const logPath = (kind) =>
-  path.join(REPO, 'docs', 'pods', `${LOG_PREFIX}-proofread-waiver-${kind}-log.json`)
 
 async function main() {
   const c = new Client({ connectionString: process.env.DATABASE_URL })
@@ -61,7 +53,7 @@ async function main() {
       for (const row of before.rows) {
         log.push({ ...row, action: 'would-clear-draft-flag' })
       }
-      const outPath = logPath('dryrun')
+      const outPath = path.join(REPO, 'docs', 'pods', 'hrv-pod0-proofread-waiver-dryrun-log.json')
       fs.writeFileSync(outPath, JSON.stringify(log, null, 2))
       console.log(`DRY RUN. Wrote ${log.length} rows to ${outPath}`)
       await c.end()
@@ -86,7 +78,7 @@ async function main() {
     }
     await c.query('COMMIT')
 
-    const outPath = logPath('applied')
+    const outPath = path.join(REPO, 'docs', 'pods', 'hrv-pod0-proofread-waiver-applied-log.json')
     fs.writeFileSync(outPath, JSON.stringify(log, null, 2))
     console.log(`APPLIED. Cleared ${log.length} rows. Wrote ${outPath}`)
   } catch (e) {

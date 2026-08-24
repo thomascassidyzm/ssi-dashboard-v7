@@ -4,7 +4,7 @@
       <div>
         <h1>Your team</h1>
         <p class="subtitle">
-          The people helping you build <strong>{{ courseCode }}</strong> — and who records each voice.
+          The people helping you build <strong>{{ getCourseName(courseCode) }}</strong> — and who records each voice.
         </p>
       </div>
       <button class="btn primary" @click="showInvite = !showInvite">
@@ -126,12 +126,14 @@
 import { ref, computed, onMounted } from 'vue'
 import { useAuth } from '../../composables/useAuth'
 import { getApiUrl } from '../../services/api'
+import { useCourses } from '../../composables/useCourses'
 
 const props = defineProps({
   courseCode: { type: String, required: true },
 })
 
 const { getAccessToken } = useAuth()
+const { getCourseName } = useCourses()
 
 const loading = ref(true)
 const saving = ref(false)
@@ -225,7 +227,7 @@ async function unassign(email) {
 
 async function removeMember(m) {
   const who = m.name || m.email
-  if (!window.confirm(`Remove ${who} from this course? They keep their account — they just lose access to ${props.courseCode}.`)) return
+  if (!window.confirm(`Remove ${who} from this course? They keep their account — they just lose access to ${getCourseName(props.courseCode)}.`)) return
   saving.value = true
   error.value = null
   try {

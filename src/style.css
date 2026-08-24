@@ -90,3 +90,22 @@ body {
   width: 100%;
   min-height: 100vh;
 }
+
+/* ---------------------------------------------------------------------------
+   Bidi isolation utility (A-157, Arabic rendering fix, 2026-08-18)
+
+   A run of target text interpolated into a line of English UI chrome resolves
+   its trailing NEUTRAL punctuation against the SURROUNDING direction, not its
+   own — which is exactly how `!` (bidi class ON) ended up on the visual right
+   of Arabic pod lines while `؟` (class AL, strong RTL) always landed correctly.
+   `dir` on the element fixes the run's own direction; `unicode-bidi: isolate`
+   stops that run from reordering, or being reordered by, its neighbours.
+
+   Tailwind ships no unicode-bidi utility (its `isolate` is `isolation`, a
+   compositing property), so this is defined once here rather than repeated in
+   every component's scoped block. Pair it with a bound `:dir="dirFor(...)"` —
+   isolation alone does not pick a direction.
+   --------------------------------------------------------------------------- */
+.bidi-isolate {
+  unicode-bidi: isolate;
+}

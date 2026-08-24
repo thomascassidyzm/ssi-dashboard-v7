@@ -96,39 +96,6 @@ describe('checkPodCast', () => {
     expect(r.failures.join(' ')).toMatch(/not 2/)
   })
 
-  it('does not count the Narrator sign-off as an exchange', () => {
-    // Measured 2026-08-24 across the 22 live pod-1 pods: 352 of 352 Narrator
-    // lines are the LAST line of their scene, reading the clock and the calendar.
-    // Nobody answers it, so the last speaker of a scene sharing the Narrator's
-    // voice is not a character answering themselves. Before this rule the gate
-    // passed by accident — every scene's last speaker happened to sit on the
-    // other voice — and casting `Interlocutor` to the second voice under Tom's
-    // two-voice ruling fired a phantom collision on all 22 courses.
-    const rows = [
-      { scene_number: 1, sentence_number: 1, global_order: 1, speaker: 'Anna', known_text: 'hello' },
-      { scene_number: 1, sentence_number: 2, global_order: 2, speaker: 'Guest', known_text: 'hi' },
-      { scene_number: 1, sentence_number: 3, global_order: 3, speaker: 'Narrator', known_text: '6 o\'clock. July.' },
-    ]
-    // Guest and Narrator share the male voice; Guest→Narrator is the only
-    // adjacency between them and it is the sign-off.
-    const r = checkPodCast({ rows, speakers: castOf(F, M, { Narrator: { target: M, known: { voice_id: 'eng-narrator' } } }) })
-    expect(r.sameVoicePairs).toEqual([])
-    expect(r.ok).toBe(true)
-  })
-
-  it('still catches a same-voice collision between two real characters in a narrated scene', () => {
-    // The Narrator rule drops only edges the Narrator is party to. Anna↔Guest
-    // in the same scene is judged exactly as before.
-    const rows = [
-      { scene_number: 1, sentence_number: 1, global_order: 1, speaker: 'Anna', known_text: 'hello' },
-      { scene_number: 1, sentence_number: 2, global_order: 2, speaker: 'Guest', known_text: 'hi' },
-      { scene_number: 1, sentence_number: 3, global_order: 3, speaker: 'Narrator', known_text: '6 o\'clock.' },
-    ]
-    const r = checkPodCast({ rows, speakers: castOf(M, M, { Narrator: { target: M, known: { voice_id: 'eng-narrator' } } }) })
-    expect(r.sameVoicePairs.map(p => `${p.a}↔${p.b}`)).toEqual(['Anna↔Guest'])
-    expect(r.ok).toBe(false)
-  })
-
   it('normalises the voice-id prefix — `eve` and `xai_eve` are ONE voice', () => {
     const r = checkPodCast({
       rows: twoHander,

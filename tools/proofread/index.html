@@ -1,0 +1,629 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Proofread</title>
+<style>
+  :root {
+    --bg: #f6f5f2; --card: #ffffff; --ink: #1d1d1f; --muted: #8a8a8e;
+    --line: #e4e2dd; --ok: #2e9e5b; --flag: #d64545; --accent: #3b6fe0;
+    --approved: #2e9e5b;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #17171a; --card: #212126; --ink: #ececf0; --muted: #8f8f96;
+      --line: #313138; --ok: #3fb56e; --flag: #e05c5c; --accent: #6c96f0;
+    }
+  }
+  * { box-sizing: border-box; margin: 0; }
+  body {
+    background: var(--bg); color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    min-height: 100vh; display: flex; flex-direction: column;
+  }
+  header {
+    display: flex; align-items: center; gap: 16px; padding: 12px 20px;
+    border-bottom: 1px solid var(--line); font-size: 13px; color: var(--muted);
+    flex-wrap: wrap;
+  }
+  header .course { font-weight: 600; color: var(--ink); font-size: 14px; }
+  .bar { flex: 1; min-width: 120px; height: 6px; background: var(--line); border-radius: 3px; overflow: hidden; }
+  .bar > div { height: 100%; background: var(--ok); border-radius: 3px; transition: width .2s; }
+  header button, header input {
+    font: inherit; color: var(--ink); background: none; border: 1px solid var(--line);
+    border-radius: 6px; padding: 4px 10px; cursor: pointer;
+  }
+  header input { width: 70px; cursor: text; }
+  main { flex: 1; display: flex; flex-direction: column; align-items: center; padding: 28px 20px 0; }
+  .wrap { width: 100%; max-width: 760px; }
+
+  .seedbox {
+    display: flex; flex-direction: column; gap: 8px; padding: 14px 18px;
+    background: var(--card); border: 1px solid var(--line); border-radius: 12px;
+    font-size: 13px; margin-bottom: 18px;
+  }
+  .seedbox .top { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+  .seedbox .num { font-weight: 700; font-size: 14px; }
+  .seedbox .stat { color: var(--muted); margin-left: auto; }
+  .seedbox .texts { color: var(--muted); line-height: 1.45; }
+  .seedbox .texts b { color: var(--ink); font-weight: 500; }
+  .badge {
+    font-size: 11px; font-weight: 700; letter-spacing: .04em; padding: 2px 8px;
+    border-radius: 10px; text-transform: uppercase;
+  }
+  .badge.approved { background: color-mix(in srgb, var(--approved) 15%, transparent); color: var(--approved); }
+  .badge.stale { background: color-mix(in srgb, var(--flag) 15%, transparent); color: var(--flag); }
+  .dots { display: flex; flex-wrap: wrap; gap: 4px; }
+  .dot {
+    width: 14px; height: 14px; border-radius: 4px; background: var(--line);
+    cursor: pointer; border: 2px solid transparent;
+  }
+  .dot.ok { background: var(--ok); }
+  .dot.flagged { background: var(--flag); }
+  .dot.current { border-color: var(--accent); }
+
+  .card {
+    background: var(--card); border: 1px solid var(--line); border-radius: 16px;
+    padding: 44px 40px; text-align: center; position: relative;
+  }
+  .card .meta {
+    display: flex; justify-content: center; gap: 10px; margin-bottom: 26px;
+    font-size: 12px; color: var(--muted);
+  }
+  .card .meta .role { font-weight: 700; text-transform: uppercase; letter-spacing: .05em; }
+  .known { font-size: 22px; color: var(--muted); line-height: 1.4; margin-bottom: 18px; }
+  .target { font-size: 34px; font-weight: 600; line-height: 1.35; }
+  .lego { margin-top: 30px; font-size: 13px; color: var(--muted); }
+  .lego b { color: var(--ink); font-weight: 500; }
+  .decided {
+    position: absolute; top: 14px; right: 16px; font-size: 12px; font-weight: 700;
+  }
+  .decided.ok { color: var(--ok); }
+  .decided.flagged { color: var(--flag); }
+  .flagnote { margin-top: 14px; font-size: 13px; color: var(--flag); }
+  .resolvednote { margin-top: 14px; font-size: 13px; color: var(--ok); }
+
+  .controls { display: flex; justify-content: center; gap: 14px; padding: 26px 0 12px; }
+  .controls button {
+    font: inherit; font-size: 15px; font-weight: 600; border: none; border-radius: 12px;
+    padding: 14px 26px; cursor: pointer; color: #fff; background: var(--muted);
+    display: flex; align-items: center; gap: 8px;
+  }
+  .controls button:disabled { opacity: .35; cursor: default; }
+  .controls .ok { background: var(--ok); padding: 14px 44px; }
+  .controls .flag { background: var(--flag); }
+  .controls .approve { background: var(--accent); }
+  .controls kbd {
+    font-family: inherit; font-size: 11px; opacity: .75; background: rgba(255,255,255,.2);
+    border-radius: 4px; padding: 1px 5px;
+  }
+  footer { text-align: center; font-size: 12px; color: var(--muted); padding: 8px 0 20px; }
+
+  dialog {
+    border: 1px solid var(--line); border-radius: 14px; background: var(--card);
+    color: var(--ink); padding: 22px; width: min(640px, 92vw); max-height: 80vh;
+    margin: auto; /* the global `* { margin: 0 }` otherwise pins dialogs to the corner */
+  }
+  dialog::backdrop { background: rgba(0,0,0,.35); }
+  dialog h3 { font-size: 15px; margin-bottom: 12px; }
+  dialog textarea {
+    width: 100%; min-height: 80px; font: inherit; font-size: 14px; color: var(--ink);
+    background: var(--bg); border: 1px solid var(--line); border-radius: 8px; padding: 10px;
+    resize: vertical;
+  }
+  dialog .row { display: flex; justify-content: flex-end; gap: 10px; margin-top: 14px; }
+  dialog button {
+    font: inherit; font-size: 14px; font-weight: 600; border: none; border-radius: 8px;
+    padding: 8px 18px; cursor: pointer; background: var(--line); color: var(--ink);
+  }
+  dialog button.primary { background: var(--flag); color: #fff; }
+  .flaglist { overflow-y: auto; max-height: 55vh; display: flex; flex-direction: column; gap: 10px; }
+  .flagitem {
+    border: 1px solid var(--line); border-radius: 10px; padding: 10px 14px;
+    cursor: pointer; font-size: 13px; line-height: 1.45;
+  }
+  .flagitem:hover { border-color: var(--accent); }
+  .flagitem .where { color: var(--muted); font-size: 12px; }
+  .flagitem .note { color: var(--flag); }
+  .flagitem .state { color: var(--flag); font-weight: 600; }
+  .flagitem .state.ready { color: var(--ok); }
+  #btnQueue[hidden] { display: none; }
+  #btnQueue.has { border-color: var(--flag); color: var(--flag); }
+  .toast {
+    position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%);
+    background: var(--ink); color: var(--bg); font-size: 13px; padding: 8px 18px;
+    border-radius: 10px; opacity: 0; transition: opacity .25s; pointer-events: none;
+  }
+  .toast.show { opacity: 1; }
+
+  /* Stale-data banner: when the live fetch fails the reviewer is still working,
+     so the screen must say so rather than look like ordinary fresh data. */
+  #offlineBar {
+    display: none; padding: 10px 20px; font-size: 13px; line-height: 1.45;
+    background: #fdf3d3; color: #6b4e00; border-bottom: 1px solid #e8d79a;
+  }
+  #offlineBar.show { display: block; }
+  #offlineBar b { font-weight: 600; }
+  @media (prefers-color-scheme: dark) {
+    #offlineBar { background: #3a3113; color: #f2dfa4; border-bottom-color: #574823; }
+  }
+  #loading { padding: 48px 20px; text-align: center; color: var(--muted); font-size: 15px; }
+
+  /* Phone: reviewing happens on a narrow screen, so nothing may scroll sideways
+     and every control has to stay thumb-sized. */
+  @media (max-width: 640px) {
+    header { flex-wrap: wrap; gap: 10px; padding: 10px 12px; }
+    header .bar { order: 10; flex-basis: 100%; }
+    header input { width: 88px; padding: 8px 10px; }
+    header button { padding: 8px 12px; }
+    main { padding: 16px 12px 0; }
+    .card { padding: 26px 18px; }
+    .known { font-size: 18px; margin-bottom: 12px; }
+    .target { font-size: 26px; }
+    .controls { flex-wrap: wrap; gap: 10px; padding: 18px 0 12px; }
+    .controls button { flex: 1 1 40%; min-height: 48px; padding: 12px 10px; }
+    .controls .ok { flex-basis: 100%; order: -1; padding: 14px 10px; }
+    .controls kbd { display: none; }
+    footer { display: none; }
+    dialog { width: 94vw; padding: 16px; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <span class="course" id="hCourse">…</span>
+  <span id="hFetched" style="color:var(--muted)"></span>
+  <span id="hSeeds"></span>
+  <div class="bar"><div id="hBar" style="width:0%"></div></div>
+  <span id="hPhrases"></span>
+  <input id="jump" type="number" min="1" placeholder="seed…" title="Jump to seed (G)">
+  <button id="btnQueue" title="Seeds behind you that still need review (R)" hidden>Re-review <span id="hQueueCount">0</span></button>
+  <button id="btnFlags" title="Flagged list (L)">Flags <span id="hFlagCount">0</span></button>
+</header>
+<div id="offlineBar"></div>
+<div id="loading">Loading course…</div>
+
+<main><div class="wrap">
+  <div class="seedbox" id="seedbox"></div>
+  <div class="card" id="card"></div>
+  <div class="controls">
+    <button id="btnBack">← Back</button>
+    <button class="flag" id="btnFlag">Flag <kbd>F</kbd></button>
+    <button class="ok" id="btnOk">OK <kbd>Enter</kbd></button>
+    <button class="approve" id="btnApprove">Approve seed <kbd>A</kbd></button>
+  </div>
+  <footer>Enter / Space / → ok &nbsp;·&nbsp; ← back &nbsp;·&nbsp; F flag &nbsp;·&nbsp; A approve seed &nbsp;·&nbsp; G jump &nbsp;·&nbsp; L flag list &nbsp;·&nbsp; R re-review queue</footer>
+</div></main>
+
+<dialog id="dlgFlag">
+  <h3>Flag phrase</h3>
+  <textarea id="flagNote" placeholder="What's wrong? (optional)"></textarea>
+  <div class="row">
+    <button id="flagCancel">Cancel</button>
+    <button class="primary" id="flagSave">Flag it</button>
+  </div>
+</dialog>
+
+<dialog id="dlgQueue">
+  <h3>Needs re-review <span id="queueSub" style="font-weight:400;color:var(--muted)"></span></h3>
+  <div class="flaglist" id="queuelist"></div>
+  <div class="row"><button id="queueCarry" hidden></button></div>
+</dialog>
+
+<dialog id="dlgFlags">
+  <h3>Flagged phrases <button id="copyFlags" style="float:right">Copy report</button></h3>
+  <div class="flaglist" id="flaglist"></div>
+</dialog>
+
+<div class="toast" id="toast"></div>
+
+<script>
+let S = null;          // { course, seeds, legos, phrases, progress }
+let idx = 0;           // current index into S.phrases
+let seedOf = new Map();     // seed_number -> seed row
+let legoOf = new Map();     // "seed:lego_index" -> lego row
+let phrasesOfSeed = new Map(); // seed_number -> [phrase indices]
+let seedOrder = [];         // ordered distinct seed numbers
+let resumeIdx = 0;          // where forward reading was left off, so the queue can hand it back
+
+const $ = (id) => document.getElementById(id);
+const dec = (p) => S.progress.decisions[p.id];
+// A flag that closed itself because the row was fixed. The row is back to
+// unchecked — this is what tells him why it has come round again.
+const resolved = (p) => (S.progress.resolvedFlags || {})[p.id];
+
+async function api(url, body) {
+  const res = await fetch(url, body ? {
+    method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body),
+  } : undefined);
+  const json = await res.json();
+  if (!res.ok) throw new Error(json.error || res.statusText);
+  return json;
+}
+
+function toast(msg) {
+  const t = $('toast');
+  t.textContent = msg; t.classList.add('show');
+  clearTimeout(t._h); t._h = setTimeout(() => t.classList.remove('show'), 1800);
+}
+
+function build() {
+  seedOf = new Map(S.seeds.map((s) => [s.seed_number, s]));
+  legoOf = new Map(S.legos.map((l) => [l.seed_number + ':' + l.lego_index, l]));
+  phrasesOfSeed = new Map();
+  S.phrases.forEach((p, i) => {
+    if (!phrasesOfSeed.has(p.seed_number)) phrasesOfSeed.set(p.seed_number, []);
+    phrasesOfSeed.get(p.seed_number).push(i);
+  });
+  seedOrder = [...phrasesOfSeed.keys()].sort((a, b) => a - b);
+}
+
+function seedApproved(n) { return !!seedOf.get(n)?.approved_at; }
+
+// NEEDS CHECKING (Kai, 2026-08-18): "open up to the earliest item that needs
+// checking, and then jump to the next item that needs checking."
+//
+// This is not a new state. It is the tool's own existing one, the same test the
+// server calls uncheckedIn(): a phrase needs checking when the progress file
+// holds NO decision for it. A flagged phrase has been looked at and does not
+// come back; an ok phrase does not come back.
+//
+// Deliberately NOT "…and its seed is unapproved". Approval is derived — a seed
+// can only be approved here once every phrase in it is ok — so the seed test is
+// redundant for anything approved through this tool, and actively harmful for
+// the one case it is not: a phrase ADDED to an already-approved seed. Under the
+// old test that phrase was invisible forever, because its seed carried an
+// approval predating it. Under this one it is unchecked work like any other and
+// sorts to its natural place in the course.
+function needsChecking(p) { return !dec(p); }
+
+// The earliest unchecked phrase in the whole course — not the reading frontier.
+// Reload used to resume just past lastPhraseId, so anything left behind (a seed
+// he stepped back into, a phrase inserted below him) stayed behind forever.
+function startIndex() {
+  const first = S.phrases.findIndex(needsChecking);
+  if (first >= 0) return first;
+  // Nothing unchecked anywhere: hold his last position rather than snapping to 0.
+  const last = S.progress.lastPhraseId;
+  const i = last ? S.phrases.findIndex((p) => p.id === last) : -1;
+  return i >= 0 ? i : 0;
+}
+
+// Next unchecked ahead of `from`; wraps to the earliest unchecked behind it so a
+// phrase below the frontier is reachable by pressing next, not only via the queue.
+// Returns null when the course holds nothing unchecked at all.
+function nextNeedingCheck(from) {
+  for (let j = from + 1; j < S.phrases.length; j++) if (needsChecking(S.phrases[j])) return j;
+  for (let j = 0; j <= from && j < S.phrases.length; j++) if (needsChecking(S.phrases[j])) return j;
+  return null;
+}
+
+function firstUndecidedOfSeed(n) {
+  const idxs = phrasesOfSeed.get(n) || [];
+  return idxs.find((i) => !dec(S.phrases[i])) ?? idxs[0] ?? null;
+}
+
+function goto(i) {
+  if (i == null || i < 0 || i >= S.phrases.length) return;
+  idx = i; render();
+}
+
+// ---------- re-review queue ----------
+// Forward navigation only ever moves past the reviewer's position, so a seed
+// left unapproved BEHIND them is invisible: nothing in the normal flow returns
+// to it. This queue is the way back to those seeds.
+//
+// The frontier is the furthest seed the reviewer has actually reached — the
+// highest seed number carrying any decision or an approval. Seeds beyond it are
+// simply not read yet and are none of the queue's business.
+function reviewFrontier() {
+  let f = 0;
+  for (const s of S.seeds) if (s.approved_at && s.seed_number > f) f = s.seed_number;
+  for (const p of S.phrases) if (dec(p) && p.seed_number > f) f = p.seed_number;
+  return f;
+}
+
+// Scoping (Kai, 2026-08-06): approval outside this tool never claimed "proofread
+// in this tool", so a course nobody has proofread has no queue — not 98% of its
+// seeds. The signal is the reviewer's own progress file alone: decisions recorded
+// here. It used to ALSO require some seed to be approved, which made the queue
+// self-cancelling — unapproving the very seeds it was built to surface emptied it
+// (Kai, 2026-08-11). Approval is now reported, never a filter.
+function queueActive() {
+  return Object.keys(S.progress.decisions).length > 0;
+}
+
+// Membership is about REVIEW, not approval: a seed belongs here if it still holds
+// a phrase never looked at, or if every phrase is reviewed but nobody approved it.
+// Approval state is shown on the row; it decides nothing.
+function reviewQueue() {
+  if (!queueActive()) return [];
+  const frontier = reviewFrontier();
+  const here = S.phrases[idx]?.seed_number;
+  return seedOrder
+    .filter((n) => n <= frontier && n !== here)
+    .map((n) => {
+      const idxs = phrasesOfSeed.get(n);
+      const ds = idxs.map((i) => dec(S.phrases[i]));
+      return {
+        n,
+        total: idxs.length,
+        ok: ds.filter((d) => d?.status === 'ok').length,
+        flagged: ds.filter((d) => d?.status === 'flagged').length,
+        unchecked: ds.filter((d) => !d).length,
+        approved: seedApproved(n),
+      };
+    })
+    .filter((q) => q.unchecked > 0 || !q.approved);
+}
+
+function queueLabel(q) {
+  if (q.unchecked === q.total) return { text: 'never reviewed', cls: '' };
+  if (q.unchecked) return { text: `${q.unchecked} of ${q.total} never looked at`, cls: '' };
+  if (q.flagged) return { text: `${q.flagged} flagged`, cls: '' };
+  return { text: 'all reviewed — just needs approving', cls: 'ready' };
+}
+
+function openQueue() {
+  const q = reviewQueue();
+  $('queueSub').textContent = q.length
+    ? `— ${q.length} seed${q.length === 1 ? '' : 's'} behind seed ${reviewFrontier()}`
+    : '';
+  $('queuelist').innerHTML = q.length ? q.map((x) => {
+    const lab = queueLabel(x);
+    const seed = seedOf.get(x.n) || {};
+    return `
+    <div class="flagitem" data-n="${x.n}">
+      <div class="where">Seed ${String(x.n).padStart(4, '0')} · ${x.ok}/${x.total} ok${x.approved ? ' · approved' : ''}</div>
+      <div>${esc(seed.known_text || '')}</div>
+      <div class="state ${lab.cls}">${lab.text}</div>
+    </div>`;
+  }).join('') : '<div style="color:var(--muted)">Nothing behind you needs re-review. 🎉</div>';
+  $('queuelist').querySelectorAll('.flagitem').forEach((el) =>
+    el.addEventListener('click', () => {
+      $('dlgQueue').close();
+      goto(firstUndecidedOfSeed(Number(el.dataset.n)));
+    }));
+  // A way back: jumping into the queue must not lose the place he was reading at.
+  const carry = S.phrases[resumeIdx]?.seed_number;
+  $('queueCarry').textContent = carry ? `Carry on at seed ${String(carry).padStart(4, '0')} →` : '';
+  $('queueCarry').hidden = !carry;
+  $('dlgQueue').showModal();
+}
+
+function nextUnapprovedSeedStart(afterSeed) {
+  for (const n of seedOrder) {
+    if (n > afterSeed && !seedApproved(n)) return firstUndecidedOfSeed(n);
+  }
+  return null;
+}
+
+function render() {
+  const p = S.phrases[idx];
+  const seed = seedOf.get(p.seed_number) || {};
+  const idxs = phrasesOfSeed.get(p.seed_number);
+  const pos = idxs.indexOf(idx);
+  const okCount = idxs.filter((i) => dec(S.phrases[i])?.status === 'ok').length;
+  const flagCount = idxs.filter((i) => dec(S.phrases[i])?.status === 'flagged').length;
+  const allOk = okCount === idxs.length;
+  const approved = seedApproved(p.seed_number);
+  // approval overstates review when any phrase in the seed has no decision at all
+  const unreviewed = approved && idxs.some((i) => !dec(S.phrases[i]));
+
+  // header
+  const totalApproved = S.seeds.filter((s) => s.approved_at).length;
+  const doneP = S.phrases.filter((q) => dec(q)?.status === 'ok' || seedApproved(q.seed_number)).length;
+  const allFlags = S.phrases.filter((q) => dec(q)?.status === 'flagged');
+  $('hCourse').textContent = S.course;
+  $('hFetched').textContent = S.fetchedAt ? `as of ${new Date(S.fetchedAt).toLocaleTimeString()}` : '';
+  $('hSeeds').textContent = `${totalApproved}/${S.seeds.length} seeds approved`;
+  $('hPhrases').textContent = `${doneP.toLocaleString()}/${S.phrases.length.toLocaleString()} phrases`;
+  $('hBar').style.width = (100 * doneP / S.phrases.length).toFixed(1) + '%';
+  $('hFlagCount').textContent = allFlags.length;
+
+  // re-review queue: hidden entirely on a course that isn't being proofread here
+  const queue = reviewQueue();
+  const btnQ = $('btnQueue');
+  btnQ.hidden = !queueActive();
+  btnQ.classList.toggle('has', queue.length > 0);
+  $('hQueueCount').textContent = queue.length;
+
+  // seed box
+  $('seedbox').innerHTML = `
+    <div class="top">
+      <span class="num">Seed ${String(p.seed_number).padStart(4, '0')}</span>
+      ${approved ? (unreviewed ? '<span class="badge stale">approved · unreviewed</span>'
+                               : '<span class="badge approved">approved</span>') : ''}
+      <span class="stat">${okCount}/${idxs.length} ok${flagCount ? ` · ${flagCount} flagged` : ''}</span>
+    </div>
+    <div class="texts"><b>${esc(seed.known_text || '')}</b><br>${esc(seed.target_text || '')}</div>
+    <div class="dots">${idxs.map((i) => {
+      const d = dec(S.phrases[i]);
+      const cls = ['dot', d?.status || '', i === idx ? 'current' : ''].join(' ');
+      return `<div class="${cls}" data-i="${i}" title="${esc(S.phrases[i].known_text)}"></div>`;
+    }).join('')}</div>`;
+  $('seedbox').querySelectorAll('.dot').forEach((el) =>
+    el.addEventListener('click', () => goto(Number(el.dataset.i))));
+
+  // card
+  const lego = legoOf.get(p.seed_number + ':' + p.lego_index);
+  const d = dec(p);
+  $('card').innerHTML = `
+    ${d ? `<div class="decided ${d.status}">${d.status === 'ok' ? '✓ ok' : '⚑ flagged'}</div>` : ''}
+    <div class="meta">
+      <span class="role">${esc(p.phrase_role || '')}</span>
+      <span>phrase ${pos + 1}/${idxs.length}</span>
+    </div>
+    <div class="known">${esc(p.known_text)}</div>
+    <div class="target">${esc(p.target_text)}</div>
+    ${lego ? `<div class="lego">LEGO ${p.lego_index}: <b>${esc(lego.target_text)}</b> = ${esc(lego.known_text)}</div>` : ''}
+    ${d?.status === 'flagged' && d.note ? `<div class="flagnote">⚑ ${esc(d.note)}</div>` : ''}
+    ${!d && resolved(p) ? `<div class="resolvednote">✔ a flag you left here has been resolved — ${esc(resolved(p).reason)}${resolved(p).note ? `. You wrote: “${esc(resolved(p).note)}”` : ''}</div>` : ''}`;
+
+  // controls
+  $('btnBack').disabled = idx === 0;
+  const btnA = $('btnApprove');
+  if (approved) {
+    btnA.textContent = 'Unapprove seed';
+    btnA.disabled = false;
+  } else {
+    btnA.innerHTML = 'Approve seed <kbd>A</kbd>';
+    btnA.disabled = !allOk;
+  }
+}
+
+function esc(s) {
+  return String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+}
+
+// ---------- actions ----------
+async function decide(status, note) {
+  const p = S.phrases[idx];
+  S.progress.decisions[p.id] = { status, note: note || '', at: new Date().toISOString() };
+  S.progress.lastPhraseId = p.id;
+  render();
+  try {
+    const r = await api('/api/decision', { phraseId: p.id, status, note });
+    if (r.unapprovedSeed) {
+      const s = seedOf.get(r.unapprovedSeed);
+      if (s) s.approved_at = null;
+      toast(`Seed ${r.unapprovedSeed} un-approved — it still has unchecked phrases`);
+    }
+  } catch (e) { toast('Save failed: ' + e.message); return; }
+  advance();
+}
+
+function advance() {
+  const p = S.phrases[idx];
+  const idxs = phrasesOfSeed.get(p.seed_number);
+  if (idx === idxs[idxs.length - 1]) {
+    const allOk = idxs.every((i) => dec(S.phrases[i])?.status === 'ok');
+    if (allOk && !seedApproved(p.seed_number)) { render(); toast('Seed complete — press A to approve'); return; }
+  }
+  // Skip everything already dealt with, ok or flagged, rather than walking every
+  // phrase of every unapproved seed (Kai, 2026-08-18).
+  const next = nextNeedingCheck(idx);
+  if (next != null) return goto(next);
+  render(); toast('Nothing left unchecked 🎉');
+}
+
+async function approveSeed() {
+  const n = S.phrases[idx].seed_number;
+  if (seedApproved(n)) { // toggle → unapprove
+    try {
+      await api('/api/seed/unapprove', { seedNumber: n });
+      seedOf.get(n).approved_at = null;
+      render(); toast(`Seed ${n} un-approved`);
+    } catch (e) { toast(e.message); }
+    return;
+  }
+  try {
+    const r = await api('/api/seed/approve', { seedNumber: n });
+    seedOf.get(n).approved_at = r.approved_at;
+    toast(`Seed ${n} approved ✓`);
+    const next = nextUnapprovedSeedStart(n);
+    if (next != null) goto(next); else { render(); toast('All seeds done 🎉'); }
+  } catch (e) { toast(e.message); }
+}
+
+// ---------- flag dialog ----------
+function openFlag() {
+  const d = dec(S.phrases[idx]);
+  $('flagNote').value = d?.status === 'flagged' ? d.note : '';
+  $('dlgFlag').showModal();
+  $('flagNote').focus();
+}
+$('flagSave').addEventListener('click', () => { $('dlgFlag').close(); decide('flagged', $('flagNote').value.trim()); });
+$('flagCancel').addEventListener('click', () => $('dlgFlag').close());
+$('flagNote').addEventListener('keydown', (e) => {
+  if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); $('flagSave').click(); }
+});
+
+// ---------- flags list ----------
+function openFlags() {
+  const flagged = S.phrases.map((p, i) => ({ p, i, d: dec(p) })).filter((x) => x.d?.status === 'flagged');
+  $('flaglist').innerHTML = flagged.length ? flagged.map((x) => `
+    <div class="flagitem" data-i="${x.i}">
+      <div class="where">Seed ${x.p.seed_number} · ${esc(x.p.id)}</div>
+      <div>${esc(x.p.known_text)} → <b>${esc(x.p.target_text)}</b></div>
+      ${x.d.note ? `<div class="note">⚑ ${esc(x.d.note)}</div>` : ''}
+    </div>`).join('') : '<div style="color:var(--muted)">No flags yet.</div>';
+  $('flaglist').querySelectorAll('.flagitem').forEach((el) =>
+    el.addEventListener('click', () => { $('dlgFlags').close(); goto(Number(el.dataset.i)); }));
+  $('dlgFlags').showModal();
+}
+$('copyFlags').addEventListener('click', () => {
+  const flagged = S.phrases.filter((p) => dec(p)?.status === 'flagged');
+  const md = [`# ${S.course} — proofread flags (${new Date().toISOString().slice(0, 10)})`, '',
+    ...flagged.map((p) => {
+      const d = dec(p);
+      return `- **${p.id}** (seed ${p.seed_number}): "${p.known_text}" → "${p.target_text}"${d.note ? `\n  - ${d.note}` : ''}`;
+    })].join('\n');
+  navigator.clipboard.writeText(md).then(() => toast('Report copied'));
+});
+
+// ---------- wiring ----------
+$('btnOk').addEventListener('click', () => decide('ok'));
+$('btnFlag').addEventListener('click', openFlag);
+$('btnBack').addEventListener('click', () => goto(idx - 1));
+$('btnApprove').addEventListener('click', approveSeed);
+$('btnFlags').addEventListener('click', openFlags);
+$('btnQueue').addEventListener('click', openQueue);
+$('queueCarry').addEventListener('click', () => { $('dlgQueue').close(); goto(resumeIdx); });
+$('jump').addEventListener('keydown', (e) => {
+  if (e.key !== 'Enter') return;
+  const n = Number($('jump').value);
+  if (phrasesOfSeed.has(n)) { goto(firstUndecidedOfSeed(n)); $('jump').value = ''; $('jump').blur(); }
+  else toast('No such seed');
+});
+
+document.addEventListener('keydown', (e) => {
+  if (document.querySelector('dialog[open]') || e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+  if (e.metaKey || e.ctrlKey || e.altKey) return;
+  const k = e.key.toLowerCase();
+  if (e.key === 'Enter' || e.key === ' ' || e.key === 'ArrowRight') { e.preventDefault(); decide('ok'); }
+  else if (e.key === 'ArrowLeft') { e.preventDefault(); goto(idx - 1); }
+  else if (k === 'f') { e.preventDefault(); openFlag(); }
+  else if (k === 'a') { e.preventDefault(); if (!$('btnApprove').disabled) approveSeed(); }
+  else if (k === 'g') { e.preventDefault(); $('jump').focus(); }
+  else if (k === 'l') { e.preventDefault(); openFlags(); }
+  else if (k === 'r') { e.preventDefault(); if (queueActive()) openQueue(); }
+});
+
+(async () => {
+  try {
+    S = await api('/api/state?refresh=1');
+    document.title = `Proofread — ${S.course}`;
+    $('loading').style.display = 'none';
+    if (S.offline) {
+      const when = S.fetchedAt ? new Date(S.fetchedAt).toLocaleString() : 'an earlier load';
+      $('offlineBar').innerHTML =
+        `<b>Showing saved data from ${when}</b> — the live database is not responding, `
+        + `so this may be behind. Your ok/flag marks are still being saved locally. `
+        + `Seed approval will fail until the database is back. Reload to retry.`;
+      $('offlineBar').classList.add('show');
+    }
+    build();
+    idx = resumeIdx = startIndex();
+    render();
+    // 2026-08-11: reloading dropped him at the reading frontier with the queue
+    // behind a button, so seeds left behind stayed invisible — the list opened on
+    // every load to make them impossible to miss.
+    // 2026-08-18: the load itself now lands on the earliest unchecked phrase in
+    // the course, wherever it sits, so when there IS unchecked work the modal is
+    // a dialog over the thing he was already put in front of. It still opens when
+    // nothing is unchecked, which is the one case it alone can answer: seeds fully
+    // reviewed and waiting to be approved. R still opens it any time.
+    if (!S.phrases.some(needsChecking) && reviewQueue().length) openQueue();
+  } catch (e) {
+    $('loading').innerHTML =
+      `<p><b>Could not load the course.</b></p>`
+      + `<p style="margin-top:10px">There is no saved copy to fall back on yet. `
+      + `Reload to retry.</p>`
+      + `<p style="margin-top:10px;font-size:12px;opacity:.7">${String(e.message).slice(0, 200)}</p>`;
+  }
+})();
+</script>
+</body>
+</html>

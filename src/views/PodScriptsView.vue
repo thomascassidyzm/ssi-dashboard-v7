@@ -149,6 +149,22 @@
               </span>
             </div>
 
+            <!-- What of this pod can actually be heard. -->
+            <div v-if="script.summary.audio" class="text-xs text-muted mb-3">
+              <span class="text-ink">{{ script.summary.audio.with_target }}</span> of
+              {{ script.summary.audio.lines }} lines have a whole-turn clip
+              <template v-if="script.summary.audio.without_target">
+                (<span class="text-danger">{{ script.summary.audio.without_target }} silent</span>)
+              </template>
+              · <span class="text-ink">{{ script.summary.audio.with_splits }}</span> have split clips
+              ({{ script.summary.audio.split_clips }} in all),
+              {{ script.summary.audio.without_splits }} have none
+              <template v-if="script.summary.audio.dangling">
+                · <span class="text-danger">{{ script.summary.audio.dangling }} references point at no clip at all</span>
+              </template>
+              · every button plays the learner's own bytes, through the learning-app proxy.
+            </div>
+
             <div v-if="script.summary.unknown_gender_voices.length" class="text-xs text-amber-300/90 mb-3">
               Gender could not be resolved for:
               <code>{{ script.summary.unknown_gender_voices.join(', ') }}</code> —
@@ -201,34 +217,86 @@
               >{{ v.message }}</span>
             </div>
 
-            <table class="w-full text-sm">
-              <tbody>
-                <tr
-                  v-for="line in scene.lines"
-                  :key="line.id"
-                  class="border-t border-line align-top"
-                  :class="rowClass(line)"
-                >
-                  <td class="px-3 py-2.5 w-10 text-right text-faint text-xs">{{ line.sentence_number }}</td>
-                  <td class="px-3 py-2.5 w-44">
-                    <div class="text-ink text-xs font-medium">{{ line.speaker }}</div>
-                    <div class="text-xs mt-0.5" :class="genderTextClass(line.voice && line.voice.gender)">
-                      {{ line.voice ? (line.voice.name || line.voice.voice_id) : 'no voice' }}
-                      <span class="text-faint">· {{ line.voice ? line.voice.label : 'uncast' }}</span>
-                    </div>
-                  </td>
-                  <td class="px-3 py-2.5 text-ink">{{ line.target_text }}</td>
-                  <td class="px-3 py-2.5 text-muted w-2/5">{{ line.known_text }}</td>
-                  <td class="px-2 py-2.5 w-8 text-center">
-                    <span
-                      v-if="line.worst"
-                      :title="line.flags.map(f => f.message).join(' · ')"
-                      :class="line.worst === 'fail' ? 'text-danger' : 'text-amber-300/90'"
-                    >●</span>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+            <!-- One line = its text and its clips, together. Tom, 2026-08-24:
+                 "I need the clips right there, that the DB is expecting the app
+                 to play." Divs rather than a table so it reads on a phone. -->
+            <div
+              v-for="line in scene.lines"
+              :key="line.id"
+              class="border-t border-line px-3 py-3"
+              :class="rowClass(line)"
+            >
+              <div class="flex items-baseline gap-2 flex-wrap mb-1">
+                <span class="text-faint text-xs w-6 text-right">{{ line.sentence_number }}</span>
+                <span class="text-ink text-xs font-medium">{{ line.speaker }}</span>
+                <span class="text-xs" :class="genderTextClass(line.voice && line.voice.gender)">
+                  {{ line.voice ? (line.voice.name || line.voice.voice_id) : 'no voice' }}
+                  <span class="text-faint">· {{ line.voice ? line.voice.label : 'uncast' }}</span>
+                </span>
+                <span
+                  v-if="line.worst"
+                  :title="line.flags.map(f => f.message).join(' · ')"
+                  :class="line.worst === 'fail' ? 'text-danger' : 'text-amber-300/90'"
+                >●</span>
+              </div>
+
+              <div class="pl-8">
+                <div class="text-ink">{{ line.target_text }}</div>
+                <div class="text-muted text-sm mt-0.5">{{ line.known_text }}</div>
+
+                <!-- THE CLIPS. Every button below plays the exact bytes the
+                     learner is served: the learning-app proxy, with the same
+                     per-clip revision ref the learner app builds. -->
+                <div class="flex items-center gap-1.5 flex-wrap mt-2">
+                  <button
+                    v-if="line.audio.target"
+                    @click="play(line.audio.target)"
+                    :class="['clip-btn', 'clip-primary', isPlaying(line.audio.target) && 'clip-on', line.audio.target.found === false && 'clip-dead']"
+                    :title="clipTitle(line.audio.target)"
+                  >{{ isPlaying(line.audio.target) ? '■' : '▶' }} Whole turn{{ dur(line.audio.target) }}</button>
+                  <span v-else class="clip-none">no target clip</span>
+
+                  <template v-if="line.audio.target_splits.length">
+                    <span class="text-faint text-xs ml-1">splits</span>
+                    <button
+                      v-for="(c, i) in line.audio.target_splits"
+                      :key="c.id + i"
+                      @click="play(c)"
+                      :class="['clip-btn', isPlaying(c) && 'clip-on', c.found === false && 'clip-dead']"
+                      :title="clipTitle(c)"
+                    >{{ isPlaying(c) ? '■' : '▶' }} {{ i + 1 }}</button>
+                  </template>
+                  <span v-else class="clip-none">no split clips</span>
+
+                  <span class="w-2"></span>
+
+                  <button
+                    v-if="line.audio.known"
+                    @click="play(line.audio.known)"
+                    :class="['clip-btn', isPlaying(line.audio.known) && 'clip-on', line.audio.known.found === false && 'clip-dead']"
+                    :title="clipTitle(line.audio.known)"
+                  >{{ isPlaying(line.audio.known) ? '■' : '▶' }} English</button>
+                  <span v-else class="clip-none">no English clip</span>
+
+                  <button
+                    v-for="(c, i) in line.audio.known_splits"
+                    :key="'k' + c.id + i"
+                    @click="play(c)"
+                    :class="['clip-btn', isPlaying(c) && 'clip-on', c.found === false && 'clip-dead']"
+                    :title="clipTitle(c)"
+                  >{{ isPlaying(c) ? '■' : '▶' }} EN {{ i + 1 }}</button>
+
+                  <button
+                    v-if="line.audio.explainer"
+                    @click="play(line.audio.explainer)"
+                    :class="['clip-btn', isPlaying(line.audio.explainer) && 'clip-on', line.audio.explainer.found === false && 'clip-dead']"
+                    :title="clipTitle(line.audio.explainer)"
+                  >{{ isPlaying(line.audio.explainer) ? '■' : '▶' }} Explainer</button>
+                </div>
+
+                <div v-if="playError && playErrorId === lastTried" class="text-danger text-xs mt-1">{{ playError }}</div>
+              </div>
+            </div>
           </div>
 
           <div v-if="!visibleScenes.length" class="text-faint text-center py-12">
@@ -251,7 +319,7 @@
  * estate's one definition of "cast correctly". This component renders; it does
  * not judge, and it never writes.
  */
-import { ref, computed, onMounted, watch } from 'vue'
+import { ref, computed, onMounted, onBeforeUnmount, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { getApiUrl } from '@/services/api.js'
 
@@ -317,6 +385,70 @@ const rowClass = (line) =>
     : line.worst === 'warn' ? 'ps-row-warn bg-amber-950/20'
       : ''
 
+// ── PLAYBACK ────────────────────────────────────────────────────────────────
+// Tom, 2026-08-24: "this is pointless unless I can actually hear it — I don't
+// need all this details, I need the clips right there, that the DB is expecting
+// the app to play."
+//
+// So the URL is the LEARNER's URL, built server-side in
+// tools/pods/pod-script-view.cjs: the deployed learning-app proxy, with the
+// per-clip revision ref (`<uuid>.vN` for a revised clip) the learner app itself
+// builds. Popty never presigns S3 here — a presigned link is a different set of
+// bytes from a different path, and the whole point of this page is that what
+// Tom hears is what the learner hears.
+//
+// One <audio> element for the whole page: tapping a second clip stops the
+// first, which is what you want when you are comparing two voices.
+const audioEl = ref(null)
+const playingRef = ref(null)
+const playError = ref(null)
+const playErrorId = ref(null)
+const lastTried = ref(null)
+
+const isPlaying = (c) => Boolean(c && playingRef.value === c.ref)
+
+function play (clip) {
+  if (!clip || !clip.url) return
+  if (!audioEl.value) {
+    audioEl.value = new Audio()
+    audioEl.value.addEventListener('ended', () => { playingRef.value = null })
+    audioEl.value.addEventListener('error', () => {
+      playError.value = 'That clip would not play from the learner proxy.'
+      playErrorId.value = lastTried.value
+      playingRef.value = null
+    })
+  }
+  const el = audioEl.value
+  if (playingRef.value === clip.ref) { el.pause(); playingRef.value = null; return }
+  playError.value = null
+  lastTried.value = clip.ref
+  el.src = clip.url
+  el.currentTime = 0
+  playingRef.value = clip.ref
+  el.play().catch((e) => {
+    playError.value = `Could not play: ${e && e.message ? e.message : e}`
+    playErrorId.value = clip.ref
+    playingRef.value = null
+  })
+}
+
+const dur = (c) => (c && c.duration_ms ? ` ${(c.duration_ms / 1000).toFixed(1)}s` : '')
+
+// The tooltip carries what the clip actually IS — the text it was rendered
+// from, its voice, its revision — because a clip that plays the wrong words is
+// the defect this page was built to catch.
+const clipTitle = (c) => {
+  if (!c) return ''
+  if (c.found === false) return `${c.id} — NO course_audio row. This reference is dangling; nothing will play.`
+  const bits = [c.text ? `“${c.text}”` : '(no text on the clip)']
+  if (c.voice_id) bits.push(`voice ${c.voice_id}`)
+  bits.push(c.revision && c.revision > 1 ? `revision ${c.revision}` : 'revision 1')
+  bits.push(c.url)
+  return bits.join(' · ')
+}
+
+onBeforeUnmount(() => { if (audioEl.value) { audioEl.value.pause(); audioEl.value.src = '' } })
+
 async function loadFleet () {
   fleetLoading.value = true
   fleetError.value = null
@@ -338,6 +470,7 @@ async function loadScript () {
   loading.value = true
   error.value = null
   filter.value = null
+  if (audioEl.value) { audioEl.value.pause(); playingRef.value = null }
   try {
     const q = new URLSearchParams({ track: track.value })
     if (route.query.slug) q.set('slug', String(route.query.slug))
@@ -377,6 +510,24 @@ onMounted(() => {
   invisible on a white canvas.
 -->
 <style scoped>
+/* Clip buttons. Big enough to hit with a thumb — Tom reads this on his phone. */
+.clip-btn {
+  font-size: 0.75rem;
+  line-height: 1;
+  padding: 0.45rem 0.6rem;
+  min-width: 2.1rem;
+  border-radius: 0.375rem;
+  border: 1px solid rgb(var(--line, 63 63 70) / 1);
+  color: inherit;
+  opacity: 0.92;
+}
+.clip-btn:hover { border-color: #34d399; opacity: 1; }
+.clip-primary { padding-inline: 0.8rem; font-weight: 600; }
+.clip-on { background-color: #059669; border-color: #059669; color: #fff; }
+/* A dangling reference is shown, never hidden and never made to look playable. */
+.clip-dead { border-color: #b91c1c; color: #f87171; text-decoration: line-through; }
+.clip-none { font-size: 0.7rem; opacity: 0.6; font-style: italic; }
+
 :global([data-theme="light"]) .ps-f { color: #be123c; border-color: #fda4af; }
 :global([data-theme="light"]) .ps-m { color: #0369a1; border-color: #7dd3fc; }
 :global([data-theme="light"]) .ps-unknown { color: #78350f; border-color: #d97706; }

@@ -5,7 +5,7 @@
       <div class="flex items-center gap-3 mb-6 text-sm">
         <router-link to="/" class="link-emerald">Home</router-link>
         <span class="text-faint">/</span>
-        <router-link :to="`/production/${courseCode}`" class="link-emerald">{{ courseCode }}</router-link>
+        <router-link :to="`/production/${courseCode}`" class="link-emerald">{{ getCourseName(courseCode) }}</router-link>
         <span class="text-faint">/</span>
         <router-link :to="`/production/${courseCode}/pods`" class="link-emerald">Pods</router-link>
         <span class="text-faint">/</span>
@@ -24,11 +24,47 @@
           <div class="flex items-center gap-3 mb-2">
             <h1 class="text-3xl font-bold text-emerald">{{ pod.title }}</h1>
             <span :class="podTypeClass(pod.pod_type)" class="text-xs px-2 py-0.5 rounded-full">{{ pod.pod_type }}</span>
+            <span :class="isHeld ? 'vis-held' : 'vis-live'" class="vis-badge">{{ isHeld ? 'HELD' : 'LIVE' }}</span>
           </div>
           <div class="text-muted text-sm">
             <code class="text-emerald">{{ pod.id }}</code>
             · {{ sentences.length }} sentences
             <span v-if="pod.source_file"> · from <code>{{ pod.source_file }}</code></span>
+          </div>
+        </div>
+
+        <!-- HOLD / RELEASE (Tom, 2026-08-23: keep a pod back "until … after all
+             until they exist!!!"). Held = RLS hides this pod and every line in
+             it from the learner app. Popty reads with the service role, so this
+             page keeps working on a held pod — that is the point. Releasing is a
+             human act and asks first; holding is one tap. -->
+        <div class="mb-6 rounded-lg p-4 text-sm" :class="isHeld ? 'vis-panel-held' : 'bg-surface border border-line'">
+          <div class="flex items-center justify-between gap-3 flex-wrap">
+            <div class="min-w-0">
+              <div class="font-semibold" :class="isHeld ? '' : 'text-ink'">
+                {{ isHeld ? 'Held back — no learner can reach this pod' : 'Live — learners can reach this pod now' }}
+              </div>
+              <div class="text-xs mt-1" :class="isHeld ? '' : 'text-muted'">
+                <template v-if="isHeld">
+                  The pod and every line in it are invisible in the app. Release it when it is
+                  finished and you have listened to it — nothing releases itself.
+                </template>
+                <template v-else>
+                  Hold it back to take it off learners while it is being recorded or fixed. Nothing
+                  is deleted and no progress moves.
+                </template>
+              </div>
+              <div v-if="visTrail" class="text-xs mt-1 opacity-80">{{ visTrail }}</div>
+              <div v-if="visError" class="text-xs mt-1 text-danger">{{ visError }}</div>
+            </div>
+            <button
+              :disabled="visBusy"
+              @click="setVisibility(isHeld ? 'live' : 'held')"
+              class="px-4 py-2 text-sm rounded border font-medium whitespace-nowrap disabled:opacity-50"
+              :class="isHeld ? 'vis-btn-release' : 'vis-btn-hold'"
+            >
+              {{ visBusy ? 'Saving…' : (isHeld ? 'Release to learners' : 'Hold back from learners') }}
+            </button>
           </div>
         </div>
 
@@ -56,7 +92,11 @@
           </div>
         </div>
         <div v-else-if="draftsLoaded" class="mb-6 bg-surface border border-line rounded-lg px-4 py-2 text-xs text-muted">
-          No lines are awaiting proofread — every {{ targetName }} line here has been read by a human.
+          <!-- "No drafts left" is all this can honestly claim. The marker column dates from
+               2026-08-06 and defaults to false, so an unmarked line is one nobody recorded a
+               verdict on — it is not evidence that a human read it. -->
+          No lines are marked as awaiting proofread. Lines are only marked from 6 August 2026
+          onward, so anything older is unmarked whether or not a human has read it.
         </div>
 
         <!-- Metadata (hosts / design notes) -->
@@ -193,6 +233,41 @@
           <div v-if="audioError" class="mt-3 text-xs err-inline rounded px-2 py-1">{{ audioError }}</div>
         </div>
 
+        <!-- LISTEN. Hearing a pod's recordings used to mean opening the
+             recording room and ticking "Re-read lines I've already recorded" —
+             a box that reads like "I am about to overwrite my work" (Aran, via
+             Tom, 2026-08-23). The per-line play buttons below always worked;
+             what was missing was a way in that says so, whose voice you are
+             hearing, and being able to let a run of lines play on a phone.
+             Playback only — nothing on this page writes. -->
+        <div class="mb-6 bg-surface border border-line rounded-lg p-4 text-sm card-sep">
+          <div class="flex items-center justify-between gap-3 flex-wrap">
+            <div class="flex flex-col gap-1 min-w-0">
+              <div class="text-ink font-semibold">Listen to this pod</div>
+              <div class="text-faint text-xs">
+                <template v-if="humanClipCount">
+                  {{ humanClipCount }} human take{{ humanClipCount === 1 ? '' : 's' }}<span v-if="humanVoiceNames.length"> by {{ humanVoiceNames.join(' and ') }}</span> ·
+                </template>
+                {{ playableTargets.length }} of {{ sentences.length }} {{ targetName }} lines have audio.
+                Tap ▶ on a line to hear it, or ▶▶ to play on down the list.
+              </div>
+            </div>
+            <div class="flex gap-2">
+              <button
+                @click="playAllTargets"
+                :disabled="!playableTargets.length"
+                class="px-3 py-1.5 text-xs rounded bg-emerald-700 hover:bg-emerald-600 text-emerald-100 disabled:opacity-50 disabled:cursor-not-allowed"
+                :title="`Play every ${targetName} line that has audio, in order`"
+              >▶ Play all {{ targetName }} lines ({{ playableTargets.length }})</button>
+              <button
+                v-if="isPlaying"
+                @click="stopPlayback"
+                class="px-3 py-1.5 text-xs rounded border border-line text-ink hover:border-emerald-600"
+              >Stop</button>
+            </div>
+          </div>
+        </div>
+
         <!-- Scenes and sentences -->
         <div v-for="scene in groupedScenes" :key="scene.number" class="mb-8">
           <h2 class="text-sm uppercase tracking-wide text-faint mb-2 flex items-center gap-3">
@@ -211,7 +286,7 @@
               <!-- Sentence row -->
               <div
                 class="bg-surface border rounded px-3 py-2 grid grid-cols-[32px_110px_1fr_auto] gap-3 items-start text-sm row-sep"
-                :class="isDraft(sent) ? 'draft-row' : 'border-line'"
+                :class="[isDraft(sent) ? 'draft-row' : 'border-line', isRowPlaying(sent) ? 'row-playing' : '']"
               >
                 <div class="text-faint font-mono text-xs tabular-nums pt-0.5">{{ sent.global_order }}</div>
                 <div class="text-muted text-xs truncate pt-0.5" :title="sent.speaker">{{ sent.speaker }}</div>
@@ -221,7 +296,14 @@
                     <!-- Unproofread machine draft: say so before the words, so
                          nobody reads them believing they are final. -->
                     <div v-if="isDraft(sent)" class="draft-badge">DRAFT — AWAITING PROOFREAD</div>
-                    <div class="text-ink truncate" :title="sent.target_text">{{ sent.target_text }}</div>
+                    <!-- Target text carries its OWN direction. Arabic under an
+                         LTR paragraph pushes trailing neutrals (! . , quotes)
+                         to the visual right; `dir` on the painting element is
+                         the fix. `text-left` pins the alignment back, because
+                         dir="rtl" would otherwise right-align this line while
+                         the known line below it stayed left — a layout change
+                         nobody asked for. -->
+                    <div class="text-ink truncate text-left bidi-isolate" :dir="dirFor(sent.target_text)" :title="sent.target_text">{{ sent.target_text }}</div>
                     <div class="text-faint text-xs truncate" :title="sent.known_text">{{ sent.known_text }}</div>
                     <!-- Stage-1 explainer (inline, only when populated) -->
                     <div
@@ -229,12 +311,15 @@
                       class="explainer-note text-xs mt-1 italic leading-snug"
                       :title="sent.explainer_text"
                     >
-                      <span class="explainer-icon not-italic mr-1">ⓘ</span>{{ sent.explainer_text }}
+                      <!-- Mixed-language narration sharing a line with the ⓘ
+                           glyph: isolate just the text run so the icon keeps
+                           its place whichever way the narration reads. -->
+                      <span class="explainer-icon not-italic mr-1">ⓘ</span><span class="bidi-isolate" :dir="dirFor(sent.explainer_text)">{{ sent.explainer_text }}</span>
                     </div>
                   </template>
                   <!-- Edit mode -->
                   <div v-else class="space-y-1.5">
-                    <textarea v-model="editBuf.target" rows="1" dir="auto"
+                    <textarea v-model="editBuf.target" rows="1" :dir="dirFor(editBuf.target)"
                       class="w-full bg-canvas border border-emerald-700 rounded px-2 py-1 text-ink text-sm resize-y outline-none" placeholder="target" />
                     <textarea v-model="editBuf.known" rows="1"
                       class="w-full bg-canvas border border-line rounded px-2 py-1 text-muted text-xs resize-y outline-none" placeholder="known / translation" />
@@ -260,15 +345,23 @@
                     v-if="sent.target_audio_id"
                     @click="playAudio(sent.target_audio_id)"
                     :class="['px-2 py-1 text-xs rounded transition-colors', playingId === sent.target_audio_id ? 'bg-emerald-700 text-emerald-100' : 'bg-surface-2 hover:bg-emerald-700 text-ink hover:text-emerald-100']"
-                    :title="`Play target (${targetName})`"
-                  >{{ targetFlag }}</button>
+                    :title="clipTitle(sent, 'target')"
+                  >▶{{ targetFlag }}</button>
                   <span v-else class="px-2 py-1 text-xs text-faint" title="No target audio">{{ targetFlag }}</span>
+                  <!-- Play on down the list from this line. The whole point of
+                       listening on a phone is not tapping 231 times. -->
+                  <button
+                    v-if="sent.target_audio_id"
+                    @click="playFrom(sent)"
+                    class="px-2 py-1 text-xs rounded transition-colors bg-surface-2 hover:bg-emerald-700 text-ink hover:text-emerald-100"
+                    :title="`Play from here to the end of the pod (${targetName} lines)`"
+                  >▶▶</button>
                   <button
                     v-if="sent.known_audio_id"
                     @click="playAudio(sent.known_audio_id)"
                     :class="['px-2 py-1 text-xs rounded transition-colors', playingId === sent.known_audio_id ? 'bg-emerald-700 text-emerald-100' : 'bg-surface-2 hover:bg-emerald-700 text-ink hover:text-emerald-100']"
-                    :title="`Play known (${knownName})`"
-                  >{{ knownFlag }}</button>
+                    :title="clipTitle(sent, 'known')"
+                  >▶{{ knownFlag }}</button>
                   <span v-else class="px-2 py-1 text-xs text-faint" title="No known audio">{{ knownFlag }}</span>
                   <button
                     v-if="sent.explainer_audio_id"
@@ -311,10 +404,13 @@ import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { useRoute } from 'vue-router'
 import { getApiUrl } from '@/services/api.js'
 import { useAuth } from '@/composables/useAuth.js'
+import { getLanguageName, useCourses } from '@/composables/useCourses.js'
+import { dirFor } from '@/utils/textDirection.js'
 
 const route = useRoute()
 const courseCode = route.params.courseCode
 const slug = route.params.slug
+const { getCourseName } = useCourses()
 
 // Flag + name for each SSi language code. England/Wales/Scotland use regional
 // tag sequences — NOT 🇬🇧 — so an English course shows St George's cross.
@@ -326,19 +422,16 @@ const LANG_FLAGS = {
   ara: '🇸🇦', ara_sy: '🇸🇾',
   gle: '🇮🇪', nld: '🇳🇱', hrv: '🇭🇷',
 }
-const LANG_NAMES = {
-  eng: 'English', cym: 'Welsh', gae: 'Scottish Gaelic',
-  spa: 'Spanish', fra: 'French', deu: 'German', ita: 'Italian',
-  por: 'Portuguese', por_br: 'Brazilian Portuguese',
-  zho: 'Chinese', jpn: 'Japanese', kor: 'Korean',
-  ara: 'Arabic', ara_sy: 'Syrian Arabic',
-  gle: 'Irish', nld: 'Dutch', hrv: 'Croatian',
-}
 const [targetLang, knownLang] = String(courseCode).split('_for_')
-const targetFlag = LANG_FLAGS[targetLang] || '🌐'
-const knownFlag = LANG_FLAGS[knownLang] || '🌐'
-const targetName = LANG_NAMES[targetLang] || targetLang || 'target'
-const knownName = LANG_NAMES[knownLang] || knownLang || 'known'
+// Dialect codes fall back to their base language for the flag: cym_n flies the
+// same Welsh flag as cym. Names come from the shared course table, which knows
+// the dialects by name ("Welsh (North)") — a private copy here once left the
+// drafts panel counting "109 cym_n lines".
+const flagFor = (code) => LANG_FLAGS[code] || LANG_FLAGS[String(code || '').split('_')[0]] || '🌐'
+const targetFlag = flagFor(targetLang)
+const knownFlag = flagFor(knownLang)
+const targetName = computed(() => getLanguageName(targetLang, 'target'))
+const knownName = computed(() => getLanguageName(knownLang, 'known'))
 
 const pod = ref(null)
 const sentences = ref([])
@@ -478,6 +571,39 @@ function playPair(targetId, knownId) {
   playNext()
 }
 
+// --- Play-through -----------------------------------------------------------
+// Same queue playPair already used, over a run of lines instead of a pair.
+// Display order, not row order: what you hear must match what you are reading,
+// including when the DRAFT filter is on.
+const orderedSentences = computed(() => groupedScenes.value.flatMap(s => s.sentences))
+const playableTargets = computed(() =>
+  orderedSentences.value.map(s => s.target_audio_id).filter(Boolean)
+)
+const isPlaying = computed(() => playingId.value !== null)
+const isRowPlaying = (sent) => !!playingId.value && [
+  sent.target_audio_id, sent.known_audio_id, sent.explainer_audio_id,
+].includes(playingId.value)
+
+function startQueue(ids) {
+  if (!ids.length) return
+  playQueue.value = ids.slice()
+  playNext()
+}
+
+function playAllTargets() { startQueue(playableTargets.value) }
+
+function playFrom(sent) {
+  const list = orderedSentences.value
+  const i = list.findIndex(s => s.id === sent.id)
+  startQueue(list.slice(i < 0 ? 0 : i).map(s => s.target_audio_id).filter(Boolean))
+}
+
+function stopPlayback() {
+  playQueue.value = []
+  if (audioEl.value) { audioEl.value.pause(); audioEl.value.src = '' }
+  playingId.value = null
+}
+
 function playNext() {
   if (playQueue.value.length === 0) {
     playingId.value = null
@@ -507,6 +633,57 @@ async function loadPod() {
     error.value = err.message
   } finally {
     loading.value = false
+  }
+}
+
+// --- Hold / release: learner reachability (Tom, 2026-08-23) ---------------
+// `listening_pods.visibility`, gated in RLS. Fail closed to match
+// src/lib/servingPod.js: anything that is not explicitly 'live' reads as held.
+const visBusy = ref(false)
+const visError = ref('')
+const isHeld = computed(() => pod.value?.visibility !== 'live')
+
+// The trail the endpoint writes into metadata — who did it and when. Shown so
+// "why is this held?" has an answer on the page rather than in a log.
+const visTrail = computed(() => {
+  const m = pod.value?.metadata
+  if (!m) return ''
+  const parts = []
+  if (m.held_at) parts.push(`Held ${shortDate(m.held_at)}${m.held_by ? ` by ${m.held_by}` : ''}`)
+  if (m.released_at) parts.push(`Released ${shortDate(m.released_at)}${m.released_by ? ` by ${m.released_by}` : ''}`)
+  return parts.join(' · ')
+})
+
+function shortDate(iso) {
+  const d = new Date(iso)
+  return Number.isNaN(d.getTime()) ? iso : d.toISOString().slice(0, 10)
+}
+
+async function setVisibility(next) {
+  if (!pod.value || visBusy.value) return
+  // Releasing puts content in front of learners and cannot be un-seen, so it
+  // asks. Holding does not: erring towards invisible is always the safe way.
+  if (next === 'live') {
+    const msg = `Release ${pod.value.title || slug} to learners on ${courseCode}?\n\n`
+      + 'From the moment you confirm, every learner on this course can hear this pod. '
+      + 'Only release it if it is finished and you have listened to it.'
+    if (!window.confirm(msg)) return
+  }
+  visBusy.value = true
+  visError.value = ''
+  try {
+    const res = await authedFetch(`/api/admin/pods/${courseCode}/${slug}/visibility`, {
+      method: 'POST',
+      // `confirm` is the endpoint's deliberate-act token — it must name the pod.
+      body: JSON.stringify({ visibility: next, ...(next === 'live' ? { confirm: pod.value.id } : {}) }),
+    })
+    const body = await res.json()
+    if (!res.ok) throw new Error(body?.error || `HTTP ${res.status}`)
+    await loadPod()
+  } catch (err) {
+    visError.value = err?.message || String(err)
+  } finally {
+    visBusy.value = false
   }
 }
 
@@ -756,23 +933,67 @@ async function loadRecordingStatus() {
     const map = {}
     for (const s of podReport.sentences || []) map[s.sentenceId] = s.kinds || {}
     recBySentence.value = map
+    // Pretty names for voice IDS THE CLIPS ACTUALLY CARRY. The cast is only a
+    // lookup table here: it is the plan for the NEXT render and disagrees with
+    // the audio already on the pod (cym_n pod-0 was cast to five HUMAN_*
+    // placeholders while every clip was Aran's own human_aran_cym_n), so a
+    // voice that isn't in the cast shows its raw id rather than a cast name.
+    const names = {}
+    for (const v of data.voices || []) if (v.voiceId && v.name) names[v.voiceId] = v.name
+    voiceNames.value = names
   } catch { /* coverage is additive — never block the page */ }
 }
 
-// One compact status chip per sentence: human a/n (recorded lines / lines),
-// tts when machine-voiced only, dim em-dash when nothing is voiced yet.
+const voiceNames = ref({})
+const voiceLabel = (voiceId) => (voiceId ? (voiceNames.value[voiceId] || voiceId) : null)
+
+/** Every human take on this pod, and the distinct voices that recorded them. */
+const humanKinds = computed(() => {
+  const map = recBySentence.value
+  if (!map) return []
+  return Object.values(map).flatMap(kinds => Object.values(kinds)).filter(k => k.recorded)
+})
+const humanClipCount = computed(() => humanKinds.value.length)
+const humanVoiceNames = computed(() =>
+  [...new Set(humanKinds.value.map(k => voiceLabel(k.voiceId)).filter(Boolean))]
+)
+
+/** Play-button tooltip: whose voice this clip is, read from the clip. */
+function clipTitle(sent, kind) {
+  const langName = kind === 'target' ? targetName.value : knownName.value
+  const k = recBySentence.value?.[sent.id]?.[kind]
+  if (!k) return `Play ${kind} (${langName})`
+  if (k.recorded) return `Play ${kind} (${langName}) — human take by ${voiceLabel(k.voiceId) || 'an unnamed voice'}`
+  if (k.origin === 'tts') return `Play ${kind} (${langName}) — TTS voice ${voiceLabel(k.voiceId) || 'unknown'}`
+  return `Play ${kind} (${langName})`
+}
+
+// One compact status chip per sentence. When a line has human takes it names
+// the VOICE — that is the whole reason for listening — falling back to the
+// human n/m count when the clip carries no voice id.
 function recChip(sent) {
   const kinds = recBySentence.value?.[sent.id]
   if (!kinds) return null
   const entries = Object.values(kinds)
   if (!entries.length) return null
-  const human = entries.filter(k => k.recorded).length
+  const humanEntries = entries.filter(k => k.recorded)
+  const human = humanEntries.length
   const tts = entries.filter(k => k.origin === 'tts').length
   const title = Object.entries(kinds)
-    .map(([kind, k]) => `${kind}: ${k.recorded ? 'human' : (k.origin || 'missing')}`)
+    .map(([kind, k]) => `${kind}: ` + (k.recorded
+      ? `human take by ${voiceLabel(k.voiceId) || 'an unnamed voice'}`
+      : (k.origin === 'tts' ? `tts (${voiceLabel(k.voiceId) || 'unknown voice'})` : 'not recorded')))
     .join(' · ')
-  if (human === entries.length) return { text: `human ${human}/${entries.length}`, cls: 'pill-emerald', title }
-  if (human > 0) return { text: `human ${human}/${entries.length}`, cls: 'pill-amber', title }
+  if (human > 0) {
+    const voices = [...new Set(humanEntries.map(k => voiceLabel(k.voiceId)).filter(Boolean))]
+    const who = voices.length ? voices.join(' + ') : 'human'
+    const partial = human < entries.length
+    return {
+      text: partial ? `${who} ${human}/${entries.length}` : who,
+      cls: partial ? 'pill-amber' : 'pill-emerald',
+      title,
+    }
+  }
   if (tts > 0) return { text: 'tts', cls: 'bg-surface text-faint border border-line', title }
   return { text: '—', cls: 'bg-surface text-faint border border-line', title }
 }
@@ -803,6 +1024,22 @@ onUnmounted(() => {
 .pill-emerald { background: rgba(6, 78, 59, 0.4); color: #6ee7b7; border: 1px solid #047857; }
 .pill-purple { background: rgba(59, 7, 100, 0.4); color: #d8b4fe; border: 1px solid #7e22ce; }
 .pill-amber { background: rgba(120, 53, 15, 0.3); color: #fcd34d; border: 1px solid #92400e; }
+
+/* HELD / LIVE — learner reachability (Tom, 2026-08-23). HELD is red and solid:
+   "nobody can reach this" is the surprising state and the one that must never
+   be missed on a phone. LIVE stays quiet, in the same emerald as pill-emerald. */
+.vis-badge { font-weight: 800; letter-spacing: 0.08em; font-size: 0.7rem; border-radius: 3px; padding: 0.1rem 0.4rem; }
+.vis-held { background: #dc2626; color: #fff; }
+.vis-live { background: rgba(6, 78, 59, 0.4); color: #6ee7b7; border: 1px solid #047857; }
+.vis-panel-held { background: rgba(127, 29, 29, 0.35); border: 1px solid #b91c1c; color: #fecaca; }
+.vis-btn-hold { border-color: #b91c1c; color: #fca5a5; }
+.vis-btn-hold:hover { border-color: #dc2626; }
+.vis-btn-release { border-color: #047857; color: #6ee7b7; }
+.vis-btn-release:hover { border-color: #34d399; }
+[data-theme="light"] .vis-live { background: #d1fae5; color: #065f46; border-color: #6ee7b7; }
+[data-theme="light"] .vis-panel-held { background: #fef2f2; border-color: #dc2626; color: #991b1b; }
+[data-theme="light"] .vis-btn-hold { color: #991b1b; border-color: #dc2626; }
+[data-theme="light"] .vis-btn-release { color: #065f46; border-color: #047857; }
 
 /* Big error banner + inline error rows. Dark = red-900/red-700/red-200/300. */
 .err-box { background: rgba(127, 29, 29, 0.4); border: 1px solid #b91c1c; color: #fecaca; }
@@ -871,6 +1108,12 @@ onUnmounted(() => {
   letter-spacing: 0.07em;
 }
 .draft-row { border-color: var(--color-tungsten, #ffa630); }
+/* The line you are hearing right now. Emerald edge only — during a play-through
+   down 231 lines this is the only thing telling you where you are. */
+.row-playing {
+  border-color: #10b981;
+  box-shadow: inset 3px 0 0 #10b981;
+}
 .draft-filter-btn {
   border: 1px solid var(--color-tungsten, #ffa630);
   color: var(--color-tungsten, #ffa630);

@@ -57,13 +57,20 @@ app.use('/api/brief', require('./briefs/index.cjs'));
 
 // ─── Health check ─────────────────────────────────────────────────────
 
-app.get('/health', (req, res) => res.json({ ok: true }));
+// `build` is the commit this process STARTED from, frozen at require time —
+// see services/shared/build-identity.cjs. The staleness watchdog reads it.
+const { identity: buildIdentity } = require('./shared/build-identity.cjs');
+
+app.get('/health', (req, res) => res.json({ ok: true, build: buildIdentity() }));
 
 // ─── Start server ─────────────────────────────────────────────────────
 
 const PORT = process.env.COURSE_BUILDER_PORT || 3471;
+// Bind loopback-only by default — watson-1 has a public IP, so a bare listen()
+// (all interfaces) exposes this service to the internet. Override via BIND_HOST.
+const HOST = process.env.BIND_HOST || '127.0.0.1';
 
-app.listen(PORT, () => {
+app.listen(PORT, HOST, () => {
   console.log(`\n╔══════════════════════════════════════════════════════════════╗`);
   console.log(`║  Course Builder API - Port ${PORT}                            ║`);
   console.log(`╠══════════════════════════════════════════════════════════════╣`);

@@ -543,7 +543,11 @@
             <div class="flex items-start gap-2 flex-wrap">
               <span class="text-base font-medium text-ink">{{ seedViewSeedText.known_text || '…' }}</span>
               <span class="text-faint text-sm mt-0.5">→</span>
-              <span class="text-base text-emerald-400">{{ seedViewSeedText.target_text || '…' }}</span>
+              <span
+                class="text-base text-emerald-400"
+                :dir="dirFor(seedViewSeedText.target_text)"
+                style="unicode-bidi: isolate"
+              >{{ seedViewSeedText.target_text || '…' }}</span>
             </div>
           </div>
           <div v-if="seedViewLoading" class="text-sm text-faint animate-pulse py-2">Loading...</div>
@@ -557,7 +561,11 @@
                   <span class="text-[10px] px-1 rounded font-mono" :class="(lego.meta.type || lego.meta.lego_type) === 'M' ? 'bg-violet-900/40 text-violet-400' : 'bg-surface-2/40 text-muted'">{{ lego.meta.type || lego.meta.lego_type }}</span>
                   <span class="text-base font-medium text-ink">{{ lego.meta.known_text }}</span>
                   <span class="text-faint text-sm">→</span>
-                  <span class="text-base font-medium text-emerald-400">{{ lego.meta.target_text }}</span>
+                  <span
+                    class="text-base font-medium text-emerald-400"
+                    :dir="dirFor(lego.meta.target_text)"
+                    style="unicode-bidi: isolate"
+                  >{{ lego.meta.target_text }}</span>
                 </template>
               </div>
               <!-- Phrases -->
@@ -567,7 +575,11 @@
                 </span>
                 <span class="text-ink">{{ phrase.known_text }}</span>
                 <span class="text-faint shrink-0">→</span>
-                <span class="text-muted">{{ phrase.target_text }}</span>
+                <span
+                  class="text-muted"
+                  :dir="dirFor(phrase.target_text)"
+                  style="unicode-bidi: isolate"
+                >{{ phrase.target_text }}</span>
               </div>
             </div>
           </div>
@@ -609,6 +621,7 @@
 import { ref, computed, watch, onMounted, onUnmounted, nextTick } from 'vue'
 import { useRouter } from 'vue-router'
 import { getApiUrl, fetchJson } from '@/services/api'
+import { dirFor } from '@/utils/textDirection.js'
 import { useBuildMonitor } from '@/composables/useBuildMonitor'
 import { isConfigured as isSupabaseConfigured, getCourseProgress, getSeedGrid as sbGetSeedGrid, getSeedDetail } from '@/services/supabase'
 

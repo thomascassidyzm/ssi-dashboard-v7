@@ -18,6 +18,7 @@
 const { claudeChat, HAIKU_MODEL } = require('../shared/claude-cli.cjs')
 const { getName: getLangEnglishName, databaseToManifest } = require('../language-code-service.cjs')
 const createLogger = require('../shared/logger.cjs')
+const { canonicalVoiceId } = require('../shared/clip-identity.cjs')
 
 const logger = createLogger('PresentationAuthor')
 
@@ -27,6 +28,9 @@ const SONNET_MODEL = process.env.CLAUDE_SONNET_MODEL || 'sonnet'
 // Presentation intros are known-language audio, so English-known courses
 // default to the clone unless voice_config explicitly says otherwise.
 const ENG_PRESENTATION_VOICE = 'xai_gfzdpspr5fdp'
+
+// Last resort when a course carries no presentation and no known voice at all.
+const DEFAULT_PRESENTATION_VOICE = 'azure_en-GB-SoniaNeural'
 
 /**
  * Get the presentation template (Frame B) for a known language, creating and
@@ -307,21 +311,27 @@ async function recordAuthorFlags(supabase, courseCode, flags) {
  * config is respected.
  * Other known languages: explicit presentation config, else the known-role
  * voice (intros are known-language audio).
+ *
+ * The return value is a course_audio.voice_id, so it is CANONICAL on every
+ * path. It used to have four returns in two spellings — two prefixed, two bare
+ * — which is how one presentation voice ended up filed under two identities
+ * (and how a pending row failed to reconcile with the row that later replaced
+ * it). Throws rather than guessing: a voice nobody can spell is a voice no
+ * reader can find, and the caller degrades that to "no voice configured".
  */
 function resolvePresentationVoiceId(course) {
   const cfg = course.voice_config || {}
   const voices = cfg.voices || cfg
   const pres = voices.presentation
   if (course.known_lang === 'eng') {
-    if (pres?.provider === 'xai' && pres?.voiceId) return `xai_${pres.voiceId}`
-    return ENG_PRESENTATION_VOICE
+    if (pres?.provider === 'xai' && pres?.voiceId) return canonicalVoiceId(pres.voiceId, { provider: 'xai' })
+    return canonicalVoiceId(ENG_PRESENTATION_VOICE)
   }
-  if (pres?.provider && pres?.voiceId) return `${pres.provider}_${pres.voiceId}`
-  if (pres?.voiceId) return pres.voiceId
-  if (typeof cfg.presentation === 'string') return cfg.presentation
+  if (pres?.voiceId) return canonicalVoiceId(pres.voiceId, { provider: pres.provider })
+  if (typeof cfg.presentation === 'string') return canonicalVoiceId(cfg.presentation)
   const known = voices.known
-  if (known?.provider && known?.voiceId) return `${known.provider}_${known.voiceId}`
-  return known?.voiceId || 'azure_en-GB-SoniaNeural'
+  if (known?.voiceId) return canonicalVoiceId(known.voiceId, { provider: known.provider })
+  return canonicalVoiceId(DEFAULT_PRESENTATION_VOICE)
 }
 
 module.exports = {
@@ -337,5 +347,6 @@ module.exports = {
   recordAuthorFlags,
   resolvePresentationVoiceId,
   ENG_PRESENTATION_VOICE,
+  DEFAULT_PRESENTATION_VOICE,
   SONNET_MODEL
 }

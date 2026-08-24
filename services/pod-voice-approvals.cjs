@@ -239,7 +239,28 @@ function selectSample(workQueue, limit) {
 // than a prefix match plus a sentence-count sort. Retired/experimental slugs
 // can never win by being big.
 //
-// Pure. `pods` is [{ id, slug?, sentence_count, pod_type? }].
+// HELD PODS (Tom, 2026-08-23). `listening_pods.visibility` gates learner
+// reachability: 'held' pods are invisible to the learner app through RLS. The
+// browser-side twin (src/lib/servingPod.js) EXCLUDES held pods by default,
+// because its callers sit on pages that describe what a learner gets.
+//
+// This one does the opposite, on purpose. Every caller of resolveCurrentPod0 is
+// voice approval or PodLab casting — api/pod-voice-approval.js and
+// api/pod-cast-voices.js — and both exist to review content BEFORE it is
+// released. That is precisely what a held pod is. Excluding held pods here
+// would break the workflow the hold was invented to protect: you would be
+// unable to approve the voices of the pod you are holding, so the only way to
+// get a pod approved would be to make it live first — an automatic-live
+// pressure, which is the exact thing Tom's ruling forbids.
+//
+// So the option exists and is shaped identically (`{ includeHeld }`), and the
+// DEFAULT is `true` here and `false` there. Same word, opposite default,
+// because the two resolvers answer different questions: "what may a learner
+// reach?" vs "what is this course's current content?". A future caller that
+// wants the learner-facing answer from this module passes
+// `{ includeHeld: false }` and gets it.
+//
+// Pure. `pods` is [{ id, slug?, sentence_count, pod_type?, visibility? }].
 
 // Preference order, most-preferred first:
 //   pod-0-unrecorded — the working copy three courses review before release
@@ -263,9 +284,18 @@ function isCore(pod) {
  * The pod whose sentences are the course's CURRENT core-pod content.
  * Working copy first when it actually holds lines, then pod-1, then pod-0.
  * Returns null when the course has no serving core pod at all.
+ *
+ * @param {Array} pods
+ * @param {{includeHeld?:boolean}} [opts] defaults to INCLUDING held pods — see
+ *   the note above. Pass `{ includeHeld: false }` for a learner-facing answer,
+ *   and select `visibility` when you do: the exclusion fails closed, so a row
+ *   without the column does not count as live.
  */
-function resolveCurrentPod0(pods) {
-  const family = (pods || []).filter((p) => isCore(p) && SERVING_SLUGS.includes(slugOf(p)))
+function resolveCurrentPod0(pods, opts = {}) {
+  const includeHeld = opts.includeHeld !== false
+  const family = (pods || [])
+    .filter((p) => isCore(p) && SERVING_SLUGS.includes(slugOf(p)))
+    .filter((p) => includeHeld || p.visibility === 'live')
   if (!family.length) return null
   const populated = family.filter((p) => (p.sentence_count || 0) > 0)
   const pool = populated.length ? populated : family
@@ -342,6 +372,71 @@ function evaluateApproval(approval, live) {
   return { ok: true, reason: 'approved' }
 }
 
+// ---------------------------------------------------------------------------
+// Uncast-speaker check (Tom's ruling, 2026-08-14 — the Thai cast gap)
+// ---------------------------------------------------------------------------
+//
+// The approval fingerprint above can only see speaker labels that EXIST as keys
+// in listening_pods.speakers. A label that appears only in the pod's sentence
+// rows is invisible to it — and phase8's resolvePodSpeakerVoice() quietly drops
+// such a line onto speakers._default. That is not a shrug, it is the wrong voice
+// on a learner-facing line: tha_for_eng:pod-0-unrecorded carries 43 lines under
+// 'Customer 1/2/3', 'Customer' and 'Passenger' with no cast entry, 18 of them
+// written female, all of which would have rendered on the single male default.
+//
+// So: an unnamed speaker is an ERROR, and it is an error in BOTH modes. Sample
+// mode exists to let an ear approve a casting; a sample that renders an uncast
+// role on the default voice is exactly the deception the gate is for. The escape
+// is to cast the role (or relabel the rows to a role that IS cast) — which is
+// the work that has to happen anyway.
+//
+// Matching mirrors resolvePodSpeakerVoice(): canonical name first (parens
+// stripped, so "Barista (3 pm)" resolves against "Barista"), then the raw label
+// for legacy pods. `_default` deliberately does NOT rescue anything — it is the
+// failure mode, not a fallback.
+
+/**
+ * Find speaker labels used by a pod's sentences that have no cast entry. Pure.
+ *
+ * @param {Array<{id:string, speakers:object, sentences:Array<{speaker:string}>}>} pods
+ * @returns {Array<{pod_id:string, speaker:string, lines:number, labels:string[]}>}
+ *   one row per (pod, canonical role), most lines first. Empty = every speaker
+ *   in every pod's sentences is cast.
+ */
+function findUncastSpeakers(pods) {
+  const out = []
+  for (const pod of pods || []) {
+    const speakers = pod.speakers || {}
+    const byRole = new Map()
+    for (const s of pod.sentences || []) {
+      const raw = String(s.speaker == null ? '' : s.speaker)
+      const canon = canonicalSpeaker(raw)
+      if (canon && Object.prototype.hasOwnProperty.call(speakers, canon)) continue
+      if (raw && Object.prototype.hasOwnProperty.call(speakers, raw)) continue
+      const key = canon || '(blank speaker)'
+      const entry = byRole.get(key) || { pod_id: pod.id, speaker: key, lines: 0, labels: new Set() }
+      entry.lines += 1
+      entry.labels.add(raw)
+      byRole.set(key, entry)
+    }
+    const rows = [...byRole.values()]
+      .sort((a, b) => b.lines - a.lines || a.speaker.localeCompare(b.speaker))
+      .map(e => ({ pod_id: e.pod_id, speaker: e.speaker, lines: e.lines, labels: [...e.labels].sort() }))
+    out.push(...rows)
+  }
+  return out
+}
+
+/** Human-readable one-liner for the refusal body. Pure. */
+function describeUncastSpeakers(uncast) {
+  const total = uncast.reduce((n, u) => n + u.lines, 0)
+  const roles = uncast.map(u => `${u.speaker} (${u.lines} line${u.lines === 1 ? '' : 's'}, ${u.pod_id})`).join('; ')
+  return `${uncast.length} speaker role(s) covering ${total} line(s) have no entry in listening_pods.speakers `
+    + `and would render on the pod's _default voice: ${roles}. `
+    + 'Cast each role in listening_pods.speakers, or relabel those sentence rows to a role that is already cast, '
+    + 'then re-run. An unnamed speaker is never rendered on a guess.'
+}
+
 /** The full DB-backed check used by the endpoint. */
 async function checkApproval(supabase, courseCode) {
   const live = await liveFingerprint(supabase, courseCode)
@@ -369,4 +464,6 @@ module.exports = {
   updateApprovals,
   evaluateApproval,
   checkApproval,
+  findUncastSpeakers,
+  describeUncastSpeakers,
 }

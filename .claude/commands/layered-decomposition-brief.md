@@ -1,6 +1,18 @@
-# Layered Decomposition Brief — eng_for_jpn
+# Layered Decomposition Brief — jpn_for_eng
 
-> **This brief supplements ralph-methodology.md with specific guidance on decomposing Japanese→English seeds into overlapping, layered LEGOs.**
+> **This brief supplements ralph-methodology.md with specific guidance on decomposing seeds whose TARGET is Japanese into overlapping, layered LEGOs.**
+>
+> ⚠️ **This is the `jpn_for_eng` direction — English known, Japanese target.** Every LEGO
+> below is a Japanese chunk with an English gloss, because Japanese is the *target* here.
+> The file was previously headed `eng_for_jpn`, which inverted it: in `eng_for_jpn` the
+> Japanese is the *known* side and must never be the thing decomposed.
+>
+> **Decompositions always preserve TARGET word order** (Tom's ruling, 2026-08-12) — the
+> chunk sequence follows the target sentence and the known glosses are segmented to sit
+> underneath it, reading deliberately out of order where the two languages differ. That is
+> why this brief's overlapping-LEGO advice is about revealing *Japanese* order: Japanese is
+> the target. **For `eng_for_jpn`, read `.claude/commands/eng-for-jpn-build.md` instead** —
+> there English is the target, so English order governs and these examples are backwards.
 
 ---
 

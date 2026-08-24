@@ -61,6 +61,7 @@ const { createClient } = require('@supabase/supabase-js')
 const { AUDIO_CACHE_CONTROL } = require('../services/shared/audio-cache-control.cjs')
 const { S3Client, PutObjectCommand } = require('@aws-sdk/client-s3')
 const { normalizeForAudio } = require('../services/shared/text-normalize.cjs')
+const { canonicalLanguage, canonicalVoiceId } = require('../services/shared/clip-identity.cjs')
 const lib = require('../scripts/experiments/stage0-tuner/render-lib.cjs')
 
 // ── flags ──────────────────────────────────────────────────────────────────
@@ -69,9 +70,25 @@ const DRY_RUN = !EXECUTE  // default + --dry-run => no writes/renders
 
 // ── shared-store identity ────────────────────────────────────────────────────
 const SHARED_COURSE = 'pod_known_en'
-const SHARED_LANG = 'en'
+// Canonical identity (services/shared/clip-identity.cjs), computed rather than
+// spelt so it can never drift again. These used to be hard-coded 'en' and
+// 'comp:leo' — ISO-639-1 and a bare composite tag — deliberately propagated to
+// match the existing means-X rows. Matching prior drift is how drift spreads:
+// the reader (api/pod-content.js) is what has to accept both spellings, not the
+// writer. It does, temporarily, until the approved back-fill runs.
+const SHARED_LANG = canonicalLanguage('en')          // 'eng'
 const ROLE = 'pod_explainer'
-const VOICE_ID = 'comp:leo'    // stored voice_id (matches existing means-X rows)
+const VOICE_ID = canonicalVoiceId('comp:leo')        // 'comp:xai_leo'
+/**
+ * TEMPORARY. Rows written before canonicalisation still carry the old spelling,
+ * so every READ in this file has to accept both — a read that only matched the
+ * new spelling would find no existing rows and re-render the entire store,
+ * which is real TTS spend. Delete this list (and turn the `.in()`s back into
+ * `.eq(VOICE_ID)` / `.eq(SHARED_LANG)`) once the approved back-fill has
+ * rewritten the pre-canonical rows.
+ */
+const LEGACY_VOICE_IDS = ['comp:leo']
+const VOICE_ID_READ = [VOICE_ID, ...LEGACY_VOICE_IDS]
 const ORIGIN = 'tts'
 const BARE_PREFIX = '· '       // leading marker that distinguishes bare-X from means-X
 
@@ -203,7 +220,7 @@ async function main() {
     .from('course_audio')
     .select('id, text, text_normalized')
     .eq('role', ROLE)
-    .eq('voice_id', VOICE_ID)
+    .in('voice_id', VOICE_ID_READ)
     .like('text', 'means, %')
   if (cErr) throw new Error(`course_audio select: ${cErr.message}`)
   const meansById = new Map(caRows.map((r) => [r.id, r]))
@@ -214,7 +231,7 @@ async function main() {
     .select('id, text, text_normalized, s3_key')
     .eq('course_code', SHARED_COURSE)
     .eq('role', ROLE)
-    .eq('voice_id', VOICE_ID)
+    .in('voice_id', VOICE_ID_READ)
   if (sErr) throw new Error(`shared course_audio select: ${sErr.message}`)
   const sharedByNorm = new Map()
   for (const r of sharedRows || []) sharedByNorm.set(r.text_normalized, r)

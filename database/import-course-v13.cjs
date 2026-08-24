@@ -24,6 +24,10 @@ require('dotenv').config();
 const fs = require('fs-extra');
 const path = require('path');
 const { createClient } = require('@supabase/supabase-js');
+const { canonicalLanguage } = require('../services/shared/clip-identity.cjs');
+// One scheme for "this clip is a recording and the manifest names no voice",
+// shared with the CLI/API importer so both spell it identically.
+const { legacyHumanVoiceId } = require('./lib/import-legacy-course-core.cjs');
 
 // =============================================================================
 // CONFIG
@@ -193,7 +197,7 @@ async function importCourse(manifestPath, dryRun = false) {
   for (const [text, audioList] of Object.entries(samples)) {
     for (const audio of audioList) {
       const role = ROLE_MAP[audio.role] || audio.role;
-      const language = audio.role === 'source' ? knownLang : targetLang;
+      const language = canonicalLanguage(audio.role === 'source' ? knownLang : targetLang);
 
       audioRecords.push({
         course_code: courseCode,
@@ -201,7 +205,10 @@ async function importCourse(manifestPath, dryRun = false) {
         text_normalized: normalizeText(text),
         language: language,
         role: role,
-        voice_id: 'legacy_import', // Unknown from legacy manifest
+        // Unknown from legacy manifest: no voice is named, so the clip is filed
+        // under the registry's human_<course>_<role> scheme (see
+        // legacyHumanVoiceId) rather than a placeholder no reader can match.
+        voice_id: legacyHumanVoiceId(courseCode, role),
         origin: 'tts', // Assume TTS, human recordings marked separately
         s3_key: `mastered/${audio.id}.mp3`,
         duration_ms: audio.duration ? Math.round(audio.duration * 1000) : null
@@ -216,9 +223,9 @@ async function importCourse(manifestPath, dryRun = false) {
       course_code: courseCode,
       text: '[Course Introduction]',
       text_normalized: '[course introduction]',
-      language: knownLang,
+      language: canonicalLanguage(knownLang),
       role: 'presentation',
-      voice_id: 'human_recording',
+      voice_id: legacyHumanVoiceId(courseCode, 'presentation'),
       origin: 'human', // Introductions are typically human recorded
       s3_key: `mastered/${intro.id}.mp3`,
       duration_ms: intro.duration ? Math.round(intro.duration * 1000) : null

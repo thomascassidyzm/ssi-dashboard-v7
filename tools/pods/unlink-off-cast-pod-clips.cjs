@@ -35,13 +35,6 @@
  *
  * DRY RUN BY DEFAULT. Pass --apply to write.
  *
- * VARIANT DRILLS ARE EXEMPT (2026-08-24). Unlinking is how /generate-pods gets
- * told to refill a slot, and it refills on the voice the cast gives the row's
- * ROLE — so unlinking a variant-drill line is how the Italian scene-21
- * contradiction would be built on the other 21 courses. Those rows are excluded
- * by default and reported with the reason; `--include-variant-runs` overrides.
- * The rule lives in tools/pods/variant-run.cjs and nowhere else.
- *
  *   node tools/pods/unlink-off-cast-pod-clips.cjs --pod=spa_for_eng:pod-0-unrecorded
  *   node tools/pods/unlink-off-cast-pod-clips.cjs --pod=spa_for_eng:pod-0-unrecorded --apply
  *   node tools/pods/unlink-off-cast-pod-clips.cjs --pod=fra_for_eng:pod-1-staged-2026-08-23 --track=known --apply
@@ -52,12 +45,9 @@ require('dotenv').config({ path: require('path').join(__dirname, '..', '..', '.e
 const fs = require('fs')
 const path = require('path')
 const { Client } = require('pg')
-const { annotateVariantRuns } = require('./variant-run.cjs')
 
 const REPO = path.join(__dirname, '..', '..')
 const APPLY = process.argv.includes('--apply')
-/** Deliberate escape hatch for the variant-drill exclusion — see below. */
-const INCLUDE_VARIANT_RUNS = process.argv.includes('--include-variant-runs')
 const arg = (n) => {
   const a = process.argv.find((x) => x.startsWith(`--${n}=`))
   return a ? a.split('=').slice(1).join('=') : null
@@ -173,47 +163,7 @@ async function main() {
       throw new Error(`pod ${POD_ID} has speakers with no ${TRACK} cast entry: ${uncast.join(', ')} — refusing to guess which voice they should be in`)
     }
 
-    // VARIANT DRILLS ARE NOT UNLINK CANDIDATES (2026-08-24, Tom's ruling — the
-    // rule lives in tools/pods/variant-run.cjs and nowhere else). Unlinking is
-    // how a row gets REFILLED by /generate-pods, and generate renders on the
-    // voice the cast gives that row's ROLE. So unlinking a variant-drill line
-    // whose role sits on the second voice is the exact mechanism by which the
-    // Italian scene-21 contradiction would be manufactured on the other 21
-    // courses: "It's down there on the left" and "It's down there on the right"
-    // handed to a second character, one after the other, answering one question.
-    // Excluded by default; --include-variant-runs overrides deliberately.
-    //
-    // The rule is computed over the FULL script, not over `rows`. `rows` is an
-    // inner join on the link column, so a row with no clip is absent from it —
-    // and adjacency is the whole rule. Judging runs on the joined set would
-    // silently weld two non-adjacent lines into a false run.
-    const { rows: script } = await c.query(
-      `select id, scene_number, sentence_number, global_order, speaker, known_text
-         from listening_pod_sentences where pod_id = $1
-        order by global_order, scene_number, sentence_number`, [POD_ID])
-    const variance = annotateVariantRuns(script)
-    const lockedById = new Map(variance.rows.filter((v) => v.variantLocked).map((v) => [v.id, v]))
-
-    const allOffCast = rows.filter((r) => norm(r.voice_id) !== expectedFor(r.speaker))
-    const variantLocked = INCLUDE_VARIANT_RUNS ? [] : allOffCast.filter((r) => lockedById.has(r.id))
-    const offCast = INCLUDE_VARIANT_RUNS ? allOffCast : allOffCast.filter((r) => !lockedById.has(r.id))
-
-    if (INCLUDE_VARIANT_RUNS) {
-      console.log('⚠️  --include-variant-runs: the variant-drill exclusion is OFF. Tom ruled 2026-08-24 that')
-      console.log('    variant drills stay on ONE voice; unlinking these lets /generate-pods refill them on the')
-      console.log("    second voice, which is the contradiction itself. You are overriding that deliberately.")
-    } else if (variantLocked.length) {
-      console.log(`EXCLUDED — variant-drill lines, NOT unlink candidates: ${variantLocked.length}`)
-      for (const r of variantLocked) {
-        const v = lockedById.get(r.id)
-        console.log(`  ${v.label} ${v.speaker} (${v.runId}): ${JSON.stringify(String(v.row.known_text).slice(0, 60))}`)
-      }
-      for (const runId of [...new Set(variantLocked.map((r) => lockedById.get(r.id).runId))]) {
-        console.log(`  why ${runId}: ${variance.runs.find((x) => x.runId === runId).reason}`)
-      }
-      console.log('  Pass --include-variant-runs to unlink them anyway.')
-    }
-
+    const offCast = rows.filter((r) => norm(r.voice_id) !== expectedFor(r.speaker))
     const byMove = offCast.reduce((m, r) => {
       const k = `${norm(r.voice_id)} → ${expectedFor(r.speaker)}`
       m[k] = (m[k] || 0) + 1; return m

@@ -118,8 +118,11 @@ async function main () {
   await db.query('begin')
   try {
     await db.query(
-      `insert into listening_pods (id, course_code, pod_type, slug, pod_order, title, scene, difficulty, speakers, source_file, metadata)
-       select $1, course_code, pod_type, $2, pod_order, coalesce($3, title), scene, difficulty, speakers, source_file, metadata
+      // `visibility` is COPIED, never defaulted (Tom, 2026-08-23) — see
+      // tools/pods/pod-switchover.cjs. Omitting it would take the DB default
+      // 'live' and archive a held pod into a live one.
+      `insert into listening_pods (id, course_code, pod_type, slug, pod_order, title, scene, difficulty, speakers, source_file, metadata, visibility)
+       select $1, course_code, pod_type, $2, pod_order, coalesce($3, title), scene, difficulty, speakers, source_file, metadata, visibility
          from listening_pods where id = $4`,
       [toId, TO, TITLE, fromId]
     )

@@ -1,0 +1,700 @@
+<script setup>
+/**
+ * PLAY MODE — the front door of the Voice Lab.
+ *
+ * Tom's ruling, 2026-08-07: "looks fantastic but a few levels too deep in
+ * granularity… I'm going to want to actually USE it without spending a week
+ * working out what these things mean. A slightly simpler interface, more
+ * obvious — with trial and error sliders showing us what we can play with."
+ *
+ * So: a voice, a language, a sentence, three sliders, one button. The full
+ * parameter estate is untouched and one click away behind Engineering — this
+ * screen is not a replacement for it, it is the thing you reach for first.
+ *
+ * ── WHY THREE SLIDERS AND NOT FIFTEEN ──────────────────────────────────────
+ * Every slider here moves something you can HEAR. That is the whole selection
+ * rule, and it is why there are three rather than a tidy five:
+ *
+ *   PACE       provider `speed`. Reaches Azure as SSML <prosody rate>. xAI
+ *              documents no speed parameter, so on an xAI voice this slider is
+ *              disabled and says why — it is not quietly ignored.
+ *   LOUDNESS   `masterLufs`, the level the clip is MASTERED to. Not the
+ *              loudness gate's band: the band decides what the store would
+ *              admit, this decides what comes out of the speaker. Moving the
+ *              band alone would change a verdict and not one byte of audio.
+ *   DETAIL     sample rate and bit rate together, as one "how much of the
+ *              sound is kept" control. Real on xAI (they are threaded into
+ *              output_format); pinned by generateAzure, so disabled on Azure.
+ *
+ * Every position of every slider is inside a range that renders and passes the
+ * gates — the loudness stops are derived from the gate's own band, so you
+ * cannot drag yourself into a refusal by accident.
+ *
+ * Provider is NOT a picker here: a voice belongs to a provider, so choosing
+ * Tom's clone chooses xAI. One decision instead of two that can contradict.
+ *
+ * Same spend guards as everywhere else in the lab: the backend estimates, the
+ * daily ceiling refuses, and the button will not arm without an estimate that
+ * fits under it. Nothing here writes to course_audio.
+ */
+import { ref, computed, watch } from 'vue'
+import { api, clipUrl } from './labApi'
+import { dirFor } from '@/utils/textDirection.js'
+import { courseNameWithCode } from '@/utils/languageNames'
+
+const props = defineProps({
+  params: { type: Object, required: true },
+})
+
+const defaults = computed(() => props.params.defaults?.config || {})
+
+// ── What you are saying, and who says it ────────────────────────────────────
+const language = ref(defaults.value.language || 'deu')
+const voiceId = ref(defaults.value.voiceId || '')
+const sentence = ref('')
+
+const languageRow = computed(() =>
+  (props.params.languages || []).find((l) => l.code === language.value) || null)
+
+/** Clone first, then everything else, exactly as the backend grouped them. */
+const voiceGroups = computed(() => {
+  const groups = new Map()
+  for (const v of languageRow.value?.voices || []) {
+    const g = v.group || 'Voices'
+    if (!groups.has(g)) groups.set(g, [])
+    groups.get(g).push(v)
+  }
+  return [...groups.entries()].map(([name, list]) => ({ name, list }))
+})
+
+const voice = computed(() =>
+  (languageRow.value?.voices || []).find((v) => v.id === voiceId.value) || null)
+
+/** The provider is the voice's, never a separate choice that could disagree. */
+const provider = computed(() => voice.value?.provider || defaults.value.provider || 'xai')
+
+const providerRow = computed(() =>
+  (props.params.providers || []).find((p) => p.id === provider.value) || { supports: {} })
+const supports = computed(() => providerRow.value.supports || {})
+
+// Changing language can strand the voice — land on the first voice this
+// language offers rather than keeping one that cannot render it.
+watch(language, () => {
+  const list = languageRow.value?.voices || []
+  if (!list.some((v) => v.id === voiceId.value)) voiceId.value = list[0]?.id || ''
+})
+
+// ── The three sliders ───────────────────────────────────────────────────────
+//
+// Each stop carries the ear-word you read and the real value the backend gets.
+// The real value is shown small beside it, because "0.9× speed" is the thing
+// you would put in a report and "unhurried" is the thing you actually chose.
+
+const PACE_STOPS = [
+  { word: 'unhurried', real: '0.85× — 15% slower', patch: { speed: 0.85 } },
+  { word: 'relaxed', real: '0.925×', patch: { speed: 0.925 } },
+  { word: 'natural', real: '1.0× — the voice’s own pace', patch: { speed: 1.0 } },
+  { word: 'brisk', real: '1.075×', patch: { speed: 1.075 } },
+  { word: 'quick', real: '1.15× — 15% faster', patch: { speed: 1.15 } },
+]
+
+/**
+ * The loudness stops are DERIVED from the gate's own band, not typed in — so
+ * every position is a level the store would admit, and the range moves if the
+ * band ever does. Centre is the house mastering level.
+ */
+const LOUDNESS_STOPS = computed(() => {
+  const band = defaults.value.thresholds?.loudness || {}
+  const centre = Number.isFinite(defaults.value.masterLufs) ? defaults.value.masterLufs : -16
+  const target = Number.isFinite(band.targetLufs) ? band.targetLufs : -15.5
+  const tol = Number.isFinite(band.toleranceDb) ? band.toleranceDb : 1.5
+  // Widest symmetric swing around the house level that still sits inside the band.
+  const reach = Math.max(0.5, Math.min(centre - (target - tol), (target + tol) - centre))
+  const words = ['quieter', 'a touch quieter', 'house level', 'a touch louder', 'louder']
+  return words.map((word, i) => {
+    const lufs = +(centre + (i - 2) * (reach / 2)).toFixed(2)
+    return { word, real: `${lufs} LUFS`, patch: { masterLufs: lufs } }
+  })
+})
+
+const DETAIL_STOPS = [
+  { word: 'phone call', real: '16 kHz · 64 kbps', patch: { sampleRate: 16000, bitRate: 64000 } },
+  { word: 'radio', real: '22.05 kHz · 96 kbps', patch: { sampleRate: 22050, bitRate: 96000 } },
+  { word: 'house standard', real: '24 kHz · 128 kbps', patch: { sampleRate: 24000, bitRate: 128000 } },
+  { word: 'full', real: '24 kHz · 192 kbps', patch: { sampleRate: 24000, bitRate: 192000 } },
+]
+
+const LOUDNESS_NOTE = computed(() => {
+  const band = defaults.value.thresholds?.loudness || {}
+  const stops = LOUDNESS_STOPS.value
+  return `Every stop sits inside the band the store admits (${band.targetLufs} ±${band.toleranceDb} dB), `
+    + `so no position here can be refused for level. That band, not caution, is what makes the swing `
+    + `${Math.abs(stops[4].patch.masterLufs - stops[0].patch.masterLufs).toFixed(1)} dB rather than more.`
+})
+
+/** Live knobs first — a dead control should not be the first thing you meet. */
+const SLIDERS = computed(() => {
+  const all = [
+    {
+      id: 'pace',
+      label: 'Pace',
+      ends: ['slower', 'faster'],
+      stops: PACE_STOPS,
+      live: supports.value.speed === true,
+      note: '',
+      why: providerRow.value.speedNote
+        || `${providerRow.value.name || provider.value} exposes no speed parameter, so this would change nothing. Pick an Azure voice to move it.`,
+    },
+    {
+      id: 'loudness',
+      label: 'Loudness',
+      ends: ['quieter', 'louder'],
+      stops: LOUDNESS_STOPS.value,
+      live: true,
+      note: LOUDNESS_NOTE.value,
+      why: '',
+    },
+    {
+      id: 'detail',
+      label: 'Detail',
+      ends: ['leaner', 'richer'],
+      stops: DETAIL_STOPS,
+      live: supports.value.sampleRate === true && supports.value.bitRate === true,
+      note: '',
+      why: 'Azure pins the output format in generateAzure, so sample rate and bit rate are not yours to set here.',
+    },
+  ]
+  return [...all.filter((s) => s.live), ...all.filter((s) => !s.live)]
+})
+
+/** Which stop each slider sits on, per side. Index 2 is the house default. */
+function freshStops () { return { pace: 2, loudness: 2, detail: 2 } }
+const stopsA = ref(freshStops())
+const stopsB = ref(freshStops())
+
+const comparing = ref(false)
+
+function startComparing () {
+  stopsB.value = { ...stopsA.value }
+  comparing.value = true
+}
+
+/** Turn a side's slider positions into the config the backend takes. */
+function configFor (stops) {
+  const cfg = {
+    ...defaults.value,
+    provider: provider.value,
+    voiceId: voiceId.value,
+    voiceName: voice.value?.name || voiceId.value,
+    language: language.value,
+  }
+  for (const s of SLIDERS.value) {
+    if (!s.live) continue
+    Object.assign(cfg, s.stops[stops[s.id]]?.patch || {})
+  }
+  return cfg
+}
+
+const configs = computed(() =>
+  comparing.value ? [configFor(stopsA.value), configFor(stopsB.value)] : [configFor(stopsA.value)])
+
+/** What actually differs between the two sides, in ear-words. The point of an A/B. */
+const difference = computed(() => {
+  if (!comparing.value) return []
+  return SLIDERS.value
+    .filter((s) => s.live && stopsA.value[s.id] !== stopsB.value[s.id])
+    .map((s) => ({
+      label: s.label,
+      a: s.stops[stopsA.value[s.id]]?.word,
+      b: s.stops[stopsB.value[s.id]]?.word,
+    }))
+})
+
+// ── Pull a sentence out of a real course ────────────────────────────────────
+const picking = ref(false)
+const courses = ref([])
+const course = ref('')
+const query = ref('')
+const found = ref([])
+const searching = ref(false)
+const pickError = ref('')
+
+async function openPicker () {
+  picking.value = !picking.value
+  if (!picking.value || courses.value.length) return
+  try {
+    const data = await api.courses()
+    courses.value = data.courses || []
+    // Prefer a course in the language already chosen — that is why you are here.
+    const match = courses.value.find((c) => c.language === language.value)
+    course.value = (match || courses.value[0])?.code || ''
+    if (course.value) search()
+  } catch (e) { pickError.value = e.message }
+}
+
+async function search () {
+  if (!course.value) return
+  searching.value = true
+  pickError.value = ''
+  try {
+    const data = await api.sentences({ course: course.value, role: 'seed', q: query.value, limit: 40 })
+    found.value = data.sentences || []
+  } catch (e) {
+    pickError.value = e.message
+    found.value = []
+  } finally { searching.value = false }
+}
+
+function useSentence (s) {
+  sentence.value = s.text
+  picking.value = false
+}
+
+// ── The cost, before the button arms ────────────────────────────────────────
+const estimate = ref(null)
+const estimating = ref(false)
+const estimateError = ref('')
+const maxChars = computed(() => props.params.limits?.maxCharsPerSentence || 300)
+
+async function refreshEstimate () {
+  estimate.value = null
+  estimateError.value = ''
+  const text = sentence.value.trim()
+  if (!text || text.length > maxChars.value) return
+  estimating.value = true
+  try {
+    estimate.value = await api.estimate({ sentences: [text], configs: configs.value })
+  } catch (e) { estimateError.value = e.message } finally { estimating.value = false }
+}
+watch([sentence, configs], refreshEstimate, { deep: true })
+
+// ── The run ─────────────────────────────────────────────────────────────────
+const running = ref(false)
+const runError = ref('')
+const experiment = ref(null)
+const revealed = ref(false)
+let stopPolling = null
+let audioEl = null
+let autoPlayed = false
+
+const tooLong = computed(() => sentence.value.trim().length > maxChars.value)
+
+const armed = computed(() =>
+  !running.value &&
+  Boolean(sentence.value.trim()) &&
+  !tooLong.value &&
+  Boolean(voiceId.value) &&
+  Boolean(estimate.value) &&
+  !estimate.value.wouldExceed)
+
+async function generate () {
+  running.value = true
+  runError.value = ''
+  experiment.value = null
+  revealed.value = false
+  autoPlayed = false
+  if (stopPolling) stopPolling()
+  try {
+    const kind = comparing.value ? 'ab' : 'single'
+    const { experiment: exp } = await api.createRun({
+      kind,
+      title: `play — ${voice.value?.name || voiceId.value} · ${language.value}`,
+      blind: comparing.value,
+      sentences: [sentence.value.trim()],
+      configs: configs.value,
+    })
+    experiment.value = exp
+    stopPolling = poll(exp.id)
+  } catch (e) {
+    runError.value = e.message
+    running.value = false
+  }
+}
+
+function poll (id) {
+  let stopped = false
+  ;(async () => {
+    while (!stopped) {
+      await new Promise((r) => setTimeout(r, 2000))
+      if (stopped) return
+      try {
+        const { experiment: exp } = await api.getRun(id)
+        experiment.value = exp
+        // The clip is playable long before the two whisper passes finish, so it
+        // plays the moment it exists rather than when the verdict lands.
+        maybeAutoPlay(exp)
+        if (exp.status !== 'running') { running.value = false; return }
+      } catch (e) {
+        runError.value = `${e.message} — the run is still on the backend; it is on the Engineering side under Experiments.`
+        running.value = false
+        return
+      }
+    }
+  })()
+  return () => { stopped = true; running.value = false }
+}
+
+function maybeAutoPlay (exp) {
+  if (autoPlayed || comparing.value) return
+  const clip = (exp.clips || [])[0]
+  if (!clip?.url) return
+  autoPlayed = true
+  play(clip)
+}
+
+const playingId = ref('')
+async function play (clip) {
+  if (!clip?.url) return
+  if (audioEl) audioEl.pause()
+  audioEl = new Audio(await clipUrl(clip.url))
+  playingId.value = clip.id
+  audioEl.onended = () => { playingId.value = '' }
+  // Autoplay can still be refused by the browser; the button is right there.
+  audioEl.play().catch(() => { playingId.value = '' })
+}
+
+function clipFor (configKey) {
+  return (experiment.value?.clips || []).find((c) => c.configKey === configKey) || null
+}
+
+/** Which side sits on the left — the backend decided, per experiment, not us. */
+const leftKey = computed(() => (experiment.value?.slots || [])[0]?.left || 'A')
+const rightKey = computed(() => (leftKey.value === 'A' ? 'B' : 'A'))
+
+// ── The verdict, as ONE line ────────────────────────────────────────────────
+//
+// Fifteen numbers is what Engineering is for. Here: admitted or not, and if
+// not, which gate — in the words of what the gate is actually asking.
+const GATE_WORDS = {
+  'speech-span': 'there is speech in it',
+  loudness: 'the level',
+  'tail-shape': 'the ending',
+  'syllable-rate': 'the speed is humanly possible',
+  phonology: 'it is the right language',
+  words: 'it says the right words',
+}
+
+function verdictLine (clip) {
+  if (!clip) return { cls: 'wait', text: 'rendering…' }
+  if (clip.status === 'failed' || (clip.error && !clip.verdict)) {
+    return { cls: 'fail', text: `did not render — ${clip.error || 'unknown error'}` }
+  }
+  if (clip.status === 'pending') return { cls: 'wait', text: 'rendering…' }
+  if (!clip.verdict) return { cls: 'wait', text: 'playable now — the machine is still checking it' }
+  const v = clip.verdict
+  if (v.admit) return { cls: 'pass', text: 'Admitted — every gate passed. This clip would be allowed into a course.' }
+  const failed = (v.refusedBy || []).map((g) => GATE_WORDS[g] || g)
+  return { cls: 'fail', text: `Quarantined — ${failed.join(' and ')} did not pass.` }
+}
+
+function gateDetail (clip) {
+  const v = clip?.verdict
+  if (!v) return []
+  return (v.order || []).map((id) => {
+    const g = v.gates[id]
+    return {
+      id,
+      word: GATE_WORDS[id] || id,
+      state: !g.applicable ? 'n/a' : g.pass === null ? 'unchecked' : g.pass ? 'pass' : 'FAIL',
+      cls: !g.applicable ? 'na' : g.pass === null ? 'unchecked' : g.pass ? 'pass' : 'fail',
+      reason: g.reason || '',
+    }
+  })
+}
+</script>
+
+<template>
+  <div class="play">
+    <!-- 1 · who says it, in what language -->
+    <div class="play-row">
+      <label class="play-field">
+        <span class="play-label">Voice</span>
+        <select v-model="voiceId" class="play-select">
+          <optgroup v-for="g in voiceGroups" :key="g.name" :label="g.name">
+            <option v-for="v in g.list" :key="`${v.provider}:${v.id}`" :value="v.id">
+              {{ v.name || v.id }}
+            </option>
+          </optgroup>
+        </select>
+        <span class="play-sub">{{ provider }}</span>
+      </label>
+
+      <label class="play-field">
+        <span class="play-label">Language</span>
+        <select v-model="language" class="play-select">
+          <option v-for="l in params.languages" :key="l.code" :value="l.code">{{ l.name }}</option>
+        </select>
+        <span class="play-sub">steered as {{ languageRow?.steer || '—' }}</span>
+      </label>
+    </div>
+
+    <!-- 2 · what it says -->
+    <div class="play-block">
+      <div class="play-label-row">
+        <span class="play-label">Sentence</span>
+        <button class="play-link" @click="openPicker">
+          {{ picking ? 'close' : 'or pull one from a course' }}
+        </button>
+      </div>
+      <textarea
+        v-model="sentence"
+        rows="2"
+        class="play-textarea"
+        spellcheck="false"
+        placeholder="Type something for this voice to say."
+      ></textarea>
+      <p v-if="tooLong" class="play-err">
+        That is {{ sentence.trim().length }} characters and the cap is {{ maxChars }} — this is a lab,
+        not a batch renderer.
+      </p>
+
+      <div v-if="picking" class="play-picker">
+        <div class="play-row">
+          <label class="play-field">
+            <span class="play-sub">Course</span>
+            <select v-model="course" class="play-select small" @change="search">
+              <option v-for="c in courses" :key="c.code" :value="c.code">{{ courseNameWithCode(c.code) }}</option>
+            </select>
+          </label>
+          <label class="play-field grow">
+            <span class="play-sub">Contains</span>
+            <input v-model="query" class="play-input" placeholder="search the seed sentences…" @keyup.enter="search" />
+          </label>
+          <button class="play-btn" :disabled="searching" @click="search">
+            {{ searching ? 'Searching…' : 'Search' }}
+          </button>
+        </div>
+        <p v-if="pickError" class="play-err">{{ pickError }}</p>
+        <div v-if="found.length" class="play-found">
+          <button
+            v-for="s in found"
+            :key="s.id"
+            class="play-found-row bidi-isolate"
+            :dir="dirFor(s.text)"
+            @click="useSentence(s)"
+          >
+            {{ s.text }}
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3 · the knobs that actually change what you hear -->
+    <div class="play-block">
+      <div class="play-label-row">
+        <span class="play-label">What to play with</span>
+        <button v-if="!comparing" class="play-link" @click="startComparing">compare two settings</button>
+        <button v-else class="play-link" @click="comparing = false">just one setting</button>
+      </div>
+
+      <div v-for="s in SLIDERS" :key="s.id" class="slider" :class="{ dead: !s.live }">
+        <div class="slider-head">
+          <span class="slider-name">{{ s.label }}</span>
+          <span v-if="s.live" class="slider-now">
+            {{ s.stops[stopsA[s.id]].word }}
+            <small>{{ s.stops[stopsA[s.id]].real }}</small>
+          </span>
+          <span v-else class="slider-off">not on this voice</span>
+        </div>
+        <div class="slider-track">
+          <span class="slider-end">{{ s.ends[0] }}</span>
+          <input
+            type="range" min="0" :max="s.stops.length - 1" step="1"
+            :disabled="!s.live"
+            :value="stopsA[s.id]"
+            @input="stopsA = { ...stopsA, [s.id]: Number($event.target.value) }"
+          />
+          <span class="slider-end">{{ s.ends[1] }}</span>
+        </div>
+        <p v-if="!s.live" class="slider-why">{{ s.why }}</p>
+        <p v-else-if="s.note" class="slider-why">{{ s.note }}</p>
+
+        <!-- The second side of a compare, on the same slider, directly beneath -->
+        <div v-if="comparing && s.live" class="slider-track second">
+          <span class="slider-end b">B</span>
+          <input
+            type="range" min="0" :max="s.stops.length - 1" step="1"
+            :value="stopsB[s.id]"
+            @input="stopsB = { ...stopsB, [s.id]: Number($event.target.value) }"
+          />
+          <span class="slider-now b">
+            {{ s.stops[stopsB[s.id]].word }}
+            <small>{{ s.stops[stopsB[s.id]].real }}</small>
+          </span>
+        </div>
+      </div>
+
+      <p v-if="comparing && !difference.length" class="play-note">
+        Both sides are identical — move one slider on the B row, or the comparison measures nothing.
+      </p>
+    </div>
+
+    <!-- 4 · one button, with the money in front of it -->
+    <div class="play-go">
+      <button class="play-generate" :disabled="!armed" @click="generate">
+        {{ running ? 'Generating…' : comparing ? 'Generate both' : 'Generate' }}
+      </button>
+      <span class="play-cost">
+        <template v-if="estimating">working out the cost…</template>
+        <template v-else-if="estimate">
+          {{ estimate.clips }} clip{{ estimate.clips === 1 ? '' : 's' }} ·
+          ${{ estimate.usd.toFixed(4) }} ·
+          {{ estimate.ceilingRemaining.toLocaleString() }} characters left today
+          <strong v-if="estimate.wouldExceed" class="play-err">
+            — over the daily ceiling, so it is refused rather than quietly costing money.
+          </strong>
+        </template>
+        <span v-else-if="estimateError" class="play-err">{{ estimateError }}</span>
+        <template v-else>Type a sentence and the cost appears here first.</template>
+      </span>
+    </div>
+    <p v-if="runError" class="play-err">{{ runError }}</p>
+
+    <!-- 5 · listen, then one line of verdict -->
+    <div v-if="experiment" class="play-result">
+      <template v-if="!comparing">
+        <button
+          class="play-play"
+          :class="{ on: playingId && playingId === clipFor('A')?.id }"
+          :disabled="!clipFor('A')?.url"
+          @click="play(clipFor('A'))"
+        >▶ {{ clipFor('A')?.url ? 'Play it again' : 'rendering…' }}</button>
+
+        <p class="verdict" :class="verdictLine(clipFor('A')).cls">{{ verdictLine(clipFor('A')).text }}</p>
+
+        <details v-if="clipFor('A')?.verdict" class="play-detail">
+          <summary>what each gate said</summary>
+          <ul>
+            <li v-for="g in gateDetail(clipFor('A'))" :key="g.id">
+              <span class="gate-state" :class="g.cls">{{ g.state }}</span>
+              <span class="gate-word">{{ g.word }}</span>
+              <span class="gate-reason">{{ g.reason }}</span>
+            </li>
+          </ul>
+        </details>
+      </template>
+
+      <template v-else>
+        <p class="play-note">
+          {{ revealed
+            ? 'Labels shown.'
+            : 'Listen to both before you look. A label is a thumb on the scale, which is why the sides are hidden and their order is the server’s choice, not A-then-B.' }}
+        </p>
+        <div class="play-ab">
+          <div v-for="(side, i) in [leftKey, rightKey]" :key="side" class="play-side">
+            <button
+              class="play-play"
+              :class="{ on: playingId && playingId === clipFor(side)?.id }"
+              :disabled="!clipFor(side)?.url"
+              @click="play(clipFor(side))"
+            >▶ {{ clipFor(side)?.url ? (i === 0 ? 'Left' : 'Right') : 'rendering…' }}</button>
+            <p class="verdict" :class="verdictLine(clipFor(side)).cls">{{ verdictLine(clipFor(side)).text }}</p>
+            <p v-if="revealed" class="play-sub">side {{ side }}</p>
+          </div>
+        </div>
+        <button class="play-btn" @click="revealed = !revealed">
+          {{ revealed ? 'Hide which is which' : 'Reveal which is which' }}
+        </button>
+        <ul v-if="revealed && difference.length" class="play-diff">
+          <li v-for="d in difference" :key="d.label">
+            <strong>{{ d.label }}</strong> — A was {{ d.a }}, B was {{ d.b }}.
+          </li>
+        </ul>
+      </template>
+
+      <p v-if="experiment.caveats?.length" class="play-caveat">{{ experiment.caveats.join(' · ') }}</p>
+    </div>
+  </div>
+</template>
+
+<style scoped>
+/* A directed target sentence must not drift to the other side of its cell:
+   `dir` fixes the punctuation, alignment stays as it is today. */
+.play-found-row { text-align: left; }
+
+.play { max-width: 860px; }
+.play-row { display: flex; gap: 1rem; flex-wrap: wrap; align-items: flex-end; }
+.play-field { display: flex; flex-direction: column; gap: 0.25rem; }
+.play-field.grow { flex: 1; min-width: 220px; }
+.play-block { margin-top: 1.75rem; }
+.play-label { font-size: 0.95rem; letter-spacing: 0.02em; }
+.play-sub { color: var(--muted); font-size: 0.72rem; }
+.play-label-row { display: flex; align-items: baseline; gap: 1rem; margin-bottom: 0.5rem; }
+.play-link {
+  background: none; border: none; color: var(--accent-2, #ec4899);
+  cursor: pointer; font-size: 0.78rem; font-family: inherit; padding: 0; text-decoration: underline;
+}
+.play-select, .play-input {
+  background: var(--surface-2); border: 1px solid var(--surface-3); color: inherit;
+  border-radius: 8px; padding: 0.6rem 0.7rem; font-size: 1rem; font-family: inherit; min-width: 220px;
+}
+.play-select.small { min-width: 150px; font-size: 0.85rem; }
+.play-textarea {
+  width: 100%; background: var(--surface-2); border: 1px solid var(--surface-3); color: inherit;
+  border-radius: 8px; padding: 0.7rem; font-size: 1.05rem; font-family: inherit; line-height: 1.4;
+}
+.play-picker { border: 1px solid var(--surface-3); border-radius: 8px; padding: 0.75rem; margin-top: 0.6rem; }
+.play-found { max-height: 220px; overflow-y: auto; margin-top: 0.5rem; border-top: 1px solid var(--surface-3); }
+.play-found-row {
+  display: block; width: 100%; text-align: left; background: none; border: none;
+  border-bottom: 1px solid var(--surface-2); color: inherit; padding: 0.4rem 0.3rem;
+  cursor: pointer; font-size: 0.9rem; font-family: inherit;
+}
+.play-found-row:hover { background: var(--surface-2); }
+
+.slider { margin: 1.1rem 0 1.4rem; }
+.slider.dead { opacity: 0.55; }
+.slider-head { display: flex; align-items: baseline; gap: 0.75rem; margin-bottom: 0.35rem; }
+.slider-name { font-size: 1.05rem; }
+.slider-now { color: var(--accent-2, #ec4899); font-size: 1rem; }
+.slider-now small { color: var(--muted); margin-left: 0.5rem; font-size: 0.72rem; }
+.slider-now.b { color: inherit; }
+.slider-off { color: var(--muted); font-size: 0.78rem; font-style: italic; }
+.slider-track { display: flex; align-items: center; gap: 0.75rem; }
+.slider-track.second { margin-top: 0.5rem; opacity: 0.85; }
+.slider-track input[type='range'] { flex: 1; height: 2rem; accent-color: #ec4899; cursor: pointer; }
+.slider-track input[type='range']:disabled { cursor: not-allowed; }
+.slider-end { color: var(--muted); font-size: 0.78rem; min-width: 4.5rem; }
+.slider-end:last-of-type { text-align: right; }
+.slider-end.b { font-weight: 600; color: inherit; }
+.slider-why { color: var(--muted); font-size: 0.75rem; margin: 0.25rem 0 0 5.25rem; max-width: 60ch; }
+
+.play-go { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; margin-top: 2rem; }
+.play-generate {
+  background: #ec4899; border: none; color: #fff; font-size: 1.15rem; font-family: inherit;
+  padding: 0.85rem 2.5rem; border-radius: 10px; cursor: pointer;
+}
+.play-generate:disabled { background: var(--surface-3); color: var(--muted); cursor: not-allowed; }
+.play-cost { color: var(--muted); font-size: 0.8rem; }
+
+.play-result { margin-top: 2rem; border-top: 1px solid var(--surface-3); padding-top: 1.25rem; }
+.play-play {
+  background: var(--surface-2); border: 1px solid var(--surface-3); color: inherit;
+  font-size: 1.05rem; font-family: inherit; padding: 0.7rem 1.75rem; border-radius: 10px; cursor: pointer;
+}
+.play-play.on { border-color: #ec4899; color: #ec4899; }
+.play-play:disabled { color: var(--muted); cursor: default; }
+.play-ab { display: flex; gap: 1.5rem; flex-wrap: wrap; margin: 0.75rem 0; }
+.play-side { flex: 1; min-width: 240px; }
+.verdict { font-size: 0.95rem; margin: 0.75rem 0 0; line-height: 1.45; }
+.verdict.pass { color: #34d399; }
+.verdict.fail { color: #f87171; }
+.verdict.wait { color: var(--muted); }
+.play-detail { margin-top: 0.5rem; font-size: 0.8rem; color: var(--muted); }
+.play-detail summary { cursor: pointer; }
+.play-detail ul { list-style: none; padding: 0.5rem 0 0; margin: 0; }
+.play-detail li { display: flex; gap: 0.6rem; padding: 0.2rem 0; align-items: baseline; }
+.gate-state { min-width: 4.5rem; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.7rem; }
+.gate-state.pass { color: #34d399; }
+.gate-state.fail { color: #f87171; }
+.gate-word { min-width: 16rem; color: inherit; }
+.gate-reason { flex: 1; }
+.play-btn {
+  background: var(--surface-2); border: 1px solid var(--surface-3); color: inherit;
+  padding: 0.45rem 1rem; border-radius: 6px; cursor: pointer; font-size: 0.8rem; font-family: inherit;
+}
+.play-diff { font-size: 0.85rem; color: var(--muted); margin-top: 0.6rem; }
+.play-note { color: var(--muted); font-size: 0.82rem; line-height: 1.5; max-width: 70ch; }
+.play-caveat { color: var(--muted); font-size: 0.72rem; font-style: italic; margin-top: 1rem; }
+.play-err { color: #f87171; font-size: 0.82rem; }
+</style>

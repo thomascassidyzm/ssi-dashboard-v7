@@ -120,3 +120,83 @@ describe('decideCopy — the matching precondition end to end', () => {
     expect(decision.source.courseCode).toBe('eng_for_ita')
   })
 })
+
+// ── canonical identity ──────────────────────────────────────────────────────
+// The key IS the dedup mechanism: two clips match iff their keys are
+// byte-identical. Interpolating the raw language/voice made the key inherit the
+// estate's spelling drift, so the same clip under two spellings produced two
+// keys, missed the match, and got rendered (and paid for) twice.
+describe('computeAudioKey — canonical identity, not raw strings', () => {
+  it('collapses the language spellings of one language', () => {
+    const eng = computeAudioKey({ text: 'please', language: 'eng', voiceId: CLONE_VOICE_ID })
+    expect(computeAudioKey({ text: 'please', language: 'en', voiceId: CLONE_VOICE_ID })).toBe(eng)
+    expect(computeAudioKey({ text: 'please', language: 'en-GB', voiceId: CLONE_VOICE_ID })).toBe(eng)
+    expect(computeAudioKey({ text: 'please', language: 'EN-US', voiceId: CLONE_VOICE_ID })).toBe(eng)
+  })
+
+  it('drops region — the voice carries the accent, so fr-CA and fra are one language', () => {
+    const fra = computeAudioKey({ text: 'bonjour', language: 'fra', voiceId: CLONE_VOICE_ID })
+    expect(computeAudioKey({ text: 'bonjour', language: 'fr-CA', voiceId: CLONE_VOICE_ID })).toBe(fra)
+  })
+
+  it('collapses the bare and prefixed spellings of one voice', () => {
+    const bare = computeAudioKey({ text: 'please', language: 'eng', voiceId: 'en-GB-SoniaNeural' })
+    const prefixed = computeAudioKey({ text: 'please', language: 'eng', voiceId: 'azure_en-GB-SoniaNeural' })
+    expect(bare).toBe(prefixed)
+  })
+
+  it('collapses the clone voice written bare and written xai_-prefixed', () => {
+    expect(computeAudioKey({ text: 'please', language: 'eng', voiceId: 'gfzdpspr5fdp' }))
+      .toBe(computeAudioKey({ text: 'please', language: 'eng', voiceId: 'xai_gfzdpspr5fdp' }))
+  })
+
+  it('still separates two genuinely different voices', () => {
+    const clone = computeAudioKey({ text: 'please', language: 'eng', voiceId: CLONE_VOICE_ID })
+    const azure = computeAudioKey({ text: 'please', language: 'eng', voiceId: 'azure_en-GB-SoniaNeural' })
+    expect(clone).not.toBe(azure)
+  })
+
+  it('a composite splice never collapses onto a plain single-voice render', () => {
+    expect(computeAudioKey({ text: 'please', language: 'eng', voiceId: 'comp:leo' }))
+      .not.toBe(computeAudioKey({ text: 'please', language: 'eng', voiceId: 'leo' }))
+  })
+
+  it('uses the caller-supplied provider for an opaque voice id with no prefix', () => {
+    expect(computeAudioKey({ text: 'please', language: 'eng', voiceId: 'bedd6226', provider: 'xai' }))
+      .toBe(computeAudioKey({ text: 'please', language: 'eng', voiceId: 'xai_bedd6226' }))
+  })
+
+  it('THROWS rather than keying on a value it would have to guess at', () => {
+    expect(() => computeAudioKey({ text: 'please', language: 'auto', voiceId: CLONE_VOICE_ID })).toThrow()
+    expect(() => computeAudioKey({ text: 'please', language: 'eng', voiceId: 'legacy_import' })).toThrow()
+  })
+})
+
+describe('decideCopy — an unidentifiable slot is reported, never guessed', () => {
+  it('reports SKIP_UNIDENTIFIABLE instead of throwing into the caller', () => {
+    const index = indexOf([row('fra_for_eng')])
+    const decision = decideCopy(
+      { text: 'please', language: 'auto', voiceId: CLONE_VOICE_ID, courseCode: 'spa_for_eng', role: 'known' },
+      index
+    )
+    expect(decision.action).toBe('SKIP_UNIDENTIFIABLE')
+    expect(decision.source).toBeNull()
+    expect(decision.reason).toMatch(/cannot be canonicalised/)
+  })
+
+  it('a slot spelled differently from the source row now MATCHES it', () => {
+    // The whole point: 'en-GB' + bare voice must find the row indexed under
+    // 'eng' + the prefixed voice. Before canonicalisation this was SKIP_NO_SOURCE
+    // and the clip was re-rendered.
+    const index = new Map()
+    const key = computeAudioKey({ text: 'please', language: 'eng', voiceId: 'azure_en-GB-SoniaNeural' })
+    index.set(key, [row('fra_for_eng')])
+
+    const decision = decideCopy(
+      { text: 'please', language: 'en-GB', voiceId: 'en-GB-SoniaNeural', courseCode: 'spa_for_eng', role: 'known' },
+      index
+    )
+    expect(decision.action).toBe('COPY')
+    expect(decision.source.courseCode).toBe('fra_for_eng')
+  })
+})

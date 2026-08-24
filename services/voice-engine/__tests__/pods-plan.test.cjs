@@ -241,3 +241,60 @@ describe('buildRecordingPlan — DRAFT target text', () => {
     expect(cues.find(c => c.target === 'Bore da').draft).toBe(false)
   })
 })
+
+// ── RE-RECORD WANTED (make-before-break, 2026-08-14) ─────────────────────────
+// listening_pod_sentences.rerecord_wanted = {"target":"<voiceId>","known":"<voiceId>"}
+// routes a line to a named recordist WITHOUT unlinking its audio. Before this,
+// the only lever was nulling {kind}_audio_id — which for the 81 clipped-but-real
+// cym_n_for_eng takes meant taking playable audio off the learner's path first.
+describe('buildRecordingPlan — rerecord_wanted', () => {
+  const withWant = (id, want) => SENTENCES.map(r => r.id === id ? { ...r, rerecord_wanted: want } : r)
+
+  const wantPlan = (sentences, voiceId) => buildRecordingPlan({
+    pods: PODS, sentences, podCast: POD_CAST, voiceId,
+  })
+
+  it('emits a target line for a voice the cast does NOT hold', () => {
+    // p0-1 is Anna = Catrin's character. Aran holds none of it.
+    const sentences = withWant('p0-1', { target: 'human_aran_cym' })
+    const items = wantPlan(sentences, 'human_aran_cym').items.filter(i => i.kind === 'target')
+    expect(items.map(i => i.sentenceId)).toContain('p0-1')
+    // and the want does not make Aran a cast member of Anna
+    expect(wantPlan(sentences, 'human_aran_cym').castSpeakers).not.toContain('Anna')
+  })
+
+  it('emits a KNOWN line for a NON-explainer voice — the only way English reaches Catrin', () => {
+    const sentences = withWant('p0-2', { known: 'human_catrin_cym' })
+    const p = wantPlan(sentences, 'human_catrin_cym')
+    expect(p.isExplainer).toBe(false)
+    const known = p.items.filter(i => i.kind === 'known')
+    expect(known.map(i => i.sentenceId)).toEqual(['p0-2'])
+    expect(known[0].line).toBe('Welcome')
+    // and it does NOT drag the explainer_text queue along with it
+    expect(p.items.some(i => i.kind === 'explainer')).toBe(false)
+  })
+
+  it('wants only reach the named voice, and only the named track', () => {
+    const sentences = withWant('p0-1', { target: 'human_aran_cym' })
+    // Tom (explainer) queue is unchanged by an Aran target want
+    const tom = wantPlan(sentences, 'human_tom_eng')
+    expect(tom.items.filter(i => i.kind === 'target')).toHaveLength(0)
+    // no known item appears for Aran off a target want
+    const aran = wantPlan(sentences, 'human_aran_cym')
+    expect(aran.items.filter(i => i.kind === 'known')).toHaveLength(0)
+  })
+
+  it('a want on ANY row of a glued chain wants the whole utterance', () => {
+    // p0-5+p0-6 glue into one Neighbour item; want it for Catrin off the 2nd row
+    const sentences = withWant('p0-6', { target: 'human_catrin_cym' })
+    const item = wantPlan(sentences, 'human_catrin_cym').items.find(i => i.sentenceId === 'p0-5')
+    expect(item).toBeTruthy()
+    expect(item.sentenceIds).toEqual(['p0-5', 'p0-6'])
+  })
+
+  it('leaves the plan untouched when nothing is wanted', () => {
+    const before = JSON.stringify(wantPlan(SENTENCES, 'human_aran_cym'))
+    const noise = SENTENCES.map(r => ({ ...r, rerecord_wanted: null }))
+    expect(JSON.stringify(wantPlan(noise, 'human_aran_cym'))).toBe(before)
+  })
+})

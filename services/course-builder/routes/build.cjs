@@ -1117,7 +1117,7 @@ Apply gloss-edits (DIFFERENTIATE) first. Re-run the detector to confirm the coun
   // POST /build/backfill-phrases/:courseCode — Spawn a backfill agent.
   // Finds under-threshold LEGOs and spawns a Sonnet agent to write missing USE phrases.
 
-  const { makePhraseId, computeLegoPosition } = require('../lib/phrase-structure.cjs');
+  const { makePhraseId, computeLegoPosition, partitionBareLegoPhrases } = require('../lib/phrase-structure.cjs');
   const { normalizeForContainment } = require('../lib/text-normalization.cjs');
 
   router.post('/build/backfill-submit/:courseCode', async (req, res) => {
@@ -1161,6 +1161,14 @@ Apply gloss-edits (DIFFERENTIATE) first. Re-run the detector to confirm the coun
         }
         if (!lego.is_new) {
           errors.push({ entry: label, error: 'LEGO is duplicate (is_new: false)' });
+          continue;
+        }
+
+        // A backfill exists to raise a LEGO above the phrase floor — the one
+        // thing it must never do is top the count up with the LEGO itself.
+        const bareBackfill = partitionBareLegoPhrases(use, lego.target_text).bare;
+        if (bareBackfill.length > 0) {
+          errors.push({ entry: label, error: `${bareBackfill.length} phrase(s) are the bare LEGO "${lego.target_text}" — backfill must add real practice, not a copy of the LEGO` });
           continue;
         }
 

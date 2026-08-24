@@ -48,6 +48,11 @@ function fromProvenanceRow(row) {
     s3Key: ctx.s3_key ?? row.s3_key ?? null,
     phraseText: ctx.text ?? row.phrase_text ?? row.text ?? null,
     chunksString: ctx.chunks_string ?? row.chunks_string ?? null,
+    // The recorder's own pause timings for this take, when it sent them
+    // ([{ startMs, endMs }], ms from the start of the take). Absent on every
+    // take recorded before 2026-08-11 and on natural-speed takes, so every
+    // consumer must still work without it.
+    chunkBoundariesMs: ctx.chunk_boundaries_ms ?? null,
     voiceId: ctx.voice_id ?? row.voice_id ?? null,
     role: ctx.role ?? row.role ?? null,
     cadence: ctx.cadence ?? row.cadence ?? null,
@@ -56,6 +61,11 @@ function fromProvenanceRow(row) {
     method: ctx.method ?? row.method ?? 'take',
     durationMs: row.duration_ms ?? null,
     recordedAt: row.recorded_at ?? row.created_at ?? null,
+    // The take that replaced this one, when the recordist redid the line
+    // (services/take-supersede.cjs). Absent on every take recorded before
+    // 2026-08-21 and on every take that was never redone, so recency still
+    // decides those — see groupTakesByPhrase.
+    supersededBy: ctx.superseded_by ?? null,
   }
 }
 
@@ -106,6 +116,21 @@ function groupTakesByPhrase(takes) {
   for (const take of takes || []) {
     if (!take?.phraseText || !take.s3Key) continue
     if (take.method && take.method !== 'take') continue // never re-splice splices
+    // POOL A NEVER FEEDS THE SPLICER. Kai's ruling, 2026-08-21: an isolated
+    // read is the unit's own teaching clip, and spliced into a phrase it sounds
+    // strange because it carries no phrase prosody. It still files as a
+    // course_audio clip (script-take-filing.cjs) — it just never becomes splice
+    // material. Dropping it HERE is what makes that true: everything downstream
+    // (synthesis-job's groupsToAlign, segment-store's index, splicer's plan)
+    // keys on chunk text alone and would otherwise treat a one-chunk isolated
+    // take as indistinguishable from a chunk cut out of a real sentence.
+    if (take.cadence === 'isolated') continue
+    // The recordist redid this line and a later take replaced this one. That is
+    // a DECISION, and it outranks the recency comparison below — which is
+    // ordered by a client-supplied `recorded_at` off the recordist's phone, so
+    // a skewed clock could otherwise re-promote the take they rejected.
+    // Marked, never deleted: the bytes are still in the bucket.
+    if (take.supersededBy) continue
     const key = normalizeForAudio(take.phraseText)
     if (!groups.has(key)) {
       groups.set(key, { phraseText: take.phraseText, chunksString: take.chunksString ?? null, natural: null, slow: null })

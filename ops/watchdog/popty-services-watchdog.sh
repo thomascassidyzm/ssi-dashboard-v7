@@ -13,7 +13,17 @@
 # Deliberately does NOT touch command-surface (4317) — that has its own
 # watchdog at ~/command-surface/ops/watchdog.sh.
 
-LOG=${POPTY_WATCHDOG_LOG:-/tmp/popty-watchdog.log}
+# The log lives outside tmpfs (2026-08-07). /tmp is wiped by every reboot, so a watchdog whose
+# record of what it resurrected dies with the machine is worthless for the one question it
+# exists to answer: why did the machine go down, and did anything come back? The 14:44 reboot
+# proved the cost — the 04:15 and 04:40 cron jobs demonstrably ran and left nothing behind.
+# The trim is inlined rather than calling command-surface's ops/trim-log.sh on purpose: this
+# script is deliberately portable to Camberley, where that repo need not exist.
+LOG=${POPTY_WATCHDOG_LOG:-$HOME/.local/log/popty-watchdog.log}
+/bin/mkdir -p "$(/usr/bin/dirname "$LOG")" 2>/dev/null
+if [ -f "$LOG" ] && [ "$(/usr/bin/wc -l < "$LOG" 2>/dev/null)" -gt 5000 ]; then
+  /usr/bin/tail -n 2000 "$LOG" > "$LOG.tmp" && /bin/mv "$LOG.tmp" "$LOG"
+fi
 UID_NUM=$(/usr/bin/id -u)
 XDG_RUNTIME_DIR=/run/user/$UID_NUM
 export XDG_RUNTIME_DIR

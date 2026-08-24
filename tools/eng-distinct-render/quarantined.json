@@ -1,0 +1,1087 @@
+[
+ {
+  "quarantined_at": "2026-08-13T07:46:22.328Z",
+  "audio_path": "/home/tomcassidy/ssi-dashboard-v7-clean/scripts/audio-veracity-quarantine/fin_for_eng/2026-08-13T07-46-22-328Z-38b46f3c0c.mp3",
+  "courseCode": "fin_for_eng",
+  "role": "known",
+  "voiceId": "gfzdpspr5fdp",
+  "originalText": "Here we are. That's twelve pound fifty.",
+  "text": "Here we are. That's twelve pound fifty.",
+  "language": "eng",
+  "attempts": 3,
+  "verdicts": [
+   {
+    "attempt": 1,
+    "reason": "cer_above_threshold",
+    "cer": 0.4595,
+    "decode": "Here we are, that's £12.50."
+   },
+   {
+    "attempt": 2,
+    "reason": "cer_above_threshold",
+    "cer": 0.4595,
+    "decode": "Here we are, that's £12.50."
+   },
+   {
+    "attempt": 3,
+    "reason": "cer_above_threshold",
+    "cer": 0.4595,
+    "decode": "Here we are. That's £12.50."
+   }
+  ]
+ },
+ {
+  "quarantined_at": "2026-08-13T07:46:55.400Z",
+  "audio_path": "/home/tomcassidy/ssi-dashboard-v7-clean/scripts/audio-veracity-quarantine/hye_for_eng/2026-08-13T07-46-55-400Z-570e298fb9.mp3",
+  "courseCode": "hye_for_eng",
+  "role": "known",
+  "voiceId": "bedd6226",
+  "originalText": "Lovely. The room is on the third floor, room seven hundred and nine.",
+  "text": "Lovely. The room is on the third floor, room seven hundred and nine.",
+  "language": "eng",
+  "attempts": 3,
+  "verdicts": [
+   {
+    "attempt": 1,
+    "reason": "cer_above_threshold",
+    "cer": 0.3385,
+    "decode": "Lovely. The room is on the third floor, room 709."
+   },
+   {
+    "attempt": 2,
+    "reason": "cer_above_threshold",
+    "cer": 0.3385,
+    "decode": "Lovely. The room is on the third floor, room 709."
+   },
+   {
+    "attempt": 3,
+    "reason": "cer_above_threshold",
+    "cer": 0.3385,
+    "decode": "Lovely. The room is on the third floor, room 709."
+   }
+  ]
+ },
+ {
+  "quarantined_at": "2026-08-13T07:47:34.230Z",
+  "audio_path": "/home/tomcassidy/ssi-dashboard-v7-clean/scripts/audio-veracity-quarantine/nor_for_eng/2026-08-13T07-47-34-230Z-d5942270a5.mp3",
+  "courseCode": "nor_for_eng",
+  "role": "known",
+  "voiceId": "bedd6226",
+  "originalText": "Lovely. The room is on the third floor, room seven zero nine.",
+  "text": "Lovely. The room is on the third floor, room seven zero nine.",
+  "language": "eng",
+  "attempts": 3,
+  "verdicts": [
+   {
+    "attempt": 1,
+    "reason": "last_word_missing",
+    "cer": 0.2586,
+    "decode": "Lovely, the room is on the third floor, room 709."
+   },
+   {
+    "attempt": 2,
+    "reason": "last_word_missing",
+    "cer": 0.2586,
+    "decode": "Lovely, the room is on the third floor, Room 709."
+   },
+   {
+    "attempt": 3,
+    "reason": "last_word_missing",
+    "cer": 0.2586,
+    "decode": "Lovely, the room is on the third floor, Room 709."
+   }
+  ]
+ },
+ {
+  "quarantined_at": "2026-08-13T07:58:12.918Z",
+  "audio_path": "/home/tomcassidy/ssi-dashboard-v7-clean/scripts/audio-veracity-quarantine/isl_for_eng/2026-08-13T07-58-12-918Z-14ddf1c3d1.mp3",
+  "courseCode": "isl_for_eng",
+  "role": "known",
+  "voiceId": "gfzdpspr5fdp",
+  "originalText": "Here we are. That's twelve thousand and five hundred króna.",
+  "text": "Here we are. That's twelve thousand and five hundred króna.",
+  "language": "eng",
+  "attempts": 3,
+  "verdicts": [
+   {
+    "attempt": 1,
+    "reason": "cer_above_threshold",
+    "cer": 0.5789,
+    "decode": "Here we are. That's 12,500 Kroner."
+   },
+   {
+    "attempt": 2,
+    "reason": "cer_above_threshold",
+    "cer": 0.5439,
+    "decode": "Here we are, that's 12,500 krona."
+   },
+   {
+    "attempt": 3,
+    "reason": "cer_above_threshold",
+    "cer": 0.5789,
+    "decode": "Here we are. That's 12,500 kroner."
+   }
+  ]
+ },
+ {
+  "quarantined_at": "2026-08-13T07:58:43.458Z",
+  "audio_path": "/home/tomcassidy/ssi-dashboard-v7-clean/scripts/audio-veracity-quarantine/nep_for_eng/2026-08-13T07-58-43-458Z-738ed3d1b9.mp3",
+  "courseCode": "nep_for_eng",
+  "role": "known",
+  "voiceId": "gfzdpspr5fdp",
+  "originalText": "Here we are. That's fourteen hundred rupees.",
+  "text": "Here we are. That's fourteen hundred rupees.",
+  "language": "eng",
+  "attempts": 3,
+  "verdicts": [
+   {
+    "attempt": 1,
+    "reason": "cer_above_threshold",
+    "cer": 0.3571,
+    "decode": "Here we are, that's 1,400 rupees."
+   },
+   {
+    "attempt": 2,
+    "reason": "cer_above_threshold",
+    "cer": 0.381,
+    "decode": "Here we are, that's 1400 rupees."
+   },
+   {
+    "attempt": 3,
+    "reason": "cer_above_threshold",
+    "cer": 0.3571,
+    "decode": "Here we are. That's 1,400 rupees."
+   }
+  ]
+ },
+ {
+  "quarantined_at": "2026-08-13T07:59:36.371Z",
+  "audio_path": "/home/tomcassidy/ssi-dashboard-v7-clean/scripts/audio-veracity-quarantine/pol_for_eng/2026-08-13T07-59-36-371Z-a5a28980fc.mp3",
+  "courseCode": "pol_for_eng",
+  "role": "known",
+  "voiceId": "gfzdpspr5fdp",
+  "originalText": "Here we are. That's twelve złoty fifty groszy.",
+  "text": "Here we are. That's twelve złoty fifty groszy.",
+  "language": "eng",
+  "attempts": 3,
+  "verdicts": [
+   {
+    "attempt": 1,
+    "reason": "cer_above_threshold",
+    "cer": 0.4318,
+    "decode": "Here we are, that's 12 Wattie 50 Grosche."
+   },
+   {
+    "attempt": 2,
+    "reason": "cer_above_threshold",
+    "cer": 0.3636,
+    "decode": "Here we are, that's 12 Zwotty 50 Grosche."
+   },
+   {
+    "attempt": 3,
+    "reason": "cer_above_threshold",
+    "cer": 0.4091,
+    "decode": "Here we are, that's 12's Wattie 50 Grushy."
+   }
+  ]
+ },
+ {
+  "quarantined_at": "2026-08-13T07:59:38.900Z",
+  "audio_path": "/home/tomcassidy/ssi-dashboard-v7-clean/scripts/audio-veracity-quarantine/ron_for_eng/2026-08-13T07-59-38-900Z-e788f5f864.mp3",
+  "courseCode": "ron_for_eng",
+  "role": "known",
+  "voiceId": "gfzdpspr5fdp",
+  "originalText": "Here we are. That's thirty-two lei.",
+  "text": "Here we are. That's thirty-two lei.",
+  "language": "eng",
+  "attempts": 3,
+  "verdicts": [
+   {
+    "attempt": 1,
+    "reason": "cer_above_threshold",
+    "cer": 0.303,
+    "decode": "Here we are, that's 32 lei."
+   },
+   {
+    "attempt": 2,
+    "reason": "cer_above_threshold",
+    "cer": 0.303,
+    "decode": "Here we are. That's 32 lei."
+   },
+   {
+    "attempt": 3,
+    "reason": "cer_above_threshold",
+    "cer": 0.3636,
+    "decode": "Here we are. That's 32 lay."
+   }
+  ]
+ },
+ {
+  "quarantined_at": "2026-08-13T07:59:53.851Z",
+  "audio_path": "/home/tomcassidy/ssi-dashboard-v7-clean/scripts/audio-veracity-quarantine/hye_for_eng/2026-08-13T07-59-53-851Z-3ec01c3d7a.mp3",
+  "courseCode": "hye_for_eng",
+  "role": "known",
+  "voiceId": "bedd6226",
+  "originalText": "That's two thousand dram altogether.",
+  "text": "That's two thousand dram altogether.",
+  "language": "eng",
+  "attempts": 3,
+  "verdicts": [
+   {
+    "attempt": 1,
+    "reason": "cer_above_threshold",
+    "cer": 0.3143,
+    "decode": "That's 2,000 dram altogether."
+   },
+   {
+    "attempt": 2,
+    "reason": "cer_above_threshold",
+    "cer": 0.3714,
+    "decode": "That's 2,000 DRAM all together."
+   },
+   {
+    "attempt": 3,
+    "reason": "cer_above_threshold",
+    "cer": 0.3143,
+    "decode": "That's 2,000 dram altogether."
+   }
+  ]
+ },
+ {
+  "quarantined_at": "2026-08-13T08:00:01.140Z",
+  "audio_path": "/home/tomcassidy/ssi-dashboard-v7-clean/scripts/audio-veracity-quarantine/ukr_for_eng/2026-08-13T08-00-01-140Z-81deb7b508.mp3",
+  "courseCode": "ukr_for_eng",
+  "role": "known",
+  "voiceId": "bedd6226",
+  "originalText": "That's three hundred and twenty hryvnias altogether.",
+  "text": "That's three hundred and twenty hryvnias altogether.",
+  "language": "eng",
+  "attempts": 3,
+  "verdicts": [
+   {
+    "attempt": 1,
+    "reason": "cer_above_threshold",
+    "cer": 0.5098,
+    "decode": "That's 320 hervnias all together."
+   },
+   {
+    "attempt": 2,
+    "reason": "cer_above_threshold",
+    "cer": 0.4902,
+    "decode": "That's 320 Revenias altogether."
+   },
+   {
+    "attempt": 3,
+    "reason": "cer_above_threshold",
+    "cer": 0.4706,
+    "decode": "That's 320 Hryvnias altogether."
+   }
+  ]
+ },
+ {
+  "quarantined_at": "2026-08-13T08:00:29.620Z",
+  "audio_path": "/home/tomcassidy/ssi-dashboard-v7-clean/scripts/audio-veracity-quarantine/ara_eg_for_eng/2026-08-13T08-00-29-620Z-c7aeab8769.mp3",
+  "courseCode": "ara_eg_for_eng",
+  "role": "known",
+  "voiceId": "bedd6226",
+  "originalText": "That's forty-eight pounds altogether.",
+  "text": "That's forty-eight pounds altogether.",
+  "language": "eng",
+  "attempts": 3,
+  "verdicts": [
+   {
+    "attempt": 1,
+    "reason": "cer_above_threshold",
+    "cer": 0.5,
+    "decode": "That's £48 altogether."
+   },
+   {
+    "attempt": 2,
+    "reason": "cer_above_threshold",
+    "cer": 0.5,
+    "decode": "That's £48 altogether."
+   },
+   {
+    "attempt": 3,
+    "reason": "cer_above_threshold",
+    "cer": 0.5,
+    "decode": "That's £48 altogether."
+   }
+  ]
+ },
+ {
+  "quarantined_at": "2026-08-13T08:00:53.824Z",
+  "audio_path": "/home/tomcassidy/ssi-dashboard-v7-clean/scripts/audio-veracity-quarantine/hin_for_eng/2026-08-13T08-00-53-823Z-852a5cf740.mp3",
+  "courseCode": "hin_for_eng",
+  "role": "known",
+  "voiceId": "gfzdpspr5fdp",
+  "originalText": "That's eight hundred and forty rupees altogether.",
+  "text": "That's eight hundred and forty rupees altogether.",
+  "language": "eng",
+  "attempts": 3,
+  "verdicts": [
+   {
+    "attempt": 1,
+    "reason": "cer_above_threshold",
+    "cer": 0.4792,
+    "decode": "That's 840 rupees altogether."
+   },
+   {
+    "attempt": 2,
+    "reason": "cer_above_threshold",
+    "cer": 0.4792,
+    "decode": "That's 840 rupees altogether."
+   },
+   {
+    "attempt": 3,
+    "reason": "cer_above_threshold",
+    "cer": 0.4792,
+    "decode": "That's 840 rupees altogether."
+   }
+  ]
+ },
+ {
+  "quarantined_at": "2026-08-13T08:01:33.390Z",
+  "audio_path": "/home/tomcassidy/ssi-dashboard-v7-clean/scripts/audio-veracity-quarantine/hye_for_eng/2026-08-13T08-01-33-389Z-246866d008.mp3",
+  "courseCode": "hye_for_eng",
+  "role": "known",
+  "voiceId": "gfzdpspr5fdp",
+  "originalText": "Here we are. That's three thousand five hundred dram.",
+  "text": "Here we are. That's three thousand five hundred dram.",
+  "language": "eng",
+  "attempts": 3,
+  "verdicts": [
+   {
+    "attempt": 1,
+    "reason": "cer_above_threshold",
+    "cer": 0.5098,
+    "decode": "Here we are. That's 3,500 DRAM."
+   },
+   {
+    "attempt": 2,
+    "reason": "cer_above_threshold",
+    "cer": 0.5098,
+    "decode": "Here we are. That's 3,500 DRAM."
+   },
+   {
+    "attempt": 3,
+    "reason": "cer_above_threshold",
+    "cer": 0.5294,
+    "decode": "Here we are, that's 3500 dram."
+   }
+  ]
+ },
+ {
+  "quarantined_at": "2026-08-13T08:02:22.603Z",
+  "audio_path": "/home/tomcassidy/ssi-dashboard-v7-clean/scripts/audio-veracity-quarantine/ukr_for_eng/2026-08-13T08-02-22-603Z-8fb2787470.mp3",
+  "courseCode": "ukr_for_eng",
+  "role": "known",
+  "voiceId": "gfzdpspr5fdp",
+  "originalText": "Here we are. That's five hundred hryvnias.",
+  "text": "Here we are. That's five hundred hryvnias.",
+  "language": "eng",
+  "attempts": 3,
+  "verdicts": [
+   {
+    "attempt": 1,
+    "reason": "cer_above_threshold",
+    "cer": 0.35,
+    "decode": "Here we are. That's 500 Revenias."
+   },
+   {
+    "attempt": 2,
+    "reason": "cer_above_threshold",
+    "cer": 0.325,
+    "decode": "Here we are. That's 500 Hervenias."
+   },
+   {
+    "attempt": 3,
+    "reason": "cer_above_threshold",
+    "cer": 0.3,
+    "decode": "Here we are, that's 500 Herdivnias."
+   }
+  ]
+ },
+ {
+  "quarantined_at": "2026-08-13T08:02:41.860Z",
+  "audio_path": "/home/tomcassidy/ssi-dashboard-v7-clean/scripts/audio-veracity-quarantine/fas_for_eng/2026-08-13T08-02-41-860Z-16c4d63372.mp3",
+  "courseCode": "fas_for_eng",
+  "role": "known",
+  "voiceId": "gfzdpspr5fdp",
+  "originalText": "Here we are. That's thirty thousand tomans.",
+  "text": "Here we are. That's thirty thousand tomans.",
+  "language": "eng",
+  "attempts": 3,
+  "verdicts": [
+   {
+    "attempt": 1,
+    "reason": "cer_above_threshold",
+    "cer": 0.3415,
+    "decode": "Here we are. That's 30,000 Tomans."
+   },
+   {
+    "attempt": 2,
+    "reason": "cer_above_threshold",
+    "cer": 0.3415,
+    "decode": "Here we are, that's 30,000 Tomans."
+   },
+   {
+    "attempt": 3,
+    "reason": "cer_above_threshold",
+    "cer": 0.3415,
+    "decode": "Here we are, that's 30,000 Tomans."
+   }
+  ]
+ },
+ {
+  "quarantined_at": "2026-08-13T08:04:31.400Z",
+  "audio_path": "/home/tomcassidy/ssi-dashboard-v7-clean/scripts/audio-veracity-quarantine/bul_for_eng/2026-08-13T08-04-31-400Z-fc9981b869.mp3",
+  "courseCode": "bul_for_eng",
+  "role": "known",
+  "voiceId": "gfzdpspr5fdp",
+  "originalText": "Here we are. That's fifteen leva.",
+  "text": "Here we are. That's fifteen leva.",
+  "language": "eng",
+  "attempts": 3,
+  "verdicts": [
+   {
+    "attempt": 1,
+    "reason": "last_word_missing",
+    "cer": 0.2903,
+    "decode": "Here we are. That's 15 lever."
+   },
+   {
+    "attempt": 2,
+    "reason": "last_word_missing",
+    "cer": 0.2903,
+    "decode": "Here we are, that's 15 lever."
+   },
+   {
+    "attempt": 3,
+    "reason": "last_word_missing",
+    "cer": 0.2903,
+    "decode": "Here we are, that's 15 lever."
+   }
+  ]
+ },
+ {
+  "quarantined_at": "2026-08-13T08:04:41.200Z",
+  "audio_path": "/home/tomcassidy/ssi-dashboard-v7-clean/scripts/audio-veracity-quarantine/kor_for_eng/2026-08-13T08-04-41-200Z-921a615fb4.mp3",
+  "courseCode": "kor_for_eng",
+  "role": "known",
+  "voiceId": "bedd6226",
+  "originalText": "That's nine thousand won altogether.",
+  "text": "That's nine thousand won altogether.",
+  "language": "eng",
+  "attempts": 3,
+  "verdicts": [
+   {
+    "attempt": 1,
+    "reason": "cer_above_threshold",
+    "cer": 0.4857,
+    "decode": "That's 9001 altogether."
+   },
+   {
+    "attempt": 2,
+    "reason": "cer_above_threshold",
+    "cer": 0.4571,
+    "decode": "That's 9,001 altogether."
+   },
+   {
+    "attempt": 3,
+    "reason": "cer_above_threshold",
+    "cer": 0.4857,
+    "decode": "That's 9001, altogether."
+   }
+  ]
+ },
+ {
+  "quarantined_at": "2026-08-13T08:05:06.033Z",
+  "audio_path": "/home/tomcassidy/ssi-dashboard-v7-clean/scripts/audio-veracity-quarantine/spa_mx_for_eng/2026-08-13T08-05-06-033Z-e2b98470d7.mp3",
+  "courseCode": "spa_mx_for_eng",
+  "role": "known",
+  "voiceId": "bedd6226",
+  "originalText": "Perfect. The room is on the third floor, room seven hundred and nine.",
+  "text": "Perfect. The room is on the third floor, room seven hundred and nine.",
+  "language": "eng",
+  "attempts": 3,
+  "verdicts": [
+   {
+    "attempt": 1,
+    "reason": "cer_above_threshold",
+    "cer": 0.3333,
+    "decode": "Perfect. The room is on the third floor. Room 709."
+   },
+   {
+    "attempt": 2,
+    "reason": "cer_above_threshold",
+    "cer": 0.3333,
+    "decode": "Perfect. The room is on the third floor, room 709."
+   },
+   {
+    "attempt": 3,
+    "reason": "cer_above_threshold",
+    "cer": 0.3333,
+    "decode": "Perfect. The room is on the third floor, room 709."
+   }
+  ]
+ },
+ {
+  "quarantined_at": "2026-08-13T08:06:27.518Z",
+  "audio_path": "/home/tomcassidy/ssi-dashboard-v7-clean/scripts/audio-veracity-quarantine/spa_mx_for_eng/2026-08-13T08-06-27-518Z-f8cf0bf0d6.mp3",
+  "courseCode": "spa_mx_for_eng",
+  "role": "known",
+  "voiceId": "gfzdpspr5fdp",
+  "originalText": "Here we are. That's three hundred and eighty pesos.",
+  "text": "Here we are. That's three hundred and eighty pesos.",
+  "language": "eng",
+  "attempts": 3,
+  "verdicts": [
+   {
+    "attempt": 1,
+    "reason": "cer_above_threshold",
+    "cer": 0.4898,
+    "decode": "Here we are, that's 380 pesos."
+   },
+   {
+    "attempt": 2,
+    "reason": "cer_above_threshold",
+    "cer": 0.4898,
+    "decode": "Here we are, that's 380 pesos."
+   },
+   {
+    "attempt": 3,
+    "reason": "cer_above_threshold",
+    "cer": 0.4898,
+    "decode": "Here we are. That's 380 pesos."
+   }
+  ]
+ },
+ {
+  "quarantined_at": "2026-08-13T08:06:31.735Z",
+  "audio_path": "/home/tomcassidy/ssi-dashboard-v7-clean/scripts/audio-veracity-quarantine/spa_mx_for_eng/2026-08-13T08-06-31-735Z-3f79de7422.mp3",
+  "courseCode": "spa_mx_for_eng",
+  "role": "known",
+  "voiceId": "bedd6226",
+  "originalText": "That's two hundred and fifty pesos altogether.",
+  "text": "That's two hundred and fifty pesos altogether.",
+  "language": "eng",
+  "attempts": 3,
+  "verdicts": [
+   {
+    "attempt": 1,
+    "reason": "cer_above_threshold",
+    "cer": 0.4667,
+    "decode": "That's 250 pesos altogether."
+   },
+   {
+    "attempt": 2,
+    "reason": "cer_above_threshold",
+    "cer": 0.4667,
+    "decode": "That's 250 pesos altogether."
+   },
+   {
+    "attempt": 3,
+    "reason": "cer_above_threshold",
+    "cer": 0.4667,
+    "decode": "That's 250 pesos altogether."
+   }
+  ]
+ },
+ {
+  "quarantined_at": "2026-08-13T08:07:09.492Z",
+  "audio_path": "/home/tomcassidy/ssi-dashboard-v7-clean/scripts/audio-veracity-quarantine/ara_for_eng/2026-08-13T08-07-09-492Z-6de2c17f5e.mp3",
+  "courseCode": "ara_for_eng",
+  "role": "known",
+  "voiceId": "bedd6226",
+  "originalText": "That's one hundred and twenty pounds altogether.",
+  "text": "That's one hundred and twenty pounds altogether.",
+  "language": "eng",
+  "attempts": 3,
+  "verdicts": [
+   {
+    "attempt": 1,
+    "reason": "cer_above_threshold",
+    "cer": 0.617,
+    "decode": "That's £120 altogether."
+   },
+   {
+    "attempt": 2,
+    "reason": "cer_above_threshold",
+    "cer": 0.4681,
+    "decode": "That's 120 pounds altogether."
+   },
+   {
+    "attempt": 3,
+    "reason": "cer_above_threshold",
+    "cer": 0.4681,
+    "decode": "That's 120 pounds altogether."
+   }
+  ]
+ },
+ {
+  "quarantined_at": "2026-08-13T08:07:14.685Z",
+  "audio_path": "/home/tomcassidy/ssi-dashboard-v7-clean/scripts/audio-veracity-quarantine/swe_for_eng/2026-08-13T08-07-14-685Z-03eb9abc60.mp3",
+  "courseCode": "swe_for_eng",
+  "role": "known",
+  "voiceId": "bedd6226",
+  "originalText": "That's eighty-eight kronor altogether.",
+  "text": "That's eighty-eight kronor altogether.",
+  "language": "eng",
+  "attempts": 3,
+  "verdicts": [
+   {
+    "attempt": 1,
+    "reason": "cer_above_threshold",
+    "cer": 0.3514,
+    "decode": "That's 88 cronor altogether."
+   },
+   {
+    "attempt": 2,
+    "reason": "cer_above_threshold",
+    "cer": 0.3243,
+    "decode": "That's 88 Kronor altogether."
+   },
+   {
+    "attempt": 3,
+    "reason": "cer_above_threshold",
+    "cer": 0.4054,
+    "decode": "That's 88 chrono all together."
+   }
+  ]
+ },
+ {
+  "quarantined_at": "2026-08-13T08:07:29.310Z",
+  "audio_path": "/home/tomcassidy/ssi-dashboard-v7-clean/scripts/audio-veracity-quarantine/ara_for_eng/2026-08-13T08-07-29-310Z-20234c0b97.mp3",
+  "courseCode": "ara_for_eng",
+  "role": "known",
+  "voiceId": "gfzdpspr5fdp",
+  "originalText": "Here we are. That's three hundred and fifty pounds.",
+  "text": "Here we are. That's three hundred and fifty pounds.",
+  "language": "eng",
+  "attempts": 3,
+  "verdicts": [
+   {
+    "attempt": 1,
+    "reason": "cer_above_threshold",
+    "cer": 0.4694,
+    "decode": "Here we are, that's 350 pounds."
+   },
+   {
+    "attempt": 2,
+    "reason": "cer_above_threshold",
+    "cer": 0.4694,
+    "decode": "Here we are, that's 350 pounds."
+   },
+   {
+    "attempt": 3,
+    "reason": "cer_above_threshold",
+    "cer": 0.4694,
+    "decode": "Here we are, that's 350 pounds."
+   }
+  ]
+ },
+ {
+  "quarantined_at": "2026-08-13T08:07:45.083Z",
+  "audio_path": "/home/tomcassidy/ssi-dashboard-v7-clean/scripts/audio-veracity-quarantine/lav_for_eng/2026-08-13T08-07-45-083Z-77f756e3b5.mp3",
+  "courseCode": "lav_for_eng",
+  "role": "known",
+  "voiceId": "bedd6226",
+  "originalText": "Lovely. The room is on the third floor, room six hundred and nine.",
+  "text": "Lovely. The room is on the third floor, room six hundred and nine.",
+  "language": "eng",
+  "attempts": 3,
+  "verdicts": [
+   {
+    "attempt": 1,
+    "reason": "cer_above_threshold",
+    "cer": 0.3175,
+    "decode": "Lovely. The room is on the third floor. Room 609."
+   },
+   {
+    "attempt": 2,
+    "reason": "cer_above_threshold",
+    "cer": 0.3175,
+    "decode": "Lovely. The room is on the third floor. Room 609."
+   },
+   {
+    "attempt": 3,
+    "reason": "cer_above_threshold",
+    "cer": 0.3175,
+    "decode": "Lovely. The room is on the third floor. Room 609."
+   }
+  ]
+ },
+ {
+  "quarantined_at": "2026-08-13T08:08:46.577Z",
+  "audio_path": "/home/tomcassidy/ssi-dashboard-v7-clean/scripts/audio-veracity-quarantine/kor_for_eng/2026-08-13T08-08-46-577Z-d4fc12d55d.mp3",
+  "courseCode": "kor_for_eng",
+  "role": "known",
+  "voiceId": "gfzdpspr5fdp",
+  "originalText": "Here we are. That's fifteen thousand won.",
+  "text": "Here we are. That's fifteen thousand won.",
+  "language": "eng",
+  "attempts": 3,
+  "verdicts": [
+   {
+    "attempt": 1,
+    "reason": "cer_above_threshold",
+    "cer": 0.3846,
+    "decode": "Here we are, that's 15,000 won."
+   },
+   {
+    "attempt": 2,
+    "reason": "cer_above_threshold",
+    "cer": 0.3846,
+    "decode": "Here we are, that's 15,000 won."
+   },
+   {
+    "attempt": 3,
+    "reason": "cer_above_threshold",
+    "cer": 0.3846,
+    "decode": "Here we are, that's 15,000 won."
+   }
+  ]
+ },
+ {
+  "quarantined_at": "2026-08-13T08:09:18.495Z",
+  "audio_path": "/home/tomcassidy/ssi-dashboard-v7-clean/scripts/audio-veracity-quarantine/tha_for_eng/2026-08-13T08-09-18-495Z-dd2e02bd5e.mp3",
+  "courseCode": "tha_for_eng",
+  "role": "known",
+  "voiceId": "bedd6226",
+  "originalText": "That's eighty-four baht altogether.",
+  "text": "That's eighty-four baht altogether.",
+  "language": "eng",
+  "attempts": 3,
+  "verdicts": [
+   {
+    "attempt": 1,
+    "reason": "cer_above_threshold",
+    "cer": 0.3235,
+    "decode": "That's 84 baht altogether."
+   },
+   {
+    "attempt": 2,
+    "reason": "cer_above_threshold",
+    "cer": 0.3235,
+    "decode": "That's 84 baht altogether."
+   },
+   {
+    "attempt": 3,
+    "reason": "cer_above_threshold",
+    "cer": 0.3235,
+    "decode": "That's 84 baht altogether."
+   }
+  ]
+ },
+ {
+  "quarantined_at": "2026-08-13T08:10:23.476Z",
+  "audio_path": "/home/tomcassidy/ssi-dashboard-v7-clean/scripts/audio-veracity-quarantine/tha_for_eng/2026-08-13T08-10-23-476Z-2a6ef4ff8f.mp3",
+  "courseCode": "tha_for_eng",
+  "role": "known",
+  "voiceId": "gfzdpspr5fdp",
+  "originalText": "Here we are. That's one thousand two hundred and fifty baht.",
+  "text": "Here we are. That's one thousand two hundred and fifty baht.",
+  "language": "eng",
+  "attempts": 3,
+  "verdicts": [
+   {
+    "attempt": 1,
+    "reason": "cer_above_threshold",
+    "cer": 0.569,
+    "decode": "Here we are, that's 1,250 baht."
+   },
+   {
+    "attempt": 2,
+    "reason": "cer_above_threshold",
+    "cer": 0.569,
+    "decode": "Here we are. That's 1,250 baht."
+   },
+   {
+    "attempt": 3,
+    "reason": "cer_above_threshold",
+    "cer": 0.569,
+    "decode": "Here we are, that's 1,250 baht."
+   }
+  ]
+ },
+ {
+  "quarantined_at": "2026-08-13T08:10:30.533Z",
+  "audio_path": "/home/tomcassidy/ssi-dashboard-v7-clean/scripts/audio-veracity-quarantine/zho_for_eng/2026-08-13T08-10-30-533Z-43b9de55b5.mp3",
+  "courseCode": "zho_for_eng",
+  "role": "known",
+  "voiceId": "bedd6226",
+  "originalText": "That's fifty-eight yuan altogether.",
+  "text": "That's fifty-eight yuan altogether.",
+  "language": "eng",
+  "attempts": 3,
+  "verdicts": [
+   {
+    "attempt": 1,
+    "reason": "cer_above_threshold",
+    "cer": 0.3235,
+    "decode": "That's 58 yuan altogether."
+   },
+   {
+    "attempt": 2,
+    "reason": "cer_above_threshold",
+    "cer": 0.3235,
+    "decode": "That's 58 yuan altogether."
+   },
+   {
+    "attempt": 3,
+    "reason": "cer_above_threshold",
+    "cer": 0.3235,
+    "decode": "That's 58 yuan altogether."
+   }
+  ]
+ },
+ {
+  "quarantined_at": "2026-08-13T08:11:02.759Z",
+  "audio_path": "/home/tomcassidy/ssi-dashboard-v7-clean/scripts/audio-veracity-quarantine/ara_eg_for_eng/2026-08-13T08-11-02-759Z-9a4fe021a3.mp3",
+  "courseCode": "ara_eg_for_eng",
+  "role": "known",
+  "voiceId": "gfzdpspr5fdp",
+  "originalText": "Here we are. That's a hundred and fifty pounds.",
+  "text": "Here we are. That's a hundred and fifty pounds.",
+  "language": "eng",
+  "attempts": 3,
+  "verdicts": [
+   {
+    "attempt": 1,
+    "reason": "cer_above_threshold",
+    "cer": 0.5778,
+    "decode": "Here we are. That's £150."
+   },
+   {
+    "attempt": 2,
+    "reason": "cer_above_threshold",
+    "cer": 0.5778,
+    "decode": "Here we are. That's £150."
+   },
+   {
+    "attempt": 3,
+    "reason": "cer_above_threshold",
+    "cer": 0.5778,
+    "decode": "Here we are. That's £150."
+   }
+  ]
+ },
+ {
+  "quarantined_at": "2026-08-13T08:12:59.212Z",
+  "audio_path": "/home/tomcassidy/ssi-dashboard-v7-clean/scripts/audio-veracity-quarantine/deu_for_eng/2026-08-13T08-12-59-212Z-c1cb8fb880.mp3",
+  "courseCode": "deu_for_eng",
+  "role": "known",
+  "voiceId": "bedd6226",
+  "originalText": "Very good. The room is on the third floor, room seven hundred and nine.",
+  "text": "Very good. The room is on the third floor, room seven hundred and nine.",
+  "language": "eng",
+  "attempts": 3,
+  "verdicts": [
+   {
+    "attempt": 1,
+    "reason": "cer_above_threshold",
+    "cer": 0.3235,
+    "decode": "Very good. The room is on the third floor, room 709."
+   },
+   {
+    "attempt": 2,
+    "reason": "cer_above_threshold",
+    "cer": 0.3235,
+    "decode": "Very good. The room is on the third floor. Room 709."
+   },
+   {
+    "attempt": 3,
+    "reason": "cer_above_threshold",
+    "cer": 0.3235,
+    "decode": "Very good. The room is on the third floor, room 709."
+   }
+  ]
+ },
+ {
+  "quarantined_at": "2026-08-13T08:13:49.077Z",
+  "audio_path": "/home/tomcassidy/ssi-dashboard-v7-clean/scripts/audio-veracity-quarantine/hin_for_eng/2026-08-13T08-13-49-077Z-38de952d1e.mp3",
+  "courseCode": "hin_for_eng",
+  "role": "known",
+  "voiceId": "gfzdpspr5fdp",
+  "originalText": "Here we are. That's twelve hundred and fifty rupees.",
+  "text": "Here we are. That's twelve hundred and fifty rupees.",
+  "language": "eng",
+  "attempts": 3,
+  "verdicts": [
+   {
+    "attempt": 1,
+    "reason": "cer_above_threshold",
+    "cer": 0.46,
+    "decode": "Here we are, that's 1,250 rupees."
+   },
+   {
+    "attempt": 2,
+    "reason": "cer_above_threshold",
+    "cer": 0.46,
+    "decode": "Here we are, that's 1,250 rupees."
+   },
+   {
+    "attempt": 3,
+    "reason": "cer_above_threshold",
+    "cer": 0.46,
+    "decode": "Here we are. That's 1,250 rupees."
+   }
+  ]
+ },
+ {
+  "quarantined_at": "2026-08-13T08:14:38.925Z",
+  "audio_path": "/home/tomcassidy/ssi-dashboard-v7-clean/scripts/audio-veracity-quarantine/swa_for_eng/2026-08-13T08-14-38-925Z-b2f1f2ce3c.mp3",
+  "courseCode": "swa_for_eng",
+  "role": "known",
+  "voiceId": "gfzdpspr5fdp",
+  "originalText": "Here we are. That's one thousand two hundred shillings.",
+  "text": "Here we are. That's one thousand two hundred shillings.",
+  "language": "eng",
+  "attempts": 3,
+  "verdicts": [
+   {
+    "attempt": 1,
+    "reason": "cer_above_threshold",
+    "cer": 0.4528,
+    "decode": "Here we are. That's 1200 shillings."
+   },
+   {
+    "attempt": 2,
+    "reason": "cer_above_threshold",
+    "cer": 0.4528,
+    "decode": "Here we are. That's 1200 shillings."
+   },
+   {
+    "attempt": 3,
+    "reason": "cer_above_threshold",
+    "cer": 0.434,
+    "decode": "Here we are, that's 1,200 shillings."
+   }
+  ]
+ },
+ {
+  "quarantined_at": "2026-08-13T08:15:05.199Z",
+  "audio_path": "/home/tomcassidy/ssi-dashboard-v7-clean/scripts/audio-veracity-quarantine/jpn_for_eng/2026-08-13T08-15-05-198Z-dbdd6c4cb3.mp3",
+  "courseCode": "jpn_for_eng",
+  "role": "known",
+  "voiceId": "bedd6226",
+  "originalText": "That's eleven hundred yen altogether.",
+  "text": "That's eleven hundred yen altogether.",
+  "language": "eng",
+  "attempts": 3,
+  "verdicts": [
+   {
+    "attempt": 1,
+    "reason": "cer_above_threshold",
+    "cer": 0.3611,
+    "decode": "That's 1,100 yen altogether."
+   },
+   {
+    "attempt": 2,
+    "reason": "cer_above_threshold",
+    "cer": 0.3611,
+    "decode": "That's 1,100 yen altogether."
+   },
+   {
+    "attempt": 3,
+    "reason": "cer_above_threshold",
+    "cer": 0.3611,
+    "decode": "That's 1,100 yen altogether."
+   }
+  ]
+ },
+ {
+  "quarantined_at": "2026-08-13T08:15:28.902Z",
+  "audio_path": "/home/tomcassidy/ssi-dashboard-v7-clean/scripts/audio-veracity-quarantine/tur_for_eng/2026-08-13T08-15-28-902Z-11ac2a1bd2.mp3",
+  "courseCode": "tur_for_eng",
+  "role": "known",
+  "voiceId": "bedd6226",
+  "originalText": "That's four hundred and twenty lira altogether.",
+  "text": "That's four hundred and twenty lira altogether.",
+  "language": "eng",
+  "attempts": 3,
+  "verdicts": [
+   {
+    "attempt": 1,
+    "reason": "cer_above_threshold",
+    "cer": 0.5,
+    "decode": "That's 420 lira altogether."
+   },
+   {
+    "attempt": 2,
+    "reason": "cer_above_threshold",
+    "cer": 0.5,
+    "decode": "That's 420 lira altogether."
+   },
+   {
+    "attempt": 3,
+    "reason": "cer_above_threshold",
+    "cer": 0.5435,
+    "decode": "That's 420 lira all together."
+   }
+  ]
+ },
+ {
+  "quarantined_at": "2026-08-13T08:15:32.499Z",
+  "audio_path": "/home/tomcassidy/ssi-dashboard-v7-clean/scripts/audio-veracity-quarantine/jpn_for_eng/2026-08-13T08-15-32-499Z-37b65d63ed.mp3",
+  "courseCode": "jpn_for_eng",
+  "role": "known",
+  "voiceId": "gfzdpspr5fdp",
+  "originalText": "Here we are. That's one thousand five hundred yen.",
+  "text": "Here we are. That's one thousand five hundred yen.",
+  "language": "eng",
+  "attempts": 3,
+  "verdicts": [
+   {
+    "attempt": 1,
+    "reason": "cer_above_threshold",
+    "cer": 0.5,
+    "decode": "Here we are. That's 1,500 yen."
+   },
+   {
+    "attempt": 2,
+    "reason": "cer_above_threshold",
+    "cer": 0.5,
+    "decode": "Here we are, that's 1,500 yen."
+   },
+   {
+    "attempt": 3,
+    "reason": "cer_above_threshold",
+    "cer": 0.5,
+    "decode": "Here we are. That's 1,500 yen."
+   }
+  ]
+ },
+ {
+  "quarantined_at": "2026-08-13T08:17:33.521Z",
+  "audio_path": "/home/tomcassidy/ssi-dashboard-v7-clean/scripts/audio-veracity-quarantine/hin_for_eng/2026-08-13T08-17-33-521Z-c26ecaf996.mp3",
+  "courseCode": "hin_for_eng",
+  "role": "known",
+  "voiceId": "gfzdpspr5fdp",
+  "originalText": "That's eight pound forty altogether.",
+  "text": "That's eight pound forty altogether.",
+  "language": "eng",
+  "attempts": 3,
+  "verdicts": [
+   {
+    "attempt": 1,
+    "reason": "cer_above_threshold",
+    "cer": 0.4571,
+    "decode": "That's £8.40 altogether."
+   },
+   {
+    "attempt": 2,
+    "reason": "cer_above_threshold",
+    "cer": 0.4571,
+    "decode": "That's £8.40 altogether."
+   },
+   {
+    "attempt": 3,
+    "reason": "cer_above_threshold",
+    "cer": 0.4571,
+    "decode": "That's £8.40 altogether."
+   }
+  ]
+ }
+]
