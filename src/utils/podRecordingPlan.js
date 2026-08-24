@@ -16,8 +16,8 @@
 // Normalized item shape:
 // {
 //   podId, podTitle, sentenceId,
-//   kind: 'target' | 'known' | 'explainer',
-//   role: 'target1' | 'known' | 'pod_explainer',   // course_audio role, recon §1
+//   kind: 'target' | 'known',
+//   role: 'target1' | 'known',                      // course_audio role, recon §1
 //   speaker, sceneNumber, sceneTitle,               // sceneTitle only on boundaries
 //   cues: [{ speaker, targetText, knownText, draft }],  // preceding dialogue lines
 //   lineText,                                       // what the human READS
@@ -35,13 +35,15 @@
  * writes for TTS pod rows (pods-recon-facts.md §1) — never invent a role string:
  *   target line  → 'target1'
  *   known line   → 'known'
- *   explainer    → 'pod_explainer'
+ *
+ * The pod explainer track was deprecated on 2026-08-24 (Tom's ruling), so
+ * 'explainer' is no longer a recordable kind and falls through to null with
+ * every other unknown kind — the server never emits one.
  */
 export function roleForKind(kind) {
   switch (kind) {
     case 'target': return 'target1'
     case 'known': return 'known'
-    case 'explainer': return 'pod_explainer'
     default: return null
   }
 }
@@ -87,7 +89,7 @@ function normalizeItem(raw, podCtx = {}) {
   if (lineGloss == null) {
     lineGloss = pick(raw, 'gloss', 'knownText', 'known_text') ?? null
   }
-  // For known/explainer queues the read text IS known-language — no gloss needed.
+  // For a known queue the read text IS known-language — no gloss needed.
   if (kind !== 'target' && lineGloss === lineText) lineGloss = null
 
   const cuesRaw = pick(raw, 'cues', 'context', 'previousLines', 'previous_lines') || []

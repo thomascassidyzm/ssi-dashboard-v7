@@ -10,9 +10,8 @@ A **sticky listen bar** sits under the navbar and stays there while you scroll:
   through scene boundaries. **■ Stop** halts it and leaves the highlight where
   it stopped.
 - **▶▶ on every line** — starts the run *at that line* and carries on to the end.
-- Four toggles for what the run includes: **Target** (on), **Splits**,
-  **English**, **Explainer**. The clip count next to Stop tells you how long
-  the run is.
+- Three toggles for what the run includes: **Target** (on), **Splits**,
+  **English**. The clip count next to Stop tells you how long the run is.
 
 The line you are **hearing** now takes a green left bar and a ring, and scrolls
 itself to the middle of the screen as the run moves. Underneath the bar, a
@@ -27,8 +26,10 @@ Nothing here writes anything. Same read-only page, same learner URLs.
 
 ## Taste calls I defaulted — one word each changes any of them
 
-1. **What the run plays**: the target whole-turn clip of each line. English,
-   explainer and splits are off unless you toggle them.
+1. **What the run plays**: the target whole-turn clip of each line. English
+   and splits are off unless you toggle them. There is no explainer toggle —
+   explainers were deprecated on 2026-08-24 (Tom's ruling) and the play queue
+   never offers one.
 2. **A line with no whole turn** plays its split clips in order rather than
    being skipped.
 3. **Auto-scroll follows the run only** — a single tap never moves the page

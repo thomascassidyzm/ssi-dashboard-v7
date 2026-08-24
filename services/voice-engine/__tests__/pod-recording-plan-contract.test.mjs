@@ -75,12 +75,12 @@ const canonicalPlan = {
       podId: 'cym_n_for_eng:pod-1',
       podTitle: 'Pod 1 — Y dref',
       sentenceId: 'cym_n_for_eng:pod-1:SC02-S003',
-      kind: 'explainer',
+      kind: 'known',
       speaker: '__explainer__',
       sceneNumber: 2,
       sceneTitle: 'Yn y siop',
       cues: [],
-      line: { text: "Notice how 'eisiau' carries the wanting..." },
+      line: { text: 'Excuse me, where is the shop?' },
       recorded: false,
       audioId: null
     }
@@ -88,14 +88,19 @@ const canonicalPlan = {
 }
 
 describe('roleForKind — course_audio roles per recon §1 (never invented)', () => {
-  it('maps target → target1, known → known, explainer → pod_explainer', () => {
+  it('maps target → target1 and known → known', () => {
     expect(roleForKind('target')).toBe('target1')
     expect(roleForKind('known')).toBe('known')
-    expect(roleForKind('explainer')).toBe('pod_explainer')
   })
   it('returns null for unknown kinds (caller must not guess)', () => {
     expect(roleForKind('presentation')).toBeNull()
     expect(roleForKind(undefined)).toBeNull()
+  })
+  // Deprecated 2026-08-24 (Tom's ruling): the pod explainer track is gone, so
+  // 'explainer' is no longer a recordable kind. Pinned so a future caller that
+  // reintroduces the string gets null rather than a resurrected role.
+  it('no longer maps explainer to a role', () => {
+    expect(roleForKind('explainer')).toBeNull()
   })
 })
 
@@ -136,10 +141,14 @@ describe('normalizeRecordingPlan — canonical keystone shape', () => {
     expect(plan.items[1].recorded).toBe(false)
   })
 
-  it('explainer items get role pod_explainer and a bare line text', () => {
-    const ex = plan.items[3]
-    expect(ex.role).toBe('pod_explainer')
-    expect(ex.lineText).toMatch(/eisiau/)
+  // The __explainer__ cast key survives the explainer deprecation because it is
+  // also what casts the KNOWN-language lines (pods-cast.cjs). This pins that
+  // surviving leg: a known line routed via __explainer__ still gets role 'known'.
+  it('a known line cast to __explainer__ gets role known and a bare line text', () => {
+    const kn = plan.items[3]
+    expect(kn.speaker).toBe('__explainer__')
+    expect(kn.role).toBe('known')
+    expect(kn.lineText).toMatch(/shop/)
   })
 
   it('prefers server totals when present', () => {
@@ -271,10 +280,10 @@ describe('buildPodUploadMetadata — the registration seam contract (keystone §
     expect(meta.cadence).toBe('natural')
   })
 
-  it('explainer items ride with role pod_explainer', () => {
-    const meta = buildPodUploadMetadata(items[3], { voiceId: 'human_tom_explainer' })
-    expect(meta.role).toBe('pod_explainer')
-    expect(meta.kind).toBe('explainer')
+  it('known items cast to __explainer__ ride with role known', () => {
+    const meta = buildPodUploadMetadata(items[3], { voiceId: 'human_tom_known' })
+    expect(meta.role).toBe('known')
+    expect(meta.kind).toBe('known')
   })
 })
 
