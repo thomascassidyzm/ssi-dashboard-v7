@@ -27,6 +27,15 @@ test, so German is the one course already living where the target is. Everything
 
 **Estate-wide that is roughly 76% of 2,476,446 clips — about 1.9 million clips actually touched.**
 
+**Scope question settled: it is everything, not a cohort.** You asked whether the quiet clips cluster
+by when they were mastered, so the run could target just the bad era. I checked, and they do not —
+your own scene-22 datapoint refutes it. Scene 22 is entirely June-era (the quiet regime) and it is the
+best-sounding scene in the pod; scenes 15–21 are entirely August-era and they are the worst. There is
+a genuine era effect on *level* — pre-August Enzo sits 1.1 dB lower and puts 26% of its clips below
+−19 LUFS against 2.6% for August — but it is not what you are hearing, and it does not partition the
+work. The level drift is spread across every era and every course, so the run targets everything that
+measures off. Detail in the A/B doc.
+
 The effect, from the Italian dry run of 300:
 
 | | before | after |

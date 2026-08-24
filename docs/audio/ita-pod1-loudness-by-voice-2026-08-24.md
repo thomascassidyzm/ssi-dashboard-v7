@@ -97,6 +97,48 @@ spectral, not level.
 
 ---
 
+## Why scene 22 sounds better — you were right, and it killed my theory
+
+You said the later scenes, **especially 22, are "really not too bad"**. I went looking for a render-date
+cause, because scenes were mastered at different times. **That theory is dead, and your ear killed it.**
+
+Scene 22 is **100% June-era Enzo** — the older, quieter regime. Scenes 15–21 are **100% August** — the
+newer, better one. If render date were the story, 22 would be the worst scene in the pod and 15–21
+the best. You hear exactly the opposite, so date is not the story.
+
+Here is what is, measured on the phone-band meter — the one that has now agreed with your ear twice:
+
+| scene | Enzo-vs-Ara gap, on a phone |
+|---|---|
+| 15 | 7.1 dB |
+| 21 | 6.1 dB |
+| 16 | 6.0 dB |
+| 19 | 5.2 dB |
+| 20 | 4.8 dB |
+| 18 | 4.15 dB |
+| 17 | 4.1 dB |
+| **22** | **2.3 dB** |
+
+**Scene 22 has by far the smallest gap in the pod — less than half the worst.** That is your sentence,
+in a column.
+
+And here is the part worth pausing on: **on the standard full-band meter, scene 22 is one of the
+WORST scenes** (Enzo −18.4 there, against −16.8 in scene 17). The two meters rank it at opposite ends.
+That is now the second independent time your ear has sided with the phone measurement against the one
+the estate actually uses.
+
+**What clusters it is clip length, not date.** Scene 22's lines are 2.4× longer — Enzo averages
+**3,024 ms** there against **~1,200 ms** in scenes 15–21. Scenes 15–21 are the drill scenes: short
+fragments, a run of Ara lines then one short Enzo line. A brief, quiet, bass-heavy fragment landing
+after a run of longer Ara lines is the most exposed thing in the pod. Scene 22 is a real conversation
+with full sentences on both sides, and it alternates — so the gap is both smaller and less conspicuous.
+
+**What this means for the fix:** the level drift is real and estate-wide and the re-master fixes it
+everywhere — but it is the short drill fragments, not the old renders, where the problem you can
+actually hear concentrates. That is an argument for the tilt, not against the re-master.
+
+---
+
 ## It is not just Italian
 
 I had a second pass measure other courses while I built the fix, and the answer changes the size of
