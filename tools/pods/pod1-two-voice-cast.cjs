@@ -79,6 +79,7 @@ const path = require('path')
 const { Client } = require('pg')
 const { checkPodCast, loadPodForCastCheck } = require('./pod-cast-gate.cjs')
 const { canonicalSpeakerName } = require('../pod-voice-colour-n.cjs')
+const { annotateVariantRuns } = require('./variant-run.cjs')
 
 const REPO = path.join(__dirname, '..', '..')
 const OUT_DIR = path.join(REPO, 'docs', 'pods')
@@ -225,6 +226,41 @@ function reRenderScope ({ rows, cast, clips }) {
   return { byRole, total }
 }
 
+/**
+ * WHERE THIS CAST DISAGREES WITH TOM'S VARIANT-DRILL RULING (2026-08-24).
+ *
+ * A cast is PER ROLE; the ruling is PER LINE. Nothing in `listening_pods.speakers`
+ * can say "this role, but only on these lines", so this tool CANNOT enforce the
+ * rule by writing a different cast — that is the schema gap the Italian pod-1
+ * revert ran into, and closing it properly is a pod-script text change and
+ * therefore Tom's call under the migration protocol.
+ *
+ * What it CAN do, and now does, is refuse to be silent: name every line that the
+ * cast it is about to write would place on the SECOND voice while sitting inside
+ * a variant run. Those lines must keep the learner voice, so the whole-turn
+ * re-render and unlink paths deliberately exclude them (both now do). This is
+ * reported, never blocking — the cast itself is not wrong, it is merely unable
+ * to express the exception.
+ *
+ * The rule lives in tools/pods/variant-run.cjs and nowhere else.
+ */
+function variantConflicts ({ rows, cast, voiceA }) {
+  const { rows: annotated, runs } = annotateVariantRuns(rows || [])
+  const conflicts = []
+  for (const v of annotated) {
+    if (!v.variantLocked) continue
+    const e = cast[v.speaker] || cast._default
+    const want = bare(e && e.target && e.target.voice_id)
+    if (!want || want === bare(voiceA)) continue // already on the learner voice — correct
+    conflicts.push({
+      line: v.label, speaker: v.speaker, run: v.runId,
+      cast_would_use: want, must_stay_on: bare(voiceA),
+      known_text: v.row.known_text, reason: v.reason,
+    })
+  }
+  return { conflicts, runs: runs.length }
+}
+
 async function main () {
   const db = new Client({ connectionString: process.env.DATABASE_URL })
   await db.connect()
@@ -258,6 +294,7 @@ async function main () {
     const after = checkPodCast({ rows: loaded.rows, speakers: built.cast, clips: loaded.clips, course: pod.course_code })
     const afterKnown = checkPodCast({ rows: loaded.rows, speakers: built.cast, clips: loaded.clips, track: 'known', course: pod.course_code })
     const scope = reRenderScope({ rows: loaded.rows, cast: built.cast, clips: loaded.clips })
+    const variant = variantConflicts({ rows: loaded.rows, cast: built.cast, voiceA: built.voiceA })
 
     let written = false
     if (APPLY && !VERIFY && built.changes.length) {
@@ -289,6 +326,7 @@ async function main () {
       castBefore: loaded.speakers,
       castAfter: built.cast,
       reRenderScope: scope,
+      variantRunConflicts: variant.conflicts,
       written,
     })
 
@@ -296,6 +334,15 @@ async function main () {
       `changes=${built.changes.length}  gate ${before.ok ? 'PASS' : 'FAIL'} → ${after.ok ? 'PASS' : 'FAIL'}  ` +
       `re-render turns=${scope.total.turns}${written ? '  [WRITTEN]' : ''}`)
     if (!after.ok) for (const f of after.failures) console.log(`   still failing: ${f}`)
+    if (variant.conflicts.length) {
+      console.log(`   ⚠️  ${variant.conflicts.length} VARIANT-DRILL line(s) this cast puts on the second voice.`)
+      console.log('      A per-role cast cannot express a per-line exception, so these are NOT written here —')
+      console.log("      they must keep the learner voice (Tom's variant-drill ruling, 2026-08-24). The whole-turn")
+      console.log('      re-render and unlink paths exclude them by default; nothing else may put them on voice B.')
+      for (const c of variant.conflicts) {
+        console.log(`      ${c.line} ${c.speaker} (${c.run}) ${c.cast_would_use} → must stay ${c.must_stay_on}  ${JSON.stringify(String(c.known_text).slice(0, 55))}`)
+      }
+    }
   }
 
   await db.end()
@@ -308,6 +355,6 @@ async function main () {
   if (!APPLY && !VERIFY) console.log('DRY RUN — nothing written. Re-run with --apply.')
 }
 
-module.exports = { buildTwoVoiceCast, reRenderScope, FLEET_ALIGNMENT }
+module.exports = { buildTwoVoiceCast, reRenderScope, variantConflicts, FLEET_ALIGNMENT }
 
 if (require.main === module) main().catch(e => { console.error('FAILED:', e.message); process.exit(1) })
