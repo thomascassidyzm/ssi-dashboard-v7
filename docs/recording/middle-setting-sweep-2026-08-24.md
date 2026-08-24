@@ -70,23 +70,23 @@ walks straight into:
 | `und`/`oder` | joins noun phrases — "dreckert **und** noss" — as often as clauses |
 
 Counts: **14,436 sub-clauses** under *punct*, **14,512** under *conservative*,
-**15,345** under *aggressive*, **14,293** under *corrected*, over 11,858 distinct phrases — about 1.22
+**15,300** under *aggressive*, **14,293** under *corrected*, over 11,858 distinct phrases — about 1.22
 sub-clauses per phrase, because most of the course is short single-clause
 material. Zero phrases were dropped by the token-alignment guard.
 
 ### The gap is real but it does not change the decision
 
-Every setting was measured under all four rules. **They agree to within 4.5
+Every setting was measured under all four rules. **They agree to within 4.3
 points everywhere, and the ordering of settings is identical under all four**:
 
 | setting | punct | **conservative** | aggressive | corrected (post-audit) |
 |---|---|---|---|---|
-| TIGHT | 13.1% | **13.3%** | 16.1% | 12.6% |
-| `cap=6` | 33.3% | **33.6%** | 36.8% | 32.3% |
-| `cap=3` | 59.1% | **59.4%** | 62.1% | 58.3% |
+| TIGHT | 13.1% | **13.3%** | 15.8% | 12.6% |
+| `cap=6` | 33.3% | **33.6%** | 36.6% | 32.3% |
+| `cap=3` | 59.1% | **59.4%** | 62.0% | 58.3% |
 | GENEROUS | 78.2% | **78.3%** | 80.1% | 77.8% |
 
-Full spread at the recommended setting: **32.3% – 36.8%** — four rules, one
+Full spread at the recommended setting: **32.3% – 36.6%** — four rules, one
 ranking, and no reading of the boundary question gets `cap=6` anywhere near 50%.
 
 So the inference gap moves the *number* by a couple of points and moves the
@@ -97,7 +97,7 @@ places **2,699 internal boundaries** across the corpus, and **2,622 of them —
 97.1% — come from punctuation the course authors typed**. Only **2.9% come from
 my word list**. The segmentation is overwhelmingly *read off the course*, not
 guessed at; the word list is a thin correction on top. (The aggressive rule adds
-841 more boundaries, a 31% increase, and that is the honest upper bound on how
+796 more boundaries, a 29% increase, and that is the honest upper bound on how
 much a comma-blind reading could differ.)
 
 ### The hand audit, and what it changed
@@ -126,6 +126,14 @@ structural one — the **bare V2 complement clause**: "i glaub **er hot si
 täuscht**", with no comma and no *dass*. That construction is common in casual
 Bavarian and **no surface rule can reach it without a verb-position parse**. It
 is a declared gap, not a tuning knob.
+
+The audit also found a real bug in my own matcher: it accepted `-n` as a Bavarian
+subject clitic, which it is not, so `wern` ("they will") and `werd` ("I will")
+were read as the relative *wer* and split **50 future-tense clauses** in two.
+That only ever reached the aggressive rule — no token in this corpus matches a
+`-n` form of any conservative subordinator, verified at zero — so the headline
+numbers never carried it, but the upper bound did. Fixed, and the aggressive
+column above is post-fix.
 
 **I rebuilt the rule to remove the three fixable false-positive classes and
 re-ran the whole sweep** — that is the `corrected` column. One correction the
