@@ -36,6 +36,28 @@ const { getAccessToken } = useAuth()
 const AUDIO_BASE = 'https://saysomethingin.app/api/audio'
 const DEFAULT_GAP_MS = 350
 
+// ── the gaps ────────────────────────────────────────────────────────────────
+// The four pauses the LEARNER actually hears between pod clips, live in
+// `algorithm_config` row key='pods'. Until 2026-08-24 this Lab auditioned every
+// stage at a flat hardcoded 350 ms, so it could not hear the pacing it was
+// meant to be tuning — the live row has carried 0 on all four since Aran wrote
+// it on 2026-06-30, and the fade schedule launched on that hard cut (Tom,
+// 2026-08-24). These are the shipped fallbacks, kept in step with DEFAULT_PODS
+// in ssi-learning-app packages/player-vue/src/composables/useAlgorithmConfig.ts;
+// they apply only when the live row omits a field.
+const FALLBACK_GAPS = {
+  gapSuperTightMs: 100, // known→target, target→target
+  gapTightMs: 200, //     target→known
+  gapGluedMs: 300, //     chunk → glued chunk
+  gapBetweenMs: 1000, //  sentence → next sentence, and stage → next stage
+}
+const GAP_FIELDS = [
+  { key: 'gapSuperTightMs', label: 'known → target, target → target' },
+  { key: 'gapTightMs', label: 'target → known' },
+  { key: 'gapGluedMs', label: 'chunk → glued chunk' },
+  { key: 'gapBetweenMs', label: 'sentence → sentence, stage → stage' },
+]
+
 // ── config fallbacks ────────────────────────────────────────────────────────
 // Used only when the course has no saved `pods`/`stage0` config row.
 const FALLBACK_STAGE_PLAYLIST = {
@@ -95,6 +117,8 @@ const labStage0 = ref(clone(DEFAULT_STAGE0))
 const labStagePlaylist = ref(clone(FALLBACK_STAGE_PLAYLIST))
 const liveStage0 = ref(clone(DEFAULT_STAGE0))
 const liveStagePlaylist = ref(clone(FALLBACK_STAGE_PLAYLIST))
+const labGaps = ref(clone(FALLBACK_GAPS))
+const liveGaps = ref(clone(FALLBACK_GAPS))
 const activePreset = ref('live')
 
 // JSON editors (mirrors of the reactive config, parsed on edit)
@@ -178,6 +202,14 @@ async function loadLiveConfig() {
       }
       if (byKey.pods && byKey.pods.stagePlaylist) {
         liveStagePlaylist.value = clone(byKey.pods.stagePlaylist)
+      }
+      if (byKey.pods) {
+        // `??`, never `||` — every live gap is 0 and 0 is falsy; `||` would
+        // silently audition the fade at the shipped 100/200/300/1000 ms and
+        // the hard cut Tom launched on would never be heard in this Lab.
+        const g = {}
+        for (const { key } of GAP_FIELDS) g[key] = byKey.pods[key] ?? FALLBACK_GAPS[key]
+        liveGaps.value = g
       }
     }
   } catch (e) {
@@ -294,6 +326,7 @@ function applyPreset(which) {
   if (which === 'live') {
     labStage0.value = clone(liveStage0.value)
     labStagePlaylist.value = clone(liveStagePlaylist.value)
+    labGaps.value = clone(liveGaps.value)
   } else if (which === 'proposed') {
     const s0 = clone(liveStage0.value)
     // Stage 0 run twice (the breakdown lives here; explainer removed from Stages 1–8).
@@ -334,10 +367,38 @@ function onStage0JsonInput() {
   }
 }
 
+/** The 2026-08-24 launch pacing: no pause anywhere. The starting point for
+ *  tuning by ear — every other value is reached from here. */
+function applyHardCut() {
+  labGaps.value = { gapSuperTightMs: 0, gapTightMs: 0, gapGluedMs: 0, gapBetweenMs: 0 }
+  activePreset.value = 'custom'
+}
+
+/**
+ * The gap after `curr`, in ms — a faithful mirror of the LEARNER'S rule
+ * (podGapMs, ssi-learning-app packages/player-vue/src/components/
+ * LearningPlayer.vue). Keep the two in step: an audition that paces
+ * differently from the main flow is worse than no audition, because it sounds
+ * authoritative. The one Lab-only clause is the stage boundary — the main flow
+ * meets it as a lap boundary a whole session apart, whereas the Lab plays the
+ * rungs back to back, so it borrows the between-sentences gap.
+ */
+function gapAfter(curr, next) {
+  if (!next) return 0
+  // Stage-0 plays carry their own config-driven gap; honour it verbatim.
+  if (curr.gapAfterMs != null) return curr.gapAfterMs
+  const g = labGaps.value
+  if (curr.stage !== next.stage) return g.gapBetweenMs
+  const cIsTarget = curr.playRole !== 'trans' && curr.playRole !== 'explainer'
+  const nIsKnown = next.playRole === 'trans' || next.playRole === 'explainer'
+  if (cIsTarget && nIsKnown) return g.gapTightMs // target → known
+  return g.gapSuperTightMs //                      known → target, target → target
+}
+
 function exportJson() {
   const payload = {
     stage0: labStage0.value,
-    pods: { stagePlaylist: labStagePlaylist.value },
+    pods: { stagePlaylist: labStagePlaylist.value, ...labGaps.value },
   }
   navigator.clipboard.writeText(JSON.stringify(payload, null, 2)).then(() => {
     copied.value = true
@@ -384,12 +445,15 @@ async function playPlays(plays) {
   stop()
   const myToken = ++stopToken
   isPlaying.value = true
-  for (const p of plays) {
+  for (let i = 0; i < plays.length; i++) {
+    const p = plays[i]
     if (myToken !== stopToken) break
     playingIdx.value = p._idx
     await playClip(p.audioId, p.playbackSpeed)
     if (myToken !== stopToken) break
-    await sleep(p.gapAfterMs != null ? p.gapAfterMs : DEFAULT_GAP_MS)
+    // The learner's own gap rule, from the editable gap config — NOT a flat
+    // 350 ms. This is what makes the Lab an audition of the real pacing.
+    await sleep(gapAfter(p, plays[i + 1] || null))
   }
   if (myToken === stopToken) {
     isPlaying.value = false
@@ -2225,7 +2289,8 @@ loadLiveConfig()
       </p>
       <p class="safety">
         Preview &amp; export only — this Lab never writes <code>algorithm_config</code> (those writes
-        hit every learner within ~5&nbsp;min). Export the tuned JSON and apply it deliberately.
+        hit every learner within ~5&nbsp;min). Tune the ladder <em>and the gaps</em> here, hear it,
+        then export the JSON and apply it deliberately.
       </p>
     </header>
 
@@ -2345,6 +2410,31 @@ loadLiveConfig()
             ></textarea>
             <span v-if="jsonError.playlist" class="chip err">{{ jsonError.playlist }}</span>
           </label>
+
+          <div class="field gaps">
+            <span class="lbl small">
+              Gaps · ms
+              <button class="mini" @click="applyHardCut">Hard cut (0)</button>
+              <button class="mini" @click="labGaps = { ...liveGaps }">Live</button>
+            </span>
+            <p class="note">
+              The pauses the learner hears. Change a number and press play — the arc re-paces
+              immediately, using the same rule the main flow runs. Launched on
+              <strong>0 everywhere</strong> (2026-08-24): a hard cut, no pause between clips or
+              between sentences.
+            </p>
+            <label v-for="f in GAP_FIELDS" :key="f.key" class="gap-row">
+              <input
+                type="number"
+                min="0"
+                step="25"
+                :value="labGaps[f.key]"
+                @input="labGaps = { ...labGaps, [f.key]: Math.max(0, Number($event.target.value) || 0) }"
+              />
+              <code>{{ f.key }}</code>
+              <span class="gap-what">{{ f.label }}</span>
+            </label>
+          </div>
 
           <details class="adv">
             <summary>Stage 0 config (advanced)</summary>
@@ -3050,6 +3140,47 @@ code {
   background: var(--canvas);
   color: var(--ink);
   resize: vertical;
+}
+.gaps {
+  margin: 12px 0 4px;
+}
+.gaps .mini {
+  margin-left: 6px;
+  padding: 1px 7px;
+  font-size: 11px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+}
+.gaps .mini:hover {
+  color: var(--ink);
+  border-color: var(--accent-2);
+}
+.gap-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+  font-size: 12px;
+}
+.gap-row input {
+  width: 74px;
+  padding: 4px 6px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--canvas);
+  color: var(--ink);
+  font-family: var(--font-mono, ui-monospace, Menlo, monospace);
+  text-align: right;
+}
+.gap-row code {
+  min-width: 128px;
+  color: var(--ink);
+}
+.gap-what {
+  color: var(--muted);
 }
 .adv {
   margin: 8px 0 14px;
