@@ -1,15 +1,15 @@
 {
   "course": "hrv_for_eng",
   "pod": "hrv_for_eng:pod-1",
-  "apply": true,
-  "at": "2026-08-24T19:23:08.230Z",
+  "apply": false,
+  "at": "2026-08-24T19:20:40.614Z",
   "gates": {
     "margin_floor": 1.5,
     "seam_db": -35,
     "seam_window_s": 0.03,
     "min_piece_s": 0.35
   },
-  "splicer": "tools/pods/splice.py",
+  "splicer": "scripts/splice-fork/splice.py (unmodified)",
   "multi_sentence_turns_needing_split": 47,
   "processed": 47,
   "stats": {
@@ -24,26 +24,6 @@
   "errors": [],
   "linked": [
     {
-      "id": "hrv_for_eng:pod-1:SC06-S006",
-      "order": 30,
-      "n": 2,
-      "sentences": [
-        "Ja sam iz Francuske.",
-        "Ovdje sam… već dvije godine."
-      ],
-      "ids": [
-        "7b3c336d-d9ea-4ebd-9471-dc9385d6da60",
-        "7949c7dc-31e1-4360-bc9b-58839e3121b7"
-      ],
-      "margin": null,
-      "piece_durs": [
-        1.967,
-        3.519
-      ],
-      "worst_seam_db": -91,
-      "all_reused": false
-    },
-    {
       "id": "hrv_for_eng:pod-1:SC06-S005",
       "order": 29,
       "n": 2,
@@ -52,7 +32,7 @@
         "A ti?"
       ],
       "ids": [
-        "d806544d-9846-4d6f-8a0f-a91d9f215b07",
+        "<would-splice:s0>",
         "3977b86a-9d93-41d2-ac70-22e8f1455468"
       ],
       "margin": null,
@@ -64,24 +44,21 @@
       "all_reused": false
     },
     {
-      "id": "hrv_for_eng:pod-1:SC04-S003",
-      "order": 22,
-      "n": 3,
+      "id": "hrv_for_eng:pod-1:SC06-S006",
+      "order": 30,
+      "n": 2,
       "sentences": [
-        "Ne, žao mi je,… sutra sam zauzeta.",
-        "Ali razgovarajmo… u subotu.",
-        "Vidimo se tada."
+        "Ja sam iz Francuske.",
+        "Ovdje sam… već dvije godine."
       ],
       "ids": [
-        "a7df7776-dbe9-402f-93c0-41752bfb8cd9",
-        "cd9a392d-472e-484e-b0d1-f74b90bda7d2",
-        "78fc56d4-4f99-47b5-aba9-f75ea2cebf5e"
+        "7b3c336d-d9ea-4ebd-9471-dc9385d6da60",
+        "<would-splice:s1>"
       ],
-      "margin": 4.22,
+      "margin": null,
       "piece_durs": [
-        4.519,
-        4.381,
-        2.069
+        1.967,
+        3.519
       ],
       "worst_seam_db": -91,
       "all_reused": false
@@ -96,8 +73,8 @@
         "Vidimo se kasnije."
       ],
       "ids": [
-        "2cb2a9fe-f300-412a-bbe9-6a450f9630df",
-        "1f26906d-a94b-41a1-a0ea-fa10681bc9b5",
+        "<would-splice:s0>",
+        "<would-splice:s1>",
         "013f1b48-219e-4196-94db-00b52b4389d1"
       ],
       "margin": null,
@@ -105,6 +82,29 @@
         3.58,
         4.14,
         2.006
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "hrv_for_eng:pod-1:SC04-S003",
+      "order": 22,
+      "n": 3,
+      "sentences": [
+        "Ne, žao mi je,… sutra sam zauzeta.",
+        "Ali razgovarajmo… u subotu.",
+        "Vidimo se tada."
+      ],
+      "ids": [
+        "<would-splice:s0>",
+        "<would-splice:s1>",
+        "78fc56d4-4f99-47b5-aba9-f75ea2cebf5e"
+      ],
+      "margin": 4.22,
+      "piece_durs": [
+        4.519,
+        4.381,
+        2.069
       ],
       "worst_seam_db": -91,
       "all_reused": false
@@ -118,7 +118,7 @@
         "A ti?"
       ],
       "ids": [
-        "f2d1982e-7ed2-47e3-b2f3-15476133cd02",
+        "<would-splice:s0>",
         "73a71af1-6874-4fca-87eb-4537459ab7a8"
       ],
       "margin": null,
@@ -139,7 +139,7 @@
       ],
       "ids": [
         "321b6418-fae1-4941-a67d-841f20a4e385",
-        "3de3e891-3ae2-44b9-8fdc-79bf20cced8a"
+        "<would-splice:s1>"
       ],
       "margin": 4.98,
       "piece_durs": [
@@ -159,9 +159,9 @@
         "Možeš li to ponoviti… malo sporije?"
       ],
       "ids": [
-        "ca87cc23-6ef9-4f85-b589-60360ed49836",
+        "<would-splice:s0>",
         "dccd662c-b640-4642-901d-aa472dd844c3",
-        "c071e049-7644-4958-b66f-899721773e3c"
+        "<would-splice:s2>"
       ],
       "margin": null,
       "piece_durs": [
@@ -185,7 +185,7 @@
       "ids": [
         "c27f3d43-9e47-4a3c-b6df-89ce9b3f5b71",
         "3026bef3-dc5c-422e-869b-21d57d291855",
-        "752ea324-0bad-470f-ae7f-dca9503dbc11",
+        "<would-splice:s2>",
         "43a254de-7364-447a-9c46-518fed0361b5"
       ],
       "margin": 1.58,
@@ -208,7 +208,7 @@
       ],
       "ids": [
         "ba8c492e-0f4e-449c-9851-863603282be7",
-        "6e3784b0-f378-4484-a823-e3d86c500c31"
+        "<would-splice:s1>"
       ],
       "margin": null,
       "piece_durs": [
@@ -216,6 +216,26 @@
         3.146
       ],
       "worst_seam_db": -71.2,
+      "all_reused": false
+    },
+    {
+      "id": "hrv_for_eng:pod-1:SC08-S012",
+      "order": 64,
+      "n": 2,
+      "sentences": [
+        "Nisam siguran… jesam li gladan.",
+        "Imate li jelovnik?"
+      ],
+      "ids": [
+        "<would-splice:s0>",
+        "0bcd65b6-3d9d-4d7e-ac58-8fd625ee5160"
+      ],
+      "margin": null,
+      "piece_durs": [
+        3.489,
+        1.857
+      ],
+      "worst_seam_db": -91,
       "all_reused": false
     },
     {
@@ -228,7 +248,7 @@
       ],
       "ids": [
         "4eba4421-d37d-47c6-bf5c-46bad78569d3",
-        "d33019bc-0d87-44ae-a2a8-5c96a1c406ea"
+        "<would-splice:s1>"
       ],
       "margin": null,
       "piece_durs": [
@@ -239,21 +259,61 @@
       "all_reused": false
     },
     {
-      "id": "hrv_for_eng:pod-1:SC08-S012",
-      "order": 64,
+      "id": "hrv_for_eng:pod-1:SC08-S014",
+      "order": 66,
       "n": 2,
       "sentences": [
-        "Nisam siguran… jesam li gladan.",
-        "Imate li jelovnik?"
+        "Možemo li dobiti… malo kruha?",
+        "I zdjelicu pomfrita… za stol."
       ],
       "ids": [
-        "5d517477-feb8-4693-b1df-02a03c2124bf",
-        "0bcd65b6-3d9d-4d7e-ac58-8fd625ee5160"
+        "<would-splice:s0>",
+        "<would-splice:s1>"
       ],
       "margin": null,
       "piece_durs": [
-        3.489,
-        1.857
+        3.351,
+        3.654
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "hrv_for_eng:pod-1:SC09-S001",
+      "order": 69,
+      "n": 2,
+      "sentences": [
+        "Dobra večer.",
+        "Imamo rezervaciju… za dvoje… na ime Davies."
+      ],
+      "ids": [
+        "09853478-c696-4844-b7f1-756ea7d7e949",
+        "<would-splice:s1>"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.638,
+        5.026
+      ],
+      "worst_seam_db": -65.7,
+      "all_reused": false
+    },
+    {
+      "id": "hrv_for_eng:pod-1:SC08-S015",
+      "order": 67,
+      "n": 2,
+      "sentences": [
+        "Imate li sendviče?",
+        "Želio bih sendvič… sa sirom, molim."
+      ],
+      "ids": [
+        "27d99840-d823-4bf8-bd0e-a4d4e2cd5ce3",
+        "<would-splice:s1>"
+      ],
+      "margin": 5.75,
+      "piece_durs": [
+        1.947,
+        4.136
       ],
       "worst_seam_db": -91,
       "all_reused": false
@@ -270,93 +330,13 @@
       "ids": [
         "e4dbec22-8f8b-4ff2-a650-6c32c42dfaa1",
         "02a374e9-b103-478b-bd87-74074be6cfe3",
-        "eaf8585f-426a-473d-89d1-ebb2c571df7a"
+        "<would-splice:s2>"
       ],
       "margin": 3.77,
       "piece_durs": [
         2.033,
         2.192,
         4.087
-      ],
-      "worst_seam_db": -91,
-      "all_reused": false
-    },
-    {
-      "id": "hrv_for_eng:pod-1:SC08-S014",
-      "order": 66,
-      "n": 2,
-      "sentences": [
-        "Možemo li dobiti… malo kruha?",
-        "I zdjelicu pomfrita… za stol."
-      ],
-      "ids": [
-        "48bced3e-9b4a-4705-a3de-cf1baa29155b",
-        "d4c05ded-6832-4f70-b4f9-0b5fcecaa4ee"
-      ],
-      "margin": null,
-      "piece_durs": [
-        3.351,
-        3.654
-      ],
-      "worst_seam_db": -91,
-      "all_reused": false
-    },
-    {
-      "id": "hrv_for_eng:pod-1:SC08-S015",
-      "order": 67,
-      "n": 2,
-      "sentences": [
-        "Imate li sendviče?",
-        "Želio bih sendvič… sa sirom, molim."
-      ],
-      "ids": [
-        "27d99840-d823-4bf8-bd0e-a4d4e2cd5ce3",
-        "cda2702a-7987-4c90-a3af-a7b1d5d0bffa"
-      ],
-      "margin": 5.75,
-      "piece_durs": [
-        1.947,
-        4.136
-      ],
-      "worst_seam_db": -91,
-      "all_reused": false
-    },
-    {
-      "id": "hrv_for_eng:pod-1:SC09-S001",
-      "order": 69,
-      "n": 2,
-      "sentences": [
-        "Dobra večer.",
-        "Imamo rezervaciju… za dvoje… na ime Davies."
-      ],
-      "ids": [
-        "09853478-c696-4844-b7f1-756ea7d7e949",
-        "7609cc1f-bd86-41cc-a5b8-f096d9067b17"
-      ],
-      "margin": null,
-      "piece_durs": [
-        1.638,
-        5.026
-      ],
-      "worst_seam_db": -65.7,
-      "all_reused": false
-    },
-    {
-      "id": "hrv_for_eng:pod-1:SC09-S008",
-      "order": 76,
-      "n": 2,
-      "sentences": [
-        "Janjetina je izvrsna.",
-        "Polako se pekla,… s ružmarinom."
-      ],
-      "ids": [
-        "8be3ff79-77fb-4dc7-bc66-9ff95d7c936c",
-        "38428eb9-a180-427e-b044-53e5ed72ef23"
-      ],
-      "margin": null,
-      "piece_durs": [
-        2.326,
-        3.893
       ],
       "worst_seam_db": -91,
       "all_reused": false
@@ -370,8 +350,8 @@
         "Ili za… vegetarijance?"
       ],
       "ids": [
-        "4ef021da-bc46-456d-a65b-e8173244d2bc",
-        "dce75fc6-965e-4b45-bdae-36bfb181c8e2"
+        "<would-splice:s0>",
+        "<would-splice:s1>"
       ],
       "margin": null,
       "piece_durs": [
@@ -382,21 +362,21 @@
       "all_reused": false
     },
     {
-      "id": "hrv_for_eng:pod-1:SC09-S006",
-      "order": 74,
+      "id": "hrv_for_eng:pod-1:SC09-S008",
+      "order": 76,
       "n": 2,
       "sentences": [
-        "Da, losos i rižoto… su bez glutena.",
-        "Imamo… i nekoliko salata."
+        "Janjetina je izvrsna.",
+        "Polako se pekla,… s ružmarinom."
       ],
       "ids": [
-        "6021fb53-0694-416f-88da-dc30b900ae36",
-        "7b0d85ec-1ad1-4248-b7f9-ed105349d4a0"
+        "8be3ff79-77fb-4dc7-bc66-9ff95d7c936c",
+        "<would-splice:s1>"
       ],
-      "margin": 4.03,
+      "margin": null,
       "piece_durs": [
-        4.665,
-        3.743
+        2.326,
+        3.893
       ],
       "worst_seam_db": -91,
       "all_reused": false
@@ -410,13 +390,33 @@
         "S prilogom… zelenog povrća."
       ],
       "ids": [
-        "018efbcc-d0f8-4a5b-a8db-d914e9209239",
-        "df2ea74f-2735-4273-a8b1-262b1a4c8e04"
+        "<would-splice:s0>",
+        "<would-splice:s1>"
       ],
       "margin": null,
       "piece_durs": [
         3.213,
         3.417
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "hrv_for_eng:pod-1:SC09-S006",
+      "order": 74,
+      "n": 2,
+      "sentences": [
+        "Da, losos i rižoto… su bez glutena.",
+        "Imamo… i nekoliko salata."
+      ],
+      "ids": [
+        "<would-splice:s0>",
+        "<would-splice:s1>"
+      ],
+      "margin": 4.03,
+      "piece_durs": [
+        4.665,
+        3.743
       ],
       "worst_seam_db": -91,
       "all_reused": false
@@ -431,7 +431,7 @@
       ],
       "ids": [
         "5c4c06ad-072b-44d5-a56f-b2e36b921844",
-        "993331c6-a78c-40a1-9384-53c87c9f7565"
+        "<would-splice:s1>"
       ],
       "margin": null,
       "piece_durs": [
@@ -451,7 +451,7 @@
       ],
       "ids": [
         "0f77132d-268d-4161-b32f-9e2ac9985542",
-        "c81e6890-3fc4-4f42-9849-3836b547da65"
+        "<would-splice:s1>"
       ],
       "margin": null,
       "piece_durs": [
@@ -459,26 +459,6 @@
         3.87
       ],
       "worst_seam_db": -76.3,
-      "all_reused": false
-    },
-    {
-      "id": "hrv_for_eng:pod-1:SC09-S017",
-      "order": 85,
-      "n": 2,
-      "sentences": [
-        "I račun,… kad budete spremni.",
-        "Možemo li platiti… odvojeno?"
-      ],
-      "ids": [
-        "791c8a8c-7df6-403a-bf44-a09006bbac1a",
-        "8d2e39ab-096f-4144-a7f8-03b59e4aa44c"
-      ],
-      "margin": null,
-      "piece_durs": [
-        3.203,
-        3.271
-      ],
-      "worst_seam_db": -91,
       "all_reused": false
     },
     {
@@ -491,7 +471,7 @@
       ],
       "ids": [
         "72a436f8-1a1f-4d4a-aa63-c2f4469d63a5",
-        "ca670693-da92-469f-beef-3fbe060a7ac8"
+        "<would-splice:s1>"
       ],
       "margin": null,
       "piece_durs": [
@@ -499,6 +479,26 @@
         4.782
       ],
       "worst_seam_db": -72.2,
+      "all_reused": false
+    },
+    {
+      "id": "hrv_for_eng:pod-1:SC09-S017",
+      "order": 85,
+      "n": 2,
+      "sentences": [
+        "I račun,… kad budete spremni.",
+        "Možemo li platiti… odvojeno?"
+      ],
+      "ids": [
+        "<would-splice:s0>",
+        "<would-splice:s1>"
+      ],
+      "margin": null,
+      "piece_durs": [
+        3.203,
+        3.271
+      ],
+      "worst_seam_db": -91,
       "all_reused": false
     },
     {
@@ -511,7 +511,7 @@
       ],
       "ids": [
         "b51374f7-48d3-4edd-acb0-5111809581fd",
-        "553aba2c-5e1c-4ea6-80ff-4def8a5c26ea"
+        "<would-splice:s1>"
       ],
       "margin": null,
       "piece_durs": [
@@ -530,7 +530,7 @@
         "Jako sam zahvalan."
       ],
       "ids": [
-        "217369bd-de89-478a-b72e-0348f1bce2b1",
+        "<would-splice:s0>",
         "2f36fffa-bbe3-4fc6-b75f-0ca6c01c019c"
       ],
       "margin": 6.05,
@@ -552,8 +552,8 @@
       ],
       "ids": [
         "3249cb4a-472b-4e25-91cf-3c175ffa24ce",
-        "cf2194c5-ac4a-4aa2-b0dd-ef2ad70bb111",
-        "285f7704-50ca-4c50-b1aa-b601735df254"
+        "<would-splice:s1>",
+        "<would-splice:s2>"
       ],
       "margin": null,
       "piece_durs": [
@@ -562,26 +562,6 @@
         3.954
       ],
       "worst_seam_db": -74.7,
-      "all_reused": false
-    },
-    {
-      "id": "hrv_for_eng:pod-1:SC11-S001",
-      "order": 97,
-      "n": 2,
-      "sentences": [
-        "Dobar dan.",
-        "Imam rezervaciju… na ime Jones."
-      ],
-      "ids": [
-        "f845b66a-ef1e-47bc-9464-e313f32f9b4f",
-        "edfbac68-7ac9-4270-911f-fd71126230ea"
-      ],
-      "margin": null,
-      "piece_durs": [
-        1.656,
-        4.172
-      ],
-      "worst_seam_db": -69.5,
       "all_reused": false
     },
     {
@@ -594,9 +574,9 @@
         "Hvala vam puno… i doviđenja."
       ],
       "ids": [
-        "86dc00a9-3632-4f3d-87d3-ea1c5a41373b",
-        "cddc14b1-e032-42b1-8334-7080b374c93a",
-        "c6cff7df-84e0-4176-a81b-873231e92921"
+        "<would-splice:s0>",
+        "<would-splice:s1>",
+        "<would-splice:s2>"
       ],
       "margin": null,
       "piece_durs": [
@@ -605,6 +585,66 @@
         3.417
       ],
       "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "hrv_for_eng:pod-1:SC11-S001",
+      "order": 97,
+      "n": 2,
+      "sentences": [
+        "Dobar dan.",
+        "Imam rezervaciju… na ime Jones."
+      ],
+      "ids": [
+        "f845b66a-ef1e-47bc-9464-e313f32f9b4f",
+        "<would-splice:s1>"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.656,
+        4.172
+      ],
+      "worst_seam_db": -69.5,
+      "all_reused": false
+    },
+    {
+      "id": "hrv_for_eng:pod-1:SC11-S008",
+      "order": 104,
+      "n": 2,
+      "sentences": [
+        "Od pola osam… do deset sati.",
+        "Imamo voće… i žitarice… ili topli doručak."
+      ],
+      "ids": [
+        "<would-splice:s0>",
+        "<would-splice:s1>"
+      ],
+      "margin": null,
+      "piece_durs": [
+        3.505,
+        5.244
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "hrv_for_eng:pod-1:SC11-S009",
+      "order": 105,
+      "n": 2,
+      "sentences": [
+        "Odlično.",
+        "Je li moguće… da imamo… kasnu odjavu?"
+      ],
+      "ids": [
+        "047a35a6-8097-4ff4-81d5-92e5a8a27cd3",
+        "<would-splice:s1>"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.501,
+        5.62
+      ],
+      "worst_seam_db": -76.3,
       "all_reused": false
     },
     {
@@ -618,8 +658,8 @@
       ],
       "ids": [
         "507104f5-4954-4c23-850e-8e4a7713876f",
-        "ba58252b-22e1-49db-92d4-f4d0d5cf0da0",
-        "67e3072a-286c-4a6b-aa08-2f1709b6ae1b"
+        "<would-splice:s1>",
+        "<would-splice:s2>"
       ],
       "margin": 4.48,
       "piece_durs": [
@@ -631,26 +671,6 @@
       "all_reused": false
     },
     {
-      "id": "hrv_for_eng:pod-1:SC11-S009",
-      "order": 105,
-      "n": 2,
-      "sentences": [
-        "Odlično.",
-        "Je li moguće… da imamo… kasnu odjavu?"
-      ],
-      "ids": [
-        "047a35a6-8097-4ff4-81d5-92e5a8a27cd3",
-        "ee65e7fa-1af0-4355-afe9-0b21749e66b2"
-      ],
-      "margin": null,
-      "piece_durs": [
-        1.501,
-        5.62
-      ],
-      "worst_seam_db": -76.3,
-      "all_reused": false
-    },
-    {
       "id": "hrv_for_eng:pod-1:SC11-S012",
       "order": 108,
       "n": 2,
@@ -659,7 +679,7 @@
         "Ugodan boravak."
       ],
       "ids": [
-        "2c814b19-678d-408a-869b-7f5345f5b50c",
+        "<would-splice:s0>",
         "1d671470-e4f1-435c-a1e4-fbe8a2c59b11"
       ],
       "margin": null,
@@ -668,26 +688,6 @@
         1.941
       ],
       "worst_seam_db": -73.4,
-      "all_reused": false
-    },
-    {
-      "id": "hrv_for_eng:pod-1:SC11-S008",
-      "order": 104,
-      "n": 2,
-      "sentences": [
-        "Od pola osam… do deset sati.",
-        "Imamo voće… i žitarice… ili topli doručak."
-      ],
-      "ids": [
-        "f5079841-cb38-4cc0-84a8-91c779a14703",
-        "a5c2609e-182b-4cde-88a4-7f9ab1c6ab59"
-      ],
-      "margin": null,
-      "piece_durs": [
-        3.505,
-        5.244
-      ],
-      "worst_seam_db": -91,
       "all_reused": false
     },
     {
@@ -700,7 +700,7 @@
       ],
       "ids": [
         "dc7ad114-6273-49b6-90a5-7d4010c48bca",
-        "d2841df1-1558-43da-bebc-c7f46aec9dcd"
+        "<would-splice:s1>"
       ],
       "margin": null,
       "piece_durs": [
@@ -720,7 +720,7 @@
       ],
       "ids": [
         "b51374f7-48d3-4edd-acb0-5111809581fd",
-        "6efc1361-c635-407d-a640-48f931b4dfc4"
+        "<would-splice:s1>"
       ],
       "margin": null,
       "piece_durs": [
@@ -728,6 +728,26 @@
         3.868
       ],
       "worst_seam_db": -73.4,
+      "all_reused": false
+    },
+    {
+      "id": "hrv_for_eng:pod-1:SC13-S002",
+      "order": 121,
+      "n": 2,
+      "sentences": [
+        "Da, otprilike… desetak minuta hoda.",
+        "Idite ravno… ovom cestom."
+      ],
+      "ids": [
+        "<would-splice:s0>",
+        "<would-splice:s1>"
+      ],
+      "margin": 3.77,
+      "piece_durs": [
+        4.68,
+        3.653
+      ],
+      "worst_seam_db": -91,
       "all_reused": false
     },
     {
@@ -740,7 +760,7 @@
       ],
       "ids": [
         "d24d4649-2dfc-4422-97eb-aac4a6ed44e5",
-        "57ad89bf-2375-46b8-8fc9-a34e99d32295"
+        "<would-splice:s1>"
       ],
       "margin": null,
       "piece_durs": [
@@ -748,26 +768,6 @@
         3.48
       ],
       "worst_seam_db": -74.7,
-      "all_reused": false
-    },
-    {
-      "id": "hrv_for_eng:pod-1:SC13-S002",
-      "order": 121,
-      "n": 2,
-      "sentences": [
-        "Da, otprilike… desetak minuta hoda.",
-        "Idite ravno… ovom cestom."
-      ],
-      "ids": [
-        "7a58bd67-9887-4fac-8501-80d5f1093fb1",
-        "672f1ba4-058d-4b50-a695-e29bfda0f8f9"
-      ],
-      "margin": 3.77,
-      "piece_durs": [
-        4.68,
-        3.653
-      ],
-      "worst_seam_db": -91,
       "all_reused": false
     },
     {
@@ -780,7 +780,7 @@
       ],
       "ids": [
         "274966eb-cdea-4010-9dfa-4f929bb32d37",
-        "58c3e952-28d3-4bbd-a546-a5f0c66e9c30"
+        "<would-splice:s1>"
       ],
       "margin": null,
       "piece_durs": [
@@ -800,7 +800,7 @@
       ],
       "ids": [
         "909850ee-2917-447d-8302-5c5aa1566435",
-        "551384e6-5635-4649-9575-b2db6acd93b7"
+        "<would-splice:s1>"
       ],
       "margin": 3.97,
       "piece_durs": [
@@ -821,7 +821,7 @@
       ],
       "ids": [
         "8b23cd9e-c6a5-40c9-a78b-b361184a17dd",
-        "f68d522f-5773-49f4-9d46-e887ea22d026",
+        "<would-splice:s1>",
         "b9fbf259-3cb4-4a49-a6ed-c592005cf41d"
       ],
       "margin": 3.23,
@@ -844,8 +844,8 @@
       ],
       "ids": [
         "92afcef6-bdd3-4b9e-91c6-7b4d27404fad",
-        "5ebc1452-fcb1-40d4-8226-f0bf66fc361f",
-        "14dd9aed-4c88-458e-86d1-2bae5b15e99e"
+        "<would-splice:s1>",
+        "<would-splice:s2>"
       ],
       "margin": 3.89,
       "piece_durs": [
@@ -866,9 +866,9 @@
         "Mislim… da si spreman početi… govoriti hrvatski… s bilo kim… tko govori hrvatski."
       ],
       "ids": [
-        "9bede504-34b6-41fa-8f9d-9772ae6b9a10",
+        "<would-splice:s0>",
         "c3e04ca0-c527-4a12-8a4a-ee5a45ade994",
-        "468fd9b2-dd23-4e41-b1b9-91f76e1a0a08"
+        "<would-splice:s2>"
       ],
       "margin": null,
       "piece_durs": [
@@ -888,8 +888,8 @@
         "Ali znam… da moram… nastaviti vježbati… ako želim govoriti… samopouzdanije."
       ],
       "ids": [
-        "dccd6445-9379-40e1-b7ee-db89806f607e",
-        "86249049-f4e1-4a0a-b385-b0f37733e26f"
+        "<would-splice:s0>",
+        "<would-splice:s1>"
       ],
       "margin": null,
       "piece_durs": [
@@ -911,9 +911,9 @@
       ],
       "ids": [
         "8269592b-07a9-4662-afd7-76f2ca99ab49",
-        "0c72e476-6a8c-4df3-8221-7cb986d0d524",
-        "9626a7d5-ecf0-495c-a2b7-94cdab3aae8b",
-        "91c33fc9-2bb6-4ccb-9ecd-3b8864535487"
+        "<would-splice:s1>",
+        "<would-splice:s2>",
+        "<would-splice:s3>"
       ],
       "margin": 3.97,
       "piece_durs": [
@@ -935,9 +935,9 @@
         "Osjećam se ugodno… razgovarajući s… tobom,… i ne govorim… jako polako."
       ],
       "ids": [
-        "03f56c04-eed5-4d7d-9a62-0eb0f5bed634",
-        "9ab08350-5b55-4ee5-b708-51217fa06d0c",
-        "4a03f151-7548-4e5c-a783-ae4cb19b955b"
+        "<would-splice:s0>",
+        "<would-splice:s1>",
+        "<would-splice:s2>"
       ],
       "margin": null,
       "piece_durs": [
@@ -959,8 +959,8 @@
       ],
       "ids": [
         "6187e1d3-804d-4fd5-b829-c35237659a9f",
-        "b847fca8-abce-4106-9ef5-79e36f917c12",
-        "c1417372-483b-4d84-afe2-813bafd26bfe"
+        "<would-splice:s1>",
+        "<would-splice:s2>"
       ],
       "margin": null,
       "piece_durs": [
@@ -982,8 +982,8 @@
       ],
       "ids": [
         "5a43fc21-5507-40bd-b83a-27f04f038346",
-        "e538467a-51be-430d-8296-8274d159761e",
-        "ae5c64af-13ae-4c60-80fc-e86cb08fb43b"
+        "<would-splice:s1>",
+        "<would-splice:s2>"
       ],
       "margin": null,
       "piece_durs": [
@@ -1005,10 +1005,10 @@
         "Ali iznenađujuće… je kako se umorim… kad govorim na jeziku… koji ne govorim… jako dobro."
       ],
       "ids": [
-        "16527a2d-ef7a-4917-a34a-ea19ef6f98db",
-        "9a629a21-6a3f-4dce-bbb1-7698410a1e55",
-        "f453815d-6ae1-4db5-b679-be832c693928",
-        "dada6625-7cd2-44c8-a72d-f18a870b145b"
+        "<would-splice:s0>",
+        "<would-splice:s1>",
+        "<would-splice:s2>",
+        "<would-splice:s3>"
       ],
       "margin": null,
       "piece_durs": [
