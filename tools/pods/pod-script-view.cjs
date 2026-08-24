@@ -371,9 +371,13 @@ function buildPodScript ({ pod, rows, track = 'target', clips = null }) {
       const a = audioFor(r)
       if (a.target) audioSummary.with_target++; else audioSummary.without_target++
       if (a.target_splits.length) { audioSummary.with_splits++; audioSummary.split_clips += a.target_splits.length } else audioSummary.without_splits++
-      // explainer excluded: the pod-sentence explainer narration track is
-      // deprecated (2026-08-24) and out of scope for this coverage count,
-      // though its raw clip reference is still shown per-line above.
+      // Explainers are excluded on purpose. Tom, 2026-08-24: "Explainers do not
+      // exist anymore. We don't do them. Learners never hear them in app."
+      // The viewer no longer renders an explainer button, so counting a dangling
+      // explainer ref would put a red number on the page for a clip nobody can
+      // play and nobody should — the one way an explainer could still reach
+      // this view. The field may still ride the payload for historical rows;
+      // it is simply not counted.
       for (const c of [a.target, a.known, ...a.target_splits, ...a.known_splits]) {
         if (c && c.found === false) audioSummary.dangling++
       }

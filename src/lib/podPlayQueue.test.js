@@ -68,14 +68,36 @@ describe('buildPlayQueue — what a hands-free listen actually plays', () => {
   })
 
   it('adds English only when asked, in the row\'s own button order', () => {
+    const scenes = [scene(1, [line('a', { target: clip('a0'), known: clip('ak') })])]
+    expect(buildPlayQueue(scenes).map(e => e.clip.id)).toEqual(['a0'])
+    expect(buildPlayQueue(scenes, { known: true }).map(e => e.clip.id)).toEqual(['a0', 'ak'])
+    expect(buildPlayQueue(scenes, { target: false, known: true }).map(e => e.clip.id)).toEqual(['ak'])
+  })
+
+  // Tom, 2026-08-24: "Explainers do not exist anymore. We don't do them.
+  // Learners never hear them in app. Let's deprecate them completely."
+  // The payload still carries the clip, so the queue has to ignore it on
+  // purpose — and keep ignoring it if someone passes the old option.
+  it('never queues an explainer, even though the payload still carries one', () => {
     const scenes = [scene(1, [line('a', {
       target: clip('a0'), known: clip('ak'),
     })])]
     expect(buildPlayQueue(scenes).map(e => e.clip.id)).toEqual(['a0'])
-    expect(buildPlayQueue(scenes, { known: true }).map(e => e.clip.id))
-      .toEqual(['a0', 'ak'])
-    expect(buildPlayQueue(scenes, { target: false, known: true }).map(e => e.clip.id))
-      .toEqual(['ak'])
+    expect(buildPlayQueue(scenes, { known: true }).map(e => e.clip.id)).toEqual(['a0', 'ak'])
+    // The dead option is inert, not a back door.
+    expect(buildPlayQueue(scenes, { explainer: true }).map(e => e.clip.id)).toEqual(['a0'])
+    expect(buildPlayQueue(scenes, { known: true, explainer: true }).map(e => e.kind))
+      .toEqual(['target', 'known'])
+    expect(DEFAULT_OPTIONS.explainer).toBeUndefined()
+  })
+
+  it('queues nothing for a line whose ONLY clip is an explainer', () => {
+    const q = buildPlayQueue([scene(1, [
+      line('a', { target: clip('a0') }),
+      line('x', { explainer: clip('x0') }),
+      line('c', { target: clip('c0') }),
+    ])], { known: true, explainer: true })
+    expect(q.map(e => e.clip.id)).toEqual(['a0', 'c0'])
   })
 
   it('produces nothing for a line with no clips at all, and does not stall on it', () => {

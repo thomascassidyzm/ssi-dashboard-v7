@@ -340,6 +340,13 @@
                     :class="['clip-btn', isPlaying(c, line) && 'clip-on', c.found === false && 'clip-dead']"
                     :title="clipTitle(c)"
                   >{{ isPlaying(c, line) ? '■' : '▶' }} EN {{ i + 1 }}</button>
+
+                  <!-- No explainer button. Tom, 2026-08-24: "Explainers do not
+                       exist anymore. We don't do them. Learners never hear them
+                       in app. Let's deprecate them completely." The payload may
+                       still carry line.audio.explainer for historical rows; this
+                       page never renders it, so nothing here can be auditioned
+                       that no learner hears. -->
                 </div>
 
                 <div v-if="playError && playErrorId === lastTried" class="text-danger text-xs mt-1">{{ playError }}</div>
@@ -430,7 +437,9 @@ const LABELS = {
 }
 // What a continuous listen can include. Three, kept short enough to sit on one
 // phone line. The default — target whole turn only — is the conversation as the
-// learner hears it, which is what Tom was doing by hand.
+// learner hears it, which is what Tom was doing by hand. There is no explainer
+// toggle: explainers are deprecated (Tom, 2026-08-24) and a learner never hears
+// one, so auditioning one would be auditioning something that is not the course.
 const RUN_TOGGLES = [
   { key: 'target', label: 'Target', title: 'The target whole-turn clip of every line' },
   { key: 'splits', label: 'Splits', title: 'Play the split clips INSTEAD of the whole turn' },
@@ -508,8 +517,8 @@ const nowEntry = computed(() =>
   (running.value && runIndex.value >= 0 && runQueue.value[runIndex.value]) || null)
 
 // A line lights up when it is the one sounding. The button keeps its own light
-// too, so whole turn stays tellable from split 2 — but only on the sounding
-// line, because one clip ref can legitimately appear on two rows.
+// too, so whole turn stays tellable from split 2 from English — but only on
+// the sounding line, because one clip ref can legitimately appear on two rows.
 const isPlaying = (c, line) => Boolean(
   c && playingRef.value === c.ref && (!line || !nowLineId.value || nowLineId.value === line.id)
 )

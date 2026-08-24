@@ -44,6 +44,18 @@ Nothing here writes anything. Same read-only page, same learner URLs.
 7. **A clip that will not load** shows its error on its own row and the run
    carries on after about ¾ of a second.
 
+## Explainers are gone from this page
+
+Per your ruling: no Explainer button on any line, no explainer toggle, and the
+continuous-play queue can never contain one. The pod data still carries 124
+explainer clips for Italian — the page now ignores every one of them, and I
+checked in the browser that not a single explainer byte is requested during a
+run. I also stopped the "references point at no clip" count in the summary card
+from counting dangling *explainer* refs, which was the last way one could still
+show up here, as a red number.
+
+The estate-wide pipeline deprecation is a separate job; this is the viewer only.
+
 ## Two bugs found and fixed on the way
 
 - **Stop was unclickable.** The bar was sticking to the top of the window, and

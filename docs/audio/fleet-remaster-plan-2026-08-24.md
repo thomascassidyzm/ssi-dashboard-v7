@@ -27,6 +27,15 @@ test, so German is the one course already living where the target is. Everything
 
 **Estate-wide that is roughly 76% of 2,476,446 clips — about 1.9 million clips actually touched.**
 
+**Scope question settled: it is everything, not a cohort.** You asked whether the quiet clips cluster
+by when they were mastered, so the run could target just the bad era. I checked, and they do not —
+your own scene-22 datapoint refutes it. Scene 22 is entirely June-era (the quiet regime) and it is the
+best-sounding scene in the pod; scenes 15–21 are entirely August-era and they are the worst. There is
+a genuine era effect on *level* — pre-August Enzo sits 1.1 dB lower and puts 26% of its clips below
+−19 LUFS against 2.6% for August — but it is not what you are hearing, and it does not partition the
+work. The level drift is spread across every era and every course, so the run targets everything that
+measures off. Detail in the A/B doc.
+
 The effect, from the Italian dry run of 300:
 
 | | before | after |
@@ -63,12 +72,23 @@ forever — zero bytes off the network, the cache is not even consulted for fres
 So the address must change. **And a changed address means every learner re-downloads every clip we
 touch.** Their offline cache of that course is orphaned in one go.
 
-At ~29 KB a clip, a learner who has a course cached offline re-downloads roughly **0.9–2.3 GB**
-depending on the course. That is the true cost of the pass, and it lands on learners' data rather
-than on us.
+**Corrected figure.** I first put this at 0.9–2.3 GB per course, from the raw row counts. That was too
+high: not every `course_audio` row is reachable by a learner. The app's own offline download logs a
+real run of **9,742 clips for one course**, which at ~29 KB is about **280 MB**. So call it **280 MB
+to 1 GB** per cached course. Still real, and it lands on learners' data rather than on us.
 
-It does not change my recommendation — but "no-cost" is right about our money and not quite right
-about their bandwidth, and you should fire it knowing that rather than find out from a support email.
+**And there is a second-order cost I did not know about until it was checked.** The app has a
+deliberate "download the rest of the course for offline" feature, and it is used. When the refs
+change, the old entries in the learner's offline store are **not purged** — eviction is
+least-recently-used by size only, with no ref-diffing garbage collection. So after the pass a learner
+holds *both* copies: roughly 280 MB of dead, unreachable audio alongside 280 MB of new, and the dead
+half is only reclaimed if their device comes under storage pressure. It may sit there indefinitely.
+
+That does not change my recommendation, but it sharpens one point below to the level of a real
+argument rather than a preference: **two passes would leave three copies on the device.**
+
+"No-cost" is right about our money and not quite right about their bandwidth or their storage, and
+you should fire it knowing that rather than find out from a support email.
 
 **Two things blunt it**, both already in the runner:
 
@@ -123,9 +143,16 @@ Each stage reports before/after spread and reconciles exactly: clips touched mus
 **If you are going to say yes to lifting Enzo above 500 Hz, say so before this fires, not after.**
 
 The phone-band tilt and the loudness fix are both applied at the same moment to the same clip. Doing
-them in one pass costs one re-download. Doing them in two passes costs two — we would orphan every
-learner's cache twice for what could have been a single change. That is the only real coupling in
-this job, and it is worth a minute of your time now rather than a repeat pass later.
+them in one pass costs one re-download. Doing them in two passes costs two — and because the old
+entries are never purged, it would leave **three copies** of every clip on a learner's device: two
+dead and one live. That is the only real coupling in this job, and it is worth a minute of your time
+now rather than a repeat pass later.
+
+I also had it checked whether there is any way to get new bytes to a client *without* changing the
+address — a course-level version key, anything. There is not. The course version key exists and is
+consumed, but it invalidates the *metadata* that carries the new refs; it is the trigger for the
+re-download, not an escape from it. So the address change is unavoidable, and doing it once is the
+whole of the saving available.
 
 So the order I would like is: **listen to the A/B, tell me A or B on the tilt, and I fire one pass
 that does everything.**
