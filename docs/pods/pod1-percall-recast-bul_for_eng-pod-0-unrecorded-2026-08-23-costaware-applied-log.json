@@ -1,0 +1,2144 @@
+{
+  "pod": "bul_for_eng:pod-0-unrecorded",
+  "course": "bul_for_eng",
+  "slug": "pod-0-unrecorded",
+  "visibility": "held",
+  "mode": "applied",
+  "rows": 232,
+  "linkedTarget": 230,
+  "linkedKnown": 231,
+  "gluedRows": 0,
+  "voicePairTarget": {
+    "f": "bg-BG-KalinaNeural",
+    "m": "bg-BG-BorislavNeural",
+    "single": "bg-BG-KalinaNeural",
+    "counts": {
+      "bg-BG-KalinaNeural": 151,
+      "bg-BG-BorislavNeural": 78
+    },
+    "countsByLine": {
+      "bg-BG-KalinaNeural": 152,
+      "bg-BG-BorislavNeural": 78
+    },
+    "discarded": [],
+    "ungendered": [],
+    "distinct": 2
+  },
+  "voicePairKnown": {
+    "f": "bedd6226",
+    "m": "gfzdpspr5fdp",
+    "single": "gfzdpspr5fdp",
+    "counts": {
+      "gfzdpspr5fdp": 116,
+      "bedd6226": 115
+    },
+    "countsByLine": {
+      "gfzdpspr5fdp": 116,
+      "bedd6226": 115
+    },
+    "discarded": [],
+    "ungendered": [],
+    "distinct": 2
+  },
+  "knownTrackInScope": true,
+  "voiceGender": {
+    "bg-BG-BorislavNeural": "m",
+    "bg-BG-KalinaNeural": "f",
+    "gfzdpspr5fdp": "m",
+    "bedd6226": "f"
+  },
+  "genderConflicts": [],
+  "baselineDeliveredCollisions": {
+    "rawPairs": 11,
+    "rawTurns": 44,
+    "exchangePairs": 8,
+    "exchangeTurns": 34
+  },
+  "proposedExchangeCollisions": {
+    "pairs": 0,
+    "turns": 0
+  },
+  "proposedRawLabelCollisions": {
+    "pairs": 5,
+    "turns": 10
+  },
+  "nonExchangePairsDropped": [
+    {
+      "tag": "7:6->7:7",
+      "a": "Cafe Customer 1",
+      "b": "Cafe Customer 2",
+      "aText": "I'd like takeaway, please.",
+      "bText": "Could I have two white coffees and two black coffees and one of those, please?"
+    },
+    {
+      "tag": "8:4->8:5",
+      "a": "Bar Customer 1",
+      "b": "Bar Customer 2",
+      "aText": "I'd like a pint of the bitter, please.",
+      "bText": "Can I have a half of cider?"
+    },
+    {
+      "tag": "8:5->8:6",
+      "a": "Bar Customer 2",
+      "b": "Bar Customer 3",
+      "aText": "Can I have a half of cider?",
+      "bText": "Could I see the wine list? I want a glass of wine."
+    },
+    {
+      "tag": "8:8->8:9",
+      "a": "Bar Customer 3",
+      "b": "Bar Customer 1",
+      "aText": "I'd like a large glass of white wine, please.",
+      "bText": "Can I have a small glass of red wine?"
+    },
+    {
+      "tag": "8:9->8:10",
+      "a": "Bar Customer 1",
+      "b": "Bar Customer 2",
+      "aText": "Can I have a small glass of red wine?",
+      "bText": "I'd like two more glasses of beer."
+    },
+    {
+      "tag": "8:14->8:15",
+      "a": "Bar Customer 1",
+      "b": "Bar Customer 2",
+      "aText": "Can we have some bread? And a bowl of chips for the table.",
+      "bText": "Do you have any sandwiches? I'd like a cheese sandwich, please."
+    },
+    {
+      "tag": "9:4->9:5",
+      "a": "Diner 2",
+      "b": "Diner 1",
+      "aText": "We'd like one bottle of sparkling water and one bottle of still water, please.",
+      "bText": "Excuse me - do you have anything gluten-free? Or for vegetarians?"
+    },
+    {
+      "tag": "9:9->9:10",
+      "a": "Diner 1",
+      "b": "Diner 2",
+      "aText": "I'll have the lamb, please. With a side of greens.",
+      "bText": "And the risotto for me. With a small green salad to start."
+    },
+    {
+      "tag": "9:12->9:13",
+      "a": "Diner 1",
+      "b": "Diner 2",
+      "aText": "Could we see the wine list?",
+      "bText": "A bottle of the house red would be lovely."
+    },
+    {
+      "tag": "9:16->9:17",
+      "a": "Diner 1",
+      "b": "Diner 2",
+      "aText": "Just two coffees, please. Decaf for me.",
+      "bText": "And the bill, when you're ready. Could we split it?"
+    }
+  ],
+  "sameVoiceConsecutiveResidue": [
+    {
+      "tag": "7:6->7:7",
+      "a": "Cafe Customer 1",
+      "b": "Cafe Customer 2",
+      "voice": "bg-BG-BorislavNeural",
+      "exchange": false
+    },
+    {
+      "tag": "8:4->8:5",
+      "a": "Bar Customer 1",
+      "b": "Bar Customer 2",
+      "voice": "bg-BG-KalinaNeural",
+      "exchange": false
+    },
+    {
+      "tag": "8:5->8:6",
+      "a": "Bar Customer 2",
+      "b": "Bar Customer 3",
+      "voice": "bg-BG-KalinaNeural",
+      "exchange": false
+    },
+    {
+      "tag": "8:8->8:9",
+      "a": "Bar Customer 3",
+      "b": "Bar Customer 1",
+      "voice": "bg-BG-KalinaNeural",
+      "exchange": false
+    },
+    {
+      "tag": "8:9->8:10",
+      "a": "Bar Customer 1",
+      "b": "Bar Customer 2",
+      "voice": "bg-BG-KalinaNeural",
+      "exchange": false
+    },
+    {
+      "tag": "8:14->8:15",
+      "a": "Bar Customer 1",
+      "b": "Bar Customer 2",
+      "voice": "bg-BG-KalinaNeural",
+      "exchange": false
+    },
+    {
+      "tag": "9:4->9:5",
+      "a": "Diner 2",
+      "b": "Diner 1",
+      "voice": "bg-BG-KalinaNeural",
+      "exchange": false
+    },
+    {
+      "tag": "9:9->9:10",
+      "a": "Diner 1",
+      "b": "Diner 2",
+      "voice": "bg-BG-KalinaNeural",
+      "exchange": false
+    },
+    {
+      "tag": "9:12->9:13",
+      "a": "Diner 1",
+      "b": "Diner 2",
+      "voice": "bg-BG-KalinaNeural",
+      "exchange": false
+    },
+    {
+      "tag": "9:16->9:17",
+      "a": "Diner 1",
+      "b": "Diner 2",
+      "voice": "bg-BG-KalinaNeural",
+      "exchange": false
+    }
+  ],
+  "componentsOriented": [
+    {
+      "size": 28,
+      "flipped": true,
+      "decidedBy": "delivered-clips",
+      "deliveredClipsKept": {
+        "asColoured": 64,
+        "flipped": 395,
+        "chosen": 395
+      },
+      "scriptGenderScore": {
+        "asColoured": -3,
+        "flipped": 3
+      },
+      "clipsInComponent": 460,
+      "scriptFixedNames": [
+        {
+          "name": "Sarah",
+          "gender": "f"
+        },
+        {
+          "name": "Anna",
+          "gender": "f"
+        },
+        {
+          "name": "James",
+          "gender": "m"
+        }
+      ],
+      "members": [
+        "Neighbour",
+        "Sarah",
+        "Passenger",
+        "Barista",
+        "Friend",
+        "Driver",
+        "Learner",
+        "Narrator",
+        "Anna",
+        "Cafe Barista",
+        "Bar Customer 2",
+        "Diner 2",
+        "Customer",
+        "Receptionist",
+        "Tourist",
+        "James",
+        "Cafe Customer 1",
+        "Cafe Customer 2",
+        "Cafe Customer 3",
+        "Bartender",
+        "Waiter",
+        "Assistant",
+        "Pharmacist",
+        "Guest",
+        "Local",
+        "Bar Customer 1",
+        "Bar Customer 3",
+        "Diner 1"
+      ]
+    }
+  ],
+  "forcedGenderMismatch": [],
+  "relabelCount": 34,
+  "relabels": [
+    {
+      "id": "bul_for_eng:pod-0-unrecorded:SC07-S001",
+      "scene": 7,
+      "sentence": 1,
+      "from": "Barista",
+      "to": "Cafe Barista"
+    },
+    {
+      "id": "bul_for_eng:pod-0-unrecorded:SC07-S002",
+      "scene": 7,
+      "sentence": 2,
+      "from": "Customer 1",
+      "to": "Cafe Customer 1"
+    },
+    {
+      "id": "bul_for_eng:pod-0-unrecorded:SC07-S003",
+      "scene": 7,
+      "sentence": 3,
+      "from": "Barista",
+      "to": "Cafe Barista"
+    },
+    {
+      "id": "bul_for_eng:pod-0-unrecorded:SC07-S004",
+      "scene": 7,
+      "sentence": 4,
+      "from": "Customer 1",
+      "to": "Cafe Customer 1"
+    },
+    {
+      "id": "bul_for_eng:pod-0-unrecorded:SC07-S005",
+      "scene": 7,
+      "sentence": 5,
+      "from": "Barista",
+      "to": "Cafe Barista"
+    },
+    {
+      "id": "bul_for_eng:pod-0-unrecorded:SC07-S006",
+      "scene": 7,
+      "sentence": 6,
+      "from": "Customer 1",
+      "to": "Cafe Customer 1"
+    },
+    {
+      "id": "bul_for_eng:pod-0-unrecorded:SC07-S007",
+      "scene": 7,
+      "sentence": 7,
+      "from": "Customer 2",
+      "to": "Cafe Customer 2"
+    },
+    {
+      "id": "bul_for_eng:pod-0-unrecorded:SC07-S008",
+      "scene": 7,
+      "sentence": 8,
+      "from": "Barista",
+      "to": "Cafe Barista"
+    },
+    {
+      "id": "bul_for_eng:pod-0-unrecorded:SC07-S009",
+      "scene": 7,
+      "sentence": 9,
+      "from": "Customer 2",
+      "to": "Cafe Customer 2"
+    },
+    {
+      "id": "bul_for_eng:pod-0-unrecorded:SC07-S010",
+      "scene": 7,
+      "sentence": 10,
+      "from": "Barista",
+      "to": "Cafe Barista"
+    },
+    {
+      "id": "bul_for_eng:pod-0-unrecorded:SC07-S011",
+      "scene": 7,
+      "sentence": 11,
+      "from": "Customer 2",
+      "to": "Cafe Customer 2"
+    },
+    {
+      "id": "bul_for_eng:pod-0-unrecorded:SC07-S012",
+      "scene": 7,
+      "sentence": 12,
+      "from": "Barista",
+      "to": "Cafe Barista"
+    },
+    {
+      "id": "bul_for_eng:pod-0-unrecorded:SC07-S013",
+      "scene": 7,
+      "sentence": 13,
+      "from": "Customer 3",
+      "to": "Cafe Customer 3"
+    },
+    {
+      "id": "bul_for_eng:pod-0-unrecorded:SC07-S014",
+      "scene": 7,
+      "sentence": 14,
+      "from": "Barista",
+      "to": "Cafe Barista"
+    },
+    {
+      "id": "bul_for_eng:pod-0-unrecorded:SC08-S002",
+      "scene": 8,
+      "sentence": 2,
+      "from": "Customer 1",
+      "to": "Bar Customer 1"
+    },
+    {
+      "id": "bul_for_eng:pod-0-unrecorded:SC08-S004",
+      "scene": 8,
+      "sentence": 4,
+      "from": "Customer 1",
+      "to": "Bar Customer 1"
+    },
+    {
+      "id": "bul_for_eng:pod-0-unrecorded:SC08-S005",
+      "scene": 8,
+      "sentence": 5,
+      "from": "Customer 2",
+      "to": "Bar Customer 2"
+    },
+    {
+      "id": "bul_for_eng:pod-0-unrecorded:SC08-S006",
+      "scene": 8,
+      "sentence": 6,
+      "from": "Customer 3",
+      "to": "Bar Customer 3"
+    },
+    {
+      "id": "bul_for_eng:pod-0-unrecorded:SC08-S008",
+      "scene": 8,
+      "sentence": 8,
+      "from": "Customer 3",
+      "to": "Bar Customer 3"
+    },
+    {
+      "id": "bul_for_eng:pod-0-unrecorded:SC08-S009",
+      "scene": 8,
+      "sentence": 9,
+      "from": "Customer 1",
+      "to": "Bar Customer 1"
+    },
+    {
+      "id": "bul_for_eng:pod-0-unrecorded:SC08-S010",
+      "scene": 8,
+      "sentence": 10,
+      "from": "Customer 2",
+      "to": "Bar Customer 2"
+    },
+    {
+      "id": "bul_for_eng:pod-0-unrecorded:SC08-S012",
+      "scene": 8,
+      "sentence": 12,
+      "from": "Customer 1",
+      "to": "Bar Customer 1"
+    },
+    {
+      "id": "bul_for_eng:pod-0-unrecorded:SC08-S014",
+      "scene": 8,
+      "sentence": 14,
+      "from": "Customer 1",
+      "to": "Bar Customer 1"
+    },
+    {
+      "id": "bul_for_eng:pod-0-unrecorded:SC08-S015",
+      "scene": 8,
+      "sentence": 15,
+      "from": "Customer 2",
+      "to": "Bar Customer 2"
+    },
+    {
+      "id": "bul_for_eng:pod-0-unrecorded:SC09-S001",
+      "scene": 9,
+      "sentence": 1,
+      "from": "Customer 1",
+      "to": "Diner 1"
+    },
+    {
+      "id": "bul_for_eng:pod-0-unrecorded:SC09-S004",
+      "scene": 9,
+      "sentence": 4,
+      "from": "Customer 2",
+      "to": "Diner 2"
+    },
+    {
+      "id": "bul_for_eng:pod-0-unrecorded:SC09-S005",
+      "scene": 9,
+      "sentence": 5,
+      "from": "Customer 1",
+      "to": "Diner 1"
+    },
+    {
+      "id": "bul_for_eng:pod-0-unrecorded:SC09-S007",
+      "scene": 9,
+      "sentence": 7,
+      "from": "Customer 1",
+      "to": "Diner 1"
+    },
+    {
+      "id": "bul_for_eng:pod-0-unrecorded:SC09-S009",
+      "scene": 9,
+      "sentence": 9,
+      "from": "Customer 1",
+      "to": "Diner 1"
+    },
+    {
+      "id": "bul_for_eng:pod-0-unrecorded:SC09-S010",
+      "scene": 9,
+      "sentence": 10,
+      "from": "Customer 2",
+      "to": "Diner 2"
+    },
+    {
+      "id": "bul_for_eng:pod-0-unrecorded:SC09-S012",
+      "scene": 9,
+      "sentence": 12,
+      "from": "Customer 1",
+      "to": "Diner 1"
+    },
+    {
+      "id": "bul_for_eng:pod-0-unrecorded:SC09-S013",
+      "scene": 9,
+      "sentence": 13,
+      "from": "Customer 2",
+      "to": "Diner 2"
+    },
+    {
+      "id": "bul_for_eng:pod-0-unrecorded:SC09-S016",
+      "scene": 9,
+      "sentence": 16,
+      "from": "Customer 1",
+      "to": "Diner 1"
+    },
+    {
+      "id": "bul_for_eng:pod-0-unrecorded:SC09-S017",
+      "scene": 9,
+      "sentence": 17,
+      "from": "Customer 2",
+      "to": "Diner 2"
+    }
+  ],
+  "regenLines": 65,
+  "regenLinesTarget": 21,
+  "regenLinesKnown": 44,
+  "regenCausedByThisRecast": 65,
+  "regenPreexistingDrift": 0,
+  "regenAttributionFromBaseline": 0,
+  "regenDistinctClips": 65,
+  "regenDistinctClipsCausedByRecast": 65,
+  "deliveredClipsKeptByOrientation": 395,
+  "deliveredClipsKeptIfUnflipped": 64,
+  "regenQueue": [
+    {
+      "course": "bul_for_eng",
+      "pod": "bul_for_eng:pod-0-unrecorded",
+      "global_order": 10,
+      "scene": 3,
+      "sentence": 1,
+      "track": "target",
+      "clipId": "cfa39fa5-8520-47a5-a40d-0d87f4ae361f",
+      "speakerBefore": "Barista (3 pm)",
+      "speakerAfter": "Barista",
+      "voiceBefore": "bg-BG-KalinaNeural",
+      "voiceAfter": "bg-BG-BorislavNeural",
+      "castVoiceBefore": "bg-BG-KalinaNeural",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": true
+    },
+    {
+      "course": "bul_for_eng",
+      "pod": "bul_for_eng:pod-0-unrecorded",
+      "global_order": 10,
+      "scene": 3,
+      "sentence": 1,
+      "track": "known",
+      "clipId": "1c7f88a3-8588-43c6-a514-be2d9cde5733",
+      "speakerBefore": "Barista (3 pm)",
+      "speakerAfter": "Barista",
+      "voiceBefore": "bedd6226",
+      "voiceAfter": "gfzdpspr5fdp",
+      "castVoiceBefore": "bedd6226",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": true
+    },
+    {
+      "course": "bul_for_eng",
+      "pod": "bul_for_eng:pod-0-unrecorded",
+      "global_order": 15,
+      "scene": 3,
+      "sentence": 6,
+      "track": "target",
+      "clipId": "e259c43e-1d9b-465e-8cd2-3df0d25456f4",
+      "speakerBefore": "Barista",
+      "speakerAfter": "Barista",
+      "voiceBefore": "bg-BG-KalinaNeural",
+      "voiceAfter": "bg-BG-BorislavNeural",
+      "castVoiceBefore": "bg-BG-KalinaNeural",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": true
+    },
+    {
+      "course": "bul_for_eng",
+      "pod": "bul_for_eng:pod-0-unrecorded",
+      "global_order": 15,
+      "scene": 3,
+      "sentence": 6,
+      "track": "known",
+      "clipId": "a7f81bb8-7c36-4ec3-a4f8-c5671e056d59",
+      "speakerBefore": "Barista",
+      "speakerAfter": "Barista",
+      "voiceBefore": "bedd6226",
+      "voiceAfter": "gfzdpspr5fdp",
+      "castVoiceBefore": "bedd6226",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": true
+    },
+    {
+      "course": "bul_for_eng",
+      "pod": "bul_for_eng:pod-0-unrecorded",
+      "global_order": 16,
+      "scene": 3,
+      "sentence": 7,
+      "track": "target",
+      "clipId": "7d978c13-d8b7-4e37-a23b-cca73a734c25",
+      "speakerBefore": "Barista",
+      "speakerAfter": "Barista",
+      "voiceBefore": "bg-BG-KalinaNeural",
+      "voiceAfter": "bg-BG-BorislavNeural",
+      "castVoiceBefore": "bg-BG-KalinaNeural",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": true
+    },
+    {
+      "course": "bul_for_eng",
+      "pod": "bul_for_eng:pod-0-unrecorded",
+      "global_order": 16,
+      "scene": 3,
+      "sentence": 7,
+      "track": "known",
+      "clipId": "a2e982d4-3c1c-4748-973e-3b4eceb1a3fa",
+      "speakerBefore": "Barista",
+      "speakerAfter": "Barista",
+      "voiceBefore": "bedd6226",
+      "voiceAfter": "gfzdpspr5fdp",
+      "castVoiceBefore": "bedd6226",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": true
+    },
+    {
+      "course": "bul_for_eng",
+      "pod": "bul_for_eng:pod-0-unrecorded",
+      "global_order": 18,
+      "scene": 3,
+      "sentence": 9,
+      "track": "target",
+      "clipId": "8a9832f5-7eb1-4cb6-8e5a-f1c2bd65ceba",
+      "speakerBefore": "Barista",
+      "speakerAfter": "Barista",
+      "voiceBefore": "bg-BG-KalinaNeural",
+      "voiceAfter": "bg-BG-BorislavNeural",
+      "castVoiceBefore": "bg-BG-KalinaNeural",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": true
+    },
+    {
+      "course": "bul_for_eng",
+      "pod": "bul_for_eng:pod-0-unrecorded",
+      "global_order": 18,
+      "scene": 3,
+      "sentence": 9,
+      "track": "known",
+      "clipId": "dfde0e6f-c5ba-4dd1-ba39-c025caa3ef3d",
+      "speakerBefore": "Barista",
+      "speakerAfter": "Barista",
+      "voiceBefore": "bedd6226",
+      "voiceAfter": "gfzdpspr5fdp",
+      "castVoiceBefore": "bedd6226",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": true
+    },
+    {
+      "course": "bul_for_eng",
+      "pod": "bul_for_eng:pod-0-unrecorded",
+      "global_order": 39,
+      "scene": 7,
+      "sentence": 2,
+      "track": "target",
+      "clipId": "c07780c4-3d22-4335-b06e-4d6a6f8f9a48",
+      "speakerBefore": "Customer 1",
+      "speakerAfter": "Cafe Customer 1",
+      "voiceBefore": "bg-BG-KalinaNeural",
+      "voiceAfter": "bg-BG-BorislavNeural",
+      "castVoiceBefore": "bg-BG-KalinaNeural",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": true
+    },
+    {
+      "course": "bul_for_eng",
+      "pod": "bul_for_eng:pod-0-unrecorded",
+      "global_order": 41,
+      "scene": 7,
+      "sentence": 4,
+      "track": "target",
+      "clipId": "5baa6d8a-9832-4244-bb36-d802cb275a12",
+      "speakerBefore": "Customer 1",
+      "speakerAfter": "Cafe Customer 1",
+      "voiceBefore": "bg-BG-KalinaNeural",
+      "voiceAfter": "bg-BG-BorislavNeural",
+      "castVoiceBefore": "bg-BG-KalinaNeural",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": true
+    },
+    {
+      "course": "bul_for_eng",
+      "pod": "bul_for_eng:pod-0-unrecorded",
+      "global_order": 43,
+      "scene": 7,
+      "sentence": 6,
+      "track": "target",
+      "clipId": "823c342f-48ab-4699-8c58-60440f89b86e",
+      "speakerBefore": "Customer 1",
+      "speakerAfter": "Cafe Customer 1",
+      "voiceBefore": "bg-BG-KalinaNeural",
+      "voiceAfter": "bg-BG-BorislavNeural",
+      "castVoiceBefore": "bg-BG-KalinaNeural",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": true
+    },
+    {
+      "course": "bul_for_eng",
+      "pod": "bul_for_eng:pod-0-unrecorded",
+      "global_order": 44,
+      "scene": 7,
+      "sentence": 7,
+      "track": "target",
+      "clipId": "2de44ec1-7370-49d7-b596-2a47128fee11",
+      "speakerBefore": "Customer 2",
+      "speakerAfter": "Cafe Customer 2",
+      "voiceBefore": "bg-BG-KalinaNeural",
+      "voiceAfter": "bg-BG-BorislavNeural",
+      "castVoiceBefore": "bg-BG-KalinaNeural",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": true
+    },
+    {
+      "course": "bul_for_eng",
+      "pod": "bul_for_eng:pod-0-unrecorded",
+      "global_order": 46,
+      "scene": 7,
+      "sentence": 9,
+      "track": "target",
+      "clipId": "bef45607-9666-490b-9e9d-656a26eb9328",
+      "speakerBefore": "Customer 2",
+      "speakerAfter": "Cafe Customer 2",
+      "voiceBefore": "bg-BG-KalinaNeural",
+      "voiceAfter": "bg-BG-BorislavNeural",
+      "castVoiceBefore": "bg-BG-KalinaNeural",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": true
+    },
+    {
+      "course": "bul_for_eng",
+      "pod": "bul_for_eng:pod-0-unrecorded",
+      "global_order": 48,
+      "scene": 7,
+      "sentence": 11,
+      "track": "target",
+      "clipId": "be20891c-e1fe-4d14-afec-f3604cb819b3",
+      "speakerBefore": "Customer 2",
+      "speakerAfter": "Cafe Customer 2",
+      "voiceBefore": "bg-BG-KalinaNeural",
+      "voiceAfter": "bg-BG-BorislavNeural",
+      "castVoiceBefore": "bg-BG-KalinaNeural",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": true
+    },
+    {
+      "course": "bul_for_eng",
+      "pod": "bul_for_eng:pod-0-unrecorded",
+      "global_order": 50,
+      "scene": 7,
+      "sentence": 13,
+      "track": "target",
+      "clipId": "7a4cb2f4-302f-41d8-a768-2ac6b4039810",
+      "speakerBefore": "Customer 3",
+      "speakerAfter": "Cafe Customer 3",
+      "voiceBefore": "bg-BG-KalinaNeural",
+      "voiceAfter": "bg-BG-BorislavNeural",
+      "castVoiceBefore": "bg-BG-KalinaNeural",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": true
+    },
+    {
+      "course": "bul_for_eng",
+      "pod": "bul_for_eng:pod-0-unrecorded",
+      "global_order": 54,
+      "scene": 8,
+      "sentence": 2,
+      "track": "known",
+      "clipId": "40b1a7b0-770d-4294-934f-44babc910096",
+      "speakerBefore": "Customer 1",
+      "speakerAfter": "Bar Customer 1",
+      "voiceBefore": "gfzdpspr5fdp",
+      "voiceAfter": "bedd6226",
+      "castVoiceBefore": "gfzdpspr5fdp",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": true
+    },
+    {
+      "course": "bul_for_eng",
+      "pod": "bul_for_eng:pod-0-unrecorded",
+      "global_order": 56,
+      "scene": 8,
+      "sentence": 4,
+      "track": "known",
+      "clipId": "7e3abf6c-9d60-4ee6-8f3e-51eb50e90be4",
+      "speakerBefore": "Customer 1",
+      "speakerAfter": "Bar Customer 1",
+      "voiceBefore": "gfzdpspr5fdp",
+      "voiceAfter": "bedd6226",
+      "castVoiceBefore": "gfzdpspr5fdp",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": true
+    },
+    {
+      "course": "bul_for_eng",
+      "pod": "bul_for_eng:pod-0-unrecorded",
+      "global_order": 57,
+      "scene": 8,
+      "sentence": 5,
+      "track": "known",
+      "clipId": "efea76bf-7889-491d-ba6c-40230fd42bff",
+      "speakerBefore": "Customer 2",
+      "speakerAfter": "Bar Customer 2",
+      "voiceBefore": "gfzdpspr5fdp",
+      "voiceAfter": "bedd6226",
+      "castVoiceBefore": "gfzdpspr5fdp",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": true
+    },
+    {
+      "course": "bul_for_eng",
+      "pod": "bul_for_eng:pod-0-unrecorded",
+      "global_order": 58,
+      "scene": 8,
+      "sentence": 6,
+      "track": "known",
+      "clipId": "a6253422-1c4b-4b14-b48f-8d8a7844c77e",
+      "speakerBefore": "Customer 3",
+      "speakerAfter": "Bar Customer 3",
+      "voiceBefore": "gfzdpspr5fdp",
+      "voiceAfter": "bedd6226",
+      "castVoiceBefore": "gfzdpspr5fdp",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": true
+    },
+    {
+      "course": "bul_for_eng",
+      "pod": "bul_for_eng:pod-0-unrecorded",
+      "global_order": 60,
+      "scene": 8,
+      "sentence": 8,
+      "track": "known",
+      "clipId": "609dac45-cc8d-47cd-827a-377e4ecf0857",
+      "speakerBefore": "Customer 3",
+      "speakerAfter": "Bar Customer 3",
+      "voiceBefore": "gfzdpspr5fdp",
+      "voiceAfter": "bedd6226",
+      "castVoiceBefore": "gfzdpspr5fdp",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": true
+    },
+    {
+      "course": "bul_for_eng",
+      "pod": "bul_for_eng:pod-0-unrecorded",
+      "global_order": 61,
+      "scene": 8,
+      "sentence": 9,
+      "track": "known",
+      "clipId": "e7bc44aa-b143-4dbf-9bf2-5f0e776f9c6f",
+      "speakerBefore": "Customer 1",
+      "speakerAfter": "Bar Customer 1",
+      "voiceBefore": "gfzdpspr5fdp",
+      "voiceAfter": "bedd6226",
+      "castVoiceBefore": "gfzdpspr5fdp",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": true
+    },
+    {
+      "course": "bul_for_eng",
+      "pod": "bul_for_eng:pod-0-unrecorded",
+      "global_order": 62,
+      "scene": 8,
+      "sentence": 10,
+      "track": "known",
+      "clipId": "5a64ee15-216e-4329-9c25-1ed75570cc6d",
+      "speakerBefore": "Customer 2",
+      "speakerAfter": "Bar Customer 2",
+      "voiceBefore": "gfzdpspr5fdp",
+      "voiceAfter": "bedd6226",
+      "castVoiceBefore": "gfzdpspr5fdp",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": true
+    },
+    {
+      "course": "bul_for_eng",
+      "pod": "bul_for_eng:pod-0-unrecorded",
+      "global_order": 64,
+      "scene": 8,
+      "sentence": 12,
+      "track": "known",
+      "clipId": "f6ea62a2-2ff0-4f28-9e6b-17ae066d05cf",
+      "speakerBefore": "Customer 1",
+      "speakerAfter": "Bar Customer 1",
+      "voiceBefore": "gfzdpspr5fdp",
+      "voiceAfter": "bedd6226",
+      "castVoiceBefore": "gfzdpspr5fdp",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": true
+    },
+    {
+      "course": "bul_for_eng",
+      "pod": "bul_for_eng:pod-0-unrecorded",
+      "global_order": 66,
+      "scene": 8,
+      "sentence": 14,
+      "track": "known",
+      "clipId": "b6405070-09d4-4838-8e5b-9eefa37581a1",
+      "speakerBefore": "Customer 1",
+      "speakerAfter": "Bar Customer 1",
+      "voiceBefore": "gfzdpspr5fdp",
+      "voiceAfter": "bedd6226",
+      "castVoiceBefore": "gfzdpspr5fdp",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": true
+    },
+    {
+      "course": "bul_for_eng",
+      "pod": "bul_for_eng:pod-0-unrecorded",
+      "global_order": 67,
+      "scene": 8,
+      "sentence": 15,
+      "track": "known",
+      "clipId": "586d8b71-31e3-4c7f-9916-f593a4110781",
+      "speakerBefore": "Customer 2",
+      "speakerAfter": "Bar Customer 2",
+      "voiceBefore": "gfzdpspr5fdp",
+      "voiceAfter": "bedd6226",
+      "castVoiceBefore": "gfzdpspr5fdp",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": true
+    },
+    {
+      "course": "bul_for_eng",
+      "pod": "bul_for_eng:pod-0-unrecorded",
+      "global_order": 69,
+      "scene": 9,
+      "sentence": 1,
+      "track": "known",
+      "clipId": "e8c6ab88-fbca-413f-855f-726175ad1dfb",
+      "speakerBefore": "Customer 1",
+      "speakerAfter": "Diner 1",
+      "voiceBefore": "gfzdpspr5fdp",
+      "voiceAfter": "bedd6226",
+      "castVoiceBefore": "gfzdpspr5fdp",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": true
+    },
+    {
+      "course": "bul_for_eng",
+      "pod": "bul_for_eng:pod-0-unrecorded",
+      "global_order": 72,
+      "scene": 9,
+      "sentence": 4,
+      "track": "known",
+      "clipId": "fe602343-bac6-4831-9b4b-bb602f85fd4c",
+      "speakerBefore": "Customer 2",
+      "speakerAfter": "Diner 2",
+      "voiceBefore": "gfzdpspr5fdp",
+      "voiceAfter": "bedd6226",
+      "castVoiceBefore": "gfzdpspr5fdp",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": true
+    },
+    {
+      "course": "bul_for_eng",
+      "pod": "bul_for_eng:pod-0-unrecorded",
+      "global_order": 73,
+      "scene": 9,
+      "sentence": 5,
+      "track": "known",
+      "clipId": "69abb93a-1493-4324-8676-b2b131936384",
+      "speakerBefore": "Customer 1",
+      "speakerAfter": "Diner 1",
+      "voiceBefore": "gfzdpspr5fdp",
+      "voiceAfter": "bedd6226",
+      "castVoiceBefore": "gfzdpspr5fdp",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": true
+    },
+    {
+      "course": "bul_for_eng",
+      "pod": "bul_for_eng:pod-0-unrecorded",
+      "global_order": 75,
+      "scene": 9,
+      "sentence": 7,
+      "track": "known",
+      "clipId": "ee48cbc1-7ff3-49e8-b337-9919be7b34b2",
+      "speakerBefore": "Customer 1",
+      "speakerAfter": "Diner 1",
+      "voiceBefore": "gfzdpspr5fdp",
+      "voiceAfter": "bedd6226",
+      "castVoiceBefore": "gfzdpspr5fdp",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": true
+    },
+    {
+      "course": "bul_for_eng",
+      "pod": "bul_for_eng:pod-0-unrecorded",
+      "global_order": 77,
+      "scene": 9,
+      "sentence": 9,
+      "track": "known",
+      "clipId": "2ff87acd-050d-4a62-921b-3b0985069e9a",
+      "speakerBefore": "Customer 1",
+      "speakerAfter": "Diner 1",
+      "voiceBefore": "gfzdpspr5fdp",
+      "voiceAfter": "bedd6226",
+      "castVoiceBefore": "gfzdpspr5fdp",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": true
+    },
+    {
+      "course": "bul_for_eng",
+      "pod": "bul_for_eng:pod-0-unrecorded",
+      "global_order": 78,
+      "scene": 9,
+      "sentence": 10,
+      "track": "known",
+      "clipId": "0d5fb02b-7424-4227-b3d2-fa62a2cf483e",
+      "speakerBefore": "Customer 2",
+      "speakerAfter": "Diner 2",
+      "voiceBefore": "gfzdpspr5fdp",
+      "voiceAfter": "bedd6226",
+      "castVoiceBefore": "gfzdpspr5fdp",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": true
+    },
+    {
+      "course": "bul_for_eng",
+      "pod": "bul_for_eng:pod-0-unrecorded",
+      "global_order": 80,
+      "scene": 9,
+      "sentence": 12,
+      "track": "known",
+      "clipId": "c348545e-ba63-4c8d-9b26-b72b464a9168",
+      "speakerBefore": "Customer 1",
+      "speakerAfter": "Diner 1",
+      "voiceBefore": "gfzdpspr5fdp",
+      "voiceAfter": "bedd6226",
+      "castVoiceBefore": "gfzdpspr5fdp",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": true
+    },
+    {
+      "course": "bul_for_eng",
+      "pod": "bul_for_eng:pod-0-unrecorded",
+      "global_order": 81,
+      "scene": 9,
+      "sentence": 13,
+      "track": "known",
+      "clipId": "6c327746-7c0b-4330-8b3e-f0a7f0b36722",
+      "speakerBefore": "Customer 2",
+      "speakerAfter": "Diner 2",
+      "voiceBefore": "gfzdpspr5fdp",
+      "voiceAfter": "bedd6226",
+      "castVoiceBefore": "gfzdpspr5fdp",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": true
+    },
+    {
+      "course": "bul_for_eng",
+      "pod": "bul_for_eng:pod-0-unrecorded",
+      "global_order": 84,
+      "scene": 9,
+      "sentence": 16,
+      "track": "known",
+      "clipId": "f656eac3-78a8-409e-a50c-e59ab02e6dc1",
+      "speakerBefore": "Customer 1",
+      "speakerAfter": "Diner 1",
+      "voiceBefore": "gfzdpspr5fdp",
+      "voiceAfter": "bedd6226",
+      "castVoiceBefore": "gfzdpspr5fdp",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": true
+    },
+    {
+      "course": "bul_for_eng",
+      "pod": "bul_for_eng:pod-0-unrecorded",
+      "global_order": 85,
+      "scene": 9,
+      "sentence": 17,
+      "track": "known",
+      "clipId": "afb775b9-bcbc-409b-a9d1-f03113373026",
+      "speakerBefore": "Customer 2",
+      "speakerAfter": "Diner 2",
+      "voiceBefore": "gfzdpspr5fdp",
+      "voiceAfter": "bedd6226",
+      "castVoiceBefore": "gfzdpspr5fdp",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": true
+    },
+    {
+      "course": "bul_for_eng",
+      "pod": "bul_for_eng:pod-0-unrecorded",
+      "global_order": 87,
+      "scene": 10,
+      "sentence": 1,
+      "track": "known",
+      "clipId": "170a3287-7c7d-4a7d-9253-93a0ba459fd2",
+      "speakerBefore": "Customer",
+      "speakerAfter": "Customer",
+      "voiceBefore": "gfzdpspr5fdp",
+      "voiceAfter": "bedd6226",
+      "castVoiceBefore": "gfzdpspr5fdp",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": true
+    },
+    {
+      "course": "bul_for_eng",
+      "pod": "bul_for_eng:pod-0-unrecorded",
+      "global_order": 89,
+      "scene": 10,
+      "sentence": 3,
+      "track": "known",
+      "clipId": "0a7dca46-be1e-47ed-b4a1-2f1256ea20e4",
+      "speakerBefore": "Customer",
+      "speakerAfter": "Customer",
+      "voiceBefore": "gfzdpspr5fdp",
+      "voiceAfter": "bedd6226",
+      "castVoiceBefore": "gfzdpspr5fdp",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": true
+    },
+    {
+      "course": "bul_for_eng",
+      "pod": "bul_for_eng:pod-0-unrecorded",
+      "global_order": 91,
+      "scene": 10,
+      "sentence": 5,
+      "track": "known",
+      "clipId": "477b7d18-fa36-44bb-893b-397c225626b6",
+      "speakerBefore": "Customer",
+      "speakerAfter": "Customer",
+      "voiceBefore": "gfzdpspr5fdp",
+      "voiceAfter": "bedd6226",
+      "castVoiceBefore": "gfzdpspr5fdp",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": true
+    },
+    {
+      "course": "bul_for_eng",
+      "pod": "bul_for_eng:pod-0-unrecorded",
+      "global_order": 93,
+      "scene": 10,
+      "sentence": 7,
+      "track": "known",
+      "clipId": "892e586e-a307-411d-a21e-0ac5b7865a23",
+      "speakerBefore": "Customer",
+      "speakerAfter": "Customer",
+      "voiceBefore": "gfzdpspr5fdp",
+      "voiceAfter": "bedd6226",
+      "castVoiceBefore": "gfzdpspr5fdp",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": true
+    },
+    {
+      "course": "bul_for_eng",
+      "pod": "bul_for_eng:pod-0-unrecorded",
+      "global_order": 95,
+      "scene": 10,
+      "sentence": 9,
+      "track": "known",
+      "clipId": "1f9eff08-0523-4a4a-80a4-23177516e16d",
+      "speakerBefore": "Customer",
+      "speakerAfter": "Customer",
+      "voiceBefore": "gfzdpspr5fdp",
+      "voiceAfter": "bedd6226",
+      "castVoiceBefore": "gfzdpspr5fdp",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": true
+    },
+    {
+      "course": "bul_for_eng",
+      "pod": "bul_for_eng:pod-0-unrecorded",
+      "global_order": 110,
+      "scene": 12,
+      "sentence": 1,
+      "track": "known",
+      "clipId": "878ce19c-d676-4a14-8e55-4e3a5a7189ca",
+      "speakerBefore": "Customer",
+      "speakerAfter": "Customer",
+      "voiceBefore": "gfzdpspr5fdp",
+      "voiceAfter": "bedd6226",
+      "castVoiceBefore": "gfzdpspr5fdp",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": true
+    },
+    {
+      "course": "bul_for_eng",
+      "pod": "bul_for_eng:pod-0-unrecorded",
+      "global_order": 112,
+      "scene": 12,
+      "sentence": 3,
+      "track": "known",
+      "clipId": "6f196779-37a7-40ce-afcd-11ffece6733d",
+      "speakerBefore": "Customer",
+      "speakerAfter": "Customer",
+      "voiceBefore": "gfzdpspr5fdp",
+      "voiceAfter": "bedd6226",
+      "castVoiceBefore": "gfzdpspr5fdp",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": true
+    },
+    {
+      "course": "bul_for_eng",
+      "pod": "bul_for_eng:pod-0-unrecorded",
+      "global_order": 114,
+      "scene": 12,
+      "sentence": 5,
+      "track": "known",
+      "clipId": "981fc827-1a75-45fe-afaf-e757e966f7a5",
+      "speakerBefore": "Customer",
+      "speakerAfter": "Customer",
+      "voiceBefore": "gfzdpspr5fdp",
+      "voiceAfter": "bedd6226",
+      "castVoiceBefore": "gfzdpspr5fdp",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": true
+    },
+    {
+      "course": "bul_for_eng",
+      "pod": "bul_for_eng:pod-0-unrecorded",
+      "global_order": 116,
+      "scene": 12,
+      "sentence": 7,
+      "track": "known",
+      "clipId": "ae5503dc-c1f8-4457-b7a2-87a0d2adb58a",
+      "speakerBefore": "Customer",
+      "speakerAfter": "Customer",
+      "voiceBefore": "gfzdpspr5fdp",
+      "voiceAfter": "bedd6226",
+      "castVoiceBefore": "gfzdpspr5fdp",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": true
+    },
+    {
+      "course": "bul_for_eng",
+      "pod": "bul_for_eng:pod-0-unrecorded",
+      "global_order": 118,
+      "scene": 12,
+      "sentence": 9,
+      "track": "known",
+      "clipId": "ba2a2e13-80a4-4c70-997f-a4f1fb8a2cb3",
+      "speakerBefore": "Customer",
+      "speakerAfter": "Customer",
+      "voiceBefore": "gfzdpspr5fdp",
+      "voiceAfter": "bedd6226",
+      "castVoiceBefore": "gfzdpspr5fdp",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": true
+    },
+    {
+      "course": "bul_for_eng",
+      "pod": "bul_for_eng:pod-0-unrecorded",
+      "global_order": 120,
+      "scene": 13,
+      "sentence": 1,
+      "track": "target",
+      "clipId": "c821a59a-7ded-4a60-bbd9-b4979f5511bc",
+      "speakerBefore": "Tourist",
+      "speakerAfter": "Tourist",
+      "voiceBefore": "bg-BG-BorislavNeural",
+      "voiceAfter": "bg-BG-KalinaNeural",
+      "castVoiceBefore": "bg-BG-BorislavNeural",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": true
+    },
+    {
+      "course": "bul_for_eng",
+      "pod": "bul_for_eng:pod-0-unrecorded",
+      "global_order": 120,
+      "scene": 13,
+      "sentence": 1,
+      "track": "known",
+      "clipId": "b628eac2-2f32-4047-a75b-a01674f13c33",
+      "speakerBefore": "Tourist",
+      "speakerAfter": "Tourist",
+      "voiceBefore": "gfzdpspr5fdp",
+      "voiceAfter": "bedd6226",
+      "castVoiceBefore": "gfzdpspr5fdp",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": true
+    },
+    {
+      "course": "bul_for_eng",
+      "pod": "bul_for_eng:pod-0-unrecorded",
+      "global_order": 122,
+      "scene": 13,
+      "sentence": 3,
+      "track": "target",
+      "clipId": "29d7683f-c6e2-4721-9a15-5febf3ca60c3",
+      "speakerBefore": "Tourist",
+      "speakerAfter": "Tourist",
+      "voiceBefore": "bg-BG-BorislavNeural",
+      "voiceAfter": "bg-BG-KalinaNeural",
+      "castVoiceBefore": "bg-BG-BorislavNeural",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": true
+    },
+    {
+      "course": "bul_for_eng",
+      "pod": "bul_for_eng:pod-0-unrecorded",
+      "global_order": 122,
+      "scene": 13,
+      "sentence": 3,
+      "track": "known",
+      "clipId": "f43772fd-3bca-4ed8-8f9b-460b80f19973",
+      "speakerBefore": "Tourist",
+      "speakerAfter": "Tourist",
+      "voiceBefore": "gfzdpspr5fdp",
+      "voiceAfter": "bedd6226",
+      "castVoiceBefore": "gfzdpspr5fdp",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": true
+    },
+    {
+      "course": "bul_for_eng",
+      "pod": "bul_for_eng:pod-0-unrecorded",
+      "global_order": 125,
+      "scene": 13,
+      "sentence": 6,
+      "track": "target",
+      "clipId": "0335f414-0088-41de-bf2f-65fbc318468d",
+      "speakerBefore": "Tourist",
+      "speakerAfter": "Tourist",
+      "voiceBefore": "bg-BG-BorislavNeural",
+      "voiceAfter": "bg-BG-KalinaNeural",
+      "castVoiceBefore": "bg-BG-BorislavNeural",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": true
+    },
+    {
+      "course": "bul_for_eng",
+      "pod": "bul_for_eng:pod-0-unrecorded",
+      "global_order": 125,
+      "scene": 13,
+      "sentence": 6,
+      "track": "known",
+      "clipId": "b9998b58-f311-4ebf-a611-828eacf036db",
+      "speakerBefore": "Tourist",
+      "speakerAfter": "Tourist",
+      "voiceBefore": "gfzdpspr5fdp",
+      "voiceAfter": "bedd6226",
+      "castVoiceBefore": "gfzdpspr5fdp",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": true
+    },
+    {
+      "course": "bul_for_eng",
+      "pod": "bul_for_eng:pod-0-unrecorded",
+      "global_order": 127,
+      "scene": 13,
+      "sentence": 8,
+      "track": "target",
+      "clipId": "83e4f66c-1dd1-4bc3-b76a-4edeb1dc05a9",
+      "speakerBefore": "Tourist",
+      "speakerAfter": "Tourist",
+      "voiceBefore": "bg-BG-BorislavNeural",
+      "voiceAfter": "bg-BG-KalinaNeural",
+      "castVoiceBefore": "bg-BG-BorislavNeural",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": true
+    },
+    {
+      "course": "bul_for_eng",
+      "pod": "bul_for_eng:pod-0-unrecorded",
+      "global_order": 127,
+      "scene": 13,
+      "sentence": 8,
+      "track": "known",
+      "clipId": "195c0568-df6f-48e5-85f6-c0c7acced94d",
+      "speakerBefore": "Tourist",
+      "speakerAfter": "Tourist",
+      "voiceBefore": "gfzdpspr5fdp",
+      "voiceAfter": "bedd6226",
+      "castVoiceBefore": "gfzdpspr5fdp",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": true
+    },
+    {
+      "course": "bul_for_eng",
+      "pod": "bul_for_eng:pod-0-unrecorded",
+      "global_order": 129,
+      "scene": 13,
+      "sentence": 10,
+      "track": "target",
+      "clipId": "9a77a4f4-5a84-481e-a88f-7f11ad322fe2",
+      "speakerBefore": "Tourist",
+      "speakerAfter": "Tourist",
+      "voiceBefore": "bg-BG-BorislavNeural",
+      "voiceAfter": "bg-BG-KalinaNeural",
+      "castVoiceBefore": "bg-BG-BorislavNeural",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": true
+    },
+    {
+      "course": "bul_for_eng",
+      "pod": "bul_for_eng:pod-0-unrecorded",
+      "global_order": 129,
+      "scene": 13,
+      "sentence": 10,
+      "track": "known",
+      "clipId": "15d3920c-67e1-4cbf-bee0-3a6269ac5bd3",
+      "speakerBefore": "Tourist",
+      "speakerAfter": "Tourist",
+      "voiceBefore": "gfzdpspr5fdp",
+      "voiceAfter": "bedd6226",
+      "castVoiceBefore": "gfzdpspr5fdp",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": true
+    },
+    {
+      "course": "bul_for_eng",
+      "pod": "bul_for_eng:pod-0-unrecorded",
+      "global_order": 132,
+      "scene": 14,
+      "sentence": 2,
+      "track": "target",
+      "clipId": "4ef2bebf-609c-49a8-897f-a1536cc9e5e0",
+      "speakerBefore": "Driver",
+      "speakerAfter": "Driver",
+      "voiceBefore": "bg-BG-BorislavNeural",
+      "voiceAfter": "bg-BG-KalinaNeural",
+      "castVoiceBefore": "bg-BG-BorislavNeural",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": true
+    },
+    {
+      "course": "bul_for_eng",
+      "pod": "bul_for_eng:pod-0-unrecorded",
+      "global_order": 132,
+      "scene": 14,
+      "sentence": 2,
+      "track": "known",
+      "clipId": "4f28fb24-6d2a-4053-a9c5-40f9ea688a66",
+      "speakerBefore": "Driver",
+      "speakerAfter": "Driver",
+      "voiceBefore": "gfzdpspr5fdp",
+      "voiceAfter": "bedd6226",
+      "castVoiceBefore": "gfzdpspr5fdp",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": true
+    },
+    {
+      "course": "bul_for_eng",
+      "pod": "bul_for_eng:pod-0-unrecorded",
+      "global_order": 134,
+      "scene": 14,
+      "sentence": 4,
+      "track": "target",
+      "clipId": "9feedbf0-c84b-4ce4-b004-56b8fae1c61c",
+      "speakerBefore": "Driver",
+      "speakerAfter": "Driver",
+      "voiceBefore": "bg-BG-BorislavNeural",
+      "voiceAfter": "bg-BG-KalinaNeural",
+      "castVoiceBefore": "bg-BG-BorislavNeural",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": true
+    },
+    {
+      "course": "bul_for_eng",
+      "pod": "bul_for_eng:pod-0-unrecorded",
+      "global_order": 134,
+      "scene": 14,
+      "sentence": 4,
+      "track": "known",
+      "clipId": "0e6356d9-5979-4409-a7c5-3bfc49112713",
+      "speakerBefore": "Driver",
+      "speakerAfter": "Driver",
+      "voiceBefore": "gfzdpspr5fdp",
+      "voiceAfter": "bedd6226",
+      "castVoiceBefore": "gfzdpspr5fdp",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": true
+    },
+    {
+      "course": "bul_for_eng",
+      "pod": "bul_for_eng:pod-0-unrecorded",
+      "global_order": 136,
+      "scene": 14,
+      "sentence": 6,
+      "track": "target",
+      "clipId": "b202659f-522f-485d-bec7-5e02c374b66a",
+      "speakerBefore": "Driver",
+      "speakerAfter": "Driver",
+      "voiceBefore": "bg-BG-BorislavNeural",
+      "voiceAfter": "bg-BG-KalinaNeural",
+      "castVoiceBefore": "bg-BG-BorislavNeural",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": true
+    },
+    {
+      "course": "bul_for_eng",
+      "pod": "bul_for_eng:pod-0-unrecorded",
+      "global_order": 136,
+      "scene": 14,
+      "sentence": 6,
+      "track": "known",
+      "clipId": "7c3d755b-7dca-475e-9c6c-577781c75dd7",
+      "speakerBefore": "Driver",
+      "speakerAfter": "Driver",
+      "voiceBefore": "gfzdpspr5fdp",
+      "voiceAfter": "bedd6226",
+      "castVoiceBefore": "gfzdpspr5fdp",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": true
+    },
+    {
+      "course": "bul_for_eng",
+      "pod": "bul_for_eng:pod-0-unrecorded",
+      "global_order": 137,
+      "scene": 14,
+      "sentence": 7,
+      "track": "target",
+      "clipId": "2a49d987-62e9-48c9-a92e-955fcfedce6c",
+      "speakerBefore": "Driver",
+      "speakerAfter": "Driver",
+      "voiceBefore": "bg-BG-BorislavNeural",
+      "voiceAfter": "bg-BG-KalinaNeural",
+      "castVoiceBefore": "bg-BG-BorislavNeural",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": true
+    },
+    {
+      "course": "bul_for_eng",
+      "pod": "bul_for_eng:pod-0-unrecorded",
+      "global_order": 137,
+      "scene": 14,
+      "sentence": 7,
+      "track": "known",
+      "clipId": "d6a71cb9-16f4-414e-9fe3-a3fffd30e3ae",
+      "speakerBefore": "Driver",
+      "speakerAfter": "Driver",
+      "voiceBefore": "gfzdpspr5fdp",
+      "voiceAfter": "bedd6226",
+      "castVoiceBefore": "gfzdpspr5fdp",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": true
+    },
+    {
+      "course": "bul_for_eng",
+      "pod": "bul_for_eng:pod-0-unrecorded",
+      "global_order": 139,
+      "scene": 14,
+      "sentence": 9,
+      "track": "target",
+      "clipId": "8cd02922-5cb9-4511-82ea-766ffa21f1cc",
+      "speakerBefore": "Driver",
+      "speakerAfter": "Driver",
+      "voiceBefore": "bg-BG-BorislavNeural",
+      "voiceAfter": "bg-BG-KalinaNeural",
+      "castVoiceBefore": "bg-BG-BorislavNeural",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": true
+    },
+    {
+      "course": "bul_for_eng",
+      "pod": "bul_for_eng:pod-0-unrecorded",
+      "global_order": 139,
+      "scene": 14,
+      "sentence": 9,
+      "track": "known",
+      "clipId": "19f3cc42-ea0e-4a83-b3cb-17611d3050d1",
+      "speakerBefore": "Driver",
+      "speakerAfter": "Driver",
+      "voiceBefore": "gfzdpspr5fdp",
+      "voiceAfter": "bedd6226",
+      "castVoiceBefore": "gfzdpspr5fdp",
+      "castVoiceBeforeSource": "stored-cast",
+      "causedByRecast": true
+    }
+  ],
+  "blockers": [],
+  "oldStoredCastKeys": [
+    "Anna",
+    "Assistant",
+    "Barista",
+    "Bartender",
+    "Customer",
+    "Customer 1",
+    "Customer 2",
+    "Customer 3",
+    "Driver",
+    "Friend",
+    "Guest",
+    "James",
+    "Learner",
+    "Local",
+    "Narrator",
+    "Neighbour",
+    "Passenger",
+    "Pharmacist",
+    "Receptionist",
+    "Sarah",
+    "Tourist",
+    "Waiter",
+    "_default"
+  ],
+  "newStoredCast": {
+    "Neighbour": {
+      "gender": "m",
+      "variants": [
+        "Neighbour (8 am)",
+        "Neighbour",
+        "Neighbour (10:30 pm)"
+      ],
+      "target": {
+        "name": "Борислав",
+        "locale": "bg-BG",
+        "provider": "azure",
+        "voice_id": "bg-BG-BorislavNeural"
+      },
+      "known": {
+        "name": "Tom",
+        "locale": "en",
+        "provider": "xai",
+        "voice_id": "gfzdpspr5fdp"
+      }
+    },
+    "Sarah": {
+      "gender": "f",
+      "variants": [
+        "Sarah"
+      ],
+      "target": {
+        "name": "Калина",
+        "locale": "bg-BG",
+        "provider": "azure",
+        "voice_id": "bg-BG-KalinaNeural"
+      },
+      "known": {
+        "name": "Olivia",
+        "locale": "en",
+        "provider": "xai",
+        "voice_id": "bedd6226"
+      }
+    },
+    "Passenger": {
+      "gender": "m",
+      "variants": [
+        "Passenger"
+      ],
+      "target": {
+        "name": "Борислав",
+        "locale": "bg-BG",
+        "provider": "azure",
+        "voice_id": "bg-BG-BorislavNeural"
+      },
+      "known": {
+        "name": "Tom",
+        "locale": "en",
+        "provider": "xai",
+        "voice_id": "gfzdpspr5fdp"
+      }
+    },
+    "Barista": {
+      "gender": "m",
+      "variants": [
+        "Barista (3 pm)",
+        "Barista"
+      ],
+      "target": {
+        "name": "Борислав",
+        "locale": "bg-BG",
+        "provider": "azure",
+        "voice_id": "bg-BG-BorislavNeural"
+      },
+      "known": {
+        "name": "Tom",
+        "locale": "en",
+        "provider": "xai",
+        "voice_id": "gfzdpspr5fdp"
+      }
+    },
+    "Friend": {
+      "gender": "m",
+      "variants": [
+        "Friend (7 pm)",
+        "Friend"
+      ],
+      "target": {
+        "name": "Борислав",
+        "locale": "bg-BG",
+        "provider": "azure",
+        "voice_id": "bg-BG-BorislavNeural"
+      },
+      "known": {
+        "name": "Tom",
+        "locale": "en",
+        "provider": "xai",
+        "voice_id": "gfzdpspr5fdp"
+      }
+    },
+    "James": {
+      "gender": "m",
+      "variants": [
+        "James"
+      ],
+      "target": {
+        "name": "Борислав",
+        "locale": "bg-BG",
+        "provider": "azure",
+        "voice_id": "bg-BG-BorislavNeural"
+      },
+      "known": {
+        "name": "Tom",
+        "locale": "en",
+        "provider": "xai",
+        "voice_id": "gfzdpspr5fdp"
+      }
+    },
+    "Anna": {
+      "gender": "f",
+      "variants": [
+        "Anna"
+      ],
+      "target": {
+        "name": "Калина",
+        "locale": "bg-BG",
+        "provider": "azure",
+        "voice_id": "bg-BG-KalinaNeural"
+      },
+      "known": {
+        "name": "Olivia",
+        "locale": "en",
+        "provider": "xai",
+        "voice_id": "bedd6226"
+      }
+    },
+    "Narrator": {
+      "gender": "m",
+      "variants": [
+        "Narrator"
+      ],
+      "target": {
+        "name": "Борислав",
+        "locale": "bg-BG",
+        "provider": "azure",
+        "voice_id": "bg-BG-BorislavNeural"
+      },
+      "known": {
+        "name": "Tom",
+        "locale": "en",
+        "provider": "xai",
+        "voice_id": "gfzdpspr5fdp"
+      }
+    },
+    "Cafe Barista": {
+      "gender": "f",
+      "variants": [
+        "Cafe Barista"
+      ],
+      "target": {
+        "name": "Калина",
+        "locale": "bg-BG",
+        "provider": "azure",
+        "voice_id": "bg-BG-KalinaNeural"
+      },
+      "known": {
+        "name": "Olivia",
+        "locale": "en",
+        "provider": "xai",
+        "voice_id": "bedd6226"
+      }
+    },
+    "Cafe Customer 1": {
+      "gender": "m",
+      "variants": [
+        "Cafe Customer 1"
+      ],
+      "target": {
+        "name": "Борислав",
+        "locale": "bg-BG",
+        "provider": "azure",
+        "voice_id": "bg-BG-BorislavNeural"
+      },
+      "known": {
+        "name": "Tom",
+        "locale": "en",
+        "provider": "xai",
+        "voice_id": "gfzdpspr5fdp"
+      }
+    },
+    "Cafe Customer 2": {
+      "gender": "m",
+      "variants": [
+        "Cafe Customer 2"
+      ],
+      "target": {
+        "name": "Борислав",
+        "locale": "bg-BG",
+        "provider": "azure",
+        "voice_id": "bg-BG-BorislavNeural"
+      },
+      "known": {
+        "name": "Tom",
+        "locale": "en",
+        "provider": "xai",
+        "voice_id": "gfzdpspr5fdp"
+      }
+    },
+    "Cafe Customer 3": {
+      "gender": "m",
+      "variants": [
+        "Cafe Customer 3"
+      ],
+      "target": {
+        "name": "Борислав",
+        "locale": "bg-BG",
+        "provider": "azure",
+        "voice_id": "bg-BG-BorislavNeural"
+      },
+      "known": {
+        "name": "Tom",
+        "locale": "en",
+        "provider": "xai",
+        "voice_id": "gfzdpspr5fdp"
+      }
+    },
+    "Bartender": {
+      "gender": "m",
+      "variants": [
+        "Bartender"
+      ],
+      "target": {
+        "name": "Борислав",
+        "locale": "bg-BG",
+        "provider": "azure",
+        "voice_id": "bg-BG-BorislavNeural"
+      },
+      "known": {
+        "name": "Tom",
+        "locale": "en",
+        "provider": "xai",
+        "voice_id": "gfzdpspr5fdp"
+      }
+    },
+    "Bar Customer 1": {
+      "gender": "f",
+      "variants": [
+        "Bar Customer 1"
+      ],
+      "target": {
+        "name": "Калина",
+        "locale": "bg-BG",
+        "provider": "azure",
+        "voice_id": "bg-BG-KalinaNeural"
+      },
+      "known": {
+        "name": "Olivia",
+        "locale": "en",
+        "provider": "xai",
+        "voice_id": "bedd6226"
+      }
+    },
+    "Bar Customer 2": {
+      "gender": "f",
+      "variants": [
+        "Bar Customer 2"
+      ],
+      "target": {
+        "name": "Калина",
+        "locale": "bg-BG",
+        "provider": "azure",
+        "voice_id": "bg-BG-KalinaNeural"
+      },
+      "known": {
+        "name": "Olivia",
+        "locale": "en",
+        "provider": "xai",
+        "voice_id": "bedd6226"
+      }
+    },
+    "Bar Customer 3": {
+      "gender": "f",
+      "variants": [
+        "Bar Customer 3"
+      ],
+      "target": {
+        "name": "Калина",
+        "locale": "bg-BG",
+        "provider": "azure",
+        "voice_id": "bg-BG-KalinaNeural"
+      },
+      "known": {
+        "name": "Olivia",
+        "locale": "en",
+        "provider": "xai",
+        "voice_id": "bedd6226"
+      }
+    },
+    "Diner 1": {
+      "gender": "f",
+      "variants": [
+        "Diner 1"
+      ],
+      "target": {
+        "name": "Калина",
+        "locale": "bg-BG",
+        "provider": "azure",
+        "voice_id": "bg-BG-KalinaNeural"
+      },
+      "known": {
+        "name": "Olivia",
+        "locale": "en",
+        "provider": "xai",
+        "voice_id": "bedd6226"
+      }
+    },
+    "Waiter": {
+      "gender": "m",
+      "variants": [
+        "Waiter"
+      ],
+      "target": {
+        "name": "Борислав",
+        "locale": "bg-BG",
+        "provider": "azure",
+        "voice_id": "bg-BG-BorislavNeural"
+      },
+      "known": {
+        "name": "Tom",
+        "locale": "en",
+        "provider": "xai",
+        "voice_id": "gfzdpspr5fdp"
+      }
+    },
+    "Diner 2": {
+      "gender": "f",
+      "variants": [
+        "Diner 2"
+      ],
+      "target": {
+        "name": "Калина",
+        "locale": "bg-BG",
+        "provider": "azure",
+        "voice_id": "bg-BG-KalinaNeural"
+      },
+      "known": {
+        "name": "Olivia",
+        "locale": "en",
+        "provider": "xai",
+        "voice_id": "bedd6226"
+      }
+    },
+    "Customer": {
+      "gender": "f",
+      "variants": [
+        "Customer"
+      ],
+      "target": {
+        "name": "Калина",
+        "locale": "bg-BG",
+        "provider": "azure",
+        "voice_id": "bg-BG-KalinaNeural"
+      },
+      "known": {
+        "name": "Olivia",
+        "locale": "en",
+        "provider": "xai",
+        "voice_id": "bedd6226"
+      }
+    },
+    "Assistant": {
+      "gender": "m",
+      "variants": [
+        "Assistant"
+      ],
+      "target": {
+        "name": "Борислав",
+        "locale": "bg-BG",
+        "provider": "azure",
+        "voice_id": "bg-BG-BorislavNeural"
+      },
+      "known": {
+        "name": "Tom",
+        "locale": "en",
+        "provider": "xai",
+        "voice_id": "gfzdpspr5fdp"
+      }
+    },
+    "Guest": {
+      "gender": "m",
+      "variants": [
+        "Guest"
+      ],
+      "target": {
+        "name": "Борислав",
+        "locale": "bg-BG",
+        "provider": "azure",
+        "voice_id": "bg-BG-BorislavNeural"
+      },
+      "known": {
+        "name": "Tom",
+        "locale": "en",
+        "provider": "xai",
+        "voice_id": "gfzdpspr5fdp"
+      }
+    },
+    "Receptionist": {
+      "gender": "f",
+      "variants": [
+        "Receptionist"
+      ],
+      "target": {
+        "name": "Калина",
+        "locale": "bg-BG",
+        "provider": "azure",
+        "voice_id": "bg-BG-KalinaNeural"
+      },
+      "known": {
+        "name": "Olivia",
+        "locale": "en",
+        "provider": "xai",
+        "voice_id": "bedd6226"
+      }
+    },
+    "Pharmacist": {
+      "gender": "m",
+      "variants": [
+        "Pharmacist"
+      ],
+      "target": {
+        "name": "Борислав",
+        "locale": "bg-BG",
+        "provider": "azure",
+        "voice_id": "bg-BG-BorislavNeural"
+      },
+      "known": {
+        "name": "Tom",
+        "locale": "en",
+        "provider": "xai",
+        "voice_id": "gfzdpspr5fdp"
+      }
+    },
+    "Tourist": {
+      "gender": "f",
+      "variants": [
+        "Tourist"
+      ],
+      "target": {
+        "name": "Калина",
+        "locale": "bg-BG",
+        "provider": "azure",
+        "voice_id": "bg-BG-KalinaNeural"
+      },
+      "known": {
+        "name": "Olivia",
+        "locale": "en",
+        "provider": "xai",
+        "voice_id": "bedd6226"
+      }
+    },
+    "Local": {
+      "gender": "m",
+      "variants": [
+        "Local"
+      ],
+      "target": {
+        "name": "Борислав",
+        "locale": "bg-BG",
+        "provider": "azure",
+        "voice_id": "bg-BG-BorislavNeural"
+      },
+      "known": {
+        "name": "Tom",
+        "locale": "en",
+        "provider": "xai",
+        "voice_id": "gfzdpspr5fdp"
+      }
+    },
+    "Driver": {
+      "gender": "f",
+      "variants": [
+        "Driver"
+      ],
+      "target": {
+        "name": "Калина",
+        "locale": "bg-BG",
+        "provider": "azure",
+        "voice_id": "bg-BG-KalinaNeural"
+      },
+      "known": {
+        "name": "Olivia",
+        "locale": "en",
+        "provider": "xai",
+        "voice_id": "bedd6226"
+      }
+    },
+    "Learner": {
+      "gender": "f",
+      "variants": [
+        "Learner"
+      ],
+      "target": {
+        "name": "Калина",
+        "locale": "bg-BG",
+        "provider": "azure",
+        "voice_id": "bg-BG-KalinaNeural"
+      },
+      "known": {
+        "name": "Olivia",
+        "locale": "en",
+        "provider": "xai",
+        "voice_id": "bedd6226"
+      }
+    }
+  },
+  "oldPodCastKeys": [],
+  "podCastSkipped": "course has no podCast — nothing to keep in step",
+  "verifiedLive": {
+    "exchangeCollisions": {
+      "pairs": 0,
+      "turns": 0
+    },
+    "rawLabelCollisions": {
+      "pairs": 5,
+      "turns": 10
+    },
+    "targetLinksIntact": 230,
+    "knownLinksIntact": 231,
+    "castKeys": [
+      "Anna",
+      "Assistant",
+      "Bar Customer 1",
+      "Bar Customer 2",
+      "Bar Customer 3",
+      "Barista",
+      "Bartender",
+      "Cafe Barista",
+      "Cafe Customer 1",
+      "Cafe Customer 2",
+      "Cafe Customer 3",
+      "Customer",
+      "Diner 1",
+      "Diner 2",
+      "Driver",
+      "Friend",
+      "Guest",
+      "James",
+      "Learner",
+      "Local",
+      "Narrator",
+      "Neighbour",
+      "Passenger",
+      "Pharmacist",
+      "Receptionist",
+      "Sarah",
+      "Tourist",
+      "Waiter"
+    ]
+  }
+}

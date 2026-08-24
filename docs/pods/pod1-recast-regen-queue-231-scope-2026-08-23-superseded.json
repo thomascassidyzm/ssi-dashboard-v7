@@ -1,0 +1,594 @@
+{
+  "generated": "2026-08-23",
+  "scope": "live pods >=200 lines only",
+  "scopePods": [
+    {
+      "id": "por_br_for_eng:pod-1",
+      "course_code": "por_br_for_eng",
+      "slug": "pod-1"
+    },
+    {
+      "id": "ita_for_eng:pod-1",
+      "course_code": "ita_for_eng",
+      "slug": "pod-1"
+    },
+    {
+      "id": "kor_for_eng:pod-1",
+      "course_code": "kor_for_eng",
+      "slug": "pod-1"
+    },
+    {
+      "id": "zho_for_eng:pod-1",
+      "course_code": "zho_for_eng",
+      "slug": "pod-1"
+    },
+    {
+      "id": "jpn_for_eng:pod-1",
+      "course_code": "jpn_for_eng",
+      "slug": "pod-1"
+    },
+    {
+      "id": "fra_for_eng:pod-1",
+      "course_code": "fra_for_eng",
+      "slug": "pod-1"
+    },
+    {
+      "id": "ara_sy_for_eng:pod-0",
+      "course_code": "ara_sy_for_eng",
+      "slug": "pod-0"
+    },
+    {
+      "id": "hrv_for_eng:pod-1",
+      "course_code": "hrv_for_eng",
+      "slug": "pod-1"
+    },
+    {
+      "id": "swe_for_eng:pod-1",
+      "course_code": "swe_for_eng",
+      "slug": "pod-1"
+    },
+    {
+      "id": "fin_for_eng:pod-0",
+      "course_code": "fin_for_eng",
+      "slug": "pod-0"
+    },
+    {
+      "id": "spa_for_eng:pod-1",
+      "course_code": "spa_for_eng",
+      "slug": "pod-1"
+    },
+    {
+      "id": "deu_for_eng:pod-1",
+      "course_code": "deu_for_eng",
+      "slug": "pod-1"
+    },
+    {
+      "id": "fra_ca_for_eng:pod-0",
+      "course_code": "fra_ca_for_eng",
+      "slug": "pod-0"
+    },
+    {
+      "id": "spa_mx_for_eng:pod-1",
+      "course_code": "spa_mx_for_eng",
+      "slug": "pod-1"
+    },
+    {
+      "id": "deu_at_for_eng:pod-0",
+      "course_code": "deu_at_for_eng",
+      "slug": "pod-0"
+    },
+    {
+      "id": "cym_s_for_eng:pod-0",
+      "course_code": "cym_s_for_eng",
+      "slug": "pod-0"
+    },
+    {
+      "id": "eus_for_eng:pod-1",
+      "course_code": "eus_for_eng",
+      "slug": "pod-1"
+    },
+    {
+      "id": "ara_for_eng:pod-1",
+      "course_code": "ara_for_eng",
+      "slug": "pod-1"
+    },
+    {
+      "id": "ara_eg_for_eng:pod-1",
+      "course_code": "ara_eg_for_eng",
+      "slug": "pod-1"
+    },
+    {
+      "id": "por_for_eng:pod-1",
+      "course_code": "por_for_eng",
+      "slug": "pod-1"
+    },
+    {
+      "id": "ron_for_eng:pod-1",
+      "course_code": "ron_for_eng",
+      "slug": "pod-1"
+    }
+  ],
+  "totalClips": 1054,
+  "clipsCausedByRecast": 969,
+  "clipsPreexistingDrift": 85,
+  "clipsUntouchedDivergence": 0,
+  "languages": [
+    {
+      "language": "eng",
+      "clips": 284,
+      "clipsCausedByRecast": 279,
+      "clipsPreexistingDrift": 5,
+      "clipsUntouchedDivergence": 0,
+      "lineLinks": 1471,
+      "courses": [
+        "ara_eg_for_eng",
+        "ara_for_eng",
+        "ara_sy_for_eng",
+        "deu_at_for_eng",
+        "deu_for_eng",
+        "eus_for_eng",
+        "fra_ca_for_eng",
+        "fra_for_eng",
+        "hrv_for_eng",
+        "ita_for_eng",
+        "jpn_for_eng",
+        "kor_for_eng",
+        "por_br_for_eng",
+        "por_for_eng",
+        "ron_for_eng",
+        "spa_for_eng",
+        "spa_mx_for_eng",
+        "swe_for_eng",
+        "zho_for_eng"
+      ],
+      "voiceMoves": [
+        [
+          "gfzdpspr5fdp → bedd6226",
+          248
+        ],
+        [
+          "bedd6226 → gfzdpspr5fdp",
+          36
+        ]
+      ]
+    },
+    {
+      "language": "spa",
+      "clips": 105,
+      "clipsCausedByRecast": 105,
+      "clipsPreexistingDrift": 0,
+      "clipsUntouchedDivergence": 0,
+      "lineLinks": 105,
+      "courses": [
+        "spa_for_eng"
+      ],
+      "voiceMoves": [
+        [
+          "yis75yfp → es-ES-ElviraNeural",
+          98
+        ],
+        [
+          "es-ES-ElviraNeural → yis75yfp",
+          7
+        ]
+      ]
+    },
+    {
+      "language": "fra_ca",
+      "clips": 80,
+      "clipsCausedByRecast": 80,
+      "clipsPreexistingDrift": 0,
+      "clipsUntouchedDivergence": 0,
+      "lineLinks": 81,
+      "courses": [
+        "fra_ca_for_eng"
+      ],
+      "voiceMoves": [
+        [
+          "fr-CA-AntoineNeural → fr-CA-SylvieNeural",
+          26
+        ],
+        [
+          "fr-CA-AntoineNeural → fr-CA-JeanNeural",
+          16
+        ],
+        [
+          "fr-CA-JeanNeural → fr-CA-SylvieNeural",
+          16
+        ],
+        [
+          "fr-CA-ThierryNeural → fr-CA-JeanNeural",
+          11
+        ],
+        [
+          "fr-CA-SylvieNeural → fr-CA-JeanNeural",
+          8
+        ],
+        [
+          "fr-CA-ThierryNeural → fr-CA-SylvieNeural",
+          3
+        ]
+      ]
+    },
+    {
+      "language": "hrv",
+      "clips": 47,
+      "clipsCausedByRecast": 47,
+      "clipsPreexistingDrift": 0,
+      "clipsUntouchedDivergence": 0,
+      "lineLinks": 47,
+      "courses": [
+        "hrv_for_eng"
+      ],
+      "voiceMoves": [
+        [
+          "hr-HR-GabrijelaNeural → hr-HR-SreckoNeural",
+          24
+        ],
+        [
+          "hr-HR-SreckoNeural → hr-HR-GabrijelaNeural",
+          23
+        ]
+      ]
+    },
+    {
+      "language": "ara",
+      "clips": 44,
+      "clipsCausedByRecast": 44,
+      "clipsPreexistingDrift": 0,
+      "clipsUntouchedDivergence": 0,
+      "lineLinks": 44,
+      "courses": [
+        "ara_for_eng"
+      ],
+      "voiceMoves": [
+        [
+          "ar-EG-ShakirNeural → ar-EG-SalmaNeural",
+          40
+        ],
+        [
+          "ar-EG-SalmaNeural → ar-EG-ShakirNeural",
+          4
+        ]
+      ]
+    },
+    {
+      "language": "jpn",
+      "clips": 44,
+      "clipsCausedByRecast": 44,
+      "clipsPreexistingDrift": 0,
+      "clipsUntouchedDivergence": 0,
+      "lineLinks": 44,
+      "courses": [
+        "jpn_for_eng"
+      ],
+      "voiceMoves": [
+        [
+          "ja-JP-NaokiNeural → ja-JP-MayuNeural",
+          40
+        ],
+        [
+          "ja-JP-MayuNeural → ja-JP-NaokiNeural",
+          4
+        ]
+      ]
+    },
+    {
+      "language": "kor",
+      "clips": 44,
+      "clipsCausedByRecast": 44,
+      "clipsPreexistingDrift": 0,
+      "clipsUntouchedDivergence": 0,
+      "lineLinks": 44,
+      "courses": [
+        "kor_for_eng"
+      ],
+      "voiceMoves": [
+        [
+          "bf9fe5b5f981 → ko-KR-YuJinNeural",
+          40
+        ],
+        [
+          "ko-KR-YuJinNeural → bf9fe5b5f981",
+          4
+        ]
+      ]
+    },
+    {
+      "language": "spa_mx",
+      "clips": 44,
+      "clipsCausedByRecast": 44,
+      "clipsPreexistingDrift": 0,
+      "clipsUntouchedDivergence": 0,
+      "lineLinks": 44,
+      "courses": [
+        "spa_mx_for_eng"
+      ],
+      "voiceMoves": [
+        [
+          "es-MX-LucianoNeural → es-MX-CarlotaNeural",
+          40
+        ],
+        [
+          "es-MX-CarlotaNeural → es-MX-LucianoNeural",
+          4
+        ]
+      ]
+    },
+    {
+      "language": "swe",
+      "clips": 44,
+      "clipsCausedByRecast": 44,
+      "clipsPreexistingDrift": 0,
+      "clipsUntouchedDivergence": 0,
+      "lineLinks": 44,
+      "courses": [
+        "swe_for_eng"
+      ],
+      "voiceMoves": [
+        [
+          "4c7f16ff → 3b312632",
+          40
+        ],
+        [
+          "3b312632 → 4c7f16ff",
+          4
+        ]
+      ]
+    },
+    {
+      "language": "por_br",
+      "clips": 36,
+      "clipsCausedByRecast": 29,
+      "clipsPreexistingDrift": 7,
+      "clipsUntouchedDivergence": 0,
+      "lineLinks": 36,
+      "courses": [
+        "por_br_for_eng"
+      ],
+      "voiceMoves": [
+        [
+          "pt-BR-JulioNeural → ara",
+          25
+        ],
+        [
+          "ara → pt-BR-JulioNeural",
+          11
+        ]
+      ]
+    },
+    {
+      "language": "por",
+      "clips": 36,
+      "clipsCausedByRecast": 28,
+      "clipsPreexistingDrift": 8,
+      "clipsUntouchedDivergence": 0,
+      "lineLinks": 36,
+      "courses": [
+        "por_for_eng"
+      ],
+      "voiceMoves": [
+        [
+          "rex → eve",
+          24
+        ],
+        [
+          "eve → rex",
+          12
+        ]
+      ]
+    },
+    {
+      "language": "ara_sy",
+      "clips": 34,
+      "clipsCausedByRecast": 29,
+      "clipsPreexistingDrift": 5,
+      "clipsUntouchedDivergence": 0,
+      "lineLinks": 34,
+      "courses": [
+        "ara_sy_for_eng"
+      ],
+      "voiceMoves": [
+        [
+          "ar-SY-LaithNeural → ar-SY-AmanyNeural",
+          29
+        ],
+        [
+          "ar-SY-AmanyNeural → ar-SY-LaithNeural",
+          5
+        ]
+      ]
+    },
+    {
+      "language": "deu",
+      "clips": 34,
+      "clipsCausedByRecast": 28,
+      "clipsPreexistingDrift": 6,
+      "clipsUntouchedDivergence": 0,
+      "lineLinks": 34,
+      "courses": [
+        "deu_for_eng"
+      ],
+      "voiceMoves": [
+        [
+          "41321eb41295 → 3a7889066fa2",
+          24
+        ],
+        [
+          "3a7889066fa2 → 41321eb41295",
+          10
+        ]
+      ]
+    },
+    {
+      "language": "ara_eg",
+      "clips": 30,
+      "clipsCausedByRecast": 24,
+      "clipsPreexistingDrift": 6,
+      "clipsUntouchedDivergence": 0,
+      "lineLinks": 30,
+      "courses": [
+        "ara_eg_for_eng"
+      ],
+      "voiceMoves": [
+        [
+          "rex → eve",
+          20
+        ],
+        [
+          "eve → rex",
+          10
+        ]
+      ]
+    },
+    {
+      "language": "deu_at",
+      "clips": 29,
+      "clipsCausedByRecast": 29,
+      "clipsPreexistingDrift": 0,
+      "clipsUntouchedDivergence": 0,
+      "lineLinks": 29,
+      "courses": [
+        "deu_at_for_eng"
+      ],
+      "voiceMoves": [
+        [
+          "e1fc5a89 → 44c91d64",
+          25
+        ],
+        [
+          "44c91d64 → e1fc5a89",
+          4
+        ]
+      ]
+    },
+    {
+      "language": "ita",
+      "clips": 29,
+      "clipsCausedByRecast": 11,
+      "clipsPreexistingDrift": 18,
+      "clipsUntouchedDivergence": 0,
+      "lineLinks": 29,
+      "courses": [
+        "ita_for_eng"
+      ],
+      "voiceMoves": [
+        [
+          "x7avnu1k → ara",
+          18
+        ],
+        [
+          "ara → x7avnu1k",
+          11
+        ]
+      ]
+    },
+    {
+      "language": "zho",
+      "clips": 26,
+      "clipsCausedByRecast": 14,
+      "clipsPreexistingDrift": 12,
+      "clipsUntouchedDivergence": 0,
+      "lineLinks": 26,
+      "courses": [
+        "zho_for_eng"
+      ],
+      "voiceMoves": [
+        [
+          "33g9t0jl → jpi39icg",
+          16
+        ],
+        [
+          "jpi39icg → 33g9t0jl",
+          10
+        ]
+      ]
+    },
+    {
+      "language": "fra",
+      "clips": 25,
+      "clipsCausedByRecast": 14,
+      "clipsPreexistingDrift": 11,
+      "clipsUntouchedDivergence": 0,
+      "lineLinks": 25,
+      "courses": [
+        "fra_for_eng"
+      ],
+      "voiceMoves": [
+        [
+          "69smp8rm → 0p0rt7o1",
+          14
+        ],
+        [
+          "0p0rt7o1 → 69smp8rm",
+          11
+        ]
+      ]
+    },
+    {
+      "language": "ron",
+      "clips": 25,
+      "clipsCausedByRecast": 18,
+      "clipsPreexistingDrift": 7,
+      "clipsUntouchedDivergence": 0,
+      "lineLinks": 25,
+      "courses": [
+        "ron_for_eng"
+      ],
+      "voiceMoves": [
+        [
+          "ro-RO-EmilNeural → ro-RO-AlinaNeural",
+          14
+        ],
+        [
+          "ro-RO-AlinaNeural → ro-RO-EmilNeural",
+          11
+        ]
+      ]
+    },
+    {
+      "language": "eus",
+      "clips": 14,
+      "clipsCausedByRecast": 14,
+      "clipsPreexistingDrift": 0,
+      "clipsUntouchedDivergence": 0,
+      "lineLinks": 14,
+      "courses": [
+        "eus_for_eng"
+      ],
+      "voiceMoves": [
+        [
+          "eu-ES-AnderNeural → eu-ES-AinhoaNeural",
+          7
+        ],
+        [
+          "eu-ES-AinhoaNeural → eu-ES-AnderNeural",
+          7
+        ]
+      ]
+    }
+  ],
+  "linesByCourse": {
+    "ara_eg_for_eng": 231,
+    "ara_for_eng": 231,
+    "ara_sy_for_eng": 232,
+    "cym_s_for_eng": 231,
+    "deu_at_for_eng": 231,
+    "deu_for_eng": 231,
+    "eus_for_eng": 231,
+    "fin_for_eng": 232,
+    "fra_ca_for_eng": 232,
+    "fra_for_eng": 231,
+    "hrv_for_eng": 231,
+    "ita_for_eng": 231,
+    "jpn_for_eng": 231,
+    "kor_for_eng": 231,
+    "por_br_for_eng": 231,
+    "por_for_eng": 231,
+    "ron_for_eng": 231,
+    "spa_for_eng": 231,
+    "spa_mx_for_eng": 231,
+    "swe_for_eng": 231,
+    "zho_for_eng": 231
+  }
+}

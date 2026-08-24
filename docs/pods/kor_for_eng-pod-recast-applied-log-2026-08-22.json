@@ -1,0 +1,1106 @@
+{
+  "mode": "applied",
+  "courses": [
+    "kor_for_eng"
+  ],
+  "results": [
+    {
+      "course": "kor_for_eng",
+      "pods": [
+        {
+          "pod_id": "kor_for_eng:pod-0-unrecorded",
+          "slug": "pod-0-unrecorded",
+          "sentences": 231,
+          "speakers_before": 22,
+          "speakers_after": 22,
+          "dropped_speakers": [],
+          "distinct_before": {
+            "target": 6,
+            "known": 2
+          },
+          "distinct_after": {
+            "target": 2,
+            "known": 2
+          },
+          "distinct_after_ids": {
+            "target": [
+              "ko-KR-YuJinNeural",
+              "bf9fe5b5f981"
+            ],
+            "known": [
+              "bedd6226",
+              "gfzdpspr5fdp"
+            ]
+          },
+          "remapped_to_exact_pool": [],
+          "locale_warnings": [],
+          "changes": [
+            {
+              "speaker": "Learner",
+              "track": "target",
+              "gender": "f",
+              "before": {
+                "voice_id": "23be42535a45",
+                "provider": "xai",
+                "locale": "ko",
+                "name": "Ji-yeon"
+              },
+              "after": {
+                "voice_id": "ko-KR-YuJinNeural",
+                "provider": "azure",
+                "locale": "ko-KR",
+                "name": "YuJin"
+              }
+            },
+            {
+              "speaker": "Passenger",
+              "track": "target",
+              "gender": "n",
+              "before": {
+                "voice_id": "23be42535a45",
+                "provider": "xai",
+                "locale": "ko",
+                "name": "Ji-yeon"
+              },
+              "after": {
+                "voice_id": "bf9fe5b5f981",
+                "provider": "xai",
+                "locale": "ko",
+                "name": "Jun-seo"
+              }
+            },
+            {
+              "speaker": "Barista",
+              "track": "target",
+              "gender": "f",
+              "before": {
+                "voice_id": "eve",
+                "provider": "xai",
+                "locale": "ko",
+                "name": "Eve"
+              },
+              "after": {
+                "voice_id": "ko-KR-YuJinNeural",
+                "provider": "azure",
+                "locale": "ko-KR",
+                "name": "YuJin"
+              }
+            },
+            {
+              "speaker": "Sarah",
+              "track": "target",
+              "gender": "f",
+              "before": {
+                "voice_id": "a0401c9101f8",
+                "provider": "xai",
+                "locale": "ko",
+                "name": "Seo-yeon"
+              },
+              "after": {
+                "voice_id": "ko-KR-YuJinNeural",
+                "provider": "azure",
+                "locale": "ko-KR",
+                "name": "YuJin"
+              }
+            },
+            {
+              "speaker": "Receptionist",
+              "track": "target",
+              "gender": "f",
+              "before": {
+                "voice_id": "23be42535a45",
+                "provider": "xai",
+                "locale": "ko",
+                "name": "Ji-yeon"
+              },
+              "after": {
+                "voice_id": "ko-KR-YuJinNeural",
+                "provider": "azure",
+                "locale": "ko-KR",
+                "name": "YuJin"
+              }
+            },
+            {
+              "speaker": "Narrator",
+              "track": "target",
+              "gender": "n",
+              "before": {
+                "voice_id": "a0401c9101f8",
+                "provider": "xai",
+                "locale": "ko",
+                "name": "Seo-yeon"
+              },
+              "after": {
+                "voice_id": "bf9fe5b5f981",
+                "provider": "xai",
+                "locale": "ko",
+                "name": "Jun-seo"
+              }
+            },
+            {
+              "speaker": "Customer 1",
+              "track": "target",
+              "gender": "n",
+              "before": {
+                "voice_id": "23be42535a45",
+                "provider": "xai",
+                "locale": "ko",
+                "name": "Ji-yeon"
+              },
+              "after": {
+                "voice_id": "bf9fe5b5f981",
+                "provider": "xai",
+                "locale": "ko",
+                "name": "Jun-seo"
+              }
+            },
+            {
+              "speaker": "Anna",
+              "track": "target",
+              "gender": "f",
+              "before": {
+                "voice_id": "23be42535a45",
+                "provider": "xai",
+                "locale": "ko",
+                "name": "Ji-yeon"
+              },
+              "after": {
+                "voice_id": "ko-KR-YuJinNeural",
+                "provider": "azure",
+                "locale": "ko-KR",
+                "name": "YuJin"
+              }
+            },
+            {
+              "speaker": "Customer 2",
+              "track": "target",
+              "gender": "n",
+              "before": {
+                "voice_id": "ara",
+                "provider": "xai",
+                "locale": "ko",
+                "name": "Ara"
+              },
+              "after": {
+                "voice_id": "bf9fe5b5f981",
+                "provider": "xai",
+                "locale": "ko",
+                "name": "Jun-seo"
+              }
+            },
+            {
+              "speaker": "Bartender",
+              "track": "target",
+              "gender": "m",
+              "before": {
+                "voice_id": "b5ae17439907",
+                "provider": "xai",
+                "locale": "ko",
+                "name": "Min-jun"
+              },
+              "after": {
+                "voice_id": "bf9fe5b5f981",
+                "provider": "xai",
+                "locale": "ko",
+                "name": "Jun-seo"
+              }
+            },
+            {
+              "speaker": "Customer",
+              "track": "target",
+              "gender": "n",
+              "before": {
+                "voice_id": "23be42535a45",
+                "provider": "xai",
+                "locale": "ko",
+                "name": "Ji-yeon"
+              },
+              "after": {
+                "voice_id": "bf9fe5b5f981",
+                "provider": "xai",
+                "locale": "ko",
+                "name": "Jun-seo"
+              }
+            },
+            {
+              "speaker": "Assistant",
+              "track": "target",
+              "gender": "n",
+              "before": {
+                "voice_id": "ara",
+                "provider": "xai",
+                "locale": "ko",
+                "name": "Ara"
+              },
+              "after": {
+                "voice_id": "bf9fe5b5f981",
+                "provider": "xai",
+                "locale": "ko",
+                "name": "Jun-seo"
+              }
+            },
+            {
+              "speaker": "Tourist",
+              "track": "target",
+              "gender": "m",
+              "before": {
+                "voice_id": "b5ae17439907",
+                "provider": "xai",
+                "locale": "ko",
+                "name": "Min-jun"
+              },
+              "after": {
+                "voice_id": "bf9fe5b5f981",
+                "provider": "xai",
+                "locale": "ko",
+                "name": "Jun-seo"
+              }
+            }
+          ],
+          "before": {
+            "Anna": {
+              "known": {
+                "name": "Olivia",
+                "locale": "en",
+                "provider": "xai",
+                "voice_id": "bedd6226"
+              },
+              "gender": "f",
+              "target": {
+                "name": "Ji-yeon",
+                "locale": "ko",
+                "provider": "xai",
+                "voice_id": "23be42535a45"
+              },
+              "variants": [
+                "Anna"
+              ]
+            },
+            "Guest": {
+              "known": {
+                "name": "Tom",
+                "locale": "en",
+                "provider": "xai",
+                "voice_id": "gfzdpspr5fdp"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Jun-seo",
+                "locale": "ko",
+                "provider": "xai",
+                "voice_id": "bf9fe5b5f981"
+              },
+              "variants": [
+                "Guest"
+              ]
+            },
+            "James": {
+              "known": {
+                "name": "Tom",
+                "locale": "en",
+                "provider": "xai",
+                "voice_id": "gfzdpspr5fdp"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Jun-seo",
+                "locale": "ko",
+                "provider": "xai",
+                "voice_id": "bf9fe5b5f981"
+              },
+              "variants": [
+                "James"
+              ]
+            },
+            "Local": {
+              "known": {
+                "name": "Tom",
+                "locale": "en",
+                "provider": "xai",
+                "voice_id": "gfzdpspr5fdp"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Jun-seo",
+                "locale": "ko",
+                "provider": "xai",
+                "voice_id": "bf9fe5b5f981"
+              },
+              "variants": [
+                "Local"
+              ]
+            },
+            "Sarah": {
+              "known": {
+                "name": "Olivia",
+                "locale": "en",
+                "provider": "xai",
+                "voice_id": "bedd6226"
+              },
+              "gender": "f",
+              "target": {
+                "name": "Seo-yeon",
+                "locale": "ko",
+                "provider": "xai",
+                "voice_id": "a0401c9101f8"
+              },
+              "variants": [
+                "Sarah"
+              ]
+            },
+            "Driver": {
+              "known": {
+                "name": "Tom",
+                "locale": "en",
+                "provider": "xai",
+                "voice_id": "gfzdpspr5fdp"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Jun-seo",
+                "locale": "ko",
+                "provider": "xai",
+                "voice_id": "bf9fe5b5f981"
+              },
+              "variants": [
+                "Driver"
+              ]
+            },
+            "Friend": {
+              "known": {
+                "name": "Tom",
+                "locale": "en",
+                "provider": "xai",
+                "voice_id": "gfzdpspr5fdp"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Jun-seo",
+                "locale": "ko",
+                "provider": "xai",
+                "voice_id": "bf9fe5b5f981"
+              },
+              "variants": [
+                "Friend (7 pm)",
+                "Friend"
+              ]
+            },
+            "Waiter": {
+              "known": {
+                "name": "Tom",
+                "locale": "en",
+                "provider": "xai",
+                "voice_id": "gfzdpspr5fdp"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Jun-seo",
+                "locale": "ko",
+                "provider": "xai",
+                "voice_id": "bf9fe5b5f981"
+              },
+              "variants": [
+                "Waiter"
+              ]
+            },
+            "Barista": {
+              "known": {
+                "name": "Olivia",
+                "locale": "en",
+                "provider": "xai",
+                "voice_id": "bedd6226"
+              },
+              "gender": "f",
+              "target": {
+                "name": "Eve",
+                "locale": "ko",
+                "provider": "xai",
+                "voice_id": "eve"
+              },
+              "variants": [
+                "Barista (3 pm)",
+                "Barista"
+              ]
+            },
+            "Learner": {
+              "known": {
+                "name": "Olivia",
+                "locale": "en",
+                "provider": "xai",
+                "voice_id": "bedd6226"
+              },
+              "gender": "f",
+              "target": {
+                "name": "Ji-yeon",
+                "locale": "ko",
+                "provider": "xai",
+                "voice_id": "23be42535a45"
+              },
+              "variants": [
+                "Learner"
+              ]
+            },
+            "Tourist": {
+              "known": {
+                "name": "Tom",
+                "locale": "en",
+                "provider": "xai",
+                "voice_id": "gfzdpspr5fdp"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Min-jun",
+                "locale": "ko",
+                "provider": "xai",
+                "voice_id": "b5ae17439907"
+              },
+              "variants": [
+                "Tourist"
+              ]
+            },
+            "Customer": {
+              "known": {
+                "name": "Tom",
+                "locale": "en",
+                "provider": "xai",
+                "voice_id": "gfzdpspr5fdp"
+              },
+              "gender": "n",
+              "target": {
+                "name": "Ji-yeon",
+                "locale": "ko",
+                "provider": "xai",
+                "voice_id": "23be42535a45"
+              },
+              "variants": [
+                "Customer"
+              ]
+            },
+            "Narrator": {
+              "known": {
+                "name": "Tom",
+                "locale": "en",
+                "provider": "xai",
+                "voice_id": "gfzdpspr5fdp"
+              },
+              "gender": "n",
+              "target": {
+                "name": "Seo-yeon",
+                "locale": "ko",
+                "provider": "xai",
+                "voice_id": "a0401c9101f8"
+              },
+              "variants": [
+                "Narrator"
+              ]
+            },
+            "_default": {
+              "known": {
+                "name": "Tom",
+                "locale": "en",
+                "provider": "xai",
+                "voice_id": "gfzdpspr5fdp"
+              },
+              "gender": "n",
+              "target": {
+                "name": "Jun-seo",
+                "locale": "ko",
+                "provider": "xai",
+                "voice_id": "bf9fe5b5f981"
+              }
+            },
+            "Assistant": {
+              "known": {
+                "name": "Tom",
+                "locale": "en",
+                "provider": "xai",
+                "voice_id": "gfzdpspr5fdp"
+              },
+              "gender": "n",
+              "target": {
+                "name": "Ara",
+                "locale": "ko",
+                "provider": "xai",
+                "voice_id": "ara"
+              },
+              "variants": [
+                "Assistant"
+              ]
+            },
+            "Bartender": {
+              "known": {
+                "name": "Tom",
+                "locale": "en",
+                "provider": "xai",
+                "voice_id": "gfzdpspr5fdp"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Min-jun",
+                "locale": "ko",
+                "provider": "xai",
+                "voice_id": "b5ae17439907"
+              },
+              "variants": [
+                "Bartender"
+              ]
+            },
+            "Neighbour": {
+              "known": {
+                "name": "Tom",
+                "locale": "en",
+                "provider": "xai",
+                "voice_id": "gfzdpspr5fdp"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Jun-seo",
+                "locale": "ko",
+                "provider": "xai",
+                "voice_id": "bf9fe5b5f981"
+              },
+              "variants": [
+                "Neighbour (8 am)",
+                "Neighbour",
+                "Neighbour (10:30 pm)"
+              ]
+            },
+            "Passenger": {
+              "known": {
+                "name": "Tom",
+                "locale": "en",
+                "provider": "xai",
+                "voice_id": "gfzdpspr5fdp"
+              },
+              "gender": "n",
+              "target": {
+                "name": "Ji-yeon",
+                "locale": "ko",
+                "provider": "xai",
+                "voice_id": "23be42535a45"
+              },
+              "variants": [
+                "Passenger"
+              ]
+            },
+            "Customer 1": {
+              "known": {
+                "name": "Tom",
+                "locale": "en",
+                "provider": "xai",
+                "voice_id": "gfzdpspr5fdp"
+              },
+              "gender": "n",
+              "target": {
+                "name": "Ji-yeon",
+                "locale": "ko",
+                "provider": "xai",
+                "voice_id": "23be42535a45"
+              },
+              "variants": [
+                "Customer 1"
+              ]
+            },
+            "Customer 2": {
+              "known": {
+                "name": "Tom",
+                "locale": "en",
+                "provider": "xai",
+                "voice_id": "gfzdpspr5fdp"
+              },
+              "gender": "n",
+              "target": {
+                "name": "Ara",
+                "locale": "ko",
+                "provider": "xai",
+                "voice_id": "ara"
+              },
+              "variants": [
+                "Customer 2"
+              ]
+            },
+            "Customer 3": {
+              "known": {
+                "name": "Tom",
+                "locale": "en",
+                "provider": "xai",
+                "voice_id": "gfzdpspr5fdp"
+              },
+              "gender": "n",
+              "target": {
+                "name": "Jun-seo",
+                "locale": "ko",
+                "provider": "xai",
+                "voice_id": "bf9fe5b5f981"
+              },
+              "variants": [
+                "Customer 3"
+              ]
+            },
+            "Pharmacist": {
+              "known": {
+                "name": "Tom",
+                "locale": "en",
+                "provider": "xai",
+                "voice_id": "gfzdpspr5fdp"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Jun-seo",
+                "locale": "ko",
+                "provider": "xai",
+                "voice_id": "bf9fe5b5f981"
+              },
+              "variants": [
+                "Pharmacist"
+              ]
+            },
+            "Receptionist": {
+              "known": {
+                "name": "Olivia",
+                "locale": "en",
+                "provider": "xai",
+                "voice_id": "bedd6226"
+              },
+              "gender": "f",
+              "target": {
+                "name": "Ji-yeon",
+                "locale": "ko",
+                "provider": "xai",
+                "voice_id": "23be42535a45"
+              },
+              "variants": [
+                "Receptionist"
+              ]
+            }
+          },
+          "after": {
+            "Learner": {
+              "gender": "f",
+              "variants": [
+                "Learner"
+              ],
+              "target": {
+                "provider": "azure",
+                "voice_id": "ko-KR-YuJinNeural",
+                "name": "YuJin",
+                "locale": "ko-KR"
+              },
+              "known": {
+                "provider": "xai",
+                "voice_id": "bedd6226",
+                "name": "Olivia",
+                "locale": "en"
+              }
+            },
+            "Passenger": {
+              "gender": "n",
+              "variants": [
+                "Passenger"
+              ],
+              "target": {
+                "provider": "xai",
+                "voice_id": "bf9fe5b5f981",
+                "name": "Jun-seo",
+                "locale": "ko"
+              },
+              "known": {
+                "provider": "xai",
+                "voice_id": "gfzdpspr5fdp",
+                "name": "Tom",
+                "locale": "en"
+              }
+            },
+            "Barista": {
+              "gender": "f",
+              "variants": [
+                "Barista",
+                "Barista (3 pm)"
+              ],
+              "target": {
+                "provider": "azure",
+                "voice_id": "ko-KR-YuJinNeural",
+                "name": "YuJin",
+                "locale": "ko-KR"
+              },
+              "known": {
+                "provider": "xai",
+                "voice_id": "bedd6226",
+                "name": "Olivia",
+                "locale": "en"
+              }
+            },
+            "Sarah": {
+              "gender": "f",
+              "variants": [
+                "Sarah"
+              ],
+              "target": {
+                "provider": "azure",
+                "voice_id": "ko-KR-YuJinNeural",
+                "name": "YuJin",
+                "locale": "ko-KR"
+              },
+              "known": {
+                "provider": "xai",
+                "voice_id": "bedd6226",
+                "name": "Olivia",
+                "locale": "en"
+              }
+            },
+            "James": {
+              "gender": "m",
+              "variants": [
+                "James"
+              ],
+              "target": {
+                "provider": "xai",
+                "voice_id": "bf9fe5b5f981",
+                "name": "Jun-seo",
+                "locale": "ko"
+              },
+              "known": {
+                "provider": "xai",
+                "voice_id": "gfzdpspr5fdp",
+                "name": "Tom",
+                "locale": "en"
+              }
+            },
+            "Receptionist": {
+              "gender": "f",
+              "variants": [
+                "Receptionist"
+              ],
+              "target": {
+                "provider": "azure",
+                "voice_id": "ko-KR-YuJinNeural",
+                "name": "YuJin",
+                "locale": "ko-KR"
+              },
+              "known": {
+                "provider": "xai",
+                "voice_id": "bedd6226",
+                "name": "Olivia",
+                "locale": "en"
+              }
+            },
+            "Narrator": {
+              "gender": "n",
+              "variants": [
+                "Narrator"
+              ],
+              "target": {
+                "provider": "xai",
+                "voice_id": "bf9fe5b5f981",
+                "name": "Jun-seo",
+                "locale": "ko"
+              },
+              "known": {
+                "provider": "xai",
+                "voice_id": "gfzdpspr5fdp",
+                "name": "Tom",
+                "locale": "en"
+              }
+            },
+            "Friend": {
+              "gender": "m",
+              "variants": [
+                "Friend",
+                "Friend (7 pm)"
+              ],
+              "target": {
+                "provider": "xai",
+                "voice_id": "bf9fe5b5f981",
+                "name": "Jun-seo",
+                "locale": "ko"
+              },
+              "known": {
+                "provider": "xai",
+                "voice_id": "gfzdpspr5fdp",
+                "name": "Tom",
+                "locale": "en"
+              }
+            },
+            "Neighbour": {
+              "gender": "m",
+              "variants": [
+                "Neighbour (10:30 pm)",
+                "Neighbour (8 am)",
+                "Neighbour"
+              ],
+              "target": {
+                "provider": "xai",
+                "voice_id": "bf9fe5b5f981",
+                "name": "Jun-seo",
+                "locale": "ko"
+              },
+              "known": {
+                "provider": "xai",
+                "voice_id": "gfzdpspr5fdp",
+                "name": "Tom",
+                "locale": "en"
+              }
+            },
+            "Customer 1": {
+              "gender": "n",
+              "variants": [
+                "Customer 1"
+              ],
+              "target": {
+                "provider": "xai",
+                "voice_id": "bf9fe5b5f981",
+                "name": "Jun-seo",
+                "locale": "ko"
+              },
+              "known": {
+                "provider": "xai",
+                "voice_id": "gfzdpspr5fdp",
+                "name": "Tom",
+                "locale": "en"
+              }
+            },
+            "Driver": {
+              "gender": "m",
+              "variants": [
+                "Driver"
+              ],
+              "target": {
+                "provider": "xai",
+                "voice_id": "bf9fe5b5f981",
+                "name": "Jun-seo",
+                "locale": "ko"
+              },
+              "known": {
+                "provider": "xai",
+                "voice_id": "gfzdpspr5fdp",
+                "name": "Tom",
+                "locale": "en"
+              }
+            },
+            "Customer 3": {
+              "gender": "n",
+              "variants": [
+                "Customer 3"
+              ],
+              "target": {
+                "provider": "xai",
+                "voice_id": "bf9fe5b5f981",
+                "name": "Jun-seo",
+                "locale": "ko"
+              },
+              "known": {
+                "provider": "xai",
+                "voice_id": "gfzdpspr5fdp",
+                "name": "Tom",
+                "locale": "en"
+              }
+            },
+            "Guest": {
+              "gender": "m",
+              "variants": [
+                "Guest"
+              ],
+              "target": {
+                "provider": "xai",
+                "voice_id": "bf9fe5b5f981",
+                "name": "Jun-seo",
+                "locale": "ko"
+              },
+              "known": {
+                "provider": "xai",
+                "voice_id": "gfzdpspr5fdp",
+                "name": "Tom",
+                "locale": "en"
+              }
+            },
+            "Anna": {
+              "gender": "f",
+              "variants": [
+                "Anna"
+              ],
+              "target": {
+                "provider": "azure",
+                "voice_id": "ko-KR-YuJinNeural",
+                "name": "YuJin",
+                "locale": "ko-KR"
+              },
+              "known": {
+                "provider": "xai",
+                "voice_id": "bedd6226",
+                "name": "Olivia",
+                "locale": "en"
+              }
+            },
+            "Customer 2": {
+              "gender": "n",
+              "variants": [
+                "Customer 2"
+              ],
+              "target": {
+                "provider": "xai",
+                "voice_id": "bf9fe5b5f981",
+                "name": "Jun-seo",
+                "locale": "ko"
+              },
+              "known": {
+                "provider": "xai",
+                "voice_id": "gfzdpspr5fdp",
+                "name": "Tom",
+                "locale": "en"
+              }
+            },
+            "Bartender": {
+              "gender": "m",
+              "variants": [
+                "Bartender"
+              ],
+              "target": {
+                "provider": "xai",
+                "voice_id": "bf9fe5b5f981",
+                "name": "Jun-seo",
+                "locale": "ko"
+              },
+              "known": {
+                "provider": "xai",
+                "voice_id": "gfzdpspr5fdp",
+                "name": "Tom",
+                "locale": "en"
+              }
+            },
+            "Waiter": {
+              "gender": "m",
+              "variants": [
+                "Waiter"
+              ],
+              "target": {
+                "provider": "xai",
+                "voice_id": "bf9fe5b5f981",
+                "name": "Jun-seo",
+                "locale": "ko"
+              },
+              "known": {
+                "provider": "xai",
+                "voice_id": "gfzdpspr5fdp",
+                "name": "Tom",
+                "locale": "en"
+              }
+            },
+            "Customer": {
+              "gender": "n",
+              "variants": [
+                "Customer"
+              ],
+              "target": {
+                "provider": "xai",
+                "voice_id": "bf9fe5b5f981",
+                "name": "Jun-seo",
+                "locale": "ko"
+              },
+              "known": {
+                "provider": "xai",
+                "voice_id": "gfzdpspr5fdp",
+                "name": "Tom",
+                "locale": "en"
+              }
+            },
+            "Assistant": {
+              "gender": "n",
+              "variants": [
+                "Assistant"
+              ],
+              "target": {
+                "provider": "xai",
+                "voice_id": "bf9fe5b5f981",
+                "name": "Jun-seo",
+                "locale": "ko"
+              },
+              "known": {
+                "provider": "xai",
+                "voice_id": "gfzdpspr5fdp",
+                "name": "Tom",
+                "locale": "en"
+              }
+            },
+            "Pharmacist": {
+              "gender": "m",
+              "variants": [
+                "Pharmacist"
+              ],
+              "target": {
+                "provider": "xai",
+                "voice_id": "bf9fe5b5f981",
+                "name": "Jun-seo",
+                "locale": "ko"
+              },
+              "known": {
+                "provider": "xai",
+                "voice_id": "gfzdpspr5fdp",
+                "name": "Tom",
+                "locale": "en"
+              }
+            },
+            "Tourist": {
+              "gender": "m",
+              "variants": [
+                "Tourist"
+              ],
+              "target": {
+                "provider": "xai",
+                "voice_id": "bf9fe5b5f981",
+                "name": "Jun-seo",
+                "locale": "ko"
+              },
+              "known": {
+                "provider": "xai",
+                "voice_id": "gfzdpspr5fdp",
+                "name": "Tom",
+                "locale": "en"
+              }
+            },
+            "Local": {
+              "gender": "m",
+              "variants": [
+                "Local"
+              ],
+              "target": {
+                "provider": "xai",
+                "voice_id": "bf9fe5b5f981",
+                "name": "Jun-seo",
+                "locale": "ko"
+              },
+              "known": {
+                "provider": "xai",
+                "voice_id": "gfzdpspr5fdp",
+                "name": "Tom",
+                "locale": "en"
+              }
+            },
+            "_default": {
+              "gender": "n",
+              "target": {
+                "provider": "xai",
+                "voice_id": "bf9fe5b5f981",
+                "name": "Jun-seo",
+                "locale": "ko"
+              },
+              "known": {
+                "provider": "xai",
+                "voice_id": "gfzdpspr5fdp",
+                "name": "Tom",
+                "locale": "en"
+              }
+            }
+          },
+          "applied": true
+        }
+      ],
+      "target_lang": "kor",
+      "known_lang": "eng",
+      "voice_pool_key": null,
+      "pool_keys": {
+        "target": "kor",
+        "known": "eng"
+      }
+    }
+  ]
+}

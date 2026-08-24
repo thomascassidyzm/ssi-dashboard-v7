@@ -1,0 +1,121 @@
+{
+  "course": "hye_for_eng",
+  "from": "pod-0",
+  "to": "pod-0-unrecorded",
+  "applied": false,
+  "bound": "corresponding scene, and <= 8 sentence positions within it",
+  "old_count": 142,
+  "new_count": 232,
+  "survivors": 94,
+  "ambiguous_texts": 0,
+  "tally": {
+    "drop": 4,
+    "carry": 4
+  },
+  "exposures_by_action": {
+    "drop": 5,
+    "carry": 6
+  },
+  "miscredits_prevented": 4,
+  "drop_reasons": {
+    "text_absent_from_new_canon": 4
+  },
+  "actions": [
+    {
+      "learner_id": "dd4d61e5-a442-4c2b-8b78-2f51d37f5411",
+      "course_code": "hye_for_eng",
+      "sentence_id": "hye_for_eng:pod-0:SC01-S001",
+      "exposures": 2,
+      "updated_at": "2026-08-06T20:15:04.195Z",
+      "action": "drop",
+      "reason": "text_absent_from_new_canon",
+      "heard": "Good morning, Sarah.",
+      "would_have_credited": null,
+      "miscredit_avoided": "Good morning, Sarah!"
+    },
+    {
+      "learner_id": "dd4d61e5-a442-4c2b-8b78-2f51d37f5411",
+      "course_code": "hye_for_eng",
+      "sentence_id": "hye_for_eng:pod-0:SC01-S002:s0",
+      "exposures": 2,
+      "updated_at": "2026-08-06T20:15:04.195Z",
+      "action": "carry",
+      "to": "hye_for_eng:pod-0-unrecorded:SC01-S002:s0",
+      "heard": "Good morning. How are you?",
+      "moved": "SC1-S2 -> SC1-S2",
+      "miscredit_avoided": null
+    },
+    {
+      "learner_id": "dd4d61e5-a442-4c2b-8b78-2f51d37f5411",
+      "course_code": "hye_for_eng",
+      "sentence_id": "hye_for_eng:pod-0:SC01-S002:s1",
+      "exposures": 2,
+      "updated_at": "2026-08-06T20:15:04.195Z",
+      "action": "carry",
+      "to": "hye_for_eng:pod-0-unrecorded:SC01-S002:s1",
+      "heard": "Good morning. How are you?",
+      "moved": "SC1-S2 -> SC1-S2",
+      "miscredit_avoided": null
+    },
+    {
+      "learner_id": "dd4d61e5-a442-4c2b-8b78-2f51d37f5411",
+      "course_code": "hye_for_eng",
+      "sentence_id": "hye_for_eng:pod-0:SC01-S003:s0",
+      "exposures": 1,
+      "updated_at": "2026-08-06T20:15:04.195Z",
+      "action": "carry",
+      "to": "hye_for_eng:pod-0-unrecorded:SC01-S003:s0",
+      "heard": "I'm very well, thank you. Are you going to work?",
+      "moved": "SC1-S3 -> SC1-S3",
+      "miscredit_avoided": null
+    },
+    {
+      "learner_id": "dd4d61e5-a442-4c2b-8b78-2f51d37f5411",
+      "course_code": "hye_for_eng",
+      "sentence_id": "hye_for_eng:pod-0:SC01-S003:s1",
+      "exposures": 1,
+      "updated_at": "2026-08-06T20:15:04.195Z",
+      "action": "carry",
+      "to": "hye_for_eng:pod-0-unrecorded:SC01-S003:s1",
+      "heard": "I'm very well, thank you. Are you going to work?",
+      "moved": "SC1-S3 -> SC1-S3",
+      "miscredit_avoided": null
+    },
+    {
+      "learner_id": "dd4d61e5-a442-4c2b-8b78-2f51d37f5411",
+      "course_code": "hye_for_eng",
+      "sentence_id": "hye_for_eng:pod-0:SC01-S004:s0",
+      "exposures": 1,
+      "updated_at": "2026-08-06T20:15:04.195Z",
+      "action": "drop",
+      "reason": "text_absent_from_new_canon",
+      "heard": "Yes, I have a very busy day today. I hope you have a good day. See you later.",
+      "would_have_credited": null,
+      "miscredit_avoided": "Yes, I've got a busy day today. I hope you have a good day. See you later."
+    },
+    {
+      "learner_id": "dd4d61e5-a442-4c2b-8b78-2f51d37f5411",
+      "course_code": "hye_for_eng",
+      "sentence_id": "hye_for_eng:pod-0:SC01-S004:s1",
+      "exposures": 1,
+      "updated_at": "2026-08-06T20:15:04.195Z",
+      "action": "drop",
+      "reason": "text_absent_from_new_canon",
+      "heard": "Yes, I have a very busy day today. I hope you have a good day. See you later.",
+      "would_have_credited": null,
+      "miscredit_avoided": "Yes, I've got a busy day today. I hope you have a good day. See you later."
+    },
+    {
+      "learner_id": "dd4d61e5-a442-4c2b-8b78-2f51d37f5411",
+      "course_code": "hye_for_eng",
+      "sentence_id": "hye_for_eng:pod-0:SC01-S004:s2",
+      "exposures": 1,
+      "updated_at": "2026-08-06T20:15:04.195Z",
+      "action": "drop",
+      "reason": "text_absent_from_new_canon",
+      "heard": "Yes, I have a very busy day today. I hope you have a good day. See you later.",
+      "would_have_credited": null,
+      "miscredit_avoided": "Yes, I've got a busy day today. I hope you have a good day. See you later."
+    }
+  ]
+}

@@ -1,0 +1,1124 @@
+{
+  "pod": "cym_n_for_eng:pod-0",
+  "course": "cym_n_for_eng",
+  "mode": "dryrun",
+  "podVisibility": "held",
+  "rows": 231,
+  "baseline_129_metric": {
+    "pairs": 12,
+    "turns": 45
+  },
+  "proposed_exchange_metric": {
+    "pairs": 0,
+    "turns": 0
+  },
+  "proposed_raw_label_adjacency_metric": {
+    "pairs": 5,
+    "turns": 10
+  },
+  "nonExchangePairsDropped": [
+    {
+      "tag": "7:6->7:7",
+      "a": "Cafe Customer 1",
+      "b": "Cafe Customer 2"
+    },
+    {
+      "tag": "8:4->8:5",
+      "a": "Bar Customer 1",
+      "b": "Bar Customer 2"
+    },
+    {
+      "tag": "8:5->8:6",
+      "a": "Bar Customer 2",
+      "b": "Bar Customer 3"
+    },
+    {
+      "tag": "8:8->8:9",
+      "a": "Bar Customer 3",
+      "b": "Bar Customer 1"
+    },
+    {
+      "tag": "8:9->8:10",
+      "a": "Bar Customer 1",
+      "b": "Bar Customer 2"
+    },
+    {
+      "tag": "8:14->8:15",
+      "a": "Bar Customer 1",
+      "b": "Bar Customer 2"
+    },
+    {
+      "tag": "9:4->9:5",
+      "a": "Diner 2",
+      "b": "Diner 1"
+    },
+    {
+      "tag": "9:9->9:10",
+      "a": "Diner 1",
+      "b": "Diner 2"
+    },
+    {
+      "tag": "9:12->9:13",
+      "a": "Diner 1",
+      "b": "Diner 2"
+    },
+    {
+      "tag": "9:16->9:17",
+      "a": "Diner 1",
+      "b": "Diner 2"
+    }
+  ],
+  "sameVoiceConsecutiveResidue": [
+    {
+      "tag": "7:6->7:7",
+      "a": "Cafe Customer 1",
+      "b": "Cafe Customer 2",
+      "voice": "human_aran_cym_n",
+      "exchange": false
+    },
+    {
+      "tag": "8:4->8:5",
+      "a": "Bar Customer 1",
+      "b": "Bar Customer 2",
+      "voice": "human_catrinlliar_cym_n",
+      "exchange": false
+    },
+    {
+      "tag": "8:5->8:6",
+      "a": "Bar Customer 2",
+      "b": "Bar Customer 3",
+      "voice": "human_catrinlliar_cym_n",
+      "exchange": false
+    },
+    {
+      "tag": "8:8->8:9",
+      "a": "Bar Customer 3",
+      "b": "Bar Customer 1",
+      "voice": "human_catrinlliar_cym_n",
+      "exchange": false
+    },
+    {
+      "tag": "8:9->8:10",
+      "a": "Bar Customer 1",
+      "b": "Bar Customer 2",
+      "voice": "human_catrinlliar_cym_n",
+      "exchange": false
+    },
+    {
+      "tag": "8:14->8:15",
+      "a": "Bar Customer 1",
+      "b": "Bar Customer 2",
+      "voice": "human_catrinlliar_cym_n",
+      "exchange": false
+    },
+    {
+      "tag": "9:4->9:5",
+      "a": "Diner 2",
+      "b": "Diner 1",
+      "voice": "human_catrinlliar_cym_n",
+      "exchange": false
+    },
+    {
+      "tag": "9:9->9:10",
+      "a": "Diner 1",
+      "b": "Diner 2",
+      "voice": "human_catrinlliar_cym_n",
+      "exchange": false
+    },
+    {
+      "tag": "9:12->9:13",
+      "a": "Diner 1",
+      "b": "Diner 2",
+      "voice": "human_catrinlliar_cym_n",
+      "exchange": false
+    },
+    {
+      "tag": "9:16->9:17",
+      "a": "Diner 1",
+      "b": "Diner 2",
+      "voice": "human_catrinlliar_cym_n",
+      "exchange": false
+    }
+  ],
+  "relabelCount": 34,
+  "relabels": [
+    {
+      "id": "cym_n_for_eng:pod-0:SC07-S001",
+      "scene": 7,
+      "sentence": 1,
+      "from": "Barista",
+      "to": "Cafe Barista"
+    },
+    {
+      "id": "cym_n_for_eng:pod-0:SC07-S002",
+      "scene": 7,
+      "sentence": 2,
+      "from": "Customer 1",
+      "to": "Cafe Customer 1"
+    },
+    {
+      "id": "cym_n_for_eng:pod-0:SC07-S003",
+      "scene": 7,
+      "sentence": 3,
+      "from": "Barista",
+      "to": "Cafe Barista"
+    },
+    {
+      "id": "cym_n_for_eng:pod-0:SC07-S004",
+      "scene": 7,
+      "sentence": 4,
+      "from": "Customer 1",
+      "to": "Cafe Customer 1"
+    },
+    {
+      "id": "cym_n_for_eng:pod-0:SC07-S005",
+      "scene": 7,
+      "sentence": 5,
+      "from": "Barista",
+      "to": "Cafe Barista"
+    },
+    {
+      "id": "cym_n_for_eng:pod-0:SC07-S006",
+      "scene": 7,
+      "sentence": 6,
+      "from": "Customer 1",
+      "to": "Cafe Customer 1"
+    },
+    {
+      "id": "cym_n_for_eng:pod-0:SC07-S007",
+      "scene": 7,
+      "sentence": 7,
+      "from": "Customer 2",
+      "to": "Cafe Customer 2"
+    },
+    {
+      "id": "cym_n_for_eng:pod-0:SC07-S008",
+      "scene": 7,
+      "sentence": 8,
+      "from": "Barista",
+      "to": "Cafe Barista"
+    },
+    {
+      "id": "cym_n_for_eng:pod-0:SC07-S009",
+      "scene": 7,
+      "sentence": 9,
+      "from": "Customer 2",
+      "to": "Cafe Customer 2"
+    },
+    {
+      "id": "cym_n_for_eng:pod-0:SC07-S010",
+      "scene": 7,
+      "sentence": 10,
+      "from": "Barista",
+      "to": "Cafe Barista"
+    },
+    {
+      "id": "cym_n_for_eng:pod-0:SC07-S011",
+      "scene": 7,
+      "sentence": 11,
+      "from": "Customer 2",
+      "to": "Cafe Customer 2"
+    },
+    {
+      "id": "cym_n_for_eng:pod-0:SC07-S012",
+      "scene": 7,
+      "sentence": 12,
+      "from": "Barista",
+      "to": "Cafe Barista"
+    },
+    {
+      "id": "cym_n_for_eng:pod-0:SC07-S013",
+      "scene": 7,
+      "sentence": 13,
+      "from": "Customer 3",
+      "to": "Cafe Customer 3"
+    },
+    {
+      "id": "cym_n_for_eng:pod-0:SC07-S014",
+      "scene": 7,
+      "sentence": 14,
+      "from": "Barista",
+      "to": "Cafe Barista"
+    },
+    {
+      "id": "cym_n_for_eng:pod-0:SC08-S002",
+      "scene": 8,
+      "sentence": 2,
+      "from": "Customer 1",
+      "to": "Bar Customer 1"
+    },
+    {
+      "id": "cym_n_for_eng:pod-0:SC08-S004",
+      "scene": 8,
+      "sentence": 4,
+      "from": "Customer 1",
+      "to": "Bar Customer 1"
+    },
+    {
+      "id": "cym_n_for_eng:pod-0:SC08-S005",
+      "scene": 8,
+      "sentence": 5,
+      "from": "Customer 2",
+      "to": "Bar Customer 2"
+    },
+    {
+      "id": "cym_n_for_eng:pod-0:SC08-S006",
+      "scene": 8,
+      "sentence": 6,
+      "from": "Customer 3",
+      "to": "Bar Customer 3"
+    },
+    {
+      "id": "cym_n_for_eng:pod-0:SC08-S008",
+      "scene": 8,
+      "sentence": 8,
+      "from": "Customer 3",
+      "to": "Bar Customer 3"
+    },
+    {
+      "id": "cym_n_for_eng:pod-0:SC08-S009",
+      "scene": 8,
+      "sentence": 9,
+      "from": "Customer 1",
+      "to": "Bar Customer 1"
+    },
+    {
+      "id": "cym_n_for_eng:pod-0:SC08-S010",
+      "scene": 8,
+      "sentence": 10,
+      "from": "Customer 2",
+      "to": "Bar Customer 2"
+    },
+    {
+      "id": "cym_n_for_eng:pod-0:SC08-S012",
+      "scene": 8,
+      "sentence": 12,
+      "from": "Customer 1",
+      "to": "Bar Customer 1"
+    },
+    {
+      "id": "cym_n_for_eng:pod-0:SC08-S014",
+      "scene": 8,
+      "sentence": 14,
+      "from": "Customer 1",
+      "to": "Bar Customer 1"
+    },
+    {
+      "id": "cym_n_for_eng:pod-0:SC08-S015",
+      "scene": 8,
+      "sentence": 15,
+      "from": "Customer 2",
+      "to": "Bar Customer 2"
+    },
+    {
+      "id": "cym_n_for_eng:pod-0:SC09-S001",
+      "scene": 9,
+      "sentence": 1,
+      "from": "Customer 1",
+      "to": "Diner 1"
+    },
+    {
+      "id": "cym_n_for_eng:pod-0:SC09-S004",
+      "scene": 9,
+      "sentence": 4,
+      "from": "Customer 2",
+      "to": "Diner 2"
+    },
+    {
+      "id": "cym_n_for_eng:pod-0:SC09-S005",
+      "scene": 9,
+      "sentence": 5,
+      "from": "Customer 1",
+      "to": "Diner 1"
+    },
+    {
+      "id": "cym_n_for_eng:pod-0:SC09-S007",
+      "scene": 9,
+      "sentence": 7,
+      "from": "Customer 1",
+      "to": "Diner 1"
+    },
+    {
+      "id": "cym_n_for_eng:pod-0:SC09-S009",
+      "scene": 9,
+      "sentence": 9,
+      "from": "Customer 1",
+      "to": "Diner 1"
+    },
+    {
+      "id": "cym_n_for_eng:pod-0:SC09-S010",
+      "scene": 9,
+      "sentence": 10,
+      "from": "Customer 2",
+      "to": "Diner 2"
+    },
+    {
+      "id": "cym_n_for_eng:pod-0:SC09-S012",
+      "scene": 9,
+      "sentence": 12,
+      "from": "Customer 1",
+      "to": "Diner 1"
+    },
+    {
+      "id": "cym_n_for_eng:pod-0:SC09-S013",
+      "scene": 9,
+      "sentence": 13,
+      "from": "Customer 2",
+      "to": "Diner 2"
+    },
+    {
+      "id": "cym_n_for_eng:pod-0:SC09-S016",
+      "scene": 9,
+      "sentence": 16,
+      "from": "Customer 1",
+      "to": "Diner 1"
+    },
+    {
+      "id": "cym_n_for_eng:pod-0:SC09-S017",
+      "scene": 9,
+      "sentence": 17,
+      "from": "Customer 2",
+      "to": "Diner 2"
+    }
+  ],
+  "voiceFlips": 51,
+  "voiceFlipsWithExistingTake": 30,
+  "flippedLinesNeedingRerecord": [
+    {
+      "id": "cym_n_for_eng:pod-0:SC02-S002",
+      "scene": 2,
+      "sentence": 2,
+      "speaker": "Passenger",
+      "newSpeaker": "Passenger",
+      "from": "human_catrinlliar_cym_n",
+      "to": "human_aran_cym_n",
+      "hasTarget": true,
+      "hasKnown": false
+    },
+    {
+      "id": "cym_n_for_eng:pod-0:SC08-S005",
+      "scene": 8,
+      "sentence": 5,
+      "speaker": "Customer 2",
+      "newSpeaker": "Bar Customer 2",
+      "from": "human_aran_cym_n",
+      "to": "human_catrinlliar_cym_n",
+      "hasTarget": true,
+      "hasKnown": false
+    },
+    {
+      "id": "cym_n_for_eng:pod-0:SC08-S006",
+      "scene": 8,
+      "sentence": 6,
+      "speaker": "Customer 3",
+      "newSpeaker": "Bar Customer 3",
+      "from": "human_aran_cym_n",
+      "to": "human_catrinlliar_cym_n",
+      "hasTarget": true,
+      "hasKnown": false
+    },
+    {
+      "id": "cym_n_for_eng:pod-0:SC08-S008",
+      "scene": 8,
+      "sentence": 8,
+      "speaker": "Customer 3",
+      "newSpeaker": "Bar Customer 3",
+      "from": "human_aran_cym_n",
+      "to": "human_catrinlliar_cym_n",
+      "hasTarget": true,
+      "hasKnown": false
+    },
+    {
+      "id": "cym_n_for_eng:pod-0:SC08-S010",
+      "scene": 8,
+      "sentence": 10,
+      "speaker": "Customer 2",
+      "newSpeaker": "Bar Customer 2",
+      "from": "human_aran_cym_n",
+      "to": "human_catrinlliar_cym_n",
+      "hasTarget": true,
+      "hasKnown": false
+    },
+    {
+      "id": "cym_n_for_eng:pod-0:SC08-S015",
+      "scene": 8,
+      "sentence": 15,
+      "speaker": "Customer 2",
+      "newSpeaker": "Bar Customer 2",
+      "from": "human_aran_cym_n",
+      "to": "human_catrinlliar_cym_n",
+      "hasTarget": true,
+      "hasKnown": false
+    },
+    {
+      "id": "cym_n_for_eng:pod-0:SC09-S004",
+      "scene": 9,
+      "sentence": 4,
+      "speaker": "Customer 2",
+      "newSpeaker": "Diner 2",
+      "from": "human_aran_cym_n",
+      "to": "human_catrinlliar_cym_n",
+      "hasTarget": true,
+      "hasKnown": false
+    },
+    {
+      "id": "cym_n_for_eng:pod-0:SC09-S010",
+      "scene": 9,
+      "sentence": 10,
+      "speaker": "Customer 2",
+      "newSpeaker": "Diner 2",
+      "from": "human_aran_cym_n",
+      "to": "human_catrinlliar_cym_n",
+      "hasTarget": true,
+      "hasKnown": false
+    },
+    {
+      "id": "cym_n_for_eng:pod-0:SC09-S013",
+      "scene": 9,
+      "sentence": 13,
+      "speaker": "Customer 2",
+      "newSpeaker": "Diner 2",
+      "from": "human_aran_cym_n",
+      "to": "human_catrinlliar_cym_n",
+      "hasTarget": true,
+      "hasKnown": false
+    },
+    {
+      "id": "cym_n_for_eng:pod-0:SC09-S017",
+      "scene": 9,
+      "sentence": 17,
+      "speaker": "Customer 2",
+      "newSpeaker": "Diner 2",
+      "from": "human_aran_cym_n",
+      "to": "human_catrinlliar_cym_n",
+      "hasTarget": true,
+      "hasKnown": false
+    },
+    {
+      "id": "cym_n_for_eng:pod-0:SC10-S001",
+      "scene": 10,
+      "sentence": 1,
+      "speaker": "Customer",
+      "newSpeaker": "Customer",
+      "from": "human_aran_cym_n",
+      "to": "human_catrinlliar_cym_n",
+      "hasTarget": true,
+      "hasKnown": false
+    },
+    {
+      "id": "cym_n_for_eng:pod-0:SC10-S003",
+      "scene": 10,
+      "sentence": 3,
+      "speaker": "Customer",
+      "newSpeaker": "Customer",
+      "from": "human_aran_cym_n",
+      "to": "human_catrinlliar_cym_n",
+      "hasTarget": true,
+      "hasKnown": false
+    },
+    {
+      "id": "cym_n_for_eng:pod-0:SC10-S005",
+      "scene": 10,
+      "sentence": 5,
+      "speaker": "Customer",
+      "newSpeaker": "Customer",
+      "from": "human_aran_cym_n",
+      "to": "human_catrinlliar_cym_n",
+      "hasTarget": true,
+      "hasKnown": false
+    },
+    {
+      "id": "cym_n_for_eng:pod-0:SC10-S007",
+      "scene": 10,
+      "sentence": 7,
+      "speaker": "Customer",
+      "newSpeaker": "Customer",
+      "from": "human_aran_cym_n",
+      "to": "human_catrinlliar_cym_n",
+      "hasTarget": true,
+      "hasKnown": false
+    },
+    {
+      "id": "cym_n_for_eng:pod-0:SC10-S009",
+      "scene": 10,
+      "sentence": 9,
+      "speaker": "Customer",
+      "newSpeaker": "Customer",
+      "from": "human_aran_cym_n",
+      "to": "human_catrinlliar_cym_n",
+      "hasTarget": true,
+      "hasKnown": false
+    },
+    {
+      "id": "cym_n_for_eng:pod-0:SC12-S001",
+      "scene": 12,
+      "sentence": 1,
+      "speaker": "Customer",
+      "newSpeaker": "Customer",
+      "from": "human_aran_cym_n",
+      "to": "human_catrinlliar_cym_n",
+      "hasTarget": true,
+      "hasKnown": false
+    },
+    {
+      "id": "cym_n_for_eng:pod-0:SC12-S003",
+      "scene": 12,
+      "sentence": 3,
+      "speaker": "Customer",
+      "newSpeaker": "Customer",
+      "from": "human_aran_cym_n",
+      "to": "human_catrinlliar_cym_n",
+      "hasTarget": true,
+      "hasKnown": false
+    },
+    {
+      "id": "cym_n_for_eng:pod-0:SC12-S005",
+      "scene": 12,
+      "sentence": 5,
+      "speaker": "Customer",
+      "newSpeaker": "Customer",
+      "from": "human_aran_cym_n",
+      "to": "human_catrinlliar_cym_n",
+      "hasTarget": true,
+      "hasKnown": false
+    },
+    {
+      "id": "cym_n_for_eng:pod-0:SC12-S007",
+      "scene": 12,
+      "sentence": 7,
+      "speaker": "Customer",
+      "newSpeaker": "Customer",
+      "from": "human_aran_cym_n",
+      "to": "human_catrinlliar_cym_n",
+      "hasTarget": true,
+      "hasKnown": false
+    },
+    {
+      "id": "cym_n_for_eng:pod-0:SC12-S009",
+      "scene": 12,
+      "sentence": 9,
+      "speaker": "Customer",
+      "newSpeaker": "Customer",
+      "from": "human_aran_cym_n",
+      "to": "human_catrinlliar_cym_n",
+      "hasTarget": true,
+      "hasKnown": false
+    },
+    {
+      "id": "cym_n_for_eng:pod-0:SC13-S001",
+      "scene": 13,
+      "sentence": 1,
+      "speaker": "Tourist",
+      "newSpeaker": "Tourist",
+      "from": "human_aran_cym_n",
+      "to": "human_catrinlliar_cym_n",
+      "hasTarget": true,
+      "hasKnown": false
+    },
+    {
+      "id": "cym_n_for_eng:pod-0:SC13-S003",
+      "scene": 13,
+      "sentence": 3,
+      "speaker": "Tourist",
+      "newSpeaker": "Tourist",
+      "from": "human_aran_cym_n",
+      "to": "human_catrinlliar_cym_n",
+      "hasTarget": true,
+      "hasKnown": false
+    },
+    {
+      "id": "cym_n_for_eng:pod-0:SC13-S006",
+      "scene": 13,
+      "sentence": 6,
+      "speaker": "Tourist",
+      "newSpeaker": "Tourist",
+      "from": "human_aran_cym_n",
+      "to": "human_catrinlliar_cym_n",
+      "hasTarget": true,
+      "hasKnown": false
+    },
+    {
+      "id": "cym_n_for_eng:pod-0:SC13-S008",
+      "scene": 13,
+      "sentence": 8,
+      "speaker": "Tourist",
+      "newSpeaker": "Tourist",
+      "from": "human_aran_cym_n",
+      "to": "human_catrinlliar_cym_n",
+      "hasTarget": true,
+      "hasKnown": false
+    },
+    {
+      "id": "cym_n_for_eng:pod-0:SC13-S010",
+      "scene": 13,
+      "sentence": 10,
+      "speaker": "Tourist",
+      "newSpeaker": "Tourist",
+      "from": "human_aran_cym_n",
+      "to": "human_catrinlliar_cym_n",
+      "hasTarget": true,
+      "hasKnown": false
+    },
+    {
+      "id": "cym_n_for_eng:pod-0:SC14-S002",
+      "scene": 14,
+      "sentence": 2,
+      "speaker": "Driver",
+      "newSpeaker": "Driver",
+      "from": "human_aran_cym_n",
+      "to": "human_catrinlliar_cym_n",
+      "hasTarget": true,
+      "hasKnown": false
+    },
+    {
+      "id": "cym_n_for_eng:pod-0:SC14-S004",
+      "scene": 14,
+      "sentence": 4,
+      "speaker": "Driver",
+      "newSpeaker": "Driver",
+      "from": "human_aran_cym_n",
+      "to": "human_catrinlliar_cym_n",
+      "hasTarget": true,
+      "hasKnown": false
+    },
+    {
+      "id": "cym_n_for_eng:pod-0:SC14-S006",
+      "scene": 14,
+      "sentence": 6,
+      "speaker": "Driver",
+      "newSpeaker": "Driver",
+      "from": "human_aran_cym_n",
+      "to": "human_catrinlliar_cym_n",
+      "hasTarget": true,
+      "hasKnown": false
+    },
+    {
+      "id": "cym_n_for_eng:pod-0:SC14-S007",
+      "scene": 14,
+      "sentence": 7,
+      "speaker": "Driver",
+      "newSpeaker": "Driver",
+      "from": "human_aran_cym_n",
+      "to": "human_catrinlliar_cym_n",
+      "hasTarget": true,
+      "hasKnown": false
+    },
+    {
+      "id": "cym_n_for_eng:pod-0:SC14-S009",
+      "scene": 14,
+      "sentence": 9,
+      "speaker": "Driver",
+      "newSpeaker": "Driver",
+      "from": "human_aran_cym_n",
+      "to": "human_catrinlliar_cym_n",
+      "hasTarget": true,
+      "hasKnown": false
+    }
+  ],
+  "queueBefore": {
+    "aran": {
+      "target": 87,
+      "known": 231,
+      "explainer": 0,
+      "total": 318,
+      "speakers": [
+        "Customer",
+        "Customer 2",
+        "Customer 3",
+        "Driver",
+        "Friend",
+        "Guest",
+        "James",
+        "Local",
+        "Narrator",
+        "Neighbour",
+        "Pharmacist",
+        "Tourist",
+        "Waiter"
+      ],
+      "isExplainer": true
+    },
+    "catrin": {
+      "target": 144,
+      "known": 0,
+      "explainer": 0,
+      "total": 144,
+      "speakers": [
+        "Anna",
+        "Assistant",
+        "Barista",
+        "Bartender",
+        "Customer 1",
+        "Learner",
+        "Passenger",
+        "Receptionist",
+        "Sarah"
+      ],
+      "isExplainer": false
+    }
+  },
+  "queueAfter": {
+    "aran": {
+      "target": 80,
+      "known": 231,
+      "explainer": 0,
+      "total": 311,
+      "speakers": [
+        "Assistant",
+        "Barista",
+        "Bartender",
+        "Cafe Customer 1",
+        "Cafe Customer 2",
+        "Cafe Customer 3",
+        "Friend",
+        "Guest",
+        "James",
+        "Local",
+        "Narrator",
+        "Neighbour",
+        "Passenger",
+        "Pharmacist",
+        "Waiter"
+      ],
+      "isExplainer": true
+    },
+    "catrin": {
+      "target": 151,
+      "known": 0,
+      "explainer": 0,
+      "total": 151,
+      "speakers": [
+        "Anna",
+        "Bar Customer 1",
+        "Bar Customer 2",
+        "Bar Customer 3",
+        "Cafe Barista",
+        "Customer",
+        "Diner 1",
+        "Diner 2",
+        "Driver",
+        "Learner",
+        "Receptionist",
+        "Sarah",
+        "Tourist"
+      ],
+      "isExplainer": false
+    }
+  },
+  "oldCast": {
+    "Anna": {
+      "name": "Catrin",
+      "email": "catrinlliar@gmail.com",
+      "gender": "f",
+      "voiceId": "human_catrinlliar_cym_n"
+    },
+    "Guest": {
+      "name": "Aran",
+      "email": "aran@hey.com",
+      "gender": "m",
+      "voiceId": "human_aran_cym_n"
+    },
+    "James": {
+      "name": "Aran",
+      "email": "aran@hey.com",
+      "gender": "m",
+      "voiceId": "human_aran_cym_n"
+    },
+    "Local": {
+      "name": "Aran",
+      "email": "aran@hey.com",
+      "gender": "m",
+      "voiceId": "human_aran_cym_n"
+    },
+    "Sarah": {
+      "name": "Catrin",
+      "email": "catrinlliar@gmail.com",
+      "gender": "f",
+      "voiceId": "human_catrinlliar_cym_n"
+    },
+    "Driver": {
+      "name": "Aran",
+      "email": "aran@hey.com",
+      "gender": "m",
+      "voiceId": "human_aran_cym_n"
+    },
+    "Friend": {
+      "name": "Aran",
+      "email": "aran@hey.com",
+      "gender": "m",
+      "voiceId": "human_aran_cym_n"
+    },
+    "Waiter": {
+      "name": "Aran",
+      "email": "aran@hey.com",
+      "gender": "m",
+      "voiceId": "human_aran_cym_n"
+    },
+    "Barista": {
+      "name": "Catrin",
+      "email": "catrinlliar@gmail.com",
+      "gender": "f",
+      "voiceId": "human_catrinlliar_cym_n"
+    },
+    "Learner": {
+      "name": "Catrin",
+      "email": "catrinlliar@gmail.com",
+      "gender": "f",
+      "voiceId": "human_catrinlliar_cym_n"
+    },
+    "Tourist": {
+      "name": "Aran",
+      "email": "aran@hey.com",
+      "gender": "m",
+      "voiceId": "human_aran_cym_n"
+    },
+    "Customer": {
+      "name": "Aran",
+      "email": "aran@hey.com",
+      "gender": "m",
+      "voiceId": "human_aran_cym_n"
+    },
+    "Narrator": {
+      "name": "Aran",
+      "email": "aran@hey.com",
+      "gender": "m",
+      "voiceId": "human_aran_cym_n"
+    },
+    "Assistant": {
+      "name": "Catrin",
+      "email": "catrinlliar@gmail.com",
+      "gender": "f",
+      "voiceId": "human_catrinlliar_cym_n"
+    },
+    "Bartender": {
+      "name": "Catrin",
+      "email": "catrinlliar@gmail.com",
+      "gender": "f",
+      "voiceId": "human_catrinlliar_cym_n"
+    },
+    "Neighbour": {
+      "name": "Aran",
+      "email": "aran@hey.com",
+      "gender": "m",
+      "voiceId": "human_aran_cym_n"
+    },
+    "Passenger": {
+      "name": "Catrin",
+      "email": "catrinlliar@gmail.com",
+      "gender": "f",
+      "voiceId": "human_catrinlliar_cym_n"
+    },
+    "Customer 1": {
+      "name": "Catrin",
+      "email": "catrinlliar@gmail.com",
+      "gender": "f",
+      "voiceId": "human_catrinlliar_cym_n"
+    },
+    "Customer 2": {
+      "name": "Aran",
+      "email": "aran@hey.com",
+      "gender": "m",
+      "voiceId": "human_aran_cym_n"
+    },
+    "Customer 3": {
+      "name": "Aran",
+      "email": "aran@hey.com",
+      "gender": "m",
+      "voiceId": "human_aran_cym_n"
+    },
+    "Pharmacist": {
+      "name": "Aran",
+      "email": "aran@hey.com",
+      "gender": "m",
+      "voiceId": "human_aran_cym_n"
+    },
+    "Receptionist": {
+      "name": "Catrin",
+      "email": "catrinlliar@gmail.com",
+      "gender": "f",
+      "voiceId": "human_catrinlliar_cym_n"
+    },
+    "__explainer__": {
+      "name": "Aran",
+      "email": "aran@hey.com",
+      "gender": "m",
+      "voiceId": "human_aran_cym_n"
+    }
+  },
+  "newCast": {
+    "Narrator": {
+      "name": "Aran",
+      "email": "aran@hey.com",
+      "gender": "m",
+      "voiceId": "human_aran_cym_n"
+    },
+    "__explainer__": {
+      "name": "Aran",
+      "email": "aran@hey.com",
+      "gender": "m",
+      "voiceId": "human_aran_cym_n"
+    },
+    "Neighbour": {
+      "name": "Aran",
+      "email": "aran@hey.com",
+      "gender": "m",
+      "voiceId": "human_aran_cym_n"
+    },
+    "Passenger": {
+      "name": "Aran",
+      "email": "aran@hey.com",
+      "gender": "m",
+      "voiceId": "human_aran_cym_n"
+    },
+    "Barista": {
+      "name": "Aran",
+      "email": "aran@hey.com",
+      "gender": "m",
+      "voiceId": "human_aran_cym_n"
+    },
+    "Friend": {
+      "name": "Aran",
+      "email": "aran@hey.com",
+      "gender": "m",
+      "voiceId": "human_aran_cym_n"
+    },
+    "James": {
+      "name": "Aran",
+      "email": "aran@hey.com",
+      "gender": "m",
+      "voiceId": "human_aran_cym_n"
+    },
+    "Cafe Customer 1": {
+      "name": "Aran",
+      "email": "aran@hey.com",
+      "gender": "m",
+      "voiceId": "human_aran_cym_n"
+    },
+    "Cafe Customer 2": {
+      "name": "Aran",
+      "email": "aran@hey.com",
+      "gender": "m",
+      "voiceId": "human_aran_cym_n"
+    },
+    "Cafe Customer 3": {
+      "name": "Aran",
+      "email": "aran@hey.com",
+      "gender": "m",
+      "voiceId": "human_aran_cym_n"
+    },
+    "Bartender": {
+      "name": "Aran",
+      "email": "aran@hey.com",
+      "gender": "m",
+      "voiceId": "human_aran_cym_n"
+    },
+    "Waiter": {
+      "name": "Aran",
+      "email": "aran@hey.com",
+      "gender": "m",
+      "voiceId": "human_aran_cym_n"
+    },
+    "Assistant": {
+      "name": "Aran",
+      "email": "aran@hey.com",
+      "gender": "m",
+      "voiceId": "human_aran_cym_n"
+    },
+    "Guest": {
+      "name": "Aran",
+      "email": "aran@hey.com",
+      "gender": "m",
+      "voiceId": "human_aran_cym_n"
+    },
+    "Pharmacist": {
+      "name": "Aran",
+      "email": "aran@hey.com",
+      "gender": "m",
+      "voiceId": "human_aran_cym_n"
+    },
+    "Local": {
+      "name": "Aran",
+      "email": "aran@hey.com",
+      "gender": "m",
+      "voiceId": "human_aran_cym_n"
+    },
+    "Sarah": {
+      "name": "Catrin",
+      "email": "catrinlliar@gmail.com",
+      "gender": "f",
+      "voiceId": "human_catrinlliar_cym_n"
+    },
+    "Anna": {
+      "name": "Catrin",
+      "email": "catrinlliar@gmail.com",
+      "gender": "f",
+      "voiceId": "human_catrinlliar_cym_n"
+    },
+    "Cafe Barista": {
+      "name": "Catrin",
+      "email": "catrinlliar@gmail.com",
+      "gender": "f",
+      "voiceId": "human_catrinlliar_cym_n"
+    },
+    "Bar Customer 1": {
+      "name": "Catrin",
+      "email": "catrinlliar@gmail.com",
+      "gender": "f",
+      "voiceId": "human_catrinlliar_cym_n"
+    },
+    "Bar Customer 2": {
+      "name": "Catrin",
+      "email": "catrinlliar@gmail.com",
+      "gender": "f",
+      "voiceId": "human_catrinlliar_cym_n"
+    },
+    "Bar Customer 3": {
+      "name": "Catrin",
+      "email": "catrinlliar@gmail.com",
+      "gender": "f",
+      "voiceId": "human_catrinlliar_cym_n"
+    },
+    "Diner 1": {
+      "name": "Catrin",
+      "email": "catrinlliar@gmail.com",
+      "gender": "f",
+      "voiceId": "human_catrinlliar_cym_n"
+    },
+    "Diner 2": {
+      "name": "Catrin",
+      "email": "catrinlliar@gmail.com",
+      "gender": "f",
+      "voiceId": "human_catrinlliar_cym_n"
+    },
+    "Customer": {
+      "name": "Catrin",
+      "email": "catrinlliar@gmail.com",
+      "gender": "f",
+      "voiceId": "human_catrinlliar_cym_n"
+    },
+    "Receptionist": {
+      "name": "Catrin",
+      "email": "catrinlliar@gmail.com",
+      "gender": "f",
+      "voiceId": "human_catrinlliar_cym_n"
+    },
+    "Tourist": {
+      "name": "Catrin",
+      "email": "catrinlliar@gmail.com",
+      "gender": "f",
+      "voiceId": "human_catrinlliar_cym_n"
+    },
+    "Driver": {
+      "name": "Catrin",
+      "email": "catrinlliar@gmail.com",
+      "gender": "f",
+      "voiceId": "human_catrinlliar_cym_n"
+    },
+    "Learner": {
+      "name": "Catrin",
+      "email": "catrinlliar@gmail.com",
+      "gender": "f",
+      "voiceId": "human_catrinlliar_cym_n"
+    }
+  }
+}

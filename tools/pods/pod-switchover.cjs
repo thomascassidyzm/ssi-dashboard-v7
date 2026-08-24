@@ -37,6 +37,28 @@
  * observed against a canon it was not mapped to. Rules and rationale:
  * docs/pods/pod-migration-protocol.md.
  *
+ * IT WILL NOT PROMOTE AN UNCAST POD. Since Part B of Tom's Pod 1 rulings (2026-08-23)
+ * the staged pod must be cast PER CONVERSATION before it can go live: zero same-voice
+ * exchange pairs, exactly two voices. movePod() carries `speakers` across verbatim, so
+ * without this gate a flip promotes whatever cast the staged pod happens to hold — which
+ * is why casting has been a separate recast sweep after every flip. The measurement lives
+ * in `pod-cast-gate.cjs` and is shared with the solver (`pod1-percall-recast.cjs`).
+ * Escape hatch, for a pod consciously shipping otherwise: --accept-uncast-pod.
+ *
+ * IT FOLDS IN WRITES THAT LAND WHILE IT IS WORKING. The migration is PLANNED from a
+ * snapshot of `learner_pod_state` taken before the transaction opens, so a learner who
+ * is mid-session while the flip runs can write rows the plan has never seen. On
+ * 2026-08-24 that happened to nld_for_eng: learner 33344e24 wrote 14 rows against the
+ * pod-0 canon around the 08:34:44Z switchover, and they were left keyed to a slug that
+ * no longer existed — repaired by hand afterwards (job #227,
+ * docs/pods/nld-inflight-session-repair-2026-08-24-applied-log.json).
+ * So: immediately before the plan is applied — after the pods have moved, inside the
+ * same transaction — every state row touched since the snapshot is re-read. Rows the
+ * plan already knows about have their exposures refreshed (GREATEST then protects any
+ * row that got BETTER in the window); rows it has never seen are run through one more
+ * planMigration pass, retired canon → promoted canon, and folded into the same commit.
+ * One extra pass, no retry loop, nothing for an operator to watch.
+ *
  * DRY RUN BY DEFAULT. Pass --apply to write. Everything happens in one transaction.
  *
  *   node tools/pods/pod-switchover.cjs --course=fra_for_eng
@@ -48,6 +70,8 @@
 require('dotenv').config({ path: require('path').join(__dirname, '..', '..', '.env.psql') })
 const { Client } = require('pg')
 const { planMigration, POSITION_BOUND } = require('./pod-state-migrate.cjs')
+const { realHumanLearners } = require('../../services/shared/learner-counts.cjs')
+const { checkPodCast, loadPodForCastCheck } = require('./pod-cast-gate.cjs')
 
 const APPLY = process.argv.includes('--apply')
 const ROLLBACK = process.argv.includes('--rollback')
@@ -78,10 +102,34 @@ const NEW_TITLE = arg('title')
  *  It does NOT mean "leave the rows alone" — leaving them alone is the mis-credit.
  *  It means "discard this course's pod progress outright". */
 const FORCE_NO_MIGRATION = process.argv.includes('--accept-miscredit')
+// --rehearsal waives the staged pod's CONTENT-readiness blockers (untranslated,
+// draft, unrecorded) so that the progress migration itself can be proved end to
+// end on a throwaway clone. Those blockers exist to stop a half-empty pod
+// reaching a learner; a zzz_ scratch course has no learners and is dropped when
+// the rehearsal ends. It is therefore refused outright on anything else, so it
+// can never waive a gate on a real course. Every OTHER blocker still binds —
+// duplicate-text ambiguity in particular, which is a migration correctness gate,
+// not a content one.
+const REHEARSAL = process.argv.includes('--rehearsal')
+/** THE CAST GATE'S ONLY ESCAPE HATCH (2026-08-23, Part B of Tom's Pod 1 rulings).
+ *  movePod() carries `speakers` across verbatim, so before this gate existed a flip
+ *  promoted whatever cast the staged pod happened to hold — including none — and the
+ *  casting had to be bolted on afterwards by a separate recast sweep, per flip, forever.
+ *  The gate is ON BY DEFAULT and refuses the flip; this flag is for the conscious
+ *  exception (a pod deliberately shipping on one voice), and it says so in the log. */
+const ACCEPT_UNCAST = process.argv.includes('--accept-uncast-pod')
 
-if (!COURSE) {
-  console.error('FAILED: --course=<code> is required')
-  process.exit(1)
+// Argument validation belongs to the CLI, not to the module: `planInflightFold` is
+// exported for its unit tests, and a require() must not exit the process.
+if (require.main === module) {
+  if (!COURSE) {
+    console.error('FAILED: --course=<code> is required')
+    process.exit(1)
+  }
+  if (REHEARSAL && !/^zzz_/.test(COURSE)) {
+    console.error(`FAILED: --rehearsal is only accepted on a zzz_ scratch course, not '${COURSE}'`)
+    process.exit(1)
+  }
 }
 
 const log = (...a) => console.log(...a)
@@ -96,22 +144,14 @@ const reslug = (id, oldSlug, newSlug) => {
 
 /** Move a whole pod — header row and every sentence — from one slug to another.
  *  Insert-then-delete rather than UPDATE, because listening_pod_sentences.pod_id is a
- *  foreign key with no ON UPDATE CASCADE.
- *
- *  `visibility` is CARRIED FORWARD explicitly (2026-08-23). It is a real column
- *  now, and this is an insert-then-delete with a hand-written column list, so a
- *  column left off the list does not "stay as it was" — the new row silently
- *  takes the table default 'live'. A pod held back because a human is still
- *  recording it would have come out the other side of a switchover LIVE, with
- *  nothing in the output saying so. Moving a pod must never decide its
- *  reachability; only a deliberate human release does that. */
+ *  foreign key with no ON UPDATE CASCADE. */
 async function movePod (db, fromSlug, toSlug, title) {
   const fromId = `${COURSE}:${fromSlug}`
   const toId = `${COURSE}:${toSlug}`
 
   await db.query(
-    `insert into listening_pods (id, course_code, pod_type, slug, pod_order, title, scene, difficulty, speakers, source_file, metadata, visibility)
-     select $1, course_code, pod_type, $2, pod_order, coalesce($3, title), scene, difficulty, speakers, source_file, metadata, visibility
+    `insert into listening_pods (id, course_code, pod_type, slug, pod_order, title, scene, difficulty, speakers, source_file, metadata)
+     select $1, course_code, pod_type, $2, pod_order, coalesce($3, title), scene, difficulty, speakers, source_file, metadata
        from listening_pods where id = $4`,
     [toId, toSlug, title, fromId]
   )
@@ -122,6 +162,71 @@ async function movePod (db, fromSlug, toSlug, title) {
   }
   await db.query('delete from listening_pods where id = $1', [fromId])
   return rows.length
+}
+
+/**
+ * THE GRACE GUARD, as a pure function so it can be tested without a database.
+ *
+ * `stragglers` are the `learner_pod_state` rows for this course that were written or
+ * updated after the migration plan's snapshot was taken — read back inside the
+ * transaction, after the pods have moved and before the plan is applied. Two kinds:
+ *
+ *   1. a row the plan ALREADY covers, whose exposures moved in the window. The planned
+ *      action's exposures are stale, and the delete-by-exact-exposures would abort the
+ *      whole flip on `drift:`. Reported as `refresh` so the caller can restamp the
+ *      action; the insert's `greatest(...)` then keeps whichever count is higher, so a
+ *      row that got BETTER in the window is never walked backwards.
+ *   2. a row the plan has NEVER seen — the in-flight session case. It is keyed under the
+ *      slug that has just been archived, so it is rekeyed onto the retired slug and run
+ *      through planMigration against the promoted canon: exactly the mapping the flip
+ *      itself would have given it had it existed a second earlier.
+ *
+ * Rows already sitting on the promoted slug are left alone (`ignored`) — they are
+ * already where they belong. Anything under neither slug is returned as `unknown` and
+ * the caller must refuse rather than guess.
+ */
+function planInflightFold ({ course, liveSlug, retiredSlug, promoteTo, plannedKeys, stragglers, retiredCanon, promotedCanon }) {
+  const livePrefix = `${course}:${liveSlug}:`
+  const promotedPrefix = `${course}:${promoteTo}:`
+  const suffixOf = (id) => /:s\d+$/.exec(id)?.[0] || ''
+  const base = (id) => id.replace(/:s\d+$/, '')
+
+  const refresh = []      // rows the plan covers whose exposures moved
+  const unseen = []       // rows the plan has never seen, on the old canon
+  const ignored = []      // rows already on the promoted canon
+  const unknown = []      // rows under neither slug — caller refuses
+
+  for (const r of stragglers) {
+    const key = `${r.learner_id}|${r.sentence_id}`
+    if (plannedKeys.has(key)) {
+      if (Number(plannedKeys.get(key)) !== Number(r.exposures)) refresh.push(r)
+      continue
+    }
+    // Order matters when promoteTo === liveSlug (the default): the two prefixes are the
+    // same string, and a learner mid-session was necessarily served the OLD canon, so the
+    // old reading wins. When they differ, a row on the promoted slug is genuinely new.
+    if (r.sentence_id.startsWith(livePrefix)) unseen.push(r)
+    else if (r.sentence_id.startsWith(promotedPrefix)) ignored.push(r)
+    else unknown.push(r)
+  }
+
+  let actions = []
+  if (unseen.length) {
+    // Rekey the lookups onto the retired slug — that is where the canon those rows were
+    // written against now lives — and reuse planMigration verbatim. `to` therefore comes
+    // back already keyed on the promoted slug; no reslugging afterwards.
+    // planMigration spreads the input row onto every action, so `stored_sentence_id`
+    // rides along with it — the row is deleted by the id actually in the table, never by
+    // the rekeyed one used for the lookup.
+    const rekeyed = unseen.map(r => ({
+      ...r,
+      stored_sentence_id: r.sentence_id,
+      sentence_id: `${course}:${retiredSlug}:${base(r.sentence_id).slice(livePrefix.length)}${suffixOf(r.sentence_id)}`
+    }))
+    actions = planMigration(retiredCanon, promotedCanon, rekeyed).actions
+    if (actions.some(a => !a.stored_sentence_id)) throw new Error('in-flight fold: action lost its stored sentence id')
+  }
+  return { actions, refresh, ignored, unknown }
 }
 
 async function main () {
@@ -219,14 +324,56 @@ async function main () {
 
   const blockers = []
   if (Number(s.n) === 0) blockers.push('staged pod has no sentences')
-  if (Number(s.no_text) > 0) blockers.push(`${s.no_text} staged sentences have no target text`)
-  if (Number(s.draft) > 0) blockers.push(`${s.draft} staged sentences are still marked draft`)
-  if (Number(s.no_target_audio) > 0) blockers.push(`${s.no_target_audio} staged sentences have no target audio`)
+  if (REHEARSAL) {
+    log(`  --rehearsal: content-readiness blockers WAIVED on scratch course ${COURSE} ` +
+        `(${s.no_text} untranslated, ${s.draft} draft, ${s.no_target_audio} unrecorded). ` +
+        'Migration-correctness blockers still bind.')
+  } else {
+    if (Number(s.no_text) > 0) blockers.push(`${s.no_text} staged sentences have no target text`)
+    if (Number(s.draft) > 0) blockers.push(`${s.draft} staged sentences are still marked draft`)
+    if (Number(s.no_target_audio) > 0) blockers.push(`${s.no_target_audio} staged sentences have no target audio`)
+  }
+
+  // ---- the cast gate ---------------------------------------------------------
+  // The pod being promoted must already be cast per conversation: ZERO same-voice
+  // exchange pairs and EXACTLY TWO voices (Tom, 2026-08-23 — "there's always male
+  // talking to female, so that two voices can actually do the whole thing, rather
+  // than per character, which was the problem previously").
+  //
+  // Measured here rather than SOLVED here on purpose. Re-solving inside the flip
+  // would mean rewriting speaker labels and courses.voice_config.podCast in the
+  // same transaction that moves learner progress — three unrelated failure modes
+  // sharing one commit — and it would swallow the recast's own blockers (a
+  // non-bipartite exchange graph, glued rows inside the relabel set) that need a
+  // human. The solver stays tools/pods/pod1-percall-recast.cjs; this refuses to
+  // promote anything it has not been run on. Both share one definition of an
+  // exchange edge, in pod-cast-gate.cjs, so they cannot drift.
+  //
+  // NOT applied on --rollback: a rollback restores a pod that was already live,
+  // and a gate that can block the way back is worse than the thing it prevents.
+  const castCheck = checkPodCast(await loadPodForCastCheck(db, `${COURSE}:${STAGED}`))
+  log(`  staged cast: ${castCheck.voicesInUse.length} voice(s) [${castCheck.voicesInUse.join(', ')}], ` +
+      `${castCheck.sameVoicePairs.length} same-voice exchange pair(s) across ${castCheck.exchangePairs} exchange pair(s), ` +
+      `${castCheck.uncast.length} uncast character(s)`)
+  if (!castCheck.ok) {
+    if (ACCEPT_UNCAST) {
+      log('  --accept-uncast-pod given: promoting a pod that is NOT cast-correct. Reasons:')
+      for (const f of castCheck.failures) log(`    - ${f}`)
+    } else {
+      for (const f of castCheck.failures) blockers.push(`cast: ${f}`)
+      blockers.push('run tools/pods/pod1-percall-recast.cjs --pod=' + `${COURSE}:${STAGED}` +
+        ' --apply first (or pass --accept-uncast-pod to promote an uncast pod deliberately)')
+    }
+  }
 
   // ---- the learner-progress migration, planned before anything moves ----------
   // Planned here, against the two canons as they stand now, and applied inside the same
   // transaction as the move. `to` targets are computed against the STAGED slug and
   // reslugged onto LIVE at apply time, because promotion re-keys every sentence id.
+  // The snapshot's high-water mark, taken BEFORE the snapshot rather than after: a row
+  // written in between then shows up in both, and the fold treats an already-planned row
+  // at unchanged exposures as a no-op. The other order would lose it entirely.
+  const { rows: [{ t: planAt }] } = await db.query('select now() t')
   const { rows: stateRows } = await db.query(
     `select learner_id, course_code, sentence_id, exposures, updated_at
        from learner_pod_state where course_code = $1 order by learner_id, sentence_id`, [COURSE]
@@ -238,8 +385,21 @@ async function main () {
          from listening_pod_sentences where pod_id = $1 order by global_order`, [`${COURSE}:${slug}`])).rows
     plan = planMigration(await canon(LIVE), await canon(STAGED), stateRows)
     const t = plan.actions.reduce((m, a) => { m[a.action] = (m[a.action] || 0) + 1; return m }, {})
-    const learners = new Set(stateRows.map(r => r.learner_id)).size
-    log(`  learner state: ${stateRows.length} rows across ${learners} learners`)
+    const distinctLearnerIds = new Set(stateRows.map(r => r.learner_id)).size
+    // NOT a headcount: distinct learner_ids on the raw progress rows. See
+    // services/shared/learner-counts.cjs for the honest real-human-learner figure.
+    // realHumanLearners() refuses a zzz_ scratch code outright, which is correct
+    // for reporting — a fixture must never be counted as a person — but it is the
+    // code rehearse-switchover.cjs runs under, so calling it unconditionally made
+    // the rehearsal tool unusable on any course that HAS progress to rehearse
+    // (i.e. every course worth rehearsing). A scratch course has no real humans by
+    // definition, so say that instead of asking.
+    const isScratch = /^zzz_/.test(COURSE)
+    const { humans, excluded } = isScratch
+      ? { humans: 0, excluded: { scratch_rehearsal_fixture: distinctLearnerIds } }
+      : await realHumanLearners(db, COURSE)
+    log(`  learner state: ${stateRows.length} rows across ${distinctLearnerIds} distinct learner ids ` +
+        `(${humans} real human learners — excluded ${JSON.stringify(excluded)})`)
     log(`    migration (${POSITION_BOUND}):`)
     log(`      carry ${t.carry || 0}, keep ${t.keep || 0}, merge ${t.merge || 0}, drop ${t.drop || 0}` +
         `  — prevents ${plan.actions.filter(a => a.miscredit_avoided).length} mis-credits`)
@@ -276,15 +436,66 @@ async function main () {
     if (after !== Number(s.n)) throw new Error(`post-check failed: live pod holds ${after} sentences, expected ${s.n}`)
     const kept = Number((await db.query('select count(*) c from listening_pod_sentences where pod_id = $1', [`${COURSE}:${RETIRED}`])).rows[0].c)
     if (kept !== liveN) throw new Error(`post-check failed: archived pod holds ${kept} sentences, expected ${liveN}`)
+    // The cast gate again, re-derived from the promoted pod inside the transaction.
+    // The pre-flight check read the staged pod; this reads what a learner would
+    // actually get, so a bug in movePod's cast carry-across cannot land silently.
+    if (!ACCEPT_UNCAST) {
+      const after2 = checkPodCast(await loadPodForCastCheck(db, `${COURSE}:${PROMOTE_TO}`))
+      if (!after2.ok) throw new Error(`post-check failed: promoted pod is not cast-correct — ${after2.failures.join(' | ')}`)
+    }
+
+    // ---- the grace guard, immediately before the plan is applied ---------------
+    // Everything above this line moved pods; nothing has touched learner_pod_state yet.
+    // So this is the last moment at which a straggler is still distinguishable from our
+    // own work — re-read, fold in, and let the one commit carry both.
+    // Runs whether or not there was progress to plan: a learner can start a session
+    // during the flip, and a course with no state rows at snapshot time can have some by
+    // the time it commits.
+    let folded = null
+    {
+      const plannedKeys = new Map(stateRows.map(r => [`${r.learner_id}|${r.sentence_id}`, r.exposures]))
+      const { rows: stragglers } = await db.query(
+        `select learner_id, course_code, sentence_id, exposures, updated_at
+           from learner_pod_state where course_code = $1 and updated_at > $2
+           order by learner_id, sentence_id`, [COURSE, planAt])
+      if (stragglers.length) {
+        const canonOf = async (slug) => (await db.query(
+          `select id, scene_number, sentence_number, global_order, known_text
+             from listening_pod_sentences where pod_id = $1 order by global_order`, [`${COURSE}:${slug}`])).rows
+        folded = planInflightFold({
+          course: COURSE, liveSlug: LIVE, retiredSlug: RETIRED, promoteTo: PROMOTE_TO,
+          plannedKeys, stragglers,
+          retiredCanon: await canonOf(RETIRED), promotedCanon: await canonOf(PROMOTE_TO)
+        })
+        if (folded.unknown.length) {
+          throw new Error(`in-flight fold: ${folded.unknown.length} state row(s) under neither ${LIVE} nor ${PROMOTE_TO} ` +
+            `(first: ${folded.unknown[0].sentence_id}) — refusing to guess`)
+        }
+        // A row the plan covers whose exposures moved in the window: restamp the planned
+        // action, or its exact-exposures delete aborts the flip on drift. GREATEST on the
+        // insert then keeps whichever count is higher, so the newer read never loses.
+        const byKey = new Map(folded.refresh.map(r => [`${r.learner_id}|${r.sentence_id}`, r.exposures]))
+        for (const a of plan.actions) {
+          const now = byKey.get(`${a.learner_id}|${a.sentence_id}`)
+          if (now !== undefined) a.exposures = now
+        }
+        log(`  in-flight writes since the plan: ${stragglers.length} row(s) — ` +
+            `${folded.actions.length} folded into the migration, ${folded.refresh.length} exposure refresh(es), ` +
+            `${folded.ignored.length} already on ${PROMOTE_TO}`)
+      }
+    }
 
     // The learner-progress migration, in the same transaction as the move so progress is
     // never observable against a canon it was not mapped to.
     let carried = 0, dropped = 0
-    if (plan) {
-      for (const a of plan.actions) {
+    if (plan || (folded && folded.actions.length)) {
+      for (const a of (plan ? plan.actions : []).concat(folded ? folded.actions : [])) {
+        // Folded actions were planned against a rekeyed lookup id; the row in the table
+        // still carries the id the learner wrote, so delete by that.
+        const storedId = a.stored_sentence_id || a.sentence_id
         const del = () => db.query(
           `delete from learner_pod_state where learner_id=$1 and course_code=$2 and sentence_id=$3 and exposures=$4`,
-          [a.learner_id, COURSE, a.sentence_id, a.exposures])
+          [a.learner_id, COURSE, storedId, a.exposures])
         if (FORCE_NO_MIGRATION || a.action === 'drop' || a.action === 'merge') {
           const r = await del()
           if (r.rowCount !== 1) throw new Error(`drift: expected 1 state row for ${a.sentence_id}, got ${r.rowCount}`)
@@ -292,8 +503,12 @@ async function main () {
         } else if (a.action === 'carry' || a.action === 'keep') {
           // `to` targets were planned against the STAGED canon; promotion re-keyed every
           // sentence id onto PROMOTE_TO, so progress must follow onto the same slug.
-          const target = reslug(a.to.replace(/:s\d+$/, ''), STAGED, PROMOTE_TO) + (/:s\d+$/.exec(a.to)?.[0] || '')
-          if (target === a.sentence_id) continue
+          // Folded actions were already planned against the PROMOTED canon, so their `to`
+          // needs no reslugging — only the main plan's staged-canon targets do.
+          const target = a.stored_sentence_id
+            ? a.to
+            : reslug(a.to.replace(/:s\d+$/, ''), STAGED, PROMOTE_TO) + (/:s\d+$/.exec(a.to)?.[0] || '')
+          if (target === storedId) continue
           const r = await del()
           if (r.rowCount !== 1) throw new Error(`drift: expected 1 state row for ${a.sentence_id}, got ${r.rowCount}`)
           await db.query(
@@ -322,4 +537,8 @@ async function main () {
   await db.end()
 }
 
-main().catch(e => { console.error('FAILED:', e.message); process.exit(1) })
+module.exports = { planInflightFold }
+
+if (require.main === module) {
+  main().catch(e => { console.error('FAILED:', e.message); process.exit(1) })
+}

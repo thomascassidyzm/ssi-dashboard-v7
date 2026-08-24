@@ -1,0 +1,417 @@
+{
+    "Anna": {
+        "known": {
+            "name": "Olivia",
+            "locale": "en",
+            "provider": "xai",
+            "voice_id": "bedd6226"
+        },
+        "gender": "f",
+        "target": {
+            "name": "Carlota",
+            "locale": "es-MX",
+            "provider": "azure",
+            "voice_id": "es-MX-CarlotaNeural"
+        },
+        "variants": [
+            "Anna"
+        ]
+    },
+    "Guest": {
+        "known": {
+            "name": "Tom",
+            "locale": "en",
+            "provider": "xai",
+            "voice_id": "gfzdpspr5fdp"
+        },
+        "gender": "m",
+        "target": {
+            "name": "Luciano",
+            "locale": "es-MX",
+            "provider": "azure",
+            "voice_id": "es-MX-LucianoNeural"
+        },
+        "variants": [
+            "Guest"
+        ]
+    },
+    "James": {
+        "known": {
+            "name": "Tom",
+            "locale": "en",
+            "provider": "xai",
+            "voice_id": "gfzdpspr5fdp"
+        },
+        "gender": "m",
+        "target": {
+            "name": "Luciano",
+            "locale": "es-MX",
+            "provider": "azure",
+            "voice_id": "es-MX-LucianoNeural"
+        },
+        "variants": [
+            "James"
+        ]
+    },
+    "Local": {
+        "known": {
+            "name": "Tom",
+            "locale": "en",
+            "provider": "xai",
+            "voice_id": "gfzdpspr5fdp"
+        },
+        "gender": "m",
+        "target": {
+            "name": "Luciano",
+            "locale": "es-MX",
+            "provider": "azure",
+            "voice_id": "es-MX-LucianoNeural"
+        },
+        "variants": [
+            "Local"
+        ]
+    },
+    "Sarah": {
+        "known": {
+            "name": "Olivia",
+            "locale": "en",
+            "provider": "xai",
+            "voice_id": "bedd6226"
+        },
+        "gender": "f",
+        "target": {
+            "name": "Carlota",
+            "locale": "es-MX",
+            "provider": "azure",
+            "voice_id": "es-MX-CarlotaNeural"
+        },
+        "variants": [
+            "Sarah"
+        ]
+    },
+    "Driver": {
+        "known": {
+            "name": "Tom",
+            "locale": "en",
+            "provider": "xai",
+            "voice_id": "gfzdpspr5fdp"
+        },
+        "gender": "m",
+        "target": {
+            "name": "Luciano",
+            "locale": "es-MX",
+            "provider": "azure",
+            "voice_id": "es-MX-LucianoNeural"
+        },
+        "variants": [
+            "Driver"
+        ]
+    },
+    "Friend": {
+        "known": {
+            "name": "Tom",
+            "locale": "en",
+            "provider": "xai",
+            "voice_id": "gfzdpspr5fdp"
+        },
+        "gender": "m",
+        "target": {
+            "name": "Luciano",
+            "locale": "es-MX",
+            "provider": "azure",
+            "voice_id": "es-MX-LucianoNeural"
+        },
+        "variants": [
+            "Friend",
+            "Friend (7 pm)"
+        ]
+    },
+    "Waiter": {
+        "known": {
+            "name": "Tom",
+            "locale": "en",
+            "provider": "xai",
+            "voice_id": "gfzdpspr5fdp"
+        },
+        "gender": "m",
+        "target": {
+            "name": "Luciano",
+            "locale": "es-MX",
+            "provider": "azure",
+            "voice_id": "es-MX-LucianoNeural"
+        },
+        "variants": [
+            "Waiter"
+        ]
+    },
+    "Barista": {
+        "known": {
+            "name": "Olivia",
+            "locale": "en",
+            "provider": "xai",
+            "voice_id": "bedd6226"
+        },
+        "gender": "f",
+        "target": {
+            "name": "Carlota",
+            "locale": "es-MX",
+            "provider": "azure",
+            "voice_id": "es-MX-CarlotaNeural"
+        },
+        "variants": [
+            "Barista",
+            "Barista (3 pm)"
+        ]
+    },
+    "Learner": {
+        "known": {
+            "name": "Olivia",
+            "locale": "en",
+            "provider": "xai",
+            "voice_id": "bedd6226"
+        },
+        "gender": "f",
+        "target": {
+            "name": "Carlota",
+            "locale": "es-MX",
+            "provider": "azure",
+            "voice_id": "es-MX-CarlotaNeural"
+        },
+        "variants": [
+            "Learner"
+        ]
+    },
+    "Tourist": {
+        "known": {
+            "name": "Tom",
+            "locale": "en",
+            "provider": "xai",
+            "voice_id": "gfzdpspr5fdp"
+        },
+        "gender": "m",
+        "target": {
+            "name": "Luciano",
+            "locale": "es-MX",
+            "provider": "azure",
+            "voice_id": "es-MX-LucianoNeural"
+        },
+        "variants": [
+            "Tourist"
+        ]
+    },
+    "Customer": {
+        "known": {
+            "name": "Tom",
+            "locale": "en",
+            "provider": "xai",
+            "voice_id": "gfzdpspr5fdp"
+        },
+        "gender": "n",
+        "target": {
+            "name": "Luciano",
+            "locale": "es-MX",
+            "provider": "azure",
+            "voice_id": "es-MX-LucianoNeural"
+        },
+        "variants": [
+            "Customer"
+        ]
+    },
+    "Narrator": {
+        "known": {
+            "name": "Tom",
+            "locale": "en",
+            "provider": "xai",
+            "voice_id": "gfzdpspr5fdp"
+        },
+        "gender": "n",
+        "target": {
+            "name": "Luciano",
+            "locale": "es-MX",
+            "provider": "azure",
+            "voice_id": "es-MX-LucianoNeural"
+        },
+        "variants": [
+            "Narrator"
+        ]
+    },
+    "_default": {
+        "known": {
+            "name": "Tom",
+            "locale": "en",
+            "provider": "xai",
+            "voice_id": "gfzdpspr5fdp"
+        },
+        "gender": "n",
+        "target": {
+            "name": "Luciano",
+            "locale": "es-MX",
+            "provider": "azure",
+            "voice_id": "es-MX-LucianoNeural"
+        }
+    },
+    "Assistant": {
+        "known": {
+            "name": "Tom",
+            "locale": "en",
+            "provider": "xai",
+            "voice_id": "gfzdpspr5fdp"
+        },
+        "gender": "n",
+        "target": {
+            "name": "Luciano",
+            "locale": "es-MX",
+            "provider": "azure",
+            "voice_id": "es-MX-LucianoNeural"
+        },
+        "variants": [
+            "Assistant"
+        ]
+    },
+    "Bartender": {
+        "known": {
+            "name": "Tom",
+            "locale": "en",
+            "provider": "xai",
+            "voice_id": "gfzdpspr5fdp"
+        },
+        "gender": "m",
+        "target": {
+            "name": "Luciano",
+            "locale": "es-MX",
+            "provider": "azure",
+            "voice_id": "es-MX-LucianoNeural"
+        },
+        "variants": [
+            "Bartender"
+        ]
+    },
+    "Neighbour": {
+        "known": {
+            "name": "Tom",
+            "locale": "en",
+            "provider": "xai",
+            "voice_id": "gfzdpspr5fdp"
+        },
+        "gender": "m",
+        "target": {
+            "name": "Luciano",
+            "locale": "es-MX",
+            "provider": "azure",
+            "voice_id": "es-MX-LucianoNeural"
+        },
+        "variants": [
+            "Neighbour",
+            "Neighbour (10:30 pm)",
+            "Neighbour (8 am)"
+        ]
+    },
+    "Passenger": {
+        "known": {
+            "name": "Tom",
+            "locale": "en",
+            "provider": "xai",
+            "voice_id": "gfzdpspr5fdp"
+        },
+        "gender": "n",
+        "target": {
+            "name": "Luciano",
+            "locale": "es-MX",
+            "provider": "azure",
+            "voice_id": "es-MX-LucianoNeural"
+        },
+        "variants": [
+            "Passenger"
+        ]
+    },
+    "Customer 1": {
+        "known": {
+            "name": "Tom",
+            "locale": "en",
+            "provider": "xai",
+            "voice_id": "gfzdpspr5fdp"
+        },
+        "gender": "n",
+        "target": {
+            "name": "Luciano",
+            "locale": "es-MX",
+            "provider": "azure",
+            "voice_id": "es-MX-LucianoNeural"
+        },
+        "variants": [
+            "Customer 1"
+        ]
+    },
+    "Customer 2": {
+        "known": {
+            "name": "Tom",
+            "locale": "en",
+            "provider": "xai",
+            "voice_id": "gfzdpspr5fdp"
+        },
+        "gender": "n",
+        "target": {
+            "name": "Luciano",
+            "locale": "es-MX",
+            "provider": "azure",
+            "voice_id": "es-MX-LucianoNeural"
+        },
+        "variants": [
+            "Customer 2"
+        ]
+    },
+    "Customer 3": {
+        "known": {
+            "name": "Tom",
+            "locale": "en",
+            "provider": "xai",
+            "voice_id": "gfzdpspr5fdp"
+        },
+        "gender": "n",
+        "target": {
+            "name": "Luciano",
+            "locale": "es-MX",
+            "provider": "azure",
+            "voice_id": "es-MX-LucianoNeural"
+        },
+        "variants": [
+            "Customer 3"
+        ]
+    },
+    "Pharmacist": {
+        "known": {
+            "name": "Tom",
+            "locale": "en",
+            "provider": "xai",
+            "voice_id": "gfzdpspr5fdp"
+        },
+        "gender": "m",
+        "target": {
+            "name": "Luciano",
+            "locale": "es-MX",
+            "provider": "azure",
+            "voice_id": "es-MX-LucianoNeural"
+        },
+        "variants": [
+            "Pharmacist"
+        ]
+    },
+    "Receptionist": {
+        "known": {
+            "name": "Olivia",
+            "locale": "en",
+            "provider": "xai",
+            "voice_id": "bedd6226"
+        },
+        "gender": "f",
+        "target": {
+            "name": "Carlota",
+            "locale": "es-MX",
+            "provider": "azure",
+            "voice_id": "es-MX-CarlotaNeural"
+        },
+        "variants": [
+            "Receptionist"
+        ]
+    }
+}

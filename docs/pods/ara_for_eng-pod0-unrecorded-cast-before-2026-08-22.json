@@ -1,0 +1,417 @@
+{
+    "Anna": {
+        "known": {
+            "name": "Olivia",
+            "locale": "en",
+            "provider": "xai",
+            "voice_id": "bedd6226"
+        },
+        "gender": "f",
+        "target": {
+            "name": "Salma",
+            "locale": "ar-EG",
+            "provider": "azure",
+            "voice_id": "ar-EG-SalmaNeural"
+        },
+        "variants": [
+            "Anna"
+        ]
+    },
+    "Guest": {
+        "known": {
+            "name": "Tom",
+            "locale": "en",
+            "provider": "xai",
+            "voice_id": "gfzdpspr5fdp"
+        },
+        "gender": "m",
+        "target": {
+            "name": "Shakir",
+            "locale": "ar-EG",
+            "provider": "azure",
+            "voice_id": "ar-EG-ShakirNeural"
+        },
+        "variants": [
+            "Guest"
+        ]
+    },
+    "James": {
+        "known": {
+            "name": "Tom",
+            "locale": "en",
+            "provider": "xai",
+            "voice_id": "gfzdpspr5fdp"
+        },
+        "gender": "m",
+        "target": {
+            "name": "Shakir",
+            "locale": "ar-EG",
+            "provider": "azure",
+            "voice_id": "ar-EG-ShakirNeural"
+        },
+        "variants": [
+            "James"
+        ]
+    },
+    "Local": {
+        "known": {
+            "name": "Tom",
+            "locale": "en",
+            "provider": "xai",
+            "voice_id": "gfzdpspr5fdp"
+        },
+        "gender": "m",
+        "target": {
+            "name": "Shakir",
+            "locale": "ar-EG",
+            "provider": "azure",
+            "voice_id": "ar-EG-ShakirNeural"
+        },
+        "variants": [
+            "Local"
+        ]
+    },
+    "Sarah": {
+        "known": {
+            "name": "Olivia",
+            "locale": "en",
+            "provider": "xai",
+            "voice_id": "bedd6226"
+        },
+        "gender": "f",
+        "target": {
+            "name": "Salma",
+            "locale": "ar-EG",
+            "provider": "azure",
+            "voice_id": "ar-EG-SalmaNeural"
+        },
+        "variants": [
+            "Sarah"
+        ]
+    },
+    "Driver": {
+        "known": {
+            "name": "Tom",
+            "locale": "en",
+            "provider": "xai",
+            "voice_id": "gfzdpspr5fdp"
+        },
+        "gender": "m",
+        "target": {
+            "name": "Shakir",
+            "locale": "ar-EG",
+            "provider": "azure",
+            "voice_id": "ar-EG-ShakirNeural"
+        },
+        "variants": [
+            "Driver"
+        ]
+    },
+    "Friend": {
+        "known": {
+            "name": "Tom",
+            "locale": "en",
+            "provider": "xai",
+            "voice_id": "gfzdpspr5fdp"
+        },
+        "gender": "m",
+        "target": {
+            "name": "Shakir",
+            "locale": "ar-EG",
+            "provider": "azure",
+            "voice_id": "ar-EG-ShakirNeural"
+        },
+        "variants": [
+            "Friend (7 pm)",
+            "Friend"
+        ]
+    },
+    "Waiter": {
+        "known": {
+            "name": "Tom",
+            "locale": "en",
+            "provider": "xai",
+            "voice_id": "gfzdpspr5fdp"
+        },
+        "gender": "m",
+        "target": {
+            "name": "Shakir",
+            "locale": "ar-EG",
+            "provider": "azure",
+            "voice_id": "ar-EG-ShakirNeural"
+        },
+        "variants": [
+            "Waiter"
+        ]
+    },
+    "Barista": {
+        "known": {
+            "name": "Olivia",
+            "locale": "en",
+            "provider": "xai",
+            "voice_id": "bedd6226"
+        },
+        "gender": "f",
+        "target": {
+            "name": "Salma",
+            "locale": "ar-EG",
+            "provider": "azure",
+            "voice_id": "ar-EG-SalmaNeural"
+        },
+        "variants": [
+            "Barista (3 pm)",
+            "Barista"
+        ]
+    },
+    "Learner": {
+        "known": {
+            "name": "Olivia",
+            "locale": "en",
+            "provider": "xai",
+            "voice_id": "bedd6226"
+        },
+        "gender": "f",
+        "target": {
+            "name": "Salma",
+            "locale": "ar-EG",
+            "provider": "azure",
+            "voice_id": "ar-EG-SalmaNeural"
+        },
+        "variants": [
+            "Learner"
+        ]
+    },
+    "Tourist": {
+        "known": {
+            "name": "Tom",
+            "locale": "en",
+            "provider": "xai",
+            "voice_id": "gfzdpspr5fdp"
+        },
+        "gender": "m",
+        "target": {
+            "name": "Shakir",
+            "locale": "ar-EG",
+            "provider": "azure",
+            "voice_id": "ar-EG-ShakirNeural"
+        },
+        "variants": [
+            "Tourist"
+        ]
+    },
+    "Customer": {
+        "known": {
+            "name": "Tom",
+            "locale": "en",
+            "provider": "xai",
+            "voice_id": "gfzdpspr5fdp"
+        },
+        "gender": "n",
+        "target": {
+            "name": "Shakir",
+            "locale": "ar-EG",
+            "provider": "azure",
+            "voice_id": "ar-EG-ShakirNeural"
+        },
+        "variants": [
+            "Customer"
+        ]
+    },
+    "Narrator": {
+        "known": {
+            "name": "Tom",
+            "locale": "en",
+            "provider": "xai",
+            "voice_id": "gfzdpspr5fdp"
+        },
+        "gender": "n",
+        "target": {
+            "name": "Shakir",
+            "locale": "ar-EG",
+            "provider": "azure",
+            "voice_id": "ar-EG-ShakirNeural"
+        },
+        "variants": [
+            "Narrator"
+        ]
+    },
+    "_default": {
+        "known": {
+            "name": "Tom",
+            "locale": "en",
+            "provider": "xai",
+            "voice_id": "gfzdpspr5fdp"
+        },
+        "gender": "n",
+        "target": {
+            "name": "Shakir",
+            "locale": "ar-EG",
+            "provider": "azure",
+            "voice_id": "ar-EG-ShakirNeural"
+        }
+    },
+    "Assistant": {
+        "known": {
+            "name": "Tom",
+            "locale": "en",
+            "provider": "xai",
+            "voice_id": "gfzdpspr5fdp"
+        },
+        "gender": "n",
+        "target": {
+            "name": "Shakir",
+            "locale": "ar-EG",
+            "provider": "azure",
+            "voice_id": "ar-EG-ShakirNeural"
+        },
+        "variants": [
+            "Assistant"
+        ]
+    },
+    "Bartender": {
+        "known": {
+            "name": "Tom",
+            "locale": "en",
+            "provider": "xai",
+            "voice_id": "gfzdpspr5fdp"
+        },
+        "gender": "m",
+        "target": {
+            "name": "Shakir",
+            "locale": "ar-EG",
+            "provider": "azure",
+            "voice_id": "ar-EG-ShakirNeural"
+        },
+        "variants": [
+            "Bartender"
+        ]
+    },
+    "Neighbour": {
+        "known": {
+            "name": "Tom",
+            "locale": "en",
+            "provider": "xai",
+            "voice_id": "gfzdpspr5fdp"
+        },
+        "gender": "m",
+        "target": {
+            "name": "Shakir",
+            "locale": "ar-EG",
+            "provider": "azure",
+            "voice_id": "ar-EG-ShakirNeural"
+        },
+        "variants": [
+            "Neighbour",
+            "Neighbour (8 am)",
+            "Neighbour (10:30 pm)"
+        ]
+    },
+    "Passenger": {
+        "known": {
+            "name": "Tom",
+            "locale": "en",
+            "provider": "xai",
+            "voice_id": "gfzdpspr5fdp"
+        },
+        "gender": "n",
+        "target": {
+            "name": "Shakir",
+            "locale": "ar-EG",
+            "provider": "azure",
+            "voice_id": "ar-EG-ShakirNeural"
+        },
+        "variants": [
+            "Passenger"
+        ]
+    },
+    "Customer 1": {
+        "known": {
+            "name": "Tom",
+            "locale": "en",
+            "provider": "xai",
+            "voice_id": "gfzdpspr5fdp"
+        },
+        "gender": "n",
+        "target": {
+            "name": "Shakir",
+            "locale": "ar-EG",
+            "provider": "azure",
+            "voice_id": "ar-EG-ShakirNeural"
+        },
+        "variants": [
+            "Customer 1"
+        ]
+    },
+    "Customer 2": {
+        "known": {
+            "name": "Tom",
+            "locale": "en",
+            "provider": "xai",
+            "voice_id": "gfzdpspr5fdp"
+        },
+        "gender": "n",
+        "target": {
+            "name": "Shakir",
+            "locale": "ar-EG",
+            "provider": "azure",
+            "voice_id": "ar-EG-ShakirNeural"
+        },
+        "variants": [
+            "Customer 2"
+        ]
+    },
+    "Customer 3": {
+        "known": {
+            "name": "Tom",
+            "locale": "en",
+            "provider": "xai",
+            "voice_id": "gfzdpspr5fdp"
+        },
+        "gender": "n",
+        "target": {
+            "name": "Shakir",
+            "locale": "ar-EG",
+            "provider": "azure",
+            "voice_id": "ar-EG-ShakirNeural"
+        },
+        "variants": [
+            "Customer 3"
+        ]
+    },
+    "Pharmacist": {
+        "known": {
+            "name": "Tom",
+            "locale": "en",
+            "provider": "xai",
+            "voice_id": "gfzdpspr5fdp"
+        },
+        "gender": "m",
+        "target": {
+            "name": "Shakir",
+            "locale": "ar-EG",
+            "provider": "azure",
+            "voice_id": "ar-EG-ShakirNeural"
+        },
+        "variants": [
+            "Pharmacist"
+        ]
+    },
+    "Receptionist": {
+        "known": {
+            "name": "Olivia",
+            "locale": "en",
+            "provider": "xai",
+            "voice_id": "bedd6226"
+        },
+        "gender": "f",
+        "target": {
+            "name": "Salma",
+            "locale": "ar-EG",
+            "provider": "azure",
+            "voice_id": "ar-EG-SalmaNeural"
+        },
+        "variants": [
+            "Receptionist"
+        ]
+    }
+}

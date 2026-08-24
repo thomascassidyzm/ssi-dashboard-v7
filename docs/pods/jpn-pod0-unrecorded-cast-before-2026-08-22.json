@@ -1,0 +1,417 @@
+{
+    "Anna": {
+        "known": {
+            "name": "Olivia",
+            "locale": "en",
+            "provider": "xai",
+            "voice_id": "bedd6226"
+        },
+        "gender": "f",
+        "target": {
+            "name": "Ara",
+            "locale": "ja",
+            "provider": "xai",
+            "voice_id": "ara"
+        },
+        "variants": [
+            "Anna"
+        ]
+    },
+    "Guest": {
+        "known": {
+            "name": "Tom",
+            "locale": "en",
+            "provider": "xai",
+            "voice_id": "gfzdpspr5fdp"
+        },
+        "gender": "m",
+        "target": {
+            "name": "Ren",
+            "locale": "ja",
+            "provider": "xai",
+            "voice_id": "b1a7441b97a1"
+        },
+        "variants": [
+            "Guest"
+        ]
+    },
+    "James": {
+        "known": {
+            "name": "Tom",
+            "locale": "en",
+            "provider": "xai",
+            "voice_id": "gfzdpspr5fdp"
+        },
+        "gender": "m",
+        "target": {
+            "name": "Ren",
+            "locale": "ja",
+            "provider": "xai",
+            "voice_id": "b1a7441b97a1"
+        },
+        "variants": [
+            "James"
+        ]
+    },
+    "Local": {
+        "known": {
+            "name": "Tom",
+            "locale": "en",
+            "provider": "xai",
+            "voice_id": "gfzdpspr5fdp"
+        },
+        "gender": "m",
+        "target": {
+            "name": "Ren",
+            "locale": "ja",
+            "provider": "xai",
+            "voice_id": "b1a7441b97a1"
+        },
+        "variants": [
+            "Local"
+        ]
+    },
+    "Sarah": {
+        "known": {
+            "name": "Olivia",
+            "locale": "en",
+            "provider": "xai",
+            "voice_id": "bedd6226"
+        },
+        "gender": "f",
+        "target": {
+            "name": "Sakura",
+            "locale": "ja",
+            "provider": "xai",
+            "voice_id": "d0cb9ff07d95"
+        },
+        "variants": [
+            "Sarah"
+        ]
+    },
+    "Driver": {
+        "known": {
+            "name": "Tom",
+            "locale": "en",
+            "provider": "xai",
+            "voice_id": "gfzdpspr5fdp"
+        },
+        "gender": "m",
+        "target": {
+            "name": "Ren",
+            "locale": "ja",
+            "provider": "xai",
+            "voice_id": "b1a7441b97a1"
+        },
+        "variants": [
+            "Driver"
+        ]
+    },
+    "Friend": {
+        "known": {
+            "name": "Tom",
+            "locale": "en",
+            "provider": "xai",
+            "voice_id": "gfzdpspr5fdp"
+        },
+        "gender": "m",
+        "target": {
+            "name": "Ren",
+            "locale": "ja",
+            "provider": "xai",
+            "voice_id": "b1a7441b97a1"
+        },
+        "variants": [
+            "Friend (7 pm)",
+            "Friend"
+        ]
+    },
+    "Waiter": {
+        "known": {
+            "name": "Tom",
+            "locale": "en",
+            "provider": "xai",
+            "voice_id": "gfzdpspr5fdp"
+        },
+        "gender": "m",
+        "target": {
+            "name": "Ren",
+            "locale": "ja",
+            "provider": "xai",
+            "voice_id": "b1a7441b97a1"
+        },
+        "variants": [
+            "Waiter"
+        ]
+    },
+    "Barista": {
+        "known": {
+            "name": "Olivia",
+            "locale": "en",
+            "provider": "xai",
+            "voice_id": "bedd6226"
+        },
+        "gender": "f",
+        "target": {
+            "name": "Ren",
+            "locale": "ja",
+            "provider": "xai",
+            "voice_id": "b1a7441b97a1"
+        },
+        "variants": [
+            "Barista (3 pm)",
+            "Barista"
+        ]
+    },
+    "Learner": {
+        "known": {
+            "name": "Olivia",
+            "locale": "en",
+            "provider": "xai",
+            "voice_id": "bedd6226"
+        },
+        "gender": "f",
+        "target": {
+            "name": "Ara",
+            "locale": "ja",
+            "provider": "xai",
+            "voice_id": "ara"
+        },
+        "variants": [
+            "Learner"
+        ]
+    },
+    "Tourist": {
+        "known": {
+            "name": "Tom",
+            "locale": "en",
+            "provider": "xai",
+            "voice_id": "gfzdpspr5fdp"
+        },
+        "gender": "m",
+        "target": {
+            "name": "Rex",
+            "locale": "ja",
+            "provider": "xai",
+            "voice_id": "rex"
+        },
+        "variants": [
+            "Tourist"
+        ]
+    },
+    "Customer": {
+        "known": {
+            "name": "Tom",
+            "locale": "en",
+            "provider": "xai",
+            "voice_id": "gfzdpspr5fdp"
+        },
+        "gender": "n",
+        "target": {
+            "name": "Ara",
+            "locale": "ja",
+            "provider": "xai",
+            "voice_id": "ara"
+        },
+        "variants": [
+            "Customer"
+        ]
+    },
+    "Narrator": {
+        "known": {
+            "name": "Tom",
+            "locale": "en",
+            "provider": "xai",
+            "voice_id": "gfzdpspr5fdp"
+        },
+        "gender": "n",
+        "target": {
+            "name": "Sakura",
+            "locale": "ja",
+            "provider": "xai",
+            "voice_id": "d0cb9ff07d95"
+        },
+        "variants": [
+            "Narrator"
+        ]
+    },
+    "_default": {
+        "known": {
+            "name": "Tom",
+            "locale": "en",
+            "provider": "xai",
+            "voice_id": "gfzdpspr5fdp"
+        },
+        "gender": "n",
+        "target": {
+            "name": "Ren",
+            "locale": "ja",
+            "provider": "xai",
+            "voice_id": "b1a7441b97a1"
+        }
+    },
+    "Assistant": {
+        "known": {
+            "name": "Tom",
+            "locale": "en",
+            "provider": "xai",
+            "voice_id": "gfzdpspr5fdp"
+        },
+        "gender": "n",
+        "target": {
+            "name": "Eve",
+            "locale": "ja",
+            "provider": "xai",
+            "voice_id": "eve"
+        },
+        "variants": [
+            "Assistant"
+        ]
+    },
+    "Bartender": {
+        "known": {
+            "name": "Tom",
+            "locale": "en",
+            "provider": "xai",
+            "voice_id": "gfzdpspr5fdp"
+        },
+        "gender": "m",
+        "target": {
+            "name": "Ren",
+            "locale": "ja",
+            "provider": "xai",
+            "voice_id": "b1a7441b97a1"
+        },
+        "variants": [
+            "Bartender"
+        ]
+    },
+    "Neighbour": {
+        "known": {
+            "name": "Tom",
+            "locale": "en",
+            "provider": "xai",
+            "voice_id": "gfzdpspr5fdp"
+        },
+        "gender": "m",
+        "target": {
+            "name": "Ren",
+            "locale": "ja",
+            "provider": "xai",
+            "voice_id": "b1a7441b97a1"
+        },
+        "variants": [
+            "Neighbour (8 am)",
+            "Neighbour",
+            "Neighbour (10:30 pm)"
+        ]
+    },
+    "Passenger": {
+        "known": {
+            "name": "Tom",
+            "locale": "en",
+            "provider": "xai",
+            "voice_id": "gfzdpspr5fdp"
+        },
+        "gender": "n",
+        "target": {
+            "name": "Ara",
+            "locale": "ja",
+            "provider": "xai",
+            "voice_id": "ara"
+        },
+        "variants": [
+            "Passenger"
+        ]
+    },
+    "Customer 1": {
+        "known": {
+            "name": "Tom",
+            "locale": "en",
+            "provider": "xai",
+            "voice_id": "gfzdpspr5fdp"
+        },
+        "gender": "n",
+        "target": {
+            "name": "Ara",
+            "locale": "ja",
+            "provider": "xai",
+            "voice_id": "ara"
+        },
+        "variants": [
+            "Customer 1"
+        ]
+    },
+    "Customer 2": {
+        "known": {
+            "name": "Tom",
+            "locale": "en",
+            "provider": "xai",
+            "voice_id": "gfzdpspr5fdp"
+        },
+        "gender": "n",
+        "target": {
+            "name": "Eve",
+            "locale": "ja",
+            "provider": "xai",
+            "voice_id": "eve"
+        },
+        "variants": [
+            "Customer 2"
+        ]
+    },
+    "Customer 3": {
+        "known": {
+            "name": "Tom",
+            "locale": "en",
+            "provider": "xai",
+            "voice_id": "gfzdpspr5fdp"
+        },
+        "gender": "n",
+        "target": {
+            "name": "Rex",
+            "locale": "ja",
+            "provider": "xai",
+            "voice_id": "rex"
+        },
+        "variants": [
+            "Customer 3"
+        ]
+    },
+    "Pharmacist": {
+        "known": {
+            "name": "Tom",
+            "locale": "en",
+            "provider": "xai",
+            "voice_id": "gfzdpspr5fdp"
+        },
+        "gender": "m",
+        "target": {
+            "name": "Ren",
+            "locale": "ja",
+            "provider": "xai",
+            "voice_id": "b1a7441b97a1"
+        },
+        "variants": [
+            "Pharmacist"
+        ]
+    },
+    "Receptionist": {
+        "known": {
+            "name": "Olivia",
+            "locale": "en",
+            "provider": "xai",
+            "voice_id": "bedd6226"
+        },
+        "gender": "f",
+        "target": {
+            "name": "Ara",
+            "locale": "ja",
+            "provider": "xai",
+            "voice_id": "ara"
+        },
+        "variants": [
+            "Receptionist"
+        ]
+    }
+}
