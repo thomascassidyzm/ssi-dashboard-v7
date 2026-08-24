@@ -230,20 +230,18 @@ Italian was the sample and was verified before the fleet ran: all 87 usable
 known splits serve, parse and seam clean through `saysomethingin.app/api/audio`,
 0 parity failures.
 
-A fleet-wide sweep followed. Across **20 courses / 1,432 rows**:
+A fleet-wide sweep followed, over **all 22 courses / all 1,553 rows** carrying
+a usable known split — a sweep, not a sample:
 
 | check | failures |
 |---|---|
 | serves | **0** |
 | parity | **0** |
 | seams | **0** |
-| text | 43 |
+| text | 44 |
 
-`swe` and `zho` were still sweeping when this was written and were passing at
-that point; every course checked shows the identical pattern.
-
-**All 43 text failures are on REUSED clips, none on a clip this pass cut.**
-42 are the same words with different case and punctuation; the 43rd is a
+**All 44 text failures are on REUSED clips. Not one is on a clip this pass
+cut.** 43 are the same words with different case and punctuation; the 44th is a
 pre-existing June defect described below.
 
 ### The one real consequence of this pass — and its floor
@@ -257,7 +255,7 @@ where the sentence reads `Of course.`, `wednesday` for `Wednesday.`. And
 knownText: (knownClip && textById?.get(knownClip)) || kSents[i] || '',
 ```
 
-So on 42 of 1,432 rows (2.9%) one card's translation line now reads `of course`
+So on 43 of 1,553 rows (2.8%) one card's translation line now reads `of course`
 instead of `Of course.`. **The audio is correct**; the casing is not. Before
 this pass those rows had no known array, so `kSents[i]` won and the text was
 right.
@@ -283,7 +281,7 @@ splits. Swapping the precedence on that one line —
 knownText: kSents[i] || (knownClip && textById?.get(knownClip)) || '',
 ```
 
-— fixes all 42 at once, costs nothing, and cannot regress the target side. It is
+— fixes all 43 at once, costs nothing, and cannot regress the target side. It is
 learner-facing shared code in `ssi-learning-app`, so it is recommended here
 rather than done.
 
