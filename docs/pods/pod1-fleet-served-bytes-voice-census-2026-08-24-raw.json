@@ -1,0 +1,3257 @@
+{
+  "ara_eg_for_eng": {
+    "pod_id": "ara_eg_for_eng:pod-1",
+    "voices": {
+      "eve": {
+        "declaredGender": "f",
+        "declaredName": "Eve",
+        "clips": [
+          {
+            "scene": 1,
+            "speaker": "Sarah",
+            "target_audio_id": "2749d175-a0eb-461f-8c81-5163c552c08a",
+            "voice_id_raw": "xai_eve",
+            "duration_ms": 2159,
+            "medianF0Hz": 219.2,
+            "voicedFrames": 56,
+            "totalFrames": 106,
+            "spectralCentroidHz": 1063,
+            "classification": "female-typical",
+            "bytes": 26496
+          },
+          {
+            "scene": 2,
+            "speaker": "Sarah",
+            "target_audio_id": "1104e8ce-bd98-4c6d-95d6-5bb2de6d754b",
+            "voice_id_raw": "xai_eve",
+            "duration_ms": 2208,
+            "medianF0Hz": 207.8,
+            "voicedFrames": 72,
+            "totalFrames": 109,
+            "spectralCentroidHz": 1085,
+            "classification": "female-typical",
+            "bytes": 27072
+          },
+          {
+            "scene": 3,
+            "speaker": "Sarah",
+            "target_audio_id": "ac6d3bd0-5adf-4e52-9884-ca6f88460158",
+            "voice_id_raw": "xai_eve",
+            "duration_ms": 6349,
+            "medianF0Hz": 179.8,
+            "voicedFrames": 183,
+            "totalFrames": 316,
+            "spectralCentroidHz": 1104,
+            "classification": "female-typical",
+            "bytes": 76896
+          },
+          {
+            "scene": 4,
+            "speaker": "Sarah",
+            "target_audio_id": "a830bd63-c2b3-4259-9730-39e2a383e3d4",
+            "voice_id_raw": "xai_eve",
+            "duration_ms": 6672,
+            "medianF0Hz": 210.5,
+            "voicedFrames": 204,
+            "totalFrames": 332,
+            "spectralCentroidHz": 1070,
+            "classification": "female-typical",
+            "bytes": 80640
+          },
+          {
+            "scene": 5,
+            "speaker": "Sarah",
+            "target_audio_id": "6b9b9c78-2758-45f2-a79f-f1fdd67c37a8",
+            "voice_id_raw": "xai_eve",
+            "duration_ms": 6456,
+            "medianF0Hz": 202.5,
+            "voicedFrames": 189,
+            "totalFrames": 321,
+            "spectralCentroidHz": 1366,
+            "classification": "female-typical",
+            "bytes": 78048
+          }
+        ],
+        "medianOfMediansF0Hz": 207.8,
+        "usableClips": 5,
+        "totalClips": 5,
+        "classification": "female-typical"
+      },
+      "rex": {
+        "declaredGender": "m",
+        "declaredName": "Rex",
+        "clips": [
+          {
+            "scene": 1,
+            "speaker": "Neighbour (8 am)",
+            "target_audio_id": "edef34b8-f9f9-4235-97ec-908c8f8ac30f",
+            "voice_id_raw": "rex",
+            "duration_ms": 1416,
+            "medianF0Hz": 126,
+            "voicedFrames": 47,
+            "totalFrames": 68,
+            "spectralCentroidHz": 1645,
+            "classification": "male-typical",
+            "bytes": 17280
+          },
+          {
+            "scene": 2,
+            "speaker": "Passenger",
+            "target_audio_id": "f4a84c29-a82b-44e0-a982-459928c616ff",
+            "voice_id_raw": "xai_rex",
+            "duration_ms": 2024,
+            "medianF0Hz": 95.2,
+            "voicedFrames": 49,
+            "totalFrames": 100,
+            "spectralCentroidHz": 1295,
+            "classification": "male-typical",
+            "bytes": 25056
+          },
+          {
+            "scene": 3,
+            "speaker": "Barista (3 pm)",
+            "target_audio_id": "65d6513b-5c95-4fc4-aa34-1cad4a05436e",
+            "voice_id_raw": "xai_rex",
+            "duration_ms": 2448,
+            "medianF0Hz": 106,
+            "voicedFrames": 71,
+            "totalFrames": 121,
+            "spectralCentroidHz": 1304,
+            "classification": "male-typical",
+            "bytes": 29952
+          },
+          {
+            "scene": 4,
+            "speaker": "Friend (7 pm)",
+            "target_audio_id": "39446176-cdd7-47e0-9e35-13788794aa13",
+            "voice_id_raw": "rex",
+            "duration_ms": 1776,
+            "medianF0Hz": 101.3,
+            "voicedFrames": 57,
+            "totalFrames": 86,
+            "spectralCentroidHz": 1455,
+            "classification": "male-typical",
+            "bytes": 21600
+          },
+          {
+            "scene": 5,
+            "speaker": "Neighbour (10:30 pm)",
+            "target_audio_id": "2e9df3b2-288b-45c1-9c0e-69f66d8ff4cc",
+            "voice_id_raw": "rex",
+            "duration_ms": 3264,
+            "medianF0Hz": 115.1,
+            "voicedFrames": 115,
+            "totalFrames": 160,
+            "spectralCentroidHz": 861,
+            "classification": "male-typical",
+            "bytes": 39456
+          }
+        ],
+        "medianOfMediansF0Hz": 106,
+        "usableClips": 5,
+        "totalClips": 5,
+        "classification": "male-typical"
+      }
+    }
+  },
+  "ara_for_eng": {
+    "pod_id": "ara_for_eng:pod-1",
+    "voices": {
+      "ar-EG-SalmaNeural": {
+        "declaredGender": null,
+        "declaredName": "Salma",
+        "clips": [
+          {
+            "scene": 1,
+            "speaker": "Sarah",
+            "target_audio_id": "3669b0cc-0987-43d7-afc2-c3c800cf30ec",
+            "voice_id_raw": "azure_ar-EG-SalmaNeural",
+            "duration_ms": 3237,
+            "medianF0Hz": 210.5,
+            "voicedFrames": 54,
+            "totalFrames": 160,
+            "spectralCentroidHz": 1527,
+            "classification": "female-typical",
+            "bytes": 39456
+          },
+          {
+            "scene": 2,
+            "speaker": "Sarah",
+            "target_audio_id": "e7ea2a27-51a1-4cc7-9264-35dee0838739",
+            "voice_id_raw": "azure_ar-EG-SalmaNeural",
+            "duration_ms": 3267,
+            "medianF0Hz": 235.3,
+            "voicedFrames": 103,
+            "totalFrames": 162,
+            "spectralCentroidHz": 1374,
+            "classification": "female-typical",
+            "bytes": 40032
+          },
+          {
+            "scene": 3,
+            "speaker": "Sarah",
+            "target_audio_id": "d1fd1507-4ec9-4b81-8e45-190c71b9c2d7",
+            "voice_id_raw": "azure_ar-EG-SalmaNeural",
+            "duration_ms": 10488,
+            "medianF0Hz": 213.3,
+            "voicedFrames": 265,
+            "totalFrames": 523,
+            "spectralCentroidHz": 1304,
+            "classification": "female-typical",
+            "bytes": 126720
+          },
+          {
+            "scene": 4,
+            "speaker": "Sarah",
+            "target_audio_id": "b654c449-6f74-4be6-b6dc-9e9a31afd255",
+            "voice_id_raw": "azure_ar-EG-SalmaNeural",
+            "duration_ms": 12217,
+            "medianF0Hz": 222.2,
+            "voicedFrames": 340,
+            "totalFrames": 609,
+            "spectralCentroidHz": 1287,
+            "classification": "female-typical",
+            "bytes": 147456
+          },
+          {
+            "scene": 5,
+            "speaker": "Sarah",
+            "target_audio_id": "29594f6a-424a-4a97-89c5-2356c8bf34a2",
+            "voice_id_raw": "azure_ar-EG-SalmaNeural",
+            "duration_ms": 10228,
+            "medianF0Hz": 210.5,
+            "voicedFrames": 243,
+            "totalFrames": 510,
+            "spectralCentroidHz": 1432,
+            "classification": "female-typical",
+            "bytes": 123552
+          }
+        ],
+        "medianOfMediansF0Hz": 213.3,
+        "usableClips": 5,
+        "totalClips": 5,
+        "classification": "female-typical"
+      },
+      "ar-EG-ShakirNeural": {
+        "declaredGender": null,
+        "declaredName": "Shakir",
+        "clips": [
+          {
+            "scene": 1,
+            "speaker": "Neighbour (8 am)",
+            "target_audio_id": "3f56ea76-4f28-42d9-9575-d085e39440f7",
+            "voice_id_raw": "azure_ar-EG-ShakirNeural",
+            "duration_ms": 2265,
+            "medianF0Hz": 103.9,
+            "voicedFrames": 57,
+            "totalFrames": 112,
+            "spectralCentroidHz": 1324,
+            "classification": "male-typical",
+            "bytes": 27936
+          },
+          {
+            "scene": 2,
+            "speaker": "Passenger",
+            "target_audio_id": "b28f2d53-268a-47fd-a156-30de5179c0a2",
+            "voice_id_raw": "azure_ar-EG-ShakirNeural",
+            "duration_ms": 4404,
+            "medianF0Hz": 114.3,
+            "voicedFrames": 78,
+            "totalFrames": 219,
+            "spectralCentroidHz": 956,
+            "classification": "male-typical",
+            "bytes": 53568
+          },
+          {
+            "scene": 3,
+            "speaker": "Barista (3 pm)",
+            "target_audio_id": "69177232-60a0-44b0-a844-7003c4dab632",
+            "voice_id_raw": "azure_ar-EG-ShakirNeural",
+            "duration_ms": 3723,
+            "medianF0Hz": 118.5,
+            "voicedFrames": 81,
+            "totalFrames": 185,
+            "spectralCentroidHz": 1175,
+            "classification": "male-typical",
+            "bytes": 45504
+          },
+          {
+            "scene": 4,
+            "speaker": "Friend (7 pm)",
+            "target_audio_id": "708096c1-1f01-4243-ac19-098cea5563c9",
+            "voice_id_raw": "azure_ar-EG-ShakirNeural",
+            "duration_ms": 2585,
+            "medianF0Hz": 109.6,
+            "voicedFrames": 70,
+            "totalFrames": 128,
+            "spectralCentroidHz": 1225,
+            "classification": "male-typical",
+            "bytes": 31680
+          },
+          {
+            "scene": 5,
+            "speaker": "Neighbour (10:30 pm)",
+            "target_audio_id": "0641e4d3-dab9-446d-93c3-6499252d9fa2",
+            "voice_id_raw": "azure_ar-EG-ShakirNeural",
+            "duration_ms": 4991,
+            "medianF0Hz": 119.4,
+            "voicedFrames": 122,
+            "totalFrames": 248,
+            "spectralCentroidHz": 1095,
+            "classification": "male-typical",
+            "bytes": 60480
+          }
+        ],
+        "medianOfMediansF0Hz": 114.3,
+        "usableClips": 5,
+        "totalClips": 5,
+        "classification": "male-typical"
+      }
+    }
+  },
+  "deu_at_for_eng": {
+    "pod_id": "deu_at_for_eng:pod-1",
+    "voices": {
+      "44c91d64": {
+        "declaredGender": "f",
+        "declaredName": "Sonja",
+        "clips": [
+          {
+            "scene": 1,
+            "speaker": "Sarah",
+            "target_audio_id": "da3121dd-fd7f-487a-8c6a-113aeee77a65",
+            "voice_id_raw": "xai_44c91d64",
+            "duration_ms": 2496,
+            "medianF0Hz": 188.2,
+            "voicedFrames": 78,
+            "totalFrames": 123,
+            "spectralCentroidHz": 1746,
+            "classification": "female-typical",
+            "bytes": 30528
+          },
+          {
+            "scene": 2,
+            "speaker": "Sarah",
+            "target_audio_id": "965e838e-cc3d-4ee9-949e-159175a6bf1b",
+            "voice_id_raw": "xai_44c91d64",
+            "duration_ms": 2568,
+            "medianF0Hz": 210.5,
+            "voicedFrames": 70,
+            "totalFrames": 127,
+            "spectralCentroidHz": 2105,
+            "classification": "female-typical",
+            "bytes": 31392
+          },
+          {
+            "scene": 3,
+            "speaker": "Sarah",
+            "target_audio_id": "ab7e4891-f245-461b-921a-7a4068268b99",
+            "voice_id_raw": "xai_44c91d64",
+            "duration_ms": 7200,
+            "medianF0Hz": 188.2,
+            "voicedFrames": 200,
+            "totalFrames": 358,
+            "spectralCentroidHz": 2056,
+            "classification": "female-typical",
+            "bytes": 86976
+          },
+          {
+            "scene": 4,
+            "speaker": "Sarah",
+            "target_audio_id": "105a2a17-8bf9-4be8-ba0e-b749d7ec8b64",
+            "voice_id_raw": "xai_44c91d64",
+            "duration_ms": 8064,
+            "medianF0Hz": 188.2,
+            "voicedFrames": 275,
+            "totalFrames": 402,
+            "spectralCentroidHz": 1642,
+            "classification": "female-typical",
+            "bytes": 97344
+          },
+          {
+            "scene": 5,
+            "speaker": "Sarah",
+            "target_audio_id": "d6502d64-8ecc-468f-a9d6-1937b388bdfe",
+            "voice_id_raw": "xai_44c91d64",
+            "duration_ms": 5952,
+            "medianF0Hz": 179.8,
+            "voicedFrames": 151,
+            "totalFrames": 296,
+            "spectralCentroidHz": 1852,
+            "classification": "female-typical",
+            "bytes": 72000
+          }
+        ],
+        "medianOfMediansF0Hz": 188.2,
+        "usableClips": 5,
+        "totalClips": 5,
+        "classification": "female-typical"
+      },
+      "e1fc5a89": {
+        "declaredGender": "m",
+        "declaredName": "Felix",
+        "clips": [
+          {
+            "scene": 1,
+            "speaker": "Neighbour (8 am)",
+            "target_audio_id": "5a407eac-4d2c-4011-9375-67b299c9b997",
+            "voice_id_raw": "xai_e1fc5a89",
+            "duration_ms": 1248,
+            "medianF0Hz": 142.9,
+            "voicedFrames": 56,
+            "totalFrames": 61,
+            "spectralCentroidHz": 767,
+            "classification": "male-typical",
+            "bytes": 15552
+          },
+          {
+            "scene": 2,
+            "speaker": "Passenger",
+            "target_audio_id": "e0f66a08-6365-436a-9ae1-cadfa3c4ce38",
+            "voice_id_raw": "xai_e1fc5a89",
+            "duration_ms": 2808,
+            "medianF0Hz": 145.5,
+            "voicedFrames": 102,
+            "totalFrames": 139,
+            "spectralCentroidHz": 1346,
+            "classification": "male-typical",
+            "bytes": 34272
+          },
+          {
+            "scene": 3,
+            "speaker": "Barista (3 pm)",
+            "target_audio_id": "d2e1f8a9-68a2-4737-8960-0066975a450a",
+            "voice_id_raw": "xai_e1fc5a89",
+            "duration_ms": 2448,
+            "medianF0Hz": 132.2,
+            "voicedFrames": 58,
+            "totalFrames": 121,
+            "spectralCentroidHz": 1197,
+            "classification": "male-typical",
+            "bytes": 29952
+          },
+          {
+            "scene": 4,
+            "speaker": "Friend (7 pm)",
+            "target_audio_id": "4b5dd97e-6545-4941-9eed-735822b77107",
+            "voice_id_raw": "xai_e1fc5a89",
+            "duration_ms": 1608,
+            "medianF0Hz": 145.5,
+            "voicedFrames": 54,
+            "totalFrames": 79,
+            "spectralCentroidHz": 3028,
+            "classification": "male-typical",
+            "bytes": 19872
+          },
+          {
+            "scene": 5,
+            "speaker": "Neighbour (10:30 pm)",
+            "target_audio_id": "bace4a2d-a453-4fc5-a6ac-2bf2b9d7bfbb",
+            "voice_id_raw": "xai_e1fc5a89",
+            "duration_ms": 4056,
+            "medianF0Hz": 156.9,
+            "voicedFrames": 139,
+            "totalFrames": 201,
+            "spectralCentroidHz": 1284,
+            "classification": "AMBIGUOUS",
+            "bytes": 49248
+          }
+        ],
+        "medianOfMediansF0Hz": 145.5,
+        "usableClips": 5,
+        "totalClips": 5,
+        "classification": "male-typical"
+      }
+    }
+  },
+  "deu_for_eng": {
+    "pod_id": "deu_for_eng:pod-1",
+    "voices": {
+      "3a7889066fa2": {
+        "declaredGender": "f",
+        "declaredName": "Lena",
+        "clips": [
+          {
+            "scene": 1,
+            "speaker": "Sarah",
+            "target_audio_id": "f9684565-2372-4171-8fb9-dc8b9a1b881d",
+            "voice_id_raw": "xai_3a7889066fa2",
+            "duration_ms": 2520,
+            "medianF0Hz": 219.2,
+            "voicedFrames": 80,
+            "totalFrames": 124,
+            "spectralCentroidHz": 1131,
+            "classification": "female-typical",
+            "bytes": 30816
+          },
+          {
+            "scene": 2,
+            "speaker": "Sarah",
+            "target_audio_id": "84d401bc-6b04-4322-9d0f-5aa8069f0463",
+            "voice_id_raw": "xai_3a7889066fa2",
+            "duration_ms": 2448,
+            "medianF0Hz": 242.4,
+            "voicedFrames": 87,
+            "totalFrames": 121,
+            "spectralCentroidHz": 1530,
+            "classification": "female-typical",
+            "bytes": 29952
+          },
+          {
+            "scene": 3,
+            "speaker": "Sarah",
+            "target_audio_id": "f75173d4-a6c4-4a97-bcdc-ff0807bec3d1",
+            "voice_id_raw": "xai_3a7889066fa2",
+            "duration_ms": 7800,
+            "medianF0Hz": 235.3,
+            "voicedFrames": 221,
+            "totalFrames": 388,
+            "spectralCentroidHz": 1534,
+            "classification": "female-typical",
+            "bytes": 94176
+          },
+          {
+            "scene": 4,
+            "speaker": "Sarah",
+            "target_audio_id": "db2b47d6-7e70-4f80-b9bf-ead5f436173e",
+            "voice_id_raw": "xai_3a7889066fa2",
+            "duration_ms": 8448,
+            "medianF0Hz": 231.9,
+            "voicedFrames": 266,
+            "totalFrames": 421,
+            "spectralCentroidHz": 1356,
+            "classification": "female-typical",
+            "bytes": 101952
+          },
+          {
+            "scene": 5,
+            "speaker": "Sarah",
+            "target_audio_id": "53778bf9-f6a8-40b4-aab5-0a6b383a4ec9",
+            "voice_id_raw": "xai_3a7889066fa2",
+            "duration_ms": 5352,
+            "medianF0Hz": 216.2,
+            "voicedFrames": 160,
+            "totalFrames": 266,
+            "spectralCentroidHz": 1471,
+            "classification": "female-typical",
+            "bytes": 64800
+          }
+        ],
+        "medianOfMediansF0Hz": 231.9,
+        "usableClips": 5,
+        "totalClips": 5,
+        "classification": "female-typical"
+      },
+      "41321eb41295": {
+        "declaredGender": "m",
+        "declaredName": "Moritz",
+        "clips": [
+          {
+            "scene": 1,
+            "speaker": "Neighbour (8 am)",
+            "target_audio_id": "b2d0a0f8-0522-4e03-9810-123d6428fb59",
+            "voice_id_raw": "41321eb41295",
+            "duration_ms": 1608,
+            "medianF0Hz": 105.3,
+            "voicedFrames": 56,
+            "totalFrames": 78,
+            "spectralCentroidHz": 991,
+            "classification": "male-typical",
+            "bytes": 19584
+          },
+          {
+            "scene": 2,
+            "speaker": "Passenger",
+            "target_audio_id": "e4fbbc25-c674-4eb8-9bd8-d36a17061153",
+            "voice_id_raw": "xai_41321eb41295",
+            "duration_ms": 3187,
+            "medianF0Hz": 101.3,
+            "voicedFrames": 93,
+            "totalFrames": 158,
+            "spectralCentroidHz": 857,
+            "classification": "male-typical",
+            "bytes": 38880
+          },
+          {
+            "scene": 3,
+            "speaker": "Barista (3 pm)",
+            "target_audio_id": "18d16715-6964-4da5-9304-8748764c91af",
+            "voice_id_raw": "xai_41321eb41295",
+            "duration_ms": 2971,
+            "medianF0Hz": 135.6,
+            "voicedFrames": 86,
+            "totalFrames": 147,
+            "spectralCentroidHz": 991,
+            "classification": "male-typical",
+            "bytes": 36288
+          },
+          {
+            "scene": 4,
+            "speaker": "Friend (7 pm)",
+            "target_audio_id": "65480eab-dd7c-43df-a6b9-adfc8c5dc41a",
+            "voice_id_raw": "41321eb41295",
+            "duration_ms": 1368,
+            "medianF0Hz": 140.4,
+            "voicedFrames": 51,
+            "totalFrames": 66,
+            "spectralCentroidHz": 857,
+            "classification": "male-typical",
+            "bytes": 16704
+          },
+          {
+            "scene": 5,
+            "speaker": "Neighbour (10:30 pm)",
+            "target_audio_id": "dc1b2d85-d5de-4312-84bb-cbe263d599ee",
+            "voice_id_raw": "41321eb41295",
+            "duration_ms": 3384,
+            "medianF0Hz": 93,
+            "voicedFrames": 114,
+            "totalFrames": 166,
+            "spectralCentroidHz": 1018,
+            "classification": "male-typical",
+            "bytes": 40896
+          }
+        ],
+        "medianOfMediansF0Hz": 105.3,
+        "usableClips": 5,
+        "totalClips": 5,
+        "classification": "male-typical"
+      }
+    }
+  },
+  "eus_for_eng": {
+    "pod_id": "eus_for_eng:pod-1",
+    "voices": {
+      "eu-ES-AinhoaNeural": {
+        "declaredGender": null,
+        "declaredName": "Ainhoa",
+        "clips": [
+          {
+            "scene": 1,
+            "speaker": "Sarah",
+            "target_audio_id": "568c2365-d1ae-4221-9e60-e3a1c71e9d7d",
+            "voice_id_raw": "eu-ES-AinhoaNeural",
+            "duration_ms": 2184,
+            "medianF0Hz": 192.8,
+            "voicedFrames": 51,
+            "totalFrames": 106,
+            "spectralCentroidHz": 1381,
+            "classification": "female-typical",
+            "bytes": 26496
+          },
+          {
+            "scene": 2,
+            "speaker": "Sarah",
+            "target_audio_id": "ce505889-3e1d-4c6d-b23b-43a137e172ff",
+            "voice_id_raw": "eu-ES-AinhoaNeural",
+            "duration_ms": 3312,
+            "medianF0Hz": 177.8,
+            "voicedFrames": 103,
+            "totalFrames": 162,
+            "spectralCentroidHz": 1112,
+            "classification": "female-typical",
+            "bytes": 40032
+          },
+          {
+            "scene": 3,
+            "speaker": "Sarah",
+            "target_audio_id": "54c115c9-a2cf-4a51-b26f-f11d185a1c0c",
+            "voice_id_raw": "eu-ES-AinhoaNeural",
+            "duration_ms": 8352,
+            "medianF0Hz": 172,
+            "voicedFrames": 254,
+            "totalFrames": 414,
+            "spectralCentroidHz": 1142,
+            "classification": "female-typical",
+            "bytes": 100512
+          },
+          {
+            "scene": 4,
+            "speaker": "Sarah",
+            "target_audio_id": "2f01bfb4-972d-47d4-9336-57036be2a975",
+            "voice_id_raw": "eu-ES-AinhoaNeural",
+            "duration_ms": 9816,
+            "medianF0Hz": 164.9,
+            "voicedFrames": 284,
+            "totalFrames": 488,
+            "spectralCentroidHz": 1196,
+            "classification": "AMBIGUOUS",
+            "bytes": 118080
+          },
+          {
+            "scene": 5,
+            "speaker": "Sarah",
+            "target_audio_id": "9bdee03a-8240-4a03-a78c-191ebaf7e565",
+            "voice_id_raw": "eu-ES-AinhoaNeural",
+            "duration_ms": 7440,
+            "medianF0Hz": 156.9,
+            "voicedFrames": 172,
+            "totalFrames": 369,
+            "spectralCentroidHz": 1194,
+            "classification": "AMBIGUOUS",
+            "bytes": 89568
+          }
+        ],
+        "medianOfMediansF0Hz": 172,
+        "usableClips": 5,
+        "totalClips": 5,
+        "classification": "female-typical"
+      },
+      "eu-ES-AnderNeural": {
+        "declaredGender": null,
+        "declaredName": "Ander",
+        "clips": [
+          {
+            "scene": 1,
+            "speaker": "Neighbour (8 am)",
+            "target_audio_id": "a4b3253f-3931-4994-b270-52eb169ff910",
+            "voice_id_raw": "eu-ES-AnderNeural",
+            "duration_ms": 2328,
+            "medianF0Hz": 103.2,
+            "voicedFrames": 51,
+            "totalFrames": 114,
+            "spectralCentroidHz": 1222,
+            "classification": "male-typical",
+            "bytes": 28224
+          },
+          {
+            "scene": 2,
+            "speaker": "Passenger",
+            "target_audio_id": "f748ede4-7cf6-4b96-b967-94a89fb9cd8f",
+            "voice_id_raw": "azure_eu-ES-AnderNeural",
+            "duration_ms": 5040,
+            "medianF0Hz": 95.2,
+            "voicedFrames": 110,
+            "totalFrames": 250,
+            "spectralCentroidHz": 1182,
+            "classification": "male-typical",
+            "bytes": 61056
+          },
+          {
+            "scene": 3,
+            "speaker": "Barista (3 pm)",
+            "target_audio_id": "7283d876-8716-4d07-b46a-575c89d99f72",
+            "voice_id_raw": "azure_eu-ES-AnderNeural",
+            "duration_ms": 3060,
+            "medianF0Hz": 82.1,
+            "voicedFrames": 74,
+            "totalFrames": 151,
+            "spectralCentroidHz": 1305,
+            "classification": "male-typical",
+            "bytes": 37440
+          },
+          {
+            "scene": 4,
+            "speaker": "Friend (7 pm)",
+            "target_audio_id": "e0d550d5-384f-4786-b595-217cf909208d",
+            "voice_id_raw": "eu-ES-AnderNeural",
+            "duration_ms": 2016,
+            "medianF0Hz": 89.9,
+            "voicedFrames": 45,
+            "totalFrames": 97,
+            "spectralCentroidHz": 749,
+            "classification": "male-typical",
+            "bytes": 24480
+          },
+          {
+            "scene": 5,
+            "speaker": "Neighbour (10:30 pm)",
+            "target_audio_id": "eb5d5a42-6bb2-4a90-a9b7-1afe5b9f75d5",
+            "voice_id_raw": "eu-ES-AnderNeural",
+            "duration_ms": 4680,
+            "medianF0Hz": 97,
+            "voicedFrames": 112,
+            "totalFrames": 231,
+            "spectralCentroidHz": 913,
+            "classification": "male-typical",
+            "bytes": 56448
+          }
+        ],
+        "medianOfMediansF0Hz": 95.2,
+        "usableClips": 5,
+        "totalClips": 5,
+        "classification": "male-typical"
+      }
+    }
+  },
+  "fra_ca_for_eng": {
+    "pod_id": "fra_ca_for_eng:pod-1",
+    "voices": {
+      "fr-CA-SylvieNeural": {
+        "declaredGender": null,
+        "declaredName": "Sylvie",
+        "clips": [
+          {
+            "scene": 1,
+            "speaker": "Sarah",
+            "target_audio_id": "d6cc244b-7cbe-4bdf-8497-0d7b17cec484",
+            "voice_id_raw": "fr-CA-SylvieNeural",
+            "duration_ms": 3384,
+            "medianF0Hz": 202.5,
+            "voicedFrames": 70,
+            "totalFrames": 166,
+            "spectralCentroidHz": 1438,
+            "classification": "female-typical",
+            "bytes": 40896
+          },
+          {
+            "scene": 2,
+            "speaker": "Sarah",
+            "target_audio_id": "30bc114e-ec4b-420c-b65a-3dac1a26a906",
+            "voice_id_raw": "fr-CA-SylvieNeural",
+            "duration_ms": 3384,
+            "medianF0Hz": 197.5,
+            "voicedFrames": 90,
+            "totalFrames": 166,
+            "spectralCentroidHz": 1963,
+            "classification": "female-typical",
+            "bytes": 40896
+          },
+          {
+            "scene": 3,
+            "speaker": "Sarah",
+            "target_audio_id": "3baffcef-a347-4c6c-b429-a320ffb0b953",
+            "voice_id_raw": "fr-CA-SylvieNeural",
+            "duration_ms": 8448,
+            "medianF0Hz": 202.5,
+            "voicedFrames": 204,
+            "totalFrames": 420,
+            "spectralCentroidHz": 1610,
+            "classification": "female-typical",
+            "bytes": 101664
+          },
+          {
+            "scene": 4,
+            "speaker": "Sarah",
+            "target_audio_id": "b36e2b10-cffc-4f76-a2ae-9b3c2a63b2cd",
+            "voice_id_raw": "azure_fr-CA-SylvieNeural",
+            "duration_ms": 9531,
+            "medianF0Hz": 192.8,
+            "voicedFrames": 231,
+            "totalFrames": 475,
+            "spectralCentroidHz": 1555,
+            "classification": "female-typical",
+            "bytes": 115200
+          },
+          {
+            "scene": 5,
+            "speaker": "Sarah",
+            "target_audio_id": "12ff1908-a8f9-4576-b62c-0765dc8aa475",
+            "voice_id_raw": "azure_fr-CA-SylvieNeural",
+            "duration_ms": 8373,
+            "medianF0Hz": 200,
+            "voicedFrames": 182,
+            "totalFrames": 417,
+            "spectralCentroidHz": 1504,
+            "classification": "female-typical",
+            "bytes": 101088
+          }
+        ],
+        "medianOfMediansF0Hz": 200,
+        "usableClips": 5,
+        "totalClips": 5,
+        "classification": "female-typical"
+      },
+      "fr-CA-JeanNeural": {
+        "declaredGender": "NOT IN voices TABLE",
+        "declaredName": null,
+        "clips": [
+          {
+            "scene": 1,
+            "speaker": "Neighbour (8 am)",
+            "target_audio_id": "92b180bc-50a8-4118-bfbf-91c2fdd9e6b9",
+            "voice_id_raw": "fr-CA-JeanNeural",
+            "duration_ms": 2472,
+            "medianF0Hz": 118.5,
+            "voicedFrames": 57,
+            "totalFrames": 121,
+            "spectralCentroidHz": 1411,
+            "classification": "male-typical",
+            "bytes": 29952
+          },
+          {
+            "scene": 2,
+            "speaker": "Passenger",
+            "target_audio_id": "e19506d7-4a2a-40c3-a6f3-d0538d2ac418",
+            "voice_id_raw": "azure_fr-CA-JeanNeural",
+            "duration_ms": 4735,
+            "medianF0Hz": 120.3,
+            "voicedFrames": 118,
+            "totalFrames": 235,
+            "spectralCentroidHz": 1409,
+            "classification": "male-typical",
+            "bytes": 57600
+          },
+          {
+            "scene": 3,
+            "speaker": "Barista (3 pm)",
+            "target_audio_id": "451937fc-3918-4286-8fdd-41484826a265",
+            "voice_id_raw": "azure_fr-CA-JeanNeural",
+            "duration_ms": 3988,
+            "medianF0Hz": 132.2,
+            "voicedFrames": 97,
+            "totalFrames": 198,
+            "spectralCentroidHz": 2007,
+            "classification": "male-typical",
+            "bytes": 48672
+          },
+          {
+            "scene": 4,
+            "speaker": "Friend (7 pm)",
+            "target_audio_id": "14d4f2af-c870-46ce-8c19-e8272f093830",
+            "voice_id_raw": "azure_fr-CA-JeanNeural",
+            "duration_ms": 2448,
+            "medianF0Hz": 115.9,
+            "voicedFrames": 53,
+            "totalFrames": 119,
+            "spectralCentroidHz": 1263,
+            "classification": "male-typical",
+            "bytes": 29664
+          },
+          {
+            "scene": 5,
+            "speaker": "Neighbour (10:30 pm)",
+            "target_audio_id": "4b708644-7577-44c7-8762-8bc01ca5f6b8",
+            "voice_id_raw": "fr-CA-JeanNeural",
+            "duration_ms": 4608,
+            "medianF0Hz": 132.2,
+            "voicedFrames": 108,
+            "totalFrames": 227,
+            "spectralCentroidHz": 1478,
+            "classification": "male-typical",
+            "bytes": 55584
+          }
+        ],
+        "medianOfMediansF0Hz": 120.3,
+        "usableClips": 5,
+        "totalClips": 5,
+        "classification": "male-typical"
+      }
+    }
+  },
+  "fra_for_eng": {
+    "pod_id": "fra_for_eng:pod-1",
+    "voices": {
+      "69smp8rm": {
+        "declaredGender": "f",
+        "declaredName": "Camille",
+        "clips": [
+          {
+            "scene": 1,
+            "speaker": "Sarah",
+            "target_audio_id": "1116c7f9-420b-40f1-9106-60d323695591",
+            "voice_id_raw": "69smp8rm",
+            "duration_ms": 1944,
+            "medianF0Hz": 262.3,
+            "voicedFrames": 81,
+            "totalFrames": 94,
+            "spectralCentroidHz": 1509,
+            "classification": "female-typical",
+            "bytes": 23616
+          },
+          {
+            "scene": 2,
+            "speaker": "Sarah",
+            "target_audio_id": "ee19acca-6ec6-4e5a-b866-e66271abda3c",
+            "voice_id_raw": "69smp8rm",
+            "duration_ms": 2544,
+            "medianF0Hz": 246.2,
+            "voicedFrames": 82,
+            "totalFrames": 124,
+            "spectralCentroidHz": 2289,
+            "classification": "female-typical",
+            "bytes": 30816
+          },
+          {
+            "scene": 3,
+            "speaker": "Sarah",
+            "target_audio_id": "a8d99e57-509a-444f-8b41-8f2d9dc369ea",
+            "voice_id_raw": "69smp8rm",
+            "duration_ms": 6384,
+            "medianF0Hz": 222.2,
+            "voicedFrames": 207,
+            "totalFrames": 316,
+            "spectralCentroidHz": 1853,
+            "classification": "female-typical",
+            "bytes": 76896
+          },
+          {
+            "scene": 4,
+            "speaker": "Sarah",
+            "target_audio_id": "d87f31de-9313-4594-b0d4-7caa70bf0c45",
+            "voice_id_raw": "69smp8rm",
+            "duration_ms": 7128,
+            "medianF0Hz": 225.4,
+            "voicedFrames": 280,
+            "totalFrames": 354,
+            "spectralCentroidHz": 1205,
+            "classification": "female-typical",
+            "bytes": 85824
+          },
+          {
+            "scene": 5,
+            "speaker": "Sarah",
+            "target_audio_id": "4389e608-d128-4257-9fe8-fd319a757a85",
+            "voice_id_raw": "xai_69smp8rm",
+            "duration_ms": 6840,
+            "medianF0Hz": 228.6,
+            "voicedFrames": 151,
+            "totalFrames": 340,
+            "spectralCentroidHz": 1548,
+            "classification": "female-typical",
+            "bytes": 82656
+          }
+        ],
+        "medianOfMediansF0Hz": 228.6,
+        "usableClips": 5,
+        "totalClips": 5,
+        "classification": "female-typical"
+      },
+      "0p0rt7o1": {
+        "declaredGender": "m",
+        "declaredName": "Remi",
+        "clips": [
+          {
+            "scene": 1,
+            "speaker": "Neighbour (8 am)",
+            "target_audio_id": "189d7992-1953-4acb-a51f-94089a7ffd50",
+            "voice_id_raw": "0p0rt7o1",
+            "duration_ms": 1320,
+            "medianF0Hz": 149.5,
+            "voicedFrames": 38,
+            "totalFrames": 63,
+            "spectralCentroidHz": 1980,
+            "classification": "male-typical",
+            "bytes": 16128
+          },
+          {
+            "scene": 2,
+            "speaker": "Passenger",
+            "target_audio_id": "151b0db9-cb33-4fc3-8d9e-7ddba477be4e",
+            "voice_id_raw": "xai_0p0rt7o1",
+            "duration_ms": 2811,
+            "medianF0Hz": 123.1,
+            "voicedFrames": 70,
+            "totalFrames": 139,
+            "spectralCentroidHz": 1160,
+            "classification": "male-typical",
+            "bytes": 34560
+          },
+          {
+            "scene": 3,
+            "speaker": "Barista (3 pm)",
+            "target_audio_id": "a68d60b5-368c-4379-9385-332c87e58e7d",
+            "voice_id_raw": "0p0rt7o1",
+            "duration_ms": 3192,
+            "medianF0Hz": 144.1,
+            "voicedFrames": 92,
+            "totalFrames": 157,
+            "spectralCentroidHz": 1101,
+            "classification": "male-typical",
+            "bytes": 38592
+          },
+          {
+            "scene": 4,
+            "speaker": "Friend (7 pm)",
+            "target_audio_id": "1b8f4e66-1fe9-442a-b3eb-b9072ac8e9bc",
+            "voice_id_raw": "0p0rt7o1",
+            "duration_ms": 1704,
+            "medianF0Hz": 144.1,
+            "voicedFrames": 66,
+            "totalFrames": 82,
+            "spectralCentroidHz": 1348,
+            "classification": "male-typical",
+            "bytes": 20736
+          },
+          {
+            "scene": 5,
+            "speaker": "Neighbour (10:30 pm)",
+            "target_audio_id": "ef9c1271-90ec-4205-91a3-f6940bb920c1",
+            "voice_id_raw": "0p0rt7o1",
+            "duration_ms": 2976,
+            "medianF0Hz": 130.1,
+            "voicedFrames": 100,
+            "totalFrames": 146,
+            "spectralCentroidHz": 1068,
+            "classification": "male-typical",
+            "bytes": 36000
+          }
+        ],
+        "medianOfMediansF0Hz": 144.1,
+        "usableClips": 5,
+        "totalClips": 5,
+        "classification": "male-typical"
+      }
+    }
+  },
+  "gle_for_eng": {
+    "pod_id": "gle_for_eng:pod-1",
+    "voices": {
+      "ga-IE-OrlaNeural": {
+        "declaredGender": null,
+        "declaredName": "Orla",
+        "clips": [
+          {
+            "scene": 1,
+            "speaker": "Sarah",
+            "target_audio_id": "0334fe87-1a16-4145-bce7-717841d713f5",
+            "voice_id_raw": "azure_ga-IE-OrlaNeural",
+            "duration_ms": 3408,
+            "medianF0Hz": 210.5,
+            "voicedFrames": 67,
+            "totalFrames": 168,
+            "spectralCentroidHz": 1826,
+            "classification": "female-typical",
+            "bytes": 41184
+          },
+          {
+            "scene": 2,
+            "speaker": "Sarah",
+            "target_audio_id": "b823e99b-dd6a-42a8-920c-8946f6817800",
+            "voice_id_raw": "ga-IE-OrlaNeural",
+            "duration_ms": 3840,
+            "medianF0Hz": 222.2,
+            "voicedFrames": 108,
+            "totalFrames": 189,
+            "spectralCentroidHz": 1721,
+            "classification": "female-typical",
+            "bytes": 46368
+          },
+          {
+            "scene": 3,
+            "speaker": "Sarah",
+            "target_audio_id": "385b1681-ab3c-407c-b770-ea763a578333",
+            "voice_id_raw": "azure_ga-IE-OrlaNeural",
+            "duration_ms": 9155,
+            "medianF0Hz": 210.5,
+            "voicedFrames": 208,
+            "totalFrames": 456,
+            "spectralCentroidHz": 1232,
+            "classification": "female-typical",
+            "bytes": 110592
+          },
+          {
+            "scene": 4,
+            "speaker": "Sarah",
+            "target_audio_id": "13cd2ac2-e198-44a6-8a49-25d25e91ac48",
+            "voice_id_raw": "azure_ga-IE-OrlaNeural",
+            "duration_ms": 10949,
+            "medianF0Hz": 213.3,
+            "voicedFrames": 285,
+            "totalFrames": 546,
+            "spectralCentroidHz": 1424,
+            "classification": "female-typical",
+            "bytes": 132192
+          },
+          {
+            "scene": 5,
+            "speaker": "Sarah",
+            "target_audio_id": "69d61481-576c-491e-b9eb-2aa689c66bf1",
+            "voice_id_raw": "azure_ga-IE-OrlaNeural",
+            "duration_ms": 8539,
+            "medianF0Hz": 202.5,
+            "voicedFrames": 178,
+            "totalFrames": 425,
+            "spectralCentroidHz": 1389,
+            "classification": "female-typical",
+            "bytes": 103104
+          }
+        ],
+        "medianOfMediansF0Hz": 210.5,
+        "usableClips": 5,
+        "totalClips": 5,
+        "classification": "female-typical"
+      },
+      "ga-IE-ColmNeural": {
+        "declaredGender": null,
+        "declaredName": "Colm",
+        "clips": [
+          {
+            "scene": 1,
+            "speaker": "Neighbour (8 am)",
+            "target_audio_id": "62889a27-66b5-494b-a6fc-b8a45ffe74a9",
+            "voice_id_raw": "ga-IE-ColmNeural",
+            "duration_ms": 2544,
+            "medianF0Hz": 116.8,
+            "voicedFrames": 57,
+            "totalFrames": 124,
+            "spectralCentroidHz": 1334,
+            "classification": "male-typical",
+            "bytes": 30816
+          },
+          {
+            "scene": 2,
+            "speaker": "Passenger",
+            "target_audio_id": "c875565a-2bc8-4280-8838-453401a2e978",
+            "voice_id_raw": "azure_ga-IE-ColmNeural",
+            "duration_ms": 4214,
+            "medianF0Hz": 102.6,
+            "voicedFrames": 88,
+            "totalFrames": 209,
+            "spectralCentroidHz": 1259,
+            "classification": "male-typical",
+            "bytes": 51264
+          },
+          {
+            "scene": 3,
+            "speaker": "Barista (3 pm)",
+            "target_audio_id": "2fce3dad-daf1-4670-b733-51a8d1124c69",
+            "voice_id_raw": "ga-IE-ColmNeural",
+            "duration_ms": 3696,
+            "medianF0Hz": 119.4,
+            "voicedFrames": 73,
+            "totalFrames": 182,
+            "spectralCentroidHz": 1408,
+            "classification": "male-typical",
+            "bytes": 44640
+          },
+          {
+            "scene": 4,
+            "speaker": "Friend (7 pm)",
+            "target_audio_id": "bb9ddd79-8fa4-448b-be90-3aae0ee6817c",
+            "voice_id_raw": "ga-IE-ColmNeural",
+            "duration_ms": 2376,
+            "medianF0Hz": 148.1,
+            "voicedFrames": 44,
+            "totalFrames": 115,
+            "spectralCentroidHz": 2316,
+            "classification": "male-typical",
+            "bytes": 28800
+          },
+          {
+            "scene": 5,
+            "speaker": "Neighbour (10:30 pm)",
+            "target_audio_id": "500bde8a-d6ed-4a79-be43-ff5ce87ce4dd",
+            "voice_id_raw": "azure_ga-IE-ColmNeural",
+            "duration_ms": 4004,
+            "medianF0Hz": 123.1,
+            "voicedFrames": 94,
+            "totalFrames": 199,
+            "spectralCentroidHz": 1159,
+            "classification": "male-typical",
+            "bytes": 48672
+          }
+        ],
+        "medianOfMediansF0Hz": 119.4,
+        "usableClips": 5,
+        "totalClips": 5,
+        "classification": "male-typical"
+      }
+    }
+  },
+  "hin_for_eng": {
+    "pod_id": "hin_for_eng:pod-1",
+    "voices": {
+      "ara": {
+        "declaredGender": "f",
+        "declaredName": "Ara",
+        "clips": [
+          {
+            "scene": 1,
+            "speaker": "Sarah",
+            "target_audio_id": "58e96de0-c635-47b9-ac05-a455e5cb2217",
+            "voice_id_raw": "xai_ara",
+            "duration_ms": 2208,
+            "medianF0Hz": 231.9,
+            "voicedFrames": 68,
+            "totalFrames": 109,
+            "spectralCentroidHz": 1987,
+            "classification": "female-typical",
+            "bytes": 27072
+          },
+          {
+            "scene": 2,
+            "speaker": "Sarah",
+            "target_audio_id": "749ce67e-0f61-4ec3-897e-549d59a4077e",
+            "voice_id_raw": "xai_ara",
+            "duration_ms": 2600,
+            "medianF0Hz": 246.2,
+            "voicedFrames": 96,
+            "totalFrames": 129,
+            "spectralCentroidHz": 1583,
+            "classification": "female-typical",
+            "bytes": 31968
+          },
+          {
+            "scene": 3,
+            "speaker": "Sarah",
+            "target_audio_id": "b71c5e7c-4626-427f-b612-7db246941d02",
+            "voice_id_raw": "xai_ara",
+            "duration_ms": 6360,
+            "medianF0Hz": 205.1,
+            "voicedFrames": 215,
+            "totalFrames": 316,
+            "spectralCentroidHz": 1295,
+            "classification": "female-typical",
+            "bytes": 76896
+          },
+          {
+            "scene": 4,
+            "speaker": "Sarah",
+            "target_audio_id": "b0dae710-d4f6-4dbf-8909-1c44674287ab",
+            "voice_id_raw": "xai_ara",
+            "duration_ms": 7612,
+            "medianF0Hz": 222.2,
+            "voicedFrames": 272,
+            "totalFrames": 379,
+            "spectralCentroidHz": 1247,
+            "classification": "female-typical",
+            "bytes": 92160
+          },
+          {
+            "scene": 5,
+            "speaker": "Sarah",
+            "target_audio_id": "108bf9e3-ab65-4cd5-aed8-9ddd76fcb114",
+            "voice_id_raw": "xai_ara",
+            "duration_ms": 5400,
+            "medianF0Hz": 202.5,
+            "voicedFrames": 171,
+            "totalFrames": 268,
+            "spectralCentroidHz": 1333,
+            "classification": "female-typical",
+            "bytes": 65376
+          }
+        ],
+        "medianOfMediansF0Hz": 222.2,
+        "usableClips": 5,
+        "totalClips": 5,
+        "classification": "female-typical"
+      },
+      "89q2pnko": {
+        "declaredGender": "m",
+        "declaredName": "Karan",
+        "clips": [
+          {
+            "scene": 1,
+            "speaker": "Neighbour (8 am)",
+            "target_audio_id": "d6f9dc67-6655-439e-92d5-76414e4fba5b",
+            "voice_id_raw": "89q2pnko",
+            "duration_ms": 1584,
+            "medianF0Hz": 101.3,
+            "voicedFrames": 48,
+            "totalFrames": 76,
+            "spectralCentroidHz": 2781,
+            "classification": "male-typical",
+            "bytes": 19296
+          },
+          {
+            "scene": 2,
+            "speaker": "Passenger",
+            "target_audio_id": "1ddd079f-90ca-4432-b8aa-90df2b794682",
+            "voice_id_raw": "xai_89q2pnko",
+            "duration_ms": 3172,
+            "medianF0Hz": 111.9,
+            "voicedFrames": 105,
+            "totalFrames": 157,
+            "spectralCentroidHz": 1254,
+            "classification": "male-typical",
+            "bytes": 38880
+          },
+          {
+            "scene": 3,
+            "speaker": "Barista (3 pm)",
+            "target_audio_id": "2f38b735-be2d-439a-b27b-00bc95478a18",
+            "voice_id_raw": "89q2pnko",
+            "duration_ms": 3264,
+            "medianF0Hz": 108.8,
+            "voicedFrames": 98,
+            "totalFrames": 160,
+            "spectralCentroidHz": 1457,
+            "classification": "male-typical",
+            "bytes": 39456
+          },
+          {
+            "scene": 4,
+            "speaker": "Friend (7 pm)",
+            "target_audio_id": "52ec132f-5522-443f-ada0-4c3a1c093358",
+            "voice_id_raw": "89q2pnko",
+            "duration_ms": 2448,
+            "medianF0Hz": 107.4,
+            "voicedFrames": 72,
+            "totalFrames": 120,
+            "spectralCentroidHz": 1888,
+            "classification": "male-typical",
+            "bytes": 29664
+          },
+          {
+            "scene": 5,
+            "speaker": "Neighbour (10:30 pm)",
+            "target_audio_id": "cd3b93cc-de00-4fe5-bce6-ae8e9682ff77",
+            "voice_id_raw": "xai_89q2pnko",
+            "duration_ms": 3532,
+            "medianF0Hz": 112.7,
+            "voicedFrames": 117,
+            "totalFrames": 175,
+            "spectralCentroidHz": 1032,
+            "classification": "male-typical",
+            "bytes": 43200
+          }
+        ],
+        "medianOfMediansF0Hz": 108.8,
+        "usableClips": 5,
+        "totalClips": 5,
+        "classification": "male-typical"
+      }
+    }
+  },
+  "hrv_for_eng": {
+    "pod_id": "hrv_for_eng:pod-1",
+    "voices": {
+      "hr-HR-SreckoNeural": {
+        "declaredGender": null,
+        "declaredName": "Srecko",
+        "clips": [
+          {
+            "scene": 1,
+            "speaker": "Learner",
+            "target_audio_id": "94246a14-5e56-413b-86e2-90b24089d8b9",
+            "voice_id_raw": "azure_hr-HR-SreckoNeural",
+            "duration_ms": 2946,
+            "medianF0Hz": 210.5,
+            "voicedFrames": 55,
+            "totalFrames": 146,
+            "spectralCentroidHz": 1264,
+            "classification": "female-typical",
+            "bytes": 36000
+          },
+          {
+            "scene": 2,
+            "speaker": "Learner",
+            "target_audio_id": "d9033123-77d6-4377-bfa2-d751ac7bed76",
+            "voice_id_raw": "azure_hr-HR-SreckoNeural",
+            "duration_ms": 4339,
+            "medianF0Hz": 166.7,
+            "voicedFrames": 105,
+            "totalFrames": 215,
+            "spectralCentroidHz": 1426,
+            "classification": "female-typical",
+            "bytes": 52704
+          },
+          {
+            "scene": 3,
+            "speaker": "Learner",
+            "target_audio_id": "1bd269c5-3ded-430c-a658-d9b53534787f",
+            "voice_id_raw": "azure_hr-HR-SreckoNeural",
+            "duration_ms": 8960,
+            "medianF0Hz": 135.6,
+            "voicedFrames": 206,
+            "totalFrames": 446,
+            "spectralCentroidHz": 1339,
+            "classification": "male-typical",
+            "bytes": 108288
+          },
+          {
+            "scene": 4,
+            "speaker": "Learner",
+            "target_audio_id": "32f365bf-55c3-4006-9c0d-cd5f66fcbeac",
+            "voice_id_raw": "azure_hr-HR-SreckoNeural",
+            "duration_ms": 10859,
+            "medianF0Hz": 133.3,
+            "voicedFrames": 277,
+            "totalFrames": 541,
+            "spectralCentroidHz": 1323,
+            "classification": "male-typical",
+            "bytes": 131040
+          },
+          {
+            "scene": 5,
+            "speaker": "Learner",
+            "target_audio_id": "9174b0a4-2251-45ca-88d0-625fe42a45dd",
+            "voice_id_raw": "azure_hr-HR-SreckoNeural",
+            "duration_ms": 8078,
+            "medianF0Hz": 128,
+            "voicedFrames": 157,
+            "totalFrames": 402,
+            "spectralCentroidHz": 1292,
+            "classification": "male-typical",
+            "bytes": 97632
+          }
+        ],
+        "medianOfMediansF0Hz": 135.6,
+        "usableClips": 5,
+        "totalClips": 5,
+        "classification": "male-typical"
+      },
+      "hr-HR-GabrijelaNeural": {
+        "declaredGender": null,
+        "declaredName": "Gabrijela",
+        "clips": [
+          {
+            "scene": 1,
+            "speaker": "Neighbour (8 am)",
+            "target_audio_id": "4eba4421-d37d-47c6-bf5c-46bad78569d3",
+            "voice_id_raw": "hr-HR-GabrijelaNeural",
+            "duration_ms": 1896,
+            "medianF0Hz": 153.8,
+            "voicedFrames": 42,
+            "totalFrames": 92,
+            "spectralCentroidHz": 953,
+            "classification": "AMBIGUOUS",
+            "bytes": 23040
+          },
+          {
+            "scene": 2,
+            "speaker": "Fellow passenger",
+            "target_audio_id": "76322f21-a42e-4da1-ab5f-4f6776ba69cf",
+            "voice_id_raw": "azure_hr-HR-GabrijelaNeural",
+            "duration_ms": 3853,
+            "medianF0Hz": 142.9,
+            "voicedFrames": 91,
+            "totalFrames": 191,
+            "spectralCentroidHz": 1086,
+            "classification": "male-typical",
+            "bytes": 46944
+          },
+          {
+            "scene": 3,
+            "speaker": "Barista (3 pm)",
+            "target_audio_id": "f89d7142-efd6-4dda-bc25-62fa3d5c7570",
+            "voice_id_raw": "azure_hr-HR-GabrijelaNeural",
+            "duration_ms": 3668,
+            "medianF0Hz": 152.4,
+            "voicedFrames": 85,
+            "totalFrames": 182,
+            "spectralCentroidHz": 1061,
+            "classification": "AMBIGUOUS",
+            "bytes": 44640
+          },
+          {
+            "scene": 4,
+            "speaker": "Friend (7 pm)",
+            "target_audio_id": "ff13aaab-a318-4320-a19a-60dea0e322cb",
+            "voice_id_raw": "azure_hr-HR-GabrijelaNeural",
+            "duration_ms": 1959,
+            "medianF0Hz": 164.9,
+            "voicedFrames": 54,
+            "totalFrames": 96,
+            "spectralCentroidHz": 815,
+            "classification": "AMBIGUOUS",
+            "bytes": 24192
+          },
+          {
+            "scene": 5,
+            "speaker": "Neighbour (10:30 pm)",
+            "target_audio_id": "b21f6399-fc7e-4129-98f7-933a0397a2a5",
+            "voice_id_raw": "azure_hr-HR-GabrijelaNeural",
+            "duration_ms": 4104,
+            "medianF0Hz": 160,
+            "voicedFrames": 111,
+            "totalFrames": 204,
+            "spectralCentroidHz": 1110,
+            "classification": "AMBIGUOUS",
+            "bytes": 49824
+          }
+        ],
+        "medianOfMediansF0Hz": 153.8,
+        "usableClips": 5,
+        "totalClips": 5,
+        "classification": "AMBIGUOUS"
+      }
+    }
+  },
+  "isl_for_eng": {
+    "pod_id": "isl_for_eng:pod-1",
+    "voices": {
+      "is-IS-GudrunNeural": {
+        "declaredGender": null,
+        "declaredName": "Gudrun",
+        "clips": [
+          {
+            "scene": 1,
+            "speaker": "Sarah",
+            "target_audio_id": "1ceed981-409f-4958-a3ec-11e45c2b026d",
+            "voice_id_raw": "is-IS-GudrunNeural",
+            "duration_ms": 3840,
+            "medianF0Hz": 246.2,
+            "voicedFrames": 82,
+            "totalFrames": 189,
+            "spectralCentroidHz": 1117,
+            "classification": "female-typical",
+            "bytes": 46368
+          },
+          {
+            "scene": 2,
+            "speaker": "Sarah",
+            "target_audio_id": "8fc20b32-d83d-4035-9580-3ef60d37e911",
+            "voice_id_raw": "is-IS-GudrunNeural",
+            "duration_ms": 3024,
+            "medianF0Hz": 210.5,
+            "voicedFrames": 72,
+            "totalFrames": 148,
+            "spectralCentroidHz": 1307,
+            "classification": "female-typical",
+            "bytes": 36576
+          },
+          {
+            "scene": 3,
+            "speaker": "Sarah",
+            "target_audio_id": "429f1acc-37d7-4a6f-ac81-acf84f471cdb",
+            "voice_id_raw": "azure_is-IS-GudrunNeural",
+            "duration_ms": 8910,
+            "medianF0Hz": 200,
+            "voicedFrames": 188,
+            "totalFrames": 444,
+            "spectralCentroidHz": 1012,
+            "classification": "female-typical",
+            "bytes": 107712
+          },
+          {
+            "scene": 4,
+            "speaker": "Sarah",
+            "target_audio_id": "ecf7bcfb-75f0-4880-8154-6a0681b5d6e8",
+            "voice_id_raw": "is-IS-GudrunNeural",
+            "duration_ms": 9000,
+            "medianF0Hz": 197.5,
+            "voicedFrames": 227,
+            "totalFrames": 447,
+            "spectralCentroidHz": 1156,
+            "classification": "female-typical",
+            "bytes": 108288
+          },
+          {
+            "scene": 5,
+            "speaker": "Sarah",
+            "target_audio_id": "d8100579-39ac-403e-b257-0fb97c99d980",
+            "voice_id_raw": "azure_is-IS-GudrunNeural",
+            "duration_ms": 8123,
+            "medianF0Hz": 188.2,
+            "voicedFrames": 158,
+            "totalFrames": 405,
+            "spectralCentroidHz": 954,
+            "classification": "female-typical",
+            "bytes": 98208
+          }
+        ],
+        "medianOfMediansF0Hz": 200,
+        "usableClips": 5,
+        "totalClips": 5,
+        "classification": "female-typical"
+      },
+      "is-IS-GunnarNeural": {
+        "declaredGender": null,
+        "declaredName": "Gunnar",
+        "clips": [
+          {
+            "scene": 1,
+            "speaker": "Neighbour (8 am)",
+            "target_audio_id": "edf23f1b-25b0-43a0-bef2-18332106ad64",
+            "voice_id_raw": "is-IS-GunnarNeural",
+            "duration_ms": 2304,
+            "medianF0Hz": 156.9,
+            "voicedFrames": 48,
+            "totalFrames": 112,
+            "spectralCentroidHz": 1096,
+            "classification": "AMBIGUOUS",
+            "bytes": 27936
+          },
+          {
+            "scene": 2,
+            "speaker": "Passenger",
+            "target_audio_id": "db71d662-a877-497c-9967-4a219ff4e119",
+            "voice_id_raw": "azure_is-IS-GunnarNeural",
+            "duration_ms": 3768,
+            "medianF0Hz": 134.5,
+            "voicedFrames": 65,
+            "totalFrames": 187,
+            "spectralCentroidHz": 1092,
+            "classification": "male-typical",
+            "bytes": 45792
+          },
+          {
+            "scene": 3,
+            "speaker": "Barista (3 pm)",
+            "target_audio_id": "7e0b2de5-15d8-427d-ace0-0e3d9d505e36",
+            "voice_id_raw": "azure_is-IS-GunnarNeural",
+            "duration_ms": 3417,
+            "medianF0Hz": 168.4,
+            "voicedFrames": 67,
+            "totalFrames": 169,
+            "spectralCentroidHz": 1131,
+            "classification": "female-typical",
+            "bytes": 41760
+          },
+          {
+            "scene": 4,
+            "speaker": "Friend (7 pm)",
+            "target_audio_id": "ba65e91b-60bf-4324-b1fc-c56c470047f9",
+            "voice_id_raw": "is-IS-GunnarNeural",
+            "duration_ms": 2232,
+            "medianF0Hz": 153.8,
+            "voicedFrames": 39,
+            "totalFrames": 108,
+            "spectralCentroidHz": 1719,
+            "classification": "AMBIGUOUS",
+            "bytes": 27072
+          },
+          {
+            "scene": 5,
+            "speaker": "Neighbour (10:30 pm)",
+            "target_audio_id": "736e0702-0800-4819-836d-b117b72b5046",
+            "voice_id_raw": "azure_is-IS-GunnarNeural",
+            "duration_ms": 3858,
+            "medianF0Hz": 131.1,
+            "voicedFrames": 73,
+            "totalFrames": 191,
+            "spectralCentroidHz": 1081,
+            "classification": "male-typical",
+            "bytes": 46944
+          }
+        ],
+        "medianOfMediansF0Hz": 153.8,
+        "usableClips": 5,
+        "totalClips": 5,
+        "classification": "AMBIGUOUS"
+      }
+    }
+  },
+  "jpn_for_eng": {
+    "pod_id": "jpn_for_eng:pod-1",
+    "voices": {
+      "ja-JP-MayuNeural": {
+        "declaredGender": null,
+        "declaredName": "Mayu",
+        "clips": [
+          {
+            "scene": 1,
+            "speaker": "Sarah",
+            "target_audio_id": "217cf4cd-a725-42a8-b2c2-4d44e4c87108",
+            "voice_id_raw": "azure_ja-JP-MayuNeural",
+            "duration_ms": 3407,
+            "medianF0Hz": 275.9,
+            "voicedFrames": 86,
+            "totalFrames": 169,
+            "spectralCentroidHz": 1436,
+            "classification": "female-typical",
+            "bytes": 41472
+          },
+          {
+            "scene": 2,
+            "speaker": "Sarah",
+            "target_audio_id": "36de3800-aa88-4070-ae86-aa1dab8dfa0a",
+            "voice_id_raw": "azure_ja-JP-MayuNeural",
+            "duration_ms": 3021,
+            "medianF0Hz": 228.6,
+            "voicedFrames": 96,
+            "totalFrames": 150,
+            "spectralCentroidHz": 1416,
+            "classification": "female-typical",
+            "bytes": 36864
+          },
+          {
+            "scene": 3,
+            "speaker": "Sarah",
+            "target_audio_id": "ad15f805-a4df-42c0-90a8-88c175fcac2d",
+            "voice_id_raw": "azure_ja-JP-MayuNeural",
+            "duration_ms": 7687,
+            "medianF0Hz": 228.6,
+            "voicedFrames": 193,
+            "totalFrames": 383,
+            "spectralCentroidHz": 1281,
+            "classification": "female-typical",
+            "bytes": 93024
+          },
+          {
+            "scene": 4,
+            "speaker": "Sarah",
+            "target_audio_id": "64a3b3f6-26fa-40e9-af02-8ef2c1aff76b",
+            "voice_id_raw": "azure_ja-JP-MayuNeural",
+            "duration_ms": 9571,
+            "medianF0Hz": 238.8,
+            "voicedFrames": 266,
+            "totalFrames": 477,
+            "spectralCentroidHz": 1334,
+            "classification": "female-typical",
+            "bytes": 115488
+          },
+          {
+            "scene": 5,
+            "speaker": "Sarah",
+            "target_audio_id": "cccc76f2-4869-49c7-b78a-43b2bfb1bc15",
+            "voice_id_raw": "azure_ja-JP-MayuNeural",
+            "duration_ms": 7491,
+            "medianF0Hz": 250,
+            "voicedFrames": 178,
+            "totalFrames": 373,
+            "spectralCentroidHz": 1525,
+            "classification": "female-typical",
+            "bytes": 90720
+          }
+        ],
+        "medianOfMediansF0Hz": 238.8,
+        "usableClips": 5,
+        "totalClips": 5,
+        "classification": "female-typical"
+      },
+      "ja-JP-NaokiNeural": {
+        "declaredGender": null,
+        "declaredName": "Naoki",
+        "clips": [
+          {
+            "scene": 1,
+            "speaker": "Neighbour (8 am)",
+            "target_audio_id": "c2267b57-fd19-4c88-a291-cfc7123e9812",
+            "voice_id_raw": "azure_ja-JP-NaokiNeural",
+            "duration_ms": 2235,
+            "medianF0Hz": 128,
+            "voicedFrames": 72,
+            "totalFrames": 110,
+            "spectralCentroidHz": 1408,
+            "classification": "male-typical",
+            "bytes": 27648
+          },
+          {
+            "scene": 2,
+            "speaker": "Passenger",
+            "target_audio_id": "18356de7-eee8-4276-9e34-dbce9edf9265",
+            "voice_id_raw": "azure_ja-JP-NaokiNeural",
+            "duration_ms": 4014,
+            "medianF0Hz": 107.4,
+            "voicedFrames": 101,
+            "totalFrames": 199,
+            "spectralCentroidHz": 1403,
+            "classification": "male-typical",
+            "bytes": 48960
+          },
+          {
+            "scene": 3,
+            "speaker": "Barista (3 pm)",
+            "target_audio_id": "c289c32e-2164-4774-a82d-26ab9a8c41a2",
+            "voice_id_raw": "azure_ja-JP-NaokiNeural",
+            "duration_ms": 2806,
+            "medianF0Hz": 95.8,
+            "voicedFrames": 68,
+            "totalFrames": 139,
+            "spectralCentroidHz": 1328,
+            "classification": "male-typical",
+            "bytes": 34272
+          },
+          {
+            "scene": 4,
+            "speaker": "Friend (7 pm)",
+            "target_audio_id": "bf576c9d-1c2b-481e-965b-39ccd36ba96c",
+            "voice_id_raw": "azure_ja-JP-NaokiNeural",
+            "duration_ms": 2034,
+            "medianF0Hz": 140.4,
+            "voicedFrames": 64,
+            "totalFrames": 100,
+            "spectralCentroidHz": 1105,
+            "classification": "male-typical",
+            "bytes": 25056
+          },
+          {
+            "scene": 5,
+            "speaker": "Neighbour (10:30 pm)",
+            "target_audio_id": "0f72c732-3a6d-481f-ad5e-86fb32fb6ba6",
+            "voice_id_raw": "azure_ja-JP-NaokiNeural",
+            "duration_ms": 4445,
+            "medianF0Hz": 93,
+            "voicedFrames": 124,
+            "totalFrames": 221,
+            "spectralCentroidHz": 1368,
+            "classification": "male-typical",
+            "bytes": 54144
+          }
+        ],
+        "medianOfMediansF0Hz": 107.4,
+        "usableClips": 5,
+        "totalClips": 5,
+        "classification": "male-typical"
+      }
+    }
+  },
+  "kor_for_eng": {
+    "pod_id": "kor_for_eng:pod-1",
+    "voices": {
+      "ko-KR-YuJinNeural": {
+        "declaredGender": null,
+        "declaredName": "YuJin",
+        "clips": [
+          {
+            "scene": 1,
+            "speaker": "Sarah",
+            "target_audio_id": "444bed41-a35a-45d5-98ff-d6d248f9acd2",
+            "voice_id_raw": "azure_ko-KR-YuJinNeural",
+            "duration_ms": 3993,
+            "medianF0Hz": 197.5,
+            "voicedFrames": 99,
+            "totalFrames": 198,
+            "spectralCentroidHz": 1028,
+            "classification": "female-typical",
+            "bytes": 48672
+          },
+          {
+            "scene": 2,
+            "speaker": "Sarah",
+            "target_audio_id": "27d6ea13-f149-4daa-a169-33a35ef54a26",
+            "voice_id_raw": "azure_ko-KR-YuJinNeural",
+            "duration_ms": 2726,
+            "medianF0Hz": 186,
+            "voicedFrames": 87,
+            "totalFrames": 135,
+            "spectralCentroidHz": 1332,
+            "classification": "female-typical",
+            "bytes": 33408
+          },
+          {
+            "scene": 3,
+            "speaker": "Sarah",
+            "target_audio_id": "5aeadcfb-1f40-4d9a-b572-3d9e51825bf5",
+            "voice_id_raw": "azure_ko-KR-YuJinNeural",
+            "duration_ms": 10523,
+            "medianF0Hz": 216.2,
+            "voicedFrames": 265,
+            "totalFrames": 525,
+            "spectralCentroidHz": 1485,
+            "classification": "female-typical",
+            "bytes": 127008
+          },
+          {
+            "scene": 4,
+            "speaker": "Sarah",
+            "target_audio_id": "5fb805bb-9308-41de-bdd2-da2a85828517",
+            "voice_id_raw": "azure_ko-KR-YuJinNeural",
+            "duration_ms": 11526,
+            "medianF0Hz": 200,
+            "voicedFrames": 318,
+            "totalFrames": 575,
+            "spectralCentroidHz": 1372,
+            "classification": "female-typical",
+            "bytes": 139104
+          },
+          {
+            "scene": 5,
+            "speaker": "Sarah",
+            "target_audio_id": "b9535365-1a29-4a89-a00b-70dcfd78e139",
+            "voice_id_raw": "azure_ko-KR-YuJinNeural",
+            "duration_ms": 9731,
+            "medianF0Hz": 195.1,
+            "voicedFrames": 230,
+            "totalFrames": 485,
+            "spectralCentroidHz": 1072,
+            "classification": "female-typical",
+            "bytes": 117504
+          }
+        ],
+        "medianOfMediansF0Hz": 197.5,
+        "usableClips": 5,
+        "totalClips": 5,
+        "classification": "female-typical"
+      },
+      "bf9fe5b5f981": {
+        "declaredGender": "m",
+        "declaredName": "Jun-seo",
+        "clips": [
+          {
+            "scene": 1,
+            "speaker": "Neighbour (8 am)",
+            "target_audio_id": "78d21c7e-b6cb-4a1f-a00f-3ca58386d9ac",
+            "voice_id_raw": "bf9fe5b5f981",
+            "duration_ms": 1416,
+            "medianF0Hz": 116.8,
+            "voicedFrames": 58,
+            "totalFrames": 68,
+            "spectralCentroidHz": 1753,
+            "classification": "male-typical",
+            "bytes": 17280
+          },
+          {
+            "scene": 2,
+            "speaker": "Passenger",
+            "target_audio_id": "43a02d42-fc1d-4883-891f-2255e4d90b25",
+            "voice_id_raw": "xai_bf9fe5b5f981",
+            "duration_ms": 3868,
+            "medianF0Hz": 99.4,
+            "voicedFrames": 108,
+            "totalFrames": 192,
+            "spectralCentroidHz": 1538,
+            "classification": "male-typical",
+            "bytes": 47232
+          },
+          {
+            "scene": 3,
+            "speaker": "Barista (3 pm)",
+            "target_audio_id": "589b44e2-bff4-4155-9a48-86d5fa86044b",
+            "voice_id_raw": "xai_bf9fe5b5f981",
+            "duration_ms": 2590,
+            "medianF0Hz": 100.6,
+            "voicedFrames": 81,
+            "totalFrames": 128,
+            "spectralCentroidHz": 1216,
+            "classification": "male-typical",
+            "bytes": 31680
+          },
+          {
+            "scene": 4,
+            "speaker": "Friend (7 pm)",
+            "target_audio_id": "dfb6811f-8b75-4e52-81f7-7a17e6a0b258",
+            "voice_id_raw": "bf9fe5b5f981",
+            "duration_ms": 2280,
+            "medianF0Hz": 109.6,
+            "voicedFrames": 90,
+            "totalFrames": 111,
+            "spectralCentroidHz": 1913,
+            "classification": "male-typical",
+            "bytes": 27648
+          },
+          {
+            "scene": 5,
+            "speaker": "Neighbour (10:30 pm)",
+            "target_audio_id": "d62b2041-e781-4751-8418-06926694bc55",
+            "voice_id_raw": "xai_bf9fe5b5f981",
+            "duration_ms": 4034,
+            "medianF0Hz": 106.7,
+            "voicedFrames": 122,
+            "totalFrames": 200,
+            "spectralCentroidHz": 1319,
+            "classification": "male-typical",
+            "bytes": 49248
+          }
+        ],
+        "medianOfMediansF0Hz": 106.7,
+        "usableClips": 5,
+        "totalClips": 5,
+        "classification": "male-typical"
+      }
+    }
+  },
+  "nld_for_eng": {
+    "pod_id": "nld_for_eng:pod-1",
+    "voices": {
+      "58d27475085e": {
+        "declaredGender": "f",
+        "declaredName": "Femke",
+        "clips": [
+          {
+            "scene": 1,
+            "speaker": "Sarah",
+            "target_audio_id": "a63f9f3c-1e06-40c9-a3fa-5dbd86693fc8",
+            "voice_id_raw": "58d27475085e",
+            "duration_ms": 2616,
+            "medianF0Hz": 235.3,
+            "voicedFrames": 76,
+            "totalFrames": 128,
+            "spectralCentroidHz": 1736,
+            "classification": "female-typical",
+            "bytes": 31680
+          },
+          {
+            "scene": 2,
+            "speaker": "Sarah",
+            "target_audio_id": "be8bb9fb-45bd-4178-9414-e8a8fa5531cb",
+            "voice_id_raw": "58d27475085e",
+            "duration_ms": 1944,
+            "medianF0Hz": 228.6,
+            "voicedFrames": 66,
+            "totalFrames": 94,
+            "spectralCentroidHz": 1533,
+            "classification": "female-typical",
+            "bytes": 23616
+          },
+          {
+            "scene": 3,
+            "speaker": "Sarah",
+            "target_audio_id": "3071d0c7-5cf9-4ded-89d4-9bd8ed13f4ae",
+            "voice_id_raw": "xai_58d27475085e",
+            "duration_ms": 7896,
+            "medianF0Hz": 186,
+            "voicedFrames": 218,
+            "totalFrames": 393,
+            "spectralCentroidHz": 1204,
+            "classification": "female-typical",
+            "bytes": 95328
+          },
+          {
+            "scene": 4,
+            "speaker": "Sarah",
+            "target_audio_id": "44a3d8c6-c47c-4fae-a3a2-fc20d2db7274",
+            "voice_id_raw": "58d27475085e",
+            "duration_ms": 7704,
+            "medianF0Hz": 210.5,
+            "voicedFrames": 242,
+            "totalFrames": 382,
+            "spectralCentroidHz": 1298,
+            "classification": "female-typical",
+            "bytes": 92736
+          },
+          {
+            "scene": 5,
+            "speaker": "Sarah",
+            "target_audio_id": "90c7d36f-2db7-483f-a5f9-10fedf016931",
+            "voice_id_raw": "xai_58d27475085e",
+            "duration_ms": 6768,
+            "medianF0Hz": 170.2,
+            "voicedFrames": 171,
+            "totalFrames": 337,
+            "spectralCentroidHz": 989,
+            "classification": "female-typical",
+            "bytes": 81792
+          }
+        ],
+        "medianOfMediansF0Hz": 210.5,
+        "usableClips": 5,
+        "totalClips": 5,
+        "classification": "female-typical"
+      },
+      "a13662ba951c": {
+        "declaredGender": "m",
+        "declaredName": "Thijs",
+        "clips": [
+          {
+            "scene": 1,
+            "speaker": "Neighbour (8 am)",
+            "target_audio_id": "3e06003f-a211-4565-93ef-e76f14c81774",
+            "voice_id_raw": "a13662ba951c",
+            "duration_ms": 1344,
+            "medianF0Hz": 161.6,
+            "voicedFrames": 48,
+            "totalFrames": 64,
+            "spectralCentroidHz": 1530,
+            "classification": "AMBIGUOUS",
+            "bytes": 16416
+          },
+          {
+            "scene": 2,
+            "speaker": "Passenger",
+            "target_audio_id": "b24a2516-76d6-4dfe-94c1-4ecced9b9642",
+            "voice_id_raw": "xai_a13662ba951c",
+            "duration_ms": 3096,
+            "medianF0Hz": 114.3,
+            "voicedFrames": 66,
+            "totalFrames": 153,
+            "spectralCentroidHz": 1589,
+            "classification": "male-typical",
+            "bytes": 37728
+          },
+          {
+            "scene": 3,
+            "speaker": "Barista (3 pm)",
+            "target_audio_id": "5564e8a7-348f-4703-8f81-6fc90aa4946a",
+            "voice_id_raw": "xai_a13662ba951c",
+            "duration_ms": 2520,
+            "medianF0Hz": 116.8,
+            "voicedFrames": 59,
+            "totalFrames": 124,
+            "spectralCentroidHz": 1450,
+            "classification": "male-typical",
+            "bytes": 30816
+          },
+          {
+            "scene": 4,
+            "speaker": "Friend (7 pm)",
+            "target_audio_id": "57bc33f3-fcf3-4786-8fda-12479ff4197a",
+            "voice_id_raw": "a13662ba951c",
+            "duration_ms": 1392,
+            "medianF0Hz": 137.9,
+            "voicedFrames": 52,
+            "totalFrames": 67,
+            "spectralCentroidHz": 1230,
+            "classification": "male-typical",
+            "bytes": 16992
+          },
+          {
+            "scene": 5,
+            "speaker": "Neighbour (10:30 pm)",
+            "target_audio_id": "181c84ff-865b-436c-ace8-0732bfcff4de",
+            "voice_id_raw": "a13662ba951c",
+            "duration_ms": 2640,
+            "medianF0Hz": 111.9,
+            "voicedFrames": 76,
+            "totalFrames": 129,
+            "spectralCentroidHz": 1395,
+            "classification": "male-typical",
+            "bytes": 31968
+          }
+        ],
+        "medianOfMediansF0Hz": 116.8,
+        "usableClips": 5,
+        "totalClips": 5,
+        "classification": "male-typical"
+      }
+    }
+  },
+  "por_br_for_eng": {
+    "pod_id": "por_br_for_eng:pod-1",
+    "voices": {
+      "ara": {
+        "declaredGender": "f",
+        "declaredName": "Ara",
+        "clips": [
+          {
+            "scene": 1,
+            "speaker": "Sarah",
+            "target_audio_id": "9972277e-52ca-4612-813f-cf206cb5b2b3",
+            "voice_id_raw": "xai_ara",
+            "duration_ms": 2280,
+            "medianF0Hz": 238.8,
+            "voicedFrames": 69,
+            "totalFrames": 112,
+            "spectralCentroidHz": 1235,
+            "classification": "female-typical",
+            "bytes": 27936
+          },
+          {
+            "scene": 2,
+            "speaker": "Sarah",
+            "target_audio_id": "6a370ef8-f714-48fc-b453-3d3f4f88edf2",
+            "voice_id_raw": "xai_ara",
+            "duration_ms": 2786,
+            "medianF0Hz": 225.4,
+            "voicedFrames": 96,
+            "totalFrames": 138,
+            "spectralCentroidHz": 1180,
+            "classification": "female-typical",
+            "bytes": 34272
+          },
+          {
+            "scene": 3,
+            "speaker": "Sarah",
+            "target_audio_id": "f4503a10-ae71-48fa-99df-4766b648cb39",
+            "voice_id_raw": "xai_ara",
+            "duration_ms": 6600,
+            "medianF0Hz": 238.8,
+            "voicedFrames": 204,
+            "totalFrames": 328,
+            "spectralCentroidHz": 1335,
+            "classification": "female-typical",
+            "bytes": 79776
+          },
+          {
+            "scene": 4,
+            "speaker": "Sarah",
+            "target_audio_id": "f854e9b0-c161-4070-bba1-550f36f507a9",
+            "voice_id_raw": "xai_ara",
+            "duration_ms": 6840,
+            "medianF0Hz": 216.2,
+            "voicedFrames": 258,
+            "totalFrames": 340,
+            "spectralCentroidHz": 1247,
+            "classification": "female-typical",
+            "bytes": 82656
+          },
+          {
+            "scene": 5,
+            "speaker": "Sarah",
+            "target_audio_id": "ccfabff2-1b93-44c0-b4aa-d85b1115b05f",
+            "voice_id_raw": "xai_ara",
+            "duration_ms": 5640,
+            "medianF0Hz": 216.2,
+            "voicedFrames": 180,
+            "totalFrames": 280,
+            "spectralCentroidHz": 1165,
+            "classification": "female-typical",
+            "bytes": 68256
+          }
+        ],
+        "medianOfMediansF0Hz": 225.4,
+        "usableClips": 5,
+        "totalClips": 5,
+        "classification": "female-typical"
+      },
+      "pt-BR-JulioNeural": {
+        "declaredGender": null,
+        "declaredName": "Julio",
+        "clips": [
+          {
+            "scene": 1,
+            "speaker": "Neighbour (8 am)",
+            "target_audio_id": "419e4c3d-1532-4be6-83c9-f9e1172beaeb",
+            "voice_id_raw": "azure_pt-BR-JulioNeural",
+            "duration_ms": 1809,
+            "medianF0Hz": 115.9,
+            "voicedFrames": 52,
+            "totalFrames": 89,
+            "spectralCentroidHz": 1216,
+            "classification": "male-typical",
+            "bytes": 22464
+          },
+          {
+            "scene": 2,
+            "speaker": "Passenger",
+            "target_audio_id": "3ccee58e-8155-48bc-95f2-d06b0e605241",
+            "voice_id_raw": "azure_pt-BR-JulioNeural",
+            "duration_ms": 4745,
+            "medianF0Hz": 107.4,
+            "voicedFrames": 111,
+            "totalFrames": 236,
+            "spectralCentroidHz": 1119,
+            "classification": "male-typical",
+            "bytes": 57600
+          },
+          {
+            "scene": 3,
+            "speaker": "Barista (3 pm)",
+            "target_audio_id": "2937e9be-896b-460c-a13c-c01253858c75",
+            "voice_id_raw": "azure_pt-BR-JulioNeural",
+            "duration_ms": 3823,
+            "medianF0Hz": 118.5,
+            "voicedFrames": 91,
+            "totalFrames": 190,
+            "spectralCentroidHz": 1387,
+            "classification": "male-typical",
+            "bytes": 46656
+          },
+          {
+            "scene": 4,
+            "speaker": "Friend (7 pm)",
+            "target_audio_id": "0a029999-6bff-4b11-a4c8-1ff40910c7ab",
+            "voice_id_raw": "azure_pt-BR-JulioNeural",
+            "duration_ms": 1738,
+            "medianF0Hz": 121.2,
+            "voicedFrames": 55,
+            "totalFrames": 85,
+            "spectralCentroidHz": 763,
+            "classification": "male-typical",
+            "bytes": 21600
+          },
+          {
+            "scene": 5,
+            "speaker": "Neighbour (10:30 pm)",
+            "target_audio_id": "8278182d-f827-4152-86a7-ce639e40874f",
+            "voice_id_raw": "azure_pt-BR-JulioNeural",
+            "duration_ms": 4710,
+            "medianF0Hz": 108.8,
+            "voicedFrames": 121,
+            "totalFrames": 234,
+            "spectralCentroidHz": 1221,
+            "classification": "male-typical",
+            "bytes": 57312
+          }
+        ],
+        "medianOfMediansF0Hz": 115.9,
+        "usableClips": 5,
+        "totalClips": 5,
+        "classification": "male-typical"
+      }
+    }
+  },
+  "por_for_eng": {
+    "pod_id": "por_for_eng:pod-1",
+    "voices": {
+      "eve": {
+        "declaredGender": "f",
+        "declaredName": "Eve",
+        "clips": [
+          {
+            "scene": 1,
+            "speaker": "Sarah",
+            "target_audio_id": "f447c174-a7c4-4840-bcc4-010364a2700a",
+            "voice_id_raw": "xai_eve",
+            "duration_ms": 2505,
+            "medianF0Hz": 231.9,
+            "voicedFrames": 64,
+            "totalFrames": 124,
+            "spectralCentroidHz": 1268,
+            "classification": "female-typical",
+            "bytes": 30816
+          },
+          {
+            "scene": 2,
+            "speaker": "Sarah",
+            "target_audio_id": "9a037394-a882-42a9-96e5-f91a1b866fbc",
+            "voice_id_raw": "xai_eve",
+            "duration_ms": 2760,
+            "medianF0Hz": 205.1,
+            "voicedFrames": 92,
+            "totalFrames": 136,
+            "spectralCentroidHz": 1318,
+            "classification": "female-typical",
+            "bytes": 33696
+          },
+          {
+            "scene": 3,
+            "speaker": "Sarah",
+            "target_audio_id": "2164c973-fc11-4914-b33b-ffdf8e27c3ba",
+            "voice_id_raw": "xai_eve",
+            "duration_ms": 6048,
+            "medianF0Hz": 207.8,
+            "voicedFrames": 181,
+            "totalFrames": 301,
+            "spectralCentroidHz": 1083,
+            "classification": "female-typical",
+            "bytes": 73152
+          },
+          {
+            "scene": 4,
+            "speaker": "Sarah",
+            "target_audio_id": "79a13d09-91f9-43a2-a417-56d26d68124f",
+            "voice_id_raw": "xai_eve",
+            "duration_ms": 6449,
+            "medianF0Hz": 216.2,
+            "voicedFrames": 209,
+            "totalFrames": 321,
+            "spectralCentroidHz": 1332,
+            "classification": "female-typical",
+            "bytes": 78048
+          },
+          {
+            "scene": 5,
+            "speaker": "Sarah",
+            "target_audio_id": "33683c27-7873-41b7-8e61-344879475ef1",
+            "voice_id_raw": "xai_eve",
+            "duration_ms": 5697,
+            "medianF0Hz": 183.9,
+            "voicedFrames": 161,
+            "totalFrames": 283,
+            "spectralCentroidHz": 1225,
+            "classification": "female-typical",
+            "bytes": 69120
+          }
+        ],
+        "medianOfMediansF0Hz": 207.8,
+        "usableClips": 5,
+        "totalClips": 5,
+        "classification": "female-typical"
+      },
+      "rex": {
+        "declaredGender": "m",
+        "declaredName": "Rex",
+        "clips": [
+          {
+            "scene": 1,
+            "speaker": "Neighbour (8 am)",
+            "target_audio_id": "f9befad9-dece-4d6a-8f89-752a9f274c67",
+            "voice_id_raw": "rex",
+            "duration_ms": 1176,
+            "medianF0Hz": 104.6,
+            "voicedFrames": 43,
+            "totalFrames": 56,
+            "spectralCentroidHz": 1293,
+            "classification": "male-typical",
+            "bytes": 14400
+          },
+          {
+            "scene": 2,
+            "speaker": "Passenger",
+            "target_audio_id": "99f3ce04-c847-4833-b920-bd8651a12688",
+            "voice_id_raw": "xai_rex",
+            "duration_ms": 3908,
+            "medianF0Hz": 91.4,
+            "voicedFrames": 102,
+            "totalFrames": 194,
+            "spectralCentroidHz": 1337,
+            "classification": "male-typical",
+            "bytes": 47520
+          },
+          {
+            "scene": 3,
+            "speaker": "Barista (3 pm)",
+            "target_audio_id": "b2fefc1c-7fa3-441f-aa3d-bb4093c671fe",
+            "voice_id_raw": "xai_rex",
+            "duration_ms": 2280,
+            "medianF0Hz": 105.3,
+            "voicedFrames": 65,
+            "totalFrames": 112,
+            "spectralCentroidHz": 1411,
+            "classification": "male-typical",
+            "bytes": 27936
+          },
+          {
+            "scene": 4,
+            "speaker": "Friend (7 pm)",
+            "target_audio_id": "40387ac1-e891-4342-abb1-9303a16be02b",
+            "voice_id_raw": "rex",
+            "duration_ms": 1368,
+            "medianF0Hz": 93.6,
+            "voicedFrames": 52,
+            "totalFrames": 66,
+            "spectralCentroidHz": 1012,
+            "classification": "male-typical",
+            "bytes": 16704
+          },
+          {
+            "scene": 5,
+            "speaker": "Neighbour (10:30 pm)",
+            "target_audio_id": "ea7515f3-11ef-4e76-9602-69b6e5952bd8",
+            "voice_id_raw": "rex",
+            "duration_ms": 2688,
+            "medianF0Hz": 106,
+            "voicedFrames": 82,
+            "totalFrames": 132,
+            "spectralCentroidHz": 948,
+            "classification": "male-typical",
+            "bytes": 32544
+          }
+        ],
+        "medianOfMediansF0Hz": 104.6,
+        "usableClips": 5,
+        "totalClips": 5,
+        "classification": "male-typical"
+      }
+    }
+  },
+  "ron_for_eng": {
+    "pod_id": "ron_for_eng:pod-1",
+    "voices": {
+      "ro-RO-AlinaNeural": {
+        "declaredGender": null,
+        "declaredName": "Alina",
+        "clips": [
+          {
+            "scene": 1,
+            "speaker": "Sarah",
+            "target_audio_id": "272b669c-79a9-4a3f-8bd2-51807bc9e62e",
+            "voice_id_raw": "ro-RO-AlinaNeural",
+            "duration_ms": 3888,
+            "medianF0Hz": 186,
+            "voicedFrames": 69,
+            "totalFrames": 191,
+            "spectralCentroidHz": 1170,
+            "classification": "female-typical",
+            "bytes": 46944
+          },
+          {
+            "scene": 2,
+            "speaker": "Sarah",
+            "target_audio_id": "e692da18-5386-42e3-a395-a894f38ce1ff",
+            "voice_id_raw": "ro-RO-AlinaNeural",
+            "duration_ms": 3816,
+            "medianF0Hz": 192.8,
+            "voicedFrames": 93,
+            "totalFrames": 187,
+            "spectralCentroidHz": 1363,
+            "classification": "female-typical",
+            "bytes": 46080
+          },
+          {
+            "scene": 3,
+            "speaker": "Sarah",
+            "target_audio_id": "fbe8b8de-e2da-4609-b835-7424e8369780",
+            "voice_id_raw": "ro-RO-AlinaNeural",
+            "duration_ms": 9144,
+            "medianF0Hz": 197.5,
+            "voicedFrames": 186,
+            "totalFrames": 454,
+            "spectralCentroidHz": 1186,
+            "classification": "female-typical",
+            "bytes": 110016
+          },
+          {
+            "scene": 4,
+            "speaker": "Sarah",
+            "target_audio_id": "6775017d-556f-4e85-9080-fba9351697f6",
+            "voice_id_raw": "ro-RO-AlinaNeural",
+            "duration_ms": 9216,
+            "medianF0Hz": 200,
+            "voicedFrames": 225,
+            "totalFrames": 457,
+            "spectralCentroidHz": 975,
+            "classification": "female-typical",
+            "bytes": 110880
+          },
+          {
+            "scene": 5,
+            "speaker": "Sarah",
+            "target_audio_id": "b86ac320-9ae7-43d0-8c0e-0309ea5644c3",
+            "voice_id_raw": "ro-RO-AlinaNeural",
+            "duration_ms": 8208,
+            "medianF0Hz": 205.1,
+            "voicedFrames": 171,
+            "totalFrames": 407,
+            "spectralCentroidHz": 972,
+            "classification": "female-typical",
+            "bytes": 98784
+          }
+        ],
+        "medianOfMediansF0Hz": 197.5,
+        "usableClips": 5,
+        "totalClips": 5,
+        "classification": "female-typical"
+      },
+      "ro-RO-EmilNeural": {
+        "declaredGender": null,
+        "declaredName": "Emil",
+        "clips": [
+          {
+            "scene": 1,
+            "speaker": "Neighbour (8 am)",
+            "target_audio_id": "a7157b73-b88a-4d42-adcf-1c1526e46c9c",
+            "voice_id_raw": "ro-RO-EmilNeural",
+            "duration_ms": 2952,
+            "medianF0Hz": 140.4,
+            "voicedFrames": 71,
+            "totalFrames": 144,
+            "spectralCentroidHz": 1364,
+            "classification": "male-typical",
+            "bytes": 35712
+          },
+          {
+            "scene": 2,
+            "speaker": "Passenger",
+            "target_audio_id": "d85c0089-0231-4b04-bb11-94d0aaa4cfeb",
+            "voice_id_raw": "azure_ro-RO-EmilNeural",
+            "duration_ms": 4439,
+            "medianF0Hz": 136.8,
+            "voicedFrames": 96,
+            "totalFrames": 220,
+            "spectralCentroidHz": 1124,
+            "classification": "male-typical",
+            "bytes": 53856
+          },
+          {
+            "scene": 3,
+            "speaker": "Barista (3 pm)",
+            "target_audio_id": "a90f1639-029c-4eac-a46b-1f1f13dc4526",
+            "voice_id_raw": "azure_ro-RO-EmilNeural",
+            "duration_ms": 3713,
+            "medianF0Hz": 123.1,
+            "voicedFrames": 88,
+            "totalFrames": 184,
+            "spectralCentroidHz": 1213,
+            "classification": "male-typical",
+            "bytes": 45216
+          },
+          {
+            "scene": 4,
+            "speaker": "Friend (7 pm)",
+            "target_audio_id": "1fde486f-9c9a-4ba3-93ea-50b6369beba4",
+            "voice_id_raw": "ro-RO-EmilNeural",
+            "duration_ms": 2448,
+            "medianF0Hz": 114.3,
+            "voicedFrames": 61,
+            "totalFrames": 119,
+            "spectralCentroidHz": 866,
+            "classification": "male-typical",
+            "bytes": 29664
+          },
+          {
+            "scene": 5,
+            "speaker": "Neighbour (10:30 pm)",
+            "target_audio_id": "0944a109-d566-4fef-b6e9-3c511043251a",
+            "voice_id_raw": "azure_ro-RO-EmilNeural",
+            "duration_ms": 4848,
+            "medianF0Hz": 125,
+            "voicedFrames": 118,
+            "totalFrames": 240,
+            "spectralCentroidHz": 1250,
+            "classification": "male-typical",
+            "bytes": 58464
+          }
+        ],
+        "medianOfMediansF0Hz": 125,
+        "usableClips": 5,
+        "totalClips": 5,
+        "classification": "male-typical"
+      }
+    }
+  },
+  "spa_for_eng": {
+    "pod_id": "spa_for_eng:pod-1",
+    "voices": {
+      "es-ES-ElviraNeural": {
+        "declaredGender": null,
+        "declaredName": "Elvira",
+        "clips": [
+          {
+            "scene": 1,
+            "speaker": "Sarah",
+            "target_audio_id": "70a36d98-0e10-4da0-b172-10426c9f9fa9",
+            "voice_id_raw": "azure_es-ES-ElviraNeural",
+            "duration_ms": 3362,
+            "medianF0Hz": 225.4,
+            "voicedFrames": 71,
+            "totalFrames": 167,
+            "spectralCentroidHz": 2111,
+            "classification": "female-typical",
+            "bytes": 41184
+          },
+          {
+            "scene": 2,
+            "speaker": "Sarah",
+            "target_audio_id": "a59c0b95-b583-4f4c-a6d3-9cce22313fcb",
+            "voice_id_raw": "azure_es-ES-ElviraNeural",
+            "duration_ms": 2670,
+            "medianF0Hz": 197.5,
+            "voicedFrames": 112,
+            "totalFrames": 132,
+            "spectralCentroidHz": 1623,
+            "classification": "female-typical",
+            "bytes": 32832
+          },
+          {
+            "scene": 3,
+            "speaker": "Sarah",
+            "target_audio_id": "c209baab-0b9d-4972-a57c-0df22aa92ffd",
+            "voice_id_raw": "azure_es-ES-ElviraNeural",
+            "duration_ms": 9285,
+            "medianF0Hz": 197.5,
+            "voicedFrames": 221,
+            "totalFrames": 463,
+            "spectralCentroidHz": 1651,
+            "classification": "female-typical",
+            "bytes": 112032
+          },
+          {
+            "scene": 4,
+            "speaker": "Sarah",
+            "target_audio_id": "b199f629-3581-4cc4-843d-220b0e31fd06",
+            "voice_id_raw": "azure_es-ES-ElviraNeural",
+            "duration_ms": 9862,
+            "medianF0Hz": 190.5,
+            "voicedFrames": 271,
+            "totalFrames": 492,
+            "spectralCentroidHz": 1516,
+            "classification": "female-typical",
+            "bytes": 118944
+          },
+          {
+            "scene": 5,
+            "speaker": "Sarah",
+            "target_audio_id": "deaab97f-a2b9-4c85-9dea-ca2a269e2c98",
+            "voice_id_raw": "azure_es-ES-ElviraNeural",
+            "duration_ms": 8784,
+            "medianF0Hz": 200,
+            "voicedFrames": 208,
+            "totalFrames": 438,
+            "spectralCentroidHz": 1740,
+            "classification": "female-typical",
+            "bytes": 106272
+          }
+        ],
+        "medianOfMediansF0Hz": 197.5,
+        "usableClips": 5,
+        "totalClips": 5,
+        "classification": "female-typical"
+      },
+      "yis75yfp": {
+        "declaredGender": "m",
+        "declaredName": "Manuel",
+        "clips": [
+          {
+            "scene": 1,
+            "speaker": "Neighbour (8 am)",
+            "target_audio_id": "f228573b-69f1-4f50-a600-d087708f7301",
+            "voice_id_raw": "yis75yfp",
+            "duration_ms": 1104,
+            "medianF0Hz": 117.6,
+            "voicedFrames": 45,
+            "totalFrames": 52,
+            "spectralCentroidHz": 1376,
+            "classification": "male-typical",
+            "bytes": 13536
+          },
+          {
+            "scene": 2,
+            "speaker": "Passenger",
+            "target_audio_id": "1536e583-5fd6-4142-aea3-1ec536fd7961",
+            "voice_id_raw": "xai_yis75yfp",
+            "duration_ms": 3202,
+            "medianF0Hz": 90.9,
+            "voicedFrames": 126,
+            "totalFrames": 159,
+            "spectralCentroidHz": 878,
+            "classification": "male-typical",
+            "bytes": 39168
+          },
+          {
+            "scene": 3,
+            "speaker": "Barista (3 pm)",
+            "target_audio_id": "96fa7a76-ecc3-476b-ae26-3db687025bd1",
+            "voice_id_raw": "xai_yis75yfp",
+            "duration_ms": 2575,
+            "medianF0Hz": 108.8,
+            "voicedFrames": 74,
+            "totalFrames": 127,
+            "spectralCentroidHz": 1002,
+            "classification": "male-typical",
+            "bytes": 31680
+          },
+          {
+            "scene": 4,
+            "speaker": "Friend (7 pm)",
+            "target_audio_id": "4dd117c9-bdda-4c9b-884d-91290bb9e512",
+            "voice_id_raw": "yis75yfp",
+            "duration_ms": 1896,
+            "medianF0Hz": 119.4,
+            "voicedFrames": 61,
+            "totalFrames": 92,
+            "spectralCentroidHz": 1550,
+            "classification": "male-typical",
+            "bytes": 23040
+          },
+          {
+            "scene": 5,
+            "speaker": "Neighbour (10:30 pm)",
+            "target_audio_id": "bc581a08-e671-4a1e-be04-377bca576aed",
+            "voice_id_raw": "xai_yis75yfp",
+            "duration_ms": 3252,
+            "medianF0Hz": 92.5,
+            "voicedFrames": 104,
+            "totalFrames": 161,
+            "spectralCentroidHz": 1142,
+            "classification": "male-typical",
+            "bytes": 39744
+          }
+        ],
+        "medianOfMediansF0Hz": 108.8,
+        "usableClips": 5,
+        "totalClips": 5,
+        "classification": "male-typical"
+      }
+    }
+  },
+  "spa_mx_for_eng": {
+    "pod_id": "spa_mx_for_eng:pod-1",
+    "voices": {
+      "es-MX-CarlotaNeural": {
+        "declaredGender": null,
+        "declaredName": "Carlota",
+        "clips": [
+          {
+            "scene": 1,
+            "speaker": "Sarah",
+            "target_audio_id": "59d489bf-6f57-4cc8-b4c3-1326de4a3cdb",
+            "voice_id_raw": "azure_es-MX-CarlotaNeural",
+            "duration_ms": 3633,
+            "medianF0Hz": 222.2,
+            "voicedFrames": 82,
+            "totalFrames": 180,
+            "spectralCentroidHz": 1399,
+            "classification": "female-typical",
+            "bytes": 44352
+          },
+          {
+            "scene": 2,
+            "speaker": "Sarah",
+            "target_audio_id": "f5848742-b248-4d89-9aa4-7852344ad758",
+            "voice_id_raw": "azure_es-MX-CarlotaNeural",
+            "duration_ms": 3006,
+            "medianF0Hz": 207.8,
+            "voicedFrames": 97,
+            "totalFrames": 149,
+            "spectralCentroidHz": 1151,
+            "classification": "female-typical",
+            "bytes": 36864
+          },
+          {
+            "scene": 3,
+            "speaker": "Sarah",
+            "target_audio_id": "b034e486-6066-43ae-bb13-95408476b713",
+            "voice_id_raw": "azure_es-MX-CarlotaNeural",
+            "duration_ms": 9847,
+            "medianF0Hz": 205.1,
+            "voicedFrames": 203,
+            "totalFrames": 491,
+            "spectralCentroidHz": 1358,
+            "classification": "female-typical",
+            "bytes": 118944
+          },
+          {
+            "scene": 4,
+            "speaker": "Sarah",
+            "target_audio_id": "af21830a-b311-48d4-99a4-36582925e600",
+            "voice_id_raw": "azure_es-MX-CarlotaNeural",
+            "duration_ms": 11009,
+            "medianF0Hz": 200,
+            "voicedFrames": 282,
+            "totalFrames": 549,
+            "spectralCentroidHz": 1104,
+            "classification": "female-typical",
+            "bytes": 132768
+          },
+          {
+            "scene": 5,
+            "speaker": "Sarah",
+            "target_audio_id": "5aa2d979-6b3a-4024-8581-bb4becbf62ec",
+            "voice_id_raw": "azure_es-MX-CarlotaNeural",
+            "duration_ms": 9486,
+            "medianF0Hz": 195.1,
+            "voicedFrames": 213,
+            "totalFrames": 473,
+            "spectralCentroidHz": 1180,
+            "classification": "female-typical",
+            "bytes": 114624
+          }
+        ],
+        "medianOfMediansF0Hz": 205.1,
+        "usableClips": 5,
+        "totalClips": 5,
+        "classification": "female-typical"
+      },
+      "es-MX-LucianoNeural": {
+        "declaredGender": null,
+        "declaredName": "Luciano",
+        "clips": [
+          {
+            "scene": 1,
+            "speaker": "Neighbour (8 am)",
+            "target_audio_id": "5c7ff1a5-95ef-4e66-9c36-be0cc5b55a2a",
+            "voice_id_raw": "azure_es-MX-LucianoNeural",
+            "duration_ms": 2109,
+            "medianF0Hz": 111.9,
+            "voicedFrames": 59,
+            "totalFrames": 104,
+            "spectralCentroidHz": 2321,
+            "classification": "male-typical",
+            "bytes": 25920
+          },
+          {
+            "scene": 2,
+            "speaker": "Passenger",
+            "target_audio_id": "aa829e39-344c-4dec-9e70-45865d0ef115",
+            "voice_id_raw": "azure_es-MX-LucianoNeural",
+            "duration_ms": 4585,
+            "medianF0Hz": 101.3,
+            "voicedFrames": 103,
+            "totalFrames": 228,
+            "spectralCentroidHz": 1048,
+            "classification": "male-typical",
+            "bytes": 55872
+          },
+          {
+            "scene": 3,
+            "speaker": "Barista (3 pm)",
+            "target_audio_id": "9a34da7d-c7e3-42e1-916a-ad99e89b38d3",
+            "voice_id_raw": "azure_es-MX-LucianoNeural",
+            "duration_ms": 3608,
+            "medianF0Hz": 103.2,
+            "voicedFrames": 77,
+            "totalFrames": 179,
+            "spectralCentroidHz": 1487,
+            "classification": "male-typical",
+            "bytes": 44064
+          },
+          {
+            "scene": 4,
+            "speaker": "Friend (7 pm)",
+            "target_audio_id": "647c9bf9-fb9f-4307-a5fc-3635c3b84661",
+            "voice_id_raw": "azure_es-MX-LucianoNeural",
+            "duration_ms": 2124,
+            "medianF0Hz": 116.8,
+            "voicedFrames": 60,
+            "totalFrames": 105,
+            "spectralCentroidHz": 941,
+            "classification": "male-typical",
+            "bytes": 26208
+          },
+          {
+            "scene": 5,
+            "speaker": "Neighbour (10:30 pm)",
+            "target_audio_id": "01db8ede-26fb-4bd2-b4c8-888b3e010166",
+            "voice_id_raw": "azure_es-MX-LucianoNeural",
+            "duration_ms": 5021,
+            "medianF0Hz": 94.1,
+            "voicedFrames": 128,
+            "totalFrames": 250,
+            "spectralCentroidHz": 1406,
+            "classification": "male-typical",
+            "bytes": 61056
+          }
+        ],
+        "medianOfMediansF0Hz": 103.2,
+        "usableClips": 5,
+        "totalClips": 5,
+        "classification": "male-typical"
+      }
+    }
+  },
+  "swe_for_eng": {
+    "pod_id": "swe_for_eng:pod-1",
+    "voices": {
+      "3b312632": {
+        "declaredGender": "f",
+        "declaredName": "Alice",
+        "clips": [
+          {
+            "scene": 1,
+            "speaker": "Sarah",
+            "target_audio_id": "d8d7e365-b3f9-4088-bbaf-57e29e066c99",
+            "voice_id_raw": "xai_3b312632",
+            "duration_ms": 2240,
+            "medianF0Hz": 210.5,
+            "voicedFrames": 64,
+            "totalFrames": 110,
+            "spectralCentroidHz": 582,
+            "classification": "female-typical",
+            "bytes": 27648
+          },
+          {
+            "scene": 2,
+            "speaker": "Sarah",
+            "target_audio_id": "fac4382b-c6ec-41b5-b6f5-c31cdc3d88d9",
+            "voice_id_raw": "xai_3b312632",
+            "duration_ms": 3056,
+            "medianF0Hz": 188.2,
+            "voicedFrames": 91,
+            "totalFrames": 151,
+            "spectralCentroidHz": 1307,
+            "classification": "female-typical",
+            "bytes": 37440
+          },
+          {
+            "scene": 3,
+            "speaker": "Sarah",
+            "target_audio_id": "5db60d31-d16e-4002-8395-5a74822d858a",
+            "voice_id_raw": "xai_3b312632",
+            "duration_ms": 8935,
+            "medianF0Hz": 190.5,
+            "voicedFrames": 193,
+            "totalFrames": 445,
+            "spectralCentroidHz": 1542,
+            "classification": "female-typical",
+            "bytes": 108000
+          },
+          {
+            "scene": 4,
+            "speaker": "Sarah",
+            "target_audio_id": "639c6720-0537-423a-a616-bb13e277bf99",
+            "voice_id_raw": "xai_3b312632",
+            "duration_ms": 7767,
+            "medianF0Hz": 117.6,
+            "voicedFrames": 214,
+            "totalFrames": 387,
+            "spectralCentroidHz": 1198,
+            "classification": "male-typical",
+            "bytes": 93888
+          },
+          {
+            "scene": 5,
+            "speaker": "Sarah",
+            "target_audio_id": "19260879-3d2c-4af9-a450-7f3baf181f99",
+            "voice_id_raw": "xai_3b312632",
+            "duration_ms": 7516,
+            "medianF0Hz": 177.8,
+            "voicedFrames": 152,
+            "totalFrames": 374,
+            "spectralCentroidHz": 1297,
+            "classification": "female-typical",
+            "bytes": 91008
+          }
+        ],
+        "medianOfMediansF0Hz": 188.2,
+        "usableClips": 5,
+        "totalClips": 5,
+        "classification": "female-typical"
+      },
+      "4c7f16ff": {
+        "declaredGender": "m",
+        "declaredName": "Oscar",
+        "clips": [
+          {
+            "scene": 1,
+            "speaker": "Neighbour (8 am)",
+            "target_audio_id": "be74ed5a-5998-4c17-846a-5a6d830d3acd",
+            "voice_id_raw": "xai_4c7f16ff",
+            "duration_ms": 1373,
+            "medianF0Hz": 117.6,
+            "voicedFrames": 41,
+            "totalFrames": 67,
+            "spectralCentroidHz": 970,
+            "classification": "male-typical",
+            "bytes": 17280
+          },
+          {
+            "scene": 2,
+            "speaker": "Passenger",
+            "target_audio_id": "c90479fd-b998-4c80-8b45-72529b1461cc",
+            "voice_id_raw": "xai_4c7f16ff",
+            "duration_ms": 2931,
+            "medianF0Hz": 122.1,
+            "voicedFrames": 81,
+            "totalFrames": 145,
+            "spectralCentroidHz": 1243,
+            "classification": "male-typical",
+            "bytes": 36000
+          },
+          {
+            "scene": 3,
+            "speaker": "Barista (3 pm)",
+            "target_audio_id": "60c61574-21f8-4a93-a190-c99f172c133f",
+            "voice_id_raw": "xai_4c7f16ff",
+            "duration_ms": 3001,
+            "medianF0Hz": 126,
+            "voicedFrames": 87,
+            "totalFrames": 149,
+            "spectralCentroidHz": 1033,
+            "classification": "male-typical",
+            "bytes": 36864
+          },
+          {
+            "scene": 4,
+            "speaker": "Friend (7 pm)",
+            "target_audio_id": "cb472c79-24e3-4ca3-9d45-d91bb8e40c49",
+            "voice_id_raw": "xai_4c7f16ff",
+            "duration_ms": 1413,
+            "medianF0Hz": 124,
+            "voicedFrames": 49,
+            "totalFrames": 69,
+            "spectralCentroidHz": 915,
+            "classification": "male-typical",
+            "bytes": 17568
+          },
+          {
+            "scene": 5,
+            "speaker": "Neighbour (10:30 pm)",
+            "target_audio_id": "ac6e2627-5d25-4795-8edf-f5c7d841dd15",
+            "voice_id_raw": "xai_4c7f16ff",
+            "duration_ms": 3162,
+            "medianF0Hz": 129,
+            "voicedFrames": 91,
+            "totalFrames": 157,
+            "spectralCentroidHz": 926,
+            "classification": "male-typical",
+            "bytes": 38592
+          }
+        ],
+        "medianOfMediansF0Hz": 124,
+        "usableClips": 5,
+        "totalClips": 5,
+        "classification": "male-typical"
+      }
+    }
+  },
+  "zho_for_eng": {
+    "pod_id": "zho_for_eng:pod-1",
+    "voices": {
+      "33g9t0jl": {
+        "declaredGender": "f",
+        "declaredName": "Xia",
+        "clips": [
+          {
+            "scene": 1,
+            "speaker": "Sarah",
+            "target_audio_id": "d943701d-2dfa-4427-aa85-6035f27fcb06",
+            "voice_id_raw": "33g9t0jl",
+            "duration_ms": 2112,
+            "medianF0Hz": 195.1,
+            "voicedFrames": 74,
+            "totalFrames": 103,
+            "spectralCentroidHz": 1499,
+            "classification": "female-typical",
+            "bytes": 25632
+          },
+          {
+            "scene": 2,
+            "speaker": "Sarah",
+            "target_audio_id": "85fc9c31-1d8c-4c94-8980-7642366df8d8",
+            "voice_id_raw": "33g9t0jl",
+            "duration_ms": 3312,
+            "medianF0Hz": 207.8,
+            "voicedFrames": 113,
+            "totalFrames": 163,
+            "spectralCentroidHz": 1690,
+            "classification": "female-typical",
+            "bytes": 40032
+          },
+          {
+            "scene": 3,
+            "speaker": "Sarah",
+            "target_audio_id": "553d57a0-be3b-412c-8ca7-2052c2a72f3b",
+            "voice_id_raw": "33g9t0jl",
+            "duration_ms": 6912,
+            "medianF0Hz": 210.5,
+            "voicedFrames": 209,
+            "totalFrames": 343,
+            "spectralCentroidHz": 1463,
+            "classification": "female-typical",
+            "bytes": 83232
+          },
+          {
+            "scene": 4,
+            "speaker": "Sarah",
+            "target_audio_id": "f7923390-b0b5-4376-9977-2c797080f603",
+            "voice_id_raw": "33g9t0jl",
+            "duration_ms": 7752,
+            "medianF0Hz": 202.5,
+            "voicedFrames": 278,
+            "totalFrames": 385,
+            "spectralCentroidHz": 1313,
+            "classification": "female-typical",
+            "bytes": 93312
+          },
+          {
+            "scene": 5,
+            "speaker": "Sarah",
+            "target_audio_id": "cf47e8a3-65ee-48d0-b7f0-555a003287db",
+            "voice_id_raw": "33g9t0jl",
+            "duration_ms": 5376,
+            "medianF0Hz": 207.8,
+            "voicedFrames": 182,
+            "totalFrames": 266,
+            "spectralCentroidHz": 1461,
+            "classification": "female-typical",
+            "bytes": 64800
+          }
+        ],
+        "medianOfMediansF0Hz": 207.8,
+        "usableClips": 5,
+        "totalClips": 5,
+        "classification": "female-typical"
+      },
+      "jpi39icg": {
+        "declaredGender": "m",
+        "declaredName": "Jian",
+        "clips": [
+          {
+            "scene": 1,
+            "speaker": "Neighbour (8 am)",
+            "target_audio_id": "e4318cac-e315-4e6f-94ba-c70e46040161",
+            "voice_id_raw": "jpi39icg",
+            "duration_ms": 1224,
+            "medianF0Hz": 163.3,
+            "voicedFrames": 38,
+            "totalFrames": 58,
+            "spectralCentroidHz": 2076,
+            "classification": "AMBIGUOUS",
+            "bytes": 14976
+          },
+          {
+            "scene": 2,
+            "speaker": "Passenger",
+            "target_audio_id": "3176e0ba-1b75-4b51-b0a9-e56587fa4031",
+            "voice_id_raw": "xai_jpi39icg",
+            "duration_ms": 2112,
+            "medianF0Hz": 131.1,
+            "voicedFrames": 53,
+            "totalFrames": 104,
+            "spectralCentroidHz": 1735,
+            "classification": "male-typical",
+            "bytes": 25920
+          },
+          {
+            "scene": 3,
+            "speaker": "Barista (3 pm)",
+            "target_audio_id": "b24f59f2-afe2-4198-894d-d8e94074e022",
+            "voice_id_raw": "jpi39icg",
+            "duration_ms": 2040,
+            "medianF0Hz": 152.4,
+            "voicedFrames": 58,
+            "totalFrames": 99,
+            "spectralCentroidHz": 2787,
+            "classification": "AMBIGUOUS",
+            "bytes": 24768
+          },
+          {
+            "scene": 4,
+            "speaker": "Friend (7 pm)",
+            "target_audio_id": "e901ce0d-08cf-42a0-a4f9-16009f9db387",
+            "voice_id_raw": "jpi39icg",
+            "duration_ms": 1512,
+            "medianF0Hz": 128,
+            "voicedFrames": 39,
+            "totalFrames": 73,
+            "spectralCentroidHz": 1582,
+            "classification": "male-typical",
+            "bytes": 18432
+          },
+          {
+            "scene": 5,
+            "speaker": "Neighbour (10:30 pm)",
+            "target_audio_id": "af889569-e85d-45c5-9892-a1627ef6734f",
+            "voice_id_raw": "xai_jpi39icg",
+            "duration_ms": 3408,
+            "medianF0Hz": 136.8,
+            "voicedFrames": 109,
+            "totalFrames": 169,
+            "spectralCentroidHz": 1580,
+            "classification": "male-typical",
+            "bytes": 41472
+          }
+        ],
+        "medianOfMediansF0Hz": 136.8,
+        "usableClips": 5,
+        "totalClips": 5,
+        "classification": "male-typical"
+      }
+    }
+  }
+}
