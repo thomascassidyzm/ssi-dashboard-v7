@@ -68,8 +68,17 @@
  *   - NO DELETES. Ever. Not of a link, not of a course_audio row, not of an S3
  *     object. Cleanup of the superseded clips is a separate, later decision.
  *
+ * VARIANT DRILLS ARE NOT CANDIDATES (2026-08-24). Rows inside a variant run —
+ * measured by tools/pods/variant-run.cjs, which is the only place that rule
+ * lives — are excluded from the render scope by default, reported with the
+ * reason, and never written. Before this, a re-run of this tool against
+ * ita_for_eng:pod-1 reported Tom's own seven reverted turns as work to do.
+ * `--include-variant-runs` overrides it deliberately and prints a warning
+ * naming the ruling.
+ *
  *   node tools/pods/rerender-off-role-pod-turns.cjs --pod=ita_for_eng:pod-1
  *   node tools/pods/rerender-off-role-pod-turns.cjs --pod=ita_for_eng:pod-1 --apply
+ *   node tools/pods/rerender-off-role-pod-turns.cjs --pod=X:pod-1 --include-variant-runs
  */
 'use strict'
 
@@ -83,8 +92,11 @@ const os = require('os')
 const { execFileSync, spawnSync } = require('child_process')
 const { Client } = require('pg')
 const { canonicalSpeakerName } = require(path.join(REPO, 'tools', 'pod-voice-colour-n.cjs'))
+const { annotateVariantRuns } = require('./variant-run.cjs')
 
 const APPLY = process.argv.includes('--apply')
+/** Deliberate escape hatch — see the variant-run note on computeOffRole. */
+const INCLUDE_VARIANT_RUNS = process.argv.includes('--include-variant-runs')
 const arg = (n, d) => {
   const a = process.argv.find((x) => x.startsWith(`--${n}=`))
   return a ? a.split('=').slice(1).join('=') : d
@@ -134,9 +146,23 @@ const SPLIT_SLOTS = [
  * the RIGHT ONE OF THE TWO for this speaker". The first cannot see a role that
  * swapped sides. The second is the whole point of this tool.
  *
- * @returns {{turns:Array, splits:Array, castVoices:{target:string[],known:string[]}}}
+ * VARIANT RUNS ARE NOT CANDIDATES (2026-08-24, Tom's ruling — see
+ * tools/pods/variant-run.cjs for the rule and the words it came from). A line
+ * inside a variant drill stays on the single learner voice even though its
+ * ROLE is cast to the second voice, because the cast is per-role and the ruling
+ * is per-line. Measured off-role, those rows look exactly like work: on
+ * ita_for_eng:pod-1 this tool reported Tom's own seven reverted turns — 14
+ * slots — as off-role an hour after he ruled them, and `--apply` would have
+ * re-rendered them onto the second voice, undone the ruling and charged for it.
+ * So they are measured, reported and EXCLUDED from `turns` by default. Pass
+ * `includeVariantRuns: true` (CLI `--include-variant-runs`) to put them back in
+ * deliberately. The split arrays are reported-only anyway, so the exclusion
+ * applies to the whole-turn columns, which are the ones this tool writes.
+ *
+ * @returns {{turns:Array, splits:Array, variantLocked:Array,
+ *            castVoices:{target:string[],known:string[]}}}
  */
-function computeOffRole ({ rows, speakers, clips }) {
+function computeOffRole ({ rows, speakers, clips, includeVariantRuns = false }) {
   const cast = speakers || {}
   const castVoices = { target: new Set(), known: new Set() }
   for (const entry of Object.values(cast)) {
@@ -150,10 +176,16 @@ function computeOffRole ({ rows, speakers, clips }) {
     return e && e[track] && e[track].voice_id ? e[track] : null
   }
 
+  // The variant-drill rule, read from the ONE module that expresses it.
+  const variance = annotateVariantRuns(rows || [])
+  const lockedRow = new Map(variance.rows.map((v) => [v.row, v]))
+
   const turns = []
   const splits = []
+  const variantLocked = []
   for (const r of rows || []) {
     const name = canonicalSpeakerName(r.speaker)
+    const lock = lockedRow.get(r)
     for (const s of TURN_SLOTS) {
       const id = r[s.link]
       if (!id || !clips[id]) continue
@@ -162,11 +194,17 @@ function computeOffRole ({ rows, speakers, clips }) {
       const wantBare = bareVoice(want.voice_id)
       const gotBare = bareVoice(clips[id].voice_id)
       if (gotBare === wantBare) continue
-      turns.push({
+      const slot = {
         row_id: r.id, scene: r.scene_number, sentence: r.sentence_number, speaker: name,
         track: s.track, link: s.link, role: s.role, text: r[s.textField],
         old_clip_id: id, old_voice: gotBare, want_voice: wantBare, want_voice_entry: want,
-      })
+      }
+      if (lock && lock.variantLocked && !includeVariantRuns) {
+        variantLocked.push({ ...slot, variant_run: lock.runId, variant_reason: lock.reason })
+        continue
+      }
+      if (lock && lock.variantLocked) slot.variant_run = lock.runId
+      turns.push(slot)
     }
     for (const s of SPLIT_SLOTS) {
       const arr = r[s.col] || []
@@ -183,7 +221,13 @@ function computeOffRole ({ rows, speakers, clips }) {
       })
     }
   }
-  return { turns, splits, castVoices: { target: [...castVoices.target], known: [...castVoices.known] } }
+  return {
+    turns,
+    splits,
+    variantLocked,
+    variantRuns: variance.runs,
+    castVoices: { target: [...castVoices.target], known: [...castVoices.known] },
+  }
 }
 
 function sh (cmd, args, opts = {}) {
@@ -326,8 +370,8 @@ async function main () {
   }
 
   // --- the measurement, and the two-voice precondition ----------------------
-  const measured = computeOffRole({ rows, speakers: pod.speakers, clips })
-  const { turns: scope, splits: splitDrift, castVoices } = measured
+  const measured = computeOffRole({ rows, speakers: pod.speakers, clips, includeVariantRuns: INCLUDE_VARIANT_RUNS })
+  const { turns: scope, splits: splitDrift, variantLocked, castVoices } = measured
   for (const track of ['target', 'known']) {
     if (castVoices[track].length !== 2) {
       console.error(`FAILED: ${POD_ID} resolves to ${castVoices[track].length} ${track} voice(s) ` +
@@ -344,7 +388,26 @@ async function main () {
   for (const s of scope) {
     console.log(`    s${s.scene}/${s.sentence} ${s.speaker} ${s.link}: ${s.old_voice} -> ${s.want_voice}  ${JSON.stringify(String(s.text).slice(0, 60))}`)
   }
-  console.log(`  OFF-ROLE split-array clips (REPORTED ONLY, re-cut work, not re-render work): ${splitDrift.length}`)
+  if (INCLUDE_VARIANT_RUNS) {
+    console.log('\n  ⚠️  --include-variant-runs: the variant-drill exclusion is OFF.')
+    console.log('     Tom\'s ruling of 2026-08-24 — "It makes sense in the context of the extra phrases')
+    console.log('     for the same voice to give alternative responses etc." — means a line inside a')
+    console.log('     variant drill stays on ONE voice. Rendering it onto the second voice makes the')
+    console.log('     speaker contradict themselves. You are overriding that deliberately.')
+  } else if (variantLocked.length) {
+    const runs = [...new Set(variantLocked.map((v) => v.variant_run))]
+    console.log(`\n  EXCLUDED — variant-drill lines, NOT candidates: ${variantLocked.length} slot(s) ` +
+      `across ${new Set(variantLocked.map((v) => v.row_id)).size} turn(s), ${runs.length} run(s)`)
+    for (const v of variantLocked) {
+      console.log(`    s${v.scene}/${v.sentence} ${v.speaker} ${v.link}: would have been ${v.old_voice} -> ${v.want_voice}  ${JSON.stringify(String(v.text).slice(0, 60))}`)
+    }
+    for (const runId of runs) {
+      const one = variantLocked.find((v) => v.variant_run === runId)
+      console.log(`    why ${runId}: ${one.variant_reason}`)
+    }
+    console.log('    Pass --include-variant-runs to render them anyway (you will be warned again).')
+  }
+  console.log(`\n  OFF-ROLE split-array clips (REPORTED ONLY, re-cut work, not re-render work): ${splitDrift.length}`)
   const bySpeaker = {}
   for (const d of splitDrift) bySpeaker[`${d.speaker} ${d.col}`] = (bySpeaker[`${d.speaker} ${d.col}`] || 0) + 1
   for (const [k, n] of Object.entries(bySpeaker)) console.log(`    ${String(n).padStart(3)}  ${k}`)
@@ -359,7 +422,7 @@ async function main () {
   }
 
   if (!scope.length) {
-    writeLog(APPLY ? 'applied' : 'dryrun', { pod: POD_ID, at: new Date().toISOString(), scope: [], splitDrift })
+    writeLog(APPLY ? 'applied' : 'dryrun', { pod: POD_ID, at: new Date().toISOString(), scope: [], splitDrift, variantLocked })
     console.log('\nNothing off-role on the whole-turn slots. Nothing to render.')
     await db.end()
     return
@@ -368,7 +431,7 @@ async function main () {
   if (!APPLY) {
     console.log(`\nDRY RUN — would render ${scope.length} clip(s), verify each, then swap ${scope.length} link(s).`)
     console.log('Nothing rendered, nothing written. Re-run with --apply.')
-    writeLog('dryrun', { pod: POD_ID, at: new Date().toISOString(), apply: false, scope, splitDrift })
+    writeLog('dryrun', { pod: POD_ID, at: new Date().toISOString(), apply: false, scope, splitDrift, variantLocked })
     await db.end()
     return
   }
@@ -505,6 +568,7 @@ async function main () {
     ms_per_char_baseline: Object.fromEntries(msPerChar),
     scope,
     splitDrift,
+    variantLocked,
     summary: {
       off_role_turn_slots: scope.length,
       generated: scope.filter(s => s.new_clip_id && !s.reused).length,

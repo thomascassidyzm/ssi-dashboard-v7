@@ -117,6 +117,46 @@ t('castVoices reports the two-voice shape the precondition checks', () => {
   assert.deepStrictEqual(r.castVoices.known.sort(), ['bedd6226', 'gfzdpspr5fdp'])
 })
 
+console.log('variant-drill exclusion (Tom, 2026-08-24)')
+
+/** The live scene-21 shape: 21.5/21.6 are the left/right contradiction. */
+const VARIANT_ROWS = [
+  { id: 'r5', scene_number: 21, sentence_number: 5, speaker: 'Staff',
+    target_text: 'È laggiù a sinistra.', known_text: "It's down there on the left.",
+    target_audio_id: 'T5', known_audio_id: null },
+  { id: 'r6', scene_number: 21, sentence_number: 6, speaker: 'Staff',
+    target_text: 'È laggiù a destra.', known_text: "It's down there on the right.",
+    target_audio_id: 'T6', known_audio_id: null },
+]
+/** A single answer with no competing variant — the state that DOES earn voice B. */
+const REAL_ANSWER = [
+  { id: 'r8', scene_number: 21, sentence_number: 8, speaker: 'Staff',
+    target_text: 'Sì, ho detto che è laggiù.', known_text: "Yes, I said it's over there.",
+    target_audio_id: 'T8', known_audio_id: null },
+]
+const LEARNER_VOICED = { T5: { voice_id: 'ara' }, T6: { voice_id: 'ara' }, T8: { voice_id: 'ara' } }
+
+t('a variant run is NOT a re-render candidate — the money test, and the ruling test', () => {
+  const r = computeOffRole({ rows: VARIANT_ROWS, speakers: CAST, clips: LEARNER_VOICED })
+  assert.strictEqual(r.turns.length, 0, 'nothing to render: these lines stay on the learner voice')
+  assert.strictEqual(r.variantLocked.length, 2, 'both are measured and reported, not silently dropped')
+  assert.ok(r.variantLocked.every((v) => v.variant_run === 's21/5-6'))
+  assert.match(r.variantLocked[0].variant_reason, /stays on ONE voice/)
+})
+
+t('a genuine single answer IS still a candidate — the exclusion is not a blanket', () => {
+  const r = computeOffRole({ rows: REAL_ANSWER, speakers: CAST, clips: LEARNER_VOICED })
+  assert.strictEqual(r.turns.length, 1)
+  assert.strictEqual(r.variantLocked.length, 0)
+})
+
+t('--include-variant-runs puts them back, deliberately', () => {
+  const r = computeOffRole({ rows: VARIANT_ROWS, speakers: CAST, clips: LEARNER_VOICED, includeVariantRuns: true })
+  assert.strictEqual(r.turns.length, 2)
+  assert.strictEqual(r.variantLocked.length, 0)
+  assert.ok(r.turns.every((s) => s.variant_run === 's21/5-6'), 'still labelled, so the log records the override')
+})
+
 console.log('helpers')
 t('bareVoice strips every provider prefix', () => {
   assert.strictEqual(bareVoice('xai_ara'), 'ara')
