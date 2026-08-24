@@ -322,6 +322,20 @@
 import { ref, computed, onMounted, onBeforeUnmount, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { getApiUrl } from '@/services/api.js'
+import { useAuth } from '@/composables/useAuth.js'
+
+// Both routes are read-only, but the per-course one carries a :courseCode param
+// and so passes through the API's course-scope gate — which 401s anything that
+// is not a loopback request without a bearer token. Same pattern, and the same
+// reason, as PodDetailView's authedFetch: a page opened on popty.app talks to
+// watson-1 over the funnel, which is very much not loopback.
+const { getAccessToken } = useAuth()
+async function authedFetch (path) {
+  const token = await getAccessToken()
+  const headers = { 'ngrok-skip-browser-warning': 'true' }
+  if (token) headers.Authorization = `Bearer ${token}`
+  return fetch(`${getApiUrl()}${path}`, { headers })
+}
 
 const route = useRoute()
 const router = useRouter()
@@ -453,7 +467,7 @@ async function loadFleet () {
   fleetLoading.value = true
   fleetError.value = null
   try {
-    const r = await fetch(`${getApiUrl()}/api/pod-scripts?track=${track.value}`)
+    const r = await authedFetch(`/api/pod-scripts?track=${track.value}`)
     if (!r.ok) throw new Error(`fleet index: HTTP ${r.status}`)
     const d = await r.json()
     fleet.value = d.courses || []
@@ -474,7 +488,7 @@ async function loadScript () {
   try {
     const q = new URLSearchParams({ track: track.value })
     if (route.query.slug) q.set('slug', String(route.query.slug))
-    const r = await fetch(`${getApiUrl()}/api/pod-scripts/${courseCode.value}?${q}`)
+    const r = await authedFetch(`/api/pod-scripts/${courseCode.value}?${q}`)
     if (!r.ok) {
       const body = await r.json().catch(() => ({}))
       throw new Error(body.error || `HTTP ${r.status}`)
