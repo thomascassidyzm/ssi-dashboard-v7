@@ -1486,8 +1486,11 @@ async function masterAudio(audioBuffer, ttsText, opts = {}) {
     // This does NOT close the gap Tom actually heard, and must not be sold as
     // doing so: that gap is spectral (Enzo loses 9.1 dB below 500 Hz where the
     // other voices lose ~5), and no gain stage can fix a spectral difference.
-    const loudness = await audioProcessor.normalizeAudioConverging(
-      eosTail.path, masteredPath, targetLufs, { toleranceDb: 0.5, maxPasses: 3 }
+    // The house call — same function, same tolerance and same pass ceiling as
+    // the recording, splice, presentation and welcome/encouragement paths, so
+    // the numbers cannot drift apart per path (audio-processor: HOUSE_LOUDNESS).
+    const loudness = await audioProcessor.masterToHouseLoudness(
+      eosTail.path, masteredPath, targetLufs
     )
     if (loudness.converged) {
       logger.debug(`masterAudio: loudness ${loudness.inputLUFS} -> ${loudness.outputLUFS} LUFS in ${loudness.passes} pass(es)`)

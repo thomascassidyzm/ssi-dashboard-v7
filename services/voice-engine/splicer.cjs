@@ -228,7 +228,13 @@ async function spliceSegmentsToFile(inputFiles, outputPath, { audioProcessor, cr
       for (let i = 0; i < inputFiles.length; i++) {
         const normPath = path.join(tempDir, `norm-${i}.mp3`)
         try {
-          await audioProcessor.normalizeAudio(inputFiles[i], normPath, NORMALIZE_LUFS)
+          // The house closed loop, not the old open-loop chain (Tom's
+          // bake-it-in ruling, 2026-08-24). normalizeAudio measured its input,
+          // aimed 1 dB hot through a compressor and never checked the result —
+          // so a splice made of segments from different takes could step in
+          // level at every join, and the whole spliced clip sat at a different
+          // level from the un-spliced clips around it.
+          await audioProcessor.masterToHouseLoudness(inputFiles[i], normPath, NORMALIZE_LUFS)
           workFiles.push(normPath)
         } catch {
           // Very short clips can be below loudnorm's working minimum —

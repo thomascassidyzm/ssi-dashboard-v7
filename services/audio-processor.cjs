@@ -985,51 +985,127 @@ function planNextPass (s) {
  *   passes:number, converged:boolean, reason:string, history:Array}>}
  */
 async function normalizeAudioConverging (inputPath, outputPath, targetLUFS = -16.0, opts = {}) {
+  try {
+    const inputLUFS = await measureIntegratedLoudness(inputPath, 'anull')
+    return await convergeLoudness({
+      inputLufs: inputLUFS,
+      targetLufs: targetLUFS,
+      renderAtGain: (gainDb) => ffmpegFilterToLameMp3(inputPath, outputPath, {
+        // opts.encode carries the caller's own MP3 format (bitrate / sample
+        // rate / channels) so that closing the loudness loop never silently
+        // re-formats a path's output — the human-recording path writes
+        // 128k/44.1k and must keep doing so.
+        ...(opts.encode || {}),
+        filterChain: `volume=${gainDb.toFixed(2)}dB,${TRUE_PEAK_LIMIT},${ANTI_CLICK_FADE}`
+      }),
+      measureOutput: () => measureIntegratedLoudness(outputPath, 'anull'),
+      ...opts,
+    })
+  } catch (error) {
+    throw new Error(`Failed to converge-normalize audio: ${error.message}`);
+  }
+}
+
+/**
+ * THE LOOP ITSELF — render, measure, correct, repeat, keep the best.
+ *
+ * Split out from normalizeAudioConverging so the loop can be driven by any
+ * renderer, for two reasons that are the same reason:
+ *   1. the render chain has more than one output format. The clip path writes
+ *      MP3 through lame; the human-recording path renders its trim/highpass
+ *      chain to WAV first so the file is encoded exactly once. Both must close
+ *      the same loop against the same target, or "loudness-consistent" is only
+ *      true of whichever path someone remembered.
+ *   2. it makes the loop testable on this box. `lame` is not installed on
+ *      watson-1, so a test of the MP3 path cannot run here at all — with the
+ *      render injectable, the same loop is proved end-to-end on real audio
+ *      through ffmpeg alone (audio-processor.house-loudness.test.cjs).
+ *
+ * @param {object} p
+ * @param {number} p.inputLufs      measured loudness of the source
+ * @param {number} p.targetLufs     where it must land
+ * @param {(gainDb:number)=>Promise<any>} p.renderAtGain  render the output at this TOTAL
+ *   gain, always from the ORIGINAL source — never by re-processing a previous pass.
+ * @param {()=>Promise<number>} p.measureOutput  measure what that render produced
+ * @param {number} [p.toleranceDb=0.5]
+ * @param {number} [p.maxPasses=3]
+ * @param {number} [p.maxGainDb=20]
+ */
+async function convergeLoudness ({ inputLufs, targetLufs, renderAtGain, measureOutput, ...opts }) {
   const toleranceDb = Number.isFinite(opts.toleranceDb) ? opts.toleranceDb : 0.5
   const maxPasses = Number.isFinite(opts.maxPasses) ? opts.maxPasses : 3
   const maxGainDb = Number.isFinite(opts.maxGainDb) ? opts.maxGainDb : 20
 
-  try {
-    const inputLUFS = await measureIntegratedLoudness(inputPath, 'anull');
-    let gainDb = Math.round((targetLUFS - inputLUFS) * 100) / 100
-    const history = []
-    let best = null
+  let gainDb = Math.round((targetLufs - inputLufs) * 100) / 100
+  const history = []
+  let best = null
 
-    for (let pass = 1; pass <= maxPasses; pass++) {
-      await ffmpegFilterToLameMp3(inputPath, outputPath, {
-        filterChain: `volume=${gainDb.toFixed(2)}dB,${TRUE_PEAK_LIMIT},${ANTI_CLICK_FADE}`
-      });
-      const outputLUFS = await measureIntegratedLoudness(outputPath, 'anull');
-      const plan = planNextPass({
-        outputLufs: outputLUFS, targetLufs: targetLUFS, toleranceDb,
-        gainDb, pass, maxPasses, bestErrorDb: best ? best.absErr : undefined, maxGainDb
-      })
-      history.push({ pass, gainDb, outputLUFS, errorDb: plan.errorDb, reason: plan.reason })
+  for (let pass = 1; pass <= maxPasses; pass++) {
+    await renderAtGain(gainDb)
+    const outputLUFS = await measureOutput()
+    const plan = planNextPass({
+      outputLufs: outputLUFS, targetLufs, toleranceDb,
+      gainDb, pass, maxPasses, bestErrorDb: best ? best.absErr : undefined, maxGainDb
+    })
+    history.push({ pass, gainDb, outputLUFS, errorDb: plan.errorDb, reason: plan.reason })
 
-      // Keep the best render we have SEEN, not merely the last one we made: a
-      // final non-improving pass must never be what ships.
-      if (!best || Math.abs(plan.errorDb) < best.absErr) {
-        best = { gainDb, outputLUFS, absErr: Math.abs(plan.errorDb) }
-      } else if (plan.done) {
-        // The last render is worse than an earlier one — put the better gain back.
-        await ffmpegFilterToLameMp3(inputPath, outputPath, {
-          filterChain: `volume=${best.gainDb.toFixed(2)}dB,${TRUE_PEAK_LIMIT},${ANTI_CLICK_FADE}`
-        });
-      }
-
-      if (plan.done) {
-        return {
-          inputLUFS, outputLUFS: best.outputLUFS, gainDb: best.gainDb,
-          passes: pass, converged: best.absErr <= toleranceDb, reason: plan.reason, history
-        }
-      }
-      gainDb = plan.nextGainDb
+    // Keep the best render we have SEEN, not merely the last one we made: a
+    // final non-improving pass must never be what ships.
+    if (!best || Math.abs(plan.errorDb) < best.absErr) {
+      best = { gainDb, outputLUFS, absErr: Math.abs(plan.errorDb) }
+    } else if (plan.done) {
+      // The last render is worse than an earlier one — put the better gain back.
+      await renderAtGain(best.gainDb)
     }
-    // Unreachable: planNextPass always stops at the pass ceiling.
-    return { inputLUFS, outputLUFS: best.outputLUFS, gainDb: best.gainDb, passes: maxPasses, converged: false, reason: 'pass ceiling', history }
-  } catch (error) {
-    throw new Error(`Failed to converge-normalize audio: ${error.message}`);
+
+    if (plan.done) {
+      return {
+        inputLUFS: inputLufs, outputLUFS: best.outputLUFS, gainDb: best.gainDb,
+        passes: pass, converged: best.absErr <= toleranceDb, reason: plan.reason, history
+      }
+    }
+    gainDb = plan.nextGainDb
   }
+  // Unreachable: planNextPass always stops at the pass ceiling.
+  return { inputLUFS: inputLufs, outputLUFS: best.outputLUFS, gainDb: best.gainDb, passes: maxPasses, converged: false, reason: 'pass ceiling', history }
+}
+
+/**
+ * THE HOUSE LOUDNESS, in one place.
+ *
+ * −16.0 LUFS is the number masterAudio has always mastered to; the ±0.5 dB
+ * tolerance and 3-pass ceiling are the closed loop's aim, deliberately tighter
+ * than the GATE's ±1.5 dB band (services/audio-intelligence/tiers/loudness.cjs)
+ * — the gate says what is allowed in, this says what we aim for, and aiming at
+ * the edge of the allowed band is how two clips 2 dB apart both pass.
+ *
+ * It lives here rather than at each call site because the defect Tom heard on
+ * 2026-08-24 was not one path being wrong, it was paths disagreeing.
+ */
+const HOUSE_LOUDNESS = Object.freeze({ targetLufs: -16.0, toleranceDb: 0.5, maxPasses: 3 })
+
+/**
+ * Master any rendered file to the house loudness — the one call every render
+ * path makes, so consistency is a property of the chain rather than of whoever
+ * wired the path.
+ *
+ * Timbre is not touched and must never be: gain, true-peak limit, anti-click
+ * fade, nothing else. Tom's ruling of 2026-08-24 on the >500 Hz spectral lift is
+ * PERMANENT — "never lift a voice to change its timbre, deeper voices sound
+ * better on bass-heavy speakers" — so no tilt, shelf or EQ belongs in this
+ * function or anywhere downstream of it, whatever a phone-band measurement says.
+ *
+ * @param {string} inputPath
+ * @param {string} outputPath
+ * @param {number} [targetLUFS] override for a caller that genuinely wants
+ *   another level (VOICELAB's Play-mode slider); defaults to the house number.
+ */
+function masterToHouseLoudness (inputPath, outputPath, targetLUFS = HOUSE_LOUDNESS.targetLufs, encode = null) {
+  return normalizeAudioConverging(inputPath, outputPath, targetLUFS, {
+    toleranceDb: HOUSE_LOUDNESS.toleranceDb,
+    maxPasses: HOUSE_LOUDNESS.maxPasses,
+    ...(encode ? { encode } : {}),
+  })
 }
 
 /**
@@ -1070,8 +1146,17 @@ async function processAudio(inputPath, outputPath, options = {}) {
     }
 
     // Step 2: Normalize if needed
+    //
+    // CLOSED LOOP since 2026-08-24 (Tom's bake-it-in ruling). This used to call
+    // normalizeAudio, which is the OLD open-loop chain: PRE_COMPRESS + a gain
+    // aimed 1 dB hot for the limiter to eat, measured on the input and never
+    // checked against the output. Two live learner-facing paths come through
+    // here — welcome-service and encouragement-service — so those clips were
+    // mastered by a different process, with a different target and the
+    // compressor Tom ruled out on 2026-07-29, from every course and pod clip
+    // beside them. Same loop as masterAudio now, same number, no compressor.
     if (normalize) {
-      await normalizeAudio(currentPath, outputPath, targetLUFS);
+      await masterToHouseLoudness(currentPath, outputPath, targetLUFS);
     } else {
       // No normalization, just copy/move
       if (currentPath !== inputPath) {
@@ -1154,7 +1239,7 @@ async function concatenateAudio(audioPaths, outputPath, options = {}) {
     console.log(`    [CONCAT DEBUG] Single file, ${normalize ? 'normalizing' : 'copying'}`);
     // Single file, just copy (with optional normalization)
     if (normalize) {
-      await normalizeAudio(audioPaths[0], outputPath);
+      await masterToHouseLoudness(audioPaths[0], outputPath);
     } else {
       await fs.copyFile(audioPaths[0], outputPath);
     }
@@ -1179,11 +1264,13 @@ async function concatenateAudio(audioPaths, outputPath, options = {}) {
           throw new Error(`Input file does not exist: ${audioPaths[i]}`);
         }
 
-        // Normalize with volume adjustment to target dBFS via ffmpeg→lame pipe
-        // (ffmpeg's MP3 muxer writes headers iOS can't decode reliably)
-        await ffmpegFilterToLameMp3(audioPaths[i], normalizedPath, {
-          filterChain: 'loudnorm=I=-16:LRA=11:TP=-1.5'
-        });
+        // Master each segment to the house loudness, closed loop — the same
+        // call and the same number as every other render path (2026-08-24).
+        // This was a single-pass `loudnorm=I=-16`, which is a DYNAMIC
+        // normaliser: it lands several dB out on short material and it moves
+        // the level around inside the segment, so a presentation built from
+        // several segments could step in level at every join.
+        await masterToHouseLoudness(audioPaths[i], normalizedPath);
 
         console.log(`    [CONCAT DEBUG]   Normalized to: ${normalizedPath}`);
         normalizedPaths.push(normalizedPath);
@@ -1243,7 +1330,7 @@ async function concatenateAudio(audioPaths, outputPath, options = {}) {
     // Step 5: Final normalization of the combined audio
     if (normalize) {
       console.log(`    [CONCAT DEBUG] Final normalization...`);
-      await normalizeAudio(tempOutput, outputPath);
+      await masterToHouseLoudness(tempOutput, outputPath);
     } else {
       await fs.move(tempOutput, outputPath, { overwrite: true });
     }
@@ -1459,6 +1546,10 @@ async function processRecordingBuffer(inputBuffer, options = {}) {
 
     // Build filter chain
     const filters = [];
+    // What the loudness stage below actually achieved — reported in metadata so
+    // a take that could not reach target is visible in the row rather than only
+    // in a log line nobody reads.
+    let loudness = null;
 
     // 1. Trim to the read, leaving a margin of room at each end.
     //
@@ -1553,23 +1644,47 @@ async function processRecordingBuffer(inputBuffer, options = {}) {
     // 2. High-pass filter to remove low-frequency rumble (AC hum, handling noise)
     filters.push('highpass=f=80');
 
-    // 3. Normalize loudness (EBU R128)
-    if (normalize) {
-      filters.push(`loudnorm=I=${targetLUFS}:TP=-1.5:LRA=11`);
-    }
-
-    // 4. Gentle limiter to catch any peaks
+    // 3. Gentle limiter to catch any peaks
     filters.push('alimiter=limit=0.95:attack=5:release=50');
 
     const filterChain = filters.join(',');
 
-    // Convert WebM → MP3 via ffmpeg→lame pipe (ffmpeg's MP3 muxer breaks iOS playback)
-    await ffmpegFilterToLameMp3(inputPath, outputPath, {
-      filterChain,
-      bitrate: 128,
-      sampleRate: 44100,
-      channels: 1
-    });
+    // 4. Loudness — the SAME closed loop, and the same target, as every other
+    // render path (Tom's bake-it-in ruling, 2026-08-24).
+    //
+    // This step used to be one `loudnorm=I=…` inside the chain above. Two
+    // problems, both of which a recordist hears next to a TTS clip: single-pass
+    // loudnorm is a DYNAMIC normaliser working from a forward estimate, so it
+    // lands a couple of dB out on a short take and moves the level around inside
+    // it; and it is a different process from the one every course and pod clip
+    // goes through, so a human take and the clip beside it were never levelled
+    // the same way. masterToHouseLoudness measures the render and corrects the
+    // gain until it is inside ±0.5 dB. Gain only — no compressor, no EQ, no
+    // tilt: Tom's 2026-08-24 ruling on the >500 Hz lift is permanent.
+    //
+    // The trim/highpass/limiter chain now renders to WAV and the loudness stage
+    // writes the MP3, so the take is still lame-encoded EXACTLY ONCE at the same
+    // 128k/44.1k mono it has always been.
+    const shapedPath = normalize ? path.join(tempDir, `shaped_${tempId}.wav`) : outputPath;
+    if (normalize) {
+      await execAsync(
+        `ffmpeg -y -hide_banner -loglevel error -i "${inputPath}" -filter:a "${filterChain}" -ac 1 -ar 44100 "${shapedPath}"`
+      );
+      loudness = await masterToHouseLoudness(shapedPath, outputPath, targetLUFS, {
+        bitrate: 128, sampleRate: 44100, channels: 1
+      });
+      if (!loudness.converged) {
+        console.warn(`[AudioProcessor] take could not reach ${targetLUFS} LUFS — ${loudness.inputLUFS} -> ${loudness.outputLUFS} after ${loudness.passes} pass(es): ${loudness.reason}`);
+      }
+    } else {
+      // Convert WebM → MP3 via ffmpeg→lame pipe (ffmpeg's MP3 muxer breaks iOS playback)
+      await ffmpegFilterToLameMp3(inputPath, outputPath, {
+        filterChain,
+        bitrate: 128,
+        sampleRate: 44100,
+        channels: 1
+      });
+    }
 
     // Read processed output
     const outputBuffer = await fs.readFile(outputPath);
@@ -1602,6 +1717,12 @@ async function processRecordingBuffer(inputBuffer, options = {}) {
         inputMeanDb: input ? input.meanDb : null,
         inputAudible,
         keptWhole,
+        // The achieved loudness, measured on the bytes that are about to be
+        // stored — the same closed loop masterAudio runs on TTS clips.
+        loudnessInLufs: loudness ? loudness.inputLUFS : null,
+        loudnessOutLufs: loudness ? loudness.outputLUFS : null,
+        loudnessConverged: loudness ? loudness.converged : null,
+        loudnessPasses: loudness ? loudness.passes : null,
         filters: {
           trimSilence: trimSilence && !keptWhole,
           // The gate this take was actually cut at, and the room left in front
@@ -1678,6 +1799,14 @@ module.exports = {
   // exported because it is the pure decision and it is where this breaks.
   normalizeAudioConverging,
   planNextPass,
+  // The loop itself, and the one place the house numbers live. Every render
+  // path that produces a learner-facing clip goes through masterToHouseLoudness
+  // so that "every clip sits at the same level" is a property of the chain and
+  // not of whoever wired the path (Tom's bake-it-in ruling, 2026-08-24).
+  convergeLoudness,
+  masterToHouseLoudness,
+  HOUSE_LOUDNESS,
+  TRUE_PEAK_LIMIT,
   processAudio,
   processBatch,
   concatenateAudio,
