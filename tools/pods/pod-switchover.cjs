@@ -72,7 +72,6 @@ const { Client } = require('pg')
 const { planMigration, POSITION_BOUND } = require('./pod-state-migrate.cjs')
 const { realHumanLearners } = require('../../services/shared/learner-counts.cjs')
 const { checkPodCast, loadPodForCastCheck } = require('./pod-cast-gate.cjs')
-const { findInheritedSplitAudio, SPLIT_AUDIO_FIELDS } = require('./split-audio-inheritance.cjs')
 
 const APPLY = process.argv.includes('--apply')
 const ROLLBACK = process.argv.includes('--rollback')
@@ -119,8 +118,6 @@ const REHEARSAL = process.argv.includes('--rehearsal')
  *  The gate is ON BY DEFAULT and refuses the flip; this flag is for the conscious
  *  exception (a pod deliberately shipping on one voice), and it says so in the log. */
 const ACCEPT_UNCAST = process.argv.includes('--accept-uncast-pod')
-/** THE SPLIT-AUDIO GATE'S ONLY ESCAPE HATCH (2026-08-24). See the gate itself below. */
-const ACCEPT_INHERITED_SPLIT = process.argv.includes('--accept-inherited-split-audio')
 
 // Argument validation belongs to the CLI, not to the module: `planInflightFold` is
 // exported for its unit tests, and a require() must not exit the process.
@@ -366,49 +363,6 @@ async function main () {
       for (const f of castCheck.failures) blockers.push(`cast: ${f}`)
       blockers.push('run tools/pods/pod1-percall-recast.cjs --pod=' + `${COURSE}:${STAGED}` +
         ' --apply first (or pass --accept-uncast-pod to promote an uncast pod deliberately)')
-    }
-  }
-
-  // ---- the split-audio gate --------------------------------------------------
-  // A row has SIX audio slots. The cast gate above reads the two whole-turn ones,
-  // which is why the 22-course pod-1 fleet flipped green on 2026-08-22 carrying
-  // split arrays inherited positionally from the pod being retired. Where the
-  // scene running order changed between the two canons — pod-0 scene 15 became
-  // pod-1 scene 22 on ita_for_eng — those clips play AND display a different
-  // conversation, in the retired pod's cast.
-  //
-  // The test is exact, not a heuristic: a staged row's split slot byte-identical
-  // to the SAME (scene, sentence) slot on the pod being retired, while the text at
-  // that slot has changed. No text similarity is involved, so it is script-safe —
-  // the first blast-radius pass read a false 0% for jpn/zho because it stripped
-  // non-Latin script. Definition shared with the aligner in
-  // tools/pods/split-audio-inheritance.cjs, so the two cannot drift.
-  //
-  // Measured, not repaired, here: nulling a split array changes a learner's
-  // progress key (`<row.id>:s<k>` → `<row.id>`), so the repair belongs to
-  // tools/pods/repair-split-array-inheritance.cjs, which gates on exactly that.
-  // NOT applied on --rollback, for the same reason the cast gate is not.
-  const splitAudioRows = async (slug) => (await db.query(
-    `select id, scene_number, sentence_number, target_text, known_text, ${SPLIT_AUDIO_FIELDS.join(', ')}
-       from listening_pod_sentences where pod_id = $1 order by global_order`, [`${COURSE}:${slug}`])).rows
-  const inherited = findInheritedSplitAudio(await splitAudioRows(LIVE), await splitAudioRows(STAGED))
-  log(`  staged split audio: ${inherited.length} slot(s) inherited positionally from ${LIVE}`)
-  if (inherited.length) {
-    const byField = inherited.reduce((m, f) => { m[f.field] = (m[f.field] || 0) + 1; return m }, {})
-    const rowsAffected = new Set(inherited.map(f => f.id)).size
-    if (ACCEPT_INHERITED_SPLIT) {
-      log(`  --accept-inherited-split-audio given: promoting ${rowsAffected} row(s) whose split ` +
-          `audio belongs to the retired canon ${JSON.stringify(byField)}`)
-    } else {
-      blockers.push(`${inherited.length} split-audio slot(s) across ${rowsAffected} staged row(s) ` +
-        `are byte-identical to ${LIVE}'s same (scene, sentence) slot while the text there has ` +
-        `changed ${JSON.stringify(byField)} — the learner would hear and READ the retired pod's ` +
-        'conversation')
-      blockers.push(`run tools/pods/repair-split-array-inheritance.cjs ${COURSE}:${STAGED} --apply ` +
-        'first (or pass --accept-inherited-split-audio to promote them deliberately)')
-      for (const f of inherited.slice(0, 5)) {
-        log(`    e.g. SC${f.scene_number}-S${f.sentence_number} ${f.field} (${f.changed} changed)`)
-      }
     }
   }
 

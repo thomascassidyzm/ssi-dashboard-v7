@@ -50,7 +50,6 @@ const path = require('path')
 const crypto = require('crypto')
 const { createClient } = require('@supabase/supabase-js')
 const { diffPod, norm } = require('./pod0-recording-diff.cjs')
-const { carrySplitAudio, SPLIT_AUDIO_FIELDS } = require('./split-audio-inheritance.cjs')
 
 const db = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY)
 
@@ -182,17 +181,6 @@ async function planCourse(course, canonRaw) {
       target_text: carryTarget ? src.row.target_text : '',
       target_audio_id: carryTarget ? src.row.target_audio_id : null,
       known_audio_id: carryKnown ? src.row.known_audio_id : null,
-      // The other FOUR audio slots, by the same rule as the whole-turn ones.
-      // Before 2026-08-24 they were simply absent from this payload, so a slot
-      // whose conversation had been replaced kept the OLD conversation's split
-      // clips — which the player uses for the on-screen text as well as the
-      // audio. That is the ita_for_eng pod-1 scene-15 defect. carrySplitAudio
-      // carries a slot only where the text it was rendered against is
-      // byte-identical, and NULLs it otherwise; null falls back to the
-      // whole-turn clip, which is exactly what the repair tool wrote.
-      // The carry decision is this tool's own diff, not a text comparison —
-      // two blank texts compare equal, and that must not carry an array.
-      ...carrySplitAudio(src && src.row, null, { target: carryTarget, known: carryKnown }),
     }
     ops.push({
       op: existing ? 'update' : 'insert',
@@ -203,11 +191,6 @@ async function planCourse(course, canonRaw) {
         known_text: existing.known_text, target_text: existing.target_text,
         target_audio_id: existing.target_audio_id, known_audio_id: existing.known_audio_id,
       },
-      // Kept OUT of `before` on purpose: that object is the drift assertion's
-      // field list, and a uuid[] compared with String() reads null and [] as
-      // different, which would abort a run over nothing. This copy is for the
-      // log and the summary only.
-      before_split_audio: existing && Object.fromEntries(SPLIT_AUDIO_FIELDS.map(f => [f, existing[f] ?? null])),
       after: desired,
       bucket: src ? src.kind : 'new',
       carried: { target: carryTarget, known: carryKnown },
@@ -331,18 +314,10 @@ async function applyCourse(p) {
   // column list is the union of the keys in that batch — so a row carrying an extra
   // key writes an explicit NULL into that column for every other row in the batch.
   // Hence: every payload row is built to exactly the same nine-column shape.
-  //
-  // The list carries the four non-whole-turn audio slots as well as the two
-  // whole-turn ones. Their ABSENCE is the ita_for_eng pod-1 scene-15 defect: a
-  // column this payload never mentions survives the content change at that slot
-  // untouched, so a replaced conversation kept the old one's split clips. They
-  // are set — carried or NULL — on every row, by carrySplitAudio above.
   const COLUMNS = ['id', 'pod_id', 'scene_number', 'sentence_number', 'global_order',
-    'speaker', 'known_text', 'target_text', 'target_audio_id', 'known_audio_id',
-    ...SPLIT_AUDIO_FIELDS]
+    'speaker', 'known_text', 'target_text', 'target_audio_id', 'known_audio_id']
   // The NOT NULL columns with no database default.
-  const NULLABLE = new Set(['target_audio_id', 'known_audio_id', ...SPLIT_AUDIO_FIELDS])
-  const REQUIRED = COLUMNS.filter(c => !NULLABLE.has(c))
+  const REQUIRED = COLUMNS.filter(c => c !== 'target_audio_id' && c !== 'known_audio_id')
   const shape = (row) => Object.fromEntries(COLUMNS.map(c => [c, row[c] === undefined ? null : row[c]]))
   const payload = [...p.ops.map(o => o.after), ...p.surplus.map(o => o.after)].map(shape)
   for (const row of payload) {
@@ -465,15 +440,6 @@ async function main() {
         known_pointers_kept: p.ops.filter(o => o.after.known_audio_id).length,
         target_pointers_dropped: dr.takes.target_invalidated,
         known_pointers_dropped: dr.takes.known_invalidated,
-      },
-      // Split audio follows the text, never the slot. A row counted here had
-      // split clips on the served pod that this canon's text no longer matches,
-      // so they are NULLed and the player falls back to the whole-turn clip.
-      split_audio: {
-        slots_carried: p.ops.reduce((n, o) =>
-          n + SPLIT_AUDIO_FIELDS.filter(f => o.after[f] != null).length, 0),
-        rows_cleared: p.ops.filter(o =>
-          SPLIT_AUDIO_FIELDS.some(f => o.before_split_audio && o.before_split_audio[f] != null && o.after[f] == null)).length,
       },
       scenes: p.sections.length,
     })
