@@ -94,6 +94,37 @@ for (const f of files) {
   }
 }
 
+/**
+ * Turns that were spliced, LANDED, and then withdrawn because transcription
+ * proved the pieces did not say their own sentences.
+ *
+ * These belong on the render list even though no gate refused them — that is
+ * the point. On zho the margin heuristic could not tell a good cut from a bad
+ * one (1.65 and 2.1 are correct; 1.53, 1.59 and 1.75 cut at a comma instead of
+ * the sentence end), so the only thing that separated them was listening. A
+ * refusal list built purely from the gates would silently omit them.
+ */
+for (const f of fs.readdirSync(PODS)) {
+  if (!f.endsWith(`-misaligned-splice-unlink-${DATE}-applied-log.json`)) continue
+  const log = JSON.parse(fs.readFileSync(path.join(PODS, f), 'utf8'))
+  for (const r of log.rows || []) {
+    const course = String(r.id).split(':')[0]
+    byReason.stt_proved_misaligned = (byReason.stt_proved_misaligned || 0) + 1
+    turns.push({
+      course,
+      pod: `${course}:pod-1`,
+      sentence_row_id: r.id,
+      global_order: null,
+      reason: 'stt_proved_misaligned',
+      n_sentences: (r.sentence_audio_ids || []).length || null,
+      sentences: null,
+      target_text: r.target_text,
+      whole_turn_audio_id: null,
+      measure: { withdrawn_after_landing: true, evidence: log.reason },
+    })
+  }
+}
+
 const out = {
   built_at: new Date().toISOString(),
   splice_run_date: DATE,

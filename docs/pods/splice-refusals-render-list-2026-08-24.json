@@ -1,5 +1,5 @@
 {
-  "built_at": "2026-08-24T12:51:38.174Z",
+  "built_at": "2026-08-24T13:44:13.717Z",
   "splice_run_date": "2026-08-24",
   "source_logs": [
     "ara_eg_for_eng-sentence-splice-2026-08-24-applied-log.json",
@@ -35,14 +35,15 @@
     "courses": 21,
     "turns_needing_split": 1501,
     "turns_linked_by_splice": 1429,
-    "turns_refused": 72,
-    "refusal_rate": 0.048,
-    "sentences_to_render": 214
+    "turns_refused": 75,
+    "refusal_rate": 0.05,
+    "sentences_to_render": 221
   },
   "by_reason": {
     "margin_below_floor": 56,
     "too_few_gaps": 6,
-    "seam_not_silent": 10
+    "seam_not_silent": 10,
+    "stt_proved_misaligned": 3
   },
   "by_course": {
     "ara_eg_for_eng": {
@@ -3147,6 +3148,51 @@
           2.432,
           2.436
         ]
+      }
+    },
+    {
+      "course": "zho_for_eng",
+      "pod": "zho_for_eng:pod-1",
+      "sentence_row_id": "zho_for_eng:pod-1:SC02-S002",
+      "global_order": null,
+      "reason": "stt_proved_misaligned",
+      "n_sentences": 2,
+      "sentences": null,
+      "target_text": "没有，空着呢。请坐。",
+      "whole_turn_audio_id": null,
+      "measure": {
+        "withdrawn_after_landing": true,
+        "evidence": "STT proves each piece does not say its own sentence — the cut landed at a comma, not the sentence end. Margins 1.53/1.59/1.75 cleared the 1.5 floor; margin cannot discriminate in zho."
+      }
+    },
+    {
+      "course": "zho_for_eng",
+      "pod": "zho_for_eng:pod-1",
+      "sentence_row_id": "zho_for_eng:pod-1:SC06-S008",
+      "global_order": null,
+      "reason": "stt_proved_misaligned",
+      "n_sentences": 2,
+      "sentences": null,
+      "target_text": "我是护士，在附近的医院工作。你呢？",
+      "whole_turn_audio_id": null,
+      "measure": {
+        "withdrawn_after_landing": true,
+        "evidence": "STT proves each piece does not say its own sentence — the cut landed at a comma, not the sentence end. Margins 1.53/1.59/1.75 cleared the 1.5 floor; margin cannot discriminate in zho."
+      }
+    },
+    {
+      "course": "zho_for_eng",
+      "pod": "zho_for_eng:pod-1",
+      "sentence_row_id": "zho_for_eng:pod-1:SC10-S009",
+      "global_order": null,
+      "reason": "stt_proved_misaligned",
+      "n_sentences": 3,
+      "sentences": null,
+      "target_text": "你太好了！是的，我在度假，我需要多练习才能把中文说得更好。谢谢你，再见。",
+      "whole_turn_audio_id": null,
+      "measure": {
+        "withdrawn_after_landing": true,
+        "evidence": "STT proves each piece does not say its own sentence — the cut landed at a comma, not the sentence end. Margins 1.53/1.59/1.75 cleared the 1.5 floor; margin cannot discriminate in zho."
       }
     }
   ]
