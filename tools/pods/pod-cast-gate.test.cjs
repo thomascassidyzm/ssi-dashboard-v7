@@ -134,9 +134,11 @@ describe('checkPodCast', () => {
 
 /**
  * ---------------------------------------------------------------------------
- * THE SIX COLUMNS (2026-08-24, the ita_for_eng pod-1 scene 15 incident).
+ * THE FIVE COLUMNS (2026-08-24, the ita_for_eng pod-1 scene 15 incident).
  *
- * A row has six audio slots; before today the gate read two of them, so a pod
+ * A row has five audio slots this gate checks (a sixth, explainer_audio_id,
+ * was deprecated the same day — see the describe block further down); before
+ * this fix the gate read two of the five, so a pod
  * whose SPLIT ARRAYS had been copied positionally out of a retired pod — wrong
  * conversation, wrong voice, and wrong on-screen text, because podSentenceSplit
  * takes targetText from the split clip's own course_audio.text — counted two
@@ -175,7 +177,6 @@ const itaRow = (over = {}) => ({
   sentence_audio_ids: null,
   sentence_known_audio_ids: null,
   takeg_audio_ids: null,
-  explainer_audio_id: null,
   ...over,
 })
 
@@ -202,7 +203,7 @@ const itaClips = {
   'pod0-b': { text: 'Non sto imparando da molto tempo, e mi sento ancora un po\' nervoso di parlare con altre persone.', voice_id: EVE },
 }
 
-describe('checkPodCast — all six audio slots', () => {
+describe('checkPodCast — all five audio slots', () => {
   it('REPRODUCES ita scene 15: whole turns correctly cast, split array inherited from pod-0 — and FAILS it', () => {
     const rows = [itaRow({ sentence_audio_ids: ['pod0-a', 'pod0-b'] }), itaReply()]
     const r = checkPodCast({ rows, speakers: itaCast, clips: itaClips })
@@ -391,7 +392,13 @@ describe('checkPodClips — script safety (the false-0% trap)', () => {
   })
 })
 
-describe('checkPodClips — the explainer slot', () => {
+// FLIPPED 2026-08-24: the pod-sentence explainer narration track is
+// deprecated (Tom: "Explainers do not exist anymore. We don't do them.").
+// This gate no longer checks or reports on explainer_audio_id at all — the
+// four assertions below used to expect it accepted/warned/blocked/measured
+// an explainer's quoted-chunk membership; they now assert total silence:
+// the field is invisible to this gate, whatever it contains.
+describe('checkPodClips — explainer_audio_id is no longer checked (deprecated 2026-08-24)', () => {
   const cast = { Sarah: { target: { voice_id: ARA }, known: { voice_id: TOM } } }
   const row = (over = {}) => ({
     scene_number: 1, sentence_number: 3, speaker: 'Sarah',
@@ -399,43 +406,43 @@ describe('checkPodClips — the explainer slot', () => {
     explainer_audio_id: 'e', ...over,
   })
 
-  it('accepts an explainer that quotes a chunk of its own row', () => {
+  it('ignores an explainer that quotes a chunk of its own row', () => {
     const clips = { e: { text: '"Sto molto bene". means I\'m very well. "grazie". means thank you.', voice_id: TOM } }
+    const r = checkPodClips({ rows: [row()], speakers: cast, clips })
+    expect(r.failures).toEqual([])
+    expect(r.clipWarnings).toEqual([])
+    expect(r.clipsSeen).toBe(0)
+    expect(r.slotsSeen).toBe(0)
+  })
+
+  it('ignores an explainer that quotes another row entirely — no failure, no warning', () => {
+    const clips = { e: { text: '"Grazie mille". means thank you very much. "Arrivederci". means goodbye.', voice_id: TOM } }
     const r = checkPodClips({ rows: [row()], speakers: cast, clips })
     expect(r.failures).toEqual([])
     expect(r.clipWarnings).toEqual([])
   })
 
-  it('WARNS — does not block — on an explainer that quotes another row entirely', () => {
-    const clips = { e: { text: '"Grazie mille". means thank you very much. "Arrivederci". means goodbye.', voice_id: TOM } }
-    const r = checkPodClips({ rows: [row()], speakers: cast, clips })
-    expect(r.failures).toEqual([])                 // not blocking by default…
-    expect(r.explainerIssues).toBe(1)              // …but measured and named
-    expect(r.clipWarnings.join(' ')).toMatch(/does not belong to their own row/)
-  })
-
-  it('blocks the same explainer when the caller asks it to', () => {
+  it('has no way to ask the gate to block on the explainer anymore — the option is gone', () => {
     const clips = { e: { text: '"Grazie mille". means thank you very much.', voice_id: TOM } }
+    // explainerBlocking is no longer a recognised option; passing it is a no-op.
     const r = checkPodClips({ rows: [row()], speakers: cast, clips, explainerBlocking: true })
-    expect(r.failures.join(' ')).toMatch(/does not belong/)
-    expect(checkPodCast({ rows: [row()], speakers: cast, clips, explainerBlocking: true }).ok).toBe(false)
+    expect(r.failures).toEqual([])
+    // clipFailures is the clip check's own contribution to checkPodCast's verdict —
+    // still empty regardless of explainerBlocking, which is what "no-op" means here.
+    expect(checkPodCast({ rows: [row()], speakers: cast, clips, explainerBlocking: true }).clipFailures).toEqual([])
   })
 
-  it('reads a COMPOSITE voice id as its component voices, not as one string', () => {
-    // The explainer is stitched: `comp:<chunk voice>+<gloss voice>`. Judging the
-    // whole string would call every composite in the estate off-cast.
-    const inCast = { e: { text: '"grazie". means thank you.', voice_id: `comp:${ARA}+${TOM}` } }
-    expect(checkPodClips({ rows: [row()], speakers: cast, clips: inCast }).offCastClips).toBe(0)
+  it('ignores an off-cast composite explainer voice too', () => {
     const legacy = { e: { text: '"grazie". means thank you.', voice_id: `comp:${ARA}+azure_en-GB-SoniaNeural` } }
     const r = checkPodClips({ rows: [row()], speakers: cast, clips: legacy })
-    expect(r.offCastClips).toBe(1)
-    expect(r.clipWarnings.join(' ')).toMatch(/en-gb-sonianeural/i)
+    expect(r.offCastClips).toBe(0)
+    expect(r.failures).toEqual([])
   })
 
-  it('says nothing about an explainer that quotes nothing it can check', () => {
+  it('says nothing about an explainer with unparseable text either', () => {
     const clips = { e: { text: 'no quoted chunks at all', voice_id: TOM } }
     const r = checkPodClips({ rows: [row()], speakers: cast, clips })
-    expect(r.explainerIssues).toBe(0)
-    expect(r.unverifiableClips).toBe(1)
+    expect(r.unverifiableClips).toBe(0)
+    expect(r.failures).toEqual([])
   })
 })

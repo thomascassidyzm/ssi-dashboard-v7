@@ -26,33 +26,38 @@
  * Known-side CLIPS are gated — see below.
  *
  * ---------------------------------------------------------------------------
- * 2026-08-24 — THE SIX COLUMNS (ita_for_eng pod-1 scene 15)
+ * 2026-08-24 — THE FIVE COLUMNS (ita_for_eng pod-1 scene 15)
  *
- * A listening_pod_sentences row has SIX audio slots:
+ * A listening_pod_sentences row has FIVE audio slots this gate checks:
  *
  *   target_audio_id  known_audio_id                    (whole turn)
  *   sentence_audio_ids  sentence_known_audio_ids  takeg_audio_ids   (split arrays)
- *   explainer_audio_id                                 (explainer)
  *
- * Until today this module measured the STORED CAST MAP plus the two whole-turn
- * columns — two of the six. ita_for_eng pod-1 was staged with its split arrays
- * copied POSITIONALLY from the retired pod-0, whose scene order was different:
- * the whole-turn clips were recast to Ara, the split clips were still pod-0's
- * Eve, and they spoke — and, because podSentenceSplit reads targetText from the
- * split clip's own course_audio.text, PRINTED — a different conversation. The
- * gate counted two voices and went green. Tom: "the gate was looking at the
- * wrong columns." 113 ita rows shipped like that. Root cause:
+ * (A sixth slot, explainer_audio_id, existed until the pod-sentence explainer
+ * narration track was deprecated 2026-08-24 — Tom: "Explainers do not exist
+ * anymore. We don't do them." The column still exists in the DB and old rows
+ * still point at real clips, but nothing produces, checks or reports on it
+ * anymore.)
+ *
+ * Until 2026-08-24 this module measured the STORED CAST MAP plus the two
+ * whole-turn columns — two of the five. ita_for_eng pod-1 was staged with its
+ * split arrays copied POSITIONALLY from the retired pod-0, whose scene order
+ * was different: the whole-turn clips were recast to Ara, the split clips
+ * were still pod-0's Eve, and they spoke — and, because podSentenceSplit
+ * reads targetText from the split clip's own course_audio.text, PRINTED — a
+ * different conversation. The gate counted two voices and went green. Tom:
+ * "the gate was looking at the wrong columns." 113 ita rows shipped like
+ * that. Root cause:
  * docs/pods/ita-pod1-scene15-two-female-voices-rootcause-2026-08-24.md
  *
- * So when the caller supplies `clips` (id → {text, voice_id}), EVERY id in ALL
- * SIX slots on EVERY row is checked for three things:
+ * So when the caller supplies `clips` (id → {text, voice_id}), EVERY id in
+ * ALL FIVE slots on EVERY row is checked for three things:
  *
  *   (a) ON CAST      — the clip's real voice_id is in the pod's cast for its
  *                      track. Off-cast = FAIL, named by scene/sentence/slot/voice.
  *   (b) OWN ROW      — the clip's real text belongs to THIS row's own text: a
  *                      whole-turn clip must match it, a split clip must be a
- *                      contiguous piece of it, an explainer must quote at least
- *                      one chunk of it.
+ *                      contiguous piece of it.
  *   (c) COHERENT     — a split array's pieces appear IN ORDER and tile enough of
  *                      the row to be that row's split, not another row's.
  *
@@ -68,28 +73,14 @@
  * pointing at the SAME clip is normal — clips are matched to the row by TEXT,
  * never by exclusive ownership, so sharing passes on both rows.
  *
- * SEVERITY, and why it is not uniform. The five ROW-TEXT slots — both whole-turn
- * columns and all three split arrays — are BLOCKING: what they hold is what the
- * learner hears and, for a split row, reads. `explainer_audio_id` is checked the
- * same way but REPORTED AS A WARNING by default (`explainerBlocking: true` makes
- * it blocking), for two measured reasons, both from the read-only sweep of the
- * 22 live pod-1 courses on 2026-08-24:
- *   - the explainer is a COMPOSITE clip whose voice is `comp:<chunk>+<gloss>`,
- *     and on 5 of 22 courses the gloss half is a legacy narrator
- *     (en-GB-SoniaNeural) that is deliberately not in the pod cast. Cast
- *     membership is not the explainer track's contract.
- *   - its text is not the row's text but a gloss quoting chunks of it, so the
- *     check is quote-membership; ~200 clips fleet-wide quote a SUPERSEDED
- *     wording of their row (spa_mx s6/1 explains "¿Cómo se llama usted?" for a
- *     row that now reads "¿Cómo te llamas?"). That is a real, separate defect —
- *     a stale explainer backlog — and it is reported, but it is not the
- *     split-array defect and must not be able to mask it by making every flip
- *     fail on day one.
+ * All five ROW-TEXT slots — both whole-turn columns and all three split
+ * arrays — are BLOCKING: what they hold is what the learner hears and, for a
+ * split row, reads.
  *
  * BACKWARD COMPATIBLE: a caller that passes only {rows, speakers} gets exactly
  * the old behaviour, and `clipCheck: 'skipped'` in the result says so out loud.
  * loadPodForCastCheck now returns `clips` as well, so any caller already going
- * through it gets the six-column check for free.
+ * through it gets the five-column check for free.
  *
  * Pure: no DB, no env, no I/O. Callers hand it rows + the pod's stored cast.
  */
@@ -109,10 +100,12 @@ const { buildExchangeWeights, norm } = require('./pod1-percall-recast.cjs')
 const bareVoice = (v) => norm(String(v || '')).replace(/^(xai_|azure_)/, '')
 
 /**
- * A composite clip (the explainer track — services/pod-explainer-composite.cjs)
- * stores its voice as `comp:<chunk voice>+<gloss voice>`. Judging that string
- * against a cast set would call every composite off-cast, so it is split into
- * its real component voices and each is judged on its own.
+ * A composite clip stores its voice as `comp:<chunk voice>+<gloss voice>`.
+ * Judging that string against a cast set would call every composite
+ * off-cast, so it is split into its real component voices and each is
+ * judged on its own. (This format was minted by the now-deprecated pod-
+ * sentence explainer track; kept here as a defensive no-op for any composite
+ * clip still on record among the five checked columns.)
  */
 function voicesOf (voiceId) {
   const raw = String(voiceId || '')
@@ -151,7 +144,7 @@ function normText (s) {
  */
 const dense = (s) => normText(s).replace(/ /g, '')
 
-/** The six audio slots on a listening_pod_sentences row. */
+/** The five audio slots on a listening_pod_sentences row this gate checks. */
 const SLOTS = [
   { field: 'target_audio_id', side: 'target', kind: 'whole', textField: 'target_text' },
   { field: 'known_audio_id', side: 'known', kind: 'whole', textField: 'known_text' },
@@ -161,9 +154,6 @@ const SLOTS = [
   // target-side, aligned to glued groups, and legitimately sparse — single-unit
   // groups keep null, so the array does not have to tile the sentence.
   { field: 'takeg_audio_ids', side: 'target', kind: 'split', textField: 'target_text', sparse: true },
-  // The explainer is the known-language gloss track: `"chunk". means gloss.` It
-  // is not the row's text, so it is checked by the chunks it QUOTES.
-  { field: 'explainer_audio_id', side: 'explainer', kind: 'explainer', textField: 'target_text' },
 ]
 
 /**
@@ -172,18 +162,6 @@ const SLOTS = [
  * piece happens to appear somewhere in this one.
  */
 const COVERAGE_FLOOR = 0.6
-
-/** Quoted target chunks inside an explainer text, straight or curly quotes. */
-function explainerChunks (text) {
-  const out = []
-  const re = /["“”„«»]([^"“”„«»]{1,200})["“”„«»]/g
-  let m
-  while ((m = re.exec(String(text || ''))) !== null) {
-    const d = dense(m[1])
-    if (d) out.push({ raw: m[1], dense: d })
-  }
-  return out
-}
 
 /**
  * Walk the pieces of a split array through the row's own text, in order.
@@ -313,17 +291,17 @@ function sameVoiceAddress (p) {
  * @param {object} o
  * @param {Array<object>} o.rows the pod's sentence rows, in turn order (global_order).
  *        Needs speaker/scene_number/sentence_number always; for the clip checks
- *        also target_text/known_text and the six audio columns.
+ *        also target_text/known_text and the five audio columns.
  * @param {object|null} o.speakers  listening_pods.speakers — the stored cast.
  * @param {'target'|'known'} [o.track] which track the two-voice rule judges.
  * @param {Object<string,{text:string,voice_id:string}>|null} [o.clips]
- *        every course_audio row referenced by any of the six slots. Omit it and
+ *        every course_audio row referenced by any of the five slots. Omit it and
  *        the clip checks are SKIPPED (old behaviour, reported as such).
  * @param {string|null} [o.course] the course this pod belongs to. REPORTING ONLY —
  *        it changes no verdict. See the addressing rule above; pass it.
  * @returns {{ok:boolean, failures:string[], ...evidence}}
  */
-function checkPodCast ({ rows, speakers, track = 'target', clips = null, explainerBlocking = false, course = null }) {
+function checkPodCast ({ rows, speakers, track = 'target', clips = null, course = null }) {
   const cast = speakers || {}
   const nameOf = (r) => canonicalSpeakerName(r.speaker)
   const voiceOf = (name) => {
@@ -384,7 +362,7 @@ function checkPodCast ({ rows, speakers, track = 'target', clips = null, explain
   }
 
   const { failures: clipFailures, ...clipReport } =
-    checkPodClips({ rows: cRows, speakers: cast, clips, explainerBlocking })
+    checkPodClips({ rows: cRows, speakers: cast, clips })
   for (const f of clipFailures) failures.push(f)
 
   return {
@@ -406,13 +384,13 @@ function checkPodCast ({ rows, speakers, track = 'target', clips = null, explain
 }
 
 /**
- * The six-column clip check, on its own so a caller can run (and report) it
+ * The five-column clip check, on its own so a caller can run (and report) it
  * without the two-voice rule. Same purity contract: rows + cast + clips in,
  * verdict out.
  *
  * @returns {{clipCheck:'skipped'|'ran', failures:string[], clipIssues:Array, clipsSeen:number, slotsSeen:number, unverifiableClips:number, offCastClips:number, wrongRowClips:number, danglingClips:number}}
  */
-function checkPodClips ({ rows, speakers, clips, explainerBlocking = false }) {
+function checkPodClips ({ rows, speakers, clips }) {
   const empty = {
     clipCheck: 'skipped',
     failures: [],
@@ -425,8 +403,6 @@ function checkPodClips ({ rows, speakers, clips, explainerBlocking = false }) {
     wrongRowClips: 0,
     incoherentSplits: 0,
     danglingClips: 0,
-    explainerIssues: 0,
-    explainerBlocking,
   }
   if (!clips) return empty
 
@@ -437,9 +413,6 @@ function checkPodClips ({ rows, speakers, clips, explainerBlocking = false }) {
       if (v) cast[side].add(bareVoice(v))
     }
   }
-  // The explainer is one narrator reading the gloss track; it is cast from the
-  // pod's own voices but not tied to a track, so it is judged against the union.
-  const castAny = new Set([...cast.target, ...cast.known])
 
   const issues = []
   let clipsSeen = 0, slotsSeen = 0, unverifiable = 0
@@ -472,7 +445,7 @@ function checkPodClips ({ rows, speakers, clips, explainerBlocking = false }) {
       clipsSeen += present.length
 
       // ---- (a) on cast -----------------------------------------------------
-      const castSet = slot.side === 'explainer' ? castAny : cast[slot.side]
+      const castSet = cast[slot.side]
       if (castSet.size) {
         for (const id of present) {
           const vs = voicesOf(clips[id].voice_id)
@@ -529,24 +502,11 @@ function checkPodClips ({ rows, speakers, clips, explainerBlocking = false }) {
             'a split array that does not cover its own sentence is another row\'s split',
             { coverage: walk.coverage })
         }
-      } else if (slot.kind === 'explainer') {
-        for (const id of present) {
-          const chunks = explainerChunks(clips[id].text)
-          if (!chunks.length) { unverifiable++; continue }
-          if (!chunks.some(c => want.includes(c.dense))) {
-            push(row, slot.field, 'wrong-row',
-              `explainer quotes [${chunks.map(c => c.raw).slice(0, 4).join(' | ')}], none of which is in this row's text ${JSON.stringify(String(rowText).slice(0, 80))}`,
-              { audio_id: id })
-          }
-        }
       }
     }
   }
 
   const count = (k) => issues.filter(i => i.kind === k).length
-  const isExplainer = (i) => i.slot === 'explainer_audio_id'
-  const blocking = issues.filter(i => explainerBlocking || !isExplainer(i))
-  const warned = issues.filter(i => !explainerBlocking && isExplainer(i))
 
   const lines = (pool) => {
     const out = []
@@ -566,8 +526,8 @@ function checkPodClips ({ rows, speakers, clips, explainerBlocking = false }) {
 
   return {
     clipCheck: 'ran',
-    failures: lines(blocking),
-    clipWarnings: lines(warned),
+    failures: lines(issues),
+    clipWarnings: [],
     clipIssues: issues,
     clipsSeen,
     slotsSeen,
@@ -576,13 +536,11 @@ function checkPodClips ({ rows, speakers, clips, explainerBlocking = false }) {
     wrongRowClips: count('wrong-row'),
     incoherentSplits: count('incoherent'),
     danglingClips: count('dangling'),
-    explainerIssues: issues.filter(isExplainer).length,
-    explainerBlocking,
   }
 }
 
 /**
- * Fetch every course_audio row referenced by any of the six slots on `rows`.
+ * Fetch every course_audio row referenced by any of the five slots on `rows`.
  *
  * Chunked `where id = any($1)` with NO ORDER BY, deliberately: ordered
  * course_audio reads have been observed to time out at 8s on this estate, and
@@ -611,7 +569,7 @@ async function loadClipsForRows (db, rows, chunkSize = 500) {
 /**
  * Load the rows + cast + clips a check needs, for callers that have a pg client.
  * Callers that already do `checkPodCast(await loadPodForCastCheck(db, id))` get
- * the six-column clip check for free — the extra key rides through the spread.
+ * the five-column clip check for free — the extra key rides through the spread.
  */
 async function loadPodForCastCheck (db, podId, { withClips = true } = {}) {
   // course_code is selected so that callers doing the idiomatic
@@ -623,7 +581,7 @@ async function loadPodForCastCheck (db, podId, { withClips = true } = {}) {
   const rows = (await db.query(
     `select id, scene_number, sentence_number, global_order, speaker, known_text, target_text,
             target_audio_id, known_audio_id, sentence_audio_ids, sentence_known_audio_ids,
-            takeg_audio_ids, explainer_audio_id
+            takeg_audio_ids
        from listening_pod_sentences where pod_id = $1
       order by global_order, scene_number, sentence_number`, [podId])).rows
   const clips = withClips ? await loadClipsForRows(db, rows) : null
