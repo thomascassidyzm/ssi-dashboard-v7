@@ -71,7 +71,7 @@ require('dotenv').config({ path: require('path').join(__dirname, '..', '..', '.e
 const { Client } = require('pg')
 const { planMigration, POSITION_BOUND } = require('./pod-state-migrate.cjs')
 const { realHumanLearners } = require('../../services/shared/learner-counts.cjs')
-const { checkPodCast, loadPodForCastCheck } = require('./pod-cast-gate.cjs')
+const { checkPodCast, loadPodForCastCheck, sameVoiceAddress } = require('./pod-cast-gate.cjs')
 const { findInheritedSplitAudio, SPLIT_AUDIO_FIELDS } = require('./split-audio-inheritance.cjs')
 
 const APPLY = process.argv.includes('--apply')
@@ -358,6 +358,10 @@ async function main () {
   log(`  staged cast: ${castCheck.voicesInUse.length} voice(s) [${castCheck.voicesInUse.join(', ')}], ` +
       `${castCheck.sameVoicePairs.length} same-voice exchange pair(s) across ${castCheck.exchangePairs} exchange pair(s), ` +
       `${castCheck.uncast.length} uncast character(s)`)
+  // A bare count is exactly the shape the addressing rule bans (Tom, 2026-08-24) —
+  // it reads as a property of the SCRIPT, so it travels to a differently-cast pod.
+  // Each pair is therefore named as (course, scene, speaker-pair, voice).
+  for (const p of castCheck.sameVoicePairs) log(`    same-voice: ${sameVoiceAddress(p)}`)
   if (!castCheck.ok) {
     if (ACCEPT_UNCAST) {
       log('  --accept-uncast-pod given: promoting a pod that is NOT cast-correct. Reasons:')
