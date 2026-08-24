@@ -3,7 +3,7 @@
  *
  * Why this exists: on 2026-08-22 the 22-course pod-1 fleet was staged and flipped
  * with `target_audio_id` / `known_audio_id` correctly re-derived at every slot and
- * the OTHER FOUR audio slots left standing. The scene running order had changed —
+ * the OTHER split-array slots left standing. The scene running order had changed —
  * ita_for_eng's pod-0 scene 15 became pod-1 scene 22 — so those slots' clips played
  * and, because `podSentenceSplit` reads the on-screen text from the clip's own
  * `course_audio.text`, DISPLAYED a different conversation in the retired pod's cast.
@@ -15,6 +15,10 @@
  *   2. where there is no correctly-derived split audio for a slot, the answer is
  *      NULL — the player falls back to the verified whole-turn clip — and not a
  *      best-effort array.
+ *
+ * explainer_audio_id (a sixth audio column) is out of scope: the pod-sentence
+ * explainer track is deprecated (2026-08-24) and this module never carries,
+ * nulls or flags it, so the fixtures below simply omit it.
  *
  * Pure unit tests. Nothing here opens a database.
  *
@@ -41,7 +45,6 @@ const POD0_S15 = {
   sentence_audio_ids: ['eve-1', 'eve-2'],
   sentence_known_audio_ids: ['sonia-1', 'sonia-2'],
   takeg_audio_ids: ['eve-g1'],
-  explainer_audio_id: 'exp-old',
 }
 
 /** The pod-1 canon put a DIFFERENT conversation in that slot. */
@@ -57,7 +60,6 @@ describe('carrySplitAudio', () => {
       sentence_audio_ids: ['eve-1', 'eve-2'],
       sentence_known_audio_ids: ['sonia-1', 'sonia-2'],
       takeg_audio_ids: ['eve-g1'],
-      explainer_audio_id: 'exp-old',
     })
   })
 
@@ -74,8 +76,6 @@ describe('carrySplitAudio', () => {
     expect(kept.sentence_audio_ids).toBeNull()
     expect(kept.takeg_audio_ids).toBeNull()
     expect(kept.sentence_known_audio_ids).toEqual(['sonia-1', 'sonia-2'])
-    // The explainer narrates the whole line, so either side moving drops it.
-    expect(kept.explainer_audio_id).toBeNull()
   })
 
   it('returns nulls, never undefined, when there is no source row at all', () => {
@@ -107,7 +107,7 @@ describe('findInheritedSplitAudio — the promotion gate', () => {
       scene_number: 22, sentence_number: 1,
       target_text: 'Buonasera.', known_text: 'Good evening.',
       sentence_audio_ids: ['eve-9'], sentence_known_audio_ids: null,
-      takeg_audio_ids: null, explainer_audio_id: null,
+      takeg_audio_ids: null,
     },
   ]
 
@@ -120,7 +120,6 @@ describe('findInheritedSplitAudio — the promotion gate', () => {
       sentence_audio_ids: ['eve-1', 'eve-2'],
       sentence_known_audio_ids: ['sonia-1', 'sonia-2'],
       takeg_audio_ids: ['eve-g1'],
-      explainer_audio_id: 'exp-old',
     }]
     const found = findInheritedSplitAudio(OLD, staged)
     expect(found.map(f => f.field).sort()).toEqual([...SPLIT_AUDIO_FIELDS].sort())
@@ -149,7 +148,7 @@ describe('findInheritedSplitAudio — the promotion gate', () => {
       scene_number: 15, sentence_number: 1,
       ...POD1_S15_TEXT,
       sentence_audio_ids: ['ara-1'], sentence_known_audio_ids: ['olivia-1'],
-      takeg_audio_ids: null, explainer_audio_id: null,
+      takeg_audio_ids: null,
     }]
     expect(findInheritedSplitAudio(OLD, staged)).toEqual([])
   })
@@ -160,7 +159,7 @@ describe('findInheritedSplitAudio — the promotion gate', () => {
       scene_number: 30, sentence_number: 1,
       target_text: 'Nuovo.', known_text: 'New.',
       sentence_audio_ids: ['eve-1', 'eve-2'],
-      sentence_known_audio_ids: null, takeg_audio_ids: null, explainer_audio_id: null,
+      sentence_known_audio_ids: null, takeg_audio_ids: null,
     }]
     expect(findInheritedSplitAudio(OLD, staged)).toEqual([])
   })

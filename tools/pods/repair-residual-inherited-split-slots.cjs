@@ -34,35 +34,13 @@
  * course_audio row; every value this tool overwrites is snapshotted to the log
  * first, so the write is reversible from the log alone.
  *
- * SCOPE — the explainer fence, and its lift (2026-08-24, second pass). The
- * column was measure-only in the first pass because worker #312 was relinking
- * off-cast explainer clips on it. #312 has finished (02975a8de, 39e38a4a8) and
- * the fence is lifted for the INHERITED test only. Three rules govern it here:
- *
- *   1. SIXTEEN ROWS ARE PROTECTED, listed in EXPLAINER_PROTECTED below. #312
- *      left them deliberately: they carry the older "Breaking it down…" script
- *      and no in-cast clip says those words, so they are a CONTENT call with
- *      Tom. This tool refuses to write them — not relink, not null.
- *   2. NO CAST TEST ON THIS COLUMN. An explainer is a composite,
- *      `comp:<chunk voice>+<gloss voice>`, and the gloss half is a legacy
- *      narrator that is deliberately off-cast on 5 of 22 courses. That is why
- *      the six-column gate reports explainer as a WARNING. Judging it against a
- *      cast set would manufacture defects out of a design decision.
- *   3. AN EXPLAINER IS A GLOSS, NOT A TRANSCRIPT. Its contract is that it
- *      QUOTES chunks of its own row (`checkPodClips`), not that its text equals
- *      the row's. So an inherited explainer that still explains its own row is
- *      not a defect and is LEFT ALONE, counted separately in the report. Only
- *      an inherited explainer that explains a DIFFERENT row is repaired.
- *
- * NULLING AN EXPLAINER IS A CLEAN FALLBACK — established from the learner app,
- * not assumed. `buildMainStage` (@ssi/core pods/podStageComposition.ts:177):
- * "a sentence with no explainer audio plays its TRANSLATION in the explainer
- * slot instead, so meaning always arrives", and where the stage playlist
- * already carries a `trans` slot the explainer slot is simply skipped. On top
- * of that, the LIVE `pods` row in `algorithm_config` has no `explainer` role in
- * any of its eight stages, so the column reaches no main-flow learner today at
- * all. Stage-0's explainer tier reads `pod_legos.explainer_audio_id` — a
- * different table — and is unaffected either way.
+ * explainer_audio_id — 2026-08-24, third pass: the pod-sentence explainer
+ * narration track is DEPRECATED (Tom: "Explainers do not exist anymore. We
+ * don't do them."). This tool no longer measures or repairs that column at
+ * all — it was previously in scope (see git history for the lifted-fence
+ * rules that governed it), but a deprecated field gets silence, not upkeep.
+ * The column and any clips it points at are untouched; this tool simply
+ * stops looking at them.
  *
  * GATES, both cleared before any write:
  *   1. ZERO split-keyed `learner_pod_state` rows for the course. Progress is
@@ -95,34 +73,17 @@ const { checkPodClips, dense } = require('./pod-cast-gate.cjs')
 // the cast set and so passes a set test while being the wrong character entirely.
 const { expectedVoiceFor } = require('./unlink-off-cast-pod-clips.cjs')
 
-/** The slots this tool may WRITE, and which of them is a scalar. */
+/** The slots this tool may WRITE. None of them is a scalar — all are arrays. */
 const REPAIRABLE_SLOTS = [
-  'sentence_audio_ids', 'sentence_known_audio_ids', 'takeg_audio_ids', 'explainer_audio_id',
+  'sentence_audio_ids', 'sentence_known_audio_ids', 'takeg_audio_ids',
 ]
 const MEASURED_SLOTS = [...REPAIRABLE_SLOTS]
-const SCALAR_SLOTS = new Set(['explainer_audio_id'])
-
-/**
- * The sixteen explainer rows worker #312 left deliberately, by `pod_id` and
- * `global_order` (docs/pods/explainer-relink-2026-08-24.md). They carry the
- * older "Breaking it down…" script, no in-cast clip says those words, and 11 of
- * them have a near-equivalent that would be a content change rather than a
- * repair. They are Tom's call. This tool writes none of them.
- */
-const EXPLAINER_PROTECTED = new Set([
-  ...[1, 2, 3, 4, 5, 6, 10, 11, 12, 20].map(n => `ara_eg_for_eng:pod-1|${n}`),
-  ...[3, 4].map(n => `gle_for_eng:pod-1|${n}`),
-  ...[3, 4].map(n => `hrv_for_eng:pod-1|${n}`),
-  'ara_for_eng:pod-1|6',
-  'spa_for_eng:pod-1|3',
-])
-const isProtected = (row) => EXPLAINER_PROTECTED.has(`${row.pod_id}|${row.global_order}`)
+const SCALAR_SLOTS = new Set()
 
 const SIDE_OF = {
   sentence_audio_ids: 'target',
   sentence_known_audio_ids: 'known',
   takeg_audio_ids: 'target',
-  explainer_audio_id: 'both',
 }
 const TEXT_OF = { target: 'target_text', known: 'known_text' }
 
@@ -184,7 +145,7 @@ function verifyWholeTurn (rows, clips, speakers) {
 
 /**
  * Is `ids` a usable value for `field` on `row`? Make-before-break: alive,
- * in-cast, and coherent with the row's OWN text by the same six-column check
+ * in-cast, and coherent with the row's OWN text by the same five-column check
  * the gate runs. Returns null when usable, else the reason it is not.
  */
 function replacementRefusal (ids, field, row, clips, speakers) {
@@ -194,10 +155,7 @@ function replacementRefusal (ids, field, row, clips, speakers) {
   const dangling = arr.filter((id) => !clips[id])
   if (dangling.length) return `${dangling.length} candidate clip(s) have no course_audio row`
   const side = SIDE_OF[field]
-  // No cast test on the explainer track: it is a `comp:<chunk>+<gloss>`
-  // composite whose gloss half is a legacy narrator, deliberately off-cast on
-  // 5 of 22 courses. Judging it against a cast set invents defects.
-  const expected = side === 'both' ? null : expectedVoiceFor(speakers, row.speaker, side)
+  const expected = expectedVoiceFor(speakers, row.speaker, side)
   if (expected) {
     const off = [...new Set(arr.flatMap((id) => voicesOf(clips[id].voice_id)))].filter((v) => v !== bare(expected))
     if (off.length) return `candidate voice ${off.join('/')} is not ${row.speaker}'s cast ${side} voice ${bare(expected)}`
@@ -214,7 +172,6 @@ function replacementRefusal (ids, field, row, clips, speakers) {
     }],
     speakers: null, // cast already judged above; this probe is the TEXT walk
     clips,
-    explainerBlocking: true,
   })
   const issues = probe.clipIssues.filter((i) => i.slot === field)
   if (issues.length) return `candidate fails the row-text walk: ${issues[0].detail}`
@@ -260,26 +217,8 @@ function planPod ({ rows, ancestorRowSets, clips, speakers }) {
     const side = SIDE_OF[f.field]
     const current = scalar ? row[f.field] : (row[f.field] || []).filter(Boolean)
 
-    if (f.field === 'explainer_audio_id') {
-      // #312's sixteen: a content call with Tom, not this tool's to write.
-      if (isProtected(row)) {
-        held.push({ id: row.id, scene: row.scene_number, sentence: row.sentence_number, global_order: row.global_order, field: f.field, why: 'protected — one of the sixteen rows worker #312 left for Tom (older "Breaking it down…" script)' })
-        continue
-      }
-      // An explainer is a GLOSS: its contract is that it quotes chunks of its
-      // own row, not that its text matches it. Inherited but still explaining
-      // its own row is not a defect — leave it and say so.
-      if (!replacementRefusal(current, f.field, row, clips, speakers)) {
-        held.push({ id: row.id, scene: row.scene_number, sentence: row.sentence_number, global_order: row.global_order, field: f.field, why: 'inherited, but the clip still quotes this row\'s own text — a gloss that explains its row is not a defect' })
-        continue
-      }
-    }
-
     // 1. RE-POINT — did a retired pod render THIS row's current text elsewhere?
-    // For the explainer the side is `both`, so BOTH texts must be identical.
-    const sameRowText = (cand) => side === 'both'
-      ? sameText(cand.target_text, row.target_text) && sameText(cand.known_text, row.known_text)
-      : sameText(cand[TEXT_OF[side]], row[TEXT_OF[side]])
+    const sameRowText = (cand) => sameText(cand[TEXT_OF[side]], row[TEXT_OF[side]])
     let decision = null
     for (const old of ancestorRowSets || []) {
       for (const cand of old) {
@@ -289,17 +228,15 @@ function planPod ({ rows, ancestorRowSets, clips, speakers }) {
         if (JSON.stringify(ids) === JSON.stringify(current)) continue
         const refusal = replacementRefusal(ids, f.field, row, clips, speakers)
         if (refusal) continue
-        decision = { action: 're-point', to: ids, why: `retired pod row s${cand.scene_number}/${cand.sentence_number} carries this row's exact ${side === 'both' ? 'target AND known' : side} text, alive and verified` }
+        decision = { action: 're-point', to: ids, why: `retired pod row s${cand.scene_number}/${cand.sentence_number} carries this row's exact ${side} text, alive and verified` }
         break
       }
       if (decision) break
     }
-    // 2. NULL — no correct clip exists. For the split arrays the player falls
-    // back to the verified whole-turn clip; for the explainer, buildMainStage
-    // plays the TRANSLATION in that slot (and the live pods playlist has no
-    // explainer slot at all), so meaning still arrives.
+    // 2. NULL — no correct clip exists. The player falls back to the verified
+    // whole-turn clip.
     if (!decision) {
-      decision = { action: 'null', to: null, why: `no alive, verified clip exists for this row's ${side === 'both' ? 'current text' : side + ' text'}; falling back (${f.field === 'explainer_audio_id' ? 'explainer slot plays the translation' : 'whole-turn clip'})` }
+      decision = { action: 'null', to: null, why: `no alive, verified clip exists for this row's ${side} text; falling back to the whole-turn clip` }
     }
 
     if (!perRow.has(row.id)) {
@@ -336,8 +273,6 @@ module.exports = {
   REPAIRABLE_SLOTS,
   MEASURED_SLOTS,
   SCALAR_SLOTS,
-  EXPLAINER_PROTECTED,
-  isProtected,
   castOf,
   voicesOf,
   verifyWholeTurn,
@@ -373,8 +308,7 @@ async function main () {
 
   const SELECT = `select id, pod_id, scene_number, sentence_number, global_order, speaker,
                          target_text, known_text, target_audio_id, known_audio_id,
-                         sentence_audio_ids, sentence_known_audio_ids, takeg_audio_ids,
-                         explainer_audio_id
+                         sentence_audio_ids, sentence_known_audio_ids, takeg_audio_ids
                     from listening_pod_sentences where pod_id = $1
                    order by global_order, scene_number, sentence_number`
 
@@ -484,7 +418,7 @@ async function main () {
       ancestors: ancestors.map((a) => a.id),
       rows_total: rows.length,
       measured_inherited_slots: measured,
-      scope_note: 'explainer_audio_id repaired on the INHERITED test only; #312\'s sixteen protected rows and any explainer still quoting its own row are held, never written',
+      scope_note: 'explainer_audio_id is deprecated and out of scope entirely — not measured, not repaired',
       held,
       split_keyed_progress_rows: splitKeyed,
       stopped,
@@ -506,7 +440,7 @@ async function main () {
     for (const f of MEASURED_SLOTS) measuredTotals[f] += s.measured[f]
   }
   console.log(`\n--- FLEET ${APPLY ? 'APPLIED' : 'DRY RUN'} ---`)
-  console.log(`measured inherited slots, all six-column populations: ${JSON.stringify(measuredTotals)}`)
+  console.log(`measured inherited slots, all three split-array columns: ${JSON.stringify(measuredTotals)}`)
   console.log(`in scope: ${totals.in_scope} (${totals.repoint} re-point, ${totals.null} null); written ${totals.written}`)
   for (const s of summary.filter((x) => x.stopped)) console.log(`STOPPED ${s.course}: ${s.stopped}`)
   await db.end()

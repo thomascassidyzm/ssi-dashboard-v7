@@ -1,6 +1,6 @@
 /**
- * split-audio-inheritance.cjs — the one rule about a pod row's four NON-whole-turn
- * audio slots, and the two functions that enforce it.
+ * split-audio-inheritance.cjs — the one rule about a pod row's three NON-whole-turn
+ * split-array audio slots, and the two functions that enforce it.
  *
  * THE RULE (2026-08-24, from the ita_for_eng pod-1 scene-15 incident):
  *
@@ -9,18 +9,23 @@
  *   it cannot be carried, the correct value is NULL — the player then falls back
  *   to the whole-turn clip, which is verified.
  *
- * WHY. A `listening_pod_sentences` row has six audio slots:
+ * WHY. A `listening_pod_sentences` row has five audio slots this module covers:
  *
  *   target_audio_id  known_audio_id                 <- the whole turn
  *   sentence_audio_ids  sentence_known_audio_ids    <- per-sentence split clips
- *   takeg_audio_ids     explainer_audio_id          <- take-G groups, explainer
+ *   takeg_audio_ids                                 <- take-G groups
+ *
+ * (A sixth column, explainer_audio_id, was covered here until the pod-sentence
+ * explainer narration track was deprecated 2026-08-24 — Tom: "Explainers do not
+ * exist anymore." It is no longer measured, carried or repaired by this module;
+ * the column and its clips are untouched, simply unvisited.)
  *
  * When pod-1 was staged for the 22-course fleet, the whole-turn columns were
- * re-derived at each slot but the other four were left standing — so a slot whose
- * conversation had been replaced kept the RETIRED pod's clips. The scene running
- * order had changed (pod-0 scene 15 became pod-1 scene 22), so 91 of 141 ita rows
- * played, and — because `podSentenceSplit` takes the on-screen text from the
- * clip's own `course_audio.text` — DISPLAYED a different conversation, in the
+ * re-derived at each slot but the split arrays were left standing — so a slot
+ * whose conversation had been replaced kept the RETIRED pod's clips. The scene
+ * running order had changed (pod-0 scene 15 became pod-1 scene 22), so 91 of 141
+ * ita rows played, and — because `podSentenceSplit` takes the on-screen text from
+ * the clip's own `course_audio.text` — DISPLAYED a different conversation, in the
  * retired pod's cast. Full account:
  * docs/pods/ita-pod1-scene15-two-female-voices-rootcause-2026-08-24.md.
  *
@@ -31,16 +36,11 @@
  */
 'use strict'
 
-/**
- * The four slots, and which TEXT each one is rendered against. `explainer_audio_id`
- * is a scalar; the rest are arrays. The explainer narrates the line as a whole, so
- * it is only carried when BOTH texts survive — hence `side: 'both'`.
- */
+/** The three split-array slots, and which TEXT each one is rendered against. */
 const SPLIT_AUDIO_SLOTS = [
   { field: 'sentence_audio_ids', side: 'target', scalar: false },
   { field: 'sentence_known_audio_ids', side: 'known', scalar: false },
   { field: 'takeg_audio_ids', side: 'target', scalar: false },
-  { field: 'explainer_audio_id', side: 'both', scalar: true },
 ]
 
 const SPLIT_AUDIO_FIELDS = SPLIT_AUDIO_SLOTS.map(s => s.field)
@@ -63,7 +63,7 @@ function slotOccupied (row, slot) {
 }
 
 /**
- * The four slot values a row should end up with, given the row it is derived FROM.
+ * The three slot values a row should end up with, given the row it is derived FROM.
  *
  * @param {object|null} source  the row the split clips were rendered against (null = none)
  * @param {object} desired      the row as it will be written: `target_text` / `known_text`
@@ -74,7 +74,7 @@ function slotOccupied (row, slot) {
  *                              on a text comparison, because two blank texts compare
  *                              equal and would carry an array onto an empty slot.
  * @returns {object}            `{sentence_audio_ids, sentence_known_audio_ids,
- *                                takeg_audio_ids, explainer_audio_id}` — carried or null
+ *                                takeg_audio_ids}` — carried or null
  *
  * A slot is carried only when the text on the side it belongs to is byte-identical
  * between `source` and `desired`. Everything else is NULL, on purpose: null is a
