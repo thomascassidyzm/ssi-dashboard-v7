@@ -1,0 +1,680 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#12121a">
+<title>Splice bench — record, cut, glue, listen</title>
+<style>
+:root{--bg:#12121a;--card:#1c1c28;--card2:#232333;--line:#33334a;--fg:#ececf4;--dim:#9aa0b4;
+ --acc:#5aa9ff;--warn:#fbbf24;--good:#4ade80;--bad:#f87171;--A:#c084fc;--B:#4ade80}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;background:var(--bg);color:var(--fg)}
+body{font:17px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+ padding:1rem 1rem calc(7rem + env(safe-area-inset-bottom));max-width:700px;margin:0 auto}
+h1{font-size:1.3rem;margin:.2rem 0 .5rem;line-height:1.25}
+h2{font-size:1.05rem;margin:0 0 .6rem;color:var(--acc)}
+h3{font-size:.82rem;margin:1.1rem 0 .4rem;color:var(--dim);text-transform:uppercase;letter-spacing:.06em}
+p{margin:0 0 .7rem}
+.dim{color:var(--dim);font-size:.88rem}
+.sec{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:1rem;margin-bottom:1rem}
+.step{display:inline-block;background:var(--acc);color:#06101f;font-weight:800;font-size:.75rem;
+ padding:2px 9px;border-radius:999px;margin-bottom:.5rem;letter-spacing:.04em}
+button{font:inherit;color:inherit;border:none;border-radius:14px;cursor:pointer;background:var(--card2)}
+button:disabled{opacity:.4}
+.big{width:100%;min-height:60px;border:2px solid var(--line);padding:.8rem 1rem;margin-bottom:.55rem;
+ display:flex;align-items:center;gap:.8rem;text-align:left;font-size:1.02rem;font-weight:600}
+.big .ic{flex:0 0 42px;height:42px;border-radius:50%;background:var(--acc);color:#06101f;
+ display:grid;place-items:center;font-size:1.1rem;font-weight:700}
+.big.rec .ic{background:var(--bad);color:#fff}
+.big.on{border-color:var(--acc)}
+.big .sub{display:block;font-size:.78rem;font-weight:400;color:var(--dim);margin-top:2px}
+.big.mA{border-color:var(--A)} .big.mA .ic{background:var(--A)}
+.big.mB{border-color:var(--B)} .big.mB .ic{background:var(--B);color:#06280f}
+.big.ref{border-color:var(--line)} .big.ref .ic{background:#4b5566;color:#e6ecf5}
+.line{background:var(--card2);border:1px solid var(--line);border-radius:14px;padding:.75rem;margin-bottom:.6rem}
+.line.sel{border-color:var(--acc)}
+.line .de{font-size:1.02rem;font-weight:600;word-wrap:break-word}
+.line .en{color:var(--dim);font-size:.85rem;margin-top:1px}
+.line .st{font-size:.78rem;margin-top:.4rem;display:flex;gap:.5rem;flex-wrap:wrap}
+.pill{border-radius:999px;padding:2px 9px;font-size:.74rem;font-weight:600;background:#2b3242;color:var(--dim)}
+.pill.ok{background:#17351f;color:var(--good)} .pill.no{background:#3a1e1e;color:var(--bad)}
+.pill.wait{background:#3a3320;color:var(--warn)}
+.row{display:flex;gap:.5rem;margin-top:.5rem}
+.row button{flex:1;min-height:52px;border:1px solid var(--line);font-size:.92rem;font-weight:600}
+.meter{height:8px;background:#0e0e16;border-radius:4px;overflow:hidden;margin:.5rem 0}
+.meter i{display:block;height:100%;background:var(--good);width:0}
+.strip{position:relative;height:56px;background:#0e0e16;border-radius:10px;overflow:hidden;margin:.5rem 0}
+.strip canvas{position:absolute;inset:0;width:100%;height:100%}
+.strip .cut{position:absolute;top:0;bottom:0;width:2px;background:var(--warn)}
+.strip .cut.est{background:var(--bad)}
+.set{margin:.9rem 0}
+.set label{display:flex;justify-content:space-between;font-size:.9rem;margin-bottom:.3rem}
+.set label b{color:var(--acc);font-variant-numeric:tabular-nums}
+.set .why{color:var(--dim);font-size:.78rem;margin-top:.2rem}
+input[type=range]{width:100%;height:44px;accent-color:var(--acc)}
+.warn{background:#241b1b;border-left:4px solid var(--bad);border-radius:0 12px 12px 0;padding:.85rem;margin:.7rem 0;font-size:.9rem}
+.info{background:#1b1f2a;border-left:4px solid var(--warn);border-radius:0 12px 12px 0;padding:.85rem;margin:.7rem 0;font-size:.9rem}
+table{width:100%;border-collapse:collapse;font-size:.86rem;margin:.4rem 0}
+th,td{text-align:left;padding:.4rem .3rem;border-bottom:1px solid var(--line)}
+th{color:var(--dim);font-weight:500}
+td.n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+details{background:var(--card2);border:1px solid var(--line);border-radius:12px;padding:.7rem .9rem;margin:.7rem 0}
+summary{cursor:pointer;font-weight:600;min-height:30px;font-size:.92rem}
+.tabs{display:flex;gap:.4rem;margin-bottom:.8rem}
+.tabs button{flex:1;min-height:50px;border:1px solid var(--line);font-size:.88rem;font-weight:700}
+.tabs button.on{background:var(--acc);color:#06101f;border-color:var(--acc)}
+code{background:#0e0e16;padding:1px 5px;border-radius:4px;font-size:.86em}
+.pieces{display:flex;flex-wrap:wrap;gap:.35rem;margin:.5rem 0}
+.pc{background:#2b3242;border-radius:8px;padding:.25rem .55rem;font-size:.82rem}
+.pc b{color:var(--acc);font-weight:600}
+.chips{display:flex;gap:.4rem;overflow-x:auto;padding:.2rem 0 .6rem;-webkit-overflow-scrolling:touch}
+.chips button{flex:0 0 auto;min-height:46px;padding:.4rem .8rem;border:1px solid var(--line);
+ font-size:.85rem;font-weight:600;white-space:nowrap;max-width:62vw;overflow:hidden;text-overflow:ellipsis}
+.chips button.on{background:var(--acc);color:#06101f;border-color:var(--acc)}
+.chips button.bad{border-color:var(--bad)}
+</style></head><body>
+
+<h1>Splice bench</h1>
+<p class="dim" style="margin-bottom:1rem">Record a few lines yourself, then watch both ways of
+cutting them up, change the settings, and hear real course phrases built out of your own voice.
+Everything happens on this phone — nothing is uploaded and nothing is saved to the course.</p>
+
+<div class="sec" id="mechbox">
+<h2>The two ways of cutting, in one sentence each</h2>
+<p><b style="color:var(--A)">Way A — cut the slow take at its pauses.</b> You read the line slowly
+with a stop between each piece. The machine listens for the gaps and cuts there. The pieces are
+in your slow voice.</p>
+<p><b style="color:var(--B)">Way B — cut the clear take, guided by the slow one.</b> You read the
+line twice. The slow read is only used to work out <i>how long each piece takes</i>. Those
+proportions are then stretched across the clear read and the cuts are made there. The pieces are
+in your normal voice.</p>
+<p class="dim" style="margin:0">Both are in the code today, in the same function. Way B is what
+runs whenever a clear take exists; Way A is what runs when there isn't one. Either way, the slow
+read is where the timings come from — so the stopping is not optional for Way B either. That is
+the thing worth checking with your own ears below.</p>
+</div>
+
+<div class="sec">
+<span class="step">STEP 1</span>
+<h2>Record the lines</h2>
+<p class="dim" id="scriptnote">Loading the script…</p>
+<div class="info" id="micnote" style="display:none"></div>
+<div class="meter"><i id="meterfill"></i></div>
+<div id="lines"></div>
+<div class="row"><button id="clearall" style="border:1px solid var(--line)">Clear everything I recorded</button></div>
+</div>
+
+<div class="sec">
+<span class="step">STEP 2</span>
+<h2>Hear both ways on one line</h2>
+<div class="tabs" id="srcTabs">
+  <button data-src="mine" class="on">My recordings</button>
+  <button data-src="sascha">Sascha's</button>
+</div>
+<div class="chips" id="linepick"></div>
+<p class="dim" id="pickednote"></p>
+<div id="compare"></div>
+</div>
+
+<div class="sec">
+<span class="step">STEP 3</span>
+<h2>Change the settings, hear it again</h2>
+<p class="dim">Nothing needs re-recording. Move a slider and everything above and below is cut
+again from scratch.</p>
+<div id="settings"></div>
+<div class="row"><button id="resetset" style="border:1px solid var(--line)">Put the settings back</button></div>
+</div>
+
+<div class="sec">
+<span class="step">STEP 4</span>
+<h2>Real course phrases, built from your pieces</h2>
+<p class="dim">These are actual phrases from the Austrian German course that you did
+<i>not</i> read. Each one is glued together out of pieces cut from the lines you did read. This
+is the part that tells you whether it is trustworthy.</p>
+<div id="assembly"></div>
+</div>
+
+<div class="sec">
+<h2>The numbers, measured on Sascha's real session</h2>
+<p class="dim">Counted, not heard. Separate from the hands-on part above.</p>
+<div id="stats">Loading…</div>
+</div>
+
+<div class="sec" id="gapbox"></div>
+
+<script type="module">
+import * as M from './spliceMechanisms.js'
+import { decodeMono, encodeWavMono, peakNormalise, detectVoicedRegions } from './takeSplice.js'
+
+const $ = s => document.querySelector(s)
+const el = (t, c, h) => { const e = document.createElement(t); if (c) e.className = c; if (h != null) e.innerHTML = h; return e }
+
+// ---------------------------------------------------------------------------
+// state
+// ---------------------------------------------------------------------------
+const S = {
+  script: null,          // { lines:[...], targets:[...] }
+  takes: {},             // lineIdx -> { natural:{samples,sampleRate,blob}, slow:{...} }
+  sascha: null,          // preloaded manifest + decoded takes
+  srcMode: 'mine',
+  picked: 0,
+  recording: null,
+  opts: { SILENCE_DB: -35, SILENCE_MIN_MS: 150, MIN_VOICED_MS: 60, PAD_MS: 20 },
+  join: { fadeMs: 5, gapMs: 0 },
+  asm: { minPieceWords: 1, maxPieces: 8 },
+}
+const DEFAULTS = JSON.parse(JSON.stringify({ opts: S.opts, join: S.join, asm: S.asm }))
+
+// ---------------------------------------------------------------------------
+// persistence — his recordings must survive closing the page on a phone
+// ---------------------------------------------------------------------------
+const DB_NAME = 'splice-bench-2026-08-24'
+let db = null
+function openDb() {
+  return new Promise(res => {
+    const r = indexedDB.open(DB_NAME, 1)
+    r.onupgradeneeded = () => r.result.createObjectStore('takes')
+    r.onsuccess = () => { db = r.result; res(db) }
+    r.onerror = () => res(null)
+  })
+}
+function put(key, blob) { try { db?.transaction('takes', 'readwrite').objectStore('takes').put(blob, key) } catch {} }
+function delAll() { try { db?.transaction('takes', 'readwrite').objectStore('takes').clear() } catch {} }
+function allKeys() {
+  return new Promise(res => {
+    if (!db) return res([])
+    const r = db.transaction('takes').objectStore('takes').getAllKeys()
+    r.onsuccess = () => res(r.result); r.onerror = () => res([])
+  })
+}
+function get(key) {
+  return new Promise(res => {
+    if (!db) return res(null)
+    const r = db.transaction('takes').objectStore('takes').get(key)
+    r.onsuccess = () => res(r.result); r.onerror = () => res(null)
+  })
+}
+
+// ---------------------------------------------------------------------------
+// microphone — the same request the real studio makes: processing OFF, because
+// AGC and denoise reshape the very energy envelope the cutter reads.
+// ---------------------------------------------------------------------------
+const MIC = { echoCancellation: false, noiseSuppression: false, autoGainControl: false }
+let stream = null, recorder = null, meterRaf = 0, meterCtx = null
+
+function pickMime() {
+  for (const c of ['audio/mp4', 'audio/webm;codecs=opus', 'audio/webm']) {
+    if (window.MediaRecorder?.isTypeSupported?.(c)) return c
+  }
+  return ''
+}
+function stopMeter() { cancelAnimationFrame(meterRaf); meterRaf = 0; meterCtx?.close?.(); meterCtx = null }
+function startMeter(st) {
+  const AC = window.AudioContext || window.webkitAudioContext
+  meterCtx = new AC()
+  const an = meterCtx.createAnalyser(); an.fftSize = 256
+  meterCtx.createMediaStreamSource(st).connect(an)
+  const buf = new Float32Array(an.fftSize)
+  const tick = () => {
+    an.getFloatTimeDomainData(buf)
+    let s = 0; for (let i = 0; i < buf.length; i++) s += buf[i] * buf[i]
+    $('#meterfill').style.width = Math.min(100, Math.round(Math.sqrt(s / buf.length) * 320)) + '%'
+    meterRaf = requestAnimationFrame(tick)
+  }
+  tick()
+}
+
+async function startRec(lineIdx, cadence) {
+  if (S.recording) return stopRec()
+  try { stream = await navigator.mediaDevices.getUserMedia({ audio: MIC }) }
+  catch (e) {
+    $('#micnote').style.display = ''
+    $('#micnote').innerHTML = 'The browser would not give up the microphone: ' + e.message +
+      '.<br>On an iPhone, tap <b>aA</b> in the address bar → Website Settings → Microphone → Allow.'
+    return
+  }
+  const mime = pickMime()
+  recorder = mime ? new MediaRecorder(stream, { mimeType: mime }) : new MediaRecorder(stream)
+  const parts = []
+  recorder.addEventListener('dataavailable', e => e.data.size && parts.push(e.data))
+  recorder.addEventListener('stop', async () => {
+    stopMeter()
+    stream?.getTracks().forEach(t => t.stop()); stream = null
+    const blob = new Blob(parts, { type: recorder.mimeType || mime || 'audio/mp4' })
+    S.recording = null
+    await storeTake(lineIdx, cadence, blob)
+    renderLines(); renderCompare(); renderAssembly()
+  })
+  recorder.start()
+  S.recording = { lineIdx, cadence }
+  renderLines()
+  startMeter(stream)
+}
+function stopRec() { try { recorder?.stop() } catch {} }
+
+async function storeTake(lineIdx, cadence, blob) {
+  const key = `${lineIdx}:${cadence}`
+  put(key, blob)
+  const { samples, sampleRate } = await decodeMono(await blob.arrayBuffer())
+  S.takes[lineIdx] = S.takes[lineIdx] || {}
+  S.takes[lineIdx][cadence] = { samples, sampleRate, blob, url: URL.createObjectURL(blob) }
+}
+
+// ---------------------------------------------------------------------------
+// playback
+// ---------------------------------------------------------------------------
+let currentAudio = null, currentBtn = null
+function playSamples(btn, samples, sampleRate) {
+  if (currentAudio) { currentAudio.pause(); currentBtn?.classList.remove('on'); }
+  if (currentBtn === btn) { currentAudio = null; currentBtn = null; return }
+  const url = URL.createObjectURL(encodeWavMono(samples, sampleRate))
+  const a = new Audio(url)
+  currentAudio = a; currentBtn = btn; btn.classList.add('on')
+  a.onended = () => { btn.classList.remove('on'); URL.revokeObjectURL(url); currentAudio = null; currentBtn = null }
+  a.play().catch(() => { btn.classList.remove('on') })
+}
+
+// ---------------------------------------------------------------------------
+// waveform + cut marks — he should SEE where each mechanism decided to cut
+// ---------------------------------------------------------------------------
+function strip(take, chunks, estimated) {
+  const wrap = el('div', 'strip')
+  const cv = el('canvas'); cv.width = 700; cv.height = 56
+  wrap.appendChild(cv)
+  const ctx = cv.getContext('2d')
+  const x = take.samples, n = cv.width
+  const step = Math.max(1, Math.floor(x.length / n))
+  ctx.fillStyle = '#3a4560'
+  for (let i = 0; i < n; i++) {
+    let peak = 0
+    for (let k = i * step; k < Math.min(x.length, (i + 1) * step); k++) peak = Math.max(peak, Math.abs(x[k]))
+    const h = Math.max(1, peak * 54)
+    ctx.fillRect(i, 28 - h / 2, 1, h)
+  }
+  const durMs = (x.length / take.sampleRate) * 1000
+  for (let i = 1; i < (chunks || []).length; i++) {
+    const c = el('div', 'cut' + (estimated ? ' est' : ''))
+    c.style.left = (100 * chunks[i].startMs / durMs) + '%'
+    wrap.appendChild(c)
+  }
+  return wrap
+}
+
+// ---------------------------------------------------------------------------
+// which takes are we working with
+// ---------------------------------------------------------------------------
+function activeLines() {
+  if (S.srcMode === 'sascha') return S.sascha?.lines || []
+  return S.script?.lines || []
+}
+function takeFor(idx, cadence) {
+  if (S.srcMode === 'sascha') return S.sascha?.takes?.[idx]?.[cadence] || null
+  return S.takes[idx]?.[cadence] || null
+}
+
+// ---------------------------------------------------------------------------
+// STEP 1 — the line list
+// ---------------------------------------------------------------------------
+function renderLines() {
+  const wrap = $('#lines'); wrap.innerHTML = ''
+  const lines = S.script?.lines || []
+  if (!lines.length) { wrap.appendChild(el('p', 'dim', 'No script loaded.')); return }
+  lines.forEach((L, i) => {
+    const t = S.takes[i] || {}
+    const d = el('div', 'line' + (S.picked === i && S.srcMode === 'mine' ? ' sel' : ''))
+    d.appendChild(el('div', 'de', L.text))
+    d.appendChild(el('div', 'en', L.english || ''))
+    const st = el('div', 'st')
+    st.appendChild(el('span', 'pill' + (t.natural ? ' ok' : ''), t.natural ? 'clear read ✓' : 'clear read'))
+    st.appendChild(el('span', 'pill' + (t.slow ? ' ok' : ''), t.slow ? 'slow read ✓' : 'slow read'))
+    if (t.slow) {
+      const a = M.mechanismA({ slow: t.slow, expectedChunks: L.chunks, opts: S.opts })
+      st.appendChild(el('span', 'pill ' + (a.ok ? 'ok' : 'no'),
+        a.ok ? `${a.chunks.length} pieces found` : `heard ${a.detectedCount}, wanted ${a.expectedCount}`))
+    }
+    d.appendChild(st)
+    d.appendChild(el('div', 'dim', 'read it as: <b>' + L.chunks.join('</b> · <b>') + '</b>'))
+
+    const row = el('div', 'row')
+    const bn = el('button', S.recording?.lineIdx === i && S.recording?.cadence === 'natural' ? 'big rec' : '',
+      S.recording?.lineIdx === i && S.recording?.cadence === 'natural' ? '■ stop' : (t.natural ? '↺ clear read' : '● clear read'))
+    bn.onclick = () => S.recording ? stopRec() : startRec(i, 'natural')
+    const bs = el('button', S.recording?.lineIdx === i && S.recording?.cadence === 'slow' ? 'big rec' : '',
+      S.recording?.lineIdx === i && S.recording?.cadence === 'slow' ? '■ stop' : (t.slow ? '↺ slow read' : '● slow read'))
+    bs.onclick = () => S.recording ? stopRec() : startRec(i, 'slow')
+    row.appendChild(bn); row.appendChild(bs)
+    d.appendChild(row)
+
+    if (t.natural || t.slow) {
+      const r2 = el('div', 'row')
+      const bu = el('button', '', 'use this line above ↑')
+      bu.onclick = () => { S.srcMode = 'mine'; S.picked = i; syncTabs(); renderLines(); renderCompare(); window.scrollTo({ top: $('#compare').offsetTop - 80, behavior: 'smooth' }) }
+      r2.appendChild(bu); d.appendChild(r2)
+    }
+    wrap.appendChild(d)
+  })
+}
+
+// ---------------------------------------------------------------------------
+// STEP 2 — the two mechanisms, labelled, on one line
+// ---------------------------------------------------------------------------
+/** Can this line be cut, under the rules the bench is running right now? */
+function lineCuts(i) {
+  const L = activeLines()[i]
+  const slow = takeFor(i, 'slow')
+  if (!L || !slow) return null
+  return M.mechanismA({ slow, expectedChunks: L.chunks, opts: S.opts }).ok
+}
+function firstCuttable() {
+  const lines = activeLines()
+  for (let i = 0; i < lines.length; i++) if (lineCuts(i)) return i
+  for (let i = 0; i < lines.length; i++) if (takeFor(i, 'slow')) return i
+  return 0
+}
+function renderLinePick() {
+  const wrap = $('#linepick'); wrap.innerHTML = ''
+  const lines = activeLines()
+  lines.forEach((L, i) => {
+    const cuts = lineCuts(i)
+    const b = el('button', (i === S.picked ? 'on' : '') + (cuts === false ? ' bad' : ''),
+      (cuts === true ? '✓ ' : cuts === false ? '✕ ' : '') + L.text)
+    b.onclick = () => { S.picked = i; renderLinePick(); renderCompare() }
+    wrap.appendChild(b)
+  })
+  if (!lines.length) wrap.appendChild(el('p', 'dim', 'Nothing recorded on this side yet.'))
+}
+
+function renderCompare() {
+  renderLinePick()
+  const wrap = $('#compare'); wrap.innerHTML = ''
+  const lines = activeLines()
+  const L = lines[S.picked]
+  if (!L) { wrap.appendChild(el('p', 'dim', 'Nothing to compare yet.')); return }
+  const natural = takeFor(S.picked, 'natural')
+  const slow = takeFor(S.picked, 'slow')
+
+  $('#pickednote').innerHTML = '<b>' + L.text + '</b><br>' + (L.english || '')
+
+  if (!slow) {
+    wrap.appendChild(el('div', 'info', 'Record the <b>slow read</b> of this line to see anything here — both ways of cutting get their timings from the slow read, and neither can start without it.'))
+    if (S.srcMode === 'mine') return
+  }
+
+  // --- Way A
+  const a = slow ? M.mechanismA({ slow, expectedChunks: L.chunks, opts: S.opts }) : null
+  const boxA = el('div', 'sec'); boxA.style.background = 'var(--card2)'; boxA.style.marginBottom = '.8rem'
+  boxA.appendChild(el('h3', null, '<span style="color:var(--A)">Way A</span> — cut the slow take at its pauses'))
+  if (!a) boxA.appendChild(el('p', 'dim', 'needs the slow read'))
+  else if (!a.ok) {
+    boxA.appendChild(el('div', 'warn', '<b>It refused.</b> ' + a.reason +
+      '.<br>This is the machine declining to guess. It is what happens today when your pauses do not land where the script asked — the take is rejected rather than cut badly.'))
+    boxA.appendChild(strip(slow, a.regions?.map(r => ({ startMs: r.startMs })), false))
+  } else {
+    const pieces = M.cutPieces(a, S.opts)
+    boxA.appendChild(strip(slow, a.chunks, false))
+    boxA.appendChild(piecesRow(pieces, slow.sampleRate))
+    const joined = M.joinPieces(pieces, slow.sampleRate, S.join)
+    boxA.appendChild(bigPlay('mA', 'Way A — glued back together',
+      `${pieces.length} pieces, ${pieces.length - 1} joins, cut from your slow read`, joined, slow.sampleRate))
+    boxA.appendChild(bigPlay('ref', 'your slow read, untouched', 'nothing cut', slow.samples, slow.sampleRate))
+  }
+  wrap.appendChild(boxA)
+
+  // --- Way B
+  const boxB = el('div', 'sec'); boxB.style.background = 'var(--card2)'; boxB.style.marginBottom = '.8rem'
+  boxB.appendChild(el('h3', null, '<span style="color:var(--B)">Way B</span> — cut the clear take, guided by the slow one'))
+  if (!slow || !natural) {
+    boxB.appendChild(el('div', 'info', 'Needs <b>both</b> reads of this line — the slow one for the timings, the clear one to cut.'))
+  } else {
+    const b = M.mechanismB({ slow, natural, expectedChunks: L.chunks, opts: S.opts })
+    if (!b.ok) {
+      boxB.appendChild(el('div', 'warn', '<b>It refused, at the slow read.</b> ' + b.reason +
+        '<br>Way B cannot start either: the timings it needs only exist in the slow read.'))
+    } else {
+      const est = b.naturalMethod === 'transferred'
+      boxB.appendChild(el('div', est ? 'warn' : 'info',
+        est
+          ? '<b>The cuts here are estimates.</b> The machine listened to your clear read and could not find ' +
+            L.chunks.length + ' natural gaps in it (' + (b.directFailure || '') + '), so it stretched the slow read\'s proportions across it instead. Every red line below is a guess.'
+          : '<b>Real gaps.</b> Your clear read happened to have ' + L.chunks.length +
+            ' detectable gaps of its own, so the cuts are on real silence, not estimated.'))
+      boxB.appendChild(strip(natural, b.chunks, est))
+      const pieces = M.cutPieces(b, S.opts)
+      boxB.appendChild(piecesRow(pieces, natural.sampleRate))
+      const joined = M.joinPieces(pieces, natural.sampleRate, S.join)
+      boxB.appendChild(bigPlay('mB', 'Way B — glued back together',
+        `${pieces.length} pieces, ${pieces.length - 1} joins, cut from your clear read`, joined, natural.sampleRate))
+      boxB.appendChild(bigPlay('ref', 'your clear read, untouched', 'nothing cut', natural.samples, natural.sampleRate))
+    }
+  }
+  wrap.appendChild(boxB)
+}
+
+function bigPlay(cls, title, sub, samples, sampleRate) {
+  const b = el('button', 'big ' + cls, `<span class="ic">▶</span><span>${title}<span class="sub">${sub}</span></span>`)
+  b.onclick = () => playSamples(b, samples, sampleRate)
+  return b
+}
+function piecesRow(pieces, sampleRate) {
+  const w = el('div', 'pieces')
+  pieces.forEach(p => {
+    const b = el('button', 'pc', `<b>${p.text}</b> ${Math.round((p.samples.length / sampleRate) * 1000)}ms`)
+    b.onclick = () => playSamples(b, p.samples, sampleRate)
+    w.appendChild(b)
+  })
+  return w
+}
+
+// ---------------------------------------------------------------------------
+// STEP 3 — the settings. Every one of these is a real constant in the code.
+// ---------------------------------------------------------------------------
+const SETTINGS = [
+  { path: 'opts.SILENCE_DB', label: 'How quiet counts as a gap', min: -55, max: -15, step: 1, unit: ' dB',
+    why: 'Below this level the machine calls it silence. Raise it and it hears more gaps than you left; lower it and it hears none. <code>SILENCE_DB</code>, −35 in the code.' },
+  { path: 'opts.SILENCE_MIN_MS', label: 'How long a gap has to be', min: 40, max: 500, step: 10, unit: ' ms',
+    why: 'A pause shorter than this is not a cut point. This is the one that decides whether your natural pauses count. <code>SILENCE_MIN_MS</code>, 150 in the code.' },
+  { path: 'opts.MIN_VOICED_MS', label: 'Shortest thing that counts as speech', min: 20, max: 250, step: 10, unit: ' ms',
+    why: 'Anything shorter is thrown away as a click or a breath. Too low and a lip smack becomes a piece. <code>MIN_VOICED_MS</code>, 60 in the code.' },
+  { path: 'opts.PAD_MS', label: 'Extra kept either side of a cut', min: 0, max: 120, step: 5, unit: ' ms',
+    why: 'Breathing room so the cut does not clip the start of a word. Too much and you drag in the neighbour. <code>PAD_MS</code>, 20 in the code.' },
+  { path: 'join.fadeMs', label: 'Softening at each join', min: 0, max: 40, step: 1, unit: ' ms',
+    why: 'A tiny fade in and out on each piece so the butt-join does not click. Set it to 0 to hear the click it is hiding.' },
+  { path: 'join.gapMs', label: 'Silence inserted at each join', min: 0, max: 200, step: 5, unit: ' ms',
+    why: 'Space put between pieces when they are glued. 0 is what the code does inside a phrase.' },
+  { path: 'asm.minPieceWords', label: 'Smallest piece a phrase may use', min: 1, max: 4, step: 1, unit: ' word(s)',
+    why: 'The two-pool setting. 1 lets a phrase be built out of single words; 2 forbids it and forces longer pieces. <code>minPieceWords</code> in recording-pools.cjs.' },
+  { path: 'asm.maxPieces', label: 'Most pieces a phrase may be built from', min: 2, max: 14, step: 1, unit: ' pieces',
+    why: 'The splice-depth cap. Lower it and deep splices are refused rather than made. <code>maxPieces</code>.' },
+]
+function readPath(p) { const [a, b] = p.split('.'); return S[a][b] }
+function writePath(p, v) { const [a, b] = p.split('.'); S[a][b] = v }
+
+function renderSettings() {
+  const wrap = $('#settings'); wrap.innerHTML = ''
+  SETTINGS.forEach(s => {
+    const d = el('div', 'set')
+    const lab = el('label', null, `<span>${s.label}</span><b>${readPath(s.path)}${s.unit}</b>`)
+    const inp = el('input'); inp.type = 'range'; inp.min = s.min; inp.max = s.max; inp.step = s.step; inp.value = readPath(s.path)
+    inp.addEventListener('input', () => {
+      writePath(s.path, Number(inp.value))
+      lab.querySelector('b').textContent = inp.value + s.unit
+    })
+    inp.addEventListener('change', () => { renderLines(); renderCompare(); renderAssembly() })
+    d.appendChild(lab); d.appendChild(inp); d.appendChild(el('div', 'why', s.why))
+    wrap.appendChild(d)
+  })
+}
+
+// ---------------------------------------------------------------------------
+// STEP 4 — real course phrases assembled from his pieces
+// ---------------------------------------------------------------------------
+function alignedTakes() {
+  const lines = activeLines()
+  const out = []
+  lines.forEach((L, i) => {
+    const slow = takeFor(i, 'slow'); const natural = takeFor(i, 'natural')
+    if (!slow) return
+    const r = natural
+      ? M.mechanismB({ slow, natural, expectedChunks: L.chunks, opts: S.opts })
+      : M.mechanismA({ slow, expectedChunks: L.chunks, opts: S.opts })
+    if (!r.ok) return
+    out.push({ id: 'l' + i, lineText: L.text, chunks: r.chunks, source: r.source, mechanism: r.mechanism, naturalMethod: r.naturalMethod })
+  })
+  return out
+}
+
+function renderAssembly() {
+  const wrap = $('#assembly'); wrap.innerHTML = ''
+  const targets = (S.srcMode === 'sascha' ? S.sascha?.targets : S.script?.targets) || []
+  const takes = alignedTakes()
+  if (!takes.length) {
+    wrap.appendChild(el('div', 'info', 'Nothing recorded yet that can be cut up. Record the slow read of a line or two in Step 1, then come back.'))
+    return
+  }
+  const lib = M.buildSpanLibrary(takes)
+  const usedB = takes.filter(t => t.mechanism === 'B').length
+  wrap.appendChild(el('p', 'dim',
+    `Built from ${takes.length} line${takes.length === 1 ? '' : 's'} that could be cut up — ` +
+    `${usedB} using Way B (clear voice), ${takes.length - usedB} using Way A (slow voice). ` +
+    `That gives ${lib.size} different pieces to build from.`))
+
+  if (!targets.length) { wrap.appendChild(el('div', 'info', 'No target phrases in the script.')); return }
+
+  targets.forEach(T => {
+    const d = el('div', 'line')
+    d.appendChild(el('div', 'de', T.text))
+    d.appendChild(el('div', 'en', T.english || ''))
+    const asm = M.assemblePhrase(T.text, lib, S.asm)
+    if (!asm.ok) {
+      d.appendChild(el('div', 'st', `<span class="pill no">can't build it</span>`))
+      d.appendChild(el('div', 'dim', asm.onlyAsShortPieces
+        ? '<b>' + asm.missing.join('</b>, <b>') + '</b> — you recorded these, but only as pieces shorter than “smallest piece” allows. Drop that setting back to 1 and this phrase appears.'
+        : asm.missing?.length
+          ? 'missing: <b>' + asm.missing.join('</b>, <b>') + '</b> — record a line containing those words'
+          : asm.reason))
+    } else {
+      const sr = asm.pieces[0].span.source.sampleRate
+      const r = M.renderAssembly(asm, sr, { ...S.join, PAD_MS: S.opts.PAD_MS })
+      d.appendChild(el('div', 'st',
+        `<span class="pill ${asm.joins > 4 ? 'wait' : 'ok'}">${asm.depth} pieces · ${asm.joins} join${asm.joins === 1 ? '' : 's'}</span>`))
+      const pw = el('div', 'pieces')
+      r.pieces.forEach(p => pw.appendChild(el('span', 'pc', `<b>${p.text}</b><br><span style="font-size:.72rem;color:var(--dim)">from “${p.fromLine}”</span>`)))
+      d.appendChild(pw)
+      d.appendChild(bigPlay('mB', 'play the glued phrase', `${asm.depth} pieces from ${new Set(r.pieces.map(p => p.fromLine)).size} different line(s)`, r.samples, sr))
+    }
+    wrap.appendChild(d)
+  })
+}
+
+// ---------------------------------------------------------------------------
+// numbers + gap (measured earlier on Sascha's real session)
+// ---------------------------------------------------------------------------
+async function renderStats() {
+  try {
+    const d = await (await fetch('../splice-mechanisms-listen-2026-08-24/data.json')).json()
+    const cs = d.consistency.filter(c => c.cutRisk)
+    const t = [], g = []
+    cs.forEach(c => { t.push(...c.cutRisk.tightCutDistancesMs.filter(x => x != null)); g.push(...c.cutRisk.generousCutDistancesMs.filter(x => x != null)) })
+    const med = a => { const s = [...a].sort((x, y) => x - y); return s.length ? Math.round(s[Math.floor(s.length / 2)]) : 0 }
+    const pc = (a, b) => b ? Math.round(100 * a / b) + '%' : '—'
+    $('#stats').innerHTML = `
+<h3>How deep splices go, and how the cuts land</h3>
+<table>
+<tr><th>&nbsp;</th><th class="n">many small pieces</th><th class="n">two big pieces</th></tr>
+<tr><td>cuts made across 15 sentences</td><td class="n">${t.length}</td><td class="n">${g.length}</td></tr>
+<tr><td>typical distance from a real gap</td><td class="n">${med(t)} ms</td><td class="n">${med(g)} ms</td></tr>
+<tr><td>cuts landing inside speech (&gt;100 ms out)</td><td class="n">${t.filter(x => x > 100).length} (${pc(t.filter(x => x > 100).length, t.length)})</td><td class="n">${g.filter(x => x > 100).length} (${pc(g.filter(x => x > 100).length, g.length)})</td></tr>
+</table>
+<p class="dim">The two settings cut just as badly <i>per cut</i>. What differs is how many cuts
+there are — ${t.length} against ${g.length}. On the full course the worst splice is 14 pieces at
+the small-piece setting and 6 at the large-piece one.</p>
+<h3>Does it fail gracefully?</h3>
+<p><b>No — it refuses.</b> ${d.census.alignFailures.length} of ${d.census.slowWithChunkMap} of
+Sascha's slow reads could not be cut at all: the machine counted a different number of pauses than
+the script asked for and stopped. That is ${pc(d.census.alignFailures.length, d.census.slowWithChunkMap)},
+refused outright. Safe, but roughly a third of that effort produced nothing spliceable. You can
+make this happen to yourself above — record a slow read without stopping properly.</p>
+<h3>Way B never gets real gaps</h3>
+<p>In <b>15 of 15</b> of Sascha's sentences the machine could not find the join points in her clear
+read on its own, and fell back to stretching the slow read's proportions across it. Every cut Way
+B made on her material was an estimate.</p>`
+    $('#gapbox').innerHTML = `<h2>What this bench does not do</h2>
+<p>Your recordings stay on this phone. Nothing is uploaded, nothing is written to the course, and
+nothing here touches Sascha's takes.</p>
+<p>The pieces used to build the phrases in Step 4 come only from the lines <i>you</i> read in this
+session. If a phrase says it cannot be built, that is honest — it means no line you recorded
+contains those words.</p>
+<p class="dim">Measured against Sascha's real session: of 198 unrecorded phrases in the early
+seeds, <b>none</b> could be assembled from the ${d.census.spanLibrarySize} pieces her ${d.census.alignedTakes}
+usable slow reads yield — the best managed ${Math.round(d.crossCoverage.bestWordCoverage * 100)}%
+of its words. Her session cannot demonstrate the mechanism it was recorded for. The script in Step
+1 was chosen specifically so that yours can.</p>`
+  } catch (e) {
+    $('#stats').innerHTML = '<p class="dim">Could not load the measured numbers: ' + e.message + '</p>'
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Sascha's preloaded material
+// ---------------------------------------------------------------------------
+async function loadSascha() {
+  try {
+    const man = await (await fetch('sascha/manifest.json')).json()
+    const takes = {}
+    for (let i = 0; i < man.lines.length; i++) {
+      const L = man.lines[i]
+      takes[i] = {}
+      for (const cad of ['natural', 'slow']) {
+        if (!L[cad]) continue
+        const buf = await (await fetch('sascha/' + L[cad])).arrayBuffer()
+        const { samples, sampleRate } = await decodeMono(buf)
+        takes[i][cad] = { samples, sampleRate }
+      }
+    }
+    S.sascha = { lines: man.lines, targets: man.targets || [], takes }
+  } catch (e) {
+    S.sascha = { lines: [], targets: [], takes: {}, error: e.message }
+  }
+}
+
+// ---------------------------------------------------------------------------
+// boot
+// ---------------------------------------------------------------------------
+function syncTabs() {
+  document.querySelectorAll('#srcTabs button').forEach(b => b.classList.toggle('on', b.dataset.src === S.srcMode))
+}
+document.querySelectorAll('#srcTabs button').forEach(b => {
+  b.onclick = () => { S.srcMode = b.dataset.src; S.picked = firstCuttable(); syncTabs(); renderCompare(); renderAssembly() }
+})
+$('#resetset').onclick = () => {
+  Object.assign(S.opts, DEFAULTS.opts); Object.assign(S.join, DEFAULTS.join); Object.assign(S.asm, DEFAULTS.asm)
+  renderSettings(); renderLines(); renderCompare(); renderAssembly()
+}
+$('#clearall').onclick = () => {
+  if (!confirm('Delete every take you recorded on this phone? Sascha’s are untouched either way.')) return
+  delAll(); S.takes = {}; renderLines(); renderCompare(); renderAssembly()
+}
+
+;(async () => {
+  await openDb()
+  try {
+    S.script = await (await fetch('script.json')).json()
+    $('#scriptnote').innerHTML = `Read each line <b>twice</b>: once clearly, once slowly with a
+      deliberate stop where the dots are. The slow read is where the timings come from — both ways
+      of cutting need it. ${S.script.lines.length} lines.`
+  } catch (e) {
+    S.script = { lines: [], targets: [] }
+    $('#scriptnote').innerHTML = 'Could not load the script: ' + e.message
+  }
+  // restore anything recorded in a previous visit
+  for (const key of await allKeys()) {
+    const [i, cad] = String(key).split(':')
+    const blob = await get(key)
+    if (blob) { try { await storeTake(Number(i), cad, blob) } catch {} }
+  }
+  renderSettings(); renderLines(); renderCompare(); renderAssembly(); renderStats()
+  await loadSascha()
+  if (S.srcMode === 'sascha') S.picked = firstCuttable()
+  renderCompare(); renderAssembly()
+})()
+</script>
+</body></html>

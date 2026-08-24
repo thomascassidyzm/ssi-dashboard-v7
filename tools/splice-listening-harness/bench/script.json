@@ -1,0 +1,311 @@
+{
+  "generatedAt": "2026-08-24T10:45:05.989Z",
+  "course": "deu_at_for_eng",
+  "lines": [
+    {
+      "text": "i versuch, Deitsch zum übn",
+      "english": "i'm trying to practise German",
+      "chunks": [
+        "i versuch, Deitsch zum",
+        "übn"
+      ],
+      "chunksString": "i versuch, Deitsch zum|übn",
+      "seed": 5,
+      "source": "practice"
+    },
+    {
+      "text": "i versuch, wos zum sogn",
+      "english": "i'm trying to say something",
+      "chunks": [
+        "i versuch, wos zum",
+        "sogn"
+      ],
+      "chunksString": "i versuch, wos zum|sogn",
+      "seed": 4,
+      "source": "practice"
+    },
+    {
+      "text": "i wer heit Deitsch übn",
+      "english": "i'm going to practise German today",
+      "chunks": [
+        "i wer",
+        "heit",
+        "Deitsch",
+        "übn"
+      ],
+      "chunksString": "i wer|heit|Deitsch|übn",
+      "seed": 7,
+      "source": "practice"
+    },
+    {
+      "text": "i wer heit wos lernen",
+      "english": "i'm going to learn something today",
+      "chunks": [
+        "i wer heit",
+        "wos",
+        "lernen"
+      ],
+      "chunksString": "i wer heit|wos|lernen",
+      "seed": 7,
+      "source": "practice"
+    },
+    {
+      "text": "i wer iatz reden übn",
+      "english": "i'm going to practise speaking now",
+      "chunks": [
+        "i wer",
+        "iatz",
+        "reden übn"
+      ],
+      "chunksString": "i wer|iatz|reden übn",
+      "seed": 5,
+      "source": "practice"
+    },
+    {
+      "text": "i wer versuchen zum erklärn",
+      "english": "i'm going to try to explain",
+      "chunks": [
+        "i wer versuchen zum erklärn"
+      ],
+      "chunksString": "i wer versuchen zum erklärn",
+      "seed": 8,
+      "source": "practice"
+    },
+    {
+      "text": "i wü a Wort sogn",
+      "english": "I want to say a word",
+      "chunks": [
+        "i wü",
+        "a Wort sogn"
+      ],
+      "chunksString": "i wü|a Wort sogn",
+      "seed": 6,
+      "source": "practice"
+    },
+    {
+      "text": "i wü mit dir reden",
+      "english": "I want to speak with you",
+      "chunks": [
+        "i wü",
+        "mit dir",
+        "reden"
+      ],
+      "chunksString": "i wü|mit dir|reden",
+      "seed": 1,
+      "source": "practice"
+    },
+    {
+      "text": "i wü's auf Deitsch erklärn",
+      "english": "I want to explain it in German",
+      "chunks": [
+        "i wü's",
+        "auf Deitsch",
+        "erklärn"
+      ],
+      "chunksString": "i wü's|auf Deitsch|erklärn",
+      "seed": 8,
+      "source": "practice"
+    },
+    {
+      "text": "i wü's so fest versuchen",
+      "english": "I want to try it so hard",
+      "chunks": [
+        "i wü's so fest versuchen"
+      ],
+      "chunksString": "i wü's so fest versuchen",
+      "seed": 7,
+      "source": "practice"
+    }
+  ],
+  "targets": [
+    {
+      "text": "i wü iatz wos auf Deitsch sogn",
+      "english": "I want to say something in German now",
+      "seed": 4,
+      "source": "practice",
+      "pieces": [
+        "i wü",
+        "iatz",
+        "wos",
+        "auf Deitsch",
+        "sogn"
+      ],
+      "piecesNormalized": [
+        "i wu",
+        "iatz",
+        "wos",
+        "auf deitsch",
+        "sogn"
+      ],
+      "pieceSources": [
+        "i wü a Wort sogn",
+        "i wer iatz reden übn",
+        "i wer heit wos lernen",
+        "i wü's auf Deitsch erklärn",
+        "i versuch, wos zum sogn"
+      ],
+      "depth": 5
+    },
+    {
+      "text": "i wü iatz mit dir Deitsch reden",
+      "english": "I want to speak German with you now",
+      "seed": 1,
+      "source": "seed",
+      "pieces": [
+        "i wü",
+        "iatz",
+        "mit dir",
+        "Deitsch",
+        "reden"
+      ],
+      "piecesNormalized": [
+        "i wu",
+        "iatz",
+        "mit dir",
+        "deitsch",
+        "reden"
+      ],
+      "pieceSources": [
+        "i wü a Wort sogn",
+        "i wer iatz reden übn",
+        "i wü mit dir reden",
+        "i wer heit Deitsch übn",
+        "i wü mit dir reden"
+      ],
+      "depth": 5
+    },
+    {
+      "text": "i wü wos auf Deitsch sogn",
+      "english": "I want to say something in German",
+      "seed": 4,
+      "source": "practice",
+      "pieces": [
+        "i wü",
+        "wos",
+        "auf Deitsch",
+        "sogn"
+      ],
+      "piecesNormalized": [
+        "i wu",
+        "wos",
+        "auf deitsch",
+        "sogn"
+      ],
+      "pieceSources": [
+        "i wü a Wort sogn",
+        "i wer heit wos lernen",
+        "i wü's auf Deitsch erklärn",
+        "i versuch, wos zum sogn"
+      ],
+      "depth": 4
+    },
+    {
+      "text": "i wü wos mit dir lernen",
+      "english": "I want to learn something with you",
+      "seed": 4,
+      "source": "practice",
+      "pieces": [
+        "i wü",
+        "wos",
+        "mit dir",
+        "lernen"
+      ],
+      "piecesNormalized": [
+        "i wu",
+        "wos",
+        "mit dir",
+        "lernen"
+      ],
+      "pieceSources": [
+        "i wü a Wort sogn",
+        "i wer heit wos lernen",
+        "i wü mit dir reden",
+        "i wer heit wos lernen"
+      ],
+      "depth": 4
+    },
+    {
+      "text": "i wü's mit dir übn",
+      "english": "I want to practise it with you",
+      "seed": 7,
+      "source": "practice",
+      "pieces": [
+        "i wü's",
+        "mit dir",
+        "übn"
+      ],
+      "piecesNormalized": [
+        "i wus",
+        "mit dir",
+        "ubn"
+      ],
+      "pieceSources": [
+        "i wü's auf Deitsch erklärn",
+        "i wü mit dir reden",
+        "i versuch, Deitsch zum übn"
+      ],
+      "depth": 3
+    },
+    {
+      "text": "i wü mit dir auf Deitsch reden",
+      "english": "I want to speak in German with you",
+      "seed": 4,
+      "source": "practice",
+      "pieces": [
+        "i wü mit dir",
+        "auf Deitsch",
+        "reden"
+      ],
+      "piecesNormalized": [
+        "i wu mit dir",
+        "auf deitsch",
+        "reden"
+      ],
+      "pieceSources": [
+        "i wü mit dir reden",
+        "i wü's auf Deitsch erklärn",
+        "i wü mit dir reden"
+      ],
+      "depth": 3
+    },
+    {
+      "text": "i wü mit dir reden übn",
+      "english": "I want to practise speaking with you",
+      "seed": 5,
+      "source": "practice",
+      "pieces": [
+        "i wü mit dir",
+        "reden übn"
+      ],
+      "piecesNormalized": [
+        "i wu mit dir",
+        "reden ubn"
+      ],
+      "pieceSources": [
+        "i wü mit dir reden",
+        "i wer iatz reden übn"
+      ],
+      "depth": 2
+    },
+    {
+      "text": "i versuch, wos zum lernen",
+      "english": "i'm trying to learn something",
+      "seed": 4,
+      "source": "practice",
+      "pieces": [
+        "i versuch, wos zum",
+        "lernen"
+      ],
+      "piecesNormalized": [
+        "i versuch wos zum",
+        "lernen"
+      ],
+      "pieceSources": [
+        "i versuch, wos zum sogn",
+        "i wer heit wos lernen"
+      ],
+      "depth": 2
+    }
+  ],
+  "notes": "Selection is services/recording-pools.cjs buildPoolB() (origin/main) over a candidate pool of REAL deu_at_for_eng phrases only: course_seeds + course_practice_phrases, seeds 1-8, >=5 words. Nothing here is composed by me; every line and every target is live DB text. The pool was restricted to >=5-word phrases because the unrestricted shortest-first pool is dominated by one-word practice rows, which would have burned all 12 recording slots on single words. chunks come from buildPoolB (LEGO tiling from course_legos is_new=true, glue merged left, then pruned to only the stops some target actually needs) - not hand-written. pieces are shown in the original casing of the line they are cut from; piecesNormalized is the matcher key space (accent-stripped lowercase) that assemble() actually works in. buildPoolB proposed 12 lines; a minimality pass then dropped every line whose removal left the seed-1-8 coverage number unchanged, giving 10. 56 seed-1-8 phrases are rebuildable from them; 8 were chosen as bench targets, none of which is one of the recorded lines. Max depth achievable is 5 pieces, not more: assemble() returns the FEWEST-piece rebuild, and a slow take yields every span between any two of its cut points, so long spans win. A 6+-piece target does not exist under this rule. Not established: whether these 10 lines already have human recordings, and nothing was checked against S3 - the brief was read-only and no existing recording was touched."
+}
