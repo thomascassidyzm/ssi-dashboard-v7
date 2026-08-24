@@ -30,14 +30,11 @@
  *     fragments by design, not the whole line) — full-match would be a
  *     false positive generator. Target-side cast check.
  *
- *   explainer_audio_id
- *     Composite construction-explainer narration (services/pod-explainer-
- *     composite.cjs), text is explainer_text, not target/known_text, and it
- *     is voiced from a SEPARATE narrator pool, not the course's two-character
- *     dialogue cast (confirmed: cast check on this column produced 34
- *     false "off-cast" flags fleet-wide in the prior sweep). Existence +
- *     production-URL fetch only; text/cast are reported informationally,
- *     never scored as a failure.
+ *   explainer_audio_id — OUT OF SCOPE (deprecated 2026-08-24). The
+ *     pod-sentence explainer narration track no longer exists (Tom:
+ *     "Explainers do not exist anymore. We don't do them."). This tool no
+ *     longer selects, checks or reports on it at all; the column and its
+ *     clips are untouched.
  *
  *   note_audio_id
  *     No paired text column exists anywhere in the schema. Existence +
@@ -47,10 +44,10 @@
  *   1. resolves — a course_audio row exists for the id (no dangling FK;
  *      these columns carry none, per tools/revoice-clips.cjs's own note).
  *   2. text     — DB-level: course_audio.text normalizes-matches the row's
- *      own text for that side (skipped for explainer/note).
+ *      own text for that side (skipped for note).
  *   3. cast     — DB-level: course_audio.voice_id (both xai_ and azure_
  *      prefixes stripped) is one of the pod's declared cast voices for that
- *      side (skipped for explainer/note).
+ *      side (skipped for note).
  *   4. served   — THROUGH THE REAL SERVING PATH: a live HTTP GET against
  *      the production learner proxy (https://saysomethingin.app/api/audio/
  *      <id>) returns 2xx and a non-zero Content-Length/Content-Range. Uses
@@ -153,8 +150,8 @@ async function main () {
   }
 
   const rows = (await db.query(
-    `select id, scene_number, sentence_number, speaker, target_text, known_text, explainer_text,
-            target_audio_id, known_audio_id, explainer_audio_id, note_audio_id,
+    `select id, scene_number, sentence_number, speaker, target_text, known_text,
+            target_audio_id, known_audio_id, note_audio_id,
             sentence_audio_ids, sentence_known_audio_ids, takeg_audio_ids
        from listening_pod_sentences where pod_id=$1
       order by scene_number, sentence_number`, [COURSE + ':pod-1'])).rows
@@ -168,7 +165,6 @@ async function main () {
     for (const id of (r.sentence_audio_ids || []).filter(Boolean)) checks.push({ row: rid, col: 'sentence_audio_ids', id, side: 'target', text: r.target_text, mode: 'group', groupIds: r.sentence_audio_ids.filter(Boolean), castApplies: true })
     for (const id of (r.sentence_known_audio_ids || []).filter(Boolean)) checks.push({ row: rid, col: 'sentence_known_audio_ids', id, side: 'known', text: r.known_text, mode: 'group', groupIds: r.sentence_known_audio_ids.filter(Boolean), castApplies: true })
     for (const id of (r.takeg_audio_ids || []).filter(Boolean)) checks.push({ row: rid, col: 'takeg_audio_ids', id, side: 'target', text: r.target_text, mode: 'contained', castApplies: true })
-    if (r.explainer_audio_id) checks.push({ row: rid, col: 'explainer_audio_id', id: r.explainer_audio_id, side: null, text: r.explainer_text, mode: 'informational', castApplies: false })
     if (r.note_audio_id) checks.push({ row: rid, col: 'note_audio_id', id: r.note_audio_id, side: null, text: null, mode: 'informational', castApplies: false })
   }
 
