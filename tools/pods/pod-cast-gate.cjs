@@ -214,6 +214,67 @@ function walkSplit (pieceTexts, rowText) {
   return { missing, outOfOrder, coverage: want.length ? covered / want.length : 0, wantLength: want.length }
 }
 
+/**
+ * The exchange graph's EDGES, positioned — the same adjacencies
+ * `buildExchangeWeights` counts, but returned one by one with the row indices
+ * they join and the two voices they land on.
+ *
+ * Added 2026-08-24 for the pod script viewer, which has to draw a violation
+ * against a LINE on screen and so needs to know *where* a same-voice exchange
+ * is, not just that the pod has one. It deliberately re-uses
+ * `buildExchangeWeights` rather than re-walking the rows with its own rule:
+ * the NON_EXCHANGE list (two customers ordering in turn at a shared hub, who
+ * are not talking to each other) is not exported, so the dropped adjacencies
+ * are read back out of that function's own `dropped` report and marked
+ * `nonExchange: true` here. One definition of "an exchange", one place.
+ *
+ * NOTE what this does NOT cover, because the rule does not: a run of
+ * consecutive lines by the SAME character is not an exchange edge at all
+ * (`a === b` is skipped), so a drill scene where one character speaks ten
+ * times in a row on one voice produces zero edges and passes the gate. That
+ * is by design for drama — a character may take two turns — but it is exactly
+ * the shape Tom heard in ita_for_eng scene 18. The viewer flags same-voice
+ * RUNS separately, on top of this; it is a display finding, not a gate rule.
+ *
+ * @returns {Array<{fromIndex:number,toIndex:number,scene:number|null,a:string,b:string,
+ *                  voiceA:string|null,voiceB:string|null,sameVoice:boolean,nonExchange:boolean}>}
+ */
+function exchangeEdges ({ rows, speakers, track = 'target' }) {
+  const cast = speakers || {}
+  const cRows = rows || []
+  const nameOf = (r) => canonicalSpeakerName(r.speaker)
+  const voiceOf = (name) => {
+    const e = cast[name] || cast._default
+    const t = e && (track === 'target' ? e.target : e.known)
+    return t && t.voice_id ? norm(t.voice_id) : null
+  }
+
+  const { dropped } = buildExchangeWeights(cRows, nameOf)
+  const droppedTags = new Set(dropped.map(d => d.tag))
+
+  const edges = []
+  for (let i = 1; i < cRows.length; i++) {
+    const prev = cRows[i - 1], cur = cRows[i]
+    if (prev.scene_number !== cur.scene_number) continue
+    const a = nameOf(prev), b = nameOf(cur)
+    if (!a || !b || a === b) continue
+    const tag = `${prev.scene_number}:${prev.sentence_number}->${cur.scene_number}:${cur.sentence_number}`
+    const voiceA = voiceOf(a), voiceB = voiceOf(b)
+    edges.push({
+      fromIndex: i - 1,
+      toIndex: i,
+      scene: cur.scene_number,
+      a,
+      b,
+      voiceA,
+      voiceB,
+      sameVoice: Boolean(voiceA && voiceB && voiceA === voiceB),
+      nonExchange: droppedTags.has(tag),
+    })
+  }
+  return edges
+}
+
 /** "s15/1 Diner 1 sentence_audio_ids" — where an issue is, in one readable string. */
 const whereIssue = (i) => `s${i.scene}/${i.sentence}${i.speaker ? ` ${canonicalSpeakerName(i.speaker) || i.speaker}` : ''} ${i.slot}`
 
@@ -509,6 +570,7 @@ async function loadPodForCastCheck (db, podId, { withClips = true } = {}) {
 }
 
 module.exports = {
+  exchangeEdges,
   checkPodCast,
   checkPodClips,
   loadPodForCastCheck,
