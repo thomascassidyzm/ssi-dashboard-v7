@@ -1,0 +1,1138 @@
+{
+  "course": "isl_for_eng",
+  "pod": "isl_for_eng:pod-1",
+  "apply": true,
+  "at": "2026-08-24T12:43:16.785Z",
+  "gates": {
+    "margin_floor": 1.5,
+    "seam_db": -35,
+    "seam_window_s": 0.03,
+    "min_piece_s": 0.35
+  },
+  "splicer": "scripts/splice-fork/splice.py (unmodified)",
+  "multi_sentence_turns_needing_split": 51,
+  "processed": 51,
+  "stats": {
+    "linked": 51,
+    "reused_clips": 52,
+    "spliced_clips": 90,
+    "refused": 0,
+    "errors": 0,
+    "known_count_mismatch": 0
+  },
+  "refusals": [],
+  "errors": [],
+  "linked": [
+    {
+      "id": "isl_for_eng:pod-1:SC03-S001",
+      "order": 10,
+      "n": 2,
+      "sentences": [
+        "Góðan daginn.",
+        "Hvað má bjóða þér?"
+      ],
+      "ids": [
+        "71ee29dd-01cd-4b6e-a038-b418ce06e336",
+        "202d9f11-43bc-4c3a-9367-1de322ffdf0f"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.597,
+        1.92
+      ],
+      "worst_seam_db": -68.7,
+      "all_reused": false
+    },
+    {
+      "id": "isl_for_eng:pod-1:SC02-S002",
+      "order": 6,
+      "n": 2,
+      "sentences": [
+        "Nei, það er laust.",
+        "Gjörðu svo vel."
+      ],
+      "ids": [
+        "f7d80790-8516-4594-b7d9-c2bb0e043b92",
+        "04bb5e1b-9f9a-4864-a967-3e3fdc01392d"
+      ],
+      "margin": 7.55,
+      "piece_durs": [
+        2.029,
+        1.839
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "isl_for_eng:pod-1:SC02-S005",
+      "order": 9,
+      "n": 2,
+      "sentences": [
+        "Það er ekki mjög langt.",
+        "Kannski þrjár eða fjórar mílur."
+      ],
+      "ids": [
+        "6fe352d4-c059-4625-a417-b11b8c77e723",
+        "bf83614b-d598-4b3a-9662-6f1703cca590"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.877,
+        2.728
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "isl_for_eng:pod-1:SC01-S004",
+      "order": 4,
+      "n": 3,
+      "sentences": [
+        "Já, ég er með annasaman dag í dag.",
+        "Ég vona að þú eigir góðan dag.",
+        "Sjáumst seinna."
+      ],
+      "ids": [
+        "20f56e4d-d01d-4530-bbdb-589389ea5727",
+        "3ef67770-1ff8-4be0-8fcf-45f2e608c50e",
+        "82d69612-2b17-47f4-8060-8db740450064"
+      ],
+      "margin": 8.72,
+      "piece_durs": [
+        2.848,
+        2.999,
+        1.809
+      ],
+      "worst_seam_db": -69.5,
+      "all_reused": false
+    },
+    {
+      "id": "isl_for_eng:pod-1:SC05-S001",
+      "order": 23,
+      "n": 2,
+      "sentences": [
+        "Gott kvöld, Sarah.",
+        "Áttir þú langan dag?"
+      ],
+      "ids": [
+        "60b41627-7d42-4c12-837e-655f32f2272d",
+        "99871ede-ab4b-4de1-bbfa-2dea5c90810d"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.998,
+        1.96
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "isl_for_eng:pod-1:SC04-S003",
+      "order": 22,
+      "n": 3,
+      "sentences": [
+        "Nei, því miður, ég hef ekki tíma á morgun.",
+        "En tölum saman á laugardaginn.",
+        "Sjáumst þá."
+      ],
+      "ids": [
+        "e5ac2565-73cf-4667-9136-bd21b003e8ad",
+        "1c4edc86-ff6d-4241-ab1f-5bd83d4d0b49",
+        "4b6cac5e-7a6c-4c4d-9202-749900d8d63a"
+      ],
+      "margin": 8.87,
+      "piece_durs": [
+        3.195,
+        2.929,
+        1.693
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "isl_for_eng:pod-1:SC03-S002",
+      "order": 11,
+      "n": 4,
+      "sentences": [
+        "Góðan daginn.",
+        "Ég vil gjarnan fá kaffi.",
+        "Með mjólk en engum sykri.",
+        "Til að taka með."
+      ],
+      "ids": [
+        "6341264e-3454-4b9b-a8ba-49c45b3aa207",
+        "605beea4-2db5-4279-8efe-dd4c1854b74f",
+        "b9eb50a2-cbf4-430c-b3b2-bb2b6b789775",
+        "b7144e91-6e7f-442e-a993-fd9a1ccfed6a"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.635,
+        2.749,
+        2.882,
+        1.944
+      ],
+      "worst_seam_db": -67.4,
+      "all_reused": false
+    },
+    {
+      "id": "isl_for_eng:pod-1:SC05-S002",
+      "order": 24,
+      "n": 4,
+      "sentences": [
+        "Já, mjög.",
+        "Ég er mjög þreytt núna.",
+        "Góða nótt.",
+        "Sjáumst á morgun."
+      ],
+      "ids": [
+        "5f64385e-91af-4bc4-aefe-e78d1dd3b1ce",
+        "14c88094-352f-4d4f-8647-9e7d30f92b89",
+        "23835ee1-0f7c-4884-8d73-0d526615eaff",
+        "67b309a9-7052-425b-9a30-58b96e97b844"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.771,
+        2.568,
+        2.091,
+        1.993
+      ],
+      "worst_seam_db": -80.8,
+      "all_reused": false
+    },
+    {
+      "id": "isl_for_eng:pod-1:SC07-S001",
+      "order": 38,
+      "n": 2,
+      "sentences": [
+        "Góðan daginn.",
+        "Hvað má bjóða þér?"
+      ],
+      "ids": [
+        "6341264e-3454-4b9b-a8ba-49c45b3aa207",
+        "569dd1e8-d4cc-4167-ba9d-708948d696fd"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.642,
+        1.996
+      ],
+      "worst_seam_db": -67.4,
+      "all_reused": false
+    },
+    {
+      "id": "isl_for_eng:pod-1:SC07-S004",
+      "order": 41,
+      "n": 2,
+      "sentences": [
+        "Ég vil gjarnan fá stóran, takk.",
+        "Með hafradrykk ef þú átt hann."
+      ],
+      "ids": [
+        "45029849-9e0e-4b40-8628-29242fc7cc3c",
+        "27622c70-b315-465e-aee1-371d860e64a6"
+      ],
+      "margin": 6.94,
+      "piece_durs": [
+        2.714,
+        2.352
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "isl_for_eng:pod-1:SC07-S012",
+      "order": 49,
+      "n": 2,
+      "sentences": [
+        "Auðvitað.",
+        "Þarna er posinn."
+      ],
+      "ids": [
+        "1c6083c2-2d1d-4625-bd2e-b3a8b370625f",
+        "74d90395-5ee8-4d4e-9379-ee97689f20ea"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.451,
+        1.886
+      ],
+      "worst_seam_db": -74.7,
+      "all_reused": false
+    },
+    {
+      "id": "isl_for_eng:pod-1:SC07-S013",
+      "order": 50,
+      "n": 2,
+      "sentences": [
+        "Góðan daginn.",
+        "Tvo Americano og einn tebolla, takk."
+      ],
+      "ids": [
+        "71ee29dd-01cd-4b6e-a038-b418ce06e336",
+        "22becc74-b40f-47bd-9396-57aa3a7d3273"
+      ],
+      "margin": 8.27,
+      "piece_durs": [
+        1.618,
+        3.257
+      ],
+      "worst_seam_db": -65.7,
+      "all_reused": false
+    },
+    {
+      "id": "isl_for_eng:pod-1:SC08-S001",
+      "order": 53,
+      "n": 2,
+      "sentences": [
+        "Gott kvöld.",
+        "Hvað má bjóða þér?"
+      ],
+      "ids": [
+        "cf1e76c6-94b8-4a6b-84c3-438f99eb6eac",
+        "202d9f11-43bc-4c3a-9367-1de322ffdf0f"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.537,
+        1.89
+      ],
+      "worst_seam_db": -73.4,
+      "all_reused": false
+    },
+    {
+      "id": "isl_for_eng:pod-1:SC08-S012",
+      "order": 64,
+      "n": 2,
+      "sentences": [
+        "Ég er ekki viss hvort ég sé svöng.",
+        "Eruð þið með matseðil?"
+      ],
+      "ids": [
+        "2746f7c0-a5dd-46d2-a583-8e018a50a13a",
+        "bea4510b-4fc7-4997-99ff-56c78165dc74"
+      ],
+      "margin": null,
+      "piece_durs": [
+        2.414,
+        2.618
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "isl_for_eng:pod-1:SC08-S002",
+      "order": 54,
+      "n": 2,
+      "sentences": [
+        "Ég vil gjarnan fá pint, takk.",
+        "Hvaða öl eruð þið með á krana?"
+      ],
+      "ids": [
+        "4e9d07d2-aeae-40cd-9899-4c1462b222d9",
+        "4fe9fcb1-3e49-420a-b389-f1af2d6dc826"
+      ],
+      "margin": 8.39,
+      "piece_durs": [
+        2.579,
+        2.677
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "isl_for_eng:pod-1:SC08-S015",
+      "order": 67,
+      "n": 2,
+      "sentences": [
+        "Eruð þið með samlokur?",
+        "Ég vil gjarnan fá ostasamloku, takk."
+      ],
+      "ids": [
+        "6300234c-1df7-45b0-9db9-3c64e8680936",
+        "0a342ffb-327c-4b6b-91ee-68871d555d8d"
+      ],
+      "margin": 10.16,
+      "piece_durs": [
+        2.039,
+        3.157
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "isl_for_eng:pod-1:SC08-S014",
+      "order": 66,
+      "n": 2,
+      "sentences": [
+        "Getum við fengið brauð?",
+        "Og skál af frönskum fyrir borðið."
+      ],
+      "ids": [
+        "4a24317b-8638-4ded-bf54-8f0aff48d30c",
+        "eb725d69-5333-4590-9f2b-83478e331004"
+      ],
+      "margin": null,
+      "piece_durs": [
+        2.073,
+        2.702
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "isl_for_eng:pod-1:SC09-S001",
+      "order": 69,
+      "n": 2,
+      "sentences": [
+        "Gott kvöld.",
+        "Við erum með borð pantað fyrir tvo, undir nafninu Davies."
+      ],
+      "ids": [
+        "b6c19fed-50df-41b2-998a-cacea8252dfc",
+        "fe8893f3-b481-4462-bb4c-15c4a310a909"
+      ],
+      "margin": 7.93,
+      "piece_durs": [
+        1.621,
+        4.102
+      ],
+      "worst_seam_db": -64.3,
+      "all_reused": false
+    },
+    {
+      "id": "isl_for_eng:pod-1:SC09-S008",
+      "order": 76,
+      "n": 2,
+      "sentences": [
+        "Lambakjötið er frábært.",
+        "Það hefur verið eldað hægt, með rósmaríni."
+      ],
+      "ids": [
+        "0cadd579-ab61-4024-8bbd-f27a10d6a061",
+        "fbb81910-d7ec-43d1-9338-01f232df4c48"
+      ],
+      "margin": 11.46,
+      "piece_durs": [
+        2.208,
+        2.978
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "isl_for_eng:pod-1:SC09-S002",
+      "order": 70,
+      "n": 3,
+      "sentences": [
+        "Velkomin.",
+        "Gjörðu svo vel að fylgja mér.",
+        "Hérna eru matseðlarnir."
+      ],
+      "ids": [
+        "113fec8e-bb5e-4165-bb2f-8db26bb92e25",
+        "7cc7b96e-2448-4435-8848-6e329ccada4e",
+        "7e0d5746-9660-4744-a908-1677d7785dda"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.44,
+        2.842,
+        2.227
+      ],
+      "worst_seam_db": -73.4,
+      "all_reused": false
+    },
+    {
+      "id": "isl_for_eng:pod-1:SC09-S009",
+      "order": 77,
+      "n": 2,
+      "sentences": [
+        "Ég ætla að fá lambakjötið, takk.",
+        "Með grænmeti með."
+      ],
+      "ids": [
+        "f2b255a5-69d4-4746-bc03-62d07e110d16",
+        "0e9ed29d-0418-4775-8385-0adf547cb951"
+      ],
+      "margin": 8.09,
+      "piece_durs": [
+        2.59,
+        2.085
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "isl_for_eng:pod-1:SC10-S007",
+      "order": 93,
+      "n": 2,
+      "sentences": [
+        "Takk, þú hefur verið mjög hjálplegur.",
+        "Ég er mjög þakklát."
+      ],
+      "ids": [
+        "49b71289-d4d8-40c4-a605-a8eae39350d7",
+        "8ece0596-bd45-4c07-bc1c-92e1cf5dbd3e"
+      ],
+      "margin": 6.07,
+      "piece_durs": [
+        2.646,
+        2.422
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "isl_for_eng:pod-1:SC11-S008",
+      "order": 104,
+      "n": 2,
+      "sentences": [
+        "Frá hálf átta til klukkan tíu.",
+        "Við erum með ávexti og morgunkorn eða heitan morgunverð."
+      ],
+      "ids": [
+        "f17e8a20-7e9e-432f-8b6b-b3e40f2e5d35",
+        "67e6e040-e780-4ff2-be84-73ac5b98c332"
+      ],
+      "margin": null,
+      "piece_durs": [
+        2.507,
+        3.917
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "isl_for_eng:pod-1:SC10-S009",
+      "order": 95,
+      "n": 3,
+      "sentences": [
+        "Það er mjög vinsamlegt af þér!",
+        "Já, ég er í fríi, og ég þarf að æfa mig meira til að tala betri íslensku.",
+        "Kærar þakkir, og bless."
+      ],
+      "ids": [
+        "1df392e0-14ab-42db-8d02-efcf762a807d",
+        "71b3695d-cc9b-410f-86e3-b0fbb1de94f4",
+        "d877c7fa-bf19-49fd-a728-52583a767a3d"
+      ],
+      "margin": 5.99,
+      "piece_durs": [
+        2.288,
+        5.527,
+        2.583
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "isl_for_eng:pod-1:SC11-S002",
+      "order": 98,
+      "n": 3,
+      "sentences": [
+        "Velkomin.",
+        "Já, þú ert með tveggja manna herbergi í þrjár nætur.",
+        "Má ég sjá skilríki, takk?"
+      ],
+      "ids": [
+        "af81043f-b7d4-43c2-b773-8f084a10d61f",
+        "f84d798d-172c-442b-a8fa-09d22d5863ad",
+        "9ee797a2-8edd-49c9-8cdb-8cfd54434b6b"
+      ],
+      "margin": 9.01,
+      "piece_durs": [
+        1.459,
+        4.271,
+        2.668
+      ],
+      "worst_seam_db": -67.4,
+      "all_reused": false
+    },
+    {
+      "id": "isl_for_eng:pod-1:SC12-S001",
+      "order": 110,
+      "n": 2,
+      "sentences": [
+        "Góðan daginn.",
+        "Mér líður ekki vel - gætirðu mælt með einhverju?"
+      ],
+      "ids": [
+        "6341264e-3454-4b9b-a8ba-49c45b3aa207",
+        "d959c47e-b19e-4686-a678-b7b7e3f9e80a"
+      ],
+      "margin": 5.97,
+      "piece_durs": [
+        1.636,
+        3.44
+      ],
+      "worst_seam_db": -68,
+      "all_reused": false
+    },
+    {
+      "id": "isl_for_eng:pod-1:SC14-S001",
+      "order": 131,
+      "n": 2,
+      "sentences": [
+        "Hæ.",
+        "Geturðu keyrt mig á lestarstöðina, takk?"
+      ],
+      "ids": [
+        "96621794-a180-4a6e-b06a-3e7822b89b25",
+        "b5dcd301-c705-438a-9387-ad5b57cb20b4"
+      ],
+      "margin": 2.97,
+      "piece_durs": [
+        0.761,
+        2.646
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "isl_for_eng:pod-1:SC12-S002",
+      "order": 111,
+      "n": 2,
+      "sentences": [
+        "Auðvitað.",
+        "Hver eru einkennin þín?"
+      ],
+      "ids": [
+        "6db8a360-84f9-4813-b6e0-b75aa5432a32",
+        "468d3d87-6f90-4c86-a1af-42965bb39a02"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.347,
+        2.09
+      ],
+      "worst_seam_db": -74.7,
+      "all_reused": false
+    },
+    {
+      "id": "isl_for_eng:pod-1:SC14-S002",
+      "order": 132,
+      "n": 2,
+      "sentences": [
+        "Já, auðvitað.",
+        "Það gæti tekið smá tíma, það er mikil umferð núna."
+      ],
+      "ids": [
+        "8fc4135e-9dba-4b21-a8ec-017b0b53ad43",
+        "77962ffd-298e-4cb8-afd8-67628c7232e7"
+      ],
+      "margin": 6.4,
+      "piece_durs": [
+        1.86,
+        3.722
+      ],
+      "worst_seam_db": -78.3,
+      "all_reused": false
+    },
+    {
+      "id": "isl_for_eng:pod-1:SC12-S010",
+      "order": 119,
+      "n": 5,
+      "sentences": [
+        "19.",
+        "20.",
+        "21.",
+        "Miðvikudagur.",
+        "Fimmtudagur."
+      ],
+      "ids": [
+        "6852ad2c-d8b9-41cb-a75c-4d72561aea51",
+        "8f3b3f03-5aa9-445d-9e44-748d02ed6ccf",
+        "568fc8aa-f4d4-470c-9abd-9980ddbaee57",
+        "c552c5cf-4493-4d41-a500-7631c2247954",
+        "9e3c619d-f1ee-4cbe-8d14-4dd97702abd5"
+      ],
+      "margin": null,
+      "piece_durs": [
+        0.987,
+        1.102,
+        1.431,
+        1.887,
+        1.707
+      ],
+      "worst_seam_db": -62.4,
+      "all_reused": false
+    },
+    {
+      "id": "isl_for_eng:pod-1:SC14-S009",
+      "order": 139,
+      "n": 2,
+      "sentences": [
+        "Já, auðvitað.",
+        "Posinn er hérna."
+      ],
+      "ids": [
+        "8fc4135e-9dba-4b21-a8ec-017b0b53ad43",
+        "fceccbda-6d55-4607-915f-e239b3653812"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.864,
+        1.894
+      ],
+      "worst_seam_db": -84.3,
+      "all_reused": false
+    },
+    {
+      "id": "isl_for_eng:pod-1:SC14-S007",
+      "order": 137,
+      "n": 2,
+      "sentences": [
+        "Hérna erum við komin.",
+        "Það gerir tólf pund og fimmtíu."
+      ],
+      "ids": [
+        "8f5023fb-d0ad-4d41-95d8-12cad4ac9523",
+        "74282981-974c-4e0d-90d1-18ca6b2bf874"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.986,
+        2.608
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "isl_for_eng:pod-1:SC14-S010",
+      "order": 140,
+      "n": 5,
+      "sentences": [
+        "100.",
+        "200.",
+        "1000.",
+        "Sunnudagur.",
+        "Klukkan 12."
+      ],
+      "ids": [
+        "c3b49d6b-91d7-49a6-adcf-a402b2da24cb",
+        "39dc9601-c82d-4653-bbbb-98be08bd13d1",
+        "c6a2f31d-5e46-43f9-9e30-e88fc856b169",
+        "7f233ad6-cad8-414d-a085-f0b2b91b1d07",
+        "2a9dad8d-3537-4d09-8f60-83e7bfa22a16"
+      ],
+      "margin": null,
+      "piece_durs": [
+        0.956,
+        1.385,
+        1.164,
+        1.698,
+        1.672
+      ],
+      "worst_seam_db": -58.1,
+      "all_reused": false
+    },
+    {
+      "id": "isl_for_eng:pod-1:SC17-S011",
+      "order": 173,
+      "n": 4,
+      "sentences": [
+        "Klukkan 3.",
+        "Klukkan 9.",
+        "Janúar.",
+        "Febrúar."
+      ],
+      "ids": [
+        "c955aa91-902f-4024-b033-688fbd2ecbea",
+        "9a990709-7b32-4c3c-918a-e03f038a26c3",
+        "fd6e31b4-e11c-4f0b-9ba5-dc5f14726ab2",
+        "7ca899d9-f5af-4a6d-8bcf-2872b6a2c1f3"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.587,
+        2.095,
+        2.006,
+        1.608
+      ],
+      "worst_seam_db": -67.4,
+      "all_reused": false
+    },
+    {
+      "id": "isl_for_eng:pod-1:SC15-S011",
+      "order": 151,
+      "n": 5,
+      "sentences": [
+        "100.000.",
+        "60.",
+        "70.",
+        "Klukkan 1.",
+        "Klukkan 11."
+      ],
+      "ids": [
+        "218b3361-7df9-4b9f-ac32-1aea18078d54",
+        "227173e5-4a3c-4789-a4a3-61f5da877fc6",
+        "dea995b8-1470-4aac-9110-2711175fb371",
+        "f9885470-7700-4b8b-9605-318511445619",
+        "ca053c6d-b6d8-428e-b246-203dabd82c83"
+      ],
+      "margin": 5.07,
+      "piece_durs": [
+        1.337,
+        1.151,
+        1.184,
+        1.716,
+        1.787
+      ],
+      "worst_seam_db": -70.3,
+      "all_reused": false
+    },
+    {
+      "id": "isl_for_eng:pod-1:SC16-S011",
+      "order": 162,
+      "n": 5,
+      "sentences": [
+        "Milljón.",
+        "80.",
+        "90.",
+        "Klukkan 2.",
+        "Klukkan 10."
+      ],
+      "ids": [
+        "64b4cb99-54da-4de8-9904-f32f97f896d3",
+        "9232a4a3-89a4-43a3-a2d8-c37dcd269c53",
+        "211cae69-9a24-4021-aa00-f95667586271",
+        "ad01ef57-86e9-4392-85ac-47d842e165b4",
+        "44a367bb-287d-4666-bb58-8b9b82ca1236"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.363,
+        1.555,
+        1.208,
+        1.673,
+        1.687
+      ],
+      "worst_seam_db": -73.4,
+      "all_reused": false
+    },
+    {
+      "id": "isl_for_eng:pod-1:SC18-S007",
+      "order": 180,
+      "n": 2,
+      "sentences": [
+        "Er það rétt?",
+        "Hef ég rétt fyrir mér?"
+      ],
+      "ids": [
+        "12b3fc54-6726-415a-a1a7-e97e74c3c795",
+        "caf8cc27-55dd-45db-a942-631ce4713832"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.535,
+        2.112
+      ],
+      "worst_seam_db": -74.7,
+      "all_reused": false
+    },
+    {
+      "id": "isl_for_eng:pod-1:SC18-S011",
+      "order": 184,
+      "n": 4,
+      "sentences": [
+        "Klukkan 4.",
+        "Klukkan 8.",
+        "Mars.",
+        "Apríl."
+      ],
+      "ids": [
+        "68190264-2f8e-46b2-a958-f4773acc7f4d",
+        "d2ad45d5-19c5-42c4-8d61-9c88502a6a0d",
+        "acf544f9-dbd0-4f6a-b2d6-495ec8728fa2",
+        "2d1a7192-8f84-4b4c-8353-b90268c2a6ce"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.714,
+        2.081,
+        1.848,
+        1.427
+      ],
+      "worst_seam_db": -66.8,
+      "all_reused": false
+    },
+    {
+      "id": "isl_for_eng:pod-1:SC19-S011",
+      "order": 195,
+      "n": 4,
+      "sentences": [
+        "Klukkan 5.",
+        "Klukkan 7.",
+        "Maí.",
+        "Júní."
+      ],
+      "ids": [
+        "37825bc3-d9a4-41d9-99fa-9e42a7936a83",
+        "a760a317-9f1d-4744-8807-33722472571a",
+        "eaf5727a-7856-4188-963b-714df57349d8",
+        "734a4967-fbfe-4114-8752-7c1627afa450"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.52,
+        2.108,
+        1.802,
+        1.399
+      ],
+      "worst_seam_db": -73.4,
+      "all_reused": false
+    },
+    {
+      "id": "isl_for_eng:pod-1:SC21-S014",
+      "order": 220,
+      "n": 3,
+      "sentences": [
+        "Október.",
+        "Nóvember.",
+        "Desember."
+      ],
+      "ids": [
+        "41037db6-0205-4ae8-9d64-fa29964885ce",
+        "75fa81f4-dc4a-4a0a-989f-5186fc0c1fac",
+        "05fc1523-6ac2-430b-9ffb-0a9fb0c42176"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.441,
+        2.09,
+        1.569
+      ],
+      "worst_seam_db": -72.2,
+      "all_reused": false
+    },
+    {
+      "id": "isl_for_eng:pod-1:SC20-S011",
+      "order": 206,
+      "n": 4,
+      "sentences": [
+        "Klukkan 6.",
+        "Júlí.",
+        "Ágúst.",
+        "September."
+      ],
+      "ids": [
+        "b8781d83-f289-462f-8cfc-af49fd39807d",
+        "4d6ad523-8b51-4582-9ba1-e07bdabd55ed",
+        "7df52aab-2b23-48e2-8878-fcdee8d6b7f6",
+        "7670d395-cb35-4d3f-90ec-35c26b05131b"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.649,
+        1.81,
+        1.91,
+        1.636
+      ],
+      "worst_seam_db": -61.1,
+      "all_reused": false
+    },
+    {
+      "id": "isl_for_eng:pod-1:SC22-S002",
+      "order": 222,
+      "n": 3,
+      "sentences": [
+        "Auðvitað, ekkert mál.",
+        "Þú virðist tala það mjög vel.",
+        "Ég get skilið þig auðveldlega."
+      ],
+      "ids": [
+        "d468d74b-2411-460e-b35c-036a45c9d294",
+        "e94b428e-4882-4c90-8aeb-b97a3a9840f1",
+        "0ff3a119-2970-4c26-9291-e525ffda0cf8"
+      ],
+      "margin": null,
+      "piece_durs": null,
+      "worst_seam_db": null,
+      "all_reused": true
+    },
+    {
+      "id": "isl_for_eng:pod-1:SC22-S003",
+      "order": 223,
+      "n": 3,
+      "sentences": [
+        "Takk, það er gott að vita.",
+        "Ég þarf að læra fleiri orð, og ég þarf að æfa mig í að hlusta.",
+        "Ég skil fólk ekki mjög vel þegar það talar ekki hægt."
+      ],
+      "ids": [
+        "f3de1f8d-8980-442f-9308-0c2080d1a180",
+        "36351da5-7a0e-431b-9b7c-b47b51146c3c",
+        "607c5fd2-70bc-4f8d-827c-49fac26c1d45"
+      ],
+      "margin": null,
+      "piece_durs": null,
+      "worst_seam_db": null,
+      "all_reused": true
+    },
+    {
+      "id": "isl_for_eng:pod-1:SC22-S006",
+      "order": 226,
+      "n": 3,
+      "sentences": [
+        "Ég held að þú sért að gera þetta mjög vel.",
+        "Ég er hrifinn.",
+        "Ég held að þú sért tilbúinn að byrja að tala Íslensku við alla sem tala Íslensku."
+      ],
+      "ids": [
+        "5c937e0c-aa31-4da8-b20d-04b7283152ae",
+        "195212ca-ea13-4fa3-a3b4-086edbfbb05f",
+        "249c87ad-c1e5-4ed3-a69c-1394ab35726c"
+      ],
+      "margin": null,
+      "piece_durs": null,
+      "worst_seam_db": null,
+      "all_reused": true
+    },
+    {
+      "id": "isl_for_eng:pod-1:SC22-S005",
+      "order": 225,
+      "n": 4,
+      "sentences": [
+        "Já, takk.",
+        "Það er auðveldara að tala við bara einn mann.",
+        "Það er smá erfitt að hugsa um eitthvað að segja, þó.",
+        "Ég er ekki viss um hvað ég á að segja, en mér líður eins og ég geti talað nógu vel til að byrja að eiga samræður."
+      ],
+      "ids": [
+        "64c6b322-dd79-4af2-82dc-e787dc94cfd6",
+        "35e474ad-5e7f-44b7-95a9-696e7b924333",
+        "0ba82d35-b670-4a9e-9207-dee230c2ae9f",
+        "00aafbba-c0d4-4f1f-bd17-f0e2303ed268"
+      ],
+      "margin": null,
+      "piece_durs": null,
+      "worst_seam_db": null,
+      "all_reused": true
+    },
+    {
+      "id": "isl_for_eng:pod-1:SC22-S007",
+      "order": 227,
+      "n": 2,
+      "sentences": [
+        "Það er bara svolítið pirrandi þegar ég get ekki hugsað nógu hratt til að tjá mig almennilega.",
+        "En ég veit að ég þarf að halda áfram að æfa mig ef ég vil tala með meiri sjálfstrausti."
+      ],
+      "ids": [
+        "b1873504-c8ef-4e14-b2a0-6f4ae9ebbe1c",
+        "66185aa1-1636-41ee-aef2-53fb90cf1266"
+      ],
+      "margin": null,
+      "piece_durs": null,
+      "worst_seam_db": null,
+      "all_reused": true
+    },
+    {
+      "id": "isl_for_eng:pod-1:SC22-S009",
+      "order": 229,
+      "n": 4,
+      "sentences": [
+        "Þetta er nákvæmlega sú tegund af æfingu sem ég þarf.",
+        "Ég held að ég geti fundið það að breyta heilanum mínum meðan við erum að tala!",
+        "Ég þakka þér kærlega fyrir hjálpina.",
+        "En það er óvænt hvað ég verð þreytt þegar ég tala á tungumáli sem ég tala ekki mjög vel."
+      ],
+      "ids": [
+        "a1d1c020-6acc-4f1b-8861-564dadb295f2",
+        "2748f229-4050-4c3b-b454-c04cddde0a53",
+        "9971fc6e-fd34-4c5f-b155-335f3eb130c4",
+        "4dec1514-3294-4e28-bf72-fd555b66b7fa"
+      ],
+      "margin": null,
+      "piece_durs": null,
+      "worst_seam_db": null,
+      "all_reused": true
+    },
+    {
+      "id": "isl_for_eng:pod-1:SC22-S010",
+      "order": 230,
+      "n": 3,
+      "sentences": [
+        "Ég held að það sé eðlilegt.",
+        "Það er erfitt að læra nýtt tungumál.",
+        "En það er svo gaman þegar maður byrjar að eiga samræður, er það ekki?"
+      ],
+      "ids": [
+        "a96880aa-31e0-4caa-8da1-232ea45ef129",
+        "c2139eaf-395f-4d87-8f3f-86f42390ca5a",
+        "19d4836a-770c-42df-9430-21c041f50491"
+      ],
+      "margin": null,
+      "piece_durs": null,
+      "worst_seam_db": null,
+      "all_reused": true
+    },
+    {
+      "id": "isl_for_eng:pod-1:SC22-S001",
+      "order": 221,
+      "n": 2,
+      "sentences": [
+        "Væri í lagi ef ég reyndi að æfa mig í að tala íslensku við þig?",
+        "Ég hef ekki verið að læra mjög lengi, og ég er ennþá svolítið kvíðin fyrir að tala við annað fólk."
+      ],
+      "ids": [
+        "40472210-cfa4-4e71-98b6-ead7be4ff3e0",
+        "8481d2ee-41bd-4828-9f22-a7a3d8d424fe"
+      ],
+      "margin": 4.05,
+      "piece_durs": [
+        4.025,
+        5.952
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "isl_for_eng:pod-1:SC22-S008",
+      "order": 228,
+      "n": 3,
+      "sentences": [
+        "Þú ættir nú þegar að vera full af sjálfstrausti.",
+        "Ég held að þú sért að gera það miklu betur en þú gerir þér grein fyrir.",
+        "Mér líður vel við að tala við þig, og ég er ekki að tala mjög hægt."
+      ],
+      "ids": [
+        "085ebdaf-a390-47d6-a3ed-4a7f6bcfbb51",
+        "1d299477-ef1e-4b02-867d-df47101fcc02",
+        "e043c266-ff32-4e1c-9693-dda71d0b36aa"
+      ],
+      "margin": 5.14,
+      "piece_durs": [
+        2.895,
+        4.41,
+        4.631
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "isl_for_eng:pod-1:SC22-S011",
+      "order": 231,
+      "n": 3,
+      "sentences": [
+        "Það er það virkilega.",
+        "Ég er mjög ánægð með að ég get átt svona mikla samræðu.",
+        "Og ég vona að við getum átt fleiri samræður í framtíðinni þegar ég held áfram að batna."
+      ],
+      "ids": [
+        "4663536d-5ac4-4c64-8c69-3a7b305f4a3f",
+        "ddc4fc83-c701-425f-a45d-591dbf960b67",
+        "1423734d-a1e8-4f5d-82a2-a1e6966fe2f2"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.672,
+        3.676,
+        5.617
+      ],
+      "worst_seam_db": -55.3,
+      "all_reused": false
+    }
+  ]
+}

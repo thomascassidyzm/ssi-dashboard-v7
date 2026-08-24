@@ -1,0 +1,1645 @@
+{
+  "at": "2026-08-24T12:50:57.651Z",
+  "apply": true,
+  "scope": "all pod-1 courses",
+  "checked_split_rows": 2109,
+  "unlinking": 92,
+  "by_course": {
+    "gle_for_eng": {
+      "rows": 1,
+      "mid_ellipsis": 0
+    },
+    "hin_for_eng": {
+      "rows": 1,
+      "mid_ellipsis": 0
+    },
+    "hrv_for_eng": {
+      "rows": 78,
+      "mid_ellipsis": 78
+    },
+    "jpn_for_eng": {
+      "rows": 6,
+      "mid_ellipsis": 0
+    },
+    "kor_for_eng": {
+      "rows": 5,
+      "mid_ellipsis": 0
+    },
+    "zho_for_eng": {
+      "rows": 1,
+      "mid_ellipsis": 0
+    }
+  },
+  "split_keyed_progress_rows_affected": 0,
+  "split_keyed_progress": [],
+  "pre_existing_mismatches_left_alone": 5,
+  "pre_existing_rows": [
+    {
+      "id": "ara_eg_for_eng:pod-1:SC10-S008",
+      "course": "ara_eg_for_eng",
+      "target_pieces": 2,
+      "known_parts": 3,
+      "target_text": "أهلاً بيك. أنت هنا في أجازة؟ أنت بتتكلم لغة مصري تمام التمام.",
+      "known_text": "You're welcome. Are you here on holiday? You speak very good Egyptian Arabic."
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC04-S001",
+      "course": "hin_for_eng",
+      "target_pieces": 2,
+      "known_parts": 1,
+      "target_text": "हेलो, नमस्ते! शुभ संध्या!",
+      "known_text": "Hello, good evening!"
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC10-S009",
+      "course": "hin_for_eng",
+      "target_pieces": 2,
+      "known_parts": 3,
+      "target_text": "आप बहुत अच्छे हैं! जी हाँ, मैं छुट्टियों पर हूँ, और मुझे और अभ्यास करना है ताकि मैं हिंदी बेहतर बोल सकूँ। बहुत-बहुत शुक्रिया, और अलविदा।",
+      "known_text": "That's very kind of you! Yes, I'm on holiday, and I need to practice more to speak Hindi better. Thank you very much, and goodbye."
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC22-S009",
+      "course": "hin_for_eng",
+      "target_pieces": 2,
+      "known_parts": 4,
+      "target_text": "यही वो प्रैक्टिस है जो मुझे चाहिए। मुझे लग रहा है जैसे बात करते-करते मेरा दिमाग़ बदल रहा है! आपकी मदद के लिए मैं सच में शुक्रगुज़ार हूँ। लेकिन यह हैरान करने वाली बात है कि जब मैं किसी ऐसी भाषा में बोलता हूँ जो मैं ज़्यादा अच्छी तरह नहीं बोलता, तो मुझे कितनी थकान होती है।",
+      "known_text": "This is exactly the kind of practice I need. I think I can feel it changing my brain while we're talking! I really appreciate your help. But it's surprising how tired I get when I'm talking in a language I don't speak very well."
+    },
+    {
+      "id": "kor_for_eng:pod-1:SC06-S011",
+      "course": "kor_for_eng",
+      "target_pieces": 5,
+      "known_parts": 4,
+      "target_text": "저는 영어를 가르쳐요. 학교에서는 아니고요. 성인들을 가르쳐요. 지금 아내와 아이들과 함께 여기에서 휴가를 보내고 있어요. 정말 즐거운 시간을 보내고 있어요.",
+      "known_text": "I teach English, but not in a school. I work with adults. I'm on holiday here with my wife and children. We're having a lovely time."
+    }
+  ],
+  "note": "sentence_audio_ids NULLed only. Spliced clips are LEFT IN course_audio — correct audio of the wrong unit; relinking is free if the text ruling changes.",
+  "rows": [
+    {
+      "id": "gle_for_eng:pod-1:SC01-S004",
+      "course": "gle_for_eng",
+      "target_pieces": 4,
+      "known_parts": 3,
+      "mid_ellipsis": false,
+      "target_text": "Tá. Tá lá gnóthach agam inniu. Tá súil agam go mbeidh lá maith agat. Feicfidh mé ar ball thú.",
+      "known_text": "Yes, I've got a busy day today. I hope you have a good day. See you later.",
+      "before": {
+        "sentence_audio_ids": [
+          "26e7a7ea-f1f0-4741-8399-eb93e29cc02d",
+          "4bedc66a-9dc5-4940-a01d-ae702d9a1c66",
+          "6f0420f5-48a5-484e-ba7b-b47a73f446db",
+          "cc29dddf-f3ac-4049-a0f4-c548c63ec584"
+        ]
+      }
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC10-S008",
+      "course": "hin_for_eng",
+      "target_pieces": 2,
+      "known_parts": 3,
+      "mid_ellipsis": false,
+      "target_text": "कोई बात नहीं। क्या आप यहाँ छुट्टियों पर हैं? आप बहुत अच्छी हिंदी बोलते हैं।",
+      "known_text": "You're welcome. Are you here on holiday? You speak very good Hindi.",
+      "before": {
+        "sentence_audio_ids": [
+          "05d47805-5085-486d-a6ff-b4b0686f6538",
+          "1961baa4-d15f-41ed-9840-fbd97318e538"
+        ]
+      }
+    },
+    {
+      "id": "hrv_for_eng:pod-1:SC01-S004",
+      "course": "hrv_for_eng",
+      "target_pieces": 5,
+      "known_parts": 3,
+      "mid_ellipsis": true,
+      "target_text": "Da,… imam zauzet dan danas. Nadam se… da ćeš imati lijep dan. Vidimo se kasnije.",
+      "known_text": "Yes, I've got a busy day today. I hope you have a good day. See you later.",
+      "before": {
+        "sentence_audio_ids": [
+          "22a9c15c-9416-424b-8fbc-b519b83d459f",
+          "025661b9-b0a3-49a3-9280-58459aa2b749",
+          "4ed2bbb3-a70e-4dfe-950d-8bc1c816170d",
+          "d43aaa50-7789-49a0-9ee2-d7df8f6fb02c",
+          "013f1b48-219e-4196-94db-00b52b4389d1"
+        ]
+      }
+    },
+    {
+      "id": "hrv_for_eng:pod-1:SC02-S001",
+      "course": "hrv_for_eng",
+      "target_pieces": 3,
+      "known_parts": 1,
+      "mid_ellipsis": true,
+      "target_text": "Oprostite,… je li ovo mjesto… zauzeto?",
+      "known_text": "Excuse me, is this seat taken?",
+      "before": {
+        "sentence_audio_ids": [
+          "6bcf0ee9-a513-498b-b8fb-13e2496fc3d6",
+          "91d318ce-a90e-4b47-a11c-97589a02c86f",
+          "884266b5-874f-43e1-80ce-0c996b0393a2"
+        ]
+      }
+    },
+    {
+      "id": "hrv_for_eng:pod-1:SC04-S003",
+      "course": "hrv_for_eng",
+      "target_pieces": 5,
+      "known_parts": 3,
+      "mid_ellipsis": true,
+      "target_text": "Ne, žao mi je,… sutra sam zauzeta. Ali razgovarajmo… u subotu. Vidimo se tada.",
+      "known_text": "No, I'm sorry, I'm busy tomorrow. But let's talk on Saturday. See you then.",
+      "before": {
+        "sentence_audio_ids": [
+          "c01fa9fd-07d3-4575-a7df-3baa0679f25e",
+          "4e7ac957-5319-4eff-9fe9-aeb36371e01f",
+          "3fd1a2c3-b7c0-4308-9f16-eedc815a2b24",
+          "fdd48714-cbee-4d94-a78c-cf13607f2099",
+          "78fc56d4-4f99-47b5-aba9-f75ea2cebf5e"
+        ]
+      }
+    },
+    {
+      "id": "hrv_for_eng:pod-1:SC06-S005",
+      "course": "hrv_for_eng",
+      "target_pieces": 4,
+      "known_parts": 2,
+      "mid_ellipsis": true,
+      "target_text": "Ja sam iz Manchestera,… ali sad živim… u Londonu. A ti?",
+      "known_text": "I'm from Manchester, but I live in London now. And you?",
+      "before": {
+        "sentence_audio_ids": [
+          "636af463-439f-4612-b322-4e5b57597055",
+          "40f82cbe-83a8-44e8-98dd-30fc2cf4e667",
+          "0eb0507e-9c8b-4d24-a2b9-8936824dd8ab",
+          "3977b86a-9d93-41d2-ac70-22e8f1455468"
+        ]
+      }
+    },
+    {
+      "id": "hrv_for_eng:pod-1:SC06-S006",
+      "course": "hrv_for_eng",
+      "target_pieces": 3,
+      "known_parts": 2,
+      "mid_ellipsis": true,
+      "target_text": "Ja sam iz Francuske. Ovdje sam… već dvije godine.",
+      "known_text": "I'm from France. I've been here for two years.",
+      "before": {
+        "sentence_audio_ids": [
+          "7b3c336d-d9ea-4ebd-9471-dc9385d6da60",
+          "194f861d-4354-4645-b008-1b061bd506f0",
+          "9c65e1e9-7927-4f05-b045-833c32670cf6"
+        ]
+      }
+    },
+    {
+      "id": "hrv_for_eng:pod-1:SC06-S008",
+      "course": "hrv_for_eng",
+      "target_pieces": 4,
+      "known_parts": 2,
+      "mid_ellipsis": true,
+      "target_text": "Ja sam medicinska sestra,… u bolnici… tu iza ugla. A ti?",
+      "known_text": "I'm a nurse, at the hospital just round the corner. And you?",
+      "before": {
+        "sentence_audio_ids": [
+          "92d77b12-536d-4cbb-8c57-cd4cff9f4c65",
+          "eb469ef2-5178-43cf-855a-ad735a6300a0",
+          "c80951e6-522e-468e-81a1-2f1cbc421837",
+          "73a71af1-6874-4fca-87eb-4537459ab7a8"
+        ]
+      }
+    },
+    {
+      "id": "hrv_for_eng:pod-1:SC06-S009",
+      "course": "hrv_for_eng",
+      "target_pieces": 5,
+      "known_parts": 3,
+      "mid_ellipsis": true,
+      "target_text": "Oprosti,… nisam te razumio. Učim hrvatski. Možeš li to ponoviti… malo sporije?",
+      "known_text": "I'm sorry, I didn't understand you. I'm learning Croatian. Could you say that again more slowly?",
+      "before": {
+        "sentence_audio_ids": [
+          "f3ca3d65-234a-4ffc-972b-8efcbfa6f374",
+          "13987759-6d70-4055-a9f3-ac0df951d761",
+          "dccd662c-b640-4642-901d-aa472dd844c3",
+          "555ac408-07e8-44b8-898c-11aa78ea5dfa",
+          "795a5c12-6b1f-43ae-9fc3-be54611cc8c9"
+        ]
+      }
+    },
+    {
+      "id": "hrv_for_eng:pod-1:SC06-S011",
+      "course": "hrv_for_eng",
+      "target_pieces": 6,
+      "known_parts": 4,
+      "mid_ellipsis": true,
+      "target_text": "Predajem engleski,…ali ne u školi. Radim s odraslima. Ovdje sam… na godišnjem odmoru… sa suprugom i djecom. Izvrsno se provodimo.",
+      "known_text": "I teach English, but not in a school. I work with adults. I'm on holiday here with my wife and children. We're having a lovely time.",
+      "before": {
+        "sentence_audio_ids": [
+          "c27f3d43-9e47-4a3c-b6df-89ce9b3f5b71",
+          "3026bef3-dc5c-422e-869b-21d57d291855",
+          "049cac15-22fe-4201-8725-8bac73d9962f",
+          "a32099b6-6dad-4268-a458-ede759bea64a",
+          "260d521e-8bfe-4aee-bfcf-184f074ce313",
+          "43a254de-7364-447a-9c46-518fed0361b5"
+        ]
+      }
+    },
+    {
+      "id": "hrv_for_eng:pod-1:SC06-S012",
+      "course": "hrv_for_eng",
+      "target_pieces": 3,
+      "known_parts": 2,
+      "mid_ellipsis": true,
+      "target_text": "Kako zanimljivo. Pa, drago mi je… što smo se upoznali.",
+      "known_text": "How interesting. Well, lovely to meet you.",
+      "before": {
+        "sentence_audio_ids": [
+          "321b6418-fae1-4941-a67d-841f20a4e385",
+          "5330d6d4-6cd4-47f9-b323-2cf87c215c07",
+          "9d1548f6-2a28-44a9-af21-7ed7bd98bf68"
+        ]
+      }
+    },
+    {
+      "id": "hrv_for_eng:pod-1:SC07-S007",
+      "course": "hrv_for_eng",
+      "target_pieces": 4,
+      "known_parts": 1,
+      "mid_ellipsis": true,
+      "target_text": "Mogu li dobiti… dvije bijele kave… i dvije crne kave… i jedno od toga, molim?",
+      "known_text": "Could I have two white coffees and two black coffees and one of those, please?",
+      "before": {
+        "sentence_audio_ids": [
+          "ff315629-3600-48a8-b19f-b44db2eba2bc",
+          "c39b9581-50e0-4b51-9a36-fe59045f061c",
+          "85c88ee4-a090-444d-94a0-62a14c0a9252",
+          "7af5e59c-2d62-4c17-9548-5fdf5ca3e5ee"
+        ]
+      }
+    },
+    {
+      "id": "hrv_for_eng:pod-1:SC07-S009",
+      "course": "hrv_for_eng",
+      "target_pieces": 2,
+      "known_parts": 1,
+      "mid_ellipsis": true,
+      "target_text": "Da, mogu li dobiti… i čašu vode, molim.",
+      "known_text": "Yes, can I have a glass of water as well, please.",
+      "before": {
+        "sentence_audio_ids": [
+          "8f3a3ff0-8bd3-4b3b-9680-e0cddf00c316",
+          "96fe002b-507c-4dd2-9a4a-0cdc82a219b8"
+        ]
+      }
+    },
+    {
+      "id": "hrv_for_eng:pod-1:SC07-S012",
+      "course": "hrv_for_eng",
+      "target_pieces": 3,
+      "known_parts": 2,
+      "mid_ellipsis": true,
+      "target_text": "Naravno. Izvolite… tu je uređaj.",
+      "known_text": "Of course. There's the machine.",
+      "before": {
+        "sentence_audio_ids": [
+          "ba8c492e-0f4e-449c-9851-863603282be7",
+          "4bb4de71-cd8b-4f3d-85f5-39ceecdeaa7a",
+          "f76f7c7c-fec6-4ee5-8409-c3ca0910be7f"
+        ]
+      }
+    },
+    {
+      "id": "hrv_for_eng:pod-1:SC07-S013",
+      "course": "hrv_for_eng",
+      "target_pieces": 4,
+      "known_parts": 2,
+      "mid_ellipsis": true,
+      "target_text": "Dobro jutro. Dva americana… i jednu šalicu čaja,… molim.",
+      "known_text": "Good morning. Two Americanos and a cup of tea, please.",
+      "before": {
+        "sentence_audio_ids": [
+          "4eba4421-d37d-47c6-bf5c-46bad78569d3",
+          "1560cfa1-29c2-4525-be52-c68bc2437dd7",
+          "a2559afd-84dd-43b6-a55e-0ae11a485b9b",
+          "0ce73bbb-b75b-4ed9-a267-789da5af5dce"
+        ]
+      }
+    },
+    {
+      "id": "hrv_for_eng:pod-1:SC08-S007",
+      "course": "hrv_for_eng",
+      "target_pieces": 5,
+      "known_parts": 1,
+      "mid_ellipsis": true,
+      "target_text": "Imamo kućno crno,… kućno bijelo,… ili možete uzeti… jedno od naših vina… iz boce.",
+      "known_text": "We have a house red, a house white, or you could have one of our bottles.",
+      "before": {
+        "sentence_audio_ids": [
+          "1323f9ac-a26c-4243-8314-eeeba7e99323",
+          "cfc6b353-92c3-4b30-8483-f608d3cc2431",
+          "36ae4a11-fd89-4b4c-9d08-416921a17544",
+          "54d0b7d6-5424-4baf-816a-1daa9b5c27fa",
+          "d042fc16-50a8-4f8a-a0bd-a355db765a57"
+        ]
+      }
+    },
+    {
+      "id": "hrv_for_eng:pod-1:SC08-S008",
+      "course": "hrv_for_eng",
+      "target_pieces": 3,
+      "known_parts": 1,
+      "mid_ellipsis": true,
+      "target_text": "Želio bih veliku… čašu bijelog vina,… molim.",
+      "known_text": "I'd like a large glass of white wine, please.",
+      "before": {
+        "sentence_audio_ids": [
+          "c82cc9d8-9ce7-440b-ae1e-51af66e59802",
+          "c26d27e7-13e1-4f71-bccb-777c733a7b6d",
+          "29b148c9-5c78-4372-90be-e81d63bc0f43"
+        ]
+      }
+    },
+    {
+      "id": "hrv_for_eng:pod-1:SC08-S009",
+      "course": "hrv_for_eng",
+      "target_pieces": 2,
+      "known_parts": 1,
+      "mid_ellipsis": true,
+      "target_text": "Mogu malu čašu… crnog vina?",
+      "known_text": "Can I have a small glass of red wine?",
+      "before": {
+        "sentence_audio_ids": [
+          "09ce4de4-b261-4e10-b933-ca0631975c05",
+          "6e2024fb-b66b-424c-9d5b-bf8815aca651"
+        ]
+      }
+    },
+    {
+      "id": "hrv_for_eng:pod-1:SC08-S010",
+      "course": "hrv_for_eng",
+      "target_pieces": 2,
+      "known_parts": 1,
+      "mid_ellipsis": true,
+      "target_text": "Želio bih… još dvije čaše piva.",
+      "known_text": "I'd like two more glasses of beer.",
+      "before": {
+        "sentence_audio_ids": [
+          "ac3a5266-7522-45ee-963c-9d5eca6855d4",
+          "c05dd4a7-952f-4b7c-a1c0-8772dde8f4a5"
+        ]
+      }
+    },
+    {
+      "id": "hrv_for_eng:pod-1:SC08-S012",
+      "course": "hrv_for_eng",
+      "target_pieces": 3,
+      "known_parts": 2,
+      "mid_ellipsis": true,
+      "target_text": "Nisam siguran… jesam li gladan. Imate li jelovnik?",
+      "known_text": "I'm not sure if I'm hungry. Do you have a menu?",
+      "before": {
+        "sentence_audio_ids": [
+          "3fe1e8a8-a17d-4926-866d-9ad9c22d2df6",
+          "41922960-ee3e-48f5-8eab-e254cb0f0964",
+          "0bcd65b6-3d9d-4d7e-ac58-8fd625ee5160"
+        ]
+      }
+    },
+    {
+      "id": "hrv_for_eng:pod-1:SC08-S013",
+      "course": "hrv_for_eng",
+      "target_pieces": 4,
+      "known_parts": 3,
+      "mid_ellipsis": true,
+      "target_text": "Da, naravno. Izvolite. Riba s pomfritom… je jako dobra.",
+      "known_text": "Yes, of course. Here it is. The fish and chips are very good.",
+      "before": {
+        "sentence_audio_ids": [
+          "e4dbec22-8f8b-4ff2-a650-6c32c42dfaa1",
+          "02a374e9-b103-478b-bd87-74074be6cfe3",
+          "ed96beea-fdbc-4ae9-b476-7b6a23138dbb",
+          "221a2daf-d95d-4e96-9d13-454e1d1e7c75"
+        ]
+      }
+    },
+    {
+      "id": "hrv_for_eng:pod-1:SC08-S014",
+      "course": "hrv_for_eng",
+      "target_pieces": 4,
+      "known_parts": 2,
+      "mid_ellipsis": true,
+      "target_text": "Možemo li dobiti… malo kruha? I zdjelicu pomfrita… za stol.",
+      "known_text": "Can we have some bread? And a bowl of chips for the table.",
+      "before": {
+        "sentence_audio_ids": [
+          "fbf1962a-c990-40b6-bab6-5a49d4707e3e",
+          "53fc24f0-9cda-4d4f-bddd-c5ac05cd905e",
+          "0bfc01b9-321b-48ea-a6e5-3931e8148325",
+          "d57a8231-f11a-4f87-ba51-d34955d67fbe"
+        ]
+      }
+    },
+    {
+      "id": "hrv_for_eng:pod-1:SC08-S015",
+      "course": "hrv_for_eng",
+      "target_pieces": 3,
+      "known_parts": 2,
+      "mid_ellipsis": true,
+      "target_text": "Imate li sendviče? Želio bih sendvič… sa sirom, molim.",
+      "known_text": "Do you have any sandwiches? I'd like a cheese sandwich, please.",
+      "before": {
+        "sentence_audio_ids": [
+          "27d99840-d823-4bf8-bd0e-a4d4e2cd5ce3",
+          "c789b820-0c77-4103-b93f-dd82b959d88c",
+          "a3d30269-d88a-43c7-97d1-a83e16745b7f"
+        ]
+      }
+    },
+    {
+      "id": "hrv_for_eng:pod-1:SC09-S001",
+      "course": "hrv_for_eng",
+      "target_pieces": 4,
+      "known_parts": 2,
+      "mid_ellipsis": true,
+      "target_text": "Dobra večer. Imamo rezervaciju… za dvoje… na ime Davies.",
+      "known_text": "Good evening. We have a booking for two, under the name Davies.",
+      "before": {
+        "sentence_audio_ids": [
+          "09853478-c696-4844-b7f1-756ea7d7e949",
+          "4ed2450b-0732-49b4-9180-bb278aa58839",
+          "56911bfb-40ea-4c47-83cf-6d2a210a929c",
+          "0a437d1f-5862-49ef-81c0-9b4a3b748d53"
+        ]
+      }
+    },
+    {
+      "id": "hrv_for_eng:pod-1:SC09-S004",
+      "course": "hrv_for_eng",
+      "target_pieces": 5,
+      "known_parts": 1,
+      "mid_ellipsis": true,
+      "target_text": "Željeli bismo jednu… bocu gazirane vode… i jednu bocu… negazirane vode,… molim.",
+      "known_text": "We'd like one bottle of sparkling water and one bottle of still water, please.",
+      "before": {
+        "sentence_audio_ids": [
+          "ff0deb94-5cdb-4e10-bf8d-f8f2308e80bb",
+          "66bb185c-fc69-467d-9387-573bd9a6409d",
+          "9973ef14-631c-47b2-bc86-b156248d6b4c",
+          "8920886a-ed63-46a4-ac7f-784713e69b57",
+          "29b148c9-5c78-4372-90be-e81d63bc0f43"
+        ]
+      }
+    },
+    {
+      "id": "hrv_for_eng:pod-1:SC09-S005",
+      "course": "hrv_for_eng",
+      "target_pieces": 5,
+      "known_parts": 2,
+      "mid_ellipsis": true,
+      "target_text": "Oprostite,… imate li nešto… bez glutena? Ili za… vegetarijance?",
+      "known_text": "Excuse me - do you have anything gluten-free? Or for vegetarians?",
+      "before": {
+        "sentence_audio_ids": [
+          "6bcf0ee9-a513-498b-b8fb-13e2496fc3d6",
+          "7e8f558c-c3db-45f3-a242-507745acc226",
+          "1218a043-a2c5-4fc8-bb13-880dbdd1ef58",
+          "42dd51bf-4f0d-4faa-ad9f-6441b50a066a",
+          "9213892a-9de6-4a27-87b7-84fc8996e55a"
+        ]
+      }
+    },
+    {
+      "id": "hrv_for_eng:pod-1:SC09-S006",
+      "course": "hrv_for_eng",
+      "target_pieces": 4,
+      "known_parts": 2,
+      "mid_ellipsis": true,
+      "target_text": "Da, losos i rižoto… su bez glutena. Imamo… i nekoliko salata.",
+      "known_text": "Yes, the salmon and the risotto are both gluten-free. We also have some salads.",
+      "before": {
+        "sentence_audio_ids": [
+          "5cb1e939-7a63-4618-8fe8-a04a9c6a4f86",
+          "3d444c77-8997-4cb2-b725-adb54d370fa5",
+          "b2a4c906-9275-42f7-ae7c-9db285023fca",
+          "9bc37d23-aa48-4b61-a342-a25eb05e5b88"
+        ]
+      }
+    },
+    {
+      "id": "hrv_for_eng:pod-1:SC09-S007",
+      "course": "hrv_for_eng",
+      "target_pieces": 2,
+      "known_parts": 1,
+      "mid_ellipsis": true,
+      "target_text": "A što biste… preporučili večeras?",
+      "known_text": "And what would you recommend tonight?",
+      "before": {
+        "sentence_audio_ids": [
+          "f5ac872a-a4f2-4bdd-9239-66f507abcc03",
+          "ddc9defd-4c86-4176-8eda-c2ce4e285548"
+        ]
+      }
+    },
+    {
+      "id": "hrv_for_eng:pod-1:SC09-S008",
+      "course": "hrv_for_eng",
+      "target_pieces": 3,
+      "known_parts": 2,
+      "mid_ellipsis": true,
+      "target_text": "Janjetina je izvrsna. Polako se pekla,… s ružmarinom.",
+      "known_text": "The lamb is excellent. It's been slow-cooked, with rosemary.",
+      "before": {
+        "sentence_audio_ids": [
+          "8be3ff79-77fb-4dc7-bc66-9ff95d7c936c",
+          "b4761501-127a-4a3b-b9ee-2c30d5a246e8",
+          "60f5275a-1e30-40ee-b60c-b7bc50b3aa51"
+        ]
+      }
+    },
+    {
+      "id": "hrv_for_eng:pod-1:SC09-S009",
+      "course": "hrv_for_eng",
+      "target_pieces": 4,
+      "known_parts": 2,
+      "mid_ellipsis": true,
+      "target_text": "Uzet ću janjetinu… molim. S prilogom… zelenog povrća.",
+      "known_text": "I'll have the lamb, please. With a side of greens.",
+      "before": {
+        "sentence_audio_ids": [
+          "8b8c046b-9f3c-4f75-99a4-4fab5c12bbbf",
+          "29b148c9-5c78-4372-90be-e81d63bc0f43",
+          "b467b9d3-075a-450f-a627-ea9daf053b5b",
+          "f351275e-2d8a-44f2-a69d-f7d360c679f0"
+        ]
+      }
+    },
+    {
+      "id": "hrv_for_eng:pod-1:SC09-S010",
+      "course": "hrv_for_eng",
+      "target_pieces": 4,
+      "known_parts": 2,
+      "mid_ellipsis": true,
+      "target_text": "A za mene rižoto. S malom… zelenom salatom… za početak.",
+      "known_text": "And the risotto for me. With a small green salad to start.",
+      "before": {
+        "sentence_audio_ids": [
+          "5c4c06ad-072b-44d5-a56f-b2e36b921844",
+          "03ca17f2-5f79-4322-9083-59fcb9130db5",
+          "49bfbaa9-51d0-4564-93fe-31906b9419c0",
+          "6267f1a8-3feb-46f2-84dd-e19e3cc8b2a2"
+        ]
+      }
+    },
+    {
+      "id": "hrv_for_eng:pod-1:SC09-S011",
+      "course": "hrv_for_eng",
+      "target_pieces": 3,
+      "known_parts": 2,
+      "mid_ellipsis": true,
+      "target_text": "Naravno. A što biste željeli… za piće?",
+      "known_text": "Of course. And what would you like to drink?",
+      "before": {
+        "sentence_audio_ids": [
+          "0f77132d-268d-4161-b32f-9e2ac9985542",
+          "fa109b8b-4e8e-4573-89a1-a80ca9ae3d96",
+          "a0cafb5d-99f9-4ac1-9e27-4e0c68415719"
+        ]
+      }
+    },
+    {
+      "id": "hrv_for_eng:pod-1:SC09-S012",
+      "course": "hrv_for_eng",
+      "target_pieces": 2,
+      "known_parts": 1,
+      "mid_ellipsis": true,
+      "target_text": "Možemo li vidjeti… vinsku kartu?",
+      "known_text": "Could we see the wine list?",
+      "before": {
+        "sentence_audio_ids": [
+          "e3719192-e1de-4103-a465-4aef20fb28b6",
+          "bd5b38ce-3e58-40cb-b48e-bf4e0adf5864"
+        ]
+      }
+    },
+    {
+      "id": "hrv_for_eng:pod-1:SC09-S013",
+      "course": "hrv_for_eng",
+      "target_pieces": 2,
+      "known_parts": 1,
+      "mid_ellipsis": true,
+      "target_text": "Jedna boca kućnog… crnog bila bi divna.",
+      "known_text": "A bottle of the house red would be lovely.",
+      "before": {
+        "sentence_audio_ids": [
+          "07d47586-42d8-4e3e-92eb-bb157e4c026c",
+          "2140264c-0fc5-4f84-90b1-480dc5c00794"
+        ]
+      }
+    },
+    {
+      "id": "hrv_for_eng:pod-1:SC09-S017",
+      "course": "hrv_for_eng",
+      "target_pieces": 4,
+      "known_parts": 2,
+      "mid_ellipsis": true,
+      "target_text": "I račun,… kad budete spremni. Možemo li platiti… odvojeno?",
+      "known_text": "And the bill, when you're ready. Could we split it?",
+      "before": {
+        "sentence_audio_ids": [
+          "d34f13b9-8d4b-4236-ad9b-c9be9bf2f33c",
+          "cc7d11e3-0627-4a26-920a-23b0d2095c96",
+          "2755ee35-2f97-405b-a2a7-b41dde0fc257",
+          "dbba5351-aba8-42b0-ab4a-79f0546acf27"
+        ]
+      }
+    },
+    {
+      "id": "hrv_for_eng:pod-1:SC10-S001",
+      "course": "hrv_for_eng",
+      "target_pieces": 4,
+      "known_parts": 2,
+      "mid_ellipsis": true,
+      "target_text": "Oprostite. Imate li… kakvih lijekova… protiv bolova?",
+      "known_text": "Excuse me. Do you have any painkillers?",
+      "before": {
+        "sentence_audio_ids": [
+          "72a436f8-1a1f-4d4a-aa63-c2f4469d63a5",
+          "19074a99-0e50-4156-9986-ca6ca1530f58",
+          "759d846c-f914-402f-8a12-0b5a27f4bbfb",
+          "35abb266-00c7-4eb3-94cc-485463aa53d3"
+        ]
+      }
+    },
+    {
+      "id": "hrv_for_eng:pod-1:SC10-S002",
+      "course": "hrv_for_eng",
+      "target_pieces": 3,
+      "known_parts": 1,
+      "mid_ellipsis": true,
+      "target_text": "Da, nalaze se… u onom prolazu,… s lijeve strane.",
+      "known_text": "Yes, they're down that aisle, on the left.",
+      "before": {
+        "sentence_audio_ids": [
+          "329c9e5b-7690-46db-a42c-541cef413814",
+          "342b6acf-4ae6-4660-a272-dedfe96ab592",
+          "97e64b2d-2431-4e9c-8d18-cc031ccefcdb"
+        ]
+      }
+    },
+    {
+      "id": "hrv_for_eng:pod-1:SC10-S003",
+      "course": "hrv_for_eng",
+      "target_pieces": 4,
+      "known_parts": 2,
+      "mid_ellipsis": true,
+      "target_text": "Hvala. A imate li… kakvih lijekova… protiv bolova za djecu?",
+      "known_text": "Thank you. And do you have any painkillers for children?",
+      "before": {
+        "sentence_audio_ids": [
+          "b51374f7-48d3-4edd-acb0-5111809581fd",
+          "bd4a6379-6358-41d4-99f5-d042f3d4f70d",
+          "759d846c-f914-402f-8a12-0b5a27f4bbfb",
+          "8687a4d9-7f56-44af-9cd6-ade2ee49ba55"
+        ]
+      }
+    },
+    {
+      "id": "hrv_for_eng:pod-1:SC10-S004",
+      "course": "hrv_for_eng",
+      "target_pieces": 4,
+      "known_parts": 1,
+      "mid_ellipsis": true,
+      "target_text": "Mislim da da,… ali morat ćete… pogledati… da budete sigurni.",
+      "known_text": "I think so, but you'll have to look to make sure.",
+      "before": {
+        "sentence_audio_ids": [
+          "0c212d85-49bb-4faa-9458-ef6426250f9a",
+          "4a0639b4-208f-46b9-b380-95478cc61505",
+          "2e2961e9-0d91-429e-8189-1ddc0c3a1377",
+          "730748e9-20ab-4f4b-acc0-7647930f8406"
+        ]
+      }
+    },
+    {
+      "id": "hrv_for_eng:pod-1:SC10-S005",
+      "course": "hrv_for_eng",
+      "target_pieces": 3,
+      "known_parts": 1,
+      "mid_ellipsis": true,
+      "target_text": "Također trebam kupiti… kremu za sunčanje… i pastu za zube.",
+      "known_text": "I also need to get some sunscreen and some toothpaste.",
+      "before": {
+        "sentence_audio_ids": [
+          "b57db1d8-a7f0-417f-9e1e-4644ce1ce216",
+          "77dc3dfe-a7aa-49ca-8567-743a8c52ce2a",
+          "98dde78e-4158-4300-bcdb-bd7c65626e5b"
+        ]
+      }
+    },
+    {
+      "id": "hrv_for_eng:pod-1:SC10-S006",
+      "course": "hrv_for_eng",
+      "target_pieces": 5,
+      "known_parts": 1,
+      "mid_ellipsis": true,
+      "target_text": "Krema za sunčanje je… tamo s vaše… desne strane,… a pastu za zube ćete… naći odmah iza ugla.",
+      "known_text": "Sunscreen is down there on your right, and you'll find toothpaste just round the corner.",
+      "before": {
+        "sentence_audio_ids": [
+          "92c27c54-651a-4184-a73c-d8ac33e34140",
+          "afe6e444-029b-43ec-838b-06eec2d598cb",
+          "1ed4c5ff-2931-4a30-aeb9-049b12b9a996",
+          "6cb4cb53-6bf8-4248-b9ff-7635909a3cf6",
+          "8d14743e-8e40-4b79-b4ee-10b6305f0a5c"
+        ]
+      }
+    },
+    {
+      "id": "hrv_for_eng:pod-1:SC10-S007",
+      "course": "hrv_for_eng",
+      "target_pieces": 3,
+      "known_parts": 2,
+      "mid_ellipsis": true,
+      "target_text": "Hvala, bili ste mi… od velike pomoći. Jako sam zahvalan.",
+      "known_text": "Thank you, you've been very helpful. I'm very grateful.",
+      "before": {
+        "sentence_audio_ids": [
+          "3dda9a75-ef8e-4610-a995-37335ca87cb5",
+          "040c9a54-c2f3-4782-bf63-b83fa5fa975c",
+          "2f36fffa-bbe3-4fc6-b75f-0ca6c01c019c"
+        ]
+      }
+    },
+    {
+      "id": "hrv_for_eng:pod-1:SC10-S008",
+      "course": "hrv_for_eng",
+      "target_pieces": 5,
+      "known_parts": 3,
+      "mid_ellipsis": true,
+      "target_text": "Nema na čemu. Jeste li ovdje… na odmoru? Vrlo dobro… govorite hrvatski.",
+      "known_text": "You're welcome. Are you here on holiday? You speak very good Croatian.",
+      "before": {
+        "sentence_audio_ids": [
+          "3249cb4a-472b-4e25-91cf-3c175ffa24ce",
+          "5abdb631-9f8d-498f-8b7f-0a381eda8480",
+          "a21f88c7-59c9-47ab-894e-e88802d5152a",
+          "27a6e4b1-995a-441e-a369-380363c7ab68",
+          "70abfb6e-986a-42a5-b392-ea05b3b3dd5b"
+        ]
+      }
+    },
+    {
+      "id": "hrv_for_eng:pod-1:SC10-S009",
+      "course": "hrv_for_eng",
+      "target_pieces": 9,
+      "known_parts": 3,
+      "mid_ellipsis": true,
+      "target_text": "To je od vas… jako lijepo! Da,… na godišnjem sam odmoru,… i trebam više vježbati… da bih bolje govorio… hrvatski. Hvala vam puno… i doviđenja.",
+      "known_text": "That's very kind of you! Yes, I'm on holiday, and I need to practice more to speak Croatian better. Thank you very much, and goodbye.",
+      "before": {
+        "sentence_audio_ids": [
+          "59324a57-7b5a-4798-a5aa-c21416702bc3",
+          "f4fc006d-16e6-4281-af8c-e73b0adaf34b",
+          "22a9c15c-9416-424b-8fbc-b519b83d459f",
+          "6d9c65c5-aa8a-4623-9e21-597630b13a91",
+          "13a49659-7aed-4da4-91a8-eb5fb228ec03",
+          "14bf2efc-360c-47fd-a2a7-225013ebfcde",
+          "fa6073ea-994f-4121-8171-24ea65779321",
+          "a1469fc0-c9b7-4151-854f-d061d55c01e7",
+          "0c75c2a0-06bd-4b97-8425-accb264971f2"
+        ]
+      }
+    },
+    {
+      "id": "hrv_for_eng:pod-1:SC11-S001",
+      "course": "hrv_for_eng",
+      "target_pieces": 3,
+      "known_parts": 2,
+      "mid_ellipsis": true,
+      "target_text": "Dobar dan. Imam rezervaciju… na ime Jones.",
+      "known_text": "Good afternoon. I have a booking under the name Jones.",
+      "before": {
+        "sentence_audio_ids": [
+          "f845b66a-ef1e-47bc-9464-e313f32f9b4f",
+          "f12b7ef5-63ca-4a42-8b4f-ddafbfb9a167",
+          "e02bf495-3092-4db9-8f2a-df1da9274207"
+        ]
+      }
+    },
+    {
+      "id": "hrv_for_eng:pod-1:SC11-S002",
+      "course": "hrv_for_eng",
+      "target_pieces": 6,
+      "known_parts": 3,
+      "mid_ellipsis": true,
+      "target_text": "Dobrodošli. Da, imate dvokrevetnu… sobu na tri noći. Mogu li vidjeti… osobnu iskaznicu… ili putovnicu, molim?",
+      "known_text": "Welcome. Yes, you have a double room for three nights. Could I see some ID, please?",
+      "before": {
+        "sentence_audio_ids": [
+          "507104f5-4954-4c23-850e-8e4a7713876f",
+          "5ea2a8ba-79e4-4f71-b190-fe3197c9487a",
+          "b6328060-6e95-48f4-8a75-52cc9ac98457",
+          "ca2b9515-93f1-4832-818c-6fa049017c9e",
+          "52e0c471-8195-4a3e-b606-a142f76fc0ca",
+          "9f6c3bc3-6aba-4d25-9db0-25dc65ad5a65"
+        ]
+      }
+    },
+    {
+      "id": "hrv_for_eng:pod-1:SC11-S007",
+      "course": "hrv_for_eng",
+      "target_pieces": 2,
+      "known_parts": 1,
+      "mid_ellipsis": true,
+      "target_text": "U koliko sati… se poslužuje doručak?",
+      "known_text": "What time is breakfast served?",
+      "before": {
+        "sentence_audio_ids": [
+          "ae2dd70f-9199-4f8c-b42d-e6ffd42a408b",
+          "680da11d-e1f9-419b-8211-1b277b181dfe"
+        ]
+      }
+    },
+    {
+      "id": "hrv_for_eng:pod-1:SC11-S008",
+      "course": "hrv_for_eng",
+      "target_pieces": 5,
+      "known_parts": 2,
+      "mid_ellipsis": true,
+      "target_text": "Od pola osam… do deset sati. Imamo voće… i žitarice… ili topli doručak.",
+      "known_text": "From half-past seven until ten o'clock. We have fruit and cereals or a cooked breakfast.",
+      "before": {
+        "sentence_audio_ids": [
+          "33b11477-3f34-4626-811c-251defc6b43f",
+          "de7fdba2-a6d9-4ea8-9429-6d2786c5d29e",
+          "0bf5a127-4c8f-426e-8761-840d55dff8fe",
+          "3477a5ba-bdaa-4595-816e-b59dba2aff71",
+          "29115d81-1ff0-49e4-89d4-3576e392688d"
+        ]
+      }
+    },
+    {
+      "id": "hrv_for_eng:pod-1:SC11-S009",
+      "course": "hrv_for_eng",
+      "target_pieces": 4,
+      "known_parts": 2,
+      "mid_ellipsis": true,
+      "target_text": "Odlično. Je li moguće… da imamo… kasnu odjavu?",
+      "known_text": "Wonderful. Is it possible for us to have a late check-out?",
+      "before": {
+        "sentence_audio_ids": [
+          "047a35a6-8097-4ff4-81d5-92e5a8a27cd3",
+          "694cd9e7-cc7d-4341-9723-7c7a37489471",
+          "0b55f3e4-1a71-4312-8be3-62100545c082",
+          "a98fda9b-8b02-4bb2-91df-113508574080"
+        ]
+      }
+    },
+    {
+      "id": "hrv_for_eng:pod-1:SC11-S010",
+      "course": "hrv_for_eng",
+      "target_pieces": 3,
+      "known_parts": 1,
+      "mid_ellipsis": true,
+      "target_text": "Da, možete ostati… do podne,… bez dodatnih troškova.",
+      "known_text": "Yes, you can stay until midday, no extra charge.",
+      "before": {
+        "sentence_audio_ids": [
+          "2534c852-4759-4360-b5a0-a43d095d1f19",
+          "5e54a41a-8419-42ce-b935-8f26095450d0",
+          "5cf023a8-5d71-416a-a221-433c950c34d3"
+        ]
+      }
+    },
+    {
+      "id": "hrv_for_eng:pod-1:SC11-S011",
+      "course": "hrv_for_eng",
+      "target_pieces": 2,
+      "known_parts": 1,
+      "mid_ellipsis": true,
+      "target_text": "A koja je lozinka… za wifi?",
+      "known_text": "And what is the wifi password?",
+      "before": {
+        "sentence_audio_ids": [
+          "4bcf1cfb-3d2d-40d4-a402-4646bcf88d2e",
+          "ba080e29-2934-4023-a9a9-ac9f810ddfc0"
+        ]
+      }
+    },
+    {
+      "id": "hrv_for_eng:pod-1:SC11-S012",
+      "course": "hrv_for_eng",
+      "target_pieces": 4,
+      "known_parts": 2,
+      "mid_ellipsis": true,
+      "target_text": "Nalazi se na kartici… dobrodošlice… u vašoj sobi. Ugodan boravak.",
+      "known_text": "It's on the welcome card in your room. Have a lovely stay.",
+      "before": {
+        "sentence_audio_ids": [
+          "3149d558-5e38-49b7-86f0-51e61730f42f",
+          "fb0ab289-4cec-4736-8e1a-204e3a2e6eb9",
+          "937fc51b-4b74-4510-b935-6b65d69a6c45",
+          "1d671470-e4f1-435c-a1e4-fbe8a2c59b11"
+        ]
+      }
+    },
+    {
+      "id": "hrv_for_eng:pod-1:SC12-S001",
+      "course": "hrv_for_eng",
+      "target_pieces": 4,
+      "known_parts": 2,
+      "mid_ellipsis": true,
+      "target_text": "Dobro jutro. Ne osjećam se baš dobro… — možete li mi nešto… preporučiti?",
+      "known_text": "Good morning. I'm not feeling great - could you recommend something?",
+      "before": {
+        "sentence_audio_ids": [
+          "dc7ad114-6273-49b6-90a5-7d4010c48bca",
+          "cb340fbe-d29f-497d-a136-2d89cc5d1ab7",
+          "4cd80cd5-138c-48f9-82d0-7f10bff91816",
+          "3c4182e4-7227-4f6c-8abb-23c6c749fa27"
+        ]
+      }
+    },
+    {
+      "id": "hrv_for_eng:pod-1:SC12-S003",
+      "course": "hrv_for_eng",
+      "target_pieces": 2,
+      "known_parts": 1,
+      "mid_ellipsis": true,
+      "target_text": "Imam glavobolju… i bol u grlu od jučer.",
+      "known_text": "I've had a headache and a sore throat since yesterday.",
+      "before": {
+        "sentence_audio_ids": [
+          "0ea28753-d42d-4c44-bed8-efc287fdcf07",
+          "e9a79987-546f-4b18-b42a-ff4f47815454"
+        ]
+      }
+    },
+    {
+      "id": "hrv_for_eng:pod-1:SC12-S004",
+      "course": "hrv_for_eng",
+      "target_pieces": 5,
+      "known_parts": 1,
+      "mid_ellipsis": true,
+      "target_text": "Pokušajte… paracetamol… za glavobolju,… a ove pastile… za grlo.",
+      "known_text": "Try paracetamol for the headache, and these lozenges for the throat.",
+      "before": {
+        "sentence_audio_ids": [
+          "9af74236-a340-4241-80c0-dc57f16ae8ef",
+          "0824556c-b789-48e8-bd2f-299bcb00a95f",
+          "5efc1dbc-d63a-424a-ab2b-184a817c5e69",
+          "d32c7d2e-2ee5-4b88-940b-3744107aaf12",
+          "828ff831-1796-4759-b80a-cbab2da616e5"
+        ]
+      }
+    },
+    {
+      "id": "hrv_for_eng:pod-1:SC12-S005",
+      "course": "hrv_for_eng",
+      "target_pieces": 3,
+      "known_parts": 1,
+      "mid_ellipsis": true,
+      "target_text": "Koliko često… trebam uzimati… paracetamol?",
+      "known_text": "How often should I take the paracetamol?",
+      "before": {
+        "sentence_audio_ids": [
+          "4f270daa-26b7-4f29-9412-45c345c8ee34",
+          "99813828-e552-417e-8242-39ae678679aa",
+          "9550d1aa-4639-4366-aa45-11a19e0f4b96"
+        ]
+      }
+    },
+    {
+      "id": "hrv_for_eng:pod-1:SC12-S007",
+      "course": "hrv_for_eng",
+      "target_pieces": 2,
+      "known_parts": 1,
+      "mid_ellipsis": true,
+      "target_text": "Mogu li ih uzimati… s hranom?",
+      "known_text": "Are they all right to take with food?",
+      "before": {
+        "sentence_audio_ids": [
+          "fefe1d7e-103b-4122-9928-42ae27c8ec12",
+          "a4a4595b-f584-4935-a156-1cccef12cedb"
+        ]
+      }
+    },
+    {
+      "id": "hrv_for_eng:pod-1:SC12-S008",
+      "course": "hrv_for_eng",
+      "target_pieces": 3,
+      "known_parts": 1,
+      "mid_ellipsis": true,
+      "target_text": "Da, s hranom… ili nakon jela… je najbolje.",
+      "known_text": "Yes, with or after food is best.",
+      "before": {
+        "sentence_audio_ids": [
+          "d363fc89-4ccf-4168-b77c-3b89803b5735",
+          "c344c165-8ac9-4f0b-b6e0-604216740a22",
+          "9ea21ce2-c18b-4135-9698-e23b5cca3f58"
+        ]
+      }
+    },
+    {
+      "id": "hrv_for_eng:pod-1:SC12-S009",
+      "course": "hrv_for_eng",
+      "target_pieces": 3,
+      "known_parts": 2,
+      "mid_ellipsis": true,
+      "target_text": "Hvala. Mogu li dobiti… i pakiranje flastera?",
+      "known_text": "Thank you. Could I also get a packet of plasters?",
+      "before": {
+        "sentence_audio_ids": [
+          "b51374f7-48d3-4edd-acb0-5111809581fd",
+          "223de08b-39a5-4007-8645-df577012a6ee",
+          "61e7468c-7792-437c-91f1-06ca986930fd"
+        ]
+      }
+    },
+    {
+      "id": "hrv_for_eng:pod-1:SC13-S001",
+      "course": "hrv_for_eng",
+      "target_pieces": 3,
+      "known_parts": 1,
+      "mid_ellipsis": true,
+      "target_text": "Oprostite, znate li… kako doći do najbližeg… supermarketa?",
+      "known_text": "Excuse me, do you know how to get to the nearest supermarket?",
+      "before": {
+        "sentence_audio_ids": [
+          "c7b0869e-badc-4ba8-a520-cbd0139138ca",
+          "94c3d411-76ae-4258-bf0c-7a7237b5f3bf",
+          "b51f63c6-2da2-4435-87aa-55f49339322e"
+        ]
+      }
+    },
+    {
+      "id": "hrv_for_eng:pod-1:SC13-S002",
+      "course": "hrv_for_eng",
+      "target_pieces": 4,
+      "known_parts": 2,
+      "mid_ellipsis": true,
+      "target_text": "Da, otprilike… desetak minuta hoda. Idite ravno… ovom cestom.",
+      "known_text": "Yes, it's about a ten minute walk. Go straight along this road.",
+      "before": {
+        "sentence_audio_ids": [
+          "0dc91b6e-abe4-4236-8dce-3bba2985ddcd",
+          "facf393f-cd46-489f-95d3-37c3301654cc",
+          "ab0e8324-aeca-4f22-8c69-436a30269056",
+          "e06d8677-5ff4-4507-bbe6-caa63b3cc600"
+        ]
+      }
+    },
+    {
+      "id": "hrv_for_eng:pod-1:SC13-S005",
+      "course": "hrv_for_eng",
+      "target_pieces": 2,
+      "known_parts": 1,
+      "mid_ellipsis": true,
+      "target_text": "Na drugom kružnom toku,… skrenite prvim izlazom.",
+      "known_text": "At the second roundabout, take the first exit.",
+      "before": {
+        "sentence_audio_ids": [
+          "2485f57f-c46c-40c9-9465-f156e46fe881",
+          "ad163556-b146-4cea-bef6-2ddfa42569a8"
+        ]
+      }
+    },
+    {
+      "id": "hrv_for_eng:pod-1:SC13-S007",
+      "course": "hrv_for_eng",
+      "target_pieces": 4,
+      "known_parts": 1,
+      "mid_ellipsis": true,
+      "target_text": "Vidjet ćete supermarket… s lijeve strane, točno… nasuprot autobusnom… stajalištu.",
+      "known_text": "You'll see the supermarket on your left, just opposite the bus stop.",
+      "before": {
+        "sentence_audio_ids": [
+          "1e78a8ec-37bf-4d6e-824d-3255ffed2b95",
+          "41eea9f0-e6ab-4168-a9cc-1ba4b8481dfc",
+          "e0abc95b-30e9-4f99-951e-f3c79511ab2f",
+          "9c011289-1afe-405e-9053-1e4551feb439"
+        ]
+      }
+    },
+    {
+      "id": "hrv_for_eng:pod-1:SC13-S008",
+      "course": "hrv_for_eng",
+      "target_pieces": 3,
+      "known_parts": 2,
+      "mid_ellipsis": true,
+      "target_text": "Odlično. A ima li tu… negdje bankomat?",
+      "known_text": "Wonderful. And is there a cashpoint nearby?",
+      "before": {
+        "sentence_audio_ids": [
+          "d24d4649-2dfc-4422-97eb-aac4a6ed44e5",
+          "c026f521-4dd5-497b-a47f-b9e67e806c7c",
+          "e209714e-2dd6-4850-bc04-50705eb6e371"
+        ]
+      }
+    },
+    {
+      "id": "hrv_for_eng:pod-1:SC13-S009",
+      "course": "hrv_for_eng",
+      "target_pieces": 3,
+      "known_parts": 1,
+      "mid_ellipsis": true,
+      "target_text": "Da, ima jedan… na glavnoj ulici,… pored pekare.",
+      "known_text": "Yes, there's one on the high street, next to the bakery.",
+      "before": {
+        "sentence_audio_ids": [
+          "677aa7f2-2f2f-4444-8095-77f2dac01ffa",
+          "053b86e2-0d76-4c80-b6ab-179b14271202",
+          "2a76b356-aa22-423e-8d41-e05fd872c84d"
+        ]
+      }
+    },
+    {
+      "id": "hrv_for_eng:pod-1:SC13-S010",
+      "course": "hrv_for_eng",
+      "target_pieces": 3,
+      "known_parts": 2,
+      "mid_ellipsis": true,
+      "target_text": "Hvala vam puno. Bili ste… od velike pomoći.",
+      "known_text": "Thank you very much. You've been very helpful.",
+      "before": {
+        "sentence_audio_ids": [
+          "274966eb-cdea-4010-9dfa-4f929bb32d37",
+          "056610c1-16b5-4157-8c5b-647a1a983411",
+          "040c9a54-c2f3-4782-bf63-b83fa5fa975c"
+        ]
+      }
+    },
+    {
+      "id": "hrv_for_eng:pod-1:SC14-S001",
+      "course": "hrv_for_eng",
+      "target_pieces": 3,
+      "known_parts": 2,
+      "mid_ellipsis": true,
+      "target_text": "Bok. Možete li me odvesti… do kolodvora, molim?",
+      "known_text": "Hello. Can you take me to the train station, please?",
+      "before": {
+        "sentence_audio_ids": [
+          "909850ee-2917-447d-8302-5c5aa1566435",
+          "0ef0d00a-58db-4a81-b24d-d602514bf8ac",
+          "592fa06c-8987-45f2-9e98-3c39ec2ea38a"
+        ]
+      }
+    },
+    {
+      "id": "hrv_for_eng:pod-1:SC14-S003",
+      "course": "hrv_for_eng",
+      "target_pieces": 3,
+      "known_parts": 1,
+      "mid_ellipsis": true,
+      "target_text": "Otprilike… koliko dugo mislite… da će trebati?",
+      "known_text": "About how long do you think it will take?",
+      "before": {
+        "sentence_audio_ids": [
+          "67658a13-c098-465c-bfe6-9eb31dd8b8d7",
+          "cae0cb5c-79b2-4fbf-896c-6dd3007a8fcd",
+          "70567c7d-a7aa-4d3e-a73e-0f8c3bb2f529"
+        ]
+      }
+    },
+    {
+      "id": "hrv_for_eng:pod-1:SC14-S004",
+      "course": "hrv_for_eng",
+      "target_pieces": 5,
+      "known_parts": 1,
+      "mid_ellipsis": true,
+      "target_text": "Možda… oko dvadeset minuta,… ako ne budemo… imali smole… na semaforima.",
+      "known_text": "Perhaps about twenty minutes, if we're not unlucky with the traffic lights.",
+      "before": {
+        "sentence_audio_ids": [
+          "0e3ba39d-3065-4bc7-9660-7794d0a0a846",
+          "beabe2d2-7875-4357-b396-fc8651b5b62d",
+          "3a800e33-f7f3-4122-8196-d6f001cf1775",
+          "5314b70f-5dc7-43ef-96c5-7bf5b9c474ab",
+          "2b607926-de54-4461-9d91-5d24b79c0ede"
+        ]
+      }
+    },
+    {
+      "id": "hrv_for_eng:pod-1:SC14-S006",
+      "course": "hrv_for_eng",
+      "target_pieces": 2,
+      "known_parts": 1,
+      "mid_ellipsis": true,
+      "target_text": "Da, ostavit ću vas… točno kod blagajne.",
+      "known_text": "Yes, I'll drop you right by the ticket office.",
+      "before": {
+        "sentence_audio_ids": [
+          "e89be9db-01f9-4ebb-97d9-fccb54fdf88d",
+          "062546cb-6146-45bc-a74c-775b3cfb42a8"
+        ]
+      }
+    },
+    {
+      "id": "hrv_for_eng:pod-1:SC22-S002",
+      "course": "hrv_for_eng",
+      "target_pieces": 4,
+      "known_parts": 3,
+      "mid_ellipsis": true,
+      "target_text": "Naravno, nema problema. Čini se da to govoriš… jako dobro. Lako te razumijem.",
+      "known_text": "Of course, no problem. You seem to speak it very well. I can understand you easily.",
+      "before": {
+        "sentence_audio_ids": [
+          "8b23cd9e-c6a5-40c9-a78b-b361184a17dd",
+          "c4b32cc5-5721-46a7-b36e-8c24dc592b95",
+          "1cb8fdf9-dfc9-46ab-b651-b4db815c4a1f",
+          "b9fbf259-3cb4-4a49-a6ed-c592005cf41d"
+        ]
+      }
+    },
+    {
+      "id": "hrv_for_eng:pod-1:SC22-S003",
+      "course": "hrv_for_eng",
+      "target_pieces": 9,
+      "known_parts": 3,
+      "mid_ellipsis": true,
+      "target_text": "Hvala, dobro je to znati. Moram naučiti… više riječi… i moram vježbati… slušanje. Ne razumijem ljude… jako dobro… kada ne govore… polako.",
+      "known_text": "Thank you, that's good to know. I need to learn more words, and I need to practise listening. I don't understand people very well when they don't speak slowly.",
+      "before": {
+        "sentence_audio_ids": [
+          "92afcef6-bdd3-4b9e-91c6-7b4d27404fad",
+          "54f0a8d7-95d3-4208-9588-f46ed4aa6128",
+          "b04a2c21-8755-4adb-8873-9d03cfa015ab",
+          "d48474b2-4483-48b8-9863-7a72eeb2d80f",
+          "4036f7cb-a334-48a7-8e9f-4d25f1bae736",
+          "b1cd6ada-2410-42df-a994-ca74212af9f4",
+          "5dcc0e47-d422-4c9c-96d0-9dcda96a33d7",
+          "69ded6b2-6ecb-40f9-87da-16ca94427af8",
+          "9c77ed89-ae18-4565-b8e6-54de5f7a522c"
+        ]
+      }
+    },
+    {
+      "id": "hrv_for_eng:pod-1:SC22-S004",
+      "course": "hrv_for_eng",
+      "target_pieces": 2,
+      "known_parts": 1,
+      "mid_ellipsis": true,
+      "target_text": "Govorim li ti dovoljno… polako sada?",
+      "known_text": "Am I speaking slowly enough for you now?",
+      "before": {
+        "sentence_audio_ids": [
+          "c45c36e8-4bda-453b-9321-e66bccaf1d1b",
+          "95f6c620-66da-498a-b07c-391fbf49b6ed"
+        ]
+      }
+    },
+    {
+      "id": "hrv_for_eng:pod-1:SC22-S005",
+      "course": "hrv_for_eng",
+      "target_pieces": 12,
+      "known_parts": 4,
+      "mid_ellipsis": true,
+      "target_text": "Da, hvala. Lakše je razgovarati… samo s jednom osobom. Malo je teško smisliti… što reći, ipak. Nisam siguran… što da kažem,… ali osjećam… kao da mogu… govoriti dovoljno… da počnem… imati razgovore.",
+      "known_text": "Yes, thank you. It's easier talking to just one person. It's a bit difficult thinking of something to say, though. I'm not sure what to say, but I feel as if I can speak enough to start having conversations.",
+      "before": {
+        "sentence_audio_ids": [
+          "8269592b-07a9-4662-afd7-76f2ca99ab49",
+          "74b57423-7849-4e78-bc4f-ca23d8309502",
+          "6b5b0858-6425-496b-91b0-a8258b40843c",
+          "a98db53a-918e-4b41-8e3b-8e442d8ab1d3",
+          "b5a58ba3-eb4a-4368-b14a-f8bb08b54783",
+          "3fe1e8a8-a17d-4926-866d-9ad9c22d2df6",
+          "7441d0e1-aeef-4aac-a5de-caaa04281832",
+          "cfc5ee49-8589-47d0-8bdf-c55711160978",
+          "41b09e8a-1dd8-4361-b25b-210009f2fee8",
+          "585f4102-615c-482d-9e85-59c7556d2ec3",
+          "5a8fdb64-85bd-46c1-aa6a-43bec20f9769",
+          "364e5431-ed71-45c9-859b-8186ffa9666f"
+        ]
+      }
+    },
+    {
+      "id": "hrv_for_eng:pod-1:SC22-S006",
+      "course": "hrv_for_eng",
+      "target_pieces": 8,
+      "known_parts": 3,
+      "mid_ellipsis": true,
+      "target_text": "Mislim… da se odlično snalaziš. Impresionirana sam. Mislim… da si spreman početi… govoriti hrvatski… s bilo kim… tko govori hrvatski.",
+      "known_text": "I think you're doing very well. I'm impressed. I think you're ready to start speaking Croatian to anyone who speaks Croatian.",
+      "before": {
+        "sentence_audio_ids": [
+          "2bc12877-26ff-4ef3-a7ba-12d51ccdae68",
+          "25d03898-7bcc-4acd-a7fc-77dabdc38fdb",
+          "c3e04ca0-c527-4a12-8a4a-ee5a45ade994",
+          "2bc12877-26ff-4ef3-a7ba-12d51ccdae68",
+          "911ed930-85d4-45d5-a386-b5cce4ec7ac1",
+          "7ae823f5-f3af-436e-ae0b-b4ced9ddb006",
+          "44a37e86-0c22-4a7f-85a3-88776d156447",
+          "fa0e49b5-a2d0-4ccb-8c87-939c78acf559"
+        ]
+      }
+    },
+    {
+      "id": "hrv_for_eng:pod-1:SC22-S007",
+      "course": "hrv_for_eng",
+      "target_pieces": 10,
+      "known_parts": 2,
+      "mid_ellipsis": true,
+      "target_text": "Malo je frustrirajuće… kad ne mogu dovoljno… brzo razmišljati… da bih se… ispravno izrazio. Ali znam… da moram… nastaviti vježbati… ako želim govoriti… samopouzdanije.",
+      "known_text": "It's just a little frustrating when I can't think quickly enough to express myself properly. But I know that I need to keep practising if I want to speak more confidently.",
+      "before": {
+        "sentence_audio_ids": [
+          "46ae6989-2cb1-4f55-8f19-b5f7051270df",
+          "366a291f-def4-4ff4-b1ce-b2dfe83080fb",
+          "c84921d7-e7b0-4642-b166-58cc35a4e25b",
+          "c45d4401-e421-46d3-be85-93fce4b9d3f4",
+          "ae0795e1-241c-4e9d-90d3-27952b2d9b1c",
+          "ddb95690-45de-4d9f-9f34-74b631f07ca5",
+          "b2dab8c8-311d-4a2a-9daa-9a347d6976b9",
+          "c8bacc34-7577-4db4-9a96-5713d054c2e2",
+          "762b0489-8b76-419d-ae38-174f03077396",
+          "328066f1-2cb5-4019-ba53-c227c83da2dc"
+        ]
+      }
+    },
+    {
+      "id": "hrv_for_eng:pod-1:SC22-S008",
+      "course": "hrv_for_eng",
+      "target_pieces": 10,
+      "known_parts": 3,
+      "mid_ellipsis": true,
+      "target_text": "Trebao bi već biti… samopouzdan. Mislim da se snalaziš… puno bolje… nego što misliš. Osjećam se ugodno… razgovarajući s… tobom,… i ne govorim… jako polako.",
+      "known_text": "You should be confident already. I think you're doing much better than you realise. I feel comfortable speaking with you, and I'm not talking very slowly.",
+      "before": {
+        "sentence_audio_ids": [
+          "9bbb016b-a198-4cb5-b928-0a1d9b56b1bf",
+          "dbfd3ed1-5b49-4b91-a0ea-224cd221930d",
+          "be60a7fe-9991-4041-92f2-e0551e35613f",
+          "91aafa2f-5b5d-4546-a2b4-d4132ec33306",
+          "8f1fe119-53c1-47ce-9d9e-485d3b227592",
+          "183ea2db-5388-4586-a973-a177ff97f4b1",
+          "4bce1847-ed2c-4026-b5e6-a8799a2fb6ae",
+          "02e1a898-bee1-4d69-8a87-7542c12175d7",
+          "9c80dcc1-15f8-4784-ab8b-bc222e275d6f",
+          "3ed6c48d-9576-4bdc-b4aa-376717c62fe1"
+        ]
+      }
+    },
+    {
+      "id": "hrv_for_eng:pod-1:SC22-S009",
+      "course": "hrv_for_eng",
+      "target_pieces": 14,
+      "known_parts": 4,
+      "mid_ellipsis": true,
+      "target_text": "Ovo je točno… onakva vrsta vježbe… kakva mi je potrebna. Mislim… da to mogu osjetiti… kako mijenja moj mozak… dok razgovaramo! Stvarno cijenim… tvoju pomoć. Ali iznenađujuće… je kako se umorim… kad govorim na jeziku… koji ne govorim… jako dobro.",
+      "known_text": "This is exactly the kind of practice I need. I think I can feel it changing my brain while we're talking! I really appreciate your help. But it's surprising how tired I get when I'm talking in a language I don't speak very well.",
+      "before": {
+        "sentence_audio_ids": [
+          "ec1ec379-d00f-4576-b789-0512229a5d6e",
+          "5c200785-80ba-4f49-a987-ec4b51f920b1",
+          "55938d51-e7c1-4297-9862-0a5771120db5",
+          "c76a1d13-fcc3-436e-b474-3323c82129a4",
+          "96ba85ff-d418-4099-80df-934f03acd6bf",
+          "fc9ff681-e9fb-4f90-9d3f-16d3b962c80d",
+          "f7557863-9dbd-4259-8655-fcb66a00e154",
+          "860f3a63-9dfc-4861-b84b-747cba5d591a",
+          "34f36e6f-b308-49f0-8600-673c787e187b",
+          "b95f4971-a090-431e-bd4e-09711bf88865",
+          "0bbfce18-f738-4c67-9944-2a60fb2afa97",
+          "130cc4c3-126b-4ef6-842d-b3bb9c880d80",
+          "f51f962d-6b86-4b32-8027-579111c55ba8",
+          "ad1f3444-4409-4a2e-b3f4-599d1524ee77"
+        ]
+      }
+    },
+    {
+      "id": "hrv_for_eng:pod-1:SC22-S010",
+      "course": "hrv_for_eng",
+      "target_pieces": 8,
+      "known_parts": 3,
+      "mid_ellipsis": true,
+      "target_text": "Mislim da je to normalno. Učenje novog jezika… je teško. Ali toliko… je zabavno… kad počneš… imati razgovore… zar ne?",
+      "known_text": "I think that's normal. Learning a new language is difficult. But it's so much fun when you start to have conversations, isn't it?",
+      "before": {
+        "sentence_audio_ids": [
+          "6187e1d3-804d-4fd5-b829-c35237659a9f",
+          "467689e0-ebed-4319-af15-00c8af902d73",
+          "6582421e-8ce7-4802-a714-930537ef8e7a",
+          "cd2c21ae-931b-4dfa-af80-0f1358cc3125",
+          "1d4d9d96-581f-43c7-8ee5-b37a082638a8",
+          "45e8d3d7-07fc-4c43-89a7-c23daea250ef",
+          "f4de9523-f4b3-445d-8690-24c6778058e2",
+          "a034a219-c6b4-4079-8a4e-0660d053be24"
+        ]
+      }
+    },
+    {
+      "id": "hrv_for_eng:pod-1:SC22-S011",
+      "course": "hrv_for_eng",
+      "target_pieces": 10,
+      "known_parts": 3,
+      "mid_ellipsis": true,
+      "target_text": "Stvarno jest. Stvarno sam sretan… što mogu imati… ovoliko razgovora. I nadam se… da ćemo moći imati… više razgovora… u budućnosti… dok nastavim… napredovati.",
+      "known_text": "It really is. I'm really happy that I can have this much of a conversation. And I hope we'll be able to have more conversations in the future as I keep on getting better.",
+      "before": {
+        "sentence_audio_ids": [
+          "5a43fc21-5507-40bd-b83a-27f04f038346",
+          "a818fbe8-070d-4e41-a281-1e6fbc5594e3",
+          "a88899f7-e7f5-40e3-ad9d-d6a6780165b9",
+          "681d7d15-2047-4895-bd02-9956afff6b62",
+          "e416085c-b84e-4170-806f-b995477fe1d8",
+          "9a001e0d-e8cc-404a-9c59-917d98754b0b",
+          "94ecc648-d78b-473c-9f03-0e40544d22e2",
+          "9f9367a3-4822-40a5-a8e1-fe9957cfe2f9",
+          "ec1f44ea-c599-4bfe-abf6-717335704a68",
+          "019b7f59-7e5d-40f5-aad0-89559d31feb5"
+        ]
+      }
+    },
+    {
+      "id": "jpn_for_eng:pod-1:SC06-S008",
+      "course": "jpn_for_eng",
+      "target_pieces": 3,
+      "known_parts": 2,
+      "mid_ellipsis": false,
+      "target_text": "私は看護師です。すぐそこの角を曲がったところにある病院で働いています。あなたは？",
+      "known_text": "I'm a nurse, at the hospital just round the corner. And you?",
+      "before": {
+        "sentence_audio_ids": [
+          "4bd90c0e-c419-46fc-bc25-5650e8d30612",
+          "358630eb-98b3-4d74-973f-c543b518c6e8",
+          "323dca1e-5a81-4ab5-adb8-ad42a822e83f"
+        ]
+      }
+    },
+    {
+      "id": "jpn_for_eng:pod-1:SC10-S006",
+      "course": "jpn_for_eng",
+      "target_pieces": 2,
+      "known_parts": 1,
+      "mid_ellipsis": false,
+      "target_text": "日焼け止めはあちらの右側にあります。歯磨き粉は角を曲がったところにございます。",
+      "known_text": "Sunscreen is down there on your right, and you'll find toothpaste just round the corner.",
+      "before": {
+        "sentence_audio_ids": [
+          "d8fc6f9b-fc8b-4de6-8300-55cd30deeea1",
+          "8e32e918-f10c-4dc1-b19b-d2dd2b87850e"
+        ]
+      }
+    },
+    {
+      "id": "jpn_for_eng:pod-1:SC10-S007",
+      "course": "jpn_for_eng",
+      "target_pieces": 3,
+      "known_parts": 2,
+      "mid_ellipsis": false,
+      "target_text": "ありがとうございます。親切にしていただいて、ありがとうございます。本当に助かりました。",
+      "known_text": "Thank you, you've been very helpful. I'm very grateful.",
+      "before": {
+        "sentence_audio_ids": [
+          "1470fe5a-300a-437e-be63-ad026ef60fc3",
+          "69ccbccb-de14-4513-bcc7-89e1b1fcfb8c",
+          "6dbea4aa-2257-45b7-9811-2e427bf1a87a"
+        ]
+      }
+    },
+    {
+      "id": "jpn_for_eng:pod-1:SC11-S010",
+      "course": "jpn_for_eng",
+      "target_pieces": 2,
+      "known_parts": 1,
+      "mid_ellipsis": false,
+      "target_text": "はい、正午までご滞在いただけます。追加料金はございません。",
+      "known_text": "Yes, you can stay until midday, no extra charge.",
+      "before": {
+        "sentence_audio_ids": [
+          "404a1cc4-48d8-4b8c-a7ba-920d0580153c",
+          "214b466c-2fe3-4ce3-b392-235020494445"
+        ]
+      }
+    },
+    {
+      "id": "jpn_for_eng:pod-1:SC13-S007",
+      "course": "jpn_for_eng",
+      "target_pieces": 2,
+      "known_parts": 1,
+      "mid_ellipsis": false,
+      "target_text": "左手にスーパーが見えます。バス停のちょうど向かい側です。",
+      "known_text": "You'll see the supermarket on your left, just opposite the bus stop.",
+      "before": {
+        "sentence_audio_ids": [
+          "818e9ea6-147a-4d78-93ca-c6bf5f2a05ad",
+          "bf4b07c5-7806-44e4-b8e1-0fe086cc0932"
+        ]
+      }
+    },
+    {
+      "id": "jpn_for_eng:pod-1:SC13-S009",
+      "course": "jpn_for_eng",
+      "target_pieces": 2,
+      "known_parts": 1,
+      "mid_ellipsis": false,
+      "target_text": "はい、メインストリートにあります。パン屋の隣です。",
+      "known_text": "Yes, there's one on the high street, next to the bakery.",
+      "before": {
+        "sentence_audio_ids": [
+          "0c734ae2-13e3-46b3-82bd-cce8489af1e5",
+          "328de9a2-d13e-4f54-9f5d-4663fef2fea2"
+        ]
+      }
+    },
+    {
+      "id": "kor_for_eng:pod-1:SC06-S008",
+      "course": "kor_for_eng",
+      "target_pieces": 3,
+      "known_parts": 2,
+      "mid_ellipsis": false,
+      "target_text": "저는 간호사예요. 바로 근처에 있는 병원에서 일해요. 당신은요?",
+      "known_text": "I'm a nurse, at the hospital just round the corner. And you?",
+      "before": {
+        "sentence_audio_ids": [
+          "86ee6500-05e3-43b8-97a8-5dc28f51d59c",
+          "22e7008a-3c26-464d-b788-d8608c6bcf38",
+          "94e3ded3-84a0-4164-87c7-97ff795b1276"
+        ]
+      }
+    },
+    {
+      "id": "kor_for_eng:pod-1:SC08-S003",
+      "course": "kor_for_eng",
+      "target_pieces": 2,
+      "known_parts": 1,
+      "mid_ellipsis": false,
+      "target_text": "비터랑 스타우트가 있어요. 둘 다 지역 맥주예요.",
+      "known_text": "We've got a bitter and a stout, and they're both local.",
+      "before": {
+        "sentence_audio_ids": [
+          "6be86f66-bf6e-4957-8fef-0324489adfd8",
+          "b57e288f-8bdd-405e-8dbd-0b9d557dec5a"
+        ]
+      }
+    },
+    {
+      "id": "kor_for_eng:pod-1:SC10-S009",
+      "course": "kor_for_eng",
+      "target_pieces": 4,
+      "known_parts": 3,
+      "mid_ellipsis": false,
+      "target_text": "감사합니다! 네, 여행 중이에요. 한국어를 더 잘하려면 더 연습해야 해요. 감사합니다.",
+      "known_text": "That's very kind of you! Yes, I'm on holiday, and I need to practice more to speak Korean better. Thank you very much, and goodbye.",
+      "before": {
+        "sentence_audio_ids": [
+          "de9d300d-0658-4c2f-aef6-f7a682b7e0b7",
+          "6b4c0e10-87ef-491c-873b-7f1f4703e416",
+          "ffe04027-f9dc-485a-ada1-ec02c374f148",
+          "de9d300d-0658-4c2f-aef6-f7a682b7e0b7"
+        ]
+      }
+    },
+    {
+      "id": "kor_for_eng:pod-1:SC11-S010",
+      "course": "kor_for_eng",
+      "target_pieces": 2,
+      "known_parts": 1,
+      "mid_ellipsis": false,
+      "target_text": "네, 정오까지 계실 수 있어요. 추가 요금은 없어요.",
+      "known_text": "Yes, you can stay until midday, no extra charge.",
+      "before": {
+        "sentence_audio_ids": [
+          "0c8a4505-b590-450b-9c50-5dd2215d1c9f",
+          "efee258f-7a26-4145-9077-b9a59ba36768"
+        ]
+      }
+    },
+    {
+      "id": "kor_for_eng:pod-1:SC15-S009",
+      "course": "kor_for_eng",
+      "target_pieces": 2,
+      "known_parts": 1,
+      "mid_ellipsis": false,
+      "target_text": "저는 그 나라 언어로 말해보는 걸 더 좋아해요. 그게 예의라고 생각하거든요.",
+      "known_text": "I prefer to try to speak your language, I think it's polite.",
+      "before": {
+        "sentence_audio_ids": [
+          "d5707a17-b20e-4844-9a79-43b2b17fa372",
+          "bc38b3d5-6064-4278-bfec-37b6a9eae3bf"
+        ]
+      }
+    },
+    {
+      "id": "zho_for_eng:pod-1:SC05-S002",
+      "course": "zho_for_eng",
+      "target_pieces": 3,
+      "known_parts": 4,
+      "mid_ellipsis": false,
+      "target_text": "是啊，很累。我现在非常累了。晚安，明天见。",
+      "known_text": "Yes, very. I'm very tired now. Good night. See you tomorrow.",
+      "before": {
+        "sentence_audio_ids": [
+          "799f14d6-c3ce-4f73-8b1a-49c638140eb8",
+          "09a320cf-828e-441a-8af7-48300ed6ad47",
+          "3d927449-55ce-4b32-b16a-b2c484c63d5f"
+        ]
+      }
+    }
+  ]
+}

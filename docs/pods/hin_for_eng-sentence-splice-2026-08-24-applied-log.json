@@ -1,0 +1,183 @@
+{
+  "course": "hin_for_eng",
+  "pod": "hin_for_eng:pod-1",
+  "apply": true,
+  "at": "2026-08-24T12:47:36.208Z",
+  "gates": {
+    "margin_floor": 1.5,
+    "seam_db": -35,
+    "seam_window_s": 0.03,
+    "min_piece_s": 0.35
+  },
+  "splicer": "scripts/splice-fork/splice.py (unmodified)",
+  "multi_sentence_turns_needing_split": 7,
+  "processed": 7,
+  "stats": {
+    "linked": 6,
+    "reused_clips": 2,
+    "spliced_clips": 10,
+    "refused": 1,
+    "errors": 0,
+    "known_count_mismatch": 1
+  },
+  "refusals": [
+    {
+      "id": "hin_for_eng:pod-1:SC04-S002",
+      "order": 21,
+      "n": 2,
+      "reason": "margin_below_floor",
+      "text": "हेलो! माफ़ कीजिए, लेकिन मैं अभी बात नहीं कर सकती। मुझे अभी घर जाना है। क्या हम कल बात कर सकते हैं?",
+      "sentences": [
+        "हेलो!",
+        "माफ़ कीजिए, लेकिन मैं अभी बात नहीं कर सकती। मुझे अभी घर जाना है। क्या हम कल बात कर सकते हैं?"
+      ],
+      "target_audio_id": "b0dae710-d4f6-4dbf-8909-1c44674287ab",
+      "measure": {
+        "whole_dur": 7.612,
+        "interior_gaps_ms": [
+          436,
+          160,
+          130,
+          405,
+          362,
+          121
+        ],
+        "cut_at_gaps_ms": [
+          436
+        ],
+        "rejected_gaps_ms": [
+          405,
+          362,
+          160,
+          130,
+          121
+        ],
+        "margin": 1.08,
+        "piece_durs": [
+          0.749,
+          6.962
+        ]
+      }
+    }
+  ],
+  "errors": [],
+  "linked": [
+    {
+      "id": "hin_for_eng:pod-1:SC08-S006",
+      "order": 58,
+      "n": 2,
+      "sentences": [
+        "क्या मैं वाइन लिस्ट देख सकता हूँ?",
+        "मुझे एक गिलास वाइन चाहिए।"
+      ],
+      "ids": [
+        "8db0a96b-ba3b-4ab5-873b-e6460b1539dd",
+        "fd6c9139-00a6-47a6-a99f-9fb79c702eb7"
+      ],
+      "margin": 3.13,
+      "piece_durs": [
+        2.123,
+        2.177
+      ],
+      "worst_seam_db": -57.6,
+      "all_reused": false
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC07-S011",
+      "order": 48,
+      "n": 2,
+      "sentences": [
+        "क्या मैं कार्ड से भुगतान कर सकती हूँ?",
+        "क्या आपके पास कॉन्टैक्टलेस है?"
+      ],
+      "ids": [
+        "a58fca54-f966-43ad-96b5-2fbf1aef77c8",
+        "691535d2-4cb8-41e2-a7ea-cdcf90a1914d"
+      ],
+      "margin": 5.8,
+      "piece_durs": [
+        2.824,
+        2.653
+      ],
+      "worst_seam_db": -62,
+      "all_reused": false
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC08-S015",
+      "order": 67,
+      "n": 2,
+      "sentences": [
+        "क्या आपके पास सैंडविच है?",
+        "मुझे एक चीज़ सैंडविच चाहिए।"
+      ],
+      "ids": [
+        "91210c25-fc8a-457c-866b-2caa67ab093f",
+        "dc9c7727-77a7-44d9-9383-c5b37a46c628"
+      ],
+      "margin": 3.25,
+      "piece_durs": [
+        1.997,
+        2.363
+      ],
+      "worst_seam_db": -56.7,
+      "all_reused": false
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC22-S001",
+      "order": 221,
+      "n": 2,
+      "sentences": [
+        "क्या आप बुरा नहीं मानेंगे अगर मैं आपके साथ हिंदी बोलने की कोशिश करूँ?",
+        "मैं बहुत लंबे समय से नहीं सीख रहा हूँ, और दूसरे लोगों के साथ बोलने में अभी भी थोड़ा घबराहट महसूस होती है।"
+      ],
+      "ids": [
+        "691acb93-ace7-4865-804d-20e80d0fb890",
+        "9ad2ca54-d81f-456a-a276-072cf98ddbeb"
+      ],
+      "margin": null,
+      "piece_durs": null,
+      "worst_seam_db": null,
+      "all_reused": true
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC10-S008",
+      "order": 94,
+      "n": 2,
+      "sentences": [
+        "कोई बात नहीं। क्या आप यहाँ छुट्टियों पर हैं?",
+        "आप बहुत अच्छी हिंदी बोलते हैं।"
+      ],
+      "ids": [
+        "05d47805-5085-486d-a6ff-b4b0686f6538",
+        "1961baa4-d15f-41ed-9840-fbd97318e538"
+      ],
+      "margin": 1.7,
+      "piece_durs": [
+        3.416,
+        2.547
+      ],
+      "worst_seam_db": -62,
+      "all_reused": false
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC18-S007",
+      "order": 180,
+      "n": 2,
+      "sentences": [
+        "क्या यह सही है?",
+        "क्या मैं सही हूँ?"
+      ],
+      "ids": [
+        "ac90a591-0984-49f9-b73d-1c2bd0f0a996",
+        "3e598ecb-1044-49ca-b108-50b961e64f83"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.204,
+        1.256
+      ],
+      "worst_seam_db": -57.1,
+      "all_reused": false
+    }
+  ]
+}
