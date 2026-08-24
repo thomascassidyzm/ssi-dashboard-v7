@@ -2,7 +2,7 @@
  "pod": "kor_for_eng:pod-1",
  "course": "kor_for_eng",
  "mode": "applied",
- "generated_at": "2026-08-24T11:59:59.357Z",
+ "generated_at": "2026-08-24T12:09:30.857Z",
  "ancestors": [
   "kor_for_eng:pod-0-retired-2026-08-22",
   "kor_for_eng:pod-1-retired-2026-08-24"
@@ -10,18 +10,118 @@
  "rows_total": 231,
  "measured_inherited_slots": {
   "sentence_audio_ids": 0,
-  "sentence_known_audio_ids": 3,
-  "takeg_audio_ids": 1,
+  "sentence_known_audio_ids": 0,
+  "takeg_audio_ids": 0,
   "explainer_audio_id": 24
  },
- "scope_note": "explainer_audio_id is MEASURED ONLY — owned by the explainer relink worker",
+ "scope_note": "explainer_audio_id repaired on the INHERITED test only; #312's sixteen protected rows and any explainer still quoting its own row are held, never written",
+ "held": [
+  {
+   "id": "kor_for_eng:pod-1:SC05-S002",
+   "scene": 5,
+   "sentence": 2,
+   "global_order": 24,
+   "field": "explainer_audio_id",
+   "why": "inherited, but the clip still quotes this row's own text — a gloss that explains its row is not a defect"
+  },
+  {
+   "id": "kor_for_eng:pod-1:SC06-S001",
+   "scene": 6,
+   "sentence": 1,
+   "global_order": 25,
+   "field": "explainer_audio_id",
+   "why": "inherited, but the clip still quotes this row's own text — a gloss that explains its row is not a defect"
+  },
+  {
+   "id": "kor_for_eng:pod-1:SC06-S005",
+   "scene": 6,
+   "sentence": 5,
+   "global_order": 29,
+   "field": "explainer_audio_id",
+   "why": "inherited, but the clip still quotes this row's own text — a gloss that explains its row is not a defect"
+  },
+  {
+   "id": "kor_for_eng:pod-1:SC09-S005",
+   "scene": 9,
+   "sentence": 5,
+   "global_order": 73,
+   "field": "explainer_audio_id",
+   "why": "inherited, but the clip still quotes this row's own text — a gloss that explains its row is not a defect"
+  },
+  {
+   "id": "kor_for_eng:pod-1:SC11-S004",
+   "scene": 11,
+   "sentence": 4,
+   "global_order": 100,
+   "field": "explainer_audio_id",
+   "why": "inherited, but the clip still quotes this row's own text — a gloss that explains its row is not a defect"
+  },
+  {
+   "id": "kor_for_eng:pod-1:SC11-S008",
+   "scene": 11,
+   "sentence": 8,
+   "global_order": 104,
+   "field": "explainer_audio_id",
+   "why": "inherited, but the clip still quotes this row's own text — a gloss that explains its row is not a defect"
+  },
+  {
+   "id": "kor_for_eng:pod-1:SC12-S001",
+   "scene": 12,
+   "sentence": 1,
+   "global_order": 110,
+   "field": "explainer_audio_id",
+   "why": "inherited, but the clip still quotes this row's own text — a gloss that explains its row is not a defect"
+  },
+  {
+   "id": "kor_for_eng:pod-1:SC14-S001",
+   "scene": 14,
+   "sentence": 1,
+   "global_order": 131,
+   "field": "explainer_audio_id",
+   "why": "inherited, but the clip still quotes this row's own text — a gloss that explains its row is not a defect"
+  },
+  {
+   "id": "kor_for_eng:pod-1:SC14-S007",
+   "scene": 14,
+   "sentence": 7,
+   "global_order": 137,
+   "field": "explainer_audio_id",
+   "why": "inherited, but the clip still quotes this row's own text — a gloss that explains its row is not a defect"
+  },
+  {
+   "id": "kor_for_eng:pod-1:SC15-S009",
+   "scene": 15,
+   "sentence": 9,
+   "global_order": 149,
+   "field": "explainer_audio_id",
+   "why": "inherited, but the clip still quotes this row's own text — a gloss that explains its row is not a defect"
+  }
+ ],
  "split_keyed_progress_rows": 0,
  "stopped": null,
  "whole_turn_failures": [],
  "rows_excluded_bad_whole_turn": [],
- "slots_planned": 4,
- "slots_written": 4,
+ "slots_planned": 14,
+ "slots_written": 14,
  "rows": [
+  {
+   "id": "kor_for_eng:pod-1:SC03-S003",
+   "scene": 3,
+   "sentence": 3,
+   "speaker": "Sarah",
+   "target_text": "음식 있어요?",
+   "known_text": "Do you have any food?",
+   "slots": [
+    {
+     "field": "explainer_audio_id",
+     "changed": "target_text+known_text",
+     "before": "7d8f6f5b-b421-46a8-ac3a-bd7815e4982c",
+     "after": null,
+     "action": "null",
+     "why": "no alive, verified clip exists for this row's current text; falling back (explainer slot plays the translation)"
+    }
+   ]
+  },
   {
    "id": "kor_for_eng:pod-1:SC05-S001",
    "scene": 5,
@@ -31,79 +131,228 @@
    "known_text": "Good evening, Sarah. Did you have a long day?",
    "slots": [
     {
-     "field": "takeg_audio_ids",
+     "field": "explainer_audio_id",
      "changed": "target_text+known_text",
-     "before": [
-      "2eb6f99d-e9b7-491d-86e9-1aa441851ae1",
-      null
-     ],
+     "before": "932184ca-12cc-4453-9a4e-9be173dcae89",
      "after": null,
      "action": "null",
-     "why": "no alive, in-cast clip set exists for this row's target text; falling back to the verified whole-turn clip"
+     "why": "no alive, verified clip exists for this row's current text; falling back (explainer slot plays the translation)"
     }
    ]
   },
   {
-   "id": "kor_for_eng:pod-1:SC06-S005",
-   "scene": 6,
-   "sentence": 5,
-   "speaker": "James",
-   "target_text": "저는 맨체스터 출신인데, 지금은 런던에 살고 있어요. 당신은요?",
-   "known_text": "I'm from Manchester, but I live in London now. And you?",
+   "id": "kor_for_eng:pod-1:SC07-S010",
+   "scene": 7,
+   "sentence": 10,
+   "speaker": "Cafe Barista",
+   "target_text": "다 해서 8파운드 40이에요.",
+   "known_text": "That's eight pound forty altogether.",
    "slots": [
     {
-     "field": "sentence_known_audio_ids",
+     "field": "explainer_audio_id",
      "changed": "target_text+known_text",
-     "before": [
-      "a61bf86a-6675-4bf4-a3af-bb552a056ddc",
-      "84bd18f3-fa1e-431d-bb22-4856ccf567b8",
-      "ceb360b7-a0da-404f-8ab3-d31bb0170558"
-     ],
+     "before": "f2694651-9880-495f-a112-cf24fa97daa0",
      "after": null,
      "action": "null",
-     "why": "no alive, in-cast clip set exists for this row's known text; falling back to the verified whole-turn clip"
+     "why": "no alive, verified clip exists for this row's current text; falling back (explainer slot plays the translation)"
     }
    ]
   },
   {
-   "id": "kor_for_eng:pod-1:SC09-S005",
-   "scene": 9,
-   "sentence": 5,
-   "speaker": "Diner 1",
-   "target_text": "실례합니다 — 글루텐 프리 메뉴가 있나요? 아니면 채식 메뉴도 있나요?",
-   "known_text": "Excuse me - do you have anything gluten-free? Or for vegetarians?",
+   "id": "kor_for_eng:pod-1:SC08-S002",
+   "scene": 8,
+   "sentence": 2,
+   "speaker": "Bar Customer 1",
+   "target_text": "파인트 한 잔 주세요. 어떤 에일 맥주가 있어요?",
+   "known_text": "I'd like a pint, please. What ales do you have on?",
    "slots": [
     {
-     "field": "sentence_known_audio_ids",
-     "changed": "known_text",
-     "before": [
-      "a192f2de-8936-49f7-87ae-c07ceace764f",
-      "5957d05e-0b2a-415b-9c6f-70b6ec38acce"
-     ],
+     "field": "explainer_audio_id",
+     "changed": "target_text+known_text",
+     "before": "ff6b5491-84ad-4aa6-9cf8-e83282402141",
      "after": null,
      "action": "null",
-     "why": "no alive, in-cast clip set exists for this row's known text; falling back to the verified whole-turn clip"
+     "why": "no alive, verified clip exists for this row's current text; falling back (explainer slot plays the translation)"
     }
    ]
   },
   {
-   "id": "kor_for_eng:pod-1:SC11-S008",
-   "scene": 11,
+   "id": "kor_for_eng:pod-1:SC15-S001",
+   "scene": 15,
+   "sentence": 1,
+   "speaker": "Learner",
+   "target_text": "그거 얼마예요?",
+   "known_text": "How much is that?",
+   "slots": [
+    {
+     "field": "explainer_audio_id",
+     "changed": "target_text+known_text",
+     "before": "b0391d84-ba0e-4de6-9f5c-062675f959fb",
+     "after": null,
+     "action": "null",
+     "why": "no alive, verified clip exists for this row's current text; falling back (explainer slot plays the translation)"
+    }
+   ]
+  },
+  {
+   "id": "kor_for_eng:pod-1:SC15-S002",
+   "scene": 15,
+   "sentence": 2,
+   "speaker": "Learner",
+   "target_text": "그게 얼마인지 말씀해 주시겠어요?",
+   "known_text": "Can you tell me how much that is?",
+   "slots": [
+    {
+     "field": "explainer_audio_id",
+     "changed": "target_text+known_text",
+     "before": "818dd111-f07f-4b5d-8c42-9070ebb82e24",
+     "after": null,
+     "action": "null",
+     "why": "no alive, verified clip exists for this row's current text; falling back (explainer slot plays the translation)"
+    }
+   ]
+  },
+  {
+   "id": "kor_for_eng:pod-1:SC15-S003",
+   "scene": 15,
+   "sentence": 3,
+   "speaker": "Learner",
+   "target_text": "시내까지 택시 타면 얼마예요?",
+   "known_text": "How much does it cost to get a taxi into town?",
+   "slots": [
+    {
+     "field": "explainer_audio_id",
+     "changed": "target_text+known_text",
+     "before": "9e576fe7-ae86-4e68-86dc-a530509db2a9",
+     "after": null,
+     "action": "null",
+     "why": "no alive, verified clip exists for this row's current text; falling back (explainer slot plays the translation)"
+    }
+   ]
+  },
+  {
+   "id": "kor_for_eng:pod-1:SC15-S004",
+   "scene": 15,
+   "sentence": 4,
+   "speaker": "Learner",
+   "target_text": "시내까지 버스 타면 얼마예요?",
+   "known_text": "How much does it cost to get a bus into town?",
+   "slots": [
+    {
+     "field": "explainer_audio_id",
+     "changed": "target_text+known_text",
+     "before": "abecdbb0-87c3-4ffc-9cc0-8a4316ba6c5c",
+     "after": null,
+     "action": "null",
+     "why": "no alive, verified clip exists for this row's current text; falling back (explainer slot plays the translation)"
+    }
+   ]
+  },
+  {
+   "id": "kor_for_eng:pod-1:SC15-S005",
+   "scene": 15,
+   "sentence": 5,
+   "speaker": "Learner",
+   "target_text": "버스는 어디서 탈 수 있어요?",
+   "known_text": "Where can we get a bus?",
+   "slots": [
+    {
+     "field": "explainer_audio_id",
+     "changed": "target_text+known_text",
+     "before": "065b8aae-a94e-43d5-9a29-75375cb9fd99",
+     "after": null,
+     "action": "null",
+     "why": "no alive, verified clip exists for this row's current text; falling back (explainer slot plays the translation)"
+    }
+   ]
+  },
+  {
+   "id": "kor_for_eng:pod-1:SC15-S006",
+   "scene": 15,
+   "sentence": 6,
+   "speaker": "Learner",
+   "target_text": "택시는 어디서 탈 수 있어요?",
+   "known_text": "Where can we get a taxi?",
+   "slots": [
+    {
+     "field": "explainer_audio_id",
+     "changed": "target_text+known_text",
+     "before": "cbd6f038-9e98-4bbb-8a9d-4418c950a9f8",
+     "after": null,
+     "action": "null",
+     "why": "no alive, verified clip exists for this row's current text; falling back (explainer slot plays the translation)"
+    }
+   ]
+  },
+  {
+   "id": "kor_for_eng:pod-1:SC15-S007",
+   "scene": 15,
+   "sentence": 7,
+   "speaker": "Learner",
+   "target_text": "시내 가는 편도 표 네 장 주세요.",
+   "known_text": "Four single tickets to town, please.",
+   "slots": [
+    {
+     "field": "explainer_audio_id",
+     "changed": "target_text+known_text",
+     "before": "d26104c7-933d-448e-91eb-d747d84cd292",
+     "after": null,
+     "action": "null",
+     "why": "no alive, verified clip exists for this row's current text; falling back (explainer slot plays the translation)"
+    }
+   ]
+  },
+  {
+   "id": "kor_for_eng:pod-1:SC15-S008",
+   "scene": 15,
    "sentence": 8,
-   "speaker": "Receptionist",
-   "target_text": "일곱 시 반부터 열 시까지예요. 과일과 시리얼, 또는 따뜻한 조리 식사를 드실 수 있어요.",
-   "known_text": "From half-past seven until ten o'clock. We have fruit and cereals or a cooked breakfast.",
+   "speaker": "Learner",
+   "target_text": "시내 가는 왕복 표 두 장 주세요.",
+   "known_text": "Two return tickets to town, please.",
    "slots": [
     {
-     "field": "sentence_known_audio_ids",
-     "changed": "known_text",
-     "before": [
-      "d4fbb204-3c54-41f5-9bab-5dfecdfa985c",
-      "36f617e0-8cec-4d46-8669-85f04910077f"
-     ],
+     "field": "explainer_audio_id",
+     "changed": "target_text+known_text",
+     "before": "3f9fe330-f6bf-404e-bc8b-5135c4ef2ee3",
      "after": null,
      "action": "null",
-     "why": "no alive, in-cast clip set exists for this row's known text; falling back to the verified whole-turn clip"
+     "why": "no alive, verified clip exists for this row's current text; falling back (explainer slot plays the translation)"
+    }
+   ]
+  },
+  {
+   "id": "kor_for_eng:pod-1:SC15-S010",
+   "scene": 15,
+   "sentence": 10,
+   "speaker": "Learner",
+   "target_text": "죄송하지만 저는 빨리 말을 잘 못해요.",
+   "known_text": "I'm sorry I can't speak very quickly.",
+   "slots": [
+    {
+     "field": "explainer_audio_id",
+     "changed": "target_text+known_text",
+     "before": "9a2f21cc-ef30-4dfe-9182-59f4eb98ba7e",
+     "after": null,
+     "action": "null",
+     "why": "no alive, verified clip exists for this row's current text; falling back (explainer slot plays the translation)"
+    }
+   ]
+  },
+  {
+   "id": "kor_for_eng:pod-1:SC15-S011",
+   "scene": 15,
+   "sentence": 11,
+   "speaker": "Narrator",
+   "target_text": "십만. 육십. 칠십. 한 시. 열한 시.",
+   "known_text": "100,000. 60. 70. 1 o'clock. 11 o'clock.",
+   "slots": [
+    {
+     "field": "explainer_audio_id",
+     "changed": "target_text+known_text",
+     "before": "0ec677cd-52f5-4628-8624-de0c11e9a5ce",
+     "after": null,
+     "action": "null",
+     "why": "no alive, verified clip exists for this row's current text; falling back (explainer slot plays the translation)"
     }
    ]
   }

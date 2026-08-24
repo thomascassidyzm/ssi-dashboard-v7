@@ -2,7 +2,7 @@
  "pod": "eus_for_eng:pod-1",
  "course": "eus_for_eng",
  "mode": "dryrun",
- "generated_at": "2026-08-24T12:00:24.415Z",
+ "generated_at": "2026-08-24T12:10:22.874Z",
  "ancestors": [
   "eus_for_eng:pod-0-retired-2026-08-22",
   "eus_for_eng:pod-1-retired-2026-08-24"
@@ -14,9 +14,10 @@
   "takeg_audio_ids": 0,
   "explainer_audio_id": 0
  },
- "scope_note": "explainer_audio_id is MEASURED ONLY — owned by the explainer relink worker",
- "split_keyed_progress_rows": 0,
- "stopped": null,
+ "scope_note": "explainer_audio_id repaired on the INHERITED test only; #312's sixteen protected rows and any explainer still quoting its own row are held, never written",
+ "held": [],
+ "split_keyed_progress_rows": 2,
+ "stopped": "2 split-keyed learner_pod_state rows — nulling would change the progress key and orphan them",
  "whole_turn_failures": [],
  "rows_excluded_bad_whole_turn": [],
  "slots_planned": 0,

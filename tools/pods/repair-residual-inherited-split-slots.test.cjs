@@ -29,6 +29,8 @@ import { describe, it, expect } from 'vitest'
 const {
   REPAIRABLE_SLOTS,
   MEASURED_SLOTS,
+  EXPLAINER_PROTECTED,
+  isProtected,
   verifyWholeTurn,
   replacementRefusal,
   planPod,
@@ -84,21 +86,103 @@ const CLIPS = {
 }
 
 describe('scope', () => {
-  it('never lists explainer_audio_id as writable, but does measure it', () => {
+  it('covers all four non-whole-turn slots once the explainer fence is lifted', () => {
     expect(REPAIRABLE_SLOTS).toEqual([
-      'sentence_audio_ids', 'sentence_known_audio_ids', 'takeg_audio_ids',
+      'sentence_audio_ids', 'sentence_known_audio_ids', 'takeg_audio_ids', 'explainer_audio_id',
     ])
-    expect(MEASURED_SLOTS).toContain('explainer_audio_id')
+    expect(MEASURED_SLOTS).toEqual(REPAIRABLE_SLOTS)
   })
 
-  it('measures the inherited explainer slot but plans no write for it', () => {
+  it('measures the inherited explainer and repairs it when it explains another row', () => {
     const { plan, measured } = planPod({
       rows: [NEW], ancestorRowSets: [[OLD]], clips: CLIPS, speakers: SPEAKERS,
     })
     expect(measured.explainer_audio_id).toBe(1)
-    const fields = plan.flatMap(p => p.slots.map(s => s.field))
-    expect(fields).not.toContain('explainer_audio_id')
-    expect(fields.sort()).toEqual(['sentence_audio_ids', 'sentence_known_audio_ids', 'takeg_audio_ids'])
+    const fields = plan.flatMap(p => p.slots.map(s => s.field)).sort()
+    expect(fields).toEqual([
+      'explainer_audio_id', 'sentence_audio_ids', 'sentence_known_audio_ids', 'takeg_audio_ids',
+    ])
+    const ex = plan[0].slots.find(s => s.field === 'explainer_audio_id')
+    expect(ex.action).toBe('null')
+    expect(ex.before).toBe('e1') // scalar, snapshotted as a scalar
+  })
+})
+
+describe('the explainer column', () => {
+  /** #312's sixteen — the exact keys it published, by pod_id and global_order. */
+  it('holds all sixteen of worker #312\'s protected rows', () => {
+    expect(EXPLAINER_PROTECTED.size).toBe(16)
+    expect(isProtected({ pod_id: 'ara_eg_for_eng:pod-1', global_order: 20 })).toBe(true)
+    expect(isProtected({ pod_id: 'spa_for_eng:pod-1', global_order: 3 })).toBe(true)
+    expect(isProtected({ pod_id: 'spa_for_eng:pod-1', global_order: 4 })).toBe(false)
+  })
+
+  it('never plans a write on a protected row, even when it is inherited and wrong', () => {
+    const row = { ...NEW, pod_id: 'spa_for_eng:pod-1', global_order: 3 }
+    const { plan, held } = planPod({
+      rows: [row], ancestorRowSets: [[OLD]], clips: CLIPS, speakers: SPEAKERS,
+    })
+    expect(plan[0].slots.map(s => s.field)).not.toContain('explainer_audio_id')
+    expect(held.map(h => h.why).join(' ')).toMatch(/protected/)
+  })
+
+  it('leaves an inherited explainer that still quotes its own row', () => {
+    // The slot was carried across a text change, but the gloss happens to
+    // explain the NEW row — a gloss that explains its row is not a defect.
+    const clips = { ...CLIPS, e1: { text: '"Cosa fai". means what do you do.', voice_id: 'comp:rex+bedd6226' } }
+    const { plan, held } = planPod({
+      rows: [NEW], ancestorRowSets: [[OLD]], clips, speakers: SPEAKERS,
+    })
+    expect(plan[0].slots.map(s => s.field)).not.toContain('explainer_audio_id')
+    expect(held.map(h => h.why).join(' ')).toMatch(/still quotes this row/)
+  })
+
+  it('re-points to a retired row carrying BOTH texts identical, and does not cast-test the composite', () => {
+    const elsewhere = {
+      ...OLD,
+      id: 'x:pod-0:SC09-S001',
+      scene_number: 9,
+      target_text: NEW.target_text,
+      known_text: NEW.known_text,
+      explainer_audio_id: 'e9',
+    }
+    const clips = {
+      ...CLIPS,
+      // gloss half is the legacy narrator — deliberately off-cast, by design
+      e9: { text: '"Cosa fai". means what do you do.', voice_id: 'comp:rex+en-GB-SoniaNeural' },
+    }
+    const { plan } = planPod({
+      rows: [NEW], ancestorRowSets: [[OLD, elsewhere]], clips, speakers: SPEAKERS,
+    })
+    const ex = plan[0].slots.find(s => s.field === 'explainer_audio_id')
+    expect(ex.action).toBe('re-point')
+    expect(ex.after).toBe('e9')
+  })
+
+  it('requires BOTH texts to match for an explainer re-point — target alone is not enough', () => {
+    const targetOnly = {
+      ...OLD,
+      id: 'x:pod-0:SC09-S001',
+      scene_number: 9,
+      target_text: NEW.target_text,
+      known_text: 'Some other translation entirely.',
+      explainer_audio_id: 'e9',
+    }
+    const clips = { ...CLIPS, e9: { text: '"Cosa fai". means what do you do.', voice_id: 'comp:rex+bedd6226' } }
+    const { plan } = planPod({
+      rows: [NEW], ancestorRowSets: [[OLD, targetOnly]], clips, speakers: SPEAKERS,
+    })
+    expect(plan[0].slots.find(s => s.field === 'explainer_audio_id').action).toBe('null')
+  })
+
+  it('does not refuse an explainer candidate for an off-cast gloss half', () => {
+    const clips = { ...CLIPS, e9: { text: '"Cosa fai". means what do you do.', voice_id: 'comp:rex+en-GB-SoniaNeural' } }
+    expect(replacementRefusal('e9', 'explainer_audio_id', NEW, clips, SPEAKERS)).toBeNull()
+  })
+
+  it('still refuses an explainer candidate that quotes a different conversation', () => {
+    const clips = { ...CLIPS, e9: { text: '"Buongiorno". means good morning.', voice_id: 'comp:rex+bedd6226' } }
+    expect(replacementRefusal('e9', 'explainer_audio_id', NEW, clips, SPEAKERS)).toMatch(/row-text walk/)
   })
 })
 
@@ -137,9 +221,9 @@ describe('planPod', () => {
     const s = plan[0].slots.find(x => x.field === 'sentence_audio_ids')
     expect(s.action).toBe('re-point')
     expect(s.after).toEqual(['b1', 'b2'])
-    // the other two slots have no candidate and still fall back
+    // the other slots have no candidate and still fall back
     expect(plan[0].slots.filter(x => x.action === 'null').map(x => x.field).sort())
-      .toEqual(['sentence_known_audio_ids', 'takeg_audio_ids'])
+      .toEqual(['explainer_audio_id', 'sentence_known_audio_ids', 'takeg_audio_ids'])
   })
 
   it('refuses a candidate voiced by the wrong character, even though it IS in the cast', () => {
