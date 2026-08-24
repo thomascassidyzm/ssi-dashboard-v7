@@ -1,0 +1,90 @@
+{
+ "pod": "jpn_for_eng:pod-1",
+ "course": "jpn_for_eng",
+ "mode": "applied",
+ "generated_at": "2026-08-24T11:59:58.757Z",
+ "ancestors": [
+  "jpn_for_eng:pod-0-retired-2026-08-22",
+  "jpn_for_eng:pod-1-retired-2026-08-24"
+ ],
+ "rows_total": 231,
+ "measured_inherited_slots": {
+  "sentence_audio_ids": 0,
+  "sentence_known_audio_ids": 3,
+  "takeg_audio_ids": 0,
+  "explainer_audio_id": 29
+ },
+ "scope_note": "explainer_audio_id is MEASURED ONLY — owned by the explainer relink worker",
+ "split_keyed_progress_rows": 0,
+ "stopped": null,
+ "whole_turn_failures": [],
+ "rows_excluded_bad_whole_turn": [],
+ "slots_planned": 3,
+ "slots_written": 3,
+ "rows": [
+  {
+   "id": "jpn_for_eng:pod-1:SC04-S003",
+   "scene": 4,
+   "sentence": 3,
+   "speaker": "Friend",
+   "target_text": "いいえ、すみません、明日は忙しいんです。でも土曜日に話しましょう。それではまた。",
+   "known_text": "No, I'm sorry, I'm busy tomorrow. But let's talk on Saturday. See you then.",
+   "slots": [
+    {
+     "field": "sentence_known_audio_ids",
+     "changed": "target_text+known_text",
+     "before": [
+      "91cfe608-7088-4584-a747-2b05ebc7db00",
+      "bc54d02c-9765-405d-a78d-812a0476ddc0",
+      "209bb15f-4a16-4ab2-b0b4-1a54e544eb7a"
+     ],
+     "after": null,
+     "action": "null",
+     "why": "no alive, in-cast clip set exists for this row's known text; falling back to the verified whole-turn clip"
+    }
+   ]
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC09-S005",
+   "scene": 9,
+   "sentence": 5,
+   "speaker": "Diner 1",
+   "target_text": "すみません、グルテンフリーのものや、ベジタリアン向けのものはありますか？",
+   "known_text": "Excuse me - do you have anything gluten-free? Or for vegetarians?",
+   "slots": [
+    {
+     "field": "sentence_known_audio_ids",
+     "changed": "known_text",
+     "before": [
+      "a9cb8961-8744-4e3d-9053-aa2d2290d620",
+      "eb56e644-7dc4-4d76-979e-1939ffe70ed6"
+     ],
+     "after": null,
+     "action": "null",
+     "why": "no alive, in-cast clip set exists for this row's known text; falling back to the verified whole-turn clip"
+    }
+   ]
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC11-S008",
+   "scene": 11,
+   "sentence": 8,
+   "speaker": "Receptionist",
+   "target_text": "7時半から10時までです。フルーツとシリアル、またはホットの朝食をご用意しております。",
+   "known_text": "From half-past seven until ten o'clock. We have fruit and cereals or a cooked breakfast.",
+   "slots": [
+    {
+     "field": "sentence_known_audio_ids",
+     "changed": "known_text",
+     "before": [
+      "d867eaeb-36c3-4950-883b-b364a0fc5f44",
+      "c24a3ce4-511f-4c79-8b34-e7bcd5fc2e8a"
+     ],
+     "after": null,
+     "action": "null",
+     "why": "no alive, in-cast clip set exists for this row's known text; falling back to the verified whole-turn clip"
+    }
+   ]
+  }
+ ]
+}

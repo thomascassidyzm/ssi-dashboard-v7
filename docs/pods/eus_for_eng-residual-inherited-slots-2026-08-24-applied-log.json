@@ -1,0 +1,70 @@
+{
+ "pod": "eus_for_eng:pod-1",
+ "course": "eus_for_eng",
+ "mode": "applied",
+ "generated_at": "2026-08-24T11:59:54.733Z",
+ "ancestors": [
+  "eus_for_eng:pod-0-retired-2026-08-22",
+  "eus_for_eng:pod-1-retired-2026-08-24"
+ ],
+ "rows_total": 231,
+ "measured_inherited_slots": {
+  "sentence_audio_ids": 0,
+  "sentence_known_audio_ids": 1,
+  "takeg_audio_ids": 1,
+  "explainer_audio_id": 0
+ },
+ "scope_note": "explainer_audio_id is MEASURED ONLY — owned by the explainer relink worker",
+ "split_keyed_progress_rows": 0,
+ "stopped": null,
+ "whole_turn_failures": [],
+ "rows_excluded_bad_whole_turn": [],
+ "slots_planned": 2,
+ "slots_written": 2,
+ "rows": [
+  {
+   "id": "eus_for_eng:pod-1:SC04-S002",
+   "scene": 4,
+   "sentence": 2,
+   "speaker": "Sarah",
+   "target_text": "Kaixo! Barkatu, baina orain ezin dut hitz egin. Orain etxera joan behar dut. Bihar hitz egin dezakegu?",
+   "known_text": "Hello! I'm sorry but I can't talk at the moment. I need to go home now. Can we talk tomorrow?",
+   "slots": [
+    {
+     "field": "sentence_known_audio_ids",
+     "changed": "known_text",
+     "before": [
+      "e4e19bc4-53b2-4679-9370-e4a03b43639f",
+      "fa703678-d72c-4da2-9fb5-0bdbf5d802d0",
+      "854822d3-f918-4a9d-a80c-7f232e4d9846",
+      "36656739-05b0-4fd5-a6d8-53f49a96810d"
+     ],
+     "after": null,
+     "action": "null",
+     "why": "no alive, in-cast clip set exists for this row's known text; falling back to the verified whole-turn clip"
+    }
+   ]
+  },
+  {
+   "id": "eus_for_eng:pod-1:SC06-S002",
+   "scene": 6,
+   "sentence": 2,
+   "speaker": "Anna",
+   "target_text": "Nire izena Anna da. Eta zuk?",
+   "known_text": "My name is Anna. And you?",
+   "slots": [
+    {
+     "field": "takeg_audio_ids",
+     "changed": "target_text+known_text",
+     "before": [
+      "e96042dc-c63d-47fb-aba6-94e4b6e59589",
+      null
+     ],
+     "after": null,
+     "action": "null",
+     "why": "no alive, in-cast clip set exists for this row's target text; falling back to the verified whole-turn clip"
+    }
+   ]
+  }
+ ]
+}

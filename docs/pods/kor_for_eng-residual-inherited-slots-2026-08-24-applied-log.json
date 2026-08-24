@@ -1,0 +1,111 @@
+{
+ "pod": "kor_for_eng:pod-1",
+ "course": "kor_for_eng",
+ "mode": "applied",
+ "generated_at": "2026-08-24T11:59:59.357Z",
+ "ancestors": [
+  "kor_for_eng:pod-0-retired-2026-08-22",
+  "kor_for_eng:pod-1-retired-2026-08-24"
+ ],
+ "rows_total": 231,
+ "measured_inherited_slots": {
+  "sentence_audio_ids": 0,
+  "sentence_known_audio_ids": 3,
+  "takeg_audio_ids": 1,
+  "explainer_audio_id": 24
+ },
+ "scope_note": "explainer_audio_id is MEASURED ONLY — owned by the explainer relink worker",
+ "split_keyed_progress_rows": 0,
+ "stopped": null,
+ "whole_turn_failures": [],
+ "rows_excluded_bad_whole_turn": [],
+ "slots_planned": 4,
+ "slots_written": 4,
+ "rows": [
+  {
+   "id": "kor_for_eng:pod-1:SC05-S001",
+   "scene": 5,
+   "sentence": 1,
+   "speaker": "Neighbour (10:30 pm)",
+   "target_text": "안녕하세요, 사라 씨. 오늘 하루가 길었어요?",
+   "known_text": "Good evening, Sarah. Did you have a long day?",
+   "slots": [
+    {
+     "field": "takeg_audio_ids",
+     "changed": "target_text+known_text",
+     "before": [
+      "2eb6f99d-e9b7-491d-86e9-1aa441851ae1",
+      null
+     ],
+     "after": null,
+     "action": "null",
+     "why": "no alive, in-cast clip set exists for this row's target text; falling back to the verified whole-turn clip"
+    }
+   ]
+  },
+  {
+   "id": "kor_for_eng:pod-1:SC06-S005",
+   "scene": 6,
+   "sentence": 5,
+   "speaker": "James",
+   "target_text": "저는 맨체스터 출신인데, 지금은 런던에 살고 있어요. 당신은요?",
+   "known_text": "I'm from Manchester, but I live in London now. And you?",
+   "slots": [
+    {
+     "field": "sentence_known_audio_ids",
+     "changed": "target_text+known_text",
+     "before": [
+      "a61bf86a-6675-4bf4-a3af-bb552a056ddc",
+      "84bd18f3-fa1e-431d-bb22-4856ccf567b8",
+      "ceb360b7-a0da-404f-8ab3-d31bb0170558"
+     ],
+     "after": null,
+     "action": "null",
+     "why": "no alive, in-cast clip set exists for this row's known text; falling back to the verified whole-turn clip"
+    }
+   ]
+  },
+  {
+   "id": "kor_for_eng:pod-1:SC09-S005",
+   "scene": 9,
+   "sentence": 5,
+   "speaker": "Diner 1",
+   "target_text": "실례합니다 — 글루텐 프리 메뉴가 있나요? 아니면 채식 메뉴도 있나요?",
+   "known_text": "Excuse me - do you have anything gluten-free? Or for vegetarians?",
+   "slots": [
+    {
+     "field": "sentence_known_audio_ids",
+     "changed": "known_text",
+     "before": [
+      "a192f2de-8936-49f7-87ae-c07ceace764f",
+      "5957d05e-0b2a-415b-9c6f-70b6ec38acce"
+     ],
+     "after": null,
+     "action": "null",
+     "why": "no alive, in-cast clip set exists for this row's known text; falling back to the verified whole-turn clip"
+    }
+   ]
+  },
+  {
+   "id": "kor_for_eng:pod-1:SC11-S008",
+   "scene": 11,
+   "sentence": 8,
+   "speaker": "Receptionist",
+   "target_text": "일곱 시 반부터 열 시까지예요. 과일과 시리얼, 또는 따뜻한 조리 식사를 드실 수 있어요.",
+   "known_text": "From half-past seven until ten o'clock. We have fruit and cereals or a cooked breakfast.",
+   "slots": [
+    {
+     "field": "sentence_known_audio_ids",
+     "changed": "known_text",
+     "before": [
+      "d4fbb204-3c54-41f5-9bab-5dfecdfa985c",
+      "36f617e0-8cec-4d46-8669-85f04910077f"
+     ],
+     "after": null,
+     "action": "null",
+     "why": "no alive, in-cast clip set exists for this row's known text; falling back to the verified whole-turn clip"
+    }
+   ]
+  }
+ ]
+}

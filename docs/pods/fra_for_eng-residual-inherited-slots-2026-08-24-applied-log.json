@@ -1,0 +1,48 @@
+{
+ "pod": "fra_for_eng:pod-1",
+ "course": "fra_for_eng",
+ "mode": "applied",
+ "generated_at": "2026-08-24T11:59:55.528Z",
+ "ancestors": [
+  "fra_for_eng:pod-0-retired-2026-08-22",
+  "fra_for_eng:pod-1-retired-2026-08-24"
+ ],
+ "rows_total": 231,
+ "measured_inherited_slots": {
+  "sentence_audio_ids": 0,
+  "sentence_known_audio_ids": 0,
+  "takeg_audio_ids": 1,
+  "explainer_audio_id": 30
+ },
+ "scope_note": "explainer_audio_id is MEASURED ONLY — owned by the explainer relink worker",
+ "split_keyed_progress_rows": 0,
+ "stopped": null,
+ "whole_turn_failures": [],
+ "rows_excluded_bad_whole_turn": [],
+ "slots_planned": 1,
+ "slots_written": 1,
+ "rows": [
+  {
+   "id": "fra_for_eng:pod-1:SC08-S013",
+   "scene": 8,
+   "sentence": 13,
+   "speaker": "Bartender",
+   "target_text": "Oui, bien sûr. Le voici. Le fish and chips est très bon.",
+   "known_text": "Yes, of course. Here it is. The fish and chips are very good.",
+   "slots": [
+    {
+     "field": "takeg_audio_ids",
+     "changed": "target_text+known_text",
+     "before": [
+      "39400c84-2bf3-4a44-b2af-a65142ab7a66",
+      null,
+      "ec8bb8f5-df9a-4a4c-824d-3bf3226acdbd"
+     ],
+     "after": null,
+     "action": "null",
+     "why": "no alive, in-cast clip set exists for this row's target text; falling back to the verified whole-turn clip"
+    }
+   ]
+  }
+ ]
+}

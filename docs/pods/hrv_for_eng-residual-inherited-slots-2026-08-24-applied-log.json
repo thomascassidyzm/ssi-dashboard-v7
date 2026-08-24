@@ -1,0 +1,187 @@
+{
+ "pod": "hrv_for_eng:pod-1",
+ "course": "hrv_for_eng",
+ "mode": "applied",
+ "generated_at": "2026-08-24T11:59:57.182Z",
+ "ancestors": [
+  "hrv_for_eng:pod-1-retired-2026-08-22",
+  "hrv_for_eng:pod-0-retired-2026-08-22",
+  "hrv_for_eng:pod-1-retired-2026-08-24"
+ ],
+ "rows_total": 231,
+ "measured_inherited_slots": {
+  "sentence_audio_ids": 1,
+  "sentence_known_audio_ids": 3,
+  "takeg_audio_ids": 4,
+  "explainer_audio_id": 0
+ },
+ "scope_note": "explainer_audio_id is MEASURED ONLY — owned by the explainer relink worker",
+ "split_keyed_progress_rows": 0,
+ "stopped": null,
+ "whole_turn_failures": [],
+ "rows_excluded_bad_whole_turn": [],
+ "slots_planned": 8,
+ "slots_written": 8,
+ "rows": [
+  {
+   "id": "hrv_for_eng:pod-1:SC04-S003",
+   "scene": 4,
+   "sentence": 3,
+   "speaker": "Friend",
+   "target_text": "Ne, žao mi je,… sutra sam zauzeta. Ali razgovarajmo… u subotu. Vidimo se tada.",
+   "known_text": "No, I'm sorry, I'm busy tomorrow. But let's talk on Saturday. See you then.",
+   "slots": [
+    {
+     "field": "sentence_audio_ids",
+     "changed": "target_text",
+     "before": [
+      "aa1c29b2-c810-4222-9bcb-b1e0fa2d7e81",
+      "177039bf-66ef-4649-a62e-765ba9f8d5cc",
+      "6fce8194-beea-483e-83e6-ae11786c93e0"
+     ],
+     "after": null,
+     "action": "null",
+     "why": "no alive, in-cast clip set exists for this row's target text; falling back to the verified whole-turn clip"
+    },
+    {
+     "field": "takeg_audio_ids",
+     "changed": "target_text",
+     "before": [
+      "7425ec49-e17c-4224-8e95-1b0c047c6c91",
+      null,
+      null
+     ],
+     "after": null,
+     "action": "null",
+     "why": "no alive, in-cast clip set exists for this row's target text; falling back to the verified whole-turn clip"
+    }
+   ]
+  },
+  {
+   "id": "hrv_for_eng:pod-1:SC05-S002",
+   "scene": 5,
+   "sentence": 2,
+   "speaker": "Learner",
+   "target_text": "Da, jako. Sad sam jako umoran. Laku noć. Vidimo se sutra.",
+   "known_text": "Yes, very. I'm very tired now. Good night. See you tomorrow.",
+   "slots": [
+    {
+     "field": "takeg_audio_ids",
+     "changed": "target_text",
+     "before": [
+      "2fdd1b70-970f-4635-ba1b-39869ea94a91",
+      null,
+      null,
+      null
+     ],
+     "after": null,
+     "action": "null",
+     "why": "no alive, in-cast clip set exists for this row's target text; falling back to the verified whole-turn clip"
+    }
+   ]
+  },
+  {
+   "id": "hrv_for_eng:pod-1:SC07-S004",
+   "scene": 7,
+   "sentence": 4,
+   "speaker": "Cafe Customer 1",
+   "target_text": "Želio bih veliku, molim. Sa zobenim mlijekom, ako imate.",
+   "known_text": "I'd like large, please. With oat milk if you have it.",
+   "slots": [
+    {
+     "field": "sentence_known_audio_ids",
+     "changed": "target_text+known_text",
+     "before": [
+      "1da7df14-7f58-4c62-ade7-5c4c554c24ab",
+      "a91dcd2f-70ef-4453-8563-df900f8b6e57"
+     ],
+     "after": null,
+     "action": "null",
+     "why": "no alive, in-cast clip set exists for this row's known text; falling back to the verified whole-turn clip"
+    }
+   ]
+  },
+  {
+   "id": "hrv_for_eng:pod-1:SC08-S003",
+   "scene": 8,
+   "sentence": 3,
+   "speaker": "Bartender",
+   "target_text": "Imamo gorko pivo i tamno pivo, i oba su domaća.",
+   "known_text": "We've got a bitter and a stout, and they're both local.",
+   "slots": [
+    {
+     "field": "takeg_audio_ids",
+     "changed": "target_text+known_text",
+     "before": [
+      "d320a74a-7231-4f48-871a-024297a1ebb7"
+     ],
+     "after": null,
+     "action": "null",
+     "why": "no alive, in-cast clip set exists for this row's target text; falling back to the verified whole-turn clip"
+    }
+   ]
+  },
+  {
+   "id": "hrv_for_eng:pod-1:SC09-S003",
+   "scene": 9,
+   "sentence": 3,
+   "speaker": "Waiter",
+   "target_text": "Želite li negaziranu ili gaziranu vodu za početak?",
+   "known_text": "Would you like still or sparkling water to start?",
+   "slots": [
+    {
+     "field": "takeg_audio_ids",
+     "changed": "target_text+known_text",
+     "before": [
+      "dd5b73e6-e514-4e1a-b6fd-f955321e3d79"
+     ],
+     "after": null,
+     "action": "null",
+     "why": "no alive, in-cast clip set exists for this row's target text; falling back to the verified whole-turn clip"
+    }
+   ]
+  },
+  {
+   "id": "hrv_for_eng:pod-1:SC09-S005",
+   "scene": 9,
+   "sentence": 5,
+   "speaker": "Diner 1",
+   "target_text": "Oprostite,… imate li nešto… bez glutena? Ili za… vegetarijance?",
+   "known_text": "Excuse me - do you have anything gluten-free? Or for vegetarians?",
+   "slots": [
+    {
+     "field": "sentence_known_audio_ids",
+     "changed": "target_text+known_text",
+     "before": [
+      "d52a74f2-5306-4720-bb93-aff977f215d4",
+      "c328bc49-f444-48d8-a4d6-26654c58dadd"
+     ],
+     "after": null,
+     "action": "null",
+     "why": "no alive, in-cast clip set exists for this row's known text; falling back to the verified whole-turn clip"
+    }
+   ]
+  },
+  {
+   "id": "hrv_for_eng:pod-1:SC12-S001",
+   "scene": 12,
+   "sentence": 1,
+   "speaker": "Customer",
+   "target_text": "Dobro jutro. Ne osjećam se baš dobro… — možete li mi nešto… preporučiti?",
+   "known_text": "Good morning. I'm not feeling great - could you recommend something?",
+   "slots": [
+    {
+     "field": "sentence_known_audio_ids",
+     "changed": "known_text",
+     "before": [
+      "8084f9b1-cba3-4b25-9b40-fa518bbb4301",
+      "fc0a4f1f-7260-4e5e-82a5-54b29e3fd9d8"
+     ],
+     "after": null,
+     "action": "null",
+     "why": "no alive, in-cast clip set exists for this row's known text; falling back to the verified whole-turn clip"
+    }
+   ]
+  }
+ ]
+}

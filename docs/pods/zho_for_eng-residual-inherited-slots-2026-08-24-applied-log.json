@@ -1,0 +1,49 @@
+{
+ "pod": "zho_for_eng:pod-1",
+ "course": "zho_for_eng",
+ "mode": "applied",
+ "generated_at": "2026-08-24T12:00:03.274Z",
+ "ancestors": [
+  "zho_for_eng:pod-0-retired-2026-08-22",
+  "zho_for_eng:pod-1-retired-2026-08-24"
+ ],
+ "rows_total": 231,
+ "measured_inherited_slots": {
+  "sentence_audio_ids": 0,
+  "sentence_known_audio_ids": 1,
+  "takeg_audio_ids": 0,
+  "explainer_audio_id": 26
+ },
+ "scope_note": "explainer_audio_id is MEASURED ONLY — owned by the explainer relink worker",
+ "split_keyed_progress_rows": 0,
+ "stopped": null,
+ "whole_turn_failures": [],
+ "rows_excluded_bad_whole_turn": [],
+ "slots_planned": 1,
+ "slots_written": 1,
+ "rows": [
+  {
+   "id": "zho_for_eng:pod-1:SC04-S002",
+   "scene": 4,
+   "sentence": 2,
+   "speaker": "Sarah",
+   "target_text": "你好！不好意思，我现在没办法聊天。我需要回家了。我们明天可以聊吗？",
+   "known_text": "Hello! I'm sorry but I can't talk at the moment. I need to go home now. Can we talk tomorrow?",
+   "slots": [
+    {
+     "field": "sentence_known_audio_ids",
+     "changed": "known_text",
+     "before": [
+      "e322b769-5567-4966-8d72-0e16e1316f72",
+      "b4c2c5a1-f606-4772-82a3-28faa9f6f6bc",
+      "8e967127-41e5-465a-812b-305fb4229b29",
+      "ebafc3a6-9798-422f-9721-6900aa74deee"
+     ],
+     "after": null,
+     "action": "null",
+     "why": "no alive, in-cast clip set exists for this row's known text; falling back to the verified whole-turn clip"
+    }
+   ]
+  }
+ ]
+}
