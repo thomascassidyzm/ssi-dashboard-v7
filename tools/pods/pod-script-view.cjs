@@ -1,0 +1,287 @@
+/**
+ * pod-script-view.cjs — turn a live pod into a READABLE SCRIPT with its casting
+ * violations already marked, so Tom can see what is wrong with a pod without
+ * listening to it.
+ *
+ * Commissioned 2026-08-24: "seriously though, the casting is hopeless. Scence 18
+ * is the female voice ALL THE WAY THROUGH - apart from the Narrator??? what the
+ * hell is all that about?" … "Can I not see the scripts anywhere in Popty to
+ * have a quick butcher's at them?"
+ *
+ * The casting RULE is not defined here. It is Tom's, 2026-08-23 — "there's
+ * always male talking to female, so that two voices can actually do the whole
+ * thing, rather than per character" — and it is measured in exactly one place,
+ * tools/pods/pod-cast-gate.cjs. This module CALLS that gate and positions its
+ * verdict against lines on a screen. It adds no rule of its own except one, and
+ * that one is declared out loud below.
+ *
+ * ---------------------------------------------------------------------------
+ * THE ONE THING THIS ADDS, AND WHY — the same-voice RUN
+ *
+ * ita_for_eng pod-1 PASSES the gate today: two target voices, zero same-voice
+ * exchange pairs. Tom's complaint about scene 18 is nonetheless entirely real.
+ * Scene 18 is a drill: ten consecutive `Learner` lines, then one `Narrator`
+ * line. The gate's exchange graph skips adjacent lines by the SAME character
+ * (`a === b`) — correctly, because a character taking two turns is drama, not a
+ * casting fault — so a ten-line single-character drill produces zero edges and
+ * the pod measures clean. What Tom heard was the female voice for ten turns and
+ * the male Narrator once, which is precisely what the data says.
+ *
+ * So this module also reports:
+ *   - SAME-VOICE RUN: 3+ consecutive non-Narrator lines on one voice.
+ *   - SINGLE-VOICE SCENE: every non-Narrator line in a scene on one voice, 3+
+ *     lines. This is Tom's sentence, literally, and scene 18 is one.
+ *
+ * These are DISPLAY findings, reported at severity 'warn'. They are deliberately
+ * NOT fed back into the gate's ok/fail: promotion is gated on Tom's two numbers,
+ * and a viewer must not quietly widen a rule that flip and recast both solve to.
+ * The run threshold is 3 because a run of 2 is one character answering a
+ * question and then adding a sentence, which is normal everywhere in the fleet.
+ *
+ * ---------------------------------------------------------------------------
+ * UNKNOWN GENDER IS NOT A PASS. The male-female check needs both voices'
+ * genders, and gender is derived from catalogues, not read from a column (see
+ * pod-voice-identity.cjs). Where a voice cannot be resolved, the exchange is
+ * reported as 'gender-uncheckable' — never silently as good.
+ *
+ * Pure: rows + cast in, view model out. No DB, no env, no I/O.
+ */
+
+'use strict'
+
+const { checkPodCast, exchangeEdges } = require('./pod-cast-gate.cjs')
+const { canonicalSpeakerName } = require('../pod-voice-colour-n.cjs')
+const { resolveVoice, genderLabel } = require('./pod-voice-identity.cjs')
+
+/** Characters that narrate rather than converse — never part of an exchange. */
+const NARRATORS = new Set(['narrator'])
+const isNarrator = (name) => NARRATORS.has(String(name || '').trim().toLowerCase())
+
+/** 3+ consecutive lines on one voice is a run worth showing. See header. */
+const RUN_THRESHOLD = 3
+
+/**
+ * @param {object} o
+ * @param {{id:string, course_code:string, slug:string, title:string, speakers:object}} o.pod
+ * @param {Array<object>} o.rows sentence rows in playing order (global_order)
+ * @param {'target'|'known'} [o.track]
+ * @param {object|null} [o.clips] optional id → {text, voice_id}; enables the gate's six-column clip check
+ */
+function buildPodScript ({ pod, rows, track = 'target', clips = null }) {
+  const cast = (pod && pod.speakers) || {}
+  const cRows = (rows || []).slice().sort((a, b) => (a.global_order || 0) - (b.global_order || 0))
+
+  // --- voice per line, via the cast map, with a readable identity ------------
+  const voiceCache = new Map()
+  const voiceFor = (speakerRaw) => {
+    const name = canonicalSpeakerName(speakerRaw)
+    if (voiceCache.has(name)) return voiceCache.get(name)
+    const entry = cast[name] || cast._default || null
+    const slot = entry && (track === 'target' ? entry.target : entry.known)
+    const v = slot && slot.voice_id
+      ? resolveVoice(slot.voice_id, { name: slot.name, castGender: entry.gender })
+      : null
+    const out = v ? { ...v, label: genderLabel(v.gender) } : null
+    voiceCache.set(name, out)
+    return out
+  }
+
+  // --- the gate's verdict, unmodified ---------------------------------------
+  const gate = checkPodCast({ rows: cRows, speakers: cast, track, clips })
+  const edges = exchangeEdges({ rows: cRows, speakers: cast, track })
+
+  const violations = []
+  /** flags keyed by row index, so the view can decorate a line */
+  const flagsByIndex = new Map()
+  const flag = (index, v) => {
+    if (index == null) return
+    if (!flagsByIndex.has(index)) flagsByIndex.set(index, [])
+    flagsByIndex.get(index).push(v)
+  }
+  const add = (v, indices = []) => {
+    violations.push(v)
+    for (const i of indices) flag(i, v)
+  }
+
+  // (c) the cast is not exactly two target voices — the gate's own number.
+  if (gate.voicesInUse.length !== 2) {
+    add({
+      type: 'cast-size',
+      severity: 'fail',
+      scene: null,
+      message: `Cast uses ${gate.voicesInUse.length} ${track} voice(s), not 2` +
+        (gate.voicesInUse.length ? `: ${gate.voicesInUse.join(', ')}` : ''),
+    })
+  }
+  for (const name of gate.uncast) {
+    add({ type: 'uncast-character', severity: 'fail', scene: null, message: `${name} has no ${track} voice in the cast` })
+  }
+
+  // (a) + (b) — walked over the gate's own positioned edges.
+  for (const e of edges) {
+    if (e.nonExchange) continue // two customers ordering in turn, not talking
+    if (isNarrator(e.a) || isNarrator(e.b)) continue
+    const va = e.voiceA ? voiceFor(cRows[e.fromIndex].speaker) : null
+    const vb = e.voiceB ? voiceFor(cRows[e.toIndex].speaker) : null
+    const where = [e.fromIndex, e.toIndex]
+
+    if (e.sameVoice) {
+      add({
+        type: 'same-voice-exchange',
+        severity: 'fail',
+        scene: e.scene,
+        message: `${e.a} → ${e.b} both on ${(va && va.name) || e.voiceA} — one voice talking to itself`,
+      }, where)
+      continue
+    }
+    if (!va || !vb || !va.gender || !vb.gender) {
+      add({
+        type: 'gender-uncheckable',
+        severity: 'warn',
+        scene: e.scene,
+        message: `${e.a} → ${e.b}: cannot check male-female — ` +
+          [[va, e.a], [vb, e.b]].filter(([v]) => !v || !v.gender).map(([v, n]) => `${n}'s voice ${v ? v.voice_id : '(none)'} has no known gender`).join('; '),
+      }, where)
+      continue
+    }
+    if (va.gender === vb.gender) {
+      add({
+        type: 'same-gender-exchange',
+        severity: 'fail',
+        scene: e.scene,
+        message: `${e.a} (${va.name || va.voice_id}, ${genderLabel(va.gender)}) → ${e.b} (${vb.name || vb.voice_id}, ${genderLabel(vb.gender)}) — not male-female`,
+      }, where)
+    }
+  }
+
+  // --- the display finding: same-voice runs and single-voice scenes ---------
+  // Walked per scene, over non-Narrator lines only, in playing order.
+  const sceneIndices = new Map()
+  cRows.forEach((r, i) => {
+    const k = r.scene_number == null ? '_' : r.scene_number
+    if (!sceneIndices.has(k)) sceneIndices.set(k, [])
+    sceneIndices.get(k).push(i)
+  })
+
+  for (const [sceneKey, idxs] of sceneIndices) {
+    const spoken = idxs.filter(i => !isNarrator(canonicalSpeakerName(cRows[i].speaker)))
+    if (!spoken.length) continue
+
+    // runs of consecutive spoken lines on one voice
+    let run = []
+    const flushRun = () => {
+      if (run.length >= RUN_THRESHOLD) {
+        const v = voiceFor(cRows[run[0]].speaker)
+        const who = [...new Set(run.map(i => canonicalSpeakerName(cRows[i].speaker)))]
+        add({
+          type: 'same-voice-run',
+          severity: 'warn',
+          scene: sceneKey === '_' ? null : sceneKey,
+          message: `${run.length} consecutive lines on one voice — ${(v && v.name) || 'unknown voice'}` +
+            `${v && v.gender ? `, ${genderLabel(v.gender)}` : ''} (${who.join(', ')})`,
+        }, run)
+      }
+      run = []
+    }
+    for (const i of spoken) {
+      const v = voiceFor(cRows[i].speaker)
+      const id = v ? v.voice_id : null
+      if (!run.length) { run = [i]; continue }
+      const prevV = voiceFor(cRows[run[run.length - 1]].speaker)
+      const prevId = prevV ? prevV.voice_id : null
+      if (id && prevId && id === prevId) run.push(i)
+      else { flushRun(); run = [i] }
+    }
+    flushRun()
+
+    // the whole scene on one voice — Tom's sentence, literally
+    const sceneVoices = [...new Set(spoken.map(i => { const v = voiceFor(cRows[i].speaker); return v ? v.voice_id : null }))]
+    if (spoken.length >= RUN_THRESHOLD && sceneVoices.length === 1 && sceneVoices[0]) {
+      const v = voiceFor(cRows[spoken[0]].speaker)
+      const hadNarrator = idxs.length > spoken.length
+      add({
+        type: 'single-voice-scene',
+        severity: 'warn',
+        scene: sceneKey === '_' ? null : sceneKey,
+        message: `Every one of the ${spoken.length} spoken lines in this scene is ${(v && v.name) || sceneVoices[0]}` +
+          `${v && v.gender ? `, the ${genderLabel(v.gender)}` : ''}${hadNarrator ? ' — apart from the Narrator' : ''}`,
+      }, spoken)
+    }
+  }
+
+  // --- assemble the scenes ---------------------------------------------------
+  const scenes = []
+  for (const [sceneKey, idxs] of sceneIndices) {
+    const lines = idxs.map(i => {
+      const r = cRows[i]
+      const v = voiceFor(r.speaker)
+      const fl = flagsByIndex.get(i) || []
+      return {
+        id: r.id,
+        scene_number: r.scene_number,
+        sentence_number: r.sentence_number,
+        global_order: r.global_order,
+        beat_label: r.beat_label || null,
+        speaker: canonicalSpeakerName(r.speaker) || r.speaker,
+        speaker_raw: r.speaker,
+        is_narrator: isNarrator(canonicalSpeakerName(r.speaker)),
+        voice: v,
+        target_text: r.target_text || '',
+        known_text: r.known_text || '',
+        flags: fl,
+        worst: fl.some(f => f.severity === 'fail') ? 'fail' : (fl.length ? 'warn' : null),
+      }
+    })
+    scenes.push({
+      scene_number: sceneKey === '_' ? null : sceneKey,
+      beat_label: lines.map(l => l.beat_label).find(Boolean) || null,
+      line_count: lines.length,
+      lines,
+      violations: violations.filter(v => v.scene === (sceneKey === '_' ? null : sceneKey)),
+    })
+  }
+  scenes.sort((a, b) => (a.scene_number ?? 1e9) - (b.scene_number ?? 1e9))
+
+  // --- the cast, as voices rather than characters ---------------------------
+  const byVoice = new Map()
+  for (const r of cRows) {
+    const name = canonicalSpeakerName(r.speaker)
+    const v = voiceFor(r.speaker)
+    const key = v ? v.voice_id : '(uncast)'
+    if (!byVoice.has(key)) byVoice.set(key, { ...(v || { voice_id: null, name: null, gender: null, genderSource: 'unknown', resolved: false }), label: v ? v.label : 'no voice', characters: new Set(), lines: 0 })
+    const e = byVoice.get(key)
+    e.characters.add(name)
+    e.lines += 1
+  }
+  const castOut = [...byVoice.values()]
+    .map(e => ({ ...e, characters: [...e.characters].sort() }))
+    .sort((a, b) => b.lines - a.lines)
+
+  const counts = {}
+  for (const v of violations) counts[v.type] = (counts[v.type] || 0) + 1
+
+  return {
+    pod_id: pod && pod.id,
+    course_code: pod && pod.course_code,
+    slug: pod && pod.slug,
+    title: (pod && pod.title) || null,
+    track,
+    summary: {
+      scenes: scenes.length,
+      lines: cRows.length,
+      cast: castOut,
+      unknown_gender_voices: castOut.filter(c => !c.gender).map(c => c.voice_id).filter(Boolean),
+      gate_ok: gate.ok,
+      gate_failures: gate.failures,
+      clip_check: gate.clipCheck,
+      violation_counts: counts,
+      violations_total: violations.length,
+      fails: violations.filter(v => v.severity === 'fail').length,
+      warns: violations.filter(v => v.severity === 'warn').length,
+    },
+    violations,
+    scenes,
+  }
+}
+
+module.exports = { buildPodScript, RUN_THRESHOLD, isNarrator }
