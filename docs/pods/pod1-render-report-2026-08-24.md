@@ -74,8 +74,14 @@ dialect. The lines: the two Narrator number-and-time drills (`SC15-S011`, `SC18-
 Same class as the documented Icelandic hold — the renderer refusing correct audio because
 the checker cannot read the language. A fourth attempt does not fix this.
 
-**`cat_for_eng` 1 clip, `ell_for_eng` 2 clips, `bul_for_eng` 1, `dan_for_eng` 1** — same
-veracity-quarantine cause, in Group 2.
+In Group 2 so far, same veracity-quarantine cause: **`fas` 3 clips, `ell` 2, `cat` 1.**
+
+**A second and quite different cause, which is not an audio problem at all.** Phase 8's
+A-109 text gate withholds the target track of any line whose *words* are still an
+unapproved machine draft. That accounts for **`est` 4, `fas` 3, `heb` 2, `bul` 1, `cat` 1,
+`dan` 1, `ell` 1** — and `est` and `heb` have *no* render failures whatsoever, so their gaps
+are purely lines awaiting a text verifier. Those need proofreading, not rendering, and no
+amount of TTS spend will close them.
 
 No render failed for any other reason. Nothing was lost, and no clip was deleted.
 
@@ -112,17 +118,23 @@ re-rendering the same text in the same voice only buys the same decode again.
 
 > "A course can be flipped when both known and target PODS have been completed."
 
-**Ready now — 18.** Both tracks complete, every clip on-cast for its own speaker:
+**Ready now — 19.** Both tracks complete, every clip on-cast for its own speaker:
 
 `fra` · `spa` · `ita` · `deu` · `deu_at` · `por` · `por_br` · `ron` · `swe` · `hrv` ·
-`eus` · `ara` · `ara_eg` · `fra_ca` · `jpn` · `kor` · `zho` · `spa_mx`
+`eus` · `ara` · `ara_eg` · `ara`* · `fra_ca` · `jpn` · `kor` · `zho` · `spa_mx` · `gle`
 
-**Not ready — `ara_sy`**, on 4 quarantined clips. Safe to flip only if you accept 4 silent
-target lines out of 231; my read is hold it, and it is a small, well-identified fix.
+(All of Group 1 except `ara_sy`, plus Irish from Group 2.)
 
-**Group 2 is still rendering.** 4 of 20 done (bul, cat, dan, ell — each with 1–3 clips
-quarantined), 16 to go, roughly two hours at the current rate. It is running detached and
-logging, so it finishes whether or not anyone is watching.
+**Near-ready — 7, all with zero off-cast clips**, differing only in a handful of missing
+target lines: `ara_sy` 4, `est` 4, `ell` 3, `cat` 2, `heb` 2, `bul` 1, `dan` 1.
+Every one of these is either a veracity quarantine or a line awaiting text approval — the
+casting itself is finished and correct on all of them. Your call whether a pod with one or
+two silent target lines is flippable; my read is that `bul`, `cat`, `dan` and `heb` are one
+short proofread away, and the rest want the veracity-gate decision first.
+
+**Group 2 is still rendering.** 8 of 20 done, 12 to go, roughly an hour and a half at the
+current rate. It is running detached and logging, so it finishes whether or not anyone is
+watching.
 
 ## 5. What actually needs you
 

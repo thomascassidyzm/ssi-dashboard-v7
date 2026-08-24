@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-24T01:12:58.809Z",
+  "generated_at": "2026-08-24T01:24:28.474Z",
   "excluded": [
     {
       "course": "isl_for_eng",
@@ -1133,6 +1133,294 @@
         }
       },
       "status": "complete_with_failures"
+    },
+    {
+      "course": "est_for_eng",
+      "pod_id": "est_for_eng:pod-0-unrecorded",
+      "steps": {
+        "unlinked": {
+          "target": 14,
+          "known": 44
+        },
+        "sample": {
+          "mode": "sample",
+          "total": 5,
+          "generated": 1,
+          "reused": 4,
+          "reused_cross_course": 3,
+          "failed": 0,
+          "blocked_unapproved_target": 4,
+          "queued_before_sample": 58,
+          "errors": []
+        },
+        "sample_verify": {
+          "clips": 1,
+          "clean": 1,
+          "advisory": 0,
+          "review": 0,
+          "error": 0,
+          "json": "docs/pods/pod1-render-2026-08-23/est_for_eng-pod-0-unrecorded-verify-25min.json"
+        },
+        "bulk": {
+          "mode": "bulk",
+          "total": 53,
+          "generated": 12,
+          "reused": 41,
+          "reused_cross_course": 39,
+          "failed": 0,
+          "blocked_unapproved_target": 4,
+          "queued_before_sample": 53,
+          "errors": []
+        },
+        "bulk_verify": {
+          "clips": 10,
+          "clean": 10,
+          "advisory": 0,
+          "review": 0,
+          "error": 0,
+          "json": "docs/pods/pod1-render-2026-08-23/est_for_eng-pod-0-unrecorded-verify-25min.json"
+        }
+      },
+      "status": "complete"
+    },
+    {
+      "course": "fas_for_eng",
+      "pod_id": "fas_for_eng:pod-0-unrecorded",
+      "steps": {
+        "unlinked": {
+          "target": 10,
+          "known": 44
+        },
+        "sample": {
+          "mode": "sample",
+          "total": 5,
+          "generated": 3,
+          "reused": 2,
+          "reused_cross_course": 2,
+          "failed": 0,
+          "blocked_unapproved_target": 3,
+          "queued_before_sample": 173,
+          "errors": []
+        },
+        "sample_verify": {
+          "clips": 3,
+          "clean": 3,
+          "advisory": 0,
+          "review": 0,
+          "error": 0,
+          "json": "docs/pods/pod1-render-2026-08-23/fas_for_eng-pod-0-unrecorded-verify-25min.json"
+        },
+        "bulk": {
+          "mode": "bulk",
+          "total": 168,
+          "generated": 120,
+          "reused": 45,
+          "reused_cross_course": 40,
+          "failed": 3,
+          "blocked_unapproved_target": 3,
+          "queued_before_sample": 168,
+          "errors": [
+            {
+              "sentence_id": "fas_for_eng:pod-0-unrecorded:SC02-S003",
+              "kind": "target",
+              "error": "[STAGE=veracity] quarantined after 3 attempts (cer_above_threshold, CER 0.5625, heard \"تو شا هچه قد روه؟\")"
+            },
+            {
+              "sentence_id": "fas_for_eng:pod-0-unrecorded:SC16-S010",
+              "kind": "target",
+              "error": "[STAGE=veracity] quarantined after 3 attempts (cer_above_threshold, CER 0.4, heard \"به بخشید پولین اخت نداره\")"
+            },
+            {
+              "sentence_id": "fas_for_eng:pod-0-unrecorded:SC18-S002",
+              "kind": "target",
+              "error": "[STAGE=veracity] quarantined after 3 attempts (cer_above_threshold, CER 0.5625, heard \"اپورت رالدریت\")"
+            }
+          ]
+        },
+        "bulk_verify": {
+          "clips": 10,
+          "clean": 10,
+          "advisory": 0,
+          "review": 0,
+          "error": 0,
+          "json": "docs/pods/pod1-render-2026-08-23/fas_for_eng-pod-0-unrecorded-verify-25min.json"
+        }
+      },
+      "status": "complete_with_failures"
+    },
+    {
+      "course": "gle_for_eng",
+      "pod_id": "gle_for_eng:pod-0-unrecorded",
+      "steps": {
+        "unlinked": {
+          "target": 10,
+          "known": 44
+        },
+        "sample": {
+          "mode": "sample",
+          "total": 5,
+          "generated": 3,
+          "reused": 2,
+          "reused_cross_course": 2,
+          "failed": 0,
+          "blocked_unapproved_target": 0,
+          "queued_before_sample": 171,
+          "errors": []
+        },
+        "sample_verify": {
+          "clips": 3,
+          "clean": 0,
+          "advisory": 3,
+          "review": 0,
+          "error": 0,
+          "json": "docs/pods/pod1-render-2026-08-23/gle_for_eng-pod-0-unrecorded-verify-25min.json",
+          "reviews": [
+            {
+              "id": "gle_for_eng:pod-0-unrecorded:SC01-S004",
+              "track": "target",
+              "voice_ok": true,
+              "has_speech": true,
+              "sim": 0,
+              "want": "Tá. Tá lá gnóthach agam inniu. Tá súil agam go mbeidh lá maith agat. Feicfidh mé ar ball thú.",
+              "got": ""
+            },
+            {
+              "id": "gle_for_eng:pod-0-unrecorded:SC02-S002",
+              "track": "target",
+              "voice_ok": true,
+              "has_speech": true,
+              "sim": 0,
+              "want": "Níl, tá sé saor. Ar aghaidh leat, le do thoil.",
+              "got": ""
+            },
+            {
+              "id": "gle_for_eng:pod-0-unrecorded:SC02-S003",
+              "track": "target",
+              "voice_ok": true,
+              "has_speech": true,
+              "sim": 0,
+              "want": "Cá fhad atá sé go dtí an baile mór?",
+              "got": ""
+            }
+          ]
+        },
+        "bulk": {
+          "mode": "bulk",
+          "total": 166,
+          "generated": 123,
+          "reused": 43,
+          "reused_cross_course": 38,
+          "failed": 0,
+          "blocked_unapproved_target": 0,
+          "queued_before_sample": 166,
+          "errors": []
+        },
+        "bulk_verify": {
+          "clips": 10,
+          "clean": 0,
+          "advisory": 10,
+          "review": 0,
+          "error": 0,
+          "json": "docs/pods/pod1-render-2026-08-23/gle_for_eng-pod-0-unrecorded-verify-25min.json",
+          "reviews": [
+            {
+              "id": "gle_for_eng:pod-0-unrecorded:SC01-S004",
+              "track": "target",
+              "voice_ok": true,
+              "has_speech": true,
+              "sim": 0,
+              "want": "Tá. Tá lá gnóthach agam inniu. Tá súil agam go mbeidh lá maith agat. Feicfidh mé ar ball thú.",
+              "got": ""
+            },
+            {
+              "id": "gle_for_eng:pod-0-unrecorded:SC02-S002",
+              "track": "target",
+              "voice_ok": true,
+              "has_speech": true,
+              "sim": 0,
+              "want": "Níl, tá sé saor. Ar aghaidh leat, le do thoil.",
+              "got": ""
+            },
+            {
+              "id": "gle_for_eng:pod-0-unrecorded:SC02-S003",
+              "track": "target",
+              "voice_ok": true,
+              "has_speech": true,
+              "sim": 0,
+              "want": "Cá fhad atá sé go dtí an baile mór?",
+              "got": ""
+            },
+            {
+              "id": "gle_for_eng:pod-0-unrecorded:SC02-S004",
+              "track": "target",
+              "voice_ok": true,
+              "has_speech": true,
+              "sim": 0,
+              "want": "An féidir leat a rá liom cá fhad atá sé go dtí an baile mór?",
+              "got": ""
+            },
+            {
+              "id": "gle_for_eng:pod-0-unrecorded:SC02-S005",
+              "track": "target",
+              "voice_ok": true,
+              "has_speech": true,
+              "sim": 0,
+              "want": "Níl sé i bhfad ar shiúl. B'fhéidir trí nó ceithre mhíle.",
+              "got": ""
+            }
+          ]
+        }
+      },
+      "status": "complete"
+    },
+    {
+      "course": "heb_for_eng",
+      "pod_id": "heb_for_eng:pod-0-unrecorded",
+      "steps": {
+        "unlinked": {
+          "target": 35,
+          "known": 123
+        },
+        "sample": {
+          "mode": "sample",
+          "total": 5,
+          "generated": 3,
+          "reused": 2,
+          "reused_cross_course": 2,
+          "failed": 0,
+          "blocked_unapproved_target": 2,
+          "queued_before_sample": 282,
+          "errors": []
+        },
+        "sample_verify": {
+          "clips": 3,
+          "clean": 3,
+          "advisory": 0,
+          "review": 0,
+          "error": 0,
+          "json": "docs/pods/pod1-render-2026-08-23/heb_for_eng-pod-0-unrecorded-verify-25min.json"
+        },
+        "bulk": {
+          "mode": "bulk",
+          "total": 277,
+          "generated": 141,
+          "reused": 136,
+          "reused_cross_course": 118,
+          "failed": 0,
+          "blocked_unapproved_target": 2,
+          "queued_before_sample": 277,
+          "errors": []
+        },
+        "bulk_verify": {
+          "clips": 10,
+          "clean": 10,
+          "advisory": 0,
+          "review": 0,
+          "error": 0,
+          "json": "docs/pods/pod1-render-2026-08-23/heb_for_eng-pod-0-unrecorded-verify-25min.json"
+        }
+      },
+      "status": "complete"
     }
   ]
 }
