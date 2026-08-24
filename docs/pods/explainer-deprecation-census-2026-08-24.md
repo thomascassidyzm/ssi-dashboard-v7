@@ -113,4 +113,57 @@ registration role map. The known leg stays whole.
 
 ---
 
-*Census taken before any edit. Kept accurate as the cut proceeded.*
+---
+
+## 6. RESULT — what the cut actually did
+
+Verified at branch tip, not asserted:
+
+- **No file in the repo references** `pod-explainer-generator`, `pod-explainer-composite`
+  or `run-pod-explainer-batch` — all three deleted.
+- **No code path constructs a `comp:` composite voice id.** `canonicalClipVoiceId` still
+  *parses* one, which is correct: existing composite clips keep their identity. Every
+  caller in the tree passes a single voice id.
+- **No code writes `explainer_audio_id` or `explainer_text` on an existing row.** The only
+  writes left are `pod-dialogue-generator.cjs` inserting `null` on brand-new pod rows,
+  and the family-C Stage-0 tools writing `pod_legos.explainer_audio_id`.
+- **`tools/pods/relink-off-cast-explainer-clips.cjs` is deleted** — that was a live
+  `--apply` DB write path.
+- **`pod-cast-gate.cjs` no longer checks or reports `explainer_audio_id`**; the
+  `explainerBlocking` option is gone. Its tests were flipped to assert total silence.
+- **Surviving `role='pod_explainer'` writers are all family C**: `breakdown-flat.cjs`,
+  `build-shared-known-store.cjs`, `persist-stage0-pod0.cjs`, `render-residue-atoms.cjs`.
+  Expected and documented in §4.
+
+**Gates.** Syntax gate: 109 files parse. Voice-engine: 22 files, 260 tests, 0 failed.
+Full suite on this branch: 16 failed / 2,656 passed. Full suite on `origin/main` at the
+same moment: 16 failed / 2,657 passed. Same failure count, same failure set bar one file
+(`PodLab.casting.test.js`) that passes 22/22 in isolation and only trips under parallel
+load. **Zero regressions from this branch.**
+
+## 7. CONSEQUENCE FOR TOM — Stage-0 runs off a frozen corpus
+
+`services/pod-lego-extractor.cjs` builds the live Stage-0 atom inventory by folding
+`listening_pod_sentences.explainer_decomposition` — the chunk/gloss pairs the now-deleted
+generator produced. Existing pods are unaffected. A NEW course or pod gets no atom
+inventory, because nothing can make more decompositions.
+
+Three options, unactioned, Tom's call:
+- **A. Leave it frozen** — right if Stage-0 is itself on the way out.
+- **B. A decomposition-only generator** — the chunk/gloss pass, no narration text, no TTS,
+  no `explainer_text`, no audio. Cheap, no money path. **Recommended if Stage-0 stays.**
+- **C. Rebuild Stage-0's inventory from its own source** rather than borrowing a
+  deprecated track's field. Cleanest, most work, a design job not a cleanup one.
+
+## 8. FINDING — the learning app (out of scope, no edit made)
+
+`ssi-learning-app` still carries `1: ['ps', 'explainer', 'ps']` in
+`DEFAULT_STAGE_PLAYLIST` in `packages/player-vue/src/composables/usePodLapScheduler.ts`,
+on both `origin/main` and `origin/dev`. Its own header states the live `algorithm_config`
+has no explainer slot in any of its nine stages — which this pass verified directly
+against the DB. So it is a **dead default that reaches no learner**, consistent with Tom's
+ruling. Worth tidying in that repo; deliberately not edited here.
+
+---
+
+*Census taken before any edit. §6-§8 added at completion.*
