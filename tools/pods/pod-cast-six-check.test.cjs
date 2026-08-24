@@ -145,6 +145,23 @@ describe('checkC5 — adjacent hand-offs', () => {
     expect(r.scenes[0].avoidable).toBe(2)
   })
 
+  it('excludes the Narrator drill line from the hand-off graph', () => {
+    // Guest speaks last before the scene's Narrator drill; Narrator happens to
+    // share Guest's voice. Not a dialogue hand-off (audit §3) and must not count,
+    // consistent with C4's own Narrator exclusion.
+    const speakers = castOf({
+      Narrator: { gender: 'm', target: MANUEL, known: CLONE },
+    })
+    const rows = [
+      { scene_number: 1, sentence_number: 1, global_order: 1, speaker: 'Anna' },
+      { scene_number: 1, sentence_number: 2, global_order: 2, speaker: 'Guest' },
+      { scene_number: 1, sentence_number: 3, global_order: 3, speaker: 'Narrator' },
+    ]
+    const r = checkC5(rows, speakers)
+    expect(r.totalCurrent).toBe(0)
+    expect(r.totalOptimal).toBe(0)
+  })
+
   it('does not count a scene boundary as a hand-off', () => {
     const speakers = castOf()
     const rows = [

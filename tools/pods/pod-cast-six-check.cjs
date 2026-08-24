@@ -193,6 +193,12 @@ function checkC5 (rows, speakers) {
     const a = canonicalSpeakerName(prev.speaker)
     const b = canonicalSpeakerName(cur.speaker)
     if (!a || !b || a === b) continue
+    // Narrator is a one-line numbers/colours drill, not dialogue (audit §3) —
+    // C4 already excludes it from scene cast size; C5 must exclude it from
+    // the hand-off graph for the same reason, or a scene-ending Narrator line
+    // registers as a same-voice "hand-off" with whichever character spoke
+    // last, which is not a conversational collision.
+    if (a === 'Narrator' || b === 'Narrator') continue
 
     if (!byScene.has(cur.scene_number)) {
       byScene.set(cur.scene_number, { nodes: new Set(), weights: new Map(), handoffs: [] })
