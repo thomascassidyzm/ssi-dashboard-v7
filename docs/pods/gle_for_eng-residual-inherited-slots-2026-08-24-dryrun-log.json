@@ -2,13 +2,13 @@
  "pod": "gle_for_eng:pod-1",
  "course": "gle_for_eng",
  "mode": "dryrun",
- "generated_at": "2026-08-24T12:10:24.390Z",
+ "generated_at": "2026-08-24T20:41:21.648Z",
  "ancestors": [
   "gle_for_eng:pod-0-retired-2026-08-24"
  ],
  "rows_total": 231,
  "measured_inherited_slots": {
-  "sentence_audio_ids": 2,
+  "sentence_audio_ids": 1,
   "sentence_known_audio_ids": 1,
   "takeg_audio_ids": 4,
   "explainer_audio_id": 1
@@ -26,9 +26,44 @@
  ],
  "split_keyed_progress_rows": 1,
  "stopped": "1 split-keyed learner_pod_state rows — nulling would change the progress key and orphan them",
- "whole_turn_failures": [],
- "rows_excluded_bad_whole_turn": [],
- "slots_planned": 7,
+ "whole_turn_failures": [
+  "s16/9 target_audio_id voice ga-IE-OrlaNeural is not Staff's cast target voice ga-IE-ColmNeural",
+  "s16/9 known_audio_id voice bedd6226 is not Staff's cast known voice gfzdpspr5fdp",
+  "s17/2 target_audio_id voice ga-IE-OrlaNeural is not Staff's cast target voice ga-IE-ColmNeural",
+  "s17/2 known_audio_id voice bedd6226 is not Staff's cast known voice gfzdpspr5fdp",
+  "s17/4 target_audio_id voice ga-IE-OrlaNeural is not Staff's cast target voice ga-IE-ColmNeural",
+  "s17/4 known_audio_id voice bedd6226 is not Staff's cast known voice gfzdpspr5fdp",
+  "s17/5 target_audio_id voice ga-IE-OrlaNeural is not Staff's cast target voice ga-IE-ColmNeural",
+  "s17/5 known_audio_id voice bedd6226 is not Staff's cast known voice gfzdpspr5fdp",
+  "s17/9 target_audio_id voice ga-IE-OrlaNeural is not Interlocutor's cast target voice ga-IE-ColmNeural",
+  "s17/9 known_audio_id voice bedd6226 is not Interlocutor's cast known voice gfzdpspr5fdp",
+  "s21/5 target_audio_id voice ga-IE-OrlaNeural is not Interlocutor's cast target voice ga-IE-ColmNeural",
+  "s21/5 known_audio_id voice bedd6226 is not Interlocutor's cast known voice gfzdpspr5fdp",
+  "s21/6 target_audio_id voice ga-IE-OrlaNeural is not Interlocutor's cast target voice ga-IE-ColmNeural",
+  "s21/6 known_audio_id voice bedd6226 is not Interlocutor's cast known voice gfzdpspr5fdp",
+  "s21/8 target_audio_id voice ga-IE-OrlaNeural is not Interlocutor's cast target voice ga-IE-ColmNeural",
+  "s21/8 known_audio_id voice bedd6226 is not Interlocutor's cast known voice gfzdpspr5fdp",
+  "s21/11 target_audio_id voice ga-IE-OrlaNeural is not Interlocutor's cast target voice ga-IE-ColmNeural",
+  "s21/11 known_audio_id voice bedd6226 is not Interlocutor's cast known voice gfzdpspr5fdp",
+  "s21/12 target_audio_id voice ga-IE-OrlaNeural is not Interlocutor's cast target voice ga-IE-ColmNeural",
+  "s21/12 known_audio_id voice bedd6226 is not Interlocutor's cast known voice gfzdpspr5fdp",
+  "s21/13 target_audio_id voice ga-IE-OrlaNeural is not Interlocutor's cast target voice ga-IE-ColmNeural",
+  "s21/13 known_audio_id voice bedd6226 is not Interlocutor's cast known voice gfzdpspr5fdp"
+ ],
+ "rows_excluded_bad_whole_turn": [
+  "gle_for_eng:pod-1:SC16-S009",
+  "gle_for_eng:pod-1:SC17-S002",
+  "gle_for_eng:pod-1:SC17-S004",
+  "gle_for_eng:pod-1:SC17-S005",
+  "gle_for_eng:pod-1:SC17-S009",
+  "gle_for_eng:pod-1:SC21-S005",
+  "gle_for_eng:pod-1:SC21-S006",
+  "gle_for_eng:pod-1:SC21-S008",
+  "gle_for_eng:pod-1:SC21-S011",
+  "gle_for_eng:pod-1:SC21-S012",
+  "gle_for_eng:pod-1:SC21-S013"
+ ],
+ "slots_planned": 6,
  "slots_written": 0,
  "rows": [
   {
@@ -39,18 +74,6 @@
    "target_text": "Tá. Tá lá gnóthach agam inniu. Tá súil agam go mbeidh lá maith agat. Feicfidh mé ar ball thú.",
    "known_text": "Yes, I've got a busy day today. I hope you have a good day. See you later.",
    "slots": [
-    {
-     "field": "sentence_audio_ids",
-     "changed": "target_text+known_text",
-     "before": [
-      "1666ea17-f026-404b-b99f-0d8b2b0ca241",
-      "6f0420f5-48a5-484e-ba7b-b47a73f446db",
-      "cc29dddf-f3ac-4049-a0f4-c548c63ec584"
-     ],
-     "after": null,
-     "action": "null",
-     "why": "no alive, verified clip exists for this row's target text; falling back (whole-turn clip)"
-    },
     {
      "field": "takeg_audio_ids",
      "changed": "target_text+known_text",
