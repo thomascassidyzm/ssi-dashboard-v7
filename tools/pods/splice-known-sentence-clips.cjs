@@ -25,7 +25,7 @@
  * ---------------------------------------------------------------------------
  * NOTHING IS REIMPLEMENTED HERE. The cut, the four splice gates and the
  * publisher are `require`d from splice-sentence-clips.cjs, which in turn calls
- * scripts/splice-fork/splice.py unmodified. The seam gate shipped fail-open
+ * tools/pods/splice.py unmodified. The seam gate shipped fail-open
  * twice during that tool's build; a second copy of it here would be a second
  * chance to get it wrong, and the two would drift. What lives in THIS file is
  * only what is genuinely different about the known side.
@@ -454,7 +454,7 @@ if (!COURSE) {
     course: COURSE, pod: POD_ID, side: 'known', apply: APPLY, at,
     known_language: knownLang,
     cast_known_voices: [...castKnownVoices],
-    splicer: 'tools/pods/splice-sentence-clips.cjs spliceAndGate → scripts/splice-fork/splice.py (unmodified)',
+    splicer: 'tools/pods/splice-sentence-clips.cjs spliceAndGate → tools/pods/splice.py',
     candidates: work.length,
     processed: todo.length,
     stats,
