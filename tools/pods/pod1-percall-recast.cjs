@@ -96,6 +96,29 @@ const NON_EXCHANGE = new Set([
   '9:4->9:5', '9:9->9:10', '9:12->9:13', '9:16->9:17',
 ])
 
+/**
+ * Characters who are never a party to an exchange, whoever they stand next to.
+ *
+ * The Narrator does not converse. Every one of its lines is a scene sign-off
+ * reading the clock and the calendar — "6 o'clock. July. August. September." —
+ * and MEASURED across the 22 live pod-1 pods on 2026-08-24, 352 of 352 Narrator
+ * lines are the LAST line of their scene. Nobody ever answers it; the only
+ * adjacency it can form is (scene's last speaker → Narrator).
+ *
+ * Until now that adjacency counted as an exchange, and the gate passed on it by
+ * ACCIDENT: the Narrator sits on the second voice in every course and the last
+ * speaker of every scene happened to sit on the other one. Casting `Interlocutor`
+ * — who closes scene 21 — to the second voice under Tom's two-voice ruling ends
+ * the accident and fired a same-voice "Interlocutor↔Narrator (1 turn)" on all 22
+ * courses: a sign-off counted as a character answering themselves.
+ *
+ * Dropping it is not a loosening. It removes an edge that was never an exchange,
+ * on exactly the rule NON_EXCHANGE already encodes (adjacent, different, not
+ * talking to each other) — it just cannot be enumerated by scene:sentence tag,
+ * because the sign-off's sentence number differs per structural class.
+ */
+const NON_CONVERSANT = new Set(['Narrator'])
+
 // Names whose gender the script itself fixes. Used ONLY to orient a 2-colouring
 // (both orientations are equally collision-free); never to override the graph.
 const NAME_GENDER = {
@@ -239,7 +262,11 @@ function buildExchangeWeights(rows, nameOf) {
     const a = nameOf(prev), b = nameOf(cur)
     if (!a || !b || a === b) continue
     const tag = `${prev.scene_number}:${prev.sentence_number}->${cur.scene_number}:${cur.sentence_number}`
-    if (NON_EXCHANGE.has(tag)) { dropped.push({ tag, a, b, aText: prev.known_text, bText: cur.known_text }); continue }
+    if (NON_EXCHANGE.has(tag)) { dropped.push({ tag, a, b, aText: prev.known_text, bText: cur.known_text, reason: 'shared-hub' }); continue }
+    if (NON_CONVERSANT.has(a) || NON_CONVERSANT.has(b)) {
+      dropped.push({ tag, a, b, aText: prev.known_text, bText: cur.known_text, reason: 'non-conversant' })
+      continue
+    }
     const key = a < b ? `${a}|${b}` : `${b}|${a}`
     w.set(key, (w.get(key) || 0) + 1)
   }
@@ -296,7 +323,8 @@ async function recastPod(db, podId) {
 
   const rows = (await db.query(
     `select id, pod_id, scene_number, sentence_number, global_order, speaker,
-            known_text, glue_to_next, target_audio_id, known_audio_id
+            known_text, glue_to_next, target_audio_id, known_audio_id,
+            sentence_audio_ids, sentence_known_audio_ids, takeg_audio_ids
        from listening_pod_sentences where pod_id = $1
       order by global_order, scene_number, sentence_number`, [podId])).rows
 
@@ -309,7 +337,13 @@ async function recastPod(db, podId) {
     `select course_code, voice_config from courses where course_code = $1`, [pod.course_code])).rows[0]
 
   // Delivered voice per line — the only honest measure of what a learner hears.
-  const audioIds = [...new Set(rows.flatMap(r => [r.target_audio_id, r.known_audio_id]).filter(Boolean))]
+  // The split slots are read for MEASUREMENT only (see splitAudioLeftBehind
+  // below); nothing in this tool writes them.
+  const SPLIT_TRACK = { sentence_audio_ids: 'target', sentence_known_audio_ids: 'known', takeg_audio_ids: 'target' }
+  const audioIds = [...new Set(rows.flatMap(r => [
+    r.target_audio_id, r.known_audio_id,
+    ...Object.keys(SPLIT_TRACK).flatMap(f => (Array.isArray(r[f]) ? r[f] : [])),
+  ]).filter(Boolean))]
   const audio = new Map()
   if (audioIds.length) {
     const res = await db.query(`select id, voice_id from course_audio where id = any($1::uuid[])`, [audioIds])
@@ -561,6 +595,29 @@ async function recastPod(db, podId) {
   const causedByRecast = regenQueue.filter(q => q.causedByRecast)
   const preexistingDrift = regenQueue.filter(q => !q.causedByRecast)
 
+  // ---- split clips this recast leaves behind -------------------------------
+  // The regen queue above walks target_audio_id / known_audio_id only. A row has
+  // four MORE audio slots, and a recast that moves a line's whole turn from Eve to
+  // Ara leaves its split clips speaking Eve — which is the second half of what Tom
+  // heard on ita_for_eng pod-1 scene 15 on 2026-08-24. This tool does not write
+  // them: nulling a split array changes a learner's progress key, so the repair
+  // belongs to tools/pods/repair-split-array-inheritance.cjs, which gates on that.
+  // Reported so the next recast cannot leave it invisible.
+  const splitAudioLeftBehind = []
+  for (const r of rows) {
+    const n = newName(r)
+    for (const [field, track] of Object.entries(SPLIT_TRACK)) {
+      const next = track === 'target' ? newVoiceTarget(n) : newVoiceKnown(n)
+      if (!next) continue
+      for (const [k, clipId] of (Array.isArray(r[field]) ? r[field] : []).entries()) {
+        const delivered = clipId ? audio.get(clipId) : null
+        if (!delivered || delivered === next) continue
+        splitAudioLeftBehind.push({ scene: r.scene_number, sentence: r.sentence_number,
+          field, index: k, clipId, voiceNow: delivered, voiceAfter: next })
+      }
+    }
+  }
+
   // ---- the new stored cast -------------------------------------------------
   // A cast entry reproduces the voice EXACTLY as the pod already spells it
   // where the stored cast already names that voice; otherwise it is rebuilt
@@ -648,6 +705,10 @@ async function recastPod(db, podId) {
     deliveredClipsKeptByOrientation: orientation.reduce((n, o) => n + o.deliveredClipsKept.chosen, 0),
     deliveredClipsKeptIfUnflipped: orientation.reduce((n, o) => n + o.deliveredClipsKept.asColoured, 0),
     regenQueue,
+    // Not a blocker and not written by this tool — see splitAudioLeftBehind above.
+    splitClipsLeftInOldVoice: splitAudioLeftBehind.length,
+    splitClipsLeftInOldVoiceRows: new Set(splitAudioLeftBehind.map(s => `${s.scene}|${s.sentence}`)).size,
+    splitAudioLeftBehind,
     blockers,
     oldStoredCastKeys: Object.keys(storedCast).sort(),
     newStoredCast: newSpeakers,

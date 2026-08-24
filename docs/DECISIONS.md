@@ -816,3 +816,48 @@ miscast the column exists to stop.
 the enumeration moved the question from *which tag* to *which column*)
 **Decided by:** agent — Tom's brief delegated the (a)/(b) choice explicitly and called it
 reversible. The casting rulings applied are Tom's own.
+
+---
+
+## 2026-08-24 — Pod 1 two-voice cast: the new roles draw from the pair the course already has
+
+**Decision:** cast `Staff` and `Interlocutor` (the roles created by the 2026-08-24 speaker
+reattribution) to each course's existing SECOND voice — the one the Learner is not on — across all
+22 live pod-1 pods. Realign `Bar Customer 2` and `Diner 2` on spa/spa_mx to the partition the other
+twenty courses already use. No new voice invented anywhere; every pod still holds exactly two.
+
+**Better × simpler × cheaper:** better — the gate goes 2/22 → 20/22 PASS and unblocks step 1 of
+`pod1-render-sweep.cjs`; simpler — one JSONB column on 22 rows, no new voice to procure, licence or
+cast; cheaper — 242 turns of re-render implied instead of the ~1,900 the literal partition would
+have forced, and zero if Tom decides the existing audio can stand.
+
+**Searched & rejected:**
+- *Literal partition* — every non-learner role onto the second voice. Simulated and MEASURED before
+  applying: it collapses scenes 1-14, which are two-hander dramas with no Learner in them at all,
+  onto one voice. 27 same-voice exchange pairs per course, Anna answering herself for 11 turns.
+  Breaks Tom's own 2026-08-23 acceptance criterion for this gate. Rejected on measurement, and the
+  fork is put back to Tom in the doc — it is a one-line change if he means the literal reading.
+- *Invent a Staff voice* — the overruled recommendation; a third voice contradicts the ruling.
+- *Put `Interlocutor` on the learner voice* — would make the learner answer themselves for 7 turns.
+- *Enumerate the Narrator sign-off in `NON_EXCHANGE` by scene:sentence tag* — rejected: the
+  sign-off's sentence number differs per structural class, so the tag would not travel.
+
+**The one genuine trade-off, and where it went:** two of Tom's rulings agree on the number (two
+voices) and disagree on which roles sit where. Rather than score a compromise, the applied reading
+satisfies both, and the fork is surfaced as a single answerable decision rather than buried.
+
+**Gate correction, required and separate:** `buildExchangeWeights` now drops adjacencies the
+Narrator is party to. Evidence: 352 of 352 Narrator lines across the 22 live pods are the LAST line
+of their scene — it is a clock-and-calendar sign-off, never answered. The gate had been passing on
+that edge by accident. Two tests pin it; 59/59 green.
+
+**No TTS, no audio pass, nothing unlinked.** Re-render scope reported only: 242 turns; 241 distinct
+target clips and just 110 distinct known clips, the latter shared with 407 rows across 59 other
+pods, so make-before-break is mandatory if Tom approves a re-render. No abandoned Staff voice exists
+— nothing was ever rendered under those names.
+
+**Migration protocol:** does not apply. One JSONB column on `listening_pods`; no sentence row, text,
+slot or audio link touched, and progress is keyed by `sentence_id`.
+
+**Decided by:** agent, under Tom's explicit two-voice ruling. Full write-up:
+`docs/pods/pod1-two-voice-cast-2026-08-24.md`
