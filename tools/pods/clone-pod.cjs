@@ -36,7 +36,7 @@
 
 require('dotenv').config({ path: require('path').join(__dirname, '..', '..', '.env.psql') })
 const { Client } = require('pg')
-const { checkPodCast } = require('./pod-cast-gate.cjs')
+const { checkPodCast, loadClipsForRows } = require('./pod-cast-gate.cjs')
 const { carrySplitAudio, SPLIT_AUDIO_FIELDS } = require('./split-audio-inheritance.cjs')
 
 const APPLY = process.argv.includes('--apply')
@@ -129,7 +129,11 @@ const dstPodId = `${COURSE}:${TO}`
     // it off the live slug is the whole point of this tool, so a hard gate here
     // would block the repair. The gate that matters is on the way OUT, in
     // pod-switchover.cjs, which will not promote a pod that fails this same check.
-    const cast = checkPodCast({ rows: sentences, speakers: src.speakers })
+    const cast = checkPodCast({
+      rows: sentences,
+      speakers: src.speakers,
+      clips: await loadClipsForRows(db, sentences),
+    })
     summary.cast_inherited = cast.ok
       ? `cast-correct (${cast.voicesInUse.length} voices, 0 same-voice exchange pairs)`
       : `NOT cast-correct — ${cast.failures.join(' | ')}; recast the clone with ` +
