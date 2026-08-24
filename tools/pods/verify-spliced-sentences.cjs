@@ -103,9 +103,29 @@ const WHISPER_MODEL = process.env.WHISPER_MODEL
  * wrongly, some work is simply not done). Teaching it the danda means changing
  * shared learner-facing code, so it is reported rather than done here.
  */
-const SENTENCE_SPLIT = /(?<=[。！？])\s*(?=\S)|(?<=[.!?…؟।])\s+(?=\S)/
-const APP_LATIN_BOUNDARY = /(?<=[.!?…])\s+/
+const SENTENCE_SPLIT_DEFAULT = /(?<=[。！？])\s*(?=\S)|(?<=[.!?…؟।])\s+(?=\S)/
+const APP_LATIN_BOUNDARY_DEFAULT = /(?<=[.!?…])\s+/
 const splitOn = (t, re) => String(t || '').split(re).map((s) => s.trim()).filter(Boolean)
+
+/**
+ * HESITATION-ELLIPSIS COURSES. hrv Pod 1 writes hesitation with "…" mid-
+ * sentence, so both boundaries above have to demote it for that course or this
+ * verifier computes a five-sentence expectation for a correct three-clip row
+ * and reports false failures — the same trap the danda note above describes,
+ * in the other direction.
+ *
+ * The membership list is IMPORTED from the splicer rather than re-declared, so
+ * the checker and its subject can never disagree about which courses the rule
+ * applies to. Requiring the splicer is side-effect-free: it exits before its
+ * fleet job unless it is the main module.
+ */
+process.env.PHASE8_NO_LISTEN = process.env.PHASE8_NO_LISTEN || '1'
+const { ELLIPSIS_IS_HESITATION } = require('./splice-sentence-clips.cjs')
+const HESITATION = ELLIPSIS_IS_HESITATION.has(COURSE)
+const SENTENCE_SPLIT = HESITATION
+  ? /(?<=[。！？])\s*(?=\S)|(?<=[.!?؟।])\s+(?=\S)/
+  : SENTENCE_SPLIT_DEFAULT
+const APP_LATIN_BOUNDARY = HESITATION ? /(?<=[.!?])\s+/ : APP_LATIN_BOUNDARY_DEFAULT
 
 const SEAM_WINDOW = 0.030
 const SEAM_DB = -35

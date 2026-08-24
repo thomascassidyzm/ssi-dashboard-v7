@@ -58,11 +58,16 @@
  *   4. piece duration — no piece under 0.35s. The census found none; one here
  *                       means the gap chosen was not a sentence boundary.
  *
- * The splicer itself is scripts/splice-fork/splice.py, called UNMODIFIED as a
- * subprocess — same thresholds job #343 measured (-35 dB / 100 ms detection,
- * N-1 longest interior gaps, cut at each gap's midpoint, 50 ms of pause kept
- * either side, 15 ms fade). Reimplementing it here would let it drift away
- * from the evidence that justified it.
+ * The splicer itself is tools/pods/splice.py, called as a subprocess — same
+ * thresholds job #343 measured (-35 dB / 100 ms detection, N-1 longest interior
+ * gaps, cut at each gap's midpoint, 50 ms of pause kept either side, 15 ms
+ * fade). Reimplementing it here would let it drift away from the evidence that
+ * justified it.
+ *
+ * It lived at scripts/splice-fork/splice.py until 2026-08-24 and was therefore
+ * UNTRACKED — scripts/ is the gitignored workspace — so this committed tool
+ * depended at runtime on a file that existed on one machine and in no clean
+ * checkout. Moved into tools/ (committed, shared) alongside its caller.
  *
  * FREE BEFORE CUT. Every sentence is looked up first through phase8's own
  * findExistingAudio, on the same text+language+role+voice dedup key
@@ -184,6 +189,69 @@ const SENTENCE_SPLIT = /(?<=[。！？])\s*(?=\S)|(?<=[.!?…؟])\s+(?=\S)/
 const KNOWN_SPLIT = /(?<=[.!?…])\s+/
 const splitOn = (t, re) => String(t || '').split(re).map((s) => s.trim()).filter(Boolean)
 
+/**
+ * COURSES WHERE "…" IS HESITATION, NOT A SENTENCE END (Tom's ruling via
+ * delegation, 2026-08-24).
+ *
+ * Croatian Pod 1 writes hesitation with an ellipsis: "Da, mogu li dobiti… i
+ * čašu vode, molim." is ONE sentence, and 78 of its 131 multi-sentence rows do
+ * this. Both the app's boundary regex and generatePodAudio's TTS pause cue
+ * treat "…" as terminal, so the take really does pause there and a
+ * length-chosen cut lands mid-sentence with every audio gate passing. Gate 5
+ * (known_count_mismatch) caught all 78 and refused them, which is why they are
+ * whole-turn today rather than wrong.
+ *
+ * Measured before changing anything: under the sentence rule below, all 78 rows
+ * match their English known-side count exactly — 31 turn out to be single
+ * sentences (correctly never split) and 47 become splittable.
+ *
+ * A SET rather than a global change because this is a claim about a course's
+ * authored text, not about the character. Adding a course here says "we have
+ * read this pod's text and its ellipses are hesitations."
+ */
+const ELLIPSIS_IS_HESITATION = new Set(['hrv_for_eng'])
+
+/** Where generatePodAudio put its " … " TTS pause cue — i.e. where the take
+ *  ACTUALLY pauses. Latin-only and whitespace-required, exactly as the renderer
+ *  had it; the cue markers survive in the whole-turn clip's stored text, which
+ *  is how this was verified rather than assumed. */
+const CUE_SPLIT = /(?<=[.!?…])\s+/
+/** Sentence boundary once "…" is demoted to hesitation. */
+const SENTENCE_SPLIT_NO_ELLIPSIS = /(?<=[。！？])\s*(?=\S)|(?<=[.!?؟])\s+(?=\S)/
+
+/**
+ * Map a hesitation-ellipsis turn onto the cue pauses its take contains.
+ *
+ * Returns {sentences, cues, at} where `cues` is how many pauses the renderer
+ * put in the audio and `at` is which of those pauses, IN TIME ORDER, are real
+ * sentence ends. splice.py cuts only at those, leaving the hesitation pauses
+ * inside their sentence where they belong — the performance is preserved
+ * exactly, not re-joined.
+ *
+ * Returns null when the derivation does not reproduce the sentence split it
+ * claims to describe. That is the self-check: a cue map that cannot rebuild
+ * its own sentences is a wrong map, and cutting on it would be a guess.
+ */
+function cueMap (text) {
+  const cueParts = splitOn(text, CUE_SPLIT)
+  const sentences = splitOn(text, SENTENCE_SPLIT_NO_ELLIPSIS)
+  const at = []
+  for (let i = 0; i < cueParts.length - 1; i++) {
+    if (/[.!?]$/.test(cueParts[i])) at.push(i)
+  }
+  // Rebuild the sentences from the cue parts using the map, and require that it
+  // matches. Guards against any punctuation shape the two regexes disagree on.
+  const rebuilt = []
+  let acc = []
+  for (let i = 0; i < cueParts.length; i++) {
+    acc.push(cueParts[i])
+    if (at.includes(i) || i === cueParts.length - 1) { rebuilt.push(acc.join(' ')); acc = [] }
+  }
+  if (rebuilt.length !== sentences.length ||
+      rebuilt.some((s, i) => s !== sentences[i])) return null
+  return { sentences, cues: cueParts.length - 1, at }
+}
+
 async function ffprobeDur (file) {
   const { stdout } = await execFileP('ffprobe',
     ['-v', 'quiet', '-show_entries', 'format=duration', '-of', 'csv=p=0', file])
@@ -234,9 +302,11 @@ async function peakDb (file, start, dur) {
  * Splice one whole-turn clip into `n` pieces and run every gate.
  * Returns {ok:true, pieces:[{file,dur}], measure} or {ok:false, reason, measure}.
  */
-async function spliceAndGate (src, n, outbase) {
-  const { stdout } = await execFileP('python3', [SPLICER, src, String(n), outbase],
-    { maxBuffer: 8 << 20 })
+async function spliceAndGate (src, n, outbase, cue = null) {
+  const args = [SPLICER, src, String(n), outbase]
+  // Cue-ordinal mode: cut only at the pauses the TEXT says are sentence ends.
+  if (cue) args.push(`--cues=${cue.cues}`, `--at=${cue.at.join(',')}`)
+  const { stdout } = await execFileP('python3', args, { maxBuffer: 8 << 20 })
   const r = JSON.parse(stdout)
   const measure = {
     whole_dur: r.whole_dur,
@@ -246,10 +316,21 @@ async function spliceAndGate (src, n, outbase) {
     margin: r.margin,
     piece_durs: r.pieces.map((p) => p.dur),
   }
+  if (r.cue_mode) {
+    measure.cue_mode = true
+    measure.cues_expected = r.cues_expected
+    measure.cues_found = r.cues_found
+    measure.cut_at_ordinals = r.cut_at_ordinals
+    measure.cue_gaps_ms = r.cue_gaps_ms
+  }
   const files = r.pieces.map((p) => path.join(path.dirname(outbase), p.file))
 
-  // Gate 1 — the cut has to be possible at all.
-  if (r.interior_gaps_ms.length < n - 1 || r.pieces.length !== n) {
+  // Gate 1 — the cut has to be possible at all. In cue mode the audio must
+  // contain every pause the text says it does, not merely n-1 of them: a take
+  // missing one cue pause means the pause-to-text mapping is off by one and
+  // every ordinal after it points at the wrong gap.
+  const gapsNeeded = cue ? cue.cues : n - 1
+  if (r.interior_gaps_ms.length < gapsNeeded || r.pieces.length !== n) {
     return { ok: false, reason: 'too_few_gaps', measure, files }
   }
   // Gate 2 — and it has to not be a coin toss.
@@ -338,7 +419,11 @@ async function publishPiece (file, { text, language, role, voiceId }) {
 // Exported so the tests can drive the split and the measurement directly.
 // Both are pure enough to test and both are places where a wrong answer is
 // SILENT — the seam gate shipped fail-open twice during this tool's build.
-module.exports = { SENTENCE_SPLIT, KNOWN_SPLIT, splitOn, peakDb, ffprobeDur, spliceAndGate }
+module.exports = {
+  SENTENCE_SPLIT, KNOWN_SPLIT, SENTENCE_SPLIT_NO_ELLIPSIS, CUE_SPLIT,
+  ELLIPSIS_IS_HESITATION, cueMap,
+  splitOn, peakDb, ffprobeDur, spliceAndGate,
+}
 
 // Only run the fleet job when invoked as a command, never on require().
 if (require.main !== module) return
@@ -363,13 +448,28 @@ if (!COURSE) {
     .eq('pod_id', POD_ID).order('global_order')
   if (error) { console.error(error.message); process.exit(1) }
 
+  // On a hesitation-ellipsis course the sentence rule changes AND the cut has
+  // to be aimed by ordinal; everywhere else this is exactly as it was.
+  const hesitation = ELLIPSIS_IS_HESITATION.has(COURSE)
   const work = []
+  const cueMapFailures = []
   for (const s of sents || []) {
-    const tSents = splitOn(s.target_text, SENTENCE_SPLIT)
+    let tSents, cue = null
+    if (hesitation) {
+      const m = cueMap(s.target_text)
+      if (!m) { cueMapFailures.push({ id: s.id, order: s.global_order, text: s.target_text }); continue }
+      tSents = m.sentences
+      cue = { cues: m.cues, at: m.at }
+    } else {
+      tSents = splitOn(s.target_text, SENTENCE_SPLIT)
+    }
     if (tSents.length < 2) continue
     const cur = (s.sentence_audio_ids || []).filter(Boolean)
     if (cur.length === tSents.length) continue      // already correctly split
-    work.push({ row: s, tSents })
+    work.push({ row: s, tSents, cue })
+  }
+  if (cueMapFailures.length) {
+    console.log(`cue-map self-check refused ${cueMapFailures.length} row(s) — left whole-turn`)
   }
   const todo = LIMIT ? work.slice(0, LIMIT) : work
 
@@ -380,7 +480,7 @@ if (!COURSE) {
   const errors = []
 
   async function handle (item) {
-    const { row, tSents } = item
+    const { row, tSents, cue } = item
     const n = tSents.length
     const tag = `S${row.global_order}`
     // Declared out here so the finally block can always clean up, including on
@@ -433,7 +533,7 @@ if (!COURSE) {
         if (!fs.existsSync(src) || fs.statSync(src).size < 500) {
           throw new Error(`whole-turn clip download too small`)
         }
-        result = await spliceAndGate(src, n, outbase)
+        result = await spliceAndGate(src, n, outbase, cue)
         files = [src, ...(result.files || [])]
         if (!result.ok) {
           refusals.push({
@@ -466,7 +566,10 @@ if (!COURSE) {
       // Croatian ellipsis (78 rows) and the 8 unrelated mismatches elsewhere
       // with one rule and no special cases. A refused row keeps its whole-turn
       // clip and is exactly as it was — the safe direction.
-      const kParts = splitOn(row.known_text, KNOWN_SPLIT).length
+      // On a hesitation-ellipsis course the KNOWN side is read with the same
+      // demoted "…" so the two sides are counted by one rule, not two.
+      const kParts = splitOn(row.known_text,
+        cue ? /(?<=[.!?])\s+/ : KNOWN_SPLIT).length
       if (kParts !== n) {
         stats.known_count_mismatch++
         refusals.push({
@@ -524,7 +627,7 @@ if (!COURSE) {
   const log = {
     course: COURSE, pod: POD_ID, apply: APPLY, at,
     gates: { margin_floor: MARGIN_FLOOR, seam_db: SEAM_DB, seam_window_s: SEAM_WINDOW, min_piece_s: MIN_PIECE },
-    splicer: 'scripts/splice-fork/splice.py (unmodified)',
+    splicer: 'tools/pods/splice.py',
     multi_sentence_turns_needing_split: work.length,
     processed: todo.length,
     stats, refusals, errors,
