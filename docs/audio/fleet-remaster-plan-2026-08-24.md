@@ -78,6 +78,14 @@ about their bandwidth, and you should fire it knowing that rather than find out 
 - It runs **course by course**, so the re-download is spread over weeks rather than landing on
   everyone at once.
 
+**A smaller second cost, checked and not a blocker.** The player fetches the list of revised clips
+for a course every time it builds a script, and the code that does it was written expecting "a
+handful out of millions". That is already untrue — German has 46,118 revised clips today and the
+query returns all of them, about 2.8 MB, with no truncation. A fleet re-master would take German to
+roughly 62,000 and Spanish from 39,608 to 79,559 — call it a doubling of a payload learners already
+carry. I tested the real query against the live database with the key the player actually uses: it
+works, it is just heavier. Worth tidying afterwards, not worth delaying for.
+
 ---
 
 ## Why it is safe to run
