@@ -2,7 +2,7 @@
  "pod": "spa_mx_for_eng:pod-1",
  "course": "spa_mx_for_eng",
  "mode": "applied",
- "generated_at": "2026-08-24T12:00:02.433Z",
+ "generated_at": "2026-08-24T12:09:35.893Z",
  "ancestors": [
   "spa_mx_for_eng:pod-0-retired-2026-08-22",
   "spa_mx_for_eng:pod-1-retired-2026-08-24"
@@ -10,11 +10,165 @@
  "rows_total": 231,
  "measured_inherited_slots": {
   "sentence_audio_ids": 0,
-  "sentence_known_audio_ids": 1,
+  "sentence_known_audio_ids": 0,
   "takeg_audio_ids": 0,
   "explainer_audio_id": 37
  },
- "scope_note": "explainer_audio_id is MEASURED ONLY — owned by the explainer relink worker",
+ "scope_note": "explainer_audio_id repaired on the INHERITED test only; #312's sixteen protected rows and any explainer still quoting its own row are held, never written",
+ "held": [
+  {
+   "id": "spa_mx_for_eng:pod-1:SC01-S003",
+   "scene": 1,
+   "sentence": 3,
+   "global_order": 3,
+   "field": "explainer_audio_id",
+   "why": "inherited, but the clip still quotes this row's own text — a gloss that explains its row is not a defect"
+  },
+  {
+   "id": "spa_mx_for_eng:pod-1:SC01-S004",
+   "scene": 1,
+   "sentence": 4,
+   "global_order": 4,
+   "field": "explainer_audio_id",
+   "why": "inherited, but the clip still quotes this row's own text — a gloss that explains its row is not a defect"
+  },
+  {
+   "id": "spa_mx_for_eng:pod-1:SC04-S002",
+   "scene": 4,
+   "sentence": 2,
+   "global_order": 21,
+   "field": "explainer_audio_id",
+   "why": "inherited, but the clip still quotes this row's own text — a gloss that explains its row is not a defect"
+  },
+  {
+   "id": "spa_mx_for_eng:pod-1:SC05-S001",
+   "scene": 5,
+   "sentence": 1,
+   "global_order": 23,
+   "field": "explainer_audio_id",
+   "why": "inherited, but the clip still quotes this row's own text — a gloss that explains its row is not a defect"
+  },
+  {
+   "id": "spa_mx_for_eng:pod-1:SC05-S002",
+   "scene": 5,
+   "sentence": 2,
+   "global_order": 24,
+   "field": "explainer_audio_id",
+   "why": "inherited, but the clip still quotes this row's own text — a gloss that explains its row is not a defect"
+  },
+  {
+   "id": "spa_mx_for_eng:pod-1:SC07-S004",
+   "scene": 7,
+   "sentence": 4,
+   "global_order": 41,
+   "field": "explainer_audio_id",
+   "why": "inherited, but the clip still quotes this row's own text — a gloss that explains its row is not a defect"
+  },
+  {
+   "id": "spa_mx_for_eng:pod-1:SC07-S010",
+   "scene": 7,
+   "sentence": 10,
+   "global_order": 47,
+   "field": "explainer_audio_id",
+   "why": "inherited, but the clip still quotes this row's own text — a gloss that explains its row is not a defect"
+  },
+  {
+   "id": "spa_mx_for_eng:pod-1:SC08-S002",
+   "scene": 8,
+   "sentence": 2,
+   "global_order": 54,
+   "field": "explainer_audio_id",
+   "why": "inherited, but the clip still quotes this row's own text — a gloss that explains its row is not a defect"
+  },
+  {
+   "id": "spa_mx_for_eng:pod-1:SC08-S003",
+   "scene": 8,
+   "sentence": 3,
+   "global_order": 55,
+   "field": "explainer_audio_id",
+   "why": "inherited, but the clip still quotes this row's own text — a gloss that explains its row is not a defect"
+  },
+  {
+   "id": "spa_mx_for_eng:pod-1:SC08-S006",
+   "scene": 8,
+   "sentence": 6,
+   "global_order": 58,
+   "field": "explainer_audio_id",
+   "why": "inherited, but the clip still quotes this row's own text — a gloss that explains its row is not a defect"
+  },
+  {
+   "id": "spa_mx_for_eng:pod-1:SC08-S007",
+   "scene": 8,
+   "sentence": 7,
+   "global_order": 59,
+   "field": "explainer_audio_id",
+   "why": "inherited, but the clip still quotes this row's own text — a gloss that explains its row is not a defect"
+  },
+  {
+   "id": "spa_mx_for_eng:pod-1:SC08-S014",
+   "scene": 8,
+   "sentence": 14,
+   "global_order": 66,
+   "field": "explainer_audio_id",
+   "why": "inherited, but the clip still quotes this row's own text — a gloss that explains its row is not a defect"
+  },
+  {
+   "id": "spa_mx_for_eng:pod-1:SC09-S001",
+   "scene": 9,
+   "sentence": 1,
+   "global_order": 69,
+   "field": "explainer_audio_id",
+   "why": "inherited, but the clip still quotes this row's own text — a gloss that explains its row is not a defect"
+  },
+  {
+   "id": "spa_mx_for_eng:pod-1:SC09-S005",
+   "scene": 9,
+   "sentence": 5,
+   "global_order": 73,
+   "field": "explainer_audio_id",
+   "why": "inherited, but the clip still quotes this row's own text — a gloss that explains its row is not a defect"
+  },
+  {
+   "id": "spa_mx_for_eng:pod-1:SC11-S002",
+   "scene": 11,
+   "sentence": 2,
+   "global_order": 98,
+   "field": "explainer_audio_id",
+   "why": "inherited, but the clip still quotes this row's own text — a gloss that explains its row is not a defect"
+  },
+  {
+   "id": "spa_mx_for_eng:pod-1:SC11-S004",
+   "scene": 11,
+   "sentence": 4,
+   "global_order": 100,
+   "field": "explainer_audio_id",
+   "why": "inherited, but the clip still quotes this row's own text — a gloss that explains its row is not a defect"
+  },
+  {
+   "id": "spa_mx_for_eng:pod-1:SC11-S008",
+   "scene": 11,
+   "sentence": 8,
+   "global_order": 104,
+   "field": "explainer_audio_id",
+   "why": "inherited, but the clip still quotes this row's own text — a gloss that explains its row is not a defect"
+  },
+  {
+   "id": "spa_mx_for_eng:pod-1:SC12-S004",
+   "scene": 12,
+   "sentence": 4,
+   "global_order": 113,
+   "field": "explainer_audio_id",
+   "why": "inherited, but the clip still quotes this row's own text — a gloss that explains its row is not a defect"
+  },
+  {
+   "id": "spa_mx_for_eng:pod-1:SC12-S007",
+   "scene": 12,
+   "sentence": 7,
+   "global_order": 116,
+   "field": "explainer_audio_id",
+   "why": "inherited, but the clip still quotes this row's own text — a gloss that explains its row is not a defect"
+  }
+ ],
  "split_keyed_progress_rows": 0,
  "stopped": null,
  "whole_turn_failures": [
@@ -43,29 +197,312 @@
   "spa_mx_for_eng:pod-1:SC22-S009",
   "spa_mx_for_eng:pod-1:SC22-S011"
  ],
- "slots_planned": 1,
- "slots_written": 1,
+ "slots_planned": 17,
+ "slots_written": 17,
  "rows": [
   {
-   "id": "spa_mx_for_eng:pod-1:SC04-S002",
-   "scene": 4,
-   "sentence": 2,
+   "id": "spa_mx_for_eng:pod-1:SC03-S003",
+   "scene": 3,
+   "sentence": 3,
    "speaker": "Sarah",
-   "target_text": "¡Hola! Lo siento, pero no puedo hablar en este momento. Necesito ir a casa ahora. ¿Podemos hablar mañana?",
-   "known_text": "Hello! I'm sorry but I can't talk at the moment. I need to go home now. Can we talk tomorrow?",
+   "target_text": "¿Tienen algo de comer?",
+   "known_text": "Do you have any food?",
    "slots": [
     {
-     "field": "sentence_known_audio_ids",
-     "changed": "known_text",
-     "before": [
-      "374ade8a-771b-4558-9e84-edf11de7e06f",
-      "0a1a24b8-8d6a-403c-8bca-9359e2150994",
-      "cc6648d0-e7ff-4053-8f8f-3bc4d42ab880",
-      "4e6862ca-3530-4759-9c4a-14624ed57834"
-     ],
+     "field": "explainer_audio_id",
+     "changed": "target_text+known_text",
+     "before": "b6ec8e2f-5ed0-4208-add2-19473c2ebc57",
      "after": null,
      "action": "null",
-     "why": "no alive, in-cast clip set exists for this row's known text; falling back to the verified whole-turn clip"
+     "why": "no alive, verified clip exists for this row's current text; falling back (explainer slot plays the translation)"
+    }
+   ]
+  },
+  {
+   "id": "spa_mx_for_eng:pod-1:SC06-S001",
+   "scene": 6,
+   "sentence": 1,
+   "speaker": "James",
+   "target_text": "Perdón. Hola. ¿Cómo te llamas?",
+   "known_text": "Excuse me. Hello. What's your name?",
+   "slots": [
+    {
+     "field": "explainer_audio_id",
+     "changed": "target_text+known_text",
+     "before": "90267972-04ea-4c87-8f25-88316239d911",
+     "after": null,
+     "action": "null",
+     "why": "no alive, verified clip exists for this row's current text; falling back (explainer slot plays the translation)"
+    }
+   ]
+  },
+  {
+   "id": "spa_mx_for_eng:pod-1:SC08-S004",
+   "scene": 8,
+   "sentence": 4,
+   "speaker": "Bar Customer 1",
+   "target_text": "Me gustaría una pinta de la amarga, por favor.",
+   "known_text": "I'd like a pint of the bitter, please.",
+   "slots": [
+    {
+     "field": "explainer_audio_id",
+     "changed": "target_text+known_text",
+     "before": "275ff8ac-857f-4b7b-80ad-0bea7c1f404f",
+     "after": null,
+     "action": "null",
+     "why": "no alive, verified clip exists for this row's current text; falling back (explainer slot plays the translation)"
+    }
+   ]
+  },
+  {
+   "id": "spa_mx_for_eng:pod-1:SC11-S001",
+   "scene": 11,
+   "sentence": 1,
+   "speaker": "Guest",
+   "target_text": "Buenas tardes. Tengo una reserva a nombre de Jones.",
+   "known_text": "Good afternoon. I have a booking under the name Jones.",
+   "slots": [
+    {
+     "field": "explainer_audio_id",
+     "changed": "target_text+known_text",
+     "before": "70e61999-c153-4511-9c9d-735bd59e9a9f",
+     "after": null,
+     "action": "null",
+     "why": "no alive, verified clip exists for this row's current text; falling back (explainer slot plays the translation)"
+    }
+   ]
+  },
+  {
+   "id": "spa_mx_for_eng:pod-1:SC12-S001",
+   "scene": 12,
+   "sentence": 1,
+   "speaker": "Customer",
+   "target_text": "Buenos días. No me encuentro muy bien, ¿me podría recomendar algo?",
+   "known_text": "Good morning. I'm not feeling great - could you recommend something?",
+   "slots": [
+    {
+     "field": "explainer_audio_id",
+     "changed": "target_text+known_text",
+     "before": "0b3c54a5-ef93-41fc-95a8-f206c4900dcc",
+     "after": null,
+     "action": "null",
+     "why": "no alive, verified clip exists for this row's current text; falling back (explainer slot plays the translation)"
+    }
+   ]
+  },
+  {
+   "id": "spa_mx_for_eng:pod-1:SC14-S007",
+   "scene": 14,
+   "sentence": 7,
+   "speaker": "Driver",
+   "target_text": "Ya llegamos. Son doce libras con cincuenta.",
+   "known_text": "Here we are. That's twelve pound fifty.",
+   "slots": [
+    {
+     "field": "explainer_audio_id",
+     "changed": "target_text+known_text",
+     "before": "ee59ddfa-7b88-4dbc-a6c7-5adaa9168a95",
+     "after": null,
+     "action": "null",
+     "why": "no alive, verified clip exists for this row's current text; falling back (explainer slot plays the translation)"
+    }
+   ]
+  },
+  {
+   "id": "spa_mx_for_eng:pod-1:SC15-S001",
+   "scene": 15,
+   "sentence": 1,
+   "speaker": "Learner",
+   "target_text": "¿Cuánto es?",
+   "known_text": "How much is that?",
+   "slots": [
+    {
+     "field": "explainer_audio_id",
+     "changed": "target_text+known_text",
+     "before": "fc31f803-b07f-4c45-a4ca-ad0e01f70864",
+     "after": null,
+     "action": "null",
+     "why": "no alive, verified clip exists for this row's current text; falling back (explainer slot plays the translation)"
+    }
+   ]
+  },
+  {
+   "id": "spa_mx_for_eng:pod-1:SC15-S002",
+   "scene": 15,
+   "sentence": 2,
+   "speaker": "Learner",
+   "target_text": "¿Me puede decir cuánto es?",
+   "known_text": "Can you tell me how much that is?",
+   "slots": [
+    {
+     "field": "explainer_audio_id",
+     "changed": "target_text+known_text",
+     "before": "b942cee5-1c92-405f-9bfa-3866ca84cb03",
+     "after": null,
+     "action": "null",
+     "why": "no alive, verified clip exists for this row's current text; falling back (explainer slot plays the translation)"
+    }
+   ]
+  },
+  {
+   "id": "spa_mx_for_eng:pod-1:SC15-S003",
+   "scene": 15,
+   "sentence": 3,
+   "speaker": "Learner",
+   "target_text": "¿Cuánto cuesta ir en taxi al centro?",
+   "known_text": "How much does it cost to get a taxi into town?",
+   "slots": [
+    {
+     "field": "explainer_audio_id",
+     "changed": "target_text+known_text",
+     "before": "b4d22be4-5b6e-49eb-bf2b-d8e4da260b00",
+     "after": null,
+     "action": "null",
+     "why": "no alive, verified clip exists for this row's current text; falling back (explainer slot plays the translation)"
+    }
+   ]
+  },
+  {
+   "id": "spa_mx_for_eng:pod-1:SC15-S004",
+   "scene": 15,
+   "sentence": 4,
+   "speaker": "Learner",
+   "target_text": "¿Cuánto cuesta ir en camión al centro?",
+   "known_text": "How much does it cost to get a bus into town?",
+   "slots": [
+    {
+     "field": "explainer_audio_id",
+     "changed": "target_text+known_text",
+     "before": "79b29010-6dc5-41ab-ba18-84e727da7aab",
+     "after": null,
+     "action": "null",
+     "why": "no alive, verified clip exists for this row's current text; falling back (explainer slot plays the translation)"
+    }
+   ]
+  },
+  {
+   "id": "spa_mx_for_eng:pod-1:SC15-S005",
+   "scene": 15,
+   "sentence": 5,
+   "speaker": "Learner",
+   "target_text": "¿Dónde podemos tomar un camión?",
+   "known_text": "Where can we get a bus?",
+   "slots": [
+    {
+     "field": "explainer_audio_id",
+     "changed": "target_text+known_text",
+     "before": "d65e4ee1-6da3-41ac-9c0d-6a2a3e7d3402",
+     "after": null,
+     "action": "null",
+     "why": "no alive, verified clip exists for this row's current text; falling back (explainer slot plays the translation)"
+    }
+   ]
+  },
+  {
+   "id": "spa_mx_for_eng:pod-1:SC15-S006",
+   "scene": 15,
+   "sentence": 6,
+   "speaker": "Learner",
+   "target_text": "¿Dónde podemos tomar un taxi?",
+   "known_text": "Where can we get a taxi?",
+   "slots": [
+    {
+     "field": "explainer_audio_id",
+     "changed": "target_text+known_text",
+     "before": "b88191d9-5316-4c1d-be20-82a92a04adf7",
+     "after": null,
+     "action": "null",
+     "why": "no alive, verified clip exists for this row's current text; falling back (explainer slot plays the translation)"
+    }
+   ]
+  },
+  {
+   "id": "spa_mx_for_eng:pod-1:SC15-S007",
+   "scene": 15,
+   "sentence": 7,
+   "speaker": "Learner",
+   "target_text": "Cuatro boletos de ida al centro, por favor.",
+   "known_text": "Four single tickets to town, please.",
+   "slots": [
+    {
+     "field": "explainer_audio_id",
+     "changed": "target_text+known_text",
+     "before": "5867c844-984e-429b-9a40-069e7770b383",
+     "after": null,
+     "action": "null",
+     "why": "no alive, verified clip exists for this row's current text; falling back (explainer slot plays the translation)"
+    }
+   ]
+  },
+  {
+   "id": "spa_mx_for_eng:pod-1:SC15-S008",
+   "scene": 15,
+   "sentence": 8,
+   "speaker": "Learner",
+   "target_text": "Dos boletos de ida y vuelta al centro, por favor.",
+   "known_text": "Two return tickets to town, please.",
+   "slots": [
+    {
+     "field": "explainer_audio_id",
+     "changed": "target_text+known_text",
+     "before": "a9989539-78ce-43b0-bf5a-337845c9cb5e",
+     "after": null,
+     "action": "null",
+     "why": "no alive, verified clip exists for this row's current text; falling back (explainer slot plays the translation)"
+    }
+   ]
+  },
+  {
+   "id": "spa_mx_for_eng:pod-1:SC15-S009",
+   "scene": 15,
+   "sentence": 9,
+   "speaker": "Learner",
+   "target_text": "Prefiero intentar hablar tu idioma, me parece más educado.",
+   "known_text": "I prefer to try to speak your language, I think it's polite.",
+   "slots": [
+    {
+     "field": "explainer_audio_id",
+     "changed": "target_text+known_text",
+     "before": "82ebf932-e1f0-4f02-9b72-bffdae482266",
+     "after": null,
+     "action": "null",
+     "why": "no alive, verified clip exists for this row's current text; falling back (explainer slot plays the translation)"
+    }
+   ]
+  },
+  {
+   "id": "spa_mx_for_eng:pod-1:SC15-S010",
+   "scene": 15,
+   "sentence": 10,
+   "speaker": "Learner",
+   "target_text": "Lo siento, no puedo hablar muy rápido.",
+   "known_text": "I'm sorry I can't speak very quickly.",
+   "slots": [
+    {
+     "field": "explainer_audio_id",
+     "changed": "target_text+known_text",
+     "before": "ea910b01-c8be-47e7-a21b-9a7b0ea93a00",
+     "after": null,
+     "action": "null",
+     "why": "no alive, verified clip exists for this row's current text; falling back (explainer slot plays the translation)"
+    }
+   ]
+  },
+  {
+   "id": "spa_mx_for_eng:pod-1:SC15-S011",
+   "scene": 15,
+   "sentence": 11,
+   "speaker": "Narrator",
+   "target_text": "Cien mil. Sesenta. Setenta. La una. Las once.",
+   "known_text": "100,000. 60. 70. 1 o'clock. 11 o'clock.",
+   "slots": [
+    {
+     "field": "explainer_audio_id",
+     "changed": "target_text+known_text",
+     "before": "35e27d92-1e9d-407c-9711-53de1cfa1433",
+     "after": null,
+     "action": "null",
+     "why": "no alive, verified clip exists for this row's current text; falling back (explainer slot plays the translation)"
     }
    ]
   }

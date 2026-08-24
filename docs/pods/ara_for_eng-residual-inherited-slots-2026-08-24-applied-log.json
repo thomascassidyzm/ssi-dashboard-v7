@@ -2,7 +2,7 @@
  "pod": "ara_for_eng:pod-1",
  "course": "ara_for_eng",
  "mode": "applied",
- "generated_at": "2026-08-24T11:59:53.616Z",
+ "generated_at": "2026-08-24T12:09:21.600Z",
  "ancestors": [
   "ara_for_eng:pod-0-retired-2026-08-22",
   "ara_for_eng:pod-1-retired-2026-08-24"
@@ -10,40 +10,26 @@
  "rows_total": 231,
  "measured_inherited_slots": {
   "sentence_audio_ids": 0,
-  "sentence_known_audio_ids": 1,
+  "sentence_known_audio_ids": 0,
   "takeg_audio_ids": 0,
   "explainer_audio_id": 1
  },
- "scope_note": "explainer_audio_id is MEASURED ONLY — owned by the explainer relink worker",
+ "scope_note": "explainer_audio_id repaired on the INHERITED test only; #312's sixteen protected rows and any explainer still quoting its own row are held, never written",
+ "held": [
+  {
+   "id": "ara_for_eng:pod-1:SC02-S002",
+   "scene": 2,
+   "sentence": 2,
+   "global_order": 6,
+   "field": "explainer_audio_id",
+   "why": "protected — one of the sixteen rows worker #312 left for Tom (older \"Breaking it down…\" script)"
+  }
+ ],
  "split_keyed_progress_rows": 0,
  "stopped": null,
  "whole_turn_failures": [],
  "rows_excluded_bad_whole_turn": [],
- "slots_planned": 1,
- "slots_written": 1,
- "rows": [
-  {
-   "id": "ara_for_eng:pod-1:SC03-S002",
-   "scene": 3,
-   "sentence": 2,
-   "speaker": "Sarah",
-   "target_text": "مساء الخير. عايزة قهوة من فضلك. بحليب بس من غير سكر. واخداها بره.",
-   "known_text": "Good afternoon. I'd like a coffee, please. With milk but with no sugar. To take away.",
-   "slots": [
-    {
-     "field": "sentence_known_audio_ids",
-     "changed": "known_text",
-     "before": [
-      "f02c8bc1-63aa-458d-a26b-bf960c4c086e",
-      "7432b56b-d8e9-4123-8a4d-e7c638ba6cf8",
-      "cfed1d79-35a4-416f-9cc7-e8de512a8c8a",
-      "f8ee7859-886f-4a64-9555-96114250a4bf"
-     ],
-     "after": null,
-     "action": "null",
-     "why": "no alive, in-cast clip set exists for this row's known text; falling back to the verified whole-turn clip"
-    }
-   ]
-  }
- ]
+ "slots_planned": 0,
+ "slots_written": 0,
+ "rows": []
 }

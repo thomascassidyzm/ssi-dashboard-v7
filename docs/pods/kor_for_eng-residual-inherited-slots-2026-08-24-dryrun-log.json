@@ -2,7 +2,7 @@
  "pod": "kor_for_eng:pod-1",
  "course": "kor_for_eng",
  "mode": "dryrun",
- "generated_at": "2026-08-24T12:00:27.782Z",
+ "generated_at": "2026-08-24T12:10:27.905Z",
  "ancestors": [
   "kor_for_eng:pod-0-retired-2026-08-22",
   "kor_for_eng:pod-1-retired-2026-08-24"
@@ -12,9 +12,91 @@
   "sentence_audio_ids": 0,
   "sentence_known_audio_ids": 0,
   "takeg_audio_ids": 0,
-  "explainer_audio_id": 24
+  "explainer_audio_id": 10
  },
- "scope_note": "explainer_audio_id is MEASURED ONLY — owned by the explainer relink worker",
+ "scope_note": "explainer_audio_id repaired on the INHERITED test only; #312's sixteen protected rows and any explainer still quoting its own row are held, never written",
+ "held": [
+  {
+   "id": "kor_for_eng:pod-1:SC05-S002",
+   "scene": 5,
+   "sentence": 2,
+   "global_order": 24,
+   "field": "explainer_audio_id",
+   "why": "inherited, but the clip still quotes this row's own text — a gloss that explains its row is not a defect"
+  },
+  {
+   "id": "kor_for_eng:pod-1:SC06-S001",
+   "scene": 6,
+   "sentence": 1,
+   "global_order": 25,
+   "field": "explainer_audio_id",
+   "why": "inherited, but the clip still quotes this row's own text — a gloss that explains its row is not a defect"
+  },
+  {
+   "id": "kor_for_eng:pod-1:SC06-S005",
+   "scene": 6,
+   "sentence": 5,
+   "global_order": 29,
+   "field": "explainer_audio_id",
+   "why": "inherited, but the clip still quotes this row's own text — a gloss that explains its row is not a defect"
+  },
+  {
+   "id": "kor_for_eng:pod-1:SC09-S005",
+   "scene": 9,
+   "sentence": 5,
+   "global_order": 73,
+   "field": "explainer_audio_id",
+   "why": "inherited, but the clip still quotes this row's own text — a gloss that explains its row is not a defect"
+  },
+  {
+   "id": "kor_for_eng:pod-1:SC11-S004",
+   "scene": 11,
+   "sentence": 4,
+   "global_order": 100,
+   "field": "explainer_audio_id",
+   "why": "inherited, but the clip still quotes this row's own text — a gloss that explains its row is not a defect"
+  },
+  {
+   "id": "kor_for_eng:pod-1:SC11-S008",
+   "scene": 11,
+   "sentence": 8,
+   "global_order": 104,
+   "field": "explainer_audio_id",
+   "why": "inherited, but the clip still quotes this row's own text — a gloss that explains its row is not a defect"
+  },
+  {
+   "id": "kor_for_eng:pod-1:SC12-S001",
+   "scene": 12,
+   "sentence": 1,
+   "global_order": 110,
+   "field": "explainer_audio_id",
+   "why": "inherited, but the clip still quotes this row's own text — a gloss that explains its row is not a defect"
+  },
+  {
+   "id": "kor_for_eng:pod-1:SC14-S001",
+   "scene": 14,
+   "sentence": 1,
+   "global_order": 131,
+   "field": "explainer_audio_id",
+   "why": "inherited, but the clip still quotes this row's own text — a gloss that explains its row is not a defect"
+  },
+  {
+   "id": "kor_for_eng:pod-1:SC14-S007",
+   "scene": 14,
+   "sentence": 7,
+   "global_order": 137,
+   "field": "explainer_audio_id",
+   "why": "inherited, but the clip still quotes this row's own text — a gloss that explains its row is not a defect"
+  },
+  {
+   "id": "kor_for_eng:pod-1:SC15-S009",
+   "scene": 15,
+   "sentence": 9,
+   "global_order": 149,
+   "field": "explainer_audio_id",
+   "why": "inherited, but the clip still quotes this row's own text — a gloss that explains its row is not a defect"
+  }
+ ],
  "split_keyed_progress_rows": 0,
  "stopped": null,
  "whole_turn_failures": [],

@@ -2,7 +2,7 @@
  "pod": "swe_for_eng:pod-1",
  "course": "swe_for_eng",
  "mode": "dryrun",
- "generated_at": "2026-08-24T12:00:30.471Z",
+ "generated_at": "2026-08-24T12:10:31.406Z",
  "ancestors": [
   "swe_for_eng:pod-0-retired-2026-08-22",
   "swe_for_eng:pod-1-retired-2026-08-24"
@@ -14,7 +14,8 @@
   "takeg_audio_ids": 0,
   "explainer_audio_id": 0
  },
- "scope_note": "explainer_audio_id is MEASURED ONLY — owned by the explainer relink worker",
+ "scope_note": "explainer_audio_id repaired on the INHERITED test only; #312's sixteen protected rows and any explainer still quoting its own row are held, never written",
+ "held": [],
  "split_keyed_progress_rows": 0,
  "stopped": null,
  "whole_turn_failures": [],

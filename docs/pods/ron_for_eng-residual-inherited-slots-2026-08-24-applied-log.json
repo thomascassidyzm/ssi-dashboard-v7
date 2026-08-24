@@ -2,7 +2,7 @@
  "pod": "ron_for_eng:pod-1",
  "course": "ron_for_eng",
  "mode": "applied",
- "generated_at": "2026-08-24T12:00:01.255Z",
+ "generated_at": "2026-08-24T12:09:33.499Z",
  "ancestors": [
   "ron_for_eng:pod-0-retired-2026-08-22",
   "ron_for_eng:pod-1-retired-2026-08-24"
@@ -10,62 +10,17 @@
  "rows_total": 231,
  "measured_inherited_slots": {
   "sentence_audio_ids": 0,
-  "sentence_known_audio_ids": 2,
+  "sentence_known_audio_ids": 0,
   "takeg_audio_ids": 0,
   "explainer_audio_id": 0
  },
- "scope_note": "explainer_audio_id is MEASURED ONLY — owned by the explainer relink worker",
+ "scope_note": "explainer_audio_id repaired on the INHERITED test only; #312's sixteen protected rows and any explainer still quoting its own row are held, never written",
+ "held": [],
  "split_keyed_progress_rows": 0,
  "stopped": null,
  "whole_turn_failures": [],
  "rows_excluded_bad_whole_turn": [],
- "slots_planned": 2,
- "slots_written": 2,
- "rows": [
-  {
-   "id": "ron_for_eng:pod-1:SC01-S004",
-   "scene": 1,
-   "sentence": 4,
-   "speaker": "Sarah",
-   "target_text": "Da, am o zi foarte încărcată astăzi. Sper să ai o zi bună. Ne vedem mai târziu.",
-   "known_text": "Yes, I've got a busy day today. I hope you have a good day. See you later.",
-   "slots": [
-    {
-     "field": "sentence_known_audio_ids",
-     "changed": "target_text+known_text",
-     "before": [
-      "18c4abcc-4a10-44e8-8e9d-c20455272c68",
-      "2d3ba7a4-f15c-45ee-a88b-3dbf13e701c0",
-      "87608161-d604-4b53-97b1-846cb31390d6"
-     ],
-     "after": null,
-     "action": "null",
-     "why": "no alive, in-cast clip set exists for this row's known text; falling back to the verified whole-turn clip"
-    }
-   ]
-  },
-  {
-   "id": "ron_for_eng:pod-1:SC04-S002",
-   "scene": 4,
-   "sentence": 2,
-   "speaker": "Sarah",
-   "target_text": "Bună! Îmi pare rău, dar nu pot să vorbesc acum. Trebuie să merg acasă. Putem vorbi mâine?",
-   "known_text": "Hello! I'm sorry but I can't talk at the moment. I need to go home now. Can we talk tomorrow?",
-   "slots": [
-    {
-     "field": "sentence_known_audio_ids",
-     "changed": "known_text",
-     "before": [
-      "26df5924-5a06-4a1d-ac20-8c4b1326b3ca",
-      "afff1978-142a-4075-973a-28e25cce3325",
-      "150eebd0-f0c2-483b-9b1b-d8ff7928e355",
-      "bc9373a6-f0d8-4402-9829-d5a366e01533"
-     ],
-     "after": null,
-     "action": "null",
-     "why": "no alive, in-cast clip set exists for this row's known text; falling back to the verified whole-turn clip"
-    }
-   ]
-  }
- ]
+ "slots_planned": 0,
+ "slots_written": 0,
+ "rows": []
 }

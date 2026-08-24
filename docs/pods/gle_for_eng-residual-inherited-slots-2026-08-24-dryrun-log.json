@@ -2,7 +2,7 @@
  "pod": "gle_for_eng:pod-1",
  "course": "gle_for_eng",
  "mode": "dryrun",
- "generated_at": "2026-08-24T12:00:25.439Z",
+ "generated_at": "2026-08-24T12:10:24.390Z",
  "ancestors": [
   "gle_for_eng:pod-0-retired-2026-08-24"
  ],
@@ -13,7 +13,17 @@
   "takeg_audio_ids": 4,
   "explainer_audio_id": 1
  },
- "scope_note": "explainer_audio_id is MEASURED ONLY — owned by the explainer relink worker",
+ "scope_note": "explainer_audio_id repaired on the INHERITED test only; #312's sixteen protected rows and any explainer still quoting its own row are held, never written",
+ "held": [
+  {
+   "id": "gle_for_eng:pod-1:SC01-S004",
+   "scene": 1,
+   "sentence": 4,
+   "global_order": 4,
+   "field": "explainer_audio_id",
+   "why": "protected — one of the sixteen rows worker #312 left for Tom (older \"Breaking it down…\" script)"
+  }
+ ],
  "split_keyed_progress_rows": 1,
  "stopped": "1 split-keyed learner_pod_state rows — nulling would change the progress key and orphan them",
  "whole_turn_failures": [],
@@ -39,7 +49,7 @@
      ],
      "after": null,
      "action": "null",
-     "why": "no alive, in-cast clip set exists for this row's target text; falling back to the verified whole-turn clip"
+     "why": "no alive, verified clip exists for this row's target text; falling back (whole-turn clip)"
     },
     {
      "field": "takeg_audio_ids",
@@ -51,7 +61,7 @@
      ],
      "after": null,
      "action": "null",
-     "why": "no alive, in-cast clip set exists for this row's target text; falling back to the verified whole-turn clip"
+     "why": "no alive, verified clip exists for this row's target text; falling back (whole-turn clip)"
     }
    ]
   },
@@ -72,7 +82,7 @@
      ],
      "after": null,
      "action": "null",
-     "why": "no alive, in-cast clip set exists for this row's known text; falling back to the verified whole-turn clip"
+     "why": "no alive, verified clip exists for this row's known text; falling back (whole-turn clip)"
     },
     {
      "field": "takeg_audio_ids",
@@ -83,7 +93,7 @@
      ],
      "after": null,
      "action": "null",
-     "why": "no alive, in-cast clip set exists for this row's target text; falling back to the verified whole-turn clip"
+     "why": "no alive, verified clip exists for this row's target text; falling back (whole-turn clip)"
     }
    ]
   },
@@ -104,7 +114,7 @@
      ],
      "after": null,
      "action": "null",
-     "why": "no alive, in-cast clip set exists for this row's target text; falling back to the verified whole-turn clip"
+     "why": "no alive, verified clip exists for this row's target text; falling back (whole-turn clip)"
     }
    ]
   },
@@ -128,7 +138,7 @@
      ],
      "after": null,
      "action": "null",
-     "why": "no alive, in-cast clip set exists for this row's target text; falling back to the verified whole-turn clip"
+     "why": "no alive, verified clip exists for this row's target text; falling back (whole-turn clip)"
     },
     {
      "field": "takeg_audio_ids",
@@ -138,7 +148,7 @@
      ],
      "after": null,
      "action": "null",
-     "why": "no alive, in-cast clip set exists for this row's target text; falling back to the verified whole-turn clip"
+     "why": "no alive, verified clip exists for this row's target text; falling back (whole-turn clip)"
     }
    ]
   }

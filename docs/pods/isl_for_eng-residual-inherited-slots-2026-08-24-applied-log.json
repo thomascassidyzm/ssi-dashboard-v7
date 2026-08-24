@@ -2,47 +2,24 @@
  "pod": "isl_for_eng:pod-1",
  "course": "isl_for_eng",
  "mode": "applied",
- "generated_at": "2026-08-24T11:59:57.611Z",
+ "generated_at": "2026-08-24T12:09:28.088Z",
  "ancestors": [
   "isl_for_eng:pod-0-retired-2026-08-24"
  ],
  "rows_total": 231,
  "measured_inherited_slots": {
   "sentence_audio_ids": 0,
-  "sentence_known_audio_ids": 1,
+  "sentence_known_audio_ids": 0,
   "takeg_audio_ids": 0,
   "explainer_audio_id": 0
  },
- "scope_note": "explainer_audio_id is MEASURED ONLY — owned by the explainer relink worker",
+ "scope_note": "explainer_audio_id repaired on the INHERITED test only; #312's sixteen protected rows and any explainer still quoting its own row are held, never written",
+ "held": [],
  "split_keyed_progress_rows": 0,
  "stopped": null,
  "whole_turn_failures": [],
  "rows_excluded_bad_whole_turn": [],
- "slots_planned": 1,
- "slots_written": 1,
- "rows": [
-  {
-   "id": "isl_for_eng:pod-1:SC04-S002",
-   "scene": 4,
-   "sentence": 2,
-   "speaker": "Sarah",
-   "target_text": "Halló! Fyrirgefðu, en ég get ekki talað núna. Ég þarf að fara heim núna. Getum við talað á morgun?",
-   "known_text": "Hello! I'm sorry but I can't talk at the moment. I need to go home now. Can we talk tomorrow?",
-   "slots": [
-    {
-     "field": "sentence_known_audio_ids",
-     "changed": "known_text",
-     "before": [
-      "382bcb43-4d9f-48d3-bbc9-b83d2354dd9b",
-      "313d8493-383f-4447-944c-99cd0bfa5f71",
-      "c8ef3324-1999-42b7-93cc-3fb1ee8771e8",
-      "e4d3c201-999b-42a2-a905-2fc5e1220d98"
-     ],
-     "after": null,
-     "action": "null",
-     "why": "no alive, in-cast clip set exists for this row's known text; falling back to the verified whole-turn clip"
-    }
-   ]
-  }
- ]
+ "slots_planned": 0,
+ "slots_written": 0,
+ "rows": []
 }

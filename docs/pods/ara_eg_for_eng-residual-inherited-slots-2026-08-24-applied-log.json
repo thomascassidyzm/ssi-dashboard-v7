@@ -2,57 +2,42 @@
  "pod": "ara_eg_for_eng:pod-1",
  "course": "ara_eg_for_eng",
  "mode": "applied",
- "generated_at": "2026-08-24T11:59:53.141Z",
+ "generated_at": "2026-08-24T12:09:20.941Z",
  "ancestors": [
   "ara_eg_for_eng:pod-0-retired-2026-08-22",
   "ara_eg_for_eng:pod-1-retired-2026-08-24"
  ],
  "rows_total": 231,
  "measured_inherited_slots": {
-  "sentence_audio_ids": 1,
+  "sentence_audio_ids": 0,
   "sentence_known_audio_ids": 0,
-  "takeg_audio_ids": 1,
+  "takeg_audio_ids": 0,
   "explainer_audio_id": 2
  },
- "scope_note": "explainer_audio_id is MEASURED ONLY — owned by the explainer relink worker",
- "split_keyed_progress_rows": 0,
- "stopped": null,
- "whole_turn_failures": [],
- "rows_excluded_bad_whole_turn": [],
- "slots_planned": 2,
- "slots_written": 2,
- "rows": [
+ "scope_note": "explainer_audio_id repaired on the INHERITED test only; #312's sixteen protected rows and any explainer still quoting its own row are held, never written",
+ "held": [
   {
    "id": "ara_eg_for_eng:pod-1:SC02-S002",
    "scene": 2,
    "sentence": 2,
-   "speaker": "Passenger",
-   "target_text": "لا، فاضي. اتفضل.",
-   "known_text": "No, it's free. Please, go ahead.",
-   "slots": [
-    {
-     "field": "sentence_audio_ids",
-     "changed": "target_text+known_text",
-     "before": [
-      "5f0e4c12-4d5f-4b92-9508-57c19d7fdb30",
-      "06c1161a-c97b-4e01-9ce1-54562fc5ce3b"
-     ],
-     "after": null,
-     "action": "null",
-     "why": "no alive, in-cast clip set exists for this row's target text; falling back to the verified whole-turn clip"
-    },
-    {
-     "field": "takeg_audio_ids",
-     "changed": "target_text+known_text",
-     "before": [
-      "d129a2f1-e038-4e7f-9d47-cfd668dd4e5e",
-      null
-     ],
-     "after": null,
-     "action": "null",
-     "why": "no alive, in-cast clip set exists for this row's target text; falling back to the verified whole-turn clip"
-    }
-   ]
+   "global_order": 6,
+   "field": "explainer_audio_id",
+   "why": "protected — one of the sixteen rows worker #312 left for Tom (older \"Breaking it down…\" script)"
+  },
+  {
+   "id": "ara_eg_for_eng:pod-1:SC03-S003",
+   "scene": 3,
+   "sentence": 3,
+   "global_order": 12,
+   "field": "explainer_audio_id",
+   "why": "protected — one of the sixteen rows worker #312 left for Tom (older \"Breaking it down…\" script)"
   }
- ]
+ ],
+ "split_keyed_progress_rows": 0,
+ "stopped": null,
+ "whole_turn_failures": [],
+ "rows_excluded_bad_whole_turn": [],
+ "slots_planned": 0,
+ "slots_written": 0,
+ "rows": []
 }
