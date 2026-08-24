@@ -246,6 +246,33 @@ known limit of whisper at this length, and the language was already forced. Over
 measurement and a guess, so the headline is computed over multi-word clips only and single-word
 results are recorded but never counted.
 
+### Where STT works, and where it cannot
+
+Across the courses whisper can actually transcribe, the multi-word CER is low enough to be real
+confirmation that each clip says its own sentence:
+
+| | mean CER (multi-word) |
+|---|---|
+| spa, spa_mx | 0.000 |
+| por_br, fra, fra_ca | 0.005 – 0.021 |
+| swe, hrv, ron, deu_at, por, nld | 0.085 – 0.184 |
+
+**It is uninformative for Irish, Icelandic and Basque** — gle 0.74, isl 0.80, eus 0.32 — and that is
+the model, not the audio. The transcripts track the *sound* while failing the spelling, and
+sometimes the script entirely:
+
+| expected | whisper heard |
+|---|---|
+| Is féidir, ar ndóigh. | It's Fager and Noe. |
+| Góðan daginn. | Call them dying. |
+| Gengur þetta? | ケンクセタ |
+| Ekkert mál. | أخكفت مور |
+
+That is `ggml-small` phoneticising Irish through English and rendering Icelandic in Japanese and
+Arabic script. It is consistent with the estate's existing finding that clip-identity checking
+rejects nine course languages outright. **So for gle, isl and eus the splice is confirmed by exact
+text, app parity and seam measurement, but not by listening.** Stated rather than averaged away.
+
 ## Explicit gaps
 
 1. **Nobody has listened.** Duration agreement, seam levels, exact text and transcription are
