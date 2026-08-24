@@ -64,10 +64,12 @@
  * fade). Reimplementing it here would let it drift away from the evidence that
  * justified it.
  *
- * It lived at scripts/splice-fork/splice.py until 2026-08-24 and was therefore
- * UNTRACKED — scripts/ is the gitignored workspace — so this committed tool
- * depended at runtime on a file that existed on one machine and in no clean
- * checkout. Moved into tools/ (committed, shared) alongside its caller.
+ * This SPLICER constant used to point at scripts/splice-fork/splice.py, which
+ * is the gitignored workspace: a tracked, byte-identical tools/pods/splice.py
+ * already existed, so the committed tool was running the UNCOMMITTED of two
+ * identical copies. main had already repointed it (with the same reasoning);
+ * this branch was simply stale and has been brought in line. Verified identical
+ * before the switch, so behaviour is unchanged.
  *
  * FREE BEFORE CUT. Every sentence is looked up first through phase8's own
  * findExistingAudio, on the same text+language+role+voice dedup key
