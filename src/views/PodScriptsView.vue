@@ -203,7 +203,7 @@
                what Tom is actually judging: which voice, saying what, how loud.
                Still read-only: this plays the learner's bytes and writes
                nothing. -->
-          <div class="ps-listen sticky top-0 z-20 bg-surface border border-line rounded-lg mb-5">
+          <div class="ps-listen bg-surface border border-line rounded-lg mb-5">
             <div class="px-3 py-2 flex items-center gap-2 flex-wrap">
               <button
                 @click="toggleRun"
@@ -742,6 +742,15 @@ onMounted(() => {
   to ~1.4–1.9:1 on near-white, and pulls them to an AA-passing tone of the same
   hue. The flagged-row tints go the same way — a dark 25%-alpha wash is
   invisible on a white canvas.
+
+  These were written as `:global([data-theme="light"]) .ps-x` and did nothing —
+  worse than nothing. Vue's scoped-style compiler turns that into a bare
+  `[data-theme="light"] { … }`: it DROPS the descendant selector and hangs the
+  declarations on <html> itself. Measured in the browser on 2026-08-24 — a
+  flagged row in light mode was still carrying the dark wash, rgba(69,26,3,.2)
+  on near-white, which is the exact illegibility this block exists to prevent.
+  `:root[data-theme="light"] .ps-x` is what every other component in the app
+  uses, and it compiles to a real scoped rule.
 -->
 <style scoped>
 /* Clip buttons. Big enough to hit with a thumb — Tom reads this on his phone. */
@@ -767,6 +776,18 @@ onMounted(() => {
    That is deliberate: .ps-row-fail / .ps-row-warn carry their own tint and must
    stay readable underneath, so the highlight has to sit beside the row colour
    rather than paint over it. */
+/* The app navbar is itself position:sticky at top:0, z-index 100, and it
+   publishes its own live height as --app-navbar-height for exactly this reason
+   (it is 56px on a desktop row and taller when sub-tabs wrap). Sticking to
+   top:0 puts the listen bar UNDERNEATH it — caught in the browser, where the
+   navbar swallowed the clicks on Stop. On a phone that is Stop becoming
+   unreachable mid-listen, so the bar sits below the navbar, not behind it. */
+.ps-listen {
+  position: sticky;
+  top: var(--app-navbar-height, 56px);
+  z-index: 20;               /* below the navbar's 100, above the scene cards */
+}
+
 .ps-run-btn {
   font-size: 0.8rem;
   font-weight: 600;
@@ -801,20 +822,20 @@ onMounted(() => {
   border-radius: 0.25rem;
 }
 
-:global([data-theme="light"]) .ps-run-btn { color: #047857; }
-:global([data-theme="light"]) .ps-run-on { color: #fff; }
-:global([data-theme="light"]) .ps-toggle-on { background-color: #047857; border-color: #047857; color: #fff; }
-:global([data-theme="light"]) .ps-from { color: #047857; border-color: #6ee7b7; }
-:global([data-theme="light"]) .ps-from-on { background-color: #047857; color: #fff; }
-:global([data-theme="light"]) .ps-now-dot,
-:global([data-theme="light"]) .ps-now-voice { color: #047857; }
+:root[data-theme="light"] .ps-run-btn { color: #047857; }
+:root[data-theme="light"] .ps-run-on { color: #fff; }
+:root[data-theme="light"] .ps-toggle-on { background-color: #047857; border-color: #047857; color: #fff; }
+:root[data-theme="light"] .ps-from { color: #047857; border-color: #6ee7b7; }
+:root[data-theme="light"] .ps-from-on { background-color: #047857; color: #fff; }
+:root[data-theme="light"] .ps-now-dot,
+:root[data-theme="light"] .ps-now-voice { color: #047857; }
 /* #10b981 on near-white is ~2.1:1 — fine as a 4px bar, too pale as a hairline
    ring, so light mode takes the darker emerald for both. */
-:global([data-theme="light"]) .ps-row-now { box-shadow: inset 4px 0 0 0 #047857, 0 0 0 1px #047857; }
+:root[data-theme="light"] .ps-row-now { box-shadow: inset 4px 0 0 0 #047857, 0 0 0 1px #047857; }
 
-:global([data-theme="light"]) .ps-f { color: #be123c; border-color: #fda4af; }
-:global([data-theme="light"]) .ps-m { color: #0369a1; border-color: #7dd3fc; }
-:global([data-theme="light"]) .ps-unknown { color: #78350f; border-color: #d97706; }
-:global([data-theme="light"]) .ps-row-fail { background-color: #fee2e2; }
-:global([data-theme="light"]) .ps-row-warn { background-color: #fef3c7; }
+:root[data-theme="light"] .ps-f { color: #be123c; border-color: #fda4af; }
+:root[data-theme="light"] .ps-m { color: #0369a1; border-color: #7dd3fc; }
+:root[data-theme="light"] .ps-unknown { color: #78350f; border-color: #d97706; }
+:root[data-theme="light"] .ps-row-fail { background-color: #fee2e2; }
+:root[data-theme="light"] .ps-row-warn { background-color: #fef3c7; }
 </style>
