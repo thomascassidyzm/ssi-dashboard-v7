@@ -87,9 +87,23 @@ const WHISPER = process.env.WHISPER || path.join(os.homedir(), '.local/bin/whisp
 const WHISPER_MODEL = process.env.WHISPER_MODEL
   || path.join(os.homedir(), '.local/share/whisper-models/ggml-small.bin')
 
-// Same split the splicer used, and the same one the app's clip-text oracle
-// makes irrelevant for CJK. Kept in step with splice-sentence-clips.cjs.
-const SENTENCE_SPLIT = /(?<=[。！？])\s*(?=\S)|(?<=[.!?…؟])\s+(?=\S)/
+/**
+ * The splicer's split, PLUS the Devanagari danda "।".
+ *
+ * The danda is here and not in the splicer on purpose. Hindi Pod 1 rows that
+ * were split by earlier work split on "।" and are correct — 36 of them. Without
+ * the danda this verifier computed a one-sentence expectation for a two-clip
+ * row and reported 36 false failures against content that is right. A checker
+ * that cannot express the boundary its subject used is measuring itself.
+ *
+ * The splicer does NOT split on "।", and that is deliberate: it matches the
+ * app's `POD_SENTENCE_BOUNDARY`, which doesn't either. The consequence is that
+ * the splicer sees most multi-sentence Hindi turns as single sentences and
+ * skips them — under-detection, which is the safe direction (nothing is cut
+ * wrongly, some work is simply not done). Teaching it the danda means changing
+ * shared learner-facing code, so it is reported rather than done here.
+ */
+const SENTENCE_SPLIT = /(?<=[。！？])\s*(?=\S)|(?<=[.!?…؟।])\s+(?=\S)/
 const APP_LATIN_BOUNDARY = /(?<=[.!?…])\s+/
 const splitOn = (t, re) => String(t || '').split(re).map((s) => s.trim()).filter(Boolean)
 
@@ -201,7 +215,7 @@ function appUnits (row, textById) {
 
   const scratch = fs.mkdtempSync(path.join(process.env.CS_SCRATCH || os.tmpdir(), 'splice-verify-'))
   const results = []
-  const fail = { serves: 0, text: 0, parity: 0, seams: 0 }
+  const fail = { serves: 0, text: 0, parity: 0, seams: 0, whitespace: 0 }
   let cerHigh = 0, cerN = 0, cerSum = 0
 
   for (const row of sample) {
@@ -250,10 +264,24 @@ function appUnits (row, textById) {
       p.voice_id = row_ca.voice_id
 
       // 2. TEXT — clip i must be sentence i.
+      //
+      // Compared TRIMMED. 36 Hindi clips from earlier work are stored with a
+      // leading space (" क्या आप…"), which makes an exact comparison report a
+      // text mismatch on content whose words are exactly right. That leading
+      // space is a real if minor defect — it indents the card the learner
+      // reads — so it is recorded on its own axis rather than folded into the
+      // hard failures, where it would drown the thing this check exists for:
+      // a clip whose WORDS are not its sentence's words.
       if (expected[i] !== undefined && row_ca.text !== expected[i]) {
-        p.problem = `stored text != sentence ${i}`
-        rec.problems.push(`s${i}: stored "${row_ca.text}" != expected "${expected[i]}"`)
-        fail.text++
+        if (row_ca.text.trim() === expected[i].trim()) {
+          p.whitespace_only = true
+          rec.problems_whitespace = (rec.problems_whitespace || 0) + 1
+          fail.whitespace++
+        } else {
+          p.problem = `stored text != sentence ${i}`
+          rec.problems.push(`s${i}: stored "${row_ca.text}" != expected "${expected[i]}"`)
+          fail.text++
+        }
       }
       // 3. APP PARITY per unit.
       if (units[i] && units[i].targetText !== row_ca.text) {
@@ -351,7 +379,7 @@ function appUnits (row, textById) {
   try { fs.rmSync(scratch, { recursive: true, force: true }) } catch (_) {}
   await db.end()
 
-  const hard = fail.serves + fail.text + fail.parity + fail.seams
+  const hard = fail.serves + fail.text + fail.parity + fail.seams  // whitespace is reported, not gated
   const at = new Date().toISOString()
   const out = {
     course: COURSE, pod: POD, at, whisper_lang: whisperLang,
@@ -371,7 +399,8 @@ function appUnits (row, textById) {
   fs.writeFileSync(p, JSON.stringify(out, null, 2))
 
   console.log(`\n${COURSE}: ${sample.length}/${rows.length} split rows checked. `
-    + `HARD failures serves=${fail.serves} text=${fail.text} parity=${fail.parity} seams=${fail.seams}. `
+    + `HARD failures serves=${fail.serves} text=${fail.text} parity=${fail.parity} seams=${fail.seams} `
+    + `(whitespace-only, not gated: ${fail.whitespace}). `
     + `STT mean CER ${out.stt.mean_cer_multiword} over ${cerN} multi-word clips, ${cerHigh} flagged.`)
   console.log(`   ${p}`)
   process.exit(hard ? 3 : 0)

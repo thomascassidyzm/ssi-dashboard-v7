@@ -382,9 +382,25 @@ if (!COURSE) {
         : voice.voice_id
 
       // Free first: anything already rendered under the dedup key is reused.
+      //
+      // Look up with the CANONICAL voice id — the same one publishPiece writes,
+      // and therefore the same one the upsert's conflict key uses. Passing the
+      // raw cast id here (which is what the equivalent call in generatePodAudio
+      // does) makes the read and the write disagree: `sameVoice` canonicalises
+      // through `tryCanonicalClipVoiceId(v)` with no provider argument, so it
+      // cannot match a pod cast's bare `bf9fe5b5f981` to a stored
+      // `xai_bf9fe5b5f981`. The lookup then misses a row that the conflict key
+      // hits, and the upsert silently becomes an UPDATE that repoints an
+      // existing clip at a spliced one.
+      //
+      // That is not hypothetical: it repointed 28 rows on the first fleet run
+      // (nld 21, swe 2, and five others) before this line was changed. Same
+      // text, same voice, so nothing sounded wrong and no gate fired — which is
+      // exactly why it needs to be structurally impossible rather than watched
+      // for. Restored by tools/pods/restore-clobbered-clip-pointers.cjs.
       const existing = []
       for (const t of tSents) {
-        existing.push(await p8.findExistingAudio(COURSE, t, targetLang, 'target1', voice.voice_id))
+        existing.push(await p8.findExistingAudio(COURSE, t, targetLang, 'target1', voiceId))
       }
       const needSplice = existing.some((id) => !id)
 
