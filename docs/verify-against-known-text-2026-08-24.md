@@ -90,44 +90,53 @@ The floor sits at **0.14** — inside that gap, 6% above everything truncated an
 everything good. It vetoes a *rescue* only: a clip the free decode already passed is never
 re-judged by it, so it cannot cost anything that passes today.
 
-## Result on the labelled corpus
+## Result — the A/B, same corpus, same code, one env flag apart
 
-| | good clips wrongly refused | bad clips wrongly passed |
-|---|---:|---:|
-| free-only (today) | 8 / 77 | 0 / 71 |
-| **verify mode** | **3 / 77** | **0 / 71** |
+227 clips end-to-end through the real `checkAudioVeracity`, nothing stubbed. The only difference
+between the two columns is `AUDIO_VERACITY_VERIFY`.
 
-False alarms down 62%, nothing new gets through.
+| | n | free (today) | **verify** |
+|---|---:|---:|---:|
+| **KNOWN GOOD** | | | |
+| labelled good_paired | 50 | 50 | **50** |
+| labelled good_unflagged | 27 | 23 | **25** |
+| Welsh human takes, good | 11 | 6 | **11** |
+| Icelandic pod controls (linked, live) | 15 | 8 | **15** |
+| French pod controls (linked, live) | 15 | 15 | **15** |
+| *good clips passing* | *118* | *102* | ***116*** |
+| **KNOWN BAD** | | | |
+| labelled silent_stub | 25 | 0 | **0** |
+| labelled near_silent | 21 | 0 | **0** |
+| labelled truncated | 25 | 0 | **0** |
+| Welsh noise-only takes | 3 | 0 | **0** |
+| *bad clips passing* | *74* | *0* | ***0*** |
+| **PREVIOUSLY QUARANTINED** | | | |
+| Icelandic pod quarantine | 15 | 0 | **14** |
+| French pod quarantine | 3 | 3 | 3 |
 
-End-to-end through the real `checkAudioVeracity`, all 227 clips, nothing stubbed:
+**Good clips wrongly refused: 16 → 2. Bad clips wrongly passed: 0 → 0.**
 
-```
-labelled-165/silent_stub        pass   0/25      labelled-165/good_paired     pass  49/50
-labelled-165/near_silent        pass   0/21      labelled-165/good_unflagged  pass  25/27
-labelled-165/truncated          pass   0/25      welsh+controls/good          pass  41/41
-welsh+controls/noise            pass   0/3       quarantined/isl              pass  13/15
-                                                 quarantined/fra              pass   3/3
-```
+The two good clips still refused are `last_word_missing` — the pre-existing Rule 3, untouched by
+this work.
 
-The three good clips still refused are all `last_word_missing` — the pre-existing rule 3, which
-this work did not touch. One is the German compound "um zu bringen" decoded as "umzubringen.",
-the segmentation false alarm the module's own header already names.
+The line that matters most is the one nobody was looking at: **8 of 15 live, linked, already-
+published Icelandic clips fail the free gate**, and **5 of 11 of Catrin's good Welsh takes do**.
+Those are not quarantine candidates — they are clips that shipped. The free gate has been wrong
+about roughly half of the Welsh and Icelandic audio it has ever been pointed at, and that is the
+cost Tom's ruling removes.
 
 ⚠️ **whisper is not bit-reproducible under the threaded wrapper.** The French clips decoded as
-"…jusqu'à 10h." on one run and "…jusqu'à 10h00." on another, which straddles the CER threshold —
-in the end-to-end run above all three passed the *free* decode outright and never reached
-verification. The clip sits on the boundary either way; that is what makes it a false-positive
-class rather than a one-off. The Icelandic count moves by one clip between runs for the same
-reason. Treat single-clip counts as ±1, not as exact.
+"…jusqu'à 10h." on one run and "…jusqu'à 10h00." on another, which straddles the CER threshold;
+the Icelandic quarantine count moved between 13 and 14 across runs for the same reason. Treat
+single-clip counts as ±1, not as exact.
 
 ## The three named validation cases
 
 **Icelandic — the 11 quarantined pod sentences** (`docs/pods/isl-pod-1-render-failure-2026-08-22.md`).
-15 quarantined clips on disk. **13 verify and would now publish.** Free-decode similarity ran
-0.00–0.66; primed 0.82–1.00 on the thirteen. The two that do not clear are genuinely mis-rendered
-and priming did not launder them: "Gangi þér vel með það!" primed to "Kon kið servið al maðsás?"
-(0.29), and one where the decode is gibberish in both modes. One of the thirteen passes on word
-coverage alone with `digitsUnverified: true` — see below.
+15 quarantined clips on disk. **14 verify and would now publish** (13 on a second run — see the reproducibility note above). Not one of them passes the free gate. Free-decode
+similarity ran 0.00–0.66; primed 0.82–1.00 on the ones that clear. The one that does not is
+genuinely mis-rendered, and priming did not launder it: "Gangi þér vel með það!" primed to
+"Kon kið servið al maðsás?" — similarity 0.29, still refused.
 
 **French SC11-S008 — the spoken-times false positive** (fixed upstream; measured anyway)**.** "De sept heures et demie jusqu'à dix
 heures…" free-decoded as "de 7h30 jusqu'à 10h…" — *the same words, written as a clock*, CER 0.26.
@@ -136,7 +145,8 @@ attempt 1 verifies and would publish, and the other two are genuinely damaged (o
 first clause, one decodes to whisper's "Sous-titres réalisés par la communauté d'Amara.org"
 subtitle hallucination). The mode discriminates *between attempts of the same sentence*.
 
-**Welsh — Catrin's takes must still fail.** They do, cleanly:
+**Welsh — Catrin's noise takes must still fail.** They do, cleanly, and her good takes stop being
+punished for it:
 
 | | primed similarity | verifies |
 |---|---|---|
