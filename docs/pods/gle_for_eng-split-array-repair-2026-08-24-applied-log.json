@@ -1,0 +1,2645 @@
+{
+ "pod": "gle_for_eng:pod-1",
+ "course": "gle_for_eng",
+ "mode": "applied",
+ "generated_at": "2026-08-24T11:25:03.404Z",
+ "rows_total": 231,
+ "rows_repaired": 91,
+ "cast": {
+  "target": [
+   "ga-IE-OrlaNeural",
+   "ga-IE-ColmNeural"
+  ],
+  "known": [
+   "bedd6226",
+   "gfzdpspr5fdp"
+  ]
+ },
+ "by_scene": {
+  "1": 2,
+  "2": 1,
+  "3": 3,
+  "4": 2,
+  "5": 2,
+  "6": 11,
+  "7": 10,
+  "8": 7,
+  "9": 13,
+  "10": 6,
+  "11": 8,
+  "12": 6,
+  "13": 4,
+  "14": 5,
+  "15": 11
+ },
+ "rows": [
+  {
+   "id": "gle_for_eng:pod-1:SC01-S003",
+   "scene": 1,
+   "sentence": 3,
+   "speaker": "Neighbour",
+   "target_text": "Táim go maith, go raibh maith agat. An bhfuil tú ag dul chun oibre?",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice leo"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "23cde29a-e112-4e0f-b871-6142082bb187",
+     "cf48d27f-dbd2-47c7-90c2-2f825a61b528"
+    ],
+    "sentence_known_audio_ids": [
+     "8d29097e-dda5-4d25-a153-09c44ffe5ab6",
+     "3a05947e-2103-467a-8692-5235f977680a"
+    ],
+    "takeg_audio_ids": [
+     "74378215-783a-4c24-ace4-ee6f835e69dc",
+     "2c0dfe89-854b-4329-bc5d-def84bce941f"
+    ]
+   }
+  },
+  {
+   "id": "gle_for_eng:pod-1:SC01-S004",
+   "scene": 1,
+   "sentence": 4,
+   "speaker": "Sarah",
+   "target_text": "Tá. Tá lá gnóthach agam inniu. Tá súil agam go mbeidh lá maith agat. Feicfidh mé ar ball thú.",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "1666ea17-f026-404b-b99f-0d8b2b0ca241",
+     "6f0420f5-48a5-484e-ba7b-b47a73f446db",
+     "cc29dddf-f3ac-4049-a0f4-c548c63ec584"
+    ],
+    "sentence_known_audio_ids": [
+     "1d05f756-5351-4a55-979a-4584e691c20f",
+     "fbecf8dc-221f-4704-908d-d9294a5c5bef",
+     "b1087bf5-45f7-4ebb-b7e2-8172e1c277a2"
+    ],
+    "takeg_audio_ids": [
+     "143f238f-15db-4723-ab3d-b242f9806c1a",
+     "06f1296a-6384-409c-bf5b-f77a98ebdb5c",
+     null
+    ]
+   }
+  },
+  {
+   "id": "gle_for_eng:pod-1:SC02-S002",
+   "scene": 2,
+   "sentence": 2,
+   "speaker": "Passenger",
+   "target_text": "Níl, tá sé saor. Ar aghaidh leat, le do thoil.",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "7d441152-3e66-4f9d-b225-9052acc14981",
+     "d34d5156-7b01-4ce4-a79a-268494466ad9"
+    ],
+    "sentence_known_audio_ids": [
+     "197aaad7-d886-4085-bfde-8a95827c1368",
+     "15856ed8-d66a-4e6f-a3b7-89c088233ea2"
+    ],
+    "takeg_audio_ids": [
+     "524d33a0-46bd-4afe-870b-c58be397d329",
+     "e1394c0f-0ad4-4908-b475-e0ca1a6889fb"
+    ]
+   }
+  },
+  {
+   "id": "gle_for_eng:pod-1:SC03-S001",
+   "scene": 3,
+   "sentence": 1,
+   "speaker": "Barista (3 pm)",
+   "target_text": "Tráthnóna maith. Cad a bhéarfaidh mé duit?",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice en-GB-HollieNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "076ca179-6537-4718-a6a7-bb7ae08ca667",
+     "4eff3ee1-2e7c-4d8c-811e-d1f1e80ebcf5"
+    ],
+    "sentence_known_audio_ids": [
+     "d73c9a13-8887-45bb-a0c1-081145501858",
+     "2aa0980f-f7f3-40e6-81d8-f49d52e96563"
+    ],
+    "takeg_audio_ids": [
+     "9dfb48e8-ac09-4a83-971f-800d9f645f0e"
+    ]
+   }
+  },
+  {
+   "id": "gle_for_eng:pod-1:SC03-S002",
+   "scene": 3,
+   "sentence": 2,
+   "speaker": "Sarah",
+   "target_text": "Tráthnóna maith. Ba mhaith liom caife, le do thoil. Le bainne ach gan siúcra. Le tabhairt liom.",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "fdf03d26-95da-4c15-8270-65d8d72e9ae2",
+     "9ebf9fcf-6781-47eb-9540-15263ab9b709",
+     "02be929c-6ca1-4b01-91aa-fa4e24918a24",
+     "13629daf-d6b5-4372-883c-babb2cc3e0b5"
+    ],
+    "sentence_known_audio_ids": [
+     "0af71f79-e461-4128-9d8e-20b0b0d68b93",
+     "1c36bb8d-3c0d-4707-8c46-22593ab8c192",
+     "44c2334f-0d2d-481e-b3c6-1515e86ddabf",
+     "ef0e4866-2af7-4601-a26d-c2af674a5d27"
+    ],
+    "takeg_audio_ids": [
+     "c68a2208-00b3-4672-9fed-d5d6ce5383f0",
+     "c04a791e-c996-4fab-a1b3-af78763a7266",
+     null
+    ]
+   }
+  },
+  {
+   "id": "gle_for_eng:pod-1:SC03-S003",
+   "scene": 3,
+   "sentence": 3,
+   "speaker": "Sarah",
+   "target_text": "An bhfuil bia agat?",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "d30720b1-4c47-4658-8f79-7118fa5757bd",
+     "a84f41d3-e268-456e-9ec9-94a49cd00e49"
+    ],
+    "sentence_known_audio_ids": [
+     "30b41695-0bce-4943-8b9d-bc41bda437bd",
+     "7275222d-0bff-4e93-9af0-428e0fe3401d"
+    ],
+    "takeg_audio_ids": [
+     "b8fc1d73-2b4f-4901-b647-49db326ac28c"
+    ]
+   }
+  },
+  {
+   "id": "gle_for_eng:pod-1:SC04-S002",
+   "scene": 4,
+   "sentence": 2,
+   "speaker": "Sarah",
+   "target_text": "Dia duit! Tá brón orm ach ní féidir liom labhairt faoi láthair. Caithfidh mé dul abhaile anois. An féidir linn labhairt amárach?",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "38af20a8-5d3b-4c26-b2d2-20850427b699",
+     "962bd664-1c6b-419b-b4f1-b5bd1687da1c",
+     "44ea6e37-5893-4818-a355-de21acb024d6",
+     "99a3d6ff-f196-417c-af6f-5683b418e57a"
+    ],
+    "sentence_known_audio_ids": [
+     "b7edbf9b-574a-47d5-b50c-d5e0cc2d1893",
+     "d00d626a-c490-4bd0-889f-6f807b221c8f",
+     "10c2faac-6557-4679-b38f-8c220792eb06",
+     "6d322d1e-ed92-4706-8489-ed89a26cda93"
+    ],
+    "takeg_audio_ids": [
+     "71c82f19-129c-433e-9906-22c0317a65c8",
+     "0c53bc95-7f59-455c-82d8-49299699b5c8",
+     "e15e08db-7145-4e63-ae62-7625b079ff18"
+    ]
+   }
+  },
+  {
+   "id": "gle_for_eng:pod-1:SC04-S003",
+   "scene": 4,
+   "sentence": 3,
+   "speaker": "Friend",
+   "target_text": "Níl, tá brón orm, tá mé gnóthach amárach. Ach labhraímis Dé Sathairn. Feicfidh mé thú ansin.",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice leo"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "10ae23cb-1c5c-4746-bda0-052e6446a699",
+     "7f1b9cb5-e636-40f1-b62d-b3a267868b0d",
+     "76362819-591c-4473-8508-62cf3396e3f9"
+    ],
+    "sentence_known_audio_ids": [
+     "cbe08f26-8ab0-4aba-9198-a483a901dff4",
+     "d5068d63-16dc-440b-be95-4b4f66928286",
+     "b1c2a7b8-c03b-4186-9e85-5777e3396d93"
+    ],
+    "takeg_audio_ids": [
+     "aa5144f4-1cf5-464d-97b3-4df4ac799350",
+     null,
+     null
+    ]
+   }
+  },
+  {
+   "id": "gle_for_eng:pod-1:SC05-S001",
+   "scene": 5,
+   "sentence": 1,
+   "speaker": "Neighbour (10:30 pm)",
+   "target_text": "Oíche mhaith, a Shára. An raibh lá fada agat?",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "4b1368f3-12af-426e-8e4b-d9d4ebc9de2c",
+     "c1d9e602-a2bf-423c-b57f-b14b7ca42474"
+    ],
+    "sentence_known_audio_ids": [
+     "53fe1221-d6c3-45df-930d-f7b11c9a23c4",
+     "f4365c5e-f950-4ea8-b91c-8fd10b534e79"
+    ],
+    "takeg_audio_ids": [
+     "a55efd3b-3a70-48a5-a4f6-d118abcb2016",
+     null
+    ]
+   }
+  },
+  {
+   "id": "gle_for_eng:pod-1:SC05-S002",
+   "scene": 5,
+   "sentence": 2,
+   "speaker": "Sarah",
+   "target_text": "Bhí, go han-mhór. Táim an-tuirseach anois. Oíche mhaith. Feicfidh mé amárach thú.",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "9de2879d-a97e-4030-a959-3e2f3e30bf55",
+     "383e0eb7-abd6-4873-a742-a9f2a8a74365",
+     "673691df-7a3e-4632-a1e0-48b47e19644b",
+     "26a4d831-ae15-4a37-8e82-416ec93928db"
+    ],
+    "sentence_known_audio_ids": [
+     "fe533340-9020-4667-aaec-43f3c9a6d437",
+     "74b92fae-725f-4d81-9131-08e282c28f5c",
+     "40ede85a-d262-4055-94ec-cac120871471",
+     "6110d9c3-2914-4000-b1de-f3bd82138b24"
+    ],
+    "takeg_audio_ids": [
+     "5881b542-1af5-41d0-a145-23924e8288f7",
+     "5b8aa48a-9e38-48e2-a197-37b3d861c0db",
+     null,
+     null
+    ]
+   }
+  },
+  {
+   "id": "gle_for_eng:pod-1:SC06-S001",
+   "scene": 6,
+   "sentence": 1,
+   "speaker": "James",
+   "target_text": "Gabh mo leithscéal. Dia duit. Cad is ainm duit?",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "5641347e-a48f-4d99-a77e-78e3fc4f11ee",
+     "6343dfe7-bbff-4d4b-924c-3a061d14dc5b",
+     "0f9d3d20-be0a-462e-a55e-61425bc0fe1a"
+    ],
+    "sentence_known_audio_ids": [
+     "15da2816-a752-4fd0-8731-cbead31bf540",
+     "a48daa02-de16-4370-9081-3f5b0d6fa9e0",
+     "d298f5b8-a525-4966-bd42-ef5b55b4d0d5"
+    ],
+    "takeg_audio_ids": [
+     "03ca78b5-4f7a-43b9-8add-1471457e9875"
+    ]
+   }
+  },
+  {
+   "id": "gle_for_eng:pod-1:SC06-S002",
+   "scene": 6,
+   "sentence": 2,
+   "speaker": "Anna",
+   "target_text": "Anna is ainm dom. Agus tusa?",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "dfdc93f8-04b9-4537-929d-84c121ae9c7a",
+     "99f85450-5869-42a5-b251-4de0ca515538"
+    ],
+    "sentence_known_audio_ids": [
+     "735777b8-cae9-4c7e-a2ba-16c2ceaaa4c9",
+     "c41b9e90-ef75-4457-89c7-dcb0e76f4962"
+    ],
+    "takeg_audio_ids": [
+     "bc07f309-18a7-45d8-b726-aaa096c41b43",
+     null
+    ]
+   }
+  },
+  {
+   "id": "gle_for_eng:pod-1:SC06-S003",
+   "scene": 6,
+   "sentence": 3,
+   "speaker": "James",
+   "target_text": "James is ainm dom. Tá áthas orm bualadh leat.",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "1f7b29bf-1e13-4b0e-8eab-0888b12f93f6",
+     "222c2591-dbfd-41ae-85ad-51355af6f61c"
+    ],
+    "sentence_known_audio_ids": [
+     "8e391441-f796-4d5c-8125-d1c45a2bb18a",
+     "27b19bfc-04a5-42a7-a7e0-224c18cb26c3"
+    ],
+    "takeg_audio_ids": [
+     "b278c33a-3811-4d99-ae2a-e4d5ebcb175f",
+     null
+    ]
+   }
+  },
+  {
+   "id": "gle_for_eng:pod-1:SC06-S005",
+   "scene": 6,
+   "sentence": 5,
+   "speaker": "James",
+   "target_text": "Is as Manchain mé, ach tá mé i mo chónaí i Londain anois. Agus tusa?",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice leo"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "536c58fd-c1ad-49b2-889a-f57b7b12da04",
+     "297e80ed-addf-44f7-920c-8b636226a9b5"
+    ],
+    "sentence_known_audio_ids": [
+     "8d465785-708a-4041-b0bb-5c8ac5ed3751",
+     "3de7252c-ec4f-4aa5-a6e3-773af52c849f"
+    ],
+    "takeg_audio_ids": [
+     "c99a62d3-726d-4563-b12a-eea021438926",
+     null
+    ]
+   }
+  },
+  {
+   "id": "gle_for_eng:pod-1:SC06-S006",
+   "scene": 6,
+   "sentence": 6,
+   "speaker": "Anna",
+   "target_text": "Is as an bhFrainc mé. Táim anseo le dhá bhliain.",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice en-GB-SoniaNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "1188aa44-2bd1-40c1-9105-5308c4ceb327",
+     "ea718045-e6c2-4b18-9126-b1f57c3b81e9"
+    ],
+    "sentence_known_audio_ids": [
+     "4b660a10-c447-454c-8897-43295cf2bb54",
+     "70f3ba06-ecb1-4e23-aee4-5f3bd42c5491"
+    ],
+    "takeg_audio_ids": [
+     "984b05df-9d34-450d-ba3f-8974ab003d33"
+    ]
+   }
+  },
+  {
+   "id": "gle_for_eng:pod-1:SC06-S007",
+   "scene": 6,
+   "sentence": 7,
+   "speaker": "James",
+   "target_text": "Is cathair álainn í seo. Cad a dhéanann tú?",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice leo"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "75782cc0-b1b9-4388-a9fb-58a68144cce1",
+     "aed34ed1-fbc8-457e-96e5-7d266728fd4b"
+    ],
+    "sentence_known_audio_ids": [
+     "9b1a79fd-bff5-4297-88ad-220823509918",
+     "dd6bccab-9f1b-4582-bd12-f1b7c8202630"
+    ],
+    "takeg_audio_ids": [
+     "2f189485-bc16-4990-9140-69c27c369bc4"
+    ]
+   }
+  },
+  {
+   "id": "gle_for_eng:pod-1:SC06-S008",
+   "scene": 6,
+   "sentence": 8,
+   "speaker": "Anna",
+   "target_text": "Is altra mé, ag an ospidéal díreach timpeall an chúinne. Agus tusa?",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice en-GB-SoniaNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "bd97cc1c-425c-4039-8adf-662d7a8c167e",
+     "99f85450-5869-42a5-b251-4de0ca515538"
+    ],
+    "sentence_known_audio_ids": [
+     "564e47ff-61f4-4527-a113-6083a18c76d8",
+     "c41b9e90-ef75-4457-89c7-dcb0e76f4962"
+    ],
+    "takeg_audio_ids": [
+     "00cf661d-06bb-4a53-b528-096845b2ce0a",
+     null
+    ]
+   }
+  },
+  {
+   "id": "gle_for_eng:pod-1:SC06-S009",
+   "scene": 6,
+   "sentence": 9,
+   "speaker": "James",
+   "target_text": "Tá brón orm, níor thuig mé thú. Táim ag foghlaim Gaeilge. An bhféadfá é sin a rá arís níos moille?",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice leo"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "e3064c4b-52b0-4ac1-b9bf-d7e6ab252644",
+     "f59da7b0-973d-4eda-b358-abdebcad414c",
+     "76ce7a71-fe2a-4823-936e-47d98bb93db1"
+    ],
+    "sentence_known_audio_ids": [
+     "85c10d68-217b-4ee5-b6ad-775109232d7f",
+     "173c4d0d-d44b-4148-a31f-609386cf76d9",
+     "c23d4913-f73d-4015-ac90-45bb49674d19"
+    ],
+    "takeg_audio_ids": [
+     "c20c3505-ba00-445d-9984-22faf99ee1e0",
+     null,
+     "a16de6bb-bedf-472f-bf9d-c3667aeb5bd0"
+    ]
+   }
+  },
+  {
+   "id": "gle_for_eng:pod-1:SC06-S010",
+   "scene": 6,
+   "sentence": 10,
+   "speaker": "Anna",
+   "target_text": "Sea, ar ndóigh. Is altra mé. Oibríonn mé ag an ospidéal. Tá sé in aice linn anseo. Agus cad a dhéanann tusa?",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice en-GB-SoniaNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "186e0fd3-21ed-4165-a9aa-d5c77c2f460f",
+     "42a743cd-0dcb-4fbf-99b2-a63703798030",
+     "8df62743-c8ca-4276-81a8-f262def161e9",
+     "851f8fef-9c82-4d9f-a85e-0cd288588cee",
+     "9c7c485f-fdcf-4a20-8959-7d37325b378e"
+    ],
+    "sentence_known_audio_ids": [
+     "e84f0f2d-49e7-427a-89b1-6793568e357e",
+     "e497f1fb-78ed-49ef-a904-17f03ae776b1",
+     "d6447c1c-0b27-4925-a04b-96995f35408b",
+     "9ba53f50-a69c-424b-b12f-8e1de72eb043",
+     "c14e0acf-2ef0-41b7-98a8-e8485db2ce95"
+    ],
+    "takeg_audio_ids": [
+     "a4cdd2cc-1f8f-4385-af10-f194f5d55df9",
+     null,
+     "918da024-23c1-4579-a04d-eda2a698885e",
+     null,
+     null
+    ]
+   }
+  },
+  {
+   "id": "gle_for_eng:pod-1:SC06-S011",
+   "scene": 6,
+   "sentence": 11,
+   "speaker": "James",
+   "target_text": "Múinim Béarla, ach ní i scoil. Oibríonn mé le daoine fásta. Táim ar laethanta saoire anseo le mo bhean chéile agus mo pháistí. Tá am iontach againn.",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice leo"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "1abda915-3693-4bd5-9701-0f3a734e7966",
+     "05a274c5-c1d2-498b-9275-64dfd2b7eab8",
+     "0d402cc5-112c-4eb3-b940-4b28f0432d38",
+     "191c101a-a1a0-4e1c-a7eb-fbce3bed2de7"
+    ],
+    "sentence_known_audio_ids": [
+     "ab63e293-3ad5-41b1-a476-0c860d8624c9",
+     "d015aded-18f8-4215-873b-8e9b6e3d237f",
+     "4152cbba-4d6d-474f-b5cc-641ae7a45c75",
+     "e9936f01-00db-4059-91c8-a2789594d01a"
+    ],
+    "takeg_audio_ids": [
+     "828d6af5-0540-4365-927e-69532116246d",
+     null,
+     "9af66dc9-9d42-49e8-b630-b862f1bc88fd",
+     null
+    ]
+   }
+  },
+  {
+   "id": "gle_for_eng:pod-1:SC06-S013",
+   "scene": 6,
+   "sentence": 13,
+   "speaker": "Narrator",
+   "target_text": "A haon. A dó. A trí. Bán. Dubh.",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "fa81592c-007d-45dc-ab24-32ede5f511c5",
+     "85fad3ae-cf6a-4087-aa3c-049b8dac5aa8",
+     "a4946961-9d1e-46a8-ac09-deee8c0814b9",
+     "b9f72aca-c84b-4565-8fc1-b34894dd5d21",
+     "5a5563ab-bd6d-44a1-a6a0-0f04dd557217"
+    ],
+    "sentence_known_audio_ids": [
+     "0ad48d04-e46d-4f95-b4ea-1860f8bfaf74",
+     "bdc5cc8b-9126-493d-b376-89af06814b4a",
+     "32137c69-45c5-498d-ba4b-9576d538eb56",
+     "c2e398c9-39da-40ce-8949-564fa48ce55a",
+     "d4f36af1-8ea0-49a1-8585-e073f5ebe2ba"
+    ],
+    "takeg_audio_ids": [
+     "f107b7a9-8a5b-481b-8122-4662c6c3fd86"
+    ]
+   }
+  },
+  {
+   "id": "gle_for_eng:pod-1:SC07-S001",
+   "scene": 7,
+   "sentence": 1,
+   "speaker": "Cafe Barista",
+   "target_text": "Maidin mhaith. Cad a bhéarfaidh mé duit?",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice en-GB-HollieNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "2df2fc7c-fe16-4fd5-ae6b-07aec2df603c",
+     "4eff3ee1-2e7c-4d8c-811e-d1f1e80ebcf5"
+    ],
+    "sentence_known_audio_ids": [
+     "0814d3e6-8de4-4a51-bdb1-e45f600bc519",
+     "2aa0980f-f7f3-40e6-81d8-f49d52e96563"
+    ],
+    "takeg_audio_ids": [
+     "2d6959e9-f98c-4250-9310-e79e586efdd7"
+    ]
+   }
+  },
+  {
+   "id": "gle_for_eng:pod-1:SC07-S004",
+   "scene": 7,
+   "sentence": 4,
+   "speaker": "Cafe Customer 1",
+   "target_text": "Ba mhaith liom ceann mór, le do thoil. Le bainne coirce má tá sé agat.",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "23909a76-fedb-4837-b940-2f38ea5efa58",
+     "fd0a6d9f-0157-42d7-a29f-e0add7bfa5ff"
+    ],
+    "sentence_known_audio_ids": [
+     "5032e201-b1f7-4282-98d9-1ab247daac98",
+     "0b63d406-cbbb-49de-84ec-7a48612cd0ab"
+    ],
+    "takeg_audio_ids": [
+     "db62d24d-0a2f-4029-b8fd-b981abd83da4",
+     "f5a731c7-c81e-48cc-852d-3d4a930760ab"
+    ]
+   }
+  },
+  {
+   "id": "gle_for_eng:pod-1:SC07-S005",
+   "scene": 7,
+   "sentence": 5,
+   "speaker": "Cafe Barista",
+   "target_text": "Ar ndóigh. Ar mhaith leat suí isteach nó é a thabhairt leat?",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "86a05236-2ce3-4126-af09-4989f6d98efe",
+     "f53229e0-ad48-4642-8084-ca82df362f9f"
+    ],
+    "sentence_known_audio_ids": [
+     "e2a9452a-d81c-41a0-a43c-4b4f6c0620f5",
+     "9cebeb62-db11-453a-881c-e6f897996d6f"
+    ],
+    "takeg_audio_ids": [
+     "f5020955-37e1-4954-bcef-1e2fdcbe7a8d"
+    ]
+   }
+  },
+  {
+   "id": "gle_for_eng:pod-1:SC07-S006",
+   "scene": 7,
+   "sentence": 6,
+   "speaker": "Cafe Customer 1",
+   "target_text": "Ba mhaith liom é a thabhairt liom, le do thoil.",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "23702266-fd17-496f-865c-c3f90af56cc0"
+    ]
+   }
+  },
+  {
+   "id": "gle_for_eng:pod-1:SC07-S008",
+   "scene": 7,
+   "sentence": 8,
+   "speaker": "Cafe Barista",
+   "target_text": "Díreach anois. Ar mhaith leat rud ar bith eile?",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice en-GB-HollieNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "17d48d87-885f-4732-b590-a480dde57253",
+     "d420d7ad-fb8f-43c9-a2b3-c0fc8484e4e0"
+    ],
+    "sentence_known_audio_ids": [
+     "f9f76990-8f4b-41d0-8e28-3edac816dfc8",
+     "c81f89ff-74a0-44eb-90dc-080372946d0b"
+    ],
+    "takeg_audio_ids": [
+     "cfed7c66-d6c4-4b2d-9934-db357fdfce65"
+    ]
+   }
+  },
+  {
+   "id": "gle_for_eng:pod-1:SC07-S010",
+   "scene": 7,
+   "sentence": 10,
+   "speaker": "Cafe Barista",
+   "target_text": "Sin ocht bpunt daichead ar fad.",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "cd55b32e-6962-4020-9e7a-6526d29781c6"
+    ]
+   }
+  },
+  {
+   "id": "gle_for_eng:pod-1:SC07-S011",
+   "scene": 7,
+   "sentence": 11,
+   "speaker": "Cafe Customer 2",
+   "target_text": "An féadfainn a íoc le cárta? An bhfuil íocaíocht gan teagmháil agat?",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice en-GB-LibbyNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "7a814a8f-0e6d-4572-99a3-934464605272",
+     "881a68c6-640e-4d32-b6bf-ec6dcdf8d472"
+    ],
+    "sentence_known_audio_ids": [
+     "6412cc58-8912-4b66-bc44-921d4bed672b",
+     "87173638-45c2-40d1-9dbb-1bca0627331f"
+    ],
+    "takeg_audio_ids": [
+     "036e2aed-7281-491c-99cb-65394f40edb8",
+     null
+    ]
+   }
+  },
+  {
+   "id": "gle_for_eng:pod-1:SC07-S012",
+   "scene": 7,
+   "sentence": 12,
+   "speaker": "Cafe Barista",
+   "target_text": "Ar ndóigh. Sin é an meaisín.",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice en-GB-HollieNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "86a05236-2ce3-4126-af09-4989f6d98efe",
+     "4cfa27f9-ba0e-411d-8098-4cd0e19aff77"
+    ],
+    "sentence_known_audio_ids": [
+     "e2a9452a-d81c-41a0-a43c-4b4f6c0620f5",
+     "b608650d-cb2a-4263-a341-d74623cb5e43"
+    ],
+    "takeg_audio_ids": [
+     "1076a51b-b43e-451f-83af-3681a0294795"
+    ]
+   }
+  },
+  {
+   "id": "gle_for_eng:pod-1:SC07-S014",
+   "scene": 7,
+   "sentence": 14,
+   "speaker": "Cafe Barista",
+   "target_text": "Ar mhaith leat suí istigh? Tá an bord cois na fuinneoige saor.",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice en-GB-HollieNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "cef141bc-8a57-4018-97ae-5de526a83696",
+     "2606b78c-de51-4065-9970-11639ba54c42"
+    ],
+    "sentence_known_audio_ids": [
+     "5a078bfe-48bc-4dd0-97be-93a398db9c09",
+     "6b8ffeb9-28e0-4b52-9584-e6897c1a3ccd"
+    ],
+    "takeg_audio_ids": [
+     "c1b2c12b-6d0a-4b68-8005-6e9f7b189fa0",
+     "821790f8-2266-4eae-9284-d29f733df590"
+    ]
+   }
+  },
+  {
+   "id": "gle_for_eng:pod-1:SC07-S015",
+   "scene": 7,
+   "sentence": 15,
+   "speaker": "Narrator",
+   "target_text": "A cúig. A deich. A cúig déag. Dearg. Glas.",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "04cd931b-9efd-4408-916f-ff01ea88528a",
+     "1c36f040-5e5a-4eb7-81bf-1ab351197aa2",
+     "93ae61c3-6312-42a0-8461-edd5d8c30ba8",
+     "9f61bda5-f6c1-42d1-86ab-bf329815eccc",
+     "9f372421-19a1-4c49-adbf-c300d3cd3a83"
+    ],
+    "sentence_known_audio_ids": [
+     "b689d6b5-4101-4041-b4c0-e8f7bbb6366f",
+     "c3e5fb87-3b72-4f6e-850c-85bcd05178c2",
+     "bbd99dfe-c67e-466f-a19e-b65dccaa5122",
+     "6c04ba71-89d2-4cc3-a0e8-3cdb67673b74",
+     "685a8ef5-60f3-427a-96d1-10e7196a3ae7"
+    ],
+    "takeg_audio_ids": [
+     "addb2fd8-c233-4dc6-8715-b4f4f5132d6b"
+    ]
+   }
+  },
+  {
+   "id": "gle_for_eng:pod-1:SC08-S001",
+   "scene": 8,
+   "sentence": 1,
+   "speaker": "Bartender",
+   "target_text": "Oíche mhaith. Cad a bhéarfaidh mé duit?",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice leo"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "7e6693d8-3c3b-40c4-920f-d0013a4fe1c9",
+     "4eff3ee1-2e7c-4d8c-811e-d1f1e80ebcf5"
+    ],
+    "sentence_known_audio_ids": [
+     "336ce64a-9fb3-4420-a943-577711dbf9f4",
+     "806d29fd-056e-42f5-a473-4ccd21eb9743"
+    ],
+    "takeg_audio_ids": [
+     "59f4b83d-1fe6-45bb-976f-7fb4888d38bc"
+    ]
+   }
+  },
+  {
+   "id": "gle_for_eng:pod-1:SC08-S002",
+   "scene": 8,
+   "sentence": 2,
+   "speaker": "Bar Customer 1",
+   "target_text": "Ba mhaith liom pionta, le do thoil. Cad iad na leanna atá agat?",
+   "clear": [
+    "sentence_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "8ef5a60e-d012-48be-80c2-add0c53f7c71",
+     "7823cf71-cfab-4495-b928-4ada10b4ebab"
+    ],
+    "sentence_known_audio_ids": [
+     "f7a75676-8071-4fc4-b13e-428b1dc69393",
+     "0ec35bc0-a835-41a0-aaf0-f4fb7535d7cc"
+    ],
+    "takeg_audio_ids": [
+     "9940c74e-3b88-48cc-8dc3-44278d721671",
+     null
+    ]
+   }
+  },
+  {
+   "id": "gle_for_eng:pod-1:SC08-S012",
+   "scene": 8,
+   "sentence": 12,
+   "speaker": "Bar Customer 1",
+   "target_text": "Níl mé cinnte an bhfuil ocras orm. An bhfuil biachlár agat?",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice en-GB-SoniaNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "7ce13290-03e5-4b30-8f56-d42b590b9290",
+     "643330c3-46b2-4aed-b014-b7976d4b68d4"
+    ],
+    "sentence_known_audio_ids": [
+     "6e29cb17-b4b1-400e-8feb-02efd2d744e9",
+     "b1810f4d-02b5-41fc-a93f-b75a5db4c36e"
+    ],
+    "takeg_audio_ids": [
+     "e1ae0004-4f58-4a17-9373-12df076e2939",
+     null
+    ]
+   }
+  },
+  {
+   "id": "gle_for_eng:pod-1:SC08-S013",
+   "scene": 8,
+   "sentence": 13,
+   "speaker": "Bartender",
+   "target_text": "Sea, ar ndóigh. Seo é. Tá na sceallóga éisc an-mhaith.",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice leo"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "0286e1e8-be6c-4eb6-9321-437f7e23cbe9",
+     "ac1a74d5-29bd-4269-b80c-0e039864fd3b",
+     "68defa35-3d76-4e20-9fee-a06ed3083cb4"
+    ],
+    "sentence_known_audio_ids": [
+     "ea1de8ff-3331-461e-833b-02b03d931c9a",
+     "3748f82a-15a2-4925-a682-7e774b2430aa",
+     "f815bd73-84c9-4912-8e60-eb501c2bf1c2"
+    ],
+    "takeg_audio_ids": [
+     "8491c614-012c-49d6-86c8-ccab497cccba",
+     null,
+     null
+    ]
+   }
+  },
+  {
+   "id": "gle_for_eng:pod-1:SC08-S014",
+   "scene": 8,
+   "sentence": 14,
+   "speaker": "Bar Customer 1",
+   "target_text": "An bhféadfaimis roinnt aráin a fháil? Agus babhla sceallóg don bhord.",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice en-GB-SoniaNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "fcda20d1-5ac5-4885-a400-59c072314fde",
+     "67245b13-e19a-4973-ae00-73292fbfaa0d"
+    ],
+    "sentence_known_audio_ids": [
+     "fa3fb59e-2014-48ba-b7a8-fb419194d21a",
+     "97eddd25-c13d-451e-a85c-f792208d147c"
+    ],
+    "takeg_audio_ids": [
+     "44c60995-0a01-4897-ab7b-2d5ce1114e7b",
+     "1caa00c4-78c7-4789-afc8-40ffab5f9561"
+    ]
+   }
+  },
+  {
+   "id": "gle_for_eng:pod-1:SC08-S015",
+   "scene": 8,
+   "sentence": 15,
+   "speaker": "Bar Customer 2",
+   "target_text": "An bhfuil aon cheapairí agat? Ba mhaith liom ceapaire cáise, le do thoil.",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice en-GB-LibbyNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "43fe3afb-4ad8-4e9e-84ce-8ed9980e46b7",
+     "d0917692-0c2b-49cf-8e83-182e74e1e013"
+    ],
+    "sentence_known_audio_ids": [
+     "32a700bc-9fb7-4ad4-b4be-1a49ad5775bf",
+     "d3d156b5-39f6-4a2c-b9e7-d2c1a3dc6d86"
+    ],
+    "takeg_audio_ids": [
+     "48b60a83-0a5c-4d9d-a6a2-ac9d181eb258"
+    ]
+   }
+  },
+  {
+   "id": "gle_for_eng:pod-1:SC08-S016",
+   "scene": 8,
+   "sentence": 16,
+   "speaker": "Narrator",
+   "target_text": "Ceathair. Sé. Ocht. Gorm. Buí.",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "f822b426-0fa6-4b3e-9394-bffd31e214a3",
+     "d6e2db30-c6fd-4c61-b63a-056286ab3537",
+     "fa90069d-724d-4a29-9fbb-2a43de8df72f",
+     "198c0883-dc6c-491a-8c4c-98eb91fffdf5",
+     "f9f32b09-7e21-4ed9-a65b-837326b1b7a5"
+    ],
+    "sentence_known_audio_ids": [
+     "660e7011-f17a-4d9c-bdc3-b4d47ba39b5a",
+     "dc3563d5-ea3b-4f40-b87c-93c3b7f7ad4b",
+     "014cc184-0c16-4fc6-9def-3b1bac7c50e8",
+     "d0535ed7-5d00-4236-accf-ed67eb349a2e",
+     "8e01fe5c-41aa-4d3f-a2d8-816b60b6f62b"
+    ],
+    "takeg_audio_ids": [
+     "ab33775d-2c2d-4697-af45-07fc0047ccbc"
+    ]
+   }
+  },
+  {
+   "id": "gle_for_eng:pod-1:SC09-S001",
+   "scene": 9,
+   "sentence": 1,
+   "speaker": "Diner 1",
+   "target_text": "Oíche mhaith. Tá áit in áirithe againn do bheirt, faoin ainm Davies.",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice en-GB-SoniaNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "673691df-7a3e-4632-a1e0-48b47e19644b",
+     "dada9405-e6a0-4606-b645-b33af74390e3"
+    ],
+    "sentence_known_audio_ids": [
+     "fb88aa7b-d928-4658-9795-2760fd9401e6",
+     "dd7ed056-a236-48d5-9517-679047e3dae9"
+    ],
+    "takeg_audio_ids": [
+     "bebbcc72-aeb6-4894-bbc1-4ab07a0ccef6"
+    ]
+   }
+  },
+  {
+   "id": "gle_for_eng:pod-1:SC09-S002",
+   "scene": 9,
+   "sentence": 2,
+   "speaker": "Waiter",
+   "target_text": "Fáilte. Lean mé, le do thoil. Seo iad na biachláir.",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "14f24fa8-6a10-4748-926b-ef5b0dbf53ae",
+     "023f4c33-96bf-4336-ab5e-594bd1819685",
+     "0c26010a-baad-41d7-93c9-a8b8c349631c"
+    ],
+    "sentence_known_audio_ids": [
+     "2045c27e-0278-4879-9cdc-8cd2079a68ce",
+     "daebb17a-f3ad-44af-a683-b1016b3ac1a8",
+     "fa057a00-a7f0-493c-8439-bbc1b6747f01"
+    ],
+    "takeg_audio_ids": [
+     "4e2b45e4-3818-49e3-bed3-bd3ab0828348",
+     null
+    ]
+   }
+  },
+  {
+   "id": "gle_for_eng:pod-1:SC09-S005",
+   "scene": 9,
+   "sentence": 5,
+   "speaker": "Diner 1",
+   "target_text": "Gabh mo leithscéal — an bhfuil aon rud saor ó ghlútan agaibh? Nó do veigeatóirigh?",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice en-GB-SoniaNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "63fabf60-3a63-4996-9481-de5785809958",
+     "7798d132-9a98-421e-93ee-ac21f08dac96"
+    ],
+    "sentence_known_audio_ids": [
+     "172cfd78-c36b-41a1-8970-b21150810134",
+     "de55ceed-226e-4b21-ad23-38e20eab59a6"
+    ],
+    "takeg_audio_ids": [
+     "f542b731-3221-415b-a53e-8cac6ccc5f53",
+     null
+    ]
+   }
+  },
+  {
+   "id": "gle_for_eng:pod-1:SC09-S006",
+   "scene": 9,
+   "sentence": 6,
+   "speaker": "Waiter",
+   "target_text": "Tá, tá an bradán agus an risotto saor ó ghlútan araon. Tá roinnt sailéad againn freisin.",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice leo"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "3625c875-d28c-4116-8758-9a2e3d60726f",
+     "579de74a-2eb7-4b82-92c8-81e02f770235"
+    ],
+    "sentence_known_audio_ids": [
+     "3bee8d41-222b-480d-a381-534f7c70d4c3",
+     "31b76cd3-7f4d-4433-8b52-5eb8aa2be79c"
+    ],
+    "takeg_audio_ids": [
+     "de81adaf-4ae6-49b2-8f20-e5dc93e3b9b9",
+     null
+    ]
+   }
+  },
+  {
+   "id": "gle_for_eng:pod-1:SC09-S008",
+   "scene": 9,
+   "sentence": 8,
+   "speaker": "Waiter",
+   "target_text": "Tá an t-uan den scoth. Tá sé cócaráilte go mall, le rósmarín.",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice leo"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "6f89af5f-f40b-4f4d-a381-835880d2b083",
+     "5ec454c1-acee-4ab7-b434-a1d0fd2bde66"
+    ],
+    "sentence_known_audio_ids": [
+     "090a2a10-9833-454a-bf1d-ef0585c943e7",
+     "8fcbdd40-de72-44a8-b796-23210ffb7235"
+    ],
+    "takeg_audio_ids": [
+     "e306a164-c59a-4ded-b7c1-b8b8cbe357f2",
+     "c5a364a1-8d9c-4c2a-bf8b-b2807afac635"
+    ]
+   }
+  },
+  {
+   "id": "gle_for_eng:pod-1:SC09-S009",
+   "scene": 9,
+   "sentence": 9,
+   "speaker": "Diner 1",
+   "target_text": "Beidh an t-uan agam, le do thoil. Le taobhghéis glasraí.",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice en-GB-SoniaNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "b750e921-a168-45c1-b3fa-87843b82cf00",
+     "e4b1f324-621b-4a73-9994-c457e1ab3330"
+    ],
+    "sentence_known_audio_ids": [
+     "2e3a0430-2c36-4faa-b214-9bc5b464e7c9",
+     "188af39c-7942-41aa-bce3-c4c8b38947ac"
+    ],
+    "takeg_audio_ids": [
+     "a673baf3-6b49-4fd6-b3c8-8109041c5545",
+     null
+    ]
+   }
+  },
+  {
+   "id": "gle_for_eng:pod-1:SC09-S010",
+   "scene": 9,
+   "sentence": 10,
+   "speaker": "Diner 2",
+   "target_text": "Agus an risotto domsa. Le sailéad glasraí beag ar dtús.",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice en-GB-LibbyNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "0cd4ad66-b5cb-4220-b6cb-a0fba1dce6dc",
+     "532aa73b-66b3-4387-9ffd-c5ff7da2f631"
+    ],
+    "sentence_known_audio_ids": [
+     "d7ce3406-541b-43d4-968d-6d31c0d4ad67",
+     "d79fac0f-3f8f-4738-bfd3-abeb68d4efdd"
+    ],
+    "takeg_audio_ids": [
+     "6b9219fc-9242-464a-9b97-89f1b561d243"
+    ]
+   }
+  },
+  {
+   "id": "gle_for_eng:pod-1:SC09-S011",
+   "scene": 9,
+   "sentence": 11,
+   "speaker": "Waiter",
+   "target_text": "Ar ndóigh. Agus cad ba mhaith libh le hól?",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice leo"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "86a05236-2ce3-4126-af09-4989f6d98efe",
+     "49b37664-dc11-4cbe-a000-0fc944c44b08"
+    ],
+    "sentence_known_audio_ids": [
+     "dc0b26c0-4fcb-4d15-8fb2-bf04fcd28db2",
+     "037672bd-b4e1-45b7-9181-f1b06d512e62"
+    ],
+    "takeg_audio_ids": [
+     "f08c3d96-4a09-412b-9ddf-66c0ff8f9de3"
+    ]
+   }
+  },
+  {
+   "id": "gle_for_eng:pod-1:SC09-S014",
+   "scene": 9,
+   "sentence": 14,
+   "speaker": "Waiter",
+   "target_text": "Rogha den scoth. Tabharfaidh mé chugaibh láithreach é.",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice leo"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "c2b3f14e-5e6e-405e-8c68-b07820b0218f",
+     "e7227a77-4577-4f19-816a-d53043fa5f9a"
+    ],
+    "sentence_known_audio_ids": [
+     "88d6f11d-9e5e-46f6-9843-7b3bd37ddfc1",
+     "0656b957-27ff-4bcc-a861-30ab03f7f5bb"
+    ],
+    "takeg_audio_ids": [
+     "ee7522fb-3017-4b83-ba23-096a403da964"
+    ]
+   }
+  },
+  {
+   "id": "gle_for_eng:pod-1:SC09-S015",
+   "scene": 9,
+   "sentence": 15,
+   "speaker": "Waiter",
+   "target_text": "An bhfuil gach rud ceart go leor? An bhfuil spás agaibh do mhilseog?",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice leo"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "2961d5ba-0159-4598-8f2f-f30680b66b29",
+     "bb88e308-7762-4368-afde-7bb038d5ca16"
+    ],
+    "sentence_known_audio_ids": [
+     "8753774f-99ca-4a39-a238-4f1fd53e75e2",
+     "246ab39e-49a7-42a9-b8c7-2407241edfef"
+    ],
+    "takeg_audio_ids": [
+     "9d12860f-64e6-4705-8240-eb4747bfd3d6",
+     "7de96aa1-95ea-4a8f-ae36-827f645678b2"
+    ]
+   }
+  },
+  {
+   "id": "gle_for_eng:pod-1:SC09-S016",
+   "scene": 9,
+   "sentence": 16,
+   "speaker": "Diner 1",
+   "target_text": "Dhá chaife amháin, le do thoil. Caife gan caiféin domsa.",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice en-GB-SoniaNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "f649678a-129c-4732-9b3d-ac079a452624",
+     "f46a9e79-9890-4c2e-8c7e-c09ebbf61244"
+    ],
+    "sentence_known_audio_ids": [
+     "35353bf4-468a-4379-83e1-1184a3242a79",
+     "d770745d-d92e-4a7b-a3d9-10bc0dc6895f"
+    ],
+    "takeg_audio_ids": [
+     "5edd7ec1-6cb3-449d-b75f-069208073e4c",
+     null
+    ]
+   }
+  },
+  {
+   "id": "gle_for_eng:pod-1:SC09-S017",
+   "scene": 9,
+   "sentence": 17,
+   "speaker": "Diner 2",
+   "target_text": "Agus an bille, nuair a bheidh tú réidh. An bhféadfaimis é a roinnt?",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice en-GB-LibbyNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "0c1a8b21-4665-49b8-9f94-5e6c3c1a0ef7",
+     "18e42ef0-3a87-4fa7-ba62-9036463c3c71"
+    ],
+    "sentence_known_audio_ids": [
+     "d4c7617b-ca26-411b-9e4c-70b9e693e86f",
+     "3131bdf6-810b-43ae-a53e-653e99073c84"
+    ],
+    "takeg_audio_ids": [
+     "9578be5a-52f6-4e02-8276-da84fc418576",
+     null
+    ]
+   }
+  },
+  {
+   "id": "gle_for_eng:pod-1:SC09-S018",
+   "scene": 9,
+   "sentence": 18,
+   "speaker": "Narrator",
+   "target_text": "A seacht. A naoi. A haon déag. Oráiste. Corcairghorm.",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "73655508-c1e1-44a1-9087-622fa3ccd9e5",
+     "9a8a8bb8-cc2b-4b42-bbd9-9e661c55e91f",
+     "d58c7bc2-016c-434f-b3f9-f9e00861b660",
+     "d0b6e851-ceb5-408e-bdaa-6333a8934077",
+     "8607e548-8f40-4d8b-9902-b944e9f68871"
+    ],
+    "sentence_known_audio_ids": [
+     "66ddf03d-135f-433b-bdeb-de2a9896b414",
+     "46377100-b697-48d0-98d9-c9e84a62865f",
+     "f2e747d6-ecdc-4b27-9d69-7c0897f4f9b5",
+     "a059df14-4e68-4972-97c1-bc4197b66c94",
+     "1d999fc9-aff4-4550-aeec-c95c952dea73"
+    ],
+    "takeg_audio_ids": [
+     "8f26d0c6-0bfb-477f-8f40-de6cf4273c0c"
+    ]
+   }
+  },
+  {
+   "id": "gle_for_eng:pod-1:SC10-S001",
+   "scene": 10,
+   "sentence": 1,
+   "speaker": "Customer",
+   "target_text": "Gabh mo leithscéal. An bhfuil aon phianmhúchán agat?",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice en-GB-SoniaNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "efb3c189-3ef8-422a-b27b-37be71f66f30",
+     "a0f1de32-0cdf-4abd-bfbb-32f6fcc6abf5"
+    ],
+    "sentence_known_audio_ids": [
+     "49f6c4af-5a35-4b8e-b0c3-6320b380814e",
+     "9d15820d-68d1-41cf-92a5-25439ab5cd71"
+    ],
+    "takeg_audio_ids": [
+     "a5a24c1b-ad49-46ef-b2a0-da5dc0c971a5"
+    ]
+   }
+  },
+  {
+   "id": "gle_for_eng:pod-1:SC10-S003",
+   "scene": 10,
+   "sentence": 3,
+   "speaker": "Customer",
+   "target_text": "Go raibh maith agat. Agus an bhfuil aon phianmhúchán do pháistí agat?",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice en-GB-SoniaNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "6b4239ec-fbc5-4d68-ac8c-6d12dcc6f944",
+     "65c80d2e-3e58-4199-9ad9-50558d59fc7b"
+    ],
+    "sentence_known_audio_ids": [
+     "7b2b848c-ece0-4efd-8b36-48c8a4027a81",
+     "c672e4ec-2141-4509-8605-e909d37ec3ab"
+    ],
+    "takeg_audio_ids": [
+     "e610487b-5636-4db5-8c79-396bf2b9e3e2"
+    ]
+   }
+  },
+  {
+   "id": "gle_for_eng:pod-1:SC10-S007",
+   "scene": 10,
+   "sentence": 7,
+   "speaker": "Customer",
+   "target_text": "Go raibh maith agat, bhí tú an-chabhrach ar fad. Táim an-bhuíoch díot.",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice en-GB-SoniaNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "20d668d0-4005-4273-aa5f-4756a8f3a582",
+     "6aae75fc-27a6-4215-a331-de3db522152d"
+    ],
+    "sentence_known_audio_ids": [
+     "438ebbc6-5740-432b-857c-66e00ba7f06c",
+     "adf0978d-5300-4255-9bb7-7fbc700c2f0c"
+    ],
+    "takeg_audio_ids": [
+     "f6bfbb64-5df9-47fb-8639-a80066a2b2a2",
+     null
+    ]
+   }
+  },
+  {
+   "id": "gle_for_eng:pod-1:SC10-S008",
+   "scene": 10,
+   "sentence": 8,
+   "speaker": "Assistant",
+   "target_text": "Tá fáilte romhat. An bhfuil tú anseo ar laethanta saoire? Tá Gaeilge an-mhaith agat.",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice en-GB-LibbyNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "543c7939-008e-49c5-bf55-b2869b617866",
+     "f651943c-14db-4ea2-b5df-0fe07c834035",
+     "78127c54-f0bd-4d7f-ba28-a5c493d059ff"
+    ],
+    "sentence_known_audio_ids": [
+     "8c653fb3-b1d7-49fc-a752-93e9f7a0de83",
+     "c9050698-376a-48c6-ab1e-8af27f3d8b32",
+     "045c671f-4516-417d-8d58-8cf2da26350e"
+    ],
+    "takeg_audio_ids": [
+     "5ffbff99-793f-4dd5-9f69-82921dd45fde",
+     null
+    ]
+   }
+  },
+  {
+   "id": "gle_for_eng:pod-1:SC10-S009",
+   "scene": 10,
+   "sentence": 9,
+   "speaker": "Customer",
+   "target_text": "Is tú atá go cineálta! Tá, táim ar laethanta saoire, agus tá orm cleachtadh níos mó a dhéanamh chun Gaeilge níos fearr a labhairt. Go raibh maith agat go mór, agus slán.",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice en-GB-SoniaNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "781b2072-29e0-4ea5-8979-de8dc964c361",
+     "18810e9e-ad9c-4f22-b3a8-e22f5917ea30",
+     "a0342484-1215-4d2b-a527-7d810529f545"
+    ],
+    "sentence_known_audio_ids": [
+     "f36a5526-78ea-48a5-a707-cc5a9d79aa7f",
+     "4bedd454-71f5-4abb-89f7-a969c0db9a77",
+     "64fb4f0c-e29f-4191-944a-3b64e5246024"
+    ],
+    "takeg_audio_ids": [
+     "c73b66e7-d228-4173-acf1-47788b25a65a",
+     "9144c375-5d18-4907-81e4-24fc6c8dd7fd"
+    ]
+   }
+  },
+  {
+   "id": "gle_for_eng:pod-1:SC10-S010",
+   "scene": 10,
+   "sentence": 10,
+   "speaker": "Narrator",
+   "target_text": "A dó dhéag. A trí déag. A ceathair déag. Bándearg. Liath.",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "99d72138-18be-4167-9147-7cfac6a1a612",
+     "95cd5444-5314-462e-874b-9892a09e8484",
+     "f0c50503-5831-47c4-b546-f52c7148c494",
+     "073b6b9a-a8c3-4d49-b267-1e5aadcdfbc4",
+     "04fc7e99-968c-4ca9-a82e-db917c2d3a32"
+    ],
+    "sentence_known_audio_ids": [
+     "29906fff-ef8c-4c0b-860d-d8bdd0a79a43",
+     "bdb5fada-cfe3-4e32-908d-04846108c18c",
+     "80f78212-1ec2-4771-899d-31f711cbc1c5",
+     "ff4b6671-3a1b-431c-bd98-52d91c13cfa2",
+     "f4ff28d5-2558-4be9-9788-27cef93226ce"
+    ],
+    "takeg_audio_ids": [
+     "1ac9370b-a288-46d7-adbe-0b3664fdd4f4"
+    ]
+   }
+  },
+  {
+   "id": "gle_for_eng:pod-1:SC11-S001",
+   "scene": 11,
+   "sentence": 1,
+   "speaker": "Guest",
+   "target_text": "Tráthnóna maith. Tá áit in áirithe agam faoin ainm Jones.",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "076ca179-6537-4718-a6a7-bb7ae08ca667",
+     "188570e1-dd1f-4539-9b1e-ad5910658b3a"
+    ],
+    "sentence_known_audio_ids": [
+     "98ec629f-8f22-4283-932c-4486902ce01f",
+     "6d6dbc57-7975-4a3a-b732-f2103c076ca4"
+    ],
+    "takeg_audio_ids": [
+     "b27aa44e-1944-4235-a9a4-b76863aec690"
+    ]
+   }
+  },
+  {
+   "id": "gle_for_eng:pod-1:SC11-S002",
+   "scene": 11,
+   "sentence": 2,
+   "speaker": "Receptionist",
+   "target_text": "Fáilte. Sea, tá seomra dúbailte agat ar feadh trí oíche. An bhféadfainn aitheantas a fheiceáil, le do thoil?",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice en-GB-SoniaNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "b34539d5-681c-48e4-8749-a4c0359f9adb",
+     "e8ddce17-5750-4f7f-b2f2-b69a2ea69fdc",
+     "ec66d1dd-600d-487e-b5db-456e0e4a44ee"
+    ],
+    "sentence_known_audio_ids": [
+     "637267ae-4ea9-405f-9de1-9acd0f732ed6",
+     "0132e3cc-8f69-4025-85b8-6ca839895fb9",
+     "47e807fe-1ee3-41d5-8127-54a93784e214"
+    ],
+    "takeg_audio_ids": [
+     "84087931-ff68-4870-9047-453627da8267",
+     "277987bf-de91-4868-a6d4-4c7ac4099850"
+    ]
+   }
+  },
+  {
+   "id": "gle_for_eng:pod-1:SC11-S003",
+   "scene": 11,
+   "sentence": 3,
+   "speaker": "Guest",
+   "target_text": "Ar ndóigh. Seo mo phas.",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "86a05236-2ce3-4126-af09-4989f6d98efe",
+     "a4d1b4de-1fa9-4238-a207-663030998473"
+    ],
+    "sentence_known_audio_ids": [
+     "dc0b26c0-4fcb-4d15-8fb2-bf04fcd28db2",
+     "3ab221a8-83d4-4e6d-b8db-d936f902f8fe"
+    ],
+    "takeg_audio_ids": [
+     "512b3484-6d5e-4010-aa70-1d7cece053f1"
+    ]
+   }
+  },
+  {
+   "id": "gle_for_eng:pod-1:SC11-S004",
+   "scene": 11,
+   "sentence": 4,
+   "speaker": "Receptionist",
+   "target_text": "Go hálainn. Tá an seomra ar an tríú hurlár, seomra 709.",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "86cb0bea-a2ad-4c85-aad6-1005243f76b0",
+     "efcb73f4-2748-4b5e-81dd-ac4a9ad3403c"
+    ],
+    "sentence_known_audio_ids": [
+     "bf514adb-fcc7-405d-8cd1-f703af27c8d3",
+     "d29cdc44-5cfb-42b9-b767-ad75b1b83451"
+    ],
+    "takeg_audio_ids": [
+     "1f9621f8-2935-4895-9dc5-a86da621e022"
+    ]
+   }
+  },
+  {
+   "id": "gle_for_eng:pod-1:SC11-S008",
+   "scene": 11,
+   "sentence": 8,
+   "speaker": "Receptionist",
+   "target_text": "Ó leathuair tar éis a seacht go dtí a deich a chlog. Tá torthaí agus gránach againn nó bricfeasta cócaireachta.",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice en-GB-SoniaNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "b892c063-1de0-4bf6-a9c1-bb84fa08bbfb",
+     "abc6c927-5eda-4a96-b9d5-dc6497e82e35"
+    ],
+    "sentence_known_audio_ids": [
+     "f63c6bc7-54bb-484b-8595-66fffb5261cb",
+     "b8c47109-75e1-456e-9973-312e8508f0e4"
+    ],
+    "takeg_audio_ids": [
+     "f7985085-e074-4a86-afeb-f65919be994c",
+     "c55b15f0-c946-4431-aa36-d535a9fe0848"
+    ]
+   }
+  },
+  {
+   "id": "gle_for_eng:pod-1:SC11-S009",
+   "scene": 11,
+   "sentence": 9,
+   "speaker": "Guest",
+   "target_text": "Iontach ar fad. An féidir linn seiceáil amach déanach a dhéanamh?",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice leo"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "bb46f19b-19c3-45e9-9064-81988fc58372",
+     "287efbf3-faac-4051-8116-32828cca7b95"
+    ],
+    "sentence_known_audio_ids": [
+     "fa2f6ab3-6e6c-48ae-adff-f16abcaf0f82",
+     "908130a7-3377-40ba-a24a-aae54c202933"
+    ],
+    "takeg_audio_ids": [
+     "f1e85c43-a2d7-464f-9d1e-9c7908952b58"
+    ]
+   }
+  },
+  {
+   "id": "gle_for_eng:pod-1:SC11-S012",
+   "scene": 11,
+   "sentence": 12,
+   "speaker": "Receptionist",
+   "target_text": "Tá sé ar an gcárta fáilte i do sheomra. Go dtéidh do thuras go maith.",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice en-GB-SoniaNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "96aad707-0ef6-4340-a882-4404e9c52f0b",
+     "128b8faf-c718-4682-8f5a-89c9c8210f86"
+    ],
+    "sentence_known_audio_ids": [
+     "abc50bdc-ff78-419b-b9ef-f764f70d6760",
+     "cc8cf875-ce1f-441c-9928-85651b8fbd6c"
+    ],
+    "takeg_audio_ids": [
+     "0c62bca6-6613-4afd-bbc1-433cc00b52fa",
+     "5f122739-ece1-47ff-812a-cc9cf5a66b9c"
+    ]
+   }
+  },
+  {
+   "id": "gle_for_eng:pod-1:SC11-S013",
+   "scene": 11,
+   "sentence": 13,
+   "speaker": "Narrator",
+   "target_text": "A sé déag. A seacht déag. A hocht déag. Dé Luain. Dé Máirt.",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "f82182a1-02dd-4581-bc43-43e02a8589e4",
+     "3df39145-fb1f-4ba2-b9fa-fb923575e888",
+     "2e353b71-4f26-46a9-9e8d-f3e318d94fbf",
+     "ce78e4fa-8760-4111-9e50-49370447b131",
+     "a4c7b028-a4b4-4423-ab0c-0117b52c4302"
+    ],
+    "sentence_known_audio_ids": [
+     "eea2efee-f9c9-4e84-bd69-e4e871068375",
+     "2117ed3b-4fde-4332-9c1c-608c5840d630",
+     "0b577ee2-9929-4d71-89e5-7155e31df14d",
+     "a202d640-c1ed-40c1-a970-d51e5957a125",
+     "82158291-eb86-4bdb-a58e-14592aa9eaae"
+    ],
+    "takeg_audio_ids": [
+     "829de31a-e040-4923-991f-11eff51f9754"
+    ]
+   }
+  },
+  {
+   "id": "gle_for_eng:pod-1:SC12-S001",
+   "scene": 12,
+   "sentence": 1,
+   "speaker": "Customer",
+   "target_text": "Maidin mhaith. Níl mé ag mothú go maith - an bhféadfá rud éigin a mholadh?",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "39de069a-76b3-4996-8dba-b6b0fa5c92a9",
+     "956888b9-aa33-49a7-841d-f7feb488de59"
+    ],
+    "sentence_known_audio_ids": [
+     "d3eeb1e8-8bba-4ae6-af54-156e45f3940b",
+     "cad17640-9da9-42b4-b5c3-9a0dbe2e0766"
+    ],
+    "takeg_audio_ids": [
+     "bff495fc-867e-4819-a40c-955e2c61cad5"
+    ]
+   }
+  },
+  {
+   "id": "gle_for_eng:pod-1:SC12-S002",
+   "scene": 12,
+   "sentence": 2,
+   "speaker": "Pharmacist",
+   "target_text": "Ar ndóigh. Cad iad do chuid siomptóm?",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice leo"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "86a05236-2ce3-4126-af09-4989f6d98efe",
+     "bf9bf725-599f-4a27-b956-fcfc23909bb3"
+    ],
+    "sentence_known_audio_ids": [
+     "dc0b26c0-4fcb-4d15-8fb2-bf04fcd28db2",
+     "e948c248-e033-4ce6-b47c-c0d4034f7d93"
+    ],
+    "takeg_audio_ids": [
+     "48474a96-8154-4a00-8e2d-2eeea5913e21"
+    ]
+   }
+  },
+  {
+   "id": "gle_for_eng:pod-1:SC12-S004",
+   "scene": 12,
+   "sentence": 4,
+   "speaker": "Pharmacist",
+   "target_text": "Bain triail as paraicéatamól don tinneas cinn, agus na losainséid seo don scornach.",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "77d4b0b6-8d70-4eef-8e5d-40c1f54c5729"
+    ]
+   }
+  },
+  {
+   "id": "gle_for_eng:pod-1:SC12-S007",
+   "scene": 12,
+   "sentence": 7,
+   "speaker": "Customer",
+   "target_text": "An bhfuil siad ceart go leor le tógáil le bia?",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "cf87eb68-890f-411c-bf61-f6ef6c5e39fd"
+    ]
+   }
+  },
+  {
+   "id": "gle_for_eng:pod-1:SC12-S009",
+   "scene": 12,
+   "sentence": 9,
+   "speaker": "Customer",
+   "target_text": "Go raibh maith agat. An bhféadfainn paicéad plástair a fháil freisin?",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice en-GB-SoniaNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "6b4239ec-fbc5-4d68-ac8c-6d12dcc6f944",
+     "37f2667c-87e6-4d54-b0e5-890bc7d45518"
+    ],
+    "sentence_known_audio_ids": [
+     "7b2b848c-ece0-4efd-8b36-48c8a4027a81",
+     "01dc3058-c6fc-48c3-9a7a-9e4aced8581f"
+    ],
+    "takeg_audio_ids": [
+     "02d46960-c2b4-4daf-ad4a-04674bcf7d25"
+    ]
+   }
+  },
+  {
+   "id": "gle_for_eng:pod-1:SC12-S010",
+   "scene": 12,
+   "sentence": 10,
+   "speaker": "Narrator",
+   "target_text": "A naoi déag. Fiche. Fiche a haon. Dé Céadaoin. Déardaoin.",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "7f7a48bc-fa5e-4d2c-9987-2474090239d3",
+     "b1ea3275-bd7d-408a-a493-1fac5b4d1bee",
+     "a04d46e1-427a-48e2-80e9-274ee764e87c",
+     "055a7c49-097c-4d9d-8625-81c4d21fec0f",
+     "9c32fc47-5f14-4109-b2b4-34c2633bf97f"
+    ],
+    "sentence_known_audio_ids": [
+     "921992cf-c3a5-4f6e-a50e-16225dcbde33",
+     "f42ba254-888d-4c1f-9d71-08ffe7480cb7",
+     "fbcfced9-cf7c-4deb-bff9-f9497b8937cd",
+     "d215b338-1ed8-4fe1-bf22-295f29ef8c12",
+     "f8fcaec1-ee17-48b1-ab32-9bf38cd71ec4"
+    ],
+    "takeg_audio_ids": [
+     "60f929cf-d938-48e6-bc0a-b9b280ccd9d5"
+    ]
+   }
+  },
+  {
+   "id": "gle_for_eng:pod-1:SC13-S002",
+   "scene": 13,
+   "sentence": 2,
+   "speaker": "Local",
+   "target_text": "Tá, tá sé thart ar deich nóiméad siúil. Téigh díreach ar aghaidh an bhóthair seo.",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice leo"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "b53c6223-2252-470c-9436-a13f54a63867",
+     "2bcbe13d-380d-4eba-9fb9-5f294cfc6aed"
+    ],
+    "sentence_known_audio_ids": [
+     "5c3d329d-cbea-4aa2-9696-634d889d3a25",
+     "38ac70f6-8f3a-4cad-8b86-6a4774dcf468"
+    ],
+    "takeg_audio_ids": [
+     "14739a14-891b-409c-afc0-cbb3bdb2438a",
+     "9bcff660-59be-4eee-ab41-88a3759a0b6d"
+    ]
+   }
+  },
+  {
+   "id": "gle_for_eng:pod-1:SC13-S008",
+   "scene": 13,
+   "sentence": 8,
+   "speaker": "Tourist",
+   "target_text": "Iontach. Agus an bhfuil meaisín airgid in aice láimhe?",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice en-GB-RyanNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "ba827dfd-f27b-4ab5-8fff-1eb03a8afdb6",
+     "68c52181-a32e-477d-a2db-fc7c38f37d1a"
+    ],
+    "sentence_known_audio_ids": [
+     "8532498d-07cb-4297-a5c6-9bc3d5d15b53",
+     "270ba74f-70d8-4a82-bb3c-b7efa4f9bf41"
+    ],
+    "takeg_audio_ids": [
+     "3e5edfd1-30a1-41f1-9a3e-b50673190ba4"
+    ]
+   }
+  },
+  {
+   "id": "gle_for_eng:pod-1:SC13-S010",
+   "scene": 13,
+   "sentence": 10,
+   "speaker": "Tourist",
+   "target_text": "Go raibh maith agat go mór. Bhí tú an-chabhrach ar fad.",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice en-GB-RyanNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "d30720b1-4c47-4658-8f79-7118fa5757bd",
+     "7a3e8a20-bafc-49b4-988c-ef36c8fc2b76"
+    ],
+    "sentence_known_audio_ids": [
+     "111500cc-2861-4662-970f-aa5034bebe71",
+     "438a35ac-cb3e-41ea-8fc2-c73edb17dd4b"
+    ],
+    "takeg_audio_ids": [
+     "98721a4f-7cb6-407f-a266-7af77701aa78"
+    ]
+   }
+  },
+  {
+   "id": "gle_for_eng:pod-1:SC13-S011",
+   "scene": 13,
+   "sentence": 11,
+   "speaker": "Narrator",
+   "target_text": "Tríocha. Daichead. Caoga. Dé hAoine. Dé Sathairn.",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "53672b65-c351-45cb-a060-b646cea0a73d",
+     "2543f604-d5c7-4e57-8a08-62b3654b9039",
+     "905578e9-fefe-4ba7-baab-a1398d031543",
+     "21394c0a-e5dd-4ce8-aa28-2d784f9bbd7a",
+     "41bf3055-df03-4d51-80c0-d7522cd48521"
+    ],
+    "sentence_known_audio_ids": [
+     "45b5709b-368c-4fd7-b033-68281f0dcd59",
+     "420390ae-4a90-44cd-8080-db8f6ce907a1",
+     "044c618b-8eb9-4e9a-859f-0ec574030ddb",
+     "a99e9b8d-36fe-4c45-b94d-2c35a6168bd3",
+     "5143b05b-6b6c-43dd-b434-20313d3195ee"
+    ],
+    "takeg_audio_ids": [
+     "1d082283-df59-427b-8e21-8db83bd7d831"
+    ]
+   }
+  },
+  {
+   "id": "gle_for_eng:pod-1:SC14-S001",
+   "scene": 14,
+   "sentence": 1,
+   "speaker": "Passenger",
+   "target_text": "Dia duit. An féidir leat mé a thabhairt go dtí an stáisiún traenach, le do thoil?",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "6343dfe7-bbff-4d4b-924c-3a061d14dc5b",
+     "2c1030e3-6383-4809-9a96-0b0a9acf93db"
+    ],
+    "sentence_known_audio_ids": [
+     "c36d9be2-164c-4f75-8646-05bef3c601db",
+     "f68098e3-4e30-4a46-bd14-82aaf63da7d7"
+    ],
+    "takeg_audio_ids": [
+     "cc8fedc5-5efd-4db9-bfa8-7e1d56757f7d"
+    ]
+   }
+  },
+  {
+   "id": "gle_for_eng:pod-1:SC14-S002",
+   "scene": 14,
+   "sentence": 2,
+   "speaker": "Driver",
+   "target_text": "Is féidir, ar ndóigh. B'fhéidir go dtógfaidh sé tamall, tá go leor tráchta ann faoi láthair.",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "186e0fd3-21ed-4165-a9aa-d5c77c2f460f",
+     "77ff1532-18ab-44f1-af91-648ca23a7ee3"
+    ],
+    "sentence_known_audio_ids": [
+     "ea1de8ff-3331-461e-833b-02b03d931c9a",
+     "0cafbddd-42fb-4aca-a845-df3d9673b4d9"
+    ],
+    "takeg_audio_ids": [
+     "a4cdd2cc-1f8f-4385-af10-f194f5d55df9",
+     "0cc908aa-38f0-48df-b60b-f27bc781fb77"
+    ]
+   }
+  },
+  {
+   "id": "gle_for_eng:pod-1:SC14-S007",
+   "scene": 14,
+   "sentence": 7,
+   "speaker": "Driver",
+   "target_text": "Seo dúinn. Sin dhá phunt déag caoga.",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "dbf07119-9a87-470f-931b-4d204a35af60",
+     "c6ca304d-ae4e-4be1-86b5-1da119433929"
+    ],
+    "sentence_known_audio_ids": [
+     "b5e58ce6-cfb6-416e-98dd-bdbfd94df36d",
+     "2293f830-5dda-4dc8-a3a2-fc5d7ddef729"
+    ],
+    "takeg_audio_ids": [
+     "4bbd7cd3-702b-4fff-97e9-027450285bda"
+    ]
+   }
+  },
+  {
+   "id": "gle_for_eng:pod-1:SC14-S009",
+   "scene": 14,
+   "sentence": 9,
+   "speaker": "Driver",
+   "target_text": "Sea, ar ndóigh. Tá an meaisín díreach anseo.",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice leo"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "186e0fd3-21ed-4165-a9aa-d5c77c2f460f",
+     "bf6421b5-2ac0-4a14-a02f-81938bdb1e3f"
+    ],
+    "sentence_known_audio_ids": [
+     "ea1de8ff-3331-461e-833b-02b03d931c9a",
+     "67d1ab82-3ab2-42da-9262-73d355526cb3"
+    ],
+    "takeg_audio_ids": [
+     "a4cdd2cc-1f8f-4385-af10-f194f5d55df9",
+     "92422793-84ae-486f-b599-6c9fbc2aae83"
+    ]
+   }
+  },
+  {
+   "id": "gle_for_eng:pod-1:SC14-S010",
+   "scene": 14,
+   "sentence": 10,
+   "speaker": "Narrator",
+   "target_text": "Céad. Dhá chéad. Míle. Dé Domhnaigh. A dó dhéag a chlog.",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "a8af5354-ceb8-487d-acee-cf49169d2efc",
+     "df476d3e-c904-49fc-981c-b0c93dd18d01",
+     "8ebbbce6-e809-435e-a988-71b1c2c8d612",
+     "b6992c78-dfc8-467c-802b-4ebd6fab7d84",
+     "cabbe047-a66a-4a0f-82f7-33367662b0e3"
+    ],
+    "sentence_known_audio_ids": [
+     "7ce25f89-3b12-4d58-9ef3-8c303bef40c0",
+     "d70b1117-f6ec-46ef-add7-7f64533940c9",
+     "850512ab-93c8-46bb-a922-b945bc8858da",
+     "e141fb67-a6df-403a-93ea-55599a6883d9",
+     "9c0f125d-bd04-4180-9e49-b783c58295db"
+    ],
+    "takeg_audio_ids": [
+     "0078737d-f452-423a-9616-0a2142b8ac9e"
+    ]
+   }
+  },
+  {
+   "id": "gle_for_eng:pod-1:SC15-S001",
+   "scene": 15,
+   "sentence": 1,
+   "speaker": "Learner",
+   "target_text": "Cá mhéad atá sin?",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "e5319802-7dfb-44fc-8140-4dc5ca1092e9",
+     "9db93c65-74bd-43c2-8c51-a02c2340036b"
+    ],
+    "sentence_known_audio_ids": [
+     "17afa70b-972b-4194-8be2-1117a6e927eb",
+     "e89b9dbb-5c07-41cb-89b5-a2c40a0a10f4"
+    ],
+    "takeg_audio_ids": [
+     "2bb2c787-4b61-4ecb-8e1f-f16dc197f268",
+     "9aba48d7-a91f-405e-becd-41d6ee3d1eec"
+    ]
+   }
+  },
+  {
+   "id": "gle_for_eng:pod-1:SC15-S002",
+   "scene": 15,
+   "sentence": 2,
+   "speaker": "Learner",
+   "target_text": "An féidir leat a rá liom cá mhéad atá sin?",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "fc1922de-06db-4d70-b0e4-5bdd106b7b67",
+     "d7068456-12a7-463e-9b30-490cff350752",
+     "df1d7a30-d24e-49eb-955e-d67b9a6510f8"
+    ],
+    "sentence_known_audio_ids": [
+     "2ee5d4e5-48e9-4889-9fd0-0a8e8e7b7d24",
+     "e36823f6-5b0f-48de-80e3-05e14b739db8",
+     "57edc4dd-2d4a-4858-98d6-07d9b21045e3"
+    ],
+    "takeg_audio_ids": [
+     "e5fc140d-be62-4668-83c8-2c8acc8f7b48",
+     "b9128999-9348-4586-81bf-7a7b268d7894",
+     null
+    ]
+   }
+  },
+  {
+   "id": "gle_for_eng:pod-1:SC15-S003",
+   "scene": 15,
+   "sentence": 3,
+   "speaker": "Learner",
+   "target_text": "Cá mhéad a chosnaíonn sé tacsaí a fháil isteach go dtí an baile mór?",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "b3ea8890-4667-4e58-849f-068da6ef06a5",
+     "621699b4-1eed-4ff1-b4bb-7336bcfabe87",
+     "8d433ce2-ce5b-493b-ac7c-315c55dd0cfc"
+    ],
+    "sentence_known_audio_ids": [
+     "23c47dec-f4af-44c5-8b8b-945fb8f4cc65",
+     "a65c7467-5f9d-4fa7-8468-33a24448bbe3",
+     "62bf7e3d-11e3-4ce8-a681-6730e6680e26"
+    ],
+    "takeg_audio_ids": [
+     "fa7c24bc-ef8e-47f1-bf1b-10a379ced7e3",
+     "9d2a8ab9-846b-4af9-bc1e-1bc3c93ad6fa",
+     "f3c7ca0b-404d-4d43-b971-b2e4af08d1ed"
+    ]
+   }
+  },
+  {
+   "id": "gle_for_eng:pod-1:SC15-S004",
+   "scene": 15,
+   "sentence": 4,
+   "speaker": "Learner",
+   "target_text": "Cá mhéad a chosnaíonn sé bus a fháil isteach go dtí an baile mór?",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "f91d8752-dfd0-45d5-a450-0b5b5b4e7f9f"
+    ]
+   }
+  },
+  {
+   "id": "gle_for_eng:pod-1:SC15-S005",
+   "scene": 15,
+   "sentence": 5,
+   "speaker": "Learner",
+   "target_text": "Cá háit ar féidir linn bus a fháil?",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "046b80b8-85d4-4c4c-b3a4-48daecd81145",
+     "3b67af8c-8254-4bc2-ae93-718f9df4f825",
+     "37f43071-2935-4dbe-8117-8745672d1d74",
+     "ba0e5f7b-c300-46bd-a808-151469fa095e"
+    ],
+    "sentence_known_audio_ids": [
+     "7d5f5ecb-3c97-44b0-b00f-41aee4ae3c6b",
+     "194afd49-14ef-43cc-9a2c-65f4ce73d1b2",
+     "6cddf707-9d58-4129-b08e-b291406330b6",
+     "985ff74b-c4ee-4061-821b-2560b0e031bc"
+    ],
+    "takeg_audio_ids": [
+     "ef87c81a-21ca-4b69-8d74-2be2751552aa",
+     "6ece09ad-de20-43b5-84e9-2877dea8bb92",
+     "f912ce1e-0897-46d8-9886-4c3dc7955d9a",
+     "3f3bdf96-76ec-4f1a-b163-a6c03bdb4482"
+    ]
+   }
+  },
+  {
+   "id": "gle_for_eng:pod-1:SC15-S006",
+   "scene": 15,
+   "sentence": 6,
+   "speaker": "Learner",
+   "target_text": "Cá háit ar féidir linn tacsaí a fháil?",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "80de465d-7724-4685-82d6-628fdff83032",
+     "3a71f8e1-ad35-4445-a4b8-57234d6f016a",
+     "2162b0d9-ce41-4118-b8e2-8dd140147632"
+    ],
+    "sentence_known_audio_ids": [
+     "c97a5a3b-4f5d-4dfc-8acd-97e3103fea1c",
+     "af9bdc02-5e62-4298-baf8-25acc54978ac",
+     "67cb8dd0-29c3-43f8-9716-5fdb042e305f"
+    ],
+    "takeg_audio_ids": [
+     "ba134a61-f939-40fe-8b65-c0e851c90aee",
+     null,
+     "923264db-d3e9-432f-a3be-3aa492b04445"
+    ]
+   }
+  },
+  {
+   "id": "gle_for_eng:pod-1:SC15-S007",
+   "scene": 15,
+   "sentence": 7,
+   "speaker": "Learner",
+   "target_text": "Ceithre thicéad singil go dtí an baile mór, le do thoil.",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "cc040cfa-a73f-4abb-aa0c-4aca288add09",
+     "629dfaaa-5c84-4284-8bb5-c39af42d42b6"
+    ],
+    "sentence_known_audio_ids": [
+     "4de4cdd7-ce25-4b92-958c-c52af7e95dd0",
+     "b483e611-31a5-4779-bccb-75849a8686bd"
+    ],
+    "takeg_audio_ids": [
+     "6a91895c-2ba3-4345-bdeb-80b3e5a2bfa9",
+     "170f49c9-5aff-49d8-a879-981ba91d7309"
+    ]
+   }
+  },
+  {
+   "id": "gle_for_eng:pod-1:SC15-S008",
+   "scene": 15,
+   "sentence": 8,
+   "speaker": "Learner",
+   "target_text": "Dhá thicéad fillte go dtí an baile mór, le do thoil.",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "bd159ab4-633d-4be3-a6a6-76aa115cd12f",
+     "87692d25-c5cc-4b8d-8530-e526771edea0",
+     "d0b8969b-d168-4b60-9141-8546a3fbd53c"
+    ],
+    "sentence_known_audio_ids": [
+     "091b680c-c6ab-4271-a8af-356df25f7ac7",
+     "d784ed01-4f00-43c2-af89-2aff5025ff44",
+     "454e7a65-3392-4b73-877e-df5d874ffa46"
+    ],
+    "takeg_audio_ids": [
+     "41c37e91-5e36-4bba-b726-20d2f686c64d",
+     "dccf72f4-01df-48b7-a016-833c01a82792",
+     "7ce9a16b-1cf4-4b41-bc71-212a556d2603"
+    ]
+   }
+  },
+  {
+   "id": "gle_for_eng:pod-1:SC15-S009",
+   "scene": 15,
+   "sentence": 9,
+   "speaker": "Learner",
+   "target_text": "Is fearr liom iarracht a dhéanamh do theanga a labhairt, sílim go bhfuil sé béasach.",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "ebb7dfb0-92a4-414b-aca5-6c01731bb5d5",
+     "40cc4067-c9ea-4278-bbd5-bceb439273fe",
+     "ad01df82-8737-4129-926c-9573d37bb7b5",
+     "71d94603-e54b-47ae-8f06-e18ac24062a8"
+    ],
+    "sentence_known_audio_ids": [
+     "53231f82-ff67-45ac-84f8-3ecbb7e876a0",
+     "6661f7d9-cc31-48a0-ae71-f9fb4f8d4ab2",
+     "36b33117-15d3-461c-ae0e-1e46dbc1c866",
+     "d553340b-5888-4e2b-94fa-5d8b86acc414"
+    ],
+    "takeg_audio_ids": [
+     "99f72379-841b-49b1-88f3-341bad594365",
+     "60fc6386-b863-4263-9dc2-1075413abcd5",
+     "cddd5bc1-311b-4e37-9b6c-ac80408c7657",
+     "e74b1747-7c12-4729-bea6-cc5218a45fb7"
+    ]
+   }
+  },
+  {
+   "id": "gle_for_eng:pod-1:SC15-S010",
+   "scene": 15,
+   "sentence": 10,
+   "speaker": "Learner",
+   "target_text": "Tá brón orm, ní féidir liom labhairt go han-tapa.",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "650ec378-fc0d-4cf7-a7b0-19ee3223dd90",
+     "6119709f-9a1c-485a-83cb-0bbd9412294b",
+     "ae21a12f-73a9-404d-ae8b-31677ffb120b"
+    ],
+    "sentence_known_audio_ids": [
+     "6f248f1f-8704-495f-8d19-918cda8c4d62",
+     "08c5059c-9b34-452c-ade3-48bbde438fc9",
+     "6fe80a2b-dda8-4deb-9af1-d0b97ac19d08"
+    ],
+    "takeg_audio_ids": [
+     "6c07a25a-e763-4372-97e7-4833048c270e",
+     "4f38e7ee-33f7-4b4a-ad05-dc8f51d500e6",
+     "7959c1f6-49d9-4705-ad85-859f146279df"
+    ]
+   }
+  },
+  {
+   "id": "gle_for_eng:pod-1:SC15-S011",
+   "scene": 15,
+   "sentence": 11,
+   "speaker": "Narrator",
+   "target_text": "Céad míle. Seasca. Seachtó. A haon a chlog. A haon déag a chlog.",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "4f1ba610-c866-4098-bbd5-a9a51ad73a10",
+     "8a756b98-8eda-479a-91b3-aec3f0e94610",
+     "3478fd13-0dc4-47c7-8938-4e8cb96d5087"
+    ],
+    "sentence_known_audio_ids": [
+     "ec6f2e56-9ddd-468e-9378-717ffaca2fa4",
+     "0ee01b8c-eb17-4b26-88f0-5f6c12c7798b",
+     "93ebae85-98b2-47d2-ae9e-0d29c99002a4"
+    ],
+    "takeg_audio_ids": [
+     "650cdd37-d66d-48d8-9390-9a61cb455d24",
+     "dc04d1da-5da9-4b23-8e5b-05c8cd3eee5d",
+     "cb8fd20f-1556-4a4b-80d3-a13ffb422951"
+    ]
+   }
+  }
+ ]
+}

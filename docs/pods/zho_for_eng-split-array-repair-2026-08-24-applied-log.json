@@ -1,0 +1,3307 @@
+{
+ "pod": "zho_for_eng:pod-1",
+ "course": "zho_for_eng",
+ "mode": "applied",
+ "generated_at": "2026-08-24T11:23:52.164Z",
+ "rows_total": 231,
+ "rows_repaired": 121,
+ "cast": {
+  "target": [
+   "33g9t0jl",
+   "jpi39icg"
+  ],
+  "known": [
+   "bedd6226",
+   "gfzdpspr5fdp"
+  ]
+ },
+ "by_scene": {
+  "1": 1,
+  "2": 2,
+  "3": 3,
+  "4": 1,
+  "5": 2,
+  "6": 12,
+  "7": 13,
+  "8": 14,
+  "9": 17,
+  "10": 10,
+  "11": 13,
+  "12": 9,
+  "13": 5,
+  "14": 8,
+  "15": 11
+ },
+ "rows": [
+  {
+   "id": "zho_for_eng:pod-1:SC01-S003",
+   "scene": 1,
+   "sentence": 3,
+   "speaker": "Neighbour",
+   "target_text": "我很好，谢谢你。你要去上班吗？",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice leo"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "3fab2a3a-609e-48e3-8b5a-2f2fded7e42a",
+     "f50f51f8-1fad-4f18-a5ab-3540c2c40566"
+    ],
+    "sentence_known_audio_ids": [
+     "e4569c45-e767-4595-8d1b-8c7e600d7bd1",
+     "7107ec2f-0549-49e8-afa9-a665d62b6e2a"
+    ],
+    "takeg_audio_ids": [
+     "9cf8650f-8bfe-42f7-8b62-44657dc8ca20",
+     null
+    ]
+   }
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC02-S001",
+   "scene": 2,
+   "sentence": 1,
+   "speaker": "Sarah",
+   "target_text": "麻烦一下，这个位子有人坐吗？",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "33aa7e0a-6ae6-4dc9-bb1a-6ea125a48ecd"
+    ]
+   }
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC02-S002",
+   "scene": 2,
+   "sentence": 2,
+   "speaker": "Passenger",
+   "target_text": "没有，空着呢。请坐。",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice ara",
+    "sentence_known_audio_ids: off-cast voice en-GB-SoniaNeural",
+    "takeg_audio_ids: off-cast voice ara"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "b5a40b6b-e816-4339-b7d5-e373d3216d25",
+     "9879b786-c70b-4d58-b746-b0c313a40e31"
+    ],
+    "sentence_known_audio_ids": [
+     "bcf9c3c1-8f01-45ff-b2ce-dda03ded0768",
+     "b6dbe8df-2b47-4c92-96a3-5a1f32b468c1"
+    ],
+    "takeg_audio_ids": [
+     "24d6490f-0e3c-4480-9f02-c443c6997177",
+     null
+    ]
+   }
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC03-S001",
+   "scene": 3,
+   "sentence": 1,
+   "speaker": "Barista (3 pm)",
+   "target_text": "下午好。需要点什么？",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice en-GB-HollieNeural/azure_en-GB-HollieNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "33e38312-da96-4ea7-8372-ab58b56ae563",
+     "bef849f7-53b4-4b96-bb7e-6c4b39e7ce80"
+    ],
+    "sentence_known_audio_ids": [
+     "4aaf76be-2694-435f-9a8e-8db27b0646a8",
+     "0e4ea416-c1f4-4ee3-bf1c-273c5bf148f1"
+    ],
+    "takeg_audio_ids": [
+     "d96c49cd-a03e-448d-bc31-cf574d42748a"
+    ]
+   }
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC03-S002",
+   "scene": 3,
+   "sentence": 2,
+   "speaker": "Sarah",
+   "target_text": "下午好。我想要一杯咖啡，谢谢。加牛奶但不加糖。外带。",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "213e3cc5-9248-41f4-a264-e621053a1706",
+     "26309425-25d0-46e0-8be6-cc4562f72d7c",
+     "4b069359-f845-4173-8250-06fd8a7d8b4e",
+     "e1c7717c-e854-45d3-8f03-3b5660365f09"
+    ],
+    "sentence_known_audio_ids": [
+     "c4473c65-6081-422f-a1c1-e9cb5d45a635",
+     "a99897d5-558f-42fd-a904-89a59f1d74a3",
+     "4a011c53-1c72-4801-ba63-6d6efc4afd12",
+     "3c046754-08ff-4947-b74a-a56d56734116"
+    ],
+    "takeg_audio_ids": [
+     "898031d9-b170-4bb2-bc82-33dd25fe9b51",
+     "e80e8f6a-93ff-4da6-9dc1-b14c563a1b9f",
+     null
+    ]
+   }
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC03-S003",
+   "scene": 3,
+   "sentence": 3,
+   "speaker": "Sarah",
+   "target_text": "你们有吃的吗？",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "071f91a2-d120-4fd7-bc51-343323a5441d",
+     "40793d1f-6c4b-448a-9198-7226375dfb53"
+    ],
+    "sentence_known_audio_ids": [
+     "1ec29526-dde4-4dd7-bb9d-afc342d85c38",
+     "66e3e9f7-fa57-4c4c-a58b-a2630ea2a951"
+    ],
+    "takeg_audio_ids": [
+     "5b84e9d2-e695-4e07-b39a-5dada2f5b66d"
+    ]
+   }
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC04-S003",
+   "scene": 4,
+   "sentence": 3,
+   "speaker": "Friend",
+   "target_text": "不行，不好意思，我明天有事。不过我们周六聊吧。回见。",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice leo"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "3bb8f9e5-21cb-4f57-ac9c-db273464c658",
+     "20173b35-b354-4153-975b-b79a261997f8",
+     "1ebd0398-956c-49a4-9287-c5b0444d8bc3"
+    ],
+    "sentence_known_audio_ids": [
+     "fdc91df7-5446-4554-9c87-15a3865bbb71",
+     "b05e95a1-98f4-483a-9fa3-c3ce1e0ec244",
+     "b93c7a24-3427-492a-801f-b31a8852772d"
+    ],
+    "takeg_audio_ids": [
+     "abba4f32-02f8-41ee-91a2-a54f45a8c228",
+     null,
+     null
+    ]
+   }
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC05-S001",
+   "scene": 5,
+   "sentence": 1,
+   "speaker": "Neighbour (10:30 pm)",
+   "target_text": "晚上好，莎拉。你今天忙了一整天吗？",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "1143a27a-a2ec-4da7-badb-e219b007df03",
+     "e2ff28b6-263a-4233-bcb6-1e12da36a6d5"
+    ],
+    "sentence_known_audio_ids": [
+     "bb25b724-495c-430d-9bd4-1b4b747fe23f",
+     "4bfa1847-0bbe-4799-9516-09b420e49ec4"
+    ],
+    "takeg_audio_ids": [
+     "e0d39e1b-8e97-40bb-9b6b-ba54f7dcaa65",
+     "330dd10a-bbb7-4908-90e9-93970d4293b0"
+    ]
+   }
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC05-S002",
+   "scene": 5,
+   "sentence": 2,
+   "speaker": "Sarah",
+   "target_text": "是啊，很累。我现在非常累了。晚安，明天见。",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "799f14d6-c3ce-4f73-8b1a-49c638140eb8",
+     "09a320cf-828e-441a-8af7-48300ed6ad47",
+     "a1632826-bb41-4ecf-b6b5-ce50e027ae29",
+     "b7282cf9-a7d7-4506-bef9-07c66e05cbde"
+    ],
+    "sentence_known_audio_ids": [
+     "09eb1071-f670-42d1-8ff2-f2fee70b0987",
+     "29327ffb-d042-422b-a014-39db562f6a0d",
+     "6a064b92-63bb-4b48-b177-09cce951e3e7",
+     "19ed48d3-f8c5-4c39-8746-65c337e44073"
+    ],
+    "takeg_audio_ids": [
+     "138737e3-cfd5-4aa7-a834-1372a81ed17f",
+     "5a92b94d-57ae-435b-aba7-9b5e46835561",
+     "89e8384f-e99d-4836-8259-489604964d01"
+    ]
+   }
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC06-S001",
+   "scene": 6,
+   "sentence": 1,
+   "speaker": "James",
+   "target_text": "麻烦一下。你好。你叫什么名字？",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice leo"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "d0e285eb-4b31-46bf-abd3-00418b9caf6d",
+     "426d91ed-2d4a-4e58-ae53-fff17cb660b2",
+     "3dd70af7-f47c-4df5-8bf5-13d20af02a73"
+    ],
+    "sentence_known_audio_ids": [
+     "28968d6f-6035-41fb-821d-268bf31fc74a",
+     "cddc80db-5a21-490d-84b2-2db75e7bff4d",
+     "5fd4b21a-fd83-465e-8ab9-c50567a503f9"
+    ],
+    "takeg_audio_ids": [
+     "b6e3f223-0994-4686-ae0c-a81950c37ed7"
+    ]
+   }
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC06-S002",
+   "scene": 6,
+   "sentence": 2,
+   "speaker": "Anna",
+   "target_text": "我叫安娜。你呢？",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice ara",
+    "sentence_known_audio_ids: off-cast voice en-GB-SoniaNeural",
+    "takeg_audio_ids: off-cast voice ara"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "3e2bbe94-00f5-42a1-b587-b748003f2d7f",
+     "9ab4a39c-b37f-4778-b99b-a84553a305c8"
+    ],
+    "sentence_known_audio_ids": [
+     "4d0aa0aa-6c7c-4ae8-af82-3e846efa2a94",
+     "cad51a5c-decb-4a63-adab-48bc660687a2"
+    ],
+    "takeg_audio_ids": [
+     "f1c4f42e-4beb-4e3a-8232-fc07dfa4c021"
+    ]
+   }
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC06-S003",
+   "scene": 6,
+   "sentence": 3,
+   "speaker": "James",
+   "target_text": "我叫詹姆斯。很高兴认识你。",
+   "clear": [
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice leo",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "87d9e8ee-08bd-4f47-8e20-229a70e5c58a",
+     "9ece7cab-5761-4965-94a3-8855b69166f8"
+    ],
+    "sentence_known_audio_ids": [
+     "778b730b-642b-4847-95ff-8b983d2e69a5",
+     "76296e3c-120b-4ea7-861b-339ebb193f5d"
+    ],
+    "takeg_audio_ids": [
+     "451cb385-831e-479e-a899-f8d51c835936",
+     "a573382c-7997-4a97-9aa8-c0e28bb40ba6"
+    ]
+   }
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC06-S004",
+   "scene": 6,
+   "sentence": 4,
+   "speaker": "Anna",
+   "target_text": "我也很高兴认识你。你是哪里人？",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice ara",
+    "sentence_known_audio_ids: off-cast voice en-GB-SoniaNeural",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "1b42afc1-c7c3-448e-b571-3fd568acb9ab",
+     "ae6e1037-62e6-4491-b4ef-e9aacc6da411"
+    ],
+    "sentence_known_audio_ids": [
+     "7be412a6-ddbc-4581-8603-ca0fe3deb747",
+     "ef6078d6-3c8c-4636-903a-24543f7558bd"
+    ],
+    "takeg_audio_ids": [
+     "adad17e7-25b2-4ef6-82e5-2fed2bb49c50",
+     null
+    ]
+   }
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC06-S005",
+   "scene": 6,
+   "sentence": 5,
+   "speaker": "James",
+   "target_text": "我是曼彻斯特人，但我现在住在伦敦。你呢？",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice leo"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "bdb87ac5-aff6-4013-aa40-f9ab34d571f6",
+     "56556b68-14ec-4694-bc4c-4675f6a5d712"
+    ],
+    "sentence_known_audio_ids": [
+     "3ddc9e86-efee-4d5c-943e-f0cdb5a97c63",
+     "56dde5ca-327a-4297-9fb4-06ab081514b1"
+    ],
+    "takeg_audio_ids": [
+     "6fc78d7a-ddbf-41d3-9856-b99ee61844ba",
+     null
+    ]
+   }
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC06-S006",
+   "scene": 6,
+   "sentence": 6,
+   "speaker": "Anna",
+   "target_text": "我是法国人。我来这里两年了。",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice ara",
+    "sentence_known_audio_ids: off-cast voice en-GB-SoniaNeural",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "4255c91a-2d48-4166-b071-76b087ac43a5",
+     "b663f943-5a9b-4011-8c35-afb2582007ce"
+    ],
+    "sentence_known_audio_ids": [
+     "f8ab3f73-52f6-4951-9841-c72a884d4d44",
+     "5a1a99d3-8deb-4eb0-946c-fc127b431344"
+    ],
+    "takeg_audio_ids": [
+     "d69b3486-4432-453d-935e-0f90945e183b"
+    ]
+   }
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC06-S007",
+   "scene": 6,
+   "sentence": 7,
+   "speaker": "James",
+   "target_text": "这是一座很美的城市。你是做什么工作的？",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice leo"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "e3a474b9-1f73-422b-bd75-b994a541b8da",
+     "7cf07ce0-68a9-47a3-9cb4-b1a210d3f385"
+    ],
+    "sentence_known_audio_ids": [
+     "2a947421-c219-4c4e-8507-fe0055fab787",
+     "9854c51f-a13c-4b3a-a9e3-e24b64fe340d"
+    ],
+    "takeg_audio_ids": [
+     "4d8a6329-a1cc-48d1-95ee-7eb1c6b8e226"
+    ]
+   }
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC06-S008",
+   "scene": 6,
+   "sentence": 8,
+   "speaker": "Anna",
+   "target_text": "我是护士，在附近的医院工作。你呢？",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice ara",
+    "sentence_known_audio_ids: off-cast voice en-GB-SoniaNeural",
+    "takeg_audio_ids: off-cast voice ara"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "b352c07d-a7f2-4a1e-9e0e-7153882565c5",
+     "9ab4a39c-b37f-4778-b99b-a84553a305c8"
+    ],
+    "sentence_known_audio_ids": [
+     "79d0d48d-d7cd-4d97-815b-f0081e7ce42c",
+     "cad51a5c-decb-4a63-adab-48bc660687a2"
+    ],
+    "takeg_audio_ids": [
+     "a7b77e2c-6ce0-4b24-b95b-d20a93e48f3d",
+     null
+    ]
+   }
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC06-S009",
+   "scene": 6,
+   "sentence": 9,
+   "speaker": "James",
+   "target_text": "不好意思，我没听懂。我在学中文。你能再说一遍吗，说慢一点？",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice leo"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "66afb2bc-97f9-4907-8338-901d57d5240f",
+     "3e19e7e1-bf7f-4a69-b9bb-965b10e10260",
+     "2e3ccdeb-90f2-4524-8215-3d8f9a98bc6c"
+    ],
+    "sentence_known_audio_ids": [
+     "3b0ce705-e483-4621-90bc-1c88a9757404",
+     "a9ec76f1-8133-4be3-a71d-2c224e086d54",
+     "3e1b1e03-b7af-48c6-a638-54cc8c04e966"
+    ],
+    "takeg_audio_ids": [
+     "5ac9c9a3-052b-4dee-ad8a-824326af33bf",
+     null,
+     "f8f11264-b6a9-4ec5-908f-80ddcc8f2658"
+    ]
+   }
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC06-S010",
+   "scene": 6,
+   "sentence": 10,
+   "speaker": "Anna",
+   "target_text": "当然可以。我是护士。我在医院工作。医院就在附近。那你是做什么工作的？",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice ara",
+    "sentence_known_audio_ids: off-cast voice azure_en-GB-SoniaNeural/en-GB-SoniaNeural",
+    "takeg_audio_ids: off-cast voice ara"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "244ef0e9-33b3-4cca-88ee-7ea60ad22b8f",
+     "133260a6-af94-450f-b8c2-7ddecd19cbc9",
+     "b685e831-74d7-4ace-8ba2-5ea2df041581",
+     "659985ad-8985-41ab-b930-3d00a1abca69",
+     "1fae6666-6998-4128-9589-f4a55e1b19da"
+    ],
+    "sentence_known_audio_ids": [
+     "1931d2a8-34f3-4cb9-9722-f969595dbb6a",
+     "0a2ab3ad-1f40-4d2a-8fe5-dc44814ec06a",
+     "ce6b71a6-1fe4-4435-81ed-d483ead82721",
+     "29b690b7-1ae3-4baf-a539-33c5b6178b6a",
+     "dae24cdb-5362-4f4b-b0f1-3b1854bf8203"
+    ],
+    "takeg_audio_ids": [
+     "0e4c12f0-0b9f-4b57-897d-ea525124063d"
+    ]
+   }
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC06-S011",
+   "scene": 6,
+   "sentence": 11,
+   "speaker": "James",
+   "target_text": "我教英语，但不是在学校教。我跟成年人一起工作。我现在和我的妻子和孩子们在这里度假。我们过得很愉快。",
+   "clear": [
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice leo",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "9f9a5d17-5026-45c7-8189-b945f8613f20",
+     "552b3125-7424-4448-8753-ba7595070444",
+     "b544e90c-236f-409a-aaf0-b25eae1900fa",
+     "3922702d-3b2e-4889-9db7-820692eaa87e"
+    ],
+    "sentence_known_audio_ids": [
+     "cd946d63-b718-48ea-a5d7-2134289143f4",
+     "fe578978-b1a9-4bb2-92bd-76f673d71e77",
+     "58b3618c-e2d4-4871-8298-6539ea11ee03",
+     "797d2070-cfc7-44d3-a7b0-3c1392433391"
+    ],
+    "takeg_audio_ids": [
+     "b7e9ae39-7343-4417-a95d-7c15549d1008",
+     null,
+     "a960bcca-e174-41ab-8389-2d003a34919e",
+     null
+    ]
+   }
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC06-S012",
+   "scene": 6,
+   "sentence": 12,
+   "speaker": "Anna",
+   "target_text": "真有意思。好，很高兴认识你。",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice ara",
+    "sentence_known_audio_ids: off-cast voice en-GB-SoniaNeural",
+    "takeg_audio_ids: off-cast voice ara"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "9682bd04-98dd-4144-95f7-3324d8a703fb",
+     "de68faff-6f89-48ac-b6de-774dfe65a269"
+    ],
+    "sentence_known_audio_ids": [
+     "244e070f-8e09-44b1-96d8-2885cd50d219",
+     "aed41ff5-4a96-4520-b167-858e768eb824"
+    ],
+    "takeg_audio_ids": [
+     "0e45105b-8550-4341-bfa0-ec5ebb7fc61d"
+    ]
+   }
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC07-S002",
+   "scene": 7,
+   "sentence": 2,
+   "speaker": "Cafe Customer 1",
+   "target_text": "我想要一杯黑咖啡，谢谢。",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "31608a7f-16e7-4382-a99e-38387ea29486"
+    ]
+   }
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC07-S003",
+   "scene": 7,
+   "sentence": 3,
+   "speaker": "Cafe Barista",
+   "target_text": "你要中杯还是大杯？",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "582c067d-6434-43cb-abae-a95cf7e235a6"
+    ]
+   }
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC07-S004",
+   "scene": 7,
+   "sentence": 4,
+   "speaker": "Cafe Customer 1",
+   "target_text": "我要大杯的，如果有燕麦奶的话，加燕麦奶。",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice ara",
+    "sentence_known_audio_ids: off-cast voice en-GB-SoniaNeural",
+    "takeg_audio_ids: off-cast voice ara"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "d3c5a3a6-a41d-450f-867d-7c59d9169374",
+     "74d4671a-5503-4881-9c48-0fca8288bd0b"
+    ],
+    "sentence_known_audio_ids": [
+     "624dbb11-319d-4518-9be1-46396fe21694",
+     "d35e7240-3fd8-4f63-817f-5aa8ca48ceb6"
+    ],
+    "takeg_audio_ids": [
+     "8b733301-761e-4e9e-a938-d629796f15e6"
+    ]
+   }
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC07-S005",
+   "scene": 7,
+   "sentence": 5,
+   "speaker": "Cafe Barista",
+   "target_text": "没问题。在这儿喝还是外带？",
+   "clear": [
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice en-GB-HollieNeural",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "0e3a996c-c157-4ab3-9dc8-02910997b25f",
+     "2f004599-cf64-4b9e-a914-5498a6502eb0"
+    ],
+    "sentence_known_audio_ids": [
+     "d03086d4-e7ef-4798-9f22-e558e7db7e03",
+     "8dd32b1b-a797-4ce0-9f0b-e8e86c869c30"
+    ],
+    "takeg_audio_ids": [
+     "167fc912-ca85-4699-bc2b-b5e6371e0775"
+    ]
+   }
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC07-S007",
+   "scene": 7,
+   "sentence": 7,
+   "speaker": "Cafe Customer 2",
+   "target_text": "我可以要两杯牛奶咖啡、两杯黑咖啡，还有一个那个吗？",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "5c87e847-188c-41e6-a986-e85dcf8d5c49"
+    ]
+   }
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC07-S008",
+   "scene": 7,
+   "sentence": 8,
+   "speaker": "Cafe Barista",
+   "target_text": "好的，马上来。还需要别的吗？",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice en-GB-HollieNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "be0fcf09-923d-40da-8c02-6aafd8884eaf",
+     "5822dce6-8e31-46aa-9d3d-6ebd944f5584"
+    ],
+    "sentence_known_audio_ids": [
+     "689ff630-7edb-4490-90b9-6b9c43c24d60",
+     "6a5c9f82-ddc8-4f82-82e9-3e9aaf7c1641"
+    ],
+    "takeg_audio_ids": [
+     "cf1c4006-b041-48d3-ae94-a15deaccd731",
+     null
+    ]
+   }
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC07-S009",
+   "scene": 7,
+   "sentence": 9,
+   "speaker": "Cafe Customer 2",
+   "target_text": "好的，我还可以要一杯水吗？",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "795e1216-7fdf-4b64-b1b0-9862cb471e86"
+    ]
+   }
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC07-S010",
+   "scene": 7,
+   "sentence": 10,
+   "speaker": "Cafe Barista",
+   "target_text": "一共是八英镑四十便士。",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "f12679e3-c6f5-41de-b15c-d37e684c1d0e"
+    ]
+   }
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC07-S011",
+   "scene": 7,
+   "sentence": 11,
+   "speaker": "Cafe Customer 2",
+   "target_text": "可以刷卡吗？你们有扫码付款吗？",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice eve",
+    "sentence_known_audio_ids: off-cast voice en-GB-LibbyNeural/azure_en-GB-LibbyNeural",
+    "takeg_audio_ids: off-cast voice eve"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "cf781d33-e70a-4630-a8eb-e386a3f03b7c",
+     "00156a47-4f2f-4669-9001-a6a121251a32"
+    ],
+    "sentence_known_audio_ids": [
+     "873d3c09-1e39-4286-ad59-6d6bd5378df9",
+     "02e1939a-5da1-40fe-a621-32228cf70c51"
+    ],
+    "takeg_audio_ids": [
+     "04d63d6a-33a2-419d-8b7e-613581fa32b0"
+    ]
+   }
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC07-S012",
+   "scene": 7,
+   "sentence": 12,
+   "speaker": "Cafe Barista",
+   "target_text": "当然可以，机器在这里。",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice en-GB-HollieNeural/azure_en-GB-HollieNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "3075194c-552d-4b33-a7f3-fa3ffc6623be",
+     "cc23f039-8dc7-41c0-b18a-862b8ac17d2a"
+    ],
+    "sentence_known_audio_ids": [
+     "d03086d4-e7ef-4798-9f22-e558e7db7e03",
+     "0116654f-8d9f-4e50-a331-6c8dd3ccca38"
+    ],
+    "takeg_audio_ids": [
+     "2b27d645-a01d-46ce-8193-5719ad0cc93d"
+    ]
+   }
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC07-S013",
+   "scene": 7,
+   "sentence": 13,
+   "speaker": "Cafe Customer 3",
+   "target_text": "早上好，两杯美式，再来一杯茶。",
+   "clear": [
+    "sentence_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice d18jlf6v",
+    "takeg_audio_ids: off-cast voice d18jlf6v"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "d7eb9eb3-7451-4197-80a8-b80bf4d8417e",
+     "d24ec3c7-1b34-43d5-b608-c82683a0dd99"
+    ],
+    "sentence_known_audio_ids": [
+     "4474fe43-7fed-4fc2-b31e-90914f96ba53",
+     "53ecc1b9-f89d-4d87-97ec-d3452be78756"
+    ],
+    "takeg_audio_ids": [
+     "524f5323-7567-48fc-9e83-200df02a4fe9"
+    ]
+   }
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC07-S014",
+   "scene": 7,
+   "sentence": 14,
+   "speaker": "Cafe Barista",
+   "target_text": "你们要坐下来喝吗？窗边那张桌子空着。",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: off-cast voice en-GB-HollieNeural"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "af0a9f07-718c-4f9b-8d4a-47308ec92312",
+     "ac2d83fc-dd53-4865-ada3-aa3f276927b1"
+    ],
+    "sentence_known_audio_ids": [
+     "59b5a920-edf3-4c87-beb1-4af7abe3fef3",
+     "f3d5d250-8d05-40e0-8a1b-870221e59e3d"
+    ],
+    "takeg_audio_ids": [
+     "2349b4d5-e106-48ad-86a3-34eccbd34622"
+    ]
+   }
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC07-S015",
+   "scene": 7,
+   "sentence": 15,
+   "speaker": "Narrator",
+   "target_text": "五。十。十五。红色。绿色。",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "335e0825-a019-4b7a-b0c4-4addcc3495df",
+     "f93a57cb-cdf0-4707-9616-cbf75dfe165c",
+     "3e4d5c8b-978b-4d47-a4ab-2656bd442fb3",
+     "4a0be538-2b98-487d-ad10-66004edf01a1",
+     "1edf0bdf-9e2d-4457-8c8f-ab995155321f"
+    ],
+    "sentence_known_audio_ids": [
+     "a394b0fb-8e95-4ccc-9095-d1da8db29e62",
+     "0d9b4813-0b81-4a83-9d0d-c1afde8fb163",
+     "a6065d72-737d-4533-a8be-2e7c7c080777",
+     "5141eb9e-742b-4ac2-9673-3c4cf3e124ea",
+     "8d31ab05-d687-4076-a33a-fd1dc7801c5e"
+    ],
+    "takeg_audio_ids": [
+     "81cc87a7-6d11-48c6-9ff5-9643339468ca"
+    ]
+   }
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC08-S001",
+   "scene": 8,
+   "sentence": 1,
+   "speaker": "Bartender",
+   "target_text": "晚上好。需要点什么？",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice leo"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "2546b81e-1e99-48b9-9ab2-a2a86ee71346",
+     "bef849f7-53b4-4b96-bb7e-6c4b39e7ce80"
+    ],
+    "sentence_known_audio_ids": [
+     "90a8390a-eb76-4b9f-96f2-a499778b60a2",
+     "21c78cb0-b446-418f-b2c2-e32d3be7bd57"
+    ],
+    "takeg_audio_ids": [
+     "51df8371-7e05-43a9-b282-0d34dc04c896"
+    ]
+   }
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC08-S002",
+   "scene": 8,
+   "sentence": 2,
+   "speaker": "Bar Customer 1",
+   "target_text": "我想要一品脱，谢谢。你们有什么啤酒？",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: off-cast voice en-GB-SoniaNeural",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "ef314108-7082-456f-a980-04d6fd146da3",
+     "1acc7204-6b68-470e-b98f-e5ab21ff11f9"
+    ],
+    "sentence_known_audio_ids": [
+     "8b019972-c1a4-4246-b6a6-04c728a92114",
+     "5d250d92-2ca7-43a6-b2bb-cf862a1c807e"
+    ],
+    "takeg_audio_ids": [
+     "78549ea6-9882-4a17-96af-38ab63d50805",
+     null
+    ]
+   }
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC08-S003",
+   "scene": 8,
+   "sentence": 3,
+   "speaker": "Bartender",
+   "target_text": "我们有苦啤和黑啤，都是本地产的。",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "af4461d1-3842-434c-ae0d-6dfdc801a8bb"
+    ]
+   }
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC08-S004",
+   "scene": 8,
+   "sentence": 4,
+   "speaker": "Bar Customer 1",
+   "target_text": "我想要一品脱苦啤，麻烦了。",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "f06aed79-0f52-49aa-9095-b15377b41b66"
+    ]
+   }
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC08-S005",
+   "scene": 8,
+   "sentence": 5,
+   "speaker": "Bar Customer 2",
+   "target_text": "我能要半品脱苹果酒吗？",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "6c121be4-c6e7-4351-b625-6b860e5141b1"
+    ]
+   }
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC08-S006",
+   "scene": 8,
+   "sentence": 6,
+   "speaker": "Bar Customer 3",
+   "target_text": "我能看一下酒水单吗？我想要一杯葡萄酒。",
+   "clear": [
+    "sentence_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice d18jlf6v",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "d63019ec-8d24-44fe-bf5f-177552dd87ee",
+     "bb52a19a-05cf-4491-b6b6-b674ed2abb8e"
+    ],
+    "sentence_known_audio_ids": [
+     "422906e6-80b1-4c59-96f9-6477a5e775c0",
+     "996db710-4b83-46c6-856e-96e707f56aee"
+    ],
+    "takeg_audio_ids": [
+     "5836cac4-b92b-4fd3-a45e-80b83696b24f",
+     "76c98c7c-8800-4a4a-be20-d5a20bcedebd"
+    ]
+   }
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC08-S008",
+   "scene": 8,
+   "sentence": 8,
+   "speaker": "Bar Customer 3",
+   "target_text": "我想要一大杯白葡萄酒，麻烦了。",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "e1d2e9e1-7b0c-4522-8561-1e012ac9421a"
+    ]
+   }
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC08-S009",
+   "scene": 8,
+   "sentence": 9,
+   "speaker": "Bar Customer 1",
+   "target_text": "我能要一小杯红酒吗？",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "838c1773-7c72-4120-9f03-4641f272d8a4"
+    ]
+   }
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC08-S010",
+   "scene": 8,
+   "sentence": 10,
+   "speaker": "Bar Customer 2",
+   "target_text": "我想再要两杯啤酒。",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "75a92815-476f-4adf-8590-a6e42e9b88cc"
+    ]
+   }
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC08-S011",
+   "scene": 8,
+   "sentence": 11,
+   "speaker": "Bartender",
+   "target_text": "你们今晚吃饭吗？",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "bc94b257-9621-4b38-a05d-3489254811ad"
+    ]
+   }
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC08-S012",
+   "scene": 8,
+   "sentence": 12,
+   "speaker": "Bar Customer 1",
+   "target_text": "我不确定我饿不饿。你们有菜单吗？",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice ara",
+    "sentence_known_audio_ids: off-cast voice en-GB-SoniaNeural",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "37ac2d42-3100-496c-92ea-f4112735a714",
+     "5c0639e6-36df-4ab3-81cd-a14faad93af7"
+    ],
+    "sentence_known_audio_ids": [
+     "9784ad22-b88b-47a6-b017-be5bb54dc733",
+     "26d6bf59-6b4a-497d-8384-6f113e32c1b2"
+    ],
+    "takeg_audio_ids": [
+     "2473137f-4cd1-4163-ac95-abe0a2c418e2",
+     null
+    ]
+   }
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC08-S013",
+   "scene": 8,
+   "sentence": 13,
+   "speaker": "Bartender",
+   "target_text": "有，当然可以。给你。我们的炸鱼薯条非常好。",
+   "clear": [
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice leo",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "57865ea1-e926-4acc-9b7d-ca723ce49c1d",
+     "bf7e6b9c-ce93-4122-9b0b-11b5c73a2938",
+     "6f764986-0c2c-4d5b-b811-e0cbc31489d0"
+    ],
+    "sentence_known_audio_ids": [
+     "3ea813e0-2e25-456e-9e05-2ac251b49540",
+     "4c2fd1c3-7d9a-4778-bff6-4f1d3760635c",
+     "a3260000-1c58-4abd-aeb3-5c9b3b5aed6e"
+    ],
+    "takeg_audio_ids": [
+     "23c8d180-c685-4281-8293-16b5da34f97e",
+     null,
+     "aaaf5288-b52f-4132-8298-50cd713a73cc"
+    ]
+   }
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC08-S014",
+   "scene": 8,
+   "sentence": 14,
+   "speaker": "Bar Customer 1",
+   "target_text": "我们能要一些面包吗？还有一份薯条，大家一起吃。",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice ara",
+    "sentence_known_audio_ids: off-cast voice azure_en-GB-SoniaNeural/en-GB-SoniaNeural",
+    "takeg_audio_ids: off-cast voice ara"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "d6eb86fd-19bc-421a-93af-6b40a1a1ec20",
+     "ff6645d3-5128-4acb-9df0-8f6d14342073"
+    ],
+    "sentence_known_audio_ids": [
+     "11f1e76c-13fb-4981-a001-46fe1822736c",
+     "eb900a6b-df41-4a5f-96b2-f7627bbb9f9f"
+    ],
+    "takeg_audio_ids": [
+     "a8379a1b-c438-43f5-8a4b-03a15f899b4c"
+    ]
+   }
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC08-S015",
+   "scene": 8,
+   "sentence": 15,
+   "speaker": "Bar Customer 2",
+   "target_text": "你们有三明治吗？我想要一个奶酪三明治，麻烦了。",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice eve",
+    "sentence_known_audio_ids: off-cast voice en-GB-LibbyNeural",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "c6771817-2993-41f0-87d0-732a9892044f",
+     "6d5d6521-e2ae-4998-96ee-cf1b3d8f8a32"
+    ],
+    "sentence_known_audio_ids": [
+     "1b91b7a6-f018-420d-8664-778f6eb4e022",
+     "e2ba8d2b-fff0-4170-ac59-0de6036aac7d"
+    ],
+    "takeg_audio_ids": [
+     "24938f17-a26a-476c-8993-482e5507319f"
+    ]
+   }
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC09-S001",
+   "scene": 9,
+   "sentence": 1,
+   "speaker": "Diner 1",
+   "target_text": "晚上好。我们预订了两位，名字是戴维斯。",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice ara",
+    "sentence_known_audio_ids: off-cast voice en-GB-SoniaNeural",
+    "takeg_audio_ids: off-cast voice ara"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "51968a66-2d3c-45ee-aaed-8cbe9972ee1d",
+     "b5fddf47-66e9-452f-b0e9-3143b603bc48"
+    ],
+    "sentence_known_audio_ids": [
+     "558b1b40-c145-47ce-bea0-02cffff53ade",
+     "f2267ef8-a9c5-4a55-81ef-be1ee8f94bbd"
+    ],
+    "takeg_audio_ids": [
+     "83b15ea7-3b5c-41e7-aa7d-8310b914e616"
+    ]
+   }
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC09-S002",
+   "scene": 9,
+   "sentence": 2,
+   "speaker": "Waiter",
+   "target_text": "欢迎光临。请跟我来。这是菜单。",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice leo"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "d59f9f7d-d8a4-44cd-8435-beffe236ac56",
+     "fb4502d7-df0e-419d-96d7-fe17f63fe821",
+     "c7241489-9037-4670-8cd4-a844b8a09fff"
+    ],
+    "sentence_known_audio_ids": [
+     "3733f5d7-769c-4f24-a43e-cc022208bcd7",
+     "54b3add0-fe43-432a-9f72-1767a7a63ed8",
+     "38c1669f-00eb-4a2c-b59c-dec8f35eae0c"
+    ],
+    "takeg_audio_ids": [
+     "e7834969-eee0-4926-8d22-4dc713b77824"
+    ]
+   }
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC09-S003",
+   "scene": 9,
+   "sentence": 3,
+   "speaker": "Waiter",
+   "target_text": "请问您要普通水还是气泡水？",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "38ba9394-2592-4b47-a3c0-a3613b74eff7"
+    ]
+   }
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC09-S004",
+   "scene": 9,
+   "sentence": 4,
+   "speaker": "Diner 2",
+   "target_text": "我们要一瓶气泡水，一瓶普通水，谢谢。",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "fcaf5298-c93e-4c33-a5c3-3d5596045a51"
+    ]
+   }
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC09-S005",
+   "scene": 9,
+   "sentence": 5,
+   "speaker": "Diner 1",
+   "target_text": "麻烦一下——你们有无麸质的菜吗？或者适合素食者的？",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice ara",
+    "sentence_known_audio_ids: off-cast voice en-GB-SoniaNeural",
+    "takeg_audio_ids: off-cast voice ara"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "f2a21ac6-3f17-4bdf-9613-b5a198a44aca",
+     "66bc3b36-980f-4aa0-a216-05fe01ae3748"
+    ],
+    "sentence_known_audio_ids": [
+     "250ea71f-b0b7-4057-a4d1-3092ee32ef31",
+     "a4ff18f5-0e7d-4188-acac-328100d17aca"
+    ],
+    "takeg_audio_ids": [
+     "396a1764-0a69-4b76-80b1-7f07c54bf48f",
+     null
+    ]
+   }
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC09-S006",
+   "scene": 9,
+   "sentence": 6,
+   "speaker": "Waiter",
+   "target_text": "有的，三文鱼和意式烩饭都是无麸质的。我们也有一些沙拉。",
+   "clear": [
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice leo",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "15f8b520-cbcc-4fda-b2e0-58c4ec78a718",
+     "7dc12877-6dc6-4188-9776-1c640d5a14c7"
+    ],
+    "sentence_known_audio_ids": [
+     "5ac5fd54-ef30-4c48-afe1-ed3d15fd7cc7",
+     "0e7e451c-67da-41f2-b944-d0ab7f56b5f7"
+    ],
+    "takeg_audio_ids": [
+     "fbdea49a-bdf6-4074-be51-5377d417e26d",
+     null
+    ]
+   }
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC09-S007",
+   "scene": 9,
+   "sentence": 7,
+   "speaker": "Diner 1",
+   "target_text": "那你们今晚有什么推荐的？",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "3e7dd098-2af6-4e3f-af8c-53ae7362b554"
+    ]
+   }
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC09-S008",
+   "scene": 9,
+   "sentence": 8,
+   "speaker": "Waiter",
+   "target_text": "羊肉非常好。是用慢火烹制的，加了迷迭香。",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice leo"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "97e6ffb5-3a9c-44e8-9a4e-d8f9309d3315",
+     "daa407c4-41ff-4f44-bd34-bb9ef3057486"
+    ],
+    "sentence_known_audio_ids": [
+     "626f2716-8409-4f39-9d7a-15f7957e07b6",
+     "d206e99c-2c14-47a9-b471-7d63185a26e9"
+    ],
+    "takeg_audio_ids": [
+     "53f92bd1-faa6-479e-9b33-6fe6e0691d6f"
+    ]
+   }
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC09-S009",
+   "scene": 9,
+   "sentence": 9,
+   "speaker": "Diner 1",
+   "target_text": "我要羊肉，谢谢。再加一份时蔬。",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice ara",
+    "sentence_known_audio_ids: off-cast voice en-GB-SoniaNeural",
+    "takeg_audio_ids: off-cast voice ara"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "c74a68e7-8dc3-4024-9b86-e6e4f4fd42f1",
+     "bf2d6a48-fb34-4b59-ac7d-ba459d428c5b"
+    ],
+    "sentence_known_audio_ids": [
+     "271ea22f-3804-4a5b-b522-9f4d8e5b19cd",
+     "ccb1e8be-1efa-46a0-8714-5a463acbb7d6"
+    ],
+    "takeg_audio_ids": [
+     "a8152a49-bed4-4d7f-b273-8c739da0c4ab",
+     null
+    ]
+   }
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC09-S010",
+   "scene": 9,
+   "sentence": 10,
+   "speaker": "Diner 2",
+   "target_text": "我要意式烩饭。然后先上一份小份绿色沙拉。",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice eve",
+    "sentence_known_audio_ids: off-cast voice en-GB-LibbyNeural",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "106717b5-1b61-4067-859c-b83c5bc4b7f5",
+     "143ae7d3-c4c8-45d9-a695-7faf743ee4b8"
+    ],
+    "sentence_known_audio_ids": [
+     "a80fe66f-444e-4606-b789-7027285fe21e",
+     "3e089f1f-37a5-418d-a813-c154db2b7219"
+    ],
+    "takeg_audio_ids": [
+     "c754f0e9-d0fe-41da-9be1-9a686dafc28c"
+    ]
+   }
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC09-S011",
+   "scene": 9,
+   "sentence": 11,
+   "speaker": "Waiter",
+   "target_text": "好的。那你们想喝什么？",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "0ba2a15b-da2d-4203-b5ea-f18d8101e339",
+     "5e749a12-c817-45d7-ac1a-73ef92a379b0"
+    ],
+    "sentence_known_audio_ids": [
+     "e054cb8d-20fd-4161-a87e-1498fa81521a",
+     "3d123860-3a79-4b69-9677-fb7a8ac0bf50"
+    ],
+    "takeg_audio_ids": [
+     "566883d0-ebb3-4232-9f42-dd8e5034dbbb"
+    ]
+   }
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC09-S012",
+   "scene": 9,
+   "sentence": 12,
+   "speaker": "Diner 1",
+   "target_text": "可以给我们看一下酒单吗？",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "b3927b16-1008-4f22-8ed3-782b6bd083eb"
+    ]
+   }
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC09-S013",
+   "scene": 9,
+   "sentence": 13,
+   "speaker": "Diner 2",
+   "target_text": "来一瓶本店招牌红葡萄酒吧。",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "8d0264ba-30e1-4cac-bd7f-9df56d151c6c"
+    ]
+   }
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC09-S014",
+   "scene": 9,
+   "sentence": 14,
+   "speaker": "Waiter",
+   "target_text": "好的。我马上给你们拿过来。",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: off-cast voice leo"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "0ba2a15b-da2d-4203-b5ea-f18d8101e339",
+     "ad0a40e7-16fe-4bf2-acd6-bad9074cd391"
+    ],
+    "sentence_known_audio_ids": [
+     "5c4b0cfc-986b-44d7-b946-ded7919d9ce4",
+     "43807495-4081-4093-9dcd-5a38daf74374"
+    ],
+    "takeg_audio_ids": [
+     "bd1d7dd1-6d28-4d8b-8f75-54bd2fe8bf41"
+    ]
+   }
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC09-S015",
+   "scene": 9,
+   "sentence": 15,
+   "speaker": "Waiter",
+   "target_text": "一切都还好吗？请问还需要甜点吗？",
+   "clear": [
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice leo",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "f8a5f3d8-c1a9-4258-9974-7496a789eeef",
+     "25d157ed-ce87-4071-9c60-a9e0dc35b8da"
+    ],
+    "sentence_known_audio_ids": [
+     "adcfa92b-55c1-41ec-86c8-9242d46ab213",
+     "e56ce43f-02ab-495b-a445-a83db8a569f9"
+    ],
+    "takeg_audio_ids": [
+     "b8394318-ab54-42b5-8db4-3e07e80a46fa"
+    ]
+   }
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC09-S016",
+   "scene": 9,
+   "sentence": 16,
+   "speaker": "Diner 1",
+   "target_text": "就来两杯咖啡吧，谢谢。我要无咖啡因的。",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice ara",
+    "sentence_known_audio_ids: off-cast voice en-GB-SoniaNeural",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "a9f3e18f-699f-4922-8a88-3b1642b75a5a",
+     "74463bc2-aad9-47d8-9593-2c9d7e201445"
+    ],
+    "sentence_known_audio_ids": [
+     "1afb9360-1ccf-4ee4-babd-ae587cbe87b0",
+     "5fa914de-c3f0-4ace-aa46-e119109f67d6"
+    ],
+    "takeg_audio_ids": [
+     "6f75994f-7224-411e-b646-d95650851d5b",
+     "fb67547e-881d-475e-8615-1142ba65fb35"
+    ]
+   }
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC09-S017",
+   "scene": 9,
+   "sentence": 17,
+   "speaker": "Diner 2",
+   "target_text": "还有账单，方便的时候给我们。可以分开付吗？",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice eve",
+    "sentence_known_audio_ids: off-cast voice azure_en-GB-LibbyNeural",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "fc1a4d3b-4365-44de-8465-253f484c69ed",
+     "edca9f85-a95c-4b7d-a281-b6a1a536fe23"
+    ],
+    "sentence_known_audio_ids": [
+     "0447c093-e627-4fc6-a971-a0120680f28f",
+     "0c788c0b-e47d-4ec6-b6df-76c6bec4bd63"
+    ],
+    "takeg_audio_ids": [
+     "4c4cf541-fbd9-4dae-9113-b0b98b3cbd7f",
+     null
+    ]
+   }
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC10-S001",
+   "scene": 10,
+   "sentence": 1,
+   "speaker": "Customer",
+   "target_text": "麻烦一下，请问你们有止痛药吗？",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice ara",
+    "sentence_known_audio_ids: off-cast voice en-GB-SoniaNeural",
+    "takeg_audio_ids: off-cast voice ara"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "353d4b96-33ea-4400-aa22-41e528ae1ed3",
+     "3bb64d07-0540-4b0b-92de-7f8423876cc2"
+    ],
+    "sentence_known_audio_ids": [
+     "f5f6e53b-40af-41cd-826b-831bfd617160",
+     "e7fa5609-7a27-4b18-ab11-3f14341d7e22"
+    ],
+    "takeg_audio_ids": [
+     "a2474d9a-d726-4715-8448-d06f16820692"
+    ]
+   }
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC10-S002",
+   "scene": 10,
+   "sentence": 2,
+   "speaker": "Assistant",
+   "target_text": "有的，就在那边那条走道，左手边。",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: off-cast voice eve"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "10fd5a0f-9d22-4dbe-9082-301e0ab5b34b"
+    ]
+   }
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC10-S003",
+   "scene": 10,
+   "sentence": 3,
+   "speaker": "Customer",
+   "target_text": "谢谢。那你们有没有儿童用的止痛药？",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice ara",
+    "sentence_known_audio_ids: off-cast voice en-GB-SoniaNeural",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "d35a5340-0fe0-4b69-b28e-e752b4f1bd9c",
+     "9ce29dad-d452-489c-884b-b0e8782e8cb2"
+    ],
+    "sentence_known_audio_ids": [
+     "3f7532a1-0db7-4a9f-b285-ad7333c0e4c6",
+     "331e9af6-5cf3-4aa4-9f33-eaa1f6666094"
+    ],
+    "takeg_audio_ids": [
+     "e4582540-6673-4596-a813-ac37e81b99f5"
+    ]
+   }
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC10-S004",
+   "scene": 10,
+   "sentence": 4,
+   "speaker": "Assistant",
+   "target_text": "我觉得有，但你得自己去看一下确认。",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "7046e9ed-3bf0-4709-9a78-598958bf429d"
+    ]
+   }
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC10-S005",
+   "scene": 10,
+   "sentence": 5,
+   "speaker": "Customer",
+   "target_text": "我还需要买一些防晒霜和牙膏。",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "145175f3-1676-4913-9b07-c355c858a204"
+    ]
+   }
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC10-S006",
+   "scene": 10,
+   "sentence": 6,
+   "speaker": "Assistant",
+   "target_text": "防晒霜在那边右手边，牙膏拐个弯就能看到。",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "bbb5df46-3f03-4c5e-bc25-c54fa79de25b"
+    ]
+   }
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC10-S007",
+   "scene": 10,
+   "sentence": 7,
+   "speaker": "Customer",
+   "target_text": "谢谢你，你帮了我很多，我非常感激。",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice ara",
+    "sentence_known_audio_ids: off-cast voice en-GB-SoniaNeural/azure_en-GB-SoniaNeural",
+    "takeg_audio_ids: off-cast voice ara"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "19d17ab0-2ea1-467f-998f-8d2f73893bf7",
+     "c8522cce-8d48-4b5d-91be-4a0433dcd05c"
+    ],
+    "sentence_known_audio_ids": [
+     "52109b24-b7aa-40ba-a8d1-d957a80044b1",
+     "01b8d001-8f26-4f7c-9814-7cbf79076c29"
+    ],
+    "takeg_audio_ids": [
+     "a099844f-3a3b-48e0-945d-3cb5448d90a4"
+    ]
+   }
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC10-S008",
+   "scene": 10,
+   "sentence": 8,
+   "speaker": "Assistant",
+   "target_text": "不客气。你是来这里度假的吗？你中文说得很好。",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice eve",
+    "sentence_known_audio_ids: off-cast voice en-GB-LibbyNeural",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "13b9e64e-a708-42e2-81ea-1f36a468002d",
+     "5383d806-8d6c-477b-86c4-a954e9f56bb3",
+     "e4701ba5-0ead-42f3-85eb-0644b5dc9453"
+    ],
+    "sentence_known_audio_ids": [
+     "b98cb3b4-a80c-4534-ba1d-2b2691ced6b9",
+     "4e4fed99-a11f-4b5e-8534-a3e5d747363a",
+     "f1a0d73f-1adf-4995-ab2d-5a5823b63dd5"
+    ],
+    "takeg_audio_ids": [
+     "11400744-3e30-4850-8d5c-705b81b82d5d",
+     "a71435e8-16e4-473d-8381-9fd16f3941ea"
+    ]
+   }
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC10-S009",
+   "scene": 10,
+   "sentence": 9,
+   "speaker": "Customer",
+   "target_text": "你太好了！是的，我在度假，我需要多练习才能把中文说得更好。谢谢你，再见。",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice ara",
+    "sentence_known_audio_ids: off-cast voice en-GB-SoniaNeural",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "8275ac68-e353-4a1b-aae4-d61eaac68251",
+     "8a4c876a-5898-487e-9e78-d6ddecbb083b",
+     "da6e7653-36cc-4f38-b3bc-04e591fa6fbc"
+    ],
+    "sentence_known_audio_ids": [
+     "5f4a11bc-7117-4fad-8fae-01cca10e3a43",
+     "91c9cebf-84c6-4b8a-8261-bd0924c4f2f2",
+     "21a10e44-7e7f-4e76-911a-7ee98e794b23"
+    ],
+    "takeg_audio_ids": [
+     "4919b7a1-d2e7-4433-b51f-4734f05173be",
+     "31ddf1bd-c743-4094-89db-2f708d047114"
+    ]
+   }
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC10-S010",
+   "scene": 10,
+   "sentence": 10,
+   "speaker": "Narrator",
+   "target_text": "十二。十三。十四。粉红色。灰色。",
+   "clear": [
+    "sentence_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "d8f0b3ff-9586-4e90-b440-01de40b919f4",
+     "4994840f-6d89-43e2-9b7d-44a566069524",
+     "5193b293-519d-454d-8969-14d6a154698a",
+     "b215a56f-92a9-4587-9fed-f4402ed163ae",
+     "100f1c46-ab22-4c23-982f-5e6cf7242c20"
+    ],
+    "sentence_known_audio_ids": [
+     "18059d28-b702-4f38-8d9e-8e32b58f7390",
+     "8ba4dd85-8f34-4a29-8f25-333670ee9903",
+     "571e998c-a540-4734-8969-754246c6b3fc",
+     "463cada3-1dc4-494e-aa42-90334f84d888",
+     "cc8dfa00-b288-4b21-88dc-48cb88dd1223"
+    ],
+    "takeg_audio_ids": [
+     "f1a87396-ece9-4ce9-b306-21945553dc1c"
+    ]
+   }
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC11-S001",
+   "scene": 11,
+   "sentence": 1,
+   "speaker": "Guest",
+   "target_text": "下午好。我用琼斯这个名字订了房。",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "33e38312-da96-4ea7-8372-ab58b56ae563",
+     "6337d830-1126-4be8-80b7-ffee1363da82"
+    ],
+    "sentence_known_audio_ids": [
+     "b5e36cd5-c1f2-41ef-a21f-51e534191f7e",
+     "9aa58279-f65e-4668-90ab-0aea2253b1e8"
+    ],
+    "takeg_audio_ids": [
+     "bb9e91c8-dcc5-4961-a940-162cd457c47a"
+    ]
+   }
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC11-S002",
+   "scene": 11,
+   "sentence": 2,
+   "speaker": "Receptionist",
+   "target_text": "欢迎。是的，您订了一间双人房，住三晚。我可以看一下您的证件吗？",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "fab54a9a-7246-4ed9-8032-2b68c06f7d6b",
+     "bee2b417-4376-44d4-b76e-1d7b711f2578",
+     "df739c5d-da07-4ea8-bae7-6a2f57c6861d"
+    ],
+    "sentence_known_audio_ids": [
+     "73e3b1d3-98de-4392-a951-81b7f34a0867",
+     "cfcd50e5-f25b-4c95-a9b8-8c205a0d9f37",
+     "968af55e-ff28-4f5a-bf04-61bcf7ea90f9"
+    ],
+    "takeg_audio_ids": [
+     "e98ce051-975b-4bf0-94a4-f83a250af542",
+     null
+    ]
+   }
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC11-S003",
+   "scene": 11,
+   "sentence": 3,
+   "speaker": "Guest",
+   "target_text": "当然可以。这是我的护照。",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "bc22ea0c-4349-4fbc-b1cf-4c9139e47e0d",
+     "974c0ecf-b18e-4451-a4dd-8d5ba4f465b1"
+    ],
+    "sentence_known_audio_ids": [
+     "e054cb8d-20fd-4161-a87e-1498fa81521a",
+     "80c76fa9-3ca9-4e96-b133-5df53a3be7bb"
+    ],
+    "takeg_audio_ids": [
+     "abbc1119-f24f-4c01-a921-e3eaa3692d75"
+    ]
+   }
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC11-S004",
+   "scene": 11,
+   "sentence": 4,
+   "speaker": "Receptionist",
+   "target_text": "好的。房间在三楼，709号房。",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice ara",
+    "sentence_known_audio_ids: off-cast voice en-GB-SoniaNeural",
+    "takeg_audio_ids: off-cast voice ara"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "96c65ad7-fa94-4fc5-89a6-45aaa9c6e945",
+     "45a117bd-3086-4277-a368-afc1b9666d9b"
+    ],
+    "sentence_known_audio_ids": [
+     "7009cd72-d3f9-43fb-86f5-987d9883c4e4",
+     "c0cefe1e-9d81-4098-aa82-4ee1244d8f34"
+    ],
+    "takeg_audio_ids": [
+     "55e3d468-a926-4d01-83ce-b340393e612d"
+    ]
+   }
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC11-S005",
+   "scene": 11,
+   "sentence": 5,
+   "speaker": "Guest",
+   "target_text": "房间有景观吗？",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "d794f172-31cc-45a6-8158-74d19b3440e1"
+    ]
+   }
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC11-S006",
+   "scene": 11,
+   "sentence": 6,
+   "speaker": "Receptionist",
+   "target_text": "有的，能看到花园。",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: off-cast voice ara"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "f87c69bf-0734-4d5e-b00d-1467aad0f556"
+    ]
+   }
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC11-S007",
+   "scene": 11,
+   "sentence": 7,
+   "speaker": "Guest",
+   "target_text": "早餐是几点供应？",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "34aa24c1-ca5f-48b7-a5e1-ac858e70f667"
+    ]
+   }
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC11-S008",
+   "scene": 11,
+   "sentence": 8,
+   "speaker": "Receptionist",
+   "target_text": "从七点半到十点。有水果和麦片，也有热食早餐。",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice ara",
+    "sentence_known_audio_ids: off-cast voice en-GB-SoniaNeural",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "de053334-d7f8-48cd-9e39-39abd56d382b",
+     "bc022cc6-9ad3-40a9-9b85-ea7fd518fc18"
+    ],
+    "sentence_known_audio_ids": [
+     "45416d5b-98f3-4e5c-8a7f-a835164cb0c5",
+     "54f127ac-9ae0-46d7-895b-a3d1f5b0fcf1"
+    ],
+    "takeg_audio_ids": [
+     "7e48b1dc-5f28-4939-8656-af862f31fc77",
+     "41c7267a-44ad-4491-a375-63e968e00bf5"
+    ]
+   }
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC11-S009",
+   "scene": 11,
+   "sentence": 9,
+   "speaker": "Guest",
+   "target_text": "太好了。我们可以晚一点退房吗？",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice leo"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "42babac5-b628-4873-be62-5d441405c71b",
+     "338a5016-ec06-4b0c-b484-2931e9db097b"
+    ],
+    "sentence_known_audio_ids": [
+     "0cb9b5b6-d1f2-4095-b76b-e0e0f04fbf86",
+     "6deb28af-912a-4ad9-93aa-7ae7a1f6fa11"
+    ],
+    "takeg_audio_ids": [
+     "597fe35b-b1d0-4670-887f-9cdd21f492a7"
+    ]
+   }
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC11-S010",
+   "scene": 11,
+   "sentence": 10,
+   "speaker": "Receptionist",
+   "target_text": "可以，你们可以住到中午，不收额外费用。",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: off-cast voice ara"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "22dddca7-bd20-46ca-b17e-1d06524f5beb"
+    ]
+   }
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC11-S011",
+   "scene": 11,
+   "sentence": 11,
+   "speaker": "Guest",
+   "target_text": "那wifi密码是多少？",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "3ddca9f5-5c89-46e8-8ae6-a7f6e545d7ab"
+    ]
+   }
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC11-S012",
+   "scene": 11,
+   "sentence": 12,
+   "speaker": "Receptionist",
+   "target_text": "在你房间里的欢迎卡上。祝您入住愉快。",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice ara",
+    "sentence_known_audio_ids: off-cast voice en-GB-SoniaNeural/azure_en-GB-SoniaNeural",
+    "takeg_audio_ids: off-cast voice ara"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "5056607e-07de-48ab-b2ae-661f19ad0978",
+     "ac66aabe-eb35-4014-bec6-8cf1009be204"
+    ],
+    "sentence_known_audio_ids": [
+     "86c8823d-4020-4d0d-9a47-1018052e862f",
+     "15855133-1b4c-428e-a572-a512f7e19fd4"
+    ],
+    "takeg_audio_ids": [
+     "831d166c-ee37-4648-ac40-806a03caf115"
+    ]
+   }
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC11-S013",
+   "scene": 11,
+   "sentence": 13,
+   "speaker": "Narrator",
+   "target_text": "十六。十七。十八。星期一。星期二。",
+   "clear": [
+    "sentence_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "6e0cca2e-6068-4638-827f-2d0d036dc66b",
+     "f331382b-fa25-45d6-b7cf-99e2857409e7",
+     "094c1494-9afa-469d-bc50-9cb980e46f6e",
+     "d762d686-f699-4439-82dd-bf8c26fae16e",
+     "1d6d8707-9ca4-4bcd-bac0-ec0490e122c2"
+    ],
+    "sentence_known_audio_ids": [
+     "c9be9758-0ed5-44a7-8696-55d3e653857c",
+     "919ed4e5-99c8-4f37-bca1-fb6c855bdda1",
+     "d3f58522-b9f2-49ed-930a-d1ed9d4b5591",
+     "cead4eab-cd14-4832-b455-0c48e96bfcf7",
+     "f51c40e2-72d0-4519-98aa-af21f0dfdb40"
+    ],
+    "takeg_audio_ids": [
+     "6b3b6283-ce46-474b-abf7-6fab274f498f"
+    ]
+   }
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC12-S001",
+   "scene": 12,
+   "sentence": 1,
+   "speaker": "Customer",
+   "target_text": "早上好。我感觉不太舒服——你能给我推荐点什么吗？",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice ara",
+    "sentence_known_audio_ids: off-cast voice en-GB-SoniaNeural",
+    "takeg_audio_ids: off-cast voice ara"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "3bce2869-ffe3-496d-9bb5-fa6c61b58196",
+     "66967e11-b426-4fc3-bb59-3f66ef8b6b7a"
+    ],
+    "sentence_known_audio_ids": [
+     "2dc6131f-8302-46df-bf21-8fca63f8b86d",
+     "7a25ea72-4f9c-4791-b50c-7dfa479c2935"
+    ],
+    "takeg_audio_ids": [
+     "4b9807b2-2eae-4515-a1b2-d32a68bec8df"
+    ]
+   }
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC12-S002",
+   "scene": 12,
+   "sentence": 2,
+   "speaker": "Pharmacist",
+   "target_text": "当然可以。你有什么症状？",
+   "clear": [
+    "sentence_known_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "bc22ea0c-4349-4fbc-b1cf-4c9139e47e0d",
+     "8b480d03-e3e4-4a9c-b63b-478bfda0abaf"
+    ],
+    "sentence_known_audio_ids": [
+     "e054cb8d-20fd-4161-a87e-1498fa81521a",
+     "667710d0-5554-44b0-8e61-e9dc46eb3a62"
+    ],
+    "takeg_audio_ids": [
+     "2772e09c-d222-4daf-8487-5bda41fa997b"
+    ]
+   }
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC12-S003",
+   "scene": 12,
+   "sentence": 3,
+   "speaker": "Customer",
+   "target_text": "我从昨天开始就头疼，嗓子也疼。",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "a07822ba-14b6-4710-8e3a-8d3a15159403"
+    ]
+   }
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC12-S004",
+   "scene": 12,
+   "sentence": 4,
+   "speaker": "Pharmacist",
+   "target_text": "头疼的话可以试试对乙酰氨基酚，嗓子疼的话用这个含片。",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "4779c6fd-e720-45d2-a860-a237f8572796"
+    ]
+   }
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC12-S005",
+   "scene": 12,
+   "sentence": 5,
+   "speaker": "Customer",
+   "target_text": "对乙酰氨基酚多久吃一次？",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "092cd04c-c34e-4058-a981-491f2f2019ba"
+    ]
+   }
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC12-S006",
+   "scene": 12,
+   "sentence": 6,
+   "speaker": "Pharmacist",
+   "target_text": "每四到六小时吃一片，一天最多八片。",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "9886cd62-76b9-4e8e-8ddc-fe03ad9f90cf"
+    ]
+   }
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC12-S007",
+   "scene": 12,
+   "sentence": 7,
+   "speaker": "Customer",
+   "target_text": "吃东西的时候一起吃可以吗？",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "42dd6d4e-c706-4e70-8b1d-d4973904bf76"
+    ]
+   }
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC12-S009",
+   "scene": 12,
+   "sentence": 9,
+   "speaker": "Customer",
+   "target_text": "谢谢你。我还想买一盒创可贴，可以吗？",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice ara",
+    "sentence_known_audio_ids: off-cast voice en-GB-SoniaNeural",
+    "takeg_audio_ids: off-cast voice ara"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "06defa2d-c086-4fbf-8609-9177942e48cb",
+     "efa8b047-6be9-4b47-9ba3-28752ce88783"
+    ],
+    "sentence_known_audio_ids": [
+     "3f7532a1-0db7-4a9f-b285-ad7333c0e4c6",
+     "b83f7652-4f50-437c-8533-f6c6a94fdc3f"
+    ],
+    "takeg_audio_ids": [
+     "79931fdc-61cf-497a-a0db-76b43c7aa136"
+    ]
+   }
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC12-S010",
+   "scene": 12,
+   "sentence": 10,
+   "speaker": "Narrator",
+   "target_text": "19。20。21。星期三。星期四。",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "f7c929c3-d798-4309-96a3-70aa2e8abf96",
+     "9be5d429-79ab-4f62-a52d-b03e322e4ec4",
+     "277289cd-e66f-4a3c-96af-006a489e6893",
+     "85a042d3-44f9-480c-b9fc-8c19ffbf20c9",
+     "ee2f6140-8a0d-432e-b8a5-8a483ba8f8bf"
+    ],
+    "sentence_known_audio_ids": [
+     "a518ed4e-b9ab-4946-b886-be72356c51fe",
+     "92d72691-782f-4c40-9b04-49ced8a9c534",
+     "a282b64d-520f-4a97-8a4e-9d44d647434e",
+     "81fd6fc9-6ae3-4f6d-9d23-c955f70685b5",
+     "9b2e0c3a-50b8-41d9-baab-c596d6706f87"
+    ],
+    "takeg_audio_ids": [
+     "02f868c4-5866-4e79-93d3-6fc30f8273b1"
+    ]
+   }
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC13-S001",
+   "scene": 13,
+   "sentence": 1,
+   "speaker": "Tourist",
+   "target_text": "麻烦一下，你知道最近的超市怎么走吗？",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "2ad9c1ea-9c72-4a79-8713-e7c3b419c29d"
+    ]
+   }
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC13-S002",
+   "scene": 13,
+   "sentence": 2,
+   "speaker": "Local",
+   "target_text": "知道，走路大概十分钟。沿着这条路一直往前走。",
+   "clear": [
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice leo",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "6c70fb19-cf59-403f-8b39-cf6aa2c80de7",
+     "3f0ccb29-ff91-4bab-b898-bbd33b9085f5"
+    ],
+    "sentence_known_audio_ids": [
+     "d0a8ace8-437a-455c-ac82-0bf81d379657",
+     "3d4ed085-62a0-4e0a-824e-bed1e5ff3f5c"
+    ],
+    "takeg_audio_ids": [
+     "ef1be324-1377-4103-a32e-d596fcb0d11a",
+     "2d57b5f1-48a4-485d-8655-2b3297e0f9ce"
+    ]
+   }
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC13-S003",
+   "scene": 13,
+   "sentence": 3,
+   "speaker": "Tourist",
+   "target_text": "过了那个教堂吗？",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "7165ab39-ce4c-4976-af1c-0f9ed320a5e6"
+    ]
+   }
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC13-S008",
+   "scene": 13,
+   "sentence": 8,
+   "speaker": "Tourist",
+   "target_text": "太好了。附近有取款机吗？",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice d18jlf6v",
+    "sentence_known_audio_ids: off-cast voice en-GB-RyanNeural",
+    "takeg_audio_ids: off-cast voice d18jlf6v"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "49638f34-b5fb-45cf-a908-5217652ac8ae",
+     "e3fbfaaf-b2ca-4067-9a22-3cf87113e3ad"
+    ],
+    "sentence_known_audio_ids": [
+     "3ef0374b-a484-4961-a92c-ae86c58b882c",
+     "1ead013a-7405-4eb8-95d0-979fa7b91fda"
+    ],
+    "takeg_audio_ids": [
+     "16c073b5-fcff-4503-84d9-1bc3ad558741"
+    ]
+   }
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC13-S010",
+   "scene": 13,
+   "sentence": 10,
+   "speaker": "Tourist",
+   "target_text": "谢谢你，你帮了我很大的忙。",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice d18jlf6v",
+    "sentence_known_audio_ids: off-cast voice en-GB-RyanNeural",
+    "takeg_audio_ids: off-cast voice d18jlf6v"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "27b29208-ba8b-409f-a9d7-8393e2e0f25c",
+     "20548c6a-2df9-4eec-a574-e3caf350cecd"
+    ],
+    "sentence_known_audio_ids": [
+     "f2de9073-ab84-45be-8b9c-6af6ca3de769",
+     "a7af16f6-3625-4d48-ad08-4e23f5cb5bdd"
+    ],
+    "takeg_audio_ids": [
+     "aa8608cf-625e-4852-85c9-fe3cc577462c"
+    ]
+   }
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC14-S001",
+   "scene": 14,
+   "sentence": 1,
+   "speaker": "Passenger",
+   "target_text": "你好。你能送我去火车站吗？",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "566278fb-ee5d-4ca3-abdc-ea29f5eef06b"
+    ]
+   }
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC14-S002",
+   "scene": 14,
+   "sentence": 2,
+   "speaker": "Driver",
+   "target_text": "好的，当然可以。可能要花一点时间，现在路上很堵。",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "4c63807d-f686-4e25-a5e7-3774b468b179",
+     "2f64e6e8-92d7-41e8-a935-89ba0bd22682"
+    ],
+    "sentence_known_audio_ids": [
+     "3ea813e0-2e25-456e-9e05-2ac251b49540",
+     "4041418e-730e-4cb9-ac97-32830c86ce02"
+    ],
+    "takeg_audio_ids": [
+     "bb026249-9df4-4099-b2f3-303fceb4ddae",
+     "e6e4f10b-c2cc-4055-8929-b232a888d2b0"
+    ]
+   }
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC14-S003",
+   "scene": 14,
+   "sentence": 3,
+   "speaker": "Passenger",
+   "target_text": "你觉得大概要多长时间？",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "bf2e25de-4a5d-4022-ae82-9455d132387b"
+    ]
+   }
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC14-S005",
+   "scene": 14,
+   "sentence": 5,
+   "speaker": "Passenger",
+   "target_text": "你知道我在车站哪里可以买票吗？",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "fe8e211d-74d6-4541-ae12-54c70de5f987"
+    ]
+   }
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC14-S007",
+   "scene": 14,
+   "sentence": 7,
+   "speaker": "Driver",
+   "target_text": "到了。一共是十二英镑五十便士。",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "4fa05595-f9de-435b-a341-dba05e3d13b1",
+     "8143090e-bf65-419e-9e84-483d3cd3f0a2"
+    ],
+    "sentence_known_audio_ids": [
+     "a58c09e0-0080-4cee-9137-ed470c952c3a",
+     "c99c9ed4-2eca-4897-8737-fa9c635e3a5a"
+    ],
+    "takeg_audio_ids": [
+     "e8917f20-4f24-4aff-8d86-cb17ea7af8e8"
+    ]
+   }
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC14-S008",
+   "scene": 14,
+   "sentence": 8,
+   "speaker": "Passenger",
+   "target_text": "可以刷卡吗？",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "0d2a2572-c921-490a-a753-bfb59bed706b"
+    ]
+   }
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC14-S009",
+   "scene": 14,
+   "sentence": 9,
+   "speaker": "Driver",
+   "target_text": "可以，当然可以。机器就在这儿。",
+   "clear": [
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_known_audio_ids: off-cast voice leo",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "4c63807d-f686-4e25-a5e7-3774b468b179",
+     "f1453189-3e99-4896-863c-6ae54a84770e"
+    ],
+    "sentence_known_audio_ids": [
+     "3ea813e0-2e25-456e-9e05-2ac251b49540",
+     "6e54b674-d752-472a-b326-17307ec4e23e"
+    ],
+    "takeg_audio_ids": [
+     "bb026249-9df4-4099-b2f3-303fceb4ddae",
+     "971bbdc3-d5a4-4d5a-a857-7473eaf3ed8f"
+    ]
+   }
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC14-S010",
+   "scene": 14,
+   "sentence": 10,
+   "speaker": "Narrator",
+   "target_text": "一百。二百。一千。星期天。十二点。",
+   "clear": [
+    "sentence_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "6beefa7d-2ba7-4e58-a59b-ad358f037fe5",
+     "4a352d10-6029-4f02-b2ba-83ad2f3da568",
+     "90b7ebef-1adc-4edb-9ee6-0370be1d898e",
+     "08d243c5-8e5b-49c2-a8a5-e14e8565419c",
+     "77ac021f-8823-4098-a0d3-5d6fb76482fb"
+    ],
+    "sentence_known_audio_ids": [
+     "ebd539ea-b4fa-4a82-bff0-6ea0bdc6951e",
+     "f1dacde0-ffd9-4909-8272-eb1b400d2211",
+     "9dab8a6f-4b0f-4868-9af8-69bd4e0830b7",
+     "0e6c71f8-11b2-40d9-b83f-2af8428a2435",
+     "678aa8fe-78aa-4bdb-856c-bd95bca47961"
+    ],
+    "takeg_audio_ids": [
+     "d1cade0b-e6d6-4c20-97c5-13b8d3189312"
+    ]
+   }
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC15-S001",
+   "scene": 15,
+   "sentence": 1,
+   "speaker": "Learner",
+   "target_text": "那个多少钱？",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "93efba1b-2991-4bba-88e8-39047b85b603",
+     "455dddb7-22d4-4946-9938-202478be015a"
+    ],
+    "sentence_known_audio_ids": [
+     "0054f410-118f-4912-9ecc-37eded20b7fe",
+     "37d91c12-5a8d-4cea-aa2b-c7e3b135a008"
+    ],
+    "takeg_audio_ids": [
+     "11c52b64-63ac-4e22-9ba1-6c76ea0f6046",
+     "6a22681a-b941-4d21-89ea-6df401fdbd4d"
+    ]
+   }
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC15-S002",
+   "scene": 15,
+   "sentence": 2,
+   "speaker": "Learner",
+   "target_text": "你能告诉我那个多少钱吗？",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "c3cae0b3-79ad-4c78-83c2-d88707051f04",
+     "c4a70974-d902-4513-987e-5fda476e1946",
+     "5f40a815-d95c-49de-884b-fd771cd9d775"
+    ],
+    "sentence_known_audio_ids": [
+     "1c1da9d6-1814-4dbb-888f-2072a8992243",
+     "4ad5d6ba-6420-45a8-b2fb-7c0ccfe4613d",
+     "649530ca-b687-409e-b89f-343acb10529a"
+    ],
+    "takeg_audio_ids": [
+     "1e728d10-7f3e-4dc8-8bc2-0d43e104721e",
+     null,
+     "4b3ed509-e44f-45e9-b095-9ec29294eb61"
+    ]
+   }
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC15-S003",
+   "scene": 15,
+   "sentence": 3,
+   "speaker": "Learner",
+   "target_text": "打车到城里要多少钱？",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "fa8504eb-71ca-4ae2-8422-443a1a487896",
+     "dca68eac-f1b9-48f7-99a3-cabc759c1036",
+     "b729a72d-9282-4f73-8dc5-b391026faf0d"
+    ],
+    "sentence_known_audio_ids": [
+     "66336513-044e-4138-903d-9fea155af7d0",
+     "1572a698-5c5c-4569-9bc4-ef4a1eb60dac",
+     "9140f7eb-aa4a-4685-ae55-802a144f00f9"
+    ],
+    "takeg_audio_ids": [
+     "bccf79c3-4b3d-4844-a8e2-acaeed648bf2",
+     "507c1c7d-2011-45e9-891b-906582c0ec30",
+     "9aa2295c-7f62-4c35-9728-d25b452ffa91"
+    ]
+   }
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC15-S004",
+   "scene": 15,
+   "sentence": 4,
+   "speaker": "Learner",
+   "target_text": "坐公交车到城里要多少钱？",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "d1f1bb30-7c67-4613-bbc8-5ecaa4175701"
+    ]
+   }
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC15-S005",
+   "scene": 15,
+   "sentence": 5,
+   "speaker": "Learner",
+   "target_text": "我们在哪里可以坐公交车？",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "e953b059-cb0d-47cd-81aa-f1624a33ca1f",
+     "2e8b1835-63c3-4f59-b362-349bf3b0e1a2",
+     "f4a6951b-7309-466b-8ddf-4cbe6858ae3f",
+     "0507943a-8abb-4278-8315-4a63f401c3a6"
+    ],
+    "sentence_known_audio_ids": [
+     "e30027ca-ee7e-4335-85dc-64b71f25cc99",
+     "576bf532-e063-4aed-aa74-24d419ad642a",
+     "085c4389-480f-4a12-a18b-51461ff34725",
+     "453bf35b-a491-40b1-bf4b-2f56a44b4c1d"
+    ],
+    "takeg_audio_ids": [
+     "fa5cc9e1-5aa3-43e3-b01d-985296925ad8",
+     "bfbf490b-1d11-4054-b10d-4d898f5d94ed",
+     "9d3d5024-b4ba-4ba8-bc49-95a50f7283ae",
+     "4a4e9e7b-3aeb-46ac-8acb-1172430553db"
+    ]
+   }
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC15-S006",
+   "scene": 15,
+   "sentence": 6,
+   "speaker": "Learner",
+   "target_text": "我们在哪里可以打车？",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "f9667d2d-b7f6-408c-9f60-30c7f9617c80",
+     "c679e17b-d6ff-4ab6-b7f9-44c9838a675e",
+     "ec8a71c1-d46b-4307-ab71-8143da69d658"
+    ],
+    "sentence_known_audio_ids": [
+     "63739e52-a3db-4e03-a6a0-687fd90b300d",
+     "ada4b906-8f65-4e98-a6c6-a4906463d209",
+     "29c92cf5-bcbd-41d4-8fe9-53d648bf259d"
+    ],
+    "takeg_audio_ids": [
+     "d737dee7-524c-4c9d-8f3f-35902f9a5145",
+     null,
+     "e9488ab0-14cf-447f-9b1a-c939cb2e7003"
+    ]
+   }
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC15-S007",
+   "scene": 15,
+   "sentence": 7,
+   "speaker": "Learner",
+   "target_text": "请给我四张去城里的单程票。",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "b0d1dc69-5012-4f01-aa2b-b11888204230",
+     "a18d2978-69c9-4c2e-a603-8ca8c1fd6011"
+    ],
+    "sentence_known_audio_ids": [
+     "ac577c9d-2bb1-40fd-855b-ab31dcc2c64a",
+     "9245db81-57ed-41f2-9327-ae80e5060f05"
+    ],
+    "takeg_audio_ids": [
+     "1f98016f-7372-401a-94c5-03a4cd0c306f",
+     "7a7299f7-b8c7-46c0-88a2-20747e2c4b42"
+    ]
+   }
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC15-S008",
+   "scene": 15,
+   "sentence": 8,
+   "speaker": "Learner",
+   "target_text": "请给我两张去城里的往返票。",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "2b4973be-3688-434e-8743-89794e733841",
+     "b480e9d6-b2bc-43c3-8b70-45f6d7313149",
+     "8465938f-6d20-48f8-a2ad-b03b8881ba02"
+    ],
+    "sentence_known_audio_ids": [
+     "c2734047-fdd5-4763-9906-60d977188bdf",
+     "99b86e28-9119-437a-9524-02098569bcd7",
+     "24177a76-6b28-4e25-9230-4008dd70d2bb"
+    ],
+    "takeg_audio_ids": [
+     "82152252-da3e-476a-8df4-8f1a22e8feea",
+     "717ee552-f0ab-4d3a-aee9-f36af09eb0f3"
+    ]
+   }
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC15-S009",
+   "scene": 15,
+   "sentence": 9,
+   "speaker": "Learner",
+   "target_text": "我更愿意试着说你的语言，我觉得这样比较礼貌。",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "730c6470-fd76-45ad-a6ca-f3710aa0ed47",
+     "d57be43d-03c0-4bd7-8e08-86152b81053a",
+     "1c6b3b44-7e26-41b4-9080-e55a754c7e00",
+     "02dd9023-fe27-484f-bf69-1c8019989808"
+    ],
+    "sentence_known_audio_ids": [
+     "a2728b96-2991-412e-839b-650a720b53b9",
+     "4707430f-718b-4501-bae4-d008c8226350",
+     "746e35c1-cf5b-4d69-a453-751104701566",
+     "3f905e00-10c0-4f01-bf56-c1c568eab5d7"
+    ],
+    "takeg_audio_ids": [
+     "70aeb543-ac2b-40aa-89b1-f20797ebe0dd",
+     "2e76109d-38af-4223-9148-d37c3060582c",
+     "fe59071a-0fed-4e5f-abb5-72e84afe29b5",
+     "414dd51d-2bab-44ba-b5fa-d1ef06b29a12"
+    ]
+   }
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC15-S010",
+   "scene": 15,
+   "sentence": 10,
+   "speaker": "Learner",
+   "target_text": "对不起，我说得不是很快。",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "5e468e44-f1ff-42d9-a5c6-099ec04ae935",
+     "b7e12ff6-512e-4430-b777-7518bccf31c0",
+     "e7e8e5a1-4aa7-4ed2-8c22-9f8169b777e9"
+    ],
+    "sentence_known_audio_ids": [
+     "f61ba2fa-a90b-421c-b233-feea5f62b935",
+     "9126fdb3-70a6-4f73-816f-a768bd555387",
+     "fed8e5f5-e384-4fce-a4d9-c1fbff3c9536"
+    ],
+    "takeg_audio_ids": [
+     "f3d38208-f8bb-4a3f-b4dd-b4876025f45e",
+     "083efa20-7b76-4157-bcce-66af8180bf10",
+     "d6cf7c4d-a3fe-4870-9d0a-a3cd98e56620"
+    ]
+   }
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC15-S011",
+   "scene": 15,
+   "sentence": 11,
+   "speaker": "Narrator",
+   "target_text": "十万。六十。七十。一点钟。十一点钟。",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "42007dbf-ec90-43ca-8413-77b0830b32fe",
+     "9badb1ba-c838-4286-a134-6921bcf5d83e",
+     "8539e805-ea15-43a2-811f-7f14199f47d4"
+    ],
+    "sentence_known_audio_ids": [
+     "d69d0fe3-7d67-4624-9a34-f6846626cbf6",
+     "00030ea0-7ae5-47dc-badb-e3ce0915bf7e",
+     "63cc3b05-f6be-446a-82a4-13982bb00f19"
+    ],
+    "takeg_audio_ids": [
+     "6e107fe6-628c-4446-9cea-5d4b41d5d7a5",
+     "141e04e8-778c-403f-aa08-8dbfe04cbcc0"
+    ]
+   }
+  }
+ ]
+}

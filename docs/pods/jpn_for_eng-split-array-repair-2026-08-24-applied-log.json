@@ -1,0 +1,3882 @@
+{
+ "pod": "jpn_for_eng:pod-1",
+ "course": "jpn_for_eng",
+ "mode": "applied",
+ "generated_at": "2026-08-24T11:26:53.092Z",
+ "rows_total": 231,
+ "rows_repaired": 140,
+ "cast": {
+  "target": [
+   "ja-JP-MayuNeural",
+   "ja-JP-NaokiNeural"
+  ],
+  "known": [
+   "bedd6226",
+   "gfzdpspr5fdp"
+  ]
+ },
+ "by_scene": {
+  "1": 4,
+  "2": 2,
+  "3": 3,
+  "4": 3,
+  "5": 2,
+  "6": 13,
+  "7": 15,
+  "8": 16,
+  "9": 18,
+  "10": 10,
+  "11": 13,
+  "12": 10,
+  "13": 10,
+  "14": 10,
+  "15": 11
+ },
+ "skipped_rows_needing_rerender": [],
+ "rows": [
+  {
+   "id": "jpn_for_eng:pod-1:SC01-S001",
+   "scene": 1,
+   "sentence": 1,
+   "speaker": "Neighbour (8 am)",
+   "target_text": "おはようございます、サラさん！",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: off-cast voice b1a7441b97a1"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "1d36b45a-0457-4422-9e79-ef8fa0ee8b60"
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC01-S002",
+   "scene": 1,
+   "sentence": 2,
+   "speaker": "Sarah",
+   "target_text": "おはようございます。お元気ですか？",
+   "clear": [
+    "sentence_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice d0cb9ff07d95",
+    "takeg_audio_ids: off-cast voice d0cb9ff07d95"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "06260041-7fe9-4255-b1c8-99d1eed04552",
+     "6a91454f-1c62-432f-ba14-72c7de9f4e14"
+    ],
+    "sentence_known_audio_ids": [
+     "1f76bc8a-9684-4e51-99c4-05be3d7d829b",
+     "4804ae1f-8c4e-4ac3-91ae-e8703e3497f1"
+    ],
+    "takeg_audio_ids": [
+     "756f74c6-5cf6-479c-9a04-26b5850e69ac"
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC01-S003",
+   "scene": 1,
+   "sentence": 3,
+   "speaker": "Neighbour",
+   "target_text": "とても元気です、ありがとうございます。お仕事に行くんですか。",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "e74dc545-bc1b-42c9-91c4-de1e52fafdcc",
+     "24aa98d2-2a22-40b4-a473-08335ca3f4f5"
+    ],
+    "sentence_known_audio_ids": [
+     "c63653b5-89a3-4651-95de-0affd334e484",
+     "af5bdd49-a32d-4d3f-a56c-aae432a73a2d"
+    ],
+    "takeg_audio_ids": [
+     "7a62040d-a708-435b-8e9d-a88a8d6e9629",
+     null
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC01-S004",
+   "scene": 1,
+   "sentence": 4,
+   "speaker": "Sarah",
+   "target_text": "ええ、今日は忙しい一日になりそうです。良い一日をお過ごしください。またあとで。",
+   "clear": [
+    "sentence_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice d0cb9ff07d95",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "6585c4c5-aa34-4c53-ae53-1c05e780b161",
+     "9ecd9ac7-7d2a-449c-9f35-34bfcf791a65",
+     "b90762fa-3f68-470d-ac21-ed0587e15439"
+    ],
+    "sentence_known_audio_ids": [
+     "cde387a8-5b3a-4a8b-88b7-2858405ea8f5",
+     "df77e34c-2e69-4e1e-bfb6-9957f2237ebb",
+     "5f9467b4-92be-44a4-a666-ce068666e9bd"
+    ],
+    "takeg_audio_ids": [
+     "c9d0cf32-db5b-4317-9b10-feb71df0f8ae",
+     "b5fc955e-cbe8-4b56-9747-2cd9f023db9e",
+     null
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC02-S001",
+   "scene": 2,
+   "sentence": 1,
+   "speaker": "Sarah",
+   "target_text": "すみません、この席、空いていますか？",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: off-cast voice d0cb9ff07d95"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "73397758-ce26-4106-bb41-27834e067c5c"
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC02-S002",
+   "scene": 2,
+   "sentence": 2,
+   "speaker": "Passenger",
+   "target_text": "いいえ、空いていますよ。どうぞ、お先に。",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "11d261fd-b0d6-4d1d-b6d2-24b9e3786b14",
+     "6e3e9fb1-a218-4ee1-9ffb-9e122b26a3a5"
+    ],
+    "sentence_known_audio_ids": [
+     "cb65c358-0142-4a33-8f03-d58827444ef9",
+     "79c9aaa7-1dff-46a1-994a-3db364202cd2"
+    ],
+    "takeg_audio_ids": [
+     "03fc2e3c-d620-4726-bac6-e348372bce10",
+     null
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC03-S001",
+   "scene": 3,
+   "sentence": 1,
+   "speaker": "Barista (3 pm)",
+   "target_text": "こんにちは。ご注文は？",
+   "clear": [
+    "sentence_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice b1a7441b97a1",
+    "takeg_audio_ids: off-cast voice b1a7441b97a1"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "9d8d3349-94d2-4a3a-89d6-792281826953",
+     "e5403331-1a7d-42dd-99cf-efcbe29ed3f4"
+    ],
+    "sentence_known_audio_ids": [
+     "79c3238a-b8ad-4183-8def-09d9ce8aef0f",
+     "2901dc92-5162-4da4-a770-3ed6f337a6d7"
+    ],
+    "takeg_audio_ids": [
+     "f4dc259e-05b5-4227-9a3e-78c2a9b456b6"
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC03-S002",
+   "scene": 3,
+   "sentence": 2,
+   "speaker": "Sarah",
+   "target_text": "こんにちは。コーヒーをください。ミルクありで、砂糖なしで。お持ち帰りで。",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice d0cb9ff07d95",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "f4fc55a3-9327-44af-892a-be2f7395b576",
+     "3dad07f2-2f7a-428a-a416-d831cfad40d7",
+     "25433c33-8126-4861-bb6e-2d936dc00a0d",
+     "dc960d50-d065-411f-b0d4-5f1dd8823e5c"
+    ],
+    "sentence_known_audio_ids": [
+     "db759433-8f2e-4858-b6d6-ae441b16b62b",
+     "1a1f959a-0683-44d3-8cc5-b0f5243a17f8",
+     "83a6b89d-293b-48ce-856d-3e0f5ca5972f",
+     "a15520a2-4567-46e8-95a6-0a8739e61956"
+    ],
+    "takeg_audio_ids": [
+     "917e3bf4-e9b8-42ee-a3b9-86962e3604ff",
+     "7e3825e9-ce96-41fb-ae45-df03b6ea0039",
+     null
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC03-S003",
+   "scene": 3,
+   "sentence": 3,
+   "speaker": "Sarah",
+   "target_text": "何か食べ物はありますか。",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "913a290c-9ae8-408e-9d58-e4f754c3c512",
+     "55b118ef-ea14-48b0-956b-af800fd3ab41"
+    ],
+    "sentence_known_audio_ids": [
+     "ea929588-e7a8-4055-8ca1-666df82484e2",
+     "885c9d1f-d901-4ff6-8d8d-c04675f6ef9b"
+    ],
+    "takeg_audio_ids": [
+     "407d1de5-0f5b-44ea-bfdb-a6a71ed2343b"
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC04-S001",
+   "scene": 4,
+   "sentence": 1,
+   "speaker": "Friend (7 pm)",
+   "target_text": "こんにちは、こんばんは！",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: off-cast voice b1a7441b97a1"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "34f24fc0-5d9f-4b04-8d33-9eda045851eb"
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC04-S002",
+   "scene": 4,
+   "sentence": 2,
+   "speaker": "Sarah",
+   "target_text": "こんにちは！すみませんが、今は話せないんです。もう家に帰らないといけなくて。明日話せますか？",
+   "clear": [
+    "sentence_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice d0cb9ff07d95",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "f4fc55a3-9327-44af-892a-be2f7395b576",
+     "3d6bde9d-7005-4ebf-ab01-993ce286209b",
+     "0a809db0-f2d3-4cb0-b737-5fa881809b02",
+     "4ac83c76-20f0-46f8-bf43-beb1ea037559"
+    ],
+    "sentence_known_audio_ids": [
+     "9dc52b02-fe5b-4b73-b6bf-bda34f33ec11",
+     "cd019359-5208-41df-83ea-d6da4177e095",
+     "eaae7684-6466-4bd7-98b2-810862599580",
+     "506bdad4-38fd-4f91-a498-aab01f593cbd"
+    ],
+    "takeg_audio_ids": [
+     "45d9ed96-56fa-4a86-b6c4-77ab2f0041c3",
+     "fc102fbe-a412-4d0f-bfd0-bc37d8c5e72d",
+     "87498ba0-3d83-4548-b7fc-303315485d42"
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC04-S003",
+   "scene": 4,
+   "sentence": 3,
+   "speaker": "Friend",
+   "target_text": "いいえ、すみません、明日は忙しいんです。でも土曜日に話しましょう。それではまた。",
+   "clear": [
+    "sentence_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "3a6ed76d-a5c1-45c8-8c36-28a9f934b85c",
+     "7190fbcc-2e21-4bc1-b603-938cee7d55c5",
+     "7913501f-173b-4f0b-8c2e-f4f264ae130e"
+    ],
+    "sentence_known_audio_ids": [
+     "91cfe608-7088-4584-a747-2b05ebc7db00",
+     "bc54d02c-9765-405d-a78d-812a0476ddc0",
+     "209bb15f-4a16-4ab2-b0b4-1a54e544eb7a"
+    ],
+    "takeg_audio_ids": [
+     "79b71917-a8da-4056-a088-54a4b3d20a6d",
+     "a1557fe9-fbcd-4fb5-aae6-897bb8504795",
+     "e52c95ba-8ae6-49c5-ab7f-30e48550d3e0"
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC05-S001",
+   "scene": 5,
+   "sentence": 1,
+   "speaker": "Neighbour (10:30 pm)",
+   "target_text": "こんばんは、サラさん。今日は長い一日でしたか。",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice b1a7441b97a1",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "8a5d9d5a-d38d-46af-a0fc-b04c7a1b2bb3",
+     "a415668e-4be5-4297-b756-a5c1e29aee33"
+    ],
+    "sentence_known_audio_ids": [
+     "87273913-fe6c-4661-88e5-d61d4adb7d33",
+     "4f51baa3-6116-4ceb-85c8-bfeb072affb0"
+    ],
+    "takeg_audio_ids": [
+     "da4abcd1-a9f2-4989-a585-32e73efcf8c0",
+     "f81bb60a-4e40-43ea-878f-47529eba1550"
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC05-S002",
+   "scene": 5,
+   "sentence": 2,
+   "speaker": "Sarah",
+   "target_text": "はい、とても。今はとても疲れています。おやすみなさい。また明日。",
+   "clear": [
+    "sentence_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice d0cb9ff07d95",
+    "takeg_audio_ids: off-cast voice d0cb9ff07d95"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "ce028b49-6642-4442-b59b-6837b52d8a46",
+     "15aea82c-15a4-4dff-85c8-896a200f6792",
+     "1e56e6be-d486-4d82-929f-db77dde56cc6",
+     "614bfc48-f573-484e-99be-56ad0928f421"
+    ],
+    "sentence_known_audio_ids": [
+     "78eb5fd1-3813-43b9-af42-650e94a1765f",
+     "5ec9adc0-6e45-4456-bdd1-dd9707fcfdbb",
+     "b63f0132-17e6-4aac-89e0-bff19f9a9c8d",
+     "1d57cbcf-9002-46e0-81dc-f9ea4706a929"
+    ],
+    "takeg_audio_ids": [
+     "8042ab93-9d73-41e5-83d4-83590015d5ff",
+     null,
+     null,
+     null
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC06-S001",
+   "scene": 6,
+   "sentence": 1,
+   "speaker": "James",
+   "target_text": "すみません。こんにちは。お名前は何ですか？",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice b1a7441b97a1",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "3b06d9a6-68ff-4d27-b525-5f5db2623c72",
+     "9d8d3349-94d2-4a3a-89d6-792281826953",
+     "c83d067f-9616-4bb9-b32d-3bc3c618be14"
+    ],
+    "sentence_known_audio_ids": [
+     "7f1dd574-3b67-4943-a3e0-23106bf935bd",
+     "79edaa7b-e7e7-49c7-8f42-9337069918bf",
+     "6681706a-3331-4297-8a9f-940b1aaf9a94"
+    ],
+    "takeg_audio_ids": [
+     "9195ed86-a9f2-4625-a5e9-763cacae1afc"
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC06-S002",
+   "scene": 6,
+   "sentence": 2,
+   "speaker": "Anna",
+   "target_text": "私の名前はアンナです。あなたは？",
+   "clear": [
+    "sentence_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice ara",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "32cdcdde-40ca-454f-8a6c-7beb53eb1f97",
+     "251d6e6b-ec86-4235-b790-a348b2560f47"
+    ],
+    "sentence_known_audio_ids": [
+     "9dd5fdc2-83ba-48d4-9ebc-d2f3c220de32",
+     "151b1c82-8538-4646-82c1-5667b6117fb2"
+    ],
+    "takeg_audio_ids": [
+     "bc04dc7e-b7d8-4883-bd4c-1b32d8d39782",
+     null
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC06-S003",
+   "scene": 6,
+   "sentence": 3,
+   "speaker": "James",
+   "target_text": "ジェームズです。はじめまして。",
+   "clear": [
+    "sentence_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice b1a7441b97a1",
+    "takeg_audio_ids: off-cast voice b1a7441b97a1"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "99bc5452-e215-4cfc-b042-ac2ca2290915",
+     "fac1a3b7-60a4-41cd-9847-82347cb91df0"
+    ],
+    "sentence_known_audio_ids": [
+     "b3d4c5ca-5767-4732-8436-2b9cff7bad28",
+     "895c1087-f26c-4fa7-abcc-7ddc95f28899"
+    ],
+    "takeg_audio_ids": [
+     "69fa2b2e-f326-4b3f-8681-c43dc9286b8a"
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC06-S004",
+   "scene": 6,
+   "sentence": 4,
+   "speaker": "Anna",
+   "target_text": "こちらこそ、はじめまして。どちらのご出身ですか？",
+   "clear": [
+    "sentence_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice ara",
+    "takeg_audio_ids: off-cast voice ara"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "1ffa77ef-1f52-4845-b79d-0e417ada269c",
+     "d29e49a9-206a-4415-837f-51dadc23e638"
+    ],
+    "sentence_known_audio_ids": [
+     "d23c5b79-d917-4abb-babd-ccb5f5372569",
+     "74a51c7b-7fca-4d19-a215-71eebe6ffcc5"
+    ],
+    "takeg_audio_ids": [
+     "9a68afe5-a095-45be-b81a-9ace2055a7a9",
+     null
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC06-S005",
+   "scene": 6,
+   "sentence": 5,
+   "speaker": "James",
+   "target_text": "マンチェスター出身ですが、今はロンドンに住んでいます。あなたは？",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice b1a7441b97a1",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "acc06cc2-0bb5-474a-b7a5-7a20ebb6f5f4",
+     "69f98ee1-e753-419c-a823-0067ca4d9376"
+    ],
+    "sentence_known_audio_ids": [
+     "41864b5e-28a1-4bf9-87f3-d22fc0123e4a",
+     "67eea662-a24d-407b-8bfc-ac123bd3985e"
+    ],
+    "takeg_audio_ids": [
+     "fa1e9e53-c99d-41f8-9ad9-3dbe326e177b",
+     null
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC06-S006",
+   "scene": 6,
+   "sentence": 6,
+   "speaker": "Anna",
+   "target_text": "フランス出身です。ここに来て二年になります。",
+   "clear": [
+    "sentence_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice ara",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "8d7fc476-2add-4831-9986-12e31e45fcc9",
+     "fc2b7108-f3f7-4443-80ae-9cb18fc71cdc"
+    ],
+    "sentence_known_audio_ids": [
+     "32dafa68-3edd-4ad2-8594-95d5f3cdd5e6",
+     "947c7bae-f2e1-4c58-ae41-ba91751777b6"
+    ],
+    "takeg_audio_ids": [
+     "bfa980f9-7745-4297-a5cc-3ad9d315a15c"
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC06-S007",
+   "scene": 6,
+   "sentence": 7,
+   "speaker": "James",
+   "target_text": "素敵な街ですね。お仕事は何をされていますか？",
+   "clear": [
+    "sentence_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice b1a7441b97a1",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "6c88bf02-f571-459f-aa9d-a2213796585e",
+     "1a2ab97f-c08f-447f-9c5d-209adb06d45c"
+    ],
+    "sentence_known_audio_ids": [
+     "dbfef971-4168-4fc7-bd04-25e03560015a",
+     "a8c55490-c39f-4063-91d8-969415fcaef1"
+    ],
+    "takeg_audio_ids": [
+     "40e3513a-bb85-4298-9cd1-4de85862aaed"
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC06-S008",
+   "scene": 6,
+   "sentence": 8,
+   "speaker": "Anna",
+   "target_text": "私は看護師です。すぐそこの角を曲がったところにある病院で働いています。あなたは？",
+   "clear": [
+    "sentence_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice ara",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "bfce1740-7af0-4ddc-9f85-d9738c69fde9",
+     "c5f6fee7-99ad-4797-aaf0-5ee377683673",
+     "921965ce-6780-4120-978e-c540aa4c67a6"
+    ],
+    "sentence_known_audio_ids": [
+     "7558696d-2b7e-4492-8012-1475753250fd",
+     "151b1c82-8538-4646-82c1-5667b6117fb2"
+    ],
+    "takeg_audio_ids": [
+     "877874e1-9d9e-47c7-b5fd-e4ed62839b6e",
+     null
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC06-S009",
+   "scene": 6,
+   "sentence": 9,
+   "speaker": "James",
+   "target_text": "すみません、おっしゃっていることがわかりませんでした。日本語を勉強しています。もう少しゆっくり言っていただけますか？",
+   "clear": [
+    "sentence_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice b1a7441b97a1",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "6889f3a2-a242-4433-ba5d-f440c36ad1a0",
+     "db2daab6-e004-4901-8332-a42324fb0cbc",
+     "1732327a-fead-40d8-8cfe-499e8ae448da"
+    ],
+    "sentence_known_audio_ids": [
+     "976d860f-d2f9-4a74-84f2-511145e04fea",
+     "e10f618a-bc75-4854-b62f-b0a75bfc8596",
+     "e14f396f-8586-4b42-883f-8e6c36ce9879"
+    ],
+    "takeg_audio_ids": [
+     "deace173-8c3a-4d6b-9ee4-611bda5e29af",
+     "dffe3329-9fb1-4166-b3ed-fe0707a3160b",
+     "8240d587-907b-4b03-821e-59ebfc6a105a"
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC06-S010",
+   "scene": 6,
+   "sentence": 10,
+   "speaker": "Anna",
+   "target_text": "はい、もちろんです。私は看護師です。病院で働いています。ここの近くです。あなたは何をされていますか？",
+   "clear": [
+    "sentence_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice ara",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "1772bcec-4dbe-44b9-9bb3-513f6dbd6481",
+     "66df8acc-ac6f-4314-9f44-6fdb89958c76",
+     "e1100831-170d-43a6-b85b-6bc3051206ee",
+     "65baac0c-6435-433c-a239-cbff4c06b53b",
+     "bbbc23c2-2fb6-4163-9b45-fbe166dc95fc"
+    ],
+    "sentence_known_audio_ids": [
+     "66cf7748-6a8d-4ab5-bb98-8d8d82e0dfa6",
+     "4912d3b1-8267-4fd9-a545-2188fb829c39",
+     "3853753c-44f4-428b-b9e2-42311e444748",
+     "18f94a1b-d1b8-431c-b7f6-78e4b576e8f1",
+     "04bacae8-fbbb-4306-a825-0214b07daa3f"
+    ],
+    "takeg_audio_ids": [
+     "24fca743-c1ed-456c-b18f-9649dc38c487",
+     null,
+     "04847d6b-2b7d-419b-bf09-c8283b8953e2",
+     null,
+     "83297b26-f141-48a6-99bd-e404e59f5f7f"
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC06-S011",
+   "scene": 6,
+   "sentence": 11,
+   "speaker": "James",
+   "target_text": "英語を教えています。でも学校ではなく、大人の方を対象にしています。今は妻と子どもたちと一緒にここで休暇を過ごしています。とても楽しい時間を過ごしています。",
+   "clear": [
+    "sentence_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice b1a7441b97a1",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "20aa0cbc-3036-4311-b1bc-ee9ddad91636",
+     "22af76f6-942b-4335-b40e-312b17adcd8c",
+     "bedc0273-d4f7-4da1-8a05-d898af6f3694",
+     "febaa118-52d5-486b-95fb-ec2785c7f809"
+    ],
+    "sentence_known_audio_ids": [
+     "a875a1bc-7277-486e-8b00-b28585587b3e",
+     "ff1bcc16-8c54-4d8c-a18e-a276c7277da7",
+     "6e5c665a-450a-4de3-9b63-7c8751c0cc9b",
+     "10a9c0d5-78f0-4421-95d3-2a2d2be6d7ab"
+    ],
+    "takeg_audio_ids": [
+     "ea1b4dae-c3a1-4c6a-9ee2-d035a895c59c",
+     "6f7c0513-a53d-4710-9f44-09c3e8b4d249",
+     "9879f430-f3b7-47c3-87c2-08ca98179243"
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC06-S012",
+   "scene": 6,
+   "sentence": 12,
+   "speaker": "Anna",
+   "target_text": "それは面白いですね。では、お会いできてよかったです。",
+   "clear": [
+    "sentence_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice ara",
+    "takeg_audio_ids: off-cast voice ara"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "fb69f575-7f6f-434f-8e04-323969f9c127",
+     "31686f9b-8b01-4a52-8bf9-759d44a450ff"
+    ],
+    "sentence_known_audio_ids": [
+     "8394ce3f-5a79-4b88-a7a3-51ef990cc243",
+     "cdc74767-636f-452b-8e23-4c3eda83fbc8"
+    ],
+    "takeg_audio_ids": [
+     "5c26d8ff-7d03-4e3c-a923-240f79bc2990"
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC06-S013",
+   "scene": 6,
+   "sentence": 13,
+   "speaker": "Narrator",
+   "target_text": "いち。に。さん。しろ。くろ。",
+   "clear": [
+    "sentence_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice d0cb9ff07d95",
+    "takeg_audio_ids: off-cast voice d0cb9ff07d95"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "799d5815-26fb-4972-8703-d503b01cde1a",
+     "5b61a4c4-3a67-40e2-b1d7-304c22d4116a",
+     "7701878f-1470-47c3-8785-6395136c79d2",
+     "ec41f88c-c5d2-40b8-9632-aa9b80f4d4fe",
+     "3cc03d2f-038a-4451-8963-7f2fc611872b"
+    ],
+    "sentence_known_audio_ids": [
+     "02db650d-1586-4bd1-aa84-1977ce5c6e1e",
+     "0270bd80-2103-406c-98f3-df06e4f874ab",
+     "40cb2903-623a-452a-86a2-1dfd2982a633",
+     "2d1eec3f-da8c-4d5e-ba9b-2feb9b05be22",
+     "e54493e4-0de6-41f1-8909-3430761560fc"
+    ],
+    "takeg_audio_ids": [
+     "816d2af5-421f-4734-a371-5a1106bbfe33"
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC07-S001",
+   "scene": 7,
+   "sentence": 1,
+   "speaker": "Cafe Barista",
+   "target_text": "おはようございます。ご注文は？",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice b1a7441b97a1",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: off-cast voice b1a7441b97a1"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "b2009190-0787-4fce-ab8e-f0f0f17e013c",
+     "e5403331-1a7d-42dd-99cf-efcbe29ed3f4"
+    ],
+    "sentence_known_audio_ids": [
+     "b31fff84-d983-44df-8821-fefab8e1599e",
+     "2901dc92-5162-4da4-a770-3ed6f337a6d7"
+    ],
+    "takeg_audio_ids": [
+     "01f31d40-1afe-4194-a7c7-916be32ae517"
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC07-S002",
+   "scene": 7,
+   "sentence": 2,
+   "speaker": "Cafe Customer 1",
+   "target_text": "ブラックコーヒーをひとつください。",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "bf2865ff-95eb-46f2-836b-995ed252da44"
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC07-S003",
+   "scene": 7,
+   "sentence": 3,
+   "speaker": "Cafe Barista",
+   "target_text": "レギュラーサイズとラージサイズ、どちらになさいますか？",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: off-cast voice b1a7441b97a1"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "05ce0cf1-a892-4139-ada5-e6fb41cd8919"
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC07-S004",
+   "scene": 7,
+   "sentence": 4,
+   "speaker": "Cafe Customer 1",
+   "target_text": "ラージサイズをお願いします。オーツミルクがあれば、それで。",
+   "clear": [
+    "sentence_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice ara",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "1d357c30-e2c9-4269-8b82-2961f52549f9",
+     "b9204654-d4c7-4184-9d7e-56e236193f74"
+    ],
+    "sentence_known_audio_ids": [
+     "a2a11a72-ace5-46a2-82d0-a6271da957f9",
+     "dfbbbca6-d527-42dd-999e-ee5dfc9272ff"
+    ],
+    "takeg_audio_ids": [
+     "c235ab48-c73c-475b-9467-97e0f103bcdb",
+     "ee39ff73-7ee9-4239-a062-d1329980d203"
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC07-S005",
+   "scene": 7,
+   "sentence": 5,
+   "speaker": "Cafe Barista",
+   "target_text": "もちろんです。こちらでお召し上がりですか、それともお持ち帰りですか？",
+   "clear": [
+    "sentence_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice b1a7441b97a1",
+    "takeg_audio_ids: off-cast voice b1a7441b97a1"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "64bd0347-a8ec-40c1-adbb-9fc8285961c5",
+     "09d83c33-3f18-4acb-9c99-f5f6fca7c49d"
+    ],
+    "sentence_known_audio_ids": [
+     "fbb6d66b-84f3-4120-bebb-407e16109fe4",
+     "2ada40ab-73e3-4556-9ee2-549bc51e630b"
+    ],
+    "takeg_audio_ids": [
+     "597bb57b-7bc1-4371-b572-abf71f02e756"
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC07-S006",
+   "scene": 7,
+   "sentence": 6,
+   "speaker": "Cafe Customer 1",
+   "target_text": "お持ち帰りでお願いします。",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: off-cast voice ara"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "cde4ee4e-7f7f-461b-8d5e-60101ddb7356"
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC07-S007",
+   "scene": 7,
+   "sentence": 7,
+   "speaker": "Cafe Customer 2",
+   "target_text": "ホワイトコーヒーを二つとブラックコーヒーを二つ、それからあれを一つお願いできますか。",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "a02d57e0-97f9-458c-a81e-a7aa49b578f4"
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC07-S008",
+   "scene": 7,
+   "sentence": 8,
+   "speaker": "Cafe Barista",
+   "target_text": "かしこまりました。他にご注文はございますか？",
+   "clear": [
+    "sentence_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice b1a7441b97a1",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "05544f97-7397-4706-a2d3-bde500095acb",
+     "1b2e9fbe-dc9c-449c-af7c-176d57bdd4e6"
+    ],
+    "sentence_known_audio_ids": [
+     "2c0070cd-525e-414a-8112-a1c78d429473",
+     "f3d63cf8-0856-4d93-a1ac-32722184a027"
+    ],
+    "takeg_audio_ids": [
+     "d2e3d8b2-cc9e-4ef6-8dbb-35a771b36241"
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC07-S009",
+   "scene": 7,
+   "sentence": 9,
+   "speaker": "Cafe Customer 2",
+   "target_text": "はい、お水もいただけますか。",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "157c982b-94c9-4d17-8c45-dfd055ca52dc"
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC07-S010",
+   "scene": 7,
+   "sentence": 10,
+   "speaker": "Cafe Barista",
+   "target_text": "全部で八ポンド四十です。",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "38553ef7-3bc8-416e-9619-6271f5baad44"
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC07-S011",
+   "scene": 7,
+   "sentence": 11,
+   "speaker": "Cafe Customer 2",
+   "target_text": "カードで払えますか？タッチ決済はできますか？",
+   "clear": [
+    "sentence_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice eve",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "bfc03ba8-a826-449b-8770-ce51f8637124",
+     "16e42821-aaeb-428f-90d2-8a0ce1333411"
+    ],
+    "sentence_known_audio_ids": [
+     "54709509-d6e7-450c-bc8f-d547df797860",
+     "f51d05bd-fe3e-4619-b35f-04ef6f5b8ffd"
+    ],
+    "takeg_audio_ids": [
+     "20f7871f-dd0a-47df-b79e-ecd092fd23f0"
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC07-S012",
+   "scene": 7,
+   "sentence": 12,
+   "speaker": "Cafe Barista",
+   "target_text": "もちろんです。こちらの機械をどうぞ。",
+   "clear": [
+    "sentence_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice b1a7441b97a1",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "64bd0347-a8ec-40c1-adbb-9fc8285961c5",
+     "f5e8cc72-2a93-4867-8d98-522a65030f68"
+    ],
+    "sentence_known_audio_ids": [
+     "fbb6d66b-84f3-4120-bebb-407e16109fe4",
+     "3b52704d-19f2-4987-94c1-fac667d280ad"
+    ],
+    "takeg_audio_ids": [
+     "eb1e29fd-7d75-4a5b-8e86-c5a928a81dba"
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC07-S013",
+   "scene": 7,
+   "sentence": 13,
+   "speaker": "Cafe Customer 3",
+   "target_text": "おはようございます。アメリカーノをふたつと紅茶をひとつください。",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice rex",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "c729b5c5-619d-421c-8947-c5cbec979c08",
+     "7b78ad1f-bead-410b-9726-1416dec23a34"
+    ],
+    "sentence_known_audio_ids": [
+     "948bc4c5-b5d0-4dca-8341-722d2f8e5c12",
+     "7cfa53f3-cc6f-479d-a8fd-b9674a842303"
+    ],
+    "takeg_audio_ids": [
+     "79781291-fecc-4259-8428-c64c4b1916ef"
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC07-S014",
+   "scene": 7,
+   "sentence": 14,
+   "speaker": "Cafe Barista",
+   "target_text": "こちらでお召し上がりですか？窓際のテーブルが空いております。",
+   "clear": [
+    "sentence_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice b1a7441b97a1",
+    "takeg_audio_ids: off-cast voice b1a7441b97a1"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "2c342ea3-0db7-4c99-bb1a-d270ea8b3230",
+     "58ebc628-1537-4a8d-9347-5d1fb44c0d04"
+    ],
+    "sentence_known_audio_ids": [
+     "b8d4d748-c3aa-42d1-aa9d-e8a5eba18e3e",
+     "bb43ab07-c534-4867-b769-4a4a48fc56f4"
+    ],
+    "takeg_audio_ids": [
+     "6d34a409-8914-4126-a534-4b9f2d482067",
+     "9954bf76-0ef9-4b77-b166-0c6649eb9e2e"
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC07-S015",
+   "scene": 7,
+   "sentence": 15,
+   "speaker": "Narrator",
+   "target_text": "ご。じゅう。じゅうご。あか。みどり。",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice d0cb9ff07d95",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: off-cast voice d0cb9ff07d95"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "ddf5030b-e536-460e-b094-ba7b908e1d49",
+     "9f074cf2-59b3-48f2-bfd8-493d6db79bf8",
+     "96610173-b094-4ab6-979e-a8b548e51b94",
+     "9bb9eb6c-23af-43ab-b65c-6071ec6e5f6d",
+     "caceadf8-ea5d-4535-afb3-468ff95bd029"
+    ],
+    "sentence_known_audio_ids": [
+     "5d4cdada-94f6-4ada-bb87-75c6e911fd28",
+     "1e8e3b3d-b094-4e39-a00f-afbafea06fab",
+     "3b4fcebd-7a32-42ce-ae43-77adffd0694b",
+     "fc0d1ff7-ad9d-4021-b6b2-c8237920bf8f",
+     "cc51d7bd-c462-4119-9286-c31218cdf80a"
+    ],
+    "takeg_audio_ids": [
+     "510ce813-fd51-4f07-a8b9-a587d630d8a7"
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC08-S001",
+   "scene": 8,
+   "sentence": 1,
+   "speaker": "Bartender",
+   "target_text": "こんばんは。ご注文は？",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice b1a7441b97a1",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: off-cast voice b1a7441b97a1"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "d37bf8dc-ab1b-4d4f-8e47-a6b0d95fe47a",
+     "e5403331-1a7d-42dd-99cf-efcbe29ed3f4"
+    ],
+    "sentence_known_audio_ids": [
+     "e03430df-a274-4e50-9197-f06576b58a87",
+     "71b9bb37-8a20-4dab-bfbd-dcc59f1f6b0d"
+    ],
+    "takeg_audio_ids": [
+     "8da431c7-3494-4d66-a4dd-472c81aa2d2c"
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC08-S002",
+   "scene": 8,
+   "sentence": 2,
+   "speaker": "Bar Customer 1",
+   "target_text": "パイントをお願いします。エールは何がありますか。",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "91a9d722-fcc2-49dd-b4ca-c893c295756f",
+     "31ccf1fb-a5de-4012-9732-151f8f73958f"
+    ],
+    "sentence_known_audio_ids": [
+     "4decb308-fab1-46cb-a64f-446dc6589689",
+     "e762a6f5-6902-4aae-b567-0244d219f71b"
+    ],
+    "takeg_audio_ids": [
+     "bcdc85f6-e97f-4b77-af81-8a0ba57e34e6",
+     "00ba8b7d-0221-40af-a46f-73e36e9b522d"
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC08-S003",
+   "scene": 8,
+   "sentence": 3,
+   "speaker": "Bartender",
+   "target_text": "ビターとスタウトがあって、どちらも地元のものです。",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "81dd468f-38d2-44f9-b1e3-8d3baa4fb9a1",
+     "8fba64d2-4bce-4251-86f0-b83f5c3bb50a"
+    ],
+    "sentence_known_audio_ids": [
+     "e6fe4425-c351-4311-bd20-3c03d85d361c",
+     "e60bc370-c0a3-4a13-b51d-eab88f4dfbb5"
+    ],
+    "takeg_audio_ids": [
+     "4319e13a-16f9-410e-a347-ab756ec1755d",
+     "5586f3b3-2ac3-47d6-b555-9f91ef60fde9"
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC08-S004",
+   "scene": 8,
+   "sentence": 4,
+   "speaker": "Bar Customer 1",
+   "target_text": "ビターのパイントをお願いします。",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "07f8d5b8-c552-4b63-8699-6c0189c40fe7"
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC08-S005",
+   "scene": 8,
+   "sentence": 5,
+   "speaker": "Bar Customer 2",
+   "target_text": "サイダーのハーフをひとつもらえますか？",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "a1121aae-da25-42d9-b19b-fbd324b37a89"
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC08-S006",
+   "scene": 8,
+   "sentence": 6,
+   "speaker": "Bar Customer 3",
+   "target_text": "ワインリストを見せていただけますか？ワインをグラスで飲みたいんです。",
+   "clear": [
+    "sentence_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice rex",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "0f4fe65f-db65-4712-b0da-91ea9d0cb893",
+     "add1c72a-464d-457d-be58-d95d59442ea3"
+    ],
+    "sentence_known_audio_ids": [
+     "1d08ccf4-a3c3-4f38-866d-06cf24c0d384",
+     "0c341b7f-cffb-4e37-a2e6-fe6650453850"
+    ],
+    "takeg_audio_ids": [
+     "8189ebda-fcc0-4036-bb08-863fe667aa9e",
+     "a5cbce69-d46a-4127-8072-56eb43c93e77"
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC08-S007",
+   "scene": 8,
+   "sentence": 7,
+   "speaker": "Bartender",
+   "target_text": "ハウスレッド、ハウスホワイト、またはボトルでもご用意できます。",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "3ea1c707-defd-48f3-910d-7b60d3e49cb1"
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC08-S008",
+   "scene": 8,
+   "sentence": 8,
+   "speaker": "Bar Customer 3",
+   "target_text": "白ワインを大きいグラスでください。",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "c3ffea0d-4ff7-4484-b16c-830bbbd4a95b"
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC08-S009",
+   "scene": 8,
+   "sentence": 9,
+   "speaker": "Bar Customer 1",
+   "target_text": "赤ワインを小さいグラスでもらえますか？",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "d7b71f86-a454-4230-8ebd-6f6e9ed8ee14"
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC08-S010",
+   "scene": 8,
+   "sentence": 10,
+   "speaker": "Bar Customer 2",
+   "target_text": "ビールをグラスでもう二杯ください。",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "48fa2bdf-bd1f-414e-a541-30640676063e"
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC08-S011",
+   "scene": 8,
+   "sentence": 11,
+   "speaker": "Bartender",
+   "target_text": "今夜は食事はされますか？",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "ad78ee39-4b05-489f-8f8a-1f768786085a"
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC08-S012",
+   "scene": 8,
+   "sentence": 12,
+   "speaker": "Bar Customer 1",
+   "target_text": "お腹が空いているかわからないんです。メニューはありますか？",
+   "clear": [
+    "sentence_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice ara",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "a9205ada-d310-422a-86f9-3bacf6f0ec1b",
+     "828b52ee-b2c1-46b3-907a-b1648e5f9fed"
+    ],
+    "sentence_known_audio_ids": [
+     "2331a71c-9188-494e-81c7-e43ccc45a775",
+     "53545fe6-20aa-47b3-939c-87034bfe0ec2"
+    ],
+    "takeg_audio_ids": [
+     "f325c074-5904-4556-98c9-1b8431383cd7",
+     null
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC08-S013",
+   "scene": 8,
+   "sentence": 13,
+   "speaker": "Bartender",
+   "target_text": "はい、もちろんです。こちらどうぞ。フィッシュアンドチップスがとてもおいしいですよ。",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice b1a7441b97a1",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: off-cast voice b1a7441b97a1"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "bf893830-90df-49de-9355-bc794270ef4d",
+     "e1871561-b9d6-430c-b2f6-b1fa21ab107f",
+     "497ee342-b307-42b5-a7e6-ccc6cb65cc4e"
+    ],
+    "sentence_known_audio_ids": [
+     "7beac29a-22ef-45c5-8c72-0a5675302ea0",
+     "8062a64d-0fc9-4f48-bded-b251da943ce9",
+     "0f0455f6-3d6c-41c0-a0b9-72cfc60c6e05"
+    ],
+    "takeg_audio_ids": [
+     "80052911-768a-411a-a34f-80d2176bd5f1",
+     null,
+     "59490a03-7052-4475-8ff4-3d99d8b1e98e"
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC08-S014",
+   "scene": 8,
+   "sentence": 14,
+   "speaker": "Bar Customer 1",
+   "target_text": "パンをいただけますか？それとテーブル用にチップスをひと皿お願いします。",
+   "clear": [
+    "sentence_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice ara",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "2aad967d-9fb8-455d-8735-7dbb247d218e",
+     "d1f5a504-b40e-4dd5-b0d4-a2da9b78fce5"
+    ],
+    "sentence_known_audio_ids": [
+     "a8f4784e-f2a1-4101-a5b8-f785154f8d7c",
+     "b1bf3ee4-2441-431d-9e55-c68e2a7574c5"
+    ],
+    "takeg_audio_ids": [
+     "bb3fa17b-9790-4c0a-9d69-064fd5ec43e3",
+     "ce8c0577-058c-4cc5-bebc-b5e9bf9b621c"
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC08-S015",
+   "scene": 8,
+   "sentence": 15,
+   "speaker": "Bar Customer 2",
+   "target_text": "サンドイッチはありますか？チーズサンドイッチをひとつください。",
+   "clear": [
+    "sentence_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice eve",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "26742c4f-a70c-4060-84fb-1b34a455d830",
+     "ccea67fd-f9a3-440e-af9f-39dbdec6799c"
+    ],
+    "sentence_known_audio_ids": [
+     "fa48b27b-8f53-4a4e-aea3-18ca2643429d",
+     "499f3290-09b3-4493-8b15-357906d051a6"
+    ],
+    "takeg_audio_ids": [
+     "54b21b79-617e-4181-b9df-1e8814327eef",
+     "7dad32d8-75e8-4ea2-946c-b6d421e41af6"
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC08-S016",
+   "scene": 8,
+   "sentence": 16,
+   "speaker": "Narrator",
+   "target_text": "よん。ろく。はち。あお。きいろ。",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice d0cb9ff07d95",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: off-cast voice d0cb9ff07d95"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "e5001d73-f395-41a2-8611-3ed0668e333c",
+     "dc8f27ea-ed04-4b0d-97db-48fb38958e57",
+     "559f7c89-652b-4916-b449-8150ed4e8564",
+     "4f83f94d-1249-4458-939e-7877abd4c50d",
+     "f1d10dcc-1666-4420-8b44-46bb2585a08a"
+    ],
+    "sentence_known_audio_ids": [
+     "ff08a90d-cea2-414d-8e5a-33b86c8b576f",
+     "3e4e5d0c-f15a-419a-b610-65eaef980755",
+     "d7b57202-e33e-4c44-9f7f-a1151cb23fcb",
+     "8b3bd16b-1765-4560-97e0-5a4d4d885c83",
+     "7209f15b-e256-427d-bad9-b6433f4c7342"
+    ],
+    "takeg_audio_ids": [
+     "6f79e2f0-9369-420d-bb1e-441002871ab0"
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC09-S001",
+   "scene": 9,
+   "sentence": 1,
+   "speaker": "Diner 1",
+   "target_text": "こんばんは。デイヴィス名義で、二名の予約をしております。",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice ara",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "d4c8a76f-466c-439a-8132-4660cf3e782d",
+     "1711dc74-a741-4084-90b6-5ead4632e9e0"
+    ],
+    "sentence_known_audio_ids": [
+     "29a31ea2-5ba4-4722-a4cd-158bc90a52e4",
+     "e0a469f3-7ec6-47e8-9918-557f9b673b86"
+    ],
+    "takeg_audio_ids": [
+     "f5545a88-abcf-4893-8754-c3b89f6dfd41"
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC09-S002",
+   "scene": 9,
+   "sentence": 2,
+   "speaker": "Waiter",
+   "target_text": "いらっしゃいませ。こちらへどうぞ。メニューでございます。",
+   "clear": [
+    "sentence_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice b1a7441b97a1",
+    "takeg_audio_ids: off-cast voice b1a7441b97a1"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "279c47b5-af98-48cf-bde4-9735985b563b",
+     "f03f76de-3385-4a28-b9a7-3cf3cb367822",
+     "fa3c6fad-b327-45db-a3cb-710891de604b"
+    ],
+    "sentence_known_audio_ids": [
+     "9db46f9c-db5c-455d-a3d3-a4e63d2ed732",
+     "8f65cdd8-73cf-4587-9365-20e02ad159a2",
+     "e04f11bb-5988-4633-9b14-5d98a46a84ab"
+    ],
+    "takeg_audio_ids": [
+     "5167825c-2722-456e-b273-f5f1a0194748"
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC09-S003",
+   "scene": 9,
+   "sentence": 3,
+   "speaker": "Waiter",
+   "target_text": "お水は、ミネラルウォーターとスパークリングウォーター、どちらになさいますか？",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "a403ca8d-1f18-473c-bec1-9c98a8c8a9ca"
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC09-S004",
+   "scene": 9,
+   "sentence": 4,
+   "speaker": "Diner 2",
+   "target_text": "スパークリングウォーターを一本と、ミネラルウォーターを一本お願いします。",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "6b652b2f-d7d8-47b5-bcab-ecef5d54da8e"
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC09-S005",
+   "scene": 9,
+   "sentence": 5,
+   "speaker": "Diner 1",
+   "target_text": "すみません、グルテンフリーのものや、ベジタリアン向けのものはありますか？",
+   "clear": [
+    "sentence_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice ara",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "83febe40-31b5-4610-b5b9-15740d02c343",
+     "1696eb0e-5ee5-4804-afd4-d03f993af404"
+    ],
+    "sentence_known_audio_ids": [
+     "a9cb8961-8744-4e3d-9053-aa2d2290d620",
+     "eb56e644-7dc4-4d76-979e-1939ffe70ed6"
+    ],
+    "takeg_audio_ids": [
+     "eb16afcb-5523-42fd-9581-93d228d4c3bd"
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC09-S006",
+   "scene": 9,
+   "sentence": 6,
+   "speaker": "Waiter",
+   "target_text": "はい、サーモンとリゾットはどちらもグルテンフリーでございます。サラダもいくつかご用意しております。",
+   "clear": [
+    "sentence_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice b1a7441b97a1",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "647eecdc-5a2b-49b7-882c-fe2ce48e84ed",
+     "18d9ac5c-20ac-4ac1-bed8-b31f33167ef1"
+    ],
+    "sentence_known_audio_ids": [
+     "f1afd643-4d66-42ff-bf3e-4be5471ab18f",
+     "d7288423-472a-43d7-8e1b-463e4992dc84"
+    ],
+    "takeg_audio_ids": [
+     "f0f8bca3-b2a3-4d48-b6d7-520780f43c05",
+     "b10d62a9-65cb-4742-a30a-0ee9470b49ea"
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC09-S007",
+   "scene": 9,
+   "sentence": 7,
+   "speaker": "Diner 1",
+   "target_text": "今夜のおすすめは何ですか？",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "7ffd238c-59ad-41c8-901e-8230c901b08d"
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC09-S008",
+   "scene": 9,
+   "sentence": 8,
+   "speaker": "Waiter",
+   "target_text": "ラムが大変おすすめでございます。ローズマリーと一緒に、じっくりと煮込んでおります。",
+   "clear": [
+    "sentence_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice b1a7441b97a1",
+    "takeg_audio_ids: off-cast voice b1a7441b97a1"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "b8e146e8-3800-4967-b22c-db726e8f67f0",
+     "5cffccba-57cf-4b20-9c1f-248d992fcf4c"
+    ],
+    "sentence_known_audio_ids": [
+     "baccaf76-a36c-47db-9638-9978577516b4",
+     "a0006565-19b5-4320-aca7-44283c79a655"
+    ],
+    "takeg_audio_ids": [
+     "48f211df-d06d-4665-9633-c3ac73c5b144",
+     "f96d59aa-c353-4411-94d0-ce5484612941"
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC09-S009",
+   "scene": 9,
+   "sentence": 9,
+   "speaker": "Diner 1",
+   "target_text": "では、ラムをお願いします。付け合わせに青野菜もつけてください。",
+   "clear": [
+    "sentence_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice ara",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "8d5d19c0-2f0d-46e7-8cd5-bef2ed2d48e8",
+     "14fa46ba-3559-49d7-abb3-31242c948474"
+    ],
+    "sentence_known_audio_ids": [
+     "921a187e-89b2-477a-af3e-040d260a2609",
+     "69d0333e-4e2e-4304-8af2-577939f77a6e"
+    ],
+    "takeg_audio_ids": [
+     "c5c99595-59c2-4a5b-99b9-7ce7d775b955",
+     "3d35c1b6-3922-4920-bffb-71515e9e84c8"
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC09-S010",
+   "scene": 9,
+   "sentence": 10,
+   "speaker": "Diner 2",
+   "target_text": "私はリゾットをお願いします。最初に、小さめのグリーンサラダもお願いします。",
+   "clear": [
+    "sentence_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice eve",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "e84f9c25-b5df-41c1-beb1-449bf46b32af",
+     "daa2175f-38a4-49c4-b214-c441807d374a"
+    ],
+    "sentence_known_audio_ids": [
+     "78273b94-5caa-44ab-98a6-c9c94ecb2352",
+     "d197cb0e-eacb-4701-a8a3-d91d76fce195"
+    ],
+    "takeg_audio_ids": [
+     "ff49b6c2-82ad-4413-a8b5-6d3aab6c69fb",
+     "17fc735f-10ce-4023-801f-91553bfb47cd"
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC09-S011",
+   "scene": 9,
+   "sentence": 11,
+   "speaker": "Waiter",
+   "target_text": "かしこまりました。お飲み物はいかがなさいますか？",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice b1a7441b97a1",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "05544f97-7397-4706-a2d3-bde500095acb",
+     "5af39bac-cc62-4925-86d8-1cdc5d122b5b"
+    ],
+    "sentence_known_audio_ids": [
+     "fb57e70f-2b33-4f26-bb1b-464da0c612ea",
+     "c9532c8f-3228-40f8-85f5-0c3854aae688"
+    ],
+    "takeg_audio_ids": [
+     "01161779-c2ae-4f0c-82a2-a2d65c66c045"
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC09-S012",
+   "scene": 9,
+   "sentence": 12,
+   "speaker": "Diner 1",
+   "target_text": "ワインリストを見せていただけますか？",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "732cecb3-5ed6-484a-92e6-c3f95e5146e3"
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC09-S013",
+   "scene": 9,
+   "sentence": 13,
+   "speaker": "Diner 2",
+   "target_text": "ハウスワインの赤を一本いただけたら嬉しいです。",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "7295e5d3-7301-4f7b-9d86-560ee1d047d7"
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC09-S014",
+   "scene": 9,
+   "sentence": 14,
+   "speaker": "Waiter",
+   "target_text": "かしこまりました。すぐにお持ちいたします。",
+   "clear": [
+    "sentence_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice b1a7441b97a1",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "05544f97-7397-4706-a2d3-bde500095acb",
+     "d1143808-0440-40c1-9d5e-3d422a456ad1"
+    ],
+    "sentence_known_audio_ids": [
+     "7b34d9e0-9d30-4841-851d-f6bb47c59de5",
+     "b6a24c7f-33e3-4aef-9512-794309bfabeb"
+    ],
+    "takeg_audio_ids": [
+     "e6c8c753-2582-4532-88aa-a812c442eb0e"
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC09-S015",
+   "scene": 9,
+   "sentence": 15,
+   "speaker": "Waiter",
+   "target_text": "お料理のお味はいかがでしたか？デザートはいかがですか？",
+   "clear": [
+    "sentence_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice b1a7441b97a1",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "e03a340d-cc16-4b6d-ab74-c1382b1a00cf",
+     "308bcc03-49e5-4b06-84c9-7dadd2f02aba"
+    ],
+    "sentence_known_audio_ids": [
+     "0b5bfb59-f1f1-4873-b02c-40c7886eea75",
+     "9766dbaa-132e-43b8-8955-250ea2ec6879"
+    ],
+    "takeg_audio_ids": [
+     "7b2e5e5f-3907-4cb4-8cdb-3fce5b561235",
+     "43921680-b338-4229-af98-7ac0cf3253d4"
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC09-S016",
+   "scene": 9,
+   "sentence": 16,
+   "speaker": "Diner 1",
+   "target_text": "コーヒーを二つだけお願いします。私のはデカフェで。",
+   "clear": [
+    "sentence_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice ara",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "c97db92b-f3a4-4c26-8e16-a6ea72c9a3ff",
+     "612e09d7-2f90-495e-ae75-07e634082d24"
+    ],
+    "sentence_known_audio_ids": [
+     "f24b5c3f-92f0-40f4-b2a8-1e9355f16b4d",
+     "ff34572e-85d0-4f2b-b4be-a26d5fd343d4"
+    ],
+    "takeg_audio_ids": [
+     "d36b3c58-c91e-411a-89e9-b7ccafcc20e7",
+     "4ca6e221-51aa-48a1-8ff9-e0639b5ae634"
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC09-S017",
+   "scene": 9,
+   "sentence": 17,
+   "speaker": "Diner 2",
+   "target_text": "準備ができましたら、お会計もお願いします。割り勘にできますか？",
+   "clear": [
+    "sentence_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice eve",
+    "takeg_audio_ids: off-cast voice eve"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "9cdfb790-cb03-4c02-9dfa-345a195c7ed9",
+     "1c06230c-9380-4707-b04e-435b9afae79f"
+    ],
+    "sentence_known_audio_ids": [
+     "daf826ce-ff21-432b-bcd6-1ff80a974793",
+     "0d1b9098-98f6-4ffa-92fa-88a3d50a01af"
+    ],
+    "takeg_audio_ids": [
+     "0e6fae74-fc06-425a-912a-0437551df925",
+     null
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC09-S018",
+   "scene": 9,
+   "sentence": 18,
+   "speaker": "Narrator",
+   "target_text": "七。九。十一。オレンジ。紫。",
+   "clear": [
+    "sentence_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice d0cb9ff07d95",
+    "takeg_audio_ids: off-cast voice d0cb9ff07d95"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "c16e1dcf-2d60-472e-bb7e-8291eb55676d",
+     "b8535336-e4d8-4777-bb49-811a02d729fa",
+     "07d7180e-504b-4222-a158-ca5896e6c1f5",
+     "483ffc31-ec31-41a9-a5f2-b45d41a503e2",
+     "137deb3a-32da-48be-8428-514abbbf425f"
+    ],
+    "sentence_known_audio_ids": [
+     "3ef9e9a0-370c-4723-8484-3f605346e59a",
+     "ac297571-ead2-4d3b-b04a-f2a75e54b9bd",
+     "b5ee4f0b-e2a7-4365-8417-79aa585e969a",
+     "49f1a8a7-0c38-492a-834f-2f8e678338c1",
+     "9287752d-6d79-4f4e-a941-26899cc49380"
+    ],
+    "takeg_audio_ids": [
+     "3106c835-8842-4dc5-979f-bb84d37e449a"
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC10-S001",
+   "scene": 10,
+   "sentence": 1,
+   "speaker": "Customer",
+   "target_text": "すみません。痛み止めはありますか？",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice ara",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "3518deea-a75e-4d0e-b2b4-d733879b1ae1",
+     "e84ec871-4840-4790-9f94-1c0572064dfb"
+    ],
+    "sentence_known_audio_ids": [
+     "3fbad70b-e587-4d99-add2-3480100b00a0",
+     "fcdc0eda-3f6b-445b-8766-fc179e42e0ef"
+    ],
+    "takeg_audio_ids": [
+     "036ad9e5-e3ba-476f-b959-0d6e00723762"
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC10-S002",
+   "scene": 10,
+   "sentence": 2,
+   "speaker": "Assistant",
+   "target_text": "はい、あの通路を進んで、左側にございます。",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: off-cast voice eve"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "5043b22e-b700-41d4-b263-bf05118227e5"
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC10-S003",
+   "scene": 10,
+   "sentence": 3,
+   "speaker": "Customer",
+   "target_text": "ありがとうございます。子ども用の痛み止めはありますか？",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice ara",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "e3005c4b-e7f0-4635-b6aa-077bae60af5b",
+     "a47e01f7-127b-4d65-8eb7-3d108fa5aa2f"
+    ],
+    "sentence_known_audio_ids": [
+     "d339f25e-db81-4ce8-96e6-03829e56874f",
+     "611a7877-a36b-4654-917a-6980baabad84"
+    ],
+    "takeg_audio_ids": [
+     "242446b6-3dd1-47fe-a51e-08e1c96785bc"
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC10-S004",
+   "scene": 10,
+   "sentence": 4,
+   "speaker": "Assistant",
+   "target_text": "あると思いますが、確認のためにご覧いただく必要があります。",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "8102a7ce-1868-4920-8425-0c36a30a4b9c"
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC10-S005",
+   "scene": 10,
+   "sentence": 5,
+   "speaker": "Customer",
+   "target_text": "日焼け止めと歯磨き粉も必要なんですが。",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "96fdb694-fc38-43b5-bbd7-b6f1839a7ca6"
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC10-S006",
+   "scene": 10,
+   "sentence": 6,
+   "speaker": "Assistant",
+   "target_text": "日焼け止めはあちらの右側にあります。歯磨き粉は角を曲がったところにございます。",
+   "clear": [
+    "sentence_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice eve",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "8284e3ad-d0a1-4b2f-ae15-842780eb74de",
+     "a1a86d06-a6c6-472f-9369-7746d5830ca4"
+    ],
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "a8e75f1b-3520-4caf-9f09-ad6f2da3eb24",
+     "2ddd63f0-46a5-4c69-9736-f04668ceacf9"
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC10-S007",
+   "scene": 10,
+   "sentence": 7,
+   "speaker": "Customer",
+   "target_text": "ありがとうございます。親切にしていただいて、ありがとうございます。本当に助かりました。",
+   "clear": [
+    "sentence_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice ara",
+    "takeg_audio_ids: off-cast voice ara"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "96b18dab-8f05-4f03-aadb-4ca529a7d4b3",
+     "0cd8abf4-8dfd-4f9e-a083-9addef136443",
+     "f08b4731-a339-4bef-b952-a23d9acabbad"
+    ],
+    "sentence_known_audio_ids": [
+     "97a4b483-8aa4-49e2-a116-89fc2f28c340",
+     "c9be84a6-73df-4873-b454-57595a3a58c4"
+    ],
+    "takeg_audio_ids": [
+     "31586324-9063-412a-a07b-5e4d74af42a6",
+     null
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC10-S008",
+   "scene": 10,
+   "sentence": 8,
+   "speaker": "Assistant",
+   "target_text": "いいえ、どういたしまして。観光でいらっしゃっているんですか？日本語がとてもお上手ですね。",
+   "clear": [
+    "sentence_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice eve",
+    "takeg_audio_ids: off-cast voice eve"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "6ee1a813-ea3e-4950-ad03-a555cceed197",
+     "ed5682f7-7564-4525-a4d9-a1f7695ff3df",
+     "0df8163a-0c5f-484a-b4bb-e20ebee2edfd"
+    ],
+    "sentence_known_audio_ids": [
+     "927d5923-b719-4302-a73e-4cb6f348e1d2",
+     "6616eebe-367a-475f-8c7e-a99c46603060",
+     "aa4a8d53-9e1e-46b8-b423-4ae2bfd0f18a"
+    ],
+    "takeg_audio_ids": [
+     "e32fff76-b70b-4d56-9f2c-47930c50cc6d",
+     "be716399-d883-4356-b514-d45ef0a8b9fb",
+     "0df2a4a3-760f-4d29-a66d-5b9321b9ecfb"
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC10-S009",
+   "scene": 10,
+   "sentence": 9,
+   "speaker": "Customer",
+   "target_text": "ご親切にどうもありがとうございます! はい、休暇で来ていて、日本語をもっと上手に話せるように練習が必要なんです。どうもありがとうございました、それでは失礼します。",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "20c10421-71dc-4652-b8b0-eafb70c923b9",
+     "26c22166-a5f9-4ed0-918b-3a01552a9ef4",
+     "2e293532-e165-4962-a45d-e3bfd0c97ff1",
+     "5541cd3f-bd8e-42b9-b28d-51cc868f270c",
+     "cd0e6782-59bd-461f-82f9-15ee6f7e6c4e"
+    ],
+    "sentence_known_audio_ids": [
+     "a247915b-6d27-49a6-889b-faf198d5e0ea",
+     "66488a35-f476-45a2-9295-215049cab119",
+     "7a96e290-d22b-400b-9d24-54c93afd4a5c"
+    ],
+    "takeg_audio_ids": [
+     "59ca898e-d273-429e-b1f4-41233c0c09dd",
+     "8f1b5c66-665a-4116-9e8a-a0a801c17db4",
+     "5870ad08-b97d-45dc-89df-4277e3b1e0cc",
+     null,
+     null
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC10-S010",
+   "scene": 10,
+   "sentence": 10,
+   "speaker": "Narrator",
+   "target_text": "じゅうに。じゅうさん。じゅうよん。ピンク。グレー。",
+   "clear": [
+    "sentence_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice d0cb9ff07d95",
+    "takeg_audio_ids: off-cast voice d0cb9ff07d95"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "d8205f28-6587-4da5-9946-ef1983c50e8a",
+     "3bf1575b-5850-45b3-a212-4262c258245c",
+     "e0fdc6fe-263c-44e0-840b-260ffcdf0b24",
+     "b6e860f2-c6fe-4c8b-9f9f-748a4466aef2",
+     "7c274b45-430c-4f02-9d7f-46716a751e16"
+    ],
+    "sentence_known_audio_ids": [
+     "408b112f-427b-425d-867e-d00bec9b6fda",
+     "ee1583fa-3e6e-4ec7-9223-8b52868f816c",
+     "3cb4aae4-0969-4d47-ab2f-fdcb49594119",
+     "d66b4738-3946-48fa-99d6-eec8ea161dbb",
+     "1ce18479-2f80-4923-8f80-db1ec1c530bb"
+    ],
+    "takeg_audio_ids": [
+     "c02f513e-208e-4aae-83eb-74fa03e40f06"
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC11-S001",
+   "scene": 11,
+   "sentence": 1,
+   "speaker": "Guest",
+   "target_text": "こんにちは。ジョーンズという名前で予約しております。",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice b1a7441b97a1",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: off-cast voice b1a7441b97a1"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "9d8d3349-94d2-4a3a-89d6-792281826953",
+     "e2717455-c9a4-4ecc-bb68-ea7eb27349f0"
+    ],
+    "sentence_known_audio_ids": [
+     "df57ab97-61be-48c2-839f-76f5b8d2cd67",
+     "57f21c80-6d78-47b8-bb12-1c4324798025"
+    ],
+    "takeg_audio_ids": [
+     "8bcdaa03-469e-4b3f-9f11-7d0d87e4de83"
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC11-S002",
+   "scene": 11,
+   "sentence": 2,
+   "speaker": "Receptionist",
+   "target_text": "いらっしゃいませ。はい、3泊のダブルルームのご予約ですね。身分証明書を拝見できますか？",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice ara",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "5ad3222b-05a8-4868-b038-53b35b1be242",
+     "edae5685-2e9c-4d57-8118-66e8e4455078",
+     "a48c7f50-3e71-4a20-a934-ddd1db72ea8c"
+    ],
+    "sentence_known_audio_ids": [
+     "8232b567-9898-4bf3-8848-b3af20e03b9d",
+     "b8d619b7-b931-4bc5-9828-fe9dbc3786f3",
+     "c27c78c2-af93-43a0-ac41-5adc9be70dce"
+    ],
+    "takeg_audio_ids": [
+     "03b64cd4-3605-42c7-9458-38ae913ce675",
+     "2662d1ce-6133-452b-b6d4-b0454c4a6036"
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC11-S003",
+   "scene": 11,
+   "sentence": 3,
+   "speaker": "Guest",
+   "target_text": "かしこまりました。こちらがパスポートです。",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "64bd0347-a8ec-40c1-adbb-9fc8285961c5",
+     "674a3e59-8969-4012-8b0c-f82f14ec7ec3"
+    ],
+    "sentence_known_audio_ids": [
+     "fb57e70f-2b33-4f26-bb1b-464da0c612ea",
+     "7acc9a01-a48e-4682-b775-bdf186ba1e4d"
+    ],
+    "takeg_audio_ids": [
+     "3ce49d2e-c571-4fca-a614-40b50dad936b"
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC11-S004",
+   "scene": 11,
+   "sentence": 4,
+   "speaker": "Receptionist",
+   "target_text": "ありがとうございます。お部屋は3階の709号室でございます。",
+   "clear": [
+    "sentence_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice ara",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "e3005c4b-e7f0-4635-b6aa-077bae60af5b",
+     "232917a1-5b59-4bfd-ac7d-49b6227e3fe1"
+    ],
+    "sentence_known_audio_ids": [
+     "706e6254-bd2d-41db-9862-cf96b7282ad2",
+     "e145acf3-f1fe-4e01-a3d0-0ad62367eb95"
+    ],
+    "takeg_audio_ids": [
+     "b1f8c78d-bea1-441f-affc-448ad6ac820a"
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC11-S005",
+   "scene": 11,
+   "sentence": 5,
+   "speaker": "Guest",
+   "target_text": "お部屋からの眺めはありますか？",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "2f12c306-8ba3-47f9-b2f3-4dab1d3fdd73"
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC11-S006",
+   "scene": 11,
+   "sentence": 6,
+   "speaker": "Receptionist",
+   "target_text": "はい、庭園に面しております。",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: off-cast voice ara"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "0ecd5a8a-d230-478f-b0e3-6df1cb4701a5"
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC11-S007",
+   "scene": 11,
+   "sentence": 7,
+   "speaker": "Guest",
+   "target_text": "朝食は何時からですか？",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "34c6a994-065a-4fef-8bac-a78723be8fdd"
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC11-S008",
+   "scene": 11,
+   "sentence": 8,
+   "speaker": "Receptionist",
+   "target_text": "7時半から10時までです。フルーツとシリアル、またはホットの朝食をご用意しております。",
+   "clear": [
+    "sentence_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice ara",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "f376ab4d-229e-41a1-8fae-176872297ed3",
+     "4fe34ef5-4a6e-49db-8d63-687ed543da94"
+    ],
+    "sentence_known_audio_ids": [
+     "d867eaeb-36c3-4950-883b-b364a0fc5f44",
+     "c24a3ce4-511f-4c79-8b34-e7bcd5fc2e8a"
+    ],
+    "takeg_audio_ids": [
+     "708c8ced-f33c-4c97-9066-1131342bef0e",
+     "be4830d7-ce3b-4c39-abbd-fd4992aa330b"
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC11-S009",
+   "scene": 11,
+   "sentence": 9,
+   "speaker": "Guest",
+   "target_text": "素晴らしいです。レイトチェックアウトをお願いすることはできますか？",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice b1a7441b97a1",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "441ec813-ddca-45d4-bc1c-1f8aca5bc7bb",
+     "a4efc7f7-4d7f-4cec-ba61-2bd6204abfe4"
+    ],
+    "sentence_known_audio_ids": [
+     "7c248c3f-064e-4c81-8444-339de76a3380",
+     "ed5200dd-a6a6-4921-a33c-78761877cb7a"
+    ],
+    "takeg_audio_ids": [
+     "fd1093be-9b8a-4396-b022-5d6e1c8cd0ab"
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC11-S010",
+   "scene": 11,
+   "sentence": 10,
+   "speaker": "Receptionist",
+   "target_text": "はい、正午までご滞在いただけます。追加料金はございません。",
+   "clear": [
+    "sentence_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice ara",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "3fe7bea0-6b96-4dbf-865c-33dc28f2ed25",
+     "5f18a3c4-3333-4278-bfc7-278742ee7456"
+    ],
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "012bfec4-f1fa-4efe-8197-f66a1cc2147a",
+     "b9e9d4d0-7655-4386-8814-53a7c4d7fc01"
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC11-S011",
+   "scene": 11,
+   "sentence": 11,
+   "speaker": "Guest",
+   "target_text": "それから、ワイファイのパスワードは何ですか？",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "3d2e5f52-6d67-43c1-9e4f-371474ce711c"
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC11-S012",
+   "scene": 11,
+   "sentence": 12,
+   "speaker": "Receptionist",
+   "target_text": "お部屋のウェルカムカードに書いてあります。どうぞごゆっくりお過ごしください。",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "af20cb89-21ac-44e6-9d75-90c2a3283355",
+     "06316be7-e0e8-4e5c-8bd4-8f271f44b376"
+    ],
+    "sentence_known_audio_ids": [
+     "6344029c-da57-416d-a12f-7d216d2d94e0",
+     "1af837c4-5610-4491-a306-b939ae02400e"
+    ],
+    "takeg_audio_ids": [
+     "2f4f7e63-47e2-4fd5-a24b-fbdbedd618f7",
+     "97d043d0-0d4a-4f99-a828-d1eae9c6b03e"
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC11-S013",
+   "scene": 11,
+   "sentence": 13,
+   "speaker": "Narrator",
+   "target_text": "じゅうろく。じゅうなな。じゅうはち。げつようび。かようび。",
+   "clear": [
+    "sentence_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice d0cb9ff07d95",
+    "takeg_audio_ids: off-cast voice d0cb9ff07d95"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "eae8be3b-2d2a-4bbd-9cde-8b1f897433d3",
+     "0ad25b28-2b1f-44ba-99de-bc6a6f8d3f7a",
+     "3934251d-e88b-4fdc-8759-d29bd9ab5fe2",
+     "a1fa2d40-b871-40b3-9f07-bdc99b86c2cb",
+     "51a509d8-a965-4ef0-8ee2-a52652a8141b"
+    ],
+    "sentence_known_audio_ids": [
+     "f3831436-2ab0-4d0b-b517-7389a8b2dffa",
+     "1b85236c-8e96-4b69-ad1d-f2e732438909",
+     "56931483-5b4a-409c-9869-137a0824e1d7",
+     "e3798a43-8590-467f-8390-7affd6e3362e",
+     "791ee8e7-62cc-4bd9-a254-8b6037dcef27"
+    ],
+    "takeg_audio_ids": [
+     "d9b86343-552f-46f6-9ca5-7833aa76f530"
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC12-S001",
+   "scene": 12,
+   "sentence": 1,
+   "speaker": "Customer",
+   "target_text": "おはようございます。あまり体の調子がよくないんですが、何か勧めていただけますか？",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice ara",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: off-cast voice ara"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "1310cf1a-9819-4a4e-8a61-afbe78928362",
+     "299b407a-0610-4ce8-81b0-bab8c36d681f"
+    ],
+    "sentence_known_audio_ids": [
+     "7c9a45c3-85be-4877-bc0f-aa5ac3963e68",
+     "a66bea5f-5ae9-484c-8a1e-9b48d8fa4fb7"
+    ],
+    "takeg_audio_ids": [
+     "8a79f556-bb95-4d71-9962-1bd9431b2ae8"
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC12-S002",
+   "scene": 12,
+   "sentence": 2,
+   "speaker": "Pharmacist",
+   "target_text": "もちろんです。どのような症状ですか？",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice b1a7441b97a1",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "64bd0347-a8ec-40c1-adbb-9fc8285961c5",
+     "74e6f4d7-6071-407f-9af8-6f81142a217f"
+    ],
+    "sentence_known_audio_ids": [
+     "fb57e70f-2b33-4f26-bb1b-464da0c612ea",
+     "b9f1f71e-cc22-452c-87cc-9ef9916ad652"
+    ],
+    "takeg_audio_ids": [
+     "228ec1d2-8a26-47df-8ffb-00a2729e2563"
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC12-S003",
+   "scene": 12,
+   "sentence": 3,
+   "speaker": "Customer",
+   "target_text": "昨日から頭痛と喉の痛みがあります。",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "cfe1d81a-1920-476a-90a8-96c7d656d5d6"
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC12-S004",
+   "scene": 12,
+   "sentence": 4,
+   "speaker": "Pharmacist",
+   "target_text": "頭痛にはパラセタモールを、喉にはこちらのトローチをお試しください。",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "ae020964-9c5e-4d1e-abe7-9665108d92f8"
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC12-S005",
+   "scene": 12,
+   "sentence": 5,
+   "speaker": "Customer",
+   "target_text": "パラセタモールはどのくらいの頻度で飲めばいいですか？",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "e898fcc3-69ea-47dd-82a4-19b7859504bb"
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC12-S006",
+   "scene": 12,
+   "sentence": 6,
+   "speaker": "Pharmacist",
+   "target_text": "四時間から六時間ごとに一錠で、一日に八錠を超えないようにしてください。",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "565c596e-41bf-44d4-a22f-3399460c8ee8"
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC12-S007",
+   "scene": 12,
+   "sentence": 7,
+   "speaker": "Customer",
+   "target_text": "食事と一緒に飲んでも大丈夫ですか？",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "a135598e-5a22-46f6-a97e-7cc51b085760"
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC12-S008",
+   "scene": 12,
+   "sentence": 8,
+   "speaker": "Pharmacist",
+   "target_text": "はい、食事中か食後に飲むのが一番いいです。",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "09433931-6967-43be-b1fe-22926b55de71"
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC12-S009",
+   "scene": 12,
+   "sentence": 9,
+   "speaker": "Customer",
+   "target_text": "ありがとうございます。絆創膏も一箱いただけますか？",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice ara",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "e3005c4b-e7f0-4635-b6aa-077bae60af5b",
+     "0ff11662-eff5-4feb-9e11-eb7c6118c988"
+    ],
+    "sentence_known_audio_ids": [
+     "d339f25e-db81-4ce8-96e6-03829e56874f",
+     "0359ee99-6ab2-48bd-bc54-900f63e75dd2"
+    ],
+    "takeg_audio_ids": [
+     "920e3e67-d83f-43ce-bb48-7eeff303d57e"
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC12-S010",
+   "scene": 12,
+   "sentence": 10,
+   "speaker": "Narrator",
+   "target_text": "じゅうく。にじゅう。にじゅういち。すいようび。もくようび。",
+   "clear": [
+    "sentence_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice d0cb9ff07d95",
+    "takeg_audio_ids: off-cast voice d0cb9ff07d95"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "de6adbda-a336-4b73-97bc-e2be0aae3622",
+     "f31783b8-03da-45f1-a3ec-5aad16f37c70",
+     "bb1aeca5-ad65-4b77-8bcc-9fa3c05d3d7d",
+     "de59ecc7-1346-4831-9ac7-b8ba086b0064",
+     "92bdcd01-3ecc-4f42-ae7f-7a9171fe86b7"
+    ],
+    "sentence_known_audio_ids": [
+     "bef677f5-d0d7-4ff1-a1a8-ac70e6247cae",
+     "3952f2be-b8c9-4b21-b11c-a3c98e30b31f",
+     "61b80948-3693-447a-a84d-4d2f0245071e",
+     "dbce2355-f798-4df5-865c-26ceabd0a525",
+     "8b0abd17-43c6-4031-8c8a-f9877c3bde03"
+    ],
+    "takeg_audio_ids": [
+     "0df9681e-15c5-455c-95ff-9b48f57d9040"
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC13-S001",
+   "scene": 13,
+   "sentence": 1,
+   "speaker": "Tourist",
+   "target_text": "すみません、一番近いスーパーへの行き方、わかりますか？",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "95534696-a227-4f1b-ab7a-63f796900e25"
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC13-S002",
+   "scene": 13,
+   "sentence": 2,
+   "speaker": "Local",
+   "target_text": "はい、歩いて約十分です。この道をまっすぐ進んでください。",
+   "clear": [
+    "sentence_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice b1a7441b97a1",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "1e505675-41e6-4d8f-b237-865171920d0e",
+     "47d4e212-ed65-4598-8a38-1f832bb1751b"
+    ],
+    "sentence_known_audio_ids": [
+     "1cb15532-aec4-4070-85d9-c00347d4a9ca",
+     "23eb55f2-e486-41c2-aa77-d2799de88863"
+    ],
+    "takeg_audio_ids": [
+     "66e1fe27-00bc-432a-b0e0-da5c10776b26",
+     "eb8f6645-8af2-4cf2-9e03-c735fd5ed5f9"
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC13-S003",
+   "scene": 13,
+   "sentence": 3,
+   "speaker": "Tourist",
+   "target_text": "あの教会を過ぎてですか？",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "d68d7a4f-e82e-4f41-8eed-9192f692596b"
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC13-S004",
+   "scene": 13,
+   "sentence": 4,
+   "speaker": "Local",
+   "target_text": "はい、教会と郵便局を過ぎてください。",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "9d016274-97cd-4ca0-9053-2ab8d36350c8"
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC13-S005",
+   "scene": 13,
+   "sentence": 5,
+   "speaker": "Local",
+   "target_text": "二つ目のロータリーで、最初の出口に進んでください。",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "044130a0-0b26-4841-abaa-3f5609b54ab7"
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC13-S007",
+   "scene": 13,
+   "sentence": 7,
+   "speaker": "Local",
+   "target_text": "左手にスーパーが見えます。バス停のちょうど向かい側です。",
+   "clear": [
+    "sentence_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice b1a7441b97a1",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "19921f4b-9727-4a81-b345-5addb87fae13",
+     "6153e454-1101-41e4-a6e6-1fa599f5949e"
+    ],
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "91b4b2b4-edbc-4f0a-88ed-6c64ab142acc",
+     "dc52b4d1-ca4c-44ef-8ad1-690653fdafa7"
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC13-S008",
+   "scene": 13,
+   "sentence": 8,
+   "speaker": "Tourist",
+   "target_text": "ありがとうございます。近くにATMはありますか？",
+   "clear": [
+    "sentence_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice rex",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "5261fb3f-703e-40ba-b4a8-97e972c2eff5",
+     "82c54e67-7106-4ff9-9cc9-d1802a3c028e"
+    ],
+    "sentence_known_audio_ids": [
+     "fd8d734b-d5ac-448d-bdd1-e4f952ee9eb7",
+     "778a08cf-32d3-4612-bc99-645830b1727e"
+    ],
+    "takeg_audio_ids": [
+     "f6acf427-1034-41ee-bf05-f4e02fa7348f"
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC13-S009",
+   "scene": 13,
+   "sentence": 9,
+   "speaker": "Local",
+   "target_text": "はい、メインストリートにあります。パン屋の隣です。",
+   "clear": [
+    "sentence_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice b1a7441b97a1",
+    "takeg_audio_ids: off-cast voice b1a7441b97a1"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "daf21dfb-7b60-4b8f-8b95-31ccab9ed731",
+     "fe18ff7f-2454-48b1-b58f-f942aeefe3d2"
+    ],
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "7b570ba1-eeda-4f5e-881f-4c04a78a0b50",
+     null
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC13-S010",
+   "scene": 13,
+   "sentence": 10,
+   "speaker": "Tourist",
+   "target_text": "ありがとうございました。親切にしていただいて、ありがとうございます。",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice rex",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: off-cast voice rex"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "ac609b57-f6d8-4020-a8da-6303cf9c8d3c",
+     "6c9db144-e2ed-4194-a15b-55574fded3ad"
+    ],
+    "sentence_known_audio_ids": [
+     "719c842e-2088-4a58-b9ab-0d0f50b3a7bc",
+     "26d77a51-42dd-4a63-a99f-953d9c7974cf"
+    ],
+    "takeg_audio_ids": [
+     "2d0823ae-21d2-48aa-beba-7b1fb9d106b7"
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC13-S011",
+   "scene": 13,
+   "sentence": 11,
+   "speaker": "Narrator",
+   "target_text": "三十。四十。五十。金曜日。土曜日。",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice d0cb9ff07d95",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: off-cast voice d0cb9ff07d95"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "d45ba76f-3512-451f-b4ca-cb3017b3240c",
+     "0d0eb10e-a1bd-40b6-b067-973a60c771f2",
+     "60fd524a-1004-420e-ba3d-370f9f87a35a",
+     "04a1fed2-6e50-416e-a5b0-279b62a22652",
+     "da8f7e18-51aa-4d57-92ed-ab2bc5857a39"
+    ],
+    "sentence_known_audio_ids": [
+     "b8dba488-ef46-4529-a7bf-0e7d4d111d33",
+     "11ee5f0b-5d23-4d4b-ab92-51d73c34ae66",
+     "ed74bf89-0638-4d10-ae54-8cb076b4fd53",
+     "d3f8cdd3-ca85-4bf8-8aef-5b65aeb9337b",
+     "26b3a8f1-b018-4939-a7fa-9691e88f312c"
+    ],
+    "takeg_audio_ids": [
+     "13633017-7d19-4bdf-8a0e-f4ad5e5a81b7"
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC14-S001",
+   "scene": 14,
+   "sentence": 1,
+   "speaker": "Passenger",
+   "target_text": "こんにちは。駅まで乗せていただけますか。",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice ara",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: off-cast voice ara"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "75ebee77-f066-407a-9b08-06a60f43e327",
+     "d79c6f74-7079-46a8-9137-3bae5217e4a0"
+    ],
+    "sentence_known_audio_ids": [
+     "440737cb-29d2-4ab5-8c77-3c69e5148de0",
+     "1391a64e-4315-4173-a9d4-661d4fcee3f1"
+    ],
+    "takeg_audio_ids": [
+     "f794c6d3-27bb-4a06-a22b-734033f0b92e"
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC14-S002",
+   "scene": 14,
+   "sentence": 2,
+   "speaker": "Driver",
+   "target_text": "はい、もちろんです。今は交通量が多いので、少し時間がかかるかもしれません。",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "bf893830-90df-49de-9355-bc794270ef4d",
+     "4483c953-4aea-4881-bcf9-319439e561c1"
+    ],
+    "sentence_known_audio_ids": [
+     "7beac29a-22ef-45c5-8c72-0a5675302ea0",
+     "6e419d74-9332-475d-b63f-2b287eec6aaf"
+    ],
+    "takeg_audio_ids": [
+     "80052911-768a-411a-a34f-80d2176bd5f1",
+     "4a3d41aa-ca8e-423d-8724-a41bbcbc63af"
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC14-S003",
+   "scene": 14,
+   "sentence": 3,
+   "speaker": "Passenger",
+   "target_text": "だいたいどのくらいかかると思いますか？",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "ef4d535d-f84e-4215-b64a-a36ee5006d54"
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC14-S004",
+   "scene": 14,
+   "sentence": 4,
+   "speaker": "Driver",
+   "target_text": "信号に運悪く引っかからなければ、おそらく二十分くらいかと思います。",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "69044367-557e-4a5d-ab27-8c51bf28d457"
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC14-S005",
+   "scene": 14,
+   "sentence": 5,
+   "speaker": "Passenger",
+   "target_text": "駅の中でどこで切符を買えるか、ご存知ですか？",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: off-cast voice ara"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "5465bf94-df9b-4894-b70b-6b70df8a6f37"
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC14-S006",
+   "scene": 14,
+   "sentence": 6,
+   "speaker": "Driver",
+   "target_text": "はい、切符売り場のすぐそばで降ろしますね。",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: off-cast voice b1a7441b97a1"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "95cf5d27-e301-46bc-b52f-6d2c4aeba221"
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC14-S007",
+   "scene": 14,
+   "sentence": 7,
+   "speaker": "Driver",
+   "target_text": "着きました。十二ポンド五十です。",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "f03dcee4-a580-460b-ba2f-bd885bdb94c2",
+     "aca8eb8b-7c1e-49bb-a40b-dbf5797272bd"
+    ],
+    "sentence_known_audio_ids": [
+     "fbde416d-ed45-4770-b61d-8c085aecee52",
+     "2f9a9fdd-9a3c-4ac4-802e-555a85fd49f9"
+    ],
+    "takeg_audio_ids": [
+     "68b9deb8-377b-4373-8e4b-21c4a1190c91",
+     "50c3e7cc-8a20-44d3-a01c-a583d7463401"
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC14-S008",
+   "scene": 14,
+   "sentence": 8,
+   "speaker": "Passenger",
+   "target_text": "カードで払えますか？",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: off-cast voice ara"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "4a569283-eb66-4b22-bda4-e8ec50c6a466"
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC14-S009",
+   "scene": 14,
+   "sentence": 9,
+   "speaker": "Driver",
+   "target_text": "はい、もちろんです。機械はこちらです。",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice b1a7441b97a1",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: off-cast voice b1a7441b97a1"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "bf893830-90df-49de-9355-bc794270ef4d",
+     "0a1aa694-e239-4c9a-ba20-b6abd2714079"
+    ],
+    "sentence_known_audio_ids": [
+     "7beac29a-22ef-45c5-8c72-0a5675302ea0",
+     "4354f4e6-7da3-43d9-bc4b-b4a2860b1583"
+    ],
+    "takeg_audio_ids": [
+     "80052911-768a-411a-a34f-80d2176bd5f1",
+     null
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC14-S010",
+   "scene": 14,
+   "sentence": 10,
+   "speaker": "Narrator",
+   "target_text": "百。二百。千。日曜日。十二時。",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: off-cast voice d0cb9ff07d95",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: off-cast voice d0cb9ff07d95"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "66b21c5c-ebdf-40bb-bc24-c2f1a66121d3",
+     "3da8e2a2-7728-45ea-a24e-7c6fa44c6f91",
+     "de1b9cc6-aca1-4501-97fa-699f6f522925",
+     "a2794701-362b-45f6-81df-8c8bc9426e76",
+     "94ad304d-515d-403a-8a3d-d0eb30f66806"
+    ],
+    "sentence_known_audio_ids": [
+     "118d7a95-5bfa-4799-af05-c251d7137b8d",
+     "4dd8d282-d611-461e-8859-f8a16fecfc16",
+     "85b183cb-99dc-4d9e-908a-fa8e7380e8e7",
+     "83fd34d5-380a-4bfc-b61d-7366273add8a",
+     "1b5c46c6-2558-4c81-80ab-696388fde03d"
+    ],
+    "takeg_audio_ids": [
+     "bb628f76-7370-4511-bc3f-9a9e14195104"
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC15-S001",
+   "scene": 15,
+   "sentence": 1,
+   "speaker": "Learner",
+   "target_text": "それはいくらですか。",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "fc5ab59b-a370-46e7-b294-087ebbcd61df",
+     "9e0e156a-d125-4cb3-8631-1a75dafd10e1"
+    ],
+    "sentence_known_audio_ids": [
+     "36925aa1-d82e-4645-a22d-37a3396c526c",
+     "d005fea4-14f9-48d8-affd-7e791768e931"
+    ],
+    "takeg_audio_ids": [
+     "06f69862-3929-43bf-bb4f-6ce176759f15",
+     "d30fb0b3-d462-4735-8f47-d69b9da42993"
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC15-S002",
+   "scene": 15,
+   "sentence": 2,
+   "speaker": "Learner",
+   "target_text": "それがいくらか教えてもらえますか。",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "bf88cb46-105b-48fe-86a3-621952d6c5ea",
+     "4d121875-19d2-48ae-973e-7bff6e592be4",
+     "f9a30c87-a3c6-4958-8976-2530f198a11e"
+    ],
+    "sentence_known_audio_ids": [
+     "ba59a3ac-9b2f-4d67-947d-f1acbb97a3e2",
+     "2011a1a6-1bb1-4af8-9ba9-e954535ce499",
+     "abb0346a-662b-4ece-910e-5a0367c22a68"
+    ],
+    "takeg_audio_ids": [
+     "3b9a227e-502d-48bb-baf9-5ad95553a3b8",
+     "4d1feebe-806a-4728-b246-cb1db73d6a64",
+     "3699a181-f550-4c57-b102-beacfbe2093c"
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC15-S003",
+   "scene": 15,
+   "sentence": 3,
+   "speaker": "Learner",
+   "target_text": "町までタクシーでいくらかかりますか。",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "d211d933-a233-4907-9862-1cae0e8687ba",
+     "ea2d4d9f-b164-42d2-ae42-df69a8573366",
+     "9fd56e1d-b589-44f0-a841-6aadcd57bf97"
+    ],
+    "sentence_known_audio_ids": [
+     "edeab9a0-ca4d-4e3a-aeff-4e0a28a59913",
+     "13d6508e-95aa-4a38-b20f-d919dae34e3c",
+     "ae102efb-5bcf-4bc1-a8f7-7b1b83ce14bc"
+    ],
+    "takeg_audio_ids": [
+     "0a345635-13bc-4e3a-a4dc-6a8c32e22c8f",
+     "05e708a2-066d-4575-bc2d-3a9ed2f994b6",
+     "2d06f582-611e-4a8a-baaf-2883a005e5d4"
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC15-S004",
+   "scene": 15,
+   "sentence": 4,
+   "speaker": "Learner",
+   "target_text": "町までバスでいくらかかりますか。",
+   "clear": [
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": null,
+    "sentence_known_audio_ids": null,
+    "takeg_audio_ids": [
+     "dff48fe7-1312-49b0-8240-2fac54cfe6e2"
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC15-S005",
+   "scene": 15,
+   "sentence": 5,
+   "speaker": "Learner",
+   "target_text": "バスはどこで乗れますか。",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "51c57548-78da-4c08-936d-505fc34fe264",
+     "2df7cab4-64bc-4c75-b883-c783021a7110",
+     "6899670f-9af1-4f61-bce3-578bc024c5ff",
+     "aca8e264-da76-4903-8dd1-0618b1d043d7"
+    ],
+    "sentence_known_audio_ids": [
+     "5437cd92-832d-4865-8068-0615c8463766",
+     "95506bc6-a720-4153-8667-924c01c8af73",
+     "3c274fea-abd2-44fb-a102-6b1a53ec4f63",
+     "315358b7-132f-4f00-8419-738113bbc0b5"
+    ],
+    "takeg_audio_ids": [
+     "65e3fe79-1c82-497b-a3a3-58c933559ce5",
+     "2f217b04-37e3-4570-ba2b-5e99276f994f",
+     "18359f7b-0e73-4bbe-8f39-97eb52063eef",
+     "88be9b8d-e3f2-478a-9edc-f1b5761b252b"
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC15-S006",
+   "scene": 15,
+   "sentence": 6,
+   "speaker": "Learner",
+   "target_text": "タクシーはどこで乗れますか。",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "061ca6e7-5e13-4445-8ae7-778a5234de2d",
+     "547b0c7e-0754-4c81-8726-dde53a0b9725",
+     "84f1f744-51ce-4274-9dcd-8ababd61f3dd"
+    ],
+    "sentence_known_audio_ids": [
+     "4299349d-3377-4ae1-b4ca-af9305fb9759",
+     "59ff8f64-974a-4774-91df-1f9224f93fb2",
+     "7155a53c-af1e-4c10-ab36-a5abce1a0673"
+    ],
+    "takeg_audio_ids": [
+     "a4161d1e-561b-4c07-8345-4c8025337a50",
+     null,
+     "82ee1a27-9c02-43a4-955d-8aa9f484b09a"
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC15-S007",
+   "scene": 15,
+   "sentence": 7,
+   "speaker": "Learner",
+   "target_text": "町までの片道切符を四枚お願いします。",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "39bb3b95-d6ed-4615-bfb8-2ffad0e793e7",
+     "1b34f692-ed87-461b-8a08-72ca8f143df6"
+    ],
+    "sentence_known_audio_ids": [
+     "5841e283-7dd4-4a68-b948-1a63fe46a282",
+     "ee536109-392b-4b06-97ad-73643b0b3f62"
+    ],
+    "takeg_audio_ids": [
+     "e9db6903-18da-4b42-a71b-18ac3b82c159",
+     "a26d3ca4-f037-4f98-a786-627e9f5f7495"
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC15-S008",
+   "scene": 15,
+   "sentence": 8,
+   "speaker": "Learner",
+   "target_text": "町までの往復切符を二枚お願いします。",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "192a252d-b63e-4dc2-bcab-bde3c4a93ba6",
+     "11b5c9ae-d4f7-4cc6-b03b-83e6192325f3",
+     "c086ff6a-19b8-48af-ace6-9e2c879512a8"
+    ],
+    "sentence_known_audio_ids": [
+     "8a8d2a65-d125-4778-8794-f5738a834e1f",
+     "38146ea4-1762-486f-b54c-3d9480bc2df6",
+     "9de28ec1-5ea0-4315-8e6d-d18d9e2e3a29"
+    ],
+    "takeg_audio_ids": [
+     "1cebe5e4-a868-4426-bc49-8fdef4b88d05",
+     "82d3b743-cccd-4699-a1fb-9455bc6f45ce",
+     "0a6273e0-8f0e-4bd0-ad39-0e788c855fb0"
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC15-S009",
+   "scene": 15,
+   "sentence": 9,
+   "speaker": "Learner",
+   "target_text": "あなたの言葉で話そうと思います、その方が礼儀正しいと思うので。",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "07d2615d-cbf2-496e-af28-7a4d78913314",
+     "2f6c40e8-4ca6-4414-b679-6f547840adf2",
+     "41e7487b-2b82-4a0b-b057-8bb471104562",
+     "4c625a78-75dd-4f84-a3ba-a3211d55b5f8"
+    ],
+    "sentence_known_audio_ids": [
+     "5482d770-2194-4435-bdf6-43c0f4f86a8b",
+     "26731e5b-f64f-43bb-a483-c346c428b633",
+     "c65aa0a3-d852-4707-95c9-92a58bcdea6b",
+     "a4b11148-2c52-4717-97ec-ae55c4d81b04"
+    ],
+    "takeg_audio_ids": [
+     "c5e3bf39-213d-4541-a8c9-33dd344de2fa",
+     "64f0f46c-f3ff-4992-a6c6-6d45c5036cc3",
+     null,
+     "24fa3d4f-6f77-44f6-a93b-19d1bb20a0f5"
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC15-S010",
+   "scene": 15,
+   "sentence": 10,
+   "speaker": "Learner",
+   "target_text": "すみません、あまり速く話せません。",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "31452b5d-9e3f-47a1-aae2-b13de343f98b",
+     "b65fefb8-0de4-4a34-85cc-9277b7ff6981",
+     "6672f1e0-36c0-45a1-b4eb-bc53d6c310b6"
+    ],
+    "sentence_known_audio_ids": [
+     "224e5c65-3f32-4108-93ad-170db2202e05",
+     "8e8912ba-a6c0-493a-bd3b-973d40e441fb",
+     "4aaee562-ef9f-4089-8408-7d9e640800d1"
+    ],
+    "takeg_audio_ids": [
+     "2984edf6-933e-475f-a48f-da553f001254",
+     "5b9aaf4e-a457-41d5-95fd-d9589525f404",
+     "ab58bf75-60be-4071-8c65-c1f5165e484a"
+    ]
+   }
+  },
+  {
+   "id": "jpn_for_eng:pod-1:SC15-S011",
+   "scene": 15,
+   "sentence": 11,
+   "speaker": "Narrator",
+   "target_text": "じゅうまん。ろくじゅう。ななじゅう。いちじ。じゅういちじ。",
+   "clear": [
+    "sentence_audio_ids",
+    "sentence_known_audio_ids",
+    "takeg_audio_ids"
+   ],
+   "why": [
+    "sentence_audio_ids: text does not belong to this sentence",
+    "sentence_known_audio_ids: text does not belong to this sentence",
+    "takeg_audio_ids: text does not belong to this sentence"
+   ],
+   "before": {
+    "sentence_audio_ids": [
+     "7273e7ee-29d4-49d9-bf59-c01189016729",
+     "ad4dc26f-7c47-4788-9b95-b6882498077f",
+     "3132876e-9bd6-4490-a418-3f3e04e18eac"
+    ],
+    "sentence_known_audio_ids": [
+     "0e41fdf3-d26f-439f-9dce-6c47cc99b31d",
+     "5a479aab-89fd-4f49-927e-936772b79411",
+     "bb095670-a6c5-49df-a081-0508aedbe6e5"
+    ],
+    "takeg_audio_ids": [
+     "a4a91a89-816c-473d-a325-6ce8e5656017",
+     "2f5a4449-9afe-45fd-a0bd-ca8fda5deec4"
+    ]
+   }
+  }
+ ]
+}
