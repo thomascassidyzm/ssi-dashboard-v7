@@ -1,0 +1,2485 @@
+{
+  "course": "deu_at_for_eng",
+  "pod": "deu_at_for_eng:pod-1",
+  "apply": true,
+  "at": "2026-08-24T12:45:38.220Z",
+  "gates": {
+    "margin_floor": 1.5,
+    "seam_db": -35,
+    "seam_window_s": 0.03,
+    "min_piece_s": 0.35
+  },
+  "splicer": "scripts/splice-fork/splice.py (unmodified)",
+  "multi_sentence_turns_needing_split": 100,
+  "processed": 100,
+  "stats": {
+    "linked": 86,
+    "reused_clips": 0,
+    "spliced_clips": 229,
+    "refused": 14,
+    "errors": 0,
+    "known_count_mismatch": 0
+  },
+  "refusals": [
+    {
+      "id": "deu_at_for_eng:pod-1:SC06-S013",
+      "order": 37,
+      "n": 5,
+      "reason": "too_few_gaps",
+      "text": "oans. zwoa. drei. weiß. schwarz.",
+      "sentences": [
+        "oans.",
+        "zwoa.",
+        "drei.",
+        "weiß.",
+        "schwarz."
+      ],
+      "target_audio_id": "3664af55-7a87-4830-9c7e-bafcc48d2b16",
+      "measure": {
+        "whole_dur": 3.624,
+        "interior_gaps_ms": [
+          301,
+          316,
+          158
+        ],
+        "cut_at_gaps_ms": [
+          301,
+          316,
+          158
+        ],
+        "rejected_gaps_ms": [],
+        "margin": null,
+        "piece_durs": [
+          0.812,
+          0.966,
+          1.391,
+          0.754
+        ]
+      }
+    },
+    {
+      "id": "deu_at_for_eng:pod-1:SC07-S015",
+      "order": 52,
+      "n": 5,
+      "reason": "too_few_gaps",
+      "text": "Fünf. Zehn. Fünfzehn. Rot. Grün.",
+      "sentences": [
+        "Fünf.",
+        "Zehn.",
+        "Fünfzehn.",
+        "Rot.",
+        "Grün."
+      ],
+      "target_audio_id": "99cb43c4-524f-4cd2-ab8f-0a374866b11f",
+      "measure": {
+        "whole_dur": 3.816,
+        "interior_gaps_ms": [
+          865,
+          145
+        ],
+        "cut_at_gaps_ms": [
+          865,
+          145
+        ],
+        "rejected_gaps_ms": [],
+        "margin": null,
+        "piece_durs": [
+          0.966,
+          1.932,
+          1.118
+        ]
+      }
+    },
+    {
+      "id": "deu_at_for_eng:pod-1:SC08-S012",
+      "order": 64,
+      "n": 2,
+      "reason": "margin_below_floor",
+      "text": "i bin ma ned sicher, ob i an Hunger hob. Hobn S' a Speisekarte?",
+      "sentences": [
+        "i bin ma ned sicher, ob i an Hunger hob.",
+        "Hobn S' a Speisekarte?"
+      ],
+      "target_audio_id": "0a938ec9-205d-442d-a575-0cfb6f21546d",
+      "measure": {
+        "whole_dur": 4.815,
+        "interior_gaps_ms": [
+          317,
+          322
+        ],
+        "cut_at_gaps_ms": [
+          322
+        ],
+        "rejected_gaps_ms": [
+          317
+        ],
+        "margin": 1.01,
+        "piece_durs": [
+          2.922,
+          1.993
+        ]
+      }
+    },
+    {
+      "id": "deu_at_for_eng:pod-1:SC08-S013",
+      "order": 65,
+      "n": 3,
+      "reason": "margin_below_floor",
+      "text": "Jo, klar. Do is s'. De Fish and Chips san sehr guat.",
+      "sentences": [
+        "Jo, klar.",
+        "Do is s'.",
+        "De Fish and Chips san sehr guat."
+      ],
+      "target_audio_id": "3ec527ca-f24e-4206-ba17-035b07ec236f",
+      "measure": {
+        "whole_dur": 5.208,
+        "interior_gaps_ms": [
+          110,
+          434,
+          324,
+          266
+        ],
+        "cut_at_gaps_ms": [
+          434,
+          324
+        ],
+        "rejected_gaps_ms": [
+          266,
+          110
+        ],
+        "margin": 1.22,
+        "piece_durs": [
+          1.137,
+          0.745,
+          3.525
+        ]
+      }
+    },
+    {
+      "id": "deu_at_for_eng:pod-1:SC08-S016",
+      "order": 68,
+      "n": 5,
+      "reason": "seam_not_silent",
+      "text": "vier. sechs. acht. blau. gelb.",
+      "sentences": [
+        "vier.",
+        "sechs.",
+        "acht.",
+        "blau.",
+        "gelb."
+      ],
+      "target_audio_id": "68911f88-83e8-404c-8987-eb5df4a2d99d",
+      "measure": {
+        "whole_dur": 3.48,
+        "interior_gaps_ms": [
+          360,
+          275,
+          296,
+          253
+        ],
+        "cut_at_gaps_ms": [
+          360,
+          275,
+          296,
+          253
+        ],
+        "rejected_gaps_ms": [],
+        "margin": null,
+        "piece_durs": [
+          0.742,
+          0.928,
+          0.784,
+          0.785,
+          0.64
+        ],
+        "seams_db": [
+          {
+            "edge": "s0.tail",
+            "db": -51.8,
+            "piece_peak_db": -2.9
+          },
+          {
+            "edge": "s1.head",
+            "db": -50.1,
+            "piece_peak_db": -2.4
+          },
+          {
+            "edge": "s1.tail",
+            "db": -48.7,
+            "piece_peak_db": -2.4
+          },
+          {
+            "edge": "s2.head",
+            "db": -30.4,
+            "piece_peak_db": -2.3
+          },
+          {
+            "edge": "s2.tail",
+            "db": -49.3,
+            "piece_peak_db": -2.3
+          },
+          {
+            "edge": "s3.head",
+            "db": -44.3,
+            "piece_peak_db": -2.4
+          },
+          {
+            "edge": "s3.tail",
+            "db": -50.7,
+            "piece_peak_db": -2.4
+          },
+          {
+            "edge": "s4.head",
+            "db": -50.5,
+            "piece_peak_db": -2.4
+          }
+        ],
+        "loud_seams": [
+          {
+            "edge": "s2.head",
+            "db": -30.4,
+            "piece_peak_db": -2.3
+          }
+        ]
+      }
+    },
+    {
+      "id": "deu_at_for_eng:pod-1:SC10-S003",
+      "order": 89,
+      "n": 2,
+      "reason": "seam_not_silent",
+      "text": "Danke. Und hobn S' Schmerztabletten für Kinder?",
+      "sentences": [
+        "Danke.",
+        "Und hobn S' Schmerztabletten für Kinder?"
+      ],
+      "target_audio_id": "03e20089-7efd-4eee-b7da-d67200c35147",
+      "measure": {
+        "whole_dur": 5.041,
+        "interior_gaps_ms": [
+          1460,
+          108
+        ],
+        "cut_at_gaps_ms": [
+          1460
+        ],
+        "rejected_gaps_ms": [
+          108
+        ],
+        "margin": 13.53,
+        "piece_durs": [
+          1.36,
+          3.78
+        ],
+        "seams_db": [
+          {
+            "edge": "s0.tail",
+            "db": -45.2,
+            "piece_peak_db": -2.3
+          },
+          {
+            "edge": "s1.head",
+            "db": -30.7,
+            "piece_peak_db": -2.4
+          }
+        ],
+        "loud_seams": [
+          {
+            "edge": "s1.head",
+            "db": -30.7,
+            "piece_peak_db": -2.4
+          }
+        ]
+      }
+    },
+    {
+      "id": "deu_at_for_eng:pod-1:SC10-S009",
+      "order": 95,
+      "n": 3,
+      "reason": "margin_below_floor",
+      "text": "Des is sehr nett von Ihnen! Jo, i bin auf Urlaub, und i muass mehr üben, dass i besser Deitsch red. Dankschen und Wiederschaun!",
+      "sentences": [
+        "Des is sehr nett von Ihnen!",
+        "Jo, i bin auf Urlaub, und i muass mehr üben, dass i besser Deitsch red.",
+        "Dankschen und Wiederschaun!"
+      ],
+      "target_audio_id": "8978dd63-e004-42c0-8863-b930387078db",
+      "measure": {
+        "whole_dur": 9.461,
+        "interior_gaps_ms": [
+          631,
+          125,
+          312,
+          235
+        ],
+        "cut_at_gaps_ms": [
+          631,
+          312
+        ],
+        "rejected_gaps_ms": [
+          235,
+          125
+        ],
+        "margin": 1.32,
+        "piece_durs": [
+          2.135,
+          5.11,
+          2.416
+        ]
+      }
+    },
+    {
+      "id": "deu_at_for_eng:pod-1:SC11-S004",
+      "order": 100,
+      "n": 2,
+      "reason": "margin_below_floor",
+      "text": "sehr schen. des Zimmer is im dritten Stock, Zimmer siebenhundertneun.",
+      "sentences": [
+        "sehr schen.",
+        "des Zimmer is im dritten Stock, Zimmer siebenhundertneun."
+      ],
+      "target_audio_id": "a40d6cb3-e58c-4b8b-8af6-60f7a56a280e",
+      "measure": {
+        "whole_dur": 4.944,
+        "interior_gaps_ms": [
+          221,
+          102,
+          105,
+          154
+        ],
+        "cut_at_gaps_ms": [
+          221
+        ],
+        "rejected_gaps_ms": [
+          154,
+          105,
+          102
+        ],
+        "margin": 1.43,
+        "piece_durs": [
+          1.097,
+          3.947
+        ]
+      }
+    },
+    {
+      "id": "deu_at_for_eng:pod-1:SC12-S001",
+      "order": 110,
+      "n": 2,
+      "reason": "margin_below_floor",
+      "text": "Guten Morgen. Mir geht's ned so guat - könnten S' ma wos empfehlen?",
+      "sentences": [
+        "Guten Morgen.",
+        "Mir geht's ned so guat - könnten S' ma wos empfehlen?"
+      ],
+      "target_audio_id": "e7d6a691-a0b5-415e-91d0-0febf8c6d659",
+      "measure": {
+        "whole_dur": 5.246,
+        "interior_gaps_ms": [
+          105,
+          424,
+          165,
+          569
+        ],
+        "cut_at_gaps_ms": [
+          569
+        ],
+        "rejected_gaps_ms": [
+          424,
+          165,
+          105
+        ],
+        "margin": 1.34,
+        "piece_durs": [
+          3.277,
+          2.069
+        ]
+      }
+    },
+    {
+      "id": "deu_at_for_eng:pod-1:SC12-S009",
+      "order": 118,
+      "n": 2,
+      "reason": "margin_below_floor",
+      "text": "Danke. Kann i auch a Packerl Pflaster hobn?",
+      "sentences": [
+        "Danke.",
+        "Kann i auch a Packerl Pflaster hobn?"
+      ],
+      "target_audio_id": "7f2b08a4-f2da-48d0-a77a-7f7e10966b90",
+      "measure": {
+        "whole_dur": 3.718,
+        "interior_gaps_ms": [
+          372,
+          260
+        ],
+        "cut_at_gaps_ms": [
+          372
+        ],
+        "rejected_gaps_ms": [
+          260
+        ],
+        "margin": 1.43,
+        "piece_durs": [
+          0.778,
+          3.04
+        ]
+      }
+    },
+    {
+      "id": "deu_at_for_eng:pod-1:SC22-S001",
+      "order": 221,
+      "n": 2,
+      "reason": "margin_below_floor",
+      "text": "Mocht's da wos aus, wenn i versuch, mit dir Deitsch reden zum üben? I lern no ned long, und i bin no a bissl nervös, wenn i mit andere Leut red.",
+      "sentences": [
+        "Mocht's da wos aus, wenn i versuch, mit dir Deitsch reden zum üben?",
+        "I lern no ned long, und i bin no a bissl nervös, wenn i mit andere Leut red."
+      ],
+      "target_audio_id": "758b0eaa-60ce-40be-a46f-d0cde5cc4835",
+      "measure": {
+        "whole_dur": 10.794,
+        "interior_gaps_ms": [
+          116,
+          108,
+          237,
+          142,
+          190
+        ],
+        "cut_at_gaps_ms": [
+          237
+        ],
+        "rejected_gaps_ms": [
+          190,
+          142,
+          116,
+          108
+        ],
+        "margin": 1.25,
+        "piece_durs": [
+          4.742,
+          6.151
+        ]
+      }
+    },
+    {
+      "id": "deu_at_for_eng:pod-1:SC22-S005",
+      "order": 225,
+      "n": 4,
+      "reason": "margin_below_floor",
+      "text": "Jo, danke. Es is leichter, nur mit oana Person zum reden. Es is hoit a bissl schwer, dass ma wos zum sogn einfällt. I bin ma ned sicher, wos i sogn soll, oba i fühl mi so, als ob i gnua reden kann, dass i anfangen kann, Gespräche zum hobn.",
+      "sentences": [
+        "Jo, danke.",
+        "Es is leichter, nur mit oana Person zum reden.",
+        "Es is hoit a bissl schwer, dass ma wos zum sogn einfällt.",
+        "I bin ma ned sicher, wos i sogn soll, oba i fühl mi so, als ob i gnua reden kann, dass i anfangen kann, Gespräche zum hobn."
+      ],
+      "target_audio_id": "3ff641e9-47e9-4a61-be1e-915d7952aa44",
+      "measure": {
+        "whole_dur": 20.25,
+        "interior_gaps_ms": [
+          1075,
+          153,
+          712,
+          101,
+          537,
+          171,
+          420,
+          104,
+          143
+        ],
+        "cut_at_gaps_ms": [
+          1075,
+          712,
+          537
+        ],
+        "rejected_gaps_ms": [
+          420,
+          171,
+          153,
+          143,
+          104,
+          101
+        ],
+        "margin": 1.28,
+        "piece_durs": [
+          1.433,
+          4.602,
+          5.042,
+          9.473
+        ]
+      }
+    },
+    {
+      "id": "deu_at_for_eng:pod-1:SC22-S008",
+      "order": 228,
+      "n": 3,
+      "reason": "margin_below_floor",
+      "text": "Du solltst scho selbstbewusst sein. I glaub, du mochst des viel besser, als wia du glaubst. I fühl mi wohl, wenn i mit dir red, und i red ned sehr langsam.",
+      "sentences": [
+        "Du solltst scho selbstbewusst sein.",
+        "I glaub, du mochst des viel besser, als wia du glaubst.",
+        "I fühl mi wohl, wenn i mit dir red, und i red ned sehr langsam."
+      ],
+      "target_audio_id": "09d1db93-2281-4ff9-8239-94937d2d96cf",
+      "measure": {
+        "whole_dur": 11.088,
+        "interior_gaps_ms": [
+          858,
+          211,
+          735,
+          519
+        ],
+        "cut_at_gaps_ms": [
+          858,
+          735
+        ],
+        "rejected_gaps_ms": [
+          519,
+          211
+        ],
+        "margin": 1.42,
+        "piece_durs": [
+          2.493,
+          4.004,
+          4.792
+        ]
+      }
+    },
+    {
+      "id": "deu_at_for_eng:pod-1:SC22-S011",
+      "order": 231,
+      "n": 3,
+      "reason": "margin_below_floor",
+      "text": "Des stimmt echt. I bin echt froh, dass i scho so a Gespräch hobn kann. Und i hoff, dass mir in Zukunft no mehr Gespräche hobn kennan, während i immer besser werd.",
+      "sentences": [
+        "Des stimmt echt.",
+        "I bin echt froh, dass i scho so a Gespräch hobn kann.",
+        "Und i hoff, dass mir in Zukunft no mehr Gespräche hobn kennan, während i immer besser werd."
+      ],
+      "target_audio_id": "e4bbe21a-bdf6-42ca-b971-ffd30729062f",
+      "measure": {
+        "whole_dur": 11.215,
+        "interior_gaps_ms": [
+          185,
+          228,
+          359,
+          180,
+          104,
+          115
+        ],
+        "cut_at_gaps_ms": [
+          228,
+          359
+        ],
+        "rejected_gaps_ms": [
+          185,
+          180,
+          115,
+          104
+        ],
+        "margin": 1.23,
+        "piece_durs": [
+          1.628,
+          3.583,
+          6.204
+        ]
+      }
+    }
+  ],
+  "errors": [],
+  "linked": [
+    {
+      "id": "deu_at_for_eng:pod-1:SC02-S002",
+      "order": 6,
+      "n": 2,
+      "sentences": [
+        "Na, der is frei.",
+        "Bitte, nur zu."
+      ],
+      "ids": [
+        "77b45b16-16d0-4eb5-a7e9-2da20f9fe5fb",
+        "96ff0224-2704-40f8-adb4-4d238d54d148"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.6,
+        1.308
+      ],
+      "worst_seam_db": -52.7,
+      "all_reused": false
+    },
+    {
+      "id": "deu_at_for_eng:pod-1:SC01-S002",
+      "order": 2,
+      "n": 2,
+      "sentences": [
+        "Guten Morgen.",
+        "Wia geht's da?"
+      ],
+      "ids": [
+        "604dd83c-ba66-4653-9a04-3c841d33c698",
+        "e4635b50-237a-4ed0-bf94-af1b2fcbe007"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.228,
+        1.368
+      ],
+      "worst_seam_db": -51.4,
+      "all_reused": false
+    },
+    {
+      "id": "deu_at_for_eng:pod-1:SC01-S003",
+      "order": 3,
+      "n": 2,
+      "sentences": [
+        "Mir geht's sehr guat, danke.",
+        "Gehst in d'Arbeit?"
+      ],
+      "ids": [
+        "01b735aa-e6a0-4086-acb1-3d508565f579",
+        "a73d967a-21c2-43ac-95f3-73acb1b04a9b"
+      ],
+      "margin": null,
+      "piece_durs": [
+        2.05,
+        1.146
+      ],
+      "worst_seam_db": -46.2,
+      "all_reused": false
+    },
+    {
+      "id": "deu_at_for_eng:pod-1:SC01-S004",
+      "order": 4,
+      "n": 3,
+      "sentences": [
+        "Jo, i hob heit an stressigen Tog.",
+        "I hoff, du host an guaten Tog.",
+        "Bis später."
+      ],
+      "ids": [
+        "6a15ff20-f113-4c55-b3d2-b236e77ad7e5",
+        "cb164864-de08-46ee-9190-714c063cf908",
+        "ab825929-1787-4194-af0c-f4bb76bb098f"
+      ],
+      "margin": 2.44,
+      "piece_durs": [
+        2.955,
+        2.739,
+        0.986
+      ],
+      "worst_seam_db": -51.6,
+      "all_reused": false
+    },
+    {
+      "id": "deu_at_for_eng:pod-1:SC03-S001",
+      "order": 10,
+      "n": 2,
+      "sentences": [
+        "Grüß Gott.",
+        "Wos darf's sein?"
+      ],
+      "ids": [
+        "15c79a03-bac1-461a-a119-3e50af7dc197",
+        "5df45a44-7f4b-45f0-8910-99dca830d97e"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.046,
+        1.502
+      ],
+      "worst_seam_db": -64.7,
+      "all_reused": false
+    },
+    {
+      "id": "deu_at_for_eng:pod-1:SC02-S005",
+      "order": 9,
+      "n": 2,
+      "sentences": [
+        "Es is ned sehr weit.",
+        "Vielleicht drei oder vier Meilen."
+      ],
+      "ids": [
+        "70628588-3e2f-4f45-a406-c5384dd907fd",
+        "e352c9e7-c5a1-49ec-9d88-2040d5fbeeab"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.676,
+        2.264
+      ],
+      "worst_seam_db": -52.9,
+      "all_reused": false
+    },
+    {
+      "id": "deu_at_for_eng:pod-1:SC03-S010",
+      "order": 19,
+      "n": 2,
+      "sentences": [
+        "Dankschen.",
+        "Wiederschaun!"
+      ],
+      "ids": [
+        "f20ea6ac-ca00-4afe-b8d4-266980767ff8",
+        "3c1b6cec-df41-4d4a-95bc-86d45fd2f5e9"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.149,
+        1.087
+      ],
+      "worst_seam_db": -52.6,
+      "all_reused": false
+    },
+    {
+      "id": "deu_at_for_eng:pod-1:SC03-S002",
+      "order": 11,
+      "n": 4,
+      "sentences": [
+        "Grüß Gott.",
+        "I mechat an Kaffee, bitte.",
+        "Mit Milch, oba ohne Zucker.",
+        "Zum mitnehmen."
+      ],
+      "ids": [
+        "3a1f43e2-9b21-429a-8e64-94315d87a2b9",
+        "d6a75dfe-d641-45ce-ab22-edc467cb8d7f",
+        "63da3196-3b22-4bd2-b5ef-3239605cd734",
+        "c16fa55c-e98a-40aa-a438-77025e7be697"
+      ],
+      "margin": 3.74,
+      "piece_durs": [
+        1.012,
+        2.579,
+        2.71,
+        1.198
+      ],
+      "worst_seam_db": -52.4,
+      "all_reused": false
+    },
+    {
+      "id": "deu_at_for_eng:pod-1:SC05-S001",
+      "order": 23,
+      "n": 2,
+      "sentences": [
+        "guten Abend, Sarah.",
+        "Host an longen Tog ghobt?"
+      ],
+      "ids": [
+        "89708ac3-0463-48f8-96c9-7cdbeccf8239",
+        "b6c7b9ff-a5da-47c0-b082-64f3617a4634"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.637,
+        2.519
+      ],
+      "worst_seam_db": -53,
+      "all_reused": false
+    },
+    {
+      "id": "deu_at_for_eng:pod-1:SC04-S003",
+      "order": 22,
+      "n": 3,
+      "sentences": [
+        "Na, tut ma leid, i bin morgen beschäftigt.",
+        "Oba reden wir am Samstag.",
+        "Bis dann."
+      ],
+      "ids": [
+        "45a1a771-c3cb-4e3f-a48b-1100130019bf",
+        "e8fe45ad-69c3-4274-9d45-b6f776c3f1e1",
+        "a5df7154-5814-4e3e-b3d3-95e579ed0c90"
+      ],
+      "margin": null,
+      "piece_durs": [
+        2.927,
+        2.23,
+        0.756
+      ],
+      "worst_seam_db": -53.7,
+      "all_reused": false
+    },
+    {
+      "id": "deu_at_for_eng:pod-1:SC04-S002",
+      "order": 21,
+      "n": 4,
+      "sentences": [
+        "Servus!",
+        "Tut ma leid, oba i kann grod ned reden.",
+        "I muass iatz heimgehn.",
+        "Kennan wir morgen reden?"
+      ],
+      "ids": [
+        "2b319cdb-96a4-4639-8ebf-07a924008291",
+        "6bed5c68-3a27-4da6-ad03-d36c95268ec0",
+        "bd86d63a-4abd-4f03-84ff-fcba063a3578",
+        "367f96f4-257f-4472-8341-bd66d7a73ae9"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.271,
+        3.672,
+        1.847,
+        1.575
+      ],
+      "worst_seam_db": -49.9,
+      "all_reused": false
+    },
+    {
+      "id": "deu_at_for_eng:pod-1:SC06-S002",
+      "order": 26,
+      "n": 2,
+      "sentences": [
+        "i hoaß Anna.",
+        "und du?"
+      ],
+      "ids": [
+        "d271b095-a057-4b33-ad09-84d19cdd202c",
+        "c8d3c197-7f4e-49d0-a6a4-fd8318acdad6"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.378,
+        0.762
+      ],
+      "worst_seam_db": -52.7,
+      "all_reused": false
+    },
+    {
+      "id": "deu_at_for_eng:pod-1:SC05-S002",
+      "order": 24,
+      "n": 4,
+      "sentences": [
+        "jo, sehr.",
+        "i bin iatz sehr müde.",
+        "gute Nacht.",
+        "bis morgen."
+      ],
+      "ids": [
+        "01667a0e-ae0f-441a-a7dc-4915513cfe03",
+        "36ef78ed-ccf7-47f2-9f0f-ff7d8bd973cb",
+        "75dc8fd0-b972-4385-822d-0ae0e3862689",
+        "5949a700-c1c6-450e-b4ec-fb8aad58ce13"
+      ],
+      "margin": 1.77,
+      "piece_durs": [
+        1.414,
+        2.705,
+        1.22,
+        0.912
+      ],
+      "worst_seam_db": -50.2,
+      "all_reused": false
+    },
+    {
+      "id": "deu_at_for_eng:pod-1:SC06-S003",
+      "order": 27,
+      "n": 2,
+      "sentences": [
+        "i bin James.",
+        "freut mi, di kennenzulernen."
+      ],
+      "ids": [
+        "42933b97-9dee-4efb-b356-d6afcd4741e9",
+        "15a8fee6-0f93-4afa-b845-1c228c10d0d4"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.261,
+        1.767
+      ],
+      "worst_seam_db": -53.8,
+      "all_reused": false
+    },
+    {
+      "id": "deu_at_for_eng:pod-1:SC06-S001",
+      "order": 25,
+      "n": 3,
+      "sentences": [
+        "Entschuldigung.",
+        "Servus.",
+        "wia hoaßt du?"
+      ],
+      "ids": [
+        "eddda574-4bdb-4092-8a7d-06bec1b6944b",
+        "683c54e1-1117-4441-b9b5-6af1796e3ddb",
+        "7feac4d4-c137-44e3-a382-e09da09f3112"
+      ],
+      "margin": 3.5,
+      "piece_durs": [
+        1.534,
+        1.621,
+        1.676
+      ],
+      "worst_seam_db": -52.6,
+      "all_reused": false
+    },
+    {
+      "id": "deu_at_for_eng:pod-1:SC06-S004",
+      "order": 28,
+      "n": 2,
+      "sentences": [
+        "freut mi auch, di kennenzulernen.",
+        "wo kummst du her?"
+      ],
+      "ids": [
+        "fecda7f3-0033-4ec9-a0d7-c6a0111b2d51",
+        "e8e3c1db-aa57-4f4c-8420-a44278b02c97"
+      ],
+      "margin": null,
+      "piece_durs": [
+        2.136,
+        1.492
+      ],
+      "worst_seam_db": -50.9,
+      "all_reused": false
+    },
+    {
+      "id": "deu_at_for_eng:pod-1:SC06-S005",
+      "order": 29,
+      "n": 2,
+      "sentences": [
+        "i bin aus Manchester, oba i wohn iatz in London.",
+        "und du?"
+      ],
+      "ids": [
+        "1cacd832-bfa7-45a6-9057-faf9019ed50f",
+        "d01e0b0d-4c18-46aa-baf6-a3de71c16f9c"
+      ],
+      "margin": 3.42,
+      "piece_durs": [
+        3.837,
+        0.919
+      ],
+      "worst_seam_db": -53.8,
+      "all_reused": false
+    },
+    {
+      "id": "deu_at_for_eng:pod-1:SC06-S006",
+      "order": 30,
+      "n": 2,
+      "sentences": [
+        "i bin aus Frankreich.",
+        "i bin schon zwoa Johr do."
+      ],
+      "ids": [
+        "c5ba0cf9-5291-48f6-b9db-b06b55d71ac4",
+        "efb7d6d8-8a18-4011-86ce-488d8954a295"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.859,
+        2.081
+      ],
+      "worst_seam_db": -53.3,
+      "all_reused": false
+    },
+    {
+      "id": "deu_at_for_eng:pod-1:SC06-S007",
+      "order": 31,
+      "n": 2,
+      "sentences": [
+        "des is a schene Stodt.",
+        "wos arbeitest du?"
+      ],
+      "ids": [
+        "dca42afb-9ce5-42b9-8fa1-65761021700b",
+        "f98a7309-931c-4aa0-b962-c92980bb4945"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.874,
+        1.658
+      ],
+      "worst_seam_db": -52.4,
+      "all_reused": false
+    },
+    {
+      "id": "deu_at_for_eng:pod-1:SC06-S008",
+      "order": 32,
+      "n": 2,
+      "sentences": [
+        "i bin Krankenschwester, im Krankenhaus gleich ums Eck.",
+        "und du?"
+      ],
+      "ids": [
+        "628389f9-d43c-4589-a8ce-6e5f8d37b354",
+        "c8d3c197-7f4e-49d0-a6a4-fd8318acdad6"
+      ],
+      "margin": 5.57,
+      "piece_durs": [
+        4.014,
+        0.982
+      ],
+      "worst_seam_db": -52.9,
+      "all_reused": false
+    },
+    {
+      "id": "deu_at_for_eng:pod-1:SC06-S009",
+      "order": 33,
+      "n": 3,
+      "sentences": [
+        "tut ma leid, i hob di ned verstandn.",
+        "i lern Deitsch.",
+        "kunntst des no amoi langsamer sogn?"
+      ],
+      "ids": [
+        "bd88bd50-1827-4661-8312-f3363bce383a",
+        "cfca2000-d9ee-4ec6-96d4-5c28508ea53e",
+        "97a8469d-295a-4c92-952d-e3807733f7bc"
+      ],
+      "margin": 4.22,
+      "piece_durs": [
+        2.597,
+        1.618,
+        2.465
+      ],
+      "worst_seam_db": -53.2,
+      "all_reused": false
+    },
+    {
+      "id": "deu_at_for_eng:pod-1:SC06-S012",
+      "order": 36,
+      "n": 2,
+      "sentences": [
+        "wia interessant.",
+        "najo, hot mi gfreut, di kennenzulernen."
+      ],
+      "ids": [
+        "091faa05-3e3a-4ac3-a35c-fa21744257f2",
+        "63e83974-7f91-4f58-9233-196ff851993c"
+      ],
+      "margin": 4.64,
+      "piece_durs": [
+        1.954,
+        3.186
+      ],
+      "worst_seam_db": -51.9,
+      "all_reused": false
+    },
+    {
+      "id": "deu_at_for_eng:pod-1:SC06-S010",
+      "order": 34,
+      "n": 5,
+      "sentences": [
+        "jo, klar.",
+        "i bin Krankenschwester.",
+        "i arbeit im Krankenhaus.",
+        "es is do in da Nähe.",
+        "und wos arbeitest du?"
+      ],
+      "ids": [
+        "c9ebc5ff-362c-4e9d-8029-48d06ff2ea13",
+        "c15a4658-ca1b-407c-9acc-7c8d7f72114b",
+        "36ef0391-907f-401f-812f-365f8de02f27",
+        "af2c844d-7021-4ac8-a64a-8157a7bced89",
+        "0ae20df9-727a-4cbe-a598-77edd1a6f612"
+      ],
+      "margin": 2.28,
+      "piece_durs": [
+        1.156,
+        2.207,
+        1.976,
+        2.208,
+        1.948
+      ],
+      "worst_seam_db": -49.4,
+      "all_reused": false
+    },
+    {
+      "id": "deu_at_for_eng:pod-1:SC06-S011",
+      "order": 35,
+      "n": 4,
+      "sentences": [
+        "i unterricht Englisch, oba ned in a Schul.",
+        "i arbeit mit Erwochsene.",
+        "i bin do mit meiner Frau und meine Kinder auf Urlaub.",
+        "mir hobn a schene Zeit."
+      ],
+      "ids": [
+        "ad8539c5-6b7b-4779-8e7e-52da67c7dfb4",
+        "63de594c-e4e1-434f-900a-b21010d1e89c",
+        "31327324-f075-4ef0-9013-371ff7d632bc",
+        "d3797075-9436-404d-a4ae-492589d979fa"
+      ],
+      "margin": 1.74,
+      "piece_durs": [
+        3.518,
+        2.171,
+        3.632,
+        1.708
+      ],
+      "worst_seam_db": -52.8,
+      "all_reused": false
+    },
+    {
+      "id": "deu_at_for_eng:pod-1:SC07-S001",
+      "order": 38,
+      "n": 2,
+      "sentences": [
+        "Guten Morgen.",
+        "Wos darf's sein?"
+      ],
+      "ids": [
+        "604dd83c-ba66-4653-9a04-3c841d33c698",
+        "07c6a2f6-7990-4308-b39c-ed360653979a"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.112,
+        1.316
+      ],
+      "worst_seam_db": -52.2,
+      "all_reused": false
+    },
+    {
+      "id": "deu_at_for_eng:pod-1:SC07-S005",
+      "order": 42,
+      "n": 2,
+      "sentences": [
+        "Klar.",
+        "Möchten S' des zum do trinken oder zum mitnehmen?"
+      ],
+      "ids": [
+        "5efe8e5f-c1a8-41b3-af26-f7e24b5a3ed5",
+        "20d042d1-e0d3-45c6-842d-9247a4d16f22"
+      ],
+      "margin": 2.36,
+      "piece_durs": [
+        0.68,
+        3.14
+      ],
+      "worst_seam_db": -46,
+      "all_reused": false
+    },
+    {
+      "id": "deu_at_for_eng:pod-1:SC07-S004",
+      "order": 41,
+      "n": 2,
+      "sentences": [
+        "i mechat an großen, bitte.",
+        "Mit Hafermilch, wenn S' de hobn."
+      ],
+      "ids": [
+        "a84e660f-a047-4ab4-a186-cf1438549eee",
+        "117747ed-4e9f-4456-b0dc-34172a6e315c"
+      ],
+      "margin": 6.42,
+      "piece_durs": [
+        2.954,
+        2.81
+      ],
+      "worst_seam_db": -53.4,
+      "all_reused": false
+    },
+    {
+      "id": "deu_at_for_eng:pod-1:SC07-S008",
+      "order": 45,
+      "n": 2,
+      "sentences": [
+        "Sofort.",
+        "Möchten S' sonst no wos?"
+      ],
+      "ids": [
+        "97bca291-0b4d-4a55-8420-82b56ed4b113",
+        "3d7ea744-c0ad-429c-af96-41c37ae62d14"
+      ],
+      "margin": 4.55,
+      "piece_durs": [
+        1.092,
+        2.368
+      ],
+      "worst_seam_db": -50.8,
+      "all_reused": false
+    },
+    {
+      "id": "deu_at_for_eng:pod-1:SC07-S012",
+      "order": 49,
+      "n": 2,
+      "sentences": [
+        "Klar.",
+        "Do is des Gerät."
+      ],
+      "ids": [
+        "5efe8e5f-c1a8-41b3-af26-f7e24b5a3ed5",
+        "a83d4611-fea3-4cd4-893c-f4fbae53e786"
+      ],
+      "margin": null,
+      "piece_durs": [
+        0.896,
+        1.58
+      ],
+      "worst_seam_db": -48.5,
+      "all_reused": false
+    },
+    {
+      "id": "deu_at_for_eng:pod-1:SC07-S013",
+      "order": 50,
+      "n": 2,
+      "sentences": [
+        "Guten Morgen.",
+        "Zwoa Verlängerte und a Tasse Tee, bitte."
+      ],
+      "ids": [
+        "f7707701-44ae-498e-bd16-2b4a338bbfee",
+        "2920c273-e864-4594-a324-dc84a8d73e2a"
+      ],
+      "margin": 10.53,
+      "piece_durs": [
+        1.412,
+        3.224
+      ],
+      "worst_seam_db": -53.4,
+      "all_reused": false
+    },
+    {
+      "id": "deu_at_for_eng:pod-1:SC07-S011",
+      "order": 48,
+      "n": 2,
+      "sentences": [
+        "Kann i mit Karte zahlen?",
+        "Hobn S' kontaktlos?"
+      ],
+      "ids": [
+        "390503eb-3b51-4788-973e-ae501150fa4a",
+        "03e1cb00-071c-4368-bd8d-b08dddbf10ef"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.74,
+        1.696
+      ],
+      "worst_seam_db": -48.4,
+      "all_reused": false
+    },
+    {
+      "id": "deu_at_for_eng:pod-1:SC07-S014",
+      "order": 51,
+      "n": 2,
+      "sentences": [
+        "Möchten S' des zum do trinken?",
+        "Der Tisch beim Fenster is frei."
+      ],
+      "ids": [
+        "93b170d1-ca57-44a2-9dce-5ca6eace8b65",
+        "de698c99-28f5-42da-9815-e0344543d9a0"
+      ],
+      "margin": null,
+      "piece_durs": [
+        2.669,
+        2.303
+      ],
+      "worst_seam_db": -52.8,
+      "all_reused": false
+    },
+    {
+      "id": "deu_at_for_eng:pod-1:SC08-S001",
+      "order": 53,
+      "n": 2,
+      "sentences": [
+        "Guten Abend.",
+        "Wos darf's sein?"
+      ],
+      "ids": [
+        "d2b3682e-f4da-44f8-86f3-354cba427f2b",
+        "5df45a44-7f4b-45f0-8910-99dca830d97e"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.447,
+        1.677
+      ],
+      "worst_seam_db": -52.8,
+      "all_reused": false
+    },
+    {
+      "id": "deu_at_for_eng:pod-1:SC08-S002",
+      "order": 54,
+      "n": 2,
+      "sentences": [
+        "i mechat a Krügel, bitte.",
+        "Wos für Ales hobn S' vom Fass?"
+      ],
+      "ids": [
+        "bd9a6728-c275-4080-a8d3-55e11be5d23a",
+        "2d28e35c-2e75-4126-9719-7d5374e1eca6"
+      ],
+      "margin": 2.34,
+      "piece_durs": [
+        2.807,
+        3.653
+      ],
+      "worst_seam_db": -51.6,
+      "all_reused": false
+    },
+    {
+      "id": "deu_at_for_eng:pod-1:SC08-S006",
+      "order": 58,
+      "n": 2,
+      "sentences": [
+        "Kann i de Weinkarte sehn?",
+        "i wü a Glaserl Wein."
+      ],
+      "ids": [
+        "0f67f141-8caa-4f0c-a962-c1961fa064a4",
+        "e9f78b76-7d90-44b2-9ea5-fd0cf9b1e47a"
+      ],
+      "margin": 1.84,
+      "piece_durs": [
+        2.203,
+        2.582
+      ],
+      "worst_seam_db": -62.4,
+      "all_reused": false
+    },
+    {
+      "id": "deu_at_for_eng:pod-1:SC08-S014",
+      "order": 66,
+      "n": 2,
+      "sentences": [
+        "Kennan wir a Brot hobn?",
+        "Und a Schüssel Pommes für'n Tisch."
+      ],
+      "ids": [
+        "af90030e-d8c7-429f-a1b1-65278f2b2745",
+        "0aef9d95-03a9-4353-b586-e38c31d45749"
+      ],
+      "margin": 2.76,
+      "piece_durs": [
+        1.941,
+        2.658
+      ],
+      "worst_seam_db": -35.9,
+      "all_reused": false
+    },
+    {
+      "id": "deu_at_for_eng:pod-1:SC08-S015",
+      "order": 67,
+      "n": 2,
+      "sentences": [
+        "Hobn S' Sandwiches?",
+        "i mechat a Käsesandwich, bitte."
+      ],
+      "ids": [
+        "7882b561-5efb-4e26-bbb4-79b92e62b3fe",
+        "b756d9a1-17e5-4aa8-8575-11721921ae41"
+      ],
+      "margin": 2.74,
+      "piece_durs": [
+        2.092,
+        3.68
+      ],
+      "worst_seam_db": -58.9,
+      "all_reused": false
+    },
+    {
+      "id": "deu_at_for_eng:pod-1:SC09-S001",
+      "order": 69,
+      "n": 2,
+      "sentences": [
+        "guten Abend.",
+        "mir hobn a Reservierung für zwoa, auf den Namen Davies."
+      ],
+      "ids": [
+        "3cb052d9-14e1-48d8-9ec7-e4e7d06c74c6",
+        "be11a0b4-fc78-45ed-b529-8e44f21021b6"
+      ],
+      "margin": 9.5,
+      "piece_durs": [
+        1.765,
+        5.415
+      ],
+      "worst_seam_db": -57.1,
+      "all_reused": false
+    },
+    {
+      "id": "deu_at_for_eng:pod-1:SC09-S005",
+      "order": 73,
+      "n": 2,
+      "sentences": [
+        "Entschuldigung - hobn S' irgendwos Glutenfreies?",
+        "oder wos für Vegetarier?"
+      ],
+      "ids": [
+        "64bd706d-15d6-4ae6-9509-ea1ce3f96025",
+        "5b2a21c9-da6d-4b81-8215-fa77684416ab"
+      ],
+      "margin": 1.59,
+      "piece_durs": [
+        4.592,
+        2.543
+      ],
+      "worst_seam_db": -35,
+      "all_reused": false
+    },
+    {
+      "id": "deu_at_for_eng:pod-1:SC09-S002",
+      "order": 70,
+      "n": 3,
+      "sentences": [
+        "willkommen.",
+        "folgen S' ma bitte.",
+        "do san de Speisekarten."
+      ],
+      "ids": [
+        "8eaf4320-662d-4095-aa0d-ebd586409986",
+        "02e63d26-4513-4ef6-a319-03e2b7335b60",
+        "5da59e22-f9b3-4754-81b3-7effcfccb434"
+      ],
+      "margin": null,
+      "piece_durs": [
+        0.83,
+        1.735,
+        1.667
+      ],
+      "worst_seam_db": -51.6,
+      "all_reused": false
+    },
+    {
+      "id": "deu_at_for_eng:pod-1:SC09-S006",
+      "order": 74,
+      "n": 2,
+      "sentences": [
+        "jo, der Lachs und des Risotto san beide glutenfrei.",
+        "mir hobn auch a poa Salate."
+      ],
+      "ids": [
+        "36e034d9-1c44-4932-aa7a-80dac458f59c",
+        "dc4f05fe-da85-4196-bd54-2d28491105ac"
+      ],
+      "margin": 8.61,
+      "piece_durs": [
+        4.114,
+        2.538
+      ],
+      "worst_seam_db": -52.8,
+      "all_reused": false
+    },
+    {
+      "id": "deu_at_for_eng:pod-1:SC09-S008",
+      "order": 76,
+      "n": 2,
+      "sentences": [
+        "des Lamm is ausgezeichnet.",
+        "des is langsam gschmort wordn, mit Rosmarin."
+      ],
+      "ids": [
+        "a19b9770-dda2-40b6-b610-7b28d31040e7",
+        "23dec743-051c-469e-beea-d06ac1deabc1"
+      ],
+      "margin": null,
+      "piece_durs": [
+        2.392,
+        3.54
+      ],
+      "worst_seam_db": -35.1,
+      "all_reused": false
+    },
+    {
+      "id": "deu_at_for_eng:pod-1:SC09-S009",
+      "order": 77,
+      "n": 2,
+      "sentences": [
+        "i nimm des Lamm, bitte.",
+        "mit grünem Gemüse als Beilage."
+      ],
+      "ids": [
+        "b30ec4db-4eb3-48ff-8af2-f750218e954f",
+        "498b18fc-0661-4fa5-a6eb-b8d5ab117f7e"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.848,
+        2.842
+      ],
+      "worst_seam_db": -37.9,
+      "all_reused": false
+    },
+    {
+      "id": "deu_at_for_eng:pod-1:SC09-S010",
+      "order": 78,
+      "n": 2,
+      "sentences": [
+        "und für mi des Risotto.",
+        "mit an kloan grünen Salat fürn Anfang."
+      ],
+      "ids": [
+        "de9ba590-e635-45f4-9560-d30235877673",
+        "9b97e6a4-8b1c-4801-9a02-d95846139898"
+      ],
+      "margin": null,
+      "piece_durs": [
+        2.483,
+        2.777
+      ],
+      "worst_seam_db": -58.1,
+      "all_reused": false
+    },
+    {
+      "id": "deu_at_for_eng:pod-1:SC09-S011",
+      "order": 79,
+      "n": 2,
+      "sentences": [
+        "klar.",
+        "und wos möchten S' trinken?"
+      ],
+      "ids": [
+        "3faa1613-ad9b-4031-af36-b5d1f5161289",
+        "ef51b58d-9459-425a-86e6-ef4fd11847f9"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.043,
+        2.177
+      ],
+      "worst_seam_db": -53,
+      "all_reused": false
+    },
+    {
+      "id": "deu_at_for_eng:pod-1:SC09-S014",
+      "order": 82,
+      "n": 2,
+      "sentences": [
+        "ausgezeichnete Wahl.",
+        "i bring s' glei."
+      ],
+      "ids": [
+        "ed57ce0a-ee3e-47cc-9f33-5c4073989502",
+        "2b869213-a197-4910-9397-8fb3012c8dff"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.975,
+        1.557
+      ],
+      "worst_seam_db": -51.9,
+      "all_reused": false
+    },
+    {
+      "id": "deu_at_for_eng:pod-1:SC09-S015",
+      "order": 83,
+      "n": 2,
+      "sentences": [
+        "passt olles?",
+        "hobn S' no Platz für a Dessert?"
+      ],
+      "ids": [
+        "b4533485-8757-4333-aa1d-716731f0bab9",
+        "10d04b87-c50c-4bcc-87f6-68d8a787c51f"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.423,
+        2.493
+      ],
+      "worst_seam_db": -52.8,
+      "all_reused": false
+    },
+    {
+      "id": "deu_at_for_eng:pod-1:SC09-S016",
+      "order": 84,
+      "n": 2,
+      "sentences": [
+        "nur zwoa Kaffee, bitte.",
+        "für mi an koffeinfreien."
+      ],
+      "ids": [
+        "a78afc9e-ecc0-4eb5-8ecb-232864ff1036",
+        "988cf445-9b9c-4fe2-9fe9-291a27ab75c3"
+      ],
+      "margin": 5.64,
+      "piece_durs": [
+        2.39,
+        2.721
+      ],
+      "worst_seam_db": -50.2,
+      "all_reused": false
+    },
+    {
+      "id": "deu_at_for_eng:pod-1:SC09-S017",
+      "order": 85,
+      "n": 2,
+      "sentences": [
+        "und de Rechnung, wenn S' so weit san.",
+        "kennan wir getrennt zahlen?"
+      ],
+      "ids": [
+        "f9924fba-a5bd-4b90-a46e-46c4f976be6b",
+        "93a5a0e9-c3bd-4579-a4b7-de17d6b45ea1"
+      ],
+      "margin": 2.32,
+      "piece_durs": [
+        3.21,
+        2.657
+      ],
+      "worst_seam_db": -56.9,
+      "all_reused": false
+    },
+    {
+      "id": "deu_at_for_eng:pod-1:SC10-S001",
+      "order": 87,
+      "n": 2,
+      "sentences": [
+        "Entschuldigung.",
+        "Hobn S' Schmerztabletten?"
+      ],
+      "ids": [
+        "03395603-1a32-419e-a2c7-e25dadd519eb",
+        "191337cf-ac49-4c44-b881-d70fd586aefd"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.642,
+        2.406
+      ],
+      "worst_seam_db": -59.9,
+      "all_reused": false
+    },
+    {
+      "id": "deu_at_for_eng:pod-1:SC10-S007",
+      "order": 93,
+      "n": 2,
+      "sentences": [
+        "Danke, Sie hobn ma sehr gholfn.",
+        "I bin Ihnen sehr dankbar."
+      ],
+      "ids": [
+        "247f96a0-6e5b-419f-bad6-1c1b3e71cf7c",
+        "55459b3e-6582-4f86-b7cc-7219fc5b4c17"
+      ],
+      "margin": 2.08,
+      "piece_durs": [
+        2.535,
+        2.34
+      ],
+      "worst_seam_db": -49.5,
+      "all_reused": false
+    },
+    {
+      "id": "deu_at_for_eng:pod-1:SC09-S018",
+      "order": 86,
+      "n": 5,
+      "sentences": [
+        "sieben.",
+        "neun.",
+        "elf.",
+        "orange.",
+        "lila."
+      ],
+      "ids": [
+        "b862e158-de41-4317-93b2-ab7970a15176",
+        "efd4ee02-dc68-4440-b135-58ebd19a55df",
+        "782712ae-2309-4f65-93c7-46c427a74fd7",
+        "8fd06d5a-0656-49ab-a7dd-35f58acc921b",
+        "dca52265-1af5-48ca-a45e-7585ebdaa75e"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.07,
+        1.458,
+        1.189,
+        1.264,
+        0.843
+      ],
+      "worst_seam_db": -53.3,
+      "all_reused": false
+    },
+    {
+      "id": "deu_at_for_eng:pod-1:SC10-S008",
+      "order": 94,
+      "n": 3,
+      "sentences": [
+        "Gern gschehn.",
+        "San S' auf Urlaub do?",
+        "Sie redn echt guat Deitsch."
+      ],
+      "ids": [
+        "bd6173c4-e34a-46fb-9d1c-cda07211f237",
+        "e633773b-8d96-4312-8d4e-3488ed039829",
+        "0cc2466a-1516-4984-a67a-e641455ba82c"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.116,
+        2.223,
+        2.189
+      ],
+      "worst_seam_db": -43.7,
+      "all_reused": false
+    },
+    {
+      "id": "deu_at_for_eng:pod-1:SC11-S001",
+      "order": 97,
+      "n": 2,
+      "sentences": [
+        "Grüß Gott.",
+        "i hob a Reservierung auf den Namen Jones."
+      ],
+      "ids": [
+        "15c79a03-bac1-461a-a119-3e50af7dc197",
+        "04c5a7a2-9783-4930-b419-0af8e821ffff"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.147,
+        3.077
+      ],
+      "worst_seam_db": -50.6,
+      "all_reused": false
+    },
+    {
+      "id": "deu_at_for_eng:pod-1:SC11-S003",
+      "order": 99,
+      "n": 2,
+      "sentences": [
+        "klar.",
+        "do is mein Reisepass."
+      ],
+      "ids": [
+        "3faa1613-ad9b-4031-af36-b5d1f5161289",
+        "61ce9a74-0cef-478e-8a12-5602a15b2e2e"
+      ],
+      "margin": null,
+      "piece_durs": [
+        0.771,
+        1.865
+      ],
+      "worst_seam_db": -67.4,
+      "all_reused": false
+    },
+    {
+      "id": "deu_at_for_eng:pod-1:SC11-S002",
+      "order": 98,
+      "n": 3,
+      "sentences": [
+        "Willkommen.",
+        "jo, Sie hobn a Doppelzimmer für drei Nächte.",
+        "Kann i an Ausweis sehn, bitte?"
+      ],
+      "ids": [
+        "086b3079-2d79-44b0-9b1a-8f6bb0f5007c",
+        "7a93aeab-b16e-4cf4-9fc3-e387e3ccedd6",
+        "5b4b87b3-69d4-4d01-9271-3cd6a6fccef6"
+      ],
+      "margin": 3.28,
+      "piece_durs": [
+        1.288,
+        3.699,
+        2.438
+      ],
+      "worst_seam_db": -52.2,
+      "all_reused": false
+    },
+    {
+      "id": "deu_at_for_eng:pod-1:SC10-S010",
+      "order": 96,
+      "n": 5,
+      "sentences": [
+        "Zwölf.",
+        "Dreizehn.",
+        "Vierzehn.",
+        "Rosa.",
+        "Grau."
+      ],
+      "ids": [
+        "3254a355-060f-427d-878e-bc037f156bc3",
+        "40555b81-3935-451f-93fe-7401de284e0f",
+        "7174b424-9c25-4968-8b33-d14781a1068b",
+        "bbbee439-2cbf-4e70-8a6c-b74f86d93d63",
+        "6edcae21-6b63-43ed-a6e3-0367d810999b"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.368,
+        1.648,
+        1.014,
+        0.849,
+        0.585
+      ],
+      "worst_seam_db": -47.7,
+      "all_reused": false
+    },
+    {
+      "id": "deu_at_for_eng:pod-1:SC11-S008",
+      "order": 104,
+      "n": 2,
+      "sentences": [
+        "von halb acht bis zehn Uhr.",
+        "mir hobn Obst und Müsli oder a warmes Frühstück."
+      ],
+      "ids": [
+        "8edf99ec-c202-4aa8-afe3-89a7d64f7503",
+        "4b607714-6b6d-40e9-b84d-bca25aaedc23"
+      ],
+      "margin": null,
+      "piece_durs": [
+        3.099,
+        4.783
+      ],
+      "worst_seam_db": -54.7,
+      "all_reused": false
+    },
+    {
+      "id": "deu_at_for_eng:pod-1:SC11-S009",
+      "order": 105,
+      "n": 2,
+      "sentences": [
+        "wunderbar.",
+        "is es möglich, dass mir später auschecken?"
+      ],
+      "ids": [
+        "e836dff4-0770-409a-83f8-6cb2ea710bc6",
+        "c93e5520-915e-414f-83da-9d4c3d291c67"
+      ],
+      "margin": 3.55,
+      "piece_durs": [
+        1.07,
+        3.129
+      ],
+      "worst_seam_db": -46.1,
+      "all_reused": false
+    },
+    {
+      "id": "deu_at_for_eng:pod-1:SC11-S012",
+      "order": 108,
+      "n": 2,
+      "sentences": [
+        "des steht auf der Willkommenskarte in Ihrem Zimmer.",
+        "i wünsch Ihnen an schenen Aufenthalt."
+      ],
+      "ids": [
+        "41d535ef-2048-4e59-b2d1-f91e77fd4399",
+        "8daa8a65-c128-457f-8c07-c0030f1563b7"
+      ],
+      "margin": 1.78,
+      "piece_durs": [
+        3.158,
+        3.085
+      ],
+      "worst_seam_db": -46.3,
+      "all_reused": false
+    },
+    {
+      "id": "deu_at_for_eng:pod-1:SC12-S002",
+      "order": 111,
+      "n": 2,
+      "sentences": [
+        "Klar.",
+        "Wos san Ihre Symptome?"
+      ],
+      "ids": [
+        "3faa1613-ad9b-4031-af36-b5d1f5161289",
+        "387a002b-f4f3-42d2-adf6-ba0aadb02c8c"
+      ],
+      "margin": null,
+      "piece_durs": [
+        0.983,
+        2.117
+      ],
+      "worst_seam_db": -67.4,
+      "all_reused": false
+    },
+    {
+      "id": "deu_at_for_eng:pod-1:SC13-S002",
+      "order": 121,
+      "n": 2,
+      "sentences": [
+        "Jo, des san zirka zehn Minuten zu Fuß.",
+        "Gehn S' geradeaus die Straßn do entlang."
+      ],
+      "ids": [
+        "f124a7b7-a26d-43a7-b3e6-abeed2418215",
+        "574873fa-d43f-40d9-ac0f-173e43e04e46"
+      ],
+      "margin": 7.32,
+      "piece_durs": [
+        3.071,
+        2.962
+      ],
+      "worst_seam_db": -57.6,
+      "all_reused": false
+    },
+    {
+      "id": "deu_at_for_eng:pod-1:SC11-S013",
+      "order": 109,
+      "n": 5,
+      "sentences": [
+        "sechzehn.",
+        "siebzehn.",
+        "achtzehn.",
+        "Montag.",
+        "Dienstag."
+      ],
+      "ids": [
+        "9f41b131-d8dc-48ca-ad4a-7c128a4d07de",
+        "11316876-9a89-484b-b107-0571059d0c5a",
+        "9c9eb0da-77e3-4212-9de5-e3d0570dd5bf",
+        "e2d4ca36-69d5-42f4-a687-9cbef9e6fdf6",
+        "1dcedecf-a635-4f9f-8a17-0e18bbaad02c"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.309,
+        1.653,
+        1.497,
+        1.381,
+        1.245
+      ],
+      "worst_seam_db": -60.8,
+      "all_reused": false
+    },
+    {
+      "id": "deu_at_for_eng:pod-1:SC13-S008",
+      "order": 127,
+      "n": 2,
+      "sentences": [
+        "Wunderbar.",
+        "Und gibt's do in der Nähe an Bankomat?"
+      ],
+      "ids": [
+        "4874f616-f9ef-4bac-8998-78a6dba2ba8a",
+        "a8c215a4-4206-4152-b6cc-c09abcbafdaf"
+      ],
+      "margin": 6.07,
+      "piece_durs": [
+        1.51,
+        3.826
+      ],
+      "worst_seam_db": -53.8,
+      "all_reused": false
+    },
+    {
+      "id": "deu_at_for_eng:pod-1:SC12-S010",
+      "order": 119,
+      "n": 5,
+      "sentences": [
+        "neunzehn.",
+        "zwanzig.",
+        "einundzwanzig.",
+        "Mittwoch.",
+        "Donnerstag."
+      ],
+      "ids": [
+        "0fbd1710-1ecb-45ac-9760-66ae11560c44",
+        "0d836b75-91a3-4e1e-94a8-8779b19594a1",
+        "48782234-7a75-413d-9654-301d7d269b83",
+        "4194cfe6-3f08-40d0-9b63-f80d7fb2211e",
+        "c91f8698-a74c-438f-9d3a-45737a86afa8"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.247,
+        1.615,
+        1.708,
+        1.197,
+        1.16
+      ],
+      "worst_seam_db": -62.7,
+      "all_reused": false
+    },
+    {
+      "id": "deu_at_for_eng:pod-1:SC13-S010",
+      "order": 129,
+      "n": 2,
+      "sentences": [
+        "Dankschen.",
+        "Sie hobn ma sehr gholfn."
+      ],
+      "ids": [
+        "f20ea6ac-ca00-4afe-b8d4-266980767ff8",
+        "0986cd71-0811-4ecc-b7b8-06de233fa038"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.654,
+        2.745
+      ],
+      "worst_seam_db": -54.3,
+      "all_reused": false
+    },
+    {
+      "id": "deu_at_for_eng:pod-1:SC14-S001",
+      "order": 131,
+      "n": 2,
+      "sentences": [
+        "Grüß Gott.",
+        "Können S' mi zum Bahnhof bringen, bitte?"
+      ],
+      "ids": [
+        "15c79a03-bac1-461a-a119-3e50af7dc197",
+        "d9c23755-d1aa-4a50-b1cd-e4db66eac4cd"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.344,
+        2.875
+      ],
+      "worst_seam_db": -68.7,
+      "all_reused": false
+    },
+    {
+      "id": "deu_at_for_eng:pod-1:SC14-S002",
+      "order": 132,
+      "n": 2,
+      "sentences": [
+        "Jo, klar.",
+        "Des kann a bissl dauern, es is grod viel Verkehr."
+      ],
+      "ids": [
+        "c9ebc5ff-362c-4e9d-8029-48d06ff2ea13",
+        "66fd7804-b221-4a56-abe4-d2c3f3aa2dfa"
+      ],
+      "margin": 2.89,
+      "piece_durs": [
+        1.137,
+        4.354
+      ],
+      "worst_seam_db": -38.2,
+      "all_reused": false
+    },
+    {
+      "id": "deu_at_for_eng:pod-1:SC14-S007",
+      "order": 137,
+      "n": 2,
+      "sentences": [
+        "So, do san ma.",
+        "Des mocht zwölf Pfund fünfzig."
+      ],
+      "ids": [
+        "f24c3719-a343-48e3-81ca-fa1168982933",
+        "2e1e645d-64f9-43a4-b4db-2fca2b58c724"
+      ],
+      "margin": 3.04,
+      "piece_durs": [
+        2.008,
+        2.692
+      ],
+      "worst_seam_db": -62.4,
+      "all_reused": false
+    },
+    {
+      "id": "deu_at_for_eng:pod-1:SC13-S011",
+      "order": 130,
+      "n": 5,
+      "sentences": [
+        "dreißig.",
+        "vierzig.",
+        "fünfzig.",
+        "Freitag.",
+        "Samstag."
+      ],
+      "ids": [
+        "d07e2ec8-7e48-4f9d-9172-8d6f2a6292e2",
+        "a0854b28-943b-47a6-a2e8-8877e6dc6d00",
+        "b755a7ab-2fc3-4143-8da5-9a8743b15b75",
+        "c1e41d0e-1ea3-4d7a-b2d0-5a83f5c9bb51",
+        "dec84ad7-cc34-4888-9311-037cf7aaa08f"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.416,
+        1.708,
+        1.463,
+        1.283,
+        1.129
+      ],
+      "worst_seam_db": -61.1,
+      "all_reused": false
+    },
+    {
+      "id": "deu_at_for_eng:pod-1:SC14-S009",
+      "order": 139,
+      "n": 2,
+      "sentences": [
+        "Jo, klar.",
+        "Des Gerät is direkt do."
+      ],
+      "ids": [
+        "c9ebc5ff-362c-4e9d-8029-48d06ff2ea13",
+        "6c36631d-4af1-423d-afa0-eb6d45f3db07"
+      ],
+      "margin": 13.36,
+      "piece_durs": [
+        1.637,
+        2.692
+      ],
+      "worst_seam_db": -55.3,
+      "all_reused": false
+    },
+    {
+      "id": "deu_at_for_eng:pod-1:SC17-S011",
+      "order": 173,
+      "n": 4,
+      "sentences": [
+        "drei Uhr.",
+        "neun Uhr.",
+        "Jänner.",
+        "Februar."
+      ],
+      "ids": [
+        "9c770228-fbdf-403f-a8a8-58b4dd70d0e9",
+        "c7a8d509-0091-493c-9d5b-a6affe44dde9",
+        "c980f295-d406-42fa-8c96-7582bb72406d",
+        "037c044f-ca72-4d96-a551-f87bb6adf698"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.071,
+        1.433,
+        1.091,
+        1.073
+      ],
+      "worst_seam_db": -56.3,
+      "all_reused": false
+    },
+    {
+      "id": "deu_at_for_eng:pod-1:SC15-S011",
+      "order": 151,
+      "n": 5,
+      "sentences": [
+        "hunderttausend.",
+        "sechzig.",
+        "siebzig.",
+        "ein Uhr.",
+        "elf Uhr."
+      ],
+      "ids": [
+        "ab92ece5-7275-4faa-893c-815e9c5a4200",
+        "bf2d2b31-ab44-41b5-adee-167ff1d9fdf6",
+        "68b1db13-5303-4da9-b51e-179ad8a95fcb",
+        "fa7f56ac-269a-4f96-b2d9-b11be04579dd",
+        "caa516ad-b080-41a2-9947-85a8dcdce3ed"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.275,
+        1.248,
+        1.225,
+        1.213,
+        1.079
+      ],
+      "worst_seam_db": -62.7,
+      "all_reused": false
+    },
+    {
+      "id": "deu_at_for_eng:pod-1:SC16-S011",
+      "order": 162,
+      "n": 5,
+      "sentences": [
+        "a Million.",
+        "achtzig.",
+        "neunzig.",
+        "zwoa Uhr.",
+        "zehn Uhr."
+      ],
+      "ids": [
+        "fc11373c-e4a6-422f-9187-89ffc3eb4526",
+        "cc4ef126-393c-4935-9d94-62ba5f166ba8",
+        "ebc10ea3-4cf7-4f61-bc8f-673246588757",
+        "dd953e2a-ca98-4ae6-af7c-fac3926923f0",
+        "2f3f704e-6b09-42d5-ae85-2fb2b2833307"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.231,
+        0.992,
+        1.019,
+        1.043,
+        0.963
+      ],
+      "worst_seam_db": -50.1,
+      "all_reused": false
+    },
+    {
+      "id": "deu_at_for_eng:pod-1:SC14-S010",
+      "order": 140,
+      "n": 5,
+      "sentences": [
+        "hundert.",
+        "zweihundert.",
+        "tausend.",
+        "Sonntag.",
+        "zwölf Uhr."
+      ],
+      "ids": [
+        "1f68e45a-1c87-422a-9a3a-4633d2cb91ba",
+        "68f117af-0a73-48d7-a121-bf0ec8c6668b",
+        "b6eddcf0-51fc-4877-868c-6cdbed2578a9",
+        "7df08655-7adf-4780-aaef-8825dcfba348",
+        "92a3c151-d130-4265-beaf-2c63d3896bc3"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.161,
+        1.862,
+        1.441,
+        1.32,
+        1.143
+      ],
+      "worst_seam_db": -56.2,
+      "all_reused": false
+    },
+    {
+      "id": "deu_at_for_eng:pod-1:SC18-S007",
+      "order": 180,
+      "n": 2,
+      "sentences": [
+        "Stimmt des?",
+        "Hob i recht?"
+      ],
+      "ids": [
+        "7bc841c4-12aa-42e3-882d-37797fe37db3",
+        "5df24063-df10-4278-bc9a-668265ec0683"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.333,
+        1.648
+      ],
+      "worst_seam_db": -58.7,
+      "all_reused": false
+    },
+    {
+      "id": "deu_at_for_eng:pod-1:SC19-S011",
+      "order": 195,
+      "n": 4,
+      "sentences": [
+        "fünf Uhr.",
+        "sieben Uhr.",
+        "Mai.",
+        "Juni."
+      ],
+      "ids": [
+        "5ad0ba2c-ea03-4dfe-91bf-8cef15acbdc5",
+        "1f744119-2c74-413c-a3a7-78f1e38b477f",
+        "b8c9098f-8ccb-48bd-97da-27437a5d0e0b",
+        "5d165577-9668-40ca-8523-3e82ab412c3f"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.207,
+        1.527,
+        1.114,
+        1.052
+      ],
+      "worst_seam_db": -68.7,
+      "all_reused": false
+    },
+    {
+      "id": "deu_at_for_eng:pod-1:SC18-S011",
+      "order": 184,
+      "n": 4,
+      "sentences": [
+        "vier Uhr.",
+        "acht Uhr.",
+        "März.",
+        "April."
+      ],
+      "ids": [
+        "f08a1fff-0750-45d8-9b47-4d52ce0c5032",
+        "5962f3f9-e074-4e81-b677-01e25e76b5a7",
+        "85e58601-d904-4800-995f-25a3a46a4eef",
+        "a5cd46af-9fb0-4f31-bbcf-4f08b40c5cb4"
+      ],
+      "margin": 3.02,
+      "piece_durs": [
+        1.023,
+        1.124,
+        0.957,
+        0.985
+      ],
+      "worst_seam_db": -62.7,
+      "all_reused": false
+    },
+    {
+      "id": "deu_at_for_eng:pod-1:SC20-S011",
+      "order": 206,
+      "n": 4,
+      "sentences": [
+        "sechs Uhr.",
+        "Juli.",
+        "August.",
+        "September."
+      ],
+      "ids": [
+        "4f4bd9c3-c119-4bd6-a546-d9193fbf7920",
+        "8ea5fb97-1edc-4955-ae76-a4ab4ae0aa1d",
+        "086f7896-67c8-4c58-ae2d-441870486c05",
+        "257a4618-5a2a-46bb-9255-56c054a95306"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.089,
+        1.285,
+        1.294,
+        1.231
+      ],
+      "worst_seam_db": -61.7,
+      "all_reused": false
+    },
+    {
+      "id": "deu_at_for_eng:pod-1:SC21-S014",
+      "order": 220,
+      "n": 3,
+      "sentences": [
+        "Oktober.",
+        "November.",
+        "Dezember."
+      ],
+      "ids": [
+        "260bc08a-044e-45f5-a12a-12aafb09eefd",
+        "d114cef1-8df9-4eba-9c53-16b4e9325636",
+        "aa1ff319-211a-40f3-b19a-2f0ac0b838b0"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.315,
+        1.655,
+        1.286
+      ],
+      "worst_seam_db": -67.4,
+      "all_reused": false
+    },
+    {
+      "id": "deu_at_for_eng:pod-1:SC22-S003",
+      "order": 223,
+      "n": 3,
+      "sentences": [
+        "Danke, des is guat zum wissen.",
+        "I muass no mehr Wörter lernen, und i muass des zuhörn üben.",
+        "I versteh de Leut ned guat, wenn s' ned langsam reden."
+      ],
+      "ids": [
+        "cacf3aea-9af7-4586-9dab-10dc763c689f",
+        "f2e485f3-e776-4a54-9ae5-3e951c450651",
+        "3ed923c9-97a0-49df-a521-16e972435d97"
+      ],
+      "margin": 2.3,
+      "piece_durs": [
+        2.359,
+        5.372,
+        3.869
+      ],
+      "worst_seam_db": -60.8,
+      "all_reused": false
+    },
+    {
+      "id": "deu_at_for_eng:pod-1:SC22-S002",
+      "order": 222,
+      "n": 3,
+      "sentences": [
+        "Klar, koa Problem.",
+        "Du redst es echt guat, kummt ma vor.",
+        "I kann di leicht verstehn."
+      ],
+      "ids": [
+        "8f9ac296-77aa-4682-9e06-28c9e2236b2d",
+        "8192997c-9118-4a39-a96d-697f65881026",
+        "67137615-c28d-441c-adea-21513a2affc2"
+      ],
+      "margin": 3.19,
+      "piece_durs": [
+        1.669,
+        2.866,
+        2.049
+      ],
+      "worst_seam_db": -57.4,
+      "all_reused": false
+    },
+    {
+      "id": "deu_at_for_eng:pod-1:SC22-S006",
+      "order": 226,
+      "n": 3,
+      "sentences": [
+        "I glaub, du mochst des sehr guat.",
+        "I bin beeindruckt.",
+        "I glaub, du bist so weit, dass du anfangen kannst, mit jedn Deitsch zum reden, der wos Deitsch redt."
+      ],
+      "ids": [
+        "55eb90b4-7e0a-4daa-a9cd-3089b900a900",
+        "db819ef0-95b0-45fe-970e-7b989345bf05",
+        "efad818f-cd79-464b-8a45-3710693be057"
+      ],
+      "margin": 3.3,
+      "piece_durs": [
+        2.942,
+        1.934,
+        6.244
+      ],
+      "worst_seam_db": -55.7,
+      "all_reused": false
+    },
+    {
+      "id": "deu_at_for_eng:pod-1:SC22-S007",
+      "order": 227,
+      "n": 2,
+      "sentences": [
+        "Es is hoit a bissl frustrierend, wenn i ned schnell gnua denken kann, dass i mi richtig ausdrücken kann.",
+        "Oba i woaß, dass i weiter üben muass, wenn i selbstbewusster reden wü."
+      ],
+      "ids": [
+        "0d43c338-81a8-46f2-ba68-409828276d88",
+        "96257600-4753-4a2a-82be-4d6ccb99133f"
+      ],
+      "margin": 4.27,
+      "piece_durs": [
+        6.728,
+        5.178
+      ],
+      "worst_seam_db": -52.1,
+      "all_reused": false
+    },
+    {
+      "id": "deu_at_for_eng:pod-1:SC22-S009",
+      "order": 229,
+      "n": 4,
+      "sentences": [
+        "Des is genau de Art von Übung, de wos i brauch.",
+        "I glaub, i kann spürn, wia's mein Gehirn verändert, während mir reden!",
+        "I bin da echt dankbar für deine Hilfe.",
+        "Oba es is überraschend, wia müd i werd, wenn i in a Sproch red, de wos i ned so guat red."
+      ],
+      "ids": [
+        "7af16dbb-f63d-4c67-bc30-bb2c3d8610d6",
+        "4ebeb8b3-b4a2-4e08-b17f-6c5ac6f80ace",
+        "475d276e-9a45-4692-ad62-79e848a22d07",
+        "ac4fa457-7d06-474d-b452-cfcf64b71646"
+      ],
+      "margin": 2.55,
+      "piece_durs": [
+        4.095,
+        4.805,
+        3.043,
+        6.957
+      ],
+      "worst_seam_db": -49.5,
+      "all_reused": false
+    },
+    {
+      "id": "deu_at_for_eng:pod-1:SC22-S010",
+      "order": 230,
+      "n": 3,
+      "sentences": [
+        "I glaub, des is normal.",
+        "Es is schwer, a neiche Sproch zum lernen.",
+        "Oba es mocht so viel Spaß, wennst anfangst, Gespräche zum hobn, oder?"
+      ],
+      "ids": [
+        "bd156662-0251-47c8-ad78-04a65a21f8c5",
+        "4d0ff18f-d989-45fb-a3b2-72b726d73b3d",
+        "3011a749-5c0f-4793-baca-8de98315e8bc"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.968,
+        3.09,
+        4.593
+      ],
+      "worst_seam_db": -54.5,
+      "all_reused": false
+    }
+  ]
+}

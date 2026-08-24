@@ -1,0 +1,1397 @@
+{
+  "course": "fra_ca_for_eng",
+  "pod": "fra_ca_for_eng:pod-1",
+  "apply": true,
+  "at": "2026-08-24T12:46:08.645Z",
+  "gates": {
+    "margin_floor": 1.5,
+    "seam_db": -35,
+    "seam_window_s": 0.03,
+    "min_piece_s": 0.35
+  },
+  "splicer": "scripts/splice-fork/splice.py (unmodified)",
+  "multi_sentence_turns_needing_split": 63,
+  "processed": 63,
+  "stats": {
+    "linked": 63,
+    "reused_clips": 30,
+    "spliced_clips": 139,
+    "refused": 0,
+    "errors": 0,
+    "known_count_mismatch": 0
+  },
+  "refusals": [],
+  "errors": [],
+  "linked": [
+    {
+      "id": "fra_ca_for_eng:pod-1:SC03-S001",
+      "order": 10,
+      "n": 2,
+      "sentences": [
+        "Bonjour!",
+        "Qu'est-ce que je peux te servir?"
+      ],
+      "ids": [
+        "9066f2bd-d0b0-4442-9d3e-b67ad9b06a0f",
+        "fc0b3e5a-8b20-41e2-8213-0c351b7a8688"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.665,
+        2.423
+      ],
+      "worst_seam_db": -64.3,
+      "all_reused": false
+    },
+    {
+      "id": "fra_ca_for_eng:pod-1:SC03-S010",
+      "order": 19,
+      "n": 2,
+      "sentences": [
+        "Merci beaucoup.",
+        "Au revoir."
+      ],
+      "ids": [
+        "de581704-9d9b-4bcc-87e8-4699a9269b4c",
+        "d386e77b-edc6-4dd8-a4c4-ec6cc9c1e9e3"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.7,
+        1.772
+      ],
+      "worst_seam_db": -64.7,
+      "all_reused": false
+    },
+    {
+      "id": "fra_ca_for_eng:pod-1:SC02-S005",
+      "order": 9,
+      "n": 2,
+      "sentences": [
+        "C'est pas ben loin.",
+        "Peut-être trois ou quatre milles."
+      ],
+      "ids": [
+        "f4a8816e-5de5-4eb2-9448-6cb086052363",
+        "d74f604d-c151-41ee-9699-796f203f7d77"
+      ],
+      "margin": 12.01,
+      "piece_durs": [
+        1.89,
+        3.025
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "fra_ca_for_eng:pod-1:SC02-S002",
+      "order": 6,
+      "n": 2,
+      "sentences": [
+        "Non, c'est libre.",
+        "Allez-y, je vous en prie."
+      ],
+      "ids": [
+        "07d2c584-c465-480c-939a-6e61b8446f21",
+        "8c61e693-3f86-4567-94fa-5ebf8286a682"
+      ],
+      "margin": 4.08,
+      "piece_durs": [
+        2.106,
+        2.729
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "fra_ca_for_eng:pod-1:SC06-S003",
+      "order": 27,
+      "n": 2,
+      "sentences": [
+        "Moi, c'est James.",
+        "Enchanté."
+      ],
+      "ids": [
+        "0f0c6344-72fe-4057-9f96-ae7fa848b932",
+        "4968c1bb-8cbe-41b9-b158-50b811cce0d0"
+      ],
+      "margin": 4.97,
+      "piece_durs": [
+        2.418,
+        1.746
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "fra_ca_for_eng:pod-1:SC06-S001",
+      "order": 25,
+      "n": 3,
+      "sentences": [
+        "Excuse-moi.",
+        "Bonjour.",
+        "Comment tu t'appelles?"
+      ],
+      "ids": [
+        "7fb5327f-8a3b-4d6f-b405-092ac0bf6039",
+        "9066f2bd-d0b0-4442-9d3e-b67ad9b06a0f",
+        "cad60179-aaa6-410e-93bb-6873d5572879"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.625,
+        2.256,
+        1.921
+      ],
+      "worst_seam_db": -64.3,
+      "all_reused": false
+    },
+    {
+      "id": "fra_ca_for_eng:pod-1:SC04-S002",
+      "order": 21,
+      "n": 4,
+      "sentences": [
+        "Allô!",
+        "Je m'excuse, mais je peux pas parler là.",
+        "Faut que je rentre à la maison.",
+        "On peut se parler demain?"
+      ],
+      "ids": [
+        "ee5162ee-2ed5-4264-9140-fd6827bb40b1",
+        "0b2d77b7-08a6-43f7-9813-bcb28c45fad2",
+        "b09212a6-0212-44af-9f5d-a80df1fdb7af",
+        "7ecac93d-68be-4d91-97c4-227d76d446eb"
+      ],
+      "margin": 4.54,
+      "piece_durs": [
+        1.267,
+        3.677,
+        2.856,
+        2.031
+      ],
+      "worst_seam_db": -71.2,
+      "all_reused": false
+    },
+    {
+      "id": "fra_ca_for_eng:pod-1:SC05-S002",
+      "order": 24,
+      "n": 4,
+      "sentences": [
+        "Oui, ben fatiguée.",
+        "Chus ben fatiguée là.",
+        "Bonne nuit.",
+        "On se voit demain."
+      ],
+      "ids": [
+        "9b3988cf-1b68-48d8-b3b6-57383396befb",
+        "efc6aa87-2c46-41a7-b9a9-d89523b5a189",
+        "11388bf6-1544-461e-a7b7-3a000ebe293c",
+        "9e65135d-899d-4ae8-83f3-8b7a66ae720b"
+      ],
+      "margin": 5.95,
+      "piece_durs": [
+        2.177,
+        2.57,
+        2.051,
+        1.875
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "fra_ca_for_eng:pod-1:SC06-S005",
+      "order": 29,
+      "n": 2,
+      "sentences": [
+        "Je suis de Manchester, mais j'habite à Londres maintenant.",
+        "Et toi?"
+      ],
+      "ids": [
+        "ea10bb93-e201-46d5-9420-6b1f3b1a35cd",
+        "eb6fb4b1-28d1-4f06-9931-9b2ec94b3d28"
+      ],
+      "margin": 4.67,
+      "piece_durs": [
+        4.458,
+        1.414
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "fra_ca_for_eng:pod-1:SC06-S007",
+      "order": 31,
+      "n": 2,
+      "sentences": [
+        "C'est une belle ville.",
+        "Tu fais quoi dans la vie?"
+      ],
+      "ids": [
+        "7e606c21-fb76-42d4-b0f5-5f1ac0a6ab00",
+        "ff8234eb-bf36-4878-8361-644b49245a6d"
+      ],
+      "margin": null,
+      "piece_durs": [
+        2.129,
+        2.08
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "fra_ca_for_eng:pod-1:SC07-S001",
+      "order": 38,
+      "n": 2,
+      "sentences": [
+        "Bonjour!",
+        "Qu'est-ce que je peux te servir?"
+      ],
+      "ids": [
+        "55423767-e58b-40b4-8081-9b7f13fd0ec0",
+        "ccdd9101-7c6e-4309-bdc4-b482fb803500"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.506,
+        2.437
+      ],
+      "worst_seam_db": -72.2,
+      "all_reused": false
+    },
+    {
+      "id": "fra_ca_for_eng:pod-1:SC06-S009",
+      "order": 33,
+      "n": 3,
+      "sentences": [
+        "Je m'excuse, j'ai pas compris.",
+        "Je suis en train d'apprendre le français québécois.",
+        "Tu pourrais répéter ça plus lentement, s'il te plaît?"
+      ],
+      "ids": [
+        "a1d5a23b-888c-4f2e-bbbc-b9f2358e0de6",
+        "b9db51d5-648c-4e18-b413-015e4b46ac45",
+        "393a2f31-34de-4ca9-9169-f6719ca78bc9"
+      ],
+      "margin": 5.62,
+      "piece_durs": [
+        3.043,
+        4.089,
+        3.466
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "fra_ca_for_eng:pod-1:SC07-S004",
+      "order": 41,
+      "n": 2,
+      "sentences": [
+        "J'aimerais un grand, s'il vous plaît.",
+        "Avec du lait d'avoine si vous en avez."
+      ],
+      "ids": [
+        "d3f211af-52f1-4196-8aed-131e9a147ebc",
+        "86fded37-ac0b-42ac-b3fc-27e64d46e73a"
+      ],
+      "margin": 4.34,
+      "piece_durs": [
+        2.892,
+        3.141
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "fra_ca_for_eng:pod-1:SC06-S011",
+      "order": 35,
+      "n": 4,
+      "sentences": [
+        "J'enseigne l'anglais, mais pas dans une école.",
+        "Je travaille avec des adultes.",
+        "Je suis en vacances ici avec ma femme et mes enfants.",
+        "On passe un excellent moment."
+      ],
+      "ids": [
+        "8e6121e9-b0ac-49a1-9e97-63f31d943644",
+        "b7d6c763-1390-4dd4-a897-60a3b6ce781b",
+        "78f864c1-48c1-4d80-8261-c6d801662d57",
+        "1ce4a79e-2c04-4315-891a-162163ca4fbb"
+      ],
+      "margin": 4.86,
+      "piece_durs": [
+        3.628,
+        3.098,
+        4.77,
+        2.575
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "fra_ca_for_eng:pod-1:SC07-S005",
+      "order": 42,
+      "n": 2,
+      "sentences": [
+        "Bien sûr.",
+        "C'est pour manger ici ou pour emporter?"
+      ],
+      "ids": [
+        "e6d189d5-8afd-494b-ba10-047eecb39ddc",
+        "39c77d51-3943-4762-b8eb-e11b5eefdbeb"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.567,
+        2.903
+      ],
+      "worst_seam_db": -71.2,
+      "all_reused": false
+    },
+    {
+      "id": "fra_ca_for_eng:pod-1:SC07-S011",
+      "order": 48,
+      "n": 2,
+      "sentences": [
+        "Je pourrais payer avec ma carte?",
+        "T'as du sans contact?"
+      ],
+      "ids": [
+        "16c7f8d8-2bae-4fda-a7b6-ca9895faaf72",
+        "64fa9cec-7031-4391-a98c-bbb5441a7eb5"
+      ],
+      "margin": 9.33,
+      "piece_durs": [
+        2.375,
+        2.149
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "fra_ca_for_eng:pod-1:SC07-S008",
+      "order": 45,
+      "n": 2,
+      "sentences": [
+        "Tout de suite.",
+        "Tu veux autre chose?"
+      ],
+      "ids": [
+        "2d09a90c-27b0-481e-abec-c413b085d0d1",
+        "61e6813d-daae-4376-b2a9-4050d6ed016f"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.464,
+        1.993
+      ],
+      "worst_seam_db": -74.7,
+      "all_reused": false
+    },
+    {
+      "id": "fra_ca_for_eng:pod-1:SC08-S001",
+      "order": 53,
+      "n": 2,
+      "sentences": [
+        "Bonsoir.",
+        "Qu'est-ce que je peux te servir?"
+      ],
+      "ids": [
+        "ffaaf845-4318-444c-8c0e-bd603844fb8f",
+        "fc0b3e5a-8b20-41e2-8213-0c351b7a8688"
+      ],
+      "margin": null,
+      "piece_durs": null,
+      "worst_seam_db": null,
+      "all_reused": true
+    },
+    {
+      "id": "fra_ca_for_eng:pod-1:SC07-S012",
+      "order": 49,
+      "n": 2,
+      "sentences": [
+        "Bien sûr.",
+        "V'là la machine."
+      ],
+      "ids": [
+        "e6d189d5-8afd-494b-ba10-047eecb39ddc",
+        "eb669fee-ef19-44c8-a02a-477a959eb0f3"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.563,
+        2.09
+      ],
+      "worst_seam_db": -71.2,
+      "all_reused": false
+    },
+    {
+      "id": "fra_ca_for_eng:pod-1:SC07-S014",
+      "order": 51,
+      "n": 2,
+      "sentences": [
+        "Aimeriez-vous manger ici?",
+        "La table près de la fenêtre est libre."
+      ],
+      "ids": [
+        "b1e3fae1-012f-4c5e-9970-14b68f274a06",
+        "dd49f988-8d78-45a1-96e3-1b3be6389fbd"
+      ],
+      "margin": null,
+      "piece_durs": [
+        2.099,
+        2.947
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "fra_ca_for_eng:pod-1:SC08-S014",
+      "order": 66,
+      "n": 2,
+      "sentences": [
+        "On peut avoir du pain?",
+        "Pis un bol de frites pour la table."
+      ],
+      "ids": [
+        "0f2ea98d-d4a8-4c5f-822c-dd15d9fc99cd",
+        "1ffcc7ff-aedd-4a86-8d34-6638ef9970d9"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.891,
+        2.724
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "fra_ca_for_eng:pod-1:SC08-S015",
+      "order": 67,
+      "n": 2,
+      "sentences": [
+        "T'as des sandwichs?",
+        "Je voudrais un sandwich au fromage, s'il te plaît."
+      ],
+      "ids": [
+        "38d9cf50-c9ba-4f99-aab5-7e483f19f529",
+        "7a25d289-5b8f-4378-8957-3c360ae52ede"
+      ],
+      "margin": 6.28,
+      "piece_durs": [
+        1.775,
+        3.782
+      ],
+      "worst_seam_db": -76.3,
+      "all_reused": false
+    },
+    {
+      "id": "fra_ca_for_eng:pod-1:SC08-S013",
+      "order": 65,
+      "n": 3,
+      "sentences": [
+        "Oui, certain.",
+        "Le voici.",
+        "Le fish and chips est ben bon."
+      ],
+      "ids": [
+        "aa25dcb3-6711-47fe-b5e6-62d25b4832f7",
+        "2e8f718c-7fc3-4310-9983-33bb8663b9e1",
+        "66eba79e-5cf7-45ed-9920-774b6c37c7b4"
+      ],
+      "margin": 4.57,
+      "piece_durs": [
+        2.055,
+        2.144,
+        3.047
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "fra_ca_for_eng:pod-1:SC09-S006",
+      "order": 74,
+      "n": 2,
+      "sentences": [
+        "Oui, le saumon et le risotto sont tous les deux sans gluten.",
+        "On a aussi quelques salades."
+      ],
+      "ids": [
+        "eddadaa5-dd87-4e83-ba2c-5f6ead944027",
+        "8d5fabce-ecae-4083-b68c-30b70b647c46"
+      ],
+      "margin": 3.3,
+      "piece_durs": [
+        4.896,
+        2.746
+      ],
+      "worst_seam_db": -59.4,
+      "all_reused": false
+    },
+    {
+      "id": "fra_ca_for_eng:pod-1:SC09-S002",
+      "order": 70,
+      "n": 3,
+      "sentences": [
+        "Bienvenue.",
+        "Suivez-moi, s'il vous plaît.",
+        "Voici les menus."
+      ],
+      "ids": [
+        "5d19238d-1a3b-42a6-a6bb-87f51aa83ed4",
+        "6ad6942a-2da0-48ef-8db0-7df68e663a61",
+        "b52b1b07-f8c9-48e5-9ef6-5936d8ac1520"
+      ],
+      "margin": 4.21,
+      "piece_durs": [
+        1.536,
+        3.275,
+        2.103
+      ],
+      "worst_seam_db": -74.7,
+      "all_reused": false
+    },
+    {
+      "id": "fra_ca_for_eng:pod-1:SC09-S008",
+      "order": 76,
+      "n": 2,
+      "sentences": [
+        "L'agneau est excellent.",
+        "Il a été cuit lentement, avec du romarin."
+      ],
+      "ids": [
+        "ccabf1e1-c245-4806-91fc-2ab63c0779b4",
+        "320f3938-44e0-4df1-b2ba-250eacdceab9"
+      ],
+      "margin": 5.3,
+      "piece_durs": [
+        2.19,
+        3.552
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "fra_ca_for_eng:pod-1:SC09-S010",
+      "order": 78,
+      "n": 2,
+      "sentences": [
+        "Et le risotto pour moi.",
+        "Avec une petite salade verte pour commencer."
+      ],
+      "ids": [
+        "bcea8b15-4ebf-4e1a-8f94-bf7fb4b7145b",
+        "6266d4c7-cb26-4cd5-bbfd-5a0992dcb5bf"
+      ],
+      "margin": null,
+      "piece_durs": [
+        2.09,
+        3.231
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "fra_ca_for_eng:pod-1:SC09-S011",
+      "order": 79,
+      "n": 2,
+      "sentences": [
+        "Bien sûr.",
+        "Et qu'est-ce que vous voulez boire?"
+      ],
+      "ids": [
+        "8798074a-6f91-401a-b9ce-c81e42e810e4",
+        "6f008a60-df97-4876-a2aa-ce4b9772a3c7"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.783,
+        2.285
+      ],
+      "worst_seam_db": -73.4,
+      "all_reused": false
+    },
+    {
+      "id": "fra_ca_for_eng:pod-1:SC09-S014",
+      "order": 82,
+      "n": 2,
+      "sentences": [
+        "Excellent choix.",
+        "Je vous l'apporte tout de suite."
+      ],
+      "ids": [
+        "6832bb6d-8683-4c90-96c0-06e4d4e96296",
+        "187602ac-ff36-4764-83f7-3de8131b226d"
+      ],
+      "margin": 7.43,
+      "piece_durs": [
+        1.775,
+        2.729
+      ],
+      "worst_seam_db": -78.3,
+      "all_reused": false
+    },
+    {
+      "id": "fra_ca_for_eng:pod-1:SC09-S015",
+      "order": 83,
+      "n": 2,
+      "sentences": [
+        "Est-ce que tout se passe bien?",
+        "Est-ce que vous avez de la place pour le dessert?"
+      ],
+      "ids": [
+        "60446d7a-0cce-4541-a0c6-c80f45d7023f",
+        "3b7e5e84-6390-4cda-96bd-e0cec1b65fed"
+      ],
+      "margin": null,
+      "piece_durs": [
+        2.104,
+        3.137
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "fra_ca_for_eng:pod-1:SC09-S016",
+      "order": 84,
+      "n": 2,
+      "sentences": [
+        "Juste deux cafés, s'il vous plaît.",
+        "Décaf pour moi."
+      ],
+      "ids": [
+        "03e821eb-acd6-4697-80e9-c555308cb6a2",
+        "b45c90de-12b0-4acf-a979-d775045b5385"
+      ],
+      "margin": 6.59,
+      "piece_durs": [
+        2.669,
+        1.966
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "fra_ca_for_eng:pod-1:SC09-S017",
+      "order": 85,
+      "n": 2,
+      "sentences": [
+        "Et l'addition, quand vous êtes prêt.",
+        "Est-ce qu'on peut séparer ça?"
+      ],
+      "ids": [
+        "476f5c15-f2c5-4f56-98c3-2e35fb977215",
+        "644b5bb4-1eb0-4254-ae0d-d7f5250d3dd8"
+      ],
+      "margin": 4.46,
+      "piece_durs": [
+        2.589,
+        2.256
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "fra_ca_for_eng:pod-1:SC11-S004",
+      "order": 100,
+      "n": 2,
+      "sentences": [
+        "Parfait.",
+        "La chambre est au troisième étage, chambre sept cent neuf."
+      ],
+      "ids": [
+        "0f52aa06-ded5-4088-999d-30608ce2cef9",
+        "604205d9-63cd-4001-b6a9-af2faa1e0329"
+      ],
+      "margin": 6.38,
+      "piece_durs": [
+        1.367,
+        4.14
+      ],
+      "worst_seam_db": -73.4,
+      "all_reused": false
+    },
+    {
+      "id": "fra_ca_for_eng:pod-1:SC10-S008",
+      "order": 94,
+      "n": 3,
+      "sentences": [
+        "De rien.",
+        "T'es ici en vacances?",
+        "Tu parles très bien le français québécois."
+      ],
+      "ids": [
+        "b92e7726-7d5e-422b-a9ef-9c3eac357e03",
+        "f5e6803d-2254-436b-b357-503058ede147",
+        "381f7236-8b7a-459c-973c-37ccb18d76c6"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.402,
+        2.629,
+        3.31
+      ],
+      "worst_seam_db": -72.2,
+      "all_reused": false
+    },
+    {
+      "id": "fra_ca_for_eng:pod-1:SC11-S002",
+      "order": 98,
+      "n": 3,
+      "sentences": [
+        "Bienvenue.",
+        "Oui, vous avez une chambre double pour trois nuits.",
+        "Est-ce que je pourrais voir une pièce d'identité, s'il vous plaît?"
+      ],
+      "ids": [
+        "0fbd11c4-6bd2-40ce-9470-31911b372382",
+        "dfbc3b3d-1d2f-4796-bb33-35edc20cb33a",
+        "855cb1b4-4e9f-4941-b57a-a11a29e0f838"
+      ],
+      "margin": 4.89,
+      "piece_durs": [
+        1.485,
+        4.017,
+        3.878
+      ],
+      "worst_seam_db": -74.7,
+      "all_reused": false
+    },
+    {
+      "id": "fra_ca_for_eng:pod-1:SC11-S008",
+      "order": 104,
+      "n": 2,
+      "sentences": [
+        "De sept heures et demie jusqu'à dix heures.",
+        "On a des fruits et des céréales ou un déjeuner chaud."
+      ],
+      "ids": [
+        "a1828713-1df2-4b3c-ba9f-4721f993c207",
+        "6b31d416-1ed3-4413-a3ac-41f2ab04eb15"
+      ],
+      "margin": null,
+      "piece_durs": [
+        2.85,
+        3.383
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "fra_ca_for_eng:pod-1:SC11-S012",
+      "order": 108,
+      "n": 2,
+      "sentences": [
+        "C'est sur la carte de bienvenue dans votre chambre.",
+        "Bon séjour!"
+      ],
+      "ids": [
+        "12194878-8656-4b98-8ad0-aa76c9634b76",
+        "b6ee7984-6a93-4b24-be06-6a34cab0232b"
+      ],
+      "margin": null,
+      "piece_durs": [
+        3.175,
+        1.826
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "fra_ca_for_eng:pod-1:SC12-S002",
+      "order": 111,
+      "n": 2,
+      "sentences": [
+        "Bien sûr.",
+        "T'as quels symptômes?"
+      ],
+      "ids": [
+        "8798074a-6f91-401a-b9ce-c81e42e810e4",
+        "e8f8b0a3-c2f4-46e0-84b8-0f71932937e5"
+      ],
+      "margin": 12.59,
+      "piece_durs": [
+        1.779,
+        1.999
+      ],
+      "worst_seam_db": -73.4,
+      "all_reused": false
+    },
+    {
+      "id": "fra_ca_for_eng:pod-1:SC13-S010",
+      "order": 129,
+      "n": 2,
+      "sentences": [
+        "Merci beaucoup.",
+        "T'as été vraiment très utile."
+      ],
+      "ids": [
+        "de581704-9d9b-4bcc-87e8-4699a9269b4c",
+        "8fdee1cc-a269-448e-b0b4-330559ba3ac9"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.706,
+        2.438
+      ],
+      "worst_seam_db": -63.5,
+      "all_reused": false
+    },
+    {
+      "id": "fra_ca_for_eng:pod-1:SC13-S008",
+      "order": 127,
+      "n": 2,
+      "sentences": [
+        "Parfait.",
+        "Et est-ce qu'y'a un guichet automatique pas loin?"
+      ],
+      "ids": [
+        "0f52aa06-ded5-4088-999d-30608ce2cef9",
+        "e60752f0-f6f3-43b2-9087-f848ae6870db"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.365,
+        3.029
+      ],
+      "worst_seam_db": -74.7,
+      "all_reused": false
+    },
+    {
+      "id": "fra_ca_for_eng:pod-1:SC14-S002",
+      "order": 132,
+      "n": 2,
+      "sentences": [
+        "Oui, bien sûr.",
+        "Ça va prendre un peu de temps, y'a beaucoup de trafic en ce moment."
+      ],
+      "ids": [
+        "6fcee51e-7973-45a0-9b28-f26acad6a9ac",
+        "105c57f8-f14c-4d53-9edb-96aef41011a8"
+      ],
+      "margin": 5.7,
+      "piece_durs": [
+        2.018,
+        4.065
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "fra_ca_for_eng:pod-1:SC12-S010",
+      "order": 119,
+      "n": 5,
+      "sentences": [
+        "19.",
+        "20.",
+        "21.",
+        "Mercredi.",
+        "Jeudi."
+      ],
+      "ids": [
+        "fecf218c-7647-4c61-9010-8202b1e017d6",
+        "50a50db2-6755-4e4e-94bd-431e13baf855",
+        "5c0f2827-fde2-466d-b248-52274f1460c3",
+        "75c10a5f-529b-4a4a-8a91-404487765eec",
+        "45a30d45-0d1d-42c4-97b1-0acaed3c6324"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.208,
+        0.918,
+        1.23,
+        1.84,
+        1.617
+      ],
+      "worst_seam_db": -62,
+      "all_reused": false
+    },
+    {
+      "id": "fra_ca_for_eng:pod-1:SC14-S007",
+      "order": 137,
+      "n": 2,
+      "sentences": [
+        "Voilà.",
+        "Ça fait douze livres cinquante."
+      ],
+      "ids": [
+        "475c502a-c80b-4bc1-923c-16d3a73e5f6f",
+        "6315fead-4bae-4d45-b494-c7da90142f62"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.379,
+        2.509
+      ],
+      "worst_seam_db": -76.3,
+      "all_reused": false
+    },
+    {
+      "id": "fra_ca_for_eng:pod-1:SC14-S009",
+      "order": 139,
+      "n": 2,
+      "sentences": [
+        "Oui, bien sûr.",
+        "La machine est juste ici."
+      ],
+      "ids": [
+        "6fcee51e-7973-45a0-9b28-f26acad6a9ac",
+        "effd2db6-74cd-47c4-b608-e8655b1d9c17"
+      ],
+      "margin": 6.36,
+      "piece_durs": [
+        2.013,
+        2.306
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "fra_ca_for_eng:pod-1:SC14-S010",
+      "order": 140,
+      "n": 5,
+      "sentences": [
+        "100.",
+        "200.",
+        "1000.",
+        "Dimanche.",
+        "12 heures."
+      ],
+      "ids": [
+        "aa3e773f-248d-4e20-9189-262a2114dfba",
+        "cfdf67e2-29c0-461d-b176-d70cdb7106c9",
+        "1ba91f5d-bc6d-4df6-b503-a875858c3e54",
+        "eacd8594-2998-4729-a9fb-2f30831065b1",
+        "b7bc8b85-0c12-4e50-b43d-24562228bb68"
+      ],
+      "margin": null,
+      "piece_durs": [
+        0.797,
+        1.082,
+        1.011,
+        1.708,
+        1.825
+      ],
+      "worst_seam_db": -72.2,
+      "all_reused": false
+    },
+    {
+      "id": "fra_ca_for_eng:pod-1:SC15-S011",
+      "order": 151,
+      "n": 5,
+      "sentences": [
+        "100 000.",
+        "60.",
+        "70.",
+        "1 heure.",
+        "11 heures."
+      ],
+      "ids": [
+        "5e1b1cdc-2c11-438c-a460-d2c64782115b",
+        "225ca093-8ed8-4fa9-b12c-51056375d524",
+        "a7910ae1-a9b6-4f78-bd38-3335ddf8fa9b",
+        "13c1d77c-161e-4f29-9e7a-f9eecea1c512",
+        "e512d85d-f461-4bdc-ba8f-e86137d6db1e"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.697,
+        1.774,
+        1.725,
+        1.61,
+        1.787
+      ],
+      "worst_seam_db": -63.1,
+      "all_reused": false
+    },
+    {
+      "id": "fra_ca_for_eng:pod-1:SC17-S011",
+      "order": 173,
+      "n": 4,
+      "sentences": [
+        "3 heures.",
+        "9 heures.",
+        "Janvier.",
+        "Février."
+      ],
+      "ids": [
+        "f3e5d64c-eab6-4278-aab9-57b9b3718e09",
+        "8d2bc5ba-af77-453a-a0e0-5fce4b750152",
+        "04b88d29-4db7-4f6f-b2e6-a73635fc3157",
+        "281b06dc-15b6-492e-b1a1-9c305e96e99e"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.639,
+        2.206,
+        2.104,
+        1.727
+      ],
+      "worst_seam_db": -66.2,
+      "all_reused": false
+    },
+    {
+      "id": "fra_ca_for_eng:pod-1:SC16-S011",
+      "order": 162,
+      "n": 5,
+      "sentences": [
+        "Un million.",
+        "80.",
+        "90.",
+        "2 heures.",
+        "10 heures."
+      ],
+      "ids": [
+        "f33c2169-adf3-48c5-8900-2c0f7b76bea8",
+        "317d4735-9435-49fb-a091-696890c71759",
+        "86d3b1ad-022f-468d-ab16-c078c7893849",
+        "bba78d1a-5f8e-4664-a8db-44008f722ed9",
+        "a5d36c98-5085-44f1-a61f-ad21c5525491"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.537,
+        1.583,
+        1.61,
+        1.734,
+        1.843
+      ],
+      "worst_seam_db": -74.7,
+      "all_reused": false
+    },
+    {
+      "id": "fra_ca_for_eng:pod-1:SC18-S007",
+      "order": 180,
+      "n": 2,
+      "sentences": [
+        "C'est-tu correct?",
+        "Ai-je raison?"
+      ],
+      "ids": [
+        "cff46749-f805-4bad-a5d4-393e6eccbfab",
+        "6c65032d-a26c-4624-908e-42a1ba952d18"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.774,
+        1.658
+      ],
+      "worst_seam_db": -76.3,
+      "all_reused": false
+    },
+    {
+      "id": "fra_ca_for_eng:pod-1:SC19-S011",
+      "order": 195,
+      "n": 4,
+      "sentences": [
+        "5 heures.",
+        "7 heures.",
+        "Mai.",
+        "Juin."
+      ],
+      "ids": [
+        "12517916-f0f5-4fe3-852b-ead9e8bde930",
+        "de14c3aa-05d4-4cdb-b000-6ca73dcbaf13",
+        "f455986d-dadd-4e8b-aa9c-23a11478e2af",
+        "7db1b80d-a9a8-4dca-98b2-3c0f750a2772"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.711,
+        2.214,
+        1.751,
+        1.393
+      ],
+      "worst_seam_db": -65.7,
+      "all_reused": false
+    },
+    {
+      "id": "fra_ca_for_eng:pod-1:SC18-S011",
+      "order": 184,
+      "n": 4,
+      "sentences": [
+        "4 heures.",
+        "8 heures.",
+        "Mars.",
+        "Avril."
+      ],
+      "ids": [
+        "277f8d57-bf5c-4340-b5d4-367221c3e9ba",
+        "1196a11a-5ee4-427f-9ded-431becaa654e",
+        "d03ef433-2d2f-41a9-b3a6-eb9373cc98b1",
+        "7acfa93f-9569-4fc8-8122-dabc8bd6cc49"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.548,
+        2.231,
+        2.064,
+        1.657
+      ],
+      "worst_seam_db": -63.1,
+      "all_reused": false
+    },
+    {
+      "id": "fra_ca_for_eng:pod-1:SC20-S011",
+      "order": 206,
+      "n": 4,
+      "sentences": [
+        "6 heures.",
+        "Juillet.",
+        "Août.",
+        "Septembre."
+      ],
+      "ids": [
+        "e14c2797-a9a8-4fe9-b168-ed947c38d48c",
+        "3ba4deff-86bd-404c-a3dc-d1f9dec235a7",
+        "8debe288-e3d4-4d3a-8580-5c65c017ee16",
+        "cc8a95af-4aba-486e-b9c0-6447aae026a7"
+      ],
+      "margin": 9.43,
+      "piece_durs": [
+        1.731,
+        1.987,
+        1.679,
+        1.853
+      ],
+      "worst_seam_db": -66.8,
+      "all_reused": false
+    },
+    {
+      "id": "fra_ca_for_eng:pod-1:SC22-S002",
+      "order": 222,
+      "n": 3,
+      "sentences": [
+        "Ben oui, bien sûr, pas de problème.",
+        "T'as l'air de le parler vraiment bien.",
+        "Je te comprends facilement."
+      ],
+      "ids": [
+        "4153144c-d394-4c51-bae1-e1eeea9186b8",
+        "1710e8f6-0a79-469c-b4e3-1a116f4b04f6",
+        "705caf8e-1d05-49ed-b2b2-9537c53c44c2"
+      ],
+      "margin": null,
+      "piece_durs": null,
+      "worst_seam_db": null,
+      "all_reused": true
+    },
+    {
+      "id": "fra_ca_for_eng:pod-1:SC21-S014",
+      "order": 220,
+      "n": 3,
+      "sentences": [
+        "Octobre.",
+        "Novembre.",
+        "Décembre."
+      ],
+      "ids": [
+        "d69f86bd-eb82-4ed7-9835-a233562db769",
+        "29479c6f-24c6-4069-9ffb-7b3623747399",
+        "b40365b5-6ed6-4449-91e1-309137d8958e"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.565,
+        2.191,
+        1.78
+      ],
+      "worst_seam_db": -70.3,
+      "all_reused": false
+    },
+    {
+      "id": "fra_ca_for_eng:pod-1:SC22-S006",
+      "order": 226,
+      "n": 3,
+      "sentences": [
+        "Je pense que tu t'en sors vraiment bien.",
+        "Je suis impressionné.",
+        "Je pense que t'es prêt à commencer à parler le français québécois avec n'importe qui qui parle le français québécois."
+      ],
+      "ids": [
+        "a5566a3c-b074-4c9c-b4cd-c8d98dd59da6",
+        "8b7f3196-3cd9-4f35-8abc-734b0b9ae312",
+        "de7ea451-4d6a-4fe9-8e48-86edde94e897"
+      ],
+      "margin": null,
+      "piece_durs": null,
+      "worst_seam_db": null,
+      "all_reused": true
+    },
+    {
+      "id": "fra_ca_for_eng:pod-1:SC22-S001",
+      "order": 221,
+      "n": 2,
+      "sentences": [
+        "Ça vous dérangerait-tu si j'essayais de pratiquer mon français avec vous?",
+        "J'apprends pas depuis ben longtemps, pis chus encore un peu nerveuse de parler avec du monde."
+      ],
+      "ids": [
+        "78994732-7925-400b-8a14-01a0bf0782c8",
+        "8b6f2519-f235-44fd-8f54-8e945e230dea"
+      ],
+      "margin": 3.71,
+      "piece_durs": [
+        4.139,
+        5.372
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "fra_ca_for_eng:pod-1:SC22-S008",
+      "order": 228,
+      "n": 3,
+      "sentences": [
+        "T'as déjà de quoi être confiant.",
+        "Je pense que tu t'en sors bien mieux que tu le réalises.",
+        "Je suis à l'aise de parler avec toi, pis je parle pas très lentement."
+      ],
+      "ids": [
+        "3047f032-fe5b-414c-9950-d3d432afd478",
+        "3e214c43-06ff-41cb-b5ff-f4f8823b6f30",
+        "fc0e1e7a-f248-4018-a8dc-a8afe27819b2"
+      ],
+      "margin": null,
+      "piece_durs": null,
+      "worst_seam_db": null,
+      "all_reused": true
+    },
+    {
+      "id": "fra_ca_for_eng:pod-1:SC22-S003",
+      "order": 223,
+      "n": 3,
+      "sentences": [
+        "Merci, c'est bon à savoir.",
+        "J'ai besoin d'apprendre plus de mots, pis j'ai besoin de pratiquer l'écoute.",
+        "Je comprends pas bien les gens quand ils parlent pas lentement."
+      ],
+      "ids": [
+        "d8203d9f-c879-4925-ac78-c7b62b968d43",
+        "5e3a7fe5-0fcb-46bd-9497-304d2cf8eb08",
+        "541c9c72-9eaa-4c05-9936-b21d434cd3b3"
+      ],
+      "margin": 4.41,
+      "piece_durs": [
+        2.702,
+        5.189,
+        3.479
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "fra_ca_for_eng:pod-1:SC22-S010",
+      "order": 230,
+      "n": 3,
+      "sentences": [
+        "Je pense que c'est normal.",
+        "Apprendre une nouvelle langue, c'est difficile.",
+        "Mais c'est tellement le fun quand on commence à avoir des conversations, non?"
+      ],
+      "ids": [
+        "fba3bee6-949b-46dc-9001-1f5921759ee7",
+        "1481abc9-956d-4c12-a616-268ab3f6f70c",
+        "50f466ea-c9e6-420b-a7c1-76bd6e0a20bf"
+      ],
+      "margin": null,
+      "piece_durs": null,
+      "worst_seam_db": null,
+      "all_reused": true
+    },
+    {
+      "id": "fra_ca_for_eng:pod-1:SC22-S007",
+      "order": 227,
+      "n": 2,
+      "sentences": [
+        "C'est juste un peu frustrant quand je peux pas penser assez vite pour m'exprimer correctement.",
+        "Mais je sais que j'ai besoin de continuer à pratiquer si je veux parler avec plus de confiance."
+      ],
+      "ids": [
+        "989f14cc-4afe-4366-af74-9a65bbaad861",
+        "6c2b7485-07da-460f-97cb-d7330b89175c"
+      ],
+      "margin": 10.14,
+      "piece_durs": [
+        4.962,
+        5.592
+      ],
+      "worst_seam_db": -65.2,
+      "all_reused": false
+    },
+    {
+      "id": "fra_ca_for_eng:pod-1:SC22-S005",
+      "order": 225,
+      "n": 4,
+      "sentences": [
+        "Oui, merci.",
+        "C'est plus facile de parler avec juste une personne.",
+        "C'est un peu difficile de trouver quoi dire, par exemple.",
+        "Je suis pas sûr de ce que je dois dire, mais j'ai l'impression que je peux parler assez pour commencer à avoir des conversations."
+      ],
+      "ids": [
+        "1bd763dc-13e6-48d1-875b-9e10792c5021",
+        "f4b71d4c-3101-4a7a-959b-d47ec029eec8",
+        "b358fb62-840f-40f3-a0af-1f79b0e281f4",
+        "db6f4b84-fe14-43b1-a45c-7f72633701f4"
+      ],
+      "margin": 4.47,
+      "piece_durs": [
+        1.887,
+        3.894,
+        4.559,
+        7.168
+      ],
+      "worst_seam_db": -68.7,
+      "all_reused": false
+    },
+    {
+      "id": "fra_ca_for_eng:pod-1:SC22-S009",
+      "order": 229,
+      "n": 4,
+      "sentences": [
+        "C'est exactement le genre de pratique dont j'ai besoin.",
+        "Je pense que je peux sentir que ça change mon cerveau pendant qu'on parle!",
+        "J'apprécie vraiment ton aide.",
+        "Mais c'est surprenant à quel point je suis fatigué quand je parle dans une langue que je parle pas très bien."
+      ],
+      "ids": [
+        "cb57badc-dc62-4412-aca5-509177237300",
+        "f45ed0d1-c675-4b1f-9bcf-1de4ffc29c8a",
+        "80f6292e-7ebe-4db9-9b9e-9ada9616a8e9",
+        "0c081285-277f-49f3-90b0-1d2235f4abc7"
+      ],
+      "margin": null,
+      "piece_durs": [
+        3.427,
+        4.923,
+        2.951,
+        5.616
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "fra_ca_for_eng:pod-1:SC22-S011",
+      "order": 231,
+      "n": 3,
+      "sentences": [
+        "C'est ben vrai.",
+        "Je suis vraiment content de pouvoir avoir une conversation aussi longue que ça.",
+        "Pis j'espère qu'on va pouvoir avoir d'autres conversations dans le futur pendant que je continue à m'améliorer."
+      ],
+      "ids": [
+        "e8fa4ccf-29fe-42c9-a8fd-ff520ce0df7e",
+        "8c86e123-30bb-42a0-b9d0-dce335aaba3f",
+        "36711b14-e894-44ee-90c3-e61c88a3a0e1"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.664,
+        5.173,
+        6.232
+      ],
+      "worst_seam_db": -68,
+      "all_reused": false
+    }
+  ]
+}

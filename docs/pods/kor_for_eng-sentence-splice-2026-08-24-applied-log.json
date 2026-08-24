@@ -1,0 +1,2050 @@
+{
+  "course": "kor_for_eng",
+  "pod": "kor_for_eng:pod-1",
+  "apply": true,
+  "at": "2026-08-24T12:49:01.988Z",
+  "gates": {
+    "margin_floor": 1.5,
+    "seam_db": -35,
+    "seam_window_s": 0.03,
+    "min_piece_s": 0.35
+  },
+  "splicer": "scripts/splice-fork/splice.py (unmodified)",
+  "multi_sentence_turns_needing_split": 78,
+  "processed": 78,
+  "stats": {
+    "linked": 66,
+    "reused_clips": 18,
+    "spliced_clips": 158,
+    "refused": 12,
+    "errors": 0,
+    "known_count_mismatch": 5
+  },
+  "refusals": [
+    {
+      "id": "kor_for_eng:pod-1:SC06-S005",
+      "order": 29,
+      "n": 2,
+      "reason": "margin_below_floor",
+      "text": "저는 맨체스터 출신인데, 지금은 런던에 살고 있어요. 당신은요?",
+      "sentences": [
+        "저는 맨체스터 출신인데, 지금은 런던에 살고 있어요.",
+        "당신은요?"
+      ],
+      "target_audio_id": "db4f1fdf-f280-40fa-bec6-8aae93c2c735",
+      "measure": {
+        "whole_dur": 5.813,
+        "interior_gaps_ms": [
+          470,
+          658
+        ],
+        "cut_at_gaps_ms": [
+          658
+        ],
+        "rejected_gaps_ms": [
+          470
+        ],
+        "margin": 1.4,
+        "piece_durs": [
+          4.582,
+          1.331
+        ]
+      }
+    },
+    {
+      "id": "kor_for_eng:pod-1:SC07-S004",
+      "order": 41,
+      "n": 2,
+      "reason": "margin_below_floor",
+      "text": "라지로 주세요. 오트 밀크 있으면 넣어 주세요.",
+      "sentences": [
+        "라지로 주세요.",
+        "오트 밀크 있으면 넣어 주세요."
+      ],
+      "target_audio_id": "1750a15d-e8e4-4d21-9a5d-676a779c400c",
+      "measure": {
+        "whole_dur": 4.64,
+        "interior_gaps_ms": [
+          472,
+          433
+        ],
+        "cut_at_gaps_ms": [
+          472
+        ],
+        "rejected_gaps_ms": [
+          433
+        ],
+        "margin": 1.09,
+        "piece_durs": [
+          1.446,
+          3.294
+        ]
+      }
+    },
+    {
+      "id": "kor_for_eng:pod-1:SC08-S013",
+      "order": 65,
+      "n": 3,
+      "reason": "seam_not_silent",
+      "text": "네, 물론이죠. 여기 있어요. 피시 앤 칩스가 정말 맛있어요.",
+      "sentences": [
+        "네, 물론이죠.",
+        "여기 있어요.",
+        "피시 앤 칩스가 정말 맛있어요."
+      ],
+      "target_audio_id": "3c815d11-e6e3-4735-a3d3-a46cc045f795",
+      "measure": {
+        "whole_dur": 6.334,
+        "interior_gaps_ms": [
+          979,
+          1144
+        ],
+        "cut_at_gaps_ms": [
+          979,
+          1144
+        ],
+        "rejected_gaps_ms": [],
+        "margin": null,
+        "piece_durs": [
+          1.674,
+          1.915,
+          2.944
+        ],
+        "seams_db": [
+          {
+            "edge": "s0.tail",
+            "db": -24.3,
+            "piece_peak_db": -2.3
+          },
+          {
+            "edge": "s1.head",
+            "db": -56,
+            "piece_peak_db": -2.4
+          },
+          {
+            "edge": "s1.tail",
+            "db": -50.1,
+            "piece_peak_db": -2.4
+          },
+          {
+            "edge": "s2.head",
+            "db": -52.5,
+            "piece_peak_db": -2.3
+          }
+        ],
+        "loud_seams": [
+          {
+            "edge": "s0.tail",
+            "db": -24.3,
+            "piece_peak_db": -2.3
+          }
+        ]
+      }
+    },
+    {
+      "id": "kor_for_eng:pod-1:SC10-S010",
+      "order": 96,
+      "n": 5,
+      "reason": "seam_not_silent",
+      "text": "열둘. 열셋. 열넷. 분홍색. 회색.",
+      "sentences": [
+        "열둘.",
+        "열셋.",
+        "열넷.",
+        "분홍색.",
+        "회색."
+      ],
+      "target_audio_id": "48e9e9fe-d95a-4e73-8219-96a3e5b02de4",
+      "measure": {
+        "whole_dur": 7.516,
+        "interior_gaps_ms": [
+          130,
+          1612,
+          1337,
+          965,
+          109,
+          796
+        ],
+        "cut_at_gaps_ms": [
+          1612,
+          1337,
+          965,
+          796
+        ],
+        "rejected_gaps_ms": [
+          130,
+          109
+        ],
+        "margin": 6.14,
+        "piece_durs": [
+          1.488,
+          2.032,
+          1.728,
+          1.683,
+          0.986
+        ],
+        "seams_db": [
+          {
+            "edge": "s0.tail",
+            "db": -59.9,
+            "piece_peak_db": -2.2
+          },
+          {
+            "edge": "s1.head",
+            "db": -58.9,
+            "piece_peak_db": -2.4
+          },
+          {
+            "edge": "s1.tail",
+            "db": -54.6,
+            "piece_peak_db": -2.4
+          },
+          {
+            "edge": "s2.head",
+            "db": -58.9,
+            "piece_peak_db": -2.3
+          },
+          {
+            "edge": "s2.tail",
+            "db": -54.2,
+            "piece_peak_db": -2.3
+          },
+          {
+            "edge": "s3.head",
+            "db": -52,
+            "piece_peak_db": -2.3
+          },
+          {
+            "edge": "s3.tail",
+            "db": -33.5,
+            "piece_peak_db": -2.3
+          },
+          {
+            "edge": "s4.head",
+            "db": -58.3,
+            "piece_peak_db": -3.7
+          }
+        ],
+        "loud_seams": [
+          {
+            "edge": "s3.tail",
+            "db": -33.5,
+            "piece_peak_db": -2.3
+          }
+        ]
+      }
+    },
+    {
+      "id": "kor_for_eng:pod-1:SC11-S013",
+      "order": 109,
+      "n": 5,
+      "reason": "margin_below_floor",
+      "text": "열여섯. 열일곱. 열여덟. 월요일. 화요일.",
+      "sentences": [
+        "열여섯.",
+        "열일곱.",
+        "열여덟.",
+        "월요일.",
+        "화요일."
+      ],
+      "target_audio_id": "52d87d7e-e082-4e3b-969d-8a0086f40b9b",
+      "measure": {
+        "whole_dur": 10.68,
+        "interior_gaps_ms": [
+          686,
+          437,
+          595,
+          378,
+          418,
+          526,
+          379,
+          335
+        ],
+        "cut_at_gaps_ms": [
+          686,
+          437,
+          595,
+          526
+        ],
+        "rejected_gaps_ms": [
+          418,
+          379,
+          378,
+          335
+        ],
+        "margin": 1.05,
+        "piece_durs": [
+          1.027,
+          1.644,
+          1.252,
+          4.011,
+          3.147
+        ]
+      }
+    },
+    {
+      "id": "kor_for_eng:pod-1:SC12-S010",
+      "order": 119,
+      "n": 5,
+      "reason": "margin_below_floor",
+      "text": "십구. 이십. 이십일. 수요일. 목요일.",
+      "sentences": [
+        "십구.",
+        "이십.",
+        "이십일.",
+        "수요일.",
+        "목요일."
+      ],
+      "target_audio_id": "7320b8f5-eab4-4a1e-adaf-6b99f223610b",
+      "measure": {
+        "whole_dur": 6.399,
+        "interior_gaps_ms": [
+          196,
+          689,
+          666,
+          268,
+          256
+        ],
+        "cut_at_gaps_ms": [
+          689,
+          666,
+          268,
+          256
+        ],
+        "rejected_gaps_ms": [
+          196
+        ],
+        "margin": 1.31,
+        "piece_durs": [
+          1.215,
+          1.589,
+          1.543,
+          1.215,
+          1.236
+        ]
+      }
+    },
+    {
+      "id": "kor_for_eng:pod-1:SC14-S001",
+      "order": 131,
+      "n": 2,
+      "reason": "margin_below_floor",
+      "text": "안녕하세요. 기차역까지 데려다 주시겠어요?",
+      "sentences": [
+        "안녕하세요.",
+        "기차역까지 데려다 주시겠어요?"
+      ],
+      "target_audio_id": "c7025be4-0ddb-4c53-af34-860c0a3ccefc",
+      "measure": {
+        "whole_dur": 4.53,
+        "interior_gaps_ms": [
+          330,
+          165,
+          326,
+          102
+        ],
+        "cut_at_gaps_ms": [
+          330
+        ],
+        "rejected_gaps_ms": [
+          326,
+          165,
+          102
+        ],
+        "margin": 1.01,
+        "piece_durs": [
+          1.055,
+          3.575
+        ]
+      }
+    },
+    {
+      "id": "kor_for_eng:pod-1:SC15-S011",
+      "order": 151,
+      "n": 5,
+      "reason": "margin_below_floor",
+      "text": "십만. 육십. 칠십. 한 시. 열한 시.",
+      "sentences": [
+        "십만.",
+        "육십.",
+        "칠십.",
+        "한 시.",
+        "열한 시."
+      ],
+      "target_audio_id": "dd1b9bcc-a29a-45cb-a5f0-56131efb879a",
+      "measure": {
+        "whole_dur": 7.151,
+        "interior_gaps_ms": [
+          617,
+          626,
+          1033,
+          873,
+          172,
+          551
+        ],
+        "cut_at_gaps_ms": [
+          617,
+          626,
+          1033,
+          873
+        ],
+        "rejected_gaps_ms": [
+          551,
+          172
+        ],
+        "margin": 1.12,
+        "piece_durs": [
+          1.009,
+          0.814,
+          1.382,
+          1.56,
+          2.786
+        ]
+      }
+    },
+    {
+      "id": "kor_for_eng:pod-1:SC16-S011",
+      "order": 162,
+      "n": 5,
+      "reason": "margin_below_floor",
+      "text": "백만. 80. 90. 2시. 10시.",
+      "sentences": [
+        "백만.",
+        "80.",
+        "90.",
+        "2시.",
+        "10시."
+      ],
+      "target_audio_id": "0496ae09-209b-499b-b5db-e28263cba3b0",
+      "measure": {
+        "whole_dur": 7.161,
+        "interior_gaps_ms": [
+          1435,
+          197,
+          927,
+          1500,
+          286
+        ],
+        "cut_at_gaps_ms": [
+          1435,
+          927,
+          1500,
+          286
+        ],
+        "rejected_gaps_ms": [
+          197
+        ],
+        "margin": 1.45,
+        "piece_durs": [
+          1.302,
+          2.055,
+          1.693,
+          1.544,
+          0.967
+        ]
+      }
+    },
+    {
+      "id": "kor_for_eng:pod-1:SC19-S011",
+      "order": 195,
+      "n": 4,
+      "reason": "margin_below_floor",
+      "text": "5시. 7시. 5월. 6월.",
+      "sentences": [
+        "5시.",
+        "7시.",
+        "5월.",
+        "6월."
+      ],
+      "target_audio_id": "03d7eb04-017c-4563-aa86-8aa57265d24e",
+      "measure": {
+        "whole_dur": 7.552,
+        "interior_gaps_ms": [
+          483,
+          484,
+          193,
+          535,
+          134,
+          462
+        ],
+        "cut_at_gaps_ms": [
+          483,
+          484,
+          535
+        ],
+        "rejected_gaps_ms": [
+          462,
+          193,
+          134
+        ],
+        "margin": 1.05,
+        "piece_durs": [
+          0.989,
+          1.544,
+          2.403,
+          2.916
+        ]
+      }
+    },
+    {
+      "id": "kor_for_eng:pod-1:SC18-S011",
+      "order": 184,
+      "n": 4,
+      "reason": "margin_below_floor",
+      "text": "4시. 8시. 3월. 4월.",
+      "sentences": [
+        "4시.",
+        "8시.",
+        "3월.",
+        "4월."
+      ],
+      "target_audio_id": "c3582d96-21fc-4754-b07d-2fa4e81ede59",
+      "measure": {
+        "whole_dur": 5.211,
+        "interior_gaps_ms": [
+          422,
+          667,
+          220,
+          562,
+          765
+        ],
+        "cut_at_gaps_ms": [
+          667,
+          562,
+          765
+        ],
+        "rejected_gaps_ms": [
+          422,
+          220
+        ],
+        "margin": 1.33,
+        "piece_durs": [
+          1.488,
+          1.66,
+          1.208,
+          1.155
+        ]
+      }
+    },
+    {
+      "id": "kor_for_eng:pod-1:SC22-S002",
+      "order": 222,
+      "n": 3,
+      "reason": "seam_not_silent",
+      "text": "그럼요, 괜찮아요. 정말 잘하시는 것 같아요. 쉽게 이해할 수 있어요.",
+      "sentences": [
+        "그럼요, 괜찮아요.",
+        "정말 잘하시는 것 같아요.",
+        "쉽게 이해할 수 있어요."
+      ],
+      "target_audio_id": "83b74ec2-d487-4ed2-aab4-ecb7ba10dd79",
+      "measure": {
+        "whole_dur": 6.018,
+        "interior_gaps_ms": [
+          436,
+          112,
+          715,
+          162
+        ],
+        "cut_at_gaps_ms": [
+          436,
+          715
+        ],
+        "rejected_gaps_ms": [
+          162,
+          112
+        ],
+        "margin": 2.68,
+        "piece_durs": [
+          1.626,
+          2.398,
+          2.194
+        ],
+        "seams_db": [
+          {
+            "edge": "s0.tail",
+            "db": -58.7,
+            "piece_peak_db": -2.3
+          },
+          {
+            "edge": "s1.head",
+            "db": -29.7,
+            "piece_peak_db": -2.3
+          },
+          {
+            "edge": "s1.tail",
+            "db": -55,
+            "piece_peak_db": -2.3
+          },
+          {
+            "edge": "s2.head",
+            "db": -39.5,
+            "piece_peak_db": -2.3
+          }
+        ],
+        "loud_seams": [
+          {
+            "edge": "s1.head",
+            "db": -29.7,
+            "piece_peak_db": -2.3
+          }
+        ]
+      }
+    }
+  ],
+  "errors": [],
+  "linked": [
+    {
+      "id": "kor_for_eng:pod-1:SC01-S002",
+      "order": 2,
+      "n": 2,
+      "sentences": [
+        "안녕하세요.",
+        "어떻게 지내세요?"
+      ],
+      "ids": [
+        "6c95acd1-7e7e-49d3-8a64-752c768b80c4",
+        "87607989-836a-405f-a8b3-31e8351523d6"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.864,
+        2.229
+      ],
+      "worst_seam_db": -84.3,
+      "all_reused": false
+    },
+    {
+      "id": "kor_for_eng:pod-1:SC02-S002",
+      "order": 6,
+      "n": 2,
+      "sentences": [
+        "아니요, 비어 있어요.",
+        "앉으세요."
+      ],
+      "ids": [
+        "23255d94-dea3-45fa-965b-74be395afb9b",
+        "d4e53e5f-e064-4640-bcf4-53bbe4d2655f"
+      ],
+      "margin": 2.29,
+      "piece_durs": [
+        1.819,
+        2.15
+      ],
+      "worst_seam_db": -55.2,
+      "all_reused": false
+    },
+    {
+      "id": "kor_for_eng:pod-1:SC02-S005",
+      "order": 9,
+      "n": 2,
+      "sentences": [
+        "그렇게 멀지 않아요.",
+        "아마 5-6킬로미터 정도요."
+      ],
+      "ids": [
+        "b7aef9ba-5bb7-44f0-88a9-4aa0f699abc2",
+        "4710441e-d394-4581-92b4-23a13b82dfda"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.742,
+        2.402
+      ],
+      "worst_seam_db": -56.3,
+      "all_reused": false
+    },
+    {
+      "id": "kor_for_eng:pod-1:SC01-S004",
+      "order": 4,
+      "n": 3,
+      "sentences": [
+        "네, 오늘 바쁜 하루예요.",
+        "좋은 하루 보내세요.",
+        "나중에 봐요."
+      ],
+      "ids": [
+        "94aa287e-0f5e-4881-bd7f-f15e4d731fcd",
+        "3c2bdbe1-a73f-4157-ac38-0e8cd11cf019",
+        "654296b6-c1c9-4832-be58-96e76acc0cd2"
+      ],
+      "margin": 3.51,
+      "piece_durs": [
+        2.969,
+        2.937,
+        1.915
+      ],
+      "worst_seam_db": -78.3,
+      "all_reused": false
+    },
+    {
+      "id": "kor_for_eng:pod-1:SC03-S001",
+      "order": 10,
+      "n": 2,
+      "sentences": [
+        "안녕하세요.",
+        "뭘 드릴까요?"
+      ],
+      "ids": [
+        "6f1ff734-e918-4ba1-9762-d917c093b4b3",
+        "7d4f9827-b620-4338-ac03-dcde56fafa28"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.27,
+        1.42
+      ],
+      "worst_seam_db": -52.9,
+      "all_reused": false
+    },
+    {
+      "id": "kor_for_eng:pod-1:SC03-S010",
+      "order": 19,
+      "n": 2,
+      "sentences": [
+        "감사합니다.",
+        "안녕히 계세요."
+      ],
+      "ids": [
+        "de9d300d-0658-4c2f-aef6-f7a682b7e0b7",
+        "ffe32f01-f231-419f-a8ee-f6c446a4d138"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.829,
+        2.204
+      ],
+      "worst_seam_db": -80.8,
+      "all_reused": false
+    },
+    {
+      "id": "kor_for_eng:pod-1:SC05-S001",
+      "order": 23,
+      "n": 2,
+      "sentences": [
+        "안녕하세요, 사라 씨.",
+        "오늘 하루가 길었어요?"
+      ],
+      "ids": [
+        "78d21c7e-b6cb-4a1f-a00f-3ca58386d9ac",
+        "91d1b357-2f3e-4a1b-88dc-247943d78c34"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.956,
+        2.177
+      ],
+      "worst_seam_db": -56.7,
+      "all_reused": false
+    },
+    {
+      "id": "kor_for_eng:pod-1:SC03-S002",
+      "order": 11,
+      "n": 4,
+      "sentences": [
+        "안녕하세요.",
+        "커피 한 잔 주세요.",
+        "우유는 넣어 주시고 설탕은 빼 주세요.",
+        "테이크아웃으로요."
+      ],
+      "ids": [
+        "6c95acd1-7e7e-49d3-8a64-752c768b80c4",
+        "8495ad2e-1c08-4571-8ad7-7b867a4a0aa4",
+        "16f29e04-027a-4bf2-896d-be45cd8b58fa",
+        "6a22d3e8-4a0b-4d0e-8335-dabfbf198d5b"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.863,
+        2.833,
+        3.947,
+        2.18
+      ],
+      "worst_seam_db": -84.3,
+      "all_reused": false
+    },
+    {
+      "id": "kor_for_eng:pod-1:SC04-S002",
+      "order": 21,
+      "n": 4,
+      "sentences": [
+        "안녕하세요!",
+        "죄송하지만 지금은 얘기할 수가 없어요.",
+        "지금 집에 가야 해요.",
+        "내일 얘기할 수 있을까요?"
+      ],
+      "ids": [
+        "6c95acd1-7e7e-49d3-8a64-752c768b80c4",
+        "5708adfb-f6ab-442d-8f44-a358fed0ae1e",
+        "498d7d1c-36af-4c79-8498-5cc22b95e070",
+        "a594e891-39dd-4138-87cd-9e4b249a572c"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.842,
+        4.152,
+        2.951,
+        2.881
+      ],
+      "worst_seam_db": -74.7,
+      "all_reused": false
+    },
+    {
+      "id": "kor_for_eng:pod-1:SC06-S002",
+      "order": 26,
+      "n": 2,
+      "sentences": [
+        "제 이름은 애나예요.",
+        "당신은요?"
+      ],
+      "ids": [
+        "bdb67c88-0129-4c25-9cf0-fa93465de91e",
+        "94e3ded3-84a0-4164-87c7-97ff795b1276"
+      ],
+      "margin": null,
+      "piece_durs": [
+        2.371,
+        1.918
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "kor_for_eng:pod-1:SC05-S002",
+      "order": 24,
+      "n": 4,
+      "sentences": [
+        "네, 정말요.",
+        "지금 너무 피곤해요.",
+        "안녕히 주무세요.",
+        "내일 봐요."
+      ],
+      "ids": [
+        "f8d5d2fd-70a3-4374-81ac-150eb3d62771",
+        "c72c2dcf-8f66-4c41-bdaf-8f3049e16e68",
+        "e98d682c-0d5b-4c69-a687-dabaec9cc402",
+        "9cbf60cd-ca11-4e22-8328-4941b9a4c495"
+      ],
+      "margin": 3.74,
+      "piece_durs": [
+        2.31,
+        3.001,
+        2.806,
+        1.915
+      ],
+      "worst_seam_db": -78.3,
+      "all_reused": false
+    },
+    {
+      "id": "kor_for_eng:pod-1:SC06-S004",
+      "order": 28,
+      "n": 2,
+      "sentences": [
+        "저도 만나서 반가워요.",
+        "어디서 오셨어요?"
+      ],
+      "ids": [
+        "7b6f56fc-3a5f-4159-934a-3e0293b9b678",
+        "ea85f78b-ad1c-4e8f-9058-63f1b102ecd5"
+      ],
+      "margin": null,
+      "piece_durs": [
+        2.508,
+        2.257
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "kor_for_eng:pod-1:SC06-S006",
+      "order": 30,
+      "n": 2,
+      "sentences": [
+        "저는 프랑스 출신이에요.",
+        "여기에 온 지 2년 됐어요."
+      ],
+      "ids": [
+        "cf8d843d-af89-46d7-9120-a2eeaabe0428",
+        "e1107a2f-0939-4981-afc0-2ade0ef3cb33"
+      ],
+      "margin": null,
+      "piece_durs": [
+        2.662,
+        2.855
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "kor_for_eng:pod-1:SC06-S012",
+      "order": 36,
+      "n": 2,
+      "sentences": [
+        "정말 흥미롭네요.",
+        "만나서 반가웠어요."
+      ],
+      "ids": [
+        "2bcc46e5-6ca7-408c-82fc-7c3cd5942e3e",
+        "616000d8-2b17-4875-a992-e25c3c8e6ca1"
+      ],
+      "margin": null,
+      "piece_durs": [
+        2.335,
+        2.43
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "kor_for_eng:pod-1:SC06-S008",
+      "order": 32,
+      "n": 3,
+      "sentences": [
+        "저는 간호사예요.",
+        "바로 근처에 있는 병원에서 일해요.",
+        "당신은요?"
+      ],
+      "ids": [
+        "86ee6500-05e3-43b8-97a8-5dc28f51d59c",
+        "22e7008a-3c26-464d-b788-d8608c6bcf38",
+        "94e3ded3-84a0-4164-87c7-97ff795b1276"
+      ],
+      "margin": null,
+      "piece_durs": [
+        2.253,
+        3.668,
+        1.921
+      ],
+      "worst_seam_db": -78.3,
+      "all_reused": false
+    },
+    {
+      "id": "kor_for_eng:pod-1:SC07-S001",
+      "order": 38,
+      "n": 2,
+      "sentences": [
+        "안녕하세요.",
+        "뭘 도와드릴까요?"
+      ],
+      "ids": [
+        "6c95acd1-7e7e-49d3-8a64-752c768b80c4",
+        "f8843564-9b79-4fae-be61-edf5eed843bc"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.865,
+        2.344
+      ],
+      "worst_seam_db": -90.3,
+      "all_reused": false
+    },
+    {
+      "id": "kor_for_eng:pod-1:SC06-S010",
+      "order": 34,
+      "n": 5,
+      "sentences": [
+        "네, 물론이죠.",
+        "저는 간호사예요.",
+        "병원에서 일해요.",
+        "여기서 가까워요.",
+        "그럼 당신은 무슨 일을 하세요?"
+      ],
+      "ids": [
+        "ae33b377-5449-4fdc-94f3-a38fa8900c3c",
+        "86ee6500-05e3-43b8-97a8-5dc28f51d59c",
+        "ca1dd045-4153-4a08-8bfb-3bb96de1d4c9",
+        "c758c5b6-137a-4c94-8f01-cf6bed013209",
+        "f2f71c29-4e30-4711-9061-cce6f623aedd"
+      ],
+      "margin": 3.88,
+      "piece_durs": [
+        2.366,
+        2.813,
+        2.749,
+        2.717,
+        3.114
+      ],
+      "worst_seam_db": -78.3,
+      "all_reused": false
+    },
+    {
+      "id": "kor_for_eng:pod-1:SC07-S005",
+      "order": 42,
+      "n": 2,
+      "sentences": [
+        "물론이죠.",
+        "매장에서 드시겠어요, 아니면 테이크아웃하실래요?"
+      ],
+      "ids": [
+        "1ac15892-b4f1-4771-9063-cbe19cbf6732",
+        "de332d4c-c8e7-45f3-a1e9-7b3306570468"
+      ],
+      "margin": 3.66,
+      "piece_durs": [
+        1.722,
+        4.436
+      ],
+      "worst_seam_db": -70.3,
+      "all_reused": false
+    },
+    {
+      "id": "kor_for_eng:pod-1:SC07-S008",
+      "order": 45,
+      "n": 2,
+      "sentences": [
+        "네, 바로 드릴게요.",
+        "더 필요하신 건 없으세요?"
+      ],
+      "ids": [
+        "688f7fca-4642-4e70-aa1c-34243f67805b",
+        "c031eae3-6ee9-4fa0-aec5-dce7b2b9b623"
+      ],
+      "margin": 3.56,
+      "piece_durs": [
+        2.727,
+        2.819
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "kor_for_eng:pod-1:SC06-S013",
+      "order": 37,
+      "n": 5,
+      "sentences": [
+        "일.",
+        "이.",
+        "삼.",
+        "하얀색.",
+        "검은색."
+      ],
+      "ids": [
+        "bf61962b-5a4b-4973-b255-86abe571d11d",
+        "618306b3-d7ef-4afc-ba96-162f157d83d4",
+        "c0e4b757-8bf7-44dc-9412-9fb965ba074d",
+        "1954d40e-6825-4862-8235-68ae1a0b65e8",
+        "70e3638e-bea2-440b-bdbd-e14e0429a671"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.035,
+        1.403,
+        1.373,
+        1.507,
+        1.135
+      ],
+      "worst_seam_db": -53.5,
+      "all_reused": false
+    },
+    {
+      "id": "kor_for_eng:pod-1:SC07-S011",
+      "order": 48,
+      "n": 2,
+      "sentences": [
+        "카드로 계산해도 돼요?",
+        "비접촉 결제 되나요?"
+      ],
+      "ids": [
+        "0b8af1f0-f4b6-4560-8960-a121b47638cd",
+        "22ed9370-354c-498b-a9c1-1f0b60cd85f0"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.842,
+        1.978
+      ],
+      "worst_seam_db": -62,
+      "all_reused": false
+    },
+    {
+      "id": "kor_for_eng:pod-1:SC07-S012",
+      "order": 49,
+      "n": 2,
+      "sentences": [
+        "물론이죠.",
+        "여기 단말기 있어요."
+      ],
+      "ids": [
+        "1ac15892-b4f1-4771-9063-cbe19cbf6732",
+        "647c623f-1f13-42ca-8b85-3008abc7ffc3"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.725,
+        2.494
+      ],
+      "worst_seam_db": -70.3,
+      "all_reused": false
+    },
+    {
+      "id": "kor_for_eng:pod-1:SC07-S014",
+      "order": 51,
+      "n": 2,
+      "sentences": [
+        "매장에서 드시겠어요?",
+        "창가 자리 비어 있어요."
+      ],
+      "ids": [
+        "d5456bd2-3add-472f-9f38-c5371f00b95f",
+        "69fdb4e1-60ae-452f-bd7e-ec3332a46da4"
+      ],
+      "margin": null,
+      "piece_durs": [
+        2.458,
+        2.532
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "kor_for_eng:pod-1:SC08-S001",
+      "order": 53,
+      "n": 2,
+      "sentences": [
+        "안녕하세요.",
+        "뭘 도와드릴까요?"
+      ],
+      "ids": [
+        "6f1ff734-e918-4ba1-9762-d917c093b4b3",
+        "bb34fc89-6ea8-4c07-a6a5-7c8690b1ae73"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.489,
+        1.993
+      ],
+      "worst_seam_db": -59.7,
+      "all_reused": false
+    },
+    {
+      "id": "kor_for_eng:pod-1:SC08-S002",
+      "order": 54,
+      "n": 2,
+      "sentences": [
+        "파인트 한 잔 주세요.",
+        "어떤 에일 맥주가 있어요?"
+      ],
+      "ids": [
+        "a1ff4961-2188-4a7e-8a39-7f5dad9479c6",
+        "0fddaaae-3bd1-4dcc-a60e-6195f664872c"
+      ],
+      "margin": null,
+      "piece_durs": [
+        2.346,
+        2.66
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "kor_for_eng:pod-1:SC08-S003",
+      "order": 55,
+      "n": 2,
+      "sentences": [
+        "비터랑 스타우트가 있어요.",
+        "둘 다 지역 맥주예요."
+      ],
+      "ids": [
+        "6be86f66-bf6e-4957-8fef-0324489adfd8",
+        "b57e288f-8bdd-405e-8dbd-0b9d557dec5a"
+      ],
+      "margin": null,
+      "piece_durs": [
+        2.383,
+        2.096
+      ],
+      "worst_seam_db": -56.2,
+      "all_reused": false
+    },
+    {
+      "id": "kor_for_eng:pod-1:SC08-S012",
+      "order": 64,
+      "n": 2,
+      "sentences": [
+        "배가 고픈지 잘 모르겠어요.",
+        "메뉴판 있어요?"
+      ],
+      "ids": [
+        "084f3781-78d5-4003-95f8-f89cbc4a1991",
+        "e8996838-dc66-4faa-bddb-aa547132ba74"
+      ],
+      "margin": null,
+      "piece_durs": [
+        2.921,
+        2.195
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "kor_for_eng:pod-1:SC07-S015",
+      "order": 52,
+      "n": 5,
+      "sentences": [
+        "오.",
+        "십.",
+        "십오.",
+        "빨간색.",
+        "초록색."
+      ],
+      "ids": [
+        "6623e04c-c273-45c2-a0d8-d922b75f362e",
+        "bd7c12ea-bdb6-4cb9-8c16-3c6c50978815",
+        "eb70d12e-fb4b-4803-bdc3-fd168bec890f",
+        "6ac3ff36-63e5-4d29-b347-60e28e04ae0d",
+        "0414cec4-bd35-47ae-80c7-3d78fe266ba9"
+      ],
+      "margin": null,
+      "piece_durs": [
+        0.733,
+        0.856,
+        1.002,
+        0.929,
+        1.013
+      ],
+      "worst_seam_db": -50,
+      "all_reused": false
+    },
+    {
+      "id": "kor_for_eng:pod-1:SC08-S014",
+      "order": 66,
+      "n": 2,
+      "sentences": [
+        "빵 좀 주실 수 있어요?",
+        "그리고 테이블 전체용으로 칩스 한 그릇도요."
+      ],
+      "ids": [
+        "a1b33089-d6c2-45d2-918f-5b86b70efaec",
+        "55149a12-60d8-4b92-bf2a-d5c1d67b3fa4"
+      ],
+      "margin": 13.11,
+      "piece_durs": [
+        2.484,
+        3.704
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "kor_for_eng:pod-1:SC08-S015",
+      "order": 67,
+      "n": 2,
+      "sentences": [
+        "샌드위치 있어요?",
+        "치즈 샌드위치 주세요."
+      ],
+      "ids": [
+        "fd6ab4b2-e973-4477-805a-fecbe895d779",
+        "e9b8cc4f-2ef2-4394-8605-073b54c6b0a6"
+      ],
+      "margin": null,
+      "piece_durs": [
+        2.278,
+        2.572
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "kor_for_eng:pod-1:SC09-S001",
+      "order": 69,
+      "n": 2,
+      "sentences": [
+        "안녕하세요.",
+        "두 명으로 예약했는데요, 데이비스 이름으로요."
+      ],
+      "ids": [
+        "6c95acd1-7e7e-49d3-8a64-752c768b80c4",
+        "447f660b-a84f-406b-bf76-21e47c0ea554"
+      ],
+      "margin": 3.61,
+      "piece_durs": [
+        1.863,
+        4.089
+      ],
+      "worst_seam_db": -84.3,
+      "all_reused": false
+    },
+    {
+      "id": "kor_for_eng:pod-1:SC09-S005",
+      "order": 73,
+      "n": 2,
+      "sentences": [
+        "실례합니다 — 글루텐 프리 메뉴가 있나요?",
+        "아니면 채식 메뉴도 있나요?"
+      ],
+      "ids": [
+        "70fe3a26-da3a-4c49-a030-a8c585901c6b",
+        "c8e9e368-908e-46b0-a5b4-51cfffdb25b2"
+      ],
+      "margin": 8.49,
+      "piece_durs": [
+        3.5,
+        2.979
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "kor_for_eng:pod-1:SC08-S016",
+      "order": 68,
+      "n": 5,
+      "sentences": [
+        "사.",
+        "육.",
+        "팔.",
+        "파란색.",
+        "노란색."
+      ],
+      "ids": [
+        "8b1fecb0-82f2-4fd2-b28c-deaf6387b002",
+        "02e880e1-fcb5-4582-ac53-04c9bf4c20ef",
+        "33fd9217-2d9c-43be-b7f1-1357825f5f51",
+        "397831ca-de69-4edd-a2a4-55d8818d3426",
+        "ba51bb17-e8e5-4121-9986-b8dd26ac2b5e"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.046,
+        1.541,
+        1.566,
+        1.751,
+        1.4
+      ],
+      "worst_seam_db": -53.5,
+      "all_reused": false
+    },
+    {
+      "id": "kor_for_eng:pod-1:SC09-S009",
+      "order": 77,
+      "n": 2,
+      "sentences": [
+        "저는 양고기로 할게요.",
+        "채소 사이드도 같이 주세요."
+      ],
+      "ids": [
+        "1e9f302e-5980-4b22-9de9-18fa89732e58",
+        "8d1923c4-2e3f-4152-a6e6-856c2dc06f97"
+      ],
+      "margin": null,
+      "piece_durs": [
+        2.568,
+        2.829
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "kor_for_eng:pod-1:SC09-S010",
+      "order": 78,
+      "n": 2,
+      "sentences": [
+        "저는 리조또로 할게요.",
+        "시작으로 작은 그린 샐러드도 주세요."
+      ],
+      "ids": [
+        "b5482f2a-737d-44ca-aa7a-9e868b90b92c",
+        "c30ffdaf-bb81-448c-b2e5-355e52cf607d"
+      ],
+      "margin": null,
+      "piece_durs": [
+        2.506,
+        3.366
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "kor_for_eng:pod-1:SC09-S016",
+      "order": 84,
+      "n": 2,
+      "sentences": [
+        "커피 두 잔만 주세요.",
+        "저는 디카페인으로요."
+      ],
+      "ids": [
+        "2460200a-cc4f-43ed-bb00-16ceca32b9d5",
+        "9eb77571-e84c-43e9-9c8e-9b6bb4955174"
+      ],
+      "margin": null,
+      "piece_durs": [
+        2.5,
+        2.536
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "kor_for_eng:pod-1:SC09-S017",
+      "order": 85,
+      "n": 2,
+      "sentences": [
+        "그리고 준비되시면 계산서 주세요.",
+        "각자 계산할 수 있을까요?"
+      ],
+      "ids": [
+        "c98adabd-caef-4215-927d-1fd8fbe33b75",
+        "9f787383-2bb1-4b46-b7e7-14ebe339d420"
+      ],
+      "margin": 11.69,
+      "piece_durs": [
+        3.23,
+        2.788
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "kor_for_eng:pod-1:SC10-S001",
+      "order": 87,
+      "n": 2,
+      "sentences": [
+        "실례합니다.",
+        "진통제 있어요?"
+      ],
+      "ids": [
+        "9315b804-e565-4680-857e-0f7bd5175d89",
+        "4c0911d8-d592-4889-9aa5-9488cb753884"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.79,
+        2.188
+      ],
+      "worst_seam_db": -76.3,
+      "all_reused": false
+    },
+    {
+      "id": "kor_for_eng:pod-1:SC10-S003",
+      "order": 89,
+      "n": 2,
+      "sentences": [
+        "감사합니다.",
+        "그리고 어린이용 진통제도 있어요?"
+      ],
+      "ids": [
+        "de9d300d-0658-4c2f-aef6-f7a682b7e0b7",
+        "4989bca8-5ad6-4fdb-a529-1bb9dd825680"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.826,
+        3.33
+      ],
+      "worst_seam_db": -80.8,
+      "all_reused": false
+    },
+    {
+      "id": "kor_for_eng:pod-1:SC10-S007",
+      "order": 93,
+      "n": 2,
+      "sentences": [
+        "감사합니다, 정말 많이 도와주셨어요.",
+        "정말 감사해요."
+      ],
+      "ids": [
+        "0595d3c5-a642-40aa-9984-accb8986f27e",
+        "21685a5c-c067-4425-baf7-512e411ef378"
+      ],
+      "margin": 3.82,
+      "piece_durs": [
+        3.797,
+        2.296
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "kor_for_eng:pod-1:SC09-S018",
+      "order": 86,
+      "n": 5,
+      "sentences": [
+        "칠.",
+        "구.",
+        "십일.",
+        "오렌지.",
+        "보라."
+      ],
+      "ids": [
+        "cb88d324-f4ac-4ccd-88e9-16bad401908c",
+        "0f958968-27fd-4b10-b167-d7dc38c0c5b6",
+        "d87eb186-821b-4f80-908c-02deaa8b51bc",
+        "18ad763e-8e8c-4da6-9982-0d04c69492a9",
+        "aa65a212-b46c-4469-8ee6-e6c82705c844"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.033,
+        1.423,
+        1.514,
+        1.555,
+        1.027
+      ],
+      "worst_seam_db": -48.9,
+      "all_reused": false
+    },
+    {
+      "id": "kor_for_eng:pod-1:SC10-S008",
+      "order": 94,
+      "n": 3,
+      "sentences": [
+        "천만에요.",
+        "여행 오셨어요?",
+        "한국어를 정말 잘하시네요."
+      ],
+      "ids": [
+        "a036fdd4-1496-49bd-83ea-1af328f15687",
+        "e65854bd-1d4d-4a6c-a0bf-48dbacf629ba",
+        "0b3438a9-6848-420d-9cdb-9df033a03cb2"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.205,
+        1.763,
+        2.363
+      ],
+      "worst_seam_db": -57.1,
+      "all_reused": false
+    },
+    {
+      "id": "kor_for_eng:pod-1:SC11-S004",
+      "order": 100,
+      "n": 2,
+      "sentences": [
+        "좋아요.",
+        "방은 3층에 있고, 709호예요."
+      ],
+      "ids": [
+        "1c3bde7f-212b-449c-85c4-e87d68a14009",
+        "bb0c6faf-eef6-47b9-97c0-ecf41b3d1dab"
+      ],
+      "margin": 3.78,
+      "piece_durs": [
+        1.56,
+        3.531
+      ],
+      "worst_seam_db": -78.3,
+      "all_reused": false
+    },
+    {
+      "id": "kor_for_eng:pod-1:SC10-S009",
+      "order": 95,
+      "n": 4,
+      "sentences": [
+        "감사합니다!",
+        "네, 여행 중이에요.",
+        "한국어를 더 잘하려면 더 연습해야 해요.",
+        "감사합니다."
+      ],
+      "ids": [
+        "de9d300d-0658-4c2f-aef6-f7a682b7e0b7",
+        "6b4c0e10-87ef-491c-873b-7f1f4703e416",
+        "ffe04027-f9dc-485a-ada1-ec02c374f148",
+        "de9d300d-0658-4c2f-aef6-f7a682b7e0b7"
+      ],
+      "margin": 3.47,
+      "piece_durs": [
+        1.807,
+        3.178,
+        4.009,
+        1.92
+      ],
+      "worst_seam_db": -62.7,
+      "all_reused": false
+    },
+    {
+      "id": "kor_for_eng:pod-1:SC11-S002",
+      "order": 98,
+      "n": 3,
+      "sentences": [
+        "어서 오세요.",
+        "네, 3박 더블룸으로 예약되어 있네요.",
+        "신분증을 보여 주시겠어요?"
+      ],
+      "ids": [
+        "18e82548-16d5-4b16-9f13-a5556ee06491",
+        "454110f5-2089-42b0-8397-cc1a1c75b290",
+        "950ef2e8-72a6-4bae-9fd9-00e2a97eef55"
+      ],
+      "margin": 2.99,
+      "piece_durs": [
+        1.951,
+        4.37,
+        2.945
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "kor_for_eng:pod-1:SC11-S008",
+      "order": 104,
+      "n": 2,
+      "sentences": [
+        "일곱 시 반부터 열 시까지예요.",
+        "과일과 시리얼, 또는 따뜻한 조리 식사를 드실 수 있어요."
+      ],
+      "ids": [
+        "6a8296f3-c9cf-471e-abb5-99d2e41faf17",
+        "3fbb0fb6-9b49-42c7-a6fb-a24d712e25c3"
+      ],
+      "margin": 3.31,
+      "piece_durs": [
+        2.894,
+        4.873
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "kor_for_eng:pod-1:SC11-S010",
+      "order": 106,
+      "n": 2,
+      "sentences": [
+        "네, 정오까지 계실 수 있어요.",
+        "추가 요금은 없어요."
+      ],
+      "ids": [
+        "0c8a4505-b590-450b-9c50-5dd2215d1c9f",
+        "efee258f-7a26-4145-9077-b9a59ba36768"
+      ],
+      "margin": 3.45,
+      "piece_durs": [
+        3.382,
+        2.395
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "kor_for_eng:pod-1:SC11-S012",
+      "order": 108,
+      "n": 2,
+      "sentences": [
+        "방 안에 있는 웰컴 카드에 적혀 있어요.",
+        "즐거운 시간 보내세요."
+      ],
+      "ids": [
+        "dfc996d8-7625-451f-9688-c9be51c7b637",
+        "54f34f80-1c5c-4760-ae02-904409174024"
+      ],
+      "margin": null,
+      "piece_durs": [
+        3.38,
+        2.598
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "kor_for_eng:pod-1:SC12-S001",
+      "order": 110,
+      "n": 2,
+      "sentences": [
+        "안녕하세요.",
+        "몸이 좀 안 좋은데요, 뭔가 추천해 주실 수 있을까요?"
+      ],
+      "ids": [
+        "6c95acd1-7e7e-49d3-8a64-752c768b80c4",
+        "807092ee-c605-460e-8ef8-039d0d869256"
+      ],
+      "margin": 3.68,
+      "piece_durs": [
+        1.865,
+        4.544
+      ],
+      "worst_seam_db": -84.3,
+      "all_reused": false
+    },
+    {
+      "id": "kor_for_eng:pod-1:SC13-S008",
+      "order": 127,
+      "n": 2,
+      "sentences": [
+        "좋아요.",
+        "그리고 근처에 ATM이 있나요?"
+      ],
+      "ids": [
+        "1c3bde7f-212b-449c-85c4-e87d68a14009",
+        "83d9b107-4d92-4a92-a553-e4b248542948"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.563,
+        3.192
+      ],
+      "worst_seam_db": -74.7,
+      "all_reused": false
+    },
+    {
+      "id": "kor_for_eng:pod-1:SC12-S009",
+      "order": 118,
+      "n": 2,
+      "sentences": [
+        "감사합니다.",
+        "반창고 한 봉지도 살 수 있을까요?"
+      ],
+      "ids": [
+        "de9d300d-0658-4c2f-aef6-f7a682b7e0b7",
+        "e0e9023c-74b8-4b48-a3de-948b7c1f08ed"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.825,
+        3.286
+      ],
+      "worst_seam_db": -80.8,
+      "all_reused": false
+    },
+    {
+      "id": "kor_for_eng:pod-1:SC13-S010",
+      "order": 129,
+      "n": 2,
+      "sentences": [
+        "감사합니다.",
+        "정말 도움이 많이 됐어요."
+      ],
+      "ids": [
+        "de9d300d-0658-4c2f-aef6-f7a682b7e0b7",
+        "f9ccbf66-9309-42fb-91bf-272b9b4d7861"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.825,
+        2.809
+      ],
+      "worst_seam_db": -80.8,
+      "all_reused": false
+    },
+    {
+      "id": "kor_for_eng:pod-1:SC14-S007",
+      "order": 137,
+      "n": 2,
+      "sentences": [
+        "다 왔어요.",
+        "12파운드 50이에요."
+      ],
+      "ids": [
+        "2850844c-c65b-4c5a-8a07-e4c35fba808c",
+        "205c4895-1b3a-4ce9-8608-8b2450a98ff9"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.77,
+        2.58
+      ],
+      "worst_seam_db": -78.3,
+      "all_reused": false
+    },
+    {
+      "id": "kor_for_eng:pod-1:SC15-S009",
+      "order": 149,
+      "n": 2,
+      "sentences": [
+        "저는 그 나라 언어로 말해보는 걸 더 좋아해요.",
+        "그게 예의라고 생각하거든요."
+      ],
+      "ids": [
+        "d5707a17-b20e-4844-9a79-43b2b17fa372",
+        "bc38b3d5-6064-4278-bfec-37b6a9eae3bf"
+      ],
+      "margin": null,
+      "piece_durs": [
+        3.782,
+        2.988
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "kor_for_eng:pod-1:SC13-S011",
+      "order": 130,
+      "n": 5,
+      "sentences": [
+        "삼십.",
+        "사십.",
+        "오십.",
+        "금요일.",
+        "토요일."
+      ],
+      "ids": [
+        "0a97df37-f290-446b-8945-4bc9f1dbbb21",
+        "0db6fb44-1162-4ab7-8b4d-b04054b160f1",
+        "7459aa1a-0fe9-4853-a2e4-24c41299f12e",
+        "75f1df5e-383d-426f-b997-34031d34b226",
+        "d9795dd1-0fab-4591-8a21-664b75565c96"
+      ],
+      "margin": null,
+      "piece_durs": [
+        0.936,
+        1.233,
+        1.034,
+        1.016,
+        0.927
+      ],
+      "worst_seam_db": -53.7,
+      "all_reused": false
+    },
+    {
+      "id": "kor_for_eng:pod-1:SC14-S010",
+      "order": 140,
+      "n": 5,
+      "sentences": [
+        "백.",
+        "이백.",
+        "천.",
+        "일요일.",
+        "열두 시."
+      ],
+      "ids": [
+        "27948d70-a80c-44b0-ad05-165f5d5cdea5",
+        "9ec404f9-312f-4200-9dbb-3d13a944f8d5",
+        "528f28b2-1fde-4065-9ee4-18235a01e9a5",
+        "54bde216-a6f6-4489-bad1-f7733085831f",
+        "7c492e5a-9b8f-4490-b32d-07e28f4e9ff3"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.073,
+        1.742,
+        1.528,
+        1.306,
+        1.13
+      ],
+      "worst_seam_db": -49.1,
+      "all_reused": false
+    },
+    {
+      "id": "kor_for_eng:pod-1:SC18-S007",
+      "order": 180,
+      "n": 2,
+      "sentences": [
+        "그게 맞아요?",
+        "제가 맞아요?"
+      ],
+      "ids": [
+        "265bacaf-8bb2-4500-89d7-84eb8358b42f",
+        "183d5575-7f1c-4f0a-b7c2-ba73214114cb"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.844,
+        1.948
+      ],
+      "worst_seam_db": -74.7,
+      "all_reused": false
+    },
+    {
+      "id": "kor_for_eng:pod-1:SC17-S011",
+      "order": 173,
+      "n": 4,
+      "sentences": [
+        "3시.",
+        "9시.",
+        "1월.",
+        "2월."
+      ],
+      "ids": [
+        "5f652d60-c5bb-4f22-bfab-e6538564fd5b",
+        "c7df521c-1f20-42dd-b813-009c107f2ecd",
+        "9cdf2f0f-562b-4b93-ba3d-b1cc5a72a262",
+        "908f4c85-4259-44a5-8d43-8f5352aeee71"
+      ],
+      "margin": null,
+      "piece_durs": [
+        0.796,
+        0.99,
+        0.676,
+        0.754
+      ],
+      "worst_seam_db": -41.4,
+      "all_reused": false
+    },
+    {
+      "id": "kor_for_eng:pod-1:SC22-S001",
+      "order": 221,
+      "n": 2,
+      "sentences": [
+        "혹시 한국어 연습을 좀 해봐도 될까요?",
+        "배운 지 얼마 안 돼서, 다른 사람들이랑 얘기하는 게 아직 좀 떨려요."
+      ],
+      "ids": [
+        "97379eea-6084-421c-889a-a604adb2aec3",
+        "a8d1cc53-1132-4f08-ad56-4be72bd7bf0e"
+      ],
+      "margin": 3.22,
+      "piece_durs": [
+        3.335,
+        5.489
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "kor_for_eng:pod-1:SC21-S014",
+      "order": 220,
+      "n": 3,
+      "sentences": [
+        "10월.",
+        "11월.",
+        "12월."
+      ],
+      "ids": [
+        "90645b1a-bba3-4bc7-a002-d8f375657916",
+        "7d1e15b9-5ee1-47e2-955f-c375bdd9c5a4",
+        "0fff90d2-14c2-4c54-8b37-e638b02c4493"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.041,
+        1.379,
+        1.117
+      ],
+      "worst_seam_db": -61.1,
+      "all_reused": false
+    },
+    {
+      "id": "kor_for_eng:pod-1:SC20-S011",
+      "order": 206,
+      "n": 4,
+      "sentences": [
+        "6시.",
+        "7월.",
+        "8월.",
+        "9월."
+      ],
+      "ids": [
+        "d726219e-9e58-4fd7-9a3f-5d5979fba39e",
+        "4687d754-c784-42f6-ad86-5ba550ccba8f",
+        "7bea1178-abf9-47cc-b4b1-25e10cffc995",
+        "407f2f25-a268-44f5-9728-07bd78c9af2f"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.239,
+        1.435,
+        1.192,
+        1.023
+      ],
+      "worst_seam_db": -54.7,
+      "all_reused": false
+    },
+    {
+      "id": "kor_for_eng:pod-1:SC22-S007",
+      "order": 227,
+      "n": 2,
+      "sentences": [
+        "제 생각을 제대로 표현할 만큼 빠르게 생각이 안 날 때는 좀 답답해요.",
+        "하지만 더 자신 있게 말하고 싶다면 계속 연습해야 한다는 걸 알아요."
+      ],
+      "ids": [
+        "f21b70fa-df55-4a08-819a-dc7a51c3b203",
+        "c78b199c-5ba8-4844-861b-0d800450435c"
+      ],
+      "margin": 5.16,
+      "piece_durs": [
+        5.164,
+        5.203
+      ],
+      "worst_seam_db": -76.3,
+      "all_reused": false
+    },
+    {
+      "id": "kor_for_eng:pod-1:SC22-S003",
+      "order": 223,
+      "n": 3,
+      "sentences": [
+        "감사해요, 알게 되어 좋네요.",
+        "단어를 더 배워야 하고, 듣기 연습도 해야 해요.",
+        "천천히 말씀 안 하시면 잘 이해가 안 돼요."
+      ],
+      "ids": [
+        "15b4de21-dbb9-458b-b5e3-868d93c95f38",
+        "399f20d2-ee20-4d9a-91e9-bcdda519b762",
+        "74f5ca4f-ebe1-4300-a323-4ec1d0d38b04"
+      ],
+      "margin": 3.67,
+      "piece_durs": [
+        3.16,
+        4.605,
+        3.534
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "kor_for_eng:pod-1:SC22-S005",
+      "order": 225,
+      "n": 4,
+      "sentences": [
+        "네, 감사해요.",
+        "한 사람이랑 대화하는 게 더 쉬워요.",
+        "뭘 말할지 생각하는 게 좀 어렵긴 한데요.",
+        "뭘 말해야 할지 잘 모르겠지만, 대화를 시작할 수 있을 만큼은 말할 수 있는 것 같아요."
+      ],
+      "ids": [
+        "3e75457b-cefb-4169-8b0f-ebcc57c229a2",
+        "518fc38e-ecd6-4333-9631-eca6a8047085",
+        "c761cd23-9995-4206-a025-22fc10e9f092",
+        "1aa9ad0b-8f4c-4cc6-babe-a91ccf1ea6be"
+      ],
+      "margin": 3.12,
+      "piece_durs": [
+        2.439,
+        3.846,
+        4.236,
+        6.437
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "kor_for_eng:pod-1:SC22-S009",
+      "order": 229,
+      "n": 4,
+      "sentences": [
+        "이게 바로 제가 필요한 연습이에요.",
+        "대화하는 동안 뇌가 바뀌는 게 느껴지는 것 같아요!",
+        "도와주셔서 정말 감사해요.",
+        "그런데 잘 못하는 언어로 말할 때 이렇게 피곤해지는 게 놀라운 것 같아요."
+      ],
+      "ids": [
+        "9639058b-1a85-43a6-b4d4-26a5e406d78d",
+        "92447f5b-10c0-424b-8d38-ad08ff030d3e",
+        "17b9c831-2303-478a-87ea-dcfc96b37db7",
+        "6d140166-e135-4aae-b6f6-7a67fe2edff9"
+      ],
+      "margin": 7.32,
+      "piece_durs": [
+        3.051,
+        4.461,
+        3.413,
+        5.366
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "kor_for_eng:pod-1:SC22-S011",
+      "order": 231,
+      "n": 3,
+      "sentences": [
+        "정말 그래요.",
+        "이 정도 대화를 나눌 수 있다는 게 정말 기뻐요.",
+        "그리고 계속 실력이 늘면서 앞으로도 더 많은 대화를 나눌 수 있으면 좋겠어요."
+      ],
+      "ids": [
+        "e330fbfa-54d2-44a8-aee2-551abf805c30",
+        "789c00d0-e5ec-4c43-8428-d3fba94b90d7",
+        "7deee291-16a6-46fe-b3fd-ea093479ce4c"
+      ],
+      "margin": 8.63,
+      "piece_durs": [
+        1.998,
+        4.4,
+        5.788
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    }
+  ]
+}

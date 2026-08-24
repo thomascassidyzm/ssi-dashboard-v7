@@ -1,0 +1,637 @@
+{
+  "course": "ron_for_eng",
+  "pod": "ron_for_eng:pod-1",
+  "apply": true,
+  "at": "2026-08-24T12:41:40.000Z",
+  "gates": {
+    "margin_floor": 1.5,
+    "seam_db": -35,
+    "seam_window_s": 0.03,
+    "min_piece_s": 0.35
+  },
+  "splicer": "scripts/splice-fork/splice.py (unmodified)",
+  "multi_sentence_turns_needing_split": 28,
+  "processed": 28,
+  "stats": {
+    "linked": 28,
+    "reused_clips": 34,
+    "spliced_clips": 51,
+    "refused": 0,
+    "errors": 0,
+    "known_count_mismatch": 0
+  },
+  "refusals": [],
+  "errors": [],
+  "linked": [
+    {
+      "id": "ron_for_eng:pod-1:SC09-S001",
+      "order": 69,
+      "n": 2,
+      "sentences": [
+        "Bună seara.",
+        "Avem o rezervare pentru două persoane, pe numele Davies."
+      ],
+      "ids": [
+        "7cc76f5a-d4ef-46ab-9520-45b25497ca7b",
+        "f9b75c0b-61f9-49c3-a549-eb7c6e9ab791"
+      ],
+      "margin": 4.39,
+      "piece_durs": [
+        1.745,
+        4.493
+      ],
+      "worst_seam_db": -76.3,
+      "all_reused": false
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC02-S002",
+      "order": 6,
+      "n": 2,
+      "sentences": [
+        "Nu, e liber.",
+        "Vă rog, poftiți."
+      ],
+      "ids": [
+        "d9f84775-805c-4d78-85c9-2df617735f35",
+        "5759cc33-9e33-4c57-8744-4973f91ba186"
+      ],
+      "margin": 4.96,
+      "piece_durs": [
+        2.102,
+        2.437
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC02-S005",
+      "order": 9,
+      "n": 2,
+      "sentences": [
+        "Nu este foarte departe.",
+        "Poate trei sau patru mile."
+      ],
+      "ids": [
+        "86d64a96-cdcc-4441-8f6b-5c08bb634539",
+        "b411b0aa-7d02-466f-a40e-1c04121ff103"
+      ],
+      "margin": null,
+      "piece_durs": [
+        2.343,
+        2.432
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC01-S004",
+      "order": 4,
+      "n": 3,
+      "sentences": [
+        "Da, am o zi foarte încărcată astăzi.",
+        "Sper să ai o zi bună.",
+        "Ne vedem mai târziu."
+      ],
+      "ids": [
+        "1e9095a5-be5d-465e-9494-a5d336bc9dcf",
+        "5401f5cc-f396-4161-9c6e-40b80d965447",
+        "2a7c9358-686b-4e27-90ca-43e1366bbcd5"
+      ],
+      "margin": 4.11,
+      "piece_durs": [
+        3.328,
+        2.604,
+        1.995
+      ],
+      "worst_seam_db": -74.7,
+      "all_reused": false
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC11-S004",
+      "order": 100,
+      "n": 2,
+      "sentences": [
+        "Minunat.",
+        "Camera este la etajul trei, camera 709."
+      ],
+      "ids": [
+        "f6eb7ea7-7639-4ba7-8839-3586b3d293cc",
+        "c880f629-c0e3-4a19-b560-ef86e36c68dc"
+      ],
+      "margin": 4.49,
+      "piece_durs": [
+        1.579,
+        4.098
+      ],
+      "worst_seam_db": -74.7,
+      "all_reused": false
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC09-S015",
+      "order": 83,
+      "n": 2,
+      "sentences": [
+        "Totul e în regulă?",
+        "Mai aveți loc de desert?"
+      ],
+      "ids": [
+        "0c0b192c-1a70-4410-b399-e23cc3c839ba",
+        "cd91fdbb-6655-44d0-bdc2-1d3843b27aed"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.96,
+        2.374
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC11-S008",
+      "order": 104,
+      "n": 2,
+      "sentences": [
+        "De la șapte și jumătate până la ora zece.",
+        "Avem fructe și cereale sau un mic dejun cald."
+      ],
+      "ids": [
+        "1da7074f-6e1f-4fca-be71-1cd6a1d39fa1",
+        "2efc1dae-ff63-400f-b151-554ebf7b2826"
+      ],
+      "margin": null,
+      "piece_durs": [
+        3.29,
+        3.615
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC12-S001",
+      "order": 110,
+      "n": 2,
+      "sentences": [
+        "Bună dimineața.",
+        "Nu mă simt prea bine - îmi puteți recomanda ceva?"
+      ],
+      "ids": [
+        "4ecc77ae-7e17-4299-9f2f-c8449ebf79d0",
+        "c9567920-de35-456f-97fe-2bed09786238"
+      ],
+      "margin": 3.67,
+      "piece_durs": [
+        1.998,
+        3.804
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC14-S007",
+      "order": 137,
+      "n": 2,
+      "sentences": [
+        "Poftim.",
+        "Sunt douăsprezece lire și cincizeci."
+      ],
+      "ids": [
+        "f1687389-8bd0-47b0-9a78-47733a6e87b4",
+        "85719377-1248-48f6-8237-9e2409ed1525"
+      ],
+      "margin": 11.57,
+      "piece_durs": [
+        1.503,
+        3.247
+      ],
+      "worst_seam_db": -74.7,
+      "all_reused": false
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC15-S011",
+      "order": 151,
+      "n": 5,
+      "sentences": [
+        "100.000.",
+        "60.",
+        "70.",
+        "Ora unu.",
+        "Ora unsprezece."
+      ],
+      "ids": [
+        "28e99ce2-9951-4a3d-af58-f697f8b410e0",
+        "83d39146-6da9-4bf9-aa9a-8182b87b8eb2",
+        "a9e0af0c-488d-4a5b-be40-7d82d534fed6",
+        "2157135a-12b5-42dc-9639-c79a48a32264",
+        "6becf765-8aaa-4637-9eec-da98bdd52058"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.368,
+        1.397,
+        1.516,
+        1.725,
+        2.046
+      ],
+      "worst_seam_db": -70.3,
+      "all_reused": false
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC14-S010",
+      "order": 140,
+      "n": 5,
+      "sentences": [
+        "100.",
+        "200.",
+        "1000.",
+        "Duminică.",
+        "Ora douăsprezece."
+      ],
+      "ids": [
+        "9dea8809-034e-4767-ae88-e4b0d2a21b4a",
+        "78dd7b69-9491-4712-a225-9deeee873a93",
+        "287ff164-9f46-4b97-9899-3fc72fa8fb3f",
+        "0b72b34a-7b89-4629-873d-204757e391e7",
+        "2f59bd62-3941-48cb-bb43-668f9af2bb9e"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.153,
+        1.497,
+        1.194,
+        1.811,
+        2.146
+      ],
+      "worst_seam_db": -76.3,
+      "all_reused": false
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC16-S011",
+      "order": 162,
+      "n": 5,
+      "sentences": [
+        "Un milion.",
+        "80.",
+        "90.",
+        "Ora două.",
+        "Ora zece."
+      ],
+      "ids": [
+        "434141b3-6059-40be-b266-d9b52861ab7e",
+        "5702ba88-63d7-431f-b0e3-72ea9da61e52",
+        "88226131-bc8c-428b-9795-99b716ef59ce",
+        "12ba64f0-7998-4297-8ec6-8c1c60b73a02",
+        "3b2b8a8b-0966-4830-b016-484bad1c3c71"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.665,
+        1.721,
+        1.441,
+        1.778,
+        1.798
+      ],
+      "worst_seam_db": -72.2,
+      "all_reused": false
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC17-S011",
+      "order": 173,
+      "n": 4,
+      "sentences": [
+        "Ora trei.",
+        "Ora nouă.",
+        "Ianuarie.",
+        "Februarie."
+      ],
+      "ids": [
+        "753ea388-0002-4f18-aa00-57e330fdef82",
+        "2c9ba9a5-2d29-4aef-a77c-55eed4a169f3",
+        "f8b54d8e-cf05-4160-83ff-8a430d150f99",
+        "8b37dd5d-6690-48eb-a2d2-20ff2a9971a5"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.573,
+        2.207,
+        2.264,
+        1.781
+      ],
+      "worst_seam_db": -76.3,
+      "all_reused": false
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC18-S007",
+      "order": 180,
+      "n": 2,
+      "sentences": [
+        "Este corect?",
+        "Am dreptate?"
+      ],
+      "ids": [
+        "5b7652c3-403d-4876-9eff-d2a3a8b151ec",
+        "0d0e3216-9fe0-4059-aa7d-ce2db8528ace"
+      ],
+      "margin": 12.6,
+      "piece_durs": [
+        1.889,
+        1.808
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC18-S011",
+      "order": 184,
+      "n": 4,
+      "sentences": [
+        "Ora patru.",
+        "Ora opt.",
+        "Martie.",
+        "Aprilie."
+      ],
+      "ids": [
+        "2f000615-7c9f-4732-b384-86d58f2d8c11",
+        "22db2346-e24c-48ea-8f39-f2323a5d4417",
+        "77b7f3ae-41ab-45e5-8d56-31cb86b2e6bd",
+        "45197aa7-65af-4e08-b900-4f5f897fecb3"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.669,
+        2.214,
+        2.085,
+        1.652
+      ],
+      "worst_seam_db": -69.5,
+      "all_reused": false
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC19-S011",
+      "order": 195,
+      "n": 4,
+      "sentences": [
+        "Ora cinci.",
+        "Ora șapte.",
+        "Mai.",
+        "Iunie."
+      ],
+      "ids": [
+        "fb9a37fb-1d52-45f4-aca2-4c4c465e863e",
+        "84fd6fcc-482d-4518-b513-048f7266c472",
+        "da84ef5b-e907-4425-81c7-898d3aa456e1",
+        "693af84c-2b17-4b02-9d24-fc41bec0926a"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.743,
+        2.28,
+        1.49,
+        1.137
+      ],
+      "worst_seam_db": -78.3,
+      "all_reused": false
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC22-S002",
+      "order": 222,
+      "n": 3,
+      "sentences": [
+        "Bineînțeles, nicio problemă.",
+        "Pari să o vorbești foarte bine.",
+        "Te înțeleg ușor."
+      ],
+      "ids": [
+        "40c822c6-ea22-410b-ba5f-ed266c9a3e23",
+        "7b769c6b-9d65-49b1-8d79-3bc0917bfdd1",
+        "53ecfc48-07c7-4f7f-83dc-149842111960"
+      ],
+      "margin": null,
+      "piece_durs": null,
+      "worst_seam_db": null,
+      "all_reused": true
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC22-S003",
+      "order": 223,
+      "n": 3,
+      "sentences": [
+        "Mulțumesc, e bine de știut.",
+        "Trebuie să mai învăț cuvinte și trebuie să exersez ascultatul.",
+        "Nu înțeleg bine oamenii când nu vorbesc rar."
+      ],
+      "ids": [
+        "355ec2f0-fb9a-4ef1-9ce0-48b3712074cb",
+        "1cfdfa07-5355-4abd-a579-a16dff04d788",
+        "182f6a99-ea4b-479f-a8fc-18d3d35074d7"
+      ],
+      "margin": null,
+      "piece_durs": null,
+      "worst_seam_db": null,
+      "all_reused": true
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC21-S014",
+      "order": 220,
+      "n": 3,
+      "sentences": [
+        "Octombrie.",
+        "Noiembrie.",
+        "Decembrie."
+      ],
+      "ids": [
+        "f21e35d4-dab3-43ad-aa9c-6d27bbf4dfe1",
+        "29fd674d-2434-4fdb-ab85-d78363defc5b",
+        "370ef98f-dfdb-493a-b632-01c6563a6720"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.644,
+        2.226,
+        1.827
+      ],
+      "worst_seam_db": -70.3,
+      "all_reused": false
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC20-S011",
+      "order": 206,
+      "n": 4,
+      "sentences": [
+        "Ora șase.",
+        "Iulie.",
+        "August.",
+        "Septembrie."
+      ],
+      "ids": [
+        "480991fa-3245-4498-ba6e-e4bcc23e3ece",
+        "5d728ff8-769b-42dd-a1f5-434ffe9c939a",
+        "69268666-bddf-458a-8a00-742be31e8dd2",
+        "4ea9ccdd-91d2-4dbc-9fdd-a1b6b5a9eb1a"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.726,
+        2.012,
+        2.069,
+        1.845
+      ],
+      "worst_seam_db": -72.2,
+      "all_reused": false
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC22-S006",
+      "order": 226,
+      "n": 3,
+      "sentences": [
+        "Cred că te descurci foarte bine.",
+        "Sunt impresionat.",
+        "Cred că ești pregătit să începi să vorbești română cu oricine vorbește română."
+      ],
+      "ids": [
+        "9e2d9996-edb7-4df5-89c7-b3308c05bada",
+        "ef7433fc-dd83-4950-951c-f925d268ab08",
+        "31a55123-df69-4060-a1f6-e6d20bf05830"
+      ],
+      "margin": null,
+      "piece_durs": null,
+      "worst_seam_db": null,
+      "all_reused": true
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC22-S005",
+      "order": 225,
+      "n": 4,
+      "sentences": [
+        "Da, mulțumesc.",
+        "E mai ușor să vorbesc cu o singură persoană.",
+        "E un pic dificil să mă gândesc la ce să spun, totuși.",
+        "Nu știu sigur ce să spun, dar simt că pot vorbi destul cât să încep să am conversații."
+      ],
+      "ids": [
+        "f76d8d68-30d5-432f-8694-7fe8421b47f2",
+        "7403d4be-b5db-499d-bda5-8873300d9530",
+        "0809bec0-2adb-4ba9-aeaf-c52184c5070a",
+        "76541819-a3c2-4e2f-bb5c-b8a57a78da88"
+      ],
+      "margin": null,
+      "piece_durs": null,
+      "worst_seam_db": null,
+      "all_reused": true
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC22-S007",
+      "order": 227,
+      "n": 2,
+      "sentences": [
+        "E doar un pic frustrant când nu pot gândi destul de repede ca să mă exprim cum trebuie.",
+        "Dar știu că trebuie să continui să exersez dacă vreau să vorbesc mai cu încredere."
+      ],
+      "ids": [
+        "4cc729be-b6f5-4a00-99da-0b423fa7c19b",
+        "03c5ec63-6db1-4137-8509-98854f53330e"
+      ],
+      "margin": null,
+      "piece_durs": null,
+      "worst_seam_db": null,
+      "all_reused": true
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC22-S008",
+      "order": 228,
+      "n": 3,
+      "sentences": [
+        "Ar trebui să fii deja cu încredere.",
+        "Cred că te descurci mult mai bine decât îți dai seama.",
+        "Mă simt confortabil vorbind cu tine și nu vorbesc foarte rar."
+      ],
+      "ids": [
+        "6bfacf65-787c-4644-9634-1605ab28709d",
+        "2cd0650c-5b39-4b40-9904-9e31792af11c",
+        "3fffa5d6-ec57-4789-b068-ceaa955359a2"
+      ],
+      "margin": null,
+      "piece_durs": null,
+      "worst_seam_db": null,
+      "all_reused": true
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC22-S009",
+      "order": 229,
+      "n": 4,
+      "sentences": [
+        "Exact genul acesta de practică am nevoie.",
+        "Cred că îl simt cum îmi schimbă creierul în timp ce vorbim!",
+        "Îți apreciez cu adevărat ajutorul.",
+        "Dar e surprinzător cât de obosit mă simt când vorbesc într-o limbă pe care nu o vorbesc foarte bine."
+      ],
+      "ids": [
+        "c9e5e5bc-48d0-4d66-b82a-b183a85ecc55",
+        "8aa3d310-71c1-4d82-bee4-d9ba2f617344",
+        "11631331-5738-46c1-80f2-2b6b136da4f3",
+        "7677d1b0-c74d-4dc1-9a76-a42a9495d207"
+      ],
+      "margin": null,
+      "piece_durs": null,
+      "worst_seam_db": null,
+      "all_reused": true
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC22-S010",
+      "order": 230,
+      "n": 3,
+      "sentences": [
+        "Cred că e normal.",
+        "Să înveți o limbă nouă e dificil.",
+        "Dar e atât de amuzant când începi să ai conversații, nu-i așa?"
+      ],
+      "ids": [
+        "ea074fa9-cae7-45bd-a6a6-92cde1d867b4",
+        "78af686c-0cd4-4367-8f7a-50126c39ebad",
+        "150892e4-81b1-4e80-bf07-089c80f8e21a"
+      ],
+      "margin": null,
+      "piece_durs": null,
+      "worst_seam_db": null,
+      "all_reused": true
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC22-S001",
+      "order": 221,
+      "n": 2,
+      "sentences": [
+        "Te-ar deranja dacă aș încerca să exersez vorbitul în română cu tine?",
+        "Nu învăț de foarte mult timp și încă mă simt puțin emoționată când vorbesc cu alți oameni."
+      ],
+      "ids": [
+        "e3812056-9047-4517-b531-5c34c45fff59",
+        "b7e003e7-e375-497f-9601-3e854fee7144"
+      ],
+      "margin": null,
+      "piece_durs": [
+        4.634,
+        5.248
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC22-S011",
+      "order": 231,
+      "n": 3,
+      "sentences": [
+        "Chiar că da.",
+        "Sunt foarte fericit că pot să am atât de mult dintr-o conversație.",
+        "Și sper că vom putea să avem mai multe conversații pe viitor, pe măsură ce mă îmbunătățesc."
+      ],
+      "ids": [
+        "f6a6d45b-40ed-443b-a30b-566aaefda11d",
+        "9fc1bbe7-eafb-47d9-a8d3-45c0561c2a73",
+        "ff52c45d-30af-423e-96c4-bfc78506d226"
+      ],
+      "margin": null,
+      "piece_durs": null,
+      "worst_seam_db": null,
+      "all_reused": true
+    }
+  ]
+}

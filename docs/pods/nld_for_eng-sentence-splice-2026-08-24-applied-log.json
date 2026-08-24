@@ -1,0 +1,1358 @@
+{
+  "course": "nld_for_eng",
+  "pod": "nld_for_eng:pod-1",
+  "apply": true,
+  "at": "2026-08-24T12:42:54.255Z",
+  "gates": {
+    "margin_floor": 1.5,
+    "seam_db": -35,
+    "seam_window_s": 0.03,
+    "min_piece_s": 0.35
+  },
+  "splicer": "scripts/splice-fork/splice.py (unmodified)",
+  "multi_sentence_turns_needing_split": 58,
+  "processed": 58,
+  "stats": {
+    "linked": 54,
+    "reused_clips": 25,
+    "spliced_clips": 119,
+    "refused": 4,
+    "errors": 0,
+    "known_count_mismatch": 0
+  },
+  "refusals": [
+    {
+      "id": "nld_for_eng:pod-1:SC06-S012",
+      "order": 36,
+      "n": 2,
+      "reason": "margin_below_floor",
+      "text": "Wat interessant. Nou, leuk je te hebben leren kennen.",
+      "sentences": [
+        "Wat interessant.",
+        "Nou, leuk je te hebben leren kennen."
+      ],
+      "target_audio_id": "1d3c8536-8966-4ef2-8da8-8db80d9bbe4f",
+      "measure": {
+        "whole_dur": 3,
+        "interior_gaps_ms": [
+          122,
+          146
+        ],
+        "cut_at_gaps_ms": [
+          146
+        ],
+        "rejected_gaps_ms": [
+          122
+        ],
+        "margin": 1.21,
+        "piece_durs": [
+          1.45,
+          1.65
+        ]
+      }
+    },
+    {
+      "id": "nld_for_eng:pod-1:SC10-S007",
+      "order": 93,
+      "n": 2,
+      "reason": "margin_below_floor",
+      "text": "Dank u, u bent erg behulpzaam. Ik ben u erg dankbaar.",
+      "sentences": [
+        "Dank u, u bent erg behulpzaam.",
+        "Ik ben u erg dankbaar."
+      ],
+      "target_audio_id": "36393491-aae3-4f64-8a3a-f1c4b39cd552",
+      "measure": {
+        "whole_dur": 3.888,
+        "interior_gaps_ms": [
+          206,
+          257
+        ],
+        "cut_at_gaps_ms": [
+          257
+        ],
+        "rejected_gaps_ms": [
+          206
+        ],
+        "margin": 1.25,
+        "piece_durs": [
+          2.34,
+          1.648
+        ]
+      }
+    },
+    {
+      "id": "nld_for_eng:pod-1:SC10-S009",
+      "order": 95,
+      "n": 3,
+      "reason": "margin_below_floor",
+      "text": "Dat is heel vriendelijk van u! Ja, ik ben op vakantie, en ik moet meer oefenen om beter Nederlands te spreken. Hartelijk dank, en tot ziens.",
+      "sentences": [
+        "Dat is heel vriendelijk van u!",
+        "Ja, ik ben op vakantie, en ik moet meer oefenen om beter Nederlands te spreken.",
+        "Hartelijk dank, en tot ziens."
+      ],
+      "target_audio_id": "f0c7cb93-325f-4dae-90cc-ea2e8ab78d29",
+      "measure": {
+        "whole_dur": 8.28,
+        "interior_gaps_ms": [
+          221,
+          206,
+          119,
+          527,
+          153
+        ],
+        "cut_at_gaps_ms": [
+          221,
+          527
+        ],
+        "rejected_gaps_ms": [
+          206,
+          153,
+          119
+        ],
+        "margin": 1.07,
+        "piece_durs": [
+          1.668,
+          4.744,
+          2.068
+        ]
+      }
+    },
+    {
+      "id": "nld_for_eng:pod-1:SC22-S011",
+      "order": 231,
+      "n": 3,
+      "reason": "seam_not_silent",
+      "text": "Dat is het echt. Ik ben heel blij dat ik zo'n gesprek kan voeren. En ik hoop dat we in de toekomst meer gesprekken kunnen hebben als ik blijf verbeteren.",
+      "sentences": [
+        "Dat is het echt.",
+        "Ik ben heel blij dat ik zo'n gesprek kan voeren.",
+        "En ik hoop dat we in de toekomst meer gesprekken kunnen hebben als ik blijf verbeteren."
+      ],
+      "target_audio_id": "5f24084b-977f-4561-ba12-c90cc207525a",
+      "measure": {
+        "whole_dur": 8.28,
+        "interior_gaps_ms": [
+          149,
+          627
+        ],
+        "cut_at_gaps_ms": [
+          149,
+          627
+        ],
+        "rejected_gaps_ms": [],
+        "margin": null,
+        "piece_durs": [
+          1.108,
+          2.927,
+          4.445
+        ],
+        "seams_db": [
+          {
+            "edge": "s0.tail",
+            "db": -63.9,
+            "piece_peak_db": -2.4
+          },
+          {
+            "edge": "s1.head",
+            "db": -54.7,
+            "piece_peak_db": -1.9
+          },
+          {
+            "edge": "s1.tail",
+            "db": -34.9,
+            "piece_peak_db": -1.9
+          },
+          {
+            "edge": "s2.head",
+            "db": -39.5,
+            "piece_peak_db": -2.4
+          }
+        ],
+        "loud_seams": [
+          {
+            "edge": "s1.tail",
+            "db": -34.9,
+            "piece_peak_db": -1.9
+          }
+        ]
+      }
+    }
+  ],
+  "errors": [],
+  "linked": [
+    {
+      "id": "nld_for_eng:pod-1:SC03-S001",
+      "order": 10,
+      "n": 2,
+      "sentences": [
+        "Goedemiddag.",
+        "Wat mag het zijn?"
+      ],
+      "ids": [
+        "ed5f08d5-2af6-449b-a225-7b8ba6ca0f2e",
+        "b7597cd5-2f9c-40bf-84fb-c2b2ef06c154"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.185,
+        1.435
+      ],
+      "worst_seam_db": -55.5,
+      "all_reused": false
+    },
+    {
+      "id": "nld_for_eng:pod-1:SC01-S003",
+      "order": 3,
+      "n": 2,
+      "sentences": [
+        "Heel goed, dank je.",
+        "Ga je naar je werk?"
+      ],
+      "ids": [
+        "3a18d73e-aaac-4e00-8981-9e80c675491f",
+        "c2a67533-2a9d-4c43-9797-0edb9199f1d2"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.612,
+        1.656
+      ],
+      "worst_seam_db": -63.1,
+      "all_reused": false
+    },
+    {
+      "id": "nld_for_eng:pod-1:SC02-S005",
+      "order": 9,
+      "n": 2,
+      "sentences": [
+        "Het is niet erg ver.",
+        "Misschien drie of vier mijl."
+      ],
+      "ids": [
+        "1949081a-d73e-4335-b418-8e3c148900ad",
+        "37ad7b74-f8d2-4bd4-97b2-82587ee374d3"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.438,
+        1.926
+      ],
+      "worst_seam_db": -43.7,
+      "all_reused": false
+    },
+    {
+      "id": "nld_for_eng:pod-1:SC02-S002",
+      "order": 6,
+      "n": 2,
+      "sentences": [
+        "Nee, hij is vrij.",
+        "Alstublieft, gaat uw gang."
+      ],
+      "ids": [
+        "019d16b8-9f31-4565-a9a1-82bcbeb4a16a",
+        "d0de6192-a05e-46c8-a31b-fe13165f4f59"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.37,
+        1.826
+      ],
+      "worst_seam_db": -55,
+      "all_reused": false
+    },
+    {
+      "id": "nld_for_eng:pod-1:SC03-S010",
+      "order": 19,
+      "n": 2,
+      "sentences": [
+        "Dank u wel.",
+        "Tot ziens."
+      ],
+      "ids": [
+        "ef5e559a-23ba-4f7b-b3a1-a106e404e2a5",
+        "ab76b264-0bcf-4b57-b236-d17edabb6353"
+      ],
+      "margin": null,
+      "piece_durs": [
+        0.945,
+        0.979
+      ],
+      "worst_seam_db": -45.5,
+      "all_reused": false
+    },
+    {
+      "id": "nld_for_eng:pod-1:SC03-S002",
+      "order": 11,
+      "n": 4,
+      "sentences": [
+        "Goedemiddag.",
+        "Ik wil graag een koffie, alstublieft.",
+        "Met melk maar zonder suiker.",
+        "Om mee te nemen."
+      ],
+      "ids": [
+        "977ce794-7d4d-4b23-b424-37dab04aafd5",
+        "004e39fb-18ed-4f23-b034-d845625e5694",
+        "02e72918-96c4-4b48-af48-884afc4ac32a",
+        "cf04ac3d-d4d6-4872-ac85-fb5858ce59c9"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.29,
+        2.822,
+        2.585,
+        1.499
+      ],
+      "worst_seam_db": -65.2,
+      "all_reused": false
+    },
+    {
+      "id": "nld_for_eng:pod-1:SC07-S001",
+      "order": 38,
+      "n": 2,
+      "sentences": [
+        "Goedemorgen.",
+        "Wat mag het zijn?"
+      ],
+      "ids": [
+        "c1851825-587d-418d-99ea-4bd7420ebcf7",
+        "a7ada526-d1b5-418c-b576-913673525b26"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.286,
+        1.574
+      ],
+      "worst_seam_db": -64.7,
+      "all_reused": false
+    },
+    {
+      "id": "nld_for_eng:pod-1:SC05-S002",
+      "order": 24,
+      "n": 4,
+      "sentences": [
+        "Ja, heel erg.",
+        "Ik ben nu erg moe.",
+        "Welterusten.",
+        "Tot morgen."
+      ],
+      "ids": [
+        "f75a6f6e-d296-42b8-912f-cb80cb306319",
+        "71cd2a0e-8442-43a3-9ac5-644fba838076",
+        "ee07f8d6-aaa8-4117-8d71-ec80ce6b835d",
+        "6bcc73d3-da83-403e-a1bf-5799f3aba41f"
+      ],
+      "margin": 4.46,
+      "piece_durs": [
+        1.687,
+        2.193,
+        1.801,
+        1.387
+      ],
+      "worst_seam_db": -47.6,
+      "all_reused": false
+    },
+    {
+      "id": "nld_for_eng:pod-1:SC07-S004",
+      "order": 41,
+      "n": 2,
+      "sentences": [
+        "Ik wil graag een grote, alstublieft.",
+        "Met havermelk als u die heeft."
+      ],
+      "ids": [
+        "48d5fcb8-7d19-4a8a-af75-87ef86983c8e",
+        "faef2d04-2773-4076-a410-ac1ff070f124"
+      ],
+      "margin": null,
+      "piece_durs": [
+        2.547,
+        2.278
+      ],
+      "worst_seam_db": -54.7,
+      "all_reused": false
+    },
+    {
+      "id": "nld_for_eng:pod-1:SC07-S005",
+      "order": 42,
+      "n": 2,
+      "sentences": [
+        "Natuurlijk.",
+        "Wilt u dit meenemen of hier eten?"
+      ],
+      "ids": [
+        "049826b7-caf0-4cc4-b0bc-ee154712177c",
+        "bd5d9c16-3251-4e8c-b94f-e1336ffc9fd6"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.126,
+        2.454
+      ],
+      "worst_seam_db": -66.2,
+      "all_reused": false
+    },
+    {
+      "id": "nld_for_eng:pod-1:SC07-S008",
+      "order": 45,
+      "n": 2,
+      "sentences": [
+        "Komt eraan.",
+        "Kan ik nog iets voor u doen?"
+      ],
+      "ids": [
+        "95be6164-1934-45e6-b7b9-24c33f1c6736",
+        "a7c4de43-3cd8-4725-85ca-2eaa2342dbbc"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.248,
+        1.852
+      ],
+      "worst_seam_db": -63.5,
+      "all_reused": false
+    },
+    {
+      "id": "nld_for_eng:pod-1:SC07-S011",
+      "order": 48,
+      "n": 2,
+      "sentences": [
+        "Kan ik pinnen?",
+        "Hebben jullie contactloos betalen?"
+      ],
+      "ids": [
+        "9bcbc042-ff35-4353-8c4b-daac2e8cc447",
+        "e21f4b44-888d-47f2-953b-23fecd9822b0"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.047,
+        2.24
+      ],
+      "worst_seam_db": -61.1,
+      "all_reused": false
+    },
+    {
+      "id": "nld_for_eng:pod-1:SC07-S012",
+      "order": 49,
+      "n": 2,
+      "sentences": [
+        "Natuurlijk.",
+        "Hier is het apparaat."
+      ],
+      "ids": [
+        "049826b7-caf0-4cc4-b0bc-ee154712177c",
+        "cf917324-7c22-4704-96b7-e11dc1cc8d7c"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.19,
+        1.694
+      ],
+      "worst_seam_db": -50.8,
+      "all_reused": false
+    },
+    {
+      "id": "nld_for_eng:pod-1:SC07-S013",
+      "order": 50,
+      "n": 2,
+      "sentences": [
+        "Goedemorgen.",
+        "Twee americano's en een kopje thee, alstublieft."
+      ],
+      "ids": [
+        "61fd4034-32c1-42c9-9f1b-0f2b04e11f20",
+        "d9bf5f7b-b144-48b0-b240-f95effc2f854"
+      ],
+      "margin": null,
+      "piece_durs": [
+        0.975,
+        3.253
+      ],
+      "worst_seam_db": -54.5,
+      "all_reused": false
+    },
+    {
+      "id": "nld_for_eng:pod-1:SC08-S001",
+      "order": 53,
+      "n": 2,
+      "sentences": [
+        "Goedenavond.",
+        "Wat mag het zijn?"
+      ],
+      "ids": [
+        "8536a2a7-0ec1-4416-93c1-617f664d76f1",
+        "b7597cd5-2f9c-40bf-84fb-c2b2ef06c154"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.275,
+        1.425
+      ],
+      "worst_seam_db": -49.2,
+      "all_reused": false
+    },
+    {
+      "id": "nld_for_eng:pod-1:SC07-S014",
+      "order": 51,
+      "n": 2,
+      "sentences": [
+        "Wilt u hier zitten?",
+        "Het tafeltje bij het raam is vrij."
+      ],
+      "ids": [
+        "0e6e6a5c-1f60-4ec3-8da8-3d2360c568c8",
+        "8db8dd41-be72-4e05-8f0c-02e5355e10fe"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.677,
+        2.311
+      ],
+      "worst_seam_db": -64.7,
+      "all_reused": false
+    },
+    {
+      "id": "nld_for_eng:pod-1:SC08-S002",
+      "order": 54,
+      "n": 2,
+      "sentences": [
+        "Ik wil graag een pint, alstublieft.",
+        "Welke ales heeft u?"
+      ],
+      "ids": [
+        "5c6f81b5-9b93-4da6-ba37-bda6ff5c619f",
+        "edfc734b-61d4-4353-bc5e-fcea181e035b"
+      ],
+      "margin": null,
+      "piece_durs": [
+        2.644,
+        1.992
+      ],
+      "worst_seam_db": -45.3,
+      "all_reused": false
+    },
+    {
+      "id": "nld_for_eng:pod-1:SC08-S006",
+      "order": 58,
+      "n": 2,
+      "sentences": [
+        "Mag ik de wijnkaart zien?",
+        "Ik wil een glas wijn."
+      ],
+      "ids": [
+        "0716cd5b-249f-4f13-a960-906d6c192268",
+        "cffddb2d-106a-4885-ada6-b78b6e6ba445"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.878,
+        1.702
+      ],
+      "worst_seam_db": -60.5,
+      "all_reused": false
+    },
+    {
+      "id": "nld_for_eng:pod-1:SC08-S015",
+      "order": 67,
+      "n": 2,
+      "sentences": [
+        "Heeft u broodjes?",
+        "Ik wil graag een kaasbroodje, alstublieft."
+      ],
+      "ids": [
+        "ef1771a4-010b-4e0d-acbe-ca21f9c72177",
+        "b81f810b-f3e6-4e5d-8274-ed2d25539b4e"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.529,
+        2.771
+      ],
+      "worst_seam_db": -50.4,
+      "all_reused": false
+    },
+    {
+      "id": "nld_for_eng:pod-1:SC08-S013",
+      "order": 65,
+      "n": 3,
+      "sentences": [
+        "Ja, natuurlijk.",
+        "Hier is het.",
+        "De fish and chips zijn erg lekker."
+      ],
+      "ids": [
+        "60712feb-6b3f-453e-aecc-ea2b2b66283a",
+        "f960962e-1228-4cdc-84f4-61b3feb9b3b2",
+        "359a7030-7bbf-4479-8467-ce52f06c28ff"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.361,
+        1.266,
+        2.349
+      ],
+      "worst_seam_db": -49.2,
+      "all_reused": false
+    },
+    {
+      "id": "nld_for_eng:pod-1:SC09-S001",
+      "order": 69,
+      "n": 2,
+      "sentences": [
+        "Goedenavond.",
+        "We hebben een reservering voor twee personen, onder de naam Davies."
+      ],
+      "ids": [
+        "455153c1-e8a1-494d-b656-3340de52b029",
+        "beb6c52e-6748-430f-97c9-58c1ed7ebda8"
+      ],
+      "margin": 3.25,
+      "piece_durs": [
+        1.579,
+        4.881
+      ],
+      "worst_seam_db": -52.8,
+      "all_reused": false
+    },
+    {
+      "id": "nld_for_eng:pod-1:SC09-S009",
+      "order": 77,
+      "n": 2,
+      "sentences": [
+        "Ik neem het lam, alstublieft.",
+        "Met een bijgerecht van groenten."
+      ],
+      "ids": [
+        "82684ff9-4922-4643-b956-10bcf3bda9af",
+        "a8565f40-506a-4b29-81d3-a67cfb5c0879"
+      ],
+      "margin": null,
+      "piece_durs": [
+        2.08,
+        2.076
+      ],
+      "worst_seam_db": -49.2,
+      "all_reused": false
+    },
+    {
+      "id": "nld_for_eng:pod-1:SC09-S010",
+      "order": 78,
+      "n": 2,
+      "sentences": [
+        "En voor mij de risotto.",
+        "Met een kleine groene salade om te beginnen."
+      ],
+      "ids": [
+        "dbd31638-3e2f-4b5e-9910-e4a6dcfaeb29",
+        "dd2115a3-d030-429a-8338-315f468c610c"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.686,
+        2.638
+      ],
+      "worst_seam_db": -59.4,
+      "all_reused": false
+    },
+    {
+      "id": "nld_for_eng:pod-1:SC09-S015",
+      "order": 83,
+      "n": 2,
+      "sentences": [
+        "Is alles naar wens?",
+        "Heeft u nog ruimte voor een toetje?"
+      ],
+      "ids": [
+        "87df90f2-02d3-4bba-8343-c76046334d3f",
+        "80b85a11-7b82-4354-b2bf-71494f165ded"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.418,
+        2.109
+      ],
+      "worst_seam_db": -60.5,
+      "all_reused": false
+    },
+    {
+      "id": "nld_for_eng:pod-1:SC09-S016",
+      "order": 84,
+      "n": 2,
+      "sentences": [
+        "Gewoon twee koffies, alstublieft.",
+        "Voor mij cafeïnevrij."
+      ],
+      "ids": [
+        "e3ee3b75-f906-4d39-88d3-0ce672b285e0",
+        "a394e763-96d0-490e-9ee8-cc1a43158649"
+      ],
+      "margin": null,
+      "piece_durs": [
+        2.222,
+        1.91
+      ],
+      "worst_seam_db": -63.5,
+      "all_reused": false
+    },
+    {
+      "id": "nld_for_eng:pod-1:SC09-S017",
+      "order": 85,
+      "n": 2,
+      "sentences": [
+        "En de rekening graag, als u het niet erg vindt.",
+        "Kunnen we apart betalen?"
+      ],
+      "ids": [
+        "b4cea722-006f-4d0f-aef0-b880fad8f0ed",
+        "1f71f021-9ae5-4893-a966-72bf415da6d8"
+      ],
+      "margin": null,
+      "piece_durs": [
+        3.08,
+        1.94
+      ],
+      "worst_seam_db": -63.5,
+      "all_reused": false
+    },
+    {
+      "id": "nld_for_eng:pod-1:SC10-S003",
+      "order": 89,
+      "n": 2,
+      "sentences": [
+        "Dank u wel.",
+        "En heeft u ook pijnstillers voor kinderen?"
+      ],
+      "ids": [
+        "ef5e559a-23ba-4f7b-b3a1-a106e404e2a5",
+        "406bb46b-69bb-4eeb-9728-5a56dc0bedfa"
+      ],
+      "margin": null,
+      "piece_durs": [
+        0.937,
+        2.259
+      ],
+      "worst_seam_db": -45.9,
+      "all_reused": false
+    },
+    {
+      "id": "nld_for_eng:pod-1:SC11-S004",
+      "order": 100,
+      "n": 2,
+      "sentences": [
+        "Fijn.",
+        "De kamer is op de derde verdieping, kamer 709."
+      ],
+      "ids": [
+        "8835f61e-75e2-4e78-96e6-54d92ecf0383",
+        "48406cf8-9e22-4f0c-85d6-c1875719b75c"
+      ],
+      "margin": 4.44,
+      "piece_durs": [
+        0.898,
+        4.122
+      ],
+      "worst_seam_db": -63.1,
+      "all_reused": false
+    },
+    {
+      "id": "nld_for_eng:pod-1:SC10-S008",
+      "order": 94,
+      "n": 3,
+      "sentences": [
+        "Graag gedaan.",
+        "Bent u hier op vakantie?",
+        "U spreekt erg goed Nederlands."
+      ],
+      "ids": [
+        "a0d00c33-e0e1-41e7-ab67-c0ae7de9a0de",
+        "cbd2e330-cf86-4a73-9ef6-9c0bd194bd09",
+        "33dfd59b-e399-42a2-b7d9-f97d8294c946"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.273,
+        2.309,
+        2.371
+      ],
+      "worst_seam_db": -55.2,
+      "all_reused": false
+    },
+    {
+      "id": "nld_for_eng:pod-1:SC13-S002",
+      "order": 121,
+      "n": 2,
+      "sentences": [
+        "Ja, het is ongeveer tien minuten lopen.",
+        "Ga rechtdoor over deze weg."
+      ],
+      "ids": [
+        "63d70898-d581-4da0-a090-64590c24d93f",
+        "c0f7a7c7-b389-4c7b-86b3-f5b719fede4e"
+      ],
+      "margin": null,
+      "piece_durs": [
+        2.531,
+        2.177
+      ],
+      "worst_seam_db": -52.6,
+      "all_reused": false
+    },
+    {
+      "id": "nld_for_eng:pod-1:SC13-S008",
+      "order": 127,
+      "n": 2,
+      "sentences": [
+        "Prachtig.",
+        "En is er ergens een geldautomaat in de buurt?"
+      ],
+      "ids": [
+        "93632435-f007-4d34-9444-b65de804b282",
+        "0698c6ee-6af0-4816-aed5-76f8aee6e92c"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.16,
+        3.236
+      ],
+      "worst_seam_db": -42.4,
+      "all_reused": false
+    },
+    {
+      "id": "nld_for_eng:pod-1:SC13-S010",
+      "order": 129,
+      "n": 2,
+      "sentences": [
+        "Hartelijk dank.",
+        "U bent heel behulpzaam geweest."
+      ],
+      "ids": [
+        "7aa46c0e-2686-49b1-a5e7-14315538c0c5",
+        "6063ee8c-4dcf-4b95-85d4-0a1cae52d107"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.52,
+        2.468
+      ],
+      "worst_seam_db": -64.3,
+      "all_reused": false
+    },
+    {
+      "id": "nld_for_eng:pod-1:SC12-S010",
+      "order": 119,
+      "n": 5,
+      "sentences": [
+        "19.",
+        "20.",
+        "21.",
+        "Woensdag.",
+        "Donderdag."
+      ],
+      "ids": [
+        "cc6cc454-e834-45e0-ac1d-f2738f1c1c71",
+        "7d4964da-caa9-4a93-a8fd-de7f09ccc51f",
+        "065ff099-4248-438c-a500-7fcac5f30858",
+        "11a8fbc9-5601-4ba2-83cd-ceb831ae8d90",
+        "f733839d-c592-4c3b-998e-4d3c98db656e"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.039,
+        1.108,
+        1.331,
+        1.065,
+        0.944
+      ],
+      "worst_seam_db": -54.5,
+      "all_reused": false
+    },
+    {
+      "id": "nld_for_eng:pod-1:SC14-S001",
+      "order": 131,
+      "n": 2,
+      "sentences": [
+        "Hallo.",
+        "Kunt u me naar het station brengen, alstublieft?"
+      ],
+      "ids": [
+        "68f39b00-4719-4778-a60c-2990b6d176aa",
+        "9793f0c9-d81b-4275-ad7c-0aad7775f877"
+      ],
+      "margin": null,
+      "piece_durs": [
+        0.973,
+        2.775
+      ],
+      "worst_seam_db": -56.2,
+      "all_reused": false
+    },
+    {
+      "id": "nld_for_eng:pod-1:SC14-S002",
+      "order": 132,
+      "n": 2,
+      "sentences": [
+        "Ja, natuurlijk.",
+        "Het kan even duren, er is op dit moment veel verkeer."
+      ],
+      "ids": [
+        "f99d1b72-5862-44e1-ac56-39952ebbc29a",
+        "9c43df5e-8018-43ab-bff0-f4fb9f67db89"
+      ],
+      "margin": 3.97,
+      "piece_durs": [
+        1.537,
+        3.891
+      ],
+      "worst_seam_db": -59.7,
+      "all_reused": false
+    },
+    {
+      "id": "nld_for_eng:pod-1:SC14-S007",
+      "order": 137,
+      "n": 2,
+      "sentences": [
+        "Alstublieft.",
+        "Dat is twaalf pond vijftig."
+      ],
+      "ids": [
+        "7b49966e-eadd-4a77-a5fe-0f58786af009",
+        "8b28cc3d-fc72-4181-9458-c237bb9c170d"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.39,
+        2.286
+      ],
+      "worst_seam_db": -63.5,
+      "all_reused": false
+    },
+    {
+      "id": "nld_for_eng:pod-1:SC14-S010",
+      "order": 140,
+      "n": 5,
+      "sentences": [
+        "100.",
+        "200.",
+        "1000.",
+        "Zondag.",
+        "Twaalf uur."
+      ],
+      "ids": [
+        "b7fd172d-3c84-422e-90ec-d2d8fa156ad5",
+        "f2eae7c6-400c-4079-912c-ff9db398fbdb",
+        "149d9708-93af-4136-b2be-d8ecfcba80a7",
+        "1b3ba92f-d6c4-422e-855e-bec4dfce7ca8",
+        "6a0474a2-4fe8-4d4f-a04e-46662699a086"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.114,
+        1.625,
+        1.325,
+        1.288,
+        1.331
+      ],
+      "worst_seam_db": -46.8,
+      "all_reused": false
+    },
+    {
+      "id": "nld_for_eng:pod-1:SC15-S011",
+      "order": 151,
+      "n": 5,
+      "sentences": [
+        "100.000.",
+        "60.",
+        "70.",
+        "Eén uur.",
+        "Elf uur."
+      ],
+      "ids": [
+        "73caf0f6-492b-4abf-ad4f-06df2798e68f",
+        "5ad0f8b7-a044-461a-b0b4-0b7123e00b70",
+        "357c7933-ff57-4f70-aeef-db8ec2b4b81f",
+        "3239ebf2-a1c1-4013-8b37-7aace7769317",
+        "a4766198-5945-442b-90e7-3ab041676351"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.324,
+        1.321,
+        1.373,
+        1.334,
+        1.168
+      ],
+      "worst_seam_db": -46.8,
+      "all_reused": false
+    },
+    {
+      "id": "nld_for_eng:pod-1:SC17-S011",
+      "order": 173,
+      "n": 4,
+      "sentences": [
+        "Drie uur.",
+        "Negen uur.",
+        "Januari.",
+        "Februari."
+      ],
+      "ids": [
+        "ed053e5a-c5d2-4004-accd-704ead0d714f",
+        "2634e018-82fd-404e-8b98-d57d6ca1f0b7",
+        "6288630f-a286-49d9-aa47-aece52f557fa",
+        "63fb390e-7a9a-4e96-b508-7d708d88a8e4"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.18,
+        1.695,
+        1.578,
+        1.415
+      ],
+      "worst_seam_db": -52,
+      "all_reused": false
+    },
+    {
+      "id": "nld_for_eng:pod-1:SC16-S011",
+      "order": 162,
+      "n": 5,
+      "sentences": [
+        "Een miljoen.",
+        "80.",
+        "90.",
+        "Twee uur.",
+        "Tien uur."
+      ],
+      "ids": [
+        "e8953aa0-e0ed-408a-9631-c0732815ed1b",
+        "778769a4-c56a-43cc-8a99-15c3701e1e4f",
+        "00c8268d-4a2b-49d5-911e-ec66b495d450",
+        "b3088127-5cb1-4df1-bf72-b4716e7bc158",
+        "85e7f9f3-1f68-48d5-ad32-f18379d2ae0b"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.345,
+        1.493,
+        1.488,
+        1.364,
+        1.095
+      ],
+      "worst_seam_db": -56,
+      "all_reused": false
+    },
+    {
+      "id": "nld_for_eng:pod-1:SC18-S007",
+      "order": 180,
+      "n": 2,
+      "sentences": [
+        "Klopt dat?",
+        "Heb ik gelijk?"
+      ],
+      "ids": [
+        "3a8bae91-e1e3-4c36-88d2-f3edbcdb26bf",
+        "ab0accfd-21da-4e57-a956-8b00fda470af"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.15,
+        1.398
+      ],
+      "worst_seam_db": -63.9,
+      "all_reused": false
+    },
+    {
+      "id": "nld_for_eng:pod-1:SC18-S011",
+      "order": 184,
+      "n": 4,
+      "sentences": [
+        "Vier uur.",
+        "Acht uur.",
+        "Maart.",
+        "April."
+      ],
+      "ids": [
+        "7f874731-2117-4364-aa78-a7adac79e6de",
+        "13556e7b-2c49-40bc-bbb9-4be59e739f45",
+        "5ab915de-25ad-43b3-baf2-7ad91a81768d",
+        "ad52cc91-0ba7-47b9-bd91-6fc9c2c43441"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.242,
+        1.423,
+        1.127,
+        1.116
+      ],
+      "worst_seam_db": -58.1,
+      "all_reused": false
+    },
+    {
+      "id": "nld_for_eng:pod-1:SC21-S014",
+      "order": 220,
+      "n": 3,
+      "sentences": [
+        "Oktober.",
+        "November.",
+        "December."
+      ],
+      "ids": [
+        "85e50526-bbc8-47d7-8669-395ee8f3147f",
+        "89504a43-6681-453e-9878-d15478e9806c",
+        "927bb14f-b087-4045-a891-b6987f2bc058"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.092,
+        1.404,
+        1.171
+      ],
+      "worst_seam_db": -60.8,
+      "all_reused": false
+    },
+    {
+      "id": "nld_for_eng:pod-1:SC19-S011",
+      "order": 195,
+      "n": 4,
+      "sentences": [
+        "Vijf uur.",
+        "Zeven uur.",
+        "Mei.",
+        "Juni."
+      ],
+      "ids": [
+        "4afe596b-0122-46ec-bac6-3356d32d45fe",
+        "793504f7-a22c-4d19-8409-edd182c3e0b1",
+        "715085f1-d69b-4f6e-afa1-7a9fcf0f1e6e",
+        "688c377b-1ebc-448a-9365-79ab0e7f5b3b"
+      ],
+      "margin": null,
+      "piece_durs": [
+        0.938,
+        1.292,
+        0.886,
+        0.664
+      ],
+      "worst_seam_db": -53.3,
+      "all_reused": false
+    },
+    {
+      "id": "nld_for_eng:pod-1:SC22-S002",
+      "order": 222,
+      "n": 3,
+      "sentences": [
+        "Natuurlijk, geen probleem.",
+        "Je lijkt het erg goed te spreken.",
+        "Ik kan je makkelijk verstaan."
+      ],
+      "ids": [
+        "0388c46a-1883-48a7-aacc-1d012e24b04e",
+        "125fa14f-e780-4034-83ef-442562c4c51f",
+        "48bc90fa-0248-4540-8ee6-edb572ef0817"
+      ],
+      "margin": null,
+      "piece_durs": null,
+      "worst_seam_db": null,
+      "all_reused": true
+    },
+    {
+      "id": "nld_for_eng:pod-1:SC20-S011",
+      "order": 206,
+      "n": 4,
+      "sentences": [
+        "Zes uur.",
+        "Juli.",
+        "Augustus.",
+        "September."
+      ],
+      "ids": [
+        "ad7bf7cb-e68b-42e0-814a-f78d5cdde0f0",
+        "6bf42d20-8799-4bbc-84eb-1714a80e9257",
+        "e737c128-399b-4a23-84f8-991d8944f6d1",
+        "d18cc9f4-1e37-4b9d-a676-89422c060e33"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.182,
+        1.275,
+        1.594,
+        1.266
+      ],
+      "worst_seam_db": -52.6,
+      "all_reused": false
+    },
+    {
+      "id": "nld_for_eng:pod-1:SC22-S006",
+      "order": 226,
+      "n": 3,
+      "sentences": [
+        "Ik vind dat je het heel goed doet.",
+        "Ik ben onder de indruk.",
+        "Ik denk dat je klaar bent om Nederlands te gaan spreken met iedereen die Nederlands spreekt."
+      ],
+      "ids": [
+        "1777c4c7-1aac-4193-8f8c-fe8af11d2d16",
+        "4aecb7a5-caea-4e16-92ca-1a92b0f41c86",
+        "580cc4c0-607c-4dfc-9788-d59615af3a46"
+      ],
+      "margin": null,
+      "piece_durs": null,
+      "worst_seam_db": null,
+      "all_reused": true
+    },
+    {
+      "id": "nld_for_eng:pod-1:SC22-S001",
+      "order": 221,
+      "n": 2,
+      "sentences": [
+        "Zou je het erg vinden als ik probeerde Nederlands met je te oefenen?",
+        "Ik leer het nog niet zo lang, en ik voel me nog een beetje zenuwachtig om met andere mensen te praten."
+      ],
+      "ids": [
+        "bed75600-910a-40a2-8953-70219677f6ea",
+        "77a84f1e-1786-4b7b-b8e5-dd9d9afc73be"
+      ],
+      "margin": 8.17,
+      "piece_durs": [
+        3.876,
+        5.632
+      ],
+      "worst_seam_db": -64.7,
+      "all_reused": false
+    },
+    {
+      "id": "nld_for_eng:pod-1:SC22-S008",
+      "order": 228,
+      "n": 3,
+      "sentences": [
+        "Je moet nu al zelfverzekerd zijn.",
+        "Ik denk dat je het veel beter doet dan je beseft.",
+        "Ik voel me op mijn gemak om met je te praten, en ik praat niet erg langzaam."
+      ],
+      "ids": [
+        "3d7a6ddd-7945-48ea-b3a0-ab56d2d24633",
+        "893e3659-29e1-43c7-ad26-2baa5ed06963",
+        "d2c8f398-5efb-4342-b9a3-68df248e58cc"
+      ],
+      "margin": null,
+      "piece_durs": null,
+      "worst_seam_db": null,
+      "all_reused": true
+    },
+    {
+      "id": "nld_for_eng:pod-1:SC22-S003",
+      "order": 223,
+      "n": 3,
+      "sentences": [
+        "Dank je, dat is goed om te weten.",
+        "Ik moet meer woorden leren, en ik moet oefenen met luisteren.",
+        "Ik versta mensen niet goed als ze niet langzaam praten."
+      ],
+      "ids": [
+        "db6f24c8-b06c-419d-83a5-b0b22e7c3b37",
+        "e6da799e-64d2-4eb3-a531-97e8db89e8ef",
+        "a54386a0-7342-4d81-85c8-b8a6d2058882"
+      ],
+      "margin": 3.78,
+      "piece_durs": [
+        2.284,
+        3.951,
+        3.613
+      ],
+      "worst_seam_db": -65.2,
+      "all_reused": false
+    },
+    {
+      "id": "nld_for_eng:pod-1:SC22-S007",
+      "order": 227,
+      "n": 2,
+      "sentences": [
+        "Het is alleen een beetje frustrerend als ik niet snel genoeg kan denken om mezelf goed uit te drukken.",
+        "Maar ik weet dat ik moet blijven oefenen als ik zelfverzekerder wil spreken."
+      ],
+      "ids": [
+        "2140fd94-a83a-4f51-997a-3b1108664b59",
+        "555dbfcb-ee43-49f2-8bc1-d8f3bac82082"
+      ],
+      "margin": null,
+      "piece_durs": [
+        5.709,
+        4.519
+      ],
+      "worst_seam_db": -51.1,
+      "all_reused": false
+    },
+    {
+      "id": "nld_for_eng:pod-1:SC22-S010",
+      "order": 230,
+      "n": 3,
+      "sentences": [
+        "Ik denk dat dat normaal is.",
+        "Een nieuwe taal leren is moeilijk.",
+        "Maar het is zo leuk als je gesprekken begint te voeren, toch?"
+      ],
+      "ids": [
+        "d7fde5dd-969c-48a3-8d81-86419448b432",
+        "a38a84d7-4d78-4a5d-9227-aa4aca74f91f",
+        "8476e220-5dea-4d11-8485-6e07da1c0eda"
+      ],
+      "margin": null,
+      "piece_durs": null,
+      "worst_seam_db": null,
+      "all_reused": true
+    },
+    {
+      "id": "nld_for_eng:pod-1:SC22-S005",
+      "order": 225,
+      "n": 4,
+      "sentences": [
+        "Ja, dank je.",
+        "Het is makkelijker om met maar één persoon te praten.",
+        "Het is een beetje moeilijk om aan iets te denken om te zeggen, eerlijk gezegd.",
+        "Ik weet niet goed wat ik moet zeggen, maar ik heb het gevoel dat ik genoeg kan spreken om gesprekken te beginnen."
+      ],
+      "ids": [
+        "a2343902-aec8-4c16-ba05-be0c168ecb70",
+        "533f70fe-f9ef-4fba-8203-2329a1d7c3c3",
+        "18bc6775-80ed-4fbd-81ce-0625880e712a",
+        "dd4e9ffb-063b-4689-a93c-a2acdbe0c227"
+      ],
+      "margin": 3.23,
+      "piece_durs": [
+        3.97,
+        4.241,
+        2.154,
+        3.662
+      ],
+      "worst_seam_db": -43.5,
+      "all_reused": false
+    },
+    {
+      "id": "nld_for_eng:pod-1:SC22-S009",
+      "order": 229,
+      "n": 4,
+      "sentences": [
+        "Dit is precies het soort oefening dat ik nodig heb.",
+        "Ik denk dat ik kan voelen dat het mijn hersenen verandert terwijl we praten!",
+        "Ik waardeer je hulp echt heel erg.",
+        "Maar het is verrassend hoe moe ik word als ik praat in een taal die ik niet zo goed spreek."
+      ],
+      "ids": [
+        "29209253-13be-43fa-a1b4-25a196d6c42c",
+        "68a2da48-c278-4d23-a621-ad390ca0c491",
+        "15af97a4-361b-4720-8fb4-4bde6aa65358",
+        "3fea3710-d265-49a4-818e-7321322b96d4"
+      ],
+      "margin": 3.76,
+      "piece_durs": [
+        2.805,
+        4.383,
+        2.693,
+        4.554
+      ],
+      "worst_seam_db": -46.7,
+      "all_reused": false
+    }
+  ]
+}

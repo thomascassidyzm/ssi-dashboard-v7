@@ -1,0 +1,2257 @@
+{
+  "course": "ara_for_eng",
+  "pod": "ara_for_eng:pod-1",
+  "apply": true,
+  "at": "2026-08-24T12:46:59.876Z",
+  "gates": {
+    "margin_floor": 1.5,
+    "seam_db": -35,
+    "seam_window_s": 0.03,
+    "min_piece_s": 0.35
+  },
+  "splicer": "scripts/splice-fork/splice.py (unmodified)",
+  "multi_sentence_turns_needing_split": 100,
+  "processed": 100,
+  "stats": {
+    "linked": 99,
+    "reused_clips": 12,
+    "spliced_clips": 257,
+    "refused": 1,
+    "errors": 0,
+    "known_count_mismatch": 0
+  },
+  "refusals": [
+    {
+      "id": "ara_for_eng:pod-1:SC06-S009",
+      "order": 33,
+      "n": 3,
+      "reason": "margin_below_floor",
+      "text": "آسف، أنا مفهمتش. أنا بتعلم عربي. ممكن تعيدي الكلام تاني مرة بس أبطأ شوية؟",
+      "sentences": [
+        "آسف، أنا مفهمتش.",
+        "أنا بتعلم عربي.",
+        "ممكن تعيدي الكلام تاني مرة بس أبطأ شوية؟"
+      ],
+      "target_audio_id": "ee0de601-cc0e-4a95-a81e-7f7beb96da3e",
+      "measure": {
+        "whole_dur": 10.218,
+        "interior_gaps_ms": [
+          972,
+          1322,
+          1509,
+          115
+        ],
+        "cut_at_gaps_ms": [
+          1322,
+          1509
+        ],
+        "rejected_gaps_ms": [
+          972,
+          115
+        ],
+        "margin": 1.36,
+        "piece_durs": [
+          3.445,
+          2.841,
+          4.131
+        ]
+      }
+    }
+  ],
+  "errors": [],
+  "linked": [
+    {
+      "id": "ara_for_eng:pod-1:SC01-S002",
+      "order": 2,
+      "n": 2,
+      "sentences": [
+        "صباح الخير.",
+        "إزيك؟"
+      ],
+      "ids": [
+        "cca329cb-f159-4556-bbf4-cd89c9f87c43",
+        "54f7eff3-42ae-4706-8f17-6d227b02bb02"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.951,
+        1.386
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "ara_for_eng:pod-1:SC01-S003",
+      "order": 3,
+      "n": 2,
+      "sentences": [
+        "أنا كويس كتير، شكراً.",
+        "إنتِ رايحة الشغل؟"
+      ],
+      "ids": [
+        "6964684b-a78a-4334-846a-aab7f1ab12c2",
+        "eef1c086-05d2-423b-9f50-6d8a2996e4c8"
+      ],
+      "margin": 2.01,
+      "piece_durs": [
+        3.376,
+        2.246
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "ara_for_eng:pod-1:SC02-S002",
+      "order": 6,
+      "n": 2,
+      "sentences": [
+        "لا، هُوَ فارِغٌ.",
+        "تَفَضَّلْ."
+      ],
+      "ids": [
+        "05ced003-ab50-4242-a146-dfb0c07268aa",
+        "9dbfd2e1-2fec-47eb-95eb-dfb49a949f5c"
+      ],
+      "margin": 2.59,
+      "piece_durs": [
+        2.707,
+        1.798
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "ara_for_eng:pod-1:SC01-S004",
+      "order": 4,
+      "n": 3,
+      "sentences": [
+        "أيوه، عندي يوم مشغول النهارده.",
+        "ربنا يوفقك.",
+        "شوفك بعدين."
+      ],
+      "ids": [
+        "fb26dd26-5544-4936-9036-5d3c7d669ec8",
+        "0a570e9f-03d5-4d19-9976-c04b45361cae",
+        "49e17f1e-ca92-4dd8-8a54-c61a04364159"
+      ],
+      "margin": 4.77,
+      "piece_durs": [
+        3.851,
+        2.784,
+        2.194
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "ara_for_eng:pod-1:SC02-S005",
+      "order": 9,
+      "n": 2,
+      "sentences": [
+        "لَيْسَتْ بَعيدَةً جِدًّا.",
+        "رُبَّما ثَلاثَةُ أَوْ أَرْبَعَةُ أَمْيالٍ."
+      ],
+      "ids": [
+        "b636ef97-ced1-4c90-9c56-c8997684fe0b",
+        "4bdb2e0a-8ab1-465e-8bdb-56d411f2a6cd"
+      ],
+      "margin": null,
+      "piece_durs": [
+        2.429,
+        3.047
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "ara_for_eng:pod-1:SC03-S001",
+      "order": 10,
+      "n": 2,
+      "sentences": [
+        "طابَ يَوْمُكَ.",
+        "ماذا أُحْضِرُ لَكَ؟"
+      ],
+      "ids": [
+        "ed0d08c4-3156-4009-8eb7-9ceab9fc172b",
+        "ce79585e-42f1-46f6-8434-ff42a4460de6"
+      ],
+      "margin": 15.45,
+      "piece_durs": [
+        1.621,
+        2.201
+      ],
+      "worst_seam_db": -68,
+      "all_reused": false
+    },
+    {
+      "id": "ara_for_eng:pod-1:SC03-S010",
+      "order": 19,
+      "n": 2,
+      "sentences": [
+        "شكراً كتير.",
+        "مع السلامة."
+      ],
+      "ids": [
+        "7ebf1b93-b2fa-4f8a-8d7f-18f9b196dbb1",
+        "a030ba20-ec15-4948-9334-936214153964"
+      ],
+      "margin": null,
+      "piece_durs": [
+        2.026,
+        1.993
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "ara_for_eng:pod-1:SC03-S002",
+      "order": 11,
+      "n": 4,
+      "sentences": [
+        "مساء الخير.",
+        "عايزة قهوة من فضلك.",
+        "بحليب بس من غير سكر.",
+        "واخداها بره."
+      ],
+      "ids": [
+        "501678a9-3122-4704-b751-9fe56c5adf43",
+        "906ef6b9-58d5-4b61-891e-81f7819ece76",
+        "c005f96b-3afb-4f19-9615-7cc40430406d",
+        "56fb0ec6-3355-4801-aec6-a3ac250cc29e"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.902,
+        3.115,
+        3.685,
+        2.086
+      ],
+      "worst_seam_db": -57.8,
+      "all_reused": false
+    },
+    {
+      "id": "ara_for_eng:pod-1:SC05-S001",
+      "order": 23,
+      "n": 2,
+      "sentences": [
+        "مساء الخير، سارة.",
+        "كان يومك طويل؟"
+      ],
+      "ids": [
+        "d898272e-2a1f-41db-a300-0ef7d09fe3c8",
+        "b2d7b37e-d208-4b76-9ff2-82f9c730d356"
+      ],
+      "margin": 2.58,
+      "piece_durs": [
+        2.787,
+        2.304
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "ara_for_eng:pod-1:SC04-S003",
+      "order": 22,
+      "n": 3,
+      "sentences": [
+        "لأ، أنا آسف، أنا مشغول بكرة.",
+        "بس نتكلم السبت.",
+        "شوفك كمان."
+      ],
+      "ids": [
+        "2d0e474d-037b-4779-862d-5664b026f24d",
+        "c79dbaec-1601-4fe8-8c57-4098fc635f2a",
+        "580ffb58-f4d1-4f80-8f51-255dd6c83940"
+      ],
+      "margin": 1.9,
+      "piece_durs": [
+        4.438,
+        2.645,
+        2.042
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "ara_for_eng:pod-1:SC04-S002",
+      "order": 21,
+      "n": 4,
+      "sentences": [
+        "أهلاً!",
+        "آسفة بس مش قادرة أتكلم دلوقتي.",
+        "محتاجة أروح البيت دلوقتي.",
+        "ممكن نتكلم بكرة؟"
+      ],
+      "ids": [
+        "0e97fd86-a3da-49a5-b3b6-087a3c102220",
+        "9c0dd1c6-8248-4f29-ab42-97f1bddfb163",
+        "cf86923b-6fde-4632-bba4-48968845dcae",
+        "c0e8fc24-f181-48b1-a663-36028b063427"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.476,
+        4.649,
+        3.794,
+        2.599
+      ],
+      "worst_seam_db": -64.7,
+      "all_reused": false
+    },
+    {
+      "id": "ara_for_eng:pod-1:SC06-S001",
+      "order": 25,
+      "n": 3,
+      "sentences": [
+        "معلش.",
+        "أهلاً.",
+        "اسمك إيه؟"
+      ],
+      "ids": [
+        "79e742f4-5db2-4325-adc8-7598037d4b94",
+        "b52e2cc1-3344-491e-8ef1-858d228af187",
+        "b554d835-0f9f-4ede-9186-e3521ecbd249"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.667,
+        2.017,
+        1.732
+      ],
+      "worst_seam_db": -68.7,
+      "all_reused": false
+    },
+    {
+      "id": "ara_for_eng:pod-1:SC06-S002",
+      "order": 26,
+      "n": 2,
+      "sentences": [
+        "اسمي آنا.",
+        "وأنت؟"
+      ],
+      "ids": [
+        "032acdcc-3170-454d-879f-05a514b8b498",
+        "e71651ea-f855-4625-8334-0bfdd6d19fc3"
+      ],
+      "margin": 12.08,
+      "piece_durs": [
+        1.786,
+        1.666
+      ],
+      "worst_seam_db": -71.2,
+      "all_reused": false
+    },
+    {
+      "id": "ara_for_eng:pod-1:SC05-S002",
+      "order": 24,
+      "n": 4,
+      "sentences": [
+        "أيوه، جداً.",
+        "أنا تعبانة جداً دلوقتي.",
+        "تصبح على خير.",
+        "شوفك بكرة."
+      ],
+      "ids": [
+        "87375e51-e73a-496f-8038-103f531203af",
+        "9805edaf-dbc1-4113-9048-091421e95645",
+        "38017d60-ecfe-4f25-8bee-8ba961fb28c2",
+        "c33ab8c0-3b7e-41b3-b724-ece630a5f08c"
+      ],
+      "margin": 4.65,
+      "piece_durs": [
+        2.252,
+        3.547,
+        2.696,
+        2.033
+      ],
+      "worst_seam_db": -65.2,
+      "all_reused": false
+    },
+    {
+      "id": "ara_for_eng:pod-1:SC06-S003",
+      "order": 27,
+      "n": 2,
+      "sentences": [
+        "أنا جيمس.",
+        "تشرفت بمعرفتك."
+      ],
+      "ids": [
+        "ea329f02-c7f4-4d78-bb08-728da2851eef",
+        "69a566dd-40bc-4a44-a57c-90bdbc58816c"
+      ],
+      "margin": 6.52,
+      "piece_durs": [
+        1.777,
+        2.462
+      ],
+      "worst_seam_db": -76.3,
+      "all_reused": false
+    },
+    {
+      "id": "ara_for_eng:pod-1:SC06-S004",
+      "order": 28,
+      "n": 2,
+      "sentences": [
+        "أنا كمان تشرفت.",
+        "إنت من فين؟"
+      ],
+      "ids": [
+        "ae9f114e-641a-4d2a-8b81-ba16d6cd3386",
+        "a9ad9e08-2b62-4c05-963c-b5baa1d5b5e3"
+      ],
+      "margin": null,
+      "piece_durs": [
+        2.314,
+        2.115
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "ara_for_eng:pod-1:SC06-S006",
+      "order": 30,
+      "n": 2,
+      "sentences": [
+        "أنا من فرنسا.",
+        "أنا هنا من سنتين."
+      ],
+      "ids": [
+        "a1d2f071-aefd-4016-ab7c-6c844985d2b5",
+        "379fbe20-2ec9-40df-92a4-fa7c32e2f64a"
+      ],
+      "margin": null,
+      "piece_durs": [
+        2.068,
+        2.522
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "ara_for_eng:pod-1:SC06-S005",
+      "order": 29,
+      "n": 2,
+      "sentences": [
+        "أنا من مانتشستر، بس أنا ساكن في لندن دلوقتي.",
+        "وأنتِ؟"
+      ],
+      "ids": [
+        "a1f473cc-59cf-49af-8566-e0f374bba00e",
+        "69ee3c1f-b7a8-4518-841b-31aee9e3a20f"
+      ],
+      "margin": 1.9,
+      "piece_durs": [
+        4.63,
+        1.523
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "ara_for_eng:pod-1:SC06-S007",
+      "order": 31,
+      "n": 2,
+      "sentences": [
+        "المدينة دي جميلة جداً.",
+        "بتشتغلي إيه؟"
+      ],
+      "ids": [
+        "0a3ef117-3e03-4da3-830d-6e86b4ebd18e",
+        "9ca9b75b-7005-4403-9525-2bd68281e74b"
+      ],
+      "margin": null,
+      "piece_durs": [
+        2.713,
+        2.032
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "ara_for_eng:pod-1:SC06-S008",
+      "order": 32,
+      "n": 2,
+      "sentences": [
+        "أنا ممرضة، في المستشفى اللي على الناصية.",
+        "وأنت؟"
+      ],
+      "ids": [
+        "af8f6caf-d7f9-47b4-9f5e-1cb6cdb96e3e",
+        "e71651ea-f855-4625-8334-0bfdd6d19fc3"
+      ],
+      "margin": 3.6,
+      "piece_durs": [
+        4.004,
+        1.668
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "ara_for_eng:pod-1:SC06-S012",
+      "order": 36,
+      "n": 2,
+      "sentences": [
+        "يا سلام، ده مثير للاهتمام.",
+        "يلا، تشرفت بمعرفتك."
+      ],
+      "ids": [
+        "5a7a4116-af5b-42e7-a06c-c4aa5b8fd4ba",
+        "aa6f5b24-eba4-4eaa-8c0b-9218b88f35e8"
+      ],
+      "margin": 4.05,
+      "piece_durs": [
+        3.592,
+        3.233
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "ara_for_eng:pod-1:SC06-S011",
+      "order": 35,
+      "n": 4,
+      "sentences": [
+        "أنا بدرّس إنجليزي، بس مش في مدرسة.",
+        "بشتغل مع ناس كبار.",
+        "أنا في إجازة هنا مع مراتي وأولادي.",
+        "إحنا بنقضي وقت حلو جداً."
+      ],
+      "ids": [
+        "daa84dcb-bbe9-4f7c-ba87-9d5a16ffd0bd",
+        "08dec05d-f86f-47b6-8b8f-09208d3426b0",
+        "73a64fe2-e9a2-48fb-88d0-118dbfe0e7c2",
+        "344ec147-092d-44ad-ae75-c381218fcb3d"
+      ],
+      "margin": 2.31,
+      "piece_durs": [
+        4.059,
+        3.069,
+        4.184,
+        2.999
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "ara_for_eng:pod-1:SC06-S010",
+      "order": 34,
+      "n": 5,
+      "sentences": [
+        "أيوه، بالطبع.",
+        "أنا ممرضة.",
+        "بشتغل في المستشفى.",
+        "هي قريبة من هنا.",
+        "وأنت بتشتغل إيه؟"
+      ],
+      "ids": [
+        "b80d14f0-8a48-446b-a247-c91070ee150b",
+        "421f9a22-9c1d-42a4-bafc-28ba02b8ef95",
+        "26d09ff0-6611-41d8-b9db-5a6477e8561a",
+        "1d4b098f-bbb3-445b-89fa-a9570414b7c5",
+        "79c55393-e2d7-4e0c-b3d0-22fdb9c62d1e"
+      ],
+      "margin": 4.72,
+      "piece_durs": [
+        2.384,
+        2.499,
+        2.883,
+        2.875,
+        2.478
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "ara_for_eng:pod-1:SC07-S001",
+      "order": 38,
+      "n": 2,
+      "sentences": [
+        "صَباحَ الخَيْرِ.",
+        "ماذا أُحْضِرُ لَكَ؟"
+      ],
+      "ids": [
+        "2644c8f9-7560-412d-bfe6-b5ae05548dfb",
+        "41e1a411-62d8-4de8-86bb-b67e34553a08"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.959,
+        2.235
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "ara_for_eng:pod-1:SC07-S004",
+      "order": 41,
+      "n": 2,
+      "sentences": [
+        "عايز كبير، لو سمحت.",
+        "بحليب الشوفان لو عندكم."
+      ],
+      "ids": [
+        "0e58ff49-b66c-4ede-b024-2bf8721492e2",
+        "fe2d66fd-b923-45c0-8c71-609906aec936"
+      ],
+      "margin": 1.94,
+      "piece_durs": [
+        3.179,
+        2.748
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "ara_for_eng:pod-1:SC06-S013",
+      "order": 37,
+      "n": 5,
+      "sentences": [
+        "واحد.",
+        "اتنين.",
+        "تلاتة.",
+        "أبيض.",
+        "أسود."
+      ],
+      "ids": [
+        "4425d770-2626-4841-a4ae-f676773a308b",
+        "a6c02a9b-cf56-435b-9521-815c7dc6cd04",
+        "c931c68a-00b2-441b-96ab-abd8a9ca828b",
+        "37dd7ede-25b1-4fb4-bb86-5d0e34606574",
+        "8a7fd7b1-47d8-4d32-ba5a-d527f183a56b"
+      ],
+      "margin": 12.43,
+      "piece_durs": [
+        1.608,
+        2.146,
+        1.838,
+        1.997,
+        1.586
+      ],
+      "worst_seam_db": -70.3,
+      "all_reused": false
+    },
+    {
+      "id": "ara_for_eng:pod-1:SC07-S005",
+      "order": 42,
+      "n": 2,
+      "sentences": [
+        "بالطبع.",
+        "عايز تشرب هنا ولا تاخده معاك؟"
+      ],
+      "ids": [
+        "fea5e092-de69-4872-9164-bb98c4401bca",
+        "acc76fac-1b14-4f35-96b6-eaf924d1da29"
+      ],
+      "margin": 11.64,
+      "piece_durs": [
+        1.612,
+        3.869
+      ],
+      "worst_seam_db": -65.2,
+      "all_reused": false
+    },
+    {
+      "id": "ara_for_eng:pod-1:SC07-S008",
+      "order": 45,
+      "n": 2,
+      "sentences": [
+        "حاضر.",
+        "عايز حاجة تانية؟"
+      ],
+      "ids": [
+        "71b931ee-784d-47bc-804d-3f14df5b5624",
+        "cf2c4b59-f193-48c5-b69e-7df01c050e64"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.58,
+        2.533
+      ],
+      "worst_seam_db": -76.3,
+      "all_reused": false
+    },
+    {
+      "id": "ara_for_eng:pod-1:SC07-S012",
+      "order": 49,
+      "n": 2,
+      "sentences": [
+        "بالطبع.",
+        "اتفضل الماكينة."
+      ],
+      "ids": [
+        "fea5e092-de69-4872-9164-bb98c4401bca",
+        "3a716578-0220-4da2-8268-9c6f9a3301e2"
+      ],
+      "margin": 11.47,
+      "piece_durs": [
+        1.602,
+        2.321
+      ],
+      "worst_seam_db": -67.4,
+      "all_reused": false
+    },
+    {
+      "id": "ara_for_eng:pod-1:SC07-S011",
+      "order": 48,
+      "n": 2,
+      "sentences": [
+        "ممكن أدفع بكارت؟",
+        "عندكم دفع إلكتروني؟"
+      ],
+      "ids": [
+        "c1702ca1-3619-414d-b43b-4af0e6746e82",
+        "893b4c3f-fd3a-4ca2-b61c-390c035eb227"
+      ],
+      "margin": null,
+      "piece_durs": [
+        2.025,
+        2.384
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "ara_for_eng:pod-1:SC07-S013",
+      "order": 50,
+      "n": 2,
+      "sentences": [
+        "صباح الخير.",
+        "اتنين أمريكانو وكوباية شاي، لو سمحت."
+      ],
+      "ids": [
+        "a680946e-9683-4d99-b373-554aa8c18177",
+        "72a2d1c2-d90a-472e-b223-0ad6fa33eba3"
+      ],
+      "margin": 3.28,
+      "piece_durs": [
+        1.921,
+        4.197
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "ara_for_eng:pod-1:SC08-S001",
+      "order": 53,
+      "n": 2,
+      "sentences": [
+        "مَساءَ الخَيْرِ.",
+        "ماذا أُحْضِرُ لَكَ؟"
+      ],
+      "ids": [
+        "8c42f467-86de-4fd2-b8f2-929d5600a565",
+        "ce79585e-42f1-46f6-8434-ff42a4460de6"
+      ],
+      "margin": 13.01,
+      "piece_durs": [
+        1.836,
+        2.117
+      ],
+      "worst_seam_db": -78.3,
+      "all_reused": false
+    },
+    {
+      "id": "ara_for_eng:pod-1:SC07-S014",
+      "order": 51,
+      "n": 2,
+      "sentences": [
+        "عايز تقعد جوه؟",
+        "الترابيزة جنب الشباك فاضية."
+      ],
+      "ids": [
+        "8fff2c97-2baa-46ae-913e-9a2c5892f555",
+        "ceaece91-5fc7-4ac7-a11d-516efec1c6ae"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.87,
+        3.045
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "ara_for_eng:pod-1:SC08-S002",
+      "order": 54,
+      "n": 2,
+      "sentences": [
+        "أُريدُ باينْتًا مِنَ الجَعَةِ، مِنْ فَضْلِكَ.",
+        "أَيَّ أَنْواعِ الجَعَةِ لَدَيْكُمْ عَلى الصُّنْبورِ؟"
+      ],
+      "ids": [
+        "552a4b33-d9c8-4a47-9f29-aea2595ab481",
+        "81f77d0c-bb64-4061-b38c-9876b7175f3c"
+      ],
+      "margin": 4.53,
+      "piece_durs": [
+        3.609,
+        3.692
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "ara_for_eng:pod-1:SC08-S006",
+      "order": 58,
+      "n": 2,
+      "sentences": [
+        "ممكن أشوف قايمة النبيذ؟",
+        "أنا عايز كوباية نبيذ."
+      ],
+      "ids": [
+        "cb778fd7-094e-4f9d-b370-a2c49ecabf4a",
+        "b144c4ff-3c78-4b78-896d-b788d50df81b"
+      ],
+      "margin": null,
+      "piece_durs": [
+        3.005,
+        2.602
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "ara_for_eng:pod-1:SC08-S012",
+      "order": 64,
+      "n": 2,
+      "sentences": [
+        "مش عارف إذا كنت جعان.",
+        "عندكم منيو؟"
+      ],
+      "ids": [
+        "bf027e27-0741-41a1-adc7-8ad3d5cdfccf",
+        "bc0f1582-bbe8-447d-be89-926957d91847"
+      ],
+      "margin": null,
+      "piece_durs": [
+        3.031,
+        2.055
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "ara_for_eng:pod-1:SC07-S015",
+      "order": 52,
+      "n": 5,
+      "sentences": [
+        "خمسة.",
+        "عشرة.",
+        "خمستاشر.",
+        "أحمر.",
+        "أخضر."
+      ],
+      "ids": [
+        "6874a791-1c68-4be7-8e53-cc5a722ed853",
+        "2f388120-cffa-47db-a629-fddb8235507f",
+        "fc92d3fa-8108-4c5d-a286-e8ab5112ca7f",
+        "997c7618-4c6b-4b32-871b-a9e7fee235b9",
+        "9992774c-3dbf-4ca1-999b-5094313f76d8"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.413,
+        2.035,
+        2.295,
+        2.069,
+        1.657
+      ],
+      "worst_seam_db": -74.7,
+      "all_reused": false
+    },
+    {
+      "id": "ara_for_eng:pod-1:SC08-S014",
+      "order": 66,
+      "n": 2,
+      "sentences": [
+        "هَلْ يُمْكِنُنا الحُصولُ عَلى بَعْضِ الخُبْزِ؟",
+        "وَطَبَقٌ مِنَ البَطاطا المَقْلِيَّةِ لِلطّاوِلَةِ."
+      ],
+      "ids": [
+        "fe3674c2-9a36-4172-88ff-4c69b53a71b2",
+        "f990b044-f79c-4f8b-b654-2ba5fb93351d"
+      ],
+      "margin": null,
+      "piece_durs": [
+        3.072,
+        3.662
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "ara_for_eng:pod-1:SC08-S015",
+      "order": 67,
+      "n": 2,
+      "sentences": [
+        "عندكم سندوتشات؟",
+        "عايز سندوتش جبنة، من فضلك."
+      ],
+      "ids": [
+        "935db645-3c86-49ac-a331-dc2b2a47578a",
+        "41449ee5-e5ba-4b32-b31d-55cc625043ff"
+      ],
+      "margin": 3.06,
+      "piece_durs": [
+        2.297,
+        3.284
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "ara_for_eng:pod-1:SC08-S013",
+      "order": 65,
+      "n": 3,
+      "sentences": [
+        "أيوه، بالطبع.",
+        "اتفضل.",
+        "السمك مع البطاطس كويس جداً."
+      ],
+      "ids": [
+        "9016c588-a2fe-4233-a042-9ca0883bb0c7",
+        "84f61b2a-beac-4b31-8d0f-ddee4aafeeed",
+        "066a6593-56ca-4f4a-93a2-1f100730e044"
+      ],
+      "margin": 1.6,
+      "piece_durs": [
+        2.89,
+        2.243,
+        3.124
+      ],
+      "worst_seam_db": -74.7,
+      "all_reused": false
+    },
+    {
+      "id": "ara_for_eng:pod-1:SC09-S001",
+      "order": 69,
+      "n": 2,
+      "sentences": [
+        "مساء الخير.",
+        "عندنا حجز لاتنين، باسم ديفيز."
+      ],
+      "ids": [
+        "501678a9-3122-4704-b751-9fe56c5adf43",
+        "eb1fd8d1-b9d6-4d22-bed6-131cf0e796a6"
+      ],
+      "margin": 4.23,
+      "piece_durs": [
+        1.909,
+        4.014
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "ara_for_eng:pod-1:SC09-S005",
+      "order": 73,
+      "n": 2,
+      "sentences": [
+        "لو سمحت — عندكم حاجة خالية من الجلوتين؟",
+        "ولا للنباتيين؟"
+      ],
+      "ids": [
+        "ec1f7456-4f53-4491-ac83-8808c1e1b47b",
+        "dcdc0a46-4dfd-4f27-bb81-3460e8d58516"
+      ],
+      "margin": 2.22,
+      "piece_durs": [
+        4.474,
+        2.18
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "ara_for_eng:pod-1:SC09-S002",
+      "order": 70,
+      "n": 3,
+      "sentences": [
+        "أهلاً وسهلاً.",
+        "تفضلوا معايا.",
+        "اتفضلوا، دي المنيو."
+      ],
+      "ids": [
+        "d00cf3fa-6d34-4734-822b-37a66528d563",
+        "3dcad02f-ae91-426f-b32f-a5bf70c390dd",
+        "8a8c0055-23ba-4616-9547-c40a48b95bfe"
+      ],
+      "margin": 2.72,
+      "piece_durs": [
+        1.913,
+        2.588,
+        3.004
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "ara_for_eng:pod-1:SC08-S016",
+      "order": 68,
+      "n": 5,
+      "sentences": [
+        "أربعة.",
+        "ستة.",
+        "تمانية.",
+        "أزرق.",
+        "أصفر."
+      ],
+      "ids": [
+        "029e178c-359d-4461-be09-313c97465b2a",
+        "ecba5f2a-ce99-4257-a418-ebc389410ff0",
+        "567ef6ee-9a32-4daa-b008-a9ec187832f8",
+        "3e3b39e0-65c6-4b9e-81d1-f15f63ee49aa",
+        "540788ea-b16a-4898-a516-063e45cab5cd"
+      ],
+      "margin": 11.19,
+      "piece_durs": [
+        1.443,
+        1.989,
+        2.18,
+        1.83,
+        1.627
+      ],
+      "worst_seam_db": -73.4,
+      "all_reused": false
+    },
+    {
+      "id": "ara_for_eng:pod-1:SC09-S006",
+      "order": 74,
+      "n": 2,
+      "sentences": [
+        "أيوه، السلمون والريزوتو الاتنين خاليين من الجلوتين.",
+        "وعندنا كمان بعض السلطات."
+      ],
+      "ids": [
+        "c0692e2c-c9b2-4ff6-b5bc-51467cb03684",
+        "f8f318a5-3b48-426d-8648-9c40a0ce33d1"
+      ],
+      "margin": 2.18,
+      "piece_durs": [
+        4.887,
+        2.78
+      ],
+      "worst_seam_db": -61.1,
+      "all_reused": false
+    },
+    {
+      "id": "ara_for_eng:pod-1:SC09-S008",
+      "order": 76,
+      "n": 2,
+      "sentences": [
+        "الخروف ممتاز.",
+        "اتطبخ على نار هادية، مع روزماري."
+      ],
+      "ids": [
+        "62cdb3ef-77db-4b81-9441-a726d864963c",
+        "62c2075d-40a7-4524-99da-2d8f59edf585"
+      ],
+      "margin": 1.85,
+      "piece_durs": [
+        2.28,
+        4.219
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "ara_for_eng:pod-1:SC09-S009",
+      "order": 77,
+      "n": 2,
+      "sentences": [
+        "أنا هاخد الخروف، لو سمحت.",
+        "مع طبق خضار."
+      ],
+      "ids": [
+        "db288027-a2fe-4bfd-b1d4-76a10a3a58de",
+        "26a3a8a0-6e5c-470a-8408-12f7a52043ba"
+      ],
+      "margin": 4.59,
+      "piece_durs": [
+        3.496,
+        2.432
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "ara_for_eng:pod-1:SC09-S010",
+      "order": 78,
+      "n": 2,
+      "sentences": [
+        "وأنا هاخد الريزوتو.",
+        "مع سلطة خضراء صغيرة في الأول."
+      ],
+      "ids": [
+        "a06901bd-4d1f-48a2-adea-b0d833db407c",
+        "7e819a6c-a7ba-4f82-a3e7-f86e036dcbe4"
+      ],
+      "margin": null,
+      "piece_durs": [
+        2.558,
+        3.615
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "ara_for_eng:pod-1:SC09-S011",
+      "order": 79,
+      "n": 2,
+      "sentences": [
+        "بالطبع.",
+        "وحضرتكم عايزين تشربوا إيه؟"
+      ],
+      "ids": [
+        "fc97846d-81c5-4862-8424-79016b9ebdee",
+        "a47e5a33-d882-47ca-9b49-beef62fc3e11"
+      ],
+      "margin": 9.07,
+      "piece_durs": [
+        1.619,
+        3.091
+      ],
+      "worst_seam_db": -66.2,
+      "all_reused": false
+    },
+    {
+      "id": "ara_for_eng:pod-1:SC09-S014",
+      "order": 82,
+      "n": 2,
+      "sentences": [
+        "اختيار ممتاز.",
+        "هاجيبهالكم دلوقتي."
+      ],
+      "ids": [
+        "83d04ba4-98d2-4a3e-b282-37d5b209c92a",
+        "cc118d35-ca20-4da6-a3aa-c7b68b3d573f"
+      ],
+      "margin": null,
+      "piece_durs": [
+        2.299,
+        2.375
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "ara_for_eng:pod-1:SC09-S015",
+      "order": 83,
+      "n": 2,
+      "sentences": [
+        "كل حاجة تمام؟",
+        "عندكم مكان للحلو؟"
+      ],
+      "ids": [
+        "d7cebb4a-39ac-44b9-98b9-1f613265cecf",
+        "40032cec-6147-419f-a3f4-f4f775f152b1"
+      ],
+      "margin": null,
+      "piece_durs": [
+        2.015,
+        2.359
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "ara_for_eng:pod-1:SC09-S016",
+      "order": 84,
+      "n": 2,
+      "sentences": [
+        "بس قهوتين، لو سمحت.",
+        "أنا عايز قهوة بدون كافيين."
+      ],
+      "ids": [
+        "94a19eb4-a519-44bc-a6ab-65a01411ea56",
+        "b38bb14d-193e-414b-8571-a0d9944e1172"
+      ],
+      "margin": 4.49,
+      "piece_durs": [
+        3.118,
+        3.456
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "ara_for_eng:pod-1:SC09-S017",
+      "order": 85,
+      "n": 2,
+      "sentences": [
+        "والحساب، لما يكون جاهز.",
+        "ممكن نقسّمه؟"
+      ],
+      "ids": [
+        "a6e2dc82-a604-44a2-b9a5-25367191cf95",
+        "64239150-12ce-496e-a934-6cf8e0c70b8c"
+      ],
+      "margin": 4.16,
+      "piece_durs": [
+        3.418,
+        2.284
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "ara_for_eng:pod-1:SC10-S001",
+      "order": 87,
+      "n": 2,
+      "sentences": [
+        "لو سمحت.",
+        "عندك مسكنات للألم؟"
+      ],
+      "ids": [
+        "865bc8bb-8ec1-4699-84ee-e7cb3423e5db",
+        "7f5141fe-bb91-4814-bef0-5ee133d6cbd1"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.683,
+        2.992
+      ],
+      "worst_seam_db": -65.7,
+      "all_reused": false
+    },
+    {
+      "id": "ara_for_eng:pod-1:SC10-S003",
+      "order": 89,
+      "n": 2,
+      "sentences": [
+        "شكراً.",
+        "وعندك مسكنات للألم للأطفال؟"
+      ],
+      "ids": [
+        "495fa657-86a6-4bcd-8d35-54939cbbd5d1",
+        "155beb1a-d831-4ec5-bfa6-4a3c661c11df"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.555,
+        3.716
+      ],
+      "worst_seam_db": -72.2,
+      "all_reused": false
+    },
+    {
+      "id": "ara_for_eng:pod-1:SC10-S007",
+      "order": 93,
+      "n": 2,
+      "sentences": [
+        "شكراً، أنت مساعدتش كتير.",
+        "أنا ممنون جداً."
+      ],
+      "ids": [
+        "2540ed37-d9a7-4768-bfc2-3a2694ce75cc",
+        "4e59d4d7-1add-4936-a0a9-9fd9bee847bd"
+      ],
+      "margin": 3.8,
+      "piece_durs": [
+        3.61,
+        2.393
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "ara_for_eng:pod-1:SC09-S018",
+      "order": 86,
+      "n": 5,
+      "sentences": [
+        "سبعة.",
+        "تسعة.",
+        "أحد عشر.",
+        "برتقالي.",
+        "بنفسجي."
+      ],
+      "ids": [
+        "5cd834cd-b87f-4828-a224-0ba28b9bcb0c",
+        "f60b7f2b-a93b-41c5-b151-d4c5881e176c",
+        "102204a4-48d2-43ab-95bf-b2ebd1e50edf",
+        "4cc78bd8-b65c-4fd8-8a94-2564ab564472",
+        "4248fc9b-7614-4573-9059-38708de04314"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.431,
+        1.959,
+        2.215,
+        2.425,
+        1.871
+      ],
+      "worst_seam_db": -74.7,
+      "all_reused": false
+    },
+    {
+      "id": "ara_for_eng:pod-1:SC10-S008",
+      "order": 94,
+      "n": 3,
+      "sentences": [
+        "العفو.",
+        "حضرتك هنا في إجازة؟",
+        "أنت بتتكلم عربي كويس قوي."
+      ],
+      "ids": [
+        "584ca019-31e0-4ed4-b2f0-9b7feed0a1e4",
+        "600dd54c-3ccb-4982-b19f-a5254443ef91",
+        "937eccc4-53a2-4764-b858-4145cb49114d"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.527,
+        2.818,
+        2.971
+      ],
+      "worst_seam_db": -74.7,
+      "all_reused": false
+    },
+    {
+      "id": "ara_for_eng:pod-1:SC10-S009",
+      "order": 95,
+      "n": 3,
+      "sentences": [
+        "ده كلام حلو منك!",
+        "أيوه، أنا في إجازة، ومحتاج أتدرب أكتر عشان أتكلم عربي أحسن.",
+        "شكراً كتير، ومع السلامة."
+      ],
+      "ids": [
+        "0b9c89e4-74e2-4e49-8c62-0d2c6dbca64d",
+        "342846b2-0cbe-4b53-bbae-4b8a5879ba9d",
+        "a7835a00-c21d-4e85-9ce9-43860d622cae"
+      ],
+      "margin": 3.47,
+      "piece_durs": [
+        2.614,
+        7.766,
+        3.375
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "ara_for_eng:pod-1:SC11-S001",
+      "order": 97,
+      "n": 2,
+      "sentences": [
+        "مساء الخير.",
+        "عندي حجز باسم جونز."
+      ],
+      "ids": [
+        "4ec22122-a582-422d-aeb1-9eabf5070f71",
+        "9024d93a-ea07-419a-bf5f-09b80c7769ce"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.861,
+        2.769
+      ],
+      "worst_seam_db": -78.3,
+      "all_reused": false
+    },
+    {
+      "id": "ara_for_eng:pod-1:SC11-S003",
+      "order": 99,
+      "n": 2,
+      "sentences": [
+        "بالطبع.",
+        "اتفضل، ده جواز سفري."
+      ],
+      "ids": [
+        "fc97846d-81c5-4862-8424-79016b9ebdee",
+        "af200d3d-6d8d-4634-a0f3-7ccb653941cf"
+      ],
+      "margin": 1.82,
+      "piece_durs": [
+        1.6,
+        3.711
+      ],
+      "worst_seam_db": -68.7,
+      "all_reused": false
+    },
+    {
+      "id": "ara_for_eng:pod-1:SC10-S010",
+      "order": 96,
+      "n": 5,
+      "sentences": [
+        "اتناشر.",
+        "تلاتاشر.",
+        "أربعتاشر.",
+        "بمبي.",
+        "رمادي."
+      ],
+      "ids": [
+        "c4bca2d0-1854-4f4c-8ca7-75f3cd66d40d",
+        "16503907-f9e0-4f35-aa45-8c5304c64d75",
+        "a035fc09-86c7-46f2-80eb-b2dc3d71390a",
+        "35c6817b-dd0a-4b62-a609-a74e08a1259f",
+        "0c7cbe26-4a61-44fe-b1fa-4dce19004643"
+      ],
+      "margin": 13.86,
+      "piece_durs": [
+        1.636,
+        2.358,
+        2.46,
+        2.143,
+        1.749
+      ],
+      "worst_seam_db": -68,
+      "all_reused": false
+    },
+    {
+      "id": "ara_for_eng:pod-1:SC11-S004",
+      "order": 100,
+      "n": 2,
+      "sentences": [
+        "تمام.",
+        "الأوضة في الدور التالت، أوضة سبعمية وتسعة."
+      ],
+      "ids": [
+        "20c120db-b592-42ed-aadd-f9faa12d64b0",
+        "e0ab612b-ca9a-4423-8b91-e0e77c72770b"
+      ],
+      "margin": 4.03,
+      "piece_durs": [
+        1.469,
+        4.904
+      ],
+      "worst_seam_db": -71.2,
+      "all_reused": false
+    },
+    {
+      "id": "ara_for_eng:pod-1:SC11-S002",
+      "order": 98,
+      "n": 3,
+      "sentences": [
+        "أهلاً وسهلاً.",
+        "أيوه، حضرتك عندك أوضة دبل لمدة تلات ليالي.",
+        "ممكن أشوف بطاقة هوية، من فضلك؟"
+      ],
+      "ids": [
+        "dcbdd1b2-3797-4285-8ff2-d3df52481b28",
+        "367febd2-b72e-49cd-9e74-14d7fce70336",
+        "d8a9e1e9-4170-43d9-96c1-1d101527033f"
+      ],
+      "margin": 3.97,
+      "piece_durs": [
+        1.986,
+        5.773,
+        4.142
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "ara_for_eng:pod-1:SC11-S009",
+      "order": 105,
+      "n": 2,
+      "sentences": [
+        "ممتاز.",
+        "ممكن نعمل تشيك أوت متأخر؟"
+      ],
+      "ids": [
+        "65213214-5828-4ad1-8c68-147fe692f324",
+        "2096803a-0a24-404a-a586-dd7f3d1d7126"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.791,
+        3.224
+      ],
+      "worst_seam_db": -74.7,
+      "all_reused": false
+    },
+    {
+      "id": "ara_for_eng:pod-1:SC11-S008",
+      "order": 104,
+      "n": 2,
+      "sentences": [
+        "من سبعة ونص لحد الساعة عشرة.",
+        "عندنا فاكهة وسيريال أو إفطار ساخن."
+      ],
+      "ids": [
+        "7f97c750-a5a5-4402-8c73-807f7011ccc9",
+        "d1afdea7-869e-4357-8db0-406dafd6e5dc"
+      ],
+      "margin": null,
+      "piece_durs": [
+        3.295,
+        4.417
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "ara_for_eng:pod-1:SC11-S012",
+      "order": 108,
+      "n": 2,
+      "sentences": [
+        "موجود على كارت الترحيب في الأوضة.",
+        "إقامة سعيدة."
+      ],
+      "ids": [
+        "fe7eee45-67e6-4ae8-aa4a-3b2b9a234079",
+        "1f2636ba-cead-43c8-8dd8-93750d47a65b"
+      ],
+      "margin": null,
+      "piece_durs": [
+        3.324,
+        2.328
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "ara_for_eng:pod-1:SC12-S002",
+      "order": 111,
+      "n": 2,
+      "sentences": [
+        "بالطبع.",
+        "عندك إيه من أعراض؟"
+      ],
+      "ids": [
+        "fc97846d-81c5-4862-8424-79016b9ebdee",
+        "73661f6f-de5c-4a79-9cd4-465ec96d383e"
+      ],
+      "margin": 9.1,
+      "piece_durs": [
+        1.578,
+        2.476
+      ],
+      "worst_seam_db": -71.2,
+      "all_reused": false
+    },
+    {
+      "id": "ara_for_eng:pod-1:SC12-S001",
+      "order": 110,
+      "n": 2,
+      "sentences": [
+        "صباح الخير.",
+        "أنا مش كويس أوي — ممكن تنصحني بحاجة؟"
+      ],
+      "ids": [
+        "cca329cb-f159-4556-bbf4-cd89c9f87c43",
+        "548a9403-5756-4109-93ab-e1d98fb2926e"
+      ],
+      "margin": 4.59,
+      "piece_durs": [
+        1.968,
+        4.531
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "ara_for_eng:pod-1:SC12-S009",
+      "order": 118,
+      "n": 2,
+      "sentences": [
+        "شكراً.",
+        "ممكن كمان آخد علبة لاصق جروح؟"
+      ],
+      "ids": [
+        "495fa657-86a6-4bcd-8d35-54939cbbd5d1",
+        "b70c05bb-9980-4dfa-bde9-f4741c8dc51f"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.565,
+        3.812
+      ],
+      "worst_seam_db": -72.2,
+      "all_reused": false
+    },
+    {
+      "id": "ara_for_eng:pod-1:SC11-S013",
+      "order": 109,
+      "n": 5,
+      "sentences": [
+        "ستاشر.",
+        "سبعتاشر.",
+        "تمانتاشر.",
+        "الاتنين.",
+        "التلاتا."
+      ],
+      "ids": [
+        "9d835b13-9304-4cc1-8dff-c09a7c3b3a1e",
+        "2a631600-9a3a-428f-a812-a6d0c459c52c",
+        "b415a92b-a2ce-47e1-aff9-39e87d5f0a3f",
+        "52665dd9-a992-4ffa-a406-92708050965e",
+        "ac101faa-a132-4657-90ff-755b56b5146a"
+      ],
+      "margin": 12.54,
+      "piece_durs": [
+        1.718,
+        2.437,
+        2.376,
+        2.35,
+        1.811
+      ],
+      "worst_seam_db": -74.7,
+      "all_reused": false
+    },
+    {
+      "id": "ara_for_eng:pod-1:SC13-S008",
+      "order": 127,
+      "n": 2,
+      "sentences": [
+        "تمام.",
+        "وفيه ماكينة صراف آلي قريبة؟"
+      ],
+      "ids": [
+        "20c120db-b592-42ed-aadd-f9faa12d64b0",
+        "abfd9593-8e64-428a-81b1-b47a888d3f47"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.486,
+        3.815
+      ],
+      "worst_seam_db": -74.7,
+      "all_reused": false
+    },
+    {
+      "id": "ara_for_eng:pod-1:SC13-S002",
+      "order": 121,
+      "n": 2,
+      "sentences": [
+        "أيوه، هي على بعد عشر دقايق مشي تقريباً.",
+        "امشي على طول في الشارع ده."
+      ],
+      "ids": [
+        "a7d6736d-84f3-47ca-98f4-13ce7d53a5b9",
+        "6c79f0ff-b948-46dc-8909-c3a19972fc14"
+      ],
+      "margin": 1.65,
+      "piece_durs": [
+        4.715,
+        2.771
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "ara_for_eng:pod-1:SC13-S010",
+      "order": 129,
+      "n": 2,
+      "sentences": [
+        "شكراً كتير.",
+        "إنت كنت مفيد جداً."
+      ],
+      "ids": [
+        "7ebf1b93-b2fa-4f8a-8d7f-18f9b196dbb1",
+        "c9dbb053-1272-45c4-a424-cc56315af62b"
+      ],
+      "margin": null,
+      "piece_durs": [
+        2.021,
+        2.809
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "ara_for_eng:pod-1:SC12-S010",
+      "order": 119,
+      "n": 5,
+      "sentences": [
+        "19.",
+        "20.",
+        "21.",
+        "الأَرْبِعاءُ.",
+        "الخَميسُ."
+      ],
+      "ids": [
+        "4389f3ba-3e8f-4a9b-bcb1-f29ef2420b43",
+        "d6ab04ac-fd75-4dbd-b65c-a142b274713f",
+        "cc9f106d-ff1d-402d-a618-25d0bfd40890",
+        "27888fd6-36d9-456f-bee2-d0aa2952260c",
+        "df507b86-eb71-455a-9294-5e2cfeb7d12b"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.324,
+        1.464,
+        1.908,
+        1.817,
+        1.91
+      ],
+      "worst_seam_db": -76.3,
+      "all_reused": false
+    },
+    {
+      "id": "ara_for_eng:pod-1:SC14-S001",
+      "order": 131,
+      "n": 2,
+      "sentences": [
+        "مَرْحَبًا.",
+        "هَلْ يُمْكِنُكَ أَنْ تَأْخُذَني إِلى مَحَطَّةِ القِطارِ، مِنْ فَضْلِكَ؟"
+      ],
+      "ids": [
+        "9a308404-5d94-4483-a66b-bbf80a76bce2",
+        "2c0d9ff4-79b7-4b00-92df-94a6f06e3fb5"
+      ],
+      "margin": 3.1,
+      "piece_durs": [
+        1.679,
+        4.449
+      ],
+      "worst_seam_db": -64.3,
+      "all_reused": false
+    },
+    {
+      "id": "ara_for_eng:pod-1:SC14-S002",
+      "order": 132,
+      "n": 2,
+      "sentences": [
+        "أيوه، بالطبع.",
+        "ممكن ياخد شوية وقت، في زحمة كتير دلوقتي."
+      ],
+      "ids": [
+        "b80d14f0-8a48-446b-a247-c91070ee150b",
+        "61f48caa-e44c-4ffb-907f-1d10373f41e7"
+      ],
+      "margin": 4.48,
+      "piece_durs": [
+        2.384,
+        4.962
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "ara_for_eng:pod-1:SC13-S011",
+      "order": 130,
+      "n": 5,
+      "sentences": [
+        "تلاتين.",
+        "أربعين.",
+        "خمسين.",
+        "الجمعة.",
+        "السبت."
+      ],
+      "ids": [
+        "315b6628-4239-44e5-9414-3fd4a4461cee",
+        "c38c7d0f-1d45-4a7f-980d-22b286fc02e7",
+        "ff65da33-6e68-476c-8d49-5a18348caf08",
+        "28f9111f-2077-46eb-9f84-4dd1f9611bfc",
+        "87d11afc-8286-47da-8844-909c4ced1cd5"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.564,
+        2.287,
+        2.279,
+        2.125,
+        1.371
+      ],
+      "worst_seam_db": -73.4,
+      "all_reused": false
+    },
+    {
+      "id": "ara_for_eng:pod-1:SC14-S009",
+      "order": 139,
+      "n": 2,
+      "sentences": [
+        "نَعَمْ، بِالطَّبْعِ.",
+        "الجِهازُ هُنا تَمامًا."
+      ],
+      "ids": [
+        "228c56cf-94e2-44e3-b4f5-69e91f9608c2",
+        "0703d29f-10ae-4139-a60d-793624144666"
+      ],
+      "margin": 5.27,
+      "piece_durs": [
+        2.384,
+        2.617
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "ara_for_eng:pod-1:SC14-S007",
+      "order": 137,
+      "n": 2,
+      "sentences": [
+        "هاهُنا وَصَلْنا.",
+        "هذا يُساوي اثْنَيْ عَشَرَ جُنَيْهًا وَخَمْسينَ بِنْسًا."
+      ],
+      "ids": [
+        "6b6caf5b-a2b5-4a28-a0e8-88f54e4e8be5",
+        "d729fb96-d5ec-4cae-b9a4-7a6a6fb89da1"
+      ],
+      "margin": null,
+      "piece_durs": [
+        2.121,
+        4.528
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "ara_for_eng:pod-1:SC14-S010",
+      "order": 140,
+      "n": 5,
+      "sentences": [
+        "100.",
+        "200.",
+        "1000.",
+        "الأَحَدُ.",
+        "السّاعَةُ الثّانِيَةَ عَشْرَةَ."
+      ],
+      "ids": [
+        "c99ab1c5-2fb3-4d96-9ef3-8291a50d4d1e",
+        "fa43a7f0-4d65-4360-a314-35095b5643db",
+        "774d445a-af40-40f1-8984-96e8f816e77c",
+        "4cc43e7b-f3f0-45f5-a6c0-3f5549fdb4be",
+        "78a5f711-915b-49dc-bd8c-212bfac31bc5"
+      ],
+      "margin": null,
+      "piece_durs": [
+        0.829,
+        1.427,
+        1.087,
+        1.774,
+        2.508
+      ],
+      "worst_seam_db": -72.2,
+      "all_reused": false
+    },
+    {
+      "id": "ara_for_eng:pod-1:SC17-S011",
+      "order": 173,
+      "n": 4,
+      "sentences": [
+        "السّاعَةُ الثّالِثَةُ.",
+        "السّاعَةُ التّاسِعَةُ.",
+        "يَناير.",
+        "فِبْراير."
+      ],
+      "ids": [
+        "0b8edde8-f530-4147-9189-ac1cd3def61a",
+        "35b0fd8b-d3d0-4ac3-a783-06a14d3c3d03",
+        "b22d97e8-1955-4be6-9655-51573d57b9f1",
+        "60763f16-6960-4cb8-a084-146839532d3f"
+      ],
+      "margin": null,
+      "piece_durs": [
+        2.082,
+        2.573,
+        2.253,
+        1.825
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "ara_for_eng:pod-1:SC15-S011",
+      "order": 151,
+      "n": 5,
+      "sentences": [
+        "100,000.",
+        "60.",
+        "70.",
+        "السّاعَةُ الواحِدَةُ.",
+        "السّاعَةُ الحادِيَةَ عَشْرَةَ."
+      ],
+      "ids": [
+        "ea19bc64-30ac-4af4-9455-7d8a9541fbfe",
+        "6de39ece-385f-4395-b084-c81fcc177a3d",
+        "a93f5f8d-8528-4f9e-bc7c-4d3693d5d261",
+        "c068ffb3-e71a-43c7-aa55-96ca93a2b113",
+        "401e2ec2-26cd-4cf0-8064-7d6c6702d008"
+      ],
+      "margin": 4.51,
+      "piece_durs": [
+        1.381,
+        1.441,
+        1.465,
+        2.286,
+        2.568
+      ],
+      "worst_seam_db": -73.4,
+      "all_reused": false
+    },
+    {
+      "id": "ara_for_eng:pod-1:SC16-S011",
+      "order": 162,
+      "n": 5,
+      "sentences": [
+        "مِلْيونٌ.",
+        "80.",
+        "90.",
+        "السّاعَةُ الثّانِيَةُ.",
+        "السّاعَةُ العاشِرَةُ."
+      ],
+      "ids": [
+        "5eb58bbc-922e-4c6e-9fb9-597a683e32ce",
+        "e73242c4-b01c-4037-873b-886829bca97e",
+        "1fe329c4-7f26-4155-921d-d465bce767d1",
+        "755e1de6-0e9b-48fa-96c9-bb2d06f8e655",
+        "e4d4b26f-e990-4c7f-8379-f39ba04c5a20"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.626,
+        1.942,
+        1.452,
+        2.254,
+        2.15
+      ],
+      "worst_seam_db": -66.8,
+      "all_reused": false
+    },
+    {
+      "id": "ara_for_eng:pod-1:SC18-S007",
+      "order": 180,
+      "n": 2,
+      "sentences": [
+        "هَلْ هذا صَحيحٌ؟",
+        "هَلْ أَنا مُحِقَّةٌ؟"
+      ],
+      "ids": [
+        "495e0328-0d1a-4a82-8b28-7cbbe9f1bb7e",
+        "d98472eb-be5a-464e-b89e-9771f4372296"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.753,
+        1.914
+      ],
+      "worst_seam_db": -74.7,
+      "all_reused": false
+    },
+    {
+      "id": "ara_for_eng:pod-1:SC18-S011",
+      "order": 184,
+      "n": 4,
+      "sentences": [
+        "السّاعَةُ الرّابِعَةُ.",
+        "السّاعَةُ الثّامِنَةُ.",
+        "مارِس.",
+        "أَبْريل."
+      ],
+      "ids": [
+        "5fa3a3b6-5ca0-4027-b29b-e0c2da590cee",
+        "b4999b82-8ca7-4384-b2bb-148e3884016e",
+        "ca35449a-07bd-4317-bf63-13102c6378ee",
+        "da9648e9-d283-420b-b09b-4b5874b51df1"
+      ],
+      "margin": null,
+      "piece_durs": [
+        2.092,
+        2.602,
+        2.232,
+        1.617
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "ara_for_eng:pod-1:SC19-S011",
+      "order": 195,
+      "n": 4,
+      "sentences": [
+        "السّاعَةُ الخامِسَةُ.",
+        "السّاعَةُ السّابِعَةُ.",
+        "مايو.",
+        "يونْيو."
+      ],
+      "ids": [
+        "cefb2ba1-aed0-4547-81a0-2b659d82d961",
+        "119b2f92-0887-4b63-9273-49a7c2c40fb2",
+        "8b86bc67-595b-48c3-a1c5-1c226eb6f8dd",
+        "43db0546-fe1e-43d6-bbfb-8792fcab9f60"
+      ],
+      "margin": null,
+      "piece_durs": [
+        2.107,
+        2.586,
+        2.036,
+        1.569
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "ara_for_eng:pod-1:SC20-S011",
+      "order": 206,
+      "n": 4,
+      "sentences": [
+        "السّاعَةُ السّادِسَةُ.",
+        "يولْيو.",
+        "أَغُسْطُس.",
+        "سِبْتَمْبَر."
+      ],
+      "ids": [
+        "270cddba-7465-40e0-a914-68e4e3f3ca42",
+        "cbd9f879-a251-487a-a53f-e16f7ea9bf35",
+        "5ee560a7-3454-433d-a580-118d11b0a8c4",
+        "3d8a6a22-900e-4196-aacf-a600498f9a56"
+      ],
+      "margin": 10.8,
+      "piece_durs": [
+        2.084,
+        2.059,
+        2.305,
+        1.779
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "ara_for_eng:pod-1:SC21-S014",
+      "order": 220,
+      "n": 3,
+      "sentences": [
+        "أُكْتوبَر.",
+        "نوفَمْبَر.",
+        "ديسَمْبَر."
+      ],
+      "ids": [
+        "7a2cccd3-39b4-44ab-8c92-6ac9dfd7c66a",
+        "fea6fbd3-705a-4dc3-a826-1ef743355064",
+        "608e7c3f-96d3-4229-8b82-7939c5bcb637"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.555,
+        2.263,
+        1.849
+      ],
+      "worst_seam_db": -76.3,
+      "all_reused": false
+    },
+    {
+      "id": "ara_for_eng:pod-1:SC22-S001",
+      "order": 221,
+      "n": 2,
+      "sentences": [
+        "هَلْ تُمانِعُ إِذا حاوَلْتُ أَنْ أُمارِسَ التَّحَدُّثَ بِالعَرَبِيَّةِ مَعَكَ؟",
+        "لَمْ أَتَعَلَّمْ مُنْذُ وَقْتٍ طَويلٍ، وَلا أَزالُ أَشْعُرُ بِبَعْضِ التَّوَتُّرِ عِنْدَ التَّحَدُّثِ مَعَ أَشْخاصٍ آخَرينَ."
+      ],
+      "ids": [
+        "93943b40-f674-4783-9761-e33b394de681",
+        "4096a4f7-f893-4fcd-a545-e4b822e574ce"
+      ],
+      "margin": 3.33,
+      "piece_durs": [
+        4.699,
+        7.678
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "ara_for_eng:pod-1:SC22-S002",
+      "order": 222,
+      "n": 3,
+      "sentences": [
+        "طبعاً، مفيش مشكلة.",
+        "إنت شايف إنك بتتكلمه كويس أوي.",
+        "أنا بفهمك بسهولة."
+      ],
+      "ids": [
+        "7dfa6a4f-d5c7-4d64-bca3-ec6e1d36f1b8",
+        "40077341-e74e-4139-9090-a7b8f69de7e4",
+        "18f728a5-fca7-4c79-88b3-4e9c67e149b0"
+      ],
+      "margin": 1.94,
+      "piece_durs": [
+        3.138,
+        3.896,
+        2.487
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "ara_for_eng:pod-1:SC22-S003",
+      "order": 223,
+      "n": 3,
+      "sentences": [
+        "شكراً، ده كويس إني عرفت.",
+        "أنا محتاج أتعلم كلمات أكتر، ومحتاج أتمرن على الاستماع.",
+        "مش بفهم الناس كويس لما مش بيتكلموا ببطء."
+      ],
+      "ids": [
+        "5efcc37d-8731-4daf-9dfc-053455948c35",
+        "ec929517-0811-4688-b894-9a9aa3942ef9",
+        "24842969-f062-40c0-9907-175d8c8e8001"
+      ],
+      "margin": 3.9,
+      "piece_durs": [
+        3.636,
+        6.631,
+        4.696
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "ara_for_eng:pod-1:SC22-S005",
+      "order": 225,
+      "n": 4,
+      "sentences": [
+        "نَعَمْ، شُكْرًا لَكَ.",
+        "مِنَ الأَسْهَلِ التَّحَدُّثُ مَعَ شَخْصٍ واحِدٍ فَقَطْ.",
+        "لكِنَّهُ مِنَ الصَّعْبِ قَليلًا التَّفْكيرُ في شَيْءٍ لِأَقولَهُ.",
+        "لَسْتُ مُتَأَكِّدَةً مِمّا يَجِبُ أَنْ أَقولَهُ، لكِنّي أَشْعُرُ أَنَّني أَسْتَطيعُ التَّحَدُّثَ بِما يَكْفي لِبَدْءِ مُحادَثاتٍ."
+      ],
+      "ids": [
+        "db615c73-f77d-4be9-8475-cf13801ca92c",
+        "f2dd76a3-d602-4e63-b751-a02712372682",
+        "94cc1737-1d4e-463e-9843-f71ce8a380c3",
+        "2e453e30-b3fc-4472-a471-f0248ac02dd9"
+      ],
+      "margin": 3.26,
+      "piece_durs": [
+        2.518,
+        4.398,
+        5.405,
+        8.675
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "ara_for_eng:pod-1:SC22-S006",
+      "order": 226,
+      "n": 3,
+      "sentences": [
+        "أَعْتَقِدُ أَنَّكَ تُبْلي بَلاءً حَسَنًا.",
+        "أَنا مُعْجَبٌ.",
+        "أَعْتَقِدُ أَنَّكَ مُسْتَعِدٌّ لِتَبْدَأَ التَّحَدُّثَ بِالعَرَبِيَّةِ مَعَ أَيِّ شَخْصٍ يَتَحَدَّثُ العَرَبِيَّةَ."
+      ],
+      "ids": [
+        "ceedbaa4-27d8-40e4-8861-86b74ddc90c0",
+        "f55c7ff9-f0b2-45c0-af1d-ba2e80c26342",
+        "1a213ac7-3ae3-468e-a5cb-2ccdb40a5f98"
+      ],
+      "margin": null,
+      "piece_durs": [
+        2.953,
+        2.319,
+        5.822
+      ],
+      "worst_seam_db": -76.3,
+      "all_reused": false
+    },
+    {
+      "id": "ara_for_eng:pod-1:SC22-S007",
+      "order": 227,
+      "n": 2,
+      "sentences": [
+        "بس بيبقى مزعلني شوية لما مش بقدر أفكر بسرعة كفاية علشان أعبر عن نفسي صح.",
+        "بس عارف إني محتاج أفضل أتمرن لو عايز أتكلم بثقة أكتر."
+      ],
+      "ids": [
+        "c2b544fd-226e-4531-883c-0ab75ff82ca0",
+        "28214cde-5c7f-48bf-9b36-f0166febf0d6"
+      ],
+      "margin": null,
+      "piece_durs": [
+        7.743,
+        6.153
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "ara_for_eng:pod-1:SC22-S008",
+      "order": 228,
+      "n": 3,
+      "sentences": [
+        "المفروض تبقى واثق من نفسك دلوقتي.",
+        "أشوف إنك بتعمل أحسن بكتير مما بتحس بيه.",
+        "أنا مرتاح وأنا بتكلم معاك، ومش بتكلم ببطء كبير."
+      ],
+      "ids": [
+        "5cc0fed6-c0f1-4702-a36a-f11ebd80e7a1",
+        "3b517d58-ee56-469f-b8bd-475ccf717a0f",
+        "59833699-5b7b-495b-ac07-b85a5fde2a08"
+      ],
+      "margin": 1.85,
+      "piece_durs": [
+        3.307,
+        4.189,
+        5.492
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "ara_for_eng:pod-1:SC22-S011",
+      "order": 231,
+      "n": 3,
+      "sentences": [
+        "فعلاً.",
+        "أنا سعيد جداً إني قادر أعمل محادثة بالقدر ده.",
+        "وبتمنى إننا نقدر نعمل محادثات أكتر في المستقبل وأنا بكمل في التحسن."
+      ],
+      "ids": [
+        "b5f9c04f-0c18-4129-98ce-a901353ef78b",
+        "923cde2b-eccb-403e-bc95-43fc5eba0b9d",
+        "09b6714b-c882-4890-9041-9dbfb3436085"
+      ],
+      "margin": 5.91,
+      "piece_durs": [
+        1.522,
+        5.624,
+        7.371
+      ],
+      "worst_seam_db": -73.4,
+      "all_reused": false
+    },
+    {
+      "id": "ara_for_eng:pod-1:SC22-S010",
+      "order": 230,
+      "n": 3,
+      "sentences": [
+        "أشوف ده طبيعي.",
+        "تعلم لغة جديدة صعب.",
+        "بس بيبقى ممتع جداً لما تبدأ تعمل محادثات، مش كده؟"
+      ],
+      "ids": [
+        "5a91c9e0-a940-48a8-a1c4-c2a43043c14f",
+        "9cb4aff7-9ddd-415d-8bfe-4b89e5f50c20",
+        "b130e1c2-4b9f-42f2-a013-8cf067f7f6b1"
+      ],
+      "margin": 3.4,
+      "piece_durs": [
+        2.159,
+        3.337,
+        5.153
+      ],
+      "worst_seam_db": -74.7,
+      "all_reused": false
+    },
+    {
+      "id": "ara_for_eng:pod-1:SC22-S009",
+      "order": 229,
+      "n": 4,
+      "sentences": [
+        "ده بالظبط النوع ده من التمرين اللي أنا محتاجه.",
+        "حاسس إني قادر أحس بيه بيغير دماغي وأنا بتكلم!",
+        "أنا شاكر جداً على مساعدتك.",
+        "بس مش متوقع قد ما بتعب لما بتكلم بلغة مش بتكلمهاش كويس."
+      ],
+      "ids": [
+        "40ae937d-0c43-4405-ab0c-973b5dc02224",
+        "135c2a09-90a4-49b3-bfa3-7e47592a62dc",
+        "501cd718-a494-4fb1-ad78-274f52476965",
+        "ce5a2276-1db3-4e0f-a9e9-e7d452bc28bc"
+      ],
+      "margin": null,
+      "piece_durs": [
+        4.462,
+        5.973,
+        3.818,
+        6.618
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    }
+  ]
+}
