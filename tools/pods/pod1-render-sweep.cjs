@@ -63,13 +63,23 @@ const GROUP2 = ['bul_for_eng', 'cat_for_eng', 'dan_for_eng', 'ell_for_eng', 'est
  * Standing exclusions, not this run's to override.
  *   cym_n/cym_s — human-voiced Welsh; Aran and Catrin are the renderers there.
  *   fin         — genuinely uncastable: one ungendered human voice, no m/f pair.
- *   isl         — holds on its own documented blocker, 10 of 231 target clips
- *                 failing the audio veracity gate (isl-pod1-hold-decision).
  * cym_n, cym_s and fin have no staged pod at all, so they are named here to be
  * explicit rather than because the list would otherwise reach them.
+ *
+ * isl WAS excluded here on "documented veracity hold" (isl-pod1-hold-decision,
+ * 2026-08-22: 10 of 231 target clips quarantined on CER). THE HOLD IS LIFTED,
+ * on Tom's A-230 ruling of 2026-08-24 putting the four free-tier courses into
+ * the pod-1 batch. Two things changed under that hold and both are measured:
+ * the STT-advisory rule landed here (a low transcript score with the right
+ * voice and speech present no longer vetoes a course), and re-decoding the 10
+ * archived clips showed 7 of them carry the correct cast voice with speech
+ * present — link-and-flag cases, not re-render cases. Only 3 genuinely need
+ * rendering: SC03-S007 and SC14-S006 are off-cast (wrong speaker's voice) and
+ * SC17-S008 has no course_audio row at all. Evidence:
+ * docs/pods/isl-pod1-a230-2026-08-24.md.
  */
 const EXCLUDED = { cym_n_for_eng: 'human-voiced Welsh', cym_s_for_eng: 'human-voiced Welsh',
-  fin_for_eng: 'uncastable — no male/female pair', isl_for_eng: 'documented veracity hold' }
+  fin_for_eng: 'uncastable — no male/female pair' }
 
 fs.mkdirSync(OUT_DIR, { recursive: true })
 const PROGRESS = path.join(OUT_DIR, 'progress.jsonl')
