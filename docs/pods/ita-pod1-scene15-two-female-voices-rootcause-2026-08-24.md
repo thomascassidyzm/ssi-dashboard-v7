@@ -134,10 +134,9 @@ re-pointed at voice-correct split clips that already exist in `course_audio`; th
 follow-up work and needs no render. The remaining 48 would need a re-split of the existing
 whole-turn clip — audio processing, still not TTS.
 
-**Still open:** the tool that did the positional copy is not yet identified, so the next
-pod flip will reintroduce this. `clone-pod.cjs`, `pod-switchover.cjs` and
-`pod1-percall-recast.cjs` are the candidates (worker #281). And `pod-cast-gate.cjs` needs
-to read all six audio slots, not two, or it will pass the next one just as cheerfully.
+**Identified and fixed at source on 2026-08-24** — see *Root cause — the tool, and the fix*
+at the foot of this document. `pod-cast-gate.cjs` still reads two of the six audio slots;
+that is owned separately.
 
 ## The fix as first scoped, and what it does not need
 
@@ -169,3 +168,163 @@ worker #281:
 - I pulled bytes from the S3 objects the serving path resolves to, not through the learner
   URL itself (Popty is not running locally and the learner route needs entitlement).
   Workers #279 and #281 are covering the learner path.
+
+---
+
+## Root cause — the tool, and the fix
+
+*Added 2026-08-24, after the data repair. Branch `fix/ita-pod1-scene15-rootcause-2026-08-24`.*
+
+### It is two tools, and neither of them is the switchover
+
+No single tool copies a split array from one pod to another. The defect is produced by a
+**pair** of tools, and the second one is where it becomes wrong.
+
+**1. `tools/pods/clone-pod.cjs` puts the arrays on the staged pod.** It copies every column
+of every sentence row, driven off the row's own keys:
+
+```js
+// clone-pod.cjs:96
+// Copy every column except the ones that identify the row or stamp its age.
+const copyCols = Object.keys(sentences[0]).filter(c => !['id', 'pod_id', 'created_at', 'updated_at'].includes(c))
+```
+
+At this point nothing is wrong: the clone's text is byte-identical to the source's, so the
+split clips still belong to the text they are attached to. The row ids keep their
+`SC{scene}-S{sentence}` numbering deliberately, "which the align tool matches on".
+
+**2. `tools/pods/align-pod0-to-canonical.cjs` then rewrites the CONTENT at each of those
+slots and re-derives only two of the six audio columns.** Its per-slot payload was:
+
+```js
+// align-pod0-to-canonical.cjs:170-184 (before the fix)
+const desired = {
+  id, pod_id: podId,
+  scene_number: c.scene_number, sentence_number: c.sentence_number,
+  global_order: c.global_order, speaker: c.speaker,
+  known_text: c.english_text,
+  target_text:     carryTarget ? src.row.target_text     : '',
+  target_audio_id: carryTarget ? src.row.target_audio_id : null,
+  known_audio_id:  carryKnown  ? src.row.known_audio_id  : null,
+}
+```
+
+and its write list was exactly ten columns:
+
+```js
+// align-pod0-to-canonical.cjs:317-318 (before the fix)
+const COLUMNS = ['id', 'pod_id', 'scene_number', 'sentence_number', 'global_order',
+  'speaker', 'known_text', 'target_text', 'target_audio_id', 'known_audio_id']
+```
+
+`sentence_audio_ids`, `sentence_known_audio_ids`, `takeg_audio_ids` and
+`explainer_audio_id` are **not mentioned anywhere in the file**. A column this payload never
+names survives the content change untouched — so the slot keeps the *retired* conversation's
+split clips while its text, its speaker and its whole-turn clips all become the new
+conversation's. That is the positional copy, and it is a copy by omission rather than by an
+assignment anyone can point at, which is why grepping the column names found nothing.
+
+**`pod-switchover.cjs` is NOT the culprit** — it moves finished rows onto a new slug with
+their content intact — and neither is `pod1-percall-recast.cjs`, which writes only
+`speaker`, `listening_pods.speakers` and `courses.voice_config.podCast` and touches no audio
+column at all. `pod-state-migrate.cjs` touches `learner_pod_state` only.
+
+### Proof, from production, read-only
+
+The seventeen courses that were cloned and aligned but **never switched over** still hold
+both halves, so the defect can be seen before any flip touched it. Comparing
+`<course>:pod-0` with `<course>:pod-0-unrecorded` by `(scene_number, sentence_number)`:
+
+| course | slots | slots where the English changed | …and `sentence_audio_ids` is byte-identical anyway | …and `takeg_audio_ids` is | …and `explainer_audio_id` is |
+|---|---:|---:|---:|---:|---:|
+| hye_for_eng | 141 | 58 | 44 | 58 | 0 |
+| dan_for_eng | 141 | 57 | 42 | 55 | 0 |
+| heb_for_eng | 141 | 50 | 39 | 50 | 0 |
+| cat_for_eng | 141 | 46 | 39 | 45 | 7 |
+| pol_for_eng | 141 | 52 | 38 | 52 | 0 |
+| tur_for_eng | 141 | 47 | 35 | 46 | 32 |
+| ell_for_eng | 141 | 44 | 32 | 44 | 15 |
+| *(17 courses in all)* | | | 23-44 each | 0-58 each | 0-32 each |
+
+The staged pods have never been through a switchover or a recast, so **clone + align alone
+is sufficient to produce the defect**. The whole-turn columns at the same changed slots are
+identical on only 1-12 rows per course, all of them the aligner's deliberate
+`numerals_only` carry — the two whole-turn columns behaved; the other four did not.
+
+**Yes, `takeg_audio_ids` and `explainer_audio_id` are inherited the same way.** takeg on
+14 of the 17 courses, explainer on 4 of them (tur 32, ell 15, cat 7, bul 6).
+
+### The fix
+
+**The rule, in one line: split audio belongs to a row's TEXT, never to its SLOT.** It may be
+carried forward only where the text it was rendered against is byte-identical; otherwise the
+correct value is NULL, and the player falls back to the verified whole-turn clip — which is
+exactly what the repair tool wrote.
+
+New shared module **`tools/pods/split-audio-inheritance.cjs`** (pure, no database) holds that
+rule once, so a clone, an align and a promotion cannot drift apart:
+
+- `carrySplitAudio(source, desired[, carry])` — the four slot values a row should end up
+  with. A slot is carried only when the text on the side it belongs to is unchanged
+  (`sentence_audio_ids` / `takeg_audio_ids` → target; `sentence_known_audio_ids` → known;
+  `explainer_audio_id` narrates the whole line, so it needs both). Everything else is NULL.
+  The optional `carry` argument lets a caller that has already diffed two canons impose its
+  own decision — necessary because two blank texts compare equal.
+- `findInheritedSplitAudio(oldRows, newRows)` — the gate. A slot byte-identical to the same
+  `(scene, sentence)` slot on the pod being replaced, while the text there has changed. Exact
+  identity, no text similarity, so it is **script-safe**; the blast-radius table above this
+  section reads a false 0% for jpn/zho precisely because it stripped non-Latin script.
+
+Wired in:
+
+| file | change |
+|---|---|
+| `align-pod0-to-canonical.cjs` | the four slots are now in `COLUMNS` and are set — carried or NULL — on every row via `carrySplitAudio(src.row, null, {target: carryTarget, known: carryKnown})`. The summary gained `split_audio.{slots_carried, rows_cleared}`. |
+| `clone-pod.cjs` | the copy runs through `carrySplitAudio(s, s)`. A no-op today, because the clone is text-identical — which is the point of running it rather than assuming it: the day anyone makes this tool transform text, the arrays drop to NULL instead of following the slot. |
+| `pod-switchover.cjs` | **new promotion gate.** It refuses to promote a staged pod carrying inherited split audio, names the offending slots, and points at `repair-split-array-inheritance.cjs`. Escape hatch `--accept-inherited-split-audio`, off by default, not applied on `--rollback`. |
+| `pod1-percall-recast.cjs` | **measurement only.** Its regen queue walks the two whole-turn columns, so a recast that moves a line from Eve to Ara leaves its split clips speaking Eve — the second half of what Tom heard. The report now carries `splitClipsLeftInOldVoice` and a per-clip list. It does not write them: nulling a split array changes a learner's progress key, which is the repair tool's gated job, not a recast's. |
+
+### What the gate catches, measured on production
+
+Run read-only against the live database:
+
+- **The seventeen staged, unflipped pods would all be refused** — 1,531 inherited slots in
+  all, 24-57 rows per course. Every one of those flips would have shipped this defect again.
+- **The live pod-1 fleet still shows 381 residual inherited slots** after the repair:
+  `explainer_audio_id` 336, `sentence_known_audio_ids` 26, `takeg_audio_ids` 14,
+  `sentence_audio_ids` 5. The explainer slot is the bulk of it and is **not covered by
+  `repair-split-array-inheritance.cjs` at all** — its `SLOTS` list is the three arrays. That
+  is a real, previously unmeasured population, and it is a data question rather than a source
+  one, so nothing was written for it here.
+
+### Tests
+
+`tools/pods/split-array-inheritance` regressions live in
+**`tools/pods/split-audio-inheritance.test.cjs`** — 12 pure unit tests, no database. The two
+that pin the incident:
+
+- *"catches split audio left behind when the scene order changed"* — the real ita shape: the
+  friend conversation at pod-0 scene 15, `Quanto costa?` written into that slot, all four
+  slots left standing. All four are flagged.
+- *"NULLS every slot when the slot holds a different conversation"* and *"returns nulls,
+  never undefined, when there is no source row at all"* — null-on-no-canon, so the player
+  falls back to the whole-turn clip rather than to a best-effort array.
+
+Plus: per-side independence (a retranslation drops the target side and keeps the known),
+the explicit-carry override, a staged pod aligned *with* the fix passing the gate, genuinely
+re-derived split audio not being flagged, scenes past the old canon not being flagged, and a
+Japanese case proving the gate does not depend on Latin script.
+
+**Result:** `npx vitest run tools/pods/` — **44 files, 636 tests, all passing** (that count
+includes the sibling worktrees' copies of the same files).
+
+### What is NOT fixed here
+
+- `pod-cast-gate.cjs` still measures two of the six audio slots. Owned by another worker this
+  hour; the switchover gate above is a second, independent net under the same hole.
+- The 336 live `explainer_audio_id` slots, and the 45 array slots the repair pass left, are a
+  data follow-up. `repair-split-array-inheritance.cjs` would need `explainer_audio_id` added
+  to its `SLOTS` list before it could clear them, and that changes what a learner hears, so it
+  is Tom's call rather than a side-effect of a source fix.
+- The aligner refuses non-`_for_eng` courses outright, so nothing here has been exercised on
+  an `eng_for_*` pod.
