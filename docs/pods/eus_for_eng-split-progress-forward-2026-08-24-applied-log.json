@@ -1,0 +1,24 @@
+{
+  "pod": "eus_for_eng:pod-1",
+  "course": "eus_for_eng",
+  "apply": true,
+  "at": "2026-08-24T12:10:18.521Z",
+  "split_rows": 68,
+  "whole_turn_state_rows_found": 1,
+  "new_slot_rows": 2,
+  "plan": [
+    {
+      "learner_id": "c7455b18-0bd3-4d0b-87f3-7c2e6afdca58",
+      "from": "eus_for_eng:pod-1:SC03-S010",
+      "to": [
+        "eus_for_eng:pod-1:SC03-S010:s0",
+        "eus_for_eng:pod-1:SC03-S010:s1"
+      ],
+      "exposures": 25,
+      "before": {
+        "exposures": 25,
+        "updated_at": "2026-08-23T19:03:56.805Z"
+      }
+    }
+  ]
+}
