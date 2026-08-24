@@ -3,11 +3,16 @@
  * Pod state report (READ-ONLY) — what listening-pod content actually exists.
  *
  * For each course (or all), counts listening_pod_sentences coverage so we can
- * see at a glance what is DONE vs MISSING before reworking explainers:
+ * see at a glance what is DONE vs MISSING:
  *
  *   keep (known + target):  target_text / known_text + target_audio / known_audio
- *   explainer (rework zone): explainer_text / explainer_decomposition /
- *                            explainer_audio  + the new atom_map
+ *   atom_map
+ *
+ * The explainer_text / explainer_decomposition / explainer_audio_id columns
+ * were reported here as a "rework zone" until the pod-sentence explainer
+ * narration track was deprecated (Tom, 2026-08-24: "Explainers do not exist
+ * anymore. We don't do them."). Those columns are no longer read or reported
+ * on by this tool.
  *
  * Reads only. Writes nothing, deletes nothing, spends nothing.
  *
@@ -62,8 +67,7 @@ async function listCourses(supabase) {
 async function reportCourse(supabase, courseCode, { allPods }) {
   // Paginate so large courses are fully counted (PostgREST caps rows per call).
   const cols =
-    'id, pod_id, target_text, known_text, target_audio_id, known_audio_id,' +
-    ' explainer_text, explainer_decomposition, explainer_audio_id, atom_map'
+    'id, pod_id, target_text, known_text, target_audio_id, known_audio_id, atom_map'
   const rows = []
   const PAGE = 1000
   for (let from = 0; ; from += PAGE) {
@@ -87,9 +91,6 @@ async function reportCourse(supabase, courseCode, { allPods }) {
     known_text: sents.filter((r) => has(r.known_text)).length,
     target_audio: sents.filter((r) => has(r.target_audio_id)).length,
     known_audio: sents.filter((r) => has(r.known_audio_id)).length,
-    explainer_text: sents.filter((r) => has(r.explainer_text)).length,
-    explainer_decomp: sents.filter((r) => has(r.explainer_decomposition)).length,
-    explainer_audio: sents.filter((r) => has(r.explainer_audio_id)).length,
     atom_map: sents.filter((r) => has(r.atom_map)).length,
   }
   return c
@@ -103,12 +104,11 @@ async function main() {
   if (courses.length === 0) courses = await listCourses(supabase)
 
   const scope = allPods ? 'ALL pods' : 'pod-0 only'
-  console.log(`\nPod state report (${scope}) — keep = target/known, rework = explainer\n`)
+  console.log(`\nPod state report (${scope})\n`)
   const head = [
     'course'.padEnd(16),
     'sents'.padStart(6),
-    'tgtTxt', 'knwTxt', 'tgtAud', 'knwAud',
-    'expTxt', 'expDec', 'expAud', 'atomMap',
+    'tgtTxt', 'knwTxt', 'tgtAud', 'knwAud', 'atomMap',
   ].join(' ')
   console.log(head)
   console.log('-'.repeat(head.length))
@@ -129,8 +129,7 @@ async function main() {
         String(c.total).padStart(6),
         pct(c.target_text, c.total), pct(c.known_text, c.total),
         pct(c.target_audio, c.total), pct(c.known_audio, c.total),
-        pct(c.explainer_text, c.total), pct(c.explainer_decomp, c.total),
-        pct(c.explainer_audio, c.total), pct(c.atom_map, c.total),
+        pct(c.atom_map, c.total),
       ].join(' '),
     )
   }
@@ -143,8 +142,7 @@ async function main() {
         String(totals.total).padStart(6),
         pct(totals.target_text, totals.total), pct(totals.known_text, totals.total),
         pct(totals.target_audio, totals.total), pct(totals.known_audio, totals.total),
-        pct(totals.explainer_text, totals.total), pct(totals.explainer_decomp, totals.total),
-        pct(totals.explainer_audio, totals.total), pct(totals.atom_map, totals.total),
+        pct(totals.atom_map, totals.total),
       ].join(' '),
     )
   }
