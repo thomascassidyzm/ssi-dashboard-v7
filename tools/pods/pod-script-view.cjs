@@ -60,12 +60,43 @@ const isNarrator = (name) => NARRATORS.has(String(name || '').trim().toLowerCase
 /** 3+ consecutive lines on one voice is a run worth showing. See header. */
 const RUN_THRESHOLD = 3
 
+// ---------------------------------------------------------------------------
+// PLAYBACK — Tom, 2026-08-24: "this is pointless unless I can actually hear it
+// … I need the clips right there, that the DB is expecting the app to play".
+//
+// So every line carries its clips, addressed EXACTLY as the learner app
+// addresses them, or the tap and the learner's playback are not the same event.
+//
+// Two halves to that:
+//
+// (1) The BASE is the deployed learning-app proxy, never S3 and never a
+//     presigned link. popty.app does not serve /api/audio; the same constant
+//     with the same reason is in src/views/admin/PodLab.vue.
+//
+// (2) The REF is not always the bare uuid. A clip that has been revised is
+//     addressed as `<uuid>.v<N>`; revision 1 or unknown stays bare. The rule
+//     lives in ssi-learning-app/api/_utils/audioAccess.ts (parseAudioRef /
+//     buildAudioRef) and the reason it is in the id rather than a query string
+//     is that the id IS the IndexedDB cache key — a `?v=` would leave offline
+//     learners on stale bytes for good. buildAudioRef below is a deliberate
+//     mirror of that function; if the learner rule ever changes, this changes
+//     with it, and the test in this directory is what will catch the drift.
+// ---------------------------------------------------------------------------
+
+const AUDIO_BASE = 'https://saysomethingin.app/api/audio'
+
+/** Mirror of the learner app's buildAudioRef. Revision 1/unknown stays bare. */
+function buildAudioRef (id, revision) {
+  return revision && Number(revision) > 1 ? `${id}.v${Number(revision)}` : id
+}
+
 /**
  * @param {object} o
  * @param {{id:string, course_code:string, slug:string, title:string, speakers:object}} o.pod
  * @param {Array<object>} o.rows sentence rows in playing order (global_order)
  * @param {'target'|'known'} [o.track]
- * @param {object|null} [o.clips] optional id → {text, voice_id}; enables the gate's six-column clip check
+ * @param {object|null} [o.clips] optional id → {text, voice_id, audio_revision, duration_ms}.
+ *        Enables the gate's six-column clip check AND the per-line playback refs.
  */
 function buildPodScript ({ pod, rows, track = 'target', clips = null }) {
   const cast = (pod && pod.speakers) || {}
@@ -209,6 +240,40 @@ function buildPodScript ({ pod, rows, track = 'target', clips = null }) {
     }
   }
 
+  // --- the clips, addressed the way the learner app addresses them ----------
+  // A slot with no id and a slot whose id has no course_audio row are DIFFERENT
+  // facts and both are shown: "no split clips" is information Tom asked for,
+  // because half the 2026-08-24 incident was pods carrying split arrays that
+  // pointed at another pod's clips. Never a dead button, never nothing.
+  const clipRef = (id) => {
+    if (!id) return null
+    const c = clips ? clips[id] : null
+    const revision = c ? (c.audio_revision ?? null) : null
+    const ref = buildAudioRef(id, revision)
+    return {
+      id,
+      ref,
+      revision,
+      url: `${AUDIO_BASE}/${ref}`,
+      // null when clips were not loaded; false when loaded and this id is absent
+      // from course_audio — a dangling reference, which is a real defect.
+      found: clips ? Boolean(c) : null,
+      text: c ? (c.text ?? null) : null,
+      voice_id: c ? (c.voice_id ?? null) : null,
+      duration_ms: c ? (c.duration_ms ?? null) : null,
+    }
+  }
+  const audioFor = (r) => ({
+    target: clipRef(r.target_audio_id),
+    known: clipRef(r.known_audio_id),
+    explainer: clipRef(r.explainer_audio_id),
+    target_splits: (r.sentence_audio_ids || []).map(clipRef).filter(Boolean),
+    known_splits: (r.sentence_known_audio_ids || []).map(clipRef).filter(Boolean),
+    // present so the arrays can be told apart from "column not selected"
+    has_split_arrays: Array.isArray(r.sentence_audio_ids),
+    loaded: Boolean(clips),
+  })
+
   // --- assemble the scenes ---------------------------------------------------
   const scenes = []
   for (const [sceneKey, idxs] of sceneIndices) {
@@ -228,6 +293,7 @@ function buildPodScript ({ pod, rows, track = 'target', clips = null }) {
         voice: v,
         target_text: r.target_text || '',
         known_text: r.known_text || '',
+        audio: audioFor(r),
         flags: fl,
         worst: fl.some(f => f.severity === 'fail') ? 'fail' : (fl.length ? 'warn' : null),
       }
@@ -260,6 +326,21 @@ function buildPodScript ({ pod, rows, track = 'target', clips = null }) {
   const counts = {}
   for (const v of violations) counts[v.type] = (counts[v.type] || 0) + 1
 
+  // How much of this pod Tom can actually hear. Only meaningful once clips are
+  // loaded; null otherwise, rather than a zero that reads like an answer.
+  let audioSummary = null
+  if (clips) {
+    audioSummary = { lines: cRows.length, with_target: 0, without_target: 0, with_splits: 0, without_splits: 0, dangling: 0, split_clips: 0 }
+    for (const r of cRows) {
+      const a = audioFor(r)
+      if (a.target) audioSummary.with_target++; else audioSummary.without_target++
+      if (a.target_splits.length) { audioSummary.with_splits++; audioSummary.split_clips += a.target_splits.length } else audioSummary.without_splits++
+      for (const c of [a.target, a.known, a.explainer, ...a.target_splits, ...a.known_splits]) {
+        if (c && c.found === false) audioSummary.dangling++
+      }
+    }
+  }
+
   return {
     pod_id: pod && pod.id,
     course_code: pod && pod.course_code,
@@ -274,6 +355,7 @@ function buildPodScript ({ pod, rows, track = 'target', clips = null }) {
       gate_ok: gate.ok,
       gate_failures: gate.failures,
       clip_check: gate.clipCheck,
+      audio: audioSummary,
       violation_counts: counts,
       violations_total: violations.length,
       fails: violations.filter(v => v.severity === 'fail').length,
@@ -284,4 +366,4 @@ function buildPodScript ({ pod, rows, track = 'target', clips = null }) {
   }
 }
 
-module.exports = { buildPodScript, RUN_THRESHOLD, isNarrator }
+module.exports = { buildPodScript, buildAudioRef, AUDIO_BASE, RUN_THRESHOLD, isNarrator }
