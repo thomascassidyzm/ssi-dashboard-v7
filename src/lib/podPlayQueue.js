@@ -21,12 +21,19 @@
  *     failure mode that would make the whole thing useless.
  */
 
-/** What the run includes. Target whole-turn only, by default: the conversation. */
+/**
+ * What the run includes. Target whole-turn only, by default: the conversation.
+ *
+ * There is no explainer option, and there must not be one. Tom, 2026-08-24:
+ * "Explainers do not exist anymore. We don't do them. Learners never hear them
+ * in app. Let's deprecate them completely." The payload still carries
+ * `line.audio.explainer` until the estate-wide deprecation lands; this module
+ * ignores it, so a clip no learner will ever hear can never enter an audition.
+ */
 export const DEFAULT_OPTIONS = Object.freeze({
   target: true,      // the target whole-turn clip for each line
   splits: false,     // play the target/known SPLITS instead of the whole turn
   known: false,      // the English clip too
-  explainer: false,  // the explainer clip too
 })
 
 /** A clip we can actually send to the audio element. */
@@ -111,12 +118,7 @@ function lineEntries (out, scene, line, opts) {
     }
   }
 
-  if (opts.explainer && audio.explainer) {
-    push(out, {
-      ...base, kind: 'explainer', label: 'Explainer',
-      text: audio.explainer.text || line.known_text, clip: audio.explainer,
-    })
-  }
+  // No explainer branch by design — see DEFAULT_OPTIONS.
 }
 
 /**

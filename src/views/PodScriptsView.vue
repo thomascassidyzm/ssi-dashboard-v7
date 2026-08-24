@@ -341,12 +341,12 @@
                     :title="clipTitle(c)"
                   >{{ isPlaying(c, line) ? '■' : '▶' }} EN {{ i + 1 }}</button>
 
-                  <button
-                    v-if="line.audio.explainer"
-                    @click="play(line.audio.explainer, line)"
-                    :class="['clip-btn', isPlaying(line.audio.explainer, line) && 'clip-on', line.audio.explainer.found === false && 'clip-dead']"
-                    :title="clipTitle(line.audio.explainer)"
-                  >{{ isPlaying(line.audio.explainer, line) ? '■' : '▶' }} Explainer</button>
+                  <!-- No explainer button. Tom, 2026-08-24: "Explainers do not
+                       exist anymore. We don't do them. Learners never hear them
+                       in app. Let's deprecate them completely." The payload
+                       still carries line.audio.explainer until the estate-wide
+                       deprecation lands; this page does not render it, so
+                       nothing here can be auditioned that no learner hears. -->
                 </div>
 
                 <div v-if="playError && playErrorId === lastTried" class="text-danger text-xs mt-1">{{ playError }}</div>
@@ -435,14 +435,15 @@ const LABELS = {
   'same-voice-run': 'Same voice, run of lines',
   'single-voice-scene': 'Whole scene, one voice',
 }
-// What a continuous listen can include. Four, kept short enough to sit on one
+// What a continuous listen can include. Three, kept short enough to sit on one
 // phone line. The default — target whole turn only — is the conversation as the
-// learner hears it, which is what Tom was doing by hand.
+// learner hears it, which is what Tom was doing by hand. There is no explainer
+// toggle: explainers are deprecated (Tom, 2026-08-24) and a learner never hears
+// one, so auditioning one would be auditioning something that is not the course.
 const RUN_TOGGLES = [
   { key: 'target', label: 'Target', title: 'The target whole-turn clip of every line' },
   { key: 'splits', label: 'Splits', title: 'Play the split clips INSTEAD of the whole turn' },
   { key: 'known', label: 'English', title: 'Add the English clip after each line' },
-  { key: 'explainer', label: 'Explainer', title: 'Add the explainer clip after each line' },
 ]
 
 const FAILS = new Set(['same-voice-exchange', 'same-gender-exchange', 'cast-size', 'uncast-character'])
@@ -498,9 +499,9 @@ const lastTried = ref(null)
 // He is auditioning Italian Pod 1 by ear — judging which voice is on which line
 // and hearing that Enzo sits quieter than Ara — so the run plays the TARGET
 // WHOLE-TURN clip of each line, scene into scene, to the end of the pod. The
-// toggles below let him add English and the explainer, or hear the splits
-// instead of the whole turn.
-const runOpts = ref({ target: true, splits: false, known: false, explainer: false })
+// toggles below let him add English, or hear the splits instead of the whole
+// turn.
+const runOpts = ref({ target: true, splits: false, known: false })
 const runQueue = ref([])   // the run as it was when it started — a snapshot
 const runIndex = ref(-1)   // where we are in it
 const running = ref(false)
@@ -516,7 +517,7 @@ const nowEntry = computed(() =>
   (running.value && runIndex.value >= 0 && runQueue.value[runIndex.value]) || null)
 
 // A line lights up when it is the one sounding. The button keeps its own light
-// too, so whole turn stays tellable from split 2 from Explainer — but only on
+// too, so whole turn stays tellable from split 2 from English — but only on
 // the sounding line, because one clip ref can legitimately appear on two rows.
 const isPlaying = (c, line) => Boolean(
   c && playingRef.value === c.ref && (!line || !nowLineId.value || nowLineId.value === line.id)

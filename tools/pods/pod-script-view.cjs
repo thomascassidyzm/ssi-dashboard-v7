@@ -371,7 +371,14 @@ function buildPodScript ({ pod, rows, track = 'target', clips = null }) {
       const a = audioFor(r)
       if (a.target) audioSummary.with_target++; else audioSummary.without_target++
       if (a.target_splits.length) { audioSummary.with_splits++; audioSummary.split_clips += a.target_splits.length } else audioSummary.without_splits++
-      for (const c of [a.target, a.known, a.explainer, ...a.target_splits, ...a.known_splits]) {
+      // Explainers are excluded on purpose. Tom, 2026-08-24: "Explainers do not
+      // exist anymore. We don't do them. Learners never hear them in app."
+      // The viewer no longer renders an explainer button, so counting a dangling
+      // explainer ref would put a red number on the page for a clip nobody can
+      // play and nobody should — the one way an explainer could still reach
+      // this view. The field stays on the payload until the estate-wide
+      // deprecation lands; it is simply not counted.
+      for (const c of [a.target, a.known, ...a.target_splits, ...a.known_splits]) {
         if (c && c.found === false) audioSummary.dangling++
       }
     }

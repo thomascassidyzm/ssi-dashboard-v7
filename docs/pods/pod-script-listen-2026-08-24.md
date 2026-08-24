@@ -10,9 +10,8 @@ A **sticky listen bar** sits under the navbar and stays there while you scroll:
   through scene boundaries. **■ Stop** halts it and leaves the highlight where
   it stopped.
 - **▶▶ on every line** — starts the run *at that line* and carries on to the end.
-- Four toggles for what the run includes: **Target** (on), **Splits**,
-  **English**, **Explainer**. The clip count next to Stop tells you how long
-  the run is.
+- Three toggles for what the run includes: **Target** (on), **Splits**,
+  **English**. The clip count next to Stop tells you how long the run is.
 
 The line you are **hearing** now takes a green left bar and a ring, and scrolls
 itself to the middle of the screen as the run moves. Underneath the bar, a
@@ -27,8 +26,8 @@ Nothing here writes anything. Same read-only page, same learner URLs.
 
 ## Taste calls I defaulted — one word each changes any of them
 
-1. **What the run plays**: the target whole-turn clip of each line. English,
-   explainer and splits are off unless you toggle them.
+1. **What the run plays**: the target whole-turn clip of each line. English
+   and splits are off unless you toggle them.
 2. **A line with no whole turn** plays its split clips in order rather than
    being skipped.
 3. **Auto-scroll follows the run only** — a single tap never moves the page
@@ -42,6 +41,18 @@ Nothing here writes anything. Same read-only page, same learner URLs.
    scene 1.
 7. **A clip that will not load** shows its error on its own row and the run
    carries on after about ¾ of a second.
+
+## Explainers are gone from this page
+
+Per your ruling: no Explainer button on any line, no explainer toggle, and the
+continuous-play queue can never contain one. The pod data still carries 124
+explainer clips for Italian — the page now ignores every one of them, and I
+checked in the browser that not a single explainer byte is requested during a
+run. I also stopped the "references point at no clip" count in the summary card
+from counting dangling *explainer* refs, which was the last way one could still
+show up here, as a red number.
+
+The estate-wide pipeline deprecation is a separate job; this is the viewer only.
 
 ## Two bugs found and fixed on the way
 
