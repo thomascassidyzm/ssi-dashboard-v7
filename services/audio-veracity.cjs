@@ -15,7 +15,7 @@
  * 98.8% recall, 1.2% false-alarm rate across silent stubs, near-silent clips
  * and truncations.
  *
- * ⚠️ DO NOT "IMPROVE" THIS INTO FORCED ALIGNMENT OR A CONFIDENCE SCORE.
+ * ⚠️ DO NOT "IMPROVE" THIS INTO A GRAMMAR-CONSTRAINED CONFIDENCE SCORE.
  * That route was tested and it fails. Constraining the decode to the expected
  * text (whisper.cpp --grammar) scored a TRUNCATED clip 1.000 and its healthy
  * twin 0.979 — "once the grammar removes the alternatives, the softmax
@@ -23,8 +23,14 @@
  * regardless of the acoustics" (findings §5). Whisper's free-decode token
  * probabilities are just as useless: healthy and broken distributions overlap,
  * and min_tok_p is WORSE for healthy clips than for silent stubs (findings §1).
- * The method works BECAUSE the decode is free. If you find yourself reaching
- * for a confidence number, you have taken the wrong turn.
+ * If you find yourself reaching for a confidence number the DECODER reports
+ * about itself, you have taken the wrong turn.
+ *
+ * ⚠️ --prompt IS NOT --grammar, AND THE DIFFERENCE IS MEASURED. Since
+ * 2026-08-24 a clip the free decode CONDEMNS gets a second, primed decode and
+ * is scored against its known text by us — never by the decoder about itself.
+ * See VERIFY AGAINST KNOWN TEXT below: both hallucination failure modes were
+ * tested for, one of them is real, and it has its own guard.
  *
  * ⚠️ VALIDATED ON SILENCE AND TRUNCATION ONLY.
  * Mispronunciation was NOT tested — no ground truth for it exists — and it is
@@ -224,6 +230,153 @@ function decoderValidated (language) {
  * original findings memo.
  */
 const MIN_EDIT_DISTANCE = Number(process.env.AUDIO_VERACITY_MIN_EDITS || 6)
+
+// ---------------------------------------------------------------------------
+// VERIFY AGAINST KNOWN TEXT — the canonical STT mode (Tom's ruling, 2026-08-24)
+// ---------------------------------------------------------------------------
+
+/**
+ * THE RULING. Tom, 2026-08-24: "we always know the prescribed sentence, so the
+ * question is never open transcription — where Whisper is weak on Welsh,
+ * Icelandic compounds, French spoken times — but VERIFICATION: is this audio a
+ * rendition of this known text?"
+ *
+ * The free decode asks the harder question and then blames the AUDIO for
+ * whisper's spelling. Two real failures of that framing, both clips that were
+ * fine:
+ *
+ *   isl  "Auðvitað. … Þarna er posinn."  free-decoded "Ílvitað. Þart naði að
+ *        porsinn." — CER 0.42, quarantined. 11 of 231 Icelandic pod sentences
+ *        died this way (docs/pods/isl-pod-1-render-failure-2026-08-22.md).
+ *   cym  "Bore da. Sut wyt ti?" free-decoded "Poreddaa. Siwtwit'i." — CER 0.50
+ *        on a take Tom listened to and called perfect.
+ *
+ * (The third case Tom named, French spoken times, was fixed separately and
+ * upstream of this: numeralVariants/alignedPair below already read "7h30" and
+ * "sept heures et demie" into the same currency before anything is measured.
+ * Verification does not need to re-solve it and deliberately does not try.)
+ *
+ * VERIFY MODE. When the free decode does not settle it, decode a SECOND time
+ * with the known text as whisper's initial prompt (--prompt) and score THAT
+ * decode against the known text, through the same normalisation, cue-stripping
+ * and numeral alignment the free verdict uses. A genuine rendition with a weak
+ * decoder scores high once the decoder knows what it is listening for; wrong
+ * text or noise scores near zero.
+ *
+ * MEASURED 2026-08-24, ggml-small, similarity = 1 - CER:
+ *
+ *   isl 15 quarantined clips   free 0.00-0.66  ->  primed 0.82-1.00 on 13,
+ *                              and 0.21 / 0.29 on the two that are genuinely
+ *                              mis-rendered — priming did NOT rescue those.
+ *   cym 11 good human takes    free 0.39-1.00  ->  primed 0.89-1.00
+ *   cym  3 noise-only takes    free 0.00-0.26  ->  primed 0.00, 0.00, 0.00
+ *
+ * ⚠️ WORRY 1, PROMPT ECHO — "the model will just parrot the prompt back".
+ * TESTED, DID NOT OCCUR. Control: re-prime each of the 15 Icelandic clips with
+ * a DIFFERENT clip's sentence and score against that wrong sentence. Result
+ * 0.00-0.31, mean 0.13, against 0.82-1.00 when primed with the truth. A prompt
+ * biases the decoder; it does not overwrite the acoustics. That is exactly why
+ * --prompt is not --grammar: the alternatives are still there, so the audio can
+ * still refuse the hypothesis.
+ *
+ * ⚠️ WORRY 2, PRIMING NOISE INTO SPEECH — the Catrin case, three takes of an
+ * empty room (one with a sheep) that the FREE decode turned into fluent Welsh
+ * (services/recording-speech-gate.cjs). TESTED, AND IT INVERTS: all three primed
+ * decodes came back EMPTY, scoring 0.000. With a hypothesis to test the model
+ * finds no support for it and says nothing; with no hypothesis it invents one.
+ * Verification is the SAFER mode on noise, not the riskier one.
+ *
+ * ⚠️ WORRY 3, TRUNCATION — REAL. See VERIFY_MIN_SEC_PER_SYLLABLE.
+ *
+ * ⚠️ STT IS ADVISORY, NOT A COURSE VETO (Tom, same ruling). Voice-match and VAD
+ * stay the hard gates. This module owns the text question only.
+ *
+ * COST. The primed decode runs ONLY when the free decode has already failed, so
+ * the clips that pass today cost exactly what they cost today.
+ */
+
+/** Verify mode is canonical. AUDIO_VERACITY_VERIFY=off reverts to free-only. */
+function isVerifyMode () {
+  return !OFF_VALUES.has(String(process.env.AUDIO_VERACITY_VERIFY || '').toLowerCase())
+}
+
+/**
+ * Similarity a primed decode must reach to overturn a free-decode failure.
+ *
+ * The measured gap is wide: everything genuine sits at 0.82+ and everything
+ * wrong at 0.31 or below, with nothing at all in between across 32 labelled
+ * clips in three languages. 0.60 is parked in the middle of that empty band,
+ * slightly nearer the wrong end because the errors are not symmetric — a
+ * wrongly-refused clip costs a re-render, a wrongly-passed one reaches a
+ * learner's ear with no staging environment in between.
+ *
+ * DEFAULT, not a ruling. Fitted on isl/fra/cym; it deliberately does not
+ * inherit CER_THRESHOLD, which was fitted on deu/eng.
+ */
+const VERIFY_THRESHOLD = Number(process.env.AUDIO_VERACITY_VERIFY_THRESHOLD || 0.6)
+
+/**
+ * Fraction of the expected WORDS that must be individually locatable in the
+ * primed decode, on top of the similarity score.
+ *
+ * Similarity is a whole-string edit ratio, so a decode that gets a long opening
+ * clause right and then stops can score respectably on a long sentence. Word
+ * coverage cannot be carried that way: every expected word is looked for
+ * separately, with the same length-scaled tolerance the last-word rule uses.
+ * Measured on the same set: genuine 0.67-1.00, wrong 0.00-0.33.
+ *
+ * DEFAULT, not a ruling.
+ */
+const VERIFY_MIN_COVERAGE = Number(process.env.AUDIO_VERACITY_VERIFY_COVERAGE || 0.6)
+
+/**
+ * ⚠️ THE ONE PLACE PRIMING GENUINELY HALLUCINATES: TRUNCATION. Not a worry — a
+ * measurement, 2026-08-24, replaying the 165 labelled clips this gate was
+ * fitted on:
+ *
+ *   silent_stub   25 clips   free 0/25 pass   verify rescues 0   — safe
+ *   near_silent   21 clips   free 0/21 pass   verify rescues 0   — safe
+ *   truncated     25 clips   free 0/25 pass   verify rescues 17  <- THIS
+ *
+ * Seventeen truncated clips came back from the primed decode as the COMPLETE
+ * sentence at similarity 1.00 and coverage 1.00. "can you check the weather?" —
+ * a clip that stops partway — primed to the full sentence. Obvious in
+ * hindsight: noise and wrong text remove the acoustic evidence so the prompt has
+ * nothing to lean on, while truncation leaves MOST of it intact and the prompt
+ * supplies the tail, which is exactly what a language model is best placed to
+ * invent.
+ *
+ * No text-layer rule can catch this, and Rule 3 least of all — the decode being
+ * checked is the one that hallucinated the last word. The check must come from
+ * outside the decoder, and Tom's own instrument does it
+ * (audio-intelligence/tiers/duration.cjs, via recording-speech-gate.cjs):
+ * "syllables are pretty consistent". Count the script's syllables, measure the
+ * clip's VAD SPEECH SPAN, divide. Measured on those same 165:
+ *
+ *   truncated       max 0.132 s/syllable   (median 0.101)
+ *   good_paired     min 0.152              (median 0.234)
+ *   good_unflagged  min 0.144              (median 0.194)
+ *
+ * 0.14 sits in that gap: 6% above everything truncated, 3% below everything
+ * good. Tight on both sides because the corpus is 102 clips, not because the
+ * quantity is marginal — 0.14 s/syllable is 7 syllables a second, faster than
+ * anyone reads a script.
+ *
+ * IT VETOES A RESCUE ONLY. A clip the free decode passed is never re-judged by
+ * it, so it cannot cost anything that passes today. Net on the labelled set:
+ * good clips wrongly refused 8/77 -> 3/77, bad clips wrongly passed 0/71 -> 0/71.
+ *
+ * ⚠️ EXPLICIT GAP: syllables.cjs is fitted for English and German only, and this
+ * floor was fitted through it on English and German truncations. Other languages
+ * run the generic vowel-group counter. Measured headroom where it matters: the
+ * Icelandic and Welsh clips this mode exists to rescue sit at 0.157-0.736, the
+ * nearest 12% clear. Real headroom, but not a fitting. A language whose written
+ * form over-counts syllables would be refused wrongly, and the fix is to measure
+ * that language rather than widen the floor blind.
+ *
+ * DEFAULT, not a ruling.
+ */
+const VERIFY_MIN_SEC_PER_SYLLABLE = Number(process.env.AUDIO_VERACITY_VERIFY_SEC_PER_SYLLABLE || 0.14)
 
 // ---------------------------------------------------------------------------
 // Binaries — same env conventions as services/tts-service.cjs's phonology gate,
@@ -1525,6 +1678,115 @@ function speechRateVerdict (o = {}) {
 }
 
 // ---------------------------------------------------------------------------
+// Verify-against-known-text scoring — pure, and therefore unit-tested
+// ---------------------------------------------------------------------------
+
+/**
+ * How much of this decode is the known text? 1 = identical, 0 = unrelated.
+ *
+ * Scored through the SAME currency the free verdict uses — cues stripped,
+ * numerals aligned, normalised — so a clip is never verified or refused on a
+ * difference the free gate already knows is orthography. Clamped, because
+ * insertions can push CER above 1 and a negative similarity means nothing.
+ */
+function similarity (expected, decode, iso1) {
+  const e = stripSynthesisCues(expected)
+  const aligned = alignedPair(e, decode, iso1)
+  if (!aligned.e.length) return aligned.d.length ? 0 : 1
+  return Math.max(0, 1 - aligned.edits / aligned.e.length)
+}
+
+/**
+ * Fraction of the expected words individually locatable in the decode.
+ *
+ * Same length-scaled tolerance as lastWordVerdict — whisper's SPELLING of a word
+ * is unreliable while its PRESENCE is the thing being asked about — but searched
+ * over the whole decode rather than the tail, because here the question is
+ * coverage rather than truncation. Runs on the aligned pair for the same reason
+ * similarity does.
+ *
+ * @returns {number|null} null when the expected text has no words to look for.
+ */
+function wordCoverage (expected, decode, iso1) {
+  const aligned = alignedPair(stripSynthesisCues(expected), decode, iso1)
+  const ew = aligned.e.split(' ').filter(Boolean)
+  const dw = aligned.d.split(' ').filter(Boolean)
+  if (!ew.length) return null
+  let hit = 0
+  for (const w of ew) {
+    const tolerance = w.length <= 3 ? 0 : w.length <= 6 ? 1 : 2
+    if (dw.some(d => levenshtein(w, d) <= tolerance)) hit++
+  }
+  return hit / ew.length
+}
+
+/**
+ * Is there too little speech in this clip for this script to be in it?
+ *
+ * Pure, and deliberately three-outcome: `null` means the question could not be
+ * asked, which is not "no". See VERIFY_MIN_SEC_PER_SYLLABLE for the measurement.
+ *
+ * @param {number|null} speechSec  VAD SPEECH SPAN, not container duration —
+ *        container duration includes the mastering pad and would hide a
+ *        truncation behind trailing silence.
+ * @param {number|null} syllables  syllables in the known text
+ */
+function truncationSuspect (speechSec, syllables) {
+  if (!Number.isFinite(speechSec) || !Number.isFinite(syllables) || syllables <= 0) {
+    return { truncated: null, secPerSyllable: null }
+  }
+  const sps = speechSec / syllables
+  return { truncated: sps < VERIFY_MIN_SEC_PER_SYLLABLE, secPerSyllable: +sps.toFixed(4) }
+}
+
+/**
+ * The verify verdict: given that the free decode condemned the clip, and a
+ * decode made WITH the known text as the prompt, is this audio a rendition of
+ * that text after all?
+ *
+ * Pure — the truncation veto needs the audio and is applied by the caller.
+ *
+ * @returns {{verified:boolean, reason:string, similarity:number,
+ *            coverage:number|null}}
+ */
+function verifyVerdict (primed, expected, iso1) {
+  // Rule 1 survives verification unchanged, and on the Catrin noise takes it is
+  // the rule that fires: a primed decode of an empty room comes back EMPTY.
+  if (isNonSpeechDecode(primed)) {
+    return { verified: false, reason: 'no_speech_when_primed', similarity: 0, coverage: 0 }
+  }
+
+  const sim = similarity(expected, primed, iso1)
+  const cov = wordCoverage(expected, primed, iso1)
+
+  if (sim < VERIFY_THRESHOLD) {
+    return { verified: false, reason: 'verify_similarity_below_threshold', similarity: sim, coverage: cov }
+  }
+  if (cov != null && cov < VERIFY_MIN_COVERAGE) {
+    return { verified: false, reason: 'verify_coverage_below_threshold', similarity: sim, coverage: cov }
+  }
+
+  // Rule 3 is NOT waived by a good similarity score, and it is run on the
+  // decode that is doing the rescuing.
+  //
+  // It is a weakened instrument here and that is stated rather than hidden: the
+  // decode being asked "was the last word spoken?" is the one the prompt could
+  // have completed. It is kept because the defect it exists for is Tom's, real,
+  // and common — 2026-08-07, fra_for_eng: "the final word is wholly missing and
+  // the clip ends in a gap. About 1 in 3 files." A single dropped final word is
+  // too small to move the speech-rate veto below its floor, so without this rule
+  // that class has no guard at all in verify mode. Rule 3's own head-fit test
+  // (see lastWordVerdict) is what keeps it from convicting mere spelling.
+  const aligned = alignedPair(stripSynthesisCues(expected), primed, iso1)
+  const lw = lastWordVerdict(aligned.e, aligned.d)
+  if (!lw.ok) {
+    return { verified: false, reason: 'verify_last_word_missing', similarity: sim, coverage: cov, lastWord: lw.word }
+  }
+
+  return { verified: true, reason: 'verified_against_known_text', similarity: sim, coverage: cov }
+}
+
+// ---------------------------------------------------------------------------
 // The decode itself
 // ---------------------------------------------------------------------------
 
@@ -1536,13 +1798,20 @@ const run = (cmd, args, opts = {}) => new Promise((resolve, reject) => {
 })
 
 /**
- * Free, unprimed decode of one clip.
+ * Decode one clip.
  *
- * NO --prompt, NO --grammar, NO priming of any kind. The expected text is
- * never given to whisper; it is used only afterwards by verdictFromDecode.
- * Feeding the model the answer is what makes it able to hallucinate a pass.
+ * `opts.prompt` supplies whisper's initial prompt and is the ONLY difference
+ * between the two decodes verify mode makes. Absent — the default, and every
+ * first decode — this is the free, unprimed decode the operating point was
+ * fitted on: the expected text is never shown to whisper and is used only
+ * afterwards by verdictFromDecode.
+ *
+ * NEVER --grammar. A grammar removes the decoder's alternatives and its
+ * confidence goes to ~1 regardless of the acoustics; a prompt leaves them in
+ * place, which is what lets the audio refuse a wrong hypothesis (measured:
+ * wrong-prompt control scores 0.00-0.31). See the header.
  */
-async function decodeAudio (input, iso1) {
+async function decodeAudio (input, iso1, opts = {}) {
   const base = path.join(os.tmpdir(), `veracity-${crypto.randomUUID()}`)
   const src = Buffer.isBuffer(input) ? `${base}.src` : input
   const wav = `${base}.wav`
@@ -1559,19 +1828,63 @@ async function decodeAudio (input, iso1) {
     // have manufactured a truncation false alarm on every multi-segment clip
     // in the estate. The JSON path is also exactly what scripts/fa-exp/score.cjs
     // used, so the thresholds in the findings apply to this code unchanged.
-    await run(WHISPER_BIN, [
+    const args = [
       '-m', WHISPER_MODEL,
       '-l', iso1 || 'auto',
       '-t', String(WHISPER_THREADS),
       '-np',              // no progress spam in the render log
       '-oj', '-of', base, // -> `${base}.json`
       '-f', wav,
-    ])
+    ]
+    // ⚠️ The whisper-cli wrapper at ~/.local/bin/whisper-cli treats a --prompt
+    // argument as "a human is waiting" and BYPASSES its concurrency semaphore.
+    // That heuristic predates verify mode and reads command-surface's voice
+    // path, which is the only other caller that primes. This gate holds its own
+    // semaphore around the whole check so the total is still bounded, but the
+    // coupling is named here rather than left to be rediscovered.
+    if (opts.prompt) args.push('--prompt', String(opts.prompt))
+    await run(WHISPER_BIN, args)
     made.push(json)
     const parsed = JSON.parse(fs.readFileSync(json, 'utf8'))
     return (parsed.transcription || []).map(s => s.text).join(' ').trim()
   } finally {
     for (const f of made) { try { fs.unlinkSync(f) } catch {} }
+  }
+}
+
+/**
+ * Measure the clip's speech span against its script's syllable count.
+ *
+ * Uses the audio-intelligence engine's single decode + VAD rather than a second
+ * private ffmpeg invocation — the whole point of that module is that every tier
+ * looks at the SAME samples (see its header). Never throws: a guard that cannot
+ * measure reports that it could not, and the caller says so.
+ */
+async function measureTruncation (input, expectedText, language) {
+  let spilled = null
+  let d = null
+  try {
+    const decodeEngine = require('./audio-intelligence/decode.cjs')
+    const vad = require('./audio-intelligence/tiers/vad.cjs')
+    const syllables = require('./audio-intelligence/syllables.cjs')
+
+    const s = syllables.count(stripSynthesisCues(expectedText), language)
+    if (!s.syllables) return { truncated: null, why: 'no countable syllables in the script', secPerSyllable: null, speechSpanSec: null }
+
+    if (Buffer.isBuffer(input)) {
+      spilled = path.join(os.tmpdir(), `veracity-trunc-${crypto.randomUUID()}`)
+      fs.writeFileSync(spilled, input)
+    }
+    d = await decodeEngine.decode(spilled || input)
+    const v = vad.analyse(d.samples, d.sampleRate)
+    const speechSpanSec = Number(v.speechDurationSec || 0)
+    const t = truncationSuspect(speechSpanSec, s.syllables)
+    return { ...t, speechSpanSec: +speechSpanSec.toFixed(3), syllables: s.syllables, syllableCounterCalibrated: s.calibrated }
+  } catch (e) {
+    return { truncated: null, why: `measurement failed: ${String(e && e.message).slice(0, 120)}`, secPerSyllable: null, speechSpanSec: null }
+  } finally {
+    if (d) { try { d.dispose() } catch { /* already gone */ } }
+    if (spilled) { try { fs.unlinkSync(spilled) } catch { /* already gone */ } }
   }
 }
 
@@ -1617,8 +1930,38 @@ async function checkAudioVeracity (input, expectedText, language, opts = {}) {
 
   await acquire()
   let decode
+  let primed = null
+  let verify = null
   try {
     decode = await decodeAudio(input, iso1 || 'auto')
+
+    // VERIFY MODE. The free decode is tried first and, when it settles the
+    // question, that is the whole cost. Only a clip the free decode has already
+    // condemned is asked the verification question, because only then is a
+    // second decode buying anything. See the VERIFY AGAINST KNOWN TEXT block.
+    const freeVerdict = verdictFromDecode(decode, expectedText, iso1, { cerThreshold: opts.cerThreshold })
+    if (!freeVerdict.pass && isVerifyMode()) {
+      primed = await decodeAudio(input, iso1 || 'auto', { prompt: stripSynthesisCues(expectedText) })
+      verify = verifyVerdict(primed, expectedText, iso1)
+
+      // The truncation veto, and it runs ONLY on a rescue — see
+      // VERIFY_MIN_SEC_PER_SYLLABLE. Measuring costs an ffmpeg decode, so it is
+      // paid only by clips the text layer has already decided to save, and
+      // never by a clip the free decode passed on its own.
+      if (verify.verified) {
+        const t = await measureTruncation(input, expectedText, language)
+        verify.secPerSyllable = t.secPerSyllable
+        verify.speechSpanSec = t.speechSpanSec
+        if (t.truncated === true) {
+          verify.verified = false
+          verify.reason = 'verify_speech_too_short_for_script'
+        } else if (t.truncated === null) {
+          // Could not measure. The text layer verified it and the guard could
+          // not run — say WHICH, rather than letting the pass look complete.
+          verify.truncationUnchecked = t.why
+        }
+      }
+    }
   } catch (e) {
     return unchecked('unchecked_decode_error', String(e.message).slice(0, 200))
   } finally {
@@ -1627,13 +1970,25 @@ async function checkAudioVeracity (input, expectedText, language, opts = {}) {
 
   const v = verdictFromDecode(decode, expectedText, iso1, { cerThreshold: opts.cerThreshold })
   return {
-    pass: v.pass,
+    pass: v.pass || (verify ? verify.verified : false),
     checked: true,
-    reason: v.reason,
+    // The reason always names what DECIDED: a rescued clip says it was verified
+    // against its known text, a refused one keeps the free decode's reason and
+    // carries why verification did not overturn it.
+    reason: v.pass ? v.reason : (verify ? (verify.verified ? verify.reason : `${v.reason}+${verify.reason}`) : v.reason),
+    mode: isVerifyMode() ? 'verify' : 'free',
     cer: +v.cer.toFixed(4),
     edits: v.edits,
     threshold: v.threshold,
     decode,
+    ...(primed != null ? { primedDecode: primed } : {}),
+    ...(verify ? {
+      verified: verify.verified,
+      similarity: +verify.similarity.toFixed(4),
+      coverage: verify.coverage == null ? null : +verify.coverage.toFixed(4),
+      ...(verify.secPerSyllable != null ? { secPerSyllable: verify.secPerSyllable, speechSpanSec: verify.speechSpanSec } : {}),
+      ...(verify.truncationUnchecked ? { truncationUnchecked: verify.truncationUnchecked } : {}),
+    } : {}),
     expected: String(expectedText),
     language: iso1 || 'auto',
     languageUnmapped: !iso1,
@@ -2128,6 +2483,15 @@ module.exports = {
   DEFAULT_ATTEMPTS,
   checkAudioVeracity,
   verdictFromDecode,
+  verifyVerdict,
+  truncationSuspect,
+  measureTruncation,
+  similarity,
+  wordCoverage,
+  isVerifyMode,
+  VERIFY_THRESHOLD,
+  VERIFY_MIN_COVERAGE,
+  VERIFY_MIN_SEC_PER_SYLLABLE,
   characterErrorRate,
   isNonSpeechDecode,
   normalise,

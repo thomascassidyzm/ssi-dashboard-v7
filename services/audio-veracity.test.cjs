@@ -1174,3 +1174,126 @@ describe('graduated sampling — per COURSE (Tom, 2026-08-13; scope corrected 20
     expect(stats.quarantined).toBe(1)
   })
 })
+
+// ---------------------------------------------------------------------------
+// VERIFY AGAINST KNOWN TEXT — Tom's ruling, 2026-08-24
+//
+// These pin the operating point measured on 2026-08-24 across 32 labelled clips
+// in three languages (isl quarantine, fra quarantine, cym human takes). The
+// decodes below are the REAL decodes those clips produced — if a threshold
+// change breaks one of these, the change has moved a verdict on a clip somebody
+// has actually listened to.
+// ---------------------------------------------------------------------------
+
+describe('verifyVerdict — the verify-mode operating point', () => {
+  it('verifies the Welsh take Tom called perfect and the free decode refused', () => {
+    // Free decode was "Poreddaa. Siwtwit'i." — CER 0.50, refused. Primed: exact.
+    const v = V.verifyVerdict('Bore da. Sut wyt ti?', 'Bore da. Sut wyt ti?', 'cy')
+    expect(v.verified).toBe(true)
+    expect(v.reason).toBe('verified_against_known_text')
+  })
+
+  it('REFUSES the noise-only takes — a primed decode of an empty room is empty', () => {
+    // The Catrin case. All three of her room takes primed to nothing, scoring
+    // 0.000, while the FREE decode invented fluent Welsh for them.
+    const v = V.verifyVerdict('', "Esgusodwch fi, ydy'r sedd yma wedi'i chymryd?", 'cy')
+    expect(v.verified).toBe(false)
+    expect(v.reason).toBe('no_speech_when_primed')
+  })
+
+  it('verifies the Icelandic clips quarantined on decoder spelling', () => {
+    // Real. The first clip's FREE decode was "Ílvitað. Þart naði að porsinn." —
+    // CER 0.42, quarantined 2026-08-22 with 10 siblings. 13 of those 15 clips
+    // clear verification; these are two of them.
+    expect(V.verifyVerdict('Þarna er posinn.', 'Auðvitað. … Þarna er posinn.', 'is').verified).toBe(true)
+    expect(V.verifyVerdict('Ertu með appelsínusafa?', 'Ertu með appelsínusafa?', 'is').verified).toBe(true)
+  })
+
+  it('still refuses an Icelandic clip that is genuinely mis-rendered', () => {
+    // Priming did NOT rescue this one — free 0.33, primed 0.29. That is the
+    // point: verification discriminates, it does not launder.
+    const v = V.verifyVerdict('Kon kið servið al maðsás?', 'Gangi þér vel með það!', 'is')
+    expect(v.verified).toBe(false)
+    expect(v.similarity).toBeLessThan(V.VERIFY_THRESHOLD)
+  })
+
+  it('does not echo a prompt back — the wrong-prompt control scored 0.00-0.31', () => {
+    const v = V.verifyVerdict('Er vatnið volgt?', 'Fer báturinn héðan?', 'is')
+    expect(v.verified).toBe(false)
+  })
+
+  it('keeps Rule 3 on the RESCUING decode', () => {
+    const v = V.verifyVerdict(
+      'Nous avons des fruits et des céréales ou un petit',
+      'Nous avons des fruits et des céréales ou un petit-déjeuner chaud', 'fr')
+    expect(v.verified).toBe(false)
+  })
+
+  it('inherits the numeral alignment rather than re-solving it', () => {
+    // A real isl quarantine: the script writes "19. … 20. … 21." and the decode
+    // spells them out. That is orthography, and alignedPair already knows it —
+    // verify mode must not invent a second, worse answer to the same question.
+    const v = V.verifyVerdict(
+      'nítján, tuttugu, tuttugu og eitt. Miðvikudagur. Fimmtudagur',
+      '19. … 20. … 21. … Miðvikudagur. … Fimmtudagur', 'is')
+    expect(v.verified).toBe(true)
+  })
+
+  it('is bypassable — AUDIO_VERACITY_VERIFY=off reverts to the free-only gate', () => {
+    const before = process.env.AUDIO_VERACITY_VERIFY
+    try {
+      process.env.AUDIO_VERACITY_VERIFY = 'off'
+      expect(V.isVerifyMode()).toBe(false)
+      process.env.AUDIO_VERACITY_VERIFY = ''
+      expect(V.isVerifyMode()).toBe(true)
+    } finally {
+      if (before === undefined) delete process.env.AUDIO_VERACITY_VERIFY
+      else process.env.AUDIO_VERACITY_VERIFY = before
+    }
+  })
+})
+
+describe('wordCoverage — immune to extra material, which similarity is not', () => {
+  it('is 1 when every expected word is somewhere in the decode', () => {
+    expect(V.wordCoverage('bore da', 'wel, bore da iawn', 'cy')).toBe(1)
+  })
+
+  it('tolerates spelling on long words and not on short ones', () => {
+    expect(V.wordCoverage('miðvikudagur', 'miðvikudaur', 'is')).toBe(1)   // 1 edit, 12 chars
+    expect(V.wordCoverage('ti', 'to', 'cy')).toBe(0)                      // 1 edit, 2 chars
+  })
+
+  it('falls when the decode stops early — the case similarity can carry', () => {
+    expect(V.wordCoverage('a b c d ee ff gg hh', 'a b c d', 'en')).toBeLessThan(V.VERIFY_MIN_COVERAGE)
+  })
+})
+
+describe('truncationSuspect — the guard priming actually needs', () => {
+  it('flags the truncated clips that primed to a complete sentence', () => {
+    // Real: "can you check the weather?" (6 syllables) truncated to 0.58 s of
+    // speech, primed decode complete at similarity 1.00. Seventeen of the 25
+    // labelled truncations rescued like that on 2026-08-24.
+    expect(V.truncationSuspect(0.58, 6).truncated).toBe(true)
+    expect(V.truncationSuspect(0.65, 7).truncated).toBe(true)
+  })
+
+  it('passes the Icelandic and Welsh clips verify mode exists to rescue', () => {
+    expect(V.truncationSuspect(1.10, 7).truncated).toBe(false)  // isl, 0.157 — the tightest
+    expect(V.truncationSuspect(2.68, 6).truncated).toBe(false)  // cym "Bore da…", 0.446
+  })
+
+  it('says NULL, never false, when it cannot measure', () => {
+    // A guard that cannot tell "clean" from "never ran" is the bug this module's
+    // header opens with.
+    expect(V.truncationSuspect(null, 6).truncated).toBe(null)
+    expect(V.truncationSuspect(1.2, 0).truncated).toBe(null)
+    expect(V.truncationSuspect(1.2, null).truncated).toBe(null)
+  })
+
+  it('sits between the two measured populations', () => {
+    // truncated max 0.132, good min 0.144 — the floor must be inside that gap or
+    // the numbers in the header no longer describe the code.
+    expect(V.VERIFY_MIN_SEC_PER_SYLLABLE).toBeGreaterThan(0.132)
+    expect(V.VERIFY_MIN_SEC_PER_SYLLABLE).toBeLessThan(0.144)
+  })
+})

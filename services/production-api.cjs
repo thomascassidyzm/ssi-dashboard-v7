@@ -32,6 +32,7 @@ const languageCodeService = require('./language-code-service.cjs')
 const { decomposeText } = require('./phrase-decomposer.cjs')
 const { isScriptModeUpload, normalizeProvenance, buildProvenanceContext, resolveTakeVoiceId, retainAndProcessTake } = require('./recording-upload-helpers.cjs')
 const speechGate = require('./recording-speech-gate.cjs')
+const veracity = require('./audio-veracity.cjs')
 const { planScriptTakeFiling, fileScriptTake } = require('./script-take-filing.cjs')
 const { planAttach, attachScriptTake } = require('./script-take-attach.cjs')
 const takeSupersede = require('./take-supersede.cjs')
@@ -5191,6 +5192,37 @@ async function handleRecordingUpload(req, res) {
       })
     }
 
+    // VERIFY AGAINST KNOWN TEXT. Tom's ruling, 2026-08-24: human recordings get
+    // the full check, always — "post-AGC level metering lies", and the gate
+    // above it answers "is this a read?" without ever asking "is it a read of
+    // THIS LINE?". A recordist who reads the previous line twice, or reads the
+    // right words into the wrong slot, passes every check before this one.
+    //
+    // ADVISORY, NEVER A REFUSAL — same ruling: "STT is never a hard course veto;
+    // voice-match and VAD stay the hard gates." The speech gate above refuses;
+    // this one records. The reason is measured, not cautious: on the four real
+    // cym takes whisper-small free-decoded a perfect read at CER 0.50
+    // (services/recording-speech-gate.cjs). Verify mode fixes that case — all 11
+    // good Welsh takes verified on 2026-08-24 — but a text score has no business
+    // costing a recordist a read it cannot itself listen to.
+    //
+    // The verdict rides back on the upload response so the recorder can show it,
+    // and lands in the log either way. Nothing is auto-flagged.
+    let textVerdict = null
+    if (gateText) {
+      textVerdict = await veracity.checkAudioVeracity(
+        processedBuffer,
+        gateText,
+        speechGate.languageForTake(courseCode, metadata.kind),
+        { meta: { audioId, courseCode, role: metadata.kind } },
+      )
+      if (textVerdict.checked === false) {
+        logger.warn(`[Upload] Text verification NOT RUN for ${audioId}: ${textVerdict.reason} — saved UNCHECKED against its script.`)
+      } else if (textVerdict.pass === false) {
+        logger.warn(`[Upload] Take ${audioId} does not verify against its script (${textVerdict.reason}, similarity ${textVerdict.similarity ?? 'n/a'}). ADVISORY — the take is being SAVED. want: ${JSON.stringify(String(gateText).slice(0, 80))} heard: ${JSON.stringify(String(textVerdict.primedDecode || textVerdict.decode).slice(0, 80))}`)
+      }
+    }
+
     // Upload processed audio to S3 at the canon mastered/{UUID}.mp3 key.
     // S3 user metadata rides in HTTP headers with a 2KB total cap — long target
     // text and chunk maps percent-encode at ~6-9 bytes per non-Latin char and
@@ -5520,6 +5552,18 @@ async function handleRecordingUpload(req, res) {
         durationMs: audioMeta.durationMs,
         format: audioMeta.format,
         sizeReduction: audioMeta.inputSize - audioMeta.outputSize
+      } : null,
+      // ADVISORY. The take is already saved by the time this is read — see the
+      // verify-against-known-text block above. `checked: false` means the
+      // question was never asked, which is not the same as a pass.
+      textVerification: textVerdict ? {
+        checked: textVerdict.checked,
+        verifies: textVerdict.pass,
+        reason: textVerdict.reason,
+        similarity: textVerdict.similarity ?? null,
+        coverage: textVerdict.coverage ?? null,
+        heard: textVerdict.primedDecode || textVerdict.decode || null,
+        advisory: true
       } : null
     })
   } catch (error) {
