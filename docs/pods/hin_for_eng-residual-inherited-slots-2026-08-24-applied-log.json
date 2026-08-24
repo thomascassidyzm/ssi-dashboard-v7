@@ -1,0 +1,92 @@
+{
+ "pod": "hin_for_eng:pod-1",
+ "course": "hin_for_eng",
+ "mode": "applied",
+ "generated_at": "2026-08-24T11:59:56.331Z",
+ "ancestors": [
+  "hin_for_eng:pod-0-retired-2026-08-24"
+ ],
+ "rows_total": 231,
+ "measured_inherited_slots": {
+  "sentence_audio_ids": 0,
+  "sentence_known_audio_ids": 3,
+  "takeg_audio_ids": 0,
+  "explainer_audio_id": 50
+ },
+ "scope_note": "explainer_audio_id is MEASURED ONLY — owned by the explainer relink worker",
+ "split_keyed_progress_rows": 0,
+ "stopped": null,
+ "whole_turn_failures": [],
+ "rows_excluded_bad_whole_turn": [],
+ "slots_planned": 3,
+ "slots_written": 3,
+ "rows": [
+  {
+   "id": "hin_for_eng:pod-1:SC03-S002",
+   "scene": 3,
+   "sentence": 2,
+   "speaker": "Sarah",
+   "target_text": "नमस्कार। मुझे एक कॉफ़ी चाहिए, कृपया। दूध के साथ लेकिन चीनी के बिना। पैक करके।",
+   "known_text": "Good afternoon. I'd like a coffee, please. With milk but with no sugar. To take away.",
+   "slots": [
+    {
+     "field": "sentence_known_audio_ids",
+     "changed": "target_text+known_text",
+     "before": [
+      "bcf5422c-3006-42da-858f-416234411d3f",
+      "6432f95e-a5e5-497c-92e4-2881dbf85e15",
+      "c548b135-30d9-4701-83c2-78d8e940835b",
+      "1dc0a491-ba89-4f19-9f1e-45864b2226fb"
+     ],
+     "after": null,
+     "action": "null",
+     "why": "no alive, in-cast clip set exists for this row's known text; falling back to the verified whole-turn clip"
+    }
+   ]
+  },
+  {
+   "id": "hin_for_eng:pod-1:SC04-S002",
+   "scene": 4,
+   "sentence": 2,
+   "speaker": "Sarah",
+   "target_text": "हेलो! माफ़ कीजिए, लेकिन मैं अभी बात नहीं कर सकती। मुझे अभी घर जाना है। क्या हम कल बात कर सकते हैं?",
+   "known_text": "Hello! I'm sorry but I can't talk at the moment. I need to go home now. Can we talk tomorrow?",
+   "slots": [
+    {
+     "field": "sentence_known_audio_ids",
+     "changed": "known_text",
+     "before": [
+      "f764b6c8-7828-402a-8414-8bab849e43dc",
+      "dfe95c05-410d-4431-8046-876efda1857d",
+      "1887b37d-413c-46aa-9e57-41722744db75",
+      "3f7c4f71-9451-4102-9d17-22b90fb0f5d1"
+     ],
+     "after": null,
+     "action": "null",
+     "why": "no alive, in-cast clip set exists for this row's known text; falling back to the verified whole-turn clip"
+    }
+   ]
+  },
+  {
+   "id": "hin_for_eng:pod-1:SC07-S013",
+   "scene": 7,
+   "sentence": 13,
+   "speaker": "Cafe Customer 3",
+   "target_text": "सुप्रभात। दो अमेरिकानो और एक कप चाय, कृपया।",
+   "known_text": "Good morning. Two Americanos and a cup of tea, please.",
+   "slots": [
+    {
+     "field": "sentence_known_audio_ids",
+     "changed": "target_text+known_text",
+     "before": [
+      "a85aa3e9-ad8b-4339-ab3f-71f253f8e195",
+      "89e90b96-86ee-4314-8f74-161c1964dbc3"
+     ],
+     "after": null,
+     "action": "null",
+     "why": "no alive, in-cast clip set exists for this row's known text; falling back to the verified whole-turn clip"
+    }
+   ]
+  }
+ ]
+}

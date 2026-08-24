@@ -1,0 +1,71 @@
+{
+ "pod": "nld_for_eng:pod-1",
+ "course": "nld_for_eng",
+ "mode": "applied",
+ "generated_at": "2026-08-24T11:59:59.822Z",
+ "ancestors": [
+  "nld_for_eng:pod-0-retired-2026-08-24"
+ ],
+ "rows_total": 231,
+ "measured_inherited_slots": {
+  "sentence_audio_ids": 0,
+  "sentence_known_audio_ids": 1,
+  "takeg_audio_ids": 1,
+  "explainer_audio_id": 0
+ },
+ "scope_note": "explainer_audio_id is MEASURED ONLY — owned by the explainer relink worker",
+ "split_keyed_progress_rows": 0,
+ "stopped": null,
+ "whole_turn_failures": [],
+ "rows_excluded_bad_whole_turn": [],
+ "slots_planned": 2,
+ "slots_written": 2,
+ "rows": [
+  {
+   "id": "nld_for_eng:pod-1:SC04-S002",
+   "scene": 4,
+   "sentence": 2,
+   "speaker": "Sarah",
+   "target_text": "Hallo! Het spijt me, maar ik kan nu niet praten. Ik moet nu naar huis. Kunnen we morgen praten?",
+   "known_text": "Hello! I'm sorry but I can't talk at the moment. I need to go home now. Can we talk tomorrow?",
+   "slots": [
+    {
+     "field": "sentence_known_audio_ids",
+     "changed": "known_text",
+     "before": [
+      "4e36a247-ff0f-4962-a8f3-8b4a0eb75158",
+      "bedad99b-c490-4a27-94c7-03fd1cfe74d7",
+      "b4a78d43-0da2-4821-b43a-e01c4c9a5c8d",
+      "b8476cee-cc1d-4f41-aa4a-d19136449495"
+     ],
+     "after": null,
+     "action": "null",
+     "why": "no alive, in-cast clip set exists for this row's known text; falling back to the verified whole-turn clip"
+    }
+   ]
+  },
+  {
+   "id": "nld_for_eng:pod-1:SC05-S002",
+   "scene": 5,
+   "sentence": 2,
+   "speaker": "Sarah",
+   "target_text": "Ja, heel erg. Ik ben nu erg moe. Welterusten. Tot morgen.",
+   "known_text": "Yes, very. I'm very tired now. Good night. See you tomorrow.",
+   "slots": [
+    {
+     "field": "takeg_audio_ids",
+     "changed": "target_text+known_text",
+     "before": [
+      null,
+      "3a141390-24e7-49f6-8924-b2e50509f5d2",
+      null,
+      null
+     ],
+     "after": null,
+     "action": "null",
+     "why": "no alive, in-cast clip set exists for this row's target text; falling back to the verified whole-turn clip"
+    }
+   ]
+  }
+ ]
+}

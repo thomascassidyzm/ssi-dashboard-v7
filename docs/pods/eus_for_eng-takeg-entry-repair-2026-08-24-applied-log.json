@@ -1,0 +1,43 @@
+{
+ "pod": "eus_for_eng:pod-1",
+ "course": "eus_for_eng",
+ "mode": "applied",
+ "generated_at": "2026-08-24T12:00:10.619Z",
+ "scope": {
+  "scene": "4",
+  "sentence": "2"
+ },
+ "split_keyed_progress_rows": 0,
+ "whole_turn_failures": [],
+ "rows_excluded_bad_whole_turn": [],
+ "rows_planned": 1,
+ "rows_written": 1,
+ "post_apply_takeg_issues": [],
+ "rows": [
+  {
+   "id": "eus_for_eng:pod-1:SC04-S002",
+   "scene": 4,
+   "sentence": 2,
+   "speaker": "Sarah",
+   "target_text": "Kaixo! Barkatu, baina orain ezin dut hitz egin. Orain etxera joan behar dut. Bihar hitz egin dezakegu?",
+   "before": [
+    "b5c38a00-5eff-4218-bcbe-b9f77d7f769b",
+    "6cf2cafa-809c-4793-b690-d1ce90df52f6",
+    null
+   ],
+   "after": [
+    "b5c38a00-5eff-4218-bcbe-b9f77d7f769b",
+    null,
+    null
+   ],
+   "entries": [
+    {
+     "index": 1,
+     "audio_id": "6cf2cafa-809c-4793-b690-d1ce90df52f6",
+     "text": "orain ezin dut hitz egin. Orain, etxera joan behar dut.",
+     "cleared": true
+    }
+   ]
+  }
+ ]
+}

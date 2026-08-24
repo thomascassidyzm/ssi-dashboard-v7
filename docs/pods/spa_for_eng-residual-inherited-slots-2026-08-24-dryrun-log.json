@@ -1,0 +1,53 @@
+{
+ "pod": "spa_for_eng:pod-1",
+ "course": "spa_for_eng",
+ "mode": "dryrun",
+ "generated_at": "2026-08-24T12:00:29.679Z",
+ "ancestors": [
+  "spa_for_eng:pod-0-retired-2026-08-22",
+  "spa_for_eng:pod-1-retired-2026-08-24"
+ ],
+ "rows_total": 231,
+ "measured_inherited_slots": {
+  "sentence_audio_ids": 0,
+  "sentence_known_audio_ids": 0,
+  "takeg_audio_ids": 0,
+  "explainer_audio_id": 47
+ },
+ "scope_note": "explainer_audio_id is MEASURED ONLY — owned by the explainer relink worker",
+ "split_keyed_progress_rows": 0,
+ "stopped": null,
+ "whole_turn_failures": [
+  "s8/5 target_audio_id voice es-ES-ElviraNeural is not Bar Customer 2's cast target voice yis75yfp",
+  "s8/10 target_audio_id voice es-ES-ElviraNeural is not Bar Customer 2's cast target voice yis75yfp",
+  "s8/15 target_audio_id voice es-ES-ElviraNeural is not Bar Customer 2's cast target voice yis75yfp",
+  "s9/4 target_audio_id voice es-ES-ElviraNeural is not Diner 2's cast target voice yis75yfp",
+  "s9/10 target_audio_id voice es-ES-ElviraNeural is not Diner 2's cast target voice yis75yfp",
+  "s9/13 target_audio_id voice es-ES-ElviraNeural is not Diner 2's cast target voice yis75yfp",
+  "s9/17 target_audio_id voice es-ES-ElviraNeural is not Diner 2's cast target voice yis75yfp",
+  "s16/2 target_audio_id text mismatch",
+  "s19/2 target_audio_id text mismatch",
+  "s22/1 target_audio_id text mismatch",
+  "s22/5 target_audio_id text mismatch",
+  "s22/9 target_audio_id text mismatch",
+  "s22/11 target_audio_id text mismatch"
+ ],
+ "rows_excluded_bad_whole_turn": [
+  "spa_for_eng:pod-1:SC08-S005",
+  "spa_for_eng:pod-1:SC08-S010",
+  "spa_for_eng:pod-1:SC08-S015",
+  "spa_for_eng:pod-1:SC09-S004",
+  "spa_for_eng:pod-1:SC09-S010",
+  "spa_for_eng:pod-1:SC09-S013",
+  "spa_for_eng:pod-1:SC09-S017",
+  "spa_for_eng:pod-1:SC16-S002",
+  "spa_for_eng:pod-1:SC19-S002",
+  "spa_for_eng:pod-1:SC22-S001",
+  "spa_for_eng:pod-1:SC22-S005",
+  "spa_for_eng:pod-1:SC22-S009",
+  "spa_for_eng:pod-1:SC22-S011"
+ ],
+ "slots_planned": 0,
+ "slots_written": 0,
+ "rows": []
+}
