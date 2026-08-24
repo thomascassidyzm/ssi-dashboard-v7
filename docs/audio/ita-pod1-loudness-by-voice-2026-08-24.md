@@ -97,6 +97,29 @@ spectral, not level.
 
 ---
 
+## It is not just Italian
+
+I had a second pass measure other courses while I built the fix, and the answer changes the size of
+this. **Every course sampled has the same shape**: full-band gaps under 2 dB, and a 3.9–5.8 dB
+spread once you model a phone speaker.
+
+| course | full-band worst gap | phone-band spread |
+|---|---|---|
+| Italian pod 1 (xAI) | 0.5 dB | 4.1 dB |
+| French pod 1 (xAI) | 2.15 dB | 2.4 dB |
+| Romanian pod 1 (**Azure**) | 0.55 dB | 3.7 dB |
+| the shared English corpus | 0.2 dB | **4.2 dB** |
+
+So it is not Enzo, and it is not xAI, and it is not Italian. It is that **we have been mastering to
+a meter that cannot hear what a phone plays**, everywhere, and Enzo happened to be the voice extreme
+enough for you to catch it. The shared English corpus — the one every learner meets whatever they
+are learning — has the widest spread of the lot.
+
+Worth knowing: the quietest voice on the meter is usually *not* the quietest voice on a phone. In
+Romanian and in the English corpus, the worst phone-band voice looked completely normal full-band.
+
+---
+
 ## The one decision for you
 
 **Do you want Enzo lifted above 500 Hz so he matches the others on a phone?**
@@ -111,6 +134,11 @@ That is a taste question about a voice, so it is yours and I have not applied it
 - **B — no, leave his timbre alone.** The loudness fix stands on its own and Enzo stays about 2 dB
   down on a phone.
 - **C — not sure, let me listen again.**
+
+Given the cross-course result, the honest version of A is bigger than Enzo: it would mean measuring
+every voice's phone-band loss once and giving each its own tilt, estate-wide. That is a real piece of
+work and I have not started it — but it is the thing that actually delivers "volume similarity", and
+I would recommend it if you like what the fourth clip sounds like.
 
 **And a second, separate question**: the pipeline fix only affects **future** renders. Everything
 already rendered — Italian Pod 1 included — is still at −17. Re-mastering the existing estate costs
