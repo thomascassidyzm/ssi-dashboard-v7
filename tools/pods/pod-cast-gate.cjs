@@ -279,6 +279,37 @@ function exchangeEdges ({ rows, speakers, track = 'target' }) {
 const whereIssue = (i) => `s${i.scene}/${i.sentence}${i.speaker ? ` ${canonicalSpeakerName(i.speaker) || i.speaker}` : ''} ${i.slot}`
 
 /**
+ * THE ADDRESSING RULE (Tom, 2026-08-24). A same-voice collision is a property of
+ * (script × CAST), not of the script. Report one as a bare scene number and it
+ * reads as a property of the script alone, so it travels to a course with a
+ * different cast and fires on scenes that are perfectly alternated.
+ *
+ * That is not hypothetical. `docs/pods/cym-n-pod0-aran-self-dialogue-audit-2026-08-23.md`
+ * published its findings as a list of scene numbers. Scenes 13 and 14 were on
+ * that list, truthfully, because Welsh pod-0 was read by ONE human who voiced
+ * both Tourist and Local. Carried to Italian — where Tourist is Ara and Local is
+ * Enzo — the same "finding" pointed at two scenes that alternate perfectly.
+ * Tom's verdict on those scenes: "this is completely fine - not a problem", and
+ * on the tool: "the model that flagged these is clearly not very smart".
+ *
+ * The rule, verbatim: **any same-voice finding must be reported as
+ * (course, scene, speaker-pair, voice), never as a bare scene number.**
+ *
+ * This is a rule about REPORTING, not about which findings fire. Nothing here
+ * changes a verdict; it changes what a verdict says about itself, so that a
+ * finding cannot be re-used against a pod it was never measured on.
+ *
+ * @param {{course:string|null, a:string, b:string, voice:string, turns:number, scenes:number[]}} p
+ */
+function sameVoiceAddress (p) {
+  const where = p.scenes && p.scenes.length
+    ? `scene${p.scenes.length === 1 ? '' : 's'} ${p.scenes.join(', ')}`
+    : 'scene unknown'
+  return `${p.course || 'course unknown'} ${where}: ${p.a}↔${p.b} both on ${p.voice} ` +
+    `(${p.turns} turn${p.turns === 1 ? '' : 's'})`
+}
+
+/**
  * @param {object} o
  * @param {Array<object>} o.rows the pod's sentence rows, in turn order (global_order).
  *        Needs speaker/scene_number/sentence_number always; for the clip checks
@@ -288,9 +319,11 @@ const whereIssue = (i) => `s${i.scene}/${i.sentence}${i.speaker ? ` ${canonicalS
  * @param {Object<string,{text:string,voice_id:string}>|null} [o.clips]
  *        every course_audio row referenced by any of the six slots. Omit it and
  *        the clip checks are SKIPPED (old behaviour, reported as such).
+ * @param {string|null} [o.course] the course this pod belongs to. REPORTING ONLY —
+ *        it changes no verdict. See the addressing rule above; pass it.
  * @returns {{ok:boolean, failures:string[], ...evidence}}
  */
-function checkPodCast ({ rows, speakers, track = 'target', clips = null, explainerBlocking = false }) {
+function checkPodCast ({ rows, speakers, track = 'target', clips = null, explainerBlocking = false, course = null }) {
   const cast = speakers || {}
   const nameOf = (r) => canonicalSpeakerName(r.speaker)
   const voiceOf = (name) => {
@@ -305,11 +338,34 @@ function checkPodCast ({ rows, speakers, track = 'target', clips = null, explain
   const voicesInUse = [...new Set(speakersInScript.map(voiceOf).filter(Boolean))].sort()
 
   const { weights } = buildExchangeWeights(cRows, nameOf)
+
+  // Which scenes each exchange pair actually occurs in. Walked separately from
+  // buildExchangeWeights, whose return shape belongs to the solver and is left
+  // alone — this adds ADDRESSING to a finding, it does not change which pairs
+  // fire. Same adjacency rule, so the scene list can never disagree with the
+  // pair list.
+  const scenesByPair = new Map()
+  for (let i = 1; i < cRows.length; i++) {
+    const prev = cRows[i - 1], cur = cRows[i]
+    if (prev.scene_number !== cur.scene_number) continue
+    const a = nameOf(prev), b = nameOf(cur)
+    if (!a || !b || a === b) continue
+    const key = a < b ? `${a}|${b}` : `${b}|${a}`
+    if (!weights.has(key)) continue // a NON_EXCHANGE-dropped adjacency
+    if (!scenesByPair.has(key)) scenesByPair.set(key, new Set())
+    scenesByPair.get(key).add(cur.scene_number)
+  }
+
   const sameVoicePairs = []
   for (const [key, turns] of weights) {
     const [a, b] = key.split('|')
     const va = voiceOf(a), vb = voiceOf(b)
-    if (va && vb && va === vb) sameVoicePairs.push({ a, b, voice: va, turns })
+    if (va && vb && va === vb) {
+      sameVoicePairs.push({
+        course, a, b, voice: va, turns,
+        scenes: [...(scenesByPair.get(key) || [])].sort((x, y) => x - y),
+      })
+    }
   }
 
   const failures = []
@@ -322,8 +378,9 @@ function checkPodCast ({ rows, speakers, track = 'target', clips = null, explain
       '— casting is per conversation (one male, one female), not per character')
   }
   if (sameVoicePairs.length) {
+    // ADDRESSED, per the 2026-08-24 rule: course, scene, speaker-pair, voice.
     failures.push(`${sameVoicePairs.length} same-voice exchange pair(s) — a character answering themselves: ` +
-      sameVoicePairs.map(p => `${p.a}↔${p.b} on ${p.voice} (${p.turns} turn${p.turns === 1 ? '' : 's'})`).join('; '))
+      sameVoicePairs.map(sameVoiceAddress).join('; '))
   }
 
   const { failures: clipFailures, ...clipReport } =
@@ -557,7 +614,11 @@ async function loadClipsForRows (db, rows, chunkSize = 500) {
  * the six-column clip check for free — the extra key rides through the spread.
  */
 async function loadPodForCastCheck (db, podId, { withClips = true } = {}) {
-  const pod = (await db.query('select id, speakers from listening_pods where id = $1', [podId])).rows[0]
+  // course_code is selected so that callers doing the idiomatic
+  // `checkPodCast(await loadPodForCastCheck(db, id))` get the addressing rule
+  // satisfied for free — every same-voice finding names its own course.
+  const pod = (await db.query(
+    'select id, course_code, speakers from listening_pods where id = $1', [podId])).rows[0]
   if (!pod) return null
   const rows = (await db.query(
     `select id, scene_number, sentence_number, global_order, speaker, known_text, target_text,
@@ -566,13 +627,14 @@ async function loadPodForCastCheck (db, podId, { withClips = true } = {}) {
        from listening_pod_sentences where pod_id = $1
       order by global_order, scene_number, sentence_number`, [podId])).rows
   const clips = withClips ? await loadClipsForRows(db, rows) : null
-  return { rows, speakers: pod.speakers, clips }
+  return { rows, speakers: pod.speakers, clips, course: pod.course_code }
 }
 
 module.exports = {
-  exchangeEdges,
   checkPodCast,
   checkPodClips,
+  exchangeEdges,
+  sameVoiceAddress,
   loadPodForCastCheck,
   loadClipsForRows,
   normText,

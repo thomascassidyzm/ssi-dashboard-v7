@@ -100,6 +100,7 @@ function buildAudioRef (id, revision) {
  */
 function buildPodScript ({ pod, rows, track = 'target', clips = null }) {
   const cast = (pod && pod.speakers) || {}
+  const course = (pod && pod.course_code) || null
   const cRows = (rows || []).slice().sort((a, b) => (a.global_order || 0) - (b.global_order || 0))
 
   // --- voice per line, via the cast map, with a readable identity ------------
@@ -118,7 +119,7 @@ function buildPodScript ({ pod, rows, track = 'target', clips = null }) {
   }
 
   // --- the gate's verdict, unmodified ---------------------------------------
-  const gate = checkPodCast({ rows: cRows, speakers: cast, track, clips })
+  const gate = checkPodCast({ rows: cRows, speakers: cast, track, clips, course })
   const edges = exchangeEdges({ rows: cRows, speakers: cast, track })
 
   const violations = []
@@ -129,9 +130,24 @@ function buildPodScript ({ pod, rows, track = 'target', clips = null }) {
     if (!flagsByIndex.has(index)) flagsByIndex.set(index, [])
     flagsByIndex.get(index).push(v)
   }
+  /**
+   * THE ADDRESSING RULE (Tom, 2026-08-24): "any same-voice finding must be
+   * reported as (course, scene, speaker-pair, voice), never as a bare scene
+   * number." Every violation therefore carries `course` and, where it is about
+   * voices, structured `speakers` and `voice` fields alongside the prose — so a
+   * consumer can tell that a finding belongs to THIS course's cast without
+   * parsing the message, and cannot carry a scene number to a pod cast
+   * differently. The Welsh audit's scene-number list fired on Italian scenes 13
+   * and 14, which alternate perfectly, because it had no way to say this.
+   *
+   * This adds addressing only. Which findings fire is untouched.
+   */
   const add = (v, indices = []) => {
-    violations.push(v)
-    for (const i of indices) flag(i, v)
+    // One object, shared by the violations list and the per-line flags, exactly
+    // as before — the addressing is added to it, not to a copy of it.
+    const addressed = { course, ...v }
+    violations.push(addressed)
+    for (const i of indices) flag(i, addressed)
   }
 
   // (c) the cast is not exactly two target voices — the gate's own number.
@@ -161,7 +177,11 @@ function buildPodScript ({ pod, rows, track = 'target', clips = null }) {
         type: 'same-voice-exchange',
         severity: 'fail',
         scene: e.scene,
-        message: `${e.a} → ${e.b} both on ${(va && va.name) || e.voiceA} — one voice talking to itself`,
+        speakers: [e.a, e.b],
+        voice: e.voiceA,
+        voice_name: (va && va.name) || null,
+        message: `${course ? `${course} ` : ''}scene ${e.scene}: ${e.a} → ${e.b} both on ` +
+          `${(va && va.name) || e.voiceA} — one voice talking to itself`,
       }, where)
       continue
     }
@@ -170,7 +190,9 @@ function buildPodScript ({ pod, rows, track = 'target', clips = null }) {
         type: 'gender-uncheckable',
         severity: 'warn',
         scene: e.scene,
-        message: `${e.a} → ${e.b}: cannot check male-female — ` +
+        speakers: [e.a, e.b],
+        voice: [va ? va.voice_id : null, vb ? vb.voice_id : null],
+        message: `${course ? `${course} ` : ''}scene ${e.scene}: ${e.a} → ${e.b}: cannot check male-female — ` +
           [[va, e.a], [vb, e.b]].filter(([v]) => !v || !v.gender).map(([v, n]) => `${n}'s voice ${v ? v.voice_id : '(none)'} has no known gender`).join('; '),
       }, where)
       continue
@@ -180,7 +202,11 @@ function buildPodScript ({ pod, rows, track = 'target', clips = null }) {
         type: 'same-gender-exchange',
         severity: 'fail',
         scene: e.scene,
-        message: `${e.a} (${va.name || va.voice_id}, ${genderLabel(va.gender)}) → ${e.b} (${vb.name || vb.voice_id}, ${genderLabel(vb.gender)}) — not male-female`,
+        speakers: [e.a, e.b],
+        voice: [va.voice_id, vb.voice_id],
+        voice_name: [va.name || null, vb.name || null],
+        message: `${course ? `${course} ` : ''}scene ${e.scene}: ` +
+          `${e.a} (${va.name || va.voice_id}, ${genderLabel(va.gender)}) → ${e.b} (${vb.name || vb.voice_id}, ${genderLabel(vb.gender)}) — not male-female`,
       }, where)
     }
   }
@@ -204,11 +230,16 @@ function buildPodScript ({ pod, rows, track = 'target', clips = null }) {
       if (run.length >= RUN_THRESHOLD) {
         const v = voiceFor(cRows[run[0]].speaker)
         const who = [...new Set(run.map(i => canonicalSpeakerName(cRows[i].speaker)))]
+        const sc = sceneKey === '_' ? null : sceneKey
         add({
           type: 'same-voice-run',
           severity: 'warn',
-          scene: sceneKey === '_' ? null : sceneKey,
-          message: `${run.length} consecutive lines on one voice — ${(v && v.name) || 'unknown voice'}` +
+          scene: sc,
+          speakers: who,
+          voice: (v && v.voice_id) || null,
+          voice_name: (v && v.name) || null,
+          message: `${course ? `${course} ` : ''}scene ${sc == null ? '?' : sc}: ` +
+            `${run.length} consecutive lines on one voice — ${(v && v.name) || 'unknown voice'}` +
             `${v && v.gender ? `, ${genderLabel(v.gender)}` : ''} (${who.join(', ')})`,
         }, run)
       }
@@ -230,11 +261,16 @@ function buildPodScript ({ pod, rows, track = 'target', clips = null }) {
     if (spoken.length >= RUN_THRESHOLD && sceneVoices.length === 1 && sceneVoices[0]) {
       const v = voiceFor(cRows[spoken[0]].speaker)
       const hadNarrator = idxs.length > spoken.length
+      const sc = sceneKey === '_' ? null : sceneKey
       add({
         type: 'single-voice-scene',
         severity: 'warn',
-        scene: sceneKey === '_' ? null : sceneKey,
-        message: `Every one of the ${spoken.length} spoken lines in this scene is ${(v && v.name) || sceneVoices[0]}` +
+        scene: sc,
+        speakers: [...new Set(spoken.map(i => canonicalSpeakerName(cRows[i].speaker)))],
+        voice: sceneVoices[0],
+        voice_name: (v && v.name) || null,
+        message: `${course ? `${course} ` : ''}scene ${sc == null ? '?' : sc}: ` +
+          `every one of the ${spoken.length} spoken lines in this scene is ${(v && v.name) || sceneVoices[0]}` +
           `${v && v.gender ? `, the ${genderLabel(v.gender)}` : ''}${hadNarrator ? ' — apart from the Narrator' : ''}`,
       }, spoken)
     }

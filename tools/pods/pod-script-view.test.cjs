@@ -57,6 +57,7 @@ describe('the viewer flags what Tom heard', () => {
     expect(v).toBeTruthy()
     expect(v.scene).toBe(18)
     expect(v.message).toMatch(/10 spoken lines/)
+    expect(v.message).toMatch(/^ita_for_eng scene 18: /)   // the addressing rule
     expect(v.message).toMatch(/Ara/)
     expect(v.message).toMatch(/female voice/)
     expect(v.message).toMatch(/apart from the Narrator/)
@@ -65,7 +66,7 @@ describe('the viewer flags what Tom heard', () => {
   it('flags the ten-line run on one voice', () => {
     const v = view.violations.find(x => x.type === 'same-voice-run')
     expect(v).toBeTruthy()
-    expect(v.message).toMatch(/^10 consecutive lines on one voice/)
+    expect(v.message).toMatch(/^ita_for_eng scene 18: 10 consecutive lines on one voice/)
   })
 
   it('marks the ten Learner lines and leaves the Narrator line clean', () => {
@@ -120,6 +121,7 @@ describe('the male-female rule', () => {
     expect(f).toBeTruthy()
     expect(f.severity).toBe('fail')
     expect(f.message).toMatch(/not male-female/)
+    expect(f.message).toMatch(/^ita_for_eng scene 3: /)
   })
 
   it('says "cannot check", never "passes", when a voice has no known gender', () => {
@@ -128,7 +130,8 @@ describe('the male-female rule', () => {
     const v = buildPodScript({ pod: { ...pod, speakers: unknown }, rows })
     const u = v.violations.find(x => x.type === 'gender-uncheckable')
     expect(u).toBeTruthy()
-    expect(u.message).toMatch(/cannot check male-female/)
+    expect(u.message).toMatch(/^ita_for_eng scene 4: Anna → Guest: cannot check male-female/)
+    expect(u.speakers).toEqual(["Anna", "Guest"])
     expect(v.summary.unknown_gender_voices).toContain('not-in-any-catalogue')
     // and it must NOT have been silently counted as a good male-female exchange
     expect(v.violations.filter(x => x.type === 'same-gender-exchange')).toEqual([])
@@ -262,5 +265,80 @@ describe("Tom's flagging correction (ita scenes 13/14 vs 17)", () => {
     ]
     const v = buildPodScript({ pod: { ...pod, speakers: twoHander }, rows })
     expect(v.violations.some(x => x.type === 'single-voice-scene')).toBe(true)
+  })
+})
+
+// ---------------------------------------------------------------------------
+// THE ADDRESSING RULE (Tom, 2026-08-24). Verbatim: "any same-voice finding must
+// be reported as (course, scene, speaker-pair, voice), never as a bare scene
+// number."
+//
+// The cause is concrete. docs/pods/cym-n-pod0-aran-self-dialogue-audit-2026-08-23.md
+// published "Scene 13 (directions), Tourist ↔ Local — 8 consecutive instances"
+// as a scene-number list. It was TRUE of Welsh pod-0, where one human read every
+// part. Carried to Italian, where Tourist is Ara and Local is Enzo, it pointed
+// at a scene that alternates perfectly. Tom: "this is completely fine - not a
+// problem"; on the tool, "the model that flagged these is clearly not very
+// smart".
+//
+// These tests assert the REPORTING shape only. The last one asserts that the
+// same script, judged against two different casts, produces findings that can be
+// told apart — which is the property a bare scene number destroys.
+// ---------------------------------------------------------------------------
+
+describe('the addressing rule: (course, scene, speaker-pair, voice)', () => {
+  const selfDialogue = cast({ Tourist: [ARA, 'f'], Local: [ARA, 'f'], Narrator: [LEO, 'm'] })
+  const alternating = cast({ Tourist: [ARA, 'f'], Local: [LEO, 'm'], Narrator: [LEO, 'm'] })
+  const scene13 = [
+    line(13, 1, 'Tourist'), line(13, 2, 'Local'), line(13, 3, 'Tourist'),
+    line(13, 4, 'Local'), line(13, 5, 'Tourist'), line(13, 6, 'Local'),
+  ]
+
+  it('carries course, scene, speaker-pair and voice on a same-voice exchange', () => {
+    const v = buildPodScript({ pod: { ...pod, speakers: selfDialogue }, rows: scene13 })
+    const f = v.violations.find(x => x.type === 'same-voice-exchange')
+    expect(f).toBeTruthy()
+    expect(f.course).toBe('ita_for_eng')
+    expect(f.scene).toBe(13)
+    expect(f.speakers.slice().sort()).toEqual(['Local', 'Tourist'])
+    expect(f.voice).toBe('ara')
+    expect(f.message).toMatch(/^ita_for_eng scene 13: /)
+  })
+
+  it('puts the course on EVERY violation, not only the voice ones', () => {
+    const v = buildPodScript({ pod: { ...pod, speakers: selfDialogue }, rows: scene13 })
+    expect(v.violations.length).toBeGreaterThan(0)
+    expect(v.violations.every(x => x.course === 'ita_for_eng')).toBe(true)
+  })
+
+  it('addresses the gate\'s own same-voice failure line the same way', () => {
+    const g = checkPodCast({ rows: scene13, speakers: selfDialogue, track: 'target', course: 'ita_for_eng' })
+    expect(g.sameVoicePairs).toHaveLength(1)
+    expect(g.sameVoicePairs[0]).toMatchObject({ course: 'ita_for_eng', voice: 'ara', scenes: [13] })
+    expect(g.sameVoicePairs[0].a).toBe('Local')
+    expect(g.sameVoicePairs[0].b).toBe('Tourist')
+    const line = g.failures.find(f => f.includes('same-voice exchange pair'))
+    expect(line).toMatch(/ita_for_eng scene 13: Local↔Tourist both on ara/)
+  })
+
+  it('says so honestly when the course was not supplied, rather than implying none', () => {
+    const g = checkPodCast({ rows: scene13, speakers: selfDialogue, track: 'target' })
+    expect(g.sameVoicePairs[0].course).toBe(null)
+    expect(g.failures.find(f => f.includes('same-voice'))).toMatch(/course unknown scene 13/)
+  })
+
+  // The whole point: the SAME scene 13, two casts, and the finding is a property
+  // of the pair — so a Welsh finding can no longer be read as an Italian one.
+  it('fires on the self-dialogue cast and not on the alternating cast', () => {
+    const bad = buildPodScript({ pod: { ...pod, speakers: selfDialogue }, rows: scene13 })
+    const good = buildPodScript({ pod: { ...pod, speakers: alternating }, rows: scene13 })
+    expect(bad.violations.some(x => x.type === 'same-voice-exchange')).toBe(true)
+    expect(good.violations.filter(x => x.type === 'same-voice-exchange')).toEqual([])
+  })
+
+  it('changes reporting only — the same findings still fire', () => {
+    const g = checkPodCast({ rows: scene13, speakers: alternating, track: 'target', course: 'ita_for_eng' })
+    expect(g.sameVoicePairs).toEqual([])
+    expect(g.ok).toBe(true)
   })
 })
