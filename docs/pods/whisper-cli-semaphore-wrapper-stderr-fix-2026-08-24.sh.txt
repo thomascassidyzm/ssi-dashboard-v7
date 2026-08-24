@@ -1,0 +1,116 @@
+#!/bin/bash
+# Global concurrency cap for whisper-cli, installed AT the binary path
+# (~/.local/bin/whisper-cli) with the real binary moved to whisper-cli.real.
+#
+# Why here and not in config: whisper is spawned from two places
+# (services/tts-service.cjs phonology gate, services/audio-veracity.cjs QC),
+# and both caps (XAI_PHONO_CONCURRENCY, AUDIO_CONCURRENCY) are PER NODE
+# PROCESS. Concurrent course rebuilds run one phase8 process each, so no env
+# var can bound the total. A flock semaphore on the binary is the only place
+# that sees every caller, in every run, present and future — and because each
+# clip spawns a fresh whisper-cli, it applies to already-running rebuilds
+# without restarting them.
+#
+# Knobs, all env-overridable per call:
+#   WHISPER_MAX_CONCURRENT  slots in the semaphore   (default 3)
+#   WHISPER_MAX_THREADS     clamp on -t              (default 2)
+#   WHISPER_NICE            nice level               (default 15)
+#   WHISPER_SCHED_IDLE      1 = SCHED_IDLE via chrt  (default 1)
+# 3 x 2 = 6 threads on a 12-core box, so whisper can never claim more than half
+# the machine even saturated — and at SCHED_IDLE it claims far less than that
+# whenever anything else wants the CPU. Was 4 slots at plain nice until
+# 2026-08-07, when the box hit load 13.9/12 with the cap already in place:
+# bounding the process COUNT does not bound contention, only priority does.
+#
+# Escape hatch: WHISPER_NO_SEMAPHORE=1 bypasses entirely (interactive use —
+# a human waiting on one transcription should never queue behind a rebuild).
+
+set -u
+REAL="${BASH_SOURCE[0]%/*}/whisper-cli.real"
+
+if [ ! -x "$REAL" ]; then
+  echo "whisper-cli-cap: real binary missing at $REAL" >&2
+  exit 127
+fi
+
+if [ "${WHISPER_NO_SEMAPHORE:-0}" = "1" ]; then
+  exec "$REAL" "$@"
+fi
+
+# Auto-bypass for interactive transcription. command-surface's voice path
+# (server.js execNiced -> WHISPER_BIN) always passes --prompt, because it feeds
+# whisper a lexicon of Tom's names and jargon; the batch callers
+# (audio-veracity.cjs, tts-service.cjs phonology gate) never pass it. Detecting
+# that here means a human waiting on one transcription skips the queue with no
+# change to command-surface and no restart of a running server.
+for a in "$@"; do
+  case "$a" in
+    --prompt|*/cs-vstream-*) exec "$REAL" "$@" ;;
+  esac
+done
+
+SLOTS="${WHISPER_MAX_CONCURRENT:-3}"
+MAXT="${WHISPER_MAX_THREADS:-2}"
+
+# Clamp -t so N concurrent processes can't multiply into N*threads runqueue.
+args=()
+prev=""
+for a in "$@"; do
+  if [ "$prev" = "-t" ] || [ "$prev" = "--threads" ]; then
+    if [ "$a" -gt "$MAXT" ] 2>/dev/null; then a="$MAXT"; fi
+  fi
+  args+=("$a")
+  prev="$a"
+done
+
+SEMDIR="${WHISPER_SEM_DIR:-/tmp/whisper-sem}"
+mkdir -p "$SEMDIR" 2>/dev/null || true
+
+# Poll the slot files rather than blocking on one: whichever frees first wins,
+# and a killed waiter leaves nothing behind. Clips are seconds long, so a
+# 250ms poll costs nothing measurable.
+while true; do
+  for i in $(seq 1 "$SLOTS"); do
+    # Scope the 2>/dev/null to THIS redirection only. Written bare on an `exec`
+    # with no command, it permanently redirected the wrapper's stderr — and the
+    # exec'd whisper inherited it, so every caller got 0 bytes of stderr. That
+    # silently blinded services/tts-service.cjs's xAI phonology gate, which
+    # parses "auto-detected language: X" off stderr and treats an unparseable
+    # result as a pass. Inert from this wrapper's install (2026-08-07) until
+    # 2026-08-24. Braces keep the redirect local to the compound command.
+    { exec {fd}>"$SEMDIR/slot$i"; } 2>/dev/null || continue
+    if flock -n "$fd"; then
+      # flock survives exec: the slot stays held for whisper's whole life and
+      # is released by the kernel when it exits, however it exits.
+      #
+      # Priority, not just the cap (Tom's ruling 2026-08-07): whisper is a
+      # BACKGROUND-PRIORITY CITIZEN — it may soak idle cores, but it must yield
+      # instantly to real work, and clips queue rather than contend. The cap
+      # alone cannot do that: 3 whisper processes at normal priority still take
+      # their full share of a busy runqueue, which is how the box reached load
+      # 13.9/12 with the cap already installed.
+      #
+      # Three layers, weakest to strongest:
+      #   SCHED_IDLE (chrt --idle) — the real lever. A SCHED_IDLE task runs ONLY
+      #     when no SCHED_OTHER task wants the CPU, so an interactive process
+      #     preempts it immediately rather than merely outweighing it.
+      #   nice 15 — kept as the fallback when chrt is unavailable, and it is
+      #     what orders whisper against whisper.
+      #   ionice -c 3 (idle) — the model file and the wav are real I/O; without
+      #     this, three readers still stall an interactive disk read.
+      #
+      # Each layer degrades to the next if its binary is missing, so this never
+      # fails closed on a box that lacks util-linux.
+      run_cmd=(nice -n "${WHISPER_NICE:-15}" "$REAL" "${args[@]}")
+      if [ "${WHISPER_SCHED_IDLE:-1}" = "1" ] && command -v chrt >/dev/null 2>&1; then
+        run_cmd=(chrt --idle 0 "${run_cmd[@]}")
+      fi
+      if command -v ionice >/dev/null 2>&1; then
+        run_cmd=(ionice -c 3 "${run_cmd[@]}")
+      fi
+      exec "${run_cmd[@]}"
+    fi
+    exec {fd}>&-
+  done
+  sleep 0.25
+done
