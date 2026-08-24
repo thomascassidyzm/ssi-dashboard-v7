@@ -1,0 +1,2484 @@
+{
+  "course": "hin_for_eng",
+  "pod": "hin_for_eng:pod-1",
+  "side": "known",
+  "apply": true,
+  "at": "2026-08-24T17:08:11.741Z",
+  "known_language": "en-GB",
+  "cast_known_voices": [
+    "bedd6226",
+    "gfzdpspr5fdp",
+    "en-GB-SoniaNeural"
+  ],
+  "splicer": "tools/pods/splice-sentence-clips.cjs spliceAndGate → scripts/splice-fork/splice.py (unmodified)",
+  "candidates": 44,
+  "processed": 44,
+  "stats": {
+    "rows": 231,
+    "already_split": 1,
+    "restored": 32,
+    "reused_clips": 6,
+    "spliced_clips": 59,
+    "refused": 15,
+    "excluded": 183,
+    "errors": 0
+  },
+  "refusals_by_reason": {
+    "known_count_mismatch": 3,
+    "margin_below_floor": 5,
+    "too_few_gaps": 4,
+    "seam_not_silent": 3
+  },
+  "excluded_by_reason": {
+    "no_target_split": 183
+  },
+  "variant_runs_split_across_known_voices": [],
+  "refusals": [
+    {
+      "id": "hin_for_eng:pod-1:SC04-S001",
+      "order": 20,
+      "at": "4.1",
+      "reason": "known_count_mismatch",
+      "n": 2,
+      "known_parts": 1,
+      "known_text": "Hello, good evening!",
+      "speaker": "Friend (7 pm)",
+      "clip_text": "Hello, good evening!",
+      "clip_voice": "xai_gfzdpspr5fdp"
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC10-S009",
+      "order": 95,
+      "at": "10.9",
+      "reason": "known_count_mismatch",
+      "n": 2,
+      "known_parts": 3,
+      "known_text": "That's very kind of you! Yes, I'm on holiday, and I need to practice more to speak Hindi better. Thank you very much, and goodbye.",
+      "speaker": "Customer",
+      "clip_text": "That's very kind of you! … Yes, I'm on holiday, and I need to practice more to speak Hindi better. … Thank you very much, and goodbye.",
+      "clip_voice": "xai_bedd6226"
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC22-S009",
+      "order": 229,
+      "at": "22.9",
+      "reason": "known_count_mismatch",
+      "n": 2,
+      "known_parts": 4,
+      "known_text": "This is exactly the kind of practice I need. I think I can feel it changing my brain while we're talking! I really appreciate your help. But it's surprising how tired I get when I'm talking in a language I don't speak very well.",
+      "speaker": "Learner",
+      "clip_text": "This is exactly the kind of practice I need. … I think I can feel it changing my brain while we're talking! … I really appreciate your help. … But it's surprising how tired I get when I'm talking in a language I don't speak very well.",
+      "clip_voice": "xai_bedd6226"
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC04-S003",
+      "order": 22,
+      "at": "4.3",
+      "reason": "margin_below_floor",
+      "n": 3,
+      "known_text": "No, I'm sorry, I'm busy tomorrow. But let's talk on Saturday. See you then.",
+      "sentences": [
+        "No, I'm sorry, I'm busy tomorrow.",
+        "But let's talk on Saturday.",
+        "See you then."
+      ],
+      "known_audio_id": "15329f4d-5cb5-44c1-a2c7-7c545c6f9a7a",
+      "measure": {
+        "whole_dur": 4.992,
+        "interior_gaps_ms": [
+          170,
+          171,
+          197
+        ],
+        "cut_at_gaps_ms": [
+          171,
+          197
+        ],
+        "rejected_gaps_ms": [
+          170
+        ],
+        "margin": 1.01,
+        "piece_durs": [
+          2.653,
+          1.618,
+          0.921
+        ]
+      }
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC06-S001",
+      "order": 25,
+      "at": "6.1",
+      "reason": "too_few_gaps",
+      "n": 3,
+      "known_text": "Excuse me. Hello. What's your name?",
+      "sentences": [
+        "Excuse me.",
+        "Hello.",
+        "What's your name?"
+      ],
+      "known_audio_id": "174451b4-6a86-48d3-93cc-bf9ce4937bcd",
+      "measure": {
+        "whole_dur": 2.688,
+        "interior_gaps_ms": [
+          146
+        ],
+        "cut_at_gaps_ms": [
+          146
+        ],
+        "rejected_gaps_ms": [],
+        "margin": null,
+        "piece_durs": [
+          0.972,
+          1.816
+        ]
+      }
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC06-S007",
+      "order": 31,
+      "at": "6.7",
+      "reason": "seam_not_silent",
+      "n": 2,
+      "known_text": "This is a lovely city. What do you do?",
+      "sentences": [
+        "This is a lovely city.",
+        "What do you do?"
+      ],
+      "known_audio_id": "0dcfdc85-5f4d-451a-8b6c-3d854ea809d4",
+      "measure": {
+        "whole_dur": 2.76,
+        "interior_gaps_ms": [
+          354
+        ],
+        "cut_at_gaps_ms": [
+          354
+        ],
+        "rejected_gaps_ms": [],
+        "margin": null,
+        "piece_durs": [
+          1.796,
+          1.064
+        ],
+        "seams_db": [
+          {
+            "edge": "s0.tail",
+            "db": -36.4,
+            "piece_peak_db": -2.4
+          },
+          {
+            "edge": "s1.head",
+            "db": -34.3,
+            "piece_peak_db": -2.6
+          }
+        ],
+        "loud_seams": [
+          {
+            "edge": "s1.head",
+            "db": -34.3,
+            "piece_peak_db": -2.6
+          }
+        ]
+      }
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC08-S015",
+      "order": 67,
+      "at": "8.15",
+      "reason": "too_few_gaps",
+      "n": 2,
+      "known_text": "Do you have any sandwiches? I'd like a cheese sandwich, please.",
+      "sentences": [
+        "Do you have any sandwiches?",
+        "I'd like a cheese sandwich, please."
+      ],
+      "known_audio_id": "81e76213-7c24-4784-8ae7-264dc4a98dfb",
+      "measure": {
+        "whole_dur": 1.658,
+        "interior_gaps_ms": [],
+        "cut_at_gaps_ms": [],
+        "rejected_gaps_ms": [],
+        "margin": null,
+        "piece_durs": [
+          1.658
+        ]
+      }
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC08-S013",
+      "order": 65,
+      "at": "8.13",
+      "reason": "seam_not_silent",
+      "n": 3,
+      "known_text": "Yes, of course. Here it is. The fish and chips are very good.",
+      "sentences": [
+        "Yes, of course.",
+        "Here it is.",
+        "The fish and chips are very good."
+      ],
+      "known_audio_id": "ed266fc5-ab8f-4e1b-9343-ea1e62df970f",
+      "measure": {
+        "whole_dur": 4.008,
+        "interior_gaps_ms": [
+          148,
+          183
+        ],
+        "cut_at_gaps_ms": [
+          148,
+          183
+        ],
+        "rejected_gaps_ms": [],
+        "margin": null,
+        "piece_durs": [
+          1.955,
+          0.417,
+          1.835
+        ],
+        "seams_db": [
+          {
+            "edge": "s0.tail",
+            "db": -48,
+            "piece_peak_db": -2.1
+          },
+          {
+            "edge": "s1.head",
+            "db": -39.9,
+            "piece_peak_db": -28.8
+          },
+          {
+            "edge": "s1.tail",
+            "db": -80.8,
+            "piece_peak_db": -28.8
+          },
+          {
+            "edge": "s2.head",
+            "db": -46.3,
+            "piece_peak_db": -2.3
+          }
+        ],
+        "loud_seams": [
+          {
+            "edge": "s1.head",
+            "db": -39.9,
+            "piece_peak_db": -28.8
+          }
+        ]
+      }
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC09-S006",
+      "order": 74,
+      "at": "9.6",
+      "reason": "margin_below_floor",
+      "n": 2,
+      "known_text": "Yes, the salmon and the risotto are both gluten-free. We also have some salads.",
+      "sentences": [
+        "Yes, the salmon and the risotto are both gluten-free.",
+        "We also have some salads."
+      ],
+      "known_audio_id": "aaea0565-2959-4d13-96ab-b63f2e2de06f",
+      "measure": {
+        "whole_dur": 5.28,
+        "interior_gaps_ms": [
+          124,
+          155
+        ],
+        "cut_at_gaps_ms": [
+          155
+        ],
+        "rejected_gaps_ms": [
+          124
+        ],
+        "margin": 1.25,
+        "piece_durs": [
+          3.759,
+          1.621
+        ]
+      }
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC09-S008",
+      "order": 76,
+      "at": "9.8",
+      "reason": "margin_below_floor",
+      "n": 2,
+      "known_text": "The lamb is excellent. It's been slow-cooked, with rosemary.",
+      "sentences": [
+        "The lamb is excellent.",
+        "It's been slow-cooked, with rosemary."
+      ],
+      "known_audio_id": "a8063142-bd96-47a4-9ea9-bc3b93df7395",
+      "measure": {
+        "whole_dur": 3.888,
+        "interior_gaps_ms": [
+          132,
+          134
+        ],
+        "cut_at_gaps_ms": [
+          134
+        ],
+        "rejected_gaps_ms": [
+          132
+        ],
+        "margin": 1.01,
+        "piece_durs": [
+          2.916,
+          1.072
+        ]
+      }
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC09-S014",
+      "order": 82,
+      "at": "9.14",
+      "reason": "too_few_gaps",
+      "n": 2,
+      "known_text": "Excellent choice. I'll bring it right over.",
+      "sentences": [
+        "Excellent choice.",
+        "I'll bring it right over."
+      ],
+      "known_audio_id": "2fbf86b5-65ae-4ebe-9b6f-3e799aca804b",
+      "measure": {
+        "whole_dur": 3.12,
+        "interior_gaps_ms": [],
+        "cut_at_gaps_ms": [],
+        "rejected_gaps_ms": [],
+        "margin": null,
+        "piece_durs": [
+          3.12
+        ]
+      }
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC09-S015",
+      "order": 83,
+      "at": "9.15",
+      "reason": "margin_below_floor",
+      "n": 2,
+      "known_text": "Is everything alright? Do you have any room for dessert?",
+      "sentences": [
+        "Is everything alright?",
+        "Do you have any room for dessert?"
+      ],
+      "known_audio_id": "0ace18ab-5030-4dfc-9045-52d3923b5cff",
+      "measure": {
+        "whole_dur": 3.264,
+        "interior_gaps_ms": [
+          118,
+          128
+        ],
+        "cut_at_gaps_ms": [
+          128
+        ],
+        "rejected_gaps_ms": [
+          118
+        ],
+        "margin": 1.09,
+        "piece_durs": [
+          1.474,
+          1.89
+        ]
+      }
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC11-S001",
+      "order": 97,
+      "at": "11.1",
+      "reason": "too_few_gaps",
+      "n": 2,
+      "known_text": "Good afternoon. I have a booking under the name Jones.",
+      "sentences": [
+        "Good afternoon.",
+        "I have a booking under the name Jones."
+      ],
+      "known_audio_id": "19d4e17e-44a2-45c2-8381-9498777c724b",
+      "measure": {
+        "whole_dur": 3.48,
+        "interior_gaps_ms": [],
+        "cut_at_gaps_ms": [],
+        "rejected_gaps_ms": [],
+        "margin": null,
+        "piece_durs": [
+          3.48
+        ]
+      }
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC11-S009",
+      "order": 105,
+      "at": "11.9",
+      "reason": "margin_below_floor",
+      "n": 2,
+      "known_text": "Wonderful. Is it possible for us to have a late check-out?",
+      "sentences": [
+        "Wonderful.",
+        "Is it possible for us to have a late check-out?"
+      ],
+      "known_audio_id": "05b5e7d1-96b1-427e-a875-3bbf7ddcee2d",
+      "measure": {
+        "whole_dur": 3.72,
+        "interior_gaps_ms": [
+          115,
+          113
+        ],
+        "cut_at_gaps_ms": [
+          115
+        ],
+        "rejected_gaps_ms": [
+          113
+        ],
+        "margin": 1.02,
+        "piece_durs": [
+          0.79,
+          3.03
+        ]
+      }
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC13-S002",
+      "order": 121,
+      "at": "13.2",
+      "reason": "seam_not_silent",
+      "n": 2,
+      "known_text": "Yes, it's about a ten minute walk. Go straight along this road.",
+      "sentences": [
+        "Yes, it's about a ten minute walk.",
+        "Go straight along this road."
+      ],
+      "known_audio_id": "c107eebc-5d85-44c9-b2b4-8ab5c981f5a0",
+      "measure": {
+        "whole_dur": 3.864,
+        "interior_gaps_ms": [
+          308
+        ],
+        "cut_at_gaps_ms": [
+          308
+        ],
+        "rejected_gaps_ms": [],
+        "margin": null,
+        "piece_durs": [
+          2.123,
+          1.841
+        ],
+        "seams_db": [
+          {
+            "edge": "s0.tail",
+            "db": -34.8,
+            "piece_peak_db": -2.3
+          },
+          {
+            "edge": "s1.head",
+            "db": -29.3,
+            "piece_peak_db": -2.5
+          }
+        ],
+        "loud_seams": [
+          {
+            "edge": "s0.tail",
+            "db": -34.8,
+            "piece_peak_db": -2.3
+          },
+          {
+            "edge": "s1.head",
+            "db": -29.3,
+            "piece_peak_db": -2.5
+          }
+        ]
+      }
+    }
+  ],
+  "excluded": [
+    {
+      "id": "hin_for_eng:pod-1:SC01-S001",
+      "order": 1,
+      "at": "1.1",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC01-S002",
+      "order": 2,
+      "at": "1.2",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC01-S004",
+      "order": 4,
+      "at": "1.4",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC02-S001",
+      "order": 5,
+      "at": "2.1",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC02-S002",
+      "order": 6,
+      "at": "2.2",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC02-S003",
+      "order": 7,
+      "at": "2.3",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC02-S004",
+      "order": 8,
+      "at": "2.4",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC02-S005",
+      "order": 9,
+      "at": "2.5",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC03-S002",
+      "order": 11,
+      "at": "3.2",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC03-S003",
+      "order": 12,
+      "at": "3.3",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC03-S004",
+      "order": 13,
+      "at": "3.4",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC03-S005",
+      "order": 14,
+      "at": "3.5",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC03-S006",
+      "order": 15,
+      "at": "3.6",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC03-S007",
+      "order": 16,
+      "at": "3.7",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC03-S008",
+      "order": 17,
+      "at": "3.8",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC03-S009",
+      "order": 18,
+      "at": "3.9",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC03-S010",
+      "order": 19,
+      "at": "3.10",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC04-S002",
+      "order": 21,
+      "at": "4.2",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC05-S001",
+      "order": 23,
+      "at": "5.1",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC05-S002",
+      "order": 24,
+      "at": "5.2",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC06-S008",
+      "order": 32,
+      "at": "6.8",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC06-S009",
+      "order": 33,
+      "at": "6.9",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC06-S010",
+      "order": 34,
+      "at": "6.10",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC06-S011",
+      "order": 35,
+      "at": "6.11",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC06-S013",
+      "order": 37,
+      "at": "6.13",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC07-S002",
+      "order": 39,
+      "at": "7.2",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC07-S003",
+      "order": 40,
+      "at": "7.3",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC07-S004",
+      "order": 41,
+      "at": "7.4",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC07-S006",
+      "order": 43,
+      "at": "7.6",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC07-S007",
+      "order": 44,
+      "at": "7.7",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC07-S009",
+      "order": 46,
+      "at": "7.9",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC07-S010",
+      "order": 47,
+      "at": "7.10",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC07-S013",
+      "order": 50,
+      "at": "7.13",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC07-S015",
+      "order": 52,
+      "at": "7.15",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC08-S002",
+      "order": 54,
+      "at": "8.2",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC08-S003",
+      "order": 55,
+      "at": "8.3",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC08-S004",
+      "order": 56,
+      "at": "8.4",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC08-S005",
+      "order": 57,
+      "at": "8.5",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC08-S007",
+      "order": 59,
+      "at": "8.7",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC08-S008",
+      "order": 60,
+      "at": "8.8",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC08-S009",
+      "order": 61,
+      "at": "8.9",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC08-S010",
+      "order": 62,
+      "at": "8.10",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC08-S011",
+      "order": 63,
+      "at": "8.11",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC08-S016",
+      "order": 68,
+      "at": "8.16",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC09-S003",
+      "order": 71,
+      "at": "9.3",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC09-S004",
+      "order": 72,
+      "at": "9.4",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC09-S007",
+      "order": 75,
+      "at": "9.7",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC09-S009",
+      "order": 77,
+      "at": "9.9",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC09-S010",
+      "order": 78,
+      "at": "9.10",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC09-S012",
+      "order": 80,
+      "at": "9.12",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC09-S013",
+      "order": 81,
+      "at": "9.13",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC09-S016",
+      "order": 84,
+      "at": "9.16",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC09-S017",
+      "order": 85,
+      "at": "9.17",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC09-S018",
+      "order": 86,
+      "at": "9.18",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC10-S002",
+      "order": 88,
+      "at": "10.2",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC10-S004",
+      "order": 90,
+      "at": "10.4",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC10-S005",
+      "order": 91,
+      "at": "10.5",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC10-S006",
+      "order": 92,
+      "at": "10.6",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC10-S008",
+      "order": 94,
+      "at": "10.8",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC10-S010",
+      "order": 96,
+      "at": "10.10",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC11-S002",
+      "order": 98,
+      "at": "11.2",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC11-S003",
+      "order": 99,
+      "at": "11.3",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC11-S004",
+      "order": 100,
+      "at": "11.4",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC11-S005",
+      "order": 101,
+      "at": "11.5",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC11-S006",
+      "order": 102,
+      "at": "11.6",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC11-S007",
+      "order": 103,
+      "at": "11.7",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC11-S010",
+      "order": 106,
+      "at": "11.10",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC11-S011",
+      "order": 107,
+      "at": "11.11",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC11-S013",
+      "order": 109,
+      "at": "11.13",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC12-S001",
+      "order": 110,
+      "at": "12.1",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC12-S003",
+      "order": 112,
+      "at": "12.3",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC12-S004",
+      "order": 113,
+      "at": "12.4",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC12-S005",
+      "order": 114,
+      "at": "12.5",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC12-S006",
+      "order": 115,
+      "at": "12.6",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC12-S007",
+      "order": 116,
+      "at": "12.7",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC12-S008",
+      "order": 117,
+      "at": "12.8",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC12-S010",
+      "order": 119,
+      "at": "12.10",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC13-S001",
+      "order": 120,
+      "at": "13.1",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC13-S003",
+      "order": 122,
+      "at": "13.3",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC13-S004",
+      "order": 123,
+      "at": "13.4",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC13-S005",
+      "order": 124,
+      "at": "13.5",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC13-S006",
+      "order": 125,
+      "at": "13.6",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC13-S007",
+      "order": 126,
+      "at": "13.7",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC13-S008",
+      "order": 127,
+      "at": "13.8",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC13-S009",
+      "order": 128,
+      "at": "13.9",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC13-S010",
+      "order": 129,
+      "at": "13.10",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC13-S011",
+      "order": 130,
+      "at": "13.11",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC14-S001",
+      "order": 131,
+      "at": "14.1",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC14-S003",
+      "order": 133,
+      "at": "14.3",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC14-S004",
+      "order": 134,
+      "at": "14.4",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC14-S005",
+      "order": 135,
+      "at": "14.5",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC14-S006",
+      "order": 136,
+      "at": "14.6",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC14-S007",
+      "order": 137,
+      "at": "14.7",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC14-S008",
+      "order": 138,
+      "at": "14.8",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC14-S010",
+      "order": 140,
+      "at": "14.10",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC15-S001",
+      "order": 141,
+      "at": "15.1",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC15-S002",
+      "order": 142,
+      "at": "15.2",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC15-S003",
+      "order": 143,
+      "at": "15.3",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC15-S004",
+      "order": 144,
+      "at": "15.4",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC15-S005",
+      "order": 145,
+      "at": "15.5",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC15-S006",
+      "order": 146,
+      "at": "15.6",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC15-S007",
+      "order": 147,
+      "at": "15.7",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC15-S008",
+      "order": 148,
+      "at": "15.8",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC15-S009",
+      "order": 149,
+      "at": "15.9",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC15-S010",
+      "order": 150,
+      "at": "15.10",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC15-S011",
+      "order": 151,
+      "at": "15.11",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC16-S001",
+      "order": 152,
+      "at": "16.1",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC16-S002",
+      "order": 153,
+      "at": "16.2",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC16-S003",
+      "order": 154,
+      "at": "16.3",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC16-S004",
+      "order": 155,
+      "at": "16.4",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC16-S005",
+      "order": 156,
+      "at": "16.5",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC16-S006",
+      "order": 157,
+      "at": "16.6",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC16-S007",
+      "order": 158,
+      "at": "16.7",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC16-S008",
+      "order": 159,
+      "at": "16.8",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC16-S009",
+      "order": 160,
+      "at": "16.9",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC16-S010",
+      "order": 161,
+      "at": "16.10",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC16-S011",
+      "order": 162,
+      "at": "16.11",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC17-S001",
+      "order": 163,
+      "at": "17.1",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC17-S002",
+      "order": 164,
+      "at": "17.2",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC17-S003",
+      "order": 165,
+      "at": "17.3",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC17-S004",
+      "order": 166,
+      "at": "17.4",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC17-S005",
+      "order": 167,
+      "at": "17.5",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC17-S006",
+      "order": 168,
+      "at": "17.6",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC17-S007",
+      "order": 169,
+      "at": "17.7",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC17-S008",
+      "order": 170,
+      "at": "17.8",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC17-S009",
+      "order": 171,
+      "at": "17.9",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC17-S010",
+      "order": 172,
+      "at": "17.10",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC17-S011",
+      "order": 173,
+      "at": "17.11",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC18-S001",
+      "order": 174,
+      "at": "18.1",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC18-S002",
+      "order": 175,
+      "at": "18.2",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC18-S003",
+      "order": 176,
+      "at": "18.3",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC18-S004",
+      "order": 177,
+      "at": "18.4",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC18-S005",
+      "order": 178,
+      "at": "18.5",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC18-S006",
+      "order": 179,
+      "at": "18.6",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC18-S008",
+      "order": 181,
+      "at": "18.8",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC18-S009",
+      "order": 182,
+      "at": "18.9",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC18-S010",
+      "order": 183,
+      "at": "18.10",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC18-S011",
+      "order": 184,
+      "at": "18.11",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC19-S001",
+      "order": 185,
+      "at": "19.1",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC19-S002",
+      "order": 186,
+      "at": "19.2",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC19-S003",
+      "order": 187,
+      "at": "19.3",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC19-S004",
+      "order": 188,
+      "at": "19.4",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC19-S005",
+      "order": 189,
+      "at": "19.5",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC19-S006",
+      "order": 190,
+      "at": "19.6",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC19-S007",
+      "order": 191,
+      "at": "19.7",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC19-S008",
+      "order": 192,
+      "at": "19.8",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC19-S009",
+      "order": 193,
+      "at": "19.9",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC19-S010",
+      "order": 194,
+      "at": "19.10",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC19-S011",
+      "order": 195,
+      "at": "19.11",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC20-S001",
+      "order": 196,
+      "at": "20.1",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC20-S002",
+      "order": 197,
+      "at": "20.2",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC20-S003",
+      "order": 198,
+      "at": "20.3",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC20-S004",
+      "order": 199,
+      "at": "20.4",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC20-S005",
+      "order": 200,
+      "at": "20.5",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC20-S006",
+      "order": 201,
+      "at": "20.6",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC20-S007",
+      "order": 202,
+      "at": "20.7",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC20-S008",
+      "order": 203,
+      "at": "20.8",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC20-S009",
+      "order": 204,
+      "at": "20.9",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC20-S010",
+      "order": 205,
+      "at": "20.10",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC20-S011",
+      "order": 206,
+      "at": "20.11",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC21-S001",
+      "order": 207,
+      "at": "21.1",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC21-S002",
+      "order": 208,
+      "at": "21.2",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC21-S003",
+      "order": 209,
+      "at": "21.3",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC21-S004",
+      "order": 210,
+      "at": "21.4",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC21-S005",
+      "order": 211,
+      "at": "21.5",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC21-S006",
+      "order": 212,
+      "at": "21.6",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC21-S007",
+      "order": 213,
+      "at": "21.7",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC21-S008",
+      "order": 214,
+      "at": "21.8",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC21-S009",
+      "order": 215,
+      "at": "21.9",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC21-S010",
+      "order": 216,
+      "at": "21.10",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC21-S011",
+      "order": 217,
+      "at": "21.11",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC21-S012",
+      "order": 218,
+      "at": "21.12",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC21-S013",
+      "order": 219,
+      "at": "21.13",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC21-S014",
+      "order": 220,
+      "at": "21.14",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC22-S002",
+      "order": 222,
+      "at": "22.2",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC22-S003",
+      "order": 223,
+      "at": "22.3",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC22-S004",
+      "order": 224,
+      "at": "22.4",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC22-S005",
+      "order": 225,
+      "at": "22.5",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC22-S006",
+      "order": 226,
+      "at": "22.6",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC22-S007",
+      "order": 227,
+      "at": "22.7",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC22-S008",
+      "order": 228,
+      "at": "22.8",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC22-S010",
+      "order": 230,
+      "at": "22.10",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC22-S011",
+      "order": 231,
+      "at": "22.11",
+      "reason": "no_target_split",
+      "n": 0
+    }
+  ],
+  "errors": [],
+  "restored": [
+    {
+      "id": "hin_for_eng:pod-1:SC03-S001",
+      "order": 10,
+      "at": "3.1",
+      "n": 2,
+      "speaker": "Barista (3 pm)",
+      "sentences": [
+        "Good afternoon.",
+        "What can I get you?"
+      ],
+      "ids": [
+        "54d2ba9e-8637-4322-b6df-deeb6e479783",
+        "ba0ed442-dac2-440b-8253-668f9f0a1bc1"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.191,
+        1.213
+      ],
+      "worst_seam_db": -41.7,
+      "all_reused": false
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC01-S003",
+      "order": 3,
+      "at": "1.3",
+      "n": 2,
+      "speaker": "Neighbour",
+      "sentences": [
+        "I'm very well, thank you.",
+        "Are you going to work?"
+      ],
+      "ids": [
+        "6fc3fc2a-a2dc-40cf-8cdf-15bf61eac160",
+        "916c6a01-f93e-4dc0-af39-c66ec2f32e1c"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.408,
+        1.308
+      ],
+      "worst_seam_db": -41.3,
+      "all_reused": false
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC06-S002",
+      "order": 26,
+      "at": "6.2",
+      "n": 2,
+      "speaker": "Anna",
+      "sentences": [
+        "My name is Anna.",
+        "And you?"
+      ],
+      "ids": [
+        "32c64c1a-4309-4505-9020-6448b7514f6b",
+        "2a1708ae-4918-4e48-bd0b-5839cfee76ec"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.284,
+        0.856
+      ],
+      "worst_seam_db": -54.9,
+      "all_reused": false
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC06-S004",
+      "order": 28,
+      "at": "6.4",
+      "n": 2,
+      "speaker": "Anna",
+      "sentences": [
+        "Pleased to meet you too.",
+        "Where are you from?"
+      ],
+      "ids": [
+        "033575c8-ac30-45c8-b6b0-08ce2759ec11",
+        "972170cf-bed1-4174-83ab-0103c1a99fd0"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.64,
+        1.412
+      ],
+      "worst_seam_db": -55.2,
+      "all_reused": false
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC06-S003",
+      "order": 27,
+      "at": "6.3",
+      "n": 2,
+      "speaker": "James",
+      "sentences": [
+        "I'm James.",
+        "Pleased to meet you."
+      ],
+      "ids": [
+        "6bb6110c-9eee-488e-9d83-4b6b11cfdd3b",
+        "3c98f76c-68d6-42ba-9f3e-022678ec639c"
+      ],
+      "margin": 2.86,
+      "piece_durs": [
+        1.59,
+        1.102
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC06-S005",
+      "order": 29,
+      "at": "6.5",
+      "n": 2,
+      "speaker": "James",
+      "sentences": [
+        "I'm from Manchester, but I live in London now.",
+        "And you?"
+      ],
+      "ids": [
+        "4101a662-d83f-44f4-b174-d1d6a0943469",
+        "a0484b5d-3280-4846-870c-23b09949ac56"
+      ],
+      "margin": null,
+      "piece_durs": [
+        2.622,
+        0.67
+      ],
+      "worst_seam_db": -63.5,
+      "all_reused": false
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC06-S006",
+      "order": 30,
+      "at": "6.6",
+      "n": 2,
+      "speaker": "Anna",
+      "sentences": [
+        "I'm from France.",
+        "I've been here for two years."
+      ],
+      "ids": [
+        "4bfde369-0f39-409a-9088-bcf50e9293b4",
+        "244a3ac6-acdd-45e8-bda2-a7816cefd042"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.799,
+        1.781
+      ],
+      "worst_seam_db": -48.9,
+      "all_reused": false
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC06-S012",
+      "order": 36,
+      "at": "6.12",
+      "n": 2,
+      "speaker": "Anna",
+      "sentences": [
+        "How interesting.",
+        "Well, lovely to meet you."
+      ],
+      "ids": [
+        "246cf5eb-7458-476f-8800-6504693f68ea",
+        "f4e1d709-da09-4ff7-bdde-a5985548babf"
+      ],
+      "margin": 3.69,
+      "piece_durs": [
+        1.484,
+        2.144
+      ],
+      "worst_seam_db": -62.7,
+      "all_reused": false
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC07-S001",
+      "order": 38,
+      "at": "7.1",
+      "n": 2,
+      "speaker": "Cafe Barista",
+      "sentences": [
+        "Good morning.",
+        "What can I get you?"
+      ],
+      "ids": [
+        "e0448714-4748-4c03-a501-4a85f17b1900",
+        "231030ae-c800-44a2-a23e-a09d45596fab"
+      ],
+      "margin": null,
+      "piece_durs": [
+        0.961,
+        1.155
+      ],
+      "worst_seam_db": -47.9,
+      "all_reused": false
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC07-S005",
+      "order": 42,
+      "at": "7.5",
+      "n": 2,
+      "speaker": "Cafe Barista",
+      "sentences": [
+        "Of course.",
+        "Would you like to sit-in or takeaway?"
+      ],
+      "ids": [
+        "7dc76514-4880-4143-9b77-6862aae0f2b0",
+        "d85c5c50-61f8-4e14-b4f8-9b3d1746fd32"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.115,
+        2.273
+      ],
+      "worst_seam_db": -52.1,
+      "all_reused": false
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC07-S011",
+      "order": 48,
+      "at": "7.11",
+      "n": 2,
+      "speaker": "Cafe Customer 2",
+      "sentences": [
+        "Could I pay by card?",
+        "Do you have contactless?"
+      ],
+      "ids": [
+        "783df0a6-5a8b-4b69-8619-df82d5305e4a",
+        "11ebbe4d-a1a3-4ea2-9be3-5d3db91565ec"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.658,
+        1.61
+      ],
+      "worst_seam_db": -51.6,
+      "all_reused": false
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC07-S008",
+      "order": 45,
+      "at": "7.8",
+      "n": 2,
+      "speaker": "Cafe Barista",
+      "sentences": [
+        "Right away.",
+        "Would you like anything else?"
+      ],
+      "ids": [
+        "d6016c00-816f-4205-a931-8f3104da25de",
+        "38a15d58-3a67-46d0-9d2f-43cbaa142a27"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.227,
+        1.873
+      ],
+      "worst_seam_db": -48.4,
+      "all_reused": false
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC07-S012",
+      "order": 49,
+      "at": "7.12",
+      "n": 2,
+      "speaker": "Cafe Barista",
+      "sentences": [
+        "Of course.",
+        "There's the machine."
+      ],
+      "ids": [
+        "7dc76514-4880-4143-9b77-6862aae0f2b0",
+        "78385c89-c5d5-4d6c-a3f5-9763576e4a56"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.046,
+        1.31
+      ],
+      "worst_seam_db": -39.4,
+      "all_reused": false
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC08-S001",
+      "order": 53,
+      "at": "8.1",
+      "n": 2,
+      "speaker": "Bartender",
+      "sentences": [
+        "Good evening.",
+        "What can I get you?"
+      ],
+      "ids": [
+        "8ab4094d-d7e0-4ed4-a6fd-1600d7e3eeb9",
+        "ba0ed442-dac2-440b-8253-668f9f0a1bc1"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.613,
+        1.247
+      ],
+      "worst_seam_db": -56.2,
+      "all_reused": false
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC07-S014",
+      "order": 51,
+      "at": "7.14",
+      "n": 2,
+      "speaker": "Cafe Barista",
+      "sentences": [
+        "Would you like to sit-in?",
+        "The table by the window is free."
+      ],
+      "ids": [
+        "8c02f5c7-b316-4112-b5dc-65025724ef69",
+        "aa5ff3e7-8f66-434f-b59b-29918e8b53e9"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.682,
+        2.114
+      ],
+      "worst_seam_db": -51,
+      "all_reused": false
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC08-S012",
+      "order": 64,
+      "at": "8.12",
+      "n": 2,
+      "speaker": "Bar Customer 1",
+      "sentences": [
+        "I'm not sure if I'm hungry.",
+        "Do you have a menu?"
+      ],
+      "ids": [
+        "cd541cc3-caad-4e94-9bcf-c3f688bf7f1e",
+        "2429741c-df2d-4149-8c83-2e460220f480"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.844,
+        1.563
+      ],
+      "worst_seam_db": -58.3,
+      "all_reused": false
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC08-S014",
+      "order": 66,
+      "at": "8.14",
+      "n": 2,
+      "speaker": "Bar Customer 1",
+      "sentences": [
+        "Can we have some bread?",
+        "And a bowl of chips for the table."
+      ],
+      "ids": [
+        "68f894ec-8b7c-4b49-8afc-094f00623f8a",
+        "fd083011-9f6f-4047-9cf3-c4559bf838f4"
+      ],
+      "margin": 6.25,
+      "piece_durs": [
+        1.723,
+        2.433
+      ],
+      "worst_seam_db": -48.4,
+      "all_reused": false
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC09-S001",
+      "order": 69,
+      "at": "9.1",
+      "n": 2,
+      "speaker": "Diner 1",
+      "sentences": [
+        "Good evening.",
+        "We have a booking for two, under the name Davies."
+      ],
+      "ids": [
+        "67a4f863-23ab-4fad-8b91-a820d024afc4",
+        "7aa81035-c76a-44ed-b6ff-8c20ca445a47"
+      ],
+      "margin": 4.28,
+      "piece_durs": [
+        1.325,
+        3.383
+      ],
+      "worst_seam_db": -50,
+      "all_reused": false
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC09-S005",
+      "order": 73,
+      "at": "9.5",
+      "n": 2,
+      "speaker": "Diner 1",
+      "sentences": [
+        "Excuse me - do you have anything gluten-free?",
+        "Or for vegetarians?"
+      ],
+      "ids": [
+        "6be00269-d5f9-4881-a7b2-e0809ca45ba1",
+        "562eb2c8-dff4-4731-b026-2c4d705a2646"
+      ],
+      "margin": 2.31,
+      "piece_durs": [
+        3.036,
+        1.84
+      ],
+      "worst_seam_db": -48.9,
+      "all_reused": false
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC09-S002",
+      "order": 70,
+      "at": "9.2",
+      "n": 3,
+      "speaker": "Waiter",
+      "sentences": [
+        "Welcome.",
+        "Please follow me.",
+        "Here are the menus."
+      ],
+      "ids": [
+        "3e77daed-e55c-460a-9624-f3ea5b7970ab",
+        "d914c358-9fbb-4ecf-96eb-f4819d2a140f",
+        "e042590f-3d3f-4246-8f1a-48a09ed1301d"
+      ],
+      "margin": null,
+      "piece_durs": [
+        0.916,
+        1.419,
+        1.249
+      ],
+      "worst_seam_db": -35.3,
+      "all_reused": false
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC09-S011",
+      "order": 79,
+      "at": "9.11",
+      "n": 2,
+      "speaker": "Waiter",
+      "sentences": [
+        "Of course.",
+        "And what would you like to drink?"
+      ],
+      "ids": [
+        "ab24bd1d-9350-4ba0-8cff-677298ae3c8a",
+        "6c90cc0e-3f0a-45dd-8874-bb4e5b6086a5"
+      ],
+      "margin": null,
+      "piece_durs": [
+        0.946,
+        2.01
+      ],
+      "worst_seam_db": -44.7,
+      "all_reused": false
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC10-S001",
+      "order": 87,
+      "at": "10.1",
+      "n": 2,
+      "speaker": "Customer",
+      "sentences": [
+        "Excuse me.",
+        "Do you have any painkillers?"
+      ],
+      "ids": [
+        "2ad51502-fb6e-4822-aba2-1bf7fc6cb448",
+        "1621deb9-485b-4555-a60d-21a7f456b1cd"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.184,
+        2.033
+      ],
+      "worst_seam_db": -50,
+      "all_reused": false
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC10-S003",
+      "order": 89,
+      "at": "10.3",
+      "n": 2,
+      "speaker": "Customer",
+      "sentences": [
+        "Thank you.",
+        "And do you have any painkillers for children?"
+      ],
+      "ids": [
+        "880f4284-4128-4e4f-9a25-f3f4e31ff977",
+        "c8e80606-40af-4dcb-abf8-bba7e0d3aa65"
+      ],
+      "margin": null,
+      "piece_durs": [
+        0.953,
+        2.834
+      ],
+      "worst_seam_db": -41.4,
+      "all_reused": false
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC10-S007",
+      "order": 93,
+      "at": "10.7",
+      "n": 2,
+      "speaker": "Customer",
+      "sentences": [
+        "Thank you, you've been very helpful.",
+        "I'm very grateful."
+      ],
+      "ids": [
+        "5ada4a88-84ea-4359-ac4a-00a27a7637c9",
+        "9a13e7be-9909-4552-b4cc-b7d4a57aab22"
+      ],
+      "margin": 3.67,
+      "piece_durs": [
+        2.197,
+        1.623
+      ],
+      "worst_seam_db": -51.6,
+      "all_reused": false
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC11-S012",
+      "order": 108,
+      "at": "11.12",
+      "n": 2,
+      "speaker": "Receptionist",
+      "sentences": [
+        "It's on the welcome card in your room.",
+        "Have a lovely stay."
+      ],
+      "ids": [
+        "d7a3f69b-0ab1-410f-9b93-2efb3220d701",
+        "29741156-9ec0-4db9-bced-e6597868eb79"
+      ],
+      "margin": null,
+      "piece_durs": [
+        3.169,
+        1.539
+      ],
+      "worst_seam_db": -47.8,
+      "all_reused": false
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC11-S008",
+      "order": 104,
+      "at": "11.8",
+      "n": 2,
+      "speaker": "Receptionist",
+      "sentences": [
+        "From half-past seven until ten o'clock.",
+        "We have fruit and cereals or a cooked breakfast."
+      ],
+      "ids": [
+        "7b70a991-a995-4faf-99be-c2cc9e5f9636",
+        "82733d66-afc2-4416-82d7-dd2974d79bf2"
+      ],
+      "margin": 5.54,
+      "piece_durs": [
+        3.036,
+        3.52
+      ],
+      "worst_seam_db": -64.3,
+      "all_reused": false
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC12-S002",
+      "order": 111,
+      "at": "12.2",
+      "n": 2,
+      "speaker": "Pharmacist",
+      "sentences": [
+        "Of course.",
+        "What are your symptoms?"
+      ],
+      "ids": [
+        "ab24bd1d-9350-4ba0-8cff-677298ae3c8a",
+        "ebeae980-964b-49a7-a692-3a188cea0587"
+      ],
+      "margin": 4.24,
+      "piece_durs": [
+        1.218,
+        1.786
+      ],
+      "worst_seam_db": -80.8,
+      "all_reused": false
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC12-S009",
+      "order": 118,
+      "at": "12.9",
+      "n": 2,
+      "speaker": "Customer",
+      "sentences": [
+        "Thank you.",
+        "Could I also get a packet of plasters?"
+      ],
+      "ids": [
+        "880f4284-4128-4e4f-9a25-f3f4e31ff977",
+        "30b8f9a7-0537-455f-8a6c-97c74c2867a6"
+      ],
+      "margin": null,
+      "piece_durs": [
+        0.897,
+        2.505
+      ],
+      "worst_seam_db": -46.2,
+      "all_reused": false
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC14-S002",
+      "order": 132,
+      "at": "14.2",
+      "n": 2,
+      "speaker": "Driver",
+      "sentences": [
+        "Yes, of course.",
+        "It may take some time, there's a lot of traffic at the moment."
+      ],
+      "ids": [
+        "0308d86b-33e5-4ebe-812c-85a07aace4ac",
+        "9480c88f-f7c4-44d0-8103-f14fad5b87e6"
+      ],
+      "margin": 7.14,
+      "piece_durs": [
+        1.564,
+        3.552
+      ],
+      "worst_seam_db": -43.7,
+      "all_reused": false
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC14-S009",
+      "order": 139,
+      "at": "14.9",
+      "n": 2,
+      "speaker": "Driver",
+      "sentences": [
+        "Yes, of course.",
+        "The machine is just here."
+      ],
+      "ids": [
+        "0308d86b-33e5-4ebe-812c-85a07aace4ac",
+        "e78d23f8-f854-46a5-9094-1f87cc8723ba"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.585,
+        1.982
+      ],
+      "worst_seam_db": -42.9,
+      "all_reused": false
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC18-S007",
+      "order": 180,
+      "at": "18.7",
+      "n": 2,
+      "speaker": "Learner",
+      "sentences": [
+        "Is that correct?",
+        "Am I correct?"
+      ],
+      "ids": [
+        "038c5a3c-0355-42c4-b917-2e2d31302617",
+        "71847fc8-08c3-4681-8ea4-4b8d01456cd8"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.302,
+        1.558
+      ],
+      "worst_seam_db": -40.6,
+      "all_reused": false
+    },
+    {
+      "id": "hin_for_eng:pod-1:SC22-S001",
+      "order": 221,
+      "at": "22.1",
+      "n": 2,
+      "speaker": "Learner",
+      "sentences": [
+        "Would you mind if I tried to practise speaking Hindi with you?",
+        "I haven't been learning for very long, and I still feel a little nervous about speaking with other people."
+      ],
+      "ids": [
+        "3c430be2-4f9d-4b8d-8262-56ad91da9a51",
+        "d2df07a8-b6b5-498b-a016-c70f64c8de26"
+      ],
+      "margin": 5.21,
+      "piece_durs": [
+        3.365,
+        5.423
+      ],
+      "worst_seam_db": -50,
+      "all_reused": false
+    }
+  ]
+}
