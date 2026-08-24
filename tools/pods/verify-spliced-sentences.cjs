@@ -109,6 +109,9 @@ const splitOn = (t, re) => String(t || '').split(re).map((s) => s.trim()).filter
 
 const SEAM_WINDOW = 0.030
 const SEAM_DB = -35
+/** Clips created after this instant were cut by the splice pass; anything older
+ *  was reused, so its edges are not seams this pass made. */
+const SPLICE_EPOCH = process.env.SPLICE_EPOCH || '2026-08-24T12:30:00Z'
 
 // Deterministic sampling, so a re-run checks the same turns.
 const mulberry32 = (a) => () => {
@@ -222,7 +225,7 @@ function appUnits (row, textById) {
     const clips = row.sentence_audio_ids.filter(Boolean)
     const expected = splitOn(row.target_text, SENTENCE_SPLIT)
     const { rows: ca } = await db.query(
-      'select id, text, duration_ms, voice_id from course_audio where id = any($1)', [clips])
+      'select id, text, duration_ms, voice_id, created_at from course_audio where id = any($1)', [clips])
     const byId = new Map(ca.map((r) => [r.id, r]))
     const textById = new Map(ca.map((r) => [r.id, r.text]))
 
@@ -262,6 +265,8 @@ function appUnits (row, textById) {
       }
       p.stored_text = row_ca.text
       p.voice_id = row_ca.voice_id
+      p.created_at = row_ca.created_at
+      p.spliced_by_this_pass = new Date(row_ca.created_at) > new Date(SPLICE_EPOCH)
 
       // 2. TEXT — clip i must be sentence i.
       //
@@ -315,10 +320,27 @@ function appUnits (row, textById) {
         sumDur += d
         p.head_db = await peakDb(mp3, 0, SEAM_WINDOW)
         p.tail_db = await peakDb(mp3, Math.max(0, d - SEAM_WINDOW), SEAM_WINDOW)
-        // Only INTERNAL seams are this tool's doing.
+        // Only INTERNAL seams are this tool's doing — and only on pieces the
+        // splice actually CUT.
+        //
+        // A turn can mix spliced pieces with REUSED clips that already existed
+        // under the dedup key, and a reused clip's own edges were never a seam.
+        // Gating them attributes a standalone render's natural ending to a cut
+        // that was never made: nld SC07-S013 was reported as a -32.4 dB seam
+        // defect, when s0 is a "Goedemorgen." clip rendered on 2026-06-16 whose
+        // tail has always measured that, and the piece this pass actually cut
+        // (s1) measures -55.0 dB head and -91 dB tail. The splice was clean; the
+        // check was pointing at the wrong clip.
+        //
+        // Reused-clip edges are still recorded, just on their own axis.
+        const spliced = p.created_at && new Date(p.created_at) > new Date(SPLICE_EPOCH)
         const gated = []
-        if (i > 0) gated.push(p.head_db)
-        if (i < clips.length - 1) gated.push(p.tail_db)
+        if (spliced) {
+          if (i > 0) gated.push(p.head_db)
+          if (i < clips.length - 1) gated.push(p.tail_db)
+        } else {
+          p.reused_clip_edge = true
+        }
         if (gated.some((v) => v > SEAM_DB)) {
           p.problem = `seam not silent (${gated.join(', ')} dB)`
           rec.problems.push(`s${i}: ${p.problem}`); fail.seams++
