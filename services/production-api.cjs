@@ -4509,15 +4509,22 @@ app.get('/api/pod-scripts', async (req, res) => {
 //
 //   ?slug=   default pod-1; pass a retired slug explicitly to read it
 //   ?track=  target (default) | known
-//   ?clips=1 also load every clip referenced by all six audio slots and run the
-//            gate's six-column check. OFF by default: it is one extra query per
-//            500 clips and the script itself does not need it.
+//   ?clips=0 skip the clip load. ON by default since 2026-08-24: Tom — "this is
+//            pointless unless I can actually hear it … I need the clips right
+//            there, that the DB is expecting the app to play". Playback is the
+//            point of the page, so the clips are not an option you turn on; the
+//            switch only exists to make the text-only read cheap.
+//
+// The clip load also reads audio_revision, because the learner app addresses a
+// revised clip as `<uuid>.v<N>` and a bare uuid means "current". Hand the view
+// anything else and Tom hears a clip that may already have been replaced —
+// which is the exact complaint this page exists to answer.
 app.get('/api/pod-scripts/:courseCode', async (req, res) => {
   try {
     const { courseCode } = req.params
     const slug = String(req.query.slug || 'pod-1')
     const track = req.query.track === 'known' ? 'known' : 'target'
-    const wantClips = req.query.clips === '1' || req.query.clips === 'true'
+    const wantClips = !(req.query.clips === '0' || req.query.clips === 'false')
     const podId = `${courseCode}:${slug}`
     const supabase = supabaseClient.getClient()
     const { buildPodScript } = require('../tools/pods/pod-script-view.cjs')
@@ -4542,11 +4549,23 @@ app.get('/api/pod-scripts/:courseCode', async (req, res) => {
       }
       clips = {}
       const all = [...ids]
-      for (let i = 0; i < all.length; i += 500) {
-        const { data, error } = await supabase
-          .from('course_audio').select('id, text, voice_id').in('id', all.slice(i, i + 500))
+      // 100 ids per call, not 500: a uuid costs ~40 chars in the PostgREST query
+      // string and 500 of them overruns the URL length limit. Measured on
+      // ita_for_eng pod-1 (1,084 clips), a 500-id batch came back with 84 rows
+      // and no usable error, which reads on the page as 969 dangling clips —
+      // i.e. the page would have accused the DB of losing nearly every clip.
+      for (let i = 0; i < all.length; i += 100) {
+        let data, error
+        try {
+          ({ data, error } = await supabase
+            .from('course_audio').select('id, text, voice_id, audio_revision, duration_ms').in('id', all.slice(i, i + 100)))
+        } catch (e) {
+          // A thrown fetch names WHICH batch and why, rather than reaching the
+          // page as a bare "fetch failed" with a thousand clips unaccounted for.
+          throw new Error(`clip batch ${i}–${i + 100} of ${all.length} failed: ${e.message}${e.cause ? ` (${e.cause.code || e.cause.message})` : ''}`)
+        }
         if (error) throw error
-        for (const c of data || []) clips[c.id] = { text: c.text, voice_id: c.voice_id }
+        for (const c of data || []) clips[c.id] = { text: c.text, voice_id: c.voice_id, audio_revision: c.audio_revision, duration_ms: c.duration_ms }
       }
     }
 
