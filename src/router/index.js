@@ -204,6 +204,21 @@ const routes = [
     component: () => import('../views/PodsDoc.vue'),
     meta: { title: 'Listening Pods' }
   },
+  // Pod script viewer (2026-08-24) — fleet-wide, read-only. Tom: "I think I need
+  // to be able to see them all." Deep-linkable per course so a URL can be sent.
+  {
+    path: '/pods/scripts',
+    name: 'PodScripts',
+    component: () => import('../views/PodScriptsView.vue'),
+    meta: { title: 'Pod Scripts' }
+  },
+  {
+    path: '/pods/scripts/:courseCode',
+    name: 'PodScriptsCourse',
+    component: () => import('../views/PodScriptsView.vue'),
+    props: true,
+    meta: { title: 'Pod Scripts' }
+  },
 
   // The old /docs/* estate — every route redirects so nothing 404s.
   { path: '/docs', redirect: '/how' },

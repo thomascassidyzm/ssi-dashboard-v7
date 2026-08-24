@@ -3932,6 +3932,163 @@ app.get('/api/pods/:courseCode/:slug', async (req, res) => {
   }
 })
 
+// ---------------------------------------------------------------------------
+// POD SCRIPT VIEWER (2026-08-24) — read-only. Tom: "Can I not see the scripts
+// anywhere in Popty to have a quick butcher's at them? … I think I need to be
+// able to see them all."
+//
+// These two routes READ ONLY. They never write a row, never queue audio, never
+// render. They read listening_pods + listening_pod_sentences live on every
+// request — no cache, no snapshot, no JSON export — because the whole point is
+// that the screen agrees with what the learner is served.
+//
+// The casting verdict is NOT computed here. tools/pods/pod-script-view.cjs
+// calls tools/pods/pod-cast-gate.cjs, which is the estate's one definition of
+// "cast correctly" and the same module the flip and recast paths solve to.
+//
+// A course may carry a retired pod alongside its live one
+// ("pod-1-retired-2026-08-24"); the live pod-1 is the default and a retired
+// slug is only ever served when asked for by name.
+// ---------------------------------------------------------------------------
+
+const RETIRED_SLUG = /-retired-/
+
+/** Page past PostgREST's 1000-row default. Ordered, because offset paging without
+ *  an ORDER BY can repeat or skip rows. */
+async function fetchAllPodSentences (supabase, podIds, { withSplitArrays = false } = {}) {
+  const cols = 'id, pod_id, scene_number, sentence_number, global_order, beat_label, speaker, ' +
+    'target_text, known_text, target_audio_id, known_audio_id, explainer_audio_id' +
+    (withSplitArrays ? ', sentence_audio_ids, sentence_known_audio_ids, takeg_audio_ids' : '')
+  const out = []
+  const PAGE = 1000
+  for (let from = 0; ; from += PAGE) {
+    const { data, error } = await supabase
+      .from('listening_pod_sentences')
+      .select(cols)
+      .in('pod_id', podIds)
+      .order('pod_id').order('global_order')
+      .range(from, from + PAGE - 1)
+    if (error) throw error
+    out.push(...(data || []))
+    if (!data || data.length < PAGE) break
+  }
+  return out
+}
+
+// GET /api/pod-scripts — the fleet index: every course that has a live pod-1,
+// each with the summary Tom scans (scenes, lines, cast, violation counts) so he
+// can see which courses are worst without opening each one.
+app.get('/api/pod-scripts', async (req, res) => {
+  try {
+    const slug = String(req.query.slug || 'pod-1')
+    const track = req.query.track === 'known' ? 'known' : 'target'
+    const supabase = supabaseClient.getClient()
+    const { buildPodScript } = require('../tools/pods/pod-script-view.cjs')
+
+    const { data: pods, error: podsErr } = await supabase
+      .from('listening_pods')
+      .select('id, course_code, slug, title, speakers')
+      .eq('slug', slug)
+      .order('course_code')
+    if (podsErr) throw podsErr
+
+    const live = (pods || []).filter(p => !RETIRED_SLUG.test(p.slug))
+    if (!live.length) return res.json({ slug, track, courses: [], errors: [] })
+
+    const rows = await fetchAllPodSentences(supabase, live.map(p => p.id))
+    const byPod = new Map(live.map(p => [p.id, []]))
+    for (const r of rows) if (byPod.has(r.pod_id)) byPod.get(r.pod_id).push(r)
+
+    const courses = []
+    const errors = []
+    for (const pod of live) {
+      try {
+        const view = buildPodScript({ pod, rows: byPod.get(pod.id) || [], track })
+        courses.push({
+          course_code: pod.course_code,
+          pod_id: pod.id,
+          slug: pod.slug,
+          title: pod.title,
+          summary: view.summary,
+        })
+      } catch (e) {
+        // A course that fails to build is a NAMED gap, never a silent omission.
+        errors.push({ course_code: pod.course_code, pod_id: pod.id, error: e?.message || String(e) })
+        logger.error(`[Pod scripts] ${pod.id}: ${e?.message || e}`)
+      }
+    }
+    res.json({ slug, track, courses, errors })
+  } catch (err) {
+    logger.error(`[Pod scripts index] ${err.message}`)
+    res.status(500).json({ error: err.message })
+  }
+})
+
+// GET /api/pod-scripts/:courseCode — one course's script, scene by scene, in
+// playing order, with each line's character, voice (name + gender), target and
+// known text, and its casting violations already marked.
+//
+//   ?slug=   default pod-1; pass a retired slug explicitly to read it
+//   ?track=  target (default) | known
+//   ?clips=1 also load every clip referenced by all six audio slots and run the
+//            gate's six-column check. OFF by default: it is one extra query per
+//            500 clips and the script itself does not need it.
+app.get('/api/pod-scripts/:courseCode', async (req, res) => {
+  try {
+    const { courseCode } = req.params
+    const slug = String(req.query.slug || 'pod-1')
+    const track = req.query.track === 'known' ? 'known' : 'target'
+    const wantClips = req.query.clips === '1' || req.query.clips === 'true'
+    const podId = `${courseCode}:${slug}`
+    const supabase = supabaseClient.getClient()
+    const { buildPodScript } = require('../tools/pods/pod-script-view.cjs')
+
+    const { data: pod, error: podErr } = await supabase
+      .from('listening_pods')
+      .select('id, course_code, slug, title, speakers, metadata, updated_at')
+      .eq('id', podId).maybeSingle()
+    if (podErr) throw podErr
+    if (!pod) return res.status(404).json({ error: `Pod not found: ${podId}` })
+
+    const rows = await fetchAllPodSentences(supabase, [podId], { withSplitArrays: wantClips })
+
+    let clips = null
+    if (wantClips) {
+      const ids = new Set()
+      for (const r of rows) {
+        for (const f of ['target_audio_id', 'known_audio_id', 'explainer_audio_id']) if (r[f]) ids.add(r[f])
+        for (const f of ['sentence_audio_ids', 'sentence_known_audio_ids', 'takeg_audio_ids']) {
+          for (const id of r[f] || []) if (id) ids.add(id)
+        }
+      }
+      clips = {}
+      const all = [...ids]
+      for (let i = 0; i < all.length; i += 500) {
+        const { data, error } = await supabase
+          .from('course_audio').select('id, text, voice_id').in('id', all.slice(i, i + 500))
+        if (error) throw error
+        for (const c of data || []) clips[c.id] = { text: c.text, voice_id: c.voice_id }
+      }
+    }
+
+    // Sibling pods (including any retired one) so the UI can offer them without
+    // ever showing a retired pod as the live script by accident.
+    const { data: siblings } = await supabase
+      .from('listening_pods').select('slug, title').eq('course_code', courseCode).order('slug')
+
+    const view = buildPodScript({ pod, rows, track, clips })
+    res.json({
+      ...view,
+      updated_at: pod.updated_at,
+      retired: RETIRED_SLUG.test(pod.slug),
+      siblings: (siblings || []).map(s => ({ ...s, retired: RETIRED_SLUG.test(s.slug) })),
+    })
+  } catch (err) {
+    logger.error(`[Pod script] ${err.message}`)
+    res.status(500).json({ error: err.message })
+  }
+})
+
 // POST /api/admin/pods/generate — create/extend a listening pod for a course by
 // flexing the canonical scenarios (canonical_pod_scenarios) into the course's
 // language pair via the Max-plan Claude CLI. Resumable: generates scenes within
