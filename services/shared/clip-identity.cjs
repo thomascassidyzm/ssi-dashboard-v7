@@ -210,9 +210,10 @@ function canonicalVoiceId(voiceId, opts = {}) {
 
   // A composite is a splice of two takes, not a voice — 'comp:' names a recipe
   // ('comp:ga-IE-OrlaNeural+en-GB-SoniaNeural' is the Irish chunk voice over the
-  // English known voice, pod-explainer-composite.cjs:271). It keeps its own
-  // namespace and each part is canonicalised, so a spliced explainer never
-  // collapses onto a plain single-voice render of the same text.
+  // English known voice). It keeps its own namespace and each part is
+  // canonicalised, so a spliced clip never collapses onto a plain single-voice
+  // render of the same text. Nothing produces composites since explainers were
+  // deprecated on 2026-08-24, but the existing clips still have to be read.
   if (/^comp:/i.test(raw)) {
     const parts = raw.slice(5).split('+').map((p) => p.trim()).filter(Boolean);
     if (!parts.length) throw new ClipIdentityError('voice_id', voiceId, 'composite with no parts');

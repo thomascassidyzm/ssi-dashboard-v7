@@ -1,7 +1,10 @@
 // One spelling for a clip's language and voice, on the pipeline write paths.
 //
 // Covers the four things this branch changed in phase8 / presentation-author /
-// pod-explainer-composite:
+// the (since deleted) pod explainer composite. The 'pod_explainer' role and the
+// 'comp:' voice tags below are fixtures for clips that ALREADY EXIST: nothing
+// produces them since explainers were deprecated on 2026-08-24, but every read
+// path still has to spell them the same way:
 //   1. writes compose language and voice_id through clip-identity;
 //   2. the 'auto' split — generatePodAudio takes the clip's identity language
 //      AND a separate xAI language cue, so a TTS tuning parameter stops being

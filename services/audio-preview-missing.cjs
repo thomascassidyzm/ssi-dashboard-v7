@@ -40,11 +40,13 @@ const POD_ARRAY_AUDIO_COLUMNS = [
   'takeg_audio_ids',
 ]
 
-// uuid columns holding a single clip.
+// uuid columns holding a single clip. explainer_audio_id is deliberately NOT
+// here: explainers were deprecated on 2026-08-24 and a dangling explainer clip
+// is no longer damage anyone should be asked to fix. The column and its rows
+// are untouched — they are simply not reported on.
 const POD_SCALAR_AUDIO_COLUMNS = [
   'target_audio_id',
   'known_audio_id',
-  'explainer_audio_id',
   'note_audio_id',
 ]
 

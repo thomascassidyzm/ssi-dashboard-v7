@@ -61,15 +61,19 @@ describe('the columns scanned', () => {
     ])
   })
 
-  it('covers all four uuid SCALAR columns, including note_audio_id', () => {
+  it('covers the live uuid SCALAR columns, including note_audio_id', () => {
     expect(POD_SCALAR_AUDIO_COLUMNS).toEqual([
-      'target_audio_id', 'known_audio_id', 'explainer_audio_id', 'note_audio_id',
+      'target_audio_id', 'known_audio_id', 'note_audio_id',
     ])
+  })
+
+  it('does not scan the deprecated explainer column', () => {
+    expect(POD_SCALAR_AUDIO_COLUMNS).not.toContain('explainer_audio_id')
   })
 
   it('reports every column even when the whole course is clean', () => {
     const result = scan([sentence()])
-    expect(result.byColumn).toHaveLength(7)
+    expect(result.byColumn).toHaveLength(6)
     expect(result.totals.missing).toBe(0)
     for (const c of result.byColumn) expect(c.missing).toBe(0)
   })

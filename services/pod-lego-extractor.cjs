@@ -20,8 +20,15 @@
  *                    first-encounter discipline, plus notes lifted from the
  *                    chunk `literal` field. Validates total tiling.
  *
+ * SOURCE CORPUS IS NOW FROZEN. The pod explainer track was deprecated on
+ * 2026-08-24 and its generator deleted, so explainer_decomposition is a
+ * read-only corpus: the 13,993 rows that have one are all there will ever be,
+ * and this extractor no longer has a way to make more. It is left running
+ * against them because the Stage-0 atom ladder it feeds is live and is NOT
+ * part of that deprecation.
+ *
  * This is the COST-FREE data layer: it consumes decompositions that already
- * exist (or are produced via the Max-Plan CLI, never the API) and writes only
+ * exist and writes only
  * text/JSON. Audio (the inventory's canonical explainer clips, per-clause
  * note_audio) and forced-aligned offsets are a downstream, cost-gated pass and
  * are deliberately NOT generated here — atom/note offsets are left null.
