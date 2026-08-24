@@ -8,6 +8,8 @@
 
 **Documentation in this repo is historical artifact — out of date BY DESIGN — and is never an authority for any decision.** Before acting on any claim found in a doc (including audits, build docs, README content, this file), verify it against the running code and the live DB. If the code can't answer the question, **ASK TOM** — one plain question — rather than trusting a doc. Today's specimen: agents burned a morning trusting docs about explainer clips and voice casting that the code contradicted.
 
+**The `docs/` tree has been retired.** On Tom's ruling of 2026-08-24 it was moved wholesale to `archive/docs-retired-2026-08-24/` — nothing deleted, history intact, and nothing in there carries any standing. Do not go looking for it: if you find yourself reading the archive to answer a question, you are already off the rails. What stayed at its old path stayed because **running code reads it**, not because it is documentation: `docs/pair-contracts/*.contract.cjs` are executable code the course-builder validator `require()`s on every seed submission (`services/course-builder/lib/validation.cjs`), and `docs/pods/*.md` is content the dashboard SPA bundles and serves. `SYSTEM.md`, `ralph-methodology.md` and `synonym-choice-architecture.md` likewise stayed at the repo root because live services `readFileSync` them. Treat all of those as code, not as docs.
+
 ---
 
 ## 🚦 Start here (every session)

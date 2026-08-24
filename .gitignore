@@ -73,7 +73,11 @@ temp/
 temp_*
 test-*
 test_*
-archive/
+# Root archive/ is scratch, EXCEPT the retired docs tree, which is tracked on
+# purpose (Tom's ruling 2026-08-24). Anchored + negated because git cannot
+# re-include a path whose parent directory is itself excluded.
+/archive/*
+!/archive/docs-retired-2026-08-24/
 !apml/archive/
 recovered_*/
 extracted-*/
