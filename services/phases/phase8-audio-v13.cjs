@@ -40,6 +40,10 @@ const { identity: buildIdentity } = require('../shared/build-identity.cjs')
 const ttsService = require('../tts-service.cjs')
 const { toBcp47 } = require('../voice-discovery-service.cjs')
 const audioProcessor = require('../audio-processor.cjs')
+// The loudness BAND is read from the gate tier, never restated here — one band,
+// one place, so a course's declared config governs both what is rendered and
+// what is allowed in (see the tier's header).
+const loudnessTier = require('../audio-intelligence/tiers/loudness.cjs')
 const genderService = require('../gender-expansion-service.cjs')
 const genderHaikuService = require('../gender-haiku-service.cjs')
 const veracity = require('../audio-veracity.cjs')
@@ -1461,7 +1465,38 @@ async function masterAudio(audioBuffer, ttsText, opts = {}) {
     // other side as "that hissy mastering stuff" (2026-07-29), which is why
     // normalizeAudioClean already existed. Pure subtraction: one stage removed,
     // nothing added. Measured cost: output lands 0.8-1.7 LUFS quieter.
-    await audioProcessor.normalizeAudioClean(eosTail.path, masteredPath, targetLufs)
+    // CLOSED LOOP since 2026-08-24 (Tom, listening to Italian Pod 1 on his
+    // phone: "Enzo is quite a LOT quieter than Ara and also the known language
+    // voices … our mastering process probably needs tweaking for volume
+    // similarity").
+    //
+    // normalizeAudioClean measured its INPUT, applied one gain, and then ran the
+    // true-peak limiter — which pulls gain back out on a peaky voice. Nobody ever
+    // measured the OUTPUT, so the shortfall was invisible to every gate and every
+    // report. Measured on live ita_for_eng pod-1 bytes that day: the single pass
+    // lands 0.5-2.5 dB short, and it lands SHORTER the more gain it needed, so the
+    // quietest voice compounds its own disadvantage.
+    //
+    // The converging variant re-renders from the ORIGINAL input with a corrected
+    // total gain, so the shipped file has been through exactly one volume stage,
+    // one limiter and one fade — same chain, better gain number, no extra
+    // processing and no reintroduced compressor. Tom's 2026-07-29 no-hiss ruling
+    // stands: PRE_COMPRESS is still out.
+    //
+    // This does NOT close the gap Tom actually heard, and must not be sold as
+    // doing so: that gap is spectral (Enzo loses 9.1 dB below 500 Hz where the
+    // other voices lose ~5), and no gain stage can fix a spectral difference.
+    const loudness = await audioProcessor.normalizeAudioConverging(
+      eosTail.path, masteredPath, targetLufs, { toleranceDb: 0.5, maxPasses: 3 }
+    )
+    if (loudness.converged) {
+      logger.debug(`masterAudio: loudness ${loudness.inputLUFS} -> ${loudness.outputLUFS} LUFS in ${loudness.passes} pass(es)`)
+    } else {
+      // NOT a render failure — the clip is the best this chain can produce and it
+      // ships. It is logged loudly because a clip that cannot reach target is
+      // exactly the clip an ear notices next to its neighbours.
+      logger.warn(`masterAudio: loudness did NOT converge — ${loudness.inputLUFS} -> ${loudness.outputLUFS} LUFS against a ${targetLufs} target after ${loudness.passes} pass(es): ${loudness.reason}`)
+    }
 
     // Tail-defect FLAG — read-only, never a repair (Tom's ruling 2026-08-05).
     //
@@ -1489,7 +1524,39 @@ async function masterAudio(audioBuffer, ttsText, opts = {}) {
 
     logger.debug(`Mastered audio: ${durationMs}ms, ${masteredBuffer.length} bytes`)
 
-    return { buffer: masteredBuffer, durationMs }
+    // THE MEASUREMENT IS NO LONGER THROWN AWAY (Tom 2026-08-24). The loudness
+    // gate tier's own header records that the estate "applies a loudness target
+    // blind and finds out by ear" — because this function measured and discarded.
+    // The verdict is computed here against the SAME band the gate uses, and
+    // returned so a caller can count it. ADDITIVE: existing callers destructure
+    // { buffer, durationMs } and are unaffected.
+    //
+    // `pass: null` means COULD NOT MEASURE and must never read as a pass — the
+    // gate-stack rule. It is passed through untouched rather than coerced, and
+    // true peak is reported as unmeasured here rather than guessed, because this
+    // path measures loudness only; the gate stack measures the peak properly.
+    const loudnessVerdict = loudnessTier.verdict({
+      measured: Number.isFinite(loudness.outputLUFS),
+      lufs: Number.isFinite(loudness.outputLUFS) ? loudness.outputLUFS : null,
+      truePeakDbtp: null,
+      lra: null,
+      error: loudness.converged ? null : loudness.reason,
+    })
+
+    return {
+      buffer: masteredBuffer,
+      durationMs,
+      loudness: {
+        inputLufs: loudness.inputLUFS,
+        outputLufs: loudness.outputLUFS,
+        targetLufs,
+        gainDb: loudness.gainDb,
+        passes: loudness.passes,
+        converged: loudness.converged,
+        reason: loudness.reason,
+      },
+      loudnessVerdict,
+    }
   } finally {
     // Cleanup temp directory
     await fs.remove(tempDir)

@@ -897,6 +897,142 @@ async function normalizeAudioClean(inputPath, outputPath, targetLUFS = -16.0) {
 }
 
 /**
+ * CONVERGENCE PLANNER — pure, and the only place the loop's decisions are made.
+ *
+ * Kept free of ffmpeg on purpose: "did we converge, and what gain next?" is the
+ * part that can be wrong in a way no ear catches, and a test that needs a real
+ * decode is a test nobody runs. Everything here is arithmetic.
+ *
+ * @param {object} s
+ * @param {number} s.outputLufs   what the LAST render actually measured
+ * @param {number} s.targetLufs   where it is supposed to land
+ * @param {number} s.toleranceDb  how close is close enough
+ * @param {number} s.gainDb       the total gain that produced outputLufs
+ * @param {number} s.pass         passes completed so far (1-based)
+ * @param {number} s.maxPasses    hard ceiling
+ * @param {number} [s.bestErrorDb] smallest |error| seen before this pass
+ * @param {number} [s.maxGainDb=20] refuse to boost a near-silent file into noise
+ * @returns {{done:boolean, reason:string, nextGainDb:number|null, errorDb:number, improved:boolean}}
+ */
+function planNextPass (s) {
+  const maxGain = Number.isFinite(s.maxGainDb) ? s.maxGainDb : 20
+  const errorDb = Math.round((s.targetLufs - s.outputLufs) * 100) / 100
+  const absErr = Math.abs(errorDb)
+  const improved = !Number.isFinite(s.bestErrorDb) || absErr < s.bestErrorDb - 0.01
+
+  if (absErr <= s.toleranceDb) {
+    return { done: true, reason: `within ${s.toleranceDb} dB of target`, nextGainDb: null, errorDb, improved }
+  }
+  if (s.pass >= s.maxPasses) {
+    return { done: true, reason: `pass ceiling (${s.maxPasses}) reached, still ${errorDb} dB out`, nextGainDb: null, errorDb, improved }
+  }
+  // A pass that did not get closer means the limiter is holding the level down
+  // and more gain will only squash the signal harder. Stop and keep the best.
+  if (!improved) {
+    return { done: true, reason: `pass ${s.pass} did not improve on ${s.bestErrorDb} dB — the limiter is the floor`, nextGainDb: null, errorDb, improved }
+  }
+  const nextGainDb = Math.round((s.gainDb + errorDb) * 100) / 100
+  if (nextGainDb > maxGain) {
+    return { done: true, reason: `next gain ${nextGainDb} dB exceeds the ${maxGain} dB ceiling — input is too quiet to lift cleanly`, nextGainDb: null, errorDb, improved }
+  }
+  return { done: false, reason: `still ${errorDb} dB out, retrying at ${nextGainDb} dB`, nextGainDb, errorDb, improved }
+}
+
+/**
+ * CONVERGING clean normalisation — same chain, a better gain number.
+ *
+ * WHY. Tom, 2026-08-24, on Italian Pod 1: "Enzo is quite a LOT quieter than Ara
+ * and also the known language voices." normalizeAudioClean measures the INPUT,
+ * computes one gain, applies it, and then runs TRUE_PEAK_LIMIT — which pulls
+ * gain back out again on a peaky voice. Nothing ever measured the OUTPUT, so the
+ * shortfall was invisible. Measured on live ita_for_eng pod-1 bytes, 2026-08-24:
+ * the single pass lands 0.5 to 2.5 dB short of target, and it lands SHORTER the
+ * more gain it had to apply — so a quiet voice like Enzo compounds its own
+ * disadvantage. That is the whole defect.
+ *
+ * WHAT THIS DOES NOT DO. It does not reintroduce PRE_COMPRESS. Tom ruled the
+ * compressor out on 2026-07-29 ("that hissy mastering stuff") because its make-up
+ * gain drags an xAI clone's noise floor into audibility, and that ruling stands.
+ *
+ * THE MECHANISM, and why it adds no processing at all. Each pass re-renders from
+ * the ORIGINAL input with a corrected TOTAL gain — it never re-limits an
+ * already-limited file. So the output has been through exactly one volume stage,
+ * one limiter and one fade, precisely as before; the only thing that changed is
+ * that the gain number is now the right one. There is no extra colouration to
+ * argue about because there is no extra processing.
+ *
+ * WHAT IT CANNOT FIX, stated here so nobody mistakes it for a cure. Integrated
+ * LUFS is a full-band measure. The same 2026-08-24 measurement found that Enzo
+ * loses 9.1 dB when everything below 500 Hz is removed where the pod's other
+ * voices lose about 5 dB — so on a phone speaker he is ~4 dB quieter than his
+ * neighbours even once every clip sits exactly on target. That is a SPECTRAL
+ * difference and no gain stage can close it. See the report of that date.
+ *
+ * ADDITIVE: normalizeAudioClean is untouched and every existing caller of it
+ * behaves exactly as it did. The return shape here is a superset of that one.
+ *
+ * @param {string} inputPath
+ * @param {string} outputPath
+ * @param {number} [targetLUFS=-16.0]
+ * @param {object} [opts]
+ * @param {number} [opts.toleranceDb=0.5] how close counts as arrived. Tighter than
+ *   the loudness GATE's +/-1.5 band on purpose: the gate says what is allowed in,
+ *   this says what we aim for, and aiming at the edge of the allowed band is how
+ *   two clips two dB apart both pass.
+ * @param {number} [opts.maxPasses=3]
+ * @param {number} [opts.maxGainDb=20]
+ * @returns {Promise<{inputLUFS:number, outputLUFS:number, gainDb:number,
+ *   passes:number, converged:boolean, reason:string, history:Array}>}
+ */
+async function normalizeAudioConverging (inputPath, outputPath, targetLUFS = -16.0, opts = {}) {
+  const toleranceDb = Number.isFinite(opts.toleranceDb) ? opts.toleranceDb : 0.5
+  const maxPasses = Number.isFinite(opts.maxPasses) ? opts.maxPasses : 3
+  const maxGainDb = Number.isFinite(opts.maxGainDb) ? opts.maxGainDb : 20
+
+  try {
+    const inputLUFS = await measureIntegratedLoudness(inputPath, 'anull');
+    let gainDb = Math.round((targetLUFS - inputLUFS) * 100) / 100
+    const history = []
+    let best = null
+
+    for (let pass = 1; pass <= maxPasses; pass++) {
+      await ffmpegFilterToLameMp3(inputPath, outputPath, {
+        filterChain: `volume=${gainDb.toFixed(2)}dB,${TRUE_PEAK_LIMIT},${ANTI_CLICK_FADE}`
+      });
+      const outputLUFS = await measureIntegratedLoudness(outputPath, 'anull');
+      const plan = planNextPass({
+        outputLufs: outputLUFS, targetLufs: targetLUFS, toleranceDb,
+        gainDb, pass, maxPasses, bestErrorDb: best ? best.absErr : undefined, maxGainDb
+      })
+      history.push({ pass, gainDb, outputLUFS, errorDb: plan.errorDb, reason: plan.reason })
+
+      // Keep the best render we have SEEN, not merely the last one we made: a
+      // final non-improving pass must never be what ships.
+      if (!best || Math.abs(plan.errorDb) < best.absErr) {
+        best = { gainDb, outputLUFS, absErr: Math.abs(plan.errorDb) }
+      } else if (plan.done) {
+        // The last render is worse than an earlier one — put the better gain back.
+        await ffmpegFilterToLameMp3(inputPath, outputPath, {
+          filterChain: `volume=${best.gainDb.toFixed(2)}dB,${TRUE_PEAK_LIMIT},${ANTI_CLICK_FADE}`
+        });
+      }
+
+      if (plan.done) {
+        return {
+          inputLUFS, outputLUFS: best.outputLUFS, gainDb: best.gainDb,
+          passes: pass, converged: best.absErr <= toleranceDb, reason: plan.reason, history
+        }
+      }
+      gainDb = plan.nextGainDb
+    }
+    // Unreachable: planNextPass always stops at the pass ceiling.
+    return { inputLUFS, outputLUFS: best.outputLUFS, gainDb: best.gainDb, passes: maxPasses, converged: false, reason: 'pass ceiling', history }
+  } catch (error) {
+    throw new Error(`Failed to converge-normalize audio: ${error.message}`);
+  }
+}
+
+/**
  * Process audio file (time-stretch and/or normalize)
  *
  * @param {string} inputPath - Input audio file path
@@ -1536,6 +1672,12 @@ module.exports = {
   timeStretchAudio,
   normalizeAudio,
   normalizeAudioClean,
+  // Closed-loop variant (Tom 2026-08-24, "volume similarity"): measures its own
+  // OUTPUT and corrects the gain, because the true-peak limiter eats 0.5-2.5 dB
+  // of a single pass and eats more the quieter the voice is. planNextPass is
+  // exported because it is the pure decision and it is where this breaks.
+  normalizeAudioConverging,
+  planNextPass,
   processAudio,
   processBatch,
   concatenateAudio,
