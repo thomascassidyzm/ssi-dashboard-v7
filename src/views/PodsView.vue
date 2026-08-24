@@ -230,7 +230,7 @@ async function authedFetch(path, init = {}) {
 }
 
 // Resumable poll loop — the endpoint generates a few scenes per call and
-// returns more_remaining. Mirrors the explainer-generate pattern.
+// returns more_remaining.
 // `slug` is the pod being written. Creating a course's first core pod still
 // writes `pod-0`, because the generator flexes canonical_pod_scenarios rows
 // keyed on that same slug and only `pod-0` has them. Regenerating passes the

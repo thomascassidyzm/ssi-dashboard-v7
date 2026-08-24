@@ -111,7 +111,7 @@
             <label
               class="cast-guide-label flex items-center gap-1.5 text-[11px] cursor-pointer select-none"
               :class="person.guide ? 'text-sky-300' : 'text-muted'"
-              title="The bilingual guide reads the translations and explanations"
+              title="The bilingual guide reads the English lines"
             >
               <input type="radio" name="pod-guide" :checked="person.guide" @change="setGuide(i)" class="accent-sky-500" />
               bilingual guide
@@ -267,6 +267,8 @@ const props = defineProps({
   courseCode: { type: String, required: true },
 })
 
+// Cast key for the bilingual guide — the voice that reads the KNOWN-language
+// (English) pod lines. The key is historical; the workload is known lines only.
 const EXPLAINER = '__explainer__'
 
 const { getAccessToken } = useAuth()
@@ -281,7 +283,7 @@ const editing = ref(false)
 const people = ref([])            // [{ name, gender, email, guide }]
 const proposal = ref(null)        // POST /cast/propose response
 const speakers = ref([])          // [{ speaker, gender, lineCount, estimatedSeconds }]
-const explainerInfo = ref(null)   // { speaker, knownLines, explainerLines, estimatedSeconds }
+const explainerInfo = ref(null)   // { speaker, knownLines, estimatedSeconds } — guide workload
 const rosterVoices = ref([])      // [{ voiceId, name, email }]
 const savedCast = ref({})         // server's podCast (already two-voice collapsed)
 const generationColouring = ref(false)
@@ -537,9 +539,7 @@ const allocation = computed(() => {
       email: a.email,
       gender: a.gender || null,
       characters: a.characters,
-      lineCount: a.lineCount + (a.isGuide
-        ? (proposal.value.explainer?.knownLines || 0) + (proposal.value.explainer?.explainerLines || 0)
-        : 0),
+      lineCount: a.lineCount + (a.isGuide ? (proposal.value.explainer?.knownLines || 0) : 0),
       estimatedMinutes: a.estimatedMinutes,
       isGuide: a.isGuide,
       guideSuggested: a.guideSuggested,
@@ -566,7 +566,7 @@ const allocation = computed(() => {
     const rec = byVoice.get(entry.voiceId)
     if (speaker === EXPLAINER) {
       rec.isGuide = true
-      rec.lineCount += (explainerInfo.value?.knownLines || 0) + (explainerInfo.value?.explainerLines || 0)
+      rec.lineCount += explainerInfo.value?.knownLines || 0
       rec.seconds += explainerInfo.value?.estimatedSeconds || 0
     } else {
       rec.characters.push(speaker)

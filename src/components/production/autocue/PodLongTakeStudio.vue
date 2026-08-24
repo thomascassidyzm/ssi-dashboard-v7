@@ -268,11 +268,13 @@ const micError = ref(null)
 const plan = ref(null)
 
 // An actor records their own CHARACTER (target) lines. A voice that is also cast as
-// the explainer gets every known/English line too — but the English narration is
-// recorded separately (here it already exists), so we show the actor's target lines
-// when they have any, and fall back to the full queue only for a pure-explainer voice.
+// the bilingual guide gets every known/English line too — but the English narration
+// is recorded separately (here it already exists), so we show the actor's target
+// lines when they have any, and fall back to the rest only for a pure-guide voice.
+// Explainer narration is deprecated (Tom, 2026-08-24) — never queue it for a human,
+// even if an older recording-plan payload still serves those items.
 const items = computed(() => {
-  const all = plan.value?.items || []
+  const all = (plan.value?.items || []).filter(it => it.kind !== 'explainer')
   const target = all.filter(it => it.kind === 'target')
   return target.length ? target : all
 })

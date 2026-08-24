@@ -164,49 +164,6 @@
           </details>
         </div>
 
-        <!-- Explainer generation panel
-             Stage-1 sequence is target → known → explainer → target → target.
-             Generate the per-sentence narration text via Haiku (Max Plan),
-             store on the row. Audio rendering is a separate pass once the
-             text looks good. -->
-        <div class="mb-6 bg-surface border border-line rounded-lg p-4 text-sm card-sep">
-          <div class="flex items-center justify-between gap-3">
-            <div class="flex flex-col gap-1 min-w-0">
-              <div class="text-ink font-semibold">Stage-1 explainer text</div>
-              <div class="text-faint text-xs">
-                {{ explainerCovered }}/{{ sentences.length }} sentences have explainer text
-                <span v-if="explainerAudioCovered > 0">
-                  · {{ explainerAudioCovered }} with audio
-                </span>
-              </div>
-            </div>
-            <div class="flex gap-2">
-              <button
-                @click="generateExplainers(false)"
-                :disabled="explainerBusy || allExplained"
-                class="px-3 py-1.5 text-xs rounded bg-emerald-700 hover:bg-emerald-600 text-emerald-100 disabled:opacity-50 disabled:cursor-not-allowed"
-                title="Generate explainer text for sentences that don't have one yet"
-              >{{ explainerBusy ? 'Generating…' : 'Generate' }}</button>
-              <button
-                @click="generateExplainers(true)"
-                :disabled="explainerBusy || sentences.length === 0"
-                class="px-3 py-1.5 text-xs rounded bg-amber-700 hover:bg-amber-600 text-amber-100 disabled:opacity-50 disabled:cursor-not-allowed"
-                title="Re-run for ALL sentences in this pod, overwriting existing explainer text (use after a prompt change)"
-              >Regenerate all</button>
-              <button
-                @click="generateExplainerAudio"
-                :disabled="explainerAudioBusy || explainerAudioMissing === 0"
-                class="px-3 py-1.5 text-xs rounded bg-emerald-700 hover:bg-emerald-600 text-emerald-100 disabled:opacity-50 disabled:cursor-not-allowed"
-                title="Render explainer narration (Tom's voice) for sentences that have explainer text but no audio yet. Never deletes or overwrites existing explainer audio."
-              >{{ explainerAudioBusy ? 'Generating explainer audio…' : `Generate explainer audio (${explainerAudioMissing})` }}</button>
-            </div>
-          </div>
-          <div v-if="explainerStatus" class="mt-3 text-xs text-muted">{{ explainerStatus }}</div>
-          <div v-if="explainerError" class="mt-3 text-xs err-inline rounded px-2 py-1">{{ explainerError }}</div>
-          <div v-if="explainerAudioStatus" class="mt-3 text-xs text-muted">{{ explainerAudioStatus }}</div>
-          <div v-if="explainerAudioError" class="mt-3 text-xs err-inline rounded px-2 py-1">{{ explainerAudioError }}</div>
-        </div>
-
         <!-- Pod audio coverage + inline regeneration
              Fills only MISSING (e.g. freshly-edited) target/known clips via
              Phase 8. Optimistic: no confirm, runs in the background and reloads
@@ -305,17 +262,6 @@
                          nobody asked for. -->
                     <div class="text-ink truncate text-left bidi-isolate" :dir="dirFor(sent.target_text)" :title="sent.target_text">{{ sent.target_text }}</div>
                     <div class="text-faint text-xs truncate" :title="sent.known_text">{{ sent.known_text }}</div>
-                    <!-- Stage-1 explainer (inline, only when populated) -->
-                    <div
-                      v-if="sent.explainer_text"
-                      class="explainer-note text-xs mt-1 italic leading-snug"
-                      :title="sent.explainer_text"
-                    >
-                      <!-- Mixed-language narration sharing a line with the ⓘ
-                           glyph: isolate just the text run so the icon keeps
-                           its place whichever way the narration reads. -->
-                      <span class="explainer-icon not-italic mr-1">ⓘ</span><span class="bidi-isolate" :dir="dirFor(sent.explainer_text)">{{ sent.explainer_text }}</span>
-                    </div>
                   </template>
                   <!-- Edit mode -->
                   <div v-else class="space-y-1.5">
@@ -363,17 +309,6 @@
                     :title="clipTitle(sent, 'known')"
                   >▶{{ knownFlag }}</button>
                   <span v-else class="px-2 py-1 text-xs text-faint" title="No known audio">{{ knownFlag }}</span>
-                  <button
-                    v-if="sent.explainer_audio_id"
-                    @click="playAudio(sent.explainer_audio_id)"
-                    :class="['px-2 py-1 text-xs rounded transition-colors', playingId === sent.explainer_audio_id ? 'bg-amber-700 text-amber-100' : 'bg-surface-2 hover:bg-amber-700 text-ink hover:text-amber-100']"
-                    title="Play Stage-1 explainer (mixed-language narration)"
-                  >ⓘ</button>
-                  <span
-                    v-else-if="sent.explainer_text"
-                    class="px-2 py-1 text-xs explainer-icon-dim"
-                    title="Explainer text generated; audio not yet rendered"
-                  >ⓘ</span>
                   <button
                     v-if="sent.target_audio_id && sent.known_audio_id"
                     @click="playPair(sent.target_audio_id, sent.known_audio_id)"
@@ -440,31 +375,6 @@ const error = ref(null)
 const audioEl = ref(null)
 const playingId = ref(null)
 const playQueue = ref([])
-
-// Stage-1 explainer state (text generation, audio is a separate pass)
-const explainerBusy = ref(false)
-const explainerStatus = ref('')
-const explainerError = ref('')
-
-// Stage-1 explainer AUDIO state (renders narration for explainer text). N is
-// the sentences that have explainer text but no explainer audio yet — exactly
-// the rows the endpoint will render.
-const explainerAudioBusy = ref(false)
-const explainerAudioStatus = ref('')
-const explainerAudioError = ref('')
-
-const explainerCovered = computed(() =>
-  sentences.value.filter(s => s.explainer_text && s.explainer_text.trim()).length
-)
-const explainerAudioCovered = computed(() =>
-  sentences.value.filter(s => s.explainer_audio_id).length
-)
-const explainerAudioMissing = computed(() =>
-  Math.max(0, explainerCovered.value - explainerAudioCovered.value)
-)
-const allExplained = computed(() =>
-  sentences.value.length > 0 && explainerCovered.value === sentences.value.length
-)
 
 // Pod audio regeneration state. N (missing clips) is derived from the same
 // rows the page already loads — every sentence needs a target + a known clip,
@@ -581,7 +491,7 @@ const playableTargets = computed(() =>
 )
 const isPlaying = computed(() => playingId.value !== null)
 const isRowPlaying = (sent) => !!playingId.value && [
-  sent.target_audio_id, sent.known_audio_id, sent.explainer_audio_id,
+  sent.target_audio_id, sent.known_audio_id,
 ].includes(playingId.value)
 
 function startQueue(ids) {
@@ -731,8 +641,8 @@ function castNameFor(speaker) {
   return podCast.value[speaker]?.name || null
 }
 
-// Admin-gated helper for the explainer endpoint. Mirrors the pattern in
-// RemoteControl / Maintenance — fetch a fresh access token, attach Bearer.
+// Auth-gated fetch helper for the pod editing/generation doors. Mirrors the
+// pattern in RemoteControl / Maintenance — fresh access token, attach Bearer.
 const { getAccessToken } = useAuth()
 async function authedFetch(path, init = {}) {
   const token = await getAccessToken()
@@ -792,48 +702,6 @@ async function saveSentence(sent) {
 }
 
 /**
- * Generate Stage-1 explainer text for every sentence in this pod.
- *   force=false (Generate)      — picks up only sentences with NULL explainer_text.
- *   force=true  (Regenerate all) — re-runs every sentence, overwriting existing
- *                                  text. Used after a prompt change.
- * Polls the resumable backend endpoint until more_remaining is false,
- * reloading the pod between batches so the inline display lights up live.
- */
-async function generateExplainers(force) {
-  if (explainerBusy.value) return
-  explainerBusy.value = true
-  explainerStatus.value = force ? 'Regenerating all sentences…' : 'Generating explainers…'
-  explainerError.value = ''
-  let totalUpdated = 0
-  let totalFailed = 0
-  try {
-    // Resumable poll loop — endpoint caps itself at 60s wall time per call.
-    // Keep going until it tells us we're exhausted, or until we hit a hard
-    // failure ceiling so a runaway can't loop forever.
-    for (let pass = 0; pass < 50; pass++) {
-      const res = await authedFetch('/api/admin/pod-explainer-generate', {
-        method: 'POST',
-        body: JSON.stringify({ podId: pod.value?.id, force, limit: 200 }),
-      })
-      const body = await res.json()
-      if (!res.ok) throw new Error(body?.error || `HTTP ${res.status}`)
-      totalUpdated += body.updated || 0
-      totalFailed += body.failed || 0
-      explainerStatus.value =
-        `updated ${totalUpdated}, failed ${totalFailed}` +
-        (body.more_remaining ? ' · more remaining, continuing…' : ' · done.')
-      await loadPod() // refresh the inline rows so progress is visible
-      if (!body.more_remaining) break
-    }
-  } catch (err) {
-    explainerError.value = err?.message || String(err)
-  } finally {
-    explainerBusy.value = false
-    if (!explainerError.value) explainerStatus.value += ' ✓'
-  }
-}
-
-/**
  * Fill MISSING pod audio (target/known) for this pod via Phase 8.
  * Optimistic — no confirm, no approval. Phase 8's /generate-pods only touches
  * clips whose audio_id is null, so this never deletes or overwrites. It runs in
@@ -874,52 +742,10 @@ async function regenerateAudio() {
   }
 }
 
-/**
- * Render Stage-1 explainer narration (Tom's branded xAI voice) for sentences
- * that HAVE explainer text but NO explainer audio yet. Optimistic — no confirm.
- * The endpoint only touches rows with explainer_audio_id === null, so it never
- * deletes or overwrites. Loops defensively up to a small ceiling (reloading the
- * pod between passes so the new explainer audio becomes playable inline via the
- * per-sentence ▶ "Play Stage-1 explainer" button) in case a wave partially
- * failed and there's more left to do.
- */
-async function generateExplainerAudio() {
-  if (explainerAudioBusy.value || explainerAudioMissing.value === 0) return
-  explainerAudioBusy.value = true
-  explainerAudioError.value = ''
-  let totalGenerated = 0
-  let totalFailed = 0
-  try {
-    for (let pass = 0; pass < 5; pass++) {
-      const before = explainerAudioMissing.value
-      explainerAudioStatus.value = `Generating explainer audio for ${before} sentence${before === 1 ? '' : 's'}…`
-      const res = await authedFetch(
-        `/api/admin/pods/${encodeURIComponent(courseCode)}/generate-explainer-audio`,
-        { method: 'POST', body: JSON.stringify({ pod_ids: [pod.value?.id] }) },
-      )
-      const body = await res.json()
-      if (!res.ok) throw new Error(body?.error || `HTTP ${res.status}`)
-      totalGenerated += body.generated || 0
-      totalFailed += body.failed || 0
-      await loadPod() // re-bind audio so it's playable inline + refresh the count
-      // Stop once none remain or this pass made no progress (all failed).
-      if (explainerAudioMissing.value === 0 || (body.generated || 0) === 0) break
-    }
-    explainerAudioStatus.value =
-      `generated ${totalGenerated}` +
-      (totalFailed ? `, failed ${totalFailed}` : '') +
-      (explainerAudioMissing.value === 0 ? ' · done ✓' : ` · ${explainerAudioMissing.value} still missing`)
-  } catch (err) {
-    explainerAudioError.value = err?.message || String(err)
-  } finally {
-    explainerAudioBusy.value = false
-  }
-}
-
 // --- Human recording status (pods coverage, keystone §5) ---
 // Per-sentence human-vs-tts status from the voice-engine pods coverage
 // endpoint. Non-fatal: the page renders fully without it (chips just hide).
-const recBySentence = ref(null) // sentenceId -> kinds {target|known|explainer: {origin, recorded, ...}}
+const recBySentence = ref(null) // sentenceId -> kinds {target|known: {origin, recorded, ...}}
 
 async function loadRecordingStatus() {
   try {
@@ -1015,11 +841,6 @@ onUnmounted(() => {
 .link-emerald { color: #34d399; }
 .link-emerald:hover { color: #6ee7b7; }
 
-/* Inline italic explainer note + its leading icon. Dark = amber-300/500. */
-.explainer-note { color: rgba(252, 211, 77, 0.8); }
-.explainer-icon { color: rgba(245, 158, 11, 0.6); }
-.explainer-icon-dim { color: rgba(245, 158, 11, 0.4); }
-
 /* Status pills. Dark = the original *-900/40 fill + *-300 text. */
 .pill-emerald { background: rgba(6, 78, 59, 0.4); color: #6ee7b7; border: 1px solid #047857; }
 .pill-purple { background: rgba(59, 7, 100, 0.4); color: #d8b4fe; border: 1px solid #7e22ce; }
@@ -1051,13 +872,6 @@ onUnmounted(() => {
   color: #047857;
 }
 [data-theme="light"] .link-emerald:hover { color: #065f46; }
-
-[data-theme="light"] .explainer-note {
-  /* amber-800 #92400e on white = 6.8:1; keeps the warm explainer identity. */
-  color: #92400e;
-}
-[data-theme="light"] .explainer-icon { color: #b45309; }
-[data-theme="light"] .explainer-icon-dim { color: #b45309; }
 
 [data-theme="light"] .pill-emerald {
   /* emerald-50 fill, emerald-800 text #065f46 = 7.4:1, emerald-300 border. */

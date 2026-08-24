@@ -285,13 +285,6 @@
                     :class="['clip-btn', isPlaying(c) && 'clip-on', c.found === false && 'clip-dead']"
                     :title="clipTitle(c)"
                   >{{ isPlaying(c) ? '■' : '▶' }} EN {{ i + 1 }}</button>
-
-                  <button
-                    v-if="line.audio.explainer"
-                    @click="play(line.audio.explainer)"
-                    :class="['clip-btn', isPlaying(line.audio.explainer) && 'clip-on', line.audio.explainer.found === false && 'clip-dead']"
-                    :title="clipTitle(line.audio.explainer)"
-                  >{{ isPlaying(line.audio.explainer) ? '■' : '▶' }} Explainer</button>
                 </div>
 
                 <div v-if="playError && playErrorId === lastTried" class="text-danger text-xs mt-1">{{ playError }}</div>

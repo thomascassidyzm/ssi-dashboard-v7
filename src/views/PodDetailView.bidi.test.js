@@ -34,8 +34,6 @@ const SENTENCES = [
     known_text: 'speak Arabic now!',
     target_audio_id: null,
     known_audio_id: null,
-    explainer_audio_id: null,
-    explainer_text: null,
   },
   {
     id: 'sent-2',
@@ -46,8 +44,6 @@ const SENTENCES = [
     known_text: 'I want to speak Arabic, with you!',
     target_audio_id: null,
     known_audio_id: null,
-    explainer_audio_id: null,
-    explainer_text: ARA_FULL_STOP,
   },
   {
     id: 'sent-3',
@@ -58,8 +54,6 @@ const SENTENCES = [
     known_text: 'I want to speak Arabic with you now.',
     target_audio_id: null,
     known_audio_id: null,
-    explainer_audio_id: null,
-    explainer_text: null,
   },
 ]
 
@@ -152,15 +146,6 @@ describe('PodDetailView — the sentence list Deborah reads', () => {
 
   it('pins alignment, so directing the line does not restyle the page', async () => {
     expect(targetLines(await mountView())[0].classes()).toContain('text-left')
-  })
-
-  it('isolates the mixed-language explainer run without moving the ⓘ glyph', async () => {
-    const wrapper = await mountView()
-    const note = wrapper.get('.explainer-note')
-    expect(note.text().startsWith('ⓘ')).toBe(true)
-    const run = note.findAll('span').find((s) => s.attributes('dir'))
-    expect(run.attributes('dir')).toBe('rtl')
-    expect(run.classes()).toContain('bidi-isolate')
   })
 
   it('does not direct any container — navigation and layout stay ltr', async () => {

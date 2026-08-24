@@ -316,10 +316,10 @@ const podVoiceId = computed(() => {
 
 const dialogueAvailable = computed(() => Boolean(podVoiceId.value))
 
-// Character names this voice plays (explainer cast entry shown in plain words)
+// Character names this voice plays (the guide cast entry shown in plain words)
 const myCharacters = computed(() => {
   const mine = myPodCastEntries.value.filter(e => !podVoiceId.value || e.voiceId === podVoiceId.value)
-  return mine.map(e => (e.speaker === '__explainer__' ? 'Explainer voice' : e.speaker))
+  return mine.map(e => (e.speaker === '__explainer__' ? 'Bilingual guide' : e.speaker))
 })
 
 // Mode: explicit user toggle wins; otherwise a podVoice link opens dialogue,
