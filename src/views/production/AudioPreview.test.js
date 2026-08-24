@@ -110,10 +110,9 @@ const MISSING = {
     { column: 'takeg_audio_ids', kind: 'array', referenced: 12, missing: 0, sentencesAffected: 0, unassignedSentences: 0, unassignedSlots: 0 },
     { column: 'target_audio_id', kind: 'scalar', referenced: 142, missing: 0, sentencesAffected: 0, unassignedSentences: 0, unassignedSlots: 0 },
     { column: 'known_audio_id', kind: 'scalar', referenced: 68, missing: 0, sentencesAffected: 0, unassignedSentences: 74, unassignedSlots: 0 },
-    { column: 'explainer_audio_id', kind: 'scalar', referenced: 0, missing: 0, sentencesAffected: 0, unassignedSentences: 142, unassignedSlots: 0 },
     { column: 'note_audio_id', kind: 'scalar', referenced: 0, missing: 0, sentencesAffected: 0, unassignedSentences: 142, unassignedSlots: 0 },
   ],
-  totals: { sentencesScanned: 142, slotsReferenced: 366, missing: 2, sentencesAffected: 2, columnsScanned: 7 },
+  totals: { sentencesScanned: 142, slotsReferenced: 366, missing: 2, sentencesAffected: 2, columnsScanned: 6 },
   note: 'The id in this slot does not match any live course_audio row.',
 }
 
@@ -122,7 +121,7 @@ const MISSING_CLEAN = {
   podsScanned: 4,
   slots: [],
   byColumn: MISSING.byColumn.map(c => ({ ...c, missing: 0, sentencesAffected: 0 })),
-  totals: { sentencesScanned: 142, slotsReferenced: 366, missing: 0, sentencesAffected: 0, columnsScanned: 7 },
+  totals: { sentencesScanned: 142, slotsReferenced: 366, missing: 0, sentencesAffected: 0, columnsScanned: 6 },
   note: 'The id in this slot does not match any live course_audio row.',
 }
 
@@ -375,12 +374,15 @@ describe('AudioPreview — missing audio', () => {
     expect(first).toContain('dead-uuid-1')
   })
 
-  it('accounts for all seven audio-id columns, zeros included', async () => {
+  // Six, not seven: explainer_audio_id left the scan when explainers were
+  // deprecated (2026-08-24). The column and its rows are untouched — the
+  // preview simply no longer reports a dangling explainer clip as damage.
+  it('accounts for all six audio-id columns, zeros included', async () => {
     const wrapper = await mountPage()
     await wrapper.find('[data-walk="audio-preview-missing-toggle"]').trigger('click')
 
     const rows = wrapper.findAll('[data-missing-column]')
-    expect(rows).toHaveLength(7)
+    expect(rows).toHaveLength(6)
     const columns = rows.map(r => r.attributes('data-missing-column'))
     // Three arrays, not two. The uncounted column IS the bug.
     expect(columns).toContain('sentence_known_audio_ids')
