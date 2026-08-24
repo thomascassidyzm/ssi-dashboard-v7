@@ -48,9 +48,14 @@
  * kept either side of each cut), which is a cheap end-to-end sanity check that
  * the pieces really came from this turn.
  *
- *   node tools/pods/verify-spliced-sentences.cjs <course> [--sample=10] [--seed=1] [--all]
+ *   node tools/pods/verify-spliced-sentences.cjs <course> [--side=target|known]
+ *        [--sample=10] [--seed=1] [--all]
  *
- * Writes docs/pods/<course>-sentence-splice-verify-<date>.json and exits
+ * --side=known runs the same five checks over the KNOWN (English) split written
+ * by splice-known-sentence-clips.cjs. See the SIDE constant for the three
+ * things that genuinely differ between the two sides.
+ *
+ * Writes docs/pods/<course>-[known-]sentence-splice-verify-<date>.json and exits
  * non-zero if any HARD check (serves / text / parity / seams) fails.
  */
 require('dotenv').config({ path: require('path').join(__dirname, '..', '..', '.env.psql') })
@@ -78,8 +83,35 @@ const ALL = process.argv.includes('--all')
 // leg is the only reason to sample rather than sweep. Run --all --no-stt for
 // coverage, then a small sampled run WITH stt for the listening evidence.
 const NO_STT = process.argv.includes('--no-stt')
+/**
+ * --side=known verifies the KNOWN (English) split written by
+ * splice-known-sentence-clips.cjs. Same five checks, same measurement code,
+ * because the two sides fail in the same five ways and a second verifier would
+ * be a second set of thresholds to drift.
+ *
+ * Three things genuinely differ and each is encoded in SIDE/COL below:
+ *
+ *  - THE ROW SET. A known array only reaches a learner when its length EQUALS
+ *    the target array's — splitRowUnits' `knownMatches` test. A known split of
+ *    any other length is silently ignored by the app, so on this side the row
+ *    query demands both arrays and an equal length: rows failing that are not
+ *    "unverified", they are not in service.
+ *  - THE BOUNDARY. The known side splits on the app's own Latin boundary and
+ *    nothing else. The target side's CJK/danda extensions are wrong here — the
+ *    known text is the string the app reads `kSents` from.
+ *  - THE LANGUAGE FOR WHISPER, which is the course's KNOWN language.
+ */
+const SIDE = arg('side', 'target')
+if (SIDE !== 'target' && SIDE !== 'known') {
+  console.error(`ERR: --side must be target or known, got ${SIDE}`)
+  process.exit(2)
+}
+const IS_KNOWN = SIDE === 'known'
+const COL = IS_KNOWN
+  ? { array: 'sentence_known_audio_ids', text: 'known_text', whole: 'known_audio_id' }
+  : { array: 'sentence_audio_ids', text: 'target_text', whole: 'target_audio_id' }
 if (!COURSE) {
-  console.error('usage: verify-spliced-sentences.cjs <course> [--sample=10] [--seed=1] [--all]')
+  console.error('usage: verify-spliced-sentences.cjs <course> [--side=target|known] [--sample=10] [--seed=1] [--all]')
   process.exit(2)
 }
 
@@ -170,21 +202,47 @@ async function transcribe (mp3, lang) {
   } finally { try { fs.unlinkSync(wav) } catch (_) {} }
 }
 
-/** Reproduces podSentenceSplit.splitRowUnits for the target side. */
+/**
+ * Reproduces podSentenceSplit.splitRowUnits, for whichever side is being
+ * verified. `text` is what the learner SEES on that side of the card and
+ * `audioId` what they HEAR; the checks downstream are that the two describe
+ * the same sentence, and that the clip they name is the clip we wrote.
+ *
+ * The known arm follows the app exactly, including the two places it differs
+ * from the target arm:
+ *   - the unit COUNT still comes from the TARGET clips (`clips.map` there), so
+ *     a known array of the wrong length yields `knownAudioId: null` on every
+ *     unit — a written-but-unused array, which is the silent failure this arm
+ *     exists to catch;
+ *   - the stale-slice guard is all-or-nothing across BOTH arrays.
+ */
 function appUnits (row, textById) {
   const clips = (row.sentence_audio_ids || []).filter(Boolean)
-  if (clips.length < 2) return [{ index: 0, targetText: row.target_text, targetAudioId: row.target_audio_id, isSplit: false }]
-  if (!clips.every((id) => textById.has(id))) {
-    // Stale-slice guard: a missing clip collapses the whole row to whole-turn.
-    return [{ index: 0, targetText: row.target_text, targetAudioId: row.target_audio_id, isSplit: false }]
-  }
+  const knownClips = (row.sentence_known_audio_ids || []).filter(Boolean)
+  const whole = [{
+    index: 0,
+    text: IS_KNOWN ? row.known_text : row.target_text,
+    audioId: IS_KNOWN ? row.known_audio_id : row.target_audio_id,
+    isSplit: false,
+  }]
+  if (!clips.every((id) => textById.has(id))) return whole
+  if (knownClips.length && !knownClips.every((id) => textById.has(id))) return whole
+  if (clips.length < 2) return whole
+
   const tSents = splitOn(row.target_text, APP_LATIN_BOUNDARY)
-  return clips.map((clip, i) => ({
-    index: i,
-    targetText: textById.get(clip) || tSents[i] || tSents[tSents.length - 1] || row.target_text,
-    targetAudioId: clip,
-    isSplit: true,
-  }))
+  const kSents = splitOn(row.known_text, APP_LATIN_BOUNDARY)
+  const knownMatches = knownClips.length === clips.length
+  return clips.map((clip, i) => {
+    const knownClip = knownMatches ? knownClips[i] : null
+    return {
+      index: i,
+      text: IS_KNOWN
+        ? ((knownClip && textById.get(knownClip)) || kSents[i] || '')
+        : (textById.get(clip) || tSents[i] || tSents[tSents.length - 1] || row.target_text),
+      audioId: IS_KNOWN ? knownClip : clip,
+      isSplit: true,
+    }
+  })
 }
 
 ;(async () => {
@@ -192,20 +250,27 @@ function appUnits (row, textById) {
   await db.connect()
   const POD = `${COURSE}:pod-1`
 
-  const { rows: cr } = await db.query('select voice_config from courses where course_code=$1', [COURSE])
+  const { rows: cr } = await db.query(
+    'select voice_config, known_lang from courses where course_code=$1', [COURSE])
   const vc = ((cr[0] || {}).voice_config || {}).voices || {}
-  const lang = (vc.target1 || {}).language || COURSE.split('_')[0]
+  const lang = IS_KNOWN
+    ? ((vc.known || {}).language || (cr[0] || {}).known_lang || COURSE.split('_for_').pop())
+    : ((vc.target1 || {}).language || COURSE.split('_')[0])
   // whisper wants an ISO-639-1-ish code; take the first two letters of the
-  // course's own target language and let whisper reject what it can't do.
+  // course's own language FOR THIS SIDE and let whisper reject what it can't do.
   const whisperLang = { deu: 'de', fra: 'fr', spa: 'es', por: 'pt', ron: 'ro', swe: 'sv',
     nld: 'nl', isl: 'is', hrv: 'hr', eus: 'eu', gle: 'ga', ara: 'ar', hin: 'hi',
-    jpn: 'ja', kor: 'ko', zho: 'zh', ita: 'it' }[String(lang).slice(0, 3)] || 'auto'
+    jpn: 'ja', kor: 'ko', zho: 'zh', ita: 'it', eng: 'en' }[String(lang).slice(0, 3)] || 'auto'
 
+  // On the known side the row set is "arrays present AND equal length" — the
+  // app's own condition for using the known array at all. See --side above.
   const { rows } = await db.query(
-    `select id, global_order, target_text, known_text, target_audio_id, sentence_audio_ids
+    `select id, global_order, target_text, known_text, target_audio_id, known_audio_id,
+            sentence_audio_ids, sentence_known_audio_ids
        from listening_pod_sentences
       where pod_id=$1 and sentence_audio_ids is not null
         and array_length(sentence_audio_ids,1) >= 2
+        ${IS_KNOWN ? 'and array_length(sentence_known_audio_ids,1) = array_length(sentence_audio_ids,1)' : ''}
       order by global_order`, [POD])
 
   const rng = mulberry32(SEED)
@@ -222,17 +287,30 @@ function appUnits (row, textById) {
   let cerHigh = 0, cerN = 0, cerSum = 0
 
   for (const row of sample) {
-    const clips = row.sentence_audio_ids.filter(Boolean)
-    const expected = splitOn(row.target_text, SENTENCE_SPLIT)
+    const clips = (row[COL.array] || []).filter(Boolean)
+    const sideText = row[COL.text]
+    // The known side splits on the app's boundary and nothing else; the target
+    // side keeps the CJK/danda extensions. See --side above.
+    const expected = splitOn(sideText, IS_KNOWN ? APP_LATIN_BOUNDARY : SENTENCE_SPLIT)
+    // BOTH arrays are resolved, whichever side is being verified: appUnits
+    // reproduces the app's stale-slice guard, and that guard is all-or-nothing
+    // across the PAIR. Resolving only this side's ids made the guard fire on
+    // ids the query had never fetched, and reported 12 parity failures against
+    // a correct Italian pod.
+    const allIds = [...new Set([
+      ...clips,
+      ...(row.sentence_audio_ids || []).filter(Boolean),
+      ...(row.sentence_known_audio_ids || []).filter(Boolean),
+    ])]
     const { rows: ca } = await db.query(
-      'select id, text, duration_ms, voice_id, created_at from course_audio where id = any($1)', [clips])
+      'select id, text, duration_ms, voice_id, created_at from course_audio where id = any($1)', [allIds])
     const byId = new Map(ca.map((r) => [r.id, r]))
     const textById = new Map(ca.map((r) => [r.id, r.text]))
 
     const rec = {
-      id: row.id, order: row.global_order, target_text: row.target_text,
+      id: row.id, order: row.global_order, side: SIDE, text: sideText,
       n_clips: clips.length, n_expected: expected.length,
-      app_latin_parts: splitOn(row.target_text, APP_LATIN_BOUNDARY).length,
+      app_latin_parts: splitOn(sideText, APP_LATIN_BOUNDARY).length,
       pieces: [], problems: [],
     }
 
@@ -250,6 +328,12 @@ function appUnits (row, textById) {
       fail.parity++
     } else if (units.length !== clips.length) {
       rec.problems.push(`app builds ${units.length} units for ${clips.length} clips`)
+      fail.parity++
+    } else if (IS_KNOWN && units.some((u) => !u.audioId)) {
+      // The silent failure this side exists to catch: the array is written and
+      // looks done, but the app pairs nothing in and the learner's translation
+      // slot stays exactly as quiet as it was before the pass ran.
+      rec.problems.push('app would pair NO known audio into these units')
       fail.parity++
     }
 
@@ -288,9 +372,14 @@ function appUnits (row, textById) {
           fail.text++
         }
       }
-      // 3. APP PARITY per unit.
-      if (units[i] && units[i].targetText !== row_ca.text) {
-        rec.problems.push(`s${i}: app would display "${units[i].targetText}"`)
+      // 3. APP PARITY per unit — the text the learner READS on this side of
+      // card i must be the text of the clip they HEAR there.
+      if (units[i] && units[i].text !== row_ca.text) {
+        rec.problems.push(`s${i}: app would display "${units[i].text}"`)
+        fail.parity++
+      }
+      if (units[i] && units[i].audioId && units[i].audioId !== id) {
+        rec.problems.push(`s${i}: app would play ${units[i].audioId}, not this clip`)
         fail.parity++
       }
 
@@ -380,9 +469,9 @@ function appUnits (row, textById) {
       rec.pieces.push(p)
     }
 
-    // Duration sanity against the whole-turn clip.
-    if (row.target_audio_id) {
-      const { rows: w } = await db.query('select duration_ms from course_audio where id=$1', [row.target_audio_id])
+    // Duration sanity against THIS SIDE's whole-turn clip.
+    if (row[COL.whole]) {
+      const { rows: w } = await db.query('select duration_ms from course_audio where id=$1', [row[COL.whole]])
       if (w[0] && w[0].duration_ms) {
         rec.whole_dur = w[0].duration_ms / 1000
         rec.pieces_sum_dur = Number(sumDur.toFixed(3))
@@ -404,7 +493,7 @@ function appUnits (row, textById) {
   const hard = fail.serves + fail.text + fail.parity + fail.seams  // whitespace is reported, not gated
   const at = new Date().toISOString()
   const out = {
-    course: COURSE, pod: POD, at, whisper_lang: whisperLang,
+    course: COURSE, pod: POD, side: SIDE, at, whisper_lang: whisperLang,
     split_rows_in_pod: rows.length, sampled: sample.length,
     hard_failures: fail,
     stt: {
@@ -417,10 +506,11 @@ function appUnits (row, textById) {
     },
     results,
   }
-  const p = path.join(REPO, 'docs', 'pods', `${COURSE}-sentence-splice-verify-${at.slice(0, 10)}.json`)
+  const p = path.join(REPO, 'docs', 'pods',
+    `${COURSE}-${IS_KNOWN ? 'known-' : ''}sentence-splice-verify-${at.slice(0, 10)}.json`)
   fs.writeFileSync(p, JSON.stringify(out, null, 2))
 
-  console.log(`\n${COURSE}: ${sample.length}/${rows.length} split rows checked. `
+  console.log(`\n${COURSE} [${SIDE}]: ${sample.length}/${rows.length} split rows checked. `
     + `HARD failures serves=${fail.serves} text=${fail.text} parity=${fail.parity} seams=${fail.seams} `
     + `(whitespace-only, not gated: ${fail.whitespace}). `
     + `STT mean CER ${out.stt.mean_cer_multiword} over ${cerN} multi-word clips, ${cerHigh} flagged.`)
