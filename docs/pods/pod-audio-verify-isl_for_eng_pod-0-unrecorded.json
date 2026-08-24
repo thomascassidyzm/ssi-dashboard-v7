@@ -2022,13 +2022,18 @@
       },
       {
         "rowId": "isl_for_eng:pod-0-unrecorded:SC13-S008",
-        "audioId": null,
-        "resolved": false,
-        "s3Key": null,
+        "audioId": "0c8591f0-8836-475c-8b0b-2e0f97a7b238",
+        "resolved": true,
+        "s3Key": "mastered/A44081D8-E6EF-4499-B794-92E4D5FDD7D8.mp3",
         "text": "Frábært. Og er hraðbanki í nágrenninu?",
         "head": {
-          "ok": false,
-          "error": "unresolved-audio-id"
+          "ok": true,
+          "size": 49824
+        },
+        "probe": {
+          "ok": true,
+          "durationMs": 4104,
+          "plausible": true
         }
       },
       {
@@ -2705,13 +2710,18 @@
       },
       {
         "rowId": "isl_for_eng:pod-0-unrecorded:SC17-S008",
-        "audioId": null,
-        "resolved": false,
-        "s3Key": null,
+        "audioId": "227902cf-5582-422a-ae6c-86b3665f480c",
+        "resolved": true,
+        "s3Key": "mastered/D1FB17F8-2A04-4747-AF3E-7C16C8F2F031.mp3",
         "text": "Er vatnið volgt?",
         "head": {
-          "ok": false,
-          "error": "unresolved-audio-id"
+          "ok": true,
+          "size": 17856
+        },
+        "probe": {
+          "ok": true,
+          "durationMs": 1428,
+          "plausible": true
         }
       },
       {
@@ -3212,17 +3222,17 @@
       },
       {
         "rowId": "isl_for_eng:pod-0-unrecorded:SC20-S007",
-        "audioId": "caac4942-f859-417d-ba3b-be97e60be9e5",
+        "audioId": "cfa17d6a-4158-48fa-aeaa-5bac0d99370f",
         "resolved": true,
-        "s3Key": "mastered/16A40F51-298C-48F9-ACAA-DD0AE6CE5E38.mp3",
-        "text": "Gangi þér vel með það!",
+        "s3Key": "mastered/5F74528B-0F41-469D-AE31-6053575E6D4E.mp3",
+        "text": "Vonandi gengur þetta vel!",
         "head": {
           "ok": true,
-          "size": 21600
+          "size": 22176
         },
         "probe": {
           "ok": true,
-          "durationMs": 1728,
+          "durationMs": 1794,
           "plausible": true
         }
       },
