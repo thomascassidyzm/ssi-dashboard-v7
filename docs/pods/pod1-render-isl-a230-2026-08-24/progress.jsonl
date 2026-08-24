@@ -1,0 +1,10 @@
+{"at":"2026-08-24T05:49:29.003Z","event":"sweep_start","courses":1,"excluded":[],"dry_run":false,"out":"docs/pods/pod1-render-isl-a230-2026-08-24"}
+{"at":"2026-08-24T05:49:29.004Z","event":"course_start","course":"isl_for_eng","pod_id":"isl_for_eng:pod-0-unrecorded"}
+{"at":"2026-08-24T05:49:32.845Z","event":"unlinked","course":"isl_for_eng","target":19,"known":44}
+{"at":"2026-08-24T05:49:44.909Z","event":"sample","course":"isl_for_eng","attempt":1,"mode":"sample","total":5,"generated":2,"reused":3,"reused_cross_course":2,"failed":0,"blocked_unapproved_target":0,"queued_before_sample":73,"errors":[]}
+{"at":"2026-08-24T05:50:25.848Z","event":"sample_verified","course":"isl_for_eng","attempt":1,"clips":2,"clean":2,"advisory":0,"review":0,"error":0,"json":"docs/pods/pod1-render-isl-a230-2026-08-24/isl_for_eng-pod-0-unrecorded-verify-25min.json"}
+{"at":"2026-08-24T05:50:26.466Z","event":"approved","course":"isl_for_eng"}
+{"at":"2026-08-24T05:51:45.034Z","event":"bulk","course":"isl_for_eng","mode":"bulk","total":68,"generated":16,"reused":50,"reused_cross_course":39,"failed":2,"blocked_unapproved_target":0,"queued_before_sample":68,"errors":[{"sentence_id":"isl_for_eng:pod-0-unrecorded:SC13-S008","kind":"target","error":"[STAGE=veracity] quarantined after 3 attempts (cer_above_threshold, CER 0.4444, heard \"Frá part. Ú er hálpankin ókrenene.\")"},{"sentence_id":"isl_for_eng:pod-0-unrecorded:SC17-S008","kind":"target","error":"[STAGE=veracity] quarantined after 3 attempts (cer_above_threshold, CER 0.4, heard \"Er vattne vuft?\")"}]}
+{"at":"2026-08-24T05:54:15.886Z","event":"bulk_verified","course":"isl_for_eng","clips":10,"clean":10,"advisory":0,"review":0,"error":0,"json":"docs/pods/pod1-render-isl-a230-2026-08-24/isl_for_eng-pod-0-unrecorded-verify-25min.json"}
+{"at":"2026-08-24T05:54:15.887Z","event":"course_done","course":"isl_for_eng","status":"complete_with_failures","generated":16,"reused":50,"failed":2}
+{"at":"2026-08-24T05:54:15.887Z","event":"DONE","courses":1,"tally":{"complete_with_failures":1},"results":"docs/pods/pod1-render-isl-a230-2026-08-24/results.json"}
