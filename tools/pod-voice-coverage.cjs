@@ -14,8 +14,8 @@
  *   Tier 0  no TTS exists at all → human recording     (Breton, Scottish Gaelic, Yoruba)
  *
  * The KNOWN track is always English → the British pool below (no American, no
- * generic multilingual). Tom's own voice (gfzdpspr5fdp) is RESERVED for the
- * explainer narrator and deliberately kept out of the character known pool.
+ * generic multilingual). It is a single voice, Tom's own xAI clone
+ * (gfzdpspr5fdp) — see KNOWN_POOL below for why.
  *
  * Pools are gender-split for soft preference, but DISTINCTNESS > GENDER per Tom:
  * the colouring (tools/pod-voice-colour.cjs) guarantees conversants never share
@@ -330,26 +330,8 @@ function resolveKnownPool(knownLang, opts = {}) {
   return resolveTargetPool(knownLang, opts)
 }
 
-// The explainer narration (Tom's xAI clone, mostly the English gloss + quoted
-// target tokens) sounds markedly better when the TARGET language is cued
-// explicitly rather than left to language:'auto' — auto anglicises ambiguous
-// tokens ("bien", "pain", "comment"). Tom-validated 2026-06-07. We can only cue
-// languages the xAI multilingual model actually speaks; anything outside that
-// set (the Azure-tier tail) falls back to 'auto' as best-effort.
-const XAI_EXPLAINER_LANGS = new Set([
-  'en', 'ar', 'ar-EG', 'ar-SA', 'ar-AE', 'zh', 'fr', 'de', 'hi', 'id', 'it',
-  'ja', 'ko', 'pt-BR', 'pt-PT', 'ru', 'es-MX', 'es-ES', 'tr', 'vi',
-])
-function resolveExplainerLanguage(targetLang) {
-  try {
-    const p = resolveTargetPool(targetLang)
-    if (p.locale && XAI_EXPLAINER_LANGS.has(p.locale)) return p.locale
-  } catch (_) { /* unknown target → fall through */ }
-  return 'auto'
-}
-
 module.exports = {
-  resolveTargetPool, resolveKnownPool, resolveExplainerLanguage, targetKey,
+  resolveTargetPool, resolveKnownPool, targetKey,
   loadVerifiedGenders, setVerifiedGenders, verifiedGenders,
-  TARGET, KNOWN_POOL, MULTI, XAI_EXPLAINER_LANGS,
+  TARGET, KNOWN_POOL, MULTI,
 }
