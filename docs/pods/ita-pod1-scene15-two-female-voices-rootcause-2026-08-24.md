@@ -1,7 +1,15 @@
 # ita_for_eng Pod 1 scene 15 — why there are two female voices
 
 Root-cause finding, 2026-08-24. Tom heard the defect live at 10:53Z.
-Read-only investigation: nothing was written, rendered, or deleted.
+
+> **STATUS: REPAIRED AND VERIFIED ON PRODUCTION.** 113 of the 231 rows on the live
+> Italian pod were affected, across scenes 1-15. All 113 were repaired in place at
+> ~11:20Z by `tools/pods/repair-split-array-inheritance.cjs`. Post-repair audit:
+> **231/231 rows clean**. Verified by served bytes on scene 9 — Ara at 190-229 Hz on
+> Diner 1/Diner 2, Enzo at 99-119 Hz on Waiter/Narrator: exactly two voices, correctly
+> cast. No audio was rendered, no clip deleted, no learner progress orphaned. Italian
+> was NOT rolled back; it was fixed live, on Tom's order.
+> Detail in *The fix* at the foot of this document.
 
 ---
 
@@ -95,7 +103,43 @@ across all 21 live pod-1 courses flags **914 of 4,917 split clips, 18.6%**:
 table as a starting point. Worker #282 is producing the real per-course mismatch count with
 a script-safe method.
 
-## The fix, and what it does not need
+## The fix — what was actually done
+
+`tools/pods/repair-split-array-inheritance.cjs`, dry-run then applied to
+`ita_for_eng:pod-1` at ~11:20Z. It nulls only the offending arrays, so
+`podSentenceSplit` falls back to the whole-turn clip.
+
+Two gates run before any write, and both had to pass:
+
+1. **every whole-turn clip on the pod is correct in text AND casting — 231/231.**
+   This is what makes nulling a repair rather than a mutilation: the thing being fallen
+   back to is verified right first.
+2. **zero split-keyed `learner_pod_state` rows for the course.** Progress is keyed
+   `<row.id>` for an unsplit row and `<row.id>:s<k>` for split units, so nulling changes
+   the key. Italian had 5 progress rows total, 3 learners, **0 split-keyed** — nothing
+   orphaned.
+
+Every row was snapshotted into the applied log before being touched, so the write is
+reversible from the log alone. Per-row before-state assertions abort the run on drift.
+**No audio rendered, no clip deleted, no pointer moved to a different clip** — a broken
+join was removed so the canonical clip plays.
+
+Result: 113 rows repaired across scenes 1-15 (scenes 16-22 were already clean, having no
+pod-0 counterpart to inherit from). Post-repair audit 231/231 clean. Served-bytes check
+on scene 9 gave a clean bimodal split — Ara 190-229 Hz, Enzo 99-119 Hz, correctly assigned
+by character, no third voice.
+
+**What it cost.** The per-sentence split experience on those 113 rows. 65 of them can be
+re-pointed at voice-correct split clips that already exist in `course_audio`; that is
+follow-up work and needs no render. The remaining 48 would need a re-split of the existing
+whole-turn clip — audio processing, still not TTS.
+
+**Still open:** the tool that did the positional copy is not yet identified, so the next
+pod flip will reintroduce this. `clone-pod.cjs`, `pod-switchover.cjs` and
+`pod1-percall-recast.cjs` are the candidates (worker #281). And `pod-cast-gate.cjs` needs
+to read all six audio slots, not two, or it will pass the next one just as cheerfully.
+
+## The fix as first scoped, and what it does not need
 
 Nulling `sentence_audio_ids` / `sentence_known_audio_ids` on an affected row makes
 `podSentenceSplit` fall back to the whole-turn clip — which is already correctly cast and
