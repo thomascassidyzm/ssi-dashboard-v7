@@ -1,0 +1,28 @@
+{
+ "pod": "ell_for_eng:pod-0",
+ "course": "ell_for_eng",
+ "apply": false,
+ "at": "2026-08-25T02:38:05.120Z",
+ "candidates": 1,
+ "written_rows": 0,
+ "written_units": 0,
+ "residue_rows": 1,
+ "residue_units": 2,
+ "rows": [],
+ "residue": [
+  {
+   "id": "ell_for_eng:pod-0:SC10-S008",
+   "n_target": 2,
+   "known_lang": "eng",
+   "known_voice": "xai_gfzdpspr5fdp",
+   "sentences": [
+    "You're welcome.",
+    "Are you here on holiday?",
+    "You speak very good Greek."
+   ],
+   "picks": [],
+   "reason": "known_text splits into 3, target array is 2"
+  }
+ ],
+ "errors": []
+}

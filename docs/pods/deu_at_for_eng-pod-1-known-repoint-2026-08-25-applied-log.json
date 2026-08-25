@@ -1,0 +1,499 @@
+{
+ "pod": "deu_at_for_eng:pod-1",
+ "course": "deu_at_for_eng",
+ "apply": true,
+ "at": "2026-08-25T02:44:29.620Z",
+ "candidates": 13,
+ "written_rows": 13,
+ "written_units": 35,
+ "residue_rows": 0,
+ "residue_units": 0,
+ "rows": [
+  {
+   "id": "deu_at_for_eng:pod-1:SC05-S001",
+   "n_target": 2,
+   "known_lang": "eng",
+   "known_voice": "xai_gfzdpspr5fdp",
+   "sentences": [
+    "Good evening, Sarah.",
+    "Did you have a long day?"
+   ],
+   "picks": [
+    {
+     "sentence": "Good evening, Sarah.",
+     "pick": "08e20c82-c02a-4048-8419-fd5722ef17d3",
+     "from_course": "heb_for_eng",
+     "voice": "xai_gfzdpspr5fdp",
+     "duration_ms": 1320
+    },
+    {
+     "sentence": "Did you have a long day?",
+     "pick": "1351460b-746f-499e-bb1b-912e2ea8d12f",
+     "from_course": "est_for_eng",
+     "voice": "xai_gfzdpspr5fdp",
+     "duration_ms": 1464
+    }
+   ],
+   "previous": null,
+   "wrote": [
+    "08e20c82-c02a-4048-8419-fd5722ef17d3",
+    "1351460b-746f-499e-bb1b-912e2ea8d12f"
+   ]
+  },
+  {
+   "id": "deu_at_for_eng:pod-1:SC07-S013",
+   "n_target": 2,
+   "known_lang": "eng",
+   "known_voice": "xai_gfzdpspr5fdp",
+   "sentences": [
+    "Good morning.",
+    "Two Americanos and a cup of tea, please."
+   ],
+   "picks": [
+    {
+     "sentence": "Good morning.",
+     "pick": "061f93ae-7998-4a0b-97d6-8246b545b477",
+     "from_course": "est_for_eng",
+     "voice": "xai_gfzdpspr5fdp",
+     "duration_ms": 744
+    },
+    {
+     "sentence": "Two Americanos and a cup of tea, please.",
+     "pick": "010732fd-6159-486b-9244-da1721f27360",
+     "from_course": "eus_for_eng",
+     "voice": "xai_gfzdpspr5fdp",
+     "duration_ms": 2808
+    }
+   ],
+   "previous": null,
+   "wrote": [
+    "061f93ae-7998-4a0b-97d6-8246b545b477",
+    "010732fd-6159-486b-9244-da1721f27360"
+   ]
+  },
+  {
+   "id": "deu_at_for_eng:pod-1:SC08-S015",
+   "n_target": 2,
+   "known_lang": "eng",
+   "known_voice": "xai_bedd6226",
+   "sentences": [
+    "Do you have any sandwiches?",
+    "I'd like a cheese sandwich, please."
+   ],
+   "picks": [
+    {
+     "sentence": "Do you have any sandwiches?",
+     "pick": "363cec19-aa38-420d-92fc-1dc224665b01",
+     "from_course": "ita_for_eng",
+     "voice": "xai_bedd6226",
+     "duration_ms": 1842
+    },
+    {
+     "sentence": "I'd like a cheese sandwich, please.",
+     "pick": "081d4e95-edc5-4d72-84a9-7caabd963115",
+     "from_course": "swe_for_eng",
+     "voice": "xai_bedd6226",
+     "duration_ms": 2752
+    }
+   ],
+   "previous": null,
+   "wrote": [
+    "363cec19-aa38-420d-92fc-1dc224665b01",
+    "081d4e95-edc5-4d72-84a9-7caabd963115"
+   ]
+  },
+  {
+   "id": "deu_at_for_eng:pod-1:SC09-S008",
+   "n_target": 2,
+   "known_lang": "eng",
+   "known_voice": "xai_gfzdpspr5fdp",
+   "sentences": [
+    "The lamb is excellent.",
+    "It's been slow-cooked, with rosemary."
+   ],
+   "picks": [
+    {
+     "sentence": "The lamb is excellent.",
+     "pick": "1343120a-0aec-4c0d-bd70-eaa5520b0809",
+     "from_course": "zho_for_eng",
+     "voice": "xai_gfzdpspr5fdp",
+     "duration_ms": 1752
+    },
+    {
+     "sentence": "It's been slow-cooked, with rosemary.",
+     "pick": "090b58e5-79c4-454e-a28f-b1300b42f753",
+     "from_course": "ell_for_eng",
+     "voice": "xai_gfzdpspr5fdp",
+     "duration_ms": 2304
+    }
+   ],
+   "previous": null,
+   "wrote": [
+    "1343120a-0aec-4c0d-bd70-eaa5520b0809",
+    "090b58e5-79c4-454e-a28f-b1300b42f753"
+   ]
+  },
+  {
+   "id": "deu_at_for_eng:pod-1:SC09-S009",
+   "n_target": 2,
+   "known_lang": "eng",
+   "known_voice": "xai_bedd6226",
+   "sentences": [
+    "I'll have the lamb, please.",
+    "With a side of greens."
+   ],
+   "picks": [
+    {
+     "sentence": "I'll have the lamb, please.",
+     "pick": "0efb4ceb-f56e-4468-9e8a-7d229604b1a2",
+     "from_course": "zho_for_eng",
+     "voice": "xai_bedd6226",
+     "duration_ms": 1843
+    },
+    {
+     "sentence": "With a side of greens.",
+     "pick": "0e05a9fa-95ee-4d0e-8870-8c7357fac827",
+     "from_course": "deu_for_eng",
+     "voice": "xai_bedd6226",
+     "duration_ms": 1913
+    }
+   ],
+   "previous": null,
+   "wrote": [
+    "0efb4ceb-f56e-4468-9e8a-7d229604b1a2",
+    "0e05a9fa-95ee-4d0e-8870-8c7357fac827"
+   ]
+  },
+  {
+   "id": "deu_at_for_eng:pod-1:SC09-S014",
+   "n_target": 2,
+   "known_lang": "eng",
+   "known_voice": "xai_gfzdpspr5fdp",
+   "sentences": [
+    "Excellent choice.",
+    "I'll bring it right over."
+   ],
+   "picks": [
+    {
+     "sentence": "Excellent choice.",
+     "pick": "182bd987-930c-43d1-8912-1c7e2722bbaa",
+     "from_course": "pol_for_eng",
+     "voice": "xai_gfzdpspr5fdp",
+     "duration_ms": 1128
+    },
+    {
+     "sentence": "I'll bring it right over.",
+     "pick": "17728195-21ae-44e9-9260-85abae4f2807",
+     "from_course": "ara_sy_for_eng",
+     "voice": "xai_gfzdpspr5fdp",
+     "duration_ms": 1464
+    }
+   ],
+   "previous": null,
+   "wrote": [
+    "182bd987-930c-43d1-8912-1c7e2722bbaa",
+    "17728195-21ae-44e9-9260-85abae4f2807"
+   ]
+  },
+  {
+   "id": "deu_at_for_eng:pod-1:SC09-S015",
+   "n_target": 2,
+   "known_lang": "eng",
+   "known_voice": "xai_gfzdpspr5fdp",
+   "sentences": [
+    "Is everything alright?",
+    "Do you have any room for dessert?"
+   ],
+   "picks": [
+    {
+     "sentence": "Is everything alright?",
+     "pick": "0a536945-bb2c-4e07-b7e9-33d313a37a5b",
+     "from_course": "hrv_for_eng",
+     "voice": "xai_gfzdpspr5fdp",
+     "duration_ms": 1224
+    },
+    {
+     "sentence": "Do you have any room for dessert?",
+     "pick": "0a097511-187f-44bd-b951-d4ddf52e1ba9",
+     "from_course": "pol_for_eng",
+     "voice": "xai_gfzdpspr5fdp",
+     "duration_ms": 2160
+    }
+   ],
+   "previous": null,
+   "wrote": [
+    "0a536945-bb2c-4e07-b7e9-33d313a37a5b",
+    "0a097511-187f-44bd-b951-d4ddf52e1ba9"
+   ]
+  },
+  {
+   "id": "deu_at_for_eng:pod-1:SC10-S010",
+   "n_target": 5,
+   "known_lang": "eng",
+   "known_voice": "xai_gfzdpspr5fdp",
+   "sentences": [
+    "12.",
+    "13.",
+    "14.",
+    "Pink.",
+    "Grey."
+   ],
+   "picks": [
+    {
+     "sentence": "12.",
+     "pick": "02822c87-b1a1-4758-8aa0-9ff109de7a47",
+     "from_course": "fra_for_eng",
+     "voice": "xai_gfzdpspr5fdp",
+     "duration_ms": 756
+    },
+    {
+     "sentence": "13.",
+     "pick": "1c64f778-7e80-41c5-b7f5-1f2530c52e80",
+     "from_course": "fra_for_eng",
+     "voice": "xai_gfzdpspr5fdp",
+     "duration_ms": 1037
+    },
+    {
+     "sentence": "14.",
+     "pick": "04752b28-d0e1-4838-be33-5012d3086016",
+     "from_course": "deu_for_eng",
+     "voice": "xai_gfzdpspr5fdp",
+     "duration_ms": 1002
+    },
+    {
+     "sentence": "Pink.",
+     "pick": "027e1a65-34de-455d-aef3-99798df163cf",
+     "from_course": "ita_for_eng",
+     "voice": "xai_gfzdpspr5fdp",
+     "duration_ms": 721
+    },
+    {
+     "sentence": "Grey.",
+     "pick": "00dc698a-8a4b-420e-b831-e0b0119d2db4",
+     "from_course": "nld_for_eng",
+     "voice": "xai_gfzdpspr5fdp",
+     "duration_ms": 772
+    }
+   ],
+   "previous": null,
+   "wrote": [
+    "02822c87-b1a1-4758-8aa0-9ff109de7a47",
+    "1c64f778-7e80-41c5-b7f5-1f2530c52e80",
+    "04752b28-d0e1-4838-be33-5012d3086016",
+    "027e1a65-34de-455d-aef3-99798df163cf",
+    "00dc698a-8a4b-420e-b831-e0b0119d2db4"
+   ]
+  },
+  {
+   "id": "deu_at_for_eng:pod-1:SC11-S009",
+   "n_target": 2,
+   "known_lang": "eng",
+   "known_voice": "xai_gfzdpspr5fdp",
+   "sentences": [
+    "Wonderful.",
+    "Is it possible for us to have a late check-out?"
+   ],
+   "picks": [
+    {
+     "sentence": "Wonderful.",
+     "pick": "095b39a3-5663-4378-afe7-30a22c8b742c",
+     "from_course": "nor_for_eng",
+     "voice": "xai_gfzdpspr5fdp",
+     "duration_ms": 816
+    },
+    {
+     "sentence": "Is it possible for us to have a late check-out?",
+     "pick": "14d67f77-42b7-45c8-81f1-458db54ca9c8",
+     "from_course": "nor_for_eng",
+     "voice": "xai_gfzdpspr5fdp",
+     "duration_ms": 2592
+    }
+   ],
+   "previous": null,
+   "wrote": [
+    "095b39a3-5663-4378-afe7-30a22c8b742c",
+    "14d67f77-42b7-45c8-81f1-458db54ca9c8"
+   ]
+  },
+  {
+   "id": "deu_at_for_eng:pod-1:SC16-S011",
+   "n_target": 5,
+   "known_lang": "eng",
+   "known_voice": "xai_gfzdpspr5fdp",
+   "sentences": [
+    "A million.",
+    "80.",
+    "90.",
+    "2 o'clock.",
+    "10 o'clock."
+   ],
+   "picks": [
+    {
+     "sentence": "A million.",
+     "pick": "0ddd8b04-67ec-4718-8f9f-3cc83b76ae6a",
+     "from_course": "fra_for_eng",
+     "voice": "xai_gfzdpspr5fdp",
+     "duration_ms": 1102
+    },
+    {
+     "sentence": "80.",
+     "pick": "35c69f0e-8c6d-40e6-9f64-61474ce53a7b",
+     "from_course": "zho_for_eng",
+     "voice": "xai_gfzdpspr5fdp",
+     "duration_ms": 997
+    },
+    {
+     "sentence": "90.",
+     "pick": "27f8a627-129a-4ec9-b638-788136afae55",
+     "from_course": "ara_eg_for_eng",
+     "voice": "xai_gfzdpspr5fdp",
+     "duration_ms": 1006
+    },
+    {
+     "sentence": "2 o'clock.",
+     "pick": "063d5772-7c3d-4731-a536-4726f506fae1",
+     "from_course": "deu_for_eng",
+     "voice": "xai_gfzdpspr5fdp",
+     "duration_ms": 1050
+    },
+    {
+     "sentence": "10 o'clock.",
+     "pick": "07c6f830-136a-4f3a-9a1b-bf03750a5627",
+     "from_course": "zho_for_eng",
+     "voice": "xai_gfzdpspr5fdp",
+     "duration_ms": 1021
+    }
+   ],
+   "previous": null,
+   "wrote": [
+    "0ddd8b04-67ec-4718-8f9f-3cc83b76ae6a",
+    "35c69f0e-8c6d-40e6-9f64-61474ce53a7b",
+    "27f8a627-129a-4ec9-b638-788136afae55",
+    "063d5772-7c3d-4731-a536-4726f506fae1",
+    "07c6f830-136a-4f3a-9a1b-bf03750a5627"
+   ]
+  },
+  {
+   "id": "deu_at_for_eng:pod-1:SC22-S002",
+   "n_target": 3,
+   "known_lang": "eng",
+   "known_voice": "xai_gfzdpspr5fdp",
+   "sentences": [
+    "Of course, no problem.",
+    "You seem to speak it very well.",
+    "I can understand you easily."
+   ],
+   "picks": [
+    {
+     "sentence": "Of course, no problem.",
+     "pick": "0c6831f9-f835-4ef4-83af-5b1b5e13b911",
+     "from_course": "swe_for_eng",
+     "voice": "xai_gfzdpspr5fdp",
+     "duration_ms": 1421
+    },
+    {
+     "sentence": "You seem to speak it very well.",
+     "pick": "0ac86a38-4d37-4d22-9027-f7100211b129",
+     "from_course": "deu_for_eng",
+     "voice": "xai_gfzdpspr5fdp",
+     "duration_ms": 1824
+    },
+    {
+     "sentence": "I can understand you easily.",
+     "pick": "012b13de-7eca-4ffc-b7b7-3e61f0c139ce",
+     "from_course": "kor_for_eng",
+     "voice": "xai_gfzdpspr5fdp",
+     "duration_ms": 1704
+    }
+   ],
+   "previous": null,
+   "wrote": [
+    "0c6831f9-f835-4ef4-83af-5b1b5e13b911",
+    "0ac86a38-4d37-4d22-9027-f7100211b129",
+    "012b13de-7eca-4ffc-b7b7-3e61f0c139ce"
+   ]
+  },
+  {
+   "id": "deu_at_for_eng:pod-1:SC22-S003",
+   "n_target": 3,
+   "known_lang": "eng",
+   "known_voice": "xai_bedd6226",
+   "sentences": [
+    "Thank you, that's good to know.",
+    "I need to learn more words, and I need to practise listening.",
+    "I don't understand people very well when they don't speak slowly."
+   ],
+   "picks": [
+    {
+     "sentence": "Thank you, that's good to know.",
+     "pick": "0b66a122-ac4f-4157-ac05-18e70e6d53e5",
+     "from_course": "gle_for_eng",
+     "voice": "xai_bedd6226",
+     "duration_ms": 1990
+    },
+    {
+     "sentence": "I need to learn more words, and I need to practise listening.",
+     "pick": "107be8c3-612c-4171-93b3-a9388caecc82",
+     "from_course": "deu_for_eng",
+     "voice": "xai_bedd6226",
+     "duration_ms": 4056
+    },
+    {
+     "sentence": "I don't understand people very well when they don't speak slowly.",
+     "pick": "091365d3-b81e-4449-9800-00619325ec8a",
+     "from_course": "gle_for_eng",
+     "voice": "xai_bedd6226",
+     "duration_ms": 3946
+    }
+   ],
+   "previous": null,
+   "wrote": [
+    "0b66a122-ac4f-4157-ac05-18e70e6d53e5",
+    "107be8c3-612c-4171-93b3-a9388caecc82",
+    "091365d3-b81e-4449-9800-00619325ec8a"
+   ]
+  },
+  {
+   "id": "deu_at_for_eng:pod-1:SC22-S010",
+   "n_target": 3,
+   "known_lang": "eng",
+   "known_voice": "xai_gfzdpspr5fdp",
+   "sentences": [
+    "I think that's normal.",
+    "Learning a new language is difficult.",
+    "But it's so much fun when you start to have conversations, isn't it?"
+   ],
+   "picks": [
+    {
+     "sentence": "I think that's normal.",
+     "pick": "07ccda62-656f-4d9f-9371-ebc479edf941",
+     "from_course": "fra_ca_for_eng",
+     "voice": "xai_gfzdpspr5fdp",
+     "duration_ms": 1344
+    },
+    {
+     "sentence": "Learning a new language is difficult.",
+     "pick": "0477f69a-2529-434a-8446-2bc760837afb",
+     "from_course": "fra_for_eng",
+     "voice": "xai_gfzdpspr5fdp",
+     "duration_ms": 2136
+    },
+    {
+     "sentence": "But it's so much fun when you start to have conversations, isn't it?",
+     "pick": "11df41d4-d8ba-47ad-847f-830979ead7da",
+     "from_course": "hrv_for_eng",
+     "voice": "xai_gfzdpspr5fdp",
+     "duration_ms": 3792
+    }
+   ],
+   "previous": null,
+   "wrote": [
+    "07ccda62-656f-4d9f-9371-ebc479edf941",
+    "0477f69a-2529-434a-8446-2bc760837afb",
+    "11df41d4-d8ba-47ad-847f-830979ead7da"
+   ]
+  }
+ ],
+ "residue": [],
+ "errors": []
+}

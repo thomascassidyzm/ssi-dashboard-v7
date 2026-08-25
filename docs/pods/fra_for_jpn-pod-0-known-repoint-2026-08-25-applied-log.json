@@ -1,0 +1,37 @@
+{
+ "pod": "fra_for_jpn:pod-0",
+ "course": "fra_for_jpn",
+ "apply": true,
+ "at": "2026-08-25T02:45:55.543Z",
+ "candidates": 2,
+ "written_rows": 0,
+ "written_units": 0,
+ "residue_rows": 2,
+ "residue_units": 8,
+ "rows": [],
+ "residue": [
+  {
+   "id": "fra_for_jpn:pod-0:SC01-S004",
+   "n_target": 3,
+   "known_lang": "eng",
+   "known_voice": "xai_bedd6226",
+   "sentences": [
+    "ええ、今日は忙しい一日です。良い一日を過ごせるといいですね。またあとで。"
+   ],
+   "picks": [],
+   "reason": "known_text splits into 1, target array is 3"
+  },
+  {
+   "id": "fra_for_jpn:pod-0:SC06-S013",
+   "n_target": 5,
+   "known_lang": "jpn",
+   "known_voice": "d0cb9ff07d95",
+   "sentences": [
+    "一。二。三。白。黒。"
+   ],
+   "picks": [],
+   "reason": "known_text splits into 1, target array is 5"
+  }
+ ],
+ "errors": []
+}

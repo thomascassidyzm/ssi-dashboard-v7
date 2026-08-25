@@ -1,0 +1,518 @@
+{
+ "pod": "spa_for_eng:pod-1",
+ "course": "spa_for_eng",
+ "apply": true,
+ "at": "2026-08-25T02:48:16.380Z",
+ "candidates": 11,
+ "written_rows": 11,
+ "written_units": 40,
+ "residue_rows": 0,
+ "residue_units": 0,
+ "rows": [
+  {
+   "id": "spa_for_eng:pod-1:SC05-S001",
+   "n_target": 2,
+   "known_lang": "eng",
+   "known_voice": "gfzdpspr5fdp",
+   "sentences": [
+    "Good evening, Sarah.",
+    "Did you have a long day?"
+   ],
+   "picks": [
+    {
+     "sentence": "Good evening, Sarah.",
+     "pick": "87ad9d8d-1859-4705-88ea-bc74bdd3fafd",
+     "from_course": "spa_for_eng",
+     "voice": "gfzdpspr5fdp",
+     "duration_ms": 1248
+    },
+    {
+     "sentence": "Did you have a long day?",
+     "pick": "1351460b-746f-499e-bb1b-912e2ea8d12f",
+     "from_course": "est_for_eng",
+     "voice": "xai_gfzdpspr5fdp",
+     "duration_ms": 1464
+    }
+   ],
+   "previous": null,
+   "wrote": [
+    "87ad9d8d-1859-4705-88ea-bc74bdd3fafd",
+    "1351460b-746f-499e-bb1b-912e2ea8d12f"
+   ]
+  },
+  {
+   "id": "spa_for_eng:pod-1:SC06-S013",
+   "n_target": 5,
+   "known_lang": "eng",
+   "known_voice": "xai_gfzdpspr5fdp",
+   "sentences": [
+    "1.",
+    "2.",
+    "3.",
+    "White.",
+    "Black."
+   ],
+   "picks": [
+    {
+     "sentence": "1.",
+     "pick": "02db650d-1586-4bd1-aa84-1977ce5c6e1e",
+     "from_course": "jpn_for_eng",
+     "voice": "xai_gfzdpspr5fdp",
+     "duration_ms": 696
+    },
+    {
+     "sentence": "2.",
+     "pick": "0072f5fb-ed18-4681-affd-ee5035843c3f",
+     "from_course": "kor_for_eng",
+     "voice": "xai_gfzdpspr5fdp",
+     "duration_ms": 624
+    },
+    {
+     "sentence": "3.",
+     "pick": "40cb2903-623a-452a-86a2-1dfd2982a633",
+     "from_course": "jpn_for_eng",
+     "voice": "gfzdpspr5fdp",
+     "duration_ms": 768
+    },
+    {
+     "sentence": "White.",
+     "pick": "340da466-4726-4749-a337-c303d90d4e6a",
+     "from_course": "spa_for_eng",
+     "voice": "gfzdpspr5fdp",
+     "duration_ms": 672
+    },
+    {
+     "sentence": "Black.",
+     "pick": "652205de-8538-4520-9668-fd24a153007b",
+     "from_course": "spa_for_eng",
+     "voice": "gfzdpspr5fdp",
+     "duration_ms": 768
+    }
+   ],
+   "previous": null,
+   "wrote": [
+    "02db650d-1586-4bd1-aa84-1977ce5c6e1e",
+    "0072f5fb-ed18-4681-affd-ee5035843c3f",
+    "40cb2903-623a-452a-86a2-1dfd2982a633",
+    "340da466-4726-4749-a337-c303d90d4e6a",
+    "652205de-8538-4520-9668-fd24a153007b"
+   ]
+  },
+  {
+   "id": "spa_for_eng:pod-1:SC08-S016",
+   "n_target": 5,
+   "known_lang": "eng",
+   "known_voice": "xai_gfzdpspr5fdp",
+   "sentences": [
+    "4.",
+    "6.",
+    "8.",
+    "Blue.",
+    "Yellow."
+   ],
+   "picks": [
+    {
+     "sentence": "4.",
+     "pick": "f82fa229-d4d0-4a99-9f8e-dbcd285f6327",
+     "from_course": "kor_for_eng",
+     "voice": "gfzdpspr5fdp",
+     "duration_ms": 624
+    },
+    {
+     "sentence": "6.",
+     "pick": "3e4e5d0c-f15a-419a-b610-65eaef980755",
+     "from_course": "jpn_for_eng",
+     "voice": "gfzdpspr5fdp",
+     "duration_ms": 768
+    },
+    {
+     "sentence": "8.",
+     "pick": "12587950-0fc3-432e-a7b9-8bc24f904e62",
+     "from_course": "zho_for_eng",
+     "voice": "xai_gfzdpspr5fdp",
+     "duration_ms": 672
+    },
+    {
+     "sentence": "Blue.",
+     "pick": "02cb6bed-4777-41f2-88ce-03bb231cf166",
+     "from_course": "cat_for_eng",
+     "voice": "xai_gfzdpspr5fdp",
+     "duration_ms": 672
+    },
+    {
+     "sentence": "Yellow.",
+     "pick": "e7568ecd-f64b-4915-a8c9-849aafaa7306",
+     "from_course": "spa_for_eng",
+     "voice": "gfzdpspr5fdp",
+     "duration_ms": 672
+    }
+   ],
+   "previous": null,
+   "wrote": [
+    "f82fa229-d4d0-4a99-9f8e-dbcd285f6327",
+    "3e4e5d0c-f15a-419a-b610-65eaef980755",
+    "12587950-0fc3-432e-a7b9-8bc24f904e62",
+    "02cb6bed-4777-41f2-88ce-03bb231cf166",
+    "e7568ecd-f64b-4915-a8c9-849aafaa7306"
+   ]
+  },
+  {
+   "id": "spa_for_eng:pod-1:SC09-S015",
+   "n_target": 2,
+   "known_lang": "eng",
+   "known_voice": "xai_gfzdpspr5fdp",
+   "sentences": [
+    "Is everything alright?",
+    "Do you have any room for dessert?"
+   ],
+   "picks": [
+    {
+     "sentence": "Is everything alright?",
+     "pick": "81fa3946-0116-44b3-9f1f-1a035cff60e7",
+     "from_course": "spa_for_eng",
+     "voice": "gfzdpspr5fdp",
+     "duration_ms": 1344
+    },
+    {
+     "sentence": "Do you have any room for dessert?",
+     "pick": "0a097511-187f-44bd-b951-d4ddf52e1ba9",
+     "from_course": "pol_for_eng",
+     "voice": "xai_gfzdpspr5fdp",
+     "duration_ms": 2160
+    }
+   ],
+   "previous": null,
+   "wrote": [
+    "81fa3946-0116-44b3-9f1f-1a035cff60e7",
+    "0a097511-187f-44bd-b951-d4ddf52e1ba9"
+   ]
+  },
+  {
+   "id": "spa_for_eng:pod-1:SC09-S018",
+   "n_target": 5,
+   "known_lang": "eng",
+   "known_voice": "xai_gfzdpspr5fdp",
+   "sentences": [
+    "7.",
+    "9.",
+    "11.",
+    "Orange.",
+    "Purple."
+   ],
+   "picks": [
+    {
+     "sentence": "7.",
+     "pick": "3ef9e9a0-370c-4723-8484-3f605346e59a",
+     "from_course": "jpn_for_eng",
+     "voice": "gfzdpspr5fdp",
+     "duration_ms": 624
+    },
+    {
+     "sentence": "9.",
+     "pick": "944cc9ae-15cb-4f9f-85db-aa1827dba1ac",
+     "from_course": "deu_at_for_eng",
+     "voice": "xai_gfzdpspr5fdp",
+     "duration_ms": 854
+    },
+    {
+     "sentence": "11.",
+     "pick": "791cb552-faed-4a52-a535-9283bd6a3d63",
+     "from_course": "fra_ca_for_eng",
+     "voice": "xai_gfzdpspr5fdp",
+     "duration_ms": 877
+    },
+    {
+     "sentence": "Orange.",
+     "pick": "ba3ab501-c165-488a-827b-e31277342b4e",
+     "from_course": "spa_for_eng",
+     "voice": "gfzdpspr5fdp",
+     "duration_ms": 768
+    },
+    {
+     "sentence": "Purple.",
+     "pick": "e1eb9816-1e70-4209-9287-024710944155",
+     "from_course": "spa_for_eng",
+     "voice": "gfzdpspr5fdp",
+     "duration_ms": 720
+    }
+   ],
+   "previous": null,
+   "wrote": [
+    "3ef9e9a0-370c-4723-8484-3f605346e59a",
+    "944cc9ae-15cb-4f9f-85db-aa1827dba1ac",
+    "791cb552-faed-4a52-a535-9283bd6a3d63",
+    "ba3ab501-c165-488a-827b-e31277342b4e",
+    "e1eb9816-1e70-4209-9287-024710944155"
+   ]
+  },
+  {
+   "id": "spa_for_eng:pod-1:SC11-S002",
+   "n_target": 3,
+   "known_lang": "eng",
+   "known_voice": "bedd6226",
+   "sentences": [
+    "Welcome.",
+    "Yes, you have a double room for three nights.",
+    "Could I see some ID, please?"
+   ],
+   "picks": [
+    {
+     "sentence": "Welcome.",
+     "pick": "26ccf8c1-534f-4536-b26f-c7fbca7782de",
+     "from_course": "nld_for_eng",
+     "voice": "bedd6226",
+     "duration_ms": 2640
+    },
+    {
+     "sentence": "Yes, you have a double room for three nights.",
+     "pick": "1f4433d3-048d-4764-a802-f338f1dcd9de",
+     "from_course": "est_for_eng",
+     "voice": "bedd6226",
+     "duration_ms": 2952
+    },
+    {
+     "sentence": "Could I see some ID, please?",
+     "pick": "153177cb-214c-4d5f-93a6-4d74657e5e5f",
+     "from_course": "ita_for_eng",
+     "voice": "xai_bedd6226",
+     "duration_ms": 2136
+    }
+   ],
+   "previous": null,
+   "wrote": [
+    "26ccf8c1-534f-4536-b26f-c7fbca7782de",
+    "1f4433d3-048d-4764-a802-f338f1dcd9de",
+    "153177cb-214c-4d5f-93a6-4d74657e5e5f"
+   ]
+  },
+  {
+   "id": "spa_for_eng:pod-1:SC11-S004",
+   "n_target": 2,
+   "known_lang": "eng",
+   "known_voice": "xai_bedd6226",
+   "sentences": [
+    "Lovely.",
+    "The room is on the third floor, room 709."
+   ],
+   "picks": [
+    {
+     "sentence": "Lovely.",
+     "pick": "44f27901-f988-4fec-806d-0fde665cc110",
+     "from_course": "hrv_for_eng",
+     "voice": "bedd6226",
+     "duration_ms": 1200
+    },
+    {
+     "sentence": "The room is on the third floor, room 709.",
+     "pick": "bae4f33f-654b-49dc-a9fb-7203be725b3a",
+     "from_course": "ita_for_eng",
+     "voice": "xai_bedd6226",
+     "duration_ms": 3504
+    }
+   ],
+   "previous": null,
+   "wrote": [
+    "44f27901-f988-4fec-806d-0fde665cc110",
+    "bae4f33f-654b-49dc-a9fb-7203be725b3a"
+   ]
+  },
+  {
+   "id": "spa_for_eng:pod-1:SC11-S013",
+   "n_target": 5,
+   "known_lang": "eng",
+   "known_voice": "xai_gfzdpspr5fdp",
+   "sentences": [
+    "16.",
+    "17.",
+    "18.",
+    "Monday.",
+    "Tuesday."
+   ],
+   "picks": [
+    {
+     "sentence": "16.",
+     "pick": "77bfe287-f629-4d94-bb20-b8e2d7ee4893",
+     "from_course": "kor_for_eng",
+     "voice": "gfzdpspr5fdp",
+     "duration_ms": 936
+    },
+    {
+     "sentence": "17.",
+     "pick": "0ce27e07-770d-476c-b632-22a8543b2872",
+     "from_course": "kor_for_eng",
+     "voice": "xai_gfzdpspr5fdp",
+     "duration_ms": 1032
+    },
+    {
+     "sentence": "18.",
+     "pick": "1308f315-7f24-486e-8f13-60f1e9076665",
+     "from_course": "fra_ca_for_eng",
+     "voice": "xai_gfzdpspr5fdp",
+     "duration_ms": 1102
+    },
+    {
+     "sentence": "Monday.",
+     "pick": "d4bcfa82-0997-4f1c-96dd-cf77188e5aad",
+     "from_course": "spa_for_eng",
+     "voice": "gfzdpspr5fdp",
+     "duration_ms": 768
+    },
+    {
+     "sentence": "Tuesday.",
+     "pick": "7a960027-29a7-4ff0-893d-49f019b250b0",
+     "from_course": "spa_for_eng",
+     "voice": "gfzdpspr5fdp",
+     "duration_ms": 840
+    }
+   ],
+   "previous": null,
+   "wrote": [
+    "77bfe287-f629-4d94-bb20-b8e2d7ee4893",
+    "0ce27e07-770d-476c-b632-22a8543b2872",
+    "1308f315-7f24-486e-8f13-60f1e9076665",
+    "d4bcfa82-0997-4f1c-96dd-cf77188e5aad",
+    "7a960027-29a7-4ff0-893d-49f019b250b0"
+   ]
+  },
+  {
+   "id": "spa_for_eng:pod-1:SC13-S011",
+   "n_target": 5,
+   "known_lang": "eng",
+   "known_voice": "xai_gfzdpspr5fdp",
+   "sentences": [
+    "30.",
+    "40.",
+    "50.",
+    "Friday.",
+    "Saturday."
+   ],
+   "picks": [
+    {
+     "sentence": "30.",
+     "pick": "1a58cf67-1c9a-424a-85d0-8dc581f96230",
+     "from_course": "deu_at_for_eng",
+     "voice": "xai_gfzdpspr5fdp",
+     "duration_ms": 999
+    },
+    {
+     "sentence": "40.",
+     "pick": "11ee5f0b-5d23-4d4b-ab92-51d73c34ae66",
+     "from_course": "jpn_for_eng",
+     "voice": "xai_gfzdpspr5fdp",
+     "duration_ms": 720
+    },
+    {
+     "sentence": "50.",
+     "pick": "32c75684-b950-4e4d-b7dc-76411d3be3e7",
+     "from_course": "kor_for_eng",
+     "voice": "gfzdpspr5fdp",
+     "duration_ms": 744
+    },
+    {
+     "sentence": "Friday.",
+     "pick": "0a1433cc-f87b-45df-8809-6edd183d1a53",
+     "from_course": "spa_for_eng",
+     "voice": "xai_gfzdpspr5fdp",
+     "duration_ms": 744
+    },
+    {
+     "sentence": "Saturday.",
+     "pick": "f75863f2-9dbf-43f2-80dd-2daf4f33e9f5",
+     "from_course": "spa_for_eng",
+     "voice": "gfzdpspr5fdp",
+     "duration_ms": 816
+    }
+   ],
+   "previous": null,
+   "wrote": [
+    "1a58cf67-1c9a-424a-85d0-8dc581f96230",
+    "11ee5f0b-5d23-4d4b-ab92-51d73c34ae66",
+    "32c75684-b950-4e4d-b7dc-76411d3be3e7",
+    "0a1433cc-f87b-45df-8809-6edd183d1a53",
+    "f75863f2-9dbf-43f2-80dd-2daf4f33e9f5"
+   ]
+  },
+  {
+   "id": "spa_for_eng:pod-1:SC20-S011",
+   "n_target": 4,
+   "known_lang": "eng",
+   "known_voice": "xai_gfzdpspr5fdp",
+   "sentences": [
+    "6 o'clock.",
+    "July.",
+    "August.",
+    "September."
+   ],
+   "picks": [
+    {
+     "sentence": "6 o'clock.",
+     "pick": "04612c01-e930-46c0-ac08-e2da48fad449",
+     "from_course": "ita_for_eng",
+     "voice": "xai_gfzdpspr5fdp",
+     "duration_ms": 1080
+    },
+    {
+     "sentence": "July.",
+     "pick": "3fac37ed-e21c-47d1-8149-4e2fdf5486c3",
+     "from_course": "ita_for_eng",
+     "voice": "xai_gfzdpspr5fdp",
+     "duration_ms": 840
+    },
+    {
+     "sentence": "August.",
+     "pick": "7a816163-4a1d-4022-b3a6-199a6a1ad1e7",
+     "from_course": "fra_ca_for_eng",
+     "voice": "xai_gfzdpspr5fdp",
+     "duration_ms": 1068
+    },
+    {
+     "sentence": "September.",
+     "pick": "36848ff2-2e60-4674-bd8e-067805753f37",
+     "from_course": "ita_for_eng",
+     "voice": "xai_gfzdpspr5fdp",
+     "duration_ms": 1080
+    }
+   ],
+   "previous": null,
+   "wrote": [
+    "04612c01-e930-46c0-ac08-e2da48fad449",
+    "3fac37ed-e21c-47d1-8149-4e2fdf5486c3",
+    "7a816163-4a1d-4022-b3a6-199a6a1ad1e7",
+    "36848ff2-2e60-4674-bd8e-067805753f37"
+   ]
+  },
+  {
+   "id": "spa_for_eng:pod-1:SC22-S007",
+   "n_target": 2,
+   "known_lang": "eng",
+   "known_voice": "xai_bedd6226",
+   "sentences": [
+    "It's just a little frustrating when I can't think quickly enough to express myself properly.",
+    "But I know that I need to keep practising if I want to speak more confidently."
+   ],
+   "picks": [
+    {
+     "sentence": "It's just a little frustrating when I can't think quickly enough to express myself properly.",
+     "pick": "029015c2-415c-4e7c-819d-54bfb220c37a",
+     "from_course": "fra_ca_for_eng",
+     "voice": "xai_bedd6226",
+     "duration_ms": 6110
+    },
+    {
+     "sentence": "But I know that I need to keep practising if I want to speak more confidently.",
+     "pick": "00d31729-f936-4aeb-ac47-2ed142aed678",
+     "from_course": "swa_for_eng",
+     "voice": "xai_bedd6226",
+     "duration_ms": 4536
+    }
+   ],
+   "previous": null,
+   "wrote": [
+    "029015c2-415c-4e7c-819d-54bfb220c37a",
+    "00d31729-f936-4aeb-ac47-2ed142aed678"
+   ]
+  }
+ ],
+ "residue": [],
+ "errors": []
+}

@@ -1,0 +1,29 @@
+{
+ "pod": "hye_for_eng:pod-0",
+ "course": "hye_for_eng",
+ "apply": false,
+ "at": "2026-08-25T02:39:47.070Z",
+ "candidates": 1,
+ "written_rows": 0,
+ "written_units": 0,
+ "residue_rows": 1,
+ "residue_units": 2,
+ "rows": [],
+ "residue": [
+  {
+   "id": "hye_for_eng:pod-0:SC04-S002",
+   "n_target": 2,
+   "known_lang": "eng",
+   "known_voice": "bedd6226",
+   "sentences": [
+    "Hello!",
+    "I'm sorry, but I can't talk at the moment.",
+    "I need to go home now.",
+    "Can we talk tomorrow?"
+   ],
+   "picks": [],
+   "reason": "known_text splits into 4, target array is 2"
+  }
+ ],
+ "errors": []
+}

@@ -1,0 +1,73 @@
+{
+ "pod": "bul_for_eng:pod-0",
+ "course": "bul_for_eng",
+ "apply": false,
+ "at": "2026-08-25T02:37:03.423Z",
+ "candidates": 1,
+ "written_rows": 1,
+ "written_units": 5,
+ "residue_rows": 0,
+ "residue_units": 0,
+ "rows": [
+  {
+   "id": "bul_for_eng:pod-0:SC13-S011",
+   "n_target": 5,
+   "known_lang": "eng",
+   "known_voice": "xai_gfzdpspr5fdp",
+   "sentences": [
+    "Thirty.",
+    "Forty.",
+    "Fifty.",
+    "Friday.",
+    "Saturday."
+   ],
+   "picks": [
+    {
+     "sentence": "Thirty.",
+     "pick": "07ffcc92-3df4-4585-8918-7ff810421d95",
+     "from_course": "ell_for_eng",
+     "voice": "xai_gfzdpspr5fdp",
+     "duration_ms": 696
+    },
+    {
+     "sentence": "Forty.",
+     "pick": "141bc615-aa2e-434b-a63d-211706b984ae",
+     "from_course": "ell_for_eng",
+     "voice": "xai_gfzdpspr5fdp",
+     "duration_ms": 696
+    },
+    {
+     "sentence": "Fifty.",
+     "pick": "9e97ff93-21e2-4461-92b7-9ea65b5651b3",
+     "from_course": "spa_for_eng",
+     "voice": "gfzdpspr5fdp",
+     "duration_ms": 696
+    },
+    {
+     "sentence": "Friday.",
+     "pick": "00fe40bd-1482-4822-acdb-d549f0333200",
+     "from_course": "lit_for_eng",
+     "voice": "xai_gfzdpspr5fdp",
+     "duration_ms": 720
+    },
+    {
+     "sentence": "Saturday.",
+     "pick": "194322fc-3f23-4f47-bc6e-48434561019e",
+     "from_course": "nld_for_eng",
+     "voice": "xai_gfzdpspr5fdp",
+     "duration_ms": 840
+    }
+   ],
+   "previous": null,
+   "wrote": [
+    "07ffcc92-3df4-4585-8918-7ff810421d95",
+    "141bc615-aa2e-434b-a63d-211706b984ae",
+    "9e97ff93-21e2-4461-92b7-9ea65b5651b3",
+    "00fe40bd-1482-4822-acdb-d549f0333200",
+    "194322fc-3f23-4f47-bc6e-48434561019e"
+   ]
+  }
+ ],
+ "residue": [],
+ "errors": []
+}

@@ -1,0 +1,59 @@
+{
+ "pod": "tur_for_eng:pod-0",
+ "course": "tur_for_eng",
+ "apply": false,
+ "at": "2026-08-25T02:42:30.278Z",
+ "candidates": 3,
+ "written_rows": 0,
+ "written_units": 0,
+ "residue_rows": 3,
+ "residue_units": 8,
+ "rows": [],
+ "residue": [
+  {
+   "id": "tur_for_eng:pod-0:SC03-S002",
+   "n_target": 2,
+   "known_lang": "eng",
+   "known_voice": "bedd6226",
+   "sentences": [
+    "Good afternoon.",
+    "I'd like to have a coffee, please.",
+    "With milk but without sugar.",
+    "To take away."
+   ],
+   "picks": [],
+   "reason": "known_text splits into 4, target array is 2"
+  },
+  {
+   "id": "tur_for_eng:pod-0:SC06-S013",
+   "n_target": 3,
+   "known_lang": "eng",
+   "known_voice": "gfzdpspr5fdp",
+   "sentences": [
+    "One.",
+    "Two.",
+    "Three.",
+    "White.",
+    "Black."
+   ],
+   "picks": [],
+   "reason": "known_text splits into 5, target array is 3"
+  },
+  {
+   "id": "tur_for_eng:pod-0:SC14-S010",
+   "n_target": 3,
+   "known_lang": "eng",
+   "known_voice": "gfzdpspr5fdp",
+   "sentences": [
+    "One hundred.",
+    "Two hundred.",
+    "One thousand.",
+    "Sunday.",
+    "Twelve o'clock."
+   ],
+   "picks": [],
+   "reason": "known_text splits into 5, target array is 3"
+  }
+ ],
+ "errors": []
+}

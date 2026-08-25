@@ -1,0 +1,453 @@
+{
+ "pod": "hin_for_eng:pod-1",
+ "course": "hin_for_eng",
+ "apply": false,
+ "at": "2026-08-25T02:39:23.584Z",
+ "candidates": 15,
+ "written_rows": 12,
+ "written_units": 27,
+ "residue_rows": 3,
+ "residue_units": 6,
+ "rows": [
+  {
+   "id": "hin_for_eng:pod-1:SC04-S003",
+   "n_target": 3,
+   "known_lang": "eng",
+   "known_voice": "xai_gfzdpspr5fdp",
+   "sentences": [
+    "No, I'm sorry, I'm busy tomorrow.",
+    "But let's talk on Saturday.",
+    "See you then."
+   ],
+   "picks": [
+    {
+     "sentence": "No, I'm sorry, I'm busy tomorrow.",
+     "pick": "007d5a5c-7e07-4e0b-a162-30f62bba6bb3",
+     "from_course": "lav_for_eng",
+     "voice": "xai_gfzdpspr5fdp",
+     "duration_ms": 2040
+    },
+    {
+     "sentence": "But let's talk on Saturday.",
+     "pick": "044ee7ba-94be-472a-ac3a-5872c41eddd6",
+     "from_course": "nor_for_eng",
+     "voice": "xai_gfzdpspr5fdp",
+     "duration_ms": 1632
+    },
+    {
+     "sentence": "See you then.",
+     "pick": "186a3635-8b34-42cb-b936-350f62cafb55",
+     "from_course": "hrv_for_eng",
+     "voice": "xai_gfzdpspr5fdp",
+     "duration_ms": 912
+    }
+   ],
+   "previous": null,
+   "wrote": [
+    "007d5a5c-7e07-4e0b-a162-30f62bba6bb3",
+    "044ee7ba-94be-472a-ac3a-5872c41eddd6",
+    "186a3635-8b34-42cb-b936-350f62cafb55"
+   ]
+  },
+  {
+   "id": "hin_for_eng:pod-1:SC06-S001",
+   "n_target": 3,
+   "known_lang": "eng",
+   "known_voice": "xai_gfzdpspr5fdp",
+   "sentences": [
+    "Excuse me.",
+    "Hello.",
+    "What's your name?"
+   ],
+   "picks": [
+    {
+     "sentence": "Excuse me.",
+     "pick": "041c2dcb-f85a-4407-82e7-bc6ae91d29db",
+     "from_course": "ita_for_eng",
+     "voice": "xai_gfzdpspr5fdp",
+     "duration_ms": 1416
+    },
+    {
+     "sentence": "Hello.",
+     "pick": "01ae31d2-e692-4790-8a74-301b3d7a262d",
+     "from_course": "hrv_for_eng",
+     "voice": "xai_gfzdpspr5fdp",
+     "duration_ms": 720
+    },
+    {
+     "sentence": "What's your name?",
+     "pick": "5937872c-e120-4a93-ab2b-cae27b6b2ac5",
+     "from_course": "deu_at_for_eng",
+     "voice": "xai_gfzdpspr5fdp",
+     "duration_ms": 946
+    }
+   ],
+   "previous": null,
+   "wrote": [
+    "041c2dcb-f85a-4407-82e7-bc6ae91d29db",
+    "01ae31d2-e692-4790-8a74-301b3d7a262d",
+    "5937872c-e120-4a93-ab2b-cae27b6b2ac5"
+   ]
+  },
+  {
+   "id": "hin_for_eng:pod-1:SC06-S007",
+   "n_target": 2,
+   "known_lang": "eng",
+   "known_voice": "xai_gfzdpspr5fdp",
+   "sentences": [
+    "This is a lovely city.",
+    "What do you do?"
+   ],
+   "picks": [
+    {
+     "sentence": "This is a lovely city.",
+     "pick": "03b3d63f-8e9d-4aed-87d1-120b89253640",
+     "from_course": "hrv_for_eng",
+     "voice": "xai_gfzdpspr5fdp",
+     "duration_ms": 1584
+    },
+    {
+     "sentence": "What do you do?",
+     "pick": "1556ee6c-1a3a-416e-b362-65a9cf505e5c",
+     "from_course": "spa_for_eng",
+     "voice": "xai_gfzdpspr5fdp",
+     "duration_ms": 1008
+    }
+   ],
+   "previous": null,
+   "wrote": [
+    "03b3d63f-8e9d-4aed-87d1-120b89253640",
+    "1556ee6c-1a3a-416e-b362-65a9cf505e5c"
+   ]
+  },
+  {
+   "id": "hin_for_eng:pod-1:SC08-S013",
+   "n_target": 3,
+   "known_lang": "eng",
+   "known_voice": "gfzdpspr5fdp",
+   "sentences": [
+    "Yes, of course.",
+    "Here it is.",
+    "The fish and chips are very good."
+   ],
+   "picks": [
+    {
+     "sentence": "Yes, of course.",
+     "pick": "00dafef5-d24d-4975-9787-c0934a2d2c5e",
+     "from_course": "tur_for_eng",
+     "voice": "xai_gfzdpspr5fdp",
+     "duration_ms": 1104
+    },
+    {
+     "sentence": "Here it is.",
+     "pick": "0f9e9298-d072-4a45-9fa8-05534b04195c",
+     "from_course": "jpn_for_eng",
+     "voice": "xai_gfzdpspr5fdp",
+     "duration_ms": 936
+    },
+    {
+     "sentence": "The fish and chips are very good.",
+     "pick": "05b40ae4-8edc-4f73-964d-973d5cc52128",
+     "from_course": "est_for_eng",
+     "voice": "xai_gfzdpspr5fdp",
+     "duration_ms": 1992
+    }
+   ],
+   "previous": null,
+   "wrote": [
+    "00dafef5-d24d-4975-9787-c0934a2d2c5e",
+    "0f9e9298-d072-4a45-9fa8-05534b04195c",
+    "05b40ae4-8edc-4f73-964d-973d5cc52128"
+   ]
+  },
+  {
+   "id": "hin_for_eng:pod-1:SC08-S015",
+   "n_target": 2,
+   "known_lang": "eng",
+   "known_voice": "xai_bedd6226",
+   "sentences": [
+    "Do you have any sandwiches?",
+    "I'd like a cheese sandwich, please."
+   ],
+   "picks": [
+    {
+     "sentence": "Do you have any sandwiches?",
+     "pick": "363cec19-aa38-420d-92fc-1dc224665b01",
+     "from_course": "ita_for_eng",
+     "voice": "xai_bedd6226",
+     "duration_ms": 1842
+    },
+    {
+     "sentence": "I'd like a cheese sandwich, please.",
+     "pick": "081d4e95-edc5-4d72-84a9-7caabd963115",
+     "from_course": "swe_for_eng",
+     "voice": "xai_bedd6226",
+     "duration_ms": 2752
+    }
+   ],
+   "previous": null,
+   "wrote": [
+    "363cec19-aa38-420d-92fc-1dc224665b01",
+    "081d4e95-edc5-4d72-84a9-7caabd963115"
+   ]
+  },
+  {
+   "id": "hin_for_eng:pod-1:SC09-S006",
+   "n_target": 2,
+   "known_lang": "eng",
+   "known_voice": "gfzdpspr5fdp",
+   "sentences": [
+    "Yes, the salmon and the risotto are both gluten-free.",
+    "We also have some salads."
+   ],
+   "picks": [
+    {
+     "sentence": "Yes, the salmon and the risotto are both gluten-free.",
+     "pick": "f5dfd3ab-11fb-483e-b201-3d19a785de28",
+     "from_course": "hin_for_eng",
+     "voice": "gfzdpspr5fdp",
+     "duration_ms": 5280
+    },
+    {
+     "sentence": "We also have some salads.",
+     "pick": "07e1ef2b-4eab-4ddc-b024-a7e627dbbf76",
+     "from_course": "tur_for_eng",
+     "voice": "xai_gfzdpspr5fdp",
+     "duration_ms": 1680
+    }
+   ],
+   "previous": null,
+   "wrote": [
+    "f5dfd3ab-11fb-483e-b201-3d19a785de28",
+    "07e1ef2b-4eab-4ddc-b024-a7e627dbbf76"
+   ]
+  },
+  {
+   "id": "hin_for_eng:pod-1:SC09-S008",
+   "n_target": 2,
+   "known_lang": "eng",
+   "known_voice": "gfzdpspr5fdp",
+   "sentences": [
+    "The lamb is excellent.",
+    "It's been slow-cooked, with rosemary."
+   ],
+   "picks": [
+    {
+     "sentence": "The lamb is excellent.",
+     "pick": "1343120a-0aec-4c0d-bd70-eaa5520b0809",
+     "from_course": "zho_for_eng",
+     "voice": "xai_gfzdpspr5fdp",
+     "duration_ms": 1752
+    },
+    {
+     "sentence": "It's been slow-cooked, with rosemary.",
+     "pick": "090b58e5-79c4-454e-a28f-b1300b42f753",
+     "from_course": "ell_for_eng",
+     "voice": "xai_gfzdpspr5fdp",
+     "duration_ms": 2304
+    }
+   ],
+   "previous": null,
+   "wrote": [
+    "1343120a-0aec-4c0d-bd70-eaa5520b0809",
+    "090b58e5-79c4-454e-a28f-b1300b42f753"
+   ]
+  },
+  {
+   "id": "hin_for_eng:pod-1:SC09-S014",
+   "n_target": 2,
+   "known_lang": "eng",
+   "known_voice": "gfzdpspr5fdp",
+   "sentences": [
+    "Excellent choice.",
+    "I'll bring it right over."
+   ],
+   "picks": [
+    {
+     "sentence": "Excellent choice.",
+     "pick": "182bd987-930c-43d1-8912-1c7e2722bbaa",
+     "from_course": "pol_for_eng",
+     "voice": "xai_gfzdpspr5fdp",
+     "duration_ms": 1128
+    },
+    {
+     "sentence": "I'll bring it right over.",
+     "pick": "17728195-21ae-44e9-9260-85abae4f2807",
+     "from_course": "ara_sy_for_eng",
+     "voice": "xai_gfzdpspr5fdp",
+     "duration_ms": 1464
+    }
+   ],
+   "previous": null,
+   "wrote": [
+    "182bd987-930c-43d1-8912-1c7e2722bbaa",
+    "17728195-21ae-44e9-9260-85abae4f2807"
+   ]
+  },
+  {
+   "id": "hin_for_eng:pod-1:SC09-S015",
+   "n_target": 2,
+   "known_lang": "eng",
+   "known_voice": "xai_gfzdpspr5fdp",
+   "sentences": [
+    "Is everything alright?",
+    "Do you have any room for dessert?"
+   ],
+   "picks": [
+    {
+     "sentence": "Is everything alright?",
+     "pick": "0a536945-bb2c-4e07-b7e9-33d313a37a5b",
+     "from_course": "hrv_for_eng",
+     "voice": "xai_gfzdpspr5fdp",
+     "duration_ms": 1224
+    },
+    {
+     "sentence": "Do you have any room for dessert?",
+     "pick": "0a097511-187f-44bd-b951-d4ddf52e1ba9",
+     "from_course": "pol_for_eng",
+     "voice": "xai_gfzdpspr5fdp",
+     "duration_ms": 2160
+    }
+   ],
+   "previous": null,
+   "wrote": [
+    "0a536945-bb2c-4e07-b7e9-33d313a37a5b",
+    "0a097511-187f-44bd-b951-d4ddf52e1ba9"
+   ]
+  },
+  {
+   "id": "hin_for_eng:pod-1:SC11-S001",
+   "n_target": 2,
+   "known_lang": "eng",
+   "known_voice": "xai_gfzdpspr5fdp",
+   "sentences": [
+    "Good afternoon.",
+    "I have a booking under the name Jones."
+   ],
+   "picks": [
+    {
+     "sentence": "Good afternoon.",
+     "pick": "54d2ba9e-8637-4322-b6df-deeb6e479783",
+     "from_course": "hin_for_eng",
+     "voice": "xai_gfzdpspr5fdp",
+     "duration_ms": 1191
+    },
+    {
+     "sentence": "I have a booking under the name Jones.",
+     "pick": "01514855-985c-4cf3-9787-3c7c3d46ba4b",
+     "from_course": "kor_for_eng",
+     "voice": "xai_gfzdpspr5fdp",
+     "duration_ms": 2352
+    }
+   ],
+   "previous": null,
+   "wrote": [
+    "54d2ba9e-8637-4322-b6df-deeb6e479783",
+    "01514855-985c-4cf3-9787-3c7c3d46ba4b"
+   ]
+  },
+  {
+   "id": "hin_for_eng:pod-1:SC11-S009",
+   "n_target": 2,
+   "known_lang": "eng",
+   "known_voice": "xai_gfzdpspr5fdp",
+   "sentences": [
+    "Wonderful.",
+    "Is it possible for us to have a late check-out?"
+   ],
+   "picks": [
+    {
+     "sentence": "Wonderful.",
+     "pick": "095b39a3-5663-4378-afe7-30a22c8b742c",
+     "from_course": "nor_for_eng",
+     "voice": "xai_gfzdpspr5fdp",
+     "duration_ms": 816
+    },
+    {
+     "sentence": "Is it possible for us to have a late check-out?",
+     "pick": "14d67f77-42b7-45c8-81f1-458db54ca9c8",
+     "from_course": "nor_for_eng",
+     "voice": "xai_gfzdpspr5fdp",
+     "duration_ms": 2592
+    }
+   ],
+   "previous": null,
+   "wrote": [
+    "095b39a3-5663-4378-afe7-30a22c8b742c",
+    "14d67f77-42b7-45c8-81f1-458db54ca9c8"
+   ]
+  },
+  {
+   "id": "hin_for_eng:pod-1:SC13-S002",
+   "n_target": 2,
+   "known_lang": "eng",
+   "known_voice": "gfzdpspr5fdp",
+   "sentences": [
+    "Yes, it's about a ten minute walk.",
+    "Go straight along this road."
+   ],
+   "picks": [
+    {
+     "sentence": "Yes, it's about a ten minute walk.",
+     "pick": "0a26cd48-4238-4eff-8c31-50ae96b66aef",
+     "from_course": "swe_for_eng",
+     "voice": "xai_gfzdpspr5fdp",
+     "duration_ms": 2064
+    },
+    {
+     "sentence": "Go straight along this road.",
+     "pick": "07358ba5-7e15-48fd-a284-c1cc72af9d54",
+     "from_course": "ron_for_eng",
+     "voice": "xai_gfzdpspr5fdp",
+     "duration_ms": 1704
+    }
+   ],
+   "previous": null,
+   "wrote": [
+    "0a26cd48-4238-4eff-8c31-50ae96b66aef",
+    "07358ba5-7e15-48fd-a284-c1cc72af9d54"
+   ]
+  }
+ ],
+ "residue": [
+  {
+   "id": "hin_for_eng:pod-1:SC04-S001",
+   "n_target": 2,
+   "known_lang": "eng",
+   "known_voice": "xai_gfzdpspr5fdp",
+   "sentences": [
+    "Hello, good evening!"
+   ],
+   "picks": [],
+   "reason": "known_text splits into 1, target array is 2"
+  },
+  {
+   "id": "hin_for_eng:pod-1:SC10-S009",
+   "n_target": 2,
+   "known_lang": "eng",
+   "known_voice": "xai_bedd6226",
+   "sentences": [
+    "That's very kind of you!",
+    "Yes, I'm on holiday, and I need to practice more to speak Hindi better.",
+    "Thank you very much, and goodbye."
+   ],
+   "picks": [],
+   "reason": "known_text splits into 3, target array is 2"
+  },
+  {
+   "id": "hin_for_eng:pod-1:SC22-S009",
+   "n_target": 2,
+   "known_lang": "eng",
+   "known_voice": "xai_bedd6226",
+   "sentences": [
+    "This is exactly the kind of practice I need.",
+    "I think I can feel it changing my brain while we're talking!",
+    "I really appreciate your help.",
+    "But it's surprising how tired I get when I'm talking in a language I don't speak very well."
+   ],
+   "picks": [],
+   "reason": "known_text splits into 4, target array is 2"
+  }
+ ],
+ "errors": []
+}

@@ -1,0 +1,73 @@
+{
+ "pod": "dan_for_eng:pod-0",
+ "course": "dan_for_eng",
+ "apply": true,
+ "at": "2026-08-25T02:44:21.090Z",
+ "candidates": 1,
+ "written_rows": 1,
+ "written_units": 5,
+ "residue_rows": 0,
+ "residue_units": 0,
+ "rows": [
+  {
+   "id": "dan_for_eng:pod-0:SC11-S013",
+   "n_target": 5,
+   "known_lang": "eng",
+   "known_voice": "xai_gfzdpspr5fdp",
+   "sentences": [
+    "Sixteen.",
+    "Seventeen.",
+    "Eighteen.",
+    "Monday.",
+    "Tuesday."
+   ],
+   "picks": [
+    {
+     "sentence": "Sixteen.",
+     "pick": "0b1a3d99-a04a-4f7a-81c3-9500e7758a98",
+     "from_course": "por_br_for_eng",
+     "voice": "xai_gfzdpspr5fdp",
+     "duration_ms": 960
+    },
+    {
+     "sentence": "Seventeen.",
+     "pick": "0200a612-0642-4481-9ba0-a348025e0b66",
+     "from_course": "ron_for_eng",
+     "voice": "xai_gfzdpspr5fdp",
+     "duration_ms": 984
+    },
+    {
+     "sentence": "Eighteen.",
+     "pick": "0490cdcc-233c-4ffb-ba07-bf33c242a1e5",
+     "from_course": "fra_ca_for_eng",
+     "voice": "xai_gfzdpspr5fdp",
+     "duration_ms": 888
+    },
+    {
+     "sentence": "Monday.",
+     "pick": "142fb0ee-e5c7-4ccd-ba1b-946cef60dbd4",
+     "from_course": "lav_for_eng",
+     "voice": "xai_gfzdpspr5fdp",
+     "duration_ms": 816
+    },
+    {
+     "sentence": "Tuesday.",
+     "pick": "0067e428-6190-4559-84ed-77ab8304bb9a",
+     "from_course": "nor_for_eng",
+     "voice": "xai_gfzdpspr5fdp",
+     "duration_ms": 816
+    }
+   ],
+   "previous": null,
+   "wrote": [
+    "0b1a3d99-a04a-4f7a-81c3-9500e7758a98",
+    "0200a612-0642-4481-9ba0-a348025e0b66",
+    "0490cdcc-233c-4ffb-ba07-bf33c242a1e5",
+    "142fb0ee-e5c7-4ccd-ba1b-946cef60dbd4",
+    "0067e428-6190-4559-84ed-77ab8304bb9a"
+   ]
+  }
+ ],
+ "residue": [],
+ "errors": []
+}

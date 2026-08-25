@@ -1,0 +1,28 @@
+{
+ "pod": "ukr_for_eng:pod-0",
+ "course": "ukr_for_eng",
+ "apply": true,
+ "at": "2026-08-25T02:49:19.020Z",
+ "candidates": 1,
+ "written_rows": 0,
+ "written_units": 0,
+ "residue_rows": 1,
+ "residue_units": 4,
+ "rows": [],
+ "residue": [
+  {
+   "id": "ukr_for_eng:pod-0:SC10-S009",
+   "n_target": 4,
+   "known_lang": "eng",
+   "known_voice": "xai_gfzdpspr5fdp",
+   "sentences": [
+    "That's very kind of you!",
+    "Yes, I'm on holiday, and I need to practice more to speak Ukrainian better.",
+    "Thank you very much, and goodbye."
+   ],
+   "picks": [],
+   "reason": "known_text splits into 3, target array is 4"
+  }
+ ],
+ "errors": []
+}

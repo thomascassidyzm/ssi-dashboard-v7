@@ -1,0 +1,59 @@
+{
+ "pod": "ita_for_jpn:pod-0",
+ "course": "ita_for_jpn",
+ "apply": true,
+ "at": "2026-08-25T02:47:00.706Z",
+ "candidates": 4,
+ "written_rows": 0,
+ "written_units": 0,
+ "residue_rows": 4,
+ "residue_units": 11,
+ "rows": [],
+ "residue": [
+  {
+   "id": "ita_for_jpn:pod-0:SC02-S002",
+   "n_target": 2,
+   "known_lang": "eng",
+   "known_voice": "bedd6226",
+   "sentences": [
+    "いいえ、空いています。どうぞ、お座りください。"
+   ],
+   "picks": [],
+   "reason": "known_text splits into 1, target array is 2"
+  },
+  {
+   "id": "ita_for_jpn:pod-0:SC08-S016",
+   "n_target": 5,
+   "known_lang": "eng",
+   "known_voice": "bedd6226",
+   "sentences": [
+    "四。六。八。青。黄色。"
+   ],
+   "picks": [],
+   "reason": "known_text splits into 1, target array is 5"
+  },
+  {
+   "id": "ita_for_jpn:pod-0:SC10-S001",
+   "n_target": 2,
+   "known_lang": "eng",
+   "known_voice": "xai_bedd6226",
+   "sentences": [
+    "すみません。鎮痛剤はありますか？"
+   ],
+   "picks": [],
+   "reason": "known_text splits into 1, target array is 2"
+  },
+  {
+   "id": "ita_for_jpn:pod-0:SC11-S003",
+   "n_target": 2,
+   "known_lang": "jpn",
+   "known_voice": "b1a7441b97a1",
+   "sentences": [
+    "もちろんです。こちらがパスポートです。"
+   ],
+   "picks": [],
+   "reason": "known_text splits into 1, target array is 2"
+  }
+ ],
+ "errors": []
+}
