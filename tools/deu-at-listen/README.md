@@ -114,7 +114,7 @@ files name the course but not the line.
 take is transcoded once with ffmpeg and cached (a container change on bytes we
 already have — no speech is generated).
 
-Rebuild the list with `node scripts/refused-census.cjs <uuids.json> <out.json>
+Rebuild the list with `node tools/deu-at-listen/refused-census.cjs <uuids.json> <out.json>
 [courseCode]`, then point `refused-takes.json` at it; without that file the
 manifest simply builds without them.
 
