@@ -31,43 +31,32 @@
  * INCLUDED here and labelled, because Kai is judging what was said, not what was
  * filed — but they are never presented as candidates to bind.
  *
- * WHICH RECORDING FLOW PRODUCED A TAKE IS **NOT STORED**. This matters enough
- * to be stated in three places (here, on the page, in the report), because the
- * split it drives is an INFERENCE and must never read as a recorded fact.
+ * WHICH RECORDING FLOW PRODUCED A TAKE IS **NOT STORED**, and this build does
+ * NOT guess it. Kai marks the takes himself on the page; his marks are the only
+ * answer to that question anywhere, so nothing here is pre-filled and nothing
+ * here classifies.
  *
- * What was checked: `recording_provenance` has no mode and no session column at
- * all (\d recording_provenance — 18 columns, none of them either); the JSON
- * context in quality_notes (services/recording-upload-helpers.cjs
- * buildProvenanceContext) carries `mode`, but its only values are
- * 'script'|'pod'|'regeneration' — the upload seam, not the reading order. Every
- * deu_at take is mode='script'. The reading order the recordist actually chose
- * — ModeSelector.vue's "the course itself, straight through from the start"
- * (order=course) versus "a shorter set of lines, cut up afterwards"
- * (order=coverage) — is never sent with the take. AutocueStudio.vue's upload
- * does send provenance.mode='continuous', but that names the RECORDER
- * (useContinuousRecorder's VAD cutter) and is written by both orders, and it is
- * dropped on insert anyway for want of a column. There is no S3 prefix
- * distinction either: everything is mastered/ and raw/.
+ * What was checked, so the claim is a finding rather than a shrug:
+ * `recording_provenance` has no mode and no session column at all (18 columns,
+ * neither among them); the JSON context in quality_notes
+ * (services/recording-upload-helpers.cjs buildProvenanceContext) carries `mode`,
+ * but its only values are 'script'|'pod'|'regeneration' — the upload seam, not
+ * the reading order, and every deu_at take is 'script'. The reading order the
+ * recordist actually chose — ModeSelector.vue's "the course itself, straight
+ * through from the start" (order=course) versus "a shorter set of lines, cut up
+ * afterwards" (order=coverage) — is never sent with the take at all.
+ * AutocueStudio.vue does send provenance.mode='continuous', but that names the
+ * RECORDER (useContinuousRecorder's VAD cutter), both orders use it, and it is
+ * dropped on insert for want of a column. There is no S3 prefix distinction
+ * either: everything is mastered/ and raw/.
  *
- * THE RULE USED HERE, and why it follows from the script builders
- * (services/recording-script-items.cjs):
- *   - buildCourseScriptItems() — the straight-through order — emits ONE natural
- *     read per line and NO chunk fields at all ("nothing here is ever chunked").
- *   - buildScriptItems()/buildTwoPoolScriptItems() — the cut-up order — always
- *     emit chunksString, always pair natural with a slow read, and give Pool A
- *     the 'isolated' cadence.
- * So: chunks_string present, or cadence slow/isolated  → 'spliced'.
- *     cadence natural with no chunks_string            → 'continuous'.
- *     anything else                                    → 'unknown'.
- *
- * CONFIDENCE: high, and corroborated three ways rather than asserted. (1) All 21
- * recording sessions are 100% homogeneous under the rule — not one mixed
- * session. (2) The two groups are disjoint in time and in shape: every spliced
- * session jumps around the course (seeds 26→567), every continuous session runs
- * monotonically from seed 1 (seeds 1→10), which is exactly what the two orders
- * promise the reader. (3) 203 of 249 continuous takes are bound as live clips
- * against 21 of 115 spliced ones — the straight-through order files each read as
- * itself, the cut-up order feeds the splicer. It is still an inference.
+ * WHAT *IS* RECORDED, and is therefore what the marking control is built on:
+ * `script_session_id` — the sitting a take was recorded in — travels with every
+ * scripted take and is a stored fact, not a deduction. Takes cluster by sitting,
+ * and a sitting is one reading order from beginning to end, so a session is the
+ * natural unit for "mark this whole lot". This file emits the sessions with
+ * their times, take counts and seed ranges; it does not say what either of them
+ * IS.
  *
  * Sascha uses they/them; the voice they record is the male voice, which
  * describes the part and not them.
@@ -127,22 +116,9 @@ const takes = q(`
   session: session || null,
 }))
 
-/**
- * INFERRED, never read from a stored field — see the header for what was checked
- * and why this rule follows from services/recording-script-items.cjs.
- *
- * 'continuous' = the straight-through order (read the course from seed 1, each
- * line used exactly as read). 'spliced' = the coverage order (a shorter set of
- * lines, cut up and reassembled afterwards). 'unknown' = neither shape, which
- * here means an ad-hoc upload carrying no cadence at all.
- */
-function classifyFlow(t) {
-  if (t.has_chunks) return 'spliced'
-  if (t.cadence === 'slow' || t.cadence === 'isolated') return 'spliced'
-  if (t.cadence === 'natural') return 'continuous'
-  return 'unknown'
-}
-for (const t of takes) t.flow = classifyFlow(t)
+// No flow classification is computed. Which reading order produced a take is not
+// stored (see the header), and the only honest source for it is Kai's own mark,
+// which lives in marks-<course>.json and is applied by the page — never here.
 
 // ---- takes REFUSED before any provenance row was written ----
 // They exist only as S3 objects, so the database cannot see them and neither
@@ -162,10 +138,13 @@ try {
     cadence: null, role: null,
     s3_key: r.s3_key || null, raw_s3_key: r.raw_s3_key || null,
     seed: null, superseded: false, discarded: false, note: null,
-    has_chunks: false, session: r.session_window || null,
-    // Refused before anything was written, so the flow cannot be inferred by
-    // the rule above — there is no cadence and no chunk map to read.
-    flow: 'unknown',
+    has_chunks: false,
+    // No provenance row means no session id either. What we have instead is the
+    // moment the object landed in the bucket, which the census resolved against
+    // the recorded session windows — a fact about the upload, never a claim
+    // about the take.
+    session: null,
+    upload_window: r.session_window || null,
     refused: true,
   })).filter((r) => r.uuid && r.s3_key)
 } catch { refused = [] }
@@ -239,11 +218,9 @@ const out = [...groups.values()].map((g) => {
     natural_count: natural.length,
     live_count: g.takes.filter((t) => t.is_live).length,
     disagree_count: g.takes.filter((t) => t.text_disagrees).length,
-    // Per-flow counts so the page can hide a whole group when none of its takes
-    // belong to the flow being reviewed.
-    continuous_count: g.takes.filter((t) => t.flow === 'continuous').length,
-    spliced_count: g.takes.filter((t) => t.flow === 'spliced').length,
-    unknown_count: g.takes.filter((t) => t.flow === 'unknown').length,
+    // The sittings this line's takes came from — a stored fact, and what the
+    // page offers as a marking set.
+    sessions: [...new Set(g.takes.map((t) => t.session).filter(Boolean))],
     // The pattern #601 proved: more than one natural take of the same line, so
     // a good-read-then-flubbed-retry pair is possible here.
     has_retry: natural.length > 1,
@@ -280,7 +257,36 @@ out.sort((a, b) =>
 )
 
 const allTakes = out.flatMap((g) => g.takes)
-const byFlow = (f) => allTakes.filter((t) => t.flow === f).length
+
+// ---- the sittings, straight out of the takes ----
+// script_session_id is RECORDED, so this is a fact and not a reading of one. A
+// sitting is one reading order from beginning to end, which is why it is the
+// unit the page offers for marking a whole set at once. What each sitting IS
+// remains Kai's to say.
+const sessions = []
+{
+  const bySession = new Map()
+  for (const t of allTakes) {
+    if (!t.session) continue
+    if (!bySession.has(t.session)) bySession.set(t.session, [])
+    bySession.get(t.session).push(t)
+  }
+  for (const [id, ts] of bySession) {
+    const times = ts.map((t) => t.recorded_at).filter(Boolean).sort()
+    const seeds = ts.map((t) => t.seed).filter((s) => s != null)
+    sessions.push({
+      id,
+      first: times[0] || null,
+      last: times[times.length - 1] || null,
+      take_count: ts.length,
+      seed_min: seeds.length ? Math.min(...seeds) : null,
+      seed_max: seeds.length ? Math.max(...seeds) : null,
+      uuids: ts.map((t) => t.uuid),
+    })
+  }
+  sessions.sort((a, b) => String(a.first).localeCompare(String(b.first)))
+}
+const unsessioned = allTakes.filter((t) => !t.session).length
 
 fs.mkdirSync(DATA_DIR, { recursive: true })
 const outPath = path.join(DATA_DIR, `manifest-${COURSE}.json`)
@@ -294,23 +300,22 @@ fs.writeFileSync(outPath, JSON.stringify({
   total_lines: out.filter((g) => !g.refused_group).length,
   live_takes: allTakes.filter((t) => t.is_live).length,
   refused_takes: refused.length,
-  // The split is INFERRED. The page shows this block verbatim so the claim and
-  // its basis are never separated from each other.
+  // The page reads this and says it out loud: nothing is pre-filled, because
+  // there is nothing to pre-fill it FROM.
   flow: {
-    inferred: true,
     stored: false,
-    continuous: byFlow('continuous'),
-    spliced: byFlow('spliced'),
-    unknown: byFlow('unknown'),
-    rule: "chunks_string present, or cadence 'slow'/'isolated' → spliced; cadence 'natural' with no chunks_string → continuous; anything else → unknown. Refused takes have no provenance row at all, so they are 'unknown' by definition.",
-    basis: 'Nothing in the schema or in the upload records which reading order produced a take. The rule reads the shape the script builder gave the take (services/recording-script-items.cjs): the straight-through order emits one natural read per line and no chunk fields; the cut-up order always emits a chunk map and pairs natural with slow.',
-    confidence: 'High. All 21 sessions are homogeneous under the rule; the two groups are disjoint in time; spliced sessions jump around the course while continuous sessions run monotonically from seed 1; and 203 of 249 continuous takes are bound as live clips against 21 of 115 spliced. Still an inference, not a recorded fact.',
+    prefilled: false,
+    source: "Kai's own marks",
+    checked: 'recording_provenance has no mode and no session column; the mode in the quality_notes context is the upload seam (script|pod|regeneration), and every deu_at take is "script"; the reading order the recordist chose (ModeSelector: straight through from the start vs a shorter set cut up afterwards) is never sent with the take; AutocueStudio sends provenance.mode="continuous", but that names the VAD recorder both orders use and it is dropped on insert; both orders land in mastered/ and raw/.',
   },
+  sessions,
+  unsessioned_takes: unsessioned,
   groups: out,
 }, null, 1))
 
 console.log(`${allTakes.length} takes over ${out.length} groups → ${outPath}`)
-console.log(`  FLOW (INFERRED, not stored): ${byFlow('continuous')} continuous / start-to-finish, ${byFlow('spliced')} spliced, ${byFlow('unknown')} unknown`)
+console.log(`  NO flow classification computed — which reading order produced a take is not stored, and Kai marks it himself`)
+console.log(`  ${sessions.length} recorded sittings offered as marking sets (${unsessioned} takes carry no session id)`)
 console.log(`  ${refused.length} refused takes folded in (no provenance row — flow unknown, no prompted text)`)
 console.log(`  ${out.filter((g) => g.has_retry).length} lines were recorded more than once (natural takes)`)
 console.log(`  ${allTakes.filter((t) => t.is_live).length} takes are what a learner hears today`)

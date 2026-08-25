@@ -34,11 +34,16 @@
  *
  * Sascha uses they/them. They record the male voice; that describes the part.
  *
- * WHICH FLOW PRODUCED A TAKE IS NOT STORED — the page's start-to-finish /
- * spliced filter is an INFERENCE from the shape of the take, and the page says
- * so above the filter itself. The rule, what was checked, and the confidence all
- * live in manifest.cjs's header and travel to the browser inside the manifest,
- * so the claim can never be shown apart from its basis.
+ * WHICH FLOW PRODUCED A TAKE IS NOT STORED, and this tool does not guess it.
+ * KAI MARKS THE TAKES HIMSELF (his ruling, 2026-08-25: "give me a button in that
+ * last page to mark a set of takes as that"), a set at a time, and his marks are
+ * the only record of it that exists anywhere. Nothing is pre-filled, because
+ * there is nothing to pre-fill it from — manifest.cjs's header lists what was
+ * checked. The marks are a SECOND AXIS, independent of Good/Bad: a take can be
+ * start-to-finish and bad, or spliced and good.
+ *
+ * The sets he marks are the recording SITTINGS, which ARE stored
+ * (script_session_id), plus the current line group and everything on screen.
  *
  * IT DOES WRITE TO THE COURSE NOW, and only under one condition: Kai tapped Good
  * on a take, and he then confirmed the plan. /api/apply-plan shows the change
@@ -51,7 +56,8 @@
  *
  * Data (all under DEU_AT_LISTEN_DATA_DIR, default scripts/deu-at-listen/):
  *   manifest-deu_at_for_eng.json    every take, grouped by prompted line (manifest.cjs)
- *   verdicts-deu_at_for_eng.json    this tool's only output, written atomically
+ *   verdicts-deu_at_for_eng.json    Kai's Good/Bad, written atomically
+ *   marks-deu_at_for_eng.json       Kai's flow marks + the undo history
  */
 const path = require('path')
 const fs = require('fs')
@@ -100,6 +106,31 @@ function saveVerdicts(state) {
   fs.renameSync(tmp, verdictsPath)
 }
 
+// ---------- marks: which reading order a take came from ----------
+// A SECOND AXIS, deliberately independent of the Good/Bad verdict. A take can be
+// start-to-finish and bad, or spliced and good, and collapsing the two into one
+// control would make it impossible to say either.
+//
+// These are Kai's, and they are the ONLY record of the flow that exists
+// anywhere: nothing in the schema stores it (see manifest.cjs's header), so
+// nothing is pre-filled and this file is not derived from anything.
+const marksPath = path.join(DATA_DIR, `marks-${COURSE}.json`)
+const FLOWS = ['continuous', 'spliced']
+// Enough history that a thumb can walk back out of a wrong session tap, not so
+// much that the file grows without bound.
+const UNDO_DEPTH = 20
+
+function loadMarks() {
+  try { return JSON.parse(fs.readFileSync(marksPath, 'utf8')) }
+  catch { return { course: COURSE, marks: {}, undo: [] } }
+}
+function saveMarks(state) {
+  fs.mkdirSync(DATA_DIR, { recursive: true })
+  const tmp = marksPath + '.tmp'
+  fs.writeFileSync(tmp, JSON.stringify(state, null, 1))
+  fs.renameSync(tmp, marksPath)
+}
+
 // ---------- server ----------
 const app = express()
 app.use(express.json())
@@ -128,12 +159,76 @@ app.get('/api/takes', (_req, res) => {
     total_lines: m.total_lines,
     live_takes: m.live_takes,
     refused_takes: m.refused_takes || 0,
-    // The inference disclosure travels with the data it describes, so the page
-    // cannot show the split without showing that it is a deduction.
+    // Says, in the data itself, that the flow is not stored and nothing is
+    // pre-filled — so the page cannot show the marking control without saying
+    // where the marks come from.
     flow: m.flow || null,
+    // The recorded sittings, which is what "mark a set" acts on.
+    sessions: m.sessions || [],
+    unsessioned_takes: m.unsessioned_takes || 0,
     groups: manifestState.GROUPS,
     verdicts: state.verdicts || {},
+    marks: loadMarks().marks || {},
   })
+})
+
+/**
+ * Mark a SET of takes as one reading order or the other. Sets, not singles: the
+ * takes cluster by sitting and Kai is doing this with a thumb.
+ *
+ * flow: 'continuous' | 'spliced' | null (clear). Every call returns an undo
+ * token carrying the PREVIOUS value of each take it touched, so undo restores
+ * exactly what was there — including "was marked the other way" and "was not
+ * marked at all", which a blanket clear could not.
+ */
+app.post('/api/mark', (req, res) => {
+  const { uuids, flow, label } = req.body || {}
+  if (!Array.isArray(uuids) || !uuids.length) return res.status(400).json({ error: 'uuids must be a non-empty array' })
+  if (!FLOWS.includes(flow ?? null) && flow != null) {
+    return res.status(400).json({ error: `flow must be ${FLOWS.join('|')} or null` })
+  }
+  const known = uuids.filter((u) => manifestState.BY_UUID.has(u))
+  if (!known.length) return res.status(400).json({ error: 'none of those takes exist' })
+
+  const state = loadMarks()
+  state.marks = state.marks || {}
+  state.undo = state.undo || []
+
+  const previous = {}
+  for (const u of known) previous[u] = state.marks[u] ? state.marks[u].flow : null
+  const token = `u${Date.now().toString(36)}${Math.floor(Math.random() * 1e4).toString(36)}`
+  const at = new Date().toISOString()
+  state.undo.unshift({ token, at, label: label || `${known.length} takes`, count: known.length, previous })
+  state.undo = state.undo.slice(0, UNDO_DEPTH)
+
+  for (const u of known) {
+    if (flow == null) delete state.marks[u]
+    else state.marks[u] = { flow, at }
+  }
+  saveMarks(state)
+  res.json({
+    ok: true,
+    marked: known.length,
+    unknown: uuids.length - known.length,
+    undo: { token, label: label || `${known.length} takes`, count: known.length },
+    marks: state.marks,
+  })
+})
+
+/** Put back exactly what a given mark action replaced. */
+app.post('/api/mark/undo', (req, res) => {
+  const { token } = req.body || {}
+  const state = loadMarks()
+  const entry = (state.undo || []).find((u) => u.token === token)
+  if (!entry) return res.status(404).json({ error: 'nothing to undo under that token' })
+  state.marks = state.marks || {}
+  for (const [u, was] of Object.entries(entry.previous)) {
+    if (was == null) delete state.marks[u]
+    else state.marks[u] = { flow: was, at: entry.at }
+  }
+  state.undo = state.undo.filter((u) => u.token !== token)
+  saveMarks(state)
+  res.json({ ok: true, restored: Object.keys(entry.previous).length, marks: state.marks })
 })
 
 // verdict: 'good' | 'bad' | null (clear). Keyed by TAKE, not by line — the whole
@@ -159,6 +254,7 @@ app.post('/api/verdict', (req, res) => {
  */
 app.get('/api/export', (_req, res) => {
   const v = loadVerdicts().verdicts || {}
+  const marks = loadMarks().marks || {}
   const lines = manifestState.GROUPS.map((g) => {
     const judged = g.takes.filter((t) => v[t.uuid])
     if (!judged.length) return null
@@ -172,7 +268,9 @@ app.get('/api/export', (_req, res) => {
       chosen_good_take: chosen && { uuid: chosen.uuid, s3_key: chosen.s3_key, cadence: chosen.cadence },
       // The only field a re-pointer needs to act on.
       needs_repoint: Boolean(chosen && liveTake && chosen.uuid !== liveTake.uuid),
-      verdicts: judged.map((t) => ({ uuid: t.uuid, verdict: v[t.uuid].verdict, at: v[t.uuid].at, recorded_at: t.recorded_at, cadence: t.cadence })),
+      // Two axes, kept apart: what Kai thought of the take, and which reading
+      // order he says produced it.
+      verdicts: judged.map((t) => ({ uuid: t.uuid, verdict: v[t.uuid].verdict, at: v[t.uuid].at, recorded_at: t.recorded_at, cadence: t.cadence, flow_mark: marks[t.uuid]?.flow || null })),
     }
   }).filter(Boolean)
   res.set('Content-Disposition', 'attachment; filename="sascha-take-verdicts.json"')
@@ -183,6 +281,13 @@ app.get('/api/export', (_req, res) => {
     judged_takes: Object.keys(v).length,
     lines_judged: lines.length,
     needs_repoint: lines.filter((l) => l.needs_repoint).length,
+    // The flow marks in full — the only record anywhere of which reading order
+    // produced which take, so it leaves this tool whole rather than per-line.
+    flow_marks: {
+      note: 'Kai\'s own marks. The recording flow is not stored in the database; nothing here is derived or pre-filled.',
+      continuous: Object.entries(marks).filter(([, m]) => m.flow === 'continuous').map(([u]) => u),
+      spliced: Object.entries(marks).filter(([, m]) => m.flow === 'spliced').map(([u]) => u),
+    },
     lines,
   })
 })

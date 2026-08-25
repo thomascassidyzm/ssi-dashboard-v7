@@ -48,6 +48,48 @@
   .inferred b { color: var(--warn); }
   .inferred details { margin-top: 4px; }
   .inferred summary { cursor: pointer; color: var(--accent); }
+
+  /* The undo bar. Sits under the header, only after a marking action, and is
+     the whole reason a fat-fingered session tap is not a disaster. */
+  .undo {
+    display: flex; align-items: center; gap: 10px;
+    background: var(--accent); color: #fff; border-radius: 10px;
+    padding: 8px 10px; font-size: 13px; line-height: 1.35;
+  }
+  .undo button {
+    margin-left: auto; min-height: 40px; padding: 0 16px; font: inherit;
+    font-size: 14px; font-weight: 700; color: var(--accent); background: #fff;
+    border: none; border-radius: 8px; cursor: pointer;
+  }
+
+  /* Sittings. One card per recording session, each with its own pair of
+     thumb-sized buttons, because a session is the set he actually wants. */
+  .sessions { display: flex; flex-direction: column; gap: 10px; }
+  .sess {
+    background: var(--card); border: 1px solid var(--line); border-radius: 14px;
+    padding: 12px; display: flex; flex-direction: column; gap: 8px;
+  }
+  .sess.done { border-color: var(--good); }
+  .sess-when { font-size: 15px; font-weight: 600; }
+  .sess-what { font-size: 12px; color: var(--muted); line-height: 1.45; }
+  .sess-state { font-size: 12px; font-weight: 700; }
+  .sess-state.c { color: var(--good); }
+  .sess-state.s { color: var(--warn); }
+  .sess-state.mixed { color: var(--bad); }
+  .sess-state.none { color: var(--muted); font-weight: 400; }
+  .markbtns { display: flex; gap: 8px; }
+  .markbtns button {
+    flex: 1; min-height: 52px; font: inherit; font-size: 14px; font-weight: 600;
+    line-height: 1.25; color: var(--ink); background: transparent;
+    border: 1px solid var(--line); border-radius: 12px; cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .markbtns button.c[aria-pressed="true"] { background: var(--good); border-color: var(--good); color: #fff; }
+  .markbtns button.s[aria-pressed="true"] { background: var(--warn); border-color: var(--warn); color: #fff; }
+  .markbtns button.clear { flex: 0 0 68px; color: var(--muted); }
+  .take-meta .mark { border-radius: 5px; padding: 0 5px; border: 1px solid currentColor; }
+  .take-meta .mark.c { color: var(--good); }
+  .take-meta .mark.s { color: var(--warn); }
   .filters { display: flex; gap: 8px; }
   .filters + .filters { margin-top: 0; }
   .filters button, .filters a {
@@ -128,9 +170,9 @@
   <div class="bar"><i class="ig" id="bar-g" style="width:0"></i><i class="ib" id="bar-b" style="width:0"></i></div>
   <div class="note" id="note"></div>
   <div class="filters" id="flow-filters">
-    <button id="w-continuous" aria-pressed="true">Start-to-finish</button>
+    <button id="w-continuous" aria-pressed="false">Start-to-finish</button>
     <button id="w-spliced" aria-pressed="false">Spliced</button>
-    <button id="w-every" aria-pressed="false">Every take</button>
+    <button id="w-every" aria-pressed="true">Every take</button>
   </div>
   <div class="inferred" id="inferred"></div>
   <div class="filters">
@@ -140,8 +182,10 @@
     <a id="export" href="/api/export">Export</a>
   </div>
   <div class="filters">
-    <button id="apply" style="flex:2">Add my Good takes to the course…</button>
+    <button id="sessions-btn" aria-pressed="false" style="flex:1.4">Mark which sittings…</button>
+    <button id="apply" style="flex:1.6">Add my Good takes to the course…</button>
   </div>
+  <div id="undo-slot"></div>
 </header>
 <main id="list"><div class="empty">loading…</div></main>
 
@@ -150,10 +194,14 @@
 // this on mobile data costs one JSON fetch and no audio at all. Lines are paged
 // PAGE at a time so the DOM stays small on a phone.
 const PAGE = 12;
-// flow: which recording flow is being reviewed. 'continuous' is the default
-// because that is the only flow Kai asked to spend his ear on — the spliced
-// takes are one tap away, never gone.
-const state = { groups: [], verdicts: {}, filter: 'all', flow: 'continuous', playing: null, shown: PAGE, total: 0, meta: null };
+// flow: which reading order is being reviewed — read from KAI'S MARKS, never
+// from a guess. It starts at 'every' because on a fresh page nothing is marked
+// yet, and a filter that hid everything would look broken rather than empty.
+const state = {
+  groups: [], sessions: [], verdicts: {}, marks: {},
+  filter: 'all', flow: 'every', view: 'takes', undo: null,
+  playing: null, shown: PAGE, total: 0, meta: null,
+};
 const audio = new Audio();
 audio.preload = 'none';
 audio.addEventListener('ended', () => setPlaying(null));
@@ -187,13 +235,55 @@ async function judge(uuid, verdict) {
   if (body.verdicts) { state.verdicts = body.verdicts; render(); }
 }
 
-// A take is in scope when it belongs to the flow being reviewed. Refused takes
-// (no provenance row, so no inferable flow) and the pinned defect are always in
-// scope — they are the two things that must not be filtered out of sight.
+// A take is in scope when KAI HAS MARKED IT as the reading order being reviewed.
+// Nothing is inferred: an unmarked take simply is not in either flow yet. The
+// refused takes and the pinned defect are always in scope — they are the two
+// things that must not be filtered out of sight.
+function markOf(uuid) { return state.marks[uuid]?.flow || null; }
+
 function inScope(t, grp) {
   if (grp && (grp.refused_group || grp.pinned)) return true;
   if (state.flow === 'every') return true;
-  return t.flow === state.flow;
+  if (state.flow === 'unmarked') return markOf(t.uuid) == null;
+  return markOf(t.uuid) === state.flow;
+}
+
+// ---- marking a SET ----
+// Every call names the set out loud before it happens and hands back an undo.
+async function markSet(uuids, flow, label) {
+  if (!uuids.length) return;
+  const verb = flow === null ? 'Clear the mark on' : `Mark as ${flow === 'continuous' ? 'read start to finish' : 'read to be cut up'}:`;
+  if (!confirm(`${verb} ${uuids.length} take${uuids.length === 1 ? '' : 's'}\n${label}`)) return;
+  const res = await fetch('/api/mark', {
+    method: 'POST', headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ uuids, flow, label }),
+  });
+  const body = await res.json();
+  if (body.error) { alert(body.error); return; }
+  state.marks = body.marks;
+  state.undo = { ...body.undo, flow };
+  render();
+}
+
+async function undoMark() {
+  if (!state.undo) return;
+  const res = await fetch('/api/mark/undo', {
+    method: 'POST', headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ token: state.undo.token }),
+  });
+  const body = await res.json();
+  if (body.error) { alert(body.error); return; }
+  state.marks = body.marks;
+  state.undo = null;
+  render();
+}
+
+// What a whole sitting is currently marked as: all one way, a mix, or nothing.
+function sessionState(sess) {
+  const flows = sess.uuids.map(markOf);
+  const set = new Set(flows);
+  if (set.size === 1) return [...set][0] || 'none';
+  return flows.some((f) => f) ? 'mixed' : 'none';
 }
 
 function scopedTakes() {
@@ -238,25 +328,19 @@ function visible() {
 function renderTake(t, prevAt) {
   const v = state.verdicts[t.uuid]?.verdict || null;
   const gap = prevAt ? Math.round((new Date(t.recorded_at) - new Date(prevAt)) / 1000) : null;
-  // The flow tag is only worth the space when it is NOT the flow being
-  // reviewed — otherwise every take in a filtered list carries the same badge.
-  const flowTag = (state.flow === 'every' || t.flow !== state.flow)
-    ? `<span class="flow ${t.flow === 'spliced' ? 'spliced' : ''}">${
-        t.flow === 'continuous' ? 'start-to-finish (inferred)'
-        : t.flow === 'spliced' ? 'spliced (inferred)'
-        : t.refused ? 'refused before it was recorded — flow unknown'
-        : 'flow unknown'}</span>`
+  // Kai's own mark, shown only when he has made one. An unmarked take says
+  // nothing rather than guessing at itself.
+  const m = markOf(t.uuid);
+  const markTag = m
+    ? `<span class="mark ${m === 'continuous' ? 'c' : 's'}">${m === 'continuous' ? 'you marked: start to finish' : 'you marked: cut up'}</span>`
     : '';
   const bits = [
     `<span>${esc(stamp(t.recorded_at))}</span>`,
     gap != null && gap >= 0 && gap < 3600 ? `<span>+${gap}s</span>` : '',
-    flowTag,
-    // For a refused take the only clue about where it came from is WHEN it
-    // landed in the bucket. Stated as the timing fact it is, never as a flow.
-    t.refused && t.session
-      ? `<span class="flow">uploaded ${/continuous/.test(t.session) ? 'during a start-to-finish session'
-          : /spliced/.test(t.session) ? 'during a spliced session' : 'outside every recorded session'}</span>`
-      : '',
+    markTag,
+    // For a refused take there is no session id at all — only when its object
+    // landed in the bucket. A fact about the upload, said as one.
+    t.refused && t.upload_window ? `<span class="flow">${esc(t.upload_window)}</span>` : '',
     t.cadence === 'slow' ? '<span class="slow">slow read — never used as a clip</span>' : '',
     t.is_live ? '<span class="live">▶ THIS IS WHAT LEARNERS HEAR</span>' : '',
     t.superseded ? '<span>marked superseded</span>' : '',
@@ -273,7 +357,96 @@ function renderTake(t, prevAt) {
     </div>`;
 }
 
+// The undo bar, and nothing when there is nothing to undo. It survives a
+// reload only as far as the server's history goes — the point is the thirty
+// seconds after a wrong tap, which is when it matters.
+function renderUndo() {
+  const slot = document.getElementById('undo-slot');
+  if (!state.undo) { slot.innerHTML = ''; return; }
+  const what = state.undo.flow === null ? 'cleared'
+    : state.undo.flow === 'continuous' ? 'marked start to finish' : 'marked cut up';
+  slot.innerHTML = `<div class="undo"><span>${state.undo.count} take${state.undo.count === 1 ? '' : 's'} ${what} — ${esc(state.undo.label)}</span><button id="undo-btn">Undo</button></div>`;
+  document.getElementById('undo-btn').onclick = undoMark;
+}
+
+// "Sun 23 Aug, 17:32–17:41"
+function when(a, b) {
+  const d = new Date(a);
+  const day = d.toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short' });
+  return `${day}, ${String(a).slice(11, 16)}–${String(b).slice(11, 16)}`;
+}
+
+/**
+ * The sittings. One card each, with the two marks as thumb-sized buttons and
+ * the count written on them, so what a tap will do is legible BEFORE the tap.
+ *
+ * A sitting is a recorded fact (script_session_id) — which is exactly why the
+ * set-marking is built on it and not on a guess about what the sitting was.
+ */
+function renderSessions() {
+  const list = document.getElementById('list');
+  const onScreenUuids = visible().flatMap((g) => g.takes.filter((t) => inScope(t, g)).map((t) => t.uuid));
+  const cards = state.sessions.map((s) => {
+    const st = sessionState(s);
+    const seeds = s.seed_min == null ? ''
+      : s.seed_min === s.seed_max ? ` · seed ${s.seed_min}` : ` · seeds ${s.seed_min}–${s.seed_max}`;
+    const label = `${when(s.first, s.last)}${seeds}`;
+    return `
+      <div class="sess ${st === 'continuous' || st === 'spliced' ? 'done' : ''}">
+        <div class="sess-when">${esc(when(s.first, s.last))}</div>
+        <div class="sess-what">${s.take_count} take${s.take_count === 1 ? '' : 's'}${esc(seeds)}</div>
+        <div class="sess-state ${st === 'continuous' ? 'c' : st === 'spliced' ? 's' : st === 'mixed' ? 'mixed' : 'none'}">${
+          st === 'continuous' ? '✓ read start to finish'
+          : st === 'spliced' ? '✓ read to be cut up'
+          : st === 'mixed' ? 'partly marked — takes in here disagree'
+          : 'not marked yet'}</div>
+        <div class="markbtns">
+          <button class="c" data-set="${s.id}" data-flow="continuous" data-label="${esc(label)}" aria-pressed="${st === 'continuous'}">Start to finish<br>all ${s.take_count}</button>
+          <button class="s" data-set="${s.id}" data-flow="spliced" data-label="${esc(label)}" aria-pressed="${st === 'spliced'}">Cut up<br>all ${s.take_count}</button>
+          ${st !== 'none' ? `<button class="clear" data-set="${s.id}" data-flow="" data-label="${esc(label)}">Clear</button>` : ''}
+        </div>
+      </div>`;
+  }).join('');
+
+  list.innerHTML = `
+    <div class="sessions">
+      <div class="inferred">Each card is one <b>sitting</b> — a stretch of recording that the tool logged
+      as a single session. That much <b>is</b> recorded. What Sascha was doing in it is not, which is why
+      you are the one saying so. Marking a sitting marks every take in it at once, and the button says how
+      many before you press it.</div>
+      ${cards}
+      <div class="sess">
+        <div class="sess-when">Everything on screen</div>
+        <div class="sess-what">${onScreenUuids.length} take${onScreenUuids.length === 1 ? '' : 's'} under the filters you have set</div>
+        <div class="markbtns">
+          <button class="c" data-onscreen="1" data-flow="continuous" aria-pressed="false">Start to finish<br>all ${onScreenUuids.length}</button>
+          <button class="s" data-onscreen="1" data-flow="spliced" aria-pressed="false">Cut up<br>all ${onScreenUuids.length}</button>
+        </div>
+      </div>
+      ${state.meta?.unsessioned_takes ? `<div class="sess"><div class="sess-what">${state.meta.unsessioned_takes} takes carry no session id at all — the ${state.meta.refused_takes} refused ones, which have no record of any kind, and a couple of one-off uploads. Mark those from their own cards in the take list.</div></div>` : ''}
+    </div>`;
+}
+
+// The filter labels count HIS marks, so they move as he marks and read as a
+// progress bar of their own.
+function refreshFilterLabels() {
+  let c = 0, s = 0;
+  for (const m of Object.values(state.marks)) { if (m.flow === 'continuous') c++; else if (m.flow === 'spliced') s++; }
+  document.getElementById('w-continuous').textContent = `Start-to-finish (${c})`;
+  document.getElementById('w-spliced').textContent = `Spliced (${s})`;
+  document.getElementById('w-every').textContent = `Every take (${state.total})`;
+}
+
 function render() {
+  refreshFilterLabels();
+  if (state.view === 'sessions') {
+    document.getElementById('counts').innerHTML = `<span>${Object.keys(state.marks).length} of ${state.total} takes marked</span>`;
+    document.getElementById('bar-g').style.width = (state.total ? (Object.keys(state.marks).length / state.total) * 100 : 0) + '%';
+    document.getElementById('bar-b').style.width = '0';
+    renderUndo();
+    renderSessions();
+    return;
+  }
   const { g, b, u, total } = counts();
   // "in view" rather than naming the flow: the pinned defect and the refused
   // takes are always shown whatever the filter says, so this number is a couple
@@ -282,6 +455,7 @@ function render() {
     `<span>${g + b} of ${total} takes in view</span> · <span class="g">good ${g}</span> · <span class="b">bad ${b}</span> · <span class="u">to go ${u}</span>`;
   document.getElementById('bar-g').style.width = (total ? (g / total) * 100 : 0) + '%';
   document.getElementById('bar-b').style.width = (total ? (b / total) * 100 : 0) + '%';
+  renderUndo();
 
   const list = document.getElementById('list');
   const all = visible();
@@ -311,6 +485,14 @@ function render() {
          <div class="pinnote">These ${grp.takes.length} takes were rejected by the upload gate before a single word about them reached the database — no prompted line, no cadence, no session. They exist only as audio in the bucket. They are here so nothing Sascha recorded is invisible; there is nothing to point them at in the course, so a verdict on one is a note, not a swap.</div>`
       : `<div class="asked">Sascha was asked to say</div>
          <div class="prompted">${esc(grp.prompted_text)}</div>`;
+    // Mark this whole line's takes in one action — the smaller set, for when a
+    // sitting is too blunt an instrument.
+    const groupMark = mine.length > 1
+      ? `<div class="markbtns">
+           <button class="c" data-group="${i}" data-flow="continuous">Mark these ${mine.length} start to finish</button>
+           <button class="s" data-group="${i}" data-flow="spliced">Cut up</button>
+         </div>`
+      : '';
     return `
       <div class="grp ${grp.has_retry ? 'retry' : ''} ${grp.pinned ? 'pinned' : ''} ${grp.refused_group ? 'refused' : ''}">
         <div class="grp-meta">
@@ -322,6 +504,7 @@ function render() {
         ${heading}
         ${diff}
         ${takes}
+        ${groupMark}
       </div>`;
   }).join('');
 
@@ -334,7 +517,29 @@ function render() {
 }
 
 document.getElementById('list').addEventListener('click', (e) => {
-  const b = e.target.closest('button'); if (!b || !b.dataset.act) return;
+  const b = e.target.closest('button'); if (!b) return;
+
+  // ---- set marking ----
+  const flow = b.dataset.flow === '' ? null : b.dataset.flow || undefined;
+  if (flow !== undefined) {
+    if (b.dataset.set) {
+      const s = state.sessions.find((x) => x.id === b.dataset.set);
+      if (s) markSet(s.uuids, flow, b.dataset.label || when(s.first, s.last));
+      return;
+    }
+    if (b.dataset.onscreen) {
+      const uuids = visible().flatMap((g) => g.takes.filter((t) => inScope(t, g)).map((t) => t.uuid));
+      markSet(uuids, flow, 'everything currently on screen');
+      return;
+    }
+    if (b.dataset.group) {
+      const grp = visible().slice(0, state.shown)[Number(b.dataset.group)];
+      if (grp) markSet(grp.takes.filter((t) => inScope(t, grp)).map((t) => t.uuid), flow, grp.prompted_text || 'the refused takes');
+      return;
+    }
+  }
+
+  if (!b.dataset.act) return;
   if (b.dataset.act === 'play') play(b.dataset.uuid);
   else judge(b.dataset.uuid, b.dataset.act);
 });
@@ -351,7 +556,8 @@ document.getElementById('f-retry').onclick = () => setFilter('retry');
 document.getElementById('f-todo').onclick = () => setFilter('todo');
 
 function setFlow(f) {
-  state.flow = f; state.shown = PAGE;
+  state.flow = f; state.shown = PAGE; state.view = 'takes';
+  document.getElementById('sessions-btn').setAttribute('aria-pressed', 'false');
   for (const [id, name] of [['w-continuous', 'continuous'], ['w-spliced', 'spliced'], ['w-every', 'every']]) {
     document.getElementById(id).setAttribute('aria-pressed', String(f === name));
   }
@@ -360,6 +566,13 @@ function setFlow(f) {
 document.getElementById('w-continuous').onclick = () => setFlow('continuous');
 document.getElementById('w-spliced').onclick = () => setFlow('spliced');
 document.getElementById('w-every').onclick = () => setFlow('every');
+
+document.getElementById('sessions-btn').onclick = () => {
+  state.view = state.view === 'sessions' ? 'takes' : 'sessions';
+  document.getElementById('sessions-btn').setAttribute('aria-pressed', String(state.view === 'sessions'));
+  document.getElementById('sessions-btn').textContent = state.view === 'sessions' ? 'Back to the takes' : 'Mark which sittings…';
+  render();
+};
 
 // ---- adding Good takes to the course ----
 // Two steps on purpose: the plan is read back from the live database and shown
@@ -395,19 +608,15 @@ async function applyFlow() {
 document.getElementById('apply').onclick = applyFlow;
 
 fetch('/api/takes').then((r) => r.json()).then((d) => {
-  state.groups = d.groups; state.verdicts = d.verdicts || {}; state.total = d.total_takes; state.meta = d;
+  state.groups = d.groups; state.verdicts = d.verdicts || {}; state.marks = d.marks || {};
+  state.sessions = d.sessions || []; state.total = d.total_takes; state.meta = d;
   const retried = d.groups.filter((x) => x.has_retry).length;
-  const f = d.flow || {};
-  document.getElementById('w-continuous').textContent = `Start-to-finish (${f.continuous ?? '?'})`;
-  document.getElementById('w-spliced').textContent = `Spliced (${f.spliced ?? '?'})`;
-  document.getElementById('w-every').textContent = `Every take (${d.total_takes})`;
   document.getElementById('inferred').innerHTML =
-    `<b>The start-to-finish / spliced split is INFERRED, not recorded.</b> Nothing in the database says which flow produced a take — `
-    + `there is no mode column, and the reading order Sascha chose is never sent with the upload. `
-    + `${f.continuous ?? '?'} takes are read as start-to-finish and ${f.spliced ?? '?'} as spliced. Confidence: high, but it is a deduction.`
-    + `<details><summary>the exact rule, and why I believe it</summary>`
-    + `<div>${esc(f.rule || '')}</div><div style="margin-top:4px">${esc(f.basis || '')}</div>`
-    + `<div style="margin-top:4px">${esc(f.confidence || '')}</div></details>`;
+    `<b>Which flow a take came from is not recorded anywhere, so nothing here is pre-filled.</b> `
+    + `There is no mode column, and the reading order Sascha chose is never sent with the upload — so these marks are `
+    + `yours, and they are the only record of it that exists. Tap <b>Mark which sittings…</b> to mark a whole session at `
+    + `once; the two filters above then work off what you have said.`
+    + `<details><summary>what I checked before saying that</summary><div>${esc((d.flow || {}).checked || '')}</div></details>`;
   document.getElementById('note').textContent =
     `${d.total_takes} takes over ${d.total_lines} lines — ${d.total_takes - d.live_takes} of them are invisible from the course side`
     + `${d.refused_takes ? `, and ${d.refused_takes} more were refused before the database heard about them at all` : ''}. `

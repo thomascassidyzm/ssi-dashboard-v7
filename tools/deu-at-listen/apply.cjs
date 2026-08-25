@@ -137,8 +137,11 @@ function buildPlan(manifest, verdicts) {
       from_s3_key: liveTake.s3_key,
       to_uuid: chosen.uuid,
       to_s3_key: chosen.s3_key,
-      to_flow: chosen.flow,
+      // Deliberately no flow field: which reading order a take came from is
+      // Kai's mark, on a separate axis, and it has no bearing on whether a take
+      // he called Good may become the clip. The filter is for his ear.
       to_recorded_at: chosen.recorded_at,
+      to_session: chosen.session || null,
     })
   }
 

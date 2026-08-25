@@ -15,7 +15,7 @@ const assert = require('node:assert')
 const { buildPlan } = require('./apply.cjs')
 
 const take = (o) => ({
-  uuid: o.uuid, cadence: o.cadence ?? 'natural', flow: o.flow ?? 'continuous',
+  uuid: o.uuid, cadence: o.cadence ?? 'natural',
   s3_key: o.s3_key ?? `mastered/${o.uuid}.mp3`, recorded_at: o.recorded_at ?? '2026-08-23T15:00:00Z',
   is_live: o.is_live ?? false, course_audio_id: o.is_live ? (o.audio_id || 'audio-1') : null,
   refused: o.refused ?? false,
@@ -82,7 +82,10 @@ test('a refused take can be judged but never applied — there is no line to poi
   assert.match(plan.skipped[0].why, /no line to point it at/)
 })
 
-test('a spliced take Kai marked Good is applied like any other — the filter is for his ear, not a veto', () => {
-  const m = manifest([group({ takes: [take({ uuid: 'A', is_live: true }), take({ uuid: 'B', flow: 'spliced' })] })])
+test('the flow mark has no say in the plan — it is a separate axis from Good/Bad', () => {
+  // Kai's start-to-finish / cut-up mark lives in marks-<course>.json and never
+  // reaches buildPlan at all. A Good tap on a take he marked either way, or has
+  // not marked, is applied identically: the filter is for his ear, not a veto.
+  const m = manifest([group({ takes: [take({ uuid: 'A', is_live: true }), take({ uuid: 'B' })] })])
   assert.strictEqual(buildPlan(m, good('B')).actions.length, 1)
 })

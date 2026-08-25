@@ -43,7 +43,7 @@ row the take was filed into — is carried separately as `slot_text`, and a take
 whose two texts disagree is flagged in red. *Measured 2026-08-25: zero
 disagreements, so mis-filing is not the defect here — flubbed retries are.*
 
-## Start-to-finish vs spliced — an INFERENCE, and the page says so
+## Start-to-finish vs cut-up — **Kai marks it, nothing is inferred**
 
 Kai asked to review only the takes Sascha read **start to finish** through the
 course, not the ones read to be **cut up and reassembled**. Which of the two
@@ -61,24 +61,36 @@ produced a given take **is not stored anywhere**:
   up afterwards"* (`?order=coverage`) — is never sent with the upload at all.
 - Both land in `mastered/` and `raw/`. There is no third store.
 
-So the split is deduced from the **shape the script builder gave the take**
-(`services/recording-script-items.cjs`): `buildCourseScriptItems()` emits one
-natural read per line and no chunk fields at all; `buildScriptItems()` /
-`buildTwoPoolScriptItems()` always emit `chunksString`, pair natural with slow,
-and give Pool A the `isolated` cadence.
+So **there is nothing to pre-fill from, and this tool does not guess** (Kai's
+ruling, 2026-08-25: *"give me a button in that last page to mark a set of takes
+as that"*). His marks are the only record of the flow that exists anywhere, and
+the page says so above the control.
 
-> `chunks_string` present, or cadence `slow`/`isolated` → **spliced**.
-> cadence `natural` with no `chunks_string` → **continuous**.
-> anything else → **unknown**.
+### Marking a set
 
-**248 continuous, 81 spliced, 2 neither**, of Sascha's 331 (plus 31 refused, which
-are unknown by definition). Confidence is high and corroborated three ways: all
-21 sessions are homogeneous under the rule; the two groups are disjoint in time
-and shape (spliced sessions jump seeds 26→567, continuous sessions run
-monotonically from seed 1); and 203 of 249 continuous takes are bound as live
-clips against 21 of 115 spliced. **It is still a deduction**, and the rule, its
-basis and that sentence travel to the browser inside the manifest so the claim
-can never be shown apart from what it rests on.
+The marks are a **second axis**, independent of the Good/Bad verdict — a take can
+be start-to-finish and bad, or cut up and good, and the two controls never touch
+each other.
+
+Sets, not singles. Three of them:
+
+| set | where |
+|---|---|
+| a whole **sitting** | *Mark which sittings…* — one card per session, both marks as thumb-sized buttons with the count written on them |
+| one **prompted line** | the button pair at the foot of each line group |
+| **everything on screen** | the last card in the sittings view, sized to whatever filters are set |
+
+A sitting is `script_session_id`, which **is** recorded — that is exactly why the
+set-marking is built on it rather than on a guess about what the sitting was.
+Each card shows its time, take count and seed range, and whether it is marked,
+part-marked or untouched. Every action confirms first, and lands an **Undo** bar
+carrying the previous value of each take it touched — so undoing a mark that
+overwrote another mark restores that other mark, not a blank.
+
+Stored in `marks-<course>.json` beside the verdicts, written atomically, and in
+`/api/export` both per-line and as a whole `flow_marks` block.
+
+Endpoints: `POST /api/mark {uuids, flow, label}` and `POST /api/mark/undo {token}`.
 
 ## The 31 refused takes
 
