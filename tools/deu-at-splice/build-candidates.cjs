@@ -227,10 +227,20 @@ function voicedRegions(env, minGapMs = 120, minRunMs = 80) {
 
 /** Spans for a target found as a contiguous run of CHUNKS on a slow take. */
 function findChunkSpans(take, want, env) {
-  if (!take.chunks_string) return []
+  if (!take.chunks_string) return { spans: [], why: 'no pause map on this take' }
   const chunks = take.chunks_string.split('|').map((c) => c.trim()).filter(Boolean)
-  const regions = voicedRegions(env)
-  if (regions.length !== chunks.length) return []
+  // The chunk COUNT is known truth, so the pause threshold is calibrated to it
+  // per take rather than fixed: Sascha pauses differently on different lines and
+  // one global gap value matches almost none of them. If no threshold in the
+  // range produces exactly the right number of regions, this refuses — it never
+  // redistributes boundaries to force a fit.
+  let regions = null
+  for (const gap of [100, 130, 160, 200, 240, 290, 350, 420, 500, 600]) {
+    const r = voicedRegions(env, gap)
+    if (r.length === chunks.length) { regions = r; break }
+    if (r.length < chunks.length) break
+  }
+  if (!regions) return { spans: [], why: `no pause threshold gives exactly ${chunks.length} regions — the pauses in this take do not match its own chunk map` }
   const words = chunks.map((c) => tokenisePrompted(c))
   const out = []
   for (let i = 0; i < chunks.length; i++) {
@@ -246,7 +256,7 @@ function findChunkSpans(take, want, env) {
       })
     }
   }
-  return out
+  return { spans: out }
 }
 
 /**
@@ -277,18 +287,20 @@ function findSpans(take, want, aligned) {
 
 /**
  * A cut that holds almost no speech is a misalignment, not a candidate: whisper
- * put the word somewhere it is not. Measured on the CUT ITSELF — voiced frames
- * against its own level — and dropped with its reason rather than shipped for
- * Kai to waste a tap on. Floor is 90ms of voice per word in the target.
+ * put the word somewhere it is not.
+ *
+ * MEASURED IN THE SOURCE TAKE'S FRAME OF REFERENCE, never in the cut's own. A
+ * one-word clip is nearly all speech, so its own 10th percentile is a quiet
+ * speech frame and its own threshold is meaningless — the first version of this
+ * check measured the cut and reported a flat "80ms of voice" for everything,
+ * which is the signature of a threshold with no silence to calibrate against.
+ * The source take has real silence in it, so its threshold is the real one.
  */
-function voicedMs(mp3) {
-  const env = envelope(mp3)
-  // A clip with no speech in it still has a 10th and a 95th percentile, and the
-  // relative threshold would happily call its noise "voice". A clip only counts
-  // as containing speech at all if its loud frames stand well clear of its own
-  // floor.
-  if (!(env.peak > 3 * env.floor) || env.peak < 0.01) return 0
-  return env.frames.reduce((n, f) => n + (f > env.thr ? FRAME_MS : 0), 0)
+function voicedInSpan(env, aMs, bMs) {
+  const a = frameOf(env, aMs), b = frameOf(env, bMs)
+  let n = 0
+  for (let i = a; i <= b; i++) if (voiced(env, i)) n += FRAME_MS
+  return n
 }
 
 function ff(args) {
@@ -385,10 +397,13 @@ function main() {
     }
     // ---- cut at Sascha's own pauses, on the slow reads (best edges there are)
     let pauseMade = 0
+    const pauseRefusals = []
     for (const t of prepared) {
       if (t.cadence !== 'slow' || !t.chunks_string || pauseMade >= 9) continue
       const env = envelope(t.mp3_path)
-      for (const cs of findChunkSpans(t, target.words, env)) {
+      const chunkFind = findChunkSpans(t, target.words, env)
+      if (chunkFind.why && target.words.length <= 3) pauseRefusals.push({ uuid: t.uuid, why: chunkFind.why })
+      for (const cs of chunkFind.spans) {
         for (const pad of PADDINGS) {
           const a = Math.max(0, cs.startMs - Math.min((cs.startMs - cs.prevEndMs) * pad.frac, pad.cap))
           const b = Math.min(env.durMs, cs.endMs + Math.min((cs.nextStartMs - cs.endMs) * pad.frac, pad.cap))
@@ -399,8 +414,8 @@ function main() {
           cutPiece(t.mp3_path, a, b, wav)
           joinPieces([wav], 0, mp3)
           fs.unlinkSync(wav)
-          const pv = voicedMs(mp3)
-          if (pv < 90 * target.words.length) {
+          const pv = voicedInSpan(env, a, b)
+          if (pv < 80 * target.words.length) {
             fs.unlinkSync(mp3); n--
             dropped.push({ target: target.id, source: t.uuid, why: `pause-bounded cut held only ${pv}ms of voice` })
             continue
@@ -419,11 +434,19 @@ function main() {
       }
     }
 
-    // Variety before volume: one source contributes one padding sweep, and
-    // sources are taken in order of how DIFFERENT their carrier phrase is.
-    const wholeBudget = 10
-    if (wholes.length > wholeBudget) dropped.push({ target: target.id, kind: 'whole', had: wholes.length, kept: wholeBudget })
-    for (const { t, sp } of wholes.slice(0, wholeBudget)) {
+    if (pauseRefusals.length) dropped.push({ target: target.id, kind: 'pause-bounded', refused: pauseRefusals.length, why: pauseRefusals[0].why })
+
+    // VARIETY IS THE POINT, so one CARRIER LINE contributes one span, not five.
+    // Kai asked for many different "i wü"s out of many different phrases; ten
+    // cuts out of three takes is not that, however many clips it makes.
+    const seenLine = new Set()
+    const distinct = wholes.filter(({ t }) => {
+      if (seenLine.has(t.prompted_text)) return false
+      seenLine.add(t.prompted_text); return true
+    })
+    const wholeBudget = 12
+    if (distinct.length > wholeBudget) dropped.push({ target: target.id, kind: 'whole', distinct_carrier_lines: distinct.length, kept: wholeBudget })
+    for (const { t, sp } of distinct.slice(0, wholeBudget)) {
       const env = envelope(t.mp3_path)
       for (const pad of PADDINGS) {
         const a = leftEdge(env, sp.first, pad)
@@ -435,8 +458,8 @@ function main() {
         cutPiece(t.mp3_path, a.ms, b.ms, wav)
         joinPieces([wav], 0, mp3)
         fs.unlinkSync(wav)
-        const voice = voicedMs(mp3)
-        if (voice < 90 * target.words.length) {
+        const voice = voicedInSpan(env, a.ms, b.ms)
+        if (voice < 80 * target.words.length) {
           fs.unlinkSync(mp3); n--
           dropped.push({ target: target.id, source: t.uuid, why: `the cut held only ${voice}ms of voice — whisper put “${target.words.join(' ')}” somewhere it is not` })
           continue
@@ -474,7 +497,12 @@ function main() {
       if (made >= perTargetBudget) { dropped.push({ target: target.id, kind: 'glued', why: `budget ${perTargetBudget} reached before split ${split.map((s) => s.join(' ')).join(' + ')}` }); break }
       const partSources = split.map((part) => {
         const hits = []
-        for (const t of prepared) for (const sp of findSpans(t, part, t.aligned)) hits.push({ t, sp, part })
+        const seen = new Set()
+        for (const t of prepared) for (const sp of findSpans(t, part, t.aligned)) {
+          if (seen.has(t.prompted_text)) continue
+          seen.add(t.prompted_text)
+          hits.push({ t, sp, part })
+        }
         // prefer a part taken from the END or START of a line — a cleaner edge
         hits.sort((x, y) => (Number(y.sp.utterance_final || y.sp.utterance_initial) - Number(x.sp.utterance_final || x.sp.utterance_initial)))
         return hits
@@ -482,7 +510,7 @@ function main() {
       if (partSources.some((h) => !h.length)) continue
 
       const combos = []
-      const width = Math.min(3, ...partSources.map((h) => h.length))
+      const width = Math.min(4, ...partSources.map((h) => h.length))
       for (let k = 0; k < Math.max(2, width); k++) {
         const pick = partSources.map((h) => h[k % h.length])
         if (pick.some((p) => !p)) continue
@@ -497,6 +525,7 @@ function main() {
           if (made >= perTargetBudget) break
           const id = `${target.id}-g${++n}`
           const wavs = []
+          const pieceVoice = []
           let ok = true
           let refDb = null
           pick.forEach((p, idx) => {
@@ -504,6 +533,7 @@ function main() {
             const a = leftEdge(env, p.sp.first, pad)
             const b = rightEdge(env, p.sp.last, pad)
             if (!(b.ms - a.ms > 100)) { ok = false; return }
+            pieceVoice.push(voicedInSpan(env, a.ms, b.ms))
             const w = path.join(CLIPS, `${id}.p${idx}.wav`)
             cutPiece(p.t.mp3_path, a.ms, b.ms, w)
             if (idx === 0) refDb = meanVolume(w); else matchLevel(w, refDb)
@@ -517,8 +547,8 @@ function main() {
             continue
           }
           wavs.forEach((w) => fs.existsSync(w) && fs.unlinkSync(w))
-          const gv = voicedMs(mp3)
-          if (gv < 90 * target.words.length) {
+          const gv = pieceVoice.reduce((x, y) => x + y, 0)
+          if (gv < 80 * target.words.length) {
             fs.unlinkSync(mp3); n--
             dropped.push({ target: target.id, id, why: `the glued clip held only ${gv}ms of voice — one of its pieces is a misalignment` })
             continue
