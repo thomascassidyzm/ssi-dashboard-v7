@@ -15,6 +15,14 @@
  * A candidate that differs from another only by a few milliseconds teaches Kai
  * nothing, so the axes are crossed rather than piled up on one source.
  *
+ * NATURAL SEED 1-9 TAKES ONLY (Kai, 2026-08-25: "don't use slow takes, use the
+ * natural seed 1-9 takes — they won't all cut perfectly, but that's why we're
+ * making many different versions"). The slow reads carry a pause map and cut
+ * beautifully, and they are still excluded, because a slow read is a different
+ * performance: the pace and the stress are not the ones a learner hears in the
+ * course. Cutting mid-flow out of a natural read is harder and fails more often,
+ * so the answer to that is MORE VERSIONS, not easier material.
+ *
  * WHOLE BEATS GLUED. Kai's rule — "use the most complete phrases as the source for
  * the longer ones" — is implemented as a preference order, not a filter: a target
  * found CONTIGUOUSLY inside one take is cut in one piece and ranked first; two- and
@@ -195,71 +203,6 @@ function rightEdge(env, t, pad) {
 }
 
 /**
- * SASCHA'S OWN PAUSES, on a slow read.
- *
- * A slow take carries `chunks_string` — the chunking the autocue asked them to
- * read with pauses between, e.g. "i wü|iatz|wos|auf Deitsch|sogn". When the
- * voiced regions in the audio come out at exactly that count, each chunk's
- * boundaries are a pause SASCHA MADE, not a boundary anything estimated. That
- * is the best cut available anywhere in this material, and "i wü" is itself a
- * chunk on several takes.
- *
- * The count check is the gate, and it refuses rather than redistributing —
- * mapVoicedToChunks in align.cjs refuses the same way, and for the same reason.
- */
-function voicedRegions(env, minGapMs = 120, minRunMs = 80) {
-  const runs = []
-  let i = 0
-  while (i < env.frames.length) {
-    if (!voiced(env, i)) { i++; continue }
-    let j = i
-    while (j < env.frames.length - 1) {
-      if (voiced(env, j + 1)) { j++; continue }
-      let k = j + 1
-      while (k < env.frames.length && !voiced(env, k)) k++
-      if ((k - j - 1) * FRAME_MS < minGapMs && k < env.frames.length) { j = k } else break
-    }
-    if ((j - i + 1) * FRAME_MS >= minRunMs) runs.push({ startMs: i * FRAME_MS, endMs: (j + 1) * FRAME_MS })
-    i = j + 1
-  }
-  return runs
-}
-
-/** Spans for a target found as a contiguous run of CHUNKS on a slow take. */
-function findChunkSpans(take, want, env) {
-  if (!take.chunks_string) return { spans: [], why: 'no pause map on this take' }
-  const chunks = take.chunks_string.split('|').map((c) => c.trim()).filter(Boolean)
-  // The chunk COUNT is known truth, so the pause threshold is calibrated to it
-  // per take rather than fixed: Sascha pauses differently on different lines and
-  // one global gap value matches almost none of them. If no threshold in the
-  // range produces exactly the right number of regions, this refuses — it never
-  // redistributes boundaries to force a fit.
-  let regions = null
-  for (const gap of [100, 130, 160, 200, 240, 290, 350, 420, 500, 600]) {
-    const r = voicedRegions(env, gap)
-    if (r.length === chunks.length) { regions = r; break }
-    if (r.length < chunks.length) break
-  }
-  if (!regions) return { spans: [], why: `no pause threshold gives exactly ${chunks.length} regions — the pauses in this take do not match its own chunk map` }
-  const words = chunks.map((c) => tokenisePrompted(c))
-  const out = []
-  for (let i = 0; i < chunks.length; i++) {
-    for (let j = i; j < chunks.length; j++) {
-      const flat = words.slice(i, j + 1).flat()
-      if (flat.length !== want.length || flat.some((w, k) => w !== want[k])) continue
-      out.push({
-        chunkFrom: i, chunkTo: j,
-        startMs: regions[i].startMs, endMs: regions[j].endMs,
-        prevEndMs: i > 0 ? regions[i - 1].endMs : 0,
-        nextStartMs: j < regions.length - 1 ? regions[j + 1].startMs : env.durMs,
-        label: chunks.slice(i, j + 1).join(' | '),
-      })
-    }
-  }
-  return { spans: out }
-}
-
-/**
  * Every contiguous run of PROMPTED words in one take that spells `want`, with
  * usable timings at both ends.
  */
@@ -394,7 +337,14 @@ function ms(n) { return Math.round(n) }
 
 function main() {
   const manifest = JSON.parse(fs.readFileSync(path.join(WORK, 'manifest-sources.json'), 'utf8'))
-  const takes = (manifest.takes || manifest.sources || []).filter((t) => t.whisper_words?.length && t.mp3_path)
+  const all = (manifest.takes || manifest.sources || []).filter((t) => t.whisper_words?.length && t.mp3_path)
+  // Kai's rule: natural reads, seeds 1-9 — the real recording session, at the
+  // pace the course is actually spoken at.
+  const takes = all.filter((t) => t.cadence === 'natural' && t.seed_number <= 9)
+  const excludedBySource = {
+    slow_reads: all.filter((t) => t.cadence !== 'natural').length,
+    seed_10_plus: all.filter((t) => t.cadence === 'natural' && t.seed_number > 9).length,
+  }
   fs.mkdirSync(CLIPS, { recursive: true })
 
   const unusable = []
@@ -414,60 +364,6 @@ function main() {
     for (const t of prepared) {
       for (const sp of findSpans(t, target.words, t.aligned)) wholes.push({ t, sp })
     }
-    // ---- cut at Sascha's own pauses, on the slow reads (best edges there are)
-    let pauseMade = 0
-    const pauseRefusals = []
-    for (const t of prepared) {
-      if (t.cadence !== 'slow' || !t.chunks_string || pauseMade >= 9) continue
-      const env = envelope(t.mp3_path)
-      const chunkFind = findChunkSpans(t, target.words, env)
-      if (chunkFind.why && target.words.length <= 3) pauseRefusals.push({ uuid: t.uuid, why: chunkFind.why })
-      for (const cs of chunkFind.spans) {
-        for (const pad of PADDINGS) {
-          const a = Math.max(0, cs.startMs - Math.min((cs.startMs - cs.prevEndMs) * pad.frac, pad.cap))
-          const b = Math.min(env.durMs, cs.endMs + Math.min((cs.nextStartMs - cs.endMs) * pad.frac, pad.cap))
-          if (!(b - a > 120)) continue
-          const id = `${target.id}-p${++n}`
-          const wav = path.join(CLIPS, `${id}.wav`)
-          const mp3 = path.join(CLIPS, `${id}.mp3`)
-          cutPiece(t.mp3_path, a, b, wav)
-          joinPieces([wav], 0, mp3)
-          fs.unlinkSync(wav)
-          const pv = voicedInSpan(env, a, b)
-          if (pv < 80 * target.words.length) {
-            fs.unlinkSync(mp3); n--
-            dropped.push({ target: target.id, source: t.uuid, why: `pause-bounded cut held only ${pv}ms of voice` })
-            continue
-          }
-          pauseMade++
-          if (a <= 20 || b >= env.durMs - 20) {
-            const padId = `${id}-lead`
-            padWithSilence(mp3, path.join(CLIPS, `${padId}.mp3`), a <= 20 ? 90 : 0, b >= env.durMs - 20 ? 90 : 0)
-            candidates.push({
-              id: padId, target: target.id, kind: 'one piece',
-              file: `clips/${padId}.mp3`,
-              how: `cut at Sascha's own pauses in the slow read of “${t.prompted_text}”`,
-              detail: `${pad.label} · chunk “${cs.label}” · 90ms of silence added where mastering left none`,
-              padding: pad.id, join: null, edges: ['pause', 'pause'], silence_added: true,
-              sources: [{ uuid: t.uuid, prompted_text: t.prompted_text, seed: t.seed_number, cadence: t.cadence, chunk: cs.label, span_ms: [ms(a), ms(b)] }],
-              test_material: t.seed_number >= 10,
-            })
-          }
-          candidates.push({
-            id, target: target.id, kind: 'one piece',
-            file: `clips/${id}.mp3`,
-            how: `cut at Sascha's own pauses in the slow read of “${t.prompted_text}”`,
-            detail: `${pad.label} · chunk “${cs.label}” · both edges in a pause Sascha made`,
-            padding: pad.id, join: null, edges: ['pause', 'pause'],
-            sources: [{ uuid: t.uuid, prompted_text: t.prompted_text, seed: t.seed_number, cadence: t.cadence, chunk: cs.label, span_ms: [ms(a), ms(b)] }],
-            test_material: t.seed_number >= 10,
-          })
-        }
-      }
-    }
-
-    if (pauseRefusals.length) dropped.push({ target: target.id, kind: 'pause-bounded', refused: pauseRefusals.length, why: pauseRefusals[0].why })
-
     // VARIETY IS THE POINT, so one CARRIER LINE contributes one span, not five.
     // Kai asked for many different "i wü"s out of many different phrases; ten
     // cuts out of three takes is not that, however many clips it makes.
@@ -476,7 +372,7 @@ function main() {
       if (seenLine.has(t.prompted_text)) return false
       seenLine.add(t.prompted_text); return true
     })
-    const wholeBudget = 12
+    const wholeBudget = 20
     if (distinct.length > wholeBudget) dropped.push({ target: target.id, kind: 'whole', distinct_carrier_lines: distinct.length, kept: wholeBudget })
     for (const { t, sp } of distinct.slice(0, wholeBudget)) {
       const env = envelope(t.mp3_path)
@@ -537,7 +433,7 @@ function main() {
     splits.sort((a, b) => (b.reduce((m, p) => Math.max(m, p.length), 0) - a.reduce((m, p) => Math.max(m, p.length), 0)) || (a.length - b.length))
 
     let made = 0
-    const perTargetBudget = 22
+    const perTargetBudget = 45
     for (const split of splits) {
       if (made >= perTargetBudget) { dropped.push({ target: target.id, kind: 'glued', why: `budget ${perTargetBudget} reached before split ${split.map((s) => s.join(' ')).join(' + ')}` }); break }
       const partSources = split.map((part) => {
@@ -555,7 +451,11 @@ function main() {
       if (partSources.some((h) => !h.length)) continue
 
       const combos = []
-      const width = Math.min(4, ...partSources.map((h) => h.length))
+      // How many DIFFERENT source pairings to try for this split. Kai's hope is
+      // that one of many is good, so this is deliberately wide — it is the thing
+      // that decides how many genuinely different attempts he gets, far more
+      // than the per-target budget does.
+      const width = Math.min(8, ...partSources.map((h) => h.length))
       for (let k = 0; k < Math.max(2, width); k++) {
         const pick = partSources.map((h) => h[k % h.length])
         if (pick.some((p) => !p)) continue
@@ -618,7 +518,9 @@ function main() {
     recordist: 'Sascha (they/them)',
     built_at: new Date().toISOString(),
     targets: TARGETS.map((t) => ({ ...t, count: candidates.filter((c) => c.target === t.id).length })),
+    source_rule: 'natural reads from seeds 1-9 only (Kai, 2026-08-25)',
     source_takes_read: prepared.length,
+    excluded_by_source_rule: excludedBySource,
     unusable, dropped, candidates,
   }
   fs.writeFileSync(path.join(OUT, 'candidates.json'), JSON.stringify(out, null, 2))

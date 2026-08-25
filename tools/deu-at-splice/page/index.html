@@ -153,8 +153,13 @@ function renderFilters() {
     { k: 'kind', v: 'all', label: 'everything' },
     { k: 'kind', v: 'one', label: 'cut in one piece' },
     { k: 'kind', v: 'glued', label: 'glued together' },
-    { k: 'hideTest', v: true, label: 'hide test-material sources' },
   ]
+  // The filter only exists if there is anything to filter: with Kai's natural
+  // seeds 1-9 rule no candidate has a test-material source, and a chip that
+  // never changes anything is noise.
+  if (DATA.candidates.some((c) => c.test_material)) {
+    opts.push({ k: 'hideTest', v: true, label: 'hide test-material sources' })
+  }
   f.innerHTML = ''
   for (const o of opts) {
     const b = document.createElement('button')

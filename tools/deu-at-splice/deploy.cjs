@@ -26,6 +26,15 @@ function main() {
   fs.copyFileSync(path.join(__dirname, 'page', 'index.html'), path.join(DEST, 'index.html'))
   fs.copyFileSync(path.join(src, 'candidates.json'), path.join(DEST, 'candidates.json'))
 
+  // A rebuild that drops candidates must drop their clips too: an earlier build
+  // left 97 orphans on the host, unreferenced but sitting there looking current.
+  const wanted = new Set(JSON.parse(fs.readFileSync(path.join(src, 'candidates.json'), 'utf8'))
+    .candidates.map((c) => path.basename(c.file)))
+  let pruned = 0
+  for (const f of fs.readdirSync(path.join(DEST, 'clips'))) {
+    if (f.endsWith('.mp3') && !wanted.has(f)) { fs.unlinkSync(path.join(DEST, 'clips', f)); pruned++ }
+  }
+
   let n = 0
   const bad = []
   for (const f of fs.readdirSync(path.join(src, 'clips'))) {
@@ -34,7 +43,7 @@ function main() {
     fs.copyFileSync(path.join(src, 'clips', f), path.join(DEST, 'clips', f))
     n++
   }
-  console.log(`${n} clips -> ${DEST}`)
+  console.log(`${n} clips -> ${DEST}${pruned ? ` (${pruned} orphans from an earlier build removed)` : ''}`)
   if (bad.length) console.log(`REFUSED (non-ASCII names the evidence server would 404): ${bad.join(', ')}`)
   console.log(`https://watson-1.tail4968cb.ts.net/evidence/${SLUG}/index.html`)
 }

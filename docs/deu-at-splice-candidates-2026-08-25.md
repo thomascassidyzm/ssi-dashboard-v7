@@ -1,4 +1,4 @@
-# Four phrases, 133 splice candidates — built from Sascha's own recordings
+# Four phrases, 232 splice candidates — from Sascha's natural seed 1–9 takes
 
 **Course:** `deu_at_for_eng`. **Recordist:** Sascha, who uses they/them.
 **The page (this is the one URL):**
@@ -14,35 +14,45 @@ is audio Sascha already recorded.**
 
 | phrase | candidates | different carrier lines | how they were made |
 |---|---|---|---|
-| i wü | 64 | 13 | 18 cut at Sascha's own pauses · 41 cut whole out of a longer line · 5 glued |
-| reden | 27 | 9 | all cut whole out of a longer line |
-| i wü reden | 20 | 6 | all two pieces glued |
-| i wü iatz mit dir Deitsch reden | 22 | 7 | 12 two pieces · 10 three pieces |
+| i wü | 107 | 22 | 67 cut whole out of a longer line · 40 glued |
+| reden | 45 | 15 | all cut whole out of a longer line |
+| i wü reden | 35 | 9 | all two pieces glued |
+| i wü iatz mit dir Deitsch reden | 45 | 7 | 30 two pieces · 15 three pieces |
 
-**133 candidates from 19 different carrier lines**, out of 167 usable takes.
-Padding spread: 53 tight · 41 medium · 39 wide. Join spread: 10 butt-joined · 10
-crossfaded · 9 at 50 ms · 9 at 110 ms · 9 at 190 ms. 16 carry added lead-in silence
-(below).
+**232 candidates from 31 different carrier lines**, out of 150 natural seed 1–9 takes.
+Padding roughly a third each of tight / medium / wide; joins evenly spread across no gap,
+crossfade, 50 / 110 / 190 ms.
 
 Every candidate says on the page what it was made from and how, so a star can become a
 rule: *"the tight cuts sound clipped"*, *"the crossfades are the only joins I can't hear"*,
 *"only the ones cut at a real pause work"* are all answerable from the labels.
 
+## Natural seed 1–9 takes only
+
+Kai's ruling of 2026-08-25: *"don't use slow takes, use the natural seed 1-9 takes. They
+won't all cut perfectly, but that's why we're making many different versions, hoping one is
+good for each phrase."*
+
+So the **15 slow reads are excluded**, along with the 2 natural takes above seed 9. The slow
+reads cut beautifully — they carry a pause map, and “i wü” is literally one of its chunks —
+and they are out anyway, because a slow read is a **different performance**: not the pace or
+the stress a learner hears in the course. Cutting mid-flow out of a natural read is harder
+and fails more often, and the answer to that is **more versions, not easier material** —
+which is why this set is 232 rather than 133, from 31 carrier lines rather than 19.
+
+**Every source is verified natural and at seed 9 or below: 0 violations.**
+
 ## The four axes, and why the fourth exists
 
 Kai named three — source, padding, join gap. The material handed us a fourth:
 
-1. **Source phrase** — the same words cut out of 19 different utterances.
+1. **Source phrase** — the same words cut out of 31 different utterances.
 2. **Padding** — tight / medium / wide, meaning how much of the real silence beside the
    word is kept.
 3. **Join gap** — none, a 40 ms crossfade, 50 / 110 / 190 ms.
 4. **What kind of edge the cut landed on**, which is labelled on every candidate:
-   - **cut at Sascha's own pauses** — on a *slow* read the take carries
-     `chunks_string`, the chunking the autocue asked them to pause between, e.g.
-     `i wü|iatz|wos|auf Deitsch|sogn`. **“i wü” is literally one of those chunks.** Where
-     the pauses in the audio come out at exactly the chunk count, the cut lands in a pause
-     Sascha actually made — the best edge available anywhere in this material.
-   - **in silence** — there was a real gap beside the word and the cut is inside it.
+   - **in silence** — Sascha left a real gap beside the word and the cut is inside it.
+     These are the good ones, and on a natural read they are the minority.
    - **mid flow** — the words run together with no pause at all, so the cut is inside
      connected speech. These are the ones most likely to sound wrong, and they are marked.
 
@@ -76,11 +86,16 @@ real silence at both edges: *wide* 11/11 came through with a clean margin, *medi
 *tight* 3/11. So "tight" is not a cosmetic difference — if Kai's ear rejects the tight ones,
 that is a rule we can apply directly.
 
-**2. Every pause-bounded cut starts at sample 0 — and that is mastering, not a bad cut.**
-The mastered take begins on the word, so a phrase-initial cut has no lead-in silence left to
-keep, whatever padding is asked for. That risked the best-sounding path being rejected for
-the wrong reason, so those cuts now also appear with **90 ms of digital silence added** at
-the head (16 candidates, labelled). Silence is silence — no speech was created.
+**2. A cut at sample 0 is mastering, not a bad cut.** The mastered take begins on the word,
+so a phrase-initial cut has no lead-in silence left to keep, whatever padding is asked for.
+That risked good cuts being rejected for the wrong reason, so where it happens the same cut
+also appears with **90 ms of digital silence added** at the head, labelled. Silence is
+silence — no speech was created.
+
+*(That audit ran against the previous 133-clip set, which included the slow reads. Its two
+findings are about the cutting, not about which takes were used, so they carry over — but
+the 232 clips now on the page have not themselves been re-measured. Naming that rather than
+implying a clean bill.)*
 
 **An explicit gap in that audit:** its click detector fired on **all 47** glued clips
 regardless of join length — including the 190 ms gaps, where the "step" it measured is just
@@ -93,12 +108,11 @@ the join axis on the page is for.
 19 entries, all named in `candidates.json` and shown on the page under *"How this was
 built, and what was left out"*:
 
-- carrier lines beyond the 12 kept per phrase — variety of *line* was preferred over more
+- carrier lines beyond the 20 kept per phrase — variety of *line* was preferred over more
   cuts of the same line;
 - cuts that held too little voice to be the word at all — a whisper misalignment, dropped
   with its reason rather than left for Kai to waste a tap on;
-- slow takes whose audible pauses do not match their own chunk map at any threshold: the
-  count is the gate and it refuses rather than redistributing boundaries.
+- everything slow, and everything above seed 9, by Kai's rule.
 
 **A note about the rejected takes themselves.** whisper decodes Sascha's take of
 “i wü iatz mit dir Deitsch reden” as *“blabla blabla”* and their take of “i wü reden” as
@@ -121,7 +135,9 @@ learner's ear today, so there is no clock on this decision.
 - `tools/deu-at-splice/deploy.cjs` — copies the page to the evidence host, refusing any
   non-ASCII filename because the evidence server 404s those.
 - `tools/deu-at-splice/page/index.html` — the page: 390 px first, nothing preloaded, one
-  tap to play, one tap to star, stars survive a reload, and *Send my picks* exports them.
+  tap to play, one tap to pick, picks survive a reload, and *Send my picks* exports them.
+  `deploy.cjs` also prunes clips a rebuild has dropped, so nothing orphaned is left looking
+  current.
 
 It is the 2026-08-24 splice bench's next iteration, not a third page — same visual
 language, same primitives — and it does not overlap the take chooser on :8450, which
