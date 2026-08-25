@@ -142,11 +142,19 @@ key with `.DOES-NOT-EXIST` appended returned null — so the probe can tell aliv
 Then a 400-key sample strided across the whole restored set:
 
 ```
-RESTORED SET: sampled 400 of 12411 -> alive 400, dead 0, size-mismatch 0
+RESTORED SET: sampled 400 of 12411 -> alive 400, dead 0
 ```
 
-`file_size_bytes` in the snapshot matched the real object length on every one, so these
-are complete objects, not alive-but-truncated.
+Worker **#558** repeated this independently with its own calibration and a 420-key stride
+sample: **420 alive, 0 dead**.
+
+**One correction, caught by #558.** An earlier draft of this report claimed the snapshot's
+`file_size_bytes` matched the real object length on every clip. That claim was vacuous:
+**all 12,411 snapshot rows have `file_size_bytes: null`** — the field was never populated
+when the snapshot was taken — and both probes silently skipped the comparison rather than
+failing it. There is no size cross-check available, and it should not be counted as
+evidence. What can honestly be said is that no sampled object was zero-byte or truncated:
+lengths ran 22,176–55,584 bytes, consistent with real short MP3 clips.
 
 ### Trap (a): the automatic linker refuses these clips — confirmed in the function body
 
@@ -247,67 +255,73 @@ newer delivery is never clobbered; drifted slots are reported and left alone.
 
 ## Job 3 — will Sascha's next recordings overwrite the restored clips?
 
-**No — they will not overwrite anything. Her clips will land in the database and reach no
-learner until a person deliberately puts them into the slots.** Of the three possible
-answers, this is (2): the ingest path silently skips a slot that is already filled.
+**Yes — they overwrite automatically. Nobody has to do anything, and the restore is
+harmless to her work.** Of the three possible answers this is (1).
 
-That is a real consequence of this restore and Kai should weigh it before we call the
-course finished. It is also, for the beta, the *intended* state — the parking decision
-says her audio should not reach learners yet — but it must be a decision, not a surprise
-in three weeks.
+*(An earlier draft of this report said the opposite. That was wrong: it was reasoned from
+the phase8 relink path and the autolink trigger without finding the writer that Sascha's
+takes actually flow through. The correct path is below, and it was found by worker #556.)*
 
-### The two steps, and what each one does
+### The path her takes actually take
 
-**Step 1 — the upload.** A take is filed and a `course_audio` row is written with
-`origin: 'human'` (`services/voice-engine/db.cjs:194`, `services/script-take-filing.cjs:175`).
-That part works and will keep working. Her clip count will keep climbing.
+`services/production-api.cjs:5536` — on upload, when the take is in **script mode** it is
+filed as a `course_audio` row and then immediately attached:
 
-**Step 2 — the linking.** This is where it stops, in two independent places:
+```js
+if (scriptFiling?.filed) {
+  const attachPlan = planAttach({ metadata, courseAudioId: scriptFiling.courseAudioId })
+  const attachResult = await attachScriptTake({ ... })
+```
 
-- **The automatic path refuses on voice.** `audio_autolink` (AFTER INSERT on
-  `course_audio`) calls `link_audio_to_content()`, which opens with a voice gate and logs
-  a refusal instead of linking when the clip's voice isn't the configured one. **This is
-  already failing for her, and has been since before this restore** — see finding 1 below.
-- **The manual relink path only fills empty slots.** `linkAudioIdsBatch()` in
-  `services/phases/phase8-audio-v13.cjs:1731` is the function that links audio to content,
-  including its `humanOnly: true` "human-first pre-pass" (called at line 1674). Its own
-  header says it *"batch-updates each table's NULL audio_id columns"*, and the query
-  filters `.is(audioCol, null)`. **Before this restore, every target2 slot she recorded
-  for was NULL, so this pass would have adopted her clip. After it, none are NULL, so this
-  pass will find nothing and report zero.**
+`attachScriptTake` (`services/script-take-attach.cjs:129-139`) writes the FK with **no
+null guard at all**:
 
-There is exactly one writer that *does* overwrite: `linkComponentAudio()`
-(`phase8-audio-v13.cjs:6352`), which updates whenever the mapped clip differs from the
-current one and whose `pickPreferredAudioRow` prefers `human > newest`. But it only
-touches **component** phrases, and it only runs from the phase8 components-generation
-route — an operator action that also generates TTS. It is not a general answer and it is
-not something that happens on its own.
+```js
+for (const spec of targets.values()) {
+  const { error } = await supabase
+    .from(spec.table)
+    .update({ [column]: courseAudioId })      // <- unconditional
+    .eq('course_code', courseCode)
+    .eq(spec.idColumn, spec.id)
+```
 
-### So: exactly what, and exactly who
+It updates the item the take was recorded for — named directly, so it lands regardless of
+what the slot already held — plus every sibling item in the course whose text matches
+exactly. A filled slot is simply overwritten.
 
-**What.** For the rows Sascha has newly recorded, the target2 slot must be emptied before
-the relink runs — `UPDATE … SET target2_audio_id = NULL` for those specific slots — and
-then the phase8 human-first pre-pass will adopt her clips. Writing her clip id straight
-into the slot works equally well; `tools/deu-at/unpark-sascha-links.cjs` already does
-exactly this shape of write for the 311 parked ones.
+Her takes qualify. `recording_provenance.quality_notes` on her most recent takes reads
+`"mode":"script"`, `"role":"target2"`, with `seed_number` and `lego_id` present — full
+item identity, which is exactly the condition the attach requires. (A take recorded from
+the *coverage* script carries no item identity and is filed but not attached; that is not
+what she is doing.)
 
-**And first, the voice id has to be fixed**, or the automatic path will keep refusing her
-regardless of whether the slot is empty (finding 1).
+This also explains the puzzle in finding 1 below: the autolink trigger has been refusing
+her clips all along, and `attachScriptTake` is what linked her 311 slots anyway.
 
-**Who.** Whoever runs the audio pass for `deu_at_for_eng` — this is Kai's call, not a
-thing that any tool currently does by itself. Nobody is going to be prompted. There is no
-alert, no queue entry and no error: the pass will simply report zero linked and look like
-a clean run.
+### The consequence Kai should actually weigh
 
-**The practical read for the beta:** because Kai has chosen to park her audio anyway, the
-course is in the right state today, and the cost of this is deferred rather than paid. The
-thing to protect against is the moment the decision reverses — at that point somebody has
-to run the unpark tool *and* clear the slots for everything she has delivered since.
+Because the attach is unconditional and automatic, **parking is not a permanent state.**
+Every new take Sascha files goes live in its slot the moment she records it, over the top
+of the restored synthetic clip, with no pass to run and no approval step.
 
----
+So the beta problem the parking was meant to solve — one human voice surfacing among
+synthetic voices at unpredictable points — **will start coming back on its own** as soon
+as she records again. Parking cleared the 311 that already existed; it does not hold the
+line against the 312th.
+
+If the course is to stay single-voiced through the beta, that needs a deliberate decision
+about her recording — pause it, or let the takes bank and accept that they surface — and
+that is Kai's call, not something this repair can settle. Nothing else about the restore
+is affected: her audio is safe either way, and no manual relink is needed to make her work
+count.
 
 ## Explicit gaps and things Kai should know
 
+0. **Parking will undo itself.** Because the take-attach path overwrites unconditionally
+   (Job 3), every new recording Sascha files goes live in its slot immediately. The 311
+   parked links stay parked, but the 312th onward will not. If the beta must stay
+   single-voiced, that needs a decision about her recording schedule — this repair cannot
+   hold it.
 1. **A pre-existing bug: the autolink trigger has been refusing Sascha's own clips since
    19 August, and this restore did not cause it.** The configured target2 voice reads
    `human_human_sasha_wanasky_deu_at` — a doubled `human_` prefix — while her clips carry
@@ -328,9 +342,13 @@ to run the unpark tool *and* clear the slots for everything she has delivered si
    12,411 gate-refused clips. They were **left in place**, not deleted: they are a
    production log and removing them was not authorised. They do bury the 319 rows in
    finding 1, so anyone reading that table should filter by date and `candidate_voice`.
-4. **`recording_provenance` holds 0 rows for Sascha's 225 clips.** Pre-existing — this work
-   never wrote to that table. It means her takes have no recorded consent reference,
-   device, or speaker metadata attached in the DB. Flagging it, not fixing it.
+4. ~~`recording_provenance` holds 0 rows for Sascha's clips.~~ **Withdrawn — that finding
+   was my own lookup error, not a real gap.** `recording_provenance.audio_uuid` keys on the
+   *take's* S3 uuid, not on `course_audio.id`, so joining the two returns nothing whether
+   or not the data exists. She in fact has **331 provenance rows** spanning 2026-08-07 to
+   2026-08-23, and `quality_notes` carries the full take context — course, mode, role,
+   voice, seed and lego identity, chunk boundaries and session id. Her recording history is
+   intact and well documented.
 5. **111 clip labels in `course_audio.text` still carry quote marks** (the collision set in
    Job 1), as do 519 of the restored target2 labels for the same reason. This is cosmetic —
    the labels differ from the phrase text, the audio is correct and the links are written
