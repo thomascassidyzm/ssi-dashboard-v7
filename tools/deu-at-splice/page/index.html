@@ -118,7 +118,8 @@ function render() {
     box.className = 'grp'
     const head = document.createElement('div')
     head.className = 'ghead'
-    head.innerHTML = `<div class="de">${t.text}</div><div class="dim">${list.length} to listen to`
+    head.innerHTML = `<div class="de">${t.text}</div>`
+      + `<div class="dim">${t.median_ms ? `typically ${(t.median_ms / 1000).toFixed(1)}s · ` : ''}${list.length} to listen to`
       + `${list.length !== t.count ? ` of ${t.count}` : ''} · ${Object.values(picks).filter((p) => p.target === t.id).length} picked</div>`
     box.appendChild(head)
     for (const c of list) {
@@ -130,7 +131,8 @@ function render() {
       const m = document.createElement('div')
       m.className = 'meta'
       m.innerHTML = `<div class="kind">${c.kind}${c.test_material ? '<span class="tm">test-material source</span>' : ''}</div>`
-        + `<div class="how">${c.how}</div><div class="det">${c.detail}</div>`
+        + `<div class="how">${c.how}</div>`
+        + `<div class="det">${c.duration_ms ? `<b>${(c.duration_ms / 1000).toFixed(2)}s</b> · ` : ''}${c.detail}</div>`
       const p = document.createElement('button')
       p.className = 'pick'; p.textContent = picks[c.id] ? 'picked' : 'pick'
       p.onclick = () => togglePick(c)
