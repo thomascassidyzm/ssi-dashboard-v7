@@ -1,0 +1,1875 @@
+{
+ "parked_at": "2026-08-25T16:33:00.069Z",
+ "course": "deu_at_for_eng",
+ "decision": "Kai, 2026-08-25: park Sascha's target2 links for the beta so the learner hears one consistent synthetic voice. Clips and raw recordings are NOT deleted.",
+ "reverse": "For each entry: UPDATE <table> SET target2_audio_id = <human_audio_id> WHERE id = <slot_id> AND course_code='deu_at_for_eng';",
+ "count": 311,
+ "links": [
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0001L01B01",
+   "human_audio_id": "058ead18-04b1-48d0-92ec-c53a4de4b09b",
+   "parked_to_synthetic": "c5ab6493-a6db-4b3d-a3f1-89f5a04fd429"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0001L02B01",
+   "human_audio_id": "65df76bf-d1e3-44d2-8e3d-9d84b3b8563f",
+   "parked_to_synthetic": "9000289f-d422-4a25-b0f5-08bfa8da8af1"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0001L02U01",
+   "human_audio_id": "0f88f691-bc27-47a9-b994-90709b61d141",
+   "parked_to_synthetic": "5fb8236b-4faf-445c-8ca9-6f18b10f10c2"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0001L03B01",
+   "human_audio_id": "af37dc13-a4c7-41c7-8018-1a28fce0c452",
+   "parked_to_synthetic": "36b9aa5f-718a-4143-a6ca-aa8209bcd8d5"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0001L03U01",
+   "human_audio_id": "b1aeff51-4a6a-43ce-bf22-e76d6420722e",
+   "parked_to_synthetic": "95d328d1-0978-4efe-a7b4-e98728b04e85"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0001L04B01",
+   "human_audio_id": "57c76b19-b0e2-4467-83ed-fe978409b55f",
+   "parked_to_synthetic": "06e91453-f537-46b1-a0e7-155fad8d7d88"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0001L04U01",
+   "human_audio_id": "b58b9371-2f83-46bf-adcf-f77da25c9ffd",
+   "parked_to_synthetic": "13ed91ae-6be8-4ca6-9247-fafccc02dbaa"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0001L05B01",
+   "human_audio_id": "1fb67960-5c29-4005-a9ac-683adad7a6be",
+   "parked_to_synthetic": "a406a9d4-b261-4118-bbf6-2f5cbd77a905"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0001L05B02",
+   "human_audio_id": "a9979206-9133-4663-a0e0-d3d455f4f2f4",
+   "parked_to_synthetic": "b620cb0e-27f7-4854-879e-86c4d815fa04"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0001L05B03",
+   "human_audio_id": "cfa7c039-5ac9-4159-89c9-bb07ea14f661",
+   "parked_to_synthetic": "2d81cccb-9392-42b4-86b8-1698eea30332"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0001L05U01",
+   "human_audio_id": "4ac4038b-090e-4b00-8d84-9c8c99856c9e",
+   "parked_to_synthetic": "8f8c44be-c066-42fc-a888-5735b213a6aa"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0001L05U02",
+   "human_audio_id": "7040fa19-4020-4a49-9380-a1a7a6bc014e",
+   "parked_to_synthetic": "914a66e9-123b-4b7e-91ba-16414fed7a28"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0002L01B01",
+   "human_audio_id": "741b9c71-70be-4cc7-be5f-1dcc8141d18f",
+   "parked_to_synthetic": "aa5ef955-b110-489b-87ae-cbb362f8786a"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0002L01U01",
+   "human_audio_id": "59ea74cd-9fbd-45ef-bd30-3465801d497c",
+   "parked_to_synthetic": "22280f8f-aa13-4dd3-a646-781a85e6397e"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0002L01U02",
+   "human_audio_id": "1c070b0c-39d6-4bcd-90bd-b8d64dbc7498",
+   "parked_to_synthetic": "9617fbfd-55dd-4e89-9c4b-8bd7584227bc"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0002L01U03",
+   "human_audio_id": "34956a64-9367-4312-9641-7bd7a5aa29ad",
+   "parked_to_synthetic": "c5da47f2-92d3-4b79-93ab-659faf7372c6"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0002L02B01",
+   "human_audio_id": "168ea4c5-ccfc-4a64-946c-217bc30271ed",
+   "parked_to_synthetic": "8a7c31f5-e4d9-4a64-afbc-074bf2621703"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0002L02B02",
+   "human_audio_id": "6946c139-0bab-483c-b2bc-3e7faead1dd6",
+   "parked_to_synthetic": "cfea3f49-bebc-4e92-883a-99d02b865ddd"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0002L02U01",
+   "human_audio_id": "fbfc274b-308a-4fd8-9fa5-ae81f9e6676f",
+   "parked_to_synthetic": "62db935a-40c4-49c2-82bc-95e34a40e775"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0003L01B01",
+   "human_audio_id": "2fd5afd0-aacd-4763-af45-7fdc0e22f860",
+   "parked_to_synthetic": "1728a439-5391-45b0-bdcb-d959c3f3e289"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0003L01B02",
+   "human_audio_id": "2b598ea8-2aca-4b81-81b2-4da1555f2747",
+   "parked_to_synthetic": "830526c0-7ad2-4191-b328-5bce2e996d47"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0003L01B03",
+   "human_audio_id": "90e1fe0d-144f-4553-8c9a-16f73fc57507",
+   "parked_to_synthetic": "4aa29267-f0e4-4497-8cf9-14ab7312f087"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0003L01U01",
+   "human_audio_id": "e1ccc429-6936-4bca-a2f8-41c4004d9bc4",
+   "parked_to_synthetic": "a435517b-5440-4e7e-8563-475bc37f2872"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0003L01U02",
+   "human_audio_id": "885223a7-f662-47a2-abea-2228e734e5b6",
+   "parked_to_synthetic": "2874dc3b-a418-47dc-96e7-835cbe628064"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0003L01U03",
+   "human_audio_id": "edf481fa-f564-46c4-917e-cbd49c4856f1",
+   "parked_to_synthetic": "4c165695-15fc-4d26-a19a-21c9c8ad557c"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0003L02B01",
+   "human_audio_id": "a4b72c98-084a-4420-919c-f3a2bdcf51b9",
+   "parked_to_synthetic": "d679601e-5d08-41f4-a78e-763907c8236b"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0003L02U01",
+   "human_audio_id": "3847cc78-b43d-4d12-831a-19a3f16181bc",
+   "parked_to_synthetic": "c478e538-ba71-4519-9f93-bfdddccdb8dc"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0003L02U02",
+   "human_audio_id": "a3e7297a-0210-4ea5-a249-3b442a2c9676",
+   "parked_to_synthetic": "d9e5e820-b083-4c56-8969-879a7d391306"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0004L01B01",
+   "human_audio_id": "6a1ee624-6b12-40e5-825a-980be7a90ccf",
+   "parked_to_synthetic": "49850b16-1290-4cd4-ac2b-13cb7870d838"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0004L01B02",
+   "human_audio_id": "7f4be663-dbcd-4f15-b2f7-2a60eb221887",
+   "parked_to_synthetic": "965e2ea8-90bd-4fed-9105-8f5db3aa7d12"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0004L01B03",
+   "human_audio_id": "a68eb409-9057-4ff0-a8a6-5721560a3a08",
+   "parked_to_synthetic": "503d271a-cab8-404f-bded-eeac0a324ca9"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0004L01B04",
+   "human_audio_id": "88931366-4d5b-44c4-8c9c-0d27b609ba5a",
+   "parked_to_synthetic": "db6bb413-6555-4055-91b7-a099f0483f3e"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0004L01U01",
+   "human_audio_id": "10a3f825-b6f3-4e84-b18f-e6597f2ee232",
+   "parked_to_synthetic": "14462100-5e45-4a92-af2e-b4b35c10e75e"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0004L01U02",
+   "human_audio_id": "d59b6fcf-ad17-4db6-a360-2bcce5405f6a",
+   "parked_to_synthetic": "dc4b740b-be79-4021-b80c-70cf08e46249"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0004L01U03",
+   "human_audio_id": "3c178aae-3b44-4b0b-9315-0059e1c293d4",
+   "parked_to_synthetic": "7fefbc82-b01c-4e54-819b-f50df0675afc"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0004L01U04",
+   "human_audio_id": "ad15d960-754c-4537-a0c7-8d575f608722",
+   "parked_to_synthetic": "8bf8b9dc-f6cc-434c-b713-df5090ce453c"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0004L01U05",
+   "human_audio_id": "e8c72297-d50a-41a3-af90-7621709914f1",
+   "parked_to_synthetic": "2d0459a8-96f4-4fac-a3b5-9cc6d9e2eca8"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0004L02B01",
+   "human_audio_id": "6f9456c7-2890-44bc-9d2c-42bd7f2cfdbb",
+   "parked_to_synthetic": "8636136e-56ef-4adb-b2e0-5cd53421e093"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0004L02B02",
+   "human_audio_id": "20576697-5110-467a-b3f3-bb1fea56ad6b",
+   "parked_to_synthetic": "af5dcba6-b19d-49f6-b5ba-0c9fcf6735b3"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0004L02B03",
+   "human_audio_id": "41057761-bcdb-415c-8f90-4e4e8fb62071",
+   "parked_to_synthetic": "085a9ed7-6b6a-41e5-bce1-3b982ad5e20b"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0004L02U01",
+   "human_audio_id": "d7c8f8bf-ef61-4d68-9b1a-8f3b504ab85b",
+   "parked_to_synthetic": "47268fd9-d98f-449b-9560-eeb0015bcfae"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0004L02U02",
+   "human_audio_id": "51781ae5-97f8-4c39-82fb-8a4640477d90",
+   "parked_to_synthetic": "d47cc80c-fc4c-474e-85d5-9858b4370461"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0004L02U03",
+   "human_audio_id": "b89768ae-b5e9-4c8f-ad0a-eda866286247",
+   "parked_to_synthetic": "904b9c5a-fc8a-45c0-83b8-983cce27e4ce"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0004L02U04",
+   "human_audio_id": "1a73aa8a-cd38-4765-9532-cca9cbca61ad",
+   "parked_to_synthetic": "ce3ab036-8eb6-4808-bb64-0c9fb1f60278"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0004L02U05",
+   "human_audio_id": "a08ebfb3-7bba-4533-a915-4cf13e624215",
+   "parked_to_synthetic": "8fff6070-a5d1-4e3d-9833-f278a87f2726"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0004L03B01",
+   "human_audio_id": "d1ce1a32-31b1-4961-a243-cef88dd8e8d9",
+   "parked_to_synthetic": "532e21cf-7c40-41a5-abaf-160fe1d52a1a"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0004L03B02",
+   "human_audio_id": "4d530618-daf4-43d4-84c2-e711f91e8c20",
+   "parked_to_synthetic": "48b810b8-acc8-4166-b1e2-342250f90a3f"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0004L03B03",
+   "human_audio_id": "19475357-01e5-4466-a743-89eb0bac8ca8",
+   "parked_to_synthetic": "fddd4bb2-4e81-4825-b485-009d295c9a6d"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0004L03U01",
+   "human_audio_id": "320e0a06-ec70-4f34-8283-b83222e14e04",
+   "parked_to_synthetic": "83b33c90-95aa-48ef-8c40-b47f39f46737"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0004L03U02",
+   "human_audio_id": "d31320ad-dbf8-4144-ad38-cb1a8d2cec5f",
+   "parked_to_synthetic": "01886d1d-c77f-4277-a557-54c3de5ba270"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0004L03U03",
+   "human_audio_id": "feaf403d-cb36-4dad-9e93-f6cb956c8537",
+   "parked_to_synthetic": "73fb3d1e-90e6-4e9e-bb9b-d4ca81c55af0"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0004L03U04",
+   "human_audio_id": "7a20e4ab-cf96-41f0-a45e-84c0e26cf93b",
+   "parked_to_synthetic": "47e62ca5-0864-4f0d-9b61-d2286ebbcb55"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0004L03U05",
+   "human_audio_id": "bba5d9fe-078b-419c-8ce6-86690a644267",
+   "parked_to_synthetic": "780d3c3e-bbac-4794-8113-fcadb317271a"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0004L04B01",
+   "human_audio_id": "692e6304-54e1-44c7-8dbb-f1846ddd206f",
+   "parked_to_synthetic": "e9f3abbb-d3d9-4bcf-b4f0-dd6d7e132b8f"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0004L04B02",
+   "human_audio_id": "6a503de6-9b60-48bd-a014-b3bab6df129a",
+   "parked_to_synthetic": "233a7ca6-9c4c-4aa6-9ca8-9c6064cef48c"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0004L04B03",
+   "human_audio_id": "40fc0164-bff7-4791-8360-f8af0073cc25",
+   "parked_to_synthetic": "8b3e5e08-e4fc-475a-b713-4bb6a0f4ce6f"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0004L04C03",
+   "human_audio_id": "cf28b9cf-4561-4740-ae22-6c0536b4b703",
+   "parked_to_synthetic": "b3ebe1e6-1f62-4c52-bbde-9a70c4d2adfb"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0004L04U01",
+   "human_audio_id": "14d8c30c-3d6b-4949-b4af-0b830041300f",
+   "parked_to_synthetic": "f45e98e2-dce1-4198-bfde-50047c29fef1"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0004L04U02",
+   "human_audio_id": "f97a06a8-6200-43be-b8fd-5308bccf6404",
+   "parked_to_synthetic": "605c4895-bcec-4c97-9706-00b101d7b5a7"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0004L04U03",
+   "human_audio_id": "582de4ad-3b3a-4b63-935c-131870fa49dc",
+   "parked_to_synthetic": "39216272-b773-40e8-a42b-9e26da6dd035"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0004L04U04",
+   "human_audio_id": "0caa9bcd-476f-4bff-81bb-ea39e49b0982",
+   "parked_to_synthetic": "145d4b79-8f5f-48e9-8376-f140c8017189"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0004L04U05",
+   "human_audio_id": "130bb55c-f394-4de6-8a07-083ee6e989cc",
+   "parked_to_synthetic": "74405ff2-5aba-4866-bffc-e3c52dde0184"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0005L01B01",
+   "human_audio_id": "4e8dc053-971e-4c4f-b6bb-0cdde7f6d16f",
+   "parked_to_synthetic": "75dafe5f-887f-457c-b529-a3e1dc17afa5"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0005L01B02",
+   "human_audio_id": "d03fd57a-4666-47a9-9579-a1c241f7508c",
+   "parked_to_synthetic": "e2933b13-3d18-43ad-874a-9bdf9956b678"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0005L01B03",
+   "human_audio_id": "a6960977-f2ec-4260-8ffa-3c88fe4c4300",
+   "parked_to_synthetic": "b098633d-0040-4bb5-897b-46639d42c2b9"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0005L01U01",
+   "human_audio_id": "32193315-f1a4-4542-957a-f500785f043b",
+   "parked_to_synthetic": "fd31222a-7f45-4be7-b8ba-e3f783a2549b"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0005L01U02",
+   "human_audio_id": "4da61714-9df4-43aa-86fc-1f6c628cd0bb",
+   "parked_to_synthetic": "1396b915-706e-4e7b-99a3-1cc42f5daca3"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0005L01U03",
+   "human_audio_id": "58ca3d64-cc7b-4593-9985-dff1c5d5372b",
+   "parked_to_synthetic": "409cc975-7c4f-46fb-9f2e-b8db4a4dd5ae"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0005L01U04",
+   "human_audio_id": "73410421-ae58-4165-a44c-72274bf5fa14",
+   "parked_to_synthetic": "e6f7c432-e261-4b60-8544-a50f5bd5df53"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0005L01U05",
+   "human_audio_id": "951a9fde-c5d1-49c4-ae7e-7122b510cbf2",
+   "parked_to_synthetic": "e49e2c0f-8e10-4dbb-b49b-70eb0669dcaf"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0005L02B01",
+   "human_audio_id": "1c4be952-1fe7-444b-a4f6-d0b4bd076438",
+   "parked_to_synthetic": "e7475c6f-7c6b-40ba-bea3-1d216156791a"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0005L02B02",
+   "human_audio_id": "25c8356f-0193-44d9-bc8b-cf030fedec04",
+   "parked_to_synthetic": "b83ab791-724b-4857-a993-21c6efe2beb9"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0005L02B03",
+   "human_audio_id": "10541e40-7a79-4566-b6b3-f600949de40e",
+   "parked_to_synthetic": "e38d2ade-fdce-4df2-ace5-a1585a0737e8"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0005L02B04",
+   "human_audio_id": "e1891cf6-0e26-4502-8021-9d6e08ef0e99",
+   "parked_to_synthetic": "470d7603-30c1-41ab-9626-4652e24b9b9a"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0005L02U01",
+   "human_audio_id": "e20b1109-d653-4419-8a32-571155fd4dba",
+   "parked_to_synthetic": "1f6237eb-cb33-4f04-bf7e-8e3315b5e49d"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0005L02U02",
+   "human_audio_id": "f67eb1fe-a4b8-4bc7-8e99-eb96ff886b1a",
+   "parked_to_synthetic": "7aba427c-5395-4efe-9f68-2970eafce602"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0005L02U03",
+   "human_audio_id": "8f45b22e-f20c-4af4-98d9-fc02d82e3d9e",
+   "parked_to_synthetic": "461669a4-53aa-40bd-89c1-eef64674cd9e"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0005L02U04",
+   "human_audio_id": "c4bf8200-2fd8-4c5c-92fa-19417ef4d0bb",
+   "parked_to_synthetic": "7bba1e19-bc56-439d-8b8d-9bbf922e30c9"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0005L02U05",
+   "human_audio_id": "141cc845-32b7-4961-bf54-72c31cdd065c",
+   "parked_to_synthetic": "07a9651e-a8ac-4a71-a635-3537c77efd1e"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0005L02U06",
+   "human_audio_id": "377caf2a-5b4f-4d81-8b89-653d447d84ac",
+   "parked_to_synthetic": "6e51913c-0977-46f1-8ee5-ccd74bfe437f"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0005L03B01",
+   "human_audio_id": "57f77f84-3fce-4adc-ab18-467fbda0f43c",
+   "parked_to_synthetic": "5929496c-aa2f-4995-909e-5a629a365c2a"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0005L03B02",
+   "human_audio_id": "18e0df06-27ca-4a65-9c6f-9c59fa1870de",
+   "parked_to_synthetic": "79d7323f-f47f-4386-a31c-58c735bc5aed"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0005L03B03",
+   "human_audio_id": "a4d84f25-cdeb-4be0-9c00-da2ccff91df0",
+   "parked_to_synthetic": "e7faf14e-0bb0-4cf0-a105-2e3f429a9046"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0005L03B04",
+   "human_audio_id": "b5c2e10b-4eb6-4a4c-8b22-a6fa5914b0f7",
+   "parked_to_synthetic": "57322bce-9175-493e-885c-f1c35f57ebdc"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0005L03C01",
+   "human_audio_id": "65df76bf-d1e3-44d2-8e3d-9d84b3b8563f",
+   "parked_to_synthetic": "9000289f-d422-4a25-b0f5-08bfa8da8af1"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0005L03C02",
+   "human_audio_id": "bee6eabd-1e43-494b-9cb4-d82bad38e77d",
+   "parked_to_synthetic": "ee4791e8-89b2-495d-a02d-7b31ffbb67c2"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0005L03U01",
+   "human_audio_id": "1fd073b5-ec7c-4245-8998-aa913ee90f28",
+   "parked_to_synthetic": "b38fb565-2d3a-4e93-ac04-f9a8a78838ec"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0005L03U02",
+   "human_audio_id": "bd0683b4-9ad7-40a4-a49b-4bc21146be7d",
+   "parked_to_synthetic": "74c2aa78-f6cf-45d4-96db-b94bba716887"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0005L03U03",
+   "human_audio_id": "e7bdd98b-eaee-4e75-93eb-2af4690861de",
+   "parked_to_synthetic": "808b4387-fdaf-4189-a50b-5750f1d01c05"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0005L03U04",
+   "human_audio_id": "d53c75be-be8b-4d7c-943d-a87cc9940cbd",
+   "parked_to_synthetic": "646d15fa-059d-469d-b51e-e66919817f9c"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0005L03U05",
+   "human_audio_id": "3b7dc9f3-cc77-40ea-80bc-f5c3721cd3b6",
+   "parked_to_synthetic": "c0c3fc1c-7f6f-48f2-a3aa-14438862f3ea"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0005L04B01",
+   "human_audio_id": "6c6ac9ee-5780-41cf-8c18-c306e4094b6e",
+   "parked_to_synthetic": "81764878-f022-4e11-8cce-02feec59dfa1"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0005L04B02",
+   "human_audio_id": "e48192b9-d056-48c1-9b21-1bfe7f57dd86",
+   "parked_to_synthetic": "89598fcd-3c69-414b-b56f-8b6e7b671bb3"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0005L04B03",
+   "human_audio_id": "c350d6c0-f0b9-4bbe-a690-f441ba72d41f",
+   "parked_to_synthetic": "bc79b693-5535-4829-ad14-7bf6d9f04232"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0005L04B04",
+   "human_audio_id": "57de322b-169c-4bb1-98d4-fc1bd59c1bf6",
+   "parked_to_synthetic": "995962dc-7011-4b31-92d6-2ef535c8fe09"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0005L04U01",
+   "human_audio_id": "86dd7da5-4c4e-4d1c-b0db-c72133216f91",
+   "parked_to_synthetic": "38ffe0d4-af91-4e7f-9d50-e2ab49e90313"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0005L04U02",
+   "human_audio_id": "6a27e056-355a-49b7-99af-4928a66efc82",
+   "parked_to_synthetic": "9dc29ca2-3d86-4a4c-ad5b-caf5f97f3adc"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0005L04U03",
+   "human_audio_id": "611400f2-5984-4ed7-a50f-ee61568c59dc",
+   "parked_to_synthetic": "37a487fc-8e3f-45dd-a60f-c0e403f6200b"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0005L04U04",
+   "human_audio_id": "390dce5d-3715-4589-adce-339e70fa304c",
+   "parked_to_synthetic": "fa5c8178-690c-4b86-9dcb-00caf8e6f319"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0005L04U05",
+   "human_audio_id": "42ab07b9-ab22-43cd-b681-496df911a49e",
+   "parked_to_synthetic": "d0c1ad62-3cce-4a72-abee-547f27b95691"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0006L01B01",
+   "human_audio_id": "8717bb67-c933-46c0-bffa-b7c9af518353",
+   "parked_to_synthetic": "2711d628-6732-4b80-bb21-90e6388baca2"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0006L01B02",
+   "human_audio_id": "8a783f5c-b08e-4d93-945b-34e8dd4e6615",
+   "parked_to_synthetic": "caf67047-db67-4a36-bef9-6a9b01273e82"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0006L01B03",
+   "human_audio_id": "3d2149e6-5bd6-46ad-ae5d-b031967a33c5",
+   "parked_to_synthetic": "ce7b9101-1251-4b5f-9c36-25a325808cbe"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0006L01B04",
+   "human_audio_id": "52ed7f31-f190-4bbf-ae97-a681c02f539a",
+   "parked_to_synthetic": "9cc76e86-abc2-4276-8ed1-9eeb1a0bf817"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0006L01U01",
+   "human_audio_id": "5efaf06d-5862-4c6a-a31a-31b6e5491a70",
+   "parked_to_synthetic": "2d757f21-b19c-4546-9d5d-c98e664dd160"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0006L01U02",
+   "human_audio_id": "d01cbde1-0d3d-46f6-a487-c63e9f945c76",
+   "parked_to_synthetic": "46bacb4a-5a55-4ce8-901b-74bc4365ae18"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0006L01U03",
+   "human_audio_id": "8be001af-b927-47ee-8093-041442a5bd59",
+   "parked_to_synthetic": "d107560c-080e-4717-abec-ce1150eca876"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0006L01U04",
+   "human_audio_id": "c9a1f9bb-a5b8-4b5a-87d2-e0aee60c6956",
+   "parked_to_synthetic": "f3bf3a9d-9204-4ae4-b9a9-c3c22d4127b3"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0006L01U05",
+   "human_audio_id": "20f9b90f-0a6e-48b4-b09a-15aae695a6f6",
+   "parked_to_synthetic": "bd029a00-d500-47f8-8a8b-144fa4409451"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0006L02B01",
+   "human_audio_id": "f799997d-7b2d-4b79-88a9-4a0b48f1adc5",
+   "parked_to_synthetic": "9b7fe3b9-fb7f-4d6a-98d8-7fb405c3f4fe"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0006L02B02",
+   "human_audio_id": "3c8b989f-cd83-4123-ac4e-1ac1218d19af",
+   "parked_to_synthetic": "99490650-47ec-475e-8644-8f6e60b8debd"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0006L02B03",
+   "human_audio_id": "09949118-92c7-4677-84ef-2e10bf7cead5",
+   "parked_to_synthetic": "9d31b51f-cd50-4f2e-af08-21bb860f892c"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0006L02C03",
+   "human_audio_id": "8717bb67-c933-46c0-bffa-b7c9af518353",
+   "parked_to_synthetic": "2711d628-6732-4b80-bb21-90e6388baca2"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0006L02U01",
+   "human_audio_id": "4e5e3cc4-8bba-4845-8692-2550e9fea2e2",
+   "parked_to_synthetic": "f09c02c7-67e3-4bb6-8a79-cf48936e94d1"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0006L02U02",
+   "human_audio_id": "4d69c28f-4d7d-4200-af8f-1fe162dbc7e8",
+   "parked_to_synthetic": "27bfee81-681a-4431-bdbe-3e2c80d982a2"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0006L02U03",
+   "human_audio_id": "5e8f4db5-e48c-4a57-96f1-a2b0b1314d9d",
+   "parked_to_synthetic": "c0ea9c14-4f82-407c-9425-0e743357ba1a"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0006L02U04",
+   "human_audio_id": "edae3f6c-5d3d-472b-ab1d-5a56cd7559e6",
+   "parked_to_synthetic": "2129ca9d-71c0-403d-aab4-273e33e70600"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0006L02U05",
+   "human_audio_id": "382703d5-0f00-455a-9f4d-dfbbb496bacb",
+   "parked_to_synthetic": "46fee9db-8d09-4c6a-89fa-89e1a0c070b8"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0006L02U06",
+   "human_audio_id": "566b68fb-44b3-4334-b8d5-16b9cba57875",
+   "parked_to_synthetic": "ea80346f-e7ea-4dac-8cd2-9027e31aad3b"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0007L01B01",
+   "human_audio_id": "e0af6bae-5ac9-4d28-8863-ce115a958be1",
+   "parked_to_synthetic": "13cd5c9d-4d03-4f46-8839-0a73d299b2d1"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0007L01B02",
+   "human_audio_id": "1a90b6a0-83b9-4f02-9ae8-6b5bcb29aa01",
+   "parked_to_synthetic": "f4206340-018a-45c2-8b43-e71a544b7531"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0007L01B03",
+   "human_audio_id": "c6a59bc5-bd82-43ad-ad61-fbb6b6ac938c",
+   "parked_to_synthetic": "22fceda9-0800-4eea-974c-f29e1a847610"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0007L01U01",
+   "human_audio_id": "5e1854a1-af4a-41b6-8b08-a3ce0fc7a467",
+   "parked_to_synthetic": "422b8474-1df4-4b9c-9bd3-84c540331d98"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0007L01U02",
+   "human_audio_id": "58e544dc-6a6b-4fc6-bc97-0804b216b132",
+   "parked_to_synthetic": "45ab1a1d-2f91-409d-9e8e-9347831de9d6"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0007L01U03",
+   "human_audio_id": "5e797169-c87f-42f3-9bb3-85f1e1f005a5",
+   "parked_to_synthetic": "ffa39048-ad9b-4338-ab3a-ad6426c2f2d4"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0007L01U04",
+   "human_audio_id": "3e406a51-f5b9-44c5-88dd-50019525caa4",
+   "parked_to_synthetic": "78303c06-c70e-452d-afa8-42ce27592c62"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0007L01U05",
+   "human_audio_id": "8a285137-575e-419c-ad83-86eb592b4ac8",
+   "parked_to_synthetic": "1d6d168b-b071-404a-b0dc-0ca0b4042a6c"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0007L02B01",
+   "human_audio_id": "e4c77166-4485-48b7-83b2-478788d1d8b4",
+   "parked_to_synthetic": "671896e3-14d1-458f-bdee-9225695cfa55"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0007L02B02",
+   "human_audio_id": "b7d5d5b0-81c8-4042-a0b0-da6a0363ddf3",
+   "parked_to_synthetic": "20b5db83-55c7-4ad1-a751-91081d0b0233"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0007L02B03",
+   "human_audio_id": "dedf7f91-edc4-4f11-bdbe-6ae9ea7921e5",
+   "parked_to_synthetic": "0170bb8c-397e-4b97-b9f8-ab3a99cbb55e"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0007L02U01",
+   "human_audio_id": "df4c7f19-2f23-49cb-9298-54f3d26eca33",
+   "parked_to_synthetic": "b35cae44-4b84-494d-a033-98a3c3814a43"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0007L02U02",
+   "human_audio_id": "47144e33-de80-4d26-a0a5-619e61fa3e13",
+   "parked_to_synthetic": "de6e09df-94d7-44e3-b195-090f73d54657"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0007L02U03",
+   "human_audio_id": "aa8a4389-5bff-4622-a2fe-6df683de3856",
+   "parked_to_synthetic": "d1d74af7-d0b9-40ad-8b5a-10693669a7d9"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0007L02U04",
+   "human_audio_id": "beb739f8-310d-44cd-a851-3051bcabde66",
+   "parked_to_synthetic": "794387c9-69db-46bc-8562-4612bccb39b4"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0007L02U05",
+   "human_audio_id": "64af766a-530c-4fc2-bfc8-087a85a3d3c2",
+   "parked_to_synthetic": "eedd35f6-a289-4a83-bb90-d2e73a248e2f"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0007L03B01",
+   "human_audio_id": "d2177421-c15f-4d68-a5db-827b6e091ee1",
+   "parked_to_synthetic": "86296372-b30c-474e-bcd5-207458c2491f"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0007L03B02",
+   "human_audio_id": "da0efaec-dcdf-49c1-b05b-748fbd574bc6",
+   "parked_to_synthetic": "74ac5957-78be-41ac-b06f-896d985d5a63"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0007L03B03",
+   "human_audio_id": "e11d3930-b5e1-4ce0-8f1c-63bf46e4ce9e",
+   "parked_to_synthetic": "53b578d3-aac0-483a-8667-66b32ed93372"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0007L03B04",
+   "human_audio_id": "73f071b8-ce31-47a5-acc9-dcf9065ac136",
+   "parked_to_synthetic": "82872180-d333-4868-90b1-d971eac0d242"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0007L03C01",
+   "human_audio_id": "058ead18-04b1-48d0-92ec-c53a4de4b09b",
+   "parked_to_synthetic": "c5ab6493-a6db-4b3d-a3f1-89f5a04fd429"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0007L03U01",
+   "human_audio_id": "b0c99d95-f5f5-4998-83a8-f2a1157384e7",
+   "parked_to_synthetic": "82f1ed52-4da2-4831-8499-e0ec65dde188"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0007L03U02",
+   "human_audio_id": "5ff21581-c25d-413e-9fc9-2610ea2cdde0",
+   "parked_to_synthetic": "dd5aaec7-13dd-46a4-8cf0-a78f882af896"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0007L03U03",
+   "human_audio_id": "9f12d192-f023-45a6-9fac-7ae24b9adc50",
+   "parked_to_synthetic": "f97213b5-931e-49eb-8a2f-5d9cbee7e930"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0007L03U04",
+   "human_audio_id": "1465dad5-7543-44d3-a8f6-e45b172aff24",
+   "parked_to_synthetic": "3abdf221-6b06-431c-a6f4-834e6d746a3e"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0007L03U05",
+   "human_audio_id": "ced75f13-73a6-4a5a-a77f-d824e291fd4d",
+   "parked_to_synthetic": "d1d09fbf-3649-40f6-b4e1-3ebdb92b8336"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0007L04B01",
+   "human_audio_id": "57e6e92e-cc48-4f59-84f7-d2f856a1efb7",
+   "parked_to_synthetic": "8a4c7a78-105f-4e50-b5f8-da6ae4e6fa1d"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0007L04B02",
+   "human_audio_id": "069a81f8-8590-449f-887c-41ae68692ef4",
+   "parked_to_synthetic": "b13b3148-d997-435e-97c0-86de8e77e1c6"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0007L04B03",
+   "human_audio_id": "6ef8672b-1404-469d-84b5-e947d9e04a60",
+   "parked_to_synthetic": "2d3cb401-1aeb-4bb1-8c7e-192f508f58da"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0007L04B04",
+   "human_audio_id": "07c45e3e-586d-477a-b4ec-6344f39c7acc",
+   "parked_to_synthetic": "36353155-22bd-4da8-8ae5-09ea3f42a1c2"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0007L04U01",
+   "human_audio_id": "bd4413cf-f7ec-4046-904e-811039dca5ec",
+   "parked_to_synthetic": "3a5a2f59-27e0-420f-8d9c-8e782d654a7b"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0007L04U02",
+   "human_audio_id": "ce80715c-bd03-4d25-88a9-eb6350c6184a",
+   "parked_to_synthetic": "c5d3c315-a548-4d46-a433-7d09149d66f0"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0007L04U03",
+   "human_audio_id": "337a1fe3-2ba6-43c4-bb7b-55ca0a1f58cf",
+   "parked_to_synthetic": "380e3aaf-eb39-49cc-9ae9-ba197612e762"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0007L04U04",
+   "human_audio_id": "d4af752d-f1f0-4c22-8a5f-8a1b06a0122f",
+   "parked_to_synthetic": "f99a1ac2-6847-4ec8-985a-eeabd11e39f0"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0007L04U05",
+   "human_audio_id": "1e7ec239-4fc5-40a5-b40d-843521314c62",
+   "parked_to_synthetic": "369d68fd-d1e3-4f7c-b6bd-e25e167961bc"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0007L05B01",
+   "human_audio_id": "31730adc-dc56-43e7-b758-0340f5e58f10",
+   "parked_to_synthetic": "c0b78b9b-7c95-4ed0-83b0-505e7b8dacfc"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0007L05B02",
+   "human_audio_id": "88041d63-6fea-4ba0-89bd-0f79b9f6f52e",
+   "parked_to_synthetic": "4c78fccb-1ec4-415b-918f-97b57bc576ee"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0007L05B03",
+   "human_audio_id": "4b639bfa-048a-48af-b819-5be0ec80c1de",
+   "parked_to_synthetic": "fa3941fa-8e58-4c5a-9081-28ecdb7c1dca"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0007L05B04",
+   "human_audio_id": "46bbb8ce-8a3d-4ce9-bfcb-bbecaeb578a3",
+   "parked_to_synthetic": "a3a9c70d-9153-49b7-a04b-8b01b5a489e9"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0007L05U01",
+   "human_audio_id": "1406e30c-61d2-4b62-bae6-304dda7b9498",
+   "parked_to_synthetic": "19eecd6d-53d0-4ebd-8ed3-084a413dab99"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0007L05U02",
+   "human_audio_id": "a7b24790-b516-4dbd-9a82-8a1957c26ecf",
+   "parked_to_synthetic": "d07e4031-2847-4a0c-9d72-978380cef798"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0007L05U03",
+   "human_audio_id": "c587a606-5573-4f47-919c-275adaaf77aa",
+   "parked_to_synthetic": "7628bd9c-dbc9-4711-9e40-41bbe5a504e3"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0007L05U04",
+   "human_audio_id": "d591b0a4-62ab-4005-82b6-5cc083a8a9f8",
+   "parked_to_synthetic": "42f992d0-e749-42bb-8614-558fec7b1218"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0007L05U05",
+   "human_audio_id": "369748d4-059e-4fc6-b0e7-fb09fbc49554",
+   "parked_to_synthetic": "c2115a85-344a-40cb-9e0a-48f14c2ab51a"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0008L01B01",
+   "human_audio_id": "80dfe233-3d2d-409c-813c-8a21a90da7bb",
+   "parked_to_synthetic": "2202abbd-91ae-40c5-af8b-ba9724bd98a5"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0008L01B02",
+   "human_audio_id": "8caf6aa4-da71-490c-ac0f-8e76cd2e0b9a",
+   "parked_to_synthetic": "4b1e9892-b4d2-40b6-84a0-7b457e01efe2"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0008L01B03",
+   "human_audio_id": "5bf70e06-ce5f-4d54-8783-bc6128debfca",
+   "parked_to_synthetic": "a0b3eff5-96bc-4b66-8edd-930768d0b46e"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0008L01U01",
+   "human_audio_id": "49e1af9c-5843-4c2a-a51a-c83afd1d4fc3",
+   "parked_to_synthetic": "8e56c973-33ff-4144-b25f-09023443e2a9"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0008L01U02",
+   "human_audio_id": "dc3c337a-34f4-41e1-bfdf-cc5d84fdd85e",
+   "parked_to_synthetic": "57288cb0-94a9-4d74-a73b-99fee977c622"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0008L01U03",
+   "human_audio_id": "29ed4432-d7a8-4965-b066-6f7d95be5bcb",
+   "parked_to_synthetic": "19c3d567-c555-4afa-a757-fa99d245d638"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0008L01U04",
+   "human_audio_id": "3457ad4d-cafe-4246-9e3b-55bb4bb3d259",
+   "parked_to_synthetic": "28995802-1ffc-4ae2-868c-c1ecdfec0c2b"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0008L01U05",
+   "human_audio_id": "77086bed-f0de-4e6e-96b2-27edda6fa0ee",
+   "parked_to_synthetic": "0854ebdb-0b80-4522-8755-8eae9fc3efa5"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0008L02B01",
+   "human_audio_id": "85b9f2de-634f-4bbb-928a-c9493008fe2a",
+   "parked_to_synthetic": "19c8bd26-212e-4343-8818-cd9616b8b463"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0008L02B02",
+   "human_audio_id": "af099ba4-1212-425a-bae4-9d631a8b4493",
+   "parked_to_synthetic": "716d78fc-fd31-4ab4-ba8a-54d92e78ee43"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0008L02B03",
+   "human_audio_id": "443d7200-0453-4fef-804d-ea42498fac4e",
+   "parked_to_synthetic": "795b9278-8a21-4a62-82b3-18f8cc55ad70"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0008L02B04",
+   "human_audio_id": "7e63e4fe-25f7-4c48-8bae-1e07051cf554",
+   "parked_to_synthetic": "9c350521-6b1b-4194-b234-1a4045bdd643"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0008L02C01",
+   "human_audio_id": "cf28b9cf-4561-4740-ae22-6c0536b4b703",
+   "parked_to_synthetic": "b3ebe1e6-1f62-4c52-bbde-9a70c4d2adfb"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0008L02U01",
+   "human_audio_id": "22c6b71b-3e79-4c11-bc5e-727535bd2dbd",
+   "parked_to_synthetic": "fe01438d-b17c-4642-966a-bc4b9cea547c"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0008L02U02",
+   "human_audio_id": "36828fb3-be9e-40a1-afd2-8fe259d1bc04",
+   "parked_to_synthetic": "4f1a2096-f657-4852-9491-b91131bdd1a8"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0008L02U03",
+   "human_audio_id": "d8efc605-a528-455e-963b-a9ed078f32f8",
+   "parked_to_synthetic": "7e3bda40-ce7c-4d37-881e-f8659136f491"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0008L02U04",
+   "human_audio_id": "acdd796c-b93d-4a00-b449-48a01976fc4b",
+   "parked_to_synthetic": "c8d4bd83-ff28-4d69-a5aa-1897964720f6"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0008L02U05",
+   "human_audio_id": "ec0cd351-abff-4e9e-bbd7-f6c4bf0a6b3d",
+   "parked_to_synthetic": "26d2ec19-6957-4317-9eee-8420405029aa"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0009L01B01",
+   "human_audio_id": "e6751649-331e-435b-9e11-2138aa67acfb",
+   "parked_to_synthetic": "f5eec730-3c15-4ce5-b085-1849b69f7d7d"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0009L01B02",
+   "human_audio_id": "08d04bdc-32c7-42ad-806a-40f562aa0c6b",
+   "parked_to_synthetic": "a1a92b1b-a35a-4fad-bf02-a8d1736edd4f"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0009L01B03",
+   "human_audio_id": "d8a52a2b-5ae2-4ef0-afaf-9024015146ea",
+   "parked_to_synthetic": "c25bcc5d-41d2-4edd-9473-b2d66d0ed50f"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0009L01B04",
+   "human_audio_id": "c4a59f32-3de2-4044-88ed-7c8ad3e4005d",
+   "parked_to_synthetic": "d6701dd6-a0c4-4a89-bb77-de950f4d3710"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0009L01U01",
+   "human_audio_id": "5d81bb9b-de8a-4c55-878b-5ee48472edc0",
+   "parked_to_synthetic": "42474c3a-0f46-4bd9-b539-328df6cf9800"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0009L01U02",
+   "human_audio_id": "47f75968-cd12-4776-b010-dcd945383be9",
+   "parked_to_synthetic": "f8fa0810-0e08-4315-9f34-03fac1093223"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0009L01U03",
+   "human_audio_id": "5023cd89-fd56-4e8c-bea3-45eb737775eb",
+   "parked_to_synthetic": "ccbae67b-2774-4af3-8013-ae0999fc8ce2"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0009L01U04",
+   "human_audio_id": "5bb1f3a7-1ad1-4cca-9920-73af71f8660d",
+   "parked_to_synthetic": "75f0905c-52a2-4406-8474-2a1ad45a50b8"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0009L01U05",
+   "human_audio_id": "865fecef-be67-43b5-a0b5-1440eec6beb1",
+   "parked_to_synthetic": "e4d90977-47be-42e7-9f74-9cbc15fe0d53"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0009L02B01",
+   "human_audio_id": "55c89828-1944-46be-9f1d-25d8435d4fd3",
+   "parked_to_synthetic": "3d349602-eca5-418b-b2b0-76d5be460a5a"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0009L02B02",
+   "human_audio_id": "7a560da3-35e9-4f0c-b745-651359756b70",
+   "parked_to_synthetic": "e34781d8-7860-42b2-99f1-f27fa3dead83"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0009L02B03",
+   "human_audio_id": "913ec757-b629-4d51-8ed0-13dbd11032c6",
+   "parked_to_synthetic": "c1fa706e-ac5f-4c04-b47c-79b21f884f71"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0009L02B04",
+   "human_audio_id": "82b32fbc-f6c2-4fa1-b09e-c1efcc948e32",
+   "parked_to_synthetic": "a3841513-d578-4d92-b71e-ae5f7d44089c"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0009L02U01",
+   "human_audio_id": "f3d30ed8-2f4c-4966-89e4-184440229811",
+   "parked_to_synthetic": "35850407-4f61-4f91-99af-dbe1950fcd1e"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0009L02U02",
+   "human_audio_id": "f97df972-23dd-4f31-b616-d8d281277a50",
+   "parked_to_synthetic": "cd18511e-1102-45dc-84d2-bc54cbfd440e"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0009L02U03",
+   "human_audio_id": "af68a0d8-cb5e-4454-b7b8-a264f7a06530",
+   "parked_to_synthetic": "8089bc3a-087b-46d3-aa75-918745b0f162"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0009L02U04",
+   "human_audio_id": "3ec65952-6522-40d1-8ca1-2ecdc817679c",
+   "parked_to_synthetic": "e072c149-5c40-4df9-b620-4c5e65bd7f26"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0009L02U05",
+   "human_audio_id": "f3422007-1944-458c-80d7-d389b65a018b",
+   "parked_to_synthetic": "397421d3-3325-4899-810e-d9230cb232b7"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0010L02C03",
+   "human_audio_id": "c9402fd6-850d-46e1-9f1c-d91cf22a08f1",
+   "parked_to_synthetic": "59517cd1-6032-419b-bbb7-949e1baa2f94"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0012L03C01",
+   "human_audio_id": "cf28b9cf-4561-4740-ae22-6c0536b4b703",
+   "parked_to_synthetic": "b3ebe1e6-1f62-4c52-bbde-9a70c4d2adfb"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0015L03C01",
+   "human_audio_id": "058ead18-04b1-48d0-92ec-c53a4de4b09b",
+   "parked_to_synthetic": "c5ab6493-a6db-4b3d-a3f1-89f5a04fd429"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0017L03C01",
+   "human_audio_id": "cf28b9cf-4561-4740-ae22-6c0536b4b703",
+   "parked_to_synthetic": "b3ebe1e6-1f62-4c52-bbde-9a70c4d2adfb"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0022L03C03",
+   "human_audio_id": "65df76bf-d1e3-44d2-8e3d-9d84b3b8563f",
+   "parked_to_synthetic": "9000289f-d422-4a25-b0f5-08bfa8da8af1"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0027L04C03",
+   "human_audio_id": "c9402fd6-850d-46e1-9f1c-d91cf22a08f1",
+   "parked_to_synthetic": "59517cd1-6032-419b-bbb7-949e1baa2f94"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0044L02U05",
+   "human_audio_id": "76e59c42-b910-415a-b86d-0eec14ec4615",
+   "parked_to_synthetic": "d98b7c87-6823-4273-9da0-aaa9b90edbc4"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0047L02C01",
+   "human_audio_id": "cf28b9cf-4561-4740-ae22-6c0536b4b703",
+   "parked_to_synthetic": "b3ebe1e6-1f62-4c52-bbde-9a70c4d2adfb"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0052L05U02",
+   "human_audio_id": "48d2d95a-d99a-4195-8d5f-7897d42b4f4e",
+   "parked_to_synthetic": "0c1e63a1-cc24-4933-b53b-c5fbe3dc0daf"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0057L03C01",
+   "human_audio_id": "cf28b9cf-4561-4740-ae22-6c0536b4b703",
+   "parked_to_synthetic": "b3ebe1e6-1f62-4c52-bbde-9a70c4d2adfb"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0057L03C03",
+   "human_audio_id": "09275721-7a6b-4a1e-8cae-6c85ea9524dc",
+   "parked_to_synthetic": "fc969259-e0d8-45d3-b288-4532c387d7b7"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0078L01C01",
+   "human_audio_id": "cf28b9cf-4561-4740-ae22-6c0536b4b703",
+   "parked_to_synthetic": "b3ebe1e6-1f62-4c52-bbde-9a70c4d2adfb"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0087L02C02",
+   "human_audio_id": "cf28b9cf-4561-4740-ae22-6c0536b4b703",
+   "parked_to_synthetic": "b3ebe1e6-1f62-4c52-bbde-9a70c4d2adfb"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0100L04C01",
+   "human_audio_id": "cf28b9cf-4561-4740-ae22-6c0536b4b703",
+   "parked_to_synthetic": "b3ebe1e6-1f62-4c52-bbde-9a70c4d2adfb"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0100L04U01",
+   "human_audio_id": "ccf25629-b896-4710-ab75-73cffd6c38d6",
+   "parked_to_synthetic": "f76e869b-4653-4cdd-a694-801c501271bb"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0102L02C02",
+   "human_audio_id": "c9402fd6-850d-46e1-9f1c-d91cf22a08f1",
+   "parked_to_synthetic": "59517cd1-6032-419b-bbb7-949e1baa2f94"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0111L01C01",
+   "human_audio_id": "cf28b9cf-4561-4740-ae22-6c0536b4b703",
+   "parked_to_synthetic": "b3ebe1e6-1f62-4c52-bbde-9a70c4d2adfb"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0112L03C02",
+   "human_audio_id": "c9402fd6-850d-46e1-9f1c-d91cf22a08f1",
+   "parked_to_synthetic": "59517cd1-6032-419b-bbb7-949e1baa2f94"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0134L02C01",
+   "human_audio_id": "cf28b9cf-4561-4740-ae22-6c0536b4b703",
+   "parked_to_synthetic": "b3ebe1e6-1f62-4c52-bbde-9a70c4d2adfb"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0151L01C01",
+   "human_audio_id": "cf28b9cf-4561-4740-ae22-6c0536b4b703",
+   "parked_to_synthetic": "b3ebe1e6-1f62-4c52-bbde-9a70c4d2adfb"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0158L01C02",
+   "human_audio_id": "65df76bf-d1e3-44d2-8e3d-9d84b3b8563f",
+   "parked_to_synthetic": "9000289f-d422-4a25-b0f5-08bfa8da8af1"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0186L02C01",
+   "human_audio_id": "cf28b9cf-4561-4740-ae22-6c0536b4b703",
+   "parked_to_synthetic": "b3ebe1e6-1f62-4c52-bbde-9a70c4d2adfb"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0187L02C02",
+   "human_audio_id": "3572a416-4874-470b-8e03-4bfe5b13183e",
+   "parked_to_synthetic": "dd88c20c-493e-49ed-ad5d-2c76711b6897"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0190L01C03",
+   "human_audio_id": "cf28b9cf-4561-4740-ae22-6c0536b4b703",
+   "parked_to_synthetic": "b3ebe1e6-1f62-4c52-bbde-9a70c4d2adfb"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0208L01C01",
+   "human_audio_id": "c9402fd6-850d-46e1-9f1c-d91cf22a08f1",
+   "parked_to_synthetic": "59517cd1-6032-419b-bbb7-949e1baa2f94"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0218L01C01",
+   "human_audio_id": "c9402fd6-850d-46e1-9f1c-d91cf22a08f1",
+   "parked_to_synthetic": "59517cd1-6032-419b-bbb7-949e1baa2f94"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0230L01C02",
+   "human_audio_id": "cf28b9cf-4561-4740-ae22-6c0536b4b703",
+   "parked_to_synthetic": "b3ebe1e6-1f62-4c52-bbde-9a70c4d2adfb"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0234L03U01",
+   "human_audio_id": "806dd866-054a-4cd5-9886-65abea67e711",
+   "parked_to_synthetic": "41a11e9d-e2c2-4a81-97bb-0a457b93a83f"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0241L01B02",
+   "human_audio_id": "d2177421-c15f-4d68-a5db-827b6e091ee1",
+   "parked_to_synthetic": "86296372-b30c-474e-bcd5-207458c2491f"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0258L01C01",
+   "human_audio_id": "cf28b9cf-4561-4740-ae22-6c0536b4b703",
+   "parked_to_synthetic": "b3ebe1e6-1f62-4c52-bbde-9a70c4d2adfb"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0261L01C01",
+   "human_audio_id": "cf28b9cf-4561-4740-ae22-6c0536b4b703",
+   "parked_to_synthetic": "b3ebe1e6-1f62-4c52-bbde-9a70c4d2adfb"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0286L01C03",
+   "human_audio_id": "65df76bf-d1e3-44d2-8e3d-9d84b3b8563f",
+   "parked_to_synthetic": "9000289f-d422-4a25-b0f5-08bfa8da8af1"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0296L01C01",
+   "human_audio_id": "55c89828-1944-46be-9f1d-25d8435d4fd3",
+   "parked_to_synthetic": "3d349602-eca5-418b-b2b0-76d5be460a5a"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0333L01U01",
+   "human_audio_id": "3698eca5-2158-4291-84f5-93a148443f0f",
+   "parked_to_synthetic": "2d415127-d113-4f76-b8a9-ce5f8c35219a"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0345L01C01",
+   "human_audio_id": "c9402fd6-850d-46e1-9f1c-d91cf22a08f1",
+   "parked_to_synthetic": "59517cd1-6032-419b-bbb7-949e1baa2f94"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0352L01C03",
+   "human_audio_id": "c9402fd6-850d-46e1-9f1c-d91cf22a08f1",
+   "parked_to_synthetic": "59517cd1-6032-419b-bbb7-949e1baa2f94"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0360L01C02",
+   "human_audio_id": "cf28b9cf-4561-4740-ae22-6c0536b4b703",
+   "parked_to_synthetic": "b3ebe1e6-1f62-4c52-bbde-9a70c4d2adfb"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0362L02U01",
+   "human_audio_id": "c56eea32-ad7e-4117-ab40-8e2c556dfa19",
+   "parked_to_synthetic": "c9b0d727-8760-4bcb-a986-f7405196f1a7"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0363L01C02",
+   "human_audio_id": "65df76bf-d1e3-44d2-8e3d-9d84b3b8563f",
+   "parked_to_synthetic": "9000289f-d422-4a25-b0f5-08bfa8da8af1"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0365L01C02",
+   "human_audio_id": "c9402fd6-850d-46e1-9f1c-d91cf22a08f1",
+   "parked_to_synthetic": "59517cd1-6032-419b-bbb7-949e1baa2f94"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0375L01C01",
+   "human_audio_id": "c9402fd6-850d-46e1-9f1c-d91cf22a08f1",
+   "parked_to_synthetic": "59517cd1-6032-419b-bbb7-949e1baa2f94"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0393L04U06",
+   "human_audio_id": "abda0d43-9449-4b65-911b-3a6dbc1d0569",
+   "parked_to_synthetic": "7d57275b-20cd-42a4-8653-72d61c365ab1"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0409L02C01",
+   "human_audio_id": "cf28b9cf-4561-4740-ae22-6c0536b4b703",
+   "parked_to_synthetic": "b3ebe1e6-1f62-4c52-bbde-9a70c4d2adfb"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0411L03U01",
+   "human_audio_id": "65f8618f-b103-407f-ae33-aaa689a74a76",
+   "parked_to_synthetic": "6f6140c8-bdb9-4584-9ddd-0bfa9c62f3f6"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0430L01C01",
+   "human_audio_id": "c9402fd6-850d-46e1-9f1c-d91cf22a08f1",
+   "parked_to_synthetic": "59517cd1-6032-419b-bbb7-949e1baa2f94"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0451L01C01",
+   "human_audio_id": "cf28b9cf-4561-4740-ae22-6c0536b4b703",
+   "parked_to_synthetic": "b3ebe1e6-1f62-4c52-bbde-9a70c4d2adfb"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0452L01C01",
+   "human_audio_id": "c9402fd6-850d-46e1-9f1c-d91cf22a08f1",
+   "parked_to_synthetic": "59517cd1-6032-419b-bbb7-949e1baa2f94"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0469L01C03",
+   "human_audio_id": "c9402fd6-850d-46e1-9f1c-d91cf22a08f1",
+   "parked_to_synthetic": "59517cd1-6032-419b-bbb7-949e1baa2f94"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0473L01C02",
+   "human_audio_id": "c9402fd6-850d-46e1-9f1c-d91cf22a08f1",
+   "parked_to_synthetic": "59517cd1-6032-419b-bbb7-949e1baa2f94"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0474L01C01",
+   "human_audio_id": "c9402fd6-850d-46e1-9f1c-d91cf22a08f1",
+   "parked_to_synthetic": "59517cd1-6032-419b-bbb7-949e1baa2f94"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0474L03U01",
+   "human_audio_id": "9c3fc9e8-93d7-413d-a386-53e356da4181",
+   "parked_to_synthetic": "b4397d56-d3ad-47c9-b35f-97a2f6420e7a"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0480L01C02",
+   "human_audio_id": "cf28b9cf-4561-4740-ae22-6c0536b4b703",
+   "parked_to_synthetic": "b3ebe1e6-1f62-4c52-bbde-9a70c4d2adfb"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0501L05U01",
+   "human_audio_id": "2b848481-97c7-498a-a193-1ac5999108fc",
+   "parked_to_synthetic": "b987f48e-3586-477f-a5b0-cbc0c91177c8"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0526L02C02",
+   "human_audio_id": "c9402fd6-850d-46e1-9f1c-d91cf22a08f1",
+   "parked_to_synthetic": "59517cd1-6032-419b-bbb7-949e1baa2f94"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0531L01C03",
+   "human_audio_id": "c9402fd6-850d-46e1-9f1c-d91cf22a08f1",
+   "parked_to_synthetic": "59517cd1-6032-419b-bbb7-949e1baa2f94"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0536L03C01",
+   "human_audio_id": "cf28b9cf-4561-4740-ae22-6c0536b4b703",
+   "parked_to_synthetic": "b3ebe1e6-1f62-4c52-bbde-9a70c4d2adfb"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0544L03U01",
+   "human_audio_id": "d08cc020-1d0d-4072-9f9f-b818fff5de25",
+   "parked_to_synthetic": "9dda31d6-8a98-47fb-ad72-c8cce7f702de"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0656L01B02",
+   "human_audio_id": "1fb67960-5c29-4005-a9ac-683adad7a6be",
+   "parked_to_synthetic": "a406a9d4-b261-4118-bbf6-2f5cbd77a905"
+  },
+  {
+   "table": "course_practice_phrases",
+   "slot_id": "deu_at_for_eng:S0667L01C04",
+   "human_audio_id": "cf28b9cf-4561-4740-ae22-6c0536b4b703",
+   "parked_to_synthetic": "b3ebe1e6-1f62-4c52-bbde-9a70c4d2adfb"
+  },
+  {
+   "table": "course_legos",
+   "slot_id": "07ac7660-ac72-4983-92f3-70ff661c4bc1",
+   "human_audio_id": "9be668b2-142b-4ee7-b560-e265a44a6f38",
+   "parked_to_synthetic": "7c2aba56-2117-4e7a-84ff-32effaf1f927"
+  },
+  {
+   "table": "course_legos",
+   "slot_id": "0c9a0a33-fb10-497d-80c6-7f36e224d747",
+   "human_audio_id": "85b9f2de-634f-4bbb-928a-c9493008fe2a",
+   "parked_to_synthetic": "19c8bd26-212e-4343-8818-cd9616b8b463"
+  },
+  {
+   "table": "course_legos",
+   "slot_id": "0f56fe0e-ce8f-43db-adb8-6f5be4141580",
+   "human_audio_id": "692e6304-54e1-44c7-8dbb-f1846ddd206f",
+   "parked_to_synthetic": "e9f3abbb-d3d9-4bcf-b4f0-dd6d7e132b8f"
+  },
+  {
+   "table": "course_legos",
+   "slot_id": "1c666763-cc16-4c0f-a891-186dcef5c502",
+   "human_audio_id": "1c4be952-1fe7-444b-a4f6-d0b4bd076438",
+   "parked_to_synthetic": "e7475c6f-7c6b-40ba-bea3-1d216156791a"
+  },
+  {
+   "table": "course_legos",
+   "slot_id": "1dd6ec1d-4e7b-4c3f-84cd-e7802c97f891",
+   "human_audio_id": "55c89828-1944-46be-9f1d-25d8435d4fd3",
+   "parked_to_synthetic": "3d349602-eca5-418b-b2b0-76d5be460a5a"
+  },
+  {
+   "table": "course_legos",
+   "slot_id": "209ac755-a7d2-40c2-a9ee-432f9f26bd44",
+   "human_audio_id": "1fb67960-5c29-4005-a9ac-683adad7a6be",
+   "parked_to_synthetic": "a406a9d4-b261-4118-bbf6-2f5cbd77a905"
+  },
+  {
+   "table": "course_legos",
+   "slot_id": "23109f0b-298b-403b-8aa0-24bfdff2bb38",
+   "human_audio_id": "09275721-7a6b-4a1e-8cae-6c85ea9524dc",
+   "parked_to_synthetic": "fc969259-e0d8-45d3-b288-4532c387d7b7"
+  },
+  {
+   "table": "course_legos",
+   "slot_id": "2333d103-beea-45c1-911e-d317452c45e8",
+   "human_audio_id": "57e6e92e-cc48-4f59-84f7-d2f856a1efb7",
+   "parked_to_synthetic": "8a4c7a78-105f-4e50-b5f8-da6ae4e6fa1d"
+  },
+  {
+   "table": "course_legos",
+   "slot_id": "28fafe4c-43f7-4c7d-be23-bba9f8719e29",
+   "human_audio_id": "8717bb67-c933-46c0-bffa-b7c9af518353",
+   "parked_to_synthetic": "2711d628-6732-4b80-bb21-90e6388baca2"
+  },
+  {
+   "table": "course_legos",
+   "slot_id": "339f5c06-41d5-4a8c-b734-a2a636700d3e",
+   "human_audio_id": "e6751649-331e-435b-9e11-2138aa67acfb",
+   "parked_to_synthetic": "f5eec730-3c15-4ce5-b085-1849b69f7d7d"
+  },
+  {
+   "table": "course_legos",
+   "slot_id": "461b865c-35fe-4060-b8e0-eba8620f5f23",
+   "human_audio_id": "31730adc-dc56-43e7-b758-0340f5e58f10",
+   "parked_to_synthetic": "c0b78b9b-7c95-4ed0-83b0-505e7b8dacfc"
+  },
+  {
+   "table": "course_legos",
+   "slot_id": "46f0b30a-3d24-42a8-9ff6-61f1c5d540ea",
+   "human_audio_id": "cf28b9cf-4561-4740-ae22-6c0536b4b703",
+   "parked_to_synthetic": "b3ebe1e6-1f62-4c52-bbde-9a70c4d2adfb"
+  },
+  {
+   "table": "course_legos",
+   "slot_id": "54dbc0c6-6c01-4e32-a2cf-579732681dea",
+   "human_audio_id": "524429f9-4752-4777-a9ce-6dd0a79dec5f",
+   "parked_to_synthetic": "30ef8a3a-6c2b-469f-9273-ffbb0920ffcb"
+  },
+  {
+   "table": "course_legos",
+   "slot_id": "6bd6661d-9267-4407-a9c8-1bbae833f840",
+   "human_audio_id": "bee6eabd-1e43-494b-9cb4-d82bad38e77d",
+   "parked_to_synthetic": "ee4791e8-89b2-495d-a02d-7b31ffbb67c2"
+  },
+  {
+   "table": "course_legos",
+   "slot_id": "9803d3ce-039b-474c-9d80-c7a6a476cdf5",
+   "human_audio_id": "2fd5afd0-aacd-4763-af45-7fdc0e22f860",
+   "parked_to_synthetic": "1728a439-5391-45b0-bdcb-d959c3f3e289"
+  },
+  {
+   "table": "course_legos",
+   "slot_id": "9d69b114-81c0-4575-a9ef-54c5ae37f3b4",
+   "human_audio_id": "3572a416-4874-470b-8e03-4bfe5b13183e",
+   "parked_to_synthetic": "dd88c20c-493e-49ed-ad5d-2c76711b6897"
+  },
+  {
+   "table": "course_legos",
+   "slot_id": "a7005c9e-087f-4be3-a62d-9041a8eb484e",
+   "human_audio_id": "058ead18-04b1-48d0-92ec-c53a4de4b09b",
+   "parked_to_synthetic": "c5ab6493-a6db-4b3d-a3f1-89f5a04fd429"
+  },
+  {
+   "table": "course_legos",
+   "slot_id": "b243e750-cf67-4f64-bc6c-ccc20dff19b8",
+   "human_audio_id": "6c6ac9ee-5780-41cf-8c18-c306e4094b6e",
+   "parked_to_synthetic": "81764878-f022-4e11-8cce-02feec59dfa1"
+  },
+  {
+   "table": "course_legos",
+   "slot_id": "c89a4bc4-c12b-451d-bea1-2fdcaeec3570",
+   "human_audio_id": "d2177421-c15f-4d68-a5db-827b6e091ee1",
+   "parked_to_synthetic": "86296372-b30c-474e-bcd5-207458c2491f"
+  },
+  {
+   "table": "course_legos",
+   "slot_id": "cab6f9db-0bd5-46f0-b844-ceca924a521f",
+   "human_audio_id": "c9402fd6-850d-46e1-9f1c-d91cf22a08f1",
+   "parked_to_synthetic": "59517cd1-6032-419b-bbb7-949e1baa2f94"
+  },
+  {
+   "table": "course_legos",
+   "slot_id": "d211e4a0-bdd5-4688-a602-ad503d7d2f3c",
+   "human_audio_id": "f799997d-7b2d-4b79-88a9-4a0b48f1adc5",
+   "parked_to_synthetic": "9b7fe3b9-fb7f-4d6a-98d8-7fb405c3f4fe"
+  },
+  {
+   "table": "course_legos",
+   "slot_id": "d4dab599-743c-4701-bd34-661d3a11309d",
+   "human_audio_id": "fd55cefd-6a01-4de5-9cba-12fb37f95b14",
+   "parked_to_synthetic": "4cef36d3-6237-4bd0-b973-da3b11b37a51"
+  },
+  {
+   "table": "course_legos",
+   "slot_id": "dbdf0bdf-2302-4ca5-9804-196097c674b2",
+   "human_audio_id": "168ea4c5-ccfc-4a64-946c-217bc30271ed",
+   "parked_to_synthetic": "8a7c31f5-e4d9-4a64-afbc-074bf2621703"
+  },
+  {
+   "table": "course_legos",
+   "slot_id": "dd8e0fdc-ae5b-4628-91ec-788b2e0d1c50",
+   "human_audio_id": "3c625ee9-db1c-47f5-b511-b3cf897e5812",
+   "parked_to_synthetic": "546d1bae-0fe8-494b-aef0-eed2fc4a484d"
+  },
+  {
+   "table": "course_legos",
+   "slot_id": "e5ce044b-79f1-4454-9ff8-a762967164b6",
+   "human_audio_id": "6a1ee624-6b12-40e5-825a-980be7a90ccf",
+   "parked_to_synthetic": "49850b16-1290-4cd4-ac2b-13cb7870d838"
+  },
+  {
+   "table": "course_legos",
+   "slot_id": "ed03d3a8-d1be-44e9-9a17-754c560114bb",
+   "human_audio_id": "a4b72c98-084a-4420-919c-f3a2bdcf51b9",
+   "parked_to_synthetic": "d679601e-5d08-41f4-a78e-763907c8236b"
+  },
+  {
+   "table": "course_legos",
+   "slot_id": "f4738b83-d803-4279-b02e-974c7a33db6e",
+   "human_audio_id": "65df76bf-d1e3-44d2-8e3d-9d84b3b8563f",
+   "parked_to_synthetic": "9000289f-d422-4a25-b0f5-08bfa8da8af1"
+  },
+  {
+   "table": "course_legos",
+   "slot_id": "f6aec8b9-3b6e-4280-a1e1-0eb8eea3d802",
+   "human_audio_id": "57f77f84-3fce-4adc-ab18-467fbda0f43c",
+   "parked_to_synthetic": "5929496c-aa2f-4995-909e-5a629a365c2a"
+  },
+  {
+   "table": "course_seeds",
+   "slot_id": "1ba52859-9f14-4768-9340-97898a90aadc",
+   "human_audio_id": "b0d69759-cae0-45a9-b115-f67ff0fe51cb",
+   "parked_to_synthetic": "bc6b1412-a8e6-4553-99d1-9413935770f9"
+  },
+  {
+   "table": "course_seeds",
+   "slot_id": "2ca104fa-c6da-4fd4-b948-1fab699de217",
+   "human_audio_id": "d95c60a1-ce74-4fc6-8d30-ae3ffc856daa",
+   "parked_to_synthetic": "5d5cd21e-03ad-45fc-831a-7797e92a6fe6"
+  },
+  {
+   "table": "course_seeds",
+   "slot_id": "368960cf-a77a-4dfc-86e3-dc82d3ccd7b8",
+   "human_audio_id": "4f131117-74cd-4fdd-8aa2-9fb13a806ed1",
+   "parked_to_synthetic": "a3d58dbf-6fbc-4288-be71-57b787f173b6"
+  },
+  {
+   "table": "course_seeds",
+   "slot_id": "51385bb8-c1bf-46da-8e0d-f4366de566c6",
+   "human_audio_id": "806dd866-054a-4cd5-9886-65abea67e711",
+   "parked_to_synthetic": "41a11e9d-e2c2-4a81-97bb-0a457b93a83f"
+  },
+  {
+   "table": "course_seeds",
+   "slot_id": "51f746fa-7942-4bef-b28e-d9471707f66f",
+   "human_audio_id": "65f8618f-b103-407f-ae33-aaa689a74a76",
+   "parked_to_synthetic": "6f6140c8-bdb9-4584-9ddd-0bfa9c62f3f6"
+  },
+  {
+   "table": "course_seeds",
+   "slot_id": "525d1669-0032-4dfc-ab1c-c8d53107fc20",
+   "human_audio_id": "2b848481-97c7-498a-a193-1ac5999108fc",
+   "parked_to_synthetic": "b987f48e-3586-477f-a5b0-cbc0c91177c8"
+  },
+  {
+   "table": "course_seeds",
+   "slot_id": "530587bb-ea8a-43b4-a807-00e78d3bb7b4",
+   "human_audio_id": "c56eea32-ad7e-4117-ab40-8e2c556dfa19",
+   "parked_to_synthetic": "c9b0d727-8760-4bcb-a986-f7405196f1a7"
+  },
+  {
+   "table": "course_seeds",
+   "slot_id": "6214548e-7065-4d63-b175-52684c0349ba",
+   "human_audio_id": "86dd7da5-4c4e-4d1c-b0db-c72133216f91",
+   "parked_to_synthetic": "38ffe0d4-af91-4e7f-9d50-e2ab49e90313"
+  },
+  {
+   "table": "course_seeds",
+   "slot_id": "643ea231-3ac4-4d5a-857d-eba8bf948eac",
+   "human_audio_id": "fbfc274b-308a-4fd8-9fa5-ae81f9e6676f",
+   "parked_to_synthetic": "62db935a-40c4-49c2-82bc-95e34a40e775"
+  },
+  {
+   "table": "course_seeds",
+   "slot_id": "711872be-2cdd-4405-8eb0-adfe615f86ae",
+   "human_audio_id": "04f21e0e-ea15-4997-a567-cecc4ad3bddf",
+   "parked_to_synthetic": "02e9d147-e504-41c6-9fe8-8a9c538cc19c"
+  },
+  {
+   "table": "course_seeds",
+   "slot_id": "786ab943-8a7d-42ae-bca0-31e707d7768c",
+   "human_audio_id": "48d2d95a-d99a-4195-8d5f-7897d42b4f4e",
+   "parked_to_synthetic": "0c1e63a1-cc24-4933-b53b-c5fbe3dc0daf"
+  },
+  {
+   "table": "course_seeds",
+   "slot_id": "7a755b23-290c-4ce9-bde1-7c13563b06a9",
+   "human_audio_id": "081c1293-9d8e-49d8-9f3a-c219639a97c0",
+   "parked_to_synthetic": "f1cca90b-b3b8-4b4e-9d5c-c8d0c888962d"
+  },
+  {
+   "table": "course_seeds",
+   "slot_id": "7d25a9a8-bfb0-4f3e-bbfa-a8dd955b5b8c",
+   "human_audio_id": "bf9aaa62-e290-4f92-ad49-fee2ed8d3a25",
+   "parked_to_synthetic": "73db73c4-f462-470f-8500-fff4074f3beb"
+  },
+  {
+   "table": "course_seeds",
+   "slot_id": "7d5471ab-ab05-4279-ab4c-c05aa79ff4e4",
+   "human_audio_id": "ccf25629-b896-4710-ab75-73cffd6c38d6",
+   "parked_to_synthetic": "f76e869b-4653-4cdd-a694-801c501271bb"
+  },
+  {
+   "table": "course_seeds",
+   "slot_id": "834efa2b-35bb-4771-9cee-00b31a287bac",
+   "human_audio_id": "2a5ac4ad-de2f-4eed-8bdd-1f8166e4b506",
+   "parked_to_synthetic": "3089b823-a6d6-4a7a-82b8-7ec24ec48728"
+  },
+  {
+   "table": "course_seeds",
+   "slot_id": "a5b32981-ba76-4b23-9778-9f8b7bacdf6e",
+   "human_audio_id": "b84724bc-08de-4bfa-afe0-bc42ed2f939f",
+   "parked_to_synthetic": "4613c531-7dd5-4510-a1fd-e58bb7ab46c6"
+  },
+  {
+   "table": "course_seeds",
+   "slot_id": "ac11d0c5-e22b-421d-bf37-27ffffdddc1e",
+   "human_audio_id": "76a4e705-a523-4d04-9370-506a8a61bbf5",
+   "parked_to_synthetic": "059d9997-523c-4fa0-9fc1-df7d5b19f5c4"
+  },
+  {
+   "table": "course_seeds",
+   "slot_id": "afbbb48c-6cfb-4cba-98b4-d58f367a967e",
+   "human_audio_id": "3698eca5-2158-4291-84f5-93a148443f0f",
+   "parked_to_synthetic": "2d415127-d113-4f76-b8a9-ce5f8c35219a"
+  },
+  {
+   "table": "course_seeds",
+   "slot_id": "bab47e52-b634-4be0-84ca-3430df5896d9",
+   "human_audio_id": "be4d6955-fa26-428a-a6b7-1199041b44b0",
+   "parked_to_synthetic": "df74b03d-217e-4cf4-9313-d0a146f9b10c"
+  },
+  {
+   "table": "course_seeds",
+   "slot_id": "bf00478c-50ba-4689-b6b1-12c45870c5ef",
+   "human_audio_id": "7040fa19-4020-4a49-9380-a1a7a6bc014e",
+   "parked_to_synthetic": "914a66e9-123b-4b7e-91ba-16414fed7a28"
+  },
+  {
+   "table": "course_seeds",
+   "slot_id": "cfc28df5-3de8-410b-bc3b-2193a52c0010",
+   "human_audio_id": "d08cc020-1d0d-4072-9f9f-b818fff5de25",
+   "parked_to_synthetic": "9dda31d6-8a98-47fb-ad72-c8cce7f702de"
+  },
+  {
+   "table": "course_seeds",
+   "slot_id": "d9ad292f-7f7e-4f72-badb-5227fbae9940",
+   "human_audio_id": "9c3fc9e8-93d7-413d-a386-53e356da4181",
+   "parked_to_synthetic": "b4397d56-d3ad-47c9-b35f-97a2f6420e7a"
+  },
+  {
+   "table": "course_seeds",
+   "slot_id": "e0611269-5419-4fb0-89fb-4dfc054682ab",
+   "human_audio_id": "4860c6f8-4f2a-4c75-9a46-b78903f8424f",
+   "parked_to_synthetic": "057ae44c-a26d-4608-8116-cf41c8d9de7b"
+  },
+  {
+   "table": "course_seeds",
+   "slot_id": "e86cfd05-0544-47f8-a6b8-63d8720f07c3",
+   "human_audio_id": "566b68fb-44b3-4334-b8d5-16b9cba57875",
+   "parked_to_synthetic": "ea80346f-e7ea-4dac-8cd2-9027e31aad3b"
+  },
+  {
+   "table": "course_seeds",
+   "slot_id": "e8ebfde7-8807-4257-b459-98b5839bd33f",
+   "human_audio_id": "c00b3424-ab5d-47d9-b687-9283c490ab7a",
+   "parked_to_synthetic": "322e136c-db86-4f3f-8e53-20fdd9590f62"
+  }
+ ]
+}
