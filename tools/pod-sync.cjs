@@ -26,6 +26,7 @@ require('dotenv').config({ path: require('path').resolve(__dirname, '../.env') }
 const fs = require('fs');
 const path = require('path');
 const { createClient } = require('@supabase/supabase-js');
+const approvals = require('../services/pod-voice-approvals.cjs');
 
 // LAZY on purpose. This module is the one implementation of pod casting
 // (assignVoices), so it is imported by things that must not open a DB
@@ -497,6 +498,54 @@ function resolveCast(rawSpeakers, targetLang, knownLang, pools, overrides = null
 }
 
 // ---------------------------------------------------------------------------
+// Cast pinning guard (Tom, 2026-08-24)
+// ---------------------------------------------------------------------------
+// A pool re-sync must never overwrite an APPROVED cast. deu_for_eng and
+// deu_at_for_eng share pool key 'deu' but carry opposite approved rulings
+// (German: Moritz/Lena; Austrian German: Felix/Sonja) — resolving fresh from
+// the pool on every sync is exactly what could silently stomp one course's
+// cast onto the other's (docs/pods/deu-pod-1-cutover-record-2026-08-22.md,
+// "a latent hazard carried forward from the previous worker's own flag").
+//
+// The pin is the SAME approval record pod-approve-voices already writes
+// (app_config.pod_voice_approvals) — no new storage, no new column. A course
+// whose approval fingerprint still matches its LIVE cast is pinned; this
+// sync's freshly-resolved speakers must reproduce that exact fingerprint or
+// the sync is refused outright, never silently applied.
+//
+// Pure on purpose (mirrors evaluateApproval in pod-voice-approvals.cjs) so it
+// is testable without a DB: the caller supplies the approval record, the
+// course's pods as they currently stand, and the fresh speakers this sync is
+// about to write for THIS pod.
+//
+// @returns {{ok: true} | {ok: false, message: string}}
+function checkCastPin(courseCode, podId, approval, existingPods, freshSpeakers) {
+  if (!approval) return { ok: true };
+  const liveFp = approvals.castFingerprint(existingPods);
+  if (approval.cast_fingerprint !== liveFp) {
+    // Already stale for reasons unrelated to THIS sync (e.g. recast out of
+    // band since approval) — not this guard's job to adjudicate; the existing
+    // bulk-generation gate (evaluateApproval) already refuses on staleness.
+    return { ok: true };
+  }
+  const already = existingPods.some((p) => p.id === podId);
+  const prospective = already
+    ? existingPods.map((p) => (p.id === podId ? { ...p, speakers: freshSpeakers } : p))
+    : [...existingPods, { id: podId, speakers: freshSpeakers }];
+  const nextFp = approvals.castFingerprint(prospective);
+  if (nextFp === approval.cast_fingerprint) return { ok: true };
+  return {
+    ok: false,
+    message: `Cast pinning guard: ${courseCode} has an APPROVED cast (by `
+      + `${approval.approved_by || '?'} on ${approval.approved_at || '?'}, fingerprint `
+      + `${approval.cast_fingerprint}) but re-syncing ${podId} from the pool would recast it to `
+      + `${nextFp}. Refusing to overwrite an approved cast — re-approve the new cast first `
+      + `(node tools/pod-approve-voices.cjs --course=${courseCode} --by=<name>) or check `
+      + `courses.voice_pool_key if the pool resolved the wrong region.`,
+  };
+}
+
+// ---------------------------------------------------------------------------
 // Markdown parsing
 // ---------------------------------------------------------------------------
 
@@ -789,6 +838,15 @@ async function syncPod(markdownPath, options) {
   const knownLang = keys.known;
   const speakers = resolveCast(parsed.uniqueSpeakers, targetLang, knownLang, pools);
 
+  // Cast pinning guard — runs before any write, dry-run included, so a
+  // conflict surfaces on a --dry-run too. See checkCastPin() above.
+  const [approvalsMap, existingCastPods] = await Promise.all([
+    approvals.loadApprovals(db()),
+    approvals.loadCastPods(db(), courseCode),
+  ]);
+  const pin = checkCastPin(courseCode, podId, approvalsMap[courseCode] || null, existingCastPods, speakers);
+  if (!pin.ok) throw new Error(pin.message);
+
   console.log(`\n🎧 Pod Sync: ${markdownPath}`);
   console.log(`   Target:   ${podId}  (type=${podType})`);
   console.log(`   Title:    ${parsed.pod_title || '(none)'}`);
@@ -955,4 +1013,5 @@ module.exports = {
   parseMarkdown, syncPod, assignVoices, resolveCast,
   canonicalSpeakerName, extractGenderMarker, inferGenderFromName,
   loadVoicePools, poolKeyFor, poolKeysForCourse, normaliseOverrides,
+  checkCastPin,
 };
