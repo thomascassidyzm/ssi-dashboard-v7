@@ -98,23 +98,38 @@ function loadAsr() {
   }
 }
 
+// How unlike its own text a decode has to be before the clip is worth Kai's
+// first look. Whisper renders Austrian dialect into Standard German spelling,
+// so a GOOD clip lands around 0.77 (the measured median over all 225) and the
+// scale below ~0.5 is where the audio stops being a reading of the line at all:
+// "Ups!", a laugh, "blabla blabla blabla". Calibrated 2026-08-25, not guessed.
+const OWN_SCORE_SUSPECT = 0.5
+
 /**
  * Riskiest first. Three tiers, in Kai's stated order:
- *   0  ASR says the audio matches somebody else's text better than its own
+ *   0  the audio does not match its own text (lowest own_score first)
  *   1  the line was recorded more than once (most takes first)
  *   2  everything else, in seed order
  * No clip is ever hidden — the tail is the disconfirming evidence.
+ *
+ * Tier 0 ranks on the ABSOLUTE own-text score, not on the margin against other
+ * texts. Margin was the first cut and it ranked badly: on a one- or two-word
+ * line ("i wü", "reden") almost any other text scores a hair higher by chance,
+ * so noise floated above a nine-word line whose audio is the recordist saying
+ * "Ups!". The best-other text is still shown when it means something — it is
+ * how a genuine take-N-under-phrase-N+1 mislabel announces itself.
  */
 function orderedClips() {
   const asr = loadAsr()
   const scored = CLIPS.map((c, i) => {
     const a = asr.get(c.id) || null
-    const tier = a ? 0 : (c.take_count > 1 ? 1 : 2)
+    const suspect = a && Number(a.own_score) < OWN_SCORE_SUSPECT
+    const tier = suspect ? 0 : (c.take_count > 1 ? 1 : 2)
     return { c, i, a, tier }
   })
   scored.sort((x, y) =>
     x.tier - y.tier ||
-    (x.tier === 0 ? Number(y.a.margin) - Number(x.a.margin) : 0) ||
+    (x.tier === 0 ? Number(x.a.own_score) - Number(y.a.own_score) : 0) ||
     (x.tier === 1 ? y.c.take_count - x.c.take_count : 0) ||
     ((x.c.seed ?? 1e9) - (y.c.seed ?? 1e9)) ||
     x.i - y.i
@@ -130,8 +145,13 @@ function orderedClips() {
     rank: idx + 1,
     tier,
     // Said in words on the card, because a rank nobody can interrogate is noise.
+    // The "sounds more like" clause is only earned when the other text really
+    // does beat this one; otherwise it is an invitation to see a pattern that
+    // is not there.
     why: tier === 0
-      ? `sounds more like "${a.best_other_text}"`
+      ? (Number(a.margin) > 0 && a.best_other_text
+        ? `the audio does not match this text — sounds more like "${a.best_other_text}"`
+        : 'the audio does not match this text')
       : tier === 1
         ? `${c.take_count} takes of this line`
         : null,
