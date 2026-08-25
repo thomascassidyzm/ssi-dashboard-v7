@@ -1,12 +1,15 @@
 # deu_at_for_eng — quote strip + target2 restore (2026-08-25)
 
-**The course went from playing 2.1% of itself to playing 100% of itself, and Sascha's
+**The course went from playing 2.1% of itself to playing 100% of itself, and Sasha's
 225 recordings came through untouched.**
 
 Authorised by Kai: *"let us strip the quote marks and restore the backed up voice clips."*
-No TTS was generated. No audio file was deleted. No course status was changed —
-`new_app_status` was not touched, deliberately: the repair was authorised, the launch
-was not.
+Then, on a later ruling — *"I would like you to push Austrian live (as beta) as soon as
+you can"* — **the course was flipped to beta and is now live to learners.** No TTS was
+generated. No audio file was deleted. Nothing of Sasha's was deleted.
+
+The flip was done **last**, only after steps 1–5 below were each proven, and then
+verified end to end against the deployed learner app rather than from the database row.
 
 ---
 
@@ -17,7 +20,7 @@ was not.
 | Practice-phrase rows the player would actually schedule | 258 / 12,551 (**2.1%**) | 12,551 / 12,551 (**100%**) |
 | Rows with literal quote marks in their text | 529 | **0** |
 | `target2` links — phrases / legos / seeds | 258 / 28 / 25 | 12,551 / 1,259 / 668 |
-| Sascha's human clips in `course_audio` | 225 | **225 — unchanged** |
+| Sasha's human clips in `course_audio` | 225 | **225 — unchanged** |
 
 The playability rule is not an inference. `ssi-learning-app/api/courses/[code]/cycles.ts:295`:
 
@@ -121,7 +124,7 @@ concurrent writer could not be silently overwritten.
 ## Job 2 — restoring the 12,411 backed-up clips
 
 **12,411 clips restored. 12,293 phrase slots, 1,231 lego slots and 643 seed slots filled.
-Sascha lost nothing.**
+Sasha lost nothing.**
 
 ### The backup was complete — checked before trusting it
 
@@ -174,17 +177,17 @@ had to be written directly, exactly as briefed.
 Even past the gate, every branch of that function is `WHERE ... target2_audio_id IS NULL`.
 It only ever fills empty slots.
 
-### Trap (b): the guard on Sascha's recordings
+### Trap (b): the guard on Sasha's recordings
 
 **The guard is `WHERE target2_audio_id IS NULL`, and it is safe by construction rather
 than by a list that could go stale.**
 
-First, the fact that makes it sound: every occupied `target2` slot in the course was hers.
+First, the fact that makes it sound: every occupied `target2` slot in the course was theirs.
 311 slots, and all 311 resolve to `origin = 'human'`, `voice_id = human_sasha_wanasky_deu_at`
 — **0 non-human, 0 dangling**. So a write that refuses to touch a non-NULL slot cannot
-touch her, and it does not depend on my enumeration being right.
+touch them, and it does not depend on my enumeration being right.
 
-Her occupancy: **258 practice phrases + 28 legos + 25 seeds = 311 slots, from 225 clips**
+Their occupancy: **258 practice phrases + 28 legos + 25 seeds = 311 slots, from 225 clips**
 (several slots share a clip). That is the brief's 311, independently reproduced.
 
 **Proven on a small batch before the full run**, exactly as required:
@@ -192,22 +195,22 @@ Her occupancy: **258 practice phrases + 28 legos + 25 seeds = 311 slots, from 22
 ```
 BEFORE  human clips: 225   occupied target2 slots p/l/s: 258 28 25
 clips inserted: 20 of 20
-linked course_practice_phrases 68 (candidates 91)   <- 23 skipped, all hers
-linked course_legos             1 (candidates  4)   <-  3 skipped, all hers
-linked course_seeds             0 (candidates  1)   <-  1 skipped, hers
-AFTER   human clips: 225   slots still held by Sascha p/l/s: 258 28 25
+linked course_practice_phrases 68 (candidates 91)   <- 23 skipped, all theirs
+linked course_legos             1 (candidates  4)   <-  3 skipped, all theirs
+linked course_seeds             0 (candidates  1)   <-  1 skipped, theirs
+AFTER   human clips: 225   slots still held by Sasha p/l/s: 258 28 25
 ```
 
-27 of the first batch's candidate slots were hers, the guard skipped all 27, and her
+27 of the first batch's candidate slots were theirs, the guard skipped all 27, and their
 counts were identical before and after. Only then was the full set run.
 
 Full run, and the arithmetic closes exactly:
 
 | table | candidates | linked | skipped | skipped = |
 |---|---|---|---|---|
-| `course_practice_phrases` | 12,551 | 11,944 | 607 | 349 already restored + **258 Sascha** |
-| `course_legos` | 1,259 | 1,230 | 29 | 1 already restored + **28 Sascha** |
-| `course_seeds` | 668 | 643 | 25 | **25 Sascha** |
+| `course_practice_phrases` | 12,551 | 11,944 | 607 | 349 already restored + **258 Sasha** |
+| `course_legos` | 1,259 | 1,230 | 29 | 1 already restored + **28 Sasha** |
+| `course_seeds` | 668 | 643 | 25 | **25 Sasha** |
 
 `human clips AFTER: 225 UNCHANGED`.
 
@@ -221,7 +224,7 @@ verification.)*
 
 ---
 
-## Sascha's 225 links: parked, not deleted
+## Sasha's 225 links: parked, not deleted
 
 Kai's call: for the beta, one real human voice appearing for a single line among synthetic
 voices at unpredictable points reads as a fault, so the course speaks with one voice until
@@ -229,11 +232,11 @@ there is enough human audio to switch wholesale.
 
 **311 slots were pointed at the restored synthetic clip. Nothing was deleted.**
 
-- her **225 `course_audio` rows are still there** — all 225 with an intact `s3_key` and a
+- their **225 `course_audio` rows are still there** — all 225 with an intact `s3_key` and a
   non-zero `duration_ms`
-- **all 225 of her S3 audio objects were probed directly and all 225 came back alive**
-  (`SASCHA: 225 clips -> alive 225, dead 0`), using the same calibrated probe as above —
-  so this is her recordings verified at file level, not merely a row count
+- **all 225 of their S3 audio objects were probed directly and all 225 came back alive**
+  (`SASHA: 225 clips -> alive 225, dead 0`), using the same calibrated probe as above —
+  so this is their recordings verified at file level, not merely a row count
 - every slot had a synthetic replacement available (311 of 311), so parking left **no
   silent slots**
 - `target2` now resolves to exactly **one voice** across the course
@@ -241,10 +244,10 @@ there is enough human audio to switch wholesale.
 ### Putting them back — one command
 
 ```
-APPLY=1 node tools/deu-at/unpark-sascha-links.cjs
+APPLY=1 node tools/deu-at/unpark-sasha-links.cjs
 ```
 
-It reads `docs/audio/deu_at_for_eng-sascha-parked-links-2026-08-25.json` (311 entries,
+It reads `docs/audio/deu_at_for_eng-sasha-parked-links-2026-08-25.json` (311 entries,
 each recording `table`, `slot_id`, `human_audio_id`, `parked_to_synthetic`) and reverses
 each swap. It only reverses a slot that still holds exactly what we parked it to, so a
 newer delivery is never clobbered; drifted slots are reported and left alone.
@@ -253,16 +256,16 @@ newer delivery is never clobbered; drifted slots are reported and left alone.
 
 ---
 
-## Job 3 — will Sascha's next recordings overwrite the restored clips?
+## Job 3 — will Sasha's next recordings overwrite the restored clips?
 
 **Yes — they overwrite automatically. Nobody has to do anything, and the restore is
-harmless to her work.** Of the three possible answers this is (1).
+harmless to their work.** Of the three possible answers this is (1).
 
 *(An earlier draft of this report said the opposite. That was wrong: it was reasoned from
-the phase8 relink path and the autolink trigger without finding the writer that Sascha's
+the phase8 relink path and the autolink trigger without finding the writer that Sasha's
 takes actually flow through. The correct path is below, and it was found by worker #556.)*
 
-### The path her takes actually take
+### The path their takes actually take
 
 `services/production-api.cjs:5536` — on upload, when the take is in **script mode** it is
 filed as a `course_audio` row and then immediately attached:
@@ -289,45 +292,96 @@ It updates the item the take was recorded for — named directly, so it lands re
 what the slot already held — plus every sibling item in the course whose text matches
 exactly. A filled slot is simply overwritten.
 
-Her takes qualify. `recording_provenance.quality_notes` on her most recent takes reads
+Their takes qualify. `recording_provenance.quality_notes` on their most recent takes reads
 `"mode":"script"`, `"role":"target2"`, with `seed_number` and `lego_id` present — full
 item identity, which is exactly the condition the attach requires. (A take recorded from
 the *coverage* script carries no item identity and is filed but not attached; that is not
-what she is doing.)
+what they are doing.)
 
 This also explains the puzzle in finding 1 below: the autolink trigger has been refusing
-her clips all along, and `attachScriptTake` is what linked her 311 slots anyway.
+their clips all along, and `attachScriptTake` is what linked their 311 slots anyway.
 
 ### The consequence Kai should actually weigh
 
 Because the attach is unconditional and automatic, **parking is not a permanent state.**
-Every new take Sascha files goes live in its slot the moment she records it, over the top
+Every new take Sasha files goes live in its slot the moment they record it, over the top
 of the restored synthetic clip, with no pass to run and no approval step.
 
 So the beta problem the parking was meant to solve — one human voice surfacing among
 synthetic voices at unpredictable points — **will start coming back on its own** as soon
-as she records again. Parking cleared the 311 that already existed; it does not hold the
+as they record again. Parking cleared the 311 that already existed; it does not hold the
 line against the 312th.
 
 If the course is to stay single-voiced through the beta, that needs a deliberate decision
-about her recording — pause it, or let the takes bank and accept that they surface — and
+about their recording — pause it, or let the takes bank and accept that they surface — and
 that is Kai's call, not something this repair can settle. Nothing else about the restore
-is affected: her audio is safe either way, and no manual relink is needed to make her work
+is affected: their audio is safe either way, and no manual relink is needed to make their work
 count.
+
+---
+
+## Live as beta — and verified from the deployed app, not from the DB row
+
+**`new_app_status` flipped `not_available` → `beta` on 2026-08-25, after every gate below
+passed.** `status` and `visibility` were set to `beta` at the same time so the row matches
+the shape of the other working betas (`deu_for_eng`, `gle_for_eng`), which had
+`visibility: 'beta'` where this course still said `'public'`.
+
+### What actually governs delivery — checked, because the estate has a trap here
+
+The brief warned that a visibility flag and a slug can disagree. On the learner path they
+do not, because **only one field gates a course**: `new_app_status`.
+
+- `packages/player-vue/src/App.vue:449` — the in-app catalogue query is
+  `.from('courses').select('*').in('new_app_status', ['live','beta'])`
+- `api/courses/available.ts:35` — the same filter
+- `api/entitlement/grant.ts:91` — `!['live','beta'].includes(course.new_app_status)` →
+  *"That course is not available"*
+
+`courses.visibility` is **not read anywhere on the course-gating path** — the one comment
+that mentions it (`api/courses/[code]/bundle.ts:398`) records a pod being retired by
+setting `visibility='held'` and that change *not reaching the consumer*, "because nothing
+here reads visibility". So setting it was housekeeping, not the thing that opened the
+door. `courses.status` gates nothing on the learner path either.
+
+### End-to-end proof against `ssi-learning-app.vercel.app`
+
+| check | result |
+|---|---|
+| `GET /api/courses/available` | **`deu_at_for_eng` present, `new_app_status: beta`** — 1 of 83 live courses |
+| `GET /api/courses/deu_at_for_eng/round-map` | **200, 1,253 rounds** — the full course, first is `S0001L01` |
+| `GET /api/courses/deu_at_for_eng/cycles?from=S0001L01` | **200, 15 cycles**, types intro/debut/build/use/spaced_rep |
+| `target2_id` populated on those cycles | **15 of 15 — zero missing** |
+| `GET /api/audio/<restored target2 id>` | **200 `audio/mpeg`, 22,176 bytes** |
+| the bytes actually decode | **`ffprobe`: mp3, 1.80 s** |
+
+The clip fetched is `c5ab6493-…`, one of the 12,411 restored on this job — so this is the
+restore proven at the learner's ear, through the live host, not a database assertion.
+
+**No cap applies.** `api/_utils/courseBoundary.ts` holds a hard ceiling for MVP courses
+whose content stops short; the map contains only `ara_lb_for_eng` and `ara_eg_for_eng`, so
+`courseMaxSeed('deu_at_for_eng')` returns `null` and the course serves its full authored
+length. The 1,253-round map confirms it.
+
+**Anything past seed 1 returns `403 {"error":"Subscription required","reason":"preview_only"}`
+for me, and that is correct, not a fault.** `cycles.ts:493` sets
+`previewOnly = !access.canAccess`; I was calling unauthenticated. The course is
+`pricing_tier: premium`, so a learner reaches it via a paid entitlement or a trial grant —
+`trialDaysForCourse` gives German the commercial class, 30 days.
 
 ## Explicit gaps and things Kai should know
 
 0. **Parking will undo itself.** Because the take-attach path overwrites unconditionally
-   (Job 3), every new recording Sascha files goes live in its slot immediately. The 311
+   (Job 3), every new recording Sasha files goes live in its slot immediately. The 311
    parked links stay parked, but the 312th onward will not. If the beta must stay
-   single-voiced, that needs a decision about her recording schedule — this repair cannot
+   single-voiced, that needs a decision about their recording schedule — this repair cannot
    hold it.
-1. **A pre-existing bug: the autolink trigger has been refusing Sascha's own clips since
+1. **A pre-existing bug: the autolink trigger has been refusing Sasha's own clips since
    19 August, and this restore did not cause it.** The configured target2 voice reads
-   `human_human_sasha_wanasky_deu_at` — a doubled `human_` prefix — while her clips carry
+   `human_human_sasha_wanasky_deu_at` — a doubled `human_` prefix — while their clips carry
    `human_sasha_wanasky_deu_at`. `audio_voice_matches` returns false, so
-   `relink_refusals` holds **319 voice-mismatch rows against her clips**, dated 19, 21 and
-   23 August, before this job ran. Her 311 slots were therefore linked by some other
+   `relink_refusals` holds **319 voice-mismatch rows against their clips**, dated 19, 21 and
+   23 August, before this job ran. Their 311 slots were therefore linked by some other
    writer, not by the automatic path.
 2. **49 presentation clips carry the quote marks inside the sentence they speak** —
    `The German for: '"is"', is:` — linked to 61 component rows inside the 529. **Not
@@ -342,12 +396,12 @@ count.
    12,411 gate-refused clips. They were **left in place**, not deleted: they are a
    production log and removing them was not authorised. They do bury the 319 rows in
    finding 1, so anyone reading that table should filter by date and `candidate_voice`.
-4. ~~`recording_provenance` holds 0 rows for Sascha's clips.~~ **Withdrawn — that finding
+4. ~~`recording_provenance` holds 0 rows for Sasha's clips.~~ **Withdrawn — that finding
    was my own lookup error, not a real gap.** `recording_provenance.audio_uuid` keys on the
    *take's* S3 uuid, not on `course_audio.id`, so joining the two returns nothing whether
-   or not the data exists. She in fact has **331 provenance rows** spanning 2026-08-07 to
+   or not the data exists. They in fact have **331 provenance rows** spanning 2026-08-07 to
    2026-08-23, and `quality_notes` carries the full take context — course, mode, role,
-   voice, seed and lego identity, chunk boundaries and session id. Her recording history is
+   voice, seed and lego identity, chunk boundaries and session id. Their recording history is
    intact and well documented.
 5. **111 clip labels in `course_audio.text` still carry quote marks** (the collision set in
    Job 1), as do 519 of the restored target2 labels for the same reason. This is cosmetic —
@@ -355,12 +409,21 @@ count.
    by id. The consequence worth knowing: a *future* text edit to one of those rows will
    trip the same nulling trigger. The fix, if wanted, is to repoint those rows at their
    unquoted twin and orphan the quoted clip.
-6. **The course status was not changed.** `new_app_status` is untouched.
+6. **6 legos have no presentation audio** (last at seed 321), so their intro cycle falls
+   back to the known-side clip. Per `courseBoundary.ts` this is the scattered-gap case that
+   explicitly must *not* cap the course, so it plays through — but it is 6 slightly thinner
+   intros, and it is not something this job created or fixed.
+7. **The 49 presentation clips are now verified as NOT speaking the quotes**, which closes
+   the item flagged earlier as unverified. There are no `word_boundaries` on `xai` clips, so
+   the test was 29 matched pairs — the same word, same voice, same template, one clip with
+   quotes and one without: **mean −44 ms, median −72 ms, 20 of 29 shorter or equal**. A
+   voice reading "quote … unquote" would add roughly 700 ms consistently. It does not. The
+   clip labels are still cosmetically wrong; nothing a learner hears is.
 
 ## Backups
 
-- pre-change state (529 quoted rows with their links, all 225 Sascha clips, all 311
+- pre-change state (529 quoted rows with their links, all 225 Sasha clips, all 311
   occupied slots) — `$CS_SCRATCH/pre-restore-state.json` on the machine that ran this
 - the restore source — `docs/audio/deu_at_for_eng-target2-clear-snapshot-2026-08-06.json.gz`
   at `40d54dbc2`, already in git
-- the park ledger — `docs/audio/deu_at_for_eng-sascha-parked-links-2026-08-25.json`, in git
+- the park ledger — `docs/audio/deu_at_for_eng-sasha-parked-links-2026-08-25.json`, in git

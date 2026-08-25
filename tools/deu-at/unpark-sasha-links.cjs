@@ -1,24 +1,24 @@
 #!/usr/bin/env node
 /**
- * Put Sascha's 311 deu_at_for_eng target2 links back.
+ * Put Sasha's 311 deu_at_for_eng target2 links back.
  *
- * On 2026-08-25 her 225 human clips were unlinked from their 311 content slots
+ * On 2026-08-25 their 225 human clips were unlinked from their 311 content slots
  * (258 practice phrases, 28 legos, 25 seeds) and each slot was pointed at the
  * restored Azure Jonas clip instead. Kai's call: for the beta a single human
  * line surfacing among synthetic voices reads as a fault, so the course speaks
  * with one voice until there is enough human audio to switch wholesale.
  *
- * Nothing was deleted. Her course_audio rows and their S3 objects are untouched.
+ * Nothing was deleted. Their course_audio rows and S3 objects are untouched.
  * This script reverses the swap using the ledger written at park time.
  *
- *   node tools/deu-at/unpark-sascha-links.cjs           # dry run
- *   APPLY=1 node tools/deu-at/unpark-sascha-links.cjs   # apply
+ *   node tools/deu-at/unpark-sasha-links.cjs           # dry run
+ *   APPLY=1 node tools/deu-at/unpark-sasha-links.cjs   # apply
  */
 const fs = require('fs')
 const path = require('path')
 const { Client } = require('pg')
 
-const LEDGER = path.join(__dirname, '../../docs/audio/deu_at_for_eng-sascha-parked-links-2026-08-25.json')
+const LEDGER = path.join(__dirname, '../../docs/audio/deu_at_for_eng-sasha-parked-links-2026-08-25.json')
 const url = fs.readFileSync(path.join(__dirname, '../../.env.psql'), 'utf8').match(/DATABASE_URL=(.+)/)[1].trim()
 const APPLY = process.env.APPLY === '1'
 
@@ -54,6 +54,6 @@ const APPLY = process.env.APPLY === '1'
   const live = (await c.query(
     `select count(*) n from course_practice_phrases p join course_audio a on a.id = p.target2_audio_id
       where p.course_code = 'deu_at_for_eng' and a.origin = 'human'`)).rows[0].n
-  console.log('phrase slots now speaking Sascha:', live)
+  console.log('phrase slots now speaking Sasha:', live)
   await c.end()
 })()
