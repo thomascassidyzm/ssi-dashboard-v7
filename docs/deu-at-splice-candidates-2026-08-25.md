@@ -1,4 +1,4 @@
-# Four phrases, 117 splice candidates — built from Sascha's own recordings
+# Four phrases, 133 splice candidates — built from Sascha's own recordings
 
 **Course:** `deu_at_for_eng`. **Recordist:** Sascha, who uses they/them.
 **The page (this is the one URL):**
@@ -14,14 +14,15 @@ is audio Sascha already recorded.**
 
 | phrase | candidates | different carrier lines | how they were made |
 |---|---|---|---|
-| i wü | 48 | 13 | 9 cut at Sascha's own pauses · 34 cut whole out of a longer line · 5 glued |
+| i wü | 64 | 13 | 18 cut at Sascha's own pauses · 41 cut whole out of a longer line · 5 glued |
 | reden | 27 | 9 | all cut whole out of a longer line |
 | i wü reden | 20 | 6 | all two pieces glued |
 | i wü iatz mit dir Deitsch reden | 22 | 7 | 12 two pieces · 10 three pieces |
 
-**117 candidates from 19 different carrier lines**, out of 167 usable takes.
-Padding spread: 50 tight · 38 medium · 29 wide. Join spread: 10 butt-joined · 10
-crossfaded · 9 at 50 ms · 9 at 110 ms · 9 at 190 ms.
+**133 candidates from 19 different carrier lines**, out of 167 usable takes.
+Padding spread: 53 tight · 41 medium · 39 wide. Join spread: 10 butt-joined · 10
+crossfaded · 9 at 50 ms · 9 at 110 ms · 9 at 190 ms. 16 carry added lead-in silence
+(below).
 
 Every candidate says on the page what it was made from and how, so a star can become a
 rule: *"the tight cuts sound clipped"*, *"the crossfades are the only joins I can't hear"*,
@@ -62,6 +63,30 @@ Two things that fell out of that, worth knowing:
 - **Alignment refuses rather than guesses.** Where the prompted word count and the whisper
   word count disagree and no unique anchor exists, that take simply offers no span. A
   guessed boundary is a click in Kai's ear.
+
+## What an independent audit of the clips found (job #642, sonnet)
+
+Every one of the 133 was measured — duration, the margin between the speech and each edge
+judged against that clip's own speech level, how much of it is actually voiced, level steps
+at the joins, digital clipping. **No clip is digitally clipped. One was near-empty.** Two
+findings changed the set:
+
+**1. Padding behaves exactly as labelled, and the tight cuts really do clip.** On cuts with
+real silence at both edges: *wide* 11/11 came through with a clean margin, *medium* 9/11,
+*tight* 3/11. So "tight" is not a cosmetic difference — if Kai's ear rejects the tight ones,
+that is a rule we can apply directly.
+
+**2. Every pause-bounded cut starts at sample 0 — and that is mastering, not a bad cut.**
+The mastered take begins on the word, so a phrase-initial cut has no lead-in silence left to
+keep, whatever padding is asked for. That risked the best-sounding path being rejected for
+the wrong reason, so those cuts now also appear with **90 ms of digital silence added** at
+the head (16 candidates, labelled). Silence is silence — no speech was created.
+
+**An explicit gap in that audit:** its click detector fired on **all 47** glued clips
+regardless of join length — including the 190 ms gaps, where the "step" it measured is just
+the gap. A test that fails everything separates nothing, so **we do not know from
+measurement which joins click.** Kai's ear is the only instrument for that, which is what
+the join axis on the page is for.
 
 ## What was deliberately not built
 

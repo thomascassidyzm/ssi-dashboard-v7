@@ -349,6 +349,25 @@ function joinPieces(wavs, joinMs, outMp3) {
   ff([...inputs, '-filter_complex', filter, '-map', last, '-codec:a', 'libmp3lame', '-q:a', '4', outMp3])
 }
 
+
+/**
+ * A cut that begins at sample 0 is not necessarily a clipped word: mastering
+ * trims a take's head, so a phrase-initial cut has NO lead-in silence left to
+ * keep, whatever padding is asked for. Measured 2026-08-25 — every one of the
+ * pause-bounded "i wü" cuts starts at 0ms for this reason.
+ *
+ * That is a real risk of the best-sounding path being rejected for the wrong
+ * reason, so rather than decide it, this offers the same cut again with digital
+ * SILENCE added at the head or tail (no speech is created — silence is silence)
+ * and labels it. Kai's ear picks; the label makes his pick into a rule.
+ */
+function padWithSilence(srcMp3, outMp3, headMs, tailMs) {
+  const f = []
+  if (headMs) f.push(`adelay=${headMs}:all=1`)
+  if (tailMs) f.push(`apad=pad_dur=${(tailMs / 1000).toFixed(3)}`)
+  ff(['-i', srcMp3, '-af', f.join(','), '-codec:a', 'libmp3lame', '-q:a', '4', outMp3])
+}
+
 /** Match a piece's loudness to the first piece, so a join does not step in level. */
 function meanVolume(wav) {
   try {
@@ -421,6 +440,19 @@ function main() {
             continue
           }
           pauseMade++
+          if (a <= 20 || b >= env.durMs - 20) {
+            const padId = `${id}-lead`
+            padWithSilence(mp3, path.join(CLIPS, `${padId}.mp3`), a <= 20 ? 90 : 0, b >= env.durMs - 20 ? 90 : 0)
+            candidates.push({
+              id: padId, target: target.id, kind: 'one piece',
+              file: `clips/${padId}.mp3`,
+              how: `cut at Sascha's own pauses in the slow read of “${t.prompted_text}”`,
+              detail: `${pad.label} · chunk “${cs.label}” · 90ms of silence added where mastering left none`,
+              padding: pad.id, join: null, edges: ['pause', 'pause'], silence_added: true,
+              sources: [{ uuid: t.uuid, prompted_text: t.prompted_text, seed: t.seed_number, cadence: t.cadence, chunk: cs.label, span_ms: [ms(a), ms(b)] }],
+              test_material: t.seed_number >= 10,
+            })
+          }
           candidates.push({
             id, target: target.id, kind: 'one piece',
             file: `clips/${id}.mp3`,
@@ -465,6 +497,19 @@ function main() {
           continue
         }
         const edges = a.kind === b.kind ? `both edges ${a.kind}` : `starts ${a.kind}, ends ${b.kind}`
+        if (pad.id === 'wide' && (a.ms <= 20 || b.ms >= env.durMs - 20)) {
+          const padId = `${id}-lead`
+          padWithSilence(mp3, path.join(CLIPS, `${padId}.mp3`), a.ms <= 20 ? 90 : 0, b.ms >= env.durMs - 20 ? 90 : 0)
+          candidates.push({
+            id: padId, target: target.id, kind: 'one piece',
+            file: `clips/${padId}.mp3`,
+            how: `cut whole out of “${t.prompted_text}”`,
+            detail: `${pad.label} · ${edges} · 90ms of silence added where mastering left none`,
+            padding: pad.id, join: null, edges: [a.kind, b.kind], silence_added: true,
+            sources: [{ uuid: t.uuid, prompted_text: t.prompted_text, seed: t.seed_number, cadence: t.cadence, span_ms: [ms(a.ms), ms(b.ms)] }],
+            test_material: t.seed_number >= 10,
+          })
+        }
         candidates.push({
           id, target: target.id, kind: 'one piece',
           file: `clips/${id}.mp3`,
