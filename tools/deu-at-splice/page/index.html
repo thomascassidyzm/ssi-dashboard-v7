@@ -1,0 +1,200 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#12121a">
+<title>Four phrases, spliced — pick what sounds right</title>
+<style>
+/* Same visual language as the splice bench of 2026-08-24, on purpose: this is
+   that bench's next iteration, not a third page. */
+:root{--bg:#12121a;--card:#1c1c28;--card2:#232333;--line:#33334a;--fg:#ececf4;--dim:#9aa0b4;
+ --acc:#5aa9ff;--warn:#fbbf24;--good:#4ade80;--bad:#f87171;--pick:#fbbf24}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;background:var(--bg);color:var(--fg)}
+body{font:17px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+ padding:1rem .8rem calc(6rem + env(safe-area-inset-bottom));max-width:640px;margin:0 auto}
+h1{font-size:1.25rem;margin:.2rem 0 .5rem;line-height:1.25}
+h2{font-size:1.15rem;margin:0 0 .2rem}
+p{margin:0 0 .7rem}
+.dim{color:var(--dim);font-size:.88rem}
+.sec{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:.9rem;margin-bottom:1rem}
+button{font:inherit;color:inherit;border:none;border-radius:14px;cursor:pointer;background:var(--card2)}
+.chips{display:flex;gap:.4rem;flex-wrap:wrap;margin:.5rem 0 0}
+.chips button{flex:0 0 auto;min-height:44px;padding:.4rem .8rem;border:1px solid var(--line);font-size:.85rem;font-weight:600}
+.chips button.on{background:var(--acc);color:#06101f;border-color:var(--acc)}
+.grp{margin-bottom:1.4rem}
+.ghead{position:sticky;top:0;z-index:5;background:var(--bg);padding:.5rem 0 .4rem;border-bottom:1px solid var(--line)}
+.ghead .de{font-size:1.2rem;font-weight:700}
+.cand{display:flex;gap:.55rem;align-items:stretch;background:var(--card);border:1px solid var(--line);
+ border-radius:14px;padding:.55rem;margin-top:.55rem}
+.cand.picked{border-color:var(--pick);background:#241f16}
+.cand.playing{border-color:var(--acc)}
+.play{flex:0 0 56px;min-height:56px;border:1px solid var(--line);display:grid;place-items:center;font-size:1.2rem}
+.cand.playing .play{background:var(--acc);color:#06101f}
+.meta{flex:1;min-width:0}
+.meta .kind{font-size:.72rem;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:var(--acc)}
+.meta .how{font-size:.86rem;word-wrap:break-word;overflow-wrap:anywhere}
+.meta .det{font-size:.78rem;color:var(--dim);margin-top:.15rem}
+.tm{display:inline-block;background:#3a3320;color:var(--warn);border-radius:999px;padding:0 7px;font-size:.7rem;font-weight:700;margin-left:.3rem}
+.pick{flex:0 0 52px;min-height:56px;border:1px solid var(--line);font-size:1.25rem}
+.cand.picked .pick{background:var(--pick);color:#241f16}
+.bar{position:fixed;left:0;right:0;bottom:0;background:#0e0e16;border-top:1px solid var(--line);
+ padding:.6rem .8rem calc(.6rem + env(safe-area-inset-bottom));display:flex;gap:.5rem;align-items:center;z-index:20}
+.bar .n{flex:1;font-size:.88rem;color:var(--dim)}
+.bar button{min-height:48px;padding:0 1rem;border:1px solid var(--line);font-weight:700;font-size:.9rem}
+.bar button.go{background:var(--good);color:#06280f;border-color:var(--good)}
+details{background:var(--card2);border:1px solid var(--line);border-radius:12px;padding:.6rem .8rem;margin:.6rem 0}
+summary{cursor:pointer;font-size:.88rem;color:var(--dim)}
+pre{white-space:pre-wrap;word-break:break-all;font-size:.75rem;background:#0e0e16;padding:.6rem;border-radius:10px}
+</style></head><body>
+
+<h1>Four phrases, spliced out of Sascha's own recordings</h1>
+<p class="dim">Sascha uses they/them. Nothing here is synthesised — every candidate is
+made of audio they already recorded, cut and glued. <b>Tap the circle to hear it. Tap the
+star on anything you like</b> — you can star as many as you want, and starring is how you
+tell us what "good" sounds like. Your stars survive a reload; <b>Send my picks</b> at the
+bottom gets them to us.</p>
+
+<div class="sec">
+<p class="dim" style="margin:0">Each candidate says what it was made from and how, so your
+stars can become a rule. Three things vary on purpose:
+<b>which line the words were cut out of</b>, <b>how much silence is left around the cut</b>
+(tight / medium / wide), and <b>how long a gap sits between glued pieces</b> (none, a
+crossfade, 50 / 110 / 190&nbsp;ms).</p>
+<div class="chips" id="filters"></div>
+</div>
+
+<div id="groups"></div>
+
+<div class="bar">
+  <span class="n" id="count">no picks yet</span>
+  <button id="clear">Clear</button>
+  <button class="go" id="export">Send my picks</button>
+</div>
+
+<script>
+const KEY = 'deu-at-splice-picks-v1'
+let DATA = null
+let picks = {}
+try { picks = JSON.parse(localStorage.getItem(KEY) || '{}') } catch (e) { picks = {} }
+let filter = { kind: 'all', hideTest: false }
+let audio = null, playingId = null
+
+function save() { localStorage.setItem(KEY, JSON.stringify(picks)) }
+
+/* Nothing is preloaded: an <audio> is only made when a circle is tapped. */
+function play(c, el) {
+  if (audio) { audio.pause(); audio = null }
+  const wasPlaying = playingId === c.id
+  document.querySelectorAll('.cand.playing').forEach((n) => n.classList.remove('playing'))
+  if (wasPlaying) { playingId = null; return }
+  audio = new Audio(c.file)
+  audio.preload = 'none'
+  playingId = c.id
+  el.classList.add('playing')
+  audio.addEventListener('ended', () => { el.classList.remove('playing'); playingId = null })
+  audio.play().catch(() => { el.classList.remove('playing'); playingId = null })
+}
+
+function togglePick(c) {
+  if (picks[c.id]) delete picks[c.id]
+  else picks[c.id] = { at: new Date().toISOString(), target: c.target, how: c.how, detail: c.detail, padding: c.padding, join: c.join, kind: c.kind }
+  save(); render()
+}
+
+function render() {
+  const g = document.getElementById('groups')
+  g.innerHTML = ''
+  for (const t of DATA.targets) {
+    const list = DATA.candidates.filter((c) => c.target === t.id)
+      .filter((c) => filter.kind === 'all' || (filter.kind === 'one' ? c.kind === 'one piece' : c.kind !== 'one piece'))
+      .filter((c) => !filter.hideTest || !c.test_material)
+    const box = document.createElement('div')
+    box.className = 'grp'
+    const head = document.createElement('div')
+    head.className = 'ghead'
+    head.innerHTML = `<div class="de">${t.text}</div><div class="dim">${list.length} to listen to`
+      + `${list.length !== t.count ? ` of ${t.count}` : ''} · ${Object.values(picks).filter((p) => p.target === t.id).length} starred</div>`
+    box.appendChild(head)
+    for (const c of list) {
+      const row = document.createElement('div')
+      row.className = 'cand' + (picks[c.id] ? ' picked' : '')
+      const b = document.createElement('button')
+      b.className = 'play'; b.textContent = '▶'
+      b.onclick = () => play(c, row)
+      const m = document.createElement('div')
+      m.className = 'meta'
+      m.innerHTML = `<div class="kind">${c.kind}${c.test_material ? '<span class="tm">test-material source</span>' : ''}</div>`
+        + `<div class="how">${c.how}</div><div class="det">${c.detail}</div>`
+      const p = document.createElement('button')
+      p.className = 'pick'; p.textContent = picks[c.id] ? '★' : '☆'
+      p.onclick = () => togglePick(c)
+      row.append(b, m, p)
+      box.appendChild(row)
+    }
+    if (!list.length) {
+      const e = document.createElement('p'); e.className = 'dim'; e.textContent = 'nothing here with those filters on'
+      box.appendChild(e)
+    }
+    g.appendChild(box)
+  }
+  const n = Object.keys(picks).length
+  document.getElementById('count').textContent = n ? `${n} starred` : 'no picks yet'
+}
+
+function renderFilters() {
+  const f = document.getElementById('filters')
+  const opts = [
+    { k: 'kind', v: 'all', label: 'everything' },
+    { k: 'kind', v: 'one', label: 'cut in one piece' },
+    { k: 'kind', v: 'glued', label: 'glued together' },
+    { k: 'hideTest', v: true, label: 'hide test-material sources' },
+  ]
+  f.innerHTML = ''
+  for (const o of opts) {
+    const b = document.createElement('button')
+    b.textContent = o.label
+    const on = o.k === 'kind' ? filter.kind === o.v : filter.hideTest
+    if (on) b.classList.add('on')
+    b.onclick = () => {
+      if (o.k === 'kind') filter.kind = o.v
+      else filter.hideTest = !filter.hideTest
+      renderFilters(); render()
+    }
+    f.appendChild(b)
+  }
+}
+
+document.getElementById('clear').onclick = () => {
+  if (!confirm('Clear every star?')) return
+  picks = {}; save(); render()
+}
+
+document.getElementById('export').onclick = async () => {
+  const payload = JSON.stringify({ course: 'deu_at_for_eng', picked_at: new Date().toISOString(), picks }, null, 2)
+  const file = new Blob([payload], { type: 'application/json' })
+  try {
+    if (navigator.share && navigator.canShare?.({ files: [new File([file], 'picks.json', { type: 'application/json' })] })) {
+      await navigator.share({ files: [new File([file], 'picks.json', { type: 'application/json' })], title: 'deu_at splice picks' })
+      return
+    }
+  } catch (e) {}
+  try { await navigator.clipboard.writeText(payload); alert('Your picks are on the clipboard — paste them to us.') ; return } catch (e) {}
+  const a = document.createElement('a')
+  a.href = URL.createObjectURL(file); a.download = 'deu-at-splice-picks.json'; a.click()
+}
+
+fetch('candidates.json').then((r) => r.json()).then((d) => {
+  DATA = d
+  renderFilters(); render()
+  const note = document.createElement('details')
+  note.innerHTML = `<summary>How this was built, and what was left out</summary>`
+    + `<p class="dim">${d.candidates.length} candidates from ${d.source_takes_read} of Sascha's takes, built ${d.built_at}.`
+    + ` Word positions come from whisper, which writes Austrian down as Standard German — it was used`
+    + ` for <b>where</b> the words are, never for what they say. The prompted line is the truth about the words.</p>`
+    + `<pre>${JSON.stringify({ unusable_takes: d.unusable?.length || 0, deliberately_not_built: d.dropped || [] }, null, 1)}</pre>`
+  document.body.insertBefore(note, document.querySelector('.bar'))
+}).catch((e) => {
+  document.getElementById('groups').innerHTML = '<p class="dim">candidates.json did not load: ' + e + '</p>'
+})
+</script>
+</body></html>
