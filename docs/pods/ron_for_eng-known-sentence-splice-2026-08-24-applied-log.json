@@ -1,0 +1,3405 @@
+{
+  "course": "ron_for_eng",
+  "pod": "ron_for_eng:pod-1",
+  "side": "known",
+  "apply": true,
+  "at": "2026-08-24T17:11:37.367Z",
+  "known_language": "en-GB",
+  "cast_known_voices": [
+    "bedd6226",
+    "gfzdpspr5fdp",
+    "en-GB-MiaNeural"
+  ],
+  "splicer": "tools/pods/splice-sentence-clips.cjs spliceAndGate → scripts/splice-fork/splice.py (unmodified)",
+  "candidates": 90,
+  "processed": 90,
+  "stats": {
+    "rows": 231,
+    "already_split": 10,
+    "restored": 64,
+    "reused_clips": 14,
+    "spliced_clips": 150,
+    "refused": 26,
+    "excluded": 131,
+    "errors": 0
+  },
+  "refusals_by_reason": {
+    "margin_below_floor": 13,
+    "too_few_gaps": 9,
+    "seam_not_silent": 4
+  },
+  "excluded_by_reason": {
+    "no_target_split": 131
+  },
+  "variant_runs_split_across_known_voices": [],
+  "refusals": [
+    {
+      "id": "ron_for_eng:pod-1:SC05-S001",
+      "order": 23,
+      "at": "5.1",
+      "reason": "margin_below_floor",
+      "n": 2,
+      "known_text": "Good evening, Sarah. Did you have a long day?",
+      "sentences": [
+        "Good evening, Sarah.",
+        "Did you have a long day?"
+      ],
+      "known_audio_id": "cc15f279-1999-4865-8615-9ac12cf27961",
+      "measure": {
+        "whole_dur": 2.736,
+        "interior_gaps_ms": [
+          119,
+          166
+        ],
+        "cut_at_gaps_ms": [
+          166
+        ],
+        "rejected_gaps_ms": [
+          119
+        ],
+        "margin": 1.39,
+        "piece_durs": [
+          1.475,
+          1.361
+        ]
+      }
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC04-S003",
+      "order": 22,
+      "at": "4.3",
+      "reason": "margin_below_floor",
+      "n": 3,
+      "known_text": "No, I'm sorry, I'm busy tomorrow. But let's talk on Saturday. See you then.",
+      "sentences": [
+        "No, I'm sorry, I'm busy tomorrow.",
+        "But let's talk on Saturday.",
+        "See you then."
+      ],
+      "known_audio_id": "15329f4d-5cb5-44c1-a2c7-7c545c6f9a7a",
+      "measure": {
+        "whole_dur": 4.992,
+        "interior_gaps_ms": [
+          170,
+          171,
+          197
+        ],
+        "cut_at_gaps_ms": [
+          171,
+          197
+        ],
+        "rejected_gaps_ms": [
+          170
+        ],
+        "margin": 1.01,
+        "piece_durs": [
+          2.653,
+          1.618,
+          0.921
+        ]
+      }
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC06-S001",
+      "order": 25,
+      "at": "6.1",
+      "reason": "too_few_gaps",
+      "n": 3,
+      "known_text": "Excuse me. Hello. What's your name?",
+      "sentences": [
+        "Excuse me.",
+        "Hello.",
+        "What's your name?"
+      ],
+      "known_audio_id": "174451b4-6a86-48d3-93cc-bf9ce4937bcd",
+      "measure": {
+        "whole_dur": 2.688,
+        "interior_gaps_ms": [
+          146
+        ],
+        "cut_at_gaps_ms": [
+          146
+        ],
+        "rejected_gaps_ms": [],
+        "margin": null,
+        "piece_durs": [
+          0.972,
+          1.816
+        ]
+      }
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC06-S007",
+      "order": 31,
+      "at": "6.7",
+      "reason": "seam_not_silent",
+      "n": 2,
+      "known_text": "This is a lovely city. What do you do?",
+      "sentences": [
+        "This is a lovely city.",
+        "What do you do?"
+      ],
+      "known_audio_id": "0dcfdc85-5f4d-451a-8b6c-3d854ea809d4",
+      "measure": {
+        "whole_dur": 2.76,
+        "interior_gaps_ms": [
+          354
+        ],
+        "cut_at_gaps_ms": [
+          354
+        ],
+        "rejected_gaps_ms": [],
+        "margin": null,
+        "piece_durs": [
+          1.796,
+          1.064
+        ],
+        "seams_db": [
+          {
+            "edge": "s0.tail",
+            "db": -36.4,
+            "piece_peak_db": -2.4
+          },
+          {
+            "edge": "s1.head",
+            "db": -34.3,
+            "piece_peak_db": -2.6
+          }
+        ],
+        "loud_seams": [
+          {
+            "edge": "s1.head",
+            "db": -34.3,
+            "piece_peak_db": -2.6
+          }
+        ]
+      }
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC06-S009",
+      "order": 33,
+      "at": "6.9",
+      "reason": "margin_below_floor",
+      "n": 3,
+      "known_text": "I'm sorry, I didn't understand you. I'm learning Romanian. Could you say that again more slowly?",
+      "sentences": [
+        "I'm sorry, I didn't understand you.",
+        "I'm learning Romanian.",
+        "Could you say that again more slowly?"
+      ],
+      "known_audio_id": "7c8eed0b-5768-46a0-ae83-333d6605ab06",
+      "measure": {
+        "whole_dur": 6.216,
+        "interior_gaps_ms": [
+          133,
+          129,
+          413
+        ],
+        "cut_at_gaps_ms": [
+          133,
+          413
+        ],
+        "rejected_gaps_ms": [
+          129
+        ],
+        "margin": 1.03,
+        "piece_durs": [
+          2.233,
+          1.847,
+          2.336
+        ]
+      }
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC06-S010",
+      "order": 34,
+      "at": "6.10",
+      "reason": "too_few_gaps",
+      "n": 5,
+      "known_text": "Yes, of course. I'm a nurse. I work at the hospital. It's near here. And what do you do?",
+      "sentences": [
+        "Yes, of course.",
+        "I'm a nurse.",
+        "I work at the hospital.",
+        "It's near here.",
+        "And what do you do?"
+      ],
+      "known_audio_id": "6b579294-0c25-47a7-a0cd-d5e708c54a51",
+      "measure": {
+        "whole_dur": 5.808,
+        "interior_gaps_ms": [
+          122,
+          361,
+          384
+        ],
+        "cut_at_gaps_ms": [
+          122,
+          361,
+          384
+        ],
+        "rejected_gaps_ms": [],
+        "margin": null,
+        "piece_durs": [
+          2.007,
+          1.448,
+          1.202,
+          1.451
+        ]
+      }
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC06-S011",
+      "order": 35,
+      "at": "6.11",
+      "reason": "margin_below_floor",
+      "n": 4,
+      "known_text": "I teach English, but not in a school. I work with adults. I'm on holiday here with my wife and children. We're having a lovely time.",
+      "sentences": [
+        "I teach English, but not in a school.",
+        "I work with adults.",
+        "I'm on holiday here with my wife and children.",
+        "We're having a lovely time."
+      ],
+      "known_audio_id": "d23bef2f-58cb-474e-93ff-f79cc59f4bd5",
+      "measure": {
+        "whole_dur": 8.448,
+        "interior_gaps_ms": [
+          334,
+          200,
+          101,
+          113,
+          118,
+          138
+        ],
+        "cut_at_gaps_ms": [
+          334,
+          200,
+          138
+        ],
+        "rejected_gaps_ms": [
+          118,
+          113,
+          101
+        ],
+        "margin": 1.17,
+        "piece_durs": [
+          1.275,
+          1.373,
+          4.477,
+          1.623
+        ]
+      }
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC08-S013",
+      "order": 65,
+      "at": "8.13",
+      "reason": "seam_not_silent",
+      "n": 3,
+      "known_text": "Yes, of course. Here it is. The fish and chips are very good.",
+      "sentences": [
+        "Yes, of course.",
+        "Here it is.",
+        "The fish and chips are very good."
+      ],
+      "known_audio_id": "ed266fc5-ab8f-4e1b-9343-ea1e62df970f",
+      "measure": {
+        "whole_dur": 4.008,
+        "interior_gaps_ms": [
+          148,
+          183
+        ],
+        "cut_at_gaps_ms": [
+          148,
+          183
+        ],
+        "rejected_gaps_ms": [],
+        "margin": null,
+        "piece_durs": [
+          1.955,
+          0.417,
+          1.835
+        ],
+        "seams_db": [
+          {
+            "edge": "s0.tail",
+            "db": -48,
+            "piece_peak_db": -2.1
+          },
+          {
+            "edge": "s1.head",
+            "db": -39.9,
+            "piece_peak_db": -28.8
+          },
+          {
+            "edge": "s1.tail",
+            "db": -80.8,
+            "piece_peak_db": -28.8
+          },
+          {
+            "edge": "s2.head",
+            "db": -46.3,
+            "piece_peak_db": -2.3
+          }
+        ],
+        "loud_seams": [
+          {
+            "edge": "s1.head",
+            "db": -39.9,
+            "piece_peak_db": -28.8
+          }
+        ]
+      }
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC08-S016",
+      "order": 68,
+      "at": "8.16",
+      "reason": "too_few_gaps",
+      "n": 5,
+      "known_text": "4. 6. 8. Blue. Yellow.",
+      "sentences": [
+        "4.",
+        "6.",
+        "8.",
+        "Blue.",
+        "Yellow."
+      ],
+      "known_audio_id": "d4b3a2e1-9be2-47a6-8872-38d8af292482",
+      "measure": {
+        "whole_dur": 3.888,
+        "interior_gaps_ms": [
+          422,
+          179
+        ],
+        "cut_at_gaps_ms": [
+          422,
+          179
+        ],
+        "rejected_gaps_ms": [],
+        "margin": null,
+        "piece_durs": [
+          2.504,
+          0.833,
+          0.751
+        ]
+      }
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC09-S005",
+      "order": 73,
+      "at": "9.5",
+      "reason": "margin_below_floor",
+      "n": 2,
+      "known_text": "Excuse me - do you have anything gluten-free? Or for vegetarians?",
+      "sentences": [
+        "Excuse me - do you have anything gluten-free?",
+        "Or for vegetarians?"
+      ],
+      "known_audio_id": "51e0799a-8f1c-4aea-8eca-c7ba0b1e78da",
+      "measure": {
+        "whole_dur": 4.981,
+        "interior_gaps_ms": [
+          374,
+          501
+        ],
+        "cut_at_gaps_ms": [
+          501
+        ],
+        "rejected_gaps_ms": [
+          374
+        ],
+        "margin": 1.34,
+        "piece_durs": [
+          3.188,
+          1.893
+        ]
+      }
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC09-S006",
+      "order": 74,
+      "at": "9.6",
+      "reason": "margin_below_floor",
+      "n": 2,
+      "known_text": "Yes, the salmon and the risotto are both gluten-free. We also have some salads.",
+      "sentences": [
+        "Yes, the salmon and the risotto are both gluten-free.",
+        "We also have some salads."
+      ],
+      "known_audio_id": "aaea0565-2959-4d13-96ab-b63f2e2de06f",
+      "measure": {
+        "whole_dur": 5.28,
+        "interior_gaps_ms": [
+          124,
+          155
+        ],
+        "cut_at_gaps_ms": [
+          155
+        ],
+        "rejected_gaps_ms": [
+          124
+        ],
+        "margin": 1.25,
+        "piece_durs": [
+          3.759,
+          1.621
+        ]
+      }
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC09-S008",
+      "order": 76,
+      "at": "9.8",
+      "reason": "margin_below_floor",
+      "n": 2,
+      "known_text": "The lamb is excellent. It's been slow-cooked, with rosemary.",
+      "sentences": [
+        "The lamb is excellent.",
+        "It's been slow-cooked, with rosemary."
+      ],
+      "known_audio_id": "a8063142-bd96-47a4-9ea9-bc3b93df7395",
+      "measure": {
+        "whole_dur": 3.888,
+        "interior_gaps_ms": [
+          132,
+          134
+        ],
+        "cut_at_gaps_ms": [
+          134
+        ],
+        "rejected_gaps_ms": [
+          132
+        ],
+        "margin": 1.01,
+        "piece_durs": [
+          2.916,
+          1.072
+        ]
+      }
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC09-S014",
+      "order": 82,
+      "at": "9.14",
+      "reason": "too_few_gaps",
+      "n": 2,
+      "known_text": "Excellent choice. I'll bring it right over.",
+      "sentences": [
+        "Excellent choice.",
+        "I'll bring it right over."
+      ],
+      "known_audio_id": "2fbf86b5-65ae-4ebe-9b6f-3e799aca804b",
+      "measure": {
+        "whole_dur": 3.12,
+        "interior_gaps_ms": [],
+        "cut_at_gaps_ms": [],
+        "rejected_gaps_ms": [],
+        "margin": null,
+        "piece_durs": [
+          3.12
+        ]
+      }
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC09-S015",
+      "order": 83,
+      "at": "9.15",
+      "reason": "margin_below_floor",
+      "n": 2,
+      "known_text": "Is everything alright? Do you have any room for dessert?",
+      "sentences": [
+        "Is everything alright?",
+        "Do you have any room for dessert?"
+      ],
+      "known_audio_id": "0ace18ab-5030-4dfc-9045-52d3923b5cff",
+      "measure": {
+        "whole_dur": 3.264,
+        "interior_gaps_ms": [
+          118,
+          128
+        ],
+        "cut_at_gaps_ms": [
+          128
+        ],
+        "rejected_gaps_ms": [
+          118
+        ],
+        "margin": 1.09,
+        "piece_durs": [
+          1.474,
+          1.89
+        ]
+      }
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC09-S018",
+      "order": 86,
+      "at": "9.18",
+      "reason": "too_few_gaps",
+      "n": 5,
+      "known_text": "7. 9. 11. Orange. Purple.",
+      "sentences": [
+        "7.",
+        "9.",
+        "11.",
+        "Orange.",
+        "Purple."
+      ],
+      "known_audio_id": "e2953429-b440-43ed-8c4f-51969b2e6abb",
+      "measure": {
+        "whole_dur": 3.48,
+        "interior_gaps_ms": [
+          110,
+          223,
+          196
+        ],
+        "cut_at_gaps_ms": [
+          110,
+          223,
+          196
+        ],
+        "rejected_gaps_ms": [],
+        "margin": null,
+        "piece_durs": [
+          0.755,
+          1.421,
+          0.804,
+          0.8
+        ]
+      }
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC11-S001",
+      "order": 97,
+      "at": "11.1",
+      "reason": "too_few_gaps",
+      "n": 2,
+      "known_text": "Good afternoon. I have a booking under the name Jones.",
+      "sentences": [
+        "Good afternoon.",
+        "I have a booking under the name Jones."
+      ],
+      "known_audio_id": "19d4e17e-44a2-45c2-8381-9498777c724b",
+      "measure": {
+        "whole_dur": 3.48,
+        "interior_gaps_ms": [],
+        "cut_at_gaps_ms": [],
+        "rejected_gaps_ms": [],
+        "margin": null,
+        "piece_durs": [
+          3.48
+        ]
+      }
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC11-S002",
+      "order": 98,
+      "at": "11.2",
+      "reason": "seam_not_silent",
+      "n": 3,
+      "known_text": "Welcome. Yes, you have a double room for three nights. Could I see some ID, please?",
+      "sentences": [
+        "Welcome.",
+        "Yes, you have a double room for three nights.",
+        "Could I see some ID, please?"
+      ],
+      "known_audio_id": "86a93b01-fe02-474a-9603-bfa5da10a00b",
+      "measure": {
+        "whole_dur": 5.616,
+        "interior_gaps_ms": [
+          374,
+          161,
+          611
+        ],
+        "cut_at_gaps_ms": [
+          374,
+          611
+        ],
+        "rejected_gaps_ms": [
+          161
+        ],
+        "margin": 2.32,
+        "piece_durs": [
+          0.869,
+          2.936,
+          2.012
+        ],
+        "seams_db": [
+          {
+            "edge": "s0.tail",
+            "db": -32.9,
+            "piece_peak_db": -3
+          },
+          {
+            "edge": "s1.head",
+            "db": -48.9,
+            "piece_peak_db": -2.2
+          },
+          {
+            "edge": "s1.tail",
+            "db": -49.2,
+            "piece_peak_db": -2.2
+          },
+          {
+            "edge": "s2.head",
+            "db": -59.4,
+            "piece_peak_db": -2.4
+          }
+        ],
+        "loud_seams": [
+          {
+            "edge": "s0.tail",
+            "db": -32.9,
+            "piece_peak_db": -3
+          }
+        ]
+      }
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC11-S004",
+      "order": 100,
+      "at": "11.4",
+      "reason": "margin_below_floor",
+      "n": 2,
+      "known_text": "Lovely. The room is on the third floor, room 709.",
+      "sentences": [
+        "Lovely.",
+        "The room is on the third floor, room 709."
+      ],
+      "known_audio_id": "cac13515-adff-41ee-a54a-e4533fdb8e37",
+      "measure": {
+        "whole_dur": 4.128,
+        "interior_gaps_ms": [
+          320,
+          231
+        ],
+        "cut_at_gaps_ms": [
+          320
+        ],
+        "rejected_gaps_ms": [
+          231
+        ],
+        "margin": 1.38,
+        "piece_durs": [
+          0.824,
+          3.404
+        ]
+      }
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC11-S009",
+      "order": 105,
+      "at": "11.9",
+      "reason": "margin_below_floor",
+      "n": 2,
+      "known_text": "Wonderful. Is it possible for us to have a late check-out?",
+      "sentences": [
+        "Wonderful.",
+        "Is it possible for us to have a late check-out?"
+      ],
+      "known_audio_id": "05b5e7d1-96b1-427e-a875-3bbf7ddcee2d",
+      "measure": {
+        "whole_dur": 3.72,
+        "interior_gaps_ms": [
+          115,
+          113
+        ],
+        "cut_at_gaps_ms": [
+          115
+        ],
+        "rejected_gaps_ms": [
+          113
+        ],
+        "margin": 1.02,
+        "piece_durs": [
+          0.79,
+          3.03
+        ]
+      }
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC11-S013",
+      "order": 109,
+      "at": "11.13",
+      "reason": "too_few_gaps",
+      "n": 5,
+      "known_text": "16. 17. 18. Monday. Tuesday.",
+      "sentences": [
+        "16.",
+        "17.",
+        "18.",
+        "Monday.",
+        "Tuesday."
+      ],
+      "known_audio_id": "01569443-8c7b-4615-b906-217adb00959d",
+      "measure": {
+        "whole_dur": 3.336,
+        "interior_gaps_ms": [
+          148
+        ],
+        "cut_at_gaps_ms": [
+          148
+        ],
+        "rejected_gaps_ms": [],
+        "margin": null,
+        "piece_durs": [
+          2.158,
+          1.278
+        ]
+      }
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC13-S002",
+      "order": 121,
+      "at": "13.2",
+      "reason": "seam_not_silent",
+      "n": 2,
+      "known_text": "Yes, it's about a ten minute walk. Go straight along this road.",
+      "sentences": [
+        "Yes, it's about a ten minute walk.",
+        "Go straight along this road."
+      ],
+      "known_audio_id": "c107eebc-5d85-44c9-b2b4-8ab5c981f5a0",
+      "measure": {
+        "whole_dur": 3.864,
+        "interior_gaps_ms": [
+          308
+        ],
+        "cut_at_gaps_ms": [
+          308
+        ],
+        "rejected_gaps_ms": [],
+        "margin": null,
+        "piece_durs": [
+          2.123,
+          1.841
+        ],
+        "seams_db": [
+          {
+            "edge": "s0.tail",
+            "db": -34.8,
+            "piece_peak_db": -2.3
+          },
+          {
+            "edge": "s1.head",
+            "db": -29.3,
+            "piece_peak_db": -2.5
+          }
+        ],
+        "loud_seams": [
+          {
+            "edge": "s0.tail",
+            "db": -34.8,
+            "piece_peak_db": -2.3
+          },
+          {
+            "edge": "s1.head",
+            "db": -29.3,
+            "piece_peak_db": -2.5
+          }
+        ]
+      }
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC13-S011",
+      "order": 130,
+      "at": "13.11",
+      "reason": "too_few_gaps",
+      "n": 5,
+      "known_text": "30. 40. 50. Friday. Saturday.",
+      "sentences": [
+        "30.",
+        "40.",
+        "50.",
+        "Friday.",
+        "Saturday."
+      ],
+      "known_audio_id": "03b2d90b-63f4-4422-9d84-0075ee5ffaea",
+      "measure": {
+        "whole_dur": 3.336,
+        "interior_gaps_ms": [],
+        "cut_at_gaps_ms": [],
+        "rejected_gaps_ms": [],
+        "margin": null,
+        "piece_durs": [
+          3.336
+        ]
+      }
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC14-S001",
+      "order": 131,
+      "at": "14.1",
+      "reason": "margin_below_floor",
+      "n": 2,
+      "known_text": "Hello. Can you take me to the train station, please?",
+      "sentences": [
+        "Hello.",
+        "Can you take me to the train station, please?"
+      ],
+      "known_audio_id": "0cb4fef4-075d-444d-b7c7-0430af67ad57",
+      "measure": {
+        "whole_dur": 3.48,
+        "interior_gaps_ms": [
+          150,
+          107
+        ],
+        "cut_at_gaps_ms": [
+          150
+        ],
+        "rejected_gaps_ms": [
+          107
+        ],
+        "margin": 1.4,
+        "piece_durs": [
+          0.685,
+          2.895
+        ]
+      }
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC20-S011",
+      "order": 206,
+      "at": "20.11",
+      "reason": "too_few_gaps",
+      "n": 4,
+      "known_text": "6 o'clock. July. August. September.",
+      "sentences": [
+        "6 o'clock.",
+        "July.",
+        "August.",
+        "September."
+      ],
+      "known_audio_id": "aafc754a-d52d-4d84-842b-717f2fc753a5",
+      "measure": {
+        "whole_dur": 3.408,
+        "interior_gaps_ms": [
+          169,
+          216
+        ],
+        "cut_at_gaps_ms": [
+          169,
+          216
+        ],
+        "rejected_gaps_ms": [],
+        "margin": null,
+        "piece_durs": [
+          1.146,
+          0.817,
+          1.646
+        ]
+      }
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC22-S010",
+      "order": 230,
+      "at": "22.10",
+      "reason": "margin_below_floor",
+      "n": 3,
+      "known_text": "I think that's normal. Learning a new language is difficult. But it's so much fun when you start to have conversations, isn't it?",
+      "sentences": [
+        "I think that's normal.",
+        "Learning a new language is difficult.",
+        "But it's so much fun when you start to have conversations, isn't it?"
+      ],
+      "known_audio_id": "55b29abc-7637-4ea9-8a00-29302f799665",
+      "measure": {
+        "whole_dur": 7.704,
+        "interior_gaps_ms": [
+          202,
+          130,
+          172
+        ],
+        "cut_at_gaps_ms": [
+          202,
+          172
+        ],
+        "rejected_gaps_ms": [
+          130
+        ],
+        "margin": 1.32,
+        "piece_durs": [
+          1.234,
+          2.87,
+          3.799
+        ]
+      }
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC22-S011",
+      "order": 231,
+      "at": "22.11",
+      "reason": "margin_below_floor",
+      "n": 3,
+      "known_text": "It really is. I'm really happy that I can have this much of a conversation. And I hope we'll be able to have more conversations in the future as I keep on getting better.",
+      "sentences": [
+        "It really is.",
+        "I'm really happy that I can have this much of a conversation.",
+        "And I hope we'll be able to have more conversations in the future as I keep on getting better."
+      ],
+      "known_audio_id": "8fcd2ddc-cd51-4ead-a7a8-dea652da77be",
+      "measure": {
+        "whole_dur": 9.24,
+        "interior_gaps_ms": [
+          135,
+          127,
+          241,
+          135
+        ],
+        "cut_at_gaps_ms": [
+          241,
+          135
+        ],
+        "rejected_gaps_ms": [
+          135,
+          127
+        ],
+        "margin": 1,
+        "piece_durs": [
+          4.26,
+          0.433,
+          4.747
+        ]
+      }
+    }
+  ],
+  "excluded": [
+    {
+      "id": "ron_for_eng:pod-1:SC01-S001",
+      "order": 1,
+      "at": "1.1",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC02-S001",
+      "order": 5,
+      "at": "2.1",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC02-S003",
+      "order": 7,
+      "at": "2.3",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC02-S004",
+      "order": 8,
+      "at": "2.4",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC03-S003",
+      "order": 12,
+      "at": "3.3",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC03-S004",
+      "order": 13,
+      "at": "3.4",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC03-S005",
+      "order": 14,
+      "at": "3.5",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC03-S006",
+      "order": 15,
+      "at": "3.6",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC03-S007",
+      "order": 16,
+      "at": "3.7",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC03-S008",
+      "order": 17,
+      "at": "3.8",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC03-S009",
+      "order": 18,
+      "at": "3.9",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC04-S001",
+      "order": 20,
+      "at": "4.1",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC07-S002",
+      "order": 39,
+      "at": "7.2",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC07-S003",
+      "order": 40,
+      "at": "7.3",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC07-S006",
+      "order": 43,
+      "at": "7.6",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC07-S007",
+      "order": 44,
+      "at": "7.7",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC07-S009",
+      "order": 46,
+      "at": "7.9",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC07-S010",
+      "order": 47,
+      "at": "7.10",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC08-S003",
+      "order": 55,
+      "at": "8.3",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC08-S004",
+      "order": 56,
+      "at": "8.4",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC08-S005",
+      "order": 57,
+      "at": "8.5",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC08-S007",
+      "order": 59,
+      "at": "8.7",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC08-S008",
+      "order": 60,
+      "at": "8.8",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC08-S009",
+      "order": 61,
+      "at": "8.9",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC08-S010",
+      "order": 62,
+      "at": "8.10",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC08-S011",
+      "order": 63,
+      "at": "8.11",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC09-S003",
+      "order": 71,
+      "at": "9.3",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC09-S004",
+      "order": 72,
+      "at": "9.4",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC09-S007",
+      "order": 75,
+      "at": "9.7",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC09-S012",
+      "order": 80,
+      "at": "9.12",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC09-S013",
+      "order": 81,
+      "at": "9.13",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC10-S002",
+      "order": 88,
+      "at": "10.2",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC10-S004",
+      "order": 90,
+      "at": "10.4",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC10-S005",
+      "order": 91,
+      "at": "10.5",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC10-S006",
+      "order": 92,
+      "at": "10.6",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC11-S005",
+      "order": 101,
+      "at": "11.5",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC11-S006",
+      "order": 102,
+      "at": "11.6",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC11-S007",
+      "order": 103,
+      "at": "11.7",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC11-S010",
+      "order": 106,
+      "at": "11.10",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC11-S011",
+      "order": 107,
+      "at": "11.11",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC12-S003",
+      "order": 112,
+      "at": "12.3",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC12-S004",
+      "order": 113,
+      "at": "12.4",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC12-S005",
+      "order": 114,
+      "at": "12.5",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC12-S006",
+      "order": 115,
+      "at": "12.6",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC12-S007",
+      "order": 116,
+      "at": "12.7",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC12-S008",
+      "order": 117,
+      "at": "12.8",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC13-S001",
+      "order": 120,
+      "at": "13.1",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC13-S003",
+      "order": 122,
+      "at": "13.3",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC13-S004",
+      "order": 123,
+      "at": "13.4",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC13-S005",
+      "order": 124,
+      "at": "13.5",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC13-S006",
+      "order": 125,
+      "at": "13.6",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC13-S007",
+      "order": 126,
+      "at": "13.7",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC13-S009",
+      "order": 128,
+      "at": "13.9",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC14-S003",
+      "order": 133,
+      "at": "14.3",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC14-S004",
+      "order": 134,
+      "at": "14.4",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC14-S005",
+      "order": 135,
+      "at": "14.5",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC14-S006",
+      "order": 136,
+      "at": "14.6",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC14-S008",
+      "order": 138,
+      "at": "14.8",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC15-S001",
+      "order": 141,
+      "at": "15.1",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC15-S002",
+      "order": 142,
+      "at": "15.2",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC15-S003",
+      "order": 143,
+      "at": "15.3",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC15-S004",
+      "order": 144,
+      "at": "15.4",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC15-S005",
+      "order": 145,
+      "at": "15.5",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC15-S006",
+      "order": 146,
+      "at": "15.6",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC15-S007",
+      "order": 147,
+      "at": "15.7",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC15-S008",
+      "order": 148,
+      "at": "15.8",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC15-S009",
+      "order": 149,
+      "at": "15.9",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC15-S010",
+      "order": 150,
+      "at": "15.10",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC16-S001",
+      "order": 152,
+      "at": "16.1",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC16-S002",
+      "order": 153,
+      "at": "16.2",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC16-S003",
+      "order": 154,
+      "at": "16.3",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC16-S004",
+      "order": 155,
+      "at": "16.4",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC16-S005",
+      "order": 156,
+      "at": "16.5",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC16-S006",
+      "order": 157,
+      "at": "16.6",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC16-S007",
+      "order": 158,
+      "at": "16.7",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC16-S008",
+      "order": 159,
+      "at": "16.8",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC16-S009",
+      "order": 160,
+      "at": "16.9",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC16-S010",
+      "order": 161,
+      "at": "16.10",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC17-S001",
+      "order": 163,
+      "at": "17.1",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC17-S002",
+      "order": 164,
+      "at": "17.2",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC17-S003",
+      "order": 165,
+      "at": "17.3",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC17-S004",
+      "order": 166,
+      "at": "17.4",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC17-S005",
+      "order": 167,
+      "at": "17.5",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC17-S006",
+      "order": 168,
+      "at": "17.6",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC17-S007",
+      "order": 169,
+      "at": "17.7",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC17-S008",
+      "order": 170,
+      "at": "17.8",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC17-S009",
+      "order": 171,
+      "at": "17.9",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC17-S010",
+      "order": 172,
+      "at": "17.10",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC18-S001",
+      "order": 174,
+      "at": "18.1",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC18-S002",
+      "order": 175,
+      "at": "18.2",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC18-S003",
+      "order": 176,
+      "at": "18.3",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC18-S004",
+      "order": 177,
+      "at": "18.4",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC18-S005",
+      "order": 178,
+      "at": "18.5",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC18-S006",
+      "order": 179,
+      "at": "18.6",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC18-S008",
+      "order": 181,
+      "at": "18.8",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC18-S009",
+      "order": 182,
+      "at": "18.9",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC18-S010",
+      "order": 183,
+      "at": "18.10",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC19-S001",
+      "order": 185,
+      "at": "19.1",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC19-S002",
+      "order": 186,
+      "at": "19.2",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC19-S003",
+      "order": 187,
+      "at": "19.3",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC19-S004",
+      "order": 188,
+      "at": "19.4",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC19-S005",
+      "order": 189,
+      "at": "19.5",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC19-S006",
+      "order": 190,
+      "at": "19.6",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC19-S007",
+      "order": 191,
+      "at": "19.7",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC19-S008",
+      "order": 192,
+      "at": "19.8",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC19-S009",
+      "order": 193,
+      "at": "19.9",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC19-S010",
+      "order": 194,
+      "at": "19.10",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC20-S001",
+      "order": 196,
+      "at": "20.1",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC20-S002",
+      "order": 197,
+      "at": "20.2",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC20-S003",
+      "order": 198,
+      "at": "20.3",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC20-S004",
+      "order": 199,
+      "at": "20.4",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC20-S005",
+      "order": 200,
+      "at": "20.5",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC20-S006",
+      "order": 201,
+      "at": "20.6",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC20-S007",
+      "order": 202,
+      "at": "20.7",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC20-S008",
+      "order": 203,
+      "at": "20.8",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC20-S009",
+      "order": 204,
+      "at": "20.9",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC20-S010",
+      "order": 205,
+      "at": "20.10",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC21-S001",
+      "order": 207,
+      "at": "21.1",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC21-S002",
+      "order": 208,
+      "at": "21.2",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC21-S003",
+      "order": 209,
+      "at": "21.3",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC21-S004",
+      "order": 210,
+      "at": "21.4",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC21-S005",
+      "order": 211,
+      "at": "21.5",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC21-S006",
+      "order": 212,
+      "at": "21.6",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC21-S007",
+      "order": 213,
+      "at": "21.7",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC21-S008",
+      "order": 214,
+      "at": "21.8",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC21-S009",
+      "order": 215,
+      "at": "21.9",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC21-S010",
+      "order": 216,
+      "at": "21.10",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC21-S011",
+      "order": 217,
+      "at": "21.11",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC21-S012",
+      "order": 218,
+      "at": "21.12",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC21-S013",
+      "order": 219,
+      "at": "21.13",
+      "reason": "no_target_split",
+      "n": 0
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC22-S004",
+      "order": 224,
+      "at": "22.4",
+      "reason": "no_target_split",
+      "n": 0
+    }
+  ],
+  "errors": [],
+  "restored": [
+    {
+      "id": "ron_for_eng:pod-1:SC01-S003",
+      "order": 3,
+      "at": "1.3",
+      "n": 2,
+      "speaker": "Neighbour",
+      "sentences": [
+        "I'm very well, thank you.",
+        "Are you going to work?"
+      ],
+      "ids": [
+        "87b2f85b-6b34-4885-a711-87697246e547",
+        "2e943976-e8c1-459c-9155-ecdcbf78e9a1"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.408,
+        1.308
+      ],
+      "worst_seam_db": -41.3,
+      "all_reused": false
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC01-S004",
+      "order": 4,
+      "at": "1.4",
+      "n": 3,
+      "speaker": "Sarah",
+      "sentences": [
+        "Yes, I've got a busy day today.",
+        "I hope you have a good day.",
+        "See you later."
+      ],
+      "ids": [
+        "18c4abcc-4a10-44e8-8e9d-c20455272c68",
+        "836182a8-bf08-4239-942d-ade7f86dacc2",
+        "87608161-d604-4b53-97b1-846cb31390d6"
+      ],
+      "margin": 2.36,
+      "piece_durs": [
+        2.329,
+        1.714,
+        1.005
+      ],
+      "worst_seam_db": -46.3,
+      "all_reused": false
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC02-S002",
+      "order": 6,
+      "at": "2.2",
+      "n": 2,
+      "speaker": "Passenger",
+      "sentences": [
+        "No, it's free.",
+        "Please, go ahead."
+      ],
+      "ids": [
+        "fda1ff5d-b99b-4c4d-84a9-7bdec4e7e7cc",
+        "feee2d11-298c-4d0c-bdf4-35a57a5874bf"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.316,
+        1.4
+      ],
+      "worst_seam_db": -48.7,
+      "all_reused": false
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC02-S005",
+      "order": 9,
+      "at": "2.5",
+      "n": 2,
+      "speaker": "Passenger",
+      "sentences": [
+        "It's not very far.",
+        "Maybe three or four miles."
+      ],
+      "ids": [
+        "0ff7ee4f-ddbb-44dc-97e2-ca0938f6680d",
+        "8f136511-ac43-496c-bbdb-350397bec51b"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.454,
+        1.982
+      ],
+      "worst_seam_db": -39,
+      "all_reused": false
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC03-S001",
+      "order": 10,
+      "at": "3.1",
+      "n": 2,
+      "speaker": "Barista (3 pm)",
+      "sentences": [
+        "Good afternoon.",
+        "What can I get you?"
+      ],
+      "ids": [
+        "a28f8368-52cd-4fad-b9ef-1200791fe07e",
+        "c799b60b-3d0f-4232-af48-12a604e5717b"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.093,
+        1.287
+      ],
+      "worst_seam_db": -54.2,
+      "all_reused": false
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC04-S002",
+      "order": 21,
+      "at": "4.2",
+      "n": 4,
+      "speaker": "Sarah",
+      "sentences": [
+        "Hello!",
+        "I'm sorry but I can't talk at the moment.",
+        "I need to go home now.",
+        "Can we talk tomorrow?"
+      ],
+      "ids": [
+        "26df5924-5a06-4a1d-ac20-8c4b1326b3ca",
+        "6688ed04-5868-4956-a1a9-21607a6573ac",
+        "150eebd0-f0c2-483b-9b1b-d8ff7928e355",
+        "bc9373a6-f0d8-4402-9829-d5a366e01533"
+      ],
+      "margin": 2.31,
+      "piece_durs": [
+        0.974,
+        2.344,
+        1.643,
+        1.603
+      ],
+      "worst_seam_db": -60.5,
+      "all_reused": false
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC06-S002",
+      "order": 26,
+      "at": "6.2",
+      "n": 2,
+      "speaker": "Anna",
+      "sentences": [
+        "My name is Anna.",
+        "And you?"
+      ],
+      "ids": [
+        "f30c7494-731f-46b3-852f-80bd84d2e837",
+        "20ffb0d1-7108-465e-95a0-55b7be786c5a"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.284,
+        0.856
+      ],
+      "worst_seam_db": -54.9,
+      "all_reused": false
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC06-S003",
+      "order": 27,
+      "at": "6.3",
+      "n": 2,
+      "speaker": "James",
+      "sentences": [
+        "I'm James.",
+        "Pleased to meet you."
+      ],
+      "ids": [
+        "2a88e53c-c3f3-444e-8b46-c0feb80528e7",
+        "35b6e3d5-5825-433a-866a-e4d5d8532d3d"
+      ],
+      "margin": 2.86,
+      "piece_durs": [
+        1.59,
+        1.102
+      ],
+      "worst_seam_db": -91,
+      "all_reused": false
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC06-S004",
+      "order": 28,
+      "at": "6.4",
+      "n": 2,
+      "speaker": "Anna",
+      "sentences": [
+        "Pleased to meet you too.",
+        "Where are you from?"
+      ],
+      "ids": [
+        "8a275a70-d896-4ab4-8e85-3c4ff97f478d",
+        "16320039-0471-4f30-8d04-87680c0751cb"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.64,
+        1.412
+      ],
+      "worst_seam_db": -55.2,
+      "all_reused": false
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC06-S005",
+      "order": 29,
+      "at": "6.5",
+      "n": 2,
+      "speaker": "James",
+      "sentences": [
+        "I'm from Manchester, but I live in London now.",
+        "And you?"
+      ],
+      "ids": [
+        "08b1dce1-5516-4b5d-bb98-8434d1e2ada8",
+        "b41a1065-18cf-4fc5-a9fb-82c925750417"
+      ],
+      "margin": null,
+      "piece_durs": [
+        2.622,
+        0.67
+      ],
+      "worst_seam_db": -63.5,
+      "all_reused": false
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC06-S006",
+      "order": 30,
+      "at": "6.6",
+      "n": 2,
+      "speaker": "Anna",
+      "sentences": [
+        "I'm from France.",
+        "I've been here for two years."
+      ],
+      "ids": [
+        "c1fa27a2-5d9e-4a85-8b33-c01ae57250c2",
+        "f6830d17-81d3-4180-829b-f859ca8dc09e"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.799,
+        1.781
+      ],
+      "worst_seam_db": -48.9,
+      "all_reused": false
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC06-S008",
+      "order": 32,
+      "at": "6.8",
+      "n": 2,
+      "speaker": "Anna",
+      "sentences": [
+        "I'm a nurse, at the hospital just round the corner.",
+        "And you?"
+      ],
+      "ids": [
+        "0f14c773-7f56-4471-9baf-9d649e70675b",
+        "20ffb0d1-7108-465e-95a0-55b7be786c5a"
+      ],
+      "margin": 4.86,
+      "piece_durs": [
+        4.681,
+        1.107
+      ],
+      "worst_seam_db": -60.8,
+      "all_reused": false
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC06-S012",
+      "order": 36,
+      "at": "6.12",
+      "n": 2,
+      "speaker": "Anna",
+      "sentences": [
+        "How interesting.",
+        "Well, lovely to meet you."
+      ],
+      "ids": [
+        "e594dcb2-5467-4471-8c25-09f69a34c4df",
+        "e89f79f9-4561-4090-be65-ffe2edbfafe6"
+      ],
+      "margin": 3.69,
+      "piece_durs": [
+        1.484,
+        2.144
+      ],
+      "worst_seam_db": -62.7,
+      "all_reused": false
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC07-S008",
+      "order": 45,
+      "at": "7.8",
+      "n": 2,
+      "speaker": "Cafe Barista",
+      "sentences": [
+        "Right away.",
+        "Would you like anything else?"
+      ],
+      "ids": [
+        "d27a7cc6-1131-41f1-bf62-49ba95271243",
+        "47718ee1-0b34-4064-9a9c-cb60037ac124"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.076,
+        1.784
+      ],
+      "worst_seam_db": -52.4,
+      "all_reused": false
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC07-S004",
+      "order": 41,
+      "at": "7.4",
+      "n": 2,
+      "speaker": "Cafe Customer 1",
+      "sentences": [
+        "I'd like large, please.",
+        "With oat milk if you have it."
+      ],
+      "ids": [
+        "60e1f0b5-54ca-4482-b1a1-2c891352baad",
+        "28f96e1c-ac63-4d75-9613-294385dbfe26"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.653,
+        1.855
+      ],
+      "worst_seam_db": -37.3,
+      "all_reused": false
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC07-S011",
+      "order": 48,
+      "at": "7.11",
+      "n": 2,
+      "speaker": "Cafe Customer 2",
+      "sentences": [
+        "Could I pay by card?",
+        "Do you have contactless?"
+      ],
+      "ids": [
+        "28d24e18-cb4b-4cdd-aa4b-37e790752ebe",
+        "e8707010-277c-4d92-9c57-10bbf3f4f58e"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.658,
+        1.61
+      ],
+      "worst_seam_db": -51.6,
+      "all_reused": false
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC07-S012",
+      "order": 49,
+      "at": "7.12",
+      "n": 2,
+      "speaker": "Cafe Barista",
+      "sentences": [
+        "Of course.",
+        "There's the machine."
+      ],
+      "ids": [
+        "22950399-1a95-4c99-9eee-078ed3f6c25e",
+        "635d9d5d-8de3-4d26-80d5-2c56c11b1ff6"
+      ],
+      "margin": null,
+      "piece_durs": [
+        0.961,
+        1.275
+      ],
+      "worst_seam_db": -55.5,
+      "all_reused": false
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC07-S014",
+      "order": 51,
+      "at": "7.14",
+      "n": 2,
+      "speaker": "Cafe Barista",
+      "sentences": [
+        "Would you like to sit-in?",
+        "The table by the window is free."
+      ],
+      "ids": [
+        "2d353932-7287-47e3-8d57-666697a26f6e",
+        "20a8b8f7-4eac-4cb8-87dc-1d04aa08b7d7"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.55,
+        2.006
+      ],
+      "worst_seam_db": -44.6,
+      "all_reused": false
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC08-S001",
+      "order": 53,
+      "at": "8.1",
+      "n": 2,
+      "speaker": "Bartender",
+      "sentences": [
+        "Good evening.",
+        "What can I get you?"
+      ],
+      "ids": [
+        "22d55f85-81c3-43a0-9cad-43d1f8113052",
+        "c799b60b-3d0f-4232-af48-12a604e5717b"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.613,
+        1.247
+      ],
+      "worst_seam_db": -56.2,
+      "all_reused": false
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC08-S002",
+      "order": 54,
+      "at": "8.2",
+      "n": 2,
+      "speaker": "Bar Customer 1",
+      "sentences": [
+        "I'd like a pint, please.",
+        "What ales do you have on?"
+      ],
+      "ids": [
+        "bd8c8bbb-ed66-4184-8e6c-415e9de3efd1",
+        "673be92c-6578-4f4e-800e-73e584db1946"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.633,
+        1.739
+      ],
+      "worst_seam_db": -51.5,
+      "all_reused": false
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC08-S012",
+      "order": 64,
+      "at": "8.12",
+      "n": 2,
+      "speaker": "Bar Customer 1",
+      "sentences": [
+        "I'm not sure if I'm hungry.",
+        "Do you have a menu?"
+      ],
+      "ids": [
+        "29de88be-3f36-4460-88ae-1e535259ca84",
+        "09977028-c65b-4b00-93fb-231783768ecc"
+      ],
+      "margin": 2.93,
+      "piece_durs": [
+        1.824,
+        1.756
+      ],
+      "worst_seam_db": -48.5,
+      "all_reused": false
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC07-S015",
+      "order": 52,
+      "at": "7.15",
+      "n": 5,
+      "speaker": "Narrator",
+      "sentences": [
+        "5.",
+        "10.",
+        "15.",
+        "Red.",
+        "Green."
+      ],
+      "ids": [
+        "9ece12ca-8169-47de-8fd5-990a7b96cc5c",
+        "120df131-9131-42fc-b4c6-93f7752dce42",
+        "3f4f9fec-c83c-4a37-b227-7d0de72d4b81",
+        "6f55f22c-ce43-4ac8-bcfa-d3856b470f1e",
+        "0e0cab14-986c-45fe-b366-d9c772a555e6"
+      ],
+      "margin": null,
+      "piece_durs": [
+        0.859,
+        0.745,
+        0.96,
+        0.689,
+        0.867
+      ],
+      "worst_seam_db": -40.3,
+      "all_reused": false
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC08-S014",
+      "order": 66,
+      "at": "8.14",
+      "n": 2,
+      "speaker": "Bar Customer 1",
+      "sentences": [
+        "Can we have some bread?",
+        "And a bowl of chips for the table."
+      ],
+      "ids": [
+        "5869af54-2470-46a1-914d-2a6493494b63",
+        "47f990d6-6ebe-4a74-bf34-5d8f7ec82c0b"
+      ],
+      "margin": 3.91,
+      "piece_durs": [
+        1.534,
+        2.479
+      ],
+      "worst_seam_db": -58.7,
+      "all_reused": false
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC08-S015",
+      "order": 67,
+      "at": "8.15",
+      "n": 2,
+      "speaker": "Bar Customer 2",
+      "sentences": [
+        "Do you have any sandwiches?",
+        "I'd like a cheese sandwich, please."
+      ],
+      "ids": [
+        "7468bd85-eeec-4ad0-9dd0-7fe5939d3d9f",
+        "8ba3ed4d-537a-4785-a35e-40f471e360f9"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.678,
+        2.142
+      ],
+      "worst_seam_db": -56.9,
+      "all_reused": false
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC09-S001",
+      "order": 69,
+      "at": "9.1",
+      "n": 2,
+      "speaker": "Diner 1",
+      "sentences": [
+        "Good evening.",
+        "We have a booking for two, under the name Davies."
+      ],
+      "ids": [
+        "2fdc673c-98ca-4ab9-a75c-b9539639e60c",
+        "75faac83-6f30-4c38-88f1-bd09bcb8d17f"
+      ],
+      "margin": 2.21,
+      "piece_durs": [
+        1.12,
+        3.348
+      ],
+      "worst_seam_db": -53.3,
+      "all_reused": false
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC09-S002",
+      "order": 70,
+      "at": "9.2",
+      "n": 3,
+      "speaker": "Waiter",
+      "sentences": [
+        "Welcome.",
+        "Please follow me.",
+        "Here are the menus."
+      ],
+      "ids": [
+        "e90cf7cc-83e1-4ac8-950a-c82f759afc5a",
+        "bcf134b1-6def-4bd1-892a-7a912ef2e51f",
+        "6dde61a7-c55a-4649-8900-0417372ae343"
+      ],
+      "margin": null,
+      "piece_durs": [
+        0.916,
+        1.419,
+        1.249
+      ],
+      "worst_seam_db": -35.3,
+      "all_reused": false
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC09-S009",
+      "order": 77,
+      "at": "9.9",
+      "n": 2,
+      "speaker": "Diner 1",
+      "sentences": [
+        "I'll have the lamb, please.",
+        "With a side of greens."
+      ],
+      "ids": [
+        "6a07ea59-2d66-4273-9c4b-8c422e7dbd7a",
+        "435f1581-c6b7-4787-86fa-dc588cccd0b9"
+      ],
+      "margin": null,
+      "piece_durs": [
+        2.041,
+        1.875
+      ],
+      "worst_seam_db": -42.8,
+      "all_reused": false
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC09-S010",
+      "order": 78,
+      "at": "9.10",
+      "n": 2,
+      "speaker": "Diner 2",
+      "sentences": [
+        "And the risotto for me.",
+        "With a small green salad to start."
+      ],
+      "ids": [
+        "e255cc93-cffa-482d-9cbd-4bc7b54893fc",
+        "7a80ed52-aa3d-4f1f-8ff5-f07612fe5932"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.737,
+        2.659
+      ],
+      "worst_seam_db": -52.7,
+      "all_reused": false
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC09-S011",
+      "order": 79,
+      "at": "9.11",
+      "n": 2,
+      "speaker": "Waiter",
+      "sentences": [
+        "Of course.",
+        "And what would you like to drink?"
+      ],
+      "ids": [
+        "80b1fec9-be0e-4c81-b9ee-ea292fa264d2",
+        "ec235a29-2685-4255-9f86-10d4ddc3312b"
+      ],
+      "margin": null,
+      "piece_durs": [
+        0.946,
+        2.01
+      ],
+      "worst_seam_db": -44.7,
+      "all_reused": false
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC09-S016",
+      "order": 84,
+      "at": "9.16",
+      "n": 2,
+      "speaker": "Diner 1",
+      "sentences": [
+        "Just two coffees, please.",
+        "Decaf for me."
+      ],
+      "ids": [
+        "b51584be-acdc-4277-84ec-a3bdfbf74391",
+        "abfd1bd5-a126-47cb-b5ab-a73e7276e7da"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.902,
+        1.4
+      ],
+      "worst_seam_db": -46,
+      "all_reused": false
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC09-S017",
+      "order": 85,
+      "at": "9.17",
+      "n": 2,
+      "speaker": "Diner 2",
+      "sentences": [
+        "And the bill, when you're ready.",
+        "Could we split it?"
+      ],
+      "ids": [
+        "eb240858-ba95-40ac-b069-e0fe6c4b4988",
+        "c17f1368-4ba4-4f37-ad99-1b4aa361679a"
+      ],
+      "margin": 2.57,
+      "piece_durs": [
+        2.021,
+        2.097
+      ],
+      "worst_seam_db": -53,
+      "all_reused": false
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC10-S003",
+      "order": 89,
+      "at": "10.3",
+      "n": 2,
+      "speaker": "Customer",
+      "sentences": [
+        "Thank you.",
+        "And do you have any painkillers for children?"
+      ],
+      "ids": [
+        "e8187579-c826-483d-a921-a1898cd8bbbc",
+        "1e6ac002-3e89-493f-b808-b2ac6b06c373"
+      ],
+      "margin": null,
+      "piece_durs": [
+        0.938,
+        2.729
+      ],
+      "worst_seam_db": -40.5,
+      "all_reused": false
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC10-S007",
+      "order": 93,
+      "at": "10.7",
+      "n": 2,
+      "speaker": "Customer",
+      "sentences": [
+        "Thank you, you've been very helpful.",
+        "I'm very grateful."
+      ],
+      "ids": [
+        "2dda8f84-8744-475f-ab1e-0eed7fcab754",
+        "28121726-a4fd-4553-8b28-667f30a22747"
+      ],
+      "margin": 4.7,
+      "piece_durs": [
+        2.177,
+        1.505
+      ],
+      "worst_seam_db": -50.2,
+      "all_reused": false
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC10-S001",
+      "order": 87,
+      "at": "10.1",
+      "n": 2,
+      "speaker": "Customer",
+      "sentences": [
+        "Excuse me.",
+        "Do you have any painkillers?"
+      ],
+      "ids": [
+        "fc58352b-4385-4767-81ee-cfc482bc0cbb",
+        "6c64b5e5-7432-4801-9501-c0c3a58f006d"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.217,
+        1.979
+      ],
+      "worst_seam_db": -57.6,
+      "all_reused": false
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC10-S008",
+      "order": 94,
+      "at": "10.8",
+      "n": 3,
+      "speaker": "Assistant",
+      "sentences": [
+        "You're welcome.",
+        "Are you here on holiday?",
+        "You speak very good Romanian."
+      ],
+      "ids": [
+        "2e2752ff-c733-4424-a054-a7673b1fc235",
+        "b8e80a72-4ad6-419a-b491-dceb9db20358",
+        "46ec4077-83ae-4769-ae3a-bcf1fcf8eec3"
+      ],
+      "margin": null,
+      "piece_durs": [
+        0.921,
+        1.795,
+        2.02
+      ],
+      "worst_seam_db": -38.6,
+      "all_reused": false
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC10-S009",
+      "order": 95,
+      "at": "10.9",
+      "n": 3,
+      "speaker": "Customer",
+      "sentences": [
+        "That's very kind of you!",
+        "Yes, I'm on holiday, and I need to practice more to speak Romanian better.",
+        "Thank you very much, and goodbye."
+      ],
+      "ids": [
+        "ae2252c7-1253-4244-8c67-e012dce75261",
+        "8116b795-b252-4964-9ceb-df1756bb768f",
+        "e2f7827c-24e6-453b-a385-8d71b9ab202a"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.653,
+        4.718,
+        2.399
+      ],
+      "worst_seam_db": -48.1,
+      "all_reused": false
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC10-S010",
+      "order": 96,
+      "at": "10.10",
+      "n": 5,
+      "speaker": "Narrator",
+      "sentences": [
+        "12.",
+        "13.",
+        "14.",
+        "Pink.",
+        "Grey."
+      ],
+      "ids": [
+        "e61236e1-899b-4d60-899f-709b498d8888",
+        "2591a242-a396-4a15-aabc-089f99107375",
+        "133dce39-8969-4f3c-acb1-f8be2db7518b",
+        "3245ae17-1555-4cb9-b55d-b7731d983571",
+        "76be46b6-15e7-42ef-bdcc-d2d40946b086"
+      ],
+      "margin": null,
+      "piece_durs": [
+        0.756,
+        1.037,
+        1.002,
+        0.72,
+        0.772
+      ],
+      "worst_seam_db": -47.5,
+      "all_reused": false
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC11-S003",
+      "order": 99,
+      "at": "11.3",
+      "n": 2,
+      "speaker": "Guest",
+      "sentences": [
+        "Of course.",
+        "Here's my passport."
+      ],
+      "ids": [
+        "80b1fec9-be0e-4c81-b9ee-ea292fa264d2",
+        "3075688e-c773-40a4-896a-181f4f2e3db7"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.438,
+        1.782
+      ],
+      "worst_seam_db": -44.3,
+      "all_reused": false
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC11-S008",
+      "order": 104,
+      "at": "11.8",
+      "n": 2,
+      "speaker": "Receptionist",
+      "sentences": [
+        "From half-past seven until ten o'clock.",
+        "We have fruit and cereals or a cooked breakfast."
+      ],
+      "ids": [
+        "c73df68d-b3cd-499d-b684-f78b7b3a0560",
+        "c78ffe4b-3b43-4631-b29f-ccd018e4a641"
+      ],
+      "margin": 5.54,
+      "piece_durs": [
+        3.036,
+        3.52
+      ],
+      "worst_seam_db": -64.3,
+      "all_reused": false
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC11-S012",
+      "order": 108,
+      "at": "11.12",
+      "n": 2,
+      "speaker": "Receptionist",
+      "sentences": [
+        "It's on the welcome card in your room.",
+        "Have a lovely stay."
+      ],
+      "ids": [
+        "f8e404a8-03a8-402c-a599-ecc20238b122",
+        "fe596290-fe58-455a-a967-bd2b42eaab5f"
+      ],
+      "margin": null,
+      "piece_durs": [
+        3.169,
+        1.539
+      ],
+      "worst_seam_db": -47.8,
+      "all_reused": false
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC12-S001",
+      "order": 110,
+      "at": "12.1",
+      "n": 2,
+      "speaker": "Customer",
+      "sentences": [
+        "Good morning.",
+        "I'm not feeling great - could you recommend something?"
+      ],
+      "ids": [
+        "fe93d36d-59d8-47b5-934b-53cced0e59c5",
+        "50d7742c-5aa8-4672-a17d-f1dbac69da65"
+      ],
+      "margin": 2.05,
+      "piece_durs": [
+        1.113,
+        3.281
+      ],
+      "worst_seam_db": -54.6,
+      "all_reused": false
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC12-S002",
+      "order": 111,
+      "at": "12.2",
+      "n": 2,
+      "speaker": "Pharmacist",
+      "sentences": [
+        "Of course.",
+        "What are your symptoms?"
+      ],
+      "ids": [
+        "80b1fec9-be0e-4c81-b9ee-ea292fa264d2",
+        "697bda53-7626-47d5-8b52-b9700a407042"
+      ],
+      "margin": 4.24,
+      "piece_durs": [
+        1.218,
+        1.786
+      ],
+      "worst_seam_db": -80.8,
+      "all_reused": false
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC12-S009",
+      "order": 118,
+      "at": "12.9",
+      "n": 2,
+      "speaker": "Customer",
+      "sentences": [
+        "Thank you.",
+        "Could I also get a packet of plasters?"
+      ],
+      "ids": [
+        "e8187579-c826-483d-a921-a1898cd8bbbc",
+        "b58c79c6-33df-42b3-86ba-71f74bc29a0f"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.006,
+        2.626
+      ],
+      "worst_seam_db": -52,
+      "all_reused": false
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC13-S008",
+      "order": 127,
+      "at": "13.8",
+      "n": 2,
+      "speaker": "Tourist",
+      "sentences": [
+        "Wonderful.",
+        "And is there a cashpoint nearby?"
+      ],
+      "ids": [
+        "772fdde4-b43d-4f46-a395-bdacd4fc2d42",
+        "33304f7c-930a-4d7a-9332-532f3795242f"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.097,
+        2.579
+      ],
+      "worst_seam_db": -37.8,
+      "all_reused": false
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC13-S010",
+      "order": 129,
+      "at": "13.10",
+      "n": 2,
+      "speaker": "Tourist",
+      "sentences": [
+        "Thank you very much.",
+        "You've been very helpful."
+      ],
+      "ids": [
+        "a5344516-3890-4f5c-9454-a3ad517a46df",
+        "4ff7c0b9-2455-4c4d-9618-36fa4953cbf8"
+      ],
+      "margin": 3.87,
+      "piece_durs": [
+        1.498,
+        1.624
+      ],
+      "worst_seam_db": -51.2,
+      "all_reused": false
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC14-S002",
+      "order": 132,
+      "at": "14.2",
+      "n": 2,
+      "speaker": "Driver",
+      "sentences": [
+        "Yes, of course.",
+        "It may take some time, there's a lot of traffic at the moment."
+      ],
+      "ids": [
+        "d30dc71d-098e-4c99-8297-39451301fa04",
+        "de70f0fe-9af9-45d1-99ea-71c80e5424df"
+      ],
+      "margin": 3.47,
+      "piece_durs": [
+        1.504,
+        3.482
+      ],
+      "worst_seam_db": -52.1,
+      "all_reused": false
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC14-S007",
+      "order": 137,
+      "at": "14.7",
+      "n": 2,
+      "speaker": "Driver",
+      "sentences": [
+        "Here we are.",
+        "That's twelve pound fifty."
+      ],
+      "ids": [
+        "76772204-5ac9-45d2-ba36-881336420c99",
+        "9f61a550-b3ac-432b-bb92-cb0bcf0a8b9d"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.021,
+        1.879
+      ],
+      "worst_seam_db": -60.2,
+      "all_reused": false
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC14-S009",
+      "order": 139,
+      "at": "14.9",
+      "n": 2,
+      "speaker": "Driver",
+      "sentences": [
+        "Yes, of course.",
+        "The machine is just here."
+      ],
+      "ids": [
+        "d30dc71d-098e-4c99-8297-39451301fa04",
+        "e39f796c-c678-494f-a5f2-e104ece79829"
+      ],
+      "margin": 2.98,
+      "piece_durs": [
+        1.428,
+        2.049
+      ],
+      "worst_seam_db": -43.8,
+      "all_reused": false
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC14-S010",
+      "order": 140,
+      "at": "14.10",
+      "n": 5,
+      "speaker": "Narrator",
+      "sentences": [
+        "100.",
+        "200.",
+        "1000.",
+        "Sunday.",
+        "12 o'clock."
+      ],
+      "ids": [
+        "bd18310a-6596-4c0d-9b2a-becf5bf085f0",
+        "a453104b-64d2-4435-b369-9809d05ac007",
+        "33cd895e-712f-4e4b-8fad-7c3c4ca171f1",
+        "cd02798b-aa01-409e-8c49-c21e9af158b9",
+        "27cb5a0c-03bb-4094-865f-86e0ea00a3c1"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.003,
+        1.111,
+        1.234,
+        0.886,
+        1.014
+      ],
+      "worst_seam_db": -48.9,
+      "all_reused": false
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC15-S011",
+      "order": 151,
+      "at": "15.11",
+      "n": 5,
+      "speaker": "Narrator",
+      "sentences": [
+        "100,000.",
+        "60.",
+        "70.",
+        "1 o'clock.",
+        "11 o'clock."
+      ],
+      "ids": [
+        "9316f2c9-7b2c-44bf-8160-f3ee17261703",
+        "c63e3ca3-b751-4ee7-b161-8f226a479048",
+        "1de60f52-01c8-4b3c-b91f-1fc048c9d88c",
+        "5a5d806b-fc0d-4967-87cc-5bea7182790e",
+        "bd7215bc-4737-4a90-8b6c-175ead9ea34c"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.657,
+        0.942,
+        1.055,
+        1.126,
+        1.261
+      ],
+      "worst_seam_db": -44.4,
+      "all_reused": false
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC16-S011",
+      "order": 162,
+      "at": "16.11",
+      "n": 5,
+      "speaker": "Narrator",
+      "sentences": [
+        "A million.",
+        "80.",
+        "90.",
+        "2 o'clock.",
+        "10 o'clock."
+      ],
+      "ids": [
+        "63961afb-9169-436e-802f-90a5e93686cc",
+        "ec547bbc-45f4-4ee2-a5d9-317d2884ce62",
+        "31b7b8a4-93aa-427f-9c32-78f0bc7b79a8",
+        "7801029a-4f10-4360-80ba-3b8fec0ecd8a",
+        "5c150d27-17e1-475a-8ba6-1aa541304e82"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.102,
+        0.997,
+        1.006,
+        1.049,
+        1.021
+      ],
+      "worst_seam_db": -43.8,
+      "all_reused": false
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC18-S007",
+      "order": 180,
+      "at": "18.7",
+      "n": 2,
+      "speaker": "Learner",
+      "sentences": [
+        "Is that correct?",
+        "Am I correct?"
+      ],
+      "ids": [
+        "12d6be5c-7758-40d0-8086-b5760b788b89",
+        "21f7b949-db7c-4ec7-ac8e-b594875645c3"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.116,
+        1.264
+      ],
+      "worst_seam_db": -46.3,
+      "all_reused": false
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC17-S011",
+      "order": 173,
+      "at": "17.11",
+      "n": 4,
+      "speaker": "Narrator",
+      "sentences": [
+        "3 o'clock.",
+        "9 o'clock.",
+        "January.",
+        "February."
+      ],
+      "ids": [
+        "e6266a44-8ca9-4fe7-a2b8-969b4a78e152",
+        "5ccae803-1f0b-4b48-bbc0-98208357bf8e",
+        "6a7e97e4-0e18-458a-9b4c-b1d1f63de28b",
+        "9765fe49-29f4-4dbf-a87e-54e2f4b6c0c4"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.124,
+        1.226,
+        0.956,
+        0.882
+      ],
+      "worst_seam_db": -35.4,
+      "all_reused": false
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC18-S011",
+      "order": 184,
+      "at": "18.11",
+      "n": 4,
+      "speaker": "Narrator",
+      "sentences": [
+        "4 o'clock.",
+        "8 o'clock.",
+        "March.",
+        "April."
+      ],
+      "ids": [
+        "37b50f24-2e6f-4eb2-8647-9f5188d06578",
+        "d13068ee-28cf-4776-9129-90239ce77337",
+        "7ece639a-519d-48a7-90ca-8dc9a94521d2",
+        "e0b31735-cf6c-4a47-83e7-d7d370c4ee38"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.141,
+        1.098,
+        0.966,
+        0.912
+      ],
+      "worst_seam_db": -42.8,
+      "all_reused": false
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC19-S011",
+      "order": 195,
+      "at": "19.11",
+      "n": 4,
+      "speaker": "Narrator",
+      "sentences": [
+        "5 o'clock.",
+        "7 o'clock.",
+        "May.",
+        "June."
+      ],
+      "ids": [
+        "789ad396-1a3b-47eb-8b04-1f98f9877e51",
+        "7fe0fc8c-6a58-47c8-b6e6-56aed4b0bfd1",
+        "457daa03-157f-4334-b5ae-fa620a2147c6",
+        "da38b341-a366-4194-831b-1ca1fadc9f99"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.058,
+        1.297,
+        0.868,
+        0.966
+      ],
+      "worst_seam_db": -36.3,
+      "all_reused": false
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC21-S014",
+      "order": 220,
+      "at": "21.14",
+      "n": 3,
+      "speaker": "Narrator",
+      "sentences": [
+        "October.",
+        "November.",
+        "December."
+      ],
+      "ids": [
+        "ba3b3a51-20d5-499a-a03b-ee06cbf58f89",
+        "a83bc31b-9465-4e14-8820-39f76ddc60f0",
+        "c9bdd568-4a22-49d7-b4b4-ce5475811cf6"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.013,
+        1.055,
+        0.988
+      ],
+      "worst_seam_db": -48.6,
+      "all_reused": false
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC22-S001",
+      "order": 221,
+      "at": "22.1",
+      "n": 2,
+      "speaker": "Learner",
+      "sentences": [
+        "Would you mind if I tried to practise speaking Romanian with you?",
+        "I haven't been learning for very long, and I still feel a little nervous about speaking with other people."
+      ],
+      "ids": [
+        "d4a3598e-8295-4bdb-8e20-bb63eaffedbb",
+        "6013d955-2a1f-4250-b36f-6e5822302d94"
+      ],
+      "margin": 2.69,
+      "piece_durs": [
+        3.259,
+        5.289
+      ],
+      "worst_seam_db": -38.2,
+      "all_reused": false
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC22-S002",
+      "order": 222,
+      "at": "22.2",
+      "n": 3,
+      "speaker": "Friend",
+      "sentences": [
+        "Of course, no problem.",
+        "You seem to speak it very well.",
+        "I can understand you easily."
+      ],
+      "ids": [
+        "1eefa390-9b39-432b-a33b-b12c7bcbf695",
+        "c98f207d-911b-4cc0-9d42-09f4867369f6",
+        "09f73bd6-6011-4571-941b-31b5c7cd175f"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.421,
+        2.153,
+        1.786
+      ],
+      "worst_seam_db": -49.1,
+      "all_reused": false
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC22-S003",
+      "order": 223,
+      "at": "22.3",
+      "n": 3,
+      "speaker": "Learner",
+      "sentences": [
+        "Thank you, that's good to know.",
+        "I need to learn more words, and I need to practise listening.",
+        "I don't understand people very well when they don't speak slowly."
+      ],
+      "ids": [
+        "2b7d8f24-bd0a-42af-a977-a4d27724cc3a",
+        "816da68d-965e-47c5-889f-4cd9b087dc24",
+        "886cd395-e94c-44fb-855a-5a13f7d4021e"
+      ],
+      "margin": 2.6,
+      "piece_durs": [
+        1.99,
+        4.055,
+        3.946
+      ],
+      "worst_seam_db": -59.9,
+      "all_reused": false
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC22-S005",
+      "order": 225,
+      "at": "22.5",
+      "n": 4,
+      "speaker": "Learner",
+      "sentences": [
+        "Yes, thank you.",
+        "It's easier talking to just one person.",
+        "It's a bit difficult thinking of something to say, though.",
+        "I'm not sure what to say, but I feel as if I can speak enough to start having conversations."
+      ],
+      "ids": [
+        "7fb99548-3ff8-4eea-8dd8-9711a651b289",
+        "99b87d96-ae0d-49d4-9eb5-abd6dac77a51",
+        "45413561-61f5-4068-b354-ca8dd977d202",
+        "a1b03c0a-4336-4c33-81c9-ef990bab3e24"
+      ],
+      "margin": 1.95,
+      "piece_durs": [
+        2.61,
+        2.895,
+        3.249,
+        5.178
+      ],
+      "worst_seam_db": -56,
+      "all_reused": false
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC22-S007",
+      "order": 227,
+      "at": "22.7",
+      "n": 2,
+      "speaker": "Learner",
+      "sentences": [
+        "It's just a little frustrating when I can't think quickly enough to express myself properly.",
+        "But I know that I need to keep practising if I want to speak more confidently."
+      ],
+      "ids": [
+        "76dff7b3-5f2f-494e-94a0-08a0548e5e1d",
+        "e7c29e52-97ee-4494-bda9-82ada2e64176"
+      ],
+      "margin": null,
+      "piece_durs": [
+        6.11,
+        4.502
+      ],
+      "worst_seam_db": -56.3,
+      "all_reused": false
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC22-S006",
+      "order": 226,
+      "at": "22.6",
+      "n": 3,
+      "speaker": "Friend",
+      "sentences": [
+        "I think you're doing very well.",
+        "I'm impressed.",
+        "I think you're ready to start speaking Romanian to anyone who speaks Romanian."
+      ],
+      "ids": [
+        "d5ed8325-9637-479c-8d5a-ef36cfad0b7b",
+        "4e500caa-e5de-4938-b2eb-2c634db675d7",
+        "278145e5-dac1-4317-a9e1-db3bd0db4b30"
+      ],
+      "margin": null,
+      "piece_durs": [
+        2.085,
+        1.234,
+        4.92
+      ],
+      "worst_seam_db": -35.6,
+      "all_reused": false
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC22-S008",
+      "order": 228,
+      "at": "22.8",
+      "n": 3,
+      "speaker": "Friend",
+      "sentences": [
+        "You should be confident already.",
+        "I think you're doing much better than you realise.",
+        "I feel comfortable speaking with you, and I'm not talking very slowly."
+      ],
+      "ids": [
+        "e8359c12-8899-416e-95b3-128335314ae1",
+        "fd350faa-36fa-4e7d-bb7f-818238c129e0",
+        "fd46003b-8e2a-4278-933d-d55a740b9c75"
+      ],
+      "margin": null,
+      "piece_durs": [
+        1.869,
+        0.402,
+        6.761
+      ],
+      "worst_seam_db": -41.4,
+      "all_reused": false
+    },
+    {
+      "id": "ron_for_eng:pod-1:SC22-S009",
+      "order": 229,
+      "at": "22.9",
+      "n": 4,
+      "speaker": "Learner",
+      "sentences": [
+        "This is exactly the kind of practice I need.",
+        "I think I can feel it changing my brain while we're talking!",
+        "I really appreciate your help.",
+        "But it's surprising how tired I get when I'm talking in a language I don't speak very well."
+      ],
+      "ids": [
+        "2146b6e0-027b-44ba-bfb0-cc6849ff317f",
+        "10809156-2db5-45c8-897c-eee51c98be6b",
+        "a4359d12-4f2e-4e8f-bad0-be6eadc84959",
+        "44a6ec1c-995d-48ed-9d63-745cd338e4fe"
+      ],
+      "margin": null,
+      "piece_durs": [
+        2.924,
+        3.677,
+        2.416,
+        5.443
+      ],
+      "worst_seam_db": -59.4,
+      "all_reused": false
+    }
+  ]
+}
