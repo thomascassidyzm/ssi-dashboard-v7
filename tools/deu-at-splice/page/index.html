@@ -28,14 +28,21 @@ button{font:inherit;color:inherit;border:none;border-radius:14px;cursor:pointer;
  border-radius:14px;padding:.55rem;margin-top:.55rem}
 .cand.picked{border-color:var(--pick);background:#241f16}
 .cand.playing{border-color:var(--acc)}
-.play{flex:0 0 56px;min-height:56px;border:1px solid var(--line);display:grid;place-items:center;font-size:1.2rem}
+.play{flex:0 0 56px;min-height:56px;border:1px solid var(--line);display:grid;place-items:center}
+/* CSS shapes, not glyphs: a headless render showed ▶ and ★ as blank boxes when no
+   symbol font is installed, and a blank button on Kai's phone would read as broken. */
+.play i{display:block;width:0;height:0;border-left:16px solid var(--fg);
+ border-top:11px solid transparent;border-bottom:11px solid transparent;margin-left:4px}
+.cand.playing .play i{border-left-color:#06101f;border-left:none;width:14px;height:16px;
+ background:#06101f;border-radius:2px;margin-left:0}
 .cand.playing .play{background:var(--acc);color:#06101f}
 .meta{flex:1;min-width:0}
 .meta .kind{font-size:.72rem;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:var(--acc)}
 .meta .how{font-size:.86rem;word-wrap:break-word;overflow-wrap:anywhere}
 .meta .det{font-size:.78rem;color:var(--dim);margin-top:.15rem}
 .tm{display:inline-block;background:#3a3320;color:var(--warn);border-radius:999px;padding:0 7px;font-size:.7rem;font-weight:700;margin-left:.3rem}
-.pick{flex:0 0 52px;min-height:56px;border:1px solid var(--line);font-size:1.25rem}
+.pick{flex:0 0 62px;min-height:56px;border:1px solid var(--line);font-size:.78rem;font-weight:800;
+ letter-spacing:.04em;text-transform:uppercase}
 .cand.picked .pick{background:var(--pick);color:#241f16}
 .bar{position:fixed;left:0;right:0;bottom:0;background:#0e0e16;border-top:1px solid var(--line);
  padding:.6rem .8rem calc(.6rem + env(safe-area-inset-bottom));display:flex;gap:.5rem;align-items:center;z-index:20}
@@ -49,14 +56,13 @@ pre{white-space:pre-wrap;word-break:break-all;font-size:.75rem;background:#0e0e1
 
 <h1>Four phrases, spliced out of Sascha's own recordings</h1>
 <p class="dim">Sascha uses they/them. Nothing here is synthesised — every candidate is
-made of audio they already recorded, cut and glued. <b>Tap the circle to hear it. Tap the
-star on anything you like</b> — you can star as many as you want, and starring is how you
-tell us what "good" sounds like. Your stars survive a reload; <b>Send my picks</b> at the
-bottom gets them to us.</p>
+made of audio they already recorded, cut and glued. <b>Tap the triangle to hear it. Tap PICK on
+anything you like</b> — as many as you want. Picking is how you tell us what "good" sounds
+like. Your picks survive a reload; <b>Send my picks</b> at the bottom gets them to us.</p>
 
 <div class="sec">
 <p class="dim" style="margin:0">Each candidate says what it was made from and how, so your
-stars can become a rule. Three things vary on purpose:
+picks can become a rule. Three things vary on purpose:
 <b>which line the words were cut out of</b>, <b>how much silence is left around the cut</b>
 (tight / medium / wide), and <b>how long a gap sits between glued pieces</b> (none, a
 crossfade, 50 / 110 / 190&nbsp;ms).</p>
@@ -113,20 +119,20 @@ function render() {
     const head = document.createElement('div')
     head.className = 'ghead'
     head.innerHTML = `<div class="de">${t.text}</div><div class="dim">${list.length} to listen to`
-      + `${list.length !== t.count ? ` of ${t.count}` : ''} · ${Object.values(picks).filter((p) => p.target === t.id).length} starred</div>`
+      + `${list.length !== t.count ? ` of ${t.count}` : ''} · ${Object.values(picks).filter((p) => p.target === t.id).length} picked</div>`
     box.appendChild(head)
     for (const c of list) {
       const row = document.createElement('div')
       row.className = 'cand' + (picks[c.id] ? ' picked' : '')
       const b = document.createElement('button')
-      b.className = 'play'; b.textContent = '▶'
+      b.className = 'play'; b.innerHTML = '<i></i>'; b.setAttribute('aria-label', 'play')
       b.onclick = () => play(c, row)
       const m = document.createElement('div')
       m.className = 'meta'
       m.innerHTML = `<div class="kind">${c.kind}${c.test_material ? '<span class="tm">test-material source</span>' : ''}</div>`
         + `<div class="how">${c.how}</div><div class="det">${c.detail}</div>`
       const p = document.createElement('button')
-      p.className = 'pick'; p.textContent = picks[c.id] ? '★' : '☆'
+      p.className = 'pick'; p.textContent = picks[c.id] ? 'picked' : 'pick'
       p.onclick = () => togglePick(c)
       row.append(b, m, p)
       box.appendChild(row)
@@ -138,7 +144,7 @@ function render() {
     g.appendChild(box)
   }
   const n = Object.keys(picks).length
-  document.getElementById('count').textContent = n ? `${n} starred` : 'no picks yet'
+  document.getElementById('count').textContent = n ? `${n} picked` : 'nothing picked yet'
 }
 
 function renderFilters() {
@@ -165,7 +171,7 @@ function renderFilters() {
 }
 
 document.getElementById('clear').onclick = () => {
-  if (!confirm('Clear every star?')) return
+  if (!confirm('Clear every pick?')) return
   picks = {}; save(); render()
 }
 
