@@ -435,6 +435,9 @@ minted, with the corpus as the referee — which is Bet 2.
 
 ### 1.9 The 30 + 30 budget and the 90% measurement problem
 
+*Ruled 2026-08-25 — the numbers posture here is reframed; see the Rulings addendum at the end of
+this document.*
+
 Is 30 + 30 a hypothesis, a constraint, or a marketing number? **My read: the first 30 is an
 empirical anchor** — fifteen years of SSi says 30-ish core hours reaches conversational
 production, and that number has earned its place. **The second 30 is a hypothesis riding on
@@ -576,12 +579,14 @@ of real sector dialogue tokens, with a compact ranked delta closing to ~90%+. *R
 a fat, flat tail. *Cheap test:* one afternoon of scripting against open health-dialogue
 corpora, and the Method Pod's own back-catalogue for specimen one. **Do this first; it is
 the cheapest number in the whole exploration and everything prices off it.**
+*Ruled 2026-08-25 — unchanged and still first, but its job changes; see the Rulings addendum.*
 
 **Bet 3 — Scenes are shared across roles; role is a production slice, not a content set.**
 Underwrites the lens model (Fork 3). *Confirmed by:* drafting the health scene slate and
 finding most scenes multi-role with role-tagged lines. *Refuted by:* role-exclusive scenes
 dominating the slate. *Cheap test:* it is a whiteboard exercise on the ladder §6 table
 before any authoring — an hour of Tom and Aran's time, no machinery.
+*Ruled 2026-08-25 — this is the same insight as the archetype method; see the Rulings addendum.*
 
 **Bet 4 — The discourse spine generalises across sectors (with named ritual-move
 exceptions).** Underwrites the Bologna pitch and the authoring economics. *Confirmed by:*
@@ -595,6 +600,8 @@ two as routine.
 others feed. *Confirmed/refuted by:* §1.9's instruments on the first real sector cohort.
 *Note:* if Bets 1 and 2 both confirm, this one is close to arithmetic; if either fails,
 no cohort study will save the number. Sequence accordingly — corpus first, cohort later.
+*Ruled 2026-08-25 — this is a working estimate, not a bet to be won or lost; see the Rulings
+addendum.*
 
 **Bet 6 — A community author plus the spine plus the gates produces a shippable sector
 course.** The Bologna claim itself. *Cheap test:* one supervised community-authored sector
@@ -626,6 +633,8 @@ different clothes.
 
 **Frame-breaker 2 — Don't author the sector at all; annotate it. The learner's real world
 is the content.**
+*Ruled 2026-08-25 — rejected in its authentic-audio form; see the Rulings addendum at the end of
+this document.*
 Every frame so far assumes SSi (or the community) *authors* sector content. Flip it: if
 sector competence is mostly listening, the best sector listening is the sector's *own
 authentic audio* — real podcasts, real briefings, real meetings. SSi's machinery becomes an
@@ -687,3 +696,121 @@ the Zenjin triple-helix internals were not re-read for this document, so the A/B
 treatment leans on Tom's description in the source conversation; and the community-tool's
 current authoring UX was not audited against the Fork 5 claims. None of these gaps was
 papered over; each is named where it bears.*
+
+---
+
+## Rulings addendum — 2026-08-25
+
+*Everything above is the exploration as written on 2026-08-24 and it stands as that snapshot.
+On 2026-08-25, reading it, Tom ruled on two of its open questions, via the RBF room. The rulings
+are recorded here verbatim, with what each one settles. This addendum reports; it does not
+re-argue, and it does not alter a word of the exploration's own positions.*
+
+### Ruling 1 — the numbers posture. We are estimating, not claiming.
+
+> numbers do NOT need to be stated as claims - the first 30 hours is broad evidence base
+>
+> the sector specific stuff, we genuinely have no idea and 90% is an aspiration
+>
+> it might be acceptable at 70%
+>
+> or it might jsut be incremental over the lifetime of the learner right up to ~ 100%
+>
+> we do NOT need to agonise over these numbers, we are using them as 'most likely estimates'
+> based on our experience
+>
+> but we have zero evidence right now of sectro-specific teaching
+
+— Tom, 2026-08-25, via the RBF room.
+
+**What this settles.** §1.9 and Bet 5 are reframed. The first 30 hours stands as an empirical
+anchor: fifteen years of SSi is a broad evidence base, and §1.9 already says so correctly, so
+that half of the section survives untouched. The second 30, and the 90%, are working estimates —
+most likely estimates based on our experience — not claims, not targets to be defended, and not
+promises to be met. The document must no longer be read as though 90% is a number we owe anyone.
+
+**The band is open, and all three readings are Tom's.** 90% is an aspiration; 70% may be
+perfectly acceptable; it may equally be incremental over the learner's lifetime, right up to
+~100%. These are not alternatives to be narrowed down to one. They are the honest width of what
+we do not know, and recording all three is the point.
+
+**The load-bearing sentence is the last one: we have zero evidence right now of sector-specific
+teaching.** Bet 5 — "30 sector hours suffice for 90% by the honest measures" — should therefore
+be read as a working estimate rather than a bet to be won or lost. The agonising stops.
+
+**The consequence for sequencing, precisely.** The corpus-coverage run — Bet 2, §1.9
+instrument 1 — still runs first. That is unchanged, and §5's "the corpus-coverage number computed
+before anything is authored" still holds exactly as written. What changes is the run's *job*. It
+is no longer there to defend a promise; it is there to inform the estimate. Same run, same
+afternoon's scripting, different posture. A future reader will get this wrong if it is not said
+plainly, so: the sequencing survives intact, the burden of proof it was carrying does not.
+
+### Ruling 2 — no aggregation. Frame-breaker 2 is rejected in its authentic-audio form.
+
+> we do NOT want to be an aggregator of other people's content
+>
+> people come to SSi because they TRUST that we've done the selection for them (mostly - ok, I
+> know it will now depend on sectors)
+>
+> but they do NOT want to be having to make decisions about which podcast to listen to next
+>
+> the thinking is that SSi will RESULT in them developing sector-competence in the language
+>
+> by just playing the app, making their sector selections
+>
+> and so we need to research the field to find the archetypes rather than the specific examples
+>
+> which saves us on any issues with copyright and so on
+
+— Tom, 2026-08-25, via the RBF room.
+
+**What this settles.** Frame-breaker 2 as written — "Don't author the sector at all; annotate it.
+The learner's real world is the content" — is rejected in its authentic-audio form. There is no
+annotation pipeline over wild audio: no transcribe-and-gloss over real podcasts, real briefings
+or real meetings. Its near-term hybrid goes with it — the pod's final rung is not annotated
+authentic audio. That last sentence of the frame-breaker is rejected along with the rest.
+
+This touches the ladder's Pod 3 capstone, "Episode One — a whole small podcast", insofar as that
+capstone was reaching for authentic material: under this ruling the capstone episode is authored
+by SSi, not sampled from the wild. That is a consequence for `docs/pods/pod-ladder-proposal.md`,
+flagged here rather than applied — this addendum does not edit that document.
+
+**What survives from Frame-breaker 2, and it is the valuable half: the field corpus is the
+measuring instrument.** Bet 2 is unchanged and still runs first — assemble real sector dialogue,
+extract the scene inventory, the move inventory and the frequency distribution. We read the field
+to learn its shape. We do not ship the field.
+
+**The content is authored from archetypal scenes carrying that distribution.** Tom's phrase is
+"research the field to find the archetypes rather than the specific examples". The corpus tells
+us which scenes recur, which moves fill them, and at what frequency; SSi then authors archetypal
+scenes that carry that distribution. This is measurement-led authoring, and it is materially
+different from both authored-from-intuition and annotate-the-wild — the first has no referee, the
+second ships someone else's material. It also, in Tom's words, "saves us on any issues with
+copyright and so on", which is a stated benefit of the approach rather than a lawyer's
+afterthought.
+
+**The selector stays with SSi.** "People come to SSi because they TRUST that we've done the
+selection for them." The learner makes exactly one selection — the sector — and SSi holds the
+selector thereafter. No choose-your-next-podcast, no menu of materials, no learner-side curation
+burden. Sector competence *results* from just playing the app and making sector selections. This
+is the product-identity half of the ruling and it is Tom's call.
+
+### Bet 3 and the archetype method are the same insight
+
+Worth naming, because the two rulings sharpen an existing bet rather than adding a new one.
+Bet 3 says scenes are shared across roles: role is a production slice, not a content set — one
+authored dialogue, several role views. The archetype method says the corpus's recurring scene
+shapes are what we author, not the specific instances we found in the field. Both are the same
+move: **author the shape once, and let role, sector and learner be views onto it rather than
+separate content sets.** Bet 3 is sharpened, not replaced — and its cheap test grows a second
+answer. The whiteboard hour on the ladder §6 scene slate is now the archetype-identification
+exercise too: which scenes recur, and which of them are one shape seen from several chairs. One
+test, two answers.
+
+### Two frame-breakers untouched
+
+Frame-breaker 1 — one graph, sector as a re-weighting of the selector rather than a new strand —
+is untouched by these rulings and if anything reinforced by Ruling 2: the learner's one sector
+selection is exactly the selector re-weighting it describes. Frame-breaker 3 — the competence
+loop — is likewise untouched, and Ruling 1's posture helps it, because a loop that converges
+towards your own 90% is easier to state honestly than a fixed promise of 90%.
