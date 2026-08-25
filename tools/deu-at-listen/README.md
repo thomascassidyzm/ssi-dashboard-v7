@@ -92,18 +92,31 @@ Stored in `marks-<course>.json` beside the verdicts, written atomically, and in
 
 Endpoints: `POST /api/mark {uuids, flow, label}` and `POST /api/mark/undo {token}`.
 
-## The 31 refused takes
+## The takes with no database row
 
-Refused by the upload gate before a single row was written — verified against the
-live database: zero `recording_provenance` rows, zero `course_audio` rows. They
-exist only as S3 objects, so **nothing anywhere can say which line they were**,
-and they get one group of their own that says exactly that. 30 of the 31 are
-still `raw/*.webm`; iOS Safari plays no WebM, so a non-mp3 take is transcoded
-once with ffmpeg and cached (a container change on bytes we already have — no
-speech is generated).
+Objects that reached S3 but no row — verified against the live database: zero
+`recording_provenance` rows, zero `course_audio` rows.
 
-Their list lives in `refused-takes.json` in the data dir; without it the manifest
-simply builds without them.
+**Which course an object belongs to is in its own S3 metadata (`coursecode`), not
+in its key.** Job #628 read it and found that five of the thirty-one everyone had
+been calling "the Austrian orphans" are `cym_n_for_eng` — **Welsh**. They are now
+excluded by coursecode and *named* in `excluded_other_courses`, never silently
+dropped, and the page says so. The real Austrian count is **26**.
+
+One of those 26 (`46D88EDD`) has a `mastered/` copy whose metadata carries
+`itemid: deu_at_for_eng:S0009L01U02`, which names its course line outright. It is
+filed under that line as a candidate Kai can rule on and bind — not left in the
+orphan bucket — and it is badged on the page as having no database record, with
+its line coming from the audio file itself. That leaves **25 true orphans**, whose
+files name the course but not the line.
+
+30 of the objects are still `raw/*.webm`; iOS Safari plays no WebM, so a non-mp3
+take is transcoded once with ffmpeg and cached (a container change on bytes we
+already have — no speech is generated).
+
+Rebuild the list with `node scripts/refused-census.cjs <uuids.json> <out.json>
+[courseCode]`, then point `refused-takes.json` at it; without that file the
+manifest simply builds without them.
 
 ## Applying a verdict to the course
 

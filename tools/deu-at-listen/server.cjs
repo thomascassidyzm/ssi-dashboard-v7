@@ -159,6 +159,9 @@ app.get('/api/takes', (_req, res) => {
     total_lines: m.total_lines,
     live_takes: m.live_takes,
     refused_takes: m.refused_takes || 0,
+    // Objects from the same upload window that belong to another course, named
+    // rather than silently dropped.
+    excluded_other_courses: m.excluded_other_courses || [],
     // Says, in the data itself, that the flow is not stored and nothing is
     // pre-filled — so the page cannot show the marking control without saying
     // where the marks come from.

@@ -120,16 +120,27 @@ const takes = q(`
 // stored (see the header), and the only honest source for it is Kai's own mark,
 // which lives in marks-<course>.json and is applied by the page — never here.
 
-// ---- takes REFUSED before any provenance row was written ----
+// ---- takes that reached S3 but no database row ----
 // They exist only as S3 objects, so the database cannot see them and neither
-// could this page until now. Optional input, built by the S3-side census: a
-// JSON array of { uuid, s3_key, last_modified, size_bytes, session_window }.
-// No provenance means NO PROMPTED TEXT — we do not know which line was being
-// read, and the page says exactly that rather than guessing one.
+// could this page until now. Optional input, built by scripts/refused-census.cjs:
+// { course, excluded_other_courses: [...], takes: [{ uuid, s3_key,
+// last_modified, size_bytes, course_code, item_id, session_window }] }.
+//
+// THE COURSE IS READ FROM THE S3 OBJECT'S OWN METADATA, not guessed from the
+// key or the timestamp. Job #628 found five cym_n_for_eng (Welsh) takes sitting
+// inside what had been called "the 31 Austrian orphans" — the census now
+// excludes them by coursecode and names them, and this file trusts that.
+//
+// No provenance normally means NO PROMPTED TEXT: we do not know which line was
+// being read. The exception is a take whose object carries an `itemid` — that
+// names its course line outright, so it is filed under that line as a real
+// candidate rather than dumped in the "nobody can say" bucket.
 const refusedPath = arg('--refused', path.join(DATA_DIR, 'refused-takes.json'))
 let refused = []
+let refusedExcluded = []
 try {
   const raw = JSON.parse(fs.readFileSync(refusedPath, 'utf8'))
+  refusedExcluded = raw.excluded_other_courses || []
   refused = (Array.isArray(raw) ? raw : raw.takes || []).map((r) => ({
     uuid: r.uuid,
     recorded_at: r.last_modified || r.recorded_at || null,
@@ -145,9 +156,36 @@ try {
     // about the take.
     session: null,
     upload_window: r.session_window || null,
+    item_id: r.item_id || null,
     refused: true,
   })).filter((r) => r.uuid && r.s3_key)
 } catch { refused = [] }
+
+// The line an itemid names, so a take carrying one can be shown against its own
+// text. Looked up, never inferred: the two tables the autocue files scripted
+// takes into (services/script-take-attach.cjs).
+const itemText = new Map()
+{
+  const ids = refused.map((r) => r.item_id).filter(Boolean)
+  if (ids.length) {
+    const list = ids.map((i) => `'${i.replace(/'/g, "''")}'`).join(',')
+    for (const [id, text] of q(`select id, target_text from course_practice_phrases where id in (${list})`)) itemText.set(id, text)
+    for (const [id, text] of q(`select course_code || ':' || lego_id, target_text from course_legos where course_code || ':' || lego_id in (${list})`)) itemText.set(id, text)
+  }
+}
+const orphans = []
+for (const r of refused) {
+  if (r.item_id && itemText.has(r.item_id)) {
+    r.prompted_text = itemText.get(r.item_id)
+    // It has a line, so it is not an orphan: it goes through the normal
+    // grouping and becomes a candidate Kai can rule on and bind.
+    r.refused = false
+    r.identified_from_s3 = true
+    takes.push(r)
+  } else {
+    orphans.push(r)
+  }
+}
 
 // ---- what the course currently serves, keyed by s3_key ----
 const live = new Map()
@@ -192,12 +230,12 @@ for (const t of takes) {
 // the line groups: with no provenance there is no prompted text, so there is no
 // line to file them under, and inventing one would be exactly the fabrication
 // this page exists to prevent.
-if (refused.length) {
-  groups.set('(refused)', {
+if (orphans.length) {
+  groups.set("(refused)", {
     key: '(refused)',
     prompted_text: null,
     refused_group: true,
-    takes: refused.map((t) => ({
+    takes: orphans.map((t) => ({
       ...t,
       decode: decodeFor(t.uuid),
       is_live: Boolean(t.s3_key && live.has(t.s3_key)),
@@ -299,7 +337,13 @@ fs.writeFileSync(outPath, JSON.stringify({
   total_takes: allTakes.length,
   total_lines: out.filter((g) => !g.refused_group).length,
   live_takes: allTakes.filter((t) => t.is_live).length,
-  refused_takes: refused.length,
+  refused_takes: orphans.length,
+  // Named, not silently dropped: objects in the same upload window that belong
+  // to a DIFFERENT course, read from each object's own coursecode metadata.
+  excluded_other_courses: refusedExcluded,
+  // Had no database row, but its S3 object named its course line, so it is filed
+  // under that line as a candidate rather than sitting in the orphan bucket.
+  identified_from_s3: refused.filter((r) => r.identified_from_s3).map((r) => ({ uuid: r.uuid, item_id: r.item_id, text: r.prompted_text })),
   // The page reads this and says it out loud: nothing is pre-filled, because
   // there is nothing to pre-fill it FROM.
   flow: {
@@ -316,7 +360,9 @@ fs.writeFileSync(outPath, JSON.stringify({
 console.log(`${allTakes.length} takes over ${out.length} groups → ${outPath}`)
 console.log(`  NO flow classification computed — which reading order produced a take is not stored, and Kai marks it himself`)
 console.log(`  ${sessions.length} recorded sittings offered as marking sets (${unsessioned} takes carry no session id)`)
-console.log(`  ${refused.length} refused takes folded in (no provenance row — flow unknown, no prompted text)`)
+console.log(`  ${orphans.length} orphan takes folded in (no database row and no line — S3 objects only)`)
+console.log(`  ${refused.filter((r) => r.identified_from_s3).length} more had no row but their S3 object named their course line, so they are filed under it`)
+console.log(`  ${refusedExcluded.length} objects in the same window excluded as belonging to another course: ${refusedExcluded.map((e) => e.course_code).join(", ") || "none"}`)
 console.log(`  ${out.filter((g) => g.has_retry).length} lines were recorded more than once (natural takes)`)
 console.log(`  ${allTakes.filter((t) => t.is_live).length} takes are what a learner hears today`)
 console.log(`  ${out.filter((g) => g.disagree_count > 0).length} lines where the prompted text and the course slot disagree`)

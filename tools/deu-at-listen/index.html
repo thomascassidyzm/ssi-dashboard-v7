@@ -341,6 +341,9 @@ function renderTake(t, prevAt) {
     // For a refused take there is no session id at all — only when its object
     // landed in the bucket. A fact about the upload, said as one.
     t.refused && t.upload_window ? `<span class="flow">${esc(t.upload_window)}</span>` : '',
+    // This one has no database row either, but its own S3 file names the course
+    // line — so it is here as a candidate, and that provenance is said plainly.
+    t.identified_from_s3 ? '<span class="flow">no database record — this line is named on the audio file itself</span>' : '',
     t.cadence === 'slow' ? '<span class="slow">slow read — never used as a clip</span>' : '',
     t.is_live ? '<span class="live">▶ THIS IS WHAT LEARNERS HEAR</span>' : '',
     t.superseded ? '<span>marked superseded</span>' : '',
@@ -482,7 +485,10 @@ function render() {
     const heading = grp.refused_group
       ? `<div class="asked">refused before anything was recorded</div>
          <div class="prompted">We do not know which line these were</div>
-         <div class="pinnote">These ${grp.takes.length} takes were rejected by the upload gate before a single word about them reached the database — no prompted line, no cadence, no session. They exist only as audio in the bucket. They are here so nothing Sascha recorded is invisible; there is nothing to point them at in the course, so a verdict on one is a note, not a swap.</div>`
+         <div class="pinnote">These ${grp.takes.length} takes never reached the database — no prompted line, no cadence, no session. They exist only as audio in the bucket, and their own files name the course but not the line. They are here so nothing Sascha recorded is invisible; there is nothing to point them at, so a verdict on one is a note, not a swap.${
+           state.meta?.excluded_other_courses?.length
+             ? ` (${state.meta.excluded_other_courses.length} more objects from the same weekend were left out of this page entirely: their files say they belong to ${[...new Set(state.meta.excluded_other_courses.map((e) => e.course_code))].join(', ')}, not to this course.)`
+             : ''}</div>`
       : `<div class="asked">Sascha was asked to say</div>
          <div class="prompted">${esc(grp.prompted_text)}</div>`;
     // Mark this whole line's takes in one action — the smaller set, for when a
