@@ -218,7 +218,7 @@ We teach **Mo fẹ́** for "I want" and **láti sọ** for "to speak", so a lear
 
 **We now think *láti* after *fẹ́* is probably wrong, and that plain *Mo fẹ́ sọ* is the natural form.** This is a change of mind on our part, and it is uncomfortable, because *Mo fẹ́ láti sọ* is the **first sentence of the course**.
 
-What changed our mind is counting. Across all 668 sentences, *fẹ́* is followed by *láti* about 22 times, and by a bare verb with no *láti* about five times as often:
+What changed our mind is counting. Across all 668 sentences, *fẹ́* is followed by *láti* in **23** of them, and by a bare verb with no *láti* in **119** — a bit over five to one:
 
 > "She wants to find out what the answer is." → **Ó fẹ́ mọ ohun tí ìdáhùn náà jẹ́**
 > "When do you want to start?" → **Nígbà wo ni o fẹ́ bẹ̀rẹ̀?**
@@ -241,6 +241,8 @@ Our reading: *láti* is a "in order to" word and belongs after verbs like *gbìy
 ## 11. Does this sentence work?
 
 > **Mi ò rò pé mo sọ èdè Yorùbá** — we built this for *"I don't think I speak Yoruba."*
+
+**This sentence is ours, not the course's.** It appears nowhere in the 668 sentences. We assembled it from two taught pieces to check whether they join cleanly, which is the only reason we are asking.
 
 ### Our answer
 
@@ -273,7 +275,7 @@ Second, and we are less sure here: we think **búrúkú** normally sits *in fron
 
 **What we rejected:** leaving it, on the grounds that three consistent uses looked deliberate. We think it is one translator's habit repeated three times rather than three independent decisions.
 
-**A note for us, not for you:** turning "ugly" into "not beautiful" changes the shape of the sentence, which matters for how we teach it. So if there is a straightforward single word for ugly, that is much better for us than a negative phrase — please say so if there is one.
+**A note for us, not for you:** turning "ugly" into "not beautiful" changes the shape of the sentence, and the word **lẹ́wà** ("beautiful") does not appear anywhere in the 668 sentences — so our own suggestion means introducing a word the course has never taught, in a negative construction, at a late point. That is a real cost on our side. So if there is a straightforward **single word** for ugly, that is much better for us than a negative phrase — please say so if there is one.
 
 **What we want from you:**
 - **15a.** Does *búrúkú* cover "ugly to look at"?
@@ -363,6 +365,8 @@ On the word we are **medium**: our understanding is that *gidigidi* means "great
 
 We built **kọ sísọ èdè Yorùbá** for "to practise speaking Yoruba".
 
+**First, an admission:** that sentence is **ours, not the course's**. We made it up to test whether the pieces join. No learner has ever seen it. The real course sentences are **Mo máa kọ sísọ pẹ̀lú ẹlòmíràn** ("I'm going to practise speaking with someone else") and **àǹfààní láti máa kọ sísọ pẹ̀lú rẹ** ("the chance to practise speaking with you") — neither of which has a language after it.
+
 ### Our answer
 
 **UNRESOLVED, and deliberately so.** We cannot answer this until question 2 is answered, because if *kọ* is not the right word for "practise" then this question is about the wrong word. Please answer 2 first, then tell us whether *your* word for "practise" can take an object like this.
@@ -396,7 +400,7 @@ We put it after the thing it describes: **èdè Yorùbá díẹ̀** ("a little Y
 
 ### Our answer
 
-**Yes, after — high confidence.** It is used that way in 28 sentences with no exceptions: *àkókò díẹ̀* (a little time), *ọ̀rọ̀ díẹ̀* (a few words), *ìṣẹ́jú díẹ̀* (a few minutes), *ìgbà díẹ̀* (a while).
+**Yes, after — high confidence.** It is used that way in 26 sentences with no exceptions: *àkókò díẹ̀* (a little time), *ọ̀rọ̀ díẹ̀* (a few words), *ìṣẹ́jú díẹ̀* (a few minutes), *ìgbà díẹ̀* (a while).
 
 **But we want you to look at one sentence in particular**, because it looks garbled to us:
 
@@ -480,7 +484,9 @@ We previously told people this course speaks to the listener in the familiar for
 > "What do you think, madam?" → **Kí ni ẹ rò, ìyá àgbà?**
 > "I can help you, madam." → **Mo lè ràn yín lọ́wọ́, ìyá àgbà**
 
-So there is already a respectful section, using **ẹ** and **yín** with *ọ̀gá* and *ìyá àgbà*. There is also a "you all" section using **gbogbo yín**.
+So there is already a respectful section, using **ẹ** and **yín** with *ọ̀gá* and *ìyá àgbà*. There is also a "you all" section using **gbogbo yín**. The respectful forms sit almost entirely in one late block, with three earlier one-offs; the familiar *o* and *rẹ* carry the other 150-odd sentences.
+
+**One more thing we noticed while counting:** there is **no negative command anywhere** in the 668 sentences — nothing of the shape "don't do that!". So a learner finishing this course would never have been taught how to tell somebody not to do something. **12d. Is that a gap worth filling, and how would you say "don't worry" or "don't stop"?**
 
 ### Our answer
 
@@ -564,6 +570,8 @@ We would rather be blunt about the edges of this than let it look more complete 
 **Nobody involved in producing this document speaks Yoruba.** Every answer above is inference from the written sentences plus general knowledge. The confidence ratings are our honest estimate of our own reliability, not a measurement of anything.
 
 **We have only looked at the written words.** We have not heard any of these sentences spoken. Anything that depends on how a thing *sounds* — rhythm, emphasis, whether a phrase is stiff or warm — is completely outside what we can judge.
+
+**Some of the sentences in the earlier version of this list were never in the course.** When we checked every quoted sentence against our actual records, three of them turned out to be examples somebody had assembled to illustrate a point, presented as if they were real course material. We have marked those clearly above. If you were given the earlier list, questions 4, 5, 7 and 11 on it are the affected ones, and you may have spent time correcting sentences no learner will ever see. We are sorry, and it will not happen again.
 
 **We have not checked the tone marks sentence by sentence.** We found the nine "know" cases (question 16) because we happened to be counting that word. There are 668 sentences and we have looked closely at perhaps 150. **We cannot tell you the rest are right.** A speaker reading the whole set for tone marks alone would be worth more than everything above.
 
