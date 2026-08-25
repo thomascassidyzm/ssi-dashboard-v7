@@ -43,6 +43,80 @@ row the take was filed into — is carried separately as `slot_text`, and a take
 whose two texts disagree is flagged in red. *Measured 2026-08-25: zero
 disagreements, so mis-filing is not the defect here — flubbed retries are.*
 
+## Start-to-finish vs spliced — an INFERENCE, and the page says so
+
+Kai asked to review only the takes Sascha read **start to finish** through the
+course, not the ones read to be **cut up and reassembled**. Which of the two
+produced a given take **is not stored anywhere**:
+
+- `recording_provenance` has no mode column and no session column.
+- The JSON context in `quality_notes` carries `mode`, but its values are
+  `'script' | 'pod' | 'regeneration'` — the upload seam, not the reading order.
+  Every `deu_at` take is `'script'`.
+- `AutocueStudio.vue` sends `provenance.mode = 'continuous'`, which names the VAD
+  recorder (`useContinuousRecorder`). Both reading orders use it, and it is
+  dropped on insert for want of a column.
+- The reading order itself — `ModeSelector.vue`'s *"the course itself, straight
+  through from the start"* (`?order=course`) versus *"a shorter set of lines, cut
+  up afterwards"* (`?order=coverage`) — is never sent with the upload at all.
+- Both land in `mastered/` and `raw/`. There is no third store.
+
+So the split is deduced from the **shape the script builder gave the take**
+(`services/recording-script-items.cjs`): `buildCourseScriptItems()` emits one
+natural read per line and no chunk fields at all; `buildScriptItems()` /
+`buildTwoPoolScriptItems()` always emit `chunksString`, pair natural with slow,
+and give Pool A the `isolated` cadence.
+
+> `chunks_string` present, or cadence `slow`/`isolated` → **spliced**.
+> cadence `natural` with no `chunks_string` → **continuous**.
+> anything else → **unknown**.
+
+**248 continuous, 81 spliced, 2 neither**, of Sascha's 331 (plus 31 refused, which
+are unknown by definition). Confidence is high and corroborated three ways: all
+21 sessions are homogeneous under the rule; the two groups are disjoint in time
+and shape (spliced sessions jump seeds 26→567, continuous sessions run
+monotonically from seed 1); and 203 of 249 continuous takes are bound as live
+clips against 21 of 115 spliced. **It is still a deduction**, and the rule, its
+basis and that sentence travel to the browser inside the manifest so the claim
+can never be shown apart from what it rests on.
+
+## The 31 refused takes
+
+Refused by the upload gate before a single row was written — verified against the
+live database: zero `recording_provenance` rows, zero `course_audio` rows. They
+exist only as S3 objects, so **nothing anywhere can say which line they were**,
+and they get one group of their own that says exactly that. 30 of the 31 are
+still `raw/*.webm`; iOS Safari plays no WebM, so a non-mp3 take is transcoded
+once with ffmpeg and cached (a container change on bytes we already have — no
+speech is generated).
+
+Their list lives in `refused-takes.json` in the data dir; without it the manifest
+simply builds without them.
+
+## Applying a verdict to the course
+
+A **Good tap, and only an explicit Good tap**, can become what learners hear.
+
+```
+node tools/deu-at-listen/apply.cjs --plan              # what would change; writes nothing
+node tools/deu-at-listen/apply.cjs --apply
+node tools/deu-at-listen/apply.cjs --rollback <batch>  # reverses the whole batch
+```
+
+The page does the same through `GET /api/apply-plan` (shows the change first) and
+`POST /api/apply`. Each change is one `swapClipInPlace`
+(`services/shared/audio-revision-swap.cjs`): the bytes are proven present in the
+bucket first, the rollback row is written first, `audio_revision` bumps so
+learners actually get the new audio, the row id never moves, nothing is deleted,
+and the row is read back after. The manifest is then rebuilt from the live
+database, so the page shows what is really there rather than what this process
+believes it wrote.
+
+It refuses out loud rather than guessing: a slow read (never filed as a clip), a
+refused take (no line to point it at), a line with no `course_audio` row (nothing
+to swap), or two Good takes on one line with neither of them live. Covered by
+`apply-plan.test.cjs` — one test per refusal.
+
 ## Running it
 
 ```
@@ -69,11 +143,15 @@ does not carry it.
 | file | who writes it |
 |---|---|
 | `manifest-deu_at_for_eng.json` | `manifest.cjs` — required |
-| `verdicts-deu_at_for_eng.json` | this tool's only output, written atomically |
+| `verdicts-deu_at_for_eng.json` | Kai's taps, written atomically |
+| `refused-takes.json` | the 31 orphans — optional input |
+| `transcoded/` | cached mp3s of the raw/*.webm refused takes |
 
-## Read-only
+## What it writes
 
-It never touches `course_*`, never generates or relinks audio. The only thing it
-writes is Kai's verdicts. `GET /api/export` returns, per line, the take Kai
-called good, the take that is live, and a `needs_repoint` flag — the work-list a
-later re-pointer acts on, with nothing to re-derive.
+Read-only on course content **except** through the apply path above, which needs
+an explicit Good tap and a confirmation. It never generates audio, ever.
+
+`GET /api/export` still returns, per line, the take Kai called good, the take
+that is live, and a `needs_repoint` flag — the same work-list, for anyone who
+wants to act outside this tool.
