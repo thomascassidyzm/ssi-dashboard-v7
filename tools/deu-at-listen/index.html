@@ -269,10 +269,11 @@ function renderTake(t, prevAt) {
 
 function render() {
   const { g, b, u, total } = counts();
-  const scopeName = state.flow === 'continuous' ? 'start-to-finish takes'
-    : state.flow === 'spliced' ? 'spliced takes' : 'takes';
+  // "in view" rather than naming the flow: the pinned defect and the refused
+  // takes are always shown whatever the filter says, so this number is a couple
+  // higher than the flow's own count and should not claim to be it.
   document.getElementById('counts').innerHTML =
-    `<span>${g + b} of ${total} ${scopeName}</span> · <span class="g">good ${g}</span> · <span class="b">bad ${b}</span> · <span class="u">to go ${u}</span>`;
+    `<span>${g + b} of ${total} takes in view</span> · <span class="g">good ${g}</span> · <span class="b">bad ${b}</span> · <span class="u">to go ${u}</span>`;
   document.getElementById('bar-g').style.width = (total ? (g / total) * 100 : 0) + '%';
   document.getElementById('bar-b').style.width = (total ? (b / total) * 100 : 0) + '%';
 
