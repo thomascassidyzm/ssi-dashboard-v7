@@ -23,9 +23,10 @@
  * (useAutocueState.finalizeSession returns early for scriptMode: "Approval in
  * script mode is the recordist's own tick-list, not a gate").
  *
- * So the ear is the only instrument, and this is it. 331 takes over 225 prompted
- * lines — the 106 that are not the bound clip are invisible from the course side
- * and are exactly where the good audio hides.
+ * So the ear is the only instrument, and this is it. Sascha's takes over their
+ * prompted lines — the ones that are not the bound clip are invisible from the
+ * course side, and are exactly where the good audio hides. Counts are in the
+ * manifest, never restated here where they would rot.
  *
  * THE TEXT SHOWN IS THE PROMPTED LINE — what the recording tool asked Sascha to
  * say, out of the take's own provenance — not the text of the course slot the
@@ -49,7 +50,7 @@
  * here is still read-only. No audio is ever generated.
  *
  * Data (all under DEU_AT_LISTEN_DATA_DIR, default scripts/deu-at-listen/):
- *   manifest-deu_at_for_eng.json    331 takes, grouped (built by manifest.cjs)
+ *   manifest-deu_at_for_eng.json    every take, grouped by prompted line (manifest.cjs)
  *   verdicts-deu_at_for_eng.json    this tool's only output, written atomically
  */
 const path = require('path')
