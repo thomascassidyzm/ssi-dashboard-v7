@@ -1,4 +1,4 @@
-# Four phrases, 232 splice candidates — from Sascha's natural seed 1–9 takes
+# Four phrases, 259 splice candidates — from Sascha's natural seed 1–9 takes
 
 **Course:** `deu_at_for_eng`. **Recordist:** Sascha, who uses they/them.
 **The page (this is the one URL):**
@@ -14,12 +14,12 @@ is audio Sascha already recorded.**
 
 | phrase | candidates | different carrier lines | how they were made |
 |---|---|---|---|
-| i wü | 107 | 22 | 67 cut whole out of a longer line · 40 glued |
+| i wü | 122 | 22 | cut whole out of a longer line, or glued · 39 with added lead-in |
 | reden | 45 | 15 | all cut whole out of a longer line |
-| i wü reden | 35 | 9 | all two pieces glued |
-| i wü iatz mit dir Deitsch reden | 45 | 7 | 30 two pieces · 15 three pieces |
+| i wü reden | 46 | 9 | all two pieces glued · 13 with added lead-in |
+| i wü iatz mit dir Deitsch reden | 46 | 7 | two and three pieces · 23 with added lead-in |
 
-**232 candidates from 31 different carrier lines**, out of 150 natural seed 1–9 takes.
+**259 candidates from 31 different carrier lines**, out of 150 natural seed 1–9 takes.
 Padding roughly a third each of tight / medium / wide; joins evenly spread across no gap,
 crossfade, 50 / 110 / 190 ms.
 
@@ -76,32 +76,42 @@ Two things that fell out of that, worth knowing:
 
 ## What an independent audit of the clips found (job #642, sonnet)
 
-Every one of the 133 was measured — duration, the margin between the speech and each edge
+Every one of the 232 was measured — duration, the margin between the speech and each edge
 judged against that clip's own speech level, how much of it is actually voiced, level steps
 at the joins, digital clipping. **No clip is digitally clipped. One was near-empty.** Two
 findings changed the set:
 
-**1. Padding behaves exactly as labelled, and the tight cuts really do clip.** On cuts with
-real silence at both edges: *wide* 11/11 came through with a clean margin, *medium* 9/11,
-*tight* 3/11. So "tight" is not a cosmetic difference — if Kai's ear rejects the tight ones,
-that is a rule we can apply directly.
+**1. Padding predicts truncation, monotonically — but only at the END of a clip.**
+Truncation at the start: tight 54%, medium 30%, wide 13%; at the end: 74% / 43% / 19%. So
+"tight" is not a cosmetic difference. But the deeper finding is that **padding only ever
+moves the trailing edge** — there is nothing at the front for it to widen into.
 
-**2. A cut at sample 0 is mastering, not a bad cut.** The mastered take begins on the word,
-so a phrase-initial cut has no lead-in silence left to keep, whatever padding is asked for.
-That risked good cuts being rejected for the wrong reason, so where it happens the same cut
-also appears with **90 ms of digital silence added** at the head, labelled. Silence is
-silence — no speech was created.
+**2. Added lead-in silence is the only thing that fixes a front edge — and it works.**
+Where it was offered it was 9/9 clean; where it was not, the front truncated regardless of
+the padding tier. The mastered take simply begins on the word. So the build now offers it
+**on every padding tier and on the glued clips too**, which is what took the set from 232 to
+259.
 
-*(That audit ran against the previous 133-clip set, which included the slow reads. Its two
-findings are about the cutting, not about which takes were used, so they carry over — but
-the 232 clips now on the page have not themselves been re-measured. Naming that rather than
-implying a clean bill.)*
+**3. The seven-word phrase failed 45 out of 45, and it was three source takes doing it.**
+40 of the 45 drew their first piece from one of three recordings that begin flat on the word
+with no lead-in at all. No padding or join setting can reach that. Those now have 23 added
+lead-in variants — the fix aimed exactly where the audit pointed. If Kai still rejects them
+all by ear, the audit's own recommendation stands: **that phrase wants a re-record with real
+silence around it**, and three or four takes is all it would take.
 
-**An explicit gap in that audit:** its click detector fired on **all 47** glued clips
-regardless of join length — including the 190 ms gaps, where the "step" it measured is just
-the gap. A test that fails everything separates nothing, so **we do not know from
-measurement which joins click.** Kai's ear is the only instrument for that, which is what
-the join axis on the page is for.
+**Joins: no true clicks anywhere in the set — zero.** What reads as a click on a butt splice
+is a momentary drop toward digital silence: 63% of butt joins, 25% of crossfades, and the
+50/110/190 ms gaps measure within ±20 ms of their labels, so the mechanism is doing what it
+says. A crossfade genuinely helps and does not cure it.
+
+**What measurement still cannot tell us:** "broken" here means a threshold — speech within
+15 ms of an edge — and a mid-flow cut is truncated *by definition*, because the word really
+does continue. Adding silence there would not mend it; only a different source take would.
+So the 63%-broken figure is a map of where to look, not a verdict on what sounds acceptable.
+Kai's ear is still the instrument, which is the whole point of the page.
+
+**One caveat on the audit's own numbers:** it measured the 232-clip set, and 27 lead-in
+clips have been added since. Those 232 are unchanged and still on the page.
 
 ## What was deliberately not built
 

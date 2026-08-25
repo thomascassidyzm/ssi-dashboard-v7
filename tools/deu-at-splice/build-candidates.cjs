@@ -393,7 +393,12 @@ function main() {
           continue
         }
         const edges = a.kind === b.kind ? `both edges ${a.kind}` : `starts ${a.kind}, ends ${b.kind}`
-        if (pad.id === 'wide' && (a.ms <= 20 || b.ms >= env.durMs - 20)) {
+        // The audit (#642) measured this: padding only ever moves the TRAILING
+        // edge. A cut at the very start of a mastered take has no silence to
+        // widen into, so no padding tier fixes it — only added silence does, and
+        // it fixed 9 of 9 where it was offered. So it is offered on every tier,
+        // not just the widest.
+        if (a.ms <= 20 || b.ms >= env.durMs - 20) {
           const padId = `${id}-lead`
           padWithSilence(mp3, path.join(CLIPS, `${padId}.mp3`), a.ms <= 20 ? 90 : 0, b.ms >= env.durMs - 20 ? 90 : 0)
           candidates.push({
@@ -473,12 +478,16 @@ function main() {
           const pieceVoice = []
           let ok = true
           let refDb = null
+          let edgeAtFileStart = false
+          let edgeAtFileEnd = false
           pick.forEach((p, idx) => {
             const env = envelope(p.t.mp3_path)
             const a = leftEdge(env, p.sp.first, pad)
             const b = rightEdge(env, p.sp.last, pad)
             if (!(b.ms - a.ms > 100)) { ok = false; return }
             pieceVoice.push(voicedInSpan(env, a.ms, b.ms))
+            if (idx === 0 && a.ms <= 20) edgeAtFileStart = true
+            if (idx === pick.length - 1 && b.ms >= env.durMs - 20) edgeAtFileEnd = true
             const w = path.join(CLIPS, `${id}.p${idx}.wav`)
             cutPiece(p.t.mp3_path, a.ms, b.ms, w)
             if (idx === 0) refDb = meanVolume(w); else matchLevel(w, refDb)
@@ -499,6 +508,24 @@ function main() {
             continue
           }
           made++
+          // 40 of the 45 seven-word candidates drew their first piece from one of
+          // three takes that begin flat on the word, and every one of them read as
+          // truncated. That is the same mastering artefact, so the same remedy is
+          // offered here rather than leaving a whole target unusable.
+          if (edgeAtFileStart || edgeAtFileEnd) {
+            const padId = `${id}-lead`
+            padWithSilence(mp3, path.join(CLIPS, `${padId}.mp3`), edgeAtFileStart ? 90 : 0, edgeAtFileEnd ? 90 : 0)
+            candidates.push({
+              id: padId, target: target.id, kind: `${pick.length} pieces`,
+              file: `clips/${padId}.mp3`,
+              how: pick.map((p) => `“${p.part.join(' ')}” from “${p.t.prompted_text}”`).join('  +  '),
+              detail: `${join.label} · ${pad.label} · 90ms of silence added where mastering left none`,
+              padding: pad.id, join: join.id, silence_added: true,
+              sources: pick.map((p) => ({ uuid: p.t.uuid, prompted_text: p.t.prompted_text, seed: p.t.seed_number, cadence: p.t.cadence, part: p.part.join(' ') })),
+              test_material: pick.some((p) => p.t.seed_number >= 10),
+            })
+            made++
+          }
           candidates.push({
             id, target: target.id, kind: `${pick.length} pieces`,
             file: `clips/${id}.mp3`,
