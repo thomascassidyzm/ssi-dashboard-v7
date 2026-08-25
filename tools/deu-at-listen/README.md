@@ -1,63 +1,79 @@
-# deu-at-listen — rule by ear on Sasha's Austrian German clips
+# deu-at-listen — every take Sascha recorded, judged by ear
 
 Kai played the live `deu_at_for_eng` course on 2026-08-25 and heard a clip whose
-**audio says something other than the text it is attached to**. This is the
-instrument for finding it, and any others, by ear.
+**audio says something other than the text it is attached to**. This serves every
+one of Sascha's recordings to their phone, against the line the recording tool
+asked them to say.
 
-## Why a machine verdict was not enough
+Sascha uses they/them. They record the male voice; that describes the part.
 
-Two facts, established against the live database on 2026-08-25, not assumed:
+## Why the obvious rule is wrong
 
-1. **Nothing records acceptance.** The recorder's Approve tick is client-side
-   only in script mode — `useAutocueState.finalizeSession` returns early when
-   `state.scriptMode` is set, with the comment *"Approval in script mode is the
-   recordist's own tick-list, not a gate"* — so `approvedSegments` is never
-   POSTed anywhere. No column, table or `quality_notes` key holds it. All of
-   Sasha's 225 clips are unaccepted, and no linker anywhere can respect a flag
-   that does not exist.
-2. **The binding is already newest-take.** All 225 `course_audio` rows for this
-   course point at the newest natural take of their line. So no re-pointing rule
-   can fix what Kai heard: a text/audio mismatch of that shape happens at
-   *capture* (the autocue advance gate filing take N under phrase N+1's text),
-   and only an ear sees it.
+"Bind the newest take" is not just unhelpful here, it is **actively harmful**, and
+job #601 proved it against the live database: Sascha repeatedly read a line
+correctly and then flubbed the retry seconds later — "Ups!", a laugh, the wrong
+sentence — and the linker had already taken the later one. Newest is reliably
+worse.
+
+Nor is there a way to tell the two apart from data. **There is no acceptance flag
+anywhere** — not on `course_audio`, not on `recording_provenance`, not in
+`services/recording-upload-helpers.cjs`. The recordist surface only has
+`discardLine()`, which discards BEFORE upload, so any take that reached the
+database is one nobody ever passed judgement on. In script mode the autocue's
+own Approve tick never leaves the browser either
+(`useAutocueState.finalizeSession` returns early for `scriptMode`).
+
+So the ear is the only instrument.
+
+## Why it lists TAKES, not clips
+
+The course sees **225 clips** — one `course_audio` row per line, holding whichever
+take the upsert last wrote. Sascha recorded **331 takes**. The 106 that are not
+the bound one are invisible from the course side, and that is exactly where the
+good audio hides. A page built from clips can only ever show you the flub.
+
+Takes of the same prompted line are grouped in time order with the gap between
+them shown (`+4s`), because good-read-then-flubbed-retry is an adjacent pair.
+
+## The text is the PROMPTED line
+
+Each take's `quality_notes` carries the line the autocue asked Sascha to read.
+That is what the page shows. The course-slot text — `course_audio.text` on the
+row the take was filed into — is carried separately as `slot_text`, and a take
+whose two texts disagree is flagged in red. *Measured 2026-08-25: zero
+disagreements, so mis-filing is not the defect here — flubbed retries are.*
 
 ## Running it
 
 ```
-node tools/deu-at-listen/manifest.cjs      # rebuild the 225-clip manifest from the DB
-node tools/deu-at-listen/server.cjs        # serve it (DEU_AT_LISTEN_PORT, default 4791)
+node tools/deu-at-listen/manifest.cjs [--decodes <dir>]   # rebuild from the DB
+node tools/deu-at-listen/server.cjs                       # DEU_AT_LISTEN_PORT, default 4791
 ```
 
-Hosted for Kai by the `popty-deu-at-listen` user unit on watson-1, from the
-dedicated worktree `/home/tomcassidy/SSi/wt-deu-at-listen` (a dedicated worktree
-so the service does not vanish when another agent switches branches in the main
-checkout; `.env` and `node_modules` there are symlinks to the main checkout).
+Hosted by the `popty-deu-at-listen` user unit on watson-1 from the dedicated
+worktree `/home/tomcassidy/SSi/wt-deu-at-listen` (dedicated so the service does
+not vanish when another agent switches branches; `.env` and `node_modules` there
+are symlinks to the main checkout). Same pattern as `popty-seed1-listen` and
+`popty-concat-listen`.
+
+`--decodes` points at a directory of `<take-uuid>.txt` whisper transcripts. They
+are a triage aid only: whisper renders Austrian dialect into Standard German, so
+**judge by ear, not by the text**.
 
 ## Data
 
-All under `DEU_AT_LISTEN_DATA_DIR`, default `scripts/deu-at-listen/` in the main
-checkout — gitignored, and pointed at explicitly by the unit file because a
-worktree does not carry it.
+Under `DEU_AT_LISTEN_DATA_DIR`, default `scripts/deu-at-listen/` in the main
+checkout — gitignored, and named explicitly by the unit file because a worktree
+does not carry it.
 
 | file | who writes it |
 |---|---|
 | `manifest-deu_at_for_eng.json` | `manifest.cjs` — required |
-| `deu_at_asr_scores.json` | optional ASR mismatch ranking; re-read per request, so it can land while the server is up |
 | `verdicts-deu_at_for_eng.json` | this tool's only output, written atomically |
-
-## Ordering
-
-Riskiest first, in three tiers, and **no clip is ever hidden** — the tail is the
-disconfirming evidence:
-
-0. the ASR ranking says the audio matches some *other* clip's text better than
-   its own (only a positive margin counts)
-1. the line was recorded more than once (most takes first) — 38 of the 225
-2. everything else, in seed order
 
 ## Read-only
 
 It never touches `course_*`, never generates or relinks audio. The only thing it
-writes is Kai's verdicts. `GET /api/export` hands a later worker the clip id, the
-S3 key, the bound text and every take of that line, so "this one is wrong" can be
-turned into a re-point or a re-record without re-deriving anything.
+writes is Kai's verdicts. `GET /api/export` returns, per line, the take Kai
+called good, the take that is live, and a `needs_repoint` flag — the work-list a
+later re-pointer acts on, with nothing to re-derive.

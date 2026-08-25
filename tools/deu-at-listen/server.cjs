@@ -1,36 +1,44 @@
 #!/usr/bin/env node
 /**
- * Austrian German — listen to every one of Sasha's human clips and rule by ear.
+ * Austrian German — every take Sascha recorded, against the line they were asked
+ * to say. Judge by ear.
  *
- * Usage:  node tools/deu-at-listen/server.cjs      (port DEU_AT_LISTEN_PORT, default 4791)
+ * Usage:  node tools/deu-at-listen/server.cjs   (DEU_AT_LISTEN_PORT, default 4791)
  *
- * WHY THIS EXISTS. Kai played the live deu_at_for_eng course and heard a clip
- * whose audio says something other than the text it is attached to. Two things
- * then turned out to be true, and together they make a machine verdict
- * worthless here:
+ * WHY THIS EXISTS, and why it lists TAKES rather than clips.
  *
- *   1. NOTHING RECORDS ACCEPTANCE. The recorder's Approve tick is client-side
- *      only in script mode — useAutocueState.finalizeSession returns early for
- *      scriptMode with the comment "Approval in script mode is the recordist's
- *      own tick-list, not a gate" — so no accepted flag exists in any column,
- *      table or quality_notes key. All 225 clips are unaccepted.
- *   2. THE BINDING IS ALREADY NEWEST-TAKE. All 225 course_audio rows point at
- *      the newest natural take of their line, so no re-pointing can fix what
- *      Kai heard. A mislabel happens at CAPTURE, and only an ear can see it.
+ * Kai played the live deu_at_for_eng course and heard a clip saying something
+ * other than its text. The obvious rule — "bind the newest take" — is WRONG, and
+ * job #601 proved it against the live database: Sascha repeatedly read a line
+ * correctly and then flubbed the retry seconds later ("Ups!", a laugh, the wrong
+ * sentence), and the linker had already taken the later one. Newest is not
+ * better; here it is reliably worse.
  *
- * So this serves the clips to Kai's phone. READ-ONLY on course data: it never
- * touches course_*, never generates or relinks audio. The only thing it writes
- * is Kai's own verdicts.
+ * And there is no way to tell the two apart from data. THERE IS NO ACCEPTANCE
+ * FLAG ANYWHERE — not on course_audio, not on recording_provenance, not in
+ * services/recording-upload-helpers.cjs. The recordist surface only has
+ * discardLine(), which discards BEFORE upload, so a take that reached the
+ * database is a take nobody ever passed judgement on. In script mode the
+ * autocue's own Approve tick never leaves the browser either
+ * (useAutocueState.finalizeSession returns early for scriptMode: "Approval in
+ * script mode is the recordist's own tick-list, not a gate").
+ *
+ * So the ear is the only instrument, and this is it. 331 takes over 225 prompted
+ * lines — the 106 that are not the bound clip are invisible from the course side
+ * and are exactly where the good audio hides.
+ *
+ * THE TEXT SHOWN IS THE PROMPTED LINE — what the recording tool asked Sascha to
+ * say, out of the take's own provenance — not the text of the course slot the
+ * autolinker later bound it to. Where those disagree the take is flagged.
+ *
+ * Sascha uses they/them. They record the male voice; that describes the part.
+ *
+ * READ-ONLY on course data: it never touches course_*, never generates or
+ * relinks audio. The only thing it writes is Kai's verdicts.
  *
  * Data (all under DEU_AT_LISTEN_DATA_DIR, default scripts/deu-at-listen/):
- *   manifest-deu_at_for_eng.json    the 225 live clips (built by manifest.cjs; required)
- *   deu_at_asr_scores.json          optional ASR mismatch ranking (job #620)
- *   verdicts-deu_at_for_eng.json    this tool's only output (written atomically)
- *
- * The ASR ranking is re-read on every /api/clips call, not cached at boot, so a
- * ranking that lands while the server is up takes effect on the next refresh.
- * Every clip is always listed — risky ones first, then the rest — because a
- * ranking Kai cannot disconfirm is worthless.
+ *   manifest-deu_at_for_eng.json    331 takes, grouped (built by manifest.cjs)
+ *   verdicts-deu_at_for_eng.json    this tool's only output, written atomically
  */
 const path = require('path')
 const fs = require('fs')
@@ -46,7 +54,6 @@ const PORT = process.env.DEU_AT_LISTEN_PORT || 4791
 const DATA_DIR = process.env.DEU_AT_LISTEN_DATA_DIR || path.join(REPO, 'scripts', 'deu-at-listen')
 
 const manifestPath = path.join(DATA_DIR, `manifest-${COURSE}.json`)
-const asrPath = path.join(DATA_DIR, 'deu_at_asr_scores.json')
 const verdictsPath = path.join(DATA_DIR, `verdicts-${COURSE}.json`)
 
 if (!fs.existsSync(manifestPath)) {
@@ -54,8 +61,9 @@ if (!fs.existsSync(manifestPath)) {
   process.exit(1)
 }
 const manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf8'))
-const CLIPS = manifest.clips || []
-const BY_ID = new Map(CLIPS.map((c) => [c.id, c]))
+const GROUPS = manifest.groups || []
+const TAKES = GROUPS.flatMap((g) => g.takes)
+const BY_UUID = new Map(TAKES.map((t) => [t.uuid, t]))
 
 const s3 = new S3Client({
   region: process.env.AWS_REGION,
@@ -67,11 +75,8 @@ const s3 = new S3Client({
 
 // ---------- verdicts ----------
 function loadVerdicts() {
-  try {
-    return JSON.parse(fs.readFileSync(verdictsPath, 'utf8'))
-  } catch {
-    return { course: COURSE, verdicts: {} }
-  }
+  try { return JSON.parse(fs.readFileSync(verdictsPath, 'utf8')) }
+  catch { return { course: COURSE, verdicts: {} } }
 }
 function saveVerdicts(state) {
   fs.mkdirSync(DATA_DIR, { recursive: true })
@@ -80,159 +85,85 @@ function saveVerdicts(state) {
   fs.renameSync(tmp, verdictsPath)
 }
 
-// ---------- ASR suspicion ----------
-// Absent or malformed → no ASR tier, and the page says the ranking is takes-only.
-function loadAsr() {
-  try {
-    const raw = JSON.parse(fs.readFileSync(asrPath, 'utf8'))
-    const rows = Array.isArray(raw) ? raw : raw.scores || raw.clips || []
-    const byId = new Map()
-    for (const r of rows) {
-      if (!r || !r.audio_id) continue
-      if (!(Number(r.margin) > 0)) continue   // only a POSITIVE margin is a suspicion
-      byId.set(r.audio_id, r)
-    }
-    return byId
-  } catch {
-    return new Map()
-  }
-}
-
-// How unlike its own text a decode has to be before the clip is worth Kai's
-// first look. Whisper renders Austrian dialect into Standard German spelling,
-// so a GOOD clip lands around 0.77 (the measured median over all 225) and the
-// scale below ~0.5 is where the audio stops being a reading of the line at all:
-// "Ups!", a laugh, "blabla blabla blabla". Calibrated 2026-08-25, not guessed.
-const OWN_SCORE_SUSPECT = 0.5
-
-/**
- * Riskiest first. Three tiers, in Kai's stated order:
- *   0  the audio does not match its own text (lowest own_score first)
- *   1  the line was recorded more than once (most takes first)
- *   2  everything else, in seed order
- * No clip is ever hidden — the tail is the disconfirming evidence.
- *
- * Tier 0 ranks on the ABSOLUTE own-text score, not on the margin against other
- * texts. Margin was the first cut and it ranked badly: on a one- or two-word
- * line ("i wü", "reden") almost any other text scores a hair higher by chance,
- * so noise floated above a nine-word line whose audio is the recordist saying
- * "Ups!". The best-other text is still shown when it means something — it is
- * how a genuine take-N-under-phrase-N+1 mislabel announces itself.
- */
-function orderedClips() {
-  const asr = loadAsr()
-  const scored = CLIPS.map((c, i) => {
-    const a = asr.get(c.id) || null
-    const suspect = a && Number(a.own_score) < OWN_SCORE_SUSPECT
-    const tier = suspect ? 0 : (c.take_count > 1 ? 1 : 2)
-    return { c, i, a, tier }
-  })
-  scored.sort((x, y) =>
-    x.tier - y.tier ||
-    (x.tier === 0 ? Number(x.a.own_score) - Number(y.a.own_score) : 0) ||
-    (x.tier === 1 ? y.c.take_count - x.c.take_count : 0) ||
-    ((x.c.seed ?? 1e9) - (y.c.seed ?? 1e9)) ||
-    x.i - y.i
-  )
-  return scored.map(({ c, a, tier }, idx) => ({
-    id: c.id,
-    text: c.text,
-    seed: c.seed,
-    take_count: c.take_count,
-    accepted: c.accepted,
-    duration_ms: c.duration_ms,
-    recorded_at: c.recorded_at,
-    rank: idx + 1,
-    tier,
-    // Said in words on the card, because a rank nobody can interrogate is noise.
-    // The "sounds more like" clause is only earned when the other text really
-    // does beat this one; otherwise it is an invitation to see a pattern that
-    // is not there.
-    why: tier === 0
-      ? (Number(a.margin) > 0 && a.best_other_text
-        ? `the audio does not match this text — sounds more like "${a.best_other_text}"`
-        : 'the audio does not match this text')
-      : tier === 1
-        ? `${c.take_count} takes of this line`
-        : null,
-    asr: a && { decode: a.decode ?? null, own_score: a.own_score ?? null, margin: a.margin ?? null },
-  }))
-}
-
 // ---------- server ----------
 const app = express()
 app.use(express.json())
 
 app.get('/', (_req, res) => res.sendFile(path.join(__dirname, 'index.html')))
 
-app.get('/api/clips', (_req, res) => {
+app.get('/api/takes', (_req, res) => {
   const state = loadVerdicts()
   res.json({
     course: COURSE,
-    voice_id: manifest.voice_id,
-    asr_ranked: fs.existsSync(asrPath),
-    // Uniform across the course, so it belongs in the header rather than on
-    // every card: NOTHING here was ever accepted, because nothing can be.
-    no_acceptance_record: CLIPS.every((c) => c.accepted === false),
-    clips: orderedClips(),
+    recordist: manifest.recordist,
+    total_takes: manifest.total_takes,
+    total_lines: manifest.total_lines,
+    live_takes: manifest.live_takes,
+    groups: GROUPS,
     verdicts: state.verdicts || {},
   })
 })
 
-// verdict: 'real' | 'wrong' | null (clear)
+// verdict: 'good' | 'bad' | null (clear). Keyed by TAKE, not by line — the whole
+// question is which take of a line is the good one.
 app.post('/api/verdict', (req, res) => {
-  const { id, verdict } = req.body || {}
-  if (!id || !BY_ID.has(id)) return res.status(400).json({ error: 'unknown clip id' })
-  if (!['real', 'wrong', null].includes(verdict ?? null)) {
-    return res.status(400).json({ error: 'verdict must be real|wrong|null' })
+  const { uuid, verdict } = req.body || {}
+  if (!uuid || !BY_UUID.has(uuid)) return res.status(400).json({ error: 'unknown take' })
+  if (!['good', 'bad', null].includes(verdict ?? null)) {
+    return res.status(400).json({ error: 'verdict must be good|bad|null' })
   }
   const state = loadVerdicts()
   state.verdicts = state.verdicts || {}
-  if (verdict == null) delete state.verdicts[id]
-  else state.verdicts[id] = { verdict, at: new Date().toISOString() }
+  if (verdict == null) delete state.verdicts[uuid]
+  else state.verdicts[uuid] = { verdict, at: new Date().toISOString() }
   saveVerdicts(state)
   res.json({ ok: true, verdicts: state.verdicts })
 })
 
 /**
- * The export. Actionable by design: a later worker gets the clip id, the s3 key,
- * the text it is bound to and every take of that line, so "this one is wrong"
- * can be turned into a re-point or a re-record without re-deriving anything.
+ * The export. Actionable by design: for every line Kai judged, it names the take
+ * he called good, the take that is live, and whether they differ — which is the
+ * exact work-list for a later re-point, without re-deriving anything.
  */
 app.get('/api/export', (_req, res) => {
-  const state = loadVerdicts()
-  const v = state.verdicts || {}
-  const rows = CLIPS.filter((c) => v[c.id]).map((c) => ({
-    audio_id: c.id,
-    verdict: v[c.id].verdict,
-    judged_at: v[c.id].at,
-    text: c.text,
-    s3_key: c.s3_key,
-    seed: c.seed,
-    take_count: c.take_count,
-    takes: c.takes,
-  }))
-  res.set('Content-Disposition', `attachment; filename="deu-at-verdicts.json"`)
+  const v = loadVerdicts().verdicts || {}
+  const lines = GROUPS.map((g) => {
+    const judged = g.takes.filter((t) => v[t.uuid])
+    if (!judged.length) return null
+    const good = judged.filter((t) => v[t.uuid].verdict === 'good')
+    const liveTake = g.takes.find((t) => t.is_live) || null
+    const chosen = good.find((t) => t.cadence !== 'slow') || good[0] || null
+    return {
+      prompted_text: g.prompted_text,
+      seed: g.seed,
+      live_take: liveTake && { uuid: liveTake.uuid, s3_key: liveTake.s3_key, course_audio_id: liveTake.course_audio_id },
+      chosen_good_take: chosen && { uuid: chosen.uuid, s3_key: chosen.s3_key, cadence: chosen.cadence },
+      // The only field a re-pointer needs to act on.
+      needs_repoint: Boolean(chosen && liveTake && chosen.uuid !== liveTake.uuid),
+      verdicts: judged.map((t) => ({ uuid: t.uuid, verdict: v[t.uuid].verdict, at: v[t.uuid].at, recorded_at: t.recorded_at, cadence: t.cadence })),
+    }
+  }).filter(Boolean)
+  res.set('Content-Disposition', 'attachment; filename="sascha-take-verdicts.json"')
   res.json({
     course: COURSE,
     exported_at: new Date().toISOString(),
-    total_clips: CLIPS.length,
-    judged: rows.length,
-    wrong: rows.filter((r) => r.verdict === 'wrong').length,
-    real: rows.filter((r) => r.verdict === 'real').length,
-    rows,
+    total_takes: manifest.total_takes,
+    judged_takes: Object.keys(v).length,
+    lines_judged: lines.length,
+    needs_repoint: lines.filter((l) => l.needs_repoint).length,
+    lines,
   })
 })
 
-// Only manifest ids resolve to a key — an arbitrary S3 key is never fetchable.
-app.get('/api/audio/:id', async (req, res) => {
-  const clip = BY_ID.get(req.params.id)
-  if (!clip || !clip.s3_key) return res.status(404).json({ error: 'unknown clip id' })
+// Only manifest uuids resolve to a key — an arbitrary S3 key is never fetchable.
+app.get('/api/audio/:uuid', async (req, res) => {
+  const take = BY_UUID.get(req.params.uuid)
+  if (!take || !take.s3_key) return res.status(404).json({ error: 'unknown take' })
   const range = req.headers.range
   try {
     const out = await s3.send(new GetObjectCommand({
       Bucket: process.env.S3_BUCKET,
-      Key: clip.s3_key,
+      Key: take.s3_key,
       ...(range ? { Range: range } : {}),
     }))
     res.status(range && out.ContentRange ? 206 : 200)
@@ -248,6 +179,6 @@ app.get('/api/audio/:id', async (req, res) => {
 })
 
 app.listen(PORT, () => {
-  console.log(`deu_at_for_eng listen — ${CLIPS.length} clips → http://localhost:${PORT}`)
+  console.log(`deu_at_for_eng takes — ${TAKES.length} takes over ${GROUPS.length} lines → http://localhost:${PORT}`)
   console.log(`  data dir: ${DATA_DIR}`)
 })

@@ -3,18 +3,18 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Austrian German — listen</title>
+<title>Sascha — every take</title>
 <style>
   :root {
     --bg: #f6f5f2; --card: #ffffff; --ink: #1d1d1f; --muted: #8a8a8e;
-    --line: #e4e2dd; --real: #2e9e5b; --wrong: #d64545; --accent: #3b6fe0;
-    --warn: #b06a00;
+    --line: #e4e2dd; --good: #2e9e5b; --bad: #d64545; --accent: #3b6fe0;
+    --warn: #b06a00; --live: #b06a00;
   }
   @media (prefers-color-scheme: dark) {
     :root {
       --bg: #17171a; --card: #212126; --ink: #ececf0; --muted: #8f8f96;
-      --line: #313138; --real: #3fb56e; --wrong: #e05c5c; --accent: #6c96f0;
-      --warn: #e0a458;
+      --line: #313138; --good: #3fb56e; --bad: #e05c5c; --accent: #6c96f0;
+      --warn: #e0a458; --live: #e0a458;
     }
   }
   * { box-sizing: border-box; margin: 0; }
@@ -30,13 +30,13 @@
     padding: 10px 12px; display: flex; flex-direction: column; gap: 8px;
   }
   .counts { font-size: 14px; font-weight: 600; font-variant-numeric: tabular-nums; }
-  .counts .r { color: var(--real); }
-  .counts .w { color: var(--wrong); }
+  .counts .g { color: var(--good); }
+  .counts .b { color: var(--bad); }
   .counts .u { color: var(--muted); }
   .bar { height: 4px; background: var(--line); border-radius: 2px; overflow: hidden; display: flex; }
   .bar i { display: block; height: 100%; }
-  .bar .ir { background: var(--real); }
-  .bar .iw { background: var(--wrong); }
+  .bar .ig { background: var(--good); }
+  .bar .ib { background: var(--bad); }
   .note { font-size: 11px; color: var(--warn); line-height: 1.4; }
   .filters { display: flex; gap: 8px; }
   .filters button, .filters a {
@@ -47,37 +47,52 @@
   }
   .filters button[aria-pressed="true"] { border-color: var(--accent); color: var(--accent); font-weight: 600; }
 
-  main { padding: 10px 12px 40px; display: flex; flex-direction: column; gap: 10px; }
-  .row {
+  main { padding: 10px 12px 40px; display: flex; flex-direction: column; gap: 12px; }
+  .grp {
     background: var(--card); border: 1px solid var(--line); border-radius: 14px;
     padding: 12px; display: flex; flex-direction: column; gap: 8px;
   }
-  .meta {
+  .grp.retry { border-left: 4px solid var(--warn); }
+  .grp-meta {
     display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
     font-size: 11px; color: var(--muted); letter-spacing: .03em;
   }
-  .meta .rank { margin-left: auto; opacity: .55; font-variant-numeric: tabular-nums; }
-  .meta .flag { color: var(--warn); font-weight: 700; }
-  .text { font-size: 20px; font-weight: 600; line-height: 1.35; overflow-wrap: anywhere; }
-  .why { font-size: 12px; color: var(--warn); line-height: 1.4; overflow-wrap: anywhere; }
-  .decode { font-size: 12px; color: var(--muted); line-height: 1.4; overflow-wrap: anywhere; font-style: italic; }
+  .grp-meta .rank { margin-left: auto; opacity: .55; font-variant-numeric: tabular-nums; }
+  .grp-meta .flag { color: var(--warn); font-weight: 700; }
+  .asked { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; }
+  .prompted { font-size: 20px; font-weight: 600; line-height: 1.35; overflow-wrap: anywhere; }
+  .slotdiff {
+    font-size: 12px; color: var(--bad); line-height: 1.4; overflow-wrap: anywhere;
+    border: 1px solid var(--bad); border-radius: 8px; padding: 6px 8px;
+  }
+
+  .take {
+    border-top: 1px solid var(--line); padding-top: 8px;
+    display: flex; flex-direction: column; gap: 6px;
+  }
+  .take-meta {
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    font-size: 11px; color: var(--muted); font-variant-numeric: tabular-nums;
+  }
+  .take-meta .live { color: var(--live); font-weight: 700; }
+  .take-meta .slow { border: 1px solid var(--line); border-radius: 5px; padding: 0 5px; }
+  .heard { font-size: 12.5px; color: var(--muted); font-style: italic; line-height: 1.4; overflow-wrap: anywhere; }
 
   .btns { display: flex; gap: 8px; }
   .btns button {
-    min-height: 50px; font: inherit; font-size: 15px; font-weight: 600;
+    min-height: 48px; font: inherit; font-size: 15px; font-weight: 600;
     color: var(--ink); background: transparent;
     border: 1px solid var(--line); border-radius: 12px; cursor: pointer;
     display: flex; align-items: center; justify-content: center; gap: 6px;
     -webkit-tap-highlight-color: transparent;
   }
-  .btns .play { flex: 1.3; }
+  .btns .play { flex: 1.4; }
   .btns .play.playing { border-color: var(--accent); color: var(--accent); }
   .btns .v { flex: 1; }
-  .btns .v.real[aria-pressed="true"]  { background: var(--real);  border-color: var(--real);  color: #fff; }
-  .btns .v.wrong[aria-pressed="true"] { background: var(--wrong); border-color: var(--wrong); color: #fff; }
-
-  .row.v-real  { border-left: 4px solid var(--real); }
-  .row.v-wrong { border-left: 4px solid var(--wrong); }
+  .btns .v.good[aria-pressed="true"] { background: var(--good); border-color: var(--good); color: #fff; }
+  .btns .v.bad[aria-pressed="true"]  { background: var(--bad);  border-color: var(--bad);  color: #fff; }
+  .take.v-good { border-left: 3px solid var(--good); padding-left: 8px; }
+  .take.v-bad  { border-left: 3px solid var(--bad);  padding-left: 8px; }
 
   .more { text-align: center; padding: 14px 0 30px; }
   .more button {
@@ -91,115 +106,142 @@
 <body>
 <header>
   <div class="counts" id="counts">loading…</div>
-  <div class="bar"><i class="ir" id="bar-r" style="width:0"></i><i class="iw" id="bar-w" style="width:0"></i></div>
+  <div class="bar"><i class="ig" id="bar-g" style="width:0"></i><i class="ib" id="bar-b" style="width:0"></i></div>
   <div class="note" id="note"></div>
   <div class="filters">
     <button id="f-all" aria-pressed="true">All</button>
+    <button id="f-retry" aria-pressed="false">Retried</button>
     <button id="f-todo" aria-pressed="false">Unjudged</button>
-    <button id="f-wrong" aria-pressed="false">Wrong</button>
     <a id="export" href="/api/export">Export</a>
   </div>
 </header>
 <main id="list"><div class="empty">loading…</div></main>
 
 <script>
-// NOTHING IS PRELOADED. The <audio> element is created empty and its src is set
-// only when Kai taps Play, so opening the page on mobile data costs one small
-// JSON fetch and no audio at all. The list itself is paged (PAGE at a time) so
-// the DOM stays small on a phone.
-const PAGE = 25;
-const state = { clips: [], verdicts: {}, filter: 'all', playing: null, shown: PAGE };
+// NOTHING IS PRELOADED. One <audio> element, its src set only on tap, so opening
+// this on mobile data costs one JSON fetch and no audio at all. Lines are paged
+// PAGE at a time so the DOM stays small on a phone.
+const PAGE = 12;
+const state = { groups: [], verdicts: {}, filter: 'all', playing: null, shown: PAGE, total: 0 };
 const audio = new Audio();
 audio.preload = 'none';
 audio.addEventListener('ended', () => setPlaying(null));
 
-function setPlaying(id) {
-  state.playing = id;
-  document.querySelectorAll('.play').forEach((b) => b.classList.toggle('playing', b.dataset.id === id));
+function setPlaying(uuid) {
+  state.playing = uuid;
+  document.querySelectorAll('.play').forEach((b) => b.classList.toggle('playing', b.dataset.uuid === uuid));
 }
 
-function play(id) {
-  if (state.playing === id) { audio.pause(); audio.currentTime = 0; setPlaying(null); return; }
+function play(uuid) {
+  if (state.playing === uuid) { audio.pause(); audio.currentTime = 0; setPlaying(null); return; }
   audio.pause();
-  audio.src = '/api/audio/' + id;
+  audio.src = '/api/audio/' + uuid;
   audio.currentTime = 0;
-  audio.play().then(() => setPlaying(id)).catch(() => setPlaying(null));
+  audio.play().then(() => setPlaying(uuid)).catch(() => setPlaying(null));
 }
 
-async function judge(id, verdict) {
-  const current = state.verdicts[id]?.verdict;
+async function judge(uuid, verdict) {
+  const current = state.verdicts[uuid]?.verdict;
   const next = current === verdict ? null : verdict;   // tapping the same verdict clears it
-  // Optimistic, so the tap feels instant on a slow phone connection; the server
+  // Optimistic, so the tap feels instant on a slow connection; the server
   // response is authoritative and overwrites it a moment later.
-  if (next == null) delete state.verdicts[id];
-  else state.verdicts[id] = { verdict: next, at: new Date().toISOString() };
+  if (next == null) delete state.verdicts[uuid];
+  else state.verdicts[uuid] = { verdict: next, at: new Date().toISOString() };
   render();
   const res = await fetch('/api/verdict', {
     method: 'POST', headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ id, verdict: next }),
+    body: JSON.stringify({ uuid, verdict: next }),
   });
   const body = await res.json();
   if (body.verdicts) { state.verdicts = body.verdicts; render(); }
 }
 
 function counts() {
-  let r = 0, w = 0;
-  for (const clip of state.clips) {
-    const v = state.verdicts[clip.id]?.verdict;
-    if (v === 'real') r++; else if (v === 'wrong') w++;
+  let g = 0, b = 0;
+  for (const v of Object.values(state.verdicts)) {
+    if (v.verdict === 'good') g++; else if (v.verdict === 'bad') b++;
   }
-  return { r, w, u: state.clips.length - r - w, total: state.clips.length };
+  return { g, b, u: state.total - g - b };
 }
 
 function esc(s) {
   return String(s ?? '').replace(/[&<>"]/g, (ch) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[ch]));
 }
 
+// "08-21 13:13:12" — date and time both matter, because the whole pattern is a
+// good read and a flubbed retry seconds apart.
+function stamp(iso) {
+  const s = String(iso || '').replace('T', ' ');
+  return s.slice(5, 19);
+}
+
 function visible() {
-  if (state.filter === 'todo') return state.clips.filter((x) => !state.verdicts[x.id]);
-  if (state.filter === 'wrong') return state.clips.filter((x) => state.verdicts[x.id]?.verdict === 'wrong');
-  return state.clips;
+  if (state.filter === 'retry') return state.groups.filter((g) => g.has_retry);
+  if (state.filter === 'todo') return state.groups.filter((g) => g.takes.some((t) => !state.verdicts[t.uuid]));
+  return state.groups;
+}
+
+function renderTake(t, prevAt) {
+  const v = state.verdicts[t.uuid]?.verdict || null;
+  const gap = prevAt ? Math.round((new Date(t.recorded_at) - new Date(prevAt)) / 1000) : null;
+  const bits = [
+    `<span>${esc(stamp(t.recorded_at))}</span>`,
+    gap != null && gap >= 0 && gap < 3600 ? `<span>+${gap}s</span>` : '',
+    t.cadence === 'slow' ? '<span class="slow">slow read — never used as a clip</span>' : '',
+    t.is_live ? '<span class="live">▶ THIS IS WHAT LEARNERS HEAR</span>' : '',
+    t.superseded ? '<span>marked superseded</span>' : '',
+  ].filter(Boolean).join(' ');
+  return `
+    <div class="take ${v ? 'v-' + v : ''}">
+      <div class="take-meta">${bits}</div>
+      ${t.decode ? `<div class="heard">machine heard: ${esc(t.decode)}</div>` : ''}
+      <div class="btns">
+        <button class="play" data-uuid="${t.uuid}" data-act="play">▶ Play</button>
+        <button class="v good" data-uuid="${t.uuid}" data-act="good" aria-pressed="${v === 'good'}">Good</button>
+        <button class="v bad"  data-uuid="${t.uuid}" data-act="bad"  aria-pressed="${v === 'bad'}">Bad</button>
+      </div>
+    </div>`;
 }
 
 function render() {
-  const { r, w, u, total } = counts();
+  const { g, b, u } = counts();
   document.getElementById('counts').innerHTML =
-    `<span>${r + w} of ${total}</span> · <span class="r">real ${r}</span> · <span class="w">wrong ${w}</span> · <span class="u">to go ${u}</span>`;
-  document.getElementById('bar-r').style.width = (total ? (r / total) * 100 : 0) + '%';
-  document.getElementById('bar-w').style.width = (total ? (w / total) * 100 : 0) + '%';
+    `<span>${g + b} of ${state.total} takes</span> · <span class="g">good ${g}</span> · <span class="b">bad ${b}</span> · <span class="u">to go ${u}</span>`;
+  document.getElementById('bar-g').style.width = (state.total ? (g / state.total) * 100 : 0) + '%';
+  document.getElementById('bar-b').style.width = (state.total ? (b / state.total) * 100 : 0) + '%';
 
   const list = document.getElementById('list');
   const all = visible();
   const shown = all.slice(0, state.shown);
-
   if (!shown.length) { list.innerHTML = '<div class="empty">nothing here</div>'; return; }
 
-  list.innerHTML = shown.map((clip) => {
-    const v = state.verdicts[clip.id]?.verdict || null;
-    const flag = clip.take_count > 1 ? `<span class="flag">${esc(clip.take_count)} takes</span>` : '';
-    const why = clip.why ? `<div class="why">⚠ ${esc(clip.why)}</div>` : '';
-    const decode = clip.asr && clip.asr.decode
-      ? `<div class="decode">machine heard: ${esc(clip.asr.decode)}</div>` : '';
+  list.innerHTML = shown.map((grp, i) => {
+    const flags = [
+      grp.has_retry ? `<span class="flag">${grp.natural_count} takes of this line</span>` : '',
+      grp.live_count === 0 ? '<span class="flag">not used in the course</span>' : '',
+    ].filter(Boolean).join(' ');
+    const diff = grp.disagree_count
+      ? `<div class="slotdiff">The course slot this was filed into says something else: “${esc(grp.takes.find((t) => t.text_disagrees).slot_text)}”</div>`
+      : '';
+    let prevAt = null;
+    const takes = grp.takes.map((t) => { const h = renderTake(t, prevAt); prevAt = t.recorded_at; return h; }).join('');
     return `
-      <div class="row ${v ? 'v-' + v : ''}">
-        <div class="meta">
-          ${clip.seed != null ? `<span>seed ${esc(clip.seed)}</span>` : ''}
-          ${flag}
-          <span class="rank">#${esc(clip.rank)}</span>
+      <div class="grp ${grp.has_retry ? 'retry' : ''}">
+        <div class="grp-meta">
+          ${grp.seed != null ? `<span>seed ${esc(grp.seed)}</span>` : ''}
+          ${flags}
+          <span class="rank">#${i + 1}</span>
         </div>
-        <div class="text">${esc(clip.text)}</div>
-        ${why}${decode}
-        <div class="btns">
-          <button class="play" data-id="${clip.id}" data-act="play">▶ Play</button>
-          <button class="v real"  data-id="${clip.id}" data-act="real"  aria-pressed="${v === 'real'}">Real</button>
-          <button class="v wrong" data-id="${clip.id}" data-act="wrong" aria-pressed="${v === 'wrong'}">Wrong</button>
-        </div>
+        <div class="asked">Sascha was asked to say</div>
+        <div class="prompted">${esc(grp.prompted_text)}</div>
+        ${diff}
+        ${takes}
       </div>`;
   }).join('');
 
   if (all.length > shown.length) {
     list.insertAdjacentHTML('beforeend',
-      `<div class="more"><button id="more">Show ${Math.min(PAGE, all.length - shown.length)} more (${shown.length}/${all.length})</button></div>`);
+      `<div class="more"><button id="more">Show ${Math.min(PAGE, all.length - shown.length)} more lines (${shown.length}/${all.length})</button></div>`);
     document.getElementById('more').onclick = () => { state.shown += PAGE; render(); };
   }
   setPlaying(state.playing);
@@ -207,31 +249,28 @@ function render() {
 
 document.getElementById('list').addEventListener('click', (e) => {
   const b = e.target.closest('button'); if (!b || !b.dataset.act) return;
-  if (b.dataset.act === 'play') play(b.dataset.id);
-  else judge(b.dataset.id, b.dataset.act);
+  if (b.dataset.act === 'play') play(b.dataset.uuid);
+  else judge(b.dataset.uuid, b.dataset.act);
 });
 
 function setFilter(f) {
-  state.filter = f;
-  state.shown = PAGE;
-  for (const [id, name] of [['f-all', 'all'], ['f-todo', 'todo'], ['f-wrong', 'wrong']]) {
+  state.filter = f; state.shown = PAGE;
+  for (const [id, name] of [['f-all', 'all'], ['f-retry', 'retry'], ['f-todo', 'todo']]) {
     document.getElementById(id).setAttribute('aria-pressed', String(f === name));
   }
   render();
 }
 document.getElementById('f-all').onclick = () => setFilter('all');
+document.getElementById('f-retry').onclick = () => setFilter('retry');
 document.getElementById('f-todo').onclick = () => setFilter('todo');
-document.getElementById('f-wrong').onclick = () => setFilter('wrong');
 
-fetch('/api/clips').then((r) => r.json()).then((d) => {
-  state.clips = d.clips; state.verdicts = d.verdicts || {};
-  const bits = [];
-  // Said out loud, not implied: there is no acceptance record to fall back on.
-  if (d.no_acceptance_record) bits.push(`No take in this course was ever accepted — the recorder's Approve tick is never saved. All ${d.clips.length} are unaccepted, so your ear is the only gate.`);
-  bits.push(d.asr_ranked
-    ? 'Riskiest first: suspected text/audio mismatch, then lines with several takes.'
-    : 'Riskiest first: lines with several takes. (No machine mismatch ranking loaded.)');
-  document.getElementById('note').textContent = bits.join(' ');
+fetch('/api/takes').then((r) => r.json()).then((d) => {
+  state.groups = d.groups; state.verdicts = d.verdicts || {}; state.total = d.total_takes;
+  const retried = d.groups.filter((x) => x.has_retry).length;
+  document.getElementById('note').textContent =
+    `${d.total_takes} takes over ${d.total_lines} lines — ${d.total_takes - d.live_takes} of them are invisible from the course side. `
+    + `Nothing here was ever accepted: there is no acceptance flag in the database, so your ear is the only gate. `
+    + `${retried} lines were recorded more than once and come first — that is where a good read followed by a flubbed retry hides.`;
   render();
 });
 </script>
