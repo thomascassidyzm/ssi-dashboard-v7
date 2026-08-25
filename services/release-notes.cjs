@@ -56,6 +56,14 @@ const LEARNING_APP_REPO = process.env.LEARNING_APP_REPO || path.join(os.homedir(
 const NOISE_TYPES = /^(chore|test|ci|build|refactor|style|perf|docs|deps|wip|revert)\b/i
 const NOISE_LINES = /^(promote|merge\b|merge branch|merge pull request|merge remote)/i
 
+// House style, Tom's ruling 2026-08-24 (plate A-258), general rule for ALL future
+// learner-facing release notes: "too much information for learners - general rules:
+// 3 biggest headlines (to the learner's viewpoint) + bug fixes etc." At most 3
+// headline-level bullets, each a plain warm sentence, chosen for LEARNER impact —
+// not commit volume. The closing catch-all line is appended in code (below), never
+// left to the model, so it's guaranteed present by construction.
+const CATCH_ALL_LINE = 'Plus bug fixes and improvements.'
+
 const PROMPT = (subjects) => `
 You are drafting a SUPER-CONCISE, LEARNER-FACING release note for SSi, a language-learning app. Below is the raw list of git commit subjects shipped in this release. Translate them into what the LEARNER actually gets — plain language, no jargon, no commit-speak, no internal/technical detail.
 
@@ -63,9 +71,11 @@ Rules:
 - Write for a language learner using the app, not a developer. No file names, no "refactor", no ticket-speak, no acronyms unless a learner would know them.
 - GROUP related commits into one bullet (e.g. several tiling/pinyin commits -> one bullet about clearer pronunciation help).
 - SKIP anything internal: tests, refactors, telemetry, build/ops, admin-only tooling, insight/analytics dashboards (those are for the team, not learners).
-- Lead with the changes a learner would NOTICE and care about.
-- A short, warm, plain headline (<= ~8 words). Then 3-6 bullets, each one short plain sentence describing a benefit. No markdown, no leading dashes.
-- If there genuinely isn't much learner-facing, fewer bullets is fine. Be honest, never invent features.
+- Pick AT MOST 3 headline bullets — the 3 biggest changes from the LEARNER's viewpoint, biggest impact first. This is a hard cap: even if many things shipped, only the 3 most learner-impactful make the cut. If there's genuinely only 1 or 2 learner-facing headlines, use fewer — never pad to 3.
+- Each headline bullet is one short, warm, plain sentence describing the benefit. No markdown, no leading dashes, no commit-speak.
+- Do NOT write a catch-all "bug fixes" line yourself — that is added automatically afterwards. Just give the headline bullets.
+- A short, warm, plain overall headline (<= ~8 words) summarising the release.
+- Be honest, never invent features.
 
 Return ONLY strict JSON, no prose, no markdown fence:
 {"headline": "...", "bullets": ["...", "...", "..."]}
@@ -146,9 +156,13 @@ async function generateDraft(opts = {}) {
     throw new Error('claude returned malformed release note (need {headline: string, bullets: array}).')
   }
   const headline = parsed.headline.trim()
+  // House style (Tom, 2026-08-24, plate A-258): at most 3 headline bullets, then a
+  // single closing catch-all line — enforced here, not left to the model.
   const bullets = parsed.bullets
     .map(b => String(b).replace(/^[-•\s]+/, '').trim())
     .filter(Boolean)
+    .slice(0, 3)
+  bullets.push(CATCH_ALL_LINE)
 
   // --- INSERT a DRAFT into release_notes (return the new row) ---
   const insertRes = await fetch(`${BASE}/rest/v1/release_notes`, {
