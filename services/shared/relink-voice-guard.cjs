@@ -38,6 +38,11 @@
  * one answer to "do these two voice ids name the same voice?" in the estate.
  */
 
+// The provider spellings clip-identity.cjs accepts as a voice-id prefix. Taken
+// from there rather than re-listed, so "is this token a provider?" has exactly
+// one answer in the estate.
+const { PROVIDER_ALIASES } = require('./clip-identity.cjs')
+
 // Roles a course voice_config assigns a voice to. Pods, instructions and
 // encouragements are cast per-speaker and are out of scope for this guard.
 const CLIP_ROLES = ['known', 'target1', 'target2', 'presentation']
@@ -53,9 +58,19 @@ function bareVoiceId(voiceId) {
 
 /**
  * Resolve the voice_id string phase8 would write for each role, from
- * courses.voice_config. Mirrors phase8-audio-v13.cjs getVoiceForRole exactly:
- * `${provider}_${voiceId}` when a provider is set, bare voiceId otherwise,
- * never the config object.
+ * courses.voice_config. Mirrors phase8-audio-v13.cjs getVoiceForRole, which
+ * canonicalises through clip-identity.cjs: THE ID'S OWN PROVIDER PREFIX WINS,
+ * and `provider` is only a hint for an id that carries no prefix. Never the
+ * config object.
+ *
+ * That distinction is not cosmetic. A human voice artist's id already carries
+ * its provider — Sasha's is `human_sasha_wanasky_deu_at` with provider
+ * `human` — so the older `${provider}_${voiceId}` line produced
+ * `human_human_sasha_wanasky_deu_at`, which matches nothing in course_audio and
+ * made this guard refuse the artist's own recordings. 319 refusals in
+ * deu_at_for_eng and 44 in fin_for_eng, 19–23 Aug 2026, were exactly that
+ * (job #581; fixed 2026-08-25 alongside the SQL twin in
+ * database/migrations/20260825_configured_voice_must_not_double_provider_prefix.sql).
  */
 function resolveVoices(course) {
   const voices = course?.voice_config?.voices || {}
@@ -63,8 +78,13 @@ function resolveVoices(course) {
   for (const role of CLIP_ROLES) {
     const v = voices[role]
     if (!v) { out[role] = null; continue }
-    if (v.provider && v.voiceId) out[role] = `${v.provider}_${v.voiceId}`
-    else out[role] = v.voiceId || null
+    const raw = typeof v === 'string' ? v : v.voiceId
+    if (!raw) { out[role] = null; continue }
+    const own = String(raw).match(/^([A-Za-z0-9]+)[_:](.*)$/)
+    const ownProvider = own && PROVIDER_ALIASES[own[1].toLowerCase()]
+    if (ownProvider && own[2]) out[role] = `${ownProvider}_${own[2]}`
+    else if (v.provider) out[role] = `${PROVIDER_ALIASES[String(v.provider).toLowerCase()] || v.provider}_${raw}`
+    else out[role] = raw
   }
   return out
 }

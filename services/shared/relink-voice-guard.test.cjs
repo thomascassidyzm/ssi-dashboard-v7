@@ -72,6 +72,52 @@ describe('THE CHINESE CASE — text matches, voice does not', () => {
   })
 })
 
+// The real deu_at_for_eng config, as it stands in the live DB: Sasha (they/them)
+// is a human voice artist, and a human voiceId ALREADY carries its provider.
+const DEU_AT_COURSE = {
+  voice_config: {
+    voices: {
+      known: { name: 'Eve', voiceId: 'eve', provider: 'xai' },
+      target1: { name: 'Ingrid', voiceId: 'de-AT-IngridNeural', provider: 'azure' },
+      target2: { name: 'Sasha', voiceId: 'human_sasha_wanasky_deu_at', provider: 'human' },
+      presentation: { name: 'Eve', voiceId: 'eve', provider: 'xai' },
+    },
+  },
+}
+
+describe('THE SASHA CASE — the artist\'s own clips are not a mismatch', () => {
+  // 2026-08-25 (job #581): resolveVoices concatenated provider + voiceId
+  // unconditionally, so the wanted string was `human_human_sasha_wanasky_deu_at`
+  // — a voice no clip in the estate has ever carried. The guard then refused
+  // every one of Sasha's own recordings: 319 refusals in deu_at_for_eng and 44
+  // in fin_for_eng between 19 and 23 Aug. The rule it had drifted from is
+  // clip-identity.cjs's: the id's own provider prefix wins.
+  const wanted = resolveVoices(DEU_AT_COURSE).target2
+
+  it('does not double the human_ prefix', () => {
+    expect(wanted).toBe('human_sasha_wanasky_deu_at')
+  })
+
+  it('ACCEPTS a clip Sasha actually recorded', () => {
+    const sasha = { id: 'clip-sasha', voice_id: 'human_sasha_wanasky_deu_at' }
+    expect(isRelinkAllowed({ role: 'target2', wantedVoice: wanted, candidate: sasha }).ok).toBe(true)
+  })
+
+  it('still refuses Jonas, the Azure voice Sasha replaced', () => {
+    const jonas = { id: 'clip-jonas', voice_id: 'azure_de-AT-JonasNeural' }
+    const verdict = isRelinkAllowed({ role: 'target2', wantedVoice: wanted, candidate: jonas })
+    expect(verdict.ok).toBe(false)
+    expect(verdict.reason).toBe('voice-mismatch')
+  })
+
+  it('leaves the synthetic roles of the same course spelt exactly as before', () => {
+    const v = resolveVoices(DEU_AT_COURSE)
+    expect(v.known).toBe('xai_eve')
+    expect(v.target1).toBe('azure_de-AT-IngridNeural')
+    expect(v.presentation).toBe('xai_eve')
+  })
+})
+
 describe('voice identity', () => {
   it('treats a bare id and its provider-prefixed sibling as one voice (Tom, 2026-08-07)', () => {
     expect(voicesMatch('xai_eve', 'eve').match).toBe(true)
