@@ -1,4 +1,4 @@
-# Four phrases, 251 splice candidates — cut without a transcript
+# Four phrases, 281 splice candidates — cut without a transcript
 
 **Course:** `deu_at_for_eng`. **Recordist:** Sascha, who uses they/them.
 **The page (this is the one URL):**
@@ -71,6 +71,33 @@ is the whole principle here: where the material is ambiguous, Kai gets versions,
 - **whisper is still used for one thing**: checking the finished clips after the fact, as an
   advisory. It is not trusted for what the audio says, only used to spot gross errors.
 
+## “None of them say mit” — and why he was right
+
+Kai, 2026-08-25, on the second half: *"none of the second half ones say mit (they sound very
+good otherwise) — but they all say 'dir Deitsch reden'."*
+
+Correct, and it is **the material, not the cut.** Once the rejected take is excluded as a
+source, exactly one carrier line ends in “mit dir Deitsch reden”: *“i wer mit dir Deitsch
+reden”*. Measured, its speech runs are **380–1090 · 1330–1730 · 2030–2220 · 2350–2510 ·
+2680–3180** — five runs for six words, and the first of them is *“i wer mit”*. **“mit” is
+fused into the opening run.** There is no silence in front of it, so no honest cut of that
+half exists, and the tool now **refuses to offer that group at all** rather than shipping
+three clips that quietly start at “dir”.
+
+What does exist: **“mit dir” cuts cleanly** off the front of the two “mit dir reden” takes,
+where it starts the line. So the phrase is finished in **three pieces instead of two**, and
+the middle piece is the missing word.
+
+## Finished on top of his own pick
+
+Rather than hand the halves back, the phrase is now assembled **on the “i wü iatz” Kai
+already picked**: his clip is piece one and the reference level, with a measured “mit dir”
+and a measured “Deitsch reden” after it — **30 versions**, varying only the join, since the
+words themselves are settled.
+
+Decoded as a check, these come back as *“Ich will jetzt mit dir Deutsch reden”* — the whole
+line, in the reading he chose.
+
 ## The long phrase, in two halves
 
 Kai, 2026-08-25: *"the long phrase didn't work out. Let me pick the two parts separately."*
@@ -79,15 +106,15 @@ Glued whole, the join is one decision buried inside seven words. Split, each hal
 on its own and the two winners are glued afterwards. **Two ways to divide it are offered**,
 because the recordings are lopsided:
 
-| half | candidates | pairs with |
+| piece | candidates | pairs with |
 |---|---|---|
-| i wü iatz | 31 | mit dir Deitsch reden |
-| mit dir Deitsch reden | 3 | i wü iatz |
+| i wü iatz | 31 | mit dir + Deitsch reden |
+| mit dir | 3 | the two either side of it |
 | i wü iatz mit dir | 6 | Deitsch reden |
 | Deitsch reden | 36 | i wü iatz mit dir |
+| **the whole line, on his pick** | **30** | — ready-made |
 
-16 lines begin “i wü iatz” but only 2 end “mit dir Deitsch reden”; 17 end “Deitsch reden”
-but only 2 begin “i wü iatz mit dir”. Either pair completes the phrase, and the page says on
+“mit dir Deitsch reden” **was offered and has been withdrawn** — see above. The page says on
 each group which one it pairs with. **A half is only ever ONE measured cut** — gluing a half
 out of two takes would hide a second join inside the thing being judged.
 

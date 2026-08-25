@@ -80,11 +80,40 @@ const TARGETS = [
   // begin "i wü iatz" but only 2 end "mit dir Deitsch reden", while 17 end
   // "Deitsch reden" but only 2 begin "i wü iatz mit dir". Either PAIR completes
   // the phrase — pick one half from each colour.
-  { id: 'part-a1', text: 'i wü iatz', words: ['i', 'wü', 'iatz'], part: 'first half', pairsWith: 'mit dir Deitsch reden' },
-  { id: 'part-b2', text: 'mit dir Deitsch reden', words: ['mit', 'dir', 'deitsch', 'reden'], part: 'second half', pairsWith: 'i wü iatz' },
+  { id: 'part-a1', text: 'i wü iatz', words: ['i', 'wü', 'iatz'], part: 'first half', pairsWith: 'mit dir  +  Deitsch reden — or just use the ready-made ones at the bottom' },
+  // "mit dir Deitsch reden" IS NOT BUILDABLE and is no longer offered. Kai:
+  // *"none of the second half ones say mit — they all say 'dir Deitsch reden'"*.
+  // He was right, and it is the material, not the cut: the only carrier line left
+  // after the rejected take is excluded is "i wer mit dir Deitsch reden", and in
+  // that recording "mit" is fused into the opening run — measured, the runs are
+  // 380-1090 ("i wer mit"), 1330-1730 ("dir"), then Deitsch and reden. There is no
+  // gap in front of "mit" to cut at, so no honest cut of that half exists.
+  //
+  // "mit dir" IS cleanly available from the two "mit dir reden" takes, where it is
+  // the start of the line — so the phrase is completed in three pieces instead.
+  { id: 'mit-dir', text: 'mit dir', words: ['mit', 'dir'], part: 'middle', pairsWith: 'i wü iatz  +  Deitsch reden' },
   { id: 'part-a2', text: 'i wü iatz mit dir', words: ['i', 'wü', 'iatz', 'mit', 'dir'], part: 'first half', pairsWith: 'Deitsch reden' },
   { id: 'part-b1', text: 'Deitsch reden', words: ['deitsch', 'reden'], part: 'second half', pairsWith: 'i wü iatz mit dir' },
 ]
+
+/**
+ * A phrase finished on top of a choice Kai has already made.
+ *
+ * He picked an "i wü iatz" and then found no second half that says "mit". Rather
+ * than hand him the halves again, his own pick becomes the first piece and the
+ * rest is built around it — so what he judges is the finished line, in his voice
+ * of choice, with only the joins left to settle.
+ */
+const COMPOSITES = [{
+  id: 'long-on-your-half',
+  text: 'i wü iatz mit dir Deitsch reden — on your pick',
+  note: 'built on the “i wü iatz” you already picked',
+  fromPickTarget: 'part-a1',
+  pieces: [
+    { want: ['mit', 'dir'], side: 'prefix' },
+    { want: ['deitsch', 'reden'], side: 'suffix' },
+  ],
+}]
 
 /** The four takes Kai rejected are not source material for replacing themselves. */
 const REJECTED_LINES = new Set(TARGETS.map((t) => t.words.join(' ')))
@@ -365,6 +394,33 @@ function main() {
   const dropped = []
   let n = 0
 
+  /**
+   * KAI'S PICKS SURVIVE EVERY REBUILD.
+   *
+   * One already did not: `i-wue-w37-lead` was picked at 22:14 and pruned by the
+   * rewrite an hour later. A pick is the most valuable object in this tool — it is
+   * the only judgement in it — so every picked clip is snapshotted into
+   * `recovered/` and restored here before anything else is built, which also makes
+   * it available as a PIECE for the composites below.
+   */
+  const pinned = []
+  const picksFile = path.join(WORK, 'picks-kai.json')
+  if (fs.existsSync(picksFile)) {
+    const saved = JSON.parse(fs.readFileSync(picksFile, 'utf8')).picks || {}
+    for (const [id, meta] of Object.entries(saved)) {
+      const here = path.join(CLIPS, `${id}.mp3`)
+      if (!fs.existsSync(here)) {
+        const rec = path.join(WORK, 'recovered', `${id}.mp3`)
+        if (!fs.existsSync(rec)) {
+          dropped.push({ target: 'picked', id, why: 'Kai picked this and neither the build nor recovered/ has it — SAY SO, never quietly drop a pick' })
+          continue
+        }
+        fs.copyFileSync(rec, here)
+      }
+      pinned.push({ id, meta })
+    }
+  }
+
   const piecesFor = (want, side, win) => {
     const hits = []
     const seenLine = new Set()
@@ -507,31 +563,66 @@ function main() {
     }
   }
 
-  /**
-   * KAI'S PICKS SURVIVE EVERY REBUILD.
-   *
-   * One already did not: `i-wue-w37-lead` was picked at 22:14 and pruned by the
-   * rewrite an hour later. A pick is the most valuable object in this whole tool
-   * — it is the only judgement in it — so anything he has chosen is carried
-   * forward, from `recovered/` if the current build no longer makes it, and shown
-   * back to him at the top of the page.
-   */
-  const pinned = []
-  const picksFile = path.join(WORK, 'picks-kai.json')
-  if (fs.existsSync(picksFile)) {
-    const saved = JSON.parse(fs.readFileSync(picksFile, 'utf8')).picks || {}
-    for (const [id, meta] of Object.entries(saved)) {
-      const here = path.join(CLIPS, `${id}.mp3`)
-      if (!fs.existsSync(here)) {
-        const rec = path.join(WORK, 'recovered', `${id}.mp3`)
-        if (!fs.existsSync(rec)) { dropped.push({ target: 'picked', id, why: 'Kai picked this and neither the build nor recovered/ has it — SAY SO, do not quietly drop a pick' }); continue }
-        fs.copyFileSync(rec, here)
+
+  // ---- phrases finished on top of a pick Kai already made --------------------
+  for (const comp of COMPOSITES) {
+    const heads = pinned.filter((x) => x.meta.target === comp.fromPickTarget)
+    if (!heads.length) { dropped.push({ target: comp.id, why: `nothing picked yet for ${comp.fromPickTarget}, so there is no first piece to build on` }); continue }
+    const pools = comp.pieces.map((pc) => piecesFor(pc.want, pc.side).slice(0, 3))
+    if (pools.some((pool) => !pool.length)) {
+      dropped.push({ target: comp.id, why: 'one of the middle pieces has no measured cut in any take' })
+      continue
+    }
+    let made = 0
+    for (const head of heads) {
+      for (let k = 0; k < Math.max(...pools.map((p) => p.length)); k++) {
+        const parts = pools.map((pool) => pool[k % pool.length])
+        for (const join of JOINS) {
+          if (made >= 40) break
+          const id = `${comp.id}-c${++n}`
+          const wavs = []
+          // The pick is already a finished clip; it is the reference level and the
+          // other pieces are matched to IT, not the other way round.
+          const headWav = path.join(CLIPS, `${id}.p0.wav`)
+          ff(['-i', path.join(CLIPS, `${head.id}.mp3`), '-ar', '44100', '-ac', '1', headWav])
+          wavs.push(headWav)
+          const refDb = meanVolume(headWav)
+          let ok = true
+          parts.forEach((part, idx) => {
+            const pad = PADDINGS[1]
+            const { a, b } = edgesOf(part.p, part.env, pad)
+            if (!(b - a > 150)) { ok = false; return }
+            const w = path.join(CLIPS, `${id}.p${idx + 1}.wav`)
+            cutPiece(part.t.mp3_path, a, b, w)
+            matchLevel(w, refDb)
+            wavs.push(w)
+          })
+          const mp3 = path.join(CLIPS, `${id}.mp3`)
+          if (!ok || wavs.length !== parts.length + 1) {
+            wavs.forEach((w) => fs.existsSync(w) && fs.unlinkSync(w)); n--
+            continue
+          }
+          try { joinPieces(wavs, join.ms, mp3) } catch (err) {
+            wavs.forEach((w) => fs.existsSync(w) && fs.unlinkSync(w)); n--
+            dropped.push({ target: comp.id, id, why: `ffmpeg refused the join: ${String(err.message).slice(0, 120)}` })
+            continue
+          }
+          wavs.forEach((w) => fs.existsSync(w) && fs.unlinkSync(w))
+          made++
+          candidates.push({
+            id, file: `clips/${id}.mp3`, target: comp.id, kind: `${parts.length + 1} pieces`,
+            how: `YOUR PICK — “i wü iatz” from ${head.meta.how.replace(/^cut off the start of /, '')}  +  ` +
+              parts.map((pt) => `“${pt.want.join(' ')}” off the ${pt.side === 'prefix' ? 'start' : 'end'} of “${pt.t.prompted_text}”`).join('  +  '),
+            detail: `${join.label} at both joins · medium padding`,
+            padding: 'mid', join: join.id,
+            sources: parts.map((pt) => ({ uuid: pt.t.uuid, prompted_text: pt.t.prompted_text, seed: pt.t.seed_number, cadence: pt.t.cadence, part: pt.want.join(' ') })),
+            built_on_pick: head.id,
+            test_material: false,
+          })
+        }
       }
-      pinned.push({ id, meta })
     }
   }
-
-  /** Measured pieces for one word-sequence, one per carrier line, both boundaries. */
 
   for (const { id, meta } of pinned) {
     candidates.push({
@@ -575,6 +666,7 @@ function main() {
     targets: [
       ...(pinned.length ? [{ id: 'picked', text: 'What you picked so far', count: pinned.length, pinned: true }] : []),
       ...TARGETS,
+      ...COMPOSITES.map((c) => ({ id: c.id, text: c.text, part: c.note })),
     ].map((t) => ({
       ...t,
       count: candidates.filter((c) => c.target === t.id).length,
