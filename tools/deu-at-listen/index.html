@@ -38,7 +38,18 @@
   .bar .ig { background: var(--good); }
   .bar .ib { background: var(--bad); }
   .note { font-size: 11px; color: var(--warn); line-height: 1.4; }
+  /* The inference disclosure. Deliberately not styled as a footnote: the flow
+     split is a guess made from the shape of the data, and it sits next to the
+     control that acts on it. */
+  .inferred {
+    font-size: 11px; line-height: 1.45; color: var(--muted);
+    border: 1px dashed var(--muted); border-radius: 8px; padding: 6px 8px;
+  }
+  .inferred b { color: var(--warn); }
+  .inferred details { margin-top: 4px; }
+  .inferred summary { cursor: pointer; color: var(--accent); }
   .filters { display: flex; gap: 8px; }
+  .filters + .filters { margin-top: 0; }
   .filters button, .filters a {
     flex: 1; min-height: 44px; font: inherit; font-size: 14px;
     color: var(--ink); background: var(--card); text-decoration: none;
@@ -53,6 +64,14 @@
     padding: 12px; display: flex; flex-direction: column; gap: 8px;
   }
   .grp.retry { border-left: 4px solid var(--warn); }
+  .grp.pinned { border: 2px solid var(--bad); }
+  .pinnote {
+    font-size: 12px; line-height: 1.45; color: var(--bad);
+    border: 1px solid var(--bad); border-radius: 8px; padding: 6px 8px;
+  }
+  .grp.refused { border-left: 4px solid var(--muted); }
+  .take-meta .flow { border: 1px solid var(--line); border-radius: 5px; padding: 0 5px; }
+  .take-meta .flow.spliced { color: var(--muted); }
   .grp-meta {
     display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
     font-size: 11px; color: var(--muted); letter-spacing: .03em;
@@ -108,11 +127,20 @@
   <div class="counts" id="counts">loading…</div>
   <div class="bar"><i class="ig" id="bar-g" style="width:0"></i><i class="ib" id="bar-b" style="width:0"></i></div>
   <div class="note" id="note"></div>
+  <div class="filters" id="flow-filters">
+    <button id="w-continuous" aria-pressed="true">Start-to-finish</button>
+    <button id="w-spliced" aria-pressed="false">Spliced</button>
+    <button id="w-every" aria-pressed="false">Every take</button>
+  </div>
+  <div class="inferred" id="inferred"></div>
   <div class="filters">
     <button id="f-all" aria-pressed="true">All</button>
     <button id="f-retry" aria-pressed="false">Retried</button>
     <button id="f-todo" aria-pressed="false">Unjudged</button>
     <a id="export" href="/api/export">Export</a>
+  </div>
+  <div class="filters">
+    <button id="apply" style="flex:2">Add my Good takes to the course…</button>
   </div>
 </header>
 <main id="list"><div class="empty">loading…</div></main>
@@ -122,7 +150,10 @@
 // this on mobile data costs one JSON fetch and no audio at all. Lines are paged
 // PAGE at a time so the DOM stays small on a phone.
 const PAGE = 12;
-const state = { groups: [], verdicts: {}, filter: 'all', playing: null, shown: PAGE, total: 0 };
+// flow: which recording flow is being reviewed. 'continuous' is the default
+// because that is the only flow Kai asked to spend his ear on — the spliced
+// takes are one tap away, never gone.
+const state = { groups: [], verdicts: {}, filter: 'all', flow: 'continuous', playing: null, shown: PAGE, total: 0, meta: null };
 const audio = new Audio();
 audio.preload = 'none';
 audio.addEventListener('ended', () => setPlaying(null));
@@ -156,12 +187,27 @@ async function judge(uuid, verdict) {
   if (body.verdicts) { state.verdicts = body.verdicts; render(); }
 }
 
+// A take is in scope when it belongs to the flow being reviewed. Refused takes
+// (no provenance row, so no inferable flow) and the pinned defect are always in
+// scope — they are the two things that must not be filtered out of sight.
+function inScope(t, grp) {
+  if (grp && (grp.refused_group || grp.pinned)) return true;
+  if (state.flow === 'every') return true;
+  return t.flow === state.flow;
+}
+
+function scopedTakes() {
+  return state.groups.flatMap((g) => g.takes.filter((t) => inScope(t, g)));
+}
+
 function counts() {
+  const scoped = scopedTakes();
   let g = 0, b = 0;
-  for (const v of Object.values(state.verdicts)) {
-    if (v.verdict === 'good') g++; else if (v.verdict === 'bad') b++;
+  for (const t of scoped) {
+    const v = state.verdicts[t.uuid]?.verdict;
+    if (v === 'good') g++; else if (v === 'bad') b++;
   }
-  return { g, b, u: state.total - g - b };
+  return { g, b, u: scoped.length - g - b, total: scoped.length };
 }
 
 function esc(s) {
@@ -176,17 +222,35 @@ function stamp(iso) {
 }
 
 function visible() {
-  if (state.filter === 'retry') return state.groups.filter((g) => g.has_retry);
-  if (state.filter === 'todo') return state.groups.filter((g) => g.takes.some((t) => !state.verdicts[t.uuid]));
-  return state.groups;
+  // Flow first: a group with nothing in the flow being reviewed is not shown at
+  // all. Then the existing All / Retried / Unjudged filter, applied to the
+  // takes that survived.
+  let gs = state.groups.filter((g) => g.takes.some((t) => inScope(t, g)));
+  if (state.filter === 'retry') {
+    gs = gs.filter((g) => g.takes.filter((t) => inScope(t, g) && t.cadence !== 'slow').length > 1);
+  }
+  if (state.filter === 'todo') {
+    gs = gs.filter((g) => g.takes.some((t) => inScope(t, g) && !state.verdicts[t.uuid]));
+  }
+  return gs;
 }
 
 function renderTake(t, prevAt) {
   const v = state.verdicts[t.uuid]?.verdict || null;
   const gap = prevAt ? Math.round((new Date(t.recorded_at) - new Date(prevAt)) / 1000) : null;
+  // The flow tag is only worth the space when it is NOT the flow being
+  // reviewed — otherwise every take in a filtered list carries the same badge.
+  const flowTag = (state.flow === 'every' || t.flow !== state.flow)
+    ? `<span class="flow ${t.flow === 'spliced' ? 'spliced' : ''}">${
+        t.flow === 'continuous' ? 'start-to-finish (inferred)'
+        : t.flow === 'spliced' ? 'spliced (inferred)'
+        : t.refused ? 'refused before it was recorded — flow unknown'
+        : 'flow unknown'}</span>`
+    : '';
   const bits = [
     `<span>${esc(stamp(t.recorded_at))}</span>`,
     gap != null && gap >= 0 && gap < 3600 ? `<span>+${gap}s</span>` : '',
+    flowTag,
     t.cadence === 'slow' ? '<span class="slow">slow read — never used as a clip</span>' : '',
     t.is_live ? '<span class="live">▶ THIS IS WHAT LEARNERS HEAR</span>' : '',
     t.superseded ? '<span>marked superseded</span>' : '',
@@ -204,11 +268,13 @@ function renderTake(t, prevAt) {
 }
 
 function render() {
-  const { g, b, u } = counts();
+  const { g, b, u, total } = counts();
+  const scopeName = state.flow === 'continuous' ? 'start-to-finish takes'
+    : state.flow === 'spliced' ? 'spliced takes' : 'takes';
   document.getElementById('counts').innerHTML =
-    `<span>${g + b} of ${state.total} takes</span> · <span class="g">good ${g}</span> · <span class="b">bad ${b}</span> · <span class="u">to go ${u}</span>`;
-  document.getElementById('bar-g').style.width = (state.total ? (g / state.total) * 100 : 0) + '%';
-  document.getElementById('bar-b').style.width = (state.total ? (b / state.total) * 100 : 0) + '%';
+    `<span>${g + b} of ${total} ${scopeName}</span> · <span class="g">good ${g}</span> · <span class="b">bad ${b}</span> · <span class="u">to go ${u}</span>`;
+  document.getElementById('bar-g').style.width = (total ? (g / total) * 100 : 0) + '%';
+  document.getElementById('bar-b').style.width = (total ? (b / total) * 100 : 0) + '%';
 
   const list = document.getElementById('list');
   const all = visible();
@@ -216,24 +282,35 @@ function render() {
   if (!shown.length) { list.innerHTML = '<div class="empty">nothing here</div>'; return; }
 
   list.innerHTML = shown.map((grp, i) => {
+    const mine = grp.takes.filter((t) => inScope(t, grp));
+    const hiddenHere = grp.takes.length - mine.length;
     const flags = [
       grp.has_retry ? `<span class="flag">${grp.natural_count} takes of this line</span>` : '',
       grp.live_count === 0 ? '<span class="flag">not used in the course</span>' : '',
+      hiddenHere ? `<span>${hiddenHere} more in the other flow</span>` : '',
     ].filter(Boolean).join(' ');
     const diff = grp.disagree_count
       ? `<div class="slotdiff">The course slot this was filed into says something else: “${esc(grp.takes.find((t) => t.text_disagrees).slot_text)}”</div>`
       : '';
     let prevAt = null;
-    const takes = grp.takes.map((t) => { const h = renderTake(t, prevAt); prevAt = t.recorded_at; return h; }).join('');
+    const takes = mine.map((t) => { const h = renderTake(t, prevAt); prevAt = t.recorded_at; return h; }).join('');
+    // The refused group has no prompted line, because nothing was ever written
+    // down about what was being read. Say that instead of showing an empty slot.
+    const heading = grp.refused_group
+      ? `<div class="asked">refused before anything was recorded</div>
+         <div class="prompted">We do not know which line these were</div>
+         <div class="pinnote">These ${grp.takes.length} takes were rejected by the upload gate before a single word about them reached the database — no prompted line, no cadence, no session. They exist only as audio in the bucket. They are here so nothing Sascha recorded is invisible; there is nothing to point them at in the course, so a verdict on one is a note, not a swap.</div>`
+      : `<div class="asked">Sascha was asked to say</div>
+         <div class="prompted">${esc(grp.prompted_text)}</div>`;
     return `
-      <div class="grp ${grp.has_retry ? 'retry' : ''}">
+      <div class="grp ${grp.has_retry ? 'retry' : ''} ${grp.pinned ? 'pinned' : ''} ${grp.refused_group ? 'refused' : ''}">
         <div class="grp-meta">
           ${grp.seed != null ? `<span>seed ${esc(grp.seed)}</span>` : ''}
           ${flags}
           <span class="rank">#${i + 1}</span>
         </div>
-        <div class="asked">Sascha was asked to say</div>
-        <div class="prompted">${esc(grp.prompted_text)}</div>
+        ${grp.pinned ? `<div class="pinnote">${esc(grp.pinned_note || 'Known live defect.')}</div>` : ''}
+        ${heading}
         ${diff}
         ${takes}
       </div>`;
@@ -264,13 +341,69 @@ document.getElementById('f-all').onclick = () => setFilter('all');
 document.getElementById('f-retry').onclick = () => setFilter('retry');
 document.getElementById('f-todo').onclick = () => setFilter('todo');
 
+function setFlow(f) {
+  state.flow = f; state.shown = PAGE;
+  for (const [id, name] of [['w-continuous', 'continuous'], ['w-spliced', 'spliced'], ['w-every', 'every']]) {
+    document.getElementById(id).setAttribute('aria-pressed', String(f === name));
+  }
+  render();
+}
+document.getElementById('w-continuous').onclick = () => setFlow('continuous');
+document.getElementById('w-spliced').onclick = () => setFlow('spliced');
+document.getElementById('w-every').onclick = () => setFlow('every');
+
+// ---- adding Good takes to the course ----
+// Two steps on purpose: the plan is read back from the live database and shown
+// before anything is written, and only takes Kai has explicitly marked Good ever
+// appear in it.
+async function applyFlow() {
+  const btn = document.getElementById('apply');
+  btn.disabled = true; btn.textContent = 'checking…';
+  try {
+    const plan = await (await fetch('/api/apply-plan')).json();
+    btn.disabled = false; btn.textContent = 'Add my Good takes to the course…';
+    if (!plan.actions?.length) {
+      alert(`Nothing to add.\n\n${plan.summary || 'No Good verdict yet points at a take that is not already what learners hear.'}`);
+      return;
+    }
+    const lines = plan.actions.slice(0, 12).map((a) => `• ${a.prompted_text}`).join('\n');
+    const extra = plan.actions.length > 12 ? `\n…and ${plan.actions.length - 12} more` : '';
+    const skipped = plan.skipped?.length ? `\n\n${plan.skipped.length} judged take(s) cannot be applied: ${[...new Set(plan.skipped.map((s) => s.why))].join('; ')}.` : '';
+    if (!confirm(`Change ${plan.actions.length} line(s) in the live course so learners hear the take you marked Good:\n\n${lines}${extra}${skipped}\n\nNothing is deleted and every change is reversible.`)) return;
+    btn.disabled = true; btn.textContent = 'applying…';
+    const res = await fetch('/api/apply', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ confirm: true }) });
+    const out = await res.json();
+    btn.disabled = false; btn.textContent = 'Add my Good takes to the course…';
+    alert(out.error
+      ? `Nothing was changed: ${out.error}`
+      : `${out.applied} line(s) now play your Good take. ${out.failed || 0} failed.\n\nBatch ${out.batch} — reversible in one command.`);
+    location.reload();
+  } catch (e) {
+    btn.disabled = false; btn.textContent = 'Add my Good takes to the course…';
+    alert('Could not reach the server: ' + e.message);
+  }
+}
+document.getElementById('apply').onclick = applyFlow;
+
 fetch('/api/takes').then((r) => r.json()).then((d) => {
-  state.groups = d.groups; state.verdicts = d.verdicts || {}; state.total = d.total_takes;
+  state.groups = d.groups; state.verdicts = d.verdicts || {}; state.total = d.total_takes; state.meta = d;
   const retried = d.groups.filter((x) => x.has_retry).length;
+  const f = d.flow || {};
+  document.getElementById('w-continuous').textContent = `Start-to-finish (${f.continuous ?? '?'})`;
+  document.getElementById('w-spliced').textContent = `Spliced (${f.spliced ?? '?'})`;
+  document.getElementById('w-every').textContent = `Every take (${d.total_takes})`;
+  document.getElementById('inferred').innerHTML =
+    `<b>The start-to-finish / spliced split is INFERRED, not recorded.</b> Nothing in the database says which flow produced a take — `
+    + `there is no mode column, and the reading order Sascha chose is never sent with the upload. `
+    + `${f.continuous ?? '?'} takes are read as start-to-finish and ${f.spliced ?? '?'} as spliced. Confidence: high, but it is a deduction.`
+    + `<details><summary>the exact rule, and why I believe it</summary>`
+    + `<div>${esc(f.rule || '')}</div><div style="margin-top:4px">${esc(f.basis || '')}</div>`
+    + `<div style="margin-top:4px">${esc(f.confidence || '')}</div></details>`;
   document.getElementById('note').textContent =
-    `${d.total_takes} takes over ${d.total_lines} lines — ${d.total_takes - d.live_takes} of them are invisible from the course side. `
+    `${d.total_takes} takes over ${d.total_lines} lines — ${d.total_takes - d.live_takes} of them are invisible from the course side`
+    + `${d.refused_takes ? `, and ${d.refused_takes} more were refused before the database heard about them at all` : ''}. `
     + `Nothing here was ever accepted: there is no acceptance flag in the database, so your ear is the only gate. `
-    + `${retried} lines were recorded more than once and come first — that is where a good read followed by a flubbed retry hides.`;
+    + `${retried} lines were recorded more than once — that is where a good read followed by a flubbed retry hides.`;
   render();
 });
 </script>
