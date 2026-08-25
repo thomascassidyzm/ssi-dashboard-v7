@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Austrian German — listen</title>
+<style>
+  :root {
+    --bg: #f6f5f2; --card: #ffffff; --ink: #1d1d1f; --muted: #8a8a8e;
+    --line: #e4e2dd; --real: #2e9e5b; --wrong: #d64545; --accent: #3b6fe0;
+    --warn: #b06a00;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #17171a; --card: #212126; --ink: #ececf0; --muted: #8f8f96;
+      --line: #313138; --real: #3fb56e; --wrong: #e05c5c; --accent: #6c96f0;
+      --warn: #e0a458;
+    }
+  }
+  * { box-sizing: border-box; margin: 0; }
+  html, body { max-width: 100%; overflow-x: hidden; }
+  body {
+    background: var(--bg); color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    -webkit-text-size-adjust: 100%;
+  }
+  header {
+    position: sticky; top: 0; z-index: 5;
+    background: var(--bg); border-bottom: 1px solid var(--line);
+    padding: 10px 12px; display: flex; flex-direction: column; gap: 8px;
+  }
+  .counts { font-size: 14px; font-weight: 600; font-variant-numeric: tabular-nums; }
+  .counts .r { color: var(--real); }
+  .counts .w { color: var(--wrong); }
+  .counts .u { color: var(--muted); }
+  .bar { height: 4px; background: var(--line); border-radius: 2px; overflow: hidden; display: flex; }
+  .bar i { display: block; height: 100%; }
+  .bar .ir { background: var(--real); }
+  .bar .iw { background: var(--wrong); }
+  .note { font-size: 11px; color: var(--warn); line-height: 1.4; }
+  .filters { display: flex; gap: 8px; }
+  .filters button, .filters a {
+    flex: 1; min-height: 44px; font: inherit; font-size: 14px;
+    color: var(--ink); background: var(--card); text-decoration: none;
+    border: 1px solid var(--line); border-radius: 10px; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .filters button[aria-pressed="true"] { border-color: var(--accent); color: var(--accent); font-weight: 600; }
+
+  main { padding: 10px 12px 40px; display: flex; flex-direction: column; gap: 10px; }
+  .row {
+    background: var(--card); border: 1px solid var(--line); border-radius: 14px;
+    padding: 12px; display: flex; flex-direction: column; gap: 8px;
+  }
+  .meta {
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    font-size: 11px; color: var(--muted); letter-spacing: .03em;
+  }
+  .meta .rank { margin-left: auto; opacity: .55; font-variant-numeric: tabular-nums; }
+  .meta .flag { color: var(--warn); font-weight: 700; }
+  .text { font-size: 20px; font-weight: 600; line-height: 1.35; overflow-wrap: anywhere; }
+  .why { font-size: 12px; color: var(--warn); line-height: 1.4; overflow-wrap: anywhere; }
+  .decode { font-size: 12px; color: var(--muted); line-height: 1.4; overflow-wrap: anywhere; font-style: italic; }
+
+  .btns { display: flex; gap: 8px; }
+  .btns button {
+    min-height: 50px; font: inherit; font-size: 15px; font-weight: 600;
+    color: var(--ink); background: transparent;
+    border: 1px solid var(--line); border-radius: 12px; cursor: pointer;
+    display: flex; align-items: center; justify-content: center; gap: 6px;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .btns .play { flex: 1.3; }
+  .btns .play.playing { border-color: var(--accent); color: var(--accent); }
+  .btns .v { flex: 1; }
+  .btns .v.real[aria-pressed="true"]  { background: var(--real);  border-color: var(--real);  color: #fff; }
+  .btns .v.wrong[aria-pressed="true"] { background: var(--wrong); border-color: var(--wrong); color: #fff; }
+
+  .row.v-real  { border-left: 4px solid var(--real); }
+  .row.v-wrong { border-left: 4px solid var(--wrong); }
+
+  .more { text-align: center; padding: 14px 0 30px; }
+  .more button {
+    min-height: 48px; padding: 0 22px; font: inherit; font-size: 15px; font-weight: 600;
+    color: var(--ink); background: var(--card);
+    border: 1px solid var(--line); border-radius: 12px; cursor: pointer;
+  }
+  .empty { text-align: center; color: var(--muted); padding: 40px 0; font-size: 14px; }
+</style>
+</head>
+<body>
+<header>
+  <div class="counts" id="counts">loading…</div>
+  <div class="bar"><i class="ir" id="bar-r" style="width:0"></i><i class="iw" id="bar-w" style="width:0"></i></div>
+  <div class="note" id="note"></div>
+  <div class="filters">
+    <button id="f-all" aria-pressed="true">All</button>
+    <button id="f-todo" aria-pressed="false">Unjudged</button>
+    <button id="f-wrong" aria-pressed="false">Wrong</button>
+    <a id="export" href="/api/export">Export</a>
+  </div>
+</header>
+<main id="list"><div class="empty">loading…</div></main>
+
+<script>
+// NOTHING IS PRELOADED. The <audio> element is created empty and its src is set
+// only when Kai taps Play, so opening the page on mobile data costs one small
+// JSON fetch and no audio at all. The list itself is paged (PAGE at a time) so
+// the DOM stays small on a phone.
+const PAGE = 25;
+const state = { clips: [], verdicts: {}, filter: 'all', playing: null, shown: PAGE };
+const audio = new Audio();
+audio.preload = 'none';
+audio.addEventListener('ended', () => setPlaying(null));
+
+function setPlaying(id) {
+  state.playing = id;
+  document.querySelectorAll('.play').forEach((b) => b.classList.toggle('playing', b.dataset.id === id));
+}
+
+function play(id) {
+  if (state.playing === id) { audio.pause(); audio.currentTime = 0; setPlaying(null); return; }
+  audio.pause();
+  audio.src = '/api/audio/' + id;
+  audio.currentTime = 0;
+  audio.play().then(() => setPlaying(id)).catch(() => setPlaying(null));
+}
+
+async function judge(id, verdict) {
+  const current = state.verdicts[id]?.verdict;
+  const next = current === verdict ? null : verdict;   // tapping the same verdict clears it
+  // Optimistic, so the tap feels instant on a slow phone connection; the server
+  // response is authoritative and overwrites it a moment later.
+  if (next == null) delete state.verdicts[id];
+  else state.verdicts[id] = { verdict: next, at: new Date().toISOString() };
+  render();
+  const res = await fetch('/api/verdict', {
+    method: 'POST', headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ id, verdict: next }),
+  });
+  const body = await res.json();
+  if (body.verdicts) { state.verdicts = body.verdicts; render(); }
+}
+
+function counts() {
+  let r = 0, w = 0;
+  for (const clip of state.clips) {
+    const v = state.verdicts[clip.id]?.verdict;
+    if (v === 'real') r++; else if (v === 'wrong') w++;
+  }
+  return { r, w, u: state.clips.length - r - w, total: state.clips.length };
+}
+
+function esc(s) {
+  return String(s ?? '').replace(/[&<>"]/g, (ch) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[ch]));
+}
+
+function visible() {
+  if (state.filter === 'todo') return state.clips.filter((x) => !state.verdicts[x.id]);
+  if (state.filter === 'wrong') return state.clips.filter((x) => state.verdicts[x.id]?.verdict === 'wrong');
+  return state.clips;
+}
+
+function render() {
+  const { r, w, u, total } = counts();
+  document.getElementById('counts').innerHTML =
+    `<span>${r + w} of ${total}</span> · <span class="r">real ${r}</span> · <span class="w">wrong ${w}</span> · <span class="u">to go ${u}</span>`;
+  document.getElementById('bar-r').style.width = (total ? (r / total) * 100 : 0) + '%';
+  document.getElementById('bar-w').style.width = (total ? (w / total) * 100 : 0) + '%';
+
+  const list = document.getElementById('list');
+  const all = visible();
+  const shown = all.slice(0, state.shown);
+
+  if (!shown.length) { list.innerHTML = '<div class="empty">nothing here</div>'; return; }
+
+  list.innerHTML = shown.map((clip) => {
+    const v = state.verdicts[clip.id]?.verdict || null;
+    const flag = clip.take_count > 1 ? `<span class="flag">${esc(clip.take_count)} takes</span>` : '';
+    const why = clip.why ? `<div class="why">⚠ ${esc(clip.why)}</div>` : '';
+    const decode = clip.asr && clip.asr.decode
+      ? `<div class="decode">machine heard: ${esc(clip.asr.decode)}</div>` : '';
+    return `
+      <div class="row ${v ? 'v-' + v : ''}">
+        <div class="meta">
+          ${clip.seed != null ? `<span>seed ${esc(clip.seed)}</span>` : ''}
+          ${flag}
+          <span class="rank">#${esc(clip.rank)}</span>
+        </div>
+        <div class="text">${esc(clip.text)}</div>
+        ${why}${decode}
+        <div class="btns">
+          <button class="play" data-id="${clip.id}" data-act="play">▶ Play</button>
+          <button class="v real"  data-id="${clip.id}" data-act="real"  aria-pressed="${v === 'real'}">Real</button>
+          <button class="v wrong" data-id="${clip.id}" data-act="wrong" aria-pressed="${v === 'wrong'}">Wrong</button>
+        </div>
+      </div>`;
+  }).join('');
+
+  if (all.length > shown.length) {
+    list.insertAdjacentHTML('beforeend',
+      `<div class="more"><button id="more">Show ${Math.min(PAGE, all.length - shown.length)} more (${shown.length}/${all.length})</button></div>`);
+    document.getElementById('more').onclick = () => { state.shown += PAGE; render(); };
+  }
+  setPlaying(state.playing);
+}
+
+document.getElementById('list').addEventListener('click', (e) => {
+  const b = e.target.closest('button'); if (!b || !b.dataset.act) return;
+  if (b.dataset.act === 'play') play(b.dataset.id);
+  else judge(b.dataset.id, b.dataset.act);
+});
+
+function setFilter(f) {
+  state.filter = f;
+  state.shown = PAGE;
+  for (const [id, name] of [['f-all', 'all'], ['f-todo', 'todo'], ['f-wrong', 'wrong']]) {
+    document.getElementById(id).setAttribute('aria-pressed', String(f === name));
+  }
+  render();
+}
+document.getElementById('f-all').onclick = () => setFilter('all');
+document.getElementById('f-todo').onclick = () => setFilter('todo');
+document.getElementById('f-wrong').onclick = () => setFilter('wrong');
+
+fetch('/api/clips').then((r) => r.json()).then((d) => {
+  state.clips = d.clips; state.verdicts = d.verdicts || {};
+  const bits = [];
+  // Said out loud, not implied: there is no acceptance record to fall back on.
+  if (d.no_acceptance_record) bits.push(`No take in this course was ever accepted — the recorder's Approve tick is never saved. All ${d.clips.length} are unaccepted, so your ear is the only gate.`);
+  bits.push(d.asr_ranked
+    ? 'Riskiest first: suspected text/audio mismatch, then lines with several takes.'
+    : 'Riskiest first: lines with several takes. (No machine mismatch ranking loaded.)');
+  document.getElementById('note').textContent = bits.join(' ');
+  render();
+});
+</script>
+</body>
+</html>
