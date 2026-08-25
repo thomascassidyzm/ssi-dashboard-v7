@@ -66,7 +66,27 @@ And for "is not / was not" before a noun, it uses **kì í ṣe**:
 
 So we count three shapes — plain **kò**, future **kò ní**, and **kì í ṣe** before a noun — and past versus present is not one of the things they separate.
 
-**Confidence: high** that Yoruba does not split negation into past and present the way Welsh does. **Medium** on our claim that **kò ní** is specifically the future one rather than a "will not / would not" that also does other work.
+**Confidence: high** that Yoruba does not split negation into past and present the way Welsh does.
+
+### A trap we nearly fell into, and what we think the rule is
+
+We first wrote that **kò ní** is simply "will not". Then we counted every one of its 21 appearances, and found it doing two completely different jobs:
+
+> "I won't be able to be there next month." → **Mi ò ní lè wà níbẹ̀…**  *(will not)*
+> "We didn't have anywhere to live at the time." → **A kò ní ibì láti gbé ní àkókò yẹn**  *(did not have)*
+
+Those look identical and mean quite different things. **What sorts them, with no exceptions in 21 sentences, is what comes next:**
+
+| After **kò ní** comes… | Meaning | Sentences |
+|---|---|---|
+| a **verb** (*lè, jẹ́, gbọ́, yan, gbẹ́kẹ̀lé*) | **will not / would not** | 10 |
+| a **noun** (*àkókò, owó, ibì, sùúrù, èrò*) | **does not / did not have** | 11 |
+
+We think the second **ní** there is not the same word at all — it is the ordinary verb "to have", and the resemblance is a coincidence of spelling.
+
+**Confidence: medium-high** on that rule. It is clean in our sentences, but 21 examples is not a grammar.
+
+**A2 below is really asking you to confirm this**, and it matters to us beyond grammar: we cannot teach *kò ní* as one piece if it is two.
 
 **What we rejected:** we considered that the past sentences might simply be badly translated and ought to carry some past marker. We rejected that because it happens in dozens of sentences written at different times, not in a stray few, and because we could not find any Yoruba past-tense marker anywhere in our 668 sentences.
 
@@ -76,7 +96,9 @@ So we count three shapes — plain **kò**, future **kò ní**, and **kì í ṣ
 
 **A1.** When you hear **A kò fẹ́ láti jẹ́ kí ẹnikẹ́ni gbọ́ òótọ́** with no other clue, do you hear "we don't want" or "we didn't want", or genuinely either? If a speaker needed to force the past reading, what would they add — a word like *nígbà náà* ("then / at that time"), or something else?
 
-**A2.** Is **kò ní** really the "will not / would not" form? Give us the plain negative future of *"I will speak Yoruba"* in your own words.
+**A2.** Is the **kò ní** rule in the table above right — verb after it means "will not", noun after it means "hasn't got"? And give us the plain negative future of *"I will speak Yoruba"* in your own words.
+
+**A4. A caution about our own two examples above.** The two sentences we used to show that negation ignores tense both contain **fẹ́ láti** — and in question 3 we argue that *fẹ́ láti* is itself probably wrong. If you agree with us there, these two sentences will be rewritten as **A kò fẹ́ dá ìtàn náà dúró** and **A kò fẹ́ jẹ́ kí ẹnikẹ́ni gbọ́ òótọ́**. The point about tense holds either way — the negative opening is unchanged — but we would rather point this out than have you notice we were leaning on sentences we had already called into question.
 
 ### One extra thing we noticed and are unsure about
 
@@ -155,18 +177,21 @@ What we have written: **Mi ò rò pé mo lè rántí gbogbo gbólóhùn náà**
 
 **We think this is wrong, and we think it says "I don't think I can remember…", which is a stronger and more definite claim.** We recommend changing it.
 
-This is not a guess from the shape of the words alone. Our own Yoruba uses **Mi ò rò pé** for "I don't think" in more than a dozen other sentences:
+This is not a guess from the shape of the words alone. The phrase **Mi ò rò pé** appears in exactly eight sentences. In **five** of them it means "I don't think":
 
 > "No I don't think it's very important." → **Rárá mi ò rò pé ó ṣe pàtàkì púpọ̀**
 > "I don't think that she can open the door." → **Mi ò rò pé ó lè ṣí ìlẹ̀kùn**
+> "No I didn't think she was right." → **Rárá mi ò rò pé ó tọ́**
 
-And it uses **completely different words** for "I'm not sure" elsewhere:
+The **other three** are the ones we are querying — they are the only places the same phrase is asked to mean "I'm not sure". Meanwhile the corpus uses **completely different words** for "I'm not sure" elsewhere:
 
 > "I'm not sure when I'll be ready." → **Mi ò dájú nígbà tí mo máa ṣetán**
 > "But I'm not sure if it's true." → **Ṣùgbọ́n mi ò dá mi lójú bóyá ó jẹ́ òótọ́**
 > "Nobody was sure how to answer the question." → **Kò sí ẹni tí ó dá lójú bí a ṣe máa dáhùn ìbéèrè náà**
 
 So the same set of sentences uses *rò pé* for thinking and *dájú / dá…lójú* for being sure — except in three places, where "I'm not sure" was written as *Mi ò rò pé*. We read that as three slips, not as a Yoruba fact.
+
+**Being fair about the size of the evidence:** five against three is a lean, not a landslide. The reason we still say high confidence is not the count — it is that the corpus has a perfectly good, separate way of saying "I'm not sure" (*dájú*, *dá…lójú*) and uses it correctly in five other places. If *Mi ò rò pé* really covered both meanings, we would not expect that second set to exist at all.
 
 **Confidence: high** that these three are wrong. **Medium** on exactly what should replace them.
 
@@ -181,7 +206,7 @@ So the same set of sentences uses *rò pé* for thinking and *dájú / dá…ló
 - **1b.** Give us the plain, ordinary way to say **"I'm not sure if I can remember the whole sentence."** Whatever you say, we will use.
 - **1c.** Is **Mi ò dá mi lójú** natural, or should it be **Kò dá mi lójú**?
 
-*(This affects three sentences directly, and it is also the very first negative sentence a learner ever meets — so it matters more than three sentences' worth.)*
+*(This is not just three sentences. **Mi ò rò pé** has already been made into a taught building-block, labelled "I'm not sure if", in **both** courses — it is the very first negative thing a learner meets, and it is meant to be reused. If you tell us it means "I don't think", we are not editing three sentences; we are pulling a piece out of the foundations of two courses. Which we will do. We would just rather know now than later.)*
 
 ---
 
@@ -197,7 +222,7 @@ Our doubt: we can find *kọ* used elsewhere in our own sentences for **"write"*
 
 > "He wanted to write a letter to his friend last week." → **Ó fẹ́ kọ lẹ́tà sí ọ̀rẹ́ rẹ̀ ní ọ̀sẹ̀ tó kọjá**
 
-— and we cannot find any support for it meaning "practise". It is used that way in four of our sentences, always as **kọ sísọ** for "practise speaking", so it was clearly a deliberate choice by whoever wrote them; we just do not think it is right.
+— and we cannot find any support for it meaning "practise". It is used that way in three of our sentences, always as **kọ sísọ** for "practise speaking", so it looks like a deliberate choice by whoever wrote them; we just do not think it is right.
 
 **Confidence: high** on *kọ́* = learn. **Medium** that *kọ* = practise is wrong — deliberate and repeated is not nothing, and we may be missing a real usage.
 
@@ -379,10 +404,9 @@ The full phrase **lóòrèkóòrè tó bá ṣeé ṣe** means "as often as poss
 
 ### Our answer
 
-**Yes — and our own sentences already prove it, which is why this is our most confident answer on the page.** *tó bá ṣeé ṣe* attaches to four different things across the corpus:
+**Yes — and our own sentences already prove it, which is why this is our most confident answer on the page.** Setting aside the *lóòrèkóòrè* sentence it was split from (which would be circular), *tó bá ṣeé ṣe* attaches to **three** other things across the corpus:
 
-> "as soon as you can" → **ní kíákíá tó bá ṣeé ṣe**
-> "as quickly as possible" → **ní kíákíá tó bá ṣeé ṣe**
+> "as soon as you can" / "as quickly as possible" → **ní kíákíá tó bá ṣeé ṣe**  *(two sentences, same Yoruba)*
 > "as much as possible" → **iye tí ó pọ̀ tó bá ṣeé ṣe**
 > "for as long as possible" → **A yẹ kí a dakẹ́ tó bá ṣeé ṣe**
 
@@ -390,7 +414,7 @@ That last one attaches it straight to a verb with no adverb in between, which is
 
 **Confidence: high.**
 
-**What we want from you:** just a sanity check that all four of those sound like real Yoruba.
+**What we want from you:** just a sanity check that all three of those sound like real Yoruba.
 
 ---
 
@@ -401,6 +425,8 @@ We put it after the thing it describes: **èdè Yorùbá díẹ̀** ("a little Y
 ### Our answer
 
 **Yes, after — high confidence.** It is used that way in 26 sentences with no exceptions: *àkókò díẹ̀* (a little time), *ọ̀rọ̀ díẹ̀* (a few words), *ìṣẹ́jú díẹ̀* (a few minutes), *ìgbà díẹ̀* (a while).
+
+*(There is also a doubled form **díẹ̀díẹ̀** in three sentences, which we take to be a different word meaning "slowly" and have not counted here. **7c. Is that right — is *díẹ̀díẹ̀* "slowly", and unrelated to *díẹ̀* "a little"?**)*
 
 **But we want you to look at one sentence in particular**, because it looks garbled to us:
 
@@ -480,22 +506,35 @@ So *sí* is not "stuck at the end"; it follows *túmọ̀* directly, and in *ohu
 
 We previously told people this course speaks to the listener in the familiar form all the way through. **That was wrong, and we are glad we checked.** The later material already switches to the respectful form:
 
-> "Do you want, sir?" → **Ṣé ẹ fẹ́, ọ̀gá?**
-> "What do you think, madam?" → **Kí ni ẹ rò, ìyá àgbà?**
-> "I can help you, madam." → **Mo lè ràn yín lọ́wọ́, ìyá àgbà**
+> "Do you want sir?" → **Ṣé ẹ fẹ́, ọ̀gá?**
+> "What do you think madam?" → **Kí ni ẹ rò, ìyá àgbà?**
+> "I can help you madam" → **Mo lè ràn yín lọ́wọ́, ìyá àgbà**
 
-So there is already a respectful section, using **ẹ** and **yín** with *ọ̀gá* and *ìyá àgbà*. There is also a "you all" section using **gbogbo yín**. The respectful forms sit almost entirely in one late block, with three earlier one-offs; the familiar *o* and *rẹ* carry the other 150-odd sentences.
+So there is already a respectful section, using **ẹ** and **yín** with *ọ̀gá* and *ìyá àgbà*. There is also a "you all" section using **gbogbo yín**.
+
+### And a second correction, to what we wrote an hour ago
+
+We then said the respectful forms live in one late block near the end. **That is also wrong.** They appear in 37 sentences, and the earliest is not near the end at all — it is about a tenth of the way in:
+
+> "Thank you very much, but I've got more to learn." → **Ẹ ṣé púpọ̀, ṣùgbọ́n mo ní síi láti kọ́**
+
+**Ẹ ṣé** — the polite "thank you" we ask about in 12c below — turns up early and then again in the middle, well before the dedicated respectful block. The same is true of "you all": it appears once on its own long before the block that teaches it.
+
+So the real pattern is **not** a clean switch from familiar to respectful. It is familiar throughout, with respectful forms leaking in early and unannounced wherever politeness happens to be needed, and then a concentrated block of them at the end.
+
+**We think that leakage is a problem** — a learner meets **Ẹ ṣé** as a fixed phrase long before anything explains that *ẹ* is a different "you". But it may be exactly right, because "thank you" in Yoruba may simply *be* polite by default and not really be a register choice at all.
 
 **One more thing we noticed while counting:** there is **no negative command anywhere** in the 668 sentences — nothing of the shape "don't do that!". So a learner finishing this course would never have been taught how to tell somebody not to do something. **12d. Is that a gap worth filling, and how would you say "don't worry" or "don't stop"?**
 
 ### Our answer
 
-**We think this is the right structure — familiar first, respectful introduced later as its own thing — and our question to you is only about the timing and the wording.**
+**We no longer think there is a deliberate structure here at all — we think the respectful forms arrived wherever a sentence happened to need them, and were then also taught properly at the end.**
 
-**Confidence: medium** on the structure being right. This is a judgement call about the course, and we would genuinely rather it were yours than ours.
+**Confidence: medium.** This is a judgement call about the course, and we would genuinely rather it were yours than ours.
 
 **What we want from you:**
 - **12a.** For adults learning Yoruba, often to speak with family and with elders, is familiar-first-then-respectful the right order? Or should respectful come much earlier, given how quickly a learner might need it?
+- **12e.** Is **Ẹ ṣé** simply *the* way to say thank you regardless of who you are talking to — in which case its early appearance is fine and we should stop worrying — or is it a genuinely respectful form that a learner should be told about before meeting it?
 - **12b.** Are **ọ̀gá** and **ìyá àgbà** the right ways to address a man and a woman respectfully in the situations a learner will meet? *ìyá àgbà* looks to us like it might specifically mean an older woman or a grandmother rather than a general polite "madam" — is that right?
 - **12c.** Is **ẹ ṣé** the ordinary polite "thank you"?
 
@@ -513,7 +552,7 @@ Most of our sentences write "know" as **mọ̀**, with the low-tone mark:
 
 > "I don't know those people." → **Mi ò mọ̀ àwọn ènìyàn wọ̀nyẹn**
 
-But nine of them write it as **mọ**, with no tone mark at all — and eight of those nine are clustered together in one block of sentences:
+But nine of them write it as **mọ**, with no tone mark at all — and seven of those nine fall into two tight groups, with two isolated stragglers:
 
 > "I know a young man who wants to work with you." → **Mo mọ ọkùnrin ọ̀dọ́ kan tí ó fẹ́ ṣiṣẹ́ pẹ̀lú rẹ**
 > "I don't need to know everything." → **Mi ò nílò láti mọ gbogbo nǹkan**
@@ -524,9 +563,9 @@ And one sentence uses **both**, in the same breath:
 
 ### Our answer
 
-**We think the nine without the mark are simply missing a tone mark, and should all be *mọ̀*.** The clustering is what convinces us — they look like one batch written in a hurry rather than nine separate decisions.
+**We think the nine without the mark are simply missing a tone mark, and should all be *mọ̀*.** The grouping is what convinces us — most of them look like a batch written in one sitting rather than nine separate decisions.
 
-**Confidence: medium-high.**
+**Confidence: medium.** We have marked this down from where we first had it. The grouping is looser than we first said, and two of the nine sit entirely on their own, which weakens the "one careless batch" story a little.
 
 **Why this matters more than nine sentences:** we had been telling ourselves that the tone marks in this material were all present and correct. Nine sentences say "present" and "correct" are not the same thing, and that changes how carefully we need someone to read the rest.
 
@@ -568,6 +607,8 @@ Sentences numbered 68 and 194 in our set are word-for-word the same in both Engl
 We would rather be blunt about the edges of this than let it look more complete than it is.
 
 **Nobody involved in producing this document speaks Yoruba.** Every answer above is inference from the written sentences plus general knowledge. The confidence ratings are our honest estimate of our own reliability, not a measurement of anything.
+
+**We had someone check our own counting, and it caught us out.** Several numbers in the first version of this page were wrong — we said a phrase appeared "more than a dozen" times when it appears eight; we said the respectful forms began near the end of the course when they begin a tenth of the way in; we miscounted three things as four. All are corrected above, and we have lowered our confidence in two places as a result. We mention it because it tells you something useful about how much weight to put on the rest: our reasoning has been better than our arithmetic.
 
 **We have only looked at the written words.** We have not heard any of these sentences spoken. Anything that depends on how a thing *sounds* — rhythm, emphasis, whether a phrase is stiff or warm — is completely outside what we can judge.
 
