@@ -80,17 +80,28 @@ question for you, not a coin toss.
 **Nothing has been applied.** Your Good verdicts so far are all already what
 learners hear, so the plan is empty and says so.
 
-## The 31 refused takes are in
+## The takes with no database row — and a correction
 
-Refused by the upload gate before a single row was written — I checked against
-the live database rather than trusting the claim: **zero provenance rows, zero
-course rows**, all 31. Nothing anywhere can say which line they were, so they get
-one group saying exactly that. 30 were still `raw/*.webm`, which no iPhone will
-play, so those are transcoded once and cached; all 31 verified streaming. No
-speech generated — a container change on bytes we already had.
+I had folded 31 orphan objects into this page on the strength of the upload
+window alone. **Five of them are Welsh.** Job #628 read the thing I never did:
+each S3 object carries its own `coursecode` in object metadata. 26 are
+`deu_at_for_eng`; 5 are `cym_n_for_eng`. Left as they were, you would have been
+listening to Welsh takes inside an Austrian German review. They are now excluded
+by coursecode and named on the page rather than silently dropped.
 
-Each shows the one thing it does carry: whether its object landed inside a
-recorded sitting's window, and which. A fact about the upload, said as one.
+I verified that independently before changing anything, and it holds.
+
+**And one of the 26 is not an orphan at all.** `46D88EDD` has a mastered copy
+whose metadata names its course line outright — `deu_at_for_eng:S0009L01U02`, *"i
+red heit mit wem aundern"*. It now sits in that line's group beside the take
+learners actually hear, as a candidate you can rule on and bind, badged as having
+no database record with its line coming from the audio file itself.
+
+That leaves **25 true orphans**: their files name the course but not the line, so
+nothing can say what they were. They keep their own group saying exactly that.
+30 of the objects were still `raw/*.webm`, which no iPhone will play, so those are
+transcoded once and cached. No speech generated — a container change on bytes we
+already had.
 
 ## The one line pinned for your ear
 
