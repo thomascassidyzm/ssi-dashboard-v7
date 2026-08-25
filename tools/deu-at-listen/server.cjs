@@ -232,11 +232,56 @@ app.post('/api/apply', async (req, res) => {
   }
 })
 
+/**
+ * The refused takes were never mastered, so most of them are still in the
+ * browser container the phone recorded them in (raw/*.webm). Handing those to
+ * an iPhone with a Content-Type of audio/mpeg gets silence and no error — iOS
+ * Safari plays no WebM at all. So a non-mp3 take is transcoded once, cached on
+ * disk, and served from there.
+ *
+ * ffmpeg only. NOTHING here generates speech — it is a container change on bytes
+ * Sascha already recorded, and it costs nothing.
+ */
+const TRANSCODE_DIR = path.join(DATA_DIR, 'transcoded')
+
+async function transcodedPath(take) {
+  const dest = path.join(TRANSCODE_DIR, `${take.uuid}.mp3`)
+  if (fs.existsSync(dest) && fs.statSync(dest).size > 0) return dest
+  fs.mkdirSync(TRANSCODE_DIR, { recursive: true })
+  const obj = await s3.send(new GetObjectCommand({ Bucket: process.env.S3_BUCKET, Key: take.s3_key }))
+  const src = path.join(TRANSCODE_DIR, `${take.uuid}.src`)
+  await new Promise((resolve, reject) => {
+    const w = fs.createWriteStream(src)
+    obj.Body.pipe(w).on('finish', resolve).on('error', reject)
+  })
+  const tmp = dest + '.tmp'
+  // -f mp3 explicitly: the output is written to a .tmp name first (so a killed
+  // transcode never leaves a half file that later reads as cached), and ffmpeg
+  // cannot guess a container from that extension.
+  execFileSync('ffmpeg', ['-y', '-i', src, '-c:a', 'libmp3lame', '-b:a', '128k', '-f', 'mp3', tmp], { stdio: 'pipe' })
+  fs.renameSync(tmp, dest)
+  fs.unlinkSync(src)
+  return dest
+}
+
 // Only manifest uuids resolve to a key — an arbitrary S3 key is never fetchable.
 app.get('/api/audio/:uuid', async (req, res) => {
   const take = manifestState.BY_UUID.get(req.params.uuid)
   if (!take || !take.s3_key) return res.status(404).json({ error: 'unknown take' })
   const range = req.headers.range
+
+  if (!take.s3_key.endsWith('.mp3')) {
+    try {
+      const file = await transcodedPath(take)
+      res.set('Content-Type', 'audio/mpeg')
+      res.set('Cache-Control', 'no-store')
+      res.set('Content-Length', String(fs.statSync(file).size))
+      return fs.createReadStream(file).pipe(res)
+    } catch (err) {
+      return res.status(502).json({ error: `could not transcode ${take.s3_key}: ${err.message}` })
+    }
+  }
+
   try {
     const out = await s3.send(new GetObjectCommand({
       Bucket: process.env.S3_BUCKET,
@@ -256,6 +301,6 @@ app.get('/api/audio/:uuid', async (req, res) => {
 })
 
 app.listen(PORT, () => {
-  console.log(`deu_at_for_eng takes — ${TAKES.length} takes over ${GROUPS.length} lines → http://localhost:${PORT}`)
+  console.log(`deu_at_for_eng takes — ${manifestState.TAKES.length} takes over ${manifestState.GROUPS.length} lines → http://localhost:${PORT}`)
   console.log(`  data dir: ${DATA_DIR}`)
 })
