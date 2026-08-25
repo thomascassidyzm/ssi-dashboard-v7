@@ -251,6 +251,12 @@ function renderTake(t, prevAt) {
     `<span>${esc(stamp(t.recorded_at))}</span>`,
     gap != null && gap >= 0 && gap < 3600 ? `<span>+${gap}s</span>` : '',
     flowTag,
+    // For a refused take the only clue about where it came from is WHEN it
+    // landed in the bucket. Stated as the timing fact it is, never as a flow.
+    t.refused && t.session
+      ? `<span class="flow">uploaded ${/continuous/.test(t.session) ? 'during a start-to-finish session'
+          : /spliced/.test(t.session) ? 'during a spliced session' : 'outside every recorded session'}</span>`
+      : '',
     t.cadence === 'slow' ? '<span class="slow">slow read — never used as a clip</span>' : '',
     t.is_live ? '<span class="live">▶ THIS IS WHAT LEARNERS HEAR</span>' : '',
     t.superseded ? '<span>marked superseded</span>' : '',
@@ -286,8 +292,10 @@ function render() {
     const mine = grp.takes.filter((t) => inScope(t, grp));
     const hiddenHere = grp.takes.length - mine.length;
     const flags = [
-      grp.has_retry ? `<span class="flag">${grp.natural_count} takes of this line</span>` : '',
-      grp.live_count === 0 ? '<span class="flag">not used in the course</span>' : '',
+      // "takes of this line" is meaningless for the refused group: they are not
+      // a line, they are 31 orphans.
+      grp.has_retry && !grp.refused_group ? `<span class="flag">${grp.natural_count} takes of this line</span>` : '',
+      grp.live_count === 0 && !grp.refused_group ? '<span class="flag">not used in the course</span>' : '',
       hiddenHere ? `<span>${hiddenHere} more in the other flow</span>` : '',
     ].filter(Boolean).join(' ');
     const diff = grp.disagree_count
