@@ -1,4 +1,4 @@
-# Four phrases, 170 splice candidates — cut without a transcript
+# Four phrases, 251 splice candidates — cut without a transcript
 
 **Course:** `deu_at_for_eng`. **Recordist:** Sascha, who uses they/them.
 **The page (this is the one URL):**
@@ -70,6 +70,43 @@ is the whole principle here: where the material is ambiguous, Kai gets versions,
   rejected them.
 - **whisper is still used for one thing**: checking the finished clips after the fact, as an
   advisory. It is not trusted for what the audio says, only used to spot gross errors.
+
+## The long phrase, in two halves
+
+Kai, 2026-08-25: *"the long phrase didn't work out. Let me pick the two parts separately."*
+
+Glued whole, the join is one decision buried inside seven words. Split, each half is judged
+on its own and the two winners are glued afterwards. **Two ways to divide it are offered**,
+because the recordings are lopsided:
+
+| half | candidates | pairs with |
+|---|---|---|
+| i wü iatz | 31 | mit dir Deitsch reden |
+| mit dir Deitsch reden | 3 | i wü iatz |
+| i wü iatz mit dir | 6 | Deitsch reden |
+| Deitsch reden | 36 | i wü iatz mit dir |
+
+16 lines begin “i wü iatz” but only 2 end “mit dir Deitsch reden”; 17 end “Deitsch reden”
+but only 2 begin “i wü iatz mit dir”. Either pair completes the phrase, and the page says on
+each group which one it pairs with. **A half is only ever ONE measured cut** — gluing a half
+out of two takes would hide a second join inside the thing being judged.
+
+## Kai's picks are pinned, because one was already lost
+
+The first five picks came in at 22:14–22:58. By then the tool had been rewritten, and
+`i-wue-w37-lead` — picked at 22:14 — no longer existed: the rebuild had pruned it. **A pick
+is the most valuable object in this tool; it is the only judgement in it.** So:
+
+- picks are saved to `picks-kai.json` and carried into every subsequent build, from
+  `recovered/` if the current build no longer produces them;
+- they appear as their own group at the top of the page;
+- if one cannot be carried forward, it is reported out loud rather than quietly dropped.
+
+The lost one was rebuilt from the same carrier line with the same settings, **but the
+cutting algorithm changed in between, so it is not guaranteed to be the same audio.** It
+carries a note on the page asking Kai to confirm it by ear. Underlying hazard worth knowing:
+**candidate ids are not stable across rebuilds** — they come from a counter, so adding a
+phrase shifts later ids. The pinning is what makes a pick survive that.
 
 ## The axes Kai asked for
 

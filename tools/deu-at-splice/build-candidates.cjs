@@ -71,6 +71,19 @@ const TARGETS = [
     text: 'i wü iatz mit dir Deitsch reden',
     words: ['i', 'wü', 'iatz', 'mit', 'dir', 'deitsch', 'reden'],
   },
+  // THE LONG PHRASE, IN TWO HALVES — Kai, 2026-08-25: *"the long phrase didn't
+  // work out. Let me pick the two parts separately"*. Glued whole, the join is
+  // one decision buried inside seven words; split, he judges each half on its own
+  // and we glue his two choices afterwards.
+  //
+  // Two ways to divide it are offered because the material is lopsided: 16 takes
+  // begin "i wü iatz" but only 2 end "mit dir Deitsch reden", while 17 end
+  // "Deitsch reden" but only 2 begin "i wü iatz mit dir". Either PAIR completes
+  // the phrase — pick one half from each colour.
+  { id: 'part-a1', text: 'i wü iatz', words: ['i', 'wü', 'iatz'], part: 'first half', pairsWith: 'mit dir Deitsch reden' },
+  { id: 'part-b2', text: 'mit dir Deitsch reden', words: ['mit', 'dir', 'deitsch', 'reden'], part: 'second half', pairsWith: 'i wü iatz' },
+  { id: 'part-a2', text: 'i wü iatz mit dir', words: ['i', 'wü', 'iatz', 'mit', 'dir'], part: 'first half', pairsWith: 'Deitsch reden' },
+  { id: 'part-b1', text: 'Deitsch reden', words: ['deitsch', 'reden'], part: 'second half', pairsWith: 'i wü iatz mit dir' },
 ]
 
 /** The four takes Kai rejected are not source material for replacing themselves. */
@@ -352,7 +365,6 @@ function main() {
   const dropped = []
   let n = 0
 
-  /** Measured pieces for one word-sequence, one per carrier line, both boundaries. */
   const piecesFor = (want, side, win) => {
     const hits = []
     const seenLine = new Set()
@@ -375,7 +387,10 @@ function main() {
     const before = candidates.length
 
     // ---- one piece: the phrase sits whole at the edge of some take ----------
-    for (const side of ['prefix', 'suffix']) {
+    const sides = target.part === 'first half' ? ['prefix']
+      : target.part === 'second half' ? ['suffix']
+      : ['prefix', 'suffix']
+    for (const side of sides) {
       for (const h of piecesFor(target.words, side).slice(0, 14)) {
         for (const pad of PADDINGS) {
           const { a, b } = edgesOf(h.p, h.env, pad)
@@ -411,6 +426,10 @@ function main() {
         }
       }
     }
+
+    // A half of the long phrase is only ever ONE measured cut. Gluing a half from
+    // two takes would hide a second join inside the thing Kai is trying to judge.
+    if (target.part) continue
 
     // ---- two pieces: a measured prefix glued to a measured suffix -----------
     if (target.words.length >= 2) {
@@ -488,6 +507,42 @@ function main() {
     }
   }
 
+  /**
+   * KAI'S PICKS SURVIVE EVERY REBUILD.
+   *
+   * One already did not: `i-wue-w37-lead` was picked at 22:14 and pruned by the
+   * rewrite an hour later. A pick is the most valuable object in this whole tool
+   * — it is the only judgement in it — so anything he has chosen is carried
+   * forward, from `recovered/` if the current build no longer makes it, and shown
+   * back to him at the top of the page.
+   */
+  const pinned = []
+  const picksFile = path.join(WORK, 'picks-kai.json')
+  if (fs.existsSync(picksFile)) {
+    const saved = JSON.parse(fs.readFileSync(picksFile, 'utf8')).picks || {}
+    for (const [id, meta] of Object.entries(saved)) {
+      const here = path.join(CLIPS, `${id}.mp3`)
+      if (!fs.existsSync(here)) {
+        const rec = path.join(WORK, 'recovered', `${id}.mp3`)
+        if (!fs.existsSync(rec)) { dropped.push({ target: 'picked', id, why: 'Kai picked this and neither the build nor recovered/ has it — SAY SO, do not quietly drop a pick' }); continue }
+        fs.copyFileSync(rec, here)
+      }
+      pinned.push({ id, meta })
+    }
+  }
+
+  /** Measured pieces for one word-sequence, one per carrier line, both boundaries. */
+
+  for (const { id, meta } of pinned) {
+    candidates.push({
+      id, file: `clips/${id}.mp3`, target: 'picked', kind: meta.kind || 'one piece',
+      how: meta.how, detail: `${meta.detail}${meta.note ? ` · ${meta.note}` : ''}`,
+      padding: meta.padding || null, join: meta.join || null,
+      picked_for: meta.target, needs_confirming: Boolean(meta.note),
+      sources: [], test_material: false,
+    })
+  }
+
   // Duration is the one number that tells Kai at a glance whether a candidate can
   // possibly be right: at Sascha's measured 523ms per word, a 400ms "i wü reden"
   // is a fragment whatever it is labelled. Shown on every row so an outlier costs
@@ -517,11 +572,14 @@ function main() {
     excluded_by_source_rule: excluded,
     source_takes_read: takes.length,
     speech_rate: `${MS_PER_CHAR}ms per character, measured across 60 of Sascha's natural takes (median 523ms per word)`,
-    targets: TARGETS.map((t) => ({
+    targets: [
+      ...(pinned.length ? [{ id: 'picked', text: 'What you picked so far', count: pinned.length, pinned: true }] : []),
+      ...TARGETS,
+    ].map((t) => ({
       ...t,
       count: candidates.filter((c) => c.target === t.id).length,
       median_ms: expected(t),
-    })),
+    })).filter((t) => t.count > 0),
     dropped,
     candidates,
   }

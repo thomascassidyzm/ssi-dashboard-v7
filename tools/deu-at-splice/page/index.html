@@ -24,6 +24,9 @@ button{font:inherit;color:inherit;border:none;border-radius:14px;cursor:pointer;
 .grp{margin-bottom:1.4rem}
 .ghead{position:sticky;top:0;z-index:5;background:var(--bg);padding:.5rem 0 .4rem;border-bottom:1px solid var(--line)}
 .ghead .de{font-size:1.2rem;font-weight:700}
+.half{display:inline-block;background:#1b2a3a;color:var(--acc);border-radius:999px;padding:1px 9px;
+ font-size:.7rem;font-weight:700;margin-left:.45rem;vertical-align:middle;text-transform:uppercase;letter-spacing:.04em}
+.pair{font-size:.78rem;color:var(--warn);margin-top:.1rem}
 .cand{display:flex;gap:.55rem;align-items:stretch;background:var(--card);border:1px solid var(--line);
  border-radius:14px;padding:.55rem;margin-top:.55rem}
 .cand.picked{border-color:var(--pick);background:#241f16}
@@ -67,6 +70,15 @@ picks can become a rule. Three things vary on purpose:
 (tight / medium / wide), and <b>how long a gap sits between glued pieces</b> (none, a
 crossfade, 50 / 110 / 190&nbsp;ms).</p>
 <div class="chips" id="filters"></div>
+</div>
+
+<div class="sec">
+<p class="dim" style="margin:0"><b>The long phrase, in two halves.</b> Glued whole it buries
+the join inside seven words, so it is split: pick one <b>first half</b> and one
+<b>second half</b> that say they pair with each other, and we glue your two choices. There
+are two ways to divide it because the recordings are lopsided — 16 lines begin
+“i wü iatz” but only 2 end “mit dir Deitsch reden”, and 17 end “Deitsch reden” but only 2
+begin “i wü iatz mit dir”. Either pair completes the phrase.</p>
 </div>
 
 <div id="groups"></div>
@@ -118,7 +130,9 @@ function render() {
     box.className = 'grp'
     const head = document.createElement('div')
     head.className = 'ghead'
-    head.innerHTML = `<div class="de">${t.text}</div>`
+    head.innerHTML = `<div class="de">${t.text}${t.part ? `<span class="half">${t.part}</span>` : ''}</div>`
+      + (t.pairsWith ? `<div class="pair">pair your pick here with one from <b>${t.pairsWith}</b></div>` : '')
+      + (t.pinned ? `<div class="pair">these are yours. Anything with a note needs confirming by ear.</div>` : '')
       + `<div class="dim">${t.median_ms ? `typically ${(t.median_ms / 1000).toFixed(1)}s · ` : ''}${list.length} to listen to`
       + `${list.length !== t.count ? ` of ${t.count}` : ''} · ${Object.values(picks).filter((p) => p.target === t.id).length} picked</div>`
     box.appendChild(head)
