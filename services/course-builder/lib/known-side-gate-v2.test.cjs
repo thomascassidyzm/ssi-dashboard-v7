@@ -146,6 +146,77 @@ describe('no-space scripts', () => {
   it('Thai segments without spaces', () => {
     expect(S.segmentKnown('ผมอยากพูดภาษาไทย').tokens).toEqual(['ผม', 'อยาก', 'พูด', 'ภาษา', 'ไทย'])
   })
+
+  // ── The 2026-08-26 defect: the no-space path was position-BLIND ──────────────────────────────
+  // It asked only "is every character covered by something taught SOMEWHERE?", so a word first
+  // taught at seed 600 passed clean inside a seed-1 prompt. Japanese caught 0 of 6 planted ordering
+  // breaches; Arabic/Korean/Telugu caught 6 of 6 on the space path.
+  describe('ordering is enforced, and ambiguity may only silence the gate', () => {
+    const jpn = contract({ known_lang: 'jpn', script: 'Jpan', segmentation: 'dictionary', morphology: 'agglutinative', freeClass: ['を', 'は', 'の'] })
+    const jctx = buildContext(jpn, inv([['日本語', 1], ['話す', 1], ['勉強', 600]]), { courseCode: 'c', knownLang: 'jpn' })
+
+    it('a word the course teaches only LATE is a violation in an EARLY prompt', () => {
+      const r = checkKnownSideV2('日本語を勉強', 1, jctx)
+      expect(r.status).toBe(STATUS.VIOLATION)
+      expect(r.violations[0].reason).toBe('not_introduced_until')
+      expect(r.violations[0].firstPos).toBe(600)
+      expect(r.violations[0].confidence).toBe('high')
+    })
+
+    it('the same prompt passes once the learner has reached that seed', () => {
+      expect(checkKnownSideV2('日本語を勉強', 600, jctx).status).toBe(STATUS.PASS)
+    })
+
+    it('Chinese (Hani, isolating) is on the same path and is likewise dated', () => {
+      const zho = contract({ known_lang: 'zho', script: 'Hani', segmentation: 'dictionary', morphology: 'isolating', freeClass: ['我'] })
+      const zctx = buildContext(zho, inv([['想', 1], ['说', 1], ['中文', 500]]), { courseCode: 'z', knownLang: 'zho' })
+      expect(checkKnownSideV2('我想说', 1, zctx).status).toBe(STATUS.PASS)
+      const r = checkKnownSideV2('我想说中文', 1, zctx)
+      expect(r.status).toBe(STATUS.VIOLATION)
+      expect(r.violations[0].firstPos).toBe(500)
+      // and it is not a violation at all once 中文 has been taught
+      expect(checkKnownSideV2('我想说中文', 500, zctx).status).toBe(STATUS.PASS)
+    })
+
+    // THE AMBIGUITY TRAP. 京都 is taught late, but the same characters are covered by two
+    // early entries. A naive longest-match would "prove" a breach; quantifying over ALL
+    // tilings finds the innocent reading and stays silent. Silence over a wrong conviction.
+    it('stays silent when ANY segmentation of the prompt is answerable at that position', () => {
+      const c = contract({ known_lang: 'zho', script: 'Hani', segmentation: 'dictionary', morphology: 'isolating' })
+      const ctx2 = buildContext(c, inv([['京都', 900], ['京', 2], ['都', 2], ['在', 1]]), { courseCode: 'z', knownLang: 'zho' })
+      expect(checkKnownSideV2('在京都', 3, ctx2).status).toBe(STATUS.PASS)
+      // …and with the cheap reading removed, the only reading left is the late one.
+      const ctx3 = buildContext(c, inv([['京都', 900], ['在', 1]]), { courseCode: 'z', knownLang: 'zho' })
+      expect(checkKnownSideV2('在京都', 3, ctx3).status).toBe(STATUS.VIOLATION)
+    })
+
+    it('text that tiles against nothing at all is still the untiled violation, unchanged', () => {
+      const c = contract({ known_lang: 'zho', script: 'Hani', segmentation: 'dictionary', morphology: 'isolating' })
+      const ctx2 = buildContext(c, inv([['我', 1], ['想', 1]]), { courseCode: 'z', knownLang: 'zho' })
+      const r = checkKnownSideV2('我想飛機', 5, ctx2)
+      expect(r.status).toBe(STATUS.VIOLATION)
+      expect(r.violations[0].reason).toBe('untiled')
+    })
+  })
+
+  describe('tilePositions', () => {
+    it('returns the minimum, over every tiling, of the latest piece that tiling needs', () => {
+      // abc: {ab@9, c@1} costs 9; {a@2, bc@3} costs 3. The bottleneck answer is 3, not 9.
+      const t = S.tilePositions('abc', [['ab', 9], ['c', 1], ['a', 2], ['bc', 3]])
+      expect(t.covered).toBe(true)
+      expect(t.required).toBe(3)
+    })
+
+    it('reports the longest covered prefix when nothing tiles the whole string', () => {
+      const t = S.tilePositions('abz', [['a', 1], ['b', 1]])
+      expect(t.covered).toBe(false)
+      expect(t.uncovered).toBe('z')
+    })
+
+    it('position 0 entries (free-class glue) are always available', () => {
+      expect(S.tilePositions('ab', [['a', 0], ['b', 0]]).required).toBe(0)
+    })
+  })
 })
 
 describe('script detection', () => {
