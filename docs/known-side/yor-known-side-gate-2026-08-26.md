@@ -114,11 +114,16 @@ proof of derivation.
 ### 5a. Legos and practice phrases (seeds 1–160) — CHECKED
 
 ```
-rows checked   4,612    (447 legos + 4,165 practice phrases)
-pass           4,593
+rows checked   4,634    (449 legos + 4,185 practice phrases)
+pass           4,615
 flagged           19    (0.41%)  — all high-confidence, 0 borderline
 UNCHECKED          0    (100% of rows answered)
 ```
+
+**Currency.** Other jobs were editing `cym_for_yor` content while this ran, so the row counts move
+between runs — an earlier run of this same reading saw 4,612 rows. **The flagged set did not change
+across those runs: the same 19 rows and the same four tokens.** Re-run the commands in §8 for a
+current count; the gate is the durable artefact, this reading is a snapshot.
 
 ### 5b. Seed sentences, all 668 — the honest split
 
@@ -210,3 +215,18 @@ node tools/known-side/seed-scan.cjs      cym_for_yor    # all 668 seeds, honest 
 ```
 
 All four are read-only against the live Supabase. No content was changed by this job.
+
+---
+
+## 9. Independent verification
+
+Job **#703** (sonnet, read-only) re-ran every command above against the live DB and branch and
+**confirmed all six claims**: calibration holds (and the controls are non-vacuous — Y1/Y3/Y5 each
+assert in *both* directions, so a no-op gate would fail them rather than sail through); no
+regression (90/90 tests, and `reduplicativeNominal` is declared by `_known_yor` alone); the four
+flagged tokens are correct against its own independent inventory build; a 16-row hand-check of
+passing rows found nothing wrong; tone integrity holds under its own probe, including NFD input; and
+it agrees with the false-positive calls in §5c, explicitly including the hedging — noting that at
+seed 15 `ọ̀la` occurs *unfused*, so a learner taught only `lọ́la` genuinely has not met that surface
+form, which is why "probable false positive" rather than "false positive" is the right confidence.
+It raised the currency drift recorded in §5a. It made no commits.
