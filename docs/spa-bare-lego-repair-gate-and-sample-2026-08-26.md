@@ -114,3 +114,93 @@ Worth reconciling before the bake-off's phase 2 trusts that claim.
 - No live row touched. No promotion. No flag flipped.
 - The remaining ~2,900 phrases are not generated — that waits on a quality ruling.
 - No audio-pass queued for spa_for_eng (see above).
+
+---
+
+# Addendum — independent verification, and what it turned up
+
+Job #906 (sonnet, adversarial, read-only) re-checked all 35 against the live DB rather
+than the sampled packs the authors saw. Every one of its checkable claims replicates.
+
+## The sample: 30/35 clean, 5 quarantined
+
+| Check | Result |
+|---|---|
+| Containment (`checkWordContainment`) | **35/35 pass** |
+| ZUT, production direction | **35/35 pass** — and the checker was sanity-tested first: it surfaces 324 real ZUT collisions already present in the live corpus, so a clean sweep here is a result, not a no-op |
+| Spanish correctness, read by hand | **35/35 correct and idiomatic** |
+| Clunkiness | 35/35 tier 1; one borderline (`S0217L03`, "a glass" with no "of X"), which the author had already flagged |
+| **Vocabulary / forward reference** | **30/35 pass, 5 fail** |
+
+The five: `S0077L01`, `S0121L02`, `S0184L03`, `S0258L01`, `S0600L01`.
+
+Reproduced independently with a new tool, `tools/course-optimization/check-repair-phrases.cjs`,
+which replays the live submit gate's own DP tiling (`checkVocabViolations`) against vocabulary
+scoped strictly before each phrase's `(seed_number, lego_index)`. Same five, no others.
+
+**One is a clean forward reference.** `S0600L01` uses *habríamos*, introduced at **S612L01** —
+12 seeds later. Verified directly: the only LEGOs containing it are S612L01 ("we would have")
+and S613L01. Not a judgment call.
+
+**Four are one root cause, and it is not carelessness.** *me*, *te* and *la* are **never taught
+as free atoms** in this course — 0 standalone LEGOs each, appearing only bundled inside 33, 20
+and 82 larger chunks respectively. Before seed 77 the learner has *me gustaría*, *Me gusta*,
+*me siento* — never a movable *me*. So "Me sorprende cómo entiendes…" cannot be tiled: every
+word is taught, the span is not.
+
+## The finding nobody was looking for: the live course does the same thing
+
+The authors defended *me sorprende* by citing the course's own sibling row `S0077L01B03`. They
+were right that it exists — and that is the problem. Checking every row of that LEGO against
+the gate:
+
+```
+S0077L01B01  "Sorprende"                                    ok   (the bare-LEGO defect)
+S0077L01B03  "Me sorprende"                                 FAILS
+S0077L01B04  "Me sorprende cómo"                            FAILS
+S0077L01U04  "Me sorprende lo mucho que he aprendido ya"    FAILS
+… 8 more, all FAIL
+```
+
+Ten of that LEGO's eleven rows fail. The one that passes is the bare-LEGO defect.
+
+Widening: a systematic 400-row sample of **existing live** spa_for_eng BUILD and USE rows
+(every ~25th row across the whole course) — **76 fail the same gate, 19.0%.**
+
+So the sample authors were not sloppy. They pattern-matched faithfully onto live course content,
+and roughly a fifth of that content uses material the learner has not been given. These rows
+predate the gate or arrived by a path that does not run it; they could not be submitted through
+`/api/seed/complete` today.
+
+For `S0077L01` specifically the likeliest reading is that **the LEGO's own target is wrong**:
+it is glossed "it surprises" → *sorprende*, while ten of its eleven phrases teach *me sorprende*.
+If the LEGO should be "it surprises me" → *me sorprende*, then nine of those ten rows become
+legal at a stroke and the repair for this LEGO is a different, larger job than adding a BUILD
+phrase. **That is a decomposition question, not a phrase question, and it is not mine to rule on.**
+
+## Selection-query gap
+
+The repair batch targets one bare row per LEGO — the `B01` slot. Course-wide the real
+population, verified directly, is:
+
+| role | rows |
+|---|---|
+| build | 1,247 |
+| use | 10 |
+| component | 4 |
+| **total** | **1,261** across **1,208** LEGOs |
+
+**48 LEGOs carry more than one bare row.** Three of the 35 sampled LEGOs (`S0121L02`,
+`S0258L01`, `S0525L01`) have an untouched second one, including `S0258L01U01` in a USE role —
+arguably worse, since USE rows enter spaced repetition and are reviewed forever. Fix the
+selection query once rather than rediscovering this LEGO by LEGO.
+
+## What changed as a result
+
+`tools/course-optimization/check-repair-phrases.cjs` — read-only, never writes a row, exit 1 on
+any failure so it can gate a generation loop. It reports a forward reference ("*habríamos* —
+taught at S612L1, AFTER this phrase") separately from a chunk-boundary break ("every word is
+taught earlier, but this span cannot be tiled from taught chunks"), because the two need
+different fixes and one label for both would send someone hunting for a typo that isn't there.
+
+Nothing was written to the database. The five failing phrases are quarantined, not applied.
