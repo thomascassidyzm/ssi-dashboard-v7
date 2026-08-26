@@ -21,7 +21,9 @@ Machine-readable records: `docs/tts-bakeoff/coverage-azure.json`, `coverage-elev
    Once the backend model is replaced, the older version is retired and becomes inaccessible."
    Azure is repeatable *within* a model generation and gives no promise at all *across* one. The
    only true pin anywhere in the Azure line is the on-prem **container**, which you upgrade when
-   you choose to. If axis E genuinely matters, the container is the answer, not the cloud API.
+   you choose to — **but the container ships 60 locales and Welsh is not among them** (verified
+   against the public MCR tag list, 5,458 tags). It reaches **30 of our 68**. So the one real
+   pinning mechanism Azure offers misses the gate-zero language and over half the estate.
 
 2. **xAI's version-pinning story is not weak, it is absent — there is no model id to pin.**
    `POST /v1/tts` has no `model_id` field. The synthesis model is unnamed and unversioned from the
@@ -196,13 +198,21 @@ Welsh has no HD voice, so `temperature` is unreachable for Welsh either way.
 
 ### The rest
 
-- **Self-host: yes, and it is the strongest repeatability answer on the board.**
+- **Self-host: yes — but it does not reach Welsh.** ⚠️ **Resolved 2026-08-26, and the answer is no.**
   `mcr.microsoft.com/azure-cognitive-services/speechservices/neural-text-to-speech`, 6 core/12 GB
   minimum, plus a **disconnected** variant on application approval and a commitment plan
   ([source](https://learn.microsoft.com/en-us/azure/ai-services/speech-service/speech-container-howto)).
-  A pinned container digest is the only way to freeze an Azure voice against a backend swap.
-  **Not verified: whether the container ships `cy-GB`.** That single fact decides whether Welsh can
-  be frozen on-prem, and it should be checked before the report lands.
+  A pinned container digest is the only way to freeze an Azure voice against a backend swap — the
+  image is **one locale and one voice per tag** (`3.11.0-amd64-en-us-arianeural`;
+  `latest` is `en-US`/`AriaNeural`). Querying the public MCR tag list
+  (`https://mcr.microsoft.com/v2/azure-cognitive-services/speechservices/neural-text-to-speech/tags/list`,
+  5,458 tags) gives **60 locales — and `cy-GB` is not one of them.**
+  **So Welsh cannot be frozen on-prem.** Nor can Basque, Irish, Maltese, Greek, Catalan, Croatian,
+  Hungarian, Icelandic, Estonian, Latvian, Lithuanian, Macedonian, Nepali, Romanian, Serbian,
+  Swahili, Armenian, Galician, Afrikaans or Bulgarian — 21 of Azure's 52 cloud languages have no
+  container image at all. **The container covers 30 of our 68.** The strongest repeatability play on
+  the board therefore reaches under half the estate and misses the gate-zero language, which means
+  Welsh repeatability rests on human recordings from Aran and Catrin, not on any pinning mechanism.
 - **Cloning consent:** Custom Neural Voice is Limited Access — eligibility review via intake form,
   plus a mandatory recorded voice-talent consent statement before fine-tuning, plus disclosure
   guidance. The strictest, most defensible consent regime of the three.
@@ -427,9 +437,11 @@ Reported as blockers, not smoothed over.
    nobody has measured.
 
 **Unresolved facts that would change a recommendation**
-8. **Does the Azure `neural-text-to-speech` container ship `cy-GB`?** Not established. This single
-   fact decides whether Welsh can be frozen on-prem, which is the strongest repeatability play on
-   the board.
+8. ~~**Does the Azure `neural-text-to-speech` container ship `cy-GB`?**~~ **CLOSED 2026-08-26: no.**
+   The public MCR tag list returns 5,458 tags across **60 locales**; `cy-GB` is absent, as are
+   `eu-ES`, `ga-IE`, `mt-MT`, `el-GR`, `ca-ES` and 16 more. The container reaches **30 of our 68**.
+   Welsh cannot be frozen on-prem. Not verified: whether Microsoft would build a `cy-GB` image on
+   an enterprise request — that is a sales question, not a docs question.
 9. **The xAI docs table and `GET /v1/tts/voices` disagree** — the catalogue adds da/sv/fi/nl/pl/th
    and omits bn/id. `tools/pod-voices-xai.json` is a **capture**, not a live read, and was not
    refreshed (that would mean calling the API).

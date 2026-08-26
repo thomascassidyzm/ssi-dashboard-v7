@@ -42,6 +42,16 @@
       "url": "https://prices.azure.com/api/retail/prices?$filter=contains(productName,%27Speech%27)",
       "title": "Azure Retail Prices API (public, unauthenticated)",
       "what_it_established": "S1 Neural Text To Speech Characters = $15.00 per 1M; Custom Neural Realtime $24/1M; CNV Neural HD Synthesis $48/1M; CNV training $52/compute-hour; CNV model hosting $4.032/hour; commitment tiers down to ~$5.70/1M"
+    },
+    {
+      "url": "https://mcr.microsoft.com/v2/azure-cognitive-services/speechservices/neural-text-to-speech/tags/list",
+      "title": "Microsoft Container Registry tag list for the neural TTS container (public, unauthenticated)",
+      "what_it_established": "5,458 tags across 60 locales; cy-GB absent, therefore Welsh cannot be self-hosted/pinned. Container covers 30 of the estate 68."
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/ai-services/speech-service/speech-container-ntts",
+      "title": "Install and run the neural text to speech container",
+      "what_it_established": "Tag format is <version>-amd64-<locale>-<voicename>; :latest pulls en-US/en-us-arianeural; the locale of the SSML voice must correspond to the locale of the container model"
     }
   ],
   "welsh": {
@@ -288,7 +298,7 @@
     "temperature": "Not available on the classic neural voices we use. Available on HD voices only, via SSML parameters=\"temperature=0.8\" — DragonHD default 1.0, Dragon HD Omni default 0.7 with top_p (0.7), top_k (22) and cfg_scale (1.4). Welsh has no HD voice, so this control is unreachable for Welsh.",
     "other": "Full SSML on classic neural voices: <prosody rate/pitch/volume>, <break>, <phoneme> (ipa/sapi/ups/x-sampa), <lexicon> pointing at an uploaded PLS file (100 KB max), <say-as>, <sub>, <lang>, <mstts:express-as> styles, viseme and word-boundary events. HD voices support only a subset (no <prosody>, no <emphasis>, no <break> on Omni). Footnote 3 locales — Welsh among them — lose <phoneme>, <lexicon> and visemes entirely."
   },
-  "self_host": "YES, and this is the strongest repeatability story on the board. mcr.microsoft.com/azure-cognitive-services/speechservices/neural-text-to-speech runs on-prem (6 core / 12 GB minimum, 8 core / 16 GB recommended), and a disconnected variant runs with no internet on application approval plus a commitment plan. A pinned container digest is the only way to freeze an Azure voice against a backend model swap. NOT verified: whether the container ships the cy-GB voices — the container voice list was not established in this pass.",
+  "self_host": "YES, but it does not reach Welsh. mcr.microsoft.com/azure-cognitive-services/speechservices/neural-text-to-speech runs on-prem (6 core / 12 GB minimum, 8 core / 16 GB recommended), and a disconnected variant runs with no internet on application approval plus a commitment plan. The image is ONE LOCALE AND ONE VOICE PER TAG (3.11.0-amd64-en-us-arianeural; :latest is en-US/AriaNeural). A pinned container digest is the only way to freeze an Azure voice against a backend model swap. VERIFIED 2026-08-26 against the public MCR tag list (https://mcr.microsoft.com/v2/azure-cognitive-services/speechservices/neural-text-to-speech/tags/list, 5,458 tags): 60 locales are published and cy-GB IS NOT ONE OF THEM. The container covers 30 of our 68 target languages; 21 Azure cloud languages have no image at all (afr bul cat cym ell est eus gle glg hrv hun hye isl lav lit mkd mlt nep ron srp swa). So the strongest repeatability mechanism on the board misses the gate-zero language and over half the estate.",
   "pricing": "$15.00 per 1M characters (S1 Neural Text To Speech Characters, Azure Retail Prices API, USD). Free tier 0.5M characters/month. Commitment tiers cut it to roughly $5.70-$12.00 per 1M. Custom Neural Voice synthesis $24/1M realtime, HD $48/1M, plus $52/compute-hour training and $4.032/hour model hosting.",
   "rate_limits": "Real-time TTS: F0 20 transactions per 60 seconds (not adjustable). S0 30 transactions per second default, adjustable on request up to 1,000 TPS. Batch synthesis: no limit on concurrent active jobs. 429 on burst; Microsoft documents a 1-2-4-4 minute back-off ramp.",
   "live_integration": {
@@ -309,7 +319,7 @@
     "determinism_notes": "The repo asserts Azure determinism in a comment — \"Azure TTS is deterministic - same text = same audio\" (services/azure-tts-service.cjs:174-178) — and BUILDS ON IT: REGENERATION_VARIATIONS mutates the punctuation of the input text (append \".\", append \"...\", insert a comma before the last word) purely to force different audio out of a voice that will otherwise return the same bytes. That is a working determinism test in production, not a doc claim. Two things it does not cover: (a) it says nothing about determinism ACROSS TIME, which is exactly where Azure has changed models under customers; (b) it is untrue of HD voices, which the docs say vary per output — we do not currently use any HD voice, and nothing in the code stops one being configured. The SSML envelope in services/tts-service.cjs:353 hardcodes xml:lang=\"en-US\" while azure-tts-service.cjs:163 derives the locale from the voice name; the voice element overrides it in practice, but the two paths are not the same request."
   },
   "gaps": [
-    "The container voice list was not established: it is not confirmed that the neural-text-to-speech container ships cy-GB-Nia/Aled, which is the single fact that would decide whether Welsh can be frozen on-prem.",
+    "CLOSED 2026-08-26: the neural-text-to-speech container does NOT ship cy-GB. The public MCR tag list has 60 locales and Welsh is absent, so Welsh cannot be frozen on-prem and Welsh repeatability rests on the human recordings, not on any pinning mechanism. Still unverified: whether Microsoft would build a cy-GB image on enterprise request - a sales question, not a docs question.",
     "The public azure.microsoft.com pricing page rendered placeholder dashes on fetch; the figures here come from the Azure Retail Prices API instead. The API returned two S1 Neural TTS rows ($15.00 and $18.75 per 1M) which are presumably different regional meters — the region attribution was not resolved.",
     "No Microsoft document states a formal deprecation or notice policy for INDIVIDUAL neural voices. The three-year standard-voice retirement is a product-tier policy. The only statement found about individual voice model swaps is a Microsoft Q&A answer, which is a support channel, not a published SLA.",
     "Whether Azure classic neural voices are byte-identical across regions, or across SDK versions, is not documented and was not tested (phase 1 spends zero).",
