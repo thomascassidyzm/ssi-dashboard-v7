@@ -40,7 +40,8 @@
 
 const {
   REASON, REASON_TEXT, segmentKnown, detectScript, normalizeKnown,
-  resolveByStemStrip, stemPrefixHit, anyStemInside, tileUncovered, DEFAULT_MORPHOLOGY,
+  resolveByStemStrip, resolveByReduplication, stemPrefixHit, anyStemInside, tileUncovered,
+  DEFAULT_MORPHOLOGY,
 } = require('./known-side-script.cjs');
 
 const STATUS = { PASS: 'pass', VIOLATION: 'violation', UNCHECKED: 'unchecked' };
@@ -69,6 +70,9 @@ function normalizeContract(contract) {
     morphology: contract.morphology || (script ? DEFAULT_MORPHOLOGY[script] : null) || null,
     stemStrip: (contract.stemStrip || []).slice().sort((a, b) => b.length - a.length),
     stemMinLen: contract.stemMinLen || 2,
+    // Opt-in prefix-derivation resolver (Yoruba CV-reduplication gerund). Null for every
+    // contract that does not declare it, so existing behaviour is untouched.
+    reduplicativeNominal: contract.reduplicativeNominal || null,
     // schema A (legacy, *_for_eng)          schema B (2026-06 briefs)
     freeClass: new Set([...norm(contract.freeGlue), ...norm(contract.freeClass)]),
     npi: new Set([...norm(contract.npiTokens), ...norm(contract.npi)]),
@@ -228,6 +232,19 @@ function checkKnownSideV2(known, currentPos, ctx) {
       const lp = ctx.inventory.get(lemma);
       if (lp != null && lp > currentPos) {
         out.violations.push({ token: tok, reason: 'not_introduced_until', lemma, firstPos: lp, detail: `"${tok}" (lemma "${lemma}") is not introduced until ${lp}`, confidence: 'high' });
+      }
+      continue;
+    }
+
+    // E2b — contract-declared PREFIX derivation. stemStrip is suffix-only, so a language whose one
+    // productive affix is a prefix (Yoruba's CV-reduplication gerund) had no way to express E2 at
+    // all. Opt-in per contract; dates the token against its base exactly as stemStrip does, so a
+    // derivation of a LATER-taught base is still a violation.
+    const base = resolveByReduplication(tok, ctx.inventory, c.reduplicativeNominal);
+    if (base != null) {
+      const bp = ctx.inventory.get(base);
+      if (bp != null && bp > currentPos) {
+        out.violations.push({ token: tok, lemma: base, reason: 'not_introduced_until', firstPos: bp, detail: `"${tok}" (derived from "${base}") is not introduced until ${bp}`, confidence: 'high' });
       }
       continue;
     }

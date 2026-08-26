@@ -244,6 +244,36 @@ function resolveByStemStrip(token, inventory, stemStrip, minLen) {
 }
 
 /**
+ * Resolve a CV-reduplicated nominal (gerund) to its introduced base verb.
+ *
+ * OPT-IN, CONTRACT-DRIVEN, ADDITIVE: it runs only when a contract declares `reduplicativeNominal`,
+ * which today is `_known_yor` alone. Every other course on the estate is bit-for-bit unaffected.
+ *
+ * WHY IT EXISTS: stemStrip removes SUFFIXES only. Yoruba's one productive affix is a PREFIX — the
+ * gerund copies the verb's initial consonant and prefixes C+í (sọ → sísọ, ṣe → ṣíṣe, lo → lílo).
+ * Without this, a gerund of a taught verb reads as "never introduced", which is a language judgment
+ * the string machinery is not entitled to make. WITH it, the gerund is dated against its base, so a
+ * gerund of a verb taught LATER is still a violation — the same contract as stemStrip / exemption E2.
+ *
+ * LIMIT, stated because it bounds the claim: the test is a string shape, so a CíC-shaped token whose
+ * first two consonants merely coincide with a taught word would also "resolve" (Yoruba pípé 'complete'
+ * onto pé 'that'). Exact match is tried before this, so it only reaches tokens with no introduction of
+ * their own; any hit is evidence for a human, not a proof of derivation.
+ *
+ * @returns the matched base form, or null.
+ */
+function resolveByReduplication(token, inventory, spec) {
+  if (!spec) return null;
+  const chars = [...token];
+  if (chars.length < 3) return null;
+  const vowels = spec.vowels || ['í', 'ì', 'i'];
+  if (!vowels.includes(chars[1])) return null;
+  if (spec.requireConsonantCopy !== false && chars[2] !== chars[0]) return null;
+  const base = chars.slice(2).join('');
+  return inventory.has(base) ? base : null;
+}
+
+/**
  * Does any introduced form sit inside this token as a prefix?
  * Suffixing languages (all the agglutinative ones on this estate) attach material to the
  * RIGHT, so an introduced lemma at the left edge means the token is plausibly an inflection
@@ -313,6 +343,7 @@ module.exports = {
   normalizeKnown,
   segmentKnown,
   resolveByStemStrip,
+  resolveByReduplication,
   stemPrefixHit,
   anyStemInside,
   tileUncovered,
