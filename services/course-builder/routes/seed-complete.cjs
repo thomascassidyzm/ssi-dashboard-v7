@@ -21,7 +21,7 @@ const {
   checkVocabViolations, calculateLegoBalanceScores, checkPhraseBalance,
   checkLegoConflict, checkPhraseZUT, checkBasketFrameCoverage, checkMetadataGloss,
   loadPairContract, checkKnownSide, isKnownVocabBreach, compileKnownContract, stemKnownGloss, tokenizeKnown,
-  checkBuildRecombination,
+  checkBuildRecombination, checkBuildBasketTeachesWord,
 } = require('../lib/validation.cjs');
 // Script-aware segmentation + UNCHECKED reason codes, so the known-side gate can report that it
 // could not check rather than reporting a pass it never earned (2026-08-18).
@@ -1226,6 +1226,9 @@ module.exports = function seedCompleteRoutes(ctx) {
       const vocabViolations = [];
       const buildGateFailures = [];   // anti-template gate (template-stamp fix 2026-07-24)
       const chinese = isChinese(course_code);
+      // Loaded once here and reused by section 3a-KNOWN below — it is a file read, and the
+      // known-side checks in the per-lego loop need it too.
+      const pairContract = loadPairContract(course_code);
       for (const lego of legos) {
         const legoId = `${seedId}L${String(lego.idx).padStart(2, '0')}`;
         const isDuplicate = duplicateLegos.some(d => d.lego_id === legoId);
@@ -1306,6 +1309,53 @@ module.exports = function seedCompleteRoutes(ctx) {
                     : 'Every BUILD and USE phrase must contain ALL words from the LEGO target (German word-order mode).',
                 });
                 console.log(`✗ ${legoId}: CONTAINMENT (${mode}) - ${containmentFails.length} phrases missing LEGO target "${lego.target}"`);
+              }
+            }
+
+            // KNOWN-SIDE CONTAINMENT — the mirror of the block above, on the side the
+            // learner is prompted from. A BUILD phrase's whole job is to INTRODUCE its LEGO,
+            // so its prompt must contain the known-side word the LEGO commits to. Nothing
+            // checked this until 2026-08-26, and the gap let phrase writers reach for the
+            // everyday near-synonym instead of the taught word: deu_for_jpn S0017L03 taught
+            // 見つけ出す and prompted all three BUILD rows with 知る, and the same habit was
+            // then confirmed 39 more times across six Japanese-prompt courses.
+            //
+            // BUILD rows only. USE phrases recombine and are a separate question.
+            //
+            // WARNINGS, NOT ERRORS, deliberately. Unlike its target-side twin this check has
+            // to tell inflection from substitution — a language judgment — so where the shape
+            // rule cannot decide it returns UNCHECKED rather than guessing, and its measured
+            // recall is 30 of the 39 known cases. A brand-new advisory that people read is
+            // worth more than a blocking gate they learn to switch off; promotion to blocking
+            // is a separate, deliberate decision once it has run on live submissions.
+            if (usesBuildUseFormat(lego) && (lego.build || []).length > 0) {
+              const teach = checkBuildBasketTeachesWord(
+                { known: lego.known, build: lego.build },
+                { knownLang, contract: pairContract || null, courseCode: course_code },
+              );
+              for (const v of teach.violations) {
+                warnings.push({
+                  type: 'build_known_word',
+                  lego_id: legoId,
+                  lego_known: lego.known,
+                  lego_target: lego.target,
+                  known: v.known,
+                  target: v.target,
+                  missing: v.missing,
+                  detail: v.detail,
+                  hint: 'A BUILD phrase introduces its LEGO, so the known-side prompt must use the word the LEGO teaches. A different conjugation of that word is fine; a different word is not, however close the meaning.',
+                });
+                console.log(`⚠ ${legoId}: BUILD-KNOWN-WORD "${v.known}" — ${v.detail}`);
+              }
+              for (const u of teach.unchecked) {
+                warnings.push({
+                  type: 'build_known_word_unchecked',
+                  lego_id: legoId,
+                  lego_known: lego.known,
+                  known: u.known,
+                  reason: u.reason,
+                  detail: u.detail,
+                });
               }
             }
           }
@@ -1492,7 +1542,7 @@ module.exports = function seedCompleteRoutes(ctx) {
       // both languages). Fires ONLY when a pair-contract exists AND its known language
       // matches — English machinery must not be applied to a non-English-known course.
       {
-        const contract = loadPairContract(course_code);
+        const contract = pairContract;
         const contractUsable = contract && (!contract.known_lang || contract.known_lang === knownLang);
 
         // 3a-KNOWN-UNCHECKED (2026-08-18, Kai's requirement): SILENT REFUSAL IS A DEFECT.

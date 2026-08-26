@@ -6,6 +6,9 @@
 
 const { isChinese, getTargetLang, getCharThresholds, getGoldenSeedCount, CHARS_PER_SYLLABLE, PREPOSITIONS } = require('./language-config.cjs');
 const { extractVocab, normalizeForZUT, normalizeForStorage, normalizeForContainment, checkWordContainment } = require('./text-normalization.cjs');
+// KNOWN-side mirror of the target-side lego_containment check: a BUILD phrase must contain the
+// known-side word its LEGO teaches, tolerating inflection but never a different lexeme (2026-08-26).
+const { checkBuildTeachesWord, checkBuildBasketTeachesWord } = require('./build-teaches-word.cjs');
 
 // ─── Methodology command hints (guide agents on rejection) ─────────────
 
@@ -1068,4 +1071,6 @@ module.exports = {
   formatDecompositionPatterns,
   classifyBuildPhrase,
   checkBuildRecombination,
+  checkBuildTeachesWord,
+  checkBuildBasketTeachesWord,
 };
