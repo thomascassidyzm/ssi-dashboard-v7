@@ -17,6 +17,7 @@ const {
   isRetriableTtsError,
   recordXaiOutcome,
   getXaiHealth,
+  generateXai,
   TTS_MIN_AUDIO_MS,
 } = require('./tts-service.cjs')
 
@@ -107,5 +108,34 @@ describe('xAI degradation pacing', () => {
     // ...but the 08-03 signature (rates climbing past 4%) must.
     for (let i = 0; i < 200; i++) recordXaiOutcome(false)
     expect(getXaiHealth().cooldowns).toBeGreaterThan(before)
+  })
+})
+
+
+/**
+ * A MISSING language on an xAI render is a hard fail, not a warn-and-default.
+ * Until 2026-08-24 `generateXai` defaulted `language` to 'auto' and only
+ * console.warn'd — and the multilingual voices are English-dominant, so an
+ * unsteered render can speak Italian text with English phonology and still
+ * look perfectly correct in the database. An explicit 'auto' is still allowed:
+ * that is deliberate, Tom-validated tuning for pod explainers.
+ */
+describe('generateXai language steering', () => {
+  const cfg = (extra) => ({ apiKey: 'k', voiceId: 'ara', ...extra })
+
+  it('throws when no language is passed at all', async () => {
+    await expect(generateXai('come stai', cfg())).rejects.toThrow(/explicit BCP-47 language/)
+  })
+
+  it('throws on an empty-string language', async () => {
+    await expect(generateXai('come stai', cfg({ language: '' }))).rejects.toThrow(/explicit BCP-47 language/)
+  })
+
+  it('does not throw on an explicit auto (deliberate explainer tuning)', async () => {
+    // Kept off the network by handing it an over-length text: the request is
+    // refused by the length guard AFTER the language guard has already let
+    // 'auto' through. If the language guard fired, this message would differ.
+    await expect(generateXai('x'.repeat(15001), cfg({ language: 'auto' })))
+      .rejects.toThrow(/limited to 15000 characters/)
   })
 })

@@ -217,7 +217,7 @@ function assertNotChildVoice(config) {
 function assertNotHumanVoiceCourse(config) {
   const courseCode = config?.courseCode;
   if (courseCode && isHumanVoiceCourse(courseCode)) {
-    throw new Error(`Human-voice course blocked (403): ${courseCode} is human-voiced only — no TTS may ever be generated (Tom's rulings 2026-07-25 Welsh, 2026-07-27 Breton, 2026-08-14 Pennsylvania Dutch). Skip this course at the pipeline entry point.`);
+    throw new Error(`Human-voice course blocked (403): ${courseCode} is human-voiced only — no TTS may ever be generated (Tom's ruling 2026-07-25). Skip this course at the pipeline entry point.`);
   }
 }
 
@@ -408,7 +408,6 @@ async function generateXai(text, config) {
   const {
     apiKey,
     voiceId = 'eve',
-    language = 'auto',
     codec = 'mp3',
     sampleRate = 24000,
     bitRate = 128000
@@ -422,11 +421,22 @@ async function generateXai(text, config) {
     throw new Error(`xAI TTS REST request limited to 15000 characters; got ${text.length}. Use streaming endpoint for longer content.`);
   }
 
-  if (!config.language || config.language === 'auto') {
-    // Course renders must always steer the language explicitly: the multilingual
-    // voices are English-dominant and under 'auto' read cross-language words with
-    // English phonology ('come stai' → English 'come'; ita pilot 2026-07-10).
-    console.warn(`[xAI TTS] language='auto' for voice ${voiceId} — pass an explicit BCP-47 language for course renders (text: "${String(text).slice(0, 40)}")`);
+  // A MISSING language is a HARD FAIL, never a warn. The multilingual voices are
+  // English-dominant and unsteered they read cross-language words with English
+  // phonology ('come stai' → English 'come'; ita pilot 2026-07-10), so a render
+  // that forgot to say which language it wanted is a defect, not a default. It
+  // used to default to 'auto' and log a warning nobody read — which is how a
+  // silently-wrong clip could reach a learner.
+  //
+  // An EXPLICIT 'auto' is still allowed: it is deliberate, Tom-validated tuning
+  // for pod explainers (tools/pod-voice-coverage.cjs resolveExplainerLanguage,
+  // 2026-06-07), where the cue is chosen, not forgotten. Warned, not failed.
+  if (!config.language) {
+    throw new Error(`xAI TTS requires an explicit BCP-47 language (voice ${voiceId}, text: "${String(text).slice(0, 40)}") — pass 'auto' deliberately if that is really what you want`);
+  }
+  const language = config.language;
+  if (language === 'auto') {
+    console.warn(`[xAI TTS] explicit language='auto' for voice ${voiceId} — English phonology is possible on cross-language text (text: "${String(text).slice(0, 40)}")`);
   }
 
   // Note: xAI currently does not document a speed parameter on the /v1/tts endpoint.
@@ -533,18 +543,9 @@ function isRetriableTtsError(error) {
   const statusMatch = msg.match(/\((\d{3})\)/);
   if (statusMatch) {
     const status = parseInt(statusMatch[1], 10);
-    // 429 and 408 are 4xx by number but TRANSIENT by meaning. Lumping them in
-    // with "client error → give up" meant a rate-limited clip was dropped
-    // outright, which is the one thing throttling must never cause: the request
-    // was valid and would have succeeded a moment later. Found 2026-08-08 while
-    // raising concurrency toward the provider ceiling — without this, pushing
-    // concurrency converts throughput straight into lost clips.
-    if (status === 429 || status === 408) return true;
-    if (status >= 400 && status < 500) return false; // real client error → give up
+    if (status >= 400 && status < 500) return false; // client error → give up
     if (status >= 500) return true;                   // server error → retry
   }
-  // Some providers word it rather than coding it.
-  if (/rate.?limit|too many requests|quota exceeded/i.test(msg)) return true;
 
   // Node fetch / socket level transient failures.
   const code = error && error.code ? String(error.code) : '';
@@ -664,27 +665,15 @@ function phonologySuspects(provider, config) {
  * @param {number} maxRetries - Maximum retry attempts
  * @returns {Promise<{audioBuffer: Buffer, wordBoundaries: Array|null}>} Audio data + word boundary timing
  */
-function isRateLimitError(error) {
-  const msg = (error && error.message) ? error.message : String(error);
-  return /\(429\)/.test(msg) || /rate.?limit|too many requests|quota exceeded/i.test(msg);
-}
-
 async function generateWithRetry(text, provider, config, maxRetries = 3) {
   let lastError = null;
-  // A rate limit gets its own, larger budget and a longer backoff. The normal
-  // budget is sized for a transient 5xx; throttling can persist for tens of
-  // seconds, and burning three 1-second windows against it just drops a clip
-  // that would have rendered fine. Bounded, so a genuinely closed door still
-  // fails rather than looping forever.
-  let rateLimitAttempts = 0;
-  const MAX_RATE_LIMIT_ATTEMPTS = 6;
   const suspects = phonologySuspects(provider, config);
   if (suspects && !PHONO_GATE_ON && !phonoGateWarned) {
     phonoGateWarned = true;
     console.warn(`[TTS] xAI phonology gate unavailable (${process.env.XAI_PHONO_GATE === '0' ? 'XAI_PHONO_GATE=0' : 'whisper-cli or model missing'}) — non-English xAI renders unchecked for language drift`);
   }
 
-  for (let attempt = 0; attempt < maxRetries + rateLimitAttempts; attempt++) {
+  for (let attempt = 0; attempt < maxRetries; attempt++) {
     try {
       const result = await generate(text, provider, config);
       if (suspects && PHONO_GATE_ON) {
@@ -704,21 +693,12 @@ async function generateWithRetry(text, provider, config, maxRetries = 3) {
         throw new Error(`TTS generation failed (non-retriable): ${error.message}`);
       }
 
-      const rateLimited = isRateLimitError(error);
-      if (rateLimited && rateLimitAttempts < MAX_RATE_LIMIT_ATTEMPTS) {
-        rateLimitAttempts++;   // extends the loop bound, so throttling never drops the clip
-      }
-
-      if (attempt < maxRetries + rateLimitAttempts - 1) {
-        // Exponential backoff with full jitter: a random delay in
-        // [0, base * 2^attempt]. Jitter de-synchronises concurrent retries so a
-        // fan-out does not re-stampede the API in lockstep. A rate limit uses a
-        // 4s base rather than 1s — windows of [0,4s], [0,8s], [0,16s], capped —
-        // because the whole point is to stop asking for a while.
-        const base = rateLimited ? 4000 : 1000;
-        const ceiling = Math.min(base * Math.pow(2, attempt), 60000);
+      if (attempt < maxRetries - 1) {
+        // Exponential backoff with full jitter: pick a random delay in
+        // [0, base * 2^attempt]. base=1s → windows of [0,1s], [0,2s], [0,4s].
+        // Jitter de-synchronises concurrent retries so they don't re-stampede.
+        const ceiling = Math.pow(2, attempt) * 1000;
         const delay = Math.floor(Math.random() * ceiling);
-        if (rateLimited) console.warn(`[TTS] rate limited — backing off ${Math.round(delay / 1000)}s (rate-limit attempt ${rateLimitAttempts}/${MAX_RATE_LIMIT_ATTEMPTS})`);
         await new Promise(resolve => setTimeout(resolve, delay));
       }
     }
