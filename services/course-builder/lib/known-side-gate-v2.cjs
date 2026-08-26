@@ -40,8 +40,8 @@
 
 const {
   REASON, REASON_TEXT, segmentKnown, detectScript, normalizeKnown,
-  resolveByStemStrip, resolveByReduplication, stemPrefixHit, anyStemInside, tileUncovered,
-  DEFAULT_MORPHOLOGY,
+  resolveByStemStrip, resolveByReduplication, stemPrefixHit, anyStemInside, tilePositions,
+  seenSpans, sharesLexemeShape, DEFAULT_MORPHOLOGY,
 } = require('./known-side-script.cjs');
 
 const STATUS = { PASS: 'pass', VIOLATION: 'violation', UNCHECKED: 'unchecked' };
@@ -171,14 +171,75 @@ function checkKnownSideV2(known, currentPos, ctx) {
   // boundaries are its own, not the course's LEGO boundaries. Tiling asks the question that
   // actually matters — "is every character of this prompt covered by something taught?" —
   // without needing the two boundary sets to agree.
+  //
+  // ORDERING (fixed 2026-08-26). The tiling used to be POSITION-BLIND: it asked only whether the
+  // characters were covered by something taught SOMEWHERE in the course, so a word first taught at
+  // seed 600 sat in a seed-1 prompt and passed clean. Measured: eng_for_jpn caught 0 of 6 planted
+  // ordering breaches while Arabic/Korean/Telugu each caught 6 of 6. `tilePositions` carries the
+  // introduction seed through the DP and returns the MINIMUM, over every possible tiling, of the
+  // latest thing that tiling needs — so ambiguity in a boundary-free script can only silence the
+  // gate, never convict. See the long note on tilePositions in known-side-script.cjs.
   if (seg.strategy === 'dictionary') {
     const text = normalizeKnown(known, { expandContractions: expand }).replace(/\s+/g, '');
-    const tileable = [...ctx.inventoryList, ...c.freeClass];
-    const uncovered = tileUncovered(text, tileable);
-    if (!uncovered) {
-      out.status = STATUS.PASS;
+    // Free-class glue is never "introduced" (E1), so it carries position 0 and is always available.
+    const tileable = [
+      ...ctx.inventory.entries(),
+      ...[...c.freeClass].map((f) => [f, 0]),
+    ];
+    const tiled = tilePositions(text, tileable);
+
+    if (tiled.covered) {
+      if (tiled.required <= currentPos) {
+        out.status = STATUS.PASS;
+        return out;
+      }
+
+      // GUARD 1 — already seen. The inventory of a no-space script is whole glosses, so a span the
+      // learner has met INSIDE an earlier gloss has no standalone entry to tile with and would
+      // otherwise be convicted on the strength of a later, standalone introduction. Re-tile with
+      // those spans free; if the prompt is now answerable, say nothing.
+      const seen = tilePositions(text, [...tileable, ...seenSpans(text, tileable, currentPos)]);
+      if (seen.covered && seen.required <= currentPos) {
+        out.status = STATUS.PASS;
+        return out;
+      }
+
+      const late = seen.covered ? seen.path.filter((p) => p.pos > currentPos).sort((a, b) => a.pos - b.pos) : [];
+      const chosen = seen.covered ? seen : tiled;
+      const worst = late.find((p) => p.pos === chosen.required) || late[0]
+        || tiled.path.filter((p) => p.pos > currentPos).sort((a, b) => b.pos - a.pos)[0];
+
+      // GUARD 2 — lemma identity. On an agglutinative known side the inventory holds surface forms,
+      // not lemmas (会う at 18 does not cover 会い at 127, though they are one verb), and deciding
+      // that two forms are one lexeme is a language judgment this gate is barred from making. Where
+      // the late form shares a leading run with something already taught, refuse rather than convict.
+      if (morph !== 'isolating') {
+        const kin = sharesLexemeShape(worst.form, tileable, currentPos);
+        if (kin) {
+          out.status = STATUS.UNCHECKED;
+          out.unchecked.push({
+            reason: REASON.MORPHOLOGY_UNRESOLVED,
+            detail: `${REASON_TEXT.morphology_unresolved}: "${worst.form}" is first introduced at ${worst.pos}, but "${kin}" is already taught and may be the same lexeme`,
+            token: worst.form,
+          });
+          return out;
+        }
+      }
+
+      // Every reading of this prompt needs something the learner has not been given yet.
+      out.status = STATUS.VIOLATION;
+      out.violations.push({
+        token: worst.form,
+        reason: 'not_introduced_until',
+        firstPos: worst.pos,
+        detail: `"${worst.form}" is not introduced until ${worst.pos}; no segmentation of this prompt is answerable before ${chosen.required}`,
+        tiling: chosen.path.map((p) => `${p.form}@${p.pos}`).join(' | '),
+        confidence: 'high',
+      });
       return out;
     }
+
+    const uncovered = tiled.uncovered;
     // Localise the failure to a segmenter token for a human-readable report.
     const hit = seg.tokens.find((t) => uncovered.includes(t)) || uncovered;
     if (morph === 'isolating') {

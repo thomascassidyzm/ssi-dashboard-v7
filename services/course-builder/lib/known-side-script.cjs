@@ -335,6 +335,137 @@ function tileUncovered(text, inventoryList) {
   return chars.slice(last).join('');
 }
 
+/**
+ * POSITION-AWARE tiling for no-space scripts.
+ *
+ * WHY IT REPLACES tileUncovered ON THE GATE PATH (the defect this fixes, 2026-08-26):
+ * `tileUncovered` asks only "is every character covered by something taught SOMEWHERE?" — it throws
+ * the introduction POSITION away before the DP runs. So a word the course first teaches at seed 600
+ * could sit in a seed-1 prompt and tile clean, and the gate reported PASS. Measured on eng_for_jpn:
+ * 0 of 6 planted ordering breaches caught, while the space-segmented languages caught 6 of 6. The
+ * check was alive only against vocabulary the course never teaches AT ALL, which is why it looked well.
+ *
+ * WHAT THIS COMPUTES: over EVERY possible tiling of the string, the minimum of the maximum
+ * introduction position its pieces require. That is a bottleneck (min-max) shortest path on the
+ * prefix DAG — the same DP as tileUncovered with `boolean OR` swapped for `min over max`.
+ *
+ * WHY THAT IS THE CONSERVATIVE ANSWER, which is the whole point in a script with no word boundaries:
+ * a character sequence can usually be segmented more than one way, so a naive longest-match can
+ * "prove" a breach that a different, equally valid reading does not contain. Quantifying over ALL
+ * tilings makes ambiguity work only in the prompt's favour — a single innocent reading anywhere in
+ * the lattice lowers `required` and silences the gate. The gate therefore speaks only when NO reading
+ * of the prompt is answerable at that position, and stays silent whenever one is.
+ *
+ * It inherits tileUncovered's permissiveness unchanged: a taught single character (の, 了) can bridge
+ * arbitrary positions cheaply, so this still UNDER-reports. It does not over-report.
+ *
+ * @param text     the prompt, whitespace already removed
+ * @param entries  Array<[form, position]>. Position 0 = always available (free class / glue).
+ * @returns {{covered, required, uncovered, path}} — `required` is Infinity when nothing tiles;
+ *          `path` is one optimal tiling, for a human-readable report.
+ */
+function tilePositions(text, entries) {
+  const chars = [...text];
+  const n = chars.length;
+  if (!n) return { covered: true, required: 0, uncovered: null, path: [] };
+
+  const prepared = entries.map(([f, p]) => [[...f], p]).filter(([a]) => a.length);
+  const best = new Array(n + 1).fill(Infinity);
+  const back = new Array(n + 1).fill(null);
+  best[0] = 0;
+
+  for (let i = 1; i <= n; i++) {
+    for (const [entry, pos] of prepared) {
+      const len = entry.length;
+      if (len > i || best[i - len] === Infinity) continue;
+      let ok = true;
+      for (let j = 0; j < len; j++) if (chars[i - len + j] !== entry[j]) { ok = false; break; }
+      if (!ok) continue;
+      // Bottleneck relaxation: the cost of a prefix is the LATEST thing it needs, and minimising
+      // that at every prefix is optimal because max() is monotone in the predecessor's cost.
+      const cost = Math.max(best[i - len], pos);
+      if (cost < best[i]) { best[i] = cost; back[i] = [i - len, entry.join(''), pos]; }
+    }
+  }
+
+  if (best[n] === Infinity) {
+    let last = 0;
+    for (let i = 0; i <= n; i++) if (best[i] !== Infinity) last = i;
+    return { covered: false, required: Infinity, uncovered: chars.slice(last).join(''), path: [] };
+  }
+
+  const path = [];
+  for (let i = n; i > 0;) { const [prev, form, pos] = back[i]; path.unshift({ form, pos }); i = prev; }
+  return { covered: true, required: best[n], uncovered: null, path };
+}
+
+/**
+ * Spans of `text` the learner has DEMONSTRABLY ALREADY SEEN by `currentPos` — i.e. that occur as a
+ * contiguous character run inside a gloss the course introduced at or before that position.
+ *
+ * WHY THIS EXISTS. In a no-space script the inventory is whole glosses; `buildInventory` deliberately
+ * does not split them, because there are no word boundaries to split on. So a learner taught the
+ * seed-5 gloss 話す練習をする has met 話す練習, yet the tiler can only cover that span with the
+ * STANDALONE entry 話す練習, which this course does not introduce until seed 228 — and a naive
+ * position-aware tiler therefore convicts a legitimate seed-5 prompt. Measured on eng_for_jpn before
+ * this guard: 66 newly-raised findings on real practice phrases, a large share of them this artefact.
+ *
+ * The rule is deliberately over-permissive — "you have met these characters, in this order, already"
+ * licenses spans a human might not call a taught unit — because over-permissive means SILENT, and a
+ * check that cries wolf gets switched off. Returned at position 0, so they are free to tile with.
+ *
+ * @param maxLen cap on span length, to keep this O(len·maxLen·|inventory|) rather than quadratic.
+ */
+function seenSpans(text, entries, currentPos, maxLen = 8) {
+  const chars = [...text];
+  const early = entries.filter(([, p]) => p <= currentPos).map(([f]) => f);
+  const out = [];
+  const seen = new Set();
+  for (let i = 0; i < chars.length; i++) {
+    for (let len = 1; len <= maxLen && i + len <= chars.length; len++) {
+      const span = chars.slice(i, i + len).join('');
+      if (seen.has(span)) continue;
+      seen.add(span);
+      if (early.some((f) => f.length > span.length && f.includes(span))) out.push([span, 0]);
+    }
+  }
+  return out;
+}
+
+/**
+ * Is `form` plausibly the SAME LEXEME as something already introduced by `currentPos`, differing
+ * only in a short inflectional tail?
+ *
+ * Used ONLY to REFUSE, never to convict. On an agglutinative no-space known side the inventory holds
+ * surface forms, not lemmas — the Japanese contract says so at length: 話す / 話し / 話せる / 話した
+ * are four unrelated strings to any tokenizer, and 会う (introduced at seed 18) does not cover 会い
+ * (introduced at 127) although they are one verb. Convicting 今晩会いたい at seed 18 of an ordering
+ * breach because the surface string 会い has a later standalone introduction is exactly the kind of
+ * wolf-crying that gets a check switched off.
+ *
+ * Whether two surface forms are one lexeme is a LANGUAGE JUDGMENT, which this module is barred from
+ * making in either direction — so a match here yields UNCHECKED(morphology_unresolved) and the row
+ * goes to the agent lane. It never yields a pass and it never yields a violation.
+ *
+ * THE TEST, deliberately shape-only and script-agnostic: the two forms share a non-empty leading run
+ * and each keeps a tail of at most `maxTail` characters. That is the shape of okurigana alternation
+ * (会う/会い, 見える/見え) without this module needing to know what okurigana is. It over-matches —
+ * 大人 and 大学 would also "look like" one lexeme — and over-matching means SILENCE, which is the
+ * direction this gate is required to err in.
+ */
+function sharesLexemeShape(form, entries, currentPos, maxTail = 2) {
+  const f = [...form];
+  for (const [entry, pos] of entries) {
+    if (pos > currentPos || entry === form) continue;
+    const e = [...entry];
+    let i = 0;
+    while (i < f.length && i < e.length && f[i] === e[i]) i++;
+    if (i === 0) continue;
+    if (f.length - i <= maxTail && e.length - i <= maxTail) return entry;
+  }
+  return null;
+}
+
 module.exports = {
   REASON,
   REASON_TEXT,
@@ -347,6 +478,9 @@ module.exports = {
   stemPrefixHit,
   anyStemInside,
   tileUncovered,
+  tilePositions,
+  seenSpans,
+  sharesLexemeShape,
   expandEnglishContractions,
   NO_SPACE_SCRIPTS,
   DEFAULT_MORPHOLOGY,
