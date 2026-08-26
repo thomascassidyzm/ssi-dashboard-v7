@@ -134,10 +134,18 @@ function overCapMessage(item, seconds) {
  * Shape the pack for the recordist surface's existing contract.
  *
  * Field-for-field what buildQueue returns for a real recordist, so the page
- * needs no knowledge that a pack exists: `text` is the line, `knownText` is the
- * block's note (the surface renders it small under the line), `rerecordReason`
- * is the constraint (rendered smaller still). `courseCode` is null and stays
- * null — there is no course in this, at any layer.
+ * needs no knowledge that a pack exists. The three text slots the surface
+ * actually renders, biggest first, are `text` / `knownText` / `rerecordReason`,
+ * so the pack's three sizes of information go in that order: the line to read,
+ * then which block it is and what the block is for, then how to read it.
+ *
+ * THE BLOCK TITLE RIDES IN knownText, and that is not laziness. `speaker` is
+ * carried by the contract but rendered nowhere on this page, so a title put
+ * there would be invisible — and "this is the word-perfect OpenAI one" is
+ * exactly the thing that must not be invisible. Data, not a component change:
+ * the shared screen Aran and Catrin read from does not move for us.
+ *
+ * `courseCode` is null and stays null — there is no course in this, at any layer.
  */
 function buildPackQueue(pack, takesByItem, { includeRecorded = false } = {}) {
   const lines = []
@@ -151,7 +159,7 @@ function buildPackQueue(pack, takesByItem, { includeRecorded = false } = {}) {
         id: item.id,
         order: item.order,
         text: item.text,
-        knownText: item.note || null,
+        knownText: [item.title, item.note].filter(Boolean).join(' · ') || null,
         speaker: item.title || null,
         courseCode: null,
         recorded: isRecorded,

@@ -139,6 +139,17 @@ test('the queue shape carries no course anywhere', () => {
   assert.ok(q.lines.every((l) => l.kind === 'pack'))
 })
 
+test('the block title reaches a slot the page actually renders', () => {
+  // `speaker` is in the contract and rendered nowhere, so a title parked there
+  // would be invisible — and knowing that block 2 is the word-perfect one is
+  // the single most important thing on that screen.
+  const q = buildPackQueue(TOM_CLONE_PACK, new Map(), { includeRecorded: true })
+  const consent = q.lines.find((l) => l.id === 'b2-openai-consent')
+  assert.match(consent.knownText, /Block 2/)
+  assert.match(consent.knownText, /Word-perfect/)
+  assert.ok(q.lines.every((l) => l.knownText && l.knownText.startsWith('Block ')))
+})
+
 // ── the routes, with the database wired as a landmine ───────────────────────
 
 test('the queue loads without touching the database', async () => {
