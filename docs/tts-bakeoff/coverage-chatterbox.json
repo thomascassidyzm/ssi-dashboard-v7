@@ -2,6 +2,15 @@
   "provider": "Resemble AI",
   "product": "Chatterbox / Chatterbox Multilingual (open-source, MIT) AND Resemble Ultra (hosted platform) — two different things, reported separately throughout",
   "checked_at": "2026-08-26",
+  "recut_at": "2026-08-26",
+  "recut_note": "Re-cut onto the corrected frame after Tom's course correction of 2026-08-26 11:06Z: Welsh is OUT (human-recorded), coverage is counted against the three tiers of languages that actually use TTS, and TTS is a BRIDGE to human recording, so exit cost is scored alongside entry cost. The vendor research below is unchanged and every source citation is the original one; the frame around it is new. Companion dossier: docs/tts-bakeoff/gate-zero-candidates-recut-2026-08-26.md",
+  "headline": {
+    "one_line": "Two products with opposite verdicts: hosted Resemble is DEAD on repeatability — a verdict that never depended on Welsh and survives the reframe untouched — while open-source Chatterbox is the weakest on coverage and by a distance the easiest bridge to leave, because leaving means deleting a file we own.",
+    "tier_coverage": "Tier A 7/10 — the worst of the four, and the misses are live courses: hrv (29,021 clips, live), ben (20,315, live), glg (15,931, live). Tier B 10/11 (misses pdc only). Tier A+B+C 22/44.",
+    "discriminator": "Coverage is where the open-source model genuinely loses, and only on Tier A. On Tier B it ties with everyone at 10/11. Its case is exit: MIT-licensed code AND weights, no subscription, no licence to lapse, nothing held by a vendor, and Aran's voice never leaves our infrastructure. Its costs are real too: no timestamps of any kind, no pronunciation control, a 24 kHz output ceiling, and a permanent unremovable PerTh watermark on every clip we would ever ship.",
+    "verdict": "HOSTED RESEMBLE: DEAD, on repeatability alone — models cannot be pinned, cannot be named in a request, and every previous TTS model has already been force-migrated to Resemble Ultra. OPEN-SOURCE CHATTERBOX: the best bridge on the shortlist and the worst coverage; blocked from evaluation entirely by this box having no GPU.",
+    "welsh_no_longer_relevant": true
+  },
   "sources": [
     {
       "url": "https://github.com/resemble-ai/chatterbox",
@@ -34,12 +43,13 @@
       "what_it_established": "Positions Chatterbox Multilingual as open-source zero-shot multilingual cloning with emotion exaggeration control and PerTh watermarking, detectable by Resemble Detect."
     }
   ],
-  "welsh": {
+  "welsh_footnote": {
     "state": "absent",
     "evidence": "The open-source model's own README enumerates a closed 23-language list — ar da de el en es fi fr he hi it ja ko ms nl no pl pt ru sv sw tr zh. Welsh is not in it, and the language is a required tagged input to the multilingual model, so there is no 'cy' value to pass. The hosted Resemble platform claims '100 languages and regional dialects' but publishes NO list anywhere I could find, so Welsh there is genuinely unstated rather than absent — and an unenumerated marketing number is not evidence.",
     "confidence": "high",
     "gate_zero": "CONDITIONAL",
-    "rationale": "Two verdicts, because these are two products. HOSTED Resemble is DEAD, and not on Welsh — it is dead on repeatability. The docs state plainly that all previous TTS models have reached end of life and voices must be upgraded to Resemble Ultra, and that you cannot select a model in a request at all. A provider that has already force-migrated every existing voice, and gives you no version to pin, cannot deliver near-Azure repeatability by construction; Welsh is moot. OPEN-SOURCE CHATTERBOX is the most interesting CONDITIONAL on the shortlist, and it is conditional on something none of the others offer: the weights are MIT-licensed and downloadable, so Welsh is not a permission we ask for, it is an engineering job we can do. Two routes — zero-shot clone Aran and feed it Welsh text with the language tag set to a phonetically nearby listed language, or genuinely fine-tune on Aran's and Catrin's existing human recordings, of which we hold hundreds on two 300-seed courses. The dialect question that no vendor will answer is the one thing a fine-tune answers best: train on Aran, get north Welsh; train on Catrin, get south Welsh, because the dialect is in the training data rather than in a vendor's language pack. That is the strongest dialect story of the four candidates. The condition is hardware, not money: this box has NO GPU, no CUDA, no torch and no pip, so nothing can be tried here at all."
+    "rationale": "Two verdicts, because these are two products. HOSTED Resemble is DEAD, and not on Welsh — it is dead on repeatability. The docs state plainly that all previous TTS models have reached end of life and voices must be upgraded to Resemble Ultra, and that you cannot select a model in a request at all. A provider that has already force-migrated every existing voice, and gives you no version to pin, cannot deliver near-Azure repeatability by construction; Welsh is moot. OPEN-SOURCE CHATTERBOX is the most interesting CONDITIONAL on the shortlist, and it is conditional on something none of the others offer: the weights are MIT-licensed and downloadable, so Welsh is not a permission we ask for, it is an engineering job we can do. Two routes — zero-shot clone Aran and feed it Welsh text with the language tag set to a phonetically nearby listed language, or genuinely fine-tune on Aran's and Catrin's existing human recordings, of which we hold hundreds on two 300-seed courses. The dialect question that no vendor will answer is the one thing a fine-tune answers best: train on Aran, get north Welsh; train on Catrin, get south Welsh, because the dialect is in the training data rather than in a vendor's language pack. That is the strongest dialect story of the four candidates. The condition is hardware, not money: this box has NO GPU, no CUDA, no torch and no pip, so nothing can be tried here at all.",
+    "demoted_because": "Welsh is done by human recording (cym_n_for_eng / cym_s_for_eng are 96.4% human, the only human-voiced language in the estate). Vendor Welsh support does not decide this evaluation. Kept verbatim because it is the only yardstick we have for a vendor's reach into Welsh, which will matter if the human-recording programme ever needs a synthetic stand-in. The gate_zero verdict inside this block is SUPERSEDED and must not be quoted as a live verdict."
   },
   "languages_supported": [
     "Arabic (ar)",
@@ -137,8 +147,93 @@
     "zzz": "no"
   },
   "coverage_counts": {
+    "of_tier_a_10": 7,
+    "of_tier_b_11": 10,
+    "of_tier_abc_44": 22
+  },
+  "coverage_counts_superseded": {
     "of_68": 22,
     "of_xai_scope_11": 10
+  },
+  "coverage_misses": {
+    "tier_a": [
+      "hrv",
+      "ben",
+      "glg"
+    ],
+    "tier_b": [
+      "pdc"
+    ],
+    "tier_abc": [
+      "hrv",
+      "ben",
+      "glg",
+      "pdc",
+      "eus",
+      "cat",
+      "fas",
+      "nep",
+      "gle",
+      "lit",
+      "hye",
+      "ron",
+      "lav",
+      "est",
+      "isl",
+      "ces",
+      "ukr",
+      "bul",
+      "tha",
+      "srp",
+      "hun",
+      "afr"
+    ]
+  },
+  "exit_cost": {
+    "verdict": "EASY — the easiest of the four by a distance, on the open-source model only. Hosted Resemble is not scored here because it is already dead on repeatability.",
+    "score_rationale": "Leaving Chatterbox is deleting a directory. There is no vendor, no subscription, no licence to lapse, no account to close and no third party holding Aran's voice. Everything that makes exit expensive elsewhere is structurally absent. The two real costs of leaving are that we would have to build our own boundary data, and that the PerTh watermark on every clip we ever shipped is permanent and cannot be withdrawn.",
+    "boundary_data": {
+      "available": "NO. None of any kind.",
+      "detail": "The model returns an audio tensor and nothing else — no alignment, no word timings, no phoneme timings, and no documented way to ask for them. This matters concretely: services/phases/phase8-audio-v13.cjs POST /splice-components/:courseCode cuts component clips out of their parent M-LEGO audio using that parent's stored word_boundaries, so a provider with no boundaries cannot feed that path. The estate already lives with this on xAI (services/tts-service.cjs generateXai returns wordBoundaries: null explicitly), and it is the reason fra_for_eng holds only 58 clips with boundaries against 67,311 without, while Azure-era spa_for_eng holds 33,420 of 79,722. So the loss is survivable and already survived — but it is a loss. The mitigation, which self-hosting makes cheap rather than expensive, is to derive boundaries locally with whisper, which this estate already runs on three separate legs of the audio pipeline.",
+      "sources": [
+        "https://github.com/resemble-ai/chatterbox",
+        "services/phases/phase8-audio-v13.cjs",
+        "services/tts-service.cjs"
+      ]
+    },
+    "audio_format": {
+      "containers": "Whatever we write. The model hands back a torch tensor; the reference example saves wav at model.sr.",
+      "sample_rates_hz": [
+        24000
+      ],
+      "fits_house_master": "WITH AN UPSAMPLE. S3Gen runs at 24 kHz, so every clip is band-limited near 12 kHz and then upsampled into the house 44.1 kHz mp3 master. That is invisible in a fully synthetic course and audible-adjacent in exactly the situation this project is building towards: a course part-migrated to human recordings, where a 24 kHz-derived synthetic clip sits next to a full-bandwidth human one in the same round. Shared with OpenAI; Cartesia and MiniMax do not have it.",
+      "sources": [
+        "https://huggingface.co/ResembleAI/chatterbox",
+        "https://github.com/resemble-ai/chatterbox",
+        "services/audio-processor.cjs"
+      ]
+    },
+    "licensing_after_we_stop_paying": {
+      "verdict": "NOT APPLICABLE — there is nothing to stop paying. Best possible position.",
+      "detail": "Code and weights are both MIT (the HuggingFace model card metadata states license: mit, matching the GitHub repo). There is no subscription, no commercial-use gate, no per-character rate and no termination event. Clips already rendered are ours unconditionally and stay ours. The one thing that does not leave: every file Chatterbox generates carries Resemble's PerTh neural watermark, applied automatically with no documented disable, 'imperceptible' and engineered to survive mp3 compression and editing with near-100% detection. So every clip we ship stays permanently identifiable as Chatterbox-generated, forever, including after we have moved that course to human voices — unless the clip is replaced. That is not a licence problem, but it is a permanent mark and Aran and Catrin should be told about it before they record.",
+      "sources": [
+        "https://huggingface.co/ResembleAI/chatterbox",
+        "https://github.com/resemble-ai/chatterbox"
+      ]
+    },
+    "clone_retirement": {
+      "mechanism": "Delete the reference clip and/or the fine-tuned checkpoint from our own disk.",
+      "detail": "The cleanest retirement story available anywhere. Zero-shot cloning takes a reference audio path at inference time, so 'retiring the clone' is deleting one file and it ceases to exist. A genuine fine-tune on Aran's or Catrin's recordings produces a checkpoint we hold, and retiring it is deleting that checkpoint. No vendor ever held the voice, so there is no third party to ask, no deletion request to file, no retention window to wait out and no residual training influence in somebody else's model. For a project whose founding reason is that Aran's voice should not live inside a company the founders object to, this is the only option on the shortlist where that is structurally guaranteed rather than promised.",
+      "sources": [
+        "https://github.com/resemble-ai/chatterbox"
+      ]
+    },
+    "gaps": [
+      "THIS BOX CANNOT RUN CHATTERBOX AT ALL — no GPU, no CUDA, no torch, no pip, no numpy. The one candidate that costs nothing to evaluate is the one candidate we are hardware-blocked from touching. It needs a GPU box, not a budget.",
+      "No fine-tuning or training scripts are published in the repository; the existence of official 'Single Language Pack' finetunes shows it is done, but not how.",
+      "The PerTh watermark's behaviour under our own mastering chain (loudnorm, end-of-speech trim, lame re-encode at 192 kbps) is unverified — the vendor claims survival through mp3 compression, and we have not tested it.",
+      "Whether 24 kHz output is audibly distinguishable from human recordings inside one course round is an untested ear question, not a documented fact."
+    ]
   },
   "version_pinning": "Split verdict, and the split is the whole point. OPEN-SOURCE CHATTERBOX: the strongest pinning available anywhere, because pinning stops being a vendor promise and becomes a file we hold. A specific weights checkpoint plus a pinned inference stack plus a fixed seed is reproducible for as long as we keep the disk, with no vendor able to sunset it. That is better than Azure, not merely near it. HOSTED RESEMBLE: the worst of the four. Models cannot be selected per request; the model is bound to the voice_uuid; all previous TTS models have already reached end of life and existing voices had to be upgraded to Resemble Ultra to keep generating at all. No notice period is published and no output-stability guarantee exists.",
   "cloning_consent": "OPEN-SOURCE: no vendor is involved, so there is nothing to sign and nothing to disclose to a third party. Aran's and Catrin's audio never leaves our infrastructure, which is the cleanest possible answer to the ethical question that started this project — we are moving off xAI precisely so Aran's voice does not feed someone else's model, and self-hosted Chatterbox is the only option on the shortlist where that is structurally guaranteed rather than promised. The MIT licence permits commercial use. Two things Aran and Catrin should still be told: every output carries an inaudible Perth watermark identifying it as Chatterbox-generated and detectable by Resemble Detect, which is a feature not a problem, and it is permanent; and we would hold the model weights of their voice indefinitely, so the consent conversation should cover deletion on request. HOSTED: 10 seconds to 3 minutes of audio, trains in under a minute, Business plan or higher. Resemble markets 'consent-first workflows' but the cloning documentation states no consent statement, no verification step and no ownership terms, so what that marketing means in practice is unverified.",

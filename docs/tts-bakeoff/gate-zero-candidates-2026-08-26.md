@@ -1,3 +1,9 @@
+> ⚠️ **SUPERSEDED FRAME — 2026-08-26.** Welsh is out of gate zero (it is human-recorded), coverage is
+> now counted against the three tiers of languages that actually use TTS, and TTS is a bridge to
+> human recording, so exit cost counts. **Read [`gate-zero-candidates-recut-2026-08-26.md`](./gate-zero-candidates-recut-2026-08-26.md) instead.**
+> The vendor research below is sound and is reused there in full; only its Welsh-driven headline and
+> verdicts are replaced. Kept in place because the history is honest.
+
 # Gate zero — the four candidates
 
 **Slice 1a of phase 1. Compiled 2026-08-26 from vendor documentation fetched today.**
