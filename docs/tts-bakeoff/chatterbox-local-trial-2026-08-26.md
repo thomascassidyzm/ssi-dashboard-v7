@@ -266,21 +266,35 @@ advanced the RNG. Reproducibility holds across context, not just across a tight 
 Determinism holds across the full length range, from a one-word utterance to eleven words. No
 sentence in the set was an exception.
 
-### D — a fourth experiment, launched but NOT completed
+### D — is it the seed, or just the low temperature?
 
-I wrote `temp_probe.py` to separate "deterministic because seeded" from "deterministic because the
-temperature is low", by repeating the same-seed and different-seed comparisons at the library's
-**default temperature of 0.8** rather than 0.1, plus an unseeded control.
+Experiments A-C all ran at temperature 0.1. If that alone collapsed sampling to near-greedy, then
+byte-identity would prove nothing about *seed control*, which is the property that actually matters
+for axis F. `temp_probe.py` separates the two causes by repeating the comparisons at the library's
+**default temperature of 0.8**, plus an unseeded control.
 
-**It did not finish.** It was still loading the model when I wrote this up, having produced zero
-renders — the box was under load average 8-9 from sibling agent sessions for the whole period. I am
-reporting that rather than quietly dropping the experiment.
+Sentence: *"He can build a new life for his sister."*
 
-It matters less than it did when I wrote it, because **experiment B already answers the question it
-was built for**: at a fixed temperature of 0.1, changing only the seed changes the output
-completely, which proves sampling entropy exists at that temperature and that the seed is what
-controls it. What D would add is confirmation that the same holds at temperature 0.8. The script is
-committed and takes one command to run when the box is quiet.
+| Condition | Setup | Duration | sha256 (first 16) | Identical? |
+|---|---|---|---|---|
+| **D1** | temp **0.8**, seed 1234, twice | 2.28 / 2.28 s | `3a26fabb1cd4eb11` / `3a26fabb1cd4eb11` | **YES** |
+| **D2** | temp **0.8**, seeds 1 vs 777 | 1.96 / 2.20 s | `133b301e34c3a155` / `86f9056f25237b83` | no |
+| **D3** | temp 0.1, seeds 1 vs 777 | 1.92 / 1.92 s | `bdeb6a583237e151` / `67f776a81d57c47f` | no |
+| **D4** | temp **0.8**, **no seed set** between renders | 2.20 / 2.00 s | `d101ae730272ba13` / `0add7cc364d98e8f` | no |
+
+A clean 2x2, and it is the strongest single result in this document:
+
+- **D1 — determinism is NOT an artefact of low temperature.** At the library's own default of 0.8,
+  a fixed seed still gives byte-identical output.
+- **D2 / D3 — the seed genuinely steers sampling**, at both temperatures. Note D2's durations
+  differ by 0.24 s, so different seeds change the performance, not just the noise.
+- **D4 — the control fires.** Leave the RNG alone and consecutive renders diverge. So the
+  byte-identity in A, C and D1 is caused by `manual_seed`, not by the model being deterministic
+  regardless.
+
+Put together: **Chatterbox is fully stochastic by default, and fully reproducible when you seed
+it.** That is exactly the property SSi needs — you can re-render a course phrase years later and
+get the same audio back, provided the seed is stored alongside the text.
 
 ### What I could not do: listen
 
@@ -304,6 +318,10 @@ What I *can* say from measurement is that this trial says nothing about quality.
 - Different seed → a genuinely different take, verified at signal level.
 - The determinism survives an intervening 20 generations, so it is a property of the seed rather
   than of a warm loop.
+- It holds at the library's **default temperature of 0.8**, not just at the cold 0.1 the main
+  benchmark used — so it is real seed control, not sampling collapse.
+- The unseeded control diverges, confirming the model is stochastic by default and that
+  `manual_seed` is what makes it repeatable.
 - Caveat, and it is a real one: this was measured on **one machine, one build, CPU-only, one
   session**. Byte-identity across *hardware* (CPU vs GPU), across torch versions, or across
   library versions is **not** tested here and should not be assumed — GPU kernels in particular

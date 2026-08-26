@@ -1,0 +1,83 @@
+{
+  "text": "He can build a new life for his sister.",
+  "renders": {
+    "D1": [
+      {
+        "tag": "d1_a",
+        "temperature": 0.8,
+        "seed": 1234,
+        "duration_s": 2.28,
+        "gen_s": 8.9,
+        "sha256": "3a26fabb1cd4eb11961f254edea4d8e3cba4db06b7e35b6cadd8de5954daddc9"
+      },
+      {
+        "tag": "d1_b",
+        "temperature": 0.8,
+        "seed": 1234,
+        "duration_s": 2.28,
+        "gen_s": 8.2,
+        "sha256": "3a26fabb1cd4eb11961f254edea4d8e3cba4db06b7e35b6cadd8de5954daddc9"
+      }
+    ],
+    "D2": [
+      {
+        "tag": "d2_s1",
+        "temperature": 0.8,
+        "seed": 1,
+        "duration_s": 1.96,
+        "gen_s": 7.5,
+        "sha256": "133b301e34c3a155b37bc6e0525527a4420fbc3902d6c1958c81ae16ef579a09"
+      },
+      {
+        "tag": "d2_s2",
+        "temperature": 0.8,
+        "seed": 777,
+        "duration_s": 2.2,
+        "gen_s": 8.1,
+        "sha256": "86f9056f25237b83bfd847cbad7e94e6bc0a24a10b71079026ed1853287b3434"
+      }
+    ],
+    "D3": [
+      {
+        "tag": "d3_s1",
+        "temperature": 0.1,
+        "seed": 1,
+        "duration_s": 1.92,
+        "gen_s": 7.7,
+        "sha256": "bdeb6a583237e15171d9121bf1174fa51039697879624b055f7dd4757f6f9412"
+      },
+      {
+        "tag": "d3_s2",
+        "temperature": 0.1,
+        "seed": 777,
+        "duration_s": 1.92,
+        "gen_s": 8.0,
+        "sha256": "67f776a81d57c47ff5cdb9fb91b337c37f9099f96dbc3d680ae3681268f1f214"
+      }
+    ],
+    "D4": [
+      {
+        "tag": "d4_a",
+        "temperature": 0.8,
+        "seed": null,
+        "duration_s": 2.2,
+        "gen_s": 7.9,
+        "sha256": "d101ae730272ba13016d6c01d5cea3effd687684bbb0406bfa354392e84fa95f"
+      },
+      {
+        "tag": "d4_b",
+        "temperature": 0.8,
+        "seed": null,
+        "duration_s": 2.0,
+        "gen_s": 7.7,
+        "sha256": "0add7cc364d98e8f8f348843327adab15badcc6156956cdc1729b8a50da10b8a"
+      }
+    ]
+  },
+  "verdict": {
+    "D1_same_seed_temp08_identical": true,
+    "D2_diff_seed_temp08_identical": false,
+    "D3_diff_seed_temp01_identical": false,
+    "D4_unseeded_temp08_identical": false
+  }
+}
