@@ -238,3 +238,17 @@ describe('a Japanese prompt written entirely in kanji is still Japanese', () => 
     expect(r.reason).toBe('mixed_script')
   })
 })
+
+describe('a truncated annotation is still an annotation', () => {
+  // Three real glosses lost their closing bracket: 知っていました（1人称 , 知っている（彼 ,
+  // ～するつもりだった（ir一人称 . Left in, the fragment's characters become REQUIRED words and
+  // every prompt in the basket is convicted of not saying "1st person".
+  it('strips an annotation whose closing bracket was lost', () => {
+    expect(cleanGloss('知っていました（1人称')).toBe('知っていました')
+    expect(cleanGloss('知っている（彼')).toBe('知っている')
+  })
+
+  it('so the basket is judged on the word, not on the label', () => {
+    expect(check('知っていました（1人称', '答えを知っていました').status).toBe(STATUS.PASS)
+  })
+})

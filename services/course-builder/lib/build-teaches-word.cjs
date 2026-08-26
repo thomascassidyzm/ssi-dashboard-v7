@@ -94,6 +94,10 @@ function reasonText(code) {
 // （女性複数） / (formal), and the 〜/～ slot marker on bound forms (〜の時, ～冊). Both must go
 // before cores are taken, or every phrase in the basket "fails" for not repeating the annotation.
 const ANNOTATION_RE = /[（(][^）)]*[）)]/gu;
+// An annotation whose closing bracket was lost to truncation — 「知っていました（1人称」 is a real
+// gloss on spa_for_jpn. Without this the fragment survives the strip and its characters become
+// REQUIRED words, so every prompt in the basket is convicted of not saying "1st person".
+const UNCLOSED_ANNOTATION_RE = /[（(][^）)]*$/u;
 const SLOT_MARKER_RE = /[〜~～]/gu;
 
 // A gloss may offer the author's alternatives — 「嬉しい・満足している」, 「お願いする／頼む」,
@@ -106,6 +110,7 @@ function cleanGloss(gloss) {
   return (gloss || '')
     .normalize('NFC')
     .replace(ANNOTATION_RE, '')
+    .replace(UNCLOSED_ANNOTATION_RE, '')
     .replace(SLOT_MARKER_RE, '');
 }
 
