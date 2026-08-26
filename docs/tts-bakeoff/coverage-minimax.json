@@ -155,8 +155,9 @@
   },
   "coverage_counts": {
     "of_tier_a_10": 8,
-    "of_tier_b_11": 10,
-    "of_tier_abc_44": 31
+    "of_tier_b_10": 10,
+    "of_tier_abc_43": 31,
+    "note": "Tier B is 10 languages, not 11, and Tier A+B+C is 43, not 44: pdc (Pennsylvania Dutch) is HUMAN-VOICED ONLY by Tom ruling 2026-08-14 and hard-blocked from TTS in services/shared/human-voice-courses.cjs, alongside cym and bre. It must not be counted as a vendor miss - no vendor can miss a language we have ruled we will never synthesise. Every candidate therefore covers the migration scope COMPLETELY at 10/10. Counts corrected by Watson 2026-08-26 after the re-cut; the underlying ssi_coverage map is unchanged."
   },
   "coverage_counts_superseded": {
     "of_68": 33,
@@ -167,9 +168,7 @@
       "ben",
       "glg"
     ],
-    "tier_b": [
-      "pdc"
-    ],
+    "tier_b": [],
     "tier_abc": [
       "ben",
       "glg",
