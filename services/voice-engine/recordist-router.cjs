@@ -38,6 +38,15 @@ const {
   propagateTakeToDuplicates,
   clearRerecordWants,
 } = require('./recordist-queue.cjs')
+const { resolvePack, findItem } = require('./clone-source-pack.cjs')
+const {
+  takeKey,
+  packPrefix,
+  indexTakes,
+  probeDurationSeconds,
+  overCapMessage,
+  buildPackQueue,
+} = require('./clone-source-store.cjs')
 const { canonicalLanguage, canonicalVoiceId, ClipIdentityError } = require('../shared/clip-identity.cjs')
 const { audioKeyCandidates } = require('../shared/text-normalize.cjs')
 const { bucketKey } = require('../shared/dialect.cjs')
@@ -116,9 +125,110 @@ module.exports = function createRecordistRouter({
     return recordist
   }
 
+  // ── PACKS ──────────────────────────────────────────────────────────────────
+  // A RECORDING PACK is an authored script that rides this surface but is not
+  // course content and must never become it: the TTS bake-off clone source is
+  // the first. Every pack branch below is taken BEFORE the policy lookup and
+  // BEFORE handleRecordingUpload, so a pack take reaches no course table, no
+  // pod, no provenance row and no mastering chain — only raw bytes at an S3 key
+  // under `clone-source/`. Full reasoning: clone-source-pack.cjs.
+  //
+  // The page is untouched by all of this. A pack presents itself as a voice id,
+  // so /r/pack-tom-clone loads the same screen Aran and Catrin read from, with
+  // the same recorder, the same meter and the same play-it-back.
+
+  async function packQueueResponse(req, res, pack) {
+    const includeRecorded = req.query.includeRecorded === '1' || req.query.includeRecorded === 'true'
+    const objects = await s3.listObjects(packPrefix(pack.id))
+    const queue = buildPackQueue(pack, indexTakes(objects, pack.id), { includeRecorded })
+    res.json({
+      voiceId: pack.voiceId,
+      displayName: pack.displayName,
+      language: pack.language,
+      languageName: pack.languageName,
+      gender: null,
+      dialect: null,
+      // Paragraphs with sentence pauses in them: stopping on the first pause
+      // would cut the 25-second cloning sample in half. The page reads this.
+      autoAdvance: pack.autoAdvance !== false,
+      pack: { id: pack.id, title: pack.title },
+      total: queue.total,
+      recorded: queue.recorded,
+      remaining: queue.remaining,
+      lines: queue.lines,
+    })
+  }
+
+  /** A pack take: probe, refuse if over the vendor cap, store the raw bytes. */
+  async function recordPackTake({ res, pack, itemId, audioBase64, mimeType, device }) {
+    const item = findItem(pack, itemId)
+    if (!item) return res.status(404).json({ error: `No item ${itemId} in pack ${pack.id}` })
+
+    const buffer = Buffer.from(audioBase64, 'base64')
+    if (!buffer.length) return res.status(400).json({ error: 'empty take' })
+
+    // A cap here is a vendor's hard refusal, not a preference — an over-length
+    // sample is not a worse clone, it is no clone at all. Probed before the
+    // upload so the reader hears about it while they are still in position.
+    let seconds = null
+    if (item.maxSeconds) seconds = await probeDurationSeconds(buffer, mimeType)
+    const overCap = seconds !== null && item.maxSeconds && seconds > item.maxSeconds
+
+    // Stored either way. A declined take is still a take Tom has spoken, and
+    // this system does not throw those away — it files them under _rejected/
+    // where nothing counts them as done.
+    const key = takeKey({ packId: pack.id, itemId: item.id, mimeType, rejected: !!overCap })
+    await s3.uploadRawTake({
+      key,
+      buffer,
+      contentType: mimeType || 'application/octet-stream',
+      metadata: {
+        packId: pack.id,
+        itemId: item.id,
+        // Says in the object itself what this is and what it must not become.
+        purpose: 'tts-bakeoff-clone-source',
+        notCourseAudio: 'true',
+        durationSeconds: seconds === null ? 'unknown' : seconds.toFixed(2),
+        rejected: overCap ? 'over_cap' : 'false',
+        device: device || 'unknown',
+        mimeType: mimeType || 'unknown',
+      },
+    })
+
+    if (overCap) {
+      return res.status(409).json({ error: overCapMessage(item, seconds), seconds, maxSeconds: item.maxSeconds, storedKey: key })
+    }
+    return res.json({
+      ok: true,
+      audioId: item.id,
+      clipUrl: `/api/recording/voice/${encodeURIComponent(pack.voiceId)}/line/${encodeURIComponent(item.id)}/clip`,
+      alsoFilled: 0,
+      rawKey: key,
+      seconds,
+    })
+  }
+
+  /** Play back the newest stored take of a pack item. */
+  async function packClipResponse(req, res, pack) {
+    const item = findItem(pack, req.params.lineId)
+    if (!item) return res.status(404).json({ error: `No item ${req.params.lineId} in pack ${pack.id}` })
+    const objects = await s3.listObjects(packPrefix(pack.id))
+    const take = indexTakes(objects, pack.id).get(item.id)
+    if (!take) return res.status(404).json({ error: 'No stored take for this line yet', reason: 'no_take' })
+    // There is no mastered/raw pair for a pack: the raw bytes ARE the take, so
+    // both variants resolve to the same object rather than 404-ing on `raw`.
+    const url = await s3.getAudioSignedUrl(null, 3600, { s3Key: take.key })
+    if (req.query.json === '1') {
+      return res.json({ audioId: item.id, s3Key: take.key, url, variant: req.query.variant === 'raw' ? 'raw' : 'processed' })
+    }
+    res.redirect(302, url)
+  }
+
   // ── 1. the queue ───────────────────────────────────────────────────────────
   router.get('/voice/:voiceId', async (req, res) => {
     try {
+      const pack = resolvePack(req.params.voiceId)
+      if (pack) return await packQueueResponse(req, res, pack)
       const recordist = await recordistOr404(req, res)
       if (!recordist) return
       const includeRecorded = req.query.includeRecorded === '1' || req.query.includeRecorded === 'true'
@@ -227,8 +337,9 @@ module.exports = function createRecordistRouter({
   // ── 2. a take ──────────────────────────────────────────────────────────────
   router.post('/voice/:voiceId/take', async (req, res) => {
     try {
-      const recordist = await recordistOr404(req, res)
-      if (!recordist) return
+      const pack = resolvePack(req.params.voiceId)
+      const recordist = pack ? null : await recordistOr404(req, res)
+      if (!pack && !recordist) return
 
       const isMultipart = String(req.headers['content-type'] || '').includes('multipart/form-data')
       // What recorded this take — the recordist's chosen mic and their browser.
@@ -258,6 +369,10 @@ module.exports = function createRecordistRouter({
         if (!audioBase64) return res.status(400).json({ error: 'audioData (base64) or a multipart audio part required' })
       }
       if (!lineId) return res.status(400).json({ error: 'lineId required' })
+
+      // A PACK take never reaches the upload seam. Branch is here rather than
+      // at the top of the route so the multipart parse stays shared.
+      if (pack) return await recordPackTake({ res, pack, itemId: lineId, audioBase64, mimeType, device })
 
       // The line decides the course; the recordist decides the voice.
       const { data: sentence, error: sentErr } = await db()
@@ -395,6 +510,8 @@ module.exports = function createRecordistRouter({
           reason: 'bad_variant',
         })
       }
+      const pack = resolvePack(req.params.voiceId)
+      if (pack) return await packClipResponse(req, res, pack)
       const recordist = await recordistOr404(req, res)
       if (!recordist) return
 

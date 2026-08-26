@@ -1,5 +1,5 @@
 // services/s3-production-service.cjs
-const { S3Client, GetObjectCommand, PutObjectCommand, HeadObjectCommand } = require('@aws-sdk/client-s3')
+const { S3Client, GetObjectCommand, PutObjectCommand, HeadObjectCommand, ListObjectsV2Command } = require('@aws-sdk/client-s3')
 const { getSignedUrl } = require('@aws-sdk/s3-request-presigner')
 const { AUDIO_CACHE_CONTROL } = require('./shared/audio-cache-control.cjs')
 
@@ -308,7 +308,37 @@ async function batchCheckAudio(uuids, bucket = process.env.S3_BUCKET || 'ssi-aud
   return results
 }
 
+/**
+ * Every object under a key prefix, paged to exhaustion.
+ *
+ * Added for the clone-source packs, whose "what have I already recorded?" is
+ * answered by the bucket itself rather than by a table — see
+ * services/voice-engine/clone-source-pack.cjs for why that path writes no rows.
+ * Kept generic and read-only: it lists, it does not interpret.
+ *
+ * @returns {Promise<Array<{key: string, size: number, lastModified: Date}>>}
+ */
+async function listObjects(prefix, options = {}) {
+  const bucket = options.bucket || BUCKET
+  const client = options.client || s3Client
+  const out = []
+  let token
+  do {
+    const page = await client.send(new ListObjectsV2Command({
+      Bucket: bucket,
+      Prefix: prefix,
+      ContinuationToken: token,
+    }))
+    for (const o of page.Contents || []) {
+      out.push({ key: o.Key, size: o.Size, lastModified: o.LastModified })
+    }
+    token = page.IsTruncated ? page.NextContinuationToken : undefined
+  } while (token)
+  return out
+}
+
 module.exports = {
+  listObjects,
   getCourseManifest,
   getSampleFlags,
   saveSampleFlags,

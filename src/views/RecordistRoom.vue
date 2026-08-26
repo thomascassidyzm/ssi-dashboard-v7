@@ -777,6 +777,13 @@ async function load() {
     if (!res.ok) throw new Error(`Could not load your lines (${res.status})`)
     const data = await res.json()
     voice.value = data
+    // A QUEUE MAY ASK FOR AUTO-ADVANCE OFF, and one does. Pod and course lines
+    // are single sentences, so stopping on a silence is right for them and the
+    // default stays on. A recording PACK is paragraphs — the 25-second cloning
+    // sample has four sentence pauses in it, and advancing on the first one
+    // would file a third of a take and call it done. The reader can still turn
+    // it back on with the checkbox; this only decides where it starts.
+    if (data.autoAdvance === false) autoAdvance.value = false
     lines.value = Array.isArray(data.lines) ? data.lines : []
     doneIds.value = new Set()
     sessionIds.value = []
