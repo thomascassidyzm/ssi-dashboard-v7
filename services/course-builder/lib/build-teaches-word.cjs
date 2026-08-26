@@ -201,8 +201,13 @@ function checkBuildTeachesWord(legoKnown, phraseKnown, opts = {}) {
   // The prompt must be written in the known language's script. Where it is not, this is the
   // untranslated-prompt defect (Portuguese/English sitting in the Japanese field), not a
   // word-choice one — refuse rather than mis-file it as a violation.
-  const promptScripts = scriptsIn(promptRaw).filter((s) => s !== 'Latn' || script === 'Latn');
-  if (script !== 'Latn' && !promptScripts.includes(script)) {
+  //
+  // ONE-WAY COMPATIBILITY, and only this one: script detection calls a string Japanese on the
+  // strength of its kana, so a Japanese prompt written ENTIRELY in kanji comes back as Han
+  // (39 such prompts across the six courses, every one of them real Japanese). A Japanese gloss
+  // therefore accepts a Han prompt. The converse does NOT hold — kana in a Chinese-known prompt
+  // is a genuine wrong-language finding, so it is not waved through.
+  if (script !== 'Latn' && !scriptsIn(promptRaw).some((s) => s === script || (script === 'Jpan' && s === 'Hani'))) {
     return unchecked(REASON.MIXED_SCRIPT, `prompt is not written in ${script}: "${phraseKnown}"`);
   }
 

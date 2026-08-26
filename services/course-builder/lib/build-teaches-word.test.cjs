@@ -223,3 +223,18 @@ describe('space-segmented known sides', () => {
     expect(r.status).toBe(STATUS.VIOLATION)
   })
 })
+
+describe('a Japanese prompt written entirely in kanji is still Japanese', () => {
+  // Script detection calls a string Japanese on the strength of its kana, so an all-kanji
+  // prompt comes back as Han. 39 such prompts exist across the six Japanese-prompt courses.
+  it('checks it rather than refusing it as the wrong script', () => {
+    expect(checkBuildTeachesWord('明日', '明日出発', { knownLang: 'jpn' }).status).toBe(STATUS.PASS)
+    expect(checkBuildTeachesWord('明日', '昨日出発', { knownLang: 'jpn' }).status).toBe(STATUS.VIOLATION)
+  })
+
+  it('but the compatibility is one-way — an all-kana prompt in a Chinese-known course is refused', () => {
+    const r = checkBuildTeachesWord('老人', 'おとしよりです', { knownLang: 'zho', script: 'Hani' })
+    expect(r.status).toBe(STATUS.UNCHECKED)
+    expect(r.reason).toBe('mixed_script')
+  })
+})
