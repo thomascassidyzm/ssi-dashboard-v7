@@ -33,7 +33,9 @@
  *     at all. This adapter can build its invocation, and can never run it here.
  */
 const path = require('path');
-const { noCredentialError, assertSpendAllowed } = require('../lib/adapter-utils.cjs');
+// No spend gate here on purpose: Chatterbox is self-hosted and costs nothing per
+// clip. The gate exists to stop money leaving the account, and there is none to
+// stop. What blocks it is the runtime, and that is a different, honest error.
 
 const LANGS = 'ar da de el en es fi fr he hi it ja ko ms nl no pl pt ru sv sw tr zh'.split(' ');
 const { shortLang } = require('../lib/adapter-utils.cjs');
@@ -105,7 +107,6 @@ module.exports = {
   },
 
   async synthesise(utterance, opts = {}) {
-    assertSpendAllowed(this, opts);
     const err = new Error(
       'no runtime: phase 2 blocker — Chatterbox needs a GPU host with a pip-capable python. ' +
       'watson-1 has neither (no CUDA; python 3.14.4 with no pip/ensurepip). Costs nothing to run, ' +

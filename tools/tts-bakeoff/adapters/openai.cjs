@@ -11,7 +11,7 @@
  * the three HTTP ones whose docs claim Welsh at all — but a claimed language is
  * not a convincing language, and Gate Zero is decided by ear, not by a list.
  */
-const { envRef, noCredentialError, assertSpendAllowed } = require('../lib/adapter-utils.cjs');
+const { envRef, httpSynthesise } = require('../lib/adapter-utils.cjs');
 
 const DEFAULT_MODEL = 'gpt-4o-mini-tts';
 const PINNED_EXAMPLE = 'gpt-4o-mini-tts-2025-12-15';
@@ -83,7 +83,9 @@ module.exports = {
   },
 
   async synthesise(utterance, opts = {}) {
-    // Credentials first: the honest message is "no key", not "spend blocked".
-    throw noCredentialError(this);
+    // Credentials first (the honest message is "no key"), then the spend gate,
+    // then the real call. Wired for phase 2: the day the key lands this works,
+    // and until Tom clears PHASE2_SPEND_APPROVED it still refuses to spend.
+    return httpSynthesise(this, this.buildRequest(utterance, opts), opts);
   },
 };

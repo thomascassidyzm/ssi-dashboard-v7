@@ -19,7 +19,7 @@
  * here. A bake-off must compare providers on identical input text; a
  * repo-specific pre-transform would silently advantage Azure.
  */
-const { envRef, resolveHeaders, assertSpendAllowed } = require('../lib/adapter-utils.cjs');
+const { envRef, httpSynthesise } = require('../lib/adapter-utils.cjs');
 
 /** The SDK enum value the repo uses, in its REST header spelling. */
 const OUTPUT_FORMAT = 'audio-16khz-32kbitrate-mono-mp3';
@@ -90,12 +90,8 @@ module.exports = {
   },
 
   async synthesise(utterance, opts = {}) {
-    assertSpendAllowed(this, opts);   // blocks in phase 1 even with --live
-    const req = this.buildRequest(utterance, opts);
-    const headers = resolveHeaders(req.headers, this.id);
-    const res = await fetch(req.endpoint, { method: req.method, headers, body: req.body });
-    if (!res.ok) throw new Error(`Azure TTS ${res.status}: ${await res.text()}`);
-    const audioBuffer = Buffer.from(await res.arrayBuffer());
-    return { audioBuffer, metadata: { http_status: res.status, content_type: res.headers.get('content-type') } };
+    // Key present on this box, so the spend gate inside httpSynthesise is the
+    // only thing standing between phase 1 and a bill. It blocks even with --live.
+    return httpSynthesise(this, this.buildRequest(utterance, opts), opts);
   },
 };

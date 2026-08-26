@@ -184,7 +184,30 @@ seed | request_sha256   | audio_sha256
    ```
 
    For the three unkeyed providers the credential error fires first, because "no key" is the honest
-   message rather than "spend blocked".
+   message rather than "spend blocked":
+
+   ```
+   cartesia    no credential: phase 2 blocker — Cartesia Sonic cannot be called: CARTESIA_API_KEY not set.
+   minimax     no credential: phase 2 blocker — MiniMax Speech cannot be called: MINIMAX_API_KEY, MINIMAX_GROUP_ID not set.
+   openai      no credential: phase 2 blocker — OpenAI TTS cannot be called: OPENAI_API_KEY not set.
+   chatterbox  no runtime: phase 2 blocker — Chatterbox needs a GPU host with a pip-capable python.
+   xai         SPEND GATE — live synthesis is blocked. Phase 1 of the bake-off spends zero.
+   azure       SPEND GATE — live synthesis is blocked. Phase 1 of the bake-off spends zero.
+   elevenlabs  SPEND GATE — live synthesis is blocked. Phase 1 of the bake-off spends zero.
+   ```
+
+   The order is `credentials → spend gate → call`, shared by every HTTP adapter via
+   `httpSynthesise()`. It matters that the gate is *reached*, not merely that the credential check
+   usually fires first: an adapter that threw unconditionally would become an ungated spender the
+   day its key arrived. Verified by simulating that day — `CARTESIA_API_KEY=sk-fake … --live` gets
+   `SPEND GATE`, not a call.
+
+   Chatterbox alone has **no** spend gate, deliberately: it is self-hosted and costs nothing per
+   clip, so there is no money to stop. What blocks it is the runtime, and that is a different error.
+
+   The runner loads the repo-root `.env` via dotenv, which is why it must be run from the repo root.
+   Each `run-manifest.json` records `required_env` and `missing_env` **as they were on the day**, so
+   a phase-2 reader sees which gaps were real rather than inferring them from prose that has aged.
 
 ---
 

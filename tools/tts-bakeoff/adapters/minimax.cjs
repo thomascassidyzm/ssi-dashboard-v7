@@ -8,7 +8,7 @@
  * Also note the response is NOT audio bytes — it is JSON with the audio
  * hex-encoded at data.audio, so the runner has to decode before hashing.
  */
-const { envRef, resolveHeaders, noCredentialError, assertSpendAllowed } = require('../lib/adapter-utils.cjs');
+const { envRef, httpSynthesise } = require('../lib/adapter-utils.cjs');
 
 const DEFAULT_MODEL = 'speech-2.8-hd';
 
@@ -90,7 +90,9 @@ module.exports = {
   },
 
   async synthesise(utterance, opts = {}) {
-    // Credentials first: the honest message is "no key", not "spend blocked".
-    throw noCredentialError(this);
+    // Credentials first (the honest message is "no key"), then the spend gate,
+    // then the real call. Wired for phase 2: the day the key lands this works,
+    // and until Tom clears PHASE2_SPEND_APPROVED it still refuses to spend.
+    return httpSynthesise(this, this.buildRequest(utterance, opts), opts);
   },
 };

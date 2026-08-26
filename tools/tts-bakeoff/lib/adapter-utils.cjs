@@ -36,9 +36,13 @@ function missingEnv(adapter) {
 }
 
 /**
- * The single loud failure every unkeyed adapter raises from synthesise().
+ * The single loud failure an unkeyed adapter raises from synthesise().
  * Phase 1 spends zero, so this is the expected end of the road for
  * Cartesia / MiniMax / OpenAI on this box.
+ *
+ * Only ever thrown when something is ACTUALLY missing — see assertCredentialled.
+ * An adapter that threw this unconditionally would start lying the moment Tom
+ * added the key, which is exactly the handover moment we cannot afford to fumble.
  */
 function noCredentialError(adapter) {
   const missing = missingEnv(adapter);
@@ -51,6 +55,44 @@ function noCredentialError(adapter) {
   err.provider = adapter.id;
   err.missingEnv = missing;
   return err;
+}
+
+/** Throw the no-credential error only if a required env var is genuinely absent. */
+function assertCredentialled(adapter) {
+  if (missingEnv(adapter).length) throw noCredentialError(adapter);
+}
+
+/**
+ * The one HTTP synthesis path, shared by every vendor adapter.
+ *
+ * Order matters and is the same everywhere:
+ *   1. credentials — "no key" is the honest message when there is no key
+ *   2. the spend gate — refuses in phase 1 even under --live
+ *   3. the call
+ * Skipping (2) because (1) usually fires first is how a stubbed adapter turns
+ * into an unguarded spender the day its key arrives.
+ */
+async function httpSynthesise(adapter, req, opts) {
+  assertCredentialled(adapter);
+  assertSpendAllowed(adapter, opts);
+  const headers = resolveHeaders(req.headers, adapter.id);
+  const payload = req.bodyKind === 'ssml' ? req.body : JSON.stringify(req.body);
+  const res = await fetch(req.endpoint, { method: req.method, headers, body: payload });
+  if (!res.ok) throw new Error(`${adapter.displayName} ${res.status}: ${await res.text()}`);
+
+  const meta = { http_status: res.status, content_type: res.headers.get('content-type') };
+
+  if (req.responseKind === 'json-hex-audio') {
+    // MiniMax does not return bytes: it returns JSON with the audio hex-encoded.
+    // Hashing the envelope instead of the audio would silently corrupt axis E.
+    const json = await res.json();
+    const hex = req.responseAudioPath.split('.').reduce((o, k) => (o == null ? o : o[k]), json);
+    if (!hex) throw new Error(`${adapter.displayName}: no audio at ${req.responseAudioPath} — got ${JSON.stringify(json).slice(0, 300)}`);
+    meta.envelope = { ...json, data: undefined };
+    return { audioBuffer: Buffer.from(hex, 'hex'), metadata: meta };
+  }
+
+  return { audioBuffer: Buffer.from(await res.arrayBuffer()), metadata: meta };
 }
 
 /**
@@ -91,6 +133,6 @@ function shortLang(iso3) {
 }
 
 module.exports = {
-  envRef, resolveHeaders, missingEnv, noCredentialError, assertSpendAllowed,
-  shortLang, ISO3_TO_SHORT,
+  envRef, resolveHeaders, missingEnv, noCredentialError, assertCredentialled,
+  assertSpendAllowed, httpSynthesise, shortLang, ISO3_TO_SHORT,
 };

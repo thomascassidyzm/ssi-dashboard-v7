@@ -19,7 +19,7 @@
  * may not hold, which is exactly the failure mode we are hunting in the
  * candidates.
  */
-const { envRef, resolveHeaders, assertSpendAllowed } = require('../lib/adapter-utils.cjs');
+const { envRef, httpSynthesise } = require('../lib/adapter-utils.cjs');
 
 const DEFAULT_MODEL = 'eleven_multilingual_v2';
 
@@ -77,12 +77,6 @@ module.exports = {
   },
 
   async synthesise(utterance, opts = {}) {
-    assertSpendAllowed(this, opts);
-    const req = this.buildRequest(utterance, opts);
-    const headers = resolveHeaders(req.headers, this.id);
-    const res = await fetch(req.endpoint, { method: req.method, headers, body: JSON.stringify(req.body) });
-    if (!res.ok) throw new Error(`ElevenLabs ${res.status}: ${await res.text()}`);
-    const audioBuffer = Buffer.from(await res.arrayBuffer());
-    return { audioBuffer, metadata: { http_status: res.status, content_type: res.headers.get('content-type') } };
+    return httpSynthesise(this, this.buildRequest(utterance, opts), opts);
   },
 };

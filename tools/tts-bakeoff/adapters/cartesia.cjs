@@ -12,7 +12,7 @@
  * Welsh convincingly is DEAD for canonical course work") that is a documented
  * failure, not a suspicion. Recorded here so it cannot be lost.
  */
-const { envRef, resolveHeaders, noCredentialError, assertSpendAllowed, shortLang } = require('../lib/adapter-utils.cjs');
+const { envRef, httpSynthesise, shortLang } = require('../lib/adapter-utils.cjs');
 
 const DEFAULT_MODEL = 'sonic-3.5';
 /** Cartesia's own pinning story: sonic-3.5 floats, sonic-3.5-YYYY-MM-DD is pinned. */
@@ -85,8 +85,10 @@ module.exports = {
   },
 
   async synthesise(utterance, opts = {}) {
-    // Credentials first: the honest message is "no key", not "spend blocked".
-    throw noCredentialError(this); // no key exists; nothing to call.
+    // Credentials first (the honest message is "no key"), then the spend gate,
+    // then the real call. Wired for phase 2: the day the key lands this works,
+    // and until Tom clears PHASE2_SPEND_APPROVED it still refuses to spend.
+    return httpSynthesise(this, this.buildRequest(utterance, opts), opts);
   },
 };
 

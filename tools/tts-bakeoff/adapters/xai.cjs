@@ -23,7 +23,7 @@
  *      That is axis-G evidence in its own right and it is why the runner hashes
  *      bytes AND records length: a stub is a valid-looking 200 with no speech.
  */
-const { envRef, resolveHeaders, assertSpendAllowed, shortLang } = require('../lib/adapter-utils.cjs');
+const { envRef, httpSynthesise, shortLang } = require('../lib/adapter-utils.cjs');
 
 module.exports = {
   id: 'xai',
@@ -86,18 +86,13 @@ module.exports = {
   },
 
   async synthesise(utterance, opts = {}) {
-    assertSpendAllowed(this, opts);
     const req = this.buildRequest(utterance, opts);
-    const headers = resolveHeaders(req.headers, this.id);
-    const res = await fetch(req.endpoint, { method: req.method, headers, body: JSON.stringify(req.body) });
-    if (!res.ok) throw new Error(`xAI TTS ${res.status}: ${await res.text()}`);
-    const audioBuffer = Buffer.from(await res.arrayBuffer());
-    const bytesPerSecond = Math.max(1, Math.round((req.body.output_format.bit_rate) / 8));
+    const { audioBuffer, metadata } = await httpSynthesise(this, req, opts);
+    const bytesPerSecond = Math.max(1, Math.round(req.body.output_format.bit_rate / 8));
     return {
       audioBuffer,
       metadata: {
-        http_status: res.status,
-        content_type: res.headers.get('content-type'),
+        ...metadata,
         // < 300 ms of audio at the requested bitrate is the repo's stub signature.
         suspected_silent_stub: audioBuffer.length < Math.round(0.3 * bytesPerSecond),
       },

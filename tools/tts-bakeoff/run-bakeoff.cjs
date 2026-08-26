@@ -20,7 +20,15 @@
  */
 const fs = require('fs');
 const path = require('path');
+
+// Credentials live in the repo-root .env, which is why this must be run from the
+// repo root. Without this, XAI/AZURE/ELEVENLABS read as missing and the harness
+// reports "no credential" for keys that are sitting right there — a false gap,
+// and a false gap is exactly the kind of thing that poisons a phase-2 handover.
+try { require('dotenv').config(); } catch (_) { /* dotenv absent: env-only mode */ }
+
 const registry = require('./lib/registry.cjs');
+const { missingEnv } = require('./lib/adapter-utils.cjs');
 const { placeholderWav, sha256 } = require('./lib/audio.cjs');
 
 const HARNESS_VERSION = '1.0.0';
@@ -275,6 +283,10 @@ async function main() {
     provider_role: adapter.role,
     provider_stubbed: Boolean(adapter.stubbed),
     provider_stub_reason: adapter.stubReason || null,
+    // Recorded per run so a phase-2 reader can see which gaps were real ON THE
+    // DAY rather than inferring them from a doc that has since gone stale.
+    required_env: adapter.requiredEnv || [],
+    missing_env: missingEnv(adapter),
     voice_id: args.voice || null,
     seed: args.seed,
     temperature: args.temperature,
