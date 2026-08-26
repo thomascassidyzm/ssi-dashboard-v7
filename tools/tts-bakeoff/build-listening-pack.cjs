@@ -245,7 +245,8 @@ function renderHtml(pack, letters, grouping, placeholder) {
     ['D', 'Intra-voice consistency (whole system)'],
     ['E', 'Repeatability over time'],
     ['F', 'Control — seed / temperature / pronunciation / version pinning'],
-    ['G', 'Operational suitability — rate limits, latency, cost, self-host, consent'],
+    ['G1', 'Operational suitability, ENTRY — rate limits, latency, cost, self-host, consent'],
+    ['G2', 'Operational suitability, EXIT — how cleanly this can later be re-recorded human'],
   ];
   const rows = pack.clips.map((c, i) => {
     const label = grouping
@@ -297,7 +298,8 @@ ${placeholder ? '<div class="warn">DRY-RUN PACK — these are synthetic placehol
 <ul>
 <li><strong>A</strong> similarity to reference voice · <strong>B</strong> naturalness · <strong>C</strong> pronunciation accuracy — scored <em>per clip</em></li>
 <li><strong>D</strong> intra-voice consistency — per clip <em>against the other takes you have just heard</em>, and again per system</li>
-<li><strong>E</strong> repeatability · <strong>F</strong> control · <strong>G</strong> operational suitability — <em>per system only</em>; a single clip cannot show them</li>
+<li><strong>E</strong> repeatability · <strong>F</strong> control — <em>per system only</em>; a single clip cannot show them</li>
+<li><strong>G</strong> operational suitability, scored as two halves per system: <strong>G1 entry</strong> (rate limits, latency, cost, self-host, consent) and <strong>G2 exit</strong> — how cleanly a course built on this vendor can later be re-recorded with a human voice via the subset/slice-and-dice method. TTS is a <em>bridge</em>, not the destination: word/phoneme boundary data, output format, licensing after we stop paying, and retiring a real person's clone all count. <em>A vendor cheap to enter and expensive to leave is a worse bridge and scores lower here.</em></li>
 </ul></div>
 
 <h2>Per-clip scores (axes A-D)</h2>

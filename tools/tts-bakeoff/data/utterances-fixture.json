@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
-  "language": "cym",
-  "dialect": "mixed",
+  "language": "eng",
+  "dialect": "standard",
   "generated_at": "2026-08-26T00:00:00Z",
-  "source": "HAND-WRITTEN FIXTURE — not course data. Written by the harness slice so the runner is testable before the real utterance sets land at tools/tts-bakeoff/data/utterances-<lang>.json. The provenance blocks below are DELIBERATELY EMPTY: nothing here was pulled from course_seeds or course_practice_phrases and nothing here should be scored. Replace with the real generated set before any listening pass.",
+  "source": "HAND-WRITTEN FIXTURE — not course data. Written so the runner is testable before the real utterance sets land at tools/tts-bakeoff/data/utterances-<lang>.json. The provenance blocks below are DELIBERATELY EMPTY: nothing here was pulled from course_seeds or course_practice_phrases and nothing here should be scored. Replace with the real generated set before any listening pass. Switched from Welsh to English 2026-08-26 after Tom's correction: Welsh is human-recorded and out of scope for the TTS bake-off, and English is the estate's largest TTS language at 726,855 clips.",
   "categories": {
     "isolated_word": { "label": "Isolated word", "purpose": "A single word with no carrier — the hardest case for a TTS that leans on sentence context. Most SSi LEGO debuts are exactly this." },
     "short_phrase": { "label": "Short phrase", "purpose": "BUILD-phrase length: a few LEGOs tiled together, often a fragment." },
@@ -12,48 +12,48 @@
   },
   "utterances": [
     {
-      "id": "cym-0001",
+      "id": "eng-0001",
       "category": "isolated_word",
-      "text": "dysgu",
-      "language": "cym",
+      "text": "learn",
+      "language": "eng",
       "provenance": { "course_code": "", "table": "", "row_id": "", "seed_number": 0 },
-      "difficulty_note": "Fixture only. Word-initial 'dy' plus the 'u' vowel, which is the classic north/south split.",
+      "difficulty_note": "Fixture only. A bare monosyllable with nothing to lean on — TTS routinely clips the onset or bolts a falling contour onto it.",
       "repeat_count": 1
     },
     {
-      "id": "cym-0002",
+      "id": "eng-0002",
       "category": "short_phrase",
-      "text": "dw i eisiau",
-      "language": "cym",
+      "text": "I want to",
+      "language": "eng",
       "provenance": { "course_code": "", "table": "", "row_id": "", "seed_number": 0 },
       "difficulty_note": "Fixture only. A fragment — no full stop, no closing intonation. Fragments are where TTS most often invents a sentence-final fall.",
       "repeat_count": 1
     },
     {
-      "id": "cym-0003",
+      "id": "eng-0003",
       "category": "full_sentence",
-      "text": "Dw i eisiau dysgu Cymraeg yn dda.",
-      "language": "cym",
+      "text": "I want to learn this properly.",
+      "language": "eng",
       "provenance": { "course_code": "", "table": "", "row_id": "", "seed_number": 0 },
       "difficulty_note": "Fixture only.",
       "repeat_count": 1
     },
     {
-      "id": "cym-0004",
+      "id": "eng-0004",
       "category": "repeat_probe",
-      "text": "Beth wyt ti'n meddwl?",
-      "language": "cym",
-      "provenance": { "course_code": "", "table": "", "row_id": "", "seed_number": 0 },
-      "difficulty_note": "Fixture only. THE 20x REPEAT TEST. Identical settings, twenty renders. Apostrophe elision plus a question contour.",
-      "repeat_count": 20
-    },
-    {
-      "id": "eng-0001",
-      "category": "full_sentence",
       "text": "What do you think?",
       "language": "eng",
       "provenance": { "course_code": "", "table": "", "row_id": "", "seed_number": 0 },
-      "difficulty_note": "Fixture only. English control line so a non-Welsh-speaking listener has an anchor in the pack.",
+      "difficulty_note": "Fixture only. THE 20x REPEAT TEST. Identical settings, twenty renders. A question contour, which is where drift is easiest to hear.",
+      "repeat_count": 20
+    },
+    {
+      "id": "spa-0001",
+      "category": "full_sentence",
+      "text": "¿Qué quieres hacer hoy?",
+      "language": "spa",
+      "provenance": { "course_code": "", "table": "", "row_id": "", "seed_number": 0 },
+      "difficulty_note": "Fixture only. A second-language line so the runner is exercised on non-ASCII text and on a mixed-language pack. Spanish is tier A and xAI-voiced, so it is a realistic second set.",
       "repeat_count": 1
     }
   ]

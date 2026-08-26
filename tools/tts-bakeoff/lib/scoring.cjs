@@ -48,7 +48,13 @@ const PER_SYSTEM_AXES = [
   ['D', 'intra-voice consistency (whole system)'],
   ['E', 'repeatability over time'],
   ['F', 'control: seed / temperature / pronunciation / version pinning'],
-  ['G', 'operational suitability: rate limits, latency, cost, self-host, consent'],
+  ['G1', 'operational suitability, ENTRY: rate limits, latency, cost, self-host, consent'],
+  // TTS is a BRIDGE to human recording, not the destination (Tom, 2026-08-26), so the cost of
+  // LEAVING a vendor is scored alongside the cost of joining it. Exit means: does word/phoneme
+  // boundary data come back, does the output format sit alongside human recordings, can we keep
+  // serving clips after we stop paying, and what does retiring a real person's clone involve.
+  // A vendor cheap to enter and expensive to leave is a worse bridge and scores lower here.
+  ['G2', 'operational suitability, EXIT: how cleanly this can later be re-recorded human'],
 ];
 
 function csvCell(v) {
