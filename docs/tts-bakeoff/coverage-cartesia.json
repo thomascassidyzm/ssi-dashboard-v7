@@ -2,6 +2,15 @@
   "provider": "Cartesia",
   "product": "Sonic (sonic-3.5 / sonic-3), Instant + Professional Voice Clone",
   "checked_at": "2026-08-26",
+  "recut_at": "2026-08-26",
+  "recut_note": "Re-cut onto the corrected frame after Tom's course correction of 2026-08-26 11:06Z: Welsh is OUT (human-recorded), coverage is counted against the three tiers of languages that actually use TTS, and TTS is a BRIDGE to human recording, so exit cost is scored alongside entry cost. The vendor research below is unchanged and every source citation is the original one; the frame around it is new. Companion dossier: docs/tts-bakeoff/gate-zero-candidates-recut-2026-08-26.md",
+  "headline": {
+    "one_line": "Joint-best on the migration scope, best-in-class on version pinning and audio format — and the hardest of the four to walk away from, because the right to use the audio commercially is granted by an active subscription and nothing says it survives one.",
+    "tier_coverage": "Tier A 9/10 (misses glg — glg_for_eng is LIVE with 15,931 clips). Tier B 10/11 (misses pdc only). Tier A+B+C 29/44.",
+    "discriminator": "Not language coverage. On Tier B — the part that actually has to be re-voiced off xAI — Cartesia ties with all three rivals at 10/11 and the single miss, pdc, is supported by nobody. Cartesia wins on version pinning (dated immutable snapshots) and on native 44.1 kHz / 192 kbps mp3 output that matches the house master exactly. It loses on exit: ToS §5.3(b) and §4.1 make commercial use of Output conditional on your subscription tier, with no survival clause, and §9.3 says Cartesia 'may, but is not obligated to' delete your content on account deletion.",
+    "verdict": "STRONG CANDIDATE, WEAK BRIDGE. Best entry, worst paper exit. Do not sign without a written post-termination licence to keep serving already-generated clips, and a deletion commitment for Aran's and Catrin's clones.",
+    "welsh_no_longer_relevant": true
+  },
   "sources": [
     {
       "url": "https://docs.cartesia.ai/build-with-cartesia/tts-models/latest",
@@ -44,12 +53,13 @@
       "what_it_established": "Free $0/20K credits; Pro $4/100K; Startup $39/1.25M; Scale $239/8M; Enterprise custom. TTS concurrency 2 (Free) to 15 (Scale)."
     }
   ],
-  "welsh": {
+  "welsh_footnote": {
     "state": "absent",
     "evidence": "The Sonic 3.5 docs page enumerates a closed list of 42 languages — en fr de es pt zh ja hi it ko nl pl ru sv tr tl bg ro ar cs el fi hr ms sk da ta uk hu no vi bn th he ka id te gu kn ml mr pa. Welsh (cy) is not in it. The marketing page says '40+ languages' with no enumeration and does not name Welsh either.",
     "confidence": "high",
     "gate_zero": "CONDITIONAL",
-    "rationale": "Stock Welsh does not exist at Cartesia and the language list is closed and enumerated, so this is an explicit absence, not an omission. Cartesia is therefore DEAD as a stock-voice Welsh provider. It survives only on one empirical question that no vendor document can answer: does an instant/professional clone of Aran or Catrin, trained on Welsh audio, actually produce intelligible Welsh when the language parameter has no 'cy' value to accept? The docs point the wrong way — 'if you want the cloned voice to speak Spanish, speak Spanish in the recording' implies the clone carries the reference language, but the API's language field is an enumerated ISO code and Welsh is not among the values. Verdict CONDITIONAL, and the condition is a phase-2 paid probe: clone Aran on ~10s of north-Welsh audio, render 20 Welsh course seeds, have a Welsh speaker judge them. Dialect (north Aran vs south Catrin) is not addressable at vendor level by any candidate; the only route is that the clone carries the speaker's own dialect, which is exactly what the same probe would show."
+    "rationale": "Stock Welsh does not exist at Cartesia and the language list is closed and enumerated, so this is an explicit absence, not an omission. Cartesia is therefore DEAD as a stock-voice Welsh provider. It survives only on one empirical question that no vendor document can answer: does an instant/professional clone of Aran or Catrin, trained on Welsh audio, actually produce intelligible Welsh when the language parameter has no 'cy' value to accept? The docs point the wrong way — 'if you want the cloned voice to speak Spanish, speak Spanish in the recording' implies the clone carries the reference language, but the API's language field is an enumerated ISO code and Welsh is not among the values. Verdict CONDITIONAL, and the condition is a phase-2 paid probe: clone Aran on ~10s of north-Welsh audio, render 20 Welsh course seeds, have a Welsh speaker judge them. Dialect (north Aran vs south Catrin) is not addressable at vendor level by any candidate; the only route is that the clone carries the speaker's own dialect, which is exactly what the same probe would show.",
+    "demoted_because": "Welsh is done by human recording (cym_n_for_eng / cym_s_for_eng are 96.4% human, the only human-voiced language in the estate). Vendor Welsh support does not decide this evaluation. Kept verbatim because it is the only yardstick we have for a vendor's reach into Welsh, which will matter if the human-recording programme ever needs a synthetic stand-in. The gate_zero verdict inside this block is SUPERSEDED and must not be quoted as a live verdict."
   },
   "languages_supported": [
     "English (en)",
@@ -166,8 +176,95 @@
     "zzz": "no"
   },
   "coverage_counts": {
+    "of_tier_a_10": 9,
+    "of_tier_b_11": 10,
+    "of_tier_abc_44": 29
+  },
+  "coverage_counts_superseded": {
     "of_68": 33,
     "of_xai_scope_11": 10
+  },
+  "coverage_misses": {
+    "tier_a": [
+      "glg"
+    ],
+    "tier_b": [
+      "pdc"
+    ],
+    "tier_abc": [
+      "glg",
+      "pdc",
+      "eus",
+      "cat",
+      "fas",
+      "nep",
+      "gle",
+      "swa",
+      "lit",
+      "hye",
+      "lav",
+      "est",
+      "isl",
+      "srp",
+      "afr"
+    ]
+  },
+  "exit_cost": {
+    "verdict": "HARD",
+    "score_rationale": "Everything technical about leaving Cartesia is easy. Everything legal about leaving Cartesia is unresolved, and the unresolved parts point the wrong way. A vendor that is cheap to enter and whose written terms make the continued commercial use of already-paid-for audio conditional on continuing to pay is the definition of an expensive bridge.",
+    "boundary_data": {
+      "available": "YES — word-level AND phoneme-level.",
+      "detail": "add_timestamps returns parallel words/start/end arrays in seconds; add_phoneme_timestamps returns phonemes with start/end. Both on sonic-3 and sonic-3.5. A use_normalized_timestamps flag chooses normalised vs original timings.",
+      "catch": "Timestamps are only supported on the SSE and WebSocket endpoints, NOT on /tts/bytes — which is the plain batch POST a bulk course render would naturally use. Capturing boundaries means moving the render path to streaming. On the older sonic model, timestamps were limited to en/de/es/fr; sonic-preview supported all languages. Phoneme-level timing is a capability no other candidate offers and is more than the estate currently has anywhere.",
+      "sources": [
+        "https://docs.cartesia.ai/api-reference/tts/sse",
+        "https://docs.cartesia.ai/api-reference/tts/bytes.md"
+      ]
+    },
+    "audio_format": {
+      "containers": "wav, mp3, raw",
+      "encodings": "pcm_f32le, pcm_s16le, pcm_mulaw, pcm_alaw",
+      "sample_rates_hz": [
+        8000,
+        16000,
+        22050,
+        24000,
+        44100,
+        48000
+      ],
+      "mp3_bitrates_bps": [
+        32000,
+        64000,
+        96000,
+        128000,
+        192000
+      ],
+      "fits_house_master": "EXACTLY. The house master is 44.1 kHz mp3 at 192 kbps, -16 LUFS (services/audio-processor.cjs, ffmpegFilterToLameMp3 with sampleRate 44100 / bitrate 192; masterAudio in services/phases/phase8-audio-v13.cjs). Cartesia can render 44.1 kHz natively at exactly 192 kbps, so a Cartesia clip sits beside a human recording with no bandwidth ceiling the human clip does not also have. Along with MiniMax this is the better half of the field on format.",
+      "sources": [
+        "https://docs.cartesia.ai/api-reference/tts/bytes.md"
+      ]
+    },
+    "licensing_after_we_stop_paying": {
+      "verdict": "UNRESOLVED AND POINTING THE WRONG WAY — get this in writing before signing.",
+      "detail": "Cartesia does not claim ownership of Inputs or Outputs, and §5.3(b) permits use of Output outside the Services. But the same clause reads: 'you will not monetize, make commercial use of, or otherwise use for or in connection with any commercial purposes, any of Your Outputs that you create with the Services (unless commercial use is expressly permitted by your subscription tier).' §4.1 repeats it. That is a present-tense grant hung on an active subscription tier, and no clause anywhere states it survives cancellation. §9.3's survival provision is a bare 'sections which by their nature should survive' with no enumeration. §2.5 only promises access through the end of the paid period. The plain reading is that when SSi stops paying, the contractual basis for continuing to serve tens of thousands of Cartesia-rendered course clips commercially becomes at best unclear — and 'at best unclear' is not a position to put an estate in. This is a lawyer's question, not an engineer's; it is flagged as one.",
+      "sources": [
+        "https://cartesia.ai/legal/terms"
+      ]
+    },
+    "clone_retirement": {
+      "mechanism": "DELETE /voices/{id}, returns 204.",
+      "detail": "The endpoint exists and works, but the docs say nothing about permanence or what happens to the trained artefacts behind the id. Worse, §9.3 states that on account deletion 'Cartesia may, but is not obligated to, delete any of Your Content. Cartesia shall not be responsible for the failure to delete or deletion of Your Content.' So there is no obligation to remove Aran's or Catrin's voice model, and no vendor-side consent record was ever created to withdraw. Compounding it: by default Cartesia uses inputs and outputs to train its own models, with an opt-out form rather than an API flag — so retiring the clone does not obviously retire the training influence.",
+      "sources": [
+        "https://docs.cartesia.ai/api-reference/voices/delete.md",
+        "https://cartesia.ai/legal/terms"
+      ]
+    },
+    "gaps": [
+      "No post-termination licence clause exists in the public terms. Whether SSi may keep serving Cartesia-generated clips after cancelling is genuinely unanswered by the documentation and must be settled with Cartesia in writing.",
+      "The DELETE /voices endpoint's permanence is undocumented, and §9.3 explicitly disclaims any obligation to delete.",
+      "Timestamp language coverage for sonic-3.5 specifically was not enumerated on the page fetched; the en/de/es/fr limitation is documented for the older sonic model.",
+      "Nothing here was measured. There is no Cartesia key on this box."
+    ]
   },
   "version_pinning": "The best of the four on paper, but not open-ended. Three model-id forms: a dated immutable snapshot (sonic-3.5-2026-05-04, documented as 'immutable for production evals'), a floating alias (sonic-3.5) that auto-updates, and sonic-preview. So you CAN pin, and we would pin. The catch is written on the api-changes page: snapshots get sunset. sonic/sonic-english/sonic-multilingual were sunset 2026-06-01; sonic-2, sonic-turbo and a sonic-3 snapshot are sunset 2026-10-20; 'Requests to sunsetted models will return an error.' Observed lifetime is roughly 8-17 months. There is NO written guarantee that the same text + same voice + same version renders the same next year — only that it will render identically until the snapshot is killed, at which point it renders nothing. That is a re-render cliff, not drift; a cliff is at least detectable, which is better than silent drift, but it is not Azure.",
   "cloning_consent": "Cartesia publishes NO consent workflow — there is no consent-recording upload, no identity verification, no approval step. The only consent language is in the Terms of Service, which prohibit uploading 'audio of a voice of a deceased person, a candidate for a political office, or any other person's voice without that person's express permission.' The obligation is entirely on us: we hold Aran's and Catrin's permission, Cartesia never sees it. Ownership: Cartesia 'does not claim ownership' of inputs or outputs, but users cannot claim exclusivity — other users may create similar output. THE ITEM TO PUT IN FRONT OF ARAN AND CATRIN: by default Cartesia uses inputs and outputs 'to train, enhance, evolve and improve its machine learning models'. Aran's voice would feed Cartesia's models unless we file the opt-out. There is an opt-out form; using it must be a precondition of any Cartesia contract, and Aran should be told the default before he records. Audio needed: 10 seconds for an instant clone; 30+ minutes (2 hours preferred) for a professional clone.",
