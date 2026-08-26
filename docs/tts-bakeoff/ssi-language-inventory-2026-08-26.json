@@ -1,0 +1,878 @@
+[
+ {
+  "lang": "afr",
+  "courses": [
+   "afr_for_eng"
+  ],
+  "statuses": {
+   "beta": 1
+  },
+  "targetProviders": {
+   "azure": 1
+  }
+ },
+ {
+  "lang": "ara",
+  "courses": [
+   "ara_eg_for_eng",
+   "ara_eg_for_jpn",
+   "ara_eg_for_zho",
+   "ara_for_cym",
+   "ara_for_eng",
+   "ara_for_jpn",
+   "ara_for_zho",
+   "ara_lb_for_eng",
+   "ara_sy_for_eng",
+   "ara_sy_for_jpn",
+   "ara_sy_for_zho"
+  ],
+  "statuses": {
+   "beta": 3,
+   "not_available": 8
+  },
+  "targetProviders": {
+   "azure": 4
+  }
+ },
+ {
+  "lang": "ben",
+  "courses": [
+   "ben_for_eng"
+  ],
+  "statuses": {
+   "live": 1
+  },
+  "targetProviders": {
+   "azure": 1
+  }
+ },
+ {
+  "lang": "bre",
+  "courses": [
+   "bre_for_eng",
+   "bre_for_fra",
+   "sbx_for_eng"
+  ],
+  "statuses": {
+   "not_available": 3
+  },
+  "targetProviders": {}
+ },
+ {
+  "lang": "bul",
+  "courses": [
+   "bul_for_eng"
+  ],
+  "statuses": {
+   "beta": 1
+  },
+  "targetProviders": {
+   "azure": 1
+  }
+ },
+ {
+  "lang": "cat",
+  "courses": [
+   "cat_for_eng",
+   "cat_for_spa"
+  ],
+  "statuses": {
+   "beta": 2
+  },
+  "targetProviders": {
+   "azure": 2
+  }
+ },
+ {
+  "lang": "ces",
+  "courses": [
+   "ces_for_eng"
+  ],
+  "statuses": {
+   "beta": 1
+  },
+  "targetProviders": {
+   "azure": 1
+  }
+ },
+ {
+  "lang": "cor",
+  "courses": [
+   "cor_for_eng"
+  ],
+  "statuses": {
+   "not_available": 1
+  },
+  "targetProviders": {}
+ },
+ {
+  "lang": "cym",
+  "courses": [
+   "cym_anthem_for_jpn",
+   "cym_for_yor",
+   "cym_n_for_eng",
+   "cym_nnew_for_eng",
+   "cym_s_for_eng"
+  ],
+  "statuses": {
+   "not_available": 3,
+   "live": 2
+  },
+  "targetProviders": {
+   "azure": 3
+  }
+ },
+ {
+  "lang": "dan",
+  "courses": [
+   "dan_for_eng"
+  ],
+  "statuses": {
+   "beta": 1
+  },
+  "targetProviders": {
+   "azure": 1
+  }
+ },
+ {
+  "lang": "deu",
+  "courses": [
+   "deu_at_for_eng",
+   "deu_at_for_jpn",
+   "deu_at_for_zho",
+   "deu_ch_for_eng",
+   "deu_for_cym",
+   "deu_for_eng",
+   "deu_for_jpn",
+   "deu_for_zho"
+  ],
+  "statuses": {
+   "beta": 4,
+   "not_available": 4
+  },
+  "targetProviders": {
+   "azure": 3,
+   "xai": 1
+  }
+ },
+ {
+  "lang": "ell",
+  "courses": [
+   "ell_for_eng"
+  ],
+  "statuses": {
+   "beta": 1
+  },
+  "targetProviders": {
+   "azure": 1
+  }
+ },
+ {
+  "lang": "eng",
+  "courses": [
+   "eng_for_ara",
+   "eng_for_ben",
+   "eng_for_deu",
+   "eng_for_fra",
+   "eng_for_guj",
+   "eng_for_hin",
+   "eng_for_ita",
+   "eng_for_jpn",
+   "eng_for_kan",
+   "eng_for_kor",
+   "eng_for_mar",
+   "eng_for_pan",
+   "eng_for_por",
+   "eng_for_sin",
+   "eng_for_spa",
+   "eng_for_tam",
+   "eng_for_tel",
+   "eng_for_urd",
+   "eng_for_zho",
+   "eng_template"
+  ],
+  "statuses": {
+   "beta": 16,
+   "live": 3,
+   "not_available": 1
+  },
+  "targetProviders": {
+   "xai": 13,
+   "azure": 6
+  }
+ },
+ {
+  "lang": "est",
+  "courses": [
+   "est_for_eng"
+  ],
+  "statuses": {
+   "beta": 1
+  },
+  "targetProviders": {
+   "azure": 1
+  }
+ },
+ {
+  "lang": "eus",
+  "courses": [
+   "eus_for_eng",
+   "eus_for_spa"
+  ],
+  "statuses": {
+   "beta": 2
+  },
+  "targetProviders": {
+   "azure": 2
+  }
+ },
+ {
+  "lang": "fas",
+  "courses": [
+   "fas_for_eng"
+  ],
+  "statuses": {
+   "beta": 1
+  },
+  "targetProviders": {
+   "azure": 1
+  }
+ },
+ {
+  "lang": "fin",
+  "courses": [
+   "fin_for_eng"
+  ],
+  "statuses": {
+   "not_available": 1
+  },
+  "targetProviders": {
+   "human": 1
+  }
+ },
+ {
+  "lang": "fra",
+  "courses": [
+   "fra_ca_for_eng",
+   "fra_for_cym",
+   "fra_for_eng",
+   "fra_for_jpn",
+   "fra_for_zho"
+  ],
+  "statuses": {
+   "draft": 1,
+   "not_available": 1,
+   "beta": 3
+  },
+  "targetProviders": {
+   "azure": 3,
+   "xai": 1
+  }
+ },
+ {
+  "lang": "fur",
+  "courses": [
+   "fur_for_eng"
+  ],
+  "statuses": {
+   "not_available": 1
+  },
+  "targetProviders": {}
+ },
+ {
+  "lang": "gla",
+  "courses": [
+   "gla_for_eng"
+  ],
+  "statuses": {
+   "not_available": 1
+  },
+  "targetProviders": {}
+ },
+ {
+  "lang": "gle",
+  "courses": [
+   "gle_cn_for_eng",
+   "gle_for_eng",
+   "gle_mu_for_eng",
+   "gle_ul_for_eng"
+  ],
+  "statuses": {
+   "not_available": 3,
+   "beta": 1
+  },
+  "targetProviders": {
+   "azure": 2
+  }
+ },
+ {
+  "lang": "glg",
+  "courses": [
+   "glg_for_eng"
+  ],
+  "statuses": {
+   "live": 1
+  },
+  "targetProviders": {
+   "azure": 1
+  }
+ },
+ {
+  "lang": "hak",
+  "courses": [
+   "hak_for_eng"
+  ],
+  "statuses": {
+   "not_available": 1
+  },
+  "targetProviders": {}
+ },
+ {
+  "lang": "heb",
+  "courses": [
+   "heb_for_eng"
+  ],
+  "statuses": {
+   "beta": 1
+  },
+  "targetProviders": {
+   "azure": 1
+  }
+ },
+ {
+  "lang": "hin",
+  "courses": [
+   "hin_for_eng"
+  ],
+  "statuses": {
+   "beta": 1
+  },
+  "targetProviders": {
+   "azure": 1
+  }
+ },
+ {
+  "lang": "hrv",
+  "courses": [
+   "hrv_for_eng"
+  ],
+  "statuses": {
+   "live": 1
+  },
+  "targetProviders": {
+   "azure": 1
+  }
+ },
+ {
+  "lang": "hun",
+  "courses": [
+   "hun_for_eng"
+  ],
+  "statuses": {
+   "beta": 1
+  },
+  "targetProviders": {
+   "azure": 1
+  }
+ },
+ {
+  "lang": "hye",
+  "courses": [
+   "hye_for_eng"
+  ],
+  "statuses": {
+   "beta": 1
+  },
+  "targetProviders": {
+   "azure": 1
+  }
+ },
+ {
+  "lang": "ind",
+  "courses": [
+   "ind_for_eng"
+  ],
+  "statuses": {
+   "not_available": 1
+  },
+  "targetProviders": {}
+ },
+ {
+  "lang": "isl",
+  "courses": [
+   "isl_for_eng"
+  ],
+  "statuses": {
+   "beta": 1
+  },
+  "targetProviders": {
+   "azure": 1
+  }
+ },
+ {
+  "lang": "ita",
+  "courses": [
+   "ita_for_cym",
+   "ita_for_eng",
+   "ita_for_jpn",
+   "ita_for_zho"
+  ],
+  "statuses": {
+   "not_available": 1,
+   "live": 1,
+   "beta": 2
+  },
+  "targetProviders": {
+   "xai": 1,
+   "azure": 2
+  }
+ },
+ {
+  "lang": "jpn",
+  "courses": [
+   "jpn_for_cym",
+   "jpn_for_eng",
+   "jpn_for_zho"
+  ],
+  "statuses": {
+   "not_available": 2,
+   "live": 1
+  },
+  "targetProviders": {
+   "azure": 1
+  }
+ },
+ {
+  "lang": "kan",
+  "courses": [
+   "kan_for_eng"
+  ],
+  "statuses": {
+   "not_available": 1
+  },
+  "targetProviders": {}
+ },
+ {
+  "lang": "kor",
+  "courses": [
+   "kor_for_cym",
+   "kor_for_eng",
+   "kor_for_hin",
+   "kor_for_jpn",
+   "kor_for_tam",
+   "kor_for_zho"
+  ],
+  "statuses": {
+   "not_available": 3,
+   "live": 1,
+   "beta": 2
+  },
+  "targetProviders": {
+   "azure": 1,
+   "xai": 2
+  }
+ },
+ {
+  "lang": "lav",
+  "courses": [
+   "lav_for_eng"
+  ],
+  "statuses": {
+   "beta": 1
+  },
+  "targetProviders": {
+   "azure": 1
+  }
+ },
+ {
+  "lang": "lit",
+  "courses": [
+   "lit_for_eng"
+  ],
+  "statuses": {
+   "beta": 1
+  },
+  "targetProviders": {
+   "azure": 1
+  }
+ },
+ {
+  "lang": "lmo",
+  "courses": [
+   "lmo_for_eng"
+  ],
+  "statuses": {
+   "not_available": 1
+  },
+  "targetProviders": {}
+ },
+ {
+  "lang": "mar",
+  "courses": [
+   "mar_for_eng"
+  ],
+  "statuses": {
+   "not_available": 1
+  },
+  "targetProviders": {}
+ },
+ {
+  "lang": "mkd",
+  "courses": [
+   "mkd_for_eng"
+  ],
+  "statuses": {
+   "not_available": 1
+  },
+  "targetProviders": {}
+ },
+ {
+  "lang": "mlt",
+  "courses": [
+   "mlt_for_eng"
+  ],
+  "statuses": {
+   "not_available": 1
+  },
+  "targetProviders": {
+   "azure": 1
+  }
+ },
+ {
+  "lang": "nan",
+  "courses": [
+   "nan_for_eng"
+  ],
+  "statuses": {
+   "not_available": 1
+  },
+  "targetProviders": {}
+ },
+ {
+  "lang": "nap",
+  "courses": [
+   "nap_for_eng"
+  ],
+  "statuses": {
+   "not_available": 1
+  },
+  "targetProviders": {}
+ },
+ {
+  "lang": "nep",
+  "courses": [
+   "nep_for_eng"
+  ],
+  "statuses": {
+   "beta": 1
+  },
+  "targetProviders": {
+   "azure": 1
+  }
+ },
+ {
+  "lang": "nld",
+  "courses": [
+   "nld_for_eng"
+  ],
+  "statuses": {
+   "beta": 1
+  },
+  "targetProviders": {
+   "azure": 1
+  }
+ },
+ {
+  "lang": "nor",
+  "courses": [
+   "nor_for_eng"
+  ],
+  "statuses": {
+   "beta": 1
+  },
+  "targetProviders": {
+   "azure": 1
+  }
+ },
+ {
+  "lang": "pdc",
+  "courses": [
+   "pdc_for_eng"
+  ],
+  "statuses": {
+   "not_available": 1
+  },
+  "targetProviders": {}
+ },
+ {
+  "lang": "pol",
+  "courses": [
+   "pol_for_eng"
+  ],
+  "statuses": {
+   "beta": 1
+  },
+  "targetProviders": {
+   "azure": 1
+  }
+ },
+ {
+  "lang": "por",
+  "courses": [
+   "por_br_for_eng",
+   "por_br_for_jpn",
+   "por_br_for_zho",
+   "por_for_aze",
+   "por_for_cym",
+   "por_for_eng",
+   "por_for_jpn",
+   "por_for_lit",
+   "por_for_zho"
+  ],
+  "statuses": {
+   "beta": 1,
+   "not_available": 7,
+   "live": 1
+  },
+  "targetProviders": {
+   "azure": 3
+  }
+ },
+ {
+  "lang": "rgn",
+  "courses": [
+   "rgn_for_eng"
+  ],
+  "statuses": {
+   "not_available": 1
+  },
+  "targetProviders": {}
+ },
+ {
+  "lang": "roh",
+  "courses": [
+   "roh_for_eng"
+  ],
+  "statuses": {
+   "not_available": 1
+  },
+  "targetProviders": {}
+ },
+ {
+  "lang": "ron",
+  "courses": [
+   "ron_for_eng"
+  ],
+  "statuses": {
+   "beta": 1
+  },
+  "targetProviders": {
+   "azure": 1
+  }
+ },
+ {
+  "lang": "rus",
+  "courses": [
+   "rus_for_eng"
+  ],
+  "statuses": {
+   "beta": 1
+  },
+  "targetProviders": {
+   "azure": 1
+  }
+ },
+ {
+  "lang": "scn",
+  "courses": [
+   "scn_for_eng"
+  ],
+  "statuses": {
+   "not_available": 1
+  },
+  "targetProviders": {}
+ },
+ {
+  "lang": "sme",
+  "courses": [
+   "sme_for_eng"
+  ],
+  "statuses": {
+   "not_available": 1
+  },
+  "targetProviders": {}
+ },
+ {
+  "lang": "spa",
+  "courses": [
+   "spa_for_cym",
+   "spa_for_eng",
+   "spa_for_jpn",
+   "spa_for_zho",
+   "spa_mx_for_eng",
+   "spa_mx_for_jpn",
+   "spa_mx_for_zho"
+  ],
+  "statuses": {
+   "not_available": 3,
+   "live": 1,
+   "beta": 3
+  },
+  "targetProviders": {
+   "azure": 4
+  }
+ },
+ {
+  "lang": "srp",
+  "courses": [
+   "srp_for_eng"
+  ],
+  "statuses": {
+   "beta": 1
+  },
+  "targetProviders": {
+   "azure": 1
+  }
+ },
+ {
+  "lang": "swa",
+  "courses": [
+   "swa_for_eng"
+  ],
+  "statuses": {
+   "beta": 1
+  },
+  "targetProviders": {
+   "azure": 1
+  }
+ },
+ {
+  "lang": "swe",
+  "courses": [
+   "swe_for_eng"
+  ],
+  "statuses": {
+   "beta": 1
+  },
+  "targetProviders": {
+   "azure": 1
+  }
+ },
+ {
+  "lang": "tel",
+  "courses": [
+   "tel_for_eng"
+  ],
+  "statuses": {
+   "not_available": 1
+  },
+  "targetProviders": {}
+ },
+ {
+  "lang": "tha",
+  "courses": [
+   "tha_for_eng"
+  ],
+  "statuses": {
+   "beta": 1
+  },
+  "targetProviders": {
+   "azure": 1
+  }
+ },
+ {
+  "lang": "tur",
+  "courses": [
+   "tur_for_eng"
+  ],
+  "statuses": {
+   "beta": 1
+  },
+  "targetProviders": {
+   "azure": 1
+  }
+ },
+ {
+  "lang": "ukr",
+  "courses": [
+   "ukr_for_eng"
+  ],
+  "statuses": {
+   "beta": 1
+  },
+  "targetProviders": {
+   "azure": 1
+  }
+ },
+ {
+  "lang": "vec",
+  "courses": [
+   "vec_for_eng"
+  ],
+  "statuses": {
+   "not_available": 1
+  },
+  "targetProviders": {}
+ },
+ {
+  "lang": "yid",
+  "courses": [
+   "yid_for_eng"
+  ],
+  "statuses": {
+   "not_available": 1
+  },
+  "targetProviders": {}
+ },
+ {
+  "lang": "yor",
+  "courses": [
+   "yor_for_eng"
+  ],
+  "statuses": {
+   "not_available": 1
+  },
+  "targetProviders": {}
+ },
+ {
+  "lang": "yue",
+  "courses": [
+   "yue_for_eng"
+  ],
+  "statuses": {
+   "not_available": 1
+  },
+  "targetProviders": {}
+ },
+ {
+  "lang": "zho",
+  "courses": [
+   "zho_for_cym",
+   "zho_for_eng",
+   "zho_for_gle",
+   "zho_for_hin",
+   "zho_for_jpn",
+   "zho_for_tam"
+  ],
+  "statuses": {
+   "not_available": 1,
+   "live": 1,
+   "beta": 4
+  },
+  "targetProviders": {
+   "azure": 3,
+   "xai": 2
+  }
+ },
+ {
+  "lang": "zzz",
+  "courses": [
+   "zzz_test_for_eng",
+   "zzz_test2_for_eng"
+  ],
+  "statuses": {
+   "not_available": 2
+  },
+  "targetProviders": {}
+ }
+]
