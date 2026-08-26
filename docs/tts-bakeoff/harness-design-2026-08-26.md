@@ -18,7 +18,12 @@ utterance set JSON  ->  adapter (one per provider)  ->  audio + metadata sidecar
 ```
 
 Seven adapters: **cartesia, chatterbox, minimax, openai** (candidates) and **xai, azure,
-elevenlabs** (controls).
+elevenlabs** (controls). The `minimax` adapter stub is described in this document as originally
+built, but **MiniMax is EXCLUDED-ON-TERMS as of Tom's 2026-08-26 ruling** — a perpetual, irrevocable
+licence over uploaded voices in its web/app terms, disqualifying on its own — and is out of scope
+for every phase-2 run (benchmarking, harness scoring, listening tests). Phase 2 runs the harness
+against **cartesia, chatterbox, openai** (candidates) and **xai, azure, elevenlabs** (controls) only.
+Full reasoning: [`gate-zero-candidates-recut-2026-08-26.md`](./gate-zero-candidates-recut-2026-08-26.md#minimax-speech--excluded-on-terms-toms-ruling-2026-08-26).
 
 ---
 

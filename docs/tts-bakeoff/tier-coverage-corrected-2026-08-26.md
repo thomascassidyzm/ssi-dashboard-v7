@@ -18,9 +18,16 @@ that could never be a miss.
 | **ElevenLabs** *(control)* | **10/10** | **10/10** | 42/43 |
 | **OpenAI** | 9/10 — no `ben` | **10/10** | 40/43 |
 | **Cartesia** | 9/10 — no `glg` | **10/10** | 29/43 |
-| **MiniMax** | 8/10 — no `ben`, `glg` | **10/10** | 31/43 |
+| **MiniMax** — **EXCLUDED-ON-TERMS** ⁽¹⁾ | 8/10 — no `ben`, `glg` | **10/10** | 31/43 |
 | **Chatterbox** | 7/10 — no `hrv`, `ben`, `glg` | **10/10** | 22/43 |
 | **xAI** *(incumbent)* | 8/10 — no `hrv`, `glg` | **10/10** | 20/43 |
+
+⁽¹⁾ **MiniMax is dropped from the shortlist (Tom's ruling, 2026-08-26)** — a perpetual, irrevocable
+licence over uploaded voices in its web/app Terms of Service is disqualifying on its own, no human
+check of the API-specific terms page required. Coverage numbers above are retained for the historical
+record only; MiniMax is out of scope for phase 2. **Phase 2 proceeds with Cartesia, Chatterbox and
+OpenAI as candidates, plus Azure, ElevenLabs and xAI as controls.** Full reasoning:
+[`gate-zero-candidates-recut-2026-08-26.md`](./gate-zero-candidates-recut-2026-08-26.md#minimax-speech--excluded-on-terms-toms-ruling-2026-08-26).
 
 ## What this says
 

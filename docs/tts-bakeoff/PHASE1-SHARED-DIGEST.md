@@ -16,9 +16,16 @@ would cost money is a phase-2 item to be *named*, not run.
 ## The shortlist
 - **Candidates:** Cartesia Sonic (stability-mode cloning, pinnable dated model snapshots);
   Resemble **Chatterbox** (open source, self-hostable, fixed seed + low temperature ≈ deterministic);
-  **MiniMax Speech** (raw clone quality); **OpenAI custom voices** (medium priority).
+  **OpenAI custom voices** (medium priority).
 - **Controls:** **xAI** (quality benchmark), **Azure** (consistency benchmark),
   **ElevenLabs** (known-variable benchmark).
+- **EXCLUDED-ON-TERMS: MiniMax Speech** (Tom's ruling, 2026-08-26). The readable MiniMax App/Web
+  Terms of Service grant MiniMax a **"royalty-free, perpetual, irrevocable, worldwide, non-exclusive"**
+  licence to use, reproduce, modify and create derivative works from uploaded user content, retained
+  after termination. Tom: that clause is disqualifying on its own — no human check of the
+  API-specific terms page is needed. MiniMax is out of scope for all phase-2 work (utterance
+  benchmarking, harness scoring, listening tests). Full reasoning:
+  [`gate-zero-candidates-recut-2026-08-26.md`](./gate-zero-candidates-recut-2026-08-26.md#minimax-speech--excluded-on-terms-toms-ruling-2026-08-26).
 
 ## ⚠️ COURSE CORRECTION — Tom, 2026-08-26 11:06Z. This supersedes the gate-zero section below.
 

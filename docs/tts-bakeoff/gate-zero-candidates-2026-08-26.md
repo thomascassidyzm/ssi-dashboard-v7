@@ -3,6 +3,12 @@
 > human recording, so exit cost counts. **Read [`gate-zero-candidates-recut-2026-08-26.md`](./gate-zero-candidates-recut-2026-08-26.md) instead.**
 > The vendor research below is sound and is reused there in full; only its Welsh-driven headline and
 > verdicts are replaced. Kept in place because the history is honest.
+>
+> ⚠️ **Also superseded: MiniMax's status below ("CONDITIONAL") is no longer current.** Tom has ruled
+> (2026-08-26) that MiniMax is **EXCLUDED-ON-TERMS** — a perpetual, irrevocable licence over uploaded
+> voices in its web/app terms is disqualifying on its own, no human check of the API-specific terms
+> page needed. See [`gate-zero-candidates-recut-2026-08-26.md`](./gate-zero-candidates-recut-2026-08-26.md#minimax-speech--excluded-on-terms-toms-ruling-2026-08-26)
+> for the ruling and the quoted clause.
 
 # Gate zero — the four candidates
 

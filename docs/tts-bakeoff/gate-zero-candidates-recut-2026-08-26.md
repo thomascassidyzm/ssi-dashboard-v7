@@ -150,7 +150,13 @@ one candidate that costs nothing to evaluate is the one we are hardware-blocked 
 
 **Verdict: keep, as the long-game option, blocked on a GPU box rather than on money.**
 
-### MiniMax Speech — **drop it, unless the unreadable terms say something different**
+### MiniMax Speech — **EXCLUDED-ON-TERMS (Tom's ruling, 2026-08-26)**
+
+> **Tom has ruled: DROP MiniMax from the shortlist now.** A perpetual, irrevocable licence over
+> uploaded voices in its web/app terms is disqualifying on its own — no human check of the
+> API-specific terms page is needed. MiniMax is out of scope for all further phase-2 work
+> (utterance benchmarking, harness scoring, listening tests). Phase 2 proceeds with **Cartesia,
+> Chatterbox, OpenAI**, plus the three controls (**Azure, ElevenLabs, xAI**).
 
 Tier A 8/10 (missing live `ben` and `glg`), native 44.1 kHz output, and the **best timestamp story
 of the hosted three** — word-level timings on the ordinary batch endpoint via `subtitle_enable`,
@@ -165,8 +171,13 @@ Uploading Aran's voice under those terms hands a perpetual irrevocable licence o
 which is precisely and exactly the thing SSi is leaving xAI to avoid. Deleting the `voice_id` does
 not undo a licence attached to the uploaded audio.
 
-**Verdict: fourth, and recommend dropping.** With the caveat below: the API platform terms, which
-are the ones that would actually govern an SSi contract, could not be read.
+**Verdict: EXCLUDED-ON-TERMS, not a quality miss.** Tom's ruling (2026-08-26) treats the
+disqualifying licence clause quoted above as sufficient on its own — the outstanding question of
+whether the unreadable API-platform terms at `platform.minimax.io/protocol/terms-of-service` say
+something different is **no longer load-bearing**: no human check of that page is required before
+acting on the exclusion. MiniMax is dropped from the shortlist and is out of scope for phase 2
+(utterance benchmarking, harness scoring, listening tests) regardless of what that page contains.
+The unread-document gap is retained below as a documentary note only.
 
 ---
 
@@ -222,8 +233,10 @@ recording in the same round. Cartesia and MiniMax render 44.1 kHz natively and d
   plain reading is that when we stop paying, the basis for continuing to serve tens of thousands of
   Cartesia clips commercially becomes unclear — and unclear is not a position to put an estate in.
   This is a lawyer's question and is flagged as one.
-- **MiniMax — worst.** Perpetual, irrevocable, worldwide licence to MiniMax over user content,
-  surviving termination, plus a personal/non-commercial default. See the verdict above.
+- **MiniMax — worst, and disqualifying.** Perpetual, irrevocable, worldwide licence to MiniMax over
+  user content, surviving termination, plus a personal/non-commercial default. **Tom's ruling
+  (2026-08-26): this clause alone drops MiniMax from the shortlist — EXCLUDED-ON-TERMS.** See the
+  verdict above.
 
 **Clone retirement.** OpenAI is strongest: a consent-delete endpoint plus a contractual 30-day
 deletion duty on termination. Chatterbox is cleanest in kind: nobody else ever held the voice, so
@@ -246,12 +259,14 @@ is documentary. Tom is signing up — that is the expected state, not a failure.
 **Quality is entirely unassessed.** The re-cut proves coverage is not the discriminator. It cannot
 tell you which of these sounds like a human being. That is the whole of phase 2 and it needs keys.
 
-**The MiniMax API platform terms could not be read.** `platform.minimax.io/protocol/terms-of-service`
-renders client-side and returned only a page header. Every MiniMax licensing statement here comes
-from the **App and Web** Terms of Service at `minimax.io`, which may not be the document governing an
-API contract. This is the largest single unknown in the re-cut: if the platform terms differ
-materially, the MiniMax verdict could move. It needs a browser-rendered fetch or MiniMax's own
-confirmation.
+**The MiniMax API platform terms could not be read** (documentary note, no longer decision-relevant).
+`platform.minimax.io/protocol/terms-of-service` renders client-side and returned only a page header.
+Every MiniMax licensing statement here comes from the **App and Web** Terms of Service at
+`minimax.io`, which may not be the document governing an API contract. This was flagged as the
+largest single unknown in the original re-cut; **Tom's 2026-08-26 ruling closes it** — the perpetual/
+irrevocable/worldwide licence clause in the readable App/Web terms is disqualifying on its own, and
+MiniMax is EXCLUDED-ON-TERMS regardless of what the unread platform-terms page says. Left here as a
+gap for completeness, not as an open question.
 
 **Cartesia's post-termination position is genuinely unanswered by its public terms** — not adverse,
 *absent*. It must be settled with Cartesia in writing, by someone qualified to read a contract.
