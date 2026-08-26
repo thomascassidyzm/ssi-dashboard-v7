@@ -28,6 +28,9 @@ const path = require('path');
 
 // Database service for database-first operations
 const courseDataService = require('../../course-data-service.cjs');
+// Same predicate every course-builder write path uses, so this pipeline drops
+// bare-LEGO phrases the same way and at the same place they do.
+const { partitionBareLegoPhrases } = require('../../course-builder/lib/phrase-structure.cjs');
 
 // Load environment (set by start-automation.js)
 const PORT = process.env.PORT || 3459;
@@ -1672,10 +1675,22 @@ app.post('/upload-basket', async (req, res) => {
       // Clear existing phrases for this LEGO
       await courseDataService.clearPracticePhrases(course, seedNumber, legoIndex);
 
+      // A phrase that IS the bare LEGO is padding, never practice — drop it
+      // HERE, before positions are assigned, so the surviving phrases stay
+      // contiguous (savePracticePhrase refuses it too, but a refusal at the
+      // writer would leave a hole in the position sequence).
+      const legoTargetForBasket = legoData ? legoData.target : null;
+      const { kept: writablePhrases, bare: barePhrases } = legoTargetForBasket
+        ? partitionBareLegoPhrases(phrases, legoTargetForBasket)
+        : { kept: phrases, bare: [] };
+      if (barePhrases.length > 0) {
+        console.log(`   ⚠ Dropped ${barePhrases.length} bare-LEGO phrase(s) ("${legoTargetForBasket}") — not practice, not padding`);
+      }
+
       // Save each phrase with enrichment
       let phraseCount = 0;
-      for (let i = 0; i < phrases.length; i++) {
-        const phrase = phrases[i];
+      for (let i = 0; i < writablePhrases.length; i++) {
+        const phrase = writablePhrases[i];
 
         await courseDataService.savePracticePhrase(course, seedNumber, legoIndex, {
           knownText: phrase.known,
@@ -1685,7 +1700,7 @@ app.post('/upload-basket', async (req, res) => {
           targetSyllableCount: countSyllables(phrase.target),
           legoCount: 1,
           status: 'draft'
-        });
+        }, legoTargetForBasket ? { primaryLegoTarget: legoTargetForBasket } : {});
         phraseCount++;
       }
 
@@ -1711,8 +1726,11 @@ app.post('/upload-basket', async (req, res) => {
               p => p.target === seed.target_text || p.known === seed.known_text
             );
 
+            // A one-LEGO seed's sentence IS its LEGO, so the culminating row
+            // would be a bare-LEGO row. The writer refuses it and returns null;
+            // only count what actually landed.
             if (!seedAlreadyIncluded) {
-              await courseDataService.savePracticePhrase(course, seedNumber, legoIndex, {
+              const saved = await courseDataService.savePracticePhrase(course, seedNumber, legoIndex, {
                 knownText: seed.known_text,
                 targetText: seed.target_text,
                 position: phraseCount + 1,
@@ -1721,9 +1739,13 @@ app.post('/upload-basket', async (req, res) => {
                 legoCount: seedLegos.filter(l => l.is_new).length, // All NEW LEGOs in this seed
                 status: 'draft',
                 isCulminatingPhrase: true  // Mark this as the seed sentence
-              });
-              phraseCount++;
-              console.log(`   ✓ Culminating LEGO: Added seed sentence as phrase #${phraseCount}`);
+              }, legoTargetForBasket ? { primaryLegoTarget: legoTargetForBasket } : {});
+              if (saved) {
+                phraseCount++;
+                console.log(`   ✓ Culminating LEGO: Added seed sentence as phrase #${phraseCount}`);
+              } else {
+                console.log('   ✓ Culminating LEGO: seed sentence IS the bare LEGO — not written');
+              }
             } else {
               console.log(`   ✓ Culminating LEGO: Seed sentence already included`);
             }
