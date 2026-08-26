@@ -37,8 +37,15 @@
 
       <ol class="how-to">
         <li>Tap <strong>Start</strong> and read the line aloud. It is already recording.</li>
-        <li>Stop talking and it moves on by itself — you do not have to tap anything.</li>
-        <li>Tap <strong>Again</strong> to re-read a line, <strong>Next</strong> to push on early.</li>
+        <!-- THIS STEP MUST MATCH THE SWITCH BELOW IT. It said "it moves on by
+             itself" unconditionally, which is a lie whenever auto-advance is
+             off — and then the reader finishes a line, waits for a page that is
+             never going to move, and concludes the thing is broken. It is off
+             by default on a script pack, and Aran can turn it off on his own
+             page any time, so both readings have to be true. -->
+        <li v-if="autoAdvance">Stop talking and it moves on by itself — you do not have to tap anything.</li>
+        <li v-else>When you've finished the line, tap <strong>Next</strong>. Nothing cuts you off mid-sentence.</li>
+        <li>Tap <strong>Again</strong> to re-read a line<span v-if="autoAdvance">, <strong>Next</strong> to push on early</span>.</li>
         <li>Tap <strong>Stop here</strong> when you've had enough. It saves itself.</li>
       </ol>
 
