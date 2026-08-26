@@ -20,9 +20,49 @@ would cost money is a phase-2 item to be *named*, not run.
 - **Controls:** **xAI** (quality benchmark), **Azure** (consistency benchmark),
   **ElevenLabs** (known-variable benchmark).
 
-## Gate zero
-A candidate that cannot do **Welsh** convincingly is **dead for canonical course work** regardless of
-quality. Welsh is the headline row of the coverage table.
+## ⚠️ COURSE CORRECTION — Tom, 2026-08-26 11:06Z. This supersedes the gate-zero section below.
+
+**1. Welsh is OUT of gate zero.** Welsh is done by human recording, so vendor Welsh support is
+irrelevant to this evaluation. No candidate dies for lacking Welsh.
+
+Verified against the live DB, and Tom's premise holds exactly: sampling `voice_id` across all 134
+courses that hold any `course_audio`, **43 target languages carry 10,000+ clips and every one of
+them is ~100% synthetic — except Welsh, which is 96.4% human.** Welsh is the only human-voiced
+language in the estate. Evidence: `docs/tts-bakeoff/tts-language-reality-2026-08-26.json`.
+
+**2. The headline is now the languages that actually use TTS today or next:**
+
+- **TIER A — live courses on synthetic audio** (12 live courses, 10 languages). A vendor missing one
+  of these cannot serve a shipped course: `eng spa kor zho por ita jpn hrv ben glg`.
+  (The other two live courses are `cym_n_for_eng` and `cym_s_for_eng` — human, excluded.)
+- **TIER B — the xAI migration scope** (29 courses), the commercial core of the decision:
+  `eng deu fra ita jpn kor spa por zho fin pdc`.
+- **TIER C — beta courses on synthetic audio**, 13,000+ clips each: `fra deu ara eus cat tur ell fas
+  nep gle pol hin swa lit hye ron heb swe lav est rus isl ces dan nld ukr bul tha nor srp hun afr`.
+- **TIER D — planned or barely started:** `gla mlt tel mar bre fin`, plus ~17 languages holding a
+  single probe clip, plus 15 courses with no audio at all.
+
+Coverage is counted **of Tier A (10), of Tier B (11), of Tier A+B+C (~43)** — never "of 68", which
+flattered vendors with breadth we do not use. `pdc` (Pennsylvania Dutch) is absent everywhere.
+
+**3. TTS is a BRIDGE, not the destination.** Verbatim from Tom:
+> "we probably want long term to eventually do everything with human voices. Using our intelligent
+> limited subset slice and dice approach."
+
+So this evaluation is for **the interim years**, and for scale-out languages before a human reader
+exists. The concrete consequence: operational suitability (axis G) weighs **easy EXIT** alongside
+easy entry — how cleanly a course generated on a vendor can later be re-recorded human via the
+subset/slice-and-dice method. Word/phoneme boundary metadata, output format, licensing, and whether
+we are left holding a real person's clone that must then be retired all count. **A vendor that is
+cheap to enter and expensive to leave is a worse bridge and scores as one.**
+
+Version pinning still matters exactly as much — **a bridge that drifts mid-crossing is worse than no
+bridge.** If anything the bridge framing sharpens it: the estate will be re-recorded language by
+language over years, so the un-migrated remainder must keep sounding the same throughout.
+
+## Gate zero (superseded — kept for the record)
+~~A candidate that cannot do **Welsh** convincingly is **dead for canonical course work** regardless of
+quality. Welsh is the headline row of the coverage table.~~
 
 ## The estate, as of 2026-08-26 (live `courses` table)
 - **149 courses**, **68 distinct target languages**.
