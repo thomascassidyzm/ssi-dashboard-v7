@@ -40,6 +40,10 @@ require('dotenv').config();
 const { createClient } = require('@supabase/supabase-js');
 const createLogger = require('./shared/logger.cjs');
 const { decoratePhrasesWithDecomposition } = require('./phrase-decomposition-writer.cjs');
+// The canonical bare-LEGO predicate. Every course-builder write path already
+// funnels through it (seed-complete, drafts, v2/phrases, build backfill); this
+// service was the one writer that did not. See the guard in savePracticePhrase.
+const { isBareLegoPhrase } = require('./course-builder/lib/phrase-structure.cjs');
 
 const logger = createLogger('CourseData');
 
@@ -137,6 +141,42 @@ function computePhraseRole(position) {
   if (position === 0) return 'component';
   if (position >= 8) return 'use';
   return 'practice';
+}
+
+/**
+ * The LEGO target a phrase is being written under, for the bare-LEGO guard in
+ * savePracticePhrase. Callers that already hold it should pass
+ * options.primaryLegoTarget and skip this entirely; this is for the ones that
+ * don't, and it is cached per (course, seed, lego) so a whole basket of phrases
+ * costs one read, not one read each.
+ *
+ * A miss returns null, and a null makes the guard abstain rather than guess —
+ * a LEGO the writer cannot see is not evidence that the phrase is fine, but
+ * refusing a write on a failed lookup would break every legitimate caller the
+ * moment the DB hiccuped. Abstention is logged by the caller's own gates.
+ */
+const legoTargetCache = new Map();
+
+async function lookupLegoTarget(courseCode, seedNumber, legoIndex) {
+  const key = `${courseCode}:${seedNumber}:${legoIndex}`;
+  if (legoTargetCache.has(key)) return legoTargetCache.get(key);
+  let target = null;
+  try {
+    if (supabase) {
+      const { data } = await supabase
+        .from('course_legos')
+        .select('target_text')
+        .eq('course_code', courseCode)
+        .eq('seed_number', seedNumber)
+        .eq('lego_index', legoIndex)
+        .maybeSingle();
+      target = data ? data.target_text : null;
+    }
+  } catch (e) {
+    logger.warn(`Bare-LEGO guard could not read LEGO ${key}: ${e.message} — abstaining`);
+  }
+  legoTargetCache.set(key, target);
+  return target;
 }
 
 /**
@@ -586,6 +626,37 @@ async function savePracticePhrase(courseCode, seedNumber, legoIndex, phraseData,
 
   const targetText = phraseData.targetText || phraseData.target_text || phraseData.target;
   const position = phraseData.position;
+
+  // ── BARE-LEGO GUARD (2026-08-26) ────────────────────────────────────────
+  // A practice phrase whose target IS its LEGO's target teaches nothing: the
+  // learner already meets the bare LEGO at intro and at debut, both rendered
+  // straight from course_legos, and the round generator claims the phrase id
+  // whether or not a row exists. So the row is never played — it only pads the
+  // per-LEGO count. ralph-methodology.md is explicit that a BUILD phrase is the
+  // new LEGO plugged into PRIOR vocabulary, never the LEGO alone.
+  //
+  // On 2026-08-06 (ad9b41b0) every course-builder route learned to drop these
+  // before writing. This function did not, and it is the writer the phase3
+  // basket pipeline uses — so the ban held on one road and not on the other.
+  // The guard lives HERE, at the lowest writer, precisely so no future caller
+  // has to remember it. Callers should still filter first (partitionBareLegoPhrases)
+  // to keep their positions contiguous; this is the backstop, not the strainer.
+  //
+  // No early-seed exception: the floor RAMP for seeds 1-3 (checkBuildUsePhrases)
+  // relaxes how MANY phrases a LEGO needs, never what may be written as one. Even
+  // LEGO 1 of a course — the one LEGO with nothing prior to weave into — gets its
+  // bare debut from course_legos, so a bare row for it is still a row nobody hears.
+  const legoTargetForGuard = options.primaryLegoTarget
+    || phraseData.legoTarget
+    || await lookupLegoTarget(courseCode, seedNumber, legoIndex);
+  if (legoTargetForGuard && isBareLegoPhrase(targetText, legoTargetForGuard)) {
+    logger.warn(
+      `Refused bare-LEGO practice phrase ${courseCode} S${seedNumber}L${legoIndex} pos ${position}: ` +
+      `"${targetText}" IS the LEGO. A practice phrase uses the LEGO in a phrase with ` +
+      'already-introduced vocabulary; the bare LEGO is already taught at intro and debut.'
+    );
+    return null;
+  }
 
   // Compute phrase_role from position if not explicitly provided
   const phraseRole = phraseData.phraseRole || phraseData.phrase_role || computePhraseRole(position);
