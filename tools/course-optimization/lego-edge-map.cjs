@@ -120,7 +120,7 @@ async function loadCourse(sb, courseCode) {
  * Returns the LEGO ids covered and the tokens nothing could account for, each with a reason.
  */
 function tile(toks, inventoryByPhrase, maxLen, ownTargetToks, ownKeys) {
-  const covered = new Set();
+  const covered = [];
   const unmatched = [];
   let i = 0;
   // The NEW LEGO's own target must be consumed WHOLE before anything else. Without this the
@@ -132,11 +132,11 @@ function tile(toks, inventoryByPhrase, maxLen, ownTargetToks, ownKeys) {
     for (let len = Math.min(localMax, toks.length - i); len >= 1; len--) {
       const key = toks.slice(i, i + len).join(' ');
       if (ownKeys.includes(key)) { hit = { lego: null, len }; break; }
-      const lego = inventoryByPhrase.get(key);
-      if (lego) { hit = { lego, len }; break; }
+      const entry = inventoryByPhrase.get(key);
+      if (entry) { hit = { entry, len, key }; break; }
     }
     if (hit) {
-      if (hit.lego) covered.add(hit.lego);
+      if (hit.entry) covered.push({ ...hit.entry, key: hit.key });
       i += hit.len;
       continue;
     }
@@ -223,13 +223,15 @@ function analyse(courseCode, { legos, phrases }, regions) {
       }
 
       const m = tile(tokens(p.target_text), inv, maxLen, ownToks, ownKeys);
-      const matched = new Set([...m.covered].map((l) => l.lego_id));
+      const wholeHits = m.covered.filter((h) => !h.viaComponent);
+      const componentHits = m.covered.filter((h) => h.viaComponent).length;
+      const matched = new Set(wholeHits.map((h) => h.lego.lego_id));
       // A CONTENT edge is a partner that carries meaning. A LEGO whose whole target is one
       // free-class glue word ("a", "de", "que") is licensed machinery, not a distinction the
       // phrase is teaching, and counting it as an edge would flatter every phrase in the course.
-      const contentMatched = [...m.covered]
-        .filter((l) => { const k = norm(l.target_text); return !(k.indexOf(' ') === -1 && FREE_CLASS_ES.has(k)); })
-        .map((l) => l.lego_id);
+      const contentMatched = [...new Set(wholeHits
+        .filter((h) => !(h.key.indexOf(' ') === -1 && FREE_CLASS_ES.has(h.key)))
+        .map((h) => h.lego.lego_id))];
 
       const declaredArr = [...declared];
       const matchedArr = [...matched];
@@ -257,6 +259,7 @@ function analyse(courseCode, { legos, phrases }, regions) {
         edges_matched: matchedArr.length,
         agree,
         decompStatus,
+        componentHits,
         ghostTiles,
         ghostTaught,
         forwardRefs,
@@ -305,12 +308,15 @@ function analyse(courseCode, { legos, phrases }, regions) {
     // Only now does this LEGO join the inventory — no forward references.
     const key = norm(lego.target_text);
     if (key && !inv.has(key)) {
-      inv.set(key, lego);
+      inv.set(key, { lego, viaComponent: false });
       maxLen = Math.max(maxLen, key.split(' ').length);
     }
+    // Components go in so their tokens are ACCOUNTED FOR rather than landing in `unknown`,
+    // but a component hit is NOT an edge to the whole parent LEGO. Matching "que" must never
+    // be reported as the phrase combining with "mejor que".
     for (const c of (Array.isArray(lego.components) ? lego.components : [])) {
       const ck = norm(c && (c.target || c.target_text));
-      if (ck && !inv.has(ck)) { inv.set(ck, lego); maxLen = Math.max(maxLen, ck.split(' ').length); }
+      if (ck && !inv.has(ck)) { inv.set(ck, { lego, viaComponent: true }); maxLen = Math.max(maxLen, ck.split(' ').length); }
     }
   }
 

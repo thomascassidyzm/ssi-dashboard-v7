@@ -183,7 +183,87 @@ builder fixes every course rather than patching one.
 
 ## The quality read
 
-_[QUALITY]_
+**220 phrases were read in both languages** — a 40-phrase pilot, then 60 each from early, middle
+and late, half BUILD and half USE, drawn at random within each band. Every reader got the seed's
+master sentence and every sibling phrase of the LEGO, so nothing was judged on a bare fragment.
+
+Graded on your three-tier ladder, on the English side:
+
+| | phrases | tier 1, pass | tier 2, clunky | tier 3, wrong |
+|---|---|---|---|---|
+| pilot (all regions) | 40 | 40 | 0 | 0 |
+| early | 60 | 60 | 0 | 0 |
+| middle | 60 | 60 | 0 | 0 |
+| late | 60 | 59 | 0 | **1** |
+| **total** | **220** | **219 (99.5%)** | **0** | **1 (0.5%)** |
+
+Spanish naturalness: 216 of 220 natural, 3 semantic drift, 1 grammatically wrong.
+
+**There is no clunkiness problem in this course.** One tier-3 phrase in 220, no tier-2 at all, and
+no regional signal — the late course reads as well as the early course. At n=60 per band the
+sampling error is about ±5 points, so I cannot rule out a small regional difference, but nothing
+in this sample suggests one exists. Your own instinct in the dictation was right: "yes, they're
+probably okay". They are.
+
+Twenty of the 220 carried a defect of some kind — 9.1% — and the triage splits **4 mechanical, 6
+clean rewrite, 3 cut, 7 judgment fork**. Nothing here is alarming, and most of it is small. The
+single tier-3 is `spa_for_eng:S0470L03U01`, an English tense clash — "she left before we stop".
+
+So the prose is fine and the structure is not. That is the whole finding of this audit.
+
+### The structural classes, triaged
+
+A separate reader took 25 of the 132 BUILD phrases that do not contain their own LEGO's target, and
+25 of the 218 late-course LEGOs whose whole BUILD set draws at most one edge.
+
+**On the missing-target class the verdict was harsher than expected: 14 of 25 are real
+misattribution, 2 are naive checking, 9 are something else** (fragment debuts, clitic interposition,
+a lexical variant). Extrapolated, that is roughly **74 BUILD phrases in the course whose content
+genuinely is not about the LEGO they are filed under.** Two, verified against the live database:
+
+- `S0038L03` teaches "a week" / "una semana". Its first three BUILD phrases teach it correctly.
+  Its fourth is `"I've been learning all day"` / `"Llevo todo el día aprendiendo"` — no "semana"
+  anywhere.
+- `S0378L01` teaches "enough money" / "suficiente dinero", and **all three** of its BUILD phrases
+  are `"enough"` / `"suficiente"`, `"quite enough"` / `"bastante suficiente"`, `"not enough"` /
+  `"no suficiente"`. The money never appears. The learner never sees the LEGO modelled at all.
+
+**On the thin-ladder class the reader pushed back, and was partly right.** Of 25 late ladders: 2
+teach properly, 18 are thin, 5 only repeat. But asked whether the near-duplicate step (bare noun →
+noun with article) does real pedagogical work, they judged **16 of 25 worth the learner's turn and
+9 redundant**. So the graduated step is often legitimate, and calling all 218 ladders degenerate
+overstates it.
+
+They also challenged the edge definition directly: the tool does not count a connection to a
+LEGO whose whole target is one glue word ("es", "muy", "un", "no"). That is by design, but it is
+worth knowing what it costs, so here is the sensitivity:
+
+| | count glue as an edge | do not (as reported above) |
+|---|---|---|
+| zero-edge BUILD phrases, whole course | 39.8% | 42.3% |
+| zero-edge BUILD phrases, late course | 47.2% | 50.7% |
+
+**2.5 points.** The challenge is legitimate and the finding survives it either way.
+
+### One thing nobody was looking for
+
+Chasing that reader's claim of duplicate phrases produced a clean new count. **Nineteen BUILD
+phrases in the course are byte-for-byte identical to a sibling in the same LEGO's own set** — the
+same English, the same Spanish, two slots in one debut round:
+
+| region | duplicate BUILD rows |
+|---|---|
+| early | **0** |
+| middle | 3 |
+| late | **16** |
+
+`S0522L01` prompts `"let's agree that"` / `"estemos de acuerdo en que"` twice, then `"let's agree
+that here"` and `"let's agree that before"`. `S0540L01` prompts `"I don't mind if"` / `"no me
+importa si"` twice, and none of its four BUILD phrases connects to anything.
+
+Zero in the early course, sixteen in the late course. That is not a methodology question and it
+needs no ruling from you — it is straightforwardly broken, and it is the sharpest single piece of
+evidence that something changed in how the late course was built.
 
 ---
 
@@ -226,6 +306,12 @@ Two further structural counts, new here, that a later pass may want:
 - The quality read is a **sample**, not a census: 220 phrases of 15,205, stratified by region and
   role. Sampling error on a per-region tier rate at n=60 is roughly ±5 percentage points. The
   structural counts, by contrast, are a **full census** of all 5,133 BUILD rows.
+- The 74-phrase misattribution figure is **extrapolated from 25 items of 132**, not counted. The
+  census number is 132 phrases missing their own LEGO's target; how many of those are real defects
+  rather than morphology rests on a sample of 25, and the reader could not confirm six of its own
+  fragment calls without sibling rows it had not been given. Treat 74 as an estimate with real
+  width, and re-triage the full 132 before anyone acts on it.
+- The 19 duplicate BUILD rows, the 407 stale tilings and every edge count **are** full censuses.
 - The matcher's residue — 438 unaccounted Spanish tokens, 0.9% — is not zero. Where it cannot
   attribute a token it declines to count an edge, so every edge count here is a floor.
 - **USE phrases were graded for quality but not edge-mapped.** BUILD phrases are where the
@@ -250,6 +336,11 @@ all in three phrases out of five**.
 **edge-drawing BUILD phrases per LEGO, 2.45 early against 1.53 late.** Everything else follows from
 it. Notably it is *not* worse on prose quality, where the sample found no regional signal, and *not*
 worse on the one-edge rate, which is flat across regions. If you fix one number, fix that one.
+
+Three independent censuses point the same way and none of them is a matter of taste: duplicate
+BUILD rows go 0 early → 16 late; stale tilings go 2.7% early → 17.4% late; bare-LEGO openers go
+81.4% early → 95.9% late. Something in the late build was running thinner, and it left three
+different kinds of fingerprint.
 
 **What should edge-selection by least action optimise for?** Three candidate rules, each with the
 number from this audit that argues for it:
