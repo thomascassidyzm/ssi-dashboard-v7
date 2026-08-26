@@ -68,9 +68,60 @@ async function restAll(table, select, filters, order, pageSize = 1000) {
 
 const norm = (s) => (s || '').normalize('NFC').replace(/\s+/g, ' ').trim();
 const lower = (s) => norm(s).toLowerCase();
-const stripPunct = (s) => lower(s).replace(/[.,!?;:—–…"“”«»()¿¡]/g, ' ').replace(/\s+/g, ' ').trim();
-const words = (s) => stripPunct(s).split(' ').filter(Boolean);
+// CJK full-width punctuation is added to the strip class so a Chinese sentence tokenises at all.
+// Latin-script corpora contain none of these characters, so eng/cym output is unaffected.
+// NOT in the class: ’ U+2019. It is punctuation in English but the APOSTROPHE inside Welsh words
+// (chi’n, efo’ch) — stripping it splits one word into two and silently rewrites every Welsh
+// word count. Verified: adding it changed the committed cym set.
+const stripPunct = (s) => lower(s)
+  .replace(/[.,!?;:—–…"“”«»()¿¡。，、？！：；（）《》〈〉「」【】·～]/g, ' ')
+  .replace(/\s+/g, ' ').trim();
+
+/**
+ * Tokenisation is a LANGUAGE property, not a universal. The default splits on whitespace, which
+ * is right for every Latin/Cyrillic/Greek-script course in the estate. Chinese writes no word
+ * boundaries at all, so the default would score every Chinese sentence as ONE token and every
+ * size-banded category would come out empty. A pack may therefore supply its own tokeniser.
+ */
+const WHITESPACE_TOKENISER = (s) => stripPunct(s).split(' ').filter(Boolean);
+let TOKENISER = WHITESPACE_TOKENISER;
+
+/** Han/kana characters are their own tokens; runs of Latin letters or digits stay whole. */
+const CJK_CHAR = /[㐀-䶿一-鿿豈-﫿぀-ヿㇰ-ㇿ]/;
+function cjkTokeniser(s) {
+  const out = [];
+  let buf = '';
+  const flush = () => { if (buf.trim()) out.push(buf.trim()); buf = ''; };
+  for (const ch of stripPunct(s)) {
+    if (CJK_CHAR.test(ch)) { flush(); out.push(ch); }
+    else if (/\s/.test(ch)) flush();
+    else buf += ch;
+  }
+  flush();
+  return out;
+}
+
+const words = (s) => TOKENISER(s);
 const wordCount = (s) => words(s).length;
+
+/** Category size bands, in TOKENS. A pack may override any of them — see zho, which counts Han
+ *  characters rather than whitespace-delimited words, so its bands are numerically different. */
+const DEFAULT_BANDS = {
+  isolated_word: [1, 1],
+  very_short_lego: [2, 3],
+  medium_chunk: [4, 8],
+  full_sentence: [6, 16],
+  question: [3, 12],
+  hard_pronunciation: [1, 9],
+  proper_noun: [1, 8],
+  numbers_word: [1, 12],
+  numbers_digit: [1, 30],
+  flagged_hard: [2, 14],
+  repeat_probe: [7, 12],
+};
+
+/** Diacritic-blind comparison — used to name an accent-only minimal pair (esta / está). */
+const stripDia = (s) => s.normalize('NFD').replace(/[̀-ͯ]/g, '');
 
 /** Deterministic 32-bit FNV-1a — used only for stable ordering, never for randomness. */
 function fnv(str) {
@@ -160,6 +211,152 @@ const LANG_PACKS = {
     numberWords: ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'eleven', 'twelve', 'twenty', 'thirty', 'forty', 'fifty', 'hundred', 'thousand', 'million', 'half', 'quarter', "o'clock", '’clock', 'first', 'second', 'third', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday', 'january', 'february', 'march', 'april', 'june', 'july', 'august', 'september', 'october', 'november', 'december'],
     properNouns: ['english', 'welsh', 'spanish', 'french', 'german', 'italian', 'london', 'wales', 'england', 'britain', 'cardiff', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday', 'january', 'february', 'march', 'april', 'june', 'july', 'august', 'september', 'october', 'november', 'december', 'christmas'],
   },
+
+  spa: {
+    label: 'Spanish',
+    // spa_for_eng is voiced es-ES and spa_mx_for_eng es-MX. The courses.dialect column says
+    // "standard" for BOTH, so it carries no variety information: the variety has to be tagged
+    // from the course code, which is what this map does. Every spa utterance therefore states
+    // which variety it came from, and a peninsular/Mexican split can be made later.
+    varietyByCourse: {
+      spa_for_eng: 'es-ES (peninsular)',
+      spa_mx_for_eng: 'es-MX (Mexican)',
+    },
+    hard: [
+      { id: 'seseo', test: (t) => /(c[eéií]|z)/i.test(t), note: 'contains "ce/ci/z" — the distinción/seseo split. Peninsular Spanish says /θ/ (cerca ≈ "therca"), Mexican and all of Latin America say /s/. A voice must pick ONE and hold it: a model that drifts between /θ/ and /s/ inside a course teaches the learner an accent that no human has.' },
+      { id: 'yeismo', test: (t) => /ll/i.test(t), note: '"ll" — /ʎ/ historically, merged to /ʝ/ (and in some varieties /ʒ/ or /ʃ/) by yeísmo. Anglophone-trained models fall back to an English /l/ and the word stops being Spanish.' },
+      { id: 'rr-trill', test: (t) => /(rr|(^|\s)r)/i.test(t), note: 'trilled /r/ — written "rr" between vowels or "r-" word-initially, and phonemically distinct from the tap /ɾ/. The single most common Spanish TTS failure: the trill is rendered as an English approximant /ɹ/, or as a single tap, which collapses pero/perro.' },
+      { id: 'jota', test: (t) => /(j|g[eéií])/i.test(t), note: '"j" and "g" before e/i are the voiceless velar (peninsular uvular) fricative /x/. Models trained on English read "j" as /dʒ/ ("jam") and the word is unrecognisable.' },
+      { id: 'enye', test: (t) => /ñ/i.test(t), note: '"ñ" is the palatal nasal /ɲ/ — one segment, not /n/+/j/. Models that decompose it produce "an-yo" for año, and models that ignore the tilde produce ano, which is a different and unfortunate word.' },
+      { id: 'written-accent', test: (t) => /[áéíóú]/i.test(t), note: 'carries a written accent, which in Spanish marks LEXICAL STRESS and nothing else. Put the stress on the wrong syllable and you get a different word (hablo/habló, esta/está) — this is a pure test of whether the model reads the diacritic or discards it.' },
+      { id: 'intervocalic-d', test: (t) => /[aeiouáéíóú](d)[aeiouáéíóú]/i.test(t), note: 'intervocalic "d" is the approximant [ð] and in -ado/-ido endings is heavily reduced or dropped in ordinary speech. A model giving it a hard English /d/ sounds over-enunciated on every past participle in the course.' },
+      { id: 'b-v', test: (t) => /v/i.test(t), note: '"b" and "v" are the SAME phoneme in Spanish (/b/, approximant [β] between vowels). A model that renders "v" as an English labiodental /v/ has imported a distinction Spanish does not have.' },
+      { id: 'inverted-punct', test: (t) => /[¿¡]/.test(t), note: 'opens with "¿" or "¡". This is a text-normalisation probe as much as a phonetic one: listen for the mark being read aloud, for the model choking on it, and for whether the question contour actually starts where the mark says it does.' },
+      { id: 'synalepha', test: (t) => /[aeoáéó]\s+[haeiouáéíóú]/i.test(t), note: 'vowel meeting a vowel across a word boundary (with an optional silent "h"). Spanish runs them together into one syllable — synalepha. A model that inserts a glottal stop or a pause between the words sounds like it is reading a list.' },
+      { id: 'silent-h', test: (t) => /(^|\s)h[aeiouáéíóú]/i.test(t), note: 'word-initial "h" is completely silent in Spanish. A model leaking an English /h/ is audible immediately on hablar, hacer, hay, hora.' },
+      { id: 'x', test: (t) => /x/i.test(t), note: '"x" is /ks/ in most words but /x/ in México and a class of Nahuatl-derived names — a lexicon test, not a letter-to-sound test.' },
+    ],
+    mutationPairs: false,
+    minimalPairContrasts: true,
+    vowels: 'aeiouáéíóú',
+    wordCharRe: /[^a-záéíóúüñ]/,
+    doubleLetterContrasts: {
+      r: 'tap /ɾ/ vs trill /r/ — the pero/perro contrast, the one Spanish minimal pair every learner is taught and the one most TTS voices flatten',
+      l: 'single "l" /l/ vs "ll" /ʝ/ — collapsing these erases yeísmo entirely',
+    },
+    contrastRank: (contrast) => {
+      if (/^doubled r/.test(contrast)) return 10;   // pero/perro — the contrast Spanish is built on
+      if (/^written stress accent/.test(contrast)) return 9;  // esta/está — pure stress
+      if (/^doubled l/.test(contrast)) return 8;
+      if (/consonant [szc]\/[szc]/.test(contrast)) return 7;  // seseo/distinción
+      if (/^consonant/.test(contrast)) return 4;
+      return 1;  // a bare vowel alternation is usually morphology (mueve/muevo), not phonology
+    },
+    // Pod rows spliced from several turns ("Estupendo. … La habitación …") and multi-sentence
+    // narration are real rows, but as a benchmark utterance they test splicing, not the voice.
+    // Digit rows are exempt: they are the ONLY place digits occur in this corpus.
+    qualityPenalty: (c, category) => {
+      if (category === 'numbers' && /[0-9]/.test(c.text)) return 0;
+      // The rarest Spanish names in this corpus sit in one-word pod drill rows ("Junio."), so
+      // rarity-first selection fills the whole category with bare month names. A name in a
+      // sentence is the better probe — it tests the name AND whether the surrounding phonology
+      // survives it. 1000 exceeds the rarity priority's 500 cap, so context always wins; a bare
+      // name still gets in when nothing else carries that name.
+      if (category === 'proper_noun' && wordCount(c.text) < 3) return 1000;
+      return /…|\.\s+\S/.test(c.text) ? 6 : 0;
+    },
+    contrastNote: (contrast) => {
+      if (/^written stress accent/.test(contrast)) return 'The two forms differ ONLY by the written accent, i.e. only by which syllable is stressed. If both render with the same stress the model is ignoring the diacritic, and the course teaches the wrong word.';
+      if (/consonant [szc]\/[szc]/.test(contrast)) return 'An s/z/c contrast — live in peninsular Spanish (/s/ vs /θ/) and merged in Mexican. Whichever variety the voice claims, it must be CONSISTENT: hearing both members the same way in an es-ES voice is a distinción failure.';
+      if (/^doubled r/.test(contrast)) return 'Tap versus trill. If both members sound the same the voice has no trill, which disqualifies it for Spanish course work.';
+      return '';
+    },
+    coreNumerals: ['uno', 'una', 'un', 'dos', 'tres', 'cuatro', 'cinco', 'seis', 'siete', 'ocho', 'nueve', 'diez', 'once', 'doce', 'veinte', 'treinta', 'cuarenta', 'cincuenta', 'cien', 'ciento', 'mil', 'millón', 'medio', 'media', 'mitad', 'primero', 'primera', 'segundo', 'segunda', 'tercero'],
+    numberWords: ['uno', 'una', 'un', 'dos', 'tres', 'cuatro', 'cinco', 'seis', 'siete', 'ocho', 'nueve', 'diez', 'once', 'doce', 'veinte', 'treinta', 'cuarenta', 'cincuenta', 'cien', 'ciento', 'mil', 'millón', 'medio', 'media', 'mitad', 'primero', 'primera', 'segundo', 'segunda', 'tercero', 'hora', 'horas', 'minuto', 'minutos', 'día', 'días', 'semana', 'semanas', 'mes', 'meses', 'año', 'años', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado', 'domingo', 'enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'],
+    properNouns: ['español', 'española', 'inglés', 'inglesa', 'francés', 'alemán', 'italiano', 'españa', 'méxico', 'madrid', 'barcelona', 'londres', 'inglaterra', 'gales', 'estados', 'unidos', 'europa', 'américa', 'josé', 'maría', 'juan', 'carlos', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado', 'domingo', 'enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre', 'navidad'],
+  },
+
+  zho: {
+    label: 'Mandarin Chinese',
+    // Chinese writes no spaces. Without this tokeniser every Chinese string scores one token and
+    // every size-banded category comes out empty — the Latin-script assumption this pack exists
+    // to break. Bands below are therefore in HAN CHARACTERS, not words.
+    tokenise: cjkTokeniser,
+    script: CJK_CHAR,
+    // as for Spanish: splice-marked and multi-sentence pod rows are poor probes, but the digit
+    // rows — of which this corpus has twelve, all pod number drills — must not be penalised away
+    qualityPenalty: (c, category) => {
+      if (category === 'numbers' && /[0-9]/.test(c.text)) return 0;
+      // as for Spanish: the rarest names sit in one-word pod drill rows (星期一。), so require a
+      // name to appear inside something sentence-sized. 1000 exceeds the rarity priority's cap.
+      if (category === 'proper_noun' && wordCount(c.text) < 6) return 1000;
+      return /…|。\s*\S/.test(c.text) ? 6 : 0;
+    },
+    categoryNotes: {
+      isolated_word: 'Single word spoken alone, with no sentence to lean on. Mandarin has no lexical stress, so what to listen for instead is TONE: each syllable must carry its full citation contour, and a two-syllable word must not be flattened into one shape. Listen too for a neutral-toned second syllable being given a full tone it should not have.',
+      very_short_lego: 'Three-to-five-character LEGO. Too short for the model to settle into a rhythm, so clipped onsets, a swallowed first syllable and a truncated final tone all surface here. Check that the last syllable actually completes its tone contour rather than being cut off.',
+      medium_chunk: 'BUILD-phrase fragment — deliberately incomplete. Listen for a false final cadence (a dropped, statement-final pitch on a phrase that has not ended), and for whether the sandhi across the internal word boundaries is applied at all.',
+      full_sentence: 'Complete USE sentence — the baseline for naturalness. Listen for phrasing and breath placement, and above all for whether tone survives the sentence: many models render tones correctly on isolated words and then flatten them into an English-like intonation contour once a sentence gets long.',
+      question: 'Interrogative. Mandarin marks most questions LEXICALLY (吗, 呢, an A-not-A frame, a question word), so a question does NOT need a rising contour — over-applying an English rise is as wrong as flattening it. Listen for the particle staying neutral and short, and for the sentence tones surviving underneath whatever contour is applied.',
+      proper_noun: 'Listen for the wrong reading of a name character, tones dropped on the name, or the name given a foreign phonology — place and month names are where a Mandarin voice most often reverts to a per-character reading.',
+    },
+    bands: {
+      isolated_word: [1, 2],
+      very_short_lego: [3, 5],
+      medium_chunk: [5, 9],
+      full_sentence: [8, 18],
+      question: [4, 14],
+      hard_pronunciation: [2, 12],
+      proper_noun: [1, 12],
+      numbers_word: [1, 20],
+      numbers_digit: [1, 40],
+      flagged_hard: [2, 20],
+      repeat_probe: [9, 16],
+    },
+    hard: [
+      { id: 'bu-sandhi', test: (t) => /不[是要会对去看错够用太大做快见慢累在上下后但话]/.test(t), note: '不 (bù) before a FOURTH-tone syllable becomes second tone: 不是 is bú shì, not bù shì. It is a mandatory sandhi that no orthography records, so a model must know the rule rather than read the character. Getting it wrong is audible to any Mandarin speaker in the first second.' },
+      { id: 'yi-sandhi', test: (t) => /一[个点起下样定块些直]/.test(t), note: '一 (yī) is first tone alone, second tone (yí) before a fourth-tone syllable — 一个 is yí ge — and fourth tone (yì) before first, second or third. Three readings of one character, decided entirely by what follows. Listen especially to 一个 and 一点.' },
+      { id: 'v-bu-v', test: (t) => /(.)不\1/.test(t), note: 'the A-不-A question frame (是不是, 能不能, 好不好). Here 不 loses its tone entirely and goes neutral, and the whole frame is delivered as one prosodic unit. Models routinely give the 不 a full fourth tone and a pause on each side, which turns a question into three stressed words.' },
+      { id: 't3-sandhi', test: (t) => /[我你很好想可以早请老少手五九起走买也有每里姐懂给]{2}/.test(t), note: 'two third tones in a row: the FIRST becomes second tone. 你好 is ní hǎo, 我想 is wó xiǎng. Another rule invisible in the text. A model that renders both syllables with the full dipping third tone sounds laboured and foreign, and this pattern is everywhere in the course.' },
+      { id: 'neutral-tone', test: (t) => /(什么|东西|朋友|谢谢|时候|意思|喜欢|知道|明白|舒服|漂亮|事情|我们|他们|你们)/.test(t), note: 'lexical NEUTRAL tone on the second syllable (shén me, péng you, xiè xie). Neutral syllables are short, unstressed and pitch-determined by what precedes them. A model that gives every character its dictionary tone produces the classic robotic character-by-character Mandarin.' },
+      { id: 'erhua', test: (t) => /儿/.test(t), note: 'erhua — the 儿 suffix is not a syllable, it retroflexes the vowel of the syllable before it (一点儿 is yìdiǎnr, two syllables not three). A model that reads 儿 as a separate "ér" has added a syllable that is not there.' },
+      { id: 'retroflex-vs-alveolar', test: (t) => /[是知这只中真出车说十师生]/.test(t) && /[四三思算色早在做走坐]/.test(t), note: 'this string contains BOTH a retroflex sibilant (zh/ch/sh/r) and an alveolar one (z/c/s) — 四 sì versus 十 shí being the textbook case. The pair is merged in much of southern China and routinely merged by TTS. A voice that cannot hold the contrast within one sentence is unusable for a course that teaches it.' },
+      { id: 'final-particle', test: (t) => /[吗呢吧啊]\s*[?？]?\s*$/.test(t), note: 'ends in a sentence-final particle (吗/呢/吧/啊). These are toneless and carry the sentence\'s pragmatic force through pitch on the particle itself. Getting the contour wrong turns a question into a statement or a suggestion into a demand.' },
+      { id: 'de-triple', test: (t) => /[的得地]/.test(t), note: 'contains one of 的/得/地 — three characters, all pronounced neutral "de" in this use, but 得 is ALSO děi ("must") and dé ("obtain"). The commonest heteronym trap in the language, and the model has to disambiguate from syntax alone.' },
+      { id: 'tone4-run', test: (t) => /[是要会对去看错够用太大做快见慢累在下后但认站]{2}/.test(t), note: 'two or more fourth tones in a row — a sharp falling contour repeated. Models tend to flatten the second one, or add a spurious pause between them to "reset". Listen for whether both falls are actually there.' },
+    ],
+    mutationPairs: false,
+    // Chinese minimal pairs are not phoneme swaps: they are HETERONYMS — one character, two
+    // readings chosen by meaning — and tone-only pairs. Both are mined from real corpus rows.
+    heteronyms: [
+      { char: '行', a: { pinyin: 'xíng', gloss: 'to be OK / to go', test: /不行|行吗|旅行|自行车|进行|行了/ }, b: { pinyin: 'háng', gloss: 'a row / a line of business', test: /银行|一行|行业/ } },
+      { char: '长', a: { pinyin: 'cháng', gloss: 'long', test: /很长|长时间|多长|长的|长一点/ }, b: { pinyin: 'zhǎng', gloss: 'to grow / senior', test: /长大|校长|家长|成长|长得/ } },
+      { char: '了', a: { pinyin: 'le', gloss: 'completed-action particle, neutral tone', test: /了。|好了|来了|了$/ }, b: { pinyin: 'liǎo', gloss: 'to understand / to be able to finish', test: /了解|受不了/ } },
+      { char: '得', a: { pinyin: 'de', gloss: 'complement marker, neutral tone', test: /说得|做得|得很|得好/ }, b: { pinyin: 'děi', gloss: 'must / have to', test: /我得|你得|得走|得去/ } },
+      { char: '乐', a: { pinyin: 'lè', gloss: 'happy', test: /快乐|可乐/ }, b: { pinyin: 'yuè', gloss: 'music', test: /音乐/ } },
+      { char: '为', a: { pinyin: 'wèi', gloss: 'for / for the sake of', test: /为什么|为了/ }, b: { pinyin: 'wéi', gloss: 'to be / to consider', test: /认为|以为|成为/ } },
+      { char: '只', a: { pinyin: 'zhǐ', gloss: 'only', test: /只是|只有|只能/ }, b: { pinyin: 'zhī', gloss: 'classifier for animals', test: /一只|两只/ } },
+      { char: '分', a: { pinyin: 'fēn', gloss: 'minute / to divide', test: /分钟|十分|分开/ }, b: { pinyin: 'fèn', gloss: 'a portion / a share', test: /部分|一份|身分/ } },
+      { char: '应', a: { pinyin: 'yīng', gloss: 'ought to', test: /应该/ }, b: { pinyin: 'yìng', gloss: 'to answer / to cope', test: /答应|应付/ } },
+      { char: '数', a: { pinyin: 'shù', gloss: 'a number', test: /数字|大多数/ }, b: { pinyin: 'shǔ', gloss: 'to count', test: /数一数|数不清/ } },
+      { char: '地', a: { pinyin: 'dì', gloss: 'ground / place', test: /地方|地址|地上/ }, b: { pinyin: 'de', gloss: 'adverbial marker, neutral tone', test: /地说|地做|慢慢地/ } },
+    ],
+    tonePairs: [
+      { a: '买', b: '卖', pa: 'mǎi (to buy)', pb: 'mài (to sell)', note: 'identical segments, opposite meanings, distinguished ONLY by third tone versus fourth. The most consequential tone pair in the language for a learner.' },
+      { a: '问', b: '文', pa: 'wèn (to ask)', pb: 'wén (writing / language)', note: 'fourth tone versus second on the same syllable.' },
+      { a: '想', b: '像', pa: 'xiǎng (to want / to think)', pb: 'xiàng (to resemble)', note: 'third versus fourth tone on xiang — and 想 is one of the highest-frequency words in the whole course.' },
+      { a: '找', b: '照', pa: 'zhǎo (to look for)', pb: 'zhào (to shine / photograph)', note: 'third versus fourth tone on zhao.' },
+      { a: '里', b: '力', pa: 'lǐ (inside)', pb: 'lì (strength)', note: 'third versus fourth tone on li.' },
+      { a: '马', b: '妈', pa: 'mǎ (horse)', pb: 'mā (mother)', note: 'third versus first tone — the textbook mā/má/mǎ/mà demonstration, with both members attested in this corpus.' },
+      { a: '睡', b: '水', pa: 'shuì (to sleep)', pb: 'shuǐ (water)', note: 'fourth versus third tone on shui.' },
+    ],
+    coreNumerals: ['一', '二', '三', '四', '五', '六', '七', '八', '九', '十', '百', '千', '万', '零', '两', '半'],
+    numberWords: ['一', '二', '三', '四', '五', '六', '七', '八', '九', '十', '百', '千', '万', '零', '两', '半', '点', '分', '号', '月', '日', '年', '次', '岁', '小', '时', '钟', '星', '期', '周', '天'],
+    // Chinese proper nouns are not whitespace-delimited words, so they are matched as substrings
+    // rather than as tokens: a single-character token list would match 中 inside 中间 and call it
+    // a name.
+    properNounPhrases: ['中文', '中国', '英文', '英语', '英国', '美国', '北京', '上海', '西班牙', '法国', '法语', '德国', '德语', '意大利', '日本', '伦敦', '威尔士', '汉语', '广东', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六', '星期天', '星期日', '一月', '二月', '三月', '十二月'],
+  },
 };
 
 const CATEGORIES = {
@@ -239,7 +436,14 @@ async function loadCourse(code, language) {
  */
 const HOMOGLYPH = /[Ѐ-ӿͰ-Ͽ]/;
 
-function buildPool(courses, homoglyphSink) {
+/** Pipe/arrow annotation rows ("deja | me → me") are authoring debris, not speakable text. */
+const ANNOTATION = /[|→]/;
+
+function buildPool(courses, homoglyphSink, opts = {}) {
+  const script = opts.script || null;
+  const annotationSink = opts.annotationSink || null;
+  const wrongScriptSink = opts.wrongScriptSink || null;
+  const variety = opts.varietyByCourse || null;
   const pool = [];
   for (const c of courses) {
     const dialect = c.meta && c.meta.dialect ? c.meta.dialect : null;
@@ -280,11 +484,24 @@ function buildPool(courses, homoglyphSink) {
   // (the two Welsh dialects share a lot of corpus), attribute it deterministically by hash
   // rather than always to the first course, so provenance does not skew to one dialect.
   const byText = new Map();
+  const defect = (sink, cand) => {
+    if (sink) sink.push({ text: cand.text, course_code: cand.course_code, table: cand.table, row_id: cand.row_id, seed_number: cand.seed_number });
+  };
   for (const cand of pool) {
-    if (HOMOGLYPH.test(cand.text)) {
-      if (homoglyphSink) homoglyphSink.push({ text: cand.text, course_code: cand.course_code, table: cand.table, row_id: cand.row_id, seed_number: cand.seed_number });
+    if (HOMOGLYPH.test(cand.text)) { defect(homoglyphSink, cand); continue; }
+    if (ANNOTATION.test(cand.text)) { defect(annotationSink, cand); continue; }
+    // A row whose LETTERS are none of them in the target script is not target-language speech, so
+    // it never belongs in the benchmark. Two things it is NOT: a digits-only row ("19。") carries
+    // no letters at all and is a perfectly good target clip — keep it, it is the purest number
+    // probe the corpus has; and a pod_explainer row is in the KNOWN language by design, so it is
+    // out of scope rather than broken. Only a target-role row in the wrong script is a defect.
+    if (script && /\p{L}/u.test(cand.text) && !script.test(cand.text)) {
+      const role = (cand.extra && cand.extra.role) || '';
+      if (!/explainer/.test(role)) defect(wrongScriptSink, cand);
+      else if (opts.knownLanguageSink) opts.knownLanguageSink.push({ text: cand.text, row_id: cand.row_id, role });
       continue;
     }
+    if (variety && variety[cand.course_code]) cand.variety = variety[cand.course_code];
     const k = lower(cand.text);
     if (!byText.has(k)) byText.set(k, []);
     byText.get(k).push(cand);
@@ -334,13 +551,16 @@ function mutationPairsFrom(pool, packHasMutations) {
   }).sort((x, y) => fnv(x.a + x.b) - fnv(y.a + y.b));
 }
 
-function editPairsFrom(pool, contrasts) {
+function editPairsFrom(pool, contrasts, pack) {
   if (!contrasts) return [];
+  // the set of characters a "word" may contain is language-specific: an ASCII-only filter throws
+  // away every accented Spanish word, which is most of them
+  const badChar = (pack && pack.wordCharRe) || /[^a-z’']/;
   const freq = new Map();
   const holder = new Map();
   for (const c of pool) {
     for (const w of words(c.text)) {
-      if (w.length < 3 || /[^a-z’']/.test(w)) continue;
+      if (w.length < 3 || badChar.test(w)) continue;
       freq.set(w, (freq.get(w) || 0) + 1);
       const prev = holder.get(w);
       if (!prev || c.text.length < prev.text.length) holder.set(w, c);
@@ -354,25 +574,45 @@ function editPairsFrom(pool, contrasts) {
       if (Math.abs(a.length - b.length) > 1) continue;
       if (!levDist1(a, b)) continue;
       // only keep pairs whose single difference is a real phonetic contrast
-      const diff = describeDiff(a, b);
+      const diff = describeDiff(a, b, pack);
       if (!diff) continue;
       pairs.push({ a, b, contrast: diff });
     }
   }
-  return pairs.sort((x, y) => fnv(x.a + x.b) - fnv(y.a + y.b));
+  // Not every one-letter difference is equally worth a listener's time: a pack may rank the
+  // contrasts it actually cares about (Spanish puts tap-vs-trill and written stress at the top,
+  // and a bare vowel alternation — which is usually morphology, not phonology — at the bottom).
+  const rank = (pack && pack.contrastRank) || (() => 0);
+  return pairs.sort((x, y) => (rank(y.contrast) - rank(x.contrast)) || (fnv(x.a + x.b) - fnv(y.a + y.b)));
 }
 
-function describeDiff(a, b) {
+function describeDiff(a, b, pack) {
   // find the single differing position and name the contrast
   let i = 0;
   while (i < a.length && i < b.length && a[i] === b[i]) i++;
   if (a.length === b.length) {
+    // an accent-only difference is a STRESS contrast, not a segment one, and in Spanish it is
+    // the sharpest probe there is: esta/está, hablo/habló
+    if (stripDia(a) === stripDia(b)) return `written stress accent ${a}/${b}`;
     const ca = a[i], cb = b[i];
     if (!ca || !cb) return null;
-    const vowels = 'aeiou';
+    const vowels = (pack && pack.vowels) || 'aeiou';
     if (vowels.includes(ca) && vowels.includes(cb)) return `vowel ${ca}/${cb}`;
     if (!vowels.includes(ca) && !vowels.includes(cb)) return `consonant ${ca}/${cb}`;
     return null;
+  }
+  // A doubled letter is normally an insertion, and insertions are not nameable contrasts — except
+  // where the doubling IS the phoneme, as with Spanish r/rr and l/ll. Pack-gated, so no other
+  // language picks this up by accident.
+  const dl = pack && pack.doubleLetterContrasts;
+  if (dl && Math.abs(a.length - b.length) === 1) {
+    const [sh, lo] = a.length < b.length ? [a, b] : [b, a];
+    let k = 0;
+    while (k < sh.length && sh[k] === lo[k]) k++;
+    const ch = lo[k];
+    if (ch && dl[ch] && lo.slice(0, k) + lo.slice(k + 1) === sh && (lo[k - 1] === ch || lo[k + 1] === ch)) {
+      return `doubled ${ch} (${sh}/${lo})`;
+    }
   }
   return null; // insertions/deletions are not minimal phonetic contrasts we can name honestly
 }
@@ -409,12 +649,37 @@ async function main() {
 
   const courses = [];
   for (const code of codes) courses.push(await loadCourse(code, language));
-  const homoglyphRows = [];
-  const pool = buildPool(courses, homoglyphRows);
-  console.error(`[${language}] candidate rows after dedupe: ${pool.length}`);
 
   const pack = LANG_PACKS[language] || null;
+  // Tokenisation and category size bands are set BEFORE the pool is built, because both the pool
+  // and every category filter measure length in tokens.
+  TOKENISER = (pack && pack.tokenise) || WHITESPACE_TOKENISER;
+  const BAND = { ...DEFAULT_BANDS, ...((pack && pack.bands) || {}) };
+  const inBand = (text, band) => { const n = wordCount(text); return n >= band[0] && n <= band[1]; };
+
+  const homoglyphRows = [];
+  const annotationRows = [];
+  const wrongScriptRows = [];
+  const knownLanguageRows = [];
+  const pool = buildPool(courses, homoglyphRows, {
+    script: pack && pack.script,
+    annotationSink: annotationRows,
+    wrongScriptSink: wrongScriptRows,
+    knownLanguageSink: knownLanguageRows,
+    varietyByCourse: pack && pack.varietyByCourse,
+  });
+  console.error(`[${language}] candidate rows after dedupe: ${pool.length}`);
+
   const gaps = [];
+  if (annotationRows.length) {
+    gaps.push(`DATA DEFECT, not a benchmark gap: ${annotationRows.length} row(s) contain pipe/arrow authoring annotation inside speakable text and were excluded — e.g. ${annotationRows.slice(0, 3).map((r) => `${r.course_code} ${r.table} ${r.row_id} "${r.text}"`).join('; ')}. These would be spoken aloud to a learner if they were ever rendered.`);
+  }
+  if (wrongScriptRows.length) {
+    gaps.push(`DATA DEFECT, not a benchmark gap: ${wrongScriptRows.length} TARGET-role row(s) in a ${language} course contain no ${language} script at all and were excluded as wrong-language rows — ${wrongScriptRows.slice(0, 4).map((r) => `${r.course_code} ${r.table} ${r.row_id} "${r.text}"`).join('; ')}. These are target slots holding known-language text, and any audio against them is a ${language} voice speaking the wrong language.`);
+  }
+  if (knownLanguageRows.length) {
+    gaps.push(`Scope note, NOT a defect: ${knownLanguageRows.length} pod-explainer row(s) filed under language=${language} are in the KNOWN language by design (e.g. "${knownLanguageRows[0].text}"). They are excluded from a TARGET-voice benchmark for that reason, not because anything is wrong with them.`);
+  }
   if (homoglyphRows.length) {
     gaps.push(`DATA DEFECT, not a benchmark gap: ${homoglyphRows.length} row(s) in this corpus contain Cyrillic/Greek homoglyphs inside otherwise-Latin text and were excluded — e.g. ${homoglyphRows.slice(0, 3).map((r) => `${r.course_code} ${r.table} ${r.row_id} "${r.text}"`).join('; ')}. Worth a separate fix pass.`);
   }
@@ -439,6 +704,7 @@ async function main() {
         row_id: String(cand.row_id),
         seed_number: cand.seed_number,
         ...(cand.dialect ? { dialect: cand.dialect } : {}),
+        ...(cand.variety ? { variety: cand.variety } : {}),
         ...cand.extra,
         ...extraProv,
       },
@@ -453,8 +719,17 @@ async function main() {
    * three opening words, same dominant keyword), the second relaxes that rather than leave
    * the category short. Picks are emitted in seed order so the file reads course-forwards.
    */
+  const penalty = (pack && pack.qualityPenalty) || (() => 0);
+  /**
+   * The default per-utterance listening notes are written in terms English and the Romance and
+   * Celtic languages share — lexical stress, consonant release. Mandarin has neither, and telling
+   * a listener to check "stress on the wrong syllable" in Chinese points them at nothing. A pack
+   * may therefore replace the note for any generic category. Packs that don't get the default.
+   */
+  const gnote = (category, fallback) => ((pack && pack.categoryNotes && pack.categoryNotes[category]) || fallback);
   const take = (category, cands, n, noteFn, opts = {}) => {
-    const ordered = spread(cands, cands.length, opts.priority);
+    const prio = (c) => (opts.priority ? opts.priority(c) : 0) - penalty(c, category);
+    const ordered = spread(cands, cands.length, prio);
     const picks = [];
     const prefixes = new Set();
     const keys = new Set();
@@ -498,7 +773,7 @@ async function main() {
   {
     // Rows the estate has ALREADY had to flag for re-record are the strongest evidence there
     // is, so they get the first seats — up to 3, kept short enough to be a usable probe.
-    const flaggedCands = pool.filter((c) => flaggedTexts.has(lower(c.text)) && wordCount(c.text) >= 2 && wordCount(c.text) <= 14);
+    const flaggedCands = pool.filter((c) => flaggedTexts.has(lower(c.text)) && inBand(c.text, BAND.flagged_hard));
     // a flag naming a SPECIFIC defect beats a blanket whole-set re-record commission
     const specificity = (c) => {
       const reason = flaggedTexts.get(lower(c.text)) || '';
@@ -524,8 +799,7 @@ async function main() {
   if (pack) {
     const perRule = pack.hard.map((rule) => {
       const matches = pool.filter((c) => {
-        const wc = wordCount(c.text);
-        return wc >= 1 && wc <= 9 && rule.test(c.text);
+        return inBand(c.text, BAND.hard_pronunciation) && rule.test(c.text);
       });
       return spread(matches, 4).map((m) => ({ ...m, _rule: rule }));
     });
@@ -542,7 +816,7 @@ async function main() {
     // top up from re-record-flagged rows regardless of rule match — these are the strings
     // the estate has already had to re-record, which is the strongest evidence there is.
     if (got < QUOTA.hard_pronunciation) {
-      const flaggedCands = pool.filter((c) => flaggedTexts.has(lower(c.text)) && wordCount(c.text) <= 14);
+      const flaggedCands = pool.filter((c) => flaggedTexts.has(lower(c.text)) && wordCount(c.text) <= BAND.flagged_hard[1]);
       // a flag naming a SPECIFIC defect beats a blanket whole-set re-record commission
     const specificity = (c) => {
       const reason = flaggedTexts.get(lower(c.text)) || '';
@@ -577,15 +851,45 @@ async function main() {
       if (emit({ ...b, text: p.b, extra: { ...b.extra, pair_partner: p.a, contrast: `${p.mutation} mutation`, attested_in: b.text } }, 'minimal_pair', noteA)) got++;
     }
     if (got < QUOTA.minimal_pair) gaps.push(`minimal_pair: wanted ${QUOTA.minimal_pair}, filled ${got}.`);
+  } else if (pack && (pack.heteronyms || pack.tonePairs)) {
+    // Chinese has no phoneme-swap minimal pairs worth mining from an orthography that does not
+    // write phonemes. The two contrasts that matter are HETERONYMS — one character, two readings
+    // chosen by meaning — and TONE, so the category is built from those instead.
+    let got = 0;
+    const shortest = (test) => {
+      const hits = pool.filter((c) => test.test(c.text) && inBand(c.text, BAND.hard_pronunciation));
+      hits.sort((x, y) => x.text.length - y.text.length || fnv(x.key) - fnv(y.key));
+      return hits[0];
+    };
+    for (const h of pack.heteronyms || []) {
+      if (got >= QUOTA.minimal_pair) break;
+      const a = shortest(h.a.test), b = shortest(h.b.test);
+      if (!a || !b) continue;
+      const note = (self, other) => `HETERONYM pair on 「${h.char}」: read ${self.pinyin} (${self.gloss}) here, but ${other.pinyin} (${other.gloss}) in the partner utterance. Same character, two readings, and NOTHING in the writing says which — only the meaning does. A model that picks the wrong reading produces a word the learner has never heard; it is the single most audible Chinese TTS failure. Play the two members back to back: they must differ.`;
+      if (emit({ ...a, extra: { ...a.extra, heteronym: h.char, reading: h.a.pinyin, pair_partner_text: b.text, pair_partner_reading: h.b.pinyin } }, 'minimal_pair', note(h.a, h.b))) got++;
+      if (got >= QUOTA.minimal_pair) break;
+      if (emit({ ...b, extra: { ...b.extra, heteronym: h.char, reading: h.b.pinyin, pair_partner_text: a.text, pair_partner_reading: h.a.pinyin } }, 'minimal_pair', note(h.b, h.a))) got++;
+    }
+    for (const p of pack.tonePairs || []) {
+      if (got >= QUOTA.minimal_pair) break;
+      const a = shortest(new RegExp(p.a)), b = shortest(new RegExp(p.b));
+      if (!a || !b) continue;
+      const note = `TONE-ONLY pair: 「${p.a}」${p.pa} versus 「${p.b}」${p.pb}. ${p.note} Identical segments, different tone. If both members come out with the same pitch contour the voice has no usable tone and is dead for Mandarin.`;
+      if (emit({ ...a, extra: { ...a.extra, tone_pair: `${p.a}/${p.b}`, reading: p.pa, pair_partner_text: b.text, pair_partner_reading: p.pb } }, 'minimal_pair', note)) got++;
+      if (got >= QUOTA.minimal_pair) break;
+      if (emit({ ...b, extra: { ...b.extra, tone_pair: `${p.a}/${p.b}`, reading: p.pb, pair_partner_text: a.text, pair_partner_reading: p.pa } }, 'minimal_pair', note)) got++;
+    }
+    if (got < QUOTA.minimal_pair) gaps.push(`minimal_pair: wanted ${QUOTA.minimal_pair}, filled ${got} from attested heteronym/tone pairs. Not padded.`);
   } else if (pack && pack.minimalPairContrasts) {
-    const pairs = editPairsFrom(pool, pack.minimalPairContrasts);
+    const pairs = editPairsFrom(pool, pack.minimalPairContrasts, pack);
     let got = 0;
     for (const p of pairs) {
       if (got >= QUOTA.minimal_pair) break;
       const a = pool.find((c) => words(c.text).includes(p.a));
       const b = pool.find((c) => words(c.text).includes(p.b));
       if (!a || !b) continue;
-      const note = `Minimal pair (${p.contrast}): "${p.a}" vs "${p.b}". Both words occur in the live corpus. If the two render identically the model has collapsed the contrast.`;
+      const extra = pack.contrastNote ? pack.contrastNote(p.contrast) : '';
+      const note = `Minimal pair (${p.contrast}): "${p.a}" vs "${p.b}". Both words occur in the live corpus. If the two render identically the model has collapsed the contrast.` + (extra ? ` ${extra}` : '');
       if (emit({ ...a, text: p.a, extra: { ...a.extra, pair_partner: p.b, contrast: p.contrast, attested_in: a.text } }, 'minimal_pair', note)) got++;
       if (got >= QUOTA.minimal_pair) break;
       if (emit({ ...b, text: p.b, extra: { ...b.extra, pair_partner: p.a, contrast: p.contrast, attested_in: b.text } }, 'minimal_pair', note)) got++;
@@ -596,14 +900,22 @@ async function main() {
   }
 
   // ---- 3. proper_noun
-  if (pack && pack.properNouns) {
-    const set = new Set(pack.properNouns);
-    const hits = (c) => words(c.text).filter((w) => set.has(w));
-    const cands = pool.filter((c) => wordCount(c.text) <= 8 && hits(c).length);
+  if (pack && (pack.properNouns || pack.properNounPhrases)) {
+    // A language that writes no word boundaries cannot match names as tokens — a single-character
+    // token list would find 中 inside 中间 and call it "China". Such packs give phrases instead,
+    // matched as substrings, longest first so 星期一 beats 星期.
+    const phrases = pack.properNounPhrases
+      ? [...pack.properNounPhrases].sort((a, b) => b.length - a.length)
+      : null;
+    const set = new Set(pack.properNouns || []);
+    const hits = phrases
+      ? (c) => { const t = c.text; const out = []; for (const p of phrases) if (t.includes(p) && !out.some((o) => o.includes(p))) out.push(p); return out; }
+      : (c) => words(c.text).filter((w) => set.has(w));
+    const cands = pool.filter((c) => wordCount(c.text) <= BAND.proper_noun[1] && hits(c).length);
     const nameFreq = new Map();
-    for (const c of pool) for (const w of words(c.text)) if (set.has(w)) nameFreq.set(w, (nameFreq.get(w) || 0) + 1);
+    for (const c of pool) for (const w of hits(c)) nameFreq.set(w, (nameFreq.get(w) || 0) + 1);
     take('proper_noun', cands, QUOTA.proper_noun,
-      (c) => `Contains a proper noun / name-class word (${hits(c).join(', ')}). Listen for anglicisation, wrong stress, or the name being read with the wrong language's phonology.`,
+      (c) => `Contains a proper noun / name-class word (${hits(c).join(', ')}). ` + gnote('proper_noun', "Listen for anglicisation, wrong stress, or the name being read with the wrong language's phonology."),
       // one utterance per distinct name, so the category is not eight ways of saying "Cymraeg"
       { diversityKey: (c) => hits(c).sort().join('+'),
         // rarer names first, so the category is not eight days of the week
@@ -614,9 +926,9 @@ async function main() {
 
   // ---- 4. numbers
   {
-    const digitCands = pool.filter((c) => /[0-9]/.test(c.text) && wordCount(c.text) <= 30);
+    const digitCands = pool.filter((c) => /[0-9]/.test(c.text) && wordCount(c.text) <= BAND.numbers_digit[1]);
     const wordCands = pack && pack.numberWords
-      ? pool.filter((c) => wordCount(c.text) <= 12 && words(c.text).some((w) => pack.numberWords.includes(w)))
+      ? pool.filter((c) => wordCount(c.text) <= BAND.numbers_word[1] && words(c.text).some((w) => pack.numberWords.includes(w)))
       : [];
     const core = new Set((pack && pack.coreNumerals) || []);
     const coreHits = (c) => words(c.text).filter((w) => core.has(w));
@@ -637,44 +949,45 @@ async function main() {
 
   // ---- 5. question
   {
-    const cands = pool.filter((c) => /\?\s*$/.test(c.text) && wordCount(c.text) >= 3 && wordCount(c.text) <= 12);
+    const qTest = (pack && pack.questionTest) || /[?？]\s*$/;
+    const cands = pool.filter((c) => qTest.test(c.text) && inBand(c.text, BAND.question));
     take('question', cands, QUOTA.question,
-      () => 'Interrogative. Listen for a genuine question contour rather than a statement read with a full stop, and for the rise landing on the right word.');
+      () => gnote('question', 'Interrogative. Listen for a genuine question contour rather than a statement read with a full stop, and for the rise landing on the right word.'));
   }
 
   // ---- 6. isolated_word — single-word A-LEGOs
   {
-    const cands = pool.filter((c) => c.kind === 'lego' && wordCount(c.text) === 1);
+    const cands = pool.filter((c) => c.kind === 'lego' && inBand(c.text, BAND.isolated_word));
     take('isolated_word', cands, QUOTA.isolated_word,
-      () => 'Single word spoken alone. Listen for a dead flat citation tone, a missing final consonant release, and lexical stress on the wrong syllable.',
+      () => gnote('isolated_word', 'Single word spoken alone. Listen for a dead flat citation tone, a missing final consonant release, and lexical stress on the wrong syllable.'),
       // a two-letter function word says nothing about prosody; prefer real polysyllables
       { priority: (c) => Math.min(c.text.replace(/[^\p{L}]/gu, '').length, 9) });
   }
 
   // ---- 7. very_short_lego — 2-3 word LEGOs
   {
-    const cands = pool.filter((c) => c.kind === 'lego' && wordCount(c.text) >= 2 && wordCount(c.text) <= 3);
+    const cands = pool.filter((c) => c.kind === 'lego' && inBand(c.text, BAND.very_short_lego));
     take('very_short_lego', cands, QUOTA.very_short_lego,
-      () => 'Two-to-three-word LEGO. Too short to settle into a rhythm — this is where clipped onsets and truncated tails show up.');
+      () => gnote('very_short_lego', 'Two-to-three-word LEGO. Too short to settle into a rhythm — this is where clipped onsets and truncated tails show up.'));
   }
 
   // ---- 8. medium_chunk — BUILD phrases
   {
-    const cands = pool.filter((c) => c.kind === 'build' && wordCount(c.text) >= 4 && wordCount(c.text) <= 8 && !/\?$/.test(c.text));
+    const cands = pool.filter((c) => c.kind === 'build' && inBand(c.text, BAND.medium_chunk) && !/[?？]$/.test(c.text));
     take('medium_chunk', cands, QUOTA.medium_chunk,
-      () => 'BUILD-phrase fragment — deliberately incomplete. Listen for a false final cadence, or for the model trailing off as if the text were broken.');
+      () => gnote('medium_chunk', 'BUILD-phrase fragment — deliberately incomplete. Listen for a false final cadence, or for the model trailing off as if the text were broken.'));
   }
 
   // ---- 9. full_sentence — USE phrases
   {
-    const cands = pool.filter((c) => c.kind === 'use' && wordCount(c.text) >= 6 && wordCount(c.text) <= 16 && !/\?$/.test(c.text));
+    const cands = pool.filter((c) => c.kind === 'use' && inBand(c.text, BAND.full_sentence) && !/[?？]$/.test(c.text));
     take('full_sentence', cands, QUOTA.full_sentence,
-      () => 'Complete USE sentence — the baseline for naturalness. Listen for phrasing, breath placement and whether it sounds like a person saying something they mean.');
+      () => gnote('full_sentence', 'Complete USE sentence — the baseline for naturalness. Listen for phrasing, breath placement and whether it sounds like a person saying something they mean.'));
   }
 
   // ---- 10. repeat_probe — exactly one
   {
-    const cands = pool.filter((c) => c.kind === 'use' && wordCount(c.text) >= 7 && wordCount(c.text) <= 12 && !used.has(lower(c.text)));
+    const cands = pool.filter((c) => c.kind === 'use' && inBand(c.text, BAND.repeat_probe) && !used.has(lower(c.text)));
     const [pick] = spread(cands, 1);
     if (pick) {
       emit(pick, 'repeat_probe',

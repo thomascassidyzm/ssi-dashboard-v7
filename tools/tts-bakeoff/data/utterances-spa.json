@@ -1,0 +1,1832 @@
+{
+  "schema_version": 1,
+  "language": "spa",
+  "dialect": "standard",
+  "generated_at": "2026-08-26",
+  "source": "live Supabase course DB",
+  "source_courses": [
+    "spa_for_eng",
+    "spa_mx_for_eng"
+  ],
+  "generator": "tools/tts-bakeoff/build-utterance-set.cjs",
+  "categories": {
+    "isolated_word": {
+      "label": "Isolated word",
+      "purpose": "Single words rendered with no sentence around them — the hardest case for prosody. Exposes flat citation-form delivery, wrong lexical stress and a missing final release."
+    },
+    "very_short_lego": {
+      "label": "Very short LEGO (2-3 words)",
+      "purpose": "The learning unit at its shortest. Too short for a model to settle into a rhythm, so clipped onsets, swallowed first syllables and truncated tails all surface here."
+    },
+    "medium_chunk": {
+      "label": "Medium chunk (BUILD-phrase sized)",
+      "purpose": "A phrase fragment, not a sentence. Tests whether the model can deliver an incomplete thought without either falling off a cliff at the end or inventing a full-stop cadence."
+    },
+    "full_sentence": {
+      "label": "Full sentence (USE phrase)",
+      "purpose": "A complete natural sentence — what most of the course actually is. The baseline for naturalness, phrasing and breath placement."
+    },
+    "question": {
+      "label": "Question",
+      "purpose": "Interrogative intonation. Many models flatten questions to statements, or apply a generic rise regardless of question type."
+    },
+    "numbers": {
+      "label": "Numbers, dates and times",
+      "purpose": "Where text normalisation fails. Listen for wrong number forms, a counted noun in the wrong gender/mutation, and dates or clock times read as bare digits or as the wrong quantity."
+    },
+    "hard_pronunciation": {
+      "label": "Hard pronunciation",
+      "purpose": "Strings selected because they carry a phoneme, cluster or grapheme this language is known to break on. Mined from real course rows, never written by hand. Each carries a difficulty_note saying what to listen for."
+    },
+    "proper_noun": {
+      "label": "Proper noun",
+      "purpose": "Names, places, languages, days and months — the class most often anglicised. A model that reads \"Cymraeg\" as an English word is instantly disqualified for course work."
+    },
+    "minimal_pair": {
+      "label": "Minimal pair",
+      "purpose": "Two real corpus words differing in one contrast. If the model renders both members identically it has collapsed a distinction the learner is being taught, and the course teaches a mistake."
+    },
+    "repeat_probe": {
+      "label": "Repeat probe",
+      "purpose": "Exactly one utterance per language, synthesised many times over. Measures intra-voice consistency and repeatability (Tom axes D and E) — does the same input give the same output today, and again next month?"
+    }
+  },
+  "gaps": [
+    "DATA DEFECT, not a benchmark gap: 9 row(s) contain pipe/arrow authoring annotation inside speakable text and were excluded — e.g. spa_for_eng course_practice_phrases spa_for_eng:S0466L01C01 \"deja | me → me\"; spa_for_eng course_practice_phrases spa_for_eng:S0466L02C01 \"tirar | it → lo\"; spa_for_eng course_practice_phrases spa_for_eng:S0500L02C01 \"sentarte | sit down → sentarse\". These would be spoken aloud to a learner if they were ever rendered."
+  ],
+  "utterances": [
+    {
+      "id": "spa-0001",
+      "category": "hard_pronunciation",
+      "text": "hacia la puerta",
+      "language": "spa",
+      "provenance": {
+        "course_code": "spa_mx_for_eng",
+        "table": "course_audio",
+        "row_id": "a70cd916-85f1-409f-b521-2572a3af924d",
+        "seed_number": null,
+        "dialect": "standard",
+        "variety": "es-MX (Mexican)",
+        "role": "target1",
+        "rerecord_wanted": false
+      },
+      "difficulty_note": "[seseo] contains \"ce/ci/z\" — the distinción/seseo split. Peninsular Spanish says /θ/ (cerca ≈ \"therca\"), Mexican and all of Latin America say /s/. A voice must pick ONE and hold it: a model that drifts between /θ/ and /s/ inside a course teaches the learner an accent that no human has.",
+      "repeat_count": 1
+    },
+    {
+      "id": "spa-0002",
+      "category": "hard_pronunciation",
+      "text": "ella podía llegar pronto",
+      "language": "spa",
+      "provenance": {
+        "course_code": "spa_mx_for_eng",
+        "table": "course_audio",
+        "row_id": "3d1c881c-7bc4-4dc8-8230-b9dceccb8d10",
+        "seed_number": null,
+        "dialect": "standard",
+        "variety": "es-MX (Mexican)",
+        "role": "target1",
+        "rerecord_wanted": false
+      },
+      "difficulty_note": "[yeismo] \"ll\" — /ʎ/ historically, merged to /ʝ/ (and in some varieties /ʒ/ or /ʃ/) by yeísmo. Anglophone-trained models fall back to an English /l/ and the word stops being Spanish.",
+      "repeat_count": 1
+    },
+    {
+      "id": "spa-0003",
+      "category": "hard_pronunciation",
+      "text": "tenían un carro",
+      "language": "spa",
+      "provenance": {
+        "course_code": "spa_mx_for_eng",
+        "table": "course_audio",
+        "row_id": "f25e6169-e9ce-4f99-bbf2-af5598900f60",
+        "seed_number": null,
+        "dialect": "standard",
+        "variety": "es-MX (Mexican)",
+        "role": "target2",
+        "rerecord_wanted": false
+      },
+      "difficulty_note": "[rr-trill] trilled /r/ — written \"rr\" between vowels or \"r-\" word-initially, and phonemically distinct from the tap /ɾ/. The single most common Spanish TTS failure: the trill is rendered as an English approximant /ɹ/, or as a single tap, which collapses pero/perro.",
+      "repeat_count": 1
+    },
+    {
+      "id": "spa-0004",
+      "category": "hard_pronunciation",
+      "text": "¿Qué dijiste sobre tu amigo?",
+      "language": "spa",
+      "provenance": {
+        "course_code": "spa_for_eng",
+        "table": "course_practice_phrases",
+        "row_id": "spa_for_eng:S0083L03U02",
+        "seed_number": 83,
+        "dialect": "standard",
+        "variety": "es-ES (peninsular)",
+        "phrase_role": "use"
+      },
+      "difficulty_note": "[jota] \"j\" and \"g\" before e/i are the voiceless velar (peninsular uvular) fricative /x/. Models trained on English read \"j\" as /dʒ/ (\"jam\") and the word is unrecognisable.",
+      "repeat_count": 1
+    },
+    {
+      "id": "spa-0005",
+      "category": "hard_pronunciation",
+      "text": "sé cómo decir algo en español",
+      "language": "spa",
+      "provenance": {
+        "course_code": "spa_for_eng",
+        "table": "course_audio",
+        "row_id": "b656a57d-12a1-439b-8999-61d7d84b58b8",
+        "seed_number": null,
+        "dialect": "standard",
+        "variety": "es-ES (peninsular)",
+        "role": "target2",
+        "rerecord_wanted": false
+      },
+      "difficulty_note": "[enye] \"ñ\" is the palatal nasal /ɲ/ — one segment, not /n/+/j/. Models that decompose it produce \"an-yo\" for año, and models that ignore the tilde produce ano, which is a different and unfortunate word.",
+      "repeat_count": 1
+    },
+    {
+      "id": "spa-0006",
+      "category": "hard_pronunciation",
+      "text": "quiero practicar hablando después de que termines",
+      "language": "spa",
+      "provenance": {
+        "course_code": "spa_mx_for_eng",
+        "table": "course_practice_phrases",
+        "row_id": "spa_mx_for_eng:S0011L03U03",
+        "seed_number": 11,
+        "dialect": "standard",
+        "variety": "es-MX (Mexican)",
+        "phrase_role": "use"
+      },
+      "difficulty_note": "[written-accent] carries a written accent, which in Spanish marks LEXICAL STRESS and nothing else. Put the stress on the wrong syllable and you get a different word (hablo/habló, esta/está) — this is a pure test of whether the model reads the diacritic or discards it.",
+      "repeat_count": 1
+    },
+    {
+      "id": "spa-0007",
+      "category": "hard_pronunciation",
+      "text": "matar todo",
+      "language": "spa",
+      "provenance": {
+        "course_code": "spa_for_eng",
+        "table": "course_audio",
+        "row_id": "ef0159af-5d48-436e-8912-a9c60212262b",
+        "seed_number": null,
+        "dialect": "standard",
+        "variety": "es-ES (peninsular)",
+        "role": "target2",
+        "rerecord_wanted": false
+      },
+      "difficulty_note": "[intervocalic-d] intervocalic \"d\" is the approximant [ð] and in -ado/-ido endings is heavily reduced or dropped in ordinary speech. A model giving it a hard English /d/ sounds over-enunciated on every past participle in the course.",
+      "repeat_count": 1
+    },
+    {
+      "id": "spa-0008",
+      "category": "hard_pronunciation",
+      "text": "tuve la suerte de conocer a alguien de África",
+      "language": "spa",
+      "provenance": {
+        "course_code": "spa_mx_for_eng",
+        "table": "course_audio",
+        "row_id": "ab7cbbee-4521-4c49-8410-39f95cf295e5",
+        "seed_number": null,
+        "dialect": "standard",
+        "variety": "es-MX (Mexican)",
+        "role": "target1",
+        "rerecord_wanted": false
+      },
+      "difficulty_note": "[b-v] \"b\" and \"v\" are the SAME phoneme in Spanish (/b/, approximant [β] between vowels). A model that renders \"v\" as an English labiodental /v/ has imported a distinction Spanish does not have.",
+      "repeat_count": 1
+    },
+    {
+      "id": "spa-0009",
+      "category": "hard_pronunciation",
+      "text": "él no podía explicar eso",
+      "language": "spa",
+      "provenance": {
+        "course_code": "spa_for_eng",
+        "table": "course_practice_phrases",
+        "row_id": "spa_for_eng:S0311L01B03",
+        "seed_number": 311,
+        "dialect": "standard",
+        "variety": "es-ES (peninsular)",
+        "phrase_role": "build"
+      },
+      "difficulty_note": "[x] \"x\" is /ks/ in most words but /x/ in México and a class of Nahuatl-derived names — a lexicon test, not a letter-to-sound test.",
+      "repeat_count": 1
+    },
+    {
+      "id": "spa-0010",
+      "category": "hard_pronunciation",
+      "text": "no tengo suficiente tiempo para llamarte esta noche",
+      "language": "spa",
+      "provenance": {
+        "course_code": "spa_mx_for_eng",
+        "table": "course_seeds",
+        "row_id": "a2e8d68e-813e-4d3c-b91b-96b7058345e9",
+        "seed_number": 294,
+        "dialect": "standard",
+        "variety": "es-MX (Mexican)",
+        "seed_id": "S0294"
+      },
+      "difficulty_note": "[yeismo] \"ll\" — /ʎ/ historically, merged to /ʝ/ (and in some varieties /ʒ/ or /ʃ/) by yeísmo. Anglophone-trained models fall back to an English /l/ and the word stops being Spanish.",
+      "repeat_count": 1
+    },
+    {
+      "id": "spa-0011",
+      "category": "hard_pronunciation",
+      "text": "sí, eso es rojo",
+      "language": "spa",
+      "provenance": {
+        "course_code": "spa_mx_for_eng",
+        "table": "course_practice_phrases",
+        "row_id": "spa_mx_for_eng:S0640L01U02",
+        "seed_number": 640,
+        "dialect": "standard",
+        "variety": "es-MX (Mexican)",
+        "phrase_role": "use"
+      },
+      "difficulty_note": "[rr-trill] trilled /r/ — written \"rr\" between vowels or \"r-\" word-initially, and phonemically distinct from the tap /ɾ/. The single most common Spanish TTS failure: the trill is rendered as an English approximant /ɹ/, or as a single tap, which collapses pero/perro.",
+      "repeat_count": 1
+    },
+    {
+      "id": "spa-0012",
+      "category": "hard_pronunciation",
+      "text": "cómo decir algo en español",
+      "language": "spa",
+      "provenance": {
+        "course_code": "spa_for_eng",
+        "table": "course_seeds",
+        "row_id": "06b53d5a-f159-4162-84e4-60d9185bc3ee",
+        "seed_number": 4,
+        "dialect": "standard",
+        "variety": "es-ES (peninsular)",
+        "seed_id": "S0004"
+      },
+      "difficulty_note": "[enye] \"ñ\" is the palatal nasal /ɲ/ — one segment, not /n/+/j/. Models that decompose it produce \"an-yo\" for año, and models that ignore the tilde produce ano, which is a different and unfortunate word.",
+      "repeat_count": 1
+    },
+    {
+      "id": "spa-0013",
+      "category": "hard_pronunciation",
+      "text": "Pedir algo",
+      "language": "spa",
+      "provenance": {
+        "course_code": "spa_for_eng",
+        "table": "course_practice_phrases",
+        "row_id": "spa_for_eng:S0243L01B02",
+        "seed_number": 243,
+        "dialect": "standard",
+        "variety": "es-ES (peninsular)",
+        "phrase_role": "build"
+      },
+      "difficulty_note": "[intervocalic-d] intervocalic \"d\" is the approximant [ð] and in -ado/-ido endings is heavily reduced or dropped in ordinary speech. A model giving it a hard English /d/ sounds over-enunciated on every past participle in the course.",
+      "repeat_count": 1
+    },
+    {
+      "id": "spa-0014",
+      "category": "hard_pronunciation",
+      "text": "Voy a querer el cordero, por favor.",
+      "language": "spa",
+      "provenance": {
+        "course_code": "spa_mx_for_eng",
+        "table": "course_audio",
+        "row_id": "6b2f0335-1dd8-4832-9e2b-bb0308dc718b",
+        "seed_number": null,
+        "dialect": "standard",
+        "variety": "es-MX (Mexican)",
+        "role": "target1",
+        "rerecord_wanted": false
+      },
+      "difficulty_note": "[b-v] \"b\" and \"v\" are the SAME phoneme in Spanish (/b/, approximant [β] between vowels). A model that renders \"v\" as an English labiodental /v/ has imported a distinction Spanish does not have.",
+      "repeat_count": 1
+    },
+    {
+      "id": "spa-0015",
+      "category": "minimal_pair",
+      "text": "pero",
+      "language": "spa",
+      "provenance": {
+        "course_code": "spa_mx_for_eng",
+        "table": "course_seeds",
+        "row_id": "1457173d-5329-42e3-aec8-a1297526b676",
+        "seed_number": 19,
+        "dialect": "standard",
+        "variety": "es-MX (Mexican)",
+        "seed_id": "S0019",
+        "pair_partner": "perro",
+        "contrast": "doubled r (pero/perro)",
+        "attested_in": "pero no quiero dejar de hablar"
+      },
+      "difficulty_note": "Minimal pair (doubled r (pero/perro)): \"pero\" vs \"perro\". Both words occur in the live corpus. If the two render identically the model has collapsed the contrast. Tap versus trill. If both members sound the same the voice has no trill, which disqualifies it for Spanish course work.",
+      "repeat_count": 1
+    },
+    {
+      "id": "spa-0016",
+      "category": "minimal_pair",
+      "text": "perro",
+      "language": "spa",
+      "provenance": {
+        "course_code": "spa_for_eng",
+        "table": "course_audio",
+        "row_id": "3bb31d31-561b-45b4-9754-54ac92370545",
+        "seed_number": null,
+        "dialect": "standard",
+        "variety": "es-ES (peninsular)",
+        "role": "target1",
+        "rerecord_wanted": false,
+        "pair_partner": "pero",
+        "contrast": "doubled r (pero/perro)",
+        "attested_in": "Él no quería cuidar al perro joven toda la tarde"
+      },
+      "difficulty_note": "Minimal pair (doubled r (pero/perro)): \"pero\" vs \"perro\". Both words occur in the live corpus. If the two render identically the model has collapsed the contrast. Tap versus trill. If both members sound the same the voice has no trill, which disqualifies it for Spanish course work.",
+      "repeat_count": 1
+    },
+    {
+      "id": "spa-0017",
+      "category": "minimal_pair",
+      "text": "como",
+      "language": "spa",
+      "provenance": {
+        "course_code": "spa_mx_for_eng",
+        "table": "course_audio",
+        "row_id": "66ad6e2d-6331-475c-8946-a2aa2e25f5ab",
+        "seed_number": null,
+        "dialect": "standard",
+        "variety": "es-MX (Mexican)",
+        "role": "target1",
+        "rerecord_wanted": false,
+        "pair_partner": "cómo",
+        "contrast": "written stress accent como/cómo",
+        "attested_in": "Me gusta sentir como si estuviera casi listo para irme"
+      },
+      "difficulty_note": "Minimal pair (written stress accent como/cómo): \"como\" vs \"cómo\". Both words occur in the live corpus. If the two render identically the model has collapsed the contrast. The two forms differ ONLY by the written accent, i.e. only by which syllable is stressed. If both render with the same stress the model is ignoring the diacritic, and the course teaches the wrong word.",
+      "repeat_count": 1
+    },
+    {
+      "id": "spa-0018",
+      "category": "minimal_pair",
+      "text": "cómo",
+      "language": "spa",
+      "provenance": {
+        "course_code": "spa_for_eng",
+        "table": "course_seeds",
+        "row_id": "55309b6d-010e-4450-9d5b-a553ce6ab722",
+        "seed_number": 3,
+        "dialect": "standard",
+        "variety": "es-ES (peninsular)",
+        "seed_id": "S0003",
+        "pair_partner": "como",
+        "contrast": "written stress accent como/cómo",
+        "attested_in": "cómo hablar lo más frecuentemente posible"
+      },
+      "difficulty_note": "Minimal pair (written stress accent como/cómo): \"como\" vs \"cómo\". Both words occur in the live corpus. If the two render identically the model has collapsed the contrast. The two forms differ ONLY by the written accent, i.e. only by which syllable is stressed. If both render with the same stress the model is ignoring the diacritic, and the course teaches the wrong word.",
+      "repeat_count": 1
+    },
+    {
+      "id": "spa-0019",
+      "category": "minimal_pair",
+      "text": "que",
+      "language": "spa",
+      "provenance": {
+        "course_code": "spa_mx_for_eng",
+        "table": "course_seeds",
+        "row_id": "96e7383c-22fb-47da-a37c-69c42d0eb883",
+        "seed_number": 7,
+        "dialect": "standard",
+        "variety": "es-MX (Mexican)",
+        "seed_id": "S0007",
+        "pair_partner": "qué",
+        "contrast": "written stress accent que/qué",
+        "attested_in": "quiero intentar todo lo que pueda hoy"
+      },
+      "difficulty_note": "Minimal pair (written stress accent que/qué): \"que\" vs \"qué\". Both words occur in the live corpus. If the two render identically the model has collapsed the contrast. The two forms differ ONLY by the written accent, i.e. only by which syllable is stressed. If both render with the same stress the model is ignoring the diacritic, and the course teaches the wrong word.",
+      "repeat_count": 1
+    },
+    {
+      "id": "spa-0020",
+      "category": "minimal_pair",
+      "text": "qué",
+      "language": "spa",
+      "provenance": {
+        "course_code": "spa_for_eng",
+        "table": "course_practice_phrases",
+        "row_id": "spa_for_eng:S0021L03B02",
+        "seed_number": 21,
+        "dialect": "standard",
+        "variety": "es-ES (peninsular)",
+        "phrase_role": "build",
+        "pair_partner": "que",
+        "contrast": "written stress accent que/qué",
+        "attested_in": "¿Por qué estás aprendiendo su nombre?"
+      },
+      "difficulty_note": "Minimal pair (written stress accent que/qué): \"que\" vs \"qué\". Both words occur in the live corpus. If the two render identically the model has collapsed the contrast. The two forms differ ONLY by the written accent, i.e. only by which syllable is stressed. If both render with the same stress the model is ignoring the diacritic, and the course teaches the wrong word.",
+      "repeat_count": 1
+    },
+    {
+      "id": "spa-0021",
+      "category": "minimal_pair",
+      "text": "hacia",
+      "language": "spa",
+      "provenance": {
+        "course_code": "spa_for_eng",
+        "table": "course_seeds",
+        "row_id": "43b43bbf-63ba-4e0d-9a3d-a853bd1e626f",
+        "seed_number": 391,
+        "dialect": "standard",
+        "variety": "es-ES (peninsular)",
+        "seed_id": "S0391",
+        "pair_partner": "hacía",
+        "contrast": "written stress accent hacia/hacía",
+        "attested_in": "la que está caminando hacia el autobús"
+      },
+      "difficulty_note": "Minimal pair (written stress accent hacia/hacía): \"hacia\" vs \"hacía\". Both words occur in the live corpus. If the two render identically the model has collapsed the contrast. The two forms differ ONLY by the written accent, i.e. only by which syllable is stressed. If both render with the same stress the model is ignoring the diacritic, and the course teaches the wrong word.",
+      "repeat_count": 1
+    },
+    {
+      "id": "spa-0022",
+      "category": "minimal_pair",
+      "text": "hacía",
+      "language": "spa",
+      "provenance": {
+        "course_code": "spa_for_eng",
+        "table": "course_audio",
+        "row_id": "1f10abf3-bd72-4419-a685-af187c2028d1",
+        "seed_number": null,
+        "dialect": "standard",
+        "variety": "es-ES (peninsular)",
+        "role": "target1",
+        "rerecord_wanted": false,
+        "pair_partner": "hacia",
+        "contrast": "written stress accent hacia/hacía",
+        "attested_in": "Se hacía en cintas, se pasaba de mano en mano, era completamente clandestino."
+      },
+      "difficulty_note": "Minimal pair (written stress accent hacia/hacía): \"hacia\" vs \"hacía\". Both words occur in the live corpus. If the two render identically the model has collapsed the contrast. The two forms differ ONLY by the written accent, i.e. only by which syllable is stressed. If both render with the same stress the model is ignoring the diacritic, and the course teaches the wrong word.",
+      "repeat_count": 1
+    },
+    {
+      "id": "spa-0023",
+      "category": "minimal_pair",
+      "text": "donde",
+      "language": "spa",
+      "provenance": {
+        "course_code": "spa_for_eng",
+        "table": "course_audio",
+        "row_id": "90b280cf-83ad-474d-a1f9-a71e844e7cfe",
+        "seed_number": null,
+        "dialect": "standard",
+        "variety": "es-ES (peninsular)",
+        "role": "target1",
+        "rerecord_wanted": false,
+        "pair_partner": "dónde",
+        "contrast": "written stress accent donde/dónde",
+        "attested_in": "aquí es donde mi amigo quería reunirse con nosotros"
+      },
+      "difficulty_note": "Minimal pair (written stress accent donde/dónde): \"donde\" vs \"dónde\". Both words occur in the live corpus. If the two render identically the model has collapsed the contrast. The two forms differ ONLY by the written accent, i.e. only by which syllable is stressed. If both render with the same stress the model is ignoring the diacritic, and the course teaches the wrong word.",
+      "repeat_count": 1
+    },
+    {
+      "id": "spa-0024",
+      "category": "minimal_pair",
+      "text": "dónde",
+      "language": "spa",
+      "provenance": {
+        "course_code": "spa_for_eng",
+        "table": "course_audio",
+        "row_id": "0a0657e3-83f7-4c5d-aaad-5c8b44bdb681",
+        "seed_number": null,
+        "dialect": "standard",
+        "variety": "es-ES (peninsular)",
+        "role": "target2",
+        "rerecord_wanted": false,
+        "pair_partner": "donde",
+        "contrast": "written stress accent donde/dónde",
+        "attested_in": "ella no quería decirme dónde estaba"
+      },
+      "difficulty_note": "Minimal pair (written stress accent donde/dónde): \"donde\" vs \"dónde\". Both words occur in the live corpus. If the two render identically the model has collapsed the contrast. The two forms differ ONLY by the written accent, i.e. only by which syllable is stressed. If both render with the same stress the model is ignoring the diacritic, and the course teaches the wrong word.",
+      "repeat_count": 1
+    },
+    {
+      "id": "spa-0025",
+      "category": "proper_noun",
+      "text": "¿Y le gusta Madrid?",
+      "language": "spa",
+      "provenance": {
+        "course_code": "spa_for_eng",
+        "table": "course_audio",
+        "row_id": "1784a0e5-eaac-4c13-b1ef-65d6cab60051",
+        "seed_number": null,
+        "dialect": "standard",
+        "variety": "es-ES (peninsular)",
+        "role": "target1",
+        "rerecord_wanted": false
+      },
+      "difficulty_note": "Contains a proper noun / name-class word (madrid). Listen for anglicisation, wrong stress, or the name being read with the wrong language's phonology.",
+      "repeat_count": 1
+    },
+    {
+      "id": "spa-0026",
+      "category": "proper_noun",
+      "text": "Cantó poemas, canciones populares, himnos de toda América.",
+      "language": "spa",
+      "provenance": {
+        "course_code": "spa_for_eng",
+        "table": "course_audio",
+        "row_id": "137aeef5-592d-4eb3-aa40-b0ea2f2c5af0",
+        "seed_number": null,
+        "dialect": "standard",
+        "variety": "es-ES (peninsular)",
+        "role": "target1",
+        "rerecord_wanted": false
+      },
+      "difficulty_note": "Contains a proper noun / name-class word (américa). Listen for anglicisation, wrong stress, or the name being read with the wrong language's phonology.",
+      "repeat_count": 1
+    },
+    {
+      "id": "spa-0027",
+      "category": "proper_noun",
+      "text": "¡Buenos días, don Carlos! ¿Cómo está?",
+      "language": "spa",
+      "provenance": {
+        "course_code": "spa_mx_for_eng",
+        "table": "course_audio",
+        "row_id": "d27f2810-c158-4904-bd0c-81bbd3fbfe49",
+        "seed_number": null,
+        "dialect": "standard",
+        "variety": "es-MX (Mexican)",
+        "role": "target1",
+        "rerecord_wanted": false
+      },
+      "difficulty_note": "Contains a proper noun / name-class word (carlos). Listen for anglicisation, wrong stress, or the name being read with the wrong language's phonology.",
+      "repeat_count": 1
+    },
+    {
+      "id": "spa-0028",
+      "category": "proper_noun",
+      "text": "María José Llergo.",
+      "language": "spa",
+      "provenance": {
+        "course_code": "spa_for_eng",
+        "table": "course_audio",
+        "row_id": "c29ba446-cfae-48f3-907b-caeea1ca80b2",
+        "seed_number": null,
+        "dialect": "standard",
+        "variety": "es-ES (peninsular)",
+        "role": "target1",
+        "rerecord_wanted": false
+      },
+      "difficulty_note": "Contains a proper noun / name-class word (maría, josé). Listen for anglicisation, wrong stress, or the name being read with the wrong language's phonology.",
+      "repeat_count": 1
+    },
+    {
+      "id": "spa-0029",
+      "category": "proper_noun",
+      "text": "¡Buenos días, María!",
+      "language": "spa",
+      "provenance": {
+        "course_code": "spa_for_eng",
+        "table": "course_audio",
+        "row_id": "fcfcd2ce-8c7a-4f15-8e09-82490f8dc364",
+        "seed_number": null,
+        "dialect": "standard",
+        "variety": "es-ES (peninsular)",
+        "role": "target1",
+        "rerecord_wanted": false
+      },
+      "difficulty_note": "Contains a proper noun / name-class word (maría). Listen for anglicisation, wrong stress, or the name being read with the wrong language's phonology.",
+      "repeat_count": 1
+    },
+    {
+      "id": "spa-0030",
+      "category": "proper_noun",
+      "text": "Soy de Manchester, pero ahora vivo en Londres.",
+      "language": "spa",
+      "provenance": {
+        "course_code": "spa_mx_for_eng",
+        "table": "course_audio",
+        "row_id": "5818e894-323c-46c7-ad3c-301cfcba1399",
+        "seed_number": null,
+        "dialect": "standard",
+        "variety": "es-MX (Mexican)",
+        "role": "target1",
+        "rerecord_wanted": false
+      },
+      "difficulty_note": "Contains a proper noun / name-class word (londres). Listen for anglicisation, wrong stress, or the name being read with the wrong language's phonology.",
+      "repeat_count": 1
+    },
+    {
+      "id": "spa-0031",
+      "category": "proper_noun",
+      "text": "Las cuatro. … Las ocho. … Marzo. … Abril.",
+      "language": "spa",
+      "provenance": {
+        "course_code": "spa_mx_for_eng",
+        "table": "course_audio",
+        "row_id": "17260710-dbcb-4e4d-98fd-08dabef2d1a1",
+        "seed_number": null,
+        "dialect": "standard",
+        "variety": "es-MX (Mexican)",
+        "role": "target1",
+        "rerecord_wanted": false
+      },
+      "difficulty_note": "Contains a proper noun / name-class word (marzo, abril). Listen for anglicisation, wrong stress, or the name being read with the wrong language's phonology.",
+      "repeat_count": 1
+    },
+    {
+      "id": "spa-0032",
+      "category": "proper_noun",
+      "text": "Las seis. … Julio. … Agosto. … Septiembre.",
+      "language": "spa",
+      "provenance": {
+        "course_code": "spa_mx_for_eng",
+        "table": "course_audio",
+        "row_id": "1b3536ad-43fe-40a5-bf86-94f5f3a3f215",
+        "seed_number": null,
+        "dialect": "standard",
+        "variety": "es-MX (Mexican)",
+        "role": "target1",
+        "rerecord_wanted": false
+      },
+      "difficulty_note": "Contains a proper noun / name-class word (julio, agosto, septiembre). Listen for anglicisation, wrong stress, or the name being read with the wrong language's phonology.",
+      "repeat_count": 1
+    },
+    {
+      "id": "spa-0033",
+      "category": "numbers",
+      "text": "Su puerta es la B-14. Embarque a las nueve y media.",
+      "language": "spa",
+      "provenance": {
+        "course_code": "spa_for_eng",
+        "table": "course_audio",
+        "row_id": "04226cfe-71b5-477d-a9d8-39a6bac16bbd",
+        "seed_number": null,
+        "dialect": "standard",
+        "variety": "es-ES (peninsular)",
+        "role": "target1",
+        "rerecord_wanted": false
+      },
+      "difficulty_note": "Contains DIGITS — the text-normalisation path. Listen for the digit read as the wrong quantity, in the wrong language, or spelled out letter-by-letter.",
+      "repeat_count": 1
+    },
+    {
+      "id": "spa-0034",
+      "category": "numbers",
+      "text": "Una entrada para una sala grande antes te costaba 30 euros, ahora 60.",
+      "language": "spa",
+      "provenance": {
+        "course_code": "spa_for_eng",
+        "table": "course_audio",
+        "row_id": "bf6fc457-7cd8-4fd3-a276-1b17d083b22a",
+        "seed_number": null,
+        "dialect": "standard",
+        "variety": "es-ES (peninsular)",
+        "role": "target1",
+        "rerecord_wanted": false
+      },
+      "difficulty_note": "Contains DIGITS — the text-normalisation path. Listen for the digit read as the wrong quantity, in the wrong language, or spelled out letter-by-letter.",
+      "repeat_count": 1
+    },
+    {
+      "id": "spa-0035",
+      "category": "numbers",
+      "text": "Un artista pequeño no puede hacer un álbum de 14 canciones y esperar que lo escuchen de principio a fin.",
+      "language": "spa",
+      "provenance": {
+        "course_code": "spa_for_eng",
+        "table": "course_audio",
+        "row_id": "fd777809-1ffe-4859-9cfd-f4f6cd1a5f8f",
+        "seed_number": null,
+        "dialect": "standard",
+        "variety": "es-ES (peninsular)",
+        "role": "target1",
+        "rerecord_wanted": false
+      },
+      "difficulty_note": "Contains DIGITS — the text-normalisation path. Listen for the digit read as the wrong quantity, in the wrong language, or spelled out letter-by-letter.",
+      "repeat_count": 1
+    },
+    {
+      "id": "spa-0036",
+      "category": "numbers",
+      "text": "\"Para la libertad\". … Esa canción hizo que los adolescentes españoles se aprendieran a un poeta de los años 30.",
+      "language": "spa",
+      "provenance": {
+        "course_code": "spa_for_eng",
+        "table": "course_audio",
+        "row_id": "a26ac2b4-5c57-49cb-8276-8a682080466f",
+        "seed_number": null,
+        "dialect": "standard",
+        "variety": "es-ES (peninsular)",
+        "role": "target1",
+        "rerecord_wanted": false
+      },
+      "difficulty_note": "Contains DIGITS — the text-normalisation path. Listen for the digit read as the wrong quantity, in the wrong language, or spelled out letter-by-letter.",
+      "repeat_count": 1
+    },
+    {
+      "id": "spa-0037",
+      "category": "numbers",
+      "text": "Estupendo. … La habitación está en la tercera planta, la 709.",
+      "language": "spa",
+      "provenance": {
+        "course_code": "spa_mx_for_eng",
+        "table": "course_audio",
+        "row_id": "d35a0885-e780-40a1-9a85-f7ebe189b0c2",
+        "seed_number": null,
+        "dialect": "standard",
+        "variety": "es-MX (Mexican)",
+        "role": "target1",
+        "rerecord_wanted": false
+      },
+      "difficulty_note": "Contains DIGITS — the text-normalisation path. Listen for the digit read as the wrong quantity, in the wrong language, or spelled out letter-by-letter.",
+      "repeat_count": 1
+    },
+    {
+      "id": "spa-0038",
+      "category": "numbers",
+      "text": "De las siete y media, a las diez.",
+      "language": "spa",
+      "provenance": {
+        "course_code": "spa_mx_for_eng",
+        "table": "course_audio",
+        "row_id": "191de2b1-73a4-42c9-953b-7ecb0255a68e",
+        "seed_number": null,
+        "dialect": "standard",
+        "variety": "es-MX (Mexican)",
+        "role": "pod_take_g",
+        "rerecord_wanted": false
+      },
+      "difficulty_note": "Number, date or clock-time words. Listen for the wrong numeral form, a counted noun taking the wrong shape, and clock times mangled into a plain count.",
+      "repeat_count": 1
+    },
+    {
+      "id": "spa-0039",
+      "category": "numbers",
+      "text": "Son ciento cuarenta y ocho pesos.",
+      "language": "spa",
+      "provenance": {
+        "course_code": "spa_mx_for_eng",
+        "table": "course_audio",
+        "row_id": "61c32fd2-3f3f-47d5-be9d-f3d2fb07f4d6",
+        "seed_number": null,
+        "dialect": "standard",
+        "variety": "es-MX (Mexican)",
+        "role": "target1",
+        "rerecord_wanted": false
+      },
+      "difficulty_note": "Number, date or clock-time words. Listen for the wrong numeral form, a counted noun taking the wrong shape, and clock times mangled into a plain count.",
+      "repeat_count": 1
+    },
+    {
+      "id": "spa-0040",
+      "category": "numbers",
+      "text": "Tenemos una clara y una oscura, y las dos son locales.",
+      "language": "spa",
+      "provenance": {
+        "course_code": "spa_mx_for_eng",
+        "table": "course_audio",
+        "row_id": "9722c1cb-39bb-4509-bef0-b89ac1c13a6a",
+        "seed_number": null,
+        "dialect": "standard",
+        "variety": "es-MX (Mexican)",
+        "role": "target1",
+        "rerecord_wanted": false
+      },
+      "difficulty_note": "Number, date or clock-time words. Listen for the wrong numeral form, a counted noun taking the wrong shape, and clock times mangled into a plain count.",
+      "repeat_count": 1
+    },
+    {
+      "id": "spa-0041",
+      "category": "question",
+      "text": "¿quién estaba en la oficina de correos?",
+      "language": "spa",
+      "provenance": {
+        "course_code": "spa_for_eng",
+        "table": "course_audio",
+        "row_id": "17b7b821-c2ec-4c11-961f-6d0b40bcbcee",
+        "seed_number": null,
+        "dialect": "standard",
+        "variety": "es-ES (peninsular)",
+        "role": "target2",
+        "rerecord_wanted": false
+      },
+      "difficulty_note": "Interrogative. Listen for a genuine question contour rather than a statement read with a full stop, and for the rise landing on the right word.",
+      "repeat_count": 1
+    },
+    {
+      "id": "spa-0042",
+      "category": "question",
+      "text": "¿Para tomar aquí o para llevar?",
+      "language": "spa",
+      "provenance": {
+        "course_code": "spa_mx_for_eng",
+        "table": "course_audio",
+        "row_id": "37310e68-b5b9-4c84-99ba-a1e90b5332bb",
+        "seed_number": null,
+        "dialect": "standard",
+        "variety": "es-MX (Mexican)",
+        "role": "target1",
+        "rerecord_wanted": false
+      },
+      "difficulty_note": "Interrogative. Listen for a genuine question contour rather than a statement read with a full stop, and for the rise landing on the right word.",
+      "repeat_count": 1
+    },
+    {
+      "id": "spa-0043",
+      "category": "question",
+      "text": "¿estás aprendiendo cómo decir algo en español?",
+      "language": "spa",
+      "provenance": {
+        "course_code": "spa_mx_for_eng",
+        "table": "course_audio",
+        "row_id": "006c4879-f903-4251-947f-00c5cf09d26c",
+        "seed_number": null,
+        "dialect": "standard",
+        "variety": "es-MX (Mexican)",
+        "role": "target1",
+        "rerecord_wanted": false
+      },
+      "difficulty_note": "Interrogative. Listen for a genuine question contour rather than a statement read with a full stop, and for the rise landing on the right word.",
+      "repeat_count": 1
+    },
+    {
+      "id": "spa-0044",
+      "category": "question",
+      "text": "¿crees que las vacaciones son muy especiales?",
+      "language": "spa",
+      "provenance": {
+        "course_code": "spa_for_eng",
+        "table": "course_audio",
+        "row_id": "5a34b8fb-10ed-4b48-ae5c-a05124de4f98",
+        "seed_number": null,
+        "dialect": "standard",
+        "variety": "es-ES (peninsular)",
+        "role": "target2",
+        "rerecord_wanted": false
+      },
+      "difficulty_note": "Interrogative. Listen for a genuine question contour rather than a statement read with a full stop, and for the rise landing on the right word.",
+      "repeat_count": 1
+    },
+    {
+      "id": "spa-0045",
+      "category": "question",
+      "text": "¿estás seguro de que entiendes suficientes palabras diferentes?",
+      "language": "spa",
+      "provenance": {
+        "course_code": "spa_mx_for_eng",
+        "table": "course_audio",
+        "row_id": "77de5f3b-cd0d-41c3-9b4c-a23e17e76bf2",
+        "seed_number": null,
+        "dialect": "standard",
+        "variety": "es-MX (Mexican)",
+        "role": "target2",
+        "rerecord_wanted": false
+      },
+      "difficulty_note": "Interrogative. Listen for a genuine question contour rather than a statement read with a full stop, and for the rise landing on the right word.",
+      "repeat_count": 1
+    },
+    {
+      "id": "spa-0046",
+      "category": "question",
+      "text": "Disculpe, ¿tienen algo libre de gluten? ¿O para vegetarianos?",
+      "language": "spa",
+      "provenance": {
+        "course_code": "spa_mx_for_eng",
+        "table": "course_audio",
+        "row_id": "1a8bd379-fab3-4693-9852-a49b3093fef9",
+        "seed_number": null,
+        "dialect": "standard",
+        "variety": "es-MX (Mexican)",
+        "role": "target1",
+        "rerecord_wanted": false
+      },
+      "difficulty_note": "Interrogative. Listen for a genuine question contour rather than a statement read with a full stop, and for the rise landing on the right word.",
+      "repeat_count": 1
+    },
+    {
+      "id": "spa-0047",
+      "category": "question",
+      "text": "¿Me puede decir cuánto es?",
+      "language": "spa",
+      "provenance": {
+        "course_code": "spa_for_eng",
+        "table": "course_audio",
+        "row_id": "ab83516a-5559-4fa0-a196-8082b6c201d0",
+        "seed_number": null,
+        "dialect": "standard",
+        "variety": "es-ES (peninsular)",
+        "role": "target1",
+        "rerecord_wanted": false
+      },
+      "difficulty_note": "Interrogative. Listen for a genuine question contour rather than a statement read with a full stop, and for the rise landing on the right word.",
+      "repeat_count": 1
+    },
+    {
+      "id": "spa-0048",
+      "category": "question",
+      "text": "si te pidiera buscarlo, ¿lo harías?",
+      "language": "spa",
+      "provenance": {
+        "course_code": "spa_mx_for_eng",
+        "table": "course_audio",
+        "row_id": "1f3884e3-5dad-404c-9002-20500cf24642",
+        "seed_number": null,
+        "dialect": "standard",
+        "variety": "es-MX (Mexican)",
+        "role": "target2",
+        "rerecord_wanted": false
+      },
+      "difficulty_note": "Interrogative. Listen for a genuine question contour rather than a statement read with a full stop, and for the rise landing on the right word.",
+      "repeat_count": 1
+    },
+    {
+      "id": "spa-0049",
+      "category": "question",
+      "text": "¿has olvidado el té?",
+      "language": "spa",
+      "provenance": {
+        "course_code": "spa_for_eng",
+        "table": "course_practice_phrases",
+        "row_id": "spa_for_eng:S0623L01U06",
+        "seed_number": 623,
+        "dialect": "standard",
+        "variety": "es-ES (peninsular)",
+        "phrase_role": "use"
+      },
+      "difficulty_note": "Interrogative. Listen for a genuine question contour rather than a statement read with a full stop, and for the rise landing on the right word.",
+      "repeat_count": 1
+    },
+    {
+      "id": "spa-0050",
+      "category": "question",
+      "text": "¿puedo ir con todos vosotros?",
+      "language": "spa",
+      "provenance": {
+        "course_code": "spa_for_eng",
+        "table": "course_practice_phrases",
+        "row_id": "spa_for_eng:S0656L01U02",
+        "seed_number": 656,
+        "dialect": "standard",
+        "variety": "es-ES (peninsular)",
+        "phrase_role": "use"
+      },
+      "difficulty_note": "Interrogative. Listen for a genuine question contour rather than a statement read with a full stop, and for the rise landing on the right word.",
+      "repeat_count": 1
+    },
+    {
+      "id": "spa-0051",
+      "category": "isolated_word",
+      "text": "fácilmente",
+      "language": "spa",
+      "provenance": {
+        "course_code": "spa_mx_for_eng",
+        "table": "course_legos",
+        "row_id": "eff8278c-4576-4793-ba20-751ee6d036f7",
+        "seed_number": 24,
+        "dialect": "standard",
+        "variety": "es-MX (Mexican)",
+        "lego_id": "S0024L02",
+        "lego_type": "A"
+      },
+      "difficulty_note": "Single word spoken alone. Listen for a dead flat citation tone, a missing final consonant release, and lexical stress on the wrong syllable.",
+      "repeat_count": 1
+    },
+    {
+      "id": "spa-0052",
+      "category": "isolated_word",
+      "text": "preguntarte",
+      "language": "spa",
+      "provenance": {
+        "course_code": "spa_for_eng",
+        "table": "course_legos",
+        "row_id": "ea03585f-6c16-4c3b-a84a-49957146bc57",
+        "seed_number": 30,
+        "dialect": "standard",
+        "variety": "es-ES (peninsular)",
+        "lego_id": "S0030L04",
+        "lego_type": "M"
+      },
+      "difficulty_note": "Single word spoken alone. Listen for a dead flat citation tone, a missing final consonant release, and lexical stress on the wrong syllable.",
+      "repeat_count": 1
+    },
+    {
+      "id": "spa-0053",
+      "category": "isolated_word",
+      "text": "interrumpir",
+      "language": "spa",
+      "provenance": {
+        "course_code": "spa_for_eng",
+        "table": "course_legos",
+        "row_id": "44b10dad-a664-4493-8c00-94bd32adea23",
+        "seed_number": 36,
+        "dialect": "standard",
+        "variety": "es-ES (peninsular)",
+        "lego_id": "S0036L02",
+        "lego_type": "A"
+      },
+      "difficulty_note": "Single word spoken alone. Listen for a dead flat citation tone, a missing final consonant release, and lexical stress on the wrong syllable.",
+      "repeat_count": 1
+    },
+    {
+      "id": "spa-0054",
+      "category": "isolated_word",
+      "text": "esperábamos",
+      "language": "spa",
+      "provenance": {
+        "course_code": "spa_for_eng",
+        "table": "course_legos",
+        "row_id": "9dcb40f8-ce6e-4621-be80-4e18a4ba8058",
+        "seed_number": 107,
+        "dialect": "standard",
+        "variety": "es-ES (peninsular)",
+        "lego_id": "S0107L01",
+        "lego_type": "A"
+      },
+      "difficulty_note": "Single word spoken alone. Listen for a dead flat citation tone, a missing final consonant release, and lexical stress on the wrong syllable.",
+      "repeat_count": 1
+    },
+    {
+      "id": "spa-0055",
+      "category": "isolated_word",
+      "text": "estábamos",
+      "language": "spa",
+      "provenance": {
+        "course_code": "spa_mx_for_eng",
+        "table": "course_legos",
+        "row_id": "ff151ced-a1dc-4f32-bd3e-2030bb23b931",
+        "seed_number": 118,
+        "dialect": "standard",
+        "variety": "es-MX (Mexican)",
+        "lego_id": "S0118L03",
+        "lego_type": "A"
+      },
+      "difficulty_note": "Single word spoken alone. Listen for a dead flat citation tone, a missing final consonant release, and lexical stress on the wrong syllable.",
+      "repeat_count": 1
+    },
+    {
+      "id": "spa-0056",
+      "category": "isolated_word",
+      "text": "preguntarle",
+      "language": "spa",
+      "provenance": {
+        "course_code": "spa_for_eng",
+        "table": "course_legos",
+        "row_id": "a6434673-b181-48b2-b153-82e687baf601",
+        "seed_number": 136,
+        "dialect": "standard",
+        "variety": "es-ES (peninsular)",
+        "lego_id": "S0136L03",
+        "lego_type": "A"
+      },
+      "difficulty_note": "Single word spoken alone. Listen for a dead flat citation tone, a missing final consonant release, and lexical stress on the wrong syllable.",
+      "repeat_count": 1
+    },
+    {
+      "id": "spa-0057",
+      "category": "isolated_word",
+      "text": "necesitas",
+      "language": "spa",
+      "provenance": {
+        "course_code": "spa_mx_for_eng",
+        "table": "course_legos",
+        "row_id": "4ef59121-9c8e-4f4b-8430-d065b8b0a440",
+        "seed_number": 167,
+        "dialect": "standard",
+        "variety": "es-MX (Mexican)",
+        "lego_id": "S0167L01",
+        "lego_type": "A"
+      },
+      "difficulty_note": "Single word spoken alone. Listen for a dead flat citation tone, a missing final consonant release, and lexical stress on the wrong syllable.",
+      "repeat_count": 1
+    },
+    {
+      "id": "spa-0058",
+      "category": "isolated_word",
+      "text": "agradable",
+      "language": "spa",
+      "provenance": {
+        "course_code": "spa_mx_for_eng",
+        "table": "course_legos",
+        "row_id": "f579ed0f-8aa7-40e6-b8b5-95298ef7000c",
+        "seed_number": 219,
+        "dialect": "standard",
+        "variety": "es-MX (Mexican)",
+        "lego_id": "S0219L01",
+        "lego_type": "A"
+      },
+      "difficulty_note": "Single word spoken alone. Listen for a dead flat citation tone, a missing final consonant release, and lexical stress on the wrong syllable.",
+      "repeat_count": 1
+    },
+    {
+      "id": "spa-0059",
+      "category": "isolated_word",
+      "text": "mostrarte",
+      "language": "spa",
+      "provenance": {
+        "course_code": "spa_for_eng",
+        "table": "course_legos",
+        "row_id": "de0be782-0cc4-45b0-9920-3a8309186f94",
+        "seed_number": 301,
+        "dialect": "standard",
+        "variety": "es-ES (peninsular)",
+        "lego_id": "S0301L01",
+        "lego_type": "A"
+      },
+      "difficulty_note": "Single word spoken alone. Listen for a dead flat citation tone, a missing final consonant release, and lexical stress on the wrong syllable.",
+      "repeat_count": 1
+    },
+    {
+      "id": "spa-0060",
+      "category": "isolated_word",
+      "text": "preocupada",
+      "language": "spa",
+      "provenance": {
+        "course_code": "spa_for_eng",
+        "table": "course_legos",
+        "row_id": "80c1cbe1-3977-46ec-8bbd-3ee2e9b0b73b",
+        "seed_number": 343,
+        "dialect": "standard",
+        "variety": "es-ES (peninsular)",
+        "lego_id": "S0343L02",
+        "lego_type": "A"
+      },
+      "difficulty_note": "Single word spoken alone. Listen for a dead flat citation tone, a missing final consonant release, and lexical stress on the wrong syllable.",
+      "repeat_count": 1
+    },
+    {
+      "id": "spa-0061",
+      "category": "isolated_word",
+      "text": "preguntes",
+      "language": "spa",
+      "provenance": {
+        "course_code": "spa_mx_for_eng",
+        "table": "course_legos",
+        "row_id": "5a74dc2a-36a6-47e1-a8c8-7812544764ba",
+        "seed_number": 432,
+        "dialect": "standard",
+        "variety": "es-MX (Mexican)",
+        "lego_id": "S0432L03",
+        "lego_type": "A"
+      },
+      "difficulty_note": "Single word spoken alone. Listen for a dead flat citation tone, a missing final consonant release, and lexical stress on the wrong syllable.",
+      "repeat_count": 1
+    },
+    {
+      "id": "spa-0062",
+      "category": "isolated_word",
+      "text": "preguntar",
+      "language": "spa",
+      "provenance": {
+        "course_code": "spa_mx_for_eng",
+        "table": "course_legos",
+        "row_id": "38dab1b2-9817-43f5-a1ec-cf5abcba369b",
+        "seed_number": 609,
+        "dialect": "standard",
+        "variety": "es-MX (Mexican)",
+        "lego_id": "S0609L01",
+        "lego_type": "A"
+      },
+      "difficulty_note": "Single word spoken alone. Listen for a dead flat citation tone, a missing final consonant release, and lexical stress on the wrong syllable.",
+      "repeat_count": 1
+    },
+    {
+      "id": "spa-0063",
+      "category": "very_short_lego",
+      "text": "todo el día",
+      "language": "spa",
+      "provenance": {
+        "course_code": "spa_mx_for_eng",
+        "table": "course_legos",
+        "row_id": "ab9eed15-7fff-432b-a6b5-a92659e368e1",
+        "seed_number": 14,
+        "dialect": "standard",
+        "variety": "es-MX (Mexican)",
+        "lego_id": "S0014L01",
+        "lego_type": "M"
+      },
+      "difficulty_note": "Two-to-three-word LEGO. Too short to settle into a rhythm — this is where clipped onsets and truncated tails show up.",
+      "repeat_count": 1
+    },
+    {
+      "id": "spa-0064",
+      "category": "very_short_lego",
+      "text": "empezar a hablar",
+      "language": "spa",
+      "provenance": {
+        "course_code": "spa_for_eng",
+        "table": "course_legos",
+        "row_id": "fc7a0536-14cb-41f7-b563-9bc97ff1d6b7",
+        "seed_number": 23,
+        "dialect": "standard",
+        "variety": "es-ES (peninsular)",
+        "lego_id": "S0023L01",
+        "lego_type": "M"
+      },
+      "difficulty_note": "Two-to-three-word LEGO. Too short to settle into a rhythm — this is where clipped onsets and truncated tails show up.",
+      "repeat_count": 1
+    },
+    {
+      "id": "spa-0065",
+      "category": "very_short_lego",
+      "text": "he aprendido",
+      "language": "spa",
+      "provenance": {
+        "course_code": "spa_for_eng",
+        "table": "course_legos",
+        "row_id": "d81ca094-9288-4386-8c8c-64ee4aa3c855",
+        "seed_number": 76,
+        "dialect": "standard",
+        "variety": "es-ES (peninsular)",
+        "lego_id": "S0076L03",
+        "lego_type": "M"
+      },
+      "difficulty_note": "Two-to-three-word LEGO. Too short to settle into a rhythm — this is where clipped onsets and truncated tails show up.",
+      "repeat_count": 1
+    },
+    {
+      "id": "spa-0066",
+      "category": "very_short_lego",
+      "text": "va a funcionar",
+      "language": "spa",
+      "provenance": {
+        "course_code": "spa_mx_for_eng",
+        "table": "course_legos",
+        "row_id": "eb9bf69f-5fc3-431f-917c-1afabc0d4cd9",
+        "seed_number": 94,
+        "dialect": "standard",
+        "variety": "es-MX (Mexican)",
+        "lego_id": "S0094L04",
+        "lego_type": "M"
+      },
+      "difficulty_note": "Two-to-three-word LEGO. Too short to settle into a rhythm — this is where clipped onsets and truncated tails show up.",
+      "repeat_count": 1
+    },
+    {
+      "id": "spa-0067",
+      "category": "very_short_lego",
+      "text": "este idioma",
+      "language": "spa",
+      "provenance": {
+        "course_code": "spa_mx_for_eng",
+        "table": "course_legos",
+        "row_id": "6583f5ab-8907-4785-a5ff-0ce00d5b5af7",
+        "seed_number": 101,
+        "dialect": "standard",
+        "variety": "es-MX (Mexican)",
+        "lego_id": "S0101L03",
+        "lego_type": "M"
+      },
+      "difficulty_note": "Two-to-three-word LEGO. Too short to settle into a rhythm — this is where clipped onsets and truncated tails show up.",
+      "repeat_count": 1
+    },
+    {
+      "id": "spa-0068",
+      "category": "very_short_lego",
+      "text": "tienes que irte",
+      "language": "spa",
+      "provenance": {
+        "course_code": "spa_for_eng",
+        "table": "course_legos",
+        "row_id": "e60622ef-47bb-4d2c-9742-3fc81b6e0731",
+        "seed_number": 274,
+        "dialect": "standard",
+        "variety": "es-ES (peninsular)",
+        "lego_id": "S0274L02",
+        "lego_type": "M"
+      },
+      "difficulty_note": "Two-to-three-word LEGO. Too short to settle into a rhythm — this is where clipped onsets and truncated tails show up.",
+      "repeat_count": 1
+    },
+    {
+      "id": "spa-0069",
+      "category": "very_short_lego",
+      "text": "en una ciudad",
+      "language": "spa",
+      "provenance": {
+        "course_code": "spa_mx_for_eng",
+        "table": "course_legos",
+        "row_id": "6cfbb7af-cbf9-4a23-b74c-ae4884afa92b",
+        "seed_number": 302,
+        "dialect": "standard",
+        "variety": "es-MX (Mexican)",
+        "lego_id": "S0302L02",
+        "lego_type": "M"
+      },
+      "difficulty_note": "Two-to-three-word LEGO. Too short to settle into a rhythm — this is where clipped onsets and truncated tails show up.",
+      "repeat_count": 1
+    },
+    {
+      "id": "spa-0070",
+      "category": "very_short_lego",
+      "text": "cerca del",
+      "language": "spa",
+      "provenance": {
+        "course_code": "spa_for_eng",
+        "table": "course_legos",
+        "row_id": "b7c6b828-8168-4595-b43e-ef1981575fd3",
+        "seed_number": 460,
+        "dialect": "standard",
+        "variety": "es-ES (peninsular)",
+        "lego_id": "S0460L03",
+        "lego_type": "M"
+      },
+      "difficulty_note": "Two-to-three-word LEGO. Too short to settle into a rhythm — this is where clipped onsets and truncated tails show up.",
+      "repeat_count": 1
+    },
+    {
+      "id": "spa-0071",
+      "category": "very_short_lego",
+      "text": "esos lugares",
+      "language": "spa",
+      "provenance": {
+        "course_code": "spa_mx_for_eng",
+        "table": "course_legos",
+        "row_id": "f2ea01d0-001a-4d59-84ae-b89add3a48cb",
+        "seed_number": 492,
+        "dialect": "standard",
+        "variety": "es-MX (Mexican)",
+        "lego_id": "S0492L02",
+        "lego_type": "M"
+      },
+      "difficulty_note": "Two-to-three-word LEGO. Too short to settle into a rhythm — this is where clipped onsets and truncated tails show up.",
+      "repeat_count": 1
+    },
+    {
+      "id": "spa-0072",
+      "category": "very_short_lego",
+      "text": "cuánto pagar",
+      "language": "spa",
+      "provenance": {
+        "course_code": "spa_for_eng",
+        "table": "course_legos",
+        "row_id": "998a1a2f-5075-461e-a785-3129c77a4c09",
+        "seed_number": 569,
+        "dialect": "standard",
+        "variety": "es-ES (peninsular)",
+        "lego_id": "S0569L02",
+        "lego_type": "M"
+      },
+      "difficulty_note": "Two-to-three-word LEGO. Too short to settle into a rhythm — this is where clipped onsets and truncated tails show up.",
+      "repeat_count": 1
+    },
+    {
+      "id": "spa-0073",
+      "category": "very_short_lego",
+      "text": "estábamos hablando",
+      "language": "spa",
+      "provenance": {
+        "course_code": "spa_mx_for_eng",
+        "table": "course_legos",
+        "row_id": "a9a18169-cdca-4e82-b2c4-50d041baf9c6",
+        "seed_number": 601,
+        "dialect": "standard",
+        "variety": "es-MX (Mexican)",
+        "lego_id": "S0601L01",
+        "lego_type": "M"
+      },
+      "difficulty_note": "Two-to-three-word LEGO. Too short to settle into a rhythm — this is where clipped onsets and truncated tails show up.",
+      "repeat_count": 1
+    },
+    {
+      "id": "spa-0074",
+      "category": "very_short_lego",
+      "text": "lo habla",
+      "language": "spa",
+      "provenance": {
+        "course_code": "spa_for_eng",
+        "table": "course_legos",
+        "row_id": "1c233fe7-b292-4798-9517-368b9fd17cf8",
+        "seed_number": 647,
+        "dialect": "standard",
+        "variety": "es-ES (peninsular)",
+        "lego_id": "S0647L01",
+        "lego_type": "M"
+      },
+      "difficulty_note": "Two-to-three-word LEGO. Too short to settle into a rhythm — this is where clipped onsets and truncated tails show up.",
+      "repeat_count": 1
+    },
+    {
+      "id": "spa-0075",
+      "category": "medium_chunk",
+      "text": "No me gusta tomar demasiado tiempo para contestar",
+      "language": "spa",
+      "provenance": {
+        "course_code": "spa_for_eng",
+        "table": "course_practice_phrases",
+        "row_id": "spa_for_eng:S0027L03B02",
+        "seed_number": 27,
+        "dialect": "standard",
+        "variety": "es-ES (peninsular)",
+        "phrase_role": "build"
+      },
+      "difficulty_note": "BUILD-phrase fragment — deliberately incomplete. Listen for a false final cadence, or for the model trailing off as if the text were broken.",
+      "repeat_count": 1
+    },
+    {
+      "id": "spa-0076",
+      "category": "medium_chunk",
+      "text": "desafortunadamente no queremos dejar de hablar todavía",
+      "language": "spa",
+      "provenance": {
+        "course_code": "spa_mx_for_eng",
+        "table": "course_practice_phrases",
+        "row_id": "spa_mx_for_eng:S0086L02B03",
+        "seed_number": 86,
+        "dialect": "standard",
+        "variety": "es-MX (Mexican)",
+        "phrase_role": "build"
+      },
+      "difficulty_note": "BUILD-phrase fragment — deliberately incomplete. Listen for a false final cadence, or for the model trailing off as if the text were broken.",
+      "repeat_count": 1
+    },
+    {
+      "id": "spa-0077",
+      "category": "medium_chunk",
+      "text": "desafortunadamente no quiero interrumpir",
+      "language": "spa",
+      "provenance": {
+        "course_code": "spa_mx_for_eng",
+        "table": "course_practice_phrases",
+        "row_id": "spa_mx_for_eng:S0086L02B01",
+        "seed_number": 86,
+        "dialect": "standard",
+        "variety": "es-MX (Mexican)",
+        "phrase_role": "build"
+      },
+      "difficulty_note": "BUILD-phrase fragment — deliberately incomplete. Listen for a false final cadence, or for the model trailing off as if the text were broken.",
+      "repeat_count": 1
+    },
+    {
+      "id": "spa-0078",
+      "category": "medium_chunk",
+      "text": "Lo dijo de la misma manera",
+      "language": "spa",
+      "provenance": {
+        "course_code": "spa_for_eng",
+        "table": "course_practice_phrases",
+        "row_id": "spa_for_eng:S0153L03B03",
+        "seed_number": 153,
+        "dialect": "standard",
+        "variety": "es-ES (peninsular)",
+        "phrase_role": "build"
+      },
+      "difficulty_note": "BUILD-phrase fragment — deliberately incomplete. Listen for a false final cadence, or for the model trailing off as if the text were broken.",
+      "repeat_count": 1
+    },
+    {
+      "id": "spa-0079",
+      "category": "medium_chunk",
+      "text": "Estaba intentando encontrar la mejor manera de decirlo",
+      "language": "spa",
+      "provenance": {
+        "course_code": "spa_for_eng",
+        "table": "course_practice_phrases",
+        "row_id": "spa_for_eng:S0208L01B06",
+        "seed_number": 208,
+        "dialect": "standard",
+        "variety": "es-ES (peninsular)",
+        "phrase_role": "build"
+      },
+      "difficulty_note": "BUILD-phrase fragment — deliberately incomplete. Listen for a false final cadence, or for the model trailing off as if the text were broken.",
+      "repeat_count": 1
+    },
+    {
+      "id": "spa-0080",
+      "category": "medium_chunk",
+      "text": "es una buena idea",
+      "language": "spa",
+      "provenance": {
+        "course_code": "spa_mx_for_eng",
+        "table": "course_practice_phrases",
+        "row_id": "spa_mx_for_eng:S0259L01B04",
+        "seed_number": 259,
+        "dialect": "standard",
+        "variety": "es-MX (Mexican)",
+        "phrase_role": "build"
+      },
+      "difficulty_note": "BUILD-phrase fragment — deliberately incomplete. Listen for a false final cadence, or for the model trailing off as if the text were broken.",
+      "repeat_count": 1
+    },
+    {
+      "id": "spa-0081",
+      "category": "medium_chunk",
+      "text": "tuve que hacer algo importante",
+      "language": "spa",
+      "provenance": {
+        "course_code": "spa_mx_for_eng",
+        "table": "course_practice_phrases",
+        "row_id": "spa_mx_for_eng:S0280L01B04",
+        "seed_number": 280,
+        "dialect": "standard",
+        "variety": "es-MX (Mexican)",
+        "phrase_role": "build"
+      },
+      "difficulty_note": "BUILD-phrase fragment — deliberately incomplete. Listen for a false final cadence, or for the model trailing off as if the text were broken.",
+      "repeat_count": 1
+    },
+    {
+      "id": "spa-0082",
+      "category": "medium_chunk",
+      "text": "ella no podía aprender algo así",
+      "language": "spa",
+      "provenance": {
+        "course_code": "spa_for_eng",
+        "table": "course_practice_phrases",
+        "row_id": "spa_for_eng:S0311L01B02",
+        "seed_number": 311,
+        "dialect": "standard",
+        "variety": "es-ES (peninsular)",
+        "phrase_role": "build"
+      },
+      "difficulty_note": "BUILD-phrase fragment — deliberately incomplete. Listen for a false final cadence, or for the model trailing off as if the text were broken.",
+      "repeat_count": 1
+    },
+    {
+      "id": "spa-0083",
+      "category": "medium_chunk",
+      "text": "una mesa para cuatro cerca de la entrada",
+      "language": "spa",
+      "provenance": {
+        "course_code": "spa_for_eng",
+        "table": "course_practice_phrases",
+        "row_id": "spa_for_eng:S0411L02B04",
+        "seed_number": 411,
+        "dialect": "standard",
+        "variety": "es-ES (peninsular)",
+        "phrase_role": "build"
+      },
+      "difficulty_note": "BUILD-phrase fragment — deliberately incomplete. Listen for a false final cadence, or for the model trailing off as if the text were broken.",
+      "repeat_count": 1
+    },
+    {
+      "id": "spa-0084",
+      "category": "medium_chunk",
+      "text": "no queremos hacer perder el tiempo",
+      "language": "spa",
+      "provenance": {
+        "course_code": "spa_mx_for_eng",
+        "table": "course_practice_phrases",
+        "row_id": "spa_mx_for_eng:S0424L02B02",
+        "seed_number": 424,
+        "dialect": "standard",
+        "variety": "es-MX (Mexican)",
+        "phrase_role": "build"
+      },
+      "difficulty_note": "BUILD-phrase fragment — deliberately incomplete. Listen for a false final cadence, or for the model trailing off as if the text were broken.",
+      "repeat_count": 1
+    },
+    {
+      "id": "spa-0085",
+      "category": "medium_chunk",
+      "text": "hacer perder el tiempo",
+      "language": "spa",
+      "provenance": {
+        "course_code": "spa_mx_for_eng",
+        "table": "course_practice_phrases",
+        "row_id": "spa_mx_for_eng:S0424L02B01",
+        "seed_number": 424,
+        "dialect": "standard",
+        "variety": "es-MX (Mexican)",
+        "phrase_role": "build"
+      },
+      "difficulty_note": "BUILD-phrase fragment — deliberately incomplete. Listen for a false final cadence, or for the model trailing off as if the text were broken.",
+      "repeat_count": 1
+    },
+    {
+      "id": "spa-0086",
+      "category": "medium_chunk",
+      "text": "quiero encontrar algo cerca del hotel",
+      "language": "spa",
+      "provenance": {
+        "course_code": "spa_for_eng",
+        "table": "course_practice_phrases",
+        "row_id": "spa_for_eng:S0460L03B04",
+        "seed_number": 460,
+        "dialect": "standard",
+        "variety": "es-ES (peninsular)",
+        "phrase_role": "build"
+      },
+      "difficulty_note": "BUILD-phrase fragment — deliberately incomplete. Listen for a false final cadence, or for the model trailing off as if the text were broken.",
+      "repeat_count": 1
+    },
+    {
+      "id": "spa-0087",
+      "category": "full_sentence",
+      "text": "me gustaría poder hablar después de que termines",
+      "language": "spa",
+      "provenance": {
+        "course_code": "spa_mx_for_eng",
+        "table": "course_practice_phrases",
+        "row_id": "spa_mx_for_eng:S0011L03U02",
+        "seed_number": 11,
+        "dialect": "standard",
+        "variety": "es-MX (Mexican)",
+        "phrase_role": "use"
+      },
+      "difficulty_note": "Complete USE sentence — the baseline for naturalness. Listen for phrasing, breath placement and whether it sounds like a person saying something they mean.",
+      "repeat_count": 1
+    },
+    {
+      "id": "spa-0088",
+      "category": "full_sentence",
+      "text": "creo que no necesito saber todo en este momento",
+      "language": "spa",
+      "provenance": {
+        "course_code": "spa_mx_for_eng",
+        "table": "course_practice_phrases",
+        "row_id": "spa_mx_for_eng:S0047L01U03",
+        "seed_number": 47,
+        "dialect": "standard",
+        "variety": "es-MX (Mexican)",
+        "phrase_role": "use"
+      },
+      "difficulty_note": "Complete USE sentence — the baseline for naturalness. Listen for phrasing, breath placement and whether it sounds like a person saying something they mean.",
+      "repeat_count": 1
+    },
+    {
+      "id": "spa-0089",
+      "category": "full_sentence",
+      "text": "Pienso que esto es algo muy diferente",
+      "language": "spa",
+      "provenance": {
+        "course_code": "spa_for_eng",
+        "table": "course_practice_phrases",
+        "row_id": "spa_for_eng:S0098L04U12",
+        "seed_number": 98,
+        "dialect": "standard",
+        "variety": "es-ES (peninsular)",
+        "phrase_role": "use"
+      },
+      "difficulty_note": "Complete USE sentence — the baseline for naturalness. Listen for phrasing, breath placement and whether it sounds like a person saying something they mean.",
+      "repeat_count": 1
+    },
+    {
+      "id": "spa-0090",
+      "category": "full_sentence",
+      "text": "Me gustaría hacer algo diferente esta tarde",
+      "language": "spa",
+      "provenance": {
+        "course_code": "spa_for_eng",
+        "table": "course_practice_phrases",
+        "row_id": "spa_for_eng:S0098L04U08",
+        "seed_number": 98,
+        "dialect": "standard",
+        "variety": "es-ES (peninsular)",
+        "phrase_role": "use"
+      },
+      "difficulty_note": "Complete USE sentence — the baseline for naturalness. Listen for phrasing, breath placement and whether it sounds like a person saying something they mean.",
+      "repeat_count": 1
+    },
+    {
+      "id": "spa-0091",
+      "category": "full_sentence",
+      "text": "estamos contentos ahora, pero necesitamos seguir intentando",
+      "language": "spa",
+      "provenance": {
+        "course_code": "spa_mx_for_eng",
+        "table": "course_practice_phrases",
+        "row_id": "spa_mx_for_eng:S0106L02U10",
+        "seed_number": 106,
+        "dialect": "standard",
+        "variety": "es-MX (Mexican)",
+        "phrase_role": "use"
+      },
+      "difficulty_note": "Complete USE sentence — the baseline for naturalness. Listen for phrasing, breath placement and whether it sounds like a person saying something they mean.",
+      "repeat_count": 1
+    },
+    {
+      "id": "spa-0092",
+      "category": "full_sentence",
+      "text": "Creo que es la única manera de aprender a hablar bien",
+      "language": "spa",
+      "provenance": {
+        "course_code": "spa_for_eng",
+        "table": "course_practice_phrases",
+        "row_id": "spa_for_eng:S0125L01U09",
+        "seed_number": 125,
+        "dialect": "standard",
+        "variety": "es-ES (peninsular)",
+        "phrase_role": "use"
+      },
+      "difficulty_note": "Complete USE sentence — the baseline for naturalness. Listen for phrasing, breath placement and whether it sounds like a person saying something they mean.",
+      "repeat_count": 1
+    },
+    {
+      "id": "spa-0093",
+      "category": "full_sentence",
+      "text": "Necesito unos minutos para recordar lo que quería decir",
+      "language": "spa",
+      "provenance": {
+        "course_code": "spa_for_eng",
+        "table": "course_practice_phrases",
+        "row_id": "spa_for_eng:S0155L02U10",
+        "seed_number": 155,
+        "dialect": "standard",
+        "variety": "es-ES (peninsular)",
+        "phrase_role": "use"
+      },
+      "difficulty_note": "Complete USE sentence — the baseline for naturalness. Listen for phrasing, breath placement and whether it sounds like a person saying something they mean.",
+      "repeat_count": 1
+    },
+    {
+      "id": "spa-0094",
+      "category": "full_sentence",
+      "text": "El mes que viene voy a practicar hablando con otra persona",
+      "language": "spa",
+      "provenance": {
+        "course_code": "spa_for_eng",
+        "table": "course_practice_phrases",
+        "row_id": "spa_for_eng:S0157L02U06",
+        "seed_number": 157,
+        "dialect": "standard",
+        "variety": "es-ES (peninsular)",
+        "phrase_role": "use"
+      },
+      "difficulty_note": "Complete USE sentence — the baseline for naturalness. Listen for phrasing, breath placement and whether it sounds like a person saying something they mean.",
+      "repeat_count": 1
+    },
+    {
+      "id": "spa-0095",
+      "category": "full_sentence",
+      "text": "no estoy seguro de si tengo más tiempo",
+      "language": "spa",
+      "provenance": {
+        "course_code": "spa_mx_for_eng",
+        "table": "course_practice_phrases",
+        "row_id": "spa_mx_for_eng:S0275L01U04",
+        "seed_number": 275,
+        "dialect": "standard",
+        "variety": "es-MX (Mexican)",
+        "phrase_role": "use"
+      },
+      "difficulty_note": "Complete USE sentence — the baseline for naturalness. Listen for phrasing, breath placement and whether it sounds like a person saying something they mean.",
+      "repeat_count": 1
+    },
+    {
+      "id": "spa-0096",
+      "category": "full_sentence",
+      "text": "mi amigo podría trabajar en la carretera",
+      "language": "spa",
+      "provenance": {
+        "course_code": "spa_mx_for_eng",
+        "table": "course_practice_phrases",
+        "row_id": "spa_mx_for_eng:S0369L03U02",
+        "seed_number": 369,
+        "dialect": "standard",
+        "variety": "es-MX (Mexican)",
+        "phrase_role": "use"
+      },
+      "difficulty_note": "Complete USE sentence — the baseline for naturalness. Listen for phrasing, breath placement and whether it sounds like a person saying something they mean.",
+      "repeat_count": 1
+    },
+    {
+      "id": "spa-0097",
+      "category": "full_sentence",
+      "text": "es importante el número de áreas",
+      "language": "spa",
+      "provenance": {
+        "course_code": "spa_mx_for_eng",
+        "table": "course_practice_phrases",
+        "row_id": "spa_mx_for_eng:S0457L02U05",
+        "seed_number": 457,
+        "dialect": "standard",
+        "variety": "es-MX (Mexican)",
+        "phrase_role": "use"
+      },
+      "difficulty_note": "Complete USE sentence — the baseline for naturalness. Listen for phrasing, breath placement and whether it sounds like a person saying something they mean.",
+      "repeat_count": 1
+    },
+    {
+      "id": "spa-0098",
+      "category": "full_sentence",
+      "text": "me temo que olvidarás por qué necesitábamos esas cosas",
+      "language": "spa",
+      "provenance": {
+        "course_code": "spa_for_eng",
+        "table": "course_practice_phrases",
+        "row_id": "spa_for_eng:S0528L03U03",
+        "seed_number": 528,
+        "dialect": "standard",
+        "variety": "es-ES (peninsular)",
+        "phrase_role": "use"
+      },
+      "difficulty_note": "Complete USE sentence — the baseline for naturalness. Listen for phrasing, breath placement and whether it sounds like a person saying something they mean.",
+      "repeat_count": 1
+    },
+    {
+      "id": "spa-0099",
+      "category": "repeat_probe",
+      "text": "Fue bueno relajarme un rato después de trabajar todo el día",
+      "language": "spa",
+      "provenance": {
+        "course_code": "spa_for_eng",
+        "table": "course_practice_phrases",
+        "row_id": "spa_for_eng:S0219L04U02",
+        "seed_number": 219,
+        "dialect": "standard",
+        "variety": "es-ES (peninsular)",
+        "phrase_role": "use"
+      },
+      "difficulty_note": "THE repeat probe. Synthesise this one utterance repeat_count times in a single run, and again on a later date. Measures intra-voice consistency (axis D) and repeatability over time (axis E): duration spread, pitch drift, and whether any single render is audibly a different take.",
+      "repeat_count": 20
+    }
+  ]
+}
