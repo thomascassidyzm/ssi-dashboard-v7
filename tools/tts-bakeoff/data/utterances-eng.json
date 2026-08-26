@@ -1,0 +1,1737 @@
+{
+  "schema_version": 1,
+  "language": "eng",
+  "dialect": "standard",
+  "generated_at": "2026-08-26",
+  "source": "live Supabase course DB",
+  "source_courses": [
+    "eng_for_kan",
+    "eng_for_mar",
+    "eng_for_tel",
+    "eng_for_ara"
+  ],
+  "generator": "tools/tts-bakeoff/build-utterance-set.cjs",
+  "categories": {
+    "isolated_word": {
+      "label": "Isolated word",
+      "purpose": "Single words rendered with no sentence around them — the hardest case for prosody. Exposes flat citation-form delivery, wrong lexical stress and a missing final release."
+    },
+    "very_short_lego": {
+      "label": "Very short LEGO (2-3 words)",
+      "purpose": "The learning unit at its shortest. Too short for a model to settle into a rhythm, so clipped onsets, swallowed first syllables and truncated tails all surface here."
+    },
+    "medium_chunk": {
+      "label": "Medium chunk (BUILD-phrase sized)",
+      "purpose": "A phrase fragment, not a sentence. Tests whether the model can deliver an incomplete thought without either falling off a cliff at the end or inventing a full-stop cadence."
+    },
+    "full_sentence": {
+      "label": "Full sentence (USE phrase)",
+      "purpose": "A complete natural sentence — what most of the course actually is. The baseline for naturalness, phrasing and breath placement."
+    },
+    "question": {
+      "label": "Question",
+      "purpose": "Interrogative intonation. Many models flatten questions to statements, or apply a generic rise regardless of question type."
+    },
+    "numbers": {
+      "label": "Numbers, dates and times",
+      "purpose": "Where text normalisation fails. Listen for wrong number forms, a counted noun in the wrong gender/mutation, and dates or clock times read as bare digits or as the wrong quantity."
+    },
+    "hard_pronunciation": {
+      "label": "Hard pronunciation",
+      "purpose": "Strings selected because they carry a phoneme, cluster or grapheme this language is known to break on. Mined from real course rows, never written by hand. Each carries a difficulty_note saying what to listen for."
+    },
+    "proper_noun": {
+      "label": "Proper noun",
+      "purpose": "Names, places, languages, days and months — the class most often anglicised. A model that reads \"Cymraeg\" as an English word is instantly disqualified for course work."
+    },
+    "minimal_pair": {
+      "label": "Minimal pair",
+      "purpose": "Two real corpus words differing in one contrast. If the model renders both members identically it has collapsed a distinction the learner is being taught, and the course teaches a mistake."
+    },
+    "repeat_probe": {
+      "label": "Repeat probe",
+      "purpose": "Exactly one utterance per language, synthesised many times over. Measures intra-voice consistency and repeatability (Tom axes D and E) — does the same input give the same output today, and again next month?"
+    }
+  },
+  "gaps": [],
+  "utterances": [
+    {
+      "id": "eng-0001",
+      "category": "hard_pronunciation",
+      "text": "I like over there",
+      "language": "eng",
+      "provenance": {
+        "course_code": "eng_for_mar",
+        "table": "course_practice_phrases",
+        "row_id": "eng_for_mar:S0258L01U01",
+        "seed_number": 258,
+        "dialect": "standard",
+        "phrase_role": "use"
+      },
+      "difficulty_note": "[th-pair] word-initial \"th\" is voiced /ð/ in function words (the, this, that) and voiceless /θ/ in content words (think, thing) — a model that picks one value for both sounds foreign on every other sentence.",
+      "repeat_count": 1
+    },
+    {
+      "id": "eng-0002",
+      "category": "hard_pronunciation",
+      "text": "he fought in Italy at about six o'clock",
+      "language": "eng",
+      "provenance": {
+        "course_code": "eng_for_kan",
+        "table": "course_audio",
+        "row_id": "20dd140f-1ce6-4c77-8d99-85cc1ff57c9d",
+        "seed_number": null,
+        "dialect": "standard",
+        "role": "target2",
+        "rerecord_wanted": false
+      },
+      "difficulty_note": "[ough] \"-ough\" is the worst grapheme-to-phoneme set in English (through/though/thought/enough) — a direct test of whether the model has a real lexicon or is guessing from letters.",
+      "repeat_count": 1
+    },
+    {
+      "id": "eng-0003",
+      "category": "hard_pronunciation",
+      "text": "we don't know the number of students they take",
+      "language": "eng",
+      "provenance": {
+        "course_code": "eng_for_mar",
+        "table": "course_audio",
+        "row_id": "d6a53fc6-31ff-4baa-86fd-b6c9b52318a5",
+        "seed_number": null,
+        "dialect": "standard",
+        "role": "target2",
+        "rerecord_wanted": false
+      },
+      "difficulty_note": "[contraction] apostrophe contraction. The estate has repeatedly been bitten by the typographic apostrophe U+2019 vs ASCII ' — a model that tokenises on ASCII only will spell the word out or split it.",
+      "repeat_count": 1
+    },
+    {
+      "id": "eng-0004",
+      "category": "hard_pronunciation",
+      "text": "next week, speak English",
+      "language": "eng",
+      "provenance": {
+        "course_code": "eng_for_kan",
+        "table": "course_practice_phrases",
+        "row_id": "eng_for_kan:S0283L02B02",
+        "seed_number": 283,
+        "dialect": "standard",
+        "phrase_role": "build"
+      },
+      "difficulty_note": "[cluster] heavy consonant cluster — where clipping, epenthesis and swallowed onsets show up.",
+      "repeat_count": 1
+    },
+    {
+      "id": "eng-0005",
+      "category": "hard_pronunciation",
+      "text": "I wanted to read the story carefully",
+      "language": "eng",
+      "provenance": {
+        "course_code": "eng_for_mar",
+        "table": "course_audio",
+        "row_id": "8873862f-4b3f-4d6a-853b-a2527bc12ad1",
+        "seed_number": null,
+        "dialect": "standard",
+        "role": "target1",
+        "rerecord_wanted": false
+      },
+      "difficulty_note": "[heteronym] contains an English heteronym — one spelling, two pronunciations chosen by part of speech. Only a model doing real syntactic disambiguation gets it right; the rest coin-flip.",
+      "repeat_count": 1
+    },
+    {
+      "id": "eng-0006",
+      "category": "hard_pronunciation",
+      "text": "I know it doesn't feel like a long time",
+      "language": "eng",
+      "provenance": {
+        "course_code": "eng_for_kan",
+        "table": "course_audio",
+        "row_id": "b8e73b8b-f932-4be9-afc0-7b4924c560f8",
+        "seed_number": null,
+        "dialect": "standard",
+        "role": "target2",
+        "rerecord_wanted": false
+      },
+      "difficulty_note": "[long-vowel-pair] tense/lax vowel pair (/iː/ vs /ɪ/, /uː/ vs /ʊ/) — the contrast a length-insensitive model collapses.",
+      "repeat_count": 1
+    },
+    {
+      "id": "eng-0007",
+      "category": "hard_pronunciation",
+      "text": "that sounds as though now",
+      "language": "eng",
+      "provenance": {
+        "course_code": "eng_for_kan",
+        "table": "course_practice_phrases",
+        "row_id": "eng_for_kan:S0497L02B03",
+        "seed_number": 497,
+        "dialect": "standard",
+        "phrase_role": "build"
+      },
+      "difficulty_note": "[ough] \"-ough\" is the worst grapheme-to-phoneme set in English (through/though/thought/enough) — a direct test of whether the model has a real lexicon or is guessing from letters.",
+      "repeat_count": 1
+    },
+    {
+      "id": "eng-0008",
+      "category": "hard_pronunciation",
+      "text": "I'm not sure what you said madam",
+      "language": "eng",
+      "provenance": {
+        "course_code": "eng_for_mar",
+        "table": "course_practice_phrases",
+        "row_id": "eng_for_mar:S0648L01U04",
+        "seed_number": 648,
+        "dialect": "standard",
+        "phrase_role": "use"
+      },
+      "difficulty_note": "[contraction] apostrophe contraction. The estate has repeatedly been bitten by the typographic apostrophe U+2019 vs ASCII ' — a model that tokenises on ASCII only will spell the word out or split it.",
+      "repeat_count": 1
+    },
+    {
+      "id": "eng-0009",
+      "category": "hard_pronunciation",
+      "text": "for a while now",
+      "language": "eng",
+      "provenance": {
+        "course_code": "eng_for_kan",
+        "table": "course_audio",
+        "row_id": "a606ccc0-4f42-4772-a16d-0bf024a4ee3b",
+        "seed_number": null,
+        "dialect": "standard",
+        "role": "target1",
+        "rerecord_wanted": false
+      },
+      "difficulty_note": "[weak-form] function words must reduce to schwa in connected speech; a model that gives every word its citation form sounds like a list, not a sentence — the failure mode that most often reads as \"robotic\".",
+      "repeat_count": 1
+    },
+    {
+      "id": "eng-0010",
+      "category": "hard_pronunciation",
+      "text": "she wanted to see some old friends",
+      "language": "eng",
+      "provenance": {
+        "course_code": "eng_for_mar",
+        "table": "course_audio",
+        "row_id": "4a35893b-247e-49a9-ba42-a19fa8a582a3",
+        "seed_number": null,
+        "dialect": "standard",
+        "role": "target1",
+        "rerecord_wanted": false
+      },
+      "difficulty_note": "[cluster] heavy consonant cluster — where clipping, epenthesis and swallowed onsets show up.",
+      "repeat_count": 1
+    },
+    {
+      "id": "eng-0011",
+      "category": "hard_pronunciation",
+      "text": "my mother likes to read already",
+      "language": "eng",
+      "provenance": {
+        "course_code": "eng_for_mar",
+        "table": "course_practice_phrases",
+        "row_id": "eng_for_mar:S0239L02U05",
+        "seed_number": 239,
+        "dialect": "standard",
+        "phrase_role": "use"
+      },
+      "difficulty_note": "[heteronym] contains an English heteronym — one spelling, two pronunciations chosen by part of speech. Only a model doing real syntactic disambiguation gets it right; the rest coin-flip.",
+      "repeat_count": 1
+    },
+    {
+      "id": "eng-0012",
+      "category": "hard_pronunciation",
+      "text": "then he has been playing in the mud",
+      "language": "eng",
+      "provenance": {
+        "course_code": "eng_for_kan",
+        "table": "course_audio",
+        "row_id": "9ce1cba8-98d0-4da7-9028-105df84112ea",
+        "seed_number": null,
+        "dialect": "standard",
+        "role": "target2",
+        "rerecord_wanted": false
+      },
+      "difficulty_note": "[long-vowel-pair] tense/lax vowel pair (/iː/ vs /ɪ/, /uː/ vs /ʊ/) — the contrast a length-insensitive model collapses.",
+      "repeat_count": 1
+    },
+    {
+      "id": "eng-0013",
+      "category": "hard_pronunciation",
+      "text": "he wants the car",
+      "language": "eng",
+      "provenance": {
+        "course_code": "eng_for_kan",
+        "table": "course_audio",
+        "row_id": "472dee96-4605-4429-b0dc-f34daabd4dbf",
+        "seed_number": null,
+        "dialect": "standard",
+        "role": "target1",
+        "rerecord_wanted": false
+      },
+      "difficulty_note": "[th-pair] word-initial \"th\" is voiced /ð/ in function words (the, this, that) and voiceless /θ/ in content words (think, thing) — a model that picks one value for both sounds foreign on every other sentence.",
+      "repeat_count": 1
+    },
+    {
+      "id": "eng-0014",
+      "category": "hard_pronunciation",
+      "text": "I thought you were very brave to say that",
+      "language": "eng",
+      "provenance": {
+        "course_code": "eng_for_kan",
+        "table": "course_practice_phrases",
+        "row_id": "eng_for_kan:S0615L02U01",
+        "seed_number": 615,
+        "dialect": "standard",
+        "phrase_role": "use"
+      },
+      "difficulty_note": "[ough] \"-ough\" is the worst grapheme-to-phoneme set in English (through/though/thought/enough) — a direct test of whether the model has a real lexicon or is guessing from letters.",
+      "repeat_count": 1
+    },
+    {
+      "id": "eng-0015",
+      "category": "minimal_pair",
+      "text": "known",
+      "language": "eng",
+      "provenance": {
+        "course_code": "eng_for_kan",
+        "table": "course_audio",
+        "row_id": "155f3f35-6c82-4276-9848-7dc3e833c4f7",
+        "seed_number": null,
+        "dialect": "standard",
+        "role": "target1",
+        "rerecord_wanted": false,
+        "pair_partner": "knows",
+        "contrast": "consonant n/s",
+        "attested_in": "I would have done it differently if I had known what you wanted."
+      },
+      "difficulty_note": "Minimal pair (consonant n/s): \"known\" vs \"knows\". Both words occur in the live corpus. If the two render identically the model has collapsed the contrast.",
+      "repeat_count": 1
+    },
+    {
+      "id": "eng-0016",
+      "category": "minimal_pair",
+      "text": "knows",
+      "language": "eng",
+      "provenance": {
+        "course_code": "eng_for_ara",
+        "table": "course_audio",
+        "row_id": "a3512370-b900-4afd-ab70-c80df58025f9",
+        "seed_number": null,
+        "dialect": "standard",
+        "role": "target2",
+        "rerecord_wanted": false,
+        "pair_partner": "known",
+        "contrast": "consonant n/s",
+        "attested_in": "I know a young woman who knows your sister."
+      },
+      "difficulty_note": "Minimal pair (consonant n/s): \"known\" vs \"knows\". Both words occur in the live corpus. If the two render identically the model has collapsed the contrast.",
+      "repeat_count": 1
+    },
+    {
+      "id": "eng-0017",
+      "category": "minimal_pair",
+      "text": "but",
+      "language": "eng",
+      "provenance": {
+        "course_code": "eng_for_kan",
+        "table": "course_audio",
+        "row_id": "1d082793-43cc-41ee-a607-62f99ea09618",
+        "seed_number": null,
+        "dialect": "standard",
+        "role": "target2",
+        "rerecord_wanted": false,
+        "pair_partner": "put",
+        "contrast": "consonant b/p",
+        "attested_in": "But I don't want to stop talking."
+      },
+      "difficulty_note": "Minimal pair (consonant b/p): \"but\" vs \"put\". Both words occur in the live corpus. If the two render identically the model has collapsed the contrast.",
+      "repeat_count": 1
+    },
+    {
+      "id": "eng-0018",
+      "category": "minimal_pair",
+      "text": "put",
+      "language": "eng",
+      "provenance": {
+        "course_code": "eng_for_tel",
+        "table": "course_audio",
+        "row_id": "fb8c4e67-f335-4481-b526-7ca5393c8589",
+        "seed_number": null,
+        "dialect": "standard",
+        "role": "target1",
+        "rerecord_wanted": false,
+        "pair_partner": "but",
+        "contrast": "consonant b/p",
+        "attested_in": "She wanted to put his letter in her bag."
+      },
+      "difficulty_note": "Minimal pair (consonant b/p): \"but\" vs \"put\". Both words occur in the live corpus. If the two render identically the model has collapsed the contrast.",
+      "repeat_count": 1
+    },
+    {
+      "id": "eng-0019",
+      "category": "minimal_pair",
+      "text": "met",
+      "language": "eng",
+      "provenance": {
+        "course_code": "eng_for_mar",
+        "table": "course_seeds",
+        "row_id": "0ee44dcb-d7c0-4b80-8082-9e3a81577f2f",
+        "seed_number": 234,
+        "dialect": "standard",
+        "seed_id": "S0234",
+        "pair_partner": "wet",
+        "contrast": "consonant m/w",
+        "attested_in": "I met someone last night who works with your brother."
+      },
+      "difficulty_note": "Minimal pair (consonant m/w): \"met\" vs \"wet\". Both words occur in the live corpus. If the two render identically the model has collapsed the contrast.",
+      "repeat_count": 1
+    },
+    {
+      "id": "eng-0020",
+      "category": "minimal_pair",
+      "text": "wet",
+      "language": "eng",
+      "provenance": {
+        "course_code": "eng_for_ara",
+        "table": "course_audio",
+        "row_id": "c67a8b31-1994-49b3-b423-d4a0e17118c3",
+        "seed_number": null,
+        "dialect": "standard",
+        "role": "target1",
+        "rerecord_wanted": false,
+        "pair_partner": "met",
+        "contrast": "consonant m/w",
+        "attested_in": "The dog is dirty and wet."
+      },
+      "difficulty_note": "Minimal pair (consonant m/w): \"met\" vs \"wet\". Both words occur in the live corpus. If the two render identically the model has collapsed the contrast.",
+      "repeat_count": 1
+    },
+    {
+      "id": "eng-0021",
+      "category": "minimal_pair",
+      "text": "we're",
+      "language": "eng",
+      "provenance": {
+        "course_code": "eng_for_mar",
+        "table": "course_audio",
+        "row_id": "bac0f348-b15f-4e82-8d64-0669307a44df",
+        "seed_number": null,
+        "dialect": "standard",
+        "role": "target1",
+        "rerecord_wanted": false,
+        "pair_partner": "we've",
+        "contrast": "consonant r/v",
+        "attested_in": "We're trying to say that it's not like that."
+      },
+      "difficulty_note": "Minimal pair (consonant r/v): \"we're\" vs \"we've\". Both words occur in the live corpus. If the two render identically the model has collapsed the contrast.",
+      "repeat_count": 1
+    },
+    {
+      "id": "eng-0022",
+      "category": "minimal_pair",
+      "text": "we've",
+      "language": "eng",
+      "provenance": {
+        "course_code": "eng_for_kan",
+        "table": "course_audio",
+        "row_id": "e70f89d4-f3f0-4800-bc93-51f4a0c97f0b",
+        "seed_number": null,
+        "dialect": "standard",
+        "role": "target1",
+        "rerecord_wanted": false,
+        "pair_partner": "we're",
+        "contrast": "consonant r/v",
+        "attested_in": "We've been waiting for the news from the hospital."
+      },
+      "difficulty_note": "Minimal pair (consonant r/v): \"we're\" vs \"we've\". Both words occur in the live corpus. If the two render identically the model has collapsed the contrast.",
+      "repeat_count": 1
+    },
+    {
+      "id": "eng-0023",
+      "category": "minimal_pair",
+      "text": "doing",
+      "language": "eng",
+      "provenance": {
+        "course_code": "eng_for_mar",
+        "table": "course_audio",
+        "row_id": "35ae59ca-d9bb-4fc0-9c8f-52b7e5c39664",
+        "seed_number": null,
+        "dialect": "standard",
+        "role": "target2",
+        "rerecord_wanted": false,
+        "pair_partner": "going",
+        "contrast": "consonant d/g",
+        "attested_in": "I enjoy doing interesting things with my friends."
+      },
+      "difficulty_note": "Minimal pair (consonant d/g): \"doing\" vs \"going\". Both words occur in the live corpus. If the two render identically the model has collapsed the contrast.",
+      "repeat_count": 1
+    },
+    {
+      "id": "eng-0024",
+      "category": "minimal_pair",
+      "text": "going",
+      "language": "eng",
+      "provenance": {
+        "course_code": "eng_for_kan",
+        "table": "course_audio",
+        "row_id": "2e39845c-f98e-4e2c-887a-0f47c2e1f318",
+        "seed_number": null,
+        "dialect": "standard",
+        "role": "target2",
+        "rerecord_wanted": false,
+        "pair_partner": "doing",
+        "contrast": "consonant d/g",
+        "attested_in": "I'm going to practise speaking with someone else."
+      },
+      "difficulty_note": "Minimal pair (consonant d/g): \"doing\" vs \"going\". Both words occur in the live corpus. If the two render identically the model has collapsed the contrast.",
+      "repeat_count": 1
+    },
+    {
+      "id": "eng-0025",
+      "category": "proper_noun",
+      "text": "I live in London",
+      "language": "eng",
+      "provenance": {
+        "course_code": "eng_for_ara",
+        "table": "course_audio",
+        "row_id": "b785b1b3-cbf3-4cf1-972a-1ce2e66477ae",
+        "seed_number": null,
+        "dialect": "standard",
+        "role": "pod_explainer",
+        "rerecord_wanted": false,
+        "source_text": "[atom] I live in London",
+        "transform": "stripped leading \"[atom]\" control marker"
+      },
+      "difficulty_note": "Contains a proper noun / name-class word (london). Listen for anglicisation, wrong stress, or the name being read with the wrong language's phonology.",
+      "repeat_count": 1
+    },
+    {
+      "id": "eng-0026",
+      "category": "proper_noun",
+      "text": "he wanted to go out on Friday night",
+      "language": "eng",
+      "provenance": {
+        "course_code": "eng_for_kan",
+        "table": "course_audio",
+        "row_id": "d83f1269-332c-4b2d-90db-0eebf2732be9",
+        "seed_number": null,
+        "dialect": "standard",
+        "role": "target2",
+        "rerecord_wanted": false
+      },
+      "difficulty_note": "Contains a proper noun / name-class word (friday). Listen for anglicisation, wrong stress, or the name being read with the wrong language's phonology.",
+      "repeat_count": 1
+    },
+    {
+      "id": "eng-0027",
+      "category": "proper_noun",
+      "text": "I didn't have enough money on Wednesday",
+      "language": "eng",
+      "provenance": {
+        "course_code": "eng_for_tel",
+        "table": "course_audio",
+        "row_id": "2dd31752-541b-4346-a5df-01a6f31f8736",
+        "seed_number": null,
+        "dialect": "standard",
+        "role": "target1",
+        "rerecord_wanted": false
+      },
+      "difficulty_note": "Contains a proper noun / name-class word (wednesday). Listen for anglicisation, wrong stress, or the name being read with the wrong language's phonology.",
+      "repeat_count": 1
+    },
+    {
+      "id": "eng-0028",
+      "category": "proper_noun",
+      "text": "19. 20. 21. Wednesday. Thursday.",
+      "language": "eng",
+      "provenance": {
+        "course_code": "eng_for_ara",
+        "table": "course_audio",
+        "row_id": "c460fc44-a1f5-4d9b-8e52-5acf6e2cad57",
+        "seed_number": null,
+        "dialect": "standard",
+        "role": "target1",
+        "rerecord_wanted": false
+      },
+      "difficulty_note": "Contains a proper noun / name-class word (wednesday, thursday). Listen for anglicisation, wrong stress, or the name being read with the wrong language's phonology.",
+      "repeat_count": 1
+    },
+    {
+      "id": "eng-0029",
+      "category": "proper_noun",
+      "text": "this Thursday",
+      "language": "eng",
+      "provenance": {
+        "course_code": "eng_for_tel",
+        "table": "course_audio",
+        "row_id": "b52ad0f2-e56b-4f92-a897-f80eda08a5cc",
+        "seed_number": null,
+        "dialect": "standard",
+        "role": "target2",
+        "rerecord_wanted": false
+      },
+      "difficulty_note": "Contains a proper noun / name-class word (thursday). Listen for anglicisation, wrong stress, or the name being read with the wrong language's phonology.",
+      "repeat_count": 1
+    },
+    {
+      "id": "eng-0030",
+      "category": "proper_noun",
+      "text": "because I went out on Saturday night",
+      "language": "eng",
+      "provenance": {
+        "course_code": "eng_for_mar",
+        "table": "course_audio",
+        "row_id": "41b9b125-33f3-40c8-9b63-03139b12a7ad",
+        "seed_number": null,
+        "dialect": "standard",
+        "role": "target1",
+        "rerecord_wanted": false
+      },
+      "difficulty_note": "Contains a proper noun / name-class word (saturday). Listen for anglicisation, wrong stress, or the name being read with the wrong language's phonology.",
+      "repeat_count": 1
+    },
+    {
+      "id": "eng-0031",
+      "category": "proper_noun",
+      "text": "he wants to work on Monday",
+      "language": "eng",
+      "provenance": {
+        "course_code": "eng_for_kan",
+        "table": "course_practice_phrases",
+        "row_id": "eng_for_kan:S0316L03U01",
+        "seed_number": 316,
+        "dialect": "standard",
+        "phrase_role": "use"
+      },
+      "difficulty_note": "Contains a proper noun / name-class word (monday). Listen for anglicisation, wrong stress, or the name being read with the wrong language's phonology.",
+      "repeat_count": 1
+    },
+    {
+      "id": "eng-0032",
+      "category": "proper_noun",
+      "text": "next Tuesday",
+      "language": "eng",
+      "provenance": {
+        "course_code": "eng_for_mar",
+        "table": "course_practice_phrases",
+        "row_id": "eng_for_mar:S0428L03B02",
+        "seed_number": 428,
+        "dialect": "standard",
+        "phrase_role": "build"
+      },
+      "difficulty_note": "Contains a proper noun / name-class word (tuesday). Listen for anglicisation, wrong stress, or the name being read with the wrong language's phonology.",
+      "repeat_count": 1
+    },
+    {
+      "id": "eng-0033",
+      "category": "numbers",
+      "text": "11 o'clock",
+      "language": "eng",
+      "provenance": {
+        "course_code": "eng_for_ara",
+        "table": "course_audio",
+        "row_id": "296e4132-ef93-400b-97ef-a0130d6efe19",
+        "seed_number": null,
+        "dialect": "standard",
+        "role": "pod_explainer",
+        "rerecord_wanted": false,
+        "source_text": "[atom] 11 o'clock",
+        "transform": "stripped leading \"[atom]\" control marker"
+      },
+      "difficulty_note": "Contains DIGITS — the text-normalisation path. Listen for the digit read as the wrong quantity, in the wrong language, or spelled out letter-by-letter.",
+      "repeat_count": 1
+    },
+    {
+      "id": "eng-0034",
+      "category": "numbers",
+      "text": "Lovely. The room is on the third floor, room 304.",
+      "language": "eng",
+      "provenance": {
+        "course_code": "eng_for_ara",
+        "table": "course_audio",
+        "row_id": "7c98c733-ebd3-48c0-b60f-c8640149afc5",
+        "seed_number": null,
+        "dialect": "standard",
+        "role": "target1",
+        "rerecord_wanted": false
+      },
+      "difficulty_note": "Contains DIGITS — the text-normalisation path. Listen for the digit read as the wrong quantity, in the wrong language, or spelled out letter-by-letter.",
+      "repeat_count": 1
+    },
+    {
+      "id": "eng-0035",
+      "category": "numbers",
+      "text": "we need to meet at six o'clock this evening",
+      "language": "eng",
+      "provenance": {
+        "course_code": "eng_for_mar",
+        "table": "course_audio",
+        "row_id": "166462f6-dac9-4e62-a1d1-f2d87c9b2d58",
+        "seed_number": null,
+        "dialect": "standard",
+        "role": "target2",
+        "rerecord_wanted": false
+      },
+      "difficulty_note": "Number, date or clock-time words. Listen for the wrong numeral form, a counted noun taking the wrong shape, and clock times mangled into a plain count.",
+      "repeat_count": 1
+    },
+    {
+      "id": "eng-0036",
+      "category": "numbers",
+      "text": "he wants to pay half and I want to pay half",
+      "language": "eng",
+      "provenance": {
+        "course_code": "eng_for_kan",
+        "table": "course_audio",
+        "row_id": "99344732-7355-4801-93f7-2a2820513b6b",
+        "seed_number": null,
+        "dialect": "standard",
+        "role": "target1",
+        "rerecord_wanted": false
+      },
+      "difficulty_note": "Number, date or clock-time words. Listen for the wrong numeral form, a counted noun taking the wrong shape, and clock times mangled into a plain count.",
+      "repeat_count": 1
+    },
+    {
+      "id": "eng-0037",
+      "category": "numbers",
+      "text": "I think the second half is very big",
+      "language": "eng",
+      "provenance": {
+        "course_code": "eng_for_mar",
+        "table": "course_audio",
+        "row_id": "97c8ca2e-f7f4-45aa-b449-e57d970e7fa5",
+        "seed_number": null,
+        "dialect": "standard",
+        "role": "target1",
+        "rerecord_wanted": false
+      },
+      "difficulty_note": "Number, date or clock-time words. Listen for the wrong numeral form, a counted noun taking the wrong shape, and clock times mangled into a plain count.",
+      "repeat_count": 1
+    },
+    {
+      "id": "eng-0038",
+      "category": "numbers",
+      "text": "I'd like one of those, it's the red one",
+      "language": "eng",
+      "provenance": {
+        "course_code": "eng_for_tel",
+        "table": "course_audio",
+        "row_id": "b45cd3f0-cb5c-416b-a09e-a8ec4dd84a86",
+        "seed_number": null,
+        "dialect": "standard",
+        "role": "target2",
+        "rerecord_wanted": false
+      },
+      "difficulty_note": "Number, date or clock-time words. Listen for the wrong numeral form, a counted noun taking the wrong shape, and clock times mangled into a plain count.",
+      "repeat_count": 1
+    },
+    {
+      "id": "eng-0039",
+      "category": "numbers",
+      "text": "a thousand stories today",
+      "language": "eng",
+      "provenance": {
+        "course_code": "eng_for_tel",
+        "table": "course_audio",
+        "row_id": "32124e9c-ea3f-45c8-a7ed-7958738c34f4",
+        "seed_number": null,
+        "dialect": "standard",
+        "role": "target1",
+        "rerecord_wanted": false
+      },
+      "difficulty_note": "Number, date or clock-time words. Listen for the wrong numeral form, a counted noun taking the wrong shape, and clock times mangled into a plain count.",
+      "repeat_count": 1
+    },
+    {
+      "id": "eng-0040",
+      "category": "numbers",
+      "text": "I'll call you back in three or four minutes.",
+      "language": "eng",
+      "provenance": {
+        "course_code": "eng_for_kan",
+        "table": "course_seeds",
+        "row_id": "055fd0d4-5181-4117-9d5a-e4ba12ce6255",
+        "seed_number": 524,
+        "dialect": "standard",
+        "seed_id": "S0524"
+      },
+      "difficulty_note": "Number, date or clock-time words. Listen for the wrong numeral form, a counted noun taking the wrong shape, and clock times mangled into a plain count.",
+      "repeat_count": 1
+    },
+    {
+      "id": "eng-0041",
+      "category": "question",
+      "text": "what would you like today?",
+      "language": "eng",
+      "provenance": {
+        "course_code": "eng_for_kan",
+        "table": "course_audio",
+        "row_id": "2da50e3f-03b0-4af0-a862-9abcf4935cdd",
+        "seed_number": null,
+        "dialect": "standard",
+        "role": "target1",
+        "rerecord_wanted": false
+      },
+      "difficulty_note": "Interrogative. Listen for a genuine question contour rather than a statement read with a full stop, and for the rise landing on the right word.",
+      "repeat_count": 1
+    },
+    {
+      "id": "eng-0042",
+      "category": "question",
+      "text": "could you all say that to me?",
+      "language": "eng",
+      "provenance": {
+        "course_code": "eng_for_tel",
+        "table": "course_audio",
+        "row_id": "6c128ad3-feb9-47b9-b624-f98f957dd743",
+        "seed_number": null,
+        "dialect": "standard",
+        "role": "target2",
+        "rerecord_wanted": false
+      },
+      "difficulty_note": "Interrogative. Listen for a genuine question contour rather than a statement read with a full stop, and for the rise landing on the right word.",
+      "repeat_count": 1
+    },
+    {
+      "id": "eng-0043",
+      "category": "question",
+      "text": "what's it like in the part of the world right now?",
+      "language": "eng",
+      "provenance": {
+        "course_code": "eng_for_kan",
+        "table": "course_audio",
+        "row_id": "0f241936-f01f-4f6a-8e95-01c8d855a40d",
+        "seed_number": null,
+        "dialect": "standard",
+        "role": "target2",
+        "rerecord_wanted": false
+      },
+      "difficulty_note": "Interrogative. Listen for a genuine question contour rather than a statement read with a full stop, and for the rise landing on the right word.",
+      "repeat_count": 1
+    },
+    {
+      "id": "eng-0044",
+      "category": "question",
+      "text": "A pint, please. What ales do you have on?",
+      "language": "eng",
+      "provenance": {
+        "course_code": "eng_for_ara",
+        "table": "course_audio",
+        "row_id": "4b2606e7-768c-4d45-a560-d6e286102a18",
+        "seed_number": null,
+        "dialect": "standard",
+        "role": "target1",
+        "rerecord_wanted": false
+      },
+      "difficulty_note": "Interrogative. Listen for a genuine question contour rather than a statement read with a full stop, and for the rise landing on the right word.",
+      "repeat_count": 1
+    },
+    {
+      "id": "eng-0045",
+      "category": "question",
+      "text": "do you want to learn how to answer?",
+      "language": "eng",
+      "provenance": {
+        "course_code": "eng_for_kan",
+        "table": "course_audio",
+        "row_id": "a8fc0b39-f2a9-44da-b9e6-d27e295ab46d",
+        "seed_number": null,
+        "dialect": "standard",
+        "role": "target1",
+        "rerecord_wanted": false
+      },
+      "difficulty_note": "Interrogative. Listen for a genuine question contour rather than a statement read with a full stop, and for the rise landing on the right word.",
+      "repeat_count": 1
+    },
+    {
+      "id": "eng-0046",
+      "category": "question",
+      "text": "what do you think at the moment?",
+      "language": "eng",
+      "provenance": {
+        "course_code": "eng_for_mar",
+        "table": "course_audio",
+        "row_id": "ca3ec382-bd49-45d0-805d-9a523afe3810",
+        "seed_number": null,
+        "dialect": "standard",
+        "role": "target1",
+        "rerecord_wanted": false
+      },
+      "difficulty_note": "Interrogative. Listen for a genuine question contour rather than a statement read with a full stop, and for the rise landing on the right word.",
+      "repeat_count": 1
+    },
+    {
+      "id": "eng-0047",
+      "category": "question",
+      "text": "definitely, how many people do you know?",
+      "language": "eng",
+      "provenance": {
+        "course_code": "eng_for_tel",
+        "table": "course_practice_phrases",
+        "row_id": "eng_for_tel:S0287L01B02",
+        "seed_number": 287,
+        "dialect": "standard",
+        "phrase_role": "build"
+      },
+      "difficulty_note": "Interrogative. Listen for a genuine question contour rather than a statement read with a full stop, and for the rise landing on the right word.",
+      "repeat_count": 1
+    },
+    {
+      "id": "eng-0048",
+      "category": "question",
+      "text": "did you hear that he was quiet?",
+      "language": "eng",
+      "provenance": {
+        "course_code": "eng_for_tel",
+        "table": "course_practice_phrases",
+        "row_id": "eng_for_tel:S0366L01U04",
+        "seed_number": 366,
+        "dialect": "standard",
+        "phrase_role": "use"
+      },
+      "difficulty_note": "Interrogative. Listen for a genuine question contour rather than a statement read with a full stop, and for the rise landing on the right word.",
+      "repeat_count": 1
+    },
+    {
+      "id": "eng-0049",
+      "category": "question",
+      "text": "can you put your hands up?",
+      "language": "eng",
+      "provenance": {
+        "course_code": "eng_for_mar",
+        "table": "course_practice_phrases",
+        "row_id": "eng_for_mar:S0529L01B01",
+        "seed_number": 529,
+        "dialect": "standard",
+        "phrase_role": "build"
+      },
+      "difficulty_note": "Interrogative. Listen for a genuine question contour rather than a statement read with a full stop, and for the rise landing on the right word.",
+      "repeat_count": 1
+    },
+    {
+      "id": "eng-0050",
+      "category": "question",
+      "text": "have you found the answer?",
+      "language": "eng",
+      "provenance": {
+        "course_code": "eng_for_mar",
+        "table": "course_practice_phrases",
+        "row_id": "eng_for_mar:S0559L01B04",
+        "seed_number": 559,
+        "dialect": "standard",
+        "phrase_role": "build"
+      },
+      "difficulty_note": "Interrogative. Listen for a genuine question contour rather than a statement read with a full stop, and for the rise landing on the right word.",
+      "repeat_count": 1
+    },
+    {
+      "id": "eng-0051",
+      "category": "isolated_word",
+      "text": "tonight",
+      "language": "eng",
+      "provenance": {
+        "course_code": "eng_for_tel",
+        "table": "course_legos",
+        "row_id": "55b4837b-c327-4c2d-b26b-8cbd46f33a24",
+        "seed_number": 31,
+        "dialect": "standard",
+        "lego_id": "S0031L01",
+        "lego_type": "A"
+      },
+      "difficulty_note": "Single word spoken alone. Listen for a dead flat citation tone, a missing final consonant release, and lexical stress on the wrong syllable.",
+      "repeat_count": 1
+    },
+    {
+      "id": "eng-0052",
+      "category": "isolated_word",
+      "text": "interrupt",
+      "language": "eng",
+      "provenance": {
+        "course_code": "eng_for_ara",
+        "table": "course_legos",
+        "row_id": "5d438d89-fc8b-42d9-8bd6-c3996e084092",
+        "seed_number": 36,
+        "dialect": "standard",
+        "lego_id": "S0036L02",
+        "lego_type": "A"
+      },
+      "difficulty_note": "Single word spoken alone. Listen for a dead flat citation tone, a missing final consonant release, and lexical stress on the wrong syllable.",
+      "repeat_count": 1
+    },
+    {
+      "id": "eng-0053",
+      "category": "isolated_word",
+      "text": "carefully",
+      "language": "eng",
+      "provenance": {
+        "course_code": "eng_for_ara",
+        "table": "course_legos",
+        "row_id": "efe13d96-665d-41a1-9280-bb6c00eb0d33",
+        "seed_number": 37,
+        "dialect": "standard",
+        "lego_id": "S0037L03",
+        "lego_type": "A"
+      },
+      "difficulty_note": "Single word spoken alone. Listen for a dead flat citation tone, a missing final consonant release, and lexical stress on the wrong syllable.",
+      "repeat_count": 1
+    },
+    {
+      "id": "eng-0054",
+      "category": "isolated_word",
+      "text": "grateful",
+      "language": "eng",
+      "provenance": {
+        "course_code": "eng_for_mar",
+        "table": "course_legos",
+        "row_id": "92df96ef-0b04-42fe-bcc9-a3b2a8d7ae80",
+        "seed_number": 142,
+        "dialect": "standard",
+        "lego_id": "S0142L01",
+        "lego_type": "A"
+      },
+      "difficulty_note": "Single word spoken alone. Listen for a dead flat citation tone, a missing final consonant release, and lexical stress on the wrong syllable.",
+      "repeat_count": 1
+    },
+    {
+      "id": "eng-0055",
+      "category": "isolated_word",
+      "text": "everything",
+      "language": "eng",
+      "provenance": {
+        "course_code": "eng_for_kan",
+        "table": "course_legos",
+        "row_id": "5997f651-5b8c-49d8-b380-47295e7e2b4b",
+        "seed_number": 200,
+        "dialect": "standard",
+        "lego_id": "S0200L01",
+        "lego_type": "A"
+      },
+      "difficulty_note": "Single word spoken alone. Listen for a dead flat citation tone, a missing final consonant release, and lexical stress on the wrong syllable.",
+      "repeat_count": 1
+    },
+    {
+      "id": "eng-0056",
+      "category": "isolated_word",
+      "text": "longer",
+      "language": "eng",
+      "provenance": {
+        "course_code": "eng_for_ara",
+        "table": "course_legos",
+        "row_id": "8c41e9a5-f18b-476f-8a4a-5afc387b16bb",
+        "seed_number": 275,
+        "dialect": "standard",
+        "lego_id": "S0275L01",
+        "lego_type": "A"
+      },
+      "difficulty_note": "Single word spoken alone. Listen for a dead flat citation tone, a missing final consonant release, and lexical stress on the wrong syllable.",
+      "repeat_count": 1
+    },
+    {
+      "id": "eng-0057",
+      "category": "isolated_word",
+      "text": "absolutely",
+      "language": "eng",
+      "provenance": {
+        "course_code": "eng_for_mar",
+        "table": "course_legos",
+        "row_id": "e9cf662b-c272-4c6a-93f5-d0f3f98586ef",
+        "seed_number": 544,
+        "dialect": "standard",
+        "lego_id": "S0544L01",
+        "lego_type": "A"
+      },
+      "difficulty_note": "Single word spoken alone. Listen for a dead flat citation tone, a missing final consonant release, and lexical stress on the wrong syllable.",
+      "repeat_count": 1
+    },
+    {
+      "id": "eng-0058",
+      "category": "isolated_word",
+      "text": "without",
+      "language": "eng",
+      "provenance": {
+        "course_code": "eng_for_kan",
+        "table": "course_legos",
+        "row_id": "f51299b9-818b-4a2a-ab95-f38207061703",
+        "seed_number": 564,
+        "dialect": "standard",
+        "lego_id": "S0564L01",
+        "lego_type": "A"
+      },
+      "difficulty_note": "Single word spoken alone. Listen for a dead flat citation tone, a missing final consonant release, and lexical stress on the wrong syllable.",
+      "repeat_count": 1
+    },
+    {
+      "id": "eng-0059",
+      "category": "isolated_word",
+      "text": "convinced",
+      "language": "eng",
+      "provenance": {
+        "course_code": "eng_for_kan",
+        "table": "course_legos",
+        "row_id": "13ae77dd-8025-457a-9727-8f4bef002994",
+        "seed_number": 571,
+        "dialect": "standard",
+        "lego_id": "S0571L01",
+        "lego_type": "A"
+      },
+      "difficulty_note": "Single word spoken alone. Listen for a dead flat citation tone, a missing final consonant release, and lexical stress on the wrong syllable.",
+      "repeat_count": 1
+    },
+    {
+      "id": "eng-0060",
+      "category": "isolated_word",
+      "text": "upsetting",
+      "language": "eng",
+      "provenance": {
+        "course_code": "eng_for_mar",
+        "table": "course_legos",
+        "row_id": "dab81772-8171-4ef0-bdc2-73cc6e7c6b9e",
+        "seed_number": 575,
+        "dialect": "standard",
+        "lego_id": "S0575L01",
+        "lego_type": "A"
+      },
+      "difficulty_note": "Single word spoken alone. Listen for a dead flat citation tone, a missing final consonant release, and lexical stress on the wrong syllable.",
+      "repeat_count": 1
+    },
+    {
+      "id": "eng-0061",
+      "category": "isolated_word",
+      "text": "hospital",
+      "language": "eng",
+      "provenance": {
+        "course_code": "eng_for_tel",
+        "table": "course_legos",
+        "row_id": "290a56b3-f6dd-40b0-9144-ef5379500d0c",
+        "seed_number": 577,
+        "dialect": "standard",
+        "lego_id": "S0577L01",
+        "lego_type": "A"
+      },
+      "difficulty_note": "Single word spoken alone. Listen for a dead flat citation tone, a missing final consonant release, and lexical stress on the wrong syllable.",
+      "repeat_count": 1
+    },
+    {
+      "id": "eng-0062",
+      "category": "isolated_word",
+      "text": "station",
+      "language": "eng",
+      "provenance": {
+        "course_code": "eng_for_tel",
+        "table": "course_legos",
+        "row_id": "6a291212-6f73-4f47-aecd-e8e283a31ffa",
+        "seed_number": 590,
+        "dialect": "standard",
+        "lego_id": "S0590L03",
+        "lego_type": "A"
+      },
+      "difficulty_note": "Single word spoken alone. Listen for a dead flat citation tone, a missing final consonant release, and lexical stress on the wrong syllable.",
+      "repeat_count": 1
+    },
+    {
+      "id": "eng-0063",
+      "category": "very_short_lego",
+      "text": "to stop",
+      "language": "eng",
+      "provenance": {
+        "course_code": "eng_for_kan",
+        "table": "course_legos",
+        "row_id": "516ec809-d0d8-4244-b798-fb9982909397",
+        "seed_number": 19,
+        "dialect": "standard",
+        "lego_id": "S0019L03",
+        "lego_type": "A"
+      },
+      "difficulty_note": "Two-to-three-word LEGO. Too short to settle into a rhythm — this is where clipped onsets and truncated tails show up.",
+      "repeat_count": 1
+    },
+    {
+      "id": "eng-0064",
+      "category": "very_short_lego",
+      "text": "this morning",
+      "language": "eng",
+      "provenance": {
+        "course_code": "eng_for_ara",
+        "table": "course_legos",
+        "row_id": "fa6501e9-4e2e-4684-8483-fbe3066d0c63",
+        "seed_number": 39,
+        "dialect": "standard",
+        "lego_id": "S0039L03",
+        "lego_type": "M"
+      },
+      "difficulty_note": "Two-to-three-word LEGO. Too short to settle into a rhythm — this is where clipped onsets and truncated tails show up.",
+      "repeat_count": 1
+    },
+    {
+      "id": "eng-0065",
+      "category": "very_short_lego",
+      "text": "let anyone",
+      "language": "eng",
+      "provenance": {
+        "course_code": "eng_for_ara",
+        "table": "course_legos",
+        "row_id": "7712e263-a5a8-453a-97c1-1c186d9c1cfa",
+        "seed_number": 71,
+        "dialect": "standard",
+        "lego_id": "S0071L02",
+        "lego_type": "M"
+      },
+      "difficulty_note": "Two-to-three-word LEGO. Too short to settle into a rhythm — this is where clipped onsets and truncated tails show up.",
+      "repeat_count": 1
+    },
+    {
+      "id": "eng-0066",
+      "category": "very_short_lego",
+      "text": "tomorrow morning",
+      "language": "eng",
+      "provenance": {
+        "course_code": "eng_for_ara",
+        "table": "course_legos",
+        "row_id": "bb469d82-b6ff-4381-ad9d-01594ae15892",
+        "seed_number": 155,
+        "dialect": "standard",
+        "lego_id": "S0155L03",
+        "lego_type": "M"
+      },
+      "difficulty_note": "Two-to-three-word LEGO. Too short to settle into a rhythm — this is where clipped onsets and truncated tails show up.",
+      "repeat_count": 1
+    },
+    {
+      "id": "eng-0067",
+      "category": "very_short_lego",
+      "text": "something important",
+      "language": "eng",
+      "provenance": {
+        "course_code": "eng_for_mar",
+        "table": "course_legos",
+        "row_id": "26bedcd5-a604-4e6a-934a-6c98dcd9a8a2",
+        "seed_number": 261,
+        "dialect": "standard",
+        "lego_id": "S0261L01",
+        "lego_type": "M"
+      },
+      "difficulty_note": "Two-to-three-word LEGO. Too short to settle into a rhythm — this is where clipped onsets and truncated tails show up.",
+      "repeat_count": 1
+    },
+    {
+      "id": "eng-0068",
+      "category": "very_short_lego",
+      "text": "possible problems",
+      "language": "eng",
+      "provenance": {
+        "course_code": "eng_for_tel",
+        "table": "course_legos",
+        "row_id": "ea3154d3-d021-41a8-b9e8-7a3d488d1860",
+        "seed_number": 325,
+        "dialect": "standard",
+        "lego_id": "S0325L02",
+        "lego_type": "M"
+      },
+      "difficulty_note": "Two-to-three-word LEGO. Too short to settle into a rhythm — this is where clipped onsets and truncated tails show up.",
+      "repeat_count": 1
+    },
+    {
+      "id": "eng-0069",
+      "category": "very_short_lego",
+      "text": "reach the top",
+      "language": "eng",
+      "provenance": {
+        "course_code": "eng_for_mar",
+        "table": "course_legos",
+        "row_id": "7a3ff938-6164-494c-947d-bbc1bf7e6f03",
+        "seed_number": 358,
+        "dialect": "standard",
+        "lego_id": "S0358L01",
+        "lego_type": "M"
+      },
+      "difficulty_note": "Two-to-three-word LEGO. Too short to settle into a rhythm — this is where clipped onsets and truncated tails show up.",
+      "repeat_count": 1
+    },
+    {
+      "id": "eng-0070",
+      "category": "very_short_lego",
+      "text": "that girl",
+      "language": "eng",
+      "provenance": {
+        "course_code": "eng_for_kan",
+        "table": "course_legos",
+        "row_id": "46fc6c29-316c-43b3-ae1a-b6598f5b1d7b",
+        "seed_number": 394,
+        "dialect": "standard",
+        "lego_id": "S0394L01",
+        "lego_type": "M"
+      },
+      "difficulty_note": "Two-to-three-word LEGO. Too short to settle into a rhythm — this is where clipped onsets and truncated tails show up.",
+      "repeat_count": 1
+    },
+    {
+      "id": "eng-0071",
+      "category": "very_short_lego",
+      "text": "shouldn't expect",
+      "language": "eng",
+      "provenance": {
+        "course_code": "eng_for_kan",
+        "table": "course_legos",
+        "row_id": "b226a3a8-43e8-4297-b595-814c2f6dc328",
+        "seed_number": 404,
+        "dialect": "standard",
+        "lego_id": "S0404L01",
+        "lego_type": "M"
+      },
+      "difficulty_note": "Two-to-three-word LEGO. Too short to settle into a rhythm — this is where clipped onsets and truncated tails show up.",
+      "repeat_count": 1
+    },
+    {
+      "id": "eng-0072",
+      "category": "very_short_lego",
+      "text": "I'm waiting for",
+      "language": "eng",
+      "provenance": {
+        "course_code": "eng_for_tel",
+        "table": "course_legos",
+        "row_id": "b6782ca3-d444-495c-a0a3-7397d360eb3c",
+        "seed_number": 476,
+        "dialect": "standard",
+        "lego_id": "S0476L01",
+        "lego_type": "M"
+      },
+      "difficulty_note": "Two-to-three-word LEGO. Too short to settle into a rhythm — this is where clipped onsets and truncated tails show up.",
+      "repeat_count": 1
+    },
+    {
+      "id": "eng-0073",
+      "category": "very_short_lego",
+      "text": "if I'd known",
+      "language": "eng",
+      "provenance": {
+        "course_code": "eng_for_mar",
+        "table": "course_legos",
+        "row_id": "b36970a8-1c64-4b50-9564-24bb60f69e03",
+        "seed_number": 607,
+        "dialect": "standard",
+        "lego_id": "S0607L02",
+        "lego_type": "M"
+      },
+      "difficulty_note": "Two-to-three-word LEGO. Too short to settle into a rhythm — this is where clipped onsets and truncated tails show up.",
+      "repeat_count": 1
+    },
+    {
+      "id": "eng-0074",
+      "category": "very_short_lego",
+      "text": "to look",
+      "language": "eng",
+      "provenance": {
+        "course_code": "eng_for_tel",
+        "table": "course_legos",
+        "row_id": "e443d848-a197-4ccf-a231-92e603d5d257",
+        "seed_number": 611,
+        "dialect": "standard",
+        "lego_id": "S0611L02",
+        "lego_type": "A"
+      },
+      "difficulty_note": "Two-to-three-word LEGO. Too short to settle into a rhythm — this is where clipped onsets and truncated tails show up.",
+      "repeat_count": 1
+    },
+    {
+      "id": "eng-0075",
+      "category": "medium_chunk",
+      "text": "because people who speak English",
+      "language": "eng",
+      "provenance": {
+        "course_code": "eng_for_tel",
+        "table": "course_practice_phrases",
+        "row_id": "eng_for_tel:S0022L02B02",
+        "seed_number": 22,
+        "dialect": "standard",
+        "phrase_role": "build"
+      },
+      "difficulty_note": "BUILD-phrase fragment — deliberately incomplete. Listen for a false final cadence, or for the model trailing off as if the text were broken.",
+      "repeat_count": 1
+    },
+    {
+      "id": "eng-0076",
+      "category": "medium_chunk",
+      "text": "don't need to carefully",
+      "language": "eng",
+      "provenance": {
+        "course_code": "eng_for_mar",
+        "table": "course_practice_phrases",
+        "row_id": "eng_for_mar:S0045L03B04",
+        "seed_number": 45,
+        "dialect": "standard",
+        "phrase_role": "build"
+      },
+      "difficulty_note": "BUILD-phrase fragment — deliberately incomplete. Listen for a false final cadence, or for the model trailing off as if the text were broken.",
+      "repeat_count": 1
+    },
+    {
+      "id": "eng-0077",
+      "category": "medium_chunk",
+      "text": "I don't need to know everything",
+      "language": "eng",
+      "provenance": {
+        "course_code": "eng_for_ara",
+        "table": "course_practice_phrases",
+        "row_id": "eng_for_ara:S0045L03B03",
+        "seed_number": 45,
+        "dialect": "standard",
+        "phrase_role": "build"
+      },
+      "difficulty_note": "BUILD-phrase fragment — deliberately incomplete. Listen for a false final cadence, or for the model trailing off as if the text were broken.",
+      "repeat_count": 1
+    },
+    {
+      "id": "eng-0078",
+      "category": "medium_chunk",
+      "text": "when you work together hard",
+      "language": "eng",
+      "provenance": {
+        "course_code": "eng_for_ara",
+        "table": "course_practice_phrases",
+        "row_id": "eng_for_ara:S0133L02B03",
+        "seed_number": 133,
+        "dialect": "standard",
+        "phrase_role": "build"
+      },
+      "difficulty_note": "BUILD-phrase fragment — deliberately incomplete. Listen for a false final cadence, or for the model trailing off as if the text were broken.",
+      "repeat_count": 1
+    },
+    {
+      "id": "eng-0079",
+      "category": "medium_chunk",
+      "text": "that isn't very difficult",
+      "language": "eng",
+      "provenance": {
+        "course_code": "eng_for_mar",
+        "table": "course_practice_phrases",
+        "row_id": "eng_for_mar:S0149L02B03",
+        "seed_number": 149,
+        "dialect": "standard",
+        "phrase_role": "build"
+      },
+      "difficulty_note": "BUILD-phrase fragment — deliberately incomplete. Listen for a false final cadence, or for the model trailing off as if the text were broken.",
+      "repeat_count": 1
+    },
+    {
+      "id": "eng-0080",
+      "category": "medium_chunk",
+      "text": "well, he's just started to learn",
+      "language": "eng",
+      "provenance": {
+        "course_code": "eng_for_tel",
+        "table": "course_practice_phrases",
+        "row_id": "eng_for_tel:S0224L01B02",
+        "seed_number": 224,
+        "dialect": "standard",
+        "phrase_role": "build"
+      },
+      "difficulty_note": "BUILD-phrase fragment — deliberately incomplete. Listen for a false final cadence, or for the model trailing off as if the text were broken.",
+      "repeat_count": 1
+    },
+    {
+      "id": "eng-0081",
+      "category": "medium_chunk",
+      "text": "on Sunday, an important meeting",
+      "language": "eng",
+      "provenance": {
+        "course_code": "eng_for_kan",
+        "table": "course_practice_phrases",
+        "row_id": "eng_for_kan:S0277L02B04",
+        "seed_number": 277,
+        "dialect": "standard",
+        "phrase_role": "build"
+      },
+      "difficulty_note": "BUILD-phrase fragment — deliberately incomplete. Listen for a false final cadence, or for the model trailing off as if the text were broken.",
+      "repeat_count": 1
+    },
+    {
+      "id": "eng-0082",
+      "category": "medium_chunk",
+      "text": "I have to find out where",
+      "language": "eng",
+      "provenance": {
+        "course_code": "eng_for_ara",
+        "table": "course_practice_phrases",
+        "row_id": "eng_for_ara:S0293L01B02",
+        "seed_number": 293,
+        "dialect": "standard",
+        "phrase_role": "build"
+      },
+      "difficulty_note": "BUILD-phrase fragment — deliberately incomplete. Listen for a false final cadence, or for the model trailing off as if the text were broken.",
+      "repeat_count": 1
+    },
+    {
+      "id": "eng-0083",
+      "category": "medium_chunk",
+      "text": "she could write a story about that man",
+      "language": "eng",
+      "provenance": {
+        "course_code": "eng_for_tel",
+        "table": "course_practice_phrases",
+        "row_id": "eng_for_tel:S0310L03B03",
+        "seed_number": 310,
+        "dialect": "standard",
+        "phrase_role": "build"
+      },
+      "difficulty_note": "BUILD-phrase fragment — deliberately incomplete. Listen for a false final cadence, or for the model trailing off as if the text were broken.",
+      "repeat_count": 1
+    },
+    {
+      "id": "eng-0084",
+      "category": "medium_chunk",
+      "text": "wanted to send today",
+      "language": "eng",
+      "provenance": {
+        "course_code": "eng_for_kan",
+        "table": "course_practice_phrases",
+        "row_id": "eng_for_kan:S0357L02B02",
+        "seed_number": 357,
+        "dialect": "standard",
+        "phrase_role": "build"
+      },
+      "difficulty_note": "BUILD-phrase fragment — deliberately incomplete. Listen for a false final cadence, or for the model trailing off as if the text were broken.",
+      "repeat_count": 1
+    },
+    {
+      "id": "eng-0085",
+      "category": "medium_chunk",
+      "text": "to speak with each other",
+      "language": "eng",
+      "provenance": {
+        "course_code": "eng_for_kan",
+        "table": "course_practice_phrases",
+        "row_id": "eng_for_kan:S0410L02B02",
+        "seed_number": 410,
+        "dialect": "standard",
+        "phrase_role": "build"
+      },
+      "difficulty_note": "BUILD-phrase fragment — deliberately incomplete. Listen for a false final cadence, or for the model trailing off as if the text were broken.",
+      "repeat_count": 1
+    },
+    {
+      "id": "eng-0086",
+      "category": "medium_chunk",
+      "text": "I want to serve the community",
+      "language": "eng",
+      "provenance": {
+        "course_code": "eng_for_mar",
+        "table": "course_practice_phrases",
+        "row_id": "eng_for_mar:S0418L03B04",
+        "seed_number": 418,
+        "dialect": "standard",
+        "phrase_role": "build"
+      },
+      "difficulty_note": "BUILD-phrase fragment — deliberately incomplete. Listen for a false final cadence, or for the model trailing off as if the text were broken.",
+      "repeat_count": 1
+    },
+    {
+      "id": "eng-0087",
+      "category": "full_sentence",
+      "text": "I'm not going to be able to remember the whole sentence",
+      "language": "eng",
+      "provenance": {
+        "course_code": "eng_for_ara",
+        "table": "course_practice_phrases",
+        "row_id": "eng_for_ara:S0024L01U01",
+        "seed_number": 24,
+        "dialect": "standard",
+        "phrase_role": "use"
+      },
+      "difficulty_note": "Complete USE sentence — the baseline for naturalness. Listen for phrasing, breath placement and whether it sounds like a person saying something they mean.",
+      "repeat_count": 1
+    },
+    {
+      "id": "eng-0088",
+      "category": "full_sentence",
+      "text": "I was doing worse last time",
+      "language": "eng",
+      "provenance": {
+        "course_code": "eng_for_ara",
+        "table": "course_practice_phrases",
+        "row_id": "eng_for_ara:S0117L03U02",
+        "seed_number": 117,
+        "dialect": "standard",
+        "phrase_role": "use"
+      },
+      "difficulty_note": "Complete USE sentence — the baseline for naturalness. Listen for phrasing, breath placement and whether it sounds like a person saying something they mean.",
+      "repeat_count": 1
+    },
+    {
+      "id": "eng-0089",
+      "category": "full_sentence",
+      "text": "I need to relax because something is going around in my head",
+      "language": "eng",
+      "provenance": {
+        "course_code": "eng_for_ara",
+        "table": "course_practice_phrases",
+        "row_id": "eng_for_ara:S0131L02U05",
+        "seed_number": 131,
+        "dialect": "standard",
+        "phrase_role": "use"
+      },
+      "difficulty_note": "Complete USE sentence — the baseline for naturalness. Listen for phrasing, breath placement and whether it sounds like a person saying something they mean.",
+      "repeat_count": 1
+    },
+    {
+      "id": "eng-0090",
+      "category": "full_sentence",
+      "text": "she was going to try to help me",
+      "language": "eng",
+      "provenance": {
+        "course_code": "eng_for_kan",
+        "table": "course_practice_phrases",
+        "row_id": "eng_for_kan:S0236L02U03",
+        "seed_number": 236,
+        "dialect": "standard",
+        "phrase_role": "use"
+      },
+      "difficulty_note": "Complete USE sentence — the baseline for naturalness. Listen for phrasing, breath placement and whether it sounds like a person saying something they mean.",
+      "repeat_count": 1
+    },
+    {
+      "id": "eng-0091",
+      "category": "full_sentence",
+      "text": "people speak English to speak better",
+      "language": "eng",
+      "provenance": {
+        "course_code": "eng_for_mar",
+        "table": "course_practice_phrases",
+        "row_id": "eng_for_mar:S0291L02U05",
+        "seed_number": 291,
+        "dialect": "standard",
+        "phrase_role": "use"
+      },
+      "difficulty_note": "Complete USE sentence — the baseline for naturalness. Listen for phrasing, breath placement and whether it sounds like a person saying something they mean.",
+      "repeat_count": 1
+    },
+    {
+      "id": "eng-0092",
+      "category": "full_sentence",
+      "text": "I said that your idea was very good",
+      "language": "eng",
+      "provenance": {
+        "course_code": "eng_for_tel",
+        "table": "course_practice_phrases",
+        "row_id": "eng_for_tel:S0296L01U06",
+        "seed_number": 296,
+        "dialect": "standard",
+        "phrase_role": "use"
+      },
+      "difficulty_note": "Complete USE sentence — the baseline for naturalness. Listen for phrasing, breath placement and whether it sounds like a person saying something they mean.",
+      "repeat_count": 1
+    },
+    {
+      "id": "eng-0093",
+      "category": "full_sentence",
+      "text": "they want to do it themselves",
+      "language": "eng",
+      "provenance": {
+        "course_code": "eng_for_mar",
+        "table": "course_practice_phrases",
+        "row_id": "eng_for_mar:S0450L03U03",
+        "seed_number": 450,
+        "dialect": "standard",
+        "phrase_role": "use"
+      },
+      "difficulty_note": "Complete USE sentence — the baseline for naturalness. Listen for phrasing, breath placement and whether it sounds like a person saying something they mean.",
+      "repeat_count": 1
+    },
+    {
+      "id": "eng-0094",
+      "category": "full_sentence",
+      "text": "I know they want to throw it",
+      "language": "eng",
+      "provenance": {
+        "course_code": "eng_for_tel",
+        "table": "course_practice_phrases",
+        "row_id": "eng_for_tel:S0466L01U01",
+        "seed_number": 466,
+        "dialect": "standard",
+        "phrase_role": "use"
+      },
+      "difficulty_note": "Complete USE sentence — the baseline for naturalness. Listen for phrasing, breath placement and whether it sounds like a person saying something they mean.",
+      "repeat_count": 1
+    },
+    {
+      "id": "eng-0095",
+      "category": "full_sentence",
+      "text": "than to get away, nothing would make me happier at all",
+      "language": "eng",
+      "provenance": {
+        "course_code": "eng_for_tel",
+        "table": "course_practice_phrases",
+        "row_id": "eng_for_tel:S0485L02U04",
+        "seed_number": 485,
+        "dialect": "standard",
+        "phrase_role": "use"
+      },
+      "difficulty_note": "Complete USE sentence — the baseline for naturalness. Listen for phrasing, breath placement and whether it sounds like a person saying something they mean.",
+      "repeat_count": 1
+    },
+    {
+      "id": "eng-0096",
+      "category": "full_sentence",
+      "text": "everyone has felt that waiting has been very upsetting",
+      "language": "eng",
+      "provenance": {
+        "course_code": "eng_for_kan",
+        "table": "course_practice_phrases",
+        "row_id": "eng_for_kan:S0580L03U04",
+        "seed_number": 580,
+        "dialect": "standard",
+        "phrase_role": "use"
+      },
+      "difficulty_note": "Complete USE sentence — the baseline for naturalness. Listen for phrasing, breath placement and whether it sounds like a person saying something they mean.",
+      "repeat_count": 1
+    },
+    {
+      "id": "eng-0097",
+      "category": "full_sentence",
+      "text": "I want to go down to the shops with you",
+      "language": "eng",
+      "provenance": {
+        "course_code": "eng_for_mar",
+        "table": "course_practice_phrases",
+        "row_id": "eng_for_mar:S0591L01U05",
+        "seed_number": 591,
+        "dialect": "standard",
+        "phrase_role": "use"
+      },
+      "difficulty_note": "Complete USE sentence — the baseline for naturalness. Listen for phrasing, breath placement and whether it sounds like a person saying something they mean.",
+      "repeat_count": 1
+    },
+    {
+      "id": "eng-0098",
+      "category": "full_sentence",
+      "text": "before we moved, the sensible thing would have been to ask",
+      "language": "eng",
+      "provenance": {
+        "course_code": "eng_for_kan",
+        "table": "course_practice_phrases",
+        "row_id": "eng_for_kan:S0609L02U05",
+        "seed_number": 609,
+        "dialect": "standard",
+        "phrase_role": "use"
+      },
+      "difficulty_note": "Complete USE sentence — the baseline for naturalness. Listen for phrasing, breath placement and whether it sounds like a person saying something they mean.",
+      "repeat_count": 1
+    },
+    {
+      "id": "eng-0099",
+      "category": "repeat_probe",
+      "text": "I'd like to believe that you can't guess",
+      "language": "eng",
+      "provenance": {
+        "course_code": "eng_for_mar",
+        "table": "course_practice_phrases",
+        "row_id": "eng_for_mar:S0526L02U02",
+        "seed_number": 526,
+        "dialect": "standard",
+        "phrase_role": "use"
+      },
+      "difficulty_note": "THE repeat probe. Synthesise this one utterance repeat_count times in a single run, and again on a later date. Measures intra-voice consistency (axis D) and repeatability over time (axis E): duration spread, pitch drift, and whether any single render is audibly a different take.",
+      "repeat_count": 20
+    }
+  ]
+}

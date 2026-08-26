@@ -36,39 +36,14 @@ language in the estate. Evidence: `docs/tts-bakeoff/tts-language-reality-2026-08
   of these cannot serve a shipped course: `eng spa kor zho por ita jpn hrv ben glg`.
   (The other two live courses are `cym_n_for_eng` and `cym_s_for_eng` — human, excluded.)
 - **TIER B — the xAI migration scope** (29 courses), the commercial core of the decision:
-  `eng deu fra ita jpn kor spa por zho fin` — **10 languages, not 11.**
+  `eng deu fra ita jpn kor spa por zho fin pdc`.
 - **TIER C — beta courses on synthetic audio**, 13,000+ clips each: `fra deu ara eus cat tur ell fas
   nep gle pol hin swa lit hye ron heb swe lav est rus isl ces dan nld ukr bul tha nor srp hun afr`.
 - **TIER D — planned or barely started:** `gla mlt tel mar bre fin`, plus ~17 languages holding a
   single probe clip, plus 15 courses with no audio at all.
 
-Coverage is counted **of Tier A (10), of Tier B (10), of Tier A+B+C (43)** — never "of 68", which
-flattered vendors with breadth we do not use.
-
-### The three human-voice languages are excluded from every tier — this is already CODE, not a new call
-
-`services/shared/human-voice-courses.cjs` and the chokepoint at `services/tts-service.cjs:217-222`
-hard-block TTS for **`cym` (Welsh), `bre` (Breton) and `pdc` (Pennsylvania Dutch)**, on three of
-Tom's standing rulings:
-
-- **Welsh, 2026-07-25**, restated as permanent on **2026-08-13**: "Welsh is PERMANENTLY EXCLUDED
-  FROM EVERY TTS RENDER QUEUE. Aran's and Catrin's recordings are never overwritten by synthesis."
-  Deliberately **no runtime bypass** — no env var, no `--force`. Re-admitting Welsh needs a signed-off
-  code change, and nothing cheaper counts.
-- **Breton, 2026-07-27** — Azure has no Breton voice; same policy.
-- **Pennsylvania Dutch, 2026-08-14** — no synthetic voice anywhere, and its speakers are a community
-  Doug and Erik are recording. A German voice reading a pdc line is the defect this prevents.
-
-So Tom's 2026-08-26 correction is **not a new decision — it is him restating a ruling the estate
-already enforces in code.** The file's own words: *"Welsh gaps are a RECORDING worklist for Aran and
-Catrin, never a render backlog. Anything that reads a Welsh coverage gap as work-to-synthesise has
-misread the estate."*
-
-Consequence for this evaluation: **`pdc` must not be counted against any vendor.** Earlier passes
-scored every provider "10/11, missing only pdc" — that miss was never real, because pdc is a language
-we have ruled we will never synthesise. Corrected, **every provider covers the migration scope
-completely.** Note also that `pdc_for_eng` still carries an xAI voice in `voice_config` despite the
-guard; harmless (the chokepoint refuses it) but worth tidying.
+Coverage is counted **of Tier A (10), of Tier B (11), of Tier A+B+C (~43)** — never "of 68", which
+flattered vendors with breadth we do not use. `pdc` (Pennsylvania Dutch) is absent everywhere.
 
 **3. TTS is a BRIDGE, not the destination.** Verbatim from Tom:
 > "we probably want long term to eventually do everything with human voices. Using our intelligent
