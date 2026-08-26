@@ -117,14 +117,14 @@
               <svg class="w-4 h-4 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
               </svg>
-              <span class="text-sm text-amber-300">{{ orphanLegos.length }} orphan LEGO{{ orphanLegos.length === 1 ? '' : 's' }} missing debut phrases</span>
+              <span class="text-sm text-amber-300">{{ orphanLegos.length }} orphan LEGO{{ orphanLegos.length === 1 ? '' : 's' }} with no practice phrases &mdash; needs phrases authored</span>
             </div>
             <button
               @click="fixOrphanLegos"
               :disabled="fixingOrphans"
               class="px-3 py-1.5 text-xs font-medium rounded bg-amber-600 text-white hover:bg-amber-500 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
             >
-              {{ fixingOrphans ? 'Fixing...' : `Fix ${orphanLegos.length} orphan${orphanLegos.length === 1 ? '' : 's'}` }}
+              {{ fixingOrphans ? 'Listing...' : `List ${orphanLegos.length} orphan${orphanLegos.length === 1 ? '' : 's'}` }}
             </button>
           </div>
 
@@ -640,12 +640,13 @@ async function fixOrphanLegos() {
 
     const result = await response.json()
 
-    if (result.success && result.addedCount > 0) {
-      console.log(`Added ${result.addedCount} debut phrases for orphan LEGOs`)
-      orphanLegos.value = []
-      // Refresh missing audio data to show the new items
-      data.value = null
-      await fetchMissingAudio()
+    // The route no longer writes anything (2026-08-26): a bare-LEGO debut row is
+    // never played, so "fixing" an orphan that way only hid it. It reports the
+    // list instead, and these LEGOs need real BUILD/USE phrases authored. Say so
+    // — a button that silently does nothing is worse than one that explains.
+    if (result.success) {
+      orphanLegos.value = result.orphanLegos || []
+      error.value = result.message || null
     }
   } catch (err) {
     console.error('Failed to fix orphan LEGOs:', err)

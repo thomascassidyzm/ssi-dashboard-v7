@@ -7170,7 +7170,9 @@ app.get('/api/production/:courseCode/audio-pipeline/orphan-legos', async (req, r
 })
 
 // POST /api/production/:courseCode/audio-pipeline/fix-orphan-legos
-// Add debut phrases (position=0) for LEGOs that don't have any phrases
+// REPORTS LEGOs that have no practice phrases. It used to "fix" them by writing
+// the bare LEGO out as a BUILD row — a row the learner never hears — which zeroed
+// the orphan count without teaching anything. See the note in the handler.
 app.post('/api/production/:courseCode/audio-pipeline/fix-orphan-legos', async (req, res) => {
   const { courseCode } = req.params
   const { dryRun = false } = req.body
@@ -7227,60 +7229,44 @@ app.post('/api/production/:courseCode/audio-pipeline/fix-orphan-legos', async (r
       return res.json({ success: true, addedCount: 0, message: 'No orphan LEGOs found' })
     }
 
-    if (dryRun) {
-      return res.json({
-        success: true,
-        dryRun: true,
-        wouldAdd: orphanLegos.length,
-        orphanLegos: orphanLegos.map(l => ({
-          lego_id: l.lego_id,
-          known_text: l.known_text,
-          target_text: l.target_text
-        }))
-      })
-    }
-
-    // Create debut phrases for orphan LEGOs
-    // The debut phrase shows the LEGO itself — role 'build', position 1
-    // Uses deterministic phrase IDs matching course-builder-api.cjs makePhraseId format
-    const ROLE_PREFIX = { component: 'C', build: 'B', use: 'U' }
-    function makePhraseId(cc, seedNum, legoIdx, phraseRole, rolePos) {
-      const s = String(seedNum).padStart(4, '0')
-      const l = String(legoIdx).padStart(2, '0')
-      const r = ROLE_PREFIX[phraseRole] || 'X'
-      const p = String(rolePos).padStart(2, '0')
-      return `${cc}:S${s}L${l}${r}${p}`
-    }
-
-    const debutPhrases = orphanLegos.map(lego => ({
-      id: makePhraseId(courseCode, lego.seed_number, lego.lego_index, 'build', 1),
-      course_code: courseCode,
-      seed_number: lego.seed_number,
-      lego_index: lego.lego_index,
-      lego_id: lego.lego_id,
-      position: 1,
-      known_text: lego.known_text,
-      target_text: lego.target_text,
-      phrase_role: 'build',
-      word_count: (lego.target_text || '').split(/\s+/).filter(w => w.length > 0).length || 1,
-      lego_count: 1,
-      connected_lego_ids: [],
-      status: 'draft',
-      version: 1
-    }))
-
-    const { error: insertError } = await supabase
-      .from('course_practice_phrases')
-      .insert(debutPhrases)
-
-    if (insertError) throw insertError
-
-    logger.info(`Added ${debutPhrases.length} debut phrases for orphan LEGOs in ${courseCode}`)
+    // ── This route no longer writes (2026-08-26). It REPORTS. ───────────────
+    //
+    // It used to "fix" an orphan LEGO by writing the LEGO's own target out as a
+    // BUILD phrase at position 1. Every row it produced was a bare-LEGO row by
+    // construction — and a bare-LEGO row is never played: intro and debut both
+    // render the LEGO straight from course_legos, and the round generator claims
+    // that phrase id whether a row exists or not. So the "fix" made the orphan
+    // count go to zero while the learner still heard nothing new. It made the
+    // measurement look right, which is worse than leaving it looking wrong.
+    //
+    // ralph-methodology.md: a BUILD phrase is the new LEGO plugged into PRIOR
+    // vocabulary. A LEGO with no phrases needs phrases AUTHORED, through
+    // POST /api/v2/phrases/:courseCode or /api/seed/complete, both of which
+    // validate vocab, containment and ZUT. There is no cheap row that stands in
+    // for that, so this route hands back the list and says so.
+    //
+    // Verified before removal: zero rows in the estate carry this route's
+    // signature (metadata IS NULL, position 1, id ending B01) — it never fired
+    // against production data, so nothing needs cleaning up behind it.
+    logger.info(
+      `${courseCode}: ${orphanLegos.length} orphan LEGO(s) have no practice phrases — ` +
+      'reporting only; a bare-LEGO debut row would never be played'
+    )
 
     res.json({
       success: true,
-      addedCount: debutPhrases.length,
-      message: `Added ${debutPhrases.length} debut phrases`
+      addedCount: 0,
+      needsPhrases: orphanLegos.length,
+      dryRun: !!dryRun,
+      orphanLegos: orphanLegos.map(l => ({
+        lego_id: l.lego_id,
+        known_text: l.known_text,
+        target_text: l.target_text
+      })),
+      message:
+        `${orphanLegos.length} LEGO(s) have no practice phrases. This route reports them; ` +
+        'it no longer writes a bare-LEGO debut row, because such a row is never played. ' +
+        'Author real BUILD/USE phrases via POST /api/v2/phrases/:courseCode.'
     })
   } catch (error) {
     logger.error(`Fix orphan LEGOs error for ${courseCode}:`, error.message)
