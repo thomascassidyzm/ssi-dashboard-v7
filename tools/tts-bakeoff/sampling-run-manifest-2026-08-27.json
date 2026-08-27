@@ -1,572 +1,415 @@
 {
- "generated": "2026-08-27",
- "voice": "cartesia tom_001 8fef4d59-0a7e-4ad2-a261-6a3bb50734d2",
- "model": "sonic-3",
- "speed": 1,
- "items": [
-  {
-   "tag": "zho",
-   "n": "01",
-   "lego_id": "S0001L01",
-   "known": "I want",
-   "target": "我想",
-   "target_locale": "zh-CN"
-  },
-  {
-   "tag": "zho",
-   "n": "02",
-   "lego_id": "S0009L02",
-   "known": "a little",
-   "target": "一点",
-   "target_locale": "zh-CN"
-  },
-  {
-   "tag": "zho",
-   "n": "03",
-   "lego_id": "S0016L04",
-   "known": "to come back",
-   "target": "回来",
-   "target_locale": "zh-CN"
-  },
-  {
-   "tag": "zho",
-   "n": "04",
-   "lego_id": "S0024L02",
-   "known": "might",
-   "target": "可能",
-   "target_locale": "zh-CN"
-  },
-  {
-   "tag": "zho",
-   "n": "05",
-   "lego_id": "S0033L01",
-   "known": "how long",
-   "target": "多久",
-   "target_locale": "zh-CN"
-  },
-  {
-   "tag": "zho",
-   "n": "06",
-   "lego_id": "S0044L02",
-   "known": "to need",
-   "target": "需要",
-   "target_locale": "zh-CN"
-  },
-  {
-   "tag": "zho",
-   "n": "07",
-   "lego_id": "S0053L03",
-   "known": "to put into",
-   "target": "放进",
-   "target_locale": "zh-CN"
-  },
-  {
-   "tag": "zho",
-   "n": "08",
-   "lego_id": "S0066L02",
-   "known": "difficult",
-   "target": "难",
-   "target_locale": "zh-CN"
-  },
-  {
-   "tag": "zho",
-   "n": "09",
-   "lego_id": "S0078L01",
-   "known": "understand clearly",
-   "target": "明白",
-   "target_locale": "zh-CN"
-  },
-  {
-   "tag": "zho",
-   "n": "10",
-   "lego_id": "S0091L02",
-   "known": "answer in time",
-   "target": "及时回答",
-   "target_locale": "zh-CN"
-  },
-  {
-   "tag": "zho",
-   "n": "11",
-   "lego_id": "S0099L02",
-   "known": "why",
-   "target": "为什么",
-   "target_locale": "zh-CN"
-  },
-  {
-   "tag": "zho",
-   "n": "12",
-   "lego_id": "S0114L01",
-   "known": "worse",
-   "target": "差",
-   "target_locale": "zh-CN"
-  },
-  {
-   "tag": "zho",
-   "n": "13",
-   "lego_id": "S0130L02",
-   "known": "that was a surprise",
-   "target": "那很意外",
-   "target_locale": "zh-CN"
-  },
-  {
-   "tag": "zho",
-   "n": "14",
-   "lego_id": "S0147L02",
-   "known": "kind",
-   "target": "友善",
-   "target_locale": "zh-CN"
-  },
-  {
-   "tag": "zho",
-   "n": "15",
-   "lego_id": "S0161L03",
-   "known": "book",
-   "target": "书",
-   "target_locale": "zh-CN"
-  },
-  {
-   "tag": "zho",
-   "n": "16",
-   "lego_id": "S0181L01",
-   "known": "have to take",
-   "target": "得带",
-   "target_locale": "zh-CN"
-  },
-  {
-   "tag": "zho",
-   "n": "17",
-   "lego_id": "S0197L01",
-   "known": "teacher",
-   "target": "老师",
-   "target_locale": "zh-CN"
-  },
-  {
-   "tag": "zho",
-   "n": "18",
-   "lego_id": "S0214L01",
-   "known": "weekend",
-   "target": "周末",
-   "target_locale": "zh-CN"
-  },
-  {
-   "tag": "zho",
-   "n": "19",
-   "lego_id": "S0228L01",
-   "known": "to practise",
-   "target": "练习",
-   "target_locale": "zh-CN"
-  },
-  {
-   "tag": "zho",
-   "n": "20",
-   "lego_id": "S0244L01",
-   "known": "already learn a lot",
-   "target": "已经学了很多",
-   "target_locale": "zh-CN"
-  },
-  {
-   "tag": "zho",
-   "n": "21",
-   "lego_id": "S0263L02",
-   "known": "you mean",
-   "target": "你指的是",
-   "target_locale": "zh-CN"
-  },
-  {
-   "tag": "zho",
-   "n": "22",
-   "lego_id": "S0279L01",
-   "known": "time left",
-   "target": "剩下的时间",
-   "target_locale": "zh-CN"
-  },
-  {
-   "tag": "zho",
-   "n": "23",
-   "lego_id": "S0300L01",
-   "known": "seem",
-   "target": "显得",
-   "target_locale": "zh-CN"
-  },
-  {
-   "tag": "zho",
-   "n": "24",
-   "lego_id": "S0312L03",
-   "known": "room",
-   "target": "房间",
-   "target_locale": "zh-CN"
-  },
-  {
-   "tag": "zho",
-   "n": "25",
-   "lego_id": "S0326L01",
-   "known": "company",
-   "target": "公司",
-   "target_locale": "zh-CN"
-  },
-  {
-   "tag": "zho",
-   "n": "26",
-   "lego_id": "S0341L01",
-   "known": "several days ago",
-   "target": "几天前",
-   "target_locale": "zh-CN"
-  },
-  {
-   "tag": "zho",
-   "n": "27",
-   "lego_id": "S0353L01",
-   "known": "field",
-   "target": "场地",
-   "target_locale": "zh-CN"
-  },
-  {
-   "tag": "zho",
-   "n": "28",
-   "lego_id": "S0371L01",
-   "known": "wednesday",
-   "target": "周三",
-   "target_locale": "zh-CN"
-  },
-  {
-   "tag": "zho",
-   "n": "29",
-   "lego_id": "S0391L01",
-   "known": "towards the bus",
-   "target": "朝公交车",
-   "target_locale": "zh-CN"
-  },
-  {
-   "tag": "zho",
-   "n": "30",
-   "lego_id": "S0404L02",
-   "known": "thursday",
-   "target": "周四",
-   "target_locale": "zh-CN"
-  },
-  {
-   "tag": "zho",
-   "n": "31",
-   "lego_id": "S0418L01",
-   "known": "community",
-   "target": "社区",
-   "target_locale": "zh-CN"
-  },
-  {
-   "tag": "zho",
-   "n": "32",
-   "lego_id": "S0434L01",
-   "known": "to reduce",
-   "target": "减少",
-   "target_locale": "zh-CN"
-  },
-  {
-   "tag": "zho",
-   "n": "33",
-   "lego_id": "S0447L03",
-   "known": "to see off",
-   "target": "送",
-   "target_locale": "zh-CN"
-  },
-  {
-   "tag": "zho",
-   "n": "34",
-   "lego_id": "S0462L03",
-   "known": "during",
-   "target": "期间",
-   "target_locale": "zh-CN"
-  },
-  {
-   "tag": "zho",
-   "n": "35",
-   "lego_id": "S0475L03",
-   "known": "to consider",
-   "target": "考虑",
-   "target_locale": "zh-CN"
-  },
-  {
-   "tag": "zho",
-   "n": "36",
-   "lego_id": "S0486L01",
-   "known": "eyes",
-   "target": "眼睛",
-   "target_locale": "zh-CN"
-  },
-  {
-   "tag": "zho",
-   "n": "37",
-   "lego_id": "S0496L01",
-   "known": "to plan",
-   "target": "打算",
-   "target_locale": "zh-CN"
-  },
-  {
-   "tag": "zho",
-   "n": "38",
-   "lego_id": "S0506L02",
-   "known": "to move away",
-   "target": "搬走",
-   "target_locale": "zh-CN"
-  },
-  {
-   "tag": "zho",
-   "n": "39",
-   "lego_id": "S0518L01",
-   "known": "unable",
-   "target": "无法",
-   "target_locale": "zh-CN"
-  },
-  {
-   "tag": "zho",
-   "n": "40",
-   "lego_id": "S0529L01",
-   "known": "hands",
-   "target": "手",
-   "target_locale": "zh-CN"
-  },
-  {
-   "tag": "zho",
-   "n": "41",
-   "lego_id": "S0539L01",
-   "known": "but",
-   "target": "但是",
-   "target_locale": "zh-CN"
-  },
-  {
-   "tag": "zho",
-   "n": "42",
-   "lego_id": "S0546L04",
-   "known": "also",
-   "target": "又",
-   "target_locale": "zh-CN"
-  },
-  {
-   "tag": "zho",
-   "n": "43",
-   "lego_id": "S0557L02",
-   "known": "loud",
-   "target": "吵",
-   "target_locale": "zh-CN"
-  },
-  {
-   "tag": "zho",
-   "n": "44",
-   "lego_id": "S0569L01",
-   "known": "to decide",
-   "target": "决定",
-   "target_locale": "zh-CN"
-  },
-  {
-   "tag": "zho",
-   "n": "45",
-   "lego_id": "S0582L02",
-   "known": "feeling",
-   "target": "感觉",
-   "target_locale": "zh-CN"
-  },
-  {
-   "tag": "zho",
-   "n": "46",
-   "lego_id": "S0594L02",
-   "known": "toys",
-   "target": "玩具",
-   "target_locale": "zh-CN"
-  },
-  {
-   "tag": "zho",
-   "n": "47",
-   "lego_id": "S0606L01",
-   "known": "early",
-   "target": "早",
-   "target_locale": "zh-CN"
-  },
-  {
-   "tag": "zho",
-   "n": "48",
-   "lego_id": "S0617L01",
-   "known": "mistake",
-   "target": "错误",
-   "target_locale": "zh-CN"
-  },
-  {
-   "tag": "zho",
-   "n": "49",
-   "lego_id": "S0631L01",
-   "known": "would like",
-   "target": "要",
-   "target_locale": "zh-CN"
-  },
-  {
-   "tag": "zho",
-   "n": "50",
-   "lego_id": "S0647L01",
-   "known": "manner particle de",
-   "target": "得",
-   "target_locale": "zh-CN"
-  },
-  {
-   "tag": "ita",
-   "n": "01",
-   "lego_id": "S0001L01",
-   "known": "I want",
-   "target": "voglio",
-   "target_locale": "it-IT"
-  },
-  {
-   "tag": "ita",
-   "n": "02",
-   "lego_id": "S0026L01",
-   "known": "I like",
-   "target": "mi piace",
-   "target_locale": "it-IT"
-  },
-  {
-   "tag": "ita",
-   "n": "03",
-   "lego_id": "S0052L04",
-   "known": "to his friend",
-   "target": "al suo amico",
-   "target_locale": "it-IT"
-  },
-  {
-   "tag": "ita",
-   "n": "04",
-   "lego_id": "S0080L02",
-   "known": "when I'll be ready",
-   "target": "quando sarò pronto",
-   "target_locale": "it-IT"
-  },
-  {
-   "tag": "ita",
-   "n": "05",
-   "lego_id": "S0114L01",
-   "known": "I'm doing",
-   "target": "stessi andando",
-   "target_locale": "it-IT"
-  },
-  {
-   "tag": "ita",
-   "n": "06",
-   "lego_id": "S0143L03",
-   "known": "about which",
-   "target": "di cui",
-   "target_locale": "it-IT"
-  },
-  {
-   "tag": "ita",
-   "n": "07",
-   "lego_id": "S0180L01",
-   "known": "my",
-   "target": "mio",
-   "target_locale": "it-IT"
-  },
-  {
-   "tag": "ita",
-   "n": "08",
-   "lego_id": "S0216L01",
-   "known": "a few",
-   "target": "alcuni",
-   "target_locale": "it-IT"
-  },
-  {
-   "tag": "ita",
-   "n": "09",
-   "lego_id": "S0262L01",
-   "known": "who was",
-   "target": "chi era",
-   "target_locale": "it-IT"
-  },
-  {
-   "tag": "ita",
-   "n": "10",
-   "lego_id": "S0305L01",
-   "known": "a woman",
-   "target": "una donna",
-   "target_locale": "it-IT"
-  },
-  {
-   "tag": "ita",
-   "n": "11",
-   "lego_id": "S0340L02",
-   "known": "he will be fine",
-   "target": "starà bene",
-   "target_locale": "it-IT"
-  },
-  {
-   "tag": "ita",
-   "n": "12",
-   "lego_id": "S0381L02",
-   "known": "if he wanted to",
-   "target": "se voleva",
-   "target_locale": "it-IT"
-  },
-  {
-   "tag": "ita",
-   "n": "13",
-   "lego_id": "S0409L02",
-   "known": "what we do",
-   "target": "quello che facciamo",
-   "target_locale": "it-IT"
-  },
-  {
-   "tag": "ita",
-   "n": "14",
-   "lego_id": "S0444L01",
-   "known": "they thought",
-   "target": "pensavano",
-   "target_locale": "it-IT"
-  },
-  {
-   "tag": "ita",
-   "n": "15",
-   "lego_id": "S0472L01",
-   "known": "we don't know",
-   "target": "non conosciamo",
-   "target_locale": "it-IT"
-  },
-  {
-   "tag": "ita",
-   "n": "16",
-   "lego_id": "S0500L01",
-   "known": "the two girls",
-   "target": "le due ragazze",
-   "target_locale": "it-IT"
-  },
-  {
-   "tag": "ita",
-   "n": "17",
-   "lego_id": "S0526L02",
-   "known": "to believe",
-   "target": "credere",
-   "target_locale": "it-IT"
-  },
-  {
-   "tag": "ita",
-   "n": "18",
-   "lego_id": "S0556L01",
-   "known": "they play",
-   "target": "suonano",
-   "target_locale": "it-IT"
-  },
-  {
-   "tag": "ita",
-   "n": "19",
-   "lego_id": "S0591L01",
-   "known": "to the shops",
-   "target": "fino ai negozi",
-   "target_locale": "it-IT"
-  },
-  {
-   "tag": "ita",
-   "n": "20",
-   "lego_id": "S0621L01",
-   "known": "broken",
-   "target": "rotto",
-   "target_locale": "it-IT"
+  "generated": "2026-08-27",
+  "voice": "cartesia tom_001 8fef4d59-0a7e-4ad2-a261-6a3bb50734d2",
+  "model": "sonic-3",
+  "speed": 1,
+  "items": [
+    {
+      "tag": "zho",
+      "n": "01",
+      "lego_id": "S0001L01",
+      "known": "I want",
+      "target": "我想",
+      "target_locale": "zh-CN"
+    },
+    {
+      "tag": "zho",
+      "n": "02",
+      "lego_id": "S0009L02",
+      "known": "a little",
+      "target": "一点",
+      "target_locale": "zh-CN"
+    },
+    {
+      "tag": "zho",
+      "n": "03",
+      "lego_id": "S0016L04",
+      "known": "to come back",
+      "target": "回来",
+      "target_locale": "zh-CN"
+    },
+    {
+      "tag": "zho",
+      "n": "04",
+      "lego_id": "S0024L02",
+      "known": "might",
+      "target": "可能",
+      "target_locale": "zh-CN"
+    },
+    {
+      "tag": "zho",
+      "n": "05",
+      "lego_id": "S0033L01",
+      "known": "how long",
+      "target": "多久",
+      "target_locale": "zh-CN"
+    },
+    {
+      "tag": "zho",
+      "n": "06",
+      "lego_id": "S0044L02",
+      "known": "to need",
+      "target": "需要",
+      "target_locale": "zh-CN"
+    },
+    {
+      "tag": "zho",
+      "n": "07",
+      "lego_id": "S0053L03",
+      "known": "to put into",
+      "target": "放进",
+      "target_locale": "zh-CN"
+    },
+    {
+      "tag": "zho",
+      "n": "08",
+      "lego_id": "S0066L02",
+      "known": "difficult",
+      "target": "难",
+      "target_locale": "zh-CN"
+    },
+    {
+      "tag": "zho",
+      "n": "09",
+      "lego_id": "S0078L01",
+      "known": "understand clearly",
+      "target": "明白",
+      "target_locale": "zh-CN"
+    },
+    {
+      "tag": "zho",
+      "n": "10",
+      "lego_id": "S0091L02",
+      "known": "answer in time",
+      "target": "及时回答",
+      "target_locale": "zh-CN"
+    },
+    {
+      "tag": "zho",
+      "n": "11",
+      "lego_id": "S0099L02",
+      "known": "why",
+      "target": "为什么",
+      "target_locale": "zh-CN"
+    },
+    {
+      "tag": "zho",
+      "n": "12",
+      "lego_id": "S0114L01",
+      "known": "worse",
+      "target": "差",
+      "target_locale": "zh-CN"
+    },
+    {
+      "tag": "zho",
+      "n": "13",
+      "lego_id": "S0130L02",
+      "known": "that was a surprise",
+      "target": "那很意外",
+      "target_locale": "zh-CN"
+    },
+    {
+      "tag": "zho",
+      "n": "14",
+      "lego_id": "S0147L02",
+      "known": "kind",
+      "target": "友善",
+      "target_locale": "zh-CN"
+    },
+    {
+      "tag": "zho",
+      "n": "15",
+      "lego_id": "S0161L03",
+      "known": "book",
+      "target": "书",
+      "target_locale": "zh-CN"
+    },
+    {
+      "tag": "zho",
+      "n": "16",
+      "lego_id": "S0181L01",
+      "known": "have to take",
+      "target": "得带",
+      "target_locale": "zh-CN"
+    },
+    {
+      "tag": "zho",
+      "n": "17",
+      "lego_id": "S0197L01",
+      "known": "teacher",
+      "target": "老师",
+      "target_locale": "zh-CN"
+    },
+    {
+      "tag": "zho",
+      "n": "18",
+      "lego_id": "S0214L01",
+      "known": "weekend",
+      "target": "周末",
+      "target_locale": "zh-CN"
+    },
+    {
+      "tag": "zho",
+      "n": "19",
+      "lego_id": "S0228L01",
+      "known": "to practise",
+      "target": "练习",
+      "target_locale": "zh-CN"
+    },
+    {
+      "tag": "zho",
+      "n": "20",
+      "lego_id": "S0244L01",
+      "known": "already learn a lot",
+      "target": "已经学了很多",
+      "target_locale": "zh-CN"
+    },
+    {
+      "tag": "zho",
+      "n": "21",
+      "lego_id": "S0263L02",
+      "known": "you mean",
+      "target": "你指的是",
+      "target_locale": "zh-CN"
+    },
+    {
+      "tag": "zho",
+      "n": "22",
+      "lego_id": "S0279L01",
+      "known": "time left",
+      "target": "剩下的时间",
+      "target_locale": "zh-CN"
+    },
+    {
+      "tag": "zho",
+      "n": "23",
+      "lego_id": "S0300L01",
+      "known": "seem",
+      "target": "显得",
+      "target_locale": "zh-CN"
+    },
+    {
+      "tag": "zho",
+      "n": "24",
+      "lego_id": "S0312L03",
+      "known": "room",
+      "target": "房间",
+      "target_locale": "zh-CN"
+    },
+    {
+      "tag": "zho",
+      "n": "25",
+      "lego_id": "S0326L01",
+      "known": "company",
+      "target": "公司",
+      "target_locale": "zh-CN"
+    },
+    {
+      "tag": "zho",
+      "n": "26",
+      "lego_id": "S0341L01",
+      "known": "several days ago",
+      "target": "几天前",
+      "target_locale": "zh-CN"
+    },
+    {
+      "tag": "zho",
+      "n": "27",
+      "lego_id": "S0353L01",
+      "known": "field",
+      "target": "场地",
+      "target_locale": "zh-CN"
+    },
+    {
+      "tag": "zho",
+      "n": "28",
+      "lego_id": "S0371L01",
+      "known": "wednesday",
+      "target": "周三",
+      "target_locale": "zh-CN"
+    },
+    {
+      "tag": "zho",
+      "n": "29",
+      "lego_id": "S0391L01",
+      "known": "towards the bus",
+      "target": "朝公交车",
+      "target_locale": "zh-CN"
+    },
+    {
+      "tag": "zho",
+      "n": "30",
+      "lego_id": "S0404L02",
+      "known": "thursday",
+      "target": "周四",
+      "target_locale": "zh-CN"
+    },
+    {
+      "tag": "zho",
+      "n": "31",
+      "lego_id": "S0418L01",
+      "known": "community",
+      "target": "社区",
+      "target_locale": "zh-CN"
+    },
+    {
+      "tag": "zho",
+      "n": "32",
+      "lego_id": "S0434L01",
+      "known": "to reduce",
+      "target": "减少",
+      "target_locale": "zh-CN"
+    },
+    {
+      "tag": "zho",
+      "n": "33",
+      "lego_id": "S0447L03",
+      "known": "to see off",
+      "target": "送",
+      "target_locale": "zh-CN"
+    },
+    {
+      "tag": "zho",
+      "n": "34",
+      "lego_id": "S0462L03",
+      "known": "during",
+      "target": "期间",
+      "target_locale": "zh-CN"
+    },
+    {
+      "tag": "zho",
+      "n": "35",
+      "lego_id": "S0475L03",
+      "known": "to consider",
+      "target": "考虑",
+      "target_locale": "zh-CN"
+    },
+    {
+      "tag": "zho",
+      "n": "36",
+      "lego_id": "S0486L01",
+      "known": "eyes",
+      "target": "眼睛",
+      "target_locale": "zh-CN"
+    },
+    {
+      "tag": "zho",
+      "n": "37",
+      "lego_id": "S0496L01",
+      "known": "to plan",
+      "target": "打算",
+      "target_locale": "zh-CN"
+    },
+    {
+      "tag": "zho",
+      "n": "38",
+      "lego_id": "S0506L02",
+      "known": "to move away",
+      "target": "搬走",
+      "target_locale": "zh-CN"
+    },
+    {
+      "tag": "zho",
+      "n": "39",
+      "lego_id": "S0518L01",
+      "known": "unable",
+      "target": "无法",
+      "target_locale": "zh-CN"
+    },
+    {
+      "tag": "zho",
+      "n": "40",
+      "lego_id": "S0529L01",
+      "known": "hands",
+      "target": "手",
+      "target_locale": "zh-CN"
+    },
+    {
+      "tag": "zho",
+      "n": "41",
+      "lego_id": "S0539L01",
+      "known": "but",
+      "target": "但是",
+      "target_locale": "zh-CN"
+    },
+    {
+      "tag": "zho",
+      "n": "42",
+      "lego_id": "S0546L04",
+      "known": "also",
+      "target": "又",
+      "target_locale": "zh-CN"
+    },
+    {
+      "tag": "zho",
+      "n": "43",
+      "lego_id": "S0557L02",
+      "known": "loud",
+      "target": "吵",
+      "target_locale": "zh-CN"
+    },
+    {
+      "tag": "zho",
+      "n": "44",
+      "lego_id": "S0569L01",
+      "known": "to decide",
+      "target": "决定",
+      "target_locale": "zh-CN"
+    },
+    {
+      "tag": "zho",
+      "n": "45",
+      "lego_id": "S0582L02",
+      "known": "feeling",
+      "target": "感觉",
+      "target_locale": "zh-CN"
+    },
+    {
+      "tag": "zho",
+      "n": "46",
+      "lego_id": "S0594L02",
+      "known": "toys",
+      "target": "玩具",
+      "target_locale": "zh-CN"
+    },
+    {
+      "tag": "zho",
+      "n": "47",
+      "lego_id": "S0606L01",
+      "known": "early",
+      "target": "早",
+      "target_locale": "zh-CN"
+    },
+    {
+      "tag": "zho",
+      "n": "48",
+      "lego_id": "S0617L01",
+      "known": "mistake",
+      "target": "错误",
+      "target_locale": "zh-CN"
+    },
+    {
+      "tag": "zho",
+      "n": "49",
+      "lego_id": "S0631L01",
+      "known": "would like",
+      "target": "要",
+      "target_locale": "zh-CN"
+    },
+    {
+      "tag": "zho",
+      "n": "50",
+      "lego_id": "S0647L01",
+      "known": "manner particle de",
+      "target": "得",
+      "target_locale": "zh-CN"
+    }
+  ],
+  "totals": {
+    "clips": 100,
+    "chars": 531
+  },
+  "dropped_italian": {
+    "reason": "Tom 2026-08-27: match the Italian 20 line-for-line only if the list exists in this thread history; it does not, so drop rather than guess. The only Italian in this thread was three hand-written determinism phrases, never a 20-LEGO course set."
   }
- ],
- "totals": {
-  "clips": 140,
-  "chars": 927
- }
 }
