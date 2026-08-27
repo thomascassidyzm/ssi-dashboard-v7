@@ -1,0 +1,4554 @@
+[
+  {
+    "courseCode": "ita_for_eng",
+    "seedNumber": 20,
+    "legoIndex": 1,
+    "arm": "claude-sonnet-5",
+    "legoId": "S0020L01",
+    "legoKnown": "you want",
+    "legoTarget": "vuoi",
+    "elapsedMs": 146118,
+    "phrases": [
+      {
+        "role": "build",
+        "known": "you want to come back",
+        "target": "vuoi tornare",
+        "tiles": [
+          {
+            "known": "you want",
+            "target": "vuoi",
+            "legoId": "S0020L01"
+          },
+          {
+            "known": "to come back",
+            "target": " tornare",
+            "legoId": "S0016L02"
+          }
+        ]
+      },
+      {
+        "role": "build",
+        "known": "you want to meet up later on",
+        "target": "vuoi incontrarci più tardi",
+        "tiles": [
+          {
+            "known": "you want",
+            "target": "vuoi",
+            "legoId": "S0020L01"
+          },
+          {
+            "known": "to meet up",
+            "target": " incontrarci",
+            "legoId": "S0018L02"
+          },
+          {
+            "known": "later on",
+            "target": " più tardi",
+            "legoId": "S0016L03"
+          }
+        ]
+      },
+      {
+        "role": "build",
+        "known": "you want the answer",
+        "target": "vuoi la risposta",
+        "tiles": [
+          {
+            "known": "you want",
+            "target": "vuoi",
+            "legoId": "S0020L01"
+          },
+          {
+            "known": "the answer",
+            "target": " la risposta",
+            "legoId": "S0017L03"
+          }
+        ]
+      },
+      {
+        "role": "build",
+        "known": "if you want to explain",
+        "target": "se vuoi spiegare",
+        "tiles": [
+          {
+            "known": "if",
+            "target": "se",
+            "legoId": "S0010L03"
+          },
+          {
+            "known": "you want",
+            "target": " vuoi",
+            "legoId": "S0020L01"
+          },
+          {
+            "known": "to explain",
+            "target": " spiegare",
+            "legoId": "S0008L02"
+          }
+        ]
+      },
+      {
+        "role": "build",
+        "known": "I'm not sure if you want",
+        "target": "non sono sicuro se vuoi",
+        "tiles": [
+          {
+            "known": "I'm not sure",
+            "target": "non sono sicuro",
+            "legoId": "S0010L02"
+          },
+          {
+            "known": "if",
+            "target": " se",
+            "legoId": "S0010L03"
+          },
+          {
+            "known": "you want",
+            "target": " vuoi",
+            "legoId": "S0020L01"
+          }
+        ]
+      },
+      {
+        "role": "use",
+        "known": "you want to learn as much as possible today",
+        "target": "vuoi imparare il più possibile oggi",
+        "tiles": [
+          {
+            "known": "you want",
+            "target": "vuoi",
+            "legoId": "S0020L01"
+          },
+          {
+            "known": "to learn",
+            "target": " imparare",
+            "legoId": "S0002L02"
+          },
+          {
+            "known": "as much as possible",
+            "target": " il più possibile",
+            "legoId": "S0007L02"
+          },
+          {
+            "known": "today",
+            "target": " oggi",
+            "legoId": "S0007L03"
+          }
+        ]
+      },
+      {
+        "role": "use",
+        "known": "you want to come back tomorrow",
+        "target": "vuoi tornare domani",
+        "tiles": [
+          {
+            "known": "you want",
+            "target": "vuoi",
+            "legoId": "S0020L01"
+          },
+          {
+            "known": "to come back",
+            "target": " tornare",
+            "legoId": "S0016L02"
+          },
+          {
+            "known": "tomorrow",
+            "target": " domani",
+            "legoId": "S0012L04"
+          }
+        ]
+      },
+      {
+        "role": "use",
+        "known": "I'm not sure if you want to meet up this evening",
+        "target": "non sono sicuro se vuoi incontrarci questa sera",
+        "tiles": [
+          {
+            "known": "I'm not sure",
+            "target": "non sono sicuro",
+            "legoId": "S0010L02"
+          },
+          {
+            "known": "if",
+            "target": " se",
+            "legoId": "S0010L03"
+          },
+          {
+            "known": "you want",
+            "target": " vuoi",
+            "legoId": "S0020L01"
+          },
+          {
+            "known": "to meet up",
+            "target": " incontrarci",
+            "legoId": "S0018L02"
+          },
+          {
+            "known": "this evening",
+            "target": " questa sera",
+            "legoId": "S0018L04"
+          }
+        ]
+      },
+      {
+        "role": "use",
+        "known": "we want to meet up but you want to come back at six o'clock",
+        "target": "vogliamo incontrarci ma vuoi tornare alle sei",
+        "tiles": [
+          {
+            "known": "we want",
+            "target": "vogliamo",
+            "legoId": "S0018L01"
+          },
+          {
+            "known": "to meet up",
+            "target": " incontrarci",
+            "legoId": "S0018L02"
+          },
+          {
+            "known": "but",
+            "target": " ma",
+            "legoId": "S0019L01"
+          },
+          {
+            "known": "you want",
+            "target": " vuoi",
+            "legoId": "S0020L01"
+          },
+          {
+            "known": "to come back",
+            "target": " tornare",
+            "legoId": "S0016L02"
+          },
+          {
+            "known": "at six o'clock",
+            "target": " alle sei",
+            "legoId": "S0018L03"
+          }
+        ]
+      },
+      {
+        "role": "use",
+        "known": "I don't want to meet up now but you want to meet up later on",
+        "target": "non voglio incontrarci adesso ma vuoi incontrarci più tardi",
+        "tiles": [
+          {
+            "known": "I don't want",
+            "target": "non voglio",
+            "legoId": "S0019L02"
+          },
+          {
+            "known": "to meet up",
+            "target": " incontrarci",
+            "legoId": "S0018L02"
+          },
+          {
+            "known": "now",
+            "target": " adesso",
+            "legoId": "S0001L05"
+          },
+          {
+            "known": "but",
+            "target": " ma",
+            "legoId": "S0019L01"
+          },
+          {
+            "known": "you want",
+            "target": " vuoi",
+            "legoId": "S0020L01"
+          },
+          {
+            "known": "to meet up",
+            "target": " incontrarci",
+            "legoId": "S0018L02"
+          },
+          {
+            "known": "later on",
+            "target": " più tardi",
+            "legoId": "S0016L03"
+          }
+        ]
+      },
+      {
+        "role": "use",
+        "known": "you want to remember a word in italian",
+        "target": "vuoi ricordare una parola in italiano",
+        "tiles": [
+          {
+            "known": "you want",
+            "target": "vuoi",
+            "legoId": "S0020L01"
+          },
+          {
+            "known": "to remember",
+            "target": " ricordare",
+            "legoId": "S0006L01"
+          },
+          {
+            "known": "a word",
+            "target": " una parola",
+            "legoId": "S0006L02"
+          },
+          {
+            "known": "in italian",
+            "target": " in italiano",
+            "legoId": "S0004L03"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "courseCode": "ita_for_eng",
+    "seedNumber": 45,
+    "legoIndex": 1,
+    "arm": "claude-sonnet-5",
+    "legoId": "S0045L01",
+    "legoKnown": "I don't need to",
+    "legoTarget": "non ho bisogno di",
+    "elapsedMs": 208681,
+    "phrases": [
+      {
+        "role": "build",
+        "known": "i don't need to remember",
+        "target": "non ho bisogno di ricordare",
+        "tiles": [
+          {
+            "known": "i don't need to",
+            "target": "non ho bisogno di",
+            "legoId": "S0045L01"
+          },
+          {
+            "known": "to remember",
+            "target": " ricordare",
+            "legoId": "S0006L01"
+          }
+        ]
+      },
+      {
+        "role": "build",
+        "known": "i don't need to read this afternoon",
+        "target": "non ho bisogno di leggere questo pomeriggio",
+        "tiles": [
+          {
+            "known": "i don't need to",
+            "target": "non ho bisogno di",
+            "legoId": "S0045L01"
+          },
+          {
+            "known": "to read",
+            "target": " leggere",
+            "legoId": "S0035L01"
+          },
+          {
+            "known": "this afternoon",
+            "target": " questo pomeriggio",
+            "legoId": "S0035L03"
+          }
+        ]
+      },
+      {
+        "role": "build",
+        "known": "but i don't need to explain",
+        "target": "ma non ho bisogno di spiegare",
+        "tiles": [
+          {
+            "known": "but",
+            "target": "ma",
+            "legoId": "S0019L01"
+          },
+          {
+            "known": "i don't need to",
+            "target": " non ho bisogno di",
+            "legoId": "S0045L01"
+          },
+          {
+            "known": "to explain",
+            "target": " spiegare",
+            "legoId": "S0008L02"
+          }
+        ]
+      },
+      {
+        "role": "build",
+        "known": "when i don't need to interrupt",
+        "target": "quando non ho bisogno di interrompere",
+        "tiles": [
+          {
+            "known": "when",
+            "target": "quando",
+            "legoId": "S0034L03"
+          },
+          {
+            "known": "i don't need to",
+            "target": " non ho bisogno di",
+            "legoId": "S0045L01"
+          },
+          {
+            "known": "to interrupt",
+            "target": " interrompere",
+            "legoId": "S0036L02"
+          }
+        ]
+      },
+      {
+        "role": "use",
+        "known": "i don't need to meet up later on",
+        "target": "non ho bisogno di incontrarci più tardi",
+        "tiles": [
+          {
+            "known": "i don't need to",
+            "target": "non ho bisogno di",
+            "legoId": "S0045L01"
+          },
+          {
+            "known": "to meet up",
+            "target": " incontrarci",
+            "legoId": "S0018L02"
+          },
+          {
+            "known": "later on",
+            "target": " più tardi",
+            "legoId": "S0016L03"
+          }
+        ]
+      },
+      {
+        "role": "use",
+        "known": "if i don't need to come back tonight i want to practise",
+        "target": "se non ho bisogno di tornare stasera voglio fare pratica",
+        "tiles": [
+          {
+            "known": "if",
+            "target": "se",
+            "legoId": "S0010L03"
+          },
+          {
+            "known": "i don't need to",
+            "target": " non ho bisogno di",
+            "legoId": "S0045L01"
+          },
+          {
+            "known": "to come back",
+            "target": " tornare",
+            "legoId": "S0016L02"
+          },
+          {
+            "known": "tonight",
+            "target": " stasera",
+            "legoId": "S0031L02"
+          },
+          {
+            "known": "i want",
+            "target": " voglio",
+            "legoId": "S0001L01"
+          },
+          {
+            "known": "to practise",
+            "target": " fare pratica",
+            "legoId": "S0005L02#c"
+          }
+        ]
+      },
+      {
+        "role": "use",
+        "known": "i'm learning italian but i don't need to improve quickly",
+        "target": "sto imparando italiano ma non ho bisogno di migliorare velocemente",
+        "tiles": [
+          {
+            "known": "i'm learning",
+            "target": "sto imparando",
+            "legoId": "S0038L01"
+          },
+          {
+            "known": "italian",
+            "target": " italiano",
+            "legoId": "S0001L03"
+          },
+          {
+            "known": "but",
+            "target": " ma",
+            "legoId": "S0019L01"
+          },
+          {
+            "known": "i don't need to",
+            "target": " non ho bisogno di",
+            "legoId": "S0045L01"
+          },
+          {
+            "known": "to improve",
+            "target": " migliorare",
+            "legoId": "S0044L03"
+          },
+          {
+            "known": "quickly",
+            "target": " velocemente",
+            "legoId": "S0020L03"
+          }
+        ]
+      },
+      {
+        "role": "use",
+        "known": "i don't need to explain today",
+        "target": "non ho bisogno di spiegare oggi",
+        "tiles": [
+          {
+            "known": "i don't need to",
+            "target": "non ho bisogno di",
+            "legoId": "S0045L01"
+          },
+          {
+            "known": "to explain",
+            "target": " spiegare",
+            "legoId": "S0008L02"
+          },
+          {
+            "known": "today",
+            "target": " oggi",
+            "legoId": "S0007L03"
+          }
+        ]
+      },
+      {
+        "role": "use",
+        "known": "he doesn't want to be quiet but i don't need to remember",
+        "target": "non vuole stare zitto ma non ho bisogno di ricordare",
+        "tiles": [
+          {
+            "known": "he doesn't want",
+            "target": "non vuole",
+            "legoId": "S0034L01"
+          },
+          {
+            "known": "to be quiet",
+            "target": " stare zitto",
+            "legoId": "S0034L02"
+          },
+          {
+            "known": "but",
+            "target": " ma",
+            "legoId": "S0019L01"
+          },
+          {
+            "known": "i don't need to",
+            "target": " non ho bisogno di",
+            "legoId": "S0045L01"
+          },
+          {
+            "known": "to remember",
+            "target": " ricordare",
+            "legoId": "S0006L01"
+          }
+        ]
+      },
+      {
+        "role": "use",
+        "known": "i was starting to read last night but i don't need to learn",
+        "target": "stavo cominciando a leggere ieri sera ma non ho bisogno di imparare",
+        "tiles": [
+          {
+            "known": "i was starting to",
+            "target": "stavo cominciando a",
+            "legoId": "S0042L01"
+          },
+          {
+            "known": "to read",
+            "target": " leggere",
+            "legoId": "S0035L01"
+          },
+          {
+            "known": "last night",
+            "target": " ieri sera",
+            "legoId": "S0042L03"
+          },
+          {
+            "known": "but",
+            "target": " ma",
+            "legoId": "S0019L01"
+          },
+          {
+            "known": "i don't need to",
+            "target": " non ho bisogno di",
+            "legoId": "S0045L01"
+          },
+          {
+            "known": "to learn",
+            "target": " imparare",
+            "legoId": "S0002L02"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "courseCode": "ita_for_eng",
+    "seedNumber": 75,
+    "legoIndex": 1,
+    "arm": "claude-sonnet-5",
+    "legoId": "S0075L01",
+    "legoKnown": "have you got more to learn",
+    "legoTarget": "hai di più da imparare",
+    "elapsedMs": 268621,
+    "phrases": [
+      {
+        "role": "build",
+        "known": "have you got more to learn tonight",
+        "target": "hai di più da imparare stasera",
+        "tiles": [
+          {
+            "known": "have you got more to learn",
+            "target": "hai di più da imparare",
+            "legoId": "S0075L01"
+          },
+          {
+            "known": "tonight",
+            "target": " stasera",
+            "legoId": "S0031L02"
+          }
+        ]
+      },
+      {
+        "role": "build",
+        "known": "have you got more to learn this afternoon",
+        "target": "hai di più da imparare questo pomeriggio",
+        "tiles": [
+          {
+            "known": "have you got more to learn",
+            "target": "hai di più da imparare",
+            "legoId": "S0075L01"
+          },
+          {
+            "known": "this afternoon",
+            "target": " questo pomeriggio",
+            "legoId": "S0035L03"
+          }
+        ]
+      },
+      {
+        "role": "build",
+        "known": "at the moment, have you got more to learn",
+        "target": "al momento, hai di più da imparare",
+        "tiles": [
+          {
+            "known": "at the moment",
+            "target": "al momento,",
+            "legoId": "S0040L02"
+          },
+          {
+            "known": "have you got more to learn",
+            "target": " hai di più da imparare",
+            "legoId": "S0075L01"
+          }
+        ]
+      },
+      {
+        "role": "build",
+        "known": "when you understand, have you got more to learn",
+        "target": "quando capisci, hai di più da imparare",
+        "tiles": [
+          {
+            "known": "when you understand",
+            "target": "quando capisci,",
+            "legoId": "S0058L02"
+          },
+          {
+            "known": "have you got more to learn",
+            "target": " hai di più da imparare",
+            "legoId": "S0075L01"
+          }
+        ]
+      },
+      {
+        "role": "use",
+        "known": "thank you very much, have you got more to learn now",
+        "target": "grazie mille, hai di più da imparare adesso",
+        "tiles": [
+          {
+            "known": "thank you very much",
+            "target": "grazie mille,",
+            "legoId": "S0073L01"
+          },
+          {
+            "known": "have you got more to learn",
+            "target": " hai di più da imparare",
+            "legoId": "S0075L01"
+          },
+          {
+            "known": "now",
+            "target": " adesso",
+            "legoId": "S0001L05"
+          }
+        ]
+      },
+      {
+        "role": "use",
+        "known": "tomorrow, have you got more to learn with someone else",
+        "target": "domani, hai di più da imparare con qualcun altro",
+        "tiles": [
+          {
+            "known": "tomorrow",
+            "target": "domani,",
+            "legoId": "S0012L04"
+          },
+          {
+            "known": "have you got more to learn",
+            "target": " hai di più da imparare",
+            "legoId": "S0075L01"
+          },
+          {
+            "known": "with someone else",
+            "target": " con qualcun altro",
+            "legoId": "S0005L03"
+          }
+        ]
+      },
+      {
+        "role": "use",
+        "known": "for helping me to understand, have you got more to learn",
+        "target": "per avermi aiutato a capire, hai di più da imparare",
+        "tiles": [
+          {
+            "known": "for helping me to",
+            "target": "per avermi aiutato a",
+            "legoId": "S0074L02"
+          },
+          {
+            "known": "understand",
+            "target": " capire,",
+            "legoId": "S0074L01"
+          },
+          {
+            "known": "have you got more to learn",
+            "target": " hai di più da imparare",
+            "legoId": "S0075L01"
+          }
+        ]
+      },
+      {
+        "role": "use",
+        "known": "have you got more to learn next week",
+        "target": "hai di più da imparare la settimana prossima",
+        "tiles": [
+          {
+            "known": "have you got more to learn",
+            "target": "hai di più da imparare",
+            "legoId": "S0075L01"
+          },
+          {
+            "known": "next week",
+            "target": " la settimana prossima",
+            "legoId": "S0059L03"
+          }
+        ]
+      },
+      {
+        "role": "use",
+        "known": "if you don't mind, have you got more to learn",
+        "target": "se non ti dispiace, hai di più da imparare",
+        "tiles": [
+          {
+            "known": "if",
+            "target": "se",
+            "legoId": "S0010L03"
+          },
+          {
+            "known": "you don't mind",
+            "target": " non ti dispiace,",
+            "legoId": "S0063L01"
+          },
+          {
+            "known": "have you got more to learn",
+            "target": " hai di più da imparare",
+            "legoId": "S0075L01"
+          }
+        ]
+      },
+      {
+        "role": "use",
+        "known": "I need to understand, but have you got more to learn",
+        "target": "ho bisogno di capire, ma hai di più da imparare",
+        "tiles": [
+          {
+            "known": "I need to",
+            "target": "ho bisogno di",
+            "legoId": "S0044L02"
+          },
+          {
+            "known": "understand",
+            "target": " capire,",
+            "legoId": "S0074L01"
+          },
+          {
+            "known": "but",
+            "target": " ma",
+            "legoId": "S0019L01"
+          },
+          {
+            "known": "have you got more to learn",
+            "target": " hai di più da imparare",
+            "legoId": "S0075L01"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "courseCode": "ita_for_eng",
+    "seedNumber": 130,
+    "legoIndex": 1,
+    "arm": "claude-sonnet-5",
+    "legoId": "S0130L01",
+    "legoKnown": "it was a surprise because",
+    "legoTarget": "è stata una sorpresa perché",
+    "elapsedMs": 197645,
+    "phrases": [
+      {
+        "role": "build",
+        "known": "it was a surprise because you're like",
+        "target": "è stata una sorpresa perché sei come",
+        "tiles": [
+          {
+            "known": "it was a surprise because",
+            "target": "è stata una sorpresa perché",
+            "legoId": "S0130L01"
+          },
+          {
+            "known": "you're like",
+            "target": " sei come",
+            "legoId": "S0128L02"
+          }
+        ]
+      },
+      {
+        "role": "build",
+        "known": "it was a surprise because someone I used to know",
+        "target": "è stata una sorpresa perché qualcuno che conoscevo",
+        "tiles": [
+          {
+            "known": "it was a surprise because",
+            "target": "è stata una sorpresa perché",
+            "legoId": "S0130L01"
+          },
+          {
+            "known": "someone I used to know",
+            "target": " qualcuno che conoscevo",
+            "legoId": "S0128L01"
+          }
+        ]
+      },
+      {
+        "role": "build",
+        "known": "I thought that it was a surprise because we were",
+        "target": "pensavo che è stata una sorpresa perché eravamo",
+        "tiles": [
+          {
+            "known": "I thought that",
+            "target": "pensavo che",
+            "legoId": "S0124L01"
+          },
+          {
+            "known": "it was a surprise because",
+            "target": " è stata una sorpresa perché",
+            "legoId": "S0130L01"
+          },
+          {
+            "known": "we were",
+            "target": " eravamo",
+            "legoId": "S0118L01"
+          }
+        ]
+      },
+      {
+        "role": "build",
+        "known": "I felt worse but it was a surprise because",
+        "target": "mi sentivo peggio ma è stata una sorpresa perché",
+        "tiles": [
+          {
+            "known": "I felt",
+            "target": "mi sentivo",
+            "legoId": "S0118L02"
+          },
+          {
+            "known": "worse",
+            "target": " peggio",
+            "legoId": "S0114L02"
+          },
+          {
+            "known": "but",
+            "target": " ma",
+            "legoId": "S0019L01"
+          },
+          {
+            "known": "it was a surprise because",
+            "target": " è stata una sorpresa perché",
+            "legoId": "S0130L01"
+          }
+        ]
+      },
+      {
+        "role": "use",
+        "known": "it was a surprise because you said something new",
+        "target": "è stata una sorpresa perché hai detto qualcosa di nuovo",
+        "tiles": [
+          {
+            "known": "it was a surprise because",
+            "target": "è stata una sorpresa perché",
+            "legoId": "S0130L01"
+          },
+          {
+            "known": "you said",
+            "target": " hai detto",
+            "legoId": "S0113L02#c"
+          },
+          {
+            "known": "something new",
+            "target": " qualcosa di nuovo",
+            "legoId": "S0111L02"
+          }
+        ]
+      },
+      {
+        "role": "use",
+        "known": "it was a surprise because we were in the pub",
+        "target": "è stata una sorpresa perché eravamo al pub",
+        "tiles": [
+          {
+            "known": "it was a surprise because",
+            "target": "è stata una sorpresa perché",
+            "legoId": "S0130L01"
+          },
+          {
+            "known": "we were",
+            "target": " eravamo",
+            "legoId": "S0118L01"
+          },
+          {
+            "known": "in the pub",
+            "target": " al pub",
+            "legoId": "S0118L03"
+          }
+        ]
+      },
+      {
+        "role": "use",
+        "known": "it was a surprise because I felt worse",
+        "target": "è stata una sorpresa perché mi sentivo peggio",
+        "tiles": [
+          {
+            "known": "it was a surprise because",
+            "target": "è stata una sorpresa perché",
+            "legoId": "S0130L01"
+          },
+          {
+            "known": "I felt",
+            "target": " mi sentivo",
+            "legoId": "S0118L02"
+          },
+          {
+            "known": "worse",
+            "target": " peggio",
+            "legoId": "S0114L02"
+          }
+        ]
+      },
+      {
+        "role": "use",
+        "known": "it was a surprise because we talked to each other",
+        "target": "è stata una sorpresa perché abbiamo parlato",
+        "tiles": [
+          {
+            "known": "it was a surprise because",
+            "target": "è stata una sorpresa perché",
+            "legoId": "S0130L01"
+          },
+          {
+            "known": "we talked to each other",
+            "target": " abbiamo parlato",
+            "legoId": "S0117L02"
+          }
+        ]
+      },
+      {
+        "role": "use",
+        "known": "it was a surprise because it's starting to seem easier",
+        "target": "è stata una sorpresa perché sta cominciando a sembrare più facile",
+        "tiles": [
+          {
+            "known": "it was a surprise because",
+            "target": "è stata una sorpresa perché",
+            "legoId": "S0130L01"
+          },
+          {
+            "known": "it's starting to",
+            "target": " sta cominciando a",
+            "legoId": "S0122L01"
+          },
+          {
+            "known": "to seem",
+            "target": " sembrare",
+            "legoId": "S0122L02"
+          },
+          {
+            "known": "easier",
+            "target": " più facile",
+            "legoId": "S0122L03"
+          }
+        ]
+      },
+      {
+        "role": "use",
+        "known": "I believe that it was a surprise because you said something new",
+        "target": "credo che è stata una sorpresa perché hai detto qualcosa di nuovo",
+        "tiles": [
+          {
+            "known": "I believe that",
+            "target": "credo che",
+            "legoId": "S0125L01"
+          },
+          {
+            "known": "it was a surprise because",
+            "target": " è stata una sorpresa perché",
+            "legoId": "S0130L01"
+          },
+          {
+            "known": "you said",
+            "target": " hai detto",
+            "legoId": "S0113L02#c"
+          },
+          {
+            "known": "something new",
+            "target": " qualcosa di nuovo",
+            "legoId": "S0111L02"
+          }
+        ]
+      },
+      {
+        "role": "use",
+        "known": "I'm not sure it was a surprise because you're like someone I used to know",
+        "target": "non sono sicuro è stata una sorpresa perché sei come qualcuno che conoscevo",
+        "tiles": [
+          {
+            "known": "I'm not sure",
+            "target": "non sono sicuro",
+            "legoId": "S0080L01"
+          },
+          {
+            "known": "it was a surprise because",
+            "target": " è stata una sorpresa perché",
+            "legoId": "S0130L01"
+          },
+          {
+            "known": "you're like",
+            "target": " sei come",
+            "legoId": "S0128L02"
+          },
+          {
+            "known": "someone I used to know",
+            "target": " qualcuno che conoscevo",
+            "legoId": "S0128L01"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "courseCode": "ita_for_eng",
+    "seedNumber": 110,
+    "legoIndex": 1,
+    "arm": "claude-sonnet-5",
+    "legoId": "S0110L01",
+    "legoKnown": "we're friends",
+    "legoTarget": "siamo amici",
+    "elapsedMs": 283599,
+    "phrases": [
+      {
+        "role": "build",
+        "known": "we're friends and I'm not sure",
+        "target": "siamo amici e non sono sicuro",
+        "tiles": [
+          {
+            "known": "we're friends",
+            "target": "siamo amici",
+            "legoId": "S0110L01"
+          },
+          {
+            "known": "and",
+            "target": " e",
+            "legoId": "S0015L01"
+          },
+          {
+            "known": "I'm not sure",
+            "target": " non sono sicuro",
+            "legoId": "S0080L01"
+          }
+        ]
+      },
+      {
+        "role": "build",
+        "known": "that is why we're friends",
+        "target": "ecco perché siamo amici",
+        "tiles": [
+          {
+            "known": "that is why",
+            "target": "ecco perché",
+            "legoId": "S0105L01"
+          },
+          {
+            "known": "we're friends",
+            "target": " siamo amici",
+            "legoId": "S0110L01"
+          }
+        ]
+      },
+      {
+        "role": "build",
+        "known": "when we're friends that would be great",
+        "target": "quando siamo amici sarebbe fantastico",
+        "tiles": [
+          {
+            "known": "when",
+            "target": "quando",
+            "legoId": "S0081L01"
+          },
+          {
+            "known": "we're friends",
+            "target": " siamo amici",
+            "legoId": "S0110L01"
+          },
+          {
+            "known": "that would be great",
+            "target": " sarebbe fantastico",
+            "legoId": "S0090L02"
+          }
+        ]
+      },
+      {
+        "role": "build",
+        "known": "if we're friends why not",
+        "target": "se siamo amici perché no",
+        "tiles": [
+          {
+            "known": "if",
+            "target": "se",
+            "legoId": "S0010L03"
+          },
+          {
+            "known": "we're friends",
+            "target": " siamo amici",
+            "legoId": "S0110L01"
+          },
+          {
+            "known": "why not",
+            "target": " perché no",
+            "legoId": "S0082L02"
+          }
+        ]
+      },
+      {
+        "role": "use",
+        "known": "we're friends and you shouldn't worry about something similar",
+        "target": "siamo amici e non dovresti preoccuparti di qualcosa di simile",
+        "tiles": [
+          {
+            "known": "we're friends",
+            "target": "siamo amici",
+            "legoId": "S0110L01"
+          },
+          {
+            "known": "and",
+            "target": " e",
+            "legoId": "S0015L01"
+          },
+          {
+            "known": "you shouldn't",
+            "target": " non dovresti",
+            "legoId": "S0100L01"
+          },
+          {
+            "known": "to worry about",
+            "target": " preoccuparti di",
+            "legoId": "S0100L02"
+          },
+          {
+            "known": "something similar",
+            "target": " qualcosa di simile",
+            "legoId": "S0100L03"
+          }
+        ]
+      },
+      {
+        "role": "use",
+        "known": "but we're friends why not",
+        "target": "ma siamo amici perché no",
+        "tiles": [
+          {
+            "known": "but",
+            "target": "ma",
+            "legoId": "S0019L01"
+          },
+          {
+            "known": "we're friends",
+            "target": " siamo amici",
+            "legoId": "S0110L01"
+          },
+          {
+            "known": "why not",
+            "target": " perché no",
+            "legoId": "S0082L02"
+          }
+        ]
+      },
+      {
+        "role": "use",
+        "known": "we're friends and I wait for you",
+        "target": "siamo amici e ti aspetto",
+        "tiles": [
+          {
+            "known": "we're friends",
+            "target": "siamo amici",
+            "legoId": "S0110L01"
+          },
+          {
+            "known": "and",
+            "target": " e",
+            "legoId": "S0015L01"
+          },
+          {
+            "known": "wait for you",
+            "target": " ti aspetto",
+            "legoId": "S0082L01"
+          }
+        ]
+      },
+      {
+        "role": "use",
+        "known": "it's not like that we're friends",
+        "target": "non è così siamo amici",
+        "tiles": [
+          {
+            "known": "it's not like that",
+            "target": "non è così",
+            "legoId": "S0102L02"
+          },
+          {
+            "known": "we're friends",
+            "target": " siamo amici",
+            "legoId": "S0110L01"
+          }
+        ]
+      },
+      {
+        "role": "use",
+        "known": "unfortunately we're friends and I agree",
+        "target": "purtroppo siamo amici e sono d'accordo",
+        "tiles": [
+          {
+            "known": "unfortunately",
+            "target": "purtroppo",
+            "legoId": "S0086L02"
+          },
+          {
+            "known": "we're friends",
+            "target": " siamo amici",
+            "legoId": "S0110L01"
+          },
+          {
+            "known": "and",
+            "target": " e",
+            "legoId": "S0015L01"
+          },
+          {
+            "known": "I agree",
+            "target": " sono d'accordo",
+            "legoId": "S0083L01"
+          }
+        ]
+      },
+      {
+        "role": "use",
+        "known": "we're friends and I'm enjoying finding out more about language",
+        "target": "siamo amici e mi piace scoprire di più su lingua",
+        "tiles": [
+          {
+            "known": "we're friends",
+            "target": "siamo amici",
+            "legoId": "S0110L01"
+          },
+          {
+            "known": "and",
+            "target": " e",
+            "legoId": "S0015L01"
+          },
+          {
+            "known": "I'm enjoying finding out",
+            "target": " mi piace scoprire",
+            "legoId": "S0101L01"
+          },
+          {
+            "known": "more about",
+            "target": " di più su",
+            "legoId": "S0101L02"
+          },
+          {
+            "known": "language",
+            "target": " lingua",
+            "legoId": "S0101L03"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "courseCode": "ita_for_eng",
+    "seedNumber": 150,
+    "legoIndex": 1,
+    "arm": "claude-sonnet-5",
+    "legoId": "S0150L01",
+    "legoKnown": "can you tell me",
+    "legoTarget": "puoi dirmi",
+    "elapsedMs": 170182,
+    "phrases": [
+      {
+        "role": "build",
+        "known": "can you tell me where it was",
+        "target": "puoi dirmi dove fosse",
+        "tiles": [
+          {
+            "known": "can you tell me",
+            "target": "puoi dirmi",
+            "legoId": "S0150L01"
+          },
+          {
+            "known": "where it was",
+            "target": " dove fosse",
+            "legoId": "S0070L03"
+          }
+        ]
+      },
+      {
+        "role": "build",
+        "known": "can you tell me his name",
+        "target": "puoi dirmi il suo nome",
+        "tiles": [
+          {
+            "known": "can you tell me",
+            "target": "puoi dirmi",
+            "legoId": "S0150L01"
+          },
+          {
+            "known": "his name",
+            "target": " il suo nome",
+            "legoId": "S0020L02"
+          }
+        ]
+      },
+      {
+        "role": "build",
+        "known": "she's my friend, can you tell me",
+        "target": "è una mia amica, puoi dirmi",
+        "tiles": [
+          {
+            "known": "she's my friend",
+            "target": "è una mia amica",
+            "legoId": "S0136L03"
+          },
+          {
+            "known": "can you tell me",
+            "target": ", puoi dirmi",
+            "legoId": "S0150L01"
+          }
+        ]
+      },
+      {
+        "role": "build",
+        "known": "here, can you tell me where it was",
+        "target": "qui, puoi dirmi dove fosse",
+        "tiles": [
+          {
+            "known": "here",
+            "target": "qui",
+            "legoId": "S0138L01"
+          },
+          {
+            "known": "can you tell me",
+            "target": ", puoi dirmi",
+            "legoId": "S0150L01"
+          },
+          {
+            "known": "where it was",
+            "target": " dove fosse",
+            "legoId": "S0070L03"
+          }
+        ]
+      },
+      {
+        "role": "use",
+        "known": "can you tell me the same thing",
+        "target": "puoi dirmi la stessa cosa",
+        "tiles": [
+          {
+            "known": "can you tell me",
+            "target": "puoi dirmi",
+            "legoId": "S0150L01"
+          },
+          {
+            "known": "the same thing",
+            "target": " la stessa cosa",
+            "legoId": "S0143L01"
+          }
+        ]
+      },
+      {
+        "role": "use",
+        "known": "since we tried to fix it, can you tell me where it was",
+        "target": "da quando abbiamo provato a sistemarlo, puoi dirmi dove fosse",
+        "tiles": [
+          {
+            "known": "since we tried to fix it",
+            "target": "da quando abbiamo provato a sistemarlo",
+            "legoId": "S0146L02"
+          },
+          {
+            "known": "can you tell me",
+            "target": ", puoi dirmi",
+            "legoId": "S0150L01"
+          },
+          {
+            "known": "where it was",
+            "target": " dove fosse",
+            "legoId": "S0070L03"
+          }
+        ]
+      },
+      {
+        "role": "use",
+        "known": "she's my friend, can you tell me his name",
+        "target": "è una mia amica, puoi dirmi il suo nome",
+        "tiles": [
+          {
+            "known": "she's my friend",
+            "target": "è una mia amica",
+            "legoId": "S0136L03"
+          },
+          {
+            "known": "can you tell me",
+            "target": ", puoi dirmi",
+            "legoId": "S0150L01"
+          },
+          {
+            "known": "his name",
+            "target": " il suo nome",
+            "legoId": "S0020L02"
+          }
+        ]
+      },
+      {
+        "role": "use",
+        "known": "here, can you tell me the same thing",
+        "target": "qui, puoi dirmi la stessa cosa",
+        "tiles": [
+          {
+            "known": "here",
+            "target": "qui",
+            "legoId": "S0138L01"
+          },
+          {
+            "known": "can you tell me",
+            "target": ", puoi dirmi",
+            "legoId": "S0150L01"
+          },
+          {
+            "known": "the same thing",
+            "target": " la stessa cosa",
+            "legoId": "S0143L01"
+          }
+        ]
+      },
+      {
+        "role": "use",
+        "known": "can you tell me where it was with them",
+        "target": "puoi dirmi dove fosse con loro",
+        "tiles": [
+          {
+            "known": "can you tell me",
+            "target": "puoi dirmi",
+            "legoId": "S0150L01"
+          },
+          {
+            "known": "where it was",
+            "target": " dove fosse",
+            "legoId": "S0070L03"
+          },
+          {
+            "known": "with them",
+            "target": " con loro",
+            "legoId": "S0134L03"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "courseCode": "ita_for_eng",
+    "seedNumber": 206,
+    "legoIndex": 1,
+    "arm": "claude-sonnet-5",
+    "legoId": "S0206L01",
+    "legoKnown": "I enjoy the chance to practise speaking",
+    "legoTarget": "mi piace l'occasione di fare pratica parlando",
+    "elapsedMs": 230577,
+    "phrases": [
+      {
+        "role": "build",
+        "known": "i enjoy the chance to practise speaking",
+        "target": "mi piace l'occasione di fare pratica parlando",
+        "tiles": [
+          {
+            "known": "i enjoy the chance to practise speaking",
+            "target": "mi piace l'occasione di fare pratica parlando",
+            "legoId": "S0206L01"
+          }
+        ]
+      },
+      {
+        "role": "build",
+        "known": "i enjoy the chance to practise speaking with you",
+        "target": "mi piace l'occasione di fare pratica parlando con te",
+        "tiles": [
+          {
+            "known": "i enjoy the chance to practise speaking",
+            "target": "mi piace l'occasione di fare pratica parlando",
+            "legoId": "S0206L01"
+          },
+          {
+            "known": "with you",
+            "target": " con te",
+            "legoId": "S0001L04"
+          }
+        ]
+      },
+      {
+        "role": "build",
+        "known": "of course i enjoy the chance to practise speaking",
+        "target": "certo che mi piace l'occasione di fare pratica parlando",
+        "tiles": [
+          {
+            "known": "of course",
+            "target": "certo che",
+            "legoId": "S0136L01"
+          },
+          {
+            "known": "i enjoy the chance to practise speaking",
+            "target": " mi piace l'occasione di fare pratica parlando",
+            "legoId": "S0206L01"
+          }
+        ]
+      },
+      {
+        "role": "build",
+        "known": "and i enjoy the chance to practise speaking here",
+        "target": "e mi piace l'occasione di fare pratica parlando qui",
+        "tiles": [
+          {
+            "known": "and",
+            "target": "e",
+            "legoId": "S0015L01"
+          },
+          {
+            "known": "i enjoy the chance to practise speaking",
+            "target": " mi piace l'occasione di fare pratica parlando",
+            "legoId": "S0206L01"
+          },
+          {
+            "known": "here",
+            "target": " qui",
+            "legoId": "S0138L01"
+          }
+        ]
+      },
+      {
+        "role": "build",
+        "known": "i enjoy the chance to practise speaking today",
+        "target": "mi piace l'occasione di fare pratica parlando oggi",
+        "tiles": [
+          {
+            "known": "i enjoy the chance to practise speaking",
+            "target": "mi piace l'occasione di fare pratica parlando",
+            "legoId": "S0206L01"
+          },
+          {
+            "known": "today",
+            "target": " oggi",
+            "legoId": "S0007L03"
+          }
+        ]
+      },
+      {
+        "role": "use",
+        "known": "i definitely enjoy the chance to practise speaking with you",
+        "target": "sicuramente mi piace l'occasione di fare pratica parlando con te",
+        "tiles": [
+          {
+            "known": "definitely",
+            "target": "sicuramente",
+            "legoId": "S0117L01"
+          },
+          {
+            "known": "i enjoy the chance to practise speaking",
+            "target": " mi piace l'occasione di fare pratica parlando",
+            "legoId": "S0206L01"
+          },
+          {
+            "known": "with you",
+            "target": " con te",
+            "legoId": "S0001L04"
+          }
+        ]
+      },
+      {
+        "role": "use",
+        "known": "that is why i enjoy the chance to practise speaking today",
+        "target": "ecco perché mi piace l'occasione di fare pratica parlando oggi",
+        "tiles": [
+          {
+            "known": "that is why",
+            "target": "ecco perché",
+            "legoId": "S0105L01"
+          },
+          {
+            "known": "i enjoy the chance to practise speaking",
+            "target": " mi piace l'occasione di fare pratica parlando",
+            "legoId": "S0206L01"
+          },
+          {
+            "known": "today",
+            "target": " oggi",
+            "legoId": "S0007L03"
+          }
+        ]
+      },
+      {
+        "role": "use",
+        "known": "i enjoy the chance to practise speaking here tonight",
+        "target": "mi piace l'occasione di fare pratica parlando qui stasera",
+        "tiles": [
+          {
+            "known": "i enjoy the chance to practise speaking",
+            "target": "mi piace l'occasione di fare pratica parlando",
+            "legoId": "S0206L01"
+          },
+          {
+            "known": "here",
+            "target": " qui",
+            "legoId": "S0138L01"
+          },
+          {
+            "known": "tonight",
+            "target": " stasera",
+            "legoId": "S0031L02"
+          }
+        ]
+      },
+      {
+        "role": "use",
+        "known": "i enjoy the chance to practise speaking with you but i'm too busy",
+        "target": "mi piace l'occasione di fare pratica parlando con te ma sono troppo occupato",
+        "tiles": [
+          {
+            "known": "i enjoy the chance to practise speaking",
+            "target": "mi piace l'occasione di fare pratica parlando",
+            "legoId": "S0206L01"
+          },
+          {
+            "known": "with you",
+            "target": " con te",
+            "legoId": "S0001L04"
+          },
+          {
+            "known": "but",
+            "target": " ma",
+            "legoId": "S0019L01"
+          },
+          {
+            "known": "i'm too busy",
+            "target": " sono troppo occupato",
+            "legoId": "S0193L01#c"
+          }
+        ]
+      },
+      {
+        "role": "use",
+        "known": "i enjoy the chance to practise speaking with you but i was trying to remember a word",
+        "target": "mi piace l'occasione di fare pratica parlando con te ma stavo provando a ricordare una parola",
+        "tiles": [
+          {
+            "known": "i enjoy the chance to practise speaking",
+            "target": "mi piace l'occasione di fare pratica parlando",
+            "legoId": "S0206L01"
+          },
+          {
+            "known": "with you",
+            "target": " con te",
+            "legoId": "S0001L04"
+          },
+          {
+            "known": "but",
+            "target": " ma",
+            "legoId": "S0019L01"
+          },
+          {
+            "known": "i was trying to",
+            "target": " stavo provando a",
+            "legoId": "S0205L02"
+          },
+          {
+            "known": "to remember",
+            "target": " ricordare",
+            "legoId": "S0006L01"
+          },
+          {
+            "known": "a word",
+            "target": " una parola",
+            "legoId": "S0006L02"
+          }
+        ]
+      },
+      {
+        "role": "use",
+        "known": "of course i enjoy the chance to practise speaking tonight",
+        "target": "certo che mi piace l'occasione di fare pratica parlando stasera",
+        "tiles": [
+          {
+            "known": "of course",
+            "target": "certo che",
+            "legoId": "S0136L01"
+          },
+          {
+            "known": "i enjoy the chance to practise speaking",
+            "target": " mi piace l'occasione di fare pratica parlando",
+            "legoId": "S0206L01"
+          },
+          {
+            "known": "tonight",
+            "target": " stasera",
+            "legoId": "S0031L02"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "courseCode": "ita_for_eng",
+    "seedNumber": 300,
+    "legoIndex": 1,
+    "arm": "claude-sonnet-5",
+    "legoId": "S0300L01",
+    "legoKnown": "seem",
+    "legoTarget": "sembrare",
+    "elapsedMs": 212082,
+    "phrases": [
+      {
+        "role": "build",
+        "known": "to seem kind",
+        "target": "sembrare gentile",
+        "tiles": [
+          {
+            "known": "seem",
+            "target": "sembrare",
+            "legoId": "S0300L01"
+          },
+          {
+            "known": "kind",
+            "target": " gentile",
+            "legoId": "S0142L01"
+          }
+        ]
+      },
+      {
+        "role": "build",
+        "known": "to seem kind and patient",
+        "target": "sembrare gentile e paziente",
+        "tiles": [
+          {
+            "known": "seem",
+            "target": "sembrare",
+            "legoId": "S0300L01"
+          },
+          {
+            "known": "kind",
+            "target": " gentile",
+            "legoId": "S0142L01"
+          },
+          {
+            "known": "and",
+            "target": " e",
+            "legoId": "S0015L01"
+          },
+          {
+            "known": "patient",
+            "target": " paziente",
+            "legoId": "S0148L01#c"
+          }
+        ]
+      },
+      {
+        "role": "build",
+        "known": "he doesn't want to seem",
+        "target": "non vuole sembrare",
+        "tiles": [
+          {
+            "known": "he doesn't want",
+            "target": "non vuole",
+            "legoId": "S0034L01"
+          },
+          {
+            "known": "seem",
+            "target": " sembrare",
+            "legoId": "S0300L01"
+          }
+        ]
+      },
+      {
+        "role": "build",
+        "known": "he's going to seem worried",
+        "target": "ha intenzione di sembrare preoccupato",
+        "tiles": [
+          {
+            "known": "he's going to",
+            "target": "ha intenzione di",
+            "legoId": "S0293L01#c"
+          },
+          {
+            "known": "seem",
+            "target": " sembrare",
+            "legoId": "S0300L01"
+          },
+          {
+            "known": "worried",
+            "target": " preoccupato",
+            "legoId": "S0270L01"
+          }
+        ]
+      },
+      {
+        "role": "build",
+        "known": "you'll be able to seem patient",
+        "target": "tu possa sembrare paziente",
+        "tiles": [
+          {
+            "known": "you'll be able",
+            "target": "tu possa",
+            "legoId": "S0292L02"
+          },
+          {
+            "known": "seem",
+            "target": " sembrare",
+            "legoId": "S0300L01"
+          },
+          {
+            "known": "patient",
+            "target": " paziente",
+            "legoId": "S0148L01#c"
+          }
+        ]
+      },
+      {
+        "role": "use",
+        "known": "he doesn't want to seem worried",
+        "target": "non vuole sembrare preoccupato",
+        "tiles": [
+          {
+            "known": "he doesn't want",
+            "target": "non vuole",
+            "legoId": "S0034L01"
+          },
+          {
+            "known": "seem",
+            "target": " sembrare",
+            "legoId": "S0300L01"
+          },
+          {
+            "known": "worried",
+            "target": " preoccupato",
+            "legoId": "S0270L01"
+          }
+        ]
+      },
+      {
+        "role": "use",
+        "known": "why don't you want to seem worried",
+        "target": "perché non vuoi sembrare preoccupato",
+        "tiles": [
+          {
+            "known": "why don't you want to",
+            "target": "perché non vuoi",
+            "legoId": "S0269L01"
+          },
+          {
+            "known": "seem",
+            "target": " sembrare",
+            "legoId": "S0300L01"
+          },
+          {
+            "known": "worried",
+            "target": " preoccupato",
+            "legoId": "S0270L01"
+          }
+        ]
+      },
+      {
+        "role": "use",
+        "known": "he's going to seem nervous",
+        "target": "ha intenzione di sembrare nervoso",
+        "tiles": [
+          {
+            "known": "he's going to",
+            "target": "ha intenzione di",
+            "legoId": "S0293L01#c"
+          },
+          {
+            "known": "seem",
+            "target": " sembrare",
+            "legoId": "S0300L01"
+          },
+          {
+            "known": "nervous",
+            "target": " nervoso",
+            "legoId": "S0147L02"
+          }
+        ]
+      },
+      {
+        "role": "use",
+        "known": "it's starting to seem unusual",
+        "target": "sta cominciando a sembrare insolito",
+        "tiles": [
+          {
+            "known": "it's starting to",
+            "target": "sta cominciando a",
+            "legoId": "S0122L01"
+          },
+          {
+            "known": "seem",
+            "target": " sembrare",
+            "legoId": "S0300L01"
+          },
+          {
+            "known": "unusual",
+            "target": " insolito",
+            "legoId": "S0121L03"
+          }
+        ]
+      },
+      {
+        "role": "use",
+        "known": "I believe that he doesn't want to seem worried",
+        "target": "credo che non vuole sembrare preoccupato",
+        "tiles": [
+          {
+            "known": "I believe that",
+            "target": "credo che",
+            "legoId": "S0125L01"
+          },
+          {
+            "known": "he doesn't want",
+            "target": " non vuole",
+            "legoId": "S0034L01"
+          },
+          {
+            "known": "seem",
+            "target": " sembrare",
+            "legoId": "S0300L01"
+          },
+          {
+            "known": "worried",
+            "target": " preoccupato",
+            "legoId": "S0270L01"
+          }
+        ]
+      },
+      {
+        "role": "use",
+        "known": "he's going to seem kind and patient",
+        "target": "ha intenzione di sembrare gentile e paziente",
+        "tiles": [
+          {
+            "known": "he's going to",
+            "target": "ha intenzione di",
+            "legoId": "S0293L01#c"
+          },
+          {
+            "known": "seem",
+            "target": " sembrare",
+            "legoId": "S0300L01"
+          },
+          {
+            "known": "kind",
+            "target": " gentile",
+            "legoId": "S0142L01"
+          },
+          {
+            "known": "and",
+            "target": " e",
+            "legoId": "S0015L01"
+          },
+          {
+            "known": "patient",
+            "target": " paziente",
+            "legoId": "S0148L01#c"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "courseCode": "ita_for_eng",
+    "seedNumber": 250,
+    "legoIndex": 1,
+    "arm": "claude-sonnet-5",
+    "legoId": "S0250L01",
+    "legoKnown": "something else",
+    "legoTarget": "qualcos'altro",
+    "elapsedMs": 229362,
+    "phrases": [
+      {
+        "role": "build",
+        "known": "to give her something else",
+        "target": "darle qualcos'altro",
+        "tiles": [
+          {
+            "known": "to give her",
+            "target": "darle",
+            "legoId": "S0242L01"
+          },
+          {
+            "known": "something else",
+            "target": " qualcos'altro",
+            "legoId": "S0250L01"
+          }
+        ]
+      },
+      {
+        "role": "build",
+        "known": "tell me something else",
+        "target": "dirmi qualcos'altro",
+        "tiles": [
+          {
+            "known": "tell me",
+            "target": "dirmi",
+            "legoId": "S0150L01#c"
+          },
+          {
+            "known": "something else",
+            "target": " qualcos'altro",
+            "legoId": "S0250L01"
+          }
+        ]
+      },
+      {
+        "role": "build",
+        "known": "something else before you go",
+        "target": "qualcos'altro prima che tu vada",
+        "tiles": [
+          {
+            "known": "something else",
+            "target": "qualcos'altro",
+            "legoId": "S0250L01"
+          },
+          {
+            "known": "before you go",
+            "target": " prima che tu vada",
+            "legoId": "S0249L01"
+          }
+        ]
+      },
+      {
+        "role": "build",
+        "known": "who wanted to ask for something else",
+        "target": "che voleva chiedere qualcos'altro",
+        "tiles": [
+          {
+            "known": "who wanted to ask for",
+            "target": "che voleva chiedere",
+            "legoId": "S0231L02"
+          },
+          {
+            "known": "something else",
+            "target": " qualcos'altro",
+            "legoId": "S0250L01"
+          }
+        ]
+      },
+      {
+        "role": "use",
+        "known": "can you tell me something else?",
+        "target": "puoi dirmi qualcos'altro?",
+        "tiles": [
+          {
+            "known": "can you tell me",
+            "target": "puoi dirmi",
+            "legoId": "S0150L01"
+          },
+          {
+            "known": "something else",
+            "target": " qualcos'altro?",
+            "legoId": "S0250L01"
+          }
+        ]
+      },
+      {
+        "role": "use",
+        "known": "something else would help you",
+        "target": "qualcos'altro ti aiuterebbe",
+        "tiles": [
+          {
+            "known": "something else",
+            "target": "qualcos'altro",
+            "legoId": "S0250L01"
+          },
+          {
+            "known": "would help you",
+            "target": " ti aiuterebbe",
+            "legoId": "S0229L02"
+          }
+        ]
+      },
+      {
+        "role": "use",
+        "known": "he's going to ask you something else",
+        "target": "ti chiederà qualcos'altro",
+        "tiles": [
+          {
+            "known": "he's going to ask you",
+            "target": "ti chiederà",
+            "legoId": "S0223L01"
+          },
+          {
+            "known": "something else",
+            "target": " qualcos'altro",
+            "legoId": "S0250L01"
+          }
+        ]
+      },
+      {
+        "role": "use",
+        "known": "did you watch something else?",
+        "target": "hai guardato qualcos'altro?",
+        "tiles": [
+          {
+            "known": "did you watch",
+            "target": "hai guardato",
+            "legoId": "S0220L01"
+          },
+          {
+            "known": "something else",
+            "target": " qualcos'altro?",
+            "legoId": "S0250L01"
+          }
+        ]
+      },
+      {
+        "role": "use",
+        "known": "I need to give her something else before you go",
+        "target": "ho bisogno di darle qualcos'altro prima che tu vada",
+        "tiles": [
+          {
+            "known": "I need to",
+            "target": "ho bisogno di",
+            "legoId": "S0044L02"
+          },
+          {
+            "known": "to give her",
+            "target": " darle",
+            "legoId": "S0242L01"
+          },
+          {
+            "known": "something else",
+            "target": " qualcos'altro",
+            "legoId": "S0250L01"
+          },
+          {
+            "known": "before you go",
+            "target": " prima che tu vada",
+            "legoId": "S0249L01"
+          }
+        ]
+      },
+      {
+        "role": "use",
+        "known": "I didn't want to give her something else",
+        "target": "non volevo darle qualcos'altro",
+        "tiles": [
+          {
+            "known": "I didn't want to",
+            "target": "non volevo",
+            "legoId": "S0208L01"
+          },
+          {
+            "known": "to give her",
+            "target": " darle",
+            "legoId": "S0242L01"
+          },
+          {
+            "known": "something else",
+            "target": " qualcos'altro",
+            "legoId": "S0250L01"
+          }
+        ]
+      },
+      {
+        "role": "use",
+        "known": "if he could, he would give you something else",
+        "target": "se potesse, ti darebbe qualcos'altro",
+        "tiles": [
+          {
+            "known": "if he could",
+            "target": "se potesse,",
+            "legoId": "S0225L02"
+          },
+          {
+            "known": "he would give you",
+            "target": " ti darebbe",
+            "legoId": "S0225L01"
+          },
+          {
+            "known": "something else",
+            "target": " qualcos'altro",
+            "legoId": "S0250L01"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "courseCode": "ita_for_eng",
+    "seedNumber": 400,
+    "legoIndex": 1,
+    "arm": "claude-sonnet-5",
+    "legoId": "S0400L01",
+    "legoKnown": "to eat",
+    "legoTarget": "mangiare",
+    "elapsedMs": 206972,
+    "phrases": [
+      {
+        "role": "build",
+        "known": "to eat something new",
+        "target": "mangiare qualcosa di nuovo",
+        "tiles": [
+          {
+            "known": "to eat",
+            "target": "mangiare",
+            "legoId": "S0400L01"
+          },
+          {
+            "known": "something new",
+            "target": " qualcosa di nuovo",
+            "legoId": "S0111L02"
+          }
+        ]
+      },
+      {
+        "role": "build",
+        "known": "to eat in the garden",
+        "target": "mangiare in giardino",
+        "tiles": [
+          {
+            "known": "to eat",
+            "target": "mangiare",
+            "legoId": "S0400L01"
+          },
+          {
+            "known": "in the garden",
+            "target": " in giardino",
+            "legoId": "S0383L02"
+          }
+        ]
+      },
+      {
+        "role": "build",
+        "known": "he didn't need to eat",
+        "target": "non aveva bisogno di mangiare",
+        "tiles": [
+          {
+            "known": "he didn't need to",
+            "target": "non aveva bisogno di",
+            "legoId": "S0354L01"
+          },
+          {
+            "known": "to eat",
+            "target": " mangiare",
+            "legoId": "S0400L01"
+          }
+        ]
+      },
+      {
+        "role": "build",
+        "known": "he felt like eating in the garden",
+        "target": "aveva voglia di mangiare in giardino",
+        "tiles": [
+          {
+            "known": "he felt like",
+            "target": "aveva voglia di",
+            "legoId": "S0363L01"
+          },
+          {
+            "known": "to eat",
+            "target": " mangiare",
+            "legoId": "S0400L01"
+          },
+          {
+            "known": "in the garden",
+            "target": " in giardino",
+            "legoId": "S0383L02"
+          }
+        ]
+      },
+      {
+        "role": "use",
+        "known": "did you ask if he wanted to eat",
+        "target": "hai chiesto se voleva mangiare?",
+        "tiles": [
+          {
+            "known": "did you ask",
+            "target": "hai chiesto",
+            "legoId": "S0382L01"
+          },
+          {
+            "known": "if he wanted to",
+            "target": " se voleva",
+            "legoId": "S0381L02"
+          },
+          {
+            "known": "to eat",
+            "target": " mangiare?",
+            "legoId": "S0400L01"
+          }
+        ]
+      },
+      {
+        "role": "use",
+        "known": "what did she want to eat",
+        "target": "cosa voleva mangiare?",
+        "tiles": [
+          {
+            "known": "what she wanted to",
+            "target": "cosa voleva",
+            "legoId": "S0380L02"
+          },
+          {
+            "known": "to eat",
+            "target": " mangiare?",
+            "legoId": "S0400L01"
+          }
+        ]
+      },
+      {
+        "role": "use",
+        "known": "he liked to eat",
+        "target": "gli piaceva mangiare",
+        "tiles": [
+          {
+            "known": "he liked",
+            "target": "gli piaceva",
+            "legoId": "S0364L02"
+          },
+          {
+            "known": "to eat",
+            "target": " mangiare",
+            "legoId": "S0400L01"
+          }
+        ]
+      },
+      {
+        "role": "use",
+        "known": "i liked to eat in the garden",
+        "target": "mi piaceva mangiare in giardino",
+        "tiles": [
+          {
+            "known": "i liked",
+            "target": "mi piaceva",
+            "legoId": "S0346L02"
+          },
+          {
+            "known": "to eat",
+            "target": " mangiare",
+            "legoId": "S0400L01"
+          },
+          {
+            "known": "in the garden",
+            "target": " in giardino",
+            "legoId": "S0383L02"
+          }
+        ]
+      },
+      {
+        "role": "use",
+        "known": "she can't eat",
+        "target": "non può mangiare",
+        "tiles": [
+          {
+            "known": "she can't",
+            "target": "non può",
+            "legoId": "S0331L01"
+          },
+          {
+            "known": "to eat",
+            "target": " mangiare",
+            "legoId": "S0400L01"
+          }
+        ]
+      },
+      {
+        "role": "use",
+        "known": "it's important to eat",
+        "target": "è importante mangiare",
+        "tiles": [
+          {
+            "known": "it's important",
+            "target": "è importante",
+            "legoId": "S0329L01"
+          },
+          {
+            "known": "to eat",
+            "target": " mangiare",
+            "legoId": "S0400L01"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "courseCode": "ita_for_eng",
+    "seedNumber": 358,
+    "legoIndex": 1,
+    "arm": "claude-sonnet-5",
+    "legoId": "S0358L01",
+    "legoKnown": "to reach",
+    "legoTarget": "raggiungere",
+    "elapsedMs": 227048,
+    "phrases": [
+      {
+        "role": "build",
+        "known": "to reach the door",
+        "target": "raggiungere la porta",
+        "tiles": [
+          {
+            "known": "to reach",
+            "target": "raggiungere",
+            "legoId": "S0358L01"
+          },
+          {
+            "known": "the door",
+            "target": " la porta",
+            "legoId": "S0336L03"
+          }
+        ]
+      },
+      {
+        "role": "build",
+        "known": "she should reach the door",
+        "target": "dovrebbe raggiungere la porta",
+        "tiles": [
+          {
+            "known": "she should",
+            "target": "dovrebbe",
+            "legoId": "S0328L01"
+          },
+          {
+            "known": "to reach",
+            "target": " raggiungere",
+            "legoId": "S0358L01"
+          },
+          {
+            "known": "the door",
+            "target": " la porta",
+            "legoId": "S0336L03"
+          }
+        ]
+      },
+      {
+        "role": "build",
+        "known": "she must reach the group",
+        "target": "deve raggiungere il gruppo",
+        "tiles": [
+          {
+            "known": "she must",
+            "target": "deve",
+            "legoId": "S0319L01"
+          },
+          {
+            "known": "to reach",
+            "target": " raggiungere",
+            "legoId": "S0358L01"
+          },
+          {
+            "known": "the group",
+            "target": " il gruppo",
+            "legoId": "S0333L02"
+          }
+        ]
+      },
+      {
+        "role": "build",
+        "known": "she can't reach",
+        "target": "non può raggiungere",
+        "tiles": [
+          {
+            "known": "she can't",
+            "target": "non può",
+            "legoId": "S0331L01"
+          },
+          {
+            "known": "to reach",
+            "target": " raggiungere",
+            "legoId": "S0358L01"
+          }
+        ]
+      },
+      {
+        "role": "use",
+        "known": "she needed to reach the company",
+        "target": "doveva raggiungere l'azienda",
+        "tiles": [
+          {
+            "known": "she needed to",
+            "target": "doveva",
+            "legoId": "S0353L01"
+          },
+          {
+            "known": "to reach",
+            "target": " raggiungere",
+            "legoId": "S0358L01"
+          },
+          {
+            "known": "the company",
+            "target": " l'azienda",
+            "legoId": "S0326L03"
+          }
+        ]
+      },
+      {
+        "role": "use",
+        "known": "he said that she can't reach the company",
+        "target": "ha detto che non può raggiungere l'azienda",
+        "tiles": [
+          {
+            "known": "he said that",
+            "target": "ha detto che",
+            "legoId": "S0301L01"
+          },
+          {
+            "known": "she can't",
+            "target": " non può",
+            "legoId": "S0331L01"
+          },
+          {
+            "known": "to reach",
+            "target": " raggiungere",
+            "legoId": "S0358L01"
+          },
+          {
+            "known": "the company",
+            "target": " l'azienda",
+            "legoId": "S0326L03"
+          }
+        ]
+      },
+      {
+        "role": "use",
+        "known": "why don't you want to reach the group",
+        "target": "perché non vuoi raggiungere il gruppo",
+        "tiles": [
+          {
+            "known": "why don't you want to",
+            "target": "perché non vuoi",
+            "legoId": "S0269L01"
+          },
+          {
+            "known": "to reach",
+            "target": " raggiungere",
+            "legoId": "S0358L01"
+          },
+          {
+            "known": "the group",
+            "target": " il gruppo",
+            "legoId": "S0333L02"
+          }
+        ]
+      },
+      {
+        "role": "use",
+        "known": "I hope you'll be able to reach the door",
+        "target": "spero tu possa raggiungere la porta",
+        "tiles": [
+          {
+            "known": "I hope",
+            "target": "spero",
+            "legoId": "S0291L01"
+          },
+          {
+            "known": "you'll be able",
+            "target": " tu possa",
+            "legoId": "S0292L02"
+          },
+          {
+            "known": "to reach",
+            "target": " raggiungere",
+            "legoId": "S0358L01"
+          },
+          {
+            "known": "the door",
+            "target": " la porta",
+            "legoId": "S0336L03"
+          }
+        ]
+      },
+      {
+        "role": "use",
+        "known": "if she wanted to she must reach the door",
+        "target": "se volesse deve raggiungere la porta",
+        "tiles": [
+          {
+            "known": "if she wanted to",
+            "target": "se volesse",
+            "legoId": "S0317L01"
+          },
+          {
+            "known": "she must",
+            "target": " deve",
+            "legoId": "S0319L01"
+          },
+          {
+            "known": "to reach",
+            "target": " raggiungere",
+            "legoId": "S0358L01"
+          },
+          {
+            "known": "the door",
+            "target": " la porta",
+            "legoId": "S0336L03"
+          }
+        ]
+      },
+      {
+        "role": "use",
+        "known": "I wanted to reach a country",
+        "target": "volevo raggiungere un paese",
+        "tiles": [
+          {
+            "known": "I wanted",
+            "target": "volevo",
+            "legoId": "S0127L02#c"
+          },
+          {
+            "known": "to reach",
+            "target": " raggiungere",
+            "legoId": "S0358L01"
+          },
+          {
+            "known": "a country",
+            "target": " un paese",
+            "legoId": "S0319L03"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "courseCode": "ita_for_eng",
+    "seedNumber": 440,
+    "legoIndex": 1,
+    "arm": "claude-sonnet-5",
+    "legoId": "S0440L01",
+    "legoKnown": "while they're still",
+    "legoTarget": "finché sono ancora",
+    "elapsedMs": 311150,
+    "phrases": [
+      {
+        "role": "build",
+        "known": "while they're still unhappy",
+        "target": "finché sono ancora infelici",
+        "tiles": [
+          {
+            "known": "while they're still",
+            "target": "finché sono ancora",
+            "legoId": "S0440L01"
+          },
+          {
+            "known": "unhappy",
+            "target": " infelici",
+            "legoId": "S0426L03#c"
+          }
+        ]
+      },
+      {
+        "role": "build",
+        "known": "while they're still friends",
+        "target": "finché sono ancora amici",
+        "tiles": [
+          {
+            "known": "while they're still",
+            "target": "finché sono ancora",
+            "legoId": "S0440L01"
+          },
+          {
+            "known": "friends",
+            "target": " amici",
+            "legoId": "S0350L02#c"
+          }
+        ]
+      },
+      {
+        "role": "build",
+        "known": "they want to travel while they're still friends",
+        "target": "vogliono viaggiare finché sono ancora amici",
+        "tiles": [
+          {
+            "known": "they want to",
+            "target": "vogliono",
+            "legoId": "S0416L01"
+          },
+          {
+            "known": "to travel",
+            "target": " viaggiare",
+            "legoId": "S0379L03"
+          },
+          {
+            "known": "while they're still",
+            "target": " finché sono ancora",
+            "legoId": "S0440L01"
+          },
+          {
+            "known": "friends",
+            "target": " amici",
+            "legoId": "S0350L02#c"
+          }
+        ]
+      },
+      {
+        "role": "build",
+        "known": "our children would like to travel while they're still unhappy",
+        "target": "i nostri figli vorrebbero viaggiare finché sono ancora infelici",
+        "tiles": [
+          {
+            "known": "our children",
+            "target": "i nostri figli",
+            "legoId": "S0398L01"
+          },
+          {
+            "known": "they would like to",
+            "target": " vorrebbero",
+            "legoId": "S0426L01"
+          },
+          {
+            "known": "to travel",
+            "target": " viaggiare",
+            "legoId": "S0379L03"
+          },
+          {
+            "known": "while they're still",
+            "target": " finché sono ancora",
+            "legoId": "S0440L01"
+          },
+          {
+            "known": "unhappy",
+            "target": " infelici",
+            "legoId": "S0426L03#c"
+          }
+        ]
+      },
+      {
+        "role": "build",
+        "known": "I believe that while they're still unhappy they will be friends",
+        "target": "credo che finché sono ancora infelici saranno amici",
+        "tiles": [
+          {
+            "known": "I believe that",
+            "target": "credo che",
+            "legoId": "S0125L01"
+          },
+          {
+            "known": "while they're still",
+            "target": " finché sono ancora",
+            "legoId": "S0440L01"
+          },
+          {
+            "known": "unhappy",
+            "target": " infelici",
+            "legoId": "S0426L03#c"
+          },
+          {
+            "known": "they will be",
+            "target": " saranno",
+            "legoId": "S0431L01"
+          },
+          {
+            "known": "friends",
+            "target": " amici",
+            "legoId": "S0350L02#c"
+          }
+        ]
+      },
+      {
+        "role": "use",
+        "known": "they don't need to travel while they're still unhappy",
+        "target": "non devono viaggiare finché sono ancora infelici",
+        "tiles": [
+          {
+            "known": "they don't need to",
+            "target": "non devono",
+            "legoId": "S0420L01"
+          },
+          {
+            "known": "to travel",
+            "target": " viaggiare",
+            "legoId": "S0379L03"
+          },
+          {
+            "known": "while they're still",
+            "target": " finché sono ancora",
+            "legoId": "S0440L01"
+          },
+          {
+            "known": "unhappy",
+            "target": " infelici",
+            "legoId": "S0426L03#c"
+          }
+        ]
+      },
+      {
+        "role": "use",
+        "known": "they think that they will be more patient while they're still friends",
+        "target": "pensano che saranno più pazienti finché sono ancora amici",
+        "tiles": [
+          {
+            "known": "they think that",
+            "target": "pensano che",
+            "legoId": "S0210L01"
+          },
+          {
+            "known": "they will be",
+            "target": " saranno",
+            "legoId": "S0431L01"
+          },
+          {
+            "known": "more patient",
+            "target": " più pazienti",
+            "legoId": "S0398L02#c"
+          },
+          {
+            "known": "while they're still",
+            "target": " finché sono ancora",
+            "legoId": "S0440L01"
+          },
+          {
+            "known": "friends",
+            "target": " amici",
+            "legoId": "S0350L02#c"
+          }
+        ]
+      },
+      {
+        "role": "use",
+        "known": "they're bored while they're still friends",
+        "target": "si annoiano finché sono ancora amici",
+        "tiles": [
+          {
+            "known": "they're bored",
+            "target": "si annoiano",
+            "legoId": "S0427L01"
+          },
+          {
+            "known": "while they're still",
+            "target": " finché sono ancora",
+            "legoId": "S0440L01"
+          },
+          {
+            "known": "friends",
+            "target": " amici",
+            "legoId": "S0350L02#c"
+          }
+        ]
+      },
+      {
+        "role": "use",
+        "known": "could they cut the number of students while they're still unhappy",
+        "target": "potrebbero ridurre il numero di studenti finché sono ancora infelici",
+        "tiles": [
+          {
+            "known": "could they cut",
+            "target": "potrebbero ridurre",
+            "legoId": "S0434L01"
+          },
+          {
+            "known": "the number of students",
+            "target": " il numero di studenti",
+            "legoId": "S0434L02"
+          },
+          {
+            "known": "while they're still",
+            "target": " finché sono ancora",
+            "legoId": "S0440L01"
+          },
+          {
+            "known": "unhappy",
+            "target": " infelici",
+            "legoId": "S0426L03#c"
+          }
+        ]
+      },
+      {
+        "role": "use",
+        "known": "our children want to become more patient while they're still friends",
+        "target": "i nostri figli vogliono diventare più pazienti finché sono ancora amici",
+        "tiles": [
+          {
+            "known": "our children",
+            "target": "i nostri figli",
+            "legoId": "S0398L01"
+          },
+          {
+            "known": "they want to",
+            "target": " vogliono",
+            "legoId": "S0416L01"
+          },
+          {
+            "known": "to become",
+            "target": " diventare",
+            "legoId": "S0398L02#c"
+          },
+          {
+            "known": "more patient",
+            "target": " più pazienti",
+            "legoId": "S0398L02#c"
+          },
+          {
+            "known": "while they're still",
+            "target": " finché sono ancora",
+            "legoId": "S0440L01"
+          },
+          {
+            "known": "friends",
+            "target": " amici",
+            "legoId": "S0350L02#c"
+          }
+        ]
+      },
+      {
+        "role": "use",
+        "known": "I'm sure that while they're still unhappy they will be more patient",
+        "target": "sono sicuro che finché sono ancora infelici saranno più pazienti",
+        "tiles": [
+          {
+            "known": "I'm sure that",
+            "target": "sono sicuro che",
+            "legoId": "S0340L01"
+          },
+          {
+            "known": "while they're still",
+            "target": " finché sono ancora",
+            "legoId": "S0440L01"
+          },
+          {
+            "known": "unhappy",
+            "target": " infelici",
+            "legoId": "S0426L03#c"
+          },
+          {
+            "known": "they will be",
+            "target": " saranno",
+            "legoId": "S0431L01"
+          },
+          {
+            "known": "more patient",
+            "target": " più pazienti",
+            "legoId": "S0398L02#c"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "courseCode": "ita_for_eng",
+    "seedNumber": 470,
+    "legoIndex": 1,
+    "arm": "claude-sonnet-5",
+    "legoId": "S0470L01",
+    "legoKnown": "how high",
+    "legoTarget": "quanto in alto",
+    "elapsedMs": 231041,
+    "phrases": [
+      {
+        "role": "build",
+        "known": "how high the wall",
+        "target": "quanto in alto il muro",
+        "tiles": [
+          {
+            "known": "how high",
+            "target": "quanto in alto",
+            "legoId": "S0470L01"
+          },
+          {
+            "known": "the wall",
+            "target": "il muro",
+            "legoId": "S0466L03#c"
+          }
+        ]
+      },
+      {
+        "role": "build",
+        "known": "how high he might be",
+        "target": "quanto in alto potrebbe essere",
+        "tiles": [
+          {
+            "known": "how high",
+            "target": "quanto in alto",
+            "legoId": "S0470L01"
+          },
+          {
+            "known": "he might be",
+            "target": "potrebbe essere",
+            "legoId": "S0456L01"
+          }
+        ]
+      },
+      {
+        "role": "build",
+        "known": "how high there",
+        "target": "quanto in alto lì",
+        "tiles": [
+          {
+            "known": "how high",
+            "target": "quanto in alto",
+            "legoId": "S0470L01"
+          },
+          {
+            "known": "there",
+            "target": "lì",
+            "legoId": "S0456L02"
+          }
+        ]
+      },
+      {
+        "role": "build",
+        "known": "I will ask how high",
+        "target": "chiederò quanto in alto",
+        "tiles": [
+          {
+            "known": "I will ask",
+            "target": "chiederò",
+            "legoId": "S0465L02#c"
+          },
+          {
+            "known": "how high",
+            "target": "quanto in alto",
+            "legoId": "S0470L01"
+          }
+        ]
+      },
+      {
+        "role": "use",
+        "known": "how high do we go?",
+        "target": "quanto in alto andiamo?",
+        "tiles": [
+          {
+            "known": "how high",
+            "target": "quanto in alto",
+            "legoId": "S0470L01"
+          },
+          {
+            "known": "we go",
+            "target": "andiamo",
+            "legoId": "S0413L03#c"
+          }
+        ]
+      },
+      {
+        "role": "use",
+        "known": "I asked how high we go",
+        "target": "ho chiesto quanto in alto andiamo",
+        "tiles": [
+          {
+            "known": "I asked",
+            "target": "ho chiesto",
+            "legoId": "S0380L01"
+          },
+          {
+            "known": "how high",
+            "target": "quanto in alto",
+            "legoId": "S0470L01"
+          },
+          {
+            "known": "we go",
+            "target": "andiamo",
+            "legoId": "S0413L03#c"
+          }
+        ]
+      },
+      {
+        "role": "use",
+        "known": "did you ask how high we go?",
+        "target": "hai chiesto quanto in alto andiamo?",
+        "tiles": [
+          {
+            "known": "did you ask",
+            "target": "hai chiesto",
+            "legoId": "S0382L01"
+          },
+          {
+            "known": "how high",
+            "target": "quanto in alto",
+            "legoId": "S0470L01"
+          },
+          {
+            "known": "we go",
+            "target": "andiamo",
+            "legoId": "S0413L03#c"
+          }
+        ]
+      },
+      {
+        "role": "use",
+        "known": "I didn't ask how high we go",
+        "target": "non ho chiesto quanto in alto andiamo",
+        "tiles": [
+          {
+            "known": "I didn't ask",
+            "target": "non ho chiesto",
+            "legoId": "S0381L01"
+          },
+          {
+            "known": "how high",
+            "target": "quanto in alto",
+            "legoId": "S0470L01"
+          },
+          {
+            "known": "we go",
+            "target": "andiamo",
+            "legoId": "S0413L03#c"
+          }
+        ]
+      },
+      {
+        "role": "use",
+        "known": "did you ask how high?",
+        "target": "hai chiesto quanto in alto?",
+        "tiles": [
+          {
+            "known": "did you ask",
+            "target": "hai chiesto",
+            "legoId": "S0382L01"
+          },
+          {
+            "known": "how high",
+            "target": "quanto in alto",
+            "legoId": "S0470L01"
+          }
+        ]
+      },
+      {
+        "role": "use",
+        "known": "I will ask how high we go",
+        "target": "chiederò quanto in alto andiamo",
+        "tiles": [
+          {
+            "known": "I will ask",
+            "target": "chiederò",
+            "legoId": "S0465L02#c"
+          },
+          {
+            "known": "how high",
+            "target": "quanto in alto",
+            "legoId": "S0470L01"
+          },
+          {
+            "known": "we go",
+            "target": "andiamo",
+            "legoId": "S0413L03#c"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "courseCode": "ita_for_eng",
+    "seedNumber": 510,
+    "legoIndex": 1,
+    "arm": "claude-sonnet-5",
+    "legoId": "S0510L01",
+    "legoKnown": "to look for",
+    "legoTarget": "cercare",
+    "elapsedMs": 255578,
+    "phrases": [
+      {
+        "role": "build",
+        "known": "to look for the car",
+        "target": "cercare la macchina",
+        "tiles": [
+          {
+            "known": "to look for",
+            "target": "cercare",
+            "legoId": "S0510L01"
+          },
+          {
+            "known": "the car",
+            "target": " la macchina",
+            "legoId": "S0315L01"
+          }
+        ]
+      },
+      {
+        "role": "build",
+        "known": "we should look for the car",
+        "target": "dovremmo cercare la macchina",
+        "tiles": [
+          {
+            "known": "we should",
+            "target": "dovremmo",
+            "legoId": "S0499L04"
+          },
+          {
+            "known": "to look for",
+            "target": " cercare",
+            "legoId": "S0510L01"
+          },
+          {
+            "known": "the car",
+            "target": " la macchina",
+            "legoId": "S0315L01"
+          }
+        ]
+      },
+      {
+        "role": "build",
+        "known": "she needed to look for",
+        "target": "doveva cercare",
+        "tiles": [
+          {
+            "known": "she needed to",
+            "target": "doveva",
+            "legoId": "S0353L01"
+          },
+          {
+            "known": "to look for",
+            "target": " cercare",
+            "legoId": "S0510L01"
+          }
+        ]
+      },
+      {
+        "role": "build",
+        "known": "i'm not planning to look for",
+        "target": "non ho intenzione di cercare",
+        "tiles": [
+          {
+            "known": "i'm not planning to",
+            "target": "non ho intenzione di",
+            "legoId": "S0496L03"
+          },
+          {
+            "known": "to look for",
+            "target": " cercare",
+            "legoId": "S0510L01"
+          }
+        ]
+      },
+      {
+        "role": "use",
+        "known": "i hate looking for a car park",
+        "target": "odio cercare parcheggio",
+        "tiles": [
+          {
+            "known": "i hate",
+            "target": "odio",
+            "legoId": "S0503L01"
+          },
+          {
+            "known": "to look for",
+            "target": " cercare",
+            "legoId": "S0510L01"
+          },
+          {
+            "known": "car park",
+            "target": " parcheggio",
+            "legoId": "S0467L02"
+          }
+        ]
+      },
+      {
+        "role": "use",
+        "known": "she needed to look for a shop near the hotel",
+        "target": "doveva cercare un negozio vicino all'hotel",
+        "tiles": [
+          {
+            "known": "she needed to",
+            "target": "doveva",
+            "legoId": "S0353L01"
+          },
+          {
+            "known": "to look for",
+            "target": " cercare",
+            "legoId": "S0510L01"
+          },
+          {
+            "known": "a shop",
+            "target": " un negozio",
+            "legoId": "S0460L02"
+          },
+          {
+            "known": "near the hotel",
+            "target": " vicino all'hotel",
+            "legoId": "S0460L03"
+          }
+        ]
+      },
+      {
+        "role": "use",
+        "known": "we can't look for the car right now",
+        "target": "non possiamo cercare la macchina subito",
+        "tiles": [
+          {
+            "known": "we can't",
+            "target": "non possiamo",
+            "legoId": "S0469L02"
+          },
+          {
+            "known": "to look for",
+            "target": " cercare",
+            "legoId": "S0510L01"
+          },
+          {
+            "known": "the car",
+            "target": " la macchina",
+            "legoId": "S0315L01"
+          },
+          {
+            "known": "right now",
+            "target": " subito",
+            "legoId": "S0489L01"
+          }
+        ]
+      },
+      {
+        "role": "use",
+        "known": "there's no point looking for a shop right now",
+        "target": "non ha senso cercare un negozio subito",
+        "tiles": [
+          {
+            "known": "there's no point",
+            "target": "non ha senso",
+            "legoId": "S0508L02"
+          },
+          {
+            "known": "to look for",
+            "target": " cercare",
+            "legoId": "S0510L01"
+          },
+          {
+            "known": "a shop",
+            "target": " un negozio",
+            "legoId": "S0460L02"
+          },
+          {
+            "known": "right now",
+            "target": " subito",
+            "legoId": "S0489L01"
+          }
+        ]
+      },
+      {
+        "role": "use",
+        "known": "if only i could look for the car",
+        "target": "se solo potessi cercare la macchina",
+        "tiles": [
+          {
+            "known": "if only i could",
+            "target": "se solo potessi",
+            "legoId": "S0501L01"
+          },
+          {
+            "known": "to look for",
+            "target": " cercare",
+            "legoId": "S0510L01"
+          },
+          {
+            "known": "the car",
+            "target": " la macchina",
+            "legoId": "S0315L01"
+          }
+        ]
+      },
+      {
+        "role": "use",
+        "known": "why don't you want to look for a shop near the hotel?",
+        "target": "perché non vuoi cercare un negozio vicino all'hotel",
+        "tiles": [
+          {
+            "known": "why don't you want to",
+            "target": "perché non vuoi",
+            "legoId": "S0269L01"
+          },
+          {
+            "known": "to look for",
+            "target": " cercare",
+            "legoId": "S0510L01"
+          },
+          {
+            "known": "a shop",
+            "target": " un negozio",
+            "legoId": "S0460L02"
+          },
+          {
+            "known": "near the hotel",
+            "target": " vicino all'hotel",
+            "legoId": "S0460L03"
+          }
+        ]
+      },
+      {
+        "role": "use",
+        "known": "he said that we should look for the car",
+        "target": "ha detto che dovremmo cercare la macchina",
+        "tiles": [
+          {
+            "known": "he said that",
+            "target": "ha detto che",
+            "legoId": "S0383L01"
+          },
+          {
+            "known": "we should",
+            "target": " dovremmo",
+            "legoId": "S0499L04"
+          },
+          {
+            "known": "to look for",
+            "target": " cercare",
+            "legoId": "S0510L01"
+          },
+          {
+            "known": "the car",
+            "target": " la macchina",
+            "legoId": "S0315L01"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "courseCode": "ita_for_eng",
+    "seedNumber": 535,
+    "legoIndex": 1,
+    "arm": "claude-sonnet-5",
+    "legoId": "S0535L01",
+    "legoKnown": "he made a promise",
+    "legoTarget": "ha fatto una promessa",
+    "elapsedMs": 281047,
+    "phrases": [
+      {
+        "role": "build",
+        "known": "he made a promise a week ago",
+        "target": "ha fatto una promessa una settimana fa",
+        "tiles": [
+          {
+            "known": "he made a promise",
+            "target": "ha fatto una promessa",
+            "legoId": "S0535L01"
+          },
+          {
+            "known": "a week ago",
+            "target": " una settimana fa",
+            "legoId": "S0347L02"
+          }
+        ]
+      },
+      {
+        "role": "build",
+        "known": "maybe he made a promise",
+        "target": "forse ha fatto una promessa",
+        "tiles": [
+          {
+            "known": "maybe",
+            "target": "forse",
+            "legoId": "S0499L01"
+          },
+          {
+            "known": "he made a promise",
+            "target": " ha fatto una promessa",
+            "legoId": "S0535L01"
+          }
+        ]
+      },
+      {
+        "role": "build",
+        "known": "maybe he made a promise a week ago",
+        "target": "forse ha fatto una promessa una settimana fa",
+        "tiles": [
+          {
+            "known": "maybe",
+            "target": "forse",
+            "legoId": "S0499L01"
+          },
+          {
+            "known": "he made a promise",
+            "target": " ha fatto una promessa",
+            "legoId": "S0535L01"
+          },
+          {
+            "known": "a week ago",
+            "target": " una settimana fa",
+            "legoId": "S0347L02"
+          }
+        ]
+      },
+      {
+        "role": "build",
+        "known": "he said that he made a promise",
+        "target": "ha detto che ha fatto una promessa",
+        "tiles": [
+          {
+            "known": "he said that",
+            "target": "ha detto che",
+            "legoId": "S0383L01"
+          },
+          {
+            "known": "he made a promise",
+            "target": " ha fatto una promessa",
+            "legoId": "S0535L01"
+          }
+        ]
+      },
+      {
+        "role": "build",
+        "known": "probably he made a promise",
+        "target": "probabilmente ha fatto una promessa",
+        "tiles": [
+          {
+            "known": "probably",
+            "target": "probabilmente",
+            "legoId": "S0528L01"
+          },
+          {
+            "known": "he made a promise",
+            "target": " ha fatto una promessa",
+            "legoId": "S0535L01"
+          }
+        ]
+      },
+      {
+        "role": "use",
+        "known": "I'm sure that he made a promise",
+        "target": "sono sicuro che ha fatto una promessa",
+        "tiles": [
+          {
+            "known": "I'm sure that",
+            "target": "sono sicuro che",
+            "legoId": "S0340L01"
+          },
+          {
+            "known": "he made a promise",
+            "target": " ha fatto una promessa",
+            "legoId": "S0535L01"
+          }
+        ]
+      },
+      {
+        "role": "use",
+        "known": "I heard that he made a promise",
+        "target": "ho sentito che ha fatto una promessa",
+        "tiles": [
+          {
+            "known": "I heard that",
+            "target": "ho sentito che",
+            "legoId": "S0364L01"
+          },
+          {
+            "known": "he made a promise",
+            "target": " ha fatto una promessa",
+            "legoId": "S0535L01"
+          }
+        ]
+      },
+      {
+        "role": "use",
+        "known": "maybe he made a promise but she forgot it",
+        "target": "forse ha fatto una promessa ma lei lo ha dimenticato",
+        "tiles": [
+          {
+            "known": "maybe",
+            "target": "forse",
+            "legoId": "S0499L01"
+          },
+          {
+            "known": "he made a promise",
+            "target": " ha fatto una promessa",
+            "legoId": "S0535L01"
+          },
+          {
+            "known": "but",
+            "target": " ma",
+            "legoId": "S0464L02#c"
+          },
+          {
+            "known": "she forgot it",
+            "target": " lei lo ha dimenticato",
+            "legoId": "S0464L03"
+          }
+        ]
+      },
+      {
+        "role": "use",
+        "known": "did he make a promise this time?",
+        "target": "ha fatto una promessa questa volta?",
+        "tiles": [
+          {
+            "known": "he made a promise",
+            "target": "ha fatto una promessa",
+            "legoId": "S0535L01"
+          },
+          {
+            "known": "this time",
+            "target": " questa volta?",
+            "legoId": "S0318L01"
+          }
+        ]
+      },
+      {
+        "role": "use",
+        "known": "he's made a promise by now",
+        "target": "ha fatto una promessa ormai",
+        "tiles": [
+          {
+            "known": "he made a promise",
+            "target": "ha fatto una promessa",
+            "legoId": "S0535L01"
+          },
+          {
+            "known": "by now",
+            "target": " ormai",
+            "legoId": "S0480L02"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "courseCode": "ita_for_eng",
+    "seedNumber": 560,
+    "legoIndex": 1,
+    "arm": "claude-sonnet-5",
+    "legoId": "S0560L01",
+    "legoKnown": "the beach",
+    "legoTarget": "la spiaggia",
+    "elapsedMs": 284016,
+    "phrases": [
+      {
+        "role": "build",
+        "known": "to find the beach",
+        "target": "trovare la spiaggia",
+        "tiles": [
+          {
+            "known": "to find",
+            "target": "trovare",
+            "legoId": "S0460L01"
+          },
+          {
+            "known": "the beach",
+            "target": " la spiaggia",
+            "legoId": "S0560L01"
+          }
+        ]
+      },
+      {
+        "role": "build",
+        "known": "to look for the beach",
+        "target": "cercare la spiaggia",
+        "tiles": [
+          {
+            "known": "to look for",
+            "target": "cercare",
+            "legoId": "S0510L01"
+          },
+          {
+            "known": "the beach",
+            "target": " la spiaggia",
+            "legoId": "S0560L01"
+          }
+        ]
+      },
+      {
+        "role": "build",
+        "known": "without the beach",
+        "target": "senza la spiaggia",
+        "tiles": [
+          {
+            "known": "without",
+            "target": "senza",
+            "legoId": "S0540L02#c"
+          },
+          {
+            "known": "the beach",
+            "target": " la spiaggia",
+            "legoId": "S0560L01"
+          }
+        ]
+      },
+      {
+        "role": "build",
+        "known": "without the beach nearby",
+        "target": "senza la spiaggia vicino",
+        "tiles": [
+          {
+            "known": "without",
+            "target": "senza",
+            "legoId": "S0540L02#c"
+          },
+          {
+            "known": "the beach",
+            "target": " la spiaggia",
+            "legoId": "S0560L01"
+          },
+          {
+            "known": "near",
+            "target": " vicino",
+            "legoId": "S0460L03#c"
+          }
+        ]
+      },
+      {
+        "role": "use",
+        "known": "I love the beach",
+        "target": "amo la spiaggia",
+        "tiles": [
+          {
+            "known": "I love",
+            "target": "amo",
+            "legoId": "S0491L01"
+          },
+          {
+            "known": "the beach",
+            "target": " la spiaggia",
+            "legoId": "S0560L01"
+          }
+        ]
+      },
+      {
+        "role": "use",
+        "known": "the beach matters",
+        "target": "la spiaggia conta",
+        "tiles": [
+          {
+            "known": "the beach",
+            "target": "la spiaggia",
+            "legoId": "S0560L01"
+          },
+          {
+            "known": "it matters",
+            "target": " conta",
+            "legoId": "S0495L01"
+          }
+        ]
+      },
+      {
+        "role": "use",
+        "known": "you have found the beach",
+        "target": "hai trovato la spiaggia",
+        "tiles": [
+          {
+            "known": "you have found",
+            "target": "hai trovato",
+            "legoId": "S0559L01"
+          },
+          {
+            "known": "the beach",
+            "target": " la spiaggia",
+            "legoId": "S0560L01"
+          }
+        ]
+      },
+      {
+        "role": "use",
+        "known": "I found the beach yesterday",
+        "target": "ho trovato la spiaggia ieri",
+        "tiles": [
+          {
+            "known": "I found",
+            "target": "ho trovato",
+            "legoId": "S0514L01"
+          },
+          {
+            "known": "the beach",
+            "target": " la spiaggia",
+            "legoId": "S0560L01"
+          },
+          {
+            "known": "yesterday",
+            "target": " ieri",
+            "legoId": "S0453L01#c"
+          }
+        ]
+      },
+      {
+        "role": "use",
+        "known": "we would like to find the beach",
+        "target": "vorremmo trovare la spiaggia",
+        "tiles": [
+          {
+            "known": "we would like to",
+            "target": "vorremmo",
+            "legoId": "S0411L01"
+          },
+          {
+            "known": "to find",
+            "target": " trovare",
+            "legoId": "S0460L01"
+          },
+          {
+            "known": "the beach",
+            "target": " la spiaggia",
+            "legoId": "S0560L01"
+          }
+        ]
+      },
+      {
+        "role": "use",
+        "known": "he doesn't need to find the beach",
+        "target": "non ha bisogno di trovare la spiaggia",
+        "tiles": [
+          {
+            "known": "he doesn't need to",
+            "target": "non ha bisogno di",
+            "legoId": "S0320L01"
+          },
+          {
+            "known": "to find",
+            "target": " trovare",
+            "legoId": "S0460L01"
+          },
+          {
+            "known": "the beach",
+            "target": " la spiaggia",
+            "legoId": "S0560L01"
+          }
+        ]
+      },
+      {
+        "role": "use",
+        "known": "where can I find the beach",
+        "target": "dove posso trovare la spiaggia",
+        "tiles": [
+          {
+            "known": "where I can",
+            "target": "dove posso",
+            "legoId": "S0461L01"
+          },
+          {
+            "known": "to find",
+            "target": " trovare",
+            "legoId": "S0460L01"
+          },
+          {
+            "known": "the beach",
+            "target": " la spiaggia",
+            "legoId": "S0560L01"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "courseCode": "ita_for_eng",
+    "seedNumber": 580,
+    "legoIndex": 1,
+    "arm": "claude-sonnet-5",
+    "legoId": "S0580L01",
+    "legoKnown": "we've often wanted to",
+    "legoTarget": "abbiamo spesso voluto",
+    "elapsedMs": 354993,
+    "phrases": [
+      {
+        "role": "build",
+        "known": "we've often wanted to check",
+        "target": "abbiamo spesso voluto controllare",
+        "tiles": [
+          {
+            "known": "we've often wanted to",
+            "target": "abbiamo spesso voluto",
+            "legoId": "S0580L01"
+          },
+          {
+            "known": "to check",
+            "target": " controllare",
+            "legoId": "S0525L01"
+          }
+        ]
+      },
+      {
+        "role": "build",
+        "known": "we've often wanted to find",
+        "target": "abbiamo spesso voluto trovare",
+        "tiles": [
+          {
+            "known": "we've often wanted to",
+            "target": "abbiamo spesso voluto",
+            "legoId": "S0580L01"
+          },
+          {
+            "known": "to find",
+            "target": " trovare",
+            "legoId": "S0460L01"
+          }
+        ]
+      },
+      {
+        "role": "build",
+        "known": "if we've often wanted to decide",
+        "target": "se abbiamo spesso voluto decidere",
+        "tiles": [
+          {
+            "known": "if",
+            "target": "se",
+            "legoId": "S0405L02"
+          },
+          {
+            "known": "we've often wanted to",
+            "target": " abbiamo spesso voluto",
+            "legoId": "S0580L01"
+          },
+          {
+            "known": "to decide",
+            "target": " decidere",
+            "legoId": "S0438L01"
+          }
+        ]
+      },
+      {
+        "role": "build",
+        "known": "he said that we've often wanted to",
+        "target": "ha detto che abbiamo spesso voluto",
+        "tiles": [
+          {
+            "known": "he said that",
+            "target": "ha detto che",
+            "legoId": "S0383L01"
+          },
+          {
+            "known": "we've often wanted to",
+            "target": " abbiamo spesso voluto",
+            "legoId": "S0580L01"
+          }
+        ]
+      },
+      {
+        "role": "use",
+        "known": "we've often wanted to look for a shop",
+        "target": "abbiamo spesso voluto cercare un negozio",
+        "tiles": [
+          {
+            "known": "we've often wanted to",
+            "target": "abbiamo spesso voluto",
+            "legoId": "S0580L01"
+          },
+          {
+            "known": "to look for",
+            "target": " cercare",
+            "legoId": "S0510L01"
+          },
+          {
+            "known": "a shop",
+            "target": " un negozio",
+            "legoId": "S0460L02"
+          }
+        ]
+      },
+      {
+        "role": "use",
+        "known": "we've often wanted to have some time outdoors",
+        "target": "abbiamo spesso voluto avere del tempo all'aperto",
+        "tiles": [
+          {
+            "known": "we've often wanted to",
+            "target": "abbiamo spesso voluto",
+            "legoId": "S0580L01"
+          },
+          {
+            "known": "to have",
+            "target": " avere",
+            "legoId": "S0408L02"
+          },
+          {
+            "known": "some time",
+            "target": " del tempo",
+            "legoId": "S0567L01"
+          },
+          {
+            "known": "outdoors",
+            "target": " all'aperto",
+            "legoId": "S0567L02"
+          }
+        ]
+      },
+      {
+        "role": "use",
+        "known": "if we've often wanted to travel, we should decide right now",
+        "target": "se abbiamo spesso voluto viaggiare, dovremmo decidere subito",
+        "tiles": [
+          {
+            "known": "if",
+            "target": "se",
+            "legoId": "S0405L02"
+          },
+          {
+            "known": "we've often wanted to",
+            "target": " abbiamo spesso voluto",
+            "legoId": "S0580L01"
+          },
+          {
+            "known": "to travel",
+            "target": " viaggiare",
+            "legoId": "S0379L03"
+          },
+          {
+            "known": "we should",
+            "target": ", dovremmo",
+            "legoId": "S0403L01"
+          },
+          {
+            "known": "to decide",
+            "target": " decidere",
+            "legoId": "S0438L01"
+          },
+          {
+            "known": "right now",
+            "target": " subito",
+            "legoId": "S0489L01"
+          }
+        ]
+      },
+      {
+        "role": "use",
+        "known": "he said that we've often wanted to find a shop near the hotel",
+        "target": "ha detto che abbiamo spesso voluto trovare un negozio vicino all'hotel",
+        "tiles": [
+          {
+            "known": "he said that",
+            "target": "ha detto che",
+            "legoId": "S0383L01"
+          },
+          {
+            "known": "we've often wanted to",
+            "target": " abbiamo spesso voluto",
+            "legoId": "S0580L01"
+          },
+          {
+            "known": "to find",
+            "target": " trovare",
+            "legoId": "S0460L01"
+          },
+          {
+            "known": "a shop",
+            "target": " un negozio",
+            "legoId": "S0460L02"
+          },
+          {
+            "known": "near the hotel",
+            "target": " vicino all'hotel",
+            "legoId": "S0460L03"
+          }
+        ]
+      },
+      {
+        "role": "use",
+        "known": "i heard that we've often wanted to buy red wine",
+        "target": "ho sentito che abbiamo spesso voluto comprare vino rosso",
+        "tiles": [
+          {
+            "known": "i heard that",
+            "target": "ho sentito che",
+            "legoId": "S0364L01"
+          },
+          {
+            "known": "we've often wanted to",
+            "target": " abbiamo spesso voluto",
+            "legoId": "S0580L01"
+          },
+          {
+            "known": "to buy",
+            "target": " comprare",
+            "legoId": "S0461L02"
+          },
+          {
+            "known": "red wine",
+            "target": " vino rosso",
+            "legoId": "S0414L02"
+          }
+        ]
+      },
+      {
+        "role": "use",
+        "known": "we've often tried, and we've often wanted to change",
+        "target": "abbiamo spesso provato, e abbiamo spesso voluto cambiare",
+        "tiles": [
+          {
+            "known": "we've often tried",
+            "target": "abbiamo spesso provato",
+            "legoId": "S0579L02"
+          },
+          {
+            "known": "and",
+            "target": ", e",
+            "legoId": "S0513L04#c"
+          },
+          {
+            "known": "we've often wanted to",
+            "target": " abbiamo spesso voluto",
+            "legoId": "S0580L01"
+          },
+          {
+            "known": "change",
+            "target": " cambiare",
+            "legoId": "S0469L02#c"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "courseCode": "ita_for_eng",
+    "seedNumber": 600,
+    "legoIndex": 1,
+    "arm": "claude-sonnet-5",
+    "legoId": "S0600L01",
+    "legoKnown": "I would have driven",
+    "legoTarget": "avrei guidato",
+    "elapsedMs": 261635,
+    "phrases": [
+      {
+        "role": "build",
+        "known": "I would have driven along the road",
+        "target": "avrei guidato lungo la strada",
+        "tiles": [
+          {
+            "known": "I would have driven",
+            "target": "avrei guidato",
+            "legoId": "S0600L01"
+          },
+          {
+            "known": "along the road",
+            "target": " lungo la strada",
+            "legoId": "S0592L02"
+          }
+        ]
+      },
+      {
+        "role": "build",
+        "known": "I would have driven fast",
+        "target": "avrei guidato veloce",
+        "tiles": [
+          {
+            "known": "I would have driven",
+            "target": "avrei guidato",
+            "legoId": "S0600L01"
+          },
+          {
+            "known": "fast",
+            "target": " veloce",
+            "legoId": "S0561L01"
+          }
+        ]
+      },
+      {
+        "role": "build",
+        "known": "if you'd told me I would have driven",
+        "target": "se me l'avessi detto avrei guidato",
+        "tiles": [
+          {
+            "known": "if you'd told me",
+            "target": "se me l'avessi detto",
+            "legoId": "S0599L02"
+          },
+          {
+            "known": "I would have driven",
+            "target": " avrei guidato",
+            "legoId": "S0600L01"
+          }
+        ]
+      },
+      {
+        "role": "build",
+        "known": "if you'd told me I would have driven along the road?",
+        "target": "se me l'avessi detto avrei guidato lungo la strada?",
+        "tiles": [
+          {
+            "known": "if you'd told me",
+            "target": "se me l'avessi detto",
+            "legoId": "S0599L02"
+          },
+          {
+            "known": "I would have driven",
+            "target": " avrei guidato",
+            "legoId": "S0600L01"
+          },
+          {
+            "known": "along the road",
+            "target": " lungo la strada?",
+            "legoId": "S0592L02"
+          }
+        ]
+      },
+      {
+        "role": "use",
+        "known": "I would have driven the car",
+        "target": "avrei guidato la macchina",
+        "tiles": [
+          {
+            "known": "I would have driven",
+            "target": "avrei guidato",
+            "legoId": "S0600L01"
+          },
+          {
+            "known": "the car",
+            "target": " la macchina",
+            "legoId": "S0540L02"
+          }
+        ]
+      },
+      {
+        "role": "use",
+        "known": "she used to insist that I would have driven",
+        "target": "insisteva che avrei guidato",
+        "tiles": [
+          {
+            "known": "she used to insist that",
+            "target": "insisteva che",
+            "legoId": "S0587L03"
+          },
+          {
+            "known": "I would have driven",
+            "target": " avrei guidato",
+            "legoId": "S0600L01"
+          }
+        ]
+      },
+      {
+        "role": "use",
+        "known": "I would have driven until the beach?",
+        "target": "avrei guidato fino alla spiaggia?",
+        "tiles": [
+          {
+            "known": "I would have driven",
+            "target": "avrei guidato",
+            "legoId": "S0600L01"
+          },
+          {
+            "known": "until the beach",
+            "target": " fino alla spiaggia?",
+            "legoId": "S0560L02#c"
+          }
+        ]
+      },
+      {
+        "role": "use",
+        "known": "I would have driven the last bus",
+        "target": "avrei guidato l'ultimo autobus",
+        "tiles": [
+          {
+            "known": "I would have driven",
+            "target": "avrei guidato",
+            "legoId": "S0600L01"
+          },
+          {
+            "known": "the last bus",
+            "target": " l'ultimo autobus",
+            "legoId": "S0589L01"
+          }
+        ]
+      },
+      {
+        "role": "use",
+        "known": "if only I could I would have driven",
+        "target": "se solo potessi avrei guidato",
+        "tiles": [
+          {
+            "known": "if only I could",
+            "target": "se solo potessi",
+            "legoId": "S0501L01"
+          },
+          {
+            "known": "I would have driven",
+            "target": " avrei guidato",
+            "legoId": "S0600L01"
+          }
+        ]
+      },
+      {
+        "role": "use",
+        "known": "if you'd told me I would have driven without your help",
+        "target": "se me l'avessi detto avrei guidato senza il tuo aiuto",
+        "tiles": [
+          {
+            "known": "if you'd told me",
+            "target": "se me l'avessi detto",
+            "legoId": "S0599L02"
+          },
+          {
+            "known": "I would have driven",
+            "target": " avrei guidato",
+            "legoId": "S0600L01"
+          },
+          {
+            "known": "without your help",
+            "target": " senza il tuo aiuto",
+            "legoId": "S0564L01"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "courseCode": "ita_for_eng",
+    "seedNumber": 650,
+    "legoIndex": 1,
+    "arm": "claude-sonnet-5",
+    "legoId": "S0650L01",
+    "legoKnown": "do you want to go",
+    "legoTarget": "vuole andare",
+    "elapsedMs": 362446,
+    "phrases": [
+      {
+        "role": "build",
+        "known": "do you want to go, sir?",
+        "target": "vuole andare, signore?",
+        "tiles": [
+          {
+            "known": "do you want to go",
+            "target": "vuole andare",
+            "legoId": "S0650L01"
+          },
+          {
+            "known": ", sir?",
+            "target": ", signore?",
+            "legoId": "S0639L01"
+          }
+        ]
+      },
+      {
+        "role": "build",
+        "known": "do you really want to go?",
+        "target": "davvero vuole andare?",
+        "tiles": [
+          {
+            "known": "really",
+            "target": "davvero",
+            "legoId": "S0620L01"
+          },
+          {
+            "known": " do you want to go?",
+            "target": " vuole andare?",
+            "legoId": "S0650L01"
+          }
+        ]
+      },
+      {
+        "role": "build",
+        "known": "if you want to go, madam",
+        "target": "se vuole andare, signora",
+        "tiles": [
+          {
+            "known": "if",
+            "target": "se",
+            "legoId": "S0606L01#c"
+          },
+          {
+            "known": " do you want to go",
+            "target": " vuole andare",
+            "legoId": "S0650L01"
+          },
+          {
+            "known": ", madam",
+            "target": ", signora",
+            "legoId": "S0642L01"
+          }
+        ]
+      },
+      {
+        "role": "build",
+        "known": "sir, do you want to go?",
+        "target": "signore, vuole andare?",
+        "tiles": [
+          {
+            "known": "sir",
+            "target": "signore",
+            "legoId": "S0639L01"
+          },
+          {
+            "known": ", do you want to go?",
+            "target": ", vuole andare?",
+            "legoId": "S0650L01"
+          }
+        ]
+      },
+      {
+        "role": "build",
+        "known": "do you want to go now?",
+        "target": "vuole andare adesso?",
+        "tiles": [
+          {
+            "known": "do you want to go",
+            "target": "vuole andare",
+            "legoId": "S0650L01"
+          },
+          {
+            "known": " now?",
+            "target": " adesso?",
+            "legoId": "S0606L02#c"
+          }
+        ]
+      },
+      {
+        "role": "use",
+        "known": "maybe, do you want to go, madam?",
+        "target": "forse, vuole andare, signora?",
+        "tiles": [
+          {
+            "known": "maybe",
+            "target": "forse",
+            "legoId": "S0499L01"
+          },
+          {
+            "known": ", do you want to go",
+            "target": ", vuole andare",
+            "legoId": "S0650L01"
+          },
+          {
+            "known": ", madam?",
+            "target": ", signora?",
+            "legoId": "S0642L01"
+          }
+        ]
+      },
+      {
+        "role": "use",
+        "known": "sir, do you want to go now?",
+        "target": "signore, vuole andare adesso?",
+        "tiles": [
+          {
+            "known": "sir",
+            "target": "signore",
+            "legoId": "S0639L01"
+          },
+          {
+            "known": ", do you want to go",
+            "target": ", vuole andare",
+            "legoId": "S0650L01"
+          },
+          {
+            "known": " now?",
+            "target": " adesso?",
+            "legoId": "S0606L02#c"
+          }
+        ]
+      },
+      {
+        "role": "use",
+        "known": "do you want to go to italy, madam?",
+        "target": "vuole andare in italia, signora?",
+        "tiles": [
+          {
+            "known": "do you want to go",
+            "target": "vuole andare",
+            "legoId": "S0650L01"
+          },
+          {
+            "known": " to italy",
+            "target": " in italia",
+            "legoId": "S0462L03#c"
+          },
+          {
+            "known": ", madam?",
+            "target": ", signora?",
+            "legoId": "S0642L01"
+          }
+        ]
+      },
+      {
+        "role": "use",
+        "known": "if you are ready, do you want to go, madam?",
+        "target": "se è pronto, vuole andare, signora?",
+        "tiles": [
+          {
+            "known": "if",
+            "target": "se",
+            "legoId": "S0606L01#c"
+          },
+          {
+            "known": " are you ready",
+            "target": " è pronto",
+            "legoId": "S0649L01"
+          },
+          {
+            "known": ", do you want to go",
+            "target": ", vuole andare",
+            "legoId": "S0650L01"
+          },
+          {
+            "known": ", madam?",
+            "target": ", signora?",
+            "legoId": "S0642L01"
+          }
+        ]
+      },
+      {
+        "role": "use",
+        "known": "sir, do you want to go to italy?",
+        "target": "signore, vuole andare in italia?",
+        "tiles": [
+          {
+            "known": "sir",
+            "target": "signore",
+            "legoId": "S0639L01"
+          },
+          {
+            "known": ", do you want to go",
+            "target": ", vuole andare",
+            "legoId": "S0650L01"
+          },
+          {
+            "known": " to italy?",
+            "target": " in italia?",
+            "legoId": "S0462L03#c"
+          }
+        ]
+      },
+      {
+        "role": "use",
+        "known": "do you really want to go, sir?",
+        "target": "vuole andare davvero, signore?",
+        "tiles": [
+          {
+            "known": "do you want to go",
+            "target": "vuole andare",
+            "legoId": "S0650L01"
+          },
+          {
+            "known": " really",
+            "target": " davvero",
+            "legoId": "S0620L01"
+          },
+          {
+            "known": ", sir?",
+            "target": ", signore?",
+            "legoId": "S0639L01"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "courseCode": "ita_for_eng",
+    "seedNumber": 620,
+    "legoIndex": 1,
+    "arm": "claude-sonnet-5",
+    "error": "claude --print --model claude-sonnet-5 failed (code=1, signal=none, killed=false) | stdout-head: You've hit your session limit · resets 3pm (UTC)",
+    "phrases": []
+  }
+]
