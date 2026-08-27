@@ -328,17 +328,27 @@ const AXES = ['person', 'polarity', 'mood', 'embed', 'tense'];
 
 /**
  * USE completeness — the bar BLD does not carry. Tom: "a USE phrase can stand as
- * an isolated entity and be used as a unit". Mechanical proxy only; whether it is
- * WORTH having is the judgement residue and goes to a model.
+ * an isolated entity and be used as a unit".
+ *
+ * DELIBERATELY ALMOST EMPTY, and this is the second time the data corrected this
+ * file. A richer version demanded a pronoun subject and rejected any sentence
+ * opening on an adverbial or conjunction. It then flagged "let's talk about the
+ * top on Friday night", "on Sunday morning I enjoy speaking with you" and "my
+ * mother was going to tell me the same thing" as fragments — all of them perfectly
+ * standalone — and it flagged them precisely because the new prompt asks builders
+ * to vary how a sentence opens. A proxy that punishes the virtue it was hired to
+ * protect is worse than no proxy: it made the new arms look like a regression
+ * against the live course on this axis when they are not.
+ *
+ * Mechanical English standalone-detection is not reliable, so this now asserts
+ * only the one thing that is — a three-word USE phrase is not a thought — and the
+ * real judgement goes to tools/phrase-lab/judge-use.cjs, which asks a model.
  */
 function useCompleteness(knownText) {
   const s = norm(knownText);
   const ws = tokens(s);
   const reasons = [];
   if (ws.length < 4) reasons.push('too short to stand alone');
-  if (/^(to|that|because|which|and|or|but|of|for|with|in|on)\b/.test(s)) reasons.push(`opens on "${ws[0]}" — a fragment hanging off something unsaid`);
-  const hasSubject = /\b(i|we|you|he|she|it|they|there|this|that|everyone|someone|nobody)\b/.test(' ' + s + ' ');
-  if (!hasSubject) reasons.push('no subject — not a standalone thought');
   return { complete: reasons.length === 0, reasons };
 }
 

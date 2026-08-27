@@ -41,7 +41,11 @@ function claudeChat(prompt, options = {}) {
   return new Promise((resolve, reject) => {
     const args = ['--print', '--model', model]
     if (system) {
-      args.push('--system', system)
+      // '--system' is NOT a flag this CLI has ever accepted — it exits 1 with
+      // "unknown option '--system'". Any caller passing `system` was silently
+      // broken until 2026-08-27, when the phrase lab became the first caller to
+      // use it. The real flag is --system-prompt.
+      args.push('--system-prompt', system)
     }
 
     // claudeEnv() pins the claude@ account config dir, injects the machine's
