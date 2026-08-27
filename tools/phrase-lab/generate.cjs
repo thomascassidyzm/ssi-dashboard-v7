@@ -103,8 +103,18 @@ async function main() {
   }
 
   const targets = JSON.parse(fs.readFileSync(targetsFile, 'utf8'));
-  const done = fs.existsSync(outFile) ? JSON.parse(fs.readFileSync(outFile, 'utf8')) : [];
+  // RESUME MUST RETRY FAILURES. A failed target is recorded in the output file so
+  // that an arm with holes never masquerades as an arm that scored badly -- but it
+  // was also being counted as DONE, so re-running the command skipped exactly the
+  // targets that still needed doing. That turned a resumable run into a run that
+  // could never recover: the 2026-08-27 five-language replication hit a session
+  // limit mid-flight, and every subsequent resume completed instantly having
+  // retried nothing. Only SUCCESSFUL sets suppress a target.
+  const prior = fs.existsSync(outFile) ? JSON.parse(fs.readFileSync(outFile, 'utf8')) : [];
+  const done = prior.filter((d) => !d.error && d.phrases && d.phrases.length);
   const doneKeys = new Set(done.map((d) => `${d.seedNumber}:${d.legoIndex}`));
+  const retrying = prior.length - done.length;
+  if (retrying) console.error(`[${model}] retrying ${retrying} previously-failed target(s)`);
   const todo = targets.filter((t) => !doneKeys.has(`${t.seed}:${t.lego}`));
 
   const { supabase } = require('../../services/supabase-client.cjs');
