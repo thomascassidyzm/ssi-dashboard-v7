@@ -32,7 +32,7 @@ if (!process.env.PATH.includes('/.local/bin')) {
   process.env.PATH = `${process.env.HOME}/.local/bin:${process.env.PATH}`;
 }
 
-const SYSTEM = `You judge one thing and nothing else: is each of these Spanish-course
+const SYSTEM = `You judge one thing and nothing else: is each of these language-course
 practice sentences WORTH HAVING — a thing a real person would actually say, in a
 situation a learner will actually meet?
 
