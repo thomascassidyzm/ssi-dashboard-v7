@@ -1,0 +1,469 @@
+{
+ "generated": "2026-08-27",
+ "pipeline": "production chain: tts-service.generateWithRetry -> phase8.masterAudio -> audio-veracity.renderChecked (publish step deliberately omitted: no S3 mastered/ key, no course_audio row)",
+ "voice": {
+  "provider": "cartesia",
+  "voiceId": "8fef4d59-0a7e-4ad2-a261-6a3bb50734d2",
+  "locale": "en-GB",
+  "name": "tom_001"
+ },
+ "model": "sonic-3",
+ "items": [
+  {
+   "n": "01",
+   "lego_id": "S0001L01",
+   "text": "I want",
+   "durationMs": 984,
+   "attempts": 1,
+   "verdict": "ok",
+   "cer": 0
+  },
+  {
+   "n": "02",
+   "lego_id": "S0009L02",
+   "text": "a little",
+   "durationMs": 576,
+   "attempts": 1,
+   "verdict": "not_sampled",
+   "cer": null
+  },
+  {
+   "n": "03",
+   "lego_id": "S0016L04",
+   "text": "to come back",
+   "durationMs": 1224,
+   "attempts": 1,
+   "verdict": "not_sampled",
+   "cer": null
+  },
+  {
+   "n": "04",
+   "lego_id": "S0024L02",
+   "text": "might",
+   "durationMs": 624,
+   "attempts": 1,
+   "verdict": "not_sampled",
+   "cer": null
+  },
+  {
+   "n": "05",
+   "lego_id": "S0033L01",
+   "text": "how long",
+   "durationMs": 792,
+   "attempts": 1,
+   "verdict": "not_sampled",
+   "cer": null
+  },
+  {
+   "n": "06",
+   "lego_id": "S0044L02",
+   "text": "to need",
+   "durationMs": 768,
+   "attempts": 1,
+   "verdict": "not_sampled",
+   "cer": null
+  },
+  {
+   "n": "07",
+   "lego_id": "S0053L03",
+   "text": "to put into",
+   "durationMs": 1080,
+   "attempts": 1,
+   "verdict": "not_sampled",
+   "cer": null
+  },
+  {
+   "n": "08",
+   "lego_id": "S0066L02",
+   "text": "difficult",
+   "durationMs": 1176,
+   "attempts": 1,
+   "verdict": "not_sampled",
+   "cer": null
+  },
+  {
+   "n": "09",
+   "lego_id": "S0078L01",
+   "text": "understand clearly",
+   "durationMs": 1080,
+   "attempts": 1,
+   "verdict": "not_sampled",
+   "cer": null
+  },
+  {
+   "n": "10",
+   "lego_id": "S0091L02",
+   "text": "answer in time",
+   "durationMs": 1320,
+   "attempts": 1,
+   "verdict": "not_sampled",
+   "cer": null
+  },
+  {
+   "n": "11",
+   "lego_id": "S0099L02",
+   "text": "why",
+   "durationMs": 888,
+   "attempts": 1,
+   "verdict": "ok",
+   "cer": 0
+  },
+  {
+   "n": "12",
+   "lego_id": "S0114L01",
+   "text": "worse",
+   "durationMs": 768,
+   "attempts": 1,
+   "verdict": "not_sampled",
+   "cer": null
+  },
+  {
+   "n": "13",
+   "lego_id": "S0130L02",
+   "text": "that was a surprise",
+   "durationMs": 1272,
+   "attempts": 1,
+   "verdict": "not_sampled",
+   "cer": null
+  },
+  {
+   "n": "14",
+   "lego_id": "S0147L02",
+   "text": "kind",
+   "durationMs": 720,
+   "attempts": 1,
+   "verdict": "not_sampled",
+   "cer": null
+  },
+  {
+   "n": "15",
+   "lego_id": "S0161L03",
+   "text": "book",
+   "durationMs": 768,
+   "attempts": 1,
+   "verdict": "not_sampled",
+   "cer": null
+  },
+  {
+   "n": "16",
+   "lego_id": "S0181L01",
+   "text": "have to take",
+   "durationMs": 1320,
+   "attempts": 1,
+   "verdict": "not_sampled",
+   "cer": null
+  },
+  {
+   "n": "17",
+   "lego_id": "S0197L01",
+   "text": "teacher",
+   "durationMs": 840,
+   "attempts": 1,
+   "verdict": "not_sampled",
+   "cer": null
+  },
+  {
+   "n": "18",
+   "lego_id": "S0214L01",
+   "text": "weekend",
+   "durationMs": 840,
+   "attempts": 1,
+   "verdict": "not_sampled",
+   "cer": null
+  },
+  {
+   "n": "19",
+   "lego_id": "S0228L01",
+   "text": "to practise",
+   "durationMs": 1464,
+   "attempts": 1,
+   "verdict": "not_sampled",
+   "cer": null
+  },
+  {
+   "n": "20",
+   "lego_id": "S0244L01",
+   "text": "already learn a lot",
+   "durationMs": 1728,
+   "attempts": 1,
+   "verdict": "not_sampled",
+   "cer": null
+  },
+  {
+   "n": "21",
+   "lego_id": "S0263L02",
+   "text": "you mean",
+   "durationMs": 888,
+   "attempts": 1,
+   "verdict": "ok",
+   "cer": 0
+  },
+  {
+   "n": "22",
+   "lego_id": "S0279L01",
+   "text": "time left",
+   "durationMs": 1224,
+   "attempts": 1,
+   "verdict": "not_sampled",
+   "cer": null
+  },
+  {
+   "n": "23",
+   "lego_id": "S0300L01",
+   "text": "seem",
+   "durationMs": 528,
+   "attempts": 1,
+   "verdict": "not_sampled",
+   "cer": null
+  },
+  {
+   "n": "24",
+   "lego_id": "S0312L03",
+   "text": "room",
+   "durationMs": 1272,
+   "attempts": 1,
+   "verdict": "not_sampled",
+   "cer": null
+  },
+  {
+   "n": "25",
+   "lego_id": "S0326L01",
+   "text": "company",
+   "durationMs": 624,
+   "attempts": 1,
+   "verdict": "not_sampled",
+   "cer": null
+  },
+  {
+   "n": "26",
+   "lego_id": "S0341L01",
+   "text": "several days ago",
+   "durationMs": 1080,
+   "attempts": 1,
+   "verdict": "not_sampled",
+   "cer": null
+  },
+  {
+   "n": "27",
+   "lego_id": "S0353L01",
+   "text": "field",
+   "durationMs": 720,
+   "attempts": 1,
+   "verdict": "not_sampled",
+   "cer": null
+  },
+  {
+   "n": "28",
+   "lego_id": "S0371L01",
+   "text": "wednesday",
+   "durationMs": 1176,
+   "attempts": 1,
+   "verdict": "not_sampled",
+   "cer": null
+  },
+  {
+   "n": "29",
+   "lego_id": "S0391L01",
+   "text": "towards the bus",
+   "durationMs": 1080,
+   "attempts": 1,
+   "verdict": "not_sampled",
+   "cer": null
+  },
+  {
+   "n": "30",
+   "lego_id": "S0404L02",
+   "text": "thursday",
+   "durationMs": 888,
+   "attempts": 1,
+   "verdict": "not_sampled",
+   "cer": null
+  },
+  {
+   "n": "31",
+   "lego_id": "S0418L01",
+   "text": "community",
+   "durationMs": 1128,
+   "attempts": 1,
+   "verdict": "ok",
+   "cer": 0
+  },
+  {
+   "n": "32",
+   "lego_id": "S0434L01",
+   "text": "to reduce",
+   "durationMs": 1536,
+   "attempts": 1,
+   "verdict": "not_sampled",
+   "cer": null
+  },
+  {
+   "n": "33",
+   "lego_id": "S0447L03",
+   "text": "to see off",
+   "durationMs": 1128,
+   "attempts": 1,
+   "verdict": "not_sampled",
+   "cer": null
+  },
+  {
+   "n": "34",
+   "lego_id": "S0462L03",
+   "text": "during",
+   "durationMs": 528,
+   "attempts": 1,
+   "verdict": "not_sampled",
+   "cer": null
+  },
+  {
+   "n": "35",
+   "lego_id": "S0475L03",
+   "text": "to consider",
+   "durationMs": 768,
+   "attempts": 1,
+   "verdict": "not_sampled",
+   "cer": null
+  },
+  {
+   "n": "36",
+   "lego_id": "S0486L01",
+   "text": "eyes",
+   "durationMs": 768,
+   "attempts": 1,
+   "verdict": "not_sampled",
+   "cer": null
+  },
+  {
+   "n": "37",
+   "lego_id": "S0496L01",
+   "text": "to plan",
+   "durationMs": 888,
+   "attempts": 1,
+   "verdict": "not_sampled",
+   "cer": null
+  },
+  {
+   "n": "38",
+   "lego_id": "S0506L02",
+   "text": "to move away",
+   "durationMs": 888,
+   "attempts": 1,
+   "verdict": "not_sampled",
+   "cer": null
+  },
+  {
+   "n": "39",
+   "lego_id": "S0518L01",
+   "text": "unable",
+   "durationMs": 792,
+   "attempts": 1,
+   "verdict": "not_sampled",
+   "cer": null
+  },
+  {
+   "n": "40",
+   "lego_id": "S0529L01",
+   "text": "hands",
+   "durationMs": 576,
+   "attempts": 1,
+   "verdict": "not_sampled",
+   "cer": null
+  },
+  {
+   "n": "41",
+   "lego_id": "S0539L01",
+   "text": "but",
+   "durationMs": 768,
+   "attempts": 1,
+   "verdict": "ok",
+   "cer": 0
+  },
+  {
+   "n": "42",
+   "lego_id": "S0546L04",
+   "text": "also",
+   "durationMs": 888,
+   "attempts": 1,
+   "verdict": "not_sampled",
+   "cer": null
+  },
+  {
+   "n": "43",
+   "lego_id": "S0557L02",
+   "text": "loud",
+   "durationMs": 792,
+   "attempts": 1,
+   "verdict": "not_sampled",
+   "cer": null
+  },
+  {
+   "n": "44",
+   "lego_id": "S0569L01",
+   "text": "to decide",
+   "durationMs": 936,
+   "attempts": 1,
+   "verdict": "not_sampled",
+   "cer": null
+  },
+  {
+   "n": "45",
+   "lego_id": "S0582L02",
+   "text": "feeling",
+   "durationMs": 768,
+   "attempts": 1,
+   "verdict": "not_sampled",
+   "cer": null
+  },
+  {
+   "n": "46",
+   "lego_id": "S0594L02",
+   "text": "toys",
+   "durationMs": 3504,
+   "attempts": 1,
+   "verdict": "not_sampled",
+   "cer": null
+  },
+  {
+   "n": "47",
+   "lego_id": "S0606L01",
+   "text": "early",
+   "durationMs": 840,
+   "attempts": 1,
+   "verdict": "not_sampled",
+   "cer": null
+  },
+  {
+   "n": "48",
+   "lego_id": "S0617L01",
+   "text": "mistake",
+   "durationMs": 1176,
+   "attempts": 1,
+   "verdict": "not_sampled",
+   "cer": null
+  },
+  {
+   "n": "49",
+   "lego_id": "S0631L01",
+   "text": "would like",
+   "durationMs": 720,
+   "attempts": 1,
+   "verdict": "not_sampled",
+   "cer": null
+  },
+  {
+   "n": "50",
+   "lego_id": "S0647L01",
+   "text": "manner particle de",
+   "durationMs": 1584,
+   "attempts": 1,
+   "verdict": "not_sampled",
+   "cer": null
+  }
+ ],
+ "totals": {
+  "clips": 50,
+  "chars": 424,
+  "veracity_checked": 50,
+  "veracity_unchecked": 0
+ }
+}
