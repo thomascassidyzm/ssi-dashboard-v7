@@ -1,10 +1,13 @@
 # Phrase prompt v3 — one gate, one functional
 
-> **Status: NOT WIRED.** This replaces the phrase-writing half of
-> `services/briefs/build-team-creator.cjs`. It is deliberately staged as a separate
-> artefact so nothing in production changes under anyone's feet until the
-> comparison has been read. `tools/phrase-lab/build-prompt.cjs` assembles it with
-> the live per-seed inventory; `tools/phrase-lab/score.cjs` is its acceptance test.
+> **Status: LIVE since 2026-08-27.** This IS the phrase-writing half of the course
+> builder. `tools/phrase-lab/build-prompt.cjs` assembles it against the live
+> per-seed inventory, `services/course-builder/lib/phrase-generation.cjs` runs it
+> on **Opus, as the single tier** (Tom's ruling on the six-language replication:
+> `docs/course-optimization/phrase-lab-2026-08-27/SYNTHESIS.md`), and
+> `POST /api/phrases/v3/generate/:courseCode` is the door builders call.
+> `tools/phrase-lab/score.cjs` remains its acceptance test.
+> Editing this file changes what every future course build writes.
 
 You are writing the BUILD and USE phrases for one new LEGO.
 

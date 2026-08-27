@@ -1789,7 +1789,7 @@ If 409 (collisions): fix them (merge colliding LEGOs into bigger M-LEGOs), resub
 Loop until clean (200).
 ` : '### Stage 2: FINALIZE — ✅ ALREADY COMPLETE'}
 ${startIdx <= 2 ? (precomputedLegoBatches ? `
-### Stage 3: GENERATE PHRASES (Sonnet sub-agents)
+### Stage 3: GENERATE PHRASES (Opus sub-agents)
 
 **${precomputedLegoBatches.length} batches pre-computed. Spawn ALL sub-agents in a SINGLE message.**
 
@@ -1803,9 +1803,9 @@ ${precomputedLegoBatches.map((batch, i) => {
   return `**Agent ${i + 1}** (${batch.length} LEGOs):\n    ${legoList}`;
 }).join('\n\n')}
 ` : `
-### Stage 3: GENERATE PHRASES (Sonnet sub-agents)
+### Stage 3: GENERATE PHRASES (Opus sub-agents)
 Fetch finalized LEGOs: query course_legos where is_new=true and seed_number >= ${goldenCount + 1}
-Spawn ~${Math.ceil(seedsNeeded / 5)} Sonnet sub-agents, ~10 LEGOs each.
+Spawn ~${Math.ceil(seedsNeeded / 5)} Opus sub-agents, ~10 LEGOs each.
 Each submits phrases: POST http://localhost:3471/api/v2/phrases/${courseCode}
 Monitor: GET http://localhost:3471/api/v2/phrases/progress/${courseCode}
 `) : '### Stage 3: GENERATE PHRASES — ✅ ALREADY COMPLETE'}
@@ -1834,9 +1834,9 @@ Prompt: Decompose seeds {SEED_LIST} into LEGOs only. POST /api/v2/decompose.
 Seeds: GET http://localhost:3471/api/seeds/${courseCode}
 Vocab: GET http://localhost:3471/api/vocab/${courseCode}?seed=N
 
-### For PHRASE sub-agents (Sonnet):
+### For PHRASE sub-agents (Opus — single tier, no fallback, Tom's ruling 2026-08-27):
 \`\`\`
-subagent_type: "general-purpose", model: "sonnet", run_in_background: true
+subagent_type: "general-purpose", model: "opus", run_in_background: true
 \`\`\`
 
 **Sub-agent prompt template** (replace {LEGO_LIST} with the batch assignment above, and {GOLDEN_EXAMPLES} with the golden examples below):
@@ -1847,9 +1847,27 @@ You are a world-class language teacher generating practice phrases for ${courseC
 Your LEGOs:
 {LEGO_LIST}
 
-## What You're Building
-**BUILD phrases (5+):** Short fragments — the new LEGO combined with known vocab. Don't need to be full sentences.
-**USE phrases (15+):** Complete, natural sentences a real person would say. Must average 12+ syllables. Scored 5-9.
+## How You Get The Phrases — YOU DO NOT WRITE THEM BY HAND
+
+For EACH LEGO, ask the v3 phrase door:
+
+    curl -s -X POST "http://localhost:3471/api/phrases/v3/generate/${courseCode}" \\
+      -H "Content-Type: application/json" -d '{"seed": N, "lego": L}'
+
+It returns { "model": "opus", "build": [...], "use": [...] }. The door assembles the
+v3 prompt against a computed vocabulary table for that exact seed — what can be asked
+for without uncertainty, and what is blocked because the known side would be ambiguous.
+You cannot compute that yourself, which is why sets written by hand from a brief failed
+on 120 of 120 measured LEGOs across six live courses on 2026-08-27.
+
+Each call takes several minutes. That is expected. Run a LEGO's calls in parallel,
+then submit the batch. If a call fails, retry once; if it fails twice, write that one
+set yourself to the bar below and say so.
+
+**BUILD phrases (4+):** the new LEGO plugged into already-introduced vocabulary. Honest
+fragments are fine; never the bare LEGO alone. Move it around — start, filling, end.
+**USE phrases (5+):** complete, deployable thoughts worth having in themselves. Never
+fragments. Vary person, polarity, mood, embedding, tense. Scored 5-9.
 
 ## Rules (server enforces — violations = rejection)
 1. **Containment**: Every phrase target MUST contain the LEGO's target text as an exact substring

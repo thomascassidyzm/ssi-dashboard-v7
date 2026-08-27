@@ -51,6 +51,10 @@ app.use('/api', require('./course-builder/routes/edit-cascade.cjs')(ctx));
 app.use('/api', require('./course-builder/routes/qa.cjs')(ctx));
 app.use('/api', require('./course-builder/routes/components.cjs')(ctx));
 app.use('/api', require('./course-builder/routes/drafts.cjs')(ctx));
+// v3 phrase generation — the prompt the six-language replication measured, on
+// Opus as the single tier (Tom's ruling 2026-08-27). Generates only; submission
+// and validation stay on the existing doors.
+app.use('/api', require('./course-builder/routes/phrases-v3.cjs')(ctx));
 
 // Mount briefs router
 app.use('/api/brief', require('./briefs/index.cjs'));

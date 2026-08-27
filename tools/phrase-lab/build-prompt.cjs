@@ -44,10 +44,20 @@ const DOCTRINE = path.join(__dirname, '../../prompts/phrase-prompt-v3-zut-edges.
 // that gradient, it is a caveat, not a finding about the language.
 const SPECIMEN_COURSE = 'spa_for_eng';
 
-const TARGET_LANG_NAME = {
-  spa: 'Spanish', ita: 'Italian', fra: 'French', deu: 'German',
-  jpn: 'Japanese', zho: 'Mandarin Chinese'
-};
+// Language names come from the course-builder's own table, not from a six-entry
+// map local to the lab. The lab only ever ran six courses; the builder runs 149,
+// and a course whose target was not in the local map was handed its raw ISO code
+// as the name of the language it was being asked to write.
+// getLanguageName reads the target half. The known half has no helper of its own
+// that resolves names — briefs/shared.cjs uses the LANG_MAP export, which is a
+// DEPRECATED EMPTY OBJECT at runtime, so it returns the raw ISO code. Go through
+// the same CSV service getLanguageName uses, by flipping the course code.
+const { getLanguageName, DIALECT_NAMES } = require('../../services/course-builder/lib/language-config.cjs');
+
+function knownLanguageName(courseCode) {
+  const known = String(courseCode || '').split('_for_')[1] || 'eng';
+  return DIALECT_NAMES[known] || getLanguageName(`${known}_for_x`);
+}
 
 const SPECIMENS = {
   spa_for_eng: {
@@ -98,9 +108,31 @@ function renderBlocked(inv, limit = 400) {
   return { text: out.join('\n'), total: seen.size };
 }
 
-async function buildPrompt(supabase, courseCode, seedNumber, legoIndex) {
+/**
+ * @param {object} [opts]
+ * @param {object} [opts.proposedLego] {known, target, type} — a LEGO the builder
+ *   has decided on but has NOT yet submitted. `POST /api/seed/complete` writes a
+ *   seed's LEGOs and its phrases in one atomic call, so during a live build the
+ *   LEGO being authored is by definition not in the database yet. The inventory
+ *   is unaffected — it is built from seeds 1..N-1 plus the EARLIER LEGOs of seed
+ *   N, none of which is this one. Only the "here is what you are writing for"
+ *   line needs the proposal. Omit it and the LEGO is read from the database, as
+ *   the lab does when it re-authors existing content.
+ */
+async function buildPrompt(supabase, courseCode, seedNumber, legoIndex, opts = {}) {
   const inv = await buildInventory(supabase, courseCode, seedNumber, legoIndex);
-  if (!inv.targetLego) throw new Error(`no LEGO at ${courseCode} seed ${seedNumber} L${legoIndex}`);
+  if (!inv.targetLego && opts.proposedLego) {
+    const p = opts.proposedLego;
+    if (!p.known || !p.target) throw new Error('proposedLego needs both known and target');
+    inv.targetLego = {
+      lego_id: `S${String(seedNumber).padStart(4, '0')}L${String(legoIndex).padStart(2, '0')}`,
+      type: p.type || 'A',
+      known_text: p.known,
+      target_text: p.target,
+      proposed: true,
+    };
+  }
+  if (!inv.targetLego) throw new Error(`no LEGO at ${courseCode} seed ${seedNumber} L${legoIndex} — pass lego_known/lego_target if it has not been submitted yet`);
 
   const { data: seed } = await supabase
     .from('course_seeds').select('known_text,target_text')
@@ -114,10 +146,16 @@ async function buildPrompt(supabase, courseCode, seedNumber, legoIndex) {
   const pos = isSelf(spec.positive) ? null : await fetchSpecimen(supabase, SPECIMEN_COURSE, spec.positive.seed, spec.positive.lego);
   const neg = isSelf(spec.negative) ? null : await fetchSpecimen(supabase, SPECIMEN_COURSE, spec.negative.seed, spec.negative.lego);
 
-  const targetLang = String(courseCode || '').split('_')[0];
-  const targetLangName = TARGET_LANG_NAME[targetLang] || targetLang;
+  const targetLangName = getLanguageName(courseCode);
+  const knownLangName = knownLanguageName(courseCode);
+  const englishKnown = knownLangName === 'English';
+  // The specimen's known side is English. For an English-known course that is
+  // the lesson and it transfers for free. For cym_for_yor it does not: the
+  // builder is writing Yoruba prompts, and a silent English specimen is exactly
+  // how a known-side language leak gets authored. Say so instead of hiding it.
   const foreignSpecimenNote = courseCode === SPECIMEN_COURSE ? '' :
-    `*This specimen is from the Spanish course, not yours. It is here for the SHAPE of the phrase set — how the new LEGO is moved around, what it is made to touch, how the pattern changes phrase to phrase. The English side is the lesson and it is the same English corpus your course uses. Do NOT copy its ${'Spanish'}; write ${targetLangName}.*
+    `*This specimen is from the Spanish course, not yours. It is here for the SHAPE of the phrase set — how the new LEGO is moved around, what it is made to touch, how the pattern changes phrase to phrase. Do NOT copy its Spanish; write ${targetLangName}.*${englishKnown ? '' : `
+*Its known side is English. YOURS IS ${knownLangName.toUpperCase()}. Read the specimen for shape only — every \`known\` you write must be ${knownLangName}, never English.*`}
 `;
 
   const avail = renderAvailable(inv);
@@ -130,8 +168,9 @@ async function buildPrompt(supabase, courseCode, seedNumber, legoIndex) {
 
 # YOUR TASK
 
-Course: **${courseCode}** — the learner's known language is English, the target
-language is ${targetLangName}.
+Course: **${courseCode}** — the learner's known language is ${knownLangName}, the
+target language is ${targetLangName}. Every \`known\` you write is ${knownLangName};
+every \`target\` you write is ${targetLangName}.
 
 Seed ${seedNumber}: "${seed?.known_text}" -> "${seed?.target_text}"
 
