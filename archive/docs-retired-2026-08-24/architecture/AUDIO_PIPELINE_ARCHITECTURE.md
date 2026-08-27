@@ -477,6 +477,20 @@ precedent to copy blindly (the constraint differs between them):**
   when a schema constraint genuinely forces delete-then-insert; it is not a licence to delete
   before rendering.
 
+**A changed *text* is an ADDITION, not a replacement (2026-08-27, canon C23).** When the words
+themselves change — a LEGO's introduction template, say — the new clip is not the old clip
+re-rendered, so there is no unique-key collision and nothing to delete. `/regenerate-presentations`
+in `services/phases/phase8-audio-v13.cjs` is the reference: it inserts a `pending/` row carrying
+the same `lego_id` **beside** the existing one and leaves both the old row and
+`course_legos.presentation_audio_id` alone; `/generate` renders, gates and uploads, and only then
+repoints the FK, one item at a time. The superseded row is left unlinked for a separate cleanup
+pass — an unlinked row reaches no learner, so deleting it buys nothing and costs the clip's
+history. The consequence a reader has to hold: **a LEGO can legitimately carry two presentation
+rows**, so every relink path picks the newest *rendered* voice-gated candidate rather than
+whichever row the query returned last. The partial-failure proof —
+`tools/audio-regen-probe/intro-change-make-before-break.test.cjs` — kills the run after 7 of 19
+renders: delete-first leaves 12 slots silent, addition-only leaves 0.
+
 **When writing or reviewing any script that touches `course_audio`:** if you see a `DELETE`
 that isn't immediately preceded by a verified render/insert of its replacement (or isn't guarded
 by a restore-on-failure path like `repair-silent-clips.cjs`'s), treat it as a make-before-break
