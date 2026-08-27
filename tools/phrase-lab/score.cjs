@@ -84,6 +84,7 @@ require('dotenv').config({ quiet: true });
 const fs = require('fs');
 const { buildInventory, norm, zutKey } = require('./inventory.cjs');
 const { countSyllables, hasSyllableCounter } = require('../lib/syllable-counters.cjs');
+const { LAB_COUNTERS, APPROXIMATE } = require('./syllables-cjk.cjs');
 
 // ---------------------------------------------------------------------------
 // known-side free class — English glue a learner is never asked to "know"
@@ -95,11 +96,30 @@ const FREE_CLASS = new Set(['a', 'an', 'the', 'to', 'of', 'do', 'does', 'did', '
 const tokens = (s) => norm(s).split(' ').filter(Boolean);
 const stem = (w) => w.replace(/(ing|ed|es|s)$/, '');
 
+/**
+ * How trustworthy is this course's syllable denominator?
+ *   'exact'       — a real counter for the language
+ *   'approximate' — a counter with a stated approximation (jpn kanji morae)
+ *   'fallback'    — no counter; vowel-group guess. NOT COMPARABLE across courses.
+ * Any axis divided by syllables must be reported with this basis attached.
+ */
+function syllableBasis(lang) {
+  if (LAB_COUNTERS[lang]) return APPROXIMATE.has(lang) ? 'approximate' : 'exact';
+  if (hasSyllableCounter(lang)) return 'exact';
+  return 'fallback';
+}
+
 function targetLangOf(courseCode) {
   return String(courseCode || '').split('_')[0];
 }
 
 function syllablesOf(text, lang) {
+  // Lab-local counters first: jpn and zho are spaceless, have no counter in the
+  // global registry, and would otherwise fall through to a Latin-vowel count that
+  // matches nothing and then to a whitespace token count of ~1 per phrase — which
+  // would be reported as a finding about Japanese when it is a finding about the
+  // tool. Registered here, not globally, on purpose (see syllables-cjk.cjs).
+  if (LAB_COUNTERS[lang]) return LAB_COUNTERS[lang](text);
   if (hasSyllableCounter(lang)) return countSyllables(text, lang);
   // No counter for this language: fall back to vowel-groups rather than to zero.
   // A missing counter must not silently make every phrase look infinitely cheap.
@@ -642,6 +662,7 @@ module.exports = {
   scoreRole,
   fetchLivePhrases,
   syllablesOf,
+  syllableBasis,
   printReport,
   AXES
 };

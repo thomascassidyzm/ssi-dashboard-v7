@@ -30,6 +30,25 @@ const { buildInventory } = require('./inventory.cjs');
 
 const DOCTRINE = path.join(__dirname, '../../prompts/phrase-prompt-v3-zut-edges.md');
 
+// The specimens are ALWAYS the Spanish rows, for every course. There is no
+// Tom-graded specimen in any other course, and the live content in all of them
+// clears the floors essentially never — so there is no honest in-course positive
+// to substitute. Holding them constant is also what keeps the arms comparable
+// ACROSS courses, which is the point of the five-language replication. The
+// prompt labels them as another course's Spanish, shown for the SHAPE of the
+// set: the English known side is what carries the lesson and it is common to
+// all six courses (the English seed corpus is shared estate-wide).
+//
+// KNOWN CONFOUND, flagged in every report: a Spanish specimen may help a Romance
+// course more than it helps Japanese. If the cross-course numbers show exactly
+// that gradient, it is a caveat, not a finding about the language.
+const SPECIMEN_COURSE = 'spa_for_eng';
+
+const TARGET_LANG_NAME = {
+  spa: 'Spanish', ita: 'Italian', fra: 'French', deu: 'German',
+  jpn: 'Japanese', zho: 'Mandarin Chinese'
+};
+
 const SPECIMENS = {
   spa_for_eng: {
     positive: { seed: 358, lego: 1, note: 'four genuinely different pattern moves. Honestly short on position — 100% end. Your job is to do what this does AND put the LEGO at the start and in the filling.' },
@@ -87,13 +106,19 @@ async function buildPrompt(supabase, courseCode, seedNumber, legoIndex) {
     .from('course_seeds').select('known_text,target_text')
     .eq('course_code', courseCode).eq('seed_number', seedNumber).single();
 
-  const spec = SPECIMENS[courseCode] || SPECIMENS.spa_for_eng;
+  const spec = SPECIMENS[SPECIMEN_COURSE];
   // Never show a builder the answer to its own question. When the LEGO being
   // authored IS one of the specimens, the specimen is withheld and the omission
   // is stated in the prompt rather than silently dropped.
-  const isSelf = (sp) => sp.seed === seedNumber && sp.lego === legoIndex;
-  const pos = isSelf(spec.positive) ? null : await fetchSpecimen(supabase, courseCode, spec.positive.seed, spec.positive.lego);
-  const neg = isSelf(spec.negative) ? null : await fetchSpecimen(supabase, courseCode, spec.negative.seed, spec.negative.lego);
+  const isSelf = (sp) => courseCode === SPECIMEN_COURSE && sp.seed === seedNumber && sp.lego === legoIndex;
+  const pos = isSelf(spec.positive) ? null : await fetchSpecimen(supabase, SPECIMEN_COURSE, spec.positive.seed, spec.positive.lego);
+  const neg = isSelf(spec.negative) ? null : await fetchSpecimen(supabase, SPECIMEN_COURSE, spec.negative.seed, spec.negative.lego);
+
+  const targetLang = String(courseCode || '').split('_')[0];
+  const targetLangName = TARGET_LANG_NAME[targetLang] || targetLang;
+  const foreignSpecimenNote = courseCode === SPECIMEN_COURSE ? '' :
+    `*This specimen is from the Spanish course, not yours. It is here for the SHAPE of the phrase set — how the new LEGO is moved around, what it is made to touch, how the pattern changes phrase to phrase. The English side is the lesson and it is the same English corpus your course uses. Do NOT copy its ${'Spanish'}; write ${targetLangName}.*
+`;
 
   const avail = renderAvailable(inv);
   const blocked = renderBlocked(inv);
@@ -106,7 +131,7 @@ async function buildPrompt(supabase, courseCode, seedNumber, legoIndex) {
 # YOUR TASK
 
 Course: **${courseCode}** — the learner's known language is English, the target
-language is Spanish.
+language is ${targetLangName}.
 
 Seed ${seedNumber}: "${seed?.known_text}" -> "${seed?.target_text}"
 
@@ -120,12 +145,14 @@ Write **at least 4 BUILD and at least 5 USE phrases** for it.
 
 ## SPECIMEN — do what this does
 
+${foreignSpecimenNote}
 ${renderSpecimen(pos)}
 
 ${pos ? `*${spec.positive.note}*` : ''}
 
 ## SPECIMEN — do not do what this does
 
+${foreignSpecimenNote}
 ${renderSpecimen(neg)}
 
 ${neg ? `*${spec.negative.note}*` : ''}
