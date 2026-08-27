@@ -191,6 +191,28 @@ the render.
 So deleting the passage without providing a working replacement path would leave that workflow
 with no way to replace bad audio at all — which is what Kai predicted.
 
+> **UPDATE 2026-08-27 — C0 is ruled, and this section's conclusion no longer holds.**
+> Kai ruled make-before-break and the scan-course passage has been rewritten, **with** the
+> working replacement path this section correctly insisted on first. Two things changed since
+> this probe was written:
+>
+> 1. **Layers 1 and 2 are about `/generate`, which only fills NULL slots — they do not apply to
+>    `/regenerate-role`.** `POST /api/audio/regenerate-role/:courseCode` with `flaggedOnly`
+>    selects from `course_audio` rows directly (via `audio_flags`), not from unlinked slots, so a
+>    bad-but-linked clip *is* reachable. That is the operator-facing replacement route this
+>    section said did not exist. 48,868 flags raised, 7,125 in the last 30 days.
+> 2. **Layer 3 is now stale.** `/regenerate-role` no longer patches the row directly — it calls
+>    `swapClipInPlace` (`services/shared/audio-revision-swap.cjs`), which uploads the new object
+>    first and then UPDATEs at the same id **with `audio_revision` bumped**. The "replaced bytes
+>    never reach a learner who already heard the clip" failure is closed on this path.
+>
+> So the workaround is no longer the only sequence available, and its cost — a real silent window
+> between the delete and the render — is no longer a price anyone has to pay. See canon **A19**
+> and **A20**, and the rewritten "Stale Audio After Text Changes" section of
+> `.claude/commands/scan-course.md`. **Do not act on this section's conclusion.**
+>
+> (Layers 1 and 2 themselves were not re-verified today and may well still stand for `/generate`.)
+
 **One correction to the framing in the brief:** the `phase8:3683` comment *"otherwise upsert
 creates duplicates"* is **not** part of this workaround. It fires only when the identity key
 *differs*, and concerns duplicate `lego_id` presentation rows. Two independent workers reached
