@@ -1519,38 +1519,80 @@ scan → fix → 6a-6e pipeline → scan again → 6a-6e again if needed
                                  Deborah
 ```
 
-## IMPORTANT: Clean Up Stale Audio After Text Changes
+## IMPORTANT: Stale Audio After Text Changes — NEVER DELETE THE OLD CLIP
 
-When ANY fix changes the `known_text` or `target_text` of a seed, LEGO, or phrase, the old audio record becomes stale — it has the wrong text but is still linked via `audio_id`. The dashboard will show 0 missing (because the link exists), but the legacy export will fail because the text doesn't match.
+When ANY fix changes the `known_text` or `target_text` of a seed, LEGO, or phrase, the old clip becomes stale — it speaks the wrong words. It must stop being *heard*. It must **not** be *deleted*.
 
-**After changing text, ALWAYS:**
+> **This section used to say "delete the old `course_audio` record, then unlink, then regenerate." That instruction was wrong and is withdrawn.** Kai ruled make-before-break on **2026-08-27** (canon clash C0): *deletion never precedes a verified replacement — not even "we'll regenerate right after."* The 2026-08-03 `fra_for_eng` purge deleted 31,310 rows before re-rendering and left ~2,000 slots silent for two days. On 2026-08-27 two generation jobs died mid-run; under delete-first one of them would have left 57 slots silent on a live course.
 
-1. **Delete the old `course_audio` record** (it has the wrong text):
-   ```javascript
-   await supabase.from('course_audio').delete().eq('id', oldAudioId);
+### Two different faults, two different routes
+
+- **The TEXT changed** (this section). The clip is fine, it just says the old words. Follow the procedure below.
+- **The RECORDING is bad** and the text is right (clipped, silent, wrong voice, hallucinated words). This is **not** the procedure — use the non-destructive audio repair flow instead, see "If the recording is bad" at the end of this section.
+
+### The database already unlinks for you — do not hand-null
+
+Verified against the live DB on 2026-08-27: **all three content tables carry a BEFORE UPDATE trigger** that handles the stale link on a text change (`trg_null_seed_audio_on_text_change`, `trg_null_lego_audio_on_text_change`, `trg_null_phrase_audio_on_text_change`, all enabled). On a text change the trigger:
+
+1. **keeps** the link if the clip still speaks the new words (whitespace, casing or trailing punctuation only changed);
+2. otherwise **re-links to a same-voice clip** that does speak them, if one exists (`audio_id_for_text_same_voice` — voice is preserved, never silently swapped);
+3. otherwise **sets the link to NULL**;
+
+and writes a row to **`content_audio_link_drops`** either way, recording the old and new audio id, the old and new text, the old voice, and the reason. 1,783 drops logged since 2026-08-17 — this is live, in use, and doing the unlinking step for you. Step 2 of the old instruction is therefore unnecessary; do not write your own NULLing UPDATE.
+
+The one exception: `course_legos` also respects a link **you** set in the same UPDATE as the text (that is the audio-first repair shape). `course_seeds` and `course_practice_phrases` do **not** — they resolve the link themselves and will overwrite one you set in the same statement.
+
+### The correct order (make-before-break)
+
+1. **Render the replacement clip FIRST**, for the NEW text, in the **same voice, role and language** as the old one. Generating TTS is an approval gate — queue an audio pass rather than running TTS yourself, unless it is a handful of clips and you have said so and been told yes.
+2. **Verify the new clip before anything points at it.** All five, not a subset:
+   - the `course_audio` row exists and its `s3_key` is not NULL;
+   - `role`, `voice_id` and `language` match the clip being replaced;
+   - `duration_ms` is non-zero and plausible for the length of the text;
+   - `text_normalized` equals `normalize_text(<the new text>)`;
+   - the object is actually in the bucket (HEAD it) — a row is not bytes.
+3. **Then UPDATE the content text.** The trigger will link your new clip automatically, because it is the same-voice match for the new text.
+4. **Read the link back and assert it.** If it came back NULL, repoint explicitly. Check the `content_audio_link_drops` row to see what the trigger decided and why:
+   ```sql
+   SELECT column_name, role, old_audio_id, new_audio_id, old_voice_id, reason, dropped_at
+     FROM content_audio_link_drops
+    WHERE course_code = :code AND row_id = :rowId
+    ORDER BY dropped_at DESC LIMIT 5;
    ```
+5. **Leave the old `course_audio` row exactly where it is.** Never delete it.
 
-2. **Unlink from the parent** (set `audio_id` back to null):
-   ```javascript
-   // For seeds:
-   await supabase.from('course_seeds')
-     .update({ known_audio_id: null })  // or target_audio_id
-     .eq('course_code', CODE).eq('seed_number', N);
+**If you cannot render first** — a bulk text fix, or the audio pass is queued and not yet run — update the text anyway. The trigger unlinks and logs; the slot goes quiet, which is the honest state, because the old clip speaks the wrong words and playing it would be worse than silence. Then queue the audio pass. Still delete nothing.
 
-   // For LEGOs (presentation):
-   await supabase.from('course_legos')
-     .update({ presentation_audio_id: null })
-     .eq('course_code', CODE).eq('lego_id', ID);
+### Why deleting is worse than it looks
 
-   // For phrases:
-   await supabase.from('course_practice_phrases')
-     .update({ known_audio_id: null })  // or target_audio_id
-     .eq('id', phraseId);
-   ```
+Deleting a `course_audio` row is not a tidy-up. `ON DELETE CASCADE` foreign keys mean the delete also destroys, irreversibly:
 
-3. **Regenerate** from the dashboard (the record will now correctly show as missing).
+- `audio_repair_candidates` — any verified replacement already proposed for that clip;
+- `audio_clip_flags` and `audio_clip_signoffs` — every QA verdict and every human pass on it;
+- `course_audio_revisions` — the history that makes a revert possible;
+- `course_audio_envelope` — the measured envelope.
 
-**Why this matters:** The dashboard's missing audio count checks `audio_id` links. The legacy export checks text matching. If you change text without cleaning up audio, the link still exists but points to audio with the OLD text — dashboard says 0 missing, export breaks.
+And it forecloses two cheap outcomes: reverting the text change (the clip would have been re-linked for free), and reusing the clip elsewhere. An unlinked row costs nothing — no learner can reach it, because the learner path is reached through the link, not the row.
+
+### If the recording is bad (text unchanged)
+
+Two roads, both make-before-break, both leaving the row in place.
+
+**The used one — flag it, then regenerate the flagged clips.** Raise a flag from the dashboard (`/api/production/:courseCode/flags/update`), then `POST /api/audio/regenerate-role/:courseCode` with `flaggedOnly: true` (`dryRun: true` first to see the count). Phase 8 renders, passes a veracity gate, uploads to a **new** S3 key, and only then swaps the clip in place at the same id with `audio_revision` bumped; the flag is cleared only once the run reports success. Nothing is deleted; human-origin clips are excluded by the precious-audio guard. 48,868 flags raised since February, 7,125 in the last 30 days — this is the road in daily use.
+
+**The careful one — propose / preview / accept.** Use it when a human should hear both takes before anything moves. It is genuinely make-before-break: it renders, masters, measures, veracity-checks and uploads a candidate to a separate key **before** a human is even offered the accept, and a failed propose mutates nothing. The swap is **same id, new bytes** — the row is never deleted, so nothing cascades, no link moves, and `audio_revision` is bumped so cached bytes cannot be served.
+
+```
+POST /api/audio/repair/:courseCode/:audioId/propose   { source: 'tts'|'upload', voiceId?, ... }
+GET  /api/audio/repair/:courseCode/:audioId/preview   # hear old and candidate side by side
+POST /api/audio/repair/:courseCode/:audioId/accept    { candidateId, actor, reason }
+POST /api/audio/repair/:courseCode/:audioId/revert    # data-only; the old object was never deleted
+POST /api/audio/repair/:courseCode/:audioId/reject
+```
+
+Production API (port 3470); the dashboard surface is the Audio Repair panel. Pass `dryRun` to `propose` to see what it would spend before spending it. **`accept` refuses if the text moved** — that assertion is why this flow cannot be used for a text change, and why the procedure above exists.
+
+**Why the old text mattered at all:** the dashboard's missing-audio count checks `audio_id` links, and the legacy export checks text matching. Change text and leave the link, and the dashboard says 0 missing while the export breaks and the learner hears the old words. The trigger now closes that gap on its own — the only thing left for you is to make the replacement before you break the link, and never to delete.
 
 ## What This Skill Does NOT Do
 
