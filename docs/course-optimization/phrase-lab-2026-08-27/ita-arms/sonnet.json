@@ -4548,7 +4548,221 @@
     "seedNumber": 620,
     "legoIndex": 1,
     "arm": "claude-sonnet-5",
-    "error": "claude --print --model claude-sonnet-5 failed (code=1, signal=none, killed=false) | stdout-head: You've hit your session limit · resets 3pm (UTC)",
-    "phrases": []
+    "legoId": "S0620L01",
+    "legoKnown": "really",
+    "legoTarget": "davvero",
+    "elapsedMs": 244207,
+    "phrases": [
+      {
+        "role": "build",
+        "known": "really brave",
+        "target": "davvero coraggioso",
+        "tiles": [
+          {
+            "known": "really",
+            "target": "davvero",
+            "legoId": "S0620L01"
+          },
+          {
+            "known": "brave",
+            "target": " coraggioso",
+            "legoId": "S0615L01"
+          }
+        ]
+      },
+      {
+        "role": "build",
+        "known": "i really wanted to",
+        "target": "volevo davvero",
+        "tiles": [
+          {
+            "known": "i wanted to",
+            "target": "volevo",
+            "legoId": "S0588L01"
+          },
+          {
+            "known": "really",
+            "target": " davvero",
+            "legoId": "S0620L01"
+          }
+        ]
+      },
+      {
+        "role": "build",
+        "known": "i would have really waited",
+        "target": "avrei davvero aspettato",
+        "tiles": [
+          {
+            "known": "i would have",
+            "target": "avrei",
+            "legoId": "S0606L03#c"
+          },
+          {
+            "known": "really",
+            "target": " davvero",
+            "legoId": "S0620L01"
+          },
+          {
+            "known": "waited",
+            "target": " aspettato",
+            "legoId": "S0606L03#c"
+          }
+        ]
+      },
+      {
+        "role": "build",
+        "known": "really sensible",
+        "target": "davvero sensata",
+        "tiles": [
+          {
+            "known": "really",
+            "target": "davvero",
+            "legoId": "S0620L01"
+          },
+          {
+            "known": "sensible",
+            "target": " sensata",
+            "legoId": "S0608L01"
+          }
+        ]
+      },
+      {
+        "role": "use",
+        "known": "i really wanted to look for a house",
+        "target": "volevo davvero cercare una casa",
+        "tiles": [
+          {
+            "known": "i wanted to",
+            "target": "volevo",
+            "legoId": "S0588L01"
+          },
+          {
+            "known": "really",
+            "target": " davvero",
+            "legoId": "S0620L01"
+          },
+          {
+            "known": "to look for",
+            "target": " cercare",
+            "legoId": "S0610L02"
+          },
+          {
+            "known": "a house",
+            "target": " una casa",
+            "legoId": "S0613L02"
+          }
+        ]
+      },
+      {
+        "role": "use",
+        "known": "we really didn't have a house",
+        "target": "davvero non avevamo una casa",
+        "tiles": [
+          {
+            "known": "really",
+            "target": "davvero",
+            "legoId": "S0620L01"
+          },
+          {
+            "known": "we didn't have",
+            "target": " non avevamo",
+            "legoId": "S0603L02"
+          },
+          {
+            "known": "a house",
+            "target": " una casa",
+            "legoId": "S0613L02"
+          }
+        ]
+      },
+      {
+        "role": "use",
+        "known": "she used to insist that we really needed help",
+        "target": "insisteva che davvero avevamo bisogno di aiuto",
+        "tiles": [
+          {
+            "known": "she used to insist that",
+            "target": "insisteva che",
+            "legoId": "S0587L03"
+          },
+          {
+            "known": "really",
+            "target": " davvero",
+            "legoId": "S0620L01"
+          },
+          {
+            "known": "we needed help",
+            "target": " avevamo bisogno di aiuto",
+            "legoId": "S0605L01"
+          }
+        ]
+      },
+      {
+        "role": "use",
+        "known": "did you really think so",
+        "target": "lo pensavi davvero",
+        "tiles": [
+          {
+            "known": "you thought it",
+            "target": "lo pensavi",
+            "legoId": "S0616L02"
+          },
+          {
+            "known": "really",
+            "target": " davvero",
+            "legoId": "S0620L01"
+          }
+        ]
+      },
+      {
+        "role": "use",
+        "known": "if you had told me i would really have driven somewhere else",
+        "target": "se me lo avessi detto, avrei davvero guidato altrove",
+        "tiles": [
+          {
+            "known": "if you had told me",
+            "target": "se me lo avessi detto",
+            "legoId": "S0600L03"
+          },
+          {
+            "known": "i would have",
+            "target": ", avrei",
+            "legoId": "S0600L01#c"
+          },
+          {
+            "known": "really",
+            "target": " davvero",
+            "legoId": "S0620L01"
+          },
+          {
+            "known": "driven",
+            "target": " guidato",
+            "legoId": "S0600L01#c"
+          },
+          {
+            "known": "somewhere else",
+            "target": " altrove",
+            "legoId": "S0611L02"
+          }
+        ]
+      },
+      {
+        "role": "use",
+        "known": "she really followed me",
+        "target": "mi ha seguito davvero",
+        "tiles": [
+          {
+            "known": "she followed me",
+            "target": "mi ha seguito",
+            "legoId": "S0591L02"
+          },
+          {
+            "known": "really",
+            "target": " davvero",
+            "legoId": "S0620L01"
+          }
+        ]
+      }
+    ]
   }
 ]
