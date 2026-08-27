@@ -46,14 +46,17 @@ const EXPLAINER_VOICE_ID = process.env.VOICE_ID || 'gfzdpspr5fdp'
 // This also changes the course_audio.language dedup key, so switching a course
 // from the old 'auto' clips forces fresh synthesis (no stale reuse).
 // IMPORTANT: must be 'pod_explainer'. Using role='presentation' here makes
-// these rows indistinguishable from course-intro presentation audio, and the
-// /regenerate-presentations endpoint in phase8-audio-v13.cjs deletes any
-// role='presentation' row with NULL lego_id whose text doesn't match a current
+// these rows indistinguishable from course-intro presentation audio, and
+// /regenerate-presentations in phase8-audio-v13.cjs USED TO delete any
+// role='presentation' row with NULL lego_id whose text didn't match a current
 // LEGO presentation — which is exactly what these are. The Italian + Chinese
 // explainer audio from the first batch run got wiped by that path. Migration
 // 20260519_course_audio_pod_explainer_role.sql adds 'pod_explainer' to the
-// allow-list; the orphan cleanup is scoped to role='presentation' so the new
-// role is immune.
+// allow-list, which is what keeps this role out of that scan.
+// That orphan delete is GONE as of 2026-08-27 (canon C23, make-before-break):
+// those rows are counted and reported now, never removed. The separation still
+// matters — a future deliberate cleanup pass would face the same question — but
+// do not read the paragraph above as a description of running code.
 const EXPLAINER_ROLE = 'pod_explainer'
 const EXPLAINER_PROVIDER = 'xai'
 
