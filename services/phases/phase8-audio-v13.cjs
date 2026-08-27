@@ -46,6 +46,7 @@ const veracity = require('../audio-veracity.cjs')
 
 const { claudeChat, HAIKU_MODEL } = require('../shared/claude-cli.cjs')
 const presentationAuthor = require('./presentation-author.cjs')
+const { planPresentationRefresh, newestRenderedPresentation } = require('./presentation-refresh-plan.cjs')
 const { emitProgress } = require('../shared/emit-progress.cjs')
 const { fulfillAudioPassRequests, queueAudioPass } = require('../shared/audio-pass-queue.cjs')
 // Kai's relink voice-match ruling, 2026-08-19 — a relink may only ever land a
@@ -1918,7 +1919,7 @@ async function linkPresentationAudio(courseCode) {
   // Get all presentation audio that has lego_id set (filter pending client-side)
   const { data: rawPres, error: presError } = await supabase
     .from('course_audio')
-    .select('id, lego_id, s3_key, voice_id')
+    .select('id, lego_id, s3_key, voice_id, created_at')
     .eq('course_code', courseCode)
     .eq('role', 'presentation')
     .not('lego_id', 'is', null)
@@ -1947,7 +1948,13 @@ async function linkPresentationAudio(courseCode) {
   if (!legosNeedingLink?.length) return { linked: 0 }
 
   // Build map: lego_id -> presentation course_audio ROW, voice-matched only.
-  const presMap = new Map()
+  //
+  // A LEGO can carry a superseded clip AND its replacement (addition-only intro
+  // refresh — see presentation-refresh-plan.cjs), so which one wins cannot be
+  // left to row order: this linker runs after every generation pass, and picking
+  // the wrong one here would walk the FK straight back to the superseded clip
+  // the moment the replacement landed. Newest rendered, voice-gated wins.
+  const presCandidates = new Map()
   const presRejected = new Map()
   for (const p of presentations) {
     const verdict = isRelinkAllowed({ role: 'presentation', wantedVoice: wantedPresVoice, candidate: p })
@@ -1955,7 +1962,13 @@ async function linkPresentationAudio(courseCode) {
       if (!presRejected.has(p.lego_id)) presRejected.set(p.lego_id, { row: p, verdict })
       continue
     }
-    presMap.set(p.lego_id, p.id)
+    if (!presCandidates.has(p.lego_id)) presCandidates.set(p.lego_id, [])
+    presCandidates.get(p.lego_id).push(p)
+  }
+  const presMap = new Map()
+  for (const [legoId, rows] of presCandidates) {
+    const winner = newestRenderedPresentation(rows)
+    if (winner) presMap.set(legoId, winner.id)
   }
 
   // Update LEGOs where presentation_audio_id is NULL or doesn't match
@@ -3991,80 +4004,78 @@ app.post('/regenerate-presentations/:courseCode', async (req, res) => {
     const BATCH_SIZE = 200
     const legoIdList = presentations.map(p => p.lego_id)
 
-    // Fetch existing presentation audio to detect text changes
-    // (If text changed, we must delete the old record so the new one isn't a duplicate)
+    // Fetch existing presentation audio to detect text changes.
+    // A LEGO can legitimately carry more than one presentation row now (see
+    // presentation-refresh-plan.cjs): a superseded clip and its replacement.
+    // The row we compare the new text against is the one the LEARNER CURRENTLY
+    // HEARS — the newest rendered candidate — never a pending placeholder.
     const existingByLegoId = new Map()
     for (let i = 0; i < legoIdList.length; i += BATCH_SIZE) {
       const batch = legoIdList.slice(i, i + BATCH_SIZE)
       const { data: existing } = await supabase
         .from('course_audio')
-        .select('id, lego_id, text_normalized, s3_key, origin')
+        .select('id, lego_id, text_normalized, s3_key, origin, created_at')
         .eq('course_code', courseCode)
         .eq('role', 'presentation')
         .in('lego_id', batch)
       if (existing) {
-        for (const rec of existing) existingByLegoId.set(rec.lego_id, rec)
+        const byLego = new Map()
+        for (const rec of existing) {
+          if (!byLego.has(rec.lego_id)) byLego.set(rec.lego_id, [])
+          byLego.get(rec.lego_id).push(rec)
+        }
+        for (const [legoId, rows] of byLego) {
+          existingByLegoId.set(legoId, newestRenderedPresentation(rows) || rows[rows.length - 1])
+        }
       }
     }
 
-    // Delete records where text changed (otherwise upsert creates duplicates)
-    // PRECIOUS-AUDIO GUARD: human-origin presentations (e.g. the relinked Welsh
-    // human intros) are NEVER deleted or replaced — even when the template text
-    // differs, the human recording stays the presentation for that lego.
-    const idsToDelete = []
-    const unchangedLegoIds = new Set()
-    let humanPreserved = 0
-    for (const pres of presentations) {
-      const existing = existingByLegoId.get(pres.lego_id)
-      if (!existing) continue
-      const newNorm = normalizeForAudio(pres.presentation_text)
-      if (existing.origin === 'human') {
-        unchangedLegoIds.add(pres.lego_id)  // human → keep, never delete/re-insert
-        if (existing.text_normalized !== newNorm) humanPreserved++
-      } else if (existing.text_normalized === newNorm) {
-        unchangedLegoIds.add(pres.lego_id)  // text same → keep existing record
-      } else {
-        idsToDelete.push(existing.id)  // text changed → delete old, insert new
-      }
-    }
+    // MAKE-BEFORE-BREAK (Kai's C0 ruling, 2026-08-27; canon clash C23).
+    //
+    // A changed introduction is an ADDITION, never a removal. This block used to
+    // delete the LEGO's presentation row in batches of 200 and null
+    // course_legos.presentation_audio_id, and only then hand the work to
+    // /generate — so a run that died in that gap left every slot it had reached
+    // SILENT, with the clip's revision history, flags and sign-offs deleted
+    // alongside it and no way back. That is the fra_for_eng 2026-08-03 shape
+    // (AUDIO_PIPELINE_ARCHITECTURE.md §6b), and the ruling now forbids it.
+    //
+    // Now: we work out which rows are superseded, insert the new pending rows
+    // beside them below, and touch NEITHER the old rows NOR the FK. The learner
+    // keeps hearing the old introduction — stale words, but audible — until
+    // /generate has rendered the replacement, put it through the veracity gate
+    // and uploaded it; that same run then rebinds the FK to the new row. The
+    // superseded row is left unlinked for a separate cleanup pass, exactly as
+    // the flag-and-regenerate path leaves its predecessors.
+    //
+    // PRECIOUS-AUDIO GUARD, unchanged: human-origin presentations (e.g. the
+    // relinked Welsh human intros) are never deleted, superseded or re-rendered
+    // over — even when the template text differs, the human recording stays.
+    const {
+      unchangedLegoIds, supersededLegoIds, supersededAudioIds, humanPreserved
+    } = planPresentationRefresh(presentations, existingByLegoId, normalizeForAudio)
+
     if (humanPreserved > 0) {
       logger.info(`[PreciousAudio] preserved ${humanPreserved} human-origin presentations whose template text changed (human recordings are never deleted)`)
     }
-
-    if (idsToDelete.length > 0) {
-      // Collect lego_ids of records being deleted
-      const deletedLegoIds = []
-      for (const pres of presentations) {
-        const existing = existingByLegoId.get(pres.lego_id)
-        if (existing && idsToDelete.includes(existing.id)) {
-          deletedLegoIds.push(pres.lego_id)
-        }
-      }
-      for (let i = 0; i < idsToDelete.length; i += BATCH_SIZE) {
-        const batch = idsToDelete.slice(i, i + BATCH_SIZE)
-        await supabase.from('course_audio').delete().in('id', batch)
-      }
-      // Clear presentation_audio_id so plan/generate picks up the new pending records
-      for (const legoId of deletedLegoIds) {
-        const m = legoId.match(/S(\d+)L(\d+)/)
-        if (!m) continue
-        await supabase.from('course_legos')
-          .update({ presentation_audio_id: null })
-          .eq('course_code', courseCode)
-          .eq('seed_number', parseInt(m[1], 10))
-          .eq('lego_index', parseInt(m[2], 10))
-      }
-      logger.info(`Deleted ${idsToDelete.length} stale presentation records, cleared ${deletedLegoIds.length} presentation_audio_id links`)
+    if (supersededLegoIds.length > 0) {
+      logger.info(
+        `[MakeBeforeBreak] ${supersededLegoIds.length} presentation(s) have new text — queueing replacements alongside the existing clips. ` +
+        `Nothing deleted, no link cleared: the old clip keeps playing until /generate has rendered and verified its replacement.`)
     }
     logger.info(`Keeping ${unchangedLegoIds.size} unchanged presentation records`)
 
-    // Clean up orphan presentation records with null lego_id (legacy records from before lego_id was set)
-    // These can't be matched by the lego_id lookup above, so we delete any that don't match a current text
+    // Legacy presentation rows with a null lego_id used to be DELETED here when
+    // their text no longer matched anything current. They are not deleted any
+    // more: course_legos.presentation_audio_id carries no foreign key, so
+    // deleting such a row leaves a dangling pointer and a silent slot with no
+    // trace of what was there. An unlinked row reaches no learner anyway, so
+    // there was never anything to gain. They are counted and reported for a
+    // separate, deliberate cleanup pass.
     const allNewTextsNorm = new Set(presentations.map(p => normalizeForAudio(p.presentation_text)))
-    // Also include component presentation texts so we don't accidentally delete those
     const allCompTextsNorm = new Set(componentPresentations.map(cp => normalizeForAudio(cp.presentation_text)))
 
-    let orphanIds = []
+    let staleOrphanCount = 0
     let orphanOffset = 0
     while (true) {
       const { data: orphanBatch } = await supabase
@@ -4076,25 +4087,16 @@ app.post('/regenerate-presentations/:courseCode', async (req, res) => {
         .range(orphanOffset, orphanOffset + 999)
       if (!orphanBatch || orphanBatch.length === 0) break
       for (const rec of orphanBatch) {
-        // PRECIOUS-AUDIO GUARD: never delete human recordings, even as "orphans"
-        if (rec.origin === 'human') {
-          logger.info(`[PreciousAudio] keeping human-origin orphan presentation ${rec.id} (human recordings are never deleted)`)
-          continue
-        }
+        if (rec.origin === 'human') continue
         if (!allNewTextsNorm.has(rec.text_normalized) && !allCompTextsNorm.has(rec.text_normalized)) {
-          orphanIds.push(rec.id)
+          staleOrphanCount++
         }
       }
       if (orphanBatch.length < 1000) break
       orphanOffset += 1000
     }
-
-    if (orphanIds.length > 0) {
-      for (let i = 0; i < orphanIds.length; i += BATCH_SIZE) {
-        const batch = orphanIds.slice(i, i + BATCH_SIZE)
-        await supabase.from('course_audio').delete().in('id', batch)
-      }
-      logger.info(`Deleted ${orphanIds.length} orphan presentation records (null lego_id, text no longer matches)`)
+    if (staleOrphanCount > 0) {
+      logger.info(`${staleOrphanCount} legacy presentation record(s) with a null lego_id no longer match any current text — left in place for a separate cleanup pass (never deleted here)`)
     }
 
     // Build records for bulk upsert (skip unchanged — their records already exist)
@@ -4134,7 +4136,7 @@ app.post('/regenerate-presentations/:courseCode', async (req, res) => {
       const batch = legoIdList.slice(i, i + BATCH_SIZE)
       const { data: batchData, error: batchError } = await supabase
         .from('course_audio')
-        .select('id, lego_id, s3_key, voice_id')
+        .select('id, lego_id, s3_key, voice_id, created_at')
         .eq('course_code', courseCode)
         .eq('role', 'presentation')
         .in('lego_id', batch)
@@ -4215,10 +4217,20 @@ app.post('/regenerate-presentations/:courseCode', async (req, res) => {
     }
 
     if (allPresAudio.length > 0) {
-      // Build lego_id -> course_audio.id map
-      const legoToAudioId = new Map()
+      // Build lego_id -> course_audio.id map. Addition-only refresh means a LEGO
+      // can hold a superseded clip AND its replacement, so the winner is chosen,
+      // not left to row order: newest rendered, voice-gated candidate wins. While
+      // the replacement is still pending there is exactly one rendered candidate
+      // — the old clip — which is what keeps the slot audible.
+      const candidatesByLego = new Map()
       for (const audio of allPresAudio) {
-        legoToAudioId.set(audio.lego_id, audio.id)
+        if (!candidatesByLego.has(audio.lego_id)) candidatesByLego.set(audio.lego_id, [])
+        candidatesByLego.get(audio.lego_id).push(audio)
+      }
+      const legoToAudioId = new Map()
+      for (const [legoId, rows] of candidatesByLego) {
+        const winner = newestRenderedPresentation(rows)
+        if (winner) legoToAudioId.set(legoId, winner.id)
       }
 
       // Update course_legos.presentation_audio_id
@@ -4413,14 +4425,15 @@ app.post('/regenerate-presentations/:courseCode', async (req, res) => {
       targetLangName,
       total: presentations.length,
       componentTotal: componentPresentations.length,
-      textChanged: idsToDelete.length,
+      textChanged: supersededLegoIds.length,
+      supersededKept: supersededAudioIds.length,  // old clips left playing until their replacement is rendered and verified
       textUnchanged: unchangedLegoIds.size,
       humanPreserved,
       newRecords: audioRecords.length,
       componentNewRecords: compNewRecords,
       componentUnchanged: compTextUnchanged,
       contextStats,
-      message: `${presentations.length} LEGO presentations processed (${idsToDelete.length} text changed, ${unchangedLegoIds.size} unchanged, ${presentations.length - idsToDelete.length - unchangedLegoIds.size} new). ${componentPresentations.length} component presentations processed (${compNewRecords} new, ${compTextUnchanged} unchanged). Run regenerate-role with role=presentation to generate audio.`
+      message: `${presentations.length} LEGO presentations processed (${supersededLegoIds.length} text changed — replacements queued alongside the existing clips, nothing deleted, no slot silenced — ${unchangedLegoIds.size} unchanged, ${presentations.length - supersededLegoIds.length - unchangedLegoIds.size} new). ${componentPresentations.length} component presentations processed (${compNewRecords} new, ${compTextUnchanged} unchanged). Run regenerate-role with role=presentation to generate audio.`
     })
 
     emitProgress(supabase, courseCode, `Presentation text regenerated: ${presentations.length} LEGOs, ${componentPresentations.length} components — ready for audio generation`, { phase: 'audio', action: 'regenerate-presentations', legos: presentations.length, components: componentPresentations.length })
