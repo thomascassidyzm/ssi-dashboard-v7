@@ -203,6 +203,22 @@ A **LEGO** is a chunk the learner is taught as one unit and can then recombine. 
 
 **L21 — A word that appears in a seed must be drilled as part of a pattern, not left as a one-off.** · **HARD (the test), SOFT (the remedy)** · Kai, 2026-08-17: "If 'nimi' comes up in a seed then we should make sure it's not just a one-off. we need to make sure we drill a pattern… **Sometimes the answer is to add more, not less.**" · **The two-part availability test:** is the word available at this stage, *and* is it clear enough? Every gate we own answers only the first · An agent's reflexive fix (delete the offending phrase) is the opposite of what is wanted.
 
+**L22 — A bound element that cannot stand alone grows to the verb IN ITS OWN SEED — not to the commonest verb, and never to a placeholder.** · **HARD (which verb), SOFT (edit-versus-delete on each phrase)** · Kai, 2026-08-27 · Six courses hit this independently and invented four different answers · The standing rule is that when one side cannot be broken down, the other side grows to match — but a bound element attaches to a *different* verb in every phrase (吧 appeared with roughly eight verbs across eight prompts), so "merge with its neighbour" looked to have no single answer. **This rule ends that.**
+
+> "Grow it to whatever is in the seed. What does the seed say? Then the learner will just practice different phrases with that specific one - the phrases should be removed or edited as a result, of course. Same for phrases that include it, that are under future seeds. If it comes up again in a seed, we teach it with the new verb that seed uses - now the learner has two verbs to use it with. They might see the pattern and start using it in other places. Technically, if the 吧 stays a component in the M-lego, it will be available to mix with other verbs in the future. But in the beginning, when it is first introduced, it is better to keep it simple and only use it with one thing. But there is nothing blocking it being used with other verbs later when the learner is used to it. We should make sure it is drilled enough and not just dropped, anyway, and then gradually introduce new verbs, if we want to do it properly." — Kai, 2026-08-27
+
+**The procedure, in order:**
+1. **The seed decides.** Merge the bound element — a Japanese bound ending like the potential inside 覚えられる, a Chinese particle like 吧, a stranded inflection — with the verb **in its own seed sentence**. Not the commonest verb across the phrases, not a representative one.
+2. **Practice phrases under that LEGO that use a different verb are EDITED to the taught combination, or DELETED.** Prefer the edit where the sentence still teaches something; delete where an edit would produce a sentence nobody would say. **Variety at first introduction is a DEFECT, not a virtue.**
+3. **The same applies to phrases under LATER seeds** that use the element with another verb.
+4. **Exception, and the designed path:** if a later **SEED** itself uses the element with a different verb, that seed is where combination two is legitimately taught. **Do not flatten it.** This is how generality is built — deliberately and gradually, not by accident at the debut.
+5. **Keep the bound element as a COMPONENT of the merged M-LEGO.** That is what leaves it free to recombine later; merging does not close the door.
+6. **Drill it enough.** "We should make sure it is drilled enough and not just dropped." If editing and deleting drop the LEGO below the phrase floor, **author new phrases using the taught combination** rather than leaving it thin (L21 — sometimes the answer is to add more, not less).
+
+**Ruled out explicitly:** a label containing a gap, tilde, bracket or placeholder standing in for "whatever verb comes here". Kai on that option: **"yeah, this one is a no-go."** It produces a lesson the learner cannot say aloud. **See K11 and L19** — the same never-invent-notation rail, reached from a different direction.
+
+**Obligations:** this is a LEGO edit, so O2 and O6 both fire; edits and deletions of phrases are reported rather than applied silently (R0.3, and see "What is Kai's call").
+
 ---
 
 ## 3. What a PRACTICE PHRASE is, and what makes one valid
@@ -578,6 +594,16 @@ On its first production use, the edit-impact tool reported that **every** phrase
 The tool reproduced **27** untaught-vocabulary candidates for the day's `eng_for_sin` edits. Exhaustive adjudication found **1 real breach**. **13** were inflectional variants of a word already taught (`ඔයාගෙන්` ← `ඔයා`, seed 1); **13** were inherited, not introduced by the edits — `මිනිස්සු` had been in the course since seed 69. The matcher is unstemmed and exact-surface, **and says so in its own caveat**, which nobody had acted on.
 
 **The rule:** read the tool's own caveat and price it in. For any inflecting language an exact-form "untaught" count is an upper bound, not a finding. And always ask: *did my change introduce this, or did I just become the first person to look?*
+
+### WC-F9 — 15 Spanish mismatches invented by two normalisers that disagree
+**Demonstrates: A7, and the checklist.**
+During the Spanish `poder` audio-generation run, 2026-08-27, a verification pass comparing each generated clip's text against its database row raised **15 apparent mismatches. All 15 were false.** The JavaScript-side `normalizeForAudio` **keeps** a trailing question mark; the database-side normaliser **strips** it. Two normalisers in the same system disagree, so any comparison routed through both reports differences that do not exist.
+
+**Caught by** the worker noticing the shape of the difference and re-running on a direct text comparison, which came back clean.
+
+The same run also named a genuinely benign class, so nobody re-investigates it: **40 PRE-EXISTING clips differ from their row text by capitalisation or a trailing full stop only** — same words. This predates the work and is not a defect (A7).
+
+**The rule:** **when a check compares text through a normaliser, verify the normaliser against a known-identical pair before trusting any mismatch it reports.** A punctuation-only or case-only difference is almost never a real defect — but a **question mark can change the sound** (A7, A9), so it is not simply noise either. The two cases must be told apart, never filtered wholesale.
 
 ## Before you believe a count
 
