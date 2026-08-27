@@ -114,10 +114,57 @@ The durations move in the right direction every time — "van" runs 0.60s as Spa
 
 ---
 
-## 4. What this costs and what it does not decide
+## 4. The follow-on: would a Pro clone hold steadier?
+
+Your instinct here is not a hunch, it has a documented mechanism. Cartesia's own Pro Voice Clone
+guidance says: *"Speed and volume are fixed. A PVC learns pacing and loudness from your dataset."*
+**Pacing is precisely the axis the wander showed up on.** An instant clone infers pacing from six
+seconds and improvises the rest; a Pro clone is trained on your pacing and has it fixed. If anything
+was going to close a 104% spread, that is the mechanism that would do it.
+
+**But the price is the part you need before you plan a recording session**, and it is much higher
+than the 25-second pack assumed:
+
+| | Instant clone | **Pro clone** |
+|---|---|---|
+| Source audio | a clip **up to 10 seconds** | **"30+ minutes"** minimum, *"2 hours or more gives the best results"* |
+| Training | immediate | *"Training then takes up to 3 hours"* |
+| Available via | dashboard + API | dashboard + API |
+| Included in your plan | yes | yes, on Startup |
+
+So the ask is not "record a longer sample" — it is **half an hour of you talking, minimum, and
+ideally two hours.** That is a genuinely different undertaking from the 25-second read, and it is
+worth knowing before you book the time rather than after. The good news: it does not need to be
+scripted performance. It needs to be clean, single-speaker, and — because a PVC learns pacing and
+loudness from it — **spoken at the pace and volume you actually want back**. Whatever you record is
+what the voice becomes.
+
+**The experiment, ready to run the moment a real recording exists.** Same 59-clip battery as above,
+same phrases, same five takes, instant against Pro, wander numbers side by side. It is a couple of
+hundred credits and an afternoon of nobody's attention. That comparison answers the question
+properly rather than by argument.
+
+**Two constraints I am holding to, and will not quietly relax:**
+- **The Pro clone gets a fresh recording.** Not the 24.5-second source, not the mastered variants,
+  and above all **not generated audio** — a clone trained on clone output is a photocopy of a
+  photocopy, and it would corrupt the very comparison the experiment exists to make. Your standing
+  ruling that real clones get real recordings applies here with extra force.
+- **Nothing is built until that recording exists.** No Pro clone will be attempted off scraps.
+
+**One open question to settle when it runs.** If a PVC's speed is genuinely *fixed*, the free
+mitigation from section 2 — pinning `generation_config.speed` — may behave differently or not apply
+at all. That is not a problem, it may even be the point: fixed pacing is what we want. But it means
+the instant-versus-Pro comparison should be run **both** with and without speed pinning, or the two
+legs are not being asked the same question.
+
+---
+
+## 5. What this costs and what it does not decide
 
 Fifty-nine clips, all sub-two-seconds — a few hundred credits out of the Startup plan's 1.25M. No bulk generation has run, and none will until you have listened.
 
 **What this does not tell you.** Whether the wander is audible enough to matter is a taste call and it is yours. Whether xAI or Chatterbox wander *less* on the same phrases is unmeasured — I tested the front-runner against the failure mode that killed ElevenLabs, not all three against each other. If you want the three-way consistency comparison, say so and it is a straightforward next run.
 
 **My read, for what it is worth.** The wander is real and it concentrates exactly at LEGO length, which is the worst possible place for it. Speed-pinning halves it and costs nothing. That is probably enough to proceed with, *if* your ear says the takes are each well spoken — because a course can live with variation between takes far more easily than it can live with a bad take. What it cannot live with is a phrase that sounds hurried one day and laboured the next in the same lesson.
+
+And if the instant clone turns out not to be enough, section 4 is the answer rather than a different vendor: a Pro clone learns your pacing instead of guessing it. The cost of finding out is half an hour of your voice and an afternoon of nobody's attention.
