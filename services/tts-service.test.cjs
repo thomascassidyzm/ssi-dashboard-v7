@@ -203,8 +203,29 @@ describe('generate() routes cartesia', () => {
       expect(body.locale).toBe('es-ES')
       expect(body.language).toBeUndefined()
       expect(body.voice).toEqual({ mode: 'id', id: CLONE })
-      expect(body.model_id).toBe('sonic-3')
+      expect(body.model_id).toBe('sonic-3.6')
       expect(body.output_format.container).toBe('mp3')
+    })
+  })
+
+  // Tom's ear ruling, 2026-08-27: sonic-3.6 is the better model, and the
+  // full-quality and compressed renders of it are indistinguishable to him — so
+  // the model moves forward and the small file STAYS. These two assertions are
+  // one decision, and they belong in the same test: raising the sample rate
+  // "for quality" is the failure this guards against.
+  it('asks for sonic-3.6 at the small course format, not Cartesia 44.1 kHz default', async () => {
+    await withStubbedFetch(async (svc, calls) => {
+      await svc.generate('I am James. Pleased to meet you.', 'cartesia', {
+        apiKey: 'k', voiceId: CLONE, locale: 'en-GB',
+      })
+      const body = calls[0].body
+      expect(body.model_id).toBe('sonic-3.6')
+      expect(body.output_format).toEqual({ container: 'mp3', sample_rate: 24000, bit_rate: 128000 })
+      // A caller may still override, per voice — the defaults are not a cage.
+      await svc.generate('again', 'cartesia', {
+        apiKey: 'k', voiceId: CLONE, locale: 'en-GB', sampleRate: 44100,
+      })
+      expect(calls[1].body.output_format.sample_rate).toBe(44100)
     })
   })
 

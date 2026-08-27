@@ -485,6 +485,16 @@ function buildTTSConfig(voiceConfig, cadence, cadenceProfiles) {
     // `locale`, not `language`: Cartesia's own guidance is to prefer it, and a
     // base ISO code is a weak steer on an English-dominant multilingual voice.
     //
+    // NO `|| 'auto'` FALLBACK. It was here until 2026-08-27 and it quietly
+    // defeated the gate one layer down: generateCartesia treats a MISSING steer
+    // as a hard fail and an EXPLICIT 'auto' as a warned, deliberate choice, so
+    // manufacturing an 'auto' out of a config that simply never said turned the
+    // hard fail into a console line nobody reads. That mattered less while the
+    // steer might have been ignored anyway on sonic-3; on sonic-3.6 `locale` is
+    // a supported parameter that shapes the phonology, so an unsteered render is
+    // a defect worth stopping. A caller that really wants unsteered passes
+    // 'auto' itself. This path serves voice PREVIEWS, not course audio.
+    //
     // Speed is NOT advisory here, unlike xAI. Cartesia honours
     // generation_config.speed, and sending it explicitly is what halves the
     // take-to-take duration wander on short text (104% → 38%, determinism run
@@ -494,7 +504,7 @@ function buildTTSConfig(voiceConfig, cadence, cadenceProfiles) {
       provider: 'cartesia',
       apiKey: process.env.CARTESIA_API_KEY,
       voiceId: voiceConfig.voiceId,
-      locale: voiceConfig.locale || voiceConfig.language || 'auto',
+      locale: voiceConfig.locale || voiceConfig.language,
       speed: effectiveSpeed
     };
   }

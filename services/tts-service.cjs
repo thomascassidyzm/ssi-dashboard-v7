@@ -504,15 +504,54 @@ const CARTESIA_DEFAULT_SPEED = 1.0;
 const CARTESIA_VERSION = '2026-08-14';
 
 /**
- * Generate speech with Cartesia (sonic-3). Returns raw mp3 bytes.
+ * The model, pinned. `sonic-3.6` went generally available 2026-08-27 and Tom's
+ * ear picked it the same day off the eleven-variant listening grid: "sonic-3.6
+ * is clearly the better model". It is also Cartesia's own API default now, so
+ * this pin is agreement rather than divergence — but it stays an explicit pin,
+ * because a floating default is a voice that can change under a course without
+ * anyone asking for it.
  *
- * Two settings are baked in here rather than left to callers:
+ * It measures better where the courses live: across four Pod 1 lines, sonic-3
+ * came off the API with a 10 dB loudness spread (short line at −30.8 LUFS),
+ * sonic-3.6 with a 2 dB one (−21.6). Our mastering therefore lifts ~2 dB
+ * instead of up to 13 dB, and that 13 dB lift is what was amplifying room tone
+ * and sibilance into the Pod 1 "hissy" defect.
+ */
+const CARTESIA_MODEL = 'sonic-3.6';
+
+/**
+ * Output format, deliberately SMALLER than Cartesia's 44.1 kHz default.
+ *
+ * Tom's ruling, 2026-08-27, after listening to the full-quality and compressed
+ * renders of the same model side by side: "there is ZERO audible difference".
+ * If the ear cannot hear it, the smaller file wins on storage, bandwidth and
+ * delivery to a phone on a bad connection — so this is not a quality shortfall
+ * left unfixed, it is the format chosen on purpose. Do not raise it "for
+ * quality" without a fresh ear ruling that hears something.
+ */
+const CARTESIA_SAMPLE_RATE = 24000;
+const CARTESIA_BIT_RATE = 128000;
+
+/**
+ * Generate speech with Cartesia (sonic-3.6). Returns raw mp3 bytes.
+ *
+ * Three settings are baked in here rather than left to callers:
  *
  * 1. `locale`, not `language`. Cartesia's own guidance is to prefer `locale`;
  *    `language` takes base ISO codes only, and a base code is what let xAI read
  *    Italian "come stai" with English phonology in the 2026-07-10 pilot. Phase 8
  *    already has the right value in hand at the call site (toBcp47(item.language)).
+ *    On sonic-3.6 the ambiguity that hung over this on sonic-3 is closed at the
+ *    documentation end: Cartesia's API reference says `locale` requires Sonic
+ *    3.6 or newer, and we now send it to a model that is. A live A/B probe the
+ *    same day (2026-08-27, written up in
+ *    `docs/pods/cartesia-36-production-2026-08-27.md`) is DIRECTIONAL but not proof — French text steered `fr-FR` leans French to a
+ *    language detector, the same text steered `en-GB` leans English, at three
+ *    takes a side with no seed to hold the rest still. Read it as corroboration,
+ *    not as a measurement; Cartesia gives no way to observe which steer it
+ *    applied.
  * 2. `generation_config.speed` — see CARTESIA_DEFAULT_SPEED above.
+ * 3. `output_format` — see CARTESIA_SAMPLE_RATE / CARTESIA_BIT_RATE above.
  *
  * Word boundaries are null, as with xAI: this endpoint returns bytes, not
  * timings. Anything that needs word boundaries (component splicing) stays on
@@ -525,9 +564,9 @@ async function generateCartesia(text, config) {
     locale,
     language,
     speed = CARTESIA_DEFAULT_SPEED,
-    modelId = 'sonic-3',
-    sampleRate = 24000,
-    bitRate = 128000
+    modelId = CARTESIA_MODEL,
+    sampleRate = CARTESIA_SAMPLE_RATE,
+    bitRate = CARTESIA_BIT_RATE
   } = config;
 
   // Cartesia prefers BCP-47; accept `locale` first and fall back to whatever the
@@ -873,6 +912,9 @@ module.exports = {
   generateCartesia,
   CARTESIA_DEFAULT_SPEED,
   CARTESIA_VERSION,
+  CARTESIA_MODEL,
+  CARTESIA_SAMPLE_RATE,
+  CARTESIA_BIT_RATE,
   PHONOLOGY_GATED_PROVIDERS,
   getCadenceSpeed,
   getVoiceForRole,
