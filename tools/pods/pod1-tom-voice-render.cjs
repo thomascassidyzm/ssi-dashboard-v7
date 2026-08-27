@@ -53,11 +53,14 @@ const fs = require('fs')
 const REPO = path.join(__dirname, '..', '..')
 require('dotenv').config({ path: path.join(REPO, '.env') })
 
+const os = require('os')
+const { execFileSync, spawnSync } = require('child_process')
 const { createClient } = require('@supabase/supabase-js')
-const { HeadObjectCommand } = require('@aws-sdk/client-s3')
+const { HeadObjectCommand, GetObjectCommand } = require('@aws-sdk/client-s3')
 const phase8 = require(path.join(REPO, 'services/phases/phase8-audio-v13.cjs'))
 const veracity = require(path.join(REPO, 'services/audio-veracity.cjs'))
 const { canonicalSpeakerName } = require(path.join(REPO, 'tools/pod-voice-colour-n.cjs'))
+const { isEnglishLine } = require('./tom-voice-language-gate.cjs')
 
 // Tom's clone. Stored PREFIXED on the clip (canonicalClipVoiceId does that), so
 // audio-repair-core's decodeVoiceId cannot mistake it for a bare xAI id.
@@ -78,7 +81,9 @@ const APPLY = process.argv.includes('--apply')
 const RESUME = process.argv.includes('--resume')
 const OUT_DIR = arg('out', path.join(REPO, 'docs/pods/pod1-tom-voice-2026-08-27'))
 
-if (!COURSE) {
+// Only when RUN. Requiring the module (to exercise the language backstop) must
+// not exit the caller's process over a missing CLI flag.
+if (require.main === module && !COURSE) {
   console.error('--course=<code> is required')
   process.exit(1)
 }
@@ -118,11 +123,65 @@ async function verifyNewClip (audioId) {
   }
 }
 
+const WHISPER_BIN = process.env.WHISPER_BIN || path.join(os.homedir(), '.local/bin/whisper-cli')
+const WHISPER_MODEL = process.env.WHISPER_MODEL || path.join(os.homedir(), '.local/share/whisper-models/ggml-small.bin')
+
+/**
+ * THE BACKSTOP: does the rendered clip actually SPEAK English?
+ *
+ * The manifest's language gate reads TEXT, and text is not audio. Tom's clone is
+ * multilingual — a Cartesia voice handed the wrong string, or a locale steer that
+ * slips, produces a fluent target-language clip with a perfectly English-looking
+ * row behind it. Every field you could check would agree with itself and be
+ * wrong together. The only witness that is independent of the whole pipeline is
+ * the waveform.
+ *
+ * So before a link moves, whisper decodes the clip with `-l auto` and must come
+ * back `en`. This runs on the CLIP WE JUST MADE, not on a sample of clips: the
+ * policy is absolute, so the check is per-slot. A clip that fails leaves the slot
+ * pointing at its old audio — the make-before-break rail already guarantees that.
+ *
+ * Whisper is the estate's existing language oracle (services/audio-veracity.cjs)
+ * and the binary is behind a flock semaphore, so this cannot swamp the box. If
+ * whisper is absent the render REFUSES rather than proceeding unchecked: an
+ * unverifiable clip on Tom's voice is exactly what this policy exists to stop.
+ */
+async function assertEnglishAudio (s3Key) {
+  if (!fs.existsSync(WHISPER_BIN) || !fs.existsSync(WHISPER_MODEL)) {
+    return { ok: false, why: `whisper unavailable (${WHISPER_BIN} / ${WHISPER_MODEL}) — refusing to publish an unverifiable clip on Tom's voice` }
+  }
+  const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'tomlang-'))
+  const mp3 = path.join(tmp, 'clip.mp3')
+  const wav = path.join(tmp, 'clip.wav')
+  try {
+    const obj = await phase8.s3.send(new GetObjectCommand({ Bucket: process.env.S3_BUCKET, Key: s3Key }))
+    fs.writeFileSync(mp3, Buffer.from(await obj.Body.transformToByteArray()))
+    execFileSync('ffmpeg', ['-nostdin', '-loglevel', 'error', '-y', '-i', mp3, '-ar', '16000', '-ac', '1', wav])
+    // -l auto makes whisper report its own language verdict, and it reports it on
+    // STDERR — so both streams are captured and searched. We are asking WHAT
+    // LANGUAGE IS THIS, never "does it match the text".
+    const r = spawnSync(WHISPER_BIN, ['-m', WHISPER_MODEL, '-l', 'auto', '-nt', '-t', '2', wav],
+      { encoding: 'utf8', maxBuffer: 8 << 20 })
+    if (r.error) return { ok: false, why: `whisper failed: ${r.error.message}` }
+    const m = /auto-detected language:\s*(\w+)\s*\(p = ([\d.]+)\)/.exec(`${r.stdout || ''}${r.stderr || ''}`)
+    if (!m) return { ok: false, why: 'whisper returned no language verdict' }
+    if (m[1] !== 'en') return { ok: false, why: `clip SPEAKS ${m[1]} (p=${m[2]}), not English` }
+    return { ok: true, lang: m[1], p: Number(m[2]) }
+  } catch (e) {
+    return { ok: false, why: `audio language check failed: ${e.message}` }
+  } finally {
+    try { fs.rmSync(tmp, { recursive: true, force: true }) } catch { /* noop */ }
+  }
+}
+
 async function main () {
   fs.mkdirSync(OUT_DIR, { recursive: true })
   const logFile = path.join(OUT_DIR, `${COURSE}-${APPLY ? 'applied' : 'dryrun'}-log.jsonl`)
 
-  const manifestPath = path.join(REPO, 'tools/tts-bakeoff/pod1-tom-voice-manifest-2026-08-27.json')
+  // The LANGUAGE-FILTERED manifest, built by tools/pods/build-tom-voice-manifest.cjs.
+  // The superseded 2026-08-27 file selected on cast alone and is deliberately not
+  // read any more: it lists lines this driver would now refuse at the preflight.
+  const manifestPath = arg('manifest', path.join(REPO, 'tools/tts-bakeoff/pod1-tom-voice-manifest.json'))
   const manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf8'))
   const entry = manifest.courses.find((c) => c.course_code === COURSE)
   if (!entry) throw new Error(`${COURSE} is not in the staged manifest`)
@@ -140,7 +199,7 @@ async function main () {
 
   const { data: sentences, error: sErr } = await sb
     .from('listening_pod_sentences')
-    .select('id,speaker,known_text,known_audio_id,scene_number,sentence_number')
+    .select('id,speaker,known_text,target_text,known_audio_id,scene_number,sentence_number')
     .eq('pod_id', pod.id)
     .order('scene_number').order('sentence_number')
   if (sErr) throw new Error(`sentences read failed: ${sErr.message}`)
@@ -162,6 +221,27 @@ async function main () {
     console.error(`DRIFT — ${drift.length} staged slot(s) no longer match the live pod. Nothing rendered.`)
     drift.slice(0, 10).forEach((d) => console.error('  ', d.slot, d.why))
     process.exit(2)
+  }
+
+  // ── LANGUAGE PREFLIGHT (Tom's standing policy, 2026-08-27) ─────────────────
+  // His clone speaks English only. The manifest is now built with this same gate
+  // (tools/pods/build-tom-voice-manifest.cjs), so this should never fire — which
+  // is exactly why it is here. The manifest is a file on disk that anyone can
+  // hand-edit or regenerate from an older selector; the line's TEXT is the thing
+  // that is actually true. Checked against the LIVE row, not the staged copy,
+  // and BEFORE a single credit is spent.
+  const notEnglish = []
+  for (const line of staged) {
+    const s = bySlot.get(line.sentence_id)
+    const v = isEnglishLine(s.known_text, { targetText: s.target_text })
+    if (!v.ok) notEnglish.push({ slot: line.sentence_id, verdict: v.verdict, why: v.why, text: s.known_text })
+  }
+  if (notEnglish.length) {
+    console.error(`LANGUAGE — ${notEnglish.length} staged line(s) are not confirmed English. Nothing rendered.`)
+    console.error("Tom's clone speaks English only; a line that cannot be confirmed English never reaches it.")
+    notEnglish.slice(0, 15).forEach((d) => console.error('  ', d.slot, `[${d.verdict}]`, JSON.stringify((d.text || '').slice(0, 60)), '—', d.why))
+    if (notEnglish.length > 15) console.error(`   … and ${notEnglish.length - 15} more`)
+    process.exit(3)
   }
 
   // Already-swapped slots, for --resume. A slot whose link already points at a
@@ -232,6 +312,15 @@ async function main () {
       row.duration_ms = v.row.duration_ms
       row.veracity = v.row.veracity_pass === null ? 'not_sampled' : (v.row.veracity_pass ? 'pass' : 'fail')
 
+      // 2b. THE CLIP MUST SPEAK ENGLISH. Text gates bound what we SEND; only the
+      //     waveform bounds what the clone SAID. Per-slot, not sampled: the
+      //     policy is absolute. Still before the swap, so a failure costs a
+      //     render and leaves the learner on the old clip.
+      const lang = await assertEnglishAudio(v.row.s3_key)
+      if (!lang.ok) throw new Error(`language: ${lang.why}`)
+      row.audio_language = lang.lang
+      row.audio_language_p = lang.p
+
       // 3. SWAP — one row, only now.
       const { error: linkErr } = await sb.from('listening_pod_sentences')
         .update({ known_audio_id: result.id })
@@ -262,4 +351,11 @@ async function main () {
   }
 }
 
-main().catch((e) => { console.error('FATAL', e.message); process.exit(1) })
+// Exported so the language backstop can be exercised directly against a real
+// clip — a safety check nobody can run in isolation is a safety check nobody
+// re-verifies. Running the file still runs the driver.
+module.exports = { assertEnglishAudio, verifyNewClip }
+
+if (require.main === module) {
+  main().catch((e) => { console.error('FATAL', e.message); process.exit(1) })
+}
