@@ -147,13 +147,18 @@ function main() {
   const savedTotal = sumSonnet - sumOpus;
   const savedPerLego = sumN ? savedTotal / sumN : 0;
   const extraSecPerLego = avg(mo) && avg(ms) ? avg(mo) - avg(ms) : null;
-  md.push(`Across every measured LEGO, Opus saves **${savedPerLego.toFixed(2)} weighted human units per LEGO** against Sonnet 5, and costs **${extraSecPerLego === null ? '—' : `${extraSecPerLego.toFixed(0)} extra machine-seconds per LEGO`}**.`);
+  md.push(`Across every measured LEGO, Opus saves **${savedPerLego.toFixed(2)} weighted human units per LEGO** against Sonnet 5, at **${extraSecPerLego === null ? '—' : `${extraSecPerLego > 0 ? `${extraSecPerLego.toFixed(0)} extra` : `${Math.abs(extraSecPerLego).toFixed(0)} FEWER`} machine-seconds per LEGO`}** (see the caveat below on why the machine-time column is not a clean measurement).`);
   md.push('');
   md.push('Because the marginal dollar cost of both arms is zero, there is no human-minute rate at which Sonnet 5 becomes cheaper on **money**. The only currency Sonnet 5 wins is machine time and weekly pool. So the crossover is stated in the honest units:');
   md.push('');
-  if (extraSecPerLego !== null && savedPerLego > 0) {
+  if (extraSecPerLego !== null && savedPerLego > 0 && extraSecPerLego > 0) {
     const secPerUnit = extraSecPerLego / savedPerLego;
     md.push(`> Opus buys back one weighted human touch-unit for **${secPerUnit.toFixed(0)} seconds of extra machine time**. It is the wrong trade only if a unit of skilled human attention is worth less than ${(secPerUnit / 60).toFixed(1)} minutes of unattended wall-clock on a box that is idle anyway.`);
+  } else if (savedPerLego > 0 && extraSecPerLego !== null && extraSecPerLego <= 0) {
+    // No crossover exists. Do not manufacture one out of a negative number.
+    md.push(`> **There is no crossover.** Opus leaves less work on the human's desk AND did not spend more machine time doing it, so there is no human-minute rate at which Sonnet 5 becomes the cheaper arm. A crossover only exists when the cheaper-to-run arm is actually cheaper to run.`);
+    md.push('');
+    md.push(`> **Read the machine-time column with care.** The arms were NOT run under matched conditions: an account session limit interrupted this experiment mid-flight and the Sonnet arms carry more retries and more contention than the Opus arms do. So "Opus is faster" is NOT a claim this data can make. The claim it CAN make is the weaker and sufficient one: **nothing on the machine side offsets Opus's quality lead.** Per-call latency is the same order of magnitude for both, and the cost that would have to be traded away simply is not there.`);
   }
   md.push('');
   md.push('**The gap, stated plainly.** No measured minutes-per-human-touch figure exists anywhere in this repo. The nearest thing is the source audit\'s throughput of ~220 phrases per pass at the full seed-plus-siblings evidence standard, which is a pass size and not a clock. That is why this is reported as a crossover rather than a total: the arithmetic above is measured, and the one judgement left is whether a human touch-unit is worth more than the machine time it costs to avoid.');

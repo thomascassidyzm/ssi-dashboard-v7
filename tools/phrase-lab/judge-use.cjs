@@ -88,7 +88,24 @@ async function main() {
   if (!file) { console.error('usage: --file <sets.json> [--sample N] [--out out.json]'); process.exit(1); }
 
   let sets = JSON.parse(fs.readFileSync(file, 'utf8')).filter((s) => s.phrases?.length);
-  if (sample > 0) {
+
+  // EXPLICIT SEEDS BEAT AN INDEX SPREAD. The even-spread sample below picks by
+  // POSITION in the file, so an arm with a hole in it — a target that failed to
+  // generate, or a live LEGO carrying no USE phrases — silently shifts every
+  // subsequent pick and the arms end up judged on DIFFERENT LEGOs. That is not a
+  // blind comparison, it is two different questions with one column each. The
+  // 2026-08-27 five-language run hit exactly this: German's live arm was judged on
+  // seeds 20/110/250/535/600 while its Sonnet arm was judged on 20/110/206/358/
+  // 470/560/650, and the live arm "won" on numbers that shared nothing.
+  const seedArg = arg('--seeds');
+  if (seedArg) {
+    const want = seedArg.split(',').map(Number);
+    sets = want.map((n) => sets.find((s) => s.seedNumber === n)).filter(Boolean);
+    if (sets.length !== want.length) {
+      console.error(`[judge] WARNING: asked for ${want.length} seeds, found ${sets.length} — ${want.filter((n) => !sets.some((s) => s.seedNumber === n)).join(',')} missing from ${file}`);
+    }
+  }
+  if (sample > 0 && !seedArg) {
     // Deterministic even spread across the course, not a random draw — the
     // sample must be the same LEGOs for every arm or the arms are not comparable.
     sets = sets.sort((a, b) => a.seedNumber - b.seedNumber)
