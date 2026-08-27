@@ -1,3 +1,13 @@
+# ⛔ CLOSED — the sampling task moved rooms
+
+> **2026-08-27.** The sampling run was mis-scoped to this thread and has been routed elsewhere: Tom's ruling is that it is a **phrase-quality test of the v3 building protocols**, not an audio-generation task, and the v3 room now owns it. A later correction also established it was never about voice clones at all — it would validate **Cartesia as the production TTS provider** using proper per-language voices, both sides, not `tom_001`.
+>
+> **This run was already executed before the hold reached me.** I am not deleting it, because it produced one finding that is real, reproducible and would otherwise be lost with this thread — see *The result* below. Everything else here is superseded.
+>
+> **The finding worth carrying forward:** Cartesia returns audio at roughly −32 to −40 LUFS, and `phase8.masterAudio` caps gain at 20 dB, so it cannot reach its −16 LUFS target on about a quarter of clips. That is a **provider-level defect independent of which voice is used**, so it will reappear in any Cartesia production run — including the properly-scoped one. Candidate fix, untested: Cartesia's `generation_config.volume`.
+
+---
+
 # Your English, 50 LEGOs, through the real pipeline
 
 **2026-08-27.** 50 English known-side prompts from `zho_for_eng`, rendered in your Cartesia clone `tom_001` **through Popty's actual production chain** — not an ad-hoc loop. Cost: 424 characters ≈ 0.4K credits.
