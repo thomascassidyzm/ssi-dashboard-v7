@@ -109,6 +109,14 @@ function syllableBasis(lang) {
   return 'fallback';
 }
 
+/** Target languages whose orthography has no word boundaries. */
+const SPACELESS = new Set(['jpn', 'zho', 'tha', 'lao', 'mya', 'khm', 'yue']);
+
+/** The comparison unit for a spaceless script: one character, punctuation dropped. */
+function charPieces(text) {
+  return Array.from(String(text || '')).filter((c) => !/[\s\u3000-\u303f\uff01-\uff0f\uff1a-\uff20.,!?;:'"()\u2010-\u201f]/.test(c));
+}
+
 function targetLangOf(courseCode) {
   return String(courseCode || '').split('_')[0];
 }
@@ -140,6 +148,7 @@ function syllablesOf(text, lang) {
  * generated content are adjudicated by identical code.
  */
 function checkPhraseZut(inv, phrase) {
+  const lang = targetLangOf(inv.courseCode);
   const failures = [];   // LAYER 1 — this builder's own doing
   const inherited = [];  // LAYER 2 — ambiguity the course already had
   const warnings = [];
@@ -204,11 +213,25 @@ function checkPhraseZut(inv, phrase) {
   }
 
   // --- target coverage: the tiling must reconstruct the target exactly.
+  //
+  // TWO SCRIPTS, TWO UNITS, SAME SEMANTICS. The check is "does the declared tiling
+  // account for every piece of the target, allowing for order" — a multiset
+  // subtraction. In a whitespace language the piece is a word. In a SPACELESS one
+  // (jpn, zho) the whole phrase is a single whitespace token, no tile ever equals
+  // it, and the word path reports every correctly-tiled phrase as untiled: the
+  // smoke probe on jpn/zho seed 358 came back 100% gate failure on sets whose
+  // tiles reconstructed the target exactly. That would have been published as a
+  // finding about Japanese when it is a finding about the tool. So for spaceless
+  // scripts the piece is the CHARACTER, and the identical multiset subtraction
+  // runs over characters. This is the same move the 2026-07-04 ZUT rescope was
+  // forced into for French inversion and elision: when whitespace is not where the
+  // boundaries are, stop pretending it is.
   const tiled = norm(tiles.map((t) => t.target).join(' '));
   const actual = norm(phrase.target);
   if (tiled !== actual) {
-    const tiledSet = tokens(tiled);
-    const extra = tokens(actual).filter((w) => {
+    const pieces = SPACELESS.has(lang) ? charPieces : tokens;
+    const tiledSet = pieces(tiled);
+    const extra = pieces(actual).filter((w) => {
       const i = tiledSet.indexOf(w);
       if (i === -1) return true;
       tiledSet.splice(i, 1);
@@ -217,8 +240,8 @@ function checkPhraseZut(inv, phrase) {
     if (extra.length) {
       failures.push({
         code: 'untiled-target',
-        token: extra.join(' '),
-        why: `target carries "${extra.join(' ')}" which no tile accounts for — the learner cannot produce it from this prompt`
+        token: extra.join(SPACELESS.has(lang) ? '' : ' '),
+        why: `target carries "${extra.join(SPACELESS.has(lang) ? '' : ' ')}" which no tile accounts for — the learner cannot produce it from this prompt`
       });
     } else {
       warnings.push({ code: 'tiling-order', token: null, why: 'tiles cover the target but not in the order given' });
