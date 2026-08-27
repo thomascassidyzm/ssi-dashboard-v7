@@ -34,7 +34,9 @@ This one is real, and the trace is unambiguous:
 
 ## 3. The consumed set, and it is a fraction
 
-**One correction to my own method before the numbers**: my first cut used `courses.released_at` and reported zero. That column is **unused across all 149 courses** — it was an artefact, not a finding. The real signal is `new_app_status`, and the repo says plainly that estate facts come from `/api/estate-map`, not from inference on a column. Same error class as the one that got this rejected, caught this time before it reached you.
+**One correction to my own method before the numbers**: my first cut used `courses.released_at` and reported zero. That column is **unused across all 149 courses** — it was an artefact, not a finding. Same error class as the one that got this rejected, caught this time before it reached you.
+
+**And the numbers below are confirmed against the estate's own source of truth, not against my column read.** The repo says estate facts come from `GET /api/estate-map`, so I asked it: it reports 14 live courses, and all seven below are in that set. Its own header puts the rule better than I would — *"If this disagrees with a document, the document is stale."*
 
 | Tier | Courses | Clips | Minutes | Credits |
 |---|---|---|---|---|
