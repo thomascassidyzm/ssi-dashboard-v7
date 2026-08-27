@@ -16,7 +16,7 @@ I read our live production call, then fetched the current Cartesia docs. Three t
 
 **We ask for a much smaller file than the default.** Cartesia's default output is **44,100 Hz**. We ask for **24,000 Hz** MP3. That halves the audio bandwidth before anything else happens.
 
-**Our British-English steer may be doing nothing at all.** The docs say `locale` requires Sonic 3.6 or newer. We send `locale: "en-GB"` *together with* `sonic-3`. The API accepts it without complaint, so nothing in our logs would ever tell us it was ignored — but on the documentation's own terms it should not be taking effect.
+**Our British-English steer might be doing nothing — but I can't prove it.** The API reference page carries a line saying `locale` requires Sonic 3.6 or newer, and we send `locale: "en-GB"` *together with* `sonic-3`. The API accepts it without complaint, so nothing in our logs would ever tell us it was ignored. A second read of the same documentation set came back saying our usage is correct as written, so **the docs are ambiguous and I am not going to pretend otherwise.** It cannot be settled by measurement either, because Cartesia gives a different take every time and has no seed. Two clips in the grid below let your ear decide it: "our settings, but full-quality audio" is steered `en-GB`, and "told plain English rather than British English" is the same model steered plain `en`. If they sound identical, the steer is doing nothing. Either way, moving to `sonic-3.6` makes the question moot.
 
 And one thing that isn't a Cartesia setting at all: **everything on the course goes through our own mastering stage afterwards**, which lifts the volume by 3 to 13 dB and squashes the peaks. Your dashboard clips have none of that. That is in the grid too.
 
@@ -91,7 +91,7 @@ That 13 dB of lift is the "hissy mastering" mechanism: it amplifies room tone an
 
 **My read: it's the model version first, the file format second, and our mastering third.**
 
-1. **Move production from `sonic-3` to `sonic-3.6`.** Newest model, Cartesia's own default, and it measurably fixes the short-line inconsistency and the loudness shortfall. It also makes our `en-GB` steer actually take effect, which on the docs' account it currently does not.
+1. **Move production from `sonic-3` to `sonic-3.6`.** Newest model, Cartesia's own default, and it measurably fixes the short-line inconsistency and the loudness shortfall. It also puts the `en-GB` question to bed, since `locale` is unambiguously supported there. Worth knowing: **`sonic-3.6` went generally available today**, 2026-08-27 — so this gap is hours old, not months. `sonic-3` was pinned when it was the right answer.
 2. **Raise the output format** from 24 kHz / 128 kbps MP3 to Cartesia's 44.1 kHz default. Compare the "today's model" row against the "squeezed into our small course file" row — that pair isolates it on its own.
 3. **Consider dropping `speed: 1.0`.** We pin it to control take-to-take wander on short text, and that was a measured win. But it is not what the dashboard sends, and "pace left entirely free" is in the grid so you can hear whether the control costs anything.
 4. **I would not touch the mastering stage yet.** Compare "same request, nothing of ours done to it" against "that exact take, put through our polish" — same take, so any difference is purely ours. If those sound the same to you, our processing is exonerated and the whole answer is upstream.
@@ -99,5 +99,7 @@ That 13 dB of lift is the "hissy mastering" mechanism: it amplifies room tone an
 **None of this is applied to anything.** No course audio was touched, no production default changed. Forty-four sample clips and a recommendation, waiting on your ear.
 
 ---
+
+*Two things nobody can confirm from the public docs, stated as gaps rather than papered over: (1) what `play.cartesia.ai` actually applies by default when you click generate — no page documents it, so "the dashboard uses the newest model at 44.1 kHz" is inference from the API defaults, not a documented fact; (2) whether our pinned `Cartesia-Version: 2026-08-14` header suppresses anything shipped since — the changelog names no "latest" value and no page says what each version date toggles. Both are questions for Cartesia support, not for guesswork.*
 
 *Parameter dump, for the record. Production sends: `model_id: sonic-3`, `generation_config: {speed: 1.0}`, `locale: en-GB`, `output_format: {mp3, 24000 Hz, 128 kbps}`, header `Cartesia-Version: 2026-08-14`, then our own end-of-speech trim → −16 LUFS gain → true-peak limiter. Cartesia's documented defaults: `model_id: sonic-3.6`, `speed: 1`, `volume: 1`, `normalization: auto`, `output_format: {44100 Hz, 128 kbps}`. Fields we have never sent: `generation_config.volume` (tested on 2026-08-27, did not help), `generation_config.emotion` (50+ values, untested), `normalization`, `pronunciation_dict_id`. Full render manifest and loudness measurements: `evidence/cartesia-dashboard-gap-2026-08-27/manifest.json` and `levels.tsv`.*
