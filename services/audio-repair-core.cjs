@@ -137,35 +137,51 @@ class RepairError extends Error {
  * Split a stored voice_id into the provider that must render it and the id that
  * provider expects.
  *
- * This used to guess: three prefixes, a `Neural` suffix rule, and then a
- * fall-through of `{ provider: 'xai' }` for ANY bare id. That last line failed
- * OPEN. A Cartesia voice id is a bare UUID, so it landed in the fallback and
- * would have been repaired as xAI — a Cartesia id posted to xAI's API, wrong
- * provider, and an error message pointing nowhere near the cause. Silently
- * repairing a clip in the wrong voice is worse than not repairing it.
+ * THE HAZARD THIS CLOSES. The fall-through used to be `{ provider: 'xai' }` for
+ * ANY bare id. A Cartesia voice id is a bare UUID, so it landed there and would
+ * have been repaired AS xAI — a Cartesia id posted to xAI's API, wrong provider,
+ * and an error pointing nowhere near the cause. Repairing a clip in the wrong
+ * voice is worse than not repairing it.
  *
- * So the guessing is gone and the question is delegated to canonicalVoiceId,
- * which already resolves prefixes and the known bare voices properly and
- * THROWS rather than assuming. The same change is made in
- * tools/repair-presentation-clips.cjs and tools/regen-seed-clips-from-scratch.cjs,
- * which carried copies of the same guess.
+ * WHY THE FALL-THROUGH IS STILL HERE ANYWAY, against the obvious instinct to
+ * delegate the whole question to canonicalVoiceId and let it throw. That was
+ * tried first and measured against the live database on 2026-08-27, and it is
+ * wrong:
  *
- * What this costs, measured rather than assumed (course_audio, 2026-08-27):
- * 57,216 rows carry a bare voice_id that canonicalVoiceId cannot resolve —
- * placeholders like 'legacy_import' and opaque 8/12-char ids that are in no
- * registry. Those rows are NOT xAI; the old code was guessing wrong about them
- * and their repair would have failed at the provider anyway. They now refuse
- * loudly at the door instead. Bare xAI names (eve/leo/ara/sal/rex and the two
- * clones) are in KNOWN_BARE_VOICES and keep working exactly as before.
+ *   - `voices` holds ACTIVE xai rows whose voice_id is a bare 8/12-char string —
+ *     'yis75yfp' (Manuel), 'f15c6a6a' (Henry), 'b1a7441b97a1' (Ren),
+ *     'd0cb9ff07d95' (Sakura), 'x7avnu1k' (Enzo), 'jpi39icg' (Jian).
+ *   - Those ids appear on course_audio rows across 76 courses.
+ *   - canonicalVoiceId only knows the seven names in KNOWN_BARE_VOICES, so it
+ *     throws on every one of them.
+ *
+ * Delegating outright would therefore have broken flag-and-regenerate for
+ * existing courses at scale — the exact catalogue Tom's forward-only ruling
+ * says must keep working untouched. The bare-id guess is not sloppiness; for
+ * this estate it is usually RIGHT, because bare means "xAI, from before we
+ * prefixed things".
+ *
+ * So: recognise every prefix (Cartesia included), keep the Azure suffix rule,
+ * refuse the one shape that would actually misfile — a Cartesia UUID — and let
+ * everything else keep the historical behaviour it has always had.
+ *
+ * The better fix is to resolve bare ids against the `voices` registry, which
+ * already records tts_engine per voice and would end the guessing for good.
+ * That needs a database read in a function that is currently pure and sync, so
+ * it is a deliberate follow-up rather than a change smuggled into this one.
  */
+const CARTESIA_UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i
+
 function decodeVoiceId (storedVoiceId) {
-  const canonical = canonicalVoiceId(storedVoiceId)
-  if (canonical.startsWith('comp:')) {
+  const raw = String(storedVoiceId || '')
+  const m = /^(xai|azure|elevenlabs|cartesia)_(.+)$/.exec(raw)
+  if (m) return { provider: m[1], voiceId: m[2] }
+  if (/Neural$/.test(raw)) return { provider: 'azure', voiceId: raw }
+  if (CARTESIA_UUID.test(raw)) {
     throw new ClipIdentityError('voice_id', storedVoiceId,
-      'a composite is a splice of two takes, not one provider render')
+      'a bare Cartesia UUID — store it as cartesia_<id> so it is not repaired as xAI')
   }
-  const i = canonical.indexOf('_')
-  return { provider: canonical.slice(0, i), voiceId: canonical.slice(i + 1) }
+  return { provider: 'xai', voiceId: raw }
 }
 
 /**

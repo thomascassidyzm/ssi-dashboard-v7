@@ -787,3 +787,36 @@ describe('seedScopedAudioIds', () => {
     expect(ids).not.toContain('intro9')
   })
 })
+
+// ── decodeVoiceId: the Cartesia hazard, and the catalogue it must not break ───
+// Added 2026-08-27 after the first cut of the Cartesia wiring delegated this
+// function wholesale to canonicalVoiceId. That looked cleaner and was wrong:
+// `voices` holds ACTIVE xai rows with bare 8/12-char ids ('yis75yfp' Manuel,
+// 'f15c6a6a' Henry, 'b1a7441b97a1' Ren) used on course_audio rows across 76
+// courses, and canonicalVoiceId throws on every one of them — so delegation
+// would have broken flag-and-regenerate for the existing catalogue, which is
+// precisely what the forward-only ruling says must keep working.
+describe('decodeVoiceId', () => {
+  const { decodeVoiceId } = require('./audio-repair-core.cjs')
+
+  it('keeps resolving the bare xAI ids the catalogue actually uses', () => {
+    for (const id of ['yis75yfp', 'f15c6a6a', 'b1a7441b97a1', 'd0cb9ff07d95', 'eve', 'gfzdpspr5fdp']) {
+      expect(decodeVoiceId(id)).toEqual({ provider: 'xai', voiceId: id })
+    }
+  })
+
+  it('reads every provider prefix, Cartesia included', () => {
+    expect(decodeVoiceId('cartesia_8fef4d59-0a7e-4ad2-a261-6a3bb50734d2'))
+      .toEqual({ provider: 'cartesia', voiceId: '8fef4d59-0a7e-4ad2-a261-6a3bb50734d2' })
+    expect(decodeVoiceId('xai_leo')).toEqual({ provider: 'xai', voiceId: 'leo' })
+    expect(decodeVoiceId('azure_en-GB-SoniaNeural')).toEqual({ provider: 'azure', voiceId: 'en-GB-SoniaNeural' })
+  })
+
+  it('still sends an Azure voice name to Azure', () => {
+    expect(decodeVoiceId('en-GB-SoniaNeural')).toEqual({ provider: 'azure', voiceId: 'en-GB-SoniaNeural' })
+  })
+
+  it('REFUSES a bare Cartesia UUID rather than repairing it as xAI', () => {
+    expect(() => decodeVoiceId('8fef4d59-0a7e-4ad2-a261-6a3bb50734d2')).toThrow(/Cartesia UUID/)
+  })
+})

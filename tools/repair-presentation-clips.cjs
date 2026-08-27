@@ -108,19 +108,24 @@ function measureLevel (file) {
 }
 
 /**
- * Delegated to clip-identity's canonicalVoiceId — see the long note on
- * services/audio-repair-core.cjs's decodeVoiceId for why the old shape-guessing
- * had to go. Short version: its final line defaulted ANY bare id to xAI, and a
- * Cartesia voice id is a bare UUID, so a Cartesia clip would have been repaired
- * as xAI with no error anywhere.
+ * Prefix-aware, Cartesia-safe. Delegating this wholesale to canonicalVoiceId was
+ * tried and reverted — see the long note on services/audio-repair-core.cjs's
+ * decodeVoiceId: `voices` holds ACTIVE xai rows with bare 8/12-char ids across
+ * 76 courses, and canonicalVoiceId throws on every one of them, so delegation
+ * would have broken repair for the existing catalogue. The one shape that would
+ * genuinely misfile — a bare Cartesia UUID — is refused instead.
  */
+const CARTESIA_UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i
+
 function decodeVoiceId (storedVoiceId) {
-  const canonical = canonicalVoiceId(storedVoiceId)
-  if (canonical.startsWith('comp:')) {
-    throw new Error(`voice_id ${storedVoiceId} is a composite, not a single-provider render`)
+  const raw = String(storedVoiceId || '')
+  const m = /^(xai|azure|elevenlabs|cartesia)_(.+)$/.exec(raw)
+  if (m) return { provider: m[1], voiceId: m[2] }
+  if (/Neural$/.test(raw)) return { provider: 'azure', voiceId: raw }
+  if (CARTESIA_UUID.test(raw)) {
+    throw new Error(`voice_id ${storedVoiceId} is a bare Cartesia UUID — store it as cartesia_<id> so it is not repaired as xAI`)
   }
-  const i = canonical.indexOf('_')
-  return { provider: canonical.slice(0, i), voiceId: canonical.slice(i + 1) }
+  return { provider: 'xai', voiceId: raw }
 }
 
 function ttsOptionsFor (provider, voiceId, language) {
