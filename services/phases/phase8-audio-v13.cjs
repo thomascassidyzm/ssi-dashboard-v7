@@ -7128,6 +7128,21 @@ function buildPodTTSConfig(voice, language, courseCode) {
     // native fr/zh, …). toBcp47() strips region (pt-PT→pt=Brazilian), so only
     // use it as the fallback when a voice has no explicit locale.
     base.language = voice.locale || toBcp47(language)
+  } else if (voice.provider === 'cartesia') {
+    // Without this branch a Cartesia voice fell through to the Azure arm below
+    // and was dispatched as an Azure voiceName — a bare UUID Azure has never
+    // heard of. It would not have rendered in Tom's voice; it would have failed,
+    // or worse, been rescued by a fallback and shipped in somebody else's.
+    // The course path (voice-config-service.buildTTSConfig) grew its Cartesia
+    // branch on 2026-08-27; the pod path did not, and pods resolve their voices
+    // here instead.
+    base.apiKey = process.env.CARTESIA_API_KEY
+    // Cartesia REQUIRES an explicit BCP-47 steer — generateCartesia throws
+    // without one, deliberately, because an unsteered multilingual clone reads
+    // cross-language words with English phonology while looking correct in the
+    // database. Same precedence as the xAI arm: the cast's own locale wins.
+    base.locale = voice.locale || toBcp47(language)
+    base.language = base.locale
   } else if (voice.provider === 'elevenlabs') {
     base.apiKey = process.env.ELEVENLABS_API_KEY
   } else {
