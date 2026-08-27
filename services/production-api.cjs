@@ -1799,7 +1799,7 @@ app.get('/api/courses', async (req, res) => {
 
 // Create new course - DATABASE-FIRST (APML v14)
 app.post('/api/courses/create', async (req, res) => {
-  const { courseCode, displayName, knownLanguage, sourceLanguage, targetLanguage, seedStart, seedEnd } = req.body
+  const { courseCode, displayName, knownLanguage, sourceLanguage, targetLanguage, seedStart, seedEnd, seedCount } = req.body
 
   // Accept both knownLanguage (new) and sourceLanguage (legacy)
   const known = knownLanguage || sourceLanguage
@@ -1837,6 +1837,12 @@ app.post('/api/courses/create', async (req, res) => {
       })
     }
 
+    // Resolve the seed target the user chose on the page.
+    // Priority: explicit seedCount → seedEnd (legacy field name) → 668 default.
+    const resolvedSeedCount = Number.isFinite(Number(seedCount))
+      ? parseInt(seedCount, 10)
+      : (Number.isFinite(Number(seedEnd)) ? parseInt(seedEnd, 10) : 668)
+
     // Insert into Supabase courses table
     const { error: dbError } = await supabase
       .from('courses')
@@ -1845,7 +1851,8 @@ app.post('/api/courses/create', async (req, res) => {
         known_lang: known,
         target_lang: targetLanguage,
         display_name: displayName || `${languageCodeService.getName(targetLanguage) || targetLanguage} for ${languageCodeService.getName(known) || known} Speakers`,
-        status: 'draft'
+        status: 'draft',
+        seed_count: resolvedSeedCount
       })
 
     if (dbError) {
@@ -1864,7 +1871,7 @@ app.post('/api/courses/create', async (req, res) => {
       displayName: displayName || `${targetLanguage} for ${sourceLanguage} speakers`,
       sourceLanguage,
       targetLanguage,
-      seedRange: { start: seedStart || 1, end: seedEnd || 668 },
+      seedRange: { start: seedStart || 1, end: seedEnd || resolvedSeedCount },
       message: 'Course created. Use Course Builder to add content.'
     })
 
