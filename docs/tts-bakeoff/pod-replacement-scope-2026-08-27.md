@@ -1,3 +1,13 @@
+# ⛔ RESCINDED — do not act on this document
+
+> **2026-08-27.** Tom rejected this scope and it is stood down. It counted 55,091 clips carrying his voice **without verifying that anything plays them**, contrary to his 2026-08-24 ruling that a clip type must be proven consumed in code first. `pod_explainer` — 13,099 clips, ~1.54M credits of it — turns out to be served only by the `admin-pod-auditioner` route, not to learners at all.
+>
+> Superseded by **`docs/tts-bakeoff/pod-consumed-set-verification-2026-08-27.md`**, which establishes the genuinely consumed set: 11,161 clips, ~0.29M credits.
+>
+> Kept for the record, not for use. Nothing below should be queued.
+
+---
+
 # Replacing your pod voice — the scope, and the two things you should see first
 
 **2026-08-27.** Instant clone confirmed, no PVC training started, no slot spent. This is the scoped plan for putting `tom_001` into the pods, **staged and not fired** — audio runs are human-triggered through popty.app, and nothing here renders itself.
