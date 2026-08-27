@@ -28,10 +28,15 @@ const HAIKU_MODEL = process.env.CLAUDE_HAIKU_MODEL || 'claude-haiku-4-5-20251001
  * @param {string} [options.model=HAIKU_MODEL] - Model: HAIKU_MODEL, 'sonnet', 'opus', or an explicit model id
  * @param {string} [options.system] - System prompt
  * @param {number} [options.timeout=120000] - Timeout in ms
+ * @param {number} [options.thinkingTokens] - Override MAX_THINKING_TOKENS. Leave
+ *   unset for the default 0 (no extended thinking), which is right for the
+ *   deterministic tasks this wrapper was built for. Set it for genuinely
+ *   generative work — course phrase authoring, where the 15x latency tax buys
+ *   quality rather than nothing.
  * @returns {Promise<string>} The response text
  */
 function claudeChat(prompt, options = {}) {
-  const { model = HAIKU_MODEL, system, timeout = 120000 } = options
+  const { model = HAIKU_MODEL, system, timeout = 120000, thinkingTokens } = options
 
   return new Promise((resolve, reject) => {
     const args = ['--print', '--model', model]
@@ -50,7 +55,7 @@ function claudeChat(prompt, options = {}) {
     // thinking tokens (~90s/call) before a ~450-token answer — a 15×
     // tax for zero quality gain on these deterministic tasks. With it:
     // ~8s/call, identical output. (Measured 2026-06-08: 122s → 8s.)
-    env.MAX_THINKING_TOKENS = '0'
+    env.MAX_THINKING_TOKENS = thinkingTokens === undefined ? '0' : String(thinkingTokens)
 
     const child = execFile('claude', args, {
       timeout,
