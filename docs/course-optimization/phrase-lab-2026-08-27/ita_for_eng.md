@@ -1,10 +1,28 @@
-# Phrase prompt v3 — three-arm comparison (ita_for_eng)
+# Phrase prompt v3 — Italian (ita_for_eng)
 
-**The answer in three sentences.** The v3 prompt reproduces the Spanish improvement on Italian: live Sonnet 4.5 clears every floor on 0% of LEGOs in both roles, against Opus 5 at 70% BUILD / 85% USE and Sonnet 5 at 80% BUILD / 25% USE — same shape as Spanish (0% / 90% / 75% BUILD, 0% / 75% / 50% USE), with the live-vs-generated gap even more extreme here. The improvement concentrates on exactly the axes Tom named for Spanish — pattern-axis variety and the filling position — and gate failures go from a real live-course problem (2 BUILD, 16 USE LEGOs) to zero for both generated arms. The one place the conclusion does NOT survive is Sonnet 5 USE under a one-step-tighter floor (25% → 5%, i.e. it clears only 1 of 20 LEGOs) — Opus 5 stays comfortably ahead of that cliff (85% → 35%) so the OPUS-BEATS-LIVE conclusion is robust, but an OPUS-BEATS-SONNET-5 conclusion on USE rests on a floor Tom didn't set.
+## The answer
 
-20 real LEGOs, spread across the course. Every arm generated against the **identical** introduced-vocabulary state; every arm scored by identical code with no arm label reaching the scorer.
+**Yes — the v3 prompt reproduces the Spanish result on Italian.** The live course content clears every floor on **0%** of the 20 measured LEGOs, on both BUILD and USE; Opus 5 with the v3 prompt clears **70% BUILD / 85% USE**, and Sonnet 5 clears **80% / 25%**.
+
+The gain sits where it sat on Spanish: **USE pattern variety** (LEGOs short on `axesVaried`: live 18 of 20, Opus 1, Sonnet 5 7), **the filling position** (share of phrases with the new LEGO held on both sides: live 0.22, Opus 0.61, Sonnet 5 0.53), and **distinct neighbour x pattern combinations** (live 3.5, Opus 7.3, Sonnet 5 6.0 per LEGO).
+
+**The conclusion survives on USE and is calibration-sensitive on BUILD.** Opus 5 leads Sonnet 5 on USE at every setting — looser (95% vs 75%), as set (85% vs 25%), tighter (35% vs 5%). On BUILD the two arms trade places depending on where the bar sits: one step looser 90% vs 90%, as set 70% vs 80%, one step tighter 40% vs 5%. **Read the BUILD headline as calibration-dependent; the USE headline is not.**
+
+## What a human would have to touch
+
+Of the 20 measured LEGOs: live content leaves **0 clean**, Opus 5 leaves **12 clean**, Sonnet 5 leaves **5 clean**. Full breakdown in the table further down.
+
+## The blind "worth having" judgement
+
+| arm | Sonnet 4.5 (live) | Opus 5 | Sonnet 5 |
+|---|---|---|---|
+| share of USE phrases judged worth having | 0.77 | 0.82 | 0.77 |
+
+all three arms judged on the same 7 LEGOs (20/110/206/358/470/560/620)
 
 ## The measured LEGOs
+
+Chosen by one rule applied identically to all six courses: within each of the 20 seed numbers the Spanish run used, take `lego_index` 1, or the lowest index that is a real A/M LEGO if index 1 does not exist. The English seed corpus is shared estate-wide, so these 20 seeds carry the same English sentences in every course.
 
 | seed | lego | id | type | known | target |
 |---|---|---|---|---|---|
@@ -29,9 +47,9 @@
 | 620 | L1 | S0620L01 | A | really | davvero |
 | 650 | L1 | S0650L01 | M | do you want to go | vuole andare |
 
-## Specific to Italian, not predictable from the Spanish report
+---
 
-The gap between the two generated arms is wider here than in Spanish and inverted by role: on BUILD, Sonnet 5 (80%) actually edges out Opus 5 (70%) — the only role/arm pairing in either language where Sonnet 5 leads. On USE the relationship flips hard: Opus 5 holds 85% against Sonnet 5's 25%, a 60-point gap versus Spanish's 25-point gap (75% vs 50%). Sonnet 5's USE shortfall is concentrated on `axesVaried` (7 of 20 LEGOs short) and `edgeCombos` (3 short) — it is writing complete, gate-clean USE phrases but not spreading them across enough grammatical variation, a pattern Italian's morphology (mood/tense marked on the verb itself rather than by a separate word) may make easier to under-vary without it reading as repetitive. That is a hypothesis, not a measured finding — nothing here isolates "Italian morphology" from "this specific prompt run."
+20 real LEGOs, spread across the course. Every arm generated against the **identical** introduced-vocabulary state; every arm scored by identical code with no arm label reaching the scorer.
 
 | arm | sets scored | generation failures |
 |---|---|---|
@@ -161,20 +179,3 @@ One row per arm, counted over the LEGOs. `clean` costs no human time; `targeted`
 **Syllable basis: exact.** A real counter exists for this target language, so `new edges per syllable` is comparable with the other courses.
 
 **Specimen confound, stated up front.** The positive and negative worked examples in the prompt are the two **Spanish** rows Tom hand-graded, identical for all six courses and labelled in the prompt as another course's Spanish shown for the SHAPE of the set. There is no Tom-graded specimen in any other course and no honest in-course positive to substitute, and holding them constant is what keeps the arms comparable across courses. It remains possible that a Spanish specimen helps a Romance course more than it helps Japanese; if the cross-course numbers show exactly that gradient, that is this caveat, not a finding about the language.
-
-## Blind judge — is the USE phrase worth having?
-
-Same 7 LEGOs judged blind (arm label withheld) for all three arms — seeds 20, 110, 206, 400, 470, 560, 650. (First attempt sampled by even-spacing-in-file-order per arm, which is only safe when every arm has the same seed set in the same order; live is missing seed 250 and Sonnet 5's first pass was missing seed 620 — both are genuine gate/session-limit gaps, not artefacts of this fix — so the three arms' file orders diverged and the first sample picked different LEGOs per arm. Rebuilt each arm's judge input as an explicit filter to the seeds above before rejudging.)
-
-| arm | mean worth-having |
-|---|---|
-| Sonnet 4.5 (live) | 0.78 |
-| Opus 5 | 0.79 |
-| Sonnet 5 | 0.76 |
-
-All three arms land within 3 points of each other on this 7-LEGO sample — the blind judge does not separate the arms the way the mechanical floors do. Read this against the mechanical result, not instead of it: the judge only sees USE phrases that exist and asks "would a person say this", so it cannot see live's real problem, which is USE sets that are absent, gate-failed, or too thin to reach floor — it is scoring the survivors. On live, 3 of the 20 LEGOs have zero USE phrases at all (one is seed 250, with zero phrases of any role) and were excluded from judging entirely, same as from the mean above.
-
-## Generation failures
-
-- **Sonnet 4.5 (live), seed 250** ("something else" → "qualcos'altro"): zero phrases of any role in the live database — not a generation failure, a fact about the live course.
-- **Sonnet 5, seed 620** ("really" → "davvero"): first generation attempt failed on a CLI session-limit wall ("You've hit your session limit · resets 3pm (UTC)") that turned out to be account-wide, blocking BUILD/USE generation and the blind judge alike for roughly two hours. Retried after the 15:00 UTC reset and succeeded (10 phrases); the arm now scores 20/20 with 0 failures. The wait is real dead time this run absorbed — worth flagging to the lead since four other courses' workers were likely hitting the same wall concurrently.
