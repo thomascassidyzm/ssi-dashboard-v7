@@ -97,9 +97,21 @@ Also true, and the other legs do not share it: **Chatterbox watermarks every cli
 
 ---
 
-## The Cartesia oddity, because it will bite us again
+## The 402 is gone, and the API can now mint voices
 
-Your API key **cannot create a clone** — `POST /voices/clone` returns `402 plan_upgrade_required`, *"not available on the free tier"* — while the same key happily **speaks with a clone you made in the console**. So Cartesia's Pro entitlement has reached the dashboard but not the API surface for that one endpoint. Practically it does not block us: cloning is a one-off act and you can do it in the console in a minute. It matters if we ever want cloning to be automated, and it is worth one line to their support before we build anything that assumes the API can mint voices.
+Resolved by the Startup upgrade. `POST /voices/clone` returned a real voice id on the first try afterwards — so cloning is automatable, not just a console act. I deleted that throwaway test voice; your library still holds `tom_001` and nothing else of mine. Both keys are in the Vault as `CARTESIA_API_KEY` and `CARTESIA_API_KEY_2`.
+
+**One correction to what I told you earlier:** the Pro-era 402 was never a workspace mismatch. It was the plan itself gating that one endpoint while leaving TTS open — which is why your key could speak with a console clone but not create one.
+
+## Before you commit to Cartesia — the short-phrase test
+
+Your "excellent" was on a 12-second clip. **The question that killed ElevenLabs is whether short phrases come back the same way twice**, and I have now run it: 59 clips, Spanish and Italian, five takes each.
+
+Short version: **it wanders, and the wander is real speech-rate movement rather than trimmable silence.** Median spread ~26% take-to-take, worst case *"todo el día"* at 104% — the same three words taking twice as long on one take as another. It concentrates at two-to-three-word LEGO length, which is exactly where the course lives. There is no seed parameter, but pinning `generation_config.speed` halves it for free.
+
+Language pinning does work, and we should be sending `locale` (`es-ES`, `es-MX`, `it-IT`) rather than `language`, per their own docs.
+
+**The clips and the full numbers: https://watson-1.tail4968cb.ts.net/d/d356b203** — that doc is where your ear settles whether the wander matters. Nothing has run at volume.
 
 ## The one honest gap
 
