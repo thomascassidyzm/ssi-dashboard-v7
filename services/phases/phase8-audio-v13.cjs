@@ -2796,6 +2796,17 @@ app.post('/generate/:courseCode', async (req, res) => {
             voiceId: voiceName,
             language: toBcp47(item.language),
           }))
+        } else if (provider === 'cartesia') {
+          // `locale`, not `language` — Cartesia's docs prefer it, and the BCP-47
+          // value is already in hand here. `speed` is passed because Cartesia
+          // honours it and pinning it halves the take-to-take duration wander on
+          // short text; the tts-service defaults it to 1.0 if a caller omits it.
+          ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'cartesia', {
+            apiKey: process.env.CARTESIA_API_KEY,
+            voiceId: voiceName,
+            locale: toBcp47(item.language),
+            speed
+          }))
         } else {
           throw new Error(`Unknown TTS provider: ${provider}`)
         }
@@ -3360,6 +3371,13 @@ app.post('/regenerate-role/:courseCode', async (req, res) => {
             apiKey: process.env.XAI_API_KEY,
             voiceId: voiceId,
             language: toBcp47(language),
+          }))
+        } else if (voiceProvider === 'cartesia') {
+          ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'cartesia', {
+            apiKey: process.env.CARTESIA_API_KEY,
+            voiceId: voiceId,
+            locale: toBcp47(language),
+            speed
           }))
         } else {
           throw new Error(`Unknown TTS provider: ${voiceProvider}`)
@@ -4765,6 +4783,13 @@ app.post('/regenerate-single/:courseCode/:audioUuid', async (req, res) => {
           voiceId: voiceId,
           language: toBcp47(lang),
         }))
+      } else if (voiceProvider === 'cartesia') {
+        ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'cartesia', {
+          apiKey: process.env.CARTESIA_API_KEY,
+          voiceId: voiceId,
+          locale: toBcp47(lang),
+          speed
+        }))
       } else {
         throw new Error(`Unknown TTS provider: ${voiceProvider}`)
       }
@@ -5059,6 +5084,13 @@ app.post('/regenerate-presentation/:courseCode/:legoId', async (req, res) => {
           apiKey: process.env.XAI_API_KEY,
           voiceId: voiceId,
           language: toBcp47(knownLang)
+        }))
+      } else if (voiceProvider === 'cartesia') {
+        ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(presentationText, 'cartesia', {
+          apiKey: process.env.CARTESIA_API_KEY,
+          voiceId: voiceId,
+          locale: toBcp47(knownLang),
+          speed
         }))
       } else {
         throw new Error(`Unknown TTS provider: ${voiceProvider}`)
@@ -5462,6 +5494,13 @@ app.post('/regenerate-phrase/:courseCode/:phraseId', async (req, res) => {
             voiceId: voiceName,
             language: toBcp47(language)
           }))
+        } else if (voiceProvider === 'cartesia') {
+          ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'cartesia', {
+            apiKey: process.env.CARTESIA_API_KEY,
+            voiceId: voiceName,
+            locale: toBcp47(language),
+            speed
+          }))
         } else {
           throw new Error(`Unknown TTS provider: ${voiceProvider}`)
         }
@@ -5830,6 +5869,13 @@ app.post('/regenerate-lego/:courseCode/:legoId', async (req, res) => {
             apiKey: process.env.XAI_API_KEY,
             voiceId: voiceName,
             language: toBcp47(language)
+          }))
+        } else if (voiceProvider === 'cartesia') {
+          ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'cartesia', {
+            apiKey: process.env.CARTESIA_API_KEY,
+            voiceId: voiceName,
+            locale: toBcp47(language),
+            speed
           }))
         } else {
           throw new Error(`Unknown TTS provider: ${voiceProvider}`)
@@ -6291,6 +6337,13 @@ app.post('/generate-components/:courseCode', async (req, res) => {
             apiKey: process.env.XAI_API_KEY,
             voiceId: voiceName,
             language: toBcp47(item.language),
+          }))
+        } else if (provider === 'cartesia') {
+          ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'cartesia', {
+            apiKey: process.env.CARTESIA_API_KEY,
+            voiceId: voiceName,
+            locale: toBcp47(item.language),
+            speed
           }))
         } else {
           throw new Error(`Unknown TTS provider: ${provider}`)
@@ -8017,6 +8070,10 @@ async function reuseRenderClip(courseCode, clip, stats) {
     } else if (provider === 'xai') {
       ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'xai', {
         apiKey: process.env.XAI_API_KEY, voiceId: voiceName, language: toBcp47(clip.language),
+      }))
+    } else if (provider === 'cartesia') {
+      ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'cartesia', {
+        apiKey: process.env.CARTESIA_API_KEY, voiceId: voiceName, locale: toBcp47(clip.language), speed: 1.0,
       }))
     } else {
       throw new Error(`Unknown TTS provider: ${provider} (voice ${clip.voiceId})`)

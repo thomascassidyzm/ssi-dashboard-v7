@@ -139,3 +139,153 @@ describe('generateXai language steering', () => {
       .rejects.toThrow(/limited to 15000 characters/)
   })
 })
+
+// ─── Cartesia, wired forward-only 2026-08-27 ──────────────────────────────────
+//
+// These pin the three things that are easy to get wrong and impossible to see
+// afterwards: that generate() actually routes the provider, that the request
+// steers with `locale` rather than `language`, and that speed is pinned by
+// default rather than left to the provider's own drift.
+
+describe('generate() routes cartesia', () => {
+  const CLONE = '8fef4d59-0a7e-4ad2-a261-6a3bb50734d2'
+
+  /** Stand in for the network, and hand back the request we would have sent. */
+  function withStubbedFetch (run) {
+    const nodeFetch = require('node-fetch')
+    const mod = require.cache[require.resolve('node-fetch')]
+    const original = mod.exports
+    const calls = []
+    const stub = async (url, opts) => {
+      calls.push({ url, opts, body: JSON.parse(opts.body) })
+      // 8 KB — comfortably over the audible floor, so the empty-response gate
+      // passes and we are testing routing, not the gate.
+      const bytes = Buffer.alloc(8192, 1)
+      return {
+        ok: true,
+        status: 200,
+        arrayBuffer: async () => bytes.buffer.slice(bytes.byteOffset, bytes.byteOffset + bytes.length),
+      }
+    }
+    Object.keys(nodeFetch).forEach(k => { stub[k] = nodeFetch[k] })
+    mod.exports = stub
+    // tts-service captured `fetch` at require time, so it must be re-required
+    // under the stub for the swap to reach it.
+    delete require.cache[require.resolve('./tts-service.cjs')]
+    const svc = require('./tts-service.cjs')
+    return Promise.resolve(run(svc, calls)).finally(() => {
+      mod.exports = original
+      delete require.cache[require.resolve('./tts-service.cjs')]
+    })
+  }
+
+  it('reaches Cartesia rather than throwing Unknown TTS provider', async () => {
+    await withStubbedFetch(async (svc, calls) => {
+      const out = await svc.generate('a five word English line', 'cartesia', {
+        apiKey: 'test-key', voiceId: CLONE, locale: 'en-GB',
+      })
+      expect(calls).toHaveLength(1)
+      expect(calls[0].url).toBe('https://api.cartesia.ai/tts/bytes')
+      expect(calls[0].opts.headers['Cartesia-Version']).toBeTruthy()
+      expect(calls[0].opts.headers.Authorization).toBe('Bearer test-key')
+      expect(out.audioBuffer.length).toBe(8192)
+      // Bytes, not timings — the same as xAI. Component splicing stays on Azure.
+      expect(out.wordBoundaries).toBeNull()
+    })
+  })
+
+  it('steers with locale, never with language, and names the voice by id', async () => {
+    await withStubbedFetch(async (svc, calls) => {
+      await svc.generate('venga, vamos a ver', 'cartesia', {
+        apiKey: 'k', voiceId: CLONE, locale: 'es-ES',
+      })
+      const body = calls[0].body
+      expect(body.locale).toBe('es-ES')
+      expect(body.language).toBeUndefined()
+      expect(body.voice).toEqual({ mode: 'id', id: CLONE })
+      expect(body.model_id).toBe('sonic-3')
+      expect(body.output_format.container).toBe('mp3')
+    })
+  })
+
+  it('pins generation_config.speed by default, and lets a voice override it', async () => {
+    // Not a preference: unpinned, take-to-take duration wander on a three-word
+    // LEGO measured 104%; pinned, 38%. Cartesia has no seed parameter, so this
+    // default is the only thing holding the drift down.
+    await withStubbedFetch(async (svc, calls) => {
+      await svc.generate('tri gair', 'cartesia', { apiKey: 'k', voiceId: CLONE, locale: 'cy-GB' })
+      expect(calls[0].body.generation_config.speed).toBe(svc.CARTESIA_DEFAULT_SPEED)
+      await svc.generate('tri gair', 'cartesia', { apiKey: 'k', voiceId: CLONE, locale: 'cy-GB', speed: 0.9 })
+      expect(calls[1].body.generation_config.speed).toBe(0.9)
+    })
+  })
+
+  it('refuses without a key or a voice rather than posting a nameless request', async () => {
+    await withStubbedFetch(async (svc, calls) => {
+      await expect(svc.generate('x', 'cartesia', { voiceId: CLONE, locale: 'en-GB' }))
+        .rejects.toThrow(/API key/)
+      await expect(svc.generate('x', 'cartesia', { apiKey: 'k', locale: 'en-GB' }))
+        .rejects.toThrow(/voice id/)
+      expect(calls).toHaveLength(0)
+    })
+  })
+})
+
+describe('the phonology gate covers cartesia, not just xai', () => {
+  const { phonologySuspects, PHONOLOGY_GATED_PROVIDERS } = require('./tts-service.cjs')
+
+  // The gate was `provider !== 'xai'` — a string equality. Wiring a second
+  // English-dominant multilingual provider in without widening it would have
+  // switched the gate off for that provider silently: no error, no warning, an
+  // unguarded render path. The 2026-07-10 Italian pilot ('come stai' read with
+  // English phonology) is what the gate is for; Cartesia has the same exposure.
+  it('guards a Cartesia render steered to a non-English language', () => {
+    const suspects = phonologySuspects('cartesia', { locale: 'it-IT' })
+    expect(suspects).not.toBeNull()
+    expect(suspects.has('en')).toBe(true)
+  })
+
+  it('reads the steer from locale as well as language', () => {
+    // A gate that only looked at `language` would find nothing to guard on the
+    // Cartesia path, which steers with `locale`.
+    expect(phonologySuspects('cartesia', { locale: 'it-IT' })).not.toBeNull()
+    expect(phonologySuspects('xai', { language: 'it-IT' })).not.toBeNull()
+  })
+
+  it('still does not apply to Azure, and still stands down on English', () => {
+    expect(phonologySuspects('azure', { language: 'it-IT' })).toBeNull()
+    expect(phonologySuspects('cartesia', { locale: 'en-GB' })).toBeNull()
+    expect(phonologySuspects('cartesia', { locale: 'it-IT', phonologyGate: false })).toBeNull()
+  })
+
+  it('names both gated providers so a third cannot be added by forgetting', () => {
+    expect([...PHONOLOGY_GATED_PROVIDERS].sort()).toEqual(['cartesia', 'xai'])
+  })
+})
+
+/**
+ * The same steering ruling as generateXai's, applied to the second provider
+ * with the same exposure. Added when Cartesia was wired, 2026-08-27: main had
+ * already turned the xAI warn into a hard fail on 2026-08-24, and shipping a
+ * new provider with the older, softer behaviour would have quietly reopened the
+ * hole for every Cartesia course.
+ */
+describe('generateCartesia locale steering', () => {
+  const { generateCartesia } = require('./tts-service.cjs')
+  const cfg = (extra) => ({ apiKey: 'k', voiceId: '8fef4d59-0a7e-4ad2-a261-6a3bb50734d2', ...extra })
+
+  it('throws when no locale is passed at all', async () => {
+    await expect(generateCartesia('come stai', cfg())).rejects.toThrow(/explicit BCP-47 locale/)
+  })
+
+  it('throws on an empty-string locale', async () => {
+    await expect(generateCartesia('come stai', cfg({ locale: '' }))).rejects.toThrow(/explicit BCP-47 locale/)
+  })
+
+  it('accepts the language field as a steer, for the call sites that name it that', async () => {
+    // Must not throw the locale error — it gets as far as the network, which is
+    // where this test stops caring.
+    await expect(generateCartesia('come stai', cfg({ language: 'it-IT', apiKey: '' })))
+      .rejects.toThrow(/API key/)
+  })
+})

@@ -122,6 +122,7 @@ const DETECTOR = {
  */
 const tier2 = require('./audio-intelligence/tiers/tier2-edge-shape.cjs')
 const TAIL_DETECTOR = tier2.DETECTOR
+const { canonicalVoiceId, ClipIdentityError } = require('./shared/clip-identity.cjs')
 
 class RepairError extends Error {
   constructor (message, code = 'repair_failed', status = 400) {
@@ -132,13 +133,39 @@ class RepairError extends Error {
   }
 }
 
-/** Same provider discrimination as repair-silent-clips / repair-presentation-clips. */
+/**
+ * Split a stored voice_id into the provider that must render it and the id that
+ * provider expects.
+ *
+ * This used to guess: three prefixes, a `Neural` suffix rule, and then a
+ * fall-through of `{ provider: 'xai' }` for ANY bare id. That last line failed
+ * OPEN. A Cartesia voice id is a bare UUID, so it landed in the fallback and
+ * would have been repaired as xAI — a Cartesia id posted to xAI's API, wrong
+ * provider, and an error message pointing nowhere near the cause. Silently
+ * repairing a clip in the wrong voice is worse than not repairing it.
+ *
+ * So the guessing is gone and the question is delegated to canonicalVoiceId,
+ * which already resolves prefixes and the known bare voices properly and
+ * THROWS rather than assuming. The same change is made in
+ * tools/repair-presentation-clips.cjs and tools/regen-seed-clips-from-scratch.cjs,
+ * which carried copies of the same guess.
+ *
+ * What this costs, measured rather than assumed (course_audio, 2026-08-27):
+ * 57,216 rows carry a bare voice_id that canonicalVoiceId cannot resolve —
+ * placeholders like 'legacy_import' and opaque 8/12-char ids that are in no
+ * registry. Those rows are NOT xAI; the old code was guessing wrong about them
+ * and their repair would have failed at the provider anyway. They now refuse
+ * loudly at the door instead. Bare xAI names (eve/leo/ara/sal/rex and the two
+ * clones) are in KNOWN_BARE_VOICES and keep working exactly as before.
+ */
 function decodeVoiceId (storedVoiceId) {
-  const raw = String(storedVoiceId || '')
-  const m = /^(xai|azure|elevenlabs)_(.+)$/.exec(raw)
-  if (m) return { provider: m[1], voiceId: m[2] }
-  if (/Neural$/.test(raw)) return { provider: 'azure', voiceId: raw }
-  return { provider: 'xai', voiceId: raw }
+  const canonical = canonicalVoiceId(storedVoiceId)
+  if (canonical.startsWith('comp:')) {
+    throw new ClipIdentityError('voice_id', storedVoiceId,
+      'a composite is a splice of two takes, not one provider render')
+  }
+  const i = canonical.indexOf('_')
+  return { provider: canonical.slice(0, i), voiceId: canonical.slice(i + 1) }
 }
 
 /**

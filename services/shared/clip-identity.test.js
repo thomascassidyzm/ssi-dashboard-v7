@@ -123,6 +123,28 @@ describe('canonicalVoiceId — one voice, one spelling', () => {
     expect(() => canonicalVoiceId('azure_en-GB-SoniaNeural', { provider: 'xai' })).toThrow(/provider/)
   })
 
+  // Added with the forward-only Cartesia wiring, 2026-08-27. A Cartesia voice
+  // id is a bare UUID — it looks like nothing in particular, which is exactly
+  // why the provider has to be carried explicitly and why the alias entry is
+  // the keystone of the whole integration.
+  it('canonicalises a Cartesia id from the caller provider, and keeps a prefixed one', () => {
+    const clone = '8fef4d59-0a7e-4ad2-a261-6a3bb50734d2'
+    expect(canonicalVoiceId(clone, { provider: 'cartesia' })).toBe(`cartesia_${clone}`)
+    expect(canonicalVoiceId(`cartesia_${clone}`)).toBe(`cartesia_${clone}`)
+    expect(isCanonicalVoiceId(`cartesia_${clone}`)).toBe(true)
+  })
+
+  it('still refuses a bare Cartesia UUID with no provider — the shape proves nothing', () => {
+    // This is the fail-CLOSED half of the pair. Its fail-OPEN twin lived in
+    // audio-repair-core's decodeVoiceId, which defaulted any bare id to xAI and
+    // would have repaired a Cartesia clip through xAI's API without a word.
+    expect(() => canonicalVoiceId('8fef4d59-0a7e-4ad2-a261-6a3bb50734d2')).toThrow(ClipIdentityError)
+  })
+
+  it('does not let a Cartesia id pass as another provider', () => {
+    expect(() => canonicalVoiceId('cartesia_8fef4d59', { provider: 'xai' })).toThrow(/provider/)
+  })
+
   it('throws on placeholders that are not voices', () => {
     for (const sentinel of ['legacy_import', 'human', 'human_recording', 'unknown', '']) {
       expect(() => canonicalVoiceId(sentinel)).toThrow(ClipIdentityError)

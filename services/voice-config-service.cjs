@@ -477,6 +477,28 @@ function buildTTSConfig(voiceConfig, cadence, cadenceProfiles) {
     };
   }
 
+  if (provider === 'cartesia') {
+    // voiceId is a bare UUID — Cartesia has no preset names, so there is no
+    // shape here to tell a Cartesia voice from anything else's; the provider
+    // field is the only thing that says so.
+    //
+    // `locale`, not `language`: Cartesia's own guidance is to prefer it, and a
+    // base ISO code is a weak steer on an English-dominant multilingual voice.
+    //
+    // Speed is NOT advisory here, unlike xAI. Cartesia honours
+    // generation_config.speed, and sending it explicitly is what halves the
+    // take-to-take duration wander on short text (104% → 38%, determinism run
+    // 2026-08-27) — so the cadence-derived speed goes to the provider rather
+    // than only to masterAudio downstream.
+    return {
+      provider: 'cartesia',
+      apiKey: process.env.CARTESIA_API_KEY,
+      voiceId: voiceConfig.voiceId,
+      locale: voiceConfig.locale || voiceConfig.language || 'auto',
+      speed: effectiveSpeed
+    };
+  }
+
   throw new Error(`Unknown provider: ${provider}`);
 }
 

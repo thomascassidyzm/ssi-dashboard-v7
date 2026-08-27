@@ -490,9 +490,117 @@ async function generateXai(text, config) {
 
 
 /**
+ * Cartesia's default speed. Pinned, not left unset, and that is a measurement
+ * rather than a preference: Cartesia carries no seed parameter and wanders
+ * take-to-take on short text — median spread ~26% silence-trimmed, worst case
+ * 104% on a three-word LEGO, which is exactly the length the courses drill at.
+ * Sending an explicit speed takes the worst case from 104% to 38% for free
+ * (determinism run, 2026-08-27). A caller may override per voice; nobody gets
+ * to leave it unset by accident.
+ */
+const CARTESIA_DEFAULT_SPEED = 1.0;
+
+/** Cartesia pins its API to a date, not a semver. */
+const CARTESIA_VERSION = '2026-08-14';
+
+/**
+ * Generate speech with Cartesia (sonic-3). Returns raw mp3 bytes.
+ *
+ * Two settings are baked in here rather than left to callers:
+ *
+ * 1. `locale`, not `language`. Cartesia's own guidance is to prefer `locale`;
+ *    `language` takes base ISO codes only, and a base code is what let xAI read
+ *    Italian "come stai" with English phonology in the 2026-07-10 pilot. Phase 8
+ *    already has the right value in hand at the call site (toBcp47(item.language)).
+ * 2. `generation_config.speed` — see CARTESIA_DEFAULT_SPEED above.
+ *
+ * Word boundaries are null, as with xAI: this endpoint returns bytes, not
+ * timings. Anything that needs word boundaries (component splicing) stays on
+ * Azure — see docs, only Azure emits them.
+ */
+async function generateCartesia(text, config) {
+  const {
+    apiKey,
+    voiceId,
+    locale,
+    language,
+    speed = CARTESIA_DEFAULT_SPEED,
+    modelId = 'sonic-3',
+    sampleRate = 24000,
+    bitRate = 128000
+  } = config;
+
+  // Cartesia prefers BCP-47; accept `locale` first and fall back to whatever the
+  // caller called `language`, because the dispatch sites in the estate assemble
+  // a field with that name.
+  //
+  // A MISSING steer is a HARD FAIL, exactly as on the xAI path since 2026-08-24.
+  // Same reason, same exposure: these are English-dominant multilingual clones,
+  // and unsteered they read cross-language words with English phonology while
+  // looking perfectly correct in the database. A render that forgot to say which
+  // language it wanted is a defect, not a default — a warning here would be a
+  // warning nobody reads, in front of a clip a learner hears.
+  //
+  // An EXPLICIT 'auto' is allowed and warned, matching the xAI path's carve-out
+  // for deliberate pod-explainer tuning.
+  const steer = locale || language;
+  if (!steer) {
+    throw new Error(`Cartesia TTS requires an explicit BCP-47 locale (voice ${voiceId}, text: "${String(text).slice(0, 40)}") — pass 'auto' deliberately if that is really what you want`);
+  }
+  if (steer === 'auto') {
+    console.warn(`[Cartesia TTS] explicit locale='auto' for voice ${voiceId} — English phonology is possible on cross-language text (text: "${String(text).slice(0, 40)}")`);
+  }
+
+  if (!apiKey) {
+    throw new Error('Cartesia API key is required');
+  }
+  if (!voiceId) {
+    throw new Error('Cartesia voice id is required');
+  }
+
+  const body = {
+    model_id: modelId,
+    transcript: text,
+    voice: { mode: 'id', id: voiceId },
+    generation_config: { speed },
+    output_format: {
+      container: 'mp3',
+      sample_rate: sampleRate,
+      bit_rate: bitRate
+    }
+  };
+  if (steer && steer !== 'auto') body.locale = steer;
+
+  const response = await fetch('https://api.cartesia.ai/tts/bytes', {
+    method: 'POST',
+    agent: ttsKeepAliveAgent,
+    signal: AbortSignal.timeout(TTS_FETCH_TIMEOUT_MS),
+    headers: {
+      'Authorization': `Bearer ${apiKey}`,
+      'Cartesia-Version': CARTESIA_VERSION,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(body)
+  });
+
+  if (!response.ok) {
+    const errorText = await response.text();
+    throw new Error(`Cartesia TTS API error (${response.status}): ${errorText}`);
+  }
+
+  const audioBuffer = Buffer.from(await response.arrayBuffer());
+  const bytesPerSecond = Math.max(1, Math.round(bitRate / 8));
+  assertAudibleResponse(audioBuffer, {
+    provider: 'cartesia', bytesPerSecond, text, voiceId,
+  });
+  return { audioBuffer, wordBoundaries: null };
+}
+
+
+/**
  * Generate speech using specified TTS provider
  * @param {string} text - Text to synthesize
- * @param {string} provider - TTS provider ('elevenlabs' | 'azure' | 'xai')
+ * @param {string} provider - TTS provider ('elevenlabs' | 'azure' | 'xai' | 'cartesia')
  * @param {object} config - Provider-specific configuration
  * @returns {Promise<{audioBuffer: Buffer, wordBoundaries: Array|null}>} Audio data + word boundary timing
  */
@@ -513,6 +621,9 @@ async function generate(text, provider, config) {
 
     case 'xai':
       return await generateXai(text, config);
+
+    case 'cartesia':
+      return await generateCartesia(text, config);
 
     default:
       throw new Error(`Unknown TTS provider: ${provider}`);
@@ -628,13 +739,26 @@ async function detectSpokenLanguage(audioBuffer) {
 }
 
 /**
+ * Providers whose voices are English-dominant multilingual clones, and which
+ * therefore read cross-language words with English phonology when the steer is
+ * weak. A SET, not a string equality: this was `provider !== 'xai'`, and wiring
+ * a second such provider in without touching it would have silently switched
+ * the gate off for that provider — no error, no warning, just an unguarded
+ * render path. Cartesia joined on 2026-08-27 with the same exposure that the
+ * 2026-07-10 Italian pilot found on xAI ('come stai' read as English 'come').
+ */
+const PHONOLOGY_GATED_PROVIDERS = new Set(['xai', 'cartesia']);
+
+/**
  * The suspect-language set for a render, or null when the gate doesn't apply.
  * Suspects = English (the voices' dominant language) + any explicit
  * config.suspectLanguages, minus the steered language itself.
  */
 function phonologySuspects(provider, config) {
-  if (provider !== 'xai' || config.phonologyGate === false) return null;
-  const steered = String(config.language || '').toLowerCase().split('-')[0];
+  if (!PHONOLOGY_GATED_PROVIDERS.has(provider) || config.phonologyGate === false) return null;
+  // `locale` first: that is the field the Cartesia path steers with, and a gate
+  // that read only `language` would find nothing to guard on a Cartesia render.
+  const steered = String(config.locale || config.language || '').toLowerCase().split('-')[0];
   if (!steered || steered === 'auto' || steered === 'en') return null;
   const suspects = new Set(['en', ...(config.suspectLanguages || []).map(l => String(l).toLowerCase().split('-')[0])]);
   suspects.delete(steered);
@@ -746,6 +870,10 @@ module.exports = {
   generateElevenLabs,
   generateAzure,
   generateXai,
+  generateCartesia,
+  CARTESIA_DEFAULT_SPEED,
+  CARTESIA_VERSION,
+  PHONOLOGY_GATED_PROVIDERS,
   getCadenceSpeed,
   getVoiceForRole,
   // phonology gate internals, exported for tests/tools

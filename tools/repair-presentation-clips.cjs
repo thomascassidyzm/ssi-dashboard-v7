@@ -71,7 +71,7 @@ const veracity = require('../services/audio-veracity.cjs')
 process.env.PHASE8_NO_LISTEN = '1'
 const p8 = require('../services/phases/phase8-audio-v13.cjs')
 const { toBcp47 } = require('../services/voice-discovery-service.cjs')
-const { tryCanonicalLanguage, tryCanonicalVoiceId } = require('../services/shared/clip-identity.cjs')
+const { tryCanonicalLanguage, tryCanonicalVoiceId, canonicalVoiceId } = require('../services/shared/clip-identity.cjs')
 
 const arg = (f) => { const i = process.argv.indexOf(f); return i > -1 ? process.argv[i + 1] : null }
 const COURSE = process.argv[2]
@@ -107,13 +107,20 @@ function measureLevel (file) {
   })
 }
 
-/** Same discrimination as repair-silent-clips.cjs's decodeVoiceId. */
+/**
+ * Delegated to clip-identity's canonicalVoiceId — see the long note on
+ * services/audio-repair-core.cjs's decodeVoiceId for why the old shape-guessing
+ * had to go. Short version: its final line defaulted ANY bare id to xAI, and a
+ * Cartesia voice id is a bare UUID, so a Cartesia clip would have been repaired
+ * as xAI with no error anywhere.
+ */
 function decodeVoiceId (storedVoiceId) {
-  const raw = String(storedVoiceId || '')
-  const m = /^(xai|azure|elevenlabs)_(.+)$/.exec(raw)
-  if (m) return { provider: m[1], voiceId: m[2] }
-  if (/Neural$/.test(raw)) return { provider: 'azure', voiceId: raw }
-  return { provider: 'xai', voiceId: raw }
+  const canonical = canonicalVoiceId(storedVoiceId)
+  if (canonical.startsWith('comp:')) {
+    throw new Error(`voice_id ${storedVoiceId} is a composite, not a single-provider render`)
+  }
+  const i = canonical.indexOf('_')
+  return { provider: canonical.slice(0, i), voiceId: canonical.slice(i + 1) }
 }
 
 function ttsOptionsFor (provider, voiceId, language) {
@@ -123,6 +130,9 @@ function ttsOptionsFor (provider, voiceId, language) {
     voiceName: voiceId,
   }
   if (provider === 'elevenlabs') return { apiKey: process.env.ELEVENLABS_API_KEY, voiceId }
+  if (provider === 'cartesia') return {
+    apiKey: process.env.CARTESIA_API_KEY, voiceId, locale: toBcp47(language),
+  }
   return { apiKey: process.env.XAI_API_KEY, voiceId, language: toBcp47(language) }
 }
 

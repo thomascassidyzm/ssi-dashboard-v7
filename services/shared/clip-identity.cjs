@@ -65,7 +65,7 @@ const langService = require('./../language-code-service.cjs');
 const SEP = '\u001f';
 
 /** Providers we accept as the prefix of a canonical voice id. */
-const PROVIDERS = ['azure', 'xai', 'elevenlabs', 'google', 'narakeet', 'human'];
+const PROVIDERS = ['azure', 'xai', 'elevenlabs', 'google', 'narakeet', 'human', 'cartesia'];
 
 /**
  * Spellings that appear in the live estate and mean a provider, plus the older
@@ -84,6 +84,13 @@ const PROVIDER_ALIASES = {
   gcp: 'google',
   narakeet: 'narakeet',
   human: 'human',
+  // Added 2026-08-27 with the forward-only Cartesia wiring. Until this entry
+  // existed canonicalVoiceId threw `unknown provider hint "cartesia"` on every
+  // modern path — correct behaviour for an unextended system, and the reason
+  // this one line is the keystone of the integration. Cartesia voice ids are
+  // bare UUIDs, so they carry no shape of their own: the prefix is the only
+  // thing that keeps a Cartesia clip from being read as somebody else's.
+  cartesia: 'cartesia',
 };
 
 /**

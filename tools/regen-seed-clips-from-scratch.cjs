@@ -93,6 +93,7 @@ const { execFile } = require('child_process')
 const { v4: uuidv4 } = require('uuid')
 const { PutObjectCommand, HeadObjectCommand } = require('@aws-sdk/client-s3')
 const { AUDIO_CACHE_CONTROL } = require('../services/shared/audio-cache-control.cjs')
+const { canonicalVoiceId } = require('../services/shared/clip-identity.cjs')
 const { createClient } = require('@supabase/supabase-js')
 const ttsService = require('../services/tts-service.cjs')
 const veracity = require('../services/audio-veracity.cjs')
@@ -211,13 +212,18 @@ function measureLevel (file) {
   })
 }
 
-/** Same discrimination as repair-silent-clips.cjs / repair-presentation-clips.cjs. */
+/**
+ * Delegated to clip-identity's canonicalVoiceId — see the long note on
+ * services/audio-repair-core.cjs's decodeVoiceId. The old fall-through defaulted
+ * ANY bare id to xAI, which is precisely the shape of a Cartesia voice id.
+ */
 function decodeVoiceId (storedVoiceId) {
-  const raw = String(storedVoiceId || '')
-  const m = /^(xai|azure|elevenlabs)_(.+)$/.exec(raw)
-  if (m) return { provider: m[1], voiceId: m[2] }
-  if (/Neural$/.test(raw)) return { provider: 'azure', voiceId: raw }
-  return { provider: 'xai', voiceId: raw }
+  const canonical = canonicalVoiceId(storedVoiceId)
+  if (canonical.startsWith('comp:')) {
+    throw new Error(`voice_id ${storedVoiceId} is a composite, not a single-provider render`)
+  }
+  const i = canonical.indexOf('_')
+  return { provider: canonical.slice(0, i), voiceId: canonical.slice(i + 1) }
 }
 
 function ttsOptionsFor (provider, voiceId, language) {
@@ -227,6 +233,9 @@ function ttsOptionsFor (provider, voiceId, language) {
     voiceName: voiceId,
   }
   if (provider === 'elevenlabs') return { apiKey: process.env.ELEVENLABS_API_KEY, voiceId }
+  if (provider === 'cartesia') return {
+    apiKey: process.env.CARTESIA_API_KEY, voiceId, locale: toBcp47(language),
+  }
   return { apiKey: process.env.XAI_API_KEY, voiceId, language: toBcp47(language) }
 }
 
