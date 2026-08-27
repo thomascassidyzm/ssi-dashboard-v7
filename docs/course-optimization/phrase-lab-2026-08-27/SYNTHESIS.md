@@ -170,11 +170,11 @@ Opus is ahead in all four courses where the comparison is valid. The withheld ce
 
 ## The six reports
 
-- **Spanish** — `docs/course-optimization/phrase-lab-2026-08-27/comparison.md` (the overnight run)
-- **Italian** — `docs/course-optimization/phrase-lab-2026-08-27/ita_for_eng.md`
-- **French** — `docs/course-optimization/phrase-lab-2026-08-27/fra_for_eng.md`
-- **German** — `docs/course-optimization/phrase-lab-2026-08-27/deu_for_eng.md`
-- **Japanese** — `docs/course-optimization/phrase-lab-2026-08-27/jpn_for_eng.md`
-- **Mandarin** — `docs/course-optimization/phrase-lab-2026-08-27/zho_for_eng.md`
+- **Spanish** — the overnight run, published at https://watson-1.tail4968cb.ts.net/d/1dc47bb2
+- **Italian** — https://watson-1.tail4968cb.ts.net/d/9afd8130
+- **French** — https://watson-1.tail4968cb.ts.net/d/fd46e7cb
+- **German** — https://watson-1.tail4968cb.ts.net/d/4da73ad5
+- **Japanese** — https://watson-1.tail4968cb.ts.net/d/f1d89081
+- **Mandarin** — https://watson-1.tail4968cb.ts.net/d/961984ef
 
 Raw generated arms and blind-judge output for the five new courses are committed under `docs/course-optimization/phrase-lab-2026-08-27/arms/`.
