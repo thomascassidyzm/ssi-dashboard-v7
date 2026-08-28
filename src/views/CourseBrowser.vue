@@ -27,18 +27,18 @@
           v-model="searchQuery"
           type="text"
           placeholder="Search courses (e.g., 'Spanish', 'fra_for_eng', 'Basket Generation')..."
-          class="w-full bg-surface border border-line rounded-lg px-4 py-3 text-ink placeholder-faint focus:outline-none focus:border-accent-2 focus:ring-1 focus:ring-accent-2"
+          class="ui-search"
         />
       </div>
 
       <!-- Recents — the fast path back to what you were working on -->
       <div v-if="recentCourses.length" class="mb-4 flex items-center gap-2 flex-wrap">
-        <span class="text-xs text-faint uppercase tracking-wider">Recent</span>
+        <span class="ui-filter-label">Recent</span>
         <button
           v-for="code in recentCourses"
           :key="code"
           @click="openCourse(code)"
-          class="recent-chip font-mono"
+          class="ui-recent-chip font-mono"
         >
           {{ code }}
         </button>
@@ -47,7 +47,7 @@
       <!-- Filters -->
       <div class="mb-2 flex flex-wrap items-center gap-2.5">
         <!-- Release status (tri-state) -->
-        <span class="text-xs text-faint uppercase tracking-wider">Release</span>
+        <span class="ui-filter-label">Release</span>
         <button
           v-for="s in statusFilters"
           :key="s.value"
@@ -60,7 +60,7 @@
         <span class="text-faint mx-1">|</span>
 
         <!-- Pricing (tri-state) -->
-        <span class="text-xs text-faint uppercase tracking-wider">Pricing</span>
+        <span class="ui-filter-label">Pricing</span>
         <button
           v-for="p in pricingFilters"
           :key="p.value"
@@ -73,14 +73,14 @@
 
       <!-- Language dropdowns + reset -->
       <div class="mb-5 flex flex-wrap items-center gap-2.5">
-        <span class="text-xs text-faint uppercase tracking-wider">Known</span>
-        <select v-model="knownFilter" class="filter-select">
+        <span class="ui-filter-label">Known</span>
+        <select v-model="knownFilter" class="ui-select">
           <option value="">All</option>
           <option v-for="l in knownLangs" :key="l" :value="l">{{ getLanguageName(l) }}</option>
         </select>
 
-        <span class="text-xs text-faint uppercase tracking-wider ml-2">Target</span>
-        <select v-model="targetFilter" class="filter-select">
+        <span class="ui-filter-label ml-2">Target</span>
+        <select v-model="targetFilter" class="ui-select">
           <option value="">All</option>
           <option v-for="l in targetLangs" :key="l" :value="l">{{ getLanguageName(l) }}</option>
         </select>
@@ -94,12 +94,12 @@
         </button>
         <button
           @click="setSort('recent')"
-          class="recent-sort-btn"
-          :class="{ 'recent-sort-active': sortKey === 'recent' }"
+          class="ui-sort-btn"
+          :class="{ 'ui-sort-btn-active': sortKey === 'recent' }"
         >
           ↻ Recently used
         </button>
-        <span class="ml-auto text-xs text-faint">{{ filteredCourses.length }} of {{ accessibleCount }} courses</span>
+        <span class="ui-count">{{ filteredCourses.length }} of {{ accessibleCount }} courses</span>
       </div>
 
       <!-- Stats loading indicator -->
@@ -135,26 +135,26 @@
       </div>
 
       <!-- Courses table — dense, scannable, scales -->
-      <div v-else class="course-table-wrap border border-line rounded-lg overflow-x-auto">
-        <table class="course-table w-full text-sm">
+      <div v-else class="ui-table-wrap">
+        <table class="ui-table">
           <thead>
-            <tr class="text-faint text-xs uppercase tracking-wider">
+            <tr>
               <th class="w-9 px-3 py-2 text-center">
                 <input type="checkbox" :checked="allFilteredSelected" @change="toggleSelectAll" />
               </th>
-              <th class="text-left px-3 py-2 th-sort" @click="setSort('code')">Code{{ sortIndicator('code') }}</th>
-              <th class="text-left px-3 py-2 th-sort" @click="setSort('name')">Name{{ sortIndicator('name') }}</th>
-              <th class="text-left px-3 py-2 th-sort hidden md:table-cell" @click="setSort('known')">Known{{ sortIndicator('known') }}</th>
-              <th class="text-left px-3 py-2 th-sort hidden md:table-cell" @click="setSort('target')">Target{{ sortIndicator('target') }}</th>
-              <th class="text-left px-3 py-2 th-sort" @click="setSort('pricing')">Pricing{{ sortIndicator('pricing') }}</th>
-              <th class="text-left px-3 py-2 th-sort" @click="setSort('stage')">Stage{{ sortIndicator('stage') }}</th>
+              <th class="text-left px-3 py-2 ui-th-sort" @click="setSort('code')">Code{{ sortIndicator('code') }}</th>
+              <th class="text-left px-3 py-2 ui-th-sort" @click="setSort('name')">Name{{ sortIndicator('name') }}</th>
+              <th class="text-left px-3 py-2 ui-th-sort hidden md:table-cell" @click="setSort('known')">Known{{ sortIndicator('known') }}</th>
+              <th class="text-left px-3 py-2 ui-th-sort hidden md:table-cell" @click="setSort('target')">Target{{ sortIndicator('target') }}</th>
+              <th class="text-left px-3 py-2 ui-th-sort" @click="setSort('pricing')">Pricing{{ sortIndicator('pricing') }}</th>
+              <th class="text-left px-3 py-2 ui-th-sort" @click="setSort('stage')">Stage{{ sortIndicator('stage') }}</th>
             </tr>
           </thead>
           <tbody>
             <tr
               v-for="course in sortedCourses"
               :key="course.course_code"
-              class="course-row border-t border-line cursor-pointer transition-colors"
+              class="ui-row cursor-pointer"
               :class="{ 'row-selected': selected.has(course.course_code), 'row-new': highlightedCourses.has(course.course_code) }"
               @click="openCourse(course.course_code)"
             >
@@ -193,12 +193,12 @@
       <span class="font-medium text-ink">{{ selected.size }} selected</span>
       <button @click="clearSelection" class="text-faint hover:text-ink text-sm">Clear</button>
       <span class="bulk-sep"></span>
-      <span class="text-xs text-faint uppercase tracking-wider">Stage →</span>
+      <span class="ui-filter-label">Stage →</span>
       <button v-for="s in statusFilters" :key="s.value" :disabled="bulkBusy" @click="applyBulkStatus(s.value)" class="bulk-action">
         {{ s.label }}
       </button>
       <span class="bulk-sep"></span>
-      <span class="text-xs text-faint uppercase tracking-wider">Pricing →</span>
+      <span class="ui-filter-label">Pricing →</span>
       <button v-for="p in pricingFilters" :key="p.value" :disabled="bulkBusy" @click="applyBulkPricing(p.value)" class="bulk-action">
         {{ p.label }}
       </button>
@@ -291,7 +291,7 @@ function cycleFilter(group, value) {
 
 function chipClass(group, item) {
   const active = !!filterGroups[group].value[item.value]
-  const base = 'filter-pill px-3 py-1 rounded-full text-xs font-medium border transition-colors cursor-pointer inline-flex items-center gap-1'
+  const base = 'filter-pill ui-chip'
   return active ? `${base} ${item.activeClass}` : `${base} border-line text-faint hover:border-line hover:text-ink`
 }
 
@@ -684,88 +684,21 @@ function getPricingClass(tier) {
   text/fill to AA-passing values while keeping the same hue family.
 -->
 <style scoped>
-/* Language dropdowns */
-.filter-select {
-  background: var(--surface);
-  border: 1px solid var(--line);
-  color: var(--ink);
-  border-radius: 9999px;
-  padding: 0.25rem 0.65rem;
-  font-size: 0.75rem;
-  cursor: pointer;
-}
-.filter-select:focus {
-  outline: none;
-  border-color: var(--accent-2, var(--accent));
-}
+/* Search, filter chips, pill dropdowns and the dense table now live in
+   `src/assets/ui-tokens.css` — the Voice Lab reads from the same file, so the
+   two screens share one look instead of two that nearly match. Only what is
+   genuinely course-specific stays here. */
 .chip-no {
   font-size: 0.7rem;
   line-height: 1;
 }
 
-/* Recents */
-.recent-chip {
-  background: var(--surface);
-  border: 1px solid var(--line);
-  color: var(--accent-2, var(--accent));
-  border-radius: 9999px;
-  padding: 0.2rem 0.7rem;
-  font-size: 0.78rem;
-  cursor: pointer;
-  transition: all 0.15s;
-}
-.recent-chip:hover {
-  border-color: var(--accent-2, var(--accent));
-  background: var(--surface-2);
-}
-
-/* Recent sort button */
-.recent-sort-btn {
-  background: var(--surface);
-  border: 1px solid var(--line);
-  color: var(--muted);
-  border-radius: 9999px;
-  padding: 0.2rem 0.7rem;
-  font-size: 0.75rem;
-  cursor: pointer;
-  transition: all 0.15s;
-}
-.recent-sort-btn:hover {
-  border-color: var(--accent-2, var(--accent));
-  color: var(--ink);
-}
-.recent-sort-active {
-  border-color: var(--accent-2, var(--accent)) !important;
-  color: var(--accent-2, var(--accent)) !important;
-}
-
-/* Dense course table */
-.course-table-wrap {
-  background: var(--surface);
-}
-.course-table thead tr {
-  background: var(--surface-2);
-}
-.th-sort {
-  cursor: pointer;
-  user-select: none;
-  white-space: nowrap;
-}
-.th-sort:hover {
-  color: var(--ink);
-}
-.course-row:hover {
-  background: var(--surface-2);
-}
-.course-row.row-selected {
+/* Course-specific row states */
+.ui-row.row-selected {
   background: color-mix(in srgb, var(--accent-2, var(--accent)) 12%, transparent);
 }
-.course-row.row-new {
+.ui-row.row-new {
   box-shadow: inset 3px 0 0 var(--accent-2, var(--accent));
-}
-.course-table input[type="checkbox"] {
-  cursor: pointer;
-  accent-color: var(--accent-2, var(--accent));
 }
 
 /* Bulk action bar — sticky at the bottom while a selection exists */

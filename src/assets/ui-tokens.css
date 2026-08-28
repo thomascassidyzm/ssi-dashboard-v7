@@ -1,0 +1,187 @@
+/* ── SHARED SEARCH · FILTER · TABLE · PILL LOOK ──────────────────────────────
+   Tom, 2026-08-29: "we already have token design protocols for search and
+   filtering the courses, let's use those" — said of the Voice Lab, which had
+   grown its own native inputs and its own table.
+
+   Every rule here was LIFTED FROM `CourseBrowser.vue`'s scoped block, values
+   unchanged, so the Course Library keeps exactly the look it had and any other
+   screen that adopts these classes joins it rather than approximating it. The
+   colours come from the semantic tokens in `style.css` (--surface, --line,
+   --ink, --muted, --faint, --accent-2), so light mode follows for free.
+
+   ONE LOOK, ONE FILE: if you find yourself copy-pasting `.filter-select` into
+   a fourth view, add the class here and consume it instead. */
+
+/* Full-width search field — the Course Library's search bar. */
+.ui-search {
+  width: 100%;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 0.5rem;
+  padding: 0.75rem 1rem;
+  color: var(--ink);
+  font-family: inherit;
+  font-size: 1rem;
+}
+.ui-search::placeholder { color: var(--faint); }
+.ui-search:focus {
+  outline: none;
+  border-color: var(--accent-2, var(--accent));
+  box-shadow: 0 0 0 1px var(--accent-2, var(--accent));
+}
+
+/* The small uppercase word that names a filter row: RECENT, RELEASE, STATUS. */
+.ui-filter-label {
+  font-size: 0.75rem;
+  line-height: 1rem;
+  color: var(--faint);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* A filter row and the count that closes it. */
+.ui-filter-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.625rem;
+}
+.ui-count {
+  margin-left: auto;
+  font-size: 0.75rem;
+  color: var(--faint);
+}
+
+/* Tri-state filter chip — GEOMETRY ONLY. No colour and no background here on
+   purpose: the consumer paints the active state, because "Live" being green is
+   a meaning rather than a style, and leaving the paint out is also what stops
+   this file quietly overriding the Tailwind colour utilities the courses page
+   already uses for those meanings. */
+.ui-chip {
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  border-width: 1px;
+  border-style: solid;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  transition: color 0.15s, border-color 0.15s, background-color 0.15s;
+}
+/* The unpainted resting state, for consumers that are not writing Tailwind. */
+.ui-chip-off {
+  background: none;
+  border-color: var(--line);
+  color: var(--faint);
+}
+.ui-chip-off:hover { color: var(--ink); }
+.ui-chip-on {
+  border-color: var(--accent-2, var(--accent));
+  color: var(--accent-2, var(--accent));
+  background: color-mix(in srgb, var(--accent-2, var(--accent)) 14%, transparent);
+}
+
+/* Pill-shaped dropdown (KNOWN / TARGET on the courses page). */
+.ui-select {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  color: var(--ink);
+  border-radius: 9999px;
+  padding: 0.25rem 0.65rem;
+  font-size: 0.75rem;
+  font-family: inherit;
+  cursor: pointer;
+}
+.ui-select:focus { outline: none; border-color: var(--accent-2, var(--accent)); }
+
+/* Recents — a code you can click back to. */
+.ui-recent-chip {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  color: var(--accent-2, var(--accent));
+  border-radius: 9999px;
+  padding: 0.2rem 0.7rem;
+  font-size: 0.78rem;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.ui-recent-chip:hover {
+  border-color: var(--accent-2, var(--accent));
+  background: var(--surface-2);
+}
+
+/* A quiet action beside the filters (sort, refresh). */
+.ui-sort-btn {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  color: var(--muted);
+  border-radius: 9999px;
+  padding: 0.2rem 0.7rem;
+  font-size: 0.75rem;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.ui-sort-btn:hover {
+  border-color: var(--accent-2, var(--accent));
+  color: var(--ink);
+}
+.ui-sort-btn:disabled { opacity: 0.5; cursor: default; }
+.ui-sort-btn-active {
+  border-color: var(--accent-2, var(--accent)) !important;
+  color: var(--accent-2, var(--accent)) !important;
+}
+
+/* Dense, scannable table. */
+.ui-table-wrap {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 0.5rem;
+  overflow-x: auto;
+}
+.ui-table { width: 100%; font-size: 0.875rem; border-collapse: collapse; }
+.ui-table thead tr {
+  background: var(--surface-2);
+  color: var(--faint);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.ui-table th { text-align: left; padding: 0.5rem 0.75rem; }
+.ui-table td { padding: 0.5rem 0.75rem; vertical-align: middle; }
+.ui-th-sort { cursor: pointer; user-select: none; white-space: nowrap; }
+.ui-th-sort:hover { color: var(--ink); }
+.ui-row { border-top: 1px solid var(--line); transition: background-color 0.15s; }
+.ui-row:hover { background: var(--surface-2); }
+.ui-table input[type="checkbox"] { cursor: pointer; accent-color: var(--accent-2, var(--accent)); }
+
+/* Status pills — the PRICING / STAGE badge on the courses page, given names
+   that say what they mean so a second screen can use the same five colours.
+   Hue families match the courses page exactly (emerald / yellow / red / blue /
+   slate) and the light-mode values are darkened to clear AA on white. */
+.ui-pill {
+  display: inline-block;
+  padding: 0.125rem 0.5rem;
+  border-radius: 9999px;
+  border: 1px solid transparent;
+  font-size: 11px;
+  line-height: 1.45;
+  font-weight: 500;
+  white-space: nowrap;
+}
+.ui-pill-good  { background: rgba(16, 185, 129, 0.2); border-color: rgba(16, 185, 129, 0.5); color: #34d399; }
+.ui-pill-warn  { background: rgba(202, 138, 4, 0.2);  border-color: rgba(234, 179, 8, 0.5);  color: #facc15; }
+.ui-pill-bad   { background: rgba(220, 38, 38, 0.18); border-color: rgba(248, 113, 113, 0.5); color: #f87171; }
+.ui-pill-info  { background: rgba(59, 130, 246, 0.2); border-color: rgba(59, 130, 246, 0.5); color: #60a5fa; }
+.ui-pill-quiet { background: color-mix(in srgb, var(--surface-3) 40%, transparent); border-color: var(--faint); color: var(--muted); }
+
+:root[data-theme="light"] .ui-pill-good  { background: #d1fae5; border-color: #10b981; color: #047857; }
+:root[data-theme="light"] .ui-pill-warn  { background: #fef3c7; border-color: #d97706; color: #92400e; }
+:root[data-theme="light"] .ui-pill-bad   { background: #fee2e2; border-color: #ef4444; color: #b91c1c; }
+:root[data-theme="light"] .ui-pill-info  { background: #dbeafe; border-color: #3b82f6; color: #1d4ed8; }
+:root[data-theme="light"] .ui-pill-quiet { background: #e2e8f0; border-color: #94a3b8; color: #475569; }
