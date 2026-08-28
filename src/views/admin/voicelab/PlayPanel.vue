@@ -41,7 +41,7 @@
 import { ref, computed, watch } from 'vue'
 import { api, clipUrl } from './labApi'
 import { dirFor } from '@/utils/textDirection.js'
-import { courseNameWithCode } from '@/utils/languageNames'
+import CoursePicker from '@/components/CoursePicker.vue'
 
 const props = defineProps({
   params: { type: Object, required: true },
@@ -244,6 +244,20 @@ async function search () {
     pickError.value = e.message
     found.value = []
   } finally { searching.value = false }
+}
+
+/** The picker emits a code; the search that follows is the whole point of it. */
+function pickCourse (code) {
+  course.value = code
+  search()
+}
+
+/** What the lab knows about a course that its name does not say. */
+function courseMeta (c) {
+  const bits = []
+  if (c.sentences) bits.push(`${c.sentences.toLocaleString()} seeds`)
+  if (c.renderable === false) bits.push('not steerable here')
+  return bits.join(' · ')
 }
 
 function useSentence (s) {
@@ -453,9 +467,16 @@ function gateDetail (clip) {
         <div class="play-row">
           <label class="play-field">
             <span class="play-sub">Course</span>
-            <select v-model="course" class="play-select small" @change="search">
-              <option v-for="c in courses" :key="c.code" :value="c.code">{{ courseNameWithCode(c.code) }}</option>
-            </select>
+            <!-- WAS a native <select> of every course in seed-count order, which
+                 Tom read as "a nightmare to parse". Same shared picker the rest
+                 of Popty uses: ordered by target language, type to filter. -->
+            <CoursePicker
+              :model-value="course"
+              :courses="courses"
+              :option-meta="courseMeta"
+              placeholder="Type a language or a code…"
+              @update:model-value="pickCourse"
+            />
           </label>
           <label class="play-field grow">
             <span class="play-sub">Contains</span>

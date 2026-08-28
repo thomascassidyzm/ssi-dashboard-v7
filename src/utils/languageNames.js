@@ -249,3 +249,46 @@ export function courseNameWithCode(code) {
 
 // Kick the API fetch off immediately; nothing waits on it.
 loadLanguageNames()
+
+/**
+ * The two halves of a `{target}_for_{known}` code. Target may carry a region
+ * (`ara_eg`, `por_br`), which is why this splits on `_for_` rather than on `_`.
+ */
+export function courseLangs(code) {
+  const i = String(code || '').indexOf('_for_')
+  if (i === -1) return { target: code || '', known: '' }
+  return { target: code.slice(0, i), known: code.slice(i + 5) }
+}
+
+/**
+ * Order two course codes the way an eye reads them: by TARGET language name,
+ * then by KNOWN language name, then by the code itself so the order is total
+ * and stable.
+ *
+ * Tom, 2026-08-29, of the Voice Lab's course picker: "this is a nightmare to
+ * parse - and it is not even alphabetical by either target or known language".
+ * It was ordered by seed_count, which is a fact about the database and not
+ * about anything a human is looking for. Sorting on the DISPLAY names is the
+ * point — the codes sort `zho` beside `zul` while the words sort "Chinese"
+ * beside "Cornish", and it is the words that are on the screen.
+ *
+ * localeCompare, so accented names land where a reader expects them.
+ */
+export function compareCourseCodes(a, b) {
+  void nameVersion.value
+  const A = courseLangs(a)
+  const B = courseLangs(b)
+  const t = languageName(A.target).localeCompare(languageName(B.target), 'en')
+  if (t) return t
+  const k = languageName(A.known).localeCompare(languageName(B.known), 'en')
+  if (k) return k
+  return String(a || '').localeCompare(String(b || ''), 'en')
+}
+
+/**
+ * A course list in that order. Non-mutating; `codeOf` reads the code off
+ * whatever shape the caller's rows are (`code` here, `course_code` there).
+ */
+export function sortCourses(list, codeOf = (c) => c?.code || c?.course_code || '') {
+  return [...(list || [])].sort((a, b) => compareCourseCodes(codeOf(a), codeOf(b)))
+}

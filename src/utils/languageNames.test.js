@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { languageName, courseName, courseNameWithCode } from './languageNames'
+import { languageName, courseName, courseNameWithCode, courseLangs, compareCourseCodes, sortCourses } from './languageNames'
 
 // The complaint that started this: Popty showed the Pennsylvania Dutch course
 // as "PDC for English Speakers" to the volunteers checking it.
@@ -58,5 +58,38 @@ describe('the course a code stands for', () => {
     expect(courseNameWithCode('pdc_for_eng'))
       .toBe('Pennsylvania Dutch for English Speakers (pdc_for_eng)')
     expect(courseNameWithCode('eng_template')).toBe('eng_template')
+  })
+})
+
+
+describe('course ordering', () => {
+  it('splits a code on _for_, so a regional target survives', () => {
+    expect(courseLangs('ara_eg_for_eng')).toEqual({ target: 'ara_eg', known: 'eng' })
+    expect(courseLangs('eng_template')).toEqual({ target: 'eng_template', known: '' })
+  })
+
+  it('orders by TARGET NAME, not by code — Chinese before Cornish before Welsh', () => {
+    const out = sortCourses(
+      [{ code: 'cym_for_eng' }, { code: 'zho_for_eng' }, { code: 'cor_for_eng' }]
+    ).map((c) => c.code)
+    expect(out).toEqual(['zho_for_eng', 'cor_for_eng', 'cym_for_eng'])
+  })
+
+  it('groups one target together and orders the knowns inside it', () => {
+    const out = sortCourses(
+      [{ code: 'kor_for_tam' }, { code: 'kor_for_eng' }, { code: 'kor_for_hin' }]
+    ).map((c) => c.code)
+    expect(out).toEqual(['kor_for_eng', 'kor_for_hin', 'kor_for_tam'])
+  })
+
+  it('reads course_code as well as code, and does not mutate its input', () => {
+    const list = [{ course_code: 'spa_for_eng' }, { course_code: 'deu_for_eng' }]
+    expect(sortCourses(list).map((c) => c.course_code)).toEqual(['deu_for_eng', 'spa_for_eng'])
+    expect(list[0].course_code).toBe('spa_for_eng')
+  })
+
+  it('is a total order — equal names fall back to the code', () => {
+    expect(compareCourseCodes('fra_for_eng', 'fra_for_eng')).toBe(0)
+    expect(compareCourseCodes('aaa_x', 'aaa_x')).toBe(0)
   })
 })

@@ -258,7 +258,7 @@
 import { ref, computed, watch, onMounted, nextTick } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { getApiUrl } from '@/services/api'
-import { courseName } from '@/utils/languageNames'
+import { courseName, sortCourses } from '@/utils/languageNames'
 import AudioPreviewClip from './components/AudioPreviewClip.vue'
 import AudioPreviewMissing from './components/AudioPreviewMissing.vue'
 import AudioPreviewCourseGaps from './components/AudioPreviewCourseGaps.vue'
@@ -378,10 +378,12 @@ async function fetchCourses () {
     if (!resp.ok) return
     const data = await resp.json()
     const list = Array.isArray(data) ? data : (data.courses || [])
-    courses.value = list
-      .map(c => ({ code: c.code || c.course_code }))
-      .filter(c => c.code)
-      .sort((a, b) => a.code.localeCompare(b.code))
+    // Ordered by TARGET language name then KNOWN, the same order every other
+    // course list in Popty now uses — sorting by code put "Chinese" (zho) at
+    // the bottom of a list that shows nobody the codes.
+    courses.value = sortCourses(
+      list.map(c => ({ code: c.code || c.course_code })).filter(c => c.code)
+    )
     if (!activeCourse.value && courses.value.length) activeCourse.value = courses.value[0].code
   } catch (err) {
     console.error('[AudioPreview] course list failed', err)

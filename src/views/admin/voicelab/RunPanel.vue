@@ -22,7 +22,8 @@
 import { ref, computed, watch } from 'vue'
 import { api } from './labApi'
 import { dirFor } from '@/utils/textDirection.js'
-import { courseNameWithCode, languageName } from '@/utils/languageNames'
+import { languageName } from '@/utils/languageNames'
+import CoursePicker from '@/components/CoursePicker.vue'
 import RunResult from './RunResult.vue'
 
 const props = defineProps({
@@ -52,6 +53,20 @@ const course = ref('')
 const role = ref('seed')
 const query = ref('')
 const selectedCourse = computed(() => courses.value.find((c) => c.code === course.value) || null)
+
+/** The picker emits a code; searching on it is what the old <select> did. */
+function pickCourse (code) {
+  course.value = code
+  search()
+}
+
+/** What the lab knows about a course that its name does not say. */
+function courseMeta (c) {
+  const bits = []
+  if (c.sentences) bits.push(`${c.sentences.toLocaleString()} seeds`)
+  if (c.renderable === false) bits.push('not steerable here')
+  return bits.join(' · ')
+}
 const found = ref([])
 const picked = ref([])
 const searching = ref(false)
@@ -245,11 +260,13 @@ function defaultTitle () {
       <div v-else style="margin-top: 0.6rem">
         <div class="vl-fields">
           <label class="vl-field">Course
-            <select v-model="course" @change="search">
-              <option v-for="c in courses" :key="c.code" :value="c.code">
-                {{ courseNameWithCode(c.code) }}{{ c.sentences ? ` · ${c.sentences.toLocaleString()} seeds` : '' }}{{ c.renderable === false ? ' · not steerable here' : '' }}
-              </option>
-            </select>
+            <CoursePicker
+              :model-value="course"
+              :courses="courses"
+              :option-meta="courseMeta"
+              placeholder="Type a language or a code…"
+              @update:model-value="pickCourse"
+            />
             <span v-if="selectedCourse && selectedCourse.renderable === false" class="vl-why vl-warn">
               This lab cannot steer {{ languageName(selectedCourse.language) }} — its text is
               listed and searchable, but a run would render it in whatever language the config names.
