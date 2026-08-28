@@ -20,6 +20,7 @@ const crypto = require('crypto');
 const { execFile } = require('child_process');
 const { buildAzureSSMLBody } = require('./shared/ellipsis-ssml.cjs');
 const { isHumanVoiceCourse } = require('./shared/human-voice-courses.cjs');
+const { assertSelectableProvider } = require('./shared/tts-provider-policy.cjs');
 const sdk = require('microsoft-cognitiveservices-speech-sdk');
 const { applyRegenerationVariation, applyShortWordHint } = require('./azure-tts-service.cjs');
 
@@ -650,6 +651,18 @@ async function generate(text, provider, config) {
 
   assertNotChildVoice(config);
   assertNotHumanVoiceCourse(config);
+  // xAI RETIRED FROM SELECTION (Tom, 2026-08-27). Same defence pattern as the
+  // two guards above, and here for the same reason: this switch is the one
+  // chokepoint EVERY provider path passes through — the five call sites in
+  // phase8, the pod path, the tools, production-api — so one line here retires
+  // xAI everywhere at once instead of five copies of a condition that can drift
+  // apart. Fails as a client error ("(403)"), so isRetriableTtsError does not
+  // retry it: a retired provider is not a transient failure.
+  //
+  // SELECTION ONLY. This blocks new renders. It does not touch clip identity,
+  // voice-id resolution, playback, relink or any read path, and no historic
+  // xai_ clip is affected — see services/shared/tts-provider-policy.cjs.
+  assertSelectableProvider(provider, 'tts-service.generate');
 
   switch (provider) {
     case 'elevenlabs':

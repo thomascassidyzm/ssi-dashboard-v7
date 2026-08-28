@@ -99,14 +99,11 @@
             <button @click="expandedRole = null" class="close-btn">x</button>
           </div>
 
-          <!-- Provider Toggle (xAI first — preferred default for supported languages) -->
+          <!-- Provider Toggle. xAI's button is GONE, not disabled: a new render
+               may not use it (Tom, 2026-08-27), and a greyed-out button is an
+               invitation to ask why. Existing xAI clips are untouched and still
+               play — retirement is from selection only. -->
           <div class="provider-toggle">
-            <button
-              :class="['provider-btn', { active: selectedProvider === 'xai' }]"
-              @click="selectedProvider = 'xai'; discoverVoices(role.id, 'xai')"
-            >
-              xAI
-            </button>
             <button
               :class="['provider-btn', { active: selectedProvider === 'azure' }]"
               @click="selectedProvider = 'azure'; discoverVoices(role.id, 'azure')"
@@ -220,64 +217,6 @@
             </button>
           </div>
 
-          <!-- xAI Voice List -->
-          <div v-else-if="selectedProvider === 'xai'" class="xai-voices">
-            <div v-if="discovering" class="discovering">
-              <div class="btn-spinner"></div>
-              <span>Loading voices...</span>
-            </div>
-
-            <div v-else-if="discoveredVoices.length > 0" class="voice-list">
-              <p class="xai-note">
-                xAI's 5 voices are multilingual — the same voice works across
-                20+ languages; the course's target language is passed per-call.
-              </p>
-
-              <!-- Gender Filter -->
-              <div class="voice-filter">
-                <button
-                  v-for="gender in ['all', 'Female', 'Male', 'Neutral']"
-                  :key="gender"
-                  :class="['filter-btn', { active: genderFilter === gender }]"
-                  @click="genderFilter = gender"
-                >
-                  {{ gender === 'all' ? 'All' : gender }}
-                </button>
-              </div>
-
-              <!-- Voice Options -->
-              <div class="voice-options">
-                <button
-                  v-for="voice in filteredVoices"
-                  :key="voice.id"
-                  :class="['voice-option', { previewing: previewingVoiceId === voice.id }]"
-                  @click="selectVoiceForRole(role.id, voice)"
-                >
-                  <div class="voice-info">
-                    <span class="voice-name">{{ voice.displayName || voice.name }}</span>
-                    <span :class="['voice-gender', (voice.gender || '').toLowerCase()]">{{ voice.gender }}</span>
-                    <span class="voice-locale">{{ voice.locale }}</span>
-                  </div>
-                  <button
-                    @click.stop="previewVoice(voice, role.id)"
-                    :disabled="previewingVoiceId === voice.id"
-                    class="preview-btn"
-                  >
-                    {{ previewingVoiceId === voice.id ? '...' : 'Preview' }}
-                  </button>
-                </button>
-              </div>
-            </div>
-
-            <button
-              v-else
-              @click="discoverVoices(role.id, 'xai')"
-              class="load-voices-btn"
-            >
-              Load xAI voices
-            </button>
-          </div>
-
           <!-- ElevenLabs Manual Entry -->
           <div v-else class="elevenlabs-entry">
             <input
@@ -385,9 +324,8 @@ const config = ref(null)
 const expandedRole = ref(null)
 const saveStatus = ref(null)
 
-// Voice browser state. Default to xAI (set per-role on expand via
-// defaultProviderForRole — xAI for the languages it officially supports).
-const selectedProvider = ref('xai')
+// Voice browser state. Set per-role on expand via defaultProviderForRole.
+const selectedProvider = ref('azure')
 const discovering = ref(false)
 const discoveredVoices = ref([])
 const genderFilter = ref('all')
@@ -704,13 +642,18 @@ function getLanguageForRole(roleId) {
   return role.lang === 'target' ? target : parts[1]
 }
 
-// xAI's 5 voices are multilingual and are the preferred default for the
-// languages xAI officially supports. 3-letter codes mapped from xAI's BCP-47
-// official list (en, es, fr, de, it, pt, nl, ru, zh, ja, ko, vi, hi, bn, ar,
-// tr, pl). For unsupported languages we fall back to Azure as the default.
-const XAI_SUPPORTED_LANGS = new Set(['eng','spa','fra','deu','ita','por','nld','rus','zho','cmn','jpn','kor','vie','hin','ben','ara','tur','pol'])
-function defaultProviderForRole(roleId) {
-  return XAI_SUPPORTED_LANGS.has(getLanguageForRole(roleId)) ? 'xai' : 'azure'
+// xAI used to be the default here for the 18 languages it officially supported.
+// It is RETIRED FROM SELECTION (Tom, 2026-08-27) and the picker no longer
+// offers it, so the default is Azure — which is also where the server-side
+// ladder lands today, since the estate holds exactly one Cartesia voice and
+// nothing is cast per language yet (services/shared/tts-provider-policy.cjs).
+//
+// This picker deliberately does NOT try to mirror the ladder. It chooses which
+// voice LIST to show a human first; the ladder decides what actually renders,
+// and it is the one that has to be right. Two implementations of one policy is
+// how they drift.
+function defaultProviderForRole(_roleId) {
+  return 'azure'
 }
 
 function getPhrasesForRole(roleId) {
@@ -779,8 +722,7 @@ function expandRole(roleId) {
   localeFilter.value = 'all'
   searchQuery.value = ''
   discoveredVoices.value = []
-  // Default to xAI for languages it supports (Tom's new default), else Azure,
-  // and auto-load that provider's voices so they're the first ones shown.
+  // Auto-load the default provider's voices so they're the first ones shown.
   selectedProvider.value = defaultProviderForRole(roleId)
   if (selectedProvider.value !== 'elevenlabs') {
     discoverVoices(roleId, selectedProvider.value)

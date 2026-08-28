@@ -12,6 +12,7 @@
 const { createClient } = require('@supabase/supabase-js');
 const { bumpCourseVersion } = require('./shared/course-version.cjs');
 const { voiceSpellings } = require('./shared/clip-identity-lookup.cjs');
+const { selectProvider } = require('./shared/tts-provider-policy.cjs');
 
 // Initialize Supabase client
 const supabaseUrl = process.env.SUPABASE_URL;
@@ -433,13 +434,61 @@ function getEffectiveSpeed(voiceConfig, cadence, cadenceProfiles) {
  * Build TTS config for a specific role and cadence
  * Combines voice settings with provider credentials from environment
  *
+ * THE PROVIDER IS NOT THIS FUNCTION'S DECISION ANY MORE. It used to be
+ * `voiceConfig.provider || 'azure'` — a per-call default, repeated in five
+ * other places, each free to drift. It now asks the ladder in
+ * services/shared/tts-provider-policy.cjs, which orders human > Cartesia >
+ * Azure > ElevenLabs-only-when-named, and never xAI. The stored voice_config
+ * is an INPUT to that decision, not the decision itself (Tom's wording:
+ * selection is "driven by real Cartesia coverage rather than per-call config").
+ *
+ * The policy may hand back a different voiceId than the config carried — that
+ * happens when it moves a render onto Cartesia, whose ids are bare UUIDs and
+ * share no shape with an Azure voice name. Using its answer for BOTH fields is
+ * what stops a provider swap shipping with the wrong provider's voice id.
+ *
  * @param {object} voiceConfig - Voice configuration for a role
  * @param {string} cadence - 'natural' | 'slow' | 'fast'
  * @param {object} cadenceProfiles - Cadence profile definitions
+ * @param {object} [opts]
+ * @param {string} [opts.courseCode] - lets the ladder's human-voice stop fire here too
+ * @param {string} [opts.language] - the line's language, if the caller knows it better
+ *   than voiceConfig does; this is what Cartesia coverage is decided on
+ * @param {string} [opts.explicitProvider] - a caller DELIBERATELY naming a provider.
+ *   The only door to ElevenLabs, which the automatic ladder never reaches.
  * @returns {object} TTS provider config ready for generation
  */
-function buildTTSConfig(voiceConfig, cadence, cadenceProfiles) {
-  const provider = voiceConfig.provider || 'azure';
+function buildTTSConfig(voiceConfig, cadence, cadenceProfiles, opts = {}) {
+  const decision = selectProvider({
+    courseCode: opts.courseCode,
+    language: opts.language || voiceConfig.locale || voiceConfig.language,
+    voiceId: voiceConfig.voiceId,
+    configuredProvider: voiceConfig.provider,
+    explicitProvider: opts.explicitProvider,
+  });
+  const provider = decision.provider;
+  // The ladder moved the render off the configured provider and had no
+  // replacement voice to offer. Two ways to get here, and both want the same
+  // answer: the course is still cast on retired xAI, or the configured voice is
+  // barred from this language (Tom's clone handed a target-language line).
+  //
+  // FAIL, LOUDLY. The tempting alternative is to carry the old provider's voice
+  // id onto the new provider, and an xAI preset name or a bare Cartesia UUID is
+  // not an Azure voice — that renders a course in a voice nobody chose, or hard
+  // fails deep in the vendor call where the reason is unreadable. Re-casting is
+  // a real decision with a human's name on it, not something to guess at render
+  // time, so this surfaces the gap instead of papering over it.
+  if (voiceConfig.voiceId && !decision.voiceId) {
+    throw new Error(
+      `No voice for this render: the configured voice "${voiceConfig.voiceId}" ` +
+      `(provider "${voiceConfig.provider}") cannot be carried onto ${provider}. ` +
+      `Re-cast this role's voice in voice_config. Reason: ${decision.reason}`
+    );
+  }
+  // The ladder's answer wins for the voice too — see the note above.
+  voiceConfig = decision.voiceId === voiceConfig.voiceId
+    ? voiceConfig
+    : { ...voiceConfig, voiceId: decision.voiceId };
   const effectiveSpeed = getEffectiveSpeed(voiceConfig, cadence, cadenceProfiles);
 
   if (provider === 'elevenlabs') {
@@ -464,6 +513,13 @@ function buildTTSConfig(voiceConfig, cadence, cadenceProfiles) {
   }
 
   if (provider === 'xai') {
+    // UNREACHABLE FROM THE LADDER since the 2026-08-28 retirement — selectProvider
+    // above never answers 'xai', and tts-service.generate() refuses it outright.
+    // Kept rather than deleted because deleting it would make this file stop
+    // describing a provider the estate still HAS: 118 xAI voices are registered
+    // and hundreds of thousands of clips play on them. This is what the config
+    // for one of those clips looked like when it was made.
+    //
     // voiceId may be a preset ('eve'|'ara'|'leo'|'rex'|'sal') OR a custom
     // cloned voice id (e.g. 'gfzdpspr5fdp') — generateXai passes it through
     // verbatim. xAI has no speed param on /v1/tts; speed is applied downstream

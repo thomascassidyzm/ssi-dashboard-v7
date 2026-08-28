@@ -239,3 +239,36 @@ describe('rung 5 — xAI is retired from SELECTION only', () => {
     expect(canonicalVoiceId('xai_025a38c5')).toBe('xai_025a38c5');
   });
 });
+
+describe('the render chokepoint', () => {
+  // tts-service.generate() is the one door every provider path goes through —
+  // the five phase8 sites, the pod path, the tools, production-api. These
+  // assert the guard on the door itself, which is what makes the retirement
+  // true everywhere rather than true in the places somebody remembered.
+  const ttsService = require('../tts-service.cjs');
+
+  it('refuses xAI before any network call is made — so it costs nothing', async () => {
+    // No API key, no fetch mock, no nock. If the guard did not fire first this
+    // would fail with a key or network error instead, and the assertion on the
+    // message is what tells the two apart.
+    await expect(
+      ttsService.generate('hello', 'xai', { voiceId: 'eve', apiKey: 'x' })
+    ).rejects.toThrow(/Retired provider "xai"/);
+  });
+
+  it('still lets the live providers through the guard', async () => {
+    for (const provider of ['azure', 'cartesia', 'elevenlabs']) {
+      // Each fails for its OWN reason (missing key / missing steer), never for
+      // being retired — that is the whole point of checking the message.
+      await expect(
+        ttsService.generate('hello', provider, {})
+      ).rejects.not.toThrow(/Retired provider/);
+    }
+  });
+
+  it('still refuses a human-voice course, ahead of everything else', async () => {
+    await expect(
+      ttsService.generate('helo', 'azure', { courseCode: 'cym_n_for_eng', voiceName: 'cy-GB-NiaNeural' })
+    ).rejects.toThrow(/Human-voice course blocked/);
+  });
+});

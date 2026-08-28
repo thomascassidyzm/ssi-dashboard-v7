@@ -56,6 +56,64 @@ const { fulfillAudioPassRequests, queueAudioPass } = require('../shared/audio-pa
 // Kai's relink voice-match ruling, 2026-08-19 — a relink may only ever land a
 // clip whose voice matches the course voice config for that role.
 const { resolveVoices, isRelinkAllowed, RelinkRefusalLedger } = require('../shared/relink-voice-guard.cjs')
+const { selectProvider } = require('../shared/tts-provider-policy.cjs')
+
+/**
+ * WHICH PROVIDER RENDERS THIS LINE — asked, not decided here.
+ *
+ * Every one of the provider if/else chains below used to open with its own
+ * `voiceSettings.provider || 'azure'`, five-plus copies of one default, each
+ * free to drift from the others. They now all call this, which calls the one
+ * ladder in services/shared/tts-provider-policy.cjs: human recording wins
+ * (a stop, never a substitution), then Cartesia, then Azure, with ElevenLabs
+ * reachable only when a caller names it and xAI retired from selection
+ * entirely (Tom, 2026-08-27/28).
+ *
+ * WHY THIS RETURNS A PROVIDER AND NOT A VOICE, which is the deliberate limit.
+ * The ladder can in principle answer "Cartesia, using voice X" — a provider
+ * swap that also swaps the voice id. The call sites below cannot act on that:
+ * each threads its own voiceId into an inline config AND into
+ * canonicalClipVoiceId, so a voice changed here and not there would write a
+ * clip under one identity while rendering another — a silent corruption of
+ * clip identity, which is the one thing in this file worth being timid about.
+ * Collapsing those sites into a single buildProviderTTSConfig is the real fix
+ * (proposed in docs/tts-bakeoff/cartesia-forward-only-integration-proposal-2026-08-27.md
+ * §2c) and is deliberately NOT done here, because refactoring the live
+ * generation path is a bigger blast radius than this policy change needs.
+ *
+ * So instead of swapping silently, a decision that REQUIRES a different voice
+ * throws. Today that never fires — the ladder only offers a Cartesia voice when
+ * one is already configured or cast, and nothing is cast yet — so this is inert
+ * on every current render. It exists so that the day somebody casts the first
+ * Cartesia voice per language, they get a loud, readable error pointing at the
+ * collapse, instead of a run of clips filed under the wrong voice.
+ */
+function decideProvider(voiceSettings = {}, { courseCode, language, role } = {}) {
+  const held = voiceSettings.voiceId || voiceSettings.voice_id
+  const decision = selectProvider({
+    courseCode,
+    language,
+    role,
+    voiceId: held,
+    configuredProvider: voiceSettings.provider,
+  })
+  if (held && decision.voiceId && decision.voiceId !== held) {
+    throw new Error(
+      `[provider-policy] ${decision.provider} for ${courseCode || '?'}/${role || '?'} needs voice ` +
+      `${decision.voiceId}, but this call site is wired to render ${held} — a voice swap here would ` +
+      `write the clip under a different identity than it rendered. Collapse the provider chains into ` +
+      `one buildProviderTTSConfig first (integration proposal §2c). Reason: ${decision.reason}`
+    )
+  }
+  if (held && !decision.voiceId) {
+    throw new Error(
+      `[provider-policy] the configured voice "${held}" (provider "${voiceSettings.provider}") cannot ` +
+      `be carried onto ${decision.provider} for ${courseCode || '?'}/${role || '?'}. Re-cast this ` +
+      `role's voice in voice_config. Reason: ${decision.reason}`
+    )
+  }
+  return decision.provider
+}
 const { isHumanVoiceCourse, HUMAN_VOICE_TARGET_LANGS } = require('../shared/human-voice-courses.cjs')
 const logger = createLogger('Phase8-Audio-v13')
 const { bulkGetRegenerationCounts } = require('../supabase-client.cjs')
@@ -3102,7 +3160,7 @@ app.post('/regenerate-role/:courseCode', async (req, res) => {
     // the identity spelling and is the only one that reaches a column.
     const voiceSettings = voiceConfig.voices?.[role] || {}
     const voiceId = voiceSettings.voiceId || voiceConfig[role]
-    const voiceProvider = voiceSettings.provider || 'azure'  // Default to azure
+    const voiceProvider = decideProvider({ ...voiceSettings, voiceId }, { courseCode, role })
     let storedVoiceId = null
     if (voiceId) {
       try {
@@ -4679,7 +4737,7 @@ app.post('/regenerate-single/:courseCode/:audioUuid', async (req, res) => {
     const voiceConfig = course.voice_config || {}
     const voiceSettings = voiceConfig.voices?.[role] || {}
     const voiceId = voiceSettings.voiceId || voiceConfig[role]
-    const voiceProvider = voiceSettings.provider || 'azure'
+    const voiceProvider = decideProvider({ ...voiceSettings, voiceId }, { courseCode, role, language })
     const speed = voiceSettings.settings?.speed || 1.0
     // The identity spelling of the voice, as /regenerate-role and
     // /regenerate-presentation both compute it. This route referenced
@@ -4943,7 +5001,7 @@ app.post('/regenerate-presentation/:courseCode/:legoId', async (req, res) => {
     const voiceConfig = course.voice_config || {}
     const voiceSettings = voiceConfig.voices?.presentation || {}
     const voiceId = voiceSettings.voiceId || voiceConfig.presentation
-    const voiceProvider = voiceSettings.provider || 'azure'
+    const voiceProvider = decideProvider({ ...voiceSettings, voiceId }, { courseCode, role: 'presentation', language: knownLang })
     const speed = voiceSettings.settings?.speed || 1.0
 
     if (!voiceId) {
@@ -7103,11 +7161,21 @@ function resolvePodSpeakerVoice(podSpeakers, speaker, track) {
       locale: entry[track].locale || null,
     }
   }
-  // Legacy shape only carries the target voice
+  // Legacy shape only carries the target voice.
+  //
+  // The unset default here used to be 'xai', which was true when the legacy
+  // shape was written and became a trapdoor when xAI was retired (Tom,
+  // 2026-08-27): an old cast entry with no provider would have defaulted
+  // straight onto a provider no new render may use, and tts-service.generate()
+  // would refuse it deep in the call. 'azure' matches the modern branch above
+  // and is the ladder's own fallback, so an entry that never said now lands
+  // where the policy would have put it anyway. An entry that DOES name xai
+  // still says so and is still refused — loudly, and at the chokepoint, which
+  // is the readable place to find out a cast needs updating.
   if (track === 'target' && entry.voice_id) {
     return {
       voice_id: entry.voice_id,
-      provider: entry.provider || 'xai',
+      provider: entry.provider || 'azure',
       gender: entry.gender || 'n',
     }
   }
@@ -7411,6 +7479,16 @@ async function generatePodAudio({ courseCode, text, language, ttsLanguageCue, ro
     return { id: existingRow.id, reused: true, crossCourse }
   }
 
+  // Deliberately NOT routed through decideProvider, unlike the course paths.
+  // A pod cast still naming xAI now fails at tts-service.generate()'s
+  // retirement guard — which throws BEFORE any HTTP call, so it costs nothing
+  // and reaches no vendor — and the xAI→Azure safety net immediately below
+  // catches it and re-renders on a properly chosen Azure voice via
+  // pickAzureFallbackVoice. That is the ladder's own answer (rung 3, Azure)
+  // arrived at by machinery that already exists and already picks the right
+  // voice for the language. Replacing it with a policy call that could only
+  // throw would turn a self-healing path into a broken one, so the retirement
+  // is enforced at the chokepoint here rather than re-plumbed at this site.
   let provider = voice.provider || 'azure'
   let activeVoice = voice
 

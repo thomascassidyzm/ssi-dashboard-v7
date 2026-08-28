@@ -1350,8 +1350,13 @@ function resolveSpeakerVoice(podSpeakers, speaker, track) {
     }
   }
   if (track === 'target' && entry.voice_id) {
-    // legacy top-level shape — target only, provider defaults to xai
-    return { name: entry.name || null, voice_id: entry.voice_id, provider: entry.provider || 'xai', locale: entry.locale || null, gender: entry.gender || 'n' }
+    // Legacy top-level shape. The unset default was 'xai' — true when this
+    // shape was written, a trapdoor once xAI was retired from selection
+    // (Tom, 2026-08-27). 'azure' matches the modern shape above and the
+    // server-side ladder's own fallback, so an entry that never named a
+    // provider now reads as what would actually render it. Mirrors the same
+    // change in services/phases/phase8-audio-v13.cjs.
+    return { name: entry.name || null, voice_id: entry.voice_id, provider: entry.provider || 'azure', locale: entry.locale || null, gender: entry.gender || 'n' }
   }
   return null
 }
@@ -1580,10 +1585,11 @@ function voiceOptions(gender) {
   for (const v of pool) {
     push({ provider: v.provider, voice_id: v.voice_id, name: v.name, locale: azureLocaleOf(v.voice_id) || targetBcp47.value }, POOL_KEY_MARK)
   }
-  for (const v of discovered.value) {
-    if (String(v.gender || '').toLowerCase()[0] !== gender) continue
-    push({ provider: 'xai', voice_id: v.id, name: v.name, locale: targetBcp47.value || v.locale }, 'xai')
-  }
+  // The xAI arm of this picker is gone (Tom, 2026-08-27 — retired from
+  // selection). `discovered` is now always empty; the loop that pushed its
+  // voices into the dropdown went with it, so a human can no longer cast a pod
+  // onto a provider no render may use. The curated Azure pool plus whatever is
+  // cast today is a working picker — this file already said so.
   return out
 }
 const optionsM = computed(() => voiceOptions('m'))
@@ -1636,18 +1642,17 @@ async function loadVoicePicker(courseCode) {
   } catch (e) {
     pickerError.value = `pool unavailable: ${e.message}`
   }
-  // The wider inventory is a bonus, not a requirement — a failure here leaves
-  // the curated pool selectable rather than emptying the dropdowns.
-  try {
-    const lang = casting.value?.course?.target_lang
-    if (!lang) return
-    const token = await getAccessToken()
-    const res = await fetch(`${getApiUrl()}/api/voices/discover/${encodeURIComponent(lang)}?provider=xai`, {
-      headers: { 'ngrok-skip-browser-warning': 'true', ...(token ? { Authorization: `Bearer ${token}` } : {}) },
-    })
-    const body = await res.json().catch(() => ({}))
-    if (res.ok && body.success && Array.isArray(body.voices)) discovered.value = body.voices
-  } catch { /* pool-only is a working picker */ }
+  // The wider inventory used to be fetched here — `/api/voices/discover/:lang
+  // ?provider=xai`, the only caller of that provider arm. xAI is retired from
+  // selection (Tom, 2026-08-27), so casting a pod onto it is no longer a thing
+  // a human should be offered, and a list you cannot choose from is worse than
+  // no list. The call is gone rather than filtered client-side: not fetching is
+  // cheaper than fetching and discarding, and it leaves no half-live path for
+  // someone to re-enable by deleting a filter.
+  //
+  // `discovered` stays declared and stays empty. The picker falls back to the
+  // curated pool plus the current cast, which this function's own comment
+  // already called a working picker.
 }
 
 // Both selects default to what is cast today. Re-runs whenever the cast moves

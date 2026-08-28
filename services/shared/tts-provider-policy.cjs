@@ -343,6 +343,26 @@ function selectProvider(input = {}, opts = {}) {
   // hands an Azure voice name to a UUID-shaped API.
   const languageCovered = cartesiaCoversLanguage(language);
 
+  // A config that names BOTH Cartesia and a Cartesia voice, for a language we
+  // cannot resolve ('auto', or simply unset), is a deliberate opt-in by a
+  // caller holding a Cartesia-shaped voice id — the voice-preview path does
+  // exactly this. Honour it rather than kicking it to Azure, which would hand
+  // Azure a bare UUID. Nothing is weakened by allowing it: generateCartesia
+  // still hard-fails on a MISSING steer and warns on an explicit 'auto', and
+  // the clone's English-only rule is independently enforced at two gates that
+  // do not consult this module (the text gate in tools/pods/
+  // tom-voice-language-gate.cjs and the whisper `-l auto` pass on the rendered
+  // clip). A language we DO recognise and that the voice may not speak is a
+  // different case entirely and still falls through to Azure below.
+  if (!languageCovered && configured === 'cartesia' && voiceId && toCartesiaLangCode(language) == null) {
+    return {
+      provider: 'cartesia',
+      voiceId,
+      rung: 2,
+      reason: 'cartesia: configured provider and voice, with no resolvable language to check coverage against',
+    };
+  }
+
   if (languageCovered) {
     // The config already names a Cartesia voice: use it, provided the voice is
     // allowed to speak this language (Tom's clone is English-only).
