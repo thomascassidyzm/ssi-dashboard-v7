@@ -29,6 +29,7 @@ const { spawn } = require('child_process');
 const { claudeEnv } = require(path.resolve(__dirname, '../../services/shared/claude-config.cjs'));
 
 const LANG = require('./langnames.cjs');
+const { readerInstructions } = require('./instructions.cjs');
 
 const langName = (code) => LANG[(code || '').split('_')[0]] || code || 'the language';
 const knownLangOf = (c) => (c || '').replace(/_v\d+$/, '').split('_for_')[1] || null;
@@ -36,44 +37,12 @@ const targetLangOf = (c) => (c || '').replace(/_v\d+$/, '').split('_for_')[0] ||
 
 function buildPrompt(batch) {
   const c = batch[0].course;
-  const lang = langName(batch[0].side === 'known' ? knownLangOf(c) : targetLangOf(c));
+  const side = batch[0].side;
+  const lang = langName(side === 'known' ? knownLangOf(c) : targetLangOf(c));
   const items = batch.map((b, i) => (
     `${i + 1}.\nWORD: ${b.taught}\nSENTENCE: ${b.sentence}`
   )).join('\n\n');
-
-  return `You are checking language-course material written in ${lang}.
-
-Each lesson teaches one word or phrase. Each practice sentence below was written to practise that
-specific word. Your one job is to say, for each numbered item, whether the SENTENCE actually uses
-the WORD.
-
-Rules for your judgement:
-- A different GRAMMATICAL FORM of the same word still counts as USES. Conjugation, tense, person,
-  number, gender, case, mutation, contraction, an attached article or particle, a spelling change
-  caused by inflection — all of these are the same word.
-- A DIFFERENT WORD does not count, even if it means almost the same thing. A near-synonym,
-  a paraphrase, or a more common everyday alternative is MISSING, not USES.
-- If the WORD is a multi-word phrase, it counts as USES when the sentence uses that phrase, even
-  if the parts are separated or reordered by normal grammar.
-- Many languages routinely leave out a pronoun subject or object, or attach it to the verb. If the
-  WORD spells out a pronoun that the sentence leaves implicit, and the sentence uses the rest of
-  the word, that is USES. A dropped pronoun is not a missing word.
-- Words the WORD carries only to mark who is speaking or which grammatical person is meant are
-  part of that same allowance: judge on the content word, not on the person marker.
-- Ignore anything in brackets in the WORD: that is a note to the author, not part of the word.
-- If the WORD offers alternatives separated by a slash or a middle dot, using ANY ONE of them
-  counts as USES.
-- If the SENTENCE is not written in ${lang} at all, answer UNSURE and say so.
-
-UNSURE is a respectable answer and you should use it whenever you genuinely cannot tell — a
-wrong confident answer is much worse than an honest UNSURE.
-
-Answer with one line of JSON per item and nothing else. No preamble, no code fence.
-Each line: {"n": <item number>, "verdict": "USES" | "MISSING" | "UNSURE", "why": "<one short sentence>"}
-
-ITEMS:
-
-${items}`;
+  return `${readerInstructions(side, lang)}\n\nITEMS:\n\n${items}`;
 }
 
 function runClaude(prompt, model) {

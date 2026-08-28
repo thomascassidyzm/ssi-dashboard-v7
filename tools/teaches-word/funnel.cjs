@@ -73,7 +73,7 @@ async function main() {
     for (const side of ['known', 'target']) {
       const taught = side === 'known' ? r.lego_known : r.lego_target;
       const sentence = side === 'known' ? r.phrase_known : r.phrase_target;
-      const v = prefilter(taught, sentence);
+      const v = prefilter(taught, sentence, side);
       t[side][v.verdict]++;
       if (v.verdict === VERDICT.READ) {
         candidates.push({

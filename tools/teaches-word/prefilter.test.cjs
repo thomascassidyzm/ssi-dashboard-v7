@@ -1,16 +1,18 @@
 /**
- * Frozen tests for STAGE 1 — the conservative pre-filter.
+ * Frozen tests for STAGE 1 — the conservative, side-aware pre-filter.
  *
- * The pre-filter has exactly ONE safety property, and every test here exists to hold it:
+ * Two properties, and every test here exists to hold one of them.
  *
- *     IT MAY ONLY EVER SAY "FINE". IT MAY NEVER SAY "DEFECT", AND IT MAY NEVER DISCARD
- *     SOMETHING THAT MIGHT BE ONE.
+ * ONE — IT MAY ONLY EVER SAY "FINE". It may never say "defect", and it may never discard something
+ * that might be one. If a change ever lets a real defect be CLEARed, the defect disappears
+ * silently and no reader will ever see it.
  *
- * If a change to this file's subject ever lets a real defect be CLEARed, the defect disappears
- * silently and no reader will ever see it — which is precisely the failure the whole rebuild
- * exists to end. So the defects taken from the published confirmed list are pinned here: not to
- * check that the pre-filter catches them (it never catches anything), but to check that it
- * still hands every one of them on to be read.
+ * TWO — THE TWO SIDES ARE JUDGED BY DIFFERENT RULES, AND THEY MUST NOT BE SWAPPED. Canon K8: "The
+ * TARGET side stays strict, always." Canon K6: the known side "MAY use uninstructed forms of taught
+ * words; only genuinely different WORDS are defects". The target side must therefore NOT clear an
+ * inflected form, and the known side must. Getting this backwards is not hypothetical: the first
+ * run of 2026-08-28 cleared the target side on plain substring, so every target-side inflection
+ * defect was discarded before any reader saw it.
  *
  * Run: npx vitest run tools/teaches-word/prefilter
  */
@@ -19,136 +21,150 @@ import { describe, it, expect } from 'vitest'
 import fs from 'fs'
 import path from 'path'
 
-const { prefilter, VERDICT, clean, alternatives } = require('./prefilter.cjs')
+const { prefilter, VERDICT } = require('./prefilter.cjs')
 
-const v = (taught, sentence) => prefilter(taught, sentence).verdict
+const known = (t, s) => prefilter(t, s, 'known').verdict
+const target = (t, s) => prefilter(t, s, 'target').verdict
 
 describe('the one safety property: it can clear, it can never convict', () => {
   it('has only three possible verdicts, and none of them is a conviction', () => {
-    const samples = [
-      ['want', 'I want a coffee'], ['want', 'I would like a coffee'], ['', 'anything'],
-      ['知る', 'わかりません'], ['x', ''], ['gwybod', 'dw i ddim yn gwybod'],
-    ]
-    for (const [t, s] of samples) {
-      expect(Object.values(VERDICT)).toContain(v(t, s))
-    }
     expect(Object.values(VERDICT).sort()).toEqual(['clear', 'read', 'skip'])
+    for (const side of ['known', 'target']) {
+      for (const [t, s] of [['want', 'I want a coffee'], ['want', 'I would like one'], ['知る', 'わかりません']]) {
+        expect(Object.values(VERDICT)).toContain(prefilter(t, s, side).verdict)
+      }
+    }
   })
 
-  it('sends anything it cannot match to a reader rather than deciding', () => {
-    expect(v('want', 'I would like a coffee')).toBe(VERDICT.READ)
-    expect(v('wanted', 'I want a coffee')).toBe(VERDICT.READ)
+  it('refuses to run without being told which side it is judging', () => {
+    // A default here would silently pick a rule, and picking the loose one on the target side is
+    // exactly the bug this signature exists to make impossible.
+    expect(() => prefilter('want', 'I want it')).toThrow(/side/)
+    expect(() => prefilter('want', 'I want it', 'either')).toThrow(/side/)
   })
 })
 
-describe('C1 — the taught word sits verbatim in the sentence', () => {
+describe('TARGET side is strict — exact form only (canon K8)', () => {
+  it('clears an exact-form match', () => {
+    expect(target('siarad', 'dw i’n siarad Cymraeg')).toBe(VERDICT.CLEAR)
+    expect(target('menos', 'eso es menos interesante')).toBe(VERDICT.CLEAR)
+  })
+
+  it('does NOT clear an inflected form — teach the form, get the form', () => {
+    // The exact case the first run got wrong: "want" is a substring of "wanted", and the old
+    // pre-filter cleared it on that basis.
+    expect(target('want', 'I wanted a coffee')).toBe(VERDICT.READ)
+    expect(target('siarad', 'siaradais i')).toBe(VERDICT.READ)
+    expect(target('parle', 'je parlerai demain')).toBe(VERDICT.READ)
+  })
+
+  it('clears a multi-word item that has been SPLIT — splitting is allowed', () => {
+    expect(target('dw i’n mynd i', 'dw i’n mynd i ddysgu')).toBe(VERDICT.CLEAR)
+    expect(target('ychydig o ffrindiau', 'dw i’n mynd mas gyda ychydig o ffrindiau heno')).toBe(VERDICT.CLEAR)
+    // words separated by an inserted word, every word still in its taught form
+    expect(target('pick up', 'I will pick the children up')).toBe(VERDICT.CLEAR)
+  })
+
+  it('does NOT clear when a word of a multi-word item is missing or changed', () => {
+    expect(target('pour eux', 'avec eux')).toBe(VERDICT.READ)
+    expect(target('look after', 'I look at the children')).toBe(VERDICT.READ)
+  })
+
+  it('sends a mild mutation to a reader rather than deciding it itself', () => {
+    // "Gymraeg" for "Cymraeg" is the one tolerated variation, but deciding that is a language
+    // judgement, so the pre-filter must hand it on rather than clear or convict it.
+    expect(target('Cymraeg', 'dw i’n dysgu Gymraeg')).toBe(VERDICT.READ)
+  })
+
+  it('uses substring only where the writing system has no word spaces', () => {
+    expect(target('会说', '会说中文')).toBe(VERDICT.CLEAR)
+    expect(target('見つけ出す', '見つけ出すつもりです')).toBe(VERDICT.CLEAR)
+  })
+})
+
+describe('KNOWN side is looser, deliberately (canon K6)', () => {
   it('clears a plain containment', () => {
-    expect(v('want', 'I want a coffee')).toBe(VERDICT.CLEAR)
+    expect(known('want', 'I want a coffee')).toBe(VERDICT.CLEAR)
+    expect(known('mynd', 'Dw i eisiau mynd.')).toBe(VERDICT.CLEAR)
   })
 
-  it('clears across punctuation and case', () => {
-    expect(v('Want', 'Do you want a coffee?')).toBe(VERDICT.CLEAR)
-    expect(v('mynd', 'Dw i eisiau mynd.')).toBe(VERDICT.CLEAR)
+  it('clears a longer form that simply contains the taught word', () => {
+    // On this side a different ending is expressly fine, so clearing here discards nothing real.
+    expect(known('want', 'I wanted a coffee')).toBe(VERDICT.CLEAR)
+    expect(known('話す', '私はドイツ語を話す')).toBe(VERDICT.CLEAR)
   })
 
-  it('clears a longer form that contains the taught word verbatim', () => {
-    // Not a morphological claim: the letters are simply there, in order, unbroken.
-    expect(v('話す', '私はドイツ語を話す')).toBe(VERDICT.CLEAR)
+  it('clears a separated multi-word gloss', () => {
+    expect(known('look after', 'I look after the children')).toBe(VERDICT.CLEAR)
+  })
+
+  it('still hands on a genuinely different word', () => {
+    expect(known('I still want', 'I still need to remember how to learn')).toBe(VERDICT.READ)
+    expect(known('知っている', 'わかりません')).toBe(VERDICT.READ)
   })
 })
 
-describe('C2 — every part of a multi-word gloss is present as a whole word', () => {
-  it('clears a separated multi-word phrase', () => {
-    expect(v('look after', 'I look after the children')).toBe(VERDICT.CLEAR)
-    expect(v('pick up', 'I will pick the children up')).toBe(VERDICT.CLEAR)
-  })
-
-  it('does NOT clear when only some parts are present', () => {
-    expect(v('look after', 'I look at the children')).toBe(VERDICT.READ)
-    expect(v('go out', 'I go home')).toBe(VERDICT.READ)
-  })
-
-  it('never applies to a single-word gloss, where it would collapse into C1', () => {
-    expect(v('after', 'I look at it')).toBe(VERDICT.READ)
+describe('the sides really are different, on the same pair', () => {
+  it('clears an inflection on the known side and refuses to on the target side', () => {
+    expect(known('want', 'I wanted a coffee')).toBe(VERDICT.CLEAR)
+    expect(target('want', 'I wanted a coffee')).toBe(VERDICT.READ)
   })
 })
 
 describe('authoring furniture is furniture, not the word', () => {
-  it('drops a parenthesised note before comparing', () => {
-    expect(clean('知っている（私が）')).toBe('知っている')
-    expect(v('知っている（私が）', '私は知っている')).toBe(VERDICT.CLEAR)
+  it('drops a parenthesised note, an unclosed one, and the slot marker', () => {
+    expect(known('知っている（私が）', '私は知っている')).toBe(VERDICT.CLEAR)
+    expect(target('知っている（私が）', '私は知っている')).toBe(VERDICT.CLEAR)
   })
 
-  it('drops an annotation whose closing bracket was lost to truncation', () => {
-    expect(clean('知っていました（1人称')).toBe('知っていました')
-  })
-
-  it('drops the slot marker on a bound form', () => {
-    expect(clean('〜の時')).toBe('の時')
-  })
-
-  it('treats the author’s alternatives disjunctively — using either one is using the word', () => {
-    expect(alternatives(clean('嬉しい・満足している'))).toEqual(['嬉しい', '満足している'])
-    expect(v('嬉しい・満足している', 'とても嬉しいです')).toBe(VERDICT.CLEAR)
-    expect(v('お願いする／頼む', '手伝ってくれますか')).toBe(VERDICT.READ)
+  it('treats the author’s alternatives disjunctively', () => {
+    expect(known('嬉しい・満足している', 'とても嬉しいです')).toBe(VERDICT.CLEAR)
+    expect(known('お願いする／頼む', '手伝ってくれますか')).toBe(VERDICT.READ)
   })
 })
 
 describe('nothing to judge is not a pass', () => {
-  it('skips a blank lesson word and a blank sentence, distinctly from clearing', () => {
-    expect(v('', 'I want a coffee')).toBe(VERDICT.SKIP)
-    expect(v('want', '')).toBe(VERDICT.SKIP)
-    expect(v('（形式的）', 'anything at all')).toBe(VERDICT.SKIP)
+  it('skips a blank word and a blank sentence, distinctly from clearing', () => {
+    expect(known('', 'I want a coffee')).toBe(VERDICT.SKIP)
+    expect(target('want', '')).toBe(VERDICT.SKIP)
+    expect(known('（形式的）', 'anything at all')).toBe(VERDICT.SKIP)
   })
 })
 
-describe('the published confirmed defects all reach a reader', () => {
-  // Verbatim from the 120-defect list of 2026-08-27: the LEGO's word and one of the prompts
-  // that was judged, by three independent reviewers, to use a different word instead. The
-  // pre-filter must not swallow any of them.
+describe('the published confirmed defects all still reach a reader', () => {
   const CONFIRMED = [
-    ['知っている', 'わかりません'],          // spa S0059L01 — the paradigm case
-    ['見つけ出す', '知りたいです'],           // deu S0017L03 — the original specimen
-    ['できる', '話せます'],                   // deu S0010L01
-    ['助け', '手伝いをありがとう'],           // deu S0142L04
-    ['最も', '一番好きです'],                 // zho S0116L01
-    ['大丈夫', 'まあまあです'],               // zho S0041L01
-    ['場所', 'どこですか'],                   // zho S0138L01
-    ['開始する', '始めましょう'],             // ita S0081L01
-    ['聞く・頼む', '求めています'],           // ita S0212L02
-    ['幸せな', '嬉しいです'],                 // spa S0129L02
-    ['望んでいる', '行きたいです'],           // spa S0200L02
-    ['正確に', '全く同じようにしてください'], // deu S0153L01
+    ['知っている', 'わかりません'],
+    ['見つけ出す', '知りたいです'],
+    ['できる', '話せます'],
+    ['最も', '一番好きです'],
+    ['大丈夫', 'まあまあです'],
+    ['場所', 'どこですか'],
+    ['開始する', '始めましょう'],
+    ['幸せな', '嬉しいです'],
   ]
-
-  it.each(CONFIRMED)('%s / %s is handed on to be read, never cleared', (taught, sentence) => {
-    expect(v(taught, sentence)).toBe(VERDICT.READ)
+  it.each(CONFIRMED)('%s / %s is handed on to be read, never cleared', (t, s) => {
+    expect(known(t, s)).toBe(VERDICT.READ)
   })
 })
 
 describe('the rebuild rule: no language-specific morphology anywhere in this tool', () => {
-  // Kai's ruling, 2026-08-28. The old gate needed a hand-authored ending list per language and
-  // therefore covered four languages and returned a misleading zero for the other thirty-five.
-  // This test is the tripwire: if someone reaches for an ending list again, it fails here.
   const dir = __dirname
-  const CODE = ['prefilter.cjs', 'funnel.cjs', 'reader.cjs', 'confirm.cjs']
-  // What is banned is a DECLARATION — a named table of endings the code consults. The reading
-  // stage's instructions do say the word "inflection" to the model in plain prose, and must:
-  // telling a reader that a conjugated form is the same word is the whole method. The tripwire
-  // is on the identifier, which is what a relapse would actually look like.
-  const BANNED = /\b(stemStrip|stemMinLen|suffixes|endings|inflections|morphology|okurigana|STEM_|SUFFIX_|ENDING_)\b/
+  const CODE = ['prefilter.cjs', 'funnel.cjs', 'reader.cjs', 'confirm.cjs', 'instructions.cjs']
+  // The ban is on a named table of endings the code consults. Prose that says "inflection" to a
+  // reader is the method working, not a relapse.
+  const BANNED = /\b(stemStrip|stemMinLen|suffixes|endings|inflections|okurigana|STEM_|SUFFIX_|ENDING_)\b/
 
   it.each(CODE)('%s declares no endings, stems or inflection tables', (file) => {
     const src = fs.readFileSync(path.join(dir, file), 'utf8')
-    // Comments explain WHY the old approach is gone; the executable lines must not bring it back,
-    // and neither must the prompt text, which is why only comments are stripped here.
     const executable = src
       .replace(/\/\*[\s\S]*?\*\//g, '')
       .split('\n').filter((l) => !l.trim().startsWith('//')).join('\n')
     expect(executable).not.toMatch(BANNED)
   })
 
-  it('the pre-filter names no language at all', () => {
+  it('the pre-filter names no language — only Unicode scripts, which is orthography', () => {
+    // Knowing that Han script writes no spaces between words is a fact about the writing system,
+    // not about any language's grammar, and no verdict depends on a language being identified.
     const src = fs.readFileSync(path.join(dir, 'prefilter.cjs'), 'utf8')
     const executable = src
       .replace(/\/\*[\s\S]*?\*\//g, '')

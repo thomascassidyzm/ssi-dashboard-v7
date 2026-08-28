@@ -32,10 +32,11 @@ const SIDE = { known: 'the English prompt', target: 'the language being learned'
 
 const estate = read('candidates-estate.json');
 const blind = read('blind-verdicts-merged.json').results;
-const conf = [
-  ...read('confirmed-blind-cym.json').results,
-  ...(fs.existsSync(`${P}/confirmed-blind-rest.json`) ? read('confirmed-blind-rest.json').results : []),
-];
+// The confirm pass was run in several sittings — one per course group — because a sonnet batch
+// is slow and a single run long enough to cover everything is a single run long enough to lose.
+const conf = ['confirmed-blind-cym.json', 'confirmed-deu-fra.json', 'confirmed-spa.json', 'confirmed-fra-target.json']
+  .filter((f) => fs.existsSync(`${P}/${f}`))
+  .flatMap((f) => read(f).results);
 
 const n = (x) => x.toLocaleString('en-GB');
 const L = [];
@@ -116,9 +117,11 @@ for (const c of courses) {
     const sample = conf.filter((x) => x.course === c && x.side === side);
     const up = sample.filter((x) => x.ruling === 'UPHELD').length;
     rate[`${c}|${side}`] = { raw, sampled: sample.length, up };
-    const cell = sample.length === 0 ? 'not yet confirmed'
-      : sample.length >= raw ? `**${up}**`
-        : `**${up}** of ${sample.length} sampled (${((up / sample.length) * 100).toFixed(0)}% held)`;
+    // The denominator has to be unmissable. "16 of 16" next to a raw count of 99 invites the
+    // reader to think 16 was the whole story; "16 held of the 16 checked (out of 99)" cannot.
+    const cell = sample.length === 0 ? 'none checked yet'
+      : sample.length >= raw ? `**${up}** — all ${raw} checked`
+        : `**${up}** held of the ${sample.length} checked, out of ${raw} (${((up / sample.length) * 100).toFixed(0)}%)`;
     L.push(`| ${NICE[c] || c} | ${SIDE[side]} | ${n(rows.length)} | ${n(raw)} | ${cell} |`);
   }
 }

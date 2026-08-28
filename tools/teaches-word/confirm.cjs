@@ -26,45 +26,19 @@ const { spawn } = require('child_process');
 const { claudeEnv } = require(path.resolve(__dirname, '../../services/shared/claude-config.cjs'));
 
 const LANG = require('./langnames.cjs');
+const { confirmInstructions } = require('./instructions.cjs');
 const langName = (code) => LANG[(code || '').split('_')[0]] || code || 'the language';
 const knownLangOf = (c) => (c || '').replace(/_v\d+$/, '').split('_for_')[1] || null;
 const targetLangOf = (c) => (c || '').replace(/_v\d+$/, '').split('_for_')[0] || null;
 
 function buildPrompt(batch) {
   const c = batch[0].course;
-  const lang = langName(batch[0].side === 'known' ? knownLangOf(c) : targetLangOf(c));
+  const side = batch[0].side;
+  const lang = langName(side === 'known' ? knownLangOf(c) : targetLangOf(c));
   const items = batch.map((b, i) => (
     `${i + 1}.\nWORD THE LESSON TEACHES: ${b.taught}\nPRACTICE SENTENCE: ${b.sentence}\nFIRST READER'S REASON: ${b.why}`
   )).join('\n\n');
-
-  return `You are the second reader on some ${lang} language-course material, and your job is to
-knock down accusations that do not hold up.
-
-A first reader has accused each practice sentence below of NOT using the word its lesson teaches.
-Your job is to overturn that accusation wherever you can.
-
-Overturn it (answer OVERTURNED) if ANY of these is true:
-- The sentence does use the word, in a different grammatical form — a different tense, person,
-  number, gender, case, mood, mutation, contraction, or an attached article or particle.
-- The word is a phrase and the sentence uses that phrase with its parts separated or reordered.
-- The word offers alternatives (separated by a slash or a middle dot) and the sentence uses any
-  one of them.
-- The difference is only a pronoun the language routinely drops, or a bracketed note to the
-  author, or punctuation, or spacing.
-- The first reader's reason is simply wrong about the language.
-
-Uphold it (answer UPHELD) only when the sentence really does use a DIFFERENT WORD — a synonym, a
-near-synonym, a paraphrase, or an unrelated word — where the taught word should have been.
-
-If you cannot decide, answer OVERTURNED. The tie goes to the material: a check that accuses good
-sentences is worse than no check at all.
-
-Answer with one line of JSON per item and nothing else. No preamble, no code fence.
-Each line: {"n": <item number>, "ruling": "UPHELD" | "OVERTURNED", "why": "<one short sentence>"}
-
-ITEMS:
-
-${items}`;
+  return `${confirmInstructions(side, lang)}\n\nITEMS:\n\n${items}`;
 }
 
 function runClaude(prompt, model) {
