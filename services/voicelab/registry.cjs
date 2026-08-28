@@ -46,15 +46,22 @@ const policy = require('../shared/tts-provider-policy.cjs')
 const { isHumanVoiceLang } = require('../shared/human-voice-courses.cjs')
 
 /**
- * How many ranks make a (language, gender) slot complete.
- *
- * TASTE DEFAULT, Tom's to move (2026-08-28): rank 0 (primary) and rank 1 (first
- * backup), so a language is complete at FOUR voices — primary male, backup male,
- * primary female, backup female. Tom asked for "2 voices … with backups"; two
- * backups is the reading that makes "backups" plural without demanding six
- * voices for every one of ~70 languages. One number to change.
+ * How many ranks are TRACKED (and shown) per (language, gender) slot — primary
+ * plus however many backups the estate wants visible.
  */
 const REQUIRED_RANKS = Number(process.env.VOICELAB_REQUIRED_RANKS || 2)
+
+/**
+ * How many of those ranks make a language COMPLETE.
+ *
+ * Tom's ruling, 2026-08-28, read as written: "each language needs 2 voices, 1
+ * male and 1 female as standard, with backups in case for whatever reason
+ * there is a problem." Two (one male, one female) is what makes a language
+ * complete — rank 0, primary, per gender. Backups are insurance, not part of
+ * completeness: a missing backup is a quieter flag (see `hasBackup` below),
+ * never red, never counted toward "incomplete".
+ */
+const COMPLETE_RANKS = 1
 
 /** The genders every language is expected to carry. Matches voices.gender. */
 const GENDERS = Object.freeze(['m', 'f'])
@@ -143,8 +150,17 @@ function describeLanguage ({ code, langCourses, roles, voiceById, voices, catalo
     }
   }
 
-  const filled = GENDERS.flatMap((g) => slots[g]).filter((s) => s.filled && s.active !== false).length
-  const required = GENDERS.length * REQUIRED_RANKS
+  // Completeness counts PRIMARY slots only (rank < COMPLETE_RANKS) — Tom's
+  // ruling: two working voices, one male one female, is complete, full stop.
+  const filled = GENDERS.flatMap((g) => slots[g].slice(0, COMPLETE_RANKS)).filter((s) => s.filled && s.active !== false).length
+  const required = GENDERS.length * COMPLETE_RANKS
+
+  // Backup insurance is tracked separately and never affects `status`. A
+  // gender is "backed up" if any of its ranks beyond the primary is filled and
+  // active. Reported per-language so the view can show a quiet "no fallback"
+  // flag without ever turning a complete language red.
+  const backedUpGenders = GENDERS.filter((g) => slots[g].slice(COMPLETE_RANKS).some((s) => s.filled && s.active !== false))
+  const hasFullBackup = backedUpGenders.length === GENDERS.length
 
   return {
     code,
@@ -158,6 +174,8 @@ function describeLanguage ({ code, langCourses, roles, voiceById, voices, catalo
     slots,
     filled,
     required,
+    hasFullBackup,
+    backedUpGenders,
     status: statusFor({ human, cartesiaCovers, filled, required }),
     // Voices that CAN speak this language and are not yet cast — the candidate
     // list, so casting is a click rather than a search.
@@ -266,14 +284,18 @@ function summarise (languages) {
     uncast: count('uncast'),
     nocover: count('nocover'),
     human: count('human'),
-    requiredPerLanguage: GENDERS.length * REQUIRED_RANKS,
-    requiredRanks: REQUIRED_RANKS,
+    // Quiet insurance flag, never a completeness count: complete languages
+    // that would lose a voice with no fallback cast.
+    noBackup: languages.filter((l) => l.status === 'complete' && !l.hasFullBackup).length,
+    requiredPerLanguage: GENDERS.length * COMPLETE_RANKS,
+    requiredRanks: COMPLETE_RANKS,
+    trackedRanks: REQUIRED_RANKS,
   }
 }
 
 function notes () {
   return {
-    completeness: `A language is complete when both genders have all ${REQUIRED_RANKS} ranks cast (${GENDERS.length * REQUIRED_RANKS} voices: primary and backup, male and female). That count is Tom's taste call and is one env var, VOICELAB_REQUIRED_RANKS.`,
+    completeness: `A language is complete when both genders have a primary voice cast (${GENDERS.length * COMPLETE_RANKS} voices: one male, one female). Backups are tracked up to ${REQUIRED_RANKS} ranks per gender but are insurance, not part of completeness — a missing backup shows as a quiet flag, never red. Tom's ruling, 2026-08-28.`,
     human: 'Human-voiced languages (Welsh, Breton, PDC) are reported as "human", never as a gap. A human recording wins wherever it exists and no TTS provider may ever be selected for them.',
     nocover: 'Cartesia does not publish every language. Where it does not, the ladder falls to Azure — that is "nocover", which is covered, just not by the default provider. Welsh is NOT in Cartesia\'s published list, which is why the flagship courses could never have been Cartesia-only.',
     writes: 'This screen writes voice_language_roles and nothing else. It never writes course_audio, algorithm_config or any course voice_config.',
@@ -293,4 +315,4 @@ async function all (db, table, columns) {
   }
 }
 
-module.exports = { build, describeLanguage, statusFor, rankName, sameLang, voiceKind, castable, cartesiaCandidates, REQUIRED_RANKS, GENDERS }
+module.exports = { build, describeLanguage, statusFor, rankName, sameLang, voiceKind, castable, cartesiaCandidates, REQUIRED_RANKS, COMPLETE_RANKS, GENDERS }

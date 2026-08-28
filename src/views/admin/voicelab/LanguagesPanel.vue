@@ -13,8 +13,11 @@
  * slot rather than omitted.
  *
  * THE STATUSES ARE NOT INTERCHANGEABLE, and the colours say so:
- *   complete  every slot cast
- *   partial   some cast, some not
+ *   complete  both primary slots (1 male, 1 female) cast — read as written
+ *             (Tom, 2026-08-28): TWO voices make a language complete, full
+ *             stop. A missing backup never counts against this — it shows as
+ *             a quiet "no fallback" flag beside the status, not a colour.
+ *   partial   some primary slots cast, some not
  *   uncast    a provider could speak it; nobody is cast — the real blocker
  *   nocover   Cartesia does not publish this language; the ladder uses Azure
  *   human     human-recorded only. NOT a gap: a human recording wins wherever
@@ -129,7 +132,8 @@ function candidatesFor (lang, slot) {
     <p class="vl-muted vl-intro">
       One row per language the estate actually teaches, read live from
       <code>courses</code>, <code>voices</code> and the same provider policy the render path uses.
-      Each language wants a primary and a backup for both genders.
+      Complete means one primary voice per gender; a backup per gender is tracked as insurance
+      but is never required for completeness.
       <strong>Casting here writes nothing but the casting</strong> — no audio is rendered and no
       course is changed.
     </p>
@@ -140,8 +144,9 @@ function candidatesFor (lang, slot) {
       <span class="vl-chip fail">{{ summary.uncast }} uncast</span>
       <span class="vl-chip warn">{{ summary.nocover }} no Cartesia</span>
       <span class="vl-chip">{{ summary.human }} human-voiced</span>
+      <span v-if="summary.noBackup" class="vl-chip quiet">{{ summary.noBackup }} no fallback</span>
       <span class="vl-muted">
-        {{ summary.languages }} languages · complete means {{ summary.requiredPerLanguage }} voices
+        {{ summary.languages }} languages · complete means {{ summary.requiredPerLanguage }} voices (1 male, 1 female) · backups are insurance, not required
       </span>
     </div>
 
@@ -183,7 +188,14 @@ function candidatesFor (lang, slot) {
                 {{ lang.filled }} / {{ lang.required }}
               </span>
             </td>
-            <td><span :class="['vl-status', lang.status]">{{ lang.status }}</span></td>
+            <td>
+              <span :class="['vl-status', lang.status]">{{ lang.status }}</span>
+              <span
+                v-if="lang.status === 'complete' && !lang.hasFullBackup"
+                class="vl-status quiet"
+                title="No fallback cast — insurance only, does not affect completeness"
+              >no fallback</span>
+            </td>
             <td>
               <button class="vl-btn small" @click="expanded = expanded === lang.code ? null : lang.code">
                 {{ expanded === lang.code ? 'Hide' : 'Voices' }}
@@ -298,6 +310,10 @@ function candidatesFor (lang, slot) {
 .vl-status.partial, .vl-status.nocover { background: #b26a0022; color: #b26a00; }
 .vl-status.uncast { background: #c6282822; color: #c62828; }
 .vl-status.human { background: #1565c022; color: #1565c0; }
+.vl-status.quiet { background: #8883; color: #8887; border-color: transparent; margin-left: .3rem; }
+.vl-chip.ok { border-color: #2e7d32; color: #2e7d32; }
+.vl-chip.warn { border-color: #b26a00; color: #b26a00; }
+.vl-chip.quiet { border-color: #8886; color: #8887; }
 .vl-detail td { background: #8881; }
 .vl-note { margin: .25rem 0 .75rem; }
 .vl-slots { display: grid; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); gap: .6rem; }
