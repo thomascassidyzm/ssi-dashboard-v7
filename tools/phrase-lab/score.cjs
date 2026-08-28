@@ -82,7 +82,7 @@
 
 require('dotenv').config({ quiet: true });
 const fs = require('fs');
-const { buildInventory, norm, zutKey } = require('./inventory.cjs');
+const { buildInventory, norm, surfaceKey } = require('./inventory.cjs');
 const { countSyllables, hasSyllableCounter } = require('../lib/syllable-counters.cjs');
 const { LAB_COUNTERS, APPROXIMATE } = require('./syllables-cjk.cjs');
 
@@ -93,8 +93,67 @@ const { LAB_COUNTERS, APPROXIMATE } = require('./syllables-cjk.cjs');
 // at, so a generous free class is a quiet way of disabling the gate.
 const FREE_CLASS = new Set(['a', 'an', 'the', 'to', 'of', 'do', 'does', 'did', 'and', 'or', 'that']);
 
+/**
+ * The free class the SURFACE-FORM check uses comes from the pair contract, not
+ * from this file. `docs/pair-contracts/{course}.contract.cjs` — falling back to
+ * `_default_eng` for any English-known course without its own — is where the
+ * estate has already declared which known-language words a learner is never
+ * asked to "know": glue, the dummy auxiliaries, negation, and NPI items under
+ * negation. The API validator's own known-side gate reads exactly that list
+ * (`services/course-builder/lib/validation.cjs`), so reading it here means the
+ * lab and the live gate agree about what is free instead of disagreeing by a
+ * hard-coded eleven words. It is also known-language-specific: an English glue
+ * list must never gate a non-English-known course.
+ */
+const _freeCache = new Map();
+function contractFreeClass(courseCode) {
+  if (_freeCache.has(courseCode)) return _freeCache.get(courseCode);
+  let set = new Set(FREE_CLASS);
+  try {
+    const { loadPairContract } = require('../../services/course-builder/lib/validation.cjs');
+    const c = loadPairContract(courseCode);
+    if (c) {
+      for (const w of [...(c.freeGlue || []), ...(c.npiTokens || []), ...(c.negationWords || [])]) {
+        for (const t of tokens(String(w))) set.add(t);
+      }
+      for (const w of ['do', 'does', 'did']) set.add(w);
+    }
+  } catch { /* no contract: the eleven-word default stands, and the check is stricter, never looser */ }
+  _freeCache.set(courseCode, set);
+  return set;
+}
+
 const tokens = (s) => norm(s).split(' ').filter(Boolean);
-const stem = (w) => w.replace(/(ing|ed|es|s)$/, '');
+
+/**
+ * SURFACE-EXACT, and the stemmer that used to live here is gone.
+ *
+ * TOM'S RULING, 2026-08-28: "agents think that inflections are basically ok, so
+ * they use them. they are not OK in this methodology. if I say: I drink / he
+ * drinks / is drinking / drinking more — do I have zero uncertainty about the
+ * target language I am being asked to produce? the answer is no, unless each of
+ * these has been introduced separately as their own distinct LEGO."
+ *
+ * This file used to hold `stem = w => w.replace(/(ing|ed|es|s)$/, '')` and run
+ * every known-side comparison through it. That is the inflection hole: teach
+ * "drink" and "drinks", "drinking", "drank" all match, because to a language
+ * model they are one word. They are not one word to a learner — each English
+ * form points at a DIFFERENT target form nobody has ever shown them — so the
+ * determinism condition genuinely fails while the gate reports green.
+ *
+ * The gate never inflects and never derives. It only ever asks: HAS THIS EXACT
+ * FORM APPEARED? The one suffix table left in this file is `lemmaLabel`, and it
+ * decides nothing — it is used solely to NAME a failure that has already been
+ * called, so the report can say "derived inflection of an introduced form"
+ * rather than "unknown word".
+ */
+const LABEL_SUFFIXES = ['ing', 'ed', 'es', 's', 'ies', 'en', 'ly'];
+function lemmaLabel(w) {
+  for (const suf of LABEL_SUFFIXES) {
+    if (w.length > suf.length + 2 && w.endsWith(suf)) return w.slice(0, -suf.length);
+  }
+  return w;
+}
 
 /**
  * How trustworthy is this course's syllable denominator?
@@ -137,6 +196,51 @@ function syllablesOf(text, lang) {
 // ---------------------------------------------------------------------------
 // THE GATE
 // ---------------------------------------------------------------------------
+
+/**
+ * THE ATTESTED SET — every known-side surface form the learner has actually met.
+ *
+ * Tom's rule, 2026-08-28, in three parts:
+ *
+ *   (1) AVAILABILITY IS KEYED ON THE EXACT SURFACE FORM. No stemming, no
+ *       lemmatisation, no morphological expansion, no fuzzy matching. The gate
+ *       never inflects and never derives; it only asks whether this exact form
+ *       has appeared.
+ *
+ *   (2) THE TEST IS ATTESTATION, NOT INTRODUCTION. "we DO allow components of an
+ *       M-LEGO that might NOT have been introduced as their own LEGOs, but they
+ *       DO become available as legitimate vocab for the phrase generation." A
+ *       form counts if it was SEEN — as a LEGO in its own right or as a component
+ *       of an M-LEGO. A component was on screen and in their ears; an inflection
+ *       produced by rule was never shown to anyone.
+ *
+ *   (3) SEEDS GIVE THE COMPUTATION ITS BOUNDS. "if a LEGO is from SEED 300, i.e.
+ *       S0300L01, then all content up to SEED N-1 is legit content." That is what
+ *       makes this a QUERY OVER THE COURSE rather than a judgement made by a
+ *       model — and `buildInventory` has already applied it, taking every LEGO of
+ *       seeds 1..N-1 plus the EARLIER LEGOs of seed N.
+ *
+ * Note this indexes the BLOCKED items too, not only the available ones. A form
+ * that is attested but non-deterministic is a different failure with a different
+ * fix (it is already caught as inherited ambiguity, layer 2); calling it
+ * "never introduced" would be a lie about what the learner has met.
+ */
+function attestedKnownIndex(inv) {
+  const forms = new Set();
+  const byLemma = new Map();
+  const add = (text) => {
+    for (const w of tokens(surfaceKey(text))) {
+      if (!w) continue;
+      forms.add(w);
+      const l = lemmaLabel(w);
+      if (!byLemma.has(l)) byLemma.set(l, new Set());
+      byLemma.get(l).add(w);
+    }
+  };
+  for (const it of inv.items) add(it.known);
+  if (inv.targetLego) add(inv.targetLego.known_text);
+  return { forms, byLemma };
+}
 
 /**
  * Adjudicate one phrase against the inventory.
@@ -189,8 +293,12 @@ function checkPhraseZut(inv, phrase) {
     // A tile with no declared known (live rows carry a few) is not an offence —
     // fall back to the course's own gloss and note it, rather than inventing a
     // remap that never happened.
-    const declared = zutKey(t.known || '');
-    const exact = declared ? candidates.find((c) => zutKey(c.known) === declared) : null;
+    // SURFACE-EXACT (Tom, 2026-08-28). This used to compare folded ZUT keys, so a
+    // tile declaring "explain" matched a course that introduced "to explain" and
+    // was scored as an exact hit. Two different English forms, one of which the
+    // learner has never been shown: that is the hole, not a match.
+    const declared = surfaceKey(t.known || '');
+    const exact = declared ? candidates.find((c) => surfaceKey(c.known) === declared) : null;
     const item = exact || candidates[0];
     if (!declared) {
       warnings.push({ code: 'unglossed-tile', token: t.target, why: `tile for "${t.target}" declares no known gloss; read as the course's own "${item.known}"` });
@@ -270,8 +378,8 @@ function checkPhraseZut(inv, phrase) {
   //
   // So: excess unmatched gloss tokens over unmatched prompt tokens = smuggling,
   // and that is the hard failure. The balanced remainder is counted as drift.
-  const phraseKnown = tokens(zutKey(phrase.known)).map(stem);
-  const tileKnown = resolved.flatMap((r) => tokens(zutKey(r.known || ''))).map(stem);
+  const phraseKnown = tokens(surfaceKey(phrase.known));
+  const tileKnown = resolved.flatMap((r) => tokens(surfaceKey(r.known || '')));
 
   const pool = [...phraseKnown];
   const unmatchedTile = [];
@@ -303,6 +411,46 @@ function checkPhraseZut(inv, phrase) {
       token: unmatchedTile.join(' '),
       why: `prompt says "${unmatchedPrompt.join(' ')}" where the course's own gloss is "${unmatchedTile.join(' ')}" — a substitution the learner has not been taught`
     });
+  }
+
+  // --- SURFACE-FORM ATTESTATION. LAYER 1, and the reason this file was changed.
+  //
+  // Every known-side form in the prompt must be a form the learner has actually
+  // met. Not a form of a word they have met — THAT form. "he drinks" is not
+  // "drink" plus a rule; it is a prompt pointing at a Spanish word the learner
+  // has never seen, and there is no way for them to know which one it is.
+  //
+  // The suffix table below never licenses anything. The failure is already
+  // called by the time it runs; it only decides whether the report says
+  // "derived-inflection" (an introduced form shares its shape, so the fix is to
+  // write the introduced form, or to teach this one) or "unattested-known-form"
+  // (nothing like it was ever taught).
+  //
+  // SAID PLAINLY: that split is SHAPE-ONLY and it is advisory. English shape
+  // cannot tell "thing"/"things" from "even"/"evening" — both look like a stem
+  // and a stem plus a suffix — and no regex in this estate is allowed to make a
+  // language judgement. The FAILURE is a fact (the form was never attested);
+  // only the label is a guess, and it is never allowed to decide a pass.
+  const att = inv.attestedKnown || (inv.attestedKnown = attestedKnownIndex(inv));
+  const free = contractFreeClass(inv.courseCode);
+  const seenBad = new Set();
+  for (const w of tokens(surfaceKey(phrase.known))) {
+    if (!w || free.has(w) || att.forms.has(w) || seenBad.has(w)) continue;
+    seenBad.add(w);
+    const kin = att.byLemma.get(lemmaLabel(w));
+    if (kin && kin.size) {
+      failures.push({
+        code: 'derived-inflection',
+        token: w,
+        why: `"${w}" was never introduced. The course taught ${[...kin].map((f) => `"${f}"`).join(' / ')}, which shares its shape — an inflection of a taught form is not a taught form, and the learner has no idea which target word "${w}" is asking for.`
+      });
+    } else {
+      failures.push({
+        code: 'unattested-known-form',
+        token: w,
+        why: `"${w}" has not appeared anywhere in seeds 1..${inv.seedNumber} — not as a LEGO and not as a component of one`
+      });
+    }
   }
 
   return { pass: failures.length === 0, failures, inherited, warnings, resolved };

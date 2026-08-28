@@ -256,9 +256,29 @@ async function checkPhraseSet(entry, ctx) {
     if (!contractUsable) {
       gates.knownSide = { pass: null, unchecked: true, reason: contract ? 'contract known_lang mismatch' : 'no pair-contract found' };
     } else {
-      const knownCtx = ctx.knownCtxCache.get(seedNumber) || await (async () => {
-        const c = await buildKnownSideSeedCtx(supabase, courseCode, seedNumber, [{ known: legoKnown, target: legoTarget, components: entry.components }], contract);
-        ctx.knownCtxCache.set(seedNumber, c);
+      // AVAILABILITY BOUNDS, per Tom's ruling of 2026-08-28: "if a LEGO is from
+      // SEED 300, i.e. S0300L01, then all content up to SEED N-1 is legit
+      // content" — plus whatever has already landed EARLIER WITHIN seed N.
+      // ralph-methodology.md:526 states the same: "LEGO N may draw on prior
+      // seeds plus LEGOs 1..N-1 — never a later sibling. No forward references."
+      //
+      // TWO THINGS WERE WRONG HERE. The cache was keyed on `seedNumber` alone, so
+      // on a multi-LEGO seed whichever LEGO ran first wrote the context and every
+      // sibling reused it: an earlier-index LEGO could silently inherit a
+      // later-index sibling's vocabulary, and authoring order — not lego_index —
+      // decided what was available. And the context was built from this LEGO
+      // ALONE, so the earlier siblings it is genuinely entitled to were missing.
+      // Key on the pair, and bound it on lego_index.
+      const knownCtxKey = `${seedNumber}:${legoIndex}`;
+      const knownCtx = ctx.knownCtxCache.get(knownCtxKey) || await (async () => {
+        const { data: earlier } = await supabase.from('course_legos')
+          .select('known_text,target_text,components,lego_index')
+          .eq('course_code', courseCode).eq('seed_number', seedNumber).lt('lego_index', legoIndex)
+          .order('lego_index');
+        const siblings = (earlier || []).map(l => ({ known: l.known_text, target: l.target_text, components: l.components || [] }));
+        const c = await buildKnownSideSeedCtx(supabase, courseCode, seedNumber,
+          [...siblings, { known: legoKnown, target: legoTarget, components: entry.components }], contract);
+        ctx.knownCtxCache.set(knownCtxKey, c);
         return c;
       })();
       const breaches = [];

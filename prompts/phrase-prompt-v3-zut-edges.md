@@ -81,6 +81,35 @@ uses. Availability is a function of the network at this seed, and it has already
 been computed for you: you are given an AVAILABLE list and a BLOCKED list. Reach
 inside the first. Never reach inside the second.
 
+### Inflections are not free — the EXACT FORM or nothing
+
+> "if I say: I drink / he drinks / is drinking / drinking more — do I have zero
+> uncertainty about the target language I am being asked to produce? the answer
+> is no, unless each of these has been introduced separately as their own
+> distinct LEGO."
+
+This is the one that agents get wrong most, because to you *drink*, *drinks*,
+*drinking* and *drank* are one word. **They are not one word to a learner.** Each
+English form points at a *different* target form, and the learner has been shown
+only the one that was actually introduced. Writing "he drinks" off the back of a
+LEGO that taught "drink" asks them to produce a Spanish word nobody has ever
+said to them.
+
+So, on the known side:
+
+- **A form is usable only if that EXACT form appears in the AVAILABLE list.**
+  Not a form of it. That form. No inflecting, no conjugating, no pluralising, no
+  adding *-ing* or *-ed* or *-s*, no dropping or adding the infinitive *to*.
+- **A form counts as available if it was SEEN** — as a LEGO in its own right, or
+  as a **component of an M-LEGO**. Components you were never handed as their own
+  LEGO are still legitimate vocabulary: the learner met them on screen and in
+  their ears. The line is SEEN versus DERIVED, and derived is never free.
+- If the phrase you want needs *finishing* and the course taught *finish*, you
+  cannot have that phrase. Write a different one.
+
+The gate checks this by exact match and it does not negotiate. There is no
+allowance, no free class of endings, and no "obviously fine" case.
+
 ### Smuggling is not a separate offence — it is a ZUT failure
 
 An un-introduced word fails ZUT trivially: the learner has no mapping for it at
@@ -226,8 +255,10 @@ Return **JSON only**, no prose, no code fence. Each phrase declares its own
 tiling — this is not bureaucracy, it is the phrase showing its work, and it is
 what makes both the gate and the edge count exact rather than guessed. `tiles`
 must concatenate, in order, to exactly the `target` string, and each tile's
-`known`/`target` must be a pair taken from the AVAILABLE list (or be the new
-LEGO itself).
+`known`/`target` must be a pair taken from the AVAILABLE list **verbatim on both
+sides** (or be the new LEGO itself) — copy the two strings across, never a
+re-worded or re-inflected version of them. Every word of the phrase's own
+`known` must likewise be a form that appears in the AVAILABLE list.
 
 ```json
 {

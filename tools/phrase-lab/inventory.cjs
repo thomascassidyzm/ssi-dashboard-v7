@@ -12,10 +12,29 @@
  *
  * THE TWO QUESTIONS IT ANSWERS
  *
- *   INTRODUCED — has this LEGO been delivered by seed N? Every LEGO of seeds
- *     1..N-1, plus the earlier LEGOs of seed N itself, plus the COMPONENTS of
- *     every M-LEGO among them (a component is available vocabulary the moment
- *     its carrier is taught).
+ *   ATTESTED — has this exact thing been delivered by seed N? Every LEGO of
+ *     seeds 1..N-1, plus the earlier LEGOs of seed N itself, plus the COMPONENTS
+ *     of every M-LEGO among them.
+ *
+ *     Tom, 2026-08-28, on why components count: "we DO allow components of an
+ *     M-LEGO that might NOT have been introduced as their own LEGOs, but they DO
+ *     become available as legitimate vocab for the phrase generation." The test
+ *     is ATTESTATION, not introduction. The line that matters is SEEN versus
+ *     DERIVED: a component was on screen and in their ears; an inflection
+ *     produced by a rule was never shown to anyone.
+ *
+ *     Same ruling on the bounds, and it is what makes this cheap: "if a LEGO is
+ *     from SEED 300, i.e. S0300L01, then all content up to SEED N-1 is legit
+ *     content." Availability is a QUERY OVER THE COURSE, not a judgement made by
+ *     a model. Nothing gets to be generous.
+ *
+ *     CONFIRMED against the methodology rather than assumed — ralph-methodology
+ *     .md:526: "LEGO N may draw on prior seeds plus LEGOs 1..N-1 — never a later
+ *     sibling. No forward references." The filter below is written that way. Note
+ *     that the live submission route's known-side context is NOT (it hands
+ *     `checkKnownSide` every LEGO of the seed at once); that disagreement is
+ *     recorded in docs/course-optimization/v3-surface-exact-availability-
+ *     2026-08-28.md and is not this file's to resolve.
  *
  *   DETERMINISTIC — can a prompt ask for it with zero uncertainty? This is the
  *     muy/bien rule, and it is Tom's, verbatim (2026-08-27):
@@ -71,19 +90,26 @@ const norm = (s) =>
     .replace(/\s+/g, ' ');
 
 /**
- * ZUT comparison key for a KNOWN gloss.
+ * SURFACE-FORM key for a KNOWN gloss.
  *
- * Two glosses that differ only by English orthography or by a bare infinitive
- * marker are the SAME ask to a learner: "I'm" and "I am" are one prompt, and so
- * are "explain" and "to explain". Comparing raw strings scores those as ZUT
- * collisions and blocks ~90 perfectly usable spa items — a check that cries wolf
- * is a check builders learn to ignore, and here it would also starve the
- * generator of vocabulary and distort the very comparison this lab exists to run.
+ * TOM'S RULING, 2026-08-28: availability is keyed on the EXACT SURFACE FORM.
  *
- * This is deliberately SHORT. It folds orthography and the free-class infinitive
- * marker, and nothing else. It does NOT fold synonyms: "something"/"anything"
- * stay a real collision, because those are two different asks that a learner
- * genuinely cannot tell apart.
+ *   "agents think that inflections are basically ok, so they use them. they are
+ *    not OK in this methodology. if I say: I drink / he drinks / is drinking /
+ *    drinking more — do I have zero uncertainty about the target language I am
+ *    being asked to produce? the answer is no, unless each of these has been
+ *    introduced separately as their own distinct LEGO."
+ *
+ * So this key does NO stemming, NO lemmatisation, NO morphological expansion and
+ * NO derivation of any kind. It folds ORTHOGRAPHY only — case, punctuation, and
+ * English contractions, symmetrically on both sides of every comparison — because
+ * "I'm" and "I am" are the same written form of the same ask, not two forms.
+ *
+ * WHAT IT DELIBERATELY NO LONGER FOLDS, and this is the fix: the infinitive
+ * marker. The previous key stripped a leading/trailing "to", so "explain" and
+ * "to explain" were one entry. That is a DERIVATION, and it is exactly the hole:
+ * it made a form the learner has never been shown look like stock, when the two
+ * English forms point at two different target forms. SEEN beats DERIVED.
  */
 const CONTRACTIONS = [
   [/\bi'm\b/g, 'i am'], [/\bcan't\b/g, 'can not'], [/\bwon't\b/g, 'will not'],
@@ -93,10 +119,9 @@ const CONTRACTIONS = [
   [/\bshe's\b/g, 'she is'], [/\bthere's\b/g, 'there is'], [/\bwhat's\b/g, 'what is']
 ];
 
-function zutKey(known) {
+function surfaceKey(known) {
   let s = norm(known);
   for (const [re, to] of CONTRACTIONS) s = s.replace(re, to);
-  s = s.replace(/^to\s+/, '').replace(/\s+to$/, '');
   return s.replace(/\s+/g, ' ').trim();
 }
 
@@ -130,7 +155,7 @@ function buildMappingTable(legos) {
   const k2t = new Map();
   const t2k = new Map();
   const add = (k, t, src) => {
-    const kn = zutKey(k);
+    const kn = surfaceKey(k);
     const tn = norm(t);
     if (!kn || !tn) return;
     if (!k2t.has(kn)) k2t.set(kn, new Map());
@@ -149,7 +174,7 @@ function buildMappingTable(legos) {
 
 /** The muy/bien adjudication for one known->target pair. */
 function determinism(table, known, target) {
-  const kn = zutKey(known);
+  const kn = surfaceKey(known);
   const tn = norm(target);
   const targets = [...(table.k2t.get(kn)?.keys() || [])];
   const knowns = [...(table.t2k.get(tn)?.keys() || [])];
@@ -286,6 +311,6 @@ async function main() {
   }
 }
 
-module.exports = { buildInventory, buildMappingTable, fetchAllLegos, determinism, norm, zutKey, recentWindow };
+module.exports = { buildInventory, buildMappingTable, fetchAllLegos, determinism, norm, surfaceKey, recentWindow };
 
 if (require.main === module) main().catch((e) => { console.error(e.message); process.exit(1); });

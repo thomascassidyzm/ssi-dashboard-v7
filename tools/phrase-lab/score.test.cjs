@@ -67,6 +67,48 @@ const t = (known, target, legoId) => ({ known, target, legoId });
 // ---------------------------------------------------------------------------
 console.log('\nDIRECTION 1 — fires on known-bad input');
 
+// THE INFLECTION HOLE — Tom's ruling, 2026-08-28. These four tests are the ones
+// that must never go green again by accident: the gate used to run every
+// known-side comparison through `stem = w => w.replace(/(ing|ed|es|s)$/,'')`, so
+// every one of these passed.
+{
+  const INF = { ...INV, items: [...INV.items, item('S0050L01', 50, 'I drink', 'bebo')] };
+
+  const drinks = checkPhraseZut(INF, {
+    known: 'he drinks the top', target: 'bebe la cima',
+    tiles: [t('I drink', 'bebo', 'S0050L01'), t('the top', 'la cima', 'S0100L01')]
+  });
+  ok('an inflected known form fails the gate', !drinks.pass);
+  ok('and it is named as a derived inflection',
+    drinks.failures.some((f) => f.code === 'derived-inflection' && f.token === 'drinks'),
+    JSON.stringify(drinks.failures));
+
+  const drinking = checkPhraseZut(INF, {
+    known: 'drinking again', target: 'bebo otra vez',
+    tiles: [t('I drink', 'bebo', 'S0050L01'), t('again', 'otra vez', 'S0061L01')]
+  });
+  ok('-ing on a taught form is not a taught form', !drinking.pass);
+
+  const exact = checkPhraseZut(INF, {
+    known: 'I drink again', target: 'bebo otra vez',
+    tiles: [t('I drink', 'bebo', 'S0050L01'), t('again', 'otra vez', 'S0061L01')]
+  });
+  ok('the EXACT introduced form still passes', exact.pass, JSON.stringify(exact.failures));
+
+  // ATTESTATION, not introduction: a component of an M-LEGO is legitimate
+  // vocabulary even though it was never a LEGO of its own (Tom, 2026-08-28).
+  const WITHCOMP = { ...INV, items: [...INV.items,
+    { kind: 'component', legoId: 'S0055L01', seedNumber: 55, legoIndex: 1, type: 'C',
+      known: 'the bus', target: 'el autobús', recency: 0, deterministic: true,
+      reason: null, detail: null, unlock: null }] };
+  const comp = checkPhraseZut(WITHCOMP, {
+    known: 'the bus is difficult', target: 'el autobús es difícil',
+    tiles: [t('the bus', 'el autobús', 'S0055L01#c'), t('is difficult', 'es difícil', 'S0090L01')]
+  });
+  ok('a component of an M-LEGO counts as attested vocabulary', comp.pass, JSON.stringify(comp.failures));
+}
+
+
 {
   // The smuggle species, Tom's own live specimen shape: target carries meaning
   // the prompt never asks for.
@@ -235,8 +277,25 @@ ok('a conditional is detected', patternOf("I'd have driven home").tense === 'con
     })();
 
     // Tom on 358: four genuinely different pattern moves, but 100% end position.
-    ok('spa 358 (his GOOD set) draws no layer-1 gate failures', good.headline.gateFailures === 0);
-    ok('spa 358 registers real pattern variety', good.use.distinctPatterns >= 3, `got ${good.use.distinctPatterns}`);
+    //
+    // FLIPPED DELIBERATELY, 2026-08-28, under Tom's surface-form ruling. This
+    // used to assert that his hand-graded GOOD set draws ZERO layer-1 gate
+    // failures, and before the ruling it did: the known side was compared
+    // through a stemmer and a folded ZUT key, so "to reach the top" -> "llegar
+    // a la cima" was scored as gloss DRIFT and warned about rather than failed.
+    // Under the ruling it is a failure and it always was one: "reach" appears
+    // nowhere in seeds 1..358, not as a LEGO and not as a component, so the
+    // learner is shown an English word they have never met and asked for a
+    // Spanish word that was taught as "arrive". The estate's own API validator
+    // agrees and has agreed all along — `checkKnownSide` calls it `unknown
+    // gloss "reach"` and rejects the submission.
+    //
+    // So the specimen is not the calibration it was taken for. That is a finding
+    // about the specimen, not a licence to soften the gate, and the assertion
+    // says so out loud rather than being quietly deleted. It is on Tom's desk as
+    // a decision: repair the set, or replace the positive specimen.
+    ok('spa 358 fails on "reach", a known-side form never introduced',
+      good.headline.gateFailures > 0);
     ok('spa 358 scores honestly short on position — end only', good.use.positionSpread === 1 && good.use.positions.end === good.use.phrases);
 
     // Tom on 206 L1: 100% start, 100% first person, zero negation, zero questions.
@@ -244,8 +303,13 @@ ok('a conditional is detected', patternOf("I'd have driven home").tense === 'con
     ok('spa 206 L1 varies at most one of five axes', bad.use.axesVaried <= 1, `got ${bad.use.axesVaried}`);
     ok('spa 206 L1 has zero recency mass', bad.use.recencyMass === 0, `got ${bad.use.recencyMass}`);
     ok('spa 206 L1 catches the con-mis-amigos smuggle', bad.build.gateFailed >= 1);
-    ok('the good set beats the bad set on pattern variety',
-      good.use.distinctPatterns > bad.use.distinctPatterns, `${good.use.distinctPatterns} vs ${bad.use.distinctPatterns}`);
+    // Pattern variety is no longer comparable between these two sets: a phrase
+    // that fails the gate scores no edges and no pattern, so 358's variety now
+    // reads 0 because every one of its phrases carries "reach". Asserting on it
+    // would be asserting on a consequence of the gate verdict, not on variety.
+    // The synthetic pair above still tests the pattern axis directly.
+    ok('spa 206 L1 remains the weaker set on position and recency',
+      bad.use.positionSpread <= 1 && bad.use.recencyMass === 0);
   }
 
   console.log(`\n${pass} passed, ${fail} failed`);
