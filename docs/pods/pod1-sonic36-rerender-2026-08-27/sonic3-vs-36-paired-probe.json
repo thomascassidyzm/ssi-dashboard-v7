@@ -1,0 +1,227 @@
+{
+  "generated": "2026-08-28T00:30:21.829Z",
+  "note": "raw bytes off the API, nothing published",
+  "summary": {
+    "n": 12,
+    "sonic-3": {
+      "median_lufs": -24.450000000000003,
+      "min": -33.5,
+      "max": -20.2,
+      "median_peak": -4.5
+    },
+    "sonic-3.6": {
+      "median_lufs": -23.05,
+      "min": -26.1,
+      "max": -16.9,
+      "median_peak": -4.1
+    },
+    "median_gain_db": 3.0500000000000007,
+    "louder_on_36": 9
+  },
+  "rows": [
+    {
+      "slot": "spa_for_eng:pod-1:SC01-S001",
+      "chars": 20,
+      "text": "Good morning, Sarah!",
+      "sonic-3": {
+        "lufs": -20.2,
+        "lra": 0,
+        "peak_dbfs": -3.8,
+        "bytes": 18861
+      },
+      "sonic-3.6": {
+        "lufs": -16.9,
+        "lra": 0,
+        "peak_dbfs": -3.1,
+        "bytes": 21549
+      }
+    },
+    {
+      "slot": "spa_for_eng:pod-1:SC03-S009",
+      "chars": 19,
+      "text": "Here's your coffee.",
+      "sonic-3": {
+        "lufs": -24,
+        "lra": 0,
+        "peak_dbfs": -6.8,
+        "bytes": 17325
+      },
+      "sonic-3.6": {
+        "lufs": -23.5,
+        "lra": 0,
+        "peak_dbfs": -5,
+        "bytes": 17709
+      }
+    },
+    {
+      "slot": "spa_for_eng:pod-1:SC06-S007",
+      "chars": 38,
+      "text": "This is a lovely city. What do you do?",
+      "sonic-3": {
+        "lufs": -28.8,
+        "lra": 0,
+        "peak_dbfs": -9.3,
+        "bytes": 46893
+      },
+      "sonic-3.6": {
+        "lufs": -21.8,
+        "lra": 0,
+        "peak_dbfs": -5.3,
+        "bytes": 41901
+      }
+    },
+    {
+      "slot": "spa_for_eng:pod-1:SC07-S007",
+      "chars": 78,
+      "text": "Could I have two white coffees and two black coffees and one of those, please?",
+      "sonic-3": {
+        "lufs": -24,
+        "lra": 5.7,
+        "peak_dbfs": -2.8,
+        "bytes": 77613
+      },
+      "sonic-3.6": {
+        "lufs": -23.1,
+        "lra": 1.3,
+        "peak_dbfs": -5.6,
+        "bytes": 73773
+      }
+    },
+    {
+      "slot": "spa_for_eng:pod-1:SC08-S007",
+      "chars": 73,
+      "text": "We have a house red, a house white, or you could have one of our bottles.",
+      "sonic-3": {
+        "lufs": -24.1,
+        "lra": 1.4,
+        "peak_dbfs": -4.5,
+        "bytes": 78381
+      },
+      "sonic-3.6": {
+        "lufs": -21.3,
+        "lra": 1.9,
+        "peak_dbfs": -2.8,
+        "bytes": 69933
+      }
+    },
+    {
+      "slot": "spa_for_eng:pod-1:SC09-S008",
+      "chars": 60,
+      "text": "The lamb is excellent. It's been slow-cooked, with rosemary.",
+      "sonic-3": {
+        "lufs": -24.8,
+        "lra": 20,
+        "peak_dbfs": -4.7,
+        "bytes": 48429
+      },
+      "sonic-3.6": {
+        "lufs": -21.1,
+        "lra": 2.9,
+        "peak_dbfs": -2.5,
+        "bytes": 66093
+      }
+    },
+    {
+      "slot": "spa_for_eng:pod-1:SC10-S006",
+      "chars": 88,
+      "text": "Sunscreen is down there on your right, and you'll find toothpaste just round the corner.",
+      "sonic-3": {
+        "lufs": -25.2,
+        "lra": 4,
+        "peak_dbfs": -3.3,
+        "bytes": 70701
+      },
+      "sonic-3.6": {
+        "lufs": -21.9,
+        "lra": 2.3,
+        "peak_dbfs": -2,
+        "bytes": 76461
+      }
+    },
+    {
+      "slot": "spa_for_eng:pod-1:SC11-S009",
+      "chars": 58,
+      "text": "Wonderful. Is it possible for us to have a late check-out?",
+      "sonic-3": {
+        "lufs": -20.6,
+        "lra": 20,
+        "peak_dbfs": -3.3,
+        "bytes": 48429
+      },
+      "sonic-3.6": {
+        "lufs": -23,
+        "lra": 0.5,
+        "peak_dbfs": -4.4,
+        "bytes": 54573
+      }
+    },
+    {
+      "slot": "spa_for_eng:pod-1:SC12-S010",
+      "chars": 32,
+      "text": "19. 20. 21. Wednesday. Thursday.",
+      "sonic-3": {
+        "lufs": -33.5,
+        "lra": 1.4,
+        "peak_dbfs": -11.1,
+        "bytes": 78381
+      },
+      "sonic-3.6": {
+        "lufs": -26.1,
+        "lra": 1.3,
+        "peak_dbfs": -5.6,
+        "bytes": 79149
+      }
+    },
+    {
+      "slot": "spa_for_eng:pod-1:SC14-S001",
+      "chars": 52,
+      "text": "Hello. Can you take me to the train station, please?",
+      "sonic-3": {
+        "lufs": -22.1,
+        "lra": 0,
+        "peak_dbfs": -3.2,
+        "bytes": 46509
+      },
+      "sonic-3.6": {
+        "lufs": -23.9,
+        "lra": 20,
+        "peak_dbfs": -3.6,
+        "bytes": 50733
+      }
+    },
+    {
+      "slot": "spa_for_eng:pod-1:SC16-S011",
+      "chars": 41,
+      "text": "A million. 80. 90. 2 o'clock. 10 o'clock.",
+      "sonic-3": {
+        "lufs": -30.8,
+        "lra": 5,
+        "peak_dbfs": -8.9,
+        "bytes": 98349
+      },
+      "sonic-3.6": {
+        "lufs": -25.7,
+        "lra": 1.1,
+        "peak_dbfs": -6,
+        "bytes": 71469
+      }
+    },
+    {
+      "slot": "spa_for_eng:pod-1:SC19-S011",
+      "chars": 32,
+      "text": "5 o'clock. 7 o'clock. May. June.",
+      "sonic-3": {
+        "lufs": -25.6,
+        "lra": 2.1,
+        "peak_dbfs": -4.5,
+        "bytes": 77613
+      },
+      "sonic-3.6": {
+        "lufs": -26,
+        "lra": 1.2,
+        "peak_dbfs": -3.8,
+        "bytes": 63789
+      }
+    }
+  ]
+}
