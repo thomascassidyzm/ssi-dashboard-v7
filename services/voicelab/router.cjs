@@ -32,6 +32,7 @@ const lab = require('./lab.cjs')
 const store = require('./store.cjs')
 const params = require('./params.cjs')
 const content = require('./content.cjs')
+const registry = require('./registry.cjs')
 
 /**
  * @param {object} app        express app
@@ -41,7 +42,16 @@ const content = require('./content.cjs')
  * @param {object}   [deps.logger]
  */
 function mount (app, deps) {
-  const { requireAdmin, requireDashboardUser, logger = console } = deps
+  const {
+    requireAdmin,
+    requireDashboardUser,
+    logger = console,
+    // Defaulted rather than required, so mounting this router does not change
+    // production-api.cjs's one-line mount call. Lazy for the same reason the
+    // runner is lazy: requiring the client at mount time would make one missing
+    // env var take the whole production API down at boot.
+    supabase = () => require('../supabase-client.cjs').getClient(),
+  } = deps
 
   // Lazy: mounting must not pull in phase8 or a TTS client, or one missing env var takes
   // the whole production API down at boot rather than failing one lab request.
@@ -73,6 +83,77 @@ function mount (app, deps) {
     try {
       res.json(await params.payload({ charsSpentToday: store.charsSpentToday() }))
     } catch (err) { fail(res, err, 'params') }
+  })
+
+  // ── THE PER-LANGUAGE REGISTRY — the lab's front door ─────────────────────
+  //
+  // Tom, 2026-08-28: "a single place to check configured voices per language".
+  // Read-only and spends nothing, so it is open to any dashboard user; the two
+  // writes below are admin, because casting a voice is an estate decision.
+
+  app.get('/api/voicelab/languages', async (req, res) => {
+    if (!await requireDashboardUser(req, res)) return
+    try {
+      res.json(await registry.build(supabase()))
+    } catch (err) { fail(res, err, 'languages') }
+  })
+
+  /**
+   * Cast a voice into a (language, gender, rank) slot.
+   *
+   * SPENDS NOTHING. This writes one row of voice_language_roles and nothing
+   * else — no render is triggered, no course_audio row is touched, no
+   * voice_config is written. Casting and rendering are deliberately separate:
+   * the lab exports a config for a human to apply, and that rule survives.
+   */
+  app.put('/api/voicelab/languages/:language/slot', async (req, res) => {
+    const user = await requireAdmin(req, res)
+    if (!user) return
+    try {
+      const language = String(req.params.language || '').trim()
+      const { gender, rank, voiceId, notes = null } = req.body || {}
+      if (!language) throw Object.assign(new Error('language is required'), { status: 400 })
+      if (!registry.GENDERS.includes(gender)) {
+        throw Object.assign(new Error(`gender must be one of ${registry.GENDERS.join(', ')}`), { status: 400 })
+      }
+      const r = Number(rank)
+      if (!Number.isInteger(r) || r < 0 || r >= registry.REQUIRED_RANKS) {
+        throw Object.assign(new Error(`rank must be an integer 0..${registry.REQUIRED_RANKS - 1}`), { status: 400 })
+      }
+      if (!voiceId) throw Object.assign(new Error('voiceId is required — to empty a slot use DELETE'), { status: 400 })
+
+      const { error } = await supabase()
+        .from('voice_language_roles')
+        .upsert({
+          language, gender, rank: r, voice_id: String(voiceId), notes,
+          assigned_by: who(user), updated_at: new Date().toISOString(),
+        }, { onConflict: 'language,gender,rank' })
+      if (error) throw Object.assign(new Error(error.message), { status: 400 })
+
+      logger.log?.(`[voicelab] cast ${language}/${gender}/rank${r} = ${voiceId} by ${who(user)}`)
+      res.json({ ok: true, language, gender, rank: r, voiceId })
+    } catch (err) { fail(res, err, 'cast') }
+  })
+
+  /** Empty a slot. The language then reads as incomplete, which is the point. */
+  app.delete('/api/voicelab/languages/:language/slot', async (req, res) => {
+    const user = await requireAdmin(req, res)
+    if (!user) return
+    try {
+      const language = String(req.params.language || '').trim()
+      const gender = String(req.query.gender || '')
+      const rank = Number(req.query.rank)
+      if (!language || !registry.GENDERS.includes(gender) || !Number.isInteger(rank)) {
+        throw Object.assign(new Error('language, gender and rank are all required'), { status: 400 })
+      }
+      const { error } = await supabase()
+        .from('voice_language_roles')
+        .delete()
+        .eq('language', language).eq('gender', gender).eq('rank', rank)
+      if (error) throw Object.assign(new Error(error.message), { status: 400 })
+      logger.log?.(`[voicelab] cleared ${language}/${gender}/rank${rank} by ${who(user)}`)
+      res.json({ ok: true, language, gender, rank })
+    } catch (err) { fail(res, err, 'clear') }
   })
 
   // ── The sentence picker: real course text, read-only, spends nothing ──────
