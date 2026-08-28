@@ -128,7 +128,7 @@ function summarise (e) {
               <span v-if="e.status === 'running'" class="vl-chip unchecked">running</span>
               <span v-else>{{ e.totals?.admitted ?? '—' }}</span>
             </td>
-            <td class="vl-muted">{{ (e.totals?.usd ?? 0).toFixed(4) }}</td>
+            <td class="vl-muted">{{ e.totals?.usd == null ? '—' : e.totals.usd.toFixed(4) }}</td>
             <td>
               <button class="vl-btn" :disabled="busyId === e.id" @click="open(e.id, 'A')">Open</button>
               <button class="vl-btn" :disabled="busyId === e.id" @click="open(e.id, 'B'); compare = true">Beside</button>

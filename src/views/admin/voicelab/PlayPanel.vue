@@ -15,15 +15,16 @@
  * Every slider here moves something you can HEAR. That is the whole selection
  * rule, and it is why there are three rather than a tidy five:
  *
- *   PACE       provider `speed`. Reaches Azure as SSML <prosody rate>. xAI
- *              documents no speed parameter, so on an xAI voice this slider is
+ *   PACE       provider `speed`. Reaches Azure as SSML <prosody rate> and
+ *              Cartesia as generation_config.speed. Where a provider ignores it
+ *              (see providers[].supports) this slider is
  *              disabled and says why — it is not quietly ignored.
  *   LOUDNESS   `masterLufs`, the level the clip is MASTERED to. Not the
  *              loudness gate's band: the band decides what the store would
  *              admit, this decides what comes out of the speaker. Moving the
  *              band alone would change a verdict and not one byte of audio.
  *   DETAIL     sample rate and bit rate together, as one "how much of the
- *              sound is kept" control. Real on xAI (they are threaded into
+ *              sound is kept" control. Real on Cartesia (they are threaded into
  *              output_format); pinned by generateAzure, so disabled on Azure.
  *
  * Every position of every slider is inside a range that renders and passes the
@@ -31,7 +32,7 @@
  * cannot drag yourself into a refusal by accident.
  *
  * Provider is NOT a picker here: a voice belongs to a provider, so choosing
- * Tom's clone chooses xAI. One decision instead of two that can contradict.
+ * Tom's clone chooses Cartesia. One decision instead of two that can contradict.
  *
  * Same spend guards as everywhere else in the lab: the backend estimates, the
  * daily ceiling refuses, and the button will not arm without an estimate that
@@ -71,7 +72,7 @@ const voice = computed(() =>
   (languageRow.value?.voices || []).find((v) => v.id === voiceId.value) || null)
 
 /** The provider is the voice's, never a separate choice that could disagree. */
-const provider = computed(() => voice.value?.provider || defaults.value.provider || 'xai')
+const provider = computed(() => voice.value?.provider || defaults.value.provider || 'cartesia')
 
 const providerRow = computed(() =>
   (props.params.providers || []).find((p) => p.id === provider.value) || { supports: {} })
@@ -538,7 +539,7 @@ function gateDetail (clip) {
         <template v-if="estimating">working out the cost…</template>
         <template v-else-if="estimate">
           {{ estimate.clips }} clip{{ estimate.clips === 1 ? '' : 's' }} ·
-          ${{ estimate.usd.toFixed(4) }} ·
+          {{ estimate.usd == null ? 'not priced' : '$' + estimate.usd.toFixed(4) }} ·
           {{ estimate.ceilingRemaining.toLocaleString() }} characters left today
           <strong v-if="estimate.wouldExceed" class="play-err">
             — over the daily ceiling, so it is refused rather than quietly costing money.

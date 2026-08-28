@@ -112,7 +112,7 @@ const byConfig = computed(() => {
       <div class="vl-muted">
         {{ (experiment.clips || []).length }} clips ·
         {{ experiment.totals?.chars ?? 0 }} chars ·
-        ${{ (experiment.totals?.usd ?? 0).toFixed(4) }}
+        {{ experiment.totals?.usd == null ? 'not priced' : '$' + experiment.totals.usd.toFixed(4) }}
         <span v-if="experiment.at"> · {{ String(experiment.at).slice(0, 16).replace('T', ' ') }}</span>
       </div>
     </div>

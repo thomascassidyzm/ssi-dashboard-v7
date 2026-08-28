@@ -51,8 +51,8 @@ function load () {
  * Turn one lab config into the provider config `generate` expects.
  *
  * Only fields the provider actually honours are threaded — see lab.PROVIDERS for the
- * per-provider truth. Silently passing `speed` to xAI would produce a clip identical to
- * the one before it and a lab report claiming speed was tested.
+ * per-provider truth. Silently passing a knob a provider ignores would produce a clip
+ * identical to the one before it and a lab report claiming that knob was tested.
  */
 function providerConfig (cfg, lang) {
   if (cfg.provider === 'azure') {
@@ -63,14 +63,38 @@ function providerConfig (cfg, lang) {
       speed: cfg.speed,
     }
   }
-  return {
-    apiKey: process.env.XAI_API_KEY,
-    voiceId: cfg.voiceId,
-    language: lang.steer,
-    codec: cfg.codec || 'mp3',
-    sampleRate: cfg.sampleRate,
-    bitRate: cfg.bitRate,
+  if (cfg.provider === 'cartesia') {
+    return {
+      apiKey: process.env.CARTESIA_API_KEY,
+      voiceId: cfg.voiceId,
+      // `locale`, not `language`: generateCartesia steers on locale and THROWS
+      // when it is absent rather than defaulting, so the lab must supply it.
+      // lang.locale is the BCP-47 form; lang.steer is the bare two-letter code.
+      locale: lang.locale || lang.azureLocale || lang.steer,
+      speed: cfg.speed,
+      sampleRate: cfg.sampleRate,
+      bitRate: cfg.bitRate,
+    }
   }
+  throw Object.assign(
+    new Error(
+      `Voice Lab cannot render on provider "${cfg.provider}". Selectable providers are ` +
+      `${lab.PROVIDERS.map((p) => p.id).join(' and ')}. xAI is retired from selection ` +
+      '(Tom 2026-08-27) and ElevenLabs is explicit-only and expensive, so neither is ' +
+      'reachable from the lab.',
+    ),
+    { status: 400 },
+  )
+}
+
+/**
+ * Dollars per clip. Null for every provider today: no verified rate exists in this
+ * repo (see lab.USD_PER_MILLION_CHARS). Kept as a function so the day a rate is
+ * confirmed it is one line, and so the lab never reports a guess as a fact.
+ */
+function costUsdFor (provider, chars) {
+  const rate = lab.USD_PER_MILLION_CHARS[provider] ?? null
+  return rate == null ? null : +(chars / 1e6 * rate).toFixed(5)
 }
 
 /** Render and master one clip. Returns the mastered bytes and the timings. */
@@ -143,7 +167,7 @@ function buildExperiment ({ id, kind, title, sentences, configs, blind, notes, c
         url: null,
         status: 'pending',
         chars: line.text.length,
-        costUsd: cfg.provider === 'xai' ? +(line.text.length / 1e6 * lab.XAI_USD_PER_MILLION_CHARS).toFixed(5) : 0,
+        costUsd: costUsdFor(cfg.provider, line.text.length),
         durationMs: null,
         renderMs: null,
         masterMs: null,
@@ -156,8 +180,8 @@ function buildExperiment ({ id, kind, title, sentences, configs, blind, notes, c
   }
 
   const caveats = []
-  if (cfgs.some((c) => c.provider === 'xai' && c.speed !== 1)) {
-    caveats.push('A speed other than 1 was set on an xAI config and xAI has no speed parameter — that clip rendered at the voice\'s own pace. See providers[].supports.')
+  if (cfgs.some((c) => !lab.PROVIDERS.find((p) => p.id === c.provider)?.supports?.codec && c.codec && c.codec !== 'mp3')) {
+    caveats.push('A codec other than mp3 was set on a provider whose container this lab pins to mp3 — that clip rendered as mp3 regardless. See providers[].supports.')
   }
   if (cfgs.some((c) => c.provider === 'azure' && (c.style || c.pitch))) {
     caveats.push('A style or pitch was set on an Azure config; generateAzure emits no mstts:express-as and no prosody pitch, so neither reached the render.')

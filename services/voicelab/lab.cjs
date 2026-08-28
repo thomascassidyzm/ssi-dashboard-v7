@@ -20,8 +20,24 @@ const durationTier = require('../audio-intelligence/tiers/tier1-duration.cjs')
 const veracity = require('../audio-veracity.cjs')
 const gateStack = require('../audio-intelligence/gate-stack.cjs')
 
-/** xAI's published TTS price. Azure is billed on a different plan and is NOT metered here. */
-const XAI_USD_PER_MILLION_CHARS = 15
+/**
+ * DOLLARS ARE NOT CLAIMED, AND THAT IS DELIBERATE.
+ *
+ * The lab used to price runs at xAI's published $15/M characters. xAI is RETIRED
+ * from selection (Tom 2026-08-27, services/shared/tts-provider-policy.cjs) so
+ * that rate now prices a provider this lab can no longer call, which is worse
+ * than no number at all.
+ *
+ * Cartesia and Azure are both billed on plans this repo has never verified — no
+ * figure for either exists anywhere in the codebase (checked 2026-08-28). Rather
+ * than transcribe a rate off a pricing page and let it rot silently, the lab
+ * meters the unit it can actually count and actually enforce: CHARACTERS. The
+ * daily ceiling below is a character ceiling, so nothing is lost — the guard that
+ * stops a run was never the dollar figure.
+ *
+ * `usd` is reported as null (meaning "not priced"), never 0 (meaning "free").
+ */
+const USD_PER_MILLION_CHARS = Object.freeze({ cartesia: null, azure: null, elevenlabs: null })
 
 /**
  * What masterAudio normalises to when nobody asks for anything else — the house
@@ -37,7 +53,7 @@ const LIMITS = {
   maxCharsPerSentence: 300,
   maxSentencesPerBatch: 20,
   maxConfigs: 2,
-  dailyCharCeiling: Number(process.env.VOICELAB_DAILY_CHARS || 60000), // ≈ $0.90/day at xAI rates
+  dailyCharCeiling: Number(process.env.VOICELAB_DAILY_CHARS || 60000), // characters/day across every provider
 }
 
 /**
@@ -83,10 +99,10 @@ function defaultThresholds () {
  */
 const PROVIDERS = [
   {
-    id: 'xai',
-    name: 'xAI',
-    supports: { speed: false, style: false, styleDegree: false, pitch: false, sampleRate: true, bitRate: true, codec: true },
-    note: 'xAI documents no speed, style or pitch parameter on /v1/tts (services/tts-service.cjs:433). Codec, sample rate and bit rate are real and are threaded through output_format.',
+    id: 'cartesia',
+    name: 'Cartesia (sonic-3.6)',
+    supports: { speed: true, style: false, styleDegree: false, pitch: false, sampleRate: true, bitRate: true, codec: false },
+    note: 'Speed is real: it reaches Cartesia as generation_config.speed (services/tts-service.cjs generateCartesia). Sample rate and bit rate are threaded through output_format. The container is pinned to mp3, so codec is not yours to set, and Cartesia documents no style or pitch parameter.',
   },
   {
     id: 'azure',
@@ -101,7 +117,7 @@ function normaliseConfig (raw = {}, defaults = {}) {
   const t = raw.thresholds || {}
   const dt = defaults.thresholds || defaultThresholds()
   return {
-    provider: String(raw.provider || defaults.provider || 'xai'),
+    provider: String(raw.provider || defaults.provider || 'cartesia'),
     voiceId: String(raw.voiceId || defaults.voiceId || ''),
     voiceName: String(raw.voiceName || raw.voiceId || defaults.voiceName || ''),
     language: String(raw.language || defaults.language || ''),
@@ -136,12 +152,16 @@ function num (v, fallback) {
 /** The default parameter set the UI opens on. */
 function defaultConfig (extra = {}) {
   return normaliseConfig({
-    provider: 'xai',
-    // Tom's clone, and German: the one language pair where the syllable-rate tier is
-    // both fitted and calibrated, so every gate has something to say on the first run.
-    voiceId: 'gfzdpspr5fdp',
-    voiceName: "Tom's clone",
-    language: 'deu',
+    provider: 'cartesia',
+    // A PUBLIC Cartesia voice, deliberately — NOT Tom's clone. The clone is
+    // "explicit cast only, never auto-assigned" (tts-provider-policy.cjs), and an
+    // opening default that pre-selects it would be exactly the auto-assignment
+    // that rule forbids. This id was verified live against /tts/bytes on
+    // 2026-08-28; if Cartesia ever withdraws it the lab shows a render error
+    // naming the voice, which is the honest failure.
+    voiceId: 'db6b0ed5-d5d3-463d-ae85-518a07d3c2b4',
+    voiceName: 'Skylar (Cartesia, en)',
+    language: 'eng',
     ...extra,
   })
 }
@@ -150,9 +170,9 @@ function defaultConfig (extra = {}) {
  * What a run will cost, before a penny is spent.
  *
  * Characters are the billing unit and the ceiling's unit, so they are counted for
- * every provider. Dollars are only claimed for xAI, because that is the only price
- * this estate has wired; an Azure clip reports `usd: 0` and says why in `caveats`
- * rather than inventing a number.
+ * every provider. NO provider carries a verified price in this repo, so `usd` is
+ * null everywhere — "not priced", which is the truth, rather than 0, which would
+ * read as "free". The character ceiling is what actually stops a run.
  *
  * @param {object} a
  * @param {string[]} a.sentences
@@ -164,7 +184,8 @@ function estimate ({ sentences = [], configs = [], charsSpentToday = 0, limits =
   const texts = sentences.map((s) => String(s || '').trim()).filter(Boolean)
   const perConfig = configs.map((cfg, i) => {
     const chars = texts.reduce((n, t) => n + t.length, 0)
-    const metered = cfg.provider === 'xai'
+    const rate = USD_PER_MILLION_CHARS[cfg.provider] ?? null
+    const metered = rate != null
     return {
       key: cfg.key || String.fromCharCode(65 + i),
       provider: cfg.provider,
@@ -172,17 +193,19 @@ function estimate ({ sentences = [], configs = [], charsSpentToday = 0, limits =
       voiceName: cfg.voiceName || cfg.voiceId,
       clips: texts.length,
       chars,
-      usd: metered ? round5(chars / 1e6 * XAI_USD_PER_MILLION_CHARS) : 0,
+      usd: metered ? round5(chars / 1e6 * rate) : null,
       metered,
     }
   })
 
   const chars = perConfig.reduce((n, p) => n + p.chars, 0)
-  const usd = round5(perConfig.reduce((n, p) => n + p.usd, 0))
+  const usd = perConfig.some((p) => p.usd != null)
+    ? round5(perConfig.reduce((n, p) => n + (p.usd || 0), 0))
+    : null
   const ceilingRemaining = Math.max(0, limits.dailyCharCeiling - charsSpentToday)
   const caveats = []
   if (perConfig.some((p) => !p.metered)) {
-    caveats.push('Azure clips count against the character ceiling but carry no dollar figure — Azure is billed on a separate plan this lab does not meter.')
+    caveats.push('Clips count against the daily CHARACTER ceiling. No dollar figure is shown because neither Cartesia nor Azure has a rate verified in this repo — the lab reports what it can count rather than a price it would have to guess.')
   }
 
   return {
@@ -371,7 +394,7 @@ function summarise (experiment) {
 }
 
 module.exports = {
-  XAI_USD_PER_MILLION_CHARS,
+  USD_PER_MILLION_CHARS,
   HOUSE_MASTER_LUFS,
   LIMITS,
   PROVIDERS,

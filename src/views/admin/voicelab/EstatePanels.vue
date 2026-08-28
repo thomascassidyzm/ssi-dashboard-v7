@@ -256,7 +256,7 @@
  *
  * Four jobs, each answering a failure this estate has actually had:
  *   1 audition  — which voice should this course side declare
- *   2 compare   — is xAI genuinely better for this language (blind if you want it blind)
+ *   2 compare   — is this voice genuinely better for this language (blind if you want it blind)
  *   3 declare   — the ten-voices problem, closed at the point where it starts
  *   4 drift     — has this side stayed one person
  *
