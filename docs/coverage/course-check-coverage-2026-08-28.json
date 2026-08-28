@@ -1,0 +1,3566 @@
+{
+ "built": "2026-08-28",
+ "checks": [
+  {
+   "id": "knownside",
+   "short": "known-side untaught word",
+   "name": "Known-side untaught-word gate (v2)",
+   "tool": "tools/known-side/sweep.cjs",
+   "what": "does a prompt use a known-language word this course has not taught yet",
+   "caveat": "Sweep-only \u2014 the live submit path still calls the older v1 gate. Japanese-known courses come back 'cannot judge', not 'clean'."
+  },
+  {
+   "id": "buildteach",
+   "short": "BUILD teaches its word",
+   "name": "BUILD phrase must teach its own known-side word",
+   "tool": "tools/known-side/build-teaches-word-sweep.cjs",
+   "what": "does each BUILD phrase's prompt actually contain the word its LEGO teaches, rather than a near-synonym",
+   "caveat": "Built and calibrated for Japanese-prompt courses only; it cannot be pointed at another known language as-is."
+  },
+  {
+   "id": "teachorder",
+   "short": "teaching-order scan",
+   "name": "Known-side teaching-order scan (spaceless scripts)",
+   "tool": "known-side-gate-v2 ordering fix",
+   "what": "does a practice sentence show a word this same course only teaches at a later seed",
+   "caveat": "Under-reports by design; on these six courses it could date only 30\u201366% of rows."
+  },
+  {
+   "id": "boundary",
+   "short": "lesson/LEGO boundary",
+   "name": "Lesson-boundary rule (can either side stand alone?)",
+   "tool": "hand-sort of the 120, then a repair pass",
+   "what": "is each LEGO a unit a learner could actually say on both sides, and does its label name the right word",
+   "caveat": "Ran as a one-off human sort over 120 flagged cases, not as a committed tool. There is no re-runnable script."
+  },
+  {
+   "id": "knowclash",
+   "short": "know-clash (twin verbs)",
+   "name": "Know-clash: one known word, two target verbs",
+   "tool": "hand method, documented 2026-08-27",
+   "what": "does one English word (know, meet) point at two different target verbs with nothing bridging them",
+   "caveat": "A documented method and a reading, not a tool. Nothing automates it yet."
+  },
+  {
+   "id": "vocabdisc",
+   "short": "vocabulary discontinuity",
+   "name": "Vocabulary discontinuity",
+   "tool": "scoping run, 2026-08-27",
+   "what": "does a word the learner already owns silently change into a different target word later in the course",
+   "caveat": "Scoped and calibrated, not built. ~85% false-positive rate; recommended as a ranked reading list, never a gate."
+  },
+  {
+   "id": "zut",
+   "short": "ZUT audit (3 buckets)",
+   "name": "ZUT audit \u2014 same known, different target",
+   "tool": "tools/course-optimization/audit-phrase-zut.cjs",
+   "what": "the core rail: one known prompt must resolve to exactly one target form",
+   "caveat": "The tool is not on main \u2014 every run pulled it off an unmerged branch. Course list is hardcoded and edited by hand per run."
+  },
+  {
+   "id": "zutgate",
+   "short": "ZUT gate-and-fix (Jun)",
+   "name": "ZUT gate-and-fix pass on the English-for-X courses",
+   "tool": "scripts/gen-zut-flags.cjs (not committed)",
+   "what": "an earlier, differently-bucketed ZUT sweep across the sixteen English-for-X courses",
+   "caveat": "2026-06-15, a different lineage from the audit above \u2014 do not add the two together. The applicator script and its backups are not in the repo."
+  },
+  {
+   "id": "forwardref",
+   "short": "forward-reference tiling",
+   "name": "Forward-reference / tiling replay",
+   "tool": "tools/course-optimization/check-repair-phrases.cjs",
+   "what": "replays the submit gate's tiling against only the vocabulary taught before that phrase",
+   "caveat": "Checks a supplied list of phrases, not a whole course. The Spanish figure is a 2.6% sample."
+  },
+  {
+   "id": "mismatch",
+   "short": "known/target completeness",
+   "name": "Known/target content-completeness",
+   "tool": "tools/qa/known-target-mismatch/detect-mismatch.cjs",
+   "what": "do the two sides of a practice row say the same thing, or has the target dropped a clause",
+   "caveat": "Language packs exist for English-known and Spanish-target only; any other pair loses the tense signal."
+  },
+  {
+   "id": "edgemap",
+   "short": "LEGO edge map",
+   "name": "LEGO edge map",
+   "tool": "tools/course-optimization/lego-edge-map.cjs",
+   "what": "what does each new LEGO actually connect to \u2014 is the course building on itself or restating itself",
+   "caveat": "Read-only by design; it reports structure, so its output is a shape rather than a defect count."
+  },
+  {
+   "id": "filler",
+   "short": "filler BUILD scan",
+   "name": "Filler BUILD scan",
+   "tool": "filler2.cjs (uncommitted scratch)",
+   "what": "are BUILD phrases just the LEGO plus 'here'/'yesterday'/'before' instead of real recombination",
+   "caveat": "The only trustworthy version is an uncommitted scratch file, and its padding list is English words matched against the known side \u2014 so any course whose learners are not English speakers scores zero by construction, which is not a pass."
+  },
+  {
+   "id": "langname",
+   "short": "language-name contamination",
+   "name": "Language-name contamination sweep",
+   "tool": "tools/language-name-contamination/scan6.cjs",
+   "what": "is the wrong language's name sitting in a course \u2014 'she speaks Yoruba' inside the Friulian course",
+   "caveat": "Genuinely estate-wide and script-aware, but it searched seed sentences only, not LEGOs or practice phrases. One pass, 2026-08-19; anything introduced since is unmeasured."
+  },
+  {
+   "id": "presdrift",
+   "short": "presentation drift",
+   "name": "Presentation-clip drift",
+   "tool": "tools/check-presentation-drift.cjs",
+   "what": "does the spoken teaching clip announce the same phrase the learner's card shows",
+   "caveat": "Ran estate-wide at 99.99% coverage, but only the 120 worst rows across seven courses were ever triaged. 2,744 more flagged rows across about seventy courses were never sorted, and nobody published which courses they are \u2014 so most of this column is 'ran, outcome unknown'."
+  },
+  {
+   "id": "distinction",
+   "short": "distinction coverage",
+   "name": "Distinction coverage",
+   "tool": "tools/check-distinction-coverage.cjs",
+   "what": "is a grammatical distinction (gender, formality) marked on one side of the pair and not the other",
+   "caveat": "Proposes, never applies. Its stronger detectors need per-language morphology config, which exists for Hindi alone. An estate census counted which courses have an asymmetric axis (118 of 146) but did not scan them for defects."
+  },
+  {
+   "id": "phrasemon",
+   "short": "LEGO frequency / variety",
+   "name": "LEGO frequency and phrase variety",
+   "tool": "services/phrase-monitor.cjs",
+   "what": "is one LEGO doing all the work, are some barely used, do USE phrases all start the same way",
+   "caveat": "A clean course leaves no row, so the database cannot tell 'never scanned' from 'scanned, nothing found'. Only three courses have flags, all from early 2026. Everything else is genuinely unknown and shown as never-run."
+  },
+  {
+   "id": "checkpoint",
+   "short": "checkpoint QA (early 2026)",
+   "name": "Build-time checkpoint QA",
+   "tool": "services/course-builder/lib/checkpoint.cjs",
+   "what": "an LLM reviewer scores quality and vocabulary violations at seeds 10, 50, 150 and 300 during the build",
+   "caveat": "STALE. The endpoint is still live but nothing has written to it since 17 February 2026. It never looked past seed 300, and the paid courses have since grown to 668 \u2014 so a green here describes a course that no longer exists in that form."
+  },
+  {
+   "id": "introorder",
+   "short": "introduction-order probe",
+   "name": "Introduction-order probe",
+   "tool": "tools/deborah/intro-round.cjs + early-use-scan.cjs",
+   "what": "is an expression used in a phrase before the round that introduces it",
+   "caveat": "Takes one word at a time, not a course. The single run probed five words \u2014 a course is never 'covered' by this."
+  }
+ ],
+ "courses": [
+  {
+   "code": "afr_for_eng",
+   "legos": 515,
+   "seeds": 300,
+   "group": "for English speakers"
+  },
+  {
+   "code": "ara_eg_for_eng",
+   "legos": 1386,
+   "seeds": 668,
+   "group": "for English speakers"
+  },
+  {
+   "code": "ara_for_eng",
+   "legos": 1401,
+   "seeds": 668,
+   "group": "for English speakers"
+  },
+  {
+   "code": "ara_lb_for_eng",
+   "legos": 1546,
+   "seeds": 668,
+   "group": "for English speakers"
+  },
+  {
+   "code": "ben_for_eng",
+   "legos": 754,
+   "seeds": 300,
+   "group": "for English speakers"
+  },
+  {
+   "code": "bre_for_eng",
+   "legos": 42,
+   "seeds": 14,
+   "group": "for English speakers"
+  },
+  {
+   "code": "bre_for_fra",
+   "legos": 630,
+   "seeds": 300,
+   "group": "bre for fra speakers"
+  },
+  {
+   "code": "bul_for_eng",
+   "legos": 599,
+   "seeds": 300,
+   "group": "for English speakers"
+  },
+  {
+   "code": "cat_for_eng",
+   "legos": 625,
+   "seeds": 300,
+   "group": "for English speakers"
+  },
+  {
+   "code": "cat_for_spa",
+   "legos": 1411,
+   "seeds": 300,
+   "group": "cat for spa speakers"
+  },
+  {
+   "code": "ces_for_eng",
+   "legos": 659,
+   "seeds": 300,
+   "group": "for English speakers"
+  },
+  {
+   "code": "cor_for_eng",
+   "legos": 73,
+   "seeds": 25,
+   "group": "for English speakers"
+  },
+  {
+   "code": "cym_anthem_for_jpn",
+   "legos": 27,
+   "seeds": 7,
+   "group": "cym for jpn speakers"
+  },
+  {
+   "code": "cym_for_yor",
+   "legos": 767,
+   "seeds": 313,
+   "group": "cym for yor speakers"
+  },
+  {
+   "code": "cym_n_for_eng",
+   "legos": 635,
+   "seeds": 305,
+   "group": "for English speakers"
+  },
+  {
+   "code": "cym_nnew_for_eng",
+   "legos": 457,
+   "seeds": 267,
+   "group": "for English speakers"
+  },
+  {
+   "code": "cym_s_for_eng",
+   "legos": 679,
+   "seeds": 334,
+   "group": "for English speakers"
+  },
+  {
+   "code": "dan_for_eng",
+   "legos": 576,
+   "seeds": 300,
+   "group": "for English speakers"
+  },
+  {
+   "code": "deu_at_for_eng",
+   "legos": 1259,
+   "seeds": 668,
+   "group": "for English speakers"
+  },
+  {
+   "code": "deu_ch_for_eng",
+   "legos": 1558,
+   "seeds": 668,
+   "group": "for English speakers"
+  },
+  {
+   "code": "deu_for_eng",
+   "legos": 1570,
+   "seeds": 668,
+   "group": "for English speakers"
+  },
+  {
+   "code": "deu_for_jpn",
+   "legos": 649,
+   "seeds": 300,
+   "group": "deu for jpn speakers"
+  },
+  {
+   "code": "deu_for_zho",
+   "legos": 728,
+   "seeds": 300,
+   "group": "deu for zho speakers"
+  },
+  {
+   "code": "ell_for_eng",
+   "legos": 1023,
+   "seeds": 300,
+   "group": "for English speakers"
+  },
+  {
+   "code": "eng_for_ara",
+   "legos": 600,
+   "seeds": 300,
+   "group": "English for ara"
+  },
+  {
+   "code": "eng_for_ben",
+   "legos": 1323,
+   "seeds": 668,
+   "group": "English for ben"
+  },
+  {
+   "code": "eng_for_deu",
+   "legos": 630,
+   "seeds": 300,
+   "group": "English for deu"
+  },
+  {
+   "code": "eng_for_fra",
+   "legos": 648,
+   "seeds": 300,
+   "group": "English for fra"
+  },
+  {
+   "code": "eng_for_guj",
+   "legos": 1445,
+   "seeds": 668,
+   "group": "English for guj"
+  },
+  {
+   "code": "eng_for_hin",
+   "legos": 1327,
+   "seeds": 668,
+   "group": "English for hin"
+  },
+  {
+   "code": "eng_for_ita",
+   "legos": 598,
+   "seeds": 300,
+   "group": "English for ita"
+  },
+  {
+   "code": "eng_for_jpn",
+   "legos": 719,
+   "seeds": 300,
+   "group": "English for jpn"
+  },
+  {
+   "code": "eng_for_kan",
+   "legos": 1554,
+   "seeds": 668,
+   "group": "English for kan"
+  },
+  {
+   "code": "eng_for_kor",
+   "legos": 546,
+   "seeds": 300,
+   "group": "English for kor"
+  },
+  {
+   "code": "eng_for_mar",
+   "legos": 1407,
+   "seeds": 668,
+   "group": "English for mar"
+  },
+  {
+   "code": "eng_for_pan",
+   "legos": 1323,
+   "seeds": 668,
+   "group": "English for pan"
+  },
+  {
+   "code": "eng_for_por",
+   "legos": 616,
+   "seeds": 300,
+   "group": "English for por"
+  },
+  {
+   "code": "eng_for_sin",
+   "legos": 1300,
+   "seeds": 668,
+   "group": "English for sin"
+  },
+  {
+   "code": "eng_for_spa",
+   "legos": 618,
+   "seeds": 300,
+   "group": "English for spa"
+  },
+  {
+   "code": "eng_for_tam",
+   "legos": 1421,
+   "seeds": 668,
+   "group": "English for tam"
+  },
+  {
+   "code": "eng_for_tel",
+   "legos": 1504,
+   "seeds": 668,
+   "group": "English for tel"
+  },
+  {
+   "code": "eng_for_urd",
+   "legos": 1169,
+   "seeds": 668,
+   "group": "English for urd"
+  },
+  {
+   "code": "eng_for_zho",
+   "legos": 502,
+   "seeds": 299,
+   "group": "English for zho"
+  },
+  {
+   "code": "eng_template",
+   "legos": 572,
+   "seeds": 300,
+   "group": "for English speakers"
+  },
+  {
+   "code": "est_for_eng",
+   "legos": 659,
+   "seeds": 300,
+   "group": "for English speakers"
+  },
+  {
+   "code": "eus_for_eng",
+   "legos": 744,
+   "seeds": 300,
+   "group": "for English speakers"
+  },
+  {
+   "code": "eus_for_spa",
+   "legos": 609,
+   "seeds": 300,
+   "group": "eus for spa speakers"
+  },
+  {
+   "code": "fas_for_eng",
+   "legos": 852,
+   "seeds": 300,
+   "group": "for English speakers"
+  },
+  {
+   "code": "fin_for_eng",
+   "legos": 1425,
+   "seeds": 668,
+   "group": "for English speakers"
+  },
+  {
+   "code": "fra_ca_for_eng",
+   "legos": 1366,
+   "seeds": 668,
+   "group": "for English speakers"
+  },
+  {
+   "code": "fra_for_eng",
+   "legos": 1653,
+   "seeds": 668,
+   "group": "for English speakers"
+  },
+  {
+   "code": "fra_for_jpn",
+   "legos": 706,
+   "seeds": 300,
+   "group": "fra for jpn speakers"
+  },
+  {
+   "code": "fra_for_zho",
+   "legos": 622,
+   "seeds": 300,
+   "group": "fra for zho speakers"
+  },
+  {
+   "code": "fur_for_eng",
+   "legos": 74,
+   "seeds": 25,
+   "group": "for English speakers"
+  },
+  {
+   "code": "gla_for_eng",
+   "legos": 536,
+   "seeds": 272,
+   "group": "for English speakers"
+  },
+  {
+   "code": "gle_cn_for_eng",
+   "legos": 766,
+   "seeds": 300,
+   "group": "for English speakers"
+  },
+  {
+   "code": "gle_for_eng",
+   "legos": 943,
+   "seeds": 300,
+   "group": "for English speakers"
+  },
+  {
+   "code": "glg_for_eng",
+   "legos": 565,
+   "seeds": 300,
+   "group": "for English speakers"
+  },
+  {
+   "code": "hak_for_eng",
+   "legos": 2635,
+   "seeds": 668,
+   "group": "for English speakers"
+  },
+  {
+   "code": "heb_for_eng",
+   "legos": 629,
+   "seeds": 300,
+   "group": "for English speakers"
+  },
+  {
+   "code": "hin_for_eng",
+   "legos": 772,
+   "seeds": 300,
+   "group": "for English speakers"
+  },
+  {
+   "code": "hrv_for_eng",
+   "legos": 766,
+   "seeds": 300,
+   "group": "for English speakers"
+  },
+  {
+   "code": "hun_for_eng",
+   "legos": 674,
+   "seeds": 300,
+   "group": "for English speakers"
+  },
+  {
+   "code": "hye_for_eng",
+   "legos": 745,
+   "seeds": 300,
+   "group": "for English speakers"
+  },
+  {
+   "code": "ind_for_eng",
+   "legos": 75,
+   "seeds": 25,
+   "group": "for English speakers"
+  },
+  {
+   "code": "isl_for_eng",
+   "legos": 584,
+   "seeds": 300,
+   "group": "for English speakers"
+  },
+  {
+   "code": "ita_for_cym",
+   "legos": 58,
+   "seeds": 20,
+   "group": "ita for cym speakers"
+  },
+  {
+   "code": "ita_for_eng",
+   "legos": 1457,
+   "seeds": 668,
+   "group": "for English speakers"
+  },
+  {
+   "code": "ita_for_jpn",
+   "legos": 601,
+   "seeds": 300,
+   "group": "ita for jpn speakers"
+  },
+  {
+   "code": "ita_for_zho",
+   "legos": 644,
+   "seeds": 300,
+   "group": "ita for zho speakers"
+  },
+  {
+   "code": "jpn_for_eng",
+   "legos": 1368,
+   "seeds": 668,
+   "group": "for English speakers"
+  },
+  {
+   "code": "kan_for_eng",
+   "legos": 22,
+   "seeds": 8,
+   "group": "for English speakers"
+  },
+  {
+   "code": "kor_for_eng",
+   "legos": 1459,
+   "seeds": 667,
+   "group": "for English speakers"
+  },
+  {
+   "code": "kor_for_hin",
+   "legos": 1523,
+   "seeds": 668,
+   "group": "kor for hin speakers"
+  },
+  {
+   "code": "kor_for_tam",
+   "legos": 1527,
+   "seeds": 668,
+   "group": "kor for tam speakers"
+  },
+  {
+   "code": "lav_for_eng",
+   "legos": 638,
+   "seeds": 300,
+   "group": "for English speakers"
+  },
+  {
+   "code": "lit_for_eng",
+   "legos": 676,
+   "seeds": 300,
+   "group": "for English speakers"
+  },
+  {
+   "code": "lmo_for_eng",
+   "legos": 86,
+   "seeds": 29,
+   "group": "for English speakers"
+  },
+  {
+   "code": "mar_for_eng",
+   "legos": 2077,
+   "seeds": 668,
+   "group": "for English speakers"
+  },
+  {
+   "code": "mkd_for_eng",
+   "legos": 48,
+   "seeds": 16,
+   "group": "for English speakers"
+  },
+  {
+   "code": "mlt_for_eng",
+   "legos": 733,
+   "seeds": 300,
+   "group": "for English speakers"
+  },
+  {
+   "code": "nan_for_eng",
+   "legos": 732,
+   "seeds": 467,
+   "group": "for English speakers"
+  },
+  {
+   "code": "nap_for_eng",
+   "legos": 93,
+   "seeds": 30,
+   "group": "for English speakers"
+  },
+  {
+   "code": "nep_for_eng",
+   "legos": 926,
+   "seeds": 300,
+   "group": "for English speakers"
+  },
+  {
+   "code": "nld_for_eng",
+   "legos": 626,
+   "seeds": 300,
+   "group": "for English speakers"
+  },
+  {
+   "code": "nor_for_eng",
+   "legos": 515,
+   "seeds": 300,
+   "group": "for English speakers"
+  },
+  {
+   "code": "pdc_for_eng",
+   "legos": 657,
+   "seeds": 298,
+   "group": "for English speakers"
+  },
+  {
+   "code": "pol_for_eng",
+   "legos": 748,
+   "seeds": 300,
+   "group": "for English speakers"
+  },
+  {
+   "code": "por_br_for_eng",
+   "legos": 1570,
+   "seeds": 668,
+   "group": "for English speakers"
+  },
+  {
+   "code": "por_for_eng",
+   "legos": 1417,
+   "seeds": 668,
+   "group": "for English speakers"
+  },
+  {
+   "code": "por_for_jpn",
+   "legos": 842,
+   "seeds": 300,
+   "group": "por for jpn speakers"
+  },
+  {
+   "code": "rgn_for_eng",
+   "legos": 29,
+   "seeds": 10,
+   "group": "for English speakers"
+  },
+  {
+   "code": "roh_for_eng",
+   "legos": 35,
+   "seeds": 10,
+   "group": "for English speakers"
+  },
+  {
+   "code": "ron_for_eng",
+   "legos": 703,
+   "seeds": 300,
+   "group": "for English speakers"
+  },
+  {
+   "code": "rus_for_eng",
+   "legos": 801,
+   "seeds": 300,
+   "group": "for English speakers"
+  },
+  {
+   "code": "sbx_for_eng",
+   "legos": 61,
+   "seeds": 15,
+   "group": "for English speakers"
+  },
+  {
+   "code": "scn_for_eng",
+   "legos": 83,
+   "seeds": 30,
+   "group": "for English speakers"
+  },
+  {
+   "code": "sme_for_eng",
+   "legos": 31,
+   "seeds": 10,
+   "group": "for English speakers"
+  },
+  {
+   "code": "spa_for_cym",
+   "legos": 7,
+   "seeds": 2,
+   "group": "spa for cym speakers"
+  },
+  {
+   "code": "spa_for_eng",
+   "legos": 1475,
+   "seeds": 668,
+   "group": "for English speakers"
+  },
+  {
+   "code": "spa_for_jpn",
+   "legos": 657,
+   "seeds": 300,
+   "group": "spa for jpn speakers"
+  },
+  {
+   "code": "spa_for_zho",
+   "legos": 598,
+   "seeds": 300,
+   "group": "spa for zho speakers"
+  },
+  {
+   "code": "spa_mx_for_eng",
+   "legos": 1372,
+   "seeds": 668,
+   "group": "for English speakers"
+  },
+  {
+   "code": "srp_for_eng",
+   "legos": 671,
+   "seeds": 300,
+   "group": "for English speakers"
+  },
+  {
+   "code": "swa_for_eng",
+   "legos": 814,
+   "seeds": 300,
+   "group": "for English speakers"
+  },
+  {
+   "code": "swe_for_eng",
+   "legos": 690,
+   "seeds": 300,
+   "group": "for English speakers"
+  },
+  {
+   "code": "tel_for_eng",
+   "legos": 1657,
+   "seeds": 668,
+   "group": "for English speakers"
+  },
+  {
+   "code": "tha_for_eng",
+   "legos": 539,
+   "seeds": 300,
+   "group": "for English speakers"
+  },
+  {
+   "code": "tur_for_eng",
+   "legos": 1340,
+   "seeds": 300,
+   "group": "for English speakers"
+  },
+  {
+   "code": "ukr_for_eng",
+   "legos": 633,
+   "seeds": 300,
+   "group": "for English speakers"
+  },
+  {
+   "code": "vec_for_eng",
+   "legos": 86,
+   "seeds": 30,
+   "group": "for English speakers"
+  },
+  {
+   "code": "yid_for_eng",
+   "legos": 29,
+   "seeds": 10,
+   "group": "for English speakers"
+  },
+  {
+   "code": "yor_for_eng",
+   "legos": 31,
+   "seeds": 10,
+   "group": "for English speakers"
+  },
+  {
+   "code": "yue_for_eng",
+   "legos": 1171,
+   "seeds": 668,
+   "group": "for English speakers"
+  },
+  {
+   "code": "zho_for_eng",
+   "legos": 1190,
+   "seeds": 668,
+   "group": "for English speakers"
+  },
+  {
+   "code": "zho_for_gle",
+   "legos": 15,
+   "seeds": 5,
+   "group": "zho for gle speakers"
+  },
+  {
+   "code": "zho_for_hin",
+   "legos": 1418,
+   "seeds": 668,
+   "group": "zho for hin speakers"
+  },
+  {
+   "code": "zho_for_jpn",
+   "legos": 548,
+   "seeds": 300,
+   "group": "zho for jpn speakers"
+  },
+  {
+   "code": "zho_for_tam",
+   "legos": 1163,
+   "seeds": 668,
+   "group": "zho for tam speakers"
+  }
+ ],
+ "cells": {
+  "afr_for_eng": {
+   "filler": {
+    "state": "red",
+    "n": 10,
+    "when": "2026-08-17",
+    "ev": "10 confirmed filler BUILDs in 4 clusters; reported, never actioned"
+   },
+   "langname": {
+    "state": "green",
+    "when": "2026-08-19",
+    "ev": "estate-wide sweep, no wrong language name in this course's seeds"
+   },
+   "presdrift": {
+    "state": "unknown",
+    "when": "2026-08-18",
+    "ev": "ran estate-wide, but this course's flagged rows were never triaged or published"
+   }
+  },
+  "ara_eg_for_eng": {
+   "filler": {
+    "state": "red",
+    "n": 387,
+    "when": "2026-08-17",
+    "ev": "387 confirmed filler BUILDs in 184 clusters; reported, never actioned"
+   },
+   "langname": {
+    "state": "green",
+    "when": "2026-08-19",
+    "ev": "estate-wide sweep, no wrong language name in this course's seeds"
+   },
+   "presdrift": {
+    "state": "unknown",
+    "when": "2026-08-18",
+    "ev": "ran estate-wide, but this course's flagged rows were never triaged or published"
+   }
+  },
+  "ara_for_eng": {
+   "filler": {
+    "state": "red",
+    "n": 54,
+    "when": "2026-08-17",
+    "ev": "54 confirmed filler BUILDs in 27 clusters; reported, never actioned"
+   },
+   "langname": {
+    "state": "green",
+    "when": "2026-08-19",
+    "ev": "estate-wide sweep, no wrong language name in this course's seeds"
+   },
+   "presdrift": {
+    "state": "unknown",
+    "when": "2026-08-18",
+    "ev": "ran estate-wide, but this course's flagged rows were never triaged or published"
+   },
+   "checkpoint": {
+    "state": "green",
+    "when": "early 2026",
+    "ev": "every checkpoint approved, zero vocabulary violations \u2014 but only up to seed 300, and never re-run since"
+   }
+  },
+  "ara_lb_for_eng": {
+   "filler": {
+    "state": "red",
+    "n": 78,
+    "when": "2026-08-17",
+    "ev": "78 confirmed filler BUILDs in 39 clusters; reported, never actioned"
+   },
+   "langname": {
+    "state": "green",
+    "when": "2026-08-19",
+    "ev": "estate-wide sweep, no wrong language name in this course's seeds"
+   },
+   "presdrift": {
+    "state": "unknown",
+    "when": "2026-08-18",
+    "ev": "ran estate-wide, but this course's flagged rows were never triaged or published"
+   }
+  },
+  "ben_for_eng": {
+   "filler": {
+    "state": "red",
+    "n": 217,
+    "when": "2026-08-17",
+    "ev": "217 confirmed filler BUILDs in 108 clusters; reported, never actioned"
+   },
+   "langname": {
+    "state": "green",
+    "when": "2026-08-19",
+    "ev": "estate-wide sweep, no wrong language name in this course's seeds"
+   },
+   "presdrift": {
+    "state": "unknown",
+    "when": "2026-08-18",
+    "ev": "ran estate-wide, but this course's flagged rows were never triaged or published"
+   }
+  },
+  "bre_for_eng": {
+   "filler": {
+    "state": "red",
+    "n": 2,
+    "when": "2026-08-17",
+    "ev": "2 confirmed filler BUILDs in 1 clusters; reported, never actioned"
+   },
+   "langname": {
+    "state": "amber",
+    "n": 1,
+    "when": "2026-08-19",
+    "ev": "the Yoruba-name leak from one batch run \u2014 found and fixed"
+   },
+   "presdrift": {
+    "state": "unknown",
+    "when": "2026-08-18",
+    "ev": "ran estate-wide, but this course's flagged rows were never triaged or published"
+   }
+  },
+  "bre_for_fra": {
+   "filler": {
+    "state": "unknown",
+    "when": "2026-08-17",
+    "ev": "scanned, but the padding list is English matched against the known side \u2014 a zero here means nothing"
+   },
+   "langname": {
+    "state": "green",
+    "when": "2026-08-19",
+    "ev": "estate-wide sweep, no wrong language name in this course's seeds"
+   },
+   "presdrift": {
+    "state": "unknown",
+    "when": "2026-08-18",
+    "ev": "ran estate-wide, but this course's flagged rows were never triaged or published"
+   },
+   "checkpoint": {
+    "state": "green",
+    "when": "early 2026",
+    "ev": "every checkpoint approved, zero vocabulary violations \u2014 but only up to seed 300, and never re-run since"
+   }
+  },
+  "bul_for_eng": {
+   "filler": {
+    "state": "red",
+    "n": 23,
+    "when": "2026-08-17",
+    "ev": "23 confirmed filler BUILDs in 10 clusters; reported, never actioned"
+   },
+   "langname": {
+    "state": "green",
+    "when": "2026-08-19",
+    "ev": "estate-wide sweep, no wrong language name in this course's seeds"
+   },
+   "presdrift": {
+    "state": "unknown",
+    "when": "2026-08-18",
+    "ev": "ran estate-wide, but this course's flagged rows were never triaged or published"
+   }
+  },
+  "cat_for_eng": {
+   "filler": {
+    "state": "red",
+    "n": 6,
+    "when": "2026-08-17",
+    "ev": "6 confirmed filler BUILDs in 3 clusters; reported, never actioned"
+   },
+   "langname": {
+    "state": "green",
+    "when": "2026-08-19",
+    "ev": "estate-wide sweep, no wrong language name in this course's seeds"
+   },
+   "presdrift": {
+    "state": "unknown",
+    "when": "2026-08-18",
+    "ev": "ran estate-wide, but this course's flagged rows were never triaged or published"
+   }
+  },
+  "cat_for_spa": {
+   "filler": {
+    "state": "unknown",
+    "when": "2026-08-17",
+    "ev": "scanned, but the padding list is English matched against the known side \u2014 a zero here means nothing"
+   },
+   "langname": {
+    "state": "green",
+    "when": "2026-08-19",
+    "ev": "estate-wide sweep, no wrong language name in this course's seeds"
+   },
+   "presdrift": {
+    "state": "unknown",
+    "when": "2026-08-18",
+    "ev": "ran estate-wide, but this course's flagged rows were never triaged or published"
+   },
+   "checkpoint": {
+    "state": "green",
+    "when": "early 2026",
+    "ev": "every checkpoint approved, zero vocabulary violations \u2014 but only up to seed 300, and never re-run since"
+   }
+  },
+  "ces_for_eng": {
+   "filler": {
+    "state": "red",
+    "n": 776,
+    "when": "2026-08-17",
+    "ev": "776 confirmed filler BUILDs in 300 clusters; reported, never actioned"
+   },
+   "langname": {
+    "state": "green",
+    "when": "2026-08-19",
+    "ev": "estate-wide sweep, no wrong language name in this course's seeds"
+   },
+   "presdrift": {
+    "state": "unknown",
+    "when": "2026-08-18",
+    "ev": "ran estate-wide, but this course's flagged rows were never triaged or published"
+   }
+  },
+  "cor_for_eng": {
+   "filler": {
+    "state": "green",
+    "when": "2026-08-17",
+    "ev": "200 BUILD rows examined, no filler clusters"
+   },
+   "langname": {
+    "state": "amber",
+    "n": 4,
+    "when": "2026-08-19",
+    "ev": "the Yoruba-name leak from one batch run \u2014 found and fixed"
+   },
+   "presdrift": {
+    "state": "unknown",
+    "when": "2026-08-18",
+    "ev": "ran estate-wide, but this course's flagged rows were never triaged or published"
+   }
+  },
+  "cym_anthem_for_jpn": {
+   "knownside": {
+    "state": "unknown",
+    "when": "2026-08-18",
+    "ev": "gate refused: no lemma boundary in Japanese \u2014 reported UNCHECKED, which is not a pass"
+   },
+   "filler": {
+    "state": "unknown",
+    "when": "2026-08-17",
+    "ev": "scanned, but the padding list is English matched against the known side \u2014 a zero here means nothing"
+   },
+   "langname": {
+    "state": "green",
+    "when": "2026-08-19",
+    "ev": "estate-wide sweep, no wrong language name in this course's seeds"
+   },
+   "presdrift": {
+    "state": "unknown",
+    "when": "2026-08-18",
+    "ev": "ran estate-wide, but this course's flagged rows were never triaged or published"
+   }
+  },
+  "cym_for_yor": {
+   "knownside": {
+    "state": "red",
+    "n": 2,
+    "when": "2026-08-26",
+    "ev": "2 of 4 token issues assessed real; seeds 161-668 came back UNCHECKED"
+   },
+   "filler": {
+    "state": "unknown",
+    "when": "2026-08-17",
+    "ev": "scanned, but the padding list is English matched against the known side \u2014 a zero here means nothing"
+   },
+   "langname": {
+    "state": "green",
+    "when": "2026-08-19",
+    "ev": "14 rows raised then ruled correct \u2014 no Yoruba word for 'Welsh' is attested"
+   },
+   "presdrift": {
+    "state": "unknown",
+    "when": "2026-08-18",
+    "ev": "ran estate-wide, but this course's flagged rows were never triaged or published"
+   }
+  },
+  "cym_n_for_eng": {
+   "filler": {
+    "state": "red",
+    "n": 2,
+    "when": "2026-08-17",
+    "ev": "2 confirmed filler BUILDs in 1 clusters; reported, never actioned"
+   },
+   "langname": {
+    "state": "green",
+    "when": "2026-08-19",
+    "ev": "estate-wide sweep, no wrong language name in this course's seeds"
+   },
+   "presdrift": {
+    "state": "red",
+    "n": 2,
+    "when": "2026-08-18",
+    "ev": "2 Welsh rows held for Kai, unfixed"
+   }
+  },
+  "cym_nnew_for_eng": {
+   "langname": {
+    "state": "green",
+    "when": "2026-08-19",
+    "ev": "estate-wide sweep, no wrong language name in this course's seeds"
+   },
+   "presdrift": {
+    "state": "unknown",
+    "when": "2026-08-18",
+    "ev": "ran estate-wide, but this course's flagged rows were never triaged or published"
+   }
+  },
+  "cym_s_for_eng": {
+   "filler": {
+    "state": "red",
+    "n": 2,
+    "when": "2026-08-17",
+    "ev": "2 confirmed filler BUILDs in 1 clusters; reported, never actioned"
+   },
+   "langname": {
+    "state": "green",
+    "when": "2026-08-19",
+    "ev": "estate-wide sweep, no wrong language name in this course's seeds"
+   },
+   "presdrift": {
+    "state": "red",
+    "n": 4,
+    "when": "2026-08-18",
+    "ev": "4 rows, 2 false alarms, 2 held for Kai"
+   },
+   "distinction": {
+    "state": "red",
+    "n": 4,
+    "when": "2026-08-19",
+    "ev": "4 confirmed walls, none applied"
+   }
+  },
+  "dan_for_eng": {
+   "filler": {
+    "state": "green",
+    "when": "2026-08-17",
+    "ev": "1693 BUILD rows examined, no filler clusters"
+   },
+   "langname": {
+    "state": "green",
+    "when": "2026-08-19",
+    "ev": "estate-wide sweep, no wrong language name in this course's seeds"
+   },
+   "presdrift": {
+    "state": "unknown",
+    "when": "2026-08-18",
+    "ev": "ran estate-wide, but this course's flagged rows were never triaged or published"
+   }
+  },
+  "deu_at_for_eng": {
+   "filler": {
+    "state": "red",
+    "n": 30,
+    "when": "2026-08-17",
+    "ev": "30 confirmed filler BUILDs in 14 clusters; reported, never actioned"
+   },
+   "langname": {
+    "state": "green",
+    "when": "2026-08-19",
+    "ev": "estate-wide sweep, no wrong language name in this course's seeds"
+   },
+   "presdrift": {
+    "state": "unknown",
+    "when": "2026-08-18",
+    "ev": "ran estate-wide, but this course's flagged rows were never triaged or published"
+   }
+  },
+  "deu_ch_for_eng": {
+   "filler": {
+    "state": "red",
+    "n": 273,
+    "when": "2026-08-17",
+    "ev": "273 confirmed filler BUILDs in 133 clusters; reported, never actioned"
+   },
+   "langname": {
+    "state": "green",
+    "when": "2026-08-19",
+    "ev": "estate-wide sweep, no wrong language name in this course's seeds"
+   },
+   "presdrift": {
+    "state": "unknown",
+    "when": "2026-08-18",
+    "ev": "ran estate-wide, but this course's flagged rows were never triaged or published"
+   }
+  },
+  "deu_for_eng": {
+   "knowclash": {
+    "state": "red",
+    "when": "2026-08-27",
+    "ev": "kennen/wissen across eight rows \u2014 nothing fixed"
+   },
+   "filler": {
+    "state": "red",
+    "n": 20,
+    "when": "2026-08-17",
+    "ev": "20 confirmed filler BUILDs in 10 clusters; reported, never actioned"
+   },
+   "langname": {
+    "state": "green",
+    "when": "2026-08-19",
+    "ev": "estate-wide sweep, no wrong language name in this course's seeds"
+   },
+   "presdrift": {
+    "state": "unknown",
+    "when": "2026-08-18",
+    "ev": "ran estate-wide, but this course's flagged rows were never triaged or published"
+   },
+   "checkpoint": {
+    "state": "amber",
+    "when": "early 2026",
+    "ev": "checkpoints ran but at least one was left sitting at 'pending human' and never resolved"
+   }
+  },
+  "deu_for_jpn": {
+   "knownside": {
+    "state": "unknown",
+    "when": "2026-08-18",
+    "ev": "gate refused: no lemma boundary in Japanese \u2014 reported UNCHECKED, which is not a pass"
+   },
+   "buildteach": {
+    "state": "red",
+    "when": "2026-08-26",
+    "ev": "541 violations across the six courses; 19% of rows refused as unjudgeable"
+   },
+   "teachorder": {
+    "state": "red",
+    "n": 11,
+    "when": "2026-08-26",
+    "ev": "44 confirmed defects, read-only scan, nothing fixed"
+   },
+   "boundary": {
+    "state": "red",
+    "n": 3,
+    "when": "2026-08-27",
+    "ev": "26 cases found, 23 repaired in the live DB, 3 still open"
+   },
+   "filler": {
+    "state": "unknown",
+    "when": "2026-08-17",
+    "ev": "scanned, but the padding list is English matched against the known side \u2014 a zero here means nothing"
+   },
+   "langname": {
+    "state": "red",
+    "n": 4,
+    "when": "2026-08-19",
+    "ev": "English placeholder left in the language name \u2014 NOT fixed, the rows are already voiced"
+   },
+   "presdrift": {
+    "state": "unknown",
+    "when": "2026-08-18",
+    "ev": "ran estate-wide, but this course's flagged rows were never triaged or published"
+   }
+  },
+  "deu_for_zho": {
+   "filler": {
+    "state": "unknown",
+    "when": "2026-08-17",
+    "ev": "scanned, but the padding list is English matched against the known side \u2014 a zero here means nothing"
+   },
+   "langname": {
+    "state": "green",
+    "when": "2026-08-19",
+    "ev": "estate-wide sweep, no wrong language name in this course's seeds"
+   },
+   "presdrift": {
+    "state": "unknown",
+    "when": "2026-08-18",
+    "ev": "ran estate-wide, but this course's flagged rows were never triaged or published"
+   }
+  },
+  "ell_for_eng": {
+   "zut": {
+    "state": "red",
+    "n": 62,
+    "when": "2026-08-11",
+    "ev": "102 groups \u2192 73 after 29 were fixed; 62 handed on for triage, outcome never recorded"
+   },
+   "filler": {
+    "state": "red",
+    "n": 5,
+    "when": "2026-08-17",
+    "ev": "5 confirmed filler BUILDs in 2 clusters; reported, never actioned"
+   },
+   "langname": {
+    "state": "green",
+    "when": "2026-08-19",
+    "ev": "estate-wide sweep, no wrong language name in this course's seeds"
+   },
+   "presdrift": {
+    "state": "unknown",
+    "when": "2026-08-18",
+    "ev": "ran estate-wide, but this course's flagged rows were never triaged or published"
+   }
+  },
+  "eng_for_ara": {
+   "knownside": {
+    "state": "unknown",
+    "when": "2026-08-18",
+    "ev": "ran, but Arabic prefix / Korean stem alternation defeat the stem test \u2014 candidates unadjudicated"
+   },
+   "zutgate": {
+    "state": "amber",
+    "when": "2026-06-15",
+    "ev": "part of the 16-course pass: 467 real fixes identified, 383 rows re-glossed, 78 left for a human"
+   },
+   "filler": {
+    "state": "unknown",
+    "when": "2026-08-17",
+    "ev": "scanned, but the padding list is English matched against the known side \u2014 a zero here means nothing"
+   },
+   "langname": {
+    "state": "green",
+    "when": "2026-08-19",
+    "ev": "estate-wide sweep, no wrong language name in this course's seeds"
+   },
+   "presdrift": {
+    "state": "unknown",
+    "when": "2026-08-18",
+    "ev": "ran estate-wide, but this course's flagged rows were never triaged or published"
+   },
+   "checkpoint": {
+    "state": "green",
+    "when": "early 2026",
+    "ev": "every checkpoint approved, zero vocabulary violations \u2014 but only up to seed 300, and never re-run since"
+   }
+  },
+  "eng_for_ben": {
+   "knownside": {
+    "state": "red",
+    "n": 14,
+    "when": "2026-08-18",
+    "ev": "estate sweep doc, strong candidates, none applied"
+   },
+   "zutgate": {
+    "state": "amber",
+    "when": "2026-06-15",
+    "ev": "part of the 16-course pass: 467 real fixes identified, 383 rows re-glossed, 78 left for a human"
+   },
+   "filler": {
+    "state": "unknown",
+    "when": "2026-08-17",
+    "ev": "scanned, but the padding list is English matched against the known side \u2014 a zero here means nothing"
+   },
+   "langname": {
+    "state": "green",
+    "when": "2026-08-19",
+    "ev": "estate-wide sweep, no wrong language name in this course's seeds"
+   },
+   "presdrift": {
+    "state": "unknown",
+    "when": "2026-08-18",
+    "ev": "ran estate-wide, but this course's flagged rows were never triaged or published"
+   }
+  },
+  "eng_for_deu": {
+   "zutgate": {
+    "state": "amber",
+    "when": "2026-06-15",
+    "ev": "part of the 16-course pass: 467 real fixes identified, 383 rows re-glossed, 78 left for a human"
+   },
+   "filler": {
+    "state": "unknown",
+    "when": "2026-08-17",
+    "ev": "scanned, but the padding list is English matched against the known side \u2014 a zero here means nothing"
+   },
+   "langname": {
+    "state": "green",
+    "when": "2026-08-19",
+    "ev": "estate-wide sweep, no wrong language name in this course's seeds"
+   },
+   "presdrift": {
+    "state": "unknown",
+    "when": "2026-08-18",
+    "ev": "ran estate-wide, but this course's flagged rows were never triaged or published"
+   },
+   "checkpoint": {
+    "state": "green",
+    "when": "early 2026",
+    "ev": "every checkpoint approved, zero vocabulary violations \u2014 but only up to seed 300, and never re-run since"
+   }
+  },
+  "eng_for_fra": {
+   "zutgate": {
+    "state": "amber",
+    "when": "2026-06-15",
+    "ev": "part of the 16-course pass: 467 real fixes identified, 383 rows re-glossed, 78 left for a human"
+   },
+   "filler": {
+    "state": "unknown",
+    "when": "2026-08-17",
+    "ev": "scanned, but the padding list is English matched against the known side \u2014 a zero here means nothing"
+   },
+   "langname": {
+    "state": "green",
+    "when": "2026-08-19",
+    "ev": "estate-wide sweep, no wrong language name in this course's seeds"
+   },
+   "presdrift": {
+    "state": "unknown",
+    "when": "2026-08-18",
+    "ev": "ran estate-wide, but this course's flagged rows were never triaged or published"
+   },
+   "checkpoint": {
+    "state": "green",
+    "when": "early 2026",
+    "ev": "every checkpoint approved, zero vocabulary violations \u2014 but only up to seed 300, and never re-run since"
+   }
+  },
+  "eng_for_guj": {
+   "knownside": {
+    "state": "red",
+    "n": 9,
+    "when": "2026-08-18",
+    "ev": "estate sweep doc, strong candidates, none applied"
+   },
+   "zutgate": {
+    "state": "amber",
+    "when": "2026-06-15",
+    "ev": "part of the 16-course pass: 467 real fixes identified, 383 rows re-glossed, 78 left for a human"
+   },
+   "filler": {
+    "state": "unknown",
+    "when": "2026-08-17",
+    "ev": "scanned, but the padding list is English matched against the known side \u2014 a zero here means nothing"
+   },
+   "langname": {
+    "state": "green",
+    "when": "2026-08-19",
+    "ev": "estate-wide sweep, no wrong language name in this course's seeds"
+   },
+   "presdrift": {
+    "state": "unknown",
+    "when": "2026-08-18",
+    "ev": "ran estate-wide, but this course's flagged rows were never triaged or published"
+   }
+  },
+  "eng_for_hin": {
+   "knownside": {
+    "state": "red",
+    "n": 41,
+    "when": "2026-08-18",
+    "ev": "estate sweep doc, strong candidates, none applied"
+   },
+   "zut": {
+    "state": "red",
+    "n": 230,
+    "when": "2026-08-22",
+    "ev": "9 strict + 230 membership; the 230 were only spot-checked, pilot deferred"
+   },
+   "zutgate": {
+    "state": "amber",
+    "when": "2026-06-15",
+    "ev": "part of the 16-course pass: 467 real fixes identified, 383 rows re-glossed, 78 left for a human"
+   },
+   "filler": {
+    "state": "unknown",
+    "when": "2026-08-17",
+    "ev": "scanned, but the padding list is English matched against the known side \u2014 a zero here means nothing"
+   },
+   "langname": {
+    "state": "green",
+    "when": "2026-08-19",
+    "ev": "estate-wide sweep, no wrong language name in this course's seeds"
+   },
+   "presdrift": {
+    "state": "unknown",
+    "when": "2026-08-18",
+    "ev": "ran estate-wide, but this course's flagged rows were never triaged or published"
+   },
+   "distinction": {
+    "state": "red",
+    "n": 1895,
+    "when": "2026-08-19",
+    "ev": "1,895 proposals, none applied"
+   }
+  },
+  "eng_for_ita": {
+   "zutgate": {
+    "state": "amber",
+    "when": "2026-06-15",
+    "ev": "part of the 16-course pass: 467 real fixes identified, 383 rows re-glossed, 78 left for a human"
+   },
+   "filler": {
+    "state": "unknown",
+    "when": "2026-08-17",
+    "ev": "scanned, but the padding list is English matched against the known side \u2014 a zero here means nothing"
+   },
+   "langname": {
+    "state": "green",
+    "when": "2026-08-19",
+    "ev": "estate-wide sweep, no wrong language name in this course's seeds"
+   },
+   "presdrift": {
+    "state": "unknown",
+    "when": "2026-08-18",
+    "ev": "ran estate-wide, but this course's flagged rows were never triaged or published"
+   }
+  },
+  "eng_for_jpn": {
+   "knownside": {
+    "state": "unknown",
+    "when": "2026-08-18",
+    "ev": "gate refused: no lemma boundary in Japanese \u2014 reported UNCHECKED, which is not a pass"
+   },
+   "zutgate": {
+    "state": "amber",
+    "when": "2026-06-15",
+    "ev": "part of the 16-course pass: 467 real fixes identified, 383 rows re-glossed, 78 left for a human"
+   },
+   "filler": {
+    "state": "unknown",
+    "when": "2026-08-17",
+    "ev": "scanned, but the padding list is English matched against the known side \u2014 a zero here means nothing"
+   },
+   "langname": {
+    "state": "green",
+    "when": "2026-08-19",
+    "ev": "estate-wide sweep, no wrong language name in this course's seeds"
+   },
+   "presdrift": {
+    "state": "unknown",
+    "when": "2026-08-18",
+    "ev": "ran estate-wide, but this course's flagged rows were never triaged or published"
+   },
+   "checkpoint": {
+    "state": "amber",
+    "when": "early 2026",
+    "ev": "checkpoints ran but at least one was left sitting at 'pending human' and never resolved"
+   }
+  },
+  "eng_for_kan": {
+   "knownside": {
+    "state": "red",
+    "n": 28,
+    "when": "2026-08-18",
+    "ev": "estate sweep doc, strong candidates, none applied"
+   },
+   "filler": {
+    "state": "unknown",
+    "when": "2026-08-17",
+    "ev": "scanned, but the padding list is English matched against the known side \u2014 a zero here means nothing"
+   },
+   "langname": {
+    "state": "green",
+    "when": "2026-08-19",
+    "ev": "estate-wide sweep, no wrong language name in this course's seeds"
+   },
+   "presdrift": {
+    "state": "unknown",
+    "when": "2026-08-18",
+    "ev": "ran estate-wide, but this course's flagged rows were never triaged or published"
+   }
+  },
+  "eng_for_kor": {
+   "knownside": {
+    "state": "unknown",
+    "when": "2026-08-18",
+    "ev": "ran, but Arabic prefix / Korean stem alternation defeat the stem test \u2014 candidates unadjudicated"
+   },
+   "zutgate": {
+    "state": "amber",
+    "when": "2026-06-15",
+    "ev": "part of the 16-course pass: 467 real fixes identified, 383 rows re-glossed, 78 left for a human"
+   },
+   "filler": {
+    "state": "unknown",
+    "when": "2026-08-17",
+    "ev": "scanned, but the padding list is English matched against the known side \u2014 a zero here means nothing"
+   },
+   "langname": {
+    "state": "green",
+    "when": "2026-08-19",
+    "ev": "estate-wide sweep, no wrong language name in this course's seeds"
+   },
+   "presdrift": {
+    "state": "unknown",
+    "when": "2026-08-18",
+    "ev": "ran estate-wide, but this course's flagged rows were never triaged or published"
+   },
+   "checkpoint": {
+    "state": "green",
+    "when": "early 2026",
+    "ev": "every checkpoint approved, zero vocabulary violations \u2014 but only up to seed 300, and never re-run since"
+   }
+  },
+  "eng_for_mar": {
+   "knownside": {
+    "state": "red",
+    "n": 61,
+    "when": "2026-08-18",
+    "ev": "estate sweep doc, strong candidates, none applied"
+   },
+   "filler": {
+    "state": "unknown",
+    "when": "2026-08-17",
+    "ev": "scanned, but the padding list is English matched against the known side \u2014 a zero here means nothing"
+   },
+   "langname": {
+    "state": "green",
+    "when": "2026-08-19",
+    "ev": "estate-wide sweep, no wrong language name in this course's seeds"
+   },
+   "presdrift": {
+    "state": "unknown",
+    "when": "2026-08-18",
+    "ev": "ran estate-wide, but this course's flagged rows were never triaged or published"
+   }
+  },
+  "eng_for_pan": {
+   "knownside": {
+    "state": "red",
+    "n": 7,
+    "when": "2026-08-18",
+    "ev": "estate sweep doc, strong candidates, none applied"
+   },
+   "zutgate": {
+    "state": "amber",
+    "when": "2026-06-15",
+    "ev": "part of the 16-course pass: 467 real fixes identified, 383 rows re-glossed, 78 left for a human"
+   },
+   "filler": {
+    "state": "unknown",
+    "when": "2026-08-17",
+    "ev": "scanned, but the padding list is English matched against the known side \u2014 a zero here means nothing"
+   },
+   "langname": {
+    "state": "green",
+    "when": "2026-08-19",
+    "ev": "estate-wide sweep, no wrong language name in this course's seeds"
+   },
+   "presdrift": {
+    "state": "unknown",
+    "when": "2026-08-18",
+    "ev": "ran estate-wide, but this course's flagged rows were never triaged or published"
+   }
+  },
+  "eng_for_por": {
+   "zutgate": {
+    "state": "amber",
+    "when": "2026-06-15",
+    "ev": "part of the 16-course pass: 467 real fixes identified, 383 rows re-glossed, 78 left for a human"
+   },
+   "filler": {
+    "state": "unknown",
+    "when": "2026-08-17",
+    "ev": "scanned, but the padding list is English matched against the known side \u2014 a zero here means nothing"
+   },
+   "langname": {
+    "state": "green",
+    "when": "2026-08-19",
+    "ev": "estate-wide sweep, no wrong language name in this course's seeds"
+   },
+   "presdrift": {
+    "state": "unknown",
+    "when": "2026-08-18",
+    "ev": "ran estate-wide, but this course's flagged rows were never triaged or published"
+   },
+   "checkpoint": {
+    "state": "green",
+    "when": "early 2026",
+    "ev": "every checkpoint approved, zero vocabulary violations \u2014 but only up to seed 300, and never re-run since"
+   },
+   "introorder": {
+    "state": "red",
+    "n": 2,
+    "when": "2026-08-17",
+    "ev": "five words probed, two used early; not fixed \u2014 and five words is not a course"
+   }
+  },
+  "eng_for_sin": {
+   "knownside": {
+    "state": "red",
+    "n": 56,
+    "when": "2026-08-18",
+    "ev": "estate sweep doc, strong candidates, none applied"
+   },
+   "zutgate": {
+    "state": "amber",
+    "when": "2026-06-15",
+    "ev": "part of the 16-course pass: 467 real fixes identified, 383 rows re-glossed, 78 left for a human"
+   },
+   "filler": {
+    "state": "unknown",
+    "when": "2026-08-17",
+    "ev": "scanned, but the padding list is English matched against the known side \u2014 a zero here means nothing"
+   },
+   "langname": {
+    "state": "green",
+    "when": "2026-08-19",
+    "ev": "estate-wide sweep, no wrong language name in this course's seeds"
+   },
+   "presdrift": {
+    "state": "unknown",
+    "when": "2026-08-18",
+    "ev": "ran estate-wide, but this course's flagged rows were never triaged or published"
+   }
+  },
+  "eng_for_spa": {
+   "zutgate": {
+    "state": "amber",
+    "when": "2026-06-15",
+    "ev": "part of the 16-course pass: 467 real fixes identified, 383 rows re-glossed, 78 left for a human"
+   },
+   "filler": {
+    "state": "unknown",
+    "when": "2026-08-17",
+    "ev": "scanned, but the padding list is English matched against the known side \u2014 a zero here means nothing"
+   },
+   "langname": {
+    "state": "green",
+    "when": "2026-08-19",
+    "ev": "estate-wide sweep, no wrong language name in this course's seeds"
+   },
+   "presdrift": {
+    "state": "unknown",
+    "when": "2026-08-18",
+    "ev": "ran estate-wide, but this course's flagged rows were never triaged or published"
+   },
+   "checkpoint": {
+    "state": "green",
+    "when": "early 2026",
+    "ev": "every checkpoint approved, zero vocabulary violations \u2014 but only up to seed 300, and never re-run since"
+   }
+  },
+  "eng_for_tam": {
+   "knownside": {
+    "state": "red",
+    "n": 21,
+    "when": "2026-08-18",
+    "ev": "estate sweep doc, strong candidates, none applied"
+   },
+   "zutgate": {
+    "state": "amber",
+    "when": "2026-06-15",
+    "ev": "part of the 16-course pass: 467 real fixes identified, 383 rows re-glossed, 78 left for a human"
+   },
+   "filler": {
+    "state": "unknown",
+    "when": "2026-08-17",
+    "ev": "scanned, but the padding list is English matched against the known side \u2014 a zero here means nothing"
+   },
+   "langname": {
+    "state": "green",
+    "when": "2026-08-19",
+    "ev": "estate-wide sweep, no wrong language name in this course's seeds"
+   },
+   "presdrift": {
+    "state": "unknown",
+    "when": "2026-08-18",
+    "ev": "ran estate-wide, but this course's flagged rows were never triaged or published"
+   }
+  },
+  "eng_for_tel": {
+   "knownside": {
+    "state": "red",
+    "n": 3,
+    "when": "2026-08-18",
+    "ev": "estate sweep doc, strong candidates, none applied"
+   },
+   "filler": {
+    "state": "unknown",
+    "when": "2026-08-17",
+    "ev": "scanned, but the padding list is English matched against the known side \u2014 a zero here means nothing"
+   },
+   "langname": {
+    "state": "green",
+    "when": "2026-08-19",
+    "ev": "estate-wide sweep, no wrong language name in this course's seeds"
+   },
+   "presdrift": {
+    "state": "unknown",
+    "when": "2026-08-18",
+    "ev": "ran estate-wide, but this course's flagged rows were never triaged or published"
+   }
+  },
+  "eng_for_urd": {
+   "knownside": {
+    "state": "red",
+    "n": 47,
+    "when": "2026-08-18",
+    "ev": "estate sweep doc, strong candidates, none applied"
+   },
+   "zutgate": {
+    "state": "amber",
+    "when": "2026-06-15",
+    "ev": "part of the 16-course pass: 467 real fixes identified, 383 rows re-glossed, 78 left for a human"
+   },
+   "filler": {
+    "state": "unknown",
+    "when": "2026-08-17",
+    "ev": "scanned, but the padding list is English matched against the known side \u2014 a zero here means nothing"
+   },
+   "langname": {
+    "state": "green",
+    "when": "2026-08-19",
+    "ev": "estate-wide sweep, no wrong language name in this course's seeds"
+   },
+   "presdrift": {
+    "state": "unknown",
+    "when": "2026-08-18",
+    "ev": "ran estate-wide, but this course's flagged rows were never triaged or published"
+   }
+  },
+  "eng_for_zho": {
+   "zutgate": {
+    "state": "amber",
+    "when": "2026-06-15",
+    "ev": "part of the 16-course pass: 467 real fixes identified, 383 rows re-glossed, 78 left for a human"
+   },
+   "filler": {
+    "state": "unknown",
+    "when": "2026-08-17",
+    "ev": "scanned, but the padding list is English matched against the known side \u2014 a zero here means nothing"
+   },
+   "langname": {
+    "state": "green",
+    "when": "2026-08-19",
+    "ev": "estate-wide sweep, no wrong language name in this course's seeds"
+   },
+   "presdrift": {
+    "state": "unknown",
+    "when": "2026-08-18",
+    "ev": "ran estate-wide, but this course's flagged rows were never triaged or published"
+   },
+   "checkpoint": {
+    "state": "green",
+    "when": "early 2026",
+    "ev": "every checkpoint approved, zero vocabulary violations \u2014 but only up to seed 300, and never re-run since"
+   }
+  },
+  "eng_template": {
+   "filler": {
+    "state": "red",
+    "n": 2,
+    "when": "2026-08-17",
+    "ev": "2 confirmed filler BUILDs in 1 clusters; reported, never actioned"
+   },
+   "langname": {
+    "state": "green",
+    "when": "2026-08-19",
+    "ev": "estate-wide sweep, no wrong language name in this course's seeds"
+   },
+   "presdrift": {
+    "state": "unknown",
+    "when": "2026-08-18",
+    "ev": "ran estate-wide, but this course's flagged rows were never triaged or published"
+   }
+  },
+  "est_for_eng": {
+   "filler": {
+    "state": "red",
+    "n": 2,
+    "when": "2026-08-17",
+    "ev": "2 confirmed filler BUILDs in 1 clusters; reported, never actioned"
+   },
+   "langname": {
+    "state": "green",
+    "when": "2026-08-19",
+    "ev": "estate-wide sweep, no wrong language name in this course's seeds"
+   },
+   "presdrift": {
+    "state": "unknown",
+    "when": "2026-08-18",
+    "ev": "ran estate-wide, but this course's flagged rows were never triaged or published"
+   }
+  },
+  "eus_for_eng": {
+   "filler": {
+    "state": "red",
+    "n": 14,
+    "when": "2026-08-17",
+    "ev": "14 confirmed filler BUILDs in 7 clusters; reported, never actioned"
+   },
+   "langname": {
+    "state": "green",
+    "when": "2026-08-19",
+    "ev": "estate-wide sweep, no wrong language name in this course's seeds"
+   },
+   "presdrift": {
+    "state": "unknown",
+    "when": "2026-08-18",
+    "ev": "ran estate-wide, but this course's flagged rows were never triaged or published"
+   }
+  },
+  "eus_for_spa": {
+   "filler": {
+    "state": "unknown",
+    "when": "2026-08-17",
+    "ev": "scanned, but the padding list is English matched against the known side \u2014 a zero here means nothing"
+   },
+   "langname": {
+    "state": "green",
+    "when": "2026-08-19",
+    "ev": "estate-wide sweep, no wrong language name in this course's seeds"
+   },
+   "presdrift": {
+    "state": "unknown",
+    "when": "2026-08-18",
+    "ev": "ran estate-wide, but this course's flagged rows were never triaged or published"
+   }
+  },
+  "fas_for_eng": {
+   "filler": {
+    "state": "red",
+    "n": 112,
+    "when": "2026-08-17",
+    "ev": "112 confirmed filler BUILDs in 56 clusters; reported, never actioned"
+   },
+   "langname": {
+    "state": "green",
+    "when": "2026-08-19",
+    "ev": "estate-wide sweep, no wrong language name in this course's seeds"
+   },
+   "presdrift": {
+    "state": "unknown",
+    "when": "2026-08-18",
+    "ev": "ran estate-wide, but this course's flagged rows were never triaged or published"
+   }
+  },
+  "fin_for_eng": {
+   "filler": {
+    "state": "red",
+    "n": 112,
+    "when": "2026-08-17",
+    "ev": "112 confirmed filler BUILDs in 52 clusters; reported, never actioned"
+   },
+   "langname": {
+    "state": "green",
+    "when": "2026-08-19",
+    "ev": "estate-wide sweep, no wrong language name in this course's seeds"
+   },
+   "presdrift": {
+    "state": "unknown",
+    "when": "2026-08-18",
+    "ev": "ran estate-wide, but this course's flagged rows were never triaged or published"
+   }
+  },
+  "fra_ca_for_eng": {
+   "filler": {
+    "state": "red",
+    "n": 133,
+    "when": "2026-08-17",
+    "ev": "133 confirmed filler BUILDs in 62 clusters; reported, never actioned"
+   },
+   "langname": {
+    "state": "green",
+    "when": "2026-08-19",
+    "ev": "estate-wide sweep, no wrong language name in this course's seeds"
+   },
+   "presdrift": {
+    "state": "unknown",
+    "when": "2026-08-18",
+    "ev": "ran estate-wide, but this course's flagged rows were never triaged or published"
+   }
+  },
+  "fra_for_eng": {
+   "knowclash": {
+    "state": "red",
+    "when": "2026-08-27",
+    "ev": "worst in the estate: sais/connais across many rows \u2014 nothing fixed"
+   },
+   "zut": {
+    "state": "red",
+    "n": 101,
+    "when": "2026-08-25",
+    "ev": "101 strict clashes + 23 membership; byte-identical across 08-15/18/25 \u2014 nothing fixed"
+   },
+   "edgemap": {
+    "state": "red",
+    "when": "2026-08-26",
+    "ev": "control run: 56% of BUILD phrases connect to nothing"
+   },
+   "filler": {
+    "state": "red",
+    "n": 151,
+    "when": "2026-08-17",
+    "ev": "151 confirmed filler BUILDs in 71 clusters; reported, never actioned"
+   },
+   "langname": {
+    "state": "green",
+    "when": "2026-08-19",
+    "ev": "estate-wide sweep, no wrong language name in this course's seeds"
+   },
+   "presdrift": {
+    "state": "unknown",
+    "when": "2026-08-18",
+    "ev": "ran estate-wide, but this course's flagged rows were never triaged or published"
+   },
+   "checkpoint": {
+    "state": "amber",
+    "when": "early 2026",
+    "ev": "checkpoints ran but at least one was left sitting at 'pending human' and never resolved"
+   }
+  },
+  "fra_for_jpn": {
+   "knownside": {
+    "state": "unknown",
+    "when": "2026-08-18",
+    "ev": "gate refused: no lemma boundary in Japanese \u2014 reported UNCHECKED, which is not a pass"
+   },
+   "buildteach": {
+    "state": "red",
+    "when": "2026-08-26",
+    "ev": "541 violations across the six courses; 19% of rows refused as unjudgeable"
+   },
+   "teachorder": {
+    "state": "red",
+    "n": 14,
+    "when": "2026-08-26",
+    "ev": "44 confirmed defects, read-only scan, nothing fixed"
+   },
+   "boundary": {
+    "state": "amber",
+    "n": 6,
+    "when": "2026-08-27",
+    "ev": "all 6 cases found and repaired in the live DB"
+   },
+   "filler": {
+    "state": "unknown",
+    "when": "2026-08-17",
+    "ev": "scanned, but the padding list is English matched against the known side \u2014 a zero here means nothing"
+   },
+   "langname": {
+    "state": "red",
+    "n": 4,
+    "when": "2026-08-19",
+    "ev": "English placeholder left in the language name \u2014 NOT fixed, the rows are already voiced"
+   },
+   "presdrift": {
+    "state": "unknown",
+    "when": "2026-08-18",
+    "ev": "ran estate-wide, but this course's flagged rows were never triaged or published"
+   }
+  },
+  "fra_for_zho": {
+   "filler": {
+    "state": "unknown",
+    "when": "2026-08-17",
+    "ev": "scanned, but the padding list is English matched against the known side \u2014 a zero here means nothing"
+   },
+   "langname": {
+    "state": "green",
+    "when": "2026-08-19",
+    "ev": "estate-wide sweep, no wrong language name in this course's seeds"
+   },
+   "presdrift": {
+    "state": "unknown",
+    "when": "2026-08-18",
+    "ev": "ran estate-wide, but this course's flagged rows were never triaged or published"
+   }
+  },
+  "fur_for_eng": {
+   "filler": {
+    "state": "red",
+    "n": 5,
+    "when": "2026-08-17",
+    "ev": "5 confirmed filler BUILDs in 2 clusters; reported, never actioned"
+   },
+   "langname": {
+    "state": "amber",
+    "n": 4,
+    "when": "2026-08-19",
+    "ev": "the Yoruba-name leak from one batch run \u2014 found and fixed"
+   },
+   "presdrift": {
+    "state": "unknown",
+    "when": "2026-08-18",
+    "ev": "ran estate-wide, but this course's flagged rows were never triaged or published"
+   }
+  },
+  "gla_for_eng": {
+   "filler": {
+    "state": "red",
+    "n": 42,
+    "when": "2026-08-17",
+    "ev": "42 confirmed filler BUILDs in 21 clusters; reported, never actioned"
+   },
+   "langname": {
+    "state": "green",
+    "when": "2026-08-19",
+    "ev": "estate-wide sweep, no wrong language name in this course's seeds"
+   },
+   "presdrift": {
+    "state": "unknown",
+    "when": "2026-08-18",
+    "ev": "ran estate-wide, but this course's flagged rows were never triaged or published"
+   }
+  },
+  "gle_cn_for_eng": {
+   "zut": {
+    "state": "red",
+    "n": 4,
+    "when": "2026-08-22",
+    "ev": "4 strict + 5 membership; read as Irish polysemy needing a ruling"
+   },
+   "langname": {
+    "state": "green",
+    "when": "2026-08-19",
+    "ev": "estate-wide sweep, no wrong language name in this course's seeds"
+   },
+   "presdrift": {
+    "state": "unknown",
+    "when": "2026-08-18",
+    "ev": "ran estate-wide, but this course's flagged rows were never triaged or published"
+   }
+  },
+  "gle_for_eng": {
+   "vocabdisc": {
+    "state": "red",
+    "n": 1,
+    "when": "2026-08-27",
+    "ev": "calibration probe only \u2014 three Irish idioms for 'know'; not a full read"
+   },
+   "filler": {
+    "state": "red",
+    "n": 8,
+    "when": "2026-08-17",
+    "ev": "8 confirmed filler BUILDs in 4 clusters; reported, never actioned"
+   },
+   "langname": {
+    "state": "green",
+    "when": "2026-08-19",
+    "ev": "estate-wide sweep, no wrong language name in this course's seeds"
+   },
+   "presdrift": {
+    "state": "unknown",
+    "when": "2026-08-18",
+    "ev": "ran estate-wide, but this course's flagged rows were never triaged or published"
+   },
+   "checkpoint": {
+    "state": "green",
+    "when": "early 2026",
+    "ev": "every checkpoint approved, zero vocabulary violations \u2014 but only up to seed 300, and never re-run since"
+   }
+  },
+  "glg_for_eng": {
+   "filler": {
+    "state": "red",
+    "n": 21,
+    "when": "2026-08-17",
+    "ev": "21 confirmed filler BUILDs in 10 clusters; reported, never actioned"
+   },
+   "langname": {
+    "state": "green",
+    "when": "2026-08-19",
+    "ev": "estate-wide sweep, no wrong language name in this course's seeds"
+   },
+   "presdrift": {
+    "state": "unknown",
+    "when": "2026-08-18",
+    "ev": "ran estate-wide, but this course's flagged rows were never triaged or published"
+   }
+  },
+  "hak_for_eng": {
+   "filler": {
+    "state": "green",
+    "when": "2026-08-17",
+    "ev": "8183 BUILD rows examined, no filler clusters"
+   },
+   "langname": {
+    "state": "green",
+    "when": "2026-08-19",
+    "ev": "estate-wide sweep, no wrong language name in this course's seeds"
+   },
+   "presdrift": {
+    "state": "unknown",
+    "when": "2026-08-18",
+    "ev": "ran estate-wide, but this course's flagged rows were never triaged or published"
+   }
+  },
+  "heb_for_eng": {
+   "filler": {
+    "state": "red",
+    "n": 38,
+    "when": "2026-08-17",
+    "ev": "38 confirmed filler BUILDs in 19 clusters; reported, never actioned"
+   },
+   "langname": {
+    "state": "green",
+    "when": "2026-08-19",
+    "ev": "estate-wide sweep, no wrong language name in this course's seeds"
+   },
+   "presdrift": {
+    "state": "unknown",
+    "when": "2026-08-18",
+    "ev": "ran estate-wide, but this course's flagged rows were never triaged or published"
+   }
+  },
+  "hin_for_eng": {
+   "filler": {
+    "state": "red",
+    "n": 2,
+    "when": "2026-08-17",
+    "ev": "2 confirmed filler BUILDs in 1 clusters; reported, never actioned"
+   },
+   "langname": {
+    "state": "green",
+    "when": "2026-08-19",
+    "ev": "estate-wide sweep, no wrong language name in this course's seeds"
+   },
+   "presdrift": {
+    "state": "unknown",
+    "when": "2026-08-18",
+    "ev": "ran estate-wide, but this course's flagged rows were never triaged or published"
+   },
+   "distinction": {
+    "state": "red",
+    "n": 929,
+    "when": "2026-08-19",
+    "ev": "929 under-determined rows, none applied"
+   }
+  },
+  "hrv_for_eng": {
+   "filler": {
+    "state": "red",
+    "n": 24,
+    "when": "2026-08-17",
+    "ev": "24 confirmed filler BUILDs in 12 clusters; reported, never actioned"
+   },
+   "langname": {
+    "state": "green",
+    "when": "2026-08-19",
+    "ev": "estate-wide sweep, no wrong language name in this course's seeds"
+   },
+   "presdrift": {
+    "state": "amber",
+    "n": 33,
+    "when": "2026-08-18",
+    "ev": "33 rows, 25 were false alarms, 8 re-rendered"
+   }
+  },
+  "hun_for_eng": {
+   "filler": {
+    "state": "red",
+    "n": 225,
+    "when": "2026-08-17",
+    "ev": "225 confirmed filler BUILDs in 108 clusters; reported, never actioned"
+   },
+   "langname": {
+    "state": "green",
+    "when": "2026-08-19",
+    "ev": "estate-wide sweep, no wrong language name in this course's seeds"
+   },
+   "presdrift": {
+    "state": "unknown",
+    "when": "2026-08-18",
+    "ev": "ran estate-wide, but this course's flagged rows were never triaged or published"
+   }
+  },
+  "hye_for_eng": {
+   "filler": {
+    "state": "red",
+    "n": 8,
+    "when": "2026-08-17",
+    "ev": "8 confirmed filler BUILDs in 4 clusters; reported, never actioned"
+   },
+   "langname": {
+    "state": "red",
+    "n": 4,
+    "when": "2026-08-19",
+    "ev": "spelling corruption found alongside the sweep, never fixed"
+   },
+   "presdrift": {
+    "state": "unknown",
+    "when": "2026-08-18",
+    "ev": "ran estate-wide, but this course's flagged rows were never triaged or published"
+   }
+  },
+  "ind_for_eng": {
+   "filler": {
+    "state": "green",
+    "when": "2026-08-17",
+    "ev": "213 BUILD rows examined, no filler clusters"
+   },
+   "langname": {
+    "state": "green",
+    "when": "2026-08-19",
+    "ev": "estate-wide sweep, no wrong language name in this course's seeds"
+   },
+   "presdrift": {
+    "state": "unknown",
+    "when": "2026-08-18",
+    "ev": "ran estate-wide, but this course's flagged rows were never triaged or published"
+   }
+  },
+  "isl_for_eng": {
+   "filler": {
+    "state": "red",
+    "n": 6,
+    "when": "2026-08-17",
+    "ev": "6 confirmed filler BUILDs in 3 clusters; reported, never actioned"
+   },
+   "langname": {
+    "state": "green",
+    "when": "2026-08-19",
+    "ev": "estate-wide sweep, no wrong language name in this course's seeds"
+   },
+   "presdrift": {
+    "state": "unknown",
+    "when": "2026-08-18",
+    "ev": "ran estate-wide, but this course's flagged rows were never triaged or published"
+   }
+  },
+  "ita_for_cym": {
+   "filler": {
+    "state": "unknown",
+    "when": "2026-08-17",
+    "ev": "scanned, but the padding list is English matched against the known side \u2014 a zero here means nothing"
+   },
+   "langname": {
+    "state": "green",
+    "when": "2026-08-19",
+    "ev": "estate-wide sweep, no wrong language name in this course's seeds"
+   },
+   "presdrift": {
+    "state": "unknown",
+    "when": "2026-08-18",
+    "ev": "ran estate-wide, but this course's flagged rows were never triaged or published"
+   }
+  },
+  "ita_for_eng": {
+   "knowclash": {
+    "state": "red",
+    "when": "2026-08-27",
+    "ev": "cleanest of the four, two genuine survivors \u2014 nothing fixed"
+   },
+   "filler": {
+    "state": "red",
+    "n": 63,
+    "when": "2026-08-17",
+    "ev": "63 confirmed filler BUILDs in 31 clusters; reported, never actioned"
+   },
+   "langname": {
+    "state": "green",
+    "when": "2026-08-19",
+    "ev": "estate-wide sweep, no wrong language name in this course's seeds"
+   },
+   "presdrift": {
+    "state": "amber",
+    "n": 1,
+    "when": "2026-08-18",
+    "ev": "1 row, fixed"
+   },
+   "checkpoint": {
+    "state": "amber",
+    "when": "early 2026",
+    "ev": "checkpoints ran but at least one was left sitting at 'pending human' and never resolved"
+   }
+  },
+  "ita_for_jpn": {
+   "knownside": {
+    "state": "unknown",
+    "when": "2026-08-18",
+    "ev": "gate refused: no lemma boundary in Japanese \u2014 reported UNCHECKED, which is not a pass"
+   },
+   "buildteach": {
+    "state": "red",
+    "when": "2026-08-26",
+    "ev": "541 violations across the six courses; 19% of rows refused as unjudgeable"
+   },
+   "teachorder": {
+    "state": "red",
+    "n": 4,
+    "when": "2026-08-26",
+    "ev": "44 confirmed defects, read-only scan, nothing fixed"
+   },
+   "boundary": {
+    "state": "amber",
+    "n": 17,
+    "when": "2026-08-27",
+    "ev": "all 17 cases found and repaired in the live DB"
+   },
+   "filler": {
+    "state": "unknown",
+    "when": "2026-08-17",
+    "ev": "scanned, but the padding list is English matched against the known side \u2014 a zero here means nothing"
+   },
+   "langname": {
+    "state": "red",
+    "n": 4,
+    "when": "2026-08-19",
+    "ev": "English placeholder left in the language name \u2014 NOT fixed, the rows are already voiced"
+   },
+   "presdrift": {
+    "state": "unknown",
+    "when": "2026-08-18",
+    "ev": "ran estate-wide, but this course's flagged rows were never triaged or published"
+   }
+  },
+  "ita_for_zho": {
+   "filler": {
+    "state": "unknown",
+    "when": "2026-08-17",
+    "ev": "scanned, but the padding list is English matched against the known side \u2014 a zero here means nothing"
+   },
+   "langname": {
+    "state": "green",
+    "when": "2026-08-19",
+    "ev": "estate-wide sweep, no wrong language name in this course's seeds"
+   },
+   "presdrift": {
+    "state": "unknown",
+    "when": "2026-08-18",
+    "ev": "ran estate-wide, but this course's flagged rows were never triaged or published"
+   }
+  },
+  "jpn_for_eng": {
+   "vocabdisc": {
+    "state": "red",
+    "n": 16,
+    "when": "2026-08-27",
+    "ev": "110 hits read by hand, 16 genuine; nothing fixed"
+   },
+   "filler": {
+    "state": "red",
+    "n": 22,
+    "when": "2026-08-17",
+    "ev": "22 confirmed filler BUILDs in 10 clusters; reported, never actioned"
+   },
+   "langname": {
+    "state": "green",
+    "when": "2026-08-19",
+    "ev": "estate-wide sweep, no wrong language name in this course's seeds"
+   },
+   "presdrift": {
+    "state": "unknown",
+    "when": "2026-08-18",
+    "ev": "ran estate-wide, but this course's flagged rows were never triaged or published"
+   },
+   "phrasemon": {
+    "state": "red",
+    "n": 6,
+    "when": "2026-02-11",
+    "ev": "6 variety flags, still open"
+   },
+   "checkpoint": {
+    "state": "green",
+    "when": "early 2026",
+    "ev": "every checkpoint approved, zero vocabulary violations \u2014 but only up to seed 300, and never re-run since"
+   }
+  },
+  "kan_for_eng": {
+   "filler": {
+    "state": "green",
+    "when": "2026-08-17",
+    "ev": "47 BUILD rows examined, no filler clusters"
+   },
+   "langname": {
+    "state": "green",
+    "when": "2026-08-19",
+    "ev": "estate-wide sweep, no wrong language name in this course's seeds"
+   },
+   "presdrift": {
+    "state": "unknown",
+    "when": "2026-08-18",
+    "ev": "ran estate-wide, but this course's flagged rows were never triaged or published"
+   }
+  },
+  "kor_for_eng": {
+   "filler": {
+    "state": "red",
+    "n": 22,
+    "when": "2026-08-17",
+    "ev": "22 confirmed filler BUILDs in 11 clusters; reported, never actioned"
+   },
+   "langname": {
+    "state": "green",
+    "when": "2026-08-19",
+    "ev": "estate-wide sweep, no wrong language name in this course's seeds"
+   },
+   "presdrift": {
+    "state": "unknown",
+    "when": "2026-08-18",
+    "ev": "ran estate-wide, but this course's flagged rows were never triaged or published"
+   },
+   "phrasemon": {
+    "state": "red",
+    "n": 20,
+    "when": "2026-02-14",
+    "ev": "20 variety flags, still open"
+   },
+   "checkpoint": {
+    "state": "amber",
+    "when": "early 2026",
+    "ev": "checkpoints ran but at least one was left sitting at 'pending human' and never resolved"
+   }
+  },
+  "kor_for_hin": {
+   "knownside": {
+    "state": "red",
+    "n": 60,
+    "when": "2026-08-18",
+    "ev": "estate sweep doc, strong candidates, none applied"
+   },
+   "filler": {
+    "state": "unknown",
+    "when": "2026-08-17",
+    "ev": "scanned, but the padding list is English matched against the known side \u2014 a zero here means nothing"
+   },
+   "langname": {
+    "state": "green",
+    "when": "2026-08-19",
+    "ev": "estate-wide sweep, no wrong language name in this course's seeds"
+   },
+   "presdrift": {
+    "state": "unknown",
+    "when": "2026-08-18",
+    "ev": "ran estate-wide, but this course's flagged rows were never triaged or published"
+   }
+  },
+  "kor_for_tam": {
+   "knownside": {
+    "state": "red",
+    "n": 19,
+    "when": "2026-08-18",
+    "ev": "estate sweep doc, strong candidates, none applied"
+   },
+   "filler": {
+    "state": "unknown",
+    "when": "2026-08-17",
+    "ev": "scanned, but the padding list is English matched against the known side \u2014 a zero here means nothing"
+   },
+   "langname": {
+    "state": "green",
+    "when": "2026-08-19",
+    "ev": "estate-wide sweep, no wrong language name in this course's seeds"
+   },
+   "presdrift": {
+    "state": "unknown",
+    "when": "2026-08-18",
+    "ev": "ran estate-wide, but this course's flagged rows were never triaged or published"
+   }
+  },
+  "lav_for_eng": {
+   "filler": {
+    "state": "red",
+    "n": 4,
+    "when": "2026-08-17",
+    "ev": "4 confirmed filler BUILDs in 2 clusters; reported, never actioned"
+   },
+   "langname": {
+    "state": "green",
+    "when": "2026-08-19",
+    "ev": "estate-wide sweep, no wrong language name in this course's seeds"
+   },
+   "presdrift": {
+    "state": "unknown",
+    "when": "2026-08-18",
+    "ev": "ran estate-wide, but this course's flagged rows were never triaged or published"
+   }
+  },
+  "lit_for_eng": {
+   "filler": {
+    "state": "red",
+    "n": 2,
+    "when": "2026-08-17",
+    "ev": "2 confirmed filler BUILDs in 1 clusters; reported, never actioned"
+   },
+   "langname": {
+    "state": "green",
+    "when": "2026-08-19",
+    "ev": "estate-wide sweep, no wrong language name in this course's seeds"
+   },
+   "presdrift": {
+    "state": "unknown",
+    "when": "2026-08-18",
+    "ev": "ran estate-wide, but this course's flagged rows were never triaged or published"
+   }
+  },
+  "lmo_for_eng": {
+   "filler": {
+    "state": "red",
+    "n": 19,
+    "when": "2026-08-17",
+    "ev": "19 confirmed filler BUILDs in 7 clusters; reported, never actioned"
+   },
+   "langname": {
+    "state": "amber",
+    "n": 4,
+    "when": "2026-08-19",
+    "ev": "the Yoruba-name leak from one batch run \u2014 found and fixed"
+   },
+   "presdrift": {
+    "state": "unknown",
+    "when": "2026-08-18",
+    "ev": "ran estate-wide, but this course's flagged rows were never triaged or published"
+   }
+  },
+  "mar_for_eng": {
+   "filler": {
+    "state": "red",
+    "n": 2,
+    "when": "2026-08-17",
+    "ev": "2 confirmed filler BUILDs in 1 clusters; reported, never actioned"
+   },
+   "langname": {
+    "state": "green",
+    "when": "2026-08-19",
+    "ev": "estate-wide sweep, no wrong language name in this course's seeds"
+   },
+   "presdrift": {
+    "state": "unknown",
+    "when": "2026-08-18",
+    "ev": "ran estate-wide, but this course's flagged rows were never triaged or published"
+   }
+  },
+  "mkd_for_eng": {
+   "filler": {
+    "state": "red",
+    "n": 2,
+    "when": "2026-08-17",
+    "ev": "2 confirmed filler BUILDs in 1 clusters; reported, never actioned"
+   },
+   "langname": {
+    "state": "green",
+    "when": "2026-08-19",
+    "ev": "estate-wide sweep, no wrong language name in this course's seeds"
+   },
+   "presdrift": {
+    "state": "unknown",
+    "when": "2026-08-18",
+    "ev": "ran estate-wide, but this course's flagged rows were never triaged or published"
+   }
+  },
+  "mlt_for_eng": {
+   "filler": {
+    "state": "red",
+    "n": 49,
+    "when": "2026-08-17",
+    "ev": "49 confirmed filler BUILDs in 23 clusters; reported, never actioned"
+   },
+   "langname": {
+    "state": "green",
+    "when": "2026-08-19",
+    "ev": "estate-wide sweep, no wrong language name in this course's seeds"
+   },
+   "presdrift": {
+    "state": "unknown",
+    "when": "2026-08-18",
+    "ev": "ran estate-wide, but this course's flagged rows were never triaged or published"
+   }
+  },
+  "nan_for_eng": {
+   "filler": {
+    "state": "red",
+    "n": 2,
+    "when": "2026-08-17",
+    "ev": "2 confirmed filler BUILDs in 1 clusters; reported, never actioned"
+   },
+   "langname": {
+    "state": "green",
+    "when": "2026-08-19",
+    "ev": "estate-wide sweep, no wrong language name in this course's seeds"
+   },
+   "presdrift": {
+    "state": "unknown",
+    "when": "2026-08-18",
+    "ev": "ran estate-wide, but this course's flagged rows were never triaged or published"
+   }
+  },
+  "nap_for_eng": {
+   "filler": {
+    "state": "red",
+    "n": 20,
+    "when": "2026-08-17",
+    "ev": "20 confirmed filler BUILDs in 9 clusters; reported, never actioned"
+   },
+   "langname": {
+    "state": "amber",
+    "n": 5,
+    "when": "2026-08-19",
+    "ev": "the Yoruba-name leak from one batch run \u2014 found and fixed"
+   },
+   "presdrift": {
+    "state": "unknown",
+    "when": "2026-08-18",
+    "ev": "ran estate-wide, but this course's flagged rows were never triaged or published"
+   }
+  },
+  "nep_for_eng": {
+   "filler": {
+    "state": "red",
+    "n": 6,
+    "when": "2026-08-17",
+    "ev": "6 confirmed filler BUILDs in 3 clusters; reported, never actioned"
+   },
+   "langname": {
+    "state": "green",
+    "when": "2026-08-19",
+    "ev": "estate-wide sweep, no wrong language name in this course's seeds"
+   },
+   "presdrift": {
+    "state": "unknown",
+    "when": "2026-08-18",
+    "ev": "ran estate-wide, but this course's flagged rows were never triaged or published"
+   }
+  },
+  "nld_for_eng": {
+   "filler": {
+    "state": "red",
+    "n": 10,
+    "when": "2026-08-17",
+    "ev": "10 confirmed filler BUILDs in 5 clusters; reported, never actioned"
+   },
+   "langname": {
+    "state": "green",
+    "when": "2026-08-19",
+    "ev": "estate-wide sweep, no wrong language name in this course's seeds"
+   },
+   "presdrift": {
+    "state": "unknown",
+    "when": "2026-08-18",
+    "ev": "ran estate-wide, but this course's flagged rows were never triaged or published"
+   },
+   "checkpoint": {
+    "state": "green",
+    "when": "early 2026",
+    "ev": "every checkpoint approved, zero vocabulary violations \u2014 but only up to seed 300, and never re-run since"
+   }
+  },
+  "nor_for_eng": {
+   "filler": {
+    "state": "red",
+    "n": 4,
+    "when": "2026-08-17",
+    "ev": "4 confirmed filler BUILDs in 2 clusters; reported, never actioned"
+   },
+   "langname": {
+    "state": "green",
+    "when": "2026-08-19",
+    "ev": "estate-wide sweep, no wrong language name in this course's seeds"
+   },
+   "presdrift": {
+    "state": "unknown",
+    "when": "2026-08-18",
+    "ev": "ran estate-wide, but this course's flagged rows were never triaged or published"
+   }
+  },
+  "pdc_for_eng": {
+   "filler": {
+    "state": "red",
+    "n": 190,
+    "when": "2026-08-17",
+    "ev": "190 confirmed filler BUILDs in 78 clusters; reported, never actioned"
+   },
+   "langname": {
+    "state": "green",
+    "when": "2026-08-19",
+    "ev": "estate-wide sweep, no wrong language name in this course's seeds"
+   },
+   "presdrift": {
+    "state": "unknown",
+    "when": "2026-08-18",
+    "ev": "ran estate-wide, but this course's flagged rows were never triaged or published"
+   }
+  },
+  "pol_for_eng": {
+   "filler": {
+    "state": "red",
+    "n": 14,
+    "when": "2026-08-17",
+    "ev": "14 confirmed filler BUILDs in 7 clusters; reported, never actioned"
+   },
+   "langname": {
+    "state": "green",
+    "when": "2026-08-19",
+    "ev": "estate-wide sweep, no wrong language name in this course's seeds"
+   },
+   "presdrift": {
+    "state": "unknown",
+    "when": "2026-08-18",
+    "ev": "ran estate-wide, but this course's flagged rows were never triaged or published"
+   }
+  },
+  "por_br_for_eng": {
+   "filler": {
+    "state": "red",
+    "n": 48,
+    "when": "2026-08-17",
+    "ev": "48 confirmed filler BUILDs in 23 clusters; reported, never actioned"
+   },
+   "langname": {
+    "state": "green",
+    "when": "2026-08-19",
+    "ev": "estate-wide sweep, no wrong language name in this course's seeds"
+   },
+   "presdrift": {
+    "state": "unknown",
+    "when": "2026-08-18",
+    "ev": "ran estate-wide, but this course's flagged rows were never triaged or published"
+   }
+  },
+  "por_for_eng": {
+   "knowclash": {
+    "state": "red",
+    "when": "2026-08-27",
+    "ev": "same shape as Spanish plus one sentence taught two ways \u2014 nothing fixed"
+   },
+   "filler": {
+    "state": "red",
+    "n": 222,
+    "when": "2026-08-17",
+    "ev": "222 confirmed filler BUILDs in 89 clusters; reported, never actioned"
+   },
+   "langname": {
+    "state": "green",
+    "when": "2026-08-19",
+    "ev": "estate-wide sweep, no wrong language name in this course's seeds"
+   },
+   "presdrift": {
+    "state": "amber",
+    "n": 6,
+    "when": "2026-08-18",
+    "ev": "6 rows, all fixed"
+   },
+   "checkpoint": {
+    "state": "amber",
+    "when": "early 2026",
+    "ev": "checkpoints ran but at least one was left sitting at 'pending human' and never resolved"
+   }
+  },
+  "por_for_jpn": {
+   "knownside": {
+    "state": "unknown",
+    "when": "2026-08-18",
+    "ev": "gate refused: no lemma boundary in Japanese \u2014 reported UNCHECKED, which is not a pass"
+   },
+   "buildteach": {
+    "state": "red",
+    "when": "2026-08-26",
+    "ev": "541 violations across the six courses; 19% of rows refused as unjudgeable"
+   },
+   "teachorder": {
+    "state": "red",
+    "n": 4,
+    "when": "2026-08-26",
+    "ev": "44 confirmed defects, read-only scan, nothing fixed"
+   },
+   "boundary": {
+    "state": "red",
+    "n": 1,
+    "when": "2026-08-27",
+    "ev": "15 cases found, 14 repaired in the live DB, 1 still open"
+   },
+   "filler": {
+    "state": "unknown",
+    "when": "2026-08-17",
+    "ev": "scanned, but the padding list is English matched against the known side \u2014 a zero here means nothing"
+   },
+   "langname": {
+    "state": "green",
+    "when": "2026-08-19",
+    "ev": "estate-wide sweep, no wrong language name in this course's seeds"
+   },
+   "presdrift": {
+    "state": "unknown",
+    "when": "2026-08-18",
+    "ev": "ran estate-wide, but this course's flagged rows were never triaged or published"
+   }
+  },
+  "rgn_for_eng": {
+   "filler": {
+    "state": "red",
+    "n": 6,
+    "when": "2026-08-17",
+    "ev": "6 confirmed filler BUILDs in 3 clusters; reported, never actioned"
+   },
+   "langname": {
+    "state": "amber",
+    "n": 5,
+    "when": "2026-08-19",
+    "ev": "the Yoruba-name leak from one batch run \u2014 found and fixed"
+   },
+   "presdrift": {
+    "state": "unknown",
+    "when": "2026-08-18",
+    "ev": "ran estate-wide, but this course's flagged rows were never triaged or published"
+   }
+  },
+  "roh_for_eng": {
+   "filler": {
+    "state": "green",
+    "when": "2026-08-17",
+    "ev": "91 BUILD rows examined, no filler clusters"
+   },
+   "langname": {
+    "state": "amber",
+    "n": 5,
+    "when": "2026-08-19",
+    "ev": "the Yoruba-name leak from one batch run \u2014 found and fixed"
+   },
+   "presdrift": {
+    "state": "unknown",
+    "when": "2026-08-18",
+    "ev": "ran estate-wide, but this course's flagged rows were never triaged or published"
+   }
+  },
+  "ron_for_eng": {
+   "filler": {
+    "state": "red",
+    "n": 13,
+    "when": "2026-08-17",
+    "ev": "13 confirmed filler BUILDs in 6 clusters; reported, never actioned"
+   },
+   "langname": {
+    "state": "green",
+    "when": "2026-08-19",
+    "ev": "estate-wide sweep, no wrong language name in this course's seeds"
+   },
+   "presdrift": {
+    "state": "unknown",
+    "when": "2026-08-18",
+    "ev": "ran estate-wide, but this course's flagged rows were never triaged or published"
+   }
+  },
+  "rus_for_eng": {
+   "filler": {
+    "state": "red",
+    "n": 5,
+    "when": "2026-08-17",
+    "ev": "5 confirmed filler BUILDs in 2 clusters; reported, never actioned"
+   },
+   "langname": {
+    "state": "green",
+    "when": "2026-08-19",
+    "ev": "estate-wide sweep, no wrong language name in this course's seeds"
+   },
+   "presdrift": {
+    "state": "unknown",
+    "when": "2026-08-18",
+    "ev": "ran estate-wide, but this course's flagged rows were never triaged or published"
+   }
+  },
+  "sbx_for_eng": {
+   "filler": {
+    "state": "red",
+    "n": 7,
+    "when": "2026-08-17",
+    "ev": "7 confirmed filler BUILDs in 3 clusters; reported, never actioned"
+   },
+   "langname": {
+    "state": "amber",
+    "n": 1,
+    "when": "2026-08-19",
+    "ev": "the Yoruba-name leak from one batch run \u2014 found and fixed"
+   },
+   "presdrift": {
+    "state": "unknown",
+    "when": "2026-08-18",
+    "ev": "ran estate-wide, but this course's flagged rows were never triaged or published"
+   }
+  },
+  "scn_for_eng": {
+   "filler": {
+    "state": "red",
+    "n": 8,
+    "when": "2026-08-17",
+    "ev": "8 confirmed filler BUILDs in 3 clusters; reported, never actioned"
+   },
+   "langname": {
+    "state": "amber",
+    "n": 5,
+    "when": "2026-08-19",
+    "ev": "the Yoruba-name leak from one batch run \u2014 found and fixed"
+   },
+   "presdrift": {
+    "state": "unknown",
+    "when": "2026-08-18",
+    "ev": "ran estate-wide, but this course's flagged rows were never triaged or published"
+   }
+  },
+  "sme_for_eng": {
+   "filler": {
+    "state": "red",
+    "n": 2,
+    "when": "2026-08-17",
+    "ev": "2 confirmed filler BUILDs in 1 clusters; reported, never actioned"
+   },
+   "langname": {
+    "state": "amber",
+    "n": 5,
+    "when": "2026-08-19",
+    "ev": "the Yoruba-name leak from one batch run \u2014 found and fixed"
+   },
+   "presdrift": {
+    "state": "unknown",
+    "when": "2026-08-18",
+    "ev": "ran estate-wide, but this course's flagged rows were never triaged or published"
+   }
+  },
+  "spa_for_cym": {
+   "filler": {
+    "state": "unknown",
+    "when": "2026-08-17",
+    "ev": "scanned, but the padding list is English matched against the known side \u2014 a zero here means nothing"
+   },
+   "langname": {
+    "state": "green",
+    "when": "2026-08-19",
+    "ev": "estate-wide sweep, no wrong language name in this course's seeds"
+   },
+   "presdrift": {
+    "state": "unknown",
+    "when": "2026-08-18",
+    "ev": "ran estate-wide, but this course's flagged rows were never triaged or published"
+   }
+  },
+  "spa_for_eng": {
+   "knowclash": {
+    "state": "red",
+    "when": "2026-08-27",
+    "ev": "4 bare 'I know'=conozco chunks against 'I know'=s\u00e9 \u2014 nothing fixed"
+   },
+   "vocabdisc": {
+    "state": "red",
+    "n": 1,
+    "when": "2026-08-27",
+    "ev": "calibration probe only \u2014 found saber/conocer; not a full read"
+   },
+   "zut": {
+    "state": "red",
+    "n": 81,
+    "when": "2026-08-25",
+    "ev": "81 strict clashes + 20 membership; unchanged across three runs"
+   },
+   "forwardref": {
+    "state": "red",
+    "n": 76,
+    "when": "2026-08-26",
+    "ev": "19% of a 400-row sample of live rows fails; nothing applied"
+   },
+   "mismatch": {
+    "state": "red",
+    "n": 54,
+    "when": "2026-08-26",
+    "ev": "1,019 flagged \u2192 112 real; 58 fixed and live, 54 still open"
+   },
+   "edgemap": {
+    "state": "red",
+    "when": "2026-08-26",
+    "ev": "42% of BUILD phrases connect to nothing; read-only, nothing fixed"
+   },
+   "filler": {
+    "state": "red",
+    "n": 15,
+    "when": "2026-08-17",
+    "ev": "15 confirmed filler BUILDs in 7 clusters; reported, never actioned"
+   },
+   "langname": {
+    "state": "green",
+    "when": "2026-08-19",
+    "ev": "estate-wide sweep, no wrong language name in this course's seeds"
+   },
+   "presdrift": {
+    "state": "amber",
+    "n": 55,
+    "when": "2026-08-18",
+    "ev": "55 rows, 53 relinked and 2 re-rendered \u2014 none left drifting"
+   },
+   "distinction": {
+    "state": "red",
+    "n": 690,
+    "when": "2026-08-19",
+    "ev": "690 masculine-only rows \u2014 found by a person, not the tool"
+   },
+   "checkpoint": {
+    "state": "green",
+    "when": "early 2026",
+    "ev": "every checkpoint approved, zero vocabulary violations \u2014 but only up to seed 300, and never re-run since"
+   }
+  },
+  "spa_for_jpn": {
+   "knownside": {
+    "state": "unknown",
+    "when": "2026-08-18",
+    "ev": "gate refused: no lemma boundary in Japanese \u2014 reported UNCHECKED, which is not a pass"
+   },
+   "buildteach": {
+    "state": "red",
+    "when": "2026-08-26",
+    "ev": "541 violations across the six courses; 19% of rows refused as unjudgeable"
+   },
+   "teachorder": {
+    "state": "red",
+    "n": 5,
+    "when": "2026-08-26",
+    "ev": "44 confirmed defects, read-only scan, nothing fixed"
+   },
+   "boundary": {
+    "state": "red",
+    "n": 1,
+    "when": "2026-08-27",
+    "ev": "26 cases found, 25 repaired in the live DB, 1 still open"
+   },
+   "filler": {
+    "state": "unknown",
+    "when": "2026-08-17",
+    "ev": "scanned, but the padding list is English matched against the known side \u2014 a zero here means nothing"
+   },
+   "langname": {
+    "state": "red",
+    "n": 4,
+    "when": "2026-08-19",
+    "ev": "English placeholder left in the language name \u2014 NOT fixed, the rows are already voiced"
+   },
+   "presdrift": {
+    "state": "unknown",
+    "when": "2026-08-18",
+    "ev": "ran estate-wide, but this course's flagged rows were never triaged or published"
+   }
+  },
+  "spa_for_zho": {
+   "filler": {
+    "state": "unknown",
+    "when": "2026-08-17",
+    "ev": "scanned, but the padding list is English matched against the known side \u2014 a zero here means nothing"
+   },
+   "langname": {
+    "state": "green",
+    "when": "2026-08-19",
+    "ev": "estate-wide sweep, no wrong language name in this course's seeds"
+   },
+   "presdrift": {
+    "state": "unknown",
+    "when": "2026-08-18",
+    "ev": "ran estate-wide, but this course's flagged rows were never triaged or published"
+   }
+  },
+  "spa_mx_for_eng": {
+   "knowclash": {
+    "state": "red",
+    "when": "2026-08-27",
+    "ev": "1 bare chunk plus a self-contradiction at seeds 233/290 \u2014 nothing fixed"
+   },
+   "filler": {
+    "state": "red",
+    "n": 27,
+    "when": "2026-08-17",
+    "ev": "27 confirmed filler BUILDs in 11 clusters; reported, never actioned"
+   },
+   "langname": {
+    "state": "green",
+    "when": "2026-08-19",
+    "ev": "estate-wide sweep, no wrong language name in this course's seeds"
+   },
+   "presdrift": {
+    "state": "unknown",
+    "when": "2026-08-18",
+    "ev": "ran estate-wide, but this course's flagged rows were never triaged or published"
+   }
+  },
+  "srp_for_eng": {
+   "filler": {
+    "state": "red",
+    "n": 6,
+    "when": "2026-08-17",
+    "ev": "6 confirmed filler BUILDs in 3 clusters; reported, never actioned"
+   },
+   "langname": {
+    "state": "green",
+    "when": "2026-08-19",
+    "ev": "estate-wide sweep, no wrong language name in this course's seeds"
+   },
+   "presdrift": {
+    "state": "unknown",
+    "when": "2026-08-18",
+    "ev": "ran estate-wide, but this course's flagged rows were never triaged or published"
+   }
+  },
+  "swa_for_eng": {
+   "filler": {
+    "state": "red",
+    "n": 10,
+    "when": "2026-08-17",
+    "ev": "10 confirmed filler BUILDs in 5 clusters; reported, never actioned"
+   },
+   "langname": {
+    "state": "green",
+    "when": "2026-08-19",
+    "ev": "estate-wide sweep, no wrong language name in this course's seeds"
+   },
+   "presdrift": {
+    "state": "unknown",
+    "when": "2026-08-18",
+    "ev": "ran estate-wide, but this course's flagged rows were never triaged or published"
+   }
+  },
+  "swe_for_eng": {
+   "filler": {
+    "state": "red",
+    "n": 2,
+    "when": "2026-08-17",
+    "ev": "2 confirmed filler BUILDs in 1 clusters; reported, never actioned"
+   },
+   "langname": {
+    "state": "green",
+    "when": "2026-08-19",
+    "ev": "estate-wide sweep, no wrong language name in this course's seeds"
+   },
+   "presdrift": {
+    "state": "unknown",
+    "when": "2026-08-18",
+    "ev": "ran estate-wide, but this course's flagged rows were never triaged or published"
+   }
+  },
+  "tel_for_eng": {
+   "filler": {
+    "state": "red",
+    "n": 11,
+    "when": "2026-08-17",
+    "ev": "11 confirmed filler BUILDs in 5 clusters; reported, never actioned"
+   },
+   "langname": {
+    "state": "green",
+    "when": "2026-08-19",
+    "ev": "estate-wide sweep, no wrong language name in this course's seeds"
+   },
+   "presdrift": {
+    "state": "unknown",
+    "when": "2026-08-18",
+    "ev": "ran estate-wide, but this course's flagged rows were never triaged or published"
+   }
+  },
+  "tha_for_eng": {
+   "filler": {
+    "state": "green",
+    "when": "2026-08-17",
+    "ev": "1630 BUILD rows examined, no filler clusters"
+   },
+   "langname": {
+    "state": "green",
+    "when": "2026-08-19",
+    "ev": "estate-wide sweep, no wrong language name in this course's seeds"
+   },
+   "presdrift": {
+    "state": "unknown",
+    "when": "2026-08-18",
+    "ev": "ran estate-wide, but this course's flagged rows were never triaged or published"
+   }
+  },
+  "tur_for_eng": {
+   "filler": {
+    "state": "red",
+    "n": 41,
+    "when": "2026-08-17",
+    "ev": "41 confirmed filler BUILDs in 19 clusters; reported, never actioned"
+   },
+   "langname": {
+    "state": "green",
+    "when": "2026-08-19",
+    "ev": "estate-wide sweep, no wrong language name in this course's seeds"
+   },
+   "presdrift": {
+    "state": "unknown",
+    "when": "2026-08-18",
+    "ev": "ran estate-wide, but this course's flagged rows were never triaged or published"
+   },
+   "phrasemon": {
+    "state": "red",
+    "n": 16,
+    "when": "2026-03-10",
+    "ev": "16 LEGO-frequency flags, still open"
+   }
+  },
+  "ukr_for_eng": {
+   "filler": {
+    "state": "red",
+    "n": 4,
+    "when": "2026-08-17",
+    "ev": "4 confirmed filler BUILDs in 2 clusters; reported, never actioned"
+   },
+   "langname": {
+    "state": "green",
+    "when": "2026-08-19",
+    "ev": "estate-wide sweep, no wrong language name in this course's seeds"
+   },
+   "presdrift": {
+    "state": "unknown",
+    "when": "2026-08-18",
+    "ev": "ran estate-wide, but this course's flagged rows were never triaged or published"
+   }
+  },
+  "vec_for_eng": {
+   "filler": {
+    "state": "red",
+    "n": 11,
+    "when": "2026-08-17",
+    "ev": "11 confirmed filler BUILDs in 5 clusters; reported, never actioned"
+   },
+   "langname": {
+    "state": "amber",
+    "n": 6,
+    "when": "2026-08-19",
+    "ev": "the Yoruba-name leak from one batch run \u2014 found and fixed"
+   },
+   "presdrift": {
+    "state": "unknown",
+    "when": "2026-08-18",
+    "ev": "ran estate-wide, but this course's flagged rows were never triaged or published"
+   }
+  },
+  "yid_for_eng": {
+   "filler": {
+    "state": "red",
+    "n": 2,
+    "when": "2026-08-17",
+    "ev": "2 confirmed filler BUILDs in 1 clusters; reported, never actioned"
+   },
+   "langname": {
+    "state": "amber",
+    "n": 4,
+    "when": "2026-08-19",
+    "ev": "the Yoruba-name leak from one batch run \u2014 found and fixed"
+   },
+   "presdrift": {
+    "state": "unknown",
+    "when": "2026-08-18",
+    "ev": "ran estate-wide, but this course's flagged rows were never triaged or published"
+   }
+  },
+  "yor_for_eng": {
+   "filler": {
+    "state": "green",
+    "when": "2026-08-17",
+    "ev": "72 BUILD rows examined, no filler clusters"
+   },
+   "langname": {
+    "state": "green",
+    "when": "2026-08-19",
+    "ev": "estate-wide sweep, no wrong language name in this course's seeds"
+   },
+   "presdrift": {
+    "state": "unknown",
+    "when": "2026-08-18",
+    "ev": "ran estate-wide, but this course's flagged rows were never triaged or published"
+   }
+  },
+  "yue_for_eng": {
+   "filler": {
+    "state": "green",
+    "when": "2026-08-17",
+    "ev": "3076 BUILD rows examined, no filler clusters"
+   },
+   "langname": {
+    "state": "green",
+    "when": "2026-08-19",
+    "ev": "estate-wide sweep, no wrong language name in this course's seeds"
+   },
+   "presdrift": {
+    "state": "unknown",
+    "when": "2026-08-18",
+    "ev": "ran estate-wide, but this course's flagged rows were never triaged or published"
+   }
+  },
+  "zho_for_eng": {
+   "filler": {
+    "state": "red",
+    "n": 21,
+    "when": "2026-08-17",
+    "ev": "21 confirmed filler BUILDs in 10 clusters; reported, never actioned"
+   },
+   "langname": {
+    "state": "green",
+    "when": "2026-08-19",
+    "ev": "estate-wide sweep, no wrong language name in this course's seeds"
+   },
+   "presdrift": {
+    "state": "red",
+    "n": 19,
+    "when": "2026-08-18",
+    "ev": "19 rows fixed but 1 still held for a human decision"
+   },
+   "checkpoint": {
+    "state": "green",
+    "when": "early 2026",
+    "ev": "every checkpoint approved, zero vocabulary violations \u2014 but only up to seed 300, and never re-run since"
+   }
+  },
+  "zho_for_gle": {
+   "filler": {
+    "state": "unknown",
+    "when": "2026-08-17",
+    "ev": "scanned, but the padding list is English matched against the known side \u2014 a zero here means nothing"
+   },
+   "langname": {
+    "state": "green",
+    "when": "2026-08-19",
+    "ev": "estate-wide sweep, no wrong language name in this course's seeds"
+   },
+   "presdrift": {
+    "state": "unknown",
+    "when": "2026-08-18",
+    "ev": "ran estate-wide, but this course's flagged rows were never triaged or published"
+   }
+  },
+  "zho_for_hin": {
+   "knownside": {
+    "state": "red",
+    "n": 48,
+    "when": "2026-08-18",
+    "ev": "estate sweep doc, strong candidates, none applied"
+   },
+   "filler": {
+    "state": "unknown",
+    "when": "2026-08-17",
+    "ev": "scanned, but the padding list is English matched against the known side \u2014 a zero here means nothing"
+   },
+   "langname": {
+    "state": "green",
+    "when": "2026-08-19",
+    "ev": "estate-wide sweep, no wrong language name in this course's seeds"
+   },
+   "presdrift": {
+    "state": "unknown",
+    "when": "2026-08-18",
+    "ev": "ran estate-wide, but this course's flagged rows were never triaged or published"
+   }
+  },
+  "zho_for_jpn": {
+   "knownside": {
+    "state": "unknown",
+    "when": "2026-08-18",
+    "ev": "gate refused: no lemma boundary in Japanese \u2014 reported UNCHECKED, which is not a pass"
+   },
+   "buildteach": {
+    "state": "red",
+    "when": "2026-08-26",
+    "ev": "541 violations across the six courses; 19% of rows refused as unjudgeable"
+   },
+   "teachorder": {
+    "state": "red",
+    "n": 7,
+    "when": "2026-08-26",
+    "ev": "44 confirmed defects, read-only scan, nothing fixed"
+   },
+   "boundary": {
+    "state": "red",
+    "n": 2,
+    "when": "2026-08-27",
+    "ev": "30 cases found, 28 repaired in the live DB, 2 still open"
+   },
+   "filler": {
+    "state": "unknown",
+    "when": "2026-08-17",
+    "ev": "scanned, but the padding list is English matched against the known side \u2014 a zero here means nothing"
+   },
+   "langname": {
+    "state": "red",
+    "n": 5,
+    "when": "2026-08-19",
+    "ev": "English placeholder left in the language name \u2014 NOT fixed, the rows are already voiced"
+   },
+   "presdrift": {
+    "state": "unknown",
+    "when": "2026-08-18",
+    "ev": "ran estate-wide, but this course's flagged rows were never triaged or published"
+   }
+  },
+  "zho_for_tam": {
+   "knownside": {
+    "state": "red",
+    "n": 15,
+    "when": "2026-08-18",
+    "ev": "estate sweep doc, strong candidates, none applied"
+   },
+   "filler": {
+    "state": "unknown",
+    "when": "2026-08-17",
+    "ev": "scanned, but the padding list is English matched against the known side \u2014 a zero here means nothing"
+   },
+   "langname": {
+    "state": "green",
+    "when": "2026-08-19",
+    "ev": "estate-wide sweep, no wrong language name in this course's seeds"
+   },
+   "presdrift": {
+    "state": "unknown",
+    "when": "2026-08-18",
+    "ev": "ran estate-wide, but this course's flagged rows were never triaged or published"
+   }
+  }
+ },
+ "notes": {
+  "calibration": [
+   "<b>Expected green, and it is not.</b> The filler-BUILD scan reports zero on forty courses including every English-for-X course. I opened the detector that produced those numbers: its padding list is a hardcoded set of English words (<i>here, yesterday, before, a lot, of course</i>) matched against the <i>known</i> side. On any course whose learners are not English speakers, a zero is arithmetically guaranteed and says nothing. Those forty cells are marked <b>?</b>, not green. Nine genuinely clean cells survive that correction, out of the fifty that column first claimed.",
+   "<b>Expected red, and it is.</b> Spanish under the ZUT audit. I read the run's own JSON rather than its write-up: 81 strict clashes and 20 target-membership failures. The same file from 15, 18 and 25 August carries identical numbers \u2014 so 'no drift' means nothing was repaired either. Confirmed red.",
+   "<b>Expected amber, and it is \u2014 verified in the live database, not in the report.</b> Italian-for-Japanese under the lesson-boundary rule. The write-up claims 17 cases found and all 17 repaired. I counted rows in the live database changed on the day of the repair: 15 LEGO rows and 353 practice rows. Fifteen is exactly the 6 merges plus 9 label corrections the report claims. The repair is real.",
+   "<b>Expected grey, and it is.</b> Turkish under the known-side gate. I searched every branch and every document for that course code in connection with any of these checks. It appears in audio, pod and punctuation work and in none of the content checks. Genuinely never run."
+  ],
+  "gaps": [
+   "<b>Kai's Basecamp was in my brief but I had no tool to read it.</b> No Basecamp connector was available to this session, so the planning lists in the brief are taken at face value and I could not check them against his board. Deborah's own findings are known to live in Basecamp card descriptions, so anything she raised that was never written into a repo document is invisible to this grid.",
+   "<b>Almost none of this tooling is on the main branch.</b> The ZUT audit tool, the forward-reference gate, the known/target detector, the edge map and the known-side ordering fixes all live on unmerged branches; the only trustworthy filler detector is an uncommitted scratch file that a clean checkout would delete. The grid describes work that happened, not protection that is in place.",
+   "<b>Two checks are not tools at all.</b> The know-clash and the vocabulary-discontinuity work are a documented method and a scoping study. Re-running either on a new course today means a person reading, not a command.",
+   "<b>The lesson-boundary column is a one-off.</b> The 120 cases were sorted and repaired by hand. No script exists to produce that list for a seventh course.",
+   "<b>Eight Japanese-prompt courses came back 'cannot judge' from the known-side gate</b> \u2014 51,017 rows the gate refused because Japanese gives it no word boundary to work with. That is honest of the gate and it is not coverage, so those cells are <b>?</b>.",
+   "<b>Two numbers rest on prose alone.</b> The 19% forward-reference figure for Spanish has no surviving list of the 400 rows it sampled, and the June English-for-X pass claims 383 rows were re-glossed with backup files that are not in the repository. Both are shown, both are flagged.",
+   "<b>The 'never run' cells are an absence of evidence.</b> I searched every branch, the document tree, the committed artefacts and the database's own result tables. A check run by someone who wrote nothing down would not appear here."
+  ],
+  "universe_html": "\n<p style=\"font-size:.88rem;color:#98a1b3\">The database holds <b>149 registered courses</b>. Only <b>120 have any content\nat all</b>; 29 are empty shells with a row and nothing behind it. The grid covers the 119 real ones (a test course is excluded).</p>\n<ul style=\"font-size:.88rem;color:#98a1b3\">\n<li><b>The paid x-for-English list is complete.</b> All sixteen exist and all sixteen are at the full 668 seeds \u2014 Arabic\n(MSA, Egyptian, Lebanese), Chinese, Japanese, Korean, Italian, French &times;2, Spanish &times;2, Portuguese &times;2, German &times;3.</li>\n<li><b>English-for-X exists but is half-length.</b> All nine are built, and all nine stop at 300 seeds, not 668.</li>\n<li><b>All ten English-for-Indian-language courses exist, at the full 668 seeds.</b> This is the most complete block in the estate.</li>\n<li><b>The retargeted block is mostly not there.</b> Fourteen courses for Japanese and Chinese speakers have content;\nfourteen more exist as empty shells; and nothing at all exists for Hindi or Tamil speakers beyond four courses.\n(That count comes from expanding \"the paid list, retargeted\" combinatorially \u2014 it is my reading of a one-line brief, not a list Kai wrote.)</li>\n<li><b>Community courses:</b> Welsh (four), Irish (two built, Munster and Ulster empty), Basque (two), Finnish and\nYoruba all exist. Yoruba-for-English is ten seeds.</li>\n<li><b>Sixty-one courses with real content are on nobody's list</b> \u2014 Dutch, Polish, Russian, Turkish, Swedish, Greek,\nHebrew, Persian, Thai, Hakka, Cantonese, Swahili, Scots Gaelic, Pennsylvania Dutch, and a long tail of regional Italian\nand Celtic pilots. Several are large: Turkish and Catalan-for-Spanish carry over 1,300 LEGOs each. They are real courses\nand they are outside the September plan as written.</li>\n</ul>",
+  "widest_sentence": "Three checks &mdash; the forward-reference gate, the known/target completeness detector and the introduction-order probe &mdash; have each been run against exactly <b>one</b> course in the whole estate."
+ }
+}
