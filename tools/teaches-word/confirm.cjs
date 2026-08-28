@@ -143,7 +143,13 @@ async function main() {
       if (i >= batches.length) return;
       results.push(...await confirmBatch(batches[i], model));
       done++;
-      if (done % 5 === 0 || done === batches.length) console.error(`  ${done}/${batches.length}`);
+      if (done % 5 === 0 || done === batches.length) {
+        console.error(`  ${done}/${batches.length}`);
+        // Checkpoint, as the reader does. The confirm pass is the slower of the two — a batch of
+        // ten on sonnet can run for minutes — so a run interrupted near the end used to lose
+        // everything and leave no way to tell how far it had got.
+        if (outFile) fs.writeFileSync(`${outFile}.partial`, JSON.stringify({ model, raw: accused.length, results }, null, 1));
+      }
     }
   }));
 
