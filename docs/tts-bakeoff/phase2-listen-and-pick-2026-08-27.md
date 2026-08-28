@@ -1,3 +1,15 @@
+# ⛔ SUPERSEDED — no pick was needed
+
+> **2026-08-27.** Tom: *"Already superseded."* Events overtook this comparison and settled the provider question in practice rather than by choosing from a page.
+>
+> **What actually happened:** Cartesia **sonic-3.6** went into the production pipeline overnight, the **91 Spanish-pod English clips** were re-rendered on it and are live, and Tom listened to them in the pod script page — *"very good, very natural"*.
+>
+> **And the framing here was wrong anyway.** This document asks which provider wins. Tom's standing ruling, made the same morning, is that **a human picks the voice per course in the Popty dashboard — no automatic selection rules and no fallback chain.** So there is no single winner to crown: human recording wins wherever it exists (Welsh and the like), Cartesia is being made selectable, **xAI is being removed from the options**, Azure covers what Cartesia does not, and ElevenLabs stays available as an explicit human choice only, never reached automatically, on cost.
+>
+> Kept for its measurements, which stand: the xAI/Chatterbox/Cartesia clips, the Chatterbox real-time factor and watermark note, and the OpenAI sales-gating check. Not for its question.
+
+---
+
 # Your voice, four ways — listen and pick
 
 **2026-08-27.** Three legs made it in, one is confirmed out. Everything below is raw model output — nothing mastered, nothing tidied — because mastering one leg and not another would flatter whichever leg got polished.
