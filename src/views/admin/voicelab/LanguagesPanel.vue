@@ -93,6 +93,44 @@ const rows = computed(() => {
 
 const summary = computed(() => data.value?.summary || null)
 
+/**
+ * THE STATUS CHIPS ARE THE SUMMARY. One row instead of two: each chip says how
+ * many languages are in that state and filters to them when clicked, so the
+ * count and the way to act on it are the same object. `hue` carries the meaning
+ * the header comment sets out — these are not interchangeable, and the colour
+ * is how a gap reads as a gap without being worked out.
+ */
+const STATUSES = [
+  { value: 'all',      label: 'Every status', hue: 'ui-hue-quiet', key: null },
+  { value: 'complete', label: 'Complete',     hue: 'ui-hue-good',  key: 'complete' },
+  { value: 'partial',  label: 'Partial',      hue: 'ui-hue-warn',  key: 'partial' },
+  { value: 'uncast',   label: 'Uncast',       hue: 'ui-hue-bad',   key: 'uncast' },
+  { value: 'nocover',  label: 'No Cartesia',  hue: 'ui-hue-warn',  key: 'nocover' },
+  { value: 'human',    label: 'Human-voiced', hue: 'ui-hue-info',  key: 'human' },
+]
+
+const statusChips = computed(() =>
+  STATUSES.map((st) => ({
+    ...st,
+    count: st.key ? (summary.value?.[st.key] ?? null) : (summary.value?.languages ?? null),
+  }))
+)
+
+const HUE = {
+  complete: 'ui-hue-good',
+  partial: 'ui-hue-warn',
+  nocover: 'ui-hue-warn',
+  uncast: 'ui-hue-bad',
+  human: 'ui-hue-info',
+}
+function hueFor (status) { return HUE[status] || 'ui-hue-quiet' }
+
+/** The status word as Tom reads it, not as the API stores it. */
+function statusLabel (status) {
+  if (status === 'nocover') return 'no Cartesia'
+  return status
+}
+
 function slotsOf (lang) {
   // Male then female, each in rank order — one stable reading order, so the eye
   // can scan down a column rather than re-learning the layout per row.
@@ -132,128 +170,133 @@ function candidatesFor (lang, slot) {
     <p class="vl-muted vl-intro">
       One row per language the estate actually teaches, read live from
       <code>courses</code>, <code>voices</code> and the same provider policy the render path uses.
-      Complete means one primary voice per gender; a backup per gender is tracked as insurance
-      but is never required for completeness.
-      <strong>Casting here writes nothing but the casting</strong> — no audio is rendered and no
-      course is changed.
     </p>
 
-    <div v-if="summary" class="vl-summary">
-      <span class="vl-chip ok">{{ summary.complete }} complete</span>
-      <span class="vl-chip">{{ summary.partial }} partial</span>
-      <span class="vl-chip fail">{{ summary.uncast }} uncast</span>
-      <span class="vl-chip warn">{{ summary.nocover }} no Cartesia</span>
-      <span class="vl-chip">{{ summary.human }} human-voiced</span>
-      <span v-if="summary.noBackup" class="vl-chip quiet">{{ summary.noBackup }} no fallback</span>
-      <span class="vl-muted">
-        {{ summary.languages }} languages · complete means {{ summary.requiredPerLanguage }} voices (1 male, 1 female) · backups are insurance, not required
-      </span>
+    <div class="vl-search">
+      <input
+        v-model="q"
+        class="ui-search"
+        type="text"
+        placeholder="Search languages (e.g. 'cym', 'fra', 'zho')…"
+      />
     </div>
 
-    <div class="vl-controls">
-      <input v-model="q" class="vl-input" placeholder="filter by language code…" />
-      <select v-model="filter" class="vl-input">
-        <option value="all">every status</option>
-        <option value="uncast">uncast — nobody assigned</option>
-        <option value="partial">partial</option>
-        <option value="complete">complete</option>
-        <option value="nocover">no Cartesia coverage</option>
-        <option value="human">human-voiced</option>
-      </select>
-      <button class="vl-btn" :disabled="loading" @click="load">Refresh</button>
+    <div class="ui-filter-row vl-filters">
+      <span class="ui-filter-label">Status</span>
+      <button
+        v-for="st in statusChips"
+        :key="st.value"
+        class="ui-chip"
+        :class="filter === st.value ? st.hue : 'ui-chip-off'"
+        @click="filter = st.value"
+      >
+        {{ st.label }}<span v-if="st.count !== null" class="chip-no">{{ st.count }}</span>
+      </button>
+
+      <button class="ui-sort-btn" :disabled="loading" @click="load">↻ Refresh</button>
+
+      <span class="ui-count">{{ rows.length }} of {{ summary?.languages ?? 0 }} languages</span>
     </div>
+
+    <p v-if="summary" class="vl-tail vl-muted">
+      Complete means {{ summary.requiredPerLanguage }} voices — one male, one female. Backups are
+      insurance, not required<span v-if="summary.noBackup">, and {{ summary.noBackup }} complete
+      language{{ summary.noBackup === 1 ? ' has' : 's have' }} none</span>.
+    </p>
 
     <p v-if="error" class="vl-error">{{ error }}</p>
     <p v-if="loading" class="vl-muted">Reading the estate…</p>
 
-    <table v-else class="vl-table">
-      <thead>
-        <tr>
-          <th>Language</th>
-          <th>Courses</th>
-          <th>Default provider</th>
-          <th>Voices cast</th>
-          <th>Status</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <template v-for="lang in rows" :key="lang.code">
-          <tr :class="['vl-row', lang.status]">
-            <td><strong>{{ lang.code }}</strong></td>
-            <td class="vl-muted">{{ lang.courses }}<span v-if="lang.released"> · {{ lang.released }} live</span></td>
-            <td class="vl-muted">{{ lang.defaultProvider || '—' }}</td>
-            <td>
-              <span :class="['vl-count', lang.filled >= lang.required ? 'ok' : lang.filled ? 'warn' : 'fail']">
-                {{ lang.filled }} / {{ lang.required }}
-              </span>
-            </td>
-            <td>
-              <span :class="['vl-status', lang.status]">{{ lang.status }}</span>
-              <span
-                v-if="lang.status === 'complete' && !lang.hasFullBackup"
-                class="vl-status quiet"
-                title="No fallback cast — insurance only, does not affect completeness"
-              >no fallback</span>
-            </td>
-            <td>
-              <button class="vl-btn small" @click="expanded = expanded === lang.code ? null : lang.code">
-                {{ expanded === lang.code ? 'Hide' : 'Voices' }}
-              </button>
-            </td>
+    <div v-else class="ui-table-wrap">
+      <table class="ui-table">
+        <thead>
+          <tr>
+            <th>Language</th>
+            <th>Courses</th>
+            <th>Default provider</th>
+            <th>Voices cast</th>
+            <th>Status</th>
+            <th></th>
           </tr>
+        </thead>
+        <tbody>
+          <template v-for="lang in rows" :key="lang.code">
+            <tr class="ui-row" :class="lang.status">
+              <td class="vl-code">{{ lang.code }}</td>
+              <td class="vl-muted">{{ lang.courses }}<span v-if="lang.released"> · {{ lang.released }} live</span></td>
+              <td class="vl-muted">{{ lang.defaultProvider || '—' }}</td>
+              <td>
+                <span :class="['vl-count', lang.filled >= lang.required ? 'ok' : lang.filled ? 'warn' : 'fail']">
+                  {{ lang.filled }} / {{ lang.required }}
+                </span>
+              </td>
+              <td>
+                <span class="ui-pill" :class="hueFor(lang.status)">{{ statusLabel(lang.status) }}</span>
+                <span
+                  v-if="lang.status === 'complete' && !lang.hasFullBackup"
+                  class="ui-pill ui-hue-quiet vl-flag"
+                  title="No fallback cast — insurance only, does not affect completeness"
+                >no fallback</span>
+              </td>
+              <td>
+                <button class="ui-sort-btn" @click="expanded = expanded === lang.code ? null : lang.code">
+                  {{ expanded === lang.code ? 'Hide' : 'Voices' }}
+                </button>
+              </td>
+            </tr>
 
-          <tr v-if="expanded === lang.code" :key="lang.code + ':slots'" class="vl-detail">
-            <td colspan="6">
-              <p v-if="lang.human" class="vl-note">
-                <strong>{{ lang.code }} is human-recorded only.</strong> A human recording wins
-                wherever it exists, so empty slots here are a recording worklist for its
-                recordists, not a casting gap. No TTS provider may ever be selected for it.
-              </p>
-              <p v-else-if="!lang.cartesiaCovers" class="vl-note">
-                Cartesia does not publish <strong>{{ lang.code }}</strong>, so a new render falls to
-                Azure. That is covered, just not by the default provider.
-              </p>
+            <tr v-if="expanded === lang.code" :key="lang.code + ':slots'" class="vl-detail">
+              <td colspan="6">
+                <p v-if="lang.human" class="vl-note">
+                  <strong>{{ lang.code }} is human-recorded only.</strong> A human recording wins
+                  wherever it exists, so empty slots here are a recording worklist for its
+                  recordists, not a casting gap. No TTS provider may ever be selected for it.
+                </p>
+                <p v-else-if="!lang.cartesiaCovers" class="vl-note">
+                  Cartesia does not publish <strong>{{ lang.code }}</strong>, so a new render falls to
+                  Azure. That is covered, just not by the default provider.
+                </p>
 
-              <div class="vl-slots">
-                <div v-for="slot in slotsOf(lang)" :key="slot.gender + slot.rank" class="vl-slot">
-                  <div class="vl-slot-label">
-                    {{ slot.gender === 'm' ? 'male' : 'female' }} · {{ slot.rankName }}
-                  </div>
+                <div class="vl-slots">
+                  <div v-for="slot in slotsOf(lang)" :key="slot.gender + slot.rank" class="vl-slot">
+                    <div class="vl-slot-label">
+                      {{ slot.gender === 'm' ? 'male' : 'female' }} · {{ slot.rankName }}
+                    </div>
 
-                  <div v-if="slot.filled" class="vl-slot-filled">
-                    <span class="vl-voice">{{ slot.voiceName }}</span>
-                    <span class="vl-kind">{{ slot.kind }}</span>
-                    <span v-if="slot.active === false" class="vl-status uncast">voice inactive</span>
-                    <button
-                      class="vl-btn small"
-                      :disabled="busy === `${lang.code}:${slot.gender}:${slot.rank}`"
-                      @click="clear(lang, slot)"
-                    >Clear</button>
-                  </div>
+                    <div v-if="slot.filled" class="vl-slot-filled">
+                      <span class="vl-voice">{{ slot.voiceName }}</span>
+                      <span class="vl-kind">{{ slot.kind }}</span>
+                      <span v-if="slot.active === false" class="ui-pill ui-hue-bad">voice inactive</span>
+                      <button
+                        class="ui-sort-btn"
+                        :disabled="busy === `${lang.code}:${slot.gender}:${slot.rank}`"
+                        @click="clear(lang, slot)"
+                      >Clear</button>
+                    </div>
 
-                  <div v-else class="vl-slot-empty">
-                    <select
-                      class="vl-input"
-                      :disabled="busy === `${lang.code}:${slot.gender}:${slot.rank}`"
-                      @change="cast(lang, slot, $event.target.value)"
-                    >
-                      <option value="">— empty — choose a voice</option>
-                      <option v-for="c in candidatesFor(lang, slot)" :key="c.voiceId" :value="c.voiceId">
-                        {{ c.name }} ({{ c.kind }})
-                      </option>
-                    </select>
-                    <span v-if="!candidatesFor(lang, slot).length" class="vl-muted">
-                      no voice in the estate declares this language
-                    </span>
+                    <div v-else class="vl-slot-empty">
+                      <select
+                        class="ui-select"
+                        :disabled="busy === `${lang.code}:${slot.gender}:${slot.rank}`"
+                        @change="cast(lang, slot, $event.target.value)"
+                      >
+                        <option value="">— empty — choose a voice</option>
+                        <option v-for="c in candidatesFor(lang, slot)" :key="c.voiceId" :value="c.voiceId">
+                          {{ c.name }} ({{ c.kind }})
+                        </option>
+                      </select>
+                      <span v-if="!candidatesFor(lang, slot).length" class="vl-muted">
+                        no voice in the estate declares this language
+                      </span>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </td>
-          </tr>
-        </template>
-      </tbody>
-    </table>
+              </td>
+            </tr>
+          </template>
+        </tbody>
+      </table>
+    </div>
 
     <section class="vl-clone">
       <button class="vl-btn" @click="showClone = !showClone">
@@ -270,14 +313,14 @@ function candidatesFor (lang, slot) {
           refused with a message rather than a failure.
         </p>
         <div class="vl-clone-row">
-          <input v-model="cloneName" class="vl-input" placeholder="name for the new voice" />
-          <input v-model="cloneLang" class="vl-input vl-narrow" placeholder="language e.g. eng" />
-          <select v-model="cloneGender" class="vl-input vl-narrow">
+          <input v-model="cloneName" class="ui-field" placeholder="name for the new voice" />
+          <input v-model="cloneLang" class="ui-field vl-narrow" placeholder="language e.g. eng" />
+          <select v-model="cloneGender" class="ui-field vl-narrow">
             <option value="">gender unknown</option>
             <option value="m">male</option>
             <option value="f">female</option>
           </select>
-          <input type="file" accept="audio/*" class="vl-input" @change="pickFile" />
+          <input type="file" accept="audio/*" class="ui-field" @change="pickFile" />
           <button class="vl-btn" :disabled="cloneBusy || !cloneFile || !cloneName" @click="submitClone">
             {{ cloneBusy ? 'Cloning…' : 'Create clone' }}
           </button>
@@ -296,38 +339,42 @@ function candidatesFor (lang, slot) {
 </template>
 
 <style scoped>
-.vl-intro { max-width: 60rem; }
-.vl-summary { display: flex; gap: .5rem; align-items: center; flex-wrap: wrap; margin: .75rem 0; }
-.vl-controls { display: flex; gap: .5rem; margin: .75rem 0; flex-wrap: wrap; }
-.vl-table { width: 100%; border-collapse: collapse; }
-.vl-table th { text-align: left; font-weight: 600; padding: .4rem .5rem; border-bottom: 1px solid #3333; }
-.vl-table td { padding: .4rem .5rem; border-bottom: 1px solid #2222; vertical-align: middle; }
-.vl-count.ok { color: #2e7d32; font-weight: 600; }
-.vl-count.warn { color: #b26a00; font-weight: 600; }
-.vl-count.fail { color: #c62828; font-weight: 600; }
-.vl-status { font-size: .8rem; padding: .1rem .45rem; border-radius: .6rem; border: 1px solid #8884; }
-.vl-status.complete { background: #2e7d3222; color: #2e7d32; }
-.vl-status.partial, .vl-status.nocover { background: #b26a0022; color: #b26a00; }
-.vl-status.uncast { background: #c6282822; color: #c62828; }
-.vl-status.human { background: #1565c022; color: #1565c0; }
-.vl-status.quiet { background: #8883; color: #8887; border-color: transparent; margin-left: .3rem; }
-.vl-chip.ok { border-color: #2e7d32; color: #2e7d32; }
-.vl-chip.warn { border-color: #b26a00; color: #b26a00; }
-.vl-chip.quiet { border-color: #8886; color: #8887; }
-.vl-detail td { background: #8881; }
+/* The search field, the filter chips, the pill badges and the table itself all
+   come from `src/assets/ui-tokens.css` — the same file the Course Library reads
+   from, so this screen and that one are one product rather than two that nearly
+   match. What is left here is only what is particular to a language row. */
+.vl-intro { max-width: 60rem; margin-bottom: 1rem; }
+.vl-search { max-width: 46rem; margin-bottom: .75rem; }
+.vl-filters { margin-bottom: .5rem; }
+.chip-no { margin-left: .35rem; opacity: .75; font-variant-numeric: tabular-nums; }
+.vl-tail { font-size: .75rem; margin: 0 0 1rem; max-width: 70ch; }
+
+.vl-code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; color: var(--accent-2); }
+.vl-flag { margin-left: .35rem; }
+.vl-count.ok { color: var(--success); font-weight: 600; }
+.vl-count.warn { color: var(--accent); font-weight: 600; }
+.vl-count.fail { color: var(--danger); font-weight: 600; }
+
+.vl-detail td { background: var(--surface-2); }
 .vl-note { margin: .25rem 0 .75rem; }
 .vl-slots { display: grid; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); gap: .6rem; }
-.vl-slot { border: 1px solid #8883; border-radius: .4rem; padding: .5rem; }
-.vl-slot-label { font-size: .75rem; text-transform: uppercase; letter-spacing: .04em; opacity: .7; margin-bottom: .3rem; }
+.vl-slot { border: 1px solid var(--line); border-radius: .5rem; padding: .5rem; background: var(--surface); }
+.vl-slot-label { font-size: .75rem; text-transform: uppercase; letter-spacing: .05em; color: var(--faint); margin-bottom: .3rem; }
 .vl-slot-filled { display: flex; gap: .4rem; align-items: center; flex-wrap: wrap; }
+.vl-slot-empty { display: flex; gap: .4rem; align-items: center; flex-wrap: wrap; }
 .vl-voice { font-weight: 600; }
-.vl-kind { font-size: .75rem; opacity: .7; }
-.vl-error { color: #c62828; }
-.vl-notes { margin-top: 1.25rem; display: grid; gap: .35rem; }
-.vl-btn.small { font-size: .75rem; padding: .15rem .5rem; }
-.vl-clone { margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid #8883; }
+.vl-kind { font-size: .75rem; color: var(--muted); }
+.vl-error { color: var(--danger); }
+.vl-notes { margin-top: 1.25rem; display: grid; gap: .35rem; font-size: .75rem; }
+.vl-clone { margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid var(--line); }
 .vl-clone-body { margin-top: .75rem; max-width: 60rem; }
 .vl-clone-row { display: flex; gap: .5rem; flex-wrap: wrap; align-items: center; margin-top: .5rem; }
 .vl-narrow { max-width: 10rem; }
-.vl-ok { color: #2e7d32; margin-top: .5rem; }
+.vl-ok { color: var(--success); margin-top: .5rem; }
+
+/* Phone: the table scrolls sideways inside its wrap rather than squeezing. */
+@media (max-width: 640px) {
+  .vl-search { max-width: none; }
+  .ui-table { min-width: 34rem; }
+}
 </style>

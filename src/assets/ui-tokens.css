@@ -98,6 +98,20 @@
 }
 .ui-select:focus { outline: none; border-color: var(--accent-2, var(--accent)); }
 
+/* A plain rectangular field — a short input or a small select inside a form,
+   same surface and border as the search bar at a smaller size. */
+.ui-field {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  color: var(--ink);
+  border-radius: 0.375rem;
+  padding: 0.3rem 0.55rem;
+  font-size: 0.8rem;
+  font-family: inherit;
+}
+.ui-field::placeholder { color: var(--faint); }
+.ui-field:focus { outline: none; border-color: var(--accent-2, var(--accent)); }
+
 /* Recents — a code you can click back to. */
 .ui-recent-chip {
   background: var(--surface);
@@ -160,10 +174,25 @@
 .ui-row:hover { background: var(--surface-2); }
 .ui-table input[type="checkbox"] { cursor: pointer; accent-color: var(--accent-2, var(--accent)); }
 
-/* Status pills — the PRICING / STAGE badge on the courses page, given names
-   that say what they mean so a second screen can use the same five colours.
-   Hue families match the courses page exactly (emerald / yellow / red / blue /
-   slate) and the light-mode values are darkened to clear AA on white. */
+/* ── HUE PAINT ──────────────────────────────────────────────────────────────
+   Colour without geometry, so the same five meanings can be worn by a pill or
+   by an active filter chip. Hue families match the courses page exactly
+   (emerald / yellow / red / blue / slate); the light values are darkened to
+   clear AA on white the way CourseBrowser's own light overrides are. */
+.ui-hue-good  { background: rgba(16, 185, 129, 0.2); border-color: rgba(16, 185, 129, 0.55); color: #34d399; }
+.ui-hue-warn  { background: rgba(234, 179, 8, 0.2);  border-color: rgba(234, 179, 8, 0.55);  color: #facc15; }
+.ui-hue-bad   { background: rgba(248, 113, 113, 0.18); border-color: rgba(248, 113, 113, 0.55); color: #f87171; }
+.ui-hue-info  { background: rgba(59, 130, 246, 0.2); border-color: rgba(59, 130, 246, 0.55); color: #60a5fa; }
+.ui-hue-quiet { background: color-mix(in srgb, var(--surface-3) 40%, transparent); border-color: var(--faint); color: var(--muted); }
+
+:root[data-theme="light"] .ui-hue-good  { background: #d1fae5; border-color: #10b981; color: #047857; }
+:root[data-theme="light"] .ui-hue-warn  { background: #fef3c7; border-color: #d97706; color: #92400e; }
+:root[data-theme="light"] .ui-hue-bad   { background: #fee2e2; border-color: #ef4444; color: #b91c1c; }
+:root[data-theme="light"] .ui-hue-info  { background: #dbeafe; border-color: #3b82f6; color: #1d4ed8; }
+:root[data-theme="light"] .ui-hue-quiet { background: #e2e8f0; border-color: #94a3b8; color: #475569; }
+
+/* Status pill — the PRICING / STAGE badge on the courses page. Geometry only;
+   wear a .ui-hue-* beside it. */
 .ui-pill {
   display: inline-block;
   padding: 0.125rem 0.5rem;
@@ -174,14 +203,3 @@
   font-weight: 500;
   white-space: nowrap;
 }
-.ui-pill-good  { background: rgba(16, 185, 129, 0.2); border-color: rgba(16, 185, 129, 0.5); color: #34d399; }
-.ui-pill-warn  { background: rgba(202, 138, 4, 0.2);  border-color: rgba(234, 179, 8, 0.5);  color: #facc15; }
-.ui-pill-bad   { background: rgba(220, 38, 38, 0.18); border-color: rgba(248, 113, 113, 0.5); color: #f87171; }
-.ui-pill-info  { background: rgba(59, 130, 246, 0.2); border-color: rgba(59, 130, 246, 0.5); color: #60a5fa; }
-.ui-pill-quiet { background: color-mix(in srgb, var(--surface-3) 40%, transparent); border-color: var(--faint); color: var(--muted); }
-
-:root[data-theme="light"] .ui-pill-good  { background: #d1fae5; border-color: #10b981; color: #047857; }
-:root[data-theme="light"] .ui-pill-warn  { background: #fef3c7; border-color: #d97706; color: #92400e; }
-:root[data-theme="light"] .ui-pill-bad   { background: #fee2e2; border-color: #ef4444; color: #b91c1c; }
-:root[data-theme="light"] .ui-pill-info  { background: #dbeafe; border-color: #3b82f6; color: #1d4ed8; }
-:root[data-theme="light"] .ui-pill-quiet { background: #e2e8f0; border-color: #94a3b8; color: #475569; }

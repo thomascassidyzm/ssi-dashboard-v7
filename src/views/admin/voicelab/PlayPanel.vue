@@ -484,20 +484,38 @@ function gateDetail (clip) {
     <div class="play-block">
       <div class="play-label-row">
         <span class="play-label">What to play with</span>
-        <button v-if="!comparing" class="play-link" @click="startComparing">compare two settings</button>
-        <button v-else class="play-link" @click="comparing = false">just one setting</button>
+        <!-- THE A/B SWITCH IS A CONTROL, NOT A FOOTNOTE (Tom, 2026-08-29:
+             "it's not obvious the A/B testing settings"). It was a text link
+             beside the heading and nobody would have found it; it is now the
+             same segmented control the Languages/Play/Engineering tabs use, so
+             the thing that doubles the render cost is the thing you can see. -->
+        <div class="mode-pick" role="group" aria-label="How many settings to try">
+          <button :class="{ on: !comparing }" @click="comparing = false">One setting</button>
+          <button :class="{ on: comparing }" @click="startComparing">Compare two</button>
+        </div>
       </div>
+
+      <p v-if="comparing" class="cmp-help">
+        Two renders of the same sentence, side by side.
+        <template v-if="!difference.length">
+          <strong>Both sides are identical</strong> — move one slider on the B row, or the
+          comparison measures nothing.
+        </template>
+        <template v-else>Change one thing at a time and you can hear what it did.</template>
+      </p>
 
       <div v-for="s in SLIDERS" :key="s.id" class="slider" :class="{ dead: !s.live }">
         <div class="slider-head">
           <span class="slider-name">{{ s.label }}</span>
-          <span v-if="s.live" class="slider-now">
+          <span v-if="s.live && !comparing" class="slider-now">
             {{ s.stops[stopsA[s.id]].word }}
             <small>{{ s.stops[stopsA[s.id]].real }}</small>
           </span>
-          <span v-else class="slider-off">not on this voice</span>
+          <span v-if="!s.live" class="slider-off">not on this voice</span>
         </div>
-        <div class="slider-track">
+
+        <!-- ONE SETTING — the slider unchanged, ends either side. -->
+        <div v-if="!comparing || !s.live" class="slider-track">
           <span class="slider-end">{{ s.ends[0] }}</span>
           <input
             type="range" min="0" :max="s.stops.length - 1" step="1"
@@ -507,27 +525,36 @@ function gateDetail (clip) {
           />
           <span class="slider-end">{{ s.ends[1] }}</span>
         </div>
+
+        <!-- TWO SETTINGS — A above B in one box, both rows labelled and both
+             value readouts in the SAME column, so the eye reads straight down
+             the page. Before this the A value sat top-left and the B value
+             bottom-right, which is the one thing a comparison cannot afford. -->
+        <div v-else class="compare">
+          <div v-for="row in [{ tag: 'A', stops: stopsA }, { tag: 'B', stops: stopsB }]" :key="row.tag" class="cmp-row">
+            <span class="cmp-tag">{{ row.tag }}</span>
+            <input
+              type="range" min="0" :max="s.stops.length - 1" step="1"
+              :value="row.stops[s.id]"
+              :aria-label="`${s.label}, side ${row.tag}`"
+              @input="row.tag === 'A'
+                ? (stopsA = { ...stopsA, [s.id]: Number($event.target.value) })
+                : (stopsB = { ...stopsB, [s.id]: Number($event.target.value) })"
+            />
+            <span class="cmp-value">
+              {{ s.stops[row.stops[s.id]].word }}
+              <small>{{ s.stops[row.stops[s.id]].real }}</small>
+            </span>
+          </div>
+          <div class="cmp-ends">
+            <span>{{ s.ends[0] }}</span>
+            <span>{{ s.ends[1] }}</span>
+          </div>
+        </div>
+
         <p v-if="!s.live" class="slider-why">{{ s.why }}</p>
         <p v-else-if="s.note" class="slider-why">{{ s.note }}</p>
-
-        <!-- The second side of a compare, on the same slider, directly beneath -->
-        <div v-if="comparing && s.live" class="slider-track second">
-          <span class="slider-end b">B</span>
-          <input
-            type="range" min="0" :max="s.stops.length - 1" step="1"
-            :value="stopsB[s.id]"
-            @input="stopsB = { ...stopsB, [s.id]: Number($event.target.value) }"
-          />
-          <span class="slider-now b">
-            {{ s.stops[stopsB[s.id]].word }}
-            <small>{{ s.stops[stopsB[s.id]].real }}</small>
-          </span>
-        </div>
       </div>
-
-      <p v-if="comparing && !difference.length" class="play-note">
-        Both sides are identical — move one slider on the B row, or the comparison measures nothing.
-      </p>
     </div>
 
     <!-- 4 · one button, with the money in front of it -->
@@ -649,15 +676,45 @@ function gateDetail (clip) {
 .slider-name { font-size: 1.05rem; }
 .slider-now { color: var(--accent-2, #ec4899); font-size: 1rem; }
 .slider-now small { color: var(--muted); margin-left: 0.5rem; font-size: 0.72rem; }
-.slider-now.b { color: inherit; }
 .slider-off { color: var(--muted); font-size: 0.78rem; font-style: italic; }
 .slider-track { display: flex; align-items: center; gap: 0.75rem; }
-.slider-track.second { margin-top: 0.5rem; opacity: 0.85; }
+
+/* The A/B switch: the same segmented control as the page's own mode tabs. */
+.mode-pick { display: flex; border: 1px solid var(--surface-3); border-radius: 999px; overflow: hidden; }
+.mode-pick button {
+  background: none; border: none; color: var(--muted); font-family: inherit;
+  font-size: 0.78rem; padding: 0.3rem 0.9rem; cursor: pointer;
+}
+.mode-pick button.on { background: #ec4899; color: #fff; }
+.cmp-help { color: var(--muted); font-size: 0.8rem; line-height: 1.5; max-width: 70ch; margin: 0 0 0.75rem; }
+.cmp-help strong { color: inherit; }
+
+/* One box, two rows, one column of values. */
+.compare {
+  border: 1px solid var(--surface-3);
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--surface-2) 45%, transparent);
+  padding: 0.6rem 0.75rem 0.45rem;
+}
+.cmp-row { display: flex; align-items: center; gap: 0.75rem; }
+.cmp-row + .cmp-row { margin-top: 0.35rem; }
+.cmp-tag { min-width: 1.5rem; font-weight: 600; font-size: 0.85rem; color: var(--muted); }
+.cmp-row input[type='range'] { flex: 1; height: 2rem; accent-color: #ec4899; cursor: pointer; }
+.cmp-value { min-width: 14rem; color: var(--accent-2, #ec4899); font-size: 0.95rem; }
+.cmp-value small { color: var(--muted); margin-left: 0.4rem; font-size: 0.72rem; }
+.cmp-ends {
+  display: flex; justify-content: space-between;
+  color: var(--muted); font-size: 0.72rem;
+  margin: 0.15rem 2.25rem 0 2.25rem;
+}
+@media (max-width: 640px) {
+  .cmp-value { min-width: 8rem; font-size: 0.85rem; }
+  .cmp-value small { display: block; margin-left: 0; }
+}
 .slider-track input[type='range'] { flex: 1; height: 2rem; accent-color: #ec4899; cursor: pointer; }
 .slider-track input[type='range']:disabled { cursor: not-allowed; }
 .slider-end { color: var(--muted); font-size: 0.78rem; min-width: 4.5rem; }
 .slider-end:last-of-type { text-align: right; }
-.slider-end.b { font-weight: 600; color: inherit; }
 .slider-why { color: var(--muted); font-size: 0.75rem; margin: 0.25rem 0 0 5.25rem; max-width: 60ch; }
 
 .play-go { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; margin-top: 2rem; }
