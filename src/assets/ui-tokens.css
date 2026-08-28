@@ -158,11 +158,12 @@
   border-radius: 0.5rem;
   overflow-x: auto;
 }
-.ui-table { width: 100%; font-size: 0.875rem; border-collapse: collapse; }
+.ui-table { width: 100%; font-size: 0.875rem; line-height: 1.25rem; border-collapse: collapse; }
 .ui-table thead tr {
   background: var(--surface-2);
   color: var(--faint);
   font-size: 0.75rem;
+  line-height: 1rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }

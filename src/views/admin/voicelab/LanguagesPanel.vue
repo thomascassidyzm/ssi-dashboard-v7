@@ -167,9 +167,12 @@ function candidatesFor (lang, slot) {
 
 <template>
   <div class="vl-langs">
-    <p class="vl-muted vl-intro">
-      One row per language the estate actually teaches, read live from
-      <code>courses</code>, <code>voices</code> and the same provider policy the render path uses.
+    <!-- The page subtitle above already says what this screen is and that
+         casting writes nothing else. One line here, and it is the one fact the
+         subtitle does not carry: where the rows come from. -->
+    <p class="vl-intro">
+      One row per language, read live from <code>courses</code>, <code>voices</code> and the same
+      provider policy the render path uses.
     </p>
 
     <div class="vl-search">
@@ -212,8 +215,8 @@ function candidatesFor (lang, slot) {
         <thead>
           <tr>
             <th>Language</th>
-            <th>Courses</th>
-            <th>Default provider</th>
+            <th class="vl-wide">Courses</th>
+            <th class="vl-wide">Default provider</th>
             <th>Voices cast</th>
             <th>Status</th>
             <th></th>
@@ -223,8 +226,8 @@ function candidatesFor (lang, slot) {
           <template v-for="lang in rows" :key="lang.code">
             <tr class="ui-row" :class="lang.status">
               <td class="vl-code">{{ lang.code }}</td>
-              <td class="vl-muted">{{ lang.courses }}<span v-if="lang.released"> · {{ lang.released }} live</span></td>
-              <td class="vl-muted">{{ lang.defaultProvider || '—' }}</td>
+              <td class="vl-muted vl-wide">{{ lang.courses }}<span v-if="lang.released"> · {{ lang.released }} live</span></td>
+              <td class="vl-muted vl-wide">{{ lang.defaultProvider || '—' }}</td>
               <td>
                 <span :class="['vl-count', lang.filled >= lang.required ? 'ok' : lang.filled ? 'warn' : 'fail']">
                   {{ lang.filled }} / {{ lang.required }}
@@ -343,11 +346,11 @@ function candidatesFor (lang, slot) {
    come from `src/assets/ui-tokens.css` — the same file the Course Library reads
    from, so this screen and that one are one product rather than two that nearly
    match. What is left here is only what is particular to a language row. */
-.vl-intro { max-width: 60rem; margin-bottom: 1rem; }
-.vl-search { max-width: 46rem; margin-bottom: .75rem; }
+.vl-intro { max-width: 60rem; margin: 0 0 1rem; color: var(--muted); font-size: 0.8125rem; }
+.vl-search { margin-bottom: .75rem; }
 .vl-filters { margin-bottom: .5rem; }
 .chip-no { margin-left: .35rem; opacity: .75; font-variant-numeric: tabular-nums; }
-.vl-tail { font-size: .75rem; margin: 0 0 1rem; max-width: 70ch; }
+.vl-tail { font-size: .75rem; margin: 0 0 1rem; max-width: 70ch; color: var(--muted); }
 
 .vl-code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; color: var(--accent-2); }
 .vl-flag { margin-left: .35rem; }
@@ -364,6 +367,7 @@ function candidatesFor (lang, slot) {
 .vl-slot-empty { display: flex; gap: .4rem; align-items: center; flex-wrap: wrap; }
 .vl-voice { font-weight: 600; }
 .vl-kind { font-size: .75rem; color: var(--muted); }
+.vl-muted { color: var(--muted); }
 .vl-error { color: var(--danger); }
 .vl-notes { margin-top: 1.25rem; display: grid; gap: .35rem; font-size: .75rem; }
 .vl-clone { margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid var(--line); }
@@ -373,8 +377,12 @@ function candidatesFor (lang, slot) {
 .vl-ok { color: var(--success); margin-top: .5rem; }
 
 /* Phone: the table scrolls sideways inside its wrap rather than squeezing. */
+/* Phone: courses and provider drop out, the way the courses page drops KNOWN
+   and TARGET. What is left is the language, how many voices it has and the
+   status — which is the whole question this screen answers. */
 @media (max-width: 640px) {
-  .vl-search { max-width: none; }
-  .ui-table { min-width: 34rem; }
+  .vl-wide { display: none; }
+  .ui-table th, .ui-table td { padding: 0.4rem 0.4rem; }
+  .ui-sort-btn { padding: 0.15rem 0.5rem; font-size: 0.7rem; }
 }
 </style>

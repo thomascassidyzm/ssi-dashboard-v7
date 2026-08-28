@@ -35,9 +35,12 @@ test.describe('Voice Lab — Play mode is the front door', () => {
     await page.goto('/admin/configs/voice')
     // The lab will not render at all without its params payload.
     await expect(page.getByRole('heading', { name: 'Voice Lab' })).toBeVisible()
+    // LANDING TAB IS LANGUAGES since 2026-08-28 — Play is one click in, and
+    // every test below is about Play, so open it here rather than in each.
+    await page.getByRole('button', { name: 'Play', exact: true }).click()
   })
 
-  test('opens on Play, with three sliders and no wall of numbers', async ({ page }) => {
+  test('Play is one click from the landing tab, with three sliders and no wall of numbers', async ({ page }) => {
     await expect(page.getByRole('button', { name: 'Play', exact: true })).toHaveClass(/on/)
 
     // The three knobs, and nothing else pretending to be one.
@@ -115,14 +118,20 @@ test.describe('Voice Lab — Play mode is the front door', () => {
     await expect(page.locator('.play-detail li')).toHaveCount(6)
   })
 
-  test('"compare two settings" is one gesture, blind, and reveals what differed', async ({ page }) => {
-    await page.getByRole('button', { name: 'compare two settings' }).click()
+  test('"Compare two" is one gesture, blind, and reveals what differed', async ({ page }) => {
+    // The switch is a segmented control now, not a text link (Tom, 2026-08-29:
+    // "it's not obvious the A/B testing settings").
+    await page.getByRole('button', { name: 'Compare two' }).click()
+    await expect(page.getByRole('button', { name: 'Compare two' })).toHaveClass(/on/)
+
+    // A and B in one box, both rows labelled, both readouts in one column.
+    await expect(page.locator('.compare').first().locator('.cmp-tag')).toHaveText(['A', 'B'])
 
     // A comparison of two identical sides measures nothing, and the screen says so.
     await expect(page.getByText(/Both sides are identical/)).toBeVisible()
 
     const loudness = page.locator('.slider').filter({ hasText: 'Loudness' })
-    await loudness.locator('.slider-track.second input[type=range]').fill('0')
+    await loudness.locator('.cmp-row').nth(1).locator('input[type=range]').fill('0')
     await expect(page.getByText(/Both sides are identical/)).toHaveCount(0)
 
     await page.locator('.play-textarea').fill('Guten Morgen.')
