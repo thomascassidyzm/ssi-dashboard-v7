@@ -3,9 +3,12 @@
  * stronger model after repeated anti-template gate rejections (3 strikes).
  *
  * Part of the template-stamp fix (docs/course-optimization/
- * build-phrase-template-stamp-audit-2026-07-24.md): the builder model stays
- * Sonnet; only the stuck generation call escalates to Opus. All LLM calls go
- * through the Claude CLI (claude-cli.cjs) — never the SDK.
+ * build-phrase-template-stamp-audit-2026-07-24.md). NOTE: this predates the
+ * 2026-08-27 ruling that phrase generation runs on Opus as the single tier, so
+ * it is no longer an ESCALATION in model terms — it is a re-roll of a stuck
+ * basket with a different, failure-aware prompt, at the same tier the builder
+ * already runs at. All LLM calls go through the Claude CLI (claude-cli.cjs) —
+ * never the SDK.
  */
 
 const { claudeChat } = require('../../shared/claude-cli.cjs');

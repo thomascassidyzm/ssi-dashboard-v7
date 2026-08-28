@@ -521,8 +521,14 @@ function scoreRole(inv, phrases, role, lang, recentThreshold) {
  * said it falls short. They are a starting calibration, not his ruling, and they
  * are in one object so they can be argued with in one place.
  */
+// BUILD floors scaled to Tom's 2026-08-28 ruling on A-294: BUILD is three or four
+// phrases, not six — "just to give a sense of, you know, LEGO plus one previous,
+// LEGO plus two previous". With four phrases an edgeCombos floor of 4 demanded that
+// every single BUILD be a distinct neighbour x pattern combo and made a three-phrase
+// set unscoreable, so it comes down to 3 with the count. The USE half of every axis
+// is untouched — he rated the USE phrases good as they stand.
 const FLOORS = {
-  build: { phrases: 4, edgeCombos: 4, distinctAdjacencies: 2, positionSpread: 2, axesVaried: 2, recencyMass: 0.25 },
+  build: { phrases: 3, edgeCombos: 3, distinctAdjacencies: 2, positionSpread: 2, axesVaried: 2, recencyMass: 0.25 },
   use: { phrases: 5, edgeCombos: 6, distinctAdjacencies: 2, positionSpread: 2, axesVaried: 3, recencyMass: 0.25, useCompleteShare: 1 }
 };
 

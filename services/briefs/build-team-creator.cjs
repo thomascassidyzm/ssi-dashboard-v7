@@ -1,6 +1,15 @@
 /**
- * Brief: COURSE BUILDER — Sonnet agent builds seeds and submits directly to the API.
+ * Brief: COURSE BUILDER — an Opus agent decomposes seeds and submits directly to the API.
  * API validates tiling, vocab, ZUT, phrase counts. Final pass handles grammar/naturalness QA.
+ *
+ * PHRASE WRITING IS NO LONGER DONE FROM THIS BRIEF. Since 2026-08-27 the builder
+ * asks POST /api/phrases/v3/generate for each LEGO's BUILD + USE set: that door
+ * assembles the v3 prompt against the computed AVAILABLE / BLOCKED inventory and
+ * runs it on Opus (services/course-builder/lib/phrase-generation.cjs). The rules
+ * this brief used to state as prose are IN that prompt, with the specimens and
+ * the vocabulary table that make them decidable — restating them here would give
+ * a builder two masters and let it write to the weaker one. What stays here is
+ * decomposition, which is the half v3 does not touch.
  */
 
 const { getSupabase, getLanguageName, getKnownLanguageName, getGoldenSeedCount, buildCrossCourseSummaries, fetchGoldenSeedExamples, buildGrammarChecklist, loadMethodology, loadSynonymChoiceArchitecture } = require('./shared.cjs');
@@ -68,20 +77,50 @@ You are a world-class language teacher applying the SSi methodology. You build L
 - **M-LEGO (Molecular)**: Multi-word phrase. Has \`components\` array showing its building blocks.
 - **Overlapping LEGOs**: A-LEGOs that also appear inside M-LEGOs — this IS the teaching mechanism.
 
-### BUILD Phrases
-- Combine the **new LEGO** with **previously introduced LEGOs**
-- Show how the new piece "plugs in" — NOT the LEGO by itself, NOT component build-up
-- A phrase whose target IS the LEGO is **dropped by the API and never counts toward the 3+/5+ floor** — the learner already meets the bare LEGO at intro and debut
-- Fragments OK, must contain exact LEGO target
-- **No capitalisation, no trailing periods**
+### BUILD and USE Phrases — YOU DO NOT WRITE THESE BY HAND
 
-### USE Phrases
-- **Natural things a real learner would say** — complete enough to stand alone
-- Minimum 5 per LEGO, scored 5-9
-- Mix of MEDIUM (LEGO + 4-6 syllables) and LONG (LEGO + 7-10 syllables)
-- Must contain exact LEGO target
-- **No capitalisation, no trailing periods**
-- Score 4 or below = rewrite
+For every new LEGO you introduce, ask the phrase door for its set:
+
+\`\`\`bash
+curl -s -X POST "http://localhost:3471/api/phrases/v3/generate/${courseCode}" \\
+  -H "Content-Type: application/json" \\
+  -d '{"seed": N, "lego": L, "lego_known": "...", "lego_target": "...", "lego_type": "A"}'
+\`\`\`
+
+Pass the LEGO you have just decided on — it is not in the database yet, because
+the seed submission writes LEGOs and phrases in one call.
+
+It returns \`{ "model": "opus", "build": [...], "use": [...] }\`. Each phrase has
+\`known\`, \`target\` and \`tiles\` — the tiles are the phrase showing its work.
+Put the \`known\` → \`target\` pairs straight into your markdown submission.
+
+**Why the door and not your own hand.** The door assembles the v3 phrase prompt
+against a computed vocabulary table for exactly this seed and this LEGO: what the
+learner can be asked for without uncertainty, and what is blocked because the
+known side would be ambiguous. That table is the difference between a phrase set
+that passes ZUT and one that looks like it does. You cannot compute it from a
+brief, and neither could the builders before you — which is why every one of the
+120 LEGOs measured across six live courses on 2026-08-27 failed.
+
+**The call takes several minutes per LEGO. That is expected — let it run.**
+It is a single generation call, and it is doing the work you would otherwise be
+doing badly. Do not shorten it by writing the phrases yourself.
+
+**If a call fails**, retry it once. If it fails twice, write that LEGO's set
+yourself to the standard below, say so in chat, and keep going — a stalled build
+helps nobody.
+
+Standard for a hand-written fallback set (and the bar the door writes to):
+- ≥4 BUILD, ≥5 USE. Fewer phrases is a fail; variety never substitutes for volume.
+- BUILD = the new LEGO plugged into already-introduced vocabulary. Fragments are
+  fine if they extend into a natural sentence. Never the bare LEGO on its own —
+  the API drops those and they count toward nothing.
+- USE = complete, deployable thoughts, worth having in themselves. Never fragments.
+- Move the LEGO around: start, **filling** (a connection either side — the
+  expensive one), end. A tail swapped seven times is one connection, not seven.
+- Vary person, polarity, mood, embedding, tense, role. Reach for RECENT vocabulary,
+  not only the ancient safe core.
+- **No capitalisation, no trailing periods. No parentheses, ever.**
 
 ### LEGO Form Is Fixed
 LEGOs are used **exactly as-is** — never conjugated or inflected.
@@ -199,7 +238,19 @@ curl -s "http://localhost:3471/api/seeds/${courseCode}" | jq ".seeds[] | select(
 \`\`\`
 
 ### Step 4: Build the decomposition
-Design LEGOs and write BUILD + USE phrases. Check every phrase against the grammar error list above.
+Design the LEGOs — types, order, components. This is your judgement and yours alone.
+
+### Step 4b: Fetch each new LEGO's phrases
+For EACH new LEGO in the seed, one call, passing the LEGO you just designed:
+\`\`\`bash
+curl -s -X POST "http://localhost:3471/api/phrases/v3/generate/${courseCode}" \\
+  -H "Content-Type: application/json" \\
+  -d '{"seed": N, "lego": L, "lego_known": "...", "lego_target": "...", "lego_type": "A"}'
+\`\`\`
+Run the LEGOs of one seed in parallel — they are independent calls and each takes
+minutes. Then assemble the whole seed and submit it once. Check the grammar
+error list above against what comes back — you are the ${langName} speaker in this
+loop, and a phrase that is wrong in ${langName} is yours to fix before you submit it.
 
 ### Step 5: Write and submit
 Write the decomposition as markdown to \`/tmp/seed$N.md\` using the format below, then submit:

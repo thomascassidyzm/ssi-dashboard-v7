@@ -1,5 +1,5 @@
 /**
- * Brief: BUILD ORCHESTRATOR — spawns a single Sonnet builder agent.
+ * Brief: BUILD ORCHESTRATOR — spawns a single Opus builder agent.
  * Builder submits directly to the API. Orchestrator monitors, spot-checks, and respawns on stall.
  *
  * DEPRECATED: The creator/checker team pattern. Single agent + API validation + final pass is sufficient.
@@ -59,7 +59,7 @@ Working directory: ${process.cwd()}
 
 ## YOUR JOB
 
-You spawn a single Sonnet builder agent and monitor the build from seed 1 to ${targetSeeds}.
+You spawn a single Opus builder agent and monitor the build from seed 1 to ${targetSeeds}.
 You DO NOT build seeds yourself.
 
 ## Current State
@@ -70,7 +70,7 @@ You DO NOT build seeds yourself.
 
 ## Architecture
 
-1. **Builder** (Sonnet) decomposes seeds and submits directly to the API
+1. **Builder** (Opus) decomposes seeds, fetches each LEGO's phrases from the v3 phrase door, and submits to the API
 2. **API** validates (tiling, vocab, ZUT, phrase counts) and writes to Supabase
 3. **You** (Opus orchestrator) monitor progress, spot-check quality, respawn on stalls
 4. **Final pass** catches grammar/naturalness issues after the build
@@ -80,10 +80,15 @@ No teams. No messaging between agents. One builder, one API, one orchestrator wa
 
 ---
 
-## Step 1: Spawn the Builder (Sonnet)
+## Step 1: Spawn the Builder (Opus)
+
+OPUS, NOT SONNET, AND THERE IS NO FALLBACK TIER. Tom's ruling of 2026-08-27 on the
+six-language phrase-prompt replication: Opus leaves roughly two and a half times
+as many phrase sets needing no human at all, and both arms cost the same zero
+dollars on the flat-rate subscription. Do not "save" anything by dropping a tier.
 
 Use the Agent tool:
-- model: "sonnet"
+- model: "opus"
 - mode: "bypassPermissions"
 - run_in_background: true
 
@@ -100,7 +105,7 @@ After spawning, post to chat:
 \`\`\`bash
 curl -X POST "http://localhost:3471/api/orchestrator/chat/${courseCode}" \\
   -H "Content-Type: application/json" \\
-  -d '{"role":"agent","message":"Build team active — Sonnet builder running, targeting ${targetSeeds} seeds"}'
+  -d '{"role":"agent","message":"Build team active — Opus builder running, targeting ${targetSeeds} seeds"}'
 \`\`\`
 
 ## Step 2: Monitor Progress AND Quality
