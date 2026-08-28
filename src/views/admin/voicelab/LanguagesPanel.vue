@@ -34,6 +34,40 @@ const q = ref('')
 const busy = ref('')
 const expanded = ref(null)
 
+// ── Cloning ────────────────────────────────────────────────────────────────
+// One sample in, one voice id out. This RENDERS NOTHING: the new voice is
+// registered so it can be cast, and hearing it is a separate, capped audition
+// through Play. Keeping the two apart is what stops one click becoming a bill.
+const showClone = ref(false)
+const cloneName = ref('')
+const cloneLang = ref('eng')
+const cloneGender = ref('')
+const cloneFile = ref(null)
+const cloneBusy = ref(false)
+const cloneResult = ref(null)
+
+function pickFile (e) { cloneFile.value = e.target.files?.[0] || null }
+
+async function submitClone () {
+  if (!cloneFile.value || !cloneName.value) return
+  cloneBusy.value = true
+  cloneResult.value = null
+  error.value = ''
+  try {
+    const fd = new FormData()
+    fd.append('clip', cloneFile.value)
+    fd.append('name', cloneName.value)
+    fd.append('language', cloneLang.value)
+    if (cloneGender.value) fd.append('gender', cloneGender.value)
+    const out = await api.cloneVoice(fd)
+    cloneResult.value = out
+    cloneName.value = ''
+    cloneFile.value = null
+    await load()
+  } catch (e) { error.value = e.message }
+  cloneBusy.value = false
+}
+
 async function load () {
   loading.value = true
   error.value = ''
@@ -209,6 +243,40 @@ function candidatesFor (lang, slot) {
       </tbody>
     </table>
 
+    <section class="vl-clone">
+      <button class="vl-btn" @click="showClone = !showClone">
+        {{ showClone ? 'Hide' : 'Clone a voice with Cartesia' }}
+      </button>
+
+      <div v-if="showClone" class="vl-clone-body">
+        <p class="vl-muted">
+          Upload one clean sample and Cartesia returns a new voice, which is registered here
+          straight away so it can be cast into a slot below.
+          <strong>This renders no audio and costs no render</strong> — to hear the clone, cast it
+          or pick it in Play, where the daily character ceiling still applies.
+          Cartesia cannot clone a language it does not support, so Welsh, Breton and Cornish are
+          refused with a message rather than a failure.
+        </p>
+        <div class="vl-clone-row">
+          <input v-model="cloneName" class="vl-input" placeholder="name for the new voice" />
+          <input v-model="cloneLang" class="vl-input vl-narrow" placeholder="language e.g. eng" />
+          <select v-model="cloneGender" class="vl-input vl-narrow">
+            <option value="">gender unknown</option>
+            <option value="m">male</option>
+            <option value="f">female</option>
+          </select>
+          <input type="file" accept="audio/*" class="vl-input" @change="pickFile" />
+          <button class="vl-btn" :disabled="cloneBusy || !cloneFile || !cloneName" @click="submitClone">
+            {{ cloneBusy ? 'Cloning…' : 'Create clone' }}
+          </button>
+        </div>
+        <p v-if="cloneResult" class="vl-ok">
+          Created <strong>{{ cloneResult.voice?.display_name }}</strong>
+          — registered as <code>{{ cloneResult.voice?.voice_id }}</code>. It is now castable below.
+        </p>
+      </div>
+    </section>
+
     <div v-if="data?.notes" class="vl-notes">
       <p v-for="(text, key) in data.notes" :key="key" class="vl-muted">{{ text }}</p>
     </div>
@@ -241,4 +309,9 @@ function candidatesFor (lang, slot) {
 .vl-error { color: #c62828; }
 .vl-notes { margin-top: 1.25rem; display: grid; gap: .35rem; }
 .vl-btn.small { font-size: .75rem; padding: .15rem .5rem; }
+.vl-clone { margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid #8883; }
+.vl-clone-body { margin-top: .75rem; max-width: 60rem; }
+.vl-clone-row { display: flex; gap: .5rem; flex-wrap: wrap; align-items: center; margin-top: .5rem; }
+.vl-narrow { max-width: 10rem; }
+.vl-ok { color: #2e7d32; margin-top: .5rem; }
 </style>
