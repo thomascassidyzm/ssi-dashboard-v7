@@ -43,6 +43,7 @@
  */
 import { ref, computed } from 'vue'
 import { probe, labBase, useCloudBackend, CLOUD_BACKEND } from './voicelab/labApi'
+import LanguagesPanel from './voicelab/LanguagesPanel.vue'
 import PlayPanel from './voicelab/PlayPanel.vue'
 import ParametersPanel from './voicelab/ParametersPanel.vue'
 import RunPanel from './voicelab/RunPanel.vue'
@@ -56,8 +57,17 @@ const TABS = [
   { id: 'estate', n: 4, label: 'Estate' },
 ]
 
-/** 'play' | 'engineering'. Play is the landing layer; Engineering is the estate above, intact. */
-const mode = ref('play')
+/**
+ * 'languages' | 'play' | 'engineering'.
+ *
+ * LANGUAGES is the landing layer as of 2026-08-28. Tom asked for the lab to be
+ * "a single place to check configured voices per language", and the first thing
+ * that should meet you is therefore the state of the estate's casting, not a
+ * render form. Play remains exactly as it was — the 2026-08-07 ruling that put
+ * Play in front of Engineering is untouched; Languages goes in front of both,
+ * and nothing was removed to make room for it.
+ */
+const mode = ref('languages')
 
 const tab = ref('parameters')
 const params = ref(null)
@@ -114,11 +124,18 @@ const showB = ref(false)
       <div class="title-row">
         <h1 class="page-title">Voice Lab</h1>
         <div class="mode-switch">
+          <button :class="{ on: mode === 'languages' }" @click="mode = 'languages'">Languages</button>
           <button :class="{ on: mode === 'play' }" @click="mode = 'play'">Play</button>
           <button :class="{ on: mode === 'engineering' }" @click="mode = 'engineering'">Engineering</button>
         </div>
       </div>
-      <p v-if="mode === 'play'" class="page-subtitle">
+      <p v-if="mode === 'languages'" class="page-subtitle">
+        Every language the estate teaches, and which voices are configured for it. Each language
+        wants a male and a female voice, each with a backup. Anything missing shows as a gap.
+        <strong>Casting a voice here writes the casting and nothing else</strong> — no audio is
+        rendered and no course is changed.
+      </p>
+      <p v-else-if="mode === 'play'" class="page-subtitle">
         Pick a voice, type a sentence, move the sliders, press Generate. Every slider here changes
         something you can hear — what a voice cannot do is greyed out and says so.
         <strong>Nothing here writes to <code>course_audio</code></strong>, and the daily spending
@@ -156,6 +173,12 @@ const showB = ref(false)
     <div v-else-if="loading" class="muted">Loading the lab…</div>
 
     <!-- PLAY — the front door. -->
+    <!-- Languages does not need /params, so it renders even on a backend whose
+         render path is unavailable: knowing what is cast is useful regardless. -->
+    <section v-if="mode === 'languages'">
+      <LanguagesPanel />
+    </section>
+
     <section v-if="params && mode === 'play'">
       <PlayPanel :params="params" />
       <p class="play-footnote">

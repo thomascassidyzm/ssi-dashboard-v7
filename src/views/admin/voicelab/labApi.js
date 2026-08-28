@@ -90,6 +90,14 @@ export const api = {
   getRun: (id) => call(`/api/voicelab/runs/${encodeURIComponent(id)}`),
   rerun: (id) => call(`/api/voicelab/runs/${encodeURIComponent(id)}/rerun`, { method: 'POST' }),
   exportConfig: (id) => call(`/api/voicelab/runs/${encodeURIComponent(id)}/export`, { method: 'POST' }),
+
+  // The per-language registry. `languages` spends nothing; the two slot calls
+  // write voice_language_roles and nothing else — no render, no course_audio.
+  languages: () => call('/api/voicelab/languages'),
+  castSlot: (language, body) =>
+    call(`/api/voicelab/languages/${encodeURIComponent(language)}/slot`, { method: 'PUT', body }),
+  clearSlot: (language, { gender, rank }) =>
+    call(`/api/voicelab/languages/${encodeURIComponent(language)}/slot?gender=${gender}&rank=${rank}`, { method: 'DELETE' }),
 }
 
 /**
