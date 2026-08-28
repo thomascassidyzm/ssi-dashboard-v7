@@ -38,6 +38,32 @@ if (!String(process.env.PATH || '').split(path.delimiter).includes(LOCAL_BIN)) {
 }
 
 const { buildPrompt } = require(path.join(__dirname, '../../../tools/phrase-lab/build-prompt.cjs'));
+const { scoreSet } = require(path.join(__dirname, '../../../tools/phrase-lab/score.cjs'));
+const { makeCourseCtx, checkPhraseSet, failureFeedback } = require(path.join(__dirname, '../../../tools/phrase-gate/gate-check.cjs'));
+
+/**
+ * THE GATE IS A PRECONDITION, NOT AN INSTRUCTION. Tom's ruling on A-294,
+ * 2026-08-28: "we should be doing is making sure that we do have the gate on
+ * these, so they can't even come to me without having passed the gate
+ * conditions, whatever ones we kept, as well as have the new scoring."
+ *
+ * So every generated set is run through the real /api/seed/complete gates
+ * (tools/phrase-gate/gate-check.cjs) and the scorer (tools/phrase-lab/score.cjs)
+ * before this function returns. A failing set is REGENERATED with its own
+ * failures quoted back to the model — not returned with a warning, because a
+ * warning is a thing a downstream sampler can ignore, and the whole point of
+ * the ruling is that nothing ungated reaches a human.
+ *
+ * If it still fails after the retries, it comes back `blocked: true` carrying
+ * its failure list. Blocked and named is honest; blocked and silently dropped
+ * is not, so the caller gets the set and the reasons and must decide — and a
+ * doc-builder showing sets to Tom shows only `gate.overallPass`.
+ *
+ * The retries are capped at 2 because each one is a full Opus call: the third
+ * failure of the same LEGO is a fact about the LEGO or the inventory, not bad
+ * luck, and burning more tokens on it buys a worse answer than telling someone.
+ */
+const MAX_GATE_RETRIES = 2;
 
 /**
  * The single tier. Not a default with an override: an override is a fallback,
@@ -104,17 +130,88 @@ function normalise(parsed) {
  * gate, the vocabulary gate and ZUT all run on this output exactly as they ran
  * on the last builder's.
  */
+/**
+ * The retry prompt: the original brief, then the set the model just wrote, then
+ * the gate's own words about what is wrong with it. The failures are quoted
+ * verbatim from the gate rather than paraphrased — a paraphrase is where a
+ * frame error gets introduced, and the model needs the offending phrase, not a
+ * description of the category it belongs to.
+ */
+function retryPrompt(basePrompt, phrases, reasons) {
+  return [
+    basePrompt,
+    '',
+    '---',
+    '',
+    '## Your previous attempt was REFUSED by the gate',
+    '',
+    'This is not a style note. These phrases cannot be submitted as they stand.',
+    'Rewrite the whole set. Keep what was fine, replace what is named below.',
+    '',
+    '### What you wrote',
+    '',
+    ...phrases.build.map((p) => `- BUILD: ${p.known} → ${p.target}`),
+    ...phrases.use.map((p) => `- USE: ${p.known} → ${p.target}`),
+    '',
+    '### Why it was refused',
+    '',
+    ...reasons.map((r) => `- ${r}`),
+    '',
+    'Return the same JSON shape as before, and nothing else.',
+  ].join('\n');
+}
+
 async function generateLegoPhrases(supabase, courseCode, seedNumber, legoIndex, opts = {}) {
-  const { timeout = DEFAULT_TIMEOUT_MS, proposedLego } = opts;
-  const { prompt, lego, seed } = await buildPrompt(supabase, courseCode, seedNumber, Number(legoIndex), { proposedLego });
+  const { timeout = DEFAULT_TIMEOUT_MS, proposedLego, gate: runGate = true } = opts;
+  const { prompt, inventory, lego, seed } = await buildPrompt(supabase, courseCode, seedNumber, Number(legoIndex), { proposedLego });
 
   const started = Date.now();
-  const raw = await claudeChat(prompt, {
-    model: PHRASE_MODEL,
-    timeout,
-    thinkingTokens: THINKING_TOKENS,
-  });
-  const phrases = normalise(parseModelJson(raw));
+  const gateCtx = runGate ? makeCourseCtx(supabase, courseCode) : null;
+  const attempts = [];
+  let phrases = null;
+  let gate = null;
+  let score = null;
+  let currentPrompt = prompt;
+
+  for (let attempt = 0; attempt <= (runGate ? MAX_GATE_RETRIES : 0); attempt += 1) {
+    const raw = await claudeChat(currentPrompt, { model: PHRASE_MODEL, timeout, thinkingTokens: THINKING_TOKENS });
+    phrases = normalise(parseModelJson(raw));
+    if (!runGate) break;
+
+    gate = await checkPhraseSet({
+      courseCode,
+      seedNumber,
+      legoIndex: Number(legoIndex),
+      legoId: lego.lego_id,
+      legoKnown: lego.known_text,
+      legoTarget: lego.target_text,
+      components: lego.components,
+      build: phrases.build,
+      use: phrases.use,
+    }, gateCtx);
+
+    // The scorer is the second half of "the gate conditions ... as well as the
+    // new scoring". It never blocks on its own — its shortfalls are named and
+    // travel with the set — but its gate axis (a phrase the learner cannot
+    // produce from their own prompt) is fed into the retry alongside the real
+    // gates' failures, because that is the same defect seen from the other side.
+    try {
+      score = scoreSet(inventory, [
+        ...phrases.build.map((p) => ({ ...p, role: 'build' })),
+        ...phrases.use.map((p) => ({ ...p, role: 'use' })),
+      ]);
+    } catch (e) {
+      score = { error: e.message };
+    }
+
+    const reasons = failureFeedback(gate);
+    attempts.push({ attempt: attempt + 1, overallPass: gate.overallPass, failingGates: gate.failingGates, reasons });
+    if (gate.overallPass) break;
+    if (attempt === MAX_GATE_RETRIES) break;
+    currentPrompt = retryPrompt(prompt, phrases, reasons);
+  }
+
+  const blocked = runGate ? !gate.overallPass : false;
 
   return {
     courseCode,
@@ -130,12 +227,19 @@ async function generateLegoPhrases(supabase, courseCode, seedNumber, legoIndex, 
     elapsedMs: Date.now() - started,
     build: phrases.build,
     use: phrases.use,
+    // The verdict travels WITH the set. A downstream sampler or doc-builder can
+    // then only show what carries a pass, without re-deriving anything.
+    gate,
+    score,
+    blocked,
+    attempts,
   };
 }
 
 module.exports = {
   PHRASE_MODEL,
   THINKING_TOKENS,
+  MAX_GATE_RETRIES,
   generateLegoPhrases,
   parseModelJson,
   normalise,

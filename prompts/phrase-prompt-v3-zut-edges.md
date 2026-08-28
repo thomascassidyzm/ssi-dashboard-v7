@@ -186,8 +186,16 @@ deployable thought, and it must be **worth having in itself** — a thing a real
 person would actually say. A fragment is never an acceptable USE; if you cannot
 write a good one, that is not a licence to pad.
 
-**Floors: at least 4 BUILD and at least 5 USE per LEGO, always.** More variety is
-a bonus on top of volume, never a substitute for it. Fewer phrases is a fail.
+**Counts: write FOUR BUILD phrases per LEGO — three is acceptable, five or more
+is wrong — and at least 5 USE per LEGO, always.**
+
+BUILD is not about coverage. It exists to give a *sense of the pattern*: a couple
+showing the new LEGO plus one previously-taught LEGO, a couple showing the new
+LEGO plus two previously-taught LEGOs, varied between them. That is the whole
+job. Four well-chosen BUILDs beat six that repeat each other.
+
+USE is unchanged: at least five, more variety is a bonus on top of volume, never
+a substitute for it. Too few USE phrases is a fail.
 
 ---
 
@@ -200,7 +208,7 @@ continuous score, and each shortfall names its own rewrite instruction:
 | axis | what it asks |
 |---|---|
 | gate | zero phrases the learner cannot produce from their own prompt |
-| edge combos | ≥4 BUILD / ≥6 USE distinct *neighbour × pattern* combinations |
+| edge combos | ≥3 BUILD / ≥6 USE distinct *neighbour × pattern* combinations |
 | adjacencies | the new LEGO touches more than one different neighbour |
 | position spread | at least two of start / filling / end — and reach for filling |
 | axes varied | at least 2 BUILD / 3 USE of the five pattern axes actually move |

@@ -9,7 +9,8 @@
  *        diagnose a bad set without paying for a regeneration.
  *
  *   POST /api/phrases/v3/generate/:courseCode  {seed, lego}
- *        Generates the BUILD + USE set on Opus and returns it. WRITES NOTHING.
+ *        Generates the BUILD + USE set on Opus, RUNS THE REAL GATES AND THE
+ *        SCORER over it, regenerates on failure, and returns it. WRITES NOTHING.
  *        Submission stays where it already lives (POST /api/v2/phrases,
  *        POST /api/seed/complete), so every existing gate — tiling, vocabulary,
  *        ZUT, containment, the phrase floors — runs on this output exactly as it
@@ -17,7 +18,11 @@
  *        add a second way into the database.
  *
  * The response always names the model that produced it, so "did this run on
- * Opus?" is a fact about the output rather than a claim about the source.
+ * Opus?" is a fact about the output rather than a claim about the source — and
+ * since Tom's A-294 ruling (2026-08-28) it also always carries `gate` and
+ * `score`, so "did this pass?" is a fact about the output too. A set that could
+ * not be made to pass in two retries comes back with `ok:false, blocked:true`
+ * and its failure list; nothing downstream should show it to a human.
  */
 
 const { generateLegoPhrases, buildPhrasePrompt, PHRASE_MODEL } = require('../lib/phrase-generation.cjs');
@@ -60,8 +65,13 @@ module.exports = function phrasesV3Routes(ctx) {
     const courseCode = req.params.courseCode;
     try {
       const result = await generateLegoPhrases(ctx.supabase, courseCode, seed, lego, { proposedLego });
-      console.log(`[phrases-v3] ${courseCode} S${seed}L${lego} — ${result.build.length} BUILD / ${result.use.length} USE on ${result.model} in ${(result.elapsedMs / 1000).toFixed(0)}s`);
-      res.json({ ok: true, model: PHRASE_MODEL, ...result });
+      const verdict = result.blocked ? `BLOCKED (${result.gate.failingGates.join(',')})` : 'gate PASS';
+      console.log(`[phrases-v3] ${courseCode} S${seed}L${lego} — ${result.build.length} BUILD / ${result.use.length} USE on ${result.model} in ${(result.elapsedMs / 1000).toFixed(0)}s — ${verdict} after ${result.attempts.length} attempt(s)`);
+      // A blocked set is returned, named, with its failures — never silently
+      // dropped and never dressed as a success. 200 with ok:false is the shape
+      // that makes a caller handle it: `ok` is the gate verdict, not "the HTTP
+      // call worked", so a caller that ignores it gets nothing to show.
+      res.json({ ok: !result.blocked, blocked: result.blocked, model: PHRASE_MODEL, ...result });
     } catch (err) {
       console.error(`[phrases-v3] ${courseCode} S${seed}L${lego} FAILED: ${err.message}`);
       res.status(500).json({ ok: false, model: PHRASE_MODEL, course_code: courseCode, seed, lego, error: err.message });
