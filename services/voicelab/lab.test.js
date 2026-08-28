@@ -19,7 +19,7 @@ const edge = require_('../audio-intelligence/tiers/tier2-edge-shape.cjs')
 const loudness = require_('../audio-intelligence/tiers/loudness.cjs')
 const veracity = require_('../audio-veracity.cjs')
 
-const cfg = (over = {}) => lab.normaliseConfig({ provider: 'xai', voiceId: 'v1', language: 'deu', ...over })
+const cfg = (over = {}) => lab.normaliseConfig({ provider: 'cartesia', voiceId: 'v1', language: 'deu', ...over })
 
 describe('estimate — what it costs, before it is spent', () => {
   it('counts every sentence against every config', () => {
@@ -28,16 +28,27 @@ describe('estimate — what it costs, before it is spent', () => {
     expect(e.chars).toBe(20) // 10 characters, rendered twice
   })
 
-  it('prices xAI at its published rate and nothing else', () => {
+  // Was 'prices xAI at its published rate'. xAI is retired from selection
+  // (Tom 2026-08-27) and no rate for Cartesia or Azure is verified in this repo,
+  // so the lab reports null — "not priced" — rather than a number it guessed.
+  it('reports no dollar figure at all, because no rate here is verified', () => {
     const e = lab.estimate({ sentences: ['x'.repeat(200)], configs: [{ ...cfg(), key: 'A' }] })
-    expect(e.usd).toBeCloseTo(200 / 1e6 * 15, 6) // $0.003 for a 200-character sentence
+    expect(e.usd).toBeNull()
+    expect(e.perConfig[0].usd).toBeNull()
+    expect(e.perConfig[0].metered).toBe(false)
   })
 
-  it('refuses to invent an Azure price, and says so rather than reporting zero silently', () => {
+  it('counts characters even when it cannot count dollars, because the ceiling is a character ceiling', () => {
+    const e = lab.estimate({ sentences: ['x'.repeat(200)], configs: [{ ...cfg(), key: 'A' }] })
+    expect(e.chars).toBe(200)
+    expect(e.ceiling).toBe(lab.LIMITS.dailyCharCeiling)
+  })
+
+  it('reports null rather than zero for Azure, so "not priced" never reads as "free"', () => {
     const e = lab.estimate({ sentences: ['hello'], configs: [{ ...cfg({ provider: 'azure' }), key: 'A' }] })
-    expect(e.usd).toBe(0)
+    expect(e.usd).toBeNull()
     expect(e.perConfig[0].metered).toBe(false)
-    expect(e.caveats.join(' ')).toMatch(/Azure/)
+    expect(e.caveats.join(' ')).toMatch(/CHARACTER ceiling/)
     // Characters still count: the ceiling is a character ceiling, not a dollar ceiling.
     expect(e.chars).toBe(5)
   })
@@ -150,7 +161,7 @@ describe('totals — recomputed, never incremented', () => {
     { configKey: 'A', chars: 10, costUsd: 0.00015, verdict: { outcome: 'quarantined', refusedBy: ['tail-shape'] } },
     { configKey: 'B', chars: 10, costUsd: 0.00015, verdict: { outcome: 'quarantined', refusedBy: ['tail-shape', 'words'] } },
     { configKey: 'B', chars: 10, costUsd: 0.00015, verdict: null },
-    { configKey: 'B', chars: 10, costUsd: 0.00015, error: 'xAI 500' },
+    { configKey: 'B', chars: 10, costUsd: 0.00015, error: 'Cartesia 500' },
   ]
 
   it('adds up the money and the characters across every clip', () => {
@@ -205,13 +216,20 @@ describe('defaults — the lab opens on production, not on an opinion', () => {
 })
 
 describe('providers — the supports flags are honest', () => {
-  it('says plainly that xAI has no speed, style or pitch', () => {
-    const xai = lab.PROVIDERS.find((p) => p.id === 'xai')
-    expect(xai.supports.speed).toBe(false)
-    expect(xai.supports.style).toBe(false)
-    expect(xai.supports.sampleRate).toBe(true)
-    expect(xai.supports.bitRate).toBe(true)
-    expect(xai.note).toMatch(/no speed/i)
+  it('says plainly that Cartesia takes speed and the output format, but not style or pitch', () => {
+    const cart = lab.PROVIDERS.find((p) => p.id === 'cartesia')
+    expect(cart.supports.speed).toBe(true)
+    expect(cart.supports.style).toBe(false)
+    expect(cart.supports.pitch).toBe(false)
+    expect(cart.supports.sampleRate).toBe(true)
+    expect(cart.supports.bitRate).toBe(true)
+    // The container is pinned to mp3 in generateCartesia, so codec is not a knob.
+    expect(cart.supports.codec).toBe(false)
+  })
+
+  it('offers no retired provider — xAI cannot be selected, so the lab must not list it', () => {
+    expect(lab.PROVIDERS.find((p) => p.id === 'xai')).toBeUndefined()
+    expect(lab.PROVIDERS.map((p) => p.id).sort()).toEqual(['azure', 'cartesia'])
   })
 
   it('says Azure takes speed but not the output format', () => {
@@ -266,7 +284,7 @@ describe('export — a config for a human, never a deployment', () => {
 
   it('carries the parameters AND the evidence they were judged on', () => {
     const out = lab.exportConfig(experiment, 'A')
-    expect(out.config.provider).toBe('xai')
+    expect(out.config.provider).toBe('cartesia')
     expect(out.config.thresholds.loudness.targetLufs).toBe(loudness.DEFAULT_BAND.targetLufs)
     expect(out.config.evidence.admitted).toBe(1)
     expect(out.config.evidence.sentences).toEqual(['guten Tag'])

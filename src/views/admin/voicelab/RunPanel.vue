@@ -307,7 +307,7 @@ function defaultTitle () {
         <template v-else-if="estimate">
           <span class="vl-chip">{{ estimate.clips }} clips</span>
           <span class="vl-chip">{{ estimate.chars }} chars</span>
-          <span class="vl-chip" :class="{ fail: estimate.wouldExceed }">${{ estimate.usd.toFixed(4) }}</span>
+          <span class="vl-chip" :class="{ fail: estimate.wouldExceed }">{{ estimate.usd == null ? 'not priced' : '$' + estimate.usd.toFixed(4) }}</span>
           <span class="vl-muted">
             {{ estimate.ceilingRemaining }} characters left under today's ceiling.
           </span>

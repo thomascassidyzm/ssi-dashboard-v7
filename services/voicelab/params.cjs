@@ -15,15 +15,34 @@ const fs = require('fs')
 const os = require('os')
 const path = require('path')
 
-const xaiCatalogue = require('../../tools/pod-voices-xai.json')
 const lab = require('./lab.cjs')
+const policy = require('../shared/tts-provider-policy.cjs')
+
+/**
+ * Cartesia pins its API to a date, not a semver, and the header is REQUIRED —
+ * verified live 2026-08-28: the same request without it answers 400, which
+ * settles the disagreement between Cartesia's api-reference page (documents it)
+ * and its models guide (does not mention it).
+ *
+ * Restated here rather than imported from services/tts-service.cjs on purpose:
+ * requiring that module pulls in the whole TTS stack, and runner.cjs lazy-loads
+ * it for exactly that reason. Keep this in step with CARTESIA_VERSION there.
+ */
+const CARTESIA_API_VERSION = '2026-08-14'
 const gateStack = require('../audio-intelligence/gate-stack.cjs')
 
 /**
- * Tom's clone. VOICELAB 01 (docs/audio/voicelab-01-tom-clone-multilingual-2026-08-06.md)
- * probed it in German, French and Spanish: clean on plain target-language rendering.
+ * Tom's clone, on CARTESIA. The old entry here was his xAI clone
+ * (`gfzdpspr5fdp`), and xAI is retired from selection (Tom 2026-08-27), so that
+ * id could no longer render at all — it would have offered a menu item that
+ * throws a 403 on click.
+ *
+ * ENGLISH ONLY, and listed rather than auto-selected: tts-provider-policy.cjs
+ * declares this voice `autoCast: false` because assigning Tom's own voice is a
+ * casting decision with his name on it. The lab may OFFER it; nothing here picks
+ * it for anyone.
  */
-const TOM_CLONE = { id: 'gfzdpspr5fdp', name: "Tom's clone", provider: 'xai', gender: 'm', clone: true }
+const TOM_CLONE = { id: '8fef4d59-0a7e-4ad2-a261-6a3bb50734d2', name: "Tom's clone (Cartesia, English only)", provider: 'cartesia', gender: 'm', clone: true, languages: ['en'] }
 
 /** Keyed by the estate's canonical ISO 639-3; `steer` is what the providers are handed. */
 const LANGUAGES = [
@@ -69,17 +88,70 @@ function voicesFor (lang, production = {}) {
     out.push(v)
   }
 
-  push({ ...TOM_CLONE, group: 'Clone' })
-  for (const v of xaiCatalogue[lang.catalogue] || []) {
-    push({ id: v.voice_id, name: v.name, provider: 'xai', gender: v.gender, group: `xAI · ${lang.name}` })
-  }
-  for (const v of xaiCatalogue.multilingual || []) {
-    push({ id: v.voice_id, name: v.name, provider: 'xai', gender: v.gender, group: 'xAI · multilingual' })
+  // Tom's clone speaks English only, so it is offered only where that is true.
+  if ((TOM_CLONE.languages || []).includes(lang.steer)) push({ ...TOM_CLONE, group: 'Clone' })
+
+  // Cartesia's live catalogue, filtered to this language. Fetched from the vendor
+  // rather than transcribed, so a voice Cartesia withdraws stops being offered
+  // instead of failing at render.
+  for (const v of (CARTESIA_CATALOGUE[lang.steer] || [])) {
+    push({ id: v.id, name: v.name, provider: 'cartesia', gender: v.gender, group: `Cartesia · ${lang.name}` })
   }
   for (const v of production[lang.code] || []) {
     push({ ...v, group: 'In the estate today' })
   }
   return out
+}
+
+// ── Cartesia's live voice catalogue, read once and cached ───────────────────────────
+//
+// Keyed by the two-letter code Cartesia itself reports on each voice. Empty until
+// loaded, and a failure to load is never allowed to break the page — the estate
+// census below takes the same posture and for the same reason.
+
+let CARTESIA_CATALOGUE = {}
+let cartesiaNote = 'not read'
+let cartesiaPromise = null
+
+async function loadCartesiaCatalogue () {
+  const key = process.env.CARTESIA_API_KEY
+  if (!key) { cartesiaNote = 'no CARTESIA_API_KEY on this box — Cartesia catalogue omitted'; return }
+  const byLang = {}
+  let url = 'https://api.cartesia.ai/voices/?limit=100'
+  let pages = 0
+  try {
+    // Paginate, but bounded: a runaway cursor must not hold a page request open.
+    while (url && pages < 10) {
+      const res = await fetch(url, {
+        headers: { Authorization: `Bearer ${key}`, 'Cartesia-Version': CARTESIA_API_VERSION },
+        signal: AbortSignal.timeout(15000),
+      })
+      if (!res.ok) { cartesiaNote = `Cartesia /voices returned ${res.status} — catalogue omitted`; return }
+      const body = await res.json()
+      for (const v of body.data || []) {
+        const g = v.gender === 'feminine' ? 'f' : v.gender === 'masculine' ? 'm' : null
+        ;(byLang[v.language] = byLang[v.language] || []).push({ id: v.id, name: v.name, gender: g })
+      }
+      pages += 1
+      url = body.has_more && body.next_page
+        ? `https://api.cartesia.ai/voices/?limit=100&starting_after=${encodeURIComponent(body.next_page)}`
+        : null
+    }
+  } catch (e) {
+    cartesiaNote = `Cartesia /voices failed (${String(e.message).split('\n')[0]}) — catalogue omitted`
+    return
+  }
+  CARTESIA_CATALOGUE = byLang
+  cartesiaNote = `read live from Cartesia: ${Object.values(byLang).reduce((n, a) => n + a.length, 0)} voices across ${Object.keys(byLang).length} languages`
+}
+
+/** Cached, and never allowed to throw into a request. */
+function cartesiaCatalogue () {
+  if (!cartesiaPromise) {
+    cartesiaNote = 'reading Cartesia /voices…'
+    cartesiaPromise = loadCartesiaCatalogue().catch((e) => { cartesiaNote = `Cartesia catalogue omitted — ${e.message}` })
+  }
+  return cartesiaPromise
 }
 
 // ── The estate census, read once and cached ─────────────────────────────────────────
@@ -99,9 +171,15 @@ function describeStoredVoice (raw, count) {
   const azure = id.startsWith('azure_') ? id.slice(6) : (/Neural$/.test(id) ? id : null)
   if (azure) return { id: azure, name: azure.replace(/Neural$/, '').split('-').slice(2).join('-') || azure, provider: 'azure', clips: count }
 
-  const xai = id.startsWith('xai_') ? id.slice(4) : id
-  if (xai === TOM_CLONE.id) return null // already at the top of the list
-  return { id: xai, name: xai, provider: 'xai', clips: count }
+  const cartesia = id.startsWith('cartesia_') ? id.slice(9) : null
+  if (cartesia) {
+    if (cartesia === TOM_CLONE.id) return null // already at the top of the list
+    return { id: cartesia, name: cartesia, provider: 'cartesia', clips: count }
+  }
+  // Anything left is an xAI id (bare or `xai_`-prefixed). Those clips still PLAY —
+  // retirement is from selection only — but the lab must not offer the voice as
+  // something to render with, because generate() would refuse it with a 403.
+  return null
 }
 
 /**
@@ -194,7 +272,7 @@ const THRESHOLD_SPEC = [
 
 /** The whole /params payload. */
 async function payload ({ charsSpentToday = 0 } = {}) {
-  await estateVoices()
+  await Promise.all([estateVoices(), cartesiaCatalogue()])
   const defaults = lab.defaultConfig()
   return {
     providers: lab.PROVIDERS,
@@ -203,6 +281,7 @@ async function payload ({ charsSpentToday = 0 } = {}) {
       name: l.name,
       steer: l.steer,
       azureLocale: l.azureLocale,
+      cartesiaCovers: policy.cartesiaCoversLanguage(l.code),
       voices: voicesFor(l, PRODUCTION_VOICES),
     })),
     gates: gateStack.GATES,
@@ -211,14 +290,19 @@ async function payload ({ charsSpentToday = 0 } = {}) {
     limits: lab.LIMITS,
     spend: {
       charsToday: charsSpentToday,
-      usdToday: +(charsSpentToday / 1e6 * lab.XAI_USD_PER_MILLION_CHARS).toFixed(4),
+      // Characters, not dollars: no provider on the selectable ladder has a rate
+      // verified in this repo, and the ceiling that actually stops a run is a
+      // character ceiling anyway.
+      usdToday: null,
       ceiling: lab.LIMITS.dailyCharCeiling,
     },
-    pricing: { xaiUsdPerMillionChars: lab.XAI_USD_PER_MILLION_CHARS, azure: null },
+    pricing: { ...lab.USD_PER_MILLION_CHARS, note: 'Neither Cartesia nor Azure has a rate verified in this repo. The lab meters characters, which it can count, rather than dollars, which it would have to guess.' },
     notes: {
       productionNote,
+      cartesiaNote,
+      retiredProviders: 'xAI is retired from SELECTION (Tom 2026-08-27). Historic xAI clips still play untouched, but the lab no longer offers xAI voices, because generate() refuses them with a 403.',
       export: 'This lab exports a config for a human to apply. It never writes algorithm_config and never writes course_audio.',
-      azurePricing: 'Azure spend is not metered here — Azure clips count characters against the ceiling but report no dollar figure rather than a made-up one.',
+      pricing: 'No provider is metered in dollars here. Clips count characters against the daily ceiling and report no dollar figure rather than a made-up one.',
     },
   }
 }
@@ -231,6 +315,7 @@ module.exports = {
   voicesFor,
   describeStoredVoice,
   estateVoices,
+  cartesiaCatalogue,
   payload,
-  _state: () => ({ PRODUCTION_VOICES, productionNote }),
+  _state: () => ({ PRODUCTION_VOICES, productionNote, CARTESIA_CATALOGUE, cartesiaNote }),
 }

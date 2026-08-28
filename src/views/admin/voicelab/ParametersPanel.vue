@@ -8,10 +8,10 @@
  *
  * TWO RULES THIS PANEL EXISTS TO KEEP.
  *
- * 1 · A CONTROL THAT DOES NOTHING IS WORSE THAN NO CONTROL. xAI documents no
- *   speed parameter (services/tts-service.cjs:433 says so in its own comment),
- *   so with xAI selected the speed field is disabled and SAYS WHY rather than
- *   silently ignoring what you typed. The backend reports per-provider support
+ * 1 · A CONTROL THAT DOES NOTHING IS WORSE THAN NO CONTROL. A provider may
+ *   not honour a knob at all — Cartesia pins the container to mp3, Azure pins
+ *   the whole output format — so a field the selected provider ignores is
+ *   disabled and SAYS WHY rather than silently ignoring what you typed. The backend reports per-provider support
  *   in /api/voicelab/params; this panel renders that report, it does not carry
  *   its own opinion about what a provider can do.
  *
