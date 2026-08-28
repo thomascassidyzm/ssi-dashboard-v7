@@ -33,6 +33,7 @@ const store = require('./store.cjs')
 const params = require('./params.cjs')
 const content = require('./content.cjs')
 const registry = require('./registry.cjs')
+const cartesia = require('./cartesia.cjs')
 
 /**
  * @param {object} app        express app
@@ -58,6 +59,42 @@ function mount (app, deps) {
   const runner = () => require('./runner.cjs')
 
   const who = (user) => user?.email || user?.username || user?.id || 'unknown'
+
+  /**
+   * Read one multipart upload: a single audio clip plus text fields.
+   *
+   * Capped at 25 MB. A clone sample is seconds of speech, so anything larger is
+   * a mistake or an abuse, and streaming it to a vendor unbounded is how a
+   * "small" endpoint becomes a bill.
+   */
+  const MAX_UPLOAD_BYTES = 25 * 1024 * 1024
+  function readUpload (req) {
+    return new Promise((resolve, reject) => {
+      let bus
+      try {
+        bus = require('busboy')({ headers: req.headers, limits: { files: 1, fileSize: MAX_UPLOAD_BYTES } })
+      } catch (e) {
+        return reject(Object.assign(new Error(`Expected a multipart upload: ${e.message}`), { status: 400 }))
+      }
+      const fields = {}
+      const chunks = []
+      let filename = 'sample.wav'
+      let tooBig = false
+      bus.on('field', (name, value) => { fields[name] = value })
+      bus.on('file', (_name, stream, info) => {
+        filename = info.filename || filename
+        stream.on('data', (c) => chunks.push(c))
+        stream.on('limit', () => { tooBig = true })
+      })
+      bus.on('error', (e) => reject(Object.assign(new Error(String(e.message)), { status: 400 })))
+      bus.on('close', () => {
+        if (tooBig) return reject(Object.assign(new Error(`Sample is larger than ${MAX_UPLOAD_BYTES / 1024 / 1024} MB.`), { status: 413 }))
+        if (!chunks.length) return reject(Object.assign(new Error('No sample clip was uploaded.'), { status: 400 }))
+        resolve({ clip: Buffer.concat(chunks), filename, fields })
+      })
+      req.pipe(bus)
+    })
+  }
 
   function fail (res, err, context) {
     const status = err && err.status ? err.status : 500
@@ -94,7 +131,12 @@ function mount (app, deps) {
   app.get('/api/voicelab/languages', async (req, res) => {
     if (!await requireDashboardUser(req, res)) return
     try {
-      res.json(await registry.build(supabase()))
+      // The catalogue load is cached in params.cjs and never allowed to throw
+      // into a request: a Cartesia outage must degrade this screen to
+      // "registered voices only", not break it.
+      await params.cartesiaCatalogue()
+      const { CARTESIA_CATALOGUE } = params._state()
+      res.json(await registry.build(supabase(), { cartesiaCatalogue: CARTESIA_CATALOGUE }))
     } catch (err) { fail(res, err, 'languages') }
   })
 
@@ -122,17 +164,95 @@ function mount (app, deps) {
       }
       if (!voiceId) throw Object.assign(new Error('voiceId is required — to empty a slot use DELETE'), { status: 400 })
 
+      // A voice can only hold a slot if it has a `voices` row — the slot table
+      // carries a foreign key to it. The Languages screen offers Cartesia
+      // catalogue voices that may not be registered yet, so registering is done
+      // here rather than making the operator do it as a separate step. It is
+      // still only a catalogue lookup and an upsert; nothing renders.
+      let slotVoiceId = String(voiceId)
+      const { data: existing } = await supabase()
+        .from('voices').select('voice_id').eq('voice_id', slotVoiceId).maybeSingle()
+      if (!existing && /^cartesia_/.test(slotVoiceId)) {
+        const meta = await cartesia.fetchVoice(slotVoiceId)
+        const voice = await cartesia.registerVoice(supabase(), {
+          voiceId: slotVoiceId,
+          name: meta.name,
+          language: meta.language,
+          gender: meta.gender === 'feminine' ? 'f' : meta.gender === 'masculine' ? 'm' : gender,
+          registeredBy: who(user),
+        })
+        slotVoiceId = voice.voice_id
+      }
+
       const { error } = await supabase()
         .from('voice_language_roles')
         .upsert({
-          language, gender, rank: r, voice_id: String(voiceId), notes,
+          language, gender, rank: r, voice_id: slotVoiceId, notes,
           assigned_by: who(user), updated_at: new Date().toISOString(),
         }, { onConflict: 'language,gender,rank' })
       if (error) throw Object.assign(new Error(error.message), { status: 400 })
 
-      logger.log?.(`[voicelab] cast ${language}/${gender}/rank${r} = ${voiceId} by ${who(user)}`)
-      res.json({ ok: true, language, gender, rank: r, voiceId })
+      logger.log?.(`[voicelab] cast ${language}/${gender}/rank${r} = ${slotVoiceId} by ${who(user)}`)
+      res.json({ ok: true, language, gender, rank: r, voiceId: slotVoiceId })
     } catch (err) { fail(res, err, 'cast') }
+  })
+
+  /**
+   * Register a Cartesia catalogue voice into `voices` so it becomes castable.
+   *
+   * SPENDS NOTHING: a catalogue lookup and one database upsert. No speech is
+   * rendered. This is the lever tts-provider-policy.cjs names for turning
+   * Cartesia on for a language.
+   */
+  app.post('/api/voicelab/voices/cartesia/register', async (req, res) => {
+    const user = await requireAdmin(req, res)
+    if (!user) return
+    try {
+      const { voiceId, language, gender = null, name = null } = req.body || {}
+      if (!voiceId) throw Object.assign(new Error('voiceId is required'), { status: 400 })
+      // Ask Cartesia rather than trusting the caller: registering a voice id
+      // that does not exist would create a row that fails at render time, which
+      // is the false-green this whole screen exists to prevent.
+      const meta = await cartesia.fetchVoice(voiceId)
+      const voice = await cartesia.registerVoice(supabase(), {
+        voiceId,
+        name: name || meta.name,
+        language: language || meta.language,
+        gender: gender || (meta.gender === 'feminine' ? 'f' : meta.gender === 'masculine' ? 'm' : null),
+        registeredBy: who(user),
+      })
+      logger.log?.(`[voicelab] registered cartesia voice ${voiceId} by ${who(user)}`)
+      res.json({ ok: true, voice })
+    } catch (err) { fail(res, err, 'register-cartesia-voice') }
+  })
+
+  /**
+   * Clone a voice on Cartesia from one uploaded sample.
+   *
+   * RENDERS NOTHING and CANNOT trigger a bulk run: it uploads a sample and
+   * returns a voice id. Hearing the result is a separate, capped audition
+   * through the ordinary render path, which the daily character ceiling still
+   * governs. Admin only, because it creates a resource on a metered vendor
+   * account.
+   */
+  app.post('/api/voicelab/voices/cartesia/clone', async (req, res) => {
+    const user = await requireAdmin(req, res)
+    if (!user) return
+    try {
+      const parsed = await readUpload(req)
+      const { clip, filename, fields } = parsed
+      const out = await cartesia.createClone(supabase(), {
+        clip,
+        filename,
+        name: fields.name,
+        language: fields.language,
+        gender: fields.gender || null,
+        description: fields.description || null,
+        registeredBy: who(user),
+      })
+      logger.log?.(`[voicelab] cloned cartesia voice ${out.cartesia.id} by ${who(user)}`)
+      res.json({ ok: true, ...out })
+    } catch (err) { fail(res, err, 'clone-cartesia-voice') }
   })
 
   /** Empty a slot. The language then reads as incomplete, which is the point. */

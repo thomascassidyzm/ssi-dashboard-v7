@@ -98,6 +98,25 @@ export const api = {
     call(`/api/voicelab/languages/${encodeURIComponent(language)}/slot`, { method: 'PUT', body }),
   clearSlot: (language, { gender, rank }) =>
     call(`/api/voicelab/languages/${encodeURIComponent(language)}/slot?gender=${gender}&rank=${rank}`, { method: 'DELETE' }),
+
+  // Cloning uploads one sample and returns a voice id. It RENDERS NOTHING and
+  // cannot trigger a bulk run — hearing the clone is a separate, capped
+  // audition through the ordinary render path.
+  cloneVoice: (formData) => upload('/api/voicelab/voices/cartesia/clone', formData),
+}
+
+/** multipart POST. Same session gate as `call`; the browser sets the boundary. */
+async function upload (path, formData) {
+  const token = await accessToken()
+  if (!token) throw new Error('Not signed in — every Voice Lab endpoint needs a dashboard session.')
+  const res = await fetch(`${labBase()}${path}`, {
+    method: 'POST',
+    headers: { Authorization: `Bearer ${token}`, 'ngrok-skip-browser-warning': 'true' },
+    body: formData,
+  })
+  const data = await res.json().catch(() => ({}))
+  if (!res.ok) throw Object.assign(new Error(data.error || `HTTP ${res.status}`), { status: res.status })
+  return data
 }
 
 /**

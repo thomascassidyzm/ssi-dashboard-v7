@@ -72,7 +72,13 @@ function rankName (rank) {
  * @param {object} db   a Supabase client (services/supabase-client.cjs getClient())
  * @returns {Promise<{languages: object[], summary: object, notes: object}>}
  */
-async function build (db) {
+async function build (db, opts = {}) {
+  // Cartesia's live catalogue, keyed by two-letter code (params.cjs fetches it).
+  // Merged in as UNREGISTERED candidates so a language with no Cartesia voice in
+  // `voices` can still be cast from this screen — otherwise the estate's default
+  // provider would be the one provider you could not choose. Casting one
+  // registers it; see router.cjs.
+  const catalogue = opts.cartesiaCatalogue || {}
   const [courses, voices, roles] = await Promise.all([
     all(db, 'courses', 'course_code, target_lang, status'),
     all(db, 'voices', 'voice_id, type, tts_engine, display_name, human_name, languages, gender, is_active, notes'),
@@ -98,7 +104,7 @@ async function build (db) {
   }
 
   const languages = [...byLang.entries()]
-    .map(([code, langCourses]) => describeLanguage({ code, langCourses, roles: rolesByLang.get(code) || [], voiceById, voices }))
+    .map(([code, langCourses]) => describeLanguage({ code, langCourses, roles: rolesByLang.get(code) || [], voiceById, voices, catalogue }))
     .sort((a, b) => {
       // Worst first: the screen's job is to show what is missing, so a language
       // needing casting must not be buried under a page of complete ones.
@@ -110,7 +116,7 @@ async function build (db) {
 }
 
 /** One language's row. */
-function describeLanguage ({ code, langCourses, roles, voiceById, voices }) {
+function describeLanguage ({ code, langCourses, roles, voiceById, voices, catalogue = {} }) {
   const human = isHumanVoiceLang(code)
   const cartesiaCovers = policy.cartesiaCoversLanguage(code)
 
@@ -160,9 +166,33 @@ function describeLanguage ({ code, langCourses, roles, voiceById, voices }) {
       .filter((v) => castable(v))
       .filter((v) => (v.languages || []).some((l) => sameLang(l, code)))
       .filter((v) => !roles.some((r) => r.voice_id === v.voice_id))
-      .map((v) => ({ voiceId: v.voice_id, name: v.display_name || v.human_name || v.voice_id, kind: voiceKind(v), engine: v.tts_engine || null, gender: v.gender || null }))
-      .slice(0, 50),
+      .map((v) => ({ voiceId: v.voice_id, name: v.display_name || v.human_name || v.voice_id, kind: voiceKind(v), engine: v.tts_engine || null, gender: v.gender || null, registered: true }))
+      .concat(cartesiaCandidates(code, catalogue, roles))
+      .slice(0, 80),
   }
+}
+
+/**
+ * Cartesia catalogue voices for a language that are not already cast.
+ *
+ * Reported with `registered: false` so the UI can say plainly that choosing one
+ * also adds it to the estate's voice list. The id is spelled `cartesia_…`,
+ * matching how the estate spells provider-scoped ids, and it is that spelling
+ * the cast route uses to decide whether it needs to register the voice first.
+ */
+function cartesiaCandidates (code, catalogue, roles) {
+  const iso1 = policy.toCartesiaLangCode(code)
+  if (!iso1) return []
+  return (catalogue[iso1] || [])
+    .map((v) => ({
+      voiceId: `cartesia_${v.id}`,
+      name: `${v.name} — Cartesia`,
+      kind: 'cartesia',
+      engine: 'cartesia',
+      gender: v.gender || null,
+      registered: false,
+    }))
+    .filter((c) => !roles.some((r) => r.voice_id === c.voiceId))
 }
 
 /**
@@ -263,4 +293,4 @@ async function all (db, table, columns) {
   }
 }
 
-module.exports = { build, describeLanguage, statusFor, rankName, sameLang, voiceKind, castable, REQUIRED_RANKS, GENDERS }
+module.exports = { build, describeLanguage, statusFor, rankName, sameLang, voiceKind, castable, cartesiaCandidates, REQUIRED_RANKS, GENDERS }
