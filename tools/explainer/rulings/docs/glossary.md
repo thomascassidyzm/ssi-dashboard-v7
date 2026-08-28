@@ -63,9 +63,12 @@ count as available vocabulary, and some (single-letter prepositions, particles) 
 Every LEGO carries practice phrases in exactly one of three roles: component, **build**, or
 **use**. BUILD phrases are short pattern-locking phrases — fragments are fine so long as they
 extend naturally — combining the new LEGO with already-introduced vocabulary only; they play in
-the debut round and never return. USE phrases are complete, natural sentences — the kind of
-thing a learner actually wants to say — and they are **eternal**: the only role that comes back
-through spaced repetition and consolidation. Fragments are never acceptable as USE. Phrase
+the debut round and never return. USE phrases are natural things a learner actually wants to
+say, and they are **eternal**: the only role that comes back through spaced repetition and
+consolidation. Because a USE phrase is met cold, it must be **standalone-sayable** — clear,
+unambiguous for the remainder of the course, and long enough to be worth saying. A full sentence
+is **preferred but not a hard rule** (Kai's ruling, 2026-08-17); a non-full USE phrase needs more
+careful checking, not prohibition. Phrase
 floors are hard rules — fewer phrases is a fail; variety never substitutes for volume. The
 validator's live gate list is on the Pipeline page.
 
@@ -90,7 +93,11 @@ the known-language prompt.
 
 The known-language prompts are not free English. They compose only from the known-glosses of
 introduced LEGOs, a small free class (glue, inflection, NPI-under-negation, do-support), and
-constructions licensed by a debuted carrier. Slightly stilted but tileable prompts are correct.
+constructions licensed by a debuted carrier. **They must still be grammatically correct and read
+naturally** — Kai ruled on 2026-08-06 that grammatical correctness is hard and naturalness near-hard,
+and that a stilted prompt accepted for ZUT reasons is a rare per-case exception, not a standing
+licence. (This paragraph used to say "slightly stilted but tileable prompts are correct"; that is
+the overruled side.)
 Per-pair rules live in the pair-contract; the free class is known-language specific. Vocabulary
 is always **known / target / seed** — never "source".
 

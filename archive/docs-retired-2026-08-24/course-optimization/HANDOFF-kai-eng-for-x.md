@@ -27,10 +27,14 @@ called it: *"need stronger ZUT enforcement."*
    `checkBasketFrameCoverage` is a code signature and is useless (returned `[]` on all 9,846 legos). It is an
    agent job. (See doctrine `ralph-methodology.md`; the rule cost us two wrong turns.)
 4. **BUILD = partial scaffolds** (how the new LEGO plugs into prior LEGOs, before a full clause); **USE =
-   complete reinforcement sentences, ≥5, needed regardless of frame variety.** More frames good; **fewer
+   eternal reinforcement phrases, ≥5, needed regardless of frame variety.** A full sentence is preferred
+   but **not required** (Kai, 2026-08-17) — a USE phrase passes if it is clear, unambiguous for the rest of
+   the course, longish, and something you could say on its own in a conversation. More frames good; **fewer
    phrases is a fail.**
 5. **ZUT:** one known prompt → exactly one target form (production direction; naturalness is not the
-   tie-breaker). The **known side is a controlled language too** — every foreign content morpheme must be an
+   tie-breaker) — **but naturalness is still a bar, not a nicety**: the known side must be grammatically
+   correct and must not read weird, and a stilted line taken for ZUT is a rare per-case exception, never a
+   standing licence (Kai, 2026-08-06). The **known side is a controlled language too** — every foreign content morpheme must be an
    already-introduced LEGO or free class. Vocabulary is **known / target / seed**, never "source."
 6. **No TTS / no deleting generated audio without a plan + approval.** All work stays `draft`.
 

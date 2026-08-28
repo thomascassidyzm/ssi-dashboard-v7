@@ -103,9 +103,9 @@ This is how cumulative confidence builds - each new LEGO multiplies combinations
 - **Fragments are OK** — the point is showing connections, not complete thoughts
 - **3-4 phrases per LEGO**
 
-**USE phrases** — complete sentences the learner will practise for weeks:
+**USE phrases** — the phrases the learner will practise for weeks:
 - Used **REPEATEDLY** in spaced repetition reviews
-- **Must be complete sentences/thoughts** a learner would actually say
+- **Must be standalone-sayable** — something a learner could say on its own in a conversation, clear and unambiguous for the rest of the course. A full sentence is **preferred but not required** (Kai's ruling, 2026-08-17); a shorter phrase needs more careful checking, not prohibition
 - Average: LEGO + 10-12 syllables
 - **Minimum 5 phrases per new LEGO**
 - Scored 5-9 (4 or below = rewrite)
@@ -223,7 +223,7 @@ BUILD (3-4 short phrases, fragments OK):
 - I want now → je veux maintenant
 - I want French → je veux français
 
-USE (5+ complete sentences, averaging LEGO + 10-12 syllables):
+USE (5+ standalone-sayable phrases, full sentences preferred, averaging LEGO + 10-12 syllables):
 - I want to speak French → je veux parler français [7]
 - I want to speak with you now → je veux parler avec toi maintenant [9]
 - I want to speak French with you → je veux parler français avec toi [8]
@@ -233,7 +233,7 @@ USE (5+ complete sentences, averaging LEGO + 10-12 syllables):
 
 **Remember:**
 - BUILD: LEGO + 1 word minimum, ~5 syllables max extra, 3-4 phrases
-- USE: Complete sentences, 5+ phrases, can use ALL prior vocabulary
+- USE: standalone-sayable (full sentences preferred, not required), 5+ phrases, can use ALL prior vocabulary
 
 ### E. Capture Contrastive Notes
 

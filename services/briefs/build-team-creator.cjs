@@ -115,7 +115,10 @@ Standard for a hand-written fallback set (and the bar the door writes to):
 - BUILD = the new LEGO plugged into already-introduced vocabulary. Fragments are
   fine if they extend into a natural sentence. Never the bare LEGO on its own —
   the API drops those and they count toward nothing.
-- USE = complete, deployable thoughts, worth having in themselves. Never fragments.
+- USE = deployable thoughts, worth having in themselves and clear when met cold months
+  later. A full sentence is preferred but **not required** (Kai, 2026-08-17): the test is
+  "something you could say on its own in a conversation", unambiguous for the rest of the
+  course. A shorter USE needs more careful checking, not prohibition.
 - Move the LEGO around: start, **filling** (a connection either side — the
   expensive one), end. A tail swapped seven times is one connection, not seven.
 - Vary person, polarity, mood, embedding, tense, role. Reach for RECENT vocabulary,

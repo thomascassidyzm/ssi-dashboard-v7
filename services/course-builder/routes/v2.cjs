@@ -1634,7 +1634,7 @@ You are generating phrases for ${courseCode}. Your LEGOs: {LEGO_LIST}
 Generate BUILD and USE phrases for each LEGO.
 
 **BUILD** (3+): new LEGO + prior vocabulary. Fragments OK.
-**USE** (8+): natural complete sentences. Scored 5-9.
+**USE** (8+): natural, standalone-sayable phrases — full sentences preferred but not required (Kai, 2026-08-17); a shorter one passes if it is clear, unambiguous later in the course, and longish. Scored 5-9.
 
 Submit JSON:
 \`\`\`json

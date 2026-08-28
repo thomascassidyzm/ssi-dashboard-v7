@@ -136,7 +136,7 @@ USE:
 - `## L1 [M]` or `## L2 [A]` - LEGO header with type
 - `Components:` line for M-type LEGOs
 - `BUILD:` phrases for drilling (flexible)
-- `USE:` complete sentences with scores [5-9]
+- `USE:` standalone-sayable phrases with scores [5-9] — full sentences preferred, not required (Kai, 2026-08-17)
 
 ## Quality Requirements
 

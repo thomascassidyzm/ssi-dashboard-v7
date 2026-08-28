@@ -43,7 +43,7 @@ BUILD phrase rules (ralph-methodology):
 - Use ONLY whole chunks from the introduced vocabulary list — no new words, no re-conjugation, no invented fillers.
 - NEVER the bare LEGO alone. NEVER the LEGO (or a USE phrase) with a short tacked-on tag like ", yes / , here / , again / , please" — that is the template-stamp defect you are fixing.
 - Do not duplicate any USE phrase below.
-- One known prompt → one target form (ZUT). The known side may be slightly stilted as long as it tiles from known glosses.
+- One known prompt → one target form (ZUT). The known side tiles from known glosses AND must be grammatically correct and read naturally — a stilted prompt accepted for ZUT reasons is a rare per-case exception, never a standing licence (Kai, 2026-08-06).
 - No parentheses or explanations anywhere.
 
 INTRODUCED VOCABULARY (introduction order, known → target):

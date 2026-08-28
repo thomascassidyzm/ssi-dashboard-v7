@@ -86,7 +86,10 @@ Before extracting LEGOs, choose the most **teachable** translation:
 
 **1. Minimize Variation (CRITICAL)**
 - Once a mapping is established, use it EVERYWHERE
-- Consistency > native naturalness for learning
+- Consistency > native naturalness for learning — but only within the bar: every line must still be
+  grammatically correct and must not read weird, especially on the known side. Accepting a stilted
+  line for consistency/ZUT reasons is a rare per-case exception you justify, never a standing licence
+  (Kai, 2026-08-06).
 
 **Exception: Context changes meaning → chunk UP**
 - When a word has genuinely different meanings in different contexts

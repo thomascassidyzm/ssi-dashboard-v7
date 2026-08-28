@@ -187,7 +187,7 @@ const words = vocabData.vocab.split(',').map(w => w.trim());
 The English targets are what learners will actually SAY. They must be:
 
 1. **Natural** — "I want to speak English with you now" not "Now I want English speaking with you"
-2. **Complete sentences** in USE phrases — always with subject, verb, object as needed
+2. **Standalone-sayable** in USE phrases — a full sentence is preferred but not required (Kai, 2026-08-17); the test is whether you could say it on its own in a conversation
 3. **Conversational register** — not too formal, not slang
 4. **Useful things to say** — phrases a language learner would actually need
 
@@ -355,7 +355,7 @@ L5 [M] "何が起こるか" → "what's going to happen"
 3. **Forgetting the vocab constraint** — L1 can only use prior seeds' vocab. Check before writing phrases.
 4. **Scoring too high** — Score 7 for solid phrases, 8 for good recombination, 9 for excellent. Don't give everything 9.
 5. **Too few USE phrases** — Minimum 5 per LEGO, target 8. More is fine for early LEGOs with rich vocab.
-6. **Phrases that aren't complete sentences** — USE phrases must be full sentences with periods and scores.
+6. **USE phrases you couldn't say on their own** — full sentences are preferred but not required (Kai, 2026-08-17); what fails is a phrase that is unclear or ambiguous when met cold. USE phrases carry periods and scores.
 7. **BUILD phrases with periods/scores** — BUILD phrases are fragments. No periods, no scores.
 
 ---

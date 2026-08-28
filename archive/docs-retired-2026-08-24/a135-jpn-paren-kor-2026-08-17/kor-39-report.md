@@ -115,7 +115,7 @@ One more of the same kind, in the authored set:
 Rails applied (per `ralph-methodology.md` §"The Known Side Is a Controlled Language", inverted for this pair — here the controlled language is **Korean**):
 
 - Every proposed Korean composes only from Korean the learner has already been given **at or before that seed**, checked against the 546 legos and 5,369 clean phrases of this course filtered by seed number. Where a piece debuts *later* than the row's seed, I said so and downgraded confidence (this is what pins `S0290L01U05` to medium: the course's own `알아야 해요` debuts at S293, three seeds after the row).
-- Slightly stilted but tileable Korean is the correct outcome, not a defect — the known side mirrors "ZUT over naturalness".
+- Slightly stilted but tileable Korean is the correct outcome, not a defect — the known side mirrors "ZUT over naturalness". **[Correction added 2026-08-28: this rail is overruled. Kai ruled on 2026-08-06 that grammatical correctness on the known side is HARD and naturalness near-hard, and that a stilted line taken for ZUT reasons is a rare per-case exception, not a standing licence. The record of what was done that day stands; the rail is not to be reused.]**
 - I preferred substituting into an *attested frame* over writing free native Korean. Every `high` row is an attested frame plus attested pieces.
 
 ### ZUT / collision check — clean

@@ -51,7 +51,7 @@ Drift doesn't matter if the course is bad. A well-calibrated agent producing 3.5
 ```
 USE avg <= BUILD avg → REJECT (phrase quality inverted)
 ```
-BUILD phrases are fragments to lock in patterns. USE phrases are complete sentences for eternal rotation - they MUST be higher quality. If BUILD phrases outscore USE phrases, the build agent misunderstands the methodology.
+BUILD phrases are fragments to lock in patterns. USE phrases go into eternal rotation and are met cold — they MUST be higher quality. (Quality here is standalone-sayability and naturalness; a full sentence is preferred but not required — Kai, 2026-08-17.) If BUILD phrases outscore USE phrases, the build agent misunderstands the methodology.
 
 ### Gate 3: Vocabulary Violations (HARD FAIL)
 ```
@@ -295,13 +295,13 @@ Output your report and flag for human decision. Include:
 BUILD avg: 7.2
 USE avg: 6.8  ← LOWER than BUILD!
 
-This indicates the build agent is producing better fragments than
-complete sentences. The methodology is inverted - USE phrases
-(eternal-eligible) must be higher quality than BUILD phrases.
+This indicates the build agent is producing better throwaway BUILD
+phrases than eternal USE phrases. The methodology is inverted - USE
+phrases (eternal-eligible) must be higher quality than BUILD phrases.
 
 Recommendation: REJECT
 Reason: "USE phrases (6.8) must outscore BUILD phrases (7.2)"
-Action: Rebuild with focus on high-quality complete sentences for USE
+Action: Rebuild with focus on high-quality, standalone-sayable USE phrases
 ```
 
 ## Scoring Guidelines by Language

@@ -46,7 +46,9 @@ The general rule behind every methodology call: **decide by least action to conf
 
 Reconstructability (Principle 1) holds in **both** languages. The English prompt is **not** free natural English — it is a designed, controlled language. Every prompt must compose from: (a) the known-glosses of introduced LEGOs, (b) the **free class** — glue words, ‑s/‑ed/‑ing inflection, NPI ("any/ever") under negation, dummy auxiliaries (do/does/did), and (c) constructions **licensed by a debuted carrier** — do-support questions, "have you been V-ing", "want to have", etc.
 
-Slightly stilted but tileable English is **correct** — it is the known-side mirror of "ZUT over naturalness". A prompt using unlicensed English machinery is *unmappable*: it forks or stalls production exactly like a target-side ZUT violation. "How do you say it?" cannot appear before its do-support carrier is introduced; "would you like…" smuggles the want/'d-like convergence in early. Compose prompts from what the learner has been given, not from natural English.
+**Controlled does not mean stilted.** A prompt using unlicensed English machinery is *unmappable*: it forks or stalls production exactly like a target-side ZUT violation — "How do you say it?" cannot appear before its do-support carrier is introduced; "would you like…" smuggles the want/'d-like convergence in early. But the answer to that is a *different well-formed prompt*, not an awkward one. **Kai's ruling, 2026-08-06, which settles this: grammatical correctness on the known side is a HARD constraint and naturalness is near-hard — "it shouldn't sound very weird, especially when English is the target language… sometimes we might need to pick something slightly suboptimal for ZUT reasons, but usually that's not necessary."** A stilted prompt bought for ZUT is a rare exception justified case by case, **not a standing licence**. Compose prompts from what the learner has been given — and if what you can compose reads badly, rewrite the prompt or redraw the LEGO, do not ship the awkward line.
+
+*(This passage previously said "slightly stilted but tileable English is correct". That was the losing side of a documented clash and Kai overruled it on 2026-08-06.)*
 
 ---
 
@@ -224,10 +226,10 @@ BUILD:
 **Purpose:** Natural production. Put the LEGO "out."
 
 - **Mix of lengths required** to create smooth progression:
-  - **MEDIUM (2-3 phrases):** LEGO + 4-6 syllables - shorter complete sentences
+  - **MEDIUM (2-3 phrases):** LEGO + 4-6 syllables - shorter, standalone-sayable phrases
   - **LONG (2-3 phrases):** LEGO + 7-10 syllables - fuller, richer sentences
 - **Minimum 5 per LEGO** - these get reused in CONSOLIDATE, REVIEW, and listening exercises
-- **MUST be complete, natural sentences** - NEVER fragments
+- **MUST be natural.** Full sentences are **preferred but not a hard rule** (Kai's ruling, 2026-08-17): a shorter USE passes if it is clear, unambiguous for the **remainder** of the course, longish, and **something you could say on its own in a conversation**. Non-full USE phrases need *more careful checking*, not prohibition
 - No capitalisation, no trailing periods (spoken phrases, not written sentences)
 - A USE phrase is something a learner would ACTUALLY SAY in conversation
 - Must contain the LEGO (exact character match)
@@ -235,14 +237,14 @@ BUILD:
 
 **Why the mix matters:** The ~7 practice phrases per LEGO should form a progression:
 1. **BUILD (short):** LEGO + 1-3 syllables - lock in the pattern (fragments OK)
-2. **USE medium:** LEGO + 4-6 syllables - bridge to production (complete sentences)
+2. **USE medium:** LEGO + 4-6 syllables - bridge to production (standalone-sayable)
 3. **USE long:** LEGO + 7-10 syllables - natural, fluent production
 
 Without MEDIUM phrases, learners jump from short fragments to long sentences - a cognitive cliff. The medium phrases are the bridge.
 
 These are the "eternal" phrases that come back throughout the course. Quality matters more than quantity.
 
-> ⚠️ **CRITICAL**: Even with limited vocabulary in early seeds, a USE phrase must be a complete sentence. If you can't form enough complete sentences with available vocabulary, **reduce the USE count** rather than submitting fragments. "想说。" or "Speak." is NEVER acceptable as a USE phrase.
+> ⚠️ **CRITICAL**: a USE phrase is met cold, out of context, for the rest of the learner's life in the course — so it must be **standalone-sayable**: clear on its own, unambiguous for the remainder of the course, and long enough to be worth saying. **It does not have to be a grammatically complete sentence** — people say incomplete things — but "想说。" or "Speak." fails the standalone test and is not a USE phrase. If the available vocabulary yields nothing that passes, **reduce the USE count** rather than padding. *(Kai's ruling, 2026-08-17, replacing the earlier absolute "USE must always be a complete sentence".)*
 
 ```
 USE examples for "after you finish" → "despues de que termines":
@@ -278,8 +280,8 @@ USE examples for "after you finish" → "despues de que termines":
 | Role | Syllables | Complete Sentence? | Reused? | Eternal? |
 |------|-----------|-------------------|---------|----------|
 | BUILD | LEGO + 1-3 | No (fragments OK) | No (debut only) | No |
-| USE (medium) | LEGO + 4-6 | Yes (required) | Yes (consolidate, review) | Yes |
-| USE (long) | LEGO + 7-10 | Yes (required) | Yes (consolidate, review) | Yes |
+| USE (medium) | LEGO + 4-6 | Preferred, not required — must be standalone-sayable | Yes (consolidate, review) | Yes |
+| USE (long) | LEGO + 7-10 | Preferred, not required — must be standalone-sayable | Yes (consolidate, review) | Yes |
 
 **Key principle:** Syllable count is the proxy for cognitive load. The progression SHORT → MEDIUM → LONG creates a smooth ramp, not a cliff.
 
@@ -701,7 +703,7 @@ Error: "Vocabulary violation: '내일' not yet introduced"
 Action: Remove phrase using '내일' or reorder LEGOs
 
 Error: "USE phrases need minimum 5, got 3"
-Action: Add more complete sentences
+Action: Add more USE phrases — natural and standalone-sayable, full sentences preferred
 
 Error: "BUILD phrase 'I want' missing LEGO target '하고 싶어요'"
 Action: Ensure phrase contains exact LEGO target text
@@ -892,7 +894,7 @@ A LEGO caps at **13** phrases total (`MAX_PHRASES_PER_LEGO`). These are *minimum
 2. **Overlapping LEGOs enable inference** - word alone, then word inside phrase
 3. **Grammar is inferred** - from contrast, never explained
 4. **BUILD plugs the new LEGO into prior vocabulary** - fragments OK, shows connections
-5. **USE produces naturally** - complete sentences, eternal-eligible
+5. **USE produces naturally** - standalone-sayable phrases (full sentences preferred, not required), eternal-eligible
 6. **Errors are information** - they tell you exactly what to fix
 7. **The database is truth** - query it to see your progress
 
@@ -906,15 +908,16 @@ A LEGO caps at **13** phrases total (`MAX_PHRASES_PER_LEGO`). These are *minimum
 
 This section captures hard-won insights from QA checkpoints and production issues. **Read before each build.**
 
-### 2026-01-26: USE Phrases Must Be Complete Sentences
+### 2026-01-26: USE Phrases Must Stand On Their Own — *superseded in part, 2026-08-17*
 
-**Issue:** QA found USE phrases like "想说。" (2 chars) and "Speak." scoring 5 - these are fragments, not sentences.
+**Issue:** QA found USE phrases like "想说。" (2 chars) and "Speak." scoring 5 - too thin to be met cold.
 
-**Root Cause:** Early seed vocabulary constraints led to accepting incomplete phrases rather than reducing count.
+**Root Cause:** Early seed vocabulary constraints led to accepting throwaway phrases rather than reducing count.
 
-**Fix:**
-- USE phrases must ALWAYS be complete sentences regardless of seed position
-- If vocabulary limits prevent complete sentences, reduce USE count
+**Fix (as ruled by Kai, 2026-08-17 — this supersedes the original "always a complete sentence" wording):**
+- A USE phrase must be **standalone-sayable**: something you could say on its own in a conversation, clear, and unambiguous for the **remainder** of the course
+- A **full sentence is preferred but is NOT a hard rule** — people say incomplete things; a non-full USE needs more careful checking, not prohibition
+- If vocabulary limits yield nothing that passes the standalone test, reduce the USE count
 - Minimum practical lengths: Chinese 4+ chars, other languages 3+ words
 - Score 4 or below = rewrite, don't submit
 

@@ -10,7 +10,7 @@ This is a LEGO-based language learning system:
 |------|-------------|-----------|
 | `component` | Building blocks (e.g., "de" → "to") | **SKIP** - intentionally partial |
 | `practice` | Intermediate build-up phrases | **SKIP** unless obvious typo |
-| `use` | Complete sentences learners produce | **CHECK AND FLAG** |
+| `use` | The phrases learners produce — usually full sentences, legitimately shorter when standalone-sayable (Kai, 2026-08-17) | **CHECK AND FLAG** — but never flag one merely for not being a full sentence |
 
 **Only flag issues in USE phrases.** Components are building blocks that combine to form sentences - they're not meant to be standalone translations.
 

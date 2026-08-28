@@ -214,4 +214,4 @@ Before completing Pass 1, verify:
 
 **You're not translating for native speakers.** You're creating a learning system where English speakers can confidently produce target language because every pattern is predictable.
 
-Native speakers might say "that sounds a bit stiff" - that's okay. Learners need consistency more than they need native-level variety. Variation can come later (seeds 200+) once automaticity is established.
+Learners need consistency more than they need native-level variety, and variation can come later (seeds 200+) once automaticity is established. **But consistency is not a licence for stiff text, and never on the known side.** Kai ruled on 2026-08-06: grammatical correctness is a HARD constraint and naturalness near-hard — "it shouldn't sound very weird, especially when English is the target language… sometimes we might need to pick something slightly suboptimal for ZUT reasons, but usually that's not necessary." A stilted line accepted for ZUT reasons is a rare exception you justify case by case, not the default.

@@ -26,7 +26,9 @@ const METHODOLOGY_HINTS = {
    - Quantity depends on LEGO complexity
 
    USE: minimum 5 per LEGO (LEGO + 5-10 syllables)
-   - Complete sentences ONLY
+   - Full sentences preferred, NOT required — a shorter USE passes if it is clear,
+     unambiguous for the rest of the course, longish, and standalone-sayable
+     (Kai's ruling, 2026-08-17)
    - Reused in consolidate/review phases
    - ALL are eternal-eligible (go into spaced repetition)
 
@@ -42,7 +44,10 @@ const METHODOLOGY_HINTS = {
 
    USE phrases (minimum 5):
    - Natural production, put the LEGO "out"
-   - MUST be complete sentences (subject + verb)
+   - Full sentences preferred, NOT a hard rule: a shorter USE passes if it is clear,
+     unambiguous for the REMAINDER of the course, longish, and something you could
+     say on its own in a conversation (Kai's ruling, 2026-08-17). Non-full USE phrases
+     need more careful checking, not prohibition
    - LEGO + 5-10 syllables
    - ALL eternal-eligible (go into spaced repetition)
    - Reused in consolidate/review phases

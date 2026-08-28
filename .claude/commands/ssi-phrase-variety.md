@@ -22,7 +22,7 @@ How to ensure balanced vocabulary practice across all LEGOs.
 **Why MEDIUM matters:**
 - Learners need gradual complexity increases
 - Jumping SHORT→LONG feels jarring and demotivating
-- MEDIUM phrases reinforce the LEGO before full sentences
+- MEDIUM phrases reinforce the LEGO before the longest phrases
 
 **Distribution targets (seeds 6+):**
 - **BUILD phrases**: Flexible count - whatever is needed to teach the LEGO

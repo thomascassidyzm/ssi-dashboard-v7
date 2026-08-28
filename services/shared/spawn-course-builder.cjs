@@ -38,7 +38,7 @@ function generateGoldenExamplesSection(goldenDecompositions) {
 
 **BUILD phrases** = new LEGO + previously introduced LEGOs. Shows how the new piece "plugs in" to what the learner already knows. Fragments OK. NOT the LEGO by itself, NOT component build-up.
 
-**USE phrases** = complete sentences for eternal spaced repetition. Must be natural things a learner would say.
+**USE phrases** = the phrases that go into eternal spaced repetition. Must be natural things a learner would say. Full sentences are PREFERRED but not required (Kai, 2026-08-17) — a shorter phrase passes if it is clear, unambiguous for the rest of the course, longish, and something you could say on its own in a conversation.
 
 **LEGO form is FIXED** — never conjugate or inflect a LEGO. Choose phrases where the exact LEGO form works naturally.
 
@@ -383,8 +383,8 @@ Use your linguistic expertise to:
 - Used ONCE at debut, never revisited
 - Flexible count (more when vocab is rich, fewer when sparse)
 
-**USE phrases** — complete sentences the learner will practise for weeks:
-- Must be **complete, natural sentences** a learner would actually say
+**USE phrases** — the phrases the learner will practise for weeks:
+- Must be **natural** and something a learner would actually say. Full sentences are **preferred, not required** (Kai's ruling, 2026-08-17): the test is "something you could say on its own in a conversation", clear and unambiguous for the REMAINDER of the course. A non-full phrase needs more careful checking, not prohibition
 - Go into eternal spaced repetition
 - Aim for ~12 per LEGO (fewer for early seeds when vocab is sparse)
 - Start with shorter, simpler phrases and build up to longer, more complex ones
@@ -409,7 +409,7 @@ BUILD:
 - (nothing to combine with yet - first LEGO in the course)
 
 USE:
-- (no complete sentences possible yet)
+- (nothing standalone-sayable possible yet)
 
 ## L2 [A] "to speak" → "说"
 
@@ -417,7 +417,7 @@ BUILD:
 - I want to speak → 我想说               ← plugs into known L1 "我想"
 
 USE:
-- (not enough vocab for complete sentences yet)
+- (not enough vocab for a standalone-sayable phrase yet)
 
 ## L3 [A] "Chinese" → "中文"
 
@@ -426,7 +426,7 @@ BUILD:
 - I want to speak Chinese → 我想说中文     ← plugs into L1 + L2
 
 USE:
-- (not enough vocab for complete sentences yet)
+- (not enough vocab for a standalone-sayable phrase yet)
 
 ## L4 [M] "with you" → "和你"
 Components: with → 和, you → 你
@@ -733,7 +733,7 @@ This is a LEGO-based language learning system where phrases are built from compo
 
 - **component** phrases: Building blocks (e.g., "de" for "to", "essaie" for "am trying") - these combine with other LEGOs to form sentences. **DO NOT FLAG THESE** - they are intentionally partial.
 - **practice** phrases: Intermediate build-up steps - may be fragments. **DO NOT FLAG THESE** unless there's a clear typo.
-- **USE** phrases: Complete sentences learners will produce. **FLAG ISSUES IN THESE ONLY**.
+- **USE** phrases: the phrases learners will produce, usually full sentences but legitimately shorter when standalone-sayable. **FLAG ISSUES IN THESE ONLY** — and do not flag one merely for being short.
 
 Examples of VALID component mappings (DO NOT FLAG):
 - "de" → "to" (used in "essayer de" = "try to")
@@ -941,7 +941,7 @@ This is a LEGO-based language learning system where phrases are built from compo
 
 - **component** phrases: Building blocks (e.g., "de" for "to") - these combine with other LEGOs. **DO NOT FLAG THESE** - they are intentionally partial.
 - **practice** phrases: Intermediate build-up steps - may be fragments. **DO NOT FLAG THESE** unless there's a clear typo.
-- **USE** phrases: Complete sentences learners will produce. **FLAG ISSUES IN THESE ONLY**.
+- **USE** phrases: the phrases learners will produce, usually full sentences but legitimately shorter when standalone-sayable. **FLAG ISSUES IN THESE ONLY** — and do not flag one merely for being short.
 
 ---
 
