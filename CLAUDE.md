@@ -40,6 +40,12 @@ You are applying the SaySomethingin method — the thing every phrase a learner 
 - **Never use the Anthropic SDK directly.** All LLM calls go through the Claude CLI (`claude --print`), never `@anthropic-ai/sdk`. The `ANTHROPIC_API_KEY` in `.env` is for the dashboard's env-switcher, not service code. (A past SDK module silently billed ~$38/day.) Pattern: `gender-prep-coordinator.cjs`; unset `CLAUDECODE` when spawning nested CLI calls.
 - **Otherwise act autonomously** when docs are clear, the action is reversible, and there's no cost surprise.
 
+### Standing preferences (guidance, NOT enforced in code)
+
+- **Voice config per course is the course builder's case-by-case call — Kai's, or whoever is building it.** Not a central policy, not an estate sweep. Tom's ruling, 2026-08-28, closing the TTS coverage-gap thread (`docs/tts-language-coverage-gap-map-2026-08-27.md`): *"We will in general allow Kai or whoever, to choose the voice configs for each course on a case by case basis. We don't need to redo anything necessarily."*
+- **Prefer Cartesia over Azure where a Cartesia voice exists for the language.** Tom, same ruling: *"I think Azure voices should generally NOT be used for any courses that have Cartesia voices. But we can leave that flexible."* That second sentence is load-bearing. This is a **preference, not a rule**: nothing in the code enforces it, and nothing should — no validator, no lint, no config gate, no CI check, no warning. A preference that gets enforced stops being a preference. Read it, weigh it, and use your judgement per course. Provider ladder as built: `docs/tts-provider-policy-2026-08-28.md`.
+- Nothing already rendered is being redone because of this. The coverage-gap thread is closed.
+
 ### Branch hygiene
 - **Everything on Popty goes to `main`. Branches are transient** (Tom's ruling, 2026-08-05). Finishing a piece of work means landing it on `main` and pushing — merging your own branch is part of the job, not a decision to escalate. Don't leave work parked on a branch and report it as a gap. This is also what makes deployment work at all: the machines' Deploy button runs `git pull` on their checkout, so anything not on `main` reaches no machine.
 - `claude/*` branches **auto-merge wholesale to `main`** (`.github/workflows/auto-merge-claude.yml`). **Never** commit your work onto someone else's `claude/*` branch — it sweeps their whole branch to main. Stage your work on your own `docs/…`/`fix/…`/`feat/…` or `claude/*` branch.

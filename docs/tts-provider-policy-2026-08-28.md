@@ -42,6 +42,24 @@ Your clone is registered `autoCast: false` on purpose: pointing your voice at ev
 
 ---
 
+## Tom's ruling, 2026-08-28 — a preference, deliberately not a rule
+
+Replying on the gap map, Tom closed the coverage thread:
+
+> "We will in general allow Kai or whoever, to choose the voice configs for each course on a case by case basis. We don't need to redo anything necessarily. I think Azure voices should generally NOT be used for any courses that have Cartesia voices.
+>
+> But we can leave that flexible."
+
+Three things follow, and only three:
+
+1. **Voice config per course is the course builder's call, case by case.** Kai, or whoever is building. Not a central policy and not an estate sweep.
+2. **Prefer Cartesia over Azure where a Cartesia voice exists for that language** — guidance for the human or agent making the casting decision.
+3. **Nothing gets re-rendered.** No remediation programme; the gap map is research, not a work queue.
+
+"But we can leave that flexible" is load-bearing. **This preference is not enforced anywhere in code and must not be** — no validator, no lint, no config gate, no CI check, no warning. The ladder in this document is unchanged by the ruling: Cartesia is already the standing default where a Cartesia voice resolves, and casting (§3 below) is still what actually gates that. Also recorded in `CLAUDE.md` under *Standing preferences*.
+
+---
+
 ## The honest gap — what a coverage-driven fallback needs that does not exist
 
 Written as findings, not as a wish list. Each one is either confirmed or explicitly unverified.
