@@ -1,6 +1,10 @@
-# Why the API clips don't sound like your dashboard ones — listen and decide
+# Why the API clips don't sound like your dashboard ones — CLOSED
 
-**2026-08-27.** Four Pod 1 English lines, eleven ways of asking Cartesia for them. Your ear picks the winner.
+> **CLOSED 2026-08-27. Do not act on this, and do not re-open it.** The question this document asked is answered and overtaken: **`sonic-3.6` is already in the production pipeline**, the 91 Spanish-pod English clips have been re-rendered on it and are live, and Tom has listened and rates it. **No comparison is needed, no pick is coming, and nothing further should be rendered against this.**
+>
+> The diagnosis below turned out to be right — the gap was the model version — so it is kept as the record of how it was found and what was measured. The listening grid is left in place as evidence, **not as a decision waiting on anyone.**
+
+**2026-08-27.** Four Pod 1 English lines, eleven ways of asking Cartesia for them. Written before the question closed.
 
 ## First, the honest gap
 
