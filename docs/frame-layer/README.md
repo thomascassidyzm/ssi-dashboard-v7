@@ -31,6 +31,6 @@ node tools/frame-layer/derive-and-baskets.test.cjs                  # self-test,
 node tools/frame-layer/generate-candidates.cjs spa_for_eng 599 --passes 3
 ```
 
-Everything here is **read-only against production content**. No tool in this directory writes to `course_seeds`, `course_legos`, `course_practice_phrases` or `course_audio`. The generator writes candidate JSON under `labs/seed-lab/candidates/` and nowhere else, and calls the Claude CLI, never the Anthropic SDK.
+Everything here is **read-only against production content**. No tool in this directory writes to `course_seeds`, `course_legos`, `course_practice_phrases` or `course_audio`. The generator writes candidate JSON under `labs/basket-lab/candidates/` and nowhere else, and calls the Claude CLI, never the Anthropic SDK.
 
 **Seeds are immutable.** "Seed replacement" throughout means replacing the LEGOs and phrases *under* a seed, never the seed's own known or target text.

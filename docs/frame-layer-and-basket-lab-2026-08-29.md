@@ -1,4 +1,4 @@
-# The frame layer, persisted — and the seed lab
+# The frame layer, persisted — and the basket lab
 
 **The lab is open: <https://watson-1.tail4968cb.ts.net:8461/lab>** (tailnet only, so your phone needs to be on the tailnet). It opens on Spanish seed 600. Your verdicts read back at <https://watson-1.tail4968cb.ts.net:8461/lab/verdicts>.
 
