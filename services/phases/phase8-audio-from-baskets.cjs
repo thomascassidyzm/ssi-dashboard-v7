@@ -346,7 +346,11 @@ app.post('/generate', async (req, res) => {
  * Process a single audio sample
  */
 async function processSingleSample(spec, courseCode, azureTTS, s3Service) {
-  const speed = spec.cadence === 'slow' ? 0.8 : 1.0;
+  // ONE CANONICAL RENDERED PACE (Tom's ruling, 2026-08-29): "playback speed is
+  // a player concern, not a baked-in render concern". A 'slow' cadence used to
+  // bake 0.8x into the MP3, which is exactly what made the same sentence need a
+  // second clip for a second role. The player slows it now; the render does not.
+  const speed = 1.0;
 
   // Strip provider prefix from voice ID (e.g., azure_es-ES-TrianaNeural -> es-ES-TrianaNeural)
   const azureVoiceName = spec.voiceId.replace(/^azure_/, '');

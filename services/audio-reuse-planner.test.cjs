@@ -492,26 +492,32 @@ describe('role-agnostic, direction-agnostic reuse (Tom: voice x text x language,
     expect(d.source.role).toBe('target2')
   })
 
-  it('still refuses to cross a role on an AZURE source — speed is baked into the mp3', () => {
+  // FLIPPED DELIBERATELY, 2026-08-29. This test asserted the baked-speed guard,
+  // which Tom retired: "playback speed is a player concern, not a baked-in
+  // render concern … stop treating rendered pace as a reason for distinct
+  // clips." New renders are at one canonical pace, so an Azure source is now
+  // borrowable across roles like any other. See isSpeedTrustedVoice for what
+  // this costs on clips already in the estate, and Tom's waiver of that cost.
+  it('now CROSSES a role on an Azure source — the baked-speed guard is retired', () => {
     const d = decideClip(
       clip({ role: 'known', voiceId: 'azure_en-GB-SoniaNeural' }),
       [row({ role: 'target2', voice_id: 'azure_en-GB-SoniaNeural' })],
       opts()
     )
-    expect(d.decision).toBe('RENDER')
-    expect(d.reason).toMatch(/baked-speed/)
+    expect(d.decision).toBe('REUSE_CROSS')
+    expect(d.source.role).toBe('target2')
   })
 
-  it('the baked-speed guard is Azure-shaped, not prefix-shaped', () => {
-    // A BARE legacy id must not be treated as Azure — the estate's bare ids
-    // include Tom's own xAI clone, and failing closed on them suppressed
-    // exactly the voice the widening exists to surface.
+  it('the baked-speed guard is retired — every voice crosses roles now', () => {
+    // Was: Azure-shaped ids answered false because their pace was unverifiable.
+    // Tom retired the distinction on 2026-08-29 along with the cadence
+    // multiplier that created it; the function is kept as a constant so the
+    // six call sites keep a written record of the rule that used to be here.
     expect(planner.isSpeedTrustedVoice('gfzdpspr5fdp')).toBe(true)
     expect(planner.isSpeedTrustedVoice('eve')).toBe(true)
-    expect(planner.isSpeedTrustedVoice('xai_eve')).toBe(true)
-    expect(planner.isSpeedTrustedVoice('azure_en-GB-SoniaNeural')).toBe(false)
-    expect(planner.isSpeedTrustedVoice('en-GB-SoniaNeural')).toBe(false)
-    expect(planner.isSpeedTrustedVoice('fr-CA-SylvieNeural')).toBe(false)
+    expect(planner.isSpeedTrustedVoice('azure_en-GB-SoniaNeural')).toBe(true)
+    expect(planner.isSpeedTrustedVoice('en-GB-SoniaNeural')).toBe(true)
+    expect(planner.isSpeedTrustedVoice('fr-CA-SylvieNeural')).toBe(true)
   })
 
   it('crossRole:false restores strict same-role matching', () => {

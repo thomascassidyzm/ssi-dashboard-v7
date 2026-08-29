@@ -524,18 +524,35 @@ async function updateVoiceRole(courseCode, role, voiceSettings) {
 }
 
 /**
- * Get effective speed for a voice considering cadence
+ * The speed a voice renders at.
+ *
+ * ── ONE CANONICAL RENDERED PACE (Tom's ruling, 2026-08-29) ──────────────────
+ * "Playback speed is a player concern, not a baked-in render concern — the
+ * same clip plays faster when used as the known language and slower as the
+ * target, so stop treating rendered pace as a reason for distinct clips."
+ *
+ * So the CADENCE multiplier is retired: it is the per-role, per-context pace
+ * that used to be baked into the MP3, and baking it is what made one sentence
+ * need two clips. Everything downstream still receives a `cadence` and a
+ * `cadenceProfiles` — the plumbing is intact, and the profiles still carry
+ * `pauseMs`, which is a real timing decision this ruling does not touch — but
+ * the multiplier now resolves to 1.0 and no longer reaches the vendor.
+ *
+ * The per-VOICE base speed STAYS. That is a different thing: a correction for
+ * a voice's own natural pace, so that two voices sound like they are speaking
+ * at the same rate. It is a property of the voice, not of the role the clip
+ * happens to be playing in, and the ruling is about the latter.
  *
  * @param {object} voiceConfig - Voice configuration for a role
- * @param {string} cadence - 'natural' | 'slow' | 'fast'
- * @param {object} cadenceProfiles - Cadence profile definitions
+ * @param {string} cadence - 'natural' | 'slow' | 'fast' (accepted, no longer scaling)
+ * @param {object} cadenceProfiles - Cadence profile definitions (pauseMs still used elsewhere)
  * @returns {number} Effective speed multiplier
  */
 function getEffectiveSpeed(voiceConfig, cadence, cadenceProfiles) {
   const baseSpeed = voiceConfig.settings?.speed || 1.0;
-  const cadenceMultiplier = cadenceProfiles[cadence]?.speedMultiplier || 1.0;
+  const CADENCE_MULTIPLIER_RETIRED = 1.0;
 
-  return baseSpeed * cadenceMultiplier;
+  return baseSpeed * CADENCE_MULTIPLIER_RETIRED;
 }
 
 /**

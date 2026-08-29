@@ -128,8 +128,8 @@ const {
   tryCanonicalVoiceId,
   PROVIDER_ALIASES,
 } = require('../shared/clip-identity.cjs')
-// The Azure baked-speed guard that makes role-agnostic reuse safe. Defined once,
-// in the planner that already carries Tom's 2026-08-07 reuse key, so the per-clip
+// The Azure baked-speed guard, RETIRED 2026-08-29 by Tom's one-canonical-pace
+// ruling and now a constant. Still imported from the planner so the per-clip
 // lookup below and the batch planner can never drift apart on it.
 const { isSpeedTrustedVoice } = require('../audio-reuse-planner.cjs')
 
@@ -498,14 +498,15 @@ async function humanRowAtAudioKey(courseCode, textNormalized, language, role, vo
  * as target2 in eng_for_hin IS coverage for the English known side of
  * fra_for_eng — and brings this per-clip lookup into line with that planner.
  *
- * The ONE exception is physical, not editorial, and is the planner's guard
- * verbatim: Azure BAKES the configured `speed` into the stored MP3 and
- * course_audio persists no per-row speed, so an Azure clip's pace cannot be
- * verified after the fact and crossing roles on one could import a 0.85x render
- * into a 1.0x slot. xAI and ElevenLabs expose no working speed parameter, so
- * every clip on them is 1x and role-crossing is free. Hence isSpeedTrustedVoice
- * (engine-shaped, not role-shaped). Same-role matches are never subject to it —
- * that is today's behaviour and it is unchanged.
+ * There USED TO BE one exception, physical rather than editorial: Azure bakes
+ * the configured `speed` into the stored MP3 and course_audio persists no
+ * per-row speed, so an Azure clip's pace could not be verified after the fact.
+ * Tom retired it on 2026-08-29 — "playback speed is a player concern, not a
+ * baked-in render concern … stop treating rendered pace as a reason for
+ * distinct clips" — and with the cadence multiplier gone from
+ * getEffectiveSpeed, every new render is at one pace and the exception has
+ * nothing left to describe. isSpeedTrustedVoice is kept as a constant carrying
+ * that record; see services/audio-reuse-planner.cjs.
  *
  * Same-role rows are preferred over cross-role ones when both exist, so the
  * widening can only ever ADD a hit, never redirect an existing one.

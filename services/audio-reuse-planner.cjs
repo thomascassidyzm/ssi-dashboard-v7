@@ -211,29 +211,42 @@ function voiceLabel(voiceId) {
 // (implementation: services/shared/relink-voice-guard.cjs)
 
 /**
- * Can this voice's clips be trusted to be at natural (1x) pace, so a clip may
- * be borrowed into a slot with a different role?
+ * Can this voice's clips be borrowed into a slot with a different role?
  *
- * xAI exposes no speed parameter at all, and ElevenLabs destructures `speed`
- * but never sends it — every clip on either is 1x. Azure BAKES the configured
- * rate into the SSML and therefore into the stored MP3, and course_audio keeps
- * no per-row speed, so an Azure clip's pace is unverifiable after the fact.
- * (Verified in services/shared/clone-copy-match.cjs against tts-service.cjs.)
- * Unknown/legacy voice ids are untrusted — the safe default.
+ * ── RETIRED, 2026-08-29, BY TOM'S RULING ───────────────────────────────────
+ * "Playback speed is a player concern, not a baked-in render concern — the
+ * same clip plays faster when used as the known language and slower as the
+ * target, so stop treating rendered pace as a reason for distinct clips."
+ *
+ * This guard was the last place in the estate where rendered pace WAS a reason
+ * for distinct clips. Its reasoning was sound and is now obsolete rather than
+ * wrong, so it is recorded rather than deleted:
+ *
+ *   xAI exposes no speed parameter and ElevenLabs never sends one, so every
+ *   clip on either is 1x. Azure BAKES the configured rate into the SSML and
+ *   so into the stored MP3, and course_audio persists no per-row speed — an
+ *   Azure clip's pace could not be verified after the fact, so crossing roles
+ *   on one might import a 0.85x render into a 1.0x slot. Unknown ids were
+ *   untrusted as the safe default.
+ *
+ * What changes in practice: from 2026-08-29 every new render is at one
+ * canonical pace (getEffectiveSpeed in services/voice-config-service.cjs no
+ * longer applies a cadence multiplier), so for anything rendered from now on
+ * the distinction this guarded does not exist. For clips ALREADY in the estate
+ * it does: an old Azure clip rendered at a 0.8x 'slow' cadence can now be
+ * borrowed into a role it would previously have been re-rendered for, and will
+ * play at its baked 0.8x until it is next re-rendered. Tom waived that
+ * explicitly on 2026-08-29: "I don't care if anything notionally breaks,
+ * because these courses are already made — it's only going to affect
+ * regeneration, or replacement."
+ *
+ * The function survives, always answering true, because six call sites read it
+ * and a constant with this note attached is a better record of a retired rule
+ * than six deletions and no explanation. There is nothing to put a per-row
+ * speed in: course_audio has no speed column, and inventing one is a migration
+ * this ruling does not need.
  */
 function isSpeedTrustedVoice(voiceId) {
-  if (!voiceId) return false
-  const id = String(voiceId)
-  // The guard is AZURE-SHAPED, not prefix-shaped. Testing for a known-good
-  // prefix instead would fail closed on every BARE legacy id — and the estate's
-  // bare ids include `gfzdpspr5fdp`, Tom's own xAI clone. Measured 2026-08-07:
-  // the prefix-shaped version suppressed the clone's cross-role coverage
-  // entirely, which is precisely the distortion the role-agnostic widening
-  // exists to remove. So: untrusted iff it names an Azure voice.
-  if (/^azure_/i.test(id)) return false
-  // Azure ids are the only ones shaped `xx-YY-NameNeural`, with or without the
-  // provider prefix — that shape is how a bare Azure row is recognised.
-  if (/^[a-z]{2,3}(-[A-Za-z]+)?-[A-Z]{2}-/.test(id) || /Neural$/i.test(id)) return false
   return true
 }
 
