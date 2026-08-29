@@ -9509,6 +9509,27 @@ app.get('/api/courses/:courseCode/voice-config', async (req, res) => {
   }
 });
 
+// GET /api/courses/:courseCode/voice-config/resolved — what a render will use,
+// and WHERE each role's voice came from.
+//
+// The editor route above deliberately returns the STORED row, because that is
+// what the screen must save back. But a screen showing only the stored row
+// cannot tell a human that the language cast has since overruled it, which is
+// exactly the gap Tom named on 2026-08-29: a cast made in the Voice Lab was
+// not what the Phase 8 screen showed. This route is the screen's second read —
+// the resolution plus its reasoning — and the reasoning comes from the one
+// reader, never re-derived in the browser.
+app.get('/api/courses/:courseCode/voice-config/resolved', async (req, res) => {
+  const { courseCode } = req.params
+  try {
+    const explained = await voiceConfigService.explainVoiceConfig(courseCode)
+    res.json({ success: true, ...explained })
+  } catch (error) {
+    console.error(`[VoiceConfig] Error resolving config for ${courseCode}:`, error)
+    res.status(500).json({ success: false, error: error.message })
+  }
+})
+
 /**
  * PUT /api/courses/:courseCode/voice-config
  * Save voice configuration for a course
