@@ -106,6 +106,15 @@ export const api = {
       { method: 'DELETE' }
     ),
 
+  // PER-VOICE NATURAL PACE. `pace` is the reading surface — measured from clips
+  // that already exist, so it spends nothing. `nudgePace` writes ONE column:
+  // the human's correction. The measurement itself is deliberately not
+  // writable from a screen (Tom's ruling, 2026-08-29: pace is measured from
+  // rendered audio, never asked of a human).
+  pace: () => call('/api/voicelab/pace'),
+  nudgePace: (voiceId, { nudge, note = null }) =>
+    call(`/api/voicelab/voices/${encodeURIComponent(voiceId)}/pace`, { method: 'PUT', body: { nudge, note } }),
+
   // Cloning uploads one sample and returns a voice id. It RENDERS NOTHING and
   // cannot trigger a bulk run — hearing the clone is a separate, capped
   // audition through the ordinary render path.

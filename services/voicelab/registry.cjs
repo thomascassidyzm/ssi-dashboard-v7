@@ -61,6 +61,7 @@
  * and survives this rework untouched.
  */
 
+const { effectivePaceRatio } = require('../shared/voice-pace.cjs')
 const policy = require('../shared/tts-provider-policy.cjs')
 const { isHumanVoiceLang } = require('../shared/human-voice-courses.cjs')
 const { tryCanonicalVoiceId, PROVIDER_ALIASES } = require('../shared/clip-identity.cjs')
@@ -99,6 +100,33 @@ function rankName (rank) {
  * @param {object} db   a Supabase client (services/supabase-client.cjs getClient())
  * @returns {Promise<{languages: object[], summary: object, notes: object}>}
  */
+/**
+ * The pace facts about a cast voice, for the screen.
+ *
+ * Tom, 2026-08-29: "maybe we have settings in the voice lab that should/could
+ * be then read by the player?" This is that reading surface. `effective` is the
+ * one number anything downstream should use — the measurement times the human's
+ * nudge — and it is null, never 1.0, for a voice nobody has measured, because
+ * "typical for its language" and "we have not looked" are different claims that
+ * happen to share a digit.
+ */
+function paceOf (voice) {
+  if (!voice) return null
+  const ratio = voice.natural_pace_ratio === null || voice.natural_pace_ratio === undefined
+    ? null : Number(voice.natural_pace_ratio)
+  const nudge = voice.natural_pace_nudge === null || voice.natural_pace_nudge === undefined
+    ? null : Number(voice.natural_pace_nudge)
+  return {
+    ratio,
+    nudge,
+    effective: effectivePaceRatio(voice),
+    cps: voice.natural_pace_cps === null || voice.natural_pace_cps === undefined ? null : Number(voice.natural_pace_cps),
+    samples: voice.natural_pace_samples ?? null,
+    measuredAt: voice.natural_pace_measured_at || null,
+    nudgeNote: voice.natural_pace_nudge_note || null,
+  }
+}
+
 async function build (db, opts = {}) {
   // Cartesia's live catalogue, keyed by two-letter code (params.cjs fetches it).
   // Merged in as UNREGISTERED candidates so a language with no Cartesia voice in
@@ -108,7 +136,7 @@ async function build (db, opts = {}) {
   const catalogue = opts.cartesiaCatalogue || {}
   const [courses, voices, roles, guideInUse] = await Promise.all([
     all(db, 'courses', 'course_code, target_lang, known_lang, status, voice_config'),
-    all(db, 'voices', 'voice_id, type, tts_engine, display_name, human_name, languages, gender, is_active, notes'),
+    all(db, 'voices', 'voice_id, type, tts_engine, display_name, human_name, languages, gender, is_active, notes, natural_pace_ratio, natural_pace_cps, natural_pace_samples, natural_pace_measured_at, natural_pace_nudge, natural_pace_nudge_note'),
     all(db, 'voice_language_roles', 'language, gender, rank, voice_id, notes, assigned_by, slot'),
     // Who ACTUALLY speaks the instructions today, per known language. About a
     // dozen rows: the GROUP BY is the view's, not this module's, because doing
@@ -324,6 +352,7 @@ function describeLanguage ({ code, langCourses, roles, voiceById, voices, catalo
         voiceName: voice ? (voice.display_name || voice.human_name || voice.voice_id) : null,
         kind: voice ? voiceKind(voice) : null,
         engine: voice ? (voice.tts_engine || null) : null,
+        pace: paceOf(voice),
         notes: role ? role.notes : null,
         assignedBy: role ? role.assigned_by : null,
       })
@@ -360,6 +389,7 @@ function describeLanguage ({ code, langCourses, roles, voiceById, voices, catalo
       kind: voice ? voiceKind(voice) : null,
       engine: voice ? (voice.tts_engine || null) : null,
       gender: role ? role.gender : null,
+      pace: paceOf(voice),
       notes: role ? role.notes : null,
       assignedBy: role ? role.assigned_by : null,
     })
@@ -714,4 +744,4 @@ async function all (db, table, columns) {
 /** The casting slots this registry knows about. 'phrase' is the default in the DB. */
 const SLOTS = Object.freeze(['phrase', 'guide'])
 
-module.exports = { build, describeLanguage, providerOfRole, providersInUse, statusFor, rankName, sameLang, voiceKind, castable, cartesiaCandidates, guideCandidates, guideVoicesInUse, REQUIRED_RANKS, COMPLETE_RANKS, GENDERS, SLOTS }
+module.exports = { build, paceOf, describeLanguage, providerOfRole, providersInUse, statusFor, rankName, sameLang, voiceKind, castable, cartesiaCandidates, guideCandidates, guideVoicesInUse, REQUIRED_RANKS, COMPLETE_RANKS, GENDERS, SLOTS }

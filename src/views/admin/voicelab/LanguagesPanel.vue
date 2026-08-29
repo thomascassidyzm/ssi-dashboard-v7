@@ -254,6 +254,41 @@ async function cast (lang, slot, voiceId) {
   busy.value = ''
 }
 
+/**
+ * The human's pace correction. Writes ONE column and nothing else — never the
+ * measurement, which is Tom's ruling: pace is measured from rendered audio, not
+ * asked of a human. Blank clears the nudge and leaves the measurement standing.
+ */
+async function nudge (lang, slot, raw) {
+  const value = String(raw).trim() === '' ? null : Number(raw)
+  busy.value = slotKey(lang, slot)
+  try {
+    await api.nudgePace(slot.voiceId, { nudge: value })
+    await load()
+  } catch (e) { error.value = e.message }
+  busy.value = ''
+}
+
+/**
+ * Colour by how far this voice sits from typical for its language. Deliberately
+ * three buckets and not a gradient: the question a reader has is "is this one
+ * unusual?", not "by exactly how much?" — the number beside it answers that.
+ */
+function paceClass (effective) {
+  if (effective >= 1.15) return 'vl-pace-fast'
+  if (effective <= 0.87) return 'vl-pace-slow'
+  return 'vl-pace-typical'
+}
+
+function paceTitle (pace) {
+  const parts = [`${pace.effective.toFixed(3)}x the median pace of this language's voices`]
+  if (pace.nudge) parts.push(`measured ${Number(pace.ratio).toFixed(3)}x, your nudge x${Number(pace.nudge).toFixed(2)}`)
+  else parts.push(`measured ${Number(pace.ratio).toFixed(3)}x, no nudge`)
+  if (pace.samples) parts.push(`from ${pace.samples.toLocaleString()} clips`)
+  if (pace.cps) parts.push(`${Number(pace.cps).toFixed(1)} chars/sec`)
+  return parts.join(' · ')
+}
+
 async function clear (lang, slot) {
   busy.value = slotKey(lang, slot)
   try {
@@ -446,6 +481,29 @@ function candidatesFor (lang, slot) {
                       <span class="vl-voice">{{ slot.voiceName }}</span>
                       <span class="vl-kind">{{ slot.kind }}</span>
                       <span v-if="slot.active === false" class="ui-pill ui-hue-bad">voice inactive</span>
+                      <!-- PER-VOICE NATURAL PACE (Tom, 2026-08-29). The belt
+                           ramp multiplies, so 0.8x of a brisk voice and 0.8x of
+                           a measured one are nowhere near each other. This says
+                           how brisk THIS voice is relative to the other voices
+                           in its language, measured from clips already rendered
+                           at 1.0x — and lets an ear correct it. -->
+                      <span
+                        v-if="slot.pace && slot.pace.effective !== null"
+                        class="vl-pace"
+                        :class="paceClass(slot.pace.effective)"
+                        :title="paceTitle(slot.pace)"
+                      >{{ slot.pace.effective.toFixed(2) }}x pace</span>
+                      <span v-else-if="slot.filled" class="vl-pace vl-pace-unknown" title="No pace measured for this voice — it plays exactly as it does today.">pace unmeasured</span>
+                      <input
+                        v-if="slot.pace && slot.pace.ratio !== null"
+                        class="ui-input vl-nudge"
+                        type="number" step="0.01" min="0.5" max="2"
+                        :value="slot.pace.nudge ?? ''"
+                        placeholder="nudge"
+                        title="Your correction, multiplied on top of the measurement. Blank clears it. A re-measurement never overwrites this."
+                        :disabled="busy === slotKey(lang, slot)"
+                        @change="nudge(lang, slot, $event.target.value)"
+                      />
                       <button
                         class="ui-sort-btn"
                         :disabled="busy === slotKey(lang, slot)"
@@ -509,6 +567,29 @@ function candidatesFor (lang, slot) {
                       <span class="vl-voice">{{ slot.voiceName }}</span>
                       <span class="vl-kind">{{ slot.kind }}</span>
                       <span v-if="slot.active === false" class="ui-pill ui-hue-bad">voice inactive</span>
+                      <!-- PER-VOICE NATURAL PACE (Tom, 2026-08-29). The belt
+                           ramp multiplies, so 0.8x of a brisk voice and 0.8x of
+                           a measured one are nowhere near each other. This says
+                           how brisk THIS voice is relative to the other voices
+                           in its language, measured from clips already rendered
+                           at 1.0x — and lets an ear correct it. -->
+                      <span
+                        v-if="slot.pace && slot.pace.effective !== null"
+                        class="vl-pace"
+                        :class="paceClass(slot.pace.effective)"
+                        :title="paceTitle(slot.pace)"
+                      >{{ slot.pace.effective.toFixed(2) }}x pace</span>
+                      <span v-else-if="slot.filled" class="vl-pace vl-pace-unknown" title="No pace measured for this voice — it plays exactly as it does today.">pace unmeasured</span>
+                      <input
+                        v-if="slot.pace && slot.pace.ratio !== null"
+                        class="ui-input vl-nudge"
+                        type="number" step="0.01" min="0.5" max="2"
+                        :value="slot.pace.nudge ?? ''"
+                        placeholder="nudge"
+                        title="Your correction, multiplied on top of the measurement. Blank clears it. A re-measurement never overwrites this."
+                        :disabled="busy === slotKey(lang, slot)"
+                        @change="nudge(lang, slot, $event.target.value)"
+                      />
                       <button
                         class="ui-sort-btn"
                         :disabled="busy === slotKey(lang, slot)"
@@ -631,6 +712,12 @@ function candidatesFor (lang, slot) {
 .vl-guide-inuse { font-size: .8125rem; }
 .vl-guide-inuse .ui-pill { margin-right: .25rem; }
 .vl-slot-guide { border-style: dashed; }
+.vl-pace { font-size: .7rem; padding: .1rem .35rem; border-radius: 3px; white-space: nowrap; }
+.vl-pace-fast { background: rgba(124,92,255,.15); color: #7c5cff; }
+.vl-pace-slow { background: rgba(217,134,0,.15); color: #d98600; }
+.vl-pace-typical { background: rgba(122,134,153,.12); color: var(--faint); }
+.vl-pace-unknown { color: var(--faint); opacity: .6; }
+.vl-nudge { width: 4.5rem; font-size: .7rem; padding: .1rem .25rem; }
 .vl-slot-label { font-size: .75rem; text-transform: uppercase; letter-spacing: .05em; color: var(--faint); margin-bottom: .3rem; }
 .vl-slot-filled { display: flex; gap: .4rem; align-items: center; flex-wrap: wrap; }
 .vl-slot-empty { display: flex; gap: .4rem; align-items: center; flex-wrap: wrap; }
