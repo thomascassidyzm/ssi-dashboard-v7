@@ -23,16 +23,36 @@
  *   human     human-recorded only. NOT a gap: a human recording wins wherever
  *             it exists, so Welsh reads as human, never as a missing voice.
  *
+ * TWO PROVIDER COLUMNS, AND THEY ARE DIFFERENT QUESTIONS (Tom, 2026-08-29):
+ *   IN USE NOW      what the language's courses actually store in their own
+ *                   voice_config, counted in COURSES. This is the fact, and it
+ *                   is the reason the rework exists: xAI is being deprecated
+ *                   and 29 courses are on it today.
+ *   IF RE-RENDERED  what the provider policy would choose for a NEW render.
+ *                   Hypothetical, still useful, and it answers "azure" almost
+ *                   everywhere — which is why it used to be titled "default
+ *                   provider" and read as a claim about the estate that was
+ *                   simply untrue.
+ *
+ * EVERY LANGUAGE IS NAMED, not just coded. Tom: "I can't tell which language
+ * I'm looking at when I select it." Full name beside the code — both, because
+ * the code is what the rest of the estate is keyed on — and the expanded voice
+ * picker carries a sticky header saying whose slots those are.
+ *
  * Casting writes voice_language_roles and NOTHING else — no render is
  * triggered, no course_audio row is touched, no course voice_config is written.
  */
 import { ref, computed, onMounted } from 'vue'
 import { api } from './labApi'
+// The estate's ONE place that turns a code into words. Importing it also kicks
+// off the CSV name fetch, so nothing else here has to.
+import { languageName } from '@/utils/languageNames'
 
 const data = ref(null)
 const loading = ref(true)
 const error = ref('')
 const filter = ref('all')
+const provFilter = ref('all')
 const q = ref('')
 const busy = ref('')
 const expanded = ref(null)
@@ -88,7 +108,11 @@ const rows = computed(() => {
   const needle = q.value.trim().toLowerCase()
   return all
     .filter((l) => filter.value === 'all' || l.status === filter.value)
-    .filter((l) => !needle || l.code.toLowerCase().includes(needle))
+    // Provider filter reads the STORED configs, never the policy — clicking
+    // "xAI 29" gives you exactly the languages whose courses are on xAI.
+    .filter((l) => provFilter.value === 'all' || (l.providersInUse || []).some((p) => p.provider === provFilter.value))
+    // Search matches the words as well as the code, so typing "welsh" finds cym.
+    .filter((l) => !needle || l.code.toLowerCase().includes(needle) || languageName(l.code).toLowerCase().includes(needle))
 })
 
 const summary = computed(() => data.value?.summary || null)
@@ -116,6 +140,24 @@ const statusChips = computed(() =>
   }))
 )
 
+/**
+ * THE PROVIDER CHIPS ARE THE ESTATE SUMMARY, same trick as the status row: the
+ * count and the way to act on it are one object. Built from what the courses
+ * actually store, xAI first because xAI is what this screen is for.
+ */
+const providerChips = computed(() => {
+  const totals = summary.value?.providerTotals || []
+  if (!totals.length) return []
+  return [
+    { value: 'all', label: 'Any provider', count: null },
+    ...totals.map((t) => ({ value: t.provider, label: providerLabel(t.provider), count: t.courses })),
+  ]
+})
+
+/** Provider names as a person writes them, not as the DB stores them. */
+const PROVIDER_LABEL = { xai: 'xAI', azure: 'Azure', elevenlabs: 'ElevenLabs', cartesia: 'Cartesia', google: 'Google', narakeet: 'Narakeet', human: 'Human', unset: 'not configured', unknown: 'unknown' }
+function providerLabel (p) { return PROVIDER_LABEL[p] || p }
+
 const HUE = {
   complete: 'ui-hue-good',
   partial: 'ui-hue-warn',
@@ -124,6 +166,17 @@ const HUE = {
   human: 'ui-hue-info',
 }
 function hueFor (status) { return HUE[status] || 'ui-hue-quiet' }
+
+/** xAI is the one being deprecated, so it is the one that reads as a warning. */
+function providerHue (p) {
+  if (p === 'xai') return 'ui-hue-bad'
+  if (p === 'human') return 'ui-hue-info'
+  if (p === 'unset' || p === 'unknown') return 'ui-hue-quiet'
+  return 'ui-hue-good'
+}
+
+/** "Korean · kor" — the words first, the code beside them, never one instead of the other. */
+function langName (code) { return languageName(code) }
 
 /** The status word as Tom reads it, not as the API stores it. */
 function statusLabel (status) {
@@ -172,7 +225,20 @@ function candidatesFor (lang, slot) {
          subtitle does not carry: where the rows come from. -->
     <p class="vl-intro">
       One row per language, read live from <code>courses</code>, <code>voices</code> and the same
-      provider policy the render path uses.
+      provider policy the render path uses. <strong>In use now</strong> is what each language's
+      courses actually store in their own <code>voice_config</code>; <strong>if re-rendered</strong>
+      is what a new render would pick, which is a different question.
+    </p>
+
+    <!-- The one number this rework exists to surface. xAI is being deprecated
+         and this says, in courses, how much of the estate is standing on it. -->
+    <p v-if="summary?.xaiCourses" class="vl-xai-line">
+      <strong>{{ summary.xaiCourses }} course{{ summary.xaiCourses === 1 ? '' : 's' }}</strong>
+      across {{ summary.xaiLanguages }} language{{ summary.xaiLanguages === 1 ? '' : 's' }}
+      are configured on <strong>xAI</strong> right now
+      ({{ summary.xaiRoles }} voice slot{{ summary.xaiRoles === 1 ? '' : 's' }}), the provider being
+      deprecated. Voice configuration is a per-course call for whoever builds the course — this
+      screen shows the situation and changes nothing.
     </p>
 
     <div class="vl-search">
@@ -180,7 +246,7 @@ function candidatesFor (lang, slot) {
         v-model="q"
         class="ui-search"
         type="text"
-        placeholder="Search languages (e.g. 'cym', 'fra', 'zho')…"
+        placeholder="Search languages by name or code (e.g. 'welsh', 'cym', 'zho')…"
       />
     </div>
 
@@ -201,6 +267,21 @@ function candidatesFor (lang, slot) {
       <span class="ui-count">{{ rows.length }} of {{ summary?.languages ?? 0 }} languages</span>
     </div>
 
+    <!-- Same idea as the status row: the count and the way to act on it are one
+         object. Counts are COURSES, read from the stored configs. -->
+    <div v-if="providerChips.length" class="ui-filter-row vl-filters">
+      <span class="ui-filter-label">In use now</span>
+      <button
+        v-for="p in providerChips"
+        :key="p.value"
+        class="ui-chip"
+        :class="provFilter === p.value ? providerHue(p.value) : 'ui-chip-off'"
+        @click="provFilter = p.value"
+      >
+        {{ p.label }}<span v-if="p.count !== null" class="chip-no">{{ p.count }}</span>
+      </button>
+    </div>
+
     <p v-if="summary" class="vl-tail vl-muted">
       Complete means {{ summary.requiredPerLanguage }} voices — one male, one female. Backups are
       insurance, not required<span v-if="summary.noBackup">, and {{ summary.noBackup }} complete
@@ -216,7 +297,8 @@ function candidatesFor (lang, slot) {
           <tr>
             <th>Language</th>
             <th class="vl-wide">Courses</th>
-            <th class="vl-wide">Default provider</th>
+            <th>In use now</th>
+            <th class="vl-wide">If re-rendered</th>
             <th>Voices cast</th>
             <th>Status</th>
             <th></th>
@@ -225,8 +307,21 @@ function candidatesFor (lang, slot) {
         <tbody>
           <template v-for="lang in rows" :key="lang.code">
             <tr class="ui-row" :class="lang.status">
-              <td class="vl-code">{{ lang.code }}</td>
+              <td class="vl-lang">
+                <span class="vl-name">{{ langName(lang.code) }}</span>
+                <span class="vl-code">{{ lang.code }}</span>
+              </td>
               <td class="vl-muted vl-wide">{{ lang.courses }}<span v-if="lang.released"> · {{ lang.released }} live</span></td>
+              <td class="vl-inuse">
+                <span
+                  v-for="p in lang.providersInUse"
+                  :key="p.provider"
+                  class="ui-pill"
+                  :class="providerHue(p.provider)"
+                  :title="`${p.courses} course${p.courses === 1 ? '' : 's'}, ${p.roles} voice slot${p.roles === 1 ? '' : 's'}`"
+                >{{ providerLabel(p.provider) }} {{ p.courses }}</span>
+                <span v-if="!lang.providersInUse?.length" class="vl-muted">no voices configured</span>
+              </td>
               <td class="vl-muted vl-wide">{{ lang.defaultProvider || '—' }}</td>
               <td>
                 <span :class="['vl-count', lang.filled >= lang.required ? 'ok' : lang.filled ? 'warn' : 'fail']">
@@ -249,14 +344,31 @@ function candidatesFor (lang, slot) {
             </tr>
 
             <tr v-if="expanded === lang.code" :key="lang.code + ':slots'" class="vl-detail">
-              <td colspan="6">
+              <td colspan="7">
+                <!-- Tom, 2026-08-29: "I can't tell which language I'm looking
+                     at when I select it." The expanded panel names itself, and
+                     stays named while it is scrolled. -->
+                <div class="vl-detail-head">
+                  <span class="vl-detail-name">{{ langName(lang.code) }}</span>
+                  <span class="vl-code">{{ lang.code }}</span>
+                  <span class="ui-pill" :class="hueFor(lang.status)">{{ statusLabel(lang.status) }}</span>
+                  <span class="vl-muted">{{ lang.courses }} course{{ lang.courses === 1 ? '' : 's' }}</span>
+                  <span
+                    v-for="p in lang.providersInUse"
+                    :key="p.provider"
+                    class="ui-pill"
+                    :class="providerHue(p.provider)"
+                  >{{ providerLabel(p.provider) }} {{ p.courses }}</span>
+                  <button class="ui-sort-btn vl-detail-close" @click="expanded = null">Hide</button>
+                </div>
+
                 <p v-if="lang.human" class="vl-note">
-                  <strong>{{ lang.code }} is human-recorded only.</strong> A human recording wins
+                  <strong>{{ langName(lang.code) }} is human-recorded only.</strong> A human recording wins
                   wherever it exists, so empty slots here are a recording worklist for its
                   recordists, not a casting gap. No TTS provider may ever be selected for it.
                 </p>
                 <p v-else-if="!lang.cartesiaCovers" class="vl-note">
-                  Cartesia does not publish <strong>{{ lang.code }}</strong>, so a new render falls to
+                  Cartesia does not publish <strong>{{ langName(lang.code) }}</strong>, so a new render falls to
                   Azure. That is covered, just not by the default provider.
                 </p>
 
@@ -318,6 +430,7 @@ function candidatesFor (lang, slot) {
         <div class="vl-clone-row">
           <input v-model="cloneName" class="ui-field" placeholder="name for the new voice" />
           <input v-model="cloneLang" class="ui-field vl-narrow" placeholder="language e.g. eng" />
+          <span v-if="cloneLang" class="vl-muted vl-clone-lang">{{ langName(cloneLang) }}</span>
           <select v-model="cloneGender" class="ui-field vl-narrow">
             <option value="">gender unknown</option>
             <option value="m">male</option>
@@ -352,7 +465,26 @@ function candidatesFor (lang, slot) {
 .chip-no { margin-left: .35rem; opacity: .75; font-variant-numeric: tabular-nums; }
 .vl-tail { font-size: .75rem; margin: 0 0 1rem; max-width: 70ch; color: var(--muted); }
 
+.vl-xai-line { max-width: 70ch; margin: 0 0 1rem; font-size: .8125rem; padding: .5rem .7rem;
+  border: 1px solid var(--danger); border-radius: .5rem; background: var(--surface-2); }
+
+/* The words first, the code beside them. Both, always: the name is what a
+   person reads, the code is what everything else in the estate is keyed on. */
+.vl-lang { white-space: nowrap; }
+.vl-name { font-weight: 600; }
 .vl-code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; color: var(--accent-2); }
+.vl-lang .vl-code { margin-left: .4rem; font-size: .75rem; opacity: .8; }
+.vl-inuse { display: table-cell; }
+.vl-inuse .ui-pill { margin-right: .25rem; }
+
+/* The expanded panel says which language it belongs to, and keeps saying it
+   while the panel is scrolled — the whole point of Tom's screenshot. */
+.vl-detail-head { position: sticky; top: 0; z-index: 2; display: flex; gap: .4rem; align-items: center;
+  flex-wrap: wrap; padding: .45rem .1rem .5rem; margin: -.25rem 0 .5rem;
+  background: var(--surface-2); border-bottom: 1px solid var(--line); }
+.vl-detail-name { font-weight: 700; font-size: .95rem; }
+.vl-detail-close { margin-left: auto; }
+.vl-clone-lang { align-self: center; font-size: .8125rem; }
 .vl-flag { margin-left: .35rem; }
 .vl-count.ok { color: var(--success); font-weight: 600; }
 .vl-count.warn { color: var(--accent); font-weight: 600; }
