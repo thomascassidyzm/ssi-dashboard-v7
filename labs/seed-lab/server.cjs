@@ -273,7 +273,7 @@ const server = http.createServer(async (req, res) => {
     }
     if (url.pathname === '/lab' || url.pathname === '/') {
       const course = url.searchParams.get('course') || 'spa_for_eng';
-      const seed = +(url.searchParams.get('seed') || 600);
+      const seed = +(url.searchParams.get('seed') || 599);  // the current payload
       res.writeHead(200, { 'content-type': 'text/html; charset=utf-8' });
       return res.end(await labPage(course, seed));
     }
