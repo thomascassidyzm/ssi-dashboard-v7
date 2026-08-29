@@ -458,6 +458,37 @@ async function main() {
   const reportFile = path.join(SCRATCH, probe ? 'provider-pace-probe.json' : 'provider-pace.json');
   fs.writeFileSync(reportFile, JSON.stringify(report, null, 1));
 
+  // THE PER-LANGUAGE REFERENCE, committed to the repo rather than to a table.
+  // The ratio on a voice is derivable back to a reference pace (ref_cps =
+  // cps / ratio), but the SENTENCE is not derivable from anything — and without
+  // the sentence the measurement is neither reproducible nor explicable to a
+  // human looking at the Voice Lab. It is a small, stable, human-readable
+  // artifact of a measurement, so it lives in git beside the tool that made it
+  // and is read by services/voicelab/router.cjs. A new table would need DDL to
+  // say the same thing less legibly.
+  if (!probe) {
+    const refFile = path.join(__dirname, 'provider-pace-reference.json');
+    const langs = {};
+    for (const [lang, r] of Object.entries(reference)) {
+      langs[lang] = {
+        sentence: r.sentence,
+        sentence_source: r.sentence_source,
+        sentence_tier: r.sentence_tier,
+        reference_seconds: Math.round(r.seconds * 1000) / 1000,
+        reference_cps: Math.round((bank[lang].text.length / r.seconds) * 1000) / 1000,
+        chars: bank[lang].text.length,
+        voices: r.voices,
+      };
+    }
+    fs.writeFileSync(refFile, JSON.stringify({
+      method: METHOD,
+      measured_at: report.generated_at,
+      note: 'One identical sentence per language, rendered fresh from each provider API at 1.0x and timed with ffprobe. A voice ratio is reference_seconds / that voice\'s seconds: above 1.0 = brisker than the reference.',
+      languages: langs,
+    }, null, 1) + '\n');
+    console.log(`reference: ${refFile}`);
+  }
+
   console.log(`\nratio  secs   lang  provider     voice_id`);
   for (const u of updates) {
     console.log(`${u.natural_pace_ratio.toFixed(3)}  ${u._seconds.toFixed(2)}  ${String(u._lang).padEnd(7)} ${u._provider.padEnd(11)}  ${u.voice_id}`);

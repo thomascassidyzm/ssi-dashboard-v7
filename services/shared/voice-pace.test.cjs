@@ -1,15 +1,83 @@
 /**
- * Per-voice natural pace. The first test is the one that matters: a voice with
- * no measurement is played at the belt number itself, to the digit — which is
- * what lets this ship against an estate where not one voice is measured yet.
+ * Per-voice natural pace, and the role+mode rule that replaced the belt ramp
+ * (Tom, 2026-08-29). The first two blocks are the ones that matter: the rule
+ * itself, and the invariant that an unmeasured voice is played at the target
+ * number unchanged.
  */
 import { describe, it, expect } from 'vitest'
 import pkg from './voice-pace.cjs'
-const { effectivePaceRatio, paceMultiplier, combineMeasurements, MIN_SPEED, MAX_SPEED } = pkg
+const {
+  effectivePaceRatio, paceMultiplier, combineMeasurements, targetPace, playbackSpeed,
+  MIN_SPEED, MAX_SPEED,
+} = pkg
+
+describe('the rule: role and mode, never belt', () => {
+  it('slows the target language, and only the target language', () => {
+    expect(targetPace('target', 'easy').targetPace).toBe(0.8)
+    expect(targetPace('target', 'fast').targetPace).toBe(0.9)
+    expect(targetPace('known', 'easy').targetPace).toBe(1.0)
+    expect(targetPace('known', 'fast').targetPace).toBe(1.0)
+  })
+
+  it('plays listening at full speed in any language and any mode', () => {
+    for (const mode of ['easy', 'fast']) {
+      const r = targetPace('listening', mode)
+      expect(r.targetPace).toBe(1.0)
+      expect(r.correctByVoice).toBe(false)
+    }
+  })
+
+  it('reads the estate\'s own slot names — target1/target2 are target, presentation is known', () => {
+    expect(targetPace('target1', 'easy').targetPace).toBe(0.8)
+    expect(targetPace('target2', 'easy').targetPace).toBe(0.8)
+    expect(targetPace('presentation', 'easy').targetPace).toBe(1.0)
+  })
+
+  it('corrects per voice ONLY on the target language — known and listening are played exactly as rendered', () => {
+    const brisk = { natural_pace_ratio: 1.241 }
+    expect(playbackSpeed(brisk, 'known', 'easy').speed).toBe(1.0)
+    expect(playbackSpeed(brisk, 'listening', 'easy').speed).toBe(1.0)
+    expect(playbackSpeed(brisk, 'target', 'easy').speed).toBeLessThan(0.8)
+  })
+
+  it('does not guess at a role it does not recognise', () => {
+    const r = targetPace('chorus', 'easy')
+    expect(r.targetPace).toBe(1.0)
+    expect(r.role).toBe(null)
+    expect(r.reason).toMatch(/unrecognised/)
+  })
+
+  it('treats anything that is not "fast" as easy — the cautious of the two', () => {
+    expect(targetPace('target', undefined).targetPace).toBe(0.8)
+    expect(targetPace('target', 'FAST').targetPace).toBe(0.9)
+  })
+})
+
+describe('the rule, end to end on real measurements', () => {
+  it('clamps the briskest voice measured, partially correcting it', () => {
+    // fr-FR-VivienneMultilingualNeural, 1.241x, provider-API measurement 2026-08-29.
+    const r = playbackSpeed({ natural_pace_ratio: 1.241 }, 'target1', 'easy')
+    expect(r.clamped).toBe(true)
+    expect(r.speed).toBe(MIN_SPEED)
+  })
+
+  it('barely touches the slowest voice measured', () => {
+    // en-US-SerenaMultilingualNeural, 0.832x. 0.8/0.832 = 0.962 — no clamp.
+    const r = playbackSpeed({ natural_pace_ratio: 0.832 }, 'target1', 'easy')
+    expect(r.speed).toBe(0.962)
+    expect(r.clamped).toBe(false)
+  })
+
+  it('plays an unmeasured voice at the plain target number', () => {
+    expect(playbackSpeed({ natural_pace_ratio: null }, 'target', 'easy').speed).toBe(0.8)
+    expect(playbackSpeed({ natural_pace_ratio: null }, 'target', 'fast').speed).toBe(0.9)
+    expect(playbackSpeed(null, 'target', 'easy').corrected).toBe(false)
+  })
+})
 
 describe('the invariant: an unmeasured voice behaves exactly as today', () => {
-  it('plays at the belt target unchanged', () => {
-    for (const target of [0.8, 0.9, 0.95, 1.0]) {
+  it('plays at the target unchanged', () => {
+    for (const target of [0.8, 0.9, 1.0]) {
       const r = paceMultiplier({ paceRatio: null, targetPace: target })
       expect(r.speed).toBe(target)
       expect(r.corrected).toBe(false)
@@ -24,14 +92,14 @@ describe('the invariant: an unmeasured voice behaves exactly as today', () => {
 })
 
 describe('the correction', () => {
-  it('leaves a median-paced voice on the belt number', () => {
+  it('leaves a reference-paced voice on the target number', () => {
     expect(paceMultiplier({ paceRatio: 1.0, targetPace: 0.9 }).speed).toBe(0.9)
   })
 
   it('slows a brisk voice, which is the whole point', () => {
-    // eve, measured 2026-08-29 at 1.413x the English median for `known`.
-    // Today a white belt plays her at 0.8 of HER pace = 1.13 of the median —
-    // faster than a green belt on a slow voice. That is the bug.
+    // A voice at 1.413x its language's reference. Under the retired ramp a
+    // white belt played it at 0.8 of ITS OWN pace = 1.13 of the reference —
+    // faster than a green belt on a slow voice. That was the bug.
     const r = paceMultiplier({ paceRatio: 1.413, targetPace: 0.8 })
     expect(r.corrected).toBe(true)
     expect(r.speed).toBeLessThan(0.8)
@@ -40,15 +108,15 @@ describe('the correction', () => {
   })
 
   it('never plays a slow voice faster than it was rendered', () => {
-    // en-GB-HollieNeural, 0.782x. 0.8/0.782 = 1.023 — above 1.0, and everything
+    // A voice at 0.782x its reference. 0.8/0.782 = 1.023 — above 1.0, and everything
     // in the estate is minted at 1.0x, so speeding a clip up is a new behaviour.
     const r = paceMultiplier({ paceRatio: 0.782, targetPace: 0.8 })
     expect(r.speed).toBe(MAX_SPEED)
     expect(r.clamped).toBe(true)
   })
 
-  it('says WHY in words, because an unexplained speed number is how the current ladder became unreasonable', () => {
-    expect(paceMultiplier({ paceRatio: 1.2, targetPace: 0.9 }).reason).toMatch(/median/)
+  it('says WHY in words, because an unexplained speed number is how the old ladder became unreasonable', () => {
+    expect(paceMultiplier({ paceRatio: 1.2, targetPace: 0.9 }).reason).toMatch(/reference/)
   })
 
   it('refuses a nonsense target rather than inventing one', () => {

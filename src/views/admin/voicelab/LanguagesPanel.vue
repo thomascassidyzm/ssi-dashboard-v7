@@ -281,12 +281,62 @@ function paceClass (effective) {
 }
 
 function paceTitle (pace) {
-  const parts = [`${pace.effective.toFixed(3)}x the median pace of this language's voices`]
+  const parts = [`${pace.effective.toFixed(3)}x the reference pace of this language's voices`]
   if (pace.nudge) parts.push(`measured ${Number(pace.ratio).toFixed(3)}x, your nudge x${Number(pace.nudge).toFixed(2)}`)
   else parts.push(`measured ${Number(pace.ratio).toFixed(3)}x, no nudge`)
-  if (pace.samples) parts.push(`from ${pace.samples.toLocaleString()} clips`)
+  if (pace.samples) parts.push(`one controlled sentence in ${pace.samples} language${pace.samples === 1 ? '' : 's'}, rendered from the provider API at 1.0x`)
   if (pace.cps) parts.push(`${Number(pace.cps).toFixed(1)} chars/sec`)
   return parts.join(' · ')
+}
+
+/**
+ * THE NUMBERS THE PLAYER WILL ACTUALLY USE — target language, Easy and Fast.
+ *
+ * The ratio above says how brisk the voice is; these say what a learner hears.
+ * Under Tom's rule of 2026-08-29 the belt ramp is gone: target language plays
+ * at 0.8 of the language's reference on Easy and 0.9 on Fast, known language
+ * and listening at 1.0 always, and the per-voice correction applies to the
+ * target language only.
+ */
+function paceSpeeds (pace) {
+  if (!pace || pace.easy === null || pace.easy === undefined) return null
+  return { easy: pace.easy, fast: pace.fast, clamped: pace.easyClamped || pace.fastClamped }
+}
+
+function speedsTitle (pace) {
+  const parts = [
+    `Target language: ${pace.easy.toFixed(2)}x on Easy, ${pace.fast.toFixed(2)}x on Fast`,
+    'Known language and listening: 1.00x always, played exactly as rendered',
+  ]
+  if (pace.easyClamped || pace.fastClamped) {
+    parts.push('Clamped at the 0.7 floor — below that TTS stops sounding slow and starts sounding broken, so the correction is partial for this voice')
+  }
+  return parts.join(' · ')
+}
+
+/**
+ * A candidate's pace, inline in the dropdown. Two numbers, because they answer
+ * two different questions: how brisk the voice is, and what a learner would
+ * actually hear on the target language at Easy.
+ */
+function paceSuffix (c) {
+  if (!c.pace || c.pace.effective === null || c.pace.effective === undefined) return ''
+  return ` · ${Number(c.pace.effective).toFixed(2)}x · ${Number(c.pace.easy).toFixed(2)} easy`
+}
+
+function candidatePace (c) {
+  return `${paceTitle(c.pace)} · ${speedsTitle(c.pace)}`
+}
+
+/** The language's reference: what 1.00x means here, and the sentence it means it on. */
+function referenceTitle (ref) {
+  if (!ref) return ''
+  return [
+    `Reference read: ${ref.reference_seconds.toFixed(2)}s for ${ref.chars} characters (${ref.reference_cps.toFixed(1)} chars/sec)`,
+    `across ${ref.voices} measured voice${ref.voices === 1 ? '' : 's'}`,
+    `Sentence: "${ref.sentence}"`,
+    `From ${ref.sentence_source}`,
+  ].join(' · ')
 }
 
 async function clear (lang, slot) {
@@ -444,6 +494,15 @@ function candidatesFor (lang, slot) {
                   <span class="vl-code">{{ lang.code }}</span>
                   <span class="ui-pill" :class="hueFor(lang.status)">{{ statusLabel(lang.status) }}</span>
                   <span class="vl-muted">{{ lang.courses }} course{{ lang.courses === 1 ? '' : 's' }}</span>
+                  <!-- WHAT 1.00x MEANS IN THIS LANGUAGE. Every voice below is a
+                       ratio against this read of this sentence, so the ratio is
+                       checkable rather than merely asserted. -->
+                  <span
+                    v-if="lang.paceReference"
+                    class="vl-ref"
+                    :title="referenceTitle(lang.paceReference)"
+                  >reference {{ lang.paceReference.reference_seconds.toFixed(2) }}s · {{ lang.paceReference.voices }} voice{{ lang.paceReference.voices === 1 ? '' : 's' }}</span>
+                  <span v-else class="vl-ref" title="No voice in this language has been measured from the provider API yet, so there is no reference pace to compare against.">no pace reference yet</span>
                   <span
                     v-for="p in lang.providersInUse"
                     :key="p.provider"
@@ -493,6 +552,11 @@ function candidatesFor (lang, slot) {
                         :class="paceClass(slot.pace.effective)"
                         :title="paceTitle(slot.pace)"
                       >{{ slot.pace.effective.toFixed(2) }}x pace</span>
+                      <span
+                        v-if="slot.pace && paceSpeeds(slot.pace)"
+                        class="vl-pace vl-speeds"
+                        :title="speedsTitle(slot.pace)"
+                      >{{ slot.pace.easy.toFixed(2) }} easy / {{ slot.pace.fast.toFixed(2) }} fast</span>
                       <span v-else-if="slot.filled" class="vl-pace vl-pace-unknown" title="No pace measured for this voice — it plays exactly as it does today.">pace unmeasured</span>
                       <input
                         v-if="slot.pace && slot.pace.ratio !== null"
@@ -518,8 +582,8 @@ function candidatesFor (lang, slot) {
                         @change="cast(lang, slot, $event.target.value)"
                       >
                         <option value="">— empty — choose a voice</option>
-                        <option v-for="c in candidatesFor(lang, slot)" :key="c.voiceId" :value="c.voiceId">
-                          {{ c.name }} ({{ c.kind }})
+                        <option v-for="c in candidatesFor(lang, slot)" :key="c.voiceId" :value="c.voiceId" :title="c.pace ? candidatePace(c) : ''">
+                          {{ c.name }} ({{ c.kind }}){{ paceSuffix(c) }}
                         </option>
                       </select>
                       <span v-if="!candidatesFor(lang, slot).length" class="vl-muted">
@@ -579,6 +643,11 @@ function candidatesFor (lang, slot) {
                         :class="paceClass(slot.pace.effective)"
                         :title="paceTitle(slot.pace)"
                       >{{ slot.pace.effective.toFixed(2) }}x pace</span>
+                      <span
+                        v-if="slot.pace && paceSpeeds(slot.pace)"
+                        class="vl-pace vl-speeds"
+                        :title="speedsTitle(slot.pace)"
+                      >{{ slot.pace.easy.toFixed(2) }} easy / {{ slot.pace.fast.toFixed(2) }} fast</span>
                       <span v-else-if="slot.filled" class="vl-pace vl-pace-unknown" title="No pace measured for this voice — it plays exactly as it does today.">pace unmeasured</span>
                       <input
                         v-if="slot.pace && slot.pace.ratio !== null"
@@ -604,8 +673,8 @@ function candidatesFor (lang, slot) {
                         @change="cast(lang, slot, $event.target.value)"
                       >
                         <option value="">— empty — choose a voice</option>
-                        <option v-for="c in candidatesFor(lang, slot)" :key="c.voiceId" :value="c.voiceId">
-                          {{ c.name }} ({{ c.kind }}){{ c.registered ? '' : ' — registers it too' }}
+                        <option v-for="c in candidatesFor(lang, slot)" :key="c.voiceId" :value="c.voiceId" :title="c.pace ? candidatePace(c) : ''">
+                          {{ c.name }} ({{ c.kind }}){{ paceSuffix(c) }}{{ c.registered ? '' : ' — registers it too' }}
                         </option>
                       </select>
                       <span v-if="!candidatesFor(lang, slot).length" class="vl-muted">
@@ -717,6 +786,8 @@ function candidatesFor (lang, slot) {
 .vl-pace-slow { background: rgba(217,134,0,.15); color: #d98600; }
 .vl-pace-typical { background: rgba(122,134,153,.12); color: var(--faint); }
 .vl-pace-unknown { color: var(--faint); opacity: .6; }
+.vl-speeds { background: rgba(46,160,110,.14); color: #2ea06e; }
+.vl-ref { font-size: .7rem; color: var(--faint); white-space: nowrap; }
 .vl-nudge { width: 4.5rem; font-size: .7rem; padding: .1rem .25rem; }
 .vl-slot-label { font-size: .75rem; text-transform: uppercase; letter-spacing: .05em; color: var(--faint); margin-bottom: .3rem; }
 .vl-slot-filled { display: flex; gap: .4rem; align-items: center; flex-wrap: wrap; }

@@ -344,18 +344,45 @@ function mount (app, deps) {
   // be then read by the player?"
   //
   // These are that. Read-only measurement plus one human dial, and NOTHING
-  // here renders, spends or touches audio — the pace is computed from clips
-  // that already exist (tools/voice/measure-natural-pace.cjs).
+  // here renders, spends or touches audio. The measurement itself comes from
+  // tools/voice/measure-provider-pace.cjs — one controlled sentence per
+  // language rendered straight from each provider API at 1.0x, because Tom's
+  // ruling of 2026-08-29 is that "we can only use the providers APIs for the
+  // voice as the truth - not the recordings we have in the estate".
 
   /**
-   * GET /api/voicelab/pace — every measured voice, fastest first.
+   * GET /api/voicelab/pace — every measured voice, fastest first, plus the
+   * per-language reference each ratio is measured against.
    *
    * THIS IS THE READING SURFACE the learner app will consume. `effective` is
    * the only number a consumer should divide by; it is the measurement times
    * the human's nudge, and it is null — never 1.0 — for a voice nobody has
    * measured, because a consumer must be able to tell "typical for its
-   * language" from "we have not looked".
+   * language" from "we have not looked". `easy` and `fast` are the resulting
+   * TARGET-LANGUAGE playback speeds under the role+mode rule; known and
+   * listening are 1.0 flat and carry no per-voice correction at all.
+   *
+   * `languages` is the reference block: the sentence every voice in that
+   * language spoke, how long the reference read took, and how many voices are
+   * behind it. Read from tools/voice/provider-pace-reference.json, the artifact
+   * the measurement tool writes — a ratio with no visible reference is a number
+   * nobody can check.
    */
+  /**
+   * The committed reference artifact. Read fresh on each request (it is a few
+   * kB and changes only when someone re-measures) and NEVER fatal: a missing
+   * file means the screen shows no reference, not a broken endpoint.
+   */
+  function paceReference () {
+    try {
+      const file = require('path').join(__dirname, '..', '..', 'tools', 'voice', 'provider-pace-reference.json')
+      const ref = JSON.parse(require('fs').readFileSync(file, 'utf8'))
+      return { languages: ref.languages || {}, referenceMethod: ref.method || null, referenceMeasuredAt: ref.measured_at || null }
+    } catch {
+      return { languages: {}, referenceMethod: null, referenceMeasuredAt: null }
+    }
+  }
+
   app.get('/api/voicelab/pace', async (req, res) => {
     if (!await requireDashboardUser(req, res)) return
     try {
@@ -374,7 +401,7 @@ function mount (app, deps) {
         method: v.natural_pace_method || null,
         ...registry.paceOf(v),
       })).sort((a, b) => (b.effective || 0) - (a.effective || 0))
-      res.json({ voices, count: voices.length })
+      res.json({ voices, count: voices.length, ...paceReference() })
     } catch (err) { fail(res, err, 'pace') }
   })
 

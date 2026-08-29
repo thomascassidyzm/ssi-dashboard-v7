@@ -61,7 +61,9 @@
  * and survives this rework untouched.
  */
 
-const { effectivePaceRatio } = require('../shared/voice-pace.cjs')
+const { effectivePaceRatio, playbackSpeed } = require('../shared/voice-pace.cjs')
+const fs = require('fs')
+const path = require('path')
 const policy = require('../shared/tts-provider-policy.cjs')
 const { isHumanVoiceLang } = require('../shared/human-voice-courses.cjs')
 const { tryCanonicalVoiceId, PROVIDER_ALIASES } = require('../shared/clip-identity.cjs')
@@ -109,6 +111,11 @@ function rankName (rank) {
  * nudge — and it is null, never 1.0, for a voice nobody has measured, because
  * "typical for its language" and "we have not looked" are different claims that
  * happen to share a digit.
+ *
+ * `easy` and `fast` are THE NUMBERS THE PLAYER WILL ACTUALLY USE on the target
+ * language under the role+mode rule (Tom, 2026-08-29 — the belt ramp is
+ * retired). They are shown rather than left to be derived, because a raw ratio
+ * is not a thing anyone can judge by ear and a playback speed is.
  */
 function paceOf (voice) {
   if (!voice) return null
@@ -116,14 +123,40 @@ function paceOf (voice) {
     ? null : Number(voice.natural_pace_ratio)
   const nudge = voice.natural_pace_nudge === null || voice.natural_pace_nudge === undefined
     ? null : Number(voice.natural_pace_nudge)
+  const easy = playbackSpeed(voice, 'target', 'easy')
+  const fast = playbackSpeed(voice, 'target', 'fast')
   return {
     ratio,
     nudge,
     effective: effectivePaceRatio(voice),
+    // Target-language playback only: known and listening are 1.0 flat by the
+    // rule, with no per-voice correction, so there is no number to show.
+    easy: easy.speed,
+    fast: fast.speed,
+    easyClamped: easy.clamped,
+    fastClamped: fast.clamped,
     cps: voice.natural_pace_cps === null || voice.natural_pace_cps === undefined ? null : Number(voice.natural_pace_cps),
     samples: voice.natural_pace_samples ?? null,
     measuredAt: voice.natural_pace_measured_at || null,
     nudgeNote: voice.natural_pace_nudge_note || null,
+  }
+}
+
+/**
+ * THE PER-LANGUAGE REFERENCE PACE — the thing every voice ratio is measured
+ * against, and without which a ratio is a number nobody can check.
+ *
+ * Read from tools/voice/provider-pace-reference.json, the artifact
+ * tools/voice/measure-provider-pace.cjs writes: the sentence every voice in
+ * that language spoke, how long the reference read took, and how many voices
+ * are behind it. Missing file = no reference shown, never a broken screen.
+ */
+function paceReference () {
+  try {
+    const file = path.join(__dirname, '..', '..', 'tools', 'voice', 'provider-pace-reference.json')
+    return JSON.parse(fs.readFileSync(file, 'utf8'))
+  } catch {
+    return { languages: {} }
   }
 }
 
@@ -197,9 +230,11 @@ async function build (db, opts = {}) {
     inUseByLang.get(k).push(g)
   }
 
+  const reference = paceReference()
   const languages = [...byLang.entries()]
     .map(([code, langCourses]) => describeLanguage({
       code,
+      paceReference: (reference.languages || {})[code] || null,
       langCourses,
       roles: rolesByLang.get(code) || [],
       voiceById,
@@ -320,7 +355,7 @@ function providersInUse (langCourses) {
 }
 
 /** One language's row. */
-function describeLanguage ({ code, langCourses, roles, voiceById, voices, catalogue = {}, knownCourses = 0, guideInUse = [] }) {
+function describeLanguage ({ code, langCourses, roles, voiceById, voices, catalogue = {}, knownCourses = 0, guideInUse = [], paceReference = null }) {
   const human = isHumanVoiceLang(code)
   const cartesiaCovers = policy.cartesiaCoversLanguage(code)
   // No course teaches this language; it only ever appears on the known side.
@@ -399,6 +434,9 @@ function describeLanguage ({ code, langCourses, roles, voiceById, voices, catalo
     code,
     courses: langCourses.length,
     released: langCourses.filter((c) => c.status === 'released').length,
+    // The pace every voice in this language is compared against, and the exact
+    // sentence it was measured on. Null for a language nobody has measured.
+    paceReference,
     human,
     cartesiaCovers,
     // The provider a NEW render would actually use, asked of the same module
@@ -443,7 +481,10 @@ function describeLanguage ({ code, langCourses, roles, voiceById, voices, catalo
       .filter((v) => castable(v))
       .filter((v) => (v.languages || []).some((l) => sameLang(l, code)))
       .filter((v) => !roles.some((r) => r.voice_id === v.voice_id))
-      .map((v) => ({ voiceId: v.voice_id, name: v.display_name || v.human_name || v.voice_id, kind: voiceKind(v), engine: v.tts_engine || null, gender: v.gender || null, registered: true }))
+      // `pace` rides along on the candidate too, so the numbers are visible on
+      // a language nobody has cast yet — which, until casting is populated, is
+      // every language.
+      .map((v) => ({ voiceId: v.voice_id, name: v.display_name || v.human_name || v.voice_id, kind: voiceKind(v), engine: v.tts_engine || null, gender: v.gender || null, registered: true, pace: paceOf(v) }))
       .concat(cartesiaCandidates(code, catalogue, roles))
       .slice(0, 80),
   }
