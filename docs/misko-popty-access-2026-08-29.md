@@ -17,7 +17,7 @@ spend and admin surfaces. He also has **no access to the SSi code repositories**
 Command Surface account and the two SSi repos had already been removed. He keeps Zenjin
 (`zenjin-2026-v1`) and your shared room, both untouched.
 
-### Three defaults, each a one-word answer
+### Two defaults, each a one-word answer
 
 **1. Role — I gave him `editor`, not `admin`.**
 In this schema `editor` means "can edit and record for the courses he's been granted" — that is
@@ -37,10 +37,8 @@ These are every Balkan course that exists. **There is no Montenegrin course** �
 Slovenian or Albanian. If the Balkans roll-out starts with Montenegrin, that course has to be
 created before he can be scoped to it. Change the scope on popty.app → **Users** → Misko.
 
-**3. Name — I put "Misko".**
-That is your word for him, not a guess of mine; his surname is still unknown and his Command
-Surface display name is the same. Send me his full name and I'll set it, or edit it on the
-**Users** screen.
+**Name — settled, not a question.** He is **Misko**, and that is what both his popty.app row and
+his Command Surface row say. No placeholder anywhere.
 
 ### The gap I could not close
 I cannot test his actual login — I don't have his mailbox. What I *did* verify, from outside the
