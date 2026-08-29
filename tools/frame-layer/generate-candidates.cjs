@@ -92,11 +92,14 @@ Reply with JSON ONLY, no prose, no code fence:
 }
 
 function callClaude(prompt) {
-  const env = { ...process.env };
-  delete env.CLAUDECODE;                       // repo rule: nested CLI calls must not inherit it
-  const CLAUDE = process.env.CLAUDE_BIN || `${process.env.HOME}/.local/bin/claude`;
+  // The repo's own helper: pins the config dir, injects the OAuth token, and
+  // strips ANTHROPIC_API_KEY + CLAUDECODE. Never the Anthropic SDK.
+  const { claudeEnv } = require(path.join(ROOT, 'services', 'shared', 'claude-config.cjs'));
+  const env = claudeEnv(process.env);
+  const CLAUDE = '/home/tomcassidy/.local/bin/claude';
   const out = execFileSync(CLAUDE, ['--print', '--model', 'sonnet'], {
     input: prompt, env, encoding: 'utf8', maxBuffer: 8 * 1024 * 1024, timeout: 300000,
+    stdio: ['pipe', 'pipe', 'inherit'],
   });
   const m = out.match(/\{[\s\S]*\}/);
   if (!m) throw new Error('no JSON in model output:\n' + out.slice(0, 500));
