@@ -44,6 +44,7 @@
 
 const policy = require('../shared/tts-provider-policy.cjs')
 const { isHumanVoiceLang } = require('../shared/human-voice-courses.cjs')
+const { tryCanonicalVoiceId, PROVIDER_ALIASES } = require('../shared/clip-identity.cjs')
 
 /**
  * How many ranks are TRACKED (and shown) per (language, gender) slot — primary
@@ -87,7 +88,7 @@ async function build (db, opts = {}) {
   // registers it; see router.cjs.
   const catalogue = opts.cartesiaCatalogue || {}
   const [courses, voices, roles] = await Promise.all([
-    all(db, 'courses', 'course_code, target_lang, status'),
+    all(db, 'courses', 'course_code, target_lang, status, voice_config'),
     all(db, 'voices', 'voice_id, type, tts_engine, display_name, human_name, languages, gender, is_active, notes'),
     all(db, 'voice_language_roles', 'language, gender, rank, voice_id, notes, assigned_by'),
   ])
@@ -122,10 +123,96 @@ async function build (db, opts = {}) {
   return { languages, summary: summarise(languages), notes: notes() }
 }
 
+/**
+ * ── WHAT A COURSE ACTUALLY HAS, AS OPPOSED TO WHAT A RENDER WOULD PICK ──────
+ *
+ * `defaultProvider` above answers "what would a NEW render choose?", asked of
+ * the policy. That is a real question and a useful one, but it is NOT what the
+ * estate is running on: it answers 'azure' for every language, which hid the 29
+ * courses that are on xAI today — the exact fact this screen exists to surface
+ * while xAI is being deprecated (Tom, 2026-08-29).
+ *
+ * The stored answer lives in `courses.voice_config.voices.<role>.provider`,
+ * one object per role (known / target1 / target2 / presentation, and a course
+ * may carry others).
+ *
+ * THE TRAP: `voice_config` ALSO carries a top-level `providers` block —
+ * {"xai":{"enabled":true},"azure":{"enabled":true},"elevenlabs":{…}} — which is
+ * boilerplate copied into nearly every course and says nothing about what the
+ * course uses. Read it and every course looks like an xAI course. It is
+ * deliberately never read here; only the per-role objects are.
+ *
+ * Resolution order, and it never guesses into azure:
+ *   1. the role's own explicit `provider` key, through the estate's existing
+ *      PROVIDER_ALIASES table;
+ *   2. failing that, the SHAPE of the voice id, through the estate's existing
+ *      `canonicalVoiceId` — which already knows that `en-GB-SoniaNeural` is
+ *      Azure and that the bare names `eve, leo, ara, sal, rex, gfzdpspr5fdp,
+ *      bedd6226` are xAI;
+ *   3. a role with neither a provider nor a voice id is `unset`, and anything
+ *      else that will not resolve is `unknown`. Both are rendered as themselves.
+ * There is no third answer to "which provider is this id?" invented here —
+ * two answers to one question is how a screen starts lying about the system it
+ * describes.
+ */
+function providerOfRole (role) {
+  if (!role || typeof role !== 'object') return null
+  const declared = String(role.provider || '').trim().toLowerCase()
+  if (declared && PROVIDER_ALIASES[declared]) return PROVIDER_ALIASES[declared]
+  const id = role.voiceId || role.voice_id
+  if (!id) return declared ? 'unknown' : 'unset'
+  const canon = tryCanonicalVoiceId(id)
+  if (canon) return canon.split('_')[0]
+  return 'unknown'
+}
+
+/**
+ * Per-language tally of the providers the language's COURSES actually store.
+ *
+ * Courses are the headline number — "4 courses on xAI" is what a person acts
+ * on; role slots are the detail underneath. A course counts once per distinct
+ * provider it carries, so a course that mixes Azure and xAI appears in both.
+ * xAI sorts first wherever it is present: it is the thing the screen is for.
+ */
+function providersInUse (langCourses) {
+  const byProvider = new Map()
+  let configured = 0
+  for (const c of langCourses) {
+    const voices = c.voice_config && c.voice_config.voices
+    if (!voices || typeof voices !== 'object' || !Object.keys(voices).length) continue
+    let any = false
+    const seen = new Set()
+    for (const role of Object.values(voices)) {
+      const p = providerOfRole(role)
+      if (!p) continue
+      any = true
+      if (!byProvider.has(p)) byProvider.set(p, { provider: p, courses: 0, roles: 0 })
+      byProvider.get(p).roles += 1
+      seen.add(p)
+    }
+    for (const p of seen) byProvider.get(p).courses += 1
+    if (any) configured += 1
+  }
+  const list = [...byProvider.values()].sort((a, b) => {
+    if (a.provider === 'xai') return -1
+    if (b.provider === 'xai') return 1
+    return b.courses - a.courses || a.provider.localeCompare(b.provider)
+  })
+  const xai = byProvider.get('xai')
+  return {
+    providersInUse: list,
+    xaiCourses: xai ? xai.courses : 0,
+    xaiRoles: xai ? xai.roles : 0,
+    configuredCourses: configured,
+    unconfiguredCourses: langCourses.length - configured,
+  }
+}
+
 /** One language's row. */
 function describeLanguage ({ code, langCourses, roles, voiceById, voices, catalogue = {} }) {
   const human = isHumanVoiceLang(code)
   const cartesiaCovers = policy.cartesiaCoversLanguage(code)
+  const inUse = providersInUse(langCourses)
 
   const slots = {}
   for (const g of GENDERS) {
@@ -170,7 +257,11 @@ function describeLanguage ({ code, langCourses, roles, voiceById, voices, catalo
     cartesiaCovers,
     // The provider a NEW render would actually use, asked of the same module
     // production asks, so this cannot claim something the render path denies.
+    // This is a HYPOTHETICAL, and the UI labels it as one ("If re-rendered").
     defaultProvider: providerFor(code),
+    // What the language's courses actually have stored, right now. The fact
+    // the "If re-rendered" column cannot tell you.
+    ...inUse,
     slots,
     filled,
     required,
@@ -287,10 +378,37 @@ function summarise (languages) {
     // Quiet insurance flag, never a completeness count: complete languages
     // that would lose a voice with no fallback cast.
     noBackup: languages.filter((l) => l.status === 'complete' && !l.hasFullBackup).length,
+    // ── WHAT THE ESTATE IS ACTUALLY RUNNING ON ─────────────────────────────
+    // Read from the courses' own stored voice_config, never from the provider
+    // policy: xAI is being deprecated and these are the courses that would go
+    // silent with it. A course counts once per distinct provider it stores, so
+    // a course mixing Azure and xAI is in both totals and they need not sum to
+    // the estate's course count.
+    xaiLanguages: languages.filter((l) => l.xaiCourses > 0).length,
+    xaiCourses: languages.reduce((n, l) => n + (l.xaiCourses || 0), 0),
+    xaiRoles: languages.reduce((n, l) => n + (l.xaiRoles || 0), 0),
+    providerTotals: providerTotals(languages),
     requiredPerLanguage: GENDERS.length * COMPLETE_RANKS,
     requiredRanks: COMPLETE_RANKS,
     trackedRanks: REQUIRED_RANKS,
   }
+}
+
+/** Estate-wide course/role counts per stored provider, biggest first, xAI first. */
+function providerTotals (languages) {
+  const tot = new Map()
+  for (const l of languages) {
+    for (const p of l.providersInUse || []) {
+      if (!tot.has(p.provider)) tot.set(p.provider, { provider: p.provider, courses: 0, roles: 0 })
+      tot.get(p.provider).courses += p.courses
+      tot.get(p.provider).roles += p.roles
+    }
+  }
+  return [...tot.values()].sort((a, b) => {
+    if (a.provider === 'xai') return -1
+    if (b.provider === 'xai') return 1
+    return b.courses - a.courses || a.provider.localeCompare(b.provider)
+  })
 }
 
 function notes () {
@@ -299,6 +417,7 @@ function notes () {
     human: 'Human-voiced languages (Welsh, Breton, PDC) are reported as "human", never as a gap. A human recording wins wherever it exists and no TTS provider may ever be selected for them.',
     nocover: 'Cartesia does not publish every language. Where it does not, the ladder falls to Azure — that is "nocover", which is covered, just not by the default provider. Welsh is NOT in Cartesia\'s published list, which is why the flagship courses could never have been Cartesia-only.',
     writes: 'This screen writes voice_language_roles and nothing else. It never writes course_audio, algorithm_config or any course voice_config.',
+    inUse: 'The "In use now" column is read from each course\'s own stored voice_config — the per-role provider, never the boilerplate `providers` block every course carries. "If re-rendered" is a different and hypothetical thing: what the provider policy would choose for a NEW render today. A language can be entirely on xAI now and say Azure there.',
     castable: `Retired and unrenderable voices are not offered for casting: ${[...policy.RETIRED_PROVIDERS].join(', ')} plus rows with no engine. Their clips still play — retirement is from selection only — but a slot filled with a voice that cannot render would read as covered while being broken.`,
   }
 }
@@ -315,4 +434,4 @@ async function all (db, table, columns) {
   }
 }
 
-module.exports = { build, describeLanguage, statusFor, rankName, sameLang, voiceKind, castable, cartesiaCandidates, REQUIRED_RANKS, COMPLETE_RANKS, GENDERS }
+module.exports = { build, describeLanguage, providerOfRole, providersInUse, statusFor, rankName, sameLang, voiceKind, castable, cartesiaCandidates, REQUIRED_RANKS, COMPLETE_RANKS, GENDERS }
