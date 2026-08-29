@@ -38,6 +38,9 @@ const { buildSourceIndex } = require('../shared/clone-copy-index.cjs')
 const createLogger = require('../shared/logger.cjs')
 const { identity: buildIdentity } = require('../shared/build-identity.cjs')
 const ttsService = require('../tts-service.cjs')
+// The language cast reader. phase8 does not go through loadVoiceConfig — it
+// reads course.voice_config off its own select — so it resolves explicitly.
+const voiceConfigService = require('../voice-config-service.cjs')
 const { toBcp47 } = require('../voice-discovery-service.cjs')
 const audioProcessor = require('../audio-processor.cjs')
 // The loudness BAND is read from the gate tier, never restated here — one band,
@@ -1869,9 +1872,19 @@ async function linkAudioIdsBatch(courseCode, opts = {}) {
   // without a word in the log. The configured voice per role is now part of the
   // key, so a wrong-voice clip cannot be found at all, and the slots it would
   // have claimed are counted as refusals instead of filled wrongly.
+  //
+  // The gate asks the RESOLVED config (stored voice_config with the language
+  // cast layered on, Tom's ruling 2026-08-29), because the gate's question is
+  // "is this clip in the voice this course renders in?" and after a re-cast
+  // that voice is the language's, not the row's. Selecting known_lang and
+  // target_lang so the resolver need not fetch the course a second time.
   const { data: voiceCourse } = await supabase
-    .from('courses').select('voice_config').eq('course_code', courseCode).single()
-  const wantedVoices = resolveVoices(voiceCourse || {})
+    .from('courses').select('course_code, known_lang, target_lang, voice_config').eq('course_code', courseCode).single()
+  const wantedVoices = resolveVoices({
+    voice_config: await voiceConfigService.resolveVoiceConfig({
+      voiceConfig: (voiceCourse || {}).voice_config, course: voiceCourse, courseCode,
+    }),
+  })
   const ledger = new RelinkRefusalLedger(courseCode)
 
   // Load audio map keyed by normalizeForAudio(raw text) — which PRESERVES ?/! — so
@@ -2398,6 +2411,14 @@ app.post('/generate/:courseCode', async (req, res) => {
       return res.status(404).json({ error: 'Course not found' })
     }
 
+    // THE LANGUAGE CAST IS APPLIED ONCE, HERE. Everything below in this handler
+    // reads `course.voice_config`, so resolving it at the fetch is the single
+    // seam that covers the whole generate path rather than ten call sites.
+    // With no rows in voice_language_roles this returns the very same object
+    // and nothing about this render changes (Tom's ruling, 2026-08-29).
+    course.voice_config = await voiceConfigService.resolveVoiceConfig({
+      voiceConfig: course.voice_config, course, courseCode,
+    })
     const voiceConfig = course.voice_config || {}
     const voices = voiceConfig.voices || voiceConfig  // Support both nested and flat structure
     // Require real voiceIds, not just role objects: deu_at_for_eng had a known
@@ -7648,7 +7669,11 @@ async function getCourseContext(courseCode) {
   const { data: course, error } = await supabase
     .from('courses').select('known_lang, target_lang, voice_config').eq('course_code', courseCode).single()
   if (error) throw new Error(`course not found: ${error.message}`)
-  const vc = course.voice_config || {}
+  // Resolved, not stored: pod known-side audio is a render, and a render takes
+  // the language's cast voice (Tom's ruling, 2026-08-29).
+  const vc = await voiceConfigService.resolveVoiceConfig({
+    voiceConfig: course.voice_config, course: { ...course, course_code: courseCode }, courseCode,
+  }) || {}
   const knownVoiceRaw = vc.voices?.known || {}
   // voice_id stays RAW here: this object is handed to the TTS providers, which
   // want their own spelling ('en-GB-SoniaNeural' in Azure's SSML, 'leo' at

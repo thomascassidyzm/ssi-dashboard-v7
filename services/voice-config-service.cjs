@@ -13,6 +13,7 @@ const { createClient } = require('@supabase/supabase-js');
 const { bumpCourseVersion } = require('./shared/course-version.cjs');
 const { voiceSpellings } = require('./shared/clip-identity-lookup.cjs');
 const { selectProvider } = require('./shared/tts-provider-policy.cjs');
+const { applyLanguageCast } = require('./shared/language-voice-cast.cjs');
 
 // Initialize Supabase client
 const supabaseUrl = process.env.SUPABASE_URL;
@@ -126,13 +127,19 @@ const DEFAULT_VOICE_CONFIG = {
 };
 
 /**
- * Load voice configuration for a course from Supabase
- * Returns default config if none exists
+ * Load a course's STORED voice configuration, exactly as it sits in the row.
+ *
+ * This is the EDITOR's read: the voice-config screen must show and save what
+ * the course itself carries, never what the language cast would resolve it to,
+ * or saving the screen back would silently bake the cast into 94 course rows
+ * and defeat the whole point of casting at the language.
+ *
+ * The RENDER's read is loadVoiceConfig() below, which layers the cast on top.
  *
  * @param {string} courseCode
  * @returns {Promise<object>} Voice configuration
  */
-async function loadVoiceConfig(courseCode) {
+async function loadStoredVoiceConfig(courseCode) {
   if (!supabase) {
     console.warn('[VoiceConfig] Supabase not initialized, returning defaults');
     return {
@@ -179,6 +186,104 @@ async function loadVoiceConfig(courseCode) {
       createdAt: new Date().toISOString()
     };
   }
+}
+
+// ── THE LANGUAGE CAST, ON THE RENDER PATH ───────────────────────────────────
+//
+// Tom's ruling, 2026-08-29: voice casting moves to the LANGUAGE. The Voice Lab
+// has been able to cast a language since 2026-08-28 (voice_language_roles) and
+// until now nothing read the result. Everything below is that reader; the rule
+// itself lives in services/shared/language-voice-cast.cjs, alone and tested.
+//
+// Precedence: explicit course override > language cast > the course's stored
+// voice_config. With no cast rows — which is the estate as this landed — the
+// third leg is the whole answer and nothing about any render changes.
+
+/**
+ * The cast and the voice registry, cached briefly.
+ *
+ * A generate run resolves a config per role per pass, and casting is a human
+ * clicking a screen — a few seconds stale is invisible, whereas two extra
+ * queries per resolution on a 12,000-item render is not. Short and dumb on
+ * purpose: no invalidation hooks to forget to call.
+ */
+const CAST_CACHE_MS = 30_000;
+let castCache = { at: 0, roles: [], voices: [] };
+
+async function loadCast() {
+  if (!supabase) return { roles: [], voices: [] };
+  if (Date.now() - castCache.at < CAST_CACHE_MS) return castCache;
+  try {
+    const [roles, voices] = await Promise.all([
+      supabase.from('voice_language_roles').select('language, gender, rank, voice_id'),
+      supabase.from('voices').select('voice_id, gender, tts_engine, is_active, display_name, human_name'),
+    ]);
+    if (roles.error) throw roles.error;
+    // NO CAST ROWS, NO WORK AND NO SECOND QUERY'S WORTH OF RISK: this is the
+    // estate today, and it must cost nothing and change nothing.
+    castCache = { at: Date.now(), roles: roles.data || [], voices: (voices.data || []) };
+    return castCache;
+  } catch (err) {
+    // A cast we cannot read must never take a render down. Falling back to the
+    // stored config is exactly the pre-cast behaviour, which is safe by
+    // definition — but say so, because a silent fallback here would hide a
+    // language being rendered in the voice nobody chose any more.
+    console.warn(`[VoiceConfig] language cast unreadable (${err.message}) — falling back to stored voice_config`);
+    return { roles: [], voices: [] };
+  }
+}
+
+/** Testing seam: drop the cache so a cast made this second is seen at once. */
+function _clearCastCache() { castCache = { at: 0, roles: [], voices: [] }; }
+
+/**
+ * Overlay the language cast onto a stored config for one course.
+ *
+ * Exported because phase8 does NOT go through loadVoiceConfig — it reads
+ * `course.voice_config` off its own `select('*')` — so it calls this directly,
+ * once, right after fetching the course.
+ *
+ * @param {object} args
+ * @param {object} args.voiceConfig  the stored config
+ * @param {object} [args.course]     { course_code, known_lang, target_lang }; fetched if absent
+ * @param {string} [args.courseCode] used to fetch the course when one is not given
+ * @returns {Promise<object>} the same object when nothing was cast
+ */
+async function resolveVoiceConfig({ voiceConfig, course, courseCode }) {
+  if (!voiceConfig || !voiceConfig.voices) return voiceConfig;
+  const { roles, voices } = await loadCast();
+  if (!roles.length) return voiceConfig;   // nothing cast anywhere: identity
+
+  let c = course;
+  if ((!c || (!c.known_lang && !c.target_lang)) && supabase && (courseCode || voiceConfig.courseCode)) {
+    const { data } = await supabase
+      .from('courses').select('course_code, known_lang, target_lang')
+      .eq('course_code', courseCode || voiceConfig.courseCode).single();
+    c = data;
+  }
+  if (!c) return voiceConfig;
+
+  const { config, decisions } = applyLanguageCast({ voiceConfig, course: c, roles, voices });
+  if (config !== voiceConfig) {
+    for (const d of decisions.filter((x) => x.source === 'language-cast')) {
+      console.log(`[VoiceConfig] ${c.course_code}: ${d.role} cast from ${d.language}/${d.gender} rank${d.rank} → ${d.voiceId} (was ${d.replaced})`);
+    }
+  }
+  return config;
+}
+
+/**
+ * Load the voice configuration a RENDER should use: the stored config with the
+ * language cast layered on top. This is the door for anything that is about to
+ * make audio. For the raw stored row — what an editor must show and save —
+ * call loadStoredVoiceConfig().
+ *
+ * @param {string} courseCode
+ * @returns {Promise<object>} Voice configuration
+ */
+async function loadVoiceConfig(courseCode) {
+  const stored = await loadStoredVoiceConfig(courseCode);
+  return await resolveVoiceConfig({ voiceConfig: stored, courseCode });
 }
 
 /**
@@ -396,7 +501,10 @@ async function saveVoiceConfig(courseCode, config) {
  * @returns {Promise<object>} Updated configuration
  */
 async function updateVoiceRole(courseCode, role, voiceSettings) {
-  const config = await loadVoiceConfig(courseCode);
+  // STORED, not resolved: this reads a config in order to WRITE it back, and
+  // saving a cast-resolved config would copy the language's decision into the
+  // course row — the exact per-course duplication the cast exists to end.
+  const config = await loadStoredVoiceConfig(courseCode);
 
   if (!config.voices[role]) {
     throw new Error(`Invalid role: ${role}`);
@@ -760,6 +868,9 @@ function convertConfigFromLegacyManifest(legacyConfig) {
 
 module.exports = {
   loadVoiceConfig,
+  loadStoredVoiceConfig,
+  resolveVoiceConfig,
+  _clearCastCache,
   saveVoiceConfig,
   updateVoiceRole,
   getEffectiveSpeed,

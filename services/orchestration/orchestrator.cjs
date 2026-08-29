@@ -9495,7 +9495,10 @@ app.get('/api/courses/:courseCode/voice-config', async (req, res) => {
   const { courseCode } = req.params;
 
   try {
-    const config = await voiceConfigService.loadVoiceConfig(courseCode);
+    // The EDITOR reads the course's own stored config — never the
+    // language-cast resolution, which this screen would otherwise save back
+    // into the course row and freeze (Tom's ruling, 2026-08-29).
+    const config = await voiceConfigService.loadStoredVoiceConfig(courseCode);
     res.json({
       success: true,
       config
