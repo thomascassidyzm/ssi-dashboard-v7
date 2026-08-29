@@ -5,6 +5,76 @@ from the code. Newest first.
 
 ---
 
+## 2026-08-29 — The language cast beats the course's stored voices, but a legacy config is not an override
+
+**Decision.** The render path now resolves a course's voices in three legs:
+**explicit course override → language cast (`voice_language_roles`) → the
+course's stored `voice_config`.** An explicit override is a NEW deliberate
+marker — `voice_config.overrideLanguageCast: true`, or the same key on one role
+— never the mere presence of a stored config.
+
+**Why three legs and not two.** Tom's ruling is that casting moves to the
+language, which read strictly means the cast wins and a per-course voice is
+consulted only where someone deliberately set one. But `voice_language_roles`
+held **zero rows** when this landed and **94 of 149 courses** carry a real
+stored `voices` block. A strict two-tier rule would therefore have changed what
+every render in the estate decides, overnight, in nobody's favour — and Tom's
+own framing was that nothing should notionally break for courses already made.
+Treating the legacy config as an override instead would have made the cast
+unreachable forever, which is the opposite failure. The third leg is the only
+version that satisfies both halves: **zero cast rows means zero behaviour
+change**, measured — 94/94 configured courses resolve byte-identical.
+
+**Where the reader lives.** `services/shared/language-voice-cast.cjs`, pure and
+unit-tested, so the rule can be read without opening phase8. The provider ladder
+(`tts-provider-policy.cjs`) and the canonicaliser (`clip-identity.cjs`) are
+untouched: the cast decides WHO speaks, the ladder still decides on which
+provider.
+
+**The seam.** `loadVoiceConfig()` is the render read and resolves; a new
+`loadStoredVoiceConfig()` is the editor read and does not — saving a resolved
+config back would copy the language's decision into 94 course rows and defeat
+the point. phase8 does not go through either (it reads `course.voice_config` off
+its own `select('*')`), so it resolves explicitly at the course fetch in
+`planHandler`, at the relink voice gate, and at the pod known voice.
+
+**Two defaults chosen here, not ruled by Tom.** (1) A role's gender is read from
+the gender of the voice the course already has, so an existing course keeps the
+gender it has; only where there is none does `target1`=f, `target2`=m, `known`=f
+apply. (2) `presentation` is EXCLUDED from the cast — it is the intro/clone
+voice, not a specimen of the language.
+
+---
+
+## 2026-08-29 — One canonical rendered pace; the pace-shaped reuse guard retired
+
+**Decision.** Rendered pace is no longer a role or cadence decision. The cadence
+multiplier in `getEffectiveSpeed` resolves to 1.0 and the hardcoded `slow` 0.8x
+in `phase8-audio-from-baskets.cjs` goes. The per-VOICE base speed STAYS: that
+corrects a voice's own natural pace and is a property of the voice, not of the
+role a clip plays in.
+
+**Tom, 2026-08-29:** "playback speed is a player concern, not a baked-in render
+concern — the same clip plays faster when used as the known language and slower
+as the target, so stop treating rendered pace as a reason for distinct clips."
+
+**Consequence, accepted.** `isSpeedTrustedVoice` refused cross-role reuse of an
+Azure clip because Azure bakes speed into the MP3 and `course_audio` persists no
+per-row speed. With new renders all at one pace it describes nothing, so it is
+retired to a constant carrying its own obituary. The cost falls on clips already
+in the estate: an old Azure clip rendered at 0.8x can now be borrowed into a
+role that would previously have re-rendered it, and plays at its baked 0.8x
+until next re-rendered. Tom waived this in advance: "I don't care if anything
+notionally breaks, because these courses are already made — it's only going to
+affect regeneration, or replacement." No speed column was added to
+`course_audio`; that migration is not needed by this ruling.
+
+**Outstanding, deliberately not done here.** The other half — known-fast /
+target-slow playback — lives in the player (`ssi-learning-app`, deploys
+separately to Vercel) and is Tom's to schedule.
+
+---
+
 ## 2026-08-28 — Voice casting lives in its own table, not on `voices`
 
 **Decision.** Per-language voice casting is stored in a new table,
