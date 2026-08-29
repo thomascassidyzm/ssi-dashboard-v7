@@ -404,7 +404,7 @@ function describeLanguage ({ code, langCourses, roles, voiceById, voices, catalo
       // Any active castable voice that declares this language. NOT filtered by
       // gender — a guide is one voice, and the male/female split is a property
       // of the phrase slots only.
-      candidates: guideCandidates({ code, voices, guideRoles, voiceById, inUse: guideInUse }),
+      candidates: guideCandidates({ code, voices, guideRoles, voiceById, inUse: guideInUse, catalogue }),
     },
     // Voices that CAN speak this language and are not yet cast — the candidate
     // list, so casting is a click rather than a search.
@@ -482,7 +482,7 @@ function providerOfVoiceId (id) {
  * anything can render with, and casting it would fill a slot with something
  * that cannot speak.
  */
-function guideCandidates ({ code, voices, guideRoles, voiceById, inUse }) {
+function guideCandidates ({ code, voices, guideRoles, voiceById, inUse, catalogue = {} }) {
   const taken = new Set((guideRoles || []).map((r) => r.voice_id))
   const registered = voices
     .filter((v) => v.is_active !== false)
@@ -511,7 +511,17 @@ function guideCandidates ({ code, voices, guideRoles, voiceById, inUse }) {
       registered: false,
       inUse: true,
     }))
-  return [...unregistered, ...registered].slice(0, 80)
+  // The estate's OWN Cartesia clones, and only those. The whole Cartesia
+  // catalogue is deliberately NOT offered here — 419 stock English voices would
+  // bury the dozen voices this list exists to choose between — but a voice this
+  // estate cloned is exactly the kind of voice a guide slot is cast from, and
+  // it had no way onto this list at all (Tom, 2026-08-29: he could not see his
+  // own clone among English's voices). Offered, never auto-assigned.
+  const ownedClones = cartesiaCandidates(code, catalogue, guideRoles || [])
+    .filter((c) => c.owned)
+    .filter((c) => !taken.has(c.voiceId) && !seen.has(c.voiceId) && !voiceById.has(c.voiceId))
+    .map((c) => ({ ...c, inUse: false }))
+  return [...unregistered, ...ownedClones, ...registered].slice(0, 80)
 }
 
 /**
@@ -525,14 +535,28 @@ function guideCandidates ({ code, voices, guideRoles, voiceById, inUse }) {
 function cartesiaCandidates (code, catalogue, roles) {
   const iso1 = policy.toCartesiaLangCode(code)
   if (!iso1) return []
+  // THE ESTATE'S OWN CLONES COME FIRST, and this is not cosmetic ordering.
+  //
+  // Tom, 2026-08-29: "I can't see MY own Cartesia clone voice in the list of
+  // available voices for English." Cartesia publishes 419 English voices in an
+  // order nobody here chose; his clone came back at position 210 of them and
+  // Aran's at 209, while `describeLanguage` caps the candidate list at 80. So
+  // the two voices the estate actually owns were the two it could never offer,
+  // and every other language stayed fine only because it has fewer voices than
+  // the cap. Sorting by `owner` — the flag Cartesia itself sets — fixes it for
+  // any clone this estate makes later, without naming a single voice id here.
+  const owned = (v) => (v.owner ? 0 : 1)
   return (catalogue[iso1] || [])
+    .slice()
+    .sort((a, b) => owned(a) - owned(b))
     .map((v) => ({
       voiceId: `cartesia_${v.id}`,
-      name: `${v.name} — Cartesia`,
+      name: v.owner ? `${v.name} — this estate's Cartesia clone` : `${v.name} — Cartesia`,
       kind: 'cartesia',
       engine: 'cartesia',
       gender: v.gender || null,
       registered: false,
+      owned: Boolean(v.owner),
     }))
     .filter((c) => !roles.some((r) => r.voice_id === c.voiceId))
 }

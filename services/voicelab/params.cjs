@@ -94,6 +94,11 @@ function voicesFor (lang, production = {}) {
   // Cartesia's live catalogue, filtered to this language. Fetched from the vendor
   // rather than transcribed, so a voice Cartesia withdraws stops being offered
   // instead of failing at render.
+  // The estate's OWN clones first, in their own group. Aran's English clone sat at
+  // position 209 of 419 in Cartesia's order, which is listed but not findable.
+  for (const v of (CARTESIA_CATALOGUE[lang.steer] || []).filter((v) => v.owner)) {
+    push({ id: v.id, name: `${v.name} — this estate's clone`, provider: 'cartesia', gender: v.gender, clone: true, group: 'Clone' })
+  }
   for (const v of (CARTESIA_CATALOGUE[lang.steer] || [])) {
     push({ id: v.id, name: v.name, provider: 'cartesia', gender: v.gender, group: `Cartesia · ${lang.name}` })
   }
@@ -130,7 +135,12 @@ async function loadCartesiaCatalogue () {
       const body = await res.json()
       for (const v of body.data || []) {
         const g = v.gender === 'feminine' ? 'f' : v.gender === 'masculine' ? 'm' : null
-        ;(byLang[v.language] = byLang[v.language] || []).push({ id: v.id, name: v.name, gender: g })
+        // `is_owner` is carried through because it is the difference between one of
+        // Cartesia's 419 English stock voices and a voice THIS ESTATE cloned. Cartesia
+        // returns them in no order anybody here chose, and Tom's own clone came back at
+        // position 210 of 419 — far past the 80-candidate cap the registry applies — so
+        // without this flag the estate's own clones are the voices most likely to be cut.
+        ;(byLang[v.language] = byLang[v.language] || []).push({ id: v.id, name: v.name, gender: g, owner: v.is_owner === true })
       }
       pages += 1
       url = body.has_more && body.next_page
