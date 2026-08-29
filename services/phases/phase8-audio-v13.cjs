@@ -2193,6 +2193,16 @@ app.get('/needs/:courseCode', async (req, res) => {
     const { data: course, error: courseError } = await supabase
       .from('courses').select('*').eq('course_code', courseCode).single()
     if (courseError || !course) return res.status(404).json({ error: 'Course not found' })
+    // THE LANGUAGE CAST IS APPLIED ONCE, HERE (Tom's ruling, 2026-08-29).
+    // getAudioNeeds -> classifyEnglishCopyBucket reads the configured voice to
+    // decide which items are COPIED rather than rendered, so a needs count taken
+    // off the unresolved config would not be the count /generate acts on.
+    // Everything below reads `course.voice_config`, so resolving it at the
+    // fetch is the single seam. With no rows in voice_language_roles this
+    // returns the very same object and nothing about this path changes.
+    course.voice_config = await voiceConfigService.resolveVoiceConfig({
+      voiceConfig: course.voice_config, course, courseCode,
+    })
     const releaseTarget = await getEffectiveReleaseTarget(courseCode, course.seed_count)
     const needs = await getAudioNeeds(courseCode, releaseTarget, course)
     return res.json({
@@ -2258,6 +2268,18 @@ async function planHandler(req, res) {
 
     const releaseTarget = await getEffectiveReleaseTarget(courseCode, course.seed_count)
 
+    // THE LANGUAGE CAST IS APPLIED ONCE, HERE (Tom's ruling, 2026-08-29).
+    // The /plan screen must show the voices /generate will actually use, and
+    // classifyEnglishCopyBucket inside getAudioNeeds decides copy-vs-render off
+    // the same config — a plan taken off the unresolved config would not be the
+    // plan /generate acts on.
+    // Everything below reads `course.voice_config`, so resolving it at the
+    // fetch is the single seam rather than at each use. With no rows in
+    // voice_language_roles this returns the very same object, byte for byte,
+    // and nothing about this path changes.
+    course.voice_config = await voiceConfigService.resolveVoiceConfig({
+      voiceConfig: course.voice_config, course, courseCode,
+    })
     // Single source of truth — same enumeration /generate uses.
     const audioNeeds = await getAudioNeeds(courseCode, releaseTarget, course, false, scopeSeeds && scopeSeeds.length ? scopeSeeds : null)
 
@@ -3173,6 +3195,16 @@ app.post('/regenerate-role/:courseCode', async (req, res) => {
     if (courseError || !course) {
       return res.status(404).json({ error: 'Course not found' })
     }
+    // THE LANGUAGE CAST IS APPLIED ONCE, HERE (Tom's ruling, 2026-08-29).
+    // This handler renders audio for a whole role, so it must render in the voice
+    // the language casts, not only the one this course's row happens to store.
+    // Everything below reads `course.voice_config`, so resolving it at the
+    // fetch is the single seam rather than at each use. With no rows in
+    // voice_language_roles this returns the very same object, byte for byte,
+    // and nothing about this path changes.
+    course.voice_config = await voiceConfigService.resolveVoiceConfig({
+      voiceConfig: course.voice_config, course, courseCode,
+    })
 
     const voiceConfig = course.voice_config || {}
 
@@ -4747,13 +4779,22 @@ app.post('/regenerate-single/:courseCode/:audioUuid', async (req, res) => {
     // 2. Get course voice config
     const { data: course, error: courseError } = await supabase
       .from('courses')
-      .select('voice_config, known_lang, target_lang')
+      .select('course_code, voice_config, known_lang, target_lang')
       .eq('course_code', courseCode)
       .single()
 
     if (courseError || !course) {
       return res.status(404).json({ error: 'Course not found' })
     }
+    // THE LANGUAGE CAST IS APPLIED ONCE, HERE (Tom's ruling, 2026-08-29).
+    // This handler re-renders one clip, so it must use the cast voice.
+    // Everything below reads `course.voice_config`, so resolving it at the
+    // fetch is the single seam rather than at each use. With no rows in
+    // voice_language_roles this returns the very same object, byte for byte,
+    // and nothing about this path changes.
+    course.voice_config = await voiceConfigService.resolveVoiceConfig({
+      voiceConfig: course.voice_config, course, courseCode,
+    })
 
     const { role, text, language } = audioRecord
     const voiceConfig = course.voice_config || {}
@@ -5011,7 +5052,7 @@ app.post('/regenerate-presentation/:courseCode/:legoId', async (req, res) => {
     // 1. Load course + voice config
     const { data: course, error: courseError } = await supabase
       .from('courses')
-      .select('voice_config, known_lang, target_lang')
+      .select('course_code, voice_config, known_lang, target_lang')
       .eq('course_code', courseCode)
       .single()
 
@@ -5369,13 +5410,22 @@ app.post('/regenerate-phrase/:courseCode/:phraseId', async (req, res) => {
     // 1. Load course + voice config
     const { data: course, error: courseError } = await supabase
       .from('courses')
-      .select('voice_config, known_lang, target_lang')
+      .select('course_code, voice_config, known_lang, target_lang')
       .eq('course_code', courseCode)
       .single()
 
     if (courseError || !course) {
       return res.status(404).json({ error: `Course not found: ${courseCode}` })
     }
+    // THE LANGUAGE CAST IS APPLIED ONCE, HERE (Tom's ruling, 2026-08-29).
+    // This handler renders phrase audio, so it must use the cast voice.
+    // Everything below reads `course.voice_config`, so resolving it at the
+    // fetch is the single seam rather than at each use. With no rows in
+    // voice_language_roles this returns the very same object, byte for byte,
+    // and nothing about this path changes.
+    course.voice_config = await voiceConfigService.resolveVoiceConfig({
+      voiceConfig: course.voice_config, course, courseCode,
+    })
     const knownLang = canonicalLanguage(course.known_lang)
     const targetLang = canonicalLanguage(course.target_lang)
     const voiceConfig = course.voice_config || {}
@@ -5760,13 +5810,22 @@ app.post('/regenerate-lego/:courseCode/:legoId', async (req, res) => {
     // 1. Load course + voice config
     const { data: course, error: courseError } = await supabase
       .from('courses')
-      .select('voice_config, known_lang, target_lang')
+      .select('course_code, voice_config, known_lang, target_lang')
       .eq('course_code', courseCode)
       .single()
 
     if (courseError || !course) {
       return res.status(404).json({ error: `Course not found: ${courseCode}` })
     }
+    // THE LANGUAGE CAST IS APPLIED ONCE, HERE (Tom's ruling, 2026-08-29).
+    // This handler renders LEGO audio, so it must use the cast voice.
+    // Everything below reads `course.voice_config`, so resolving it at the
+    // fetch is the single seam rather than at each use. With no rows in
+    // voice_language_roles this returns the very same object, byte for byte,
+    // and nothing about this path changes.
+    course.voice_config = await voiceConfigService.resolveVoiceConfig({
+      voiceConfig: course.voice_config, course, courseCode,
+    })
     const knownLang = canonicalLanguage(course.known_lang)
     const targetLang = canonicalLanguage(course.target_lang)
     const voiceConfig = course.voice_config || {}
@@ -6122,6 +6181,15 @@ app.post('/generate-components/:courseCode', async (req, res) => {
     if (courseError || !course) {
       return res.status(404).json({ error: 'Course not found' })
     }
+    // THE LANGUAGE CAST IS APPLIED ONCE, HERE (Tom's ruling, 2026-08-29).
+    // This handler renders component audio, so it must use the cast voice.
+    // Everything below reads `course.voice_config`, so resolving it at the
+    // fetch is the single seam rather than at each use. With no rows in
+    // voice_language_roles this returns the very same object, byte for byte,
+    // and nothing about this path changes.
+    course.voice_config = await voiceConfigService.resolveVoiceConfig({
+      voiceConfig: course.voice_config, course, courseCode,
+    })
 
     const voiceConfig = course.voice_config || {}
     const voices = voiceConfig.voices || voiceConfig

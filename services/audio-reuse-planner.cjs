@@ -385,6 +385,18 @@ async function enumerateRoundClips(supabase, courseCode, roundCount, options = {
     throw new Error(`Course ${courseCode} not found: ${courseErr?.message || 'no row'}`)
   }
 
+  // THE LANGUAGE CAST (Tom's ruling, 2026-08-29). This planner decides which
+  // existing clips may be REUSED, and the whole reuse rule turns on "is this
+  // clip in the voice this course renders in?" — which, after a re-cast, is the
+  // language's voice and not the one this course's row still stores. Resolving
+  // here keeps the planner and the renderer answering with the same voice; a
+  // disagreement between them is precisely how a wrong-voiced clip gets bound.
+  // Required lazily so this module stays loadable without a Supabase client.
+  // With no rows in voice_language_roles this is the identity and nothing about
+  // any plan changes.
+  const { resolveVoiceConfig } = require('./voice-config-service.cjs')
+  course.voice_config = await resolveVoiceConfig({ voiceConfig: course.voice_config, course, courseCode })
+
   const voices = resolveVoices(course)
   const missingVoices = CLIP_ROLES.filter(r => !voices[r])
   if (missingVoices.includes('known') || missingVoices.includes('target1')) {

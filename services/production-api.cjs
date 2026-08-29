@@ -6075,7 +6075,13 @@ app.post('/api/audio/regenerate-role/:courseCode', async (req, res) => {
       return res.status(404).json({ error: `Course not found: ${courseCode}` })
     }
 
-    const voiceConfig = course.voice_config || {}
+    // THE LANGUAGE CAST (Tom's ruling, 2026-08-29). This preview names the
+    // voice a regeneration would render in, so it must name the CAST voice or
+    // the operator approves one voice and gets another. With no rows in
+    // voice_language_roles this is the identity and the preview is unchanged.
+    const voiceConfig = await voiceConfigService.resolveVoiceConfig({
+      voiceConfig: course.voice_config || {}, course, courseCode,
+    }) || {}
     const voiceId = voiceConfig.voices?.[role]?.voiceId || voiceConfig[role] || voiceConfig.default || 'unknown'
     const language = role === 'known' ? course.known_lang : course.target_lang
 
