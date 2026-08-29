@@ -6,7 +6,7 @@
  */
 import { describe, it, expect } from 'vitest'
 import pkg from './language-voice-cast.cjs'
-const { applyLanguageCast, genderForRole, pickCastVoice, CAST_ROLES } = pkg
+const { applyLanguageCast, genderForRole, pickCastVoice, CAST_ROLES, isGuideRole, slotForRole } = pkg
 
 const course = { course_code: 'fra_for_eng', known_lang: 'eng', target_lang: 'fra' };
 
@@ -38,7 +38,10 @@ describe('applyLanguageCast — the empty-table invariant', () => {
     const cfg = storedConfig();
     const { config, decisions } = applyLanguageCast({ voiceConfig: cfg, course, roles: [], voices });
     expect(config).toBe(cfg); // reference equality: nothing was touched
-    expect(decisions.every((d) => d.source === 'stored')).toBe(true);
+    // 'absent' is a role the course does not carry at all — this fixture has no
+    // instruction/encouragement block, which is itself a real shape. Neither
+    // 'stored' nor 'absent' touches anything.
+    expect(decisions.every((d) => d.source === 'stored' || d.source === 'absent')).toBe(true);
   });
 
   it('is unchanged when the cast covers OTHER languages only', () => {
@@ -157,5 +160,184 @@ describe('genderForRole — the data wins over the default', () => {
     expect(genderForRole('target1', { voiceId: '' }, genders)).toBe('f');
     expect(genderForRole('target2', {}, genders)).toBe('m');
     expect(genderForRole('known', {}, genders)).toBe('f');
+  });
+});
+
+
+// ── THE GUIDE VOICE ─────────────────────────────────────────────────────────
+//
+// Tom, 2026-08-29: instructions and encouragements "are not linked to a course
+// per se - they are linked to every course with the same known language,
+// because these are messages to the learner". These tests hold the three things
+// that could go wrong: an uncast guide must change nothing; a cast guide must
+// resolve on the KNOWN language; and a cast ElevenLabs guide must keep its
+// provider, or Aran quietly becomes an Azure voice on the next render.
+
+/** A course config that carries the two guide roles, as ~94 real courses do. */
+const guideConfig = () => ({
+  version: '1.0',
+  voices: {
+    known: { name: 'Tom (clone)', voiceId: 'gfzdpspr5fdp', language: 'en', provider: 'xai', settings: { speed: 1 } },
+    target1: { name: 'Eve', voiceId: 'eve', language: 'fr', provider: 'xai', settings: { speed: 1 } },
+    instruction: { name: 'Aran', voiceId: 'elevenlabs_FVdzAUsp8apoOdc0907A', language: 'en', provider: 'elevenlabs', settings: { speed: 1 } },
+    encouragement: { name: 'Aran', voiceId: 'elevenlabs_FVdzAUsp8apoOdc0907A', language: 'en', provider: 'elevenlabs', settings: { speed: 1 } },
+  },
+});
+
+const guideVoices = [
+  ...voices,
+  { voice_id: 'elevenlabs_FVdzAUsp8apoOdc0907A', gender: null, tts_engine: 'elevenlabs', is_active: true, display_name: 'English Narrator (Aran Clone - Source)' },
+  { voice_id: 'elevenlabs_NEW', gender: 'f', tts_engine: 'elevenlabs', is_active: true, display_name: 'A different guide' },
+  { voice_id: 'elevenlabs_BACKUP', gender: 'm', tts_engine: 'elevenlabs', is_active: true, display_name: 'The backup guide' },
+  { voice_id: 'elevenlabs_GONE', gender: 'm', tts_engine: 'elevenlabs', is_active: false, display_name: 'A deactivated guide' },
+];
+
+const guideRow = (language, rank, voice_id, gender = 'm') => ({ language, gender, rank, voice_id, slot: 'guide' });
+const phraseRow = (language, gender, rank, voice_id) => ({ language, gender, rank, voice_id, slot: 'phrase' });
+
+describe('the guide roles — the empty-table invariant, again and for real', () => {
+  it('leaves a populated legacy config UNTOUCHED, byte for byte, with zero cast rows', () => {
+    const cfg = guideConfig();
+    const before = JSON.stringify(cfg);
+    const { config, decisions } = applyLanguageCast({ voiceConfig: cfg, course, roles: [], voices: guideVoices });
+    expect(config).toBe(cfg);                       // reference equality
+    expect(JSON.stringify(config)).toBe(before);    // and byte for byte
+    for (const role of ['instruction', 'encouragement']) {
+      expect(decisions.find((d) => d.role === role).source).toBe('stored');
+      expect(config.voices[role].voiceId).toBe('elevenlabs_FVdzAUsp8apoOdc0907A');
+      expect(config.voices[role].provider).toBe('elevenlabs');
+    }
+  });
+
+  it('is untouched when a PHRASE cast exists for the same languages but no guide is cast', () => {
+    const cfg = guideConfig();
+    const { config, decisions } = applyLanguageCast({
+      voiceConfig: cfg, course, voices: guideVoices,
+      // A full phrase cast on both the known and the target language. The
+      // guide slot is empty, so the guide roles must not move.
+      roles: [phraseRow('fra', 'f', 0, 'cartesia_fr-f-1'), phraseRow('eng', 'f', 0, 'cartesia_en-m-1')],
+    });
+    for (const role of ['instruction', 'encouragement']) {
+      expect(decisions.find((d) => d.role === role).source).toBe('stored');
+      expect(config.voices[role].voiceId).toBe('elevenlabs_FVdzAUsp8apoOdc0907A');
+    }
+  });
+
+  it('a GUIDE cast on the TARGET language does not reach the guide roles', () => {
+    // fra is the target; the guide speaks the KNOWN language, eng.
+    const { config, decisions } = applyLanguageCast({
+      voiceConfig: guideConfig(), course, voices: guideVoices,
+      roles: [guideRow('fra', 0, 'elevenlabs_NEW')],
+    });
+    expect(decisions.find((d) => d.role === 'instruction').source).toBe('stored');
+    expect(config.voices.instruction.voiceId).toBe('elevenlabs_FVdzAUsp8apoOdc0907A');
+  });
+});
+
+describe('the guide roles — the cast winning', () => {
+  it('resolves both guide roles against the KNOWN language, not the target', () => {
+    const { config, decisions } = applyLanguageCast({
+      voiceConfig: guideConfig(), course, voices: guideVoices,
+      roles: [guideRow('eng', 0, 'elevenlabs_NEW')],
+    });
+    for (const role of ['instruction', 'encouragement']) {
+      const d = decisions.find((x) => x.role === role);
+      expect(d.source).toBe('language-cast');
+      expect(d.language).toBe('eng');       // the KNOWN language
+      expect(d.slot).toBe('guide');
+      expect(config.voices[role].voiceId).toBe('elevenlabs_NEW');
+    }
+  });
+
+  it('KEEPS A CAST ELEVENLABS GUIDE ON ELEVENLABS — the failure that would make Aran an Azure voice', () => {
+    const { config } = applyLanguageCast({
+      voiceConfig: guideConfig(), course, voices: guideVoices,
+      roles: [guideRow('eng', 0, 'elevenlabs_NEW')],
+    });
+    // The provider travels with the voice, read from the voices row, and is
+    // handed downstream as configuredProvider — which selectProvider honours at
+    // rung 4. Anything else here and the ladder would demote it to Azure.
+    expect(config.voices.instruction.provider).toBe('elevenlabs');
+    expect(config.voices.encouragement.provider).toBe('elevenlabs');
+  });
+
+  it('ignores gender: a guide is one voice, so a female guide serves a course whose known voice is male', () => {
+    const { config } = applyLanguageCast({
+      voiceConfig: guideConfig(), course, voices: guideVoices,
+      // elevenlabs_NEW is female; the course's stored guide (Aran) is male.
+      roles: [guideRow('eng', 0, 'elevenlabs_NEW', 'f')],
+    });
+    expect(config.voices.instruction.voiceId).toBe('elevenlabs_NEW');
+  });
+
+  it('falls to the rank-1 guide only when the primary is deactivated', () => {
+    const { config, decisions } = applyLanguageCast({
+      voiceConfig: guideConfig(), course, voices: guideVoices,
+      roles: [guideRow('eng', 0, 'elevenlabs_GONE'), guideRow('eng', 1, 'elevenlabs_BACKUP')],
+    });
+    expect(config.voices.instruction.voiceId).toBe('elevenlabs_BACKUP');
+    expect(decisions.find((d) => d.role === 'instruction').rank).toBe(1);
+  });
+
+  it('says nothing changed when the cast names the voice the course already stores', () => {
+    const cfg = guideConfig();
+    const { config, decisions } = applyLanguageCast({
+      voiceConfig: cfg, course, voices: guideVoices,
+      roles: [guideRow('eng', 0, 'elevenlabs_FVdzAUsp8apoOdc0907A')],
+    });
+    expect(config).toBe(cfg);
+    expect(decisions.find((d) => d.role === 'instruction').source).toBe('cast-same');
+  });
+
+  it('honours an explicit per-course override on a guide role', () => {
+    const cfg = guideConfig();
+    cfg.voices.instruction.overrideLanguageCast = true;
+    const { config, decisions } = applyLanguageCast({
+      voiceConfig: cfg, course, voices: guideVoices,
+      roles: [guideRow('eng', 0, 'elevenlabs_NEW')],
+    });
+    expect(decisions.find((d) => d.role === 'instruction').source).toBe('course-override');
+    expect(config.voices.instruction.voiceId).toBe('elevenlabs_FVdzAUsp8apoOdc0907A');
+    // …and the role NOT overridden still moves.
+    expect(config.voices.encouragement.voiceId).toBe('elevenlabs_NEW');
+  });
+});
+
+describe('the guide slot and the phrase slots do not leak into each other', () => {
+  it('a GUIDE row never fills a phrase role, even on the same language and rank', () => {
+    const { config, decisions } = applyLanguageCast({
+      voiceConfig: guideConfig(), course, voices: guideVoices,
+      roles: [guideRow('fra', 0, 'cartesia_fr-f-1', 'f')],
+    });
+    expect(decisions.find((d) => d.role === 'target1').source).toBe('stored');
+    expect(config.voices.target1.voiceId).toBe('eve');
+  });
+
+  it('a PHRASE row never fills a guide role', () => {
+    const { config, decisions } = applyLanguageCast({
+      voiceConfig: guideConfig(), course, voices: guideVoices,
+      roles: [phraseRow('eng', 'm', 0, 'elevenlabs_NEW')],
+    });
+    expect(decisions.find((d) => d.role === 'instruction').source).toBe('stored');
+    expect(config.voices.instruction.voiceId).toBe('elevenlabs_FVdzAUsp8apoOdc0907A');
+  });
+
+  it('a row with NO slot column is a phrase row — old rows must not become guides', () => {
+    const { config, decisions } = applyLanguageCast({
+      voiceConfig: guideConfig(), course, voices: guideVoices,
+      roles: [row('eng', 'm', 0, 'elevenlabs_NEW')],   // no `slot` key at all
+    });
+    expect(decisions.find((d) => d.role === 'instruction').source).toBe('stored');
+    expect(config.voices.instruction.voiceId).toBe('elevenlabs_FVdzAUsp8apoOdc0907A');
+  });
+
+  it('names the guide roles and only the guide roles', () => {
+    expect(CAST_ROLES).toContain('instruction');
+    expect(CAST_ROLES).toContain('encouragement');
+    expect(CAST_ROLES).not.toContain('presentation');
+    expect(isGuideRole('instruction')).toBe(true);
+    expect(isGuideRole('known')).toBe(false);
+    expect(slotForRole('encouragement')).toBe('guide');
+    expect(slotForRole('target1')).toBe('phrase');
   });
 });

@@ -35,6 +35,25 @@
  *              falls to Azure. Honest amber, not red: it is covered, just not
  *              by the default provider.
  *
+ * ── THE THIRD KIND OF AUDIO: THE GUIDE VOICE ────────────────────────────────
+ * Tom, 2026-08-29: the instructions and encouragements "are not linked to a
+ * course per se - they are linked to every course with the same known language,
+ * because these are messages to the learner". So beside the male/female PHRASE
+ * slots each language carries a GUIDE slot, cast against the language as a
+ * KNOWN language. Two facts about it that this module is careful with:
+ *
+ *   It NEVER touches completeness. `statusFor`, `filled` and `required` count
+ *   the two primary phrase voices and nothing else — Tom's 2026-08-28 ruling,
+ *   unchanged. Only twelve of the estate's sixty-eight languages are ever a
+ *   known language, so letting an uncast guide count would turn the whole
+ *   screen amber overnight and stop it saying anything.
+ *
+ *   It shows WHO SPEAKS TODAY beside the empty slot, read from the
+ *   `voice_guide_in_use` view (a GROUP BY over course_audio). The estate has
+ *   been doing the right thing by hand for a long time — one voice per known
+ *   language already — so casting is confirming a fact, not making a choice
+ *   from nothing.
+ *
  * ── WHAT THIS MODULE WILL NEVER DO ──────────────────────────────────────────
  * It writes `voice_language_roles` and nothing else. It does not write
  * `course_audio`, `algorithm_config` or any course's `voice_config` — the Voice
@@ -87,10 +106,16 @@ async function build (db, opts = {}) {
   // provider would be the one provider you could not choose. Casting one
   // registers it; see router.cjs.
   const catalogue = opts.cartesiaCatalogue || {}
-  const [courses, voices, roles] = await Promise.all([
-    all(db, 'courses', 'course_code, target_lang, status, voice_config'),
+  const [courses, voices, roles, guideInUse] = await Promise.all([
+    all(db, 'courses', 'course_code, target_lang, known_lang, status, voice_config'),
     all(db, 'voices', 'voice_id, type, tts_engine, display_name, human_name, languages, gender, is_active, notes'),
-    all(db, 'voice_language_roles', 'language, gender, rank, voice_id, notes, assigned_by'),
+    all(db, 'voice_language_roles', 'language, gender, rank, voice_id, notes, assigned_by, slot'),
+    // Who ACTUALLY speaks the instructions today, per known language. About a
+    // dozen rows: the GROUP BY is the view's, not this module's, because doing
+    // it here would mean paging ~6,300 course_audio rows on every page load.
+    // A view that has not been created yet must degrade to "unknown", never to
+    // a broken screen — see allSoft.
+    allSoft(db, 'voice_guide_in_use', 'known_lang, role, voice_id, clips, courses'),
   ])
 
   const voiceById = new Map(voices.map((v) => [v.voice_id, v]))
@@ -111,13 +136,71 @@ async function build (db, opts = {}) {
     rolesByLang.get(r.language).push(r)
   }
 
+  // ── LANGUAGES NOBODY TEACHES BUT SOMEBODY LEARNS FROM ─────────────────────
+  // Six of the estate's twenty-five known languages (aze, guj, pan, sin, tam,
+  // urd) are the known side of a course and the target side of none, so they
+  // had no row on this screen at all — and therefore no way to cast the guide
+  // voice their learners already hear. sin and tam have real instruction clips
+  // today. They get a row with zero teaching courses and the status
+  // 'knownonly', which is deliberately NOT a gap: nothing teaches them, so
+  // asking for a male and a female phrase voice would be the screen inventing a
+  // worklist. Every other language's status is untouched by this.
+  for (const c of courses) {
+    const k = String(c.known_lang || '').trim()
+    if (k && !byLang.has(k)) byLang.set(k, [])
+  }
+
+  // How many courses use each language as their KNOWN language. This is what
+  // makes a guide slot make sense on the row of a language nobody teaches from:
+  // twelve languages carry a real number here and fifty-six carry zero.
+  const knownCounts = new Map()
+  for (const c of courses) {
+    const k = String(c.known_lang || '').trim()
+    if (!k) continue
+    knownCounts.set(k, (knownCounts.get(k) || 0) + 1)
+  }
+
+  // The measured in-use guide voices, keyed by known language, biggest first.
+  const inUseByLang = new Map()
+  for (const g of guideInUse) {
+    const k = String(g.known_lang || '').trim()
+    if (!k) continue
+    if (!inUseByLang.has(k)) inUseByLang.set(k, [])
+    inUseByLang.get(k).push(g)
+  }
+
   const languages = [...byLang.entries()]
-    .map(([code, langCourses]) => describeLanguage({ code, langCourses, roles: rolesByLang.get(code) || [], voiceById, voices, catalogue }))
+    .map(([code, langCourses]) => describeLanguage({
+      code,
+      langCourses,
+      roles: rolesByLang.get(code) || [],
+      voiceById,
+      voices,
+      catalogue,
+      knownCourses: knownCounts.get(code) || 0,
+      guideInUse: inUseByLang.get(code) || [],
+    }))
     .sort((a, b) => {
-      // Worst first: the screen's job is to show what is missing, so a language
-      // needing casting must not be buried under a page of complete ones.
-      const rank = (l) => (l.status === 'uncast' ? 0 : l.status === 'partial' ? 1 : l.status === 'nocover' ? 2 : l.status === 'human' ? 3 : 4)
-      return rank(a) - rank(b) || b.courses - a.courses || a.code.localeCompare(b.code)
+      // LIVE COURSES FIRST, THEN COURSE COUNT, THEN THE LANGUAGE'S NAME.
+      //
+      // Tom's ruling, 2026-08-29, looking at the live page: "the order of
+      // languages is weird on the main page - doesn't seem to follow any
+      // discernible logic". Two things were wrong with the old order. It sorted
+      // by STATUS first (worst first), which is a defensible order but not the
+      // one he wants to read; and its final tiebreak was the three-letter CODE,
+      // which is not a sort key he can see, so the tail of the list read as
+      // noise. The status chips, colours and filters are untouched — a gap
+      // still reads as a gap — but the ROW ORDER is his, not the status's.
+      //
+      // The name leg cannot be done here: the estate's one code-to-name lookup
+      // (src/utils/languageNames.js) is a front-end module that fetches a CSV
+      // asynchronously, and dragging it server-side to sort a list would be a
+      // second answer to a question that already has one. So this emits the
+      // first two legs plus a stable code tiebreak, and the final ordering by
+      // NAME happens in LanguagesPanel.vue's `rows`, where the lookup already
+      // lives and is already used for search.
+      const live = (l) => (l.released > 0 ? 0 : 1)
+      return live(a) - live(b) || b.courses - a.courses || a.code.localeCompare(b.code)
     })
 
   return { languages, summary: summarise(languages), notes: notes() }
@@ -209,16 +292,26 @@ function providersInUse (langCourses) {
 }
 
 /** One language's row. */
-function describeLanguage ({ code, langCourses, roles, voiceById, voices, catalogue = {} }) {
+function describeLanguage ({ code, langCourses, roles, voiceById, voices, catalogue = {}, knownCourses = 0, guideInUse = [] }) {
   const human = isHumanVoiceLang(code)
   const cartesiaCovers = policy.cartesiaCoversLanguage(code)
+  // No course teaches this language; it only ever appears on the known side.
+  // Its phrase slots are not a gap, and `statusFor` is told so.
+  const knownOnly = langCourses.length === 0
   const inUse = providersInUse(langCourses)
+
+  // A row with no `slot` is a PHRASE row: the column arrived on 2026-08-29 with
+  // a 'phrase' default, and reading a missing value as anything else would let
+  // an old row silently become a guide.
+  const isGuide = (r) => r.slot === 'guide'
+  const phraseRoles = roles.filter((r) => !isGuide(r))
+  const guideRoles = roles.filter(isGuide)
 
   const slots = {}
   for (const g of GENDERS) {
     slots[g] = []
     for (let rank = 0; rank < REQUIRED_RANKS; rank += 1) {
-      const role = roles.find((r) => r.gender === g && r.rank === rank)
+      const role = phraseRoles.find((r) => r.gender === g && r.rank === rank)
       const voice = role ? voiceById.get(role.voice_id) : null
       slots[g].push({
         rank,
@@ -249,6 +342,29 @@ function describeLanguage ({ code, langCourses, roles, voiceById, voices, catalo
   const backedUpGenders = GENDERS.filter((g) => slots[g].slice(COMPLETE_RANKS).some((s) => s.filled && s.active !== false))
   const hasFullBackup = backedUpGenders.length === GENDERS.length
 
+  // ── THE GUIDE SLOT ────────────────────────────────────────────────────────
+  // One voice per language, not a pair: ranks only, no gender axis. `gender` on
+  // a guide row records the voice's own gender and is passed through untouched
+  // so the writer can round-trip it; nothing reads it to make a decision.
+  const guideSlots = []
+  for (let rank = 0; rank < REQUIRED_RANKS; rank += 1) {
+    const role = guideRoles.find((r) => r.rank === rank)
+    const voice = role ? voiceById.get(role.voice_id) : null
+    guideSlots.push({
+      rank,
+      rankName: rankName(rank),
+      filled: Boolean(voice),
+      active: voice ? voice.is_active !== false : null,
+      voiceId: role ? role.voice_id : null,
+      voiceName: voice ? (voice.display_name || voice.human_name || voice.voice_id) : null,
+      kind: voice ? voiceKind(voice) : null,
+      engine: voice ? (voice.tts_engine || null) : null,
+      gender: role ? role.gender : null,
+      notes: role ? role.notes : null,
+      assignedBy: role ? role.assigned_by : null,
+    })
+  }
+
   return {
     code,
     courses: langCourses.length,
@@ -267,7 +383,29 @@ function describeLanguage ({ code, langCourses, roles, voiceById, voices, catalo
     required,
     hasFullBackup,
     backedUpGenders,
-    status: statusFor({ human, cartesiaCovers, filled, required }),
+    // DELIBERATELY computed from the PHRASE slots alone. An uncast guide is an
+    // empty slot on the row, never a status regression — only twelve languages
+    // are ever a known language, and letting the guide count would turn 68 rows
+    // amber and stop the screen saying anything (Tom's completeness ruling,
+    // 2026-08-28, survives this change untouched).
+    knownOnly,
+    status: statusFor({ human, cartesiaCovers, filled, required, knownOnly }),
+    // ── The guide voice, cast against this language as a KNOWN language ─────
+    // `knownCourses` is what makes the slot legible on the row of a language
+    // nobody teaches from: 0 means nobody hears instructions in it.
+    knownCourses,
+    guide: {
+      slots: guideSlots,
+      cast: guideSlots.some((s) => s.filled && s.active !== false),
+      // What the estate's existing clips actually use, measured, biggest first.
+      // "eng is currently Aran, uncast" is the whole point: casting confirms a
+      // fact rather than inventing one.
+      inUse: guideVoicesInUse(guideInUse, voiceById),
+      // Any active castable voice that declares this language. NOT filtered by
+      // gender — a guide is one voice, and the male/female split is a property
+      // of the phrase slots only.
+      candidates: guideCandidates({ code, voices, guideRoles, voiceById, inUse: guideInUse }),
+    },
     // Voices that CAN speak this language and are not yet cast — the candidate
     // list, so casting is a click rather than a search.
     candidates: voices
@@ -279,6 +417,101 @@ function describeLanguage ({ code, langCourses, roles, voiceById, voices, catalo
       .concat(cartesiaCandidates(code, catalogue, roles))
       .slice(0, 80),
   }
+}
+
+/**
+ * The guide voices this language's clips ACTUALLY use today.
+ *
+ * Read from the `voice_guide_in_use` view, folded across the two guide roles so
+ * the screen says "Aran, 2,688 clips" rather than listing instruction and
+ * encouragement separately — they are the same decision and, measured on
+ * 2026-08-29, always the same voice.
+ *
+ * `human_recording` is reported like any other voice and MUST be: 765 English
+ * instruction clips are human-recorded, and hiding that would invite somebody
+ * to cast a synthetic voice over a human recording.
+ */
+function guideVoicesInUse (rows, voiceById) {
+  const byVoice = new Map()
+  for (const r of rows || []) {
+    const id = r.voice_id
+    if (!id) continue
+    if (!byVoice.has(id)) byVoice.set(id, { voiceId: id, clips: 0, roles: [] })
+    const e = byVoice.get(id)
+    e.clips += Number(r.clips || 0)
+    if (r.role && !e.roles.includes(r.role)) e.roles.push(r.role)
+  }
+  return [...byVoice.values()]
+    .map((e) => {
+      const v = voiceById.get(e.voiceId)
+      return {
+        ...e,
+        human: e.voiceId === 'human_recording' || (v && v.type === 'human'),
+        name: v ? (v.display_name || v.human_name || v.voiceId) : e.voiceId,
+        kind: v ? voiceKind(v) : (e.voiceId === 'human_recording' ? 'human' : providerOfVoiceId(e.voiceId)),
+        // A voice with no `voices` row cannot be cast until it has one: the
+        // slot table carries a foreign key. Eleven of the twelve known
+        // languages' guide voices are in this state, so the flag is what tells
+        // the UI to offer "cast the voice already in use" rather than nothing.
+        registered: Boolean(v),
+      }
+    })
+    .sort((a, b) => b.clips - a.clips)
+}
+
+/** The provider a voice id's SHAPE implies, with no `voices` row to ask. */
+function providerOfVoiceId (id) {
+  const canon = tryCanonicalVoiceId(id)
+  return canon ? canon.split('_')[0] : 'unknown'
+}
+
+/**
+ * Voices offerable for this language's GUIDE slot.
+ *
+ * Two sources, and the second is what makes casting one click rather than an
+ * archaeology exercise:
+ *   1. registered, active, castable voices that declare the language — NOT
+ *      filtered by gender, because a guide is one voice and the male/female
+ *      split belongs to the phrase slots alone;
+ *   2. the voice the language's clips ALREADY use, even when it has no `voices`
+ *      row yet. Eleven of the twelve known languages are in that state. It is
+ *      offered with `registered: false` and `inUse: true`, and the cast route
+ *      registers it before writing the slot.
+ *
+ * `human_recording` is never offered: it is a marker on a clip, not a voice
+ * anything can render with, and casting it would fill a slot with something
+ * that cannot speak.
+ */
+function guideCandidates ({ code, voices, guideRoles, voiceById, inUse }) {
+  const taken = new Set((guideRoles || []).map((r) => r.voice_id))
+  const registered = voices
+    .filter((v) => v.is_active !== false)
+    .filter((v) => castable(v))
+    .filter((v) => (v.languages || []).some((l) => sameLang(l, code)))
+    .filter((v) => !taken.has(v.voice_id))
+    .map((v) => ({
+      voiceId: v.voice_id,
+      name: v.display_name || v.human_name || v.voice_id,
+      kind: voiceKind(v),
+      engine: v.tts_engine || null,
+      gender: v.gender || null,
+      registered: true,
+      inUse: false,
+    }))
+  const seen = new Set(registered.map((c) => c.voiceId))
+  const unregistered = [...new Set((inUse || []).map((r) => r.voice_id))]
+    .filter((id) => id && id !== 'human_recording')
+    .filter((id) => !taken.has(id) && !seen.has(id) && !voiceById.has(id))
+    .map((id) => ({
+      voiceId: id,
+      name: `${id} — already speaking this language`,
+      kind: providerOfVoiceId(id),
+      engine: providerOfVoiceId(id),
+      gender: null,
+      registered: false,
+      inUse: true,
+    }))
+  return [...unregistered, ...registered].slice(0, 80)
 }
 
 /**
@@ -357,7 +590,12 @@ function providerFor (code) {
   }
 }
 
-function statusFor ({ human, cartesiaCovers, filled, required }) {
+function statusFor ({ human, cartesiaCovers, filled, required, knownOnly = false }) {
+  // A language nothing teaches has no phrase-voice worklist to report. It is on
+  // the screen so its GUIDE can be cast — the voice its learners hear
+  // instructions in — and calling that "uncast" would invent a casting job the
+  // estate does not have (2026-08-29).
+  if (knownOnly) return 'knownonly'
   // Human first and unconditionally: a human-voiced language's empty synthetic
   // slots are a recording worklist, never a casting gap.
   if (human) return 'human'
@@ -375,6 +613,7 @@ function summarise (languages) {
     uncast: count('uncast'),
     nocover: count('nocover'),
     human: count('human'),
+    knownonly: count('knownonly'),
     // Quiet insurance flag, never a completeness count: complete languages
     // that would lose a voice with no fallback cast.
     noBackup: languages.filter((l) => l.status === 'complete' && !l.hasFullBackup).length,
@@ -414,12 +653,26 @@ function providerTotals (languages) {
 function notes () {
   return {
     completeness: `A language is complete when both genders have a primary voice cast (${GENDERS.length * COMPLETE_RANKS} voices: one male, one female). Backups are tracked up to ${REQUIRED_RANKS} ranks per gender but are insurance, not part of completeness — a missing backup shows as a quiet flag, never red. Tom's ruling, 2026-08-28.`,
+    knownonly: 'A few languages are the KNOWN side of a course and the target side of none — nothing teaches them, so they have no phrase-voice worklist and are reported as "known only", never as a gap. They are on this screen so their guide voice can be cast: their learners hear instructions today, and without a row there was no way to cast who speaks them.',
     human: 'Human-voiced languages (Welsh, Breton, PDC) are reported as "human", never as a gap. A human recording wins wherever it exists and no TTS provider may ever be selected for them.',
     nocover: 'Cartesia does not publish every language. Where it does not, the ladder falls to Azure — that is "nocover", which is covered, just not by the default provider. Welsh is NOT in Cartesia\'s published list, which is why the flagship courses could never have been Cartesia-only.',
     writes: 'This screen writes voice_language_roles and nothing else. It never writes course_audio, algorithm_config or any course voice_config.',
     inUse: 'The "In use now" column is read from each course\'s own stored voice_config — the per-role provider, never the boilerplate `providers` block every course carries. "If re-rendered" is a different and hypothetical thing: what the provider policy would choose for a NEW render today. A language can be entirely on xAI now and say Azure there.',
+    guide: 'The GUIDE slot is the instruction and encouragement voice, and it is cast against the language as a KNOWN language — those clips are messages to the learner, shared by every course with the same known language, not course material (Tom, 2026-08-29). It is one voice, not a male/female pair, and it NEVER counts toward completeness: only twelve of the estate\'s languages are ever a known language. "In use now" beside the slot is measured from the clips that exist, so casting confirms who already speaks rather than choosing from nothing.',
     castable: `Retired and unrenderable voices are not offered for casting: ${[...policy.RETIRED_PROVIDERS].join(', ')} plus rows with no engine. Their clips still play — retirement is from selection only — but a slot filled with a voice that cannot render would read as covered while being broken.`,
   }
+}
+
+/**
+ * `all`, but a missing relation is an empty list rather than a 500.
+ *
+ * Used for `voice_guide_in_use`, whose migration may not have run on a given
+ * environment yet. A screen that cannot say who speaks today is degraded; a
+ * screen that will not load at all is broken, and the guide slot is an addition
+ * to this page rather than its reason for existing.
+ */
+async function allSoft (db, table, columns) {
+  try { return await all(db, table, columns) } catch (e) { return [] }
 }
 
 /** Page through PostgREST's 1000-row default so a 70-language estate is not truncated. */
@@ -434,4 +687,7 @@ async function all (db, table, columns) {
   }
 }
 
-module.exports = { build, describeLanguage, providerOfRole, providersInUse, statusFor, rankName, sameLang, voiceKind, castable, cartesiaCandidates, REQUIRED_RANKS, COMPLETE_RANKS, GENDERS }
+/** The casting slots this registry knows about. 'phrase' is the default in the DB. */
+const SLOTS = Object.freeze(['phrase', 'guide'])
+
+module.exports = { build, describeLanguage, providerOfRole, providersInUse, statusFor, rankName, sameLang, voiceKind, castable, cartesiaCandidates, guideCandidates, guideVoicesInUse, REQUIRED_RANKS, COMPLETE_RANKS, GENDERS, SLOTS }

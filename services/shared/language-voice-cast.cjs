@@ -65,7 +65,49 @@ const { voiceSpellings } = require('./clip-identity-lookup.cjs');
  * This is a DEFAULT chosen on 2026-08-29, not a ruling from Tom: one word from
  * him moves `presentation` into this list.
  */
-const CAST_ROLES = Object.freeze(['known', 'target1', 'target2']);
+const CAST_ROLES = Object.freeze(['known', 'target1', 'target2', 'instruction', 'encouragement']);
+
+/**
+ * ── THE GUIDE ROLES ─────────────────────────────────────────────────────────
+ *
+ * Tom, 2026-08-29:
+ *   "the instructions and the encouragements - are currently mostly done in
+ *    Aran's Eleven Labs voice … these are not linked to a course per se - they
+ *    are linked to every course with the same known language, because these are
+ *    messages to the learner, encouragements and so on"
+ *
+ * So these two are a THIRD kind of audio. Not the material being taught, not
+ * the same phrases in the other role — the app talking to the learner. They
+ * resolve against the KNOWN language (phase8-audio-v13 already maps them there)
+ * and against the GUIDE slot of the cast, which is ONE voice per language
+ * rather than a male/female pair: Aran speaks to every English-known learner
+ * across every course.
+ *
+ * Because a guide is one voice, gender plays no part in resolving it. The
+ * `gender` on a guide row records the voice's own gender as a fact and is
+ * ignored here; the lowest-rank ACTIVE guide row for the language wins.
+ *
+ * THE PROVIDER, WHICH IS THE TRAP. Every guide voice in the estate today is
+ * ElevenLabs, and tts-provider-policy.cjs never reaches ElevenLabs
+ * automatically because it is expensive. That is correct and untouched. A CAST
+ * guide voice is not automatic — it is a human clicking a name on a screen —
+ * and it arrives at the ladder as `configuredProvider`, which selectProvider
+ * already honours at rung 4 with the reason "stored config is a deliberate
+ * choice, not an automatic fallback". So Aran stays Aran. Nothing here weakens
+ * the ladder; it does not have to, because the distinction already exists.
+ */
+const GUIDE_ROLES = Object.freeze(new Set(['instruction', 'encouragement']));
+
+/** Is this role spoken by the guide, rather than by a phrase voice? */
+function isGuideRole(role) { return GUIDE_ROLES.has(role); }
+
+/**
+ * Which casting slot a role reads from. A row with no `slot` is a PHRASE row:
+ * the column landed on 2026-08-29 with a 'phrase' default, and reading a
+ * missing value as anything else would let an old row silently become a guide.
+ */
+function slotForRole(role) { return isGuideRole(role) ? 'guide' : 'phrase'; }
+function slotOfRow(r) { return r.slot || 'phrase'; }
 
 /**
  * Which language a role speaks. `known` speaks the course's known_lang;
@@ -73,7 +115,12 @@ const CAST_ROLES = Object.freeze(['known', 'target1', 'target2']);
  */
 function languageForRole(role, course) {
   if (!course) return null;
-  const v = role === 'known' ? course.known_lang : course.target_lang;
+  // `known`, and both guide roles, speak the course's KNOWN language.
+  // Instructions and encouragements are messages TO the learner, so they are
+  // spoken in the language the learner already has — which is exactly the
+  // mapping phase8-audio-v13 already makes for those two roles.
+  const knownSide = role === 'known' || isGuideRole(role);
+  const v = knownSide ? course.known_lang : course.target_lang;
   return v ? String(v).trim() : null;
 }
 
@@ -123,9 +170,14 @@ function isOverridden(voiceConfig, role) {
  * That is the whole reason Tom asked for backups: "in case for whatever reason
  * there's a problem". A backup is never preferred over a working primary.
  */
-function pickCastVoice(roles, voiceById, language, gender) {
+function pickCastVoice(roles, voiceById, language, gender, slot = 'phrase') {
   const slots = roles
-    .filter((r) => r.language === language && r.gender === gender)
+    .filter((r) => slotOfRow(r) === slot)
+    .filter((r) => r.language === language)
+    // A GUIDE is one voice per language, so gender is not part of the key and
+    // is deliberately not matched on. A PHRASE slot is a male/female pair, so
+    // it is.
+    .filter((r) => slot === 'guide' || r.gender === gender)
     .sort((a, b) => a.rank - b.rank);
   for (const slot of slots) {
     const voice = voiceById.get(slot.voice_id);
@@ -196,17 +248,19 @@ function applyLanguageCast({ voiceConfig, course, roles = [], voices = [] }) {
     const language = languageForRole(role, course);
     if (!language) { decisions.push({ role, source: 'stored', reason: 'no language on course' }); continue; }
 
-    const gender = genderForRole(role, roleConfig, voiceGenderById);
-    const cast = pickCastVoice(roles, voiceById, language, gender);
+    const slot = slotForRole(role);
+    // A guide has no gender axis; reading one would be inventing a key.
+    const gender = slot === 'guide' ? null : genderForRole(role, roleConfig, voiceGenderById);
+    const cast = pickCastVoice(roles, voiceById, language, gender, slot);
     if (!cast) {
-      decisions.push({ role, source: 'stored', language, gender, reason: 'nothing cast' });
+      decisions.push({ role, source: 'stored', slot, language, gender, reason: 'nothing cast' });
       continue;
     }
 
     // The cast names the same voice the course already stores — say so, and
     // leave the stored object alone so its per-voice settings survive intact.
     if (voiceSpellings(roleConfig.voiceId, { provider: roleConfig.provider }).includes(cast.voice.voice_id)) {
-      decisions.push({ role, source: 'cast-same', language, gender, rank: cast.rank, voiceId: roleConfig.voiceId });
+      decisions.push({ role, source: 'cast-same', slot, language, gender, rank: cast.rank, voiceId: roleConfig.voiceId });
       continue;
     }
 
@@ -221,10 +275,10 @@ function applyLanguageCast({ voiceConfig, course, roles = [], voices = [] }) {
       // at its own natural pace; a correction for it is a per-voice fact to be
       // set again, not inherited from a stranger.
       settings: { ...(roleConfig.settings || {}), speed: 1.0 },
-      castFrom: { language, gender, rank: cast.rank },
+      castFrom: { slot, language, gender, rank: cast.rank },
     };
     decisions.push({
-      role, source: 'language-cast', language, gender, rank: cast.rank,
+      role, source: 'language-cast', slot, language, gender, rank: cast.rank,
       voiceId: cast.voice.voice_id, replaced: roleConfig.voiceId || null,
     });
   }
@@ -239,6 +293,9 @@ module.exports = {
   isOverridden,
   pickCastVoice,
   providerOfVoice,
+  isGuideRole,
+  slotForRole,
   CAST_ROLES,
+  GUIDE_ROLES,
   DEFAULT_GENDER,
 };

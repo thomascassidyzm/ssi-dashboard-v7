@@ -141,7 +141,11 @@ function mount (app, deps) {
   })
 
   /**
-   * Cast a voice into a (language, gender, rank) slot.
+   * Cast a voice into a slot: (slot, language, gender, rank).
+   *
+   * `slot` is 'phrase' (the male/female course-material voices — the default,
+   * and what every existing caller means) or 'guide' (the instruction and
+   * encouragement voice, one per KNOWN language, no gender axis).
    *
    * SPENDS NOTHING. This writes one row of voice_language_roles and nothing
    * else — no render is triggered, no course_audio row is touched, no
@@ -153,9 +157,20 @@ function mount (app, deps) {
     if (!user) return
     try {
       const language = String(req.params.language || '').trim()
-      const { gender, rank, voiceId, notes = null } = req.body || {}
+      const { rank, voiceId, notes = null } = req.body || {}
+      // THE GUIDE SLOT IS NOT A GENDERED SLOT (Tom, 2026-08-29). It is one
+      // voice per known language — the instruction and encouragement voice —
+      // so a guide cast carries no gender from the caller. `gender` is still
+      // written, because it is in the primary key, but it records the VOICE's
+      // own gender as a fact and nothing reads it to decide anything. A partial
+      // unique index keeps one guide per (language, rank) regardless.
+      const slot = String((req.body || {}).slot || 'phrase')
+      if (!registry.SLOTS.includes(slot)) {
+        throw Object.assign(new Error(`slot must be one of ${registry.SLOTS.join(', ')}`), { status: 400 })
+      }
+      const gender = slot === 'guide' ? null : (req.body || {}).gender
       if (!language) throw Object.assign(new Error('language is required'), { status: 400 })
-      if (!registry.GENDERS.includes(gender)) {
+      if (slot === 'phrase' && !registry.GENDERS.includes(gender)) {
         throw Object.assign(new Error(`gender must be one of ${registry.GENDERS.join(', ')}`), { status: 400 })
       }
       const r = Number(rank)
@@ -171,7 +186,8 @@ function mount (app, deps) {
       // still only a catalogue lookup and an upsert; nothing renders.
       let slotVoiceId = String(voiceId)
       const { data: existing } = await supabase()
-        .from('voices').select('voice_id').eq('voice_id', slotVoiceId).maybeSingle()
+        .from('voices').select('voice_id, gender').eq('voice_id', slotVoiceId).maybeSingle()
+      let voiceGender = existing ? existing.gender : null
       if (!existing && /^cartesia_/.test(slotVoiceId)) {
         const meta = await cartesia.fetchVoice(slotVoiceId)
         const voice = await cartesia.registerVoice(supabase(), {
@@ -182,18 +198,53 @@ function mount (app, deps) {
           registeredBy: who(user),
         })
         slotVoiceId = voice.voice_id
+        voiceGender = voice.gender || null
       }
+
+      // ── THE VOICE ALREADY SPEAKING THIS LANGUAGE ────────────────────────
+      // Eleven of the twelve known languages read their instructions in a voice
+      // that has no `voices` row — the estate has been rendering them from
+      // per-course voice_config blocks for a long time. The slot table carries
+      // a foreign key, so without this the Languages screen would show "eng is
+      // currently Aran" beside a slot that could not be cast. Registering is a
+      // single upsert of what the voice id already tells us; NOTHING renders,
+      // and `human_recording` is refused because it is a marker on a clip
+      // rather than a voice anything can speak with.
+      if (!existing && !/^cartesia_/.test(slotVoiceId)) {
+        if (slotVoiceId === 'human_recording') {
+          throw Object.assign(new Error('human_recording is a marker on a clip, not a voice that can be cast into a slot.'), { status: 400 })
+        }
+        const engine = String(slotVoiceId).split('_')[0].toLowerCase()
+        const { error: regErr } = await supabase().from('voices').upsert({
+          voice_id: slotVoiceId,
+          type: 'tts',
+          tts_engine: engine,
+          display_name: slotVoiceId,
+          languages: [language],
+          gender: registry.GENDERS.includes(gender) ? gender : null,
+          is_active: true,
+          notes: `Registered by the Voice Lab on ${new Date().toISOString().slice(0, 10)} when cast into the ${slot} slot for ${language}: it was already speaking this language's clips but had no voices row.`,
+        }, { onConflict: 'voice_id' })
+        if (regErr) throw Object.assign(new Error(`could not register voice ${slotVoiceId}: ${regErr.message}`), { status: 400 })
+        voiceGender = registry.GENDERS.includes(gender) ? gender : null
+      }
+
+      // A guide row's gender is the VOICE's own, recorded as a fact and read by
+      // nothing. Where the voice row carries none — Aran's does not — 'm' is
+      // written to satisfy the key's NOT NULL, and the one-guide-per-rank index
+      // is what actually keeps the slot single.
+      const rowGender = slot === 'guide' ? (registry.GENDERS.includes(voiceGender) ? voiceGender : 'm') : gender
 
       const { error } = await supabase()
         .from('voice_language_roles')
         .upsert({
-          language, gender, rank: r, voice_id: slotVoiceId, notes,
+          language, gender: rowGender, rank: r, slot, voice_id: slotVoiceId, notes,
           assigned_by: who(user), updated_at: new Date().toISOString(),
-        }, { onConflict: 'language,gender,rank' })
+        }, { onConflict: 'slot,language,gender,rank' })
       if (error) throw Object.assign(new Error(error.message), { status: 400 })
 
-      logger.log?.(`[voicelab] cast ${language}/${gender}/rank${r} = ${slotVoiceId} by ${who(user)}`)
-      res.json({ ok: true, language, gender, rank: r, voiceId: slotVoiceId })
+      logger.log?.(`[voicelab] cast ${slot} ${language}/${rowGender}/rank${r} = ${slotVoiceId} by ${who(user)}`)
+      res.json({ ok: true, language, slot, gender: rowGender, rank: r, voiceId: slotVoiceId })
     } catch (err) { fail(res, err, 'cast') }
   })
 
@@ -261,18 +312,27 @@ function mount (app, deps) {
     if (!user) return
     try {
       const language = String(req.params.language || '').trim()
+      const slot = String(req.query.slot || 'phrase')
       const gender = String(req.query.gender || '')
       const rank = Number(req.query.rank)
-      if (!language || !registry.GENDERS.includes(gender) || !Number.isInteger(rank)) {
-        throw Object.assign(new Error('language, gender and rank are all required'), { status: 400 })
+      if (!registry.SLOTS.includes(slot)) {
+        throw Object.assign(new Error(`slot must be one of ${registry.SLOTS.join(', ')}`), { status: 400 })
       }
-      const { error } = await supabase()
+      // A guide slot is keyed by (language, rank) alone, so clearing one does
+      // not need — and must not require — a gender the caller has no business
+      // knowing.
+      if (!language || !Number.isInteger(rank) || (slot === 'phrase' && !registry.GENDERS.includes(gender))) {
+        throw Object.assign(new Error('language and rank are required, plus gender for a phrase slot'), { status: 400 })
+      }
+      let q = supabase()
         .from('voice_language_roles')
         .delete()
-        .eq('language', language).eq('gender', gender).eq('rank', rank)
+        .eq('slot', slot).eq('language', language).eq('rank', rank)
+      if (slot === 'phrase') q = q.eq('gender', gender)
+      const { error } = await q
       if (error) throw Object.assign(new Error(error.message), { status: 400 })
-      logger.log?.(`[voicelab] cleared ${language}/${gender}/rank${rank} by ${who(user)}`)
-      res.json({ ok: true, language, gender, rank })
+      logger.log?.(`[voicelab] cleared ${slot} ${language}/${gender || '-'}/rank${rank} by ${who(user)}`)
+      res.json({ ok: true, language, slot, gender, rank })
     } catch (err) { fail(res, err, 'clear') }
   })
 
