@@ -143,5 +143,80 @@ const S = (known_text, target_text, seed_number) => ({ known_text, target_text, 
   ok(b.phrases[1].db_id === 'spa_for_eng:S0599L03U02', 'the real deterministic id is passed through for display');
 }
 
-console.log(fail ? `${fail} failing assertion(s)` : 'ok — derivation returns all four verdicts, attributes new sides to their lego, scopes floors per basket, excludes components, and mints lab-side phrase ids');
+// ---- ATOMISATION: promotion, not new material ----------------------------
+{
+  const { findAtomisations } = require('./derive-seed-job.cjs');
+  const priorLegos = [{ seed_number: 152, lego_index: 1, known_text: 'I would have done it', target_text: 'lo habría hecho' }];
+  const priorComponents = [{ seed_number: 152, lego_index: 3, known_text: 'I had known', target_text: 'Hubiera sabido' }];
+  const a = findAtomisations({
+    ownLegos: [
+      { lego_index: 1, known_text: 'I would have', target_text: 'habría' },     // bundled inside an M-LEGO
+      { lego_index: 4, known_text: "you'd told", target_text: 'hubieras' },     // never seen at all: NOT a promotion
+      { lego_index: 5, known_text: 'I had known', target_text: 'hubiera sabido' }, // was a component: promotion
+    ], priorLegos, priorComponents });
+  ok(a.length === 2, `habría and hubiera sabido are promotions, hubieras is new material, got ${a.length}`);
+  ok(a[0].how === 'bundled' && a[0].from_seed === 152, 'habría is evidenced against the M-LEGO that carried it');
+  ok(a.some(x => x.target_text === 'hubiera sabido' && x.how === 'component'),
+     'a form that was only ever a component is promoted when it becomes a LEGO');
+  ok(!a.some(x => x.target_text === 'hubieras'),
+     'a form with no earlier appearance is new material, not a promotion — the derivation must not flatter itself');
+
+  // a form that was ALREADY a lego of its own is not a promotion either
+  ok(findAtomisations({ ownLegos: [{ lego_index: 1, known_text: 'x', target_text: 'habría' }],
+                        priorLegos: [{ seed_number: 9, target_text: 'habría' }], priorComponents: [] }).length === 0,
+     're-admitting an existing LEGO is not an atomisation');
+
+  // ...and it ranks below NEW FRAME / NEW SIDE, above LEXICAL ONLY
+  const job = deriveJob({
+    seedRow: S('I would have driven', 'habría conducido'),
+    ownLegos: [{ lego_index: 1, known_text: 'I would have', target_text: 'habría' }],
+    priorSeeds: [S('I would have done it differently', 'lo habría hecho de manera diferente', 152)],
+    priorLegos, priorComponents,
+  });
+  ok(job.verdict === 'ATOMISATION', `promotion outranks LEXICAL ONLY, got ${job.verdict}`);
+  ok(/STATUS/.test(job.sentence), 'the sentence says what is new is status, not material');
+}
+
+// ---- the per-LEGO availability window ------------------------------------
+{
+  const { availableVocab, attestedFrames } = require('./availability.cjs');
+  const legos = [
+    { seed_number: 598, lego_index: 1, known_text: 'old', target_text: 'viejo' },
+    { seed_number: 599, lego_index: 1, known_text: 'I would have', target_text: 'habría' },
+    { seed_number: 599, lego_index: 2, known_text: 'been happy', target_text: 'estado encantado' },
+    { seed_number: 599, lego_index: 3, known_text: 'to drive', target_text: 'conducir' },
+  ];
+  const components = [
+    { seed_number: 152, lego_index: 3, known_text: 'if', target_text: 'si' },
+    { seed_number: 599, lego_index: 2, known_text: 'happy', target_text: 'encantado' },
+  ];
+  const v = (k) => availableVocab({ legos, components, seed: 599, legoIndex: k }).map(x => x.target_text);
+  ok(v(1).join() === 'viejo,si', `LEGO 1 has only prior seeds and their components, got ${v(1).join()}`);
+  ok(v(2).includes('habría') && !v(2).includes('estado encantado'), 'LEGO 2 gets LEGO 1 and not itself');
+  ok(v(3).includes('encantado'), "LEGO 3 gets LEGO 2's COMPONENT — the glue is legitimately seen material");
+  ok(!v(3).includes('conducir'), 'a basket never gets its own LEGO from the pool');
+  ok(v(1).includes('si'), 'components of earlier seeds are available vocabulary');
+
+  // frames are attested PER COURSE, from this course's own known side
+  const f = attestedFrames([S('I want to speak Spanish', 'x', 1)], S('do you want to speak Spanish?', 'y', 2));
+  ok(f.get('P1') === 1, 'a frame is dated by the first seed of THIS course that fired it');
+  ok(f.has('P20') && f.get('P20') === 2, 'the question frame is attested only from the seed that asked one');
+}
+
+// ---- FRAME is scored against what was instantiable, not an absolute --------
+{
+  const legos = [{ lego_index: 1, known_text: 'driven', target_text: 'conducido' }];
+  const rows = ['driven home', 'driven there', 'driven again', 'driven twice'].map((known_text, i) =>
+    ({ phrase_role: 'use', lego_index: 1, position: i + 1, known_text, target_text: 'conducido' }));
+  const rich = scoreBaskets(rows, { legos, instantiableFrames: 30 }).baskets[0].score;
+  const poor = scoreBaskets(rows, { legos, instantiableFrames: 1 }).baskets[0].score;
+  ok(rich.frame_ceiling === 4, `a rich pool leaves the phrase count as the ceiling, got ${rich.frame_ceiling}`);
+  ok(poor.frame_ceiling === 1, `a pool of one frame is the ceiling, got ${poor.frame_ceiling}`);
+  ok(poor.axes.frame > rich.axes.frame, 'the same thin basket is not marked down for a poverty it did not choose');
+  ok(poor.axes.frame <= 1, 'the axis never exceeds 1');
+  const unset = scoreBaskets(rows, { legos }).baskets[0].score;
+  ok(unset.axes.frame === rich.axes.frame, 'with no pool given, the behaviour is exactly the old phrase-count denominator');
+}
+
+console.log(fail ? `${fail} failing assertion(s)` : 'ok — derivation returns all five verdicts including atomisation, reads components for availability and never as teaching, windows vocabulary per LEGO, attests frames per course, scores FRAME against what was instantiable, scopes floors per basket, and mints lab-side phrase ids');
 process.exit(fail ? 1 : 0);

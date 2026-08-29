@@ -11,8 +11,18 @@
  * definition of an under-specified part, made so it could be implemented.
  *
  * [SPEC:worker] Five axes, each normalised to 0..1, each with a floor:
- *   FRAME   distinct pattern-id sets fired by the phrase's MATRIX CLAUSE / phrase
- *           count. Measured on the matrix clause, not the whole string, because
+ *   FRAME   distinct pattern-id sets fired by the phrase's MATRIX CLAUSE, over
+ *           the number of distinct frames this basket COULD have exercised —
+ *           min(phrase count, frames this course has attested by this seed).
+ *           A fixed absolute denominator is unfair under a per-LEGO availability
+ *           window: LEGO 1 of an early seed has a tiny pool, LEGO 4 of seed 600
+ *           has almost the whole language, and dividing both by phrase count
+ *           marks the early basket down for a poverty it did not choose. Scoring
+ *           against what was instantiable makes a thin basket at seed 12 and a
+ *           thin basket at seed 600 read the same. Where the pool is richer than
+ *           the basket is long — every late seed — the denominator is the phrase
+ *           count and this is exactly the old behaviour.
+ *           Measured on the MATRIX CLAUSE, not the whole string, because
  *           swapping the tail of a phrase does not change the frame the LEGO is
  *           being taught in. This is what the first version of this file got
  *           wrong: whole-string matching scored the known-bad seed-600 basket
@@ -120,7 +130,7 @@ function crossesSplit(phrases, split) {
  */
 const isPractice = (p) => p.phrase_role !== 'component';
 
-function score(all, { lego, expensiveClass = 'SPLIT', splits = [] } = {}) {
+function score(all, { lego, expensiveClass = 'SPLIT', splits = [], instantiableFrames = null } = {}) {
   const phrases = (all || []).filter(isPractice);
   const n = phrases.length;
   if (!n) return null;
@@ -134,8 +144,11 @@ function score(all, { lego, expensiveClass = 'SPLIT', splits = [] } = {}) {
     if (w.left) lefts.add(w.left); if (w.right) rights.add(w.right);
     return { ...p, frame: s, ...w };
   });
+  // the ceiling this basket could actually reach: you cannot exercise more
+  // distinct frames than you have phrases, or than the course has attested.
+  const frameCeiling = Math.max(1, Math.min(n, instantiableFrames == null ? n : instantiableFrames));
   const axes = {
-    frame: sigs.size / n,
+    frame: Math.min(1, sigs.size / frameCeiling),
     pos: poss.size / 3,
     neigh: (lefts.size + rights.size) / (2 * n),
     junct: juncts.size / n,
@@ -152,6 +165,7 @@ function score(all, { lego, expensiveClass = 'SPLIT', splits = [] } = {}) {
     .filter(([k, f]) => (k !== 'split' || splits.length) && axes[k] < f).map(([k]) => k);
   return {
     phrase_count: n, components_excluded: (all || []).length - n,
+    frame_ceiling: frameCeiling, instantiable_frames: instantiableFrames,
     lego_absent: detail.filter(d => d.pos === 'absent').length,
     distinct_frames: sigs.size, positions: [...poss], axes, weights: W,
     composite: +composite.toFixed(3), floors: FLOORS, floor_failures: floorFails, splits: splitReport,
@@ -176,7 +190,7 @@ function score(all, { lego, expensiveClass = 'SPLIT', splits = [] } = {}) {
  * job) — asking the "to drive" basket to cross a conditional split it has nothing
  * to do with would be the per-seed error in a new costume.
  */
-function scoreBaskets(phrases, { legos = [], job = null, expensiveClass = 'SPLIT' } = {}) {
+function scoreBaskets(phrases, { legos = [], job = null, expensiveClass = 'SPLIT', instantiableFrames = null } = {}) {
   const { splitsForBasket } = require('./derive-seed-job.cjs');
   const byIndex = new Map();
   for (const p of phrases || []) {
@@ -190,11 +204,11 @@ function scoreBaskets(phrases, { legos = [], job = null, expensiveClass = 'SPLIT
     const mine = withIds(byIndex.get(idx) || [], idx);
     const splits = job ? splitsForBasket(job, idx) : [];
     return { lego_index: idx, lego: l, splits, phrases: mine,
-             score: score(mine, { lego: l.known_text, splits, expensiveClass }) };
+             score: score(mine, { lego: l.known_text, splits, expensiveClass, instantiableFrames }) };
   });
   const strays = [...byIndex.entries()].filter(([k]) => k === null || !known.has(k)).flatMap(([, v]) => v);
   const unattributed = strays.length
-    ? { phrases: withIds(strays, 0), score: score(withIds(strays, 0), { lego: '', splits: [], expensiveClass }) }
+    ? { phrases: withIds(strays, 0), score: score(withIds(strays, 0), { lego: '', splits: [], expensiveClass, instantiableFrames }) }
     : null;
   const scored = baskets.filter(b => b.score);
   return {
@@ -236,9 +250,11 @@ if (require.main === module) {
   const sb = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY || process.env.SUPABASE_SERVICE_ROLE_KEY);
   const [course = 'spa_for_eng', seed = '599'] = process.argv.slice(2);
   (async () => {
-    const { seedRow, ownLegos, priorSeeds, phrases } = await loadCorpus(sb, course, +seed);
-    const job = deriveJob({ seedRow, ownLegos, priorSeeds });
-    const r = scoreBaskets(phrases, { legos: ownLegos, job });
+    const { seedRow, ownLegos, priorSeeds, priorLegos, priorComponents, phrases } = await loadCorpus(sb, course, +seed);
+    const job = deriveJob({ seedRow, ownLegos, priorSeeds, priorLegos, priorComponents });
+    const { attestedFrames } = require('./availability.cjs');
+    const r = scoreBaskets(phrases, { legos: ownLegos, job,
+      instantiableFrames: attestedFrames(priorSeeds, seedRow).size });
     console.log(`${course} seed ${seed} — ${seedRow.known_text}`);
     console.log(`JOB: ${job.verdict} — ${job.sentence}\n`);
     for (const b of r.baskets) {

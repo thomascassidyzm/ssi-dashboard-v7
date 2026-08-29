@@ -12,7 +12,7 @@
  * The seed's teaching job is DERIVED (derive-seed-job.cjs), never looked up, and
  * each basket is told only about the split side its OWN lego admits.
  *
- * WRITES NOTHING TO THE DATABASE. Output is a JSON file under labs/seed-lab/candidates/.
+ * WRITES NOTHING TO THE DATABASE. Output is a JSON file under labs/basket-lab/candidates/.
  * All LLM calls go through the Claude CLI (never the Anthropic SDK): repo rule.
  *
  * Usage: node tools/frame-layer/generate-candidates.cjs spa_for_eng 599 [--passes 3]
@@ -23,25 +23,41 @@ const { execFileSync } = require('child_process');
 const fs = require('fs'), path = require('path');
 const { scoreBaskets } = require('./pattern-diversity.cjs');
 const { deriveJob, splitsForBasket } = require('./derive-seed-job.cjs');
-const { loadCorpus } = require('./corpus.cjs');
+const { loadCorpus, knownSideIsEnglish } = require('./corpus.cjs');
+const { availableVocab, attestedFrames } = require('./availability.cjs');
 
 const sb = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY || process.env.SUPABASE_SERVICE_ROLE_KEY);
 const ROOT = path.join(__dirname, '..', '..');
-const OUTDIR = path.join(ROOT, 'labs', 'seed-lab', 'candidates');
+const OUTDIR = path.join(ROOT, 'labs', 'basket-lab', 'candidates');
 
 const pad = (i) => 'L' + String(i).padStart(2, '0');
 
-function buildPrompt({ seedRow, ownLegos, legos, liveBaskets, job }, course, mapping, priorAttempt) {
+function buildPrompt({ seedRow, ownLegos, legos, components, liveBaskets, job, attested }, course, mapping, priorAttempt) {
+  // The SHAPES come from the inventory doc; WHICH frames are attested comes from
+  // THIS course's own prior seeds (`attested`), never from the doc's `first_seed`
+  // — that field was computed over spa_for_eng's seed list and the known side is
+  // not one canonical set across the estate.
   const patterns = JSON.parse(fs.readFileSync(path.join(ROOT, 'docs/frame-layer/english-pattern-inventory.json'), 'utf8'));
-  const usable = patterns.patterns.filter(p => p.first_seed !== null && p.first_seed <= seedRow.seed_number)
+  const usable = patterns.patterns.filter(p => attested.has(p.id))
     .map(p => `${p.id} ${p.name}: ${p.shape}  [class for this pair: ${mapping[p.id] || '—'}]`).join('\n');
-  const vocab = legos.map(l => `${l.known_text}=${l.target_text}`).join('; ');
+  // The base pool — everything admitted BEFORE this seed — is the same for every
+  // basket, so it is stated once. Per-basket windows are stated as deltas off it:
+  // repeating a 50,000-character vocabulary list four times quadrupled the prompt.
+  const base = availableVocab({ legos, components, seed: seedRow.seed_number, legoIndex: 1 });
+  const baseVocab = base.map(v => `${v.known_text}=${v.target_text}`).join('; ');
+  const ownRows = [...legos, ...components].filter(r => r.seed_number === seedRow.seed_number);
 
   const briefs = ownLegos.map(l => {
     const b = liveBaskets.find(x => x.lego_index === +l.lego_index);
     const n = b && b.score ? b.score.phrase_count : 6;
     const nb = b ? b.phrases.filter(p => p.phrase_role === 'build').length : 3;
     const splits = splitsForBasket(job, +l.lego_index);
+    // PER-BASKET availability window (Tom, 2026-08-29): everything through seed
+    // N-1, plus legos 1..k-1 of this seed and their components. Cumulative within
+    // the seed — LEGO 1 has none of its siblings, LEGO 4 has all three.
+    const k = +l.lego_index;
+    const earlier = ownRows.filter(r => +r.lego_index < k).map(r => `${r.known_text}=${r.target_text}`);
+    const later = ownRows.filter(r => +r.lego_index > k).map(r => `${r.known_text}=${r.target_text}`);
     return `--- BASKET ${pad(l.lego_index)} — the LEGO "${l.known_text}" / "${l.target_text}" [${l.type}]
     produce ${n} phrases: ${nb} build, ${n - nb} use. EVERY phrase must contain "${l.target_text}" verbatim on the
     target side and "${l.known_text}" verbatim on the known side — character-exact, because the LEGO's own
@@ -49,6 +65,8 @@ function buildPrompt({ seedRow, ownLegos, legos, liveBaskets, job }, course, map
     ${splits.length
       ? `THIS LEGO ADMITS a side of a split the course has never shown before: ${splits.map(sp => `${sp.id} ${sp.name} → ${sp.outcomes.map(o => o.form).join(' AND ')}`).join('; ')}. Carry it in at least TWO genuinely different known-side shapes.`
       : `This LEGO admits no new side of any split. Its job is lexical: make the word usable, not make a contrast.`}
+    AVAILABLE TO THIS BASKET: the base vocabulary below, ${earlier.length ? `PLUS these earlier pieces of this same seed — ${earlier.join('; ')}` : 'and NOTHING from this seed — this is the first LEGO, so none of its siblings exist yet'}.
+    ${later.length ? `NOT AVAILABLE to this basket, because they are admitted after it: ${later.join('; ')}.` : ''}
     ${b && b.score ? `The live basket here scores ${b.score.composite} and ${b.score.pass ? 'passes' : 'FAILS on: ' + b.score.floor_failures.join(', ')}. Live phrases you are competing with:\n${b.phrases.filter(p => p.phrase_role !== 'component').map(p => `      ${p.phrase_role}: ${p.known_text} || ${p.target_text}`).join('\n')}` : ''}`;
   }).join('\n');
 
@@ -68,11 +86,15 @@ ${briefs}
 FRAMES YOU MAY INSTANTIATE (attested in the known-language corpus at or before this seed):
 ${usable}
 
-VOCABULARY OWNED AT THIS SEED — you may use ONLY these known/target pairs plus the seed's own LEGOs. Do not invent, re-conjugate or contract beyond what is listed; you may inflect a verb only where a listed LEGO already shows that form.
-${vocab}
+BASE VOCABULARY — every known/target pair the course admitted BEFORE this seed, LEGOs and components alike.
+Components are the pieces an M-LEGO was broken into for the learner; they are legitimately seen material and
+they are the connective glue that makes a phrase work on both sides, so use them. Do not invent, re-conjugate
+or contract beyond what is listed. AVAILABILITY IS PER BASKET, NOT PER SEED: on top of this base, a basket may
+use only the earlier LEGOs of this seed named in its own brief above, never the later ones.
+${baseVocab}
 
 EACH BASKET IS SCORED ON:
-  FRAME  distinct pattern signatures of each phrase's MATRIX CLAUSE / phrase count   (floor 0.34)
+  FRAME  distinct pattern signatures of the MATRIX CLAUSE / what was instantiable   (floor 0.34)
   POS    distinct positions of the LEGO in its phrase (initial/medial/final) / 3     (floor 0.34)
   NEIGH  (distinct left + distinct right neighbours of the LEGO) / (2 x phrases)     (floor 0.30)
   JUNCT  distinct (left neighbour -> right neighbour) junctions / phrase count       (floor 0.50)
@@ -115,16 +137,22 @@ async function main() {
   const [course = 'spa_for_eng', seedArg = '599'] = process.argv.slice(2).filter(a => !a.startsWith('--'));
   const passes = +(process.argv[process.argv.indexOf('--passes') + 1] || 1) || 1;
   const seed = +seedArg;
-  const { seedRow, legos, ownLegos, priorSeeds, phrases } = await loadCorpus(sb, course, seed);
-  const job = deriveJob({ seedRow, ownLegos, priorSeeds });
-  const liveScored = scoreBaskets(phrases, { legos: ownLegos, job });
+  const { seedRow, legos, ownLegos, priorSeeds, priorLegos, priorComponents, components, phrases } = await loadCorpus(sb, course, seed);
+  if (!seedRow) throw new Error(`no seed ${seed} in ${course}`);
+  const job = deriveJob({ seedRow, ownLegos, priorSeeds, priorLegos, priorComponents });
+  // per-course frame attestation — never the doc's spa-derived first_seed
+  const attested = attestedFrames(priorSeeds, seedRow);
+  const liveScored = scoreBaskets(phrases, { legos: ownLegos, job, instantiableFrames: attested.size });
+  if (!knownSideIsEnglish(course)) {
+    console.log(`NOTE: ${course} has a non-English known side; the frame layer's patterns are English regexes and will report nothing here.`);
+  }
   const mapping = Object.fromEntries(JSON.parse(fs.readFileSync(path.join(ROOT, 'docs/frame-layer/pair-mapping-classes.json'), 'utf8'))
     .patterns.map(p => [p.id, p.pairs[course]?.class]));
 
   console.log(`${course} seed ${seed} — job: ${job.verdict}`);
   console.log(job.sentence + '\n');
 
-  const ctx = { seedRow, ownLegos, legos, liveBaskets: liveScored.baskets, job };
+  const ctx = { seedRow, ownLegos, legos, components, liveBaskets: liveScored.baskets, job, attested };
   const attempts = [];
   let best = null, prior = null;
   if (process.env.DUMP_PROMPT) {
@@ -137,7 +165,7 @@ async function main() {
     try { parsed = callClaude(prompt); }
     catch (e) { attempts.push({ pass: i + 1, error: String(e.message).slice(0, 400) }); continue; }
     const ph = (parsed.phrases || []).map((p, n) => ({ ...p, position: n + 1 }));
-    const r = scoreBaskets(ph, { legos: ownLegos, job });
+    const r = scoreBaskets(ph, { legos: ownLegos, job, instantiableFrames: attested.size });
     attempts.push({ pass: i + 1, seed_composite: r.seed_composite, seed_pass: r.seed_pass,
                     failing_baskets: r.failing_baskets, phrase_count: ph.length });
     console.log(`pass ${i + 1}: ${ph.length} phrases, ${r.seed_pass ? 'ALL BASKETS PASS' : 'failing ' + r.failing_baskets.map(f => pad(f.lego_index)).join(', ')}`);
