@@ -70,4 +70,26 @@ function attestedFrames(priorSeeds = [], seedRow = null) {
   return first; // Map<pattern id, first seed in THIS course>
 }
 
-module.exports = { availableVocab, attestedFrames, norm };
+/**
+ * WHICH MAPPING CLASS IS EXPENSIVE FOR THIS PAIR? — per course, never shared.
+ *
+ * The diversity weights lean toward the axis the pair's expensive class lives
+ * in. That class was hardcoded to SPLIT, which is true of spa_for_eng and false
+ * of deu_for_eng (INVERSION) and zho_for_eng (DETERMINISTIC): a grid rendering a
+ * German column with Spanish weights is the shared-tally bug in plain sight.
+ * Returns null where the pair has no classes recorded, so the caller can say so
+ * rather than quietly assuming Spanish.
+ */
+const PLACEHOLDER = /^NOT /;   // "NOT ATTESTED", "NOT YET EXTRACTED" — absence, not a class
+function expensiveClassFor(course, mappingDoc) {
+  const tally = {};
+  for (const p of (mappingDoc && mappingDoc.patterns) || []) {
+    const c = p.pairs && p.pairs[course] && p.pairs[course].class;
+    if (!c || PLACEHOLDER.test(c)) continue;
+    tally[c] = (tally[c] || 0) + 1;
+  }
+  const ranked = Object.entries(tally).sort((a, b) => b[1] - a[1]);
+  return ranked.length ? { class: ranked[0][0], counts: tally } : null;
+}
+
+module.exports = { availableVocab, attestedFrames, norm, expensiveClassFor };
