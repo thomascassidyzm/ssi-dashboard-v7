@@ -19,8 +19,9 @@ const fs = require('fs');
 const path = require('path');
 const { execFileSync } = require('child_process');
 const { createClient } = require('@supabase/supabase-js');
-const { score } = require('../../tools/frame-layer/pattern-diversity.cjs');
-const SEED_SPLITS = require('../../tools/frame-layer/seed-splits.cjs');
+const { scoreBaskets } = require('../../tools/frame-layer/pattern-diversity.cjs');
+const { deriveJob } = require('../../tools/frame-layer/derive-seed-job.cjs');
+const { loadCorpus } = require('../../tools/frame-layer/corpus.cjs');
 
 const PORT = +(process.env.PORT || 8461);
 const HOST = process.env.HOST || '127.0.0.1';
@@ -37,12 +38,7 @@ const BUILD_SHA = (() => {
 const esc = (s) => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 
 async function loadSeed(course, seed) {
-  const [{ data: seedRow }, { data: legos }, { data: phrases }] = await Promise.all([
-    sb.from('course_seeds').select('seed_number,known_text,target_text').eq('course_code', course).eq('seed_number', seed).maybeSingle(),
-    sb.from('course_legos').select('lego_id,lego_index,type,known_text,target_text').eq('course_code', course).eq('seed_number', seed).order('lego_index'),
-    sb.from('course_practice_phrases').select('phrase_role,known_text,target_text,lego_id').eq('course_code', course).eq('seed_number', seed),
-  ]);
-  return { seedRow, legos: legos || [], phrases: phrases || [] };
+  return loadCorpus(sb, course, seed);
 }
 
 function candidatesFor(course, seed) {
@@ -54,32 +50,36 @@ const ROLE_ORDER = { build: 0, use: 1, component: 2 };
 const sortPhrases = (a, b) => (ROLE_ORDER[a.phrase_role] ?? 9) - (ROLE_ORDER[b.phrase_role] ?? 9);
 
 function criteriaTable(s, splits) {
-  if (!s) return '<p class="none">no phrases</p>';
+  if (!s) return '<p class="none">no practice phrases in this basket</p>';
   const row = (k, label) => {
     const v = s.axes[k], f = s.floors[k], ok = !s.floor_failures.includes(k);
     return `<tr class="${ok ? 'ok' : 'bad'}"><td>${label}</td><td class="n">${v.toFixed(3)}</td><td class="n">${f}</td><td>${ok ? 'pass' : 'FAIL'}</td></tr>`;
   };
+  const extra = (s.components_excluded || s.lego_absent)
+    ? `<p class="meta">${s.phrase_count} practice phrase(s) scored${s.components_excluded ? `; ${s.components_excluded} component row(s) excluded — tiling glosses, never practised` : ''}${s.lego_absent ? `; ${s.lego_absent} phrase(s) do not contain this LEGO` : ''}</p>` : '';
   const sp = (s.splits || []).map(x => `<div class="split ${x.crossed ? 'ok' : 'bad'}">
       <b>${esc(x.id)} ${esc(x.name)}</b> — crosses the split: <b>${x.crossed ? 'YES' : 'NO'}</b>${x.crossed_weak && !x.crossed ? ' <span class="none">(both forms occur, but one of them in a single shape only)</span>' : ''}
       <ul>${x.outcomes.map(o => `<li>${esc(o.form)} — ${o.phrases} phrase(s), ${o.distinct_skeletons} distinct shape(s)</li>`).join('')}</ul></div>`).join('');
-  return `${sp}
+  return `${extra}${sp}
     <table class="crit"><tr><th>axis</th><th class="n">value</th><th class="n">floor</th><th></th></tr>
     ${row('frame', 'FRAME — distinct matrix frames')}
     ${row('pos', 'POS — LEGO positions')}
     ${row('neigh', 'NEIGH — distinct neighbours')}
     ${row('junct', 'JUNCT — distinct junctions')}
-    ${splits.length ? row('split', 'SPLIT — crosses the seed\'s split') : ''}
+    ${splits.length ? row('split', 'SPLIT — crosses the side this LEGO admits')
+      : '<tr><td class="none">SPLIT — this LEGO admits no side of any split</td><td class="n none">n/a</td><td class="n"></td><td class="none">—</td></tr>'}
     <tr class="${s.pass ? 'ok' : 'bad'}"><td><b>pattern diversity (composite)</b></td><td class="n"><b>${s.composite}</b></td><td class="n"></td><td><b>${s.pass ? 'PASS' : 'FAIL'}</b></td></tr>
     </table>`;
 }
 
-function phraseList(phrases, lego) {
+function phraseList(phrases) {
   if (!phrases.length) return '<p class="none">none</p>';
-  return '<ol class="phrases">' + [...phrases].sort(sortPhrases).map(p =>
-    `<li><span class="role ${esc(p.phrase_role)}">${esc(p.phrase_role)}</span>
+  return '<ul class="phrases">' + phrases.map(p =>
+    `<li><code class="pid">${esc(p.lab_id)}</code>
+       <span class="role ${esc(p.phrase_role)}">${esc(p.phrase_role)}</span>
        <span class="k">${esc(p.known_text)}</span>
        <span class="t">${esc(p.target_text)}</span>
-       ${p.why ? `<span class="why">${esc(p.why)}</span>` : ''}</li>`).join('') + '</ol>';
+       ${p.why ? `<span class="why">${esc(p.why)}</span>` : ''}</li>`).join('') + '</ul>';
 }
 
 const CSS = `
@@ -121,6 +121,24 @@ textarea{width:100%;min-height:90px}
 a{color:inherit}
 .v{border-bottom:1px solid var(--line);padding:10px 0;white-space:pre-wrap}
 .v .meta{white-space:normal}
+h3{font-size:14px;margin:0 0 6px;color:var(--dim);font-weight:600}
+ul.phrases{margin:0;padding:0;list-style:none}
+ul.phrases li{margin:0 0 8px;padding-left:62px;text-indent:-62px}
+code.pid{font-size:11px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--dim);border:1px solid var(--line);border-radius:3px;padding:0 3px;margin-right:6px;display:inline-block;width:52px;text-align:center;text-indent:0}
+ul.phrases li .t,ul.phrases li .why{padding-left:0;text-indent:0}
+.job{border:1px solid var(--line);border-left:4px solid var(--ok);border-radius:4px;padding:10px;margin:12px 0}
+.joblabel{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--dim)}
+.jobverdict{font-size:20px;font-weight:700;margin:2px 0 4px}
+.job p{margin:4px 0}
+.rule{border:1px solid var(--line);border-radius:4px;padding:10px;margin:12px 0;font-size:14px}
+.seedverdict{margin-top:6px;font-weight:700}
+.seedverdict.ok{color:var(--ok)}
+.seedverdict.bad{color:var(--bad)}
+.basket{margin:22px 0 0;border-top:2px solid var(--line);padding-top:10px}
+.basket h2{font-size:16px;text-transform:none;letter-spacing:0;color:var(--fg);font-weight:700;margin:6px 0 8px}
+.verdictpill{font-size:11px;letter-spacing:.06em;border-radius:3px;padding:1px 5px;border:1px solid currentColor}
+.verdictpill.ok{color:var(--ok)}
+.verdictpill.bad{color:var(--bad)}
 `;
 
 function page(title, body) {
@@ -129,13 +147,40 @@ function page(title, body) {
 }
 
 async function labPage(course, seed) {
-  const { seedRow, legos, phrases } = await loadSeed(course, seed);
+  const { seedRow, ownLegos, priorSeeds, phrases } = await loadSeed(course, seed);
   if (!seedRow) return page('seed lab', `<h1>seed lab</h1><p class="none">no seed ${esc(seed)} in ${esc(course)}.</p>${controls(course, seed)}`);
-  const splits = SEED_SPLITS[`${course}:${seed}`] || [];
-  const lego = legos[0]?.known_text || '';
-  const liveScore = phrases.length ? score(phrases, { lego, splits }) : null;
+
+  // What is this seed FOR? Derived from its own admission diff, never looked up.
+  const job = deriveJob({ seedRow, ownLegos, priorSeeds });
+  const live = scoreBaskets(phrases, { legos: ownLegos, job });
   const cand = candidatesFor(course, seed);
-  const candScore = cand ? score(cand.phrases, { lego, splits }) : null;
+  const gen = cand ? scoreBaskets(cand.phrases, { legos: ownLegos, job }) : null;
+
+  const genBy = new Map((gen ? gen.baskets : []).map(b => [b.lego_index, b]));
+
+  const basket = (b, g) => `
+<section class="basket">
+  <h2>${esc(legoLabel(b.lego))}</h2>
+  <div class="cols">
+    <div class="col">
+      <h3>live — in the course today <span class="verdictpill ${b.score && b.score.pass ? 'ok' : 'bad'}">${b.score ? (b.score.pass ? 'PASS' : 'FAIL') : 'no phrases'}</span></h3>
+      ${criteriaTable(b.score, b.splits)}
+      ${phraseList(b.phrases)}
+    </div>
+    <div class="col">
+      <h3>generated — frame-guided ${g && g.score ? `<span class="verdictpill ${g.score.pass ? 'ok' : 'bad'}">${g.score.pass ? 'PASS' : 'FAIL'}</span>` : ''}</h3>
+      ${g ? `${criteriaTable(g.score, g.splits)}${phraseList(g.phrases)}`
+          : '<p class="none">no candidate basket for this LEGO</p>'}
+    </div>
+  </div>
+</section>`;
+
+  const unattr = live.unattributed ? `
+<section class="basket">
+  <h2>unattributed <span class="none">— ${live.unattributed.phrases.length} phrase(s) whose lego_index matches no LEGO of this seed</span></h2>
+  <p class="meta">Scored for information only. <b>This group does not gate the seed</b> — a row nobody can attribute is a data question, not a quality failure.</p>
+  <div class="col">${criteriaTable(live.unattributed.score, [])}${phraseList(live.unattributed.phrases)}</div>
+</section>` : '';
 
   return page(`seed lab — ${course} ${seed}`, `
 <h1>the seed lab <span class="none">— ${esc(course)}, seed ${seed}</span></h1>
@@ -145,33 +190,46 @@ ${controls(course, seed)}
   <div class="k">${esc(seedRow.known_text)}</div>
   <div class="t">${esc(seedRow.target_text)}</div>
 </div>
-<div class="cols">
-  <div class="col">
-    <h2>live — what is in the course today</h2>
-    <p><b>LEGOs:</b> ${legos.map(l => `${esc(l.lego_id)} [${esc(l.type)}] <b>${esc(l.known_text)}</b> / ${esc(l.target_text)}`).join('<br>') || '<span class="none">none</span>'}</p>
-    ${criteriaTable(liveScore, splits)}
-    ${phraseList(phrases)}
-  </div>
-  <div class="col">
-    <h2>generated — frame-guided candidates</h2>
-    ${cand ? `<p class="meta">generated ${esc(cand.generated)} · model ${esc(cand.model)} · build ${esc(cand.build_sha)} · ${cand.attempts.length} pass(es)</p>
-      ${criteriaTable(candScore, splits)}
-      ${phraseList(cand.phrases)}`
-    : `<p class="none">no candidate set yet. Generate one:<br><code>node tools/frame-layer/generate-candidates.cjs ${esc(course)} ${seed} --passes 3</code></p>`}
-  </div>
+
+<div class="job">
+  <div class="joblabel">what this seed is for — <b>derived from its own admission diff</b>, not looked up in a table</div>
+  <div class="jobverdict">${esc(job.verdict)}</div>
+  <p>${esc(job.sentence)}</p>
+  ${job.splits_in_play.length ? `<p class="meta">splits in play on this seed's frames: ${job.splits_in_play.map(s => esc(`${s.id} ${s.name}`)).join('; ')}${job.new_sides.length ? '' : ' — every side of them already admitted by an earlier seed'}</p>` : ''}
+  ${job.not_machine_checkable.length ? `<p class="meta">not machine-checkable here: ${job.not_machine_checkable.map(s => esc(s.id + ' ' + s.outcomes.join(', '))).join('; ')} — reported as unseen, never scored as absent</p>` : ''}
 </div>
+
+<div class="rule">
+  <b>The unit is the LEGO, not the seed.</b> One LEGO, one basket, one set of floors — <b>this seed passes only if EVERY basket below passes</b>.
+  <div class="seedverdict ${live.seed_pass ? 'ok' : 'bad'}">LIVE, this seed: ${live.seed_pass ? 'PASS' : `FAIL — ${esc(live.failing_baskets.map(f => `L${String(f.lego_index).padStart(2, '0')} (${f.floors.join(', ')})`).join(', '))}`}</div>
+  ${gen ? `<div class="seedverdict ${gen.seed_pass ? 'ok' : 'bad'}">GENERATED, this seed: ${gen.seed_pass ? 'PASS' : `FAIL — ${esc(gen.failing_baskets.map(f => `L${String(f.lego_index).padStart(2, '0')} (${f.floors.join(', ')})`).join(', '))}`}</div>` : ''}
+  <p class="meta">Seed-level composite is context and never decides: live ${live.seed_composite}${gen ? `, generated ${gen.seed_composite}`: ''}. Averaging baskets is exactly how three healthy ones hide a thin fourth.</p>
+  <p class="meta">Phrase ids like <code class="pid">L01-3</code> — third phrase in the first LEGO's basket — are <b>per-instance labels for pointing at one phrase in a verdict, not permalinks</b>. Regenerate a basket and the same id points at a different phrase. Nothing is written to the database.</p>
+</div>
+
+${cand ? `<p class="meta">candidates generated ${esc(cand.generated)} · model ${esc(cand.model)} · build ${esc(cand.build_sha)} · ${cand.attempts.length} pass(es)</p>`
+       : `<p class="none">no candidate set yet: <code>node tools/frame-layer/generate-candidates.cjs ${esc(course)} ${seed} --passes 3</code></p>`}
+
+${live.baskets.map(b => basket(b, genBy.get(b.lego_index))).join('')}
+${unattr}
+
 <form class="verdict" method="post" action="/lab/verdict">
   <input type="hidden" name="course" value="${esc(course)}">
   <input type="hidden" name="seed" value="${seed}">
   <input type="hidden" name="candidate_stamp" value="${esc(cand ? cand.generated : 'none')}">
   <h2>verdict</h2>
+  <p class="meta">Against one phrase, or the whole seed. Leave the box empty for the seed as a whole.</p>
+  <label>about <input name="about" list="pids" size="12" placeholder="L01-3, or L01, or blank"></label>
+  <datalist id="pids">${live.baskets.flatMap(b => [`<option value="L${String(b.lego_index).padStart(2, '0')}">`, ...b.phrases.map(p => `<option value="${esc(p.lab_id)}">`)]).join('')}</datalist>
   <textarea name="text" id="v" placeholder="Type or dictate a sentence against what is on screen. Stored verbatim." autofocus></textarea>
   <p><button type="submit">save verdict</button> <a href="/lab/verdicts">read them back &rarr;</a></p>
-  <p class="meta">stored verbatim with the timestamp, the course and seed, which candidate set was on screen, and build ${esc(BUILD_SHA)}</p>
+  <p class="meta">stored verbatim with the timestamp, the course and seed, what it is about, which candidate set was on screen, and build ${esc(BUILD_SHA)}</p>
 </form>
 <script>document.addEventListener('keydown',e=>{if(e.key==='v'&&e.target.tagName!=='TEXTAREA'){e.preventDefault();document.getElementById('v').focus()}
 if((e.metaKey||e.ctrlKey)&&e.key==='Enter'&&e.target.id==='v'){e.target.form.submit()}});</script>`);
 }
+
+const legoLabel = (l) => `L${String(l.lego_index).padStart(2, '0')} · ${l.known_text} → ${l.target_text}  [${l.type || '?'}]`;
 
 function controls(course, seed) {
   return `<form class="row" method="get" action="/lab">
@@ -191,7 +249,7 @@ function verdictsPage() {
   rows.reverse();
   return page('verdicts', `<h1>verdicts <span class="none">— newest first, ${rows.length}</span></h1>
   <p><a href="/lab">&larr; back to the lab</a> · <button onclick="navigator.clipboard.writeText(document.getElementById('all').textContent)">copy all</button></p>
-  <div id="all">${rows.map(r => `<div class="v">${esc(r.text)}<div class="meta">${esc(r.ts)} · ${esc(r.course)} seed ${esc(r.seed)} · candidate set ${esc(r.candidate_stamp)} · build ${esc(r.build_sha)}</div></div>`).join('') || '<p class="none">none yet</p>'}</div>`);
+  <div id="all">${rows.map(r => `<div class="v">${r.about ? `<code class="pid">${esc(r.about)}</code> ` : ''}${esc(r.text)}<div class="meta">${esc(r.ts)} · ${esc(r.course)} seed ${esc(r.seed)}${r.about ? ` · about ${esc(r.about)}` : ' · about the whole seed'} · candidate set ${esc(r.candidate_stamp)} · build ${esc(r.build_sha)}</div></div>`).join('') || '<p class="none">none yet</p>'}</div>`);
 }
 
 const server = http.createServer(async (req, res) => {
@@ -203,7 +261,10 @@ const server = http.createServer(async (req, res) => {
       await new Promise(r => req.on('end', r));
       const f = new URLSearchParams(body);
       const rec = { ts: new Date().toISOString(), text: f.get('text') || '', course: f.get('course'),
-        seed: +f.get('seed'), candidate_stamp: f.get('candidate_stamp'), build_sha: BUILD_SHA };
+        seed: +f.get('seed'),
+        // which phrase (or basket) the verdict is about — blank means the whole seed
+        about: (f.get('about') || '').trim() || null,
+        candidate_stamp: f.get('candidate_stamp'), build_sha: BUILD_SHA };
       if (rec.text.trim()) fs.appendFileSync(VERDICTS, JSON.stringify(rec) + '\n');
       res.writeHead(303, { Location: '/lab/verdicts' }); return res.end();
     }
