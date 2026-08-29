@@ -1903,6 +1903,27 @@ app.get('/api/courses/:courseCode/voice-config', async (req, res) => {
   }
 })
 
+// GET /api/courses/:courseCode/voice-config/resolved — what a render will use,
+// and WHERE each role's voice came from.
+//
+// The editor route above deliberately returns the STORED row, because that is
+// what the screen must save back. But a screen showing only the stored row
+// cannot tell a human that the language cast has since overruled it, which is
+// exactly the gap Tom named on 2026-08-29: a cast made in the Voice Lab was
+// not what the Phase 8 screen showed. This route is the screen's second read —
+// the resolution plus its reasoning — and the reasoning comes from the one
+// reader, never re-derived in the browser.
+app.get('/api/courses/:courseCode/voice-config/resolved', async (req, res) => {
+  const { courseCode } = req.params
+  try {
+    const explained = await voiceConfigService.explainVoiceConfig(courseCode)
+    res.json({ success: true, ...explained })
+  } catch (error) {
+    logger.error(`[VoiceConfig] Error resolving config for ${courseCode}:`, error)
+    res.status(500).json({ success: false, error: error.message })
+  }
+})
+
 // PUT /api/courses/:courseCode/voice-config - Save voice configuration
 app.put('/api/courses/:courseCode/voice-config', async (req, res) => {
   const { courseCode } = req.params
@@ -6075,7 +6096,13 @@ app.post('/api/audio/regenerate-role/:courseCode', async (req, res) => {
       return res.status(404).json({ error: `Course not found: ${courseCode}` })
     }
 
-    const voiceConfig = course.voice_config || {}
+    // THE LANGUAGE CAST (Tom's ruling, 2026-08-29). This preview names the
+    // voice a regeneration would render in, so it must name the CAST voice or
+    // the operator approves one voice and gets another. With no rows in
+    // voice_language_roles this is the identity and the preview is unchanged.
+    const voiceConfig = await voiceConfigService.resolveVoiceConfig({
+      voiceConfig: course.voice_config || {}, course, courseCode,
+    }) || {}
     const voiceId = voiceConfig.voices?.[role]?.voiceId || voiceConfig[role] || voiceConfig.default || 'unknown'
     const language = role === 'known' ? course.known_lang : course.target_lang
 

@@ -61,6 +61,7 @@
  * and survives this rework untouched.
  */
 
+const { effectivePaceRatio } = require('../shared/voice-pace.cjs')
 const policy = require('../shared/tts-provider-policy.cjs')
 const { isHumanVoiceLang } = require('../shared/human-voice-courses.cjs')
 const { tryCanonicalVoiceId, PROVIDER_ALIASES } = require('../shared/clip-identity.cjs')
@@ -99,6 +100,33 @@ function rankName (rank) {
  * @param {object} db   a Supabase client (services/supabase-client.cjs getClient())
  * @returns {Promise<{languages: object[], summary: object, notes: object}>}
  */
+/**
+ * The pace facts about a cast voice, for the screen.
+ *
+ * Tom, 2026-08-29: "maybe we have settings in the voice lab that should/could
+ * be then read by the player?" This is that reading surface. `effective` is the
+ * one number anything downstream should use — the measurement times the human's
+ * nudge — and it is null, never 1.0, for a voice nobody has measured, because
+ * "typical for its language" and "we have not looked" are different claims that
+ * happen to share a digit.
+ */
+function paceOf (voice) {
+  if (!voice) return null
+  const ratio = voice.natural_pace_ratio === null || voice.natural_pace_ratio === undefined
+    ? null : Number(voice.natural_pace_ratio)
+  const nudge = voice.natural_pace_nudge === null || voice.natural_pace_nudge === undefined
+    ? null : Number(voice.natural_pace_nudge)
+  return {
+    ratio,
+    nudge,
+    effective: effectivePaceRatio(voice),
+    cps: voice.natural_pace_cps === null || voice.natural_pace_cps === undefined ? null : Number(voice.natural_pace_cps),
+    samples: voice.natural_pace_samples ?? null,
+    measuredAt: voice.natural_pace_measured_at || null,
+    nudgeNote: voice.natural_pace_nudge_note || null,
+  }
+}
+
 async function build (db, opts = {}) {
   // Cartesia's live catalogue, keyed by two-letter code (params.cjs fetches it).
   // Merged in as UNREGISTERED candidates so a language with no Cartesia voice in
@@ -108,7 +136,7 @@ async function build (db, opts = {}) {
   const catalogue = opts.cartesiaCatalogue || {}
   const [courses, voices, roles, guideInUse] = await Promise.all([
     all(db, 'courses', 'course_code, target_lang, known_lang, status, voice_config'),
-    all(db, 'voices', 'voice_id, type, tts_engine, display_name, human_name, languages, gender, is_active, notes'),
+    all(db, 'voices', 'voice_id, type, tts_engine, display_name, human_name, languages, gender, is_active, notes, natural_pace_ratio, natural_pace_cps, natural_pace_samples, natural_pace_measured_at, natural_pace_nudge, natural_pace_nudge_note'),
     all(db, 'voice_language_roles', 'language, gender, rank, voice_id, notes, assigned_by, slot'),
     // Who ACTUALLY speaks the instructions today, per known language. About a
     // dozen rows: the GROUP BY is the view's, not this module's, because doing
@@ -324,6 +352,7 @@ function describeLanguage ({ code, langCourses, roles, voiceById, voices, catalo
         voiceName: voice ? (voice.display_name || voice.human_name || voice.voice_id) : null,
         kind: voice ? voiceKind(voice) : null,
         engine: voice ? (voice.tts_engine || null) : null,
+        pace: paceOf(voice),
         notes: role ? role.notes : null,
         assignedBy: role ? role.assigned_by : null,
       })
@@ -360,6 +389,7 @@ function describeLanguage ({ code, langCourses, roles, voiceById, voices, catalo
       kind: voice ? voiceKind(voice) : null,
       engine: voice ? (voice.tts_engine || null) : null,
       gender: role ? role.gender : null,
+      pace: paceOf(voice),
       notes: role ? role.notes : null,
       assignedBy: role ? role.assigned_by : null,
     })
@@ -404,7 +434,7 @@ function describeLanguage ({ code, langCourses, roles, voiceById, voices, catalo
       // Any active castable voice that declares this language. NOT filtered by
       // gender — a guide is one voice, and the male/female split is a property
       // of the phrase slots only.
-      candidates: guideCandidates({ code, voices, guideRoles, voiceById, inUse: guideInUse }),
+      candidates: guideCandidates({ code, voices, guideRoles, voiceById, inUse: guideInUse, catalogue }),
     },
     // Voices that CAN speak this language and are not yet cast — the candidate
     // list, so casting is a click rather than a search.
@@ -482,7 +512,7 @@ function providerOfVoiceId (id) {
  * anything can render with, and casting it would fill a slot with something
  * that cannot speak.
  */
-function guideCandidates ({ code, voices, guideRoles, voiceById, inUse }) {
+function guideCandidates ({ code, voices, guideRoles, voiceById, inUse, catalogue = {} }) {
   const taken = new Set((guideRoles || []).map((r) => r.voice_id))
   const registered = voices
     .filter((v) => v.is_active !== false)
@@ -511,7 +541,17 @@ function guideCandidates ({ code, voices, guideRoles, voiceById, inUse }) {
       registered: false,
       inUse: true,
     }))
-  return [...unregistered, ...registered].slice(0, 80)
+  // The estate's OWN Cartesia clones, and only those. The whole Cartesia
+  // catalogue is deliberately NOT offered here — 419 stock English voices would
+  // bury the dozen voices this list exists to choose between — but a voice this
+  // estate cloned is exactly the kind of voice a guide slot is cast from, and
+  // it had no way onto this list at all (Tom, 2026-08-29: he could not see his
+  // own clone among English's voices). Offered, never auto-assigned.
+  const ownedClones = cartesiaCandidates(code, catalogue, guideRoles || [])
+    .filter((c) => c.owned)
+    .filter((c) => !taken.has(c.voiceId) && !seen.has(c.voiceId) && !voiceById.has(c.voiceId))
+    .map((c) => ({ ...c, inUse: false }))
+  return [...unregistered, ...ownedClones, ...registered].slice(0, 80)
 }
 
 /**
@@ -525,14 +565,28 @@ function guideCandidates ({ code, voices, guideRoles, voiceById, inUse }) {
 function cartesiaCandidates (code, catalogue, roles) {
   const iso1 = policy.toCartesiaLangCode(code)
   if (!iso1) return []
+  // THE ESTATE'S OWN CLONES COME FIRST, and this is not cosmetic ordering.
+  //
+  // Tom, 2026-08-29: "I can't see MY own Cartesia clone voice in the list of
+  // available voices for English." Cartesia publishes 419 English voices in an
+  // order nobody here chose; his clone came back at position 210 of them and
+  // Aran's at 209, while `describeLanguage` caps the candidate list at 80. So
+  // the two voices the estate actually owns were the two it could never offer,
+  // and every other language stayed fine only because it has fewer voices than
+  // the cap. Sorting by `owner` — the flag Cartesia itself sets — fixes it for
+  // any clone this estate makes later, without naming a single voice id here.
+  const owned = (v) => (v.owner ? 0 : 1)
   return (catalogue[iso1] || [])
+    .slice()
+    .sort((a, b) => owned(a) - owned(b))
     .map((v) => ({
       voiceId: `cartesia_${v.id}`,
-      name: `${v.name} — Cartesia`,
+      name: v.owner ? `${v.name} — this estate's Cartesia clone` : `${v.name} — Cartesia`,
       kind: 'cartesia',
       engine: 'cartesia',
       gender: v.gender || null,
       registered: false,
+      owned: Boolean(v.owner),
     }))
     .filter((c) => !roles.some((r) => r.voice_id === c.voiceId))
 }
@@ -690,4 +744,4 @@ async function all (db, table, columns) {
 /** The casting slots this registry knows about. 'phrase' is the default in the DB. */
 const SLOTS = Object.freeze(['phrase', 'guide'])
 
-module.exports = { build, describeLanguage, providerOfRole, providersInUse, statusFor, rankName, sameLang, voiceKind, castable, cartesiaCandidates, guideCandidates, guideVoicesInUse, REQUIRED_RANKS, COMPLETE_RANKS, GENDERS, SLOTS }
+module.exports = { build, paceOf, describeLanguage, providerOfRole, providersInUse, statusFor, rankName, sameLang, voiceKind, castable, cartesiaCandidates, guideCandidates, guideVoicesInUse, REQUIRED_RANKS, COMPLETE_RANKS, GENDERS, SLOTS }

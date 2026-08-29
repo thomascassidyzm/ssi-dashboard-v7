@@ -1,0 +1,456 @@
+language	role	voice_id	display_name	clip_count	chars_per_sec	ratio_to_median
+afr	target1	azure_af-ZA-AdriNeural		3141	11.301	1.000
+afr	target2	azure_af-ZA-WillemNeural		3141	11.860	1.000
+ar	known	ar-EG-SalmaNeural	Salma	136	6.847	1.000
+ar	pod_explainer	comp:leo		494	13.416	1.107
+ar	pod_explainer	gfzdpspr5fdp	Tom	216	10.813	0.893
+ar-EG	pod_explainer	gfzdpspr5fdp	Tom	205	10.773	1.000
+ar-EG	pod_take_g	eve	Eve	107	12.262	1.000
+ar-EG	pod_take_g	rex	Rex	109	12.269	1.000
+ar-SA	pod_take_g	ara	Ara	120	12.550	1.094
+ar-SA	pod_take_g	70013edeb8e8	Khalid	135	10.402	0.906
+ara	known	azure_ar-EG-SalmaNeural		4871	7.296	1.000
+ara	pod_explainer	ar-EG-SalmaNeural	Salma	257	5.577	1.000
+ara	presentation	azure_ar-EG-SalmaNeural		593	9.338	1.000
+ara	target1	eve	Eve	127	11.259	1.190
+ara	target1	ara	Ara	157	10.988	1.162
+ara	target1	rex	Rex	104	10.958	1.159
+ara	target1	xai_eve		140	10.707	1.132
+ara	target1	70013edeb8e8	Khalid	131	9.577	1.013
+ara	target1	azure_ar-SA-ZariyahNeural		5641	9.470	1.001
+ara	target1	azure_ar-SY-AmanyNeural		113	9.446	0.999
+ara	target1	azure_ar-EG-ShakirNeural		176	8.713	0.921
+ara	target1	ar-SY-LaithNeural		195	8.093	0.856
+ara	target1	ar-SY-AmanyNeural		190	7.695	0.814
+ara	target1	azure_ar-EG-SalmaNeural		8389	7.587	0.802
+ara	target1	azure_ar-LB-LaylaNeural		2889	5.364	0.567
+ara	target2	azure_ar-SA-HamedNeural		5641	10.049	1.147
+ara	target2	azure_ar-EG-ShakirNeural		8114	8.759	1.000
+ara	target2	azure_ar-LB-RamiNeural		2889	5.736	0.655
+auto	pod_explainer	gfzdpspr5fdp	Tom	7847	11.653	1.000
+ben	known	eve	Eve	6569	13.844	1.006
+ben	known	xai_eve		913	13.686	0.994
+ben	pod_explainer	bn-IN-TanishaaNeural		292	7.716	1.000
+ben	presentation	eve	Eve	1943	14.883	1.005
+ben	presentation	xai_eve		307	14.744	0.995
+ben	target1	azure_bn-BD-PradeepNeural		4865	10.206	1.000
+ben	target2	azure_bn-BD-NabanitaNeural		4865	10.289	1.000
+bn	known	xai_eve		125	13.198	1.191
+bn	known	bn-IN-TanishaaNeural		122	8.956	0.809
+bul	target1	bg-BG-BorislavNeural	Borislav	189	9.923	1.042
+bul	target1	azure_bg-BG-KalinaNeural		3980	9.527	1.000
+bul	target1	bg-BG-KalinaNeural	Kalina	306	9.024	0.947
+bul	target2	azure_bg-BG-BorislavNeural		3863	10.319	1.000
+ca	pod_explainer	comp:leo		597	14.509	1.000
+cat	target1	sal	Sal	171	13.181	1.271
+cat	target1	ca-ES-AlbaNeural	Alba	285	11.039	1.065
+cat	target1	azure_ca-ES-AlbaNeural		4079	10.428	1.006
+cat	target1	azure_ca-ES-JoanaNeural		4838	10.311	0.994
+cat	target1	ca-ES-EnricNeural	Enric	324	10.058	0.970
+cat	target1	ca-ES-JoanaNeural	Joana	167	7.990	0.771
+cat	target2	azure_ca-ES-EnricNeural		8759	10.349	1.000
+ces	target1	azure_cs-CZ-VlastaNeural		4648	9.158	1.000
+ces	target2	azure_cs-CZ-AntoninNeural		4648	9.975	1.000
+da	pod_explainer	comp:leo		272	15.200	1.000
+da-DK	pod_take_g	ara	Ara	122	16.841	1.041
+da-DK	pod_take_g	0ih5oi34	Kasper	146	15.525	0.959
+dan	target1	xai_ara		109	15.245	1.166
+dan	target1	0ih5oi34	Kasper	123	13.080	1.000
+dan	target1	azure_da-DK-ChristelNeural		3801	11.780	0.901
+dan	target2	azure_da-DK-JeppeNeural		3801	11.457	1.000
+de	known	de-DE-KatjaNeural	Katja	151	11.145	1.000
+de	pod_explainer	comp:leo		596	15.669	1.151
+de	pod_explainer	gfzdpspr5fdp	Tom	406	11.549	0.849
+de-DE	pod_take_g	3a7889066fa2	Lena	160	14.927	1.027
+de-DE	pod_take_g	41321eb41295	Moritz	155	14.129	0.973
+deu	known	azure_de-DE-KatjaNeural		4809	10.725	1.009
+deu	known	de-DE-KatjaNeural	Katja	208	10.535	0.991
+deu	presentation	de-DE-KatjaNeural	Katja	539	15.619	1.000
+deu	target1	xai_ara		1012	17.943	1.363
+deu	target1	ara	Ara	8044	17.916	1.361
+deu	target1	3a7889066fa2	Lena	175	14.467	1.099
+deu	target1	xai_3a7889066fa2		188	14.287	1.085
+deu	target1	41321eb41295	Moritz	178	14.104	1.071
+deu	target1	narakeet_fritzi		417	13.665	1.038
+deu	target1	xai_41321eb41295		105	12.670	0.962
+deu	target1	xai_e1fc5a89		155	12.474	0.947
+deu	target1	azure_de-CH-LeniNeural		1025	12.350	0.938
+deu	target1	xai_44c91d64		208	11.788	0.895
+deu	target1	azure_de-AT-IngridNeural		9124	10.332	0.785
+deu	target1	azure_de-DE-KatjaNeural		8310	9.309	0.707
+deu	target2	leo	Leo	8022	17.023	1.360
+deu	target2	xai_leo		1038	16.955	1.355
+deu	target2	azure_de-CH-JanNeural		130	14.736	1.177
+deu	target2	azure_de-AT-JonasNeural		9640	10.296	0.823
+deu	target2	azure_de-DE-ConradNeural		4422	9.944	0.795
+deu	target2	azure_de-DE-ChristophNeural		3887	9.050	0.723
+ell	target1	azure_el-GR-AthinaNeural		6707	11.610	1.069
+ell	target1	el-GR-AthinaNeural	Athina	311	10.861	1.000
+ell	target1	el-GR-NestorasNeural	Nestoras	194	10.178	0.937
+ell	target2	azure_el-GR-NestorasNeural		6600	11.636	1.000
+en	pod_explainer	gfzdpspr5fdp	Tom	216	11.680	1.000
+en	pod_fine_known	gfzdpspr5fdp	Tom	20772	15.196	1.000
+en-GB	pod_explainer	en-GB-SoniaNeural	SoniaNeural	334	9.058	1.000
+eng	encouragement	elevenlabs_FVdzAUsp8apoOdc0907A	English Narrator (Aran Clone - Source)	1344	16.787	1.000
+eng	instruction	elevenlabs_FVdzAUsp8apoOdc0907A	English Narrator (Aran Clone - Source)	1344	17.017	1.000
+eng	known	eve	Eve	7055	17.985	1.422
+eng	known	xai_eve		34317	16.929	1.338
+eng	known	xai_gfzdpspr5fdp		31298	16.289	1.288
+eng	known	gfzdpspr5fdp	Tom	31553	15.875	1.255
+eng	known	leo	Leo	3529	15.387	1.217
+eng	known	xai_bedd6226		3101	14.865	1.175
+eng	known	xai_leo		509	14.748	1.166
+eng	known	en-GB-SoniaNeural	SoniaNeural	4187	13.509	1.068
+eng	known	azure_en-GB-MiaNeural		4693	13.305	1.052
+eng	known	bedd6226	Olivia	2882	12.654	1.000
+eng	known	azure_en-GB-SoniaNeural		215103	12.648	1.000
+eng	known	azure_en-GB-AdaMultilingualNeural		3532	11.120	0.879
+eng	known	azure_en-GB-BellaNeural	Bella (British English Female)	5498	10.907	0.862
+eng	known	en-GB-ThomasNeural		418	10.844	0.857
+eng	known	en-GB-AlfieNeural		495	10.570	0.836
+eng	known	en-GB-RyanNeural	Ryan	1107	10.513	0.831
+eng	known	f15c6a6a	Henry	907	10.472	0.828
+eng	known	en-GB-LibbyNeural		1297	10.377	0.820
+eng	known	azure_en-GB-RyanNeural		122	10.236	0.809
+eng	known	azure_en-GB-LibbyNeural		134	10.068	0.796
+eng	known	en-GB-HollieNeural		568	9.987	0.790
+eng	pod_explainer	leo	Leo	1467	13.285	1.005
+eng	pod_explainer	xai_leo		189	13.154	0.995
+eng	pod_fine_known	xai_gfzdpspr5fdp		2509	15.240	1.000
+eng	presentation	eve	Eve	2123	15.338	1.163
+eng	presentation	xai_eve		10583	15.071	1.143
+eng	presentation	xai_gfzdpspr5fdp		15017	14.221	1.079
+eng	presentation	gfzdpspr5fdp	Tom	7067	14.216	1.078
+eng	presentation	azure_en-GB-MiaNeural		124	13.178	1.000
+eng	presentation	en-GB-SoniaNeural	SoniaNeural	6018	13.190	1.000
+eng	presentation	azure_en-GB-SoniaNeural		36122	12.989	0.985
+eng	presentation	en-GB-MiaNeural	Mia	1088	12.770	0.969
+eng	presentation	azure_en-GB-BellaNeural	Bella (British English Female)	1255	11.831	0.897
+eng	presentation	en-GB-AdaMultilingualNeural	Ada Multilingual	681	11.203	0.850
+eng	target1	xai_bedd6226		44422	16.770	1.330
+eng	target1	bedd6226	Olivia	41986	15.891	1.260
+eng	target1	sal	Sal	169	15.800	1.253
+eng	target1	en-GB-SoniaNeural	SoniaNeural	7129	13.257	1.051
+eng	target1	azure_en-GB-SoniaNeural		74872	11.961	0.949
+eng	target1	gfzdpspr5fdp	Tom	179	11.149	0.884
+eng	target1	f15c6a6a	Henry	138	10.658	0.845
+eng	target1	en-GB-RyanNeural	Ryan	126	8.724	0.692
+eng	target2	xai_gfzdpspr5fdp		45039	16.358	1.334
+eng	target2	gfzdpspr5fdp	Tom	44597	15.647	1.276
+eng	target2	azure_en-GB-OllieMultilingualNeural		6779	12.261	1.000
+eng	target2	azure_en-GB-OliverNeural		10958	11.603	0.946
+eng	target2	azure_en-GB-RyanNeural		63822	10.426	0.850
+es	known	es-ES-ElviraNeural	Elvira	131	10.999	1.000
+es	pod_explainer	comp:leo		543	14.932	1.000
+es-ES	pod_explainer	gfzdpspr5fdp	Tom	396	11.418	1.000
+es-ES	pod_take_g	eve	Eve	218	16.136	1.060
+es-ES	pod_take_g	yis75yfp	Manuel	210	14.314	0.940
+es-MX	pod_explainer	gfzdpspr5fdp	Tom	215	12.002	1.000
+es-MX	pod_take_g	eve	Eve	119	15.828	1.000
+es-MX	pod_take_g	rex	Rex	118	15.819	1.000
+est	target1	azure_et-EE-AnuNeural		4126	10.685	1.032
+est	target1	et-EE-KertNeural	Kert	186	10.353	1.000
+est	target1	et-EE-AnuNeural	Anu	303	10.312	0.996
+est	target2	azure_et-EE-KertNeural		4008	10.767	1.000
+et	pod_explainer	comp:leo		271	15.138	1.000
+eu	pod_explainer	comp:leo		564	15.083	1.000
+eus	target1	azure_eu-ES-AinhoaNeural		10856	10.406	1.032
+eus	target1	eu-ES-AinhoaNeural	Ainhoa	712	10.079	1.000
+eus	target1	eu-ES-AnderNeural	Ander	428	9.652	0.958
+eus	target2	eu-ES-AnderNeural	Ander	120	10.602	1.009
+eus	target2	azure_eu-ES-AnderNeural		10680	10.410	0.991
+fas	target1	azure_fa-IR-DilaraNeural		4879	9.452	1.021
+fas	target1	fa-IR-DilaraNeural	Dilara	278	9.253	1.000
+fas	target1	fa-IR-FaridNeural	Farid	227	8.990	0.972
+fas	target2	azure_fa-IR-FaridNeural		4763	9.421	1.000
+fr	known	fr-FR-CelesteNeural	Celeste	129	11.374	1.000
+fr	pod_explainer	comp:leo		827	14.901	1.112
+fr	pod_explainer	gfzdpspr5fdp	Tom	604	11.891	0.888
+fr	pod_take_g	ara	Ara	278	18.841	1.055
+fr	pod_take_g	0p0rt7o1	Remi	272	16.872	0.945
+fra	known	azure_fr-FR-CelesteNeural		5069	12.458	1.019
+fra	known	fr-FR-CelesteNeural	Celeste	464	12.005	0.981
+fra	presentation	azure_fr-FR-CelesteNeural		1585	17.008	1.000
+fra	target1	xai_eve		1006	19.375	1.525
+fra	target1	eve	Eve	6524	19.329	1.521
+fra	target1	ara	Ara	138	18.859	1.484
+fra	target1	0p0rt7o1	Remi	187	16.365	1.288
+fra	target1	xai_69smp8rm		207	15.455	1.217
+fra	target1	fr-CA-AntoineNeural	Antoine	110	14.050	1.106
+fra	target1	fr-CA-SylvieNeural	Sylvie	425	11.359	0.894
+fra	target1	azure_fr-FR-CelesteNeural		4300	10.996	0.866
+fra	target1	fr-CA-JeanNeural		222	10.982	0.864
+fra	target1	azure_fr-CA-SylvieNeural		15381	10.530	0.829
+fra	target1	azure_fr-CA-JeanNeural		114	10.324	0.813
+fra	target1	azure_fr-FR-DeniseNeural		4972	9.967	0.785
+fra	target2	xai_leo		7475	19.006	1.665
+fra	target2	fr-CA-AntoineNeural	Antoine	359	12.300	1.077
+fra	target2	azure_fr-FR-HenriNeural		4300	11.417	1.000
+fra	target2	azure_fr-CA-AntoineNeural		15191	10.635	0.932
+fra	target2	azure_fr-FR-ClaudeNeural		4972	10.488	0.919
+ga	pod_explainer	comp:leo		211	12.933	1.000
+gle	target1	ga-IE-OrlaNeural	Orla	298	11.593	1.003
+gle	target1	ga-IE-ColmNeural	Colm	253	11.559	1.000
+gle	target1	azure_ga-IE-OrlaNeural		5934	11.281	0.976
+gle	target2	azure_ga-IE-ColmNeural		5789	12.896	1.000
+glg	target1	azure_gl-ES-SabelaNeural		3871	11.206	1.000
+glg	target2	azure_gl-ES-RoiNeural		3871	11.435	1.000
+gu	known	gu-IN-DhwaniNeural		130	7.136	1.000
+guj	known	azure_gu-IN-DhwaniNeural		10263	7.351	1.000
+guj	pod_explainer	gu-IN-DhwaniNeural		354	6.709	1.000
+guj	presentation	azure_gu-IN-DhwaniNeural		2108	9.173	1.000
+heb	target1	azure_he-IL-HilaNeural		4431	9.052	1.211
+heb	target1	he-IL-HilaNeural	Hila	270	7.477	1.000
+heb	target1	he-IL-AvriNeural	Avri	246	7.154	0.957
+heb	target2	azure_he-IL-AvriNeural		4300	8.606	1.000
+hi	known	xai_eve		122	13.240	1.228
+hi	known	hi-IN-SwaraNeural		123	8.325	0.772
+hi	pod_explainer	gfzdpspr5fdp	Tom	217	12.081	1.000
+hi-IN	pod_take_g	89q2pnko	Karan	106	11.982	1.000
+hin	known	eve	Eve	7289	13.894	1.012
+hin	known	xai_eve		18015	13.573	0.988
+hin	pod_explainer	hi-IN-SwaraNeural		302	6.427	1.000
+hin	presentation	eve	Eve	2641	15.370	1.010
+hin	presentation	xai_eve		4280	15.063	0.990
+hin	target1	ara	Ara	102	14.084	1.149
+hin	target1	xai_ara		135	12.873	1.050
+hin	target1	azure_hi-IN-AartiNeural		4136	11.638	0.950
+hin	target1	89q2pnko	Karan	143	10.497	0.857
+hin	target2	azure_hi-IN-KunalNeural		4321	8.916	1.000
+hr	pod_explainer	comp:leo		189	12.499	1.000
+hr-HR	pod_explainer	hr-HR-GabrijelaNeural	Gabrijela	101	9.496	1.000
+hr-HR	pod_take_g	EXAVITQu4vr4xnSDxMaL		213	15.748	1.206
+hr-HR	pod_take_g	hr-HR-SreckoNeural	Srecko	142	10.370	0.794
+hrv	target1	hr-HR-GabrijelaNeural	Gabrijela	1716	10.107	1.009
+hrv	target1	hr-HR-SreckoNeural	Srecko	277	10.090	1.007
+hrv	target1	azure_hr-HR-SreckoNeural		378	9.953	0.993
+hrv	target1	azure_hr-HR-GabrijelaNeural		3908	9.704	0.968
+hrv	target2	hr-HR-SreckoNeural	Srecko	1446	10.989	1.015
+hrv	target2	azure_hr-HR-SreckoNeural		3628	10.654	0.985
+hun	target1	azure_hu-HU-NoemiNeural		3446	8.846	1.000
+hun	target2	azure_hu-HU-TamasNeural		3447	10.241	1.000
+hye	target1	hy-AM-HaykNeural	Hayk	255	9.517	1.088
+hye	target1	hy-AM-AnahitNeural	Anahit	2190	8.743	1.000
+hye	target1	azure_hy-AM-AnahitNeural		2537	8.487	0.971
+hye	target2	hy-AM-HaykNeural	Hayk	1881	8.526	1.008
+hye	target2	azure_hy-AM-HaykNeural		2410	8.386	0.992
+is	pod_explainer	comp:leo		260	15.652	1.000
+isl	target1	azure_is-IS-GudrunNeural		3996	11.682	1.049
+isl	target1	is-IS-GudrunNeural	Gudrun	421	11.137	1.000
+isl	target1	is-IS-GunnarNeural	Gunnar	254	10.804	0.970
+isl	target2	is-IS-GunnarNeural	Gunnar	187	12.581	1.020
+isl	target2	azure_is-IS-GunnarNeural		3818	12.087	0.980
+it	known	it-IT-ElsaNeural	Elsa	149	12.353	1.000
+it	pod_explainer	comp:leo		620	14.853	1.342
+it	pod_explainer	gfzdpspr5fdp	Tom	432	11.065	1.000
+it	pod_explainer	leo	Leo	363	10.406	0.940
+it	pod_take_g	eve	Eve	197	15.278	1.053
+it	pod_take_g	x7avnu1k	Enzo	213	13.754	0.947
+ita	known	azure_it-IT-ElsaNeural	Elsa (Italian Female)	4627	13.725	1.013
+ita	known	it-IT-ElsaNeural	Elsa	431	13.368	0.987
+ita	presentation	azure_it-IT-ElsaNeural	Elsa (Italian Female)	597	12.971	1.000
+ita	target1	eve	Eve	221	14.932	1.129
+ita	target1	xai_ara		886	14.888	1.125
+ita	target1	x7avnu1k	Enzo	257	13.533	1.023
+ita	target1	azure_it-IT-ElsaNeural	Elsa (Italian Female)	15043	12.927	0.977
+ita	target1	bcs7l2c3	Matteo	105	12.780	0.966
+ita	target1	it-IT-ElsaNeural	Elsa	4205	12.237	0.925
+ita	target2	xai_leo		679	15.070	1.431
+ita	target2	azure_it-IT-LisandroNeural		4423	11.021	1.047
+ita	target2	azure_it-IT-BenignoNeural		10905	10.038	0.953
+ita	target2	it-IT-BenignoNeural	Benigno	4172	9.801	0.931
+ja	known	ja-JP-MayuNeural	Mayu	143	4.647	1.000
+ja	pod_explainer	comp:leo		258	11.956	1.110
+ja	pod_explainer	gfzdpspr5fdp	Tom	221	9.595	0.890
+ja-JP	pod_take_g	ara	Ara	117	9.022	1.055
+ja-JP	pod_take_g	b1a7441b97a1	Ren	142	8.077	0.945
+jpn	encouragement	elevenlabs_J9CDvsEpM6qIpKmOZ5xi		312	5.040	1.000
+jpn	instruction	elevenlabs_J9CDvsEpM6qIpKmOZ5xi		313	4.797	1.000
+jpn	known	ara	Ara	388	6.408	1.151
+jpn	known	b1a7441b97a1	Ren	504	5.904	1.060
+jpn	known	eve	Eve	168	5.803	1.042
+jpn	known	d0cb9ff07d95	Sakura	191	5.568	1.000
+jpn	known	azure_ja-JP-MayuNeural		8319	4.837	0.869
+jpn	known	ja-JP-ShioriNeural	Shiori	379	4.537	0.815
+jpn	known	azure_ja-JP-ShioriNeural		9595	4.390	0.788
+jpn	presentation	azure_ja-JP-ShioriNeural		4898	5.922	1.082
+jpn	presentation	azure_ja-JP-MayuNeural		333	5.028	0.918
+jpn	target1	azure_ja-JP-NaokiNeural		125	5.656	1.163
+jpn	target1	azure_ja-JP-MayuNeural		1844	4.072	0.837
+jpn	target2	azure_ja-JP-NaokiNeural		1700	4.116	1.000
+kan	known	azure_kn-IN-SapnaNeural		11945	9.500	1.000
+kan	presentation	azure_kn-IN-SapnaNeural		2577	13.717	1.000
+ko	known	ko-KR-SunHiNeural	Sun-Hi	132	4.814	1.000
+ko	pod_explainer	comp:leo		211	12.251	1.115
+ko	pod_explainer	gfzdpspr5fdp	Tom	210	9.726	0.885
+ko-KR	pod_take_g	23be42535a45	Ji-yeon	136	8.038	1.007
+ko-KR	pod_take_g	bf9fe5b5f981	Jun-seo	117	7.930	0.993
+kor	known	azure_ko-KR-SunHiNeural		5469	5.112	1.000
+kor	presentation	azure_ko-KR-SunHiNeural		1269	5.041	1.000
+kor	target1	xai_ara		8190	7.436	1.238
+kor	target1	azure_ko-KR-YuJinNeural		4774	4.575	0.762
+kor	target2	xai_leo		8189	7.477	1.269
+kor	target2	azure_ko-KR-GookMinNeural		4675	4.306	0.731
+lav	target1	azure_lv-LV-EveritaNeural		4267	9.941	1.013
+lav	target1	lv-LV-NilsNeural	Nils	249	9.810	1.000
+lav	target1	lv-LV-EveritaNeural	Everita	294	9.446	0.963
+lav	target2	azure_lv-LV-NilsNeural		4132	10.481	1.000
+lit	target1	azure_lt-LT-OnaNeural		4792	9.082	1.041
+lit	target1	lt-LT-OnaNeural	Ona	306	8.722	1.000
+lit	target1	lt-LT-LeonasNeural	Leonas	261	8.680	0.995
+lit	target2	azure_lt-LT-LeonasNeural		4661	9.368	1.000
+lt	pod_explainer	comp:leo		325	14.697	1.000
+lv	pod_explainer	comp:leo		329	15.642	1.000
+mar	known	azure_mr-IN-ManoharNeural		10031	8.910	1.000
+mar	presentation	azure_mr-IN-ManoharNeural		2306	11.793	1.000
+nep	target1	azure_ne-NP-HemkalaNeural		5644	9.883	1.086
+nep	target1	ne-NP-SagarNeural	Sagar	226	9.097	1.000
+nep	target1	ne-NP-HemkalaNeural	Hemkala	295	9.020	0.992
+nep	target2	azure_ne-NP-SagarNeural		5542	10.115	1.000
+nl	pod_explainer	comp:leo		299	15.455	1.000
+nl-NL	pod_take_g	a13662ba951c	Thijs	133	15.762	1.019
+nl-NL	pod_take_g	xai_58d27475085e		178	15.175	0.981
+nld	target1	xai_58d27475085e		246	15.398	1.058
+nld	target1	a13662ba951c	Thijs	114	14.560	1.000
+nld	target1	azure_nl-NL-FennaNeural		3546	8.400	0.577
+nld	target2	azure_nl-NL-MaartenNeural		3533	8.354	1.000
+no	pod_explainer	comp:leo		294	15.458	1.000
+nor	target1	nb-NO-FinnNeural	Finn	127	10.798	1.018
+nor	target1	nb-NO-IselinNeural	Iselin	230	10.604	1.000
+nor	target1	azure_nb-NO-IselinNeural		3623	10.495	0.990
+nor	target2	azure_nb-NO-FinnNeural		3505	10.492	1.000
+pa	known	pa-IN-VaaniNeural		143	9.075	1.000
+pan	known	azure_pa-IN-VaaniNeural		10166	9.191	1.000
+pan	pod_explainer	pa-IN-VaaniNeural		300	7.118	1.000
+pan	presentation	azure_pa-IN-VaaniNeural		2677	9.932	1.000
+pl	pod_explainer	comp:leo		318	14.266	1.000
+pl-PL	pod_take_g	1b12d5daee6b	Aleksandra	140	13.758	1.008
+pl-PL	pod_take_g	37329fd8895a	Mateusz	142	13.533	0.992
+pol	target1	xai_1b12d5daee6b		111	13.648	1.152
+pol	target1	1b12d5daee6b	Aleksandra	120	11.985	1.012
+pol	target1	37329fd8895a	Mateusz	127	11.702	0.988
+pol	target1	azure_pl-PL-ZofiaNeural		4993	9.949	0.840
+pol	target2	azure_pl-PL-MarekNeural		4991	9.918	1.000
+por	known	azure_pt-PT-RaquelNeural		4906	10.532	1.012
+por	known	pt-PT-RaquelNeural	Raquel	289	10.284	0.988
+por	presentation	azure_pt-PT-RaquelNeural		614	13.223	1.000
+por	target1	rex	Rex	105	15.461	1.247
+por	target1	eve	Eve	152	15.339	1.237
+por	target1	ara	Ara	187	14.343	1.157
+por	target1	xai_eve		157	13.746	1.108
+por	target1	xai_ara		162	13.738	1.108
+por	target1	abfbdf26f115	Mateus	139	12.401	1.000
+por	target1	azure_pt-BR-JulioNeural		155	10.352	0.835
+por	target1	pt-BR-BrendaNeural	Brenda	226	9.296	0.750
+por	target1	azure_pt-BR-BrendaNeural		11018	8.795	0.709
+por	target1	pt-PT-RaquelNeural	Raquel	253	8.684	0.700
+por	target1	azure_pt-PT-RaquelNeural		10742	8.613	0.695
+por	target2	azure_pt-PT-DuarteNeural		11446	10.445	1.087
+por	target2	pt-PT-DuarteNeural	Duarte	191	10.315	1.074
+por	target2	pt-BR-JulioNeural	Julio	234	8.898	0.926
+por	target2	azure_pt-BR-JulioNeural		10993	8.486	0.883
+pt	known	pt-PT-RaquelNeural	Raquel	138	10.227	1.000
+pt	pod_explainer	comp:leo		561	14.906	1.000
+pt-BR	pod_explainer	gfzdpspr5fdp	Tom	207	11.738	1.000
+pt-BR	pod_take_g	ara	Ara	126	15.785	1.117
+pt-BR	pod_take_g	abfbdf26f115	Mateus	153	12.480	0.883
+pt-PT	pod_explainer	gfzdpspr5fdp	Tom	211	11.458	1.000
+pt-PT	pod_take_g	eve	Eve	132	16.225	1.005
+pt-PT	pod_take_g	rex	Rex	124	16.063	0.995
+ro	pod_explainer	comp:leo		226	13.224	1.000
+ron	target1	azure_ro-RO-AlinaNeural		4473	11.093	1.143
+ron	target1	ro-RO-AlinaNeural	Alina	314	9.701	1.000
+ron	target1	ro-RO-EmilNeural	Emil	196	9.667	0.996
+ron	target2	azure_ro-RO-EmilNeural		4349	11.396	1.000
+rus	target1	azure_ru-RU-SvetlanaNeural		4590	9.415	1.000
+rus	target2	azure_ru-RU-DmitryNeural		4589	9.344	1.000
+si	known	si-LK-SameeraNeural	Sameera	134	11.145	1.000
+sin	known	azure_si-LK-SameeraNeural		11263	10.626	1.000
+sin	pod_explainer	si-LK-SameeraNeural	Sameera	318	9.850	1.000
+sin	presentation	azure_si-LK-SameeraNeural		2355	10.111	1.000
+spa	known	eve	Eve	213	16.109	1.485
+spa	known	yis75yfp	Manuel	253	13.447	1.240
+spa	known	ekhwx401	Javier	108	12.892	1.188
+spa	known	azure_es-ES-ElviraNeural		9386	10.847	1.000
+spa	known	azure_es-AR-ElenaNeural		4595	10.625	0.980
+spa	known	es-ES-ElviraNeural	Elvira	360	10.465	0.965
+spa	known	es-AR-ElenaNeural	Elena	105	9.531	0.879
+spa	presentation	azure_es-ES-ElviraNeural		1253	14.449	1.211
+spa	presentation	azure_es-AR-ElenaNeural		602	11.949	1.002
+spa	presentation	es-ES-AlvaroNeural	Alvaro	966	11.909	0.998
+spa	presentation	azure_es-ES-AlvaroNeural	Álvaro (Spanish Male)	199	11.784	0.988
+spa	target1	eve	Eve	292	16.082	1.234
+spa	target1	rex	Rex	117	15.211	1.167
+spa	target1	ara	Ara	146	13.792	1.058
+spa	target1	yis75yfp	Manuel	255	13.645	1.047
+spa	target1	d2313a0d	Pablo	407	13.467	1.034
+spa	target1	f2f41225	Maria	392	13.327	1.023
+spa	target1	xai_yis75yfp		415	13.243	1.016
+spa	target1	ekhwx401	Javier	104	12.816	0.984
+spa	target1	es-ES-ElviraNeural	Elvira	7411	11.818	0.907
+spa	target1	azure_es-ES-ElviraNeural		11760	10.058	0.772
+spa	target1	azure_es-MX-LucianoNeural		182	9.999	0.767
+spa	target1	es-MX-CarlotaNeural	Carlota	324	9.308	0.714
+spa	target1	azure_es-ES-LaiaNeural		6483	8.714	0.669
+spa	target1	azure_es-MX-CarlotaNeural		10028	8.414	0.646
+spa	target2	es-ES-AlvaroNeural	Alvaro	1003	11.378	1.129
+spa	target2	azure_es-ES-AlvaroNeural	Álvaro (Spanish Male)	24140	10.081	1.000
+spa	target2	azure_es-MX-LucianoNeural		10108	8.119	0.805
+srp	target1	azure_sr-Latn-RS-SophieNeural		3993	11.139	1.000
+srp	target2	azure_sr-Latn-RS-NicholasNeural		3993	10.324	1.000
+sv-SE	pod_take_g	ara	Ara	129	14.921	1.053
+sv-SE	pod_take_g	e22152e06fd8	Axel	141	13.415	0.947
+sw	pod_explainer	comp:leo		275	14.932	1.000
+swa	target1	sw-KE-RafikiNeural	Rafiki	251	9.859	1.021
+swa	target1	sw-KE-ZuriNeural	Zuri	311	9.658	1.000
+swa	target1	azure_sw-KE-ZuriNeural		4726	9.324	0.965
+swa	target2	sw-KE-RafikiNeural	Rafiki	3757	9.916	1.008
+swa	target2	azure_sw-KE-RafikiNeural		853	9.763	0.992
+swe	target1	xai_3b312632		223	13.094	1.045
+swe	target1	xai_4c7f16ff		168	12.722	1.015
+swe	target1	e22152e06fd8	Axel	134	12.346	0.985
+swe	target1	azure_sv-SE-SofieNeural		3716	9.508	0.759
+swe	target2	azure_sv-SE-MattiasNeural		3714	8.962	1.000
+ta	known	ta-LK-SaranyaNeural	Saranya	160	11.331	1.000
+tam	known	azure_ta-LK-SaranyaNeural		32058	12.434	1.000
+tam	pod_explainer	ta-LK-SaranyaNeural	Saranya	359	9.785	1.000
+tam	presentation	azure_ta-LK-KumarNeural		1907	9.888	1.036
+tam	presentation	azure_ta-LK-SaranyaNeural		3429	9.205	0.964
+tel	known	azure_te-IN-ShrutiNeural		11496	12.568	1.000
+tel	presentation	azure_te-IN-ShrutiNeural		2155	14.008	1.000
+th-TH	pod_take_g	ara	Ara	118	14.493	1.073
+th-TH	pod_take_g	908c4626660f	Krit	119	12.521	0.927
+tha	target1	ara	Ara	116	12.344	1.085
+tha	target1	xai_ara		123	11.769	1.034
+tha	target1	908c4626660f	Krit	146	10.995	0.966
+tha	target1	azure_th-TH-PremwadeeNeural		3268	8.644	0.759
+tha	target2	azure_th-TH-NiwatNeural		3266	9.428	1.000
+tr	pod_explainer	comp:leo		258	15.420	1.133
+tr	pod_explainer	gfzdpspr5fdp	Tom	218	11.789	0.867
+tr-TR	pod_take_g	ara	Ara	138	15.671	1.053
+tr-TR	pod_take_g	670a0c3ac005	Emre	137	14.088	0.947
+tur	target1	xai_ara		110	14.318	1.007
+tur	target1	670a0c3ac005	Emre	130	14.218	1.000
+tur	target1	azure_tr-TR-AhmetNeural		7926	9.400	0.661
+tur	target2	azure_tr-TR-EmelNeural		7925	10.246	1.000
+ukr	target1	azure_uk-UA-PolinaNeural		4475	10.162	1.098
+ukr	target1	uk-UA-PolinaNeural	Polina	304	9.252	1.000
+ukr	target1	uk-UA-OstapNeural	Ostap	243	8.814	0.953
+ukr	target2	azure_uk-UA-OstapNeural		4367	9.881	1.000
+ur	known	ur-PK-UzmaNeural		152	10.283	1.000
+urd	known	azure_ur-PK-UzmaNeural		8814	9.789	1.000
+urd	pod_explainer	ur-PK-UzmaNeural		315	8.491	1.000
+urd	presentation	azure_ur-PK-UzmaNeural		2324	11.805	1.000
+zh	pod_explainer	comp:leo		492	12.685	1.182
+zh	pod_explainer	gfzdpspr5fdp	Tom	434	8.784	0.818
+zh-CN	pod_take_g	ara	Ara	196	7.484	1.069
+zh-CN	pod_take_g	jpi39icg	Jian	174	6.519	0.931
+zho	encouragement	elevenlabs_pTOe8BQRdydOEIgv0wFL		240	3.193	1.000
+zho	instruction	elevenlabs_pTOe8BQRdydOEIgv0wFL		240	3.204	1.000
+zho	known	zh-CN-XiaochenNeural	Xiaochen	2331	12.725	1.362
+zho	known	azure_zh-CN-XiaochenNeural		1140	5.960	0.638
+zho	presentation	azure_zh-CN-XiaochenNeural		3885	3.725	1.000
+zho	target1	xai_ara		253	5.219	1.221
+zho	target1	azure_zh-CN-XiaoxiaoMultilingualNeural		155	3.329	0.779
+zho	target2	xai_leo		242	5.207	1.178
+zho	target2	azure_zh-CN-YunyiMultilingualNeural		156	3.630	0.822

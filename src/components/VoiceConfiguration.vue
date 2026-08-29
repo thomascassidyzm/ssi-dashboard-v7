@@ -35,12 +35,20 @@
           <span class="lane-lang">{{ languageName(getLanguageForRole(role.id)) }}</span>
         </div>
 
+        <!-- WHERE THIS VOICE CAME FROM (Tom, 2026-08-29). A screen that shows a
+             voice without saying where it was decided is how a cast made in the
+             Voice Lab could sit unnoticed behind a course's own stored row. -->
+        <div v-if="provenanceFor(role.id)" class="lane-provenance" :class="provenanceFor(role.id).kind">
+          <span class="prov-dot"></span>
+          <span class="prov-text">{{ provenanceFor(role.id).label }}</span>
+        </div>
+
         <!-- Current Selection -->
         <div v-if="getVoiceForRole(role.id).voiceId" class="lane-selection">
           <div class="selection-details">
-            <span class="selection-name">{{ getVoiceForRole(role.id).name || getVoiceForRole(role.id).voiceId }}</span>
-            <span class="selection-provider" :class="getVoiceForRole(role.id).provider">
-              {{ getVoiceForRole(role.id).provider }}
+            <span class="selection-name">{{ resolvedVoiceFor(role.id).name || resolvedVoiceFor(role.id).voiceId }}</span>
+            <span class="selection-provider" :class="resolvedVoiceFor(role.id).provider">
+              {{ resolvedVoiceFor(role.id).provider }}
             </span>
           </div>
 
@@ -631,6 +639,66 @@ function getVoiceForRole(roleId) {
   return config.value?.voices?.[roleId] || { voiceId: '', provider: 'azure', settings: { speed: 1.0 } }
 }
 
+// ── THE LANGUAGE CAST, ON THE SCREEN (Tom's ruling, 2026-08-29) ─────────────
+//
+// Tom: "so far it doesn't write back to Poppy's Phase 8 generate audio section,
+// does it?" It did not — the cast was a decision this screen never mentioned.
+// Now the screen makes TWO reads: `config` is the course's own stored row,
+// which is what the editor edits and saves, and `resolution` is what a render
+// will actually use plus the reason for every role. Both are needed and they
+// are deliberately not merged: saving the resolved config back into the course
+// row would freeze the cast into 94 copies, which is the very thing casting at
+// the language exists to stop.
+const resolution = ref(null)
+
+async function loadResolution() {
+  try {
+    const r = await fetch(`${props.apiBaseUrl}/api/courses/${props.courseCode}/voice-config/resolved`, {
+      headers: { 'ngrok-skip-browser-warning': 'true' }
+    })
+    if (!r.ok) { resolution.value = null; return }
+    resolution.value = await r.json()
+  } catch (e) {
+    // A cast we cannot read must never blank the screen. Falling back to the
+    // stored row is exactly the pre-cast display, which is safe — but the
+    // provenance line goes quiet rather than claiming a source it did not read.
+    resolution.value = null
+  }
+}
+
+/** The voice that will actually render — the cast's, where the cast overruled. */
+function resolvedVoiceFor(roleId) {
+  const r = resolution.value?.resolved?.voices?.[roleId]
+  return r || getVoiceForRole(roleId)
+}
+
+function decisionFor(roleId) {
+  return (resolution.value?.decisions || []).find(d => d.role === roleId) || null
+}
+
+/**
+ * One short sentence saying where this role's voice was decided. Built from the
+ * reader's own `decisions[]` rather than re-derived here, so the screen cannot
+ * drift from the render.
+ */
+function provenanceFor(roleId) {
+  const d = decisionFor(roleId)
+  if (!d) return null
+  const lang = d.language ? languageName(d.language) : ''
+  switch (d.source) {
+    case 'language-cast':
+      return { kind: 'cast', label: `From the ${lang} cast — this course's own setting is overruled` }
+    case 'cast-same':
+      return { kind: 'cast', label: `From the ${lang} cast — same voice this course already stored` }
+    case 'course-override':
+      return { kind: 'override', label: 'Course override — this course keeps its own voice' }
+    case 'absent':
+      return null
+    default:
+      return { kind: 'stored', label: 'This course\u2019s own setting — nothing cast for this language yet' }
+  }
+}
+
 function getLanguageForRole(roleId) {
   const role = roles.find(r => r.id === roleId)
   if (!role) return 'unknown'
@@ -749,6 +817,7 @@ async function loadConfig() {
       }
     }
     config.value = voiceConfig || {}
+    await loadResolution()
     emit('config-loaded', config.value)
   } catch (err) {
     error.value = err.message
@@ -778,6 +847,7 @@ async function saveConfig() {
 
     const data = await response.json()
     config.value = data.config
+    await loadResolution()
     emit('config-saved', config.value)
 
     saveStatus.value = { type: 'success', message: 'Saved!' }
@@ -845,7 +915,10 @@ async function previewVoice(voice, roleId) {
 }
 
 async function testVoice(roleId) {
-  const voice = getVoiceForRole(roleId)
+  // Test the voice that will actually RENDER, not the one the row happens to
+  // store — a Test button that plays a voice the generator will not use is
+  // worse than no Test button, because it is believed.
+  const voice = resolvedVoiceFor(roleId)
   if (!voice.voiceId || testingRole.value === roleId) return
 
   testingRole.value = roleId
@@ -893,12 +966,21 @@ async function selectVoiceForRole(roleId, voice) {
   if (!config.value.voices) config.value.voices = {}
   if (!config.value.voices[roleId]) config.value.voices[roleId] = {}
 
+  // A HUMAN PICKING A VOICE ON THIS SCREEN IS THE OVERRIDE (default taken
+  // 2026-08-29, flagged for Tom). The marker exists in the reader and nothing
+  // in the estate sets it; a person choosing a voice here, for this one course,
+  // having been told above where the voice currently comes from, is precisely
+  // the sentence the marker records — "not this language's cast, THIS voice,
+  // for this course". Set per ROLE and only from this deliberate action; never
+  // in bulk, because treating every legacy config as an override would put the
+  // language cast permanently out of reach.
   config.value.voices[roleId] = {
     voiceId: voice.id,
     provider: voice.provider || 'azure',
     name: voice.displayName || voice.name,
     language: voice.locale,
-    settings: { speed: 1.0 }
+    settings: { speed: 1.0 },
+    overrideLanguageCast: true
   }
 
   expandedRole.value = null
@@ -911,12 +993,21 @@ async function selectManualVoiceForRole(roleId) {
   if (!config.value.voices) config.value.voices = {}
   if (!config.value.voices[roleId]) config.value.voices[roleId] = {}
 
+  // A HUMAN PICKING A VOICE ON THIS SCREEN IS THE OVERRIDE (default taken
+  // 2026-08-29, flagged for Tom). The marker exists in the reader and nothing
+  // in the estate sets it; a person choosing a voice here, for this one course,
+  // having been told above where the voice currently comes from, is precisely
+  // the sentence the marker records — "not this language's cast, THIS voice,
+  // for this course". Set per ROLE and only from this deliberate action; never
+  // in bulk, because treating every legacy config as an override would put the
+  // language cast permanently out of reach.
   config.value.voices[roleId] = {
     voiceId: manualVoiceId.value,
     provider: 'elevenlabs',
     name: manualVoiceName.value || manualVoiceId.value,
     language: getLanguageForRole(roleId),
-    settings: { speed: 1.0, stability: 0.5, similarityBoost: 0.75 }
+    settings: { speed: 1.0, stability: 0.5, similarityBoost: 0.75 },
+    overrideLanguageCast: true
   }
 
   expandedRole.value = null
@@ -970,6 +1061,22 @@ onMounted(() => {
 <style scoped>
 /* The preview phrase binds `dir`; the row it sits in does not move. */
 .phrase-text { text-align: left; }
+
+.lane-provenance {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.75rem;
+  padding: 0.15rem 0 0.35rem;
+  opacity: 0.85;
+}
+.lane-provenance .prov-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: currentColor; flex: none;
+}
+.lane-provenance.cast { color: #7c5cff; }
+.lane-provenance.override { color: #d98600; }
+.lane-provenance.stored { color: #7a8699; }
 
 .voice-configuration {
   background: var(--surface);

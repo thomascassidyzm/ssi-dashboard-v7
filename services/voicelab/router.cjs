@@ -336,6 +336,88 @@ function mount (app, deps) {
     } catch (err) { fail(res, err, 'clear') }
   })
 
+  // ── PER-VOICE NATURAL PACE ────────────────────────────────────────────────
+  //
+  // Tom, 2026-08-29: "we should ALSO probably have a look at setting learning
+  // app player speeds per voice from here … the speeds are a little different
+  // between voices … maybe we have settings in the voice lab that should/could
+  // be then read by the player?"
+  //
+  // These are that. Read-only measurement plus one human dial, and NOTHING
+  // here renders, spends or touches audio — the pace is computed from clips
+  // that already exist (tools/voice/measure-natural-pace.cjs).
+
+  /**
+   * GET /api/voicelab/pace — every measured voice, fastest first.
+   *
+   * THIS IS THE READING SURFACE the learner app will consume. `effective` is
+   * the only number a consumer should divide by; it is the measurement times
+   * the human's nudge, and it is null — never 1.0 — for a voice nobody has
+   * measured, because a consumer must be able to tell "typical for its
+   * language" from "we have not looked".
+   */
+  app.get('/api/voicelab/pace', async (req, res) => {
+    if (!await requireDashboardUser(req, res)) return
+    try {
+      const { data, error } = await supabase()
+        .from('voices')
+        .select('voice_id, display_name, human_name, tts_engine, gender, languages, is_active, natural_pace_ratio, natural_pace_cps, natural_pace_samples, natural_pace_measured_at, natural_pace_method, natural_pace_nudge, natural_pace_nudge_note')
+        .not('natural_pace_ratio', 'is', null)
+      if (error) throw Object.assign(new Error(error.message), { status: 400 })
+      const voices = (data || []).map((v) => ({
+        voiceId: v.voice_id,
+        name: v.display_name || v.human_name || v.voice_id,
+        engine: v.tts_engine || null,
+        gender: v.gender || null,
+        languages: v.languages || [],
+        active: v.is_active !== false,
+        method: v.natural_pace_method || null,
+        ...registry.paceOf(v),
+      })).sort((a, b) => (b.effective || 0) - (a.effective || 0))
+      res.json({ voices, count: voices.length })
+    } catch (err) { fail(res, err, 'pace') }
+  })
+
+  /**
+   * PUT /api/voicelab/voices/:voiceId/pace — the human's nudge, and ONLY that.
+   *
+   * The measurement is never writable from a screen (Tom's ruling: pace is
+   * measured from rendered audio, not asked of a human), and this route
+   * deliberately cannot write it. What an ear IS allowed to say is "the number
+   * is close but that one still drags", and that is a separate column so a
+   * re-measurement can never delete it.
+   *
+   * Body: { nudge: number|null, note?: string }. null clears it.
+   */
+  app.put('/api/voicelab/voices/:voiceId/pace', async (req, res) => {
+    const user = await requireAdmin(req, res)
+    if (!user) return
+    try {
+      const voiceId = String(req.params.voiceId || '').trim()
+      if (!voiceId) throw Object.assign(new Error('voiceId is required'), { status: 400 })
+      const raw = (req.body || {}).nudge
+      let nudge = null
+      if (raw !== null && raw !== undefined && raw !== '') {
+        nudge = Number(raw)
+        // The same bounds the migration's CHECK holds, refused here with a
+        // sentence rather than a constraint violation.
+        if (!Number.isFinite(nudge) || nudge < 0.5 || nudge > 2.0) {
+          throw Object.assign(new Error('nudge must be a number between 0.5 and 2.0, or null to clear it'), { status: 400 })
+        }
+      }
+      const note = (req.body || {}).note ? String((req.body || {}).note).slice(0, 500) : null
+      const { data, error } = await supabase()
+        .from('voices')
+        .update({ natural_pace_nudge: nudge, natural_pace_nudge_note: note })
+        .eq('voice_id', voiceId)
+        .select('voice_id, natural_pace_ratio, natural_pace_nudge, natural_pace_nudge_note')
+      if (error) throw Object.assign(new Error(error.message), { status: 400 })
+      if (!data || !data.length) throw Object.assign(new Error(`no voice ${voiceId} in the registry`), { status: 404 })
+      logger.log?.(`[voicelab] pace nudge ${voiceId} -> ${nudge === null ? 'cleared' : nudge} by ${who(user)}`)
+      res.json({ ok: true, voiceId, ...registry.paceOf(data[0]) })
+    } catch (err) { fail(res, err, 'pace-nudge') }
+  })
+
   // ── The sentence picker: real course text, read-only, spends nothing ──────
   app.get('/api/voicelab/courses', async (req, res) => {
     if (!await requireDashboardUser(req, res)) return

@@ -13,7 +13,7 @@ const { createClient } = require('@supabase/supabase-js');
 const { bumpCourseVersion } = require('./shared/course-version.cjs');
 const { voiceSpellings } = require('./shared/clip-identity-lookup.cjs');
 const { selectProvider } = require('./shared/tts-provider-policy.cjs');
-const { applyLanguageCast } = require('./shared/language-voice-cast.cjs');
+const { applyLanguageCast, CAST_ROLES } = require('./shared/language-voice-cast.cjs');
 
 // Initialize Supabase client
 const supabaseUrl = process.env.SUPABASE_URL;
@@ -270,6 +270,52 @@ async function resolveVoiceConfig({ voiceConfig, course, courseCode }) {
     }
   }
   return config;
+}
+
+/**
+ * Explain a course's voice config: what is stored, what a render will actually
+ * use, and WHY each role ended up where it did.
+ *
+ * The render path only needs the answer, so resolveVoiceConfig throws the
+ * reasoning away. A HUMAN needs the reasoning: Tom's complaint on 2026-08-29
+ * was that the Voice Lab cast "doesn't write back to Poppy's Phase 8 generate
+ * audio section", and a screen that silently shows the right voice does not
+ * fix that — it just moves the confusion. The screen has to be able to say
+ * "this came from the English cast, rank 0" or "this is a course override" out
+ * loud, and `decisions[]` is exactly that sentence, for every role, including
+ * the ones the cast left alone.
+ *
+ * @param {string} courseCode
+ * @returns {Promise<{stored: object, resolved: object, decisions: object[], changed: boolean, castRowCount: number}>}
+ */
+async function explainVoiceConfig(courseCode) {
+  const stored = await loadStoredVoiceConfig(courseCode);
+  const { roles, voices } = await loadCast();
+
+  let course = null;
+  if (supabase) {
+    const { data } = await supabase
+      .from('courses').select('course_code, known_lang, target_lang')
+      .eq('course_code', courseCode).single();
+    course = data || null;
+  }
+
+  if (!roles.length || !course) {
+    // No cast anywhere (or no course row): the stored config IS the answer, and
+    // saying so explicitly is more useful to a reader than an empty array.
+    return {
+      stored, resolved: stored, changed: false, castRowCount: roles.length,
+      decisions: CAST_ROLES.map((role) => ({
+        role,
+        source: stored.voices && stored.voices[role] ? 'stored' : 'absent',
+        reason: roles.length ? 'course row unreadable' : 'nothing cast anywhere',
+        voiceId: (stored.voices && stored.voices[role] || {}).voiceId || null,
+      })),
+    };
+  }
+
+  const { config, decisions } = applyLanguageCast({ voiceConfig: stored, course, roles, voices });
+  return { stored, resolved: config, decisions, changed: config !== stored, castRowCount: roles.length };
 }
 
 /**
@@ -887,6 +933,7 @@ module.exports = {
   loadVoiceConfig,
   loadStoredVoiceConfig,
   resolveVoiceConfig,
+  explainVoiceConfig,
   _clearCastCache,
   saveVoiceConfig,
   updateVoiceRole,
