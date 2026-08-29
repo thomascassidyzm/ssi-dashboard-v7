@@ -215,7 +215,7 @@ async function loadCast() {
   if (Date.now() - castCache.at < CAST_CACHE_MS) return castCache;
   try {
     const [roles, voices] = await Promise.all([
-      supabase.from('voice_language_roles').select('language, gender, rank, voice_id'),
+      supabase.from('voice_language_roles').select('language, gender, rank, voice_id, slot'),
       supabase.from('voices').select('voice_id, gender, tts_engine, is_active, display_name, human_name'),
     ]);
     if (roles.error) throw roles.error;
