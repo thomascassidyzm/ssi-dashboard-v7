@@ -139,7 +139,7 @@ async function main() {
   const seed = +seedArg;
   const { seedRow, legos, ownLegos, priorSeeds, priorLegos, priorComponents, components, phrases } = await loadCorpus(sb, course, seed);
   if (!seedRow) throw new Error(`no seed ${seed} in ${course}`);
-  const job = deriveJob({ seedRow, ownLegos, priorSeeds, priorLegos, priorComponents });
+  const job = deriveJob({ course, seedRow, ownLegos, priorSeeds, priorLegos, priorComponents });
   // per-course frame attestation — never the doc's spa-derived first_seed
   const attested = attestedFrames(priorSeeds, seedRow);
   const liveScored = scoreBaskets(phrases, { legos: ownLegos, job, instantiableFrames: attested.size });

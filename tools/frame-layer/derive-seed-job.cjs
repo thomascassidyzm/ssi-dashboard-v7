@@ -45,7 +45,7 @@
  * READ-ONLY. Usage: node tools/frame-layer/derive-seed-job.cjs spa_for_eng 599
  */
 const PATTERNS = require('./patterns.cjs');
-const SPLITS = require('./split-matchers.cjs');
+const { splitsFor: splitMatchersFor } = require('./split-matchers.cjs');
 
 const framesOf = (known) => PATTERNS.filter(p => p.test(String(known || ''))).map(p => p.id);
 const fires = (re, text) => re != null && new RegExp(re, 'i').test(String(text || ''));
@@ -90,7 +90,12 @@ function findAtomisations({ ownLegos, priorLegos = [], priorComponents = [] }) {
  * @param priorLegos every lego admitted before this seed — for atomisation only
  * @param priorComponents every CMP row admitted before this seed — availability, never teaching
  */
-function deriveJob({ seedRow, ownLegos = [], priorSeeds = [], priorLegos = [], priorComponents = [] }) {
+function deriveJob({ seedRow, ownLegos = [], priorSeeds = [], priorLegos = [], priorComponents = [], course = 'spa_for_eng' }) {
+  // Split matchers are facts about a TARGET LANGUAGE's morphology, so they are
+  // fetched per course. No matchers means the splits are UNREADABLE for this
+  // pair — never "no split in play", which is absence dressed as an answer.
+  const SPLITS = splitMatchersFor(course) || {};
+  const splitsReadable = !!splitMatchersFor(course);
   const here = framesOf(seedRow.known_text);
   const before = new Set();
   const priorFrames = priorSeeds.map(s => { const f = framesOf(s.known_text); f.forEach(x => before.add(x)); return { s, f }; });
@@ -137,7 +142,7 @@ function deriveJob({ seedRow, ownLegos = [], priorSeeds = [], priorLegos = [], p
   })[verdict]();
 
   return { verdict, sentence, new_legos: ownLegos, new_frames: newFrames, new_sides: newSides,
-           atomisations,
+           atomisations, course, splits_readable: splitsReadable,
            frames_here: here, splits_in_play: inPlay, not_machine_checkable: unmatchable };
 }
 
@@ -162,7 +167,7 @@ if (require.main === module) {
   (async () => {
     const { loadCorpus } = require('./corpus.cjs');
     const { seedRow, ownLegos, priorSeeds, priorLegos, priorComponents } = await loadCorpus(sb, course, seed);
-    const job = deriveJob({ seedRow, ownLegos, priorSeeds, priorLegos, priorComponents });
+    const job = deriveJob({ seedRow, ownLegos, priorSeeds, priorLegos, priorComponents, course });
     console.log(`${course} seed ${seed}: ${seedRow.known_text}`);
     console.log(`\nVERDICT: ${job.verdict}\n${job.sentence}\n`);
     console.log(JSON.stringify({ ...job, new_legos: undefined }, null, 2));

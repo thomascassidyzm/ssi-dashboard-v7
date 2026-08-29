@@ -177,6 +177,22 @@ const S = (known_text, target_text, seed_number) => ({ known_text, target_text, 
   ok(/STATUS/.test(job.sentence), 'the sentence says what is new is status, not material');
 }
 
+// ---- split matchers are per TARGET LANGUAGE, never shared across the grid ---
+{
+  const { splitsFor } = require('./split-matchers.cjs');
+  ok(splitsFor('spa_for_eng') && Object.keys(splitsFor('spa_for_eng')).length > 0, 'Spanish has matchers');
+  ok(splitsFor('fra_for_eng') === null, 'French has none — the Spanish regexes must not be lent to it');
+  const seedRow = S('I want you to speak Spanish with me', 'quiero que hables español conmigo');
+  const prior = [S('I want to speak Spanish', 'quiero hablar español', 1)];
+  const own = [{ lego_index: 1, known_text: 'I want you to', target_text: 'quiero que' }];
+  ok(deriveJob({ seedRow, ownLegos: own, priorSeeds: prior, course: 'spa_for_eng' }).splits_readable === true,
+     'Spanish splits are readable');
+  const fr = deriveJob({ seedRow, ownLegos: own, priorSeeds: prior, course: 'fra_for_eng' });
+  ok(fr.splits_readable === false, 'a pair with no matchers reports its splits as UNREADABLE');
+  ok(fr.new_sides.length === 0 && fr.verdict !== 'NEW SIDE',
+     'and it must not claim a new side it has no way to see');
+}
+
 // ---- the per-LEGO availability window ------------------------------------
 {
   const { availableVocab, attestedFrames } = require('./availability.cjs');

@@ -95,7 +95,7 @@ async function analyse(course, seed) {
   if (!c.seedRow) {
     value = { course, seed, missing: true };
   } else {
-    const job = deriveJob({ seedRow: c.seedRow, ownLegos: c.ownLegos, priorSeeds: c.priorSeeds,
+    const job = deriveJob({ course, seedRow: c.seedRow, ownLegos: c.ownLegos, priorSeeds: c.priorSeeds,
                             priorLegos: c.priorLegos, priorComponents: c.priorComponents });
     const attested = attestedFrames(c.priorSeeds, c.seedRow);
     const ec = expensiveClassFor(course, MAPPING_DOC);
@@ -126,7 +126,7 @@ async function courseList() {
 const ROLE_ORDER = { build: 0, use: 1, component: 2 };
 const sortPhrases = (a, b) => (ROLE_ORDER[a.phrase_role] ?? 9) - (ROLE_ORDER[b.phrase_role] ?? 9);
 
-function criteriaTable(s, splits) {
+function criteriaTable(s, splits, splitsReadable) {
   if (!s) return '<p class="none">no practice phrases in this basket</p>';
   const row = (k, label) => {
     const v = s.axes[k], f = s.floors[k], ok = !s.floor_failures.includes(k);
@@ -144,7 +144,9 @@ function criteriaTable(s, splits) {
     ${row('neigh', 'NEIGH — distinct neighbours')}
     ${row('junct', 'JUNCT — distinct junctions')}
     ${splits.length ? row('split', 'SPLIT — crosses the side this LEGO admits')
-      : '<tr><td class="none">SPLIT — this LEGO admits no side of any split</td><td class="n none">n/a</td><td class="n"></td><td class="none">—</td></tr>'}
+      : `<tr><td class="none">SPLIT — ${splitsReadable === false
+            ? 'no split matchers exist for this pair, so splits are UNREADABLE here — not absent'
+            : 'this LEGO admits no side of any split'}</td><td class="n none">n/a</td><td class="n"></td><td class="none">—</td></tr>`}
     <tr class="${s.pass ? 'ok' : 'bad'}"><td><b>pattern diversity (composite)</b></td><td class="n"><b>${s.composite}</b></td><td class="n"></td><td><b>${s.pass ? 'PASS' : 'FAIL'}</b></td></tr>
     </table>`;
 }
@@ -255,13 +257,13 @@ async function labPage(course, seed) {
   <div class="cols">
     <div class="col">
       <h3>live — in the course today <span class="verdictpill ${b.score && b.score.pass ? 'ok' : 'bad'}">${b.score ? (b.score.pass ? 'PASS' : 'FAIL') : 'no phrases'}</span></h3>
-      ${criteriaTable(b.score, b.splits)}
+      ${criteriaTable(b.score, b.splits, job.splits_readable)}
       ${phraseList(b.phrases)}
     </div>
     <div class="col">
       <h3>generated — frame-guided ${g && g.score ? `<span class="verdictpill ${g.score.pass ? 'ok' : 'bad'}">${g.score.pass ? 'PASS' : 'FAIL'}</span>` : ''}</h3>
       ${genAction(course, seed, b.lego_index)}
-      ${g ? `${criteriaTable(g.score, g.splits)}${phraseList(g.phrases)}`
+      ${g ? `${criteriaTable(g.score, g.splits, job.splits_readable)}${phraseList(g.phrases)}`
           : '<p class="none">nothing generated for this basket yet</p>'}
     </div>
   </div>
@@ -271,7 +273,7 @@ async function labPage(course, seed) {
 <section class="basket">
   <h2>unattributed <span class="none">— ${live.unattributed.phrases.length} phrase(s) whose lego_index matches no LEGO of this seed</span></h2>
   <p class="meta">Scored for information only. <b>This group does not gate the seed</b> — a row nobody can attribute is a data question, not a quality failure.</p>
-  <div class="col">${criteriaTable(live.unattributed.score, [])}${phraseList(live.unattributed.phrases)}</div>
+  <div class="col">${criteriaTable(live.unattributed.score, [], job.splits_readable)}${phraseList(live.unattributed.phrases)}</div>
 </section>` : '';
 
   return page(`basket lab — ${course} ${seed}`, `
@@ -289,6 +291,7 @@ ${generationPanel(course, seed, cand)}
   <div class="joblabel">what this seed is for — <b>derived from its own admission diff</b>, not looked up in a table</div>
   <div class="jobverdict">${esc(job.verdict)}</div>
   <p>${esc(job.sentence)}</p>
+  ${job.splits_readable ? '' : `<p class="meta"><b>splits are unreadable for this pair.</b> The split matchers are facts about a target language's morphology and only Spanish has them; this column's SPLIT readings are missing, not zero.</p>`}
   ${job.splits_in_play.length ? `<p class="meta">splits in play on this seed's frames: ${job.splits_in_play.map(s => esc(`${s.id} ${s.name}`)).join('; ')}${job.new_sides.length ? '' : ' — every side of them already admitted by an earlier seed'}</p>` : ''}
   ${job.atomisations.length ? `<p class="meta"><b>promotion, with its evidence:</b> ${job.atomisations.map(x => esc(`"${x.target_text}" (L${String(x.lego_index).padStart(2, '0')}, "${x.known_text}") was ${x.how} at seed ${x.from_seed} — "${x.from_target}" / "${x.from_known}"`)).join('; ')}. A component admission extends the available vocabulary without creating a learning event; becoming a LEGO with a basket is the learning event.</p>` : ''}
   ${job.not_machine_checkable.length ? `<p class="meta">not machine-checkable here: ${job.not_machine_checkable.map(s => esc(s.id + ' ' + s.outcomes.join(', '))).join('; ')} — reported as unseen, never scored as absent</p>` : ''}

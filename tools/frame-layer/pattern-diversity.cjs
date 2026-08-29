@@ -251,7 +251,7 @@ if (require.main === module) {
   const [course = 'spa_for_eng', seed = '599'] = process.argv.slice(2);
   (async () => {
     const { seedRow, ownLegos, priorSeeds, priorLegos, priorComponents, phrases } = await loadCorpus(sb, course, +seed);
-    const job = deriveJob({ seedRow, ownLegos, priorSeeds, priorLegos, priorComponents });
+    const job = deriveJob({ course, seedRow, ownLegos, priorSeeds, priorLegos, priorComponents });
     const { attestedFrames } = require('./availability.cjs');
     const r = scoreBaskets(phrases, { legos: ownLegos, job,
       instantiableFrames: attestedFrames(priorSeeds, seedRow).size });

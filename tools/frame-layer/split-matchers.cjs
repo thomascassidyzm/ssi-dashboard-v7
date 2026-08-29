@@ -13,9 +13,16 @@
  * derivation reports such an outcome as NOT MACHINE-CHECKABLE rather than as
  * absent — a check that cannot see something must say so, not score it zero.
  *
+ * SCOPED BY TARGET LANGUAGE, because these are facts about SPANISH morphology.
+ * They were exported bare and applied to every course, which the grid exposes
+ * immediately: run a French column and the Spanish matchers simply never fire,
+ * so every French seed reports "no split in play" — absence dressed up as an
+ * answer. Where a pair has no matchers the derivation now says the splits are
+ * UNREADABLE here, which is the honest thing a check that cannot see says.
+ *
  * Split ids and names track docs/frame-layer/spanish-structural-splits.json.
  */
-module.exports = {
+const spa = {
   S1: { pattern: 'P1', name: 'want(X) to — subject switch', outcomes: [
     { form: 'querer + INFINITIVE',              target_re: '\\b(?:quiero|quieres|quiere|quieren|quer[íi]a|quer[íi]as|queremos)\\s+(?!que\\b)\\w+(?:ar|er|ir)\\b' },
     { form: 'querer que + PRESENT SUBJUNCTIVE', target_re: '\\b(?:quiero|quieres|quiere|quieren|quer[íi]a|quer[íi]as|queremos)\\s+que\\b' },
@@ -66,3 +73,13 @@ module.exports = {
     { form: 'estar (está/estaba)', target_re: '\\b(?:est[áa]|estaba|estar|estuvo)\\b' },
   ]},
 };
+
+const BY_TARGET_LANGUAGE = { spa };
+
+/** The split matchers for a course's TARGET language, or null if none exist. */
+function splitsFor(course) {
+  const m = /^([a-z]{2,3})_for_[a-z]{2,3}$/.exec(String(course || ''));
+  return (m && BY_TARGET_LANGUAGE[m[1]]) || null;
+}
+
+module.exports = { spa, BY_TARGET_LANGUAGE, splitsFor };
