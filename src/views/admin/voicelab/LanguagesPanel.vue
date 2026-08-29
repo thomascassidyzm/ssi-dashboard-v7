@@ -7,10 +7,19 @@
  * in case for whatever reason there's a problem … human voices will also be
  * configured here as well".
  *
- * ONE ROW PER LANGUAGE, WORST FIRST. The screen's whole value is that a gap is
- * obvious without being worked out, so the sort puts uncast languages at the
- * top and complete ones at the bottom, and an empty slot is drawn as an empty
- * slot rather than omitted.
+ * ONE ROW PER LANGUAGE, LIVE COURSES FIRST. Tom's ruling, 2026-08-29, looking
+ * at the live page: "the order of languages is weird on the main page - doesn't
+ * seem to follow any discernible logic". The order is now LIVE COURSES FIRST,
+ * THEN COURSE COUNT DESCENDING, THEN ALPHABETICAL BY LANGUAGE NAME — the name
+ * as he reads it, never the three-letter code, which is not a sort key anyone
+ * can see. Status came OUT of the row order: it was a defensible choice by the
+ * previous worker, but the chips, the colours and the status filters are how a
+ * gap reads as a gap, and they are all untouched. An empty slot is still drawn
+ * as an empty slot rather than omitted.
+ *
+ * The name leg lives HERE rather than in registry.cjs because `languageName`
+ * fetches its CSV asynchronously and is a front-end module; the server emits
+ * the first two legs and a stable code tiebreak underneath this.
  *
  * THE STATUSES ARE NOT INTERCHANGEABLE, and the colours say so:
  *   complete  both primary slots (1 male, 1 female) cast — read as written
@@ -113,6 +122,17 @@ const rows = computed(() => {
     .filter((l) => provFilter.value === 'all' || (l.providersInUse || []).some((p) => p.provider === provFilter.value))
     // Search matches the words as well as the code, so typing "welsh" finds cym.
     .filter((l) => !needle || l.code.toLowerCase().includes(needle) || languageName(l.code).toLowerCase().includes(needle))
+    // THE ORDER TOM ASKED FOR (2026-08-29): live courses first, then course
+    // count descending, then alphabetical BY NAME — "Arabic before Bengali
+    // before Croatian", not "ara before ben before hrv". Done here and not on
+    // the server because this is where the name lookup lives.
+    .slice()
+    .sort((a, b) => {
+      const live = (l) => (l.released > 0 ? 0 : 1)
+      return live(a) - live(b)
+        || b.courses - a.courses
+        || languageName(a.code).localeCompare(languageName(b.code))
+    })
 })
 
 const summary = computed(() => data.value?.summary || null)

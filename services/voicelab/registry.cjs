@@ -114,10 +114,26 @@ async function build (db, opts = {}) {
   const languages = [...byLang.entries()]
     .map(([code, langCourses]) => describeLanguage({ code, langCourses, roles: rolesByLang.get(code) || [], voiceById, voices, catalogue }))
     .sort((a, b) => {
-      // Worst first: the screen's job is to show what is missing, so a language
-      // needing casting must not be buried under a page of complete ones.
-      const rank = (l) => (l.status === 'uncast' ? 0 : l.status === 'partial' ? 1 : l.status === 'nocover' ? 2 : l.status === 'human' ? 3 : 4)
-      return rank(a) - rank(b) || b.courses - a.courses || a.code.localeCompare(b.code)
+      // LIVE COURSES FIRST, THEN COURSE COUNT, THEN THE LANGUAGE'S NAME.
+      //
+      // Tom's ruling, 2026-08-29, looking at the live page: "the order of
+      // languages is weird on the main page - doesn't seem to follow any
+      // discernible logic". Two things were wrong with the old order. It sorted
+      // by STATUS first (worst first), which is a defensible order but not the
+      // one he wants to read; and its final tiebreak was the three-letter CODE,
+      // which is not a sort key he can see, so the tail of the list read as
+      // noise. The status chips, colours and filters are untouched — a gap
+      // still reads as a gap — but the ROW ORDER is his, not the status's.
+      //
+      // The name leg cannot be done here: the estate's one code-to-name lookup
+      // (src/utils/languageNames.js) is a front-end module that fetches a CSV
+      // asynchronously, and dragging it server-side to sort a list would be a
+      // second answer to a question that already has one. So this emits the
+      // first two legs plus a stable code tiebreak, and the final ordering by
+      // NAME happens in LanguagesPanel.vue's `rows`, where the lookup already
+      // lives and is already used for search.
+      const live = (l) => (l.released > 0 ? 0 : 1)
+      return live(a) - live(b) || b.courses - a.courses || a.code.localeCompare(b.code)
     })
 
   return { languages, summary: summarise(languages), notes: notes() }
