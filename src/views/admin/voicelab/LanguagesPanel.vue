@@ -48,6 +48,20 @@
  * the code is what the rest of the estate is keyed on — and the expanded voice
  * picker carries a sticky header saying whose slots those are.
  *
+ * THE GUIDE VOICE IS A THIRD KIND OF SLOT (Tom, 2026-08-29). The instructions
+ * and encouragements "are not linked to a course per se - they are linked to
+ * every course with the same known language, because these are messages to the
+ * learner". So it is cast against the language as a KNOWN language, it is ONE
+ * voice rather than a male/female pair, and it sits in its own labelled block
+ * beside the phrase slots rather than mixed in among them. Two rules:
+ *   — it NEVER counts toward complete/partial/uncast. Only twelve of the
+ *     estate's languages are ever a known language; letting an empty guide
+ *     count would turn 68 rows amber and stop the screen saying anything.
+ *   — the voice ALREADY speaking a language's instructions is shown beside the
+ *     empty slot, measured from the clips that exist. "English is currently
+ *     Aran, uncast" is the whole point: casting confirms a fact rather than
+ *     choosing from nothing.
+ *
  * Casting writes voice_language_roles and NOTHING else — no render is
  * triggered, no course_audio row is touched, no course voice_config is written.
  */
@@ -151,6 +165,9 @@ const STATUSES = [
   { value: 'uncast',   label: 'Uncast',       hue: 'ui-hue-bad',   key: 'uncast' },
   { value: 'nocover',  label: 'No Cartesia',  hue: 'ui-hue-warn',  key: 'nocover' },
   { value: 'human',    label: 'Human-voiced', hue: 'ui-hue-info',  key: 'human' },
+  // Known-side only: nothing teaches it, so it has no phrase-voice worklist.
+  // It is here so its guide voice can be cast (2026-08-29).
+  { value: 'knownonly', label: 'Known only',  hue: 'ui-hue-quiet', key: 'knownonly' },
 ]
 
 const statusChips = computed(() =>
@@ -184,6 +201,7 @@ const HUE = {
   nocover: 'ui-hue-warn',
   uncast: 'ui-hue-bad',
   human: 'ui-hue-info',
+  knownonly: 'ui-hue-quiet',
 }
 function hueFor (status) { return HUE[status] || 'ui-hue-quiet' }
 
@@ -201,6 +219,7 @@ function langName (code) { return languageName(code) }
 /** The status word as Tom reads it, not as the API stores it. */
 function statusLabel (status) {
   if (status === 'nocover') return 'no Cartesia'
+  if (status === 'knownonly') return 'known only'
   return status
 }
 
@@ -208,32 +227,49 @@ function slotsOf (lang) {
   // Male then female, each in rank order — one stable reading order, so the eye
   // can scan down a column rather than re-learning the layout per row.
   return [
-    ...lang.slots.m.map((s) => ({ ...s, gender: 'm' })),
-    ...lang.slots.f.map((s) => ({ ...s, gender: 'f' })),
+    ...lang.slots.m.map((s) => ({ ...s, gender: 'm', slot: 'phrase' })),
+    ...lang.slots.f.map((s) => ({ ...s, gender: 'f', slot: 'phrase' })),
   ]
+}
+
+/** The guide slots — ranks only, no gender axis: a guide is one voice. */
+function guideSlotsOf (lang) {
+  return (lang.guide?.slots || []).map((s) => ({ ...s, slot: 'guide' }))
+}
+
+/** One busy key for every slot on the page — phrase slots carry a gender, guide slots do not. */
+function slotKey (lang, slot) {
+  return `${lang.code}:${slot.slot || 'phrase'}:${slot.gender || '-'}:${slot.rank}`
 }
 
 async function cast (lang, slot, voiceId) {
   if (!voiceId) return
-  busy.value = `${lang.code}:${slot.gender}:${slot.rank}`
+  busy.value = slotKey(lang, slot)
   try {
-    await api.castSlot(lang.code, { gender: slot.gender, rank: slot.rank, voiceId })
+    await api.castSlot(lang.code, {
+      slot: slot.slot || 'phrase', gender: slot.gender, rank: slot.rank, voiceId,
+    })
     await load()
   } catch (e) { error.value = e.message }
   busy.value = ''
 }
 
 async function clear (lang, slot) {
-  busy.value = `${lang.code}:${slot.gender}:${slot.rank}`
+  busy.value = slotKey(lang, slot)
   try {
-    await api.clearSlot(lang.code, { gender: slot.gender, rank: slot.rank })
+    await api.clearSlot(lang.code, { slot: slot.slot || 'phrase', gender: slot.gender, rank: slot.rank })
     await load()
   } catch (e) { error.value = e.message }
   busy.value = ''
 }
 
-/** Candidates that make sense for a slot: right gender, or gender unknown. */
+/**
+ * Candidates for a slot. A PHRASE slot wants the right gender, or one unknown.
+ * A GUIDE slot takes any voice that speaks the language — a guide is one voice,
+ * and the male/female split belongs to the phrase slots alone.
+ */
 function candidatesFor (lang, slot) {
+  if (slot.slot === 'guide') return lang.guide?.candidates || []
   return (lang.candidates || []).filter((c) => !c.gender || c.gender === slot.gender)
 }
 </script>
@@ -382,7 +418,12 @@ function candidatesFor (lang, slot) {
                   <button class="ui-sort-btn vl-detail-close" @click="expanded = null">Hide</button>
                 </div>
 
-                <p v-if="lang.human" class="vl-note">
+                <p v-if="lang.knownOnly" class="vl-note">
+                  <strong>No course teaches {{ langName(lang.code) }}</strong> — it is only ever the
+                  known side, so it has no phrase-voice worklist. It is on this screen so its
+                  <strong>guide voice</strong> can be cast: its learners hear instructions today.
+                </p>
+                <p v-else-if="lang.human" class="vl-note">
                   <strong>{{ langName(lang.code) }} is human-recorded only.</strong> A human recording wins
                   wherever it exists, so empty slots here are a recording worklist for its
                   recordists, not a casting gap. No TTS provider may ever be selected for it.
@@ -392,8 +433,11 @@ function candidatesFor (lang, slot) {
                   Azure. That is covered, just not by the default provider.
                 </p>
 
+                <!-- PHRASE VOICES — the course material. These are the two
+                     that make a language complete. -->
+                <p class="vl-slot-group">Phrase voices — the course material</p>
                 <div class="vl-slots">
-                  <div v-for="slot in slotsOf(lang)" :key="slot.gender + slot.rank" class="vl-slot">
+                  <div v-for="slot in slotsOf(lang)" :key="slotKey(lang, slot)" class="vl-slot">
                     <div class="vl-slot-label">
                       {{ slot.gender === 'm' ? 'male' : 'female' }} · {{ slot.rankName }}
                     </div>
@@ -404,7 +448,7 @@ function candidatesFor (lang, slot) {
                       <span v-if="slot.active === false" class="ui-pill ui-hue-bad">voice inactive</span>
                       <button
                         class="ui-sort-btn"
-                        :disabled="busy === `${lang.code}:${slot.gender}:${slot.rank}`"
+                        :disabled="busy === slotKey(lang, slot)"
                         @click="clear(lang, slot)"
                       >Clear</button>
                     </div>
@@ -412,12 +456,75 @@ function candidatesFor (lang, slot) {
                     <div v-else class="vl-slot-empty">
                       <select
                         class="ui-select"
-                        :disabled="busy === `${lang.code}:${slot.gender}:${slot.rank}`"
+                        :disabled="busy === slotKey(lang, slot)"
                         @change="cast(lang, slot, $event.target.value)"
                       >
                         <option value="">— empty — choose a voice</option>
                         <option v-for="c in candidatesFor(lang, slot)" :key="c.voiceId" :value="c.voiceId">
                           {{ c.name }} ({{ c.kind }})
+                        </option>
+                      </select>
+                      <span v-if="!candidatesFor(lang, slot).length" class="vl-muted">
+                        no voice in the estate declares this language
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- ── GUIDE VOICE — a different animal, so a separate block ──
+                     Tom, 2026-08-29: the instructions and encouragements "are
+                     not linked to a course per se - they are linked to every
+                     course with the same known language, because these are
+                     messages to the learner". Cast against this language as a
+                     KNOWN language, one voice not a pair, and NEVER counted
+                     toward the status above. -->
+                <p class="vl-slot-group vl-guide-group">
+                  Guide voice — instructions and encouragements
+                  <span class="vl-muted vl-guide-sub">
+                    spoken to the learner, not course material. Cast against
+                    <strong>{{ langName(lang.code) }}</strong> as a KNOWN language, so one cast serves
+                    <template v-if="lang.knownCourses">
+                      all {{ lang.knownCourses }} course{{ lang.knownCourses === 1 ? '' : 's' }} taught from it.
+                    </template>
+                    <template v-else>
+                      any course taught from it — no course uses it as a known language today.
+                    </template>
+                    It never counts toward the status above.
+                  </span>
+                </p>
+
+                <p v-if="lang.guide?.inUse?.length" class="vl-note vl-guide-inuse">
+                  Speaking now:
+                  <span v-for="u in lang.guide.inUse" :key="u.voiceId" class="ui-pill" :class="u.human ? 'ui-hue-info' : 'ui-hue-good'">
+                    {{ u.name }} · {{ u.clips }} clip{{ u.clips === 1 ? '' : 's' }}
+                  </span>
+                  <span class="vl-muted"> — measured from the clips that exist, not from any config.</span>
+                </p>
+
+                <div class="vl-slots">
+                  <div v-for="slot in guideSlotsOf(lang)" :key="slotKey(lang, slot)" class="vl-slot vl-slot-guide">
+                    <div class="vl-slot-label">guide · {{ slot.rankName }}</div>
+
+                    <div v-if="slot.filled" class="vl-slot-filled">
+                      <span class="vl-voice">{{ slot.voiceName }}</span>
+                      <span class="vl-kind">{{ slot.kind }}</span>
+                      <span v-if="slot.active === false" class="ui-pill ui-hue-bad">voice inactive</span>
+                      <button
+                        class="ui-sort-btn"
+                        :disabled="busy === slotKey(lang, slot)"
+                        @click="clear(lang, slot)"
+                      >Clear</button>
+                    </div>
+
+                    <div v-else class="vl-slot-empty">
+                      <select
+                        class="ui-select"
+                        :disabled="busy === slotKey(lang, slot)"
+                        @change="cast(lang, slot, $event.target.value)"
+                      >
+                        <option value="">— empty — choose a voice</option>
+                        <option v-for="c in candidatesFor(lang, slot)" :key="c.voiceId" :value="c.voiceId">
+                          {{ c.name }} ({{ c.kind }}){{ c.registered ? '' : ' — registers it too' }}
                         </option>
                       </select>
                       <span v-if="!candidatesFor(lang, slot).length" class="vl-muted">
@@ -514,6 +621,16 @@ function candidatesFor (lang, slot) {
 .vl-note { margin: .25rem 0 .75rem; }
 .vl-slots { display: grid; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); gap: .6rem; }
 .vl-slot { border: 1px solid var(--line); border-radius: .5rem; padding: .5rem; background: var(--surface); }
+.vl-slot-group { font-size: .75rem; text-transform: uppercase; letter-spacing: .05em;
+  color: var(--faint); margin: .5rem 0 .4rem; }
+/* The guide block is set apart rather than mixed in with the phrase slots: it
+   is a different kind of audio, cast on a different language role. */
+.vl-guide-group { margin-top: 1.1rem; padding-top: .8rem; border-top: 1px dashed var(--line); }
+.vl-guide-sub { display: block; margin-top: .25rem; text-transform: none; letter-spacing: 0;
+  font-size: .75rem; max-width: 70ch; }
+.vl-guide-inuse { font-size: .8125rem; }
+.vl-guide-inuse .ui-pill { margin-right: .25rem; }
+.vl-slot-guide { border-style: dashed; }
 .vl-slot-label { font-size: .75rem; text-transform: uppercase; letter-spacing: .05em; color: var(--faint); margin-bottom: .3rem; }
 .vl-slot-filled { display: flex; gap: .4rem; align-items: center; flex-wrap: wrap; }
 .vl-slot-empty { display: flex; gap: .4rem; align-items: center; flex-wrap: wrap; }

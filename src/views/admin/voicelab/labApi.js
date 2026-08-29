@@ -96,8 +96,15 @@ export const api = {
   languages: () => call('/api/voicelab/languages'),
   castSlot: (language, body) =>
     call(`/api/voicelab/languages/${encodeURIComponent(language)}/slot`, { method: 'PUT', body }),
-  clearSlot: (language, { gender, rank }) =>
-    call(`/api/voicelab/languages/${encodeURIComponent(language)}/slot?gender=${gender}&rank=${rank}`, { method: 'DELETE' }),
+  // `slot` is 'phrase' (the male/female course voices — the default) or 'guide'
+  // (the instruction and encouragement voice, one per KNOWN language, which has
+  // no gender axis, so the query carries none).
+  clearSlot: (language, { gender, rank, slot = 'phrase' }) =>
+    call(
+      `/api/voicelab/languages/${encodeURIComponent(language)}/slot?slot=${slot}&rank=${rank}` +
+      (slot === 'guide' ? '' : `&gender=${gender}`),
+      { method: 'DELETE' }
+    ),
 
   // Cloning uploads one sample and returns a voice id. It RENDERS NOTHING and
   // cannot trigger a bulk run — hearing the clone is a separate, capped
