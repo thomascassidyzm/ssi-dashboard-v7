@@ -172,8 +172,7 @@ which is true of the corpus but is my sentence, not his.
 | TOM | Last. You say bird once the pattern has held long enough to be worth a label. The label is a receipt for a distinction that already stabilised. It's not the thing that does the stabilising. |
 | ARAN | Hold that one, because I want to fight you about it properly and I don't want to do it in the first ten minutes. |
 | TOM | Noted and parked. You'll lose. |
-| ARAN | We'll see. |
-| ARAN | But as far as it goes — that's my edges story wearing your clothes, isn't it. I spent twenty years saying you don't know words, you know what's between them — which words plug into which, red bus, red house, never red went. You're saying the between is all there is, all the way down. Not just words. Birds. Everything. |
+| ARAN | We'll see. But as far as it goes — that's my edges story wearing your clothes, isn't it. I spent twenty years saying you don't know words, you know what's between them — which words plug into which, red bus, red house, never red went. You're saying the between is all there is, all the way down. Not just words. Birds. Everything. |
 | TOM | Everything. That's all learning is — increasingly fine distinctions on a signal that never stops being a signal. |
 | TOM | And that's why the seven billion minds don't get to float free of this. If we're wrong about what one act of learning is, we build the wrong everything, at scale, with conviction. Schools already did. They built for the labels. |
 | ARAN | Warehouses for receipts. |
@@ -191,5 +190,76 @@ inverting it, the biggest sentence in the pod lands inside the first ten turns a
 made to wait, and the names fight is parked in the open where the listener can hear the debt
 being taken on — Chapter 4 pays it. Three joint completions and two co-ownings make the
 peer-ness audible from the first minute: nobody is interviewing anybody.
+
+---
+
+### Chapter 2 — *The pizza* — two stabilisers: physics fixes the bird, agreement fixes justice
+
+**Point:** the bird and justice are learned by the same machine with different stabilisers —
+physics holds the one, agreement holds the other; the example is the only floor the abstract has;
+and school teaches the two layers exactly backwards.
+
+**Shapes traversed:** challenge-the-premise, m23 (Aran opens on the canon's own flagged gap) ·
+**the specimen** — Tom attempts the cold definition and narrates it failing in real time ·
+question-as-handover, m3 (*So where's the floor?*) · joint construction, m2 · metaphor handover,
+m16 (the grey taken up and returned as green-against-blue) · backchannel, m10 · **planted for
+Chapter 10:** the pizza stays on the table.
+
+**Holds (heard):** turn 3 (Aran, nothing holds justice still, 58), turn 7 (Tom, the specimen —
+the regress heard failing, 74), turn 9 (Tom, the pizza floor, 52), turn 15 (Tom, Seville and
+Bologna, 56), turn 19 (Tom, backwards, 63). The owned moves — *Say more* (2), *So where's the
+floor?* (4), *Owns it before the word* (5) — are all short.
+
+**Sources & mints:** "no such thing as an abstract topic", the regress ("every time you define
+them, you have to introduce further distinctions"), the pizza, and "codifications of patterns of
+stability" are canon §1c, Tom verbatim or near; green/blue and the eight-billion agreement are
+canon §1e verbatim in substance; Seville/Bologna is canon §1e's Spanish/Italian orange argument;
+facts-as-agreements / concepts-as-compressions is the ruled canon (mission, the two primitives
+block). MINTED: the specimen container — the corpus attests Tom auditing claims, not Tom
+narrating his own definitional failure; "backwards" as the one-word indictment of school —
+a construction resting on the ruled fact/concept split, and Aran's pushback to it is built, not
+attested. Aran's opening challenge is the canon draft's own [FLAG] ("what is the sound wave for
+justice?") given to his voice — the assembler asked it, Aran never did.
+
+| | |
+|---|---|
+| ARAN | Right, small end. Your bird stabilises because a bird cooperates. Same size every day, parts behaving, whoever happens to be looking. What's the sound wave for justice? |
+| TOM | Say more. |
+| ARAN | Your whole story is distinctions holding still, and physics is what holds a bird still. Nothing holds justice still. The six-year-old's justice and the law student's justice aren't the same thing, and neither of them flies past a window. If the account only works where physics does the holding, it's an account of perception, not of learning — and school can keep everything else. |
+| TOM | There's no such thing as an abstract topic. |
+| ARAN | Says the man who never marked essays on one. |
+| TOM | Really, there isn't. An abstract topic has to be explained in words, and words are themselves distinctions — precise sound waves, marks on a page standing for sound waves. So justice is a structure of distinctions like everything else. The difference was never the material. The difference is what does the holding. |
+| ARAN | Prove it the hard way. Define justice. Cold, no examples. |
+| TOM | Justice is fairness under— no, fairness is the same word in a hat. Justice is treating like cases alike, where "like" means— and there it goes. Listen to it. Now I need "like", and "alike", and "case", and each of those wants three more words, and the three want nine. I can feel the definition doing what every definition of an abstract does — running away from the floor, not towards it. There is no floor in that direction. |
+| ARAN | So where's the floor? |
+| TOM | Two children. One pizza. Cut it in half, give them half each. That's the floor. You might not share my agreement about a single one of the words, and you will still share that. The abstract concretises or it doesn't exist — you have to give examples, because an example is the only place the regress stops. |
+| ARAN | And a six-year-old owns that completely. |
+| TOM | Owns it before the word. And the law student thirty years up — proportionality, precedent, all of it — is the ornithologist again, on the same floor. Same operation, run further. |
+| ARAN | So the bird and the pizza are one machine— |
+| TOM | —one machine, two stabilisers. The bird holds because physics holds it. Justice holds because we agree to keep holding it. That's what law actually is — patterns of stability, codified, so they don't have to be re-derived per punch-up. |
+| ARAN | And where the agreement hasn't converged, you get the grey. Which is most of the essays I never marked. |
+| TOM | You get green against blue. Eight billion people agree tremendously about the range of colours, and there is a permanent argument at the edges about where green becomes blue — and that's not a defect. Broad agreement with fuzzy borders is just what an agreement-stabilised distinction looks like. The grey is the signature, not the failure. |
+| ARAN | And at the border, Spanish and Italian? |
+| TOM | Same collapse, different purchase. Somebody in Seville and somebody in Bologna do the identical human thing to the identical orange — collapse a basket of wavelengths into one bin — and then buy different words for it. Which is the proof of the order: the binning is perception, the label is a purchase made afterwards. |
+| ARAN | Two layers, then. Things that hold because the world holds them, and things that hold because we do. |
+| TOM | Concepts and facts. A concept is a compression — derivable, universal, nobody's property. A fact is an agreement — arbitrary, social, joinable. That the angles of a triangle do what they do is a compression. That we call it a triangle is an agreement. |
+| ARAN | And school? |
+| TOM | School teaches the layers mixed, both ways at once. It drills agreements as if they were derivable — spell it, date it, name the parts — as if the name could be reasoned out by a sufficiently good child. And it explains compressions as if they were arbitrary — here is the rule for fractions, learn it — as if the structure were a decision someone took that you simply have to be told. Backwards, exactly, twice. |
+| ARAN | I want to sit on "backwards" a second, because that's most of a national curriculum indicted in one word and you said it like the price of fish. |
+| TOM | Which half don't you buy? |
+| ARAN | I'm checking, not refusing. For maths I buy it whole. For language — the words are agreements, drill them; the between is where the compressions live, let them emerge. Which is what I was doing for twenty years without the names for the halves. But I'm not conceding the between is all derivable. A Welsh mutation isn't derivable from anything. It's an agreement between words. |
+| TOM | Then it's a fact, and you drill it. |
+| ARAN | See, it always sounds tidy when you say it fast. |
+| TOM | It's tidier than it sounds slow, even. But keep the pizza on the table. I want it back when we get to communities. |
+| ARAN | Why would a pizza come back for communities? |
+| TOM | Because a community is the pizza agreement at scale. Later. |
+| ARAN | Fine. Then I get the next one, because it's mine — what any of this costs. |
+
+**Why this container:** the chapter's spine is the canon draft's own unanswered flag, asked by
+the one person entitled to ask it, and the answer is performed rather than asserted — the
+definition is allowed to fail out loud, which is the only honest way to demonstrate a regress in
+audio. The specimen and the pizza are one beat apart so the floor lands while the failure is
+still ringing. Aran's half-concession at the end is deliberately partial — he buys the split and
+withholds the strong reading — because the chapter after next spends that reservation.
 
 ---
