@@ -188,6 +188,84 @@ LIVE pod; these are brand-new slugs.
 
 ---
 
+## Cross-pod verbatim duplication — the answer is **two**, not ninety
+
+Folded into this job on Tom's instruction after he spotted exact replica sentences shared between
+the Learning flagship and the Method Pod. His ruling: **topic overlap is fine and expected;
+verbatim overlap is a defect.** Once all three pods are rows, this is one query — which is why it
+belongs here.
+
+**Detect only. Nothing was rewritten and no edit is proposed.** The rule for the later rewrite,
+recorded now so it is not relitigated: **where two pods collide verbatim, the LEARNING POD YIELDS.**
+The Method Pod is the older artefact and the more tightly measured of the two.
+
+### Method
+
+`tools/pods/cross-pod-duplication.cjs`, run against the live rows. 952 lines split into **2,474
+sentences** (a turn often carries several, and Tom's finding is about sentences).
+
+**Normalisation, and only this: whitespace collapsed, and punctuation and quote marks surrounding
+the whole sentence stripped. Nothing else.** No lowercasing, no stemming, no stripping of internal
+punctuation — case is a meaningful distinction and it is kept.
+
+**Minimum-length floor: 6 words**, and I am showing the whole curve rather than hiding behind one
+number, because below four words the matches are `"No"`, `"Good"`, `"Yes"`, `"Right"`, `"Mm"` —
+shared interjections, which are not a finding in any pod written by the same two speakers.
+
+### The numbers, per pair — this is the whole result
+
+| pair | ≥1w | ≥2w | ≥3w | ≥4w | **≥6w** | ≥10w |
+|---|---|---|---|---|---|---|
+| learning-flagship ↔ method-pod-chapters | 32 | 23 | 14 | 9 | **2** | 1 |
+| learning-flagship ↔ method-pod-43-scene | 30 | 21 | 12 | 8 | **2** | 1 |
+| method-pod-chapters ↔ method-pod-43-scene | 565 | 529 | 441 | 371 | **244** | 128 |
+
+**The 244 between the two Method Pod arms is by design and is not a defect.** They are two cuts of
+one artefact: the chapter cut's own chapter map carries an "Absorbs (scene #)" column and its §4b
+measures itself against the scene cut as the control arm. If they did not share text they would not
+be two forms of the same substance and the comparison Tom wants would be meaningless.
+
+**The finding Tom actually noticed is two sentences.** At the 6-word floor, the Learning flagship
+shares exactly two sentences with the Method Pod, and both appear in all three pods:
+
+1. **(29 words)** *"Schooling is one piece of a complex adaptive system, and the end of the game
+   has to be seven billion connected, happy, enthusiastic minds who can solve complicated
+   problems"*
+   `learning-flagship` Chapter 1 line 10 (ARAN) · `method-pod-chapters` Chapter 1 line 6 ·
+   `method-pod-43-scene` Scene 40 line 6
+2. **(6 words)** *"We're not losing atoms of water"*
+   `learning-flagship` Chapter 11 line 15 (TOM) · `method-pod-chapters` Chapters 10 and 11 ·
+   `method-pod-43-scene` Scene 34
+
+Drop the floor to 5 words and four more join, all in all three pods: *"And we were utterly wrong"*,
+*"How do we know that"*, *"How would it even work"*, *"That's literally how cancer works"*. At 4
+words, three more: *"Do some cool shit"*, *"Let's just start anywhere"*, *"Then what's in there"*.
+Below that it is interjections.
+
+**So: nine sentences, not ninety** — at a 4-word floor, which is as loose as I would take it
+seriously. It is the ten-minute edit, not a real pass over the Learning pod.
+
+### Near-duplicates — counted separately, and there are none that matter
+
+Word-set Jaccard over the normalised sentence, ≥ 0.75, at the same 6-word floor, exact matches
+excluded. **6 pairs** — all six between the two Method Pod arms, i.e. the same by-design overlap.
+
+**Zero near-duplicates between the Learning flagship and either Method Pod arm.** I loosened the
+threshold to 0.60 and re-ran to check I was not missing a class: still zero, over 31,147 compared
+pairs. The Learning flagship's overlap with the Method Pod is entirely exact-match, and it is nine
+sentences at most.
+
+Full artefacts: `docs/pods/evidence/cross-pod-duplication-2026-08-30.txt` (the whole list, every
+occurrence with pod, chapter/scene and line) and `.json` (machine-readable, including the per-pair
+floor curves and every near pair).
+
+### One line for the future
+
+This recurs every time another sector pod is built off the Talk Bollocks corpus. The tool is
+committed and takes one command; running it after each new pod lands is the cheap habit.
+
+---
+
 ## Needs Tom — three, each answerable in one word
 
 1. **Retire the markdown-parsed `method-pod` entry in the lab, now that the scenes are in the
@@ -204,7 +282,12 @@ LIVE pod; these are brand-new slugs.
    is a store change, so it is not mine to make: `services/shared/metagraph/` is byte-identical by
    ruling and I wrote nothing into it.
 
-3. **Are the slugs right?** I took the brief's taste-safe defaults: `learning-flagship`,
+3. **Do the nine Learning-flagship collisions get sanded, or left?** RECOMMENDATION: **sand the
+   two long ones, leave the rest.** The 29-word complex-adaptive-system sentence reads as a
+   verbatim lift; the sub-5-word ones are two people who talk like that. Detect only for now —
+   nothing was touched.
+
+4. **Are the slugs right?** I took the brief's taste-safe defaults: `learning-flagship`,
    `method-pod-chapters`, `method-pod-43-scene`. Renaming later is a one-line update in three
    places plus an `UPDATE` on two tables.
 

@@ -1,0 +1,1039 @@
+[dotenv@17.2.3] injecting env (24) from .env -- tip: 🔐 encrypt with Dotenvx: https://dotenvx.com
+
+CROSS-POD VERBATIM DUPLICATION — detect only, nothing rewritten
+Normalisation: whitespace collapsed; punctuation and quote marks surrounding the WHOLE sentence stripped. Nothing else — no lowercasing, no stemming.
+Minimum-length floor: 6 words. Near-duplicate threshold: word-set Jaccard >= 0.75, reported separately.
+
+Corpus:
+  learning-flagship      367 lines → 1025 sentences
+  method-pod-chapters    309 lines →  790 sentences
+  method-pod-43-scene    276 lines →  659 sentences
+
+── EXACT duplicates shared by two or more pods
+  244 distinct sentences at the 6-word floor (567 at any length)
+  floor curve — sentences at >= N words:
+    1w:567  2w:531  3w:443  4w:372  5w:305  6w:244  8w:176  10w:128  15w:63
+
+  pairwise floor curves — distinct shared sentences at >= N words:
+    pair                                              1w    2w    3w    4w    5w    6w    8w   10w   15w
+    learning-flagship  ↔  method-pod-chapters         32    23    14     9     6     2     1     1     1
+    learning-flagship  ↔  method-pod-43-scene         30    21    12     8     6     2     1     1     1
+    method-pod-43-scene  ↔  method-pod-chapters      565   529   441   371   305   244   176   128    63
+
+  NOTE: method-pod-chapters and method-pod-43-scene are TWO CUTS OF ONE ARTEFACT — the
+  chapter cut's chapter map carries an "Absorbs (scene #)" column and its §4b measures itself
+  against the scene cut as a control arm. Their overlap is by design, not a defect.
+
+── THE LIST — every exact cross-pod duplicate at >= 6 words
+
+    1. (37w) "Every single one of those people — three words, said with effort, badly, in the wrong order — made a connection that wouldn't have been there otherwise, and they didn't have to learn anything else at all"
+       method-pod-chapters   Chapter 3   line  20  ARAN   method-pod-chapters:SC03-S20
+       method-pod-43-scene   Scene 10    line   3  ARAN   method-pod-43-scene:SC10-S03
+
+    2. (36w) "Day two: the first real intimation of "I can do this" — still small, still a couple of hundred words, nowhere near seven hundred, but I could pick most of them up and turn them round"
+       method-pod-chapters   Chapter 10  line   9  ARAN   method-pod-chapters:SC10-S09
+       method-pod-43-scene   Scene 35    line   4  ARAN   method-pod-43-scene:SC35-S04
+
+    3. (35w) "There's a researcher — Wray, formulaic language, very highly regarded — and for a few years she's been saying, in conversation, I don't think she's published it: there is no such thing as a word"
+       method-pod-chapters   Chapter 4   line  16  ARAN   method-pod-chapters:SC04-S16
+       method-pod-43-scene   Scene 28    line   1  ARAN   method-pod-43-scene:SC28-S01
+
+    4. (32w) "So one day a year for ten years isn't going to win — you dive in and hammer at it, seventy-five dialogues in ten days, and you don't care what it costs"
+       method-pod-chapters   Chapter 12  line   2  ARAN   method-pod-chapters:SC12-S02
+       method-pod-43-scene   Scene 42    line   2  ARAN   method-pod-43-scene:SC42-S02
+
+    5. (32w) "Subtitles put the words on the screen while you're listening, so your eyes do the work and your ears go to sleep — and that's the wrong solution and it won't work"
+       method-pod-chapters   Chapter 6   line  10  ARAN   method-pod-chapters:SC06-S10
+       method-pod-43-scene   Scene 27    line   4  ARAN   method-pod-43-scene:SC27-S04
+
+    6. (31w) "And I've done two days of it now — because it was an experiment, and there was a man willing to make the material, and I wanted to test some things"
+       method-pod-chapters   Chapter 10  line  23  ARAN   method-pod-chapters:SC10-S23
+       method-pod-43-scene   Scene 36    line   1  ARAN   method-pod-43-scene:SC36-S01
+
+    7. (31w) "One man, memorising lists of nonsense syllables, testing himself, sample size one, corroborated by nobody — and a hundred years later everyone still quotes his intervals as if they were physics"
+       method-pod-chapters   Chapter 2   line  14  TOM    method-pod-chapters:SC02-S14
+       method-pod-43-scene   Scene 29    line   1  TOM    method-pod-43-scene:SC29-S01
+
+    8. (30w) "I told myself I needed fifteen new dialogues for a day, and I haven't got fifteen, and I've sat on that for a year as if it were a reason"
+       method-pod-chapters   Chapter 10  line  29  ARAN   method-pod-chapters:SC10-S29
+       method-pod-43-scene   Scene 39    line   2  ARAN   method-pod-43-scene:SC39-S02
+
+    9. (29w) "A group — four people in a bed and breakfast for five days, one of them has two bad days, and all of it lands on the other three"
+       method-pod-chapters   Chapter 8   line   8  ARAN   method-pod-chapters:SC08-S08
+       method-pod-43-scene   Scene 24    line   8  ARAN   method-pod-43-scene:SC24-S08
+
+   10. (29w) "But it felt like more than a month of hard work would have given me, and I've done the month, in other languages, and I know what it buys"
+       method-pod-chapters   Chapter 10  line   6  TOM    method-pod-chapters:SC10-S06
+       method-pod-43-scene   Scene 35    line   1  TOM    method-pod-43-scene:SC35-S01
+
+   11. (29w) "Schooling is one piece of a complex adaptive system, and the end of the game has to be seven billion connected, happy, enthusiastic minds who can solve complicated problems"
+       learning-flagship     Chapter 1   line  10  ARAN   learning-flagship:SC01-S10
+       method-pod-chapters   Chapter 1   line   6  ARAN   method-pod-chapters:SC01-S06
+       method-pod-43-scene   Scene 40    line   6  ARAN   method-pod-43-scene:SC40-S06
+
+   12. (28w) "If all you've got is a pile of words and a rule book, you walk into that room and have to invent every sentence on the spot, live"
+       method-pod-chapters   Chapter 6   line   4  ARAN   method-pod-chapters:SC06-S04
+       method-pod-43-scene   Scene 25    line   4  ARAN   method-pod-43-scene:SC25-S04
+
+   13. (28w) "Somebody, once, told them "learn it", and an older brother had a highlighter, so they're breaking their backs doing the one thing that's been shown not to work"
+       method-pod-chapters   Chapter 7   line   8  ARAN   method-pod-chapters:SC07-S08
+       method-pod-43-scene   Scene 30    line   3  ARAN   method-pod-43-scene:SC30-S03
+
+   14. (28w) "The other version of that filter is somebody in California writing an algorithm, and that filter is driving all of us towards people who already agree with us"
+       method-pod-chapters   Chapter 12  line  14  ARAN   method-pod-chapters:SC12-S14
+       method-pod-43-scene   Scene 37    line   4  ARAN   method-pod-43-scene:SC37-S04
+
+   15. (27w) "You make this much currency, it moves round all month, and at the end of the month it's all still here — it's just in the shops"
+       method-pod-chapters   Chapter 11  line  10  ARAN   method-pod-chapters:SC11-S10
+       method-pod-43-scene   Scene 34    line   3  ARAN   method-pod-43-scene:SC34-S03
+
+   16. (26w) "It's stupid, it's fun, by the third one everybody's laughing — and they've just learnt that a unit of meaning is a thing you can move"
+       method-pod-chapters   Chapter 5   line  12  TOM    method-pod-chapters:SC05-S12
+       method-pod-43-scene   Scene 31    line   1  TOM    method-pod-43-scene:SC31-S01
+
+   17. (24w) "It's flexible; you decide together where you're going; it's temporary; and at the end, the thing you've made lives between you and the road"
+       method-pod-chapters   Chapter 8   line  31  TOM    method-pod-chapters:SC08-S31
+       method-pod-43-scene   Scene 12    line   1  TOM    method-pod-43-scene:SC12-S01
+
+   18. (24w) "You'd like to think in ideas and not worry about the rest, and so would I — and we both still need to eat"
+       method-pod-chapters   Chapter 11  line  19  TOM    method-pod-chapters:SC11-S19
+       method-pod-43-scene   Scene 33    line   4  TOM    method-pod-43-scene:SC33-S04
+
+   19. (23w) "But now put another row under it, and another, so it's fifteen — and now draw every link there could be between them"
+       method-pod-chapters   Chapter 1   line  18  ARAN   method-pod-chapters:SC01-S18
+       method-pod-43-scene   Scene 32    line   3  ARAN   method-pod-43-scene:SC32-S03
+
+   20. (23w) "But one day, twelve weeks, one day — some of them will hear that and think it isn't enough to be worth doing"
+       method-pod-chapters   Chapter 7   line  24  ARAN   method-pod-chapters:SC07-S24
+       method-pod-43-scene   Scene 16    line   4  ARAN   method-pod-43-scene:SC16-S04
+
+   21. (23w) "Now: if we leave it there, and in two hours I come back and ask you the Welsh for fish, it'll be hard"
+       method-pod-chapters   Chapter 2   line  11  ARAN   method-pod-chapters:SC02-S11
+       method-pod-43-scene   Scene 21    line   3  ARAN   method-pod-43-scene:SC21-S03
+
+   22. (23w) "That's true, that's right, that's exactly what you have to do — and it's incredibly painful if nobody has prepared you for it"
+       method-pod-chapters   Chapter 6   line   4  ARAN   method-pod-chapters:SC06-S04
+       method-pod-43-scene   Scene 25    line   4  ARAN   method-pod-43-scene:SC25-S04
+
+   23. (23w) "You went looking for a hook, on your own, and the hook cost you something — and that's the memory, not the word"
+       method-pod-chapters   Chapter 2   line  11  ARAN   method-pod-chapters:SC02-S11
+       method-pod-43-scene   Scene 21    line   3  ARAN   method-pod-43-scene:SC21-S03
+
+   24. (22w) "I don't know if I'll ever be properly conversational in it — I really don't — but I'm going to learn more"
+       method-pod-chapters   Chapter 10  line  23  ARAN   method-pod-chapters:SC10-S23
+       method-pod-43-scene   Scene 36    line   1  ARAN   method-pod-43-scene:SC36-S01
+
+   25. (22w) "Like a city — you don't know a city because you know the buildings; you know it because you know the streets"
+       method-pod-chapters   Chapter 1   line   9  TOM    method-pod-chapters:SC01-S09
+       method-pod-43-scene   Scene 1     line   1  TOM    method-pod-43-scene:SC01-S01
+
+   26. (22w) "The broad picture — and I'll say it fast because it's big — is that none of this happens on its own"
+       method-pod-chapters   Chapter 1   line   6  ARAN   method-pod-chapters:SC01-S06
+       method-pod-43-scene   Scene 40    line   6  ARAN   method-pod-43-scene:SC40-S06
+
+   27. (22w) "You plant, and the garden answers, and then you find out what you've actually got, which is never the thing you drew"
+       method-pod-chapters   Chapter 5   line   5  ARAN   method-pod-chapters:SC05-S05
+       method-pod-43-scene   Scene 4     line   5  ARAN   method-pod-43-scene:SC04-S05
+
+   28. (21w) "And the most positive person in the room — the one you'd want in every group — paired up with her"
+       method-pod-chapters   Chapter 8   line  12  ARAN   method-pod-chapters:SC08-S12
+       method-pod-43-scene   Scene 38    line   1  ARAN   method-pod-43-scene:SC38-S01
+
+   29. (21w) "But if you've already walked a thousand little paths through the words you've got, the room isn't a cliff any more"
+       method-pod-chapters   Chapter 6   line   4  ARAN   method-pod-chapters:SC06-S04
+       method-pod-43-scene   Scene 25    line   4  ARAN   method-pod-43-scene:SC25-S04
+
+   30. (21w) "So the whole argument we've been having is about the road to four thousand, and after that the road doesn't exist"
+       method-pod-chapters   Chapter 12  line  20  ARAN   method-pod-chapters:SC12-S20
+       method-pod-43-scene   Scene 43    line   4  ARAN   method-pod-43-scene:SC43-S04
+
+   31. (21w) "You play, and every so often one lands as a real act of communication — and you get the feedback: oh"
+       method-pod-chapters   Chapter 5   line  15  ARAN   method-pod-chapters:SC05-S15
+       method-pod-43-scene   Scene 31    line   4  ARAN   method-pod-43-scene:SC31-S04
+
+   32. (20w) "And every time I've heard her say it I've thought: I can't keep up with this, my brain already hurts"
+       method-pod-chapters   Chapter 4   line  18  ARAN   method-pod-chapters:SC04-S18
+       method-pod-43-scene   Scene 28    line   3  ARAN   method-pod-43-scene:SC28-S03
+
+   33. (20w) "Because if you solve for the dynamic, you've got something that's orders of magnitude more powerful than one person alone"
+       method-pod-chapters   Chapter 8   line  16  ARAN   method-pod-chapters:SC08-S16
+       method-pod-43-scene   Scene 38    line   5  ARAN   method-pod-43-scene:SC38-S05
+
+   34. (20w) "But where are we, actually — is it in the studies, peer-reviewed, mapped out, can we say "proven scientific fact"
+       method-pod-chapters   Chapter 2   line  20  TOM    method-pod-chapters:SC02-S20
+       method-pod-43-scene   Scene 22    line   3  TOM    method-pod-43-scene:SC22-S03
+
+   35. (20w) "We use the word "word" for something that doesn't really exist and isn't a helpful way of cutting things up"
+       method-pod-chapters   Chapter 4   line  18  ARAN   method-pod-chapters:SC04-S18
+       method-pod-43-scene   Scene 28    line   3  ARAN   method-pod-43-scene:SC28-S03
+
+   36. (20w) "When you actually go and use it — if you've already walked the paths, it isn't a step-change any more"
+       method-pod-chapters   Chapter 9   line   8  ARAN   method-pod-chapters:SC09-S08
+       method-pod-43-scene   Scene 41    line   8  ARAN   method-pod-43-scene:SC41-S08
+
+   37. (20w) "You said "the third thing, and this is the important one, is that when you actually—" and then the dog"
+       method-pod-chapters   Chapter 9   line   3  TOM    method-pod-chapters:SC09-S03
+       method-pod-43-scene   Scene 41    line   3  TOM    method-pod-43-scene:SC41-S03
+
+   38. (19w) "Above it, nobody can tell which one you used; from there it's only how often you use the language"
+       method-pod-chapters   Chapter 12  line  20  ARAN   method-pod-chapters:SC12-S20
+       method-pod-43-scene   Scene 43    line   4  ARAN   method-pod-43-scene:SC43-S04
+
+   39. (19w) "Here's the model: five days, then a year of an hour or two a week, then five days again"
+       method-pod-chapters   Chapter 7   line  22  ARAN   method-pod-chapters:SC07-S22
+       method-pod-43-scene   Scene 16    line   2  ARAN   method-pod-43-scene:SC16-S02
+
+   40. (19w) "I build for efficiency, you sell it for speed, and the learners tell us which of us was right"
+       method-pod-chapters   Chapter 12  line   9  TOM    method-pod-chapters:SC12-S09
+       method-pod-43-scene   Scene 42    line   7  TOM    method-pod-43-scene:SC42-S07
+
+   41. (19w) "I say: you're in a drama class, it's a warm-up game, and the game is called Holy Dickhead Batman"
+       method-pod-chapters   Chapter 5   line  12  TOM    method-pod-chapters:SC05-S12
+       method-pod-43-scene   Scene 31    line   1  TOM    method-pod-43-scene:SC31-S01
+
+   42. (19w) "Manx — a conversation with a native speaker after day one, and another after day two, sixteen months later"
+       method-pod-chapters   Chapter 10  line   9  ARAN   method-pod-chapters:SC10-S09
+       method-pod-43-scene   Scene 35    line   4  ARAN   method-pod-43-scene:SC35-S04
+
+   43. (19w) "One full day to start, then two hours a week for eleven weeks, then one full day to close"
+       method-pod-chapters   Chapter 7   line  21  TOM    method-pod-chapters:SC07-S21
+       method-pod-43-scene   Scene 16    line   1  TOM    method-pod-43-scene:SC16-S01
+
+   44. (19w) "So I stop waiting, and do the half day, and the half day is the price of having waited"
+       method-pod-chapters   Chapter 10  line  29  ARAN   method-pod-chapters:SC10-S29
+       method-pod-43-scene   Scene 39    line   2  ARAN   method-pod-43-scene:SC39-S02
+
+   45. (18w) "Now, if I just make you say it — pysgod, pysgod, pysgod — you're not making a memory"
+       method-pod-chapters   Chapter 2   line   9  ARAN   method-pod-chapters:SC02-S09
+       method-pod-43-scene   Scene 21    line   1  ARAN   method-pod-43-scene:SC21-S01
+
+   46. (18w) "So take a row of words — five of them, like this — and one link between each"
+       method-pod-chapters   Chapter 1   line  16  ARAN   method-pod-chapters:SC01-S16
+       method-pod-43-scene   Scene 32    line   1  ARAN   method-pod-43-scene:SC32-S01
+
+   47. (18w) "Someone's at the door, and the dog has views about the door, and about the person behind it"
+       method-pod-chapters   Chapter 8   line  41  TOM    method-pod-chapters:SC08-S41
+       method-pod-43-scene   Scene 14    line   4  TOM    method-pod-43-scene:SC14-S04
+
+   48. (17w) "And all you can do with five in a row is start here and walk to there"
+       method-pod-chapters   Chapter 1   line  18  ARAN   method-pod-chapters:SC01-S18
+       method-pod-43-scene   Scene 32    line   3  ARAN   method-pod-43-scene:SC32-S03
+
+   49. (17w) "And another this year — different words, different structures, because you'd changed it all in between, obviously"
+       method-pod-chapters   Chapter 10  line   6  TOM    method-pod-chapters:SC10-S06
+       method-pod-43-scene   Scene 35    line   1  TOM    method-pod-43-scene:SC35-S01
+
+   50. (17w) "Find the kids who actually care — the ones making an effort — and open their workbooks"
+       method-pod-chapters   Chapter 7   line   6  ARAN   method-pod-chapters:SC07-S06
+       method-pod-43-scene   Scene 30    line   1  ARAN   method-pod-43-scene:SC30-S01
+
+   51. (17w) "Like everything else in a long conversation — after a while you stop knowing who brought what"
+       method-pod-chapters   Chapter 8   line  24  ARAN   method-pod-chapters:SC08-S24
+       method-pod-43-scene   Scene 13    line   6  ARAN   method-pod-43-scene:SC13-S06
+
+   52. (17w) "One to one, I know it works — whoever they are, whatever the room, we get there"
+       method-pod-chapters   Chapter 8   line   8  ARAN   method-pod-chapters:SC08-S08
+       method-pod-43-scene   Scene 24    line   8  ARAN   method-pod-43-scene:SC24-S08
+
+   53. (16w) "A learner writes to me: the words she remembers are the ones that cost her effort"
+       method-pod-chapters   Chapter 2   line   3  ARAN   method-pod-chapters:SC02-S03
+       method-pod-43-scene   Scene 2     line   3  ARAN   method-pod-43-scene:SC02-S03
+
+   54. (16w) "I'd need to know who's in the room before I said yes, and I never do"
+       method-pod-chapters   Chapter 8   line   8  ARAN   method-pod-chapters:SC08-S08
+       method-pod-43-scene   Scene 24    line   8  ARAN   method-pod-43-scene:SC24-S08
+
+   55. (16w) "Or is it one man in California with a good idea, and us with a feeling"
+       method-pod-chapters   Chapter 2   line  20  TOM    method-pod-chapters:SC02-S20
+       method-pod-43-scene   Scene 22    line   3  TOM    method-pod-43-scene:SC22-S03
+
+   56. (16w) "That's the moment the adult learner thinks: oh, I can say a lot of different things"
+       method-pod-chapters   Chapter 1   line  20  ARAN   method-pod-chapters:SC01-S20
+       method-pod-43-scene   Scene 32    line   5  ARAN   method-pod-43-scene:SC32-S05
+
+   57. (16w) "This is real time: an email, just now, from the people thinking of investing in us"
+       method-pod-chapters   Chapter 11  line  16  ARAN   method-pod-chapters:SC11-S16
+       method-pod-43-scene   Scene 33    line   1  ARAN   method-pod-43-scene:SC33-S01
+
+   58. (16w) "You come in, you sit down, and you say it: "I'd like a mortgage." Go on"
+       method-pod-chapters   Chapter 11  line   2  ARAN   method-pod-chapters:SC11-S02
+       method-pod-43-scene   Scene 15    line   2  ARAN   method-pod-43-scene:SC15-S02
+
+   59. (15w) "A second ago it didn't exist, and it didn't come out of anybody else's account"
+       method-pod-chapters   Chapter 11  line   4  ARAN   method-pod-chapters:SC11-S04
+       method-pod-43-scene   Scene 15    line   4  ARAN   method-pod-43-scene:SC15-S04
+
+   60. (15w) "And by the end of the day he'd become exactly as negative as she was"
+       method-pod-chapters   Chapter 8   line  12  ARAN   method-pod-chapters:SC08-S12
+       method-pod-43-scene   Scene 38    line   1  ARAN   method-pod-43-scene:SC38-S01
+
+   61. (15w) "But if you give me one roll of the dice — one day a week"
+       method-pod-chapters   Chapter 7   line   4  ARAN   method-pod-chapters:SC07-S04
+       method-pod-43-scene   Scene 7     line   4  ARAN   method-pod-43-scene:SC07-S04
+
+   62. (15w) "It's a pity the recording can't pick up my pathetic attempts to act this out"
+       method-pod-chapters   Chapter 1   line  16  ARAN   method-pod-chapters:SC01-S16
+       method-pod-43-scene   Scene 32    line   1  ARAN   method-pod-43-scene:SC32-S01
+
+   63. (15w) "So what you're saying is: the films are in the language they're learning, with subtitles"
+       method-pod-chapters   Chapter 6   line   7  TOM    method-pod-chapters:SC06-S07
+       method-pod-43-scene   Scene 27    line   1  TOM    method-pod-43-scene:SC27-S01
+
+   64. (14w) "and at the end of the month everybody wants you to pay it back"
+       method-pod-chapters   Chapter 11  line   8  ARAN   method-pod-chapters:SC11-S08
+       method-pod-43-scene   Scene 34    line   1  ARAN   method-pod-43-scene:SC34-S01
+
+   65. (14w) "And by most of the ways you could actually define a word, it's one"
+       method-pod-chapters   Chapter 4   line  20  ARAN   method-pod-chapters:SC04-S20
+       method-pod-43-scene   Scene 28    line   5  ARAN   method-pod-43-scene:SC28-S05
+
+   66. (14w) "But so is speed, and speed is the one that answers to a date"
+       method-pod-chapters   Chapter 12  line   2  ARAN   method-pod-chapters:SC12-S02
+       method-pod-43-scene   Scene 42    line   2  ARAN   method-pod-43-scene:SC42-S02
+
+   67. (14w) "Four hours going, four hours going home, for two hours of talking with me"
+       method-pod-chapters   Chapter 8   line  49  TOM    method-pod-chapters:SC08-S49
+       method-pod-43-scene   Scene 18    line   8  ARAN   method-pod-43-scene:SC18-S08
+
+   68. (14w) "It wasn't the idea that failed — there just aren't many people with time"
+       method-pod-chapters   Chapter 8   line  30  ARAN   method-pod-chapters:SC08-S30
+       method-pod-43-scene   Scene 9     line   6  ARAN   method-pod-43-scene:SC09-S06
+
+   69. (14w) "So "go and practise" is right, and it's the cruellest thing you can say"
+       method-pod-chapters   Chapter 6   line   5  TOM    method-pod-chapters:SC06-S05
+       method-pod-43-scene   Scene 25    line   5  TOM    method-pod-43-scene:SC25-S05
+
+   70. (14w) "So after "red" there is a "but" — with a little something in it"
+       method-pod-chapters   Chapter 1   line  22  ARAN   method-pod-chapters:SC01-S22
+       method-pod-43-scene   Scene 26    line   3  ARAN   method-pod-43-scene:SC26-S03
+
+   71. (14w) "So we put a few of the early sentences back in front of them"
+       method-pod-chapters   Chapter 6   line  16  ARAN   method-pod-chapters:SC06-S16
+       method-pod-43-scene   Scene 23    line   4  ARAN   method-pod-43-scene:SC23-S04
+
+   72. (14w) "Ten hours, and then ten more, and then ten more — a hundred hours"
+       method-pod-chapters   Chapter 7   line  20  ARAN   method-pod-chapters:SC07-S20
+       method-pod-43-scene   Scene 6     line   8  ARAN   method-pod-43-scene:SC06-S08
+
+   73. (14w) "You're thinking: films for everyone, and a ladder up to them for the learners"
+       method-pod-chapters   Chapter 6   line  11  TOM    method-pod-chapters:SC06-S11
+       method-pod-43-scene   Scene 27    line   5  TOM    method-pod-43-scene:SC27-S05
+
+   74. (13w) "And by the end of that second day I was thinking in Chinese"
+       method-pod-chapters   Chapter 10  line   6  TOM    method-pod-chapters:SC10-S06
+       method-pod-43-scene   Scene 35    line   1  TOM    method-pod-43-scene:SC35-S01
+
+   75. (13w) "And there will be crashes — that's the part you actually learn from"
+       method-pod-chapters   Chapter 8   line  34  ARAN   method-pod-chapters:SC08-S34
+       method-pod-43-scene   Scene 12    line   4  ARAN   method-pod-43-scene:SC12-S04
+
+   76. (13w) "But before they press play, you have to work out what they want"
+       method-pod-chapters   Chapter 6   line  13  TOM    method-pod-chapters:SC06-S13
+       method-pod-43-scene   Scene 23    line   1  TOM    method-pod-43-scene:SC23-S01
+
+   77. (13w) "But I can say it — slowly, today, but I can say it"
+       method-pod-chapters   Chapter 10  line  21  ARAN   method-pod-chapters:SC10-S21
+       method-pod-43-scene   Scene 19    line   5  ARAN   method-pod-43-scene:SC19-S05
+
+   78. (13w) "Fifteen people in a whole street, and every one of them without time"
+       method-pod-chapters   Chapter 8   line  30  ARAN   method-pod-chapters:SC08-S30
+       method-pod-43-scene   Scene 9     line   6  ARAN   method-pod-43-scene:SC09-S06
+
+   79. (13w) "For years we said it: three words of a language, an empty gesture"
+       method-pod-chapters   Chapter 3   line  18  ARAN   method-pod-chapters:SC03-S18
+       method-pod-43-scene   Scene 10    line   1  ARAN   method-pod-43-scene:SC10-S01
+
+   80. (13w) "I have never once in my life thought: I want to learn Manx"
+       method-pod-chapters   Chapter 10  line  23  ARAN   method-pod-chapters:SC10-S23
+       method-pod-43-scene   Scene 36    line   1  ARAN   method-pod-43-scene:SC36-S01
+
+   81. (13w) "So I was thinking: films for learners, with the words on the screen"
+       method-pod-chapters   Chapter 6   line  11  TOM    method-pod-chapters:SC06-S11
+       method-pod-43-scene   Scene 27    line   5  TOM    method-pod-43-scene:SC27-S05
+
+   82. (13w) "So the rules of grammar — where do they live, in the head"
+       method-pod-chapters   Chapter 4   line   1  TOM    method-pod-chapters:SC04-S01
+       method-pod-43-scene   Scene 8     line   1  TOM    method-pod-43-scene:SC08-S01
+
+   83. (13w) "They press play, and the thing that's paying attention is us, not them"
+       method-pod-chapters   Chapter 6   line  16  ARAN   method-pod-chapters:SC06-S16
+       method-pod-43-scene   Scene 23    line   4  ARAN   method-pod-43-scene:SC23-S04
+
+   84. (13w) "We'll pick this up next time — you owe me a third thing"
+       method-pod-chapters   Chapter 8   line  42  ARAN   method-pod-chapters:SC08-S42
+       method-pod-43-scene   Scene 14    line   5  ARAN   method-pod-43-scene:SC14-S05
+
+   85. (12w) "And I'm sitting here typing: yes, we've got IP, loads of it"
+       method-pod-chapters   Chapter 11  line  18  ARAN   method-pod-chapters:SC11-S18
+       method-pod-43-scene   Scene 33    line   3  ARAN   method-pod-43-scene:SC33-S03
+
+   86. (12w) "Efficiency is the number that matters to the person designing the course"
+       method-pod-chapters   Chapter 12  line   4  ARAN   method-pod-chapters:SC12-S04
+       method-pod-43-scene   Scene 42    line   4  ARAN   method-pod-43-scene:SC42-S04
+
+   87. (12w) "Somebody at Cardiff: the routes to four thousand words are all different"
+       method-pod-chapters   Chapter 12  line  18  ARAN   method-pod-chapters:SC12-S18
+       method-pod-43-scene   Scene 43    line   2  ARAN   method-pod-43-scene:SC43-S02
+
+   88. (12w) "Speed is the number that matters to the person who needs it"
+       method-pod-chapters   Chapter 12  line   4  ARAN   method-pod-chapters:SC12-S04
+       method-pod-43-scene   Scene 42    line   4  ARAN   method-pod-43-scene:SC42-S04
+
+   89. (12w) "The moment you've got edges, you can go in lots of directions"
+       method-pod-chapters   Chapter 5   line   1  ARAN   method-pod-chapters:SC05-S01
+       method-pod-43-scene   Scene 4     line   1  ARAN   method-pod-43-scene:SC04-S01
+
+   90. (12w) "Then you listen without it, and now your ears have a ladder"
+       method-pod-chapters   Chapter 6   line  10  ARAN   method-pod-chapters:SC06-S10
+       method-pod-43-scene   Scene 27    line   4  ARAN   method-pod-43-scene:SC27-S04
+
+   91. (12w) "They really need to find a way to record hands, don't they"
+       method-pod-chapters   Chapter 1   line  26  ARAN   method-pod-chapters:SC01-S26
+       method-pod-43-scene   Scene 32    line   6  TOM    method-pod-43-scene:SC32-S06
+
+   92. (12w) "You told me about it afterwards, and you were proud of it"
+       method-pod-chapters   Chapter 10  line  15  ARAN   method-pod-chapters:SC10-S15
+       method-pod-43-scene   Scene 11    line   4  ARAN   method-pod-43-scene:SC11-S04
+
+   93. (11w) "A few years ago we had a group — brilliant people"
+       method-pod-chapters   Chapter 8   line  19  TOM    method-pod-chapters:SC08-S19
+       method-pod-43-scene   Scene 9     line   1  TOM    method-pod-43-scene:SC09-S01
+
+   94. (11w) "And the thing you're giving them, without saying so, is permission"
+       method-pod-chapters   Chapter 5   line  13  ARAN   method-pod-chapters:SC05-S13
+       method-pod-43-scene   Scene 31    line   2  ARAN   method-pod-43-scene:SC31-S02
+
+   95. (11w) "Below it, every method looks different — whatever road you took"
+       method-pod-chapters   Chapter 12  line  20  ARAN   method-pod-chapters:SC12-S20
+       method-pod-43-scene   Scene 43    line   4  ARAN   method-pod-43-scene:SC43-S04
+
+   96. (11w) "Bjork says it, and he's careful, and the work is good"
+       method-pod-chapters   Chapter 2   line  21  ARAN   method-pod-chapters:SC02-S21
+       method-pod-43-scene   Scene 22    line   4  ARAN   method-pod-43-scene:SC22-S04
+
+   97. (11w) "But where does a bank get the money for a mortgage"
+       method-pod-chapters   Chapter 11  line   1  TOM    method-pod-chapters:SC11-S01
+       method-pod-43-scene   Scene 15    line   1  TOM    method-pod-43-scene:SC15-S01
+
+   98. (11w) "Day one, day two, three years — and it's still there"
+       method-pod-chapters   Chapter 10  line  21  ARAN   method-pod-chapters:SC10-S21
+       method-pod-43-scene   Scene 19    line   5  ARAN   method-pod-43-scene:SC19-S05
+
+   99. (11w) "Everyone shouts every combination they can make — Holy BatHead, ManDick"
+       method-pod-chapters   Chapter 5   line  12  TOM    method-pod-chapters:SC05-S12
+       method-pod-43-scene   Scene 31    line   1  TOM    method-pod-43-scene:SC31-S01
+
+  100. (11w) "I had one group with one truly negative person in it"
+       method-pod-chapters   Chapter 8   line  12  ARAN   method-pod-chapters:SC08-S12
+       method-pod-43-scene   Scene 38    line   1  ARAN   method-pod-43-scene:SC38-S01
+
+  101. (11w) "I'm out of practice, and I haven't thought about it much"
+       method-pod-chapters   Chapter 7   line   2  ARAN   method-pod-chapters:SC07-S02
+       method-pod-43-scene   Scene 7     line   2  ARAN   method-pod-43-scene:SC07-S02
+
+  102. (11w) "I've got seven, maybe eight — enough for half a day"
+       method-pod-chapters   Chapter 10  line  29  ARAN   method-pod-chapters:SC10-S29
+       method-pod-43-scene   Scene 39    line   2  ARAN   method-pod-43-scene:SC39-S02
+
+  103. (11w) "It's just that "solve for the dynamic" is the whole job"
+       method-pod-chapters   Chapter 8   line  16  ARAN   method-pod-chapters:SC08-S16
+       method-pod-43-scene   Scene 38    line   5  ARAN   method-pod-43-scene:SC38-S05
+
+  104. (11w) "It's the same thing you've been doing, in a bigger room"
+       method-pod-chapters   Chapter 9   line   8  ARAN   method-pod-chapters:SC09-S08
+       method-pod-43-scene   Scene 41    line   8  ARAN   method-pod-43-scene:SC41-S08
+
+  105. (11w) "Since I understood what a group can do to a week"
+       method-pod-chapters   Chapter 8   line   8  ARAN   method-pod-chapters:SC08-S08
+       method-pod-43-scene   Scene 24    line   8  ARAN   method-pod-43-scene:SC24-S08
+
+  106. (11w) "So — we'd all say "to boldly go" is three words"
+       method-pod-chapters   Chapter 4   line  20  ARAN   method-pod-chapters:SC04-S20
+       method-pod-43-scene   Scene 28    line   5  ARAN   method-pod-43-scene:SC28-S05
+
+  107. (11w) "That's not proof, that's a story with a flag on it"
+       method-pod-chapters   Chapter 2   line  21  ARAN   method-pod-chapters:SC02-S21
+       method-pod-43-scene   Scene 22    line   4  ARAN   method-pod-43-scene:SC22-S04
+
+  108. (11w) "That's what I'd want to test, and I'd bet on it"
+       method-pod-chapters   Chapter 7   line   4  ARAN   method-pod-chapters:SC07-S04
+       method-pod-43-scene   Scene 7     line   4  ARAN   method-pod-43-scene:SC07-S04
+
+  109. (11w) "There's truth in the practice without any consistency about the why"
+       method-pod-chapters   Chapter 2   line  14  TOM    method-pod-chapters:SC02-S14
+       method-pod-43-scene   Scene 29    line   1  TOM    method-pod-43-scene:SC29-S01
+
+  110. (11w) "They come back the next day — we just carry on"
+       method-pod-chapters   Chapter 6   line  16  ARAN   method-pod-chapters:SC06-S16
+       method-pod-43-scene   Scene 23    line   4  ARAN   method-pod-43-scene:SC23-S04
+
+  111. (11w) "Three years, and I'm speaking all ten — badly, and happily"
+       method-pod-chapters   Chapter 12  line   1  TOM    method-pod-chapters:SC12-S01
+       method-pod-43-scene   Scene 42    line   1  TOM    method-pod-43-scene:SC42-S01
+
+  112. (11w) "We are where we are, and we start where we are"
+       method-pod-chapters   Chapter 11  line  19  TOM    method-pod-chapters:SC11-S19
+       method-pod-43-scene   Scene 33    line   4  TOM    method-pod-43-scene:SC33-S04
+
+  113. (10w) "And after that you can say: but is it good"
+       method-pod-chapters   Chapter 10  line   4  TOM    method-pod-chapters:SC10-S04
+       method-pod-43-scene   Scene 20    line   4  ARAN   method-pod-43-scene:SC20-S04
+
+  114. (10w) "Are you going to put "part four of eighteen million"
+       method-pod-chapters   Chapter 1   line   4  ARAN   method-pod-chapters:SC01-S04
+       method-pod-43-scene   Scene 40    line   4  ARAN   method-pod-43-scene:SC40-S04
+
+  115. (10w) "Because most of the combinations are nonsense, and that's fine"
+       method-pod-chapters   Chapter 5   line  15  ARAN   method-pod-chapters:SC05-S15
+       method-pod-43-scene   Scene 31    line   4  ARAN   method-pod-43-scene:SC31-S04
+
+  116. (10w) "But I suspect you wouldn't even need the whole year"
+       method-pod-chapters   Chapter 7   line   6  ARAN   method-pod-chapters:SC07-S06
+       method-pod-43-scene   Scene 7     line   6  ARAN   method-pod-43-scene:SC07-S06
+
+  117. (10w) "Do you know how I introduce your method to people"
+       method-pod-chapters   Chapter 5   line  10  TOM    method-pod-chapters:SC05-S10
+       method-pod-43-scene   Scene 31    line   1  TOM    method-pod-43-scene:SC31-S01
+
+  118. (10w) "Hang on — what did you say, an hour ago"
+       method-pod-chapters   Chapter 11  line   8  ARAN   method-pod-chapters:SC11-S08
+       method-pod-43-scene   Scene 34    line   1  ARAN   method-pod-43-scene:SC34-S01
+
+  119. (10w) "I'd like one that's red — but I don't mind"
+       method-pod-chapters   Chapter 1   line  21  TOM    method-pod-chapters:SC01-S21
+       method-pod-43-scene   Scene 26    line   2  TOM    method-pod-43-scene:SC26-S02
+
+  120. (10w) "I'm intermediate — how do I get to fluent?" "Practise"
+       method-pod-chapters   Chapter 6   line   1  TOM    method-pod-chapters:SC06-S01
+       method-pod-43-scene   Scene 25    line   1  TOM    method-pod-43-scene:SC25-S01
+
+  121. (10w) "It's been a long time since I've worked in schools"
+       method-pod-chapters   Chapter 7   line   2  ARAN   method-pod-chapters:SC07-S02
+       method-pod-43-scene   Scene 7     line   2  ARAN   method-pod-43-scene:SC07-S02
+
+  122. (10w) "Red bus." "A red house." "One that's red." A lot"
+       method-pod-chapters   Chapter 1   line  20  ARAN   method-pod-chapters:SC01-S20
+       method-pod-43-scene   Scene 26    line   1  ARAN   method-pod-43-scene:SC26-S01
+
+  123. (10w) "That's the classic classroom: rich in words, poor in edges"
+       method-pod-chapters   Chapter 1   line  16  ARAN   method-pod-chapters:SC01-S16
+       method-pod-43-scene   Scene 32    line   1  ARAN   method-pod-43-scene:SC32-S01
+
+  124. (10w) "The easy ones, the ones that came free — gone"
+       method-pod-chapters   Chapter 2   line   3  ARAN   method-pod-chapters:SC02-S03
+       method-pod-43-scene   Scene 2     line   3  ARAN   method-pod-43-scene:SC02-S03
+
+  125. (10w) "Three words open a door, and the door stays open"
+       method-pod-chapters   Chapter 3   line  20  ARAN   method-pod-chapters:SC03-S20
+       method-pod-43-scene   Scene 10    line   3  ARAN   method-pod-43-scene:SC10-S03
+
+  126. (10w) "We did a design day, we made a ten-year plan"
+       method-pod-chapters   Chapter 8   line  29  TOM    method-pod-chapters:SC08-S29
+       method-pod-43-scene   Scene 9     line   5  TOM    method-pod-43-scene:SC09-S05
+
+  127. (10w) "We need to know there's IP before we can invest"
+       method-pod-chapters   Chapter 11  line  16  ARAN   method-pod-chapters:SC11-S16
+       method-pod-43-scene   Scene 33    line   1  ARAN   method-pod-43-scene:SC33-S01
+
+  128. (10w) "We're the generation that went through it and found out"
+       method-pod-chapters   Chapter 7   line  10  ARAN   method-pod-chapters:SC07-S10
+       method-pod-43-scene   Scene 30    line   5  ARAN   method-pod-43-scene:SC30-S05
+
+  129. (9w) "And nonetheless — that's the challenge, not the verdict"
+       method-pod-chapters   Chapter 8   line  16  ARAN   method-pod-chapters:SC08-S16
+       method-pod-43-scene   Scene 38    line   5  ARAN   method-pod-43-scene:SC38-S05
+
+  130. (9w) "And she's right, and I still can't keep up"
+       method-pod-chapters   Chapter 4   line  18  ARAN   method-pod-chapters:SC04-S18
+       method-pod-43-scene   Scene 28    line   3  ARAN   method-pod-43-scene:SC28-S03
+
+  131. (9w) "And the results are in: highlighting makes zero difference"
+       method-pod-chapters   Chapter 7   line   6  ARAN   method-pod-chapters:SC07-S06
+       method-pod-43-scene   Scene 30    line   1  ARAN   method-pod-43-scene:SC30-S01
+
+  132. (9w) "And you don't need the third one to know"
+       method-pod-chapters   Chapter 10  line  11  ARAN   method-pod-chapters:SC10-S11
+       method-pod-43-scene   Scene 35    line   6  ARAN   method-pod-43-scene:SC35-S06
+
+  133. (9w) "Good intentions: he was going to bring her round"
+       method-pod-chapters   Chapter 8   line  12  ARAN   method-pod-chapters:SC08-S12
+       method-pod-43-scene   Scene 38    line   1  ARAN   method-pod-43-scene:SC38-S01
+
+  134. (9w) "is a building in the middle of a field"
+       method-pod-chapters   Chapter 1   line  10  ARAN   method-pod-chapters:SC01-S10
+       method-pod-43-scene   Scene 1     line   2  ARAN   method-pod-43-scene:SC01-S02
+
+  135. (9w) "It's complicated — so it can't be a thing"
+       method-pod-chapters   Chapter 4   line   6  ARAN   method-pod-chapters:SC04-S06
+       method-pod-43-scene   Scene 8     line   6  ARAN   method-pod-43-scene:SC08-S06
+
+  136. (9w) "Learning with other people — it's not a course"
+       method-pod-chapters   Chapter 8   line  31  TOM    method-pod-chapters:SC08-S31
+       method-pod-43-scene   Scene 12    line   1  TOM    method-pod-43-scene:SC12-S01
+
+  137. (9w) "One cell, and the healthy one next to it"
+       method-pod-chapters   Chapter 8   line  15  TOM    method-pod-chapters:SC08-S15
+       method-pod-43-scene   Scene 38    line   4  TOM    method-pod-43-scene:SC38-S04
+
+  138. (9w) "So what you're saying is: control arrives before correctness"
+       method-pod-chapters   Chapter 5   line   2  TOM    method-pod-chapters:SC05-S02
+       method-pod-43-scene   Scene 4     line   2  TOM    method-pod-43-scene:SC04-S02
+
+  139. (9w) "Sometimes with the same people, sometimes with new ones"
+       method-pod-chapters   Chapter 8   line  34  ARAN   method-pod-chapters:SC08-S34
+       method-pod-43-scene   Scene 12    line   4  ARAN   method-pod-43-scene:SC12-S04
+
+  140. (9w) "Ten languages, in parallel, one day a year each"
+       method-pod-chapters   Chapter 12  line   1  TOM    method-pod-chapters:SC12-S01
+       method-pod-43-scene   Scene 42    line   1  TOM    method-pod-43-scene:SC42-S01
+
+  141. (9w) "That's not a small difference, it's the whole thing"
+       method-pod-chapters   Chapter 6   line  10  ARAN   method-pod-chapters:SC06-S10
+       method-pod-43-scene   Scene 27    line   4  ARAN   method-pod-43-scene:SC27-S04
+
+  142. (9w) "There's a fixed number of atoms on the planet"
+       method-pod-chapters   Chapter 10  line  22  TOM    method-pod-chapters:SC10-S22
+       method-pod-chapters   Chapter 11  line   8  ARAN   method-pod-chapters:SC11-S08
+       method-pod-43-scene   Scene 34    line   1  ARAN   method-pod-43-scene:SC34-S01
+
+  143. (9w) "They come back after a month — we noticed"
+       method-pod-chapters   Chapter 6   line  16  ARAN   method-pod-chapters:SC06-S16
+       method-pod-43-scene   Scene 23    line   4  ARAN   method-pod-43-scene:SC23-S04
+
+  144. (9w) "This is Tom and Aran Talk Bollocks, part four"
+       method-pod-chapters   Chapter 1   line   1  TOM    method-pod-chapters:SC01-S01
+       method-pod-43-scene   Scene 40    line   1  TOM    method-pod-43-scene:SC40-S01
+
+  145. (9w) "Watch — I'll be the bank, you be you"
+       method-pod-chapters   Chapter 11  line   2  ARAN   method-pod-chapters:SC11-S02
+       method-pod-43-scene   Scene 15    line   2  ARAN   method-pod-43-scene:SC15-S02
+
+  146. (9w) "We wanted to grow food for the whole street"
+       method-pod-chapters   Chapter 8   line  19  TOM    method-pod-chapters:SC08-S19
+       method-pod-43-scene   Scene 9     line   1  TOM    method-pod-43-scene:SC09-S01
+
+  147. (9w) "With your thirteen weeks you'd surprise a few people"
+       method-pod-chapters   Chapter 7   line  22  ARAN   method-pod-chapters:SC07-S22
+       method-pod-43-scene   Scene 16    line   2  ARAN   method-pod-43-scene:SC16-S02
+
+  148. (9w) "Worse than zero — it costs them the time"
+       method-pod-chapters   Chapter 7   line   6  ARAN   method-pod-chapters:SC07-S06
+       method-pod-43-scene   Scene 30    line   1  ARAN   method-pod-43-scene:SC30-S01
+
+  149. (9w) "you tested yourself in Chinese for a whole day"
+       method-pod-chapters   Chapter 10  line  15  ARAN   method-pod-chapters:SC10-S15
+       method-pod-43-scene   Scene 11    line   4  ARAN   method-pod-43-scene:SC11-S04
+
+  150. (8w) "A good line ends up belonging to both"
+       method-pod-chapters   Chapter 8   line  24  ARAN   method-pod-chapters:SC08-S24
+       method-pod-43-scene   Scene 13    line   6  ARAN   method-pod-43-scene:SC13-S06
+
+  151. (8w) "Ask the question at the level of neurons"
+       method-pod-chapters   Chapter 4   line   2  ARAN   method-pod-chapters:SC04-S02
+       method-pod-43-scene   Scene 8     line   2  ARAN   method-pod-43-scene:SC08-S02
+
+  152. (8w) "Day one: fine, pleased with myself, not bad"
+       method-pod-chapters   Chapter 10  line   9  ARAN   method-pod-chapters:SC10-S09
+       method-pod-43-scene   Scene 35    line   4  ARAN   method-pod-43-scene:SC35-S04
+
+  153. (8w) "Every teacher on earth says the same thing"
+       method-pod-chapters   Chapter 6   line   1  TOM    method-pod-chapters:SC06-S01
+       method-pod-43-scene   Scene 25    line   1  TOM    method-pod-43-scene:SC25-S01
+
+  154. (8w) "He's banging on the arm of the chair"
+       method-pod-chapters   Chapter 1   line  17  TOM    method-pod-chapters:SC01-S17
+       method-pod-43-scene   Scene 32    line   2  TOM    method-pod-43-scene:SC32-S02
+
+  155. (8w) "How much time is it going to take"
+       method-pod-chapters   Chapter 7   line  13  TOM    method-pod-chapters:SC07-S13
+       method-pod-43-scene   Scene 6     line   1  TOM    method-pod-43-scene:SC06-S01
+
+  156. (8w) "How would you do it in a school"
+       method-pod-chapters   Chapter 7   line   1  TOM    method-pod-chapters:SC07-S01
+       method-pod-43-scene   Scene 7     line   1  TOM    method-pod-43-scene:SC07-S01
+
+  157. (8w) "I was waiting for it to come round"
+       method-pod-chapters   Chapter 11  line  12  ARAN   method-pod-chapters:SC11-S12
+       method-pod-43-scene   Scene 34    line   5  ARAN   method-pod-43-scene:SC34-S05
+
+  158. (8w) "I'd be inclined not to differentiate that much"
+       method-pod-chapters   Chapter 7   line  22  ARAN   method-pod-chapters:SC07-S22
+       method-pod-43-scene   Scene 16    line   2  ARAN   method-pod-43-scene:SC16-S02
+
+  159. (8w) "I'd lost his name, but that's the turn"
+       method-pod-chapters   Chapter 2   line  17  ARAN   method-pod-chapters:SC02-S17
+       method-pod-43-scene   Scene 29    line   4  ARAN   method-pod-43-scene:SC29-S04
+
+  160. (8w) "It's an excuse with a number on it"
+       method-pod-chapters   Chapter 10  line  29  ARAN   method-pod-chapters:SC10-S29
+       method-pod-43-scene   Scene 39    line   2  ARAN   method-pod-43-scene:SC39-S02
+
+  161. (8w) "It's the only reason I've ever actually needed"
+       method-pod-chapters   Chapter 10  line  27  ARAN   method-pod-chapters:SC10-S27
+       method-pod-43-scene   Scene 36    line   5  ARAN   method-pod-43-scene:SC36-S05
+
+  162. (8w) "Like the end of a Star Wars film"
+       method-pod-chapters   Chapter 5   line  16  TOM    method-pod-chapters:SC05-S16
+       method-pod-43-scene   Scene 31    line   5  TOM    method-pod-43-scene:SC31-S05
+
+  163. (8w) "Never let a dog near the important one"
+       method-pod-chapters   Chapter 9   line  14  ARAN   method-pod-chapters:SC09-S14
+       method-pod-43-scene   Scene 41    line  10  ARAN   method-pod-43-scene:SC41-S10
+
+  164. (8w) "Nobody told them how a memory is made"
+       method-pod-chapters   Chapter 7   line   8  ARAN   method-pod-chapters:SC07-S08
+       method-pod-43-scene   Scene 30    line   3  ARAN   method-pod-43-scene:SC30-S03
+
+  165. (8w) "One whole day, every week, for a year"
+       method-pod-chapters   Chapter 7   line   4  ARAN   method-pod-chapters:SC07-S04
+       method-pod-43-scene   Scene 7     line   4  ARAN   method-pod-43-scene:SC07-S04
+
+  166. (8w) "Pys" — a bit like puss, the cat"
+       method-pod-chapters   Chapter 2   line  10  TOM    method-pod-chapters:SC02-S10
+       method-pod-43-scene   Scene 21    line   2  TOM    method-pod-43-scene:SC21-S02
+
+  167. (8w) "That's a big bite out of the timetable"
+       method-pod-chapters   Chapter 7   line   5  TOM    method-pod-chapters:SC07-S05
+       method-pod-43-scene   Scene 7     line   5  TOM    method-pod-43-scene:SC07-S05
+
+  168. (8w) "That's exactly where I was about to go"
+       method-pod-chapters   Chapter 2   line  15  ARAN   method-pod-chapters:SC02-S15
+       method-pod-43-scene   Scene 29    line   2  ARAN   method-pod-43-scene:SC29-S02
+
+  169. (8w) "The future of life, the universe, and education"
+       method-pod-chapters   Chapter 1   line   3  TOM    method-pod-chapters:SC01-S03
+       method-pod-43-scene   Scene 40    line   3  TOM    method-pod-43-scene:SC40-S03
+
+  170. (8w) "To me the risk doesn't seem worth it"
+       method-pod-chapters   Chapter 7   line  24  ARAN   method-pod-chapters:SC07-S24
+       method-pod-43-scene   Scene 16    line   4  ARAN   method-pod-43-scene:SC16-S04
+
+  171. (8w) "Two words, and I can talk all day"
+       method-pod-chapters   Chapter 3   line   3  TOM    method-pod-chapters:SC03-S03
+       method-pod-43-scene   Scene 3     line   3  TOM    method-pod-43-scene:SC03-S03
+
+  172. (8w) "We think" is where every good thing starts"
+       method-pod-chapters   Chapter 2   line  23  ARAN   method-pod-chapters:SC02-S23
+       method-pod-43-scene   Scene 22    line   6  ARAN   method-pod-43-scene:SC22-S06
+
+  173. (8w) "What we do is notice when they stop"
+       method-pod-chapters   Chapter 6   line  16  ARAN   method-pod-chapters:SC06-S16
+       method-pod-43-scene   Scene 23    line   4  ARAN   method-pod-43-scene:SC23-S04
+
+  174. (8w) "You care about efficiency until you need something"
+       method-pod-chapters   Chapter 12  line   2  ARAN   method-pod-chapters:SC12-S02
+       method-pod-43-scene   Scene 42    line   2  ARAN   method-pod-43-scene:SC42-S02
+
+  175. (8w) "You only have to know where it went"
+       method-pod-chapters   Chapter 11  line  10  ARAN   method-pod-chapters:SC11-S10
+       method-pod-43-scene   Scene 34    line   3  ARAN   method-pod-43-scene:SC34-S03
+
+  176. (8w) "You waited sixteen months to test one word"
+       method-pod-chapters   Chapter 10  line  12  TOM    method-pod-chapters:SC10-S12
+       method-pod-43-scene   Scene 11    line   1  TOM    method-pod-43-scene:SC11-S01
+
+  177. (7w) "After four thousand, they're all the same"
+       method-pod-chapters   Chapter 12  line  18  ARAN   method-pod-chapters:SC12-S18
+       method-pod-43-scene   Scene 43    line   2  ARAN   method-pod-43-scene:SC43-S02
+
+  178. (7w) "And after day two — no more"
+       method-pod-chapters   Chapter 10  line  17  ARAN   method-pod-chapters:SC10-S17
+       method-pod-43-scene   Scene 19    line   1  ARAN   method-pod-43-scene:SC19-S01
+
+  179. (7w) "And I still like my thirteen weeks"
+       method-pod-chapters   Chapter 7   line  25  TOM    method-pod-chapters:SC07-S25
+       method-pod-43-scene   Scene 16    line   5  TOM    method-pod-43-scene:SC16-S05
+
+  180. (7w) "And since you've just called me mad"
+       method-pod-chapters   Chapter 10  line  13  ARAN   method-pod-chapters:SC10-S13
+       method-pod-43-scene   Scene 11    line   2  ARAN   method-pod-43-scene:SC11-S02
+
+  181. (7w) "And that's when it becomes a game"
+       method-pod-chapters   Chapter 5   line   1  ARAN   method-pod-chapters:SC05-S01
+       method-pod-43-scene   Scene 4     line   1  ARAN   method-pod-43-scene:SC04-S01
+
+  182. (7w) "And they cost the person almost nothing"
+       method-pod-chapters   Chapter 3   line  21  TOM    method-pod-chapters:SC03-S21
+       method-pod-43-scene   Scene 10    line   4  TOM    method-pod-43-scene:SC10-S04
+
+  183. (7w) "And your garden just agreed with me"
+       method-pod-chapters   Chapter 5   line   8  TOM    method-pod-chapters:SC05-S08
+       method-pod-43-scene   Scene 4     line   6  TOM    method-pod-43-scene:SC04-S06
+
+  184. (7w) "I almost don't have to explain anything"
+       method-pod-chapters   Chapter 12  line  13  TOM    method-pod-chapters:SC12-S13
+       method-pod-43-scene   Scene 37    line   3  TOM    method-pod-43-scene:SC37-S03
+
+  185. (7w) "I don't know, and you don't know"
+       method-pod-chapters   Chapter 4   line  12  ARAN   method-pod-chapters:SC04-S12
+       method-pod-43-scene   Scene 5     line   4  TOM    method-pod-43-scene:SC05-S04
+
+  186. (7w) "I just gave them somewhere to go"
+       method-pod-chapters   Chapter 11  line  14  ARAN   method-pod-chapters:SC11-S14
+       method-pod-43-scene   Scene 34    line   7  ARAN   method-pod-43-scene:SC34-S07
+
+  187. (7w) "I said you can't, and you can"
+       method-pod-chapters   Chapter 1   line  22  ARAN   method-pod-chapters:SC01-S22
+       method-pod-43-scene   Scene 26    line   3  ARAN   method-pod-43-scene:SC26-S03
+
+  188. (7w) "It proves nothing — accept it anyway"
+       method-pod-chapters   Chapter 2   line   1  ARAN   method-pod-chapters:SC02-S01
+       method-pod-43-scene   Scene 2     line   1  ARAN   method-pod-43-scene:SC02-S01
+
+  189. (7w) "It's closer to the man in California"
+       method-pod-chapters   Chapter 2   line  21  ARAN   method-pod-chapters:SC02-S21
+       method-pod-43-scene   Scene 22    line   4  ARAN   method-pod-43-scene:SC22-S04
+
+  190. (7w) "It's not that you know the words"
+       method-pod-chapters   Chapter 1   line   9  TOM    method-pod-chapters:SC01-S09
+       method-pod-43-scene   Scene 1     line   1  TOM    method-pod-43-scene:SC01-S01
+
+  191. (7w) "Listen to the radio, talk to people"
+       method-pod-chapters   Chapter 6   line   1  TOM    method-pod-chapters:SC06-S01
+       method-pod-43-scene   Scene 25    line   1  TOM    method-pod-43-scene:SC25-S01
+
+  192. (7w) "Nobody designs a garden leaf by leaf"
+       method-pod-chapters   Chapter 5   line   5  ARAN   method-pod-chapters:SC05-S05
+       method-pod-43-scene   Scene 4     line   5  ARAN   method-pod-43-scene:SC04-S05
+
+  193. (7w) "Nobody said days come in one size"
+       method-pod-chapters   Chapter 10  line  32  TOM    method-pod-chapters:SC10-S32
+       method-pod-43-scene   Scene 39    line   5  TOM    method-pod-43-scene:SC39-S05
+
+  194. (7w) "One moment." And it invents the money"
+       method-pod-chapters   Chapter 11  line   4  ARAN   method-pod-chapters:SC11-S04
+       method-pod-43-scene   Scene 15    line   4  ARAN   method-pod-43-scene:SC15-S04
+
+  195. (7w) "So take it — you're already there"
+       method-pod-chapters   Chapter 2   line  17  ARAN   method-pod-chapters:SC02-S17
+       method-pod-43-scene   Scene 29    line   4  ARAN   method-pod-43-scene:SC29-S04
+
+  196. (7w) "Sorry — molecular physics, not my thing"
+       method-pod-chapters   Chapter 12  line  12  ARAN   method-pod-chapters:SC12-S12
+       method-pod-43-scene   Scene 37    line   2  ARAN   method-pod-43-scene:SC37-S02
+
+  197. (7w) "Ten hours — and then ten more"
+       method-pod-chapters   Chapter 7   line  16  ARAN   method-pod-chapters:SC07-S16
+       method-pod-43-scene   Scene 6     line   4  ARAN   method-pod-43-scene:SC06-S04
+
+  198. (7w) "That it's effort that makes the memory"
+       method-pod-chapters   Chapter 2   line  20  TOM    method-pod-chapters:SC02-S20
+       method-pod-43-scene   Scene 22    line   3  TOM    method-pod-43-scene:SC22-S03
+
+  199. (7w) "That's a garden, not a lesson plan"
+       method-pod-chapters   Chapter 5   line   7  ARAN   method-pod-chapters:SC05-S07
+       method-pod-43-scene   Scene 4     line   5  ARAN   method-pod-43-scene:SC04-S05
+
+  200. (7w) "That's all I say yes to now"
+       method-pod-chapters   Chapter 8   line   6  ARAN   method-pod-chapters:SC08-S06
+       method-pod-43-scene   Scene 24    line   6  ARAN   method-pod-43-scene:SC24-S06
+
+  201. (7w) "That's the only thing I care about"
+       method-pod-chapters   Chapter 12  line   1  TOM    method-pod-chapters:SC12-S01
+       method-pod-43-scene   Scene 42    line   1  TOM    method-pod-43-scene:SC42-S01
+
+  202. (7w) "That's what I want people to see"
+       method-pod-chapters   Chapter 10  line  21  ARAN   method-pod-chapters:SC10-S21
+       method-pod-43-scene   Scene 19    line   5  ARAN   method-pod-43-scene:SC19-S05
+
+  203. (7w) "Then that's the first thing we say"
+       method-pod-chapters   Chapter 7   line  11  TOM    method-pod-chapters:SC07-S11
+       method-pod-43-scene   Scene 30    line   6  TOM    method-pod-43-scene:SC30-S06
+
+  204. (7w) "We used to laugh about it, honestly"
+       method-pod-chapters   Chapter 3   line  18  ARAN   method-pod-chapters:SC03-S18
+       method-pod-43-scene   Scene 10    line   1  ARAN   method-pod-43-scene:SC10-S01
+
+  205. (7w) "You don't know if you'll get there"
+       method-pod-chapters   Chapter 10  line  24  TOM    method-pod-chapters:SC10-S24
+       method-pod-43-scene   Scene 36    line   2  TOM    method-pod-43-scene:SC36-S02
+
+  206. (7w) "You're building a church on one learner"
+       method-pod-chapters   Chapter 2   line   4  TOM    method-pod-chapters:SC02-S04
+       method-pod-43-scene   Scene 2     line   4  TOM    method-pod-43-scene:SC02-S04
+
+  207. (6w) "Actually I've half got it already"
+       method-pod-chapters   Chapter 2   line  10  TOM    method-pod-chapters:SC02-S10
+       method-pod-43-scene   Scene 21    line   2  TOM    method-pod-43-scene:SC21-S02
+
+  208. (6w) "After "red", what can I say"
+       method-pod-chapters   Chapter 1   line  20  ARAN   method-pod-chapters:SC01-S20
+       method-pod-43-scene   Scene 26    line   1  ARAN   method-pod-43-scene:SC26-S01
+
+  209. (6w) "And it goes wider than that"
+       method-pod-chapters   Chapter 8   line  32  ARAN   method-pod-chapters:SC08-S32
+       method-pod-43-scene   Scene 12    line   2  ARAN   method-pod-43-scene:SC12-S02
+
+  210. (6w) "And now I've got unfinished business"
+       method-pod-chapters   Chapter 10  line  23  ARAN   method-pod-chapters:SC10-S23
+       method-pod-43-scene   Scene 36    line   1  ARAN   method-pod-43-scene:SC36-S01
+
+  211. (6w) "And the bank says: "Of course"
+       method-pod-chapters   Chapter 11  line   4  ARAN   method-pod-chapters:SC11-S04
+       method-pod-43-scene   Scene 15    line   4  ARAN   method-pod-43-scene:SC15-S04
+
+  212. (6w) "And the hard is the point"
+       method-pod-chapters   Chapter 2   line  11  ARAN   method-pod-chapters:SC02-S11
+       method-pod-43-scene   Scene 21    line   3  ARAN   method-pod-43-scene:SC21-S03
+
+  213. (6w) "And what happened to that group"
+       method-pod-chapters   Chapter 8   line  26  ARAN   method-pod-chapters:SC08-S26
+       method-pod-43-scene   Scene 9     line   2  ARAN   method-pod-43-scene:SC09-S02
+
+  214. (6w) "But you'll remember it, won't you"
+       method-pod-chapters   Chapter 2   line   5  ARAN   method-pod-chapters:SC02-S05
+       method-pod-43-scene   Scene 2     line   5  ARAN   method-pod-43-scene:SC02-S05
+
+  215. (6w) "Five days, a group of twelve"
+       method-pod-chapters   Chapter 8   line   1  TOM    method-pod-chapters:SC08-S01
+       method-pod-43-scene   Scene 24    line   1  TOM    method-pod-43-scene:SC24-S01
+
+  216. (6w) "How many of you were there"
+       method-pod-chapters   Chapter 8   line  28  ARAN   method-pod-chapters:SC08-S28
+       method-pod-43-scene   Scene 9     line   4  ARAN   method-pod-43-scene:SC09-S04
+
+  217. (6w) "I didn't ask you for that"
+       method-pod-chapters   Chapter 2   line  11  ARAN   method-pod-chapters:SC02-S11
+       method-pod-43-scene   Scene 21    line   3  ARAN   method-pod-43-scene:SC21-S03
+
+  218. (6w) "I don't need all the words"
+       method-pod-chapters   Chapter 3   line   3  TOM    method-pod-chapters:SC03-S03
+       method-pod-43-scene   Scene 3     line   3  TOM    method-pod-43-scene:SC03-S03
+
+  219. (6w) "I owed you a third thing"
+       method-pod-chapters   Chapter 9   line   2  ARAN   method-pod-chapters:SC09-S02
+       method-pod-43-scene   Scene 41    line   2  ARAN   method-pod-43-scene:SC41-S02
+
+  220. (6w) "I'm going to learn more Manx"
+       method-pod-chapters   Chapter 10  line  23  ARAN   method-pod-chapters:SC10-S23
+       method-pod-43-scene   Scene 36    line   1  ARAN   method-pod-43-scene:SC36-S01
+
+  221. (6w) "It doesn't take it from anywhere"
+       method-pod-chapters   Chapter 11  line   5  TOM    method-pod-chapters:SC11-S05
+       method-pod-43-scene   Scene 15    line   5  TOM    method-pod-43-scene:SC15-S05
+
+  222. (6w) "It's just more of the same"
+       method-pod-chapters   Chapter 6   line   4  ARAN   method-pod-chapters:SC06-S04
+       method-pod-43-scene   Scene 25    line   4  ARAN   method-pod-43-scene:SC25-S04
+
+  223. (6w) "Look at what you just did"
+       method-pod-chapters   Chapter 2   line  11  ARAN   method-pod-chapters:SC02-S11
+       method-pod-43-scene   Scene 21    line   3  ARAN   method-pod-43-scene:SC21-S03
+
+  224. (6w) "Now we can start to think"
+       method-pod-chapters   Chapter 4   line  14  ARAN   method-pod-chapters:SC04-S14
+       method-pod-43-scene   Scene 5     line   6  TOM    method-pod-43-scene:SC05-S06
+
+  225. (6w) "So — Breton, for a weekend"
+       method-pod-chapters   Chapter 12  line  15  TOM    method-pod-chapters:SC12-S15
+       method-pod-43-scene   Scene 37    line   5  TOM    method-pod-43-scene:SC37-S05
+
+  226. (6w) "So a new word without streets"
+       method-pod-chapters   Chapter 1   line   9  TOM    method-pod-chapters:SC01-S09
+       method-pod-43-scene   Scene 1     line   1  TOM    method-pod-43-scene:SC01-S01
+
+  227. (6w) "So it's like atoms, isn't it"
+       method-pod-chapters   Chapter 11  line  10  ARAN   method-pod-chapters:SC11-S10
+       method-pod-43-scene   Scene 34    line   3  ARAN   method-pod-43-scene:SC34-S03
+
+  228. (6w) "So you're going to leave it"
+       method-pod-chapters   Chapter 2   line  12  TOM    method-pod-chapters:SC02-S12
+       method-pod-43-scene   Scene 21    line   4  TOM    method-pod-43-scene:SC21-S04
+
+  229. (6w) "Stop the recording, start another one"
+       method-pod-chapters   Chapter 12  line  23  TOM    method-pod-chapters:SC12-S23
+       method-pod-43-scene   Scene 43    line   7  TOM    method-pod-43-scene:SC43-S07
+
+  230. (6w) "Then how much, and how often"
+       method-pod-chapters   Chapter 10  line   4  TOM    method-pod-chapters:SC10-S04
+       method-pod-43-scene   Scene 20    line   4  ARAN   method-pod-43-scene:SC20-S04
+
+  231. (6w) "Then we'll put it on pause"
+       method-pod-chapters   Chapter 7   line  27  TOM    method-pod-chapters:SC07-S27
+       method-pod-chapters   Chapter 12  line   7  TOM    method-pod-chapters:SC12-S07
+       method-pod-43-scene   Scene 16    line   7  TOM    method-pod-43-scene:SC16-S07
+
+  232. (6w) "Then we're not going to agree"
+       method-pod-chapters   Chapter 12  line   5  TOM    method-pod-chapters:SC12-S05
+       method-pod-43-scene   Scene 42    line   5  TOM    method-pod-43-scene:SC42-S05
+
+  233. (6w) "There's a school that wants you"
+       method-pod-chapters   Chapter 8   line   1  TOM    method-pod-chapters:SC08-S01
+       method-pod-43-scene   Scene 24    line   1  TOM    method-pod-43-scene:SC24-S01
+
+  234. (6w) "Though by now it's yours too"
+       method-pod-chapters   Chapter 8   line  22  ARAN   method-pod-chapters:SC08-S22
+       method-pod-43-scene   Scene 13    line   4  ARAN   method-pod-43-scene:SC13-S04
+
+  235. (6w) "Unfinished business is a good reason"
+       method-pod-chapters   Chapter 10  line  26  TOM    method-pod-chapters:SC10-S26
+       method-pod-43-scene   Scene 36    line   4  TOM    method-pod-43-scene:SC36-S04
+
+  236. (6w) "We both still need to eat"
+       method-pod-chapters   Chapter 11  line  20  ARAN   method-pod-chapters:SC11-S20
+       method-pod-43-scene   Scene 33    line   5  ARAN   method-pod-43-scene:SC33-S05
+
+  237. (6w) "We think" I can live with"
+       method-pod-chapters   Chapter 2   line  22  TOM    method-pod-chapters:SC02-S22
+       method-pod-43-scene   Scene 22    line   5  TOM    method-pod-43-scene:SC22-S05
+
+  238. (6w) "We'll need details of your IP"
+       method-pod-chapters   Chapter 11  line  16  ARAN   method-pod-chapters:SC11-S16
+       method-pod-43-scene   Scene 33    line   1  ARAN   method-pod-43-scene:SC33-S01
+
+  239. (6w) "We're not losing atoms of water"
+       learning-flagship     Chapter 11  line  15  TOM    learning-flagship:SC11-S15
+       method-pod-chapters   Chapter 10  line  22  TOM    method-pod-chapters:SC10-S22
+       method-pod-chapters   Chapter 11  line   9  TOM    method-pod-chapters:SC11-S09
+       method-pod-chapters   Chapter 11  line  10  ARAN   method-pod-chapters:SC11-S10
+       method-pod-43-scene   Scene 34    line   2  TOM    method-pod-43-scene:SC34-S02
+       method-pod-43-scene   Scene 34    line   3  ARAN   method-pod-43-scene:SC34-S03
+
+  240. (6w) "You don't need all the words"
+       method-pod-chapters   Chapter 3   line  15  TOM    method-pod-chapters:SC03-S15
+       method-pod-43-scene   Scene 17    line   5  TOM    method-pod-43-scene:SC17-S05
+
+  241. (6w) "You haven't lost any of it"
+       method-pod-chapters   Chapter 11  line  10  ARAN   method-pod-chapters:SC11-S10
+       method-pod-43-scene   Scene 34    line   3  ARAN   method-pod-43-scene:SC34-S03
+
+  242. (6w) "You know what breaks my heart"
+       method-pod-chapters   Chapter 7   line   6  ARAN   method-pod-chapters:SC07-S06
+       method-pod-43-scene   Scene 30    line   1  ARAN   method-pod-43-scene:SC30-S01
+
+  243. (6w) "You know what's between the words"
+       method-pod-chapters   Chapter 1   line   9  TOM    method-pod-chapters:SC01-S09
+       method-pod-43-scene   Scene 1     line   1  TOM    method-pod-43-scene:SC01-S01
+
+  244. (6w) "You owed me a third thing"
+       method-pod-chapters   Chapter 9   line   1  TOM    method-pod-chapters:SC09-S01
+       method-pod-43-scene   Scene 41    line   1  TOM    method-pod-43-scene:SC41-S01
+
+── NEAR-duplicates (NOT exact; counted separately, never conflated)
+  6 pairs at Jaccard >= 0.75 over 19,495 compared pairs
+
+    1. J=0.933
+       method-pod-chapters   Chapter 3   "I think that when you learn a language you don't need all the words — you need the words you can say something with, and after that you talk, and you talk, and you talk, all day, with people, and after that you have more words, and then you talk more, and then"
+       method-pod-43-scene   Scene 17    "I think that when you learn a language you don't need all the words — you need the words you can say something with, and after that you talk, and you talk, and you talk, all day, with people, and after that you have more words, and then"
+
+    2. J=0.889
+       method-pod-chapters   Chapter 10  "How: I did a day of Mandarin last summer"
+       method-pod-43-scene   Scene 35    "I did a day of Mandarin last summer"
+
+    3. J=0.867
+       method-pod-chapters   Chapter 8   "And the third thing — and this is the important one — is that when you actually"
+       method-pod-43-scene   Scene 14    "So the third thing — and this is the important one — is that when you actually"
+
+    4. J=0.833
+       method-pod-chapters   Chapter 12  "What you're giving me isn't a recommendation, it's a guarantee — yours — and that's what a tribe is"
+       method-pod-43-scene   Scene 37    "What you're giving me isn't a recommendation, it's a guarantee — your personal guarantee — and that's what a tribe is"
+
+    5. J=0.824
+       method-pod-chapters   Chapter 2   "But the question you just asked is the right one, and nobody asks it enough"
+       method-pod-43-scene   Scene 22    "But the question you just asked is the right one, and nobody in this field asks it enough"
+
+    6. J=0.765
+       method-pod-chapters   Chapter 4   "Word types, categories, a machine for putting them in order, and another machine to check the first one, and somewhere to keep all of that, and a way to learn it as a child, before you can tie your shoes"
+       method-pod-43-scene   Scene 8     "Word types, categories, a machine for putting them in order, and another machine to check the first one, and somewhere to keep all of that, and a way to learn it as a child"
+
+json → docs/pods/evidence/cross-pod-duplication-2026-08-30.json
