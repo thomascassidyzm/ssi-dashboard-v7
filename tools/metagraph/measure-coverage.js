@@ -8,7 +8,7 @@ import fs from 'fs'
 import path from 'path'
 import { createRequire } from 'module'
 import { fileURLToPath } from 'url'
-import { parseShapeGraph } from '../../src/lib/metagraph/parseShapeGraph.js'
+import { graphFromStore } from '../../src/lib/metagraph/fromStore.js'
 import { parseMethodPod } from '../../src/lib/metagraph/parseMethodPod.js'
 import { walkFromCanonicalRows, walkFromFlow } from '../../src/lib/metagraph/walk.js'
 import { computeCoverage } from '../../src/lib/metagraph/coverage.js'
@@ -19,7 +19,14 @@ const require = createRequire(import.meta.url)
 const envDir = process.env.SSI_ENV_DIR || root
 require('dotenv').config({ path: path.join(envDir, '.env'), quiet: true })
 
-const graph = parseShapeGraph(fs.readFileSync(path.join(root, 'docs/pods/shape-graph-2026-08-30.md'), 'utf8'))
+const j = f => JSON.parse(fs.readFileSync(path.join(root, 'services/shared/metagraph', f), 'utf8'))
+const graph = graphFromStore({
+  nodes: j('nodes.json'),
+  edges: j('edges.json'),
+  moves: j('moves.json'),
+  outcomeShapes: j('outcome-shapes.json'),
+  walkSets: { 'pod-0': j('walks/pod-0.json') }
+})
 
 function report (title, cov) {
   console.log(`\n══ ${title}`)

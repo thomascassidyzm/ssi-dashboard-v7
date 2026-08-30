@@ -28,11 +28,13 @@ shapes it should as a walk through the graph."*
 
 `node tools/metagraph/measure-coverage.js pod-0 pod-1` — read-only, reproducible.
 
+The graph has **23 shapes**: the 17 exchange nodes plus the 6 bound pairs.
+
 | Walk | lines | mapped | shapes traversed | hit twice+ | **never reached** | outcome shapes delivered |
 |---|---|---|---|---|---|---|
-| **`pod-0` — the live POD 1** | 231 in 22 scenes | 73 | **12 of 17** | 7 | **5** | **0 of 9** |
-| **The Method Pod** (re-cut, 16 scenes) | 99 in 17 scenes | 45 | **6 of 17** | 1 | **11** | **0 of 9** |
-| `pod-1` (a separate slate) | 236 | 0 | 0 | 0 | 17 | 0 of 9 |
+| **`pod-0` — the live POD 1** | 231 in 22 scenes | 85 | **18 of 23** | 9 | **5** | **0 of 9** |
+| **The Method Pod** (re-cut, 16 scenes) | 99 in 17 scenes | 45 | **6 of 23** | 1 | **17** | **0 of 9** |
+| `pod-1` (a separate slate) | 236 | 0 | 0 | 0 | 23 | 0 of 9 |
 
 **POD 1's deficit list, live:** N13 Not-knowing · N14 Premise audit · N15 Parked disagreement ·
 N16 Precision haggle · N17 Interruption-and-bank. Those are exactly the five nodes the derivation
@@ -47,9 +49,9 @@ declares it; the ask an outcome is *sited on* being present is not delivery. `po
 café order O3 is sited on and the reckoning O1 is sited on, and delivers neither. That is the
 overlay's whole to-do list, standing where Tom can see it.
 
-**Survivability:** 10 of the 15 edges are exercised by `pod-0`, and two of those — **S2 (acting on
-a hedge) and S5 (being corrected inside a confirm)** — carry the derivation's null result into the
-UI: the branch is attested, the recovery is not. They are flagged ⚠ in the read-out.
+**Survivability:** 10 of the 15 edges are exercised by `pod-0`, and one of them — **S2, acting on a
+hedge** — carries the derivation's null result into the UI: the branch is attested, the recovery
+never is. It is flagged ⚠ in the read-out.
 
 ## The data model — settled, and why
 
@@ -65,14 +67,12 @@ question over the same object. Neither lab keeps its own copy of the graph.
 
 ## What the graph could not say — stated, not smoothed
 
-**73 of `pod-0`'s 231 lines map to a shape; 139 are UNMAPPED and shown as UNMAPPED.** This is not a
-defect in the content. The derivation cites its attestations as **endpoints** — `g69→g85` is one
-traversal of N2 written as its first and last row — so the rows *inside* an attested run carry no
-reference of their own. Expanding those endpoints into spans would raise mapped coverage a great
-deal and would be an inference, not a reading. **Decision for Tom, one word:** should an
-attestation like `g69→g85` be read as covering every row between, or only its endpoints? *My
-recommendation: endpoints, until the stored graph artefact enumerates rows properly — an honest
-73 beats an inferred 231.*
+**85 of `pod-0`'s 231 lines map to a shape; 126 are UNMAPPED and shown as UNMAPPED.** This is not a
+defect in the content and not a defect in this page — it is the store's own named gap, surfaced.
+The store encodes **16 of the 47 complete walks** the derivation counts; 56 rows that lie on
+complete walks are not yet placed on one, and the 69 truncated drill rows of scenes 15–21 carry no
+node. Both read as UNMAPPED here rather than being guessed at. **Encoding the remaining 31 walks is
+what would move this number**, and it is work on the store, not on this page.
 
 `pod-1` and `pod-0.5` are separate slates whose `global_order` numbers collide with `pod-0`'s by
 accident. Walking them through this graph would invent coverage out of an off-by-one, so they walk
@@ -115,20 +115,27 @@ for POD-1, the Method Pod and the health flows.
 
 ## Where the code is
 
+- `services/shared/metagraph/` — **the store**. Not ours; consumed as it is, never copied.
 - `src/lib/metagraph/loadGraph.js` — the ONE place that knows where the graph comes from.
-- `src/lib/metagraph/parseShapeGraph.js` — temporary: reads the derivation markdown.
+- `src/lib/metagraph/fromStore.js` — the store projected into the shape the read-out uses.
 - `src/lib/metagraph/walk.js`, `coverage.js` — the data model and the arithmetic, pure.
 - `src/views/ScriptLabView.vue`, `ScriptLabScriptView.vue` — the index and the script page.
 - `services/production-api.cjs` — `GET /api/admin/canonical-pods` (the index; no course code).
 - `tools/metagraph/coverage-test.js` — 15 checks, single process, no framework.
 - `tools/metagraph/measure-coverage.js` — the numbers above, from the command line.
 
-## The gap, stated plainly
+## The store, and the switch that was actually made
 
-**The coverage read-out is wired to a temporary adapter over the markdown derivation, because the
-stored graph artefact had not landed when this was built.** A sibling job is giving the metagraph a
-canonical home; when it lands, `src/lib/metagraph/loadGraph.js` is the whole switch — two imports
-change and `parseShapeGraph.js` is deleted. No consumer moves. The parser is checked against the
-derivation's own headline numbers (17 nodes, 19 composition edges, 10 + 5 survivability edges, nine
-outcomes, 16 codas, 4 alternatives), so a silent drift in the reading would fail the test rather
-than ship a wrong deficit list.
+This page was built behind one thin adapter while the metagraph store was still being written. The
+store landed mid-build (`services/shared/metagraph/`, commit 547bd253d) and the adapter was pointed
+at it: `loadGraph.js` now imports the store's five JSON files and the markdown parser is deleted.
+**No consumer moved** — that was the point of the adapter. The store gave the read-out something
+the derivation could not: a **per-row** node identity from the encoded walks, which is why mapped
+coverage is 85 rather than the 73 the prose endpoints could support, and why the six bound pairs
+are covered at all.
+
+`tools/metagraph/coverage-test.js` — 15 checks, one process, no framework — asserts the read against
+the derivation's own headline numbers (17 nodes + 6 bound pairs, 19 composition edges, 10 + 5
+survivability edges, nine outcome shapes with the same four minted, 16 codas, 4 alternatives), so a
+silent drift in the store or in the reading fails the check rather than shipping a wrong deficit
+list. The store carries its own `tools/metagraph-selfcheck.cjs` as well.

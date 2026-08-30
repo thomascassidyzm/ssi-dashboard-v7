@@ -8,13 +8,20 @@ import fs from 'fs'
 import path from 'path'
 import assert from 'assert'
 import { fileURLToPath } from 'url'
-import { parseShapeGraph } from '../../src/lib/metagraph/parseShapeGraph.js'
+import { graphFromStore } from '../../src/lib/metagraph/fromStore.js'
 import { parseMethodPod } from '../../src/lib/metagraph/parseMethodPod.js'
 import { walkFromCanonicalRows, walkFromFlow } from '../../src/lib/metagraph/walk.js'
 import { computeCoverage } from '../../src/lib/metagraph/coverage.js'
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..')
-const graph = parseShapeGraph(fs.readFileSync(path.join(root, 'docs/pods/shape-graph-2026-08-30.md'), 'utf8'))
+const j = f => JSON.parse(fs.readFileSync(path.join(root, 'services/shared/metagraph', f), 'utf8'))
+const graph = graphFromStore({
+  nodes: j('nodes.json'),
+  edges: j('edges.json'),
+  moves: j('moves.json'),
+  outcomeShapes: j('outcome-shapes.json'),
+  walkSets: { 'pod-0': j('walks/pod-0.json') }
+})
 
 let pass = 0
 function check (name, fn) {
@@ -22,11 +29,13 @@ function check (name, fn) {
   catch (e) { console.error(`  FAIL ${name}\n       ${e.message}`); process.exitCode = 1 }
 }
 
-console.log('\nthe parser reproduces the derivation\'s own headline numbers')
-check('17 nodes, twelve from pod-0 and five from the Method Pod', () => {
-  assert.equal(graph.nodes.length, 17)
-  assert.equal(graph.nodes.filter(n => n.origin === 'pod-0').length, 12)
-  assert.equal(graph.nodes.filter(n => n.origin === 'method-pod').length, 5)
+console.log('\nthe store reads into the shape the read-out uses, with the derivation\'s own numbers')
+check('17 nodes — twelve from pod-0, five from the Method Pod — plus the six bound pairs', () => {
+  const nodes = graph.nodes.filter(n => n.kind === 'node')
+  assert.equal(nodes.length, 17)
+  assert.equal(nodes.filter(n => n.origin === 'pod-0').length, 12)
+  assert.equal(nodes.filter(n => n.origin === 'method-pod').length, 5)
+  assert.equal(graph.nodes.filter(n => n.kind === 'bound-pair').length, 6)
 })
 check('19 composition edges', () => assert.equal(graph.compositionEdges.length, 19))
 check('10 survivability edges from the corpus, 5 from the Method Pod', () => {
@@ -36,15 +45,16 @@ check('10 survivability edges from the corpus, 5 from the Method Pod', () => {
 check('nine outcome shapes, four of them minted from nothing', () => {
   assert.equal(graph.outcomes.length, 9)
   assert.deepEqual(graph.outcomes.filter(o => o.mustBeMinted).map(o => o.id).sort(), ['O1', 'O3', 'O6', 'O7'])
+  assert.equal(graph.outcomes[0].id, 'O3', 'sequenced by redemption latency, shortest strand first')
 })
 check('16 codas and 4 alternatives, exactly the rows the acceptance test names', () => {
   assert.equal(graph.codaRows.length, 16)
-  assert.deepEqual(graph.alternativeRows, [7, 12, 13, 15])
+  assert.deepEqual(graph.alternativeRows.sort((a, b) => a - b), [7, 12, 13, 15])
 })
-check('the null result survives the parse — S2, the hedge, has no attested recovery', () => {
+check('the null result survives the read — S2, the hedge, has no attested recovery', () => {
   const s2 = graph.survivability.find(s => s.id === 'S2')
   assert.equal(s2.recoveryRank, 0)
-  assert.match(s2.recoveryAttested, /Never/)
+  assert.match(s2.recoveryAttested, /Never|never/)
 })
 
 console.log('\ncoverage on a hand-built walk with a known answer')
@@ -53,26 +63,29 @@ console.log('\ncoverage on a hand-built walk with a known answer')
 // is reachable, so the other sixteen shapes are the deficit list.
 const rowsFor = gs => gs.map(g => ({ id: `x${g}`, global_order: g, scene_number: 1, english_text: `line ${g}`, speaker: 'Narrator' }))
 check('one complete attestation group = traversed once', () => {
-  const cov = computeCoverage(graph, walkFromCanonicalRows(rowsFor([1, 2]), graph))
+  // W2 "Morning greeting" is g1–g4, every step N1 and nothing else.
+  const cov = computeCoverage(graph, walkFromCanonicalRows(rowsFor([1, 2, 3, 4]), graph))
   const n1 = cov.nodes.find(n => n.id === 'N1')
-  assert.equal(n1.traversals, 1, 'N1 traversed once')
+  assert.equal(n1.traversals, 1, 'the morning greeting is one traversal of N1')
   assert.equal(n1.status, 'once')
   assert.equal(cov.totals.traversed, 1)
-  assert.equal(cov.totals.neverReached, 16)
+  assert.equal(cov.totals.neverReached, graph.nodes.length - 1)
 })
 check('two complete groups = hit twice, and that is what the twice column counts', () => {
-  const cov = computeCoverage(graph, walkFromCanonicalRows(rowsFor([1, 2, 20, 21]), graph))
+  // add W4, the arrangement: g20 is N7 with the ritual open composed into it.
+  const cov = computeCoverage(graph, walkFromCanonicalRows(rowsFor([1, 2, 3, 4, 20, 21, 22]), graph))
   const n1 = cov.nodes.find(n => n.id === 'N1')
-  assert.equal(n1.traversals, 2)
+  assert.equal(n1.traversals, 2, `N1 traversed ${n1.traversals} times`)
   assert.equal(n1.status, 'twice')
+  assert.equal(cov.nodes.find(n => n.id === 'N7').traversals, 1, 'and N7 once — a shape hit twice and a shape hit once, together')
   assert.equal(cov.totals.hitTwice, 1)
 })
 check('a half-present group is partial, never rounded up to a traversal', () => {
-  const cov = computeCoverage(graph, walkFromCanonicalRows(rowsFor([1]), graph))
-  const n1 = cov.nodes.find(n => n.id === 'N1')
-  assert.equal(n1.traversals, 0, 'g1 without g2 does not traverse N1')
-  assert.equal(n1.partialGroups >= 1, true)
-  assert.equal(cov.totals.neverReached, 17, 'every shape is still a deficit')
+  const cov = computeCoverage(graph, walkFromCanonicalRows(rowsFor([20]), graph))
+  const n7 = cov.nodes.find(n => n.id === 'N7')
+  assert.equal(n7.traversals, 0, 'the proposal without its two declines does not traverse N7')
+  assert.equal(n7.partialGroups >= 1, true)
+  assert.equal(cov.totals.neverReached, graph.nodes.length - 1)
 })
 check('a coda is ADMITS, not a move; an unknown row is UNMAPPED, not dropped', () => {
   const cov = computeCoverage(graph, walkFromCanonicalRows(rowsFor([37, 9999]), graph))
