@@ -34,6 +34,32 @@ const JOBS = require('./jobs.cjs');
 
 const PORT = +(process.env.PORT || 8461);
 const HOST = process.env.HOST || '127.0.0.1';
+
+/**
+ * WHERE THIS LAB IS ROOTED.
+ *
+ * Standalone (node labs/basket-lab/server.cjs) it is rooted at '/', which is
+ * what the port-8461 process has always been. Mounted into the production API
+ * — which is how it reaches Tom through admin > configs — it is rooted at
+ * whatever mount() is given, and every link, form action and fetch in the
+ * emitted HTML carries that prefix. There is one copy of the lab either way:
+ * the surface Tom judges baskets on is the same code, not a re-implementation
+ * of it in Vue that would drift from this one within a week.
+ */
+let BASE = '';
+
+/**
+ * CAN THIS COPY SPEND MONEY?
+ *
+ * Generation shells out to the Claude CLI: one pass is real spend and can run
+ * for fifteen minutes. The standalone process on 8461 runs on Tom's own box
+ * behind loopback and may do it. The copy mounted into the production API is
+ * reachable through a tunnel from a phone, so it is READ-AND-JUDGE ONLY: it
+ * shows the live basket beside whatever candidates are already on disk, takes
+ * verdicts, and tells you the exact command to generate more. A button that
+ * quietly bills a stranger's click is not a feature.
+ */
+let READ_ONLY = false;
 const ROOT = path.join(__dirname, '..', '..');
 const VERDICTS = path.join(__dirname, 'verdicts.ndjson');
 const CANDIDATES = JOBS.CANDIDATES;
@@ -310,7 +336,7 @@ ${cand && !cand.broken ? `<p class="meta">candidates generated ${esc(cand.genera
 ${live.baskets.map(b => basket(b, genBy.get(b.lego_index))).join('')}
 ${unattr}
 
-<form class="verdict" method="post" action="/lab/verdict">
+<form class="verdict" method="post" action="${BASE}/lab/verdict">
   <input type="hidden" name="course" value="${esc(course)}">
   <input type="hidden" name="seed" value="${seed}">
   <input type="hidden" name="candidate_stamp" value="${esc(cand ? cand.generated : 'none')}">
@@ -319,20 +345,20 @@ ${unattr}
   <label>about <input name="about" list="pids" size="12" placeholder="L01-3, or L01, or blank"></label>
   <datalist id="pids">${live.baskets.flatMap(b => [`<option value="L${String(b.lego_index).padStart(2, '0')}">`, ...b.phrases.map(p => `<option value="${esc(p.lab_id)}">`)]).join('')}</datalist>
   <textarea name="text" id="v" placeholder="Type or dictate a sentence against what is on screen. Stored verbatim." autofocus></textarea>
-  <p><button type="submit">save verdict</button> <a href="/lab/verdicts">read them back &rarr;</a></p>
+  <p><button type="submit">save verdict</button> <a href="${BASE}/lab/verdicts">read them back &rarr;</a></p>
   <p class="meta">stored verbatim with the timestamp, the course and seed, what it is about, which candidate set was on screen, and build ${esc(BUILD_SHA)}</p>
 </form>
 <script>document.addEventListener('keydown',e=>{if(e.key==='v'&&e.target.tagName!=='TEXTAREA'){e.preventDefault();document.getElementById('v').focus()}
 if((e.metaKey||e.ctrlKey)&&e.key==='Enter'&&e.target.id==='v'){e.target.form.submit()}});
 async function gen(course,seed,regen){
   const el=document.querySelector('.gen .genstate'); if(el)el.textContent='asking…';
-  await fetch('/lab/generate',{method:'POST',headers:{'content-type':'application/json'},
+  await fetch('${BASE}/lab/generate',{method:'POST',headers:{'content-type':'application/json'},
     body:JSON.stringify({course,seed,regenerate:regen})});
   poll();
 }
 const drawnStamp=${JSON.stringify(cand && !cand.broken ? cand.generated : null)};
 async function poll(){
-  const r=await fetch('/lab/status?cells='+encodeURIComponent(${JSON.stringify(`${course}|${seed}`)}));
+  const r=await fetch('${BASE}/lab/status?cells='+encodeURIComponent(${JSON.stringify(`${course}|${seed}`)}));
   const j=await r.json(); const s=j.cells[0]; if(!s)return;
   const el=document.querySelector('.gen .genstate'); if(el)el.textContent=s.words;
   if(s.generated!==drawnStamp){location.reload();return}
@@ -354,6 +380,13 @@ poll();</script>`);
  * ------------------------------------------------------------------ */
 function generationPanel(course, seed, cand) {
   const st = JOBS.statusOf(course, seed);
+  if (READ_ONLY) return `<div class="rule gen">
+    <b>candidate baskets</b> — <span class="genstate">${esc(stateWords(st))}</span>
+    <p class="meta">Generation is not offered here: a pass shells out to the Claude CLI, costs real money and can
+    run fifteen minutes, so it stays a deliberate local act rather than a button on a page reachable from a phone.
+    To generate: <code>node tools/frame-layer/generate-candidates.cjs ${esc(course)} ${seed} --passes 3</code>,
+    or open the lab's own process on port 8461 on the box that has the repo. Whatever it writes shows up here.</p>
+  </div>`;
   return `<div class="rule gen" data-cell="${esc(course)}|${seed}">
     <b>candidate baskets</b> — <span class="genstate">${esc(stateWords(st))}</span>
     <p class="meta">One pass writes candidates for EVERY basket of this seed: the generator's unit is the seed's
@@ -367,7 +400,7 @@ function generationPanel(course, seed, cand) {
 
 /** The per-basket action. Same run, honestly labelled. */
 const genAction = (course, seed, legoIndex) =>
-  `<p class="meta"><button onclick="gen('${esc(course)}',${seed},true)">regenerate this basket</button>
+  READ_ONLY ? '' : `<p class="meta"><button onclick="gen('${esc(course)}',${seed},true)">regenerate this basket</button>
    <span class="none">— one pass rewrites every basket in seed ${seed}; the prompt's unit is the seed</span></p>`;
 
 function stateWords(st) {
@@ -396,7 +429,7 @@ function tasteBanner(course) {
     ${taste
       ? ` The target side is <b>${esc(p.target || '?')}</b> and you read it, so judge the target phrases too.`
       : ` The target side is <b>${esc(p.target || '?')}</b>. Read the instrument, not the phrases: does it cross the split, is diversity above the floors, does the target still perform the seed's derived job. A verdict on target phrasing here would be a guess entering the record as evidence.`}
-    <span class="meta"> [default awaiting a ruling — <a href="/lab/grid">edit the list</a>]</span>
+    <span class="meta"> [default awaiting a ruling — <a href="${BASE}/lab/grid">edit the list</a>]</span>
   </div>`;
 }
 
@@ -435,8 +468,8 @@ async function gridPage(courses, seeds) {
 
   return page('basket lab — grid', `
 <h1>the basket lab <span class="none">— the grid</span></h1>
-<p><a href="/lab">&larr; the deep view, where you judge phrases and type verdicts</a> · <a href="/lab/verdicts">verdicts</a></p>
-<form class="row" method="get" action="/lab/grid">
+<p><a href="${BASE}/lab">&larr; the deep view, where you judge phrases and type verdicts</a> · <a href="${BASE}/lab/verdicts">verdicts</a></p>
+<form class="row" method="get" action="${BASE}/lab/grid">
   <label>courses <input name="courses" value="${esc(courses.join(','))}" size="34" list="allcourses"></label>
   <label>seeds <input name="seeds" value="${esc(seeds.join(','))}" size="14" inputmode="numeric"></label>
   <button type="submit">show</button>
@@ -447,7 +480,7 @@ async function gridPage(courses, seeds) {
 which is the mapping table made visible rather than tabulated. Each cell lists its own baskets; a multi-LEGO seed shows
 several. <b>They are never averaged</b> — three healthy baskets hiding a thin fourth is exactly what an average buys you.</p>
 <div class="tablewrap"><table class="grid">${head}${body}</table></div>
-<form class="row" method="post" action="/lab/taste">
+<form class="row" method="post" action="${BASE}/lab/taste">
   <label>pairs whose TARGET side you can taste <input name="list" value="${esc(tasteList().join(','))}" size="52"></label>
   <button type="submit">save</button>
   <span class="meta">[default awaiting your ruling] everything else is instrument-only on the target side</span>
@@ -458,14 +491,14 @@ const drawn=${JSON.stringify(Object.fromEntries(cells.map(c => [`${c.course}|${c
 async function gen(course,seed,regen){
   const el=document.querySelector('[data-cell="'+course+'|'+seed+'"] .genstate');
   if(el)el.textContent='asking…';
-  await fetch('/lab/generate',{method:'POST',headers:{'content-type':'application/json'},
+  await fetch('${BASE}/lab/generate',{method:'POST',headers:{'content-type':'application/json'},
     body:JSON.stringify({course,seed,regenerate:regen})});
   poll();
 }
 async function poll(){
   const keys=[...document.querySelectorAll('[data-cell]')].map(e=>e.dataset.cell);
   if(!keys.length)return;
-  const r=await fetch('/lab/status?cells='+encodeURIComponent(keys.join(',')));
+  const r=await fetch('${BASE}/lab/status?cells='+encodeURIComponent(keys.join(',')));
   const j=await r.json();
   let anyLive=false;
   for(const s of j.cells){
@@ -484,12 +517,12 @@ poll();
 
 function cell(course, seed, r) {
   const st = JOBS.statusOf(course, seed);
-  const head = `<div class="cellhead"><a href="/lab?course=${esc(course)}&seed=${seed}">open &rarr;</a>
+  const head = `<div class="cellhead"><a href="${BASE}/lab?course=${esc(course)}&seed=${seed}">open &rarr;</a>
      <span class="genstate">${esc(stateWords(st))}</span></div>
-   <div data-cell="${esc(course)}|${seed}" class="cellgen">
+   ${READ_ONLY ? '' : `<div data-cell="${esc(course)}|${seed}" class="cellgen">
      <button onclick="gen('${esc(course)}',${seed},false)">generate</button>
      <button onclick="gen('${esc(course)}',${seed},true)">regenerate</button>
-     <span class="genstate"></span></div>`;
+     <span class="genstate"></span></div>`}`;
   if (!r) return head + '<p class="none">not loaded</p>';
   if (r.err) return head + `<p class="bad">failed to load: ${esc(r.err)}</p>`;
   if (r.a.missing) return `<div class="cellhead"><span class="none">no such seed in this course</span></div>
@@ -512,14 +545,14 @@ function cell(course, seed, r) {
 const legoLabel = (l) => `L${String(l.lego_index).padStart(2, '0')} · ${l.known_text} → ${l.target_text}  [${l.type || '?'}]`;
 
 function controls(course, seed) {
-  return `<form class="row" method="get" action="/lab">
+  return `<form class="row" method="get" action="${BASE}/lab">
     <label>course <input name="course" value="${esc(course)}" size="12"></label>
     <label>seed <input name="seed" value="${esc(seed)}" size="5" inputmode="numeric"></label>
     <button type="submit">show</button>
-    <a href="/lab?course=${esc(course)}&seed=${+seed - 1}">&larr; prev</a>
-    <a href="/lab?course=${esc(course)}&seed=${+seed + 1}">next &rarr;</a>
-    <a href="/lab/grid?courses=${esc(course)}&seeds=${seed}">grid</a>
-    <a href="/lab/verdicts">verdicts</a>
+    <a href="${BASE}/lab?course=${esc(course)}&seed=${+seed - 1}">&larr; prev</a>
+    <a href="${BASE}/lab?course=${esc(course)}&seed=${+seed + 1}">next &rarr;</a>
+    <a href="${BASE}/lab/grid?courses=${esc(course)}&seeds=${seed}">grid</a>
+    <a href="${BASE}/lab/verdicts">verdicts</a>
   </form>`;
 }
 
@@ -529,12 +562,12 @@ function verdictsPage() {
     : [];
   rows.reverse();
   return page('verdicts', `<h1>verdicts <span class="none">— newest first, ${rows.length}</span></h1>
-  <p><a href="/lab">&larr; back to the lab</a> · <button onclick="navigator.clipboard.writeText(document.getElementById('all').textContent)">copy all</button></p>
+  <p><a href="${BASE}/lab">&larr; back to the lab</a> · <button onclick="navigator.clipboard.writeText(document.getElementById('all').textContent)">copy all</button></p>
   <div id="all">${rows.map(r => `<div class="v">${r.about ? `<code class="pid">${esc(r.about)}</code> ` : ''}${esc(r.text)}<div class="meta">${esc(r.ts)} · ${esc(r.course)} seed ${esc(r.seed)}${r.about ? ` · about ${esc(r.about)}` : ' · about the whole seed'} · candidate set ${esc(r.candidate_stamp)} · build ${esc(r.build_sha)}</div></div>`).join('') || '<p class="none">none yet</p>'}</div>`);
 }
 
-const server = http.createServer(async (req, res) => {
-  const url = new URL(req.url, `http://${req.headers.host}`);
+async function handle(req, res) {
+  const url = new URL(req.url, `http://${req.headers.host || 'localhost'}`);
   try {
     if (req.method === 'POST' && url.pathname === '/lab/verdict') {
       let body = '';
@@ -546,13 +579,29 @@ const server = http.createServer(async (req, res) => {
         // which phrase (or basket) the verdict is about — blank means the whole seed
         about: (f.get('about') || '').trim() || null,
         candidate_stamp: f.get('candidate_stamp'), build_sha: BUILD_SHA };
-      if (rec.text.trim()) fs.appendFileSync(VERDICTS, JSON.stringify(rec) + '\n');
-      res.writeHead(303, { Location: '/lab/verdicts' }); return res.end();
+      // A verdict Tom typed and lost is the worst failure this lab has, worse
+      // than not shipping the page. So a write that fails is SHOWN, never swallowed.
+      if (rec.text.trim()) {
+        try { fs.appendFileSync(VERDICTS, JSON.stringify(rec) + '\n'); }
+        catch (e) {
+          res.writeHead(500, { 'content-type': 'text/html; charset=utf-8' });
+          return res.end(page('verdict NOT saved', `<h1 class="bad">your verdict was NOT saved</h1>
+            <p>Writing to <code>${esc(VERDICTS)}</code> failed: <b>${esc(e.message)}</b>. Nothing was stored.
+            Copy the text below before you leave this page.</p>
+            <div class="v">${esc(rec.text)}</div>
+            <p><a href="${BASE}/lab?course=${esc(rec.course)}&seed=${rec.seed}">&larr; back</a></p>`));
+        }
+      }
+      res.writeHead(303, { Location: BASE + '/lab/verdicts' }); return res.end();
     }
     if (req.method === 'POST' && url.pathname === '/lab/generate') {
       let body = '';
       req.on('data', c => { body += c; if (body.length > 1e5) req.destroy(); });
       await new Promise(r => req.on('end', r));
+      if (READ_ONLY) {
+        res.writeHead(403, { 'content-type': 'application/json' });
+        return res.end(JSON.stringify({ error: 'generation is local-only on this mount — run tools/frame-layer/generate-candidates.cjs' }));
+      }
       const f = JSON.parse(body || '{}');
       const course = String(f.course || ''), seed = +f.seed;
       if (!/^[a-z]{2,3}_for_[a-z]{2,3}$/.test(course) || !Number.isFinite(seed)) {
@@ -584,7 +633,7 @@ const server = http.createServer(async (req, res) => {
       await new Promise(r => req.on('end', r));
       const list = (new URLSearchParams(body).get('list') || '').split(',').map(x => x.trim()).filter(Boolean);
       saveTasteList(list);
-      res.writeHead(303, { Location: '/lab/grid' }); return res.end();
+      res.writeHead(303, { Location: BASE + '/lab/grid' }); return res.end();
     }
     if (url.pathname === '/lab/grid') {
       // taste-safe default: a SMALL grid. Nine cells on a first click is nine
@@ -603,7 +652,7 @@ const server = http.createServer(async (req, res) => {
     if (url.pathname === '/lab/verdicts') {
       res.writeHead(200, { 'content-type': 'text/html; charset=utf-8' }); return res.end(verdictsPage());
     }
-    if (url.pathname === '/basket-lab') { res.writeHead(302, { Location: '/lab' + url.search }); return res.end(); }
+    if (url.pathname === '/basket-lab') { res.writeHead(302, { Location: BASE + '/lab' + url.search }); return res.end(); }
     if (url.pathname === '/lab' || url.pathname === '/') {
       const course = url.searchParams.get('course') || 'spa_for_eng';
       const seed = +(url.searchParams.get('seed') || 599);  // the current payload
@@ -615,5 +664,32 @@ const server = http.createServer(async (req, res) => {
   } catch (e) {
     res.writeHead(500, { 'content-type': 'text/plain' }); res.end('error: ' + e.message + '\n');
   }
-});
-server.listen(PORT, HOST, () => console.log(`basket lab on http://${HOST}:${PORT}/lab · grid at /lab/grid (build ${BUILD_SHA}, ${JOBS.MAX_RUNNING} generations at a time)`));
+}
+
+/**
+ * Mount the lab under a host server at `base`. Returns a plain (req,res)
+ * middleware: it strips the prefix off req.url so the routing table above is
+ * unchanged, and sets BASE so the emitted HTML points back at the mount.
+ * Express calls it with a third `next` argument, which is ignored — this lab
+ * answers every path under its own mount or 404s inside it.
+ */
+function mount(base, opts = {}) {
+  BASE = String(base || '').replace(/\/$/, '');
+  READ_ONLY = !!opts.readOnly;
+  return (req, res) => {
+    // app.use('/x', fn) already strips the mount path; if something calls this
+    // without stripping, strip it here. Either way the router sees '/lab...'.
+    // MOUNT THIS BEFORE ANY BODY PARSER. The lab reads its own POST bodies off
+    // the stream, so a parser that has already drained them leaves it waiting
+    // for an 'end' that will never come — a hang, not an error.
+    if (req.url.startsWith(BASE)) req.url = req.url.slice(BASE.length) || '/';
+    handle(req, res);
+  };
+}
+
+module.exports = { handle, mount };
+
+if (require.main === module) {
+  http.createServer(handle).listen(PORT, HOST, () =>
+    console.log(`basket lab on http://${HOST}:${PORT}/lab · grid at /lab/grid (build ${BUILD_SHA}, ${JOBS.MAX_RUNNING} generations at a time)`));
+}
