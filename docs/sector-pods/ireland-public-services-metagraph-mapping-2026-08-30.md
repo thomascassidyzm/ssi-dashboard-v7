@@ -411,4 +411,162 @@ would reopen. The E6 close and P101 counter-example above is why I rule it does 
 
 ---
 
-*Sections 7–10 follow.*
+## 7. The two mints, the one move, and the nine things this mapping refused to mint
+
+Full definitions with positions, neighbour arguments, smoke tests and attestation labels are in
+`services/shared/metagraph/proposed/ireland-public-services-2026-08-30.json` (ids **401–499**,
+fixed; nothing outside it). In brief:
+
+| id | Name | The position pair that makes it new |
+|---|---|---|
+| **N401** | Bound refusal with a contest path | The refusal is **disowned** by the refuser ("it's not my decision") and the **contest instrument is handed over unbidden** — path, deadline, forum. N201's refuser owns the refusal and may settle; F5's counter is the refuser's own negotiable offer; N105 routes a *grant*. Nothing in the store or the health proposal routes a *contest*. |
+| **N402** | Suspend-and-task | The encounter neither completes nor fails: the **state is preserved and declared** ("everything else is done, I'll hold it on file") and the **re-entry burden is handed back across the counter**. N105 keeps the burden on the responder's side (a named third party will settle it); N107 is contingent on an event that may never occur — N402's task is necessary; O1 leaves nothing alive — N402's application half-lives. |
+| **F401** | Sorry-on-behalf *(move)* | Apology for a fault attributed to the speaker's party but not the speaker, conceding no personal fault, seeking no absolution, moving to record or remedy in the same turn. Not P101 (self-blame for imposing, absolved); not F203 (real own fault, priced); not F14 (there is propositional content). One position's worth of novelty = a move, per the rubric. |
+
+All three are labelled **constructed** in the proposal file — no corpus attests them; the
+encounters they rest on are derived, and the file says so on every attestation line. All three pass
+the smoke test and are marked **trunk**: a visa desk, an insurance claim line, an exam board and a
+referee all deliver bound refusals with contest paths; a garage awaiting a part and a tailor
+awaiting a fitting both suspend-and-task; every employee of every organisation everywhere says
+sorry on behalf.
+
+**The nine refusals, each as informative as a mint:**
+
+1. **The Gaeilge offer / the language opening** — lands on N101 whole. Minting on the language
+   would be minting on vocabulary: the exact discipline the health worker held on "is that
+   normal?", copied here deliberately.
+2. **Redirect to another office** — N105; an office is a named third party. Minting would be
+   minting on furniture.
+3. **Form-filling** — P5 chains + P3 + F103 by composition; no two consecutive novel positions
+   anywhere in it.
+4. **The eligibility verdict** — N104 whole; 520 contributions are a blood-sugar reading in a
+   different mask.
+5. **The deadline warning** — N107 whole; a date is a threshold.
+6. **The queue summons** — F21's solicit seat plus ritual; not a shape.
+7. **The systemic bounded promise** ("out of my hands, but usually three weeks") — N109 with the
+   bound licensed by jurisdiction instead of knowledge. A licence is not a position.
+8. **Escalation to a supervisor** — N105, composed inside N401 position 5 when the contest is
+   pressed; composition, not a node.
+9. **The official who goes off-script and personally refuses** ("no, I won't do that") — that is
+   N201, already in the outcome-overlay proposal; the trunk covers the official the moment they
+   stop being a proxy.
+
+**Mint zero outcome shapes, on purpose.** The sector's candidate outcome — "you are refused by a
+rule, not a person" — is O1 walked at a new place on the ladder (K2 held in trust), and the ladder
+block is the right carrier for that, not a tenth O. And the sector's costliest failure (§6) has no
+conversation to be an outcome *of*.
+
+---
+
+## 8. The prediction, scored
+
+**P1 — Family A re-attests 5 of 6, N102 the miss.** **Right, and the result is stronger than the
+claim:** not five but *thirteen-plus* of health's fifteen proposed shapes and moves re-attest
+(§4), and the single clean failure is N102, for the position-perfect reason predicted — no body.
+
+**P2 — two to four mints, named in advance.** **Right on the count (2 nodes + 1 move) and right on
+all three identities** — the bound refusal, the suspend-and-task, the institutional-apology move
+were all named before mapping, and nothing else minted.
+
+**P3 — the rung.** **Right:** K2+K3 held, K1 split, K4 failing the position test except through
+K2, encounters split across rungs 1–3.
+
+**P4 — the family deaths.** **Right, including the F15 seat-split** — though the mapping sharpened
+it beyond the prediction: the death is assigned by *which side of the split K1 the fact sits on*,
+not by seat alone, and the unassigned-fact case (the official's bare "honestly, I couldn't tell
+you") was **not predicted.** That refinement is this mapping's F15 contribution.
+
+**P5 — O7 invariant.** **Held** — all five positions at this rung — with the evidence-class caveat
+of §5.1: a consistency check against constructed encounters, not an independent attestation.
+
+**P6 — P2 re-attests.** **Held.** E11. The trunk recovers a bound pair the health corpus went dark
+on.
+
+**P7 — the second axis.** **Right on both halves:** shape-level, same shapes plus the mints; and
+the silent-failure blind zone was predicted and confirmed in the analysis.
+
+**The blind spot, because the health worker's most valuable finding was its own:** the prediction
+did not foresee **proxy holding** as the sector's organising variable (§5.2). It predicted the
+in-trust flavour of the mints, but not that *every* novelty in the sector — both mints, the move,
+the N109 licence-shift, the K2 position-changes — would turn out to be one variable, the way
+health's ten mints turned out to be asymmetry. That is the port's genuinely new information.
+
+**One honesty caveat on the scoring itself.** Health's prediction was made by Watson and scored by
+a different worker; this prediction and mapping are one mind in one sitting, and the prediction
+was made *after* reading the health mapping in full. A prediction that nearly all comes true under
+those conditions is weaker evidence than health's was. The commit order (prediction at
+`bb39661b2`, mapping after) is real, but the epistemic independence is partial — the strong form
+of this test is Aran authoring Irish flows *without reading §3*, then checking them against this
+inventory.
+
+**The stake, ruled: THE TRUNK PORTS.** Two node-mints against a 17-node store plus a 10-node
+health proposal; 17 of 20 moves attested with the same three deaths for the same cause; O7
+invariant a third time; P2 recovered; the second axis confirmed at shape level. And the port names
+what it actually rode on: **health's Family A behaved as trunk, exactly as the health mapping
+predicted it would.** The correction the trunk needs from this sector is one annotation (held in
+trust), not a rebuild — the same class of result health delivered, one level up.
+
+---
+
+## 9. Honesty section — what this is and is not
+
+**There is no corpus, and nothing here pretends otherwise.** Every encounter in §3, every
+attestation of every mint, and both confirmations (O7, second axis) are **derived or constructed
+by this mapping** — labelled per-encounter in §3 and per-item in the proposal file. What this
+document can honestly claim: the trunk can *express* the derived Irish inventory with two node
+mints; the mints concentrate on one variable; the family deaths and the O7 walk are *consistent*
+with the ladder. What it cannot claim: frequencies, exchange distributions, or that any Irish
+official has ever said any line quoted here. The 53%-style numbers in the health mapping have no
+analogue in this one, and none was invented.
+
+**The dependency that changes the numbers if it moves.** This mapping lands seven of fifteen
+encounters primarily on **health-proposal ids that are themselves unapplied proposals.** If Tom
+accepts health's additions, Ireland needs ids 401–403 and the port is as cheap as §4 says. If
+health's Family A were *rejected*, roughly **eight further shapes** (N101, N103, N104, N105, N106,
+N107, N110 and F103 at least) would have to mint here under Irish ids, and this document's "two
+mints" headline would be false in that world. The trunk that ports is **store + Family A**, and
+that is precisely why §10 asks the Family A question first.
+
+**The least confident calls, named so they can be attacked:** (1) the N402/N105 boundary — both
+defer; I split them on *who carries the burden away*; a stricter reader could call N402 an N105
+variant and the mint count drops to one. (2) The K4 ruling leans on constructed encounters; a real
+corpus with a housing refusal in it could surface a position I have not imagined — the ruling is
+falsifiable and says how. (3) F401's independence from F14 ritual apology is argued from content
+("the fault is real"), which is thinner ice than a position argument.
+
+**What I did not do, and did not need to do:** no test suite (the one process run was
+`tools/metagraph-selfcheck.cjs`); no DB reads or writes; no web research (none available, none
+needed — the shapes are the deliverable, not Irish administrative fact); no fan-out; no Script
+Lab, UI or course content; no store modification of any kind. **The store is byte-identical**:
+`git diff origin/main -- services/shared/metagraph/nodes.json services/shared/metagraph/moves.json
+services/shared/metagraph/edges.json services/shared/metagraph/outcome-shapes.json
+services/shared/metagraph/walks/` is empty, and the self-check result is quoted in the report and
+below. The proposal file carries the same schema notes as health's (the `provenance` enum needs
+the same one-line widening; attestations carry a `constructed` array because there are no g-rows
+and no flows to cite).
+
+---
+
+## 10. What this feeds, and the three decisions
+
+- **The proposal file:** `services/shared/metagraph/proposed/ireland-public-services-2026-08-30.json`
+  — 2 nodes, 1 move, 3 composition edges, 4 survivability edges, 0 outcome shapes, a ladder block
+  with per-encounter rungs and the `held_in_trust` annotation. Ids 401–499, nothing loads it,
+  applying it is a separate reviewed decision.
+- **Aran:** §3 is an authoring spine — fifteen encounter types with their failure branches, in the
+  register his health flows already use. If he authors Irish flows *without reading §3 first*, the
+  comparison of his corpus against this inventory is the strong form of the test §8 says this
+  document cannot run on itself. Start with E4, E6, E7 — they carry the sector's weight.
+- **The ladder work:** O7's third confirmation; the F15 sharper rule (dies on K1's own side of a
+  split, survives on unassigned facts); the K4 stake-versus-body distinction; the silent-failure
+  blind zone on the second axis.
+
+**Three decisions for Tom, each one-word answerable, with recommendations:**
+
+1. **Does Family A graduate from "health branch" to trunk?** It re-attested in a second sector,
+   second country, second buyer, exactly as health's §8 predicted. *Recommend: yes.*
+2. **Is proxy holding a ladder ANNOTATION (`held_in_trust` on the held kinds) rather than a fifth
+   kind?** It says how kinds are held, not what is held; the recorded test sees its effects.
+   *Recommend: annotation.*
+3. **Should Aran author the Irish flows blind — without reading §3 — so the inventory can be
+   tested rather than merely used?** *Recommend: yes.*
