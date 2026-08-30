@@ -1,0 +1,196 @@
+{
+  "concept": "proposed-additions",
+  "version": 1,
+  "status": "PROPOSAL — not loaded by index.cjs, not read by the Script Lab, nothing executes it; no learner hears a word of it",
+  "provenance": "ireland-public-services",
+  "source": {
+    "document": "docs/sector-pods/ireland-public-services-metagraph-mapping-2026-08-30.md",
+    "corpus": "NONE. There is no Irish corpus. The encounter inventory (document §3, encounters E1–E15) is derived/constructed by the mapping itself and every attestation below is labelled accordingly. This file records shapes the trunk CANNOT express for the sector; it attests nothing.",
+    "sector_context": "Irish frontline public servants under the statutory mandate to deliver 20% of interactions in Gaeilge; the learner seat is the OFFICIAL; Gaeilge is overlay and never a node",
+    "derived": "2026-08-30",
+    "author": "the Ireland-port worker (prediction committed before mapping at bb39661b2)"
+  },
+  "id_range": {
+    "rule": "Minted in the existing register but from 401 upward, FIXED by the commission: the store holds 1..21, the health proposal 101..110, job #283 holds 201..299, Talk Bollocks holds 301..399. Nothing in this file is outside 401..499.",
+    "nodes": "N401–N402",
+    "moves": "F401",
+    "composition_edges": "C401–C403",
+    "survivability_edges": "S401–S404",
+    "outcome_shapes": "none minted, deliberately — see outcome_shapes_note",
+    "bound_pairs": "none",
+    "walks": "none"
+  },
+  "schema_note": "This file does NOT validate against schemas/metagraph-v1-schema.json as written, on the same points as the health proposal: (1) `provenance` is an enum of [\"pod-0\", \"method-pod\"] and this file needs \"ireland-public-services\" — the same one-line widening health and outcome-mints need; (2) attestations carry a `constructed` array of document-encounter citations (E1–E15) because there is no corpus, no g-rows and no flows; (3) the concept `proposed-additions` is not one of the schema's five file kinds. Nothing about the existing store is changed to accommodate any of this.",
+  "store_untouched": "nodes.json, moves.json, edges.json, outcome-shapes.json and walks/ are byte-identical to origin/main (7540fddb6). POD-1 is attested evidence and is extended here, never re-cut. The health and outcome-mints proposal files are also untouched.",
+
+  "port_verdict": {
+    "one_sentence": "The trunk ports: two node mints and one move against a 17-node store plus health's 10-node proposal; 13+ of health's 15 proposed shapes/moves re-attest (only N102, the body shape, cleanly fails); 17 of 20 move families attest with the same three deaths for the same cause; O7 invariant a third time; P2 recovered; second axis confirmed shape-level.",
+    "dependency": "Seven of fifteen encounters land primarily on health-proposal ids. If health's Family A is rejected, roughly eight further shapes would have to mint here and this file's two-mint headline is false in that world. The trunk that ports is store + Family A.",
+    "sector_variable": "PROXY HOLDING — the official holds K2 and K3 in trust for an absent principal. Every novelty in this file is that one variable surfacing, as every health novelty was asymmetry surfacing."
+  },
+
+  "nodes": [
+    {
+      "id": "N401",
+      "name": "Bound refusal with a contest path",
+      "provenance": "ireland-public-services",
+      "gloss": "A refusal delivered by an agent who did not author it and says so. The reason is a rule, not a preference; the refuser cannot concede against it; and the instrument to contest it — the path, its deadline, its forum — is handed over unbidden as part of the refusal itself. If the asker contests the person, the refuser drops the self, holds the rule, and re-routes the press to the process.",
+      "positions": [
+        { "index": 1, "name": "ask, or decision falls due", "family": null },
+        { "index": 2, "name": "refuse, citing the rule and disowning authorship", "family": null, "outcome_branch": true, "alternatives": [
+          { "key": "grant", "name": "grant under the rule", "family": "F1", "polarity": "positive" },
+          { "key": "refuse", "name": "refuse by the rule, disowned", "family": null, "polarity": "negative" }
+        ] },
+        { "index": 3, "name": "hand over the contest instrument unbidden — path, deadline, forum", "family": "F2" },
+        { "index": 4, "name": "absorb and bank the path, or contest the person", "family": "F202", "outcome_branch": true },
+        { "index": 5, "name": "drop the self, hold the rule, re-route the press to the process", "family": "F16", "optional": true, "repeatable": true },
+        { "index": 6, "name": "close", "family": "F14", "optional": true }
+      ],
+      "attestations": { "constructed": ["E6 refusal of an application or benefit", "E7 failure branch (no qualifying document can ever be produced)", "E10 failure branch (the complainer wants personal ownership)"] },
+      "example_surface": "\"It's not my decision — the threshold is set in the scheme, and you're 40 contributions short. You can ask for a review, and you've 21 days to appeal to the appeals office; I'll give you the form now.\" / \"You people could sort this if you wanted.\" / \"Being cross with me won't change the figure — the appeals officer is the one who can.\"",
+      "why_not_an_existing_node": "N201 Refusal survived: its refuser OWNS the refusal and its position 4 settle is discretionary — W201's driver may say 'I'll wait'; the deciding officer cannot concede against the rule, so that position is gone, and N201 has no contest-path position at all. F5 declines with the refuser's OWN counter-proposal, negotiable with them; N401's position 3 points at a different forum and is not negotiable here. N105 routes a GRANT to a named third party who will settle it; N401 routes a CONTEST. F6 substitutes goods; nothing is substituted. Two consecutive positions (disowned refusal + unbidden contest instrument) exist nowhere in the store or either proposal.",
+      "smoke_test": "Passes. A visa desk, an insurance claim line, an exam board's remark process, a referee pointing at the VAR: wherever a bounded agent applies rules they do not own, the refusal is disowned and the contest is routed. Attests in non-Indo-European columns wherever bureaucracy does, which is everywhere.",
+      "trunk_or_branch": "trunk",
+      "ladder_note": "This is the shape K2-held-in-trust mints. The contest-path position is a K4×K2 interaction: a stakeless refusal ('we close at four') carries no appeal route; a stake-bearing one must."
+    },
+    {
+      "id": "N402",
+      "name": "Suspend-and-task",
+      "provenance": "ireland-public-services",
+      "gloss": "The business can neither complete nor fail here. The blocking gap is named against a checklist; the state already achieved is preserved and DECLARED preserved; the re-entry burden is handed back across the counter as a task with its condition and acceptable alternatives; the asker banks the task. A later encounter re-enters at the preserved state.",
+      "positions": [
+        { "index": 1, "name": "request in progress", "family": null },
+        { "index": 2, "name": "gap named against the checklist", "family": null, "outcome_branch": true, "alternatives": [
+          { "key": "complete", "name": "nothing missing — proceed", "family": "F1", "polarity": "positive" },
+          { "key": "gap", "name": "a required item is missing", "family": null, "polarity": "negative" }
+        ] },
+        { "index": 3, "name": "declare what is preserved — 'everything else is done, I'll hold it on file'", "family": "F2" },
+        { "index": 4, "name": "hand the task back, with the re-entry condition and the alternatives", "family": null },
+        { "index": 5, "name": "bank the task, read it back", "family": "F9" },
+        { "index": 6, "name": "re-entry at the preserved state (a later encounter)", "family": null, "optional": true }
+      ],
+      "attestations": { "constructed": ["E7 suspension with a task", "E4 failure branch (a field cannot be filled)"] },
+      "example_surface": "\"I can't finish it without proof of address — but everything else is done and I'll hold it on file. Any one of these three documents will do, and we finish it on the spot.\" / \"A bill or the tenancy letter. Right.\"",
+      "why_not_an_existing_node": "N105 Deferred grant keeps the burden on the RESPONDER'S side — a named third party will settle it and the asker merely waits; N402 hands the burden back across the counter and it is the ASKER'S task that gates re-entry. N107 Conditional instruction triggers on an event that may never occur; N402's task is necessary, not contingent, and N107 has no state-preservation position. O1/N201 leave nothing alive; N402's application half-lives, which is exactly the position pair (preserve + hand back) no store node has.",
+      "smoke_test": "Passes. A garage awaiting a part, a tailor awaiting a fitting, a notary awaiting one signature: wherever process outruns a single encounter, the state is held and the task travels with the customer.",
+      "trunk_or_branch": "trunk",
+      "second_axis_note": "The banked task is the recovery whose absence kills the application SILENTLY — the closest speech gets to the sector's silent-failure blind zone (document §6)."
+    }
+  ],
+
+  "moves": [
+    {
+      "id": "F401",
+      "name": "Sorry on behalf",
+      "provenance": "ireland-public-services",
+      "test": "The responder apologises for a fault attributed to their party but not to themselves, concedes no personal fault, seeks and receives no absolution, and moves to record or remedy in the same turn.",
+      "attestations": { "constructed": ["E10 complaint received"] },
+      "dialogic_attestations": 0,
+      "example_surface": "\"I'm sorry you've been left waiting on it that long — that shouldn't have happened. I'm logging it now and it goes to the section that handles it.\"",
+      "why_not_P101": "P101 is self-blame for imposing, answered by absolution — ritual fault, waved away. F401's fault is real, belongs to an absent principal, and no absolution is sought or given.",
+      "why_not_F203": "F203 admits the speaker's OWN fault and supplies what they hold against a price. F401's speaker is blameless and no price is held over them.",
+      "why_not_F14": "There is propositional content: the fault is real and the turn acts on it.",
+      "position": "COMPLAINT → SORRY-ON-BEHALF → record (F103) / route (N105). Position 2.",
+      "trunk_or_branch": "trunk",
+      "thin": "One constructed attestation site. Thin by construction, and flagged."
+    }
+  ],
+
+  "composition": [
+    { "id": "C401", "kind": "composition", "contained": "N104", "container": "N401", "attestation": "constructed, E6 — the rule-referenced reason is a norm-referenced result delivery ('you need 520; you're at 480') running at N401 position 2", "mechanical": true },
+    { "id": "C402", "kind": "composition", "contained": "N402", "container": "N2", "attestation": "constructed, E4/E7 — the suspension arises inside the intake transaction and returns to it at re-entry", "mechanical": true },
+    { "id": "C403", "kind": "composition", "contained": "N105", "container": "N401", "attestation": "constructed, E6 failure branch — when the contest is pressed, escalation to a person who can waive runs at N401 position 5", "mechanical": true }
+  ],
+
+  "survivability": [
+    {
+      "id": "S401",
+      "kind": "survivability",
+      "provenance": "ireland-public-services",
+      "b_attemptable_only_if": "Asking for anything a rule decides (N401 position 1)",
+      "a_survivable": "A refusal that cannot be contested with the person present",
+      "nodes": ["N401"],
+      "attested_response_positions": ["constructed, E6 — absorb, and bank the contest path rather than pressing the refuser"],
+      "recovery_attested": "constructed only",
+      "recovery_note": "The recovery is F202's absorb-and-move with the move aimed at the FORUM, not the refuser. Kin to S201/S202 but the settle the asker must survive losing is not the refuser's to give.",
+      "answer_slot_class": "non-delivery"
+    },
+    {
+      "id": "S402",
+      "kind": "survivability",
+      "provenance": "ireland-public-services",
+      "b_attemptable_only_if": "Submitting any application (E4 intake)",
+      "a_survivable": "The encounter suspending rather than completing (N402)",
+      "nodes": ["N402"],
+      "attested_response_positions": ["constructed, E7 — bank the task with its condition and alternatives, and re-enter"],
+      "recovery_attested": "constructed only",
+      "recovery_note": "The failure mode is silent: an unbanked task kills the application with no further conversation. The read-back at N402 position 5 exists because of it.",
+      "answer_slot_class": "non-delivery"
+    },
+    {
+      "id": "S403",
+      "kind": "survivability",
+      "provenance": "ireland-public-services",
+      "b_attemptable_only_if": "Delivering a bound refusal (N401 position 2) — the LEARNER'S seat, since the learner is the official",
+      "a_survivable": "Being contested personally for a decision that is not yours",
+      "nodes": ["N401"],
+      "attested_response_positions": ["constructed, E6 failure branch — drop the self, hold the rule (F16), re-route the press to the process"],
+      "recovery_attested": "constructed only",
+      "recovery_note": "The learner-side edge of the sector: the official who cannot survive personal press either capitulates against the rule or escalates every contested refusal. Kin to S8 (being contradicted) but the contradiction is of the learner's AUTHORSHIP, not their account of themselves.",
+      "answer_slot_class": "relational"
+    },
+    {
+      "id": "S404",
+      "kind": "survivability",
+      "provenance": "ireland-public-services",
+      "b_attemptable_only_if": "Holding the counter in the learner's L2 at all (the 20% mandate — N101 at E1)",
+      "a_survivable": "The medium being re-negotiated mid-business",
+      "nodes": ["N101"],
+      "attested_response_positions": ["constructed, E1 failure branch — declare the limit, license the fallback, name the return path"],
+      "recovery_attested": "constructed only",
+      "recovery_note": "N101's failure branch, run from the professional seat. Health licenses it at 1.0/2.0; the Irish counter cannot open without it, which is why it is the sector's first survivability edge in delivery order.",
+      "answer_slot_class": "chaining"
+    }
+  ],
+
+  "outcome_shapes_note": "Zero minted, deliberately. 'Refused by a rule, not a person' is O1 walked at a new place on the ladder (K2 held in trust) and the ladder block is the right carrier, not a tenth O. The sector's costliest failure — an entitlement never claimed — produces no encounter at all, and there is no conversation for it to be an outcome of (document §6).",
+
+  "ladder": {
+    "note": "Extends the ladder block of outcome-mints-2026-08-30.json; the kinds K1–K4 and the recorded test ('a position appears, disappears or changes hands — not merely gets harder or dearer') are used unchanged.",
+    "ruling": {
+      "K1": "SPLIT, load-bearing both ways: the official knows the rules and the system; the citizen knows their own circumstances, and the citizen's share decides the outcome. The elicit position changes hands within single encounters (E4 vs E5/E8).",
+      "K2": "HELD by the official, in trust. The test fires twice: the contest-path position APPEARS (N401.3) and the refuser's discretionary settle DISAPPEARS (N201.4 unavailable — the officer cannot concede against the rule).",
+      "K3": "HELD, strongly — the record IS the business. F103 saturates; F18 dies to the record; N106 attests off it (E3 mismatch); N108 writes to it for absent beneficiaries.",
+      "K4": "PRESENT as the CITIZEN'S stake (money, home, child, status) and RULED NOT HELD by the official in the shape-changing sense: the stake raises cost, not positions — with one carve-out (the contest-path position is a K4×K2 interaction: trivial refusals carry no appeal route) and one confirmation (N102, the body shape, is the one health shape that fails to port — no body, no body-shape, position for position)."
+    },
+    "held_in_trust": {
+      "proposal": "An ANNOTATION on held kinds, not a fifth kind: the official holds K2 and K3 for an absent principal — the refusal is the rule's, the apology the institution's, the timetable the processing team's. The recorded test sees its effects (K2 above), so it is shape-relevant. Recommended carrier: held_in_trust: true on kinds_held_by_other_party entries. Tom's call.",
+      "evidence": "N401 (disowned refusal + the principal's contest instrument), F401 (sorry on behalf), N109's licence shift (bound by jurisdiction, not knowledge — same positions, so a note, not a mint)."
+    },
+    "rungs_per_encounter": {
+      "1": "E2 triage, E13 queue, E14 service explained — K1-split only",
+      "2": "E3 identity, E4 intake, E9 correction, E11 fee — the record enters; nothing is decided",
+      "3": "E5 verdict, E6 refusal, E7 suspension, E8 deadline, E10 complaint — K1+K2+K3, the stake on the table",
+      "4": "unoccupied — no body. Ireland sits BELOW health while minting shapes health never needed: the mints come from proxy holding, not rung height."
+    },
+    "collapsing_families": {
+      "F18": "dies at K3, as recorded — the record decides what normal is; the citizen may utter the form but position 3 changes hands to the record and F102 answers",
+      "F11": "dies at K2, as recorded — the official's questions are not returnable across the counter",
+      "F15": "REFINED: dies on K1's own side of the split, survives on the other and on unassigned facts. Citizen unsure of own circumstances → survives and is taken up (S102's recovery). Official unsure of the rules → converts to N105, as in health. Fact assigned to neither side ('will the scheme change next year?') → the official's bare 'honestly, I couldn't tell you' STANDS. One rule now explains both corpora."
+    },
+    "O7_invariance": "Holds at this rung — all five positions (E15) — third confirmation, with the evidence class stated: consistency against constructed encounters, not independent attestation. The kinds change who is licensed to disclose (the official's asides flow freer than the doctor's — less K4 on them) and how hard the resume is; never the positions.",
+    "second_axis": "Supported, shape-level, second sector: the cost-of-failing-to-recover weight lands on N107 (the deadline) and N106 (the record mismatch) exactly as in health, plus N401 and N402. Low-cost shapes inside the highest-cost encounter (E6's F14 close, P101) stay low-cost — the weight tracks shapes, not encounters. BLIND ZONE: the sector's costliest failure, an entitlement never claimed, produces no encounter; no shape weight can reach a failure that consists of never speaking."
+  },
+
+  "explicitly_not_minted": [
+    { "candidate": "The Gaeilge offer / language opening", "verdict": "N101 whole", "why": "Minting on the language would be minting on vocabulary — the discipline the health worker held on 'is that normal?', copied deliberately." },
+    { "candidate": "Redirect to another office", "verdict": "N105", "why": "An office is a named third party. Minting would be minting on furniture." },
+    { "candidate": "Form-filling", "verdict": "P5 chains + P3 + F103 composition", "why": "No two consecutive novel positions anywhere in it." },
+    { "candidate": "Eligibility verdict", "verdict": "N104 whole", "why": "520 contributions are a blood-sugar reading in a different mask; the norm-referencing position is identical." },
+    { "candidate": "Deadline warning", "verdict": "N107 whole", "why": "A date is a threshold." },
+    { "candidate": "Queue summons ('next, please')", "verdict": "F21 solicit seat + N1 ritual", "why": "Not a shape." },
+    { "candidate": "Systemic bounded promise ('out of my hands, but usually three weeks')", "verdict": "N109", "why": "The bound is licensed by jurisdiction instead of knowledge; a licence is not a position." },
+    { "candidate": "Escalation to a supervisor", "verdict": "N105 composed in N401.5 (C403)", "why": "Composition, not a node." },
+    { "candidate": "The official who personally refuses off-script", "verdict": "N201 (outcome-overlay proposal)", "why": "The trunk covers the official the moment they stop being a proxy." }
+  ]
+}

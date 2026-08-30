@@ -1,0 +1,366 @@
+{
+  "concept": "proposed-additions",
+  "version": 1,
+  "status": "PROPOSAL — not loaded by index.cjs, not read by the Script Lab, nothing executes it",
+  "provenance": "talk-bollocks",
+  "source": {
+    "document": "docs/pods/talk-bollocks-shape-extraction-2026-08-30.md",
+    "corpus": "docs/corpus/talk-bollocks/part-{1,2,4}.md — 3 parts, 1,299 lines, ~591 turns; Part 3 lost; part5.mp3 is Part 4's audio. PRIVATE — never published.",
+    "derived": "2026-08-30",
+    "author": "Aran & Tom (the conversation); mapping by the Talk Bollocks extraction worker",
+    "prior_extractions_extended": "method-pod-full-2026-08-30.md §1a–§1f (23 moves, 8 summit shapes); store edges M1–M5; #283 outcome-mints-2026-08-30.json (rung/kinds ruler reused verbatim)"
+  },
+  "id_range": {
+    "rule": "Minted in the existing register (N/P/F/C/S/O + integer, per schemas/metagraph-v1-schema.json) but from 301 upward, so nothing can collide with the store's 1..21 range, the health proposals' 101–110, or the outcome mints' 201–299, and every id is self-evidently a Talk Bollocks proposal on sight.",
+    "nodes": "N301–N306",
+    "bound_pairs": "none",
+    "moves": "F301–F306",
+    "composition_edges": "C301–C302",
+    "survivability_edges": "S301–S305",
+    "outcome_shapes": "none minted — attestation extensions to O4, O7, O2 recorded under outcome_attestations_extended"
+  },
+  "schema_note": "This file does NOT validate against schemas/metagraph-v1-schema.json as written, on two points, both deliberate and neither fixed here: `provenance` is an enum of [\"pod-0\", \"method-pod\"] and this file needs \"talk-bollocks\" (same deviation the health file recorded); attestations are carried as `part:line` strings into the corpus files, matching the store's own M-edge convention (M:1:54) minus the M prefix, because the schema's row pattern (^g[0-9]+$) is a pod-0 row id.",
+  "store_untouched": "nodes.json, moves.json, edges.json, outcome-shapes.json, walks/ and index.cjs are byte-identical to origin/main. POD-1 is attested evidence and is extended here, never re-cut. M1–M5 are extended by S301–S305, no collisions.",
+  "ladder_note": "Every entry carries rung 0 and kinds_held_by_other_party [] on #283's ruler. Per-shape kind-death rulings live in each entry's `ladder` and in the mapping document §6.",
+
+  "nodes": [
+    {
+      "id": "N301",
+      "name": "Joint construction",
+      "provenance": "talk-bollocks",
+      "gloss": "One speaker leaves a clause open; the other closes it in a handful of words; the first ratifies; the closer is allowed one extension. The completion is a contribution, not an answer — it can amend as well as finish, and the amendment costs nothing.",
+      "positions": [
+        { "index": 1, "name": "open the clause and leave it hanging", "family": null },
+        { "index": 2, "name": "complete it (1–6 words)", "family": null },
+        { "index": 3, "name": "ratify, or amend the completion", "family": "F1", "outcome_branch": true },
+        { "index": 4, "name": "extend beyond the opener's version", "family": null, "optional": true }
+      ],
+      "attestations": { "talk_bollocks": ["1:26-28", "1:221-222", "2:37-39", "2:88-98", "2:117-118", "2:169-171", "2:227-228", "4:26-30", "4:47-50", "4:84-87", "4:279-281", "4:308-312"] },
+      "quote": "\"…decoding some what somebody else is saying to us that is a different neural circuit — \" / \"we don't have the web\" (1:221–222); \"whatever, the working memory of the person, you can calibrate\" / \"exactly that\" (2:169–171). Completion attested in both directions.",
+      "why_not_an_existing_node": "No store shape has a completion position. P3 read-back restates what was already said; N301's position 2 supplies what was NOT yet said and has it adopted. The metaphor handover (2:233–240, the road trip) is this node at arc scale — completion, then extension, then ratification-by-naming-the-handover — and is recorded as an arc of N301, not a separate mint.",
+      "smoke_test": "Passes, held loosely. Clause-completion mechanics vary with word order, but the position — closing another's utterance and having it ratified — attests wherever two people finish each other's sentences.",
+      "trunk_or_branch": "trunk",
+      "rung": 0,
+      "kinds_held_by_other_party": [],
+      "ladder": {
+        "changes_at": ["K1"],
+        "K1": "DIES. The completion becomes an answer to be graded; ratification becomes marking. Zero completions in pod-0's 231 rows, zero in health's 438 turns. Remnant: P3/F9 — you may restate, never complete.",
+        "K2": "already dead at K1",
+        "K3": "inert",
+        "K4": "inert"
+      }
+    },
+    {
+      "id": "N302",
+      "name": "Digression-and-return",
+      "provenance": "talk-bollocks",
+      "gloss": "A detour is taken — flagged or unflagged — and the thread survives because BOTH parties hold it. The return marker ('where were we?') can be answered by either side; the thread is joint property, and losing it entirely is recoverable because the partner has a copy.",
+      "positions": [
+        { "index": 1, "name": "digress (flag optional)", "family": null },
+        { "index": 2, "name": "run the detour", "family": null },
+        { "index": 3, "name": "return marker, or thread-loss admitted", "family": null, "outcome_branch": true },
+        { "index": 4, "name": "either party restores the thread", "family": null },
+        { "index": 5, "name": "resume, detour optionally claimed as evidence", "family": null, "pivot_capable": true }
+      ],
+      "attestations": { "talk_bollocks": ["1:59-60", "1:257-259", "2:57"] },
+      "quote": "\"I have no idea what the original question was there - something about methodology?\" — and the partner supplies it (1:59–60); \"And where were we? the connection and the welcome… Oh yeah. So why he was doing it.\" (2:57)",
+      "why_not_an_existing_node": "N17 interruption-and-bank looks backward at a broken thread and BANKS it; N302 is the return machinery — and the store records N17's recovery half as unattested (the next session is lost). The within-conversation return is attested three times here. The bank half of digression behaviour (1:291–293, 2:285) lands on N17 and is not re-minted.",
+      "smoke_test": "Passes. Any two people who wander and come back attest it.",
+      "trunk_or_branch": "trunk",
+      "rung": 0,
+      "kinds_held_by_other_party": [],
+      "ladder": {
+        "changes_at": ["K2", "K3"],
+        "K1": "survives — you can digress across an information gradient",
+        "K2": "the licence to digress becomes a grant from whoever controls the encounter; remnant is health's N110 signposting, the controller narrating the thread for both",
+        "K3": "DIES as joint property. When one party holds the record, position 4 changes hands permanently — 'where were we' has exactly one answerer. At rung 0 even the tape is a shared toy (2:144, the tease prosecuted by invoking the recording).",
+        "K4": "inert"
+      }
+    },
+    {
+      "id": "N303",
+      "name": "The specimen",
+      "provenance": "talk-bollocks",
+      "gloss": "Mid-claim, the partner is turned into the live experiment — taught the thing, tested on the thing — and the result, INCLUDING failure, is read back into the claim. At rung 0 the specimen cannot fail: a failed recall is data for a claim about forgetting.",
+      "positions": [
+        { "index": 1, "name": "claim about how something works", "family": null },
+        { "index": 2, "name": "the partner is enrolled as the live case", "family": null },
+        { "index": 3, "name": "perform / undergo, imperfection allowed", "family": null, "outcome_branch": true },
+        { "index": 4, "name": "the result is folded back into the claim", "family": null }
+      ],
+      "attestations": { "talk_bollocks": ["1:322-334"] },
+      "quote": "\"I told you the Welsh for fish was pysgod…\" / \"thinking 'pys', is it a bit like puss? And I think Cod is a fish. Isn't it?\" / \"If we leave that. Yeah. and I come back in a couple of hours…\" (1:322–334)",
+      "why_not_an_existing_node": "N4 instruction has the recipient act on instructions for the recipient's own sake; health's N102 has a body acted on under consent. Here the partner's performance is EVIDENCE for a live claim, jointly owned. One direction only in this corpus (Aran on Tom) — tracked to who owns the demonstrable method in the passage, not to the interviewer role (mapping doc §7).",
+      "smoke_test": "Passes. 'Close your eyes — what colour is my shirt?' attests it anywhere.",
+      "trunk_or_branch": "trunk",
+      "rung": 0,
+      "kinds_held_by_other_party": [],
+      "ladder": {
+        "changes_at": ["K2", "K4"],
+        "K1": "survives — the specimen passage itself runs across a local information gradient",
+        "K2": "a consent position materialises: you may not enrol a party who can refuse the encounter without asking",
+        "K3": "gives the test its instrument only",
+        "K4": "TRANSFORMS into health's N102 consent-and-narrated-act — consent formalises, narration becomes duty, the result changes owners. The O3→O101 pattern, on a node."
+      }
+    },
+    {
+      "id": "N304",
+      "name": "The reported claim too big to hold",
+      "provenance": "talk-bollocks",
+      "gloss": "A third party's claim is reported with its source, its size is registered ('my brain is already hurting'), it is tried on jointly — and it is left unresolved. Nobody owes a verdict; the parking of the verdict IS the shape.",
+      "positions": [
+        { "index": 1, "name": "report the claim + its source + its epistemic status", "family": null },
+        { "index": 2, "name": "register its size", "family": null },
+        { "index": 3, "name": "try it on jointly ('she would say…')", "family": null, "repeatable": true },
+        { "index": 4, "name": "leave it unresolved", "family": null }
+      ],
+      "attestations": { "talk_bollocks": ["1:196-206", "4:189-194"] },
+      "quote": "\"There's no such thing as a word. / Yeah. / There aren't any.\" … \"I don't think I can keep up with my brain is already hurting\" (1:198–202); \"I read that and I thought this is the April the first edition! And then it wasn't!!!\" (4:194)",
+      "why_not_an_existing_node": "N8 recommendation and N14 premise audit both end in a verdict position (uptake; ground supplied or conceded). N304's defining position is that the verdict is jointly withheld — no store shape parks a claim.",
+      "smoke_test": "Passes. 'Apparently they've proved…' around any table.",
+      "trunk_or_branch": "trunk",
+      "rung": 0,
+      "kinds_held_by_other_party": [],
+      "ladder": {
+        "changes_at": ["K1"],
+        "K1": "DIES. Against an information-holder someone owes a verdict ('is that true, doctor?'); position 4 vanishes. Remnant: N8 with grounds, or N104 norm-referencing.",
+        "K2": "already dead at K1", "K3": "inert", "K4": "inert"
+      }
+    },
+    {
+      "id": "N305",
+      "name": "The proxy pitch",
+      "provenance": "talk-bollocks",
+      "gloss": "One party performs, to the other, how they pitch the OTHER's own thing to strangers. The owner audits, ratifies and extends — and may adopt the improvement into the thing itself.",
+      "positions": [
+        { "index": 1, "name": "perform the pitch of the partner's thing", "family": null },
+        { "index": 2, "name": "owner ratifies or corrects", "family": null, "outcome_branch": true },
+        { "index": 3, "name": "owner extends; the improvement may be adopted", "family": null, "optional": true }
+      ],
+      "attestations": { "talk_bollocks": ["1:233-246"] },
+      "quote": "\"how I introduce your method to people is I say… Holy Dickhead Batman…\" / \"and giving people permission to play around with it…\" (1:233–242)",
+      "why_not_an_existing_node": "N8 recommends to the person who asked; F9 restates to verify. N305's position 3 — the owner adopting the proxy's improvement — exists in neither, and is exactly the position K1 kills.",
+      "smoke_test": "Passes. 'This is how I describe your cooking to people.'",
+      "trunk_or_branch": "trunk",
+      "thin": "One attestation. Thin, and flagged as thin — strikeable with one word.",
+      "rung": 0,
+      "kinds_held_by_other_party": [],
+      "ladder": {
+        "changes_at": ["K1"],
+        "K1": "DIES. Pitching the holder's own material back becomes a read-back to be graded; position 3 vanishes. Remnant: F9, hardening to F104 by rung 4.",
+        "K2": "already dead at K1", "K3": "inert", "K4": "inert"
+      }
+    },
+    {
+      "id": "N306",
+      "name": "The co-staged scene",
+      "provenance": "talk-bollocks",
+      "gloss": "Both parties build one hypothetical scene across turns, each voicing roles inside it — the shops, the people, the council — handing the enactment back and forth. The scene itself carries the argument; stepping out of it ends it.",
+      "positions": [
+        { "index": 1, "name": "propose the frame", "family": null },
+        { "index": 2, "name": "voice a role inside it", "family": null, "repeatable": true },
+        { "index": 3, "name": "the partner voices a role or the counter-role", "family": null, "repeatable": true },
+        { "index": 4, "name": "read the scene back into the live argument", "family": null }
+      ],
+      "attestations": { "talk_bollocks": ["2:252-258", "4:289-300", "4:328-341"] },
+      "quote": "\"'listen, if you do this, we will pay you at the end of the month, 700 tokens…'\" / \"'we'll refund you in full - if you can't spend it…' so you get people going 'well, I haven't been able to spend it, please refund me in full'\" (4:289–298)",
+      "why_not_an_existing_node": "The 23-move inventory held enacted dialogue as intra-turn (one speaker staging voices). Across-turn joint enactment has no store home: N301 completes a CLAUSE; N306 co-authors a WORLD, and the voicing positions are its own. The Method Pod's scenes 15's cast partner is a minted cousin, recorded there as mint — this is its attestation-bearing sibling shape.",
+      "smoke_test": "Passes. Two friends jointly acting out 'and then he'll say… and then you say…' attests anywhere.",
+      "trunk_or_branch": "trunk",
+      "rung": 0,
+      "kinds_held_by_other_party": [],
+      "ladder": {
+        "changes_at": ["K2"],
+        "K1": "survives — the corpus stages scenes about worlds only one party knows well",
+        "K2": "DIES. You may not script the voice of a party who holds refusal authority over the real scene. Remnant: N4 instruction ('you'll want to say…') — the scene collapses into coaching.",
+        "K3": "inert",
+        "K4": "scripting the other's role over their own body/stake becomes N102's territory"
+      }
+    }
+  ],
+
+  "bound_pairs": [],
+
+  "moves": [
+    {
+      "id": "F301",
+      "name": "So what you're saying is",
+      "provenance": "talk-bollocks",
+      "test": "The listener hands back a compression or a NAME for what the speaker just built — sharper than the original — and the speaker ratifies and ADOPTS it into the joint position. The restatement is a contribution, not a check.",
+      "attestations": { "talk_bollocks": ["1:107-109", "1:364-367", "2:207-210", "4:33-35", "4:177-180"] },
+      "dialogic_attestations": 5,
+      "quote": "\"That's literally how cancer works.\" / \"Exactly. Yeah.\" (2:207–210); \"so what you're saying really is… currency is the great leverage.\" (4:179–180)",
+      "why_not_F9": "F9 checks that the hearer got it; being wrong costs the checker nothing and adds nothing. F301's restatement is offered as an upgrade the originator may adopt — the adoption position is what F9 lacks, and it is exactly the position K1 kills (mapping doc §6). The listener-names-it summit shape (2:207–210) is this move with a name instead of a compression, deliberately consolidated rather than minted twice.",
+      "position": "BUILD → COMPRESS/NAME IT BACK → ratify + adopt. Position 2.",
+      "rung": 0,
+      "kinds_held_by_other_party": [],
+      "ladder": { "changes_at": ["K1"], "K1": "the gift form dies — the K1-holder's claim is not yours to upgrade; the family survives as F9 verification at rung 1 and F104 solicited read-back at rung 4. One act, four shapes, one per rung — the axis's clearest specimen.", "K2": "inert given K1", "K3": "inert", "K4": "inert" }
+    },
+    {
+      "id": "F302",
+      "name": "It proves nothing — accept it anyway",
+      "provenance": "talk-bollocks",
+      "test": "An epistemic flag prices the speaker's own authority down BEFORE the delivery — and thereby LICENSES delivery at full strength. The flag is not a withholding; it is what buys the confidence.",
+      "attestations": { "talk_bollocks": ["1:344-349", "1:301", "1:368", "2:294-296", "2:323", "2:349", "4:79"] },
+      "dialogic_attestations": 7,
+      "quote": "\"Iost my foot in that river please accept my anecdotal evidence!\" (1:349); \"I'm out of practice there and haven't spent a lot of time thinking about it, but if I was allowed to give one roll of the dice…\" (2:294–295)",
+      "why_not_F15": "F15 'I'm not sure' downgrades and stops — the uncertainty is the answer. F302 downgrades and then delivers at full strength — the uncertainty is the licence. Consolidates the inventory's anecdote-with-flag (4), provisional flag (11) and status flag (18): one shape, three sizes.",
+      "position": "FLAG → full-strength delivery → uptake. Position 1, decorating the delivery turn.",
+      "rung": 0,
+      "kinds_held_by_other_party": [],
+      "ladder": { "changes_at": [], "K1": "invariant", "K2": "invariant", "K3": "invariant", "K4": "INVARIANT — health's N109 'I won't promise what I can't be sure of' is this move at rung 4, where the bound IS the reassurance (S105). The strongest trunk result in this file; belongs beside #283's O7." }
+    },
+    {
+      "id": "F303",
+      "name": "The shared line",
+      "provenance": "talk-bollocks",
+      "test": "A line minted between the parties is redeployed later as a joint tool — as argument, tease or shorthand — its ownership common and its provenance contestable in play.",
+      "attestations": { "talk_bollocks": ["1:347-349", "2:273", "4:242-246", "4:455"] },
+      "dialogic_attestations": 4,
+      "quote": "Minted: \"…please accept my anecdotal evidence!\" (1:349). Called back two sessions later: \"Oh, I accidentally got into bed with a crocodile\" (4:455). Ownership contested in play: \"Politics is already dead, it just doesn't know it yet.\" / \"I've been saying this for a little while: Politics is already irrelevant. It's already dead…\" (4:242–246)",
+      "why_new": "No store move rests on the parties' own conversational history. Consolidates callback (8), co-owned line (20) and the deployed razor (13).",
+      "position": "Deploy the shared line → recognise / contest provenance → hold jointly. Any position.",
+      "rung": 0,
+      "kinds_held_by_other_party": [],
+      "ladder": { "changes_at": [], "K1": "invariant to asymmetry", "K2": "the provenance-tease branch dies; the deployment survives", "K3": "inert", "K4": "inert", "second_axis": "Gated by SHARED HISTORY, an axis the ladder does not carry — no kind kills a callback; the absence of a past does. Named as an axis-candidate, not smuggled onto this ladder." }
+    },
+    {
+      "id": "F304",
+      "name": "Comment on the medium",
+      "provenance": "talk-bollocks",
+      "test": "Either party comments on the conversation's own machinery — the tape, the hour, the un-recordable gestures — as play, and the machinery may be used AS a tool by either side.",
+      "attestations": { "talk_bollocks": ["1:11-13", "1:213-215", "1:381", "2:11", "2:144", "4:13-16"] },
+      "dialogic_attestations": 6,
+      "quote": "\"[It's a pity that the recordings can't pick up my pathetic attempts to act this out. Isn't it?]\" / \"I think they'll get it - he's banging on the side of the chair.\" (1:213–215); \"because this is recording and since you just called me mad, I would like to point out…\" (2:144)",
+      "why_not_N110_or_N101": "N110 signposting is the encounter-CONTROLLER narrating what happens next; health's N101 is the medium pre-negotiated as a contract. F304 is the medium as a shared toy, touchable by either party mid-flow. The N101 kinship is the cleanest graded-transformation pair across the corpora: same content, hardened from play into licence as kinds accrue.",
+      "position": "Any position; parenthetical.",
+      "rung": 0,
+      "kinds_held_by_other_party": [],
+      "ladder": { "changes_at": ["K2"], "K1": "survives", "K2": "the joke position dies — the medium belongs to the encounter-controller; remnant N110/N101", "K3": "the instrument stops being shared", "K4": "inert" }
+    },
+    {
+      "id": "F305",
+      "name": "Absorb and build",
+      "provenance": "talk-bollocks",
+      "test": "A counterexample or concession — the partner's or the speaker's own — is welcomed and folded into the claim as an upgrade. The counter is treated as data FOR the frame, not against it.",
+      "attestations": { "talk_bollocks": ["1:119-123", "1:253-256", "1:315-317", "2:53", "4:158-161"] },
+      "dialogic_attestations": 5,
+      "quote": "\"but you can't, for example, say red but… but of course been in the middle of conversation, you're saying, I'd like one that's red, but I don't mind all that much. Yeah, exactly. So we've got a little bit of information there.\" (1:120–123); \"And that's true. That's right. That's what you have to do, but it's incredibly painful if you haven't prepared for it.\" (1:254–255)",
+      "why_not_F16": "F16 concedes and HOLDS the original position against the counter. F305 upgrades the position WITH the counter — the claim that exits is better than the claim that entered. Consolidates the counterexample-absorbed summit shape and concession-then-build (7).",
+      "position": "COUNTER → absorb as data → build. Position 2.",
+      "rung": 0,
+      "kinds_held_by_other_party": [],
+      "ladder": { "changes_at": ["K1", "K4"], "K1": "absorption becomes adjudication — the information-holder rules on the counter rather than folding it in", "K2": "inert given K1", "K3": "inert", "K4": "FORBIDDEN — absorbing the acted-upon party's counterexample is what health's N106 stop-and-verify exists to prevent; the halt replaces the absorption" }
+    },
+    {
+      "id": "F306",
+      "name": "Exactly where I'm about to go",
+      "provenance": "talk-bollocks",
+      "test": "The partner's contribution is ratified as the speaker's own planned next move — the floor merges rather than passes. Only honest between parties with equal access to the terrain.",
+      "attestations": { "talk_bollocks": ["1:315-319"] },
+      "dialogic_attestations": 1,
+      "quote": "Tom supplies the Ebbinghaus critique unprompted; Aran: \"exactly where I'm about to go. Yep.\" (1:315–319)",
+      "why_new": "F1 accepts; F10 continues; nothing in the store merges two speakers' forward plans. Distinct from F301: the reformulation compresses what WAS said; pre-emption ratifies what was ABOUT to be said.",
+      "position": "CONTRIBUTION → ratify as own planned move → continue on the merged line. Position 2.",
+      "thin": "One clean dialogic attestation. The thinnest id in this file; minted because the position is unmistakable on the page and the store holds nothing for it. Strikeable with one word.",
+      "rung": 0,
+      "kinds_held_by_other_party": [],
+      "ladder": { "changes_at": ["K1"], "K1": "DIES — across an information gradient the ratification position cannot be honestly occupied; no higher-rung form exists, which is why nothing like it appears in pod-0 or health", "K2": "already dead", "K3": "inert", "K4": "inert" }
+    }
+  ],
+
+  "composition": [
+    { "id": "C301", "kind": "composition", "contained": "N301", "container": "N306", "attestation": "4:296-300 — completions run inside the co-staged scene: each party finishes the other's voiced lines while the scene is held open", "mechanical": true },
+    { "id": "C302", "kind": "composition", "contained": "N301", "container": "N305", "attestation": "1:241-246 — the proxy pitch closes with the owner extending and the pitcher completing ('You get everything clicking together'), joint construction inside the pitch's audit position", "mechanical": true }
+  ],
+
+  "survivability": [
+    {
+      "id": "S301",
+      "kind": "survivability",
+      "provenance": "talk-bollocks",
+      "b_attemptable_only_if": "Offering a reformulation (F301)",
+      "a_survivable": "The reformulation being corrected",
+      "nodes": [],
+      "moves": ["F301"],
+      "attested_response_positions": ["4:403-405 — 'Okay. So I was thinking the Netflix layer of content would be in target language for learners… You're thinking of first language, Mandarin speakers who wants to… okay.'"],
+      "recovery_attested": "once",
+      "recovery_note": "Once, complete and cheap: correction issued, absorbed in one word, thread continues. This is also the store's thin O4 receiving its first real attestation, at rung 0.",
+      "answer_slot_class": "failure"
+    },
+    {
+      "id": "S302",
+      "kind": "survivability",
+      "provenance": "talk-bollocks",
+      "b_attemptable_only_if": "Completing the partner's clause (N301)",
+      "a_survivable": "The completion being amended rather than ratified",
+      "nodes": ["N301"],
+      "attested_response_positions": ["4:84-87 — 'It's fungible, through us, for external dollars or English pounds or whatever' / 'it is, or possibly that we've stopped that.'"],
+      "recovery_attested": "once",
+      "recovery_note": "Once. The amendment is absorbed without cost and the build continues — the completion position survives being wrong.",
+      "answer_slot_class": "failure"
+    },
+    {
+      "id": "S303",
+      "kind": "survivability",
+      "provenance": "talk-bollocks",
+      "b_attemptable_only_if": "Making the partner the specimen (N303)",
+      "a_survivable": "The specimen performing imperfectly",
+      "nodes": ["N303"],
+      "attested_response_positions": ["1:323-334 — the half-remembered pysgod ('is it a bit like puss?') is folded back into the claim: 'If we leave that. Yeah. and I come back in a couple of hours…'"],
+      "recovery_attested": "once",
+      "recovery_note": "Once — and the recovery is absorption: the failure is data for a claim about forgetting. At rung 0 the specimen cannot fail.",
+      "answer_slot_class": "failure"
+    },
+    {
+      "id": "S304",
+      "kind": "survivability",
+      "provenance": "talk-bollocks",
+      "b_attemptable_only_if": "Deploying a shared line (F303)",
+      "a_survivable": "The provenance being contested",
+      "nodes": [],
+      "moves": ["F303"],
+      "attested_response_positions": ["4:242-246 — Tom claims a line Aran has just said: 'I've been saying this for a little while: Politics is already irrelevant. It's already dead, it just doesn't know it yet.'"],
+      "recovery_attested": "once",
+      "recovery_note": "Once. The contest is play; the line is held jointly and the argument continues on it.",
+      "answer_slot_class": "relational"
+    },
+    {
+      "id": "S305",
+      "kind": "survivability",
+      "provenance": "talk-bollocks",
+      "b_attemptable_only_if": "Digressing (N302)",
+      "a_survivable": "Losing the thread entirely",
+      "nodes": ["N302"],
+      "attested_response_positions": ["1:59-60 — 'I have no idea what the original question was there - something about methodology?' — and the partner restores it and business resumes"],
+      "recovery_attested": "once",
+      "recovery_note": "Once, complete. A genuine memory failure with an attested recovery — possible because the thread is joint property at rung 0.",
+      "answer_slot_class": "failure"
+    }
+  ],
+
+  "outcome_shapes": [],
+
+  "outcome_attestations_extended": {
+    "note": "No outcome is minted. Three store/proposal outcomes gain rung-0 evidence; nothing is edited.",
+    "O4": "First real attestation (store carries it thin; Method Pod Scene 19 is a mint): 4:403-405, complete recovery. See S301.",
+    "O2": "Confirmed again at 4:70 ('No one knows the answers to these') — consistent with the store's method-pod-only marking.",
+    "O7": "Extension to #283's invariance finding, not a contradiction: the disclosure attests twice with NO acknowledging turn (1:404-406; 2:268-270 — the Manx 'unfinished business… I don't know if I'll ever become really conversationally competent', after which the discloser simply keeps the floor). The shape survives to rung 0; its uptake position is optional there and hardens with rungs (health F101 near-obligatory at rung 4).",
+    "O8": "The null holds: zero standing clashes in 591 turns, re-checked. The parked form (2:386-401, M4) remains the corpus's only disagreement shape."
+  },
+
+  "explicitly_not_minted": [
+    { "candidate": "The stacked commission accepted in one word", "verdict": "Lands on F1, with strain", "why": "The one-word acceptance of a five-part commission (1:291-299; 2:147-156) is F1 at summit scale; the accepter's subsequent self-management of the stack is walk behaviour, not a position. What changes up the ladder — read-back positions materialising (F9→F104) — is a ladder finding, not a mint." },
+    { "candidate": "The mirrored tease", "verdict": "Lands on N11 — this mapping's least confident call", "why": "2:141-146 runs N11's positions with the polarity inverted: other-downgrade ('you just called me mad') · counter with evidence · full concession. Reading A: N11 walked on an other-directed tease. Reading B: the inverted opening is a new shape. Recorded ambiguous with both readings, health-style; A is the verdict because every subsequent position maps one-to-one." },
+    { "candidate": "The listener names it", "verdict": "Consolidated into F301", "why": "2:207-210 is the reformulation with a name instead of a compression; same positions, same adoption. Minting twice would be a surface variant." },
+    { "candidate": "The metaphor handover", "verdict": "An arc of N301", "why": "2:233-240 is completion + extension + ratification-by-naming-the-handover at arc scale — N301's own positions, sustained. Recorded as an arc, not a second node." },
+    { "candidate": "Self-repair and abandonment (moves 6, 14)", "verdict": "Not exchange shapes", "why": "Intra-turn phenomena with no partner position. Recorded as such rather than half-mapped." },
+    { "candidate": "Solo enacted dialogue (move 15)", "verdict": "Intra-turn; the across-turn form mints as N306", "why": "One speaker staging voices needs no partner position; the co-staged scene does." },
+    { "candidate": "Provisional flag and status flag (moves 11, 18)", "verdict": "Consolidated into F302", "why": "The same flag at smaller sizes." },
+    { "candidate": "Concession-then-build (move 7)", "verdict": "Consolidated into F305", "why": "The absorption move from the concessor's side." },
+    { "candidate": "The razor as its own move (move 13)", "verdict": "Deployment lands under F303; the verdict-delivery is Scene 8's ground", "why": "The razor is a shared line being used as a tool; its minting passage (1:88-97) is already the Method Pod's Scene 8 material." },
+    { "candidate": "An outcome mint for the amended completion", "verdict": "S302 instead", "why": "The failure branch is carried as a survivability edge; an outcome slot would duplicate O4's territory at rung 0." },
+    { "candidate": "Question-as-handover, backchannel, topic parking, haggle, I-don't-know, challenge-the-premise, challenge-mid-story, parked disagreement", "verdict": "Land where the prior work put them", "why": "P5/F3, F10, N17, N16 (M5), N13 (M1), N14 (M2), N15 (M3), N15 (M4) respectively. Verified against the current files; no change." },
+    { "candidate": "A fifth asymmetry kind: who holds the floor by role", "verdict": "NOT minted — ruled an artefact", "why": "Fails the store's own kind test: no position appears, disappears or changes hands by role — every checkable position attests in both directions (mapping doc §7), and the 73/27 word split is topic-local K1 rotating slowly, pinned to the recording's subject. Rung 0 is asymmetry rotating freely, not asymmetry absent; a kind is an asymmetry pinned for the whole encounter by the world." }
+  ]
+}
