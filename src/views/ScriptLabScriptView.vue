@@ -13,10 +13,7 @@
       <p class="text-muted text-sm mb-1">
         The whole script, scene by scene, with no course loaded — and what it does to the graph.
       </p>
-      <p v-if="readOnly" class="text-accent text-xs mb-4">
-        Read-only: this script lives in a document, not in the canonical store.
-      </p>
-      <p v-else class="text-accent text-xs mb-4">
+      <p class="text-accent text-xs mb-4">
         Edits change the language-neutral English master every course flexes from. They change no generated pod.
       </p>
 
@@ -150,18 +147,13 @@
                 </span>
                 <span class="text-xs text-muted w-24 flex-shrink-0 truncate pt-2" :title="step.payload.speaker">{{ step.payload.speaker }}</span>
                 <textarea
-                  v-if="!readOnly"
                   v-model="step.payload.text"
                   rows="1"
                   @focus="step.payload._orig = step.payload.text"
                   @blur="saveLine(step)"
                   class="flex-1 min-w-0 basis-full sm:basis-auto bg-surface-2 border border-line focus:border-accent-2 rounded px-2 py-1.5 text-sm text-ink resize-y outline-none"
                 />
-                <div v-else class="flex-1 min-w-0 basis-full sm:basis-auto text-sm">
-                  <div class="text-ink">{{ step.payload.text }}</div>
-                  <div v-if="step.payload.target" class="text-xs text-muted italic">{{ step.payload.target }}</div>
-                </div>
-                <div v-if="!readOnly && step.payload.target" class="basis-full text-xs text-muted italic pl-2">
+                <div v-if="step.payload.target" class="basis-full text-xs text-muted italic pl-2">
                   {{ step.payload.target }}<span class="text-faint not-italic"> · {{ step.payload.targetLang }} specimen, not editable here</span>
                 </div>
                 <span v-if="step.branch" class="text-xs text-accent flex-shrink-0 pt-2 basis-full sm:basis-auto">
@@ -170,7 +162,7 @@
                 <span v-else-if="step.variant" class="text-xs text-faint flex-shrink-0 pt-2 basis-full sm:basis-auto">
                   another way of saying {{ step.variant.of }}
                 </span>
-                <span v-if="!readOnly" class="w-14 flex-shrink-0 text-right pt-2 text-xs">
+                <span class="w-14 flex-shrink-0 text-right pt-2 text-xs">
                   <span v-if="step.payload._saving" class="text-accent">saving…</span>
                   <span v-else-if="step.payload._saved" class="text-accent-2">saved ✓</span>
                   <span v-else-if="step.payload._err" class="text-danger" :title="step.payload._err">error</span>
@@ -189,21 +181,20 @@ import { ref, computed, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 import { getApiUrl } from '@/services/api.js'
 import { useAuth } from '@/composables/useAuth.js'
-import { loadGraph, loadMethodPodFlow } from '@/lib/metagraph/loadGraph.js'
-import { walkFromCanonicalRows, walkFromFlow, walkFromStoredPod } from '@/lib/metagraph/walk.js'
+import { loadGraph } from '@/lib/metagraph/loadGraph.js'
+import { walkFromCanonicalRows, walkFromStoredPod } from '@/lib/metagraph/walk.js'
 import { computeCoverage } from '@/lib/metagraph/coverage.js'
 
 const KIND_TAG = { coda: 'ADMITS', branch: 'BRANCH', alternative: 'VARIANT', unmapped: 'UNMAPPED' }
 const route = useRoute()
 const slug = route.params.slug || 'pod-0'
-const readOnly = slug === 'method-pod'
 
 const graph = loadGraph()
 const walk = ref({ scenes: [], steps: [] })
 const cov = ref(null)
 const loading = ref(true)
 const error = ref(null)
-const title = computed(() => readOnly ? 'The Method Pod — the re-cut' : `Canonical script · ${slug}`)
+const title = computed(() => `Canonical script · ${slug}`)
 const exercised = computed(() => (cov.value?.survivability || []).filter(s => s.exercised))
 const unresolvedByRegister = computed(() => {
   const by = {}
@@ -242,16 +233,12 @@ async function load () {
   loading.value = true
   error.value = null
   try {
-    if (readOnly) {
-      walk.value = walkFromFlow(loadMethodPodFlow(), graph)
-    } else {
-      const res = await authedFetch(`/api/admin/canonical-pods/${encodeURIComponent(slug)}`)
-      const body = await res.json()
-      if (!res.ok) throw new Error(body?.error || `HTTP ${res.status}`)
-      walk.value = (body.walk || []).length
-        ? walkFromStoredPod(body.scenarios || [], body.walk, graph, { id: slug, slug })
-        : walkFromCanonicalRows(body.scenarios || [], graph, { id: slug, slug })
-    }
+    const res = await authedFetch(`/api/admin/canonical-pods/${encodeURIComponent(slug)}`)
+    const body = await res.json()
+    if (!res.ok) throw new Error(body?.error || `HTTP ${res.status}`)
+    walk.value = (body.walk || []).length
+      ? walkFromStoredPod(body.scenarios || [], body.walk, graph, { id: slug, slug })
+      : walkFromCanonicalRows(body.scenarios || [], graph, { id: slug, slug })
     cov.value = computeCoverage(graph, walk.value)
   } catch (err) {
     error.value = err.message

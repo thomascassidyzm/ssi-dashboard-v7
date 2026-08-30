@@ -60,8 +60,8 @@
 import { ref, onMounted } from 'vue'
 import { getApiUrl } from '@/services/api.js'
 import { useAuth } from '@/composables/useAuth.js'
-import { loadGraph, loadMethodPodFlow } from '@/lib/metagraph/loadGraph.js'
-import { walkFromCanonicalRows, walkFromFlow, walkFromStoredPod } from '@/lib/metagraph/walk.js'
+import { loadGraph } from '@/lib/metagraph/loadGraph.js'
+import { walkFromCanonicalRows, walkFromStoredPod } from '@/lib/metagraph/walk.js'
 import { computeCoverage } from '@/lib/metagraph/coverage.js'
 
 const graph = loadGraph()
@@ -107,21 +107,12 @@ async function load () {
       throw new Error(body?.error || `HTTP ${res.status}`)
     }
 
-    // The Method Pod has no store yet — it lives in the re-cut document, so it is
-    // shown here read-only rather than left out of the instrument.
-    const method = loadMethodPodFlow()
-    list.push({
-      slug: 'method-pod',
-      note: 'read-only — lives in the re-cut document, not in the store',
-      scenes: method.scenes.length,
-      lines: method.scenes.reduce((a, s) => a + s.lines.length, 0),
-      coverage: computeCoverage(graph, walkFromFlow(method, graph)),
-      coverageError: ''
-    })
+    // The Method Pod used to be pushed on here as a read-only markdown entry. Its
+    // sixteen ratified scenes are scenes 1–16 of `method-pod-43-scene` in the store
+    // now, so it arrives from the index like every other pod and is edited like one.
     pods.value = list
 
     for (const pod of list) {
-      if (pod.slug === 'method-pod') continue
       authedFetch(`/api/admin/canonical-pods/${encodeURIComponent(pod.slug)}`)
         .then(async r => {
           const b = await r.json()
