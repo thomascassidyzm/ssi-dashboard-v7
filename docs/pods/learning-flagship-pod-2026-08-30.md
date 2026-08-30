@@ -135,7 +135,7 @@ only where they generalise; methodology terms travel as loanwords; stage-adjacen
 ### Chapter 1 — *Part one of eighteen million* — the whole future of education stands on what one act of learning actually is
 
 **Point:** if we are wrong about what one act of learning is, we build the wrong everything — so
-the seven-billion-minds sentence is not allowed to escape the smallest question there is.
+the eight-billion-minds sentence is not allowed to escape the smallest question there is.
 
 **Shapes traversed:** N1 open (1:11–15, 4:13–19) · **the stacked commission** (form attested at
 1:292–299) · joint construction, m2, three times (the completion at 4:27–30 with the attested
@@ -147,8 +147,8 @@ m20 · **planted for Chapter 11:** the funnel, and the deal — small end first,
 
 **Sources & mints:** the spine and the ornithologist are canon §1b, compressed but not altered
 — "that's all learning is" is Tom's verbatim; the label-arriving-last is canon §1's own
-cross-modal table; the seven-billion sentence is 4:21–31 near-verbatim with its attested
-completion; the edges story is 1:112–124. MINTED: "warehouses for receipts" — a construction
+cross-modal table; the eight-billion sentence is 4:21–31 near-verbatim with its attested
+completion, with the count moved from seven to eight for the present day; the edges story is 1:112–124. MINTED: "warehouses for receipts" — a construction
 resting on canon §1's naming-is-consequence finding, and it is co-owned in place so that the
 minting is audible; the funnel container; Aran's "we couldn't say the small end five years ago",
 which is true of the corpus but is my sentence, not his.
@@ -164,7 +164,7 @@ which is true of the corpus but is my sentence, not his.
 | TOM | Okay — three of them, stacked, take them in any order. What is education for, if we get to rebuild it from nothing? What would we build first? And what does one act of learning actually consist of — because I don't trust either of us on the first two until we've done that one. |
 | ARAN | That's not a stack, that's a funnel. |
 | TOM | It's a funnel. Take the wide end. |
-| ARAN | The wide end is the same as it was five years ago, and I'll say it fast because it's big. None of this happens on its own. Schooling is one moving part in a complex adaptive system, and what we're playing for at the end of it is seven billion minds — connected, happy, up for it — that can go at complicated problems— |
+| ARAN | The wide end is the same as it was five years ago, and I'll say it fast because it's big. None of this happens on its own. Schooling is one moving part in a complex adaptive system, and what we're playing for at the end of it is eight billion minds now — connected, happy, up for it — that can go at complicated problems— |
 | TOM | Do some cool shit. |
 | ARAN | —very, very quickly. Yes. Through whatever bottleneck is coming. That end hasn't moved. What's changed is that I think we can now actually say what the small end of your funnel is. Five years ago we couldn't. |
 | TOM | Go on then. Smallest thing there is. One act of learning. |
@@ -179,7 +179,7 @@ which is true of the corpus but is my sentence, not his.
 | ARAN | Hold that one, because I want to fight you about it properly and I don't want to do it in the first ten minutes. |
 | TOM | Noted and parked. You'll lose. |
 | ARAN | We'll see. But as far as it goes — that's my edges story wearing your clothes, isn't it. I spent twenty years saying you don't know words, you know what's between them — which words plug into which, red bus, red house, never red went. You're saying the between is all there is, all the way down. Not just words. Birds. Everything. |
-| TOM | Everything. That's all learning is — increasingly fine distinctions on a signal that never stops being a signal. And that's why the seven billion minds don't get to float free of this. If we're wrong about what one act of learning is, we build the wrong everything, at scale, with conviction. Schools already did. They built for the labels. |
+| TOM | Everything. That's all learning is — increasingly fine distinctions on a signal that never stops being a signal. And that's why the eight billion minds don't get to float free of this. If we're wrong about what one act of learning is, we build the wrong everything, at scale, with conviction. Schools already did. They built for the labels. |
 | ARAN | Warehouses for receipts. |
 | TOM | …I'm having that one. |
 | ARAN | You can have it. So that's the deal for the rest of this — we do the small end properly first, and then we're allowed the future. |
@@ -925,7 +925,7 @@ we've ever had"; the asleep dog.
 | ARAN | And schools, in this picture — I keep coming back to your line about them. |
 | TOM | Maybe it's schools that don't have a future, exactly — universities extend to all ages, schools merge into them and become outreach, reaching down into communities. Multi-generational learning communities with the content made super-cheap and super-good underneath them. Which — notice — is your road trip and my pizza and the whole of last chapter wearing institutional clothes. |
 | ARAN | It is. The town that learns together. We keep arriving at the same building from different streets. |
-| TOM | So let me walk back down the funnel, because we made a deal in the first ten minutes and I want to check we kept it. We were only allowed all this — the layers, the currency, the seven billion minds doing cool shit very, very quickly — if we did the smallest thing first. |
+| TOM | So let me walk back down the funnel, because we made a deal in the first ten minutes and I want to check we kept it. We were only allowed all this — the layers, the currency, the eight billion minds doing cool shit very, very quickly — if we did the smallest thing first. |
 | ARAN | And did we? |
 | TOM | The claim of the whole evening is that the tower actually rests there: one distinction, stabilising, on a signal that never stops being a signal. A community can hold one. A newsroom held one for eighteen months off seventy per cent of a sentence. Get the smallest thing right and every layer above it is engineering. Get it wrong and the tower is a warehouse for receipts — at planetary scale, with a subscription model. |
 | ARAN | Warehouses for receipts. Still having it. |
