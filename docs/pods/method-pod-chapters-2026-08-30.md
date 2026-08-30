@@ -517,3 +517,153 @@ Every scene number 1–43 appears exactly once in the "absorbs" column. Scenes 1
 **Why this container:** this is the shortest chapter and it carries the most reach-backs — three, each to a different hour, each recognisable by the phrase itself (*il palazzo in mezzo al campo*, *il pesce*, *il precipizio*) rather than by a label. The recovery needs the losing to be real, so the not-knowing at turn 6 is a bare "I don't know what it was" rather than a performance of forgetting; the scaffold is Tom's hold and the completion across the turn boundary is the corpus's joint-construction profile. Turns 11–12 are the pod noticing its own grammar, once, and moving on.
 
 ---
+
+### Chapter 10 — *Due giorni* — what two days a year apart actually show
+
+**Point:** two days of a language, a year apart, show more than a month of hard work — and what they show is that nothing you built is lost; the third day is late only because one of them has been waiting for a number.
+
+**Shapes traversed:** **the stacked commission accepted in one word** (1:293–297) · story → matched story (1:388–404) · the mirrored tease, m17 (2:141–147) · **O4 your read-back was wrong** (MINT partner turn on 1:396–400) · **O7 the disclosure acknowledged** (MINT partner turns on 2:258–263) · **O6 trouble that is your own fault** (MINT partner turns on 1:404–406) · **planted for Chapter 11:** *"Sul pianeta c'è un numero fisso di atomi. Non stiamo perdendo atomi d'acqua."* (4:133).
+
+**Owns:** question words, "a lot", "start with"; anecdote-with-flag; numbers, "still", the read-back line; not-knowing (live canon and earlier chapters). **Newly admits, one per beat:** accepting a pile of questions with one word and ordering it aloud (beat 1); answering a story with a story to the same shape, and extracting its shape in a line (beat 2); the tease turned on the teller, conceded in full (beat 3); the correction inside the confirm — "three, not two" — and the re-read (beat 4); repeating a disclosed doubt back, taking the bare no, and naming the doubt as allowed (beat 5); taking the fault before being asked and pricing the consequence yourself (beat 6).
+
+**Holds (heard):** turn 4 (Tom, ordering the stack), turn 6 (Tom, the day of Mandarin), turn 9 (Aran, the Manx on film), turn 14 (Aran, the tease), turn 21 (Aran, still there), turn 23 (Aran, unfinished business), turn 29 (Aran, that's on me).
+
+**Zero-admission stretches:** turns 1–5 (*C'è tanta roba*, from Scene 20, roles swapped — the stack is Aran's here because Tom tells the first story; checked words unchanged) and turns 17–22 (*Tre anni*, from Scene 19, checked words unchanged).
+
+**Mints:** the partner's wrong read-back (**MINT**; the number and its correction are Aran's own, 1:396–400); Tom's three turns to the disclosure (**MINT**; nobody answers it in the corpus); Tom's three turns to the own-fault admission (**MINT**; Tom changes the subject in the corpus). Tom's atoms line is attested at 4:133 about water and is *moved* here to the Manx, which is a reattribution of subject, not a mint, and is stated.
+
+**Surface forms admitted:** *roba*, *quanto spesso*, *l'estate scorsa*, *nel frattempo*, *strutture*, *lavoro duro*, *a un anno di distanza*, *filmare*, *madrelingua*, *contento di me*, *niente male*, *un'avvisaglia*, *farcela*, *un paio di centinaia*, *tirare fuori*, *dare del matto*, *mettersi alla prova*, *per divertimento*, *fiero*, *tutti e due*, *un numero fisso*, *atomi*, *in vita mia*, *nemmeno una volta*, *un esperimento*, *disposto a*, *un conto in sospeso*, *arrivare a*, *è permesso*, *una buona ragione*, *colpa mia*, *stare ad aspettare*, *dialoghi*, *rimanere seduto su*, *una scusa*, *bastare*, *mezza giornata*, *il prezzo*, *una taglia*. Availability only.
+
+**Near-neighbour points:** *roba* — a false friend in reverse, Spanish *ropa* is clothes; *quanto spesso* — no Spanish adverb, absence; *a un anno di distanza* — no Spanish idiom of the same build; *ce li ho filmati* — *ce + li*; *madrelingua* — one word where Spanish needs two; *ce la posso fare* — *farcela*, the flagship void; *dare del matto* — no Spanish counterpart; *ti sei messo alla prova* against *te pusiste a prueba* — near-parallel, an anchor; *lo so dire* — sapere for "can", where Spanish *sé decirlo* matches; *ancora lì* — *ancora* as "still", the polysemy from Chapter 3 in its other sense; *in vita mia* against *en mi vida* — possessive after the noun with no article; *ne ho fatti due giorni* — *ne* with agreement on the participle; *colpa mia* against *culpa mía* — anchor; *sono stato ad aspettare* — *stare a* + infinitive, no Spanish twin; *una taglia sola* — *taglia* against *talla*, anchor with one consonant moved.
+
+| | English | Italiano |
+|---|---|---|
+| ARAN | How did you find it? When? Where? How much time, every day? How often? — There's a lot there. | Come l'hai trovato? Quando? Dove? Quanto tempo, ogni giorno? Quanto spesso? — C'è tanta roba, lì. |
+| TOM | Yes. | Sì. |
+| ARAN | There is, isn't there. | Eh, sì. |
+| TOM | Yes. A lot. So — first, how. Then when. Then how much, and how often. And after that you can say: but is it good? And I say: I talk. That's all. | Sì. Tanta. Allora — prima il come. Poi il quando. Poi il quanto, e il quanto spesso. E dopo puoi dire: ma è buono? E io dico: parlo. Tutto qui. |
+| ARAN | Start with how. | Comincia dal come. |
+| TOM | How: I did a day of Mandarin last summer. One day. And another this year — different words, different structures, because you'd changed it all in between, obviously. And by the end of that second day I was thinking in Chinese. Not well. But it felt like more than a month of hard work would have given me, and I've done the month, in other languages, and I know what it buys. | Il come: l'estate scorsa ho fatto un giorno di cinese. Un giorno. E un altro quest'anno — parole diverse, strutture diverse, perché nel frattempo avevi cambiato tutto, ovviamente. E alla fine di quel secondo giorno pensavo in cinese. Non bene. Ma sembrava più di quello che mi avrebbe dato un mese di lavoro duro, e il mese l'ho fatto, in altre lingue, e so cosa compra. |
+| ARAN | Two days, a year apart. | Due giorni, a un anno di distanza. |
+| TOM | A year apart. | A un anno di distanza. |
+| ARAN | I've got mine on film. Manx — a conversation with a native speaker after day one, and another after day two, sixteen months later. Day one: fine, pleased with myself, not bad. Day two: the first real intimation of "I can do this" — still small, still a couple of hundred words, nowhere near seven hundred, but I could pick most of them up and turn them round. Something was going on. | I miei ce li ho filmati. Manx — una conversazione con un madrelingua dopo il primo giorno, e un'altra dopo il secondo, sedici mesi dopo. Primo giorno: bene, contento di me, niente male. Secondo giorno: la prima vera avvisaglia di «ce la posso fare» — ancora piccola, ancora un paio di centinaia di parole, lontanissimo da settecento, ma quasi tutte le sapevo tirare fuori e girare. Stava succedendo qualcosa. |
+| TOM | Sixteen months apart. | A sedici mesi di distanza. |
+| ARAN | Two days. And you don't need the third one to know. | Due giorni. E non ti serve il terzo per saperlo. |
+| TOM | You waited sixteen months to test one word? You're mad. | Hai aspettato sedici mesi per testare una parola? Sei matto. |
+| ARAN | Sixteen months, yes. And since you've just called me mad — | Sedici mesi, sì. E visto che mi hai appena dato del matto — |
+| TOM | Oh no. | Oh no. |
+| ARAN | — you tested yourself in Chinese for a whole day. For fun. Nobody asked you to. You told me about it afterwards, and you were proud of it. And then you did it again, a year later, to see if the first one was still there. | — tu ti sei messo alla prova in cinese per un giorno intero. Per divertimento. Nessuno te l'aveva chiesto. Me l'hai raccontato dopo, ed eri pure fiero. E poi l'hai rifatto, un anno dopo, per vedere se il primo c'era ancora. |
+| TOM | …No, you're completely right. | …No, hai perfettamente ragione. |
+| ARAN | Mad, both of us. That's why it works. Day one. Then day two. And after day two — no more. That was all. | Matti, tutti e due. È per questo che funziona. Giorno uno. Poi giorno due. E dopo il giorno due — basta. Basta così. |
+| TOM | For two years. | Per due anni. |
+| ARAN | Three. Not two — three years. | Tre. Non due — tre anni. |
+| TOM | Three years. And it's still there? | Tre anni. Ed è ancora lì? |
+| ARAN | Still there. Not all of it. But I can say it — slowly, today, but I can say it. Day one, day two, three years — and it's still there. That's what I want people to see. | Ancora lì. Non tutto. Ma lo so dire — piano, oggi, ma lo so dire. Giorno uno, giorno due, tre anni — ed è ancora lì. È questo che voglio far vedere alla gente. |
+| TOM | Three years. — There's a fixed number of atoms on the planet. We're not losing atoms of water. You didn't lose the Manx. It's just somewhere you haven't been for three years. | Tre anni. — Sul pianeta c'è un numero fisso di atomi. Non stiamo perdendo atomi d'acqua. Il manx non l'hai perso. È solo in un posto dove non vai da tre anni. |
+| ARAN | Somewhere I haven't been. — I have never once in my life thought: I want to learn Manx. Never. And I've done two days of it now — because it was an experiment, and there was a man willing to make the material, and I wanted to test some things. And now I've got unfinished business. I'm going to learn more Manx. I don't know if I'll ever be properly conversational in it — I really don't — but I'm going to learn more. | Un posto dove non vado. — In vita mia non ho mai pensato, nemmeno una volta: voglio imparare il manx. Mai. E adesso ne ho fatti due giorni — perché era un esperimento, e c'era uno disposto a fare il materiale, e volevo testare delle cose. E adesso ho un conto in sospeso. Imparerò altro manx. Non so se arriverò mai a parlarlo davvero — non lo so proprio — ma ne imparerò altro. |
+| TOM | You don't know if you'll get there. | Non sai se ci arriverai. |
+| ARAN | No. | No. |
+| TOM | No. …That's allowed. Unfinished business is a good reason. Better than most. | No. …È permesso. Un conto in sospeso è una buona ragione. Meglio di quasi tutte. |
+| ARAN | It's the only reason I've ever actually needed. | È l'unica ragione di cui abbia mai avuto davvero bisogno. |
+| TOM | Then learn more Manx. So when's day three? | Allora impara altro manx. Allora, il terzo giorno quand'è? |
+| ARAN | …That's on me. I've been waiting. I told myself I needed fifteen new dialogues for a day, and I haven't got fifteen, and I've sat on that for a year as if it were a reason. It isn't. It's an excuse with a number on it. I've got seven, maybe eight — enough for half a day. So I stop waiting, and do the half day, and the half day is the price of having waited. | …Questa è colpa mia. Sono stato ad aspettare. Mi ero detto che per un giorno mi servivano quindici dialoghi nuovi, e quindici non ce li ho, e ci sono rimasto seduto sopra per un anno come se fosse una ragione. Non lo è. È una scusa con un numero attaccato. Ne ho sette, forse otto — bastano per mezza giornata. Quindi smetto di aspettare, e faccio la mezza giornata, e la mezza giornata è il prezzo di aver aspettato. |
+| TOM | Half a day. | Mezza giornata. |
+| ARAN | Half a day. With the seven. | Mezza giornata. Con i sette. |
+| TOM | Then that's day three. Nobody said days come in one size. | Allora è quello il terzo giorno. Nessuno ha detto che i giorni vengono in una taglia sola. |
+| ARAN | Nobody did. I did. | Nessuno. L'ho detto io. |
+| TOM | Then un-say it. Half a day, and the atoms are still there. | Allora disdillo. Mezza giornata, e gli atomi sono ancora lì. |
+
+**Why this container:** the chapter is one question — what do two days show — carried by two stories, a tease, a number read back wrong, a doubt, and a missed deadline, and every failure in the answer slot the overlay asked for (O4, O7, O6) arrives *inside* the same arc rather than as three separate rooms: the read-back is wrong about the very years the story just told, the doubt is about the very language, the deadline is the third day of the very experiment. The two holds of similar length at turns 6 and 9 are the only matched pair in the set, as in the control arm, because a matched story shorter than the first would read as deference. The atoms are said once, mid-chapter, in Tom's mouth, about the Manx — which is where Chapter 11 will find them.
+
+---
+
+### Chapter 11 — *I soldi* — value is invented, and then it is never lost, only moved
+
+**Point:** a bank does not take the money from anywhere — it invents it, and after that it moves; the atoms are all still here; and IP is the same disaster looked at from the other side.
+
+**Shapes traversed:** the puppet show, m15 (MINT cast partner, 4:104–111, 2:47–56) · **the callback, m8, proper → Chapter 10** (4:133 → 4:330) · **the world breaks in and is used, m9** (4:224–232) · the return marker, intra-turn (2:57).
+
+**Owns:** *Vorrei…* and its service register (the most-attested frame in the canon); the co-owned line; the flagged digression. **Newly admits, one per beat:** accepting a casting and speaking the line (beat 1); retrieving the partner's earlier image by asking him what he said, and putting it to new work (beat 2); reading a live intrusion into the argument as evidence, and returning on your own marker (beat 3).
+
+**Holds (heard):** turn 2 and turn 4 (Aran, the staging and the reveal), turn 9 (Aran, the currency loop), turn 15 (Aran, the email), turn 18 (Tom, horizon one).
+
+**Mints:** Tom accepting the casting and speaking the line (**MINT**, as the re-cut recorded). The callback is attested at 4:133 → 4:330 and minted nowhere; what is changed is the subject the image was first used on (the Manx, in Chapter 10, instead of water), stated there.
+
+**Surface forms admitted:** *un mutuo*, *la banca*, *i soldi*, *inventare*, *esistere*, *il conto*, *da nessuna parte*, *una bacchetta magica*, *un potere*, *fine mese*, *ripagare*, *la moneta*, *girare*, *i negozi*, *tenersi da parte*, *tornare il momento*, *un richiamo*, *proprietà intellettuale*, *un disastro*, *impedire a*, *in diretta*, *investire in*, *i dettagli*, *per forza*, *un sacco*, *orizzonte uno*, *preoccuparsi di*, *dov'ero rimasto*, *i muri difensivi*. Availability only.
+
+**Near-neighbour points:** *mutuo* — false friend (Spanish *mutuo* = mutual); *i soldi* — selection by absence (*el dinero*); *da nessuna parte* against *de ninguna parte* — matched build, the anchor after the trap; *glieli ripaghi* — *glie + li*, the fused cluster; *nemmeno un po'* — *nemmeno* by absence, recurring; *te la tenevi da parte* — no Spanish twin; *aspettavo che tornasse* — imperfect subjunctive after a verb of waiting, where Spanish *esperaba que volviera* matches exactly, an anchor on mood; *per forza* — no Spanish twin, absence; *in diretta* against *en directo* — anchor with the article dropped; *ce l'abbiamo* — the cluster, three times in one turn; *dov'ero rimasto* — *rimanere* for "where was I", a verb Spanish would not think of.
+
+| | English | Italiano |
+|---|---|---|
+| TOM | But where does a bank get the money for a mortgage? | Ma dove li prende, una banca, i soldi per un mutuo? |
+| ARAN | It doesn't. Watch — I'll be the bank, you be you. You come in, you sit down, and you say it: "I'd like a mortgage." Go on. | Non li prende. Guarda — io faccio la banca, tu fai te. Tu entri, ti siedi, e dici: «Vorrei un mutuo». Dai. |
+| TOM | "I'd like a mortgage." | «Vorrei un mutuo». |
+| ARAN | And the bank says: "Of course. One moment." And it invents the money. There. Now it exists. A second ago it didn't exist, and it didn't come out of anybody else's account. | E la banca dice: «Certo. Un momento». E inventa i soldi. Ecco. Adesso esistono. Un secondo fa non esistevano, e non sono usciti dal conto di nessun altro. |
+| TOM | It doesn't take it from anywhere? | Non li prende da nessuna parte? |
+| ARAN | From nowhere. A magic wand. That's why it's a power. | Da nessuna parte. Una bacchetta magica. È per questo che è un potere. |
+| TOM | And then it goes round, and at the end of the month everybody wants you to pay it back. | E poi girano, e a fine mese tutti vogliono che tu glieli ripaghi. |
+| ARAN | …and at the end of the month everybody wants you to pay it back. Hang on — what did you say, an hour ago? About the Manx. There's a fixed number of atoms on the planet. | …e a fine mese tutti vogliono che tu glieli ripaghi. Aspetta — cos'hai detto, un'ora fa? Sul manx. Sul pianeta c'è un numero fisso di atomi. |
+| TOM | We're not losing atoms of water. | Non stiamo perdendo atomi d'acqua. |
+| ARAN | We're not losing atoms of water. So it's like atoms, isn't it. You make this much currency, it moves round all month, and at the end of the month it's all still here — it's just in the shops. You haven't lost any of it. You only have to know where it went. Same as the Manx. It's in a place you haven't been. | Non stiamo perdendo atomi d'acqua. Quindi è come gli atomi, no? Fai questa quantità di moneta, gira per tutto il mese, e a fine mese è ancora tutta qui — è solo nei negozi. Non ne hai persa nemmeno un po'. Devi solo sapere dov'è andata. Come il manx. È in un posto dove non sei andato. |
+| TOM | You've been saving that up. | Te la tenevi da parte. |
+| ARAN | Since you said it. I was waiting for it to come round. | Da quando l'hai detta. Aspettavo che tornasse il momento. |
+| TOM | Good callback. | Bel richiamo. |
+| ARAN | Your atoms. I just gave them somewhere to go. And it's the same disaster with IP, from the other side — | Sono i tuoi atomi. Io gli ho solo dato un posto dove andare. Ed è lo stesso disastro con la proprietà intellettuale, visto dall'altra parte — |
+| TOM | Go on. | Vai. |
+| ARAN | IP is: I'm going to build something that would help every human alive, and then I'm going to stop humans using it. Atoms with a wall round them. — Hang on. This is real time: an email, just now, from the people thinking of investing in us. "We'll need details of your IP. We need to know there's IP before we can invest." | La proprietà intellettuale è: costruisco una cosa che aiuterebbe ogni essere umano vivo, e poi impedisco agli esseri umani di usarla. Atomi con un muro intorno. — Aspetta. Questo è in diretta: un'email, adesso, dalle persone che stanno pensando di investire in noi. «Ci serviranno i dettagli della vostra proprietà intellettuale. Dobbiamo sapere che c'è, prima di investire.» |
+| TOM | Of course they do. | Per forza. |
+| ARAN | And I'm sitting here typing: yes, we've got IP, loads of it. Because we have. | E io sono qui che scrivo: sì, ce l'abbiamo, un sacco. Perché ce l'abbiamo. |
+| TOM | So. Horizon one. We are where we are, and we start where we are. You'd like to think in ideas and not worry about the rest, and so would I — and we both still need to eat. The bank invented the money; somebody still has to pay it back at the end of the month. That's us. | Ecco. Orizzonte uno. Siamo dove siamo, e partiamo da dove siamo. Ti piacerebbe pensare solo a idee e non preoccuparti del resto, e piacerebbe anche a me — e tutti e due dobbiamo ancora mangiare. La banca i soldi li ha inventati; a fine mese qualcuno li deve ripagare lo stesso. Siamo noi. |
+| ARAN | We both still need to eat. Right — where was I. Walls round atoms. | Tutti e due dobbiamo ancora mangiare. Bene — dov'ero rimasto. Muri intorno agli atomi. |
+| TOM | Walls round atoms. And the atoms are all still here. | Muri intorno agli atomi. E gli atomi sono tutti ancora qui. |
+
+**Why this container:** one image does the whole chapter's work — invented at turn 4 (the wand), retrieved at turn 8 by asking the minter what he said, applied at turn 10, credited at turn 14, and reused at turn 20 as the return marker after the world breaks in. The callback is the real thing: Tom said the atoms in Chapter 10 about the Manx, Aran reaches back for them by asking, Tom completes his own line, and Aran names the wait. The email arrives *inside* Aran's hold, as the corpus's "In parallel with this conversation" does at 4:227; Tom's horizon-one turn is his hold, for balance, and it folds the bank back in so the intrusion is used rather than parked.
+
+---
+
+### Chapter 12 — *Efficienza e velocità* — what we are building for, and the disagreement stands
+
+**Point:** efficiency is a number and speed is a feeling, or the other way round; this time the disagreement does not go on the shelf; an invitation is accepted on the person, not the subject; and the hour ends by starting again.
+
+**Shapes traversed:** **O8 the standing clash** (MINT — the refusal to concede, on 1:406–412) · **callback, m8 → Chapter 7** (*la mettiamo in pausa*, refused) · **N8 recommendation on personal guarantee** (2:266–282) · **N1 close** and the resisted goodbye (half-attested, 1:413–417 → 2:8) · aphorism against aphorism.
+
+**Owns:** the parked clash; the razor's flat verdict; question-and-answer floor; the ritual close (live canon). **Newly admits, one per beat:** disagreement held open *as* disagreement — named as permanent, converted into a division of labour, carried forward standing (beat 1); accepting an invitation before its content because of who brings it, and naming what was exchanged (beat 2); refusing your own close, being reminded of it, owning it, and stopping the container instead of the conversation (beat 3).
+
+**Holds (heard):** turn 2 (Aran, speed answers to a date), turn 8 (Aran, not on pause), turn 13 (Aran, the guarantee), turn 19 (Aran, four thousand).
+
+**Mints:** everything after Tom's refusal to concede is **MINT** — in the corpus Tom concedes on the next line (1:413) — and whether the standing clash is real in their conversational life is the ruling Tom has now given: keep. The turns between "Interesting." and the new recording are **MINT** (1:413–417 and 2:8 bracket them). The refusal of the pause is new to this cut and rests on the same mint.
+
+**Surface forms admitted:** *in parallelo*, *ciascuna*, *lo sforzo*, *l'efficienza*, *la velocità*, *finché non*, *buttarsi dentro*, *martellare*, *rispondere a una data*, *una sensazione*, *progettare*, *mettersi d'accordo*, *lasciare in piedi*, *fisica molecolare*, *non fa per me*, *un consiglio*, *una garanzia*, *una tribù*, *una dozzina*, *un filtro*, *un algoritmo*, *l'antidoto*, *bretone*, *fine settimana*, *è passata l'ora*, *fermarsi*, *quattromila*, *da lì in poi*, *la registrazione*, *far partire*, *parte due*. Availability only.
+
+**Near-neighbour points:** *finché non* — the pleonastic *non* that Spanish *hasta que* never takes; *ti butti dentro* — *buttarsi*, absence; *ci martelli sopra* — *ci + sopra*, the void; *metterci d'accordo* against *ponernos de acuerdo* — matched idiom with the verb swapped, the trap inside the anchor; *in piedi* against *en pie* — anchor; *da chiunque altro* — *da* for "from a person" where Spanish uses *de*; *non fa per me* — no Spanish twin; *non me l'avresti chiesto* — double clitic plus conditional perfect, matched, an anchor; *perché no* against *por qué no* — anchor; *fermiamoci* — reflexive imperative with the clitic attached, matched with *parémonos*; *è passata l'ora* — *essere* as the auxiliary of *passare* where Spanish takes *haber*; *qualunque strada tu abbia preso* — subjunctive, matched with *cualquier camino que hayas tomado*; *fanne partire un'altra* — *fa' + ne*, the void, on the last owned line.
+
+| | English | Italiano |
+|---|---|---|
+| TOM | Here's what I actually want. Ten languages, in parallel, one day a year each. Three years, and I'm speaking all ten — badly, and happily. Minimum total effort. That's the only thing I care about. | Ecco cosa voglio davvero. Dieci lingue, in parallelo, un giorno all'anno ciascuna. Tre anni, e le parlo tutte e dieci — male, e felice. Minimo sforzo totale. È l'unica cosa che mi interessa. |
+| ARAN | No. You care about efficiency until you need something. You need Chinese by October. So one day a year for ten years isn't going to win — you dive in and hammer at it, seventy-five dialogues in ten days, and you don't care what it costs. Efficiency is lovely. But so is speed, and speed is the one that answers to a date. | No. Ti interessa l'efficienza finché non ti serve qualcosa. Ti serve il cinese per ottobre. Quindi un giorno all'anno per dieci anni non vince — ti butti dentro e ci martelli sopra, settantacinque dialoghi in dieci giorni, e non ti importa quanto costa. L'efficienza è bellissima. Ma lo è anche la velocità, e la velocità è quella che risponde a una data. |
+| TOM | Speed is a feeling. Efficiency is a number. | La velocità è una sensazione. L'efficienza è un numero. |
+| ARAN | Speed is the number that matters to the person who needs it. Efficiency is the number that matters to the person designing the course. | La velocità è il numero che conta per chi ne ha bisogno. L'efficienza è il numero che conta per chi progetta il corso. |
+| TOM | Then we're not going to agree. | Allora non ci metteremo d'accordo. |
+| ARAN | No. | No. |
+| TOM | Then we'll put it on pause. Like the thirteen weeks. | Allora la mettiamo in pausa. Come le tredici settimane. |
+| ARAN | No. Not on pause. The thirteen weeks went on pause because it doesn't matter which of us is right — a hundred hours is a hundred hours, you said so yourself. This one matters. If you build for efficiency and I sell for speed, we're building two different things and calling them one, and we should know that, out loud, every day. Leave it standing. | No. Non in pausa. Le tredici settimane le abbiamo messe in pausa perché non importa chi di noi due ha ragione — cento ore sono cento ore, l'hai detto tu. Questa importa. Se tu costruisci per l'efficienza e io vendo per la velocità, stiamo costruendo due cose diverse e le chiamiamo una, e dobbiamo saperlo, ad alta voce, ogni giorno. Lasciamolo in piedi. |
+| TOM | Good. Leave it standing. I build for efficiency, you sell it for speed, and the learners tell us which of us was right. | Bene. Lasciamolo in piedi. Io costruisco per l'efficienza, tu lo vendi per la velocità, e chi impara ci dirà chi di noi due aveva ragione. |
+| ARAN | Standing. Next thing. | In piedi. Prossima cosa. |
+| TOM | Next thing. Two days on molecular physics. In Hong Kong. Coming? | Prossima cosa. Due giorni di fisica molecolare. A Hong Kong. Vieni? |
+| ARAN | From anyone else: no. Sorry — molecular physics, not my thing. From you: yes. I've already said yes. Because you wouldn't have asked. | Da chiunque altro: no. Scusa — la fisica molecolare non fa per me. Da te: sì. Ho già detto di sì. Perché tu non me l'avresti chiesto. |
+| TOM | I almost don't have to explain anything. | Quasi non devo nemmeno spiegare niente. |
+| ARAN | You don't. What you're giving me isn't a recommendation, it's a guarantee — your personal guarantee — and that's what a tribe is. A dozen people who know what you'd find interesting, and go and find it, and bring it to you. The other version of that filter is somebody in California writing an algorithm, and that filter is driving all of us towards people who already agree with us. Your version is the antidote. We just spent ten minutes not agreeing, and I'm still coming to Hong Kong. | Non devi. Quello che mi dai non è un consiglio, è una garanzia — la tua garanzia personale — ed è questo una tribù. Una dozzina di persone che sanno cosa troveresti interessante, e vanno a cercarlo, e te lo portano. L'altra versione di quel filtro è qualcuno in California che scrive un algoritmo, e quel filtro ci sta spingendo tutti verso chi è già d'accordo con noi. La tua versione è l'antidoto. Abbiamo appena passato dieci minuti a non essere d'accordo, e a Hong Kong ci vengo lo stesso. |
+| TOM | So — Breton, for a weekend? | Allora — bretone, per un fine settimana? |
+| ARAN | Why not. | Perché no. |
+| TOM | Right. That's the hour. Let's stop there. | Bene. È passata l'ora. Fermiamoci qui. |
+| ARAN | One thing. Somebody at Cardiff: the routes to four thousand words are all different. After four thousand, they're all the same. | Una cosa. Uno a Cardiff: le strade per arrivare a quattromila parole sono tutte diverse. Dopo le quattromila, sono tutte uguali. |
+| TOM | Interesting. …No. Hang on. Four thousand? | Interessante. …No. Aspetta. Quattromila? |
+| ARAN | Four thousand. Below it, every method looks different — whatever road you took. Above it, nobody can tell which one you used; from there it's only how often you use the language. So the whole argument we've been having is about the road to four thousand, and after that the road doesn't exist. Efficiency, speed — after four thousand, nobody can tell. | Quattromila. Sotto, ogni metodo sembra diverso — qualunque strada tu abbia preso. Sopra, nessuno sa dire quale hai usato; da lì in poi conta solo quanto spesso usi la lingua. Quindi tutta la discussione che stiamo facendo è sulla strada fino a quattromila, e dopo la strada non esiste. Efficienza, velocità — dopo le quattromila, nessuno lo sa dire. |
+| TOM | We're not stopping. | Non ci fermiamo. |
+| ARAN | You said the hour. | Hai detto l'ora. |
+| TOM | I said the hour. Stop the recording, start another one. Part two. Now. | Ho detto l'ora. Ferma la registrazione, fanne partire un'altra. Parte due. Adesso. |
+| ARAN | Now. | Adesso. |
+
+**Why this container:** the clash is the same eight-turn escalation as Chapter 7's, and the ear is meant to hear the rhyme — the same "Then we'll put it on pause" in Tom's mouth — and then hear it refused, which is the callback doing work rather than decorating: the difference between a parked disagreement and a standing one is only audible if the pod has both, in that order, with the same line. The guarantee then proves the standing clash cost nothing ("I'm still coming to Hong Kong"), and the four-thousand-words fact reframes the clash itself before the tape stops. "Now." is the last word of the pod, and it starts again.
+
+---
