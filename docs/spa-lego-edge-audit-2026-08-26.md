@@ -261,9 +261,16 @@ same English, the same Spanish, two slots in one debut round:
 that here"` and `"let's agree that before"`. `S0540L01` prompts `"I don't mind if"` / `"no me
 importa si"` twice, and none of its four BUILD phrases connects to anything.
 
-Zero in the early course, sixteen in the late course. That is not a methodology question and it
-needs no ruling from you — it is straightforwardly broken, and it is the sharpest single piece of
-evidence that something changed in how the late course was built.
+Zero in the early course, sixteen in the late course — and every one of the sixteen sits between
+seed 518 and seed 546. They were all written in the same seven minutes on 28 May. That is not a
+methodology question and it needs no ruling from you: it is straightforwardly broken, bounded, and
+cheap to clean up.
+
+One more, from the same reader, verified in the database: `S0477L01` teaches "sick" / "enfermo",
+and its last USE phrase is `"that is so sick"` / `"eso es tan enfermo"`. The English is the slang
+sense — "that's brilliant" — and the Spanish says the man is ill. Its five siblings are all
+correct. A one-row mistranslation, not a pattern, but a good illustration that the sampled read
+does find real things when they are there.
 
 ---
 
@@ -337,10 +344,30 @@ all in three phrases out of five**.
 it. Notably it is *not* worse on prose quality, where the sample found no regional signal, and *not*
 worse on the one-edge rate, which is flat across regions. If you fix one number, fix that one.
 
-Three independent censuses point the same way and none of them is a matter of taste: duplicate
-BUILD rows go 0 early → 16 late; stale tilings go 2.7% early → 17.4% late; bare-LEGO openers go
-81.4% early → 95.9% late. Something in the late build was running thinner, and it left three
-different kinds of fingerprint.
+**But there are two separate problems here, not one, and it is worth not confusing them.**
+
+Chasing the duplicate BUILD rows to their timestamps found that **all 32 of them were written in a
+single seven-minute window — 28 May 2026, 15:45 to 15:52 UTC** — inside one batch run that wrote
+725 BUILD rows across seeds 470–568 in an hour. That batch also explains the stale tilings almost
+entirely. It does **not** explain the thin edges:
+
+| | seeds | BUILD phrases connecting to nothing | edge-drawing BUILDs per LEGO | stale tiling |
+|---|---|---|---|---|
+| early, for reference | 1–150 | 36.2% | 2.61 | 2.7% |
+| late, before the batch | 401–469 | 52.8% | 1.63 | 1.9% |
+| **the 28 May batch** | 470–568 | 46.0% | **1.80** | **36.0%** |
+| late, after the batch | 569–668 | 56.8% | **1.30** | 0.7% |
+
+Inside the batch band the edges are *slightly better* than the late course on either side of it.
+So:
+
+- **The thin edges are a gradual drift, not an incident.** 2.61 → 1.63 → 1.80 → 1.30 as the course
+  goes on. That is the builder getting worse at choosing partners as the taught inventory grows,
+  and it is the thing a redesign has to fix.
+- **The duplicates and the stale tilings are a localised accident** in one hour of one afternoon,
+  confined to seeds 470–568. That is a cleanup job, cheap and bounded, and it needs no doctrine.
+
+I had these written up as one story before checking the timestamps. They are not.
 
 **What should edge-selection by least action optimise for?** Three candidate rules, each with the
 number from this audit that argues for it:
