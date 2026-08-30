@@ -1,0 +1,190 @@
+{
+  "concept": "proposed-additions",
+  "version": 1,
+  "status": "PROPOSAL — not loaded by index.cjs, not read by either lab, nothing executes it; no learner hears a word of it",
+  "provenance": "trades",
+  "source": {
+    "document": "docs/sector-pods/trades-metagraph-mapping-2026-08-30.md",
+    "corpus": "NONE. There is no trades corpus. The encounter inventory (document §3, encounters E1–E18) is derived/constructed by the mapping itself — each entry labelled derived-confident or constructed — and every attestation below is labelled accordingly. This file records shapes the trunk CANNOT express for the sector; it attests nothing.",
+    "sector_context": "UK/Ireland domestic-and-small-commercial trades (electrical, plumbing/heating, gas, carpentry/general building; working-at-height and gas as the safety strand); the learner seat is the TRADESPERSON in both encounter families (public-facing and site-facing); trade vocabulary is overlay and never a node",
+    "derived": "2026-08-30",
+    "author": "the trades-pilot worker (prediction committed before mapping at a886a55f8)"
+  },
+  "id_range": {
+    "rule": "Minted in the existing register but from 501 upward, FIXED by the commission: the store holds 1..21, the health proposal 101..110, outcome-mints 201..299, Talk Bollocks 301..399, Ireland 401..499. Nothing in this file is outside 501..599.",
+    "nodes": "N501",
+    "moves": "F501–F502",
+    "composition_edges": "C501–C503",
+    "survivability_edges": "S501–S504",
+    "outcome_shapes": "none minted, deliberately — see outcome_shapes_note",
+    "bound_pairs": "none",
+    "walks": "none"
+  },
+  "schema_note": "This file does NOT validate against schemas/metagraph-v1-schema.json as written, on the same points as the health and Ireland proposals: (1) `provenance` is an enum of [\"pod-0\", \"method-pod\"] and this file needs \"trades\" — the same one-line widening the other three proposal files need; (2) attestations carry a `constructed` array of document-encounter citations (E1–E18) because there is no corpus, no g-rows and no flows; (3) the concept `proposed-additions` is not one of the schema's five file kinds. Nothing about the existing store is changed to accommodate any of this.",
+  "store_untouched": "nodes.json, moves.json, edges.json, outcome-shapes.json and walks/ are byte-identical to origin/main (226d96671). POD-1 is attested evidence and is extended here, never re-cut. The health, outcome-mints, Talk Bollocks and Ireland proposal files are also untouched.",
+
+  "port_verdict": {
+    "one_sentence": "The trunk ports at distance and the cost curve bends down: one node and two moves against store + Family A + Ireland's pair (health minted 10, Ireland 2, trades 1); Family A re-attests with a position-perfect single dropout (N103 — no person-file, mirroring Ireland's no-body loss of N102, while N102 itself re-attests here on property); Ireland's N401/N402/F401 all re-attest; all twenty move families attest somewhere in the sector; O7 and F302 hold in a fourth corpus; the money fails the position test both ways.",
+    "dependency": "Six encounters land primarily on health-proposal ids and two on Ireland's; the one-mint headline is computed against store + BOTH proposals. If health's Family A/B were rejected, roughly six shapes would have to mint here under trades ids; if Ireland's were rejected, N401 and N402 would re-mint here almost verbatim — trades attests them independently, which argues for accepting them upstream rather than re-minting downstream. The trunk that ports is store + Family A + Ireland's pair.",
+    "sector_variable": "DUTY OVERRIDING CONSENT — all three mints concentrate where a trust-held duty removes a position from both parties' K2 (N501) or transfers verification and liability across the K1 gap (F501, F502). Health's variable was asymmetry, Ireland's was proxy holding, trades' is the trust-held override of consent."
+  },
+
+  "nodes": [
+    {
+      "id": "N501",
+      "name": "Compelled make-safe",
+      "provenance": "trades",
+      "gloss": "A danger is discovered — often in the course of other business, unbidden — and duty held in trust removes the choice from BOTH parties: the danger is declared against its norm, the act is announced and done regardless of the customer's refused consent (the disconnection, the capping, the danger tag), the statutory record is affixed, and the reinstatement condition is named. If the customer contests the person, the refuser drops the self, holds the duty, and names the forum that stands behind it.",
+      "positions": [
+        { "index": 1, "name": "danger discovered, usually mid-other-business, unbidden", "family": null },
+        { "index": 2, "name": "danger declared against the norm", "family": "F2", "note": "composes N104 — the norm-referenced verdict runs here" },
+        { "index": 3, "name": "the compelled act announced and DONE; consent not sought and refusal unavailable", "family": null },
+        { "index": 4, "name": "the record affixed and the reinstatement condition named — 'nobody reconnects that until it's re-tested'", "family": null },
+        { "index": 5, "name": "press on the person → drop the self, hold the duty, name the forum", "family": "F16", "optional": true, "repeatable": true },
+        { "index": 6, "name": "the onward path — who can fix it, what happens next (routes into the quote)", "family": "F2", "optional": true }
+      ],
+      "attestations": { "constructed": ["E5(c) refusing unsafe work, compelled form", "E5 failure branch (the press on the person)", "the statutory periodic inspection when it finds something (document §6)"] },
+      "example_surface": "\"I can't leave it connected — I'm disconnecting it now and tagging it. Nobody reconnects that until it's been re-tested.\" / \"It was fine yesterday! Put it back.\" / \"It wasn't fine yesterday — you just couldn't smell it. Ring Gas Safe if you want it checked; they'll stand by it.\"",
+      "why_not_an_existing_node": "N401 Bound refusal (ireland) is the nearest: disowned refusal, trust-held rule, forum — but N401's refuser never ACTS on the asker's property, and its asker keeps the walk-away; here the customer's refusal position DISAPPEARS (the recorded ladder test firing) and the act proceeds against it. N102 Consent-and-narrated-act requires consent — N501 is its dark twin, act WITHOUT consent. N106 Stop-and-verify halts the actor's OWN act. N107 Conditional instruction is future and contingent — N501's act is present and actual. N108 records a constraint but never acts. O101 has the OTHER party doing the stopping. The consecutive pair positions 3+4 (consent-overridden act + affixed record with reinstatement condition) exists in no store file and no proposal.",
+      "smoke_test": "Passes, strongly. A Japanese gas fitter condemns an appliance; a German TÜV inspector fails the car and it does not drive home; a marine surveyor grounds the boat; a food inspector closes the kitchen. Wherever regulated duty meets private property, the shape attests, in any language column.",
+      "trunk_or_branch": "trunk",
+      "ladder_note": "The one place trades' otherwise-ROTATING K2 stops rotating: duty held in trust overrides both parties, and the customer's refusal position disappears — the recorded position test fires here and only here. Health contains this shape unattested (the safeguarding hold, the ambulance crew that will not leave); Aran's corpus had no occasion for it. A third sector attesting N501 graduates it the way Family A graduated.",
+      "second_axis_note": "The axis's best case in any sector so far: the conversation that converts a silent lethal risk into speech at the moment of discovery. The recovery it teaches — survive the customer's anger while the gas stays off — is the recovery whose failure kills."
+    }
+  ],
+
+  "moves": [
+    {
+      "id": "F501",
+      "name": "The exhibit — come and look at this",
+      "provenance": "trades",
+      "test": "The K1-holder voluntarily collapses their own information asymmetry: relocates the encounter to the evidence, invites the non-expert to SEE it, and only then asks for the decision. The evidence does the persuading; the speaker's authority is not spent.",
+      "attestations": { "constructed": ["E2 diagnosis delivered", "E4 bad news mid-job (the discovery exhibited before the re-price)"] },
+      "dialogic_attestations": 0,
+      "example_surface": "\"Come and look at this. See how it's all powder behind here? That's why your door's dropped. Now — you've two ways to go...\"",
+      "why_not_F103": "F103 write-it-down makes a record for LATER and for the teller's side; F501 transfers the means of verification NOW, to the other party's eyes.",
+      "why_not_P3": "Nothing is reproduced verbally; the read-back pair exchanges words, the exhibit exchanges sight.",
+      "why_not_F302": "F302 prices the speaker's authority DOWN to license delivery; F501 spends no authority at all — the evidence buys full confidence for both parties. They compose happily ('I could be wrong, but come and look') and are different moves.",
+      "why_not_N104_position": "N104's norm-reference is verbal ('we like under 42'); the exhibit is a distinct position that LICENSES the verdict and the decision that follows. One position's worth of novelty = a move, per the rubric.",
+      "position": "VERDICT-PENDING → EXHIBIT → verdict (N104) / decision sought. Attaches before N104's delivery or N402's task handover.",
+      "trunk_or_branch": "trunk",
+      "smoke_test": "Passes. The mechanic shows the worn pad, the dentist the x-ray, the tailor the frayed lining, in any culture with pockets to pay from."
+    },
+    {
+      "id": "F502",
+      "name": "The countersigned telling — sign to say I've told you",
+      "provenance": "trades",
+      "test": "The teller solicits the other party's countersign on a record of the telling, transferring liability for the telling to the told. Nothing is conceded, no decision is changed, no absolution is sought; the record targets the party PRESENT.",
+      "attestations": { "constructed": ["E5(b) warn-and-waiver (the declined-advice waiver)", "E13 site briefing (the induction sheet, per hearer)", "the delivery note at the merchant's (E12 margin)"] },
+      "dialogic_attestations": 0,
+      "example_surface": "\"I'll need your signature to say I advised replacement and you declined. It doesn't stop you — it just says I told you.\"",
+      "why_not_F103": "F103 is the teller writing their own record for their own side; F502 requires the OTHER party's act, and the record runs AGAINST them.",
+      "why_not_P3": "Nothing is reproduced; the countersign attests receipt of the telling, not its content.",
+      "why_not_F14": "Propositional and load-bearing: liability actually moves.",
+      "why_not_N108": "N108's record benefits an absent third party; F502's record targets the interlocutor present.",
+      "position": "TELLING → COUNTERSIGN-SOLICIT → sign. One position of novelty (the solicit); the grant half is plain F1, which is why this is a move and not a bound pair — the stricter bound-pair reading is named in the document's least-confident calls (§9).",
+      "trunk_or_branch": "trunk",
+      "smoke_test": "Passes with a note: where paperwork is thin the same move runs verbally witnessed ('you heard me tell him'). The liability-transfer position attests wherever telling carries liability, which is everywhere trades exist."
+    }
+  ],
+
+  "composition": [
+    { "id": "C501", "kind": "composition", "contained": "N104", "container": "N501", "attestation": "constructed, E5(c) — the danger declared against its norm is a norm-referenced result delivery running at N501 position 2", "mechanical": true },
+    { "id": "C502", "kind": "composition", "contained": "N105", "container": "N501", "attestation": "constructed, E5(c) onward path — 'it needs a registered fitter; I can have our gas man out Tuesday' routes the fix to a named third party at N501 position 6", "mechanical": true },
+    { "id": "C503", "kind": "composition", "contained": "N402", "container": "N2", "attestation": "constructed, E4/E17 — the mid-job suspension arises inside the job transaction and re-enters it; same containment Ireland recorded as C402, re-attested here with the task burden running in EITHER direction (E17 reverses it), role assignment absorbing the reversal", "mechanical": true }
+  ],
+
+  "survivability": [
+    {
+      "id": "S501",
+      "kind": "survivability",
+      "provenance": "trades",
+      "b_attemptable_only_if": "Delivering the compelled make-safe (N501 position 3) — the LEARNER'S seat",
+      "a_survivable": "The customer's anger at an act done against their refused consent, while the act STAYS DONE",
+      "nodes": ["N501"],
+      "attested_response_positions": ["constructed, E5(c) failure branch — drop the self, hold the duty (F16), name the forum"],
+      "recovery_attested": "constructed only",
+      "recovery_note": "Kin to Ireland's S403 (contested personally for a decision not yours) but harder: the officer's refusal leaves the citizen's world unchanged; the fitter's act leaves the customer without heating tonight. The learner who cannot survive this either reconnects against the duty or stops finding dangers. This is the sector's highest-cost recovery (document §6).",
+      "answer_slot_class": "relational"
+    },
+    {
+      "id": "S502",
+      "kind": "survivability",
+      "provenance": "trades",
+      "b_attemptable_only_if": "Delivering any diagnosis or price the customer cannot verify (E2, E3, E4)",
+      "a_survivable": "Not being believed by someone who cannot check you",
+      "nodes": ["N104"],
+      "attested_response_positions": ["constructed, E2 failure branch — reformulate downward, re-exhibit (F501), route to the record (photos, the meter)"],
+      "recovery_attested": "constructed only",
+      "recovery_note": "The recovery is F501: collapse your own K1 rather than assert it. The sector's answer to the trust gap every K1-pinned encounter carries.",
+      "answer_slot_class": "failure"
+    },
+    {
+      "id": "S503",
+      "kind": "survivability",
+      "provenance": "trades",
+      "b_attemptable_only_if": "Making the stop call on a peer (E16) — and receiving one",
+      "a_survivable": "The stop being resented — 'I know what I'm doing' — with rank and CV against you",
+      "nodes": ["N106"],
+      "attested_response_positions": ["constructed, E16 failure branch — the rank-free hold: on site the stop call outranks the CV, and the shape must survive the resentment in both seats"],
+      "recovery_attested": "constructed only",
+      "recovery_note": "Health's O101/N106 walked peer-to-peer with K4 on the LEARNER'S body. The apprentice who cannot survive making a stop call on the foreman is the site's costliest silence.",
+      "answer_slot_class": "failure"
+    },
+    {
+      "id": "S504",
+      "kind": "survivability",
+      "provenance": "trades",
+      "b_attemptable_only_if": "Quoting, or re-pricing mid-job (E3, E4)",
+      "a_survivable": "The number being contested — and holding it by grounds or moving it by SCOPE, never by rate",
+      "nodes": ["N16"],
+      "attested_response_positions": ["constructed, E3 failure branch — grounds ('that's two days and the access equipment') or scope-movement ('under that if you do your own making-good')"],
+      "recovery_attested": "constructed only",
+      "recovery_note": "N16's settlement position walked under pinned K1/K3 rather than rung-0 banter — the haggle's professional register. First constructed attestation of N16 outside the Method Pod.",
+      "answer_slot_class": "non-delivery"
+    }
+  ],
+
+  "outcome_shapes_note": "Zero minted, deliberately. 'Your property is condemned' is O1 non-delivery walked at the duty-override point, and N501 plus the ladder block carry it — Ireland's precedent followed. The sector's silent failures (the never-discovered fault) produce no encounter and there is no conversation for an outcome shape to be an outcome of; the line falls at DISCOVERY (document §6).",
+
+  "ladder": {
+    "note": "Extends the ladder blocks of outcome-mints and Ireland; kinds K1–K4 and the recorded test ('a position appears, disappears or changes hands — not merely gets harder or dearer') used unchanged.",
+    "ruling": {
+      "K1": "PINNED to the tradesperson, TIME-INDEXED: unassigned before the inspection (the bare 'couldn't tell you till I've looked' STANDS — N13 with status; F302 is the sector's native register), pinned hard after. The customer's share (the house's history) informs but does not decide — a shallower split than Ireland's.",
+      "K2": "ROTATING — either party can refuse and end the encounter at almost every point, N201's discretionary settle available to BOTH seats — which the ladder has not seen coexist with pinned kinds before. The ONE place it stops rotating is N501: duty held in trust overrides both parties and the customer's refusal position DISAPPEARS. The test fires there and only there.",
+      "K3": "PINNED to the tradesperson — the meter, the manometer, the certificate, the photos. F18 dies to it; the callback triage (E9) and the disputed snag (E17) are decided by it. The record is of the INSTALLATION, never of the person — which is exactly why N103 fails to attest (no person-file to check a known answer against).",
+      "K4": "PRESENT and CHANGING SEATS between the encounter families: customer-facing it is the customer's property and money (N102's undergoing position re-attests on the property — the body was never the variable); site-facing it is the LEARNER'S OWN BODY and their mates' — the first sector where the safety strand protects the speaker's side. Role annotation absorbs the flip."
+    },
+    "money": {
+      "ruling": "NOT a fifth kind and NOT K2 in different clothes — argued both ways in document §5 and ruled on the position test. Decisive facts: the quote's positions are identical when an insurer pays; deposit = N109 + P2 run early; retention = P2 + N9 grant-plus-limit; the chase (E18) composes whole from F5 + N109 + N401's forum position; the haggle is N16, minted at RUNG 0 from two friends talking — the store's own money-shape needed no pinned kind to exist. And the hold ROTATES within one job (customer holds the money before payment; tradesperson holds the finished work and the withheld certificate after — K3 doing the levering). In ladder terms the money is the stake-content of K4 plus a rotating rung-0-style hold.",
+      "what_would_change_it": "A real corpus showing a position that exists ONLY when the customer personally holds the payment — present in householder jobs, absent in insurer-paid jobs with all else equal — would reopen this."
+    },
+    "held_in_trust": {
+      "verdict": "The existing annotation COVERS the trades form without strain: Building Regulations, Gas Safe, the manufacturer's warranty, the absent landlord, the main contractor's site rules. New evidence for the annotation's grain: the tradesperson's holding is MIXED within one seat — K1 held personally, the K2-override of N501 held wholly in trust — and because the annotation attaches per kind, it expresses this with no change. The landlord wrinkle (payer not in the room; kinds split across three parties) is N108's absent-beneficiary logic and needs nothing new."
+    },
+    "rungs": "Per STRETCH, not per encounter — the sector's ladder contribution. Rung 0: the doorstep, the tea, the cabin, merchant banter. Rung 1: E12 the merchant's counter (POD-1 in trade clothes). Rung 2 (K1+K3): E1, E2, E7, E11, E14. Rung 3 (stake on the table): E3, E4, E9, E17, E18. Duty-override apex: E5(c), E13, E16. No encounter sits on one rung for its whole length.",
+    "collapsing_families": {
+      "F18": "dies at K3 inside the business (the meter decides what normal is; F102 answers) and REVIVES in the cabin between peers — the death tracks the pinned stretch, not the sector",
+      "F11": "dies where the elicit is not returnable ('when did it last work?') and REVIVES on the doorstep and in the cabin",
+      "F15": "obeys Ireland's refined rule WITH A TIME-INDEX: pre-inspection the hidden fault is assigned to NEITHER side, so the K1-holder's bare F15 stands; post-inspection it is K1-assigned and converts to N105 or F4+N109. One rule, three corpora, now time-indexed.",
+      "unified_rule": "A family dies exactly where the kind that kills it is pinned, and revives the moment it unpins — per stretch. Health's ward has no rung-0 stretch (total deaths); the trades visit opens and closes at rung 0."
+    },
+    "O7_invariance": "Holds, all five positions, FOURTH corpus — with the trades violation-by-fixing being re-prioritising or discounting ('I'll make sure you've hot water tonight even if the rads wait'); the recovery position itself unchanged. Evidence class stated: consistency against constructed encounters, not independent attestation.",
+    "F302_invariance": "Holds, FOURTH corpus, richly — 'I won't swear to it till the board's off, but that's your problem right there' is close to the sector's catchphrase. Trades adds the time-index reading: the flag is honest because K1 is unassigned until the inspection.",
+    "second_axis": "Supported, shape-level, third sector: the weight lands on N106/O101 (the stop call), N107 (the interim instruction) and maximally on N501. Low-cost shapes inside high-cost encounters stay low-cost. BLIND ZONE: Ireland's hole is present but NARROWER — the line falls at DISCOVERY; the never-discovered fault produces no encounter. The statutory periodic inspection is the recorded case of the hole being filled by MANDATING the encounter into existence, and it maps entirely onto existing shapes."
+  },
+
+  "explicitly_not_minted": [
+    { "candidate": "The quote — the sector's identity encounter", "verdict": "N8 + P1 + N16 + N109, with N107-form exclusions", "why": "No two consecutive novel positions anywhere in it. Minting it would have been minting the sector's self-image." },
+    { "candidate": "The handover", "verdict": "N4 + P3 + N107 + F103 + N110 + P2", "why": "An assembly is not a shape." },
+    { "candidate": "The site briefing as a node", "verdict": "N4 + P5 + P3 + F103 + F502, run dyadically per hearer", "why": "The real novelty is one-to-many TOPOLOGY and the store is dyadic throughout — a trunk-level limit flagged in the document (§9), not a trades mint. Minting a 'briefing' node would smuggle topology in as shape." },
+    { "candidate": "Show-then-do apprenticeship", "verdict": "P3 with acts as the medium", "why": "Health already ruled witnessed compliance a P3 variant; precedent followed deliberately, against the sector's whole pedagogy asking for a node." },
+    { "candidate": "The 'not my work' demarcation (E9)", "verdict": "N104 + F6", "why": "The solder line is a blood-sugar threshold in a different mask." },
+    { "candidate": "The customer's YouTube diagnosis (E10)", "verdict": "F16 + N104, O5 when the premise falls", "why": "N14's audit stays implicit exactly as in health; nothing new to hold it." },
+    { "candidate": "The merchant's counter (E12)", "verdict": "N2/N3/F6/P2 — POD-1 verbatim", "why": "Minting would be minting on furniture." },
+    { "candidate": "The retention / staged payment", "verdict": "P2 + N9 grant-plus-limit", "why": "Composition; the money discipline applied at the till." },
+    { "candidate": "The chase (E18)", "verdict": "F5 + N109 + N401's forum position", "why": "Composes whole — and it is the money argument's own test bench, which is why its composing matters." },
+    { "candidate": "The exclusions clause ('if the joists are gone, that's extra')", "verdict": "N107", "why": "A threshold is a threshold whether it is a blood pressure, a date or a joist." },
+    { "candidate": "'BELOW!' — the shouted site warning", "verdict": "not a shape", "why": "One position, no adjacency pair, no exchange. Noted for the walk layer as an interjection." }
+  ]
+}
