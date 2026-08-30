@@ -1,0 +1,399 @@
+{
+  "concept": "proposed-additions",
+  "version": 1,
+  "status": "PROPOSAL — not loaded by index.cjs, not read by the Script Lab, nothing executes it",
+  "provenance": "health-sector-v3",
+  "source": {
+    "document": "docs/sector-pods/health-metagraph-mapping-2026-08-30.md",
+    "corpus": "docs/sector-pods/source/health-sector-conversations-v3.md — 23 contexts, 73 flows, 438 turns, 219 exchanges",
+    "corpus_branch": "docs/aran-health-sector-conversations @ eb7222dfc — NOT on main",
+    "derived": "2026-08-30",
+    "author": "Aran (hand-authored flows); mapping by the metagraph worker"
+  },
+  "clinical_caveat": "The conversational shapes are solid, but the clinical specifics — nil-by-mouth medication handling, safety-netting thresholds, the blood-sugar figures — want a pass from a practising clinician before anything ships. Nothing in this file has had that pass.",
+  "id_range": {
+    "rule": "Minted in the existing register (N/P/F/C/S/O + integer, per schemas/metagraph-v1-schema.json) but from 101 upward, so nothing can collide with the store's 1..21 range and every id is self-evidently a health proposal on sight.",
+    "nodes": "N101–N110",
+    "bound_pairs": "P101",
+    "moves": "F101–F104",
+    "composition_edges": "C101–C110",
+    "survivability_edges": "S101–S107",
+    "outcome_shapes": "O101"
+  },
+  "schema_note": "This file does NOT validate against schemas/metagraph-v1-schema.json as written, on one point only: `provenance` is an enum of [\"pod-0\", \"method-pod\"] and this file needs \"health-sector-v3\". Widening that enum is a one-line change to the schema and it is deliberately NOT made here. Attestations are carried in an `attestations.health` array of \"<context> flow <n>\" citations, because the schema's `row` pattern (^g[0-9]+$) is a pod-0 row id and health has no g-rows.",
+  "store_untouched": "nodes.json, moves.json, edges.json, outcome-shapes.json and walks/ are byte-identical to 8215a7462. POD-1 is attested evidence and is extended here, never re-cut.",
+
+  "nodes": [
+    {
+      "id": "N101",
+      "name": "Medium contract",
+      "provenance": "health-sector-v3",
+      "gloss": "One party declares a limitation on the medium of the encounter itself and pre-negotiates the repair protocol BEFORE any business starts. The licence is issued in advance of the trouble it covers.",
+      "positions": [
+        { "index": 1, "name": "declare own limitation + ask licence", "family": null },
+        { "index": 2, "name": "grant + reassure", "family": "F14" },
+        { "index": 3, "name": "issue the standing repair licence", "family": null },
+        { "index": 4, "name": "accept the licence", "family": "F1" },
+        { "index": 5, "name": "pivot to business", "family": "F21", "pivot_capable": true }
+      ],
+      "attestations": { "health": ["1.0 Welsh flow 1", "1.0 Welsh flow 2", "1.0 English flow 1", "1.0 English flow 2", "1.0 English flow 3", "2.0 Welsh flow 1", "2.0 English flow 1", "2.0 English flow 2"] },
+      "quote": "\"I'm learning Welsh at the moment, so I'll try to stay in Welsh as much as possible, but if we get stuck I might need to ask you to speak English, if that's okay.\" / \"Chwarae teg i chi! Of course, that's fine.\" (1.0 Welsh flow 1)",
+      "why_not_an_existing_node": "N6 Repair is the trouble handled when it arrives; N101 is the licence granted before it arrives, and the two are different positions in time. N9 Feasibility request asks whether the world permits X; N101 declares that the SPEAKER may fail. Nothing in the store negotiates the medium of the encounter.",
+      "smoke_test": "Passes. Code-choice negotiation and the L2 speaker's pre-emptive licence attest wherever anyone conducts business in a second language; the Welsh/English content is an admission per pair, not the shape.",
+      "trunk_or_branch": "trunk"
+    },
+    {
+      "id": "N102",
+      "name": "Consent-and-narrated act",
+      "provenance": "health-sector-v3",
+      "gloss": "One party announces a physical act they intend to perform ON the other, obtains the go-ahead, narrates the act as it happens including the sensation to expect, and reports its completion. The other party's job is to undergo, not to do.",
+      "positions": [
+        { "index": 1, "name": "announce the intended act + seek the go-ahead", "family": null },
+        { "index": 2, "name": "grant, or counter-condition", "family": "F1" },
+        { "index": 3, "name": "direct the body / forecast the sensation", "family": null, "repeatable": true },
+        { "index": 4, "name": "undergo, or report an impediment", "family": "F1" },
+        { "index": 5, "name": "report completion + aftercare", "family": "F2" }
+      ],
+      "attestations": { "health": ["1.1 flow 1", "1.3 flows 1–3", "1.5 flow 1", "1.6 flows 1–3", "1.8 flows 1 and 3", "2.3 flows 1 and 3", "2.4 flows 1–3"] },
+      "quote": "\"Left arm's fine. The cuff will squeeze for a few seconds now, then it lets go.\" / \"That's not so bad.\" (1.3 flow 1)",
+      "why_not_an_existing_node": "N4 Instruction-giving has the RECIPIENT act on the instruction; here the recipient is acted upon and the speaker narrates. The store has no shape in which one party's body is the object of the other's turn.",
+      "merged_from": "Two candidates — 'consent-to-act' and 'narrated procedure' — were merged after they were found to co-occur in every attestation. Kept apart they would have been two mints on one shape.",
+      "smoke_test": "Passes. Barbers, dentists, tailors and masseurs attest it; the strength of the consent position is culturally variable, its presence is not.",
+      "trunk_or_branch": "trunk"
+    },
+    {
+      "id": "N103",
+      "name": "Identity check",
+      "provenance": "health-sector-v3",
+      "gloss": "A known-answer question. The asker already holds the answer and asks in order to confirm the person, not to learn the fact. The third position — the silent match — is what makes it not an information question.",
+      "positions": [
+        { "index": 1, "name": "ask for a datum the asker already holds", "family": null },
+        { "index": 2, "name": "supply it", "family": "F1" },
+        { "index": 3, "name": "match confirmed, and the business resumes", "family": null, "optional": true }
+      ],
+      "attestations": { "health": ["1.1 flow 1", "1.1 flow 3", "1.5 flow 3"] },
+      "quote": "\"Can you tell me your date of birth, so I know I've got the right person?\" / \"Twelfth of June, nineteen thirty-eight.\" (1.1 flow 3)",
+      "why_not_an_existing_node": "N3 Availability enquiry and N5 Acquaintance both have an asker who does not know the answer. Reversing that reverses what the response position is FOR, and the recovery when it goes wrong (the answer does not match) is a different recovery entirely.",
+      "smoke_test": "Passes. Bank counters, border desks and call centres attest it worldwide.",
+      "trunk_or_branch": "trunk",
+      "thin": "Three attestations. Thin, and flagged as thin."
+    },
+    {
+      "id": "N104",
+      "name": "Result delivery",
+      "provenance": "health-sector-v3",
+      "gloss": "A measurement is produced, interpreted against a norm the other party does not hold, and either banked or challenged for its meaning. The number is not negotiated — it is explained.",
+      "positions": [
+        { "index": 1, "name": "produce the measurement", "family": null },
+        { "index": 2, "name": "interpret it against the norm", "family": "F2" },
+        { "index": 3, "name": "bank it, or challenge it for its meaning", "family": "F3", "outcome_branch": true },
+        { "index": 4, "name": "supply the reference points", "family": "F1" },
+        { "index": 5, "name": "uptake + what follows from it", "family": "F1" }
+      ],
+      "attestations": { "health": ["1.3 flow 1", "1.3 flow 2", "2.9 flows 1–3"] },
+      "quote": "\"It was 48. We like under 42, and diabetes starts at 48 - so you're right at the doorstep.\" (2.9 flow 2)",
+      "why_not_an_existing_node": "N16 Precision haggle is the only shape in the store built on a number, and it is a NEGOTIATION — number, counterbid, settlement. Here nobody bids. The distinctive position is norm-referencing: the figure is meaningless to the hearer until the speaker supplies the two thresholds either side of it.",
+      "smoke_test": "Passes. Exam results, credit scores, MOT readings, weighing scales.",
+      "trunk_or_branch": "trunk"
+    },
+    {
+      "id": "N105",
+      "name": "Deferred grant via a named third party",
+      "provenance": "health-sector-v3",
+      "gloss": "The request cannot be settled here. It is not refused: the responder names WHO will settle it and WHEN, and the asker banks the undertaking.",
+      "positions": [
+        { "index": 1, "name": "request, or a gap surfaced", "family": null },
+        { "index": 2, "name": "cannot settle it here", "family": null },
+        { "index": 3, "name": "name the third party and the time", "family": "F2" },
+        { "index": 4, "name": "bank the undertaking", "family": "F1" }
+      ],
+      "attestations": { "health": ["1.2 flow 3", "1.4 flow 3", "1.5 flow 3", "1.7 flow 2", "1.7 flow 3", "1.10 flow 2", "2.9 flow 2"] },
+      "quote": "\"I'll check your chart with the doctor tonight and write it down for you, so there's no guessing in the morning.\" / \"Written down would be lovely.\" (1.10 flow 2)",
+      "why_not_an_existing_node": "N9 grants immediately with a boundary. O1 refuses with a reason. This does neither: it holds the request open and routes it. It is also the responder-side performance of O2's recovery ('re-route the ask'), which the store records as attestable in the Method Pod only.",
+      "boundary_note": "The N105 / N109 boundary is this mapping's least confident call. N105 is a promise to FIND OUT from a named other; N109 is a promise about the speaker's own future conduct, sought by the other party. 1.10 flow 2 is both.",
+      "smoke_test": "Passes. 'I'll have to ask my manager' is a universal of any encounter with a bounded agent.",
+      "trunk_or_branch": "trunk"
+    },
+    {
+      "id": "N106",
+      "name": "Stop-and-verify",
+      "provenance": "health-sector-v3",
+      "gloss": "The party being acted upon challenges the act. The actor HALTS, ratifies the challenge as correct to have made, re-runs the check from the top, and withholds until certain. The recovery is a halt, not a reformulation.",
+      "positions": [
+        { "index": 1, "name": "act in progress", "family": null },
+        { "index": 2, "name": "challenge the act", "family": null, "outcome_branch": true },
+        { "index": 3, "name": "halt + ratify the challenge", "family": "F101" },
+        { "index": 4, "name": "re-verify from the top", "family": null },
+        { "index": 5, "name": "withhold until certain", "family": null },
+        { "index": 6, "name": "endorse the halt", "family": "F1" }
+      ],
+      "attestations": { "health": ["1.5 flow 3", "1.8 flow 2", "2.10 flow 3"] },
+      "quote": "⚠ \"I don't think these are mine. I usually have three.\" / \"Then let's stop right there and check - you're quite right to say. Can you tell me your full name and date of birth?\" (1.5 flow 3)",
+      "why_not_an_existing_node": "N6 Repair is trouble in UNDERSTANDING and its recovery is to say it again differently. Here understanding is perfect and the ACT is wrong; saying it again differently would be the wrong move and a dangerous one. The store contains no shape whose recovery is to stop.",
+      "smoke_test": "Passes. 'Wait — that's not my order', 'hold on, that's not the part I ordered'. Universal wherever one party acts on another's behalf.",
+      "trunk_or_branch": "trunk",
+      "note": "This is the shape the prediction said the ⚠ strand would mint, and it is the only node here that occurs exclusively under a ⚠ marker."
+    },
+    {
+      "id": "N107",
+      "name": "Conditional instruction",
+      "provenance": "health-sector-v3",
+      "gloss": "An unrequested instruction about a FUTURE contingency: if X happens, do Y, and do it without waiting. Distinguished by the trigger condition, an explicit threshold, a graded urgency, and a read-back the instructor may solicit rather than wait for.",
+      "positions": [
+        { "index": 1, "name": "state the trigger condition", "family": null },
+        { "index": 2, "name": "state the action and its urgency grade", "family": null },
+        { "index": 3, "name": "ask for the threshold, or accept", "family": "F3", "outcome_branch": true },
+        { "index": 4, "name": "enumerate the threshold", "family": "F1" },
+        { "index": 5, "name": "read back", "family": "F9" },
+        { "index": 6, "name": "confirm + name where the record lives", "family": "F103" }
+      ],
+      "attestations": { "health": ["1.2 flows 1–2", "1.4 flow 1", "1.5 flow 1", "1.7 flow 1", "1.9 flows 1–2", "1.10 flows 1 and 3", "1.11 flows 1–3", "2.5 flows 1 and 3", "2.6 flows 1–3", "2.7 flow 3", "2.8 flows 1–3", "2.9 flows 1 and 3", "2.10 flow 1"] },
+      "quote": "⚠ \"What should I be looking out for, exactly? How bad is bad?\" / \"Three things. Breathless just sitting still. Coughing up blood. Or a fever that won't come down with paracetamol. Any of those - same day, no waiting.\" (2.8 flow 2)",
+      "why_not_an_existing_node": "N4 Instruction-giving begins with a REQUEST and instructs about the present. N107 is unrequested, conditional and future, and its failure mode is that the trigger is never recognised — which is why the threshold position exists and why the read-back is solicited rather than volunteered.",
+      "smoke_test": "Passes. Warranty terms, evacuation drills, 'if the light comes on, stop the car'.",
+      "trunk_or_branch": "trunk",
+      "note": "The single most-attested shape in the health corpus and the backbone of the priority ⚠ strand."
+    },
+    {
+      "id": "N108",
+      "name": "Constraint declared and durably recorded",
+      "provenance": "health-sector-v3",
+      "gloss": "A standing constraint is declared. It is checked against the source, accommodated now, AND committed to a record so it holds for parties not present and occasions not yet arrived.",
+      "positions": [
+        { "index": 1, "name": "declare the standing constraint", "family": null },
+        { "index": 2, "name": "check it against the source", "family": null },
+        { "index": 3, "name": "accommodate now", "family": "F6" },
+        { "index": 4, "name": "commit it to the record", "family": "F103" },
+        { "index": 5, "name": "acknowledge the record", "family": "F1" }
+      ],
+      "attestations": { "health": ["1.7 flow 2", "1.10 flow 2", "2.3 flow 2"] },
+      "quote": "⚠ \"I'm allergic to penicillin. It brings me out in a terrible rash.\" / \"Penicillin rash - I'm putting that in big letters on your record now.\" (2.3 flow 2)",
+      "why_not_an_existing_node": "N9's limit binds this encounter. N108's fourth position binds every future encounter, including ones neither party will attend, and the beneficiary of the turn is a third party who is not in the room. No store shape has an absent beneficiary.",
+      "smoke_test": "Passes. Dietary requirements at a hotel, a name spelling at a registry, an access need on a booking.",
+      "trunk_or_branch": "trunk"
+    },
+    {
+      "id": "N109",
+      "name": "Commitment sought and bounded",
+      "provenance": "health-sector-v3",
+      "gloss": "One party asks for a guarantee about the other's future conduct. It is given, or it is explicitly bounded — 'I won't promise what I can't be sure of' — and the bound is itself the reassurance.",
+      "positions": [
+        { "index": 1, "name": "seek the guarantee", "family": null },
+        { "index": 2, "name": "give it, or bound it with a reason", "family": null, "outcome_branch": true },
+        { "index": 3, "name": "ratify the guarantee, or accept the bound", "family": "F1" }
+      ],
+      "attestations": { "health": ["1.8 flow 3", "2.5 flow 3", "2.7 flow 3", "2.8 flow 3", "2.10 flow 2", "2.10 flow 3"] },
+      "quote": "\"I won't promise what I can't be sure of, but that's the honest plan.\" / \"Tomorrow, all being well. I'll settle for that.\" (2.10 flow 2)",
+      "why_not_an_existing_node": "N7 Arrangement negotiates WHAT will happen; N109 negotiates how far the speaker will stake themselves on it. The bounded refusal at 2.10 flow 2 is O1 (non-delivery with a reason) applied to a promise rather than to goods, and it has no home in the store.",
+      "smoke_test": "Passes. Tradesmen's dates, delivery windows, 'can you guarantee it'll be ready'.",
+      "trunk_or_branch": "trunk"
+    },
+    {
+      "id": "N110",
+      "name": "Signposting the encounter",
+      "provenance": "health-sector-v3",
+      "gloss": "The party who controls the encounter states the shape of what is about to happen inside it — the order of the parts, and where the other party will be told things. Meta-talk about the interaction, not about the world.",
+      "positions": [
+        { "index": 1, "name": "name what happens next, in order", "family": null },
+        { "index": 2, "name": "name when the other party will be told", "family": null, "optional": true },
+        { "index": 3, "name": "assent", "family": "F1" }
+      ],
+      "attestations": { "health": ["1.0 five of six flows (the pivot)", "2.0 all four flows", "2.1 flows 1–2", "2.2 flow 3", "2.3 flow 1", "2.4 flows 1 and 3", "2.10 flows 2–3"] },
+      "quote": "\"Here's what happens next: I'll examine you now, we'll take some bloods, and I'll come back to you myself before lunch with a plan. You won't be left wondering.\" (2.10 flow 3)",
+      "why_not_an_existing_node": "N17 Interruption-and-bank is the store's only meta-conversational shape and it looks BACKWARD at a thread that was broken. N110 looks forward at a thread not yet begun. F21's onward solicit opens the next ticket; N110 narrates the next four.",
+      "smoke_test": "Passes. A solicitor, a mechanic and a passport office all do it, and it is the shape a learner needs to follow an encounter they did not design.",
+      "trunk_or_branch": "trunk"
+    }
+  ],
+
+  "bound_pairs": [
+    {
+      "id": "P101",
+      "name": "Apology-and-absolution pair",
+      "provenance": "health-sector-v3",
+      "gloss": "One party asserts a negative about their own conduct — imposing, fussing, wasting time — and the other positively contradicts it.",
+      "positions": [
+        { "index": 1, "name": "self-blame for imposing", "family": "F13" },
+        { "index": 2, "name": "absolution", "family": "F17" }
+      ],
+      "attestations": { "health": ["1.0 Welsh flow 3", "1.4 flow 3", "1.7 flow 3", "1.9 flow 3", "2.0 Welsh flow 2", "2.1 flow 3"] },
+      "quote": "\"I'm probably wasting your time, doctor\" / \"You're not wasting my time at all - this is exactly what I'm here for.\" (2.1 flow 3)",
+      "deliberately_a_pair_not_a_node": "This is N11 Mutual assessment positions 1–2, detached from positions 3–6 and standing alone. Minting a node for it would have been a duplicate of material POD-1 already attests. It is offered as a bound pair so that N11's decomposability is recorded WITHOUT re-cutting N11, which is attested evidence.",
+      "trunk_or_branch": "trunk"
+    }
+  ],
+
+  "moves": [
+    {
+      "id": "F101",
+      "name": "That's worth knowing",
+      "provenance": "health-sector-v3",
+      "test": "The responder explicitly ratifies the other party's contribution as valuable — as correct to have said — BEFORE acting on it. The assessment is of the telling, not of the person, the choice or the offering.",
+      "attestations": { "health": ["1.4 flow 3", "1.5 flow 3", "1.8 flow 2", "1.10 flow 2", "2.4 flow 2", "2.9 flow 3", "2.10 flow 3"] },
+      "dialogic_attestations": 7,
+      "quote": "⚠ \"The pain's back, actually. Worse than yesterday, if anything.\" / \"That's important - I'm glad you've told me.\"  (2.10 flow 3)",
+      "why_not_F12": "F12 Nice one assesses the other party, their choice, their offering or their help. F101 assesses the ACT OF TELLING, and it is what licenses the halt that follows. Where F12 closes a sequence, F101 opens one.",
+      "position": "REPORT → RATIFY THE TELLING → act on it. Position 2.",
+      "note": "The signature move of the ⚠ strand: 7 of the corpus's 14 ⚠ lines are answered with it, 3 more by an equivalent recording action, and 4 not at all."
+    },
+    {
+      "id": "F102",
+      "name": "That's normal",
+      "provenance": "health-sector-v3",
+      "test": "The responder ASSERTS the normality of the other's difficulty from a position of asymmetric knowledge. No tag, no agreement sought, no partner uptake required.",
+      "attestations": { "health": ["1.1 flow 2", "1.6 flow 3", "1.9 flow 3", "1.10 flow 3", "2.3 flow 3", "2.7 flow 3"] },
+      "dialogic_attestations": 6,
+      "quote": "\"You'll be asleep for all of it, and someone's with you every single minute. Nervous is completely normal.\" (1.10 flow 3)",
+      "why_not_F18": "F18 normalises WITH a tag and requires an emphatic agreement to complete — a symmetric move between equals. F102 is asserted downward and completes in one turn. Same content, different shape, and the difference is exactly the asymmetry that separates this corpus from POD-1.",
+      "position": "DIFFICULTY → ASSERT NORMALITY → (continue). Position 2."
+    },
+    {
+      "id": "F103",
+      "name": "I'll write that down",
+      "provenance": "health-sector-v3",
+      "test": "The responder commits the other party's information to a durable record, and says so. The record's beneficiary may be a third party or the other party's future self.",
+      "attestations": { "health": ["1.7 flow 2", "1.10 flow 2", "1.11 flow 1 (learner side)", "2.3 flow 2", "2.3 flow 3"] },
+      "dialogic_attestations": 5,
+      "quote": "\"Hang on, let me write this down. One in the morning, one at night, with food. Got it.\" (1.11 flow 1)",
+      "why_new": "A read-back (F9) checks that the hearer got it now. F103 makes it survive the conversation. The store has no move whose object is the record rather than the hearer.",
+      "position": "INFORMATION → COMMIT IT TO THE RECORD → acknowledge. Position 2."
+    },
+    {
+      "id": "F104",
+      "name": "Say that back to me",
+      "provenance": "health-sector-v3",
+      "test": "The INSTRUCTOR solicits the read-back rather than waiting for the recipient to volunteer one.",
+      "attestations": { "health": ["2.8 flow 2", "1.5 flow 1 (the witnessed-compliance analogue)"] },
+      "dialogic_attestations": 2,
+      "quote": "\"Now say the three things back to me once more - I know it sounds daft, but it sticks better.\" / \"Breathless, blood, fever. There - word perfect.\" (2.8 flow 2)",
+      "why_not_F9": "F9 is offered by the recipient. F104 is demanded by the instructor, which makes the read-back a compulsory position rather than an optional one — and that is the precondition for O4 (your read-back was wrong) being teachable at all.",
+      "position": "INSTRUCTION → SOLICIT THE READ-BACK → read-back → confirm. Position 2.",
+      "thin": "Two attestations, one of them an analogue. Thin, and flagged as thin."
+    }
+  ],
+
+  "composition": [
+    { "id": "C101", "kind": "composition", "contained": "P5", "container": "N102", "attestation": "2.4 flow 2 — the elicit pair runs inside the examination, 'does it hurt more when I press down, or when I let go?'", "mechanical": true },
+    { "id": "C102", "kind": "composition", "contained": "P3", "container": "N107", "attestation": "2.8 flow 2; 1.10 flow 1; 1.11 flow 3 — the read-back pair inside the safety net", "mechanical": true },
+    { "id": "C103", "kind": "composition", "contained": "N103", "container": "N106", "attestation": "1.5 flow 3 — the halt re-runs the identity check from the top", "mechanical": true },
+    { "id": "C104", "kind": "composition", "contained": "N105", "container": "N106", "attestation": "1.5 flow 3 — the halt ends in an undertaking to the pharmacist", "mechanical": true },
+    { "id": "C105", "kind": "composition", "contained": "N104", "container": "N102", "attestation": "1.3 flow 1 — the reading is delivered inside the narrated act", "mechanical": true },
+    { "id": "C106", "kind": "composition", "contained": "N107", "container": "N104", "attestation": "2.9 flows 1 and 3 — the result ends in a re-test date and a conditional", "mechanical": true },
+    { "id": "C107", "kind": "composition", "contained": "N105", "container": "N108", "attestation": "1.10 flow 2 — the record is obtained via a third party before it can be written", "mechanical": true },
+    { "id": "C108", "kind": "composition", "contained": "N109", "container": "N107", "attestation": "2.8 flow 3 — the safety net closes by extracting a promise", "mechanical": true },
+    { "id": "C109", "kind": "composition", "contained": "N7", "container": "N101", "attestation": "1.0 Welsh flow 3; 2.0 Welsh flow 2 — the medium proposal is declined with an account and a counter, and N7 runs at N101 position 2", "mechanical": true },
+    { "id": "C110", "kind": "composition", "contained": "N9", "container": "N101", "attestation": "1.0 English flow 3; 2.0 English flow 2 — the family-helper permission sits inside the opener", "mechanical": true }
+  ],
+
+  "survivability": [
+    {
+      "id": "S101",
+      "kind": "survivability",
+      "provenance": "health-sector-v3",
+      "b_attemptable_only_if": "Performing any act on another person (N102)",
+      "a_survivable": "Being halted mid-act by the person you are acting on",
+      "nodes": ["N106"],
+      "attested_response_positions": ["1.5 flow 3 — 'I don't think these are mine' → 'let's stop right there and check'", "1.8 flow 2", "2.10 flow 3"],
+      "recovery_attested": "repeated",
+      "recovery_note": "Three times, complete: halt, ratify, re-verify from the top, withhold until certain.",
+      "answer_slot_class": "failure"
+    },
+    {
+      "id": "S102",
+      "kind": "survivability",
+      "provenance": "health-sector-v3",
+      "b_attemptable_only_if": "Eliciting anything (P5, N12)",
+      "a_survivable": "An answer that cannot be given precisely",
+      "nodes": ["P5"],
+      "attested_response_positions": ["2.2 flow 3 — 'months, maybe?' → 'was it there at Christmas, say?'", "1.4 flow 2 — the 0-to-10 scale fails → 'let me ask another way'", "2.3 flow 3 — 'I can't remember them all' → 'do you have the repeat list with you?'"],
+      "recovery_attested": "repeated",
+      "recovery_note": "Three times. This is the recovery pod-0's S2 records as NEVER attested — 'no turn in the corpus takes up a hedge'. Health takes up the hedge three different ways: anchor it, re-frame the question, route to an artefact.",
+      "answer_slot_class": "failure"
+    },
+    {
+      "id": "S103",
+      "kind": "survivability",
+      "provenance": "health-sector-v3",
+      "b_attemptable_only_if": "Giving any instruction (N4, N107)",
+      "a_survivable": "The recipient surfacing a gap the instruction did not cover",
+      "nodes": ["N105"],
+      "attested_response_positions": ["1.10 flow 2 — ⚠ 'What about my heart tablets?' → 'I'll check your chart with the doctor tonight and write it down for you'"],
+      "recovery_attested": "once",
+      "recovery_note": "Once, and it is the first edge in either corpus that rests on the SPEAKER's own knowledge failing.",
+      "answer_slot_class": "failure"
+    },
+    {
+      "id": "S104",
+      "kind": "survivability",
+      "provenance": "health-sector-v3",
+      "b_attemptable_only_if": "Delivering a number (N104)",
+      "a_survivable": "The number being challenged for its meaning",
+      "nodes": ["N104"],
+      "attested_response_positions": ["2.9 flow 2 — 'High? How high? Should I be worried?' → '48. We like under 42, and diabetes starts at 48'", "1.3 flow 2"],
+      "recovery_attested": "twice",
+      "recovery_note": "Twice. The recovery is to supply the thresholds either side, not to repeat the figure.",
+      "answer_slot_class": "failure"
+    },
+    {
+      "id": "S105",
+      "kind": "survivability",
+      "provenance": "health-sector-v3",
+      "b_attemptable_only_if": "Making any plan with another party (N7, N107)",
+      "a_survivable": "A guarantee being demanded that you cannot honestly give",
+      "nodes": ["N109"],
+      "attested_response_positions": ["2.10 flow 2 — 'When exactly can I go home?' → 'I won't promise what I can't be sure of, but that's the honest plan'"],
+      "recovery_attested": "once",
+      "recovery_note": "Once. The bound IS the reassurance; the patient's uptake is 'that's all I wanted - an honest answer'.",
+      "answer_slot_class": "failure"
+    },
+    {
+      "id": "S106",
+      "kind": "survivability",
+      "provenance": "health-sector-v3",
+      "b_attemptable_only_if": "Explaining anything (N8)",
+      "a_survivable": "'I didn't follow that'",
+      "nodes": ["N6"],
+      "attested_response_positions": ["2.5 flow 2 — 'could you explain that again? what does that mean, exactly?' → 'an infection in the tubes of your lungs - a bug, basically'", "2.2 flow 2 — 'do you mean the pain or the dizziness?'", "1.1 flow 2 — 'what was your name again?'"],
+      "recovery_attested": "repeated",
+      "recovery_note": "Three times, complete, and the reformulation is genuine — not a repeat. pod-0 attests N6 once in 231 rows; health attests it three times in 73 flows and licenses it in advance at N101.",
+      "answer_slot_class": "chaining"
+    },
+    {
+      "id": "S107",
+      "kind": "survivability",
+      "provenance": "health-sector-v3",
+      "b_attemptable_only_if": "Any safety-critical instruction (N107)",
+      "a_survivable": "The recipient declaring a disposition that will defeat it",
+      "nodes": ["N109"],
+      "attested_response_positions": ["2.8 flow 3 — 'I don't like to make a fuss... I'll leave it and leave it' → 'the people who worry about making a fuss are exactly the ones who should ring. Promise me you will.'", "2.7 flow 3 — 'I just stopped them last time' → 'a lot of people do... But the full course, every time. Deal?'"],
+      "recovery_attested": "twice",
+      "recovery_note": "Twice, and both run the same three positions: normalise the disposition (F102), hold the instruction anyway (F16), extract an explicit commitment (N109).",
+      "answer_slot_class": "failure"
+    }
+  ],
+
+  "outcome_shapes": [
+    {
+      "id": "O101",
+      "name": "The other party stops you mid-act",
+      "provenance": "health-sector-v3",
+      "recovery_the_learner_must_own": "Halt. Ratify the challenge as correct to have made. Re-run the check from the top. Withhold until certain — never smooth over.",
+      "attestation_class": "health-attested",
+      "attested": "1.5 flow 3; 1.8 flow 2; 2.10 flow 3 — three complete cycles, all ⚠",
+      "node": "N106",
+      "why_it_earns_a_slot": "Every one of O1–O9 has the learner on the receiving end of the wrong turn. This is the first where the learner IS the wrong turn and the recovery is to stop being it. Nothing the learner already owns will serve: the reflex a transactional course builds is to keep the transaction moving.",
+      "sited_on": "The medication round — 1.5 flow 3",
+      "why_there": "The challenge is unmistakable, the halt is one turn, and the re-verification is a shape the learner already owns (N103)."
+    }
+  ],
+
+  "explicitly_not_minted": [
+    { "candidate": "Apology-and-absolution as a node", "verdict": "Bound pair P101 instead", "why": "It is N11 positions 1–2. A node would duplicate attested POD-1 material." },
+    { "candidate": "Diagnosis / formulation delivery", "verdict": "Lands on N8", "why": "N8 is solicit → recommend WITH GROUNDS → uptake. 2.5 supplies the grounds first and at greater length; the position sequence is N8's. Unsolicited is a walk property, not a new shape." },
+    { "candidate": "Agenda-parking ('the other thing can wait')", "verdict": "Lands on N17", "why": "2.1 flow 3 is 'name it and bank the thread' exactly — and it supplies the recovery half the store records as unattested, because the banked item is BOOKED." },
+    { "candidate": "'Let me check' as a move", "verdict": "Folded into N105 / N106 position 2", "why": "It is a position inside two shapes already proposed, not an independent response family." },
+    { "candidate": "Witnessed compliance ('let me watch you take those')", "verdict": "A variant of P3 read-back", "why": "The verification is physical rather than verbal; the position and its job are P3's." },
+    { "candidate": "Normality enquiry ('is that normal?')", "verdict": "N3 with F102 in the response position", "why": "Availability enquiry with the world's tolerance as the thing enquired after. Minting on the clinical framing would have been minting on vocabulary." },
+    { "candidate": "Threshold enquiry ('how bad is bad?')", "verdict": "N107 position 3", "why": "It is the branch inside the conditional instruction, not a shape of its own." }
+  ]
+}
