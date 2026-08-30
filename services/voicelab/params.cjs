@@ -117,6 +117,17 @@ function voicesFor (lang, production = {}) {
 let CARTESIA_CATALOGUE = {}
 let cartesiaNote = 'not read'
 let cartesiaPromise = null
+let cartesiaReadAt = 0
+
+// How long a read of Cartesia's catalogue stays good for. It used to be the life
+// of the process, which made the list wrong in the one direction the invalidate
+// call below cannot catch: a voice DELETED at the vendor — by hand, by another
+// tool, by anybody not going through this process — went on being offered as a
+// castable candidate until the next restart. Measured live 2026-08-30: a clone
+// removed from Cartesia (404 at the vendor) was still on the English candidate
+// list an hour later. Casting a voice that no longer exists is a render failure
+// wearing a green tick, so the list is now at worst five minutes stale.
+const CARTESIA_CATALOGUE_TTL_MS = 5 * 60 * 1000
 
 async function loadCartesiaCatalogue () {
   const key = process.env.CARTESIA_API_KEY
@@ -157,8 +168,10 @@ async function loadCartesiaCatalogue () {
 
 /** Cached, and never allowed to throw into a request. */
 function cartesiaCatalogue () {
-  if (!cartesiaPromise) {
+  const stale = cartesiaReadAt && (Date.now() - cartesiaReadAt) > CARTESIA_CATALOGUE_TTL_MS
+  if (!cartesiaPromise || stale) {
     cartesiaNote = 'reading Cartesia /voices…'
+    cartesiaReadAt = Date.now()
     cartesiaPromise = loadCartesiaCatalogue().catch((e) => { cartesiaNote = `Cartesia catalogue omitted — ${e.message}` })
   }
   return cartesiaPromise
@@ -177,6 +190,7 @@ function cartesiaCatalogue () {
  */
 function invalidateCartesiaCatalogue () {
   cartesiaPromise = null
+  cartesiaReadAt = 0
   cartesiaNote = 'not read'
 }
 
