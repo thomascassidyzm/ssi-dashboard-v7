@@ -476,7 +476,16 @@ function describeLanguage ({ code, langCourses, roles, voiceById, voices, catalo
     },
     // Voices that CAN speak this language and are not yet cast — the candidate
     // list, so casting is a click rather than a search.
-    candidates: voices
+    //
+    // ONE ROW PER VOICE. A voice cloned from this page is in BOTH sources: the
+    // `voices` row the clone route writes, and Cartesia's own owner catalogue.
+    // Before the dedupe below, every clone made here appeared twice in its own
+    // language — once registered, once as "this estate's Cartesia clone", same
+    // id — which reads as two voices to choose between and invites casting the
+    // copy that says it is not registered. Measured live 2026-08-30 on a clone
+    // created through the deployed route. `guideCandidates` already took this
+    // posture; the phrase-slot list did not.
+    candidates: dedupeByVoiceId(voices
       .filter((v) => v.is_active !== false)
       .filter((v) => castable(v))
       .filter((v) => (v.languages || []).some((l) => sameLang(l, code)))
@@ -485,7 +494,7 @@ function describeLanguage ({ code, langCourses, roles, voiceById, voices, catalo
       // a language nobody has cast yet — which, until casting is populated, is
       // every language.
       .map((v) => ({ voiceId: v.voice_id, name: v.display_name || v.human_name || v.voice_id, kind: voiceKind(v), engine: v.tts_engine || null, gender: v.gender || null, registered: true, pace: paceOf(v) }))
-      .concat(cartesiaCandidates(code, catalogue, roles))
+      .concat(cartesiaCandidates(code, catalogue, roles)))
       .slice(0, 80),
   }
 }
@@ -593,6 +602,20 @@ function guideCandidates ({ code, voices, guideRoles, voiceById, inUse, catalogu
     .filter((c) => !taken.has(c.voiceId) && !seen.has(c.voiceId) && !voiceById.has(c.voiceId))
     .map((c) => ({ ...c, inUse: false }))
   return [...unregistered, ...ownedClones, ...registered].slice(0, 80)
+}
+
+/**
+ * Keep the FIRST entry for each voice id. The registered `voices` row is built
+ * first deliberately: it is the one carrying gender and pace, and it is the one
+ * the cast route needs no extra step for.
+ */
+function dedupeByVoiceId (candidates) {
+  const seen = new Set()
+  return candidates.filter((c) => {
+    if (seen.has(c.voiceId)) return false
+    seen.add(c.voiceId)
+    return true
+  })
 }
 
 /**
