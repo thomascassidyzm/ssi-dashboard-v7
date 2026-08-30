@@ -170,3 +170,33 @@ supabase/.temp/
 # results). Same ephemeral category as docs/sessions/ above.
 # --------------------------
 docs/course-optimization/**/*.json
+
+# --------------------------
+# Per-worker scratch worktrees and probe workspaces (2026-08-30).
+# Created in-place by the A-108/A-134/A-74 sweep workers, the Claude
+# worktree helper and the Hetzner throughput probe. They are working
+# space belonging to one worker's run, never repo content, and they
+# make `git status` in this checkout unreadable. Not deleted — ignored.
+# --------------------------
+.a-munster/
+.a108-*/
+.a134-*/
+.a74-*/
+.claude/worktrees/
+.hetzner-probe/
+.scan-gender/
+
+# --------------------------
+# Chat/transcript archives pulled down for analysis — other systems'
+# records, kept locally for reading, not this repo's history.
+# --------------------------
+.kai-chat-archive/
+
+# --------------------------
+# Local database files and OS packages downloaded for headless-browser
+# deps. Binary, machine-local, reproducible; never versioned here.
+# (database/*.db also catches the literal `database/*.db` file a broken
+# shell glob left behind on 2026-08-26.)
+# --------------------------
+database/*.db
+*.deb
