@@ -62,3 +62,290 @@ Every scene number 1–43 appears exactly once in the "absorbs" column. Scenes 1
 **Chapter anatomy.** Every chapter carries: **Point** (one sentence); **Shapes traversed** (the budget line, in the id register the store resolves — N for nodes, O for overlay outcomes, m for the 23 corpus moves as the control arm numbered them, and the eight summit shapes by name); **Owns / Newly admits** — the response positions the chapter hands the learner, one per beat; **Holds** — which turns are the heard floor-holds, so nobody has to guess which turn is affordable; **Mints** in place; **Surface forms admitted** (availability only — heard is not owned, never a prompt target); **Near-neighbour points** (Italian against its Spanish shadow); the table, English beside Italian; and one **why this container** line.
 
 ---
+
+## 2. Session one — Chapters 1 to 8
+
+---
+
+### Chapter 1 — *Parte quattro* — knowing a language is knowing what is between the words
+
+**Point:** you do not know a language because you know its words; you know it because you know what is between them — and everything the classroom builds is the other thing.
+
+**Shapes traversed:** N1 open (1:8–11, 4:14–24) · joint construction, m2, three times (1:342–343, 1:220–222) · the medium named, m12 (1:213–222, 1:381) · **the counterexample absorbed** (1:120–135) · backchannel ratification, m10 · **planted for Chapter 9:** *un palazzo in mezzo a un campo*.
+
+**Owns:** backchannel ratification; the ritual open; colours, "I'd like one that's…", "I don't mind" (live canon). **Newly admits, one per beat:** the title completed before the host can (beat 1); the bathos completion absorbed (beat 2); closing the partner's open clause and being ratified (beat 3); narrating a gesture for the listener in the third person (beat 4); breaking a stated rule with one natural sentence and having the rule-holder keep the finding (beat 5).
+
+**Holds (heard, never owned):** turn 6 (Aran, the big picture), turn 9 (Tom, the city), turn 17 (Aran, the web). Turn 9 is Tom's on purpose — the control arm's Scene 1 gave him the city and the chapter keeps it; it is the one hold in the chapter that is not Aran's, and it is where the phrase Chapter 9 will reach back for is said.
+
+**Zero-admission stretch:** turns 20–24 (*Rosso, ma*), carried from Scene 26 with its checked words unchanged: after, red, say, bus, house, one, that's, a lot, can't, I'd like, mind, good, little, something, in it, know, more, small, all, language.
+
+**Mints:** none. Reattribution stated, as in the control arm: the counterexample is Tom's line (Aran's own at 1:132–135), because the shape needs it to come from outside.
+
+**Surface forms admitted:** *parte quattro*, *l'istruzione*, *l'universo*, *diciotto milioni*, *chi lo sa*, *un punto qualsiasi*, *il quadro generale*, *un sistema adattivo complesso*, *sette miliardi*, *menti*, *cose fighe*, *i collegamenti*, *le strade*, *i palazzi*, *in mezzo a un campo*, *poverini*, *una fila*, *l'aula*, *peccato che*, *la registrazione*, *mimare*, *il bracciolo*, *la poltrona*, *colpi*, *noioso*, *la rete*, *attraversare*, *divertirsi*, *qualcosina*. Availability only. "Talk Bollocks" stays as it is: it is the name of the thing.
+
+**Near-neighbour points:** *palazzo* ≠ sp. *palacio* — building, not palace, on the key noun; *strada* — no live Spanish neighbour (pull toward *calle* → nothing); locative *ci* ("non **ci** abita nessuno") — Spanish drops it, selection by absence; *ci scrivi* — *ci* for "on it", the void; *comincia tu* — stressed subject after the imperative, matched with *empieza tú*, an anchor; *peccato che* + subjunctive against *lástima que* — matched mood, different noun; *bracciolo* against *reposabrazos* — absence; *autobus rosso*, *casa rossa* — adjective after the noun and moving with it, an anchor against English (*autobús rojo*, *casa roja*); *non importa* — exact anchor on the counterexample line; *qualcosina* — the *-ina* diminutive on an indefinite, no Spanish twin.
+
+| | English | Italiano |
+|---|---|---|
+| TOM | Right. This is Tom and Aran Talk Bollocks, part four. Today we've got— | Bene. Questo è Tom e Aran Talk Bollocks, parte quattro. Oggi abbiamo— |
+| ARAN | The future of education? | Il futuro dell'istruzione? |
+| TOM | The future of life, the universe, and education. | Il futuro della vita, dell'universo, e dell'istruzione. |
+| ARAN | Are you going to put "part four of eighteen million"? | Ci scrivi «parte quattro di diciotto milioni»? |
+| TOM | Who knows. Let's just start anywhere. You start. | Chi lo sa. Partiamo da un punto qualsiasi. Comincia tu. |
+| ARAN | The broad picture — and I'll say it fast because it's big — is that none of this happens on its own. Schooling is one piece of a complex adaptive system, and the end of the game has to be seven billion connected, happy, enthusiastic minds who can solve complicated problems— | Il quadro generale — e lo dico veloce perché è grande — è che niente di tutto questo succede da solo. La scuola è un pezzo di un sistema adattivo complesso, e la fine del gioco devono essere sette miliardi di menti connesse, felici, entusiaste, capaci di risolvere problemi complicati— |
+| TOM | Do some cool shit. | Fare cose fighe. |
+| ARAN | —very, very quickly. Yes. That. So — start small. Start with the smallest thing there is. What does it mean to know a word? | —molto, molto in fretta. Sì. Quello. Allora — partiamo dal piccolo. Dalla cosa più piccola che c'è. Cosa vuol dire conoscere una parola? |
+| TOM | It's not that you know the words. You know what's between the words. The edges. Like a city — you don't know a city because you know the buildings; you know it because you know the streets. You can name every building in Rome and still not be able to get from one to the next. So a new word without streets… | Non è che conosci le parole. Conosci quello che c'è tra le parole. I collegamenti. Come una città — non conosci una città perché conosci i palazzi; la conosci perché conosci le strade. Puoi sapere il nome di ogni palazzo di Roma e non riuscire comunque ad andare da uno all'altro. Quindi una parola nuova senza strade… |
+| ARAN | …is a building in the middle of a field. | …è un palazzo in mezzo a un campo. |
+| TOM | Exactly that. | Esatto, proprio così. |
+| ARAN | Nobody lives there. | Non ci abita nessuno. |
+| TOM | Nobody lives there. And schools keep building them. Poor things. | Non ci abita nessuno. E le scuole continuano a costruirli. Poverini. |
+| ARAN | Poor things, the buildings or the schools? | Poverini chi, i palazzi o le scuole? |
+| TOM | Both. Show me the classroom version. | Tutti e due. Fammi vedere la versione da aula. |
+| ARAN | So take a row of words — five of them, like this — and one link between each. That's the classic classroom: rich in words, poor in edges. …It's a pity the recording can't pick up my pathetic attempts to act this out. | Allora prendi una fila di parole — cinque, così — e un collegamento tra una e l'altra. Questa è l'aula classica: ricca di parole, povera di collegamenti. …Peccato che la registrazione non riesca a cogliere i miei patetici tentativi di mimarlo. |
+| TOM | They'll get it. He's banging on the arm of the chair. Five bangs, in a row. | Lo capiranno. Sta battendo sul bracciolo della poltrona. Cinque colpi, in fila. |
+| ARAN | Five bangs in a row. And all you can do with five in a row is start here and walk to there. And that's boring — that's really boring, and it's what most people have ever been given. But now put another row under it, and another, so it's fifteen — and now draw every link there could be between them. Now I can start here and go through it fifteen different ways, and I never have to have been taught any of the fifteen. And that's— | Cinque colpi in fila. E con cinque in fila l'unica cosa che puoi fare è partire da qui e arrivare là. Ed è noioso — è davvero noioso, ed è quello che quasi tutti hanno sempre avuto. Ma adesso mettici un'altra fila sotto, e un'altra, così sono quindici — e adesso disegna tutti i collegamenti possibili tra loro. Adesso posso partire da qui e attraversarle in quindici modi diversi, e nessuno dei quindici me lo deve aver insegnato. E questo è— |
+| TOM | —the web. | —la rete. |
+| ARAN | That's playful. That's the moment the adult learner thinks: oh, I can say a lot of different things. I'm in control of this. Try it. After "red", what can I say? "Red bus." "A red house." "One that's red." A lot. And what can't I say? I can't say "red but". | Questo è giocare. È il momento in cui l'adulto che impara pensa: oh, posso dire un sacco di cose diverse. Questa cosa la controllo io. Prova. Dopo «rosso», cosa posso dire? «Autobus rosso.» «Una casa rossa.» «Uno rosso.» Tanto. E cosa non posso dire? Non posso dire «rosso ma». |
+| TOM | "I'd like one that's red — but I don't mind." | «Vorrei uno rosso — ma non importa.» |
+| ARAN | …You can. I said you can't, and you can. Good. So after "red" there is a "but" — with a little something in it. Now I know one more. So do you. | …Puoi. Ho detto che non puoi, e puoi. Bene. Quindi dopo «rosso» c'è un «ma» — con qualcosina in mezzo. Adesso ne so una in più. Anche tu. |
+| TOM | A small one. | Piccola, però. |
+| ARAN | All of it is small. That's the language. | È tutto piccolo. È la lingua. |
+| TOM | Fifteen small things, and every road between them. | Quindici cose piccole, e tutte le strade in mezzo. |
+| ARAN | And not one building in a field. They really need to find a way to record hands, don't they. | E nemmeno un palazzo in mezzo al campo. Dovrebbero proprio trovare un modo di registrare le mani, eh? |
+| TOM | They really do. | Dovrebbero proprio. |
+
+**Why this container:** the open runs five short turns before the first hold, as attested (4:14–21), and the chapter then descends from the biggest sentence in the pod to the smallest — seven billion minds to "rosso ma" — in one arc, which is the point: the whole future of education lands on what sits between two words. Three joint constructions (*un campo*, *la rete*, *poverini*) and the counterexample are the four owned moves, all under nine words; everything long is heard. The field is said twice so that Chapter 9 can reach it.
+
+---
+
+### Chapter 2 — *La fatica* — effort makes the memory, and how much do we actually know that
+
+**Point:** the words that stay are the ones that cost you something — and the honest state of that claim is "we think", not "we know".
+
+**Shapes traversed:** anecdote-with-flag, m4, challenged mid-story, m5 (1:344–349) · **the specimen** (1:322–331) · **pre-emption** (1:307–313) · **N14 premise audit**, m23 (1:336–341) · O5-adjacent — the honest downgrade · the flagged claim, m11 · **planted for Chapter 8:** *accettala lo stesso* · **planted for Chapter 9:** the curve, "by next week it's gone".
+
+**Owns:** the anecdote-with-flag; the live-demonstration frame; reformulation; ratification. **Newly admits, one per beat:** surviving the sample-size challenge by turning the story on the challenger (beat 1); being the specimen — narrating your own head instead of performing (beat 2); handing over a point the partner reached first (beat 3); asking for the ground under a claim you both like, and taking "we think" as the floor (beat 4).
+
+**Holds (heard):** turn 3 (Aran, the learner's letter), turn 10 (Aran, the hook), turn 14 (Tom, Ebbinghaus), turn 21 (Aran, the Bjork landscape). Four holds in one arc because the chapter has four beats, each with its own attested hold (§4b, rule H).
+
+**Mints:** none. The *accettala lo stesso* line is Aran's own flag at 1:344–349, and the "please accept my anecdotal evidence" catchphrase it grows into is at 1:347–349 and 4:242–246; it is said here so that Chapter 8 can call it back.
+
+**Surface forms admitted:** *dimostrare*, *accettala lo stesso*, *una studentessa*, *le sono costate fatica*, *sparite*, *costruire una chiesa su*, *colpo basso*, *in gallese*, *ripetere*, *formare una memoria*, *troppo facile*, *mezzo preso*, *un gancio*, *lasciarlo lì*, *tra due ore*, *smettila*, *il tedesco*, *imparare a memoria*, *sillabe senza senso*, *campione di uno*, *citare*, *gli intervalli*, *eppure*, *la svolta*, *sembra funzionare*, *a che punto siamo*, *gli studi*, *peer review* (loanword), *mappato*, *fatto scientifico dimostrato*, *una sensazione*, *una bandierina*, *convivere con*. Availability only. *Pysgod*, *puss*, *cod* are the specimen's own words and stay as they are — Tom's hook is an English hook, and pretending otherwise would falsify the demonstration.
+
+**Near-neighbour points:** *fatica* ≠ sp. *fatiga* — effort, not tiredness: the false friend carrying the chapter's invariant, said six times; *ricordarsi* — cognate verb, non-matching reflexive pattern ("te la ricorderai" vs "la recordarás"); *ti faccio ripetere* — causative *fare*, matched with *te hago repetir*, an anchor; *gancio* against *gancho* — the -cio/-cho shift; *smettila* — no Spanish twin, selection by absence; *stavo per andare* — *stare per* against *iba a*; *mi era sfuggito il nome* — *sfuggire* with a dative, where Spanish adds a *se*; *a che punto siamo* — the essere/estar remap on the audit's own question; *convivere con* against *vivir con* — Italian keeps the prefix; *è da dove parte* — anchor to close on.
+
+| | English | Italiano |
+|---|---|---|
+| ARAN | I've got a story. It proves nothing — accept it anyway. | Ho una storia. Non dimostra niente — accettala lo stesso. |
+| TOM | Go on. | Dai, racconta. |
+| ARAN | A learner writes to me: the words she remembers are the ones that cost her effort. The easy ones, the ones that came free — gone. Every single one. And she's cross about it, because the easy ones were the ones she liked. | Una studentessa mi scrive: le parole che ricorda sono quelle che le sono costate fatica. Quelle facili, quelle venute gratis — sparite. Tutte quante. Ed è arrabbiata, perché quelle facili erano quelle che le piacevano. |
+| TOM | One learner. You're building a church on one learner? | Una studentessa. Stai costruendo una chiesa su una studentessa? |
+| ARAN | I said it proves nothing. But you'll remember it, won't you? | Ho detto che non dimostra niente. Ma tu te la ricorderai, no? |
+| TOM | …That's a dirty trick. Yes. | …Che colpo basso. Sì. |
+| ARAN | It's the same trick every time. Fish, in Welsh: pysgod. | È sempre lo stesso trucco. Pesce, in gallese: pysgod. |
+| TOM | Pysgod. | Pysgod. |
+| ARAN | Now, if I just make you say it — pysgod, pysgod, pysgod — you're not making a memory. It's too easy. | Ora, se ti faccio solo ripetere — pysgod, pysgod, pysgod — non stai formando una memoria. È troppo facile. |
+| TOM | …Actually I've half got it already. "Pys" — a bit like puss, the cat. And "cod" is a fish. Pysgod. | …In realtà l'ho già mezzo preso. «Pys» — un po' come puss, il gatto. E «cod» è un pesce. Pysgod. |
+| ARAN | There. Look at what you just did. I didn't ask you for that. You went looking for a hook, on your own, and the hook cost you something — and that's the memory, not the word. Now: if we leave it there, and in two hours I come back and ask you the Welsh for fish, it'll be hard. And the hard is the point. If it were easy by next week it would be gone — that's the curve, that's what the curve does to easy. | Ecco. Guarda cos'hai appena fatto. Non te l'avevo chiesto. Sei andato a cercarti un gancio, da solo, e il gancio ti è costato qualcosa — e la memoria è quella, non la parola. Ora: se lo lasciamo lì, e tra due ore torno e ti chiedo il gallese per pesce, sarà difficile. E il difficile è il punto. Se fosse facile, la settimana prossima sarebbe sparito — è la curva, è quello che la curva fa alle cose facili. |
+| TOM | So you're going to leave it. | Quindi lo lasci lì. |
+| ARAN | I'm going to leave it. | Lo lascio lì. |
+| TOM | Pysgod. …The curve, though. Ebbinghaus. The German. One man, memorising lists of nonsense syllables, testing himself, sample size one, corroborated by nobody — and a hundred years later everyone still quotes his intervals as if they were physics. And yet the practice works. There's truth in the practice without any consistency about the why. | Pysgod. …La curva, però. Ebbinghaus. Il tedesco. Un uomo solo, che impara a memoria liste di sillabe senza senso, si testa da solo, campione di uno, confermato da nessuno — e cent'anni dopo tutti citano ancora i suoi intervalli come se fossero fisica. Eppure la pratica funziona. C'è del vero nella pratica, senza nessuna coerenza sul perché. |
+| ARAN | That's exactly where I was about to go. | È esattamente lì che stavo per andare. |
+| TOM | Was it? | Davvero? |
+| ARAN | Word for word. I'd lost his name, but that's the turn. So take it — you're already there. | Parola per parola. Mi era sfuggito il nome, ma la svolta è quella. Quindi prenditela — ci sei già. |
+| TOM | Then I'll take it. Because it's the same church. One German on one German, one learner on one learner, and one of us on himself with a Welsh fish. So — wait. How do we know that? | Allora me la prendo. Perché è la stessa chiesa. Un tedesco su un tedesco, una studentessa su una studentessa, e uno di noi due su se stesso con un pesce gallese. Quindi — aspetta. Come lo sappiamo? |
+| ARAN | Know what? | Come sappiamo cosa? |
+| TOM | That it's effort that makes the memory. I feel it's true. It seems to work. But where are we, actually — is it in the studies, peer-reviewed, mapped out, can we say "proven scientific fact"? Or is it one man in California with a good idea, and us with a feeling? | Che è la fatica a fare la memoria. Io sento che è vero. Sembra funzionare. Ma a che punto siamo, davvero — è negli studi, con la peer review, tutto mappato, possiamo dire «fatto scientifico dimostrato»? O è un signore in California con una buona idea, e noi con una sensazione? |
+| ARAN | …It's closer to the man in California. Bjork says it, and he's careful, and the work is good. Proven, in the sense you mean? No. What I've got on top of that is me — one person, testing on himself for years — and now a fish you'll either have or not have in two hours. That's not proof, that's a story with a flag on it. But the question you just asked is the right one, and nobody in this field asks it enough. So — no. We don't know. We think. | …È più vicino al signore in California. Lo dice Bjork, ed è uno attento, e il lavoro è buono. Dimostrato, nel senso che intendi tu? No. Quello che ho in più è me stesso — una persona, che si testa da sola da anni — e adesso un pesce che tra due ore o avrai o non avrai. Non è una prova, è una storia con una bandierina sopra. Ma la domanda che hai appena fatto è quella giusta, e in questo campo nessuno la fa abbastanza. Quindi — no. Non lo sappiamo. Lo pensiamo. |
+| TOM | "We think" I can live with. | Con «lo pensiamo» posso convivere. |
+| ARAN | "We think" is where every good thing starts. And you'll still remember the fish. | «Lo pensiamo» è da dove parte ogni cosa buona. E il pesce te lo ricorderai lo stesso. |
+| TOM | Stop that. | Smettila. |
+
+**Why this container:** the chapter is one claim tested four ways — a story, a live specimen, a dead German, and the question under all three — and it closes by downgrading the claim it opened with, which no six-turn scene could do because the downgrade needs the three exhibits already on the table. The audit is a four-word question and the answer is the hold, the corpus's own shape (1:336 → 1:339); *Smettila* is moved from the specimen's tail to the chapter's, where it now answers the dirty trick from turn 5 — which is the smallest callback in the pod and inside a single chapter, so it is not counted in §0.
+
+---
+
+### Chapter 3 — *Due parole* — how little you need to begin
+
+**Point:** you do not need the words; you need two, and someone to say them to — and when you overrun that, cut, don't repeat.
+
+**Shapes traversed:** public self-repair audited, m6 (1:326–331) · **O3 / N6 reversed** — the listener does not understand you (MINT, as in the control arm) · position-abandonment held total, m14 (2:32–33, 2:159–166) · concession-then-build owned, m7 · the teasing audit.
+
+**Owns:** say-that-again / more-slowly / counting / the read-back line; "I don't understand" / "again, slowly" / "now I understand"; the ratification stream (all live canon). **Newly admits, one per beat:** correcting yourself mid-turn in the open and absorbing the audit with a counter-tease (beat 1); the *speaker's* response to the listener's failure — not louder, not longer, cut to one sentence and checked (beat 2); owning a changed mind at full strength and holding it total when probed (beat 3).
+
+**Holds (heard):** turn 11 (Tom, the overrun — deliberately too much, that is the scene), turn 18 (Aran, the recantation), turn 20 (Aran, every one of those people).
+
+**Zero-admission stretch:** turns 1–17, carried from Scenes 3 and 17 with their checked words unchanged (think, learn, language, need, all, words, say, something, after, talk, day, people, more, then, understand, too, much, again, slowly, now, good, that's all; three, two, you). Turn 9 ("Two words, and you") and turn 10 add nothing outside that list. Turns 18–23 are outside the stretch.
+
+**Mints:** the reversed repair — the listener failing to understand — is **MINT**, unattestable between two people who understand each other perfectly (control arm Scene 17); container from N6.
+
+**Surface forms admitted:** *un gesto vuoto*, *tokenismo*, *riderci sopra*, *sbagliarsi*, *con fatica*, *un legame*, *restare aperta*, *stupire*. Availability only.
+
+**Near-neighbour points:** partitive *ne* ("me **ne** servono tre") — Spanish has none and the Spanish-adjacent speaker omits it; *servire* for need where Spanish reaches for *necesitar*; *riprovare* vs *volver a intentar* — Italian prefixes where Spanish periphrases; *non ho capito* against *no entendí* — the compound past where Spanish reaches for the simple, on the highest-frequency repair line there is; *ancora* for "again" against *otra vez* — and *ancora* is also "still", a polysemy Spanish never manages; *troppo* against *demasiado* — absence; *ci sbagliavamo* — reflexive like *nos equivocábamos* on an unrelated root; *mi stupisce* against *me asombra* — absence.
+
+| | English | Italiano |
+|---|---|---|
+| TOM | Can we try again? More slowly. | Possiamo riprovare? Più lentamente. |
+| ARAN | Of course. | Certo. |
+| TOM | I don't need all the words. I need three. Three words. No — two. Two words, and I can talk all day. | Non mi servono tutte le parole. Me ne servono tre. Tre parole. No — due. Due parole, e posso parlare tutto il giorno. |
+| ARAN | You said three. | Hai detto tre. |
+| TOM | The third one is you. | La terza sei tu. |
+| ARAN | Very well. That's enough for me. Which two? | Benissimo. A me basta. Quali due? |
+| TOM | Any two. | Due qualsiasi. |
+| ARAN | Any two? | Due qualsiasi? |
+| TOM | Two words, and you. That's all. | Due parole, e tu. Tutto qui. |
+| ARAN | Say it again — for the people who think they need all of them. | Dillo ancora — per quelli che pensano di averne bisogno tutte. |
+| TOM | I think that when you learn a language you don't need all the words — you need the words you can say something with, and after that you talk, and you talk, and you talk, all day, with people, and after that you have more words, and then you talk more, and then— | Penso che quando impari una lingua non ti servano tutte le parole — ti servono le parole con cui puoi dire qualcosa, e dopo parli, e parli, e parli, tutto il giorno, con la gente, e dopo hai più parole, e poi parli di più, e poi— |
+| ARAN | I don't understand. | Non ho capito. |
+| TOM | You don't understand? | Non hai capito? |
+| ARAN | No. Too much. Again — slowly. | No. Troppo. Ancora — lentamente. |
+| TOM | You don't need all the words. | Non ti servono tutte le parole. |
+| ARAN | Yes. Now I understand. | Sì. Adesso ho capito. |
+| TOM | Good. That's all. — And I've just done the thing. Two words would have done it, and I gave you forty. | Bene. Tutto qui. — E ho appena fatto io la cosa. Bastavano due parole, e te ne ho date quaranta. |
+| ARAN | Everybody does the thing. We did it for years. For years we said it: three words of a language, an empty gesture. Classic tokenism. We used to laugh about it, honestly. And we were utterly wrong. | La fanno tutti, la cosa. L'abbiamo fatta per anni anche noi. Per anni l'abbiamo detto: tre parole di una lingua, un gesto vuoto. Tokenismo classico. Ci ridevamo sopra, sinceramente. E ci sbagliavamo completamente. |
+| TOM | Completely wrong? | Completamente? |
+| ARAN | Utterly. Every single one of those people — three words, said with effort, badly, in the wrong order — made a connection that wouldn't have been there otherwise, and they didn't have to learn anything else at all. Three words open a door, and the door stays open. | Completamente. Ognuna di quelle persone — tre parole, dette con fatica, male, nell'ordine sbagliato — ha creato un legame che altrimenti non ci sarebbe stato, e non hanno dovuto imparare nient'altro. Tre parole aprono una porta, e la porta resta aperta. |
+| TOM | And they cost the person almost nothing. That still amazes me. | E alla persona non costano quasi niente. Questo mi stupisce ancora. |
+| ARAN | Three words. You said two. | Tre parole. Tu avevi detto due. |
+| TOM | The third one is still you. | La terza sei sempre tu. |
+
+**Why this container:** the whole chapter is on the canon's own words until turn 18, and the one hold inside the zero-admission stretch is Tom's overrun — heard, deliberately too much, a subjunctive after *penso che* the listener should not have to parse — so the summit move (cut, don't repeat) costs a learner one six-word sentence. The recantation is then the same point at full strength from the other side: the pair used to laugh at three words, and now the chapter has spent twenty turns on two. "You said three" at turn 4 and "You said two" at turn 22 are the chapter's own bookends.
+
+---
+
+### Chapter 4 — *Non lo so* — nobody knows how it works in the head, and "complicated" is the tell
+
+**Point:** the rules are a description of the thing, not the thing; nobody knows what the thing is; and the honest floor to build on is a shared "I don't know".
+
+**Shapes traversed:** the razor, m13 (1:88–97) · **reformulation, m1, refused** (4:391–406 for the form; the content is the razor's) · **N13 not-knowing**, m22, and **O2** (1:54, 4:70–77) · question-as-handover, m3 · **the reported claim too big to hold** (1:180–200) · **callback, m8, inside the set → Chapter 2** ("We don't know. We think.")
+
+**Owns:** question-as-handover; backchannel; the reformulation staple; idea, good, bad, know, right, now, start, think (live canon). **Newly admits, one per beat:** the razor — complexity as refutation, a flat verdict allowed to stand (beat 1); having your reformulation refused and taking the correction (beat 2); "I don't know" held with status and converted into licence to think together (beat 3); relaying somebody else's claim with your own vertigo attached, and the partner helping to carry it (beat 4).
+
+**Holds (heard):** turn 3 (Tom, the parallel system), turn 8 (Aran, the description is not the thing), turn 12 (Aran, the doubled not-knowing — built by repetition of owned words, as in the control arm's Scene 5), turn 18 (Aran, Wray).
+
+**Zero-admission stretch:** turns 10–15, carried from Scene 5 with roles swapped and its checked words unchanged (idea, good, bad, know, right, now, start, think). The swap is stated: in Scene 5 Aran asks and Tom does not know; here the question is Tom's and the not-knowing is Aran's, because the chapter has just watched Aran refuse a reformulation and the shape needs the refuser to be the one who then has nothing.
+
+**Mints:** none.
+
+**Surface forms admitted:** *le regole*, *la testa*, *al livello di*, *funzionerebbe*, *ascoltati*, *in fretta*, *una cosa vera*, *una descrizione*, *una ricercatrice*, *stimata*, *pubblicare*, *un modo utile*, *tagliare le cose*, *starci dietro*, *il cervello*, *una sillaba*, *un suono*, *definire*, *un'unità di significato*, *woo* (their word, kept). Availability only. "To boldly go" stays in English; it is the example, not a gloss.
+
+**Near-neighbour points:** *diventa* — selection by absence; *in fretta* against *deprisa* — no bridge; *Non lo so* one letter off *no lo sé* — an anchor that bites: Italian keeps the clitic always, Spanish drops it ("no sé"); *sai/sabes* — cognate root, non-matching ending; *hai ragione* — avere where Spanish reaches for *tener*; *non ce ne sono* — *ce ne*, the Spanish void, on the claim's own line; *starle dietro* — no Spanish twin; *mi fa male il cervello* — *fare male* with a dative where Spanish uses *doler*, a systemic remap; *concederebbe* against *concedería* — anchor.
+
+| | English | Italiano |
+|---|---|---|
+| TOM | So the rules of grammar — where do they live, in the head? | Quindi le regole della grammatica — dove stanno, nella testa? |
+| ARAN | Ask the question at the level of neurons. How would it even work? | Fai la domanda al livello dei neuroni. Come funzionerebbe, anche solo in teoria? |
+| TOM | A parallel system? Word types, categories, a machine for putting them in order, and another machine to check the first one, and somewhere to keep all of that, and a way to learn it as a child, before you can tie your shoes… | Un sistema parallelo? Tipi di parole, categorie, una macchina per metterle in ordine, e un'altra macchina che controlla la prima, e un posto dove tenere tutto questo, e un modo per impararlo da bambino, prima ancora di saperti allacciare le scarpe… |
+| ARAN | Listen to yourself. It gets complicated very fast. | Ascoltati. Diventa complicato molto in fretta. |
+| TOM | And so? | E quindi? |
+| ARAN | It's complicated — so it can't be a thing. That's all. | È complicato — quindi non può essere una cosa vera. Tutto qui. |
+| TOM | So what you're saying is: there are no rules. | Quindi quello che stai dicendo è: le regole non esistono. |
+| ARAN | No. That's not what I'm saying. The rules exist — they're in the book, they're a perfectly good description of what comes out of people's mouths. What I'm saying is that there's nothing in the head that stores the description. A map of Rome is a good map. Rome doesn't keep a copy. Whatever is in there that makes the sentences, it isn't the rules — the rules are what we wrote down afterwards, looking at the sentences. | No. Non è quello che dico. Le regole esistono — stanno nel libro, sono una descrizione perfettamente buona di quello che esce dalla bocca della gente. Quello che dico è che nella testa non c'è niente che conservi la descrizione. Una mappa di Roma è una buona mappa. Roma non ne tiene una copia. Qualunque cosa ci sia là dentro a fare le frasi, non sono le regole — le regole sono quello che abbiamo scritto dopo, guardando le frasi. |
+| TOM | Then what's in there? | E allora cosa c'è là dentro? |
+| ARAN | I don't know. | Non lo so. |
+| TOM | You don't know? | Non lo sai? |
+| ARAN | No. I don't know, and you don't know. Is it a good idea? I don't know. Is it a bad idea? I don't know. And you don't know. | No. Io non lo so, e tu non lo sai. È una buona idea? Non lo so. È una cattiva idea? Non lo so. E tu non lo sai. |
+| TOM | You're right. I don't know. | Hai ragione. Non lo so. |
+| ARAN | Good. Now we can start to think. What do you think? | Bene. Adesso possiamo iniziare a pensare. Tu cosa pensi? |
+| TOM | I think — whatever it is — it isn't made of words. | Penso che — qualunque cosa sia — non sia fatta di parole. |
+| ARAN | Ah. Now. There's a researcher — Wray, formulaic language, very highly regarded — and for a few years she's been saying, in conversation, I don't think she's published it: there is no such thing as a word. | Ah. Ecco. C'è una ricercatrice — Wray, linguaggio formulaico, molto stimata — e da qualche anno dice, in conversazione, non credo l'abbia pubblicato: le parole non esistono. |
+| TOM | No such thing. | Non esistono. |
+| ARAN | There aren't any. We use the word "word" for something that doesn't really exist and isn't a helpful way of cutting things up. And every time I've heard her say it I've thought: I can't keep up with this, my brain already hurts. And she's right, and I still can't keep up. | Non ce ne sono. Usiamo la parola «parola» per una cosa che in realtà non esiste, e che non è un modo utile di tagliare le cose. E ogni volta che gliel'ho sentito dire ho pensato: non ce la faccio a starle dietro, mi fa già male il cervello. E ha ragione, e continuo a non starle dietro. |
+| TOM | She'd allow a syllable. A sound. Things that start and stop. | Una sillaba la concederebbe. Un suono. Cose che iniziano e finiscono. |
+| ARAN | Yes. So — we'd all say "to boldly go" is three words. And by most of the ways you could actually define a word, it's one. And then you're into woo. | Sì. Allora — diremmo tutti che «to boldly go» sono tre parole. E per quasi tutti i modi in cui potresti davvero definire una parola, è una. E poi finisci nel woo. |
+| TOM | It's one unit of meaning. That's all it is. | È un'unità di significato. Tutto lì. |
+| ARAN | That's all it is. And that's the woo. | Tutto lì. Ed è quello il woo. |
+| TOM | So: not rules, not words. Something that starts and stops, and nobody knows what. | Quindi: non regole, non parole. Qualcosa che inizia e finisce, e nessuno sa cosa. |
+| ARAN | We don't know. We think. | Non lo sappiamo. Lo pensiamo. |
+| TOM | You said that about the fish. | L'hai detto anche del pesce. |
+| ARAN | It was true about the fish. | Era vero anche per il pesce. |
+
+**Why this container:** the chapter is the razor applied twice — to the rules, then to words — with a shared blank in between, and the blank is where the second application comes from ("what do you think?" is the hand-over that licenses Wray). The refused reformulation at turns 7–8 is the first long-arc move of the set in its hard form: Tom plays Aran's position back, gets "no, that's not what I'm saying", and the correction is the hold. The last two turns reach back to Chapter 2's *"Non lo sappiamo. Lo pensiamo."* by name — the fish — which is a callback the ear catches because the fish was the chapter before last.
+
+---
+
+### Chapter 5 — *Il gioco* — control arrives before correctness, and that is when it becomes a game
+
+**Point:** the moment you have edges you can go in many directions, and control arrives before correctness — which is why the honest way to describe the method to a stranger is a warm-up game.
+
+**Shapes traversed:** **reformulation, m1, accepted and sharpened** (1:365, 4:179) · **the flagged digression, m19 as detour, with an explicit return marker** (2:57), run long · joint construction, m2 · **the outsider's pitch** (1:230–244) · enacted dialogue, m15 · the deflating close (1:244).
+
+**Owns:** reformulation; ratification; the puppet-show frame. **Newly admits, one per beat:** the reformulation offered and taken (beat 1); licensing a flagged detour with a clock, keeping the clock, and restoring the thread on the partner's own marker (beat 2); telling the owner how you pitch his idea to strangers, and hearing the one ingredient you left out (beat 3).
+
+**Holds (heard):** turn 5 and turn 7 (Aran, the garden — the digression is two holds with a clock between them, which is what makes it a digression and not a long turn), turn 12 (Tom, the pitch), turn 15 (Aran, permission).
+
+**Mints:** none. The garden is extended beyond Scene 4's forty-two words on the corpus's own licence for detours (2:57 "And where were we?" arrives after a run, not after a sentence); the added garden material is plain extension of what the ratified turn already said. The game's name stays in English in both columns, swearing included — it is a name, the joke is in the English, and Tom has ruled on it.
+
+**Surface forms admitted:** *nel momento in cui*, *diventa un gioco*, *aspetta*, *promesso*, *il tempo corre*, *foglia per foglia*, *lo stagno*, *il vicino*, *comunque*, *dov'eravamo*, *dare ragione*, *presentare*, *spiegare*, *a lezione di teatro*, *un gioco di riscaldamento*, *gridare*, *una combinazione*, *riuscire a*, *spostare*, *il permesso*, *ogni tanto*, *atterrare*, *incastrarsi*, *in un certo senso*, *fuori tempo*. Availability only.
+
+**Near-neighbour points:** "quindi **quello che stai dicendo**" one notch off "así que **lo que estás diciendo**" — the highest-value selection point in the set; *aspetta* vs *espera* — the e-/a- onset trap; *dov'**eravamo*** — essere where Spanish uses estar; *diventa* — no Spanish cognate; *dato ragione* vs *dado la razón* — article drop; *a lezione di teatro* — bare *a lezione*, no article; *si chiama* against *se llama* — anchor; *riescono a fare* — *riuscire a*, absence; *ogni tanto* against *de vez en cuando* — absence; *si incastra* — absence.
+
+| | English | Italiano |
+|---|---|---|
+| ARAN | The moment you've got edges, you can go in lots of directions. And that's when it becomes a game. | Nel momento in cui hai i collegamenti, puoi andare in tante direzioni. Ed è lì che diventa un gioco. |
+| TOM | So what you're saying is: control arrives before correctness. | Quindi quello che stai dicendo è: il controllo arriva prima della correttezza. |
+| ARAN | Yes. And sharper than that: control is what correctness grows out of. Nobody ever got correct first and then in control. — Hang on. That makes me think of the garden. Two minutes, I promise. | Sì. E ancora più preciso: il controllo è la cosa da cui cresce la correttezza. Nessuno è mai diventato prima corretto e poi padrone. — Aspetta. Questo mi fa pensare al giardino. Due minuti, promesso. |
+| TOM | Clock's running. | Il tempo corre. |
+| ARAN | Nobody designs a garden leaf by leaf. Nobody can. You plant, and the garden answers, and then you find out what you've actually got, which is never the thing you drew. We drew a pond. What we've got is a pond with a willow in it that nobody planted, and the willow is the best thing in the garden. | Nessuno progetta un giardino foglia per foglia. Nessuno ci riesce. Tu pianti, e il giardino risponde, e poi scopri quello che hai davvero, che non è mai quello che avevi disegnato. Noi avevamo disegnato uno stagno. Quello che abbiamo è uno stagno con dentro un salice che non ha piantato nessuno, e il salice è la cosa più bella del giardino. |
+| TOM | One minute. | Un minuto. |
+| ARAN | And the neighbour — this is the last bit — the neighbour has a plan. A proper plan, on paper, every bed numbered. And every year his garden looks exactly like the plan, and every year it's the most boring garden in the street, and he knows it, and he can't stop. That's a garden, not a lesson plan. Anyway — where were we? | E il vicino — questa è l'ultima cosa — il vicino ha un piano. Un piano vero, su carta, ogni aiuola numerata. E ogni anno il suo giardino è identico al piano, e ogni anno è il giardino più noioso della via, e lui lo sa, e non riesce a smettere. Quello è un giardino, non un piano di lezione. Comunque — dov'eravamo? |
+| TOM | Control before correctness. And your garden just agreed with me. | Al controllo prima della correttezza. E il tuo giardino mi ha appena dato ragione. |
+| ARAN | It always does. Three minutes? | Lo fa sempre. Tre minuti? |
+| TOM | Four. It was a good willow. — Do you know how I introduce your method to people? | Quattro. Era un bel salice. — Sai come presento il tuo metodo alla gente? |
+| ARAN | Tell me. | Dimmi. |
+| TOM | I don't explain it. I say: you're in a drama class, it's a warm-up game, and the game is called Holy Dickhead Batman. Everyone shouts every combination they can make — Holy BatHead, ManDick. Holy DickMan, BatHead. It's stupid, it's fun, by the third one everybody's laughing — and they've just learnt that a unit of meaning is a thing you can move. | Non lo spiego. Dico: sei a lezione di teatro, è un gioco di riscaldamento, e il gioco si chiama Holy Dickhead Batman. Tutti gridano ogni combinazione che riescono a fare — Holy BatHead, ManDick. Holy DickMan, BatHead. È stupido, è divertente, al terzo ridono tutti — e hanno appena imparato che un'unità di significato è una cosa che si può spostare. |
+| ARAN | That's it. And the thing you're giving them, without saying so, is permission. | Ecco. E la cosa che gli dai, senza dirlo, è il permesso. |
+| TOM | Permission. | Il permesso. |
+| ARAN | To play. Because most of the combinations are nonsense, and that's fine. You play, and every so often one lands as a real act of communication — and you get the feedback: oh. That one worked. That's the moment. Not the correct one — the one that worked. The willow, not the plan. | Di giocare. Perché quasi tutte le combinazioni non vogliono dire niente, e va bene così. Giochi, e ogni tanto una atterra come un vero atto di comunicazione — e ti arriva il feedback: oh. Quella ha funzionato. È quello il momento. Non quella giusta — quella che ha funzionato. Il salice, non il piano. |
+| TOM | And then everything clicks together. Like the end of a Star Wars film. | E poi tutto si incastra. Come alla fine di un film di Guerre Stellari. |
+| ARAN | …In a sense. | …In un certo senso. |
+| TOM | In what sense? | In che senso? |
+| ARAN | In the sense that nobody in a Star Wars film was ever playing. | Nel senso che in un film di Guerre Stellari non gioca mai nessuno. |
+
+**Why this container:** the digression is the reason this chapter exists at chapter length — flagged at turn 3, clocked at turn 4, clocked again at turn 6, returned at turn 7 on its own marker, restored at turn 8 and *charged for* at turns 9–10, so that the return lands on fifty-odd words of garden rather than a sentence and the willow is still in the room when Aran needs it at turn 15. The reformulation at turns 2–3 is accepted and then sharpened, which is the move's second form; the pitch is Tom's hold, for balance; "Permission." is the one-word minimal turn and an `A → token → A` sandwich with Aran resuming.
+
+---
+
+### Chapter 6 — *Il precipizio* — "go and practise" is right, and it is the cruellest thing you can say
+
+**Point:** the standard advice is correct and it is a cliff; the job is to have walked a thousand small paths before the room, so the room is just more of the same — and nobody has to fill in a form first.
+
+**Shapes traversed:** concession-then-build, m7 (1:253–258) · reformulation, m1, accepted · **the misreading corrected** (4:391–406) — reformulation refused in one word · **O5 the premise refused** (2:96–104) · the flat no · **planted for Chapter 9:** *il precipizio*, "if you've already walked the paths".
+
+**Owns:** the ratification stream; the reformulation staple; the flat no. **Newly admits, one per beat:** conceding the conventional answer totally — doubled and tripled — and building inside the same breath (beat 1); having "so what you're saying is" fail, and laying the two readings side by side before taking the right one (beat 2); a premise refused in one word, and dropping your own premise without a fight (beat 3).
+
+**Holds (heard):** turn 4 (Aran, the cliff), turn 10 (Aran, transcripts), turn 16 (Aran, press play).
+
+**Mints:** none.
+
+**Surface forms admitted:** *livello intermedio*, *fare pratica*, *doloroso*, *un mucchio di*, *un libro di regole*, *lì per lì*, *dal vivo*, *il precipizio*, *sentieri*, *crudele*, *i sottotitoli*, *le trascrizioni*, *quasi*, *la faccenda*, *lo schermo*, *addormentarsi*, *la soluzione sbagliata*, *una scala*, *ci sei*, *premere play* (loanword), *gli obiettivi*, *accorgersi*, *fermarsi*, *rimettere davanti*, *andare avanti*, *compilare un modulo*, *stare attenti*. Availability only.
+
+**Near-neighbour points:** *fai pratica* against *practica* — noun + *fare* where Spanish has the bare verb; *lì per lì* — no Spanish twin; *dal vivo* against *en vivo* — preposition switch on a cognate; *ti ci ha preparato* — the double clitic, a Spanish void; *quasi* against *casi* — anchor with one consonant moved; *ci sei* — essere + *ci*, no Spanish twin, on a close; *le orecchie si addormentano* — anchor on the reflexive; *accorgersi* — absence, on the key verb; *modulo* — a false friend (Spanish *módulo* is a module; a form is *formulario*); *ce ne siamo accorti* — the double clitic *ce ne* on the line that carries the mechanism.
+
+| | English | Italiano |
+|---|---|---|
+| TOM | Every teacher on earth says the same thing. "I'm intermediate — how do I get to fluent?" "Practise. Go and use it. Listen to the radio, talk to people." | Tutti gli insegnanti del mondo dicono la stessa cosa. «Sono a un livello intermedio — come arrivo a parlare bene?» «Fai pratica. Vai e usala. Ascolta la radio, parla con la gente.» |
+| ARAN | And that's true. | Ed è vero. |
+| TOM | Is it? | Davvero? |
+| ARAN | That's true, that's right, that's exactly what you have to do — and it's incredibly painful if nobody has prepared you for it. If all you've got is a pile of words and a rule book, you walk into that room and have to invent every sentence on the spot, live. That's the cliff. But if you've already walked a thousand little paths through the words you've got, the room isn't a cliff any more. It's just more of the same. | È vero, è giusto, è esattamente quello che devi fare — ed è incredibilmente doloroso se nessuno ti ci ha preparato. Se tutto quello che hai è un mucchio di parole e un libro di regole, entri in quella stanza e devi inventarti ogni frase lì per lì, dal vivo. Quello è il precipizio. Ma se hai già percorso mille piccoli sentieri tra le parole che hai, la stanza non è più un precipizio. È solo altro dello stesso. |
+| TOM | So "go and practise" is right, and it's the cruellest thing you can say. | Quindi «vai a far pratica» è giusto, ed è la cosa più crudele che puoi dire. |
+| ARAN | Both. At the same time. | Tutte e due. Nello stesso momento. |
+| TOM | Then give them something before the room. Films. So what you're saying is: the films are in the language they're learning, with subtitles. | Allora dagli qualcosa prima della stanza. I film. Quindi quello che stai dicendo è: i film sono nella lingua che stanno imparando, con i sottotitoli. |
+| ARAN | Nearly. Not subtitles. | Quasi. Non i sottotitoli. |
+| TOM | What, then? | E cosa, allora? |
+| ARAN | Transcripts. That's not a small difference, it's the whole thing. Subtitles put the words on the screen while you're listening, so your eyes do the work and your ears go to sleep — and that's the wrong solution and it won't work. A transcript you read before. Then you listen without it, and now your ears have a ladder. Same film, completely different act. It's a path, not a cliff — that's all a transcript is. | Le trascrizioni. Non è una differenza piccola, è tutta la faccenda. I sottotitoli ti mettono le parole sullo schermo mentre ascolti, così il lavoro lo fanno gli occhi e le orecchie si addormentano — ed è la soluzione sbagliata, e non funziona. Una trascrizione la leggi prima. Poi ascolti senza, e adesso le orecchie hanno una scala. Stesso film, atto completamente diverso. È un sentiero, non un precipizio — una trascrizione è solo questo. |
+| TOM | …Okay. So I was thinking: films for learners, with the words on the screen. You're thinking: films for everyone, and a ladder up to them for the learners. | …Va bene. Io pensavo: film per chi impara, con le parole sullo schermo. Tu pensi: film per tutti, e una scala per arrivarci, per chi impara. |
+| ARAN | That's it. Now you've got it. | Ecco. Adesso ci sei. |
+| TOM | But before they press play, you have to work out what they want. Their goals. | Ma prima che premano play devi capire cosa vogliono. I loro obiettivi. |
+| ARAN | No. | No. |
+| TOM | No? | No? |
+| ARAN | No. They press play. That's it. What we do is notice when they stop. They come back after a month — we noticed. So we put a few of the early sentences back in front of them. They come back the next day — we just carry on. Nobody fills in a form. Nobody has a goal. They press play, and the thing that's paying attention is us, not them. | No. Premono play. Basta. Quello che facciamo noi è accorgerci quando si fermano. Tornano dopo un mese — ce ne siamo accorti. Allora gli rimettiamo davanti qualche frase delle prime. Tornano il giorno dopo — andiamo avanti e basta. Nessuno compila un modulo. Nessuno ha un obiettivo. Premono play, e la cosa che sta attenta siamo noi, non loro. |
+| TOM | …Okay. No form. | …Va bene. Niente modulo. |
+| ARAN | No form. Press play. | Niente modulo. Premi play. |
+| TOM | Press play, walk the paths, and then the room. | Premi play, percorri i sentieri, e poi la stanza. |
+| ARAN | And the room's the same thing you've been doing. In a bigger room. | E la stanza è la stessa cosa che facevi già. In una stanza più grande. |
+
+**Why this container:** three "so what you're saying is" in one arc — accepted (turn 5), refused in one word (turn 8), and a premise refused flat (turn 14) — so the reformulation staple is heard failing safely twice inside the chapter that also shows it succeeding; the scene form could only ever show one per unit. Every long turn is Aran's and heard; Tom's side-by-side restatement at turn 11 stays medium because it is the owned move. The last two turns say the sentence Chapter 9 will fail to remember.
+
+---
