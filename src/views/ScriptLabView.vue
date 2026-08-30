@@ -16,6 +16,10 @@
         These are the language-neutral English masters. Editing one changes the source every course flexes from — it changes no generated pod.
       </p>
 
+      <p v-if="stale" class="text-accent text-xs mb-4 border border-line rounded px-3 py-2 bg-surface">
+        This API has not been restarted onto the script index yet, so only <code>pod-0</code> is listed. The script page itself works.
+      </p>
+
       <div v-if="loading" class="text-faint py-12 text-center">Loading…</div>
       <div v-else-if="error" class="error-box border rounded-lg p-4">{{ error }}</div>
 
@@ -28,7 +32,7 @@
           <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1">
             <span class="font-mono text-accent-2">{{ pod.slug }}</span>
             <span v-if="pod.note" class="text-xs text-accent">{{ pod.note }}</span>
-            <span class="ml-auto text-xs text-faint">{{ pod.scenes }} scenes · {{ pod.lines }} lines</span>
+            <span v-if="pod.scenes != null" class="ml-auto text-xs text-faint">{{ pod.scenes }} scenes · {{ pod.lines }} lines</span>
           </div>
           <div v-if="pod.coverage" class="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-xs">
             <span class="text-muted">{{ pod.coverage.totals.traversed }}/{{ pod.coverage.totals.nodes }} shapes traversed</span>
@@ -61,6 +65,7 @@ import { computeCoverage } from '@/lib/metagraph/coverage.js'
 
 const graph = loadGraph()
 const pods = ref([])
+const stale = ref(false)
 const loading = ref(true)
 const error = ref(null)
 
@@ -82,10 +87,21 @@ async function load () {
   loading.value = true
   error.value = null
   try {
+    // The index endpoint is new; an API process that has not been restarted onto
+    // it 404s. Rather than show nothing, fall back to the pod the graph is derived
+    // from — reachable through the per-slug endpoint, which is not new — and say so.
+    let list = []
     const res = await authedFetch('/api/admin/canonical-pods')
-    const body = await res.json()
-    if (!res.ok) throw new Error(body?.error || `HTTP ${res.status}`)
-    const list = (body.pods || []).map(p => ({ ...p, note: NOTES[p.slug] || '', coverage: null, coverageError: '' }))
+    if (res.ok) {
+      const body = await res.json()
+      list = (body.pods || []).map(p => ({ ...p, note: NOTES[p.slug] || '', coverage: null, coverageError: '' }))
+    } else if (res.status === 404) {
+      stale.value = true
+      list = [{ slug: 'pod-0', note: NOTES['pod-0'], scenes: null, lines: null, coverage: null, coverageError: '' }]
+    } else {
+      const body = await res.json().catch(() => ({}))
+      throw new Error(body?.error || `HTTP ${res.status}`)
+    }
 
     // The Method Pod has no store yet — it lives in the re-cut document, so it is
     // shown here read-only rather than left out of the instrument.
