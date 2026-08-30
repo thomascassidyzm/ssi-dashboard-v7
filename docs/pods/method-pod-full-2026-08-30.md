@@ -1051,3 +1051,109 @@ The live canon never lets anyone fail, not-know, or be wrong. Six of these eight
 **Why this container:** the admission is one run, as at 1:404–406; "Half a day." is the two-word minimal turn and makes an `A → token → A` sandwich with Aran resuming; the close is an echo pair with a reversal, the corpus's favourite way of ending a beat (1:342–343).
 
 ---
+
+### Rung 4 — the summit, and the sibling mints
+
+---
+
+### Scene 40 — *Parte quattro* — the ritual open, at the summit
+
+**Owns:** joint construction (Scene 1); the ritual open (live canon, N1). **Newly admits:** the summit form of the open — formula, the partner completing the title before the host can, the tease on the formula itself, the refusal to plan, the handover, and a bathos completion that punctures the first grand sentence and is absorbed. **Attested:** 1:8–11 — "This is Tom and Aran talking bollocks, Part 1" / "Are you going to put 'Part 1 of 18 million?'" / "Yeah, exactly. Who knows? okay. Let's just start anywhere." — and 4:14–24 — "So this is Aran and Tom Talk Bollocks Part Four, we've got—" / "The future of education?" / "The Future of Life, The Universe and Education" / "So, you start…" / "…solve complicated problems—" / "Do some cool shit." / "Very, very quickly." Clears **N1 open**.
+
+**Shape witnessed:** THE RITUAL OPEN, AT THE SUMMIT — the formula is spoken; the partner finishes the title; the host tops it; the partner teases the formula; the host refuses to plan and hands over; the first real turn is a hold, and the host punctures its grandeur with a three-word completion that the holder ratifies and absorbs. The canon's hail-and-return, with a joint construction and a deflation inside it.
+
+**Surface forms admitted:** *parte quattro*, *l'istruzione*, *l'universo*, *diciotto milioni*, *chi lo sa*, *un punto qualsiasi*, *il quadro generale*, *succedere da solo*, *un sistema adattivo complesso*, *sette miliardi*, *menti*, *entusiaste*, *risolvere*, *cose fighe*. Availability only. "Talk Bollocks" stays as it is: it is the name of the thing.
+
+**Near-neighbour points:** *ci scrivi* — *ci* for "on it", the void; *chi lo sa* against *quién sabe* — Italian keeps the *lo*; *un punto qualsiasi* — *qualsiasi* after the noun where Spanish *cualquier punto* goes before; *comincia tu* — stressed subject after the imperative, matched with *empieza tú*, an anchor; *in fretta* recurring.
+
+| | English | Italiano |
+|---|---|---|
+| TOM | Right. This is Tom and Aran Talk Bollocks, part four. Today we've got— | Bene. Questo è Tom e Aran Talk Bollocks, parte quattro. Oggi abbiamo— |
+| ARAN | The future of education? | Il futuro dell'istruzione? |
+| TOM | The future of life, the universe, and education. | Il futuro della vita, dell'universo, e dell'istruzione. |
+| ARAN | Are you going to put "part four of eighteen million"? | Ci scrivi «parte quattro di diciotto milioni»? |
+| TOM | Who knows. Let's just start anywhere. You start. | Chi lo sa. Partiamo da un punto qualsiasi. Comincia tu. |
+| ARAN | The broad picture — and I'll say it fast because it's big — is that none of this happens on its own. Schooling is one piece of a complex adaptive system, and the end of the game has to be seven billion connected, happy, enthusiastic minds who can solve complicated problems— | Il quadro generale — e lo dico veloce perché è grande — è che niente di tutto questo succede da solo. La scuola è un pezzo di un sistema adattivo complesso, e la fine del gioco devono essere sette miliardi di menti connesse, felici, entusiaste, capaci di risolvere problemi complicati— |
+| TOM | Do some cool shit. | Fare cose fighe. |
+| ARAN | —very, very quickly. Yes. That. | —molto, molto in fretta. Sì. Quello. |
+
+**Why this container:** eight turns because the attested open runs five short turns before the first hold (4:14–21) and the hold is broken by a three-word completion, which is the corpus's own profile at 4:22–25; "Do some cool shit." makes an `A → token → A` sandwich with Aran resuming.
+
+---
+
+### Scene 41 — *La terza cosa* — **MINT** — the thread recovered (sibling to Scene 14)
+
+**Owns:** the banked thread (Scene 14); not-knowing (Scene 5); joint construction (Scene 1). **Newly admits:** the recovery — the next session opens by calling in the banked debt, the debtor *fails to remember*, and the thread is rebuilt jointly from the two items that survived. **Attested:** nowhere. The corpus's last line is the interruption; the next session is lost or was never recorded (README, fact 3). **The whole scene is a MINT**, authored on the debt Scene 14 ledgered and on the three things at 1:250–258 (short on edges; short on repetition; and the room is not a step-change if you have already walked the paths — Scene 25's point, here in its compressed form). Clears **N17**'s missing half.
+
+**Shape witnessed:** THE THREAD RECOVERED — the debt is called in before anything else; the debtor confirms it and then loses it; the creditor supplies the surviving items as a scaffold; the debtor completes the missing one from the scaffold across the turn boundary; the debt is declared paid on both sides. Failure in the answer slot at the summit — not-remembering — recovered jointly and cheaply.
+
+**Surface forms admitted:** *dovere una cosa a*, *il corso serale*, *povero di*, *ripetizione*, *sparito*, *percorrere*, *i sentieri*, *un salto*, *il motivo*, *debito saldato*. Availability only.
+
+**Near-neighbour points:** *mi dovevi* against *me debías* — anchor; *l'ho persa* — participle agreeing with the feminine clitic, where Spanish *la he perdido* never agrees; *dammi* against *dame* — anchor; *corso serale* — *serale* by absence (*nocturno*); *salto* — an exact anchor; *debito saldato* — *saldare* against *saldar*, anchor to close on.
+
+| | English | Italiano |
+|---|---|---|
+| TOM | Before anything else. You owed me a third thing. | Prima di tutto il resto. Mi dovevi una terza cosa. |
+| ARAN | I owed you a third thing. | Ti dovevo una terza cosa. |
+| TOM | The dog. You said "the third thing, and this is the important one, is that when you actually—" and then the dog. | Il cane. Hai detto «la terza cosa, ed è quella importante, è che quando tu davvero—» e poi il cane. |
+| ARAN | And then the dog. …I've lost it. | E poi il cane. …L'ho persa. |
+| TOM | You've lost the important one. | Hai perso quella importante. |
+| ARAN | I've lost the important one. Give me the first two. | Ho perso quella importante. Dammi le prime due. |
+| TOM | One: the evening class is short on edges. Two: it's short on repetition, so by next week it's gone. Three: "when you actually—" | Uno: il corso serale è povero di collegamenti. Due: è povero di ripetizione, e la settimana dopo è tutto sparito. Tre: «quando tu davvero—» |
+| ARAN | —go and use it. Yes. That's it. When you actually go and use it — if you've already walked the paths, it isn't a step-change any more. It's the same thing you've been doing, in a bigger room. That's the third thing. That's the whole reason it works. | —vai a usarla. Sì. È quella. Quando vai davvero a usarla — se hai già percorso i sentieri, non è più un salto. È la stessa cosa che facevi già, in una stanza più grande. Questa è la terza cosa. È tutto il motivo per cui funziona. |
+| TOM | Debt paid. | Debito saldato. |
+| ARAN | Debt paid. Never let a dog near the important one. | Debito saldato. Mai lasciare un cane vicino a quella importante. |
+
+**Why this container:** ten turns, over the delivered range and named — a recovery has more beats than a break, and there is no attested instance to derive from; the completion across the turn boundary ("when you actually—" / "—go and use it") is the corpus's joint-construction profile and the recovered item is the hold; "Debt paid." is the two-word close, echoed.
+
+---
+
+### Scene 42 — *Efficienza e velocità* — **MINT** — the standing clash (sibling to Scene 16)
+
+**Owns:** the parked clash (Scene 16); the razor's flat verdict (Scene 8). **Newly admits:** disagreement held open *as* disagreement — neither parked nor resolved, named as permanent, and carried forward standing. **Attested:** the two positions are the corpus's own (1:406–412: Tom — "would it be more efficient to learn 10 languages in parallel for one day a year… I'm interested in minimum total effort… efficiency is the most important thing"; Aran — "you've got some short term genuine need for Chinese… just do one day a year for that, for the next 10 years? It's not gonna win. So dive in, hammer away at it… Efficiency is lovely. Yeah. But so is speed"). **In the corpus Tom concedes on the next line** ("Yeah, because speed means you can start using it now"). **The refusal to concede, and everything after it, is the MINT.** Across 591 turns these two never once hold a clash open; whether the standing clash is real in their conversational life is Tom's outstanding ruling, and this scene exists so he can hear it and say.
+
+**Shape witnessed:** THE STANDING CLASH — two positions at full strength; each tested once by the other; an aphorism-against-aphorism exchange shows neither will move; the disagreement is named as permanent — not shelved, not synthesised — and converted into a division of labour with the verdict delegated to the world; the conversation moves on with the clash standing. The summit's missing shape, on the evidence of three sessions.
+
+**Surface forms admitted:** *in parallelo*, *ciascuna*, *lo sforzo*, *l'efficienza*, *la velocità*, *finché non*, *buttarsi dentro*, *martellare*, *rispondere a una data*, *una sensazione*, *progettare*, *mettersi d'accordo*, *lasciare in piedi*. Availability only.
+
+**Near-neighbour points:** *finché non* — the pleonastic *non* that Spanish *hasta que* never takes; *ti butti dentro* — *buttarsi*, absence (*te lanzas*); *ci martelli sopra* — *ci + sopra*, the void; *metterci d'accordo* against *ponernos de acuerdo* — a matched idiom with the verb swapped (*mettere/poner*), the trap inside the anchor; *in piedi* against *en pie* — anchor; *l'uno dall'altro* against *el uno del otro* — anchor with *da* for *de*.
+
+| | English | Italiano |
+|---|---|---|
+| TOM | Here's what I actually want. Ten languages, in parallel, one day a year each. Three years, and I'm speaking all ten — badly, and happily. Minimum total effort. That's the only thing I care about. | Ecco cosa voglio davvero. Dieci lingue, in parallelo, un giorno all'anno ciascuna. Tre anni, e le parlo tutte e dieci — male, e felice. Minimo sforzo totale. È l'unica cosa che mi interessa. |
+| ARAN | No. You care about efficiency until you need something. You need Chinese by October. So one day a year for ten years isn't going to win — you dive in and hammer at it, seventy-five dialogues in ten days, and you don't care what it costs. Efficiency is lovely. But so is speed, and speed is the one that answers to a date. | No. Ti interessa l'efficienza finché non ti serve qualcosa. Ti serve il cinese per ottobre. Quindi un giorno all'anno per dieci anni non vince — ti butti dentro e ci martelli sopra, settantacinque dialoghi in dieci giorni, e non ti importa quanto costa. L'efficienza è bellissima. Ma lo è anche la velocità, e la velocità è quella che risponde a una data. |
+| TOM | Speed is a feeling. Efficiency is a number. | La velocità è una sensazione. L'efficienza è un numero. |
+| ARAN | Speed is the number that matters to the person who needs it. Efficiency is the number that matters to the person designing the course. | La velocità è il numero che conta per chi ne ha bisogno. L'efficienza è il numero che conta per chi progetta il corso. |
+| TOM | Then we're not going to agree. | Allora non ci metteremo d'accordo. |
+| ARAN | No. | No. |
+| TOM | Good. Leave it standing. I build for efficiency, you sell it for speed, and the learners tell us which of us was right. | Bene. Lasciamolo in piedi. Io costruisco per l'efficienza, tu lo vendi per la velocità, e chi impara ci dirà chi di noi due aveva ragione. |
+| ARAN | Standing. Next thing. | In piedi. Prossima cosa. |
+
+**Why this container:** the same eight-turn escalation as Scene 16 with the opposite close — 16 closes on Tom parking, 42 closes on the pair carrying it; the counter-position is the hold, "No." is the minimal turn between two Tom turns (an `A → token → A` sandwich with Tom resuming), and the aphorism pair in the middle is deliberately the flattest two turns in the scene.
+
+---
+
+### Scene 43 — *Quattromila parole* — the resisted goodbye (half-attested)
+
+**Owns:** the ritual close (live canon, N1); the parked thread. **Newly admits:** the goodbye resisted — a clean close is called, a late fact reframes everything, the closer refuses his own close, is reminded of it, owns it, and finds the form that keeps both. **Attested — half:** Part 1's last exchange is exactly this fact and this "Interesting." (1:413–417: "post 4,000 words, it all looks pretty much the same… by the time you got to 4,000 words, you're communicative… then really it's just going to be a factor of how often you use it" / "Interesting."), and Part 2 opens with "just so that we're keeping recordings down to about an hour" (2:8) — they stopped the tape and went straight on. The *resistance itself* — the turns between "Interesting." and the new recording — is not on any page and is minted. Clears **N1 close** and the deficit-list item.
+
+**Shape witnessed:** THE RESISTED GOODBYE — the close is called; a fact is dropped as an afterthought; the closer ratifies politely, then cannot let it go; the fact is unfolded and shown to reframe the whole conversation; the closer refuses his own close, is reminded of it, owns it, and resolves it by stopping the container and not the conversation. Every real conversation that has ever run over can walk it.
+
+**Surface forms admitted:** *è passata l'ora*, *fermarsi*, *quattromila*, *le strade*, *qualunque*, *sotto / sopra*, *da lì in poi*, *quanto spesso*, *la discussione*, *la registrazione*, *far partire*, *parte due*. Availability only.
+
+**Near-neighbour points:** *fermiamoci* — reflexive imperative with the clitic attached, matched with *parémonos*, an anchor; *è passata l'ora* — *essere* as the auxiliary of *passare*, where Spanish *ha pasado* takes *haber*; *qualunque strada tu abbia preso* — subjunctive, matched with *cualquier camino que hayas tomado*, an anchor on mood; *fanne partire un'altra* — *fa' + ne*, the void, on the last owned line; *da lì in poi* against *de ahí en adelante* — absence.
+
+| | English | Italiano |
+|---|---|---|
+| TOM | Right. That's the hour. Let's stop there. | Bene. È passata l'ora. Fermiamoci qui. |
+| ARAN | One thing. Somebody at Cardiff: the routes to four thousand words are all different. After four thousand, they're all the same. | Una cosa. Uno a Cardiff: le strade per arrivare a quattromila parole sono tutte diverse. Dopo le quattromila, sono tutte uguali. |
+| TOM | Interesting. …No. Hang on. Four thousand? | Interessante. …No. Aspetta. Quattromila? |
+| ARAN | Four thousand. Below it, every method looks different — whatever road you took. Above it, nobody can tell which one you used; from there it's only how often you use the language. So the whole argument we've been having is about the road to four thousand, and after that the road doesn't exist. | Quattromila. Sotto, ogni metodo sembra diverso — qualunque strada tu abbia preso. Sopra, nessuno sa dire quale hai usato; da lì in poi conta solo quanto spesso usi la lingua. Quindi tutta la discussione che stiamo facendo è sulla strada fino a quattromila, e dopo la strada non esiste. |
+| TOM | We're not stopping. | Non ci fermiamo. |
+| ARAN | You said the hour. | Hai detto l'ora. |
+| TOM | I said the hour. Stop the recording, start another one. Part two. Now. | Ho detto l'ora. Ferma la registrazione, fanne partire un'altra. Parte due. Adesso. |
+| ARAN | Now. | Adesso. |
+
+**Why this container:** the "Interesting." is the corpus's actual last word of Part 1 and is kept as the first word of the turn that refuses it; the unfolded fact is the hold; the scene closes on a one-word echo, and the pod ends — if a walk ever lands here last — by starting again.
+
+---
