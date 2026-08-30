@@ -279,5 +279,369 @@ whether money is a kind (§5).
 
 ---
 
-*Mapping (§4), ladder (§5), second axis (§6), mints and refusals (§7), scoring (§8), honesty (§9)
-and the port verdict (§10) follow the prediction commit.*
+## 4. The mapping — every encounter, LANDS or MINTS
+
+| Encounter | Primary | Also traversed | Verdict |
+|---|---|---|---|
+| E1 call-out | P5 chains + N7 **[store]** | N12 (the phone triage is trouble-and-advice nearly verbatim), F4 taken up = S102's recovery, N108 (the gate, the dog — constraints recorded for visits not yet arrived) | **lands** |
+| E2 diagnosis | N104 **[health]** | N8 for the fix; **F501 [mint, move]** the exhibit; F302 **[tb]** the epistemic flag before the verdict | **lands + mints a move** |
+| E3 quote | N8 + P1 **[store]** | N16 **[store]** where haggled — first constructed attestation outside the Method Pod; N109 **[health]** (the bound: "I'll know when I'm in"); N107-form exclusions | **lands** |
+| E4 bad news mid-job | N402 **[ireland]** | N104 (the evidence and the norm), F501, N16 (the re-price) | **lands** — on Ireland's mint |
+| E5 refusing unsafe work | (a) N401 **[ireland]** · (b) N104 + **F502 [mint, move]** · (c) **N501 [mint, node]** | F16 on the press; the forum named | **mints** — the sector's one node |
+| E6 narrated intervention | N102 **[health]** | O101 **[health]** on the halt branch | **lands** — the body shape, on property |
+| E7 handover | N4 + P3 **[store]** | N107 **[health]** (the conditional instructions), F103, N110, P2 | **lands** |
+| E8 reckoning | N2 + P2 **[store]** | — | **lands** — P2's third sector, recovered again |
+| E9 callback | F101 **[health]** + N104 | own-fault branch = O6 + F203 **[overlay]**, priced at zero; not-mine branch = N104 + F6, the record deciding | **lands** |
+| E10 customer's diagnosis | F16 **[store]** + N104 | O5; N14's audit present only implicitly, exactly as in health | **lands** |
+| E11 living with the job | N107 **[health]** whole | — | **lands** |
+| E12 merchant's counter | N2, N3, F6, P2 **[store]** | POD-1 verbatim; rung 1 | **lands** |
+| E13 site briefing | N4 **[store]** + N108 **[health]** | P5 (the constraint elicit), P3, F103, **F502** per hearer | **lands** — see the topology note, §7 |
+| E14 task allocation | N4 + P3 + P4 **[store]** | show-then-do refused as a mint (§7); F11 alive between peers | **lands** |
+| E15 cross-trade coordination | N7 + F5 **[store]** | N15 **[store]** — the parked disagreement, first constructed attestation outside the Method Pod; escalation with the record = F103 + N105 | **lands** |
+| E16 stop call | N106 + O101 **[health]** | both seats — the learner stops and is stopped; the resentment branch is S503 | **lands** — Family B outside clinical |
+| E17 snagging | N402 **[ireland]**, task burden reversed | F103, F16, O8, N109; the scope boundary = N104 + F6 | **lands** — role annotation absorbs the reversal, as predicted |
+| E18 chasing the money | F5 + N109 **[store/health]** | escalation-to-process = N401's forum position **[ireland]** | **lands** — the money's own test bench composes |
+
+**The distribution — which is the finding.** Eighteen encounters: **nine land primarily on the
+original store, six primarily on health's proposals, two primarily on Ireland's, and one mints** —
+one node and two moves in total, all three concentrated on two encounters (E2, E5). At distance,
+the trunk got CHEAPER, not dearer: health cost 10 nodes, near-neighbour Ireland cost 2, far-sector
+trades costs 1. And the far sector reaches DEEPER into the store than the near one did: N16
+precision-haggle, N15 parked disagreement, N13 not-knowing ("couldn't tell you till I've had a
+look — want me to open it up?") and N17's unattested recovery half (the job banked mid-break: "I've
+an emergency call-out — we're at second fix, nothing's live, back Thursday") all pick up their
+first constructed attestations outside the Method Pod. Site banter lands on the Talk Bollocks
+shapes (F303 shared lines, N302 digression-and-return). Every proposal family in the estate
+re-attests in this one sector.
+
+**One caveat on that coverage, stated before anyone quotes it:** a DERIVED inventory reaches nodes
+cheaply — I chose the encounters, so "16 of 17 nodes given natural homes" is an expressibility
+claim, not an attestation claim. The honest headline is the mint count, not the coverage count.
+
+### 4.1 The moves pass — all twenty families
+
+Trades is **the first sector where all twenty families attest somewhere** — because it is the first
+with a genuine rung-0 stretch inside its own working day. Within the pinned stretches, the same
+three die for the same cause as in health and Ireland:
+
+| Move | Customer-facing, in business | Site / rung-0 stretches |
+|---|---|---|
+| F1–F10, F12–F14, F16, F17, F19, F21 | yes — F9 saturates the measurements, F4 is the estimate register's native tongue, F21 is the classic "while I'm here, anything else need looking at?" | yes |
+| **F11 And you?** | **dies inside the business** — "when did it last work?" is not returnable | **alive** on the doorstep and in the cabin |
+| **F15 I'm not sure** | obeys Ireland's refined rule **with a time-index**: pre-inspection the hidden fault is assigned to NEITHER side, so the bare "couldn't tell you till I've looked" STANDS (it is N13 with status); post-inspection the fact is K1-assigned and bare F15 converts to N105 ("I'll ring the manufacturer's technical line") or to F4+N109 | alive |
+| **F18 That's normal, isn't it?** | **dies at K3** — "that banging's not normal, is it?" is answered by the meter and F102 ("they all do that on start-up"), position 3 changing hands to the instrument | **alive** in the cabin ("these new consumer units are fiddly, aren't they?" — "tell me about it") |
+
+**The refinement this sector contributes to the deaths:** they are decided per STRETCH, not per
+sector or per encounter. Health's ward has no rung-0 stretch, so health saw total deaths; the
+trades visit opens and closes at rung 0 (the doorstep, the tea, the football) and pins its kinds
+only while the business runs. One rule now covers three corpora: **a family dies exactly where the
+kind that kills it is pinned, and revives the moment it unpins.**
+
+---
+
+## 5. The ladder — placement ruled, and the money argued both ways
+
+Using the recorded test throughout: **a position appears, disappears or changes hands — not merely
+gets harder or dearer.**
+
+**K1 — pinned to the tradesperson, TIME-INDEXED.** Before the inspection, the fault behind the wall
+is assigned to neither party — which is why the K1-holder's bare F15 stands pre-inspection (§4.1)
+and why F302's epistemic flag is this sector's native register. After the boards are up, K1 pins
+hard: the customer cannot verify the diagnosis, which is what E2's exhibit move exists to repair.
+The customer holds their share (the house's history — "has it always done that?"), elicited in E1:
+split, like Ireland, but shallower — the customer's share informs, it does not decide.
+
+**K2 — ROTATING, which the ladder has not seen on a pinned-kind rung before.** Either party can
+refuse and end the encounter at almost every point: the customer declines the quote, takes the
+patch option, dismisses the firm; the tradesperson declines the job, down-tools, walks. Run the
+test: no refusal position is missing from either seat — N201's discretionary settle is available to
+BOTH. That is rung-0 rotation of K2 coexisting with pinned K1 and K3 — evidence that the kinds
+rotate or pin INDEPENDENTLY, which the single-number rung was already straining to say (Ireland
+needed per-encounter rungs; trades needs per-kind rotation). **The one place K2 stops rotating is
+the compelled make-safe: duty held in trust overrides both parties, and the customer's refusal
+position DISAPPEARS** — the test fires, and that is exactly where the sector's one node mints.
+
+**K3 — pinned to the tradesperson: the meter, the manometer, the certificate, the photos.** F18
+dies to it; E9's callback triage is decided by it; E17's disputed snag is settled by it. Unlike
+Ireland, the record is of the INSTALLATION, never of the person — which is why N103 fails to
+attest (§8, the prediction's one miss).
+
+**K4 — present, and it CHANGES SEATS between the two encounter families.** Customer-facing, the
+stake is the customer's: their house undergoes the act (N102's undergoing position — the property
+reading confirmed), their money is on the table. Site-facing, the stake is the LEARNER'S OWN BODY
+and their mates' — the first sector where the safety strand protects the speaker's side of the
+encounter. The briefing (E13) and the stop call (E16) are K4-of-the-learner shapes; health's
+Family B ports to them with the beneficiary flipped, and role annotation absorbs the flip exactly
+as the rubric says it should.
+
+**The money, argued both ways as instructed, then ruled.**
+
+*The case FOR money as a kind (or K2 in different clothes):* the customer's hold on payment looks
+load-bearing everywhere. The quote encounter exists at all because money must change hands before
+work does; the deposit ("half up front") looks like a position money creates; the retention at
+snagging (payment withheld until the list clears) looks like a position money creates; the chase
+(E18) is an entire encounter about nothing but the hold; and "he who pays may refuse" reads like
+K2. If kinds are "an asymmetry the world has pinned to one party for the whole encounter," the
+money is pinned to the customer from quote to invoice, and it disciplines every turn the
+tradesperson takes — softens the bad news, sweetens the quote, delays the walk-away. A ladder that
+cannot see the thing every tradesperson feels hardest might be measuring the wrong field.
+
+*The case AGAINST:* run the test position by position, and the money never moves a position — it
+only re-prices them. The quote's position sequence is IDENTICAL when an insurer pays and the
+householder never sees a number — scope, options, grounds, bound, settlement — so the positions do
+not come from the customer's hold. The deposit is N109's commitment-sought running toward the
+customer plus P2 run early: composition. The retention is P2 with N9's grant-plus-limit attached:
+composition. The chase composes whole out of F5, N109 and N401's forum position (§4, E18). The
+haggle is N16 — and N16 was minted at RUNG 0, from two friends talking, which is the single
+sharpest fact in this argument: the store's own money-shape needed no pinned kind to exist.
+And the hold itself ROTATES within one job: before payment the customer holds the money; after the
+work and before sign-off the tradesperson holds the completed installation and the certificate the
+house cannot be sold or let without — and where the withheld certificate is the lever, it is K3
+doing the levering, not a money-kind. A hold that swaps sides mid-encounter fails the "pinned to
+one party for the whole encounter" definition on its face.
+
+**Ruling: the money is NOT a kind and NOT K2 in different clothes.** It fails the position test
+everywhere I can walk it: positions get harder and dearer, none appears, disappears or changes
+hands. What the money actually is, in ladder terms: it is the *stake-content of K4* (what is on
+the table, customer-side) and a *rotating rung-0-style hold* that both parties lever with kinds
+they do hold (the customer with the payment, the tradesperson with K3's certificate). The ladder
+needs no fifth kind for it.
+
+**Proxy holding, checked as instructed.** Trades has it in force: the Building Regulations, Gas
+Safe, the manufacturer's warranty terms, the absent landlord, the main contractor's site rules.
+Verdict: **the existing `held_in_trust` annotation covers the trades form without strain** — with
+one wrinkle worth recording, because it is evidence the annotation was cut at the right grain: the
+tradesperson's holding is MIXED within one seat. K1 is held personally (their own eyes and
+experience); the K2-override in the make-safe is held wholly in trust (the duty is the regulator's,
+and E5's press-response says so: "ring Gas Safe — they'll stand by it"). Ireland's official held
+everything in trust; the tradesperson holds some kinds personally and one in trust, and because
+the annotation attaches per kind, it expresses this without any change. The landlord wrinkle (the
+payer is not the person in the room; the kinds split across three parties) is N108's
+absent-beneficiary logic and needs nothing new.
+
+**Rungs, per stretch rather than per encounter** (the sector's ladder contribution): rung 0 — the
+doorstep, the tea, the cabin, the merchant's banter; rung 1 — E12 the merchant's counter (POD-1 in
+trade clothes); rung 2 (K1+K3) — E1, E2, E7, E11, E14; rung 3 (K1+K3, stake on the table, K2
+rotation suspended under pressure) — E3, E4, E9, E17, E18; the duty-override apex — E5(c), E16,
+E13, where the trust-held kinds pin hardest. No encounter sits on one rung for its whole length,
+and the family deaths (§4.1) track the stretch, not the encounter.
+
+**The invariants.** **O7 holds, all five positions, fourth corpus:** business in progress → the
+unbidden disclosure ("we've just had the baby — we can't be without hot water") → acknowledge
+without fixing, where the trades pull is to fix by RE-PRIORITISING or discounting ("I'll make sure
+you've hot water tonight even if the rads wait") — the same violation-by-fixing health showed, with
+the recovery position itself unchanged → the discloser closes → business resumes. The
+tradesperson's own asides ("van's been off the road all week") flow freely, as Ireland's officials'
+did — less K4 on them. Evidence class stated plainly: consistency against constructed encounters,
+not independent attestation. **F302 holds, fourth corpus, and richly** — "I won't swear to it till
+the board's off, but that's your problem right there" is close to the sector's catchphrase: the
+flag prices the speaker's authority down before delivery and thereby licenses delivery at full
+strength. Trades adds the time-index reading: the flag is honest BECAUSE K1 is unassigned until
+the inspection. Neither invariant broke; a fourth corpus confirming both is a real finding.
+
+---
+
+## 6. The second axis — tested, and Ireland's hole looked for
+
+The candidate: weight the overlay selector by the cost of failing to recover, shape-level per
+health's refinement.
+
+**Where the weight lands: on the same shapes as in both priors, plus the mint.** N106/O101 carry
+it at the stop call — the halt mid-act is the medication-round halt in hi-vis. N107 carries it at
+E11 — "if it keeps dropping, call me BEFORE you keep topping up" is the highest-cost sentence a
+customer will hear. And **N501 is the axis's best case in any sector so far**: the compelled
+make-safe is precisely the conversation that converts a silent lethal risk into speech at the
+moment of discovery, and the recovery it teaches (survive the customer's anger while the gas stays
+off) is the recovery whose failure kills. Low-cost shapes inside high-cost encounters stay
+low-cost — E5's closing F14 and the doorstep tea carry no weight — the weight tracks shapes, not
+encounters, third sector running. **Verdict: supported, shape-level.**
+
+**Ireland's hole, looked for as instructed — found, and NARROWER, and the sector shows why.**
+Trades' costliest failures split cleanly in two. Where the danger is DISCOVERED, the encounters
+sit directly on it: the refusal, the stop call, the condemnation — unlike Ireland, whose costliest
+failure had no encounter at all, trades' sharpest failures are among its most talkative moments.
+But where the danger is never discovered — the badly-earthed circuit that kills nobody for four
+years, the slow CO leak in the never-serviced owner-occupier boiler — there is no conversation,
+and no shape weight can reach a failure that consists of never speaking. That is Ireland's hole
+exactly, and it is real here. The line falls at DISCOVERY. And the sector carries its own answer,
+worth recording because it is the only case on file of the hole being deliberately filled: the
+statutory periodic inspection (the landlord's annual gas check) is an encounter LEGISLATED into
+existence precisely to make silent risk speak on a schedule — and it maps entirely onto existing
+shapes (N2 solicit, N104 verdict, N501's branch when it finds something). The fix for the axis's
+blind zone was never going to be a shape; Ireland guessed "outreach and product", and trades shows
+the mature form: mandate the encounter.
+
+---
+
+## 7. The one mint, the two moves, and the eleven refusals
+
+Full definitions with positions, nearest-neighbour arguments, smoke tests and attestation labels
+are in `services/shared/metagraph/proposed/trades-2026-08-30.json` (ids **501–599**, fixed;
+nothing outside it). In brief:
+
+| id | Name | What makes it new |
+|---|---|---|
+| **N501** | Compelled make-safe *(node)* | The danger is declared, and then the act is announced and DONE against the customer's refused consent — their K2 overridden by duty held in trust — and the statutory record is affixed with a reinstatement condition. The consecutive pair *consent-overridden act + affixed record with reinstatement condition* exists nowhere: N401's refuser never acts on the asker's property; N102 requires consent; N106 halts the actor's OWN act; N107 is future and conditional; N108 records but never acts. |
+| **F501** | The exhibit *(move)* | "Come and look at this." The K1-holder voluntarily collapses their own information asymmetry — relocating the encounter to the evidence and inviting the non-expert to SEE — before asking for a decision. Not F103 (a record for later; F501 is verification now), not P3 (nothing is reproduced verbally), not F302 (nothing is priced down — the opposite: the evidence buys full confidence for both parties). |
+| **F502** | The countersigned telling *(move)* | "Sign to say I've told you." A record made AGAINST the interlocutor, transferring liability for the telling to the told — the induction sheet, the declined-advice waiver, the delivery note. Not F103 (the teller's record, for the teller's side), not P3 (nothing reproduced), not F14 (propositional and load-bearing), not N108 (the beneficiary of N108's record is absent; F502's record targets the party present). |
+
+All three are labelled **constructed** in the proposal file. All three pass the smoke test and are
+marked trunk: a Japanese gas fitter condemns an appliance, a German TÜV inspector fails a car and
+it does not drive home, a mechanic shows the worn brake pad, every delivery in the world is signed
+for. N501's trunk claim is the strongest: health itself contains the shape unattested (the
+safeguarding hold, the ambulance crew that will not leave) — Aran's corpus simply had no occasion
+for it. If a third sector attests N501, it graduates the way Family A did.
+
+**The eleven refusals to mint — as much the deliverable as the mint:**
+
+1. **The quote** — the sector's identity encounter, and the most tempting mint. It is N8 + P1 +
+   N16 + N109 with N107-form exclusions, by composition; no two consecutive novel positions
+   anywhere in it. Minting it would have been minting the sector's self-image.
+2. **The handover** — an assembly of N4 + P3 + N107 + F103 + N110 + P2. An assembly is not a shape.
+3. **The site briefing as a node** — the real novelty is one-to-many TOPOLOGY, and the store is
+   dyadic throughout. Minting a "briefing" node would smuggle topology in as shape. The
+   load-bearing exchanges inside it are dyadic and land (N4, P5, P3, F103, F502). The dyadic limit
+   is a trunk-level fact flagged in §9, not a trades mint.
+4. **Show-then-do apprenticeship** — the sector's whole pedagogy, and it is P3 read-back with acts
+   as the medium. Health already ruled witnessed compliance a P3 variant; the precedent is
+   followed, deliberately.
+5. **The "not my work" demarcation** (E9) — N104's evidence-referenced verdict + F6. The solder
+   line is a blood-sugar threshold in a different mask.
+6. **The customer's YouTube diagnosis** (E10) — F16 + N104, with O5 when the premise falls.
+   N14's audit stays implicit exactly as it did in health; nothing new to hold it.
+7. **The merchant's counter** (E12) — POD-1 verbatim. Minting would be minting on furniture.
+8. **The retention / staged payment** — P2 + N9's grant-plus-limit, composed. The money
+   discipline of §5 applied at the till.
+9. **The chase** (E18) — F5 + N109 + N401's forum position, composed whole.
+10. **The exclusions clause** ("if the joists are gone, that's extra") — N107: a threshold is a
+    threshold whether it is a blood pressure, a date, or a joist.
+11. **"BELOW!"** — the shouted site warning. One position, no adjacency pair, no exchange: not a
+    shape at all. Noted for the walk layer as an interjection, refused as everything else.
+
+**Mint zero outcome shapes, deliberately.** The candidate — "your property is condemned" — is O1
+non-delivery walked at the duty-override point, and N501 plus the ladder block carry it. Ireland's
+precedent holds: the ladder, not a tenth O.
+
+---
+
+## 8. The prediction, scored
+
+**P1 — one node + one to two moves, named in advance.** **Right on the count and the identities**:
+N501, F501, F502, nothing else. The one firming: F502 was hedged "possibly" and turned out
+definite — the waiver, the induction sheet and the delivery note are one move wearing three masks,
+too load-bearing and too recurrent to leave as colour.
+
+**P2 — Family A re-attests including N102.** **Right on N102 — the property reading confirmed** —
+and **WRONG on N103, and the miss is the scoring's most informative line.** I predicted the
+identity check would attest thinly ("you the homeowner?"). Mapping honestly: it does not attest at
+all — the tradesperson's question is a GENUINE enquiry, not a known-answer check, because trades
+holds no record of the PERSON to check against. N103's defining position (the known answer,
+silently matched) requires a person-file, and the sector keeps files on installations, not people.
+So: **Ireland lost exactly N102 (no body in the room); trades loses exactly N103 (no person-file
+behind the counter). Each sector deletes precisely the Family A shape whose defining possession it
+lacks, position-perfectly.** Family A is behaving like a trunk whose members switch off one at a
+time for legible reasons — which is stronger evidence of its reality than three clean sweeps would
+have been.
+
+**P3 — Ireland's mints re-attest.** **Right, all three** — N402 twice (E4, and E17 with the burden
+reversed, absorbed by role annotation as predicted), N401 at E5(a) and E18's escalation, F401 at
+the firm's apology. Two sectors now stand on Ireland's mints; they look like trunk.
+
+**P4 — the ladder.** **Right**, including the per-stretch refinement — and the mapping sharpened
+it into the per-kind form: K2 rotates while K1 and K3 pin, so rotation-vs-pinned is a property of
+each kind separately, not of the encounter (§5). The prediction said "stretches"; the result says
+"kinds, per stretch."
+
+**P5 — the money.** **Right**: fails the position test at every walk, including its own test bench
+E18; the insurer-paid quote and the rung-0 provenance of N16 are the decisive facts.
+
+**P6 — deaths and revival.** **Right**, including the time-indexed F15.
+
+**P7 — O7 and F302.** **Both held, fourth corpus.** Neither broke anywhere I could walk.
+
+**P8 — second axis and the hole.** **Right on both halves**, and the mapping added the part the
+prediction only gestured at: the statutory inspection as the case study of the hole being filled
+by mandating the encounter (§6).
+
+**The blind spot, because both priors' most valuable findings were their own:** the prediction did
+not foresee the **Method-Pod reach** — that the far sector's rung-0 stretches would hand N13, N15,
+N16 and N17's missing recovery half their first constructed attestations outside the Method Pod,
+and that trades would be the first sector to attest all twenty move families. The near sector
+narrowed the store's use; the far one widened it. Distance did not strain the trunk — it exercised
+more of it. That is the port's genuinely new information.
+
+**The stake, ruled: THE TRUNK PORTS AT DISTANCE, and the cost curve BENT DOWN.** One node and two
+moves against store + Family A + Ireland's mints; every mint concentrated where duty overrides
+consent; Family A re-attesting with a position-perfect single dropout for the second consecutive
+sector; the deaths, O7 and F302 all holding under a fourth corpus; the money failing the position
+test after being argued both ways. The mirror failure the brief warned against — forcing the fit —
+is answered by the miss count: N103's failure to attest, the dyadic-topology limit, and the
+discovery-line hole are all reported as holes, not sanded.
+
+---
+
+## 9. Honesty section — what this is and is not
+
+**There is no corpus, and no percentage above pretends to be one.** Every encounter, every
+attestation, every confirmation is derived or constructed by this mapping, labelled per-entry in
+§3 and per-item in the proposal file. No tradesperson has ever said any line quoted here. What
+this document can claim: the trunk can EXPRESS the derived trades inventory at a cost of one node
+and two moves, the mints concentrate on one variable (duty overriding consent), and the invariants
+are CONSISTENT with a fourth corpus. What it cannot claim: frequencies, attestation, or that a
+real plumber's week matches E1–E18. The strong form of this test is a trades corpus authored blind
+by someone who has not read §3 — same as Ireland's §10 asked of Aran.
+
+**The dependency, stated plainly.** Six encounters land primarily on health-proposal ids and two
+on Ireland's; the headline "one mint" is computed against store + BOTH proposals. If health's
+Family A/B were rejected, roughly six shapes (N102, N104, N106, N107, N108, N109 at least, plus
+F101/F103) would have to mint here under trades ids; if Ireland's were rejected, N401 and N402
+would re-mint here almost verbatim — the trades encounters attest them independently, which is
+itself the strongest available argument for accepting them upstream rather than re-minting them
+downstream. The trunk that ports is **store + Family A + Ireland's pair**.
+
+**The epistemic caveat on the scoring, carried down from §0:** prediction and mapping are one
+mind in one sitting, after reading both priors. The commit order (prediction at `a886a55f8`,
+mapping after) is real; the independence is partial; a near-perfect score under these conditions
+is weaker evidence than health's independently-scored prediction was. The N103 miss is the best
+internal evidence that the mapping was not merely transcribing the prediction.
+
+**The least confident calls, named so they can be attacked:** (1) **F502 as a move rather than a
+bound pair** — the countersign needs the other party's act, so a stricter reader could cut it as
+solicit+grant (a P50x); I held it to one position of novelty because the grant half is plain F1.
+(2) **N501's position 1** (danger discovered mid-other-business, unbidden) — a real corpus might
+show it usually opens off an ask, which would shave the node to four positions; the defining pair
+(3)+(4) survives either way. (3) **The K2-rotation claim** leans on constructed encounters; a real
+corpus with a monopoly-adjacent trade in it (the only fitter on the island) could pin K2 harder
+than I have allowed. (4) **The one-to-many topology call** (§7, refusal 3) rules that the store's
+dyadic limit is trunk-level rather than a trades gap; if Tom reads the briefing as demanding a
+multi-party shape, that is a store-design decision, not a mint.
+
+**What I did not do, and did not need to do:** no test suite (the one mechanical verification is
+`tools/metagraph-selfcheck.cjs`, quoted in §10 and the report); no DB reads or writes; no web
+research; no fan-out; no course content, audio, UI or Script Lab work; no modification of any
+existing store or proposal file. The store is byte-identical to origin/main and the diff is shown
+in the report.
+
+---
+
+## 10. The port verdict, readable cold
+
+**The trunk ports to a far sector, and the port got cheaper with distance.** Eighteen derived
+trades encounters — quoting, diagnosing, bad news, refusing unsafe work, briefings, stop calls,
+handover, money — cost the shape trunk exactly one new node (the compelled make-safe, where duty
+overrides the customer's consent) and two new moves (the exhibit, the countersigned telling)
+against the 17-node store plus the health and Ireland proposals. Health minted ten, Ireland two,
+trades one: the curve bends down, which is what a real trunk looks like as sectors accumulate.
+Family A lost exactly one shape for a position-perfect reason (no person-file, mirroring Ireland's
+no-body loss of N102 — and N102 itself re-attested here on the customer's property, settling that
+its variable was undergoing, never flesh). Ireland's two mints re-attested and now look like
+trunk. The far sector reached MORE of the store than the near one — the Method-Pod nodes and all
+twenty move families attest, because trades interleaves rung-0 peer stretches with pinned
+professional stretches inside a single visit, and the family deaths turn on and off with the
+stretch. The money is not a new asymmetry kind: argued both ways, it fails the position test
+everywhere and the ladder needs nothing for it. The safety axis is confirmed shape-level, with
+Ireland's silent-failure hole present but narrower — the line falls at discovery, and the sector's
+statutory inspections are the recorded case of the hole being filled by mandating the encounter.
+On this evidence the remaining sector fan-out can be licensed on the existing template with no
+further design work; the one upstream decision it leans on is accepting Family A and Ireland's
+pair, which trades has now independently re-attested.
