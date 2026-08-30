@@ -1,0 +1,3190 @@
+{
+  "counts": {
+    "bidirectional": {
+      "gateExact": 73,
+      "caseInsensitive": 73,
+      "strict": 73
+    },
+    "targetMembershipFailures": 31,
+    "targetSideCollision": {
+      "gateExact": 29,
+      "caseInsensitive": 29,
+      "strict": 29
+    }
+  },
+  "bidirectionalStrict": [
+    {
+      "known_norm": "nothing",
+      "distinct_targets": [
+        {
+          "target_norm": "τίποτα",
+          "example": {
+            "known": "nothing",
+            "target": "τίποτα",
+            "seed": 146,
+            "table": "course_legos",
+            "phrase_role": null
+          },
+          "count": 5
+        },
+        {
+          "target_norm": "κανένα",
+          "example": {
+            "known": "nothing",
+            "target": "κανένα",
+            "seed": 141,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "what",
+      "distinct_targets": [
+        {
+          "target_norm": "τι",
+          "example": {
+            "known": "what",
+            "target": "τι",
+            "seed": 222,
+            "table": "course_legos",
+            "phrase_role": null
+          },
+          "count": 8
+        },
+        {
+          "target_norm": "αυτόπου",
+          "example": {
+            "known": "what",
+            "target": "αυτό που",
+            "seed": 57,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "τι;",
+          "example": {
+            "known": "what?",
+            "target": "τι;",
+            "seed": 213,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 2
+        }
+      ]
+    },
+    {
+      "known_norm": "important",
+      "distinct_targets": [
+        {
+          "target_norm": "σημαντικό",
+          "example": {
+            "known": "important",
+            "target": "σημαντικό",
+            "seed": 261,
+            "table": "course_legos",
+            "phrase_role": null
+          },
+          "count": 3
+        },
+        {
+          "target_norm": "σημαντική",
+          "example": {
+            "known": "important",
+            "target": "σημαντική",
+            "seed": 277,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "to speak with you",
+      "distinct_targets": [
+        {
+          "target_norm": "ναμιλάωμαζίσου",
+          "example": {
+            "known": "to speak with you",
+            "target": "να μιλάω μαζί σου",
+            "seed": 206,
+            "table": "course_legos",
+            "phrase_role": null
+          },
+          "count": 2
+        },
+        {
+          "target_norm": "μιλάωμαζίσου",
+          "example": {
+            "known": "to speak with you",
+            "target": "μιλάω μαζί σου",
+            "seed": 1,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "my friend",
+      "distinct_targets": [
+        {
+          "target_norm": "οφίλοςμου",
+          "example": {
+            "known": "my friend",
+            "target": "ο φίλος μου",
+            "seed": 138,
+            "table": "course_legos",
+            "phrase_role": null
+          },
+          "count": 4
+        },
+        {
+          "target_norm": "φίλημου",
+          "example": {
+            "known": "my friend",
+            "target": "φίλη μου",
+            "seed": 136,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "τηφίλημου",
+          "example": {
+            "known": "my friend",
+            "target": "τη φίλη μου",
+            "seed": 284,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "a great idea",
+      "distinct_targets": [
+        {
+          "target_norm": "υπέροχηιδέα",
+          "example": {
+            "known": "a great idea",
+            "target": "υπέροχη ιδέα",
+            "seed": 272,
+            "table": "course_legos",
+            "phrase_role": null
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "μιαυπέροχηιδέα",
+          "example": {
+            "known": "a great idea",
+            "target": "μια υπέροχη ιδέα",
+            "seed": 272,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "an old man",
+      "distinct_targets": [
+        {
+          "target_norm": "ένανηλικιωμένοάντρα",
+          "example": {
+            "known": "an old man",
+            "target": "έναν ηλικιωμένο άντρα",
+            "seed": 231,
+            "table": "course_legos",
+            "phrase_role": null
+          },
+          "count": 2
+        },
+        {
+          "target_norm": "έναςηλικιωμένοςάντρας",
+          "example": {
+            "known": "an old man",
+            "target": "ένας ηλικιωμένος άντρας",
+            "seed": 264,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "an old friend",
+      "distinct_targets": [
+        {
+          "target_norm": "παλιόςφίλος",
+          "example": {
+            "known": "an old friend",
+            "target": "παλιός φίλος",
+            "seed": 266,
+            "table": "course_legos",
+            "phrase_role": null
+          },
+          "count": 2
+        },
+        {
+          "target_norm": "έναςηλικιωμένοςφίλος",
+          "example": {
+            "known": "an old friend",
+            "target": "ένας ηλικιωμένος φίλος",
+            "seed": 265,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "i don't want to",
+      "distinct_targets": [
+        {
+          "target_norm": "δενθέλωνα",
+          "example": {
+            "known": "I don't want to",
+            "target": "δεν θέλω να",
+            "seed": 19,
+            "table": "course_legos",
+            "phrase_role": null
+          },
+          "count": 2
+        },
+        {
+          "target_norm": "δενθέλω",
+          "example": {
+            "known": "I don't want to",
+            "target": "δεν θέλω",
+            "seed": 188,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "who",
+      "distinct_targets": [
+        {
+          "target_norm": "που",
+          "example": {
+            "known": "who",
+            "target": "που",
+            "seed": 232,
+            "table": "course_legos",
+            "phrase_role": null
+          },
+          "count": 2
+        },
+        {
+          "target_norm": "ποιοι;",
+          "example": {
+            "known": "who?",
+            "target": "ποιοι;",
+            "seed": 283,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "ποιος;",
+          "example": {
+            "known": "who?",
+            "target": "ποιος;",
+            "seed": 262,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "when",
+      "distinct_targets": [
+        {
+          "target_norm": "πότε",
+          "example": {
+            "known": "when",
+            "target": "πότε",
+            "seed": 81,
+            "table": "course_legos",
+            "phrase_role": null
+          },
+          "count": 4
+        },
+        {
+          "target_norm": "πότε;",
+          "example": {
+            "known": "when?",
+            "target": "πότε;",
+            "seed": 252,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 2
+        }
+      ]
+    },
+    {
+      "known_norm": "i will ask for",
+      "distinct_targets": [
+        {
+          "target_norm": "ζητήσω",
+          "example": {
+            "known": "I will ask for",
+            "target": "ζητήσω",
+            "seed": 243,
+            "table": "course_legos",
+            "phrase_role": null
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "θαζητήσω",
+          "example": {
+            "known": "I will ask for",
+            "target": "θα ζητήσω",
+            "seed": 243,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "i went out",
+      "distinct_targets": [
+        {
+          "target_norm": "βγήκα",
+          "example": {
+            "known": "I went out",
+            "target": "βγήκα",
+            "seed": 215,
+            "table": "course_legos",
+            "phrase_role": null
+          },
+          "count": 2
+        },
+        {
+          "target_norm": "βγήκαέξω",
+          "example": {
+            "known": "I went out",
+            "target": "βγήκα έξω",
+            "seed": 215,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "i can't",
+      "distinct_targets": [
+        {
+          "target_norm": "δενμπορώνα",
+          "example": {
+            "known": "I can't",
+            "target": "δεν μπορώ να",
+            "seed": 57,
+            "table": "course_legos",
+            "phrase_role": null
+          },
+          "count": 2
+        },
+        {
+          "target_norm": "δενμπορώ",
+          "example": {
+            "known": "I can't",
+            "target": "δεν μπορώ",
+            "seed": 276,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "it will work",
+      "distinct_targets": [
+        {
+          "target_norm": "λειτουργήσει",
+          "example": {
+            "known": "it will work",
+            "target": "λειτουργήσει",
+            "seed": 94,
+            "table": "course_legos",
+            "phrase_role": null
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "θαλειτουργήσει",
+          "example": {
+            "known": "it will work",
+            "target": "θα λειτουργήσει",
+            "seed": 94,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "the answer",
+      "distinct_targets": [
+        {
+          "target_norm": "τηναπάντηση",
+          "example": {
+            "known": "the answer",
+            "target": "την απάντηση",
+            "seed": 232,
+            "table": "course_legos",
+            "phrase_role": null
+          },
+          "count": 7
+        },
+        {
+          "target_norm": "ηαπάντηση",
+          "example": {
+            "known": "the answer",
+            "target": "η απάντηση",
+            "seed": 17,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "a little longer",
+      "distinct_targets": [
+        {
+          "target_norm": "λίγοακόμα",
+          "example": {
+            "known": "a little longer",
+            "target": "λίγο ακόμα",
+            "seed": 276,
+            "table": "course_legos",
+            "phrase_role": null
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "λίγοπερισσότερο",
+          "example": {
+            "known": "a little longer",
+            "target": "λίγο περισσότερο",
+            "seed": 275,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 2
+        }
+      ]
+    },
+    {
+      "known_norm": "i'm trying to say",
+      "distinct_targets": [
+        {
+          "target_norm": "προσπαθώναπω",
+          "example": {
+            "known": "I'm trying to say",
+            "target": "προσπαθώ να πω",
+            "seed": 159,
+            "table": "course_legos",
+            "phrase_role": null
+          },
+          "count": 2
+        },
+        {
+          "target_norm": "προσπαθώναλέω",
+          "example": {
+            "known": "I'm trying to say",
+            "target": "προσπαθώ να λέω",
+            "seed": 4,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "can i ask you",
+      "distinct_targets": [
+        {
+          "target_norm": "μπορώνασερωτήσω",
+          "example": {
+            "known": "can I ask you",
+            "target": "μπορώ να σε ρωτήσω",
+            "seed": 119,
+            "table": "course_legos",
+            "phrase_role": null
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "μπορώνασερωτήσω;",
+          "example": {
+            "known": "can I ask you?",
+            "target": "μπορώ να σε ρωτήσω;",
+            "seed": 190,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 2
+        }
+      ]
+    },
+    {
+      "known_norm": "why",
+      "distinct_targets": [
+        {
+          "target_norm": "γιατί",
+          "example": {
+            "known": "why",
+            "target": "γιατί",
+            "seed": 113,
+            "table": "course_legos",
+            "phrase_role": null
+          },
+          "count": 4
+        },
+        {
+          "target_norm": "γιατί;",
+          "example": {
+            "known": "why?",
+            "target": "γιατί;",
+            "seed": 113,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 2
+        }
+      ]
+    },
+    {
+      "known_norm": "whom",
+      "distinct_targets": [
+        {
+          "target_norm": "ποιον",
+          "example": {
+            "known": "whom",
+            "target": "ποιον",
+            "seed": 263,
+            "table": "course_legos",
+            "phrase_role": null
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "ποιον;",
+          "example": {
+            "known": "whom?",
+            "target": "ποιον;",
+            "seed": 263,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "much",
+      "distinct_targets": [
+        {
+          "target_norm": "πολλά",
+          "example": {
+            "known": "much",
+            "target": "πολλά",
+            "seed": 218,
+            "table": "course_legos",
+            "phrase_role": null
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "πολύς",
+          "example": {
+            "known": "much",
+            "target": "πολύς",
+            "seed": 279,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "that one",
+      "distinct_targets": [
+        {
+          "target_norm": "εκείνος",
+          "example": {
+            "known": "that one",
+            "target": "εκείνος",
+            "seed": 228,
+            "table": "course_legos",
+            "phrase_role": null
+          },
+          "count": 2
+        },
+        {
+          "target_norm": "εκείνο",
+          "example": {
+            "known": "that one",
+            "target": "εκείνο",
+            "seed": 247,
+            "table": "course_legos",
+            "phrase_role": null
+          },
+          "count": 2
+        },
+        {
+          "target_norm": "εκείνη",
+          "example": {
+            "known": "that one",
+            "target": "εκείνη",
+            "seed": 229,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "i wouldn't have said it",
+      "distinct_targets": [
+        {
+          "target_norm": "θατοέλεγα",
+          "example": {
+            "known": "I wouldn't have said it",
+            "target": "θα το έλεγα",
+            "seed": 153,
+            "table": "course_legos",
+            "phrase_role": null
+          },
+          "count": 2
+        },
+        {
+          "target_norm": "δενθατοέλεγα",
+          "example": {
+            "known": "I wouldn't have said it",
+            "target": "δεν θα το έλεγα",
+            "seed": 153,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "will meet me",
+      "distinct_targets": [
+        {
+          "target_norm": "μεσυναντήσει",
+          "example": {
+            "known": "will meet me",
+            "target": "με συναντήσει",
+            "seed": 293,
+            "table": "course_legos",
+            "phrase_role": null
+          },
+          "count": 2
+        },
+        {
+          "target_norm": "θαμεσυναντήσει",
+          "example": {
+            "known": "will meet me",
+            "target": "θα με συναντήσει",
+            "seed": 293,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "ask you",
+      "distinct_targets": [
+        {
+          "target_norm": "σερωτήσω",
+          "example": {
+            "known": "ask you",
+            "target": "σε ρωτήσω",
+            "seed": 119,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "σερωτήσει",
+          "example": {
+            "known": "ask you",
+            "target": "σε ρωτήσει",
+            "seed": 223,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "it's useful to make mistakes",
+      "distinct_targets": [
+        {
+          "target_norm": "είναιχρήσιμονακάνειςλάθη",
+          "example": {
+            "known": "it's useful to make mistakes",
+            "target": "είναι χρήσιμο να κάνεις λάθη",
+            "seed": 47,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "είναιχρήσιμονακάνωλάθη",
+          "example": {
+            "known": "it's useful to make mistakes",
+            "target": "είναι χρήσιμο να κάνω λάθη",
+            "seed": 48,
+            "table": "course_practice_phrases",
+            "phrase_role": "use"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "i believe you work well",
+      "distinct_targets": [
+        {
+          "target_norm": "πιστεύωότιδουλεύετεκαλά",
+          "example": {
+            "known": "I believe you work well",
+            "target": "πιστεύω ότι δουλεύετε καλά",
+            "seed": 133,
+            "table": "course_practice_phrases",
+            "phrase_role": "use"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "πιστεύωότιδουλεύειςκαλά",
+          "example": {
+            "known": "I believe you work well",
+            "target": "πιστεύω ότι δουλεύεις καλά",
+            "seed": 134,
+            "table": "course_practice_phrases",
+            "phrase_role": "use"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "they told us i went out",
+      "distinct_targets": [
+        {
+          "target_norm": "μαςείπανότιβγήκα",
+          "example": {
+            "known": "they told us I went out",
+            "target": "μας είπαν ότι βγήκα",
+            "seed": 215,
+            "table": "course_practice_phrases",
+            "phrase_role": "use"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "μαςείπανότιβγήκαέξω",
+          "example": {
+            "known": "they told us I went out",
+            "target": "μας είπαν ότι βγήκα έξω",
+            "seed": 215,
+            "table": "course_practice_phrases",
+            "phrase_role": "use"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "i want to speak greek better",
+      "distinct_targets": [
+        {
+          "target_norm": "θέλωναμιλήσωελληνικάκαλύτερα",
+          "example": {
+            "known": "I want to speak Greek better",
+            "target": "θέλω να μιλήσω ελληνικά καλύτερα",
+            "seed": 291,
+            "table": "course_practice_phrases",
+            "phrase_role": "use"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "θέλωναμιλάωελληνικάκαλύτερα",
+          "example": {
+            "known": "I want to speak Greek better",
+            "target": "θέλω να μιλάω ελληνικά καλύτερα",
+            "seed": 29,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "do you want to learn the truth",
+      "distinct_targets": [
+        {
+          "target_norm": "θέλειςναμάθειςτηναλήθεια;",
+          "example": {
+            "known": "do you want to learn the truth?",
+            "target": "θέλεις να μάθεις την αλήθεια;",
+            "seed": 75,
+            "table": "course_practice_phrases",
+            "phrase_role": "use"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "θέλειςναμαθαίνειςτηναλήθεια;",
+          "example": {
+            "known": "do you want to learn the truth?",
+            "target": "θέλεις να μαθαίνεις την αλήθεια;",
+            "seed": 79,
+            "table": "course_practice_phrases",
+            "phrase_role": "use"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "i'm happy you work",
+      "distinct_targets": [
+        {
+          "target_norm": "είμαιχαρούμενοςπουδουλεύεις",
+          "example": {
+            "known": "I'm happy you work",
+            "target": "είμαι χαρούμενος που δουλεύεις",
+            "seed": 134,
+            "table": "course_practice_phrases",
+            "phrase_role": "use"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "είμαιχαρούμενοςπουδουλεύετε",
+          "example": {
+            "known": "I'm happy you work",
+            "target": "είμαι χαρούμενος που δουλεύετε",
+            "seed": 133,
+            "table": "course_practice_phrases",
+            "phrase_role": "use"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "it's good to make mistakes",
+      "distinct_targets": [
+        {
+          "target_norm": "είναικαλόνακάνειςλάθη",
+          "example": {
+            "known": "it's good to make mistakes",
+            "target": "είναι καλό να κάνεις λάθη",
+            "seed": 47,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "είναικαλόνακάνωλάθη",
+          "example": {
+            "known": "it's good to make mistakes",
+            "target": "είναι καλό να κάνω λάθη",
+            "seed": 48,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "i want us to go",
+      "distinct_targets": [
+        {
+          "target_norm": "θέλωναπάμε",
+          "example": {
+            "known": "I want us to go",
+            "target": "θέλω να πάμε",
+            "seed": 156,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "θέλωναφύγουμε",
+          "example": {
+            "known": "I want us to go",
+            "target": "θέλω να φύγουμε",
+            "seed": 93,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "when you work",
+      "distinct_targets": [
+        {
+          "target_norm": "ότανδουλεύετε",
+          "example": {
+            "known": "when you work",
+            "target": "όταν δουλεύετε",
+            "seed": 133,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "ότανδουλεύεις",
+          "example": {
+            "known": "when you work",
+            "target": "όταν δουλεύεις",
+            "seed": 134,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "i want to learn a little more",
+      "distinct_targets": [
+        {
+          "target_norm": "θέλωναμαθαίνωλίγοπερισσότερο",
+          "example": {
+            "known": "I want to learn a little more",
+            "target": "θέλω να μαθαίνω λίγο περισσότερο",
+            "seed": 54,
+            "table": "course_practice_phrases",
+            "phrase_role": "use"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "θέλωναμάθωλίγοπερισσότερο",
+          "example": {
+            "known": "I want to learn a little more",
+            "target": "θέλω να μάθω λίγο περισσότερο",
+            "seed": 275,
+            "table": "course_practice_phrases",
+            "phrase_role": "use"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "i'm excited about this work",
+      "distinct_targets": [
+        {
+          "target_norm": "είμαιενθουσιασμένος",
+          "example": {
+            "known": "I'm excited about this work",
+            "target": "είμαι ενθουσιασμένος",
+            "seed": 122,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 2
+        },
+        {
+          "target_norm": "είμαιενθουσιασμένοςμετοπώςπάειμέχριστιγμής",
+          "example": {
+            "known": "I'm excited about this work",
+            "target": "είμαι ενθουσιασμένος με το πώς πάει μέχρι στιγμής",
+            "seed": 187,
+            "table": "course_practice_phrases",
+            "phrase_role": "use"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "είμαιενθουσιασμένοςμετοπώςπάει",
+          "example": {
+            "known": "I'm excited about this work",
+            "target": "είμαι ενθουσιασμένος με το πώς πάει",
+            "seed": 122,
+            "table": "course_practice_phrases",
+            "phrase_role": "use"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "you don't work",
+      "distinct_targets": [
+        {
+          "target_norm": "δενδουλεύετε",
+          "example": {
+            "known": "you don't work",
+            "target": "δεν δουλεύετε",
+            "seed": 133,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "δενδουλεύεις",
+          "example": {
+            "known": "you don't work",
+            "target": "δεν δουλεύεις",
+            "seed": 134,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "i don't know who",
+      "distinct_targets": [
+        {
+          "target_norm": "δενξέρωποιοι",
+          "example": {
+            "known": "I don't know who",
+            "target": "δεν ξέρω ποιοι",
+            "seed": 283,
+            "table": "course_practice_phrases",
+            "phrase_role": "use"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "δενξέρωποιος",
+          "example": {
+            "known": "I don't know who",
+            "target": "δεν ξέρω ποιος",
+            "seed": 262,
+            "table": "course_practice_phrases",
+            "phrase_role": "use"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "i wanted to do interesting things",
+      "distinct_targets": [
+        {
+          "target_norm": "ήθελανακάνωενδιαφέροντα",
+          "example": {
+            "known": "I wanted to do interesting things",
+            "target": "ήθελα να κάνω ενδιαφέροντα",
+            "seed": 51,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "ήθελανακάνωενδιαφέρονταπράγματα",
+          "example": {
+            "known": "I wanted to do interesting things",
+            "target": "ήθελα να κάνω ενδιαφέροντα πράγματα",
+            "seed": 51,
+            "table": "course_practice_phrases",
+            "phrase_role": "use"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "it is important",
+      "distinct_targets": [
+        {
+          "target_norm": "είναισημαντική",
+          "example": {
+            "known": "it is important",
+            "target": "είναι σημαντική",
+            "seed": 277,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "είναισημαντικό",
+          "example": {
+            "known": "it is important",
+            "target": "είναι σημαντικό",
+            "seed": 65,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "why did you want to speak greek",
+      "distinct_targets": [
+        {
+          "target_norm": "γιατίήθελεςναμιλάςελληνικά;",
+          "example": {
+            "known": "why did you want to speak Greek?",
+            "target": "γιατί ήθελες να μιλάς ελληνικά;",
+            "seed": 31,
+            "table": "course_practice_phrases",
+            "phrase_role": "use"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "γιατίήθελεςναμιλήσειςελληνικά;",
+          "example": {
+            "known": "why did you want to speak Greek?",
+            "target": "γιατί ήθελες να μιλήσεις ελληνικά;",
+            "seed": 31,
+            "table": "course_practice_phrases",
+            "phrase_role": "use"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "i think it's good to make mistakes",
+      "distinct_targets": [
+        {
+          "target_norm": "νομίζωότιείναικαλόνακάνωλάθη",
+          "example": {
+            "known": "I think it's good to make mistakes",
+            "target": "νομίζω ότι είναι καλό να κάνω λάθη",
+            "seed": 48,
+            "table": "course_practice_phrases",
+            "phrase_role": "use"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "νομίζωότιείναικαλόνακάνειςλάθη",
+          "example": {
+            "known": "I think it's good to make mistakes",
+            "target": "νομίζω ότι είναι καλό να κάνεις λάθη",
+            "seed": 47,
+            "table": "course_practice_phrases",
+            "phrase_role": "use"
+          },
+          "count": 2
+        }
+      ]
+    },
+    {
+      "known_norm": "i want to speak greek",
+      "distinct_targets": [
+        {
+          "target_norm": "θέλωναμιλήσωελληνικά",
+          "example": {
+            "known": "I want to speak Greek",
+            "target": "θέλω να μιλήσω ελληνικά",
+            "seed": 291,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "θέλωναμιλάωελληνικά",
+          "example": {
+            "known": "I want to speak Greek",
+            "target": "θέλω να μιλάω ελληνικά",
+            "seed": 1,
+            "table": "course_practice_phrases",
+            "phrase_role": "use"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "you work hard",
+      "distinct_targets": [
+        {
+          "target_norm": "δουλεύειςσκληρά",
+          "example": {
+            "known": "you work hard",
+            "target": "δουλεύεις σκληρά",
+            "seed": 134,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "δουλεύετεσκληρά",
+          "example": {
+            "known": "you work hard",
+            "target": "δουλεύετε σκληρά",
+            "seed": 133,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "i really don't mind",
+      "distinct_targets": [
+        {
+          "target_norm": "δενμεπειράζεισίγουρα",
+          "example": {
+            "known": "I really don't mind",
+            "target": "δεν με πειράζει σίγουρα",
+            "seed": 155,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "σίγουραδενμεπειράζει",
+          "example": {
+            "known": "I really don't mind",
+            "target": "σίγουρα δεν με πειράζει",
+            "seed": 191,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "i want to understand",
+      "distinct_targets": [
+        {
+          "target_norm": "θέλωνακαταλάβω",
+          "example": {
+            "known": "I want to understand",
+            "target": "θέλω να καταλάβω",
+            "seed": 74,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "θέλωνακαταλαβαίνω",
+          "example": {
+            "known": "I want to understand",
+            "target": "θέλω να καταλαβαίνω",
+            "seed": 77,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "i don't need to do interesting things right now",
+      "distinct_targets": [
+        {
+          "target_norm": "δενχρειάζεταινακάνωενδιαφέροντααυτήτηστιγμή",
+          "example": {
+            "known": "I don't need to do interesting things right now",
+            "target": "δεν χρειάζεται να κάνω ενδιαφέροντα αυτή τη στιγμή",
+            "seed": 51,
+            "table": "course_practice_phrases",
+            "phrase_role": "use"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "δενχρειάζεταινακάνωενδιαφέρονταπράγματααυτήτηστιγμή",
+          "example": {
+            "known": "I don't need to do interesting things right now",
+            "target": "δεν χρειάζεται να κάνω ενδιαφέροντα πράγματα αυτή τη στιγμή",
+            "seed": 51,
+            "table": "course_practice_phrases",
+            "phrase_role": "use"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "i know i went out yesterday",
+      "distinct_targets": [
+        {
+          "target_norm": "ξέρωότιβγήκαέξωχτες",
+          "example": {
+            "known": "I know I went out yesterday",
+            "target": "ξέρω ότι βγήκα έξω χτες",
+            "seed": 215,
+            "table": "course_practice_phrases",
+            "phrase_role": "use"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "ξέρωότιβγήκαχτες",
+          "example": {
+            "known": "I know I went out yesterday",
+            "target": "ξέρω ότι βγήκα χτες",
+            "seed": 215,
+            "table": "course_practice_phrases",
+            "phrase_role": "use"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "there are many",
+      "distinct_targets": [
+        {
+          "target_norm": "είναιπολλές",
+          "example": {
+            "known": "there are many",
+            "target": "είναι πολλές",
+            "seed": 103,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "υπάρχουνπολλές",
+          "example": {
+            "known": "there are many",
+            "target": "υπάρχουν πολλές",
+            "seed": 131,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "i can say a few words",
+      "distinct_targets": [
+        {
+          "target_norm": "μπορώναλέωμερικέςλέξεις",
+          "example": {
+            "known": "I can say a few words",
+            "target": "μπορώ να λέω μερικές λέξεις",
+            "seed": 60,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "μπορώναπωμερικέςλέξεις",
+          "example": {
+            "known": "I can say a few words",
+            "target": "μπορώ να πω μερικές λέξεις",
+            "seed": 57,
+            "table": "course_practice_phrases",
+            "phrase_role": "use"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "i want to do interesting things",
+      "distinct_targets": [
+        {
+          "target_norm": "θέλωνακάνωενδιαφέροντα",
+          "example": {
+            "known": "I want to do interesting things",
+            "target": "θέλω να κάνω ενδιαφέροντα",
+            "seed": 51,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "θέλωνακάνωενδιαφέρονταπράγματα",
+          "example": {
+            "known": "I want to do interesting things",
+            "target": "θέλω να κάνω ενδιαφέροντα πράγματα",
+            "seed": 51,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "i want to speak",
+      "distinct_targets": [
+        {
+          "target_norm": "θέλωναμιλάω",
+          "example": {
+            "known": "I want to speak",
+            "target": "θέλω να μιλάω",
+            "seed": 1,
+            "table": "course_practice_phrases",
+            "phrase_role": "use"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "θέλωναμιλήσω",
+          "example": {
+            "known": "I want to speak",
+            "target": "θέλω να μιλήσω",
+            "seed": 291,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "i want to say what i mean",
+      "distinct_targets": [
+        {
+          "target_norm": "θέλωναλέωτιεννοώ",
+          "example": {
+            "known": "I want to say what I mean",
+            "target": "θέλω να λέω τι εννοώ",
+            "seed": 60,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 2
+        },
+        {
+          "target_norm": "θέλωναπωτιεννοώ",
+          "example": {
+            "known": "I want to say what I mean",
+            "target": "θέλω να πω τι εννοώ",
+            "seed": 57,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "i want more",
+      "distinct_targets": [
+        {
+          "target_norm": "θέλωπερισσότερα",
+          "example": {
+            "known": "I want more",
+            "target": "θέλω περισσότερα",
+            "seed": 73,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "θέλωπερισσότερο",
+          "example": {
+            "known": "I want more",
+            "target": "θέλω περισσότερο",
+            "seed": 242,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 2
+        }
+      ]
+    },
+    {
+      "known_norm": "can you understand",
+      "distinct_targets": [
+        {
+          "target_norm": "μπορείςνακαταλαβαίνεις;",
+          "example": {
+            "known": "can you understand?",
+            "target": "μπορείς να καταλαβαίνεις;",
+            "seed": 90,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "μπορείςνακαταλάβεις;",
+          "example": {
+            "known": "can you understand?",
+            "target": "μπορείς να καταλάβεις;",
+            "seed": 174,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "i think you work hard",
+      "distinct_targets": [
+        {
+          "target_norm": "νομίζωότιδουλεύειςσκληρά",
+          "example": {
+            "known": "I think you work hard",
+            "target": "νομίζω ότι δουλεύεις σκληρά",
+            "seed": 134,
+            "table": "course_practice_phrases",
+            "phrase_role": "use"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "νομίζωότιδουλεύετεσκληρά",
+          "example": {
+            "known": "I think you work hard",
+            "target": "νομίζω ότι δουλεύετε σκληρά",
+            "seed": 133,
+            "table": "course_practice_phrases",
+            "phrase_role": "use"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "who was it",
+      "distinct_targets": [
+        {
+          "target_norm": "ποιοςήταν;",
+          "example": {
+            "known": "who was it?",
+            "target": "ποιος ήταν;",
+            "seed": 262,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "ποιοιήταν;",
+          "example": {
+            "known": "who was it?",
+            "target": "ποιοι ήταν;",
+            "seed": 283,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "you don't think so",
+      "distinct_targets": [
+        {
+          "target_norm": "δεννομίζειςέτσι",
+          "example": {
+            "known": "you don't think so",
+            "target": "δεν νομίζεις έτσι",
+            "seed": 162,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "δεννομίζεις",
+          "example": {
+            "known": "you don't think so",
+            "target": "δεν νομίζεις",
+            "seed": 135,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "i didn't go out",
+      "distinct_targets": [
+        {
+          "target_norm": "δενβγήκαέξω",
+          "example": {
+            "known": "I didn't go out",
+            "target": "δεν βγήκα έξω",
+            "seed": 215,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "δενβγήκα",
+          "example": {
+            "known": "I didn't go out",
+            "target": "δεν βγήκα",
+            "seed": 215,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "it's not a good idea",
+      "distinct_targets": [
+        {
+          "target_norm": "δενείναιμιακαλήιδέα",
+          "example": {
+            "known": "it's not a good idea",
+            "target": "δεν είναι μια καλή ιδέα",
+            "seed": 189,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "δενείναικαλήιδέα",
+          "example": {
+            "known": "it's not a good idea",
+            "target": "δεν είναι καλή ιδέα",
+            "seed": 123,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "unfortunately, it's not enough",
+      "distinct_targets": [
+        {
+          "target_norm": "δυστυχώςδενείναιαρκετό",
+          "example": {
+            "known": "unfortunately, it's not enough",
+            "target": "δυστυχώς, δεν είναι αρκετό",
+            "seed": 294,
+            "table": "course_practice_phrases",
+            "phrase_role": "use"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "δυστυχώςδενείναιαρκετά",
+          "example": {
+            "known": "unfortunately, it's not enough",
+            "target": "δυστυχώς, δεν είναι αρκετά",
+            "seed": 91,
+            "table": "course_practice_phrases",
+            "phrase_role": "use"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "i don't need to say everything",
+      "distinct_targets": [
+        {
+          "target_norm": "δενχρειάζεταιναπωταπάντα",
+          "example": {
+            "known": "I don't need to say everything",
+            "target": "δεν χρειάζεται να πω τα πάντα",
+            "seed": 57,
+            "table": "course_practice_phrases",
+            "phrase_role": "use"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "δενχρειάζεταιναλέωταπάντα",
+          "example": {
+            "known": "I don't need to say everything",
+            "target": "δεν χρειάζεται να λέω τα πάντα",
+            "seed": 60,
+            "table": "course_practice_phrases",
+            "phrase_role": "use"
+          },
+          "count": 2
+        }
+      ]
+    },
+    {
+      "known_norm": "i want to learn a little",
+      "distinct_targets": [
+        {
+          "target_norm": "θέλωναμάθωλίγο",
+          "example": {
+            "known": "I want to learn a little",
+            "target": "θέλω να μάθω λίγο",
+            "seed": 39,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "θέλωναμαθαίνωλίγο",
+          "example": {
+            "known": "I want to learn a little",
+            "target": "θέλω να μαθαίνω λίγο",
+            "seed": 54,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "i enjoy doing interesting things",
+      "distinct_targets": [
+        {
+          "target_norm": "μουαρέσεινακάνωενδιαφέροντα",
+          "example": {
+            "known": "I enjoy doing interesting things",
+            "target": "μου αρέσει να κάνω ενδιαφέροντα",
+            "seed": 51,
+            "table": "course_practice_phrases",
+            "phrase_role": "use"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "μουαρέσεινακάνωενδιαφέρονταπράγματα",
+          "example": {
+            "known": "I enjoy doing interesting things",
+            "target": "μου αρέσει να κάνω ενδιαφέροντα πράγματα",
+            "seed": 51,
+            "table": "course_practice_phrases",
+            "phrase_role": "use"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "i'm not sure if you can understand",
+      "distinct_targets": [
+        {
+          "target_norm": "δενείμαισίγουροςανμπορείςνακαταλαβαίνεις",
+          "example": {
+            "known": "I'm not sure if you can understand",
+            "target": "δεν είμαι σίγουρος αν μπορείς να καταλαβαίνεις",
+            "seed": 90,
+            "table": "course_practice_phrases",
+            "phrase_role": "use"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "δενείμαισίγουροςανμπορείςνακαταλάβεις",
+          "example": {
+            "known": "I'm not sure if you can understand",
+            "target": "δεν είμαι σίγουρος αν μπορείς να καταλάβεις",
+            "seed": 174,
+            "table": "course_practice_phrases",
+            "phrase_role": "use"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "i want to know everything",
+      "distinct_targets": [
+        {
+          "target_norm": "θέλωναξέρωταπάντα",
+          "example": {
+            "known": "I want to know everything",
+            "target": "θέλω να ξέρω τα πάντα",
+            "seed": 45,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "θέλωναμάθωταπάντα",
+          "example": {
+            "known": "I want to know everything",
+            "target": "θέλω να μάθω τα πάντα",
+            "seed": 278,
+            "table": "course_practice_phrases",
+            "phrase_role": "use"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "i want to say something",
+      "distinct_targets": [
+        {
+          "target_norm": "θέλωναλέωκάτι",
+          "example": {
+            "known": "I want to say something",
+            "target": "θέλω να λέω κάτι",
+            "seed": 4,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 2
+        },
+        {
+          "target_norm": "θέλωναπωκάτι",
+          "example": {
+            "known": "I want to say something",
+            "target": "θέλω να πω κάτι",
+            "seed": 57,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 3
+        }
+      ]
+    },
+    {
+      "known_norm": "i want to learn a lot",
+      "distinct_targets": [
+        {
+          "target_norm": "θέλωναμάθωπολύ",
+          "example": {
+            "known": "I want to learn a lot",
+            "target": "θέλω να μάθω πολύ",
+            "seed": 27,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "θέλωναμάθωπολλά",
+          "example": {
+            "known": "I want to learn a lot",
+            "target": "θέλω να μάθω πολλά",
+            "seed": 89,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "i want to say",
+      "distinct_targets": [
+        {
+          "target_norm": "θέλωναλέω",
+          "example": {
+            "known": "I want to say",
+            "target": "θέλω να λέω",
+            "seed": 4,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "θέλωναπω",
+          "example": {
+            "known": "I want to say",
+            "target": "θέλω να πω",
+            "seed": 298,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "it's not enough",
+      "distinct_targets": [
+        {
+          "target_norm": "δενείναιαρκετά",
+          "example": {
+            "known": "it's not enough",
+            "target": "δεν είναι αρκετά",
+            "seed": 91,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "δενείναιαρκετό",
+          "example": {
+            "known": "it's not enough",
+            "target": "δεν είναι αρκετό",
+            "seed": 294,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "do you want to learn",
+      "distinct_targets": [
+        {
+          "target_norm": "θέλειςναμαθαίνεις;",
+          "example": {
+            "known": "do you want to learn?",
+            "target": "θέλεις να μαθαίνεις;",
+            "seed": 79,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "θέλειςναμάθεις;",
+          "example": {
+            "known": "do you want to learn?",
+            "target": "θέλεις να μάθεις;",
+            "seed": 75,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "i don't understand what he said",
+      "distinct_targets": [
+        {
+          "target_norm": "δενκαταλαβαίνωτιείπε",
+          "example": {
+            "known": "I don't understand what he said",
+            "target": "δεν καταλαβαίνω τι είπε",
+            "seed": 84,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "δενκαταλαβαίνωαυτόπουείπε",
+          "example": {
+            "known": "I don't understand what he said",
+            "target": "δεν καταλαβαίνω αυτό που είπε",
+            "seed": 87,
+            "table": "course_practice_phrases",
+            "phrase_role": "use"
+          },
+          "count": 1
+        }
+      ]
+    }
+  ],
+  "membershipFailures": [
+    {
+      "known": "to tell",
+      "target": "να πει",
+      "seed": 235,
+      "seed_target": "Γνώρισα κάποιον που είπε ότι ήθελε να σου πει κάτι.",
+      "id": "ell_for_eng:S0235L04C02"
+    },
+    {
+      "known": "name",
+      "target": "όνομα",
+      "seed": 21,
+      "seed_target": "Γιατί μαθαίνεις το όνομά της;",
+      "id": "el_for_eng:S0021L03C02"
+    },
+    {
+      "known": "name",
+      "target": "όνομα",
+      "seed": 20,
+      "seed_target": "Θέλεις να μάθεις το όνομά του γρήγορα.",
+      "id": "el_for_eng:S0020L03C02"
+    },
+    {
+      "known": "on Sunday",
+      "target": "την Κυριακή",
+      "seed": 161,
+      "seed_target": "Μπορείς να μου δώσεις αυτό το βιβλίο Κυριακή πρωί;",
+      "id": "ell_for_eng:S0161L04C01"
+    },
+    {
+      "known": "what",
+      "target": "ό,τι",
+      "seed": 207,
+      "seed_target": "Έχεις κάνει αυτό που χρειαζόταν να κάνεις.",
+      "id": "ell_for_eng:S0207L02C01"
+    },
+    {
+      "known": "to help",
+      "target": "να βοηθήσει",
+      "seed": 246,
+      "seed_target": "Ήθελα να σε βοηθήσει αλλά ήταν πολύ απασχολημένη.",
+      "id": "ell_for_eng:S0246L02C02"
+    },
+    {
+      "known": "night",
+      "target": "το βράδυ",
+      "seed": 192,
+      "seed_target": "Είμαι απασχολημένος αύριο βράδυ.",
+      "id": "ell_for_eng:S0192L03C02"
+    },
+    {
+      "known": "you think",
+      "target": "σκεφτείς",
+      "seed": 91,
+      "seed_target": "Είναι δύσκολο να σκέφτομαι αρκετά γρήγορα για να απαντήσω εγκαίρως.",
+      "id": "el_for_eng:S0091L02C01"
+    },
+    {
+      "known": "us",
+      "target": "μας",
+      "seed": 138,
+      "seed_target": "Εδώ ήθελε ο φίλος μου να συναντηθούμε.",
+      "id": "ell_for_eng:S0138L02C01"
+    },
+    {
+      "known": "if",
+      "target": "αν",
+      "seed": 190,
+      "seed_target": "Σε πειράζει να σου κάνω μερικές ερωτήσεις;",
+      "id": "ell_for_eng:S0190L01C02"
+    },
+    {
+      "known": "one",
+      "target": "μία",
+      "seed": 256,
+      "seed_target": "Νομίζω ότι θα είμαι έτοιμος σε λιγότερο από μια ώρα.",
+      "id": "el_for_eng:S0256L02C02"
+    },
+    {
+      "known": "I'll ask",
+      "target": "θα ρωτήσω",
+      "seed": 176,
+      "seed_target": "Θα τον ρωτήσω αν θα μπορέσει να βοηθήσει τον επόμενο χρόνο.",
+      "id": "ell_for_eng:S0176L01C01"
+    },
+    {
+      "known": "we go",
+      "target": "φύγουμε",
+      "seed": 93,
+      "seed_target": "Είναι ώρα να φύγω τώρα.",
+      "id": "el_for_eng:S0093L02C01"
+    },
+    {
+      "known": "brain",
+      "target": "εγκέφαλο",
+      "seed": 111,
+      "seed_target": "Όταν μαθαίνουμε κάτι νέο, αλλάζει τον εγκέφαλό μας.",
+      "id": "el_for_eng:S0111L05C01"
+    },
+    {
+      "known": "I ask",
+      "target": "ρωτήσω",
+      "seed": 190,
+      "seed_target": "Σε πειράζει να σου κάνω μερικές ερωτήσεις;",
+      "id": "el_for_eng:S0190L02C01"
+    },
+    {
+      "known": "I talk",
+      "target": "μιλήσω",
+      "seed": 88,
+      "seed_target": "Δεν είμαι ακόμα έτοιμος να μιλάω με ανθρώπους που δεν ξέρω.",
+      "id": "el_for_eng:S0088L03C01"
+    },
+    {
+      "known": "it is necessary",
+      "target": "πρέπει",
+      "seed": 104,
+      "seed_target": "Χρειάζεται να αλλάξουμε αυτό που κάνουμε.",
+      "id": "el_for_eng:S0104L01C01"
+    },
+    {
+      "known": "haven't seen",
+      "target": "δεν έχω δει",
+      "seed": 183,
+      "seed_target": "Όχι, φοβάμαι ότι δεν τα έχω δει.",
+      "id": "ell_for_eng:S0183L02C01"
+    },
+    {
+      "known": "to meet",
+      "target": "να συναντήσει",
+      "seed": 138,
+      "seed_target": "Εδώ ήθελε ο φίλος μου να συναντηθούμε.",
+      "id": "ell_for_eng:S0138L02C02"
+    },
+    {
+      "known": "morning",
+      "target": "το πρωί",
+      "seed": 161,
+      "seed_target": "Μπορείς να μου δώσεις αυτό το βιβλίο Κυριακή πρωί;",
+      "id": "ell_for_eng:S0161L04C02"
+    },
+    {
+      "known": "I'll ask",
+      "target": "θα ρωτήσω",
+      "seed": 177,
+      "seed_target": "Θα τη ρωτήσω πού θέλει να πάει.",
+      "id": "ell_for_eng:S0177L01C01"
+    },
+    {
+      "known": "night",
+      "target": "το βράδυ",
+      "seed": 278,
+      "seed_target": "Έπρεπε να τελειώσεις τα πάντα χτες βράδυ;",
+      "id": "ell_for_eng:S0278L04C02"
+    },
+    {
+      "known": "I speak",
+      "target": "μιλήσω",
+      "seed": 291,
+      "seed_target": "Ελπίζω να μπορέσω να μιλάω καλύτερα σύντομα.",
+      "id": "el_for_eng:S0291L03C01"
+    },
+    {
+      "known": "that",
+      "target": "εκείνο",
+      "seed": 161,
+      "seed_target": "Μπορείς να μου δώσεις αυτό το βιβλίο Κυριακή πρωί;",
+      "id": "el_for_eng:S0161L03C01"
+    },
+    {
+      "known": "will you help",
+      "target": "θα βοηθήσεις",
+      "seed": 25,
+      "seed_target": "Θα με βοηθήσεις πριν πρέπει να φύγω;",
+      "id": "el_for_eng:S0025L01C01"
+    },
+    {
+      "known": "don't",
+      "target": "δεν",
+      "seed": 26,
+      "seed_target": "Μου αρέσει να νιώθω σαν να είμαι σχεδόν έτοιμος να φύγω.",
+      "id": "ell_for_eng:S0026L05C01"
+    },
+    {
+      "known": "to give",
+      "target": "να δώσω",
+      "seed": 242,
+      "seed_target": "Θέλω να της δώσω περισσότερο χρόνο.",
+      "id": "ell_for_eng:S0242L02C02"
+    },
+    {
+      "known": "more",
+      "target": "περισσότερες",
+      "seed": 103,
+      "seed_target": "Δεν προσπαθούμε να ακούσουμε πολλές ακόμα λέξεις.",
+      "id": "ell_for_eng:S0103L04C01"
+    },
+    {
+      "known": "in the same",
+      "target": "με τον ίδιο",
+      "seed": 153,
+      "seed_target": "Δεν θα το έλεγα με ακριβώς τον ίδιο τρόπο.",
+      "id": "ell_for_eng:S0153L03C01"
+    },
+    {
+      "known": "now",
+      "target": "στιγμής",
+      "seed": 187,
+      "seed_target": "Είμαι χαρούμενος μέχρι τώρα.",
+      "id": "ell_for_eng:S0187L03C02"
+    },
+    {
+      "known": "you answer",
+      "target": "απαντήσεις",
+      "seed": 91,
+      "seed_target": "Είναι δύσκολο να σκέφτομαι αρκετά γρήγορα για να απαντήσω εγκαίρως.",
+      "id": "el_for_eng:S0091L04C01"
+    }
+  ],
+  "targetSideCollisionStrict": [
+    {
+      "known_norm": "the",
+      "distinct_targets": [
+        {
+          "target_norm": "το",
+          "example": {
+            "known": "the",
+            "target": "το",
+            "seed": 21,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 8
+        },
+        {
+          "target_norm": "τα",
+          "example": {
+            "known": "the",
+            "target": "τα",
+            "seed": 248,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 3
+        },
+        {
+          "target_norm": "η",
+          "example": {
+            "known": "the",
+            "target": "η",
+            "seed": 17,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "τον",
+          "example": {
+            "known": "the",
+            "target": "τον",
+            "seed": 37,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 4
+        },
+        {
+          "target_norm": "τη",
+          "example": {
+            "known": "the",
+            "target": "τη",
+            "seed": 40,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "την",
+          "example": {
+            "known": "the",
+            "target": "την",
+            "seed": 59,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 5
+        },
+        {
+          "target_norm": "τους",
+          "example": {
+            "known": "the",
+            "target": "τους",
+            "seed": 51,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "her",
+      "distinct_targets": [
+        {
+          "target_norm": "της",
+          "example": {
+            "known": "her",
+            "target": "της",
+            "seed": 21,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 3
+        },
+        {
+          "target_norm": "τη",
+          "example": {
+            "known": "her",
+            "target": "τη",
+            "seed": 177,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "evening",
+      "distinct_targets": [
+        {
+          "target_norm": "απόγευμα",
+          "example": {
+            "known": "evening",
+            "target": "απόγευμα",
+            "seed": 18,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "βράδυ",
+          "example": {
+            "known": "evening",
+            "target": "βράδυ",
+            "seed": 234,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 2
+        }
+      ]
+    },
+    {
+      "known_norm": "this",
+      "distinct_targets": [
+        {
+          "target_norm": "αυτό",
+          "example": {
+            "known": "this",
+            "target": "αυτό",
+            "seed": 57,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "αυτή",
+          "example": {
+            "known": "this",
+            "target": "αυτή",
+            "seed": 40,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 4
+        }
+      ]
+    },
+    {
+      "known_norm": "want to",
+      "distinct_targets": [
+        {
+          "target_norm": "θέλωνα",
+          "example": {
+            "known": "want to",
+            "target": "θέλω να",
+            "seed": 19,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "θέλουμενα",
+          "example": {
+            "known": "want to",
+            "target": "θέλουμε να",
+            "seed": 36,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "θέλεινα",
+          "example": {
+            "known": "want to",
+            "target": "θέλει να",
+            "seed": 35,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 2
+        }
+      ]
+    },
+    {
+      "known_norm": "night",
+      "distinct_targets": [
+        {
+          "target_norm": "βράδυ",
+          "example": {
+            "known": "night",
+            "target": "βράδυ",
+            "seed": 215,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 2
+        },
+        {
+          "target_norm": "τοβράδυ",
+          "example": {
+            "known": "night",
+            "target": "το βράδυ",
+            "seed": 192,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 2
+        },
+        {
+          "target_norm": "νύχτας",
+          "example": {
+            "known": "night",
+            "target": "νύχτας",
+            "seed": 108,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "learn",
+      "distinct_targets": [
+        {
+          "target_norm": "μάθουμε",
+          "example": {
+            "known": "learn",
+            "target": "μάθουμε",
+            "seed": 109,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "μάθω",
+          "example": {
+            "known": "learn",
+            "target": "μάθω",
+            "seed": 73,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "μάθεις",
+          "example": {
+            "known": "learn",
+            "target": "μάθεις",
+            "seed": 75,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "you",
+      "distinct_targets": [
+        {
+          "target_norm": "σου",
+          "example": {
+            "known": "you",
+            "target": "σου",
+            "seed": 1,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 3
+        },
+        {
+          "target_norm": "σε",
+          "example": {
+            "known": "you",
+            "target": "σε",
+            "seed": 30,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 4
+        }
+      ]
+    },
+    {
+      "known_norm": "be able to",
+      "distinct_targets": [
+        {
+          "target_norm": "μπορέσω",
+          "example": {
+            "known": "be able to",
+            "target": "μπορέσω",
+            "seed": 11,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "μπορέσωνα",
+          "example": {
+            "known": "be able to",
+            "target": "μπορέσω να",
+            "seed": 157,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "μπορούσα",
+          "example": {
+            "known": "be able to",
+            "target": "μπορούσα",
+            "seed": 116,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "an old",
+      "distinct_targets": [
+        {
+          "target_norm": "ένανηλικιωμένο",
+          "example": {
+            "known": "an old",
+            "target": "έναν ηλικιωμένο",
+            "seed": 231,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "μιαηλικιωμένη",
+          "example": {
+            "known": "an old",
+            "target": "μια ηλικιωμένη",
+            "seed": 232,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "man",
+      "distinct_targets": [
+        {
+          "target_norm": "άντρα",
+          "example": {
+            "known": "man",
+            "target": "άντρα",
+            "seed": 231,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 2
+        },
+        {
+          "target_norm": "άντρας",
+          "example": {
+            "known": "man",
+            "target": "άντρας",
+            "seed": 226,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 2
+        }
+      ]
+    },
+    {
+      "known_norm": "i speak",
+      "distinct_targets": [
+        {
+          "target_norm": "μιλάω",
+          "example": {
+            "known": "I speak",
+            "target": "μιλάω",
+            "seed": 206,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "μιλήσω",
+          "example": {
+            "known": "I speak",
+            "target": "μιλήσω",
+            "seed": 291,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "as much as",
+      "distinct_targets": [
+        {
+          "target_norm": "όσοπιο",
+          "example": {
+            "known": "as much as",
+            "target": "όσο πιο",
+            "seed": 28,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "όσο",
+          "example": {
+            "known": "as much as",
+            "target": "όσο",
+            "seed": 50,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "the next",
+      "distinct_targets": [
+        {
+          "target_norm": "τοεπόμενο",
+          "example": {
+            "known": "the next",
+            "target": "το επόμενο",
+            "seed": 95,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "τηνεπόμενη",
+          "example": {
+            "known": "the next",
+            "target": "την επόμενη",
+            "seed": 186,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "τονεπόμενο",
+          "example": {
+            "known": "the next",
+            "target": "τον επόμενο",
+            "seed": 176,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "next",
+      "distinct_targets": [
+        {
+          "target_norm": "επόμενη",
+          "example": {
+            "known": "next",
+            "target": "επόμενη",
+            "seed": 59,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "επόμενο",
+          "example": {
+            "known": "next",
+            "target": "επόμενο",
+            "seed": 157,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 2
+        }
+      ]
+    },
+    {
+      "known_norm": "to the",
+      "distinct_targets": [
+        {
+          "target_norm": "στον",
+          "example": {
+            "known": "to the",
+            "target": "στον",
+            "seed": 52,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "στους",
+          "example": {
+            "known": "to the",
+            "target": "στους",
+            "seed": 288,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "στο",
+          "example": {
+            "known": "to the",
+            "target": "στο",
+            "seed": 292,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "in",
+      "distinct_targets": [
+        {
+          "target_norm": "στην",
+          "example": {
+            "known": "in",
+            "target": "στην",
+            "seed": 53,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "σε",
+          "example": {
+            "known": "in",
+            "target": "σε",
+            "seed": 245,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "morning",
+      "distinct_targets": [
+        {
+          "target_norm": "τοπρωί",
+          "example": {
+            "known": "morning",
+            "target": "το πρωί",
+            "seed": 155,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 3
+        },
+        {
+          "target_norm": "πρωί",
+          "example": {
+            "known": "morning",
+            "target": "πρωί",
+            "seed": 39,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "all",
+      "distinct_targets": [
+        {
+          "target_norm": "όλο",
+          "example": {
+            "known": "all",
+            "target": "όλο",
+            "seed": 69,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "πάντα",
+          "example": {
+            "known": "all",
+            "target": "πάντα",
+            "seed": 45,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "όλη",
+          "example": {
+            "known": "all",
+            "target": "όλη",
+            "seed": 14,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "money",
+      "distinct_targets": [
+        {
+          "target_norm": "χρήματα",
+          "example": {
+            "known": "money",
+            "target": "χρήματα",
+            "seed": 195,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "χρήματά",
+          "example": {
+            "known": "money",
+            "target": "χρήματά",
+            "seed": 248,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "way",
+      "distinct_targets": [
+        {
+          "target_norm": "τρόπος",
+          "example": {
+            "known": "way",
+            "target": "τρόπος",
+            "seed": 94,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "τρόπο",
+          "example": {
+            "known": "way",
+            "target": "τρόπο",
+            "seed": 153,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "friend",
+      "distinct_targets": [
+        {
+          "target_norm": "φίλος",
+          "example": {
+            "known": "friend",
+            "target": "φίλος",
+            "seed": 130,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "φίλη",
+          "example": {
+            "known": "friend",
+            "target": "φίλη",
+            "seed": 136,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 2
+        },
+        {
+          "target_norm": "φίλο",
+          "example": {
+            "known": "friend",
+            "target": "φίλο",
+            "seed": 52,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 2
+        }
+      ]
+    },
+    {
+      "known_norm": "them",
+      "distinct_targets": [
+        {
+          "target_norm": "τους",
+          "example": {
+            "known": "them",
+            "target": "τους",
+            "seed": 134,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "τα",
+          "example": {
+            "known": "them",
+            "target": "τα",
+            "seed": 183,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "last",
+      "distinct_targets": [
+        {
+          "target_norm": "περασμένο",
+          "example": {
+            "known": "last",
+            "target": "περασμένο",
+            "seed": 37,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "περασμένη",
+          "example": {
+            "known": "last",
+            "target": "περασμένη",
+            "seed": 52,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "do",
+      "distinct_targets": [
+        {
+          "target_norm": "κάνεις",
+          "example": {
+            "known": "do",
+            "target": "κάνεις",
+            "seed": 179,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 3
+        },
+        {
+          "target_norm": "έκανες",
+          "example": {
+            "known": "do",
+            "target": "έκανες",
+            "seed": 203,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "few",
+      "distinct_targets": [
+        {
+          "target_norm": "λίγες",
+          "example": {
+            "known": "few",
+            "target": "λίγες",
+            "seed": 274,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "λίγα",
+          "example": {
+            "known": "few",
+            "target": "λίγα",
+            "seed": 155,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 2
+        }
+      ]
+    },
+    {
+      "known_norm": "young",
+      "distinct_targets": [
+        {
+          "target_norm": "μικρό",
+          "example": {
+            "known": "young",
+            "target": "μικρό",
+            "seed": 69,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "νεαρό",
+          "example": {
+            "known": "young",
+            "target": "νεαρό",
+            "seed": 230,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "afternoon",
+      "distinct_targets": [
+        {
+          "target_norm": "απόγευμα",
+          "example": {
+            "known": "afternoon",
+            "target": "απόγευμα",
+            "seed": 35,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 3
+        },
+        {
+          "target_norm": "τοαπόγευμα",
+          "example": {
+            "known": "afternoon",
+            "target": "το απόγευμα",
+            "seed": 167,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "a",
+      "distinct_targets": [
+        {
+          "target_norm": "μια",
+          "example": {
+            "known": "a",
+            "target": "μια",
+            "seed": 38,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "ένα",
+          "example": {
+            "known": "a",
+            "target": "ένα",
+            "seed": 52,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    }
+  ]
+}
