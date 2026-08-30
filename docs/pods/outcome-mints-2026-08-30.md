@@ -56,7 +56,7 @@ position sequence, seats swapped, different turns for the learner to produce:
 
 **The second axis, in one line:** cost of failing to recover does real work — it is the key that
 orders the two registers inside one shape and the tie-breaker between shapes of equal latency — and
-it is not a primary key: survivability and the ruling decide first. §9.
+it is not a primary key: survivability and the ruling decide first. §7.
 
 ---
 
@@ -240,7 +240,7 @@ the mishearing is the mode, and it is the form whose recovery the learner least 
 **Hangs off** W1 step 2, `g11` — the shortest, most drilled ticket the learner owns. The store sites O3
 on `g38`→`g43` (scene 7's café order); **those rows carry no surface text anywhere on disk and the
 database was out of scope for this job, so the arm sits on scene 3's café order, the same mask and
-the same position (N2.2), where the text is in the store.** Named gap, §10. **The learner is Sarah.**
+the same position (N2.2), where the text is in the store.** Named gap, §9. **The learner is Sarah.**
 **Register:** symmetric — the barista has a queue but no record and no licence to give up on you;
 the check comes back unprompted.
 
@@ -520,3 +520,136 @@ coming anyway. **`g116` and `g117` are the resume, verbatim.** Seven turns, one 
 patient discloses, professional receives — and in most of them the professional fixes, which is the
 health pod's finding, not this overlay's gap.
 **Smoke test:** passes; the counter-hand's aside and the customer's two wrong exits are universal.
+
+---
+
+## 6. What was minted, in the store's register
+
+All from **201 up**. Full definitions, tests, citations and every "why not an existing node" are in
+`services/shared/metagraph/proposed/outcome-mints-2026-08-30.json`; in brief:
+
+| id | Name | Fills | The position that makes it new |
+|---|---|---|---|
+| **N201** | Refusal survived | O1 | The asker, holding nothing, produces the next move. N3/N7 have the refuser do it for them. |
+| **N202** | Silent repair | O3 asym | **Noticing** you were not understood. Every repair in the store, and in health, begins with someone saying so. |
+| **N203** | Own-fault admission | O6 | The admission is met by a **held** consequence, priced by whoever holds it. P101/N11 wave it away. |
+| **N204** | Disclosure received | O7 | The native discloses and the learner **does nothing about it**. N12 processes; F102 fixes-lite. |
+
+Moves **F201** *No, and that's why* · **F202** *Fair enough — then…* · **F203** *My fault — here's
+what I've got* · **F204** *That sounds hard* · **F205** *Wrong, and doesn't know it*. Composition
+edges **C201–C208**. Survivability edges **S201–S206**, each stated A/B on the failure branch. Walks
+**W201–W208**, in `walks/pod-0.json`'s own `{step, node, position}` format with `surface` as an
+annotation, the fork as a `branches` array on the stem step, one arm the corpus's own continuation
+and the other the arm the walk follows. **Twenty-five pod-0 rows are reused unaltered; none is
+altered.** Twelve minted learner turns, twenty-two minted partner turns, across eight scenes of five
+to ten turns — inside the Method Pod's range.
+
+The symmetric O3 arm mints no node: it is N6 with the seats reversed, under the role-neutrality rule
+the health mapping fixed.
+
+---
+
+## 7. Sequencing — and the second axis, tested
+
+**The four, in order: O1 → O3 → O6 → O7; and inside each, symmetric before asymmetric.**
+
+How that order is actually decided, layer by layer:
+1. **The ruling.** O1 first. Nothing in the edges decides between the two floors — S201 (surviving a
+   no) and S203 (reformulating on demand) are each presupposed by every ask — so the store's array
+   chose O3 on latency and Tom chose O1. Recorded, not edited.
+2. **Survivability.** S203 is presupposed by every produced turn, *including O6's admission*, so O3
+   goes next. S205 makes O6 presuppose O1's absorb, so O6 follows O1. S206 puts only the resume under
+   O7, which is already owned (P6, F21).
+3. **Redemption latency** — the store's basis. Measured on the eight scenes: W201 1, W202 2, W203 1,
+   W204 1, W205 2, W206 2, W207 1, W208 1. Latency alone ties O1, O3 and O7 at 1 and **puts O7
+   before O6** — which the store's own order does not, and should not.
+4. **Cost of failing to recover** — the candidate axis. Prediction written down in the plan before
+   testing: *cost will not reorder the shapes; it will separate the two registers of one shape.*
+
+| | latency | cost of failing to recover |
+|---|---|---|
+| W201 taxi | 1 | low — the fare stays owed; nobody leaves |
+| W202 bus | 2 | **high** — off the bus, four people, ten minutes |
+| W203 café | 1 | low — a wrong drink, or a second "sorry?" |
+| W204 window | 1 | medium — the wrong tickets, paid for |
+| W205 Saturday | 2 | medium, relational — the friend goes home |
+| W206 inspector | 2 | **high** — a penalty, or a child off the train |
+| W207 acquaintance | 1 | low, invisible — a small coldness nobody names |
+| W208 chemist's | 1 | low, invisible |
+
+**Result: supported — as the tie-breaker and as the register key; not as a primary key.** Cost breaks
+the latency tie the right way (O7's failure is invisible; O3's costs a drink or a ticket) and it
+separates the two registers inside every shape, symmetric before asymmetric, eight for eight. It
+cannot be primary: if it were, W206 would outrank O3 entirely, and S203 says you cannot survive the
+inspector without first being able to say it again shorter. The prediction held on both halves. The
+health mapping's refinement — *the weight belongs on the shape, not the line* — is the same finding
+seen from the other side: here the weight sits on the **register**, and the register is a shape
+variable on the trunk. One axis, not two.
+
+**What would make this wrong:** a shape whose asymmetric arm costs *less* to fail than its symmetric
+one. None of the four has one, and I could not construct one — the other party's licence to end the
+encounter is what makes the arm asymmetric, and it is also what makes failing expensive.
+
+---
+
+## 8. The smoke test, where it changed something
+
+Applied to every mint, held loosely. It changed two things and confirmed the rest:
+- **N203 position 4** moved from "the other party prices the consequence" to "the price, by whoever
+  holds it" — high-face columns have the admitter price it first, and the Method Pod's Scene 39 does
+  exactly that between equals. W205 and W206 now fill the position from opposite sides on purpose.
+- **F204's test** lost the exclusion "does not match with a disclosure of one's own" — in many
+  columns the matched line is the acknowledgement. What survives every column is the exclusion of
+  fixing and of withdrawing.
+
+---
+
+## 9. Honesty — gaps, defaults, what I did not do
+
+**Named gaps.**
+1. **`g38`→`g43` has no surface text on disk.** The store sites O3 on those rows (scene 7's café
+   order); `walks/pod-0.json` does not encode them and no document quotes them, and the database was
+   out of scope. W203 sits on scene 3's café order (W1, `g11`) — same mask, same position N2.2. If
+   Tom wants the arm on scene 7's rows it is a re-siting, not a rewrite.
+2. **Health's attestation is in the mirror seat for every asymmetric arm** — the HW is the L2
+   speaker, so the learner there holds the power. Stated per arm above. The recovery *sequence* is
+   attested; the learner's *turns* in the under-the-power seat are minted. O7-asym is minted from
+   nothing in this direction outright.
+3. **`g160`'s label.** The store calls it F6; this document reads it as F201. Not changed; noted in
+   the proposal on F201.
+4. **The health source is not on `main`.** Every health citation points at
+   `docs/aran-health-sector-conversations` @ `eb7222dfc`, as the health mapping already reported.
+
+**Defaults taken, and flagged.** Proposal file, id range (201+), provenance value, walk format,
+document path, eight scenes, and the three schema points carried in `schema_note` rather than by
+widening the schema — all as the brief's defaults. One I would have taken differently if the brief
+had not settled it: I would have put O7's asymmetric arm in the *power* seat (the learner as the one
+who must not fix), because that is where the temptation is strongest — but health attests that
+direction eight times, so a mint there would have been a mint on attested ground, and the brief's
+asymmetric arm is "someone with power over you". The under-the-power arm is the genuinely unowned one.
+
+**Where I ran long.** W202 is ten turns — over the Method Pod's range — because the split form
+(`g161`, then `g163`) and its price is the scene's whole point and cannot be shown in fewer.
+
+**What I did not do, and did not need to do.** No test suite (the one process run was
+`tools/metagraph-selfcheck.cjs`); no database query of any kind; no Script Lab, route or UI work; no
+course content, pod row, seed, LEGO, phrase or audio; no fan-out; no re-derivation of the graph; no
+re-cut of POD-1 — every one of its rows cited here is reproduced verbatim and none is edited; and no
+modification of any existing store file.
+
+**The store is byte-identical.** Verified with `git diff --stat origin/main` over `nodes.json`,
+`moves.json`, `edges.json`, `outcome-shapes.json` and `walks/` — empty — and
+`node tools/metagraph-selfcheck.cjs` — the result is quoted in the report. The proposal lives in
+`services/shared/metagraph/proposed/`, which `index.cjs` does not read.
+
+**For Tom, one line each, answerable in a word:**
+1. Are these four real, and is the register right? — the eight scenes are the evidence; my read is yes.
+2. O1 at position 1 against the store's `[O3, O1, …]`: shall the store's `sequence` array be brought
+   into line with the ruling when the proposal is promoted? — recommend yes, in the same promotion.
+3. O3's symmetric arm on scene 3's café (W1) rather than scene 7's `g38`→`g43`: keep, or re-site? —
+   recommend keep.
+4. `g160` as F201 rather than F6, when promoted? — recommend F201.
+
+**For Aran, one line:** the four asymmetric arms put the learner where a patient sits. The health
+flows put them where the nurse sits. Both seats are real and the shapes are the same; the pod that
+teaches the nurse's seat is his.

@@ -1,0 +1,572 @@
+{
+  "concept": "proposed-additions",
+  "version": 1,
+  "status": "PROPOSAL — not loaded by index.cjs, not read by the Script Lab, nothing executes it",
+  "provenance": "outcome-overlay-mint",
+  "source": {
+    "document": "docs/pods/outcome-mints-2026-08-30.md",
+    "plan": "docs/pods/outcome-mints-plan-2026-08-30.md",
+    "fills": "outcome-shapes.json — the four shapes classed attestation_class: minted (O1, O3, O6, O7)",
+    "stem_corpus": "canonical_pod_scenarios pod_slug='pod-0' via walks/pod-0.json — no database was read or written",
+    "asymmetric_precedent": "docs/sector-pods/health-sector-conversations-v3.md on docs/aran-health-sector-conversations @ eb7222dfc (NOT on main), as mapped in docs/sector-pods/health-metagraph-mapping-2026-08-30.md §7.2",
+    "derived": "2026-08-30",
+    "author": "minted by the outcome-overlay worker; every learner row that already existed is cited by g<n> and none is altered"
+  },
+  "id_range": {
+    "rule": "Minted in the existing register (N/P/F/C/S/O/W + integer, per schemas/metagraph-v1-schema.json) but from 201 upward: the store holds 1..21 and the health proposal holds 101..110, so 201+ collides with neither and is self-evidently an outcome-overlay proposal on sight. O1, O3, O6, O7 keep their ids — they are the things being FILLED, not minted.",
+    "nodes": "N201–N204",
+    "moves": "F201–F205",
+    "composition_edges": "C201–C208",
+    "survivability_edges": "S201–S206",
+    "walks": "W201–W208",
+    "outcome_shapes": "none minted; O1/O3/O6/O7 filled (see outcome_shapes_filled)"
+  },
+  "schema_note": "This file does NOT validate against schemas/metagraph-v1-schema.json as written, on three points, none of which is fixed here: (1) `provenance` is an enum of [\"pod-0\", \"method-pod\"] and this file needs \"outcome-overlay-mint\" — the same one-line widening the health proposal needs; (2) walk steps and branch arms that are MINTED carry no `row` (the schema's row pattern ^g[0-9]+$ is a pod-0 row id and a minted turn has none) — they carry `minted: true` instead, and where the schema REQUIRES `row` on a branch arm the minted arm omits it; (3) the concept `proposed-additions` is not one of the schema's five file kinds, exactly as the health proposal. Nothing about the existing store is changed to accommodate any of this.",
+  "store_untouched": "nodes.json, moves.json, edges.json, outcome-shapes.json and walks/pod-0.json are byte-identical to origin/main (bcec51c04). POD-1 is attested evidence and is extended here — every arm hangs off a fork POD-1 already has — never re-cut.",
+  "ruling_recorded": {
+    "position_1": "O1",
+    "basis": "Tom's ruling, U1 = YES: asking presupposes surviving a plain no, so non-delivery-with-a-reason is position 1 and the floor of the overlay.",
+    "discrepancy": "outcome-shapes.json carries sequence: [O3, O1, O4, O2, O5, O6, O7, O8, O9] with O3 at sequence_position 1 and O1 at 2. The store is NOT edited to match. Nothing in the survivability edges decides between the two floors — every ask presupposes both S201 (surviving a no) and S203 (reformulating on demand); the store's array chose O3 on latency, the ruling chooses O1, and the ruling wins.",
+    "proposed_sequence_of_the_four": ["O1", "O3", "O6", "O7"],
+    "proposed_sequence_basis": "O1 by ruling. O3 next because S203 is presupposed by every produced turn including O6's admission. O6 before O7 because S205 makes O6 presuppose O1 and its cost of failing to recover is the highest of the four; O7's redemption latency is 1 but its failure is invisible. Registers: symmetric arm before asymmetric arm within each shape (S202; cost). See the document §7."
+  },
+
+  "nodes": [
+    {
+      "id": "N201",
+      "name": "Refusal survived",
+      "provenance": "outcome-overlay-mint",
+      "fills": "O1",
+      "gloss": "A ticket is refused outright — a reason at most, no substitute, no apology — and the asker, holding nothing, produces the next move: a re-selection or a question about what is possible. The other party then settles, routes, or holds.",
+      "positions": [
+        { "index": 1, "name": "ask", "family": null },
+        { "index": 2, "name": "refuse, with a reason at most — no substitute, no apology", "family": "F201", "outcome_branch": true,
+          "alternatives": [
+            { "key": "yes", "name": "grant", "family": "F1", "polarity": "positive" },
+            { "key": "no", "name": "refuse with reason", "family": "F201", "polarity": "negative" }
+          ] },
+        { "index": 3, "name": "absorb and move: re-select, or ask what is possible", "family": "F202", "repeatable": true },
+        { "index": 4, "name": "settle: grant, route, or hold", "family": "F2", "outcome_branch": true, "repeatable": true },
+        { "index": 5, "name": "close", "family": "F14", "optional": true, "repeatable": true }
+      ],
+      "attestations": { "corpus": ["g158→g159→g160→g161 (drill, monologue — the refusal and the absorb; the move is not there)"], "method": ["Method Pod Scene 24 (mint, the bare no between friends)"], "health": ["1.3 flow 3", "2.6 flow 3", "2.3 flow 3", "2.7 flow 2", "2.10 flow 2"] },
+      "why_not_an_existing_node": "N3's negative alternative is F6 — the refuser supplies the substitute and the asker picks (g59→g60). N7 is F5 — the refuser supplies the counter. In both, the refuser does the asker's next move for them. N201 is the shape where they do not. That position — holding nothing and having to move — is the one the corpus never lets anyone occupy.",
+      "smoke_test": "Passes. The bare refusal attests in every column; in some the reason position is filled by silence and the sequence holds either way — the asker still has to move.",
+      "trunk_or_branch": "trunk"
+    },
+    {
+      "id": "N202",
+      "name": "Silent repair",
+      "provenance": "outcome-overlay-mint",
+      "fills": "O3 (asymmetric form); the symmetric form walks N6 with the seats reversed and needs no new node",
+      "gloss": "The other party does not say they failed to understand: they act on what they think they heard, and the mishearing is visible only in the grant. The speaker must notice, reformulate shorter and slower, and check it landed.",
+      "positions": [
+        { "index": 1, "name": "turn", "family": null },
+        { "index": 2, "name": "wrong uptake — the other party acts on what they think they heard", "family": "F205", "outcome_branch": true,
+          "alternatives": [
+            { "key": "understood", "name": "right grant", "family": "F1", "polarity": "positive" },
+            { "key": "wrong-uptake", "name": "wrong grant", "family": "F205", "polarity": "negative" }
+          ] },
+        { "index": 3, "name": "notice, and reformulate — shorter, slower", "family": "F8", "bound_with": 4 },
+        { "index": 4, "name": "check it landed — a read-back, theirs or yours", "family": "F9" },
+        { "index": 5, "name": "resume", "family": "F1" }
+      ],
+      "attestations": { "corpus": [], "method": ["Method Pod Scene 17 (mint, the F7 form only)"], "health": ["2.5 flow 2 (the recovery sequence, with F7 arriving)", "2.2 flow 2", "1.4 flow 2"] },
+      "why_not_an_existing_node": "N6 position 2 is F7: the listener SAYS they did not understand. N202 position 2 is a grant — the wrong one. The store has no position for noticing you were not understood; every repair it holds begins with someone saying so, and so does every repair in health.",
+      "not_o3": "The third form of not being understood — the native switching to English — is NOT O3. It is the native re-negotiating the medium: the failure branch of health's N101 Medium contract, with a different recovery. Named so it is not mistaken for a missing arm.",
+      "smoke_test": "Passes. A counter that processes what it thinks it heard exists wherever there are counters.",
+      "trunk_or_branch": "trunk"
+    },
+    {
+      "id": "N203",
+      "name": "Own-fault admission",
+      "provenance": "outcome-overlay-mint",
+      "fills": "O6",
+      "gloss": "Trouble that is the speaker's own fault is surfaced; they admit it and supply what they hold; the other party concedes and holds; a price is stated — by whoever holds it; the admitter accepts.",
+      "positions": [
+        { "index": 1, "name": "trouble surfaced — by the other party, or by the admission itself", "family": null },
+        { "index": 2, "name": "admit, and supply what you hold", "family": "F203", "repeatable": true },
+        { "index": 3, "name": "concede-and-hold", "family": "F16", "repeatable": true },
+        { "index": 4, "name": "the price — the consequence stated, by whoever holds it", "family": null },
+        { "index": 5, "name": "accept", "family": "F1" },
+        { "index": 6, "name": "settle", "family": "F1", "optional": true }
+      ],
+      "attestations": { "corpus": ["g182", "g183 (the admission, learner-side, no partner turn)"], "method": ["Method Pod Scene 39 (mint, between friends — the admitter prices it)"], "health": ["2.7 flow 3 (admit → hold → accept, patient below; the one two-sided attestation)"] },
+      "why_not_an_existing_node": "P101 and N11 positions 1–2 are self-blame for imposing, answered by absolution — ritual fault, waved away. N203 is real fault that is not waved. The store has no shape in which an admission is met by a held consequence. F16 turns out to be the consequence-holder's move on the world; the store attests it only on assessments of a person, in scene 22.",
+      "smoke_test": "Passes — and it changed the node. Position 4 was first 'the other party prices the consequence'. In a high-face column the admitter prices it first (Method Pod Scene 39 does exactly this between equals), so position 4 is now 'the price, by whoever holds it', and W205/W206 fill it from opposite sides on purpose.",
+      "trunk_or_branch": "trunk"
+    },
+    {
+      "id": "N204",
+      "name": "Disclosure received",
+      "provenance": "outcome-overlay-mint",
+      "fills": "O7",
+      "gloss": "Mid-business, the other party steps out of the frame unbidden and discloses worry or difficulty. The learner marks it as heard and does nothing about it; the discloser closes the aside; the business resumes.",
+      "positions": [
+        { "index": 1, "name": "business in progress", "family": null },
+        { "index": 2, "name": "disclosure — the other party steps out of the frame, unbidden", "family": null, "outcome_branch": true,
+          "alternatives": [
+            { "key": "stays-in-frame", "name": "the business continues", "family": null, "polarity": "positive" },
+            { "key": "disclosure", "name": "the frame is left", "family": null, "polarity": "negative" }
+          ] },
+        { "index": 3, "name": "acknowledge without fixing", "family": "F204" },
+        { "index": 4, "name": "the discloser closes the aside", "family": null, "optional": true, "pivot_capable": true },
+        { "index": 5, "name": "resume", "family": "F1" }
+      ],
+      "attestations": { "corpus": [], "method": ["Method Pod Scene 36 (mint, between friends)"], "health": ["1.2 f3, 1.6 f2, 1.8 f3, 1.10 f3, 2.1 f2, 2.5 f3, 2.8 f3, 2.9 f3 — ALL in the mirror direction: patient discloses, professional receives, and usually fixes"] },
+      "why_not_an_existing_node": "N12 is the LEARNER's trouble, answered by an elicit and a remedy (g110→g111 — the store's 'starkest absence of sympathy'). N11 positions 5–6 are a symmetric move on the learner's own difficulty. F102 is normality asserted from the knowledge seat. Nothing in the store has the native disclose and the learner receive without doing anything about it. The recovery is half a withholding, which is why it is hard to attest.",
+      "asymmetry_note": "At a counter the customer's trouble gets processed — that is what a counter is for — so the customer's disclosure becomes an elicit and g110→g111 is right to write it so. The only disclosure that gets to be an aside at a counter is the one from behind it. That is why W208 has the pharmacist disclose, and why the symmetric arm cannot sit on the chemist's.",
+      "smoke_test": "Passes — and it changed F204: 'does not match with a disclosure of one's own' was wrong for columns where the matched line IS the acknowledgement. What survives every column is the exclusion of fixing and of withdrawing.",
+      "trunk_or_branch": "trunk"
+    }
+  ],
+
+  "moves": [
+    {
+      "id": "F201",
+      "name": "No, and that's why",
+      "provenance": "outcome-overlay-mint",
+      "test": "The responder declines the ticket outright. A reason may be attached; no substitute is offered and no apology made. The asker is left to produce the next move.",
+      "rows": ["g160"],
+      "row_note": "g160 'No, we only take cash' sits on the F6/F201 boundary — the store labels it F6; it names the means without offering one and this proposal reads it as F201. The store's label is not changed.",
+      "attestations": { "health": ["1.3 flow 3 (patient: 'I can't manage the sleeve with this drip in')", "2.3 flow 3 (patient: 'I can't remember them all')", "2.7 flow 2 (doctor: 'Best not with these')"] },
+      "dialogic_attestations": 0,
+      "why_not_F6": "F6 substitutes in the same turn and the asker merely picks. F201 substitutes nothing. Why not F5: F5 supplies a counter-proposal. F201 supplies at most a reason.",
+      "position": "TICKET → REFUSE → (the asker moves). Position 2."
+    },
+    {
+      "id": "F202",
+      "name": "Fair enough — then…",
+      "provenance": "outcome-overlay-mint",
+      "test": "The responder accepts a refusal without contest or apology and, in the same turn, produces the next move: a re-selection, or a question about what is possible.",
+      "rows": [],
+      "built_from": ["g161", "g163"],
+      "built_from_note": "g161 absorbs and stops; g163 asks and stands alone. The two have never been one turn in the corpus, and one turn is the move.",
+      "attestations": { "health": ["2.7 flow 2 (patient: 'A week off the wine') — the absorb only", "2.10 flow 2 (patient: 'Tomorrow, all being well. I'll settle for that') — the absorb only"] },
+      "dialogic_attestations": 0,
+      "why_not_F16": "F16 concedes and HOLDS its position. F202 lets go and moves. Why not F1 re-selection (g60): that follows a supplied substitute; F202 has to generate the option.",
+      "position": "REFUSAL → ABSORB-AND-MOVE → settle. Position 3 of N201."
+    },
+    {
+      "id": "F203",
+      "name": "My fault — here's what I've got",
+      "provenance": "outcome-overlay-mint",
+      "test": "The responder attributes the trouble to themselves or their party, without excuse, and in the same turn supplies whatever partial remedy they hold: a fact, an object, an offer.",
+      "rows": ["g182", "g183"],
+      "row_note": "Both are the admission with the supply ('we have paid') in one line, learner-side, with no partner turn in the corpus.",
+      "attestations": { "health": ["2.7 flow 3 (patient: 'I'll admit, I just stopped them last time') — admission, no supply"] },
+      "dialogic_attestations": 0,
+      "why_not_F13": "F13 thanks and downgrades a claim about oneself. P101 is self-blame for imposing, expecting absolution. F203 is real fault, stated as fact, with something offered.",
+      "position": "TROUBLE SURFACED → ADMIT+SUPPLY → concede-and-hold. Position 2 of N203."
+    },
+    {
+      "id": "F204",
+      "name": "That sounds hard",
+      "provenance": "outcome-overlay-mint",
+      "test": "The responder receives an unbidden disclosure, marks it as heard — a receipt, a repetition, a matched line — and neither fixes, advises, contradicts, normalises from above nor withdraws.",
+      "rows": [],
+      "attestations": { "method": ["Method Pod Scene 36 (mint): repeat it back, take the bare no, name the doubt as allowed"], "health": ["none in this direction; the professional's receiving turns in the eight O7 flows mostly fix"] },
+      "dialogic_attestations": 0,
+      "why_not_F102_F17_F18_F12": "F102 asserts normality from the knowledge seat (a fix-lite). F17 contradicts. F18 normalises and seeks agreement. F12 assesses. F204 does none of those; it is a receipt.",
+      "smoke_note": "The exclusion 'does not match with a disclosure of one's own' was removed — in many columns the matched line is the acknowledgement.",
+      "position": "DISCLOSURE → ACKNOWLEDGE → (the discloser closes) → resume. Position 3 of N204."
+    },
+    {
+      "id": "F205",
+      "name": "Wrong, and doesn't know it",
+      "provenance": "outcome-overlay-mint",
+      "test": "The responder grants what they believe was asked. The mishearing is visible only in the grant; no repair is requested and no doubt is shown.",
+      "rows": [],
+      "attestations": { "health": ["none — every read-back in health is correct (the mapping's O4 finding)"] },
+      "dialogic_attestations": 0,
+      "why_not_F1_F4": "F1 is the right grant. F4 is a hedged grant — the responder knows they are unsure. F205 is the wrong grant with full confidence.",
+      "position": "TURN → WRONG UPTAKE → notice+reformulate. Position 2 of N202."
+    }
+  ],
+
+  "composition": [
+    { "id": "C201", "kind": "composition", "contained": "N201", "container": "P2", "attestation": "W201, W202 — the refusal runs inside the reckoning-and-pay pair at its grant position", "mechanical": true },
+    { "id": "C202", "kind": "composition", "contained": "N6", "container": "N2", "attestation": "W203 — the reversed repair inside the café order; the store attests N6 only inside N5 (C14)", "mechanical": true },
+    { "id": "C203", "kind": "composition", "contained": "N202", "container": "N2", "attestation": "W204 — the silent repair inside a ticket order", "mechanical": true },
+    { "id": "C204", "kind": "composition", "contained": "P3", "container": "N202", "attestation": "W204 — the read-back pair is N202's positions 3–4", "mechanical": true },
+    { "id": "C205", "kind": "composition", "contained": "N203", "container": "N7", "attestation": "W205 — the own-fault admission is the arrangement's unwritten Saturday", "mechanical": true },
+    { "id": "C206", "kind": "composition", "contained": "N201", "container": "N203", "attestation": "W205, W206 — accepting a held consequence is N201's absorb inside N203's positions 4–5 (the composition form of S205)", "mechanical": true },
+    { "id": "C207", "kind": "composition", "contained": "N204", "container": "N5", "attestation": "W207 — the disclosure inside the acquaintance exchange", "mechanical": true },
+    { "id": "C208", "kind": "composition", "contained": "N204", "container": "N12", "attestation": "W208 — the disclosure inside trouble-and-advice, from the counter side", "mechanical": true }
+  ],
+
+  "survivability": [
+    {
+      "id": "S201",
+      "kind": "survivability",
+      "provenance": "outcome-overlay-mint",
+      "b_attemptable_only_if": "Any ask (N2, N3, N9, P2)",
+      "a_survivable": "A refusal with no substitute (N201)",
+      "nodes": ["N201"],
+      "attested_response_positions": ["g160→g161 (drill, monologue)", "health 1.3 flow 3 — 'I can't manage the sleeve' → 'we'll use the other arm' (the learner absorbing from above)"],
+      "recovery_attested": "once",
+      "recovery_note": "Once in pod-0, in drill, as monologue, and the move is missing — g161 absorbs and stops. This is U1, ruled YES: it is why O1 is position 1.",
+      "answer_slot_class": "non-delivery"
+    },
+    {
+      "id": "S202",
+      "kind": "survivability",
+      "provenance": "outcome-overlay-mint",
+      "b_attemptable_only_if": "Asking anyone who can end the encounter (a counter, a desk, a door)",
+      "a_survivable": "Absorb-and-move fitting in ONE turn (F202)",
+      "nodes": ["N201"],
+      "attested_response_positions": ["health 2.7 flow 2, 2.10 flow 2 — the patient side, absorb only"],
+      "recovery_attested": "never",
+      "recovery_note": "Never as one turn. W202 shows the split form (g161, then g163) and its price: a second refusal with no reason, and the doors. This is the edge that orders the asymmetric arm after the symmetric one inside every shape.",
+      "answer_slot_class": "non-delivery"
+    },
+    {
+      "id": "S203",
+      "kind": "survivability",
+      "provenance": "outcome-overlay-mint",
+      "b_attemptable_only_if": "Any turn the learner produces",
+      "a_survivable": "Reformulating your own turn on demand (N6 reversed — F8 spoken by the learner)",
+      "nodes": ["N6"],
+      "attested_response_positions": ["health 2.5 flow 2 — 'could you explain that again?' → 'a bug, basically' → 'Now I understand you' → 'Does the rest make sense?' (the learner reformulating, with the check)"],
+      "recovery_attested": "repeated",
+      "recovery_note": "Three times in health, with the learner in the reformulating seat (2.5 f2, 2.2 f2, 1.4 f2). Never in pod-0: its one repair (g33→g34) has the learner requesting, not granting. Presupposed by every produced turn — including O6's admission — which is what puts O3 immediately after the ruled floor.",
+      "answer_slot_class": "chaining"
+    },
+    {
+      "id": "S204",
+      "kind": "survivability",
+      "provenance": "outcome-overlay-mint",
+      "b_attemptable_only_if": "Surviving a wrong uptake (N202)",
+      "a_survivable": "The read-back pair (P3, F9) — a wrong grant can only be caught by a learner who can hear a read-back as a read-back",
+      "nodes": ["N202", "P3"],
+      "attested_response_positions": [],
+      "recovery_attested": "never",
+      "recovery_note": "Never, in either corpus: every grant in pod-0 is right and every read-back in health is right.",
+      "answer_slot_class": "failure"
+    },
+    {
+      "id": "S205",
+      "kind": "survivability",
+      "provenance": "outcome-overlay-mint",
+      "b_attemptable_only_if": "Admitting own fault (N203)",
+      "a_survivable": "A held consequence absorbed (N201 position 3)",
+      "nodes": ["N203", "N201"],
+      "attested_response_positions": ["health 2.7 flow 3 — 'I'll admit, I just stopped them last time' → 'But the full course, every time. Deal?' → 'Deal.' (patient below)"],
+      "recovery_attested": "once",
+      "recovery_note": "Once in health, patient side; Method Pod Scene 39 as a mint. Never in pod-0. This is the edge that sequences O6 after O1.",
+      "answer_slot_class": "relational"
+    },
+    {
+      "id": "S206",
+      "kind": "survivability",
+      "provenance": "outcome-overlay-mint",
+      "b_attemptable_only_if": "A disclosure landing mid-business (N204)",
+      "a_survivable": "Resuming the business after a frame shift (P6 / F21 / the next ticket)",
+      "nodes": ["N204", "P6"],
+      "attested_response_positions": ["g110→g111 — the corpus going the other way: the disclosure is met with an elicit"],
+      "recovery_attested": "never",
+      "recovery_note": "The acknowledging turn presupposes nothing — it is a token. What a learner cannot do without owning the resume is get back; the corpus attests the pivot only as chaining (F11, F21). Method Pod Scene 36 as a mint.",
+      "answer_slot_class": "relational"
+    }
+  ],
+
+  "outcome_shapes_filled": [
+    {
+      "id": "O1",
+      "name": "Non-delivery with a reason",
+      "node": "N201",
+      "proposed_sequence_position": 1,
+      "store_sequence_position": 2,
+      "arms": [
+        { "walk": "W201", "register": "symmetric", "attestation": "minted from nothing in this register; Method Pod Scene 24 sibling mint" },
+        { "walk": "W202", "register": "asymmetric — the other party holds the instrument, the clock and the queue, and can end the encounter", "attestation": "rows attested in drill (g147, g159, g160, g161, g163); partner turns minted; shape attested in health with the learner in the other seat (1.3 f3, 2.6 f3, 2.3 f3; 2.7 f2, 2.10 f2)" }
+      ]
+    },
+    {
+      "id": "O3",
+      "name": "The native does not understand you",
+      "node": "N6",
+      "node_asymmetric": "N202",
+      "proposed_sequence_position": 2,
+      "store_sequence_position": 1,
+      "arms": [
+        { "walk": "W203", "register": "symmetric", "attestation": "minted from nothing in this register; recovery sequence rests on health 2.5 f2; Method Pod Scene 17 sibling mint" },
+        { "walk": "W204", "register": "asymmetric — the other party holds the instrument, the queue, and the licence not to ask", "attestation": "minted for the form (F205 attested nowhere); recovery rests on health 2.5 f2 / 2.2 f2 / 1.4 f2" }
+      ],
+      "siting_note": "The store sites O3 on g38→g43 (scene 7). Those rows carry no surface text anywhere on disk and the database was out of scope; W203 sits on scene 3's café order (W1, g11), same mask, same position N2.2. Named gap."
+    },
+    {
+      "id": "O6",
+      "name": "Trouble that is your own fault",
+      "node": "N203",
+      "proposed_sequence_position": 3,
+      "store_sequence_position": 6,
+      "arms": [
+        { "walk": "W205", "register": "symmetric", "attestation": "minted from nothing in this register; Method Pod Scene 39 sibling mint" },
+        { "walk": "W206", "register": "asymmetric — the other party holds the record, the sanction and the train", "attestation": "rows attested in drill (g182, g183); partner turns minted; shape attested in health 2.7 f3 with the learner in the other seat" }
+      ]
+    },
+    {
+      "id": "O7",
+      "name": "The native discloses worry or difficulty",
+      "node": "N204",
+      "proposed_sequence_position": 4,
+      "store_sequence_position": 7,
+      "arms": [
+        { "walk": "W207", "register": "symmetric", "attestation": "minted from nothing; Method Pod Scene 36 sibling mint" },
+        { "walk": "W208", "register": "asymmetric — the other party holds the counter, the record and the queue; only they get to step out of frame", "attestation": "minted from nothing in this direction; health's eight O7 flows are the mirror (patient discloses, professional receives and usually fixes) and need the health pod, not a mint here" }
+      ]
+    }
+  ],
+
+  "walk_set": {
+    "concept": "walk-set",
+    "walk_set": "outcome-overlay",
+    "walk_kind": "producing",
+    "format": "Same as walks/pod-0.json: a walk is a sequence of node references {step, node, position}; surface is an annotation. Each walk's stem step is an existing pod-0 row and the fork is a `branches` array on that step, one arm being the corpus's own continuation and the other the minted arm this walk follows. A fork is satisfied by any ONE arm. `minted: true` marks turns that exist nowhere in pod-0; `built_from` cites the pod-0 rows a minted turn is fused from. `learner_side` names the learner's speaker label.",
+    "walks": [
+      {
+        "id": "W201",
+        "name": "O1 symmetric — the taxi",
+        "outcome_shape": "O1",
+        "register": "symmetric",
+        "stem": { "walk": "W14", "step": 3, "node": "N2", "position": 7, "rows": ["g137", "g138", "g139"] },
+        "learner_side": "Passenger",
+        "steps": [
+          { "step": 1, "node": "N2", "position": 6, "row": "g137", "speaker": "Driver", "surface": "Here we are. That's twelve pound fifty.", "pair": "P2" },
+          { "step": 2, "node": "N201", "position": 1, "row": "g138", "speaker": "Passenger", "surface": "Could I pay by card?", "move": "F3", "composed_in": { "node": "P2", "position": 2 } },
+          { "step": 3, "node": "N201", "position": 2, "branch": true, "variance": "outcome",
+            "branches": [
+              { "key": "yes", "polarity": "positive", "move": "F2", "row": "g139", "speaker": "Driver", "surface": "Yes, of course. The machine is just here.", "continues": false, "note": "W14 carries this arm" },
+              { "key": "no", "polarity": "negative", "move": "F201", "minted": true, "speaker": "Driver", "surface": "No. The machine's not working.", "continues": true }
+            ] },
+          { "step": 4, "node": "N201", "position": 3, "minted": true, "speaker": "Passenger", "surface": "Ah. I haven't got any cash on me. Is there a cash machine near here?", "move": "F202", "via_branch": "no", "built_from": ["g161", "g163"], "note": "absorb AND move, one turn — the whole of the skill" },
+          { "step": 5, "node": "N201", "position": 4, "minted": true, "speaker": "Driver", "surface": "There's one on the corner, by the lights. I'll wait.", "move": "F2", "note": "the settle — available between equals" },
+          { "step": 6, "node": "N201", "position": 5, "minted": true, "speaker": "Passenger", "surface": "Two minutes.", "move": "F14" },
+          { "step": 7, "node": "N201", "position": 5, "minted": true, "speaker": "Driver", "surface": "Right.", "move": "F14" }
+        ],
+        "nodes_traversed": ["N2", "P2", "N201"],
+        "composition_edges_used": ["C7", "C201"],
+        "survivability_edges_touched": ["S201"],
+        "redemption_latency": 1
+      },
+      {
+        "id": "W202",
+        "name": "O1 asymmetric — the bus",
+        "outcome_shape": "O1",
+        "register": "asymmetric",
+        "power": "the Driver holds the instrument (the bus), the clock (the timetable) and the queue, and can end the encounter by closing the doors",
+        "stem": { "walk": "W15", "rows": ["g147", "g159", "g160", "g161", "g163"], "note": "the store's own drill run, all four rows speaker = Learner, recorded there as a defect; here g160 is spoken by the Driver" },
+        "learner_side": "Learner",
+        "steps": [
+          { "step": 1, "node": "N2", "position": 2, "row": "g147", "speaker": "Learner", "surface": "Four single tickets to town, please.", "move": "F1" },
+          { "step": 2, "node": "N2", "position": 6, "minted": true, "speaker": "Driver", "surface": "Eight forty.", "pair": "P2" },
+          { "step": 3, "node": "N201", "position": 1, "row": "g159", "speaker": "Learner", "surface": "Can we pay by card?", "move": "F3", "composed_in": { "node": "P2", "position": 2 } },
+          { "step": 4, "node": "N201", "position": 2, "branch": true, "variance": "outcome",
+            "branches": [
+              { "key": "yes", "polarity": "positive", "move": "F1", "minted": true, "speaker": "Driver", "surface": "Tap there.", "continues": false, "note": "the happy path, supplied only so the fork has two arms; attested on the taxi at g139" },
+              { "key": "no", "polarity": "negative", "move": "F201", "row": "g160", "speaker": "Driver", "surface": "No, we only take cash.", "continues": true, "note": "the corpus's only bare no, given its speaker" }
+            ] },
+          { "step": 5, "node": "N201", "position": 3, "row": "g161", "speaker": "Learner", "surface": "I'm sorry, I don't have any cash.", "via_branch": "no", "partial": true, "note": "the absorb WITHOUT the move — the corpus's own line, played straight; what follows is what it costs" },
+          { "step": 6, "node": "N201", "position": 4, "minted": true, "speaker": "Driver", "surface": "Can't help you, then.", "move": "F201", "note": "the hold: a second refusal, this time with no reason at all" },
+          { "step": 7, "node": "N201", "position": 3, "row": "g163", "speaker": "Learner", "surface": "Is there a cash machine near here?", "move": "F202", "note": "the move lands, a turn late" },
+          { "step": 8, "node": "N201", "position": 4, "minted": true, "speaker": "Driver", "surface": "Shop on the corner. Next bus is ten past.", "move": "F2", "note": "the consequence: off the bus" },
+          { "step": 9, "node": "N201", "position": 5, "minted": true, "speaker": "Learner", "surface": "Right. Thank you.", "move": "F14", "note": "the close with nothing won — the thing to own" }
+        ],
+        "nodes_traversed": ["N2", "P2", "N201"],
+        "composition_edges_used": ["C7", "C201"],
+        "survivability_edges_touched": ["S201", "S202"],
+        "redemption_latency": 2,
+        "target_production": "I don't have any cash. Is there a cash machine near here? — the one-turn form; the scene shows the split form and its price"
+      },
+      {
+        "id": "W203",
+        "name": "O3 symmetric — the café",
+        "outcome_shape": "O3",
+        "register": "symmetric",
+        "stem": { "walk": "W1", "step": 2, "node": "N2", "position": 2, "rows": ["g10", "g11"], "store_sited_on": "g38→g43 — no surface text on disk; see siting_note on O3" },
+        "learner_side": "Sarah",
+        "steps": [
+          { "step": 1, "node": "N2", "position": 1, "row": "g10", "speaker": "Barista (3 pm)", "surface": "Good afternoon. What can I get you?", "move": "F21", "composed_in": { "node": "N1", "position": 1 } },
+          { "step": 2, "node": "N2", "position": 2, "row": "g11", "speaker": "Sarah", "surface": "Good afternoon. I'd like a coffee, please. With milk but with no sugar. To take away.", "move": "F1", "also": "N6.1 turn" },
+          { "step": 3, "node": "N6", "position": 2, "branch": true, "variance": "outcome", "composed_in": { "node": "N2", "position": 3 },
+            "branches": [
+              { "key": "understood", "polarity": "positive", "row": "g14", "speaker": "Sarah", "surface": "Do you have crisps, or nuts, or anything?", "continues": false, "note": "W1 carries this arm — no barista turn intervenes in the corpus; the walk goes straight on" },
+              { "key": "not-understood", "polarity": "negative", "move": "F7", "minted": true, "speaker": "Barista", "surface": "Sorry?", "continues": true }
+            ] },
+          { "step": 4, "node": "N6", "position": 3, "minted": true, "speaker": "Sarah", "surface": "A coffee. Milk, no sugar. OK?", "move": "F8", "via_branch": "not-understood", "note": "fifteen words cut to five and a tag; the tag is the learner's check" },
+          { "step": 5, "node": "P3", "position": 1, "minted": true, "speaker": "Barista", "surface": "Milk, no sugar. To have in?", "move": "F9", "composed_in": { "node": "N6", "position": 4 }, "pivot_to_position": 1, "note": "the read-back confirms it landed and is the counter-question that walks back into the option-choice pair P1" },
+          { "step": 6, "node": "P1", "position": 2, "minted": true, "speaker": "Sarah", "surface": "Take away.", "move": "F1" },
+          { "step": 7, "node": "N2", "position": 5, "row": "g18", "speaker": "Barista", "surface": "Here's your coffee.", "move": "F1" },
+          { "step": 8, "node": "N2", "position": 7, "row": "g19", "speaker": "Sarah", "surface": "Thank you very much. Goodbye.", "move": "F14", "composed_in": { "node": "N1", "position": 2 } }
+        ],
+        "nodes_traversed": ["N1", "N2", "N6", "P3", "P1"],
+        "composition_edges_used": ["C1", "C5", "C202"],
+        "survivability_edges_touched": ["S203"],
+        "redemption_latency": 1
+      },
+      {
+        "id": "W204",
+        "name": "O3 asymmetric — the ticket window",
+        "outcome_shape": "O3",
+        "register": "asymmetric",
+        "power": "the Clerk holds the instrument (the machine that has already printed), the queue, and the licence not to ask",
+        "stem": { "rows": ["g148"], "note": "a drill row, learner-side, no partner in the corpus" },
+        "learner_side": "Learner",
+        "steps": [
+          { "step": 1, "node": "N202", "position": 1, "row": "g148", "speaker": "Learner", "surface": "Two return tickets to town, please.", "move": "F1", "composed_in": { "node": "N2", "position": 2 } },
+          { "step": 2, "node": "N202", "position": 2, "branch": true, "variance": "outcome",
+            "branches": [
+              { "key": "understood", "polarity": "positive", "move": "F1", "minted": true, "speaker": "Clerk", "surface": "Two returns. Eight forty.", "continues": false, "note": "the happy path" },
+              { "key": "wrong-uptake", "polarity": "negative", "move": "F205", "minted": true, "speaker": "Clerk", "surface": "Two singles to town. Four twenty.", "continues": true, "note": "no request for repair; the mishearing arrives as a price" }
+            ] },
+          { "step": 3, "node": "N202", "position": 3, "minted": true, "speaker": "Learner", "surface": "No — return. There and back. Return?", "move": "F8", "via_branch": "wrong-uptake", "note": "notice on one word; reformulate with a paraphrase; check" },
+          { "step": 4, "node": "N202", "position": 4, "minted": true, "speaker": "Clerk", "surface": "Two returns. Eight forty.", "move": "F9", "pair": "P3", "note": "the corrected read-back — flat, no apology; the register" },
+          { "step": 5, "node": "N202", "position": 5, "minted": true, "speaker": "Learner", "surface": "Yes. Thank you.", "move": "F1" }
+        ],
+        "nodes_traversed": ["N2", "N202", "P3"],
+        "composition_edges_used": ["C203", "C204"],
+        "survivability_edges_touched": ["S203", "S204"],
+        "redemption_latency": 1,
+        "not_encoded": "the switch to English — not O3; the failure branch of health's N101 Medium contract"
+      },
+      {
+        "id": "W205",
+        "name": "O6 symmetric — Saturday",
+        "outcome_shape": "O6",
+        "register": "symmetric",
+        "stem": { "walk": "W4", "step": 3, "node": "N7", "position": 3, "rows": ["g22"], "draws_on": ["g190", "g191", "g192", "g193"] },
+        "learner_side": "Learner",
+        "steps": [
+          { "step": 1, "node": "N7", "position": 3, "row": "g22", "speaker": "Friend", "surface": "No, I'm sorry, I'm busy tomorrow. But let's talk on Saturday. See you then.", "move": "F5", "note": "the arrangement's last turn; the corpus never shows Saturday" },
+          { "step": 2, "node": "N203", "position": 1, "branch": true, "variance": "outcome", "note": "Saturday, twenty-five past seven",
+            "branches": [
+              { "key": "kept", "polarity": "positive", "move": "F14", "minted": true, "speaker": "Friend", "surface": "There you are.", "continues": false, "note": "the happy path — N1, and the corpus's own greetings" },
+              { "key": "broken", "polarity": "negative", "move": null, "minted": true, "speaker": "Friend", "surface": "There you are. I said seven.", "continues": true, "note": "the trouble surfaced by the other party" }
+            ] },
+          { "step": 3, "node": "N203", "position": 2, "minted": true, "speaker": "Learner", "surface": "I know. My fault. I got the wrong bus.", "move": "F203", "via_branch": "broken", "note": "the excuse named as a fact, not argued" },
+          { "step": 4, "node": "N203", "position": 3, "minted": true, "speaker": "Friend", "surface": "I nearly went home.", "move": "F16", "note": "concession silent; no 'it's fine'" },
+          { "step": 5, "node": "N203", "position": 5, "minted": true, "speaker": "Learner", "surface": "Fair enough. I'll get these — what are you having?", "move": "F1", "also": "N203.2 supply — the round", "note": "accept, with the supply" },
+          { "step": 6, "node": "N203", "position": 4, "minted": true, "speaker": "Friend", "surface": "Go on, then. And next time — seven.", "note": "the price, held by the other party, as a commitment sought (health's N109 between equals)" },
+          { "step": 7, "node": "N203", "position": 5, "minted": true, "speaker": "Learner", "surface": "Seven. I promise.", "move": "F1", "built_from": ["g192"] }
+        ],
+        "nodes_traversed": ["N7", "N203"],
+        "composition_edges_used": ["C205", "C206"],
+        "survivability_edges_touched": ["S205"],
+        "redemption_latency": 2
+      },
+      {
+        "id": "W206",
+        "name": "O6 asymmetric — the inspector",
+        "outcome_shape": "O6",
+        "register": "asymmetric",
+        "power": "the Inspector holds the record (the ticket is his object), the sanction, and the train; he does not explain the policy",
+        "stem": { "rows": ["g182", "g183"], "note": "the admission, learner-side, no partner turn in the corpus" },
+        "learner_side": "Learner",
+        "steps": [
+          { "step": 1, "node": "N203", "position": 1, "minted": true, "speaker": "Inspector", "surface": "Tickets, please.", "note": "the trouble is surfaced by the other party's ordinary business" },
+          { "step": 2, "node": "N203", "position": 2, "branch": true, "variance": "outcome",
+            "branches": [
+              { "key": "has-ticket", "polarity": "positive", "move": "F1", "minted": true, "speaker": "Learner", "surface": "Here you are.", "continues": false, "note": "the happy path" },
+              { "key": "lost", "polarity": "negative", "move": "F203", "row": "g183", "speaker": "Learner", "surface": "We have paid, but my daughter has lost her ticket.", "continues": true, "also_row": "g182", "note": "g182 'I'm sorry, my son lost his ticket' is the surface variant" }
+            ] },
+          { "step": 3, "node": "N203", "position": 3, "minted": true, "speaker": "Inspector", "surface": "I'm sure you have. But she hasn't got a ticket.", "move": "F16", "via_branch": "lost", "note": "F16 exactly — concede, hold — attested for the first time on the world rather than on a person" },
+          { "step": 4, "node": "N203", "position": 2, "minted": true, "speaker": "Learner", "surface": "No. Here's mine — four, from the station, ten past nine. Same as hers.", "move": "F203", "note": "the supply: own ticket, the count, the time" },
+          { "step": 5, "node": "N203", "position": 4, "minted": true, "speaker": "Inspector", "surface": "That's yours. Hers is a twenty-pound penalty, or she gets off at the next stop.", "note": "the supply refused flat; the price stated with no reason and two options" },
+          { "step": 6, "node": "N203", "position": 5, "minted": true, "speaker": "Learner", "surface": "…Twenty. Fine. We'll pay.", "move": "F1", "note": "the accept, priced from above, produced before 'the next stop'" },
+          { "step": 7, "node": "N203", "position": 6, "minted": true, "speaker": "Inspector", "surface": "Card's fine.", "move": "F1" }
+        ],
+        "nodes_traversed": ["N203"],
+        "composition_edges_used": ["C206"],
+        "survivability_edges_touched": ["S205", "S202"],
+        "redemption_latency": 2
+      },
+      {
+        "id": "W207",
+        "name": "O7 symmetric — the acquaintance",
+        "outcome_shape": "O7",
+        "register": "symmetric",
+        "stem": { "walk": "W5", "step": 6, "node": "N5", "position": 2, "rows": ["g29", "g30", "g31", "g35"] },
+        "learner_side": "James",
+        "steps": [
+          { "step": 1, "node": "N5", "position": 2, "row": "g29", "speaker": "James", "surface": "I'm from Manchester, but I live in London now. And you?", "move": "F11", "pivot_to_position": 1 },
+          { "step": 2, "node": "N5", "position": 2, "row": "g30", "speaker": "Anna", "surface": "I'm from France. I've been here for two years.", "move": "F2", "also": "N204.1 business in progress" },
+          { "step": 3, "node": "N204", "position": 2, "branch": true, "variance": "outcome", "composed_in": { "node": "N5", "position": 2 },
+            "branches": [
+              { "key": "stays-in-frame", "polarity": "positive", "move": "F12", "row": "g31", "speaker": "James", "surface": "This is a lovely city. What do you do?", "continues": false, "note": "W5 carries this arm (its step 7, N10.1). Straight after a disclosure this same line is the wrong arm twice over — a contradiction and a topic change" },
+              { "key": "disclosure", "polarity": "negative", "move": null, "minted": true, "speaker": "Anna", "surface": "Two years. Longer than I meant to. I miss home, some days.", "continues": true }
+            ] },
+          { "step": 4, "node": "N204", "position": 3, "minted": true, "speaker": "James", "surface": "I bet. It's a long way.", "move": "F204", "via_branch": "disclosure", "note": "a receipt and a plain fact; no plan" },
+          { "step": 5, "node": "N204", "position": 4, "minted": true, "speaker": "Anna", "surface": "It is. Anyway — and you? Holiday, or work?", "pivot_to_position": 1, "note": "the discloser closes the aside and hands the question back" },
+          { "step": 6, "node": "N204", "position": 5, "row": "g35", "speaker": "James", "surface": "I'm on holiday here with my wife and children. We're having a lovely time.", "move": "F1", "composed_in": { "node": "N5", "position": 2 }, "note": "g35's own text; in W5 it sits at step 11" }
+        ],
+        "nodes_traversed": ["N5", "N204"],
+        "composition_edges_used": ["C15", "C207"],
+        "survivability_edges_touched": ["S206", "S4"],
+        "redemption_latency": 1
+      },
+      {
+        "id": "W208",
+        "name": "O7 asymmetric — the chemist's",
+        "outcome_shape": "O7",
+        "register": "asymmetric",
+        "power": "the Pharmacist holds the counter, the record and the queue; only she gets to step out of frame",
+        "stem": { "walk": "W12", "step": 6, "node": "N4", "position": 2, "rows": ["g114", "g115", "g116", "g117"] },
+        "learner_side": "Customer",
+        "steps": [
+          { "step": 1, "node": "N4", "position": 1, "row": "g114", "speaker": "Customer", "surface": "How often should I take the paracetamol?", "composed_in": { "node": "N12", "position": 5 } },
+          { "step": 2, "node": "N4", "position": 2, "row": "g115", "speaker": "Pharmacist", "surface": "One every four to six hours, no more than eight in a day.", "move": "F2", "also": "N204.1 business in progress" },
+          { "step": 3, "node": "N204", "position": 2, "branch": true, "variance": "outcome", "composed_in": { "node": "N12", "position": 6 },
+            "branches": [
+              { "key": "stays-in-frame", "polarity": "positive", "row": "g116", "speaker": "Customer", "surface": "Are they all right to take with food?", "continues": false, "note": "W12 carries this arm" },
+              { "key": "disclosure", "polarity": "negative", "move": null, "minted": true, "speaker": "Pharmacist", "surface": "Sorry — I'm all over the place today. We're one down, and I've been on since seven.", "continues": true }
+            ] },
+          { "step": 4, "node": "N204", "position": 3, "minted": true, "speaker": "Customer", "surface": "Since seven? That's a long day.", "move": "F204", "via_branch": "disclosure", "note": "a receipt; not 'I'll be quick', not 'you should sit down', not 'sorry to be a bother'" },
+          { "step": 5, "node": "N204", "position": 4, "minted": true, "speaker": "Pharmacist", "surface": "It is. Anyway.", "note": "the discloser closes the aside" },
+          { "step": 6, "node": "N204", "position": 5, "row": "g116", "speaker": "Customer", "surface": "Are they all right to take with food?", "move": "F1", "composed_in": { "node": "N4", "position": 1 }, "note": "the resume is the corpus's own next row, verbatim" },
+          { "step": 7, "node": "N4", "position": 2, "row": "g117", "speaker": "Pharmacist", "surface": "Yes, with or after food is best.", "move": "F2", "composed_in": { "node": "N1", "position": 2 } }
+        ],
+        "nodes_traversed": ["N4", "N12", "N204"],
+        "composition_edges_used": ["C13", "C208"],
+        "survivability_edges_touched": ["S206"],
+        "redemption_latency": 1
+      }
+    ],
+    "accounting": {
+      "walks": 8,
+      "outcome_shapes_filled": 4,
+      "registers_per_shape": 2,
+      "registers_found_not_to_apply": 0,
+      "pod_0_rows_reused_unaltered": ["g10", "g11", "g14", "g18", "g19", "g22", "g29", "g30", "g31", "g35", "g114", "g115", "g116", "g117", "g137", "g138", "g139", "g147", "g148", "g159", "g160", "g161", "g163", "g182", "g183"],
+      "pod_0_rows_altered": [],
+      "minted_learner_turns": 12,
+      "minted_partner_turns": 22,
+      "note": "Every learner line in W202 already existed in pod-0; W208 resumes on g116/g117 verbatim; W207 resumes on g35 verbatim; W203 resumes on g18/g19 verbatim."
+    }
+  },
+
+  "second_axis_test": {
+    "candidate": "Weight the overlay selector by the cost of failing to recover — general, not clinical.",
+    "prediction_written_before_the_result": "Cost will not reorder the shapes; it will be the thing that separates the two registers of one shape.",
+    "scenes": [
+      { "walk": "W201", "latency": 1, "cost_of_failing": "low — the fare stays owed, nobody leaves" },
+      { "walk": "W202", "latency": 2, "cost_of_failing": "high — off the bus, four people, ten minutes" },
+      { "walk": "W203", "latency": 1, "cost_of_failing": "low — a wrong drink, or a second 'sorry?'" },
+      { "walk": "W204", "latency": 1, "cost_of_failing": "medium — the wrong tickets, paid for" },
+      { "walk": "W205", "latency": 2, "cost_of_failing": "medium, relational — the friend goes home" },
+      { "walk": "W206", "latency": 2, "cost_of_failing": "high — a penalty, or a child off the train" },
+      { "walk": "W207", "latency": 1, "cost_of_failing": "low, invisible — a small coldness nobody names" },
+      { "walk": "W208", "latency": 1, "cost_of_failing": "low, invisible — you leave without the answer, or with it and a small coldness" }
+    ],
+    "result": "Supported as a tie-breaker and as the register key; not as a primary key. Latency alone ties O1, O3 and O7 at 1 and puts O7 BEFORE O6 — which neither the store's order nor sense agrees with. Cost breaks the tie (O7's failure is invisible; O3's costs a drink or a ticket; O1-asym's costs the bus) and separates the two registers inside every shape, symmetric before asymmetric, every time. But cost cannot be primary: if it were, W206 (the penalty) would outrank O3 entirely, and S203 says you cannot survive the inspector without first being able to reformulate on demand. So the order is: the ruling (O1 first), then survivability (S203 puts O3 next; S205 puts O6 after O1), then latency, then cost as the tie-breaker and the register key. The prediction was right on both halves.",
+    "refinement_from_health_confirmed": "The health mapping put the weight on the shape, not the line. Here the weight sits on the REGISTER — which is a shape variable on the trunk — so the two findings are the same finding."
+  },
+
+  "explicitly_not_minted": [
+    { "candidate": "The switch to English as an O3 arm", "verdict": "Not O3", "why": "It is the native re-negotiating the medium: the failure branch of health's N101 Medium contract, with a different recovery (hold the language, or accept the switch without shame)." },
+    { "candidate": "O7 with the learner in the power seat (the professional receiving a disclosure)", "verdict": "Not minted here", "why": "Attested eight times in health and frequently violated there. It needs the health pod, not a mint on POD-1." },
+    { "candidate": "The learner's own disclosure answered with sympathy (a fix for g110→g111)", "verdict": "Not O7", "why": "O7 is the NATIVE disclosing. g110→g111 is right as written for a counter: the customer's trouble gets processed. Re-cutting it would be re-cutting POD-1." },
+    { "candidate": "A bare-no node separate from N201 (the Method Pod's Scene 24 form, no reason at all)", "verdict": "Folded into N201", "why": "F201's test says 'a reason at most'. W202 step 6 is the bare form inside the same shape; a second node would be two mints on one sequence." },
+    { "candidate": "Second symmetric masks for O1 and O3 (the restaurant bill at g47, the pub)", "verdict": "Not fanned", "why": "One ask per outcome shape. The register is the variable; the mask is not." }
+  ]
+}
