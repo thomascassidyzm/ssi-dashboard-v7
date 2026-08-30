@@ -4,7 +4,7 @@
 
 **What this document is.** The same Method Pod — the same substance, the same eight newly-named summit shapes, the same five Method-only nodes N13–N17, the same overlay outcomes, the same mints, still labelled where they stand — re-cut into **twelve chapters** instead of forty-three scenes. A chapter is one point that actually gets thought through, in one continuous conversational arc, and it declares which exchange shapes it traverses so the Script Lab's coverage read-out has something to read. Tom licensed the rewrite (*"even if a bunch of these scenes had to be rewritten"*), and scenes have been merged, extended, re-voiced and rewritten as the chapter needed. What was not touched: the substance, the settled taste calls, and the rule that heard is not owned.
 
-**Why chapters.** The Method Pod is a listening walk, not a producing walk. It doesn't cut, so it is not bound by the admission sequencing that forces short scenes elsewhere — heard isn't owned, and that is what buys the length. What the length buys in return is the thing short scenes structurally cannot carry: the **Talk Bollocks signature only exists over long arcs.** The callback, the flagged digression-and-return, the "so what you're saying is" reformulation — each needs something earlier to reach back to, and in a six-turn scene there is nothing to reach. The 43-scene cut has a scene *titled* "the callback"; it does not have a callback, because it could not. This cut has four.
+**Why chapters.** The Method Pod is a listening walk, not a producing walk. It doesn't cut, so it is not bound by the admission sequencing that forces short scenes elsewhere — heard isn't owned, and that is what buys the length. What the length buys in return is the thing short scenes structurally cannot carry: the **Talk Bollocks signature only exists over long arcs.** The callback, the flagged digression-and-return, the "so what you're saying is" reformulation — each needs something earlier to reach back to, and in a six-turn scene there is nothing to reach. The 43-scene cut has a scene *titled* "the callback"; it does not have a callback, because it could not. This cut has four — and a fifth, inside Chapter 4, reaching back to Chapter 2's *"Non lo sappiamo. Lo pensiamo."*
 
 **Corpus references** are `part:line` into `docs/corpus/talk-bollocks/part-{1,2,4}.md`. Part 3 is lost; the file called part 5 is Part 4's audio. Said once.
 
@@ -14,7 +14,7 @@
 
 *The one section Tom actually needs. Everything below it is the evidence.*
 
-**Two arms, one pod.** The control arm is 43 scenes of 4–10 turns, each walking one shape. This arm is 12 chapters of 14–30 turns, each thinking one point through and walking several shapes on the way. Same Italian register (*tu*, old friends, spoken), same loanword rule, same *collegamenti*, same mints, same hold lengths, same lopsided balance inside a unit and even balance across the set. Measured on the same instrument (§4).
+**Two arms, one pod.** The control arm is 43 scenes of 4–10 turns, each walking one shape. This arm is 12 chapters of 14–49 turns, each thinking one point through and walking several shapes on the way. Same Italian register (*tu*, old friends, spoken), same loanword rule, same *collegamenti*, same mints, same hold lengths, same lopsided balance inside a unit and even balance across the set. Measured on the same instrument (§4).
 
 **What the chapter form gained — the long-arc moves, by chapter:**
 
@@ -26,15 +26,13 @@
 **What it cost:**
 
 - **Per-unit legibility.** In the scene cut every unit is one shape and the coverage read-out can score it in one glance. Here a chapter walks four to nine shapes and the read-out has to trust the per-chapter declaration, which is why every chapter carries one.
-- **Zero-admission as a unit property is gone.** The control arm had eight zero-admission *scenes*. A chapter that thinks a point through cannot stay on Layer-0 vocabulary for thirty turns; what survives is five **zero-admission stretches** inside chapters (§4c), each marked, and the stretches carry the same verified canon words as the scenes they came from. Anything added to a stretch is outside it and says so.
+- **Zero-admission as a unit property is gone.** The control arm had eight zero-admission *scenes*. A chapter that thinks a point through cannot stay on Layer-0 vocabulary for thirty turns; what survives is seven **zero-admission stretches** inside chapters (§4c), each marked, and the stretches carry the same verified canon words as the scenes they came from. Anything added to a stretch is outside it and says so.
 - **Two rules of the measured grammar do not survive at chapter scale unchanged** — "exactly one floor-hold per unit" and "one newly-admitted position per unit" — and §4b states the rule used instead rather than quietly reinterpreting them.
-- **Three scenes did not survive as themselves:** Scene 13 (*Il coccodrillo*) is absorbed into the Chapter 8 callback, Scene 20 (the stacked commission) is now the door into Chapter 10, and Scene 41's recovery is now Chapter 9's whole spine. Nothing minted or attested in them is lost; §5 tables it.
+- **Three scenes did not survive as themselves:** Scene 13 (*Il coccodrillo*) is absorbed into the Chapter 8 callback and its opening line — waking up in bed with a crocodile — is gone; Scene 20 (the stacked commission) is now the door into Chapter 10; Scene 41's recovery is now Chapter 9's whole spine. No shape is lost; §5e lists what is.
 
 **Which shapes each arm traverses.** Both arms walk N1, N6 (reversed), N7, N8, N13, N14, N15, N16, N17, all of O1–O9, all eight summit shapes, and corpus moves 1–23 as the control arm's §1c scored them. **Nothing walked by the 43 is unwalked here** (§4d reconciles it node by node). What this arm walks that the control arm does not: move 8 (callback) four times as a real callback; N17 with both halves in sequence; and the reformulation in its *refused* form, twice.
 
-**The read-out.** 12 chapters, 268 turns, 5,733 words of English (§4a). Per chapter: median turn 8–14 words, CV 0.87–1.34, holds of 47–83 words, all heard; a minimal turn of two to four words in every chapter; an `A → token → A` sandwich in every chapter; one speaker at 61–79% inside each chapter and the set at Tom 38 / Aran 62.
-
-*(The numbers in this section are filled from §4 once the measurement has run; if a figure here and a figure in §4 ever disagree, §4 is right.)*
+**The read-out.** 12 chapters, 309 turns, 5,373 words of English, against the control arm's 43 / 276 / 4,364 — same median turn (8), same texture (CV 1.17 against 1.15), same longest hold (80), same set balance to a point (Tom 35 / Aran 65 against 34 / 66). Per chapter: median 6–13 words, CV 0.96–1.29, holds in Tom's 47–80 band and all heard bar one owned 28-word turn that is named; a two-to-four-word turn and an `A → token → A` sandwich in every chapter; one speaker at 61–75% inside ten chapters, two near-even and named. Full tables in §4; if a figure here and a figure in §4 ever disagree, §4 is right.
 
 ---
 
@@ -47,7 +45,7 @@ Delivery order is still derived, not authored; but a chapter cut has a *reading*
 | 1 | *Parte quattro* | Knowing a language is knowing what is between the words | 40, 1, 32, 26 | N1 open · joint construction (m2) · the medium named (m12) · the counterexample absorbed · backchannel (m10) | — (plants the field, for Ch. 9) |
 | 2 | *La fatica* | Effort makes the memory — and how much do we actually know that | 2, 21, 29, 22 | anecdote-with-flag challenged (m4, m5) · the specimen · pre-emption · N14 premise audit · O5-adjacent downgrade | plants *accettala lo stesso* (for Ch. 8) and the curve (for Ch. 9) |
 | 3 | *Due parole* | How little you need to begin | 3, 17, 10 | public self-repair audited (m6) · O3 / N6 reversed · position-abandonment (m14) · concession-then-build owned (m7) | — |
-| 4 | *Non lo so* | Nobody knows how it works in the head, and "complicated" is the tell | 8, 5, 28 | the razor (m13) · N13 not-knowing (m22) · O2 · question-as-handover (m3) · the reported claim | **reformulation, refused** |
+| 4 | *Non lo so* | Nobody knows how it works in the head, and "complicated" is the tell | 8, 5, 28 | the razor (m13) · N13 not-knowing (m22) · O2 · question-as-handover (m3) · the reported claim | **reformulation, refused** · callback → Ch. 2 (the fish) |
 | 5 | *Il gioco* | Control arrives before correctness — and that is when it becomes a game | 4, 31 | reformulation (m1) · flagged digression (m19 as detour) · the outsider's pitch · enacted dialogue (m15) | **reformulation, accepted and sharpened · the flagged digression-and-return** |
 | 6 | *Il precipizio* | "Go and practise" is right, and it is the cruellest thing you can say | 25, 27, 23 | concession-then-build (m7) · the misreading corrected · O5 premise refused · the flat no | **reformulation, refused (one word)** — plants the cliff (for Ch. 9) |
 | 7 | *Un tiro di dadi* | How you would do it in a school, and how long it takes | 7, 30, 6, 16 | the flagged guess (m11, m18) · the complaint with a partner turn · N16 precision haggle (m21) · N15 parked disagreement · O8 parked | plants *la mettiamo in pausa* (for Ch. 12) |
@@ -75,9 +73,9 @@ Every scene number 1–43 appears exactly once in the "absorbs" column. Scenes 1
 
 **Owns:** backchannel ratification; the ritual open; colours, "I'd like one that's…", "I don't mind" (live canon). **Newly admits, one per beat:** the title completed before the host can (beat 1); the bathos completion absorbed (beat 2); closing the partner's open clause and being ratified (beat 3); narrating a gesture for the listener in the third person (beat 4); breaking a stated rule with one natural sentence and having the rule-holder keep the finding (beat 5).
 
-**Holds (heard, never owned):** turn 6 (Aran, the big picture), turn 9 (Tom, the city), turn 17 (Aran, the web). Turn 9 is Tom's on purpose — the control arm's Scene 1 gave him the city and the chapter keeps it; it is the one hold in the chapter that is not Aran's, and it is where the phrase Chapter 9 will reach back for is said.
+**Holds (heard, never owned) — every turn at or over 3× the chapter median (27 words):** turn 6 (Aran, the big picture, 49), turn 9 (Tom, the city, 61), turn 16 (Aran, the row, 41), turn 18 (Aran, the web, 80), turn 20 (Aran, playful → the rule, 51), turn 22 (Aran, the concession, 31). Turn 9 is Tom's on purpose — the control arm's Scene 1 gave him the city and the chapter keeps it; it is where the phrase Chapter 9 will reach back for is said. The owned moves — *un campo* (9 words), *Esatto* (2), *la rete* (2), the counterexample (9), *Piccola, però* (3) — are all short.
 
-**Zero-admission stretch:** turns 20–24 (*Rosso, ma*), carried from Scene 26 with its checked words unchanged: after, red, say, bus, house, one, that's, a lot, can't, I'd like, mind, good, little, something, in it, know, more, small, all, language.
+**Zero-admission stretch:** turns 21–24 (*Rosso, ma*), carried from Scene 26 with its checked words unchanged; the rule statement that opens it sits at the tail of turn 20, whose first half is Scene 32's *playful* and is not zero-admission. Checked words: after, red, say, bus, house, one, that's, a lot, can't, I'd like, mind, good, little, something, in it, know, more, small, all, language.
 
 **Mints:** none. Reattribution stated, as in the control arm: the counterexample is Tom's line (Aran's own at 1:132–135), because the shape needs it to come from outside.
 
@@ -104,7 +102,7 @@ Every scene number 1–43 appears exactly once in the "absorbs" column. Scenes 1
 | TOM | Both. Show me the classroom version. | Tutti e due. Fammi vedere la versione da aula. |
 | ARAN | So take a row of words — five of them, like this — and one link between each. That's the classic classroom: rich in words, poor in edges. …It's a pity the recording can't pick up my pathetic attempts to act this out. | Allora prendi una fila di parole — cinque, così — e un collegamento tra una e l'altra. Questa è l'aula classica: ricca di parole, povera di collegamenti. …Peccato che la registrazione non riesca a cogliere i miei patetici tentativi di mimarlo. |
 | TOM | They'll get it. He's banging on the arm of the chair. Five bangs, in a row. | Lo capiranno. Sta battendo sul bracciolo della poltrona. Cinque colpi, in fila. |
-| ARAN | Five bangs in a row. And all you can do with five in a row is start here and walk to there. And that's boring — that's really boring, and it's what most people have ever been given. But now put another row under it, and another, so it's fifteen — and now draw every link there could be between them. Now I can start here and go through it fifteen different ways, and I never have to have been taught any of the fifteen. And that's— | Cinque colpi in fila. E con cinque in fila l'unica cosa che puoi fare è partire da qui e arrivare là. Ed è noioso — è davvero noioso, ed è quello che quasi tutti hanno sempre avuto. Ma adesso mettici un'altra fila sotto, e un'altra, così sono quindici — e adesso disegna tutti i collegamenti possibili tra loro. Adesso posso partire da qui e attraversarle in quindici modi diversi, e nessuno dei quindici me lo deve aver insegnato. E questo è— |
+| ARAN | Five bangs in a row. And all you can do with five in a row is start here and walk to there. And that's boring — that's really boring, and it's what most people were ever given. But now put another row under it, and another, so it's fifteen — and now draw every link there could be between them. Now I can start here and go through it fifteen different ways, and nobody taught me any of the fifteen. And that's— | Cinque colpi in fila. E con cinque in fila l'unica cosa che puoi fare è partire da qui e arrivare là. Ed è noioso — è davvero noioso, ed è quello che quasi tutti hanno sempre avuto. Ma adesso mettici un'altra fila sotto, e un'altra, così sono quindici — e adesso disegna tutti i collegamenti possibili tra loro. Adesso posso partire da qui e attraversarle in quindici modi diversi, e nessuno dei quindici me l'ha insegnato. E questo è— |
 | TOM | —the web. | —la rete. |
 | ARAN | That's playful. That's the moment the adult learner thinks: oh, I can say a lot of different things. I'm in control of this. Try it. After "red", what can I say? "Red bus." "A red house." "One that's red." A lot. And what can't I say? I can't say "red but". | Questo è giocare. È il momento in cui l'adulto che impara pensa: oh, posso dire un sacco di cose diverse. Questa cosa la controllo io. Prova. Dopo «rosso», cosa posso dire? «Autobus rosso.» «Una casa rossa.» «Uno rosso.» Tanto. E cosa non posso dire? Non posso dire «rosso ma». |
 | TOM | "I'd like one that's red — but I don't mind." | «Vorrei uno rosso — ma non importa.» |
@@ -127,7 +125,7 @@ Every scene number 1–43 appears exactly once in the "absorbs" column. Scenes 1
 
 **Owns:** the anecdote-with-flag; the live-demonstration frame; reformulation; ratification. **Newly admits, one per beat:** surviving the sample-size challenge by turning the story on the challenger (beat 1); being the specimen — narrating your own head instead of performing (beat 2); handing over a point the partner reached first (beat 3); asking for the ground under a claim you both like, and taking "we think" as the floor (beat 4).
 
-**Holds (heard):** turn 3 (Aran, the learner's letter), turn 10 (Aran, the hook), turn 14 (Tom, Ebbinghaus), turn 21 (Aran, the Bjork landscape). Four holds in one arc because the chapter has four beats, each with its own attested hold (§4b, rule H).
+**Holds (heard) — at or over 3× the chapter median (30 words):** turn 3 (Aran, the letter, 42), turn 11 (Aran, the hook, 78), turn 14 (Tom, Ebbinghaus, 53), turn 18 (Tom, the same church, 36), turn 20 (Tom, the audit landscape, 50), turn 21 (Aran, Bjork, 82). Six holds in one arc because the chapter has four beats and the audit's question and answer are both long, as attested (1:336–339). The owned moves — the flag (10), *Pysgod* (1), the mnemonic (19), *Was it?* (2), *Come lo sappiamo?* (inside 18), *Know what?* (2), *"We think" I can live with* (6) — are all short; the landscape at turn 20 is heard framing around a four-word question, as it was in Scene 22.
 
 **Mints:** none. The *accettala lo stesso* line is Aran's own flag at 1:344–349, and the "please accept my anecdotal evidence" catchphrase it grows into is at 1:347–349 and 4:242–246; it is said here so that Chapter 8 can call it back.
 
@@ -147,7 +145,7 @@ Every scene number 1–43 appears exactly once in the "absorbs" column. Scenes 1
 | TOM | Pysgod. | Pysgod. |
 | ARAN | Now, if I just make you say it — pysgod, pysgod, pysgod — you're not making a memory. It's too easy. | Ora, se ti faccio solo ripetere — pysgod, pysgod, pysgod — non stai formando una memoria. È troppo facile. |
 | TOM | …Actually I've half got it already. "Pys" — a bit like puss, the cat. And "cod" is a fish. Pysgod. | …In realtà l'ho già mezzo preso. «Pys» — un po' come puss, il gatto. E «cod» è un pesce. Pysgod. |
-| ARAN | There. Look at what you just did. I didn't ask you for that. You went looking for a hook, on your own, and the hook cost you something — and that's the memory, not the word. Now: if we leave it there, and in two hours I come back and ask you the Welsh for fish, it'll be hard. And the hard is the point. If it were easy by next week it would be gone — that's the curve, that's what the curve does to easy. | Ecco. Guarda cos'hai appena fatto. Non te l'avevo chiesto. Sei andato a cercarti un gancio, da solo, e il gancio ti è costato qualcosa — e la memoria è quella, non la parola. Ora: se lo lasciamo lì, e tra due ore torno e ti chiedo il gallese per pesce, sarà difficile. E il difficile è il punto. Se fosse facile, la settimana prossima sarebbe sparito — è la curva, è quello che la curva fa alle cose facili. |
+| ARAN | There. Look at what you just did. I didn't ask you for that. You went looking for a hook, on your own, and the hook cost you something — and that's the memory, not the word. Now: if we leave it there, and in two hours I come back and ask you the Welsh for fish, it'll be hard. And the hard is the point. If it were easy, by next week it would be gone. That's the curve. | Ecco. Guarda cos'hai appena fatto. Non te l'avevo chiesto. Sei andato a cercarti un gancio, da solo, e il gancio ti è costato qualcosa — e la memoria è quella, non la parola. Ora: se lo lasciamo lì, e tra due ore torno e ti chiedo il gallese per pesce, sarà difficile. E il difficile è il punto. Se fosse facile, la settimana prossima sarebbe sparito. È la curva. |
 | TOM | So you're going to leave it. | Quindi lo lasci lì. |
 | ARAN | I'm going to leave it. | Lo lascio lì. |
 | TOM | Pysgod. …The curve, though. Ebbinghaus. The German. One man, memorising lists of nonsense syllables, testing himself, sample size one, corroborated by nobody — and a hundred years later everyone still quotes his intervals as if they were physics. And yet the practice works. There's truth in the practice without any consistency about the why. | Pysgod. …La curva, però. Ebbinghaus. Il tedesco. Un uomo solo, che impara a memoria liste di sillabe senza senso, si testa da solo, campione di uno, confermato da nessuno — e cent'anni dopo tutti citano ancora i suoi intervalli come se fossero fisica. Eppure la pratica funziona. C'è del vero nella pratica, senza nessuna coerenza sul perché. |
@@ -157,7 +155,7 @@ Every scene number 1–43 appears exactly once in the "absorbs" column. Scenes 1
 | TOM | Then I'll take it. Because it's the same church. One German on one German, one learner on one learner, and one of us on himself with a Welsh fish. So — wait. How do we know that? | Allora me la prendo. Perché è la stessa chiesa. Un tedesco su un tedesco, una studentessa su una studentessa, e uno di noi due su se stesso con un pesce gallese. Quindi — aspetta. Come lo sappiamo? |
 | ARAN | Know what? | Come sappiamo cosa? |
 | TOM | That it's effort that makes the memory. I feel it's true. It seems to work. But where are we, actually — is it in the studies, peer-reviewed, mapped out, can we say "proven scientific fact"? Or is it one man in California with a good idea, and us with a feeling? | Che è la fatica a fare la memoria. Io sento che è vero. Sembra funzionare. Ma a che punto siamo, davvero — è negli studi, con la peer review, tutto mappato, possiamo dire «fatto scientifico dimostrato»? O è un signore in California con una buona idea, e noi con una sensazione? |
-| ARAN | …It's closer to the man in California. Bjork says it, and he's careful, and the work is good. Proven, in the sense you mean? No. What I've got on top of that is me — one person, testing on himself for years — and now a fish you'll either have or not have in two hours. That's not proof, that's a story with a flag on it. But the question you just asked is the right one, and nobody in this field asks it enough. So — no. We don't know. We think. | …È più vicino al signore in California. Lo dice Bjork, ed è uno attento, e il lavoro è buono. Dimostrato, nel senso che intendi tu? No. Quello che ho in più è me stesso — una persona, che si testa da sola da anni — e adesso un pesce che tra due ore o avrai o non avrai. Non è una prova, è una storia con una bandierina sopra. Ma la domanda che hai appena fatto è quella giusta, e in questo campo nessuno la fa abbastanza. Quindi — no. Non lo sappiamo. Lo pensiamo. |
+| ARAN | …It's closer to the man in California. Bjork says it, and he's careful, and the work is good. Proven? No. What I've got on top of that is me — one person, testing himself for years — and now a fish you'll have or not have in two hours. That's not proof, that's a story with a flag on it. But the question you just asked is the right one, and nobody asks it enough. So — no. We don't know. We think. | …È più vicino al signore in California. Lo dice Bjork, ed è uno attento, e il lavoro è buono. Dimostrato? No. Quello che ho in più è me stesso — una persona, che si testa da sola da anni — e adesso un pesce che tra due ore avrai o non avrai. Non è una prova, è una storia con una bandierina sopra. Ma la domanda che hai appena fatto è quella giusta, e nessuno la fa abbastanza. Quindi — no. Non lo sappiamo. Lo pensiamo. |
 | TOM | "We think" I can live with. | Con «lo pensiamo» posso convivere. |
 | ARAN | "We think" is where every good thing starts. And you'll still remember the fish. | «Lo pensiamo» è da dove parte ogni cosa buona. E il pesce te lo ricorderai lo stesso. |
 | TOM | Stop that. | Smettila. |
@@ -174,9 +172,9 @@ Every scene number 1–43 appears exactly once in the "absorbs" column. Scenes 1
 
 **Owns:** say-that-again / more-slowly / counting / the read-back line; "I don't understand" / "again, slowly" / "now I understand"; the ratification stream (all live canon). **Newly admits, one per beat:** correcting yourself mid-turn in the open and absorbing the audit with a counter-tease (beat 1); the *speaker's* response to the listener's failure — not louder, not longer, cut to one sentence and checked (beat 2); owning a changed mind at full strength and holding it total when probed (beat 3).
 
-**Holds (heard):** turn 11 (Tom, the overrun — deliberately too much, that is the scene), turn 18 (Aran, the recantation), turn 20 (Aran, every one of those people).
+**Holds (heard) — at or over 3× the chapter median (18 words):** turn 3 (Tom, *me ne servono tre*, 21 — canon words, Scene 3's own hold), turn 11 (Tom, the overrun, 52 — deliberately too much, that is the scene), turn 17 (Tom, *and I've just done the thing*, 20), turn 18 (Aran, the recantation, 36), turn 20 (Aran, every one of those people, 46). The owned moves — *Non ho capito* (3), *Ancora — lentamente* (5), the six-word recut (6), *Completamente?* (2) — are all short.
 
-**Zero-admission stretch:** turns 1–17, carried from Scenes 3 and 17 with their checked words unchanged (think, learn, language, need, all, words, say, something, after, talk, day, people, more, then, understand, too, much, again, slowly, now, good, that's all; three, two, you). Turn 9 ("Two words, and you") and turn 10 add nothing outside that list. Turns 18–23 are outside the stretch.
+**Zero-admission stretch:** turns 1–16, carried from Scenes 3 and 17 with their checked words unchanged (think, learn, language, need, all, words, say, something, after, talk, day, people, more, then, understand, too, much, again, slowly, now, good, that's all; three, two, you). **Honest caveat:** turns 6–10 are new bridging turns built from that list plus *which* and *any*, which I did not verify against the live canon — no query was run in this job (§8). Turn 17 opens on canon words (*Good. That's all.*) and then leaves the stretch; turns 17–23 are outside it.
 
 **Mints:** the reversed repair — the listener failing to understand — is **MINT**, unattestable between two people who understand each other perfectly (control arm Scene 17); container from N6.
 
@@ -222,7 +220,7 @@ Every scene number 1–43 appears exactly once in the "absorbs" column. Scenes 1
 
 **Owns:** question-as-handover; backchannel; the reformulation staple; idea, good, bad, know, right, now, start, think (live canon). **Newly admits, one per beat:** the razor — complexity as refutation, a flat verdict allowed to stand (beat 1); having your reformulation refused and taking the correction (beat 2); "I don't know" held with status and converted into licence to think together (beat 3); relaying somebody else's claim with your own vertigo attached, and the partner helping to carry it (beat 4).
 
-**Holds (heard):** turn 3 (Tom, the parallel system), turn 8 (Aran, the description is not the thing), turn 12 (Aran, the doubled not-knowing — built by repetition of owned words, as in the control arm's Scene 5), turn 18 (Aran, Wray).
+**Holds (heard) — at or over 3× the chapter median (28.5 words):** turn 3 (Tom, the parallel system, 43), turn 8 (Aran, the description is not the thing, 76), turn 16 (Aran, Wray, 35), turn 18 (Aran, there aren't any, 52), turn 20 (Aran, to boldly go, 30). Turn 12 (Aran, the doubled not-knowing, 28) sits a hair under 3× and is the control arm's Scene 5 hold verbatim, built by repetition of owned words. The owned moves — the reformulation (9), *Then what's in there?* (4), *Non lo so* (3), *Non lo sai?* (3), *No such thing* (3), *one unit of meaning* (9) — are all short.
 
 **Zero-admission stretch:** turns 10–15, carried from Scene 5 with roles swapped and its checked words unchanged (idea, good, bad, know, right, now, start, think). The swap is stated: in Scene 5 Aran asks and Tom does not know; here the question is Tom's and the not-knowing is Aran's, because the chapter has just watched Aran refuse a reformulation and the shape needs the refuser to be the one who then has nothing.
 
@@ -273,7 +271,7 @@ Every scene number 1–43 appears exactly once in the "absorbs" column. Scenes 1
 
 **Owns:** reformulation; ratification; the puppet-show frame. **Newly admits, one per beat:** the reformulation offered and taken (beat 1); licensing a flagged detour with a clock, keeping the clock, and restoring the thread on the partner's own marker (beat 2); telling the owner how you pitch his idea to strangers, and hearing the one ingredient you left out (beat 3).
 
-**Holds (heard):** turn 5 and turn 7 (Aran, the garden — the digression is two holds with a clock between them, which is what makes it a digression and not a long turn), turn 12 (Tom, the pitch), turn 15 (Aran, permission).
+**Holds (heard) — at or over 3× the chapter median (39 words):** turn 5 (Aran, the garden, 59) and turn 7 (Aran, the neighbour, 61) — the digression is two holds with a clock between them, which is what makes it a digression and not a long turn; turn 12 (Tom, the pitch, 61); turn 15 (Aran, permission, 51). Turn 3 (Aran, the sharpening and the flag, 34) is under 3×. The owned moves — the reformulation (9), *Clock's running* (2), *One minute* (2), the restoration (10), *Permission* (1), *…In a sense* (3) — are all short.
 
 **Mints:** none. The garden is extended beyond Scene 4's forty-two words on the corpus's own licence for detours (2:57 "And where were we?" arrives after a run, not after a sentence); the added garden material is plain extension of what the ratified turn already said. The game's name stays in English in both columns, swearing included — it is a name, the joke is in the English, and Tom has ruled on it.
 
@@ -285,7 +283,7 @@ Every scene number 1–43 appears exactly once in the "absorbs" column. Scenes 1
 |---|---|---|
 | ARAN | The moment you've got edges, you can go in lots of directions. And that's when it becomes a game. | Nel momento in cui hai i collegamenti, puoi andare in tante direzioni. Ed è lì che diventa un gioco. |
 | TOM | So what you're saying is: control arrives before correctness. | Quindi quello che stai dicendo è: il controllo arriva prima della correttezza. |
-| ARAN | Yes. And sharper than that: control is what correctness grows out of. Nobody ever got correct first and then in control. — Hang on. That makes me think of the garden. Two minutes, I promise. | Sì. E ancora più preciso: il controllo è la cosa da cui cresce la correttezza. Nessuno è mai diventato prima corretto e poi padrone. — Aspetta. Questo mi fa pensare al giardino. Due minuti, promesso. |
+| ARAN | Yes. And sharper than that: control is what correctness grows out of. Nobody ever got correct first and then in control. — Hang on. That makes me think of the garden. Two minutes, I promise. | Sì. E ancora più preciso: il controllo è la cosa da cui cresce la correttezza. Nessuno ha mai avuto prima la correttezza e poi il controllo. — Aspetta. Questo mi fa pensare al giardino. Due minuti, promesso. |
 | TOM | Clock's running. | Il tempo corre. |
 | ARAN | Nobody designs a garden leaf by leaf. Nobody can. You plant, and the garden answers, and then you find out what you've actually got, which is never the thing you drew. We drew a pond. What we've got is a pond with a willow in it that nobody planted, and the willow is the best thing in the garden. | Nessuno progetta un giardino foglia per foglia. Nessuno ci riesce. Tu pianti, e il giardino risponde, e poi scopri quello che hai davvero, che non è mai quello che avevi disegnato. Noi avevamo disegnato uno stagno. Quello che abbiamo è uno stagno con dentro un salice che non ha piantato nessuno, e il salice è la cosa più bella del giardino. |
 | TOM | One minute. | Un minuto. |
@@ -315,7 +313,7 @@ Every scene number 1–43 appears exactly once in the "absorbs" column. Scenes 1
 
 **Owns:** the ratification stream; the reformulation staple; the flat no. **Newly admits, one per beat:** conceding the conventional answer totally — doubled and tripled — and building inside the same breath (beat 1); having "so what you're saying is" fail, and laying the two readings side by side before taking the right one (beat 2); a premise refused in one word, and dropping your own premise without a fight (beat 3).
 
-**Holds (heard):** turn 4 (Aran, the cliff), turn 10 (Aran, transcripts), turn 16 (Aran, press play).
+**Holds — at or over 3× the chapter median (22.5 words):** turn 1 (Tom, every teacher, 28), turn 4 (Aran, the cliff, 80), turn 7 (Tom, films → the reformulation, 23), turn 10 (Aran, transcripts, 74), turn 11 (Tom, the side-by-side, 28), turn 16 (Aran, press play, 68). **One flagged:** turn 11 is the owned move — Tom laying the two readings side by side — and at 28 words it is over 3× this chapter's median, where in Scene 27 the same 28 words were 2.7× of a higher median. It is kept at the control arm's length because the move has to be sayable at that length or it is not the move; §4b names it as the one owned turn in the set over the hold line.
 
 **Mints:** none.
 
@@ -358,9 +356,9 @@ Every scene number 1–43 appears exactly once in the "absorbs" column. Scenes 1
 
 **Owns:** question-and-answer floor; the ratification stream; numbers, "and then?" (live canon). **Newly admits, one per beat:** pricing your own authority down before answering, and having the guess bought anyway (beat 1); joining a complaint short, then taking a share of the blame in one word (beat 2); bid, counterbid, convergence, settlement formula (beat 3); both positions restated in full, neither yielding, the clash explicitly shelved with the relationship intact (beat 4).
 
-**Holds (heard):** turn 4 (Aran, the roll of the dice), turn 7 and turn 9 (Aran, the complaint — two holds around a five-word join, the corpus's own profile), turn 22 (Aran, a hundred hours), turn 24 and turn 26 (Aran, the five-day model and its defence).
+**Holds (heard) — at or over 3× the chapter median (22.5 words):** turn 4 (Aran, the roll of the dice, 54), turn 6 (Aran, the highlighter, 69) and turn 8 (Aran, ours, 47) — two holds around a four-word join, the corpus's own profile — turn 20 (Aran, a hundred hours, 25 — canon words, Scene 6's own settlement), turn 21 (Tom, thirteen weeks, 32 — his position, stated in full as Scene 16 had it), turn 22 (Aran, the five-day model, 42), turn 24 (Aran, its defence, 33). The owned moves — *Però?* (1), *Nostro* (1), *E poi?* (2), *Fewer than you think* (4), *la mettiamo in pausa* (7) — are all short.
 
-**Zero-admission stretch:** turns 15–22 (*Cento ore*), carried from Scene 6 verbatim; "E poi?" is canon.
+**Zero-admission stretch:** turns 14–20 (*Cento ore*), carried from Scene 6 verbatim; the opening question sits at the tail of turn 13, whose first half is not canon. "E poi?" is canon.
 
 **Mints:** Tom's fuller partner turn to the complaint — join, then take the share — is the **MINT** the control arm recorded; the park form as the summit's disagreement is the mint the re-cut recorded. The parked clash's *"Yep. We'll just put that on pause. Okay."* is Tom's line in the corpus and stays in his mouth.
 
@@ -411,9 +409,9 @@ Every scene number 1–43 appears exactly once in the "absorbs" column. Scenes 1
 
 **Owns:** the flat refusal; anecdote-with-flag; reformulation; days, times, "I'll be there", "I'm not here" (live canon). **Newly admits, one per beat:** surviving a bare "No" twice with nothing in hand before the account arrives (beat 1); giving a story its name in one line and letting the teller decide what it may mean (beat 2); deploying a shared line as a tool and having its provenance teased (beat 3); the audit question inside the partner's glowing story, answered honestly (beat 4); minting an image and letting the partner drive it (beat 5); naming an interruption and banking the thread (beat 6); after a second no, producing a third option (beat 7).
 
-**Holds (heard):** turn 8 (Aran, the group and the bed and breakfast), turn 11 (Aran, the negative person), turn 15 (Aran, nonetheless), turn 20 (Tom, the street group and the crocodile), turn 26 (Aran, there's your answer), turn 28 (Tom, the trip), turn 31 (Aran, the tour), turn 36 (Aran, the evening class, cut off), turn 39 (Tom, the dog), turn 48 (Aran, the cost of tomorrow). This is the longest chapter in the set and the only one with ten holds; it closes a session, and the session's own attested close is exactly this pile-up of short beats (2:135–146, 4:470–474).
+**Holds (heard) — at or over 3× the chapter median (18 words):** turn 8 (Aran, the bed and breakfast, 73), turn 12 (Aran, the negative person, 61), turn 16 (Aran, nonetheless, 44), turn 19 (Tom, the street group with the flag, 36), turn 21 (Tom, the provenance of the line, 42), turn 24 (Aran, a good line belongs to both, 28), turn 29 (Tom, fifteen, 19), turn 30 (Aran, there's your answer, 52), turn 31 (Tom, the trip, 46), turn 34 (Aran, the tour, 41), turn 38 (Aran, the evening class, cut off, 63), turn 41 (Tom, the dog, 27), turn 42 (Aran, the debt and the question, 19), turn 49 (Tom, the cost of tomorrow, 29 — canon words). Fourteen turns over the line in the longest chapter in the set, because its median is six: the bare no, the cancer exchange and the arrangement are all one-to-three-word turns. Every owned move — the three bare *No*s, *Since when?*, *That's literally how cancer works*, *Esatto*, *That's my line*, *It is now*, *Si è raffreddato*, *—macchina*, *You gave me the keys*, *Il cane?*, the three diary lines — is under ten words. It closes a session, and the session's own attested close is exactly this pile-up of short beats (2:135–146, 4:470–474).
 
-**Zero-admission stretch:** turns 41–48 (*Domani, allora*), carried from Scene 18 with its checked words unchanged.
+**Zero-admission stretch:** turns 43–48 and turn 49 as far as *Io sono qui* (*Domani, allora*), carried from Scene 18 with its checked words unchanged; the proposal that opens it sits at the tail of turn 42, whose first half (the debt) is not canon, and turn 49 closes on *Segnato. La terza cosa, domani*, which is not.
 
 **Mints:** the no held bare across two turns, and Tom pressing (**MINT**, control arm Scene 24); the dog's container (**MINT**, the corpus line is an editorial annotation, not a turn — as the re-cut recorded). The crocodile line is attested three times and minted nowhere.
 
@@ -489,7 +487,7 @@ Every scene number 1–43 appears exactly once in the "absorbs" column. Scenes 1
 
 **Owns:** the banked thread; not-knowing; joint construction; the ratification stream. **Newly admits, one per beat:** calling in a debt before anything else and having it confirmed (beat 1); losing the thing in public and asking for the scaffold (beat 2); completing the missing item from the scaffold across the turn boundary (beat 3); declaring the debt paid on both sides (beat 4).
 
-**Holds (heard):** turn 7 (Tom, the first two things, with their provenance), turn 8 (Aran, the third thing).
+**Holds (heard) — at or over 3× the chapter median (25.5 words):** turn 7 (Tom, the first two things with their provenance, 60), turn 8 (Aran, the third thing, 63). The owned moves — *Ti dovevo una terza cosa* (6), *L'ho persa* (inside 7 words), *Dammi le prime due* (inside 16), the completion *—vai a usarla* (the head of turn 8), *Debito saldato* (2) — are all short.
 
 **Mints:** the whole recovery is **MINT**, as in the control arm's Scene 41: the corpus's last line is the interruption and the next session was never recorded. The three things are 1:250–258. What is new against Scene 41 is that the scaffold names *where* each thing was said, which only a chapter set with a reading order can do.
 
@@ -526,9 +524,9 @@ Every scene number 1–43 appears exactly once in the "absorbs" column. Scenes 1
 
 **Owns:** question words, "a lot", "start with"; anecdote-with-flag; numbers, "still", the read-back line; not-knowing (live canon and earlier chapters). **Newly admits, one per beat:** accepting a pile of questions with one word and ordering it aloud (beat 1); answering a story with a story to the same shape, and extracting its shape in a line (beat 2); the tease turned on the teller, conceded in full (beat 3); the correction inside the confirm — "three, not two" — and the re-read (beat 4); repeating a disclosed doubt back, taking the bare no, and naming the doubt as allowed (beat 5); taking the fault before being asked and pricing the consequence yourself (beat 6).
 
-**Holds (heard):** turn 4 (Tom, ordering the stack), turn 6 (Tom, the day of Mandarin), turn 9 (Aran, the Manx on film), turn 14 (Aran, the tease), turn 21 (Aran, still there), turn 23 (Aran, unfinished business), turn 29 (Aran, that's on me).
+**Holds (heard) — at or over 3× the chapter median (24 words):** turn 4 (Tom, ordering the stack, 31 — canon words), turn 6 (Tom, the day of Mandarin, 71), turn 9 (Aran, the Manx on film, 70), turn 15 (Aran, the tease, 45), turn 21 (Aran, still there, 35 — canon words), turn 22 (Tom, the atoms, 31), turn 23 (Aran, unfinished business, 80), turn 29 (Aran, that's on me, 75). The owned moves — *Sì* (1), *Comincia dal come* (3), the two shape-extractions (5, 3), *Oh no* (2), *No, hai perfettamente ragione* (4), *Per due anni* (3), *Tre. Non due — tre anni* (5), *Non sai se ci arriverai* (7), *No* (1), *Mezza giornata* (3) — are all short.
 
-**Zero-admission stretches:** turns 1–5 (*C'è tanta roba*, from Scene 20, roles swapped — the stack is Aran's here because Tom tells the first story; checked words unchanged) and turns 17–22 (*Tre anni*, from Scene 19, checked words unchanged).
+**Zero-admission stretches:** turns 1–5 (*C'è tanta roba*, from Scene 20, roles swapped — the stack is Aran's here because Tom tells the first story; checked words unchanged) and turns 18–21 plus the tail of turn 17 from *Giorno uno* (*Tre anni*, from Scene 19, checked words unchanged; turn 17's head, *Matti, tutti e due*, is not canon, and turn 22's atoms are not).
 
 **Mints:** the partner's wrong read-back (**MINT**; the number and its correction are Aran's own, 1:396–400); Tom's three turns to the disclosure (**MINT**; nobody answers it in the corpus); Tom's three turns to the own-fault admission (**MINT**; Tom changes the subject in the corpus). Tom's atoms line is attested at 4:133 about water and is *moved* here to the Manx, which is a reattribution of subject, not a mint, and is stated.
 
@@ -571,7 +569,7 @@ Every scene number 1–43 appears exactly once in the "absorbs" column. Scenes 1
 | ARAN | Half a day. With the seven. | Mezza giornata. Con i sette. |
 | TOM | Then that's day three. Nobody said days come in one size. | Allora è quello il terzo giorno. Nessuno ha detto che i giorni vengono in una taglia sola. |
 | ARAN | Nobody did. I did. | Nessuno. L'ho detto io. |
-| TOM | Then un-say it. Half a day, and the atoms are still there. | Allora disdillo. Mezza giornata, e gli atomi sono ancora lì. |
+| TOM | Then un-say it. Half a day, and the atoms are still there. | Allora ritiralo. Mezza giornata, e gli atomi sono ancora lì. |
 
 **Why this container:** the chapter is one question — what do two days show — carried by two stories, a tease, a number read back wrong, a doubt, and a missed deadline, and every failure in the answer slot the overlay asked for (O4, O7, O6) arrives *inside* the same arc rather than as three separate rooms: the read-back is wrong about the very years the story just told, the doubt is about the very language, the deadline is the third day of the very experiment. The two holds of similar length at turns 6 and 9 are the only matched pair in the set, as in the control arm, because a matched story shorter than the first would read as deference. The atoms are said once, mid-chapter, in Tom's mouth, about the Manx — which is where Chapter 11 will find them.
 
@@ -585,7 +583,7 @@ Every scene number 1–43 appears exactly once in the "absorbs" column. Scenes 1
 
 **Owns:** *Vorrei…* and its service register (the most-attested frame in the canon); the co-owned line; the flagged digression. **Newly admits, one per beat:** accepting a casting and speaking the line (beat 1); retrieving the partner's earlier image by asking him what he said, and putting it to new work (beat 2); reading a live intrusion into the argument as evidence, and returning on your own marker (beat 3).
 
-**Holds (heard):** turn 2 and turn 4 (Aran, the staging and the reveal), turn 9 (Aran, the currency loop), turn 15 (Aran, the email), turn 18 (Tom, horizon one).
+**Holds (heard) — at or over 3× the chapter median (36 words):** turn 10 (Aran, the currency loop, 63), turn 16 (Aran, IP and the email, 62), turn 19 (Tom, horizon one, 57). The staging and the reveal (turns 2 and 4, 26 and 32) sit under 3× of this chapter's high median of twelve; they were 3.2× in Scene 15 and are unchanged. The owned moves — *Vorrei un mutuo* (4), *Non stiamo perdendo atomi d'acqua* (6), *Te la tenevi da parte* (5), *Bel richiamo* (2), *Per forza* (4) — are all short.
 
 **Mints:** Tom accepting the casting and speaking the line (**MINT**, as the re-cut recorded). The callback is attested at 4:133 → 4:330 and minted nowhere; what is changed is the subject the image was first used on (the Manx, in Chapter 10, instead of water), stated there.
 
@@ -629,7 +627,7 @@ Every scene number 1–43 appears exactly once in the "absorbs" column. Scenes 1
 
 **Owns:** the parked clash; the razor's flat verdict; question-and-answer floor; the ritual close (live canon). **Newly admits, one per beat:** disagreement held open *as* disagreement — named as permanent, converted into a division of labour, carried forward standing (beat 1); accepting an invitation before its content because of who brings it, and naming what was exchanged (beat 2); refusing your own close, being reminded of it, owning it, and stopping the container instead of the conversation (beat 3).
 
-**Holds (heard):** turn 2 (Aran, speed answers to a date), turn 8 (Aran, not on pause), turn 13 (Aran, the guarantee), turn 19 (Aran, four thousand).
+**Holds (heard) — at or over 3× the chapter median (27 words):** turn 1 (Tom, ten languages, 34 — his position in full, as Scene 42 had it), turn 2 (Aran, speed answers to a date, 62), turn 8 (Aran, not on pause, 64), turn 14 (Aran, the guarantee, 80), turn 20 (Aran, four thousand, 60). The owned moves — the aphorism (8), *Allora non ci metteremo d'accordo* (6), *No* (1), *la mettiamo in pausa* (10), *In piedi. Prossima cosa* (3), *Vieni?* (inside 11), *Perché no* (2), *Non ci fermiamo* (3), *Adesso* (1) — are all short.
 
 **Mints:** everything after Tom's refusal to concede is **MINT** — in the corpus Tom concedes on the next line (1:413) — and whether the standing clash is real in their conversational life is the ruling Tom has now given: keep. The turns between "Interesting." and the new recording are **MINT** (1:413–417 and 2:8 bracket them). The refusal of the pause is new to this cut and rests on the same mint.
 
@@ -646,13 +644,13 @@ Every scene number 1–43 appears exactly once in the "absorbs" column. Scenes 1
 | TOM | Then we're not going to agree. | Allora non ci metteremo d'accordo. |
 | ARAN | No. | No. |
 | TOM | Then we'll put it on pause. Like the thirteen weeks. | Allora la mettiamo in pausa. Come le tredici settimane. |
-| ARAN | No. Not on pause. The thirteen weeks went on pause because it doesn't matter which of us is right — a hundred hours is a hundred hours, you said so yourself. This one matters. If you build for efficiency and I sell for speed, we're building two different things and calling them one, and we should know that, out loud, every day. Leave it standing. | No. Non in pausa. Le tredici settimane le abbiamo messe in pausa perché non importa chi di noi due ha ragione — cento ore sono cento ore, l'hai detto tu. Questa importa. Se tu costruisci per l'efficienza e io vendo per la velocità, stiamo costruendo due cose diverse e le chiamiamo una, e dobbiamo saperlo, ad alta voce, ogni giorno. Lasciamolo in piedi. |
+| ARAN | No. Not on pause. The thirteen weeks went on pause because it doesn't matter which of us is right — a hundred hours is a hundred hours, you said so yourself. This one matters. If you build for efficiency and I sell for speed, we're building two different things and calling them one, and we should know that, out loud, every day. Leave it standing. | No. Non in pausa. Le tredici settimane le abbiamo messe in pausa perché non importa chi di noi due ha ragione — cento ore sono cento ore, l'hai detto tu. Questa conta. Se tu costruisci per l'efficienza e io vendo per la velocità, stiamo costruendo due cose diverse e le chiamiamo una, e dobbiamo saperlo, ad alta voce, ogni giorno. Lasciamolo in piedi. |
 | TOM | Good. Leave it standing. I build for efficiency, you sell it for speed, and the learners tell us which of us was right. | Bene. Lasciamolo in piedi. Io costruisco per l'efficienza, tu lo vendi per la velocità, e chi impara ci dirà chi di noi due aveva ragione. |
 | ARAN | Standing. Next thing. | In piedi. Prossima cosa. |
 | TOM | Next thing. Two days on molecular physics. In Hong Kong. Coming? | Prossima cosa. Due giorni di fisica molecolare. A Hong Kong. Vieni? |
 | ARAN | From anyone else: no. Sorry — molecular physics, not my thing. From you: yes. I've already said yes. Because you wouldn't have asked. | Da chiunque altro: no. Scusa — la fisica molecolare non fa per me. Da te: sì. Ho già detto di sì. Perché tu non me l'avresti chiesto. |
 | TOM | I almost don't have to explain anything. | Quasi non devo nemmeno spiegare niente. |
-| ARAN | You don't. What you're giving me isn't a recommendation, it's a guarantee — your personal guarantee — and that's what a tribe is. A dozen people who know what you'd find interesting, and go and find it, and bring it to you. The other version of that filter is somebody in California writing an algorithm, and that filter is driving all of us towards people who already agree with us. Your version is the antidote. We just spent ten minutes not agreeing, and I'm still coming to Hong Kong. | Non devi. Quello che mi dai non è un consiglio, è una garanzia — la tua garanzia personale — ed è questo una tribù. Una dozzina di persone che sanno cosa troveresti interessante, e vanno a cercarlo, e te lo portano. L'altra versione di quel filtro è qualcuno in California che scrive un algoritmo, e quel filtro ci sta spingendo tutti verso chi è già d'accordo con noi. La tua versione è l'antidoto. Abbiamo appena passato dieci minuti a non essere d'accordo, e a Hong Kong ci vengo lo stesso. |
+| ARAN | You don't. What you're giving me isn't a recommendation, it's a guarantee — yours — and that's what a tribe is. A dozen people who know what you'd find interesting, and bring it to you. The other version of that filter is somebody in California writing an algorithm, and that filter is driving all of us towards people who already agree with us. Your version is the antidote. We just spent ten minutes not agreeing, and I'm still coming to Hong Kong. | Non devi. Quello che mi dai non è un consiglio, è una garanzia — la tua — ed è questo una tribù. Una dozzina di persone che sanno cosa troveresti interessante, e te lo portano. L'altra versione di quel filtro è qualcuno in California che scrive un algoritmo, e quel filtro ci sta spingendo tutti verso chi è già d'accordo con noi. La tua versione è l'antidoto. Abbiamo appena passato dieci minuti a non essere d'accordo, e a Hong Kong ci vengo lo stesso. |
 | TOM | So — Breton, for a weekend? | Allora — bretone, per un fine settimana? |
 | ARAN | Why not. | Perché no. |
 | TOM | Right. That's the hour. Let's stop there. | Bene. È passata l'ora. Fermiamoci qui. |
@@ -667,3 +665,193 @@ Every scene number 1–43 appears exactly once in the "absorbs" column. Scenes 1
 **Why this container:** the clash is the same eight-turn escalation as Chapter 7's, and the ear is meant to hear the rhyme — the same "Then we'll put it on pause" in Tom's mouth — and then hear it refused, which is the callback doing work rather than decorating: the difference between a parked disagreement and a standing one is only audible if the pod has both, in that order, with the same line. The guarantee then proves the standing clash cost nothing ("I'm still coming to Hong Kong"), and the four-thousand-words fact reframes the clash itself before the tape stops. "Now." is the last word of the pod, and it starts again.
 
 ---
+
+## 4. The measurement — same instrument, both arms
+
+*Computed mechanically from this document's own English columns by the control arm's own instrument — whitespace tokens containing a letter or digit — rewritten as a 30-line script in scratch (`$CS_SCRATCH/measure.cjs`, not in the repo). Validation: run over the control arm's Scenes 1–16 it reproduces the re-cut's §7 exactly (95 turns, 1,259 words, median 9, pooled CV 0.86, longest 46, Tom 41 / Aran 59), and over all 43 it reproduces the control arm's §5b exactly (276 turns, 4,364 words, median 8, CV 1.15, longest 80, 34 / 66). So the two arms are on one ruler. "Holds ≥3×" counts every turn at or over three times the chapter's own median; the chapter's own Holds line names each one and says whether it is heard.*
+
+### 4a. Per chapter
+
+| # | turns | median | CV | max/med | min/med | holds ≥3× (longest) | ≤4w | sandwich | T/A | words |
+|---|---|---|---|---|---|---|---|---|---|---|
+| 1 | 27 | 9 | 1.12 | 8.9× | 0.22× | 6 (max 80) | ✓ | ✓ | 31/69 | 488 |
+| 2 | 24 | 10 | 1.14 | 8.0× | 0.10× | 6 (max 80) | ✓ | ✓ | 39/61 | 487 |
+| 3 | 23 | 6 | 1.20 | 8.7× | 0.33× | 5 (max 52) | ✓ | ✓ | 52/48 | 267 |
+| 4 | 26 | 9.5 | 1.10 | 8.0× | 0.21× | 5 (max 76) | ✓ | ✓ | 31/69 | 416 |
+| 5 | 19 | 13 | 1.07 | 4.7× | 0.08× | 4 (max 61) | ✓ | ✓ | 31/69 | 377 |
+| 6 | 20 | 7.5 | 1.29 | 10.7× | 0.13× | 6 (max 80) | ✓ | ✓ | 33/67 | 382 |
+| 7 | 28 | 7.5 | 1.09 | 9.2× | 0.13× | 7 (max 69) | ✓ | ✓ | 25/75 | 452 |
+| 8 | 49 | 6 | 1.21 | 12.2× | 0.17× | 14 (max 73) | ✓ | ✓ | 38/62 | 759 |
+| 9 | 14 | 8.5 | 1.14 | 7.4× | 0.24× | 2 (max 63) | ✓ | ✓ | 52/48 | 234 |
+| 10 | 34 | 8 | 1.25 | 10.0× | 0.13× | 8 (max 80) | ✓ | ✓ | 35/65 | 620 |
+| 11 | 21 | 12 | 0.96 | 5.3× | 0.17× | 3 (max 63) | ✓ | ✓ | 30/70 | 414 |
+| 12 | 24 | 9 | 1.14 | 8.9× | 0.11× | 5 (max 80) | ✓ | ✓ | 28/72 | 477 |
+
+Profiles, for the ear:
+
+| # | profile (words per turn) |
+|---|---|
+| 1 | 13/4/8/10/8/49/4/23/61/9/2/3/10/7/6/41/16/80/2/51/9/31/3/8/8/19/3 |
+| 2 | 10/2/42/9/11/5/10/1/19/19/78/6/5/53/8/2/17/36/2/50/80/6/14/2 |
+| 3 | 6/2/21/3/5/8/2/2/6/13/52/3/3/5/6/4/20/36/2/46/11/5/6 |
+| 4 | 12/13/43/8/2/10/9/76/4/3/3/28/5/11/10/35/3/52/11/30/9/8/14/5/6/6 |
+| 5 | 19/9/34/2/59/2/61/10/5/16/2/61/13/1/51/13/3/3/13 |
+| 6 | 28/3/2/80/14/5/23/3/2/74/28/6/15/1/1/68/3/4/9/13 |
+| 7 | 9/21/1/54/8/69/4/47/1/16/12/2/16/2/4/7/2/8/6/25/32/42/4/33/7/6/7/7 |
+| 8 | 16/1/1/1/10/11/2/73/3/6/2/61/5/1/9/44/5/7/36/3/42/14/3/28/7/8/3/6/19/52/46/14/2/41/5/5/2/63/4/2/27/19/7/2/4/1/1/6/29 |
+| 9 | 9/6/22/7/5/16/60/63/15/6/8/5/2/10 |
+| 10 | 18/1/4/31/3/71/5/3/70/3/11/10/10/2/45/4/22/3/5/6/35/31/80/7/1/12/8/8/75/3/6/11/4/12 |
+| 11 | 11/26/4/32/6/10/19/35/6/63/5/12/2/20/2/62/4/15/57/13/10 |
+| 12 | 34/62/8/24/6/1/10/64/23/3/11/22/7/80/5/2/7/21/6/60/3/4/13/1 |
+
+### 4b. Set totals — the two arms side by side
+
+| | units | turns | words | median turn | pooled CV | longest turn | Tom / Aran words |
+|---|---|---|---|---|---|---|---|
+| **Chapter cut (this document)** | **12** | **309** | **5,373** | **8** | **1.17** | **80** | **35 / 65** |
+| Control arm — 43 scenes | 43 | 276 | 4,364 | 8 | 1.15 | 80 | 34 / 66 |
+| Control arm — inherited 1–16 only | 16 | 95 | 1,259 | 9 | 0.86 | 46 | 41 / 59 |
+| Corpus, for scale | — | 591 | 25,345 | 14 | 1.57 | 473 | 27 / 73 |
+
+Read cold: the chapter cut is **12% more turns and 23% more words than the scene cut for the same substance**, with the same median turn, the same texture (CV 1.17 against 1.15), the same longest hold (80 — four holds that ran to 82–90 were cut back to Tom's ruled 47–80 band before this table was made), and the same set balance to within a point. The extra words are the arcs: the garden run long, the bare no accounted for at length, the three things rebuilt with their provenance, the atoms retrieved by asking. Nothing owned got longer.
+
+### 4c. The grammar, scored — and the rules that had to change at chapter scale
+
+| rule | as written for scenes | delivered, 12 chapters | what changed, if anything |
+|---|---|---|---|
+| **G1** unit length = the shape's attested closing length, 3–8 turns | n/a at chapter scale | 14, 19, 20, 21, 23, 24, 24, 26, 27, 28, 34, 49 | **Re-interpreted, stated:** a chapter's length is its *beat count* — each beat is one shape at its attested closing length, and the chapter is as long as the point needs beats. Chapter 8 at 49 is the session close and is named in place. |
+| **G2** exactly one floor-hold per unit, 3–4× its median | n/a at chapter scale | 2 to 14 per chapter; 71 in all | **Re-interpreted, stated — rule H:** one heard hold per beat, at least two per chapter, and every turn over 3× the chapter median is listed by name in that chapter's Holds line. "Exactly one" cannot mean anything for a unit with six beats. |
+| **G3** the hold is always a HEARD turn, never the owned exchange or the newly-admitted position | every hold | **70 of 71** | Unchanged. The one exception is flagged in place: Chapter 6 turn 11, Tom's side-by-side restatement, 28 words, 3.7× a low chapter median — the owned move at the length the control arm gave it. No other owned turn in the set exceeds 12 words. |
+| **G4′** a turn of ≤4 words, absolute | every unit | **12 / 12** | Unchanged. (G4 at the ratio ≤0.25× median: 12 / 12 as well — every chapter's min/med is ≤0.33× and ten are ≤0.22×.) |
+| **G5** `A → token → A` sandwich | ≥ a third of units | **12 / 12** | Unchanged; over-delivered for the same reason the control arm's was — the token-heavy grammar produces one wherever a hold meets a backchannel. |
+| **G6** one speaker owns 65–75% inside a unit; even across the set | every unit | **10 / 12** inside 61–75%; **Chapter 3 at 52/48 and Chapter 9 at 52/48 are near-even and named** | The rule stands; the two misses are structural and stated: Chapter 3 is two zero-admission ping-pong scenes joined, and Chapter 9 is a joint reconstruction where the scaffold is Tom's and the completion is Aran's — the shape is symmetric by nature. Set: 35 / 65. |
+| **G7** CV ≥ 0.6 | all but the fast-flat shapes | **12 / 12**, range 0.96–1.29 | Unchanged. The haggle and the arrangement keep their flat profiles *inside* chapters whose other beats are steep, which is what the re-cut said a set should look like. |
+| one owned exchange + one newly-admitted response position per unit | every scene | one per **beat**, listed per chapter (3 to 7 per chapter) | **Re-interpreted, stated:** the unit of admission is the beat, not the chapter. |
+| zero-admission as a unit property | 8 of 43 scenes (19%) | **0 of 12 chapters; 7 zero-admission stretches** inside chapters (Ch. 1, 3, 4, 7, 8, 10 ×2), ≈47 of 309 turns (15%) | **Changed and named:** a chapter that thinks a point through cannot stay on Layer-0 vocabulary for thirty turns. Each stretch keeps its scene's checked words; each chapter says where the stretch starts and stops; the bridging turns I added inside one stretch (Chapter 3, turns 6–10) are flagged as unverified. |
+| hold length 47–80 words (Tom's ruling) | leave | longest 80; the holds sit in the same band as the control arm's | Unchanged. |
+
+### 4d. One instrument caveat
+
+The script counts English words; Italian runs a few percent longer for the same turn, so every absolute above is a slight undercount of what a listener hears. Ratios are unaffected. The control arm carries the same caveat.
+
+---
+
+## 5. Coverage — what survived the re-cut, node by node
+
+Everything the 43-scene cut walked is walked here. The tables are the reconciliation; the "lost" column is the honest part.
+
+### 5a. Nodes
+
+| node | control arm | chapter cut |
+|---|---|---|
+| N1 open / close | 40 / 43 | **Ch. 1** / **Ch. 12** |
+| N6 repair, reversed (O3) | 17 | **Ch. 3** |
+| N7 arrangement | 18 | **Ch. 8** (re-voiced: Aran proposes, Tom refuses twice) |
+| N8 recommendation on guarantee | 37 | **Ch. 12** |
+| N13 not-knowing | 5 | **Ch. 4** (roles swapped, stated), and again bare in **Ch. 9** |
+| N14 premise audit | 22 | **Ch. 2** |
+| N15 parked disagreement | 16 | **Ch. 7** |
+| N16 precision haggle | 6 | **Ch. 7** |
+| N17 interruption-and-bank — both halves | 14 / 41 | **Ch. 8** (bank) → **Ch. 9** (recovery), across the session break |
+| N2–N5, N9–N12 | not this pod's ground | unchanged — not reached in either arm, by premise |
+
+### 5b. Overlay outcomes
+
+| outcome | control arm | chapter cut |
+|---|---|---|
+| O1 the bare no | 24 (MINT) | **Ch. 8** (MINT) |
+| O2 nobody knows | 5 | **Ch. 4** |
+| O3 the listener does not understand you | 17 (MINT) | **Ch. 3** (MINT) |
+| O4 your read-back was wrong | 19 (MINT partner) | **Ch. 10** (MINT partner) |
+| O5 the premise refused | 23; 22 adjacent | **Ch. 6**; **Ch. 2** adjacent |
+| O6 trouble that is your own fault | 39 (MINT partner) | **Ch. 10** (MINT partner) |
+| O7 disclosure acknowledged | 36 (MINT partner) | **Ch. 10** (MINT partner) |
+| O8 parked / standing | 16 / 42 (MINT) | **Ch. 7** / **Ch. 12** (MINT) — now the same line, refused |
+| O9 a second no | 18 | **Ch. 8** |
+
+### 5c. The eight summit shapes the re-read named
+
+the specimen → **Ch. 2** · the counterexample absorbed → **Ch. 1** · pre-emption → **Ch. 2** · the misreading corrected → **Ch. 6** · the listener names it → **Ch. 8** · the outsider's pitch → **Ch. 5** · the reported claim too big to hold → **Ch. 4** · the stacked commission → **Ch. 10**. All eight walked; none merged away.
+
+### 5d. The 23 corpus moves
+
+1 reformulation → Ch. 4 (refused), 5 (accepted, sharpened), 6 (refused in one word) · 2 joint construction → Ch. 1 ×3, 8, 9 · 3 question-as-handover → Ch. 4; stacked → Ch. 10 · 4 anecdote-with-flag → Ch. 2, 8 · 5 challenge mid-story → Ch. 2, 8 · 6 self-repair → Ch. 3 · 7 concession-then-build → Ch. 6 (owned in Ch. 3) · **8 callback → Ch. 8, 9, 11, 12, and Ch. 4** · 9 live intrusion folded back → Ch. 11 · 10 backchannel → everywhere · 11 provisional flag → Ch. 7 · 12 meta-comment on the medium → Ch. 1 · 13 razor → Ch. 4 · 14 abandonment → Ch. 3 · 15 enacted dialogue → Ch. 11, 5 · 16 metaphor handover → Ch. 8 · 17 mirrored tease → Ch. 10 · 18 status flag → Ch. 7 · 19 topic parking → Ch. 5 (the detour), Ch. 8 (the bank) · 20 co-owned line → Ch. 8 · 21 haggle → Ch. 7 · 22 I-don't-know → Ch. 4, 9 · 23 challenge-the-premise → Ch. 2.
+
+### 5e. What was lost, plainly
+
+- **Scene 13's opening line** — *"Attento con quel socio. Potresti svegliarti nel letto con un coccodrillo."* — is not in this cut. The co-owned line is walked on its other attested form (*"ho perso il piede in quel fiume — ti prego, accetta la mia prova aneddotica"*), which is the one that can be a callback to Chapter 2. Two surface forms (*socio*, *svegliarsi*) go with it; no shape does.
+- **Zero-admission as a scene count.** Eight scenes → seven stretches, 19% → 15% of turns (§4c).
+- **Scene 20 and Scene 5 as Tom's.** Both are role-swapped here (the stack is Aran's, the not-knowing is Aran's), for reasons stated in place. The words are unchanged.
+- **Scene 41's "ten turns" recovery** is now fourteen turns with provenance in the scaffold; the control arm's version had no earlier hours to point at.
+
+---
+
+## 6. Mints — every one, in one table
+
+| chapter | what is invented | what it rests on |
+|---|---|---|
+| **3** | the listener failing to understand — the whole reversed repair | unattestable; container from N6 (control arm Scene 17) |
+| **7** | Tom's partner turn to the complaint — join, then take the share | the complaint is Aran's (1:279–289); Tom's one clause at 1:284 |
+| 7 | the park treated as the summit's disagreement form | as the re-cut recorded (Scene 16) |
+| **8** | the no held bare across two turns, and Tom pressing | the position and its reason are Aran's (2:170–184) |
+| 8 | the dog's container | the corpus line is an annotation, not a turn (4:474) |
+| **9** | the whole recovery, and the scaffold naming where each thing was said | the debt is Chapter 8's; the three things are 1:250–258; the next session is lost |
+| **10** | the partner's wrong read-back | the number and its correction are Aran's (1:396–400) |
+| **10** | Tom's three turns to the disclosure | the disclosure is Aran's (2:258–263); nobody answers it in the corpus |
+| **10** | Tom's three turns to the own-fault admission | the admission is Aran's (1:404–406); Tom changes the subject in the corpus |
+| 11 | Tom accepting the casting and speaking the line | as the re-cut recorded (Scene 15) |
+| **12** | everything after Tom's refusal to concede, **and the refusal of the pause** (new to this cut) | the two positions are the corpus's (1:406–412); Tom concedes at 1:413 |
+| **12** | the turns between "Interesting." and the new recording | 1:413–417 and 2:8 |
+
+**Reattributions, not mints, all stated in place:** Ch. 1 the counterexample given to Tom (Aran's at 1:132–135); Ch. 4 the not-knowing given to Aran (Scene 5's roles); Ch. 8 the arrangement proposed by Aran (Scene 18's roles); Ch. 10 the stack asked by Aran (Scene 20's roles); Ch. 10 the atoms said about the Manx instead of water (4:133). Nothing minted is dressed as attestation.
+
+---
+
+## 7. The Italian — what to listen for, and the lines flagged
+
+*Tu* throughout; old friends; spoken register. Loanwords as house terms: **play** (Ch. 6), **peer review** (Ch. 2), **woo** (Ch. 4), **feedback** (Ch. 5), **bed and breakfast** (Ch. 8), **Holy Dickhead Batman** (Ch. 5, swearing included — Tom's ruling), **Talk Bollocks** (Ch. 1), **to boldly go** (Ch. 4), **pysgod / puss / cod** (Ch. 2) all kept as the things they are. "Edges" is *collegamenti* throughout (Ch. 1, 5, 8, 9) — Tom's ruling, closed.
+
+**The eight lines the control arm flagged, carried forward as-is and re-flagged here, one look each:**
+
+| was scene | now | line | the doubt | alternative |
+|---|---|---|---|---|
+| 25 | Ch. 6 t4 | *È solo altro dello stesso.* | a calque of "more of the same" | *È sempre la stessa cosa, solo di più.* |
+| 27 | Ch. 6 t10 | *è tutta la faccenda* | "the whole thing" leaning written | *è tutto il punto* |
+| 32 | Ch. 1 t16 | *mimarlo* for "act this out" | precise but a touch formal | *fare la scenetta* |
+| 34 | Ch. 11 t13 | *Bel richiamo.* | they would more likely say *callback* | *Bel callback.* — a loanword, which the rule permits |
+| 40 | Ch. 1 t7 | *Fare cose fighe.* | regional colloquial; right register for *tu* between friends, but a taste call | *Fare roba forte.* |
+| 40 | Ch. 1 t1 | *Tom e Aran Talk Bollocks* | the show's name kept in English inside the Italian formula | *Tom e Aran che dicono cazzate* if the name should translate |
+| 17 | Ch. 3 t11 | the whole overrun turn | deliberately breathless, with a subjunctive after *penso che* the listener should not have to parse — that is the point | none; it is meant to be too much |
+| 20 | Ch. 10 t1 | *C'è tanta roba, lì.* | *roba* is exactly right for *tu* and exactly wrong for anything written | none |
+
+**New lines I am least sure of — one look each:**
+
+| where | line | the doubt | alternative |
+|---|---|---|---|
+| Ch. 2 t18 | *Un tedesco su un tedesco, una studentessa su una studentessa* | a joke that lives on the English "one German on one German"; may not land aloud | *Un tedesco che studia se stesso, una studentessa che studia se stessa* |
+| Ch. 3 t18 | *La fanno tutti, la cosa.* | right-dislocated *la cosa* is spoken and fine, but it is doing a lot | *Lo fanno tutti.* |
+| Ch. 5 t3 | *Nessuno ha mai avuto prima la correttezza e poi il controllo.* | "in control" has no clean Italian noun; *padrone* was worse | *Nessuno è mai stato prima corretto e poi libero.* |
+| Ch. 8 t38 | *la curva se l'è già mangiata* | colloquial, and it makes the curve an eater — I like it and I am not sure of it | *e la curva ha già fatto il suo lavoro* |
+| Ch. 10 t34 | *Allora ritiralo.* | *ritirare* for "take it back" (a statement) is right; "un-say it" is the English joke and it does not cross | *Allora rimangiatelo.* — more spoken, slightly rude between friends |
+| Ch. 12 t8 | *Questa conta.* | bare; may want *invece* | *Questa invece conta.* |
+
+Everything else I would say aloud as written.
+
+---
+
+## 8. Explicit gaps — nothing papered over
+
+- **No database query was run in this job.** The control arm's zero-admission checks (the 551-token canon word list, English side) are inherited through the stretches that carry those scenes' lines verbatim; the *bridging turns I added inside one stretch* — Chapter 3 turns 6–10 (*which*, *any*) — were not checked against the live canon and are flagged, not claimed.
+- **The Italian is my rendering, not the pod's.** As in the control arm, the Italian side of the live pod was not queried, so a learner's *heard* Italian in the zero-admission stretches is this document's Italian, not `pod-0`'s.
+- **Part 3 is lost.** Every attestation is from three sessions of four. Nothing claims otherwise.
+- **Four overlay outcomes rest on mints** — O1, O3, O6, O7 — because no corpus attests them; and the standing clash and the whole recovery are minted, as before. That is a fact about the corpora and is labelled per chapter rather than averaged into a total.
+- **Two chapters are near-even on speaker balance** (Ch. 3, Ch. 9); the rule is not met there and §4c says why rather than converting a turn to fix a ratio.
+- **One owned turn sits over the hold line** (Ch. 6 turn 11, 28 words) — named, kept at the control arm's length.
+- **Speaker attribution in the corpus is imperfect** (README), and the chapters inherit the control arm's two leans on it (the audit landscape at 1:339, the counterexample at 1:132–135), both stated in place.
+- **Nothing executed.** No row written, no pod edited, no audio queued or rendered, no course touched, nothing listed, nothing deployed. Scratch holds the measurement script and its two output snapshots; none of it is in the repo.
+
+---
+
+## 9. What this is, in one paragraph
+
+Twelve chapters in one file, the same Method Pod as the forty-three scenes beside it: the same eight summit shapes, the same five Method-only nodes, the same nine overlay outcomes and the same mints, every one still labelled where it stands — re-cut so that each chapter is one point actually thought through, and so that the moves the scene form could not carry are finally on the page: four callbacks the ear can catch (the crocodile, the three things, the atoms, the pause refused), one digression flagged and clocked and returned from, three reformulations of which two are refused. Measured on the control arm's own instrument it runs 309 turns at a pooled CV of 1.17 with the same median, the same longest hold and the same set balance, every hold heard bar one that is named, a minimal turn and a sandwich in every chapter, and two rules of the scene grammar re-stated at chapter scale rather than quietly bent. What is left is the ear — and the choice.
