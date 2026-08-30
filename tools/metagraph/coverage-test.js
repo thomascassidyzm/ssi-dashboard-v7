@@ -87,6 +87,27 @@ check('a half-present group is partial, never rounded up to a traversal', () => 
   assert.equal(n7.partialGroups >= 1, true)
   assert.equal(cov.totals.neverReached, graph.nodes.length - 1)
 })
+check('the one genuine fork walks: either arm of g15/g16 traverses N3, and neither is a phrasing', () => {
+  // W1's N3 visit is g14 (the ticket) then a BRANCH step whose arms are g15 and
+  // g16. Both arms walk N3; requiring both would make the corpus's only fork
+  // permanently untraversable.
+  const yes = computeCoverage(graph, walkFromCanonicalRows(rowsFor([14, 16]), graph))
+  const no = computeCoverage(graph, walkFromCanonicalRows(rowsFor([14, 15]), graph))
+  assert.equal(yes.nodes.find(n => n.id === 'N3').traversals, 1, 'the yes arm traverses N3')
+  assert.equal(no.nodes.find(n => n.id === 'N3').traversals, 1, 'and so does the no arm')
+  assert.equal(yes.totals.branches, 1)
+  assert.equal(no.totals.branches, 1)
+  const g15 = no.unmappedSteps.find(s => s.payload.globalOrder === 15)
+  assert.equal(g15, undefined, 'g15 is a step on the path, never unmapped')
+})
+check('surface variance is not a fork and never counts as a traversal', () => {
+  // g12 and g13 are other ways of saying g14. On their own they walk nothing.
+  const cov = computeCoverage(graph, walkFromCanonicalRows(rowsFor([12, 13]), graph))
+  assert.equal(cov.totals.alternatives, 2)
+  assert.equal(cov.totals.traversed, 0, 'a phrasing traverses nothing')
+  const step = cov.unmappedSteps.find(s => s.payload.globalOrder === 12)
+  assert.equal(step, undefined, 'and it is not unmapped either — it is a named variant')
+})
 check('a coda is ADMITS, not a move; an unknown row is UNMAPPED, not dropped', () => {
   const cov = computeCoverage(graph, walkFromCanonicalRows(rowsFor([37, 9999]), graph))
   assert.equal(cov.totals.codas, 1)

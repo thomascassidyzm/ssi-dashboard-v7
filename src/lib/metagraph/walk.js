@@ -19,7 +19,8 @@
 export const STEP_KINDS = {
   MOVE: 'move',                 // a position in a shape — the walk proper
   CODA: 'coda',                 // scene-exit vocabulary drip: ADMITS, not a move
-  ALTERNATIVE: 'alternative',   // an alternative AT a node, not a step on the path
+  BRANCH: 'branch',             // one arm of a genuine fork — a step on the path
+  ALTERNATIVE: 'alternative',   // surface variance: another phrasing, not a fork
   UNMAPPED: 'unmapped'          // the graph has nothing to say about this line
 }
 
@@ -49,18 +50,28 @@ export function walkFromCanonicalRows (rows, graph, opts = {}) {
     const ref = mapsToGraph && g != null ? `g${g}` : null
     let nodeIds = []
     let kind = STEP_KINDS.UNMAPPED
+    let branch = null
+    let variant = null
     if (mapsToGraph && g != null) {
+      branch = graph.branchRows?.[g] || null
+      variant = graph.variantRows?.[g] || null
       if (graph.codaRows.includes(g)) kind = STEP_KINDS.CODA
+      else if (branch) { kind = STEP_KINDS.BRANCH; nodeIds = graph.rowIndex[g] || [branch.node] }
       else if (graph.rowIndex[g]) { kind = STEP_KINDS.MOVE; nodeIds = graph.rowIndex[g] }
+      else if (variant) kind = STEP_KINDS.ALTERNATIVE
       else if (graph.alternativeRows.includes(g)) kind = STEP_KINDS.ALTERNATIVE
     }
-    // An alternative row that is ALSO attested at a node is a move first: the
-    // derivation lists g15 both ways and the node attestation is the stronger claim.
+    // Order matters. A row on a BRANCH is a step on the path — g16 continues the
+    // walk and g15 is the negative arm the overlay's O1 exists to continue — so it
+    // is never demoted to an alternative. Surface variance stays an alternative:
+    // a phrasing is not a fork.
     const step = {
       ref,
       nodeId: nodeIds[0] || null,
       nodeIds,
       kind,
+      branch,
+      variant,
       sceneNumber: row.scene_number,
       outcomeId: null,
       payload: {
@@ -128,6 +139,8 @@ export function walkFromFlow (flow, graph, opts = {}) {
         nodeIds: nodeId ? [nodeId] : [],
         kind: nodeId ? STEP_KINDS.MOVE : (line.kind || STEP_KINDS.UNMAPPED),
         sceneNumber: sc.number,
+        branch: null,
+        variant: null,
         outcomeId: line.outcomeId || null,
         payload: { id: line.id || null, speaker: line.speaker, text: line.text, target: line.target }
       }

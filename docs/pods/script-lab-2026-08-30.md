@@ -32,7 +32,7 @@ The graph has **23 shapes**: the 17 exchange nodes plus the 6 bound pairs.
 
 | Walk | lines | mapped | shapes traversed | hit twice+ | **never reached** | outcome shapes delivered |
 |---|---|---|---|---|---|---|
-| **`pod-0` — the live POD 1** | 231 in 22 scenes | 85 | **18 of 23** | 9 | **5** | **0 of 9** |
+| **`pod-0` — the live POD 1** | 231 in 22 scenes | 87 | **18 of 23** | 9 | **5** | **0 of 9** |
 | **The Method Pod** (re-cut, 16 scenes) | 99 in 17 scenes | 45 | **6 of 23** | 1 | **17** | **0 of 9** |
 | `pod-1` (a separate slate) | 236 | 0 | 0 | 0 | 23 | 0 of 9 |
 
@@ -67,12 +67,26 @@ question over the same object. Neither lab keeps its own copy of the graph.
 
 ## What the graph could not say — stated, not smoothed
 
-**85 of `pod-0`'s 231 lines map to a shape; 126 are UNMAPPED and shown as UNMAPPED.** This is not a
-defect in the content and not a defect in this page — it is the store's own named gap, surfaced.
-The store encodes **16 of the 47 complete walks** the derivation counts; 56 rows that lie on
-complete walks are not yet placed on one, and the 69 truncated drill rows of scenes 15–21 carry no
-node. Both read as UNMAPPED here rather than being guessed at. **Encoding the remaining 31 walks is
-what would move this number**, and it is work on the store, not on this page.
+**87 of `pod-0`'s 231 lines map to a shape; 125 are UNMAPPED and shown as UNMAPPED.** This is not a
+defect in the content and not a defect in this page — it is the store's own named gap, surfaced, and
+the page prints the store's own accounting to say so. The store encodes **16 of the 47 complete
+walks** the derivation counts; **56 rows that lie on complete walks are counted but not yet placed
+on one**, and the 69 truncated drill rows of scenes 15–21 carry no node. Both read as UNMAPPED
+rather than being guessed at or quietly excluded. **Encoding the remaining 31 walks is what would
+move this number**, and it is work on the store, not on this page.
+
+## The fork, and the phrasings
+
+The store keeps two things apart that a linear format cannot, and the read-out keeps them apart too.
+
+- **`g15`/`g16` is a real branch** — mutually exclusive answers to one availability ticket, stored as
+  consecutive sentences because `variant_key` is null on all 231 rows. Both arms walk N3, and a
+  script traverses N3 by taking **either** one; requiring both would make the corpus's only genuine
+  fork permanently untraversable. Each arm is tagged in the script — *fork · no arm · no uptake*,
+  *fork · yes arm* — and neither is ever demoted to a phrasing.
+- **`g7`, `g12`, `g13` are surface variance** — other ways of saying a row that is on the walk. They
+  are tagged *another way of saying g14* and they traverse **nothing**. A phrasing is not a fork, and
+  the read-out will not let one be counted as coverage.
 
 `pod-1` and `pod-0.5` are separate slates whose `global_order` numbers collide with `pod-0`'s by
 accident. Walking them through this graph would invent coverage out of an off-by-one, so they walk

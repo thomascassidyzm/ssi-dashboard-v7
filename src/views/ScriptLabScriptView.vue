@@ -99,13 +99,19 @@
           <div class="px-4 sm:px-5 py-3 text-xs text-faint space-y-1">
             <p>
               {{ cov.totals.steps }} lines · {{ cov.totals.mapped }} mapped to a shape ·
+              {{ cov.totals.branches }} on a branch ·
               {{ cov.totals.codas }} scene-exit vocabulary drips ·
-              {{ cov.totals.alternatives }} alternatives at a node ·
+              {{ cov.totals.alternatives }} surface variants ·
               <span :class="cov.totals.unmapped ? 'text-accent' : ''">{{ cov.totals.unmapped }} UNMAPPED</span>
             </p>
             <p v-if="cov.totals.unmapped">
               Unmapped means the graph has nothing to say about the line — not that the line is wrong.
-              The derivation cites its attestations as endpoints rather than enumerating every row, so lines inside an attested run carry no reference of their own.
+              <template v-if="graph.accounting">
+                The store encodes {{ graph.accounting.complete_walks_encoded_here }} of the {{ graph.accounting.complete_walks_in_corpus }} complete walks,
+                so {{ graph.accounting.rows_on_complete_walks_not_yet_placed }} rows that lie on a complete walk are counted but not yet placed on one,
+                and the {{ graph.accounting.drill_rows_scenes_15_21 }} truncated drill rows of scenes 15–21 carry no shape.
+                Encoding the remaining walks is what moves this number.
+              </template>
             </p>
             <p>Graph: <code>{{ graph.source }}</code> — {{ graph.provenance }}</p>
           </div>
@@ -127,7 +133,7 @@
               <div v-for="(step, i) in scene.steps" :key="step.payload.id || i" class="px-4 sm:px-5 py-2.5 flex flex-wrap sm:flex-nowrap items-start gap-2 sm:gap-3 hover:bg-surface-2">
                 <span class="text-xs font-mono text-faint w-8 flex-shrink-0 pt-2">{{ step.ref || '·' }}</span>
                 <span class="text-xs font-mono flex-shrink-0 pt-2 w-12" :title="stepTitle(step)"
-                      :class="step.kind === 'move' ? 'text-accent-2' : step.kind === 'unmapped' ? 'text-danger' : 'text-faint'">
+                      :class="step.kind === 'move' ? 'text-accent-2' : step.kind === 'branch' ? 'text-accent' : step.kind === 'unmapped' ? 'text-danger' : 'text-faint'">
                   {{ step.nodeId || (step.kind === 'move' ? '' : KIND_TAG[step.kind]) }}
                 </span>
                 <span class="text-xs text-muted w-24 flex-shrink-0 truncate pt-2" :title="step.payload.speaker">{{ step.payload.speaker }}</span>
@@ -143,6 +149,12 @@
                   <div class="text-ink">{{ step.payload.text }}</div>
                   <div v-if="step.payload.target" class="text-xs text-muted italic">{{ step.payload.target }}</div>
                 </div>
+                <span v-if="step.branch" class="text-xs text-accent flex-shrink-0 pt-2 basis-full sm:basis-auto">
+                  fork · {{ step.branch.key }} arm{{ step.branch.continues ? '' : ' · no uptake' }}
+                </span>
+                <span v-else-if="step.variant" class="text-xs text-faint flex-shrink-0 pt-2 basis-full sm:basis-auto">
+                  another way of saying {{ step.variant.of }}
+                </span>
                 <span v-if="!readOnly" class="w-14 flex-shrink-0 text-right pt-2 text-xs">
                   <span v-if="step.payload._saving" class="text-accent">saving…</span>
                   <span v-else-if="step.payload._saved" class="text-accent-2">saved ✓</span>
@@ -166,7 +178,7 @@ import { loadGraph, loadMethodPodFlow } from '@/lib/metagraph/loadGraph.js'
 import { walkFromCanonicalRows, walkFromFlow } from '@/lib/metagraph/walk.js'
 import { computeCoverage } from '@/lib/metagraph/coverage.js'
 
-const KIND_TAG = { coda: 'ADMITS', alternative: 'ALT', unmapped: 'UNMAPPED' }
+const KIND_TAG = { coda: 'ADMITS', branch: 'BRANCH', alternative: 'VARIANT', unmapped: 'UNMAPPED' }
 const route = useRoute()
 const slug = route.params.slug || 'pod-0'
 const readOnly = slug === 'method-pod'
@@ -193,6 +205,11 @@ function sceneShapes (scene) {
 function stepTitle (step) {
   if (step.kind === 'unmapped') return 'the graph has nothing to say about this line'
   if (step.kind === 'coda') return 'scene-exit vocabulary drip — ADMITS, never a move'
+  if (step.branch) {
+    return `the ${step.branch.polarity} arm of a fork at ${step.branch.node} — ${step.branch.alternative}. `
+      + `${step.branch.continues ? 'The walk continues down this arm.' : 'This arm has no uptake in the corpus.'}`
+  }
+  if (step.variant) return `surface variance — another way of saying ${step.variant.of}. A phrasing, not a fork.`
   if (step.kind === 'alternative') return 'an alternative at a node, not a step on the path'
   const node = graph.nodes.find(n => n.id === step.nodeId)
   return node ? `${node.id} ${node.title} — ${node.sequence}` : ''

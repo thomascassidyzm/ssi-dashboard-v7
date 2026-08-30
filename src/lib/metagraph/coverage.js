@@ -42,10 +42,16 @@ export function computeCoverage (graph, walk) {
     let complete = 0
     let partial = 0
     for (const grp of node.attestations) {
-      if (!grp.rows.length) continue
+      const anyOf = grp.anyOf || []
+      if (!grp.rows.length && !anyOf.length) continue
       const present = grp.rows.filter(r => rows.has(r)).length
-      if (present === grp.rows.length) complete++
-      else if (present > 0) partial++
+      // A branch is satisfied by any ONE of its mutually exclusive rows — the
+      // walk takes one arm of the fork, never both.
+      const branchesTaken = anyOf.filter(set => set.some(r => rows.has(r))).length
+      const need = grp.rows.length + anyOf.length
+      const got = present + branchesTaken
+      if (got === need) complete++
+      else if (got > 0) partial++
     }
     const touched = stepsAtNode.get(node.id) || 0
     const sceneCount = (scenesTouching.get(node.id) || new Set()).size
@@ -107,7 +113,7 @@ export function computeCoverage (graph, walk) {
     siteInWalk: o.sitedRows.length > 0 && o.sitedRows.every(r => rows.has(r))
   }))
 
-  const kinds = { move: 0, coda: 0, alternative: 0, unmapped: 0 }
+  const kinds = { move: 0, branch: 0, coda: 0, alternative: 0, unmapped: 0 }
   const unmappedSteps = []
   for (const s of walk.steps) {
     kinds[s.kind] = (kinds[s.kind] || 0) + 1
@@ -124,7 +130,8 @@ export function computeCoverage (graph, walk) {
       traversed: traversed.length,
       hitTwice: hitTwice.length,
       neverReached: neverReached.length,
-      mapped: kinds.move,
+      mapped: kinds.move + kinds.branch,
+      branches: kinds.branch,
       unmapped: kinds.unmapped,
       codas: kinds.coda,
       alternatives: kinds.alternative,

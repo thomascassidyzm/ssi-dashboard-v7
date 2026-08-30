@@ -31,7 +31,7 @@ const graph = graphFromStore({
 function report (title, cov) {
   console.log(`\n══ ${title}`)
   const t = cov.totals
-  console.log(`   ${t.steps} lines in ${t.scenes} scenes — ${t.mapped} mapped, ${t.codas} codas, ${t.alternatives} alternatives, ${t.unmapped} UNMAPPED`)
+  console.log(`   ${t.steps} lines in ${t.scenes} scenes — ${t.mapped} mapped (${t.branches} on a branch), ${t.codas} codas, ${t.alternatives} surface variants, ${t.unmapped} UNMAPPED`)
   console.log(`   shapes: ${t.traversed}/${t.nodes} traversed, ${t.hitTwice} hit twice or more, ${t.neverReached} NEVER REACHED`)
   console.log(`   traversed : ${cov.traversed.map(n => `${n.id}×${n.traversals}`).join(' ') || '—'}`)
   console.log(`   never     : ${cov.neverReached.map(n => `${n.id} ${n.title}`).join(' · ') || '—'}`)

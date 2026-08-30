@@ -35,19 +35,28 @@ function rowNumber (ref) {
 function groupsForShape (shapeId, shape, storedWalks) {
   const groups = []
   for (const walk of storedWalks) {
-    const rows = walk.steps
-      .filter(s => s.node === shapeId || s.composed_in?.node === shapeId)
-      .map(s => rowNumber(s.row))
-      .filter(r => r != null)
-    if (rows.length) groups.push({ raw: `${walk.id} ${walk.name}`, rows, methodRefs: [] })
+    const steps = walk.steps.filter(s => s.node === shapeId || s.composed_in?.node === shapeId)
+    const rows = []
+    const anyOf = []
+    for (const step of steps) {
+      const r = rowNumber(step.row)
+      if (r != null) { rows.push(r); continue }
+      // A BRANCH step has no row of its own: its rows live on its branches, and
+      // they are mutually exclusive. Requiring both would make the one genuine
+      // fork in the corpus permanently untraversable, so a branch is satisfied by
+      // ANY ONE of its rows.
+      const branchRows = (step.branches || []).map(b => rowNumber(b.row)).filter(r2 => r2 != null)
+      if (branchRows.length) anyOf.push(branchRows)
+    }
+    if (rows.length || anyOf.length) groups.push({ raw: `${walk.id} ${walk.name}`, rows, anyOf, methodRefs: [] })
   }
   if (!groups.length) {
     for (const run of shape.attestations?.corpus || []) {
       const rows = gRows(run)
-      if (rows.length) groups.push({ raw: run, rows, methodRefs: [] })
+      if (rows.length) groups.push({ raw: run, rows, anyOf: [], methodRefs: [] })
     }
     for (const ref of shape.attestations?.method || []) {
-      groups.push({ raw: ref, rows: [], methodRefs: [ref] })
+      groups.push({ raw: ref, rows: [], anyOf: [], methodRefs: [ref] })
     }
   }
   return groups
@@ -129,13 +138,40 @@ export function graphFromStore ({ nodes, edges, moves, outcomeShapes, walkSets =
   // the node it is composed INTO are both true of the row: that is composition
   // doing its job, not double counting.
   const rowIndex = {}
+  const branchRows = {}
   for (const walk of storedWalks) {
     for (const step of walk.steps) {
-      const r = rowNumber(step.row)
-      if (r == null) continue
       const ids = [step.node, step.composed_in?.node].filter(Boolean)
-      rowIndex[r] = [...new Set([...(rowIndex[r] || []), ...ids])]
+      const attach = r => { if (r != null) rowIndex[r] = [...new Set([...(rowIndex[r] || []), ...ids])] }
+      attach(rowNumber(step.row))
+      // The branch step's own rows are steps on the path — g16 continues the walk
+      // and g15 is the negative branch the overlay's O1 exists to continue. Both
+      // walk N3; neither is a phrasing.
+      for (const b of step.branches || []) {
+        const r = rowNumber(b.row)
+        attach(r)
+        if (r != null) {
+          branchRows[r] = {
+            walk: walk.id,
+            node: step.node,
+            key: b.key,
+            polarity: b.polarity,
+            alternative: b.alternative,
+            continues: !!b.continues,
+            siblings: (step.branches || []).map(x => x.row).filter(x => x !== b.row)
+          }
+        }
+      }
     }
+  }
+
+  // Surface variance is a SEPARATE field in the store, and keeping it separate is
+  // the point: a phrasing is never a fork. g7/g12/g13 are other ways of saying a
+  // row that is on the walk; g15 is an alternative OUTCOME and is handled above.
+  const variantRows = {}
+  for (const alt of podWalk?.alternatives || []) {
+    const r = rowNumber(alt.row)
+    if (r != null) variantRows[r] = { kind: alt.kind, of: alt.of, walk: alt.walk, note: alt.note || '' }
   }
 
   return {
@@ -154,6 +190,8 @@ export function graphFromStore ({ nodes, edges, moves, outcomeShapes, walkSets =
     codaRows,
     alternativeRows,
     rowIndex,
+    branchRows,
+    variantRows,
     accounting: podWalk?.accounting || null
   }
 }
