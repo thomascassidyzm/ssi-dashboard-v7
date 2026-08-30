@@ -410,11 +410,19 @@ describe('generateLearningScript — graduated seeds keep their seed-phase revie
       expect(review, `offset ${offset} must stay suppressed`).toBeUndefined()
     }
 
-    // Offset 21 → round 124, NOT yet graduated: ordinary use-phrase review.
+    // Offset 21 → round 124, NOT yet graduated: an ordinary use-phrase review,
+    // which since 2026-08-30 renders as the LEGO plus its whole USE basket
+    // rather than one drawn phrase (Tom's ruling — the draw is per-learner).
     const live = round145.items.find(i => i.type === 'review' && i.legoIndex === 124)
     expect(live).toBeTruthy()
-    expect(live.reviewItemKind).not.toBe('seed')
-    expect(live.target_text).toMatch(/^nutzen 124\./)
+    expect(live.reviewItemKind).toBe('basket')
+    // The row's own text is the LEGO being revisited...
+    expect(live.target_text).toBe('zielwort 124')
+    // ...and its basket holds that LEGO's use phrases, which is where a
+    // learner's draw actually comes from.
+    expect(live.basket.some(p => /^nutzen 124/.test(p.target_text))).toBe(true)
+    expect(live.basket.length).toBeGreaterThan(0)
+    expect(live.basket.every(p => p.target_text)).toBe(true)
   })
 })
 

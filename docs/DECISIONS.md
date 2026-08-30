@@ -169,3 +169,53 @@ on a hedge) has no attested recovery at all, N13–N17 rest on the Method Pod al
 and four of the nine outcome shapes are attested nowhere and must be minted. That
 asymmetry is the finding. `tools/metagraph-selfcheck.cjs` asserts it, along with
 every count the derivation document states.
+
+---
+
+## 2026-08-30 — Script View: the determinism boundary, and the spaced-review slot
+
+**Decision.** The Script View keeps generating (it is an editable QA surface, Tom's ruling), but
+the part of it a learner is promised — structure, round composition, cycle order, and which
+LEGO's basket each spaced-review slot draws from — is what must match the serving path. The
+random half stops being rendered at all: **each spaced-review slot is now ONE row naming the
+LEGO, tapped to expand into that LEGO's whole USE basket** ("the spaced rep part of the script
+should JUST show the LEGO ID and its basket of USE phrases as a clickable expand" — Tom,
+2026-08-30). Nothing on the page invents a drawn phrase any more.
+
+**What was established first** (`docs/script-view/what-order-the-learner-hears-2026-08-30.md`):
+
+- The Script View has always run its own generator (`services/learning-script-generator.cjs`,
+  behind `/api/production/:courseCode/learning-journey`, production-api.cjs:8440). Its own header
+  says so: *"dashboard mirror … no shared code — keep the two in sync by hand."* Confirmed, not
+  suspected.
+- The live learner path is **not** the bundle. `packages/core/src/script/generateScript.ts` is
+  built but has **no caller in player-vue** and nothing fetches `/api/courses/:code/bundle` from
+  the client. A learner is served by `/cycles` for the opening (DB position order) and then by
+  `providers/generateLearningScript.ts` in the browser (shortest-first, via
+  `capPhrasesByLength`). Wiring Popty to the bundle generator today would have mirrored a path
+  nobody is served by — the brief's suggested target, and it was wrong.
+- On phrase order the Script View and the live walk **agree** (both shortest-first, which
+  `ralph-methodology.md` line 270 states as doctrine). The position-order sort lives in the
+  bootstrap endpoint and in the unswitched bundle generator. A-307 is a question about those two,
+  not about the review tool.
+
+**Why the basket row rather than a seeded draw.** Reproducing the draw would have meant the view
+carrying a second copy of a per-learner random process — the exact duplication that let the
+position-order sort go unnoticed. A slot that names its basket is honest about precisely what is
+determined, and it is cheaper: no seed to keep in step, nothing to drift.
+
+**Known consequence, named rather than hidden.** Because the view no longer draws, a review can
+no longer claim a phrase for the round, so CONSOLIDATE occasionally picks a phrase a learner's
+draw would have taken (observed once across spa_for_eng's first 8 rounds). Item counts also fall,
+because a slot is one row where it used to be up to three.
+
+**What is NOT done, and is the larger remaining piece.** The deterministic half still has two
+implementations — Popty's `.cjs` and player-vue's `generateLearningScript.ts` — kept in step by
+hand. Collapsing them means promoting the live walk (not the bundle generator) into `@ssi/core`
+and having Popty call it, which is a cross-repo build change (Popty is CJS, `@ssi/core` is ESM/TS)
+plus a golden-master parity run over several courses. Estimated a day's work of its own, and it
+should not start until the bundle cutover's client half is switched on or abandoned — otherwise
+it will be redone.
+
+**Decided by:** agent, under Tom's 2026-08-30 ruling on the spaced-rep rendering; the ordering
+question (A-307) was deliberately left untouched.

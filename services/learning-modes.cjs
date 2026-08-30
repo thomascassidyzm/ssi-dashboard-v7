@@ -253,6 +253,8 @@ function resolveRepeatedCycleTypes(modeConfig) {
 function isRepeatedCycle(item, types) {
   if (!types.has(item.type)) return false
   if (item.reviewItemKind === 'seed') return false
+  // A basket row is a SLOT, not a cycle — there is nothing to hear twice.
+  if (item.reviewItemKind === 'basket') return false
   return true
 }
 
