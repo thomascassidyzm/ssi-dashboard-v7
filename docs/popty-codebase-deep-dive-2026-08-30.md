@@ -16,12 +16,18 @@ The split is clean and worth holding on to: this repo creates translations, LEGO
 
 What actually runs as a long-lived process (verified from `ss -ltnp` on this box tonight, matched to the process command line, not guessed from docs):
 
-| What | File | Port | State tonight |
-|---|---|---|---|
-| Production API | `services/production-api.cjs` (13,431 lines) | 3470 | **running** |
-| Course Builder API | `services/course-builder-api.cjs` → `course-builder/routes/*` | 3471 | **running** |
-| Orchestrator | `services/orchestration/orchestrator.cjs` (11,430 lines) | 3465 | **running** |
-| A fourth node service | — | 3479, 5390 | running, not identified |
+| What | File | Port | Runs from | State tonight |
+|---|---|---|---|---|
+| Production API | `services/production-api.cjs` (13,431 lines) | 3470 | `…-clean-prod` | **running** |
+| Course Builder API | `services/course-builder-api.cjs` → `course-builder/routes/*` | 3471 | `…-clean-prod` | **running** |
+| Phase 8 audio | `services/phases/phase8-audio-v13.cjs` (8,311 lines) | 3465 | `…-clean-prod` | **running** |
+| Orchestrator | `services/orchestration/orchestrator.cjs` (11,430 lines) | 3456 | **`…-v7-clean` — this tree** | **running** |
+| v3 verify server | `scripts/v3-verify/serve-v3.cjs` | 3479 | `.worktrees/v3-wire` | running |
+| Vite dev server | — | 5390 | this tree | running |
+
+Ports and files here come from matching each listening socket to its process command line and its working directory on this box tonight, not from any document.
+
+**Three of those four services run out of a separate checkout, `ssi-dashboard-v7-clean-prod`, which sits on `main` and was updated an hour ago. The orchestrator does not — it runs out of *this* tree**, the shared development checkout, on a six-day-old feature branch, while several workers commit into it. That means an edit to `services/orchestration/` in this tree changes what a live 11,430-line production service will do the next time it restarts. I have filed that in the risk register; it is the sharpest thing I found in the layout.
 
 Everything else in `services/` — 108 `.cjs` files at the top level alone, plus `phases/`, `pipeline/`, `audio-intelligence/` — is either a library required by those three, or a one-shot tool run by hand. The phase servers (`phase0-language-brief`, `phase1-translation`, `phase2-conflict-resolution`, `phase3-basket-generation`, `phase8-audio-*`, `phase9-manifest-compiler`) each have their own `app.listen()` and are started on demand, not kept up.
 
@@ -113,13 +119,15 @@ Ranked by what actually hurts. Silent failures rank above loud ones, because the
 
 **2. `course_round_index` drifts and nothing watches it.** *What breaks:* a course's later rounds vanish from the learner's map; the app plays one seed and then sits in INF PLAY. *Who notices:* the learner, silently, and only if someone reports it. *How likely:* it has happened repeatedly — four courses were entirely absent on 4 August. Tonight it is one unreleased draft course, four rounds. *Cost to prevent:* very small. The RPC is already written in `docs/proposals/refresh-course-round-index-rpc.sql`; alternatively call the existing tool at the end of any lego mutation. A drift *check* is cheaper still and would at least make it loud.
 
-**3. Sixty-nine commits, including code fixes, stranded off `main` in the shared checkout.** *What breaks:* fixes that everyone believes shipped have not shipped, and no machine has them. *Who notices:* nobody, until a bug thought fixed reappears. *How likely:* certain — it is the present state. *Cost to prevent:* an afternoon of reconciliation, and thereafter a habit or a check.
+**3. A live production service runs out of the shared development checkout.** *What breaks:* `services/orchestration/orchestrator.cjs` is serving on port 3456 with its working directory set to this tree, on branch `docs/seed-15-want-you-to-evidence`, 981 commits behind `main`. Any worker editing files under `services/orchestration/` — or simply checking out a different branch, which several rules in this estate tell agents not to do precisely because of this — changes what that service loads on its next restart. *Who notices:* whoever is using the orchestrator, at a moment nobody can predict, with no connection to the edit that caused it. *How likely:* the other three production services were deliberately moved to a separate `-prod` checkout on `main`, so somebody already solved this problem and the orchestrator was left behind. *Cost to prevent:* restart it from `-prod` like the others. Minutes.
 
-**4. Documentation that is confidently wrong about the delivery path.** CLAUDE.md's materialised-view claim is the specimen: it tells every agent that a thing is automatic which is manual. CLAUDE.md itself warns that its facts rot, which is honest, but an agent that believes this particular fact will ship a course that plays one seed. *Cost to prevent:* one line.
+**4. Sixty-nine commits, including code fixes, stranded off `main` in the shared checkout.** *What breaks:* fixes that everyone believes shipped have not shipped, and no machine has them. *Who notices:* nobody, until a bug thought fixed reappears. *How likely:* certain — it is the present state. *Cost to prevent:* an afternoon of reconciliation, and thereafter a habit or a check.
 
-**5. Eleven services bind to all interfaces.** `app.listen(PORT)` with no host argument, in `services/api/progress-tracker.cjs:364`, `network-builder-api.cjs:263`, `pipeline/pipeline-server.cjs:981`, all six `phases/*/server.cjs`, `phase8-audio-from-baskets.cjs:482`, `phase9-manifest-compiler.cjs:588` and `tools/seed1-listen/server.cjs:180`; `voicelab-playground/server.cjs:389` binds `0.0.0.0` explicitly. The four services that matter most — production-api, course-builder, orchestrator, phase8-audio-v13 — all take a `HOST` and default to loopback, with a comment in `course-builder-api.cjs:68` saying exactly why ("watson-1 has a public IP"). So somebody understood this and fixed the important ones. *How likely to bite:* low — none of the eleven were listening tonight. *Cost to prevent:* a one-line change per file, and it is the kind of thing that is cheap now and expensive after.
+**5. Documentation that is confidently wrong about the delivery path.** CLAUDE.md's materialised-view claim is the specimen: it tells every agent that a thing is automatic which is manual. CLAUDE.md itself warns that its facts rot, which is honest, but an agent that believes this particular fact will ship a course that plays one seed. *Cost to prevent:* one line.
 
-**6. Repository weight.** 908MB of git history, 8GB of in-repo worktrees, 38GB across `~/SSi`. Nothing breaks; everything is slower, every clone is dearer, and the box fills. Filed as debt rather than risk because I could not name a thing that fails.
+**6. Eleven services bind to all interfaces.** `app.listen(PORT)` with no host argument, in `services/api/progress-tracker.cjs:364`, `network-builder-api.cjs:263`, `pipeline/pipeline-server.cjs:981`, all six `phases/*/server.cjs`, `phase8-audio-from-baskets.cjs:482`, `phase9-manifest-compiler.cjs:588` and `tools/seed1-listen/server.cjs:180`; `voicelab-playground/server.cjs:389` binds `0.0.0.0` explicitly. The four services that matter most — production-api, course-builder, orchestrator, phase8-audio-v13 — all take a `HOST` and default to loopback, with a comment in `course-builder-api.cjs:68` saying exactly why ("watson-1 has a public IP"). So somebody understood this and fixed the important ones. *How likely to bite:* low — none of the eleven were listening tonight. *Cost to prevent:* a one-line change per file, and it is the kind of thing that is cheap now and expensive after.
+
+**7. Repository weight.** 908MB of git history, 8GB of in-repo worktrees, 38GB across `~/SSi`. Nothing breaks; everything is slower, every clone is dearer, and the box fills. Filed as debt rather than risk because I could not name a thing that fails.
 
 ---
 
@@ -139,13 +147,14 @@ Shortest useful list. Each is one dispatchable job.
 
 **6. Correct the two wrong facts in CLAUDE.md.** The materialised-view claim, and anything else this document contradicts. CLAUDE.md is the one file every agent reads; a wrong fact there is multiplied by every session.
 
-I would do 1 and 2 first: 1 because it is the only one that can be damaging course content right now, 2 because it is nearly free and closes a silent failure.
+**7. Move the orchestrator onto the `-prod` checkout.** It is the last production service still running out of the shared development tree. Minutes of work, and it removes a whole class of accident that this estate's own rules are currently working hard to prevent by hand.
+
+I would do 7, then 1 and 2: 7 because it is minutes and removes an accident class, 1 because it is the only one that may be damaging course content right now, 2 because it is nearly free and closes a silent learner-facing failure.
 
 ---
 
 ## Gaps — what I could not verify
 
 - **How much content came through the v2 lane.** Establishing the shape of the risk was in scope; counting the rows was not, and it needs a proper census rather than a quick query.
-- **What is listening on ports 3479 and 5390.** Two node processes bound to loopback that I did not trace to a file.
 - **Whether the 69 stranded commits are individually wanted.** I established that they are absent from `main` and that some are code; I did not read them.
 - **Large parts of the repo went unopened**, listed at the top of this document.
