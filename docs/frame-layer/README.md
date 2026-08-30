@@ -8,6 +8,7 @@ Four artefacts, each a human read plus a machine-readable companion in the same 
 | [pair-mapping-classes.md](pair-mapping-classes.md) | every frame against what the target does with it — DETERMINISTIC / SPLIT / INVERSION / ERASURE — spa in full, deu/zho/jpn partial with named gaps | `pair-mapping-classes.json` |
 | [spanish-structural-splits.md](spanish-structural-splits.md) | the 12 splits, each with its trigger and its live-pulled attesting minimal pair | `spanish-structural-splits.json` |
 | [frame-zut.md](frame-zut.md) | frame-ZUT as a rule a machine can apply, and the pattern-diversity metric that supersedes edges-per-syllable | `../../tools/frame-layer/pattern-diversity.cjs` |
+| [reverse-mapping-classes.md](reverse-mapping-classes.md) | the table read backwards — the eng_for_X curriculum: reverse classes worked on eng_for_spa + eng_for_zho, the new MINT class, the cut-cost statement, reverse frame-ZUT | `reverse-mapping-classes.json` |
 
 ## Two rules that decide how everything here is scored
 
@@ -29,6 +30,7 @@ node tools/frame-layer/pattern-diversity.cjs spa_for_eng 599        # score ever
 node tools/frame-layer/extract-patterns.test.cjs                    # self-test, no DB, no network
 node tools/frame-layer/derive-and-baskets.test.cjs                  # self-test, no DB, no network
 node tools/frame-layer/generate-candidates.cjs spa_for_eng 599 --passes 3
+node tools/frame-layer/reverse-zut-scan.cjs eng_for_spa               # reverse-direction fork list
 ```
 
 Everything here is **read-only against production content**. No tool in this directory writes to `course_seeds`, `course_legos`, `course_practice_phrases` or `course_audio`. The generator writes candidate JSON under `labs/basket-lab/candidates/` and nowhere else, and calls the Claude CLI, never the Anthropic SDK.

@@ -1,0 +1,119 @@
+{
+  "generated": "2026-08-30",
+  "direction": "eng_for_X — the mapping table read backwards; known = pair language, target = English",
+  "sources": "all course text pulled live from course_seeds / course_legos on 2026-08-30; nothing transcribed",
+  "classes": {
+    "DETERMINISTIC": "one known frame, one target frame; the difficulty is carried by vocabulary",
+    "SPLIT": "one known frame, two or more target frames chosen by a trigger present somewhere in the known sentence (the trigger may be non-local to the cut)",
+    "INVERSION": "the shape mirrors — constituent order reorganises, walked in the reverse direction",
+    "ERASURE": "the target (English) is simpler and drops a distinction the known side marks; convergence, harmless under one-directional ZUT",
+    "MINT": "one known frame, two or more target realisations, and the selector is not in the known sentence and cannot be put into any cut of it, because the known language does not encode the information; the selector lives outside the sentence — discourse state, time of speaking, referent status. [SPEC:worker] name MINT taken from frame-zut.md's 'minting from nothing'; fallback name UNCUED if the collision with the layer verb ('phrases MINT') is unwanted"
+  },
+  "mint_vs_split_test": "hand a competent bilingual the complete known sentence in isolation: if the sentence still underdetermines the target form the row is MINT; if the sentence determines it (even when the chunk alone does not) the row is SPLIT",
+  "reversal_law": {
+    "statement": "the reverse table cannot be computed from the forward table; class membership is re-derived per row, and depends on where the information lives, not on the forward label",
+    "forward_to_reverse": {
+      "DETERMINISTIC": "DETERMINISTIC unless the forward mapping was many-to-one in disguise",
+      "SPLIT": "usually ERASURE (converges); can re-fork on the English side — see carrier_condition",
+      "INVERSION": "INVERSION, often carrying a new sentence-cued fork of its own",
+      "ERASURE": "SPLIT where the known sentence still contains a selector; MINT where it does not"
+    },
+    "carrier_condition": "a convergence is only free if the cut carries the matrix: que+SUBJUNCTIVE re-expands as 'you to VP' after quiero but 'you'll VP' after espero, so the matrix verb must ride inside the chunk (live cuts eng_for_spa S0015L01 'quiero que hables', S0149L01 'espero que termines')"
+  },
+  "measured_ground": {
+    "seed_counts": { "eng_for_spa": 668, "eng_for_zho": 668, "eng_for_jpn": 668 },
+    "lego_layer_extent": { "max_seed_with_legos": 300, "lego_counts": { "eng_for_spa": 618, "eng_for_zho": 502, "eng_for_jpn": 719 } },
+    "not_mirrors": {
+      "target_side_matches_forward_known": { "eng_for_spa": "648/668", "eng_for_zho": "608/668", "eng_for_jpn": "654/668" },
+      "known_side_matches_forward_target": { "eng_for_spa": "139/668", "eng_for_zho": "192/668", "eng_for_jpn": "9/668" },
+      "note": "known sides independently authored; eng_for_jpn known side is polite register throughout where jpn_for_eng target is plain — prompt differentiation is already live practice"
+    },
+    "reverse_zut_lego_ledger": {
+      "eng_for_spa": { "divergence_groups": 2, "all_do_support": true, "recut_fixable": true, "groups": [
+        { "known": "hablas", "targets": ["you speak", "do you speak ...?"], "legos": ["S0013L02", "S0014L02"] },
+        { "known": "querías", "targets": ["you wanted", "did you want...?"], "legos": ["S0031L01", "S0032L01"] }
+      ] },
+      "eng_for_zho": { "divergence_groups": 5, "structural": 2, "cut_defects": 3, "groups": [
+        { "known": "那不是", "targets": ["That wasn't", "That isn't what"], "legos": ["S0151L01", "S0159L01"], "class": "MINT", "note": "type specimen — no re-cut can repair it" },
+        { "known": "好", "targets": ["Well", "Yes"], "legos": ["S0013L01", "S0097L01"], "class": "lexical polysemy" },
+        { "known": "说", "targets": ["To speak", "Can't remember"], "legos": ["S0001L02", "S0057L01"], "class": "cut defect" },
+        { "known": "做", "targets": ["To do", "Next week"], "legos": ["S0059L01", "S0059L02"], "class": "cut defect" },
+        { "known": "我想", "targets": ["I want", "To be able"], "legos": ["S0001L01", "S0011L01"], "class": "cut defect" }
+      ] }
+    },
+    "tooling": "extract-patterns.cjs does not transfer to eng_for_X (only P20 fires, on a literal '?'); known-side matchers for spa/zho/jpn NOT YET BUILT"
+  },
+  "pairs": {
+    "eng_for_spa": {
+      "role": "easy control",
+      "headline": "the forward pair's expensive class (18 SPLIT rows) evaporates in reverse; 618 cuts carry exactly 2 divergence groups, both do-support, both re-cut-fixable",
+      "rows": [
+        { "fwd_id": "P1", "frame": "want-chain", "forward_class": "SPLIT", "reverse_class": "ERASURE", "carrier_cut": true, "evidence_legos": ["S0015L01"], "evidence": "quiero que hables → I want you to speak" },
+        { "fwd_id": "P11", "frame": "hope", "forward_class": "SPLIT", "reverse_class": "ERASURE", "carrier_cut": true, "mints": ["'ll (future)"], "evidence_legos": ["S0149L01", "S0292L02"], "evidence": "espero que termines → I hope you'll finish" },
+        { "fwd_id": "P17", "frame": "counterfactual", "forward_class": "SPLIT", "reverse_class": "ERASURE", "evidence": "habría / hubieras both → 'd" },
+        { "fwd_id": "P18", "frame": "it's-adjective", "forward_class": "SPLIT", "reverse_class": "ERASURE", "evidence_legos": ["S0028L02"], "evidence": "es útil → it's useful" },
+        { "fwd_id": "P16", "frame": "relative clause", "forward_class": "SPLIT", "reverse_class": "DETERMINISTIC", "evidence_legos": ["S0022L02"], "evidence": "gente que habla inglés → people who speak English" },
+        { "fwd_id": "P20", "frame": "question / do-support", "forward_class": "ERASURE", "reverse_class": "SPLIT", "trigger": "orthographic/intonational ¿...?, re-cut fixes", "evidence_legos": ["S0014L02", "S0032L01"], "evidence": "components pair ¿ → did (S0032L01)" },
+        { "fwd_id": "P19", "frame": "there is/are", "forward_class": "ERASURE", "reverse_class": "SPLIT", "trigger": "non-local — number of downstream noun; degrades to MINT when noun is number-ambiguous", "evidence_legos": ["S0131L01"], "evidence": "hay → there are (demasiadas ideas downstream)" },
+        { "fwd_id": "P23", "frame": "negation", "forward_class": "DETERMINISTIC", "reverse_class": "SPLIT", "trigger": "no — cued do-support, deterministic after cut", "evidence": "no + verb → don't/doesn't/didn't + verb" },
+        { "fwd_id": "P31", "frame": "like (dative)", "forward_class": "INVERSION", "reverse_class": "INVERSION", "evidence_legos": ["S0239L01", "S0239L02"], "evidence": "a mi madre / le gusta leer → my mother likes to read" },
+        { "fwd_id": null, "frame": "subject pronouns", "forward_class": "invisible", "reverse_class": "DETERMINISTIC", "trigger": "verb morphology, cut mints pronoun+verb together", "evidence_legos": ["S0002L01"], "evidence": "components pair yo → I'm" }
+      ],
+      "not_yet_extracted": ["P2", "P3", "P4", "P5", "P6", "P7", "P8", "P9", "P10", "P12", "P13", "P14", "P15", "P21", "P22", "P24", "P25", "P26", "P27", "P28", "P29", "P30"]
+    },
+    "eng_for_zho": {
+      "role": "hard case",
+      "headline": "the expensive class is MINT: tense, articles, perfect-vs-past, auxiliary choice — machinery English requires and Chinese never marks; the live layer already carries an irreparable tense divergence (那不是)",
+      "rows": [
+        { "fwd_id": "P20", "frame": "question / do-support", "forward_class": "ERASURE", "reverse_class": "SPLIT+MINT", "trigger": "吗 cues the interrogative (SPLIT); which auxiliary is partly aspect-cued, its tense component MINT", "evidence_legos": ["S0014L01", "S0032L02", "S0061L02", "S0267L01", "S0271L01"], "evidence": "吗 → Do; same particle → Did/Could/Have/Would across the layer" },
+        { "fwd_id": "P17", "frame": "counterfactual", "forward_class": "ERASURE", "reverse_class": "MINT", "evidence_legos": ["S0152L02"], "evidence_seeds": [600], "evidence": "如果我知道你想要什么 → If I had known what you wanted" },
+        { "fwd_id": null, "frame": "tense (all frames)", "forward_class": "erased", "reverse_class": "MINT", "evidence_legos": ["S0151L01", "S0159L01", "S0230L02", "S0231L02"], "evidence_seeds": [31, 151, 159], "evidence": "那不是 → wasn't/isn't; 你今晚想和我说话 → You wanted to speak with me tonight (present equally correct); 想…的 → Who wants / Who wanted" },
+        { "fwd_id": null, "frame": "articles", "forward_class": "erased", "reverse_class": "MINT", "measured": "81/502 cuts carry an English article", "evidence_legos": ["S0033L01", "S0062L01", "S0047L02"], "evidence": "长时间 → a long time; 同时 → at the same time; 犯错是好事 → it's a good thing to make mistakes" },
+        { "fwd_id": null, "frame": "perfect vs past", "forward_class": "erased", "reverse_class": "MINT", "trigger": "partially cued by 了/过/的 where present", "evidence_legos": ["S0038L02", "S0205L01", "S0182L01", "S0079L01"], "evidence": "我学了 → I've been learning; 看到过 → Have you seen; 什么时候开始学的 → When did you start to learn" },
+        { "fwd_id": "P16", "frame": "relative clause", "forward_class": "INVERSION", "reverse_class": "INVERSION", "note": "plus pronoun fork who/what/that keyed by head noun — in the sentence, SPLIT-grade not MINT", "evidence_legos": ["S0078L01", "S0230L02"], "evidence": "你说的话 → What you said; 想和你一起工作的 → Who wants to work with you" },
+        { "fwd_id": "P1", "frame": "want-chain", "forward_class": "DETERMINISTIC", "reverse_class": "DETERMINISTIC", "note": "structure easy; the tense riding on it is MINT", "evidence_legos": ["S0001L01", "S0031L02"], "evidence": "我想 → I want; 想说 → Wanted to speak" },
+        { "fwd_id": "P19", "frame": "there is/are", "forward_class": "INVERSION", "reverse_class": "INVERSION", "note": "plus MINT of number — no plural marking exists", "evidence_seeds": [131] },
+        { "fwd_id": "P9", "frame": "matrix think", "forward_class": "DETERMINISTIC", "reverse_class": "DETERMINISTIC", "evidence": "觉得 + bare clause, same order" }
+      ],
+      "not_yet_extracted": ["P2", "P3", "P4", "P5", "P6", "P7", "P8", "P10", "P11", "P12", "P13", "P14", "P15", "P18", "P21", "P22", "P23", "P24", "P25", "P26", "P27", "P28", "P29", "P30", "P31"]
+    },
+    "eng_for_jpn": {
+      "role": "corroboration only — not worked",
+      "register_finding": "known side rebuilt in polite register (9/668 mirror rate); eng-ward register is ERASURE, cheap",
+      "mint_inventory": "NOT YET EXTRACTED — expected to exceed zho's (articles + plurals + tense + register interact), but that is expectation, not measurement"
+    }
+  },
+  "cut_cost": {
+    "no_deterministic_cut_from_zho": [
+      "tense on verbs and be (那不是 → wasn't/isn't; 想 → want/wanted)",
+      "articles a/the on bare nouns",
+      "perfect vs simple past where no 了/过/的 appears",
+      "plural marking and is/are agreement",
+      "tense component of auxiliary choice under 吗"
+    ],
+    "recut_fixes": [
+      "do-support from spa: cut the ¿...? wrapper into the unit (¿ → did, S0032L01)",
+      "do-support from zho: 吗 is a word; X吗 → do X? deterministic once cut",
+      "infinitive-vs-future after volition/hope: cut the matrix verb into the chunk (quiero que hables / espero que termines, never bare que+subjunctive)",
+      "subject pronouns from spa: morphology carries person; cut mints pronoun+verb together (estoy → I'm)",
+      "past from zho when a time word exists: upchunk it (我昨天想问 → I wanted to ask … yesterday)"
+    ],
+    "residue_fix": "not cutting — authoring: differentiate the known prompt (add 昨天/已经/这个 so the choice is cued) or teach by contrast pair inside one basket; both are basket/authoring operations. Forwards: re-cut the unit. Backwards: re-cut where a trigger exists, re-author where none does."
+  },
+  "reverse_frame_zut": {
+    "rule": "for each phrase P in a basket for seed S: for each applicable mapping M — if M is SPLIT, P's known sentence must contain M's trigger for the outcome P's target realises (trigger may be non-local to the cut), else VIOLATION; if M is MINT, either P's known side carries an authored-in differentiator for the outcome, or the basket contains a contrast phrase with minimally different known side realising a different outcome, else VIOLATION (the learner is drilled into a guess with no way to ever be right)",
+    "course_level_corollary": "a MINT's default outcome must be established before its contrast arrives — the basket that first carries the marked outcome must bring the contrast pair or a differentiated prompt",
+    "tooling": "tools/frame-layer/reverse-zut-scan.cjs finds known-side divergence groups in any eng_for_X lego layer (repeatable measurement); the basket-level checker needs the phrase layer and known-side matchers — NOT YET BUILT"
+  },
+  "defects_flagged_not_fixed": [
+    "eng_for_zho mislinked cut rows: S0057L01 (说 → Can't remember), S0059L02 (做 → Next week), S0011L01 (我想 → To be able)",
+    "extract-patterns.test.cjs crashes on origin/main: split.outcomes undefined in pattern-diversity.cjs crossesSplit — pre-existing"
+  ],
+  "gaps": [
+    "phrase layer unexamined for all three eng_for_X courses",
+    "seeds 301–668 have no cuts in any eng_for_X course; tables describe 1–300",
+    "jpn MINT inventory not extracted",
+    "no known-side (spa/zho/jpn) pattern inventory or matchers exist",
+    "22 forward rows per pair unclassified in the forward table, correspondingly absent here"
+  ]
+}
