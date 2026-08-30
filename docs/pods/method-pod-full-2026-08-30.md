@@ -696,3 +696,169 @@ The live canon never lets anyone fail, not-know, or be wrong. Six of these eight
 **Why this container:** ten turns — over the delivered range, and named: the shape *is* the count of bare turns before the account, and the corpus attests nothing to derive it from; the hold is the account, heard, and the two owned "No." rows are the cheapest summit turns in the set after Scene 15's cast line.
 
 ---
+
+### Rung 2 — response positions between equals
+
+---
+
+### Scene 25 — *È vero, ma* — concession-then-build
+
+**Owns:** the ratification stream; the reformulation staple. **Newly admits:** concession-then-build as the position itself — the received advice granted in full, three times over, and the build started inside the same breath. **Attested:** 1:253–258 — "They will tell you practice, go and use it, go and listen to lots of radio and television and talk to a lot of people. And that's true. That's right. That's what you have to do, but it's incredibly painful if you haven't prepared for it… then this is not a step-change anymore. It's just more of the same." Owned in Scenes 10 and 16, never taught until here; clears move 7.
+
+**Shape witnessed:** CONCESSION-THEN-BUILD — the conventional answer is conceded totally, not partly; the concession is *doubled and tripled* so nobody can hear it as grudging; then "and" (never "but") carries the build; the partner reformulates the paradox and the closer holds both halves without choosing. Any received wisdom can walk it.
+
+**Surface forms admitted:** *livello intermedio*, *fare pratica*, *doloroso*, *un mucchio di*, *un libro di regole*, *lì per lì*, *dal vivo*, *il precipizio*, *sentieri*, *crudele*. Availability only.
+
+**Near-neighbour points:** *fai pratica* against *practica* — Italian goes noun + *fare* where Spanish has the bare verb; *lì per lì* — no Spanish twin (*sobre la marcha*), selection by absence; *dal vivo* against *en vivo* — preposition switch on a cognate; *ti ci ha preparato* — the double clitic *ti ci*, a Spanish void; *tutte e due* recurring on the close.
+
+| | English | Italiano |
+|---|---|---|
+| TOM | Every teacher on earth says the same thing. "I'm intermediate — how do I get to fluent?" "Practise. Go and use it. Listen to the radio, talk to people." | Tutti gli insegnanti del mondo dicono la stessa cosa. «Sono a un livello intermedio — come arrivo a parlare bene?» «Fai pratica. Vai e usala. Ascolta la radio, parla con la gente.» |
+| ARAN | And that's true. | Ed è vero. |
+| TOM | Is it? | Davvero? |
+| ARAN | That's true, that's right, that's exactly what you have to do — and it's incredibly painful if nobody has prepared you for it. If all you've got is a pile of words and a rule book, you walk into that room and you have to invent every sentence on the spot and find out, live, whether it works. That's the cliff. But if, before the room, you've already walked a thousand little paths through the words you've got — then the room isn't a cliff any more. It's just more of the same. Carry on. | È vero, è giusto, è esattamente quello che devi fare — ed è incredibilmente doloroso se nessuno ti ci ha preparato. Se tutto quello che hai è un mucchio di parole e un libro di regole, entri in quella stanza e devi inventarti ogni frase lì per lì e scoprire, dal vivo, se funziona. Quello è il precipizio. Ma se, prima della stanza, hai già percorso mille piccoli sentieri tra le parole che hai — allora la stanza non è più un precipizio. È solo altro dello stesso. Vai avanti. |
+| TOM | So "go and practise" is right, and it's the cruellest thing you can say. | Quindi «vai a far pratica» è giusto, ed è la cosa più crudele che puoi dire. |
+| ARAN | Both. At the same time. | Tutte e due. Nello stesso momento. |
+
+**Why this container:** the corpus delivers the triple concession and the build in one run (1:255–258); "Is it?" at 0.13× median is the minimal turn and makes the scene an `A → token → A` sandwich with Aran resuming into the hold.
+
+---
+
+### Scene 26 — *Rosso, ma* — **ZERO-ADMISSION** — the counterexample absorbed
+
+**Owns:** colours, "I'd like one that's…", "I don't mind" — live canon. **Newly admits:** the counterexample absorbed — a rule is stated with its exclusion, the partner produces a live counterexample in one breath, and the rule-holder keeps the finding instead of the rule. **Attested:** 1:120–135 — "if I've just said the word red… I can say red bus… I can't say red went… you can't, for example, say 'red but'… but of course in the middle of conversation, you're saying, I'd like one that's red, but I don't mind all that much. Yeah, exactly." *Reattribution, stated:* in the corpus Aran supplies his own counterexample; here it is Tom's line, on the re-cut's licence to move a line between mouths — the shape needs the counterexample to come from outside. Subject: edges — the method at its own precision.
+
+**Shape witnessed:** THE COUNTEREXAMPLE ABSORBED — a rule and its exclusion are stated; the partner breaks the exclusion with one natural sentence; the rule-holder concedes flatly ("I said you can't, and you can"), keeps the new fact, and the pair generalise: everything here is small things. Any rule anyone states aloud can walk it.
+
+**Surface forms admitted:** none — zero-admission. Checked: after, red, say, bus, house, one, that's, a lot, can't, I'd like, mind, good, little, something, in it, know, more, small, all, language. *Ne so una in più* — the partitive *ne* doing the work "one more" does in English.
+
+**Near-neighbour points:** *autobus rosso* — adjective after the noun, where Spanish *autobús rojo* matches, an anchor against English; *rosso/rossa* moving with the noun — anchor again (*rojo/roja*); *qualcosina* — the *-ina* diminutive on an indefinite, no Spanish twin, selection by absence; *non importa* against *no importa* — an exact anchor on the counterexample line itself, so the learner's punch lands on solid ground.
+
+| | English | Italiano |
+|---|---|---|
+| ARAN | After "red", what can I say? "Red bus." "A red house." "One that's red." A lot. And what can't I say? I can't say "red but". | Dopo «rosso», cosa posso dire? «Autobus rosso.» «Una casa rossa.» «Uno rosso.» Tanto. E cosa non posso dire? Non posso dire «rosso ma». |
+| TOM | "I'd like one that's red — but I don't mind." | «Vorrei uno rosso — ma non importa.» |
+| ARAN | …You can. I said you can't, and you can. Good. So after "red" there is a "but" — with a little something in it. Now I know one more. So do you. | …Puoi. Ho detto che non puoi, e puoi. Bene. Quindi dopo «rosso» c'è un «ma» — con qualcosina in mezzo. Adesso ne so una in più. Anche tu. |
+| TOM | A small one. | Piccola, però. |
+| ARAN | All of it is small. That's the language. | È tutto piccolo. È la lingua. |
+
+**Why this container:** the counterexample is one owned sentence of canon vocabulary — the summit move costs the learner seven words he already has — and the concession is the hold, built by repeating "can"; the attested exchange closes in the same three beats (rule / counterexample / "yeah, exactly").
+
+---
+
+### Scene 27 — *Non è quello che dico* — the misreading corrected
+
+**Owns:** reformulation (Scene 4). **Newly admits:** the reformulation that *misses* — stated, corrected in one word, and the listener re-stating both readings side by side before adopting the right one. **Attested:** 4:391–406 — "Is your stuff going to be English content but then with different starting languages?" … "transcripts rather than subtitles, which is a really important distinction" … "Okay. So I was thinking the Netflix layer of content would be in target language for learners. You're thinking of first-language Mandarin speakers who want to… okay." Subject: transcripts, not subtitles — a precise house claim.
+
+**Shape witnessed:** THE MISREADING CORRECTED — "so what you're saying is X" is wrong in one word; the speaker says "nearly" and supplies the distinction with its mechanism; the listener lays the two readings side by side — mine, yours — aloud, and takes the second. The move that lets the reformulation staple fail safely. Any explanation can walk it.
+
+**Surface forms admitted:** *i sottotitoli*, *le trascrizioni*, *quasi*, *la faccenda*, *lo schermo*, *addormentarsi*, *la soluzione sbagliata*, *una scala*, *ci sei*. Availability only.
+
+**Near-neighbour points:** *quasi* against *casi* — anchor with one consonant moved; *ci sei* for "you've got it" — essere + *ci*, no Spanish twin (*ya lo tienes*), selection by absence on the close; *sottotitoli/subtítulos* — anchor; *faccenda* against *asunto* — absence; *le orecchie si addormentano* — reflexive in an idiomatic sense where Spanish *se duermen* matches, anchor.
+
+| | English | Italiano |
+|---|---|---|
+| TOM | So what you're saying is: the films are in the language they're learning, with subtitles. | Quindi quello che stai dicendo è: i film sono nella lingua che stanno imparando, con i sottotitoli. |
+| ARAN | Nearly. Not subtitles. | Quasi. Non i sottotitoli. |
+| TOM | What, then? | E cosa, allora? |
+| ARAN | Transcripts. That's not a small difference, it's the whole thing. Subtitles put the words on the screen while you're listening, so your eyes do the work and your ears go to sleep — and that's the wrong solution and it won't work. A transcript you read before. Then you listen without it, and now your ears have a ladder. Same film, completely different act. | Le trascrizioni. Non è una differenza piccola, è tutta la faccenda. I sottotitoli ti mettono le parole sullo schermo mentre ascolti, così il lavoro lo fanno gli occhi e le orecchie si addormentano — ed è la soluzione sbagliata, e non funziona. Una trascrizione la leggi prima. Poi ascolti senza, e adesso le orecchie hanno una scala. Stesso film, atto completamente diverso. |
+| TOM | …Okay. So I was thinking: films for learners, with the words on the screen. You're thinking: films for everyone, and a ladder up to them for the learners. | …Va bene. Io pensavo: film per chi impara, con le parole sullo schermo. Tu pensi: film per tutti, e una scala per arrivarci, per chi impara. |
+| ARAN | That's it. Now you've got it. | Ecco. Adesso ci sei. |
+
+**Why this container:** the correction is three words and the distinction is the hold, as at 4:391–393; Tom's side-by-side restatement is kept at medium length because it is the owned move and has to be sayable.
+
+---
+
+### Scene 28 — *Non esistono le parole* — the reported claim too big to hold
+
+**Owns:** anecdote-with-flag; the ratification stream. **Newly admits:** relaying a third party's claim with your own vertigo attached, and the partner helping to carry it. **Attested:** 1:180–200 — "There's a researcher… Alison Wray… There's no such thing as a word. Yeah. There aren't any… every time I've heard her say that, I thought: I don't think I can keep up, my brain is already hurting" / "she probably will say there's something as a syllable or there's a sound" / "'to boldly go' is one word, and then you're into woo" / "because it's a unit of contained meaning".
+
+**Shape witnessed:** THE REPORTED CLAIM TOO BIG TO HOLD — one partner relays somebody else's claim and admits he cannot keep up with it; the other repeats its core in two words to hold it still, then supplies what the claim would still allow; the relayer gives the example; the partner reduces it to one line and the relayer names the residue. Carrying an idea neither of them owns.
+
+**Surface forms admitted:** *una ricercatrice*, *stimata*, *pubblicare*, *un modo utile*, *tagliare le cose*, *starci dietro*, *il cervello*, *una sillaba*, *un suono*, *definire*, *un'unità di significato*, *woo* (their word, kept). Availability only. "To boldly go" stays in English; it is the example, not a gloss.
+
+**Near-neighbour points:** *non ce ne sono* — *ce ne* again, the Spanish void, on the claim's own line; *starle dietro* — *stare dietro a*, no Spanish twin (*seguirle el ritmo*); *mi fa male il cervello* — *fare male* with a dative where Spanish uses *doler* (*me duele*), a systemic remap; *concederebbe* against *concedería* — anchor.
+
+| | English | Italiano |
+|---|---|---|
+| ARAN | There's a researcher — Wray, formulaic language, very highly regarded — and for a few years she's been saying, in conversation, I don't think she's published it: there is no such thing as a word. | C'è una ricercatrice — Wray, linguaggio formulaico, molto stimata — e da qualche anno dice, in conversazione, non credo l'abbia pubblicato: le parole non esistono. |
+| TOM | No such thing. | Non esistono. |
+| ARAN | There aren't any. We use the word "word" for something that doesn't really exist and isn't a helpful way of cutting things up. And every time I've heard her say it I've thought: I can't keep up with this, my brain already hurts. And she's right, and I still can't keep up. | Non ce ne sono. Usiamo la parola «parola» per una cosa che in realtà non esiste, e che non è un modo utile di tagliare le cose. E ogni volta che gliel'ho sentito dire ho pensato: non ce la faccio a starle dietro, mi fa già male il cervello. E ha ragione, e continuo a non starle dietro. |
+| TOM | She'd allow a syllable. A sound. Things that start and stop. | Una sillaba la concederebbe. Un suono. Cose che iniziano e finiscono. |
+| ARAN | Yes. So — we'd all say "to boldly go" is three words. And by most of the ways you could actually define a word, it's one. And then you're into woo. | Sì. Allora — diremmo tutti che «to boldly go» sono tre parole. E per quasi tutti i modi in cui potresti davvero definire una parola, è una. E poi finisci nel woo. |
+| TOM | It's one unit of meaning. That's all it is. | È un'unità di significato. Tutto lì. |
+| ARAN | That's all it is. And that's the woo. | Tutto lì. Ed è quello il woo. |
+
+**Why this container:** the two-word "No such thing." is the corpus's own way of holding a claim still (1:183 "Yeah." / "There aren't any."), and the vertigo turn is the hold; the close is an echo pair, as at 1:199–200.
+
+---
+
+### Scene 29 — *Proprio lì* — pre-emption
+
+**Owns:** reformulation; ratification. **Newly admits:** pre-emption — the partner arrives at your next point before you do; you say so and hand him the floor, because between these two nobody owns a point. **Attested:** 1:307–313 — Tom on Ebbinghaus ("sample size himself… corroborated by nobody… however the technique has definitely been shown to have significant validity… there is truth to the practice without a real consistency about the why") / Aran: "exactly where I'm about to go. Yep. And I didn't remember his name."
+
+**Shape witnessed:** PRE-EMPTION — a speaker lands, unprompted, on the point the partner was about to make; the partner says so in one line, confirms it is word for word, hands over the turn rather than reclaiming it, and the speaker takes it. The node where ownership of ideas is visibly not a thing. Any shared field can walk it.
+
+**Surface forms admitted:** *il tedesco*, *imparare a memoria*, *sillabe senza senso*, *campione di uno*, *confermato da nessuno*, *citare*, *gli intervalli*, *eppure*, *coerenza*, *sfuggire*, *la svolta*. Availability only.
+
+**Near-neighbour points:** *stavo per andare* — *stare per* + infinitive against *iba a ir* — a different auxiliary doing the same job; *mi era sfuggito il nome* — *sfuggire* with a dative, where Spanish *se me había escapado* adds a *se* the Italian does not have; *prenditela* against *tómatela* — imperative plus two clitics, matched, an anchor; *non ce l'ha nessuno* — *ce l'ha*, the cluster again.
+
+| | English | Italiano |
+|---|---|---|
+| TOM | Ebbinghaus. The German. One man, memorising lists of nonsense syllables, testing himself, sample size one, corroborated by nobody — and a hundred years later everyone still quotes his intervals as if they were physics. And yet the practice works. There's truth in the practice without any consistency about the why. | Ebbinghaus. Il tedesco. Un uomo solo, che impara a memoria liste di sillabe senza senso, si testa da solo, campione di uno, confermato da nessuno — e cent'anni dopo tutti citano ancora i suoi intervalli come se fossero fisica. Eppure la pratica funziona. C'è del vero nella pratica, senza nessuna coerenza sul perché. |
+| ARAN | That's exactly where I was about to go. | È esattamente lì che stavo per andare. |
+| TOM | Was it? | Davvero? |
+| ARAN | Word for word. I'd lost his name, but that's the turn. So take it — you're already there. | Parola per parola. Mi era sfuggito il nome, ma la svolta è quella. Quindi prenditela — ci sei già. |
+| TOM | Then I'll take it. The why is the interesting bit, and nobody's got it. | Allora me la prendo. Il perché è la parte interessante, e non ce l'ha nessuno. |
+| ARAN | Nobody's got it. Go on. | Non ce l'ha nessuno. Vai. |
+
+**Why this container:** the pre-empted point is the hold and it is *Tom's* — one of the few scenes where Tom owns the words (the set needs them for G6 balance); "Was it?" is the minimal turn and gives an `A → token → A` sandwich with Aran resuming.
+
+---
+
+### Scene 30 — *L'evidenziatore* — **MINT** on 1:279–289 — the complaint, with a partner turn
+
+**Owns:** the flagged story; the razor's flat verdict. **Newly admits:** the partner's turn to a complaint — neither soothing nor solving, but joining it short and then taking a share of the blame in one word. **Attested:** the complaint is Aran's, verbatim in substance — "which absolutely breaks my heart… kids who really care… workbooks… full of fucking highlighting!!! And the results are in — it makes zero difference. Worse than zero — it takes time… we're letting them down. Just shatteringly. This is our responsibility" (1:279–289); Tom's turn in the corpus is a single clause joining in ("and doesn't produce any value"). **The fuller partner turn — join, then take the share — is the MINT.** Round two named complaint-with-partner-turn as unattestable; this is the mint it asked for.
+
+**Shape witnessed:** THE COMPLAINT, WITH A PARTNER TURN — a complaint arrives at full heat with its evidence; the partner joins it in a short turn rather than calming or fixing; the complainer turns the blame from the sufferers to "us"; the partner takes the share in one word; the pair convert the complaint into a standing obligation. Any grievance a friend brings can walk it.
+
+**Surface forms admitted:** *spaccare il cuore*, *qualsiasi*, *importare a*, *impegnarsi*, *i quaderni*, *l'evidenziatore*, *i risultati ci sono*, *fare differenza*, *spaccarsi la schiena*, *un fallimento*, *la generazione*. Availability only.
+
+**Near-neighbour points:** *a cui importa* — *importare* with a dative, where Spanish *a quienes les importa* adds a *les*; *si impegnano* — *impegnarsi*, no Spanish cognate (*se esfuerzan*), selection by absence; *glielo lasciamo fare* — *glielo*, the fused double clitic, against Spanish *se lo* — the *se* is the trap; *spaccare* against *romper* — absence, twice in one scene.
+
+| | English | Italiano |
+|---|---|---|
+| ARAN | You know what breaks my heart? Go into any school. Find the kids who actually care — the ones making an effort — and open their workbooks. Highlighter. Page after page of highlighter. And the results are in: highlighting makes zero difference. Worse than zero — it costs them the time. | Sai cosa mi spacca il cuore? Entra in una scuola qualsiasi. Trova i ragazzi a cui importa davvero — quelli che si impegnano — e apri i loro quaderni. Evidenziatore. Pagine e pagine di evidenziatore. E i risultati ci sono: evidenziare non fa nessuna differenza. Peggio di nessuna — gli costa il tempo. |
+| TOM | And gives nothing back. | E non rende niente. |
+| ARAN | Nothing. Nobody told them how a memory is made. Somebody, once, told them "learn it", and an older brother had a highlighter, so they're breaking their backs doing the one thing that's been shown not to work. And we let them. That's not their failure. That's ours. | Niente. Nessuno gli ha detto come si forma una memoria. Qualcuno, una volta, gli ha detto «imparalo», e un fratello più grande aveva un evidenziatore, e così si spaccano la schiena a fare l'unica cosa che è dimostrato che non funziona. E noi glielo lasciamo fare. Non è un fallimento loro. È nostro. |
+| TOM | Ours. | Nostro. |
+| ARAN | Ours. We're the generation that went through it and found out. Saying so is the job. | Nostro. Siamo la generazione che ci è passata e l'ha scoperto. Dirlo è il lavoro. |
+| TOM | Then that's the first thing we say. Before the method. Before anything. | Allora è la prima cosa che diciamo. Prima del metodo. Prima di tutto. |
+| ARAN | Before anything. | Prima di tutto. |
+
+**Why this container:** two holds by the complainer around a five-word join — the corpus's own profile at 1:279–289 — and the one-word "Ours." is both the minimal turn and the owned move, which is the cheapest partner turn the set has.
+
+---
+
+### Scene 31 — *Il gioco di riscaldamento* — the outsider's pitch
+
+**Owns:** enacted dialogue (Scene 15); ratification. **Newly admits:** the outsider's pitch — one partner tells the other how he explains the other's work to strangers, and the owner adds the one thing the pitch is missing. **Attested:** 1:230–244 — "how I introduce your method to people is I say… this is a drama class… a warm-up game… Holy Dickhead Batman… Holy BatHead, ManDick… it's playful" / "and giving people permission to play around with it… when you play and you get something that triggers an act of communication, then you get the feedback, Oh, that worked" / "Like the Revenge of the Sith" / "Yeah. that kind of, in a sense." Safe material now (stage-adjacency retired).
+
+**Shape witnessed:** THE OUTSIDER'S PITCH — the non-owner performs his version of the owner's idea; the owner ratifies it whole, then names the one ingredient the pitch delivers without saying ("permission"); the pitcher echoes it; the owner unfolds it; the pitcher's closing flourish gets a polite "…in a sense". Any two people who explain each other to the world can walk it.
+
+**Surface forms admitted:** *presentare*, *spiegare*, *a lezione di teatro*, *un gioco di riscaldamento*, *gridare*, *una combinazione*, *riuscire a*, *spostare*, *il permesso*, *ogni tanto*, *atterrare*, *incastrarsi*, *in un certo senso*. Availability only. The game's name stays in English in both columns: it is a name, and the joke is in the English.
+
+**Near-neighbour points:** *a lezione di teatro* — bare *a lezione*, no article, where Spanish *en clase de* keeps a different preposition; *si chiama* against *se llama* — anchor; *riescono a fare* — *riuscire a*, no Spanish cognate (*logran*), selection by absence; *ogni tanto* against *de vez en cuando* — absence; *si incastra* — *incastrarsi* against *encaja*, absence.
+
+| | English | Italiano |
+|---|---|---|
+| TOM | Do you know how I introduce your method to people? I don't explain it. I say: you're in a drama class, and we're playing a warm-up game, and the game is called Holy Dickhead Batman. Everyone shouts every combination they can make — Holy BatHead, ManDick. Holy DickMan, BatHead. Holy HeadDick, ManBat. It's stupid and it's fun and by the third one everybody's laughing — and they've just learnt that a unit of meaning is a thing you can move. | Sai come presento il tuo metodo alla gente? Non lo spiego. Dico: sei a lezione di teatro, e stiamo facendo un gioco di riscaldamento, e il gioco si chiama Holy Dickhead Batman. Tutti gridano ogni combinazione che riescono a fare — Holy BatHead, ManDick. Holy DickMan, BatHead. Holy HeadDick, ManBat. È stupido ed è divertente e al terzo ridono tutti — e hanno appena imparato che un'unità di significato è una cosa che si può spostare. |
+| ARAN | That's it. And the thing you're giving them, without saying so, is permission. | Ecco. E la cosa che gli dai, senza dirlo, è il permesso. |
+| TOM | Permission. | Il permesso. |
+| ARAN | To play. Because most of the combinations are nonsense, and that's fine. You play, and every so often one lands as a real act of communication — and you get the feedback: oh. That one worked. | Di giocare. Perché quasi tutte le combinazioni non vogliono dire niente, e va bene così. Giochi, e ogni tanto una atterra come un vero atto di comunicazione — e ti arriva il feedback: oh. Quella ha funzionato. |
+| TOM | And then everything clicks together. Like the end of a Star Wars film. | E poi tutto si incastra. Come alla fine di un film di Guerre Stellari. |
+| ARAN | …In a sense. | …In un certo senso. |
+
+**Why this container:** the pitch is the hold and it is Tom's (balance); "Permission." is the one-word minimal turn and makes an `A → token → A` sandwich with Aran resuming; the three-word "…In a sense." is the attested deflating close (1:244).
+
+---
