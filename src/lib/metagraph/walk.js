@@ -160,4 +160,104 @@ export function walkFromFlow (flow, graph, opts = {}) {
   }
 }
 
-export default { walkFromCanonicalRows, walkFromFlow, STEP_KINDS }
+/**
+ * Build a walk from a pod whose walk is STORED IN THE DATABASE.
+ *
+ * `rows` are `canonical_pod_scenarios` rows — the text. `walkSteps` are
+ * `canonical_pod_walk_steps` rows — the node references. The two are joined on
+ * scene_number, which is where the join belongs: the three 2026-08-30 pods declare
+ * their shapes at CHAPTER level, not per turn, so the honest claim is "every line
+ * of this chapter is on the chapter's declared traversal" and no per-turn claim is
+ * invented. That is the same reading `parseMethodPod.js` already makes of the
+ * re-cut's per-scene headings.
+ *
+ * A declaration that resolved to nothing in the store stays visible as an
+ * UNRESOLVED declaration on the walk — never dropped, never guessed into a
+ * mapping, because a fabricated shape id is the one thing that would make the
+ * coverage read-out lie.
+ */
+export function walkFromStoredPod (rows, walkSteps, graph, opts = {}) {
+  const knownNodes = new Set(graph.nodes.map(n => n.id))
+  const knownOutcomes = new Set(graph.outcomes.map(o => o.id))
+  const bySceneNodes = new Map()
+  const bySceneOutcomes = new Map()
+  const declarations = []
+  for (const d of walkSteps || []) {
+    declarations.push({
+      walkId: d.walk_id,
+      walkName: d.walk_name,
+      sceneNumber: d.scene_number,
+      declaredAs: d.declared_as,
+      register: d.register,
+      resolution: d.resolution,
+      nodeId: d.node_id,
+      note: d.note
+    })
+    if (!d.node_id) continue
+    const bucket = knownNodes.has(d.node_id) ? bySceneNodes : knownOutcomes.has(d.node_id) ? bySceneOutcomes : null
+    if (!bucket) continue
+    if (!bucket.has(d.scene_number)) bucket.set(d.scene_number, [])
+    if (!bucket.get(d.scene_number).includes(d.node_id)) bucket.get(d.scene_number).push(d.node_id)
+  }
+
+  const scenes = []
+  const steps = []
+  const sceneMap = new Map()
+  for (const row of rows || []) {
+    const nodeIds = bySceneNodes.get(row.scene_number) || []
+    const outcomes = bySceneOutcomes.get(row.scene_number) || []
+    const step = {
+      ref: null,
+      nodeId: nodeIds[0] || null,
+      nodeIds,
+      kind: nodeIds.length ? STEP_KINDS.MOVE : STEP_KINDS.UNMAPPED,
+      branch: null,
+      variant: null,
+      sceneNumber: row.scene_number,
+      // An outcome counts as delivered only when a step DECLARES it. These pods
+      // declare theirs per chapter, so the chapter's lines carry the declaration.
+      outcomeId: outcomes[0] || null,
+      outcomeIds: outcomes,
+      payload: {
+        id: row.id,
+        speaker: row.speaker,
+        text: row.english_text,
+        target: row.target_text,
+        targetLang: row.target_lang,
+        notes: row.author_notes,
+        globalOrder: row.global_order,
+        sentenceNumber: row.sentence_number
+      }
+    }
+    steps.push(step)
+    if (!sceneMap.has(row.scene_number)) {
+      const scene = {
+        number: row.scene_number,
+        label: row.scene_label,
+        title: row.scene_title,
+        subtitle: row.scene_subtitle,
+        steps: [],
+        declarations: (walkSteps || []).filter(d => d.scene_number === row.scene_number)
+      }
+      sceneMap.set(row.scene_number, scene)
+      scenes.push(scene)
+    }
+    sceneMap.get(row.scene_number).steps.push(step)
+  }
+
+  return {
+    id: opts.id || opts.slug || 'walk',
+    title: opts.title || opts.slug || 'walk',
+    source: 'canonical-pod + stored walk',
+    // These pods walk in their own reference space: their lines are not pod-0 rows
+    // and mapping them through pod-0's g-numbers would invent coverage.
+    refSpace: opts.slug || 'pod',
+    editable: opts.editable !== false,
+    scenes,
+    steps,
+    declarations,
+    unresolved: declarations.filter(d => d.resolution === 'unresolved')
+  }
+}
+
+export default { walkFromCanonicalRows, walkFromFlow, walkFromStoredPod, STEP_KINDS }

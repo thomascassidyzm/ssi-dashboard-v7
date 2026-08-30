@@ -41,6 +41,7 @@
               {{ pod.coverage.totals.neverReached }} never reached
             </span>
             <span class="text-faint">{{ pod.coverage.totals.unmapped }} unmapped</span>
+            <span v-if="pod.declarations" class="text-accent">{{ pod.unresolved }}/{{ pod.declarations }} shape declarations UNRESOLVED</span>
           </div>
           <div v-else-if="pod.coverageError" class="mt-2 text-xs text-danger">coverage unavailable — {{ pod.coverageError }}</div>
         </router-link>
@@ -60,7 +61,7 @@ import { ref, onMounted } from 'vue'
 import { getApiUrl } from '@/services/api.js'
 import { useAuth } from '@/composables/useAuth.js'
 import { loadGraph, loadMethodPodFlow } from '@/lib/metagraph/loadGraph.js'
-import { walkFromCanonicalRows, walkFromFlow } from '@/lib/metagraph/walk.js'
+import { walkFromCanonicalRows, walkFromFlow, walkFromStoredPod } from '@/lib/metagraph/walk.js'
 import { computeCoverage } from '@/lib/metagraph/coverage.js'
 
 const graph = loadGraph()
@@ -80,7 +81,10 @@ async function authedFetch (path, init = {}) {
 const NOTES = {
   'pod-0': 'the live POD 1 — the graph is derived from this slate',
   'pod-1': 'a separate slate — the graph speaks pod-0’s row numbers, not these',
-  'pod-0.5': 'a separate slate — outside the graph’s reference space'
+  'pod-0.5': 'a separate slate — outside the graph’s reference space',
+  'learning-flagship': 'the Learning flagship — 11 chapters, English only',
+  'method-pod-chapters': 'the Method Pod, chapter cut — 12 chapters, English beside Italian',
+  'method-pod-43-scene': 'the Method Pod, 43-scene cut — the control arm the chapter cut is measured against'
 }
 
 async function load () {
@@ -122,8 +126,14 @@ async function load () {
         .then(async r => {
           const b = await r.json()
           if (!r.ok) throw new Error(b?.error || `HTTP ${r.status}`)
-          const walk = walkFromCanonicalRows(b.scenarios || [], graph, { id: pod.slug, slug: pod.slug })
+          // A pod that carries a stored walk is read through it; pod-0 and the two
+          // sacked slates carry none and keep the original row-reference path.
+          const walk = (b.walk || []).length
+            ? walkFromStoredPod(b.scenarios || [], b.walk, graph, { id: pod.slug, slug: pod.slug })
+            : walkFromCanonicalRows(b.scenarios || [], graph, { id: pod.slug, slug: pod.slug })
           pod.coverage = computeCoverage(graph, walk)
+          pod.unresolved = (walk.unresolved || []).length
+          pod.declarations = (walk.declarations || []).length
         })
         .catch(e => { pod.coverageError = e.message })
     }

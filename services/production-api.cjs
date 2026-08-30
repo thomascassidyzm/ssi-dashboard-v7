@@ -4757,11 +4757,20 @@ app.get('/api/admin/canonical-pods/:slug', async (req, res) => {
   if (!await requireAdmin(req, res)) return
   try {
     const sb = supabaseClient.getClient()
+    const slug = String(req.params.slug || 'pod-0')
     const { data, error } = await sb.from('canonical_pod_scenarios')
-      .select('id, scene_number, scene_label, scene_title, scene_subtitle, sentence_number, global_order, speaker, english_text, author_notes')
-      .eq('pod_slug', String(req.params.slug || 'pod-0')).order('global_order', { ascending: true })
+      .select('id, scene_number, scene_label, scene_title, scene_subtitle, sentence_number, global_order, speaker, english_text, target_text, target_lang, author_notes')
+      .eq('pod_slug', slug).order('global_order', { ascending: true })
     if (error) throw error
-    res.json({ slug: req.params.slug, scenarios: data || [] })
+    // The walk, in node-reference form, from the store beside the dialogue. pod-0's
+    // walk lives in services/shared/metagraph/walks/pod-0.json and is read on the
+    // client; a pod ingested from markdown carries its walk here instead, so this
+    // is empty for pod-0/pod-1/pod-0.5 and the old read path is unchanged.
+    const { data: walk, error: walkError } = await sb.from('canonical_pod_walk_steps')
+      .select('id, walk_id, walk_name, scene_number, step_order, kind, node_id, declared_as, register, resolution, scenario_id, note')
+      .eq('pod_slug', slug).order('scene_number', { ascending: true }).order('step_order', { ascending: true })
+    if (walkError) throw walkError
+    res.json({ slug, scenarios: data || [], walk: walk || [] })
   } catch (e) {
     logger.error('[CanonicalPods] list error:', e?.message || e)
     res.status(500).json({ error: e?.message || 'unknown error' })

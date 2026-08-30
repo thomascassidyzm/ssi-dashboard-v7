@@ -113,6 +113,15 @@
                 Encoding the remaining walks is what moves this number.
               </template>
             </p>
+            <p v-if="walk.declarations && walk.declarations.length">
+              <span class="text-muted">Shape declarations:</span>
+              {{ walk.declarations.length }} declared ·
+              {{ walk.declarations.length - walk.unresolved.length }} resolved against the store ·
+              <span class="text-accent">{{ walk.unresolved.length }} UNRESOLVED</span>
+              ({{ unresolvedByRegister }}).
+              An unresolved declaration is a shape the pod names that the store has no id for. It is
+              counted, never guessed into a mapping.
+            </p>
             <p>Graph: <code>{{ graph.source }}</code> — {{ graph.provenance }}</p>
           </div>
         </section>
@@ -127,6 +136,9 @@
               <span v-if="scene.subtitle" class="text-xs italic text-faint">{{ scene.subtitle }}</span>
               <span class="ml-auto text-xs" :class="sceneShapes(scene).length ? 'text-accent-2' : 'text-faint'">
                 {{ sceneShapes(scene).join(' ') || 'no shape' }}
+              </span>
+              <span v-if="sceneUnresolved(scene).length" class="basis-full text-xs text-accent">
+                declared, unresolved: {{ sceneUnresolved(scene).join(' · ') }}
               </span>
             </div>
             <div class="divide-y divide-line/60">
@@ -148,6 +160,9 @@
                 <div v-else class="flex-1 min-w-0 basis-full sm:basis-auto text-sm">
                   <div class="text-ink">{{ step.payload.text }}</div>
                   <div v-if="step.payload.target" class="text-xs text-muted italic">{{ step.payload.target }}</div>
+                </div>
+                <div v-if="!readOnly && step.payload.target" class="basis-full text-xs text-muted italic pl-2">
+                  {{ step.payload.target }}<span class="text-faint not-italic"> · {{ step.payload.targetLang }} specimen, not editable here</span>
                 </div>
                 <span v-if="step.branch" class="text-xs text-accent flex-shrink-0 pt-2 basis-full sm:basis-auto">
                   fork · {{ step.branch.key }} arm{{ step.branch.continues ? '' : ' · no uptake' }}
@@ -175,7 +190,7 @@ import { useRoute } from 'vue-router'
 import { getApiUrl } from '@/services/api.js'
 import { useAuth } from '@/composables/useAuth.js'
 import { loadGraph, loadMethodPodFlow } from '@/lib/metagraph/loadGraph.js'
-import { walkFromCanonicalRows, walkFromFlow } from '@/lib/metagraph/walk.js'
+import { walkFromCanonicalRows, walkFromFlow, walkFromStoredPod } from '@/lib/metagraph/walk.js'
 import { computeCoverage } from '@/lib/metagraph/coverage.js'
 
 const KIND_TAG = { coda: 'ADMITS', branch: 'BRANCH', alternative: 'VARIANT', unmapped: 'UNMAPPED' }
@@ -190,6 +205,11 @@ const loading = ref(true)
 const error = ref(null)
 const title = computed(() => readOnly ? 'The Method Pod — the re-cut' : `Canonical script · ${slug}`)
 const exercised = computed(() => (cov.value?.survivability || []).filter(s => s.exercised))
+const unresolvedByRegister = computed(() => {
+  const by = {}
+  for (const d of walk.value?.unresolved || []) by[d.register] = (by[d.register] || 0) + 1
+  return Object.entries(by).map(([k, v]) => `${v} ${k}`).join(', ')
+})
 
 const { getAccessToken } = useAuth()
 async function authedFetch (path, init = {}) {
@@ -201,6 +221,9 @@ async function authedFetch (path, init = {}) {
 
 function sceneShapes (scene) {
   return [...new Set(scene.steps.flatMap(s => s.nodeIds || []))]
+}
+function sceneUnresolved (scene) {
+  return (scene.declarations || []).filter(d => d.resolution === 'unresolved').map(d => d.declared_as)
 }
 function stepTitle (step) {
   if (step.kind === 'unmapped') return 'the graph has nothing to say about this line'
@@ -225,7 +248,9 @@ async function load () {
       const res = await authedFetch(`/api/admin/canonical-pods/${encodeURIComponent(slug)}`)
       const body = await res.json()
       if (!res.ok) throw new Error(body?.error || `HTTP ${res.status}`)
-      walk.value = walkFromCanonicalRows(body.scenarios || [], graph, { id: slug, slug })
+      walk.value = (body.walk || []).length
+        ? walkFromStoredPod(body.scenarios || [], body.walk, graph, { id: slug, slug })
+        : walkFromCanonicalRows(body.scenarios || [], graph, { id: slug, slug })
     }
     cov.value = computeCoverage(graph, walk.value)
   } catch (err) {
