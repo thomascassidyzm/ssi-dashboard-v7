@@ -862,3 +862,192 @@ The live canon never lets anyone fail, not-know, or be wrong. Six of these eight
 **Why this container:** the pitch is the hold and it is Tom's (balance); "Permission." is the one-word minimal turn and makes an `A → token → A` sandwich with Aran resuming; the three-word "…In a sense." is the attested deflating close (1:244).
 
 ---
+
+### Rung 3 — relationship-in-the-conversation
+
+---
+
+### Scene 32 — *Le mani* — the medium named
+
+**Owns:** joint construction (Scene 1); backchannel. **Newly admits:** the meta-comment on the medium — a speaker gesturing for an audience who cannot see says so, and the partner narrates the gesture for that audience in the third person, live. **Attested:** 1:213–222 — "[It's a pity that the recordings can't pick up my pathetic attempts to act this out. Isn't it?]" / "I think they'll get it — he's banging on the side of the chair" / "So—" / "we don't have the web" / "and that's boring — that's really boring… and that's playful" — and 1:381: "they really need to find a way to record hand gestures don't they". Clears move 12. Subject: item-rich, edge-poor — the demonstration itself.
+
+**Shape witnessed:** THE MEDIUM NAMED — the speaker admits the recording cannot see him; the partner steps half out of the conversation to narrate the gesture for the listener, then steps back in as a partner; the demonstration resumes and the scene closes on a shared joke about the medium. The node where a recorded conversation admits it is one — and the only scene in this pod that knows it is a pod.
+
+**Surface forms admitted:** *una fila*, *un collegamento*, *l'aula*, *peccato che*, *la registrazione*, *cogliere*, *patetici tentativi*, *mimare*, *il bracciolo*, *la poltrona*, *colpi*, *noioso*, *la rete*, *attraversare*, *divertirsi*. Availability only.
+
+**Near-neighbour points:** *peccato che* + subjunctive against *lástima que* — matched mood on a different noun; *riesca* — *riuscire* in the subjunctive, no Spanish cognate; *bracciolo* against *reposabrazos* — absence; *mi sto divertendo* against *me estoy divirtiendo* — an anchor, matched progressive and reflexive; the tag *eh?* against *¿no?* — same job, different noise.
+
+| | English | Italiano |
+|---|---|---|
+| ARAN | So take a row of words — five of them, like this — and one link between each. That's the classic classroom: rich in words, poor in edges. …It's a pity the recording can't pick up my pathetic attempts to act this out. | Allora prendi una fila di parole — cinque, così — e un collegamento tra una e l'altra. Questa è l'aula classica: ricca di parole, povera di collegamenti. …Peccato che la registrazione non riesca a cogliere i miei patetici tentativi di mimarlo. |
+| TOM | They'll get it. He's banging on the arm of the chair. Five bangs, in a row. | Lo capiranno. Sta battendo sul bracciolo della poltrona. Cinque colpi, in fila. |
+| ARAN | Five bangs in a row. And all you can do with five in a row is start here and walk to there. And that's boring — that's really boring. But now put another row under it, and another, so it's fifteen — and now draw every link there could be between them. Now I can start here and go through it fifteen different ways. And that's— | Cinque colpi in fila. E con cinque in fila l'unica cosa che puoi fare è partire da qui e arrivare là. Ed è noioso — è davvero noioso. Ma adesso mettici un'altra fila sotto, e un'altra, così sono quindici — e adesso disegna tutti i collegamenti possibili tra loro. Adesso posso partire da qui e attraversarle in quindici modi diversi. E questo è— |
+| TOM | —the web. | —la rete. |
+| ARAN | That's playful. That's the moment the adult learner thinks: oh, I can say a lot of different things. I'm in control of this. I'm enjoying it. | Questo è giocare. È il momento in cui l'adulto che impara pensa: oh, posso dire un sacco di cose diverse. Questa cosa la controllo io. Mi sto divertendo. |
+| TOM | They really need to find a way to record hands, don't they. | Dovrebbero proprio trovare un modo di registrare le mani, eh? |
+| ARAN | They really do. | Dovrebbero proprio. |
+
+**Why this container:** there are no stage directions in the table on purpose — Tom's narration *is* the stage direction, which is the whole move; "—the web." is the two-word completion the corpus attests at 1:220–222 and makes an `A → token → A` sandwich with Aran resuming.
+
+---
+
+### Scene 33 — *Un'email* — the world breaks in and is used
+
+**Owns:** the flagged digression (Scene 4); the banked interruption (Scene 14). **Newly admits:** the live intrusion folded *in* — the world interrupts mid-argument with a specimen of the very thing under discussion, and the specimen is read into the argument as evidence rather than parked or banked. **Attested:** 4:224–232 — "It's a disaster, IP… In parallel with this conversation, I've just had an email from people who are considering investing in us at the moment, saying we do want details of your IP… I'm busy saying, yeah, we've got IP, loads of it. Cause we do!" / "We're at horizon one, right? We are where we are now… we have to start where we are… I still need to eat." Clears move 9.
+
+**Shape witnessed:** THE WORLD BREAKS IN AND IS USED — the intrusion is named as real-time, read aloud, and admitted to implicate the speaker himself; the partner supplies the frame that absorbs the contradiction ("we start where we are"); the speaker takes the frame and returns to his thread on his own marker. Distinct from the announced detour (Scene 4) and the banked interruption (Scene 14): here the interruption *is* the argument.
+
+**Surface forms admitted:** *proprietà intellettuale*, *un disastro*, *impedire a*, *in diretta*, *investire in*, *i dettagli*, *per forza*, *un sacco*, *orizzonte uno*, *preoccuparsi di*, *dov'ero rimasto*, *i muri difensivi*. Availability only.
+
+**Near-neighbour points:** *per forza* — no Spanish twin (*claro*, *por supuesto* both undershoot), selection by absence; *in diretta* against *en directo* — anchor with the article dropped; *ce l'abbiamo* — the *ce l'* cluster, three times in one turn; *dov'ero rimasto* — *rimanere* for "where was I", where Spanish *dónde estaba* reaches for estar — a verb Spanish would not think of.
+
+| | English | Italiano |
+|---|---|---|
+| ARAN | IP is a disaster. The worst thing you can think of: I'm going to build something that would help every human alive, and then I'm going to stop humans using it. — Hang on. This is real time: an email, just now, from the people thinking of investing in us. "We'll need details of your IP. We need to know there's IP before we can invest." | La proprietà intellettuale è un disastro. La cosa peggiore che puoi immaginare: costruisco una cosa che aiuterebbe ogni essere umano vivo, e poi impedisco agli esseri umani di usarla. — Aspetta. Questo è in diretta: un'email, adesso, dalle persone che stanno pensando di investire in noi. «Ci serviranno i dettagli della vostra proprietà intellettuale. Dobbiamo sapere che c'è, prima di investire.» |
+| TOM | Of course they do. | Per forza. |
+| ARAN | And I'm sitting here typing: yes, we've got IP, loads of it. Because we have. | E io sono qui che scrivo: sì, ce l'abbiamo, un sacco. Perché ce l'abbiamo. |
+| TOM | So. Horizon one. We are where we are, and we start where we are. You'd like to think in ideas and not worry about the rest, and so would I — and we both still need to eat. | Ecco. Orizzonte uno. Siamo dove siamo, e partiamo da dove siamo. Ti piacerebbe pensare solo a idee e non preoccuparti del resto, e piacerebbe anche a me — e tutti e due dobbiamo ancora mangiare. |
+| ARAN | We both still need to eat. Right — where was I. Defensive walls. | Tutti e due dobbiamo ancora mangiare. Bene — dov'ero rimasto. I muri difensivi. |
+
+**Why this container:** the intrusion arrives *inside* the hold, not as a new turn — the corpus's "In parallel with this conversation" is mid-run at 4:227 — and "Per forza." at two words is the minimal turn; the return marker closes the scene intra-turn exactly as Scene 4's does.
+
+---
+
+### Scene 34 — *Come gli atomi* — the callback
+
+**Owns:** the co-owned line (Scene 13); metaphor handover (Scene 12). **Newly admits:** the callback proper — much later, the partner's earlier image is quoted back to him verbatim, he completes the quotation, and the image is put to new work. **Attested:** 4:133 ("there is a fixed number of atoms on the planet. We're not losing atoms of water") → 4:330, twenty-odd minutes later ("then it's like atoms, isn't it. You've created this amount of currency — it's moved around a lot, and at the end of the month, everybody wants you to pay it back"). Clears move 8. Subject: the local-currency loop, used as a mask exactly as Scenes 9 and 15 use Part 4.
+
+**Shape witnessed:** THE CALLBACK — the earlier image is retrieved by asking the minter what he said; the minter completes his own line; the caller applies it to the new subject; the minter notices the wait and names the move; the caller credits the image back. Unlike the co-owned line, this is one image, one conversation, put to work once.
+
+**Surface forms admitted:** *fine mese*, *ripagare*, *un numero fisso*, *atomi*, *la moneta*, *girare*, *i negozi*, *tenersi da parte*, *tornare il momento*, *un richiamo*. Availability only.
+
+**Near-neighbour points:** *glieli ripaghi* — *glie + li*, the fused cluster on the scene's first line; the tag *no?* — an anchor to *¿no?*; *nemmeno un po'* against *ni un poco* — *nemmeno* by absence, recurring; *te la tenevi da parte* — *tenersi da parte*, no Spanish twin (*te la guardabas*); *aspettavo che tornasse* — imperfect subjunctive after a verb of waiting, where Spanish *esperaba que volviera* matches exactly, an anchor on mood.
+
+| | English | Italiano |
+|---|---|---|
+| ARAN | …and at the end of the month everybody wants you to pay it back. Hang on — what did you say, an hour ago? There's a fixed number of atoms on the planet. | …e a fine mese tutti vogliono che tu glieli ripaghi. Aspetta — cos'hai detto, un'ora fa? Sul pianeta c'è un numero fisso di atomi. |
+| TOM | We're not losing atoms of water. | Non stiamo perdendo atomi d'acqua. |
+| ARAN | We're not losing atoms of water. So it's like atoms, isn't it. You make this much currency, it moves round all month, and at the end of the month it's all still here — it's just in the shops. You haven't lost any of it. You only have to know where it went. | Non stiamo perdendo atomi d'acqua. Quindi è come gli atomi, no? Fai questa quantità di moneta, gira per tutto il mese, e a fine mese è ancora tutta qui — è solo nei negozi. Non ne hai persa nemmeno un po'. Devi solo sapere dov'è andata. |
+| TOM | You've been saving that up. | Te la tenevi da parte. |
+| ARAN | Since you said it. I was waiting for it to come round. | Da quando l'hai detta. Aspettavo che tornasse il momento. |
+| TOM | Good callback. | Bel richiamo. |
+| ARAN | Your atoms. I just gave them somewhere to go. | Sono i tuoi atomi. Io gli ho solo dato un posto dove andare. |
+
+**Why this container:** the quoted line is short and the application is the hold, which is the attested shape at 4:330–333; Tom's completion of his own line is the scene's `A → token → A` sandwich with Aran resuming, and "Bel richiamo." is the two-word minimal turn.
+
+---
+
+### Scene 35 — *Un giorno di cinese* — story → matched story
+
+**Owns:** anecdote-with-flag (Scenes 2, 9, 13). **Newly admits:** the matched story at full strength — a personal story is answered with a personal story offered as corroboration for the same claim, and each teller extracts the other's shape in one line. **Attested:** 1:388–404, weakly per round two §2b — Tom's day of Mandarin ("by the end of the second day… I was thinking in Chinese… much more than if I'd worked really hard for a month") and Aran's Manx day one / day two, sixteen months apart ("Day two… those first intimations of I can do this… nowhere near 700 words… maybe a couple of hundred"). Clears the deficit-list item.
+
+**Shape witnessed:** STORY → MATCHED STORY — a story is told as evidence; the listener extracts its shape in a line; the teller ratifies by echo; the listener tells his own story *to the same shape*; the first teller extracts the second story's shape in the same line-form; the close generalises. The second story corroborates — it never competes.
+
+**Surface forms admitted:** *l'estate scorsa*, *nel frattempo*, *strutture*, *lavoro duro*, *a un anno di distanza*, *filmare*, *madrelingua*, *contento di me*, *niente male*, *un'avvisaglia*, *farcela*, *un paio di centinaia*, *tirare fuori*. Availability only.
+
+**Near-neighbour points:** *a un anno di distanza* — no Spanish idiom of the same build (*con un año de diferencia*), selection by absence, on the line both tellers repeat; *ce li ho filmati* — *ce + li*; *madrelingua* — one word where Spanish needs two (*hablante nativo*); *niente male* against *nada mal* — anchor; *ce la posso fare* — *farcela*, the flagship void; *un paio di* against *un par de* — anchor.
+
+| | English | Italiano |
+|---|---|---|
+| TOM | I did a day of Mandarin last summer. One day. And another this year — different words, different structures, because you'd changed it all in between, obviously. And by the end of that second day I was thinking in Chinese. Not well. But it felt like more than a month of hard work would have given me, and I've done the month, in other languages, and I know what it buys. | L'estate scorsa ho fatto un giorno di cinese. Un giorno. E un altro quest'anno — parole diverse, strutture diverse, perché nel frattempo avevi cambiato tutto, ovviamente. E alla fine di quel secondo giorno pensavo in cinese. Non bene. Ma sembrava più di quello che mi avrebbe dato un mese di lavoro duro, e il mese l'ho fatto, in altre lingue, e so cosa compra. |
+| ARAN | Two days, a year apart. | Due giorni, a un anno di distanza. |
+| TOM | Two days, a year apart. | Due giorni, a un anno di distanza. |
+| ARAN | I've got mine on film. Manx — a conversation with a native speaker after day one, and another after day two, sixteen months later. Day one: fine, pleased with myself, not bad. Day two: the first real intimation of "I can do this" — still small, still a couple of hundred words, nowhere near seven hundred, but I could pick most of them up and turn them round. Something was going on. | I miei ce li ho filmati. Manx — una conversazione con un madrelingua dopo il primo giorno, e un'altra dopo il secondo, sedici mesi dopo. Primo giorno: bene, contento di me, niente male. Secondo giorno: la prima vera avvisaglia di «ce la posso fare» — ancora piccola, ancora un paio di centinaia di parole, lontanissimo da settecento, ma quasi tutte le sapevo tirare fuori e girare. Stava succedendo qualcosa. |
+| TOM | Two days. Sixteen months apart. | Due giorni. A sedici mesi di distanza. |
+| ARAN | Two days. And you don't need the third one to know. | Due giorni. E non ti serve il terzo per saperlo. |
+
+**Why this container:** two holds of similar length — the *only* scene in the set with two, because the shape is two stories and a matched story that was shorter than the first would read as deference; the shape-extraction lines are the minimal turns and are echoed, as the corpus echoes at 1:392–393.
+
+---
+
+### Scene 36 — *Il manx* — **MINT** partner turn on 2:258–263 — the disclosure acknowledged
+
+**Owns:** the flagged guess (Scene 7); not-knowing (Scene 5). **Newly admits:** the partner's turn to a disclosed doubt — repeat it back, take the bare "no", then do the one thing that is not fixing: name the doubt as allowed and the reason as sufficient. **Attested:** the disclosure is Aran's, in substance verbatim — "I have never, in my life ever thought I want to learn Manx… I've got unfinished business. I am going to learn more Manx. I don't know if I'll ever become really conversationally competent, but I'm definitely going to learn more" (2:258–263) — and in the corpus **nobody answers it**; Aran carries straight on. **Tom's three turns are the MINT.** Clears **O7**, which the graph called the starkest absence in the canon.
+
+**Shape witnessed:** THE DISCLOSURE ACKNOWLEDGED — a doubt about oneself surfaces in the middle of something else; the listener repeats it back in the discloser's own words and gets a bare no; the listener then does not reassure, plan or fix, but names the doubt as permitted and the stated reason as enough; the discloser accepts; the listener sends him on. Any friend's doubt can walk it.
+
+**Surface forms admitted:** *in vita mia*, *nemmeno una volta*, *un esperimento*, *disposto a*, *il materiale*, *testare*, *un conto in sospeso*, *arrivare a*, *è permesso*, *una buona ragione*, *avere bisogno di*. Availability only.
+
+**Near-neighbour points:** *in vita mia* against *en mi vida* — the possessive after the noun with no article, a structural trap on an anchor phrase; *un conto in sospeso* against *un asunto pendiente* — absence; *disposto a* against *dispuesto a* — anchor; *ne ho fatti due giorni* — *ne* with agreement on the participle, the void at its most surgical; *di cui abbia mai avuto bisogno* — subjunctive in the relative after *l'unica*, where Spanish *que haya necesitado* matches, an anchor on mood.
+
+| | English | Italiano |
+|---|---|---|
+| ARAN | I have never once in my life thought: I want to learn Manx. Never. And I've done two days of it now — because it was an experiment, and there was a man willing to make the material, and I wanted to test some things. And now I've got unfinished business. I'm going to learn more Manx. I don't know if I'll ever be properly conversational in it — I really don't — but I'm going to learn more. | In vita mia non ho mai pensato, nemmeno una volta: voglio imparare il manx. Mai. E adesso ne ho fatti due giorni — perché era un esperimento, e c'era uno disposto a fare il materiale, e volevo testare delle cose. E adesso ho un conto in sospeso. Imparerò altro manx. Non so se arriverò mai a parlarlo davvero — non lo so proprio — ma ne imparerò altro. |
+| TOM | You don't know if you'll get there. | Non sai se ci arriverai. |
+| ARAN | No. | No. |
+| TOM | No. …That's allowed. Unfinished business is a good reason. Better than most. | No. …È permesso. Un conto in sospeso è una buona ragione. Meglio di quasi tutte. |
+| ARAN | It's the only reason I've ever actually needed. | È l'unica ragione di cui abbia mai avuto davvero bisogno. |
+| TOM | Then learn more Manx. | Allora impara altro manx. |
+
+**Why this container:** the disclosure is the hold and it is heard; Tom's owned turns are all short, and the bare "No." between two of them is the set's most exposed `A → token → A` sandwich — the token is the doubt itself, and Tom resumes without filling it.
+
+---
+
+### Scene 37 — *Perché sei tu* — the recommendation on personal guarantee
+
+**Owns:** question-and-answer floor; the razor's flat yes/no. **Newly admits:** N8 at the summit — an invitation accepted before its content because of who brings it, and the accepter naming what was actually exchanged. **Attested:** 2:266–282 — "for somebody who I didn't know very well, I'd go, yeah, sorry, molecular physics, not really my thing. But if you say, look, this is a particularly interesting exposition of molecular physics — I think you're going to like it. I'm going to go" / "I almost don't even have to explain anything" / "do you want to go and learn Breton for a weekend? I'd go. Why not?" / "I'm giving you a guarantee. My personal guarantee… we need our tribes as the antidote to this one-to-Facebook relationship." Clears **N8**.
+
+**Shape witnessed:** THE RECOMMENDATION ON PERSONAL GUARANTEE — an invitation is accepted on the strength of the inviter, not the subject; the accepter says so; the inviter notes he barely had to explain; the accepter names the thing exchanged (a guarantee, not a recommendation) and what it protects against; the inviter tests the guarantee with a sillier invitation; it holds. Recommendation where the grounds are the person.
+
+**Surface forms admitted:** *fisica molecolare*, *non fa per me*, *un consiglio*, *una garanzia*, *una tribù*, *una dozzina*, *un filtro*, *un algoritmo*, *spingere verso*, *l'antidoto*, *bretone*, *fine settimana*. Availability only.
+
+**Near-neighbour points:** *da chiunque altro* — *da* for "from a person", where Spanish uses *de*, a preposition remap on the first owned line; *non fa per me* — no Spanish twin (*no es lo mío*), absence; *non me l'avresti chiesto* — double clitic plus conditional perfect, matched with *no me lo habrías pedido*, an anchor; *fine settimana* against *fin de semana* — anchor; *perché no* against *por qué no* — anchor to close on.
+
+| | English | Italiano |
+|---|---|---|
+| TOM | Two days on molecular physics. In Hong Kong. Coming? | Due giorni di fisica molecolare. A Hong Kong. Vieni? |
+| ARAN | From anyone else: no. Sorry — molecular physics, not my thing. From you: yes. I've already said yes. Because you wouldn't have asked. | Da chiunque altro: no. Scusa — la fisica molecolare non fa per me. Da te: sì. Ho già detto di sì. Perché tu non me l'avresti chiesto. |
+| TOM | I almost don't have to explain anything. | Quasi non devo nemmeno spiegare niente. |
+| ARAN | You don't. What you're giving me isn't a recommendation, it's a guarantee — your personal guarantee — and that's what a tribe is. A dozen people who know what you'd find interesting, and go and find it, and bring it to you. The other version of that filter is somebody in California writing an algorithm, and that filter is driving all of us towards people who already agree with us. Your version is the antidote. | Non devi. Quello che mi dai non è un consiglio, è una garanzia — la tua garanzia personale — ed è questo una tribù. Una dozzina di persone che sanno cosa troveresti interessante, e vanno a cercarlo, e te lo portano. L'altra versione di quel filtro è qualcuno in California che scrive un algoritmo, e quel filtro ci sta spingendo tutti verso chi è già d'accordo con noi. La tua versione è l'antidoto. |
+| TOM | So — Breton, for a weekend? | Allora — bretone, per un fine settimana? |
+| ARAN | Why not. | Perché no. |
+
+**Why this container:** the generalisation is the hold, as at 2:276–282; the two-word "Why not." is the attested close (2:275) and the minimal turn.
+
+---
+
+### Scene 38 — *Come il cancro* — the listener names it
+
+**Owns:** metaphor handover (Scene 12); concession-then-build (Scene 25). **Newly admits:** the listener supplying the image that names a story told without its moral — and the teller ratifying in one word, then refusing to let the image become the verdict. **Attested:** 2:205–212 — "the most positive person in the group paired with her… by the end of the session, he'd become equally negative. Oh my God." / "That's literally how cancer works." / "Exactly. Yeah. but nonetheless, that's the challenge is the group dynamic. But if you solve for the group dynamic, then you've got something which I think can be orders of magnitude more powerful."
+
+**Shape witnessed:** THE LISTENER NAMES IT — a story arrives with its point unstated; the listener gives it a name in one line; the teller ratifies in one word; the listener extends the image by one step; the teller ratifies again and then uses "nonetheless" to keep the story from hardening into a verdict, and names the real job. The reverse of the metaphor handover: the image comes from the listener, and the teller decides what it is allowed to mean.
+
+**Surface forms admitted:** *negativo / positivo*, *mettersi in coppia*, *apposta*, *buone intenzioni*, *tirare su*, *una cellula*, *sana*, *ciò nonostante*, *la sfida*, *il verdetto*, *la dinamica*, *ordini di grandezza*. Availability only.
+
+**Near-neighbour points:** *apposta* against *a propósito* — absence; *tirare su* — phrasal, no Spanish twin (*animar*); *era diventato* — pluperfect with *essere* where Spanish *se había vuelto* takes *haber*; *quanto lei* for "as … as she" — *quanto* where Spanish uses *como*; *ciò nonostante* against *no obstante* — cognate parts, different assembly; *lì accanto* against *al lado* — absence.
+
+| | English | Italiano |
+|---|---|---|
+| ARAN | I had one group with one truly negative person in it. And the most positive person in the room — the one you'd want in every group — paired up with her. On purpose. Good intentions: he was going to bring her round. And by the end of the day he'd become exactly as negative as she was. Not her better. Him worse. | Ho avuto un gruppo con dentro una persona davvero negativa. E la persona più positiva della stanza — quella che vorresti in ogni gruppo — si è messa in coppia con lei. Apposta. Buone intenzioni: la avrebbe tirata su. E alla fine della giornata lui era diventato esattamente negativo quanto lei. Non lei meglio. Lui peggio. |
+| TOM | That's literally how cancer works. | È letteralmente così che funziona il cancro. |
+| ARAN | Exactly. | Esatto. |
+| TOM | One cell, and the healthy one next to it. | Una cellula, e quella sana lì accanto. |
+| ARAN | Exactly that. And nonetheless — that's the challenge, not the verdict. The group dynamic. Because if you solve for the dynamic, you've got something that's orders of magnitude more powerful than one person alone. It's just that "solve for the dynamic" is the whole job. | Esatto, proprio così. E ciò nonostante — quella è la sfida, non il verdetto. La dinamica del gruppo. Perché se risolvi la dinamica, hai una cosa più potente di ordini di grandezza rispetto a una persona da sola. È solo che «risolvere la dinamica» è tutto il lavoro. |
+| TOM | Then it's the whole job. | Allora è tutto il lavoro. |
+
+**Why this container:** the story and the "nonetheless" are two holds around a one-word ratification, the corpus's own profile at 2:205–212; "Esatto." between two Tom turns is an `A → token → A` sandwich with Tom resuming, one of the few where Tom holds the floor through a token.
+
+---
+
+### Scene 39 — *Ho smesso di aspettare* — **MINT** partner turn on 1:404–406 — trouble that is your own fault
+
+**Owns:** not-knowing (Scene 5); the audit inside the glow (Scene 9). **Newly admits:** own-fault trouble — taking the fault before being asked, naming the excuse as an excuse, supplying what one actually has, and pricing the consequence oneself. **Attested:** 1:404–406 — "So yeah, actually, I've got to stop waiting, I've got to start. I've got to crack on and do that. I've got to stop waiting for — I was waiting for 15 in a day and I don't think I've got 15, but I think there might be seven or eight new ones" — Aran's own admission, with no partner turn in the corpus; Tom's next line changes the subject. **Tom's three turns are the MINT.** Clears **O6**.
+
+**Shape witnessed:** TROUBLE THAT IS YOUR OWN FAULT — a neutral question hits a delay; the speaker takes the fault unprompted, exposes his own excuse, offers the smaller real thing, and prices the consequence; the partner echoes the smaller offer, accepts it as the thing itself, and refuses the premise behind the excuse; the speaker takes even that. Any missed deadline between friends can walk it.
+
+**Surface forms admitted:** *colpa mia*, *stare ad aspettare*, *dialoghi*, *rimanere seduto su*, *una scusa*, *attaccato*, *bastare*, *mezza giornata*, *darsi una mossa*, *il prezzo*, *una taglia*. Availability only.
+
+**Near-neighbour points:** *colpa mia* against *culpa mía* — anchor; *sono stato ad aspettare* — *stare a* + infinitive, no Spanish twin (*he estado esperando* is a different construction); *non ce li ho* — *ce + li*; *darmi una mossa* — absence (*ponerme las pilas*); *ne ho sette* — *ne* again, on the number that matters; *una taglia sola* — *taglia* against *talla*, anchor with one consonant moved.
+
+| | English | Italiano |
+|---|---|---|
+| TOM | So when's day three? | Allora, il terzo giorno quand'è? |
+| ARAN | …That's on me. I've been waiting. I told myself I needed fifteen new dialogues for a day, and I haven't got fifteen, and I've been sitting on that for a year as if it were a reason. It isn't a reason. It's an excuse with a number on it. I've got seven, maybe eight. That's enough for half a day. So: I've got to stop waiting and crack on, and do the half day, and the half day is the price of having waited. | …Questa è colpa mia. Sono stato ad aspettare. Mi ero detto che per un giorno mi servivano quindici dialoghi nuovi, e quindici non ce li ho, e sono rimasto seduto su questa cosa per un anno come se fosse una ragione. Non è una ragione. È una scusa con un numero attaccato. Ne ho sette, forse otto. Bastano per mezza giornata. Quindi: devo smettere di aspettare e darmi una mossa, e fare la mezza giornata, e la mezza giornata è il prezzo di aver aspettato. |
+| TOM | Half a day. | Mezza giornata. |
+| ARAN | Half a day. With the seven. | Mezza giornata. Con i sette. |
+| TOM | Then that's day three. Nobody said days come in one size. | Allora è quello il terzo giorno. Nessuno ha detto che i giorni vengono in una taglia sola. |
+| ARAN | Nobody did. I did. | Nessuno. L'ho detto io. |
+
+**Why this container:** the admission is one run, as at 1:404–406; "Half a day." is the two-word minimal turn and makes an `A → token → A` sandwich with Aran resuming; the close is an echo pair with a reversal, the corpus's favourite way of ending a beat (1:342–343).
+
+---
