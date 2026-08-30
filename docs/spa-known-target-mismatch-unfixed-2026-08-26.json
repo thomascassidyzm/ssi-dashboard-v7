@@ -1,0 +1,438 @@
+{
+ "untaught": [
+  {
+   "id": "S0291L02U11",
+   "v": "DEFECT-DROPPED",
+   "why": "\"and practise\" missing",
+   "seed": 291,
+   "k": "I know that being able to speak better soon is something that can take time and practise",
+   "t": "Sé que poder hablar mejor pronto es algo que puede tomar tiempo"
+  },
+  {
+   "id": "S0421L03U04",
+   "v": "DEFECT-TENSE",
+   "why": "\"saben\" (present) for \"knew\" (past)",
+   "seed": 421,
+   "k": "I was sure they knew",
+   "t": "estaba seguro de que saben"
+  },
+  {
+   "id": "S0431L01U04",
+   "v": "DEFECT-TENSE",
+   "why": "\"estarán\" (future) instead of \"estarían\" (conditional) for \"they'd be\"",
+   "seed": 431,
+   "k": "I was sure they'd be ready soon",
+   "t": "estaba seguro de que estarán listos pronto"
+  },
+  {
+   "id": "S0237L02U08",
+   "v": "DEFECT-TENSE",
+   "why": "\"he aprendido\" (present perfect) for \"had learned\" (pluperfect)",
+   "seed": 237,
+   "k": "I was going to tell you what I had learned before the weekend",
+   "t": "Iba a decirte lo que he aprendido antes del fin de semana"
+  },
+  {
+   "id": "S0248L03U12",
+   "v": "DEFECT-DROPPED",
+   "why": "missing \"also\" (también)",
+   "seed": 248,
+   "k": "He said he also wants them to give him back his money",
+   "t": "Dijo que él quiere que le devuelvan su dinero"
+  },
+  {
+   "id": "S0248L03U14",
+   "v": "DEFECT-DROPPED",
+   "why": "missing \"only\" (lo único)",
+   "seed": 248,
+   "k": "The only thing I need right now is for them to give me back my money",
+   "t": "Lo que necesito ahora mismo es que me devuelvan mi dinero"
+  },
+  {
+   "id": "S0252L01U04",
+   "v": "DEFECT-PERSON",
+   "why": "\"hay que intentar\" (impersonal) for \"let us try\" (we, inclusive)",
+   "seed": 252,
+   "k": "I am not sure you will be ready in time but let us try",
+   "t": "No estoy seguro de que estarás listo a tiempo pero hay que intentar"
+  },
+  {
+   "id": "S0252L02U07",
+   "v": "DEFECT-DROPPED",
+   "why": "missing \"also\" (también)",
+   "seed": 252,
+   "k": "I want to know when you will be ready to start so I can also get ready",
+   "t": "Quiero saber cuándo estarás listo para empezar para estar listo"
+  },
+  {
+   "id": "S0252L02U11",
+   "v": "DEFECT-TENSE",
+   "why": "\"estarás\" (future) for \"would be ready\" (conditional)",
+   "seed": 252,
+   "k": "He told me he was trying to find out when you would be ready to start",
+   "t": "Me dijo que estaba intentando descubrir cuándo estarás listo para empezar"
+  },
+  {
+   "id": "S0267L01U08",
+   "v": "DEFECT-TENSE",
+   "why": "\"has tenido\" (present perfect) for \"did you have\" (simple past)",
+   "seed": 267,
+   "k": "When did you have news from your friend?",
+   "t": "¿Cuándo has tenido noticias de tu amigo?"
+  },
+  {
+   "id": "S0281L03U09",
+   "v": "DEFECT-DROPPED",
+   "why": "missing \"sit down\" (sentarme)",
+   "seed": 281,
+   "k": "I like my coffee when I have time to sit down and relax",
+   "t": "Me gusta mi café cuando tengo tiempo para relajarme un rato"
+  },
+  {
+   "id": "S0285L01U10",
+   "v": "DEFECT-ADDED",
+   "why": "\"y ella lo hace\" (and she does it) substituted for \"and she knows that\"",
+   "seed": 285,
+   "k": "It is more important to speak often than to be perfect and she knows that",
+   "t": "Es más importante hablar a menudo que ser perfecto y ella lo hace"
+  },
+  {
+   "id": "S0286L01U04",
+   "v": "DEFECT-PERSON",
+   "why": "\"intentar ayudar\" attaches to \"les gusta\" (people like to try to help) not \"she tries to help them\"",
+   "seed": 286,
+   "k": "She knows people who like to learn and tries to help them",
+   "t": "Ella conoce personas a las que les gusta aprender y intentar ayudar"
+  },
+  {
+   "id": "S0589L01U02",
+   "v": "DEFECT-TENSE",
+   "why": "ES \"lo vio\" (simple past) for EN \"she'd seen it\" (past perfect)",
+   "seed": 589,
+   "k": "she told me she'd seen it",
+   "t": "me dijo que lo vio"
+  },
+  {
+   "id": "S0015L01U07",
+   "v": "DEFECT-DROPPED",
+   "why": "drops \"too\" (también) — no comparison marker for \"practise too\"",
+   "seed": 15,
+   "k": "You speak with me all day — I'd like to practise too",
+   "t": "Hablas conmigo todo el día, me gustaría practicar"
+  },
+  {
+   "id": "S0055L02U12",
+   "v": "DEFECT-ADDED",
+   "why": "\"estoy empezando a sentirme cansado\" (starting to feel tired) replaces \"still tired\"",
+   "seed": 55,
+   "k": "I slept well this evening but I'm still tired",
+   "t": "Dormí bien esta noche pero estoy empezando a sentirme cansado"
+  },
+  {
+   "id": "S0058L02U05",
+   "v": "DEFECT-ADDED",
+   "why": "adds \"intentando\" (trying to say) — English is plain \"am saying\"",
+   "seed": 58,
+   "k": "I need to know if you understand what I am saying",
+   "t": "Necesito saber si entiendes lo que estoy intentando decir"
+  },
+  {
+   "id": "S0107L03U15",
+   "v": "DEFECT-ADDED",
+   "why": "adds \"intentando\" (trying to say) — English is plain \"were saying\"",
+   "seed": 107,
+   "k": "You were saying that we need to speak as soon as possible",
+   "t": "Estabas intentando decir que necesitamos hablar lo antes posible"
+  },
+  {
+   "id": "S0211L03U13",
+   "v": "DEFECT-TENSE",
+   "why": "\"we needed to know\" (past) rendered as present \"necesitamos saber\"",
+   "seed": 211,
+   "k": "They did not want to say anything about the arrangements even though we needed to know",
+   "t": "No querían decir nada sobre los preparativos aunque necesitamos saber"
+  },
+  {
+   "id": "S0212L01U10",
+   "v": "DEFECT-DROPPED",
+   "why": "\"what you said to them\" becomes \"lo que dijiste sobre eso\" (about that) — loses the recipient \"to them\"",
+   "seed": 212,
+   "k": "They wanted to talk about what you said to them",
+   "t": "Querían hablar de lo que dijiste sobre eso"
+  },
+  {
+   "id": "S0212L01U11",
+   "v": "DEFECT-DROPPED",
+   "why": "\"feeling ready\" mistranslated as \"sentirse bien\" (feeling well), specific meaning lost",
+   "seed": 212,
+   "k": "They didn't want to start before feeling ready",
+   "t": "No querían empezar antes de sentirse bien"
+  },
+  {
+   "id": "S0217L02U06",
+   "v": "DEFECT-TENSE",
+   "why": "\"had not seen\" (past perfect) rendered as simple past \"no vi\"",
+   "seed": 217,
+   "k": "I saw a friend at the weekend that I had not seen for a long time",
+   "t": "Vi a un amigo el fin de semana al que no vi en mucho tiempo"
+  },
+  {
+   "id": "S0151L03U14",
+   "v": "DEFECT-TENSE",
+   "why": "\"when we started learning\" (past) rendered as \"cuando aprendemos\" (present)",
+   "seed": 151,
+   "k": "I was hoping something interesting would happen today when we started learning",
+   "t": "Esperaba que pasara algo interesante hoy cuando aprendemos"
+  },
+  {
+   "id": "S0152L02U15",
+   "v": "DEFECT-DROPPED",
+   "why": "\"always\" weakened to \"a menudo\" (often)",
+   "seed": 152,
+   "k": "I always think about doing things differently because I want to learn better",
+   "t": "A menudo pienso en hacer de manera diferente porque quiero aprender mejor"
+  }
+ ],
+ "rest": [
+  {
+   "id": "S0370L01U05",
+   "v": "DEFECT-ADDED",
+   "why": "\"allí\" (there) added, not in English",
+   "seed": 370,
+   "k": "I didn't meet anyone I knew",
+   "t": "no vi a nadie que conociera allí"
+  },
+  {
+   "id": "S0404L01U04",
+   "v": "DEFECT-PERSON",
+   "why": "\"debería hacerlo\" reads as a personal subject, losing the impersonal \"it should be done\"",
+   "seed": 404,
+   "k": "I told her it should be done before Thursday",
+   "t": "le dije que debería hacerlo antes del jueves"
+  },
+  {
+   "id": "S0416L02U05",
+   "v": "DEFECT-ADDED",
+   "why": "\"debería\" (should) added, turns a direct instruction into a suggestion",
+   "seed": 416,
+   "k": "I told her to lead the way",
+   "t": "le dije que debería liderar el camino"
+  },
+  {
+   "id": "S0233L04U12",
+   "v": "DEFECT-ADDED",
+   "why": "\"quería hablar de\" (wanted to talk about) replaces \"had...an idea to discuss\"",
+   "seed": 233,
+   "k": "She works with your sister and said she had a very interesting idea to discuss",
+   "t": "Trabaja con tu hermana y dijo que quería hablar de una idea muy interesante"
+  },
+  {
+   "id": "S0241L01U04",
+   "v": "DEFECT-PERSON",
+   "why": "\"antes de irse\" defaults to \"I\" leaving, not \"before HE left\"",
+   "seed": 241,
+   "k": "I wanted to give it to my father before he left",
+   "t": "Quería dárselo a mi padre antes de irse"
+  },
+  {
+   "id": "S0245L02U03",
+   "v": "DEFECT-ADDED",
+   "why": "\"recordar\" (remember) substituted for \"appreciate\"",
+   "seed": 245,
+   "k": "I think it's important to appreciate how much you've already done",
+   "t": "Pienso que es importante recordar lo mucho que ya has hecho"
+  },
+  {
+   "id": "S0250L02U15",
+   "v": "DEFECT-TENSE",
+   "why": "imperative \"Just give me\" rendered as question \"Puedes darme\"",
+   "seed": 250,
+   "k": "Just give me a little time to think before I answer and I will do much better",
+   "t": "Puedes darme un poco de tiempo para pensar antes de que conteste y lo puedo hacer mucho mejor"
+  },
+  {
+   "id": "S0274L03U12",
+   "v": "DEFECT-ADDED",
+   "why": "\"dijo que quiere saber\" adds a reporting layer not in \"asked if\"",
+   "seed": 274,
+   "k": "She asked if you could come back in a few days because we need more time",
+   "t": "Ella dijo que quiere saber si puedes volver en unos días porque necesitamos más tiempo"
+  },
+  {
+   "id": "S0277L01U10",
+   "v": "DEFECT-TENSE",
+   "why": "\"quería\" (past) for \"wants\" (present); \"asked if we could\" softened to a statement",
+   "seed": 277,
+   "k": "She asked if we could talk after the meeting because she wants to tell me something important",
+   "t": "Ella dijo que quería hablar después de la reunión porque quería decirme algo importante"
+  },
+  {
+   "id": "S0281L01U07",
+   "v": "DEFECT-PERSON",
+   "why": "\"si llevas\" (you take) for impersonal \"it takes too long\"",
+   "seed": 281,
+   "k": "Does it matter to you that it takes too long to answer?",
+   "t": "¿Te importa si llevas demasiado tiempo para contestar?"
+  },
+  {
+   "id": "S0477L03U03",
+   "v": "DEFECT-TENSE",
+   "why": "ES \"ha estado\" (present perfect) for EN \"was\" (simple past)",
+   "seed": 477,
+   "k": "since the second day it was hard",
+   "t": "desde el segundo día ha estado difícil"
+  },
+  {
+   "id": "S0557L02U01",
+   "v": "DEFECT-ADDED",
+   "why": "adds \"música\" (music) not mentioned in EN \"I wish they wouldn't play\"",
+   "seed": 557,
+   "k": "I wish they wouldn't play",
+   "t": "ojalá no pusieran música"
+  },
+  {
+   "id": "S0053L02U05",
+   "v": "DEFECT-TENSE",
+   "why": "\"had wanted\" (past perfect) rendered as imperfect \"quería\", not pluperfect",
+   "seed": 53,
+   "k": "She had wanted to put the letter in her bag last week",
+   "t": "Ella quería poner la carta en su bolso la semana pasada"
+  },
+  {
+   "id": "S0077L02U10",
+   "v": "DEFECT-ADDED",
+   "why": "adds \"casi\" (nearly) and \"como si estuviera\" (as if) not asked for by English",
+   "seed": 77,
+   "k": "It surprises me how quickly I am starting to feel ready to go",
+   "t": "Me sorprende lo rápido que estoy empezando a sentir como si estuviera casi listo para irme"
+  },
+  {
+   "id": "S0090L05U12",
+   "v": "DEFECT-TENSE",
+   "why": "\"if I could\" (conditional) rendered as present indicative \"si puedo\" (if I can)",
+   "seed": 90,
+   "k": "It would be great if I could speak Spanish as fast as possible",
+   "t": "Sería genial si puedo hablar español lo más rápido posible"
+  },
+  {
+   "id": "S0091L02U10",
+   "v": "DEFECT-DROPPED",
+   "why": "\"trying to improve\" mistranslated as \"intentando aprender\" (trying to learn)",
+   "seed": 91,
+   "k": "I'm not speaking quickly enough but I'm trying to improve",
+   "t": "No estoy hablando lo suficientemente rápido pero estoy intentando aprender"
+  },
+  {
+   "id": "S0100L02U09",
+   "v": "DEFECT-PERSON",
+   "why": "English \"she was not worried\" (3rd person) rendered as \"no deberías preocuparte\" (you shouldn't worry, 2nd person)",
+   "seed": 100,
+   "k": "She told me she was not worried about doing that",
+   "t": "Ella me dijo que no debería preocuparte por hacer eso"
+  },
+  {
+   "id": "S0100L03U14",
+   "v": "DEFECT-PERSON",
+   "why": "English \"he asked me to try\" rendered as \"él quiere intentar\" (he wants to try) — wrong subject/actor doing the trying",
+   "seed": 100,
+   "k": "He asked me to try something similar with his dog",
+   "t": "Él quiere intentar algo parecido con su perro"
+  },
+  {
+   "id": "S0158L02U13",
+   "v": "DEFECT-DROPPED",
+   "why": "\"before we talk about the rest\" reduced to generic \"antes de seguir\" (before continuing)",
+   "seed": 158,
+   "k": "There's something else I want to tell you before we talk about the rest",
+   "t": "Hay otra cosa de la que quiero hablar contigo antes de seguir"
+  },
+  {
+   "id": "S0170L02U14",
+   "v": "DEFECT-TENSE",
+   "why": "\"I've been thinking about it\" rendered as present \"Pienso mucho en eso\"",
+   "seed": 170,
+   "k": "I've been thinking about it and I'd like you to tell me what you need",
+   "t": "Pienso mucho en eso y me gustaría que me dijeras lo que necesitas"
+  },
+  {
+   "id": "S0172L04U05",
+   "v": "DEFECT-TENSE",
+   "why": "\"if you could explain\" (conditional) rendered as present indicative \"si puedes\"",
+   "seed": 172,
+   "k": "It would be helpful if you could explain that again",
+   "t": "Sería útil si puedes explicar eso otra vez"
+  },
+  {
+   "id": "S0184L03U15",
+   "v": "DEFECT-TENSE",
+   "why": "\"may have gone home\" (uncertain) rendered as definite simple past \"ya fue a casa\"",
+   "seed": 184,
+   "k": "I have not seen her anywhere in the office since this morning and I'm afraid she may have gone home already",
+   "t": "No la he visto en algún sitio en la oficina desde esta mañana y me temo que ya fue a casa"
+  },
+  {
+   "id": "S0185L02U03",
+   "v": "DEFECT-TENSE",
+   "why": "\"may have gone home\" (uncertain) rendered as definite simple past \"ya fue a casa\"",
+   "seed": 185,
+   "k": "I have not seen my friend at work today and I'm afraid she may have gone home already",
+   "t": "No he visto a mi amiga en el trabajo hoy y me temo que ya fue a casa"
+  },
+  {
+   "id": "S0189L01U08",
+   "v": "DEFECT-TENSE",
+   "why": "\"I thought at the time\" (past) rendered as present \"pienso\"",
+   "seed": 189,
+   "k": "She said it was a good idea but I thought at the time that it was not so sure",
+   "t": "Ella dijo que era una buena idea pero pienso que no estoy tan seguro de eso"
+  },
+  {
+   "id": "S0204L02U03",
+   "v": "DEFECT-DROPPED",
+   "why": "\"the week after next\" rendered as \"la semana que viene\" (next week), loses the \"after next\" offset",
+   "seed": 204,
+   "k": "We need to finish the arrangements before the week after next",
+   "t": "Necesitamos terminar los preparativos antes de la semana que viene"
+  },
+  {
+   "id": "S0225L03U06",
+   "v": "DEFECT-TENSE",
+   "why": "\"if I could have done it well\" (past hypothetical) rendered as present subjunctive \"si pudiera hacerlo bien\"",
+   "seed": 225,
+   "k": "I would have done it differently if I could have done it well this time",
+   "t": "Lo habría hecho de manera diferente si pudiera hacerlo bien esta vez"
+  },
+  {
+   "id": "S0132L04U10",
+   "v": "DEFECT-DROPPED",
+   "why": "drops \"even\" (aun/incluso) before \"when something feels very difficult\"",
+   "seed": 132,
+   "k": "She was saying that it is important to work hard even when something feels very difficult",
+   "t": "Ella estaba diciendo que es importante trabajar duro cuando algo es muy difícil"
+  },
+  {
+   "id": "S0133L02U18",
+   "v": "DEFECT-ADDED",
+   "why": "\"deeper way\" mistranslated as \"de manera más interesante\" (more interesting way)",
+   "seed": 133,
+   "k": "She was saying you get to know someone in a deeper way when you work hard together",
+   "t": "Ella estaba diciendo que llegas a conocer a alguien de manera más interesante trabajando juntos"
+  },
+  {
+   "id": "S0151L03U03",
+   "v": "DEFECT-PERSON",
+   "why": "\"before the end of the day\" (no subject) rendered as \"antes de que termines\" (before you finish) — introduces \"you\"",
+   "seed": 151,
+   "k": "I was hoping something different would happen before the end of the day",
+   "t": "Esperaba que pasara algo diferente antes de que termines"
+  },
+  {
+   "id": "S0151L03U10",
+   "v": "DEFECT-TENSE",
+   "why": "\"after you finished\" (past) rendered as \"termines\" (future/present subjunctive)",
+   "seed": 151,
+   "k": "It was something I was hoping would happen after you finished",
+   "t": "Era algo que esperaba que pasara después de que termines"
+  }
+ ]
+}
