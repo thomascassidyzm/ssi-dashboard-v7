@@ -1,0 +1,23 @@
+{
+  "course": "--help",
+  "pod": "--help:pod-1",
+  "side": "target",
+  "at": "2026-08-24T17:40:57.794Z",
+  "whisper_lang": "auto",
+  "split_rows_in_pod": 0,
+  "sampled": 0,
+  "hard_failures": {
+    "serves": 0,
+    "text": 0,
+    "parity": 0,
+    "seams": 0,
+    "whitespace": 0
+  },
+  "stt": {
+    "multiword_clips": 0,
+    "mean_cer_multiword": null,
+    "flagged_over_0_35": 0,
+    "note": "Single-word clips are transcribed but NOT counted — whisper renders \"Sieben.\" as \"7.\" and mis-IDs the language on ~1s audio. Multi-word clips are the measurement."
+  },
+  "results": []
+}

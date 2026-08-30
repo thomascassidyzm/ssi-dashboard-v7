@@ -1,0 +1,188 @@
+{
+  "runId": "reuse-deu_for_eng-r1-1786077553558",
+  "courseCode": "deu_for_eng",
+  "rounds": 1,
+  "dryRun": false,
+  "startedAt": "2026-08-07T04:39:18.808Z",
+  "finishedAt": "2026-08-07T04:39:29.481Z",
+  "voices": {
+    "known": "xai_gfzdpspr5fdp",
+    "target1": "xai_ara",
+    "target2": "xai_leo",
+    "presentation": "xai_gfzdpspr5fdp"
+  },
+  "shape": {
+    "rounds": 1,
+    "cycles": 2,
+    "clipPlays": 6,
+    "byType": {
+      "intro": 1,
+      "debut": 1,
+      "build": 0,
+      "review": 0,
+      "consolidate": 0
+    },
+    "distinctClips": 4
+  },
+  "summaryBefore": {
+    "total": 4,
+    "satisfied": 2,
+    "reuseOwn": 0,
+    "reuseCross": 1,
+    "render": 1,
+    "rebuild": 0,
+    "blocked": 0
+  },
+  "entries": [
+    {
+      "clipKey": "known|eng|xai_gfzdpspr5fdp|i want",
+      "role": "known",
+      "text": "I want",
+      "action": "REUSED_CROSS",
+      "fromCourse": "fra_for_eng",
+      "audioId": "38cf05e8-7d64-443e-b9d3-9e0a15f1ad0a",
+      "previousAudioIds": [
+        "c8b02ff5-27c9-48b6-959d-35f137222957"
+      ],
+      "viaVoiceAlias": false,
+      "holdersUpdated": [
+        {
+          "table": "course_legos",
+          "id": "83cc017d-3268-4523-869a-715e9f579ed0",
+          "column": "known_audio_id",
+          "legoId": "S0001L01",
+          "currentAudioId": "c8b02ff5-27c9-48b6-959d-35f137222957",
+          "to": "38cf05e8-7d64-443e-b9d3-9e0a15f1ad0a",
+          "applied": true
+        }
+      ],
+      "note": "previous rows left in place — nothing deleted"
+    },
+    {
+      "clipKey": "target1|deu|xai_ara|ich will",
+      "role": "target1",
+      "text": "ich will",
+      "action": "NONE",
+      "reason": "already linked to 823cf48a-43bf-40c9-a5d2-56c2be1788c7"
+    },
+    {
+      "clipKey": "target2|deu|xai_leo|ich will",
+      "role": "target2",
+      "text": "ich will",
+      "action": "NONE",
+      "reason": "already linked to ca2c4e01-843c-4b11-a35b-b7cecc40827b"
+    },
+    {
+      "clipKey": "presentation|eng|xai_gfzdpspr5fdp|the german for: 'i want', as in — 'i want to speak german with you now', is:",
+      "role": "presentation",
+      "text": "The German for: 'I want', as in — 'I want to speak German with you now', is:",
+      "action": "RENDERED",
+      "audioId": "c7a95a8e-f7db-453b-8bd9-0be33aa60316",
+      "s3Key": "mastered/FF9FAC57-9762-4082-9618-F684F8EB881C.mp3",
+      "durationMs": 4968,
+      "revision": null,
+      "previousS3Key": null,
+      "swappedInPlace": false,
+      "holdersUpdated": [
+        {
+          "table": "course_legos",
+          "id": "83cc017d-3268-4523-869a-715e9f579ed0",
+          "column": "presentation_audio_id",
+          "legoId": "S0001L01",
+          "currentAudioId": "a4b3fa98-4c92-47ab-8e1f-c89a1375afc9",
+          "to": "c7a95a8e-f7db-453b-8bd9-0be33aa60316",
+          "applied": true
+        }
+      ]
+    }
+  ],
+  "deleted": [],
+  "errors": [],
+  "audioStampBumped": true,
+  "counts": {
+    "REUSED_CROSS": 1,
+    "NONE": 2,
+    "RENDERED": 1
+  },
+  "deletionsPerformed": 0,
+  "plan": {
+    "shape": {
+      "rounds": 1,
+      "cycles": 2,
+      "clipPlays": 6,
+      "byType": {
+        "intro": 1,
+        "debut": 1,
+        "build": 0,
+        "review": 0,
+        "consolidate": 0
+      },
+      "distinctClips": 4
+    },
+    "summary": {
+      "total": 4,
+      "satisfied": 2,
+      "reuseOwn": 0,
+      "reuseCross": 1,
+      "render": 1,
+      "rebuild": 0,
+      "blocked": 0
+    },
+    "byLayer": {
+      "known": {
+        "total": 1,
+        "satisfied": 0,
+        "reuseOwn": 0,
+        "reuseCross": 1,
+        "render": 0,
+        "rebuild": 0,
+        "blocked": 0
+      },
+      "target1": {
+        "total": 1,
+        "satisfied": 1,
+        "reuseOwn": 0,
+        "reuseCross": 0,
+        "render": 0,
+        "rebuild": 0,
+        "blocked": 0
+      },
+      "target2": {
+        "total": 1,
+        "satisfied": 1,
+        "reuseOwn": 0,
+        "reuseCross": 0,
+        "render": 0,
+        "rebuild": 0,
+        "blocked": 0
+      },
+      "presentation": {
+        "total": 1,
+        "satisfied": 0,
+        "reuseOwn": 0,
+        "reuseCross": 0,
+        "render": 1,
+        "rebuild": 0,
+        "blocked": 0
+      }
+    },
+    "estimate": {
+      "renderClips": 1,
+      "characters": 76,
+      "note": "characters are of the course text as it will be sent to TTS, before any gender expansion"
+    },
+    "voices": {
+      "known": "xai_gfzdpspr5fdp",
+      "target1": "xai_ara",
+      "target2": "xai_leo",
+      "presentation": "xai_gfzdpspr5fdp"
+    },
+    "bytes": {
+      "checked": 3,
+      "alive": 3,
+      "missing": 0,
+      "tiny": 0,
+      "unknown": 0
+    }
+  }
+}
