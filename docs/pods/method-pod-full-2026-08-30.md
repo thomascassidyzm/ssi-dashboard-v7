@@ -493,3 +493,206 @@ Copied from the re-cut, not redesigned. The per-scene detail (Owns / Newly admit
 **Why this container:** the attested clash escalates through two big holds and is closed by its shortest turn; 6.0× max/median, the widest spread in the inherited set, in the scene that needs it most.
 
 ---
+
+## 4. The new scenes — 17 to 43
+
+Written on the grammar of §2. Ordered on the ladder the ratified sets used — the floor and the failures (17–24), response positions between equals (25–31), relationship-in-the-conversation (32–39), the summit and the sibling mints (40–43) — but scenes are walks and delivery order stays derived. Each zero-admission scene names the words it was checked on. Each mint says what is invented.
+
+---
+
+### Rung 1 — the floor and the failures
+
+The live canon never lets anyone fail, not-know, or be wrong. Six of these eight scenes put a failure in the answer slot — the listener not understanding, a second no, a wrong read-back, a premise refused, a bare refusal — and five of them do it on Layer-0 vocabulary, which is the highest-yield thing this pod can do.
+
+---
+
+### Scene 17 — *Non ho capito* — **ZERO-ADMISSION** — **MINT** — the listener does not understand you
+
+**Owns:** "I don't understand" / "again, slowly" / "now I understand" — all live canon. **Newly admits:** the reversed repair — the *speaker's* response to the listener's failure: not louder, not longer, but cut to one sentence and checked. **Attested:** nowhere; structurally unattestable between two people who understand each other perfectly (round two §2d). **MINT.** Container authored on the repair shape N6, whose one canon attestation closes in four turns. Clears **O3**.
+
+**Shape witnessed:** THE RECUT — the listener fails and says so flatly; the speaker does not repeat, but cuts the overrun turn down to its one load-bearing sentence and checks it landed; the listener confirms; the speaker closes. Written for any speaker in any language on any subject.
+
+**Surface forms admitted:** none — zero-admission. Checked against the live canon: think, learn, language, need, all, words, say, something, after, talk, day, people, more, then, understand, too, much, again, slowly, now, good, that's all.
+
+**Near-neighbour points:** *non ho capito* against *no entendí* — Italian's spoken past is the compound one where Spanish reaches for the simple past, a systemic remap on the highest-frequency repair line there is; *ancora* for "again" against *otra vez* — and *ancora* is also "still", a polysemy Spanish never has to manage; *troppo* against *demasiado* — selection by absence; *tutto qui* against *eso es todo* — no bridge.
+
+| | English | Italiano |
+|---|---|---|
+| TOM | I think that when you learn a language you don't need all the words — you need the words you can say something with, and after that you talk, and you talk, and you talk, all day, with people, and after that you have more words, and then— | Penso che quando impari una lingua non ti servano tutte le parole — ti servono le parole con cui puoi dire qualcosa, e dopo parli, e parli, e parli, tutto il giorno, con la gente, e dopo hai più parole, e poi— |
+| ARAN | I don't understand. | Non ho capito. |
+| TOM | You don't understand? | Non hai capito? |
+| ARAN | No. Too much. Again — slowly. | No. Troppo. Ancora — lentamente. |
+| TOM | You don't need all the words. | Non ti servono tutte le parole. |
+| ARAN | Yes. Now I understand. | Sì. Adesso ho capito. |
+| TOM | Good. That's all. | Bene. Tutto qui. |
+
+**Why this container:** the overrun is the hold and it is *heard* — the four owned rows are each six words or fewer, so the summit move (cut, don't repeat) costs a learner one short sentence; the hold is built from canon words by repetition, as Scene 5 did.
+
+---
+
+### Scene 18 — *Domani, allora* — **ZERO-ADMISSION** — the arrangement, and the second no
+
+**Owns:** days, times, "I'll be there", "I'm not here" — live canon. **Newly admits:** the third position — after a second no, the proposer produces an option from outside the offered set instead of yielding. **Attested:** 2:135–146, the Cambridge drive: "What are you doing this week? I've got something to do on Tuesday. I'll come up Wednesday then." Now safe material (stage-adjacency retired). Clears **N7** and **O9**.
+
+**Shape witnessed:** THE THIRD POSITION — a proposal meets a no, the counter meets a second no, and the proposer neither yields nor asks "when, then?" but invents a third option the partner had not put on the table; the partner names its cost aloud and accepts. Any diary can walk it.
+
+**Surface forms admitted:** none — zero-admission. Checked: free, Tuesday, something, Thursday, here, tomorrow, there, two, four, hours, going, home, talking, okay, see you. (*Ho un impegno* renders "I have something" — the English content word is canon; the Italian idiom is the natural one.)
+
+**Near-neighbour points:** *non ci sono* for "I'm not here" — locative *ci* again, where Spanish says *no estoy*; *sono lì alle due* — essere for "I'll be there" where Spanish wants *estaré*; *allora* against *entonces* — the set's second connective, no anchor; *alle due* against *a las dos* — near-anchor with the article fused into the preposition.
+
+| | English | Italiano |
+|---|---|---|
+| TOM | Are you free on Tuesday? | Sei libero martedì? |
+| ARAN | Tuesday, no. I have something on Tuesday. | Martedì no. Martedì ho un impegno. |
+| TOM | Thursday, then? | Giovedì, allora? |
+| ARAN | Thursday I'm not here. | Giovedì non ci sono. |
+| TOM | …Tomorrow. | …Domani. |
+| ARAN | Tomorrow? | Domani? |
+| TOM | Tomorrow. I'll be there at two. | Domani. Sono lì alle due. |
+| ARAN | Tomorrow. At two. Four hours going, four hours going home, for two hours of talking with me. …Okay. Tomorrow at two. I'll be here. | Domani. Alle due. Quattro ore per venire, quattro ore per tornare, per due ore di chiacchiere con me. …Va bene. Domani alle due. Io sono qui. |
+
+**Why this container:** the attested arrangement is fast and flat — one-line turns until it closes — so, like the haggle, this scene keeps a low profile on purpose and takes its one hold at the close, where Aran names the cost; eight turns because that is how long the attested exchange takes to reach "Wednesday then".
+
+---
+
+### Scene 19 — *Tre anni* — **ZERO-ADMISSION** — **MINT** on 1:396–400 — your read-back was wrong
+
+**Owns:** numbers, "still", the read-back line. **Newly admits:** the correction *inside* the confirm — the listener reads a number back wrong, the speaker corrects it in the same breath as confirming, the listener reads it back again. **Attested:** the number and its correction are Aran's own (1:396–400: "16 months apart… it's actually longer now… less than four years, probably about three years now"); the partner's wrong read-back is the **MINT**. Clears **O4**.
+
+**Shape witnessed:** THE READ-BACK CORRECTED — a figure is read back wrong; the correction arrives inside the confirmation, not as a rebuke ("Three. Not two — three"); the listener re-reads it and adds the question the corrected figure makes possible; the speaker holds; the listener closes on the figure alone.
+
+**Surface forms admitted:** none — zero-admission. Checked: day, one, two, three, then, after, no more, that, all, years, still, there, all, can, say, slowly, today, want, people, see.
+
+**Near-neighbour points:** *lo so dire* — sapere for "can" (know how to), where Spanish *sé decirlo* matches — an anchor placed on the scene's key claim; *ancora lì* — *ancora* as "still" (Spanish *todavía*), the polysemy from Scene 17 in its other sense; *piano* for slowly against *despacio* — selection by absence.
+
+| | English | Italiano |
+|---|---|---|
+| ARAN | Day one. Then day two. And after day two — no more. That was all. | Giorno uno. Poi giorno due. E dopo il giorno due — basta. Basta così. |
+| TOM | For two years. | Per due anni. |
+| ARAN | Three. Not two — three years. | Tre. Non due — tre anni. |
+| TOM | Three years. And it's still there? | Tre anni. Ed è ancora lì? |
+| ARAN | Still there. Not all of it. But I can say it — slowly, today, but I can say it. Day one, day two, three years — and it's still there. That's what I want people to see. | Ancora lì. Non tutto. Ma lo so dire — piano, oggi, ma lo so dire. Giorno uno, giorno due, tre anni — ed è ancora lì. È questo che voglio far vedere alla gente. |
+| TOM | Three years. | Tre anni. |
+
+**Why this container:** the correction sits in a four-word turn and the scene closes on a two-word echo, which is the corpus's own way of landing a number (2:132–134); the one hold is Aran's and is built by repetition of words the scene already owns.
+
+---
+
+### Scene 20 — *C'è tanta roba* — **ZERO-ADMISSION** — the stacked commission
+
+**Owns:** question words, "a lot", "start with" — live canon; question-as-handover (Scene 5). **Newly admits:** the stacked commission accepted in one word — five questions in a breath, an admission that it is a lot, a one-word acceptance, and the acceptor ordering the stack aloud before he starts. **Attested:** 1:293–297 — "how did YOU stumble across it? And why…? And when…? to what extent…? how often…? There's a lot in there." / "Yeah." / "isn't there just, yeah." / "Yep." Clears move 3 at its full attested size.
+
+**Shape witnessed:** THE STACKED COMMISSION — one partner hands over a pile of questions at once and says so; the other accepts the whole pile with one word, then sets its order aloud, and the commissioner picks where to begin. Any briefing between two people can walk it.
+
+**Surface forms admitted:** none — zero-admission. Checked: how, find, when, where, much, time, every, day, often, a lot, there, isn't, first, then, after that, say, good, talk, that's all, start with.
+
+**Near-neighbour points:** *roba* — the title word is a false friend in reverse: Spanish *ropa* is clothes; *quanto spesso* against *con qué frecuencia* — no Spanish adverb, selection by absence; *prima il come, poi il quando* — question words nominalised with the article, where Spanish *primero el cómo* matches, an anchor; *comincia dal come* — *da+il* fused, the preposition-article system Spanish only half has.
+
+| | English | Italiano |
+|---|---|---|
+| TOM | How did you find it? When? Where? How much time, every day? How often? — There's a lot there. | Come l'hai trovato? Quando? Dove? Quanto tempo, ogni giorno? Quanto spesso? — C'è tanta roba, lì. |
+| ARAN | Yes. | Sì. |
+| TOM | There is, isn't there. | Eh, sì. |
+| ARAN | Yes. A lot. So — first, how. Then when. Then how much, and how often. And after that you can say: but is it good? And I say: I talk. That's all. | Sì. Tanta. Allora — prima il come. Poi il quando. Poi il quanto, e il quanto spesso. E dopo puoi dire: ma è buono? E io dico: parlo. Tutto qui. |
+| TOM | Start with how. | Comincia dal come. |
+
+**Why this container:** the attested acceptance is one word and the commissioner's "isn't there just" is three; the scene's hold is the ordering turn, and it is built by repeating the question words the cascade already owns.
+
+---
+
+### Scene 21 — *Pysgod* — the specimen
+
+**Owns:** the live-demonstration frame (Scene 15); the flagged claim. **Newly admits:** being the specimen — one partner turns the other into the live experiment, the specimen thinks aloud instead of performing, and the thinking-aloud becomes the finding. **Attested:** 1:322–331 — "I told you the Welsh for fish was pysgod… pysgod, pysgod" / "Now I'd already remembered that a little bit, cause I was thinking 'pys', is it a bit like puss? and cod is a fish, isn't it?" / "If we leave that, and I come back in a couple of hours…" Closes in 3–4 turns. Subject: desirable difficulty — the method at the precision it has.
+
+**Shape witnessed:** THE SPECIMEN — the experimenter names the claim and starts the demonstration on the partner; the partner, instead of performing, narrates what is happening in his own head; the experimenter treats that narration as the evidence and *withholds the pay-off* deliberately; the specimen pokes at the withholding. Any demonstrable claim about a person can walk it.
+
+**Surface forms admitted:** *in gallese*, *ripetere*, *formare una memoria*, *troppo facile*, *mezzo preso*, *un gancio*, *costare qualcosa*, *lasciarlo lì*, *tra due ore*, *smettila*. Availability only. *Pysgod*, *puss*, *cod* are the specimen's own words and stay as they are — Tom's hook is an English hook, and pretending otherwise would falsify the demonstration.
+
+**Near-neighbour points:** *ti faccio ripetere* — causative *fare* + infinitive, where Spanish *te hago repetir* matches, an anchor; *gancio* against *gancho* — the -cio/-cho shift, the same word wearing a different consonant; *smettila* — *smettere* + *la*, no Spanish twin (*déjalo*, *para*), selection by absence; *da solo* against *solo* — the preposition Spanish drops.
+
+| | English | Italiano |
+|---|---|---|
+| ARAN | Fish, in Welsh: pysgod. Now, if I just make you say it — pysgod, pysgod, pysgod — you're not making a memory. It's too easy. | Pesce, in gallese: pysgod. Ora, se ti faccio solo ripetere — pysgod, pysgod, pysgod — non stai formando una memoria. È troppo facile. |
+| TOM | Pysgod. …Actually I've half got it already. "Pys" — a bit like puss, the cat. And "cod" is a fish. Pysgod. | Pysgod. …In realtà l'ho già mezzo preso. «Pys» — un po' come puss, il gatto. E «cod» è un pesce. Pysgod. |
+| ARAN | There. Look at what you just did. I didn't ask you for that. You went looking for a hook, on your own, and the hook cost you something — and that's the memory, not the word. Now: if we leave it there, and in two hours I come back and ask you the Welsh for fish, it'll be hard. And the hard is the point. | Ecco. Guarda cos'hai appena fatto. Non te l'avevo chiesto. Sei andato a cercarti un gancio, da solo, e il gancio ti è costato qualcosa — e la memoria è quella, non la parola. Ora: se lo lasciamo lì, e tra due ore torno e ti chiedo il gallese per pesce, sarà difficile. E il difficile è il punto. |
+| TOM | So you're going to leave it. | Quindi lo lasci lì. |
+| ARAN | I'm going to leave it. | Lo lascio lì. |
+| TOM | Pysgod. | Pysgod. |
+| ARAN | Stop that. | Smettila. |
+
+**Why this container:** the corpus's version is one long Aran turn with Tom's mnemonic muttered inside it (1:324–328); giving the mnemonic its own turn is what makes the specimen visible, and the tail of one-word turns is the attested shape of a withheld pay-off (2:132–134).
+
+---
+
+### Scene 22 — *Come lo sappiamo?* — the premise audit, received as a gift
+
+**Owns:** the razor's home ground (Scene 8); the flagged claim. **Newly admits:** the premise audit — mid-flow, the partner asks for the ground under the favourite claim, and the claim-holder downgrades honestly from "proven" to "we think" and names the audit as the right question. **Attested:** 1:336–341 — "How do we know that? I sense that's true. And it seems to work? But where are we with that? …are we mapped out in proper peer reviewed studies, or can we safely say that is a proven scientific fact…" Clears **N14** and move 23; the honest downgrade is the summit's version of **O5**.
+
+**Shape witnessed:** THE PREMISE AUDIT — a claim both partners like is stopped and asked for its grounds; the holder separates what is established from what is felt, states the gap without defending it, welcomes the question, and the downgraded claim ("we think") is accepted as the working floor. Any shared belief can walk it.
+
+**Surface forms admitted:** *la fatica*, *sembra funzionare*, *a che punto siamo*, *gli studi*, *peer review* (loanword), *mappato*, *fatto scientifico dimostrato*, *una sensazione*, *attento*, *una bandierina*, *abbastanza*, *convivere con*. Availability only.
+
+**Near-neighbour points:** *a che punto siamo* against *en qué punto estamos* — the essere/estar remap on the audit's own question; *fatica* — the flagship false friend, carrying the claim under audit; *convivere con* against *vivir con* — Italian keeps the *con-* prefix on the verb; *è da dove parte* against *es de donde parte* — an anchor to close on.
+
+| | English | Italiano |
+|---|---|---|
+| TOM | Wait. How do we know that? | Aspetta. Come lo sappiamo? |
+| ARAN | Know what? | Come sappiamo cosa? |
+| TOM | That it's effort that makes the memory. I feel it's true. It seems to work. But where are we, actually — is it in the studies, peer-reviewed, mapped out, can we say "proven scientific fact"? Or is it one man in California with a good idea, and us with a feeling? | Che è la fatica a fare la memoria. Io sento che è vero. Sembra funzionare. Ma a che punto siamo, davvero — è negli studi, con la peer review, tutto mappato, possiamo dire «fatto scientifico dimostrato»? O è un signore in California con una buona idea, e noi con una sensazione? |
+| ARAN | …It's closer to the man in California. Bjork says it, and he's careful, and the work is good. Proven, in the sense you mean? No. What I've got on top of that is me — one person, testing on himself for years. That's not proof, that's a story with a flag on it. But the question you just asked is the right one, and nobody in this field asks it enough. So — no. We don't know. We think. | …È più vicino al signore in California. Lo dice Bjork, ed è uno attento, e il lavoro è buono. Dimostrato, nel senso che intendi tu? No. Quello che ho in più è me stesso — una persona, che si testa da sola da anni. Non è una prova, è una storia con una bandierina sopra. Ma la domanda che hai appena fatto è quella giusta, e in questo campo nessuno la fa abbastanza. Quindi — no. Non lo sappiamo. Lo pensiamo. |
+| TOM | "We think" I can live with. | Con «lo pensiamo» posso convivere. |
+| ARAN | "We think" is where every good thing starts. | «Lo pensiamo» è da dove parte ogni cosa buona. |
+
+**Why this container:** the audit is a four-word question and the answer is the hold, which is the corpus's own shape for it (1:336 → 1:339, a short probe and a long honest landscape); "Know what?" at two words is the minimal turn and gives the set another `A → token → A` sandwich with Tom resuming.
+
+---
+
+### Scene 23 — *Premi play* — the premise refused
+
+**Owns:** question-and-answer floor; the flat no of Scene 8. **Newly admits:** the premise refused — a question arrives carrying a premise, the answer refuses the premise flat rather than answering inside it, and the questioner drops the premise instead of defending it. **Attested:** 2:96–104 — "but you have to then, before they press play, work out what their learning goals are?" / "No, not necessarily. I think you just press play. When they stop play — we notice… we notice it's been a month… If they come back the next day, we can just press on." Clears **O5** in its plain form.
+
+**Shape witnessed:** THE PREMISE REFUSED — the premise inside a question is denied in one word; the questioner checks the denial is real; the alternative is supplied whole, with its mechanism; the questioner lets the premise go aloud. The learner-side skill is the last move: dropping your own premise without a fight. Any "but surely first you have to…" can walk it.
+
+**Surface forms admitted:** *premere play* (loanword), *gli obiettivi*, *accorgersi*, *fermarsi*, *dopo un mese*, *rimettere davanti*, *andare avanti*, *compilare un modulo*, *stare attenti*. Availability only.
+
+**Near-neighbour points:** *accorgersi* — no Spanish cognate (*darse cuenta*), selection by absence on the scene's key verb; *premere* against *pulsar* — absence; *modulo* — a false friend (Spanish *módulo* is a module; a form is *formulario*); *ce ne siamo accorti* — the double clitic *ce ne*, the flagship Spanish void, on the line that carries the mechanism.
+
+| | English | Italiano |
+|---|---|---|
+| TOM | But before they press play, you have to work out what they want. Their goals. | Ma prima che premano play devi capire cosa vogliono. I loro obiettivi. |
+| ARAN | No. | No. |
+| TOM | No? | No? |
+| ARAN | No. They press play. That's it. What we do is notice when they stop. They come back after a month — we noticed. So we put a few of the early sentences back in front of them. They come back the next day — we just carry on. Nobody fills in a form. Nobody has a goal. They press play, and the thing that's paying attention is us, not them. | No. Premono play. Basta. Quello che facciamo noi è accorgerci quando si fermano. Tornano dopo un mese — ce ne siamo accorti. Allora gli rimettiamo davanti qualche frase delle prime. Tornano il giorno dopo — andiamo avanti e basta. Nessuno compila un modulo. Nessuno ha un obiettivo. Premono play, e la cosa che sta attenta siamo noi, non loro. |
+| TOM | …Okay. No form. | …Va bene. Niente modulo. |
+| ARAN | No form. Press play. | Niente modulo. Premi play. |
+
+**Why this container:** the attested refusal is two words and the alternative is one run; "No." / "No?" / "No." is the shortest three-turn stretch in the set and lands the refusal on the learner three times before the mechanism arrives.
+
+---
+
+### Scene 24 — *Solo uno a uno* — **MINT** on 2:170–172 — the bare no
+
+**Owns:** the flat refusal (Scenes 8, 23); the flagged account. **Newly admits:** the bare no, held — a request meets "No" with no reason attached, is pressed, meets "No" again, and only when the asker stops pressing does the account arrive. **Attested:** the *position* and its reason are Aran's own — "I now basically only agree to do one on one stuff — because I know in a one on one environment… I know we can get that to work" (2:170–172), and the bed-and-breakfast case (2:178–184) — but in the corpus they arrive together, as monologue. **The bare no held across two turns, and Tom pressing, are the MINT.** Clears **O1**.
+
+**Shape witnessed:** THE BARE NO — request → "No" → check → "No" → one press → the no restated with its scope → only then the account, whole → the asker accepts → the substitute, if any, comes last and from the refuser. The learner-side skill is surviving turns two and four with nothing in hand. Written for any ask that gets a flat no.
+
+**Surface forms admitted:** *un gruppo di dodici*, *nemmeno*, *tenerci*, *pagano bene*, *uno a uno*, *ormai*, *da quando*, *chiunque sia*, *qualunque sia*, *la stanza*, *giornate storte*, *cadere addosso*. Availability only.
+
+**Near-neighbour points:** *nemmeno* against *ni siquiera* — selection by absence; *ci tengono* — *tenerci a*, the *ci*-construction with no Spanish twin, on the line that makes the ask hard to refuse; *chiunque sia / qualunque sia* + subjunctive against *quienquiera que sea* — matched mood, different word; *digli* against *dile* — imperative plus clitic, an anchor to close on.
+
+| | English | Italiano |
+|---|---|---|
+| TOM | There's a school that wants you. Five days, a group of twelve. Will you do it? | C'è una scuola che ti vuole. Cinque giorni, un gruppo di dodici. Lo fai? |
+| ARAN | No. | No. |
+| TOM | No? | No? |
+| ARAN | No. | No. |
+| TOM | Not even for a week? They're keen. They'd pay properly. | Nemmeno per una settimana? Ci tengono. Pagano bene. |
+| ARAN | No. One to one. That's all I say yes to now. | No. Uno a uno. È l'unica cosa a cui dico di sì, ormai. |
+| TOM | Since when? | Da quando? |
+| ARAN | Since I understood what a group can do to a week. One to one, I know it works — whoever they are, whatever the room, I know we get there. A group — four people in a bed and breakfast for five days, one of them has two bad days, and all of it lands on the other three. I'd need to know who's in the room before I said yes, and I never do. So: no. Not the school. Not this year. | Da quando ho capito cosa può fare un gruppo a una settimana. Uno a uno, so che funziona — chiunque sia, qualunque sia la stanza, so che ci arriviamo. Un gruppo — quattro persone in un bed and breakfast per cinque giorni, uno di loro ha due giornate storte, e tutto gli cade addosso agli altri tre. Dovrei sapere chi c'è nella stanza prima di dire sì, e non lo so mai. Quindi: no. Non la scuola. Non quest'anno. |
+| TOM | …I'll tell them no. | …Gli dico di no. |
+| ARAN | Tell them one to one. Then yes. | Digli uno a uno. Allora sì. |
+
+**Why this container:** ten turns — over the delivered range, and named: the shape *is* the count of bare turns before the account, and the corpus attests nothing to derive it from; the hold is the account, heard, and the two owned "No." rows are the cheapest summit turns in the set after Scene 15's cast line.
+
+---
