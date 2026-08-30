@@ -414,3 +414,109 @@ one-turn discipline returns: the accept has to be produced before "the next stop
 health 2.7 f3 with the learner in the other seat (the doctor holding: "A lot of people do… But the
 full course, every time. Deal?" / "Deal.").
 **Smoke test:** passes; the sanction-holder who does not explain is universal.
+
+---
+
+## 5. O7 — The native discloses worry or difficulty
+
+**The shape.** `N204 Disclosure received`:
+
+| index | name | family |
+|---|---|---|
+| 1 | business in progress | — |
+| 2 | disclosure — the other party steps out of the frame, unbidden | — |
+| 3 | acknowledge without fixing | **F204** |
+| 4 | the discloser closes the aside | — (optional, pivot-capable) |
+| 5 | resume | F1 / F21 |
+
+**Why not an existing node.** N12 Trouble-and-advice is *the learner's* trouble, answered by an
+elicit and a remedy — `g110`→`g111` — and the store calls that pair the starkest absence of sympathy
+in the canon. N11 positions 5–6 (normalise+tag, emphatic agree) are a symmetric move on a difficulty
+the *learner* has disclosed. Health's F102 *That's normal* is asserted downward, from the knowledge
+seat — a fix-lite. Nothing in the store has the **native** disclose and the learner *receive* without
+doing anything about it. The recovery is half a withholding, which is why it is hard to attest: the
+thing to own is a turn that is short and then a turn that is business.
+
+**One new move. F204 "That sounds hard"** — *The responder receives an unbidden disclosure, marks it
+as heard — a receipt, a repetition, a matched line — and neither fixes, advises, contradicts,
+normalises from above nor withdraws.* Distinct from F102 (asserts normality from the knowledge seat),
+F17 (contradicts), F18 (normalise and seek agreement), F12 (assesses). **The smoke test changed this
+move.** The test was first written as "does not match with a disclosure of one's own"; in many columns
+the matched line *is* the acknowledgement, so the exclusion was wrong and is gone. What survives every
+column is the exclusion of fixing and of withdrawing. Method Pod Scene 36 is the sibling mint (repeat
+it back, take the bare no, name the doubt as allowed); pod-0 attests nothing.
+
+**The asymmetry explains `g110`→`g111`.** At a counter, the customer's trouble gets *processed* —
+that is what a counter is for — so the customer's disclosure becomes an elicit and the corpus is
+right to write it that way. The only disclosure that gets to be an aside at a counter is the one from
+behind it. That is why the asymmetric arm has the pharmacist disclose, not the customer, and why the
+symmetric arm cannot sit on the chemist's at all.
+
+### W207 — The acquaintance — symmetric
+
+**Hangs off** W5 step 6, `g30` "I'm from France. I've been here for two years." — the corpus's own
+disclosure-shaped line, which the walk passes straight over (`g31` "This is a lovely city. What do you
+do?"). **The learner is James.** **Register:** symmetric — two strangers, nothing held by either; the
+discloser owns the frame and gives it back herself.
+
+| | |
+|---|---|
+| James `g29` | I'm from Manchester, but I live in London now. And you? |
+| Anna `g30` | I'm from France. I've been here for two years. |
+| *— the fork. W5's arm:* `g31`*, James, "This is a lovely city. What do you do?" The arm minted here:* | |
+| Anna | Two years. Longer than I meant to. I miss home, some days. |
+| James | I bet. It's a long way. |
+| Anna | It is. Anyway — and you? Holiday, or work? |
+| James `g35` | I'm on holiday here with my wife and children. We're having a lovely time. |
+
+**Note what the corpus's own next line would do here.** `g31` — "This is a lovely city" — straight
+after "I miss home" is a contradiction (F17 on the world) and "What do you do?" is a topic change
+over the top of it. Both are the wrong arm, and both are the very next row. The mint is one learner
+turn: a receipt and a plain fact, no plan. Then the discloser closes it — "anyway" — and hands the
+question back, and the resume is `g35`'s own text. Six turns, one minted learner turn.
+
+**Recovery:** acknowledge without fixing, then continue.
+**The wrong arms:** fix ("You should go back for a visit"); upgrade the city over her (`g31`);
+change the subject (`g31` again); over-match from your own life until it is about you.
+**Survivability:** **S206** — *a disclosure landing mid-business (N204) is attemptable only if
+resuming the business after a frame shift is owned (P6 / F21 / the next ticket)*. The acknowledging
+turn presupposes nothing — it is a token; what a learner cannot do without owning the resume is *get
+back*, and the corpus attests the pivot only as chaining (F11, F21). Recovery attested never in
+pod-0 (`g110`→`g111` goes the other way); Method Pod Scene 36 (mint). Class: relational.
+**Attestation:** minted from nothing.
+**Smoke test:** passes, with the change to F204 recorded above.
+
+### W208 — The chemist's — asymmetric
+
+**Hangs off** W12 step 6, `g115` — the dosage instruction, mid-consultation. The store sites O7
+here: "the register shift is largest against a transactional frame, and the scene is already about a
+body". **The learner is the Customer.** **Register:** asymmetric — the pharmacist holds the counter,
+the record and the queue; only she gets to step out of frame, and when she does the learner's seat
+offers two wrong exits (leave; help) and one right one (stay, and continue).
+
+| | |
+|---|---|
+| Customer `g114` | How often should I take the paracetamol? |
+| Pharmacist `g115` | One every four to six hours, no more than eight in a day. |
+| *— the fork. W12's arm:* `g116`*. The arm minted here:* | |
+| Pharmacist | Sorry — I'm all over the place today. We're one down, and I've been on since seven. |
+| Customer | Since seven? That's a long day. |
+| Pharmacist | It is. Anyway. |
+| Customer `g116` | Are they all right to take with food? |
+| Pharmacist `g117` | Yes, with or after food is best. |
+
+**What the seat makes hard.** From below, the disclosure sounds like a signal to go — and it is not
+one. The learner's temptation is to withdraw ("I'll be quick", "I'll come back later"), which treats
+an aside as a refusal, or to fix upward ("You should sit down"), which is not theirs to do, or — the
+seat's signature error, which health's patients make on every page (1.9 f3 "sorry to be a nuisance")
+— to apologise for existing. The right arm is the shortest: a receipt, and then the question that was
+coming anyway. **`g116` and `g117` are the resume, verbatim.** Seven turns, one minted learner turn.
+
+**Recovery:** acknowledge without fixing, then continue — and *continuing is the respectful move*.
+**The wrong arms:** withdraw; fix upward; self-blame (P101 from the wrong side); match from below
+("I've been up since five myself") until it competes.
+**Survivability:** S206, with the resume already in the corpus (`g116`).
+**Attestation:** minted from nothing in this direction. Health's eight O7 flows are the mirror —
+patient discloses, professional receives — and in most of them the professional fixes, which is the
+health pod's finding, not this overlay's gap.
+**Smoke test:** passes; the counter-hand's aside and the customer's two wrong exits are universal.
