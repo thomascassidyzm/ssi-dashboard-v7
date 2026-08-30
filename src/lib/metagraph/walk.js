@@ -28,8 +28,17 @@ export const STEP_KINDS = {
  * `refSpace` names the reference space the graph's attestations are written in;
  * only rows in that space can map, and rows outside it are honestly UNMAPPED.
  */
+/**
+ * The graph's `g<n>` references are `pod-0`'s `global_order` and nobody else's.
+ * `pod-1` and `pod-0.5` are separate slates whose row numbers collide with them
+ * by accident, so mapping them through this graph would invent coverage out of
+ * an off-by-one. Any slug but `pod-0` walks in its own reference space and every
+ * line comes back UNMAPPED, which is the true answer.
+ */
+export const GRAPH_REF_SLUG = 'pod-0'
+
 export function walkFromCanonicalRows (rows, graph, opts = {}) {
-  const refSpace = opts.refSpace || 'g'
+  const refSpace = opts.refSpace || (opts.slug && opts.slug !== GRAPH_REF_SLUG ? opts.slug : 'g')
   const mapsToGraph = refSpace === 'g'
   const scenes = []
   const steps = []
