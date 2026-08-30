@@ -1,0 +1,25 @@
+{
+"seed_repairs": [
+ {"seed":5,  "tier":"CONFIDENT","defect":"seed omits its own card 'පුහුණු වෙන්න' (to practise) entirely; its English says 'practise'","new":"මම වෙන කෙනෙක් එක්ක කතා කිරීම පුහුණු වෙන්න හදනවා.","src":"use i4"},
+ {"seed":10, "tier":"CONFIDENT","defect":"'පූර්ණය' hapax (0 legos/0 phrases) used as adjective 'whole'; course teaches the -ම clitic (card S0010L03 'ඒ වාක්‍යයම')","new":"මම දන්නේ නෑ පුළුවන්ද කියලා මතක් කරගන්න ඒ වාක්‍යයම.","src":"use i3"},
+ {"seed":15, "tier":"CONFIDENT","defect":"neither own card realised: 'මා එක්ක' (with me) and 'සහ' (and) both unexpressed; 'මට' does double duty so the wanter is ambiguous","new":"සහ මට හෙට ඔයා මා එක්ක ඉංග්‍රීසි කතා කරන්න ඕනේ.","src":"use i2"},
+ {"seed":26, "tier":"CONFIDENT","defect":"'ආසන්නෙන්' hapax; card 'මට ආසයි දැනෙන්න' (I like feeling) unexpressed - seed says 'it feels to me'","new":"මට ආසයි දැනෙන්න ලෑස්තිව ඉන්නවා වගේ යන්න.","src":"use i3"},
+ {"seed":31, "tier":"CONFIDENT","defect":"'මත්' hapax non-word for 'me' (course teaches 'මා'); 'අද රෑ' where card S0031L02 teaches 'මේ රෑ'","new":"ඔයාට මේ රෑ මා එක්ක කතා කරන්න ඕනේ හිතුනා.","src":"use i2"},
+ {"seed":36, "tier":"CONFIDENT","defect":"'කඩා කනවා' garbled for 'interrupt' (both tokens hapax); course teaches 'බාධා කරන්න' (card S0036L02)","new":"අපට කතාව බාධා කරන්න ඕනේ නෑ.","src":"use i3"},
+ {"seed":62, "tier":"MODERATE","defect":"'ඒ එකේ' (= in that one) does not mean 'at the same time'; own card S0062L01 is 'ඒ එකම වෙලාවේ'. No orphan token, so the hapax test cannot see this one","new":"ඒ එකම වෙලාවේ ඔයාට උදව් කරන්න පුළුවන්ද කියලා මම දන්නේ නෑ.","src":"composed: card S0062L01 verbatim + card S0010L01 'මම දන්නේ නෑ' + seed's own remainder"},
+ {"seed":71, "tier":"MODERATE","defect":"'සත්‍යය' where card S0071L02 teaches 'සත්‍ය'; card S0071L04 'දෙනවා' (let) unexpressed; 'ඇහෙනවා කරන්න' is not a grammatical complement","new":"අපිට කිසිම කෙනෙකුට සත්‍ය ඇහෙනවා දෙන්න ඕනේ හිතුනේ නෑ.","src":"composed from cards S0071L02/L03/L04 + the course's own 'ඕනේ හිතුනේ නෑ'"},
+ {"seed":82, "tier":"CONFIDENT","defect":"'බලාගන්නේ' hapax; card S0082L01 teaches 'බලාගෙන ඉන්න'","new":"මම යන්නේ නෑ බලාගෙන ඉන්න ඔයාට. ඇයි?","src":"use i1 for clause 1; 'ඇයි?' left untouched"},
+ {"seed":87, "tier":"CONFIDENT","defect":"'නාගෙ' non-word for 'know' (0 legos/0 phrases); course teaches 'දන්නේ නැති'","new":"ඒ අය මම දන්නේ නැති මිනිස්සු.","src":"use i1"},
+ {"seed":88, "tier":"CONFIDENT","defect":"'නාගෙ' + 'කෙනාට' both hapax; card S0088L01 'කතාබහ කරන්න' unused","new":"මම ලෑස්ති නෑ කතාබහ කරන්න මම දන්නේ නැති මිනිස්සු එක්ක.","src":"use i1"},
+ {"seed":89, "tier":"CONFIDENT","defect":"'ටික කාලෙ' (= little time) for 'short time' - card S0089L03 teaches 'කෙටි'; 'ගොඩක්' where card S0089L02 teaches 'බොහෝ'","new":"මම හිතනවා මම කළා බොහෝ කෙටි කාලයකින්.","src":"use i3"},
+ {"seed":92, "tier":"CONFIDENT","defect":"'ටිකක් ඊළඟ කාලෙ' = 'a little NEXT period', not 'for a while'; card S0092L02 teaches 'ටිකක් වෙලාවක්' and S0092L01 'දිගටම කරන්න'","new":"මට ආසයි දිගටම කරන්න මේක ටිකක් වෙලාවක්.","src":"use i2"},
+ {"seed":95, "tier":"CONSISTENCY","defect":"'බසියෙ' (real but hapax, locative) where card S0095L02 teaches 'බස් එක'; not corruption","new":"ඔයා ලෑස්තිද ගෙදර යන්න ඊළඟ බස් එකෙන්?","src":"use i2"},
+ {"seed":97, "tier":"CONFIDENT","defect":"'ඕනෑ ඕනෑකමට ලෑස්තිය' reduplicated garbage, 2 hapax tokens; 'to go' unexpressed","new":"ඔව් මම ලෑස්තියි යන්න ඔයා ඕනේ වෙද්දිම.","src":"use i1"},
+ {"seed":99, "tier":"CONFIDENT","defect":"'ඔයාම ඔයාගෙන්' double-marks the reflexive (course teaches 'ඔයාටම'); 'නොකරන' hapax literary negation; 'අහන්න' re-introduces the ask/hear ZUT collision the course avoided by teaching 'විමසන්න'","new":"ඔයා විමසන්න ඕනේ ඔයාටම ඇයි ඒක ක්‍රියා කරන්නේ නැද්ද කියලා.","src":"use i2"}
+],
+"audio_repairs": [
+ {"lego":"S0069L02","defect":"headword voiced as 'ලිහිල්ල' (loose) - a pure hapax existing ONLY in this clip's text; card, seed and all 8 phrases use 'තරුණ' (young). Learner reads 'young', hears 'loose people'","new_text":"ඉංග්‍රීසිෙන්. 'තරුණ'. 'තරුණ මිනිස්සු එක්ක ඉගෙනගන්න ආසාවෙන්නවා' ඉතින්. :","tier":"CONFIDENT"},
+ {"lego":"S0041L02","defect":"'මමා' voiced (corrupt spelling of 'මම'), confirmed as its own token in word_boundaries","new_text":"ඉංග්‍රීසිෙන්. 'දැනෙන්නේ ගන්නවා'. 'මම ඉංග්‍රීසි කතා කරන්නේ ගැන ටිකක් වෙහෙස දැනෙන්නේ ගන්නවා' ඉතින්. :","tier":"CONFIDENT"},
+ {"lego":"S0076L04","defect":"'මමා' voiced, confirmed in word_boundaries","new_text":"ඉංග්‍රීසිෙන්. 'කොපමණ ඉගෙනගත්ත'. 'මම ඒ ගැන කොපමණ ඉගෙනගත්ත ගැන ගොඩාක් සතුටු' ඉතින්. :","tier":"CONFIDENT"}
+]
+}
