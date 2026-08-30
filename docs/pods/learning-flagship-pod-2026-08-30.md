@@ -328,3 +328,81 @@ counterexample-absorbed is the hinge: the strongest statement in the chapter bel
 person who offered it as a refutation, and the text says so.
 
 ---
+
+### Chapter 4 — *Màs* — whether a name is ever worth buying early
+
+**Point:** they agree on almost everything about names — scene first, label as agreement, one
+distinction per blink — and the residue is a real fork: Aran buys the name while the scene is
+hot, Tom prices it last, and the chapter ends on the instrument, not on a winner.
+
+**Shapes traversed:** the recovery of Chapter 1's parked fight, m19 second half, by phrase ·
+**N16 precision haggle** — walked honestly to NO convergence, the offers left on the table ·
+reformulation, m1, **refused and corrected** · challenge mid-story, m5 · **N15 / O8 parked with
+teeth** — parked on the telemetry, both still predicting a win · joint construction, m2 (the
+agreement half, built fast so the residue is visible).
+
+**Holds (heard):** turn 5 (Aran, the malteser item spoken whole, 61), turn 9 (Aran, the account
+number, 68), turn 12 (Tom, the four stages, 74), turn 16 (Tom, the name closing the question,
+59), turn 19 (Aran, the trophy, 49), turn 27 (Tom, what the telemetry would show, 55). The owned
+moves — *Now* (1), *No. Wrong fight* (3), *That's the fork* (3), *Telemetry* (1), *One of us
+will* (4) — are all short.
+
+**Sources & mints:** the malteser/watermelon/chair/car items, "the scientific name: MÀS. Unit:
+cilogramau", scene-then-label, and the two-option blink are archive §DysgApp, describing Aran's
+own shipped items; Tom's four stages, the name-as-fact with its own node, the both-ways drill
+and the dropped mark are the naming ruling verbatim (mission, amended 2026-08-27 — "some names
+never arrive" struck by his own hand, which Aran is given the pleasure of pointing out);
+syllables-times-concreteness and "oscillate" are the anti-vocabulary rule; "testable on
+telemetry rather than arguable" is the archive's own sentence about exactly this fork. MINTED:
+Aran's account-number argument and the trophy argument — constructions FOR his side, resting on
+the DysgApp design itself and his teaching years, because the corpus never records him defending
+the purchase; flagged accordingly in §0. The haggle's two offers are mine. Nothing here decides
+the fork, including me.
+
+| | |
+|---|---|
+| TOM | Now. |
+| ARAN | Now? |
+| TOM | The parked one. You said you wanted to fight about the label arriving last, and you've just spent two chapters agreeing with me, so let's have it while you're weakened. |
+| ARAN | I've been agreeing with you about everything except the bit you care about. Scene first — agreed, always, no label before the felt thing. One distinction per blink — agreed; every item I've ever built is two options, one difference. The label is an agreement, not a derivation — agreed, you can have that too. |
+| TOM | So describe the item. The physics one. Say it exactly. |
+| ARAN | Flick a malteser off the table. Now flick a watermelon. Push a chair across the room, now push a car. Which one fought back? That's the scene, that's the felt floor, ten-year-old's body scale. And then — same session, next screen — "the scientific name: màs. Unit: cilogramau." And the child has the word. |
+| TOM | Next screen. |
+| ARAN | Next screen. While their thumb still remembers the watermelon. |
+| TOM | And that's where we split. |
+| ARAN | And before you tell me why, let me sell it properly, because your own subscription argument from ten minutes ago is my best witness. A distinction with no name has no address. You can't bill the maintenance on it. You can't ask the child about it on Thursday, they can't ask each other, the teacher can't reach it, it can't come up at tea. The name is the account number for the standing order — and you, of all people, want the direct debit set up while the scene is still warm, because that's when it's cheapest. |
+| TOM | That's genuinely good. It's wrong, but it's the best wrong version I've heard, including mine. |
+| ARAN | Your turn, then. The rule. |
+| TOM | Four stages, in order. Grounded experience — your malteser, no quarrel. Understanding of the quantity — the child can use the thing, predict with it, before anyone says a word over it. Drill of the quantity — it comes out under pressure, in their own words, "the heavy one fights back". And LAST, the equivalence: by the way, the thing you already own, examiners call it mass — and you drill that both directions, because the dropped mark is the child who owns the thing and goes blank at the word. The name is a fact. An agreement. It gets its own slot, joined to the built thing — it is never allowed to pretend it's the building. |
+| ARAN | You struck your own harder rule, though. Say that part. |
+| TOM | I did. I used to say some names never arrive at all. That's gone — struck it myself, because the exam speaks the agreement layer and full marks live there. So we already agree the name gets bought. |
+| ARAN | Which makes this a fight about the delivery date, and you're treating it like a fight about the soul. |
+| TOM | Because the delivery date IS the soul. Buy the name early and the name starts answering the questions. You ask the child about the watermelon and the word comes back — "màs" — and from the outside you cannot tell whether that's the distinction speaking or the label doing an impression of it. The word is cheap to say and expensive to be fooled by. Every natural sequence we walked — the bird, the note, the orange — buys the label after stability, and I don't think nature is being sentimental. |
+| ARAN | The child in the classroom isn't in nature. They're in a school, where the word is the currency of the whole building, all year. |
+| TOM | Whale song, though. Having the word "whale song" doesn't let you hear it. |
+| ARAN | And nobody hands out words for things below the bottom rung — my scene puts the rung in first. That's what the malteser is FOR. And there's a thing you've never once weighed, because it isn't in any of your ledgers: the word is a trophy. A ten-year-old who says "inertia" at tea on Thursday is showing the family a thing they caught. That word does more for the standing order than any schedule of yours — pride pays subscriptions. |
+| TOM | So what you're saying is the name is scaffolding, and scaffolding comes down. |
+| ARAN | No. Wrong fight. Scaffolding comes down — the name stays up forever. I'm saying the name is part of the building. You're the one treating it as decoration bolted on for the inspectors. |
+| TOM | Taken. Then let's haggle the date, since you've made it a delivery problem. I'll come to: after the first successful transfer — the child uses the distinction on something the scene never showed them, then the word, same week. |
+| ARAN | Too late. End of the same session. The scene, the play, and the word goes on it while it's hot — one session, closed. |
+| TOM | End of session buys the impression-problem back. Anything said that soon gets credited to the word. |
+| ARAN | And your "first transfer" can be weeks, and for those weeks the thing has no handle in a building run entirely on handles. |
+| TOM | Then neither of us moves. |
+| ARAN | Neither of us moves. |
+| TOM | Good — because this is the one fork we own that isn't philosophy. Two arms, same scenes, same items, only the delivery date differs. Then watch two numbers: the recall rung on the name, and transfer to scenes neither arm has seen. If early names close questions, my arm's transfer beats yours and your recall beats mine early and evaporates. If the trophy pays subscriptions, your retention curve embarrasses me by Christmas. |
+| ARAN | Testable on telemetry rather than arguable. |
+| TOM | And we've been arguing anyway, because it's Tuesday and there's wine. |
+| ARAN | Telemetry, then. |
+| TOM | Telemetry. You'll lose. |
+| ARAN | One of us will. |
+
+**Why this container:** the fork only reads as genuine if the agreement around it is built
+first and fast — scene-first, blink, label-as-agreement all conceded inside four turns — so
+that what remains is visibly the real residue and not a manufactured squabble. Both sides get
+their best material: Aran turns Tom's own Chapter 3 economics into his witness, Tom turns
+Aran's whale into his, each names the other's blind spot, the haggle is walked to an honest
+no-deal, and the park lands on an instrument both trust — with the last three turns making it
+plain that parking is not peace. The chapter deliberately never says who is right, because
+nobody knows, and that is the point of having a telemetry sentence in it.
+
+---
