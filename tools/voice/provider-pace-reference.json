@@ -1,0 +1,448 @@
+{
+ "method": "provider-api@1.0x one-sentence-per-language v2 2026-08-29",
+ "measured_at": "2026-08-29T11:00:45.508Z",
+ "note": "One identical sentence per language, rendered fresh from each provider API at 1.0x and timed with ffprobe. A voice ratio is reference_seconds / that voice's seconds: above 1.0 = brisker than the reference.",
+ "languages": {
+  "eng": {
+   "sentence": "I'm definitely doing better than I was last time we talked to each other.",
+   "sentence_source": "eng_for_kan seed 117 (target_text)",
+   "sentence_tier": 1,
+   "reference_seconds": 4.194,
+   "reference_cps": 17.406,
+   "chars": 73,
+   "voices": 18
+  },
+  "cym": {
+   "sentence": "Mi wnaeth hi bron â mynd ar goll achos mi wnaeth hi droi i'r chwith yn lle i'r dde.",
+   "sentence_source": "cym_for_yor seed 502 (target_text)",
+   "sentence_tier": 1,
+   "reference_seconds": 5.382,
+   "reference_cps": 15.422,
+   "chars": 83,
+   "voices": 2
+  },
+  "ita": {
+   "sentence": "pensavo che il film fosse una schifezza totale e voglio indietro i miei soldi",
+   "sentence_source": "ita_for_eng seed 248 (target_text)",
+   "sentence_tier": 1,
+   "reference_seconds": 4.86,
+   "reference_cps": 15.844,
+   "chars": 77,
+   "voices": 10
+  },
+  "fra": {
+   "sentence": "Ça commence à sembler plus facile et je suis enthousiaste de voir comment ça avance",
+   "sentence_source": "fra_for_eng seed 122 (target_text)",
+   "sentence_tier": 1,
+   "reference_seconds": 5.004,
+   "reference_cps": 16.587,
+   "chars": 83,
+   "voices": 13
+  },
+  "por": {
+   "sentence": "nós muitas vezes quisemos levar as crianças a um lugar um pouco mais quente",
+   "sentence_source": "por_br_for_eng seed 580 (target_text)",
+   "sentence_tier": 1,
+   "reference_seconds": 5.04,
+   "reference_cps": 14.881,
+   "chars": 75,
+   "voices": 6
+  },
+  "ara": {
+   "sentence": "إحنا مش محتاجين نحس إننا مبسوطين، إحنا بس محتاجين نشتغل بجد.",
+   "sentence_source": "ara_eg_for_eng seed 106 (target_text)",
+   "sentence_tier": 1,
+   "reference_seconds": 6.948,
+   "reference_cps": 8.636,
+   "chars": 60,
+   "voices": 4
+  },
+  "zho": {
+   "sentence": "这个消息花了好几个小时才传到办公室里所有人。",
+   "sentence_source": "zho_for_tam seed 511 (target_text)",
+   "sentence_tier": 1,
+   "reference_seconds": 4.86,
+   "reference_cps": 4.527,
+   "chars": 22,
+   "voices": 10
+  },
+  "cat": {
+   "sentence": "vaig pensar que la pel·lícula era una porqueria total i vull que em tornin els diners",
+   "sentence_source": "cat_for_spa seed 247 (target_text)",
+   "sentence_tier": 1,
+   "reference_seconds": 5.724,
+   "reference_cps": 14.85,
+   "chars": 85,
+   "voices": 3
+  },
+  "spa": {
+   "sentence": "pensé que la película era una basura total y quiero que me devuelvan mi dinero",
+   "sentence_source": "spa_for_eng seed 248 (target_text)",
+   "sentence_tier": 1,
+   "reference_seconds": 4.824,
+   "reference_cps": 16.169,
+   "chars": 78,
+   "voices": 16
+  },
+  "gle": {
+   "sentence": "Is maith le formhór na ndaoine a bhfuil aithne agam orthu a bheith ag breathnú ar an teilibhisean",
+   "sentence_source": "gle_cn_for_eng seed 288 (target_text)",
+   "sentence_tier": 1,
+   "reference_seconds": 5.814,
+   "reference_cps": 16.684,
+   "chars": 97,
+   "voices": 2
+  },
+  "deu": {
+   "sentence": "Ich erwarte, dass ich s nächscht Mal, wo mir öis träffed, e Verbesserig gseh.",
+   "sentence_source": "deu_ch_for_eng seed 568 (target_text)",
+   "sentence_tier": 1,
+   "reference_seconds": 5.22,
+   "reference_cps": 14.751,
+   "chars": 77,
+   "voices": 11
+  },
+  "tur": {
+   "sentence": "Daha kolay hissetmeye başlıyor ve nasıl gittiğini görmek için heyecanlıyım.",
+   "sentence_source": "tur_for_eng seed 122 (target_text)",
+   "sentence_tier": 1,
+   "reference_seconds": 5.67,
+   "reference_cps": 13.228,
+   "chars": 75,
+   "voices": 2
+  },
+  "pol": {
+   "sentence": "Zaczyna się to wydawać łatwiejsze i jestem podekscytowany tym, jak to idzie.",
+   "sentence_source": "pol_for_eng seed 122 (target_text)",
+   "sentence_tier": 1,
+   "reference_seconds": 4.932,
+   "reference_cps": 15.41,
+   "chars": 76,
+   "voices": 3
+  },
+  "hrv": {
+   "sentence": "Bilo je divno provoditi vrijeme vani gledajući djecu kako se igraju.",
+   "sentence_source": "hrv_for_eng seed 567 (target_text)",
+   "sentence_tier": 1,
+   "reference_seconds": 4.572,
+   "reference_cps": 14.873,
+   "chars": 68,
+   "voices": 2
+  },
+  "eus": {
+   "sentence": "pelikulak ez zuela balio iruditu zitzaidan eta nire dirua itzultzea nahi dut",
+   "sentence_source": "eus_for_spa seed 248 (target_text)",
+   "sentence_tier": 1,
+   "reference_seconds": 5.652,
+   "reference_cps": 13.447,
+   "chars": 76,
+   "voices": 2
+  },
+  "ron": {
+   "sentence": "Dacă aș putea să am încredere în voi să vă jucați împreună fără să vă certați.",
+   "sentence_source": "ron_for_eng seed 501 (target_text)",
+   "sentence_tier": 1,
+   "reference_seconds": 4.914,
+   "reference_cps": 15.873,
+   "chars": 78,
+   "voices": 2
+  },
+  "isl": {
+   "sentence": "Það er að fara að líða auðveldara og ég er spenntur yfir hvernig þetta gengur.",
+   "sentence_source": "isl_for_eng seed 122 (target_text)",
+   "sentence_tier": 1,
+   "reference_seconds": 4.608,
+   "reference_cps": 16.927,
+   "chars": 78,
+   "voices": 2
+  },
+  "ell": {
+   "sentence": "Ναι, αυτός είναι ο καλύτερος τρόπος να δημιουργήσεις μια ευτυχισμένη οικογένεια.",
+   "sentence_source": "ell_for_eng seed 408 (target_text)",
+   "sentence_tier": 1,
+   "reference_seconds": 4.842,
+   "reference_cps": 16.522,
+   "chars": 80,
+   "voices": 2
+  },
+  "kor": {
+   "sentence": "저는 우리가 지난번에 서로 이야기했을 때보다 확실히 더 잘하고 있어요.",
+   "sentence_source": "kor_for_hin seed 117 (target_text)",
+   "sentence_tier": 1,
+   "reference_seconds": 5.472,
+   "reference_cps": 7.127,
+   "chars": 39,
+   "voices": 6
+  },
+  "tha": {
+   "sentence": "คุณรังเกียจไหมถ้าผมจะดื่มกาแฟให้เสร็จก่อนที่คุณจะเริ่ม",
+   "sentence_source": "tha_for_eng seed 281 (target_text)",
+   "sentence_tier": 1,
+   "reference_seconds": 4.104,
+   "reference_cps": 13.158,
+   "chars": 54,
+   "voices": 2
+  },
+  "sin": {
+   "sentence": "ඔයාලාව රණ්ඩු නොකරා එකට සෙල්ලම් කරන්නයි විශ්වාස කරන්න මට පුළුවන් නම් හොඳයි.",
+   "sentence_source": "eng_for_sin seed 501 (known_text)",
+   "sentence_tier": 1,
+   "reference_seconds": 4.824,
+   "reference_cps": 15.34,
+   "chars": 74,
+   "voices": 2
+  },
+  "tam": {
+   "sentence": "நாங்கள் எல்லாவற்றையும் சரியான நேரத்தில் முடிப்பதை உறுதிப்படுத்த விரும்புகிறோம் என்று அவர்கள் சொல்கிறார்கள்.",
+   "sentence_source": "kor_for_tam seed 200 (known_text)",
+   "sentence_tier": 1,
+   "reference_seconds": 7.146,
+   "reference_cps": 14.973,
+   "chars": 107,
+   "voices": 2
+  },
+  "hye": {
+   "sentence": "Ես անշուշակ ավելի լավ եմ անում կան այն անգամ երբ խոսում եինք իրարու հետ։",
+   "sentence_source": "hye_for_eng seed 117 (target_text)",
+   "sentence_tier": 1,
+   "reference_seconds": 5.22,
+   "reference_cps": 13.793,
+   "chars": 72,
+   "voices": 2
+  },
+  "hin": {
+   "sentence": "वे कहते हैं कि वे यह सुनिश्चित करना चाहते हैं कि हम सब कुछ समय पर खत्म करें।",
+   "sentence_source": "hin_for_eng seed 200 (target_text)",
+   "sentence_tier": 1,
+   "reference_seconds": 5.832,
+   "reference_cps": 13.032,
+   "chars": 76,
+   "voices": 3
+  },
+  "swe": {
+   "sentence": "Hon höll nästan på att gå vilse för att hon svängde vänster istället för höger.",
+   "sentence_source": "swe_for_eng seed 502 (target_text)",
+   "sentence_tier": 1,
+   "reference_seconds": 5.112,
+   "reference_cps": 15.454,
+   "chars": 79,
+   "voices": 2
+  },
+  "dan": {
+   "sentence": "Hun var næsten kommet vild fordi hun drejede til venstre i stedet for til højre.",
+   "sentence_source": "dan_for_eng seed 502 (target_text)",
+   "sentence_tier": 1,
+   "reference_seconds": 4.644,
+   "reference_cps": 17.227,
+   "chars": 80,
+   "voices": 2
+  },
+  "ces": {
+   "sentence": "Myslel jsem, že ten film byl naprostý nesmysl a chci vrátit peníze.",
+   "sentence_source": "ces_for_eng seed 248 (target_text)",
+   "sentence_tier": 1,
+   "reference_seconds": 4.95,
+   "reference_cps": 13.535,
+   "chars": 67,
+   "voices": 2
+  },
+  "srp": {
+   "sentence": "Definitivno sam bolji nego što sam bio prošli put kad smo razgovarali.",
+   "sentence_source": "srp_for_eng seed 117 (target_text)",
+   "sentence_tier": 1,
+   "reference_seconds": 4.734,
+   "reference_cps": 14.787,
+   "chars": 70,
+   "voices": 2
+  },
+  "hun": {
+   "sentence": "Azt gondoltam, hogy a film teljes szemét volt, és vissza akarom kapni a pénzemet.",
+   "sentence_source": "hun_for_eng seed 248 (target_text)",
+   "sentence_tier": 1,
+   "reference_seconds": 5.706,
+   "reference_cps": 14.196,
+   "chars": 81,
+   "voices": 2
+  },
+  "rus": {
+   "sentence": "Я определённо делаю лучше, чем в прошлый раз, когда мы говорили друг с другом.",
+   "sentence_source": "rus_for_eng seed 117 (target_text)",
+   "sentence_tier": 1,
+   "reference_seconds": 5.454,
+   "reference_cps": 14.301,
+   "chars": 78,
+   "voices": 2
+  },
+  "afr": {
+   "sentence": "Die lewe is nie maklik nie maar dit is nie bedoel om maklik te wees nie.",
+   "sentence_source": "afr_for_eng seed 483 (target_text)",
+   "sentence_tier": 1,
+   "reference_seconds": 4.482,
+   "reference_cps": 16.064,
+   "chars": 72,
+   "voices": 2
+  },
+  "mlt": {
+   "sentence": "Qiegħed jibda jħossni aktar faċli u qiegħed inħossni entużjast dwar kif qiegħed jitgħadda.",
+   "sentence_source": "mlt_for_eng seed 122 (target_text)",
+   "sentence_tier": 1,
+   "reference_seconds": 5.256,
+   "reference_cps": 17.123,
+   "chars": 90,
+   "voices": 2
+  },
+  "ben": {
+   "sentence": "আমি গতকাল রাতে এমন একজনের সাথে দেখা করেছিলাম যে তোমার ভাইয়ের সাথে কাজ করে।",
+   "sentence_source": "ben_for_eng seed 234 (target_text)",
+   "sentence_tier": 1,
+   "reference_seconds": 5.4,
+   "reference_cps": 13.889,
+   "chars": 75,
+   "voices": 3
+  },
+  "mar": {
+   "sentence": "तुम्ही मला काय दाखवायचा प्रयत्न करत आहात ते मला दिसत नाहीये याबद्दल माफ करा.",
+   "sentence_source": "mar_for_eng seed 140 (target_text)",
+   "sentence_tier": 1,
+   "reference_seconds": 6.66,
+   "reference_cps": 11.411,
+   "chars": 76,
+   "voices": 1
+  },
+  "tel": {
+   "sentence": "ఇది సులభంగా అనిపించడం మొదలవుతోంది ఇంకా ఇది ఎలా సాగుతోందో దాని గురించి నేను ఉత్సాహంగా ఉన్నాను.",
+   "sentence_source": "tel_for_eng seed 122 (target_text)",
+   "sentence_tier": 1,
+   "reference_seconds": 6.606,
+   "reference_cps": 14.078,
+   "chars": 93,
+   "voices": 2
+  },
+  "kan": {
+   "sentence": "ನಾವು ಆಗಾಗ ಮಕ್ಕಳನ್ನ ಎಲ್ಲಾದರೂ ಸ್ವಲ್ಪ ಬೆಚ್ಚಗಿನ ಜಾಗಕ್ಕೆ ಕರೆದುಕೊಂಡು ಹೋಗಬೇಕು ಅಂದುಕೊಂಡಿದ್ದೀವಿ.",
+   "sentence_source": "kan_for_eng seed 580 (target_text)",
+   "sentence_tier": 1,
+   "reference_seconds": 6.354,
+   "reference_cps": 13.692,
+   "chars": 87,
+   "voices": 2
+  },
+  "glg": {
+   "sentence": "Pensei que a película era un completo lixo e quero que me devolvan os cartos.",
+   "sentence_source": "glg_for_eng seed 248 (target_text)",
+   "sentence_tier": 1,
+   "reference_seconds": 4.824,
+   "reference_cps": 15.962,
+   "chars": 77,
+   "voices": 2
+  },
+  "swa": {
+   "sentence": "Bila shaka ninafanya vizuri zaidi kuliko mara ya mwisho tulipozungumza.",
+   "sentence_source": "swa_for_eng seed 117 (target_text)",
+   "sentence_tier": 1,
+   "reference_seconds": 5.256,
+   "reference_cps": 13.508,
+   "chars": 71,
+   "voices": 3
+  },
+  "fas": {
+   "sentence": "فکر کردم فیلم کاملاً بی‌ارزش بود و می‌خوام پولم رو پس بگیرم.",
+   "sentence_source": "fas_for_eng seed 248 (target_text)",
+   "sentence_tier": 1,
+   "reference_seconds": 4.752,
+   "reference_cps": 12.626,
+   "chars": 60,
+   "voices": 2
+  },
+  "heb": {
+   "sentence": "אני בהחלט עושה יותר טוב ממה שעשיתי בפעם האחרונה שדיברנו אחד עם השני.",
+   "sentence_source": "heb_for_eng seed 117 (target_text)",
+   "sentence_tier": 1,
+   "reference_seconds": 5.724,
+   "reference_cps": 11.88,
+   "chars": 68,
+   "voices": 2
+  },
+  "lit": {
+   "sentence": "Man atrodė, kad filmas buvo visiškas šlamštas, ir noriu savo pinigus atgal.",
+   "sentence_source": "lit_for_eng seed 248 (target_text)",
+   "sentence_tier": 1,
+   "reference_seconds": 5.526,
+   "reference_cps": 13.572,
+   "chars": 75,
+   "voices": 2
+  },
+  "nor": {
+   "sentence": "Jeg kunne ikke forestille meg at jeg hadde nøyaktig det samme problemet.",
+   "sentence_source": "nor_for_eng seed 518 (target_text)",
+   "sentence_tier": 1,
+   "reference_seconds": 4.194,
+   "reference_cps": 17.167,
+   "chars": 72,
+   "voices": 2
+  },
+  "est": {
+   "sentence": "Tundub, et miski ei tööta pärast seda, kui me proovisime seda parandada.",
+   "sentence_source": "est_for_eng seed 146 (target_text)",
+   "sentence_tier": 1,
+   "reference_seconds": 4.716,
+   "reference_cps": 15.267,
+   "chars": 72,
+   "voices": 2
+  },
+  "nep": {
+   "sentence": "यदि तपाईंले मलाई तपाईं कति थकित हुनुहुन्छ भनेर बताउनुभएको भए म गाडी चलाउने थिएँ।",
+   "sentence_source": "nep_for_eng seed 600 (target_text)",
+   "sentence_tier": 1,
+   "reference_seconds": 6.462,
+   "reference_cps": 12.38,
+   "chars": 80,
+   "voices": 2
+  },
+  "bul": {
+   "sentence": "Определено се справям по-добре отколкото последния път, когато говорихме.",
+   "sentence_source": "bul_for_eng seed 117 (target_text)",
+   "sentence_tier": 1,
+   "reference_seconds": 5.202,
+   "reference_cps": 14.033,
+   "chars": 73,
+   "voices": 2
+  },
+  "lav": {
+   "sentence": "Es domāju, ka filma bija pilnīgas muļķības un es gribu savu naudu atpakaļ.",
+   "sentence_source": "lav_for_eng seed 248 (target_text)",
+   "sentence_tier": 1,
+   "reference_seconds": 5.274,
+   "reference_cps": 14.031,
+   "chars": 74,
+   "voices": 2
+  },
+  "ukr": {
+   "sentence": "Здається, нічого не працює з того часу, як ми намагалися це виправити.",
+   "sentence_source": "ukr_for_eng seed 146 (target_text)",
+   "sentence_tier": 1,
+   "reference_seconds": 5.832,
+   "reference_cps": 12.003,
+   "chars": 70,
+   "voices": 2
+  },
+  "nld": {
+   "sentence": "ze is ergens naartoe gegaan om een veilige parkeerplaats voor de auto te vinden",
+   "sentence_source": "nld_for_eng seed 510 (target_text)",
+   "sentence_tier": 1,
+   "reference_seconds": 5.094,
+   "reference_cps": 15.508,
+   "chars": 79,
+   "voices": 4
+  },
+  "jpn": {
+   "sentence": "ニュースがオフィス全体に届くまで数時間かかった",
+   "sentence_source": "jpn_for_eng seed 511 (target_text)",
+   "sentence_tier": 1,
+   "reference_seconds": 4.5,
+   "reference_cps": 5.111,
+   "chars": 23,
+   "voices": 7
+  }
+ }
+}

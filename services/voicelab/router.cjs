@@ -272,6 +272,10 @@ function mount (app, deps) {
         gender: gender || (meta.gender === 'feminine' ? 'f' : meta.gender === 'masculine' ? 'm' : null),
         registeredBy: who(user),
       })
+      // The catalogue is memoised for the life of the process, so a voice
+      // registered a second ago would otherwise be invisible in the lab's own
+      // menu until the next restart.
+      params.invalidateCartesiaCatalogue()
       logger.log?.(`[voicelab] registered cartesia voice ${voiceId} by ${who(user)}`)
       res.json({ ok: true, voice })
     } catch (err) { fail(res, err, 'register-cartesia-voice') }
@@ -301,9 +305,71 @@ function mount (app, deps) {
         description: fields.description || null,
         registeredBy: who(user),
       })
+      // Same reason as register, and it matters more here: this voice did not
+      // exist a second ago, so without this the operator gets a green tick for
+      // a voice they cannot then find or hear.
+      params.invalidateCartesiaCatalogue()
       logger.log?.(`[voicelab] cloned cartesia voice ${out.cartesia.id} by ${who(user)}`)
       res.json({ ok: true, ...out })
     } catch (err) { fail(res, err, 'clone-cartesia-voice') }
+  })
+
+  /**
+   * Hear a Cartesia voice — the audition, and the one place cloning touches money.
+   *
+   * WHY IT EXISTS (2026-08-30): cloning returned an id and nothing to listen to.
+   * A clone you cannot hear is a clone you cannot judge, and the operator's next
+   * move was to cast an unheard voice into a course, which is exactly the
+   * false-green the Languages screen exists to prevent.
+   *
+   * THE CEILINGS, both of them:
+   *  - CLONE_AUDITION_MAX_CLIPS (3 by default) caps one press. This is the
+   *    ceiling cartesia.cjs already declared and nothing enforced.
+   *  - lab.refuse() applies the lab's ordinary daily CHARACTER ceiling on top,
+   *    so a finger stuck on the button stops at the same wall a batch run does.
+   * Nothing here writes course_audio, casts a slot, or starts a run.
+   */
+  app.post('/api/voicelab/voices/cartesia/audition', async (req, res) => {
+    const user = await requireAdmin(req, res)
+    if (!user) return
+    try {
+      const { voiceId, language } = req.body || {}
+      if (!voiceId) throw Object.assign(new Error('voiceId is required'), { status: 400 })
+
+      const lang = params.findLanguage(language)
+      if (!lang) {
+        throw Object.assign(
+          new Error(`The lab cannot steer "${language}". Auditioning is limited to the languages params.cjs knows how to steer; the voice is created and castable regardless.`),
+          { status: 400 },
+        )
+      }
+
+      const sentences = (req.body?.sentences || [])
+        .map((t) => String(t || '').trim())
+        .filter(Boolean)
+        .slice(0, cartesia.CLONE_AUDITION_MAX_CLIPS)
+      if (!sentences.length) throw Object.assign(new Error('Give the audition at least one sentence to say.'), { status: 400 })
+
+      const cfg = {
+        ...lab.normaliseConfig({ provider: 'cartesia', voiceId: String(voiceId).replace(/^cartesia_/, ''), language: lang.code }),
+        key: 'A',
+      }
+      const refusal = lab.refuse({ kind: 'batch', sentences, configs: [cfg], charsSpentToday: store.charsSpentToday() })
+      if (refusal) return res.status(refusal.status).json({ error: refusal.error, code: refusal.status === 429 ? 'ceiling_reached' : 'refused' })
+
+      const clips = []
+      for (const text of sentences) {
+        const id = store.newId()
+        const { mastered, durationMs } = await runner().renderOne({ text, cfg })
+        store.writeClip(id, mastered)
+        // Recorded the moment the money is spent, so the daily ceiling counts an
+        // audition exactly as it counts a run.
+        store.appendLedger({ audition: id, chars: text.length, provider: 'cartesia', voiceId: cfg.voiceId, language: cfg.language })
+        clips.push({ id, text, durationMs, url: `/api/voicelab/clip/${id}.mp3` })
+      }
+      logger.log?.(`[voicelab] auditioned cartesia ${cfg.voiceId} on ${clips.length} clip(s) for ${who(user)}`)
+      res.json({ ok: true, clips, maxClips: cartesia.CLONE_AUDITION_MAX_CLIPS })
+    } catch (err) { fail(res, err, 'audition-cartesia-voice') }
   })
 
   /** Empty a slot. The language then reads as incomplete, which is the point. */
@@ -344,18 +410,45 @@ function mount (app, deps) {
   // be then read by the player?"
   //
   // These are that. Read-only measurement plus one human dial, and NOTHING
-  // here renders, spends or touches audio — the pace is computed from clips
-  // that already exist (tools/voice/measure-natural-pace.cjs).
+  // here renders, spends or touches audio. The measurement itself comes from
+  // tools/voice/measure-provider-pace.cjs — one controlled sentence per
+  // language rendered straight from each provider API at 1.0x, because Tom's
+  // ruling of 2026-08-29 is that "we can only use the providers APIs for the
+  // voice as the truth - not the recordings we have in the estate".
 
   /**
-   * GET /api/voicelab/pace — every measured voice, fastest first.
+   * GET /api/voicelab/pace — every measured voice, fastest first, plus the
+   * per-language reference each ratio is measured against.
    *
    * THIS IS THE READING SURFACE the learner app will consume. `effective` is
    * the only number a consumer should divide by; it is the measurement times
    * the human's nudge, and it is null — never 1.0 — for a voice nobody has
    * measured, because a consumer must be able to tell "typical for its
-   * language" from "we have not looked".
+   * language" from "we have not looked". `easy` and `fast` are the resulting
+   * TARGET-LANGUAGE playback speeds under the role+mode rule; known and
+   * listening are 1.0 flat and carry no per-voice correction at all.
+   *
+   * `languages` is the reference block: the sentence every voice in that
+   * language spoke, how long the reference read took, and how many voices are
+   * behind it. Read from tools/voice/provider-pace-reference.json, the artifact
+   * the measurement tool writes — a ratio with no visible reference is a number
+   * nobody can check.
    */
+  /**
+   * The committed reference artifact. Read fresh on each request (it is a few
+   * kB and changes only when someone re-measures) and NEVER fatal: a missing
+   * file means the screen shows no reference, not a broken endpoint.
+   */
+  function paceReference () {
+    try {
+      const file = require('path').join(__dirname, '..', '..', 'tools', 'voice', 'provider-pace-reference.json')
+      const ref = JSON.parse(require('fs').readFileSync(file, 'utf8'))
+      return { languages: ref.languages || {}, referenceMethod: ref.method || null, referenceMeasuredAt: ref.measured_at || null }
+    } catch {
+      return { languages: {}, referenceMethod: null, referenceMeasuredAt: null }
+    }
+  }
+
   app.get('/api/voicelab/pace', async (req, res) => {
     if (!await requireDashboardUser(req, res)) return
     try {
@@ -374,7 +467,7 @@ function mount (app, deps) {
         method: v.natural_pace_method || null,
         ...registry.paceOf(v),
       })).sort((a, b) => (b.effective || 0) - (a.effective || 0))
-      res.json({ voices, count: voices.length })
+      res.json({ voices, count: voices.length, ...paceReference() })
     } catch (err) { fail(res, err, 'pace') }
   })
 

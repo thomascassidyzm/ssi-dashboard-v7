@@ -1,0 +1,742 @@
+{
+  "$schema": "../../../schemas/metagraph-v1-schema.json",
+  "concept": "nodes",
+  "version": 1,
+  "source": {
+    "document": "docs/pods/shape-graph-2026-08-30.md",
+    "derived": "2026-08-30",
+    "corpus": "canonical_pod_scenarios pod_slug='pod-0' (231 rows, 22 scenes)"
+  },
+  "counts": {
+    "nodes": 17,
+    "from_pod_0": 12,
+    "from_method_pod": 5,
+    "bound_pairs": 6
+  },
+  "nodes": [
+    {
+      "id": "N1",
+      "name": "Ritual open/close",
+      "provenance": "pod-0",
+      "positions": [
+        {
+          "index": 1,
+          "name": "hail",
+          "family": null
+        },
+        {
+          "index": 2,
+          "name": "return",
+          "family": "F14"
+        }
+      ],
+      "attestations": {
+        "corpus": [
+          "g1→g2",
+          "g20→g21",
+          "g23→g24",
+          "g27→g28",
+          "g69→g70",
+          "g93→g94",
+          "g117→g118",
+          "g128→g129"
+        ],
+        "method": []
+      }
+    },
+    {
+      "id": "N2",
+      "name": "Transaction",
+      "provenance": "pod-0",
+      "positions": [
+        {
+          "index": 1,
+          "name": "solicit",
+          "family": "F21"
+        },
+        {
+          "index": 2,
+          "name": "order",
+          "family": "F1"
+        },
+        {
+          "index": 3,
+          "name": "clarify",
+          "family": "F3",
+          "optional": true,
+          "repeatable": true,
+          "bound_with": 4
+        },
+        {
+          "index": 4,
+          "name": "specify",
+          "family": "F1",
+          "optional": true,
+          "repeatable": true
+        },
+        {
+          "index": 5,
+          "name": "deliver",
+          "family": "F1"
+        },
+        {
+          "index": 6,
+          "name": "reckoning",
+          "family": null
+        },
+        {
+          "index": 7,
+          "name": "receipt",
+          "family": "F14"
+        }
+      ],
+      "attestations": {
+        "corpus": [
+          "g10→g11→g18→g19",
+          "g38→g43",
+          "g44→g49",
+          "g53→g56",
+          "g69→g85",
+          "g97→g100",
+          "g137→g139"
+        ],
+        "method": []
+      }
+    },
+    {
+      "id": "N3",
+      "name": "Availability enquiry",
+      "provenance": "pod-0",
+      "positions": [
+        {
+          "index": 1,
+          "name": "is-there-X?",
+          "family": null
+        },
+        {
+          "index": 2,
+          "name": "answer",
+          "family": "F2",
+          "outcome_branch": true,
+          "alternatives": [
+            {
+              "key": "yes",
+              "name": "yes+locate",
+              "family": "F2",
+              "polarity": "positive"
+            },
+            {
+              "key": "no",
+              "name": "no+substitute",
+              "family": "F6",
+              "polarity": "negative"
+            }
+          ]
+        }
+      ],
+      "attestations": {
+        "corpus": [
+          "g5→g6",
+          "g14→g15/g16",
+          "g73→g74",
+          "g87→g88",
+          "g89→g90",
+          "g101→g102",
+          "g127→g128",
+          "g135→g136"
+        ],
+        "method": []
+      },
+      "notes": "The g14→g15/g16 branch is the corpus’s single stored alternative OUTCOME. See §5."
+    },
+    {
+      "id": "N4",
+      "name": "Instruction-giving",
+      "provenance": "pod-0",
+      "positions": [
+        {
+          "index": 1,
+          "name": "request",
+          "family": null
+        },
+        {
+          "index": 2,
+          "name": "instruct",
+          "family": "F1"
+        },
+        {
+          "index": 3,
+          "name": "read-back",
+          "family": "F9",
+          "optional": true,
+          "bound_with": 4
+        },
+        {
+          "index": 4,
+          "name": "confirm",
+          "family": "F9",
+          "optional": true
+        },
+        {
+          "index": 5,
+          "name": "continue",
+          "family": "F10",
+          "optional": true,
+          "bound_with": 6
+        },
+        {
+          "index": 6,
+          "name": "instruct",
+          "family": "F1",
+          "optional": true
+        }
+      ],
+      "attestations": {
+        "corpus": [
+          "g120→g126",
+          "g113→g117"
+        ],
+        "method": []
+      }
+    },
+    {
+      "id": "N5",
+      "name": "Acquaintance",
+      "provenance": "pod-0",
+      "positions": [
+        {
+          "index": 1,
+          "name": "Q",
+          "family": null
+        },
+        {
+          "index": 2,
+          "name": "A+return",
+          "family": "F11",
+          "pivot_capable": true,
+          "repeatable": true
+        }
+      ],
+      "attestations": {
+        "corpus": [
+          "g25→g30",
+          "g31→g32",
+          "g34→g36"
+        ],
+        "method": []
+      },
+      "notes": "Self-composing via F11. The pivot is a walk annotation, not a third edge kind. See §7."
+    },
+    {
+      "id": "N6",
+      "name": "Repair",
+      "provenance": "pod-0",
+      "positions": [
+        {
+          "index": 1,
+          "name": "turn",
+          "family": null
+        },
+        {
+          "index": 2,
+          "name": "non-understanding+request",
+          "family": "F7"
+        },
+        {
+          "index": 3,
+          "name": "reformulate",
+          "family": "F8"
+        },
+        {
+          "index": 4,
+          "name": "resume",
+          "family": null
+        }
+      ],
+      "attestations": {
+        "corpus": [
+          "g32→g33→g34→g35"
+        ],
+        "method": []
+      },
+      "notes": "The only dialogic attestation in 231 rows."
+    },
+    {
+      "id": "N7",
+      "name": "Arrangement",
+      "provenance": "pod-0",
+      "positions": [
+        {
+          "index": 1,
+          "name": "proposal",
+          "family": null
+        },
+        {
+          "index": 2,
+          "name": "decline+account+counter",
+          "family": "F5"
+        },
+        {
+          "index": 3,
+          "name": "decline+account+counter",
+          "family": "F5",
+          "repeatable": true
+        },
+        {
+          "index": 4,
+          "name": "accept",
+          "family": "F1"
+        }
+      ],
+      "attestations": {
+        "corpus": [
+          "g20→g21→g22"
+        ],
+        "method": []
+      }
+    },
+    {
+      "id": "N8",
+      "name": "Recommendation",
+      "provenance": "pod-0",
+      "positions": [
+        {
+          "index": 1,
+          "name": "solicit",
+          "family": null
+        },
+        {
+          "index": 2,
+          "name": "recommend with grounds",
+          "family": "F2"
+        },
+        {
+          "index": 3,
+          "name": "uptake",
+          "family": "F1"
+        }
+      ],
+      "attestations": {
+        "corpus": [
+          "g75→g76→g77",
+          "g63→g64→g65"
+        ],
+        "method": []
+      }
+    },
+    {
+      "id": "N9",
+      "name": "Feasibility request",
+      "provenance": "pod-0",
+      "positions": [
+        {
+          "index": 1,
+          "name": "is-it-possible?",
+          "family": null
+        },
+        {
+          "index": 2,
+          "name": "grant+limit+pre-empt",
+          "family": "F2"
+        }
+      ],
+      "attestations": {
+        "corpus": [
+          "g105→g106"
+        ],
+        "method": []
+      }
+    },
+    {
+      "id": "N10",
+      "name": "Compliment",
+      "provenance": "pod-0",
+      "positions": [
+        {
+          "index": 1,
+          "name": "compliment",
+          "family": "F12"
+        },
+        {
+          "index": 2,
+          "name": "thank+downgrade",
+          "family": "F13"
+        }
+      ],
+      "attestations": {
+        "corpus": [
+          "g94→g95",
+          "g222→g223"
+        ],
+        "method": []
+      }
+    },
+    {
+      "id": "N11",
+      "name": "Mutual assessment",
+      "provenance": "pod-0",
+      "positions": [
+        {
+          "index": 1,
+          "name": "self-downgrade",
+          "family": "F13"
+        },
+        {
+          "index": 2,
+          "name": "counter-assess",
+          "family": "F17"
+        },
+        {
+          "index": 3,
+          "name": "concede-and-hold",
+          "family": "F16"
+        },
+        {
+          "index": 4,
+          "name": "counter-assess",
+          "family": "F17"
+        },
+        {
+          "index": 5,
+          "name": "normalise+tag",
+          "family": "F18"
+        },
+        {
+          "index": 6,
+          "name": "emphatic agree",
+          "family": "F18"
+        }
+      ],
+      "attestations": {
+        "corpus": [
+          "g221→g231"
+        ],
+        "method": []
+      }
+    },
+    {
+      "id": "N12",
+      "name": "Trouble-and-advice",
+      "provenance": "pod-0",
+      "positions": [
+        {
+          "index": 1,
+          "name": "trouble declaration",
+          "family": null
+        },
+        {
+          "index": 2,
+          "name": "elicit",
+          "family": "F3"
+        },
+        {
+          "index": 3,
+          "name": "report",
+          "family": "F1"
+        },
+        {
+          "index": 4,
+          "name": "advise",
+          "family": "F1"
+        },
+        {
+          "index": 5,
+          "name": "dosage-Q",
+          "family": null
+        },
+        {
+          "index": 6,
+          "name": "instruct",
+          "family": "F2"
+        }
+      ],
+      "attestations": {
+        "corpus": [
+          "g110→g117"
+        ],
+        "method": []
+      }
+    },
+    {
+      "id": "N13",
+      "name": "Not-knowing",
+      "provenance": "method-pod",
+      "positions": [
+        {
+          "index": 1,
+          "name": "question"
+        },
+        {
+          "index": 2,
+          "name": "I-don’t-know held with status"
+        },
+        {
+          "index": 3,
+          "name": "the question it licenses"
+        }
+      ],
+      "attestations": {
+        "corpus": [],
+        "method": [
+          "M:1:54",
+          "M:4:70",
+          "M:4:77"
+        ]
+      }
+    },
+    {
+      "id": "N14",
+      "name": "Premise audit",
+      "provenance": "method-pod",
+      "positions": [
+        {
+          "index": 1,
+          "name": "claim"
+        },
+        {
+          "index": 2,
+          "name": "how-do-we-know-that"
+        },
+        {
+          "index": 3,
+          "name": "ground supplied or conceded"
+        }
+      ],
+      "attestations": {
+        "corpus": [],
+        "method": [
+          "M:1:336-338"
+        ]
+      }
+    },
+    {
+      "id": "N15",
+      "name": "Parked disagreement",
+      "provenance": "method-pod",
+      "positions": [
+        {
+          "index": 1,
+          "name": "position"
+        },
+        {
+          "index": 2,
+          "name": "counter"
+        },
+        {
+          "index": 3,
+          "name": "counter held"
+        },
+        {
+          "index": 4,
+          "name": "explicit park"
+        }
+      ],
+      "attestations": {
+        "corpus": [],
+        "method": [
+          "M:2:386→2:401",
+          "M:4:85-87"
+        ]
+      }
+    },
+    {
+      "id": "N16",
+      "name": "Precision haggle",
+      "provenance": "method-pod",
+      "positions": [
+        {
+          "index": 1,
+          "name": "number"
+        },
+        {
+          "index": 2,
+          "name": "counterbid"
+        },
+        {
+          "index": 3,
+          "name": "counterbid",
+          "repeatable": true
+        },
+        {
+          "index": 4,
+          "name": "settlement formula"
+        }
+      ],
+      "attestations": {
+        "corpus": [],
+        "method": [
+          "M:2:120-132"
+        ]
+      }
+    },
+    {
+      "id": "N17",
+      "name": "Interruption-and-bank",
+      "provenance": "method-pod",
+      "positions": [
+        {
+          "index": 1,
+          "name": "turn"
+        },
+        {
+          "index": 2,
+          "name": "break"
+        },
+        {
+          "index": 3,
+          "name": "name it and bank the thread"
+        }
+      ],
+      "attestations": {
+        "corpus": [],
+        "method": [
+          "M:4:474"
+        ]
+      },
+      "notes": "The recovery half is unattested — the next session is lost."
+    }
+  ],
+  "bound_pairs": [
+    {
+      "id": "P1",
+      "name": "Option-choice pair",
+      "positions": [
+        {
+          "index": 1,
+          "name": "counter-Q",
+          "family": "F3"
+        },
+        {
+          "index": 2,
+          "name": "specify",
+          "family": "F1"
+        }
+      ],
+      "attestations": {
+        "corpus": [
+          "g39→g40→g41→g42→g43"
+        ],
+        "method": []
+      }
+    },
+    {
+      "id": "P2",
+      "name": "Reckoning-and-pay pair",
+      "positions": [
+        {
+          "index": 1,
+          "name": "reckoning"
+        },
+        {
+          "index": 2,
+          "name": "pay-request",
+          "family": "F3"
+        },
+        {
+          "index": 3,
+          "name": "grant",
+          "family": "F2"
+        }
+      ],
+      "attestations": {
+        "corpus": [
+          "g47→g48→g49",
+          "g137→g138→g139"
+        ],
+        "method": []
+      }
+    },
+    {
+      "id": "P3",
+      "name": "Read-back pair",
+      "positions": [
+        {
+          "index": 1,
+          "name": "read-back",
+          "family": "F9"
+        },
+        {
+          "index": 2,
+          "name": "confirm-and-extend",
+          "family": "F9"
+        }
+      ],
+      "attestations": {
+        "corpus": [
+          "g121→g122→g123",
+          "g97→g98"
+        ],
+        "method": []
+      }
+    },
+    {
+      "id": "P4",
+      "name": "Continuer pair",
+      "positions": [
+        {
+          "index": 1,
+          "name": "continuer",
+          "family": "F10"
+        },
+        {
+          "index": 2,
+          "name": "continuation",
+          "family": "F2"
+        }
+      ],
+      "attestations": {
+        "corpus": [
+          "g124→g125→g126"
+        ],
+        "method": []
+      }
+    },
+    {
+      "id": "P5",
+      "name": "Elicit pair",
+      "positions": [
+        {
+          "index": 1,
+          "name": "elicit",
+          "family": "F3"
+        },
+        {
+          "index": 2,
+          "name": "report",
+          "family": "F1"
+        }
+      ],
+      "attestations": {
+        "corpus": [
+          "g110→g111→g112"
+        ],
+        "method": []
+      }
+    },
+    {
+      "id": "P6",
+      "name": "Onward-solicit pivot",
+      "positions": [
+        {
+          "index": 1,
+          "name": "grant",
+          "family": "F1"
+        },
+        {
+          "index": 2,
+          "name": "onward solicit",
+          "family": "F21",
+          "pivot_capable": true
+        }
+      ],
+      "attestations": {
+        "corpus": [
+          "g45→g46",
+          "g16→g17",
+          "g51"
+        ],
+        "method": []
+      }
+    }
+  ]
+}

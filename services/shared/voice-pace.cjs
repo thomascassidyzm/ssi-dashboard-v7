@@ -1,37 +1,54 @@
 /**
- * PER-VOICE NATURAL PACE — one definition of the arithmetic, shared by
- * everything that needs it.
+ * PER-VOICE NATURAL PACE, AND THE RULE THAT DECIDES PLAYBACK SPEED — one
+ * definition of the arithmetic, shared by everything that needs it.
  *
- * Tom, 2026-08-29:
- *   "we're minting everything at 1.0x but the target languages are then played
- *    at lower speeds for the first few belts on a kind of ramp-up process …
- *    White belt = 0.8x, Y = 0.9, O = 0.95 and G = 1.0 … but that seems a bit
- *    too blunt for my liking, intuitively"
+ * ── THE RULE (Tom, 2026-08-29). THE BELT RAMP IS RETIRED ────────────────────
  *
- * ── WHY IT IS BLUNT, IN ONE PARAGRAPH ───────────────────────────────────────
- * The ladder multiplies. 0.8x of a brisk voice and 0.8x of a measured voice are
- * not the same experience — they are not even close. Measured on 2026-08-29
- * across clips genuinely rendered at 1.0x, the English `known` voices span
- * 0.78x to 1.41x of their own language's median. A white belt (0.8) on the
- * fastest of them plays at 1.13 of the median pace; a green belt (1.0) on the
- * slowest plays at 0.78. THE BEGINNER IS HEARING FASTER SPEECH THAN THE
- * INTERMEDIATE. That is the bluntness, and it is not a matter of taste.
+ *   "slower voices in playback for target language — Always — than when used
+ *    for known language — Listening exercises can always be full speed in any
+ *    language because listening is training them for everyday life"
  *
- * ── THE FIX: THE LADDER EXPRESSES A TARGET, NOT A MULTIPLIER ────────────────
- * A belt names the pace a learner at that belt should HEAR, as a fraction of
- * the language's median natural pace. The per-voice multiplier then falls out:
+ *   "You're probably right to make it 0.8x … on EASY setting. We also have a
+ *    FAST setting — which could perhaps be a flat 0.9x … Then we can dispense
+ *    with the belt ramp chicanery?"
  *
- *     multiplier = targetPace / voicePaceRatio
+ * So speed is no longer a function of BELT at all. It is a function of what the
+ * learner is doing (ROLE) and of the setting they chose (MODE):
  *
- * A voice at exactly the language median (ratio 1.0) gets the belt number
- * unchanged, so "white belt = 0.8" keeps its familiar meaning and only the
- * per-voice correction is new. That is the whole design.
+ *     target language, Easy   → 0.80
+ *     target language, Fast   → 0.90
+ *     known language, any     → 1.00   (instruction they already understand)
+ *     listening, any language → 1.00   (listening trains them for real life)
+ *
+ * The four-step ladder — white 0.8, yellow 0.9, orange 0.95, green 1.0 — is
+ * gone. It is not deprecated, not configurable, not a fallback: nothing in this
+ * module takes a belt any more.
+ *
+ * ── 0.8 OF WHAT? OF A COMMON REFERENCE, NOT OF EACH VOICE ───────────────────
+ * 0.8x means 0.8 of the LANGUAGE'S reference pace, not 0.8 of whatever this
+ * particular voice happens to do. Otherwise a naturally brisk voice on Easy is
+ * still faster than a measured voice on Fast, and the setting means nothing to
+ * the learner. Measured from the provider APIs on 2026-08-29 (one identical
+ * sentence per language, rendered fresh at 1.0x), voices span 0.832x to 1.241x
+ * of their own language's reference — so the correction is worth real money to
+ * a beginner. Hence:
+ *
+ *     multiplier = clamp(targetPace / voicePaceRatio, MIN_SPEED, MAX_SPEED)
+ *
+ * A voice at exactly the reference (ratio 1.0) gets the target number
+ * unchanged, so "Easy = 0.8" keeps its plain meaning and only the per-voice
+ * correction is new.
+ *
+ * ── THE CLAMP BITES, AND THAT IS STATED RATHER THAN HIDDEN ──────────────────
+ * The briskest voice measured (fr-FR-Vivienne, 1.241) wants 0.8/1.241 = 0.645
+ * on Easy and clamps to the 0.7 floor. For the fastest voices the correction is
+ * therefore PARTIAL, not exact. Below 0.7 TTS output stops sounding slow and
+ * starts sounding broken, so the floor wins — but a reader of this file should
+ * never be surprised by it.
  *
  * ── WHAT THIS MODULE DELIBERATELY DOES NOT DO ───────────────────────────────
- * It does not know about belts, seeds, courses or the player. It is the
- * arithmetic and the clamp, and nothing else — the same shape as
- * language-voice-cast.cjs, so the Popty side and the learner app can share one
- * definition rather than growing two that drift.
+ * It does not know about belts, seeds, courses or the player. It is the rule,
+ * the arithmetic and the clamp, and nothing else.
  */
 
 /**
@@ -49,12 +66,87 @@ const MIN_SPEED = 0.7;
  * Everything in the estate is minted at 1.0x, so a multiplier above 1.0 means
  * playing a clip faster than it was rendered — a new behaviour nobody has asked
  * for, on the most exposed surface there is. So a voice slower than its
- * language's median is played at its own natural pace and no faster; the
+ * language's reference is played at its own natural pace and no faster; the
  * correction is one-sided until Tom says otherwise.
  *
  * DEFAULT taken 2026-08-29, flagged for Tom rather than ruled by him.
  */
 const MAX_SPEED = 1.0;
+
+/** The two settings the player already has. */
+const MODES = Object.freeze({ EASY: 'easy', FAST: 'fast' });
+
+/** What the learner is doing when this clip plays. */
+const ROLES = Object.freeze({ TARGET: 'target', KNOWN: 'known', LISTENING: 'listening' });
+
+/**
+ * The estate's own slot names, mapped onto the three roles the rule knows.
+ * `presentation` speaks the known language, like `known`; target1/target2 are
+ * the target language.
+ */
+const ROLE_ALIASES = Object.freeze({
+  target: 'target', target1: 'target', target2: 'target',
+  known: 'known', presentation: 'known', source: 'known',
+  listening: 'listening', listen: 'listening',
+});
+
+/**
+ * THE RULE. What fraction of the language's reference pace should a learner
+ * hear, given what they are doing and which setting they chose?
+ *
+ * Returns the target AND whether the per-voice correction applies at all,
+ * because those are two different questions and the second one is a taste call:
+ *
+ * KNOWN AND LISTENING ARE 1.0 FLAT, WITH NO PER-VOICE CORRECTION — "played
+ * exactly as rendered", full stop. Correcting a slow voice UP to the reference
+ * would mean playing a clip faster than it was rendered, which is new behaviour
+ * on the most exposed surface and nobody asked for it (MAX_SPEED already
+ * forbids it). DEFAULT taken 2026-08-29, flagged for Tom: his rule says "always
+ * 1.0x" and this is the conservative reading of it.
+ *
+ * @param {string} role  'target' | 'known' | 'listening' (estate slot names accepted)
+ * @param {string} mode  'easy' | 'fast'
+ * @returns {{targetPace:number, correctByVoice:boolean, role:string, mode:string, reason:string}}
+ */
+function targetPace(role, mode) {
+  const r = ROLE_ALIASES[String(role || '').toLowerCase()] || null;
+  const m = String(mode || '').toLowerCase() === MODES.FAST ? MODES.FAST : MODES.EASY;
+  if (r === ROLES.LISTENING) {
+    return { targetPace: 1.0, correctByVoice: false, role: r, mode: m,
+      reason: 'listening exercise — full speed in any language, because listening trains them for everyday life' };
+  }
+  if (r === ROLES.KNOWN) {
+    return { targetPace: 1.0, correctByVoice: false, role: r, mode: m,
+      reason: 'known language — instruction they already understand, played exactly as rendered' };
+  }
+  if (r === ROLES.TARGET) {
+    const t = m === MODES.FAST ? 0.9 : 0.8;
+    return { targetPace: t, correctByVoice: true, role: r, mode: m,
+      reason: `target language on ${m} — ${t} of the language's reference pace` };
+  }
+  // An UNKNOWN role is not guessed at. Guessing here would silently slow (or
+  // fail to slow) a surface nobody has thought about; full speed and a stated
+  // reason is the honest answer.
+  return { targetPace: 1.0, correctByVoice: false, role: null, mode: m,
+    reason: `unrecognised role "${role}" — played as rendered rather than guessed at` };
+}
+
+/**
+ * The one call the player and the lab should both make: what speed does THIS
+ * voice play at, for THIS role, in THIS mode?
+ *
+ * @param {object|null} voice a `voices` row (or its pace fields)
+ * @param {string} role
+ * @param {string} mode
+ */
+function playbackSpeed(voice, role, mode) {
+  const policy = targetPace(role, mode);
+  if (!policy.correctByVoice) {
+    return { speed: policy.targetPace, corrected: false, clamped: false, ...policy };
+  }
+  const result = paceMultiplier({ paceRatio: effectivePaceRatio(voice), targetPace: policy.targetPace });
+  return { ...result, role: policy.role, mode: policy.mode, targetPace: policy.targetPace };
+}
 
 /**
  * The effective pace ratio for a voice: the measurement, corrected by the
@@ -83,8 +175,8 @@ function effectivePaceRatio(voice) {
  *
  * @param {object} args
  * @param {number|null} args.paceRatio   effectivePaceRatio() for the voice, or null
- * @param {number} args.targetPace       the belt's target, as a fraction of the
- *                                       language median (0.8 = white, 1.0 = green)
+ * @param {number} args.targetPace       the target from targetPace(role, mode),
+ *                                       as a fraction of the language reference
  * @param {number} [args.min]            floor, default MIN_SPEED
  * @param {number} [args.max]            ceiling, default MAX_SPEED
  * @returns {{ speed: number, corrected: boolean, clamped: boolean, reason: string }}
@@ -98,14 +190,15 @@ function paceMultiplier({ paceRatio, targetPace, min = MIN_SPEED, max = MAX_SPEE
     return { speed: 1.0, corrected: false, clamped: false, reason: 'no target pace given' };
   }
   if (paceRatio === null || paceRatio === undefined) {
-    // UNMEASURED VOICE: the belt number itself, which is today's behaviour to
-    // the digit. This is the invariant that makes shipping this safe.
+    // UNMEASURED VOICE: the target number itself, uncorrected. This is the
+    // invariant that makes shipping this safe — an unmeasured voice behaves
+    // exactly as it would with no per-voice pace at all.
     const speed = clamp(target, min, max);
     return {
       speed,
       corrected: false,
       clamped: speed !== target,
-      reason: 'voice has no measured pace — belt target used unchanged, as today',
+      reason: 'voice has no measured pace — target used unchanged, uncorrected',
     };
   }
   const raw = target / paceRatio;
@@ -115,8 +208,8 @@ function paceMultiplier({ paceRatio, targetPace, min = MIN_SPEED, max = MAX_SPEE
     corrected: true,
     clamped: speed !== raw,
     reason: speed === raw
-      ? `voice speaks at ${round3(paceRatio)}x its language's median, so ${round3(target)} target → ${round3(raw)}`
-      : `voice speaks at ${round3(paceRatio)}x its language's median (${round3(target)} target → ${round3(raw)}), clamped to ${round3(speed)}`,
+      ? `voice speaks at ${round3(paceRatio)}x its language's reference, so ${round3(target)} target → ${round3(raw)}`
+      : `voice speaks at ${round3(paceRatio)}x its language's reference (${round3(target)} target → ${round3(raw)}), clamped to ${round3(speed)}`,
   };
 }
 
@@ -150,4 +243,7 @@ function toNumber(v) {
   return Number.isFinite(n) ? n : null;
 }
 
-module.exports = { effectivePaceRatio, paceMultiplier, combineMeasurements, MIN_SPEED, MAX_SPEED };
+module.exports = {
+  effectivePaceRatio, paceMultiplier, combineMeasurements, targetPace, playbackSpeed,
+  MIN_SPEED, MAX_SPEED, MODES, ROLES, ROLE_ALIASES,
+};

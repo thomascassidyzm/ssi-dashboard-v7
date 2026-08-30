@@ -66,7 +66,7 @@
  * triggered, no course_audio row is touched, no course voice_config is written.
  */
 import { ref, computed, onMounted } from 'vue'
-import { api } from './labApi'
+import { api, clipUrl } from './labApi'
 // The estate's ONE place that turns a code into words. Importing it also kicks
 // off the CSV name fetch, so nothing else here has to.
 import { languageName } from '@/utils/languageNames'
@@ -81,9 +81,23 @@ const busy = ref('')
 const expanded = ref(null)
 
 // ── Cloning ────────────────────────────────────────────────────────────────
-// One sample in, one voice id out. This RENDERS NOTHING: the new voice is
-// registered so it can be cast, and hearing it is a separate, capped audition
-// through Play. Keeping the two apart is what stops one click becoming a bill.
+// One sample in, one voice id out. Cartesia's POST /voices/clone IS the INSTANT
+// path — verified against their live reference 2026-08-30: the parameters are
+// clip, name, language and four optional descriptors, and there is NO mode or
+// fidelity parameter, so there is nothing to pin. Their "Pro Voice Clone" is a
+// separate product and is not reachable from this endpoint at all, which is
+// what Tom asked for ("just the instant clones").
+//
+// The sample can come from a FILE or from the MICROPHONE on this page. Cartesia
+// asks for at least 10 seconds and recommends up to 60 for a less common
+// accent, clean, no pauses — so the recorder says the elapsed seconds out loud
+// rather than leaving the operator to guess, and lets them listen and redo it
+// before anything is uploaded.
+//
+// CLONING STILL RENDERS NOTHING. Hearing the result is a SEPARATE press, capped
+// at three clips by the backend, and it counts against the lab's ordinary daily
+// character ceiling. Keeping the two apart is what stops one click becoming a
+// bill.
 const showClone = ref(false)
 const cloneName = ref('')
 const cloneLang = ref('eng')
@@ -92,12 +106,96 @@ const cloneFile = ref(null)
 const cloneBusy = ref(false)
 const cloneResult = ref(null)
 
-function pickFile (e) { cloneFile.value = e.target.files?.[0] || null }
+/** 'upload' | 'record' — where this sample is coming from. */
+const cloneSource = ref('upload')
+
+function pickFile (e) {
+  cloneFile.value = e.target.files?.[0] || null
+  clearRecording()
+}
+
+// ── Recording on the page ──────────────────────────────────────────────────
+// MediaRecorder, and nothing else: no library, no upload until the operator has
+// heard the take. If the browser or the deployment refuses the microphone we
+// say so in one line and the upload path is untouched — a half-alive recorder
+// that silently captures nothing is worse than no recorder.
+const recorder = ref(null)
+const recording = ref(false)
+const recordedUrl = ref('')
+const recordSeconds = ref(0)
+const recordError = ref('')
+let recordTimer = null
+let recordedChunks = []
+
+const canRecord = typeof window !== 'undefined'
+  && typeof window.MediaRecorder !== 'undefined'
+  && Boolean(navigator?.mediaDevices?.getUserMedia)
+
+/** Cartesia's own guidance: 10s is the floor, 60s is the useful ceiling. */
+const RECORD_MIN_SECONDS = 10
+const RECORD_MAX_SECONDS = 60
+
+function clearRecording () {
+  if (recordedUrl.value) URL.revokeObjectURL(recordedUrl.value)
+  recordedUrl.value = ''
+  recordSeconds.value = 0
+}
+
+async function startRecording () {
+  recordError.value = ''
+  clearRecording()
+  cloneFile.value = null
+  try {
+    const stream = await navigator.mediaDevices.getUserMedia({ audio: true })
+    // webm/opus is what every browser that has MediaRecorder actually emits,
+    // and Cartesia accepts webm — so no transcoding happens anywhere.
+    const mime = MediaRecorder.isTypeSupported('audio/webm') ? 'audio/webm' : ''
+    const mr = new MediaRecorder(stream, mime ? { mimeType: mime } : undefined)
+    recordedChunks = []
+    mr.ondataavailable = (e) => { if (e.data?.size) recordedChunks.push(e.data) }
+    mr.onstop = () => {
+      stream.getTracks().forEach((t) => t.stop())
+      const blob = new Blob(recordedChunks, { type: mr.mimeType || 'audio/webm' })
+      cloneFile.value = new File([blob], 'sample.webm', { type: blob.type })
+      recordedUrl.value = URL.createObjectURL(blob)
+      recording.value = false
+      clearInterval(recordTimer)
+    }
+    mr.start()
+    recorder.value = mr
+    recording.value = true
+    recordSeconds.value = 0
+    recordTimer = setInterval(() => {
+      recordSeconds.value += 1
+      // A hard stop, so a forgotten tab cannot record for an hour and then try
+      // to upload it into a 25 MB cap.
+      if (recordSeconds.value >= RECORD_MAX_SECONDS) stopRecording()
+    }, 1000)
+  } catch (e) {
+    recording.value = false
+    recordError.value = `The microphone is not available here — ${e.message}. Upload a file instead.`
+  }
+}
+
+function stopRecording () {
+  try { recorder.value?.stop() } catch { /* already stopped */ }
+  clearInterval(recordTimer)
+}
+
+const recordHint = computed(() => {
+  if (!recordedUrl.value) return ''
+  if (recordSeconds.value < RECORD_MIN_SECONDS) {
+    return `${recordSeconds.value}s — Cartesia asks for at least ${RECORD_MIN_SECONDS}s. This will clone, but a longer sample clones better.`
+  }
+  return `${recordSeconds.value}s — a good length.`
+})
 
 async function submitClone () {
   if (!cloneFile.value || !cloneName.value) return
   cloneBusy.value = true
   cloneResult.value = null
+  auditionClips.value = []
+  auditionError.value = ''
   error.value = ''
   try {
     const fd = new FormData()
@@ -109,9 +207,37 @@ async function submitClone () {
     cloneResult.value = out
     cloneName.value = ''
     cloneFile.value = null
+    clearRecording()
     await load()
   } catch (e) { error.value = e.message }
   cloneBusy.value = false
+}
+
+// ── Hearing it ─────────────────────────────────────────────────────────────
+// The half that was missing until 2026-08-30: a clone you cannot hear is a
+// clone you cannot judge, and the next move was casting an unheard voice into a
+// course. THIS is the press that spends — capped at three clips by the backend,
+// under the lab's ordinary daily character ceiling.
+const auditionText = ref('This is what the new voice sounds like, on a full sentence.')
+const auditionBusy = ref(false)
+const auditionClips = ref([])
+const auditionError = ref('')
+
+async function audition (voiceId, language) {
+  auditionBusy.value = true
+  auditionError.value = ''
+  auditionClips.value = []
+  try {
+    const out = await api.auditionVoice({
+      voiceId,
+      language,
+      sentences: auditionText.value.split('\n').map((t) => t.trim()).filter(Boolean),
+    })
+    auditionClips.value = await Promise.all(
+      (out.clips || []).map(async (c) => ({ ...c, src: await clipUrl(c.url) })),
+    )
+  } catch (e) { auditionError.value = e.message }
+  auditionBusy.value = false
 }
 
 async function load () {
@@ -281,12 +407,62 @@ function paceClass (effective) {
 }
 
 function paceTitle (pace) {
-  const parts = [`${pace.effective.toFixed(3)}x the median pace of this language's voices`]
+  const parts = [`${pace.effective.toFixed(3)}x the reference pace of this language's voices`]
   if (pace.nudge) parts.push(`measured ${Number(pace.ratio).toFixed(3)}x, your nudge x${Number(pace.nudge).toFixed(2)}`)
   else parts.push(`measured ${Number(pace.ratio).toFixed(3)}x, no nudge`)
-  if (pace.samples) parts.push(`from ${pace.samples.toLocaleString()} clips`)
+  if (pace.samples) parts.push(`one controlled sentence in ${pace.samples} language${pace.samples === 1 ? '' : 's'}, rendered from the provider API at 1.0x`)
   if (pace.cps) parts.push(`${Number(pace.cps).toFixed(1)} chars/sec`)
   return parts.join(' · ')
+}
+
+/**
+ * THE NUMBERS THE PLAYER WILL ACTUALLY USE — target language, Easy and Fast.
+ *
+ * The ratio above says how brisk the voice is; these say what a learner hears.
+ * Under Tom's rule of 2026-08-29 the belt ramp is gone: target language plays
+ * at 0.8 of the language's reference on Easy and 0.9 on Fast, known language
+ * and listening at 1.0 always, and the per-voice correction applies to the
+ * target language only.
+ */
+function paceSpeeds (pace) {
+  if (!pace || pace.easy === null || pace.easy === undefined) return null
+  return { easy: pace.easy, fast: pace.fast, clamped: pace.easyClamped || pace.fastClamped }
+}
+
+function speedsTitle (pace) {
+  const parts = [
+    `Target language: ${pace.easy.toFixed(2)}x on Easy, ${pace.fast.toFixed(2)}x on Fast`,
+    'Known language and listening: 1.00x always, played exactly as rendered',
+  ]
+  if (pace.easyClamped || pace.fastClamped) {
+    parts.push('Clamped at the 0.7 floor — below that TTS stops sounding slow and starts sounding broken, so the correction is partial for this voice')
+  }
+  return parts.join(' · ')
+}
+
+/**
+ * A candidate's pace, inline in the dropdown. Two numbers, because they answer
+ * two different questions: how brisk the voice is, and what a learner would
+ * actually hear on the target language at Easy.
+ */
+function paceSuffix (c) {
+  if (!c.pace || c.pace.effective === null || c.pace.effective === undefined) return ''
+  return ` · ${Number(c.pace.effective).toFixed(2)}x · ${Number(c.pace.easy).toFixed(2)} easy`
+}
+
+function candidatePace (c) {
+  return `${paceTitle(c.pace)} · ${speedsTitle(c.pace)}`
+}
+
+/** The language's reference: what 1.00x means here, and the sentence it means it on. */
+function referenceTitle (ref) {
+  if (!ref) return ''
+  return [
+    `Reference read: ${ref.reference_seconds.toFixed(2)}s for ${ref.chars} characters (${ref.reference_cps.toFixed(1)} chars/sec)`,
+    `across ${ref.voices} measured voice${ref.voices === 1 ? '' : 's'}`,
+    `Sentence: "${ref.sentence}"`,
+    `From ${ref.sentence_source}`,
+  ].join(' · ')
 }
 
 async function clear (lang, slot) {
@@ -331,6 +507,104 @@ function candidatesFor (lang, slot) {
       deprecated. Voice configuration is a per-course call for whoever builds the course — this
       screen shows the situation and changes nothing.
     </p>
+
+    <!-- MAKE A VOICE — moved to the top of this panel 2026-08-30. It was at the
+         bottom, below every language in the estate, which on a phone is several
+         screens of scrolling past a table you did not come for. Tom's ask was
+         "create clones directly from this page"; a control you have to hunt for
+         is not on the page in any sense that matters. -->
+    <section class="vl-clone vl-clone-top">
+      <button class="vl-btn vl-clone-open" @click="showClone = !showClone">
+        {{ showClone ? 'Hide' : '+ Make a new voice — clone one with Cartesia' }}
+      </button>
+
+      <div v-if="showClone" class="vl-clone-body">
+        <p class="vl-muted">
+          Give it a sample — <strong>upload a file or record one here</strong> — give it a name,
+          and Cartesia returns a new voice. These are Cartesia's <strong>instant</strong> clones;
+          the fine-tuned product is a different thing and is not reachable from here.
+          The voice is registered straight away, so it is castable in the table below the moment
+          it exists. Cloning itself <strong>renders no audio</strong>: hearing it is the separate
+          press underneath, capped at three clips and counted against the lab's daily ceiling.
+          Cartesia cannot clone a language it does not support, so Welsh, Breton and Cornish are
+          refused with a message rather than a failure.
+        </p>
+
+        <div class="vl-clone-row">
+          <input v-model="cloneName" class="ui-field" placeholder="name for the new voice" />
+          <input v-model="cloneLang" class="ui-field vl-narrow" placeholder="language e.g. eng" />
+          <span v-if="cloneLang" class="vl-muted vl-clone-lang">{{ langName(cloneLang) }}</span>
+          <select v-model="cloneGender" class="ui-field vl-narrow">
+            <option value="">gender unknown</option>
+            <option value="m">male</option>
+            <option value="f">female</option>
+          </select>
+        </div>
+
+        <div class="vl-clone-row vl-source-row">
+          <span class="ui-filter-label">Sample</span>
+          <button
+            class="ui-chip" :class="cloneSource === 'upload' ? 'ui-hue-info' : 'ui-chip-off'"
+            @click="cloneSource = 'upload'"
+          >Upload a file</button>
+          <button
+            class="ui-chip" :class="cloneSource === 'record' ? 'ui-hue-info' : 'ui-chip-off'"
+            :disabled="!canRecord"
+            :title="canRecord ? '' : 'This browser will not give the page a microphone.'"
+            @click="cloneSource = 'record'"
+          >Record it here</button>
+        </div>
+
+        <div v-if="cloneSource === 'upload'" class="vl-clone-row">
+          <input type="file" accept="audio/*" class="ui-field" @change="pickFile" />
+          <span class="vl-muted">10 seconds is the floor, up to 60 is better. Clean, no pauses.</span>
+        </div>
+
+        <div v-else class="vl-clone-row vl-record-row">
+          <button v-if="!recording" class="vl-btn" @click="startRecording">● Record</button>
+          <button v-else class="vl-btn vl-recording" @click="stopRecording">■ Stop — {{ recordSeconds }}s</button>
+          <span v-if="recording" class="vl-muted">
+            Read anything aloud, evenly, no pauses. Stops itself at 60s.
+          </span>
+          <template v-if="recordedUrl">
+            <audio :src="recordedUrl" controls class="vl-record-audio" />
+            <span class="vl-muted">{{ recordHint }}</span>
+            <button class="ui-sort-btn" @click="startRecording">Record it again</button>
+          </template>
+          <span v-if="recordError" class="vl-error">{{ recordError }}</span>
+        </div>
+
+        <div class="vl-clone-row">
+          <button class="vl-btn" :disabled="cloneBusy || !cloneFile || !cloneName" @click="submitClone">
+            {{ cloneBusy ? 'Cloning…' : 'Create the clone' }}
+          </button>
+        </div>
+
+        <div v-if="cloneResult" class="vl-clone-done">
+          <p class="vl-ok">
+            Created <strong>{{ cloneResult.voice?.display_name }}</strong>
+            — registered as <code>{{ cloneResult.voice?.voice_id }}</code>.
+            It is castable in the table below now, and it is in the Play menu.
+          </p>
+          <!-- HEAR IT. This is the only control on this panel that spends
+               anything, and it says so. -->
+          <div class="vl-clone-row">
+            <input v-model="auditionText" class="ui-field vl-audition-text" placeholder="a sentence for it to say" />
+            <button
+              class="vl-btn"
+              :disabled="auditionBusy"
+              @click="audition(cloneResult.voice?.voice_id, cloneResult.voice?.languages?.[0] || cloneLang)"
+            >{{ auditionBusy ? 'Rendering…' : '▶ Hear it' }}</button>
+            <span class="vl-muted">one clip, through the lab's ordinary render path and its daily ceiling.</span>
+          </div>
+          <p v-if="auditionError" class="vl-error">{{ auditionError }}</p>
+          <div v-for="c in auditionClips" :key="c.id" class="vl-clone-row">
+            <audio :src="c.src" controls autoplay class="vl-record-audio" />
+            <span class="vl-muted">{{ c.text }}</span>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <div class="vl-search">
       <input
@@ -444,6 +718,15 @@ function candidatesFor (lang, slot) {
                   <span class="vl-code">{{ lang.code }}</span>
                   <span class="ui-pill" :class="hueFor(lang.status)">{{ statusLabel(lang.status) }}</span>
                   <span class="vl-muted">{{ lang.courses }} course{{ lang.courses === 1 ? '' : 's' }}</span>
+                  <!-- WHAT 1.00x MEANS IN THIS LANGUAGE. Every voice below is a
+                       ratio against this read of this sentence, so the ratio is
+                       checkable rather than merely asserted. -->
+                  <span
+                    v-if="lang.paceReference"
+                    class="vl-ref"
+                    :title="referenceTitle(lang.paceReference)"
+                  >reference {{ lang.paceReference.reference_seconds.toFixed(2) }}s · {{ lang.paceReference.voices }} voice{{ lang.paceReference.voices === 1 ? '' : 's' }}</span>
+                  <span v-else class="vl-ref" title="No voice in this language has been measured from the provider API yet, so there is no reference pace to compare against.">no pace reference yet</span>
                   <span
                     v-for="p in lang.providersInUse"
                     :key="p.provider"
@@ -493,6 +776,11 @@ function candidatesFor (lang, slot) {
                         :class="paceClass(slot.pace.effective)"
                         :title="paceTitle(slot.pace)"
                       >{{ slot.pace.effective.toFixed(2) }}x pace</span>
+                      <span
+                        v-if="slot.pace && paceSpeeds(slot.pace)"
+                        class="vl-pace vl-speeds"
+                        :title="speedsTitle(slot.pace)"
+                      >{{ slot.pace.easy.toFixed(2) }} easy / {{ slot.pace.fast.toFixed(2) }} fast</span>
                       <span v-else-if="slot.filled" class="vl-pace vl-pace-unknown" title="No pace measured for this voice — it plays exactly as it does today.">pace unmeasured</span>
                       <input
                         v-if="slot.pace && slot.pace.ratio !== null"
@@ -518,8 +806,8 @@ function candidatesFor (lang, slot) {
                         @change="cast(lang, slot, $event.target.value)"
                       >
                         <option value="">— empty — choose a voice</option>
-                        <option v-for="c in candidatesFor(lang, slot)" :key="c.voiceId" :value="c.voiceId">
-                          {{ c.name }} ({{ c.kind }})
+                        <option v-for="c in candidatesFor(lang, slot)" :key="c.voiceId" :value="c.voiceId" :title="c.pace ? candidatePace(c) : ''">
+                          {{ c.name }} ({{ c.kind }}){{ paceSuffix(c) }}
                         </option>
                       </select>
                       <span v-if="!candidatesFor(lang, slot).length" class="vl-muted">
@@ -579,6 +867,11 @@ function candidatesFor (lang, slot) {
                         :class="paceClass(slot.pace.effective)"
                         :title="paceTitle(slot.pace)"
                       >{{ slot.pace.effective.toFixed(2) }}x pace</span>
+                      <span
+                        v-if="slot.pace && paceSpeeds(slot.pace)"
+                        class="vl-pace vl-speeds"
+                        :title="speedsTitle(slot.pace)"
+                      >{{ slot.pace.easy.toFixed(2) }} easy / {{ slot.pace.fast.toFixed(2) }} fast</span>
                       <span v-else-if="slot.filled" class="vl-pace vl-pace-unknown" title="No pace measured for this voice — it plays exactly as it does today.">pace unmeasured</span>
                       <input
                         v-if="slot.pace && slot.pace.ratio !== null"
@@ -604,8 +897,8 @@ function candidatesFor (lang, slot) {
                         @change="cast(lang, slot, $event.target.value)"
                       >
                         <option value="">— empty — choose a voice</option>
-                        <option v-for="c in candidatesFor(lang, slot)" :key="c.voiceId" :value="c.voiceId">
-                          {{ c.name }} ({{ c.kind }}){{ c.registered ? '' : ' — registers it too' }}
+                        <option v-for="c in candidatesFor(lang, slot)" :key="c.voiceId" :value="c.voiceId" :title="c.pace ? candidatePace(c) : ''">
+                          {{ c.name }} ({{ c.kind }}){{ paceSuffix(c) }}{{ c.registered ? '' : ' — registers it too' }}
                         </option>
                       </select>
                       <span v-if="!candidatesFor(lang, slot).length" class="vl-muted">
@@ -621,40 +914,6 @@ function candidatesFor (lang, slot) {
       </table>
     </div>
 
-    <section class="vl-clone">
-      <button class="vl-btn" @click="showClone = !showClone">
-        {{ showClone ? 'Hide' : 'Clone a voice with Cartesia' }}
-      </button>
-
-      <div v-if="showClone" class="vl-clone-body">
-        <p class="vl-muted">
-          Upload one clean sample and Cartesia returns a new voice, which is registered here
-          straight away so it can be cast into a slot below.
-          <strong>This renders no audio and costs no render</strong> — to hear the clone, cast it
-          or pick it in Play, where the daily character ceiling still applies.
-          Cartesia cannot clone a language it does not support, so Welsh, Breton and Cornish are
-          refused with a message rather than a failure.
-        </p>
-        <div class="vl-clone-row">
-          <input v-model="cloneName" class="ui-field" placeholder="name for the new voice" />
-          <input v-model="cloneLang" class="ui-field vl-narrow" placeholder="language e.g. eng" />
-          <span v-if="cloneLang" class="vl-muted vl-clone-lang">{{ langName(cloneLang) }}</span>
-          <select v-model="cloneGender" class="ui-field vl-narrow">
-            <option value="">gender unknown</option>
-            <option value="m">male</option>
-            <option value="f">female</option>
-          </select>
-          <input type="file" accept="audio/*" class="ui-field" @change="pickFile" />
-          <button class="vl-btn" :disabled="cloneBusy || !cloneFile || !cloneName" @click="submitClone">
-            {{ cloneBusy ? 'Cloning…' : 'Create clone' }}
-          </button>
-        </div>
-        <p v-if="cloneResult" class="vl-ok">
-          Created <strong>{{ cloneResult.voice?.display_name }}</strong>
-          — registered as <code>{{ cloneResult.voice?.voice_id }}</code>. It is now castable below.
-        </p>
-      </div>
-    </section>
 
     <div v-if="data?.notes" class="vl-notes">
       <p v-for="(text, key) in data.notes" :key="key" class="vl-muted">{{ text }}</p>
@@ -717,6 +976,8 @@ function candidatesFor (lang, slot) {
 .vl-pace-slow { background: rgba(217,134,0,.15); color: #d98600; }
 .vl-pace-typical { background: rgba(122,134,153,.12); color: var(--faint); }
 .vl-pace-unknown { color: var(--faint); opacity: .6; }
+.vl-speeds { background: rgba(46,160,110,.14); color: #2ea06e; }
+.vl-ref { font-size: .7rem; color: var(--faint); white-space: nowrap; }
 .vl-nudge { width: 4.5rem; font-size: .7rem; padding: .1rem .25rem; }
 .vl-slot-label { font-size: .75rem; text-transform: uppercase; letter-spacing: .05em; color: var(--faint); margin-bottom: .3rem; }
 .vl-slot-filled { display: flex; gap: .4rem; align-items: center; flex-wrap: wrap; }
@@ -727,6 +988,31 @@ function candidatesFor (lang, slot) {
 .vl-error { color: var(--danger); }
 .vl-notes { margin-top: 1.25rem; display: grid; gap: .35rem; font-size: .75rem; }
 .vl-clone { margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid var(--line); }
+/* .vl-btn carried no style at all until 2026-08-30, so every control on the
+   clone form drew as bare text — a button nobody can see is a button nobody
+   presses, which is half of why this feature read as missing. */
+.vl-btn {
+  background: var(--surface-2, var(--surface));
+  border: 1px solid var(--line);
+  color: var(--ink);
+  border-radius: 9999px;
+  padding: .45rem 1rem;
+  font-family: inherit;
+  font-size: .8125rem;
+  cursor: pointer;
+  transition: all .15s;
+}
+.vl-btn:hover:not(:disabled) { border-color: #ec4899; color: #ec4899; }
+.vl-btn:disabled { opacity: .45; cursor: default; }
+.vl-clone-top { margin-top: 0; padding-top: 0; border-top: none; margin-bottom: 1.25rem; }
+.vl-clone-open { font-weight: 600; font-size: .9375rem; background: #ec4899; border-color: #ec4899; color: #fff; }
+.vl-clone-open:hover:not(:disabled) { color: #fff; opacity: .9; }
+.vl-recording { background: #dc2626; color: #fff; }
+.vl-record-row { align-items: center; }
+.vl-record-audio { height: 2rem; max-width: 18rem; }
+.vl-source-row { align-items: center; }
+.vl-audition-text { min-width: 22rem; }
+.vl-clone-done { margin-top: .75rem; }
 .vl-clone-body { margin-top: .75rem; max-width: 60rem; }
 .vl-clone-row { display: flex; gap: .5rem; flex-wrap: wrap; align-items: center; margin-top: .5rem; }
 .vl-narrow { max-width: 10rem; }

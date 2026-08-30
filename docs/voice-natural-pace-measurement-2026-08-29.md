@@ -2,6 +2,17 @@
 
 **Measure-only job.** Read-only SQL against `course_audio`. No writes, no audio generated, no code touched.
 
+> ⚠️ **SUPERSEDED THE SAME EVENING, and the reason is worth reading.** Tom,
+> 2026-08-29: *"be careful - Azure voices were recorded at non 1.0x speeds so we
+> can only use the providers APIs for the voice as the truth - not the
+> recordings we have in the estate"*. Everything below measures RECORDINGS. Its
+> Azure baked-speed finding is real and is why the estate cannot be trusted as a
+> pace source — keep it for that. The live figures now come from
+> `tools/voice/measure-provider-pace.cjs` (one identical sentence per language,
+> rendered fresh from each provider API at 1.0x): **173 voices, 0.832x–1.241x**.
+> The belt ladder this document argues about has also been retired; speed is a
+> function of ROLE and MODE — see `docs/playback-speed-rule-2026-08-29.md`.
+
 ## 1. Headline
 
 **Yes — TTS voices differ substantially in natural pace, within the same language, and the belt's fixed 0.8/0.9/0.95/1.0 multiplier cannot see it.** Across the whole estate, per-voice characters-per-second normalised to that language's median voice ranges from **0.57x to 1.67x** (a ~3x spread top-to-bottom), with 80% of voices (p10–p90) still spanning **0.84x–1.17x** — i.e. even excluding the extremes, the fastest common voice speaks ~40% faster than the slowest common voice in the same language. This is confirmed two ways: a content-uncontrolled probe (chars/sec per voice) and a **same-text, matched-pair gold standard** (identical `text_normalized` rendered by 2+ voices), which agree closely and rule out "it's just that voice's course has harder text."

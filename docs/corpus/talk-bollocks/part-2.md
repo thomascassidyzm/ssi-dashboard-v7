@@ -1,0 +1,402 @@
+---
+title: Aran & Tom Talk Bollocks Part 2
+---
+-
+- Aran & Tom Talk Bollocks Part 2
+- T
+- By Tom Cassidy
+- December 12, 2020
+- https://descript-publish.s3.amazonaws.com/78eee5e4-dc39-4718-b962-2fbfa34627a0/media_original-eb1799af81ae4f50ada5dff3296e9b68.m4a
+- Tom
+- Okay. So this is Tom and Aran talk bollocks Part 2, just so that we're, keeping recordings down to about an hour.
+- So we're trying to solve for two things:
+- And also overall efficiency, as in 'given people are busy and they haven't got maybe either the same demands to learn by an important date or the time that they can dedicate to do it all in one go'
+- so what's the total number of hours or number units or ways of doing things that could work.
+- Aran
+- it's such a wide sliding scale, isn't it?
+- Because of course the other thing that it's worth saying is that **communicative confidence isn't the end goal for everybody.**
+- Yeah. So you could have, for example, and this is particularly true with heritage languages -  this isn't hypothetical - I know plenty of people who have learned some Welsh, because their great, great-grandfathers came from Wales
+- Americans who discovered those, somebody who came from wealth country, heritage, exactly that. So for those people, it can be a genuine, emotional success of real value to them. If they learn how to say four or five sentences, which actually they can do in a day.
+- So if you say to somebody like that, we've got an approach here, which if you do, an hour, each year, In four or five years is going to have you at a place where you've filled that emotional need and you feel really good about it.
+- And anytime you have the opportunity, you'll trot out your three or four or five sentences of Welsh and you'll feel great about yourself.
+- Yeah and this is something that I became a little bit more sensitized to when I was going down to to London for that Jeremy Vine stuff, because I went down thinking
+- okay. Jeremy's a nice guy and he's been really positive about this.
+- yeah. And I'm sure that for everybody else down there, his production teams, his editors, his producers, all those people are going to be okay. 'Jeremy has got this bee in his bonnet and there's this Welsh guy coming down, they'll probably burn our studio'
+- and what actually happened on the day that we, we did his , we did a sort of whimsical little bit on his TV program in the morning, and then did the sort of proper learning stuff on radio too.
+- And I'm sure. So I got introduced to two different sets of crews and editors and so on different vines. Yeah. That's the one. I'm going to have to, ping him with that - that's a good
+- Tom
+- one
+- Aran
+- and basically everybody, I was introduced to said something to me in Welsh. they'd all prepped a word or two in Welsh.
+- And none of them came at me. I think there was one Welsh speaker in there, so they know there was a guy who can, I think I did a bit foggy on it now. I think I did meet one Welsh speaker in there, who'd obviously gravitated to welder to wash thing happening, but for everybody else it was, Oh, hang on.
+- Yeah. Yeah. and, in the basket she goes, the thing is that we would always say, and it's certainly in terms of language activism, you'd go. Yep, fine. Classic tokenism  - hell with you. That's just not helpful.
+- And we've been utterly wrong about that. Every single one of those people, their effort to speak two or three words of Welsh to me immediately formed an emotional connection that would otherwise not have been there. So I was immediately able to give them praise to look obviously happy.
+- We had that kind of energy connection, just like that on a plate - did not require them to have learned anything else.
+- Yeah. And I've realized now that this is actually, this is as far as Welsh is concerned that this is an outreach program and it's not about saying, we need to get, we need to get more people to learn Welsh.
+- That's a thing we need to do that and people are working at that
+- Well,
+- Tom
+- we want to make it easier for people to learn Welsh.
+- Aran
+- Yes. exactly. But also. Also we've got, when you think in terms of, relationshipships, attitudes. Yeah. Stories, we've got now.
+- So I would say let's look at the case of Jeremy Vine. So the reason we ended up doing some stuff together was he'd got himself into hot water because he had some Twitter storm.
+- Yeah. he'd had, that'd be something about Wales is part of Britain so everybody should speak English or, he wasn't actually trying to say anything nasty at all.
+- He'd just being slightly misunderstood and hadn't expressed himself perfectly. And then he said, sorry, and that kind of stuff, but he'd also, he'd had somebody on his show previously with that hoary old chestnut:
+- I went into a pub and they all stopped speaking English and started speaking Welsh. And what was this magical tool you use to listen to them before you went into the pub? Yeah. And of course, one of the reasons that myth is so deeply embedded is because there's this very interesting little confirmation bias thing:
+- The Myth of Talking Welsh in A Pub When English People Come In...
+- when you hear people who are bilingual, in informal conversational settings, you will usually hear them using bits of both languages. and it may be rarely, it may be very frequently. They might be code switching dramatically, or maybe be just one or two words. But when you hear one word, of a language you understand your brain will tell you that conversation was in that language.
+- If you're bilingual, your brain will just be wrong. Yeah. So a monoglot will think, I heard the word fridge. So they were speaking English. Now I listen carefully, oh theyre speaking Welsh -  they've changed languages because I'm here.
+- I can see that. Yeah. And then they don't think, but how did they know?
+- I don't speak Wlesh.
+- Oh, I'm wearing my, 'I don't speak Welsh' T-shirt. That's how they knew. But there aren't any of those, it's fun. it's fascinating. It seems it. Oh gosh. Yeah. That was a rude thing to do. They shouldn't have done that. But then when you say, could you hear them before you went in the pub, were you wearing anything that showed you didn't speak Welsh?
+- Did you listen to them carefully before revealing your presence?
+- All these things just fall down... which is not to say that nobody has ever been at a bar, been talking to this friend in English because they don't speak Welsh and then turning to this friend to speak Welsh.
+- But I have never met anybody, I don't believe it has ever happened where two people who speak English to themselves, basically your relationship with somebody tends to be a linguistic relationship.
+- So somebody I speak English to, even if they speak Welsh, if I formed a relationship, I've got plenty of examples of this, parents and children who both speak Welsh, but because they grew up speaking English at home, still speak English to each other, despite both being fluent Welsh speakers and switching, that can be quite challenging.
+- So broadly speaking, you'll stick in the same language. Per person. Yeah. But this idea that there's a whole bunch of Welsh people out there who - it's also begs the question - it's got that really interesting colonial kind of idea that Welsh isn't really a thing, of course, they're speaking English to each other all the time, they just use Welsh when they want me not to understand what they're saying, not a thing!
+- So I, we had this - going down there - I had this kind of sense that, And where were we?   the connection and the welcome and like kind of stuff. Oh yeah. So why he was doing it. and then. So when I saw the response and the sense down there, I started thinking this, actually, this is more than tokenism.
+- So then I taught him how to say one sentence on radio. And then of course we didn't, he kept wanting to play songs and stuff like that, which interrupts the process. But he did really well. He got as far as:
+- I want to learn to speak Welsh now
+- I want to learn to speak Welsh today because
+- And I found it very frustrating... I had to leave after, because I want you to finish that. And we were really close. I just wanted to teach him because it's interesting because, but they were making cut the throat signs at me. And I was very slow to realize that, man, they wanted me to leave the studio. I'm like, are you okay?
+- I'm just gonna, Oh, we finished. Oh, very And that's uptake.
+- But so now I've come away from there. He learned 70% of a sentence or one complete sentence and the beginning of another one.
+- He hasn't had anybody - this is about, must be about a year and a half ago - he's not had anybody on his show since then slagging off the Welsh language.
+- And what you've got there now is just this, there's just been a little switch there. Yeah. He's had a positive experience with Welsh.
+- He's talked a little bit about it. He can say a few words. And now when somebody comes in and says, Oh, they're all bastards, I want to tell him my story about why I hate them. His filter goes Oh, okay. Give me some evidence. really, can you back this up, he's not going to take anybody in his show, just to mouth off about Welsh without serious evdence now.
+- I see
+- Tom
+- that connection point.
+- Aran
+- So there's just a little emotional connection and that in terms of the public storyline, there's just a slight little, a little extra filter there.
+- So if somebody's got something, a legitimate story about something that did go wrong and involve the language in some way. Yeah. I'm sure he'd run with that. But the unsubstantiated, no, __'__**they're all like this'** stuff. He's just automatically going - he's not going to think. Oh, I'm not sure Aran would like this, I'd better not.
+- He's just going to think 'really?
+- And he's going to ask those extra couple of questions, so suddenly the sort of baseless negative story becomes a little bit harder to get through.
+- Now, if we could reach 20 or 30 opinion formers in London and give all of them one sentence, then I think the kind of media discussion you get of Wales and Welsh potentially changes dramatically.
+- Language Learning Can Bridge Gaps
+- So then if you extrapolate from that to other languages, if you want to say we've got, we've got an environment here where there's conflict and there's distrust. And there are groups of people who are not getting on with each other.
+- Clearly, nobody's really going to buy into, the solution is to teach group A, how to speak language of group B fluently and teach group B how to speak language of group A fluently.
+- And that would be a great solution and it would work, but a very long thing.
+- But actually, if you can teach group A how to say one sentence, In language B and group B to say one sentence in language A, you probably immediately got a significant dampening effect because you've got real emotional connections...
+- then in terms of your -  what's your road to learning?
+- Yeah, I think they're all out there. And any individual may want to go down different roads for different languages
+- Tom
+- For all these different reasons, as you said.
+- Aran
+- So we've got to test.
+- Yeah. We've got to say how many people will show an interest. If we say learn X in an hour a month, how many people want to do an hour a year?
+- How many people want to do one day a month or one day per year? Like
+- Tom
+- 10 days. Yeah. Maybe the
+- Aran
+- time thing is
+- Tom
+- learn, she'll learn X language, whatever by 10 days from now or
+- Aran
+- something
+- Tom
+- before something like, rather than just, so that's the important thing. So you only have to fly to a place here, but be a Welsh speaker in 2030.
+- Aran
+- Yeah. By doing one day per year. Yeah. That's exactly right.
+- And then as you do more and more of that, you document it, you film it, you show it happening and then you show people, look so what you get, then you have this kind of interesting combination you were talking about, roots and guidance previously.
+- And how you don't say to somebody, well there are 80 million different ways for you to do this, so good luck.
+- Yeah. You say, so you want to go from Cambridge to Caernarfon yeah, satnav says there are 18,000 different ways to do that, but this is what I'm suggesting you go like this. So what we then get is that combination.
+- We have an, which makes us, a good fit for AI later on - we say, yep, just Press Play. And we're going to take care of it for you. We're going to take you the right way,
+- Tom
+- but you have to then before they press play, you have to work out what their learning goals are?
+- Aran
+- No, not necessarily. I think you just press play
+- When they stop play - we notice that they've stopped play.
+- So we start to do things like when they come back and press play again, we notice that it's been a month.
+- Okay. So in that case, we might want to throw some of these earlier seed sentences back in here.
+- If they come back the next day, we can just press on, but then the other thing you're saying to them is in terms of, so that's Netflix layer.
+- But then when you get into piano school layers and more one on one stuff, what you're saying is, here is a really wide menu of approaches you can take, you can go 10 days intensive, straight away, and be having a conversation on day 11.
+- Or you can say, I want to do one day a year for the next 10 years.
+- Or you can take any kind of pattern within that and these are all functional, but I think you end up saying the models we're willing to offer are these because you've got your scale is not helpful.
+- Tom
+- that's fine. It's like you don't - IKEA don't make ALL the different ranges.
+- They're small, medium, large for like chairs, or whatever, you know exactly. Shoe sizes aren't analog, they're digital, they're quantized, aren't they? Really a little bit. Okay.
+- Aran
+- so we say 10 days. 10
+- Tom
+- days or how many hours?
+- Aran
+- I'd say 10 days. Yeah.
+- Tom
+- 15 dialogues. I would
+- Aran
+- say 10. I was 10 hours. And that was a day. I'd say, if you're going to spend this day,
+- Tom
+- is it a hundred hours? And tech is 10 hours, 10 hours a year is
+- Aran
+- 100 hours. It's a hundred hours. Chop them how you want, but that's going to get you there.
+- Tom
+- Hundred hours of our system.
+- I'm really, yeah. Interested in unpacking a little bit, the sprint idea, because of course you talked about how one of the reasons we got together is because I read - to give a little bit of background. I was looking at accelerated learning. I was looking at all these different things anyway, and accelerated language acquisition is a great test. And so I thought I'm going to see to what extent this is possible. I read a bunch of books and the one that resonated most with me was the High Intensity. Language Training, the HILT method.
+- And I researched the author, found out that the author wasn't actually that far away the author was in North Wales. I thought that's interesting. So I followed the author on Twitter and then I reached out to him and suggested, I think we had a Skype call. I said, listen, I'm doing some interesting stuff.
+- I had a Skype call. And then the great story, and this is, I said, we've got these kids and where, the 16 year old, six formers, they want to learn Portuguese. And we're, we're looking at all the various ways of doing it and intensive period of time. We're only gonna allocate two hours a day and we want, in six weeks time to see what we can do.
+- And he goes, when are you starting? I said, because it's half term. So we said, we can start on Monday. So I'll come down. And this crazy guy. Yeah, Aran Jones, he, drove down from North Wales to Cambridge and then just kicked it all off. And so that was remarkable - that level of commitment was really interesting.
+- But the whole point, what really resonated with me was the high intensity. My experience of accelerated learning was that high-intensity - even if you do it with big gaps - high intensity is remarkable in the Seth Godin sense, then it will mean you will talk about it. You will remark on it because yeah, if you experienced...
+- yeah. I learned that so quickly, this astonishing, and you feel the neural adaptation, you feel that stuff. So I think if you want to create that kind of - if you want to change how learners see themselves so that they can then apply this new sense of identity as a learner to other contexts, high intensity learning seems to be the obvious way to do it.
+- So I said, so what I'd like to
+- Aran
+- do
+- - because this is recording and since you just called me mad, I would like to point out that you have literally just driven from Cambridge to the North of Wales, just for a chat. Yeah, exactly.
+- Tom
+- And we arranged it, with a similar sort of short notice. Yeah. What are you doing this week? I've got something to do on Tuesday. I'll come up Wednesday then. no, you're completely right.
+- So what I'd like to do for the context of all the things that we're trying to do, I'd like to unpack the idea of this in more detail about how to deliver it in the piano lesson model.
+- Where you all really, leveraging the group energy and that collaboration and that sense of listen, let's say a bunch of us in a room and we're all presented with a magic trick on a one to one. You go 'wow, that's great'
+- but if you see the reaction in other people's faces at the same time, it makes it a different level of emotional connection.
+- Similarly, watching a movie on a plane is okay, watching a movie with someone you really like at the same time in a room, you've got that shared thing.
+- And I think that's something that I'm really interested in because of schools and training centers. So I'd quite like to unpack that and get your perspective on all the different ways, your experience of doing intensives, your experience of doing these sprints.
+- What that might look like.
+- I think that would be really interesting for me, certainly. And maybe it's selfish because it might not be as interesting.
+- You might be thinking: technology, AI, ML, individuals at massive scale. I'm also thinking about this wonderful community. Aspects of learning.
+- Aran
+- I think, I think it's absolutely essential.
+- I think the community learning is, that's where we start to get to a new layer of human experience. and I think if, if you're trying to say let's, let's get everybody to be lifelong learners because it's healthy and improves society and all that kind of stuff then you know, you're doing the right thing and you're going in the right direction.
+- And if you get a bunch of individuals to be like that, great, but anywhere you can get a community to be a lifelong learning community, you've just absolutely changed the game.
+- So I think it's, no, this is not less interesting for me, this is front and center. I originally thought. That it wouldn't be possible to use a methodology in a group setting.
+- Why was that?
+- It just seemed to me that, you've got a prompt, you've got a challenge to produce it in the target language. If somebody else produces it ahead of you they've just removed your learning from you that hasn't helped you that's actually actively handicapped you.
+- So are you doing it in a class setting? Do you get everybody to try and say, it's at the same time, that starts to feel a bit robotic. And then you've got people who are just shadowing very carefully, very quickly. And so I thought, yeah, it's not a classroom tool.
+- It's about you do this work, independently. And then in the group setting, you're doing playful use of content.
+- And then I started getting people getting in touch with me, teachers getting in touch and saying, we've been doing it in the classroom. And it's working fantastically. Oh my God, I did not expect that to be a thing.
+- So then we've gone on into, we've done a bit just stuff with intensives five day, 10 day intensives. I'm trying to figure out group sizes there -  a lot of which for us was driven by trying to figure out how to make them things, to which we actually turn a profit on it instead of losing money on them.
+- Yeah. Yeah. Yeah, more important than I expected.
+- And I've I found myself - in terms of the work I'm willing to do the, I now basically, only agree to do one on one stuff - because I know in a one on one environment that, whatever, the context there, I know we can get that to work.
+- So what I found with whatever, the
+- Tom
+- working memory of the person, you can calibrate
+- Aran
+- exactly that, and you can give them an experience which will give them increased confidence, increased self esteem, all that kind of stuff. what I found with groups, and so this is this is for me, this is the challenge.
+- It's about group formation.
+- If you get, if you get four people together for five days in a bed and breakfast in rural Wales, and one of them is not a very nice person. You've got four people who are not going to get a very good learning experience.
+- Of course. And in fact,
+- Tom
+- - that's not an anything to do the intensive that's to do with, as you say, group
+- Aran
+- formation.
+- Exactly. and you can probably, control for that.
+- You can probably cut it down from there even further: if you've got four people, somewhere for five days. and one of them is not a bad person, but has a couple of bad tempered days.
+- Every single bit of negative stuff that comes out of somebody is going to be impacting on the learning journey of the other people.
+- Yeah, so for me to work with a group now, I would absolutely have to know that it had been some kind of filter about who was going to be there.
+- This is adults. this is
+- Tom
+- yes.
+- Aran
+- Yes. where assholes
+- Tom
+- are allowed to exist.
+- Aran
+- Yeah, right? Yeah. Yeah. And not told you can't be there yep.
+- Tom
+- In a school context typically
+- Aran
+- you don't have.
+- Yeah. He said that again, after I told you not to. Can you guys drag him out the back, beat him up and leave him there?
+- Tom
+- Sort of permission for assholes in something like an intensive sprint in a school,
+- Aran
+- it would be controlled differentyl -  social requirements.
+- Tom
+- We're going. Okay. Great.
+- Aran
+- But even there, you tap into people's energy.
+- Yeah. If you've got one guy sitting, right? Yeah. Both. He's not going to take it. He's not going to, he's going to breach a social contract. But he's not got positive energy, then that is going to have an impact on other people.
+- I had one group which had one really negative person in it. And the most positive person in the group paired with her.
+- Initially I think with a lot of very positive intentions to try and encourage her. And by the end of the session, he'd become equally negative. Oh my God. That's
+- Tom
+- literally how cancer works. Exactly. Yeah.
+- Aran
+- Yeah. but nonetheless, that's the challenge is the group dynamic. But if you solve for the group dynamic, then you've got something which I think can be orders of magnitude, more powerful as a learning environment.
+- and you also get to the stage, you get this knock on thing there. which is an extra step. If you haven't done it in a group, which is the group has achieved success, it's achieved communicative levels of confidence.
+- And when you meet those guys in the pub, even if you just bump into them, it's Oh yeah. A little bit of this language now, and that is incredibly valuable!
+- Yeah. if you don't have that, a lot of our learners, have this real sort of gear change thing. they get to the end or close to the end of our materials and they can engage and they can stay in an hour in Welsh, only all that kind of stuff.
+- And then they say, but why can't I find somebody to practice with? So we've got, various online solutions. Yeah. But if you come up with a group then that is a longterm thing and I think, yeah, that's really important. Yeah. And also I think that, if you think beyond languages, If you think that, you're building a world school.
+- Yeah. Then when you have groups of people who have, there's possibly something in there about building for self-formation that you let people find out who they get on with and group themselves with those people and then choose to work with those people. And I could easily imagine that you end up with a sort of learning community, maybe you have a dozen people who are your learning community and you're just moving through several different things that you're learning together as a group. And then sometimes you'll split and reform into other groups and that's fine. But then you have these sort of increased webs of connection, but their webs of learning connection.
+- Yeah. So instead of it just being, we live just down the road from you. If you're interested in A, B and C and let's pop around for a cup of tea because I feel like a conversation about it. I can feel that conversation in Swahili.
+- Tom
+- So is it like a book club kind of meets a learning type thing where they're getting together?
+- Cause they've got the shared interest and it's that sort of collaboration, collaborative exploration that,
+- Aran
+- but also as the personal connection grows, you don't...
+- and this is probably one of the big myths.
+- Isn't it? That learning is fundamentally utilitarian instead of fundamentally about personal play and discovery.
+- Yeah.
+- Tom
+- Maybe learning is really a mechanism by which to have meaningful group interaction. Yeah.
+- Aran
+- Yeah. Yeah, because rather than just
+- Tom
+- meeting up to just go for the hell of it, if we're doing something for it gives, Oh, it's an excuse to get together in the same way as, yeah.
+- Intensive Sprints as Road Trips
+- So one of my metaphors for intensive sprints, when we're talking about learning sprints in general, not necessarily languages, but obviously language is a brilliant thing is the road trip.
+- Cause what you want to, what is a road trip? it's flexible. According to the people, they decide where to go, it's temporary. Yeah. you're going to form incredibly strong bonds. There'll be challenges, psychological challenges because you're with inter-railing group trips, road trips, those sorts of things.
+- But you know that at the end of this three, four days, long weekend, whatever, 10 days you'll have this - **you've created this**, something that exists that's as a result of this, between this thing, this entity and that road, and it will always bring back tremendously fond memories. So I wonder whether that is the metaphor for the group side of things.
+- You're going on a learning journey with people, but it's not just you it's the road
+- Aran
+- trip!
+- Trip. Yeah. I Like the road trip, really. I think that might be quite nice. And I I also think that, think it goes. Then even wider than that, you'll have multiple road trips sometimes with the same group.
+- Sometimes you can get sometimes with overlap and do a tour because we've got, yeah. we've got, cause right now, obviously we've got, there are higher levels of loneliness than ever before - people have lower average numbers of close friendships than ever before.
+- We're being put into silos and we're then being encouraged by social media to communicate only with people who are on the same polarized opinion as ours.
+- So we're actually
+- Tom
+- and the fragmented social media type, communicative media.
+- Aran
+- So when you talk about a road trip, one of the things you said that really struck me was. You're going to have some crashes. You've got to learn how to be on that road trip with other people. We're all getting much less practice at how to live together, how to be in a space together.
+- Tom
+- Yeah, exactly.
+- Aran
+- Where we're not being very human at the moment.
+- Tom
+- And if you don't have the learning side of things, the road trip feel of things you've got this. 'oh fuck it'
+- then. Yeah, but this person, I don't want to fuck it, but hang on.
+- Aran
+- If we were with a bunch of people who'd like to burn Donald Trump and that's eventually going to get a bit oh, God, really all this anger
+- or I'm on a road trip with a bunch of people who want Donald Trump to be president for life.
+- and that's when you're on a road trip with a bunch of shared, polarized opinions. Yeah. But that's not creating anything good for anybody, but when you're on a road trip, that's about learning and getting used to being a team. Yeah. Team building. Yep.
+- Tom
+- And also the road trip is quite good because you can't half way through a road trip just decided to leave.
+- Cause like you're in the middle of,
+- Aran
+- well,
+- Tom
+- you just you're in the middle of nowhere anyway. So how'd you get home?
+- Aran
+- But also when you get on. When you get onto the business of building a team, having the joy that comes with that and the wealth of personal connection, then if, once you realize that the learning is a trigger for this, what you're learning potentially becomes less important.
+- Yeah. I have never, in my life ever thought I want to learn monks. Yeah. And I've now done a couple of days of learning Manx because it was. Okay. Academic exercise. And I knew a guy who was willing to do it and he produced the material. I might want it to test some things. And I know, I've got unfinished business.
+- I am going to learn more Manx.
+- I don't know if I'll ever become really conversationally competent, but I'm definitely going to learn more. Yeah. And also in a similar kind of way. if you said to me, it turns out. say, Oh, it turns out we can be in Hong Kong at the same time again. And you say, you know what, while we're there's this two day deep dive thing into this particular subject.
+- Why don't you come along? And where for somebody who I didn't know very well, I'd go, yeah, sorry, molecular physics. Not really my thing, but if you say, look, this is a particularly interesting exposition of molecular physics -  I think you're going to like it. I'm going to go. Okay. I'm going to do two days learning molecular physics. Why the hell not?
+- Learning is Play
+- And then you start then. So that level of play, when you start to realize we're learning is play learning is about the most enjoyable thing we can do if it's done well. Yeah. So somebody it's like that filter thing, isn't it. We were talking about before, about how you use other people to decide what.
+- it's worth you giving attention to. So somebody comes to me, I don't know, and says, there's a two day thing about molecular physics in Hong Kong while you're there. I'm thinking I'm already bored piece. Don't talk to me.
+- If YOU come to me and say, there's a two day thing about Melissa it's physics being taught in a brilliant way.
+- Yeah. I know who these people are. I've seen other stuff from them. This is not going to, this is going to be playful and exciting. I've already signed up for that, but also
+- Tom
+- I almost don't even have to explain anything because if I come to you, Hey, you'll already go well, he knows me well enough to only suggest things that he thinks I would like.
+- Yeah. Great. Okay. Let's do it as similarly. If you said, listen, do you want to go and learn Breton for a weekend? I'd go. Why not? Yeah, exactly. Yeah. Yeah.
+- Aran
+- There's a really great way to do it here. I'm giving you a guarantee. I'm giving my personal guarantee and that's, isn't that interesting because when you get, when you exist in groups, when you exist in tribes, then you tap in to that shared wisdom of all the members of the tribe. You have all these people who might find something interesting and come and tell you about it, or might find something important that you need to learn about or understand and come and tell you about that.
+- Your Own Tribe v The Facebook Algorithm
+- And when we're not doing that, the people who are deciding what we should be seeing, what we should be responding to are the people who are writing algorithms for Facebook. And they're driving us up into polarization. And actually we need our tribes as the antidote to this one-to-Facebook relationship that we're all starting to get to used to.
+- Tom
+- Very interesting that's a, probably another piece to talk about that. I'd quite like that later...
+- Staying on the idea of sort of high-intensity shared experiences learning. Talk to me about how your approach you think could work, say for learning. for students in schools who want to learn English, Chinese speakers, cause we're practical cause we're building this right now.
+- How might you see it working, given your experience of really getting the best results with the minimum, total resources, what are the different ways that you could see that shared experience combination sort of work? We can't take, typically we could run summer camps.
+- We could do that. We could do that sort of thing. Or we could do things at weekends, we could do things after school. We can't usually take kids out of school for five days or 10 days to do that. yeah.
+- Aran
+- Talk to me about, so any
+- Tom
+- thoughts you've got on that?
+- Aran
+- it's been a long old while. Since I have to operate in a school environment with school constraints.
+- So I'm out of practice there and haven't spent a lot of time thinking about it, but if I was allowed to give one roll of the dice, what I would most want to test would be a very simple structure. And it would just be one day a week.
+- Yeah. And the reason I'd want to test that - because obviously that looks like a big bite out of the school time - but I would want to test that because I suspect that would not even need an entire year until there was no point for the children in that first cohort to be doing it anymore because their English was fine.
+- Tom
+- And I'm thinking that outside of, for school aged children, but outside the constraints of the Monday to Friday school, one day a week, a Saturday or a Sunday is easily doable. So you're thinking how many again, based on your experience, just picking a number out of the air, how many hours do you think of learning with your system?
+- In the intensive, but group format would be transformational in terms of being able to be comfortable
+- using it.
+- Aran
+- So I'd say, I think ballpark, yeah in that kind of environment, it's slightly different to working with adults. I tend to say seriously, if you're spending one day on this, why would you stop until you're ready to sleep?
+- Because it's just one day you've already. Not done all the other things you could have done that day because you weren't committed to. So if you're a bit tired at four o'clock, what are you going to gain by stopping pushed through too late? do you,
+- do you.
+- 1210, 11, 12 hour days. They do nine till nine.
+- Yeah. I reckon, I think it's a bit self-defeating for an adult learner to sign up to an intensive day and then do less than 10 hours. Yeah. yeah,
+- For children who are already usually overloaded in schools, And who are not given enough downtime to, even for proper consolidation of their subjects, and who are generally speaking under quite a lot of pressure.
+- I would think that they had done a very valuable day if they did six hours and I will be entirely comfortable with saying this is going to be a four hour thing. So a half day. And I think what would happen is that if you've got a cohort doing six hours a day, one day a week, by the end of a term, they're going to be getting some staggering results,
+- Tom
+- 10, 15 weeks, something like that yeah.
+- Aran
+- Yeah. So I would expect if they're doing this, six hours is probably not far off. Yeah. you can do more than that, but you're getting, you're cracking on through a lot of stuff there.
+- so I would say, 12 to 15 days of that - particularly for people who've come through and education system, that's tried to teach them a lot of English because it's going to activate all that passive stuff for them. By end of term one, those people will be getting results that they're excited about.
+- Yeah. If you get people who are doing a three or four hour one, and I will be encouraging them to think that this is a program for that year, But I would expect them at the end of the year to be quite excited. Yeah.
+- Tom
+- So my question would be, what are we trying to do longterm business? Ah, we're not trying to create a business model, which pays us every month forever.
+- We're trying to get people to be able to. Be able to learn new things and learn languages and get them up to speed as quickly as possible. Really.
+- So would it be more remarkable again, Seth Godin sense, would it be more remarkable for us to just get people half a day a week for say six months and then that's it they're done.
+- If they want to get other stuff with us then fine - fantastic. If they want to practice, if they want to pay a monthly fee or whatever then fine, but maybe the  business model for the intensive group type piano lesson model is just like in six months, you'll smashthis - you'll have got such a high level of competence, you won't need to carry on doing it.
+- Aran
+- Yeah. Yeah.
+- Tom
+- again, I'm just riffing, but, could, would you turn it to say 40 weeks? So it's about a school year, would it, we then an hour and a half a week for a whole year. Would it need to be three at four hours a week for six months. what if you talk to the minimum and like unit of
+- Aran
+- one instance, if you're thinking, if you think in terms of how can we fit this into a, an existing school curriculum?
+- More like
+- Tom
+- kids go to school Monday to Friday. So for them to do then a whole day, Saturday, or a whole day, Sunday, even four hours, it's going to be quite limited in its sort of appeal. So it might be something around two hours a week is definitely doable on a continuous basis. Again, I'm riffing, but I'm just thinking,
+- Aran
+- I think the thing is to a large extent that I'm particularly in the context of China, where you know that you're working with a body of learners who have had quite a lot of unsuccessful attempts to give them this language and what that means is - okay it means there's a little bit of kind of emotional scar tissue there, learning English doesn't really work. It's tough - but it also means that they have got quite a lot of passive vocabulary. Yes. residual.
+- Yes. And on the brain is clearly very good at that passive vocabulary they've got is already to a certain extent, neurally linked. Yeah. So when you get a little kind of child, when you use one word there. There's spillover like a sort of electrical leak, possibly also actual electrical leak.
+- So you get an activation impact on the rest of the neurological circuit. and we've just seen this over and over and over again.
+- So I would expect act that, secondary level students in China are going to get some moments of sudden blossoming might a lot of the previous dry unsuccessful stuff starts to come to life for that.
+- Tom
+- Cause they, by then they've had probably eight to 10 years of English exposure. Anyway. I'm really interested in this too, to know where the, a kickstart plus a one and a half hour, two hours a week would be perhaps the thing then?
+- Aran
+- I think you've got to test that, but I certainly think that two hours a week is going to give us a hundred hours by the end of the year.
+- Of
+- Tom
+- course. Yeah.
+- Aran
+- yeah, I don't know, but in the academic year, but people take holidays.
+- Tom
+- Yes, that's fine. so what about, but what about a kickstarting and what about having a, at the beginning of the year or the beginning of a program? Maybe you do a launch where you have an intensive weekend
+- Aran
+- yeah.
+- And you
+- Tom
+- get 20 hours done to just kick start things. Because my general sense based on almost nothing other than a sense of what I know about China and learners and this residual vocabulary - is that if you could give them a day or perhaps a weekend of intense, just getting it up and running with it all the triggers would be released.
+- It'd be like a dam breaking, I think. Yeah. And then an hour, two hours a week, maintaining would be...
+- Aran
+- for some of them, for the ones who have, I'm thinking, I'm thinking secondary school in terms of 11 through to 16 so you're going to have. In that there are going to be groups so you can see you've got some 14 or 15 year olds who've actually worked really hard at their English. and whose spoken is extremely low and they don't, they have that sort of sense of failure and a lack of confidence and you're going to have groups in that where you put them into a two day kickstart at the end of that.
+- They will have had such a gear change in terms of their own confidence. It'll be they'll, there'll be, yeah, that will be your remarkable thing. They'll already be saying it did this in just two days. This isn't a possible thing. And then you say, are you willing to commit to, two hours a week for the rest of the year,
+- Tom
+- top of the relevant?
+- Ideal Way For Chinese Students To Learn English
+- Yeah, of course. Yeah. So I wonder whether that would be something that you could say, okay. How about then play around with this? How about a summer program - five day intensive summer program and then into the school year. And then just maintenance.
+- Aran
+- Yeah. And the thing probably
+- Tom
+- because younger children as well, cause they've maybe been learning it even by the age of eight or 10, they've been learning English for four or five years.
+- Aran
+- A little bit like something that happens in Ireland actually - only heard about fairly recently - that basically they all have to have Irish for the leaving certificate. Gotcha. so they all sit there in Irish classes, bored and not doing particularly well. And they've got to get through the exam at the end of it, just before the exam.
+- So it's probably something like, the summer before their final year, but that there's this sort of time. It might just be the learn our holiday that there's basically that there's a time when all the middle class parents in Dublin send their kids to the Gaeltacht for the week to Jesus Christ, try and get through this thing.
+- Now, what you just said that I think would actually - there's a bookend approach - so I think you say we do a five day kickstart, in the summer you then do a year of one or two hours a week, and then you do a five day. Five day take off thing. And that last five day take off thing. A big chunk of that is going to be just immersion.
+- Yeah. And they're just going to be, Oh my God, we're having fun. And you get entertaining stuff and game playing. Yeah. Kind of stuff going on.
+- Tom
+- So you do with that is, you'd have a lot of english native speakers in then with them in that sort of follow up immersion.
+- Aran
+- Yeah. You wouldn't do. depending on the numbers, see what you wouldn't necessarily need all that many because they will be able to do it with each other.
+- but it's there's a crowd control thing going on, if you're doing that with a group of a hundred. Then yeah, you're going to get clusters of people falling out of target language, unless they've got their, the nudge happening. You'd have to talk with teenagers. so with
+- Tom
+- universities learning for 15 years, but they just don't quite have the confidence of speaking.
+- You would need very little activation wouldn't you would need a weekend - a day even - an intensive day.
+- Aran
+- You'll definitely see a response to an intensive day. Will you have, taking them the whole way through to them realizing God, I speak this language, maybe not, but if you.
+- Tom
+- But you could do that in 13...
+- I'm just thinking a 13 week cycle for university learners or adult learners might be quite good. One intensive day, two hours a week for the next 10 or 11 weeks. And then one day to wrap up, that would probably be plenty with it.
+- Aran
+- do you do something different? I, I would be inclined to do actually I would be inclined not to differentiate all that much between school and university and adult learners.
+- I'd be inclined to say, look, here's the model. Because it's obviously a reasonable model. You do a five day boot camp. You do your year of an hour or two a week. You do a five day boot camp. And at that stage, we are saying you are going to be using this language very confidently.
+- Yeah. Hey, WIN!
+- Yeah, because five, five day, year, five day it's not the end of the journey. it's a, it's going to be a transformational change, but you've then got to get to the stage where you've got if not native, if you've got, absolutely.
+- You don't even think about the fact you're using the language. They're still gonna need a lot of bulk exposure to the spoken language. Yeah. but yeah.
+- So yeah, so I think, if you say, One intensive startup day and then 12 weeks of a couple of hours. And then one intensive close day. What will happen? There is, yeah, you can probably surprise some people, but you probably also lose some people, not quite get them there and the risk doesn't seem worth it to me five days.
+- And it's if you do five days
+- Tom
+- really intensive, Perfect English camp type thing. You know that you're going to make such significant inroads. You know that then if you have some sort of program of online resources, plus one weekly session, if it can come continuity, that's going to make a difference in a five day wrap up, that whole thing will work.
+- Aran
+- And if you can say, as we will be able to with the on demand stuff. Yeah. we have a requirement for you to have done half an hour and this each week at home. And we can have that - the teacher gets pinged if I, they don't
+- Tom
+- get to come to that, you haven't done
+- it.
+- Aran
+- And I also think there's a kind of, there's a psychological thing in there as well.
+- which is that, we know that the results we'll get from a boot camp year boot camp. W we'll be breathtaking, but also that kind of sounds reasonable.
+- That sounds okay, that's an English program. That's going to help me a bit, they won't be expecting it to do as much as it will do, but they will think that sounds like a reasonable amount of work.
+- If you say one day, 12 weeks, one day, you're going to have some people thinking that's actually not gonna be worth doing because it's not going to help us enough.
+- Tom
+- Yep. We'll just put that on pause. Okay.
+

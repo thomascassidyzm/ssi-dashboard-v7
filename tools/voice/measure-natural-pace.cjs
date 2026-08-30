@@ -2,6 +2,24 @@
 /**
  * MEASURE EACH VOICE'S NATURAL PACE, from audio that already exists.
  *
+ * ⚠️ SUPERSEDED AS A SOURCE OF TRUTH — Tom, 2026-08-29, hours after this landed:
+ *
+ *   "be careful - Azure voices were recorded at non 1.0x speeds so we can only
+ *    use the providers APIs for the voice as the truth - not the recordings we
+ *    have in the estate"
+ *
+ * This tool measures RECORDINGS. However carefully it filters for clips
+ * believed to have been rendered at 1.0x — and the filtering below is real, and
+ * its Azure finding is worth keeping — it is still measuring decisions somebody
+ * already made rather than how fast a voice speaks. The live measurement is now
+ * tools/voice/measure-provider-pace.cjs, which renders one controlled sentence
+ * per voice straight from the provider API at 1.0x and times the bytes.
+ *
+ * Kept, not deleted: the Azure baked-speed finding documented below is the
+ * evidence for why the estate cannot be trusted as a pace source, and it is
+ * also the fastest way to re-check that finding if anyone doubts it. Do not use
+ * its output to write voices.natural_pace_* any more.
+ *
  * Tom's ruling, 2026-08-29: natural pace is MEASURED from rendered clips, never
  * asked of a human. A hand-typed pace reproduces exactly the blunt instrument
  * the whole exercise exists to replace.

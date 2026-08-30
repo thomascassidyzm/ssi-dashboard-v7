@@ -119,6 +119,11 @@ export const api = {
   // cannot trigger a bulk run — hearing the clone is a separate, capped
   // audition through the ordinary render path.
   cloneVoice: (formData) => upload('/api/voicelab/voices/cartesia/clone', formData),
+
+  // The audition is the one call on the clone path that spends. The backend
+  // caps it at CLONE_AUDITION_MAX_CLIPS (3) and the lab's daily character
+  // ceiling still refuses on top of that.
+  auditionVoice: (body) => call('/api/voicelab/voices/cartesia/audition', { method: 'POST', body }),
 }
 
 /** multipart POST. Same session gate as `call`; the browser sets the boundary. */

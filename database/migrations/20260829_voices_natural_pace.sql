@@ -1,5 +1,23 @@
 -- voices.natural_pace_* — HOW FAST THIS VOICE ACTUALLY SPEAKS, MEASURED.
 --
+-- ⚠️ ADDENDUM, 2026-08-29 (same day, after this migration was applied — the SQL
+-- below is unchanged and still correct; only the POLICY it describes moved):
+--   * THE BELT RAMP IS RETIRED. Speed is no longer a function of belt at all.
+--     It is a function of ROLE and of the learner's MODE — target language 0.8
+--     on Easy and 0.9 on Fast, known language 1.0 always, listening 1.0 always
+--     in any language. Read services/shared/voice-pace.cjs for the rule; every
+--     mention of "belt" below is historical framing.
+--   * THE RATIO IS NOW MEASURED FROM THE PROVIDER APIs, not from the estate.
+--     Tom: "Azure voices were recorded at non 1.0x speeds so we can only use
+--     the providers APIs for the voice as the truth - not the recordings we
+--     have in the estate". One identical sentence per language, rendered fresh
+--     at 1.0x — tools/voice/measure-provider-pace.cjs. natural_pace_method
+--     names which measurement a row carries, which is exactly what that column
+--     was put there for.
+--   * The ratio is normalised within LANGUAGE only, not (language, role): with
+--     one controlled sentence there is no role dimension, because a voice
+--     speaks at one pace.
+--
 -- Tom, 2026-08-29, looking at the learner player's belt ramp:
 --
 --   "we're minting everything at 1.0x but the target languages are then played
