@@ -120,3 +120,76 @@ chapter; lopsided balance inside a unit, even across the set; precision is the p
 only where they generalise; methodology terms travel as loanwords; stage-adjacency retired.
 
 ---
+
+## 2. Session one — Chapters 1 to 7
+
+---
+
+### Chapter 1 — *Part one of eighteen million* — the whole future of education stands on what one act of learning actually is
+
+**Point:** if we are wrong about what one act of learning is, we build the wrong everything — so
+the seven-billion-minds sentence is not allowed to escape the smallest question there is.
+
+**Shapes traversed:** N1 open (1:11–15, 4:13–19) · **the stacked commission** (form attested at
+1:292–299) · joint construction, m2, three times (the completion at 4:27–30 with the attested
+roles) · meta-comment on the medium, m12 (1:213–215, 1:381) · backchannel ratification, m10 ·
+topic parking, m19 — the names fight parked for Chapter 4, said out loud · the co-owned line,
+m20 · **planted for Chapter 11:** the funnel, and the deal — small end first, then the future.
+
+**Holds (heard) — every turn at or over 3× the chapter median:** turn 8 (Tom, the stack, 49),
+turn 10 (Aran, the wide end, 63), turn 15 (Tom, the sky, 78), turn 23 (Aran, the edges story
+wearing new clothes, 60), turn 25 (Tom, the small end, 52). The owned moves — *Of four* (2),
+*Do some cool shit* (4), *They never run out* (4), *I'm having that one* (4) — are all short.
+
+**Sources & mints:** the spine and the ornithologist are canon §1b, compressed but not altered
+— "that's all learning is" is Tom's verbatim; the label-arriving-last is canon §1's own
+cross-modal table; the seven-billion sentence is 4:21–31 near-verbatim with its attested
+completion; the edges story is 1:112–124. MINTED: "warehouses for receipts" — a construction
+resting on canon §1's naming-is-consequence finding, and it is co-owned in place so that the
+minting is audible; the funnel container; Aran's "we couldn't say the small end five years ago",
+which is true of the corpus but is my sentence, not his.
+
+| | |
+|---|---|
+| TOM | Right. This is Tom and Aran talking bollocks, part five. |
+| ARAN | Of four. |
+| TOM | Part five of four. Five years and one lockdown late. |
+| ARAN | Are you still going to put "part five of eighteen million"? |
+| TOM | Who knows. Let's just start anywhere. |
+| ARAN | We said that last time and it took four parts to reach the future of education. Start there. What's the actual question? |
+| TOM | Okay — three of them, stacked, take them in any order. What is education for, if we get to rebuild it from nothing? What would we build first? And what does one act of learning actually consist of — because I don't trust either of us on the first two until we've done that one. |
+| ARAN | That's not a stack, that's a funnel. |
+| TOM | It's a funnel. Take the wide end. |
+| ARAN | The wide end is the same as it was five years ago, and I'll say it fast because it's big. None of this happens on its own. Schooling is one piece of a complex adaptive system, and the end of the game has to be seven billion connected, happy, enthusiastic minds who can solve complicated problems— |
+| TOM | Do some cool shit. |
+| ARAN | —very, very quickly. Yes. Through whatever bottleneck is coming. That end hasn't moved. What's changed is that I think we can now actually say what the small end of your funnel is. Five years ago we couldn't. |
+| TOM | Go on then. Smallest thing there is. One act of learning. |
+| ARAN | You first. I've heard the bird one. |
+| TOM | The bird one. You're looking at the sky. The first thing you notice is that some of the darkness is changing — something rather than nothing. Then that the moving thing isn't the background. Then that some of the moving things keep their size and some don't, some flap and some don't, the flappy ones come closer. And you keep going — bird, then blackbird, then young blackbird, then that blackbird's not well — and at no point did anyone hand you a rule. You kept telling differences apart until the differences ran out. |
+| ARAN | They never run out. |
+| TOM | They never run out. That's the ornithologist. The ornithologist is not doing a different thing from the baby. The ornithologist is the baby who didn't stop. |
+| ARAN | And the word arrives when? |
+| TOM | Last. You say bird once the pattern has held long enough to be worth a label. The label is a receipt for a distinction that already stabilised. It's not the thing that does the stabilising. |
+| ARAN | Hold that one, because I want to fight you about it properly and I don't want to do it in the first ten minutes. |
+| TOM | Noted and parked. You'll lose. |
+| ARAN | We'll see. |
+| ARAN | But as far as it goes — that's my edges story wearing your clothes, isn't it. I spent twenty years saying you don't know words, you know what's between them — which words plug into which, red bus, red house, never red went. You're saying the between is all there is, all the way down. Not just words. Birds. Everything. |
+| TOM | Everything. That's all learning is — increasingly fine distinctions on a signal that never stops being a signal. |
+| TOM | And that's why the seven billion minds don't get to float free of this. If we're wrong about what one act of learning is, we build the wrong everything, at scale, with conviction. Schools already did. They built for the labels. |
+| ARAN | Warehouses for receipts. |
+| TOM | …I'm having that one. |
+| ARAN | You can have it. So that's the deal for the rest of this — we do the small end properly first, and then we're allowed the future. |
+| TOM | Agreed. And the recording still can't pick up your hands. |
+| ARAN | They still haven't found a way. I'm drawing the funnel. It's a lovely funnel. |
+| TOM | It's mostly a triangle. |
+| ARAN | Everything is, in the end. |
+
+**Why this container:** the chapter runs the corpus's own open — the ritual, the eighteen-million
+joke, start-anywhere — and then does the one thing the corpus never did: refuses to start
+anywhere, and pins the whole recording to the smallest question. The stack is answered by
+inverting it, the biggest sentence in the pod lands inside the first ten turns and is immediately
+made to wait, and the names fight is parked in the open where the listener can hear the debt
+being taken on — Chapter 4 pays it. Three joint completions and two co-ownings make the
+peer-ness audible from the first minute: nobody is interviewing anybody.
+
+---
