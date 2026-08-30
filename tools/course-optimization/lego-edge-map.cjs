@@ -115,11 +115,92 @@ async function loadCourse(sb, courseCode) {
   return { legos, phrases };
 }
 
+
+/**
+ * CENSUS EXTENSION (2026-08-30, job: spa un-noded material census).
+ * Read-only, additive, and OFF unless UNNODED_OUT is set. Two accountings of the same tokens:
+ *   tolerant — the tool's original behaviour, a hard-coded target-side FREE_CLASS_ES let off;
+ *   strict   — no target-side free-class exemption at all; every token must be attributable.
+ * The methodology's free class is a KNOWN-side concept; a target-side one is this tool's own
+ * assumption, never a ruling, so both are reported and the strict one leads.
+ */
+const CENSUS = {
+  legoOrdinal: new Map(),      // token -> ordinal of the first LEGO whose whole target IS that token
+  compOrdinal: new Map(),      // token -> ordinal of the first COMPONENT stub that is that token alone
+  insideMultiword: new Set(),  // token that only ever appears inside a multi-word taught chunk
+  anywhere: new Set(),         // token appearing in ANY lego/component target anywhere in the course
+};
+
+/** Why could this token not be attributed? `useFreeClass` toggles the target-side glue exemption. */
+function classifyUnmatched(t, inventoryByPhrase, ownTargetToks, useFreeClass, ordinal) {
+  if (useFreeClass && FREE_CLASS_ES.has(t)) return 'free_class';
+  if (ownTargetToks.includes(t)) return 'own_lego';
+  if (/^(del|al|conmigo|contigo|consigo)$/.test(t)) return 'contraction';
+  // A real clitic attachment leaves a STEM the course actually teaches (explicarlo -> explicar,
+  // darselo -> dar). Requiring that stops "escuela" being written off as a clitic on its ending.
+  if (t.length > 4) {
+    const CL = /(melo|mela|selo|sela|telo|tela|nos|les|los|las|lo|la|le|me|te|se)$/;
+    let stem = t;
+    for (let k = 0; k < 2 && CL.test(stem); k++) {
+      stem = stem.replace(CL, '');
+      if (stem.length > 2 && (CENSUS.anywhere.has(stem) || CENSUS.anywhere.has(fold(stem))
+          || CENSUS.anywhere.has(stem + 'r') || CENSUS.anywhere.has(fold(stem) + 'r'))) {
+        return 'possible_clitic';
+      }
+    }
+  }
+  for (const key of inventoryByPhrase.keys()) {
+    if (key.indexOf(' ') !== -1) continue;
+    if (fold(key) === fold(t)) return 'accent_variant';
+    if (key.length > 3 && (fold(key).replace(/[oa]s?$/, '') === fold(t).replace(/[oa]s?$/, ''))) {
+      return 'agreement_variant';
+    }
+  }
+  const lOrd = CENSUS.legoOrdinal.get(t);
+  const cOrd = CENSUS.compOrdinal.get(t);
+  // A genuine LEGO that simply arrives later: an ordering fault, but the material IS taught.
+  if (lOrd !== undefined && lOrd > ordinal) return 'lego_taught_later';
+  // Never a LEGO of its own anywhere — it exists only as a component stub inside an M-LEGO,
+  // and that stub arrives later than this phrase. No walk can produce it here, or standalone ever.
+  if (lOrd === undefined && cOrd !== undefined) return 'component_only_and_later';
+  if (lOrd !== undefined) return 'lego_taught_earlier_unmatched';
+  if (CENSUS.insideMultiword.has(t)) return 'inside_multiword_only';
+  return 'never_taught_anywhere';
+}
+
+/** Build the course-wide token index the classifier consults. Called once per course. */
+function buildCensusIndex(legos) {
+  CENSUS.legoOrdinal.clear();
+  CENSUS.compOrdinal.clear();
+  CENSUS.insideMultiword.clear();
+  CENSUS.anywhere.clear();
+  legos.forEach((l, ordinal) => {
+    const keys = [{ k: norm(l.target_text), lego: true }];
+    for (const c of (Array.isArray(l.components) ? l.components : [])) {
+      const ck = norm(c && (c.target || c.target_text));
+      if (ck) keys.push({ k: ck, lego: false });
+    }
+    for (const { k, lego } of keys) {
+      if (!k) continue;
+      const ts = k.split(' ');
+      for (const t of ts) CENSUS.anywhere.add(t);
+      if (ts.length === 1) {
+        const m = lego ? CENSUS.legoOrdinal : CENSUS.compOrdinal;
+        if (!m.has(k)) m.set(k, ordinal);
+      } else {
+        for (const t of ts) CENSUS.insideMultiword.add(t);
+      }
+    }
+  });
+  for (const t of CENSUS.legoOrdinal.keys()) CENSUS.insideMultiword.delete(t);
+  for (const t of CENSUS.compOrdinal.keys()) CENSUS.insideMultiword.delete(t);
+}
+
 /**
  * Longest-match non-overlapping tiling of a token list against the introduced inventory.
  * Returns the LEGO ids covered and the tokens nothing could account for, each with a reason.
  */
-function tile(toks, inventoryByPhrase, maxLen, ownTargetToks, ownKeys) {
+function tile(toks, inventoryByPhrase, maxLen, ownTargetToks, ownKeys, ordinal) {
   const covered = [];
   const unmatched = [];
   let i = 0;
@@ -141,22 +222,11 @@ function tile(toks, inventoryByPhrase, maxLen, ownTargetToks, ownKeys) {
       continue;
     }
     const t = toks[i];
-    let reason = 'unknown';
-    if (FREE_CLASS_ES.has(t)) reason = 'free_class';
-    else if (ownTargetToks.includes(t)) reason = 'own_lego';
-    else if (/^(del|al)$/.test(t)) reason = 'contraction';
-    else if (/(lo|la|le|me|te|se|nos|los|las|les)$/.test(t) && t.length > 4) reason = 'possible_clitic';
-    else {
-      // agreement / accent variant of something we DO have
-      for (const key of inventoryByPhrase.keys()) {
-        if (key.indexOf(' ') !== -1) continue;
-        if (fold(key) === fold(t)) { reason = 'accent_variant'; break; }
-        if (key.length > 3 && (fold(key).replace(/[oa]s?$/, '') === fold(t).replace(/[oa]s?$/, ''))) {
-          reason = 'agreement_variant'; break;
-        }
-      }
-    }
-    unmatched.push({ token: t, reason });
+    unmatched.push({
+      token: t,
+      reason: classifyUnmatched(t, inventoryByPhrase, ownTargetToks, true, ordinal),
+      strictReason: classifyUnmatched(t, inventoryByPhrase, ownTargetToks, false, ordinal),
+    });
     i += 1;
   }
   return { covered, unmatched };
@@ -171,6 +241,9 @@ function analyse(courseCode, { legos, phrases }, regions) {
 
   const buildsByLego = new Map();
   const usesByLego = new Map();
+  const censusByLego = new Map();   // BUILD + USE, the 15,205-row population of the census
+  const censusRows = [];
+  buildCensusIndex(legos);
   for (const p of phrases) {
     const k = `S${String(p.seed_number).padStart(4, '0')}L${String(p.lego_index).padStart(2, '0')}`;
     if (p.phrase_role === 'build') {
@@ -178,6 +251,10 @@ function analyse(courseCode, { legos, phrases }, regions) {
       buildsByLego.get(k).push(p);
     } else if (p.phrase_role === 'use') {
       usesByLego.set(k, (usesByLego.get(k) || 0) + 1);
+    }
+    if (p.phrase_role === 'build' || p.phrase_role === 'use') {
+      if (!censusByLego.has(k)) censusByLego.set(k, []);
+      censusByLego.get(k).push(p);
     }
   }
 
@@ -222,7 +299,7 @@ function analyse(courseCode, { legos, phrases }, regions) {
         declared.add(tileRow.legoId);
       }
 
-      const m = tile(tokens(p.target_text), inv, maxLen, ownToks, ownKeys);
+      const m = tile(tokens(p.target_text), inv, maxLen, ownToks, ownKeys, lego.ordinal);
       const wholeHits = m.covered.filter((h) => !h.viaComponent);
       const componentHits = m.covered.filter((h) => h.viaComponent).length;
       const matched = new Set(wholeHits.map((h) => h.lego.lego_id));
@@ -305,6 +382,30 @@ function analyse(courseCode, { legos, phrases }, regions) {
     });
     phraseRows.push(...perPhrase.map((p) => ({ ...p, lego_id: lego.lego_id, region: regionOf(regions, p.seed) })));
 
+    // CENSUS: the same accounting over BUILD *and* USE phrases, itemising un-noded material.
+    for (const p of (censusByLego.get(lego.lego_id) || [])) {
+      const m = tile(tokens(p.target_text), inv, maxLen, ownToks, ownKeys, lego.ordinal);
+      const strict = m.unmatched;
+      const tolerant = m.unmatched.filter((u) => u.reason !== 'free_class');
+      if (!strict.length) continue;
+      censusRows.push({
+        phrase_id: p.id,
+        seed: p.seed_number,
+        lego_id: lego.lego_id,
+        lego_index: p.lego_index,
+        role: p.phrase_role,
+        region: regionOf(regions, p.seed_number),
+        known: p.known_text,
+        target: p.target_text,
+        lego_known: lego.known_text,
+        lego_target: lego.target_text,
+        unnoded_strict: strict.map((u) => ({ token: u.token, reason: u.strictReason })),
+        unnoded_tolerant: tolerant.map((u) => ({ token: u.token, reason: u.reason })),
+        offending_strict: strict.length > 0,
+        offending_tolerant: tolerant.length > 0,
+      });
+    }
+
     // Only now does this LEGO join the inventory — no forward references.
     const key = norm(lego.target_text);
     if (key && !inv.has(key)) {
@@ -323,7 +424,7 @@ function analyse(courseCode, { legos, phrases }, regions) {
   // Which nodes are ever re-used as an edge partner after their own debut?
   for (const l of legoRows) l.reusedAsPartner = partnerUse.get(l.lego_id) || 0;
 
-  return { courseCode, legoRows, phraseRows, regions };
+  return { courseCode, legoRows, phraseRows, regions, censusRows, censusTotal: [...censusByLego.values()].reduce((a, v) => a + v.length, 0) };
 }
 
 function pct(n, d) { return d ? (100 * n / d).toFixed(1) + '%' : '—'; }
@@ -447,6 +548,49 @@ function report(res) {
   return lines.join('\n');
 }
 
+/** The un-noded census, reported under both accountings side by side, strict first. */
+function censusReport(res) {
+  const { courseCode, censusRows, censusTotal } = res;
+  const lines = [];
+  const say = (x) => { lines.push(x); console.log(x); };
+  say(`\n═══ ${courseCode} — UN-NODED MATERIAL CENSUS (BUILD + USE, components excluded) ═══`);
+  say(`population: ${censusTotal} phrases`);
+
+  for (const mode of ['strict', 'tolerant']) {
+    const key = mode === 'strict' ? 'unnoded_strict' : 'unnoded_tolerant';
+    const rows = censusRows.filter((r) => r[key].length);
+    say(`\n— ${mode.toUpperCase()}: ${rows.length} phrases (${pct(rows.length, censusTotal)}) carry un-noded material`);
+    const byReason = {};
+    const byToken = new Map();
+    for (const r of rows) {
+      const seen = new Set();
+      for (const u of r[key]) {
+        byReason[u.reason] = (byReason[u.reason] || 0) + 1;
+        if (seen.has(u.token)) continue;
+        seen.add(u.token);
+        if (!byToken.has(u.token)) byToken.set(u.token, { token: u.token, phrases: 0, reasons: {} });
+        const e = byToken.get(u.token);
+        e.phrases += 1;
+        e.reasons[u.reason] = (e.reasons[u.reason] || 0) + 1;
+      }
+    }
+    say('  reasons (token occurrences):');
+    for (const [k, v] of Object.entries(byReason).sort((a, b) => b[1] - a[1])) say(`    ${String(v).padStart(6)}  ${k}`);
+    const ranked = [...byToken.values()].sort((a, b) => b.phrases - a.phrases);
+    const top = ranked.slice(0, 20);
+    say(`  distinct pieces of material: ${ranked.length}; top 20 spoil ${top.reduce((a, t) => a + t.phrases, 0)} phrase-hits`);
+    say('  token        phrases   dominant reason');
+    for (const t of top) {
+      const dom = Object.entries(t.reasons).sort((a, b) => b[1] - a[1])[0][0];
+      say(`  ${t.token.padEnd(12)} ${String(t.phrases).padStart(7)}   ${dom}`);
+    }
+    res[`${mode}Ranked`] = ranked;
+    res[`${mode}Reasons`] = byReason;
+    res[`${mode}Offenders`] = rows.length;
+  }
+  return lines.join('\n');
+}
+
 (async () => {
   const courses = process.argv.slice(2).filter((a) => !a.startsWith('--'));
   if (!courses.length) { console.error('usage: lego-edge-map.cjs <course_code> [...]'); process.exit(1); }
@@ -457,7 +601,23 @@ function report(res) {
     const data = await loadCourse(sb, c);
     const res = analyse(c, data, regions);
     report(res);
+    if (process.env.UNNODED_OUT) censusReport(res);
     all[c] = res;
+  }
+  if (process.env.UNNODED_OUT) {
+    const c0 = courses[0];
+    const r = all[c0];
+    fs.writeFileSync(process.env.UNNODED_OUT, JSON.stringify({
+      course: c0,
+      generated: new Date().toISOString(),
+      population: { table: 'course_practice_phrases', roles: ['build', 'use'], components_excluded: true, phrases: r.censusTotal },
+      accountings: {
+        strict: { description: 'no target-side free-class exemption; every target token must be attributable to an introduced LEGO or component', offending_phrases: r.strictOffenders, reasons: r.strictReasons, ranked_material: r.strictRanked },
+        free_class_tolerant: { description: "lego-edge-map's hard-coded FREE_CLASS_ES let off", offending_phrases: r.tolerantOffenders, reasons: r.tolerantReasons, ranked_material: r.tolerantRanked },
+      },
+      phrases: r.censusRows,
+    }, null, 1));
+    console.log(`\nun-noded enumeration → ${process.env.UNNODED_OUT}`);
   }
   if (process.env.EDGE_OUT) {
     fs.writeFileSync(process.env.EDGE_OUT, JSON.stringify(all, null, 1));
