@@ -476,3 +476,83 @@ because on this ground they genuinely agree, and the heat has to come from the s
 which is why the chapter ends on the bus and not on a hug.
 
 ---
+
+### Chapter 6 — *An hour a year* — elapsed time and total effort are different axes
+
+**Point:** the inversion of Pimsleur puts effort at the centre of memory, which splits the axes
+— minimum elapsed time and minimum total effort genuinely pull apart — and Tom's theory is named
+after one axis while its mathematics lives on the other; the chapter ends with the name kept,
+the caveat sentenced to travel with it forever, and the question of which axis is the promise
+still open.
+
+**Shapes traversed:** anecdote as evidence, m4, with its flags flown (sample size one, named as
+such) · N14 premise audit — Tom's *how do we know that?*, at its attested site (1:336–341) ·
+**the specimen** — Tom's two Mandarin days, narrated as his own data point (1:388–391) ·
+reformulation, m1, **refused** · provisional flag, m11 (the caveat that travels) · **callback,
+m8 → Chapter 3** (the subscription, closing line) · joint construction, m2.
+
+**Holds (heard):** turn 1 (Aran, Pimsleur and the inversion, 80), turn 5 (Aran, the sixteen
+months, 76), turn 8 (Tom, the audit — where are we with Bjork, 54), turn 9 (Aran, the honest
+downgrade, 62), turn 13 (Tom, the Mandarin days, 66), turn 17 (Aran, the two axes, 58), turn 23
+(Tom, Fermat, 61), turn 25 (Aran, the name buys a conflation, 57). The owned moves — *Just
+after* (2), *Sixteen months?* (2), *We think* (2), *But so is speed* (4), *The name stays* (3) —
+are all short.
+
+**Sources & mints:** Pimsleur's just-before, Bjork's desirable difficulty, the inversion, the
+sixteen-month Manx protocol, the guaranteed forget and next-day nail, the X and Y axes, the hour
+a year for thirty years, the day a year for three to four, Tom's two Mandarin days, intelligent
+laziness, "efficiency is lovely, but so is speed", speed-means-now, and the Cardiff 4,000-words
+line are all Part 1 near-verbatim in their attested voices (1:301–344, 1:353–421); "how do we
+know that… proven scientific fact… or one man in California with a good idea and us with a
+feeling" is Tom's, at its attested site; least-time learning, the Fermat shape, the effort-time
+functional and the naming defence ("time is not smuggling in any confusions, unlike action") are
+the ruled canon (mission; archive §Least-time — including the archive's own warning that the
+name invites this exact conflation, here given to Aran as the attack). MINTED: Aran's
+"sharing a unit is how conflations get in the building" and the elapsed-time-animal charge —
+constructions for his side of a fight the estate flags but never voices; the closing
+subscription callback.
+
+| | |
+|---|---|
+| ARAN | My turn to bring the loaded gun. Pimsleur — first person to build spaced repetition into language courses, and clever about it. He said repetitions collapse in value, so revisit the word just before you forget it. And it's a lovely rule and everyone still quotes it, and I think he made one interesting, non-obvious mistake. Because then Bjork comes along with desirable difficulty: the early repetitions fail precisely because they're too easy. Say pysgod ten times in a row and you're not forming a memory at all. The act of making effort is a significant contributor to the act of forming the memory. And if effort is implicated in memory formation — then Pimsleur is inverted. The right time to revisit isn't just before you forget. |
+| TOM | Just after. |
+| ARAN | Just after. Or long after. So I started stretching the gap, on myself, to find the edge. A week — still too easy. A month. Kept going. |
+| TOM | Sixteen months? |
+| ARAN | Sixteen months, and here's the protocol, because the shape of it matters. Teach me a sentence of Manx on day one — I want to watch football at the weekend. Leave it sixteen months, no contact. Prompt me: guaranteed, absolutely guaranteed, I cannot produce it. That was sixteen months ago, up yours. So you tell me the answer — once. Come back the day after that and ask again, and I have got it nailed. The struggle followed by the restimulation. Five repetitions total, spread over a year and a half, and it holds like a rock. |
+| TOM | Sample size? |
+| ARAN | One. Hello, me. Plus a steady trickle of other people's letters saying the same shape, which is a pile of anecdotes and not a study, and I fly that flag myself before you reach for it. |
+| TOM | Then let me do the thing properly, because I did it to you five years ago and I'd do it again. How do we know that? Effort makes the memory — I feel it's true, it seems to work. But where are we, actually? Is it mapped, peer-reviewed, "proven scientific fact"? Or is it one careful man in California with a good idea, and us with a feeling? |
+| ARAN | Closer to the man in California, still. Bjork's careful and the work is good, and proven is not the word. What I've got on top is me, testing myself for years, and other people's letters. That's not proof; that's a story with a flag on it. So — we think. We don't know. We think. |
+| TOM | We think. Held. And the practice works anyway, which is the strangest part of this whole field — truth in the practice with no consistency about the why. |
+| ARAN | Ebbinghaus all the way down. Now cash it, because the inversion isn't a curiosity — it splits your world in half. If longer gaps mean fewer total repetitions, then there are two different things you could be minimising, and they are not the same thing. |
+| TOM | Say the axes. |
+| ARAN | X: minimum elapsed time from start to ability. Y: minimum total effort to get there. And they pull apart, genuinely. Down at my end of Y: an hour a year for thirty years and you'll speak the language — the model breaker, and I think it would broadly work. A day a year, and three or four years in you're having conversations that make you proud. Almost no effort, spread over a decade. Nobody sells that product, because nobody believes it until it happens to them. |
+| TOM | It happened to me, so let me be the exhibit. Two days of Mandarin, a year apart, that's all — and by the end of the second day I had more felt competence than a hard month has ever given me. Thinking in Chinese, feeling the structures move, the works. Two days. The system is extraordinary and what it is, is intelligent laziness — I got a month's mountain for two days of walking, because the year in between did the carrying. |
+| ARAN | And then say the next thing you said, five years ago, because it's the other half and you always forget you said it. |
+| TOM | …That if I actually needed Chinese by the end of October, the method was no use to me, because the course didn't exist yet and the gaps do the work and gaps take calendar. |
+| ARAN | Efficiency is lovely. But so is speed. |
+| TOM | Speed means you can start using it now. And using it is where all the actual value lives — the conversations, the connections, the compounding. An hour a year optimises the integral and forfeits a decade of use. |
+| ARAN | So: two axes, two honest products, and every learner sits somewhere on the trade — the heritage learner who wants five sentences for her great-grandfather is at one corner, your October deadline is at the other, and the bootcamp-year-bootcamp is a bet placed on both at once. All fine. Now — your theory. Name it for the recording. |
+| TOM | Least-time learning. |
+| ARAN | Mm. Go on, the whole shape. |
+| TOM | Fermat. Light takes the path of least time through a medium; the subject is the medium, distinction density is the refractive index, the learner is the ray, and the curriculum is the geodesic. The quantity being minimised is learner effort-time — the felt cost at the blink, the hesitations, the debt when a false bridge gets repaid. Everything the theory prices, it prices in that currency. |
+| ARAN | Effort-time. Which is my Y axis. You've built a least-EFFORT theory, and you've hung least-TIME over the door. And I want to run your own shop rules on your own signage: a name is bought when payoff beats cost. What this name buys you is a conflation — because intensives sell speed, polyglots hear "least time" and think October, and your theory will get credit and blame for an axis it doesn't live on. Elapsed and integrated are different quantities that happen to share a unit, and sharing a unit is exactly how conflations get into a building. |
+| TOM | I priced the alternatives. Least-action is righter and worse — "action" charges a parse toll and drags half of physics in with it. Time is owned by everyone. The name is honest at the level of the unit, and the unit is where the theory does its accounting. |
+| ARAN | The unit is where the theory does its accounting, and the AXIS is where the customer does theirs. |
+| TOM | So what you're saying is I should rename it least-effort learning. |
+| ARAN | No. I'm saying you haven't decided which product you're selling, and the name is hiding the indecision from you. The hour-a-year learner and the bootcamp learner are buying different promises, and one brand is currently making both of them. That's not a signage problem. |
+| TOM | Then here's what I'll give you, and it's all I'll give you. The name stays. And the caveat travels with it — said out loud, every time, forever: least-time is an effort theory, and any compressed intensive is optimising the other axis. |
+| ARAN | Then you'll be saying that sentence for the rest of your life. |
+| TOM | Good. Some subscriptions are worth the standing order. |
+| ARAN | And which axis is the promise? Because "both" is not an answer, it's a brochure. |
+| TOM | I know. Not tonight. |
+
+**Why this container:** the fork here is the strangest kind — Aran attacking Tom with material
+that is entirely Aran's own, and Tom defending a theory whose warning label the estate wrote
+before this conversation existed. The audit beat sits at its attested site so that Chapter 7 can
+turn the same question around; the specimen puts Tom's own behaviour in evidence against his own
+functional; and the chapter is careful to end on the unanswered question rather than the
+concession, because the concession — the travelling caveat — is procedural, and the fork —
+which axis is the promise — is not.
+
+---
