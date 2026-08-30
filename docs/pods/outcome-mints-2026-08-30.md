@@ -192,3 +192,120 @@ patient side (2.7 f2, 2.10 f2). Class: non-delivery.
 learner in the other seat (2.7 f2, 2.10 f2 refusing from above; 1.3 f3, 2.6 f3, 2.3 f3 absorbing
 from above).
 **Smoke test:** passes — the counter that does not negotiate is universal.
+
+---
+
+## 3. O3 — The native does not understand you
+
+**The shape.** The symmetric arm walks **N6 Repair with the seats reversed** — the store already
+keys O3 to N6, and the role-neutrality rule the health mapping fixed (who occupies a position does
+not change the position) means no new node is needed when the request for repair arrives. The
+asymmetric arm needs one, because **no request arrives**:
+
+`N202 Silent repair`:
+
+| index | name | family |
+|---|---|---|
+| 1 | turn | — |
+| 2 | wrong uptake — the other party acts on what they think they heard | **F205** |
+| 3 | notice, and reformulate — shorter, slower | F8 |
+| 4 | check it landed — a read-back, theirs or yours | F9 (bound with 3) |
+| 5 | resume | F1 |
+
+**Why not N6.** N6 position 2 is F7: the listener *says* they did not understand. N202 position 2
+is a grant — the wrong one — and the non-understanding is visible only in its content. The store has
+no position for *noticing you were not understood*; every repair it holds begins with someone saying
+so. Health's natives, too, all say so (2.5 f2 "could you explain that again?", 2.2 f2 "do you mean the
+pain or the dizziness?") — which is why the asymmetric arm is minted for the form and not the recovery.
+
+**One new move. F205 "Wrong, and doesn't know it"** — *The responder grants what they believe was
+asked. The mishearing is visible only in the grant; no repair is requested and no doubt is shown.*
+Distinct from F1 (the right grant) and F4 (a hedged grant — the responder knows they are unsure).
+Attested nowhere in either corpus: every grant in pod-0 is correct, every read-back in health is correct
+(the mapping's O4 finding). Universal at any counter with a queue.
+
+**The three forms of not being understood, and which two are here.** A flat "Sorry?" (F7 — the
+request arrives); a wrong answer to a question you did not ask (F205 — you must notice); and the
+switch to English. The first two are O3 and are the two arms below. **The third is not O3.** Switching
+language is the native re-negotiating the *medium* — it is the failure branch of health's `N101
+Medium contract`, and its recovery (hold the language, or accept the switch without shame) is a
+different shape. Named here so it is not mistaken for a missing arm.
+
+**The two arms carry the two forms, and that is deliberate.** An equal asks you to repeat. A counter
+processes. Not a law — a barista can make the wrong drink — but at a window with a queue, acting on
+the mishearing is the mode, and it is the form whose recovery the learner least owns.
+
+### W203 — The café — symmetric
+
+**Hangs off** W1 step 2, `g11` — the shortest, most drilled ticket the learner owns. The store sites O3
+on `g38`→`g43` (scene 7's café order); **those rows carry no surface text anywhere on disk and the
+database was out of scope for this job, so the arm sits on scene 3's café order, the same mask and
+the same position (N2.2), where the text is in the store.** Named gap, §10. **The learner is Sarah.**
+**Register:** symmetric — the barista has a queue but no record and no licence to give up on you;
+the check comes back unprompted.
+
+| | |
+|---|---|
+| Barista `g10` | Good afternoon. What can I get you? |
+| Sarah `g11` | Good afternoon. I'd like a coffee, please. With milk but with no sugar. To take away. |
+| *— the fork. W1's arm: understood, and the walk goes on at* `g14`*. The arm minted here:* | |
+| Barista | Sorry? |
+| Sarah | A coffee. Milk, no sugar. OK? |
+| Barista | Milk, no sugar. To have in? |
+| Sarah | Take away. |
+| Barista `g18` | Here's your coffee. |
+| Sarah `g19` | Thank you very much. Goodbye. |
+
+**The recut.** `g11` is fifteen words in four clauses; the reformulation is five words and a tag. Not
+louder, not the same words again — cut to the load-bearing ones, and the tag is the learner's check.
+The barista's read-back confirms it landed *and* is the counter-question that walks straight back into
+the option-choice pair (P1) — so the repair composes into the order (C202) and the walk resumes on
+`g18`. Eight turns, two minted learner turns.
+
+**Recovery:** reformulate your own turn — shorter, slower — and check it landed.
+**The wrong arms:** repeat verbatim, louder; apologise and account for yourself (`g33`'s "I'm
+learning [target language]…" is the learner *requesting* repair — F7 — and it is the wrong shape when
+the learner is the one being asked); switch to English.
+**Survivability:** **S203** — *any turn the learner produces is attemptable only if reformulating it
+on demand is owned (N6 reversed: F8 spoken by the learner)*. Attested in health with the learner
+reformulating (2.5 f2 — "an infection in the tubes of your lungs — a bug, basically" / "Now I
+understand you" / "Does the rest make sense?", the complete recovery including the check); never in
+pod-0. Class: chaining.
+**Attestation:** minted from nothing in this register; the recovery sequence rests on health 2.5 f2.
+Method Pod Scene 17 is the sibling mint (the recut, between friends).
+**Smoke test:** passes — the tag-check is the least translatable surface here and the position holds
+without it.
+
+### W204 — The ticket window — asymmetric
+
+**Hangs off** `g148` "Two return tickets to town, please" — a drill row, learner-side, with no partner
+in the corpus. **The learner is the Learner.** **Register:** asymmetric — the clerk holds the
+instrument (the machine that has already printed something), the queue, and the licence not to ask.
+He acts; he does not apologise; the mishearing arrives as a price.
+
+| | |
+|---|---|
+| Learner `g148` | Two return tickets to town, please. |
+| *— the fork. The happy arm: "Two returns. Eight forty." The arm this walk follows:* | |
+| Clerk | Two singles to town. Four twenty. |
+| Learner | No — return. There and back. Return? |
+| Clerk | Two returns. Eight forty. |
+| Learner | Yes. Thank you. |
+
+**What the learner has to do that no request tells them to do.** Hear "singles" against the "return"
+they said; stop the transaction on a single word; reformulate with a paraphrase ("there and back") and
+a check; take the corrected read-back. The clerk's correction is flat — no "sorry", no second
+question — which is the register. Five turns, two minted learner turns; the shortest scene in the set
+and the one with the most inside a turn.
+
+**Recovery:** notice you were not understood; reformulate; check it landed.
+**The wrong arms:** pay four twenty; ask "sorry?" back (F7 from the wrong seat — you heard him fine);
+explain at length; switch to English.
+**Survivability:** **S204** — *surviving a wrong uptake (N202) is attemptable only if the read-back
+pair is owned (P3, F9)* — a wrong grant can only be caught by a learner who can hear a read-back as a
+read-back. Recovery attested never, in either corpus. Class: failure — the class pod-0's ten edges
+never use and health's five do; used here on the same terms.
+**Attestation:** minted for the form; recovery rests on health 2.5 f2 / 2.2 f2 / 1.4 f2 for the
+reformulate-and-check sequence.
+**Smoke test:** passes. A counter that processes what it thinks it heard exists wherever there are
+counters.
