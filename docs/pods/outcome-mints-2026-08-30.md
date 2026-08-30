@@ -1,11 +1,13 @@
-# The four minted outcome shapes — both registers
+# The four minted outcome shapes — across the ladder of asymmetry
 
 **2026-08-30.** The four outcome shapes the store classes `minted` — attested nowhere, in either corpus
-— written as scenes, each in two registers, each hung off a fork POD-1 already has. Nothing here
-executes: the proposal is JSON that `index.cjs` does not load
+— written as scenes, each hung off a fork POD-1 already has, and placed on the estate's ladder of
+asymmetry so that the thing that changes each shape can be named. Nothing here executes: the proposal
+is JSON that `index.cjs` does not load
 (`services/shared/metagraph/proposed/outcome-mints-2026-08-30.json`), and this is a document. No
 course content, pod row, audio or database is touched. POD-1 is attested evidence and is extended,
-never re-cut. The plan this was written against: `outcome-mints-plan-2026-08-30.md`.
+never re-cut. The plan this was written against — `outcome-mints-plan-2026-08-30.md` — predates
+Tom's correction below and still says "two registers"; the scenes it planned stand, the framing does not.
 
 ---
 
@@ -18,54 +20,103 @@ itself here and is left alone:** `outcome-shapes.json` still carries `sequence: 
 (every ask presupposes both); the store's array picked O3 on latency, the ruling picks O1, and the
 ruling wins. The store is not edited to match; the discrepancy is recorded here and in the proposal.
 
-**Eight scenes, four shapes, two registers each.** No register was found not to apply.
+**Asymmetry is graded, and it has kinds — Tom's correction, which re-cuts the framing.** The brief
+asked for two flat registers, symmetric and asymmetric. That binary is wrong. In Tom's words: *the
+café is somewhat asymmetric in that the barista knows what they have — it is not two people having a
+discussion.* So POD-1 is not the symmetric pole. There are four kinds:
 
-| | Symmetric — equals | Asymmetric — the other party holds the authority, the instrument or the record, and can end the encounter | Hangs off |
+| | kind | who holds… |
+|---|---|---|
+| **K1** | information | the stock, the facts, the fare |
+| **K2** | authority | the licence to refuse, and to end the encounter |
+| **K3** | record and instrument | the ticket, the machine, the chart, the counter |
+| **K4** | body or stake | your body, your money, your child |
+
+The estate already sits at three points on this axis: **Talk Bollocks at rung 0** (two people
+discussing, neither holding anything over the other), **POD-1 at rung 1** (K1 — the server knows the
+stock), **health at rung 4** (all four, held by the professional). That is a ladder, not three builds
+— and it sharpens the health finding rather than undoing it: *That's normal, isn't it?* survives a
+barista and dies with a doctor precisely because the doctor holds K3, the instrument that decides what
+normal *is*.
+
+**The eight scenes were written as two registers and turn out to sit on four rungs.** Re-read
+against the kinds, no two of the upper scenes hold the same three — which is exactly what makes it
+possible to say which kind does the work:
+
+| walk | rung | kinds the other party holds | shape |
 |---|---|---|---|
-| **O1** Non-delivery with a reason | **W201 The taxi.** The driver's "No. The machine's not working." | **W202 The bus.** The corpus's own drill run given its partner — and its consequence. The doors close. | W14 step 3 / W15 (`g137`–`g139`, `g147`, `g159`–`g161`, `g163`) |
-| **O3** The native does not understand you | **W203 The café.** A flat "Sorry?" — the request arrives. | **W204 The ticket window.** No request arrives: the clerk *acts* on what he thinks he heard. The learner must notice. | W1 step 2 (`g11`) / `g148` |
-| **O6** Trouble that is your own fault | **W205 Saturday.** Late for the friend; the friend does not absolve. | **W206 The inspector.** The lost ticket, priced and not explained. | W4 step 3 (`g22`) / `g182`, `g183` |
-| **O7** The native discloses worry or difficulty | **W207 The acquaintance.** "I miss home, some days." | **W208 The chemist's.** The pharmacist steps out of frame; the learner must neither withdraw nor fix. | W5 step 6 (`g30`) / W12 step 6 (`g115`) |
+| W205 Saturday | **0** | — | O6 |
+| W207 The acquaintance | **0** | — | O7 |
+| W201 The taxi | **1** | K1 | O1 |
+| W203 The café | **1** | K1 | O3 |
+| W202 The bus | **3** | K1 K2 K3 | O1 |
+| W204 The ticket window | **3** | K1 K3, K2 weakly | O3 |
+| W206 The inspector | **3** | K2 K3 K4 — *no K1* | O6 |
+| W208 The chemist's | **3** | K1 K3 K4 | O7 |
+| Health, Aran's 73 flows | **4** | K1 K2 K3 K4 — held by the **learner** | all four, mirror seat |
+| Method Pod Scenes 24 · 17 · 39 · 36 | **0** | — | all four, listening only |
 
-**Two shapes could not keep the store's sited mask in both registers, and the reason is a finding.**
-The chemist's (O7's site) and the ticket (O6's site) are asymmetric by construction — a counter with
-a record; a gatekeeper's object. Their symmetric arms sit on the nearest fork POD-1 has between
-equals, with the identical position sequence. That is the register varying, not the mask fanning:
-the shape is the same, the seat is different.
+**Which kind changes which shape, and where.** The finding, one line each; the evidence is §7a.
+- **O1 changes twice.** At **K1** the reason becomes a fact and *pressing* dies (you cannot argue
+  with "we only take cash"). At **K2** the settle disappears and absorb-and-move must fit in one
+  turn, because the other party can end it. K3 only gives the reason its form; K4 raises the cost.
+  Rung 0 to rung 1: the shape is invariant, only the wrong arms change.
+- **O3 changes at K3.** The instrument turns a mishearing into an *act* before you can check, and
+  the request for repair never arrives — the silent form, N202. K2 adds the clock. **K1 does
+  nothing** — information has nothing to do with being heard. At **K4** a wrong uptake on a body
+  stops being O3 altogether and becomes health's O101, the halt.
+- **O6 changes at K2 and K3.** K2 moves who prices the consequence (the admitter at rung 0, the
+  other party from rung 2). K3 decides whether your supply counts — the record beats the account.
+  K1 changes the *other party's* turn at the top of the ladder: knowing "a lot of people do" licenses
+  normalising before holding (F102 then F16, health 2.7 f3), a softening only the K1-holder can offer.
+- **O7 is invariant across the whole ladder.** *Acknowledge without fixing, then continue* survives
+  unchanged from two strangers at a bus stop to a ward round. What the ladder changes is (a) **who
+  gets to disclose as an aside** — a K1-holder *processes* the other party's trouble, which is why
+  `g110`→`g111` turns a disclosure into an elicit and is right to, and (b) **how hard the recovery
+  is to hold** — harder with every kind the receiver holds, until at rung 4 the receiver holds the
+  means and mostly fixes. An outcome invariant across the ladder is a stronger trunk result than one
+  that needs a register, and O7 is the one.
 
-**Attestation, honestly.** Health attests three of the four asymmetric *shapes* — with the learner in
-the **power** seat, because Aran's HW is the second-language speaker. The arms here put the learner
-**under** the power, because that is the seat a learner is in at a counter, a desk, a door. Same
-position sequence, seats swapped, different turns for the learner to produce:
+**Two shapes could not keep the store's sited mask at a low rung, and the reason is the same
+finding.** The chemist's (O7's site) and the ticket (O6's site) are rung 3 by construction — a counter
+with a record; a gatekeeper's object. Their rung-0 arms sit on the nearest fork POD-1 has between
+people who hold nothing over each other, with the identical position sequence. The mask is not fanned;
+the rung is varied.
 
-- **O1-asym** rests on health for the shape (1.3 f3, 2.6 f3, 2.3 f3 — the learner absorbs a no from
-  below; 2.7 f2, 2.10 f2 — the learner refuses and the patient absorbs) and is minted for the seat.
-  Its rows are POD-1's own: every learner line in W202 already exists (`g147`, `g159`, `g160`,
+**Attestation, honestly.** Health attests three of the four shapes at rung 4 — with the learner
+**holding** the kinds, because Aran's HW is the second-language speaker. The upper-rung arms here put
+the learner **under** them, because that is the seat a learner is in at a counter, a desk, a door.
+Same position sequence, seats swapped, different turns for the learner to produce:
+
+- **O1 at rung 3 (W202)** rests on health for the shape (1.3 f3, 2.6 f3, 2.3 f3 — the learner absorbs
+  a no from below; 2.7 f2, 2.10 f2 — the learner refuses and the patient absorbs) and is minted for
+  the seat. Its rows are POD-1's own: every learner line already exists (`g147`, `g159`, `g160`,
   `g161`, `g163`); only the driver's turns are new.
-- **O3-asym** rests on health for the recovery (2.5 f2, 2.2 f2, 1.4 f2 — the learner reformulates
-  for a native who did not follow) and is minted for the *form*: health's natives ask; W204's clerk acts.
-- **O6-asym** rests on health for the shape (2.7 f3 — admit → hold → accept, patient below, one
-  two-sided attestation) and is minted for the seat.
-- **O7-asym is minted from nothing in this direction.** Health's eight O7 flows all have the patient
-  disclosing to the professional, and the professional fixing. That direction needs no mint here — it
-  needs the health pod, where it is attested and violated in the same breath.
-- **All four symmetric arms are minted from nothing** in the producing register. The Method Pod holds
-  sibling **mints** — not attestations — of each in its own listening register between two friends
-  (Scenes 24, 17, 39, 36). Those are evidence that the shapes can be *heard*; nothing before today
-  put them on a POD-1 fork the learner *produces* across.
+- **O3 at rung 3 (W204)** rests on health for the recovery (2.5 f2, 2.2 f2, 1.4 f2 — the learner
+  reformulates for a native who did not follow) and is minted for the *form*: health's natives ask;
+  W204's clerk acts.
+- **O6 at rung 3 (W206)** rests on health for the shape (2.7 f3 — admit → hold → accept, patient
+  below, one two-sided attestation) and is minted for the seat.
+- **O7 at rung 3 (W208) is minted from nothing in this direction.** Health's eight O7 flows all have
+  the patient disclosing to the professional, and the professional fixing. That direction needs no
+  mint here — it needs the health pod, where it is attested and violated in the same breath.
+- **The four rung-0 and rung-1 arms are minted from nothing** in the producing register. The
+  Method Pod holds sibling **mints** — not attestations — of each at rung 0 in its own listening
+  register between two friends (Scenes 24, 17, 39, 36). Those are evidence that the shapes can be
+  *heard*; nothing before today put them on a POD-1 fork the learner *produces* across.
 
 **The second axis, in one line:** cost of failing to recover does real work — it is the key that
-orders the two registers inside one shape and the tie-breaker between shapes of equal latency — and
-it is not a primary key: survivability and the ruling decide first. §7.
+orders the rungs inside one shape and the tie-breaker between shapes of equal latency — and it is
+not a primary key: survivability and the ruling decide first. §7.
 
 ---
 
 ## 1. How to read a scene
 
-Each scene declares, in the store's own register: the **position sequence** it walks
+Each scene declares, in the store's own id register: the **position sequence** it walks
 (`{index, name, family}`, as `nodes.json` does it); the **fork** it hangs off — a walk id, a step, a
 node position, and the `g<n>` rows it forks from; the **recovery** the learner must own, one sentence;
-the **register** and who holds what; its **survivability edges** — *B presupposes A if a learner who
+the **rung** — which of the four kinds the other party holds; its **survivability edges** — *B presupposes A if a learner who
 does not own A cannot recover when B goes off the expected path*, stated on the failure branch only;
 its **attestation**; the **smoke test**; and **the wrong arms** — the moves a learner reaches for and
 must not, because they are the defect the shape exists to cure.
@@ -115,11 +166,11 @@ and it is what "the learner does not already own".
   the patient side of 2.7 f2 "A week off the wine" and 2.10 f2 "Tomorrow, all being well. I'll settle
   for that" — the absorb; the move is not attested there either.
 
-### W201 — The taxi — symmetric
+### W201 — The taxi — rung 1: K1 only
 
 **Hangs off** W14 step 3: the P2 grant at `g139` gets a second arm. Stem rows `g137`, `g138`.
-**The learner is the Passenger.** **Register:** symmetric — neither party holds a record or an
-instrument that decides; neither can walk away with the fare unsettled; the settle is available to both.
+**The learner is the Passenger.** **Rung 1 — K1 only:** the driver knows the machine is broken, and that is all he holds — neither
+party holds a record or an instrument that decides; neither can walk away with the fare unsettled; the settle is available to both.
 
 | | |
 |---|---|
@@ -143,17 +194,17 @@ corpus's own line, which is what the bus scene shows the cost of); wait for the 
 **Survivability:** **S201** — *any ask (N2, N3, N9, P2) is attemptable only if a refusal with no
 substitute is survivable (N201)*. Recovery attested once in pod-0, in drill, as monologue (`g161`);
 in health as the learner absorbing from above (1.3 f3). Class: non-delivery.
-**Attestation:** minted from nothing in this register. Method Pod Scene 24 is the sibling mint — the
+**Attestation:** minted from nothing at this rung. Method Pod Scene 24 is the sibling mint — the
 *bare* no, held across two turns between friends.
 **Smoke test:** passes. The bare refusal attests in every column; in some the "reason" position is
 filled by silence, and the position sequence holds either way — the asker still has to move.
 
-### W202 — The bus — asymmetric
+### W202 — The bus — rung 3: K1, K2, K3
 
 **Hangs off** W15, the drill run the store already calls "the only ask-refusal-survival run in 231
 rows" and records as a defect (all four rows speaker = Learner). Every learner line below is POD-1's
 own: `g147`, `g159`, `g160`, `g161`, `g163`. What is minted is the partner — and what happens after
-`g161`, which the corpus stops at. **The learner is the Learner.** **Register:** asymmetric — the
+`g161`, which the corpus stops at. **The learner is the Learner.** **Rung 3 — K1, K2, K3:** the
 driver holds the instrument (the bus), the clock (the timetable) and the queue behind you, and can end
 the encounter by closing the doors. Nothing has to be explained to you. The power is in the "then".
 
@@ -183,7 +234,7 @@ production. The scene deliberately shows the split form and its price.
 
 **Recovery:** absorb the no; ask what is possible — in one turn, *because nobody will wait*.
 **The wrong arms:** plead ("Please, it's only eight forty"); explain yourself; stand there — the
-asymmetric arm's specific failure is silence, because silence is what the other party is licensed to
+upper rung's specific failure is silence, because silence is what the other party is licensed to
 answer with.
 **Survivability:** **S202** — *asking anyone who can end the encounter is attemptable only if
 absorb-and-move fits in one turn (F202)*. Recovery attested never in pod-0; in health only on the
@@ -197,10 +248,10 @@ from above).
 
 ## 3. O3 — The native does not understand you
 
-**The shape.** The symmetric arm walks **N6 Repair with the seats reversed** — the store already
+**The shape.** The rung-1 arm walks **N6 Repair with the seats reversed** — the store already
 keys O3 to N6, and the role-neutrality rule the health mapping fixed (who occupies a position does
 not change the position) means no new node is needed when the request for repair arrives. The
-asymmetric arm needs one, because **no request arrives**:
+rung-3 arm needs one, because **no request arrives**:
 
 `N202 Silent repair`:
 
@@ -216,7 +267,7 @@ asymmetric arm needs one, because **no request arrives**:
 is a grant — the wrong one — and the non-understanding is visible only in its content. The store has
 no position for *noticing you were not understood*; every repair it holds begins with someone saying
 so. Health's natives, too, all say so (2.5 f2 "could you explain that again?", 2.2 f2 "do you mean the
-pain or the dizziness?") — which is why the asymmetric arm is minted for the form and not the recovery.
+pain or the dizziness?") — which is why the rung-3 arm is minted for the form and not the recovery.
 
 **One new move. F205 "Wrong, and doesn't know it"** — *The responder grants what they believe was
 asked. The mishearing is visible only in the grant; no repair is requested and no doubt is shown.*
@@ -235,13 +286,13 @@ different shape. Named here so it is not mistaken for a missing arm.
 processes. Not a law — a barista can make the wrong drink — but at a window with a queue, acting on
 the mishearing is the mode, and it is the form whose recovery the learner least owns.
 
-### W203 — The café — symmetric
+### W203 — The café — rung 1: K1 only
 
 **Hangs off** W1 step 2, `g11` — the shortest, most drilled ticket the learner owns. The store sites O3
 on `g38`→`g43` (scene 7's café order); **those rows carry no surface text anywhere on disk and the
 database was out of scope for this job, so the arm sits on scene 3's café order, the same mask and
 the same position (N2.2), where the text is in the store.** Named gap, §9. **The learner is Sarah.**
-**Register:** symmetric — the barista has a queue but no record and no licence to give up on you;
+**Rung 1 — K1 only:** the barista knows what she has, and nothing more — a queue, but no record and no licence to give up on you;
 the check comes back unprompted.
 
 | | |
@@ -271,15 +322,15 @@ on demand is owned (N6 reversed: F8 spoken by the learner)*. Attested in health 
 reformulating (2.5 f2 — "an infection in the tubes of your lungs — a bug, basically" / "Now I
 understand you" / "Does the rest make sense?", the complete recovery including the check); never in
 pod-0. Class: chaining.
-**Attestation:** minted from nothing in this register; the recovery sequence rests on health 2.5 f2.
+**Attestation:** minted from nothing at this rung; the recovery sequence rests on health 2.5 f2.
 Method Pod Scene 17 is the sibling mint (the recut, between friends).
 **Smoke test:** passes — the tag-check is the least translatable surface here and the position holds
 without it.
 
-### W204 — The ticket window — asymmetric
+### W204 — The ticket window — rung 3: K1, K3, and K2 weakly
 
 **Hangs off** `g148` "Two return tickets to town, please" — a drill row, learner-side, with no partner
-in the corpus. **The learner is the Learner.** **Register:** asymmetric — the clerk holds the
+in the corpus. **The learner is the Learner.** **Rung 3 — K1, K3, K2 weakly:** the clerk holds the
 instrument (the machine that has already printed something), the queue, and the licence not to ask.
 He acts; he does not apologise; the mishearing arrives as a price.
 
@@ -295,7 +346,7 @@ He acts; he does not apologise; the mishearing arrives as a price.
 **What the learner has to do that no request tells them to do.** Hear "singles" against the "return"
 they said; stop the transaction on a single word; reformulate with a paraphrase ("there and back") and
 a check; take the corrected read-back. The clerk's correction is flat — no "sorry", no second
-question — which is the register. Five turns, two minted learner turns; the shortest scene in the set
+question — which is the rung. Five turns, two minted learner turns; the shortest scene in the set
 and the one with the most inside a turn.
 
 **Recovery:** notice you were not understood; reformulate; check it landed.
@@ -346,11 +397,11 @@ prices it themselves, before the other party can — and the Method Pod's Scene 
 between equals ("the half day is the price of having waited"). So position 4 is *the price, by whoever
 holds it*, and W205 and W206 fill it from opposite sides on purpose.
 
-### W205 — Saturday — symmetric
+### W205 — Saturday — rung 0: no kinds
 
 **Hangs off** W4 step 3, `g22` — the arrangement's last turn, "let's talk on Saturday. See you then."
 The corpus never shows Saturday. Draws on scene 19's `g190`–`g193` ("I don't want to be late", "I
-promise I won't be late"). **The learner is the Learner.** **Register:** symmetric — the friend holds
+promise I won't be late"). **The learner is the Learner.** **Rung 0 — no kinds:** the friend holds
 nothing but the evening and the option of having gone home; the consequence is relational, and the
 price is a promise.
 
@@ -377,14 +428,14 @@ wait to be absolved; skip the supply.
 can be absorbed (N201 position 3)* — accepting "I nearly went home" is absorbing a no. This is the
 edge that sequences O6 after O1. Recovery attested never in pod-0; health 2.7 f3 (patient side);
 Method Pod Scene 39 (mint). Class: relational.
-**Attestation:** minted from nothing in this register. Method Pod Scene 39 is the sibling mint.
+**Attestation:** minted from nothing at this rung. Method Pod Scene 39 is the sibling mint.
 **Smoke test:** passes, with the change to position 4 recorded above.
 
-### W206 — The inspector — asymmetric
+### W206 — The inspector — rung 3: K2, K3, K4 — and no K1
 
 **Hangs off** `g182`/`g183` — the admission the store says is "already written and already
-learner-side; all that is missing is the other party". **The learner is the Learner.** **Register:**
-asymmetric — the inspector holds the record (the ticket is his object), the sanction, and the train;
+learner-side; all that is missing is the other party". **The learner is the Learner.** **Rung 3 — K2, K3, K4,
+and no K1:** the inspector holds the record (the ticket is his object), the sanction, and the train;
 he does not have to explain the policy and does not.
 
 | | |
@@ -449,14 +500,14 @@ it back, take the bare no, name the doubt as allowed); pod-0 attests nothing.
 **The asymmetry explains `g110`→`g111`.** At a counter, the customer's trouble gets *processed* —
 that is what a counter is for — so the customer's disclosure becomes an elicit and the corpus is
 right to write it that way. The only disclosure that gets to be an aside at a counter is the one from
-behind it. That is why the asymmetric arm has the pharmacist disclose, not the customer, and why the
-symmetric arm cannot sit on the chemist's at all.
+behind it. That is why the rung-3 arm has the pharmacist disclose, not the customer, and why the
+rung-0 arm cannot sit on the chemist's at all.
 
-### W207 — The acquaintance — symmetric
+### W207 — The acquaintance — rung 0: no kinds
 
 **Hangs off** W5 step 6, `g30` "I'm from France. I've been here for two years." — the corpus's own
 disclosure-shaped line, which the walk passes straight over (`g31` "This is a lovely city. What do you
-do?"). **The learner is James.** **Register:** symmetric — two strangers, nothing held by either; the
+do?"). **The learner is James.** **Rung 0 — no kinds:** two strangers, nothing held by either; the
 discloser owns the frame and gives it back herself.
 
 | | |
@@ -486,11 +537,11 @@ pod-0 (`g110`→`g111` goes the other way); Method Pod Scene 36 (mint). Class: r
 **Attestation:** minted from nothing.
 **Smoke test:** passes, with the change to F204 recorded above.
 
-### W208 — The chemist's — asymmetric
+### W208 — The chemist's — rung 3: K1, K3, K4
 
 **Hangs off** W12 step 6, `g115` — the dosage instruction, mid-consultation. The store sites O7
 here: "the register shift is largest against a transactional frame, and the scene is already about a
-body". **The learner is the Customer.** **Register:** asymmetric — the pharmacist holds the counter,
+body". **The learner is the Customer.** **Rung 3 — K1, K3, K4:** the pharmacist holds the counter,
 the record and the queue; only she gets to step out of frame, and when she does the learner's seat
 offers two wrong exits (leave; help) and one right one (stay, and continue).
 
@@ -544,14 +595,14 @@ and the other the arm the walk follows. **Twenty-five pod-0 rows are reused unal
 altered.** Twelve minted learner turns, twenty-two minted partner turns, across eight scenes of five
 to ten turns — inside the Method Pod's range.
 
-The symmetric O3 arm mints no node: it is N6 with the seats reversed, under the role-neutrality rule
+The rung-1 O3 arm mints no node: it is N6 with the seats reversed, under the role-neutrality rule
 the health mapping fixed.
 
 ---
 
 ## 7. Sequencing — and the second axis, tested
 
-**The four, in order: O1 → O3 → O6 → O7; and inside each, symmetric before asymmetric.**
+**The four, in order: O1 → O3 → O6 → O7; and inside each, lower rung before higher.**
 
 How that order is actually decided, layer by layer:
 1. **The ruling.** O1 first. Nothing in the edges decides between the two floors — S201 (surviving a
@@ -564,7 +615,7 @@ How that order is actually decided, layer by layer:
    W204 1, W205 2, W206 2, W207 1, W208 1. Latency alone ties O1, O3 and O7 at 1 and **puts O7
    before O6** — which the store's own order does not, and should not.
 4. **Cost of failing to recover** — the candidate axis. Prediction written down in the plan before
-   testing: *cost will not reorder the shapes; it will separate the two registers of one shape.*
+   testing: *cost will not reorder the shapes; it will separate the rungs of one shape.*
 
 | | latency | cost of failing to recover |
 |---|---|---|
@@ -577,18 +628,89 @@ How that order is actually decided, layer by layer:
 | W207 acquaintance | 1 | low, invisible — a small coldness nobody names |
 | W208 chemist's | 1 | low, invisible |
 
-**Result: supported — as the tie-breaker and as the register key; not as a primary key.** Cost breaks
+**Result: supported — as the tie-breaker and as the rung key; not as a primary key.** Cost breaks
 the latency tie the right way (O7's failure is invisible; O3's costs a drink or a ticket) and it
-separates the two registers inside every shape, symmetric before asymmetric, eight for eight. It
+orders the rungs inside every shape, lower before higher, eight for eight. It
 cannot be primary: if it were, W206 would outrank O3 entirely, and S203 says you cannot survive the
 inspector without first being able to say it again shorter. The prediction held on both halves. The
 health mapping's refinement — *the weight belongs on the shape, not the line* — is the same finding
-seen from the other side: here the weight sits on the **register**, and the register is a shape
+seen from the other side: here the weight sits on the **rung** — the count and kind of asymmetry — and the rung is a shape
 variable on the trunk. One axis, not two.
 
-**What would make this wrong:** a shape whose asymmetric arm costs *less* to fail than its symmetric
-one. None of the four has one, and I could not construct one — the other party's licence to end the
-encounter is what makes the arm asymmetric, and it is also what makes failing expensive.
+**What would make this wrong:** a shape whose higher rung costs *less* to fail than its lower one.
+None of the four has one, and I could not construct one — K2, the licence to end the encounter, is
+what makes failing expensive, and it is the kind that arrives at rung 2.
+
+---
+
+## 7a. The ladder, shape by shape — which kind does the work
+
+The four kinds again: **K1** information · **K2** authority to refuse and to end · **K3** record and
+instrument · **K4** body or stake. Rung = how many the other party holds over the learner. The test
+for "this kind changes the shape" is the store's own: does a *position* appear, disappear or change
+hands — not merely get harder or dearer.
+
+### O1 — changes at K1 (the wrong arms) and at K2 (the settle)
+
+| rung | scene | what the other party holds | what changes |
+|---|---|---|---|
+| 0 | Method Pod 24 (listening) | nothing | the no is *contestable*: pressing is a legitimate move, the account arrives only when the asker stops pressing |
+| 1 | **W201 taxi** | K1 | the reason is a fact — pressing dies; but the **settle** is still available from the other side ("I'll wait") and latency is 1 |
+| 3 | **W202 bus** | K1 K2 K3 | the settle goes: "Can't help you, then." The absorb must carry the move in one turn or it costs a turn and the doors. Latency 2 as written |
+| 4 | health 2.10 f2, 2.7 f2 | all four, held by the learner | same sequence, mirror seat; K4 makes the stake the reason itself ("I won't promise what I can't be sure of") — cost up, shape unchanged |
+
+**Verdict:** two transitions, both real positions. K1 removes *press* from the asker's options; K2
+removes *settle* from the refuser's. K3 and K4 change nothing structural. **Invariant from rung 0 to
+1 in shape** — which is why the Method Pod's Scene 24 and the taxi are the same mint twice.
+
+### O3 — changes at K3 (the form), K2 (the clock), and at K4 stops being O3
+
+| rung | scene | holds | what changes |
+|---|---|---|---|
+| 0 | Method Pod 17 | nothing | F7 arrives ("I don't understand"); recut and check |
+| 1 | **W203 café** | K1 | identical — "Sorry?" is F7; the read-back comes back unprompted. **K1 makes no difference to being heard** |
+| 3 | **W204 window** | K1 K3 (K2) | **K3 changes the form**: the instrument has already printed on the mishearing; no F7; position 2 is a wrong grant (F205) and position 3 gains *notice*. K2 adds the clock — the licence not to ask, "Next" |
+| 4 | health 1.5 f3 | all four, held by the learner | a wrong uptake on a body is **not O3**: the recovery is a halt, not a reformulation — health's O101 / N106 |
+
+**Verdict:** K3 is the kind that mints N202. K1 is inert for this shape across the whole ladder. At
+K4 the shape hands over to a different one, which is the strongest kind of boundary the ladder can
+show.
+
+### O6 — changes at K2 (who prices) and K3 (whether supply counts); K1 changes the other party
+
+| rung | scene | holds | what changes |
+|---|---|---|---|
+| 0 | **W205 Saturday**; Method Pod 39 | nothing | the consequence is relational; the price is a *promise*, and at rung 0 the admitter may price it first (Scene 39 does) |
+| 3 | **W206 inspector** | K2 K3 K4, no K1 | **K2**: the other party prices it, in money, with no reason. **K3**: the supply is refused because the record does not cover it — "That's yours." K4: the child |
+| 4 | health 2.7 f3 | all four, held by the learner | the K1-holder adds a position the inspector cannot: **normalise** before holding — "A lot of people do… But the full course, every time." F102 then F16. Only information licenses that softening |
+
+**Verdict:** position 4 (the price) changes hands at K2; position 2's supply loses its force at K3;
+and K1 — absent from the inspector, present in the doctor — is what puts F102 in front of F16 at the
+top. The inspector scene holding no K1 is what makes that visible.
+
+### O7 — invariant; the ladder moves the *cost* and the *licence*, never the positions
+
+| rung | scene | holds | what changes |
+|---|---|---|---|
+| 0 | **W207 acquaintance**; Method Pod 36 | nothing | disclosure → receipt → the discloser closes → resume. Either party may disclose |
+| 1 | (the café — not minted; the barista's aside would walk W208's positions exactly) | K1 | the *customer's* disclosure is now **processed**, not received: `g110`→`g111`. Only the K1-holder's disclosure remains an aside |
+| 3 | **W208 chemist's** | K1 K3 K4 | same five positions; the learner's wrong exits multiply (withdraw; fix upward; self-blame) because every kind the other party holds makes the aside feel like a signal |
+| 4 | health ×8 | all four, held by the learner | same five positions, and the receiver — holding the means — mostly fixes. *That's normal, isn't it?* (F18) is gone and *That's normal* (F102) has replaced it, because K3 decides what normal is |
+
+**Verdict:** no position appears, disappears or changes hands anywhere on the ladder. **O7 is a trunk
+invariant.** What the kinds change is who is *allowed* to step out of frame (K1 converts the other
+party's disclosure into an elicit) and how much the receiver has to hold back (rises with every kind
+held). The recovery is the same sentence at every rung — and it is hardest exactly where the learner
+holds the most, which is the health pod's finding, not this overlay's gap.
+
+### The three collapsing families, re-read on the ladder
+
+The health mapping found F11 *And you?*, F15 *I'm not sure* and F18 *That's normal, isn't it?* dead
+in health and put it down to asymmetry. On the ladder: **F18 dies at K3** — the instrument decides
+normal, so the tag that seeks agreement has nothing to seek (Tom's own example). **F15 dies at K1** —
+the party who holds the information is not allowed to stay unsure; they say "I'll check", which is
+health's N105. **F11 dies at K2** — a question is returnable only between parties who can each be
+asked. Three kinds, three deaths, one axis — which is the sharper form of the finding.
 
 ---
 
@@ -611,7 +733,7 @@ Applied to every mint, held loosely. It changed two things and confirmed the res
    order); `walks/pod-0.json` does not encode them and no document quotes them, and the database was
    out of scope. W203 sits on scene 3's café order (W1, `g11`) — same mask, same position N2.2. If
    Tom wants the arm on scene 7's rows it is a re-siting, not a rewrite.
-2. **Health's attestation is in the mirror seat for every asymmetric arm** — the HW is the L2
+2. **Health's attestation is in the mirror seat for every upper-rung arm** — the HW is the L2
    speaker, so the learner there holds the power. Stated per arm above. The recovery *sequence* is
    attested; the learner's *turns* in the under-the-power seat are minted. O7-asym is minted from
    nothing in this direction outright.
@@ -623,10 +745,10 @@ Applied to every mint, held loosely. It changed two things and confirmed the res
 **Defaults taken, and flagged.** Proposal file, id range (201+), provenance value, walk format,
 document path, eight scenes, and the three schema points carried in `schema_note` rather than by
 widening the schema — all as the brief's defaults. One I would have taken differently if the brief
-had not settled it: I would have put O7's asymmetric arm in the *power* seat (the learner as the one
+had not settled it: I would have put O7's upper-rung arm in the *power* seat (the learner as the one
 who must not fix), because that is where the temptation is strongest — but health attests that
 direction eight times, so a mint there would have been a mint on attested ground, and the brief's
-asymmetric arm is "someone with power over you". The under-the-power arm is the genuinely unowned one.
+upper arm is "someone with power over you". The under-the-power arm is the genuinely unowned one.
 
 **Where I ran long.** W202 is ten turns — over the Method Pod's range — because the split form
 (`g161`, then `g163`) and its price is the scene's whole point and cannot be shown in fewer.
@@ -643,13 +765,13 @@ modification of any existing store file.
 `services/shared/metagraph/proposed/`, which `index.cjs` does not read.
 
 **For Tom, one line each, answerable in a word:**
-1. Are these four real, and is the register right? — the eight scenes are the evidence; my read is yes.
+1. Are these four real, and is the ladder right? — the eight scenes are the evidence; my read is yes.
 2. O1 at position 1 against the store's `[O3, O1, …]`: shall the store's `sequence` array be brought
    into line with the ruling when the proposal is promoted? — recommend yes, in the same promotion.
-3. O3's symmetric arm on scene 3's café (W1) rather than scene 7's `g38`→`g43`: keep, or re-site? —
+3. O3's rung-1 arm on scene 3's café (W1) rather than scene 7's `g38`→`g43`: keep, or re-site? —
    recommend keep.
 4. `g160` as F201 rather than F6, when promoted? — recommend F201.
 
-**For Aran, one line:** the four asymmetric arms put the learner where a patient sits. The health
+**For Aran, one line:** the four rung-3 arms put the learner where a patient sits. The health
 flows put them where the nurse sits. Both seats are real and the shapes are the same; the pod that
 teaches the nurse's seat is his.
