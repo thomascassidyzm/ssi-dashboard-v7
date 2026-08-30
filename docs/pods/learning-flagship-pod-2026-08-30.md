@@ -627,3 +627,72 @@ what gives the session break its debt and Chapter 8 its opening move — and it 
 own ending, because the dog always comes.
 
 ---
+
+## 3. Session two — Chapters 8 to 11
+
+---
+
+### Chapter 8 — *Where were we* — asserted, not tested, shipping anyway
+
+**Point:** the banked thread comes back exactly where it was cut — there is a third door between
+creed and trial, the correction-recurrence signature, readable in telemetry that already exists —
+and the chapter ends at the honest floor: the instrument named, the repair budget still
+unwritten, and one of them writing down that it wasn't written down.
+
+**Shapes traversed:** **N17 the recovery** — by the banked words, across the session break ·
+callback, m8 → Chapter 7 by phrase (*the way corrections—*, finished from its sixth word) ·
+**the misreading corrected** — Tom reads siege, Aran corrects it to tailoring · N13 not-knowing
+with status · O2 — nobody knows, held as the floor, not the exit · callback, m8 → Chapter 6
+(*we think, we don't know, we think*).
+
+**Holds (heard):** turn 6 (Tom, the signature — once supplied, a correction does not return,
+62), turn 8 (Tom, clusters by node against clusters by child, 74), turn 12 (Aran, the
+correction of the misreading, 58), turn 18 (Tom, the promise with a proviso, 48). The owned
+moves — *Where were we?* (3), *Repair budget. Corrections.* (3), *Weren't you?* (2), *Write the
+number down* (4), *Noted* (1) — are all short.
+
+**Sources & mints:** "a correction is the signal of another rung" is canon verbatim (mission,
+graph grammar); "the cheapest discriminator in the estate is the correction-recurrence
+signature" is the ruled canon's own sentence (mission, least-time block). MINTED AND FLAGGED,
+NOT CLAIMED: the operational content of the signature as spoken here — recurrence clustering by
+node under a missing rung, by child under a wall — is my construction resting on those two
+sentences; the estate names the instrument and nowhere spells it out. If Tom's real instrument
+differs, turns 6–8 mis-state it and should be re-said, not patched. The recovery choreography
+is built; the session break it crosses is the pod's own.
+
+| | |
+|---|---|
+| ARAN | Where were we? |
+| TOM | Repair budget. Corrections. |
+| ARAN | "The way corrections" — you got six words in. Finish the sentence. Same six words. |
+| TOM | There's a cheaper instrument that's been sitting in the telemetry the whole time, and it doesn't need the budget to start paying. It's the way corrections behave. |
+| ARAN | Behave. |
+| TOM | A correction is the signal of another rung — that's the axiom's own small print, and it's the testable bit. If the premise is right, then when a learner gets something wrong, the wrongness isn't noise and it isn't a verdict — it's an arrow pointing at a rung that isn't there yet. Supply the rung, and that correction should never come back. Not "less often". Not come back. |
+| ARAN | And if it does come back? |
+| TOM | Then watch WHERE it comes back, because the two worlds sign their names differently. If ability is a wall, recurring corrections cluster by child — the same children stumble everywhere, whatever you do about rungs, and the premise is dead and I want to know. If the premise is right, they cluster by node — everyone stumbles at the same missing rung, bright kids and slow kids alike, and the child washes out of the signature entirely. Same telemetry we already collect. No new machinery. No budget needed to start reading it. |
+| ARAN | Clusters by child, or clusters by node. That's a real instrument. That's actually a beautiful instrument. |
+| TOM | So the fortress gets a window, and the siege can stand down. |
+| ARAN | …You think I was besieging you. |
+| TOM | Weren't you? |
+| ARAN | No — and I want this one corrected on the record, because it matters for everything we do next. I wasn't attacking the castle; I want the premise to be true more than you do — I've bet more years on it than you have. My whole charge was about the COAT. Say what kind of sentence it is. I did exactly this to you about Bjork, remember — we think, not we know — and did we stop shipping? We shipped for five more years. Honest labels and full speed are not opposites. That was the entire point of the flag. |
+| TOM | Taken, and the record so shows. I heard "prove it or drop it" and you were saying "name it and keep going". Those are different sentences and I defended against the wrong one. |
+| ARAN | Good. Then in the spirit of honest labels: the window you just installed — corrections clustering — that tests the RUNG story. It still doesn't test "anything at all". The summit half of your premise stays creed even with the window open. |
+| TOM | It does. The signature can kill the premise — clusters by child and I'm finished — but it can't crown it. For the crown you need the budget, pre-committed, and a summit nobody believes a ten-year-old can reach, and years. |
+| ARAN | So write the number down. Tonight, while it costs nothing. The budget — this much re-grounding, this many splittings, priced. You said yourself: no pre-committed budget, no test, ever. |
+| TOM | …Not tonight. And here's the true sentence underneath that, which you can have at full price: if the signature comes back clusters-by-child, I'll write the number the same day, because I'll need to know what I'm wrong about. Until then I'm going to keep building as if the premise holds, because that's the bet the whole thing IS. |
+| ARAN | That's a promise with a proviso. From the man I fined for provisos yesterday. |
+| TOM | It's the best true sentence I have. |
+| ARAN | Then I'm writing down that you didn't write it down. |
+| TOM | Noted. |
+| ARAN | We think. We don't know. We think. |
+| TOM | And we build anyway. That's either the whole method or the whole disease, and the dog stopped us finding out which. |
+
+**Why this container:** the bank-and-recover only means something if the recovery is exact — the
+same six words, finished — and if what comes back is worth the wait: the signature is the best
+new instrument in the pod and it was deliberately cut off mid-birth. The misreading is the
+chapter's real event: an argument between peers survives on the difference between "prove it or
+drop it" and "name it and keep going", and getting that corrected out loud is what lets the fork
+end PARKED at the honest floor instead of fake-resolved — the budget stays unwritten, the
+refusal is priced, and the last line hands the whole question to the rest of the pod.
+
+---
