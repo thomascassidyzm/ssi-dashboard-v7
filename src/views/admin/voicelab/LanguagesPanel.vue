@@ -515,7 +515,7 @@ function candidatesFor (lang, slot) {
          is not on the page in any sense that matters. -->
     <section class="vl-clone vl-clone-top">
       <button class="vl-btn vl-clone-open" @click="showClone = !showClone">
-        {{ showClone ? 'Hide' : '＋ Make a new voice — clone one with Cartesia' }}
+        {{ showClone ? 'Hide' : '+ Make a new voice — clone one with Cartesia' }}
       </button>
 
       <div v-if="showClone" class="vl-clone-body">
@@ -988,8 +988,25 @@ function candidatesFor (lang, slot) {
 .vl-error { color: var(--danger); }
 .vl-notes { margin-top: 1.25rem; display: grid; gap: .35rem; font-size: .75rem; }
 .vl-clone { margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid var(--line); }
+/* .vl-btn carried no style at all until 2026-08-30, so every control on the
+   clone form drew as bare text — a button nobody can see is a button nobody
+   presses, which is half of why this feature read as missing. */
+.vl-btn {
+  background: var(--surface-2, var(--surface));
+  border: 1px solid var(--line);
+  color: var(--ink);
+  border-radius: 9999px;
+  padding: .45rem 1rem;
+  font-family: inherit;
+  font-size: .8125rem;
+  cursor: pointer;
+  transition: all .15s;
+}
+.vl-btn:hover:not(:disabled) { border-color: #ec4899; color: #ec4899; }
+.vl-btn:disabled { opacity: .45; cursor: default; }
 .vl-clone-top { margin-top: 0; padding-top: 0; border-top: none; margin-bottom: 1.25rem; }
-.vl-clone-open { font-weight: 600; }
+.vl-clone-open { font-weight: 600; font-size: .9375rem; background: #ec4899; border-color: #ec4899; color: #fff; }
+.vl-clone-open:hover:not(:disabled) { color: #fff; opacity: .9; }
 .vl-recording { background: #dc2626; color: #fff; }
 .vl-record-row { align-items: center; }
 .vl-record-audio { height: 2rem; max-width: 18rem; }
