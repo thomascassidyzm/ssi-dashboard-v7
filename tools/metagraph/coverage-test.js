@@ -9,8 +9,7 @@ import path from 'path'
 import assert from 'assert'
 import { fileURLToPath } from 'url'
 import { graphFromStore } from '../../src/lib/metagraph/fromStore.js'
-import { parseMethodPod } from '../../src/lib/metagraph/parseMethodPod.js'
-import { walkFromCanonicalRows, walkFromFlow } from '../../src/lib/metagraph/walk.js'
+import { walkFromCanonicalRows, walkFromFlow, walkFromStoredPod } from '../../src/lib/metagraph/walk.js'
 import { computeCoverage } from '../../src/lib/metagraph/coverage.js'
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..')
@@ -139,17 +138,33 @@ check('a flow line with no node and no ref is UNMAPPED, and says so', () => {
   assert.equal(cov.totals.traversed, 0)
 })
 
-console.log('\nthe Method Pod parses and covers')
-const method = parseMethodPod(fs.readFileSync(path.join(root, 'docs/pods/method-pod-re-cut-2026-08-30.md'), 'utf8'))
-check('the sixteen ratified scenes are there (with Scene 1-bis, the A/B fork)', () => {
-  assert.equal(method.scenes.length >= 16, true, `got ${method.scenes.length}`)
-  assert.equal(method.scenes.every(s => s.lines.length > 0), true)
+// The Method Pod used to be parsed here out of markdown, because its scenes were
+// not rows. They are rows now, so what is checked is the path they arrive by: a
+// pod whose shapes are DECLARED PER SCENE in `canonical_pod_walk_steps`, which is
+// how both Method Pod cuts and the Learning flagship are stored. Offline and
+// deterministic, as this test has always been — no DB, no markdown.
+console.log('\na stored pod declares its shapes per scene, and covers')
+const storedRows = [
+  { id: 'p:SC01-S01', scene_number: 1, scene_label: 'Scene 1', scene_title: 'Cento ore', scene_subtitle: 'the precision haggle', sentence_number: 1, global_order: 1, speaker: 'TOM', english_text: 'How much time is it going to take?' },
+  { id: 'p:SC01-S02', scene_number: 1, scene_label: 'Scene 1', scene_title: 'Cento ore', scene_subtitle: 'the precision haggle', sentence_number: 2, global_order: 2, speaker: 'ARAN', english_text: 'A hundred hours.' },
+  { id: 'p:SC02-S01', scene_number: 2, scene_label: 'Scene 2', scene_title: 'Il cane', scene_subtitle: 'the flagged guess', sentence_number: 1, global_order: 3, speaker: 'TOM', english_text: 'No shape is claimed for this one.' }
+]
+const storedSteps = [
+  { pod_slug: 'p', walk_id: 'w', walk_name: 'w', scene_number: 1, step_order: 1, declared_as: 'the precision haggle', register: 'named', resolution: 'alias', node_id: 'N16', note: '' },
+  { pod_slug: 'p', walk_id: 'w', walk_name: 'w', scene_number: 2, step_order: 1, declared_as: 'the flagged guess', register: 'm', resolution: 'unresolved', node_id: null, note: '' }
+]
+check('a scene-level node declaration traverses that shape for every line in the scene', () => {
+  const walk = walkFromStoredPod(storedRows, storedSteps, graph, { id: 'p', slug: 'p' })
+  const cov = computeCoverage(graph, walk)
+  assert.equal(cov.totals.steps, 3)
+  assert.equal(cov.nodes.find(n => n.id === 'N16').traversals, 1, 'a scene declaring N16 traverses it once, not once per line')
+  assert.equal(cov.totals.traversed, 1)
 })
-check('scenes whose heading names a shape map to it; the rest are honestly unmapped', () => {
-  const cov = computeCoverage(graph, walkFromFlow(method, graph))
-  assert.equal(cov.totals.traversed > 0, true)
-  assert.equal(cov.totals.unmapped > 0, true, 'unmapped turns are counted, not hidden')
-  assert.equal(cov.totals.steps, method.scenes.reduce((a, s) => a + s.lines.length, 0))
+check('a scene whose declaration resolves to nothing is honestly unmapped, never guessed', () => {
+  const walk = walkFromStoredPod(storedRows, storedSteps, graph, { id: 'p', slug: 'p' })
+  const cov = computeCoverage(graph, walk)
+  assert.equal(cov.totals.unmapped, 1, 'the undeclared scene\'s line is counted, not hidden')
+  assert.equal(walk.unresolved.length, 1, 'and its declaration stays on the unresolved list')
 })
 
 console.log(`\n${pass} checks passed${process.exitCode ? ' — WITH FAILURES' : ''}\n`)

@@ -9,8 +9,7 @@ import path from 'path'
 import { createRequire } from 'module'
 import { fileURLToPath } from 'url'
 import { graphFromStore } from '../../src/lib/metagraph/fromStore.js'
-import { parseMethodPod } from '../../src/lib/metagraph/parseMethodPod.js'
-import { walkFromCanonicalRows, walkFromFlow } from '../../src/lib/metagraph/walk.js'
+import { walkFromCanonicalRows, walkFromStoredPod } from '../../src/lib/metagraph/walk.js'
 import { computeCoverage } from '../../src/lib/metagraph/coverage.js'
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..')
@@ -40,24 +39,36 @@ function report (title, cov) {
   console.log(`   survivability: ${cov.survivability.filter(s => s.exercised).length}/${cov.survivability.length} edges exercised; ${never.length} with NO attested recovery (${never.map(s => s.id).join(' ') || '—'})`)
 }
 
+// The Method Pod used to be read here out of `method-pod-re-cut-2026-08-30.md`
+// by a markdown parser. Its sixteen ratified scenes are scenes 1-16 of
+// `method-pod-43-scene` in the store now, so it is read from the store like the
+// rest — one home for the pods, no runtime markdown.
 const slugs = process.argv.slice(2).filter(a => !a.startsWith('-'))
-const podSlugs = slugs.length ? slugs : ['pod-0']
+const podSlugs = slugs.length ? slugs : ['pod-0', 'method-pod-43-scene']
 
 const sb = require(path.join(root, 'services/supabase-client.cjs'))
 const client = sb.getClient()
-for (const slug of podSlugs) {
+async function all (table, slug, select) {
   let rows = []; let from = 0
   while (true) {
-    const { data, error } = await client.from('canonical_pod_scenarios')
-      .select('id, scene_number, scene_label, scene_title, scene_subtitle, sentence_number, global_order, speaker, english_text, author_notes')
-      .eq('pod_slug', slug).order('global_order', { ascending: true }).range(from, from + 999)
+    const { data, error } = await client.from(table).select(select)
+      .eq('pod_slug', slug).order(table === 'canonical_pod_scenarios' ? 'global_order' : 'step_order', { ascending: true })
+      .range(from, from + 999)
     if (error) throw new Error(error.message)
     rows = rows.concat(data); if (data.length < 1000) break; from += 1000
   }
-  const walk = walkFromCanonicalRows(rows, graph, { id: slug, title: slug, slug })
-  report(`${slug} (canonical_pod_scenarios)`, computeCoverage(graph, walk))
+  return rows
 }
-
-const method = parseMethodPod(fs.readFileSync(path.join(root, 'docs/pods/method-pod-re-cut-2026-08-30.md'), 'utf8'))
-report('the Method Pod (re-cut, markdown)', computeCoverage(graph, walkFromFlow(method, graph)))
+for (const slug of podSlugs) {
+  const rows = await all('canonical_pod_scenarios', slug,
+    'id, scene_number, scene_label, scene_title, scene_subtitle, sentence_number, global_order, speaker, english_text, target_text, target_lang, author_notes')
+  const steps = await all('canonical_pod_walk_steps', slug,
+    'pod_slug, walk_id, walk_name, scene_number, step_order, declared_as, register, resolution, node_id, note')
+  // A pod that carries a stored walk is read through it; pod-0 carries none and
+  // keeps the row-reference path the graph's g-numbers are written in.
+  const walk = steps.length
+    ? walkFromStoredPod(rows, steps, graph, { id: slug, title: slug, slug })
+    : walkFromCanonicalRows(rows, graph, { id: slug, title: slug, slug })
+  report(`${slug} (canonical_pod_scenarios${steps.length ? ' + stored walk' : ''})`, computeCoverage(graph, walk))
+}
 console.log()

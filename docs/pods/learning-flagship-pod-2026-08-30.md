@@ -164,7 +164,7 @@ which is true of the corpus but is my sentence, not his.
 | TOM | Okay — three of them, stacked, take them in any order. What is education for, if we get to rebuild it from nothing? What would we build first? And what does one act of learning actually consist of — because I don't trust either of us on the first two until we've done that one. |
 | ARAN | That's not a stack, that's a funnel. |
 | TOM | It's a funnel. Take the wide end. |
-| ARAN | The wide end is the same as it was five years ago, and I'll say it fast because it's big. None of this happens on its own. Schooling is one piece of a complex adaptive system, and the end of the game has to be seven billion connected, happy, enthusiastic minds who can solve complicated problems— |
+| ARAN | The wide end is the same as it was five years ago, and I'll say it fast because it's big. None of this happens on its own. Schooling is one moving part in a complex adaptive system, and what we're playing for at the end of it is seven billion minds — connected, happy, up for it — that can go at complicated problems— |
 | TOM | Do some cool shit. |
 | ARAN | —very, very quickly. Yes. Through whatever bottleneck is coming. That end hasn't moved. What's changed is that I think we can now actually say what the small end of your funnel is. Five years ago we couldn't. |
 | TOM | Go on then. Smallest thing there is. One act of learning. |

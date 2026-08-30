@@ -168,7 +168,7 @@ export function walkFromFlow (flow, graph, opts = {}) {
  * scene_number, which is where the join belongs: the three 2026-08-30 pods declare
  * their shapes at CHAPTER level, not per turn, so the honest claim is "every line
  * of this chapter is on the chapter's declared traversal" and no per-turn claim is
- * invented. That is the same reading `parseMethodPod.js` already makes of the
+ * invented. That is the same reading the pod ingest already makes of the
  * re-cut's per-scene headings.
  *
  * A declaration that resolved to nothing in the store stays visible as an

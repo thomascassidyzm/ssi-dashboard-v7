@@ -170,7 +170,7 @@ function parsePod (markdown, opts) {
       }
       // The heading's own subtitle names the shape in the 43-scene arm
       // ("the parked clash", "the precision haggle") — the same door
-      // parseMethodPod.js goes through, and it is declared, not inferred.
+      // the retired markdown parser went through, and it is declared, not inferred.
       if (unit === 'Scene' && subtitle) current.declared.push(...declaredShapes(subtitle, 'heading'))
       if (ledger[current.number]) current.declared.push(...declaredShapes(ledger[current.number]))
       inDialogue = false

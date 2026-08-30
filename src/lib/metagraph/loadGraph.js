@@ -5,6 +5,14 @@
  * graph, one home, many readers — the node side reads the same files through
  * `services/shared/metagraph/index.cjs`, this side reads them directly, and no
  * lab keeps a copy of its own.
+ *
+ * The Method Pod used to be the exception: sixteen ratified scenes parsed out of
+ * markdown at runtime, read-only, because they were not rows yet. They are rows
+ * now — scenes 1–16 of `method-pod-43-scene` in `canonical_pod_scenarios`, with
+ * their shape declarations in `canonical_pod_walk_steps` — so the parser and this
+ * import are gone and the pod is read and edited through the store like every
+ * other pod (Tom's ruling, 2026-08-30: "it has to then be stored in the DB like
+ * everything else in popty editing does").
  */
 
 import nodes from '../../../services/shared/metagraph/nodes.json'
@@ -12,9 +20,7 @@ import edges from '../../../services/shared/metagraph/edges.json'
 import moves from '../../../services/shared/metagraph/moves.json'
 import outcomeShapes from '../../../services/shared/metagraph/outcome-shapes.json'
 import podZeroWalk from '../../../services/shared/metagraph/walks/pod-0.json'
-import methodPodMd from '../../../docs/pods/method-pod-re-cut-2026-08-30.md?raw'
 import { graphFromStore } from './fromStore.js'
-import { parseMethodPod } from './parseMethodPod.js'
 
 let cached = null
 
@@ -23,13 +29,6 @@ export function loadGraph () {
     cached = graphFromStore({ nodes, edges, moves, outcomeShapes, walkSets: { 'pod-0': podZeroWalk } })
   }
   return cached
-}
-
-// The Method Pod has no store yet — the sixteen ratified scenes live in the
-// re-cut document. It is read from there, read-only, so the one instrument still
-// covers it. When it gets a store, this import is the whole switch.
-export function loadMethodPodFlow () {
-  return parseMethodPod(methodPodMd)
 }
 
 export default loadGraph

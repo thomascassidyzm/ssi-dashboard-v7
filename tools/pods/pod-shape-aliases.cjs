@@ -16,8 +16,8 @@
  *
  * Alongside those, both chapter cuts and the 43-scene arm name shapes BY PHRASE.
  * Where the phrase is the store shape's own name, the mapping below makes it —
- * DECLARED in the open, as a judgement, the way `src/lib/metagraph/parseMethodPod.js`
- * declares its own. Anything not matched here is UNRESOLVED and reported as such.
+ * DECLARED in the open, as a judgement, the way the retired markdown parser
+ * declared its own. Anything not matched here is UNRESOLVED and reported as such.
  *
  * The eight "summit shapes" the re-read named — the specimen, the counterexample
  * absorbed, the stacked commission, pre-emption, the misreading corrected, the
