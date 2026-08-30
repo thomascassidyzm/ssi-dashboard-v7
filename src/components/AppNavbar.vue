@@ -357,7 +357,8 @@ const sectionTabs = computed(() => {
       { label: 'Library', to: '/courses', active: isCoursesBoard.value },
       { label: 'Seeds', to: '/canonical/seeds', active: route.name === 'CanonicalSeeds' },
       { label: 'Content', to: '/canonical/content', active: route.name === 'CanonicalContent' },
-      { label: 'Pods', to: '/canonical/pods', active: route.name === 'PodsDoc' }
+      { label: 'Pods', to: '/canonical/pods', active: route.name === 'PodsDoc' },
+      { label: 'Script Lab', to: '/canonical/scripts', active: route.name === 'ScriptLab' || route.name === 'ScriptLabScript' }
     ]
   }
 
