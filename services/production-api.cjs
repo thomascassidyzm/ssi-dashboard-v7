@@ -155,6 +155,15 @@ app.use(cors({
   allowedHeaders: ['Content-Type', 'Authorization', 'ngrok-skip-browser-warning'],
   credentials: true
 }))
+// ── THE BASKET LAB, mounted BEFORE the body parser ──────────────────────────
+// The lab reads its own POST bodies off the request stream, so express.json()
+// draining them first would leave it waiting for an 'end' that never comes.
+// This is the same code the standalone process on port 8461 runs — one lab,
+// two roots — mounted READ-AND-JUDGE ONLY: it never generates candidates here,
+// because a generation pass is real spend and belongs to a deliberate local act.
+// Reached from the dashboard at /admin/configs/basket.
+app.use('/api/basket-lab', require('../labs/basket-lab/server.cjs').mount('/api/basket-lab', { readOnly: true }))
+
 app.use(express.json({ limit: '50mb' }))  // Large limit for manifests with 20k+ audio entries
 
 // Disable ALL caching on API responses during development

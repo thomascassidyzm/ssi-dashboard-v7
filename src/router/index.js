@@ -599,6 +599,12 @@ const routes = [
     meta: { title: 'VAD Lab - Admin' }
   },
   {
+    path: '/admin/configs/basket',
+    name: 'BasketLab',
+    component: () => import('../views/admin/BasketLab.vue'),
+    meta: { title: 'Basket Lab - Admin' }
+  },
+  {
     // Capture A/B — record the same line under each mic profile and measure
     // both, on the phone that actually does the recording.
     path: '/admin/capture-ab',
