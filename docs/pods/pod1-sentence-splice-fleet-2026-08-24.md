@@ -144,6 +144,41 @@ at exactly the turns the free path measurably could not do.
 
 The refusal rate came in at **4.8% against the census's ~8%**.
 
+## Chinese: the margin rule was not enough, and only listening caught it
+
+**The #347 census was right to single out zho, and my 1.5 margin floor did not save it.**
+
+Three Chinese turns passed every gate, landed, and were **wrong**. Transcription of the delivered
+clips shows the cut fell on a **comma** rather than the sentence end:
+
+| turn | the card says | the audio actually says |
+|---|---|---|
+| SC06-S008 s0 | 我是护士，在附近的医院工作。 | 我是護士 |
+| SC06-S008 s1 | 你呢？ | 在附近的醫院工作你呢? |
+| SC02-S002 s0 | 没有，空着呢。 | 沒有 |
+| SC10-S009 s0 | 你太好了！ | 你太好了是的 我在度假 |
+
+**And margin cannot separate the good from the bad here.** The three failures scored 1.53, 1.59 and
+1.75; two correct cuts scored 1.65 and 2.10. There is no threshold that keeps one and drops the
+other — 1.75 is broken while 1.65 is fine. Raising the floor would refuse good turns and *still*
+admit bad ones.
+
+There is a mechanism behind it. `generatePodAudio` places its `" … "` TTS pause cue using the LATIN
+regex `/(?<=[.!?…])\s+/`, which does not match a Chinese `。` with no following space — **so Chinese
+turns never got the pause cue at all.** The core justification for splicing ("the take was
+deliberately synthesised to be splittable") simply does not hold for CJK, and Chinese TTS pauses at
+a comma about as long as at a full stop. Japanese scored well by luck of voice and prosody, not
+because the cue was there.
+
+So for Chinese the honest oracle is transcription, not gap geometry. I audited **every one of the 46
+spliced zho turns** that way. 3 were misaligned and are **unlinked back to whole-turn** and added to
+the render list. 11 more flagged on a length-ratio test and are false positives — short numeral and
+colour drills where whisper writes 五 as "5" — all with no competing gap at all, so their cuts are
+unambiguous by construction.
+
+Log: `docs/pods/zho-misaligned-splice-unlink-2026-08-24-applied-log.json`. No learner progress was
+keyed on the withdrawn slots.
+
 ## The one thing that went wrong, and the repair
 
 **28 existing clip rows were repointed at spliced audio without anyone intending it.** Found by
@@ -272,6 +307,35 @@ That is `ggml-small` phoneticising Irish through English and rendering Icelandic
 Arabic script. It is consistent with the estate's existing finding that clip-identity checking
 rejects nine course languages outright. **So for gle, isl and eus the splice is confirmed by exact
 text, app parity and seam measurement, but not by listening.** Stated rather than averaged away.
+
+## Against the #347 census rules — what was met and what was not
+
+The census's binding rules arrived after this pass had already written. Scored honestly:
+
+1. **Route per-turn by measured margin, ≥1.5 or no competing gap, never guess.** **Met, exactly.**
+   That was the gate from the first run — 56 turns refused on margin alone, and every one is on the
+   render list rather than cut.
+
+2. **Run a deeper 3+-sentence sample on hin/kor/zho/ara_eg before the first write, and build the
+   refusal path first.** **Half met.** The refusal path *was* built before any write — the gates and
+   the render list came first, which is why nothing was ever guessed. The pre-write sample was
+   **not** run, because the instruction landed after the fleet had completed. I cannot un-write
+   that, so I did the stronger version after the fact: not a ~20-turn sample but the **full
+   population** of those four courses, plus a transcription audit of every spliced Chinese turn.
+   That is how the three bad Chinese cuts were found — a 20-turn sample would probably have missed
+   all three.
+
+3. **Treat Egyptian Arabic as refuse-by-default unless a deeper sample clears it.** **Cleared, on
+   full-population evidence.** All 24 spliced 3+-sentence ara_eg turns sit at margin ≥1.52, three
+   marginal turns were refused by the gate, and 97/97 rows verified with zero seam failures. The
+   four near-floor turns transcribe at CER 0.00–0.33 with every piece saying its own sentence. The
+   census's worry came from a single sample that tied at 1.00 — exactly the population the margin
+   gate refuses.
+
+**The finding that matters more than the scorecard:** rule 1 is necessary but *not sufficient*, and
+zho proves it. Margin is a good filter and a bad oracle. Where a language's TTS never received the
+pause cue — every CJK course — only listening can confirm a cut, and that should bind any future
+pass harder than the 1.5 threshold does.
 
 ## Explicit gaps
 
