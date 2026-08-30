@@ -56,8 +56,8 @@ does not tell you which side the author is on, and these do not resolve politely
 - **Chapter 4 — whether names should ever be bought.** Aran buys *mass* and *inertia* as items
   (malteser against watermelon, then "the scientific name: màs" — DysgApp, attested); Tom's rule
   prices names LAST, four stages, the name a fact with its own node. Ends PARKED on the
-  instrument: both take the telemetry test, both still predict the other loses, and Aran refuses
-  Tom's reformulation of his position on the way out.
+  instrument: both take the telemetry test, both still predict the other loses, and Aran's
+  refusal of Tom's reformulation stands uncorrected between them.
 - **Chapter 6 — elapsed time against total effort.** Aran's own two axes from 2020. The theory is
   named least-TIME and its ruled functional is EFFORT, and Aran does not let the name off. Ends
   with two products on two axes and the question of which one is the promise still open.
@@ -707,11 +707,12 @@ names what the other built better than its builder did · reformulation, m1, **r
 word** · joint construction, m2 (the taxonomy of the miss) · **O8 the standing clash — this one
 is not parked, and Chapter 11 leaves it standing.**
 
-**Holds (heard):** turn 3 (Aran, the heater tree spoken whole, 72), turn 7 (Tom, the seven-rung
-ladder down to the fish, 66), turn 11 (Aran, naming Tom's blindness, 61), turn 13 (Tom, naming
-what Aran built, 57), turn 21 (Aran, the dignity of the floor, 68), turn 25 (Tom, information
-about the question, 44), turn 26 (Aran, experience of a child, 47). The owned moves — *Rung of
-what?* (3), *No.* (1), *Both. Obviously.* (2), *Then it stands* (3), *It stands* (2) — are all
+**Holds — at or over 3× the chapter median (20.5):** turn 4 (Aran, the heater tree spoken
+whole, 78), turn 9 (Tom, the heater walked down the ladder, 71), turn 14 (Aran, exactly where
+it's blind, 63), turn 17 (Tom, naming what Aran built, 80), turn 25 (Tom, ladder first, always,
+67), turn 26 (Aran, three failures in a row, 71), turn 34 (Aran, an experience being had by a
+person, 62). All heard. The owned moves — *Rung of what?* (3), *That's the design, yes* (4),
+*And mine?* (2), *No.* (1), *Then it stands* (3), *It stands* (2, opening turn 38) — are all
 short.
 
 **Sources & mints:** the heater specimen is DysgApp verbatim in substance (archive §DysgApp:
