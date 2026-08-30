@@ -164,6 +164,22 @@ function cartesiaCatalogue () {
   return cartesiaPromise
 }
 
+/**
+ * Forget the cached catalogue so the next read asks Cartesia again.
+ *
+ * WHY THIS EXISTS (2026-08-30): the cache is memoised for the life of the
+ * process, which is right for a catalogue nobody here changes — except that
+ * cloning changes it. Without this, an operator could clone a voice, get a
+ * green tick, and then not find the voice anywhere in the lab's own menu until
+ * production-api was next restarted. A button that works and looks broken is
+ * worse than a button that fails, so the two write paths in router.cjs
+ * (clone and register) call this the moment they succeed.
+ */
+function invalidateCartesiaCatalogue () {
+  cartesiaPromise = null
+  cartesiaNote = 'not read'
+}
+
 // ── The estate census, read once and cached ─────────────────────────────────────────
 
 let PRODUCTION_VOICES = {}
@@ -326,6 +342,7 @@ module.exports = {
   describeStoredVoice,
   estateVoices,
   cartesiaCatalogue,
+  invalidateCartesiaCatalogue,
   payload,
   _state: () => ({ PRODUCTION_VOICES, productionNote, CARTESIA_CATALOGUE, cartesiaNote }),
 }
