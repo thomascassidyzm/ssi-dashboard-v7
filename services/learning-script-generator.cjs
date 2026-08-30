@@ -41,7 +41,8 @@
  * 3. BUILD  - up to maxBuildPhrases (syllable-sorted; USE fill after reserving)
  * 4. REVIEW - spaced rep at script_shape.spacedRepOffsets (max
  *             maxSpacedRepPhrases, N-1 gets n1PhraseCount, round-robin
- *             useIndex, one LEGO per offset via legoState.lastRound)
+ *             one LEGO per offset via legoState.lastRound; the slot renders
+ *             as the LEGO + its whole USE basket, never one drawn phrase)
  * 5. CONSOLIDATE - useConsolidationCount reserved USE phrases
  * then consecutive-duplicate dedup. Fully deterministic, no randomness.
  */
@@ -650,6 +651,23 @@ function annotatePlayerDelivery(items, ctx = {}) {
       return { ...item, playerCanDeliver: false, playerDropReason: 'debut-audio', missingAudioRoles: debutMissing }
     }
 
+    // A spaced-review SLOT is judged on its basket, not on one row's clips:
+    // the learner's draw can land on any phrase in it. The slot plays as long
+    // as SOME phrase in the basket is voiced; a partly-silent basket still
+    // reports its gap through `basketMissingAudio` and `hasAudio`, so the
+    // reviewer sees it without the row being called undeliverable.
+    if (item.type === 'review' && item.reviewItemKind === 'basket') {
+      const playable = (item.basket || []).filter(p => p.hasAudio).length
+      if (playable > 0) return { ...item, playerCanDeliver: true, basketPlayableCount: playable }
+      return {
+        ...item,
+        playerCanDeliver: false,
+        playerDropReason: 'phrase-audio',
+        basketPlayableCount: 0,
+        missingAudioRoles: ['known', 'target1'],
+      }
+    }
+
     // Seed-sentence reviews need only the seed's target1; without it the
     // player silently substitutes a use-phrase, so this row never plays.
     const roles = (item.type === 'review' && item.reviewItemKind === 'seed') ? ['target1'] : ALL_AUDIO_ROLES
@@ -1190,7 +1208,7 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
   const normalizePhrase = (text) => text?.toLowerCase().trim().replace(/[.,!?;:¡¿'"]+/g, '') || ''
   const getPhraseId = (knownText, targetText) => `${normalizePhrase(knownText)}|${normalizePhrase(targetText)}`
 
-  // legoState map: tracks lastRound and useIndex per LEGO for deterministic REVIEW
+  // legoState map: tracks lastRound and the USE basket per LEGO for the REVIEW
   const legoState = new Map()
 
   // Walk numbering — every is_new LEGO takes the next consecutive round.
@@ -1347,7 +1365,6 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
     legoState.set(currentLego.lego.id, {
       lastRound: n,
       usePhrases: [...currentUsePhrases],
-      useIndex: 0,
       legoId: currentLego.lego.id,
       lego: currentLego,
     })
@@ -1443,44 +1460,61 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
 
       const isN1 = review.legoIndex === n - 1
       const targetPhraseCount = isN1 ? N1_PHRASE_COUNT : 1
-      const phrasesToAdd = Math.min(
+      const drawCount = Math.min(
         targetPhraseCount,
         MAX_SPACED_REP_PHRASES - reviewCount,
         reviewPool.length
       )
+      if (drawCount <= 0) continue
 
       reviewIndices.push(review.legoIndex)
 
-      for (let p = 0; p < phrasesToAdd; p++) {
-        // Round-robin selection (deterministic)
-        const phrase = reviewPool[reviewLegoState.useIndex % reviewPool.length]
-        reviewLegoState.useIndex++
-
-        const phraseId = getPhraseId(phrase.known_text, phrase.target_text)
-        if (usedPhrasesInRound.has(phraseId)) continue
-        usedPhrasesInRound.add(phraseId)
-
-        const reviewLego = reviewLegoState.lego
-        roundItems.push({
-          roundNumber: n,
-          legoId: reviewLegoState.legoId,
-          legoIndex: review.legoIndex,
-          seedId: reviewLego.seed.seed_id,
-          seedNumber: reviewLego.seed.seed_number,
-          type: 'review',
-          reviewOf: review.legoIndex,
-          fibonacciPosition: review.fibPosition,
-          isFirstRevisit: isN1,
-          phrase_id: phrase.id,
-          known_text: phrase.known_text,
-          target_text: phrase.target_text,
-          known_audio_uuid: phrase.known_audio_uuid,
-          target1_audio_uuid: phrase.target1_audio_uuid,
-          target2_audio_uuid: phrase.target2_audio_uuid,
-          hasAudio: !!(phrase.known_audio_uuid && phrase.target1_audio_uuid),
-        })
-        reviewCount++
-      }
+      // ONE ROW PER SPACED-REVIEW SLOT, NAMING ITS BASKET — Tom's ruling,
+      // 2026-08-30: "the spaced rep part of the script should JUST show the
+      // LEGO ID and its basket of USE phrases as a clickable expand".
+      //
+      // WHY. What is determined about a review slot is WHICH LEGO it revisits
+      // and WHICH basket it draws from; which phrase comes out is a per-learner
+      // draw (round-robin over a per-learner useIndex here, a random urn in the
+      // bundle generator). Printing one drawn phrase as if it were the script
+      // told the reviewer something no learner is promised. The row now shows
+      // the slot; the expand shows the whole candidate set.
+      //
+      // The pool is still the FILTERED one — the known-side pull filter is part
+      // of the determined half, so the basket shown is exactly the set a draw
+      // can land on in this round.
+      const reviewLego = reviewLegoState.lego
+      const basket = reviewPool.map(phrase => ({
+        phrase_id: phrase.id,
+        known_text: phrase.known_text,
+        target_text: phrase.target_text,
+        known_audio_uuid: phrase.known_audio_uuid,
+        target1_audio_uuid: phrase.target1_audio_uuid,
+        target2_audio_uuid: phrase.target2_audio_uuid,
+        hasAudio: !!(phrase.known_audio_uuid && phrase.target1_audio_uuid),
+      }))
+      roundItems.push({
+        roundNumber: n,
+        legoId: reviewLegoState.legoId,
+        legoIndex: review.legoIndex,
+        seedId: reviewLego.seed.seed_id,
+        seedNumber: reviewLego.seed.seed_number,
+        type: 'review',
+        reviewItemKind: 'basket',
+        reviewOf: review.legoIndex,
+        fibonacciPosition: review.fibPosition,
+        isFirstRevisit: isN1,
+        // How many phrases this slot draws from the basket for one learner.
+        drawCount,
+        basketSize: basket.length,
+        basket,
+        // The row's own text is the LEGO being revisited, never a drawn phrase.
+        known_text: reviewLego.lego.known_text,
+        target_text: reviewLego.lego.target_text,
+        hasAudio: basket.length > 0 && basket.every(p => p.hasAudio),
+        basketMissingAudio: basket.filter(p => !p.hasAudio).length,
+      })
+      reviewCount += drawCount
     }
 
     // Phase 5: CONSOLIDATE — prefer unused USE phrases, allow reuse if pool exhausted
@@ -1548,6 +1582,13 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
 
     for (const item of roundItems) {
       if (item.type === 'intro' || item.type === 'debut') {
+        dedupedItems.push(item)
+        continue
+      }
+      // A spaced-review SLOT carries its LEGO's text, not a sentence anyone
+      // hears, so it can never be the duplicate this rule is about — and
+      // dropping it would hide a review the learner genuinely gets.
+      if (item.reviewItemKind === 'basket') {
         dedupedItems.push(item)
         continue
       }

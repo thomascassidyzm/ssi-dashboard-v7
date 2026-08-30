@@ -207,9 +207,74 @@
         <!-- Round Items (Collapsible) -->
         <Transition name="slide">
           <div v-if="expandedRounds.has(round.roundNumber)" class="round-items p-4 space-y-2">
+            <template v-for="(item, idx) in round.items" :key="`${round.roundNumber}-${idx}`">
+            <!-- SPACED-REVIEW SLOT (Tom, 2026-08-30: "the spaced rep part of the
+                 script should JUST show the LEGO ID and its basket of USE
+                 phrases as a clickable expand"). What is determined about this
+                 slot is the LEGO and the basket; WHICH phrase a learner draws is
+                 a per-learner draw, so no phrase is shown here as if it were the
+                 script. Tap to expand — nothing else, no other control. -->
+            <div v-if="item.reviewItemKind === 'basket'" class="basket-slot">
+              <div
+                class="item-row flex items-center gap-3 p-3 rounded-lg transition-all cursor-pointer hover:bg-surface-2"
+                :class="item.playerCanDeliver === false ? 'border-l-2 border-amber-600' : ''"
+                @click="toggleBasket(round.roundNumber, idx)"
+              >
+                <div class="w-7 h-7 flex-shrink-0 flex items-center justify-center text-muted">
+                  <svg
+                    class="w-4 h-4 transition-transform"
+                    :class="{ 'rotate-180': expandedBaskets.has(`${round.roundNumber}-${idx}`) }"
+                    fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                  >
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </div>
+                <div class="type-badge px-2 py-1 rounded text-xs font-medium uppercase min-w-20 text-center bg-amber-600 text-white">
+                  REVIEW
+                </div>
+                <div
+                  class="review-badge px-2 py-1 bg-amber-600 text-white text-xs rounded font-mono font-bold"
+                  :title="`Reviewing Round ${item.reviewOf}`"
+                >
+                  R{{ item.reviewOf }}
+                </div>
+                <div class="lego-badge px-2 py-1 bg-surface-3 text-ink text-sm rounded font-mono">
+                  {{ item.legoId }}
+                </div>
+                <div class="flex-1 min-w-0 text-sm text-muted truncate">
+                  {{ item.known_text }} → {{ item.target_text }}
+                </div>
+                <div class="text-xs text-faint whitespace-nowrap">
+                  {{ item.drawCount === 1 ? '1 draw' : `${item.drawCount} draws` }}
+                  from {{ item.basketSize }} USE {{ item.basketSize === 1 ? 'phrase' : 'phrases' }}
+                </div>
+                <span
+                  v-if="item.basketMissingAudio"
+                  class="text-amber-400 text-xs whitespace-nowrap"
+                  :title="`${item.basketMissingAudio} phrase(s) in this basket have no audio`"
+                >
+                  {{ item.basketMissingAudio }} silent
+                </span>
+              </div>
+              <!-- The basket itself: the whole candidate set a draw lands in. -->
+              <div
+                v-if="expandedBaskets.has(`${round.roundNumber}-${idx}`)"
+                class="basket-phrases ml-10 mt-1 mb-2 border-l border-surface-3 pl-3 space-y-1"
+              >
+                <div
+                  v-for="(p, pi) in item.basket"
+                  :key="`${round.roundNumber}-${idx}-b${pi}`"
+                  class="flex items-center gap-3 text-sm py-1"
+                >
+                  <span class="text-faint font-mono text-xs w-6 text-right">{{ pi + 1 }}</span>
+                  <span class="text-muted flex-1 min-w-0 truncate">{{ p.known_text }}</span>
+                  <span class="text-ink flex-1 min-w-0 truncate" :dir="dirFor(p.target_text)">{{ p.target_text }}</span>
+                  <span v-if="!p.hasAudio" class="text-amber-400 text-xs whitespace-nowrap">no audio</span>
+                </div>
+              </div>
+            </div>
             <div
-              v-for="(item, idx) in round.items"
-              :key="`${round.roundNumber}-${idx}`"
+              v-else
               :ref="el => setItemRef(round.roundNumber, idx, el)"
               class="item-row flex items-center gap-3 p-3 rounded-lg transition-all"
               :class="[
@@ -556,6 +621,7 @@
                 {{ item.legoId }}
               </div>
             </div>
+            </template>
           </div>
         </Transition>
       </div>
@@ -618,6 +684,20 @@ interface ScriptItem {
   target_text: string
   hasAudio: boolean
   reviewOf?: number
+  // A spaced-review row is a SLOT, not a sentence: 'basket' rows name the LEGO
+  // and carry its whole USE basket, because which phrase a learner draws is a
+  // per-learner draw. 'seed' rows are the full parent seed sentence and ARE
+  // determined. (learning-script-generator.cjs, Tom's ruling 2026-08-30.)
+  reviewItemKind?: 'seed' | 'basket'
+  drawCount?: number
+  basketSize?: number
+  basketMissingAudio?: number
+  basket?: Array<{
+    phrase_id?: string
+    known_text: string
+    target_text: string
+    hasAudio: boolean
+  }>
   isFirstRevisit?: boolean
   fibonacciPosition?: number
   phrasePosition?: number
@@ -1313,6 +1393,16 @@ watch(
 
 // Track which rounds are expanded
 const expandedRounds = ref<Set<number>>(new Set())
+// Which spaced-review slots have their basket open. Keyed round-localIdx; tap
+// to expand is the only gesture on that row.
+const expandedBaskets = ref<Set<string>>(new Set())
+const toggleBasket = (roundNumber: number, idx: number) => {
+  const key = `${roundNumber}-${idx}`
+  const next = new Set(expandedBaskets.value)
+  if (next.has(key)) next.delete(key)
+  else next.add(key)
+  expandedBaskets.value = next
+}
 
 // Auto-expand first round
 watch(() => props.rounds, (newRounds) => {
