@@ -56,7 +56,13 @@ So richness at seed N is still a lookup, but it is a lookup over two lists: dete
 
 ## 2. The pattern-diversity metric
 
-Implemented in `tools/frame-layer/pattern-diversity.cjs`; run it with `node tools/frame-layer/pattern-diversity.cjs spa_for_eng 600`.
+Implemented in `tools/frame-layer/pattern-diversity.cjs`; run it with `node tools/frame-layer/pattern-diversity.cjs spa_for_eng 599`.
+
+> **The unit is the LEGO basket, not the seed** (Tom, 2026-08-29): *"a SEED is invisible to a learner, so they have no idea how much work is being done by a SEED, the unit of learning for the learner is the LEGO, and the unit of practice is the PHRASE."* One LEGO, one basket, one set of floors. `scoreBaskets()` groups a seed's phrases by `lego_index` and scores each basket independently; **a seed passes only if every basket under it passes**, and the seed-level composite is context that can never decide. On a single-LEGO seed like 600 the two coincide, which is why nothing measured before this change was wrong. On seed 599 they do not: the seed averages **0.677** while **three of its four baskets floor-fail**. Grouping is by `lego_index` and not `lego_id` — `lego_id` is null on all 16,328 `spa_for_eng` phrase rows.
+>
+> **Component rows are not scored.** They are per-sentence tiling glosses, skipped at runtime, and an M-LEGO's own components cannot contain the M-LEGO ("been" does not contain "been happy"). Scoring them counted `absent` as a fourth LEGO position and pushed POS above 1.0.
+>
+> **Which split applies to a seed is DERIVED, not looked up** — see `tools/frame-layer/derive-seed-job.cjs`. Each basket is tested only against the split side its own LEGO admits.
 
 It supersedes edges-per-syllable, which **counted spending, not minting**, and tied the good and bad sets at 0.081 vs 0.083.
 
@@ -68,7 +74,7 @@ Tom's specification, from the sitting: *"pattern diversity of the walk — posit
 | POS | distinct positions of the LEGO in its phrase (initial / medial / final) / 3 | 0.34 |
 | NEIGH | (distinct left neighbours + distinct right neighbours) / (2 × phrases) | 0.30 |
 | JUNCT | distinct (left → right) junctions / phrase count | 0.50 |
-| SPLIT **[SPEC:worker]** | fraction of the seed's applicable splits the basket actually crosses | 1.00 |
+| SPLIT **[SPEC:worker]** | fraction of the split sides **this basket's own LEGO admits** that it actually crosses | 1.00 |
 
 **[SPEC:worker] FRAME is measured on the matrix clause, not the whole string.** The first version of this file matched patterns over the entire phrase and scored the known-bad seed-600 basket 0.62, passing it — because nine identical matrix clauses carried nine different tails, and the tails lit up P12/P14/P15. Swapping a tail does not change the frame the LEGO is being taught in. On matrix clauses the same basket scores 0.22 and floor-fails.
 
@@ -78,7 +84,9 @@ Tom's specification, from the sitting: *"pattern diversity of the walk — posit
 
 ### The metric run against the specimen
 
-`spa_for_eng` seed 600, the nine live phrases, 2026-08-29:
+`spa_for_eng` seed 600 — one LEGO, so one basket, `L01` "driven" / "conducido" — the nine live phrases, 2026-08-29.
+
+**Read the SPLIT row below as history.** It was computed when the lab was told, by a hardcoded table, that seed 600's job was to cross the double-'d. It is not. Seed 600 admits one lego, a participle, and the derivation now returns **LEXICAL ONLY** for it; the double-'d is admitted at seed 599. So the SPLIT criterion no longer applies to this basket at all, and the basket fails on **FRAME alone** — the ordinary reason, thin pattern diversity, nine near-identical shapes. The verdict is unchanged; the reason for it is smaller and truer.
 
 | axis | value | floor | |
 |---|---:|---:|---|
@@ -86,8 +94,8 @@ Tom's specification, from the sitting: *"pattern diversity of the walk — posit
 | POS | 1.000 | 0.34 | pass |
 | NEIGH | 0.444 | 0.30 | pass |
 | JUNCT | 0.778 | 0.50 | pass |
-| SPLIT | 0.000 | 1.00 | **FAIL** — `habría` in 3 skeletons, `hubieras` in **1** |
-| composite | **0.333** | | **FAIL** |
+| ~~SPLIT~~ | ~~0.000~~ | ~~1.00~~ | *withdrawn — this basket admits no side of the split; see above* |
+| composite | **0.333** | | **FAIL** (on FRAME) |
 
 Note the refinement this measurement forces on the write-up. The write-up says *"not one of the nine phrases crossed the split"*. Literally, three of the nine do contain `hubieras` — but all three carry it inside the same copied clause, `if you'd told me…`, lifted from seeds 599/600 themselves. So `crossed_weak = true`, `crossed = false`. The finding stands; its precise statement is **the split appears in exactly one shape, and never as a contrast the learner has to choose between.**
 

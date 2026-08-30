@@ -127,6 +127,16 @@ const cards = [
     glow: 'rgba(245, 158, 11, 0.15)',
     icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 12h3l2-7 4 14 3-10 2 3h6"/></svg>',
   },
+  {
+    title: 'Basket Lab',
+    to: '/admin/configs/basket',
+    badge: 'baskets',
+    description: 'The unit being judged is the BASKET: one LEGO\u2019s phrases, live in the course today beside a newly generated candidate set, both scored against the same machine floors, with a box for a verbatim verdict.',
+    action: 'Open Basket Lab',
+    accent: '#a78bfa',
+    glow: 'rgba(167, 139, 250, 0.15)',
+    icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9h18l-1.6 9.2a2 2 0 0 1-2 1.8H6.6a2 2 0 0 1-2-1.8L3 9Z"/><path d="M8 9 10.5 3M16 9 13.5 3"/><path d="M9.5 13v3M14.5 13v3"/></svg>',
+  },
 ]
 </script>
 

@@ -1,0 +1,469 @@
+{
+  "course": "spa_for_eng",
+  "seed": 12,
+  "generated": "2026-08-29T11:17:18.928Z",
+  "build_sha": "43521a7e9",
+  "model": "sonnet",
+  "job": {
+    "verdict": "LEXICAL ONLY",
+    "sentence": "Nothing structural is new here: every frame and every side of every split in play has been seen before. The job is lexical — 4 new lego(s): \"tomorrow\" → \"mañana\", \"to guess\" → \"adivinar\", \"what's going to happen\" → \"lo que va a pasar\", \"I wouldn't like\" → \"no me gustaría\"."
+  },
+  "attempts": [
+    {
+      "pass": 1,
+      "seed_composite": 0.802,
+      "seed_pass": false,
+      "failing_baskets": [
+        {
+          "lego_index": 4,
+          "lego": "I wouldn't like",
+          "floors": [
+            "neigh",
+            "junct"
+          ]
+        }
+      ],
+      "phrase_count": 43
+    },
+    {
+      "pass": 2,
+      "seed_composite": 0.792,
+      "seed_pass": false,
+      "failing_baskets": [
+        {
+          "lego_index": 4,
+          "lego": "I wouldn't like",
+          "floors": [
+            "neigh",
+            "junct"
+          ]
+        }
+      ],
+      "phrase_count": 43
+    }
+  ],
+  "phrases": [
+    {
+      "lego_index": 1,
+      "phrase_role": "build",
+      "known_text": "I'm going to try tomorrow",
+      "target_text": "Voy a intentar mañana",
+      "frame": "P2",
+      "why": "introduces mañana in final position off the going-to frame",
+      "position": 1
+    },
+    {
+      "lego_index": 1,
+      "phrase_role": "build",
+      "known_text": "I'd like to speak tomorrow",
+      "target_text": "Me gustaría hablar mañana",
+      "frame": "P1",
+      "why": "swaps matrix to want-chain, new right-of-mañana context via a different verb",
+      "position": 2
+    },
+    {
+      "lego_index": 1,
+      "phrase_role": "build",
+      "known_text": "I want to practise speaking tomorrow",
+      "target_text": "Quiero practicar hablando mañana",
+      "frame": "P1",
+      "why": "adds a gerund complement before mañana, new left neighbour",
+      "position": 3
+    },
+    {
+      "lego_index": 1,
+      "phrase_role": "use",
+      "known_text": "I'd like to be able to speak Spanish tomorrow",
+      "target_text": "Me gustaría poder hablar español mañana",
+      "frame": "P1",
+      "why": "stacks be-able-to before the verb, lengthening the clause that precedes mañana",
+      "position": 4
+    },
+    {
+      "lego_index": 1,
+      "phrase_role": "use",
+      "known_text": "I'm going to try to say something in Spanish tomorrow",
+      "target_text": "Voy a intentar decir algo en español mañana",
+      "frame": "P2",
+      "why": "object plus language phrase gives mañana a new immediate left neighbour, español",
+      "position": 5
+    },
+    {
+      "lego_index": 1,
+      "phrase_role": "use",
+      "known_text": "I'm going to practise speaking with another person tomorrow",
+      "target_text": "Voy a practicar hablando con otra persona mañana",
+      "frame": "P2",
+      "why": "another-person object before mañana, new left neighbour persona",
+      "position": 6
+    },
+    {
+      "lego_index": 1,
+      "phrase_role": "use",
+      "known_text": "I want to be able to explain what I want to say tomorrow",
+      "target_text": "Quiero poder explicar lo que quiero decir mañana",
+      "frame": "P1",
+      "why": "embeds an object clause before mañana, left neighbour decir",
+      "position": 7
+    },
+    {
+      "lego_index": 1,
+      "phrase_role": "use",
+      "known_text": "I want to try to explain what I want to say tomorrow",
+      "target_text": "Quiero intentar explicar lo que quiero decir mañana",
+      "frame": "P1",
+      "why": "same embedded clause, different chain verb intentar, varies matrix signature",
+      "position": 8
+    },
+    {
+      "lego_index": 1,
+      "phrase_role": "use",
+      "known_text": "I'm going to try to remember a word in Spanish tomorrow",
+      "target_text": "Voy a intentar recordar una palabra en español mañana",
+      "frame": "P2",
+      "why": "new verb recordar and object una palabra as left context for mañana",
+      "position": 9
+    },
+    {
+      "lego_index": 1,
+      "phrase_role": "use",
+      "known_text": "I'd like to practise speaking a little Spanish tomorrow",
+      "target_text": "Me gustaría practicar hablando un poco de español mañana",
+      "frame": "P1",
+      "why": "quantified object un poco de español gives mañana a fresh left neighbour",
+      "position": 10
+    },
+    {
+      "lego_index": 1,
+      "phrase_role": "use",
+      "known_text": "I'd like to speak with you tomorrow as frequently as possible",
+      "target_text": "Me gustaría hablar contigo mañana lo más frecuentemente posible",
+      "frame": "P1|P25",
+      "why": "trailing as-as adjunct moves mañana out of final position into medial, the only non-final exemplar",
+      "position": 11
+    },
+    {
+      "lego_index": 2,
+      "phrase_role": "build",
+      "known_text": "I want to be able to guess",
+      "target_text": "Quiero poder adivinar",
+      "frame": "P1|P5",
+      "why": "introduces adivinar as the bare complement of a want-be-able-to chain",
+      "position": 12
+    },
+    {
+      "lego_index": 2,
+      "phrase_role": "build",
+      "known_text": "I'm going to try to guess tomorrow",
+      "target_text": "Voy a intentar adivinar mañana",
+      "frame": "P2",
+      "why": "places adivinar medially between intentar and mañana, new right neighbour",
+      "position": 13
+    },
+    {
+      "lego_index": 2,
+      "phrase_role": "build",
+      "known_text": "I'd like to guess how to say something",
+      "target_text": "Me gustaría adivinar cómo decir algo",
+      "frame": "P1|P22",
+      "why": "gives adivinar an embedded-question complement, new right neighbour cómo",
+      "position": 14
+    },
+    {
+      "lego_index": 2,
+      "phrase_role": "use",
+      "known_text": "I'm going to try to guess something in Spanish tomorrow",
+      "target_text": "Voy a intentar adivinar algo en español mañana",
+      "frame": "P2",
+      "why": "direct object algo after adivinar, contrasts with the embedded-question use",
+      "position": 15
+    },
+    {
+      "lego_index": 2,
+      "phrase_role": "use",
+      "known_text": "I'd like to guess how to say something in Spanish today",
+      "target_text": "Me gustaría adivinar cómo decir algo en español hoy",
+      "frame": "P1|P22",
+      "why": "extends the embedded-question use with a language and time tail",
+      "position": 16
+    },
+    {
+      "lego_index": 2,
+      "phrase_role": "use",
+      "known_text": "I'd like to be able to guess how to say something in Spanish",
+      "target_text": "Me gustaría poder adivinar cómo decir algo en español",
+      "frame": "P1|P5|P22",
+      "why": "inserts poder before adivinar, new left neighbour poder",
+      "position": 17
+    },
+    {
+      "lego_index": 2,
+      "phrase_role": "use",
+      "known_text": "I want to try to guess what I want to say in Spanish",
+      "target_text": "Quiero intentar adivinar lo que quiero decir en español",
+      "frame": "P1",
+      "why": "swaps the complement to the lo que quiero decir clause, new right neighbour lo",
+      "position": 18
+    },
+    {
+      "lego_index": 2,
+      "phrase_role": "use",
+      "known_text": "I want to be able to guess what I want to say with another person",
+      "target_text": "Quiero poder adivinar lo que quiero decir con otra persona",
+      "frame": "P1|P5",
+      "why": "same clause complement but with poder chain and a companion phrase, matrix varies",
+      "position": 19
+    },
+    {
+      "lego_index": 2,
+      "phrase_role": "use",
+      "known_text": "I'd like to try to guess how to explain what I want to say",
+      "target_text": "Me gustaría intentar adivinar cómo explicar lo que quiero decir",
+      "frame": "P1|P22",
+      "why": "double-embeds explicar inside the how-clause after adivinar, longest right context",
+      "position": 20
+    },
+    {
+      "lego_index": 2,
+      "phrase_role": "use",
+      "known_text": "I'm going to try to guess how to say a word in Spanish tomorrow",
+      "target_text": "Voy a intentar adivinar cómo decir una palabra en español mañana",
+      "frame": "P2|P22",
+      "why": "combines going-to matrix with the embedded question and a trailing time adjunct",
+      "position": 21
+    },
+    {
+      "lego_index": 3,
+      "phrase_role": "build",
+      "known_text": "What's going to happen",
+      "target_text": "Lo que va a pasar",
+      "frame": "P22",
+      "why": "introduces the LEGO alone as a bare embedded-question fragment",
+      "position": 22
+    },
+    {
+      "lego_index": 3,
+      "phrase_role": "build",
+      "known_text": "I want to guess what's going to happen",
+      "target_text": "Quiero adivinar lo que va a pasar",
+      "frame": "P1|P22",
+      "why": "places the LEGO as the object of adivinar, final position",
+      "position": 23
+    },
+    {
+      "lego_index": 3,
+      "phrase_role": "build",
+      "known_text": "I'm going to try to say what's going to happen",
+      "target_text": "Voy a intentar decir lo que va a pasar",
+      "frame": "P2|P22",
+      "why": "swaps matrix to going-to and verb to decir, new left neighbour",
+      "position": 24
+    },
+    {
+      "lego_index": 3,
+      "phrase_role": "build",
+      "known_text": "I'd like to explain what's going to happen tomorrow",
+      "target_text": "Me gustaría explicar lo que va a pasar mañana",
+      "frame": "P1|P22",
+      "why": "adds explicar as matrix verb and mañana as a right-of-LEGO tail, medial position",
+      "position": 25
+    },
+    {
+      "lego_index": 3,
+      "phrase_role": "use",
+      "known_text": "I want to be able to guess what's going to happen tomorrow",
+      "target_text": "Quiero poder adivinar lo que va a pasar mañana",
+      "frame": "P1|P5|P22",
+      "why": "stacks poder before adivinar, keeps the trailing mañana medial pattern",
+      "position": 26
+    },
+    {
+      "lego_index": 3,
+      "phrase_role": "use",
+      "known_text": "I want to try to explain what's going to happen tomorrow",
+      "target_text": "Quiero intentar explicar lo que va a pasar mañana",
+      "frame": "P1|P22",
+      "why": "chain verb intentar with explicar, varies matrix signature",
+      "position": 27
+    },
+    {
+      "lego_index": 3,
+      "phrase_role": "use",
+      "known_text": "I'm going to try to guess what's going to happen in Spanish tomorrow",
+      "target_text": "Voy a intentar adivinar lo que va a pasar en español mañana",
+      "frame": "P2|P22",
+      "why": "longest right tail yet, en español mañana after the LEGO",
+      "position": 28
+    },
+    {
+      "lego_index": 3,
+      "phrase_role": "use",
+      "known_text": "I'd like to try to say what's going to happen in Spanish today",
+      "target_text": "Me gustaría intentar decir lo que va a pasar en español hoy",
+      "frame": "P1|P22",
+      "why": "decir as complement verb with hoy instead of mañana, new right context",
+      "position": 29
+    },
+    {
+      "lego_index": 3,
+      "phrase_role": "use",
+      "known_text": "I'd like to be able to explain what's going to happen with another person",
+      "target_text": "Me gustaría poder explicar lo que va a pasar con otra persona",
+      "frame": "P1|P5|P22",
+      "why": "companion phrase con otra persona as right tail, new neighbour persona",
+      "position": 30
+    },
+    {
+      "lego_index": 3,
+      "phrase_role": "use",
+      "known_text": "I'm going to try to say what's going to happen in Spanish with another person",
+      "target_text": "Voy a intentar decir lo que va a pasar en español con otra persona",
+      "frame": "P2|P22",
+      "why": "combines language and companion tails after the LEGO for maximal right variety",
+      "position": 31
+    },
+    {
+      "lego_index": 4,
+      "phrase_role": "build",
+      "known_text": "I wouldn't like",
+      "target_text": "No me gustaría",
+      "frame": "P1",
+      "why": "bare matrix clause introduces the LEGO alone, initial position",
+      "position": 32
+    },
+    {
+      "lego_index": 4,
+      "phrase_role": "build",
+      "known_text": "I wouldn't like to guess",
+      "target_text": "No me gustaría adivinar",
+      "frame": "P1",
+      "why": "adds adivinar as the infinitive complement, right neighbour adivinar",
+      "position": 33
+    },
+    {
+      "lego_index": 4,
+      "phrase_role": "build",
+      "known_text": "I wouldn't like to speak tomorrow",
+      "target_text": "No me gustaría hablar mañana",
+      "frame": "P1",
+      "why": "swaps complement to hablar, new right neighbour distinct from adivinar",
+      "position": 34
+    },
+    {
+      "lego_index": 4,
+      "phrase_role": "build",
+      "known_text": "If I can't explain what I mean, I wouldn't like to try",
+      "target_text": "Si no puedo explicar lo que quiero decir, no me gustaría intentar",
+      "frame": "P14",
+      "why": "fronts a conditional clause so the LEGO moves from initial to medial with a new left neighbour decir",
+      "position": 35
+    },
+    {
+      "lego_index": 4,
+      "phrase_role": "use",
+      "known_text": "I wouldn't like to guess what's going to happen tomorrow",
+      "target_text": "No me gustaría adivinar lo que va a pasar mañana",
+      "frame": "P1",
+      "why": "the seed's own full realization, confirming the LEGO in its target context",
+      "position": 36
+    },
+    {
+      "lego_index": 4,
+      "phrase_role": "use",
+      "known_text": "I wouldn't like to try to explain what's going to happen",
+      "target_text": "No me gustaría intentar explicar lo que va a pasar",
+      "frame": "P1",
+      "why": "chains intentar plus explicar after the LEGO, right neighbour intentar",
+      "position": 37
+    },
+    {
+      "lego_index": 4,
+      "phrase_role": "use",
+      "known_text": "I wouldn't like to practise speaking with someone else tomorrow",
+      "target_text": "No me gustaría practicar hablando con otra persona mañana",
+      "frame": "P1",
+      "why": "right neighbour practicar, new gerund object",
+      "position": 38
+    },
+    {
+      "lego_index": 4,
+      "phrase_role": "use",
+      "known_text": "After you finish, I wouldn't like to guess what's going to happen",
+      "target_text": "Después de que termines, no me gustaría adivinar lo que va a pasar",
+      "frame": "P13",
+      "why": "fronted temporal clause gives a second medial exemplar with left neighbour termines",
+      "position": 39
+    },
+    {
+      "lego_index": 4,
+      "phrase_role": "use",
+      "known_text": "If I can't explain what's going to happen, I wouldn't like to guess",
+      "target_text": "Si no puedo explicar lo que va a pasar, no me gustaría adivinar",
+      "frame": "P14",
+      "why": "conditional built from the seed's new lo que va a pasar lego, third medial exemplar, left neighbour pasar",
+      "position": 40
+    },
+    {
+      "lego_index": 4,
+      "phrase_role": "use",
+      "known_text": "I wouldn't like to remember the whole sentence tomorrow",
+      "target_text": "No me gustaría recordar toda la frase mañana",
+      "frame": "P1",
+      "why": "right neighbour recordar, new object toda la frase",
+      "position": 41
+    },
+    {
+      "lego_index": 4,
+      "phrase_role": "use",
+      "known_text": "I wouldn't like to guess how to say a word in Spanish",
+      "target_text": "No me gustaría adivinar cómo decir una palabra en español",
+      "frame": "P22",
+      "why": "embedded question complement cómo decir after the LEGO, initial position with a longer tail",
+      "position": 42
+    },
+    {
+      "lego_index": 4,
+      "phrase_role": "use",
+      "known_text": "If I'm not sure what's going to happen, I wouldn't like to explain",
+      "target_text": "Si no estoy seguro de lo que va a pasar, no me gustaría explicar",
+      "frame": "P14|P10",
+      "why": "conditional from the no estoy seguro de matrix, fourth medial exemplar, right neighbour explicar distinct from all prior",
+      "position": 43
+    }
+  ],
+  "baskets": [
+    {
+      "lego_index": 1,
+      "lego": "tomorrow",
+      "composite": 0.771,
+      "pass": true,
+      "floor_failures": []
+    },
+    {
+      "lego_index": 2,
+      "lego": "to guess",
+      "composite": 0.833,
+      "pass": true,
+      "floor_failures": []
+    },
+    {
+      "lego_index": 3,
+      "lego": "what's going to happen",
+      "composite": 0.875,
+      "pass": true,
+      "floor_failures": []
+    },
+    {
+      "lego_index": 4,
+      "lego": "I wouldn't like",
+      "composite": 0.729,
+      "pass": false,
+      "floor_failures": [
+        "neigh",
+        "junct"
+      ]
+    }
+  ],
+  "seed_pass": false,
+  "seed_composite": 0.802
+}

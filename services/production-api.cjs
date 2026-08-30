@@ -155,6 +155,15 @@ app.use(cors({
   allowedHeaders: ['Content-Type', 'Authorization', 'ngrok-skip-browser-warning'],
   credentials: true
 }))
+// ── THE BASKET LAB, mounted BEFORE the body parser ──────────────────────────
+// The lab reads its own POST bodies off the request stream, so express.json()
+// draining them first would leave it waiting for an 'end' that never comes.
+// This is the same code the standalone process on port 8461 runs — one lab,
+// two roots — mounted READ-AND-JUDGE ONLY: it never generates candidates here,
+// because a generation pass is real spend and belongs to a deliberate local act.
+// Reached from the dashboard at /admin/configs/basket.
+app.use('/api/basket-lab', require('../labs/basket-lab/server.cjs').mount('/api/basket-lab', { readOnly: true }))
+
 app.use(express.json({ limit: '50mb' }))  // Large limit for manifests with 20k+ audio entries
 
 // Disable ALL caching on API responses during development
@@ -4705,6 +4714,39 @@ app.post('/api/admin/pods/:courseCode/generate-audio', async (req, res) => {
     res.status(response.status).json(response.data)
   } catch (e) {
     logger.error('[Pods generate-audio] error:', e?.message || e)
+    res.status(500).json({ error: e?.message || 'unknown error' })
+  }
+})
+
+// GET /api/admin/canonical-pods — which canonical pod scripts exist, with their
+// size. Course-free by design: the Script Lab reaches the canonical scripts
+// without a course ever being named (Tom, 2026-08-30 — "I want a single place I
+// can edit the canonical scripts for the pods").
+app.get('/api/admin/canonical-pods', async (req, res) => {
+  if (!await requireAdmin(req, res)) return
+  try {
+    const sb = supabaseClient.getClient()
+    const byslug = new Map()
+    let from = 0
+    while (true) {
+      const { data, error } = await sb.from('canonical_pod_scenarios')
+        .select('pod_slug, scene_number').range(from, from + 999)
+      if (error) throw error
+      for (const r of data) {
+        if (!byslug.has(r.pod_slug)) byslug.set(r.pod_slug, { slug: r.pod_slug, lines: 0, scenes: new Set() })
+        const e = byslug.get(r.pod_slug)
+        e.lines++
+        e.scenes.add(r.scene_number)
+      }
+      if (data.length < 1000) break
+      from += 1000
+    }
+    const pods = [...byslug.values()]
+      .map(e => ({ slug: e.slug, lines: e.lines, scenes: e.scenes.size }))
+      .sort((a, b) => a.slug.localeCompare(b.slug))
+    res.json({ pods })
+  } catch (e) {
+    logger.error('[CanonicalPods] index error:', e?.message || e)
     res.status(500).json({ error: e?.message || 'unknown error' })
   }
 })

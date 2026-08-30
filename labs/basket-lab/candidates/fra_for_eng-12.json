@@ -1,0 +1,523 @@
+{
+  "course": "fra_for_eng",
+  "seed": 12,
+  "generated": "2026-08-29T11:21:29.200Z",
+  "build_sha": "43521a7e9",
+  "model": "sonnet",
+  "job": {
+    "verdict": "LEXICAL ONLY",
+    "sentence": "Nothing structural is new here: every frame and every side of every split in play has been seen before. The job is lexical — 4 new lego(s): \"I wouldn't like\" → \"je n'aimerais pas\", \"guess\" → \"deviner\", \"what's going to happen\" → \"ce qui va se passer\", \"tomorrow\" → \"demain\"."
+  },
+  "attempts": [
+    {
+      "pass": 1,
+      "seed_composite": 0.804,
+      "seed_pass": false,
+      "failing_baskets": [
+        {
+          "lego_index": 1,
+          "lego": "I wouldn't like",
+          "floors": [
+            "neigh",
+            "junct"
+          ]
+        }
+      ],
+      "phrase_count": 49
+    },
+    {
+      "pass": 2,
+      "seed_composite": 0.785,
+      "seed_pass": false,
+      "failing_baskets": [
+        {
+          "lego_index": 2,
+          "lego": "guess",
+          "floors": [
+            "neigh",
+            "junct"
+          ]
+        }
+      ],
+      "phrase_count": 49
+    }
+  ],
+  "phrases": [
+    {
+      "lego_index": 1,
+      "phrase_role": "build",
+      "known_text": "I wouldn't like",
+      "target_text": "je n'aimerais pas",
+      "frame": "P1",
+      "why": "bare negated want-chain form, no infinitive yet, anchors initial/final position",
+      "position": 1
+    },
+    {
+      "lego_index": 1,
+      "phrase_role": "build",
+      "known_text": "I wouldn't like to learn",
+      "target_text": "je n'aimerais pas apprendre",
+      "frame": "P1",
+      "why": "adds infinitive to learn, a right neighbour not seen in the live basket",
+      "position": 2
+    },
+    {
+      "lego_index": 1,
+      "phrase_role": "build",
+      "known_text": "Today, I wouldn't like",
+      "target_text": "Aujourd'hui, je n'aimerais pas",
+      "frame": "P28",
+      "why": "fronts a time adjunct so the LEGO closes the fragment, giving it final position and a left neighbour",
+      "position": 3
+    },
+    {
+      "lego_index": 1,
+      "phrase_role": "build",
+      "known_text": "After you finish, I wouldn't like to say something",
+      "target_text": "Après que tu aies fini, je n'aimerais pas dire quelque chose",
+      "frame": "P13",
+      "why": "embeds the LEGO after a temporal clause, medial position with a new left neighbour",
+      "position": 4
+    },
+    {
+      "lego_index": 1,
+      "phrase_role": "use",
+      "known_text": "Now, I wouldn't like to speak with you",
+      "target_text": "Maintenant, je n'aimerais pas parler avec toi",
+      "frame": "P28",
+      "why": "another fronted-adjunct medial reading, new left neighbour now/maintenant",
+      "position": 5
+    },
+    {
+      "lego_index": 1,
+      "phrase_role": "use",
+      "known_text": "I wouldn't like to try to learn a word today",
+      "target_text": "je n'aimerais pas essayer d'apprendre un mot aujourd'hui",
+      "frame": "P1",
+      "why": "chains two infinitives after the LEGO, new right neighbour to try",
+      "position": 6
+    },
+    {
+      "lego_index": 1,
+      "phrase_role": "use",
+      "known_text": "I wouldn't like to say something in French",
+      "target_text": "je n'aimerais pas dire quelque chose en français",
+      "frame": "P1",
+      "why": "new right neighbour to say, complete natural sentence",
+      "position": 7
+    },
+    {
+      "lego_index": 1,
+      "phrase_role": "use",
+      "known_text": "I wouldn't like to practise speaking French with someone else",
+      "target_text": "je n'aimerais pas m'entraîner à parler français avec quelqu'un d'autre",
+      "frame": "P1",
+      "why": "new right neighbour to practise speaking, longer tail",
+      "position": 8
+    },
+    {
+      "lego_index": 1,
+      "phrase_role": "use",
+      "known_text": "After you finish, I wouldn't like to try",
+      "target_text": "Après que tu aies fini, je n'aimerais pas essayer",
+      "frame": "P13",
+      "why": "reuses the temporal-clause left neighbour with a different right neighbour, distinct junction",
+      "position": 9
+    },
+    {
+      "lego_index": 1,
+      "phrase_role": "use",
+      "known_text": "I wouldn't like to explain what I mean",
+      "target_text": "je n'aimerais pas expliquer ce que je veux dire",
+      "frame": "P1",
+      "why": "new right neighbour to explain paired with a fixed complement",
+      "position": 10
+    },
+    {
+      "lego_index": 1,
+      "phrase_role": "use",
+      "known_text": "I wouldn't like to remember a word",
+      "target_text": "je n'aimerais pas me souvenir d'un mot",
+      "frame": "P1",
+      "why": "new right neighbour to remember, not used elsewhere in the basket",
+      "position": 11
+    },
+    {
+      "lego_index": 1,
+      "phrase_role": "use",
+      "known_text": "I wouldn't like to try as hard as I can today",
+      "target_text": "je n'aimerais pas essayer aussi fort que je peux aujourd'hui",
+      "frame": "P25",
+      "why": "as...as tail gives a longer, natural closing use phrase",
+      "position": 12
+    },
+    {
+      "lego_index": 2,
+      "phrase_role": "build",
+      "known_text": "to guess what I mean",
+      "target_text": "deviner ce que je veux dire",
+      "frame": "P1",
+      "why": "bare infinitive fragment, initial position, right neighbour what",
+      "position": 13
+    },
+    {
+      "lego_index": 2,
+      "phrase_role": "build",
+      "known_text": "I want to guess",
+      "target_text": "je veux deviner",
+      "frame": "P1",
+      "why": "new matrix I want instead of I'd like, final position",
+      "position": 14
+    },
+    {
+      "lego_index": 2,
+      "phrase_role": "build",
+      "known_text": "I can guess",
+      "target_text": "je peux deviner",
+      "frame": "P4",
+      "why": "modal matrix, new left neighbour can",
+      "position": 15
+    },
+    {
+      "lego_index": 2,
+      "phrase_role": "build",
+      "known_text": "I'm going to guess",
+      "target_text": "je vais deviner",
+      "frame": "P2",
+      "why": "going-to matrix directly on guess, new left neighbour going to",
+      "position": 16
+    },
+    {
+      "lego_index": 2,
+      "phrase_role": "use",
+      "known_text": "I'd like to try to guess now",
+      "target_text": "j'aimerais essayer de deviner maintenant",
+      "frame": "P1",
+      "why": "adds a trailing adjunct after the LEGO instead of ending the sentence",
+      "position": 17
+    },
+    {
+      "lego_index": 2,
+      "phrase_role": "use",
+      "known_text": "I wouldn't like to guess what I mean",
+      "target_text": "je n'aimerais pas deviner ce que je veux dire",
+      "frame": "P1",
+      "why": "uses this seed's earlier LEGO as the matrix, right neighbour what",
+      "position": 18
+    },
+    {
+      "lego_index": 2,
+      "phrase_role": "use",
+      "known_text": "I'm not sure if I can guess today",
+      "target_text": "je ne suis pas sûr de pouvoir deviner aujourd'hui",
+      "frame": "P10",
+      "why": "matrix know/sure frame, new left neighbour pouvoir",
+      "position": 19
+    },
+    {
+      "lego_index": 2,
+      "phrase_role": "use",
+      "known_text": "I can try to guess with someone else",
+      "target_text": "je peux essayer de deviner avec quelqu'un d'autre",
+      "frame": "P4",
+      "why": "new right neighbour with, not end of sentence",
+      "position": 20
+    },
+    {
+      "lego_index": 2,
+      "phrase_role": "use",
+      "known_text": "I wouldn't like to try to guess the whole sentence",
+      "target_text": "je n'aimerais pas essayer de deviner toute la phrase",
+      "frame": "P1",
+      "why": "new right neighbour the whole",
+      "position": 21
+    },
+    {
+      "lego_index": 2,
+      "phrase_role": "use",
+      "known_text": "I'm going to try to guess as hard as I can",
+      "target_text": "je vais essayer de deviner aussi fort que je peux",
+      "frame": "P2",
+      "why": "new right neighbour as hard, going-to matrix with a full tail",
+      "position": 22
+    },
+    {
+      "lego_index": 2,
+      "phrase_role": "use",
+      "known_text": "I'd like to guess after you finish",
+      "target_text": "j'aimerais deviner après que tu aies fini",
+      "frame": "P13",
+      "why": "temporal clause follows the LEGO directly, new right neighbour after",
+      "position": 23
+    },
+    {
+      "lego_index": 2,
+      "phrase_role": "use",
+      "known_text": "I want to try to guess in French",
+      "target_text": "je veux essayer de deviner en français",
+      "frame": "P1",
+      "why": "new right neighbour in French on the I want matrix",
+      "position": 24
+    },
+    {
+      "lego_index": 3,
+      "phrase_role": "build",
+      "known_text": "What's going to happen",
+      "target_text": "Ce qui va se passer",
+      "frame": "P21",
+      "why": "bare LEGO as a standalone question, initial position anchor",
+      "position": 25
+    },
+    {
+      "lego_index": 3,
+      "phrase_role": "build",
+      "known_text": "to guess what's going to happen",
+      "target_text": "deviner ce qui va se passer",
+      "frame": "P1",
+      "why": "extends with matrix verb guess, left neighbour introduced",
+      "position": 26
+    },
+    {
+      "lego_index": 3,
+      "phrase_role": "build",
+      "known_text": "I'd like to explain what's going to happen",
+      "target_text": "j'aimerais expliquer ce qui va se passer",
+      "frame": "P1",
+      "why": "new matrix verb explain",
+      "position": 27
+    },
+    {
+      "lego_index": 3,
+      "phrase_role": "build",
+      "known_text": "I'm not sure what's going to happen",
+      "target_text": "je ne suis pas sûr de ce qui va se passer",
+      "frame": "P10",
+      "why": "matrix know/sure frame, left neighbour de",
+      "position": 28
+    },
+    {
+      "lego_index": 3,
+      "phrase_role": "build",
+      "known_text": "what's going to happen now",
+      "target_text": "ce qui va se passer maintenant",
+      "frame": "P28",
+      "why": "trailing adjunct so the LEGO is no longer sentence-final",
+      "position": 29
+    },
+    {
+      "lego_index": 3,
+      "phrase_role": "use",
+      "known_text": "I wouldn't like to guess what's going to happen now",
+      "target_text": "je n'aimerais pas deviner ce qui va se passer maintenant",
+      "frame": "P1",
+      "why": "combines the guess-matrix with the trailing adjunct, new junction",
+      "position": 30
+    },
+    {
+      "lego_index": 3,
+      "phrase_role": "use",
+      "known_text": "I'm not sure what's going to happen today",
+      "target_text": "je ne suis pas sûr de ce qui va se passer aujourd'hui",
+      "frame": "P10",
+      "why": "new trailing adjunct today on the sure-matrix",
+      "position": 31
+    },
+    {
+      "lego_index": 3,
+      "phrase_role": "use",
+      "known_text": "I'd like to explain what's going to happen with you",
+      "target_text": "j'aimerais expliquer ce qui va se passer avec toi",
+      "frame": "P1",
+      "why": "new trailing adjunct with you on the explain-matrix",
+      "position": 32
+    },
+    {
+      "lego_index": 3,
+      "phrase_role": "use",
+      "known_text": "I'm going to try to guess what's going to happen with someone else",
+      "target_text": "je vais essayer de deviner ce qui va se passer avec quelqu'un d'autre",
+      "frame": "P2",
+      "why": "going-to matrix with the guess-chain and a trailing adjunct, new left/right combination",
+      "position": 33
+    },
+    {
+      "lego_index": 3,
+      "phrase_role": "use",
+      "known_text": "I can guess what's going to happen today",
+      "target_text": "je peux deviner ce qui va se passer aujourd'hui",
+      "frame": "P4",
+      "why": "modal matrix reusing the today adjunct on the guess-left, distinct junction",
+      "position": 34
+    },
+    {
+      "lego_index": 3,
+      "phrase_role": "use",
+      "known_text": "I'd like to explain what's going to happen now",
+      "target_text": "j'aimerais expliquer ce qui va se passer maintenant",
+      "frame": "P28",
+      "why": "explain-matrix with now instead of with you, distinct junction",
+      "position": 35
+    },
+    {
+      "lego_index": 3,
+      "phrase_role": "use",
+      "known_text": "I'm trying to guess what's going to happen as hard as I can",
+      "target_text": "j'essaie de deviner ce qui va se passer aussi fort que je peux",
+      "frame": "P25",
+      "why": "progressive matrix with an as...as tail, new right neighbour",
+      "position": 36
+    },
+    {
+      "lego_index": 3,
+      "phrase_role": "use",
+      "known_text": "I wouldn't like to explain what's going to happen today",
+      "target_text": "je n'aimerais pas expliquer ce qui va se passer aujourd'hui",
+      "frame": "P28",
+      "why": "combines wouldn't-like with the explain-matrix and today, distinct junction",
+      "position": 37
+    },
+    {
+      "lego_index": 4,
+      "phrase_role": "build",
+      "known_text": "to speak French tomorrow",
+      "target_text": "parler français demain",
+      "frame": "P1",
+      "why": "final position, LEGO closes the fragment",
+      "position": 38
+    },
+    {
+      "lego_index": 4,
+      "phrase_role": "build",
+      "known_text": "Tomorrow, I'd like to speak French",
+      "target_text": "Demain, j'aimerais parler français",
+      "frame": "P28",
+      "why": "fronted adjunct, clean initial position",
+      "position": 39
+    },
+    {
+      "lego_index": 4,
+      "phrase_role": "build",
+      "known_text": "to guess what's going to happen tomorrow",
+      "target_text": "deviner ce qui va se passer demain",
+      "frame": "P1",
+      "why": "final position, combines with an earlier LEGO of this seed",
+      "position": 40
+    },
+    {
+      "lego_index": 4,
+      "phrase_role": "build",
+      "known_text": "I'd like to speak French tomorrow with you",
+      "target_text": "j'aimerais parler français demain avec toi",
+      "frame": "P1",
+      "why": "medial position, new right neighbour with",
+      "position": 41
+    },
+    {
+      "lego_index": 4,
+      "phrase_role": "use",
+      "known_text": "I wouldn't like to guess what's going to happen tomorrow",
+      "target_text": "je n'aimerais pas deviner ce qui va se passer demain",
+      "frame": "P1",
+      "why": "final position, chains all four of this seed's LEGOs",
+      "position": 42
+    },
+    {
+      "lego_index": 4,
+      "phrase_role": "use",
+      "known_text": "Tomorrow, I wouldn't like to guess",
+      "target_text": "Demain, je n'aimerais pas deviner",
+      "frame": "P28",
+      "why": "initial position, new right neighbour je",
+      "position": 43
+    },
+    {
+      "lego_index": 4,
+      "phrase_role": "use",
+      "known_text": "I'd like to explain what's going to happen tomorrow with you",
+      "target_text": "j'aimerais expliquer ce qui va se passer demain avec toi",
+      "frame": "P1",
+      "why": "medial position, new left neighbour passer paired with with",
+      "position": 44
+    },
+    {
+      "lego_index": 4,
+      "phrase_role": "use",
+      "known_text": "I'm going to try to guess tomorrow",
+      "target_text": "je vais essayer de deviner demain",
+      "frame": "P2",
+      "why": "final position, new left neighbour guess",
+      "position": 45
+    },
+    {
+      "lego_index": 4,
+      "phrase_role": "use",
+      "known_text": "I'm not sure what's going to happen tomorrow",
+      "target_text": "je ne suis pas sûr de ce qui va se passer demain",
+      "frame": "P10",
+      "why": "final position, matrix know/sure frame",
+      "position": 46
+    },
+    {
+      "lego_index": 4,
+      "phrase_role": "use",
+      "known_text": "I can try to guess tomorrow with you",
+      "target_text": "je peux essayer de deviner demain avec toi",
+      "frame": "P4",
+      "why": "medial position, modal matrix with a trailing adjunct",
+      "position": 47
+    },
+    {
+      "lego_index": 4,
+      "phrase_role": "use",
+      "known_text": "I'd like to remember the whole sentence tomorrow",
+      "target_text": "j'aimerais me souvenir de toute la phrase demain",
+      "frame": "P1",
+      "why": "final position, new left neighbour phrase",
+      "position": 48
+    },
+    {
+      "lego_index": 4,
+      "phrase_role": "use",
+      "known_text": "Tomorrow, I'm trying to guess what's going to happen",
+      "target_text": "Demain, j'essaie de deviner ce qui va se passer",
+      "frame": "P28",
+      "why": "initial position, new right neighbour j'essaie",
+      "position": 49
+    }
+  ],
+  "baskets": [
+    {
+      "lego_index": 1,
+      "lego": "I wouldn't like",
+      "composite": 0.729,
+      "pass": false,
+      "floor_failures": [
+        "neigh",
+        "junct"
+      ]
+    },
+    {
+      "lego_index": 2,
+      "lego": "guess",
+      "composite": 0.786,
+      "pass": true,
+      "floor_failures": []
+    },
+    {
+      "lego_index": 3,
+      "lego": "what's going to happen",
+      "composite": 0.88,
+      "pass": true,
+      "floor_failures": []
+    },
+    {
+      "lego_index": 4,
+      "lego": "tomorrow",
+      "composite": 0.823,
+      "pass": true,
+      "floor_failures": []
+    }
+  ],
+  "seed_pass": false,
+  "seed_composite": 0.804
+}

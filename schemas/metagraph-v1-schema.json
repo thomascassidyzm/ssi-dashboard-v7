@@ -1,0 +1,292 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://saysomethingin.com/schemas/metagraph-v1-schema.json",
+  "title": "Shape metagraph v1",
+  "description": "The canonical store for the shape metagraph derived in docs/pods/shape-graph-2026-08-30.md. Language-agnostic: English is the notation, not the content — no member of this schema carries a lang_pair or a target language. Two edge kinds and only two: composition and survivability. Walks are sequences of node references; surface text is a property of a step, never the step itself.",
+  "oneOf": [
+    { "$ref": "#/definitions/nodesFile" },
+    { "$ref": "#/definitions/movesFile" },
+    { "$ref": "#/definitions/edgesFile" },
+    { "$ref": "#/definitions/outcomeShapesFile" },
+    { "$ref": "#/definitions/walkSetFile" }
+  ],
+  "definitions": {
+    "id": { "type": "string", "pattern": "^(N|P|F|C|S|M|O|W)[0-9]+$" },
+    "provenance": { "enum": ["pod-0", "method-pod"] },
+    "row": { "type": "string", "pattern": "^g[0-9]+$" },
+
+    "position": {
+      "type": "object",
+      "required": ["index", "name"],
+      "properties": {
+        "index": { "type": "integer", "minimum": 1 },
+        "name": { "type": "string" },
+        "family": { "type": ["string", "null"] },
+        "optional": { "type": "boolean" },
+        "repeatable": { "type": "boolean" },
+        "bound_with": { "type": "integer" },
+        "pivot_capable": {
+          "type": "boolean",
+          "description": "Chaining is a property of the walk, not an edge kind. A pivot-capable position can become position 1 of the next instance in the same turn (F11, F21, F3)."
+        },
+        "outcome_branch": { "type": "boolean" },
+        "alternatives": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["key", "name"],
+            "properties": {
+              "key": { "type": "string" },
+              "name": { "type": "string" },
+              "family": { "type": ["string", "null"] },
+              "polarity": { "enum": ["positive", "negative"] }
+            }
+          }
+        }
+      }
+    },
+
+    "shape": {
+      "type": "object",
+      "required": ["id", "name", "positions"],
+      "properties": {
+        "id": { "$ref": "#/definitions/id" },
+        "name": { "type": "string" },
+        "provenance": { "$ref": "#/definitions/provenance" },
+        "positions": { "type": "array", "minItems": 1, "items": { "$ref": "#/definitions/position" } },
+        "attestations": {
+          "type": "object",
+          "properties": {
+            "corpus": { "type": "array", "items": { "type": "string" } },
+            "method": { "type": "array", "items": { "type": "string" } }
+          }
+        },
+        "notes": { "type": "string" }
+      }
+    },
+
+    "nodesFile": {
+      "type": "object",
+      "required": ["concept", "nodes", "bound_pairs"],
+      "properties": {
+        "concept": { "const": "nodes" },
+        "nodes": { "type": "array", "items": { "$ref": "#/definitions/shape" } },
+        "bound_pairs": {
+          "description": "Sub-shapes that §3 names as contained shapes but that are not exchange-shape nodes. Edge endpoints may name them.",
+          "type": "array", "items": { "$ref": "#/definitions/shape" }
+        }
+      }
+    },
+
+    "movesFile": {
+      "type": "object",
+      "required": ["concept", "moves"],
+      "properties": {
+        "concept": { "const": "moves" },
+        "moves": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["id", "name", "test", "rows", "position"],
+            "properties": {
+              "id": { "$ref": "#/definitions/id" },
+              "name": { "type": "string" },
+              "test": { "type": "string" },
+              "dialogic_attestations": { "type": "integer" },
+              "rows": { "type": "array", "items": { "$ref": "#/definitions/row" } },
+              "drill_rows": { "type": "array", "items": { "type": "integer" } },
+              "position": { "type": "string" },
+              "presupposes": { "type": "string" },
+              "provenance": { "$ref": "#/definitions/provenance" },
+              "pivot_capable": { "type": "boolean" },
+              "also_initiating_at": { "type": "array", "items": { "type": "integer" } }
+            }
+          }
+        }
+      }
+    },
+
+    "edgesFile": {
+      "type": "object",
+      "required": ["concept", "edge_kinds", "composition", "survivability"],
+      "properties": {
+        "concept": { "const": "edges" },
+        "edge_kinds": {
+          "description": "Two and only two. A third kind is a modelling error — see §7.",
+          "type": "array", "minItems": 2, "maxItems": 2,
+          "items": { "enum": ["composition", "survivability"] }
+        },
+        "composition": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["id", "kind", "contained", "container"],
+            "properties": {
+              "id": { "$ref": "#/definitions/id" },
+              "kind": { "const": "composition" },
+              "contained": { "$ref": "#/definitions/id" },
+              "container": { "$ref": "#/definitions/id" },
+              "attestation": { "type": "string" },
+              "mechanical": { "const": true },
+              "reflexive": { "type": "boolean" },
+              "chain": { "type": "boolean" },
+              "note": { "type": "string" }
+            }
+          }
+        },
+        "survivability": {
+          "type": "object",
+          "required": ["corpus", "method_pod"],
+          "description": "Provenance is kept structurally distinct, not as a flag on one flat list: five of the fifteen rest on the Method Pod alone and carry no g<n> support.",
+          "properties": {
+            "corpus": { "type": "array", "items": { "$ref": "#/definitions/survivabilityEdge" } },
+            "method_pod": { "type": "array", "items": { "$ref": "#/definitions/survivabilityEdge" } }
+          }
+        }
+      }
+    },
+
+    "survivabilityEdge": {
+      "type": "object",
+      "required": ["id", "kind", "provenance", "b_attemptable_only_if", "a_survivable", "nodes"],
+      "properties": {
+        "id": { "$ref": "#/definitions/id" },
+        "kind": { "const": "survivability" },
+        "provenance": { "$ref": "#/definitions/provenance" },
+        "b_attemptable_only_if": { "type": "string" },
+        "a_survivable": { "type": "string" },
+        "nodes": { "type": "array", "items": { "$ref": "#/definitions/id" } },
+        "attested_response_positions": { "type": "array", "items": { "type": "string" } },
+        "method_attestation": { "type": "array", "items": { "type": "string" } },
+        "recovery_attested": { "enum": ["never", "once", "twice", "repeated", "unknown"] },
+        "recovery_note": { "type": ["string", "null"] },
+        "answer_slot_class": { "enum": ["non-delivery", "chaining", "relational", null] },
+        "note": { "type": ["string", "null"] }
+      }
+    },
+
+    "outcomeShapesFile": {
+      "type": "object",
+      "required": ["concept", "outcome_shapes", "sequence"],
+      "properties": {
+        "concept": { "const": "outcome-shapes" },
+        "sequence": { "type": "array", "minItems": 9, "maxItems": 9, "items": { "$ref": "#/definitions/id" } },
+        "outcome_shapes": {
+          "type": "array", "minItems": 9, "maxItems": 9,
+          "items": {
+            "type": "object",
+            "required": ["id", "name", "recovery_the_learner_must_own", "attestation_class", "attested", "sited_on"],
+            "properties": {
+              "id": { "$ref": "#/definitions/id" },
+              "name": { "type": "string" },
+              "recovery_the_learner_must_own": { "type": "string" },
+              "attestation_class": {
+                "description": "The deficit list, and it is the finding. minted = attested nowhere in either corpus.",
+                "enum": ["minted", "method-pod-only", "thin"]
+              },
+              "attested": { "type": "string" },
+              "sited_on": { "type": "string" },
+              "why_there": { "type": "string" },
+              "sequence_position": { "type": "integer", "minimum": 1, "maximum": 9 },
+              "rows": { "type": "array", "items": { "$ref": "#/definitions/row" } },
+              "method_attestation": { "type": "array", "items": { "type": "string" } },
+              "node": { "$ref": "#/definitions/id" },
+              "pair": { "$ref": "#/definitions/id" },
+              "merges": { "type": "array", "items": { "type": "string" } }
+            }
+          }
+        }
+      }
+    },
+
+    "walkSetFile": {
+      "type": "object",
+      "required": ["concept", "walk_set", "walks", "accounting"],
+      "properties": {
+        "concept": { "const": "walk-set" },
+        "walk_set": { "type": "string" },
+        "walk_kind": { "enum": ["listening", "producing"] },
+        "walks": { "type": "array", "items": { "$ref": "#/definitions/walk" } },
+        "truncated_walks": { "type": "array" },
+        "codas": { "type": "array" },
+        "alternatives": { "type": "array" },
+        "accounting": { "type": "object" }
+      }
+    },
+
+    "walk": {
+      "type": "object",
+      "required": ["id", "name", "steps"],
+      "properties": {
+        "id": { "$ref": "#/definitions/id" },
+        "name": { "type": "string" },
+        "scene": { "type": "integer" },
+        "steps": { "type": "array", "minItems": 1, "items": { "$ref": "#/definitions/walkStep" } },
+        "nodes_traversed": { "type": "array", "items": { "$ref": "#/definitions/id" } },
+        "composition_edges_used": { "type": "array", "items": { "$ref": "#/definitions/id" } },
+        "survivability_edges_touched": { "type": "array", "items": { "$ref": "#/definitions/id" } },
+        "outcome_shape": { "$ref": "#/definitions/id" },
+        "demonstrates": { "type": "array", "items": { "type": "string" } },
+        "mislabelled_as": { "type": "string" },
+        "defect": { "type": "string" },
+        "note": { "type": "string" }
+      }
+    },
+
+    "walkStep": {
+      "type": "object",
+      "description": "A step IS a node reference. The surface sentence hangs off it as a property and is never load-bearing: coverage must be computable without reading any prose.",
+      "required": ["step", "node", "position"],
+      "properties": {
+        "step": { "type": "integer", "minimum": 1 },
+        "node": { "$ref": "#/definitions/id" },
+        "position": { "type": "integer", "minimum": 1 },
+        "row": { "$ref": "#/definitions/row" },
+        "speaker": { "type": ["string", "null"] },
+        "surface": { "type": ["string", "null"] },
+        "move": { "type": ["string", "null"] },
+        "composed_in": {
+          "type": "object",
+          "required": ["node", "position"],
+          "properties": { "node": { "$ref": "#/definitions/id" }, "position": { "type": "integer" } }
+        },
+        "pair": { "$ref": "#/definitions/id" },
+        "pivot_to_position": { "type": "integer" },
+        "hedge": { "type": "boolean" },
+        "via_branch": { "type": "string" },
+        "variance": { "enum": ["surface", "outcome"] },
+        "surface_variants": {
+          "description": "Several phrasings of ONE ticket. Distinct from a branch, which is several OUTCOMES.",
+          "type": "array",
+          "items": {
+            "type": "object", "required": ["row"],
+            "properties": { "row": { "$ref": "#/definitions/row" }, "surface": { "type": "string" } }
+          }
+        },
+        "branch": { "type": "boolean" },
+        "branches": {
+          "description": "Mutually exclusive outcomes at one position. The thing a linear format cannot say — the acceptance test turns on g15 vs g16 being distinguishable.",
+          "type": "array", "minItems": 2,
+          "items": {
+            "type": "object",
+            "required": ["key", "row", "continues"],
+            "properties": {
+              "key": { "type": "string" },
+              "polarity": { "enum": ["positive", "negative"] },
+              "alternative": { "type": "string" },
+              "move": { "type": ["string", "null"] },
+              "row": { "$ref": "#/definitions/row" },
+              "speaker": { "type": ["string", "null"] },
+              "surface": { "type": ["string", "null"] },
+              "continues": { "type": "boolean" },
+              "pivot_to_position": { "type": "integer" },
+              "note": { "type": "string" }
+            }
+          }
+        },
+        "also": { "type": "string" },
+        "note": { "type": "string" }
+      }
+    }
+  }
+}

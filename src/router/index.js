@@ -212,6 +212,25 @@ const routes = [
     component: () => import('../views/PodsDoc.vue'),
     meta: { title: 'Listening Pods' }
   },
+  // Script Lab (2026-08-30) — the canonical pod SCRIPTS with NO course loaded,
+  // sitting on the shape metagraph. Tom: "I want a single place I can edit the
+  // canonical scripts for the pods … then I can see how this script is actually
+  // doing all the shapes it should as a walk through the graph." The
+  // course-nested /production/:courseCode/pods/canonical/:slug route stays: this
+  // is an extra door, not a replacement.
+  {
+    path: '/canonical/scripts',
+    name: 'ScriptLab',
+    component: () => import('../views/ScriptLabView.vue'),
+    meta: { title: 'Script Lab' }
+  },
+  {
+    path: '/canonical/scripts/:slug',
+    name: 'ScriptLabScript',
+    component: () => import('../views/ScriptLabScriptView.vue'),
+    props: true,
+    meta: { title: 'Script Lab' }
+  },
   // Pod script viewer (2026-08-24) — fleet-wide, read-only. Tom: "I think I need
   // to be able to see them all." Deep-linkable per course so a URL can be sent.
   {
@@ -578,6 +597,12 @@ const routes = [
     name: 'VadLab',
     component: () => import('../views/admin/VadLab.vue'),
     meta: { title: 'VAD Lab - Admin' }
+  },
+  {
+    path: '/admin/configs/basket',
+    name: 'BasketLab',
+    component: () => import('../views/admin/BasketLab.vue'),
+    meta: { title: 'Basket Lab - Admin' }
   },
   {
     // Capture A/B — record the same line under each mic profile and measure

@@ -1,0 +1,438 @@
+{
+  "$schema": "../../../schemas/metagraph-v1-schema.json",
+  "concept": "edges",
+  "version": 1,
+  "source": {
+    "document": "docs/pods/shape-graph-2026-08-30.md"
+  },
+  "edge_kinds": [
+    "composition",
+    "survivability"
+  ],
+  "policy": "Two edge kinds and only two. Chaining is a property of the walk, not of the graph: it is recorded as a pivot_capable annotation on a node position, never as a third edge kind (§7). Composition permits reflexive edges; delivery order is computed on the graph of distinct nodes with self-loops dropped before the sort.",
+  "null_result": "All ten corpus survivability edges rest on a non-delivery, a chaining move or a relational move. Not one rests on anything failing. The corpus attests the branch and withholds the recovery.",
+  "counts": {
+    "composition": 19,
+    "survivability_corpus": 10,
+    "survivability_method_pod": 5
+  },
+  "composition": [
+    {
+      "id": "C1",
+      "kind": "composition",
+      "contained": "N1",
+      "container": "N2",
+      "attestation": "g10→g11 open, g18→g19 close; g69→g70; g53 open",
+      "mechanical": true
+    },
+    {
+      "id": "C2",
+      "kind": "composition",
+      "contained": "N1",
+      "container": "N5",
+      "attestation": "g25; g27→g28; g35→g36",
+      "mechanical": true
+    },
+    {
+      "id": "C3",
+      "kind": "composition",
+      "contained": "N1",
+      "container": "N7",
+      "attestation": "g20→g21; g22 close",
+      "mechanical": true
+    },
+    {
+      "id": "C4",
+      "kind": "composition",
+      "contained": "N1",
+      "container": "N12",
+      "attestation": "g110 open; g117→g118 close",
+      "mechanical": true
+    },
+    {
+      "id": "C5",
+      "kind": "composition",
+      "contained": "P1",
+      "container": "N2",
+      "attestation": "g39→g40→g41→g42→g43 — the extender that takes an order from two turns to six",
+      "mechanical": true
+    },
+    {
+      "id": "C6",
+      "kind": "composition",
+      "contained": "N3",
+      "container": "N2",
+      "attestation": "g12–g14→g15/g16→g17 inside the café order; g54→g55→g56 inside the pub order",
+      "mechanical": true
+    },
+    {
+      "id": "C7",
+      "kind": "composition",
+      "contained": "P2",
+      "container": "N2",
+      "attestation": "g47→g48→g49; g137→g138→g139",
+      "mechanical": true
+    },
+    {
+      "id": "C8",
+      "kind": "composition",
+      "contained": "N8",
+      "container": "N2",
+      "attestation": "g75→g76→g77 inside the restaurant order",
+      "mechanical": true
+    },
+    {
+      "id": "C9",
+      "kind": "composition",
+      "contained": "N9",
+      "container": "N2",
+      "attestation": "g105→g106 inside the hotel check-in chain",
+      "mechanical": true
+    },
+    {
+      "id": "C10",
+      "kind": "composition",
+      "contained": "P3",
+      "container": "N4",
+      "attestation": "g121→g122→g123; g97→g98",
+      "mechanical": true
+    },
+    {
+      "id": "C11",
+      "kind": "composition",
+      "contained": "P4",
+      "container": "N4",
+      "attestation": "g124→g125→g126",
+      "mechanical": true
+    },
+    {
+      "id": "C12",
+      "kind": "composition",
+      "contained": "P5",
+      "container": "N12",
+      "attestation": "g110→g111→g112",
+      "mechanical": true
+    },
+    {
+      "id": "C13",
+      "kind": "composition",
+      "contained": "N4",
+      "container": "N12",
+      "attestation": "g113→g114→g115→g116→g117 — the dosage instructions are an instruction shape inside the consultation",
+      "mechanical": true
+    },
+    {
+      "id": "C14",
+      "kind": "composition",
+      "contained": "N6",
+      "container": "N5",
+      "attestation": "g32→g33→g34 — the repair sits inside the occupation exchange and the exchange resumes at g35",
+      "mechanical": true
+    },
+    {
+      "id": "C15",
+      "kind": "composition",
+      "contained": "N5",
+      "container": "N5",
+      "attestation": "g25→g26→g27→g28→g29→g30 — self-composition via the return question. See §7",
+      "mechanical": true,
+      "reflexive": true,
+      "note": "Reflexive edges are permitted; delivery order is computed on the graph of distinct nodes, with self-loops dropped before the sort."
+    },
+    {
+      "id": "C16",
+      "kind": "composition",
+      "contained": "N10",
+      "container": "N5",
+      "attestation": "g30→g31; g35→g36",
+      "mechanical": true
+    },
+    {
+      "id": "C17",
+      "kind": "composition",
+      "contained": "N10",
+      "container": "N2",
+      "attestation": "g92→g93→g94→g95 — the compliment arrives inside a shop transaction and shifts the topic",
+      "mechanical": true
+    },
+    {
+      "id": "C18",
+      "kind": "composition",
+      "contained": "N10",
+      "container": "N11",
+      "attestation": "g222→g223",
+      "mechanical": true
+    },
+    {
+      "id": "C19",
+      "kind": "composition",
+      "contained": "P6",
+      "container": "N2",
+      "attestation": "g45→g46; g16→g17; g51 — one transaction becomes several without a new opening",
+      "mechanical": true,
+      "chain": true
+    }
+  ],
+  "survivability": {
+    "corpus": [
+      {
+        "id": "S1",
+        "kind": "survivability",
+        "provenance": "pod-0",
+        "b_attemptable_only_if": "Any ticket (N2, N3)",
+        "a_survivable": "Re-select after a substitute",
+        "nodes": [
+          "N2",
+          "N3"
+        ],
+        "attested_response_positions": [
+          "g14→g15 \"no, we’ve only got drinks\"",
+          "g58→g59",
+          "g83→g84",
+          "g107→g108",
+          "g135→g136"
+        ],
+        "recovery_attested": "once",
+        "recovery_note": "Once. g59→g60 re-selects. g15 has no uptake at all",
+        "answer_slot_class": "non-delivery"
+      },
+      {
+        "id": "S2",
+        "kind": "survivability",
+        "provenance": "pod-0",
+        "b_attemptable_only_if": "Any information question (N3, N4)",
+        "a_survivable": "Acting on a hedge",
+        "nodes": [
+          "N3",
+          "N4"
+        ],
+        "attested_response_positions": [
+          "g8→g9 \"maybe three or four miles\"",
+          "g89→g90 \"you’ll have to look to make sure\"",
+          "g120→g121",
+          "g133→g134",
+          "g40→g41"
+        ],
+        "recovery_attested": "never",
+        "recovery_note": "Never. No turn in the corpus takes up a hedge; g91 opens new business after g90",
+        "answer_slot_class": "non-delivery"
+      },
+      {
+        "id": "S3",
+        "kind": "survivability",
+        "provenance": "pod-0",
+        "b_attemptable_only_if": "Asking anything at all",
+        "a_survivable": "Repair — F7 request, F8 reformulation",
+        "nodes": [
+          "N6"
+        ],
+        "attested_response_positions": [
+          "g32→g33→g34"
+        ],
+        "recovery_attested": "once",
+        "recovery_note": "Yes, and only here. g35 resumes. The corpus’s one complete off-path-and-recover cycle",
+        "answer_slot_class": "chaining"
+      },
+      {
+        "id": "S4",
+        "kind": "survivability",
+        "provenance": "pod-0",
+        "b_attemptable_only_if": "A personal question (N5)",
+        "a_survivable": "The question coming straight back",
+        "nodes": [
+          "N5"
+        ],
+        "attested_response_positions": [
+          "g25→g26",
+          "g28→g29",
+          "g31→g32"
+        ],
+        "recovery_attested": "repeated",
+        "recovery_note": "Yes — g27, g29, g32 all answer the return",
+        "answer_slot_class": "chaining"
+      },
+      {
+        "id": "S5",
+        "kind": "survivability",
+        "provenance": "pod-0",
+        "b_attemptable_only_if": "Instruction-giving (N4)",
+        "a_survivable": "Being corrected inside a confirm",
+        "nodes": [
+          "N4"
+        ],
+        "attested_response_positions": [
+          "g121→g122→g123 — \"past that church?\" / \"yes, past the church and the post office\""
+        ],
+        "recovery_attested": "once",
+        "recovery_note": "Once. The correction is silent; the learner is never shown noticing it",
+        "answer_slot_class": "chaining"
+      },
+      {
+        "id": "S6",
+        "kind": "survivability",
+        "provenance": "pod-0",
+        "b_attemptable_only_if": "A proposal (N7)",
+        "a_survivable": "A second no",
+        "nodes": [
+          "N7"
+        ],
+        "attested_response_positions": [
+          "g20→g21→g22 — the decline is itself declined"
+        ],
+        "recovery_attested": "once",
+        "recovery_note": "Once, and one scene only",
+        "answer_slot_class": "relational"
+      },
+      {
+        "id": "S7",
+        "kind": "survivability",
+        "provenance": "pod-0",
+        "b_attemptable_only_if": "Closing a transaction",
+        "a_survivable": "An unsolicited topic shift and a compliment",
+        "nodes": [
+          "N2",
+          "N10"
+        ],
+        "attested_response_positions": [
+          "g92→g93→g94→g95"
+        ],
+        "recovery_attested": "twice",
+        "recovery_note": "Twice: g95, g223",
+        "answer_slot_class": "relational"
+      },
+      {
+        "id": "S8",
+        "kind": "survivability",
+        "provenance": "pod-0",
+        "b_attemptable_only_if": "Any self-account (N11)",
+        "a_survivable": "Being contradicted",
+        "nodes": [
+          "N11"
+        ],
+        "attested_response_positions": [
+          "g223→g226",
+          "g227→g228"
+        ],
+        "recovery_attested": "repeated",
+        "recovery_note": "Scene 22 only — seven of the nine relational rows",
+        "answer_slot_class": "relational"
+      },
+      {
+        "id": "S9",
+        "kind": "survivability",
+        "provenance": "pod-0",
+        "b_attemptable_only_if": "An offer (N8)",
+        "a_survivable": "Declining to decide",
+        "nodes": [
+          "N8"
+        ],
+        "attested_response_positions": [
+          "g63→g64→g65"
+        ],
+        "recovery_attested": "once",
+        "recovery_note": "Once",
+        "answer_slot_class": "non-delivery"
+      },
+      {
+        "id": "S10",
+        "kind": "survivability",
+        "provenance": "pod-0",
+        "b_attemptable_only_if": "A long instruction (N4)",
+        "a_survivable": "Inviting an unbounded turn",
+        "nodes": [
+          "N4"
+        ],
+        "attested_response_positions": [
+          "g124→g125→g126"
+        ],
+        "recovery_attested": "once",
+        "recovery_note": "Once",
+        "answer_slot_class": "chaining"
+      }
+    ],
+    "method_pod": [
+      {
+        "id": "M1",
+        "kind": "survivability",
+        "provenance": "method-pod",
+        "b_attemptable_only_if": "Asking a question",
+        "a_survivable": "The answer being \"I don’t know\", held with status",
+        "nodes": [
+          "N13"
+        ],
+        "method_attestation": [
+          "M:1:54",
+          "M:4:70",
+          "M:4:77"
+        ],
+        "note": "and there it licenses the next question",
+        "recovery_attested": "unknown",
+        "answer_slot_class": null
+      },
+      {
+        "id": "M2",
+        "kind": "survivability",
+        "provenance": "method-pod",
+        "b_attemptable_only_if": "Making a claim",
+        "a_survivable": "The premise being audited",
+        "nodes": [
+          "N14"
+        ],
+        "method_attestation": [
+          "M:1:336-338"
+        ],
+        "note": "the audit received as a gift",
+        "recovery_attested": "unknown",
+        "answer_slot_class": null
+      },
+      {
+        "id": "M3",
+        "kind": "survivability",
+        "provenance": "method-pod",
+        "b_attemptable_only_if": "Telling a story",
+        "a_survivable": "A sceptical challenge landing mid-story",
+        "nodes": [
+          "N15"
+        ],
+        "method_attestation": [
+          "M:4:148→4:152"
+        ],
+        "note": "\"what’s happened to that group now?\" / \"it’s gone a little bit cold\"",
+        "recovery_attested": "unknown",
+        "answer_slot_class": null
+      },
+      {
+        "id": "M4",
+        "kind": "survivability",
+        "provenance": "method-pod",
+        "b_attemptable_only_if": "Holding a position",
+        "a_survivable": "The disagreement being parked rather than resolved",
+        "nodes": [
+          "N15"
+        ],
+        "method_attestation": [
+          "M:2:386→2:401"
+        ],
+        "note": null,
+        "recovery_attested": "unknown",
+        "answer_slot_class": null
+      },
+      {
+        "id": "M5",
+        "kind": "survivability",
+        "provenance": "method-pod",
+        "b_attemptable_only_if": "Stating a number",
+        "a_survivable": "The haggle",
+        "nodes": [
+          "N16"
+        ],
+        "method_attestation": [
+          "M:2:120-132"
+        ],
+        "note": null,
+        "recovery_attested": "unknown",
+        "answer_slot_class": null
+      }
+    ]
+  }
+}
