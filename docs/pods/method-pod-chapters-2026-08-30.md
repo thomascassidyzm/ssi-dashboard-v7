@@ -349,3 +349,171 @@ Every scene number 1–43 appears exactly once in the "absorbs" column. Scenes 1
 **Why this container:** three "so what you're saying is" in one arc — accepted (turn 5), refused in one word (turn 8), and a premise refused flat (turn 14) — so the reformulation staple is heard failing safely twice inside the chapter that also shows it succeeding; the scene form could only ever show one per unit. Every long turn is Aran's and heard; Tom's side-by-side restatement at turn 11 stays medium because it is the owned move. The last two turns say the sentence Chapter 9 will fail to remember.
 
 ---
+
+### Chapter 7 — *Un tiro di dadi* — how you would do it in a school, and how long it takes
+
+**Point:** one day a week, a hundred hours, and the first thing to say in any school is that highlighting does not work — and when the two of them disagree on the shape of the week, the disagreement goes on the shelf, not away.
+
+**Shapes traversed:** the flagged guess, m11 + m18 (2:294–296, 2:349) · **the complaint, with a partner turn** (MINT partner turn on 1:279–289, as in the control arm) · **N16 precision haggle**, m21 (2:120–134) · **N15 parked disagreement** and **O8 in its parked form** (2:378–401, 4:85–87) · **planted for Chapter 12:** *la mettiamo in pausa*.
+
+**Owns:** question-and-answer floor; the ratification stream; numbers, "and then?" (live canon). **Newly admits, one per beat:** pricing your own authority down before answering, and having the guess bought anyway (beat 1); joining a complaint short, then taking a share of the blame in one word (beat 2); bid, counterbid, convergence, settlement formula (beat 3); both positions restated in full, neither yielding, the clash explicitly shelved with the relationship intact (beat 4).
+
+**Holds (heard):** turn 4 (Aran, the roll of the dice), turn 7 and turn 9 (Aran, the complaint — two holds around a five-word join, the corpus's own profile), turn 22 (Aran, a hundred hours), turn 24 and turn 26 (Aran, the five-day model and its defence).
+
+**Zero-admission stretch:** turns 15–22 (*Cento ore*), carried from Scene 6 verbatim; "E poi?" is canon.
+
+**Mints:** Tom's fuller partner turn to the complaint — join, then take the share — is the **MINT** the control arm recorded; the park form as the summit's disagreement is the mint the re-cut recorded. The parked clash's *"Yep. We'll just put that on pause. Okay."* is Tom's line in the corpus and stays in his mouth.
+
+**Surface forms admitted:** *fuori allenamento*, *un tiro di dadi*, *un morso*, *l'orario*, *sospetto che*, *alla settimana*, *spaccare il cuore*, *qualsiasi*, *importare a*, *impegnarsi*, *i quaderni*, *l'evidenziatore*, *i risultati ci sono*, *fare differenza*, *spaccarsi la schiena*, *un fallimento*, *la generazione*, *un giorno pieno*, *propenso a*, *differenziare*, *sorprendere*, *può darsi*, *il rischio*, *valerne la pena*, *mettere in pausa*. Availability only.
+
+**Near-neighbour points:** *è da tanto tempo che non…* — the since-construction on essere where Spanish builds on *hacer*; *però* against *pero* — anchor with a stress-and-vowel trap; *a cui importa* — *importare* with a dative, where Spanish adds a *les*; *glielo lasciamo fare* — the fused double clitic against Spanish *se lo*, the *se* is the trap; *spaccare* against *romper* — absence, twice; *ci vorrà* — ci+volere for "it will take" has no Spanish neighbour; *prendile* — imperative with attached clitic, where Spanish *tómalas* matches exactly; *valerne la pena* — the Spanish speaker knows *valer la pena* exactly and Italian inserts *ne*: the most surgical spa/ita point in the set; *la mettiamo in pausa* against *la ponemos en pausa* — matched clitic, an anchor to close on.
+
+| | English | Italiano |
+|---|---|---|
+| TOM | Schools. How would you do it in a school? | Le scuole. Come lo faresti in una scuola? |
+| ARAN | It's been a long time since I've worked in schools. I'm out of practice, and I haven't thought about it much. | È da tanto tempo che non lavoro nelle scuole. Sono fuori allenamento, e non ci ho pensato molto. |
+| TOM | But? | Però? |
+| ARAN | But if you give me one roll of the dice — one day a week. One whole day, every week, for a year. Not an hour on Tuesday and an hour on Thursday — one day, so the paths get walked before they've been forgotten. That's what I'd want to test, and I'd bet on it. | Però se mi dai un solo tiro di dadi — un giorno alla settimana. Un giorno intero, ogni settimana, per un anno. Non un'ora il martedì e un'ora il giovedì — un giorno, così i sentieri li percorrono prima di averli dimenticati. È quello che vorrei provare, e ci scommetterei. |
+| TOM | That's a big bite out of the timetable. | È un bel morso all'orario. |
+| ARAN | It looks big. But I suspect you wouldn't even need the whole year. And I'll tell you what they'd get back. You know what breaks my heart? Go into any school. Find the kids who actually care — the ones making an effort — and open their workbooks. Highlighter. Page after page of highlighter. And the results are in: highlighting makes zero difference. Worse than zero — it costs them the time. | Sembra grande. Ma sospetto che non servirebbe nemmeno l'anno intero. E ti dico cosa ci guadagnerebbero. Sai cosa mi spacca il cuore? Entra in una scuola qualsiasi. Trova i ragazzi a cui importa davvero — quelli che si impegnano — e apri i loro quaderni. Evidenziatore. Pagine e pagine di evidenziatore. E i risultati ci sono: evidenziare non fa nessuna differenza. Peggio di nessuna — gli costa il tempo. |
+| TOM | And gives nothing back. | E non rende niente. |
+| ARAN | Nothing. Nobody told them how a memory is made. Somebody, once, told them "learn it", and an older brother had a highlighter, so they're breaking their backs doing the one thing that's been shown not to work. And we let them. That's not their failure. That's ours. | Niente. Nessuno gli ha detto come si forma una memoria. Qualcuno, una volta, gli ha detto «imparalo», e un fratello più grande aveva un evidenziatore, e così si spaccano la schiena a fare l'unica cosa che è dimostrato che non funziona. E noi glielo lasciamo fare. Non è un fallimento loro. È nostro. |
+| TOM | Ours. | Nostro. |
+| ARAN | Ours. We're the generation that went through it and found out. Saying so is the job. | Nostro. Siamo la generazione che ci è passata e l'ha scoperto. Dirlo è il lavoro. |
+| TOM | Then that's the first thing we say. Before the method. Before anything. | Allora è la prima cosa che diciamo. Prima del metodo. Prima di tutto. |
+| ARAN | Before anything. | Prima di tutto. |
+| TOM | And the day a week — for how long? How much time is it going to take? | E il giorno alla settimana — per quanto? Quanto tempo ci vorrà? |
+| ARAN | A lot. | Tanto. |
+| TOM | How much? Ten hours? | Quanto? Dieci ore? |
+| ARAN | More. Ten hours — and then ten more. | Di più. Dieci ore — e poi altre dieci. |
+| TOM | And then? | E poi? |
+| ARAN | And then ten more. And then ten more. | E poi altre dieci. E poi altre dieci. |
+| TOM | So how much altogether? A hundred? | Quindi quanto in tutto? Cento? |
+| ARAN | A hundred hours. It's a hundred hours. Ten hours, and then ten more, and then ten more — a hundred hours. Take them as you want. | Cento ore. Sono cento ore. Dieci ore, e poi altre dieci, e poi altre dieci — cento ore. Prendile come vuoi. |
+| TOM | Then I'll take them like this. Thirteen weeks. One full day to start, then two hours a week for eleven weeks, then one full day to close. That would probably be plenty. | Allora le prendo così. Tredici settimane. Un giorno pieno per iniziare, poi due ore alla settimana per undici settimane, poi un giorno pieno per chiudere. Probabilmente basterebbe. |
+| ARAN | Mm. I'd be inclined not to differentiate that much. Here's the model: five days, then a year of an hour or two a week, then five days again. With your thirteen weeks you'd surprise a few people. And you'd lose a few. | Mm. Io sarei propenso a non differenziare così tanto. Il modello è questo: cinque giorni, poi un anno di un'ora o due alla settimana, poi altri cinque giorni. Con le tue tredici settimane qualcuno lo sorprenderesti. E qualcuno lo perderesti. |
+| TOM | Fewer than you think. | Meno di quanto pensi. |
+| ARAN | Maybe. But one day, twelve weeks, one day — some of them will hear that and think it isn't enough to be worth doing. To me the risk doesn't seem worth it. Five days. | Può darsi. Ma un giorno, dodici settimane, un giorno — qualcuno lo sentirà e penserà che non basta per valerne la pena. A me il rischio non sembra valerne la pena. Cinque giorni. |
+| TOM | And I still like my thirteen weeks. | E a me piacciono ancora le mie tredici settimane. |
+| ARAN | I know. And I still don't. | Lo so. E a me continuano a non piacere. |
+| TOM | Then we'll put it on pause. Okay. | Allora la mettiamo in pausa. Va bene. |
+| ARAN | On pause. A hundred hours either way. | In pausa. Cento ore in ogni caso. |
+
+**Why this container:** the question "how would you do it in a school" is asked once and answered four times — a guess, a grievance, a number, and a shape of the week — and the fourth answer is the one they cannot agree, which is what the chapter was for. The haggle keeps its flat, fast profile inside a chapter whose other beats are steep: a set in which every stretch is uneven would be the flat prior wearing a different number, as the re-cut said. "Take them as you want" at turn 22 hands Tom the hundred hours, and "then I'll take them like this" is what opens the clash — the haggle's settlement formula becomes the clash's premise, which two separate scenes could not do. The park is said so that Chapter 12 can refuse it.
+
+---
+
+### Chapter 8 — *Uno a uno* — what a group does to a week, and why it is still worth doing
+
+**Point:** one negative person can turn the best person in the room; that is why Aran only says yes to one-to-one — and it is still a trip in a car, with crashes, and you will do more than one. Session one ends here, on the dog.
+
+**Shapes traversed:** **O1 the bare no** (MINT on 2:170–184, as in the control arm) · **the listener names it** (2:205–212) · the audit inside the glow, m5 (4:144–169) · **the co-owned line, m20, as a real callback, m8 → Chapter 2** (1:347–349, 4:242–246, 4:455) · metaphor handover, m16 (2:233–247) · **N17 interruption-and-bank**, m19 (4:474) · **N7 arrangement** and **O9 the second no** (2:135–146).
+
+**Owns:** the flat refusal; anecdote-with-flag; reformulation; days, times, "I'll be there", "I'm not here" (live canon). **Newly admits, one per beat:** surviving a bare "No" twice with nothing in hand before the account arrives (beat 1); giving a story its name in one line and letting the teller decide what it may mean (beat 2); deploying a shared line as a tool and having its provenance teased (beat 3); the audit question inside the partner's glowing story, answered honestly (beat 4); minting an image and letting the partner drive it (beat 5); naming an interruption and banking the thread (beat 6); after a second no, producing a third option (beat 7).
+
+**Holds (heard):** turn 8 (Aran, the group and the bed and breakfast), turn 11 (Aran, the negative person), turn 15 (Aran, nonetheless), turn 20 (Tom, the street group and the crocodile), turn 26 (Aran, there's your answer), turn 28 (Tom, the trip), turn 31 (Aran, the tour), turn 36 (Aran, the evening class, cut off), turn 39 (Tom, the dog), turn 48 (Aran, the cost of tomorrow). This is the longest chapter in the set and the only one with ten holds; it closes a session, and the session's own attested close is exactly this pile-up of short beats (2:135–146, 4:470–474).
+
+**Zero-admission stretch:** turns 41–48 (*Domani, allora*), carried from Scene 18 with its checked words unchanged.
+
+**Mints:** the no held bare across two turns, and Tom pressing (**MINT**, control arm Scene 24); the dog's container (**MINT**, the corpus line is an editorial annotation, not a turn — as the re-cut recorded). The crocodile line is attested three times and minted nowhere.
+
+**Surface forms admitted:** *un gruppo di dodici*, *nemmeno*, *tenerci*, *pagano bene*, *uno a uno*, *ormai*, *da quando*, *chiunque sia*, *qualunque sia*, *la stanza*, *giornate storte*, *cadere addosso*, *negativo / positivo*, *mettersi in coppia*, *apposta*, *buone intenzioni*, *tirare su*, *una cellula*, *sana*, *ciò nonostante*, *la sfida*, *il verdetto*, *la dinamica*, *ordini di grandezza*, *gente in gamba*, *coltivare*, *prova aneddotica*, *socio*, *coccodrillo*, *una battuta*, *appartenere*, *che fine ha fatto*, *raffreddarsi*, *impegnati*, *poveri di tempo*, *fallire*, *una giornata di progettazione*, *un viaggio in macchina*, *flessibile*, *temporaneo*, *incidenti*, *un tour*, *guidare*, *le chiavi*, *la metafora*, *il corso serale*, *povero di*, *aspetta*, *il cane*, *avere delle opinioni*, *alla porta*, *riprendere*, *dovere qualcosa a qualcuno*, *segnato*, *alla prossima*. Availability only.
+
+**Near-neighbour points:** *nemmeno* against *ni siquiera* — absence; *ci tengono* — the *ci*-construction with no Spanish twin, on the line that makes the ask hard to refuse; *chiunque sia* + subjunctive — matched mood, different word; *apposta* against *a propósito* — absence; *era diventato* — pluperfect with *essere* where Spanish takes *haber*; *quanto lei* for "as … as she" — *quanto* where Spanish uses *como*; *battuta* against sp. *batuta* (a conductor's baton) — false friend on the key noun; *ormai* — no one-word neighbour; *che fine ha fatto* — no Spanish twin; *quanti eravate* — essere for the counting question where Spanish *¿cuántos erais?* actually matches; *ne farai più di uno* — partitive *ne* in its most natural habitat; *guidare* — *guiar* exists and is wrong; *mi devi una terza cosa* against *me debes* — clean anchor; *non ci sono* for "I'm not here" — locative *ci* where Spanish says *no estoy*; *sono lì alle due* — essere for "I'll be there".
+
+| | English | Italiano |
+|---|---|---|
+| TOM | There's a school that wants you. Five days, a group of twelve. Will you do it? | C'è una scuola che ti vuole. Cinque giorni, un gruppo di dodici. Lo fai? |
+| ARAN | No. | No. |
+| TOM | No? | No? |
+| ARAN | No. | No. |
+| TOM | Not even for a week? They're keen. They'd pay properly. | Nemmeno per una settimana? Ci tengono. Pagano bene. |
+| ARAN | No. One to one. That's all I say yes to now. | No. Uno a uno. È l'unica cosa a cui dico di sì, ormai. |
+| TOM | Since when? | Da quando? |
+| ARAN | Since I understood what a group can do to a week. One to one, I know it works — whoever they are, whatever the room, we get there. A group — four people in a bed and breakfast for five days, one of them has two bad days, and all of it lands on the other three. I'd need to know who's in the room before I said yes, and I never do. So: no. | Da quando ho capito cosa può fare un gruppo a una settimana. Uno a uno, so che funziona — chiunque sia, qualunque sia la stanza, ci arriviamo. Un gruppo — quattro persone in un bed and breakfast per cinque giorni, uno di loro ha due giornate storte, e tutto cade addosso agli altri tre. Dovrei sapere chi c'è nella stanza prima di dire sì, e non lo so mai. Quindi: no. |
+| TOM | Two bad days. | Due giornate storte. |
+| ARAN | Two bad days. I've watched it. | Due giornate storte. L'ho visto succedere. |
+| TOM | Tell me. | Racconta. |
+| ARAN | I had one group with one truly negative person in it. And the most positive person in the room — the one you'd want in every group — paired up with her. On purpose. Good intentions: he was going to bring her round. And by the end of the day he'd become exactly as negative as she was. Not her better. Him worse. | Ho avuto un gruppo con dentro una persona davvero negativa. E la persona più positiva della stanza — quella che vorresti in ogni gruppo — si è messa in coppia con lei. Apposta. Buone intenzioni: la avrebbe tirata su. E alla fine della giornata lui era diventato esattamente negativo quanto lei. Non lei meglio. Lui peggio. |
+| TOM | That's literally how cancer works. | È letteralmente così che funziona il cancro. |
+| ARAN | Exactly. | Esatto. |
+| TOM | One cell, and the healthy one next to it. | Una cellula, e quella sana lì accanto. |
+| ARAN | Exactly that. And nonetheless — that's the challenge, not the verdict. The group dynamic. Because if you solve for the dynamic, you've got something that's orders of magnitude more powerful than one person alone. It's just that "solve for the dynamic" is the whole job. | Esatto, proprio così. E ciò nonostante — quella è la sfida, non il verdetto. La dinamica del gruppo. Perché se risolvi la dinamica, hai una cosa più potente di ordini di grandezza rispetto a una persona da sola. È solo che «risolvere la dinamica» è tutto il lavoro. |
+| TOM | Then it's the whole job. | Allora è tutto il lavoro. |
+| ARAN | The whole job. And nobody's done it. | Tutto il lavoro. E non l'ha fatto nessuno. |
+| TOM | I've got one too. A few years ago we had a group — brilliant people. We wanted to grow food for the whole street. And I'll say it before you do: it proves nothing. Accept it anyway. | Ne ho una anch'io. Qualche anno fa avevamo un gruppo — gente in gamba. Volevamo coltivare cibo per tutta la via. E lo dico prima che lo dica tu: non dimostra niente. Accettala lo stesso. |
+| ARAN | That's my line. | Quella è una battuta mia. |
+| TOM | It's your line. You said it two hours ago about a learner and a letter, and you said it years ago, in the middle of something else entirely, and you said it exactly like this: I lost my foot in that river— | È una battuta tua. L'hai detta due ore fa su una studentessa e una lettera, e l'hai detta anni fa, nel mezzo di tutt'altro discorso, e l'hai detta proprio così: ho perso il piede in quel fiume— |
+| ARAN | —please accept my anecdotal evidence. Yes. The crocodile. Though by now it's yours too. | — ti prego, accetta la mia prova aneddotica. Sì. Il coccodrillo. Anche se ormai è anche tua. |
+| TOM | It is now. | Adesso sì. |
+| ARAN | A good line ends up belonging to both. Like everything else in a long conversation — after a while you stop knowing who brought what. Go on. The street. | Una bella battuta finisce per appartenere a tutti e due. Come tutto il resto, in una conversazione lunga — dopo un po' non sai più chi ha portato cosa. Vai. La via. |
+| TOM | Brilliant people. Food for the whole street. | Gente in gamba. Cibo per tutta la via. |
+| ARAN | Sounds fantastic. And what happened to that group? | Sembra fantastico. E che fine ha fatto, quel gruppo? |
+| TOM | …It's gone cold. | …Si è raffreddato. |
+| ARAN | How many of you were there? | Quanti eravate? |
+| TOM | Fifteen. We did a design day, we made a ten-year plan. All of them busy. All of them time-poor. | Quindici. Abbiamo fatto una giornata di progettazione, abbiamo fatto un piano di dieci anni. Tutti impegnati. Tutti poveri di tempo. |
+| ARAN | There's your answer. Fifteen people in a whole street, and every one of them without time. It wasn't the idea that failed — there just aren't many people with time. There never are, anywhere. That's the other thing a group does: it finds the one hour a week that fifteen people don't have. | Ecco la risposta. Quindici persone in tutta una via, e nessuna di loro con tempo. Non è stata l'idea a fallire — è che non c'è tanta gente che ha tempo. Non c'è mai, da nessuna parte. È l'altra cosa che fa un gruppo: trova l'ora alla settimana che quindici persone non hanno. |
+| TOM | And yet you'd do it again. Learning with other people — it's not a course. It's flexible; you decide together where you're going; it's temporary; and at the end, the thing you've made lives between you and the road. It's not a course. It's a trip in— | Eppure lo rifaresti. Imparare con altre persone — non è un corso. È flessibile; decidete insieme dove andare; è temporaneo; e alla fine, quello che avete creato vive tra voi e la strada. Non è un corso. È un viaggio in— |
+| ARAN | —a car. Yes. I like the road trip. And it goes wider than that. | —macchina. Sì. Mi piace, il viaggio in macchina. E va anche più in là. |
+| TOM | Wider how? | Più in là come? |
+| ARAN | You'll do more than one. Sometimes with the same people, sometimes with new ones. A tour. And there will be crashes — that's the part you actually learn from. The negative woman was a crash. I learnt one to one from her. | Ne farai più di uno. A volte con le stesse persone, a volte con gente nuova. Un tour. E ci saranno degli incidenti — ed è da lì che impari davvero. La signora negativa era un incidente. Da lei ho imparato l'uno a uno. |
+| TOM | Now you're driving my metaphor. | Adesso la mia metafora la stai guidando tu. |
+| ARAN | You gave me the keys. | Mi hai dato tu le chiavi. |
+| TOM | Keep them. | Tienile. |
+| ARAN | Which is why the evening class never works, and it's three things. One: it's short on edges — it's your buildings in the field, a word a week and no streets. Two: it's short on repetition — once a week, and by the next week the curve has had it. And the third thing — and this is the important one — is that when you actually— | Ed è per questo che il corso serale non funziona mai, e sono tre cose. Uno: è povero di collegamenti — sono i tuoi palazzi in mezzo al campo, una parola alla settimana e niente strade. Due: è povero di ripetizione — una volta alla settimana, e la settimana dopo la curva se l'è già mangiata. E la terza cosa — ed è quella importante — è che quando tu davvero— |
+| TOM | Hang on. The dog. | Aspetta. Il cane. |
+| ARAN | The dog? | Il cane? |
+| TOM | The dog has opinions. Someone's at the door, and the dog has views about the door, and about the person behind it. This will take a while. | Il cane ha delle opinioni. C'è qualcuno alla porta, e il cane ha le sue idee sulla porta, e su chi c'è dietro. Ci vorrà un po'. |
+| ARAN | Fine. We'll pick this up next time — you owe me a third thing. When? Are you free on Tuesday? | Va bene. Riprendiamo la prossima volta — mi devi una terza cosa. Quando? Sei libero martedì? |
+| TOM | Tuesday, no. I have something on Tuesday. | Martedì no. Martedì ho un impegno. |
+| ARAN | Thursday, then? | Giovedì, allora? |
+| TOM | Thursday I'm not here. | Giovedì non ci sono. |
+| ARAN | …Tomorrow. | …Domani. |
+| TOM | Tomorrow? | Domani? |
+| ARAN | Tomorrow. I'll be there at two. | Domani. Sono lì alle due. |
+| TOM | Tomorrow. At two. Four hours going, four hours going home, for two hours of talking with me. …Okay. Tomorrow at two. I'll be here. Noted. The third thing, tomorrow. | Domani. Alle due. Quattro ore per venire, quattro ore per tornare, per due ore di chiacchiere con me. …Va bene. Domani alle due. Io sono qui. Segnato. La terza cosa, domani. |
+
+**Why this container:** the chapter is the bare no explained at length — Aran's no at turn 6 is not accounted for until turn 8, and the *reason* for the reason takes until turn 15 to arrive, which is the whole difference between a scene and a chapter: in Scene 24 the account is a hold; here the account is a story, its name, and its "nonetheless". The crocodile is a real callback: *accettala lo stesso* was said at Chapter 2 turn 1, is used here at turn 20 as a tool, and the two of them argue about whose it is. The dog cuts the third thing mid-clause and the arrangement is re-voiced (Aran proposing, Tom refusing twice) because the debtor must be the one who cannot make Tuesday; the second-no shape is unchanged, and the arrangement's attested flat profile is kept. Session one ends mid-thought with the loss ledgered.
+
+---
+
+## 3. Session two — Chapters 9 to 12
+
+---
+
+### Chapter 9 — *La terza cosa* — why the evening class fails: three things, one of them lost and rebuilt
+
+**Point:** the debt from the dog is called in, the debtor has lost the important one, and the three things are rebuilt jointly from where each was said — the field, the curve, the room.
+
+**Shapes traversed:** **N17 the recovery** (MINT — the next session is lost) · not-knowing, m22 (1:54) · joint construction, m2 (1:342–343) · **callback, m8, three times → Chapter 1** (*un palazzo in mezzo a un campo*), **→ Chapter 2** (the curve, the fish), **→ Chapter 6** (*il precipizio*, "the same thing in a bigger room").
+
+**Owns:** the banked thread; not-knowing; joint construction; the ratification stream. **Newly admits, one per beat:** calling in a debt before anything else and having it confirmed (beat 1); losing the thing in public and asking for the scaffold (beat 2); completing the missing item from the scaffold across the turn boundary (beat 3); declaring the debt paid on both sides (beat 4).
+
+**Holds (heard):** turn 7 (Tom, the first two things, with their provenance), turn 8 (Aran, the third thing).
+
+**Mints:** the whole recovery is **MINT**, as in the control arm's Scene 41: the corpus's last line is the interruption and the next session was never recorded. The three things are 1:250–258. What is new against Scene 41 is that the scaffold names *where* each thing was said, which only a chapter set with a reading order can do.
+
+**Surface forms admitted:** *dovere una cosa a*, *il corso serale*, *povero di*, *ripetizione*, *sparito*, *percorrere*, *i sentieri*, *un salto*, *il motivo*, *debito saldato*, *la prima ora*, *in mezzo al campo*. Availability only.
+
+**Near-neighbour points:** *mi dovevi* against *me debías* — anchor; *l'ho persa* — participle agreeing with the feminine clitic, where Spanish *la he perdido* never agrees; *dammi* against *dame* — anchor; *corso serale* — *serale* by absence (*nocturno*); *salto* — an exact anchor; *debito saldato* — *saldare* against *saldar*, anchor to close on.
+
+| | English | Italiano |
+|---|---|---|
+| TOM | Before anything else. You owed me a third thing. | Prima di tutto il resto. Mi dovevi una terza cosa. |
+| ARAN | I owed you a third thing. | Ti dovevo una terza cosa. |
+| TOM | The dog. You said "the third thing, and this is the important one, is that when you actually—" and then the dog. | Il cane. Hai detto «la terza cosa, ed è quella importante, è che quando tu davvero—» e poi il cane. |
+| ARAN | And then the dog. …I've lost it. | E poi il cane. …L'ho persa. |
+| TOM | You've lost the important one. | Hai perso quella importante. |
+| ARAN | I've lost the important one. I don't know what it was. Give me the first two. | Ho perso quella importante. Non so cos'era. Dammi le prime due. |
+| TOM | One: the evening class is short on edges — that's the building in the middle of the field, you gave it me in the first hour, a word a week and no streets. Two: it's short on repetition — once a week and the curve has had it, that's the fish, the one you wouldn't let me keep. Three: "when you actually—" | Uno: il corso serale è povero di collegamenti — è il palazzo in mezzo al campo, me l'hai dato tu nella prima ora, una parola alla settimana e niente strade. Due: è povero di ripetizione — una volta alla settimana e la curva se l'è mangiata, è il pesce, quello che non mi hai lasciato tenere. Tre: «quando tu davvero—» |
+| ARAN | —go and use it. Yes. That's it. When you actually go and use it — if you've already walked the paths, it isn't a step-change any more. It's the same thing you've been doing, in a bigger room. That's the third thing. That's the whole reason it works, and it's the one the evening class can't give you, because it never walked you anywhere. | —vai a usarla. Sì. È quella. Quando vai davvero a usarla — se hai già percorso i sentieri, non è più un salto. È la stessa cosa che facevi già, in una stanza più grande. Questa è la terza cosa. È tutto il motivo per cui funziona, ed è quella che il corso serale non ti può dare, perché non ti ha mai fatto camminare da nessuna parte. |
+| TOM | The bigger room. You said that before the dog too — before the films. The cliff. | La stanza più grande. L'avevi detta anche prima del cane — prima dei film. Il precipizio. |
+| ARAN | Then I've said it three times. | Allora l'ho detta tre volte. |
+| TOM | Everything in this conversation gets said three times. | In questa conversazione tutto viene detto tre volte. |
+| ARAN | That's the method. Debt paid? | È il metodo. Debito saldato? |
+| TOM | Debt paid. | Debito saldato. |
+| ARAN | Debt paid. Never let a dog near the important one. | Debito saldato. Mai lasciare un cane vicino a quella importante. |
+
+**Why this container:** this is the shortest chapter and it carries the most reach-backs — three, each to a different hour, each recognisable by the phrase itself (*il palazzo in mezzo al campo*, *il pesce*, *il precipizio*) rather than by a label. The recovery needs the losing to be real, so the not-knowing at turn 6 is a bare "I don't know what it was" rather than a performance of forgetting; the scaffold is Tom's hold and the completion across the turn boundary is the corpus's joint-construction profile. Turns 11–12 are the pod noticing its own grammar, once, and moving on.
+
+---
