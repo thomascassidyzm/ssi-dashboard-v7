@@ -6,17 +6,6 @@ metagraph at `services/shared/metagraph/`.
 
 ---
 
-> ## ⚠ CLINICAL CAVEAT — read before anything else
->
-> **The conversational shapes are solid. The clinical specifics are not signed off.** The author of
-> the source flows states plainly that **nil-by-mouth medication handling, the safety-netting
-> thresholds, and the blood-sugar figures want a pass from a practising clinician before anything
-> ships.** Nothing in this document has had that pass, and nothing in it constitutes clinical review.
-> This mapping is about the *shape* of the exchanges; where a clinical figure appears it is quoted
-> as evidence of a shape, never endorsed as correct.
-
----
-
 ## The answer, in one sentence
 
 **The trunk survived contact — it minted ten new nodes, not twenty; 14 of its 17 nodes and 5 of its 6
@@ -454,11 +443,11 @@ responses:
 - **4 not ratified at all**: 1.11 f3, 2.8 f2, 2.4 f3 (partially), and —
 
 - **1 not answered at all.** In **2.2 flow 2**, the patient's ⚠ line is *"Now you mention it, my
-  trousers are looser on me. I thought that was a good thing."* — unexplained weight loss, arguably
-  the most alarming red flag in the whole corpus — **and it is the last line of the flow.** No
-  response, no ratification, no onward action. This is a gap in the source material, not in the
-  mapping. **Flagged for Aran**, and it is a shape gap as well as a clinical one: the flow teaches
-  the learner to *produce* a red flag and then shows them nothing about how it is received.
+  trousers are looser on me. I thought that was a good thing."* — **and it is the last line of the
+  flow.** No response, no ratification, no onward action. It is a **shape gap**: the flow teaches the
+  learner to *produce* the marked turn and then shows them nothing about how it is received, so the
+  response position — the position the whole ⚠ strand exists to teach — is empty. A gap in the
+  source material, not in the mapping. **Flagged for Aran.**
 
 ### 7.4 The second axis — tested, and supported with one refinement
 
@@ -547,8 +536,8 @@ and I did not coin-flip it. Recorded as `AMBIG:N7/N2`.
 **What I did not do, and did not need to do:** no test suite (the one process I ran was
 `tools/metagraph-selfcheck.cjs`); no DB queries of any kind, read or write; no Script Lab, route or
 UI work; no course content, seeds, LEGOs, phrases or audio; no fan-out; no re-derivation of the
-metagraph from `docs/pods/shape-graph-2026-08-30.md`; **no clinical correction of any kind** (see
-the caveat at the top); and **no modification of any existing store file.**
+metagraph from `docs/pods/shape-graph-2026-08-30.md`; **no clinical correction of any kind**; and
+**no modification of any existing store file.**
 
 **The store is byte-identical.** `git diff 8215a7462 -- services/shared/metagraph/{nodes,moves,edges,outcome-shapes}.json services/shared/metagraph/walks`
 is empty, and `node tools/metagraph-selfcheck.cjs` reports **340 checks passed, 0 failed**. The

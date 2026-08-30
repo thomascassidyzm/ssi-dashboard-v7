@@ -10,7 +10,6 @@
     "derived": "2026-08-30",
     "author": "Aran (hand-authored flows); mapping by the metagraph worker"
   },
-  "clinical_caveat": "The conversational shapes are solid, but the clinical specifics — nil-by-mouth medication handling, safety-netting thresholds, the blood-sugar figures — want a pass from a practising clinician before anything ships. Nothing in this file has had that pass.",
   "id_range": {
     "rule": "Minted in the existing register (N/P/F/C/S/O + integer, per schemas/metagraph-v1-schema.json) but from 101 upward, so nothing can collide with the store's 1..21 range and every id is self-evidently a health proposal on sight.",
     "nodes": "N101–N110",
