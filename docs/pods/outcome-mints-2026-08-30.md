@@ -309,3 +309,108 @@ never use and health's five do; used here on the same terms.
 reformulate-and-check sequence.
 **Smoke test:** passes. A counter that processes what it thinks it heard exists wherever there are
 counters.
+
+---
+
+## 4. O6 — Trouble that is your own fault
+
+**The shape.** `N203 Own-fault admission`:
+
+| index | name | family |
+|---|---|---|
+| 1 | trouble surfaced — by the other party, or by the admission itself | — |
+| 2 | admit, and supply what you hold | **F203** (repeatable) |
+| 3 | concede-and-hold | F16 (repeatable) |
+| 4 | the price — the consequence stated, by whoever holds it | — |
+| 5 | accept | F1 |
+| 6 | settle | F1 (optional) |
+
+**Why not an existing node.** P101 (health's apology-and-absolution) and N11 positions 1–2 are
+self-blame *for imposing*, answered by absolution — the fault is ritual and it is waved away. N203 is
+fault that is real, and the other party does not wave it. The store has no shape in which an
+admission is met by a held consequence: `g182`/`g183` are the admission with no partner turn at all,
+and the brief's test is exact — if the other party waves it away in every arm the shape has no teeth.
+F16 *Fair enough, but I still* — attested only in scene 22, on assessments of a person — turns out to
+be the consequence-holder's move on the world, and both arms below put it there.
+
+**One new move. F203 "My fault — here's what I've got"** — *The responder attributes the trouble to
+themselves or their party, without excuse, and in the same turn supplies whatever partial remedy they
+hold: a fact, an object, an offer.* Distinct from F13 (thank-and-downgrade) and P101 (self-blame for
+imposing, expecting absolution). Attested in pod-0 as monologue (`g182` "I'm sorry, my son lost his
+ticket", `g183` "We have paid, but my daughter has lost her ticket" — admission and supply in one line,
+no partner); in health 2.7 f3 "I'll admit, I just stopped them last time" (admission, no supply).
+
+**The smoke test changed this node.** Position 4 was first written as "the other party prices the
+consequence". Tested for a non-Indo-European column, that fails: in a high-face column the admitter
+prices it themselves, before the other party can — and the Method Pod's Scene 39 does exactly this
+between equals ("the half day is the price of having waited"). So position 4 is *the price, by whoever
+holds it*, and W205 and W206 fill it from opposite sides on purpose.
+
+### W205 — Saturday — symmetric
+
+**Hangs off** W4 step 3, `g22` — the arrangement's last turn, "let's talk on Saturday. See you then."
+The corpus never shows Saturday. Draws on scene 19's `g190`–`g193` ("I don't want to be late", "I
+promise I won't be late"). **The learner is the Learner.** **Register:** symmetric — the friend holds
+nothing but the evening and the option of having gone home; the consequence is relational, and the
+price is a promise.
+
+| | |
+|---|---|
+| Friend `g22` | No, I'm sorry, I'm busy tomorrow. But let's talk on Saturday. See you then. |
+| *— Saturday, twenty-five past seven. The fork: kept ("There you are." — and N1) or broken:* | |
+| Friend | There you are. I said seven. |
+| Learner | I know. My fault. I got the wrong bus. |
+| Friend | I nearly went home. |
+| Learner | Fair enough. I'll get these — what are you having? |
+| Friend | Go on, then. And next time — seven. |
+| Learner | Seven. I promise. |
+
+**The teeth.** "I nearly went home" is F16 with the concession silent: the friend does not say "it's
+fine". The learner's accept is "fair enough" *plus* the supply (the round), and the price is extracted
+as a commitment — health's N109 between equals — which `g192` already gives the learner the words for.
+Seven turns, three minted learner turns. The excuse is named as a fact, not argued.
+
+**Recovery:** admit it, supply what you can, accept the consequence.
+**The wrong arms:** argue the excuse ("the buses here are terrible"); over-apologise into P101 and
+wait to be absolved; skip the supply.
+**Survivability:** **S205** — *admitting own fault (N203) is attemptable only if a held consequence
+can be absorbed (N201 position 3)* — accepting "I nearly went home" is absorbing a no. This is the
+edge that sequences O6 after O1. Recovery attested never in pod-0; health 2.7 f3 (patient side);
+Method Pod Scene 39 (mint). Class: relational.
+**Attestation:** minted from nothing in this register. Method Pod Scene 39 is the sibling mint.
+**Smoke test:** passes, with the change to position 4 recorded above.
+
+### W206 — The inspector — asymmetric
+
+**Hangs off** `g182`/`g183` — the admission the store says is "already written and already
+learner-side; all that is missing is the other party". **The learner is the Learner.** **Register:**
+asymmetric — the inspector holds the record (the ticket is his object), the sanction, and the train;
+he does not have to explain the policy and does not.
+
+| | |
+|---|---|
+| Inspector | Tickets, please. |
+| *— the fork: "Here you are." — or:* | |
+| Learner `g183` | We have paid, but my daughter has lost her ticket. |
+| Inspector | I'm sure you have. But she hasn't got a ticket. |
+| Learner | No. Here's mine — four, from the station, ten past nine. Same as hers. |
+| Inspector | That's yours. Hers is a twenty-pound penalty, or she gets off at the next stop. |
+| Learner | …Twenty. Fine. We'll pay. |
+| Inspector | Card's fine. |
+
+**The teeth.** "I'm sure you have. But she hasn't got a ticket" is F16 exactly — concede, hold — and
+it is the first time the store's *fair-enough-but* move is attested on the world rather than on a
+person. The supply (own ticket, the count, the time) is refused flat: "That's yours." The price is
+stated with no reason and two options, neither of them good. The accept costs money. "Card's fine" is
+the settle — and O1's whole mask, glanced at in two words. Seven turns; `g182` "I'm sorry, my son lost
+his ticket" is the surface variant of the admission.
+
+**Recovery:** admit it, supply what you can, accept the consequence — *priced by them*.
+**The wrong arms:** argue ("but I bought four"); plead the child; refuse the price and lose the
+stop; say nothing and let the daughter be put off.
+**Survivability:** S205, as W205, with the consequence priced from above — which is where S202's
+one-turn discipline returns: the accept has to be produced before "the next stop".
+**Attestation:** rows attested in drill (`g182`, `g183`); partner turns minted; shape attested in
+health 2.7 f3 with the learner in the other seat (the doctor holding: "A lot of people do… But the
+full course, every time. Deal?" / "Deal.").
+**Smoke test:** passes; the sanction-holder who does not explain is universal.
