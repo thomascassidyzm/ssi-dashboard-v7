@@ -696,3 +696,86 @@ end PARKED at the honest floor instead of fake-resolved — the budget stays unw
 refusal is priced, and the last line hands the whole question to the rest of the pod.
 
 ---
+
+### Chapter 9 — *The wrong answer* — descend the ladder or descend the assembly
+
+**Point:** the best-tested idea in the estate that nobody has theorised — when the answer is
+wrong, one of them walks DOWN THE LADDER on the same question and the other walks DOWN THE
+ASSEMBLY toward the prerequisite — and the fork does not resolve, because underneath it a wrong
+answer is information about the question to one of them and an experience of a child to the
+other.
+
+**Shapes traversed:** callback, m8 → Chapter 8's own sentence, turned on itself (*rung of
+what?*) · callback, m8 → Chapter 3 (*inaudible, not hard*) · **the listener names it** — each
+names what the other built better than its builder did · reformulation, m1, **refused in one
+word** · joint construction, m2 (the taxonomy of the miss) · **O8 the standing clash — this one
+is not parked, and Chapter 11 leaves it standing.**
+
+**Holds (heard):** turn 3 (Aran, the heater tree spoken whole, 72), turn 7 (Tom, the seven-rung
+ladder down to the fish, 66), turn 11 (Aran, naming Tom's blindness, 61), turn 13 (Tom, naming
+what Aran built, 57), turn 21 (Aran, the dignity of the floor, 68), turn 25 (Tom, information
+about the question, 44), turn 26 (Aran, experience of a child, 47). The owned moves — *Rung of
+what?* (3), *No.* (1), *Both. Obviously.* (2), *Then it stands* (3), *It stands* (2) — are all
+short.
+
+**Sources & mints:** the heater specimen is DysgApp verbatim in substance (archive §DysgApp:
+20Ω on 240V → how do you find it → what does voltage over resistance give you); forty trees a
+subject, two levels deep, hand-authored, is the archive's own count; the seven-rung ladder —
+category, magnitude, type and units, method, precision, construct, recall — and
+drop-a-rung-on-a-miss are the shipped engine as the archive read it; Tom's "there are some great
+ideas in the walking back a couple of rungs upon making a mistake" is his recorded word; the
+two-axes reading, the frontier defence and "wired to the wrong trigger" are the archive's
+analysis, here DISTRIBUTED between the two voices — flagged in §0: Aran has never said his half
+of this chapter. MINTED: "rung of what?" — the observation that the canon's own
+correction-is-the-signal-of-another-rung sentence is ambiguous between the two structures;
+the referral refusal; the dignity argument in this form; the closing pair of credos. If any
+mint in this pod earns a store proposal, it is the taxonomy at turns 15–19 — see §14.
+
+| | |
+|---|---|
+| TOM | Now the one I've been saving, because you built something and I don't think either of us has ever said out loud what it is. Your exam trees. Walk me down one. |
+| ARAN | The arholiad trees. Forty a subject, two levels deep, every one written by hand. |
+| TOM | The heater. |
+| ARAN | A twenty-ohm heater runs on two hundred and forty volts — what's the current? Child gets it wrong. Don't mark it, don't explain it — descend: you've got two hundred and forty volts and twenty ohms; how do you find the current from those? Wrong again — descend again: if you divide a voltage by a resistance, what do you get? And that one they can nearly always answer. Then you climb back up the way you came, and the top question that was a wall three minutes ago is a doorstep. |
+| TOM | And my machine, on the same wrong answer, does something that sounds identical and is a different move in a different structure. Which is the fork, so let's get both on the table properly before we start swinging. |
+| ARAN | Yours drops a rung. |
+| TOM | Mine drops a rung on the SAME question. The ladder under every node runs seven deep — recall at the top, then construct, precision, method, type and units, magnitude, and category at the bottom: is it even a fish. Miss at precision and the next question is the same heater with wider distinctions — did you get the magnitude right, are you in amps at all — down, if it keeps going wrong, to "is current even the kind of thing we're looking for". Same node. Wider apart. Your Chapter 3 rule running the show: if they missed it, maybe the question was inaudible, so make it audible and find the rung they CAN hear. |
+| ARAN | Same trigger, two descents. |
+| TOM | Two structures. I walk down the LADDER — the distinction axis, inside one question. You walk down the ASSEMBLY — out of the question entirely, toward the prerequisite it's built from. And here's what should worry both of us: last night I said a correction is the signal of another rung, and you banked it. |
+| ARAN | Rung of what? |
+| TOM | Exactly that. Rung of what. My ladder has rungs. Your tree has rungs. The sentence doesn't know which structure it lives in, and neither of us noticed for five years. |
+| ARAN | Then let me name what your machine actually is, because I've been inside it now. It's clean. It's the cleanest architecture in the building — the frontier decides what you're ready for, the mastery gate swears you own the prerequisites, so by the time a question reaches you, a prerequisite failure is supposed to be impossible, and the ladder only ever has to handle slips. And that's precisely where it's blind. Because the gate's oath is only as good as the graph, and the graph is always slightly wrong about what a real child owns on a real Tuesday. Your architecture handles the world where your bookkeeping is right. Mine handles the world. |
+| TOM | And let me name what you actually built, because you keep calling it a teaching trick and it's not. You hand-authored, forty times a subject, by ear, the exact walk a prerequisite graph would generate — every one of your trees is a stack of assembly edges, written down by a man who swears the graph doesn't need to exist. You built the second axis. My engine even HAS the machinery for it — nearest-rung routing through the intermediates — and it's wired to selection time, never to a miss. You wired it to the miss. By hand. Forty times. |
+| ARAN | So we've each built half of one machine, and the fight is over which half answers the phone. |
+| TOM | The FIRST wrong answer. That's the whole fork. One event, one default. Taxonomy first, though, because we agree on more than we're about to pretend: some misses are slips— |
+| ARAN | —precision, fumble, misread, the ladder's meat, no argument— |
+| TOM | —some are inaudible questions, distinction too fine, still ladder— |
+| ARAN | —and some are debts. The prerequisite was never owned, the gate swore falsely, and no amount of widening THIS question touches it, because the hole is two nodes upstream. |
+| TOM | Both structures needed. Obviously. Nobody's arguing axes exist. |
+| ARAN | The default, then. Your machine hears the miss first — what does it do? |
+| TOM | Ladder. Always ladder first. It's the cheapest probe there is: one wider question, same node, and a slip declares itself instantly — most misses ARE slips, and sending every fumble on a tour of the prerequisites turns a typo into a remedial event. If the fish rung fails, THEN jump structures, because now it can't be a slip. The ladder is the diagnostic; the assembly is the treatment. |
+| ARAN | And I say by the time your fish rung fails you've marched a child through three failures in a row to confirm what the first one was screaming. Listen to the tree again — the child gets the FLOOR. Every descent of mine ends, within two questions, on something they can answer, and then they climb back up on their own legs and take the summit that beat them three minutes ago. That's not a diagnostic sequence. That's the experience of being someone who works things out. Your ladder bottoms out at "is it even a fish" — the question whose honest translation is "do you know anything at all?" — and you'd serve it to a child who was one missing rung from glory. |
+| TOM | The dignity argument. |
+| ARAN | The dignity FINDING. I tested it. Forty trees, two subjects, real children, real exams — it's the best-tested thing either of us owns and I didn't theorise it, I watched it work and wrote down more of it. |
+| TOM | So what you're saying is a wrong answer is a referral. |
+| ARAN | No. |
+| TOM | Then say the bedrock, because we're there. Mine: a wrong answer is INFORMATION ABOUT THE QUESTION. The child is the one fixed point I trust; the miss tells me my question was mis-pitched or my graph is lying, and the machine's first duty is to interrogate ITSELF — which the ladder does, cheaply, before it dares conclude anything about the learner. |
+| ARAN | And mine: a wrong answer is AN EXPERIENCE OF A CHILD. Whatever it tells your bookkeeping, it is also, right now, a person being wrong, and what happens in the next thirty seconds decides whether they come back tomorrow. The machine's first duty is to the person having the worst moment of the session. Everything else can be logged and settled later. |
+| TOM | Both of those are true. |
+| ARAN | Both of those are true, and they give different orders to the same machine, and one of them has to answer the phone. |
+| TOM | Then it stands. |
+| ARAN | It stands. And notice we didn't do the thing we did with the names — there's no telemetry sentence coming, because we'd both predict the same mixed result. Some misses slips, some misses debts, film at eleven. The instrument doesn't split us. The default is a decision about what a wrong answer IS, and that's a selection, not a measurement. |
+| TOM | The scarce thing was always the selector. |
+| ARAN | Even here. Especially here. |
+
+**Why this container:** this is the chapter the commission called the most valuable one to leave
+standing, and it is built so that it CANNOT resolve: the disagreement is walked all the way down
+through three honest layers — machinery, where they genuinely differ; taxonomy, where they
+genuinely agree; bedrock, where the difference turns out to be two credos about what a wrong
+answer is — and at bedrock there is no instrument, which the chapter says out loud, refusing the
+Chapter 4 exit on purpose. Each speaker gets the other's best case said better than its owner
+says it, which is what keeps a competent reader from telling whose side the text is on. "Rung of
+what?" is the pod's one genuinely new question, minted at the join of two chapters, and it goes
+unanswered — deliberately, because the estate has not answered it either.
+
+---
