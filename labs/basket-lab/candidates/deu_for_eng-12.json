@@ -1,0 +1,301 @@
+{
+  "course": "deu_for_eng",
+  "seed": 12,
+  "generated": "2026-08-29T11:29:09.321Z",
+  "build_sha": "43521a7e9",
+  "model": "sonnet",
+  "job": {
+    "verdict": "LEXICAL ONLY",
+    "sentence": "Nothing structural is new here: every frame and every side of every split in play has been seen before. The job is lexical — 4 new lego(s): \"to guess\" → \"raten\", \"tomorrow\" → \"morgen\", \"happens\" → \"passiert\", \"what's going to happen tomorrow\" → \"was morgen passiert\"."
+  },
+  "attempts": [
+    {
+      "pass": 1,
+      "seed_composite": 0.817,
+      "seed_pass": false,
+      "failing_baskets": [
+        {
+          "lego_index": 2,
+          "lego": "tomorrow",
+          "floors": [
+            "pos"
+          ]
+        },
+        {
+          "lego_index": 4,
+          "lego": "what's going to happen tomorrow",
+          "floors": [
+            "pos"
+          ]
+        }
+      ],
+      "phrase_count": 25
+    },
+    {
+      "pass": 2,
+      "seed_composite": 0.844,
+      "seed_pass": true,
+      "failing_baskets": [],
+      "phrase_count": 25
+    }
+  ],
+  "phrases": [
+    {
+      "lego_index": 1,
+      "phrase_role": "build",
+      "known_text": "To guess",
+      "target_text": "Raten",
+      "frame": "P1",
+      "why": "bare infinitive fragment, first exposure to raten, extends naturally into a want-chain",
+      "position": 1
+    },
+    {
+      "lego_index": 1,
+      "phrase_role": "build",
+      "known_text": "I want to guess",
+      "target_text": "Ich will raten",
+      "frame": "P1",
+      "why": "want-chain frame, raten now in a full clause, medial position",
+      "position": 2
+    },
+    {
+      "lego_index": 1,
+      "phrase_role": "use",
+      "known_text": "I can guess when you are finished",
+      "target_text": "Ich kann raten, wenn du fertig bist",
+      "frame": "P4",
+      "why": "modal-can frame, raten medial with a new right neighbour, adds temporal clause tail",
+      "position": 3
+    },
+    {
+      "lego_index": 1,
+      "phrase_role": "use",
+      "known_text": "I'd like to be able to guess",
+      "target_text": "Ich möchte raten können",
+      "frame": "P5",
+      "why": "be-able-to frame, raten now left-adjacent to können, new right neighbour",
+      "position": 4
+    },
+    {
+      "lego_index": 1,
+      "phrase_role": "use",
+      "known_text": "I'm going to try to guess now",
+      "target_text": "Ich werde jetzt versuchen zu raten",
+      "frame": "P2",
+      "why": "going-to future frame, raten pushed to final position after versuchen zu",
+      "position": 5
+    },
+    {
+      "lego_index": 1,
+      "phrase_role": "use",
+      "known_text": "I'm not sure whether I want to guess",
+      "target_text": "Ich bin mir nicht sicher, ob ich raten will",
+      "frame": "P10",
+      "why": "know/sure matrix frame, raten embedded in an ob-clause, distinct left neighbour",
+      "position": 6
+    },
+    {
+      "lego_index": 2,
+      "phrase_role": "build",
+      "known_text": "To guess tomorrow",
+      "target_text": "Raten morgen",
+      "frame": "P28",
+      "why": "time-adjunct fragment combining the prior lego, morgen final on both sides",
+      "position": 7
+    },
+    {
+      "lego_index": 2,
+      "phrase_role": "build",
+      "known_text": "To learn tomorrow with you",
+      "target_text": "Lernen morgen mit dir",
+      "frame": "P28",
+      "why": "morgen now medial, followed by mit dir, fixing the all-final position spread",
+      "position": 8
+    },
+    {
+      "lego_index": 2,
+      "phrase_role": "use",
+      "known_text": "I'm going to practise tomorrow",
+      "target_text": "Ich werde morgen üben",
+      "frame": "P2",
+      "why": "going-to future frame, morgen medial before the infinitive on the target side",
+      "position": 9
+    },
+    {
+      "lego_index": 2,
+      "phrase_role": "use",
+      "known_text": "I want to learn tomorrow",
+      "target_text": "Ich will morgen lernen",
+      "frame": "P1",
+      "why": "want-chain frame, distinct left neighbour lernen",
+      "position": 10
+    },
+    {
+      "lego_index": 2,
+      "phrase_role": "use",
+      "known_text": "I can guess tomorrow",
+      "target_text": "Ich kann morgen raten",
+      "frame": "P4",
+      "why": "modal-can frame, reuses raten as neighbour without repeating a whole basket",
+      "position": 11
+    },
+    {
+      "lego_index": 2,
+      "phrase_role": "use",
+      "known_text": "I'm not sure whether I want to guess tomorrow",
+      "target_text": "Ich bin mir nicht sicher, ob ich morgen raten will",
+      "frame": "P10",
+      "why": "know/sure matrix frame, morgen embedded deep in the ob-clause, longest carrier",
+      "position": 12
+    },
+    {
+      "lego_index": 3,
+      "phrase_role": "build",
+      "known_text": "I don't want to guess what happens",
+      "target_text": "Ich will nicht raten, was passiert",
+      "frame": "P23",
+      "why": "negation frame, passiert introduced right after the embedded was-clause opens",
+      "position": 13
+    },
+    {
+      "lego_index": 3,
+      "phrase_role": "build",
+      "known_text": "Happens tomorrow",
+      "target_text": "Passiert morgen",
+      "frame": "P28",
+      "why": "bare fragment, passiert initial, pairs with the previous lego tomorrow",
+      "position": 14
+    },
+    {
+      "lego_index": 3,
+      "phrase_role": "build",
+      "known_text": "What happens",
+      "target_text": "Was passiert",
+      "frame": "P21",
+      "why": "wh-question frame, passiert final in a two-word clause",
+      "position": 15
+    },
+    {
+      "lego_index": 3,
+      "phrase_role": "use",
+      "known_text": "I can explain what happens",
+      "target_text": "Ich kann erklären, was passiert",
+      "frame": "P22",
+      "why": "embedded-question frame under a modal matrix, new left neighbour erklären",
+      "position": 16
+    },
+    {
+      "lego_index": 3,
+      "phrase_role": "use",
+      "known_text": "I'd like to explain what happens today",
+      "target_text": "Ich möchte erklären, was heute passiert",
+      "frame": "P22",
+      "why": "embedded question with a time word inserted before passiert, new right neighbour",
+      "position": 17
+    },
+    {
+      "lego_index": 3,
+      "phrase_role": "use",
+      "known_text": "I want to explain what happens with you",
+      "target_text": "Ich will erklären, was mit dir passiert",
+      "frame": "P22",
+      "why": "embedded question with mit dir inserted, another distinct right neighbour",
+      "position": 18
+    },
+    {
+      "lego_index": 3,
+      "phrase_role": "use",
+      "known_text": "I'd like to explain what doesn't happen",
+      "target_text": "Ich möchte erklären, was nicht passiert",
+      "frame": "P23",
+      "why": "negation inside the embedded question, distinct left neighbour nicht",
+      "position": 19
+    },
+    {
+      "lego_index": 4,
+      "phrase_role": "build",
+      "known_text": "What's going to happen tomorrow",
+      "target_text": "Was morgen passiert",
+      "frame": "P22",
+      "why": "the LEGO stands as the whole utterance, giving it initial position and fixing the all-final spread",
+      "position": 20
+    },
+    {
+      "lego_index": 4,
+      "phrase_role": "build",
+      "known_text": "I want to guess what's going to happen tomorrow",
+      "target_text": "Ich will raten, was morgen passiert",
+      "frame": "P1",
+      "why": "want-chain frame, LEGO final, left neighbour guess",
+      "position": 21
+    },
+    {
+      "lego_index": 4,
+      "phrase_role": "use",
+      "known_text": "I don't want to guess what's going to happen tomorrow",
+      "target_text": "Ich will nicht raten, was morgen passiert",
+      "frame": "P23",
+      "why": "negation frame, same left neighbour family but distinct matrix signature",
+      "position": 22
+    },
+    {
+      "lego_index": 4,
+      "phrase_role": "use",
+      "known_text": "I'd like to explain what's going to happen tomorrow",
+      "target_text": "Ich möchte erklären, was morgen passiert",
+      "frame": "P22",
+      "why": "embedded-question frame with erklären, distinct left neighbour",
+      "position": 23
+    },
+    {
+      "lego_index": 4,
+      "phrase_role": "use",
+      "known_text": "I'm not sure what's going to happen tomorrow",
+      "target_text": "Ich bin mir nicht sicher, was morgen passiert",
+      "frame": "P10",
+      "why": "know/sure matrix frame, distinct left neighbour sicher",
+      "position": 24
+    },
+    {
+      "lego_index": 4,
+      "phrase_role": "use",
+      "known_text": "I'd like to be able to guess what's going to happen tomorrow",
+      "target_text": "Ich möchte raten können, was morgen passiert",
+      "frame": "P5",
+      "why": "be-able-to frame layered under want-chain, longest carrier for this LEGO",
+      "position": 25
+    }
+  ],
+  "baskets": [
+    {
+      "lego_index": 1,
+      "lego": "to guess",
+      "composite": 0.896,
+      "pass": true,
+      "floor_failures": []
+    },
+    {
+      "lego_index": 2,
+      "lego": "tomorrow",
+      "composite": 0.802,
+      "pass": true,
+      "floor_failures": []
+    },
+    {
+      "lego_index": 3,
+      "lego": "happens",
+      "composite": 0.875,
+      "pass": true,
+      "floor_failures": []
+    },
+    {
+      "lego_index": 4,
+      "lego": "what's going to happen tomorrow",
+      "composite": 0.802,
+      "pass": true,
+      "floor_failures": []
+    }
+  ],
+  "seed_pass": true,
+  "seed_composite": 0.844
+}

@@ -30,7 +30,12 @@ if (new Set(ids).size !== ids.length) { fail++; console.log('FAIL duplicate patt
 for (const p of PATTERNS) if (!p.shape || !p.name) { fail++; console.log('FAIL missing shape/name', p.id); }
 // --- pattern-diversity metric: it must FAIL the known-bad seed-600 basket ---
 const { score, matrixClause, skeleton } = require('./pattern-diversity.cjs');
-const S7 = require('./seed-splits.cjs')['spa_for_eng:600'];
+// The S7 matcher, taken from the split registry by SPLIT ID. It used to be taken
+// by SEED ("spa_for_eng:600"), which asserted that seed 600's job was to cross
+// this split. That was wrong — 600 admits one lego, "driven"/"conducido", and its
+// job is lexical — so the lookup is now by split, and which seed must cross it is
+// derived. What is tested here is the METRIC's split logic, not any seed's job.
+const S7 = [require('./split-matchers.cjs').S7];
 const live600 = [
   ['build','driven','conducido'],
   ['build',"I'd have driven home",'habría conducido a casa'],

@@ -1,0 +1,150 @@
+{
+  "course": "spa_for_eng",
+  "seed": 600,
+  "generated": "2026-08-29T01:58:14.603Z",
+  "build_sha": "4afbcf6d7",
+  "model": "sonnet",
+  "attempts": [
+    {
+      "pass": 1,
+      "composite": 0.868,
+      "floor_failures": [],
+      "phrase_count": 9
+    }
+  ],
+  "phrases": [
+    {
+      "phrase_role": "build",
+      "known_text": "driven",
+      "target_text": "conducido",
+      "frame": "P17",
+      "why": "bare LEGO fragment, no matrix yet"
+    },
+    {
+      "phrase_role": "build",
+      "known_text": "I would have driven",
+      "target_text": "habría conducido",
+      "frame": "P17",
+      "why": "counterfactual matrix alone, would-side ('d=would) skeleton 1"
+    },
+    {
+      "phrase_role": "build",
+      "known_text": "if I had driven home",
+      "target_text": "si hubiera conducido a casa",
+      "frame": "P17",
+      "why": "if-clause fragment, had-side ('d=had) with 1st-person hubiera"
+    },
+    {
+      "phrase_role": "use",
+      "known_text": "If you had told me, I would have driven",
+      "target_text": "Si me hubieras dicho, habría conducido",
+      "frame": "P17",
+      "why": "if-clause fronted before matrix; had-side (2nd-person hubieras) plus would-side in clause-final position"
+    },
+    {
+      "phrase_role": "use",
+      "known_text": "I wouldn't have driven home if it had been my choice",
+      "target_text": "No habría conducido a casa si hubiera sido mi decisión",
+      "frame": "P17",
+      "why": "negated matrix gives a second would-side shape; had-side here is 3rd-person hubiera sido"
+    },
+    {
+      "phrase_role": "use",
+      "known_text": "I would have driven there if I had known",
+      "target_text": "Habría conducido hasta allí si hubiera sabido",
+      "frame": "P17",
+      "why": "affirmative matrix-first skeleton; had-side reuses 1st-person hubiera with a different verb, sabido"
+    },
+    {
+      "phrase_role": "use",
+      "known_text": "If I had driven safely, I would have been happy",
+      "target_text": "Si hubiera conducido de manera segura, habría estado encantado",
+      "frame": "P17",
+      "why": "if-clause fronted carries the LEGO medially; would-side matrix uses a different participle, estado encantado"
+    },
+    {
+      "phrase_role": "use",
+      "known_text": "I think I would have driven today if you'd told me that",
+      "target_text": "Pienso que habría conducido hoy si me hubieras dicho eso",
+      "frame": "P9",
+      "why": "matrix think embeds the whole counterfactual; would-side under pienso que, had-side 2nd-person hubieras plus eso"
+    },
+    {
+      "phrase_role": "use",
+      "known_text": "I wouldn't have driven yesterday if you hadn't told me",
+      "target_text": "No habría conducido ayer si no me hubieras dicho",
+      "frame": "P17",
+      "why": "negation on both matrix and if-clause; had-side is a negated 2nd-person hubieras shape"
+    }
+  ],
+  "score": {
+    "phrase_count": 9,
+    "distinct_frames": 7,
+    "positions": [
+      "initial",
+      "final",
+      "medial"
+    ],
+    "axes": {
+      "frame": 0.7777777777777778,
+      "pos": 1,
+      "neigh": 0.5,
+      "junct": 0.8888888888888888,
+      "split": 1
+    },
+    "weights": {
+      "frame": 2,
+      "pos": 1,
+      "neigh": 1,
+      "junct": 1,
+      "split": 3
+    },
+    "composite": 0.868,
+    "floors": {
+      "frame": 0.34,
+      "pos": 0.34,
+      "neigh": 0.3,
+      "junct": 0.5,
+      "split": 1
+    },
+    "floor_failures": [],
+    "splits": [
+      {
+        "id": "S7",
+        "name": "the double-'d — 'd = would vs 'd = had",
+        "outcomes": [
+          {
+            "form": "habría + participle ('d = would)",
+            "phrases": 7,
+            "distinct_skeletons": 7,
+            "skeletons": [
+              "i would have |",
+              " | if you had told",
+              "i wouldn't have | if it had been",
+              "i would have | if i had known",
+              " | if i had driven",
+              "i think i | if you'd told me",
+              "i wouldn't have | if you hadn't told"
+            ]
+          },
+          {
+            "form": "hubiera(s) + participle ('d = had)",
+            "phrases": 7,
+            "distinct_skeletons": 6,
+            "skeletons": [
+              " | if i had driven",
+              " | if you had told",
+              "i wouldn't have | if it had been",
+              "i would have | if i had known",
+              "i think i | if you'd told me",
+              "i wouldn't have | if you hadn't told"
+            ]
+          }
+        ],
+        "crossed_weak": true,
+        "crossed": true
+      }
+    ],
+    "pass": true
+  }
+}
