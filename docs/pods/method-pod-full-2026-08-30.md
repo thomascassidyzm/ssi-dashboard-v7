@@ -689,7 +689,7 @@ The live canon never lets anyone fail, not-know, or be wrong. Six of these eight
 | TOM | Not even for a week? They're keen. They'd pay properly. | Nemmeno per una settimana? Ci tengono. Pagano bene. |
 | ARAN | No. One to one. That's all I say yes to now. | No. Uno a uno. È l'unica cosa a cui dico di sì, ormai. |
 | TOM | Since when? | Da quando? |
-| ARAN | Since I understood what a group can do to a week. One to one, I know it works — whoever they are, whatever the room, I know we get there. A group — four people in a bed and breakfast for five days, one of them has two bad days, and all of it lands on the other three. I'd need to know who's in the room before I said yes, and I never do. So: no. Not the school. Not this year. | Da quando ho capito cosa può fare un gruppo a una settimana. Uno a uno, so che funziona — chiunque sia, qualunque sia la stanza, so che ci arriviamo. Un gruppo — quattro persone in un bed and breakfast per cinque giorni, uno di loro ha due giornate storte, e tutto gli cade addosso agli altri tre. Dovrei sapere chi c'è nella stanza prima di dire sì, e non lo so mai. Quindi: no. Non la scuola. Non quest'anno. |
+| ARAN | Since I understood what a group can do to a week. One to one, I know it works — whoever they are, whatever the room, we get there. A group — four people in a bed and breakfast for five days, one of them has two bad days, and all of it lands on the other three. I'd need to know who's in the room before I said yes, and I never do. So: no. | Da quando ho capito cosa può fare un gruppo a una settimana. Uno a uno, so che funziona — chiunque sia, qualunque sia la stanza, ci arriviamo. Un gruppo — quattro persone in un bed and breakfast per cinque giorni, uno di loro ha due giornate storte, e tutto cade addosso agli altri tre. Dovrei sapere chi c'è nella stanza prima di dire sì, e non lo so mai. Quindi: no. |
 | TOM | …I'll tell them no. | …Gli dico di no. |
 | ARAN | Tell them one to one. Then yes. | Digli uno a uno. Allora sì. |
 
@@ -716,7 +716,7 @@ The live canon never lets anyone fail, not-know, or be wrong. Six of these eight
 | TOM | Every teacher on earth says the same thing. "I'm intermediate — how do I get to fluent?" "Practise. Go and use it. Listen to the radio, talk to people." | Tutti gli insegnanti del mondo dicono la stessa cosa. «Sono a un livello intermedio — come arrivo a parlare bene?» «Fai pratica. Vai e usala. Ascolta la radio, parla con la gente.» |
 | ARAN | And that's true. | Ed è vero. |
 | TOM | Is it? | Davvero? |
-| ARAN | That's true, that's right, that's exactly what you have to do — and it's incredibly painful if nobody has prepared you for it. If all you've got is a pile of words and a rule book, you walk into that room and you have to invent every sentence on the spot and find out, live, whether it works. That's the cliff. But if, before the room, you've already walked a thousand little paths through the words you've got — then the room isn't a cliff any more. It's just more of the same. Carry on. | È vero, è giusto, è esattamente quello che devi fare — ed è incredibilmente doloroso se nessuno ti ci ha preparato. Se tutto quello che hai è un mucchio di parole e un libro di regole, entri in quella stanza e devi inventarti ogni frase lì per lì e scoprire, dal vivo, se funziona. Quello è il precipizio. Ma se, prima della stanza, hai già percorso mille piccoli sentieri tra le parole che hai — allora la stanza non è più un precipizio. È solo altro dello stesso. Vai avanti. |
+| ARAN | That's true, that's right, that's exactly what you have to do — and it's incredibly painful if nobody has prepared you for it. If all you've got is a pile of words and a rule book, you walk into that room and have to invent every sentence on the spot, live. That's the cliff. But if you've already walked a thousand little paths through the words you've got, the room isn't a cliff any more. It's just more of the same. | È vero, è giusto, è esattamente quello che devi fare — ed è incredibilmente doloroso se nessuno ti ci ha preparato. Se tutto quello che hai è un mucchio di parole e un libro di regole, entri in quella stanza e devi inventarti ogni frase lì per lì, dal vivo. Quello è il precipizio. Ma se hai già percorso mille piccoli sentieri tra le parole che hai, la stanza non è più un precipizio. È solo altro dello stesso. |
 | TOM | So "go and practise" is right, and it's the cruellest thing you can say. | Quindi «vai a far pratica» è giusto, ed è la cosa più crudele che puoi dire. |
 | ARAN | Both. At the same time. | Tutte e due. Nello stesso momento. |
 
@@ -852,7 +852,7 @@ The live canon never lets anyone fail, not-know, or be wrong. Six of these eight
 
 | | English | Italiano |
 |---|---|---|
-| TOM | Do you know how I introduce your method to people? I don't explain it. I say: you're in a drama class, and we're playing a warm-up game, and the game is called Holy Dickhead Batman. Everyone shouts every combination they can make — Holy BatHead, ManDick. Holy DickMan, BatHead. Holy HeadDick, ManBat. It's stupid and it's fun and by the third one everybody's laughing — and they've just learnt that a unit of meaning is a thing you can move. | Sai come presento il tuo metodo alla gente? Non lo spiego. Dico: sei a lezione di teatro, e stiamo facendo un gioco di riscaldamento, e il gioco si chiama Holy Dickhead Batman. Tutti gridano ogni combinazione che riescono a fare — Holy BatHead, ManDick. Holy DickMan, BatHead. Holy HeadDick, ManBat. È stupido ed è divertente e al terzo ridono tutti — e hanno appena imparato che un'unità di significato è una cosa che si può spostare. |
+| TOM | Do you know how I introduce your method to people? I don't explain it. I say: you're in a drama class, it's a warm-up game, and the game is called Holy Dickhead Batman. Everyone shouts every combination they can make — Holy BatHead, ManDick. Holy DickMan, BatHead. It's stupid, it's fun, by the third one everybody's laughing — and they've just learnt that a unit of meaning is a thing you can move. | Sai come presento il tuo metodo alla gente? Non lo spiego. Dico: sei a lezione di teatro, è un gioco di riscaldamento, e il gioco si chiama Holy Dickhead Batman. Tutti gridano ogni combinazione che riescono a fare — Holy BatHead, ManDick. Holy DickMan, BatHead. È stupido, è divertente, al terzo ridono tutti — e hanno appena imparato che un'unità di significato è una cosa che si può spostare. |
 | ARAN | That's it. And the thing you're giving them, without saying so, is permission. | Ecco. E la cosa che gli dai, senza dirlo, è il permesso. |
 | TOM | Permission. | Il permesso. |
 | ARAN | To play. Because most of the combinations are nonsense, and that's fine. You play, and every so often one lands as a real act of communication — and you get the feedback: oh. That one worked. | Di giocare. Perché quasi tutte le combinazioni non vogliono dire niente, e va bene così. Giochi, e ogni tanto una atterra come un vero atto di comunicazione — e ti arriva il feedback: oh. Quella ha funzionato. |
@@ -951,12 +951,12 @@ The live canon never lets anyone fail, not-know, or be wrong. Six of these eight
 |---|---|---|
 | TOM | I did a day of Mandarin last summer. One day. And another this year — different words, different structures, because you'd changed it all in between, obviously. And by the end of that second day I was thinking in Chinese. Not well. But it felt like more than a month of hard work would have given me, and I've done the month, in other languages, and I know what it buys. | L'estate scorsa ho fatto un giorno di cinese. Un giorno. E un altro quest'anno — parole diverse, strutture diverse, perché nel frattempo avevi cambiato tutto, ovviamente. E alla fine di quel secondo giorno pensavo in cinese. Non bene. Ma sembrava più di quello che mi avrebbe dato un mese di lavoro duro, e il mese l'ho fatto, in altre lingue, e so cosa compra. |
 | ARAN | Two days, a year apart. | Due giorni, a un anno di distanza. |
-| TOM | Two days, a year apart. | Due giorni, a un anno di distanza. |
+| TOM | A year apart. | A un anno di distanza. |
 | ARAN | I've got mine on film. Manx — a conversation with a native speaker after day one, and another after day two, sixteen months later. Day one: fine, pleased with myself, not bad. Day two: the first real intimation of "I can do this" — still small, still a couple of hundred words, nowhere near seven hundred, but I could pick most of them up and turn them round. Something was going on. | I miei ce li ho filmati. Manx — una conversazione con un madrelingua dopo il primo giorno, e un'altra dopo il secondo, sedici mesi dopo. Primo giorno: bene, contento di me, niente male. Secondo giorno: la prima vera avvisaglia di «ce la posso fare» — ancora piccola, ancora un paio di centinaia di parole, lontanissimo da settecento, ma quasi tutte le sapevo tirare fuori e girare. Stava succedendo qualcosa. |
-| TOM | Two days. Sixteen months apart. | Due giorni. A sedici mesi di distanza. |
+| TOM | Sixteen months apart. | A sedici mesi di distanza. |
 | ARAN | Two days. And you don't need the third one to know. | Due giorni. E non ti serve il terzo per saperlo. |
 
-**Why this container:** two holds of similar length — the *only* scene in the set with two, because the shape is two stories and a matched story that was shorter than the first would read as deference; the shape-extraction lines are the minimal turns and are echoed, as the corpus echoes at 1:392–393.
+**Why this container:** two holds of similar length — the *only* scene in the set with two, because the shape is two stories and a matched story that was shorter than the first would read as deference; the shape-extraction lines are the minimal turns — Tom echoes the tail of Aran's line, not the whole of it — and the echo is the corpus's own at 1:392–393.
 
 ---
 
@@ -1042,7 +1042,7 @@ The live canon never lets anyone fail, not-know, or be wrong. Six of these eight
 | | English | Italiano |
 |---|---|---|
 | TOM | So when's day three? | Allora, il terzo giorno quand'è? |
-| ARAN | …That's on me. I've been waiting. I told myself I needed fifteen new dialogues for a day, and I haven't got fifteen, and I've been sitting on that for a year as if it were a reason. It isn't a reason. It's an excuse with a number on it. I've got seven, maybe eight. That's enough for half a day. So: I've got to stop waiting and crack on, and do the half day, and the half day is the price of having waited. | …Questa è colpa mia. Sono stato ad aspettare. Mi ero detto che per un giorno mi servivano quindici dialoghi nuovi, e quindici non ce li ho, e sono rimasto seduto su questa cosa per un anno come se fosse una ragione. Non è una ragione. È una scusa con un numero attaccato. Ne ho sette, forse otto. Bastano per mezza giornata. Quindi: devo smettere di aspettare e darmi una mossa, e fare la mezza giornata, e la mezza giornata è il prezzo di aver aspettato. |
+| ARAN | …That's on me. I've been waiting. I told myself I needed fifteen new dialogues for a day, and I haven't got fifteen, and I've sat on that for a year as if it were a reason. It isn't. It's an excuse with a number on it. I've got seven, maybe eight — enough for half a day. So I stop waiting, and do the half day, and the half day is the price of having waited. | …Questa è colpa mia. Sono stato ad aspettare. Mi ero detto che per un giorno mi servivano quindici dialoghi nuovi, e quindici non ce li ho, e ci sono rimasto seduto sopra per un anno come se fosse una ragione. Non lo è. È una scusa con un numero attaccato. Ne ho sette, forse otto — bastano per mezza giornata. Quindi smetto di aspettare, e faccio la mezza giornata, e la mezza giornata è il prezzo di aver aspettato. |
 | TOM | Half a day. | Mezza giornata. |
 | ARAN | Half a day. With the seven. | Mezza giornata. Con i sette. |
 | TOM | Then that's day three. Nobody said days come in one size. | Allora è quello il terzo giorno. Nessuno ha detto che i giorni vengono in una taglia sola. |
@@ -1157,3 +1157,167 @@ The live canon never lets anyone fail, not-know, or be wrong. Six of these eight
 **Why this container:** the "Interesting." is the corpus's actual last word of Part 1 and is kept as the first word of the turn that refuses it; the unfolded fact is the hold; the scene closes on a one-word echo, and the pod ends — if a walk ever lands here last — by starting again.
 
 ---
+
+## 5. The set-level measurement — the G-rules audited across all forty-three
+
+*Computed mechanically from this document's own English columns by a 40-line script in scratch, same tokenisation as the re-cut (whitespace tokens containing a letter or digit). Validation: run over scenes 1–16 it reproduces the re-cut's §7 exactly — 95 turns, median 9, pooled CV 0.86, longest turn 46, Tom 41% / Aran 59% — so the two sets are measured on one instrument.*
+
+### 5a. Per scene
+
+| # | turns | profile | median | CV | max/med | min/med | hold ≥3× | ≤4w | sandwich | T/A |
+|---|---|---|---|---|---|---|---|---|---|---|
+| 1 | 4 | 42/9/2/10 | 9.5 | 0.98 | 4.4× | 0.21× | ✓ | ✓ | ✓ | 70/30 |
+| 2 | 6 | 10/2/28/9/11/5 | 9.5 | 0.76 | 2.9× | 0.21× | — | ✓ | ✓ | 25/75 |
+| 3 | 6 | 6/2/21/3/5/6 | 5.5 | 0.89 | 3.8× | 0.36× | ✓ | ✓ | ✓ | 74/26 |
+| 4 | 6 | 19/9/13/2/42/10 | 11.5 | 0.81 | 3.7× | 0.17× | ✓ | ✓ | ✓ | 22/78 |
+| 5 | 6 | 9/3/3/28/5/11 | 7 | 0.88 | 4.0× | 0.43× | ✓ | ✓ | ✓ | 71/29 |
+| 6 | 8 | 8/2/4/7/2/8/6/25 | 6.5 | 0.89 | 3.8× | 0.31× | ✓ | ✓ | ✓ | 32/68 |
+| 7 | 6 | 9/21/1/33/8/13 | 11 | 0.73 | 3.0× | 0.09× | ✓ | ✓ | ✓ | 21/79 |
+| 8 | 6 | 12/13/37/8/2/10 | 11 | 0.81 | 3.4× | 0.18× | ✓ | ✓ | ✓ | 62/38 |
+| 9 | 6 | 19/8/3/6/19/33 | 13.5 | 0.70 | 2.4× | 0.22× | — | ✓ | ✓ | 47/53 |
+| 10 | 4 | 27/2/46/11 | 19 | 0.78 | 2.4× | 0.11× | — | ✓ | ✓ | 15/85 |
+| 11 | 6 | 10/10/2/27/4/8 | 9 | 0.80 | 3.0× | 0.22× | ✓ | ✓ | ✓ | 26/74 |
+| 12 | 6 | 40/14/2/28/5/5 | 9.5 | 0.89 | 4.2× | 0.21× | ✓ | ✓ | ✓ | 50/50 |
+| 13 | 6 | 13/10/32/12/3/24 | 12.5 | 0.61 | 2.6× | 0.24× | — | ✓ | ✓ | 51/49 |
+| 14 | 6 | 15/4/2/27/13/7 | 10 | 0.74 | 2.7× | 0.20× | — | ✓ | ✓ | 56/44 |
+| 15 | 6 | 11/26/4/32/6/10 | 10.5 | 0.70 | 3.0× | 0.38× | ✓ | ✓ | ✓ | 24/76 |
+| 16 | 7 | 26/42/4/33/7/6/7 | 7 | 0.81 | 6.0× | 0.57× | ✓ | ✓ | ✓ | 35/65 |
+| 17 | 7 | 47/3/3/5/6/4/3 | 4 | 1.49 | 11.8× | 0.75× | ✓ | ✓ | ✓ | 83/17 |
+| 18 | 8 | 5/7/2/4/1/1/6/24 | 4.5 | 1.12 | 5.3× | 0.22× | ✓ | ✓ | ✓ | 28/72 |
+| 19 | 6 | 14/3/5/6/35/2 | 5.5 | 1.06 | 6.4× | 0.36× | ✓ | ✓ | ✓ | 17/83 |
+| 20 | 5 | 18/1/4/31/3 | 4 | 1.01 | 7.8× | 0.25× | ✓ | ✓ | ✓ | 44/56 |
+| 21 | 7 | 23/20/64/6/5/1/2 | 6 | 1.20 | 10.7× | 0.17× | ✓ | ✓ | ✓ | 22/78 |
+| 22 | 6 | 6/2/50/77/6/8 | 7 | 1.15 | 11.0× | 0.29× | ✓ | ✓ | ✓ | 42/58 |
+| 23 | 6 | 15/1/1/68/3/4 | 3.5 | 1.57 | 19.4× | 0.29× | ✓ | ✓ | ✓ | 21/79 |
+| 24 | 10 | 16/1/1/1/10/11/2/73/4/7 | 5.5 | 1.64 | 13.3× | 0.18× | ✓ | ✓ | ✓ | 26/74 |
+| 25 | 6 | 28/3/2/80/14/5 | 9.5 | 1.25 | 8.4× | 0.21× | ✓ | ✓ | ✓ | 33/67 |
+| 26 | 5 | 26/9/31/3/8 | 9 | 0.71 | 3.4× | 0.33× | ✓ | ✓ | ✓ | 16/84 |
+| 27 | 6 | 15/3/2/63/28/6 | 10.5 | 1.10 | 6.0× | 0.19× | ✓ | ✓ | ✓ | 38/62 |
+| 28 | 7 | 33/3/52/11/30/9/8 | 11 | 0.79 | 4.7× | 0.27× | ✓ | ✓ | ✓ | 16/84 |
+| 29 | 6 | 49/8/2/17/14/5 | 11 | 0.99 | 4.5× | 0.18× | ✓ | ✓ | ✓ | 68/32 |
+| 30 | 7 | 48/4/47/1/16/12/2 | 12 | 1.02 | 4.0× | 0.08× | ✓ | ✓ | ✓ | 13/87 |
+| 31 | 6 | 71/13/1/35/13/3 | 13 | 1.07 | 5.5× | 0.08× | ✓ | ✓ | ✓ | 63/38 |
+| 32 | 7 | 41/16/64/2/26/12/3 | 16 | 0.89 | 4.0× | 0.13× | ✓ | ✓ | ✓ | 18/82 |
+| 33 | 5 | 65/4/15/37/12 | 15 | 0.83 | 4.3× | 0.27× | ✓ | ✓ | ✓ | 31/69 |
+| 34 | 7 | 32/6/52/5/12/2/9 | 9 | 1.01 | 5.8× | 0.22× | ✓ | ✓ | ✓ | 11/89 |
+| 35 | 6 | 70/5/3/70/3/11 | 8 | 1.13 | 8.8× | 0.38× | ✓ | ✓ | ✓ | 47/53 |
+| 36 | 6 | 76/7/1/12/8/4 | 7.5 | 1.45 | 10.1× | 0.13× | ✓ | ✓ | ✓ | 21/79 |
+| 37 | 6 | 9/22/7/73/5/2 | 8 | 1.25 | 9.1× | 0.25× | ✓ | ✓ | — | 18/82 |
+| 38 | 6 | 61/5/1/9/44/5 | 7 | 1.11 | 8.7× | 0.14× | ✓ | ✓ | ✓ | 15/85 |
+| 39 | 6 | 4/75/3/6/11/4 | 5 | 1.51 | 15.0× | 0.60× | ✓ | ✓ | ✓ | 17/83 |
+| 40 | 8 | 13/4/8/10/8/49/4/5 | 8 | 1.11 | 6.1× | 0.50× | ✓ | ✓ | ✓ | 33/67 |
+| 41 | 10 | 9/6/22/7/5/10/23/47/2/10 | 9.5 | 0.91 | 4.9× | 0.21× | ✓ | ✓ | ✓ | 43/57 |
+| 42 | 8 | 34/62/8/24/6/1/23/3 | 15.5 | 0.96 | 4.0× | 0.06× | ✓ | ✓ | ✓ | 44/56 |
+| 43 | 8 | 7/21/6/52/3/4/13/1 | 6.5 | 1.18 | 8.0× | 0.15× | ✓ | ✓ | ✓ | 27/73 |
+
+### 5b. Set totals
+
+| | scenes | turns | words | median turn | pooled CV | longest turn | Tom / Aran words |
+|---|---|---|---|---|---|---|---|
+| Inherited 1–16 (re-cut) | 16 | 95 | 1,259 | 9 | 0.86 | 46 (5.1×) | 41 / 59 |
+| New 17–43 | 27 | 181 | 3,105 | 8 | 1.20 | 80 (10.0×) | 31 / 69 |
+| **Whole pod** | **43** | **276** | **4,364** | **8** | **1.15** | **80** | **34 / 66** |
+| Corpus, for scale | — | 591 | 25,345 | 14 | 1.57 (1.13 in six-turn windows) | 473 (34×) | 27 / 73 |
+| Live canon `pod-0` | 22 | 231 rows | — | — | — | — | — |
+
+**Size against the commission:** 43 scenes and 276 lines against a default of 40–48 scenes and 230–260 lines. Slightly over on lines, on the count: no scene was padded and none was manufactured to hit a rule; the two scenes that overshoot the turn range (24 and 41, ten turns each) are named in their own "why" lines.
+
+### 5c. The grammar, scored
+
+| rule | target | delivered — new 27 | delivered — all 43 | re-cut, for comparison |
+|---|---|---|---|---|
+| **G1** length derived from the shape, 3–8 turns | spread | 5, 6, 7, 8 and **two at 10** | 4:2 · 5:3 · 6:24 · 7:7 · 8:5 · 10:2 | 4, 6, 7, 8 |
+| **G2** one hold ≥3× scene median | every scene | **27/27** | **38/43** — the five below are the inherited 2, 9, 10, 13, 14, exactly as the re-cut §7b recorded | 11/16 |
+| **G3** the hold is a heard turn, never owned | every scene | 27/27 by construction — every hold in 17–43 is surface-only; no owned exchange or newly-admitted position sits in a turn over 28 words | — | — |
+| **G4** a turn ≤0.25× median | every scene | 20/27 | 28/43 | 11/16 |
+| **G4′** a turn of ≤4 words, absolute | every scene | **27/27** | **43/43** | 16/16 |
+| **G5** `A → token → A` sandwich | ≥ a third | **26/27** (37 lacks one) | 42/43 | 5/16 |
+| **G6** lopsided inside, even across | set ≈ even | 31/69 | 34/66 — see the flag below | 41/59 |
+| **G7** CV ≥ 0.6 | all but the fast-flat shapes | **27/27** (min 0.71, Scene 26) | **43/43** | 16/16 |
+| zero-admission | "similar or better proportion" | **5/27 = 19%** (17, 18, 19, 20, 26), 51 turns in all | 8/43 = 19% | 3/16 = 19% |
+
+### 5d. Where the delivered set deviates, and why — nothing silent
+
+**The holds are longer than the re-cut's.** The re-cut capped its longest turn at 46 words and said so (§8a: "measurably tamer than the corpus, deliberately"). In 17–43, **26 turns exceed 46 words and 16 exceed 60; the longest is 80** (Scene 25, the concession-then-build). Two facts and one choice. The facts: every one of those turns is heard, never owned, so the learner's production cost is unchanged; and 56 words is the *floor* of the corpus's attested holds, so the new holds sit at the bottom of the attested range where the re-cut's sat below it. The choice: the commission asked for the methodology at the precision it actually has, and precision takes words — the Bjork landscape (22), the group-formation case (24), the cliff (25), transcripts-not-subtitles (27) do not survive at 40 words. Four holds that ran to 78–93 were cut to 71–80 before this table was made; what remains is a taste call for Tom's ear (§7), and shortening any hold costs nothing owned.
+
+**G4 at the ratio is 20/27 — G4′ at the absolute is 27/27.** Same cause the re-cut found: where the median is 4–6 words a 0.25× turn is a single word, and the rule is close to unsatisfiable. The absolute rule is the honest one and it is met everywhere.
+
+**G6: the set leans Aran, 34/66.** Tom owns the floor in six scenes (1, 3, 5, 17, 29, 31) and holds near-even in five more (9, 12, 13, 20, 35); Aran owns the rest. Two reasons, stated: the material mined from the corpus is overwhelmingly Aran's holds (114 of the 151 attested floor-holds are his), and the failure shapes the overlay is short of — the bare no, the disclosure, the own-fault admission — are shapes where the *partner turn* is short by design, and Tom takes the partner turn. The set sits between the re-cut's 41/59 and the corpus's 27/73. If the ear wants more Tom-owned scenes, the cheapest conversions are 22 (the audit landscape could be Tom's — the corpus half-attributes it to him at 1:339) and 33 (the horizon-one frame is his).
+
+**G5 at 42/43 is over-delivered, not gamed.** The token-heavy grammar produces sandwiches wherever a hold meets a backchannel; none was inserted to hit the count, and Scene 37 was left without one rather than given a fake token.
+
+**Two scenes at ten turns.** 24 (the bare no) and 41 (the thread recovered): both are mints with no attested closing length to derive from, and in both the extra turns *are* the shape — bare turns before an account, beats in a recovery. Named in place.
+
+**One instrument caveat.** The script counts English words; Italian runs a few percent longer in words for the same turn, so every absolute above is a slight undercount of what a listener hears. Ratios are unaffected.
+
+---
+
+## 6. The Italian — what to listen for
+
+*Tu* throughout; old friends; spoken register. Loanwords carried as house terms: LEGO does not occur in this script; **play** (Scene 23), **peer review** (22), **woo** (28), **feedback** (31), **bed and breakfast** (24), **Holy Dickhead Batman** (31), **Talk Bollocks** (40), **to boldly go** (28), **pysgod / puss / cod** (21) are all kept as the things they are. "Edges" is rendered *collegamenti* in Scenes 1, 4, 32 and 41 — the one place the loanword rule is not applied, on the judgement that *gli edge* inside an Italian sentence reads absurd aloud; one word from Tom flips all four.
+
+**Lines I am least sure of, flagged rather than shipped quietly — one look each:**
+
+| scene | line | the doubt | alternative |
+|---|---|---|---|
+| 25 | *È solo altro dello stesso.* | a calque of "more of the same" | *È sempre la stessa cosa, solo di più.* |
+| 27 | *è tutta la faccenda* | "the whole thing" leaning written | *è tutto il punto* |
+| 32 | *mimarlo* for "act this out" | precise but a touch formal | *fare la scenetta* |
+| 34 | *Bel richiamo.* | they would more likely say *callback* | *Bel callback.* — a loanword, which the rule permits |
+| 40 | *Fare cose fighe.* | regional colloquial; right register for *tu* between friends, but it is a taste call | *Fare roba forte.* |
+| 40 | *Tom e Aran Talk Bollocks* | the show's name kept in English inside the Italian formula | *Tom e Aran che dicono cazzate* if the name should translate |
+| 17 | the whole overrun turn | deliberately breathless, with a subjunctive after *penso che* that the listener should not have to parse — that is the point of the scene | none; it is meant to be too much |
+| 20 | *C'è tanta roba, lì.* | *roba* is exactly right for *tu* and exactly wrong for anything written | none |
+
+Everything else I would say aloud as written.
+
+---
+
+## 7. Mints and taste calls for Tom — one word or one sentence each
+
+### 7a. Every mint in the pod, in one table
+
+| scene | what is invented | what it rests on |
+|---|---|---|
+| 14 | the container (the corpus's dog line is an annotation, not a turn) | as the re-cut recorded |
+| 15 | Tom accepting the casting and speaking the line | as the re-cut recorded |
+| 16 | the park treated as the summit's disagreement form | as the re-cut recorded |
+| **17** | the whole scene — the listener failing to understand | unattestable; container from N6 |
+| **19** | the partner's wrong read-back | the number and its correction are Aran's own (1:396–400) |
+| **24** | the no held bare across two turns, and Tom pressing | the position and its reason are Aran's (2:170–184) |
+| 26 | *reattribution only* — the counterexample given to Tom | Aran's own counterexample (1:132–135) |
+| **30** | Tom's partner turn — join, then take the share | the complaint is Aran's (1:279–289); Tom's one clause at 1:284 |
+| **36** | Tom's three turns | the disclosure is Aran's (2:258–263); nobody answers it in the corpus |
+| **39** | Tom's three turns | the admission is Aran's (1:404–406); Tom changes the subject in the corpus |
+| **41** | the whole scene — the recovery | the debt is Scene 14's; the three things are 1:250–258 |
+| **42** | everything after Tom's refusal to concede | the two positions are the corpus's (1:406–412); Tom concedes at 1:413 |
+| **43** | the turns between "Interesting." and the new recording | 1:413–417 and 2:8 |
+
+### 7b. The calls — answerable cold
+
+1. **The standing clash (Scene 42).** Is it real in your conversational life? *Keep* — it stays and the pod has a real fork in it. *Cut* — Scene 16 remains the only disagreement form and the overlay's O8 is served by the park alone. My read: keep; a pod with no live fork is the failure mode the commission named.
+2. **Hold length.** The new holds run 47–80 words against the re-cut's 46. *Leave* — they are heard, never owned, and the precision needs them. *Cut to 46* — one pass, no owned content touched. My read: leave, and let the ear decide on the Italian, not on the count.
+3. ***Collegamenti* or *edge*.** Four lines. My read: *collegamenti*; it is the one house term that does not survive the crossing.
+4. **Scene 31, the game.** The name stays in English in the Italian column, swearing included. *Keep* / *cut the scene* — it is the only scene whose loss would leave no node unwalked. My read: keep; it is the two of you.
+5. **Set balance, 34/66.** *Fine* / *want more Tom-owned* — 22 and 33 convert cheapest. My read: fine; it is closer to the room than the re-cut was.
+6. **The eight Italian lines in §6** — one look each; none blocks anything.
+
+Everything in §7a is already labelled in place, so a "cut" on any of them is a one-scene deletion with no renumbering needed elsewhere — scenes are walks.
+
+---
+
+## 8. Explicit gaps — nothing papered over
+
+- **Part 3 is lost.** Every attestation is from three sessions of four. Nothing claims otherwise.
+- **The live canon was read once, English text only.** `canonical_pod_scenarios` where `pod_slug = 'pod-0'`, 231 rows — the slug that *is* live POD 1; `pod-1` (236) and `pod-0.5` (27) were not read. Zero-admission was verified on **English content words**, as round one did; the Italian side of the live pod was not queried, so a learner's *heard* Italian in the eight zero-admission scenes is my rendering, not the pod's. One further read-only query would close that; it is not in this job.
+- **The zero-admission checker is a word list**, 551 distinct canon tokens, with a 40-word function-word stoplist. Inflections were held strictly (a line was rewritten rather than rely on "-ed" being free); interjections were cut rather than argued for. The list and the checker are in scratch and are reproducible from the query.
+- **Four overlay outcomes rest on mints** — O1, O3, O6, O7 — because no corpus attests them. That is a fact about the corpora and is labelled per scene rather than averaged into a total.
+- **Scene 11's surface is unchanged.** Round two swapped its origin-story surface for the sixteen-month experiment under the now-retired stage guard; the ratified scene is closed, so it stays as it is, and the Cambridge drive carries Scene 18 instead. If Tom wants the drive back in 11, the re-cut already said the container does not move.
+- **Speaker attribution in the corpus is imperfect** (README), and two scenes lean on it: 22 (the audit landscape sits in Tom's run at 1:339 but is answered as Aran's) and 26 (reattributed on purpose). Both are stated in place.
+- **Nothing executed.** No row written, no pod edited, no audio queued or rendered, no course touched, nothing listed. Scratch holds the canon dump, the word list, the checker and the measurement script; none of it is in the repo.
+
+---
+
+## 9. What this is, in one paragraph
+
+Forty-three scenes in one file: the sixteen ratified scenes in their re-cut form, restated so the file reads alone, and twenty-seven new scenes chosen by what the shape graph and the deficit list said was unwalked — the listener who does not understand, the second no, the wrong read-back, the premise refused, the bare no, the premise audited, the complaint answered, the doubt acknowledged, the own-fault admission, the thread recovered, the standing clash, the resisted goodbye — eight of them on Layer-0 vocabulary, every mint labelled where it stands. Measured on the re-cut's own instrument the pod runs 276 turns at a pooled CV of 1.15, which is the corpus's own texture, with a floor-hold in every new scene, a two-to-four-word turn in every scene, and one speaker owning the floor inside each while the balance moves across the set. What is left is the ear.
