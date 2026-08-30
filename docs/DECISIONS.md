@@ -131,3 +131,41 @@ one stale number with another guessed one would have bought false precision on
 the money path, which is the worst place to have it. Characters are countable,
 enforceable and already the mechanism that refuses a run, so nothing was lost by
 reporting only them.
+
+---
+
+## 2026-08-30 — The shape metagraph has a canonical home, and there is only one of it
+
+**Decision.** The shape metagraph derived in
+`docs/pods/shape-graph-2026-08-30.md` is now a stored artefact at
+`services/shared/metagraph/` — `nodes.json`, `moves.json`, `edges.json`,
+`outcome-shapes.json` and `walks/pod-0.json`, with `schemas/metagraph-v1-schema.json`
+and one reader, `services/shared/metagraph/index.cjs`. Three things are settled by
+this and are not re-openable without a new decision:
+
+1. **One store, not one per lab.** The pod side and the seed/basket side read the
+   same files through the same module. Neither gets a copy.
+2. **Walks are sequences of node references.** A step *is* a reference to a node
+   and a position; the surface sentence hangs off it as a property. Coverage —
+   which shapes a walk traverses, which it hits twice, which it never reaches —
+   is computable without parsing any prose.
+3. **Two edge kinds and only two:** composition, and presupposition-of-survivability.
+   Chaining is a property of the walk, recorded as a `pivot_capable` position, never
+   a third edge.
+
+**Why.** The graph existed only as prose, so nothing could load it — which is why
+PODLAB makes you load a course before it shows you anything: a course was the only
+structure the tooling could reach. Files rather than a table because the graph is
+language-agnostic structure, not course content: it is small, it wants git history
+and review, and `database/migrations/` takes no new files. Walks as node references
+rather than annotated text because the next move after coverage is visible is
+"select the shapes this pod should teach and let the walk be generated", and a
+prose-shaped store forecloses that. One store rather than per-lab copies because two
+copies drift inside a fortnight.
+
+**What the store carries that a flatter one would lose.** Provenance and attestation
+on every row: N6 repair has exactly one dialogic attestation in 231 rows, S2 (acting
+on a hedge) has no attested recovery at all, N13–N17 rest on the Method Pod alone,
+and four of the nine outcome shapes are attested nowhere and must be minted. That
+asymmetry is the finding. `tools/metagraph-selfcheck.cjs` asserts it, along with
+every count the derivation document states.

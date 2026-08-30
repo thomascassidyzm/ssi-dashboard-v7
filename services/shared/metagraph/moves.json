@@ -1,0 +1,375 @@
+{
+  "$schema": "../../../schemas/metagraph-v1-schema.json",
+  "concept": "moves",
+  "version": 1,
+  "source": {
+    "document": "docs/pods/shape-graph-2026-08-30.md",
+    "family_inventory": "docs/pods/response-family-inventory-2026-08-29.md"
+  },
+  "note": "A move is a position in a shape, filled by a family (object model §1). The twenty moves are the twenty corpus families of the 2026-08-29 inventory: F1-F19 and F21. There is no F20.",
+  "counts": {
+    "moves": 20
+  },
+  "moves": [
+    {
+      "id": "F1",
+      "name": "Just do it",
+      "test": "The responder supplies exactly what the prior turn asked for, adds nothing beyond it, and does not qualify it.",
+      "dialogic_attestations": 34,
+      "rows": [
+        "g4",
+        "g11",
+        "g17",
+        "g18",
+        "g26",
+        "g27",
+        "g29",
+        "g39",
+        "g41",
+        "g43",
+        "g45",
+        "g46",
+        "g47",
+        "g54",
+        "g56",
+        "g60",
+        "g70",
+        "g72",
+        "g77",
+        "g78",
+        "g81",
+        "g82",
+        "g85",
+        "g88",
+        "g92",
+        "g95",
+        "g98",
+        "g99",
+        "g100",
+        "g112",
+        "g113",
+        "g121",
+        "g222",
+        "g225"
+      ],
+      "position": "TICKET → GRANT → (delivery) → receipt. Position 2.",
+      "presupposes": "Prerequisite to everything. Composes into every other shape.",
+      "provenance": "pod-0"
+    },
+    {
+      "id": "F2",
+      "name": "Do it and throw something in",
+      "test": "The responder grants, then volunteers material the ticket did not ask for.",
+      "dialogic_attestations": 20,
+      "rows": [
+        "g6",
+        "g16",
+        "g30",
+        "g32",
+        "g35",
+        "g49",
+        "g51",
+        "g55",
+        "g65",
+        "g74",
+        "g76",
+        "g102",
+        "g104",
+        "g106",
+        "g115",
+        "g117",
+        "g126",
+        "g128",
+        "g132",
+        "g139"
+      ],
+      "position": "TICKET → GRANT+ → receipt. Position 2.",
+      "presupposes": "Presupposes F1, and that the asker can survive unrequested information — i.e. F7 repair survivable.",
+      "provenance": "pod-0"
+    },
+    {
+      "id": "F3",
+      "name": "Answer with a question",
+      "test": "The response position is filled by a question rather than by an answer or a compliance.",
+      "dialogic_attestations": 8,
+      "rows": [
+        "g40",
+        "g42",
+        "g48",
+        "g80",
+        "g111",
+        "g133",
+        "g138",
+        "g224"
+      ],
+      "position": "TICKET → COUNTER-Q → SPECIFY → grant. Positions 2 and 3 as a bound pair.",
+      "presupposes": "Presupposes F7/F8 repair survivable. The corpus’s clearest survivability edge.",
+      "provenance": "pod-0"
+    },
+    {
+      "id": "F4",
+      "name": "Roughly, and it depends",
+      "test": "The answer is given with an explicit hedge, an approximation or a condition attached.",
+      "dialogic_attestations": 5,
+      "rows": [
+        "g9",
+        "g41",
+        "g90",
+        "g121",
+        "g134"
+      ],
+      "position": "Q → HEDGED A → (uptake). Position 2.",
+      "presupposes": "Presupposes F1, and that the asker can act on an uncommitted answer. Zero uptake anywhere — see U4.",
+      "provenance": "pod-0"
+    },
+    {
+      "id": "F5",
+      "name": "No, and here’s why, and here’s instead",
+      "test": "The responder declines a proposal, gives an account, and offers a counter-proposal — all three parts.",
+      "dialogic_attestations": 2,
+      "rows": [
+        "g21",
+        "g22"
+      ],
+      "position": "PROPOSAL → DECLINE+ACCOUNT+COUNTER → decline+account+counter → accept. Positions 2 and 3.",
+      "presupposes": "Presupposes F1 and F14, and surviving the other’s counter-decline. Both attestations in scene 4.",
+      "provenance": "pod-0"
+    },
+    {
+      "id": "F6",
+      "name": "Not that, but this",
+      "test": "The ticket is declined in substance and something is substituted in the same turn, with no apology or account.",
+      "dialogic_attestations": 5,
+      "rows": [
+        "g15",
+        "g59",
+        "g84",
+        "g108",
+        "g136"
+      ],
+      "position": "TICKET → SUBSTITUTE → re-select. Position 2.",
+      "presupposes": "Presupposes F1 and F4, and that the asker can re-select.",
+      "provenance": "pod-0"
+    },
+    {
+      "id": "F7",
+      "name": "Say that again",
+      "test": "The responder declares non-understanding and requests a repeat.",
+      "dialogic_attestations": 1,
+      "rows": [
+        "g33"
+      ],
+      "position": "TURN → REPAIR REQUEST → repeat/reformulate. Position 2.",
+      "presupposes": "No prerequisites. Prerequisite to almost everything else.",
+      "provenance": "pod-0",
+      "drill_rows": [
+        153,
+        154,
+        213
+      ]
+    },
+    {
+      "id": "F8",
+      "name": "Said again, differently",
+      "test": "The responder grants a repair request and reformulates rather than merely repeating.",
+      "dialogic_attestations": 1,
+      "rows": [
+        "g34"
+      ],
+      "position": "REPAIR REQUEST → REPAIR GRANT. Position 2.",
+      "presupposes": "Presupposes F1. Prerequisite for F3 and F9.",
+      "provenance": "pod-0",
+      "drill_rows": [
+        214
+      ]
+    },
+    {
+      "id": "F9",
+      "name": "Let me check I’ve got it",
+      "test": "The responder offers back a candidate version of what they just heard, and the other party confirms.",
+      "dialogic_attestations": 3,
+      "rows": [
+        "g98",
+        "g122",
+        "g123"
+      ],
+      "position": "INSTRUCTION → READ-BACK → CONFIRM-AND-EXTEND. Positions 2 and 3, bound.",
+      "presupposes": "Presupposes F8 — a read-back that is wrong gets corrected.",
+      "provenance": "pod-0"
+    },
+    {
+      "id": "F10",
+      "name": "Keep going",
+      "test": "A minimal turn whose only content is a request to continue.",
+      "dialogic_attestations": 1,
+      "rows": [
+        "g125"
+      ],
+      "position": "LONG TURN → CONTINUER → continuation. Position 2, inside a chain.",
+      "presupposes": "Presupposes F7 survivable — you must survive the continuation you just invited.",
+      "provenance": "pod-0"
+    },
+    {
+      "id": "F11",
+      "name": "And you?",
+      "test": "The responder answers and hands the identical question straight back, in the same turn, minimally.",
+      "dialogic_attestations": 4,
+      "rows": [
+        "g26",
+        "g29",
+        "g32",
+        "g34"
+      ],
+      "position": "Q → A + RETURN → A + return → … Position 2, and it is what makes the shape recursive.",
+      "presupposes": "Presupposes F1. Composes the acquaintance shape into itself.",
+      "provenance": "pod-0"
+    },
+    {
+      "id": "F12",
+      "name": "Nice one",
+      "test": "The responder assesses the other party, their choice, their offering or their help.",
+      "dialogic_attestations": 11,
+      "rows": [
+        "g31",
+        "g36",
+        "g82",
+        "g93",
+        "g94",
+        "g100",
+        "g129",
+        "g222",
+        "g226",
+        "g228",
+        "g229"
+      ],
+      "position": "OFFERING → ASSESSMENT → (uptake). Position 2.",
+      "presupposes": "Presupposes F1 and F14. Prerequisite for F13, F17, F18.",
+      "provenance": "pod-0"
+    },
+    {
+      "id": "F13",
+      "name": "Kind of you, but",
+      "test": "The responder receives a compliment, thanks for it, and immediately downgrades the claim about themselves.",
+      "dialogic_attestations": 2,
+      "rows": [
+        "g95",
+        "g223"
+      ],
+      "position": "COMPLIMENT → THANK-AND-DOWNGRADE → (counter-assessment). Position 2.",
+      "presupposes": "Presupposes F12 and F14. Prerequisite for F17.",
+      "provenance": "pod-0"
+    },
+    {
+      "id": "F14",
+      "name": "The done thing",
+      "test": "The turn’s whole job is to return a ritual with its matching ritual. No propositional content is exchanged.",
+      "dialogic_attestations": 17,
+      "rows": [
+        "g2",
+        "g4",
+        "g19",
+        "g21",
+        "g22",
+        "g24",
+        "g27",
+        "g28",
+        "g36",
+        "g70",
+        "g93",
+        "g94",
+        "g95",
+        "g98",
+        "g108",
+        "g118",
+        "g129"
+      ],
+      "position": "HAIL → RETURN. Position 2. Also the closing position of most transaction shapes.",
+      "presupposes": "No prerequisites. Composes into the open and the close of every other shape.",
+      "provenance": "pod-0"
+    },
+    {
+      "id": "F15",
+      "name": "I’m not sure",
+      "test": "The responder declines to commit either way and buys time, usually with a counter-request.",
+      "dialogic_attestations": 1,
+      "rows": [
+        "g64"
+      ],
+      "position": "OFFER → NON-COMMITMENT + DEFER → resource → decide. Position 2.",
+      "presupposes": "Presupposes F1 and F3. The only turn in the corpus that refuses to decide.",
+      "provenance": "pod-0"
+    },
+    {
+      "id": "F16",
+      "name": "Fair enough, but I still",
+      "test": "The responder concedes the other’s point and then holds their own position with a “but”.",
+      "dialogic_attestations": 3,
+      "rows": [
+        "g225",
+        "g227",
+        "g229"
+      ],
+      "position": "ASSESSMENT → CONCEDE-AND-HOLD → counter-assessment. Position 2.",
+      "presupposes": "Presupposes F12, and disagreement survivable. All three attestations in scene 22.",
+      "provenance": "pod-0"
+    },
+    {
+      "id": "F17",
+      "name": "No you’re not",
+      "test": "The responder contradicts the other party’s account of themselves, positively.",
+      "dialogic_attestations": 2,
+      "rows": [
+        "g226",
+        "g228"
+      ],
+      "position": "SELF-DOWNGRADE → COUNTER-ASSESSMENT. Position 2.",
+      "presupposes": "Presupposes F12 and F13. The corpus’s only disagreement of any kind. Both attestations in scene 22.",
+      "provenance": "pod-0"
+    },
+    {
+      "id": "F18",
+      "name": "That’s normal, isn’t it?",
+      "test": "The responder normalises the other’s difficulty and invites agreement with a tag; the partner agrees emphatically.",
+      "dialogic_attestations": 2,
+      "rows": [
+        "g230",
+        "g231"
+      ],
+      "position": "DIFFICULTY → NORMALISE+TAG → EMPHATIC AGREE. Positions 2 and 3, bound.",
+      "presupposes": "Presupposes F12 and F16. Both attestations in scene 22, the last two rows of the corpus.",
+      "provenance": "pod-0"
+    },
+    {
+      "id": "F19",
+      "name": "Here’s how I am",
+      "test": "The responder answers a formulaic wellbeing enquiry with a state report.",
+      "dialogic_attestations": 2,
+      "rows": [
+        "g3",
+        "g24"
+      ],
+      "position": "WELLBEING-Q → STATE REPORT. Position 2.",
+      "presupposes": "Presupposes F14. May be a sub-case of F14 — see U10.",
+      "provenance": "pod-0"
+    },
+    {
+      "id": "F21",
+      "name": "Anything else?",
+      "test": "The responder completes the ticket and immediately solicits a further one in the same turn.",
+      "dialogic_attestations": 3,
+      "rows": [
+        "g16",
+        "g45",
+        "g51"
+      ],
+      "position": "GRANT → ONWARD SOLICIT → new ticket. Position 2→1 pivot.",
+      "presupposes": "Presupposes F1. Composes the transaction shape into a chain.",
+      "provenance": "pod-0",
+      "pivot_capable": true,
+      "also_initiating_at": [
+        71,
+        83
+      ]
+    }
+  ]
+}

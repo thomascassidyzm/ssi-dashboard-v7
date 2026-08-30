@@ -1,0 +1,1952 @@
+{
+  "$schema": "../../../../schemas/metagraph-v1-schema.json",
+  "concept": "walk-set",
+  "version": 1,
+  "walk_set": "pod-0",
+  "corpus": {
+    "table": "canonical_pod_scenarios",
+    "pod_slug": "pod-0",
+    "rows": 231,
+    "scenes": 22,
+    "caveat": "pod_slug 'pod-0' IS the live POD 1. The slugs 'pod-1' (236 rows) and 'pod-0.5' (27 rows) are sacked slates and are positively excluded.",
+    "variant_key": "null on all 231 rows — surface variants and outcome branches are indistinguishable in the source data"
+  },
+  "source": {
+    "document": "docs/pods/shape-graph-2026-08-30.md",
+    "surface_text": "populated once, read-only, from canonical_pod_scenarios on 2026-08-30. No writes were issued."
+  },
+  "format": "A walk is a sequence of NODE REFERENCES. Each step names a node and a position; the surface sentence is a property of the step, never the step itself. Coverage is computable without parsing any prose.",
+  "walk_kind": "listening",
+  "accounting": {
+    "codas": 16,
+    "drill_rows_scenes_15_21": 73,
+    "truncated_walks_stored": 69,
+    "drill_rows_promoted_to_a_complete_walk": {
+      "count": 4,
+      "rows": [
+        "g158",
+        "g159",
+        "g160",
+        "g161"
+      ],
+      "walk": "W15"
+    },
+    "rows_on_complete_walks": 138,
+    "rows_on_complete_walks_placed_here": 82,
+    "rows_on_complete_walks_not_yet_placed": 56,
+    "alternatives_at_a_node": 4,
+    "total": 231,
+    "complete_walks_in_corpus": 47,
+    "complete_walks_encoded_here": 16,
+    "gap": "The document states 47 complete walks and enumerates none of them. The 16 walks encoded here are the ones the document names by attestation run in §2, §3, §4 and §6 — a representative subset covering 12 of the 12 pod-0 nodes, 18 of the 19 composition edges and 10 of the 10 corpus survivability edges. The remaining complete walks, carrying the rows counted in rows_on_complete_walks_not_yet_placed, are a NAMED GAP and are not encoded."
+  },
+  "coverage_of_the_graph": {
+    "nodes": [
+      "N1",
+      "N10",
+      "N11",
+      "N12",
+      "N2",
+      "N3",
+      "N4",
+      "N5",
+      "N6",
+      "N7",
+      "N8",
+      "N9"
+    ],
+    "composition_edges": [
+      "C1",
+      "C10",
+      "C11",
+      "C12",
+      "C13",
+      "C14",
+      "C15",
+      "C16",
+      "C17",
+      "C18",
+      "C19",
+      "C2",
+      "C3",
+      "C4",
+      "C6",
+      "C7",
+      "C8",
+      "C9"
+    ],
+    "survivability_edges": [
+      "S1",
+      "S10",
+      "S2",
+      "S3",
+      "S4",
+      "S5",
+      "S6",
+      "S7",
+      "S8",
+      "S9"
+    ]
+  },
+  "walks": [
+    {
+      "id": "W1",
+      "name": "The café order — the branch walk",
+      "scene": 3,
+      "steps": [
+        {
+          "step": 1,
+          "node": "N1",
+          "position": 1,
+          "row": "g10",
+          "speaker": "Barista (3 pm)",
+          "surface": "Good afternoon. What can I get you?",
+          "composed_in": {
+            "node": "N2",
+            "position": 1
+          },
+          "also": "N2.1 solicit",
+          "move": "F21"
+        },
+        {
+          "step": 2,
+          "node": "N2",
+          "position": 2,
+          "row": "g11",
+          "speaker": "Sarah",
+          "surface": "Good afternoon. I'd like a coffee, please. With milk but with no sugar. To take away.",
+          "move": "F1",
+          "note": "ritual return and order in one turn — N1.2 composed into N2.2"
+        },
+        {
+          "step": 3,
+          "node": "N3",
+          "position": 1,
+          "row": "g14",
+          "speaker": "Sarah",
+          "surface": "Do you have crisps, or nuts, or anything?",
+          "composed_in": {
+            "node": "N2",
+            "position": 3
+          },
+          "move": null,
+          "surface_variants": [
+            {
+              "row": "g12",
+              "surface": "Do you have any food?"
+            },
+            {
+              "row": "g13",
+              "surface": "Do you have any snacks?"
+            }
+          ],
+          "variance": "surface",
+          "note": "g12/g13/g14 are three phrasings of one availability ticket; g14 carries the continuation"
+        },
+        {
+          "step": 4,
+          "node": "N3",
+          "position": 2,
+          "branch": true,
+          "variance": "outcome",
+          "note": "g15 and g16 are mutually exclusive answers to the same ticket, stored as consecutive sentences. variant_key is null on all 231 rows: the storage format has no way to say branch. This is the acceptance test — a graph that could not distinguish g15 from g16 would be the wrong graph.",
+          "branches": [
+            {
+              "key": "no",
+              "polarity": "negative",
+              "alternative": "no+substitute",
+              "move": "F6",
+              "row": "g15",
+              "speaker": "Barista",
+              "surface": "No, we've only got drinks.",
+              "continues": false,
+              "note": "The negative branch. No uptake at all in the corpus — this is the branch the overlay’s O1 exists to continue."
+            },
+            {
+              "key": "yes",
+              "polarity": "positive",
+              "alternative": "yes+locate",
+              "move": "F21",
+              "row": "g16",
+              "speaker": "Barista",
+              "surface": "Yes, would you like the menu?",
+              "continues": true,
+              "pivot_to_position": 1,
+              "note": "Pivots the walk back to an initiating position — the onward-solicit pivot P6."
+            }
+          ]
+        },
+        {
+          "step": 5,
+          "node": "N2",
+          "position": 2,
+          "row": "g17",
+          "speaker": "Sarah",
+          "surface": "Yes, please.",
+          "move": "F1",
+          "via_branch": "yes",
+          "note": "continuation of the yes branch only"
+        },
+        {
+          "step": 6,
+          "node": "N2",
+          "position": 5,
+          "row": "g18",
+          "speaker": "Barista",
+          "surface": "Here's your coffee.",
+          "move": "F1"
+        },
+        {
+          "step": 7,
+          "node": "N2",
+          "position": 7,
+          "row": "g19",
+          "speaker": "Sarah",
+          "surface": "Thank you very much. Goodbye.",
+          "move": "F14",
+          "composed_in": {
+            "node": "N1",
+            "position": 2
+          }
+        }
+      ],
+      "nodes_traversed": [
+        "N1",
+        "N2",
+        "N3"
+      ],
+      "composition_edges_used": [
+        "C1",
+        "C6",
+        "C19"
+      ],
+      "demonstrates": [
+        "outcome branch",
+        "surface variance",
+        "pivot annotation"
+      ]
+    },
+    {
+      "id": "W2",
+      "name": "Morning greeting",
+      "scene": 1,
+      "steps": [
+        {
+          "step": 1,
+          "node": "N1",
+          "position": 1,
+          "row": "g1",
+          "speaker": "Neighbour (8 am)",
+          "surface": "Good morning, Sarah!"
+        },
+        {
+          "step": 2,
+          "node": "N1",
+          "position": 2,
+          "row": "g2",
+          "speaker": "Sarah",
+          "surface": "Good morning. How are you?",
+          "move": "F14",
+          "pivot_to_position": 1,
+          "note": "ritual return pivots into a wellbeing question"
+        },
+        {
+          "step": 3,
+          "node": "N1",
+          "position": 2,
+          "row": "g3",
+          "speaker": "Neighbour",
+          "surface": "I'm very well, thank you. Are you going to work?",
+          "move": "F19",
+          "note": "state report — see U10, may be a sub-case of the ritual return"
+        },
+        {
+          "step": 4,
+          "node": "N1",
+          "position": 2,
+          "row": "g4",
+          "speaker": "Sarah",
+          "surface": "Yes, I've got a busy day today. I hope you have a good day. See you later.",
+          "move": "F14"
+        }
+      ],
+      "nodes_traversed": [
+        "N1"
+      ]
+    },
+    {
+      "id": "W3",
+      "name": "The seat, and how far into town",
+      "scene": 2,
+      "steps": [
+        {
+          "step": 1,
+          "node": "N3",
+          "position": 1,
+          "row": "g5",
+          "speaker": "Sarah",
+          "surface": "Excuse me, is this seat taken?"
+        },
+        {
+          "step": 2,
+          "node": "N3",
+          "position": 2,
+          "row": "g6",
+          "speaker": "Passenger",
+          "surface": "No, it's free. Please, go ahead.",
+          "move": "F2",
+          "via_branch": "yes"
+        },
+        {
+          "step": 3,
+          "node": "N3",
+          "position": 1,
+          "row": "g8",
+          "speaker": "Sarah",
+          "surface": "Can you tell me how far it is into town?",
+          "surface_variants": [
+            {
+              "row": "g7",
+              "surface": "How far is it into town?"
+            }
+          ],
+          "variance": "surface",
+          "note": "g7/g8 are two phrasings of one ticket; g8 carries the continuation to g9"
+        },
+        {
+          "step": 4,
+          "node": "N3",
+          "position": 2,
+          "row": "g9",
+          "speaker": "Passenger",
+          "surface": "It's not very far. Maybe three or four miles.",
+          "move": "F4",
+          "via_branch": "yes",
+          "hedge": true,
+          "note": "S2 — the hedge. No turn in the corpus takes it up."
+        }
+      ],
+      "nodes_traversed": [
+        "N3"
+      ],
+      "survivability_edges_touched": [
+        "S2"
+      ]
+    },
+    {
+      "id": "W4",
+      "name": "The arrangement — the second no",
+      "scene": 4,
+      "steps": [
+        {
+          "step": 1,
+          "node": "N7",
+          "position": 1,
+          "row": "g20",
+          "speaker": "Friend (7 pm)",
+          "surface": "Hello, good evening!",
+          "composed_in": {
+            "node": "N1",
+            "position": 1
+          }
+        },
+        {
+          "step": 2,
+          "node": "N7",
+          "position": 2,
+          "row": "g21",
+          "speaker": "Sarah",
+          "surface": "Hello! I'm sorry but I can't talk at the moment. I need to go home now. Can we talk tomorrow?",
+          "move": "F5"
+        },
+        {
+          "step": 3,
+          "node": "N7",
+          "position": 3,
+          "row": "g22",
+          "speaker": "Friend",
+          "surface": "No, I'm sorry, I'm busy tomorrow. But let's talk on Saturday. See you then.",
+          "move": "F5",
+          "note": "S6 — the decline is itself declined. The corpus’s only two-sided negotiation."
+        }
+      ],
+      "nodes_traversed": [
+        "N1",
+        "N7"
+      ],
+      "composition_edges_used": [
+        "C3"
+      ],
+      "survivability_edges_touched": [
+        "S6"
+      ],
+      "outcome_shape": "O9"
+    },
+    {
+      "id": "W5",
+      "name": "Acquaintance, with the repair inside it",
+      "scene": 6,
+      "steps": [
+        {
+          "step": 1,
+          "node": "N5",
+          "position": 1,
+          "row": "g25",
+          "speaker": "James",
+          "surface": "Excuse me. Hello. What's your name?",
+          "composed_in": {
+            "node": "N1",
+            "position": 1
+          }
+        },
+        {
+          "step": 2,
+          "node": "N5",
+          "position": 2,
+          "row": "g26",
+          "speaker": "Anna",
+          "surface": "My name is Anna. And you?",
+          "move": "F11",
+          "pivot_to_position": 1
+        },
+        {
+          "step": 3,
+          "node": "N5",
+          "position": 2,
+          "row": "g27",
+          "speaker": "James",
+          "surface": "I'm James. Pleased to meet you.",
+          "move": "F1"
+        },
+        {
+          "step": 4,
+          "node": "N5",
+          "position": 2,
+          "row": "g28",
+          "speaker": "Anna",
+          "surface": "Pleased to meet you too. Where are you from?",
+          "move": "F14",
+          "pivot_to_position": 1
+        },
+        {
+          "step": 5,
+          "node": "N5",
+          "position": 2,
+          "row": "g29",
+          "speaker": "James",
+          "surface": "I'm from Manchester, but I live in London now. And you?",
+          "move": "F11",
+          "pivot_to_position": 1
+        },
+        {
+          "step": 6,
+          "node": "N5",
+          "position": 2,
+          "row": "g30",
+          "speaker": "Anna",
+          "surface": "I'm from France. I've been here for two years.",
+          "move": "F2"
+        },
+        {
+          "step": 7,
+          "node": "N10",
+          "position": 1,
+          "row": "g31",
+          "speaker": "James",
+          "surface": "This is a lovely city. What do you do?",
+          "composed_in": {
+            "node": "N5",
+            "position": 2
+          },
+          "move": "F12",
+          "pivot_to_position": 1
+        },
+        {
+          "step": 8,
+          "node": "N5",
+          "position": 2,
+          "row": "g32",
+          "speaker": "Anna",
+          "surface": "I'm a nurse, at the hospital just round the corner. And you?",
+          "move": "F11",
+          "pivot_to_position": 1
+        },
+        {
+          "step": 9,
+          "node": "N6",
+          "position": 2,
+          "row": "g33",
+          "speaker": "James",
+          "surface": "I'm sorry, I didn't understand you. I'm learning [target language]. Could you say that again more slowly?",
+          "composed_in": {
+            "node": "N5",
+            "position": 2
+          },
+          "move": "F7",
+          "note": "the only dialogic repair request in 231 rows"
+        },
+        {
+          "step": 10,
+          "node": "N6",
+          "position": 3,
+          "row": "g34",
+          "speaker": "Anna",
+          "surface": "Yes, of course. I'm a nurse. I work at the hospital. It's near here. And what do you do?",
+          "move": "F8",
+          "pivot_to_position": 1
+        },
+        {
+          "step": 11,
+          "node": "N6",
+          "position": 4,
+          "row": "g35",
+          "speaker": "James",
+          "surface": "I teach English, but not in a school. I work with adults. I'm on holiday here with my wife and children. We're having a lovely time.",
+          "move": "F1",
+          "note": "the exchange resumes"
+        },
+        {
+          "step": 12,
+          "node": "N5",
+          "position": 2,
+          "row": "g36",
+          "speaker": "Anna",
+          "surface": "How interesting. Well, lovely to meet you.",
+          "move": "F12",
+          "composed_in": {
+            "node": "N1",
+            "position": 2
+          }
+        }
+      ],
+      "nodes_traversed": [
+        "N1",
+        "N5",
+        "N6",
+        "N10"
+      ],
+      "composition_edges_used": [
+        "C2",
+        "C14",
+        "C15",
+        "C16"
+      ],
+      "survivability_edges_touched": [
+        "S3",
+        "S4"
+      ],
+      "note": "S3 is the corpus’s one complete off-path-and-recover cycle."
+    },
+    {
+      "id": "W6",
+      "name": "The pub order, with availability inside it",
+      "scene": 8,
+      "steps": [
+        {
+          "step": 1,
+          "node": "N2",
+          "position": 1,
+          "row": "g53",
+          "speaker": "Bartender",
+          "surface": "Good evening. What can I get you?",
+          "composed_in": {
+            "node": "N1",
+            "position": 1
+          },
+          "move": "F21"
+        },
+        {
+          "step": 2,
+          "node": "N2",
+          "position": 2,
+          "row": "g54",
+          "speaker": "Customer 1",
+          "surface": "I'd like a pint, please. What ales do you have on?",
+          "move": "F1",
+          "pivot_to_position": 1,
+          "note": "order and availability enquiry in one turn"
+        },
+        {
+          "step": 3,
+          "node": "N3",
+          "position": 2,
+          "row": "g55",
+          "speaker": "Bartender",
+          "surface": "We've got a bitter and a stout, and they're both local.",
+          "composed_in": {
+            "node": "N2",
+            "position": 3
+          },
+          "move": "F2",
+          "via_branch": "yes"
+        },
+        {
+          "step": 4,
+          "node": "N2",
+          "position": 2,
+          "row": "g56",
+          "speaker": "Customer 1",
+          "surface": "I'd like a pint of the bitter, please.",
+          "move": "F1"
+        },
+        {
+          "step": 5,
+          "node": "N2",
+          "position": 2,
+          "row": "g58",
+          "speaker": "Customer 3",
+          "surface": "Could I see the wine list? I want a glass of wine.",
+          "move": "F1"
+        },
+        {
+          "step": 6,
+          "node": "N3",
+          "position": 2,
+          "row": "g59",
+          "speaker": "Bartender",
+          "surface": "We have a house red, a house white, or you could have one of our bottles.",
+          "move": "F6",
+          "via_branch": "no",
+          "note": "S1 — substitute; g60 re-selects, the one attested re-selection"
+        },
+        {
+          "step": 7,
+          "node": "N2",
+          "position": 2,
+          "row": "g60",
+          "speaker": "Customer 3",
+          "surface": "I'd like a large glass of white wine, please.",
+          "move": "F1",
+          "note": "the re-selection"
+        }
+      ],
+      "nodes_traversed": [
+        "N1",
+        "N2",
+        "N3"
+      ],
+      "composition_edges_used": [
+        "C1",
+        "C6"
+      ],
+      "survivability_edges_touched": [
+        "S1"
+      ]
+    },
+    {
+      "id": "W7",
+      "name": "The menu — declining to decide",
+      "scene": 8,
+      "steps": [
+        {
+          "step": 1,
+          "node": "N8",
+          "position": 1,
+          "row": "g63",
+          "speaker": "Bartender",
+          "surface": "Are you eating tonight?"
+        },
+        {
+          "step": 2,
+          "node": "N8",
+          "position": 2,
+          "row": "g64",
+          "speaker": "Customer 1",
+          "surface": "I'm not sure if I'm hungry. Do you have a menu?",
+          "move": "F15",
+          "note": "S9 — the only turn in the corpus that refuses to decide"
+        },
+        {
+          "step": 3,
+          "node": "N8",
+          "position": 3,
+          "row": "g65",
+          "speaker": "Bartender",
+          "surface": "Yes, of course. Here it is. The fish and chips are very good.",
+          "move": "F2"
+        }
+      ],
+      "nodes_traversed": [
+        "N8"
+      ],
+      "survivability_edges_touched": [
+        "S9"
+      ]
+    },
+    {
+      "id": "W8",
+      "name": "The recommendation",
+      "scene": 9,
+      "steps": [
+        {
+          "step": 1,
+          "node": "N8",
+          "position": 1,
+          "row": "g75",
+          "speaker": "Customer 1",
+          "surface": "And what would you recommend tonight?",
+          "composed_in": {
+            "node": "N2",
+            "position": 3
+          }
+        },
+        {
+          "step": 2,
+          "node": "N8",
+          "position": 2,
+          "row": "g76",
+          "speaker": "Waiter",
+          "surface": "The lamb is excellent. It's been slow-cooked, with rosemary.",
+          "move": "F2"
+        },
+        {
+          "step": 3,
+          "node": "N8",
+          "position": 3,
+          "row": "g77",
+          "speaker": "Customer 1",
+          "surface": "I'll have the lamb, please. With a side of greens.",
+          "move": "F1"
+        }
+      ],
+      "nodes_traversed": [
+        "N2",
+        "N8"
+      ],
+      "composition_edges_used": [
+        "C8"
+      ],
+      "outcome_shape": "O8",
+      "note": "O8 is sited here — order the thing the waiter advised against."
+    },
+    {
+      "id": "W9",
+      "name": "The shop — a compliment inside a transaction",
+      "scene": 10,
+      "steps": [
+        {
+          "step": 1,
+          "node": "N2",
+          "position": 5,
+          "row": "g92",
+          "speaker": "Assistant",
+          "surface": "Sunscreen is down there on your right, and you'll find toothpaste just round the corner.",
+          "move": "F1"
+        },
+        {
+          "step": 2,
+          "node": "N2",
+          "position": 7,
+          "row": "g93",
+          "speaker": "Customer",
+          "surface": "Thank you, you've been very helpful. I'm very grateful.",
+          "move": "F12",
+          "composed_in": {
+            "node": "N1",
+            "position": 2
+          }
+        },
+        {
+          "step": 3,
+          "node": "N10",
+          "position": 1,
+          "row": "g94",
+          "speaker": "Assistant",
+          "surface": "You're welcome. Are you here on holiday? You speak very good [target language].",
+          "composed_in": {
+            "node": "N2",
+            "position": 7
+          },
+          "move": "F14",
+          "pivot_to_position": 1,
+          "note": "S7 — an unsolicited topic shift at the close of a transaction"
+        },
+        {
+          "step": 4,
+          "node": "N10",
+          "position": 2,
+          "row": "g95",
+          "speaker": "Customer",
+          "surface": "That's very kind of you! Yes, I'm on holiday, and I need to practice more to speak [target language] better. Thank you very much, and goodbye.",
+          "move": "F13"
+        }
+      ],
+      "nodes_traversed": [
+        "N1",
+        "N2",
+        "N10"
+      ],
+      "composition_edges_used": [
+        "C17"
+      ],
+      "survivability_edges_touched": [
+        "S7"
+      ]
+    },
+    {
+      "id": "W10",
+      "name": "Hotel check-in — the read-back",
+      "scene": 11,
+      "steps": [
+        {
+          "step": 1,
+          "node": "N2",
+          "position": 2,
+          "row": "g97",
+          "speaker": "Guest",
+          "surface": "Good afternoon. I have a booking under the name Jones.",
+          "composed_in": {
+            "node": "N1",
+            "position": 1
+          }
+        },
+        {
+          "step": 2,
+          "node": "N4",
+          "position": 3,
+          "row": "g98",
+          "speaker": "Receptionist",
+          "surface": "Welcome. Yes, you have a double room for three nights. Could I see some ID, please?",
+          "composed_in": {
+            "node": "N2",
+            "position": 3
+          },
+          "move": "F9",
+          "pivot_to_position": 1,
+          "pair": "P3"
+        },
+        {
+          "step": 3,
+          "node": "N2",
+          "position": 2,
+          "row": "g99",
+          "speaker": "Guest",
+          "surface": "Of course. Here's my passport.",
+          "move": "F1"
+        },
+        {
+          "step": 4,
+          "node": "N2",
+          "position": 5,
+          "row": "g100",
+          "speaker": "Receptionist",
+          "surface": "Lovely. The room is on the third floor, room 709.",
+          "move": "F2"
+        }
+      ],
+      "nodes_traversed": [
+        "N1",
+        "N2",
+        "N4"
+      ],
+      "composition_edges_used": [
+        "C1",
+        "C10"
+      ],
+      "outcome_shape": "O4",
+      "note": "O4 is sited here — numbers, nights and dates make a mis-hearing concrete in one turn."
+    },
+    {
+      "id": "W11",
+      "name": "Late check-out — feasibility",
+      "scene": 11,
+      "steps": [
+        {
+          "step": 1,
+          "node": "N9",
+          "position": 1,
+          "row": "g105",
+          "speaker": "Guest",
+          "surface": "Wonderful. Is it possible for us to have a late check-out?",
+          "composed_in": {
+            "node": "N2",
+            "position": 3
+          }
+        },
+        {
+          "step": 2,
+          "node": "N9",
+          "position": 2,
+          "row": "g106",
+          "speaker": "Receptionist",
+          "surface": "Yes, you can stay until midday, no extra charge.",
+          "move": "F2"
+        }
+      ],
+      "nodes_traversed": [
+        "N2",
+        "N9"
+      ],
+      "composition_edges_used": [
+        "C9"
+      ]
+    },
+    {
+      "id": "W12",
+      "name": "The chemist — instruction inside a consultation",
+      "scene": 12,
+      "steps": [
+        {
+          "step": 1,
+          "node": "N12",
+          "position": 1,
+          "row": "g110",
+          "speaker": "Customer",
+          "surface": "Good morning. I'm not feeling great - could you recommend something?",
+          "composed_in": {
+            "node": "N1",
+            "position": 1
+          }
+        },
+        {
+          "step": 2,
+          "node": "N12",
+          "position": 2,
+          "row": "g111",
+          "speaker": "Pharmacist",
+          "surface": "Of course. What are your symptoms?",
+          "move": "F3",
+          "pair": "P5"
+        },
+        {
+          "step": 3,
+          "node": "N12",
+          "position": 3,
+          "row": "g112",
+          "speaker": "Customer",
+          "surface": "I've had a headache and a sore throat since yesterday.",
+          "move": "F1"
+        },
+        {
+          "step": 4,
+          "node": "N12",
+          "position": 4,
+          "row": "g113",
+          "speaker": "Pharmacist",
+          "surface": "Try paracetamol for the headache, and these lozenges for the throat.",
+          "move": "F1"
+        },
+        {
+          "step": 5,
+          "node": "N4",
+          "position": 1,
+          "row": "g114",
+          "speaker": "Customer",
+          "surface": "How often should I take the paracetamol?",
+          "composed_in": {
+            "node": "N12",
+            "position": 5
+          }
+        },
+        {
+          "step": 6,
+          "node": "N4",
+          "position": 2,
+          "row": "g115",
+          "speaker": "Pharmacist",
+          "surface": "One every four to six hours, no more than eight in a day.",
+          "move": "F2"
+        },
+        {
+          "step": 7,
+          "node": "N4",
+          "position": 1,
+          "row": "g116",
+          "speaker": "Customer",
+          "surface": "Are they all right to take with food?"
+        },
+        {
+          "step": 8,
+          "node": "N4",
+          "position": 2,
+          "row": "g117",
+          "speaker": "Pharmacist",
+          "surface": "Yes, with or after food is best.",
+          "move": "F2",
+          "composed_in": {
+            "node": "N1",
+            "position": 2
+          }
+        }
+      ],
+      "nodes_traversed": [
+        "N1",
+        "N4",
+        "N12"
+      ],
+      "composition_edges_used": [
+        "C4",
+        "C12",
+        "C13"
+      ],
+      "outcome_shape": "O7",
+      "note": "O7 is sited here — the register shift is largest against a transactional frame."
+    },
+    {
+      "id": "W13",
+      "name": "Directions — the longest chain",
+      "scene": 13,
+      "steps": [
+        {
+          "step": 1,
+          "node": "N4",
+          "position": 1,
+          "row": "g120",
+          "speaker": "Tourist",
+          "surface": "Excuse me, do you know how to get to the nearest supermarket?"
+        },
+        {
+          "step": 2,
+          "node": "N4",
+          "position": 2,
+          "row": "g121",
+          "speaker": "Local",
+          "surface": "Yes, it's about a ten minute walk. Go straight along this road.",
+          "move": "F4",
+          "hedge": true,
+          "note": "S2 — a hedge, never taken up"
+        },
+        {
+          "step": 3,
+          "node": "N4",
+          "position": 3,
+          "row": "g122",
+          "speaker": "Tourist",
+          "surface": "Past that church?",
+          "move": "F9",
+          "pair": "P3"
+        },
+        {
+          "step": 4,
+          "node": "N4",
+          "position": 4,
+          "row": "g123",
+          "speaker": "Local",
+          "surface": "Yes, past the church and the post office.",
+          "move": "F9",
+          "note": "S5 — the correction is silent; the learner is never shown noticing it"
+        },
+        {
+          "step": 5,
+          "node": "N4",
+          "position": 6,
+          "row": "g124",
+          "speaker": "Local",
+          "surface": "At the second roundabout, take the first exit.",
+          "move": "F1"
+        },
+        {
+          "step": 6,
+          "node": "N4",
+          "position": 5,
+          "row": "g125",
+          "speaker": "Tourist",
+          "surface": "And then?",
+          "move": "F10",
+          "pair": "P4",
+          "note": "S10 — the continuer invites a turn of unbounded length"
+        },
+        {
+          "step": 7,
+          "node": "N4",
+          "position": 6,
+          "row": "g126",
+          "speaker": "Local",
+          "surface": "You'll see the supermarket on your left, just opposite the bus stop.",
+          "move": "F2"
+        }
+      ],
+      "nodes_traversed": [
+        "N4"
+      ],
+      "composition_edges_used": [
+        "C10",
+        "C11"
+      ],
+      "survivability_edges_touched": [
+        "S2",
+        "S5",
+        "S10"
+      ],
+      "outcome_shape": "O2",
+      "note": "O2 is sited here — the place being stranded mid-instruction is most obvious."
+    },
+    {
+      "id": "W14",
+      "name": "The taxi — reckoning and pay",
+      "scene": 14,
+      "steps": [
+        {
+          "step": 1,
+          "node": "N2",
+          "position": 6,
+          "row": "g137",
+          "speaker": "Driver",
+          "surface": "Here we are. That's twelve pound fifty.",
+          "pair": "P2"
+        },
+        {
+          "step": 2,
+          "node": "N2",
+          "position": 6,
+          "row": "g138",
+          "speaker": "Passenger",
+          "surface": "Could I pay by card?",
+          "move": "F3",
+          "pair": "P2"
+        },
+        {
+          "step": 3,
+          "node": "N2",
+          "position": 7,
+          "row": "g139",
+          "speaker": "Driver",
+          "surface": "Yes, of course. The machine is just here.",
+          "move": "F2",
+          "pair": "P2"
+        }
+      ],
+      "nodes_traversed": [
+        "N2"
+      ],
+      "composition_edges_used": [
+        "C7"
+      ],
+      "outcome_shape": "O1",
+      "note": "O1 is sited on the reckoning — the wrong turn is widest where the learner has already received the goods."
+    },
+    {
+      "id": "W15",
+      "name": "The seed specimen — the only ask-refusal-survival run in 231 rows",
+      "scene": 16,
+      "steps": [
+        {
+          "step": 1,
+          "node": "N2",
+          "position": 2,
+          "row": "g158",
+          "speaker": "Learner",
+          "surface": "Can we pay?"
+        },
+        {
+          "step": 2,
+          "node": "N2",
+          "position": 2,
+          "row": "g159",
+          "speaker": "Learner",
+          "surface": "Can we pay by card?",
+          "variance": "surface"
+        },
+        {
+          "step": 3,
+          "node": "N3",
+          "position": 2,
+          "row": "g160",
+          "speaker": "Learner",
+          "surface": "No, we only take cash.",
+          "move": "F6",
+          "via_branch": "no",
+          "variance": "outcome",
+          "note": "The corpus’s only bare no. Outcome variance in drill."
+        },
+        {
+          "step": 4,
+          "node": "N2",
+          "position": 2,
+          "row": "g161",
+          "speaker": "Learner",
+          "surface": "I'm sorry, I don't have any cash.",
+          "note": "the recovery — absorbing the no"
+        }
+      ],
+      "nodes_traversed": [
+        "N2",
+        "N3"
+      ],
+      "outcome_shape": "O1",
+      "mislabelled_as": "drill",
+      "defect": "All four rows carry speaker = Learner. It is not attested as an exchange at all: the one specimen of the thing the whole overlay is for is a monologue."
+    },
+    {
+      "id": "W16",
+      "name": "First conversation — the whole relational layer",
+      "scene": 22,
+      "steps": [
+        {
+          "step": 1,
+          "node": "N11",
+          "position": 1,
+          "row": "g221",
+          "speaker": "Learner",
+          "surface": "Would you mind if I tried to practise speaking [target language] with you? I haven't been learning for very long, and I still feel a little nervous about speaking with other people."
+        },
+        {
+          "step": 2,
+          "node": "N10",
+          "position": 1,
+          "row": "g222",
+          "speaker": "Friend",
+          "surface": "Of course, no problem. You seem to speak it very well. I can understand you easily.",
+          "composed_in": {
+            "node": "N11",
+            "position": 1
+          },
+          "move": "F12"
+        },
+        {
+          "step": 3,
+          "node": "N10",
+          "position": 2,
+          "row": "g223",
+          "speaker": "Learner",
+          "surface": "Thank you, that's good to know. I need to learn more words, and I need to practise listening. I don't understand people very well when they don't speak slowly.",
+          "move": "F13",
+          "note": "S8 — self-account"
+        },
+        {
+          "step": 4,
+          "node": "N11",
+          "position": 2,
+          "row": "g224",
+          "speaker": "Friend",
+          "surface": "Am I speaking slowly enough for you now?",
+          "move": "F3",
+          "pivot_to_position": 1
+        },
+        {
+          "step": 5,
+          "node": "N11",
+          "position": 3,
+          "row": "g225",
+          "speaker": "Learner",
+          "surface": "Yes, thank you. It's easier talking to just one person. It's a bit difficult thinking of something to say, though. I'm not sure what to say, but I feel as if I can speak enough to start having conversations.",
+          "move": "F16"
+        },
+        {
+          "step": 6,
+          "node": "N11",
+          "position": 2,
+          "row": "g226",
+          "speaker": "Friend",
+          "surface": "I think you're doing very well. I'm impressed. I think you're ready to start speaking [target language] to anyone who speaks [target language].",
+          "move": "F17",
+          "note": "the corpus’s only disagreement of any kind"
+        },
+        {
+          "step": 7,
+          "node": "N11",
+          "position": 3,
+          "row": "g227",
+          "speaker": "Learner",
+          "surface": "It's just a little frustrating when I can't think quickly enough to express myself properly. But I know that I need to keep practising if I want to speak more confidently.",
+          "move": "F16"
+        },
+        {
+          "step": 8,
+          "node": "N11",
+          "position": 4,
+          "row": "g228",
+          "speaker": "Friend",
+          "surface": "You should be confident already. I think you're doing much better than you realise. I feel comfortable speaking with you, and I'm not talking very slowly.",
+          "move": "F17"
+        },
+        {
+          "step": 9,
+          "node": "N11",
+          "position": 3,
+          "row": "g229",
+          "speaker": "Learner",
+          "surface": "This is exactly the kind of practice I need. I think I can feel it changing my brain while we're talking! I really appreciate your help. But it's surprising how tired I get when I'm talking in a language I don't speak very well.",
+          "move": "F16"
+        },
+        {
+          "step": 10,
+          "node": "N11",
+          "position": 5,
+          "row": "g230",
+          "speaker": "Friend",
+          "surface": "I think that's normal. Learning a new language is difficult. But it's so much fun when you start to have conversations, isn't it?",
+          "move": "F18"
+        },
+        {
+          "step": 11,
+          "node": "N11",
+          "position": 6,
+          "row": "g231",
+          "speaker": "Learner",
+          "surface": "It really is. I'm really happy that I can have this much of a conversation. And I hope we'll be able to have more conversations in the future as I keep on getting better.",
+          "move": "F18"
+        }
+      ],
+      "nodes_traversed": [
+        "N10",
+        "N11"
+      ],
+      "composition_edges_used": [
+        "C18"
+      ],
+      "survivability_edges_touched": [
+        "S7",
+        "S8"
+      ]
+    }
+  ],
+  "truncated_walks": [
+    {
+      "row": "g141",
+      "scene": 15,
+      "surface": "How much is that?",
+      "speaker_column": "Learner",
+      "speaker_column_usable": false
+    },
+    {
+      "row": "g142",
+      "scene": 15,
+      "surface": "Can you tell me how much that is?",
+      "speaker_column": "Learner",
+      "speaker_column_usable": false
+    },
+    {
+      "row": "g143",
+      "scene": 15,
+      "surface": "How much does it cost to get a taxi into town?",
+      "speaker_column": "Learner",
+      "speaker_column_usable": false
+    },
+    {
+      "row": "g144",
+      "scene": 15,
+      "surface": "How much does it cost to get a bus into town?",
+      "speaker_column": "Learner",
+      "speaker_column_usable": false
+    },
+    {
+      "row": "g145",
+      "scene": 15,
+      "surface": "Where can we get a bus?",
+      "speaker_column": "Learner",
+      "speaker_column_usable": false
+    },
+    {
+      "row": "g146",
+      "scene": 15,
+      "surface": "Where can we get a taxi?",
+      "speaker_column": "Learner",
+      "speaker_column_usable": false
+    },
+    {
+      "row": "g147",
+      "scene": 15,
+      "surface": "Four single tickets to town, please.",
+      "speaker_column": "Learner",
+      "speaker_column_usable": false
+    },
+    {
+      "row": "g148",
+      "scene": 15,
+      "surface": "Two return tickets to town, please.",
+      "speaker_column": "Learner",
+      "speaker_column_usable": false
+    },
+    {
+      "row": "g149",
+      "scene": 15,
+      "surface": "I prefer to try to speak your language, I think it's polite.",
+      "speaker_column": "Learner",
+      "speaker_column_usable": false
+    },
+    {
+      "row": "g150",
+      "scene": 15,
+      "surface": "I'm sorry I can't speak very quickly.",
+      "speaker_column": "Learner",
+      "speaker_column_usable": false
+    },
+    {
+      "row": "g152",
+      "scene": 16,
+      "surface": "But if you can speak slowly I think we'll be able to manage.",
+      "speaker_column": "Learner",
+      "speaker_column_usable": false
+    },
+    {
+      "row": "g153",
+      "scene": 16,
+      "surface": "You spoke a little too quickly, so I'm not sure if I understood.",
+      "speaker_column": "Learner",
+      "speaker_column_usable": false
+    },
+    {
+      "row": "g154",
+      "scene": 16,
+      "surface": "Can we try again?",
+      "speaker_column": "Learner",
+      "speaker_column_usable": false
+    },
+    {
+      "row": "g155",
+      "scene": 16,
+      "surface": "Can we see the menu?",
+      "speaker_column": "Learner",
+      "speaker_column_usable": false
+    },
+    {
+      "row": "g156",
+      "scene": 16,
+      "surface": "Can we see the dessert menu also?",
+      "speaker_column": "Learner",
+      "speaker_column_usable": false
+    },
+    {
+      "row": "g157",
+      "scene": 16,
+      "surface": "Do you have anything to eat?",
+      "speaker_column": "Learner",
+      "speaker_column_usable": false
+    },
+    {
+      "row": "g163",
+      "scene": 17,
+      "surface": "Is there a cash machine near here?",
+      "speaker_column": "Learner",
+      "speaker_column_usable": false
+    },
+    {
+      "row": "g164",
+      "scene": 17,
+      "surface": "Do you want to pay by cash or card or put it on the room?",
+      "speaker_column": "Learner",
+      "speaker_column_usable": false
+    },
+    {
+      "row": "g165",
+      "scene": 17,
+      "surface": "Can we put it on the room, please?",
+      "speaker_column": "Learner",
+      "speaker_column_usable": false
+    },
+    {
+      "row": "g166",
+      "scene": 17,
+      "surface": "Would you like to pay by cash or card or on the room?",
+      "speaker_column": "Learner",
+      "speaker_column_usable": false
+    },
+    {
+      "row": "g167",
+      "scene": 17,
+      "surface": "Did you want to pay by cash or card?",
+      "speaker_column": "Learner",
+      "speaker_column_usable": false
+    },
+    {
+      "row": "g168",
+      "scene": 17,
+      "surface": "We'll pay by card again, please.",
+      "speaker_column": "Learner",
+      "speaker_column_usable": false
+    },
+    {
+      "row": "g169",
+      "scene": 17,
+      "surface": "It's hot today, again.",
+      "speaker_column": "Learner",
+      "speaker_column_usable": false
+    },
+    {
+      "row": "g170",
+      "scene": 17,
+      "surface": "Is the water warm?",
+      "speaker_column": "Learner",
+      "speaker_column_usable": false
+    },
+    {
+      "row": "g171",
+      "scene": 17,
+      "surface": "No, it's a little cold today.",
+      "speaker_column": "Learner",
+      "speaker_column_usable": false
+    },
+    {
+      "row": "g172",
+      "scene": 17,
+      "surface": "It's not bad.",
+      "speaker_column": "Learner",
+      "speaker_column_usable": false
+    },
+    {
+      "row": "g174",
+      "scene": 18,
+      "surface": "That's a bad idea.",
+      "speaker_column": "Learner",
+      "speaker_column_usable": false
+    },
+    {
+      "row": "g175",
+      "scene": 18,
+      "surface": "Do you have any orange juice?",
+      "speaker_column": "Learner",
+      "speaker_column_usable": false
+    },
+    {
+      "row": "g176",
+      "scene": 18,
+      "surface": "Do you have any apple juice?",
+      "speaker_column": "Learner",
+      "speaker_column_usable": false
+    },
+    {
+      "row": "g177",
+      "scene": 18,
+      "surface": "Does the boat leave from here?",
+      "speaker_column": "Learner",
+      "speaker_column_usable": false
+    },
+    {
+      "row": "g178",
+      "scene": 18,
+      "surface": "Does the bus leave from here?",
+      "speaker_column": "Learner",
+      "speaker_column_usable": false
+    },
+    {
+      "row": "g179",
+      "scene": 18,
+      "surface": "Where does the bus leave from?",
+      "speaker_column": "Learner",
+      "speaker_column_usable": false
+    },
+    {
+      "row": "g180",
+      "scene": 18,
+      "surface": "Is that correct? Am I correct?",
+      "speaker_column": "Learner",
+      "speaker_column_usable": false
+    },
+    {
+      "row": "g181",
+      "scene": 18,
+      "surface": "Am I wrong about that?",
+      "speaker_column": "Learner",
+      "speaker_column_usable": false
+    },
+    {
+      "row": "g182",
+      "scene": 18,
+      "surface": "I'm sorry, my son lost his ticket.",
+      "speaker_column": "Learner",
+      "speaker_column_usable": false
+    },
+    {
+      "row": "g183",
+      "scene": 18,
+      "surface": "We have paid, but my daughter has lost her ticket.",
+      "speaker_column": "Learner",
+      "speaker_column_usable": false
+    },
+    {
+      "row": "g185",
+      "scene": 19,
+      "surface": "That makes me happy.",
+      "speaker_column": "Learner",
+      "speaker_column_usable": false
+    },
+    {
+      "row": "g186",
+      "scene": 19,
+      "surface": "That makes me feel a little worried.",
+      "speaker_column": "Learner",
+      "speaker_column_usable": false
+    },
+    {
+      "row": "g187",
+      "scene": 19,
+      "surface": "When you talk quickly, it makes me feel stupid.",
+      "speaker_column": "Learner",
+      "speaker_column_usable": false
+    },
+    {
+      "row": "g188",
+      "scene": 19,
+      "surface": "Is it okay if I sit here?",
+      "speaker_column": "Learner",
+      "speaker_column_usable": false
+    },
+    {
+      "row": "g189",
+      "scene": 19,
+      "surface": "Is it okay if we put this here?",
+      "speaker_column": "Learner",
+      "speaker_column_usable": false
+    },
+    {
+      "row": "g190",
+      "scene": 19,
+      "surface": "I don't want to be late.",
+      "speaker_column": "Learner",
+      "speaker_column_usable": false
+    },
+    {
+      "row": "g191",
+      "scene": 19,
+      "surface": "Are we going to be late?",
+      "speaker_column": "Learner",
+      "speaker_column_usable": false
+    },
+    {
+      "row": "g192",
+      "scene": 19,
+      "surface": "I promise I won't be late.",
+      "speaker_column": "Learner",
+      "speaker_column_usable": false
+    },
+    {
+      "row": "g193",
+      "scene": 19,
+      "surface": "I promise we won't be late.",
+      "speaker_column": "Learner",
+      "speaker_column_usable": false
+    },
+    {
+      "row": "g194",
+      "scene": 19,
+      "surface": "I'd like two scoops of ice-cream, please.",
+      "speaker_column": "Learner",
+      "speaker_column_usable": false
+    },
+    {
+      "row": "g196",
+      "scene": 20,
+      "surface": "Can I have one scoop of chocolate and one of strawberry?",
+      "speaker_column": "Learner",
+      "speaker_column_usable": false
+    },
+    {
+      "row": "g197",
+      "scene": 20,
+      "surface": "And then another cone with one scoop of lemon and one of blueberry.",
+      "speaker_column": "Learner",
+      "speaker_column_usable": false
+    },
+    {
+      "row": "g198",
+      "scene": 20,
+      "surface": "Do you have any ice-cream?",
+      "speaker_column": "Learner",
+      "speaker_column_usable": false
+    },
+    {
+      "row": "g199",
+      "scene": 20,
+      "surface": "Thank you for all your work.",
+      "speaker_column": "Learner",
+      "speaker_column_usable": false
+    },
+    {
+      "row": "g200",
+      "scene": 20,
+      "surface": "I wish you good luck with everything.",
+      "speaker_column": "Learner",
+      "speaker_column_usable": false
+    },
+    {
+      "row": "g201",
+      "scene": 20,
+      "surface": "Thank you for helping me.",
+      "speaker_column": "Learner",
+      "speaker_column_usable": false
+    },
+    {
+      "row": "g202",
+      "scene": 20,
+      "surface": "Good luck with that!",
+      "speaker_column": "Learner",
+      "speaker_column_usable": false
+    },
+    {
+      "row": "g203",
+      "scene": 20,
+      "surface": "That's very kind of you.",
+      "speaker_column": "Learner",
+      "speaker_column_usable": false
+    },
+    {
+      "row": "g204",
+      "scene": 20,
+      "surface": "You're very kind.",
+      "speaker_column": "Learner",
+      "speaker_column_usable": false
+    },
+    {
+      "row": "g205",
+      "scene": 20,
+      "surface": "Thank you for being so friendly.",
+      "speaker_column": "Learner",
+      "speaker_column_usable": false
+    },
+    {
+      "row": "g207",
+      "scene": 21,
+      "surface": "It sounds as though we need to leave soon.",
+      "speaker_column": "Learner",
+      "speaker_column_usable": false
+    },
+    {
+      "row": "g208",
+      "scene": 21,
+      "surface": "It sounds as though you want us not to do that.",
+      "speaker_column": "Learner",
+      "speaker_column_usable": false
+    },
+    {
+      "row": "g209",
+      "scene": 21,
+      "surface": "Is there a toilet here?",
+      "speaker_column": "Learner",
+      "speaker_column_usable": false
+    },
+    {
+      "row": "g210",
+      "scene": 21,
+      "surface": "Can you tell me where the toilet is?",
+      "speaker_column": "Learner",
+      "speaker_column_usable": false
+    },
+    {
+      "row": "g211",
+      "scene": 21,
+      "surface": "It's down there on the left.",
+      "speaker_column": "Learner",
+      "speaker_column_usable": false
+    },
+    {
+      "row": "g212",
+      "scene": 21,
+      "surface": "It's down there on the right.",
+      "speaker_column": "Learner",
+      "speaker_column_usable": false
+    },
+    {
+      "row": "g213",
+      "scene": 21,
+      "surface": "Can you say that again?",
+      "speaker_column": "Learner",
+      "speaker_column_usable": false
+    },
+    {
+      "row": "g214",
+      "scene": 21,
+      "surface": "Yes, I said it's over there.",
+      "speaker_column": "Learner",
+      "speaker_column_usable": false
+    },
+    {
+      "row": "g215",
+      "scene": 21,
+      "surface": "What is that?",
+      "speaker_column": "Learner",
+      "speaker_column_usable": false
+    },
+    {
+      "row": "g216",
+      "scene": 21,
+      "surface": "What is that over there?",
+      "speaker_column": "Learner",
+      "speaker_column_usable": false
+    },
+    {
+      "row": "g217",
+      "scene": 21,
+      "surface": "Would you like to order some drinks?",
+      "speaker_column": "Learner",
+      "speaker_column_usable": false
+    },
+    {
+      "row": "g218",
+      "scene": 21,
+      "surface": "Do you want to order some drinks first?",
+      "speaker_column": "Learner",
+      "speaker_column_usable": false
+    },
+    {
+      "row": "g219",
+      "scene": 21,
+      "surface": "Did you want something to drink first?",
+      "speaker_column": "Learner",
+      "speaker_column_usable": false
+    }
+  ],
+  "codas": [
+    {
+      "row": "g37",
+      "scene": 6,
+      "surface": "1. 2. 3. White. Black.",
+      "role": "scene-exit vocabulary drip",
+      "admits": "vocabulary only",
+      "is_move": false,
+      "prompt_target": false
+    },
+    {
+      "row": "g52",
+      "scene": 7,
+      "surface": "5. 10. 15. Red. Green.",
+      "role": "scene-exit vocabulary drip",
+      "admits": "vocabulary only",
+      "is_move": false,
+      "prompt_target": false
+    },
+    {
+      "row": "g68",
+      "scene": 8,
+      "surface": "4. 6. 8. Blue. Yellow.",
+      "role": "scene-exit vocabulary drip",
+      "admits": "vocabulary only",
+      "is_move": false,
+      "prompt_target": false
+    },
+    {
+      "row": "g86",
+      "scene": 9,
+      "surface": "7. 9. 11. Orange. Purple.",
+      "role": "scene-exit vocabulary drip",
+      "admits": "vocabulary only",
+      "is_move": false,
+      "prompt_target": false
+    },
+    {
+      "row": "g96",
+      "scene": 10,
+      "surface": "12. 13. 14. Pink. Grey.",
+      "role": "scene-exit vocabulary drip",
+      "admits": "vocabulary only",
+      "is_move": false,
+      "prompt_target": false
+    },
+    {
+      "row": "g109",
+      "scene": 11,
+      "surface": "16. 17. 18. Monday. Tuesday.",
+      "role": "scene-exit vocabulary drip",
+      "admits": "vocabulary only",
+      "is_move": false,
+      "prompt_target": false
+    },
+    {
+      "row": "g119",
+      "scene": 12,
+      "surface": "19. 20. 21. Wednesday. Thursday.",
+      "role": "scene-exit vocabulary drip",
+      "admits": "vocabulary only",
+      "is_move": false,
+      "prompt_target": false
+    },
+    {
+      "row": "g130",
+      "scene": 13,
+      "surface": "30. 40. 50. Friday. Saturday.",
+      "role": "scene-exit vocabulary drip",
+      "admits": "vocabulary only",
+      "is_move": false,
+      "prompt_target": false
+    },
+    {
+      "row": "g140",
+      "scene": 14,
+      "surface": "100. 200. 1000. Sunday. 12 o'clock.",
+      "role": "scene-exit vocabulary drip",
+      "admits": "vocabulary only",
+      "is_move": false,
+      "prompt_target": false
+    },
+    {
+      "row": "g151",
+      "scene": 15,
+      "surface": "100,000. 60. 70. 1 o'clock. 11 o'clock.",
+      "role": "scene-exit vocabulary drip",
+      "admits": "vocabulary only",
+      "is_move": false,
+      "prompt_target": false
+    },
+    {
+      "row": "g162",
+      "scene": 16,
+      "surface": "A million. 80. 90. 2 o'clock. 10 o'clock.",
+      "role": "scene-exit vocabulary drip",
+      "admits": "vocabulary only",
+      "is_move": false,
+      "prompt_target": false
+    },
+    {
+      "row": "g173",
+      "scene": 17,
+      "surface": "3 o'clock. 9 o'clock. January. February.",
+      "role": "scene-exit vocabulary drip",
+      "admits": "vocabulary only",
+      "is_move": false,
+      "prompt_target": false
+    },
+    {
+      "row": "g184",
+      "scene": 18,
+      "surface": "4 o'clock. 8 o'clock. March. April.",
+      "role": "scene-exit vocabulary drip",
+      "admits": "vocabulary only",
+      "is_move": false,
+      "prompt_target": false
+    },
+    {
+      "row": "g195",
+      "scene": 19,
+      "surface": "5 o'clock. 7 o'clock. May. June.",
+      "role": "scene-exit vocabulary drip",
+      "admits": "vocabulary only",
+      "is_move": false,
+      "prompt_target": false
+    },
+    {
+      "row": "g206",
+      "scene": 20,
+      "surface": "6 o'clock. July. August. September.",
+      "role": "scene-exit vocabulary drip",
+      "admits": "vocabulary only",
+      "is_move": false,
+      "prompt_target": false
+    },
+    {
+      "row": "g220",
+      "scene": 21,
+      "surface": "October. November. December.",
+      "role": "scene-exit vocabulary drip",
+      "admits": "vocabulary only",
+      "is_move": false,
+      "prompt_target": false
+    }
+  ],
+  "alternatives": [
+    {
+      "row": "g7",
+      "kind": "surface",
+      "of": "g8",
+      "walk": "W3"
+    },
+    {
+      "row": "g12",
+      "kind": "surface",
+      "of": "g14",
+      "walk": "W1"
+    },
+    {
+      "row": "g13",
+      "kind": "surface",
+      "of": "g14",
+      "walk": "W1"
+    },
+    {
+      "row": "g15",
+      "kind": "outcome",
+      "of": "g16",
+      "walk": "W1",
+      "note": "The corpus’s single stored alternative OUTCOME."
+    }
+  ]
+}
