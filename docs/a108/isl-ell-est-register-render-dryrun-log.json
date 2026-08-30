@@ -1,0 +1,2786 @@
+{
+  "job": "A-108 isl/ell/est register+gender render",
+  "date": "2026-08-14",
+  "mode": "dry",
+  "parked": [
+    {
+      "clip_id": "c3b0f183-eb2c-431c-a19e-f827846394ef",
+      "course": "isl_for_eng",
+      "rule": "gender",
+      "why": "speaker Friend is cast Gunnar (is-IS-GunnarNeural, male); self-reference takes masculine upptekinn",
+      "before": "Nei, fyrirgefðu, ég er upptekin á morgun. En við getum talað á laugardaginn. Sjáumst þá.",
+      "after": "Nei, fyrirgefðu, ég er upptekinn á morgun. En við getum talað á laugardaginn. Sjáumst þá.",
+      "s3_key": "mastered/5C5382C1-5C72-4551-8FE1-1D2053DCD95F.mp3",
+      "voice_id": "is-IS-GunnarNeural",
+      "duration_ms": 7368,
+      "file_size_bytes": null,
+      "audio_revision": 1,
+      "role": "target1",
+      "language": "isl",
+      "audio_text": "Nei, fyrirgefðu, ég er upptekin á morgun. En við getum talað á laugardaginn. Sjáumst þá.",
+      "rows": [
+        {
+          "id": "isl_for_eng:pod-0:SC04-S003",
+          "pod": "pod-0",
+          "scene": 4,
+          "sentence": 3,
+          "speaker": "Friend",
+          "speakers": {
+            "Anna": {
+              "known": {
+                "name": "Olivia",
+                "locale": "en",
+                "provider": "xai",
+                "voice_id": "bedd6226"
+              },
+              "gender": "f",
+              "target": {
+                "name": "Guðrún",
+                "locale": "is-IS",
+                "provider": "azure",
+                "voice_id": "is-IS-GudrunNeural"
+              },
+              "variants": [
+                "Anna"
+              ]
+            },
+            "Guest": {
+              "known": {
+                "name": "Tom",
+                "locale": "en",
+                "provider": "xai",
+                "voice_id": "gfzdpspr5fdp"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Gunnar",
+                "locale": "is-IS",
+                "provider": "azure",
+                "voice_id": "is-IS-GunnarNeural"
+              },
+              "variants": [
+                "Guest"
+              ]
+            },
+            "James": {
+              "known": {
+                "name": "Tom",
+                "locale": "en",
+                "provider": "xai",
+                "voice_id": "gfzdpspr5fdp"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Gunnar",
+                "locale": "is-IS",
+                "provider": "azure",
+                "voice_id": "is-IS-GunnarNeural"
+              },
+              "variants": [
+                "James"
+              ]
+            },
+            "Local": {
+              "known": {
+                "name": "Tom",
+                "locale": "en",
+                "provider": "xai",
+                "voice_id": "gfzdpspr5fdp"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Gunnar",
+                "locale": "is-IS",
+                "provider": "azure",
+                "voice_id": "is-IS-GunnarNeural"
+              },
+              "variants": [
+                "Local"
+              ]
+            },
+            "Sarah": {
+              "known": {
+                "name": "Olivia",
+                "locale": "en",
+                "provider": "xai",
+                "voice_id": "bedd6226"
+              },
+              "gender": "f",
+              "target": {
+                "name": "Guðrún",
+                "locale": "is-IS",
+                "provider": "azure",
+                "voice_id": "is-IS-GudrunNeural"
+              },
+              "variants": [
+                "Sarah"
+              ]
+            },
+            "Driver": {
+              "known": {
+                "name": "Tom",
+                "locale": "en",
+                "provider": "xai",
+                "voice_id": "gfzdpspr5fdp"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Gunnar",
+                "locale": "is-IS",
+                "provider": "azure",
+                "voice_id": "is-IS-GunnarNeural"
+              },
+              "variants": [
+                "Driver"
+              ]
+            },
+            "Friend": {
+              "known": {
+                "name": "Tom",
+                "locale": "en",
+                "provider": "xai",
+                "voice_id": "gfzdpspr5fdp"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Gunnar",
+                "locale": "is-IS",
+                "provider": "azure",
+                "voice_id": "is-IS-GunnarNeural"
+              },
+              "variants": [
+                "Friend (7 pm)",
+                "Friend"
+              ]
+            },
+            "Waiter": {
+              "known": {
+                "name": "Tom",
+                "locale": "en",
+                "provider": "xai",
+                "voice_id": "gfzdpspr5fdp"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Gunnar",
+                "locale": "is-IS",
+                "provider": "azure",
+                "voice_id": "is-IS-GunnarNeural"
+              },
+              "variants": [
+                "Waiter"
+              ]
+            },
+            "Barista": {
+              "known": {
+                "name": "Olivia",
+                "locale": "en",
+                "provider": "xai",
+                "voice_id": "bedd6226"
+              },
+              "gender": "f",
+              "target": {
+                "name": "Guðrún",
+                "locale": "is-IS",
+                "provider": "azure",
+                "voice_id": "is-IS-GudrunNeural"
+              },
+              "variants": [
+                "Barista (3 pm)",
+                "Barista"
+              ]
+            },
+            "Learner": {
+              "known": {
+                "name": "Olivia",
+                "locale": "en",
+                "provider": "xai",
+                "voice_id": "bedd6226"
+              },
+              "gender": "f",
+              "target": {
+                "name": "Guðrún",
+                "locale": "is-IS",
+                "provider": "azure",
+                "voice_id": "is-IS-GudrunNeural"
+              },
+              "variants": [
+                "Learner"
+              ]
+            },
+            "Tourist": {
+              "known": {
+                "name": "Tom",
+                "locale": "en",
+                "provider": "xai",
+                "voice_id": "gfzdpspr5fdp"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Gunnar",
+                "locale": "is-IS",
+                "provider": "azure",
+                "voice_id": "is-IS-GunnarNeural"
+              },
+              "variants": [
+                "Tourist"
+              ]
+            },
+            "Customer": {
+              "known": {
+                "name": "Tom",
+                "locale": "en",
+                "provider": "xai",
+                "voice_id": "gfzdpspr5fdp"
+              },
+              "gender": "n",
+              "target": {
+                "name": "Guðrún",
+                "locale": "is-IS",
+                "provider": "azure",
+                "voice_id": "is-IS-GudrunNeural"
+              },
+              "variants": [
+                "Customer"
+              ]
+            },
+            "Narrator": {
+              "known": {
+                "name": "Tom",
+                "locale": "en",
+                "provider": "xai",
+                "voice_id": "gfzdpspr5fdp"
+              },
+              "gender": "n",
+              "target": {
+                "name": "Gunnar",
+                "locale": "is-IS",
+                "provider": "azure",
+                "voice_id": "is-IS-GunnarNeural"
+              },
+              "variants": [
+                "Narrator"
+              ]
+            },
+            "_default": {
+              "known": {
+                "name": "Tom",
+                "locale": "en",
+                "provider": "xai",
+                "voice_id": "gfzdpspr5fdp"
+              },
+              "gender": "n",
+              "target": {
+                "name": "Gunnar",
+                "locale": "is-IS",
+                "provider": "azure",
+                "voice_id": "is-IS-GunnarNeural"
+              }
+            },
+            "Assistant": {
+              "known": {
+                "name": "Tom",
+                "locale": "en",
+                "provider": "xai",
+                "voice_id": "gfzdpspr5fdp"
+              },
+              "gender": "n",
+              "target": {
+                "name": "Gunnar",
+                "locale": "is-IS",
+                "provider": "azure",
+                "voice_id": "is-IS-GunnarNeural"
+              },
+              "variants": [
+                "Assistant"
+              ]
+            },
+            "Bartender": {
+              "known": {
+                "name": "Tom",
+                "locale": "en",
+                "provider": "xai",
+                "voice_id": "gfzdpspr5fdp"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Gunnar",
+                "locale": "is-IS",
+                "provider": "azure",
+                "voice_id": "is-IS-GunnarNeural"
+              },
+              "variants": [
+                "Bartender"
+              ]
+            },
+            "Neighbour": {
+              "known": {
+                "name": "Tom",
+                "locale": "en",
+                "provider": "xai",
+                "voice_id": "gfzdpspr5fdp"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Gunnar",
+                "locale": "is-IS",
+                "provider": "azure",
+                "voice_id": "is-IS-GunnarNeural"
+              },
+              "variants": [
+                "Neighbour (8 am)",
+                "Neighbour",
+                "Neighbour (10:30 pm)"
+              ]
+            },
+            "Passenger": {
+              "known": {
+                "name": "Tom",
+                "locale": "en",
+                "provider": "xai",
+                "voice_id": "gfzdpspr5fdp"
+              },
+              "gender": "n",
+              "target": {
+                "name": "Gunnar",
+                "locale": "is-IS",
+                "provider": "azure",
+                "voice_id": "is-IS-GunnarNeural"
+              },
+              "variants": [
+                "Passenger"
+              ]
+            },
+            "Customer 1": {
+              "known": {
+                "name": "Tom",
+                "locale": "en",
+                "provider": "xai",
+                "voice_id": "gfzdpspr5fdp"
+              },
+              "gender": "n",
+              "target": {
+                "name": "Guðrún",
+                "locale": "is-IS",
+                "provider": "azure",
+                "voice_id": "is-IS-GudrunNeural"
+              },
+              "variants": [
+                "Customer 1"
+              ]
+            },
+            "Customer 2": {
+              "known": {
+                "name": "Tom",
+                "locale": "en",
+                "provider": "xai",
+                "voice_id": "gfzdpspr5fdp"
+              },
+              "gender": "n",
+              "target": {
+                "name": "Guðrún",
+                "locale": "is-IS",
+                "provider": "azure",
+                "voice_id": "is-IS-GudrunNeural"
+              },
+              "variants": [
+                "Customer 2"
+              ]
+            },
+            "Customer 3": {
+              "known": {
+                "name": "Tom",
+                "locale": "en",
+                "provider": "xai",
+                "voice_id": "gfzdpspr5fdp"
+              },
+              "gender": "n",
+              "target": {
+                "name": "Guðrún",
+                "locale": "is-IS",
+                "provider": "azure",
+                "voice_id": "is-IS-GudrunNeural"
+              },
+              "variants": [
+                "Customer 3"
+              ]
+            },
+            "Pharmacist": {
+              "known": {
+                "name": "Tom",
+                "locale": "en",
+                "provider": "xai",
+                "voice_id": "gfzdpspr5fdp"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Gunnar",
+                "locale": "is-IS",
+                "provider": "azure",
+                "voice_id": "is-IS-GunnarNeural"
+              },
+              "variants": [
+                "Pharmacist"
+              ]
+            },
+            "Receptionist": {
+              "known": {
+                "name": "Olivia",
+                "locale": "en",
+                "provider": "xai",
+                "voice_id": "bedd6226"
+              },
+              "gender": "f",
+              "target": {
+                "name": "Guðrún",
+                "locale": "is-IS",
+                "provider": "azure",
+                "voice_id": "is-IS-GudrunNeural"
+              },
+              "variants": [
+                "Receptionist"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "clip_id": "c0521de0-fc02-43e0-b366-188760598ad8",
+      "course": "isl_for_eng",
+      "rule": "gender",
+      "why": "second-person reference: addressee is the Learner, cast Guðrún (female)",
+      "before": "Ég held að þú sért að gera þetta mjög vel. Ég er hrifinn. Ég held að þú sért tilbúinn að byrja að tala Íslensku við alla sem tala Íslensku.",
+      "after": "Ég held að þú sért að gera þetta mjög vel. Ég er hrifinn. Ég held að þú sért tilbúin að byrja að tala Íslensku við alla sem tala Íslensku.",
+      "s3_key": "mastered/09130C22-B9D4-47A6-B94A-867F0FB5F0B4.mp3",
+      "voice_id": "is-IS-GunnarNeural",
+      "duration_ms": 9312,
+      "file_size_bytes": null,
+      "audio_revision": 1,
+      "role": "target1",
+      "language": "isl",
+      "audio_text": "Ég held að þú sért að gera þetta mjög vel. Ég er hrifinn. Ég held að þú sért tilbúinn að byrja að tala Íslensku við alla sem tala Íslensku.",
+      "rows": [
+        {
+          "id": "isl_for_eng:pod-0:SC15-S006",
+          "pod": "pod-0",
+          "scene": 15,
+          "sentence": 6,
+          "speaker": "Friend",
+          "speakers": {
+            "Anna": {
+              "known": {
+                "name": "Olivia",
+                "locale": "en",
+                "provider": "xai",
+                "voice_id": "bedd6226"
+              },
+              "gender": "f",
+              "target": {
+                "name": "Guðrún",
+                "locale": "is-IS",
+                "provider": "azure",
+                "voice_id": "is-IS-GudrunNeural"
+              },
+              "variants": [
+                "Anna"
+              ]
+            },
+            "Guest": {
+              "known": {
+                "name": "Tom",
+                "locale": "en",
+                "provider": "xai",
+                "voice_id": "gfzdpspr5fdp"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Gunnar",
+                "locale": "is-IS",
+                "provider": "azure",
+                "voice_id": "is-IS-GunnarNeural"
+              },
+              "variants": [
+                "Guest"
+              ]
+            },
+            "James": {
+              "known": {
+                "name": "Tom",
+                "locale": "en",
+                "provider": "xai",
+                "voice_id": "gfzdpspr5fdp"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Gunnar",
+                "locale": "is-IS",
+                "provider": "azure",
+                "voice_id": "is-IS-GunnarNeural"
+              },
+              "variants": [
+                "James"
+              ]
+            },
+            "Local": {
+              "known": {
+                "name": "Tom",
+                "locale": "en",
+                "provider": "xai",
+                "voice_id": "gfzdpspr5fdp"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Gunnar",
+                "locale": "is-IS",
+                "provider": "azure",
+                "voice_id": "is-IS-GunnarNeural"
+              },
+              "variants": [
+                "Local"
+              ]
+            },
+            "Sarah": {
+              "known": {
+                "name": "Olivia",
+                "locale": "en",
+                "provider": "xai",
+                "voice_id": "bedd6226"
+              },
+              "gender": "f",
+              "target": {
+                "name": "Guðrún",
+                "locale": "is-IS",
+                "provider": "azure",
+                "voice_id": "is-IS-GudrunNeural"
+              },
+              "variants": [
+                "Sarah"
+              ]
+            },
+            "Driver": {
+              "known": {
+                "name": "Tom",
+                "locale": "en",
+                "provider": "xai",
+                "voice_id": "gfzdpspr5fdp"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Gunnar",
+                "locale": "is-IS",
+                "provider": "azure",
+                "voice_id": "is-IS-GunnarNeural"
+              },
+              "variants": [
+                "Driver"
+              ]
+            },
+            "Friend": {
+              "known": {
+                "name": "Tom",
+                "locale": "en",
+                "provider": "xai",
+                "voice_id": "gfzdpspr5fdp"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Gunnar",
+                "locale": "is-IS",
+                "provider": "azure",
+                "voice_id": "is-IS-GunnarNeural"
+              },
+              "variants": [
+                "Friend (7 pm)",
+                "Friend"
+              ]
+            },
+            "Waiter": {
+              "known": {
+                "name": "Tom",
+                "locale": "en",
+                "provider": "xai",
+                "voice_id": "gfzdpspr5fdp"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Gunnar",
+                "locale": "is-IS",
+                "provider": "azure",
+                "voice_id": "is-IS-GunnarNeural"
+              },
+              "variants": [
+                "Waiter"
+              ]
+            },
+            "Barista": {
+              "known": {
+                "name": "Olivia",
+                "locale": "en",
+                "provider": "xai",
+                "voice_id": "bedd6226"
+              },
+              "gender": "f",
+              "target": {
+                "name": "Guðrún",
+                "locale": "is-IS",
+                "provider": "azure",
+                "voice_id": "is-IS-GudrunNeural"
+              },
+              "variants": [
+                "Barista (3 pm)",
+                "Barista"
+              ]
+            },
+            "Learner": {
+              "known": {
+                "name": "Olivia",
+                "locale": "en",
+                "provider": "xai",
+                "voice_id": "bedd6226"
+              },
+              "gender": "f",
+              "target": {
+                "name": "Guðrún",
+                "locale": "is-IS",
+                "provider": "azure",
+                "voice_id": "is-IS-GudrunNeural"
+              },
+              "variants": [
+                "Learner"
+              ]
+            },
+            "Tourist": {
+              "known": {
+                "name": "Tom",
+                "locale": "en",
+                "provider": "xai",
+                "voice_id": "gfzdpspr5fdp"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Gunnar",
+                "locale": "is-IS",
+                "provider": "azure",
+                "voice_id": "is-IS-GunnarNeural"
+              },
+              "variants": [
+                "Tourist"
+              ]
+            },
+            "Customer": {
+              "known": {
+                "name": "Tom",
+                "locale": "en",
+                "provider": "xai",
+                "voice_id": "gfzdpspr5fdp"
+              },
+              "gender": "n",
+              "target": {
+                "name": "Guðrún",
+                "locale": "is-IS",
+                "provider": "azure",
+                "voice_id": "is-IS-GudrunNeural"
+              },
+              "variants": [
+                "Customer"
+              ]
+            },
+            "Narrator": {
+              "known": {
+                "name": "Tom",
+                "locale": "en",
+                "provider": "xai",
+                "voice_id": "gfzdpspr5fdp"
+              },
+              "gender": "n",
+              "target": {
+                "name": "Gunnar",
+                "locale": "is-IS",
+                "provider": "azure",
+                "voice_id": "is-IS-GunnarNeural"
+              },
+              "variants": [
+                "Narrator"
+              ]
+            },
+            "_default": {
+              "known": {
+                "name": "Tom",
+                "locale": "en",
+                "provider": "xai",
+                "voice_id": "gfzdpspr5fdp"
+              },
+              "gender": "n",
+              "target": {
+                "name": "Gunnar",
+                "locale": "is-IS",
+                "provider": "azure",
+                "voice_id": "is-IS-GunnarNeural"
+              }
+            },
+            "Assistant": {
+              "known": {
+                "name": "Tom",
+                "locale": "en",
+                "provider": "xai",
+                "voice_id": "gfzdpspr5fdp"
+              },
+              "gender": "n",
+              "target": {
+                "name": "Gunnar",
+                "locale": "is-IS",
+                "provider": "azure",
+                "voice_id": "is-IS-GunnarNeural"
+              },
+              "variants": [
+                "Assistant"
+              ]
+            },
+            "Bartender": {
+              "known": {
+                "name": "Tom",
+                "locale": "en",
+                "provider": "xai",
+                "voice_id": "gfzdpspr5fdp"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Gunnar",
+                "locale": "is-IS",
+                "provider": "azure",
+                "voice_id": "is-IS-GunnarNeural"
+              },
+              "variants": [
+                "Bartender"
+              ]
+            },
+            "Neighbour": {
+              "known": {
+                "name": "Tom",
+                "locale": "en",
+                "provider": "xai",
+                "voice_id": "gfzdpspr5fdp"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Gunnar",
+                "locale": "is-IS",
+                "provider": "azure",
+                "voice_id": "is-IS-GunnarNeural"
+              },
+              "variants": [
+                "Neighbour (8 am)",
+                "Neighbour",
+                "Neighbour (10:30 pm)"
+              ]
+            },
+            "Passenger": {
+              "known": {
+                "name": "Tom",
+                "locale": "en",
+                "provider": "xai",
+                "voice_id": "gfzdpspr5fdp"
+              },
+              "gender": "n",
+              "target": {
+                "name": "Gunnar",
+                "locale": "is-IS",
+                "provider": "azure",
+                "voice_id": "is-IS-GunnarNeural"
+              },
+              "variants": [
+                "Passenger"
+              ]
+            },
+            "Customer 1": {
+              "known": {
+                "name": "Tom",
+                "locale": "en",
+                "provider": "xai",
+                "voice_id": "gfzdpspr5fdp"
+              },
+              "gender": "n",
+              "target": {
+                "name": "Guðrún",
+                "locale": "is-IS",
+                "provider": "azure",
+                "voice_id": "is-IS-GudrunNeural"
+              },
+              "variants": [
+                "Customer 1"
+              ]
+            },
+            "Customer 2": {
+              "known": {
+                "name": "Tom",
+                "locale": "en",
+                "provider": "xai",
+                "voice_id": "gfzdpspr5fdp"
+              },
+              "gender": "n",
+              "target": {
+                "name": "Guðrún",
+                "locale": "is-IS",
+                "provider": "azure",
+                "voice_id": "is-IS-GudrunNeural"
+              },
+              "variants": [
+                "Customer 2"
+              ]
+            },
+            "Customer 3": {
+              "known": {
+                "name": "Tom",
+                "locale": "en",
+                "provider": "xai",
+                "voice_id": "gfzdpspr5fdp"
+              },
+              "gender": "n",
+              "target": {
+                "name": "Guðrún",
+                "locale": "is-IS",
+                "provider": "azure",
+                "voice_id": "is-IS-GudrunNeural"
+              },
+              "variants": [
+                "Customer 3"
+              ]
+            },
+            "Pharmacist": {
+              "known": {
+                "name": "Tom",
+                "locale": "en",
+                "provider": "xai",
+                "voice_id": "gfzdpspr5fdp"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Gunnar",
+                "locale": "is-IS",
+                "provider": "azure",
+                "voice_id": "is-IS-GunnarNeural"
+              },
+              "variants": [
+                "Pharmacist"
+              ]
+            },
+            "Receptionist": {
+              "known": {
+                "name": "Olivia",
+                "locale": "en",
+                "provider": "xai",
+                "voice_id": "bedd6226"
+              },
+              "gender": "f",
+              "target": {
+                "name": "Guðrún",
+                "locale": "is-IS",
+                "provider": "azure",
+                "voice_id": "is-IS-GudrunNeural"
+              },
+              "variants": [
+                "Receptionist"
+              ]
+            }
+          }
+        },
+        {
+          "id": "isl_for_eng:pod-0-unrecorded:SC22-S006",
+          "pod": "pod-0-unrecorded",
+          "scene": 22,
+          "sentence": 6,
+          "speaker": "Friend",
+          "speakers": {
+            "Anna": {
+              "known": {
+                "name": "Olivia",
+                "locale": "en",
+                "provider": "xai",
+                "voice_id": "bedd6226"
+              },
+              "gender": "f",
+              "target": {
+                "name": "Guðrún",
+                "locale": "is-IS",
+                "provider": "azure",
+                "voice_id": "is-IS-GudrunNeural"
+              },
+              "variants": [
+                "Anna"
+              ]
+            },
+            "Guest": {
+              "known": {
+                "name": "Tom",
+                "locale": "en",
+                "provider": "xai",
+                "voice_id": "gfzdpspr5fdp"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Gunnar",
+                "locale": "is-IS",
+                "provider": "azure",
+                "voice_id": "is-IS-GunnarNeural"
+              },
+              "variants": [
+                "Guest"
+              ]
+            },
+            "James": {
+              "known": {
+                "name": "Tom",
+                "locale": "en",
+                "provider": "xai",
+                "voice_id": "gfzdpspr5fdp"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Gunnar",
+                "locale": "is-IS",
+                "provider": "azure",
+                "voice_id": "is-IS-GunnarNeural"
+              },
+              "variants": [
+                "James"
+              ]
+            },
+            "Local": {
+              "known": {
+                "name": "Tom",
+                "locale": "en",
+                "provider": "xai",
+                "voice_id": "gfzdpspr5fdp"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Gunnar",
+                "locale": "is-IS",
+                "provider": "azure",
+                "voice_id": "is-IS-GunnarNeural"
+              },
+              "variants": [
+                "Local"
+              ]
+            },
+            "Sarah": {
+              "known": {
+                "name": "Olivia",
+                "locale": "en",
+                "provider": "xai",
+                "voice_id": "bedd6226"
+              },
+              "gender": "f",
+              "target": {
+                "name": "Guðrún",
+                "locale": "is-IS",
+                "provider": "azure",
+                "voice_id": "is-IS-GudrunNeural"
+              },
+              "variants": [
+                "Sarah"
+              ]
+            },
+            "Driver": {
+              "known": {
+                "name": "Tom",
+                "locale": "en",
+                "provider": "xai",
+                "voice_id": "gfzdpspr5fdp"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Gunnar",
+                "locale": "is-IS",
+                "provider": "azure",
+                "voice_id": "is-IS-GunnarNeural"
+              },
+              "variants": [
+                "Driver"
+              ]
+            },
+            "Friend": {
+              "known": {
+                "name": "Tom",
+                "locale": "en",
+                "provider": "xai",
+                "voice_id": "gfzdpspr5fdp"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Gunnar",
+                "locale": "is-IS",
+                "provider": "azure",
+                "voice_id": "is-IS-GunnarNeural"
+              },
+              "variants": [
+                "Friend (7 pm)",
+                "Friend"
+              ]
+            },
+            "Waiter": {
+              "known": {
+                "name": "Tom",
+                "locale": "en",
+                "provider": "xai",
+                "voice_id": "gfzdpspr5fdp"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Gunnar",
+                "locale": "is-IS",
+                "provider": "azure",
+                "voice_id": "is-IS-GunnarNeural"
+              },
+              "variants": [
+                "Waiter"
+              ]
+            },
+            "Barista": {
+              "known": {
+                "name": "Olivia",
+                "locale": "en",
+                "provider": "xai",
+                "voice_id": "bedd6226"
+              },
+              "gender": "f",
+              "target": {
+                "name": "Guðrún",
+                "locale": "is-IS",
+                "provider": "azure",
+                "voice_id": "is-IS-GudrunNeural"
+              },
+              "variants": [
+                "Barista (3 pm)",
+                "Barista"
+              ]
+            },
+            "Learner": {
+              "known": {
+                "name": "Olivia",
+                "locale": "en",
+                "provider": "xai",
+                "voice_id": "bedd6226"
+              },
+              "gender": "f",
+              "target": {
+                "name": "Guðrún",
+                "locale": "is-IS",
+                "provider": "azure",
+                "voice_id": "is-IS-GudrunNeural"
+              },
+              "variants": [
+                "Learner"
+              ]
+            },
+            "Tourist": {
+              "known": {
+                "name": "Tom",
+                "locale": "en",
+                "provider": "xai",
+                "voice_id": "gfzdpspr5fdp"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Gunnar",
+                "locale": "is-IS",
+                "provider": "azure",
+                "voice_id": "is-IS-GunnarNeural"
+              },
+              "variants": [
+                "Tourist"
+              ]
+            },
+            "Customer": {
+              "known": {
+                "name": "Tom",
+                "locale": "en",
+                "provider": "xai",
+                "voice_id": "gfzdpspr5fdp"
+              },
+              "gender": "n",
+              "target": {
+                "name": "Guðrún",
+                "locale": "is-IS",
+                "provider": "azure",
+                "voice_id": "is-IS-GudrunNeural"
+              },
+              "variants": [
+                "Customer"
+              ]
+            },
+            "Narrator": {
+              "known": {
+                "name": "Tom",
+                "locale": "en",
+                "provider": "xai",
+                "voice_id": "gfzdpspr5fdp"
+              },
+              "gender": "n",
+              "target": {
+                "name": "Gunnar",
+                "locale": "is-IS",
+                "provider": "azure",
+                "voice_id": "is-IS-GunnarNeural"
+              },
+              "variants": [
+                "Narrator"
+              ]
+            },
+            "_default": {
+              "known": {
+                "name": "Tom",
+                "locale": "en",
+                "provider": "xai",
+                "voice_id": "gfzdpspr5fdp"
+              },
+              "gender": "n",
+              "target": {
+                "name": "Gunnar",
+                "locale": "is-IS",
+                "provider": "azure",
+                "voice_id": "is-IS-GunnarNeural"
+              }
+            },
+            "Assistant": {
+              "known": {
+                "name": "Tom",
+                "locale": "en",
+                "provider": "xai",
+                "voice_id": "gfzdpspr5fdp"
+              },
+              "gender": "n",
+              "target": {
+                "name": "Gunnar",
+                "locale": "is-IS",
+                "provider": "azure",
+                "voice_id": "is-IS-GunnarNeural"
+              },
+              "variants": [
+                "Assistant"
+              ]
+            },
+            "Bartender": {
+              "known": {
+                "name": "Tom",
+                "locale": "en",
+                "provider": "xai",
+                "voice_id": "gfzdpspr5fdp"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Gunnar",
+                "locale": "is-IS",
+                "provider": "azure",
+                "voice_id": "is-IS-GunnarNeural"
+              },
+              "variants": [
+                "Bartender"
+              ]
+            },
+            "Neighbour": {
+              "known": {
+                "name": "Tom",
+                "locale": "en",
+                "provider": "xai",
+                "voice_id": "gfzdpspr5fdp"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Gunnar",
+                "locale": "is-IS",
+                "provider": "azure",
+                "voice_id": "is-IS-GunnarNeural"
+              },
+              "variants": [
+                "Neighbour (8 am)",
+                "Neighbour",
+                "Neighbour (10:30 pm)"
+              ]
+            },
+            "Passenger": {
+              "known": {
+                "name": "Tom",
+                "locale": "en",
+                "provider": "xai",
+                "voice_id": "gfzdpspr5fdp"
+              },
+              "gender": "n",
+              "target": {
+                "name": "Gunnar",
+                "locale": "is-IS",
+                "provider": "azure",
+                "voice_id": "is-IS-GunnarNeural"
+              },
+              "variants": [
+                "Passenger"
+              ]
+            },
+            "Customer 1": {
+              "known": {
+                "name": "Tom",
+                "locale": "en",
+                "provider": "xai",
+                "voice_id": "gfzdpspr5fdp"
+              },
+              "gender": "n",
+              "target": {
+                "name": "Guðrún",
+                "locale": "is-IS",
+                "provider": "azure",
+                "voice_id": "is-IS-GudrunNeural"
+              },
+              "variants": [
+                "Customer 1"
+              ]
+            },
+            "Customer 2": {
+              "known": {
+                "name": "Tom",
+                "locale": "en",
+                "provider": "xai",
+                "voice_id": "gfzdpspr5fdp"
+              },
+              "gender": "n",
+              "target": {
+                "name": "Guðrún",
+                "locale": "is-IS",
+                "provider": "azure",
+                "voice_id": "is-IS-GudrunNeural"
+              },
+              "variants": [
+                "Customer 2"
+              ]
+            },
+            "Customer 3": {
+              "known": {
+                "name": "Tom",
+                "locale": "en",
+                "provider": "xai",
+                "voice_id": "gfzdpspr5fdp"
+              },
+              "gender": "n",
+              "target": {
+                "name": "Guðrún",
+                "locale": "is-IS",
+                "provider": "azure",
+                "voice_id": "is-IS-GudrunNeural"
+              },
+              "variants": [
+                "Customer 3"
+              ]
+            },
+            "Pharmacist": {
+              "known": {
+                "name": "Tom",
+                "locale": "en",
+                "provider": "xai",
+                "voice_id": "gfzdpspr5fdp"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Gunnar",
+                "locale": "is-IS",
+                "provider": "azure",
+                "voice_id": "is-IS-GunnarNeural"
+              },
+              "variants": [
+                "Pharmacist"
+              ]
+            },
+            "Receptionist": {
+              "known": {
+                "name": "Olivia",
+                "locale": "en",
+                "provider": "xai",
+                "voice_id": "bedd6226"
+              },
+              "gender": "f",
+              "target": {
+                "name": "Guðrún",
+                "locale": "is-IS",
+                "provider": "azure",
+                "voice_id": "is-IS-GudrunNeural"
+              },
+              "variants": [
+                "Receptionist"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "clips": [
+    {
+      "clip_id": "403a4a3f-8742-4b9a-9dc0-ba6eb3877228",
+      "course": "isl_for_eng",
+      "rule": "gender",
+      "why": "speaker Customer 1 is cast Guðrún (female); self-reference takes feminine svöng",
+      "before": "Ég er ekki viss hvort ég sé svangur. Eruð þið með matseðil?",
+      "after": "Ég er ekki viss hvort ég sé svöng. Eruð þið með matseðil?",
+      "s3_key": "mastered/AF2DE3E7-FF73-4A2A-91A8-44F0880A7800.mp3",
+      "voice_id": "is-IS-GudrunNeural",
+      "duration_ms": 4992,
+      "file_size_bytes": null,
+      "audio_revision": 1,
+      "role": "target1",
+      "language": "isl",
+      "audio_text": "Ég er ekki viss hvort ég sé svangur. Eruð þið með matseðil?",
+      "rows": [
+        {
+          "id": "isl_for_eng:pod-0:SC08-S012",
+          "pod": "pod-0",
+          "scene": 8,
+          "sentence": 12,
+          "speaker": "Customer 1"
+        },
+        {
+          "id": "isl_for_eng:pod-0-unrecorded:SC08-S012",
+          "pod": "pod-0-unrecorded",
+          "scene": 8,
+          "sentence": 12,
+          "speaker": "Customer 1"
+        }
+      ],
+      "voice_id_spelling_legacy": true,
+      "voice": {
+        "id": "azure_is-IS-GudrunNeural",
+        "provider": "azure",
+        "raw": "is-IS-GudrunNeural",
+        "locale": "is-IS"
+      },
+      "after_normalized": "ég er ekki viss hvort ég sé svöng. eruð þið með matseðil?",
+      "action": "dry-run, nothing rendered or written"
+    },
+    {
+      "clip_id": "1251f159-4b15-4e12-a5e9-a2743c2c52d4",
+      "course": "isl_for_eng",
+      "rule": "gender",
+      "why": "speaker Customer is cast Guðrún (female); self-reference takes feminine þakklát",
+      "before": "Takk, þú hefur verið mjög hjálplegur. Ég er mjög þakklátur.",
+      "after": "Takk, þú hefur verið mjög hjálplegur. Ég er mjög þakklát.",
+      "s3_key": "mastered/4FF91A7F-17D3-41BB-8FBD-42759253DD5B.mp3",
+      "voice_id": "azure_is-IS-GudrunNeural",
+      "duration_ms": 5040,
+      "file_size_bytes": null,
+      "audio_revision": 1,
+      "role": "target1",
+      "language": "isl",
+      "audio_text": "Takk, þú hefur verið mjög hjálplegur. Ég er mjög þakklátur.",
+      "rows": [
+        {
+          "id": "isl_for_eng:pod-0:SC10-S007",
+          "pod": "pod-0",
+          "scene": 10,
+          "sentence": 7,
+          "speaker": "Customer"
+        },
+        {
+          "id": "isl_for_eng:pod-0-unrecorded:SC10-S007",
+          "pod": "pod-0-unrecorded",
+          "scene": 10,
+          "sentence": 7,
+          "speaker": "Customer"
+        }
+      ],
+      "voice_id_spelling_legacy": false,
+      "voice": {
+        "id": "azure_is-IS-GudrunNeural",
+        "provider": "azure",
+        "raw": "is-IS-GudrunNeural",
+        "locale": "is-IS"
+      },
+      "after_normalized": "takk, þú hefur verið mjög hjálplegur. ég er mjög þakklát",
+      "action": "dry-run, nothing rendered or written"
+    },
+    {
+      "clip_id": "ec2a029e-1c44-4edc-af50-821d507a3f2f",
+      "course": "isl_for_eng",
+      "rule": "gender",
+      "why": "second-person reference: addressee is the Learner, cast Guðrún (female)",
+      "before": "Þú ættir nú þegar að vera fullur af sjálfstrausti. Ég held að þú sért að gera það miklu betur en þú gerir þér grein fyrir. Mér líður vel við að tala við þig, og ég er ekki að tala mjög hægt.",
+      "after": "Þú ættir nú þegar að vera full af sjálfstrausti. Ég held að þú sért að gera það miklu betur en þú gerir þér grein fyrir. Mér líður vel við að tala við þig, og ég er ekki að tala mjög hægt.",
+      "s3_key": "mastered/A71CB5F1-87A5-4899-A7C0-90A8465BDDF9.mp3",
+      "voice_id": "is-IS-GunnarNeural",
+      "duration_ms": 11880,
+      "file_size_bytes": null,
+      "audio_revision": 1,
+      "role": "target1",
+      "language": "isl",
+      "audio_text": "Þú ættir nú þegar að vera fullur af sjálfstrausti. Ég held að þú sért að gera það miklu betur en þú gerir þér grein fyrir. Mér líður vel við að tala við þig, og ég er ekki að tala mjög hægt.",
+      "rows": [
+        {
+          "id": "isl_for_eng:pod-0:SC15-S008",
+          "pod": "pod-0",
+          "scene": 15,
+          "sentence": 8,
+          "speaker": "Friend"
+        },
+        {
+          "id": "isl_for_eng:pod-0-unrecorded:SC22-S008",
+          "pod": "pod-0-unrecorded",
+          "scene": 22,
+          "sentence": 8,
+          "speaker": "Friend"
+        }
+      ],
+      "voice_id_spelling_legacy": true,
+      "voice": {
+        "id": "azure_is-IS-GunnarNeural",
+        "provider": "azure",
+        "raw": "is-IS-GunnarNeural",
+        "locale": "is-IS"
+      },
+      "after_normalized": "þú ættir nú þegar að vera full af sjálfstrausti. ég held að þú sért að gera það miklu betur en þú gerir þér grein fyrir. mér líður vel við að tala við þig, og ég er ekki að tala mjög hægt",
+      "action": "dry-run, nothing rendered or written"
+    },
+    {
+      "clip_id": "474cb6fb-c158-46a5-a833-cbc8ee7a63b0",
+      "course": "isl_for_eng",
+      "rule": "gender",
+      "why": "speaker Learner is cast Guðrún (female); self-reference takes feminine ánægð",
+      "before": "Það er það virkilega. Ég er mjög ánægður með að ég get átt svona mikla samræðu. Og ég vona að við getum átt fleiri samræður í framtíðinni þegar ég held áfram að batna.",
+      "after": "Það er það virkilega. Ég er mjög ánægð með að ég get átt svona mikla samræðu. Og ég vona að við getum átt fleiri samræður í framtíðinni þegar ég held áfram að batna.",
+      "s3_key": "mastered/9654504C-563C-47FB-9EF7-1A73C5CC0BCC.mp3",
+      "voice_id": "is-IS-GudrunNeural",
+      "duration_ms": 10824,
+      "file_size_bytes": null,
+      "audio_revision": 1,
+      "role": "target1",
+      "language": "isl",
+      "audio_text": "Það er það virkilega. Ég er mjög ánægður með að ég get átt svona mikla samræðu. Og ég vona að við getum átt fleiri samræður í framtíðinni þegar ég held áfram að batna.",
+      "rows": [
+        {
+          "id": "isl_for_eng:pod-0:SC15-S011",
+          "pod": "pod-0",
+          "scene": 15,
+          "sentence": 11,
+          "speaker": "Learner"
+        },
+        {
+          "id": "isl_for_eng:pod-0-unrecorded:SC22-S011",
+          "pod": "pod-0-unrecorded",
+          "scene": 22,
+          "sentence": 11,
+          "speaker": "Learner"
+        }
+      ],
+      "voice_id_spelling_legacy": true,
+      "voice": {
+        "id": "azure_is-IS-GudrunNeural",
+        "provider": "azure",
+        "raw": "is-IS-GudrunNeural",
+        "locale": "is-IS"
+      },
+      "after_normalized": "það er það virkilega. ég er mjög ánægð með að ég get átt svona mikla samræðu. og ég vona að við getum átt fleiri samræður í framtíðinni þegar ég held áfram að batna",
+      "action": "dry-run, nothing rendered or written"
+    },
+    {
+      "clip_id": "77088330-5197-4369-8f16-421de1b093b1",
+      "course": "ell_for_eng",
+      "rule": "gender",
+      "why": "speaker Learner is cast Αθηνά (el-GR-AthinaNeural, female)",
+      "before": "Θα σε πείραζε αν προσπαθούσα να εξασκηθώ στα ελληνικά μαζί σου; Δεν μαθαίνω πολύ καιρό, και ακόμα νιώθω λίγο νευρικός να μιλάω με άλλους ανθρώπους.",
+      "after": "Θα σε πείραζε αν προσπαθούσα να εξασκηθώ στα ελληνικά μαζί σου; Δεν μαθαίνω πολύ καιρό, και ακόμα νιώθω λίγο νευρική να μιλάω με άλλους ανθρώπους.",
+      "s3_key": "mastered/747C7592-1694-438F-B314-0AB14CE32B80.mp3",
+      "voice_id": "el-GR-AthinaNeural",
+      "duration_ms": 8448,
+      "file_size_bytes": null,
+      "audio_revision": 1,
+      "role": "target1",
+      "language": "ell",
+      "audio_text": "Θα σε πείραζε αν προσπαθούσα να εξασκηθώ στα ελληνικά μαζί σου; Δεν μαθαίνω πολύ καιρό, και ακόμα νιώθω λίγο νευρικός να μιλάω με άλλους ανθρώπους.",
+      "rows": [
+        {
+          "id": "ell_for_eng:pod-0:SC15-S001",
+          "pod": "pod-0",
+          "scene": 15,
+          "sentence": 1,
+          "speaker": "Learner"
+        },
+        {
+          "id": "ell_for_eng:pod-0-unrecorded:SC22-S001",
+          "pod": "pod-0-unrecorded",
+          "scene": 22,
+          "sentence": 1,
+          "speaker": "Learner"
+        }
+      ],
+      "voice_id_spelling_legacy": true,
+      "voice": {
+        "id": "azure_el-GR-AthinaNeural",
+        "provider": "azure",
+        "raw": "el-GR-AthinaNeural",
+        "locale": "el-GR"
+      },
+      "after_normalized": "θα σε πείραζε αν προσπαθούσα να εξασκηθώ στα ελληνικά μαζί σου; δεν μαθαίνω πολύ καιρό, και ακόμα νιώθω λίγο νευρική να μιλάω με άλλους ανθρώπους",
+      "action": "dry-run, nothing rendered or written"
+    },
+    {
+      "clip_id": "3f288231-184d-4a32-bd36-e772578840cf",
+      "course": "ell_for_eng",
+      "rule": "gender",
+      "why": "speaker Learner is cast Αθηνά (female)",
+      "before": "Ναι, ευχαριστώ. Είναι πιο εύκολο να μιλάω με ένα άτομο μόνο. Είναι λίγο δύσκολο να σκέφτομαι κάτι να πω, όμως. Δεν είμαι σίγουρος τι να πω, αλλά νιώθω σαν να μπορώ να μιλάω αρκετά για να αρχίσω να κάνω συνομιλίες.",
+      "after": "Ναι, ευχαριστώ. Είναι πιο εύκολο να μιλάω με ένα άτομο μόνο. Είναι λίγο δύσκολο να σκέφτομαι κάτι να πω, όμως. Δεν είμαι σίγουρη τι να πω, αλλά νιώθω σαν να μπορώ να μιλάω αρκετά για να αρχίσω να κάνω συνομιλίες.",
+      "s3_key": "mastered/A35DEA9E-6334-4094-BE8C-189D1783768A.mp3",
+      "voice_id": "el-GR-AthinaNeural",
+      "duration_ms": 13968,
+      "file_size_bytes": null,
+      "audio_revision": 1,
+      "role": "target1",
+      "language": "ell",
+      "audio_text": "Ναι, ευχαριστώ. Είναι πιο εύκολο να μιλάω με ένα άτομο μόνο. Είναι λίγο δύσκολο να σκέφτομαι κάτι να πω, όμως. Δεν είμαι σίγουρος τι να πω, αλλά νιώθω σαν να μπορώ να μιλάω αρκετά για να αρχίσω να κάνω συνομιλίες.",
+      "rows": [
+        {
+          "id": "ell_for_eng:pod-0:SC15-S005",
+          "pod": "pod-0",
+          "scene": 15,
+          "sentence": 5,
+          "speaker": "Learner"
+        },
+        {
+          "id": "ell_for_eng:pod-0-unrecorded:SC22-S005",
+          "pod": "pod-0-unrecorded",
+          "scene": 22,
+          "sentence": 5,
+          "speaker": "Learner"
+        }
+      ],
+      "voice_id_spelling_legacy": true,
+      "voice": {
+        "id": "azure_el-GR-AthinaNeural",
+        "provider": "azure",
+        "raw": "el-GR-AthinaNeural",
+        "locale": "el-GR"
+      },
+      "after_normalized": "ναι, ευχαριστώ. είναι πιο εύκολο να μιλάω με ένα άτομο μόνο. είναι λίγο δύσκολο να σκέφτομαι κάτι να πω, όμως. δεν είμαι σίγουρη τι να πω, αλλά νιώθω σαν να μπορώ να μιλάω αρκετά για να αρχίσω να κάνω συνομιλίες",
+      "action": "dry-run, nothing rendered or written"
+    },
+    {
+      "clip_id": "a922964c-252a-4290-af20-ad342dc30bcc",
+      "course": "ell_for_eng",
+      "rule": "gender",
+      "why": "second-person reference: addressee is the Learner, cast Αθηνά (female)",
+      "before": "Νομίζω ότι τα πας πολύ καλά. Εντυπωσιάζομαι. Νομίζω ότι είσαι έτοιμος να αρχίσεις να μιλάς ελληνικά με οποιονδήποτε που μιλάει ελληνικά.",
+      "after": "Νομίζω ότι τα πας πολύ καλά. Εντυπωσιάζομαι. Νομίζω ότι είσαι έτοιμη να αρχίσεις να μιλάς ελληνικά με οποιονδήποτε που μιλάει ελληνικά.",
+      "s3_key": "mastered/3137E6F0-C0EA-4231-BA7E-406956E7CF16.mp3",
+      "voice_id": "el-GR-NestorasNeural",
+      "duration_ms": 9504,
+      "file_size_bytes": null,
+      "audio_revision": 1,
+      "role": "target1",
+      "language": "ell",
+      "audio_text": "Νομίζω ότι τα πας πολύ καλά. Εντυπωσιάζομαι. Νομίζω ότι είσαι έτοιμος να αρχίσεις να μιλάς ελληνικά με οποιονδήποτε που μιλάει ελληνικά.",
+      "rows": [
+        {
+          "id": "ell_for_eng:pod-0:SC15-S006",
+          "pod": "pod-0",
+          "scene": 15,
+          "sentence": 6,
+          "speaker": "Friend"
+        },
+        {
+          "id": "ell_for_eng:pod-0-unrecorded:SC22-S006",
+          "pod": "pod-0-unrecorded",
+          "scene": 22,
+          "sentence": 6,
+          "speaker": "Friend"
+        }
+      ],
+      "voice_id_spelling_legacy": true,
+      "voice": {
+        "id": "azure_el-GR-NestorasNeural",
+        "provider": "azure",
+        "raw": "el-GR-NestorasNeural",
+        "locale": "el-GR"
+      },
+      "after_normalized": "νομίζω ότι τα πας πολύ καλά. εντυπωσιάζομαι. νομίζω ότι είσαι έτοιμη να αρχίσεις να μιλάς ελληνικά με οποιονδήποτε που μιλάει ελληνικά",
+      "action": "dry-run, nothing rendered or written"
+    },
+    {
+      "clip_id": "a75c8b21-8cf2-4cf5-9836-46e6edaeb116",
+      "course": "ell_for_eng",
+      "rule": "gender",
+      "why": "second-person reference: addressee is the Learner, cast Αθηνά (female)",
+      "before": "Θα έπρεπε να είσαι ήδη σίγουρος. Νομίζω ότι τα πας πολύ καλύτερα από ό,τι καταλαβαίνεις. Νιώθω άνετα να μιλάω μαζί σου, και δεν μιλάω πολύ αργά.",
+      "after": "Θα έπρεπε να είσαι ήδη σίγουρη. Νομίζω ότι τα πας πολύ καλύτερα από ό,τι καταλαβαίνεις. Νιώθω άνετα να μιλάω μαζί σου, και δεν μιλάω πολύ αργά.",
+      "s3_key": "mastered/43599CDB-5FFA-475A-82DA-A1B8DDEDBC6E.mp3",
+      "voice_id": "el-GR-NestorasNeural",
+      "duration_ms": 10728,
+      "file_size_bytes": null,
+      "audio_revision": 1,
+      "role": "target1",
+      "language": "ell",
+      "audio_text": "Θα έπρεπε να είσαι ήδη σίγουρος. Νομίζω ότι τα πας πολύ καλύτερα από ό,τι καταλαβαίνεις. Νιώθω άνετα να μιλάω μαζί σου, και δεν μιλάω πολύ αργά.",
+      "rows": [
+        {
+          "id": "ell_for_eng:pod-0:SC15-S008",
+          "pod": "pod-0",
+          "scene": 15,
+          "sentence": 8,
+          "speaker": "Friend"
+        },
+        {
+          "id": "ell_for_eng:pod-0-unrecorded:SC22-S008",
+          "pod": "pod-0-unrecorded",
+          "scene": 22,
+          "sentence": 8,
+          "speaker": "Friend"
+        }
+      ],
+      "voice_id_spelling_legacy": true,
+      "voice": {
+        "id": "azure_el-GR-NestorasNeural",
+        "provider": "azure",
+        "raw": "el-GR-NestorasNeural",
+        "locale": "el-GR"
+      },
+      "after_normalized": "θα έπρεπε να είσαι ήδη σίγουρη. νομίζω ότι τα πας πολύ καλύτερα από ό,τι καταλαβαίνεις. νιώθω άνετα να μιλάω μαζί σου, και δεν μιλάω πολύ αργά",
+      "action": "dry-run, nothing rendered or written"
+    },
+    {
+      "clip_id": "a2333c79-5934-4cd0-8989-6b6bb88f8a1f",
+      "course": "ell_for_eng",
+      "rule": "gender",
+      "why": "speaker Learner is cast Αθηνά (female)",
+      "before": "Πραγματικά είναι. Είμαι πολύ χαρούμενος που μπορώ να κάνω τόση συνομιλία. Και ελπίζω να μπορέσουμε να έχουμε περισσότερες συνομιλίες στο μέλλον καθώς συνεχίζω να βελτιώνομαι.",
+      "after": "Πραγματικά είναι. Είμαι πολύ χαρούμενη που μπορώ να κάνω τόση συνομιλία. Και ελπίζω να μπορέσουμε να έχουμε περισσότερες συνομιλίες στο μέλλον καθώς συνεχίζω να βελτιώνομαι.",
+      "s3_key": "mastered/FA1CFD26-0E17-4DE7-B077-FB4AACA4ECB5.mp3",
+      "voice_id": "el-GR-AthinaNeural",
+      "duration_ms": 10584,
+      "file_size_bytes": null,
+      "audio_revision": 1,
+      "role": "target1",
+      "language": "ell",
+      "audio_text": "Πραγματικά είναι. Είμαι πολύ χαρούμενος που μπορώ να κάνω τόση συνομιλία. Και ελπίζω να μπορέσουμε να έχουμε περισσότερες συνομιλίες στο μέλλον καθώς συνεχίζω να βελτιώνομαι.",
+      "rows": [
+        {
+          "id": "ell_for_eng:pod-0:SC15-S011",
+          "pod": "pod-0",
+          "scene": 15,
+          "sentence": 11,
+          "speaker": "Learner"
+        },
+        {
+          "id": "ell_for_eng:pod-0-unrecorded:SC22-S011",
+          "pod": "pod-0-unrecorded",
+          "scene": 22,
+          "sentence": 11,
+          "speaker": "Learner"
+        }
+      ],
+      "voice_id_spelling_legacy": true,
+      "voice": {
+        "id": "azure_el-GR-AthinaNeural",
+        "provider": "azure",
+        "raw": "el-GR-AthinaNeural",
+        "locale": "el-GR"
+      },
+      "after_normalized": "πραγματικά είναι. είμαι πολύ χαρούμενη που μπορώ να κάνω τόση συνομιλία. και ελπίζω να μπορέσουμε να έχουμε περισσότερες συνομιλίες στο μέλλον καθώς συνεχίζω να βελτιώνομαι",
+      "action": "dry-run, nothing rendered or written"
+    },
+    {
+      "clip_id": "6474f500-315f-4449-891e-089b701ac0bc",
+      "course": "ell_for_eng",
+      "rule": "register",
+      "why": "scene 2 is a stranger on public transport -> V (εσείς)",
+      "before": "Όχι, είναι ελεύθερη. Παρακαλώ, κάτσε.",
+      "after": "Όχι, είναι ελεύθερη. Παρακαλώ, καθίστε.",
+      "s3_key": "mastered/6F67DFD4-A959-4373-B706-F924F7C4647D.mp3",
+      "voice_id": "el-GR-NestorasNeural",
+      "duration_ms": 5064,
+      "file_size_bytes": null,
+      "audio_revision": 1,
+      "role": "target1",
+      "language": "ell",
+      "audio_text": "Όχι, είναι ελεύθερη. Παρακαλώ, κάτσε.",
+      "rows": [
+        {
+          "id": "ell_for_eng:pod-0:SC02-S002",
+          "pod": "pod-0",
+          "scene": 2,
+          "sentence": 2,
+          "speaker": "Passenger"
+        },
+        {
+          "id": "ell_for_eng:pod-0-unrecorded:SC02-S002",
+          "pod": "pod-0-unrecorded",
+          "scene": 2,
+          "sentence": 2,
+          "speaker": "Passenger"
+        }
+      ],
+      "voice_id_spelling_legacy": true,
+      "voice": {
+        "id": "azure_el-GR-NestorasNeural",
+        "provider": "azure",
+        "raw": "el-GR-NestorasNeural",
+        "locale": "el-GR"
+      },
+      "after_normalized": "όχι, είναι ελεύθερη. παρακαλώ, καθίστε",
+      "action": "dry-run, nothing rendered or written"
+    },
+    {
+      "clip_id": "c8a3df46-13f5-4732-b823-d9731d3b32a4",
+      "course": "ell_for_eng",
+      "rule": "register",
+      "why": "scene 13 is stranger-in-the-street -> V; the same scene already closes on V (Ήσασταν)",
+      "before": "Συγγνώμη, ξέρεις πώς να πάω στο κοντινότερο σούπερ μάρκετ;",
+      "after": "Συγγνώμη, ξέρετε πώς να πάω στο κοντινότερο σούπερ μάρκετ;",
+      "s3_key": "mastered/43486C47-43D3-45ED-AB49-1C00DC6382F9.mp3",
+      "voice_id": "el-GR-NestorasNeural",
+      "duration_ms": 4176,
+      "file_size_bytes": null,
+      "audio_revision": 1,
+      "role": "target1",
+      "language": "ell",
+      "audio_text": "Συγγνώμη, ξέρεις πώς να πάω στο κοντινότερο σούπερ μάρκετ;",
+      "rows": [
+        {
+          "id": "ell_for_eng:pod-0:SC13-S001",
+          "pod": "pod-0",
+          "scene": 13,
+          "sentence": 1,
+          "speaker": "Tourist"
+        },
+        {
+          "id": "ell_for_eng:pod-0-unrecorded:SC13-S001",
+          "pod": "pod-0-unrecorded",
+          "scene": 13,
+          "sentence": 1,
+          "speaker": "Tourist"
+        }
+      ],
+      "voice_id_spelling_legacy": true,
+      "voice": {
+        "id": "azure_el-GR-NestorasNeural",
+        "provider": "azure",
+        "raw": "el-GR-NestorasNeural",
+        "locale": "el-GR"
+      },
+      "after_normalized": "συγγνώμη, ξέρετε πώς να πάω στο κοντινότερο σούπερ μάρκετ;",
+      "action": "dry-run, nothing rendered or written"
+    },
+    {
+      "clip_id": "7243deb2-578c-4449-a4cc-407a9725bf0d",
+      "course": "ell_for_eng",
+      "rule": "register",
+      "why": "scene 13 stranger -> V",
+      "before": "Ναι, είναι περίπου δέκα λεπτά με τα πόδια. Πήγαινε ίσια σε αυτόν τον δρόμο.",
+      "after": "Ναι, είναι περίπου δέκα λεπτά με τα πόδια. Πηγαίνετε ίσια σε αυτόν τον δρόμο.",
+      "s3_key": "mastered/EF81956F-0CD8-4A81-B8FD-00C34C5D49E7.mp3",
+      "voice_id": "el-GR-NestorasNeural",
+      "duration_ms": 5784,
+      "file_size_bytes": null,
+      "audio_revision": 1,
+      "role": "target1",
+      "language": "ell",
+      "audio_text": "Ναι, είναι περίπου δέκα λεπτά με τα πόδια. Πήγαινε ίσια σε αυτόν τον δρόμο.",
+      "rows": [
+        {
+          "id": "ell_for_eng:pod-0:SC13-S002",
+          "pod": "pod-0",
+          "scene": 13,
+          "sentence": 2,
+          "speaker": "Local"
+        },
+        {
+          "id": "ell_for_eng:pod-0-unrecorded:SC13-S002",
+          "pod": "pod-0-unrecorded",
+          "scene": 13,
+          "sentence": 2,
+          "speaker": "Local"
+        }
+      ],
+      "voice_id_spelling_legacy": true,
+      "voice": {
+        "id": "azure_el-GR-NestorasNeural",
+        "provider": "azure",
+        "raw": "el-GR-NestorasNeural",
+        "locale": "el-GR"
+      },
+      "after_normalized": "ναι, είναι περίπου δέκα λεπτά με τα πόδια. πηγαίνετε ίσια σε αυτόν τον δρόμο",
+      "action": "dry-run, nothing rendered or written"
+    },
+    {
+      "clip_id": "7e506506-0b82-400f-9371-079c57376961",
+      "course": "ell_for_eng",
+      "rule": "register",
+      "why": "scene 13 stranger -> V",
+      "before": "Στον δεύτερο κυκλικό κόμβο, πάρε την πρώτη έξοδο.",
+      "after": "Στον δεύτερο κυκλικό κόμβο, πάρτε την πρώτη έξοδο.",
+      "s3_key": "mastered/06533E35-F6A1-4C76-9EB5-5AD690F34318.mp3",
+      "voice_id": "el-GR-NestorasNeural",
+      "duration_ms": 3912,
+      "file_size_bytes": null,
+      "audio_revision": 1,
+      "role": "target1",
+      "language": "ell",
+      "audio_text": "Στον δεύτερο κυκλικό κόμβο, πάρε την πρώτη έξοδο.",
+      "rows": [
+        {
+          "id": "ell_for_eng:pod-0:SC13-S005",
+          "pod": "pod-0",
+          "scene": 13,
+          "sentence": 5,
+          "speaker": "Local"
+        },
+        {
+          "id": "ell_for_eng:pod-0-unrecorded:SC13-S005",
+          "pod": "pod-0-unrecorded",
+          "scene": 13,
+          "sentence": 5,
+          "speaker": "Local"
+        }
+      ],
+      "voice_id_spelling_legacy": true,
+      "voice": {
+        "id": "azure_el-GR-NestorasNeural",
+        "provider": "azure",
+        "raw": "el-GR-NestorasNeural",
+        "locale": "el-GR"
+      },
+      "after_normalized": "στον δεύτερο κυκλικό κόμβο, πάρτε την πρώτη έξοδο",
+      "action": "dry-run, nothing rendered or written"
+    },
+    {
+      "clip_id": "dd0303cb-783e-45a1-8f54-c6cd5b737fdf",
+      "course": "ell_for_eng",
+      "rule": "register",
+      "why": "scene 13 stranger -> V",
+      "before": "Θα δεις το σούπερ μάρκετ στα αριστερά σου, ακριβώς απέναντι από τη στάση του λεωφορείου.",
+      "after": "Θα δείτε το σούπερ μάρκετ στα αριστερά σας, ακριβώς απέναντι από τη στάση του λεωφορείου.",
+      "s3_key": "mastered/92A3CA08-E266-4D34-884B-C494E660EA44.mp3",
+      "voice_id": "el-GR-NestorasNeural",
+      "duration_ms": 5136,
+      "file_size_bytes": null,
+      "audio_revision": 1,
+      "role": "target1",
+      "language": "ell",
+      "audio_text": "Θα δεις το σούπερ μάρκετ στα αριστερά σου, ακριβώς απέναντι από τη στάση του λεωφορείου.",
+      "rows": [
+        {
+          "id": "ell_for_eng:pod-0:SC13-S007",
+          "pod": "pod-0",
+          "scene": 13,
+          "sentence": 7,
+          "speaker": "Local"
+        },
+        {
+          "id": "ell_for_eng:pod-0-unrecorded:SC13-S007",
+          "pod": "pod-0-unrecorded",
+          "scene": 13,
+          "sentence": 7,
+          "speaker": "Local"
+        }
+      ],
+      "voice_id_spelling_legacy": true,
+      "voice": {
+        "id": "azure_el-GR-NestorasNeural",
+        "provider": "azure",
+        "raw": "el-GR-NestorasNeural",
+        "locale": "el-GR"
+      },
+      "after_normalized": "θα δείτε το σούπερ μάρκετ στα αριστερά σας, ακριβώς απέναντι από τη στάση του λεωφορείου",
+      "action": "dry-run, nothing rendered or written"
+    },
+    {
+      "clip_id": "f99feb7e-1702-49fe-a6ce-d8a3c089c006",
+      "course": "est_for_eng",
+      "rule": "register",
+      "why": "scene 7 barista -> V; the same speaker uses V elsewhere in the scene",
+      "before": "Muidugi. Kas sa istud siin või võtad kaasa?",
+      "after": "Muidugi. Kas te istute siin või võtate kaasa?",
+      "s3_key": "mastered/6388FB5B-3D1C-4871-97FA-CEB11E95A6E3.mp3",
+      "voice_id": "et-EE-KertNeural",
+      "duration_ms": 4248,
+      "file_size_bytes": null,
+      "audio_revision": 1,
+      "role": "target1",
+      "language": "est",
+      "audio_text": "Muidugi. Kas sa istud siin või võtad kaasa?",
+      "rows": [
+        {
+          "id": "est_for_eng:pod-0:SC07-S005",
+          "pod": "pod-0",
+          "scene": 7,
+          "sentence": 5,
+          "speaker": "Barista"
+        },
+        {
+          "id": "est_for_eng:pod-0-unrecorded:SC07-S005",
+          "pod": "pod-0-unrecorded",
+          "scene": 7,
+          "sentence": 5,
+          "speaker": "Barista"
+        }
+      ],
+      "voice_id_spelling_legacy": true,
+      "voice": {
+        "id": "azure_et-EE-KertNeural",
+        "provider": "azure",
+        "raw": "et-EE-KertNeural",
+        "locale": "et-EE"
+      },
+      "after_normalized": "muidugi. kas te istute siin või võtate kaasa?",
+      "action": "dry-run, nothing rendered or written"
+    },
+    {
+      "clip_id": "38a328d3-7c85-4fed-90a6-66f600b5381d",
+      "course": "est_for_eng",
+      "rule": "register",
+      "why": "scene 7 barista -> V",
+      "before": "Kohe. Kas soovid veel midagi?",
+      "after": "Kohe. Kas soovite veel midagi?",
+      "s3_key": "mastered/B7618690-C6F6-4DE2-99DF-003F40D8C200.mp3",
+      "voice_id": "et-EE-KertNeural",
+      "duration_ms": 3384,
+      "file_size_bytes": null,
+      "audio_revision": 1,
+      "role": "target1",
+      "language": "est",
+      "audio_text": "Kohe. Kas soovid veel midagi?",
+      "rows": [
+        {
+          "id": "est_for_eng:pod-0:SC07-S008",
+          "pod": "pod-0",
+          "scene": 7,
+          "sentence": 8,
+          "speaker": "Barista"
+        },
+        {
+          "id": "est_for_eng:pod-0-unrecorded:SC07-S008",
+          "pod": "pod-0-unrecorded",
+          "scene": 7,
+          "sentence": 8,
+          "speaker": "Barista"
+        }
+      ],
+      "voice_id_spelling_legacy": true,
+      "voice": {
+        "id": "azure_et-EE-KertNeural",
+        "provider": "azure",
+        "raw": "et-EE-KertNeural",
+        "locale": "et-EE"
+      },
+      "after_normalized": "kohe. kas soovite veel midagi?",
+      "action": "dry-run, nothing rendered or written"
+    },
+    {
+      "clip_id": "18965e8c-6930-48ac-8396-2564ca0964fb",
+      "course": "est_for_eng",
+      "rule": "register",
+      "why": "scene 7 barista -> V",
+      "before": "Kas sa soovid siin istuda? Laud akna juures on vaba.",
+      "after": "Kas te soovite siin istuda? Laud akna juures on vaba.",
+      "s3_key": "mastered/868D7886-1DB2-4AD9-8375-24F3BB5D452C.mp3",
+      "voice_id": "azure_et-EE-KertNeural",
+      "duration_ms": 4560,
+      "file_size_bytes": null,
+      "audio_revision": 1,
+      "role": "target1",
+      "language": "est",
+      "audio_text": "Kas sa soovid siin istuda? Laud akna juures on vaba.",
+      "rows": [
+        {
+          "id": "est_for_eng:pod-0:SC07-S014",
+          "pod": "pod-0",
+          "scene": 7,
+          "sentence": 14,
+          "speaker": "Barista"
+        },
+        {
+          "id": "est_for_eng:pod-0-unrecorded:SC07-S014",
+          "pod": "pod-0-unrecorded",
+          "scene": 7,
+          "sentence": 14,
+          "speaker": "Barista"
+        }
+      ],
+      "voice_id_spelling_legacy": false,
+      "voice": {
+        "id": "azure_et-EE-KertNeural",
+        "provider": "azure",
+        "raw": "et-EE-KertNeural",
+        "locale": "et-EE"
+      },
+      "after_normalized": "kas te soovite siin istuda? laud akna juures on vaba",
+      "action": "dry-run, nothing rendered or written"
+    },
+    {
+      "clip_id": "effea725-703b-451b-90ee-5194a08ced2e",
+      "course": "est_for_eng",
+      "rule": "register",
+      "why": "scene 8 bartender -> V",
+      "before": "Meil on majapunane, majavalge, või võid võtta ühe meie pudelitest.",
+      "after": "Meil on majapunane, majavalge, või võite võtta ühe meie pudelitest.",
+      "s3_key": "mastered/EFFEA725-703B-451B-90EE-5194A08CED2E.mp3",
+      "voice_id": "et-EE-KertNeural",
+      "duration_ms": 4848,
+      "file_size_bytes": null,
+      "audio_revision": 1,
+      "role": "target1",
+      "language": "et",
+      "audio_text": "Meil on majapunane, majavalge, või võid võtta ühe meie pudelitest.",
+      "rows": [
+        {
+          "id": "est_for_eng:pod-0:SC08-S007",
+          "pod": "pod-0",
+          "scene": 8,
+          "sentence": 7,
+          "speaker": "Bartender"
+        },
+        {
+          "id": "est_for_eng:pod-0-unrecorded:SC08-S007",
+          "pod": "pod-0-unrecorded",
+          "scene": 8,
+          "sentence": 7,
+          "speaker": "Bartender"
+        }
+      ],
+      "voice_id_spelling_legacy": true,
+      "voice": {
+        "id": "azure_et-EE-KertNeural",
+        "provider": "azure",
+        "raw": "et-EE-KertNeural",
+        "locale": "et-EE"
+      },
+      "after_normalized": "meil on majapunane, majavalge, või võite võtta ühe meie pudelitest",
+      "action": "dry-run, nothing rendered or written"
+    },
+    {
+      "clip_id": "6c07d214-4ef0-4c0e-b59c-ccf297bee637",
+      "course": "est_for_eng",
+      "rule": "register",
+      "why": "scene 9 waiter -> V",
+      "before": "Ja mida sa täna õhtul soovitaksid?",
+      "after": "Ja mida te täna õhtul soovitaksite?",
+      "s3_key": "mastered/74C93644-7D8C-4FF2-9EFE-0C992923A613.mp3",
+      "voice_id": "et-EE-AnuNeural",
+      "duration_ms": 2832,
+      "file_size_bytes": null,
+      "audio_revision": 1,
+      "role": "target1",
+      "language": "est",
+      "audio_text": "Ja mida sa täna õhtul soovitaksid?",
+      "rows": [
+        {
+          "id": "est_for_eng:pod-0:SC09-S007",
+          "pod": "pod-0",
+          "scene": 9,
+          "sentence": 7,
+          "speaker": "Customer 1"
+        },
+        {
+          "id": "est_for_eng:pod-0-unrecorded:SC09-S007",
+          "pod": "pod-0-unrecorded",
+          "scene": 9,
+          "sentence": 7,
+          "speaker": "Customer 1"
+        }
+      ],
+      "voice_id_spelling_legacy": true,
+      "voice": {
+        "id": "azure_et-EE-AnuNeural",
+        "provider": "azure",
+        "raw": "et-EE-AnuNeural",
+        "locale": "et-EE"
+      },
+      "after_normalized": "ja mida te täna õhtul soovitaksite?",
+      "action": "dry-run, nothing rendered or written"
+    },
+    {
+      "clip_id": "1aafc19d-acc2-4b44-9992-96539651bab3",
+      "course": "est_for_eng",
+      "rule": "register",
+      "why": "scene 9 waiter -> V",
+      "before": "Ja arve, kui oled valmis. Kas me saame arve jagada?",
+      "after": "Ja arve, kui olete valmis. Kas me saame arve jagada?",
+      "s3_key": "mastered/BABBD1CB-D80A-4256-8D06-7ED1B1CE8F92.mp3",
+      "voice_id": "azure_et-EE-AnuNeural",
+      "duration_ms": 4704,
+      "file_size_bytes": null,
+      "audio_revision": 1,
+      "role": "target1",
+      "language": "est",
+      "audio_text": "Ja arve, kui oled valmis. Kas me saame arve jagada?",
+      "rows": [
+        {
+          "id": "est_for_eng:pod-0:SC09-S017",
+          "pod": "pod-0",
+          "scene": 9,
+          "sentence": 17,
+          "speaker": "Customer 2"
+        },
+        {
+          "id": "est_for_eng:pod-0-unrecorded:SC09-S017",
+          "pod": "pod-0-unrecorded",
+          "scene": 9,
+          "sentence": 17,
+          "speaker": "Customer 2"
+        }
+      ],
+      "voice_id_spelling_legacy": false,
+      "voice": {
+        "id": "azure_et-EE-AnuNeural",
+        "provider": "azure",
+        "raw": "et-EE-AnuNeural",
+        "locale": "et-EE"
+      },
+      "after_normalized": "ja arve, kui olete valmis. kas me saame arve jagada?",
+      "action": "dry-run, nothing rendered or written"
+    },
+    {
+      "clip_id": "f37d9e16-9e7b-49b3-9720-088ef8e339cb",
+      "course": "est_for_eng",
+      "rule": "register",
+      "why": "scene 10 pharmacy assistant -> V; the customer already uses teil",
+      "before": "Ma arvan küll, aga pead kindluse mõttes ise vaatama.",
+      "after": "Ma arvan küll, aga peate kindluse mõttes ise vaatama.",
+      "s3_key": "mastered/57CF9BB4-3921-4CDF-9B61-F7F88561A14F.mp3",
+      "voice_id": "et-EE-KertNeural",
+      "duration_ms": 3840,
+      "file_size_bytes": null,
+      "audio_revision": 1,
+      "role": "target1",
+      "language": "est",
+      "audio_text": "Ma arvan küll, aga pead kindluse mõttes ise vaatama.",
+      "rows": [
+        {
+          "id": "est_for_eng:pod-0:SC10-S004",
+          "pod": "pod-0",
+          "scene": 10,
+          "sentence": 4,
+          "speaker": "Assistant"
+        },
+        {
+          "id": "est_for_eng:pod-0-unrecorded:SC10-S004",
+          "pod": "pod-0-unrecorded",
+          "scene": 10,
+          "sentence": 4,
+          "speaker": "Assistant"
+        }
+      ],
+      "voice_id_spelling_legacy": true,
+      "voice": {
+        "id": "azure_et-EE-KertNeural",
+        "provider": "azure",
+        "raw": "et-EE-KertNeural",
+        "locale": "et-EE"
+      },
+      "after_normalized": "ma arvan küll, aga peate kindluse mõttes ise vaatama",
+      "action": "dry-run, nothing rendered or written"
+    },
+    {
+      "clip_id": "ea182cf6-0e71-470a-9258-bbeca1a38c94",
+      "course": "est_for_eng",
+      "rule": "register",
+      "why": "scene 10 service -> V",
+      "before": "Päikesekaitsekreem on seal all paremal, ja hambapastat leiad kohe nurga tagant.",
+      "after": "Päikesekaitsekreem on seal all paremal, ja hambapastat leiate kohe nurga tagant.",
+      "s3_key": "mastered/AE226331-1220-40B4-BBA4-BF3E16B5510A.mp3",
+      "voice_id": "et-EE-KertNeural",
+      "duration_ms": 5496,
+      "file_size_bytes": null,
+      "audio_revision": 1,
+      "role": "target1",
+      "language": "est",
+      "audio_text": "Päikesekaitsekreem on seal all paremal, ja hambapastat leiad kohe nurga tagant.",
+      "rows": [
+        {
+          "id": "est_for_eng:pod-0:SC10-S006",
+          "pod": "pod-0",
+          "scene": 10,
+          "sentence": 6,
+          "speaker": "Assistant"
+        },
+        {
+          "id": "est_for_eng:pod-0-unrecorded:SC10-S006",
+          "pod": "pod-0-unrecorded",
+          "scene": 10,
+          "sentence": 6,
+          "speaker": "Assistant"
+        }
+      ],
+      "voice_id_spelling_legacy": true,
+      "voice": {
+        "id": "azure_et-EE-KertNeural",
+        "provider": "azure",
+        "raw": "et-EE-KertNeural",
+        "locale": "et-EE"
+      },
+      "after_normalized": "päikesekaitsekreem on seal all paremal, ja hambapastat leiate kohe nurga tagant",
+      "action": "dry-run, nothing rendered or written"
+    },
+    {
+      "clip_id": "e6e336b5-84b4-4676-9b8e-55eea3173fab",
+      "course": "est_for_eng",
+      "rule": "register",
+      "why": "scene 10 service -> V",
+      "before": "Aitäh, sa oled olnud väga abistav. Olen väga tänulik.",
+      "after": "Aitäh, te olete olnud väga abistav. Olen väga tänulik.",
+      "s3_key": "mastered/89BAB360-7DB6-4B64-B61A-1CFCC765B16A.mp3",
+      "voice_id": "et-EE-AnuNeural",
+      "duration_ms": 5040,
+      "file_size_bytes": null,
+      "audio_revision": 1,
+      "role": "target1",
+      "language": "est",
+      "audio_text": "Aitäh, sa oled olnud väga abistav. Olen väga tänulik.",
+      "rows": [
+        {
+          "id": "est_for_eng:pod-0:SC10-S007",
+          "pod": "pod-0",
+          "scene": 10,
+          "sentence": 7,
+          "speaker": "Customer"
+        },
+        {
+          "id": "est_for_eng:pod-0-unrecorded:SC10-S007",
+          "pod": "pod-0-unrecorded",
+          "scene": 10,
+          "sentence": 7,
+          "speaker": "Customer"
+        }
+      ],
+      "voice_id_spelling_legacy": true,
+      "voice": {
+        "id": "azure_et-EE-AnuNeural",
+        "provider": "azure",
+        "raw": "et-EE-AnuNeural",
+        "locale": "et-EE"
+      },
+      "after_normalized": "aitäh, te olete olnud väga abistav. olen väga tänulik",
+      "action": "dry-run, nothing rendered or written"
+    },
+    {
+      "clip_id": "0f57d45c-62cf-4b31-945a-982184b8de81",
+      "course": "est_for_eng",
+      "rule": "register",
+      "why": "scene 10 service -> V",
+      "before": "Pole tänu väärt. Kas sa oled siin puhkusel? Sa räägid väga head eesti keelt.",
+      "after": "Pole tänu väärt. Kas te olete siin puhkusel? Te räägite väga head eesti keelt.",
+      "s3_key": "mastered/34B2C920-1D73-45C7-A637-EA1626906996.mp3",
+      "voice_id": "azure_et-EE-KertNeural",
+      "duration_ms": 6768,
+      "file_size_bytes": null,
+      "audio_revision": 1,
+      "role": "target1",
+      "language": "est",
+      "audio_text": "Pole tänu väärt. Kas sa oled siin puhkusel? Sa räägid väga head eesti keelt.",
+      "rows": [
+        {
+          "id": "est_for_eng:pod-0:SC10-S008",
+          "pod": "pod-0",
+          "scene": 10,
+          "sentence": 8,
+          "speaker": "Assistant"
+        },
+        {
+          "id": "est_for_eng:pod-0-unrecorded:SC10-S008",
+          "pod": "pod-0-unrecorded",
+          "scene": 10,
+          "sentence": 8,
+          "speaker": "Assistant"
+        }
+      ],
+      "voice_id_spelling_legacy": false,
+      "voice": {
+        "id": "azure_et-EE-KertNeural",
+        "provider": "azure",
+        "raw": "et-EE-KertNeural",
+        "locale": "et-EE"
+      },
+      "after_normalized": "pole tänu väärt. kas te olete siin puhkusel? te räägite väga head eesti keelt",
+      "action": "dry-run, nothing rendered or written"
+    },
+    {
+      "clip_id": "0b28f96f-75f4-40f6-94ef-5c5a487a92d8",
+      "course": "est_for_eng",
+      "rule": "register",
+      "why": "scene 10 service -> V",
+      "before": "See on väga lahke sinult! Jah, ma olen puhkusel, ja pean rohkem harjutama, et eesti keelt paremini rääkida. Suur aitäh ja nägemist.",
+      "after": "See on väga lahke teist! Jah, ma olen puhkusel, ja pean rohkem harjutama, et eesti keelt paremini rääkida. Suur aitäh ja nägemist.",
+      "s3_key": "mastered/3913520F-D7D8-4DB3-9BF6-9F1526126658.mp3",
+      "voice_id": "azure_et-EE-AnuNeural",
+      "duration_ms": 10320,
+      "file_size_bytes": null,
+      "audio_revision": 1,
+      "role": "target1",
+      "language": "est",
+      "audio_text": "See on väga lahke sinult! Jah, ma olen puhkusel, ja pean rohkem harjutama, et eesti keelt paremini rääkida. Suur aitäh ja nägemist.",
+      "rows": [
+        {
+          "id": "est_for_eng:pod-0:SC10-S009",
+          "pod": "pod-0",
+          "scene": 10,
+          "sentence": 9,
+          "speaker": "Customer"
+        }
+      ],
+      "voice_id_spelling_legacy": false,
+      "voice": {
+        "id": "azure_et-EE-AnuNeural",
+        "provider": "azure",
+        "raw": "et-EE-AnuNeural",
+        "locale": "et-EE"
+      },
+      "after_normalized": "see on väga lahke teist! jah, ma olen puhkusel, ja pean rohkem harjutama, et eesti keelt paremini rääkida. suur aitäh ja nägemist",
+      "action": "dry-run, nothing rendered or written"
+    },
+    {
+      "clip_id": "d89e4249-9227-4f66-bfbb-b0808161969f",
+      "course": "est_for_eng",
+      "rule": "register",
+      "why": "scene 12 pharmacist -> V; the customer already uses saaksite",
+      "before": "Muidugi. Millised on sinu sümptomid?",
+      "after": "Muidugi. Millised on teie sümptomid?",
+      "s3_key": "mastered/D61F6E58-8810-4D75-B1B0-798B86058911.mp3",
+      "voice_id": "et-EE-KertNeural",
+      "duration_ms": 3960,
+      "file_size_bytes": null,
+      "audio_revision": 1,
+      "role": "target1",
+      "language": "est",
+      "audio_text": "Muidugi. Millised on sinu sümptomid?",
+      "rows": [
+        {
+          "id": "est_for_eng:pod-0:SC12-S002",
+          "pod": "pod-0",
+          "scene": 12,
+          "sentence": 2,
+          "speaker": "Pharmacist"
+        },
+        {
+          "id": "est_for_eng:pod-0-unrecorded:SC12-S002",
+          "pod": "pod-0-unrecorded",
+          "scene": 12,
+          "sentence": 2,
+          "speaker": "Pharmacist"
+        }
+      ],
+      "voice_id_spelling_legacy": true,
+      "voice": {
+        "id": "azure_et-EE-KertNeural",
+        "provider": "azure",
+        "raw": "et-EE-KertNeural",
+        "locale": "et-EE"
+      },
+      "after_normalized": "muidugi. millised on teie sümptomid?",
+      "action": "dry-run, nothing rendered or written"
+    },
+    {
+      "clip_id": "18e851d3-444c-4763-b367-51f6b05c3cd8",
+      "course": "est_for_eng",
+      "rule": "register",
+      "why": "scene 12 pharmacist -> V",
+      "before": "Proovi peavalu vastu paratsetamooli ja neid kurguimindustablette kurgu jaoks.",
+      "after": "Proovige peavalu vastu paratsetamooli ja neid kurguimindustablette kurgu jaoks.",
+      "s3_key": "mastered/FA7DF735-6687-4D52-A773-21E3A877C418.mp3",
+      "voice_id": "azure_et-EE-KertNeural",
+      "duration_ms": 5352,
+      "file_size_bytes": null,
+      "audio_revision": 1,
+      "role": "target1",
+      "language": "est",
+      "audio_text": "Proovi peavalu vastu paratsetamooli ja neid kurguimindustablette kurgu jaoks.",
+      "rows": [
+        {
+          "id": "est_for_eng:pod-0:SC12-S004",
+          "pod": "pod-0",
+          "scene": 12,
+          "sentence": 4,
+          "speaker": "Pharmacist"
+        },
+        {
+          "id": "est_for_eng:pod-0-unrecorded:SC12-S004",
+          "pod": "pod-0-unrecorded",
+          "scene": 12,
+          "sentence": 4,
+          "speaker": "Pharmacist"
+        }
+      ],
+      "voice_id_spelling_legacy": false,
+      "voice": {
+        "id": "azure_et-EE-KertNeural",
+        "provider": "azure",
+        "raw": "et-EE-KertNeural",
+        "locale": "et-EE"
+      },
+      "after_normalized": "proovige peavalu vastu paratsetamooli ja neid kurguimindustablette kurgu jaoks",
+      "action": "dry-run, nothing rendered or written"
+    },
+    {
+      "clip_id": "84da83a3-4290-4ce1-a10c-088d2d77d8b8",
+      "course": "est_for_eng",
+      "rule": "register",
+      "why": "scene 13 stranger-in-the-street -> V",
+      "before": "Vabandust, kas sa tead, kuidas saada lähima supermarketini?",
+      "after": "Vabandust, kas te teate, kuidas saada lähima supermarketini?",
+      "s3_key": "mastered/408EF9D3-F91A-4E1D-BB5E-95A7A061C462.mp3",
+      "voice_id": "et-EE-AnuNeural",
+      "duration_ms": 4392,
+      "file_size_bytes": null,
+      "audio_revision": 1,
+      "role": "target1",
+      "language": "est",
+      "audio_text": "Vabandust, kas sa tead, kuidas saada lähima supermarketini?",
+      "rows": [
+        {
+          "id": "est_for_eng:pod-0:SC13-S001",
+          "pod": "pod-0",
+          "scene": 13,
+          "sentence": 1,
+          "speaker": "Tourist"
+        },
+        {
+          "id": "est_for_eng:pod-0-unrecorded:SC13-S001",
+          "pod": "pod-0-unrecorded",
+          "scene": 13,
+          "sentence": 1,
+          "speaker": "Tourist"
+        }
+      ],
+      "voice_id_spelling_legacy": true,
+      "voice": {
+        "id": "azure_et-EE-AnuNeural",
+        "provider": "azure",
+        "raw": "et-EE-AnuNeural",
+        "locale": "et-EE"
+      },
+      "after_normalized": "vabandust, kas te teate, kuidas saada lähima supermarketini?",
+      "action": "dry-run, nothing rendered or written"
+    },
+    {
+      "clip_id": "352a0ec2-5178-4653-8895-657f18e081a7",
+      "course": "est_for_eng",
+      "rule": "register",
+      "why": "scene 13 stranger -> V",
+      "before": "Jah, see on umbes kümme minutit jalgsi. Mine mööda seda teed otse edasi.",
+      "after": "Jah, see on umbes kümme minutit jalgsi. Minge mööda seda teed otse edasi.",
+      "s3_key": "mastered/3F62ECB3-FB66-476B-A859-DB5328E52E3B.mp3",
+      "voice_id": "et-EE-KertNeural",
+      "duration_ms": 6144,
+      "file_size_bytes": null,
+      "audio_revision": 1,
+      "role": "target1",
+      "language": "est",
+      "audio_text": "Jah, see on umbes kümme minutit jalgsi. Mine mööda seda teed otse edasi.",
+      "rows": [
+        {
+          "id": "est_for_eng:pod-0:SC13-S002",
+          "pod": "pod-0",
+          "scene": 13,
+          "sentence": 2,
+          "speaker": "Local"
+        },
+        {
+          "id": "est_for_eng:pod-0-unrecorded:SC13-S002",
+          "pod": "pod-0-unrecorded",
+          "scene": 13,
+          "sentence": 2,
+          "speaker": "Local"
+        }
+      ],
+      "voice_id_spelling_legacy": true,
+      "voice": {
+        "id": "azure_et-EE-KertNeural",
+        "provider": "azure",
+        "raw": "et-EE-KertNeural",
+        "locale": "et-EE"
+      },
+      "after_normalized": "jah, see on umbes kümme minutit jalgsi. minge mööda seda teed otse edasi",
+      "action": "dry-run, nothing rendered or written"
+    },
+    {
+      "clip_id": "444d8fea-32ad-477b-8efa-c3019f9da1fc",
+      "course": "est_for_eng",
+      "rule": "register",
+      "why": "scene 13 stranger -> V",
+      "before": "Teise ringtee juures võta esimene väljapääs.",
+      "after": "Teise ringtee juures võtke esimene väljapääs.",
+      "s3_key": "mastered/1A8DABEB-4B34-4ADC-9249-87850FA95D58.mp3",
+      "voice_id": "et-EE-KertNeural",
+      "duration_ms": 3528,
+      "file_size_bytes": null,
+      "audio_revision": 1,
+      "role": "target1",
+      "language": "est",
+      "audio_text": "Teise ringtee juures võta esimene väljapääs.",
+      "rows": [
+        {
+          "id": "est_for_eng:pod-0:SC13-S005",
+          "pod": "pod-0",
+          "scene": 13,
+          "sentence": 5,
+          "speaker": "Local"
+        },
+        {
+          "id": "est_for_eng:pod-0-unrecorded:SC13-S005",
+          "pod": "pod-0-unrecorded",
+          "scene": 13,
+          "sentence": 5,
+          "speaker": "Local"
+        }
+      ],
+      "voice_id_spelling_legacy": true,
+      "voice": {
+        "id": "azure_et-EE-KertNeural",
+        "provider": "azure",
+        "raw": "et-EE-KertNeural",
+        "locale": "et-EE"
+      },
+      "after_normalized": "teise ringtee juures võtke esimene väljapääs",
+      "action": "dry-run, nothing rendered or written"
+    },
+    {
+      "clip_id": "a14348af-df9d-4e5a-987d-509a01b591ed",
+      "course": "est_for_eng",
+      "rule": "register",
+      "why": "scene 13 stranger -> V",
+      "before": "Sa näed supermarketit oma vasakul käel, täpselt bussipeatuse vastas.",
+      "after": "Te näete supermarketit oma vasakul käel, täpselt bussipeatuse vastas.",
+      "s3_key": "mastered/ABCC840B-46EF-45C6-A804-ACA0B046041D.mp3",
+      "voice_id": "et-EE-KertNeural",
+      "duration_ms": 5184,
+      "file_size_bytes": null,
+      "audio_revision": 1,
+      "role": "target1",
+      "language": "est",
+      "audio_text": "Sa näed supermarketit oma vasakul käel, täpselt bussipeatuse vastas.",
+      "rows": [
+        {
+          "id": "est_for_eng:pod-0:SC13-S007",
+          "pod": "pod-0",
+          "scene": 13,
+          "sentence": 7,
+          "speaker": "Local"
+        },
+        {
+          "id": "est_for_eng:pod-0-unrecorded:SC13-S007",
+          "pod": "pod-0-unrecorded",
+          "scene": 13,
+          "sentence": 7,
+          "speaker": "Local"
+        }
+      ],
+      "voice_id_spelling_legacy": true,
+      "voice": {
+        "id": "azure_et-EE-KertNeural",
+        "provider": "azure",
+        "raw": "et-EE-KertNeural",
+        "locale": "et-EE"
+      },
+      "after_normalized": "te näete supermarketit oma vasakul käel, täpselt bussipeatuse vastas",
+      "action": "dry-run, nothing rendered or written"
+    },
+    {
+      "clip_id": "a97ebd99-9bf7-4206-b449-6b1e4a9a1d2f",
+      "course": "est_for_eng",
+      "rule": "register",
+      "why": "scene 13 stranger -> V",
+      "before": "Suur aitäh. Sa oled olnud väga abistav.",
+      "after": "Suur aitäh. Te olete olnud väga abistav.",
+      "s3_key": "mastered/C140DBF8-3BED-4627-93A4-F94F6CD540F4.mp3",
+      "voice_id": "et-EE-AnuNeural",
+      "duration_ms": 4128,
+      "file_size_bytes": null,
+      "audio_revision": 1,
+      "role": "target1",
+      "language": "est",
+      "audio_text": "Suur aitäh. Sa oled olnud väga abistav.",
+      "rows": [
+        {
+          "id": "est_for_eng:pod-0:SC13-S010",
+          "pod": "pod-0",
+          "scene": 13,
+          "sentence": 10,
+          "speaker": "Tourist"
+        },
+        {
+          "id": "est_for_eng:pod-0-unrecorded:SC13-S010",
+          "pod": "pod-0-unrecorded",
+          "scene": 13,
+          "sentence": 10,
+          "speaker": "Tourist"
+        }
+      ],
+      "voice_id_spelling_legacy": true,
+      "voice": {
+        "id": "azure_et-EE-AnuNeural",
+        "provider": "azure",
+        "raw": "et-EE-AnuNeural",
+        "locale": "et-EE"
+      },
+      "after_normalized": "suur aitäh. te olete olnud väga abistav",
+      "action": "dry-run, nothing rendered or written"
+    },
+    {
+      "clip_id": "e0a51d26-46cf-42cf-883e-f7099142cf68",
+      "course": "est_for_eng",
+      "rule": "register",
+      "why": "scene 14 taxi driver -> V",
+      "before": "Tere. Kas saad mind viia rongijaama, palun?",
+      "after": "Tere. Kas saate mind viia rongijaama, palun?",
+      "s3_key": "mastered/60152247-A9ED-4438-81A4-8B5360F408CA.mp3",
+      "voice_id": "et-EE-KertNeural",
+      "duration_ms": 4176,
+      "file_size_bytes": null,
+      "audio_revision": 1,
+      "role": "target1",
+      "language": "est",
+      "audio_text": "Tere. Kas saad mind viia rongijaama, palun?",
+      "rows": [
+        {
+          "id": "est_for_eng:pod-0:SC14-S001",
+          "pod": "pod-0",
+          "scene": 14,
+          "sentence": 1,
+          "speaker": "Passenger"
+        },
+        {
+          "id": "est_for_eng:pod-0-unrecorded:SC14-S001",
+          "pod": "pod-0-unrecorded",
+          "scene": 14,
+          "sentence": 1,
+          "speaker": "Passenger"
+        }
+      ],
+      "voice_id_spelling_legacy": true,
+      "voice": {
+        "id": "azure_et-EE-KertNeural",
+        "provider": "azure",
+        "raw": "et-EE-KertNeural",
+        "locale": "et-EE"
+      },
+      "after_normalized": "tere. kas saate mind viia rongijaama, palun?",
+      "action": "dry-run, nothing rendered or written"
+    },
+    {
+      "clip_id": "ad148ea3-55b5-46d3-92ea-e7da6d4c5764",
+      "course": "est_for_eng",
+      "rule": "register",
+      "why": "scene 14 taxi driver -> V",
+      "before": "Kuidas arvad, kui kaua see võtab?",
+      "after": "Kuidas arvate, kui kaua see võtab?",
+      "s3_key": "mastered/4918D357-04DD-4624-9BA8-852502953A2C.mp3",
+      "voice_id": "et-EE-KertNeural",
+      "duration_ms": 2760,
+      "file_size_bytes": null,
+      "audio_revision": 1,
+      "role": "target1",
+      "language": "est",
+      "audio_text": "Kuidas arvad, kui kaua see võtab?",
+      "rows": [
+        {
+          "id": "est_for_eng:pod-0:SC14-S003",
+          "pod": "pod-0",
+          "scene": 14,
+          "sentence": 3,
+          "speaker": "Passenger"
+        },
+        {
+          "id": "est_for_eng:pod-0-unrecorded:SC14-S003",
+          "pod": "pod-0-unrecorded",
+          "scene": 14,
+          "sentence": 3,
+          "speaker": "Passenger"
+        }
+      ],
+      "voice_id_spelling_legacy": true,
+      "voice": {
+        "id": "azure_et-EE-KertNeural",
+        "provider": "azure",
+        "raw": "et-EE-KertNeural",
+        "locale": "et-EE"
+      },
+      "after_normalized": "kuidas arvate, kui kaua see võtab?",
+      "action": "dry-run, nothing rendered or written"
+    },
+    {
+      "clip_id": "b5738c17-c5a6-4ae5-8097-18ddccca8ae4",
+      "course": "est_for_eng",
+      "rule": "register",
+      "why": "scene 14 taxi driver -> V",
+      "before": "Kas sa tead, kust saan jaamas pileti?",
+      "after": "Kas te teate, kust saan jaamas pileti?",
+      "s3_key": "mastered/B7AFA437-64F4-4507-997A-35EA9D4B1548.mp3",
+      "voice_id": "et-EE-KertNeural",
+      "duration_ms": 3024,
+      "file_size_bytes": null,
+      "audio_revision": 1,
+      "role": "target1",
+      "language": "est",
+      "audio_text": "Kas sa tead, kust saan jaamas pileti?",
+      "rows": [
+        {
+          "id": "est_for_eng:pod-0:SC14-S005",
+          "pod": "pod-0",
+          "scene": 14,
+          "sentence": 5,
+          "speaker": "Passenger"
+        },
+        {
+          "id": "est_for_eng:pod-0-unrecorded:SC14-S005",
+          "pod": "pod-0-unrecorded",
+          "scene": 14,
+          "sentence": 5,
+          "speaker": "Passenger"
+        }
+      ],
+      "voice_id_spelling_legacy": true,
+      "voice": {
+        "id": "azure_et-EE-KertNeural",
+        "provider": "azure",
+        "raw": "et-EE-KertNeural",
+        "locale": "et-EE"
+      },
+      "after_normalized": "kas te teate, kust saan jaamas pileti?",
+      "action": "dry-run, nothing rendered or written"
+    },
+    {
+      "clip_id": "f34deaec-a756-4d76-9a06-61c9319840d4",
+      "course": "est_for_eng",
+      "rule": "register",
+      "why": "scene 14 taxi driver -> V",
+      "before": "Jah, jätan su just piletikassa juurde maha.",
+      "after": "Jah, jätan teid just piletikassa juurde maha.",
+      "s3_key": "mastered/3FAFDD3D-9A94-4282-BE42-482071F0D36A.mp3",
+      "voice_id": "et-EE-AnuNeural",
+      "duration_ms": 3528,
+      "file_size_bytes": null,
+      "audio_revision": 1,
+      "role": "target1",
+      "language": "est",
+      "audio_text": "Jah, jätan su just piletikassa juurde maha.",
+      "rows": [
+        {
+          "id": "est_for_eng:pod-0:SC14-S006",
+          "pod": "pod-0",
+          "scene": 14,
+          "sentence": 6,
+          "speaker": "Driver"
+        },
+        {
+          "id": "est_for_eng:pod-0-unrecorded:SC14-S006",
+          "pod": "pod-0-unrecorded",
+          "scene": 14,
+          "sentence": 6,
+          "speaker": "Driver"
+        }
+      ],
+      "voice_id_spelling_legacy": true,
+      "voice": {
+        "id": "azure_et-EE-AnuNeural",
+        "provider": "azure",
+        "raw": "et-EE-AnuNeural",
+        "locale": "et-EE"
+      },
+      "after_normalized": "jah, jätan teid just piletikassa juurde maha",
+      "action": "dry-run, nothing rendered or written"
+    }
+  ]
+}

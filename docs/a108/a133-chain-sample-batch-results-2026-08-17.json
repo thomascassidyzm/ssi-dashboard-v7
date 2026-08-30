@@ -1,0 +1,1111 @@
+[
+  {
+    "key": "01-nld-clicker-reference",
+    "provider": "xai",
+    "voice": "247783ebdd51",
+    "voiceLabel": "Noor — xai_247783ebdd51, nld_for_eng pod-0 cast",
+    "tail": "THE KNOWN CLICKER — two impulses 260ms and 380ms past last phonation",
+    "text": "Ik wil graag een glas bitter, alstublieft.",
+    "guard": {
+      "refused": null,
+      "trimmed": false,
+      "removedMs": 0,
+      "eosMs": 2922
+    },
+    "before": {
+      "label": "before — old chain",
+      "durationMs": 3168,
+      "eosMs": 2937,
+      "postEosMs": 231,
+      "roomFloorDb": -65.5,
+      "impulses": [],
+      "lufs": -17
+    },
+    "after": {
+      "label": "after — new chain",
+      "durationMs": 3168,
+      "eosMs": 2937,
+      "postEosMs": 231,
+      "roomFloorDb": -65.5,
+      "impulses": [],
+      "lufs": -17
+    },
+    "finalWord": {
+      "ok": false,
+      "unit": "final word \"alstublieft\"",
+      "heard": "Ik wil graag een glas bitter, alsjeblieft."
+    },
+    "deltaMs": 0
+  },
+  {
+    "key": "02-nld-clicker-plosive",
+    "provider": "xai",
+    "voice": "247783ebdd51",
+    "voiceLabel": "Noor — xai_247783ebdd51, the clicker",
+    "tail": "HARD — word-final voiceless plosive /p/, the burst the 40ms rule could mislabel",
+    "text": "Ik denk dat het beter is als we nu even stoppen.",
+    "guard": {
+      "refused": null,
+      "trimmed": true,
+      "removedMs": 66,
+      "eosMs": 3092
+    },
+    "before": {
+      "label": "before — old chain",
+      "durationMs": 3408,
+      "eosMs": 3122,
+      "postEosMs": 286,
+      "roomFloorDb": -66.1,
+      "impulses": [],
+      "lufs": -16.7
+    },
+    "after": {
+      "label": "after — new chain",
+      "durationMs": 3342,
+      "eosMs": 3122,
+      "postEosMs": 220,
+      "roomFloorDb": -65.4,
+      "impulses": [],
+      "lufs": -16.7
+    },
+    "finalWord": {
+      "ok": true,
+      "unit": "final word \"stoppen\"",
+      "heard": "Ik denk dat het beter is als we nu even stoppen."
+    },
+    "deltaMs": 66
+  },
+  {
+    "key": "03-eng-tom-clone-sibilant",
+    "provider": "xai",
+    "voice": "gfzdpspr5fdp",
+    "voiceLabel": "Tom's own clone — 325,223 clips",
+    "tail": "HARD — sibilant /s/ ending, high-frequency low-energy trail",
+    "text": "She always says the buses leave from the other side.",
+    "guard": {
+      "refused": null,
+      "trimmed": true,
+      "removedMs": 83,
+      "eosMs": 3147
+    },
+    "before": {
+      "label": "before — old chain",
+      "durationMs": 3480,
+      "eosMs": 3177,
+      "postEosMs": 303,
+      "roomFloorDb": -60.5,
+      "impulses": [],
+      "lufs": -17.7
+    },
+    "after": {
+      "label": "after — new chain",
+      "durationMs": 3397,
+      "eosMs": 3177,
+      "postEosMs": 220,
+      "roomFloorDb": -60.2,
+      "impulses": [],
+      "lufs": -17.7
+    },
+    "finalWord": {
+      "ok": true,
+      "unit": "final word \"side\"",
+      "heard": "She always says the buses leave from the other side."
+    },
+    "deltaMs": 83
+  },
+  {
+    "key": "04-eng-olivia-plosive",
+    "provider": "xai",
+    "voice": "bedd6226",
+    "voiceLabel": "Olivia — 150,237 clips",
+    "tail": "HARD — word-final /p/ burst after an unstressed syllable",
+    "text": "I think that after all of this we should probably just stop.",
+    "guard": {
+      "refused": null,
+      "trimmed": true,
+      "removedMs": 62,
+      "eosMs": 3408
+    },
+    "before": {
+      "label": "before — old chain",
+      "durationMs": 3720,
+      "eosMs": 3453,
+      "postEosMs": 267,
+      "roomFloorDb": -56.8,
+      "impulses": [],
+      "lufs": -17.1
+    },
+    "after": {
+      "label": "after — new chain",
+      "durationMs": 3658,
+      "eosMs": 3453,
+      "postEosMs": 205,
+      "roomFloorDb": -56.6,
+      "impulses": [],
+      "lufs": -17.2
+    },
+    "finalWord": {
+      "ok": true,
+      "unit": "final word \"stop\"",
+      "heard": "I think that after all of this we should probably just stop."
+    },
+    "deltaMs": 62
+  },
+  {
+    "key": "05-eng-eve-fricative",
+    "provider": "xai",
+    "voice": "eve",
+    "voiceLabel": "Eve — 162,906 clips",
+    "tail": "HARD — voiceless fricative /θ/, the quietest ending English has",
+    "text": "By the end of it, what she said was barely more than a breath.",
+    "guard": {
+      "refused": null,
+      "trimmed": false,
+      "removedMs": 0,
+      "eosMs": 3613
+    },
+    "before": {
+      "label": "before — old chain",
+      "durationMs": 3720,
+      "eosMs": 3613,
+      "postEosMs": 107,
+      "roomFloorDb": -74.4,
+      "impulses": [],
+      "lufs": -16.5
+    },
+    "after": {
+      "label": "after — new chain",
+      "durationMs": 3720,
+      "eosMs": 3613,
+      "postEosMs": 107,
+      "roomFloorDb": -74.4,
+      "impulses": [],
+      "lufs": -16.5
+    },
+    "finalWord": {
+      "ok": true,
+      "unit": "final word \"breath\"",
+      "heard": "By the end of it, what she said was barely more than a breath."
+    },
+    "deltaMs": 0
+  },
+  {
+    "key": "06-eng-leo-control",
+    "provider": "xai",
+    "voice": "leo",
+    "voiceLabel": "Leo — 90,044 clips",
+    "tail": "CONTROL — ordinary voiced declarative ending",
+    "text": "I've been trying to learn this for about three months now.",
+    "guard": {
+      "refused": null,
+      "trimmed": true,
+      "removedMs": 46,
+      "eosMs": 3112
+    },
+    "before": {
+      "label": "before — old chain",
+      "durationMs": 3408,
+      "eosMs": 3127,
+      "postEosMs": 281,
+      "roomFloorDb": -62.4,
+      "impulses": [],
+      "lufs": -17
+    },
+    "after": {
+      "label": "after — new chain",
+      "durationMs": 3362,
+      "eosMs": 3127,
+      "postEosMs": 235,
+      "roomFloorDb": -62,
+      "impulses": [],
+      "lufs": -17
+    },
+    "finalWord": {
+      "ok": true,
+      "unit": "final word \"now\"",
+      "heard": "I've been trying to learn this for about three months now."
+    },
+    "deltaMs": 46
+  },
+  {
+    "key": "07-nld-femke-vowel",
+    "provider": "xai",
+    "voice": "58d27475085e",
+    "voiceLabel": "Femke — xAI Dutch, measured clean in A-133",
+    "tail": "HARD — quiet unstressed final schwa",
+    "text": "Ik probeer dit nu al ongeveer drie maanden te leren.",
+    "guard": {
+      "refused": null,
+      "trimmed": false,
+      "removedMs": 0,
+      "eosMs": 2902
+    },
+    "before": {
+      "label": "before — old chain",
+      "durationMs": 3000,
+      "eosMs": 2902,
+      "postEosMs": 98,
+      "roomFloorDb": -87.9,
+      "impulses": [],
+      "lufs": -16.5
+    },
+    "after": {
+      "label": "after — new chain",
+      "durationMs": 3000,
+      "eosMs": 2902,
+      "postEosMs": 98,
+      "roomFloorDb": -87.9,
+      "impulses": [],
+      "lufs": -16.5
+    },
+    "finalWord": {
+      "ok": true,
+      "unit": "final word \"leren\"",
+      "heard": "Ik probeer dit nu al ongeveer drie maanden te leren."
+    },
+    "deltaMs": 0
+  },
+  {
+    "key": "08-eng-sonia-control",
+    "provider": "azure",
+    "voice": "en-GB-SoniaNeural",
+    "voiceLabel": "Sonia (Azure) — 414,080 clips, heaviest voice in the estate",
+    "tail": "CONTROL — ordinary declarative",
+    "text": "I would rather sit outside if the weather stays like this.",
+    "guard": {
+      "refused": null,
+      "trimmed": true,
+      "removedMs": 98,
+      "eosMs": 3252
+    },
+    "before": {
+      "label": "before — old chain",
+      "durationMs": 3600,
+      "eosMs": 3257,
+      "postEosMs": 343,
+      "roomFloorDb": -78.6,
+      "impulses": [],
+      "lufs": -16.5
+    },
+    "after": {
+      "label": "after — new chain",
+      "durationMs": 3502,
+      "eosMs": 3257,
+      "postEosMs": 245,
+      "roomFloorDb": -76.2,
+      "impulses": [],
+      "lufs": -16.4
+    },
+    "finalWord": {
+      "ok": true,
+      "unit": "final word \"this\"",
+      "heard": "I would rather sit outside if the weather stays like this."
+    },
+    "deltaMs": 98
+  },
+  {
+    "key": "09-eng-ryan-plosive",
+    "provider": "azure",
+    "voice": "en-GB-RyanNeural",
+    "voiceLabel": "Ryan (Azure) — 79,120 clips, the biggest mover in the money-voice set",
+    "tail": "HARD — final /t/ plosive; this voice pads ~0.6s of dead air",
+    "text": "I'd rather wait here until the rain has completely stopped.",
+    "guard": {
+      "refused": null,
+      "trimmed": true,
+      "removedMs": 621,
+      "eosMs": 3017
+    },
+    "before": {
+      "label": "before — old chain",
+      "durationMs": 3888,
+      "eosMs": 3022,
+      "postEosMs": 866,
+      "roomFloorDb": -67.5,
+      "impulses": [],
+      "lufs": -16.7
+    },
+    "after": {
+      "label": "after — new chain",
+      "durationMs": 3267,
+      "eosMs": 3022,
+      "postEosMs": 245,
+      "roomFloorDb": -67.6,
+      "impulses": [],
+      "lufs": -16.6
+    },
+    "finalWord": {
+      "ok": true,
+      "unit": "final word \"stopped\"",
+      "heard": "I'd rather wait here until the rain has completely stopped."
+    },
+    "deltaMs": 621
+  },
+  {
+    "key": "10-deu-katja-devoiced",
+    "provider": "azure",
+    "voice": "de-DE-KatjaNeural",
+    "voiceLabel": "Katja (Azure) — heaviest German voice",
+    "tail": "HARD — German final devoicing, /d/ surfacing as a weak /t/",
+    "text": "Das habe ich so wirklich niemals zu ihm gesagt.",
+    "guard": {
+      "refused": null,
+      "trimmed": true,
+      "removedMs": 640,
+      "eosMs": 2566
+    },
+    "before": {
+      "label": "before — old chain",
+      "durationMs": 3456,
+      "eosMs": 2566,
+      "postEosMs": 890,
+      "roomFloorDb": -78.8,
+      "impulses": [],
+      "lufs": -16.6
+    },
+    "after": {
+      "label": "after — new chain",
+      "durationMs": 2816,
+      "eosMs": 2566,
+      "postEosMs": 250,
+      "roomFloorDb": -76.3,
+      "impulses": [],
+      "lufs": -16.5
+    },
+    "finalWord": {
+      "ok": true,
+      "unit": "final word \"gesagt\"",
+      "heard": "Das habe ich so wirklich niemals zu ihm gesagt."
+    },
+    "deltaMs": 640
+  },
+  {
+    "key": "11-deu-conrad-cluster",
+    "provider": "azure",
+    "voice": "de-DE-ConradNeural",
+    "voiceLabel": "Conrad (Azure) — German male",
+    "tail": "HARD — final /st/ cluster, sibilant into plosive",
+    "text": "Ich weiß nicht, ob das für heute wirklich genug ist.",
+    "guard": {
+      "refused": null,
+      "trimmed": true,
+      "removedMs": 576,
+      "eosMs": 2846
+    },
+    "before": {
+      "label": "before — old chain",
+      "durationMs": 3672,
+      "eosMs": 2851,
+      "postEosMs": 821,
+      "roomFloorDb": -82.4,
+      "impulses": [],
+      "lufs": -16.8
+    },
+    "after": {
+      "label": "after — new chain",
+      "durationMs": 3096,
+      "eosMs": 2851,
+      "postEosMs": 245,
+      "roomFloorDb": -82.4,
+      "impulses": [],
+      "lufs": -16.7
+    },
+    "finalWord": {
+      "ok": true,
+      "unit": "final word \"ist\"",
+      "heard": "Ich weiß nicht, ob das für heute wirklich genug ist."
+    },
+    "deltaMs": 576
+  },
+  {
+    "key": "12-fra-celeste-vowel",
+    "provider": "azure",
+    "voice": "fr-FR-CelesteNeural",
+    "voiceLabel": "Céleste (Azure) — heaviest metropolitan French voice",
+    "tail": "HARD — quiet rounded final vowel /ø/, no consonant to mark the end",
+    "text": "Je crois qu'il vaut mieux attendre encore un peu.",
+    "guard": {
+      "refused": null,
+      "trimmed": true,
+      "removedMs": 609,
+      "eosMs": 2165
+    },
+    "before": {
+      "label": "before — old chain",
+      "durationMs": 3024,
+      "eosMs": 2170,
+      "postEosMs": 854,
+      "roomFloorDb": -78.8,
+      "impulses": [],
+      "lufs": -16.6
+    },
+    "after": {
+      "label": "after — new chain",
+      "durationMs": 2415,
+      "eosMs": 2170,
+      "postEosMs": 245,
+      "roomFloorDb": -76.4,
+      "impulses": [],
+      "lufs": -16.6
+    },
+    "finalWord": {
+      "ok": true,
+      "unit": "final word \"peu\"",
+      "heard": "Je crois qu'il vaut mieux attendre encore un peu."
+    },
+    "deltaMs": 609
+  },
+  {
+    "key": "13-fra-antoine-control",
+    "provider": "azure",
+    "voice": "fr-CA-AntoineNeural",
+    "voiceLabel": "Antoine (Azure) — heaviest French voice overall (fr-CA)",
+    "tail": "CONTROL — ordinary vowel ending",
+    "text": "Il est parti sans rien dire du tout.",
+    "guard": {
+      "refused": null,
+      "trimmed": true,
+      "removedMs": 567,
+      "eosMs": 1919
+    },
+    "before": {
+      "label": "before — old chain",
+      "durationMs": 2736,
+      "eosMs": 1929,
+      "postEosMs": 807,
+      "roomFloorDb": -78.9,
+      "impulses": [],
+      "lufs": -16.8
+    },
+    "after": {
+      "label": "after — new chain",
+      "durationMs": 2169,
+      "eosMs": 1929,
+      "postEosMs": 240,
+      "roomFloorDb": -76.4,
+      "impulses": [],
+      "lufs": -16.8
+    },
+    "finalWord": {
+      "ok": true,
+      "unit": "final word \"tout\"",
+      "heard": "Il est parti sans rien dire du tout."
+    },
+    "deltaMs": 567
+  },
+  {
+    "key": "14-spa-elvira-vowel",
+    "provider": "azure",
+    "voice": "es-ES-ElviraNeural",
+    "voiceLabel": "Elvira (Azure) — heaviest Spanish voice",
+    "tail": "HARD — unstressed final /a/, the softest ending Spanish makes",
+    "text": "Quiero terminar esto antes de que llegue mi hermana.",
+    "guard": {
+      "refused": null,
+      "trimmed": true,
+      "removedMs": 596,
+      "eosMs": 2646
+    },
+    "before": {
+      "label": "before — old chain",
+      "durationMs": 3492,
+      "eosMs": 2651,
+      "postEosMs": 841,
+      "roomFloorDb": -69.3,
+      "impulses": [],
+      "lufs": -16.9
+    },
+    "after": {
+      "label": "after — new chain",
+      "durationMs": 2896,
+      "eosMs": 2651,
+      "postEosMs": 245,
+      "roomFloorDb": -69.3,
+      "impulses": [],
+      "lufs": -16.8
+    },
+    "finalWord": {
+      "ok": true,
+      "unit": "final word \"hermana\"",
+      "heard": "Quiero terminar esto antes de que llegue mi hermana."
+    },
+    "deltaMs": 596
+  },
+  {
+    "key": "15-spa-alvaro-sibilant",
+    "provider": "azure",
+    "voice": "es-ES-AlvaroNeural",
+    "voiceLabel": "Álvaro (Azure) — Spanish male, the largest cut in the money set",
+    "tail": "HARD — final /s/ on an unstressed syllable",
+    "text": "No sé si vamos a llegar a tiempo, pero lo intentamos.",
+    "guard": {
+      "refused": null,
+      "trimmed": true,
+      "removedMs": 683,
+      "eosMs": 3027
+    },
+    "before": {
+      "label": "before — old chain",
+      "durationMs": 3960,
+      "eosMs": 3037,
+      "postEosMs": 923,
+      "roomFloorDb": -74.4,
+      "impulses": [],
+      "lufs": -16.8
+    },
+    "after": {
+      "label": "after — new chain",
+      "durationMs": 3277,
+      "eosMs": 3032,
+      "postEosMs": 245,
+      "roomFloorDb": -72.9,
+      "impulses": [],
+      "lufs": -16.7
+    },
+    "finalWord": {
+      "ok": true,
+      "unit": "final word \"intentamos\"",
+      "heard": "No sé si vamos a llegar a tiempo, pero lo intentamos."
+    },
+    "deltaMs": 683
+  },
+  {
+    "key": "16-zho-xiaochen-particle",
+    "provider": "azure",
+    "voice": "zh-CN-XiaochenNeural",
+    "voiceLabel": "Xiaochen (Azure) — heaviest Chinese voice",
+    "tail": "HARD — neutral-tone final particle 吗, quiet and short by design",
+    "text": "我想在开始之前喝一杯水，可以吗？",
+    "guard": {
+      "refused": null,
+      "trimmed": true,
+      "removedMs": 309,
+      "eosMs": 2897
+    },
+    "before": {
+      "label": "before — old chain",
+      "durationMs": 3456,
+      "eosMs": 2897,
+      "postEosMs": 559,
+      "roomFloorDb": -78.8,
+      "impulses": [],
+      "lufs": -16.5
+    },
+    "after": {
+      "label": "after — new chain",
+      "durationMs": 3147,
+      "eosMs": 2897,
+      "postEosMs": 250,
+      "roomFloorDb": -78.8,
+      "impulses": [],
+      "lufs": -16.4
+    },
+    "finalWord": {
+      "ok": true,
+      "unit": "last 3 characters \"可以吗\"",
+      "heard": "我想在开始之前喝一杯水,可以吗?"
+    },
+    "deltaMs": 309
+  },
+  {
+    "key": "17-jpn-shiori-devoiced",
+    "provider": "azure",
+    "voice": "ja-JP-ShioriNeural",
+    "voiceLabel": "Shiori (Azure) — heaviest Japanese voice",
+    "tail": "HARD — devoiced final vowel in ます, near-whispered by rule",
+    "text": "これは思っていたよりもずっと難しいと思います。",
+    "guard": {
+      "refused": null,
+      "trimmed": true,
+      "removedMs": 658,
+      "eosMs": 3448
+    },
+    "before": {
+      "label": "before — old chain",
+      "durationMs": 4356,
+      "eosMs": 3458,
+      "postEosMs": 898,
+      "roomFloorDb": -81,
+      "impulses": [],
+      "lufs": -16.5
+    },
+    "after": {
+      "label": "after — new chain",
+      "durationMs": 3698,
+      "eosMs": 3458,
+      "postEosMs": 240,
+      "roomFloorDb": -81,
+      "impulses": [],
+      "lufs": -16.5
+    },
+    "finalWord": {
+      "ok": true,
+      "unit": "last 3 characters \"います\"",
+      "heard": "これは思っていたよりもずっと難しいと思います。"
+    },
+    "deltaMs": 658
+  },
+  {
+    "key": "18-jpn-naoki-devoiced",
+    "provider": "azure",
+    "voice": "ja-JP-NaokiNeural",
+    "voiceLabel": "Naoki (Azure) — Japanese male",
+    "tail": "HARD — devoiced final vowel in します",
+    "text": "明日の朝またこちらに来ますので、よろしくお願いします。",
+    "guard": {
+      "refused": null,
+      "trimmed": true,
+      "removedMs": 656,
+      "eosMs": 3954
+    },
+    "before": {
+      "label": "before — old chain",
+      "durationMs": 4860,
+      "eosMs": 3954,
+      "postEosMs": 906,
+      "roomFloorDb": -67.5,
+      "impulses": [],
+      "lufs": -16.6
+    },
+    "after": {
+      "label": "after — new chain",
+      "durationMs": 4204,
+      "eosMs": 3954,
+      "postEosMs": 250,
+      "roomFloorDb": -67.6,
+      "impulses": [],
+      "lufs": -16.6
+    },
+    "finalWord": {
+      "ok": true,
+      "unit": "last 3 characters \"します\"",
+      "heard": "明日の朝またこちらに来ますのでよろしくお願いします"
+    },
+    "deltaMs": 656
+  },
+  {
+    "key": "19-cym-nia-lateral",
+    "provider": "azure",
+    "voice": "cy-GB-NiaNeural",
+    "voiceLabel": "Nia (Azure) — Welsh, the house language",
+    "tail": "HARD — Welsh voiceless lateral /ɬ/ and a final /l/, both low-energy",
+    "text": "Dw i ddim yn siŵr o gwbl fod hynny'n wir.",
+    "guard": {
+      "refused": null,
+      "trimmed": true,
+      "removedMs": 534,
+      "eosMs": 2636
+    },
+    "before": {
+      "label": "before — old chain",
+      "durationMs": 3420,
+      "eosMs": 2636,
+      "postEosMs": 784,
+      "roomFloorDb": -85.7,
+      "impulses": [],
+      "lufs": -16.5
+    },
+    "after": {
+      "label": "after — new chain",
+      "durationMs": 2886,
+      "eosMs": 2636,
+      "postEosMs": 250,
+      "roomFloorDb": -85.7,
+      "impulses": [],
+      "lufs": -16.5
+    },
+    "finalWord": {
+      "ok": true,
+      "unit": "final word \"wir\"",
+      "heard": "Dwi ddim yn siwr o gwbl fod hynny'n wir."
+    },
+    "deltaMs": 534
+  },
+  {
+    "key": "20-deu-elevenlabs",
+    "provider": "elevenlabs",
+    "voiceLabel": "elevenlabs_FVdzAUsp8apoOdc0907A — 2,740 clips across the estate",
+    "error": "TTS generation failed (non-retriable): ElevenLabs API error (400): {\"detail\":{\"type\":\"authentication_error\",\"code\":\"invalid_api_key\",\"message\":\"API key ID used as API key - only valid API keys can be used. API keys start with 'sk_' and are shown when the key is created or rotated.\",\"status\":\"api_key_id_used_as_api_key\",\"request_id\":\"bb40e44dd6fc51aa47584e506b39d9d2\",\"param\":\"api_key\",\"docs_url\":\"https://elevenlabs.io/docs/api-reference/authentication\"}}"
+  },
+  {
+    "key": "21-nld-clicker-repeat-1",
+    "provider": "xai",
+    "voice": "247783ebdd51",
+    "voiceLabel": "Noor — xai_247783ebdd51, repeat render 1 of 6",
+    "tail": "THE CLICKER, HUNTED — independent render of the reference line",
+    "text": "Ik wil graag een glas bitter, alstublieft.",
+    "guard": {
+      "refused": null,
+      "trimmed": true,
+      "removedMs": 144,
+      "eosMs": 2942
+    },
+    "before": {
+      "label": "before — old chain",
+      "durationMs": 3336,
+      "eosMs": 2942,
+      "postEosMs": 394,
+      "roomFloorDb": -63.3,
+      "impulses": [],
+      "lufs": -17
+    },
+    "after": {
+      "label": "after — new chain",
+      "durationMs": 3192,
+      "eosMs": 2957,
+      "postEosMs": 235,
+      "roomFloorDb": -63.8,
+      "impulses": [],
+      "lufs": -17
+    },
+    "finalWord": {
+      "ok": true,
+      "unit": "final word \"alstublieft\"",
+      "heard": "Ik wil graag een glas bitter, alstublieft."
+    },
+    "deltaMs": 144
+  },
+  {
+    "key": "22-nld-clicker-repeat-2",
+    "provider": "xai",
+    "voice": "247783ebdd51",
+    "voiceLabel": "Noor — xai_247783ebdd51, repeat render 2 of 6",
+    "tail": "THE CLICKER, HUNTED — independent render of the reference line",
+    "text": "Ik wil graag een glas bitter, alstublieft.",
+    "guard": {
+      "refused": null,
+      "trimmed": true,
+      "removedMs": 253,
+      "eosMs": 2425
+    },
+    "before": {
+      "label": "before — old chain",
+      "durationMs": 2928,
+      "eosMs": 2430,
+      "postEosMs": 498,
+      "roomFloorDb": -62.8,
+      "impulses": [
+        {
+          "startMs": 2706,
+          "peakDb": -40.9,
+          "overFloorDb": 21.9
+        },
+        {
+          "startMs": 2771,
+          "peakDb": -37.6,
+          "overFloorDb": 25.2
+        }
+      ],
+      "lufs": -16.9
+    },
+    "after": {
+      "label": "after — new chain",
+      "durationMs": 2675,
+      "eosMs": 2430,
+      "postEosMs": 245,
+      "roomFloorDb": -62.8,
+      "impulses": [],
+      "lufs": -16.7
+    },
+    "finalWord": {
+      "ok": false,
+      "unit": "final word \"alstublieft\"",
+      "heard": "Ik wil graag een glas bitter, alsjeblieft."
+    },
+    "deltaMs": 253
+  },
+  {
+    "key": "23-nld-clicker-repeat-3",
+    "provider": "xai",
+    "voice": "247783ebdd51",
+    "voiceLabel": "Noor — xai_247783ebdd51, repeat render 3 of 6",
+    "tail": "THE CLICKER, HUNTED — independent render of the reference line",
+    "text": "Ik wil graag een glas bitter, alstublieft.",
+    "guard": {
+      "refused": null,
+      "trimmed": true,
+      "removedMs": 318,
+      "eosMs": 2360
+    },
+    "before": {
+      "label": "before — old chain",
+      "durationMs": 2928,
+      "eosMs": 2365,
+      "postEosMs": 563,
+      "roomFloorDb": -65.4,
+      "impulses": [
+        {
+          "startMs": 2641,
+          "peakDb": -40.8,
+          "overFloorDb": 24.6
+        },
+        {
+          "startMs": 2806,
+          "peakDb": -31.6,
+          "overFloorDb": 33.9
+        }
+      ],
+      "lufs": -16.7
+    },
+    "after": {
+      "label": "after — new chain",
+      "durationMs": 2610,
+      "eosMs": 2365,
+      "postEosMs": 245,
+      "roomFloorDb": -65.4,
+      "impulses": [],
+      "lufs": -16.7
+    },
+    "finalWord": {
+      "ok": false,
+      "unit": "final word \"alstublieft\"",
+      "heard": "Ik wil graag een glas bitter, alsjeblieft."
+    },
+    "deltaMs": 318
+  },
+  {
+    "key": "24-nld-clicker-repeat-4",
+    "provider": "xai",
+    "voice": "247783ebdd51",
+    "voiceLabel": "Noor — xai_247783ebdd51, repeat render 4 of 6",
+    "tail": "THE CLICKER, HUNTED — independent render of the reference line",
+    "text": "Ik wil graag een glas bitter, alstublieft.",
+    "guard": {
+      "refused": null,
+      "trimmed": true,
+      "removedMs": 511,
+      "eosMs": 2335
+    },
+    "before": {
+      "label": "before — old chain",
+      "durationMs": 3096,
+      "eosMs": 2355,
+      "postEosMs": 741,
+      "roomFloorDb": -63.8,
+      "impulses": [
+        {
+          "startMs": 2651,
+          "peakDb": -19.9,
+          "overFloorDb": 43.8
+        },
+        {
+          "startMs": 2756,
+          "peakDb": -18.8,
+          "overFloorDb": 45
+        }
+      ],
+      "lufs": -17.4
+    },
+    "after": {
+      "label": "after — new chain",
+      "durationMs": 2585,
+      "eosMs": 2355,
+      "postEosMs": 230,
+      "roomFloorDb": -64.3,
+      "impulses": [],
+      "lufs": -17.2
+    },
+    "finalWord": {
+      "ok": false,
+      "unit": "final word \"alstublieft\"",
+      "heard": "Ik wil graag een glas bitter, alsjeblieft."
+    },
+    "deltaMs": 511
+  },
+  {
+    "key": "25-nld-clicker-repeat-5",
+    "provider": "xai",
+    "voice": "247783ebdd51",
+    "voiceLabel": "Noor — xai_247783ebdd51, repeat render 5 of 6",
+    "tail": "THE CLICKER, HUNTED — independent render of the reference line",
+    "text": "Ik wil graag een glas bitter, alstublieft.",
+    "guard": {
+      "refused": null,
+      "trimmed": true,
+      "removedMs": 544,
+      "eosMs": 2446
+    },
+    "before": {
+      "label": "before — old chain",
+      "durationMs": 3240,
+      "eosMs": 2871,
+      "postEosMs": 369,
+      "roomFloorDb": -62.3,
+      "impulses": [],
+      "lufs": -16.9
+    },
+    "after": {
+      "label": "after — new chain",
+      "durationMs": 2696,
+      "eosMs": 2471,
+      "postEosMs": 225,
+      "roomFloorDb": -62.8,
+      "impulses": [],
+      "lufs": -16.9
+    },
+    "finalWord": {
+      "ok": false,
+      "unit": "final word \"alstublieft\"",
+      "heard": "Ik wil graag een glas bitter als teblieft."
+    },
+    "deltaMs": 544
+  },
+  {
+    "key": "26-nld-clicker-repeat-6",
+    "provider": "xai",
+    "voice": "247783ebdd51",
+    "voiceLabel": "Noor — xai_247783ebdd51, repeat render 6 of 6",
+    "tail": "THE CLICKER, HUNTED — independent render of the reference line",
+    "text": "Ik wil graag een glas bitter, alstublieft.",
+    "guard": {
+      "refused": null,
+      "trimmed": true,
+      "removedMs": 222,
+      "eosMs": 2456
+    },
+    "before": {
+      "label": "before — old chain",
+      "durationMs": 2928,
+      "eosMs": 2481,
+      "postEosMs": 447,
+      "roomFloorDb": -61.1,
+      "impulses": [
+        {
+          "startMs": 2806,
+          "peakDb": -26.1,
+          "overFloorDb": 35
+        }
+      ],
+      "lufs": -16.9
+    },
+    "after": {
+      "label": "after — new chain",
+      "durationMs": 2706,
+      "eosMs": 2481,
+      "postEosMs": 225,
+      "roomFloorDb": -61.1,
+      "impulses": [],
+      "lufs": -17.1
+    },
+    "finalWord": {
+      "ok": false,
+      "unit": "final word \"alstublieft\"",
+      "heard": "Ik wil graag een glas bitter, alsjeblieft."
+    },
+    "deltaMs": 222
+  },
+  {
+    "key": "27-nld-fenna-azure",
+    "provider": "azure",
+    "voice": "nl-NL-FennaNeural",
+    "voiceLabel": "Fenna (Azure) — the Dutch family that came out clean in the blind test",
+    "tail": "CONTROL — the clean comparator for the clicker, same language",
+    "text": "Ik wil graag een glas bitter, alstublieft.",
+    "guard": {
+      "refused": null,
+      "trimmed": true,
+      "removedMs": 609,
+      "eosMs": 2741
+    },
+    "before": {
+      "label": "before — old chain",
+      "durationMs": 3600,
+      "eosMs": 2746,
+      "postEosMs": 854,
+      "roomFloorDb": -58,
+      "impulses": [],
+      "lufs": -16.6
+    },
+    "after": {
+      "label": "after — new chain",
+      "durationMs": 2991,
+      "eosMs": 2746,
+      "postEosMs": 245,
+      "roomFloorDb": -57.7,
+      "impulses": [],
+      "lufs": -16.5
+    },
+    "finalWord": {
+      "ok": false,
+      "unit": "final word \"alstublieft\"",
+      "heard": "Ik wil graag een glas bitter, alsjeblieft."
+    },
+    "deltaMs": 609
+  },
+  {
+    "key": "28-nld-thijs-sibilant",
+    "provider": "xai",
+    "voice": "a13662ba951c",
+    "voiceLabel": "Thijs — xAI Dutch male",
+    "tail": "HARD — final /s/ into a stop",
+    "text": "Kun je me vertellen waar het station is, alsjeblieft?",
+    "guard": {
+      "refused": null,
+      "trimmed": true,
+      "removedMs": 2,
+      "eosMs": 2436
+    },
+    "before": {
+      "label": "before — old chain",
+      "durationMs": 2688,
+      "eosMs": 2456,
+      "postEosMs": 232,
+      "roomFloorDb": -56.4,
+      "impulses": [],
+      "lufs": -17.7
+    },
+    "after": {
+      "label": "after — new chain",
+      "durationMs": 2686,
+      "eosMs": 2456,
+      "postEosMs": 230,
+      "roomFloorDb": -56.4,
+      "impulses": [],
+      "lufs": -17.6
+    },
+    "finalWord": {
+      "ok": true,
+      "unit": "final word \"alsjeblieft\"",
+      "heard": "Kun je me vertellen waar het station is alsjeblieft?"
+    },
+    "deltaMs": 2
+  },
+  {
+    "key": "29-zho-yunyi-particle",
+    "provider": "azure",
+    "voice": "zh-CN-YunyiMultilingualNeural",
+    "voiceLabel": "Yunyi (Azure) — Chinese male, 11,278 clips",
+    "tail": "HARD — sentence-final 了, unstressed and short",
+    "text": "我已经在这里等了很久了。",
+    "guard": {
+      "refused": null,
+      "trimmed": true,
+      "removedMs": 177,
+      "eosMs": 1949
+    },
+    "before": {
+      "label": "before — old chain",
+      "durationMs": 2376,
+      "eosMs": 1949,
+      "postEosMs": 427,
+      "roomFloorDb": -58.6,
+      "impulses": [],
+      "lufs": -17.2
+    },
+    "after": {
+      "label": "after — new chain",
+      "durationMs": 2199,
+      "eosMs": 1949,
+      "postEosMs": 250,
+      "roomFloorDb": -58.3,
+      "impulses": [],
+      "lufs": -17.2
+    },
+    "finalWord": {
+      "ok": true,
+      "unit": "last 3 characters \"很久了\"",
+      "heard": "我已经在这里等了很久了。"
+    },
+    "deltaMs": 177
+  }
+]
