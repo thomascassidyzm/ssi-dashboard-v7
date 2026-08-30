@@ -1,0 +1,37 @@
+{
+  "pod": "swe_for_eng:pod-1",
+  "course": "swe_for_eng",
+  "apply": false,
+  "at": "2026-08-24T12:51:12.561Z",
+  "split_rows": 98,
+  "whole_turn_state_rows_found": 2,
+  "new_slot_rows": 4,
+  "plan": [
+    {
+      "learner_id": "1f9a123c-55b5-4a81-8ebd-bb0430b307d4",
+      "from": "swe_for_eng:pod-1:SC02-S005",
+      "to": [
+        "swe_for_eng:pod-1:SC02-S005:s0",
+        "swe_for_eng:pod-1:SC02-S005:s1"
+      ],
+      "exposures": 57,
+      "before": {
+        "exposures": 57,
+        "updated_at": "2026-08-24T07:10:15.511Z"
+      }
+    },
+    {
+      "learner_id": "1f9a123c-55b5-4a81-8ebd-bb0430b307d4",
+      "from": "swe_for_eng:pod-1:SC03-S010",
+      "to": [
+        "swe_for_eng:pod-1:SC03-S010:s0",
+        "swe_for_eng:pod-1:SC03-S010:s1"
+      ],
+      "exposures": 42,
+      "before": {
+        "exposures": 42,
+        "updated_at": "2026-08-24T07:10:15.511Z"
+      }
+    }
+  ]
+}

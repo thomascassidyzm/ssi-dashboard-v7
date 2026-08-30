@@ -1,0 +1,129 @@
+{
+  "pass": "A-108 baltic-finnic",
+  "date": "2026-08-14",
+  "courses_examined": {
+    "fin_for_eng": 160,
+    "est_for_eng": 109,
+    "lav_for_eng": 101,
+    "lit_for_eng": 109
+  },
+  "drafts_examined_total": 479,
+  "rows_changed": 11,
+  "annotation_changes": 0,
+  "gender_changes": 5,
+  "register_changes": 6,
+  "target_text_draft_preserved": true,
+  "audio_generated": false,
+  "rows": [
+    {
+      "id": "fin_for_eng:pod-0:SC15-S002",
+      "course": "fin_for_eng",
+      "scene": 15,
+      "sentence": 2,
+      "limb": "register",
+      "before": "Voitko kertoa, paljonko tuo maksaa?",
+      "after": "Voitteko kertoa, paljonko tuo maksaa?",
+      "reason": "register T->V: asking a vendor a price; course renders identical English at 2/4 as \"Voitteko kertoa\""
+    },
+    {
+      "id": "fin_for_eng:pod-0:SC16-S002",
+      "course": "fin_for_eng",
+      "scene": 16,
+      "sentence": 2,
+      "limb": "register",
+      "before": "Puhuit hieman liian nopeasti, joten en ole varma, ymmärsinkö.",
+      "after": "Puhuitte hieman liian nopeasti, joten en ole varma, ymmärsinkö.",
+      "reason": "register T->V: adjacent 16/1 \"jos voitte puhua hitaasti\" and 15/9 \"teidan kieltanne\" address the same person with V"
+    },
+    {
+      "id": "fin_for_eng:pod-0:SC21-S004",
+      "course": "fin_for_eng",
+      "scene": 21,
+      "sentence": 4,
+      "limb": "register",
+      "before": "Voitko kertoa, missä vessa on?",
+      "after": "Voitteko kertoa, missä vessa on?",
+      "reason": "register T->V: asking venue staff for the toilet; same construction as 2/4"
+    },
+    {
+      "id": "fin_for_eng:pod-0:SC21-S007",
+      "course": "fin_for_eng",
+      "scene": 21,
+      "sentence": 7,
+      "limb": "register",
+      "before": "Voitko sanoa sen uudelleen?",
+      "after": "Voitteko sanoa sen uudelleen?",
+      "reason": "register T->V: same stranger thread as 21/4; 21/11-13 in the scene are already V"
+    },
+    {
+      "id": "lav_for_eng:pod-0-unrecorded:SC16-S002",
+      "course": "lav_for_eng",
+      "scene": 16,
+      "sentence": 2,
+      "limb": "gender",
+      "before": "Tu runāji nedaudz par ātru, tāpēc es neesmu drošs, vai es sapratu.",
+      "after": "Tu runāji nedaudz par ātru, tāpēc es neesmu droša, vai es sapratu.",
+      "reason": "gender: speaker is Learner, cast Everita (female) -> drosa"
+    },
+    {
+      "id": "lav_for_eng:pod-0-unrecorded:SC16-S010",
+      "course": "lav_for_eng",
+      "scene": 16,
+      "sentence": 10,
+      "limb": "register",
+      "before": "Piedod, man nav skaidras naudas.",
+      "after": "Atvainojiet, man nav skaidras naudas.",
+      "reason": "register T->V: addressed to a cashier (follows 16/9 \"we only take cash\"); 16/6 in the same scene already uses V \"jums\""
+    },
+    {
+      "id": "lav_for_eng:pod-0-unrecorded:SC18-S009",
+      "course": "lav_for_eng",
+      "scene": 18,
+      "sentence": 9,
+      "limb": "register",
+      "before": "Piedod, mans dēls pazaudēja savu biļeti.",
+      "after": "Atvainojiet, mans dēls pazaudēja savu biļeti.",
+      "reason": "register T->V: addressed to transport staff; 18/2-18/3 in the same scene already use V \"jums\""
+    },
+    {
+      "id": "lit_for_eng:pod-0-unrecorded:SC16-S002",
+      "course": "lit_for_eng",
+      "scene": 16,
+      "sentence": 2,
+      "limb": "gender",
+      "before": "Tu kalbėjai truputį per greitai, tad nesu tikras, ar supratau.",
+      "after": "Tu kalbėjai truputį per greitai, tad nesu tikra, ar supratau.",
+      "reason": "gender: speaker is Learner, cast Ona (female) -> tikra"
+    },
+    {
+      "id": "lit_for_eng:pod-0-unrecorded:SC18-S007",
+      "course": "lit_for_eng",
+      "scene": 18,
+      "sentence": 7,
+      "limb": "gender",
+      "before": "Ar tai teisinga? Ar aš teisus?",
+      "after": "Ar tai teisinga? Ar aš teisi?",
+      "reason": "gender: speaker is Learner, cast Ona (female) -> teisi"
+    },
+    {
+      "id": "lit_for_eng:pod-0-unrecorded:SC22-S001",
+      "course": "lit_for_eng",
+      "scene": 22,
+      "sentence": 1,
+      "limb": "gender",
+      "before": "Ar neprieštarautum, jei pabandyčiau pasipraktikuoti kalbėti su tavimi lietuviškai? Aš mokausi dar neilgai ir vis dar jaučiuosi šiek tiek nervingas kalbėdamas su kitais žmonėmis.",
+      "after": "Ar neprieštarautum, jei pabandyčiau pasipraktikuoti kalbėti su tavimi lietuviškai? Aš mokausi dar neilgai ir vis dar jaučiuosi šiek tiek nervinga kalbėdama su kitais žmonėmis.",
+      "reason": "gender: speaker is Learner, cast Ona (female) -> nervinga kalbedama"
+    },
+    {
+      "id": "lit_for_eng:pod-0-unrecorded:SC22-S005",
+      "course": "lit_for_eng",
+      "scene": 22,
+      "sentence": 5,
+      "limb": "gender",
+      "before": "Taip, ačiū. Lengviau kalbėti tik su vienu žmogumi. Vis dėlto šiek tiek sunku sugalvoti, ką pasakyti. Nesu tikras, ką sakyti, bet jaučiu, kad galiu kalbėti pakankamai, kad pradėčiau pokalbius.",
+      "after": "Taip, ačiū. Lengviau kalbėti tik su vienu žmogumi. Vis dėlto šiek tiek sunku sugalvoti, ką pasakyti. Nesu tikra, ką sakyti, bet jaučiu, kad galiu kalbėti pakankamai, kad pradėčiau pokalbius.",
+      "reason": "gender: speaker is Learner, cast Ona (female) -> tikra"
+    }
+  ]
+}

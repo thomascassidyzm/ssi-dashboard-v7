@@ -1,0 +1,122 @@
+[
+  {
+    "id": "gle_for_eng:pod-0-unrecorded:SC07-S001",
+    "speaker": "Cafe Barista",
+    "audio_id": "063bf112-b68c-400e-8088-595724d9dbb2",
+    "voice_id": "azure_ga-IE-ColmNeural",
+    "s3_key": "mastered/BB3A7A3C-7558-42B2-B5EF-B7371F3B1DB5.mp3",
+    "track": "target",
+    "link_column": "target_audio_id",
+    "expected_voice": "ga-IE-OrlaNeural",
+    "reason": "target voice azure_ga-IE-ColmNeural is not the voice cast for speaker \"Cafe Barista\" (ga-IE-OrlaNeural)",
+    "action": "unlinked"
+  },
+  {
+    "id": "gle_for_eng:pod-0-unrecorded:SC07-S002",
+    "speaker": "Cafe Customer 1",
+    "audio_id": "4149e080-ac73-4f60-a831-453b1e5e47b2",
+    "voice_id": "ga-IE-OrlaNeural",
+    "s3_key": "mastered/542F0EA7-D12B-4C20-988E-605382F6F161.mp3",
+    "track": "target",
+    "link_column": "target_audio_id",
+    "expected_voice": "ga-IE-ColmNeural",
+    "reason": "target voice ga-IE-OrlaNeural is not the voice cast for speaker \"Cafe Customer 1\" (ga-IE-ColmNeural)",
+    "action": "unlinked"
+  },
+  {
+    "id": "gle_for_eng:pod-0-unrecorded:SC07-S003",
+    "speaker": "Cafe Barista",
+    "audio_id": "35118646-60a8-40e2-a4c2-e80a396adb49",
+    "voice_id": "ga-IE-ColmNeural",
+    "s3_key": "mastered/A528642A-7D71-4474-B1EE-4C7C545F4DC0.mp3",
+    "track": "target",
+    "link_column": "target_audio_id",
+    "expected_voice": "ga-IE-OrlaNeural",
+    "reason": "target voice ga-IE-ColmNeural is not the voice cast for speaker \"Cafe Barista\" (ga-IE-OrlaNeural)",
+    "action": "unlinked"
+  },
+  {
+    "id": "gle_for_eng:pod-0-unrecorded:SC07-S007",
+    "speaker": "Cafe Customer 2",
+    "audio_id": "b36a0cbf-f1f9-4a47-a7a2-66a06def4678",
+    "voice_id": "ga-IE-OrlaNeural",
+    "s3_key": "mastered/AEA11456-6795-4163-8072-F2F79FE8BA5E.mp3",
+    "track": "target",
+    "link_column": "target_audio_id",
+    "expected_voice": "ga-IE-ColmNeural",
+    "reason": "target voice ga-IE-OrlaNeural is not the voice cast for speaker \"Cafe Customer 2\" (ga-IE-ColmNeural)",
+    "action": "unlinked"
+  },
+  {
+    "id": "gle_for_eng:pod-0-unrecorded:SC07-S008",
+    "speaker": "Cafe Barista",
+    "audio_id": "82bbd10a-7489-4102-a852-d742adb8787f",
+    "voice_id": "ga-IE-ColmNeural",
+    "s3_key": "mastered/DD2953D9-7E53-4008-A645-DED6F32B272A.mp3",
+    "track": "target",
+    "link_column": "target_audio_id",
+    "expected_voice": "ga-IE-OrlaNeural",
+    "reason": "target voice ga-IE-ColmNeural is not the voice cast for speaker \"Cafe Barista\" (ga-IE-OrlaNeural)",
+    "action": "unlinked"
+  },
+  {
+    "id": "gle_for_eng:pod-0-unrecorded:SC07-S009",
+    "speaker": "Cafe Customer 2",
+    "audio_id": "f04144fd-bfd8-417d-bc46-4737374a8a83",
+    "voice_id": "ga-IE-OrlaNeural",
+    "s3_key": "mastered/D8CAC34F-000F-4D20-987F-E0B374D24C92.mp3",
+    "track": "target",
+    "link_column": "target_audio_id",
+    "expected_voice": "ga-IE-ColmNeural",
+    "reason": "target voice ga-IE-OrlaNeural is not the voice cast for speaker \"Cafe Customer 2\" (ga-IE-ColmNeural)",
+    "action": "unlinked"
+  },
+  {
+    "id": "gle_for_eng:pod-0-unrecorded:SC07-S011",
+    "speaker": "Cafe Customer 2",
+    "audio_id": "94f7d73f-a7ec-428a-8e49-c2f60caf89ca",
+    "voice_id": "ga-IE-OrlaNeural",
+    "s3_key": "mastered/8A14EFA6-904A-465D-AA8D-81C3D5CE6F50.mp3",
+    "track": "target",
+    "link_column": "target_audio_id",
+    "expected_voice": "ga-IE-ColmNeural",
+    "reason": "target voice ga-IE-OrlaNeural is not the voice cast for speaker \"Cafe Customer 2\" (ga-IE-ColmNeural)",
+    "action": "unlinked"
+  },
+  {
+    "id": "gle_for_eng:pod-0-unrecorded:SC07-S012",
+    "speaker": "Cafe Barista",
+    "audio_id": "139d52b8-55de-420b-9adb-6288ae263cfe",
+    "voice_id": "azure_ga-IE-ColmNeural",
+    "s3_key": "mastered/17E00FFE-F550-419B-81B8-128BFF04F664.mp3",
+    "track": "target",
+    "link_column": "target_audio_id",
+    "expected_voice": "ga-IE-OrlaNeural",
+    "reason": "target voice azure_ga-IE-ColmNeural is not the voice cast for speaker \"Cafe Barista\" (ga-IE-OrlaNeural)",
+    "action": "unlinked"
+  },
+  {
+    "id": "gle_for_eng:pod-0-unrecorded:SC07-S013",
+    "speaker": "Cafe Customer 3",
+    "audio_id": "ee63e041-18bb-40f7-b023-487e2a0f32ea",
+    "voice_id": "ga-IE-OrlaNeural",
+    "s3_key": "mastered/656985A4-A3CF-4855-876D-611807E48C70.mp3",
+    "track": "target",
+    "link_column": "target_audio_id",
+    "expected_voice": "ga-IE-ColmNeural",
+    "reason": "target voice ga-IE-OrlaNeural is not the voice cast for speaker \"Cafe Customer 3\" (ga-IE-ColmNeural)",
+    "action": "unlinked"
+  },
+  {
+    "id": "gle_for_eng:pod-0-unrecorded:SC07-S014",
+    "speaker": "Cafe Barista",
+    "audio_id": "7e3937c0-ed8c-4977-9e11-7796101d0589",
+    "voice_id": "ga-IE-ColmNeural",
+    "s3_key": "mastered/DF03961B-9236-4784-9AE7-A28FA9761F47.mp3",
+    "track": "target",
+    "link_column": "target_audio_id",
+    "expected_voice": "ga-IE-OrlaNeural",
+    "reason": "target voice ga-IE-ColmNeural is not the voice cast for speaker \"Cafe Barista\" (ga-IE-OrlaNeural)",
+    "action": "unlinked"
+  }
+]
