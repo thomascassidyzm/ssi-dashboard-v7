@@ -93,39 +93,52 @@ defineExpose({ litSegments, statusLine })
 </script>
 
 <style scoped>
+/* House panel: --surface on a 1px --line, same as every other bar on this
+   route. The old black-glass-and-neon treatment was the only one of its kind
+   in Popty, and it was invisible in light mode. */
 .onair {
   display: flex;
   align-items: center;
   gap: 0.75rem;
   padding: 0.5rem 0.75rem;
-  border-radius: 8px;
-  background: rgba(0, 0, 0, 0.35);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  background: var(--surface);
+  border: 1px solid var(--line);
 }
 
+/* The lamp is a house pill. Live, it is a solid --danger fill with a white dot:
+   a filled red badge is what reads as "you are being recorded" from across a
+   room, and it needs no glow to do it. Off, it is a quiet outline. */
 .onair-lamp {
   display: flex;
   align-items: center;
   gap: 0.4rem;
-  font-weight: 700;
-  font-size: 0.72rem;
-  letter-spacing: 0.14em;
-  color: rgba(255, 255, 255, 0.35);
+  padding: 0.125rem 0.5rem;
+  border-radius: 9999px;
+  border: 1px solid var(--line);
+  background: var(--surface-2);
+  font-weight: 600;
+  font-size: 11px;
+  line-height: 1.45;
+  letter-spacing: 0.08em;
+  color: var(--faint);
   white-space: nowrap;
 }
 
 .onair-dot {
-  width: 9px;
-  height: 9px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.22);
+  background: var(--faint);
 }
 
-.is-live .onair-lamp { color: #ff4d4d; }
-.is-live .onair-dot {
-  background: #ff2d2d;
-  box-shadow: 0 0 8px 2px rgba(255, 45, 45, 0.55);
+.is-live .onair-lamp {
+  background: var(--danger);
+  border-color: var(--danger);
+  color: var(--canvas);
 }
+
+.is-live .onair-dot { background: var(--canvas); }
 
 .onair-meter {
   display: flex;
@@ -140,21 +153,21 @@ defineExpose({ litSegments, statusLine })
   flex: 1;
   height: 100%;
   border-radius: 1px;
-  background: rgba(255, 255, 255, 0.09);
+  background: var(--surface-3);
   /* Fast enough that the meter tracks the voice rather than lagging behind it —
      a laggy meter is worse than none, because it desynchronises the speaker
      from their own level. */
   transition: background-color 60ms linear;
 }
 
-.onair-seg.on.low { background: #3ddc84; }
-.onair-seg.on.high { background: #ffd23f; }
-.onair-seg.on.hot { background: #ff5252; }
+.onair-seg.on.low { background: var(--success); }
+.onair-seg.on.high { background: var(--accent); }
+.onair-seg.on.hot { background: var(--danger); }
 
 .onair-line {
   margin: 0;
-  font-size: 0.72rem;
-  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.75rem;
+  color: var(--muted);
   white-space: nowrap;
 }
 
