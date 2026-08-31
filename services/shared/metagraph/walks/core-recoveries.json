@@ -23,22 +23,23 @@
     "policy": "A RECOVERY ATTACHES, IT DOES NOT APPEND (Tom's ruling, 2026-08-31): a pod is a branch point with its continuations attached, so each recovery is the other half of a move CORE already teaches, and hangs off the scene that exists. CORE's existing order is untouched — walks/pod-0.json is not modified and nothing is reordered. Each walk here names the pod-0 walk and step it attaches to, restages that turn as a quotation, and continues it inside the same encounter. A recovery three scenes later would be worth nothing; every one of these arrives while the learner is in the trouble the branch just made."
   },
   "accounting": {
-    "authored_walks": 2,
-    "turns_total": 12,
-    "restaged_turns": 3,
-    "authored_turns": 9,
+    "authored_walks": 3,
+    "turns_total": 18,
+    "restaged_turns": 5,
+    "authored_turns": 13,
     "corpus_rows": 0,
     "corpus_rows_note": "Zero, and that is the point: nothing here is a transcription. The restaged turns are quotations of pod-0 rows and are counted only in walks/pod-0.json.",
     "walks": {
       "W1301": "S2 (A1001) — the hedge acted on and turned out wrong, scene 2, attached at pod-0 W3 step 4",
-      "W1302": "M1 (A1002) — 'I don't know', held with status, the third arm on the canon's one stored branch, scene 3, attached at pod-0 W1 step 4"
+      "W1302": "M1 (A1002) — 'I don't know', held with status, the third arm on the canon's one stored branch, scene 3, attached at pod-0 W1 step 4",
+      "W1303": "M5 (A1006) — the haggle over WHEN, settled by formula, scene 4, attached at pod-0 W4 step 3"
     }
   },
   "coverage_of_the_graph": {
-    "nodes": ["N3", "N4", "N13", "N2"],
+    "nodes": ["N3", "N4", "N13", "N2", "N7", "N16", "N1"],
     "composition_edges_used": [],
-    "survivability_edges_touched": ["S2", "M1"],
-    "note": "S2 is the only corpus-attested edge with no recovery anywhere in the estate — five hedges attested, not one ever taken up; W1301 is its first. M1's recovery gives O2 ('nobody knows') its first dialogic home in CORE: the canon's recorded property is that nobody in it ever fails, and W1302 is the first turn in CORE where a responder does not know the answer."
+    "survivability_edges_touched": ["S2", "M1", "M5"],
+    "note": "S2 is the only corpus-attested edge with no recovery anywhere in the estate — five hedges attested, not one ever taken up; W1301 is its first. M1's recovery gives O2 ('nobody knows') its first dialogic home in CORE: the canon's recorded property is that nobody in it ever fails, and W1302 is the first turn in CORE where a responder does not know the answer. M5's recovery runs N16's four positions inside N7's arrangement — the one register where everyone haggles honestly — and the price-haggle is explicitly NOT attached, per the audit; no ratified composition edge exists for N16-inside-N7, so the composition is carried per-step and not cited as a C-edge."
   },
   "walks": [
     {
@@ -180,6 +181,79 @@
           "surface": "Here's your coffee — and your crisps.",
           "move": "F1",
           "note": "Delivery, echoing the canon's own g18 shape with the recovered item riding alongside. The canon's close (thanks and goodbye) follows unchanged."
+        }
+      ]
+    },
+    {
+      "id": "W1303",
+      "name": "Scene 4 — the counterbid over when, settled by formula (M5)",
+      "scene": 4,
+      "nodes_traversed": ["N7", "N16", "N1"],
+      "composition_edges_used": [],
+      "survivability_edges_touched": ["M5"],
+      "outcome_shape": "O9",
+      "attaches_to": { "walk": "W4", "step": 3, "node": "N7", "position": 3, "attachment": "A1006" },
+      "note": "The street at seven in the evening, pod-0 W4's world — the corpus's only two-sided negotiation, and without knowing it the canon has already walked the haggle's first two positions: Sarah's 'tomorrow' is a number on the table (N16.1) and the friend's 'Saturday' is its counterbid (N16.2). This walk adds positions 3 and 4: the learner's counter is countered again, and the pair settle by formula — take the overlap, say it with 'then', add the precision that makes it real. O9's recovery is 'produce a third position, or yield'; Sarah's third position is Saturday morning. The whole thing stays brisk because the world demands it: Sarah opened by saying she has no time to talk, so a leisurely negotiation would contradict the scene it stands in — and the friend's last line sends her home, honouring the constraint she declared at the start. The PRICE-haggle is explicitly not attached; over money this shape belongs to enrichment, and teaching it at a UK counter would teach a false pragmatic. Over WHEN, everyone haggles honestly.",
+      "steps": [
+        {
+          "step": 1,
+          "node": "N7",
+          "position": 2,
+          "speaker": "Sarah",
+          "surface": "Hello! I'm sorry but I can't talk at the moment. I need to go home now. Can we talk tomorrow?",
+          "move": "F5",
+          "restaged": true,
+          "note": "Quotation of the canon (pod-0 W4 step 2): decline, account, counter — and, read as a haggle, the first number on the table: tomorrow. The 'I need to go home now' is not scenery; it is the clock the whole walk runs on."
+        },
+        {
+          "step": 2,
+          "node": "N7",
+          "position": 3,
+          "speaker": "Friend",
+          "surface": "No, I'm sorry, I'm busy tomorrow. But let's talk on Saturday. See you then.",
+          "move": "F5",
+          "restaged": true,
+          "branch_point": true,
+          "note": "Quotation of the canon (pod-0 W4 step 3) — the second no, and the counterbid: Saturday. The canon ends the scene here, with the friend's 'see you then' closing the books on a settlement the learner never actually agreed to. Everything after this step is the continuation the corpus never stored: what the learner does when THEIR number has just been countered."
+        },
+        {
+          "step": 3,
+          "node": "N16",
+          "position": 3,
+          "speaker": "Sarah",
+          "surface": "Saturday's good — but only the morning. I'm away all afternoon.",
+          "move": "F5",
+          "composed_in": { "node": "N7", "position": 3 },
+          "note": "The third position, produced rather than swallowed: not a yield to Saturday-whenever, not a relitigation of tomorrow, but a narrowing with its reason attached — F5 in miniature, no-here's-why-here's-instead. Reopening a closed 'see you then' needs a real constraint, and she has one; a preference would not have earned the turn."
+        },
+        {
+          "step": 4,
+          "node": "N16",
+          "position": 4,
+          "speaker": "Friend",
+          "surface": "Saturday morning, then. Ten o'clock, at the café?",
+          "move": null,
+          "composed_in": { "node": "N7", "position": 4 },
+          "note": "The settlement formula, whole: take the overlap of the two constraints, seal it with 'then', and add the precision — a time, a place — that turns an agreement into an arrangement. 'Saturday morning, then' is the exact shape the audit sited this attachment for; the learner who owns this turn can end any haggle that has an overlap left in it."
+        },
+        {
+          "step": 5,
+          "node": "N7",
+          "position": 4,
+          "speaker": "Sarah",
+          "surface": "Ten at the café — perfect. See you Saturday!",
+          "move": "F9",
+          "note": "Accept by read-back: the time and place said back before they are sealed, the same motif the canon reserves for numbers that matter (the hotel's booking, the chemist's dosage). What gets read back is exactly what was newly minted at step 4 — the precision, not the whole negotiation."
+        },
+        {
+          "step": 6,
+          "node": "N7",
+          "position": 4,
+          "speaker": "Friend",
+          "surface": "Go on home, then — Saturday at ten!",
+          "move": "F1",
+          "composed_in": { "node": "N1", "position": 2 },
+          "note": "The second signature on the settlement, folded into the ritual close — and the release: the friend sends Sarah home, honouring the 'I need to go home now' she opened with. The haggle cost four turns inside an encounter that had no time to spare, which is the proof it was cheap."
         }
       ]
     }
