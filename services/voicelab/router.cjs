@@ -727,7 +727,13 @@ function mount (app, deps) {
         // the ORIGINAL file: nothing is rendered, nothing is copied, nothing is
         // spent, and the consent block's deliberate render hole is not touched.
         clips: own ? own.clips : [],
-        consent: consent.describe(voice || {}),
+        // THE ID, EVEN WHEN THERE IS NO ROW. `{}` said nothing about which
+        // voice this is, so a row-less recordist — `human_sasha_wanasky_deu_at`,
+        // Aran's and Catrin's Welsh ids — came back `kind: 'stock'`, "a stock
+        // voice licensed from the provider, no person to ask", which is the
+        // opposite of true. personhood reads the id first (a `human_*` id is a
+        // person by construction), so handing it the id is the whole fix.
+        consent: consent.describe(voice || { voice_id: voiceId }),
       })
     } catch (err) { fail(res, err, 'clone-confirmation-read') }
   })
