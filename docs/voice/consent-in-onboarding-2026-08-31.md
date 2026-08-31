@@ -100,6 +100,47 @@ being that a **missing `sampleFrom` falls to the branch that cannot be faked** a
 
 Live end-to-end against the deployed production API is recorded in §6.
 
-## 6. Live verification
+## 6. Live verification — a real onboarding, with and without consent
 
-See the report accompanying this document.
+Production API restarted on the `-prod` checkout at `1ac3452a8`. The probe below ran the **real
+router against the real database** with the real consent gate — only the dashboard JWT is stubbed,
+because only a browser can mint one. It used the existing `e2e-pod-voice-a@ssi-test.invalid`
+identity on `zzz_test_for_eng`, snapshotted every row it touched and restored all of them.
+
+**1. Onboarding somebody nobody has asked — REFUSED, nothing written.**
+```
+HTTP 409  code=NO_RECORDED_CONSENT  needsOnboardingConsent=true
+"No consent is recorded for human_e2e_pod_voice_a_zzz_test. Record consent for this voice…"
+target1 unchanged? true
+```
+Note the shape: this person already **held** a minted voice id (`human_e2e_pod_voice_a_zzz_test`)
+with no `voices` row behind it — the Sasha shape — and it was still refused.
+
+**2. A recording that does not carry the line — REFUSED.** Whisper is installed on this box; the
+probe sent 64 kB of silence, which whisper could not decode at all, so the honest answer was
+"could not check" and the route fell to demanding the written statement rather than passing:
+```
+HTTP 400  needsAttestation=true
+"This machine cannot listen to the recording to check that the consent line was read…"
+```
+(A recording that decodes but does not contain the line comes back `declarationNotHeard` with
+what was heard quoted — pinned in the tests.)
+
+**3. The consent step — accepted, and the voice written with the yes in it.**
+```
+HTTP 200  voice_id=human_e2e_pod_voice_a_zzz_test  consent.status=authorised  kind=attested
+voices row: type=human, consent_status=authorised, consent_person="E2E Probe Voice A",
+            consent_authorised_by="E2E Probe Voice A",
+            consent_authorised_how="agreed to the consent wording when uploading the recording",
+            consent_authorised_at=2026-08-31T21:05:33Z,
+            consent_declaration="This is my own voice, or I have the right to use this recording…"
+```
+That `voices` row did not exist before this call.
+
+**4. The same onboarding, now — GOES THROUGH.**
+```
+HTTP 200  slot=target1  voice={provider:"human", voiceId:"human_e2e_pod_voice_a_zzz_test", …}
+```
+
+**5. Restored.** `target1` back to `null`, the probe's `voices` row deleted, `voice_id` restored.
+Verified in the same run: `target1 restored? true`, `probe voices row removed? true`.
