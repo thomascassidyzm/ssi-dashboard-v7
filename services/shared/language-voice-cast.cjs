@@ -222,9 +222,15 @@ function providerOfVoice(voice) {
  */
 function applyLanguageCast({ voiceConfig, course, roles = [], voices = [] }) {
   const decisions = [];
-  if (!voiceConfig || !voiceConfig.voices || !course) {
-    return { config: voiceConfig, decisions };
-  }
+  if (!course) return { config: voiceConfig, decisions };
+
+  // A course with NO stored voices block is not a course with no voices — it is
+  // a course the cast has never been able to reach. 56 of the estate's 150
+  // courses were in exactly that state on 2026-08-31, and the old early return
+  // meant a language cast silently skipped every one of them. Reading a missing
+  // block as an EMPTY one costs nothing when nothing is cast (the caller
+  // returns before it gets here) and lets the cast seed the roles it names.
+  const stored = (voiceConfig && voiceConfig.voices) ? voiceConfig : { ...(voiceConfig || {}), voices: {} };
 
   const voiceById = new Map();
   const voiceGenderById = new Map();
@@ -237,11 +243,16 @@ function applyLanguageCast({ voiceConfig, course, roles = [], voices = [] }) {
 
   let next = null;
   for (const role of CAST_ROLES) {
-    const roleConfig = voiceConfig.voices[role];
-    if (!roleConfig) { decisions.push({ role, source: 'absent' }); continue; }
+    // An ABSENT role is a candidate for the cast, not a reason to skip it.
+    // NOTHING in the estate carries an `instruction` or `encouragement` block
+    // (0 of 150 courses, checked 2026-08-31), so treating absence as "leave
+    // alone" made every GUIDE cast a write that no render could ever read —
+    // the exact slot Tom named as empty. An absent role with nothing cast for
+    // it still reports 'absent' and still changes nothing.
+    const roleConfig = stored.voices[role] || null;
 
-    if (isOverridden(voiceConfig, role)) {
-      decisions.push({ role, source: 'course-override', voiceId: roleConfig.voiceId });
+    if (isOverridden(stored, role)) {
+      decisions.push({ role, source: 'course-override', voiceId: (roleConfig && roleConfig.voiceId) || null });
       continue;
     }
 
@@ -253,33 +264,37 @@ function applyLanguageCast({ voiceConfig, course, roles = [], voices = [] }) {
     const gender = slot === 'guide' ? null : genderForRole(role, roleConfig, voiceGenderById);
     const cast = pickCastVoice(roles, voiceById, language, gender, slot);
     if (!cast) {
-      decisions.push({ role, source: 'stored', slot, language, gender, reason: 'nothing cast' });
+      decisions.push({
+        role, slot, language, gender,
+        source: roleConfig ? 'stored' : 'absent',
+        reason: 'nothing cast',
+      });
       continue;
     }
 
     // The cast names the same voice the course already stores — say so, and
     // leave the stored object alone so its per-voice settings survive intact.
-    if (voiceSpellings(roleConfig.voiceId, { provider: roleConfig.provider }).includes(cast.voice.voice_id)) {
+    if (roleConfig && voiceSpellings(roleConfig.voiceId, { provider: roleConfig.provider }).includes(cast.voice.voice_id)) {
       decisions.push({ role, source: 'cast-same', slot, language, gender, rank: cast.rank, voiceId: roleConfig.voiceId });
       continue;
     }
 
-    if (!next) next = { ...voiceConfig, voices: { ...voiceConfig.voices } };
+    if (!next) next = { ...stored, voices: { ...stored.voices } };
     next.voices[role] = {
-      ...roleConfig,
+      ...(roleConfig || {}),
       voiceId: cast.voice.voice_id,
-      provider: providerOfVoice(cast.voice) || roleConfig.provider,
+      provider: providerOfVoice(cast.voice) || (roleConfig && roleConfig.provider) || null,
       name: cast.voice.display_name || cast.voice.human_name || cast.voice.voice_id,
       // The stored `settings.speed` is a correction for the pace of the voice
       // being REPLACED, so it does not travel with the slot. A new voice starts
       // at its own natural pace; a correction for it is a per-voice fact to be
       // set again, not inherited from a stranger.
-      settings: { ...(roleConfig.settings || {}), speed: 1.0 },
+      settings: { ...((roleConfig && roleConfig.settings) || {}), speed: 1.0 },
       castFrom: { slot, language, gender, rank: cast.rank },
     };
     decisions.push({
       role, source: 'language-cast', slot, language, gender, rank: cast.rank,
-      voiceId: cast.voice.voice_id, replaced: roleConfig.voiceId || null,
+      voiceId: cast.voice.voice_id, replaced: (roleConfig && roleConfig.voiceId) || null,
     });
   }
 

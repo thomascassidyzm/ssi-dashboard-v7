@@ -341,3 +341,57 @@ describe('the guide slot and the phrase slots do not leak into each other', () =
     expect(slotForRole('target1')).toBe('phrase');
   });
 });
+
+// ── THE TWO GAPS FOUND ON 2026-08-31 ────────────────────────────────────────
+//
+// The cast reader landed on 2026-08-29 and, on the estate as it actually
+// stands, could not reach the thing Tom asked for. Two counts, taken from the
+// live DB that day:
+//
+//   0 of 150 courses carry an `instruction` or `encouragement` block, and
+//   56 of 150 carry no `voices` block at all.
+//
+// The old reader skipped an absent role and returned early on an absent block,
+// so a GUIDE cast was a write nothing could read, anywhere, and a PHRASE cast
+// silently missed 56 courses. Both are fixed; these tests are what keeps them
+// fixed. Tom's acceptance test is the sentence they encode: cast a voice on one
+// language once, and every course in that language generates with it.
+
+describe('applyLanguageCast — reaching roles the course does not store', () => {
+  it('SEEDS a guide role that the stored config has never carried', () => {
+    const { config, decisions } = applyLanguageCast({
+      voiceConfig: storedConfig(), course, voices,
+      roles: cast({ language: 'eng', gender: 'm', rank: 0, voice_id: 'cartesia_en-m-1', slot: 'guide' }),
+    });
+    expect(config.voices.instruction.voiceId).toBe('cartesia_en-m-1');
+    expect(config.voices.encouragement.voiceId).toBe('cartesia_en-m-1');
+    expect(config.voices.instruction.provider).toBe('cartesia');
+    expect(decisions.find((d) => d.role === 'instruction').source).toBe('language-cast');
+    // and it did not touch a phrase role on the way past
+    expect(config.voices.target1.voiceId).toBe('eve');
+  });
+
+  it('BUILDS a config for a course that stores no voices block at all', () => {
+    const { config } = applyLanguageCast({
+      voiceConfig: null, course, voices,
+      roles: cast(row('fra', 'f', 0, 'cartesia_fr-f-1'), row('fra', 'm', 0, 'cartesia_fr-m-1')),
+    });
+    expect(config.voices.target1.voiceId).toBe('cartesia_fr-f-1'); // default gender f
+    expect(config.voices.target2.voiceId).toBe('cartesia_fr-m-1'); // default gender m
+  });
+
+  it('still changes NOTHING for an absent role when nothing is cast for it', () => {
+    const cfg = storedConfig();
+    const { config, decisions } = applyLanguageCast({
+      voiceConfig: cfg, course, voices,
+      roles: cast(row('spa', 'f', 0, 'cartesia_fr-f-1')),
+    });
+    expect(config).toBe(cfg);
+    expect(decisions.find((d) => d.role === 'instruction').source).toBe('absent');
+  });
+
+  it('leaves a null config null when nothing is cast', () => {
+    const { config } = applyLanguageCast({ voiceConfig: null, course, voices, roles: [] });
+    expect(config).toBe(null);
+  });
+});

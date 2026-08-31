@@ -250,7 +250,12 @@ function _clearCastCache() { castCache = { at: 0, roles: [], voices: [] }; }
  * @returns {Promise<object>} the same object when nothing was cast
  */
 async function resolveVoiceConfig({ voiceConfig, course, courseCode }) {
-  if (!voiceConfig || !voiceConfig.voices) return voiceConfig;
+  // NO GUARD ON THE STORED SHAPE. It used to return early unless the course
+  // carried a `voices` block, which quietly excluded 56 of the estate's 150
+  // courses from every language cast, and — because no course anywhere carries
+  // an `instruction`/`encouragement` block — excluded the GUIDE slot from all
+  // 150. The empty-table invariant is kept by the line below instead: with no
+  // cast rows we return the stored value untouched, null included.
   const { roles, voices } = await loadCast();
   if (!roles.length) return voiceConfig;   // nothing cast anywhere: identity
 
