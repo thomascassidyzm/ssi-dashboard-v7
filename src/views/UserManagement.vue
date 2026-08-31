@@ -246,7 +246,7 @@
    Tailwind classes exactly; light mode is darkened to meet WCAG AA. */
 .pill-all {
   background-color: rgba(5, 150, 105, 0.2); /* emerald-600/20 (dark, unchanged) */
-  color: #34d399;                            /* emerald-400 (dark, unchanged) */
+  color: var(--accent-2);                            /* emerald-400 (dark, unchanged) */
 }
 .chip-green,
 .btn-green:not(:disabled) {

@@ -3571,7 +3571,7 @@ code {
   font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
 }
 .err-box {
-  color: #f87171;
+  color: var(--danger);
 }
 .cast-head {
   display: flex;
@@ -3731,7 +3731,7 @@ code {
   color: var(--muted);
 }
 .cast-row.none {
-  color: #f87171;
+  color: var(--danger);
 }
 .cv-name {
   font-weight: 600;
@@ -3875,7 +3875,7 @@ code {
 }
 .cast-decide .reject {
   background: var(--surface-2);
-  color: #f87171;
+  color: var(--danger);
 }
 .cast-decide button:disabled {
   opacity: 0.5;

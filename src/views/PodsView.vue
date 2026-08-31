@@ -426,7 +426,7 @@ onMounted(() => { loadPods(); loadDraftCounts(); loadListenSummary() })
   padding: 0.1rem 0.4rem;
 }
 .pv-vis-held { background: #dc2626; color: #fff; }
-.pv-vis-live { background: rgba(52, 211, 153, 0.15); color: #34d399; border: 1px solid #047857; }
+.pv-vis-live { background: rgba(52, 211, 153, 0.15); color: var(--accent-2); border: 1px solid #047857; }
 .pv-vis-note {
   background: rgba(127, 29, 29, 0.35);
   border: 1px solid #b91c1c;
@@ -442,7 +442,7 @@ onMounted(() => { loadPods(); loadDraftCounts(); loadListenSummary() })
 .pv-listen {
   background: rgba(52, 211, 153, 0.1);
   border: 1px solid #047857;
-  color: #34d399;
+  color: var(--accent-2);
 }
 :root[data-theme="light"] .pv-listen {
   background: #d1fae5; border-color: #6ee7b7; color: #065f46;

@@ -653,7 +653,7 @@ onMounted(loadSeeds)
 }
 .status-dot.green { background: var(--accent-2); }
 .status-dot.yellow { background: #fbbf24; }
-.status-dot.red { background: #f87171; }
+.status-dot.red { background: var(--danger); }
 :root[data-theme="light"] .status-dot.yellow { background: #d97706; }
 :root[data-theme="light"] .status-dot.red { background: #dc2626; }
 
