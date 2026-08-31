@@ -35,7 +35,11 @@ const { score, matrixClause, skeleton } = require('./pattern-diversity.cjs');
 // this split. That was wrong — 600 admits one lego, "driven"/"conducido", and its
 // job is lexical — so the lookup is now by split, and which seed must cross it is
 // derived. What is tested here is the METRIC's split logic, not any seed's job.
-const S7 = [require('./split-matchers.cjs').S7];
+// (`ea80460ed` scoped the matchers by TARGET LANGUAGE — they are facts about
+// Spanish, not about every course — so the bare `.S7` export this test used
+// became undefined and the whole file died on load. Read it from `.spa` and
+// re-attach the id `crossesSplit` reports under.)
+const S7 = [{ id: 'S7', ...require('./split-matchers.cjs').spa.S7 }];
 const live600 = [
   ['build','driven','conducido'],
   ['build',"I'd have driven home",'habría conducido a casa'],
