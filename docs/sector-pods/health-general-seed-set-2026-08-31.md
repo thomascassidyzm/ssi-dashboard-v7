@@ -958,3 +958,183 @@ Cut: `it can get a bit busy some nights` **(new)** · `I won't lie to you` **(ne
 **"you tell us if you can't sleep"**
 - BUILD: "and you tell us if you can't sleep" · "you tell us if you can't sleep tonight" · "just tell us if you can't sleep" · "you tell us, any time, if you can't sleep"
 - USE: "You tell us if you can't sleep, alright?" · "You tell us if you can't sleep — that's what the bell's for." · "You tell us if you can't sleep tonight." · "Don't sit there worrying quietly — you tell us if you can't sleep." · "You tell us if you can't sleep, day or night."
+
+### HG29 — "Let's start with a few quick checks. Can you roll up your sleeve for me?"
+
+Cut: `let's start with` *(core)* · `a few quick checks` **(new)** · `can you roll up your sleeve for me` **(new — kept whole: the body instruction)**
+
+**"a few quick checks"**
+- BUILD: "let's start with a few quick checks" · "just a few quick checks" · "a few quick checks first" · "a few quick checks, if that's alright"
+- USE: "Let's start with a few quick checks, if that's alright." · "It's just a few quick checks, nothing big." · "A few quick checks, and then you can rest." · "I've got a few quick checks to do with you." · "We'll start with a few quick checks before lunch."
+
+**"can you roll up your sleeve for me"**
+- BUILD: "can you roll up your sleeve for me, please?" · "and can you roll up your sleeve for me?" · "roll up your sleeve for me" · "can you roll up your sleeve?"
+- USE: "Can you roll up your sleeve for me, please?" · "Roll up your sleeve for me, and we'll make a start." · "Can you roll up your sleeve for me? Take your time." · "First, can you roll up your sleeve for me?" · "Can you roll up your sleeve for me — either one."
+
+### HG30 — "I'm just going to take your blood pressure and temperature. Can you roll up your sleeve for me?"
+
+Cut: `I'm just going to take your blood pressure` **(new)** · `and temperature` **(new: "your temperature")** · `can you roll up your sleeve for me` *(HG29)*
+
+**"I'm just going to take your blood pressure"**
+- BUILD: "I'm just going to take your blood pressure now" · "I'm just going to take your blood pressure, alright?" · "first, I'm just going to take your blood pressure" · "I'm just going to take your blood pressure and temperature"
+- USE: "I'm just going to take your blood pressure now." · "I'm just going to take your blood pressure, if that's alright." · "I'm just going to take your blood pressure — can you roll up your sleeve for me?" · "Before lunch, I'm just going to take your blood pressure." · "I'm just going to take your blood pressure again after lunch."
+
+**"your temperature"**
+- BUILD: "your blood pressure and temperature" · "and your temperature" · "your temperature too" · "your temperature now"
+- USE: "I'm just going to take your temperature." · "Let's check your temperature as well." · "Your temperature's fine." · "I'll take your temperature at the same time." · "Can I take your temperature now?"
+
+### HG31 — "Right then, first things first — I need to take your blood pressure."
+
+Cut: `right then` *(core)* · `first things first` **(new)** · `I need to` *(core)* · `take your blood pressure` *(HG30)*
+
+**"first things first"**
+- BUILD: "right then, first things first" · "first things first, then" · "but first things first" · "first things first this morning"
+- USE: "First things first — let's get you comfortable." · "First things first — can you tell me your date of birth?" · "First things first: is there anything you need?" · "Right then, first things first — a few quick checks." · "First things first — let's have a look at you."
+
+### HG32 — "Left arm's fine. The cuff will squeeze for a few seconds now, then it lets go."
+
+Cut: `left arm's fine` **(new)** · `the cuff will squeeze` **(new)** · `for a few seconds now` *(core)* · `then it lets go` **(new)**
+
+**"left arm's fine"**
+- BUILD: "your left arm's fine" · "left arm's fine today" · "either arm's fine" · "left arm's fine, then"
+- USE: "Left arm's fine — whichever's easier." · "Either arm's fine, honestly." · "Left arm's fine — just roll up your sleeve for me." · "The left arm's fine today." · "Left arm's fine, and take your time."
+
+**"the cuff will squeeze"**
+- BUILD: "the cuff will squeeze for a few seconds" · "the cuff will squeeze now" · "the cuff will squeeze a little" · "and the cuff will squeeze"
+- USE: "The cuff will squeeze for a few seconds now." · "The cuff will squeeze a little — don't worry." · "The cuff will squeeze, then it lets go." · "The cuff will squeeze for a few seconds, and that's all." · "The cuff will squeeze now, alright?"
+
+**"then it lets go"**
+- BUILD: "and then it lets go" · "then it lets go again" · "a few seconds, then it lets go" · "it squeezes, then it lets go"
+- USE: "It squeezes for a few seconds, then it lets go." · "A few seconds, then it lets go, and that's it." · "Then it lets go, and you can roll your sleeve down." · "Don't worry — then it lets go." · "The cuff will squeeze, then it lets go — nothing big."
+
+### HG33 — "It's 135 over 80 today — much better. The doctor will be pleased with that."
+
+Cut: `it's 135 over 80 today` **(new: the "X over Y" reading pattern)** · `much better` *(core)* · `the doctor will be pleased with that` **(new)**
+
+**"it's 135 over 80"**
+- BUILD: "it's 135 over 80 today" · "135 over 80 — much better" · "it's 135 over 80 this morning" · "it was 135 over 80 yesterday"
+- USE: "It's 135 over 80 today — much better." · "It's 135 over 80 this morning." · "Your blood pressure's 135 over 80." · "It's 135 over 80 — the same as yesterday." · "It's 135 over 80, so much better than this morning."
+
+**"the doctor will be pleased with that"**
+- BUILD: "and the doctor will be pleased with that" · "the doctor will be pleased with that today" · "the doctor will be pleased with that, I know" · "well — the doctor will be pleased with that"
+- USE: "The doctor will be pleased with that this morning." · "It's much better — the doctor will be pleased with that." · "The doctor will be pleased with that, I know." · "Keep that up — the doctor will be pleased with that." · "135 over 80 — the doctor will be pleased with that."
+
+### HG34 — "It's come down nicely — 135 over 80. All done. I'll pop back after lunch to do it again."
+
+Cut: `it's come down nicely` **(new)** · `135 over 80` *(HG33)* · `all done` **(new)** · `I'll pop back` **(new)** · `after lunch` *(core)* · `to do it again` **(new)**
+
+**"it's come down nicely"**
+- BUILD: "it's come down nicely today" · "and it's come down nicely" · "it's come down nicely — much better" · "it's come down nicely since this morning"
+- USE: "It's come down nicely — 135 over 80." · "It's come down nicely since this morning." · "It's come down nicely — the doctor will be pleased with that." · "Don't worry, it's come down nicely today." · "It's come down nicely, much better than yesterday."
+
+**"all done"**
+- BUILD: "all done now" · "all done for today" · "there — all done" · "all done, look"
+- USE: "All done — that was quick." · "There — all done now." · "All done for today." · "All done — you can roll your sleeve down." · "All done; I'll pop back after lunch."
+
+**"I'll pop back"**
+- BUILD: "I'll pop back after lunch" · "I'll pop back later" · "I'll pop back in an hour" · "I'll pop back tonight"
+- USE: "I'll pop back later, alright?" · "I'll pop back after lunch." · "I'll pop back in an hour." · "Don't worry — I'll pop back before eight." · "I'll pop back tonight to see you."
+
+**"to do it again"**
+- BUILD: "after lunch, to do it again" · "I'll be back to do it again" · "to do it again later" · "just to do it again"
+- USE: "I'll pop back to do it again." · "We'll need to do it again after lunch." · "I'll come back to do it again later." · "It's no trouble to do it again." · "I'll pop back at two to do it again."
+
+### HG35 — "One high reading on its own is nothing to worry about — that's exactly why we keep checking."
+
+Cut: `one high reading on its own` **(new)** · `is nothing to worry about` **(new: "nothing to worry about")** · `that's exactly why we keep checking` **(new)**
+
+**"one high reading on its own"**
+- BUILD: "one high reading on its own is fine" · "it's one high reading on its own" · "just one high reading on its own" · "one high reading on its own, that's all"
+- USE: "It was one high reading on its own, that's all." · "One high reading on its own doesn't tell us much." · "Just one high reading on its own — don't worry." · "One high reading on its own is fine." · "One high reading on its own can happen to anyone."
+
+**"nothing to worry about"**
+- BUILD: "it's nothing to worry about" · "nothing to worry about at all" · "nothing to worry about there" · "and that's nothing to worry about"
+- USE: "It's nothing to worry about, honestly." · "The cuff is nothing to worry about." · "It's nothing to worry about — it's come down nicely." · "Nothing to worry about at all — the doctor will be pleased with that." · "That's nothing to worry about, I promise."
+
+**"that's exactly why we keep checking"**
+- BUILD: "and that's exactly why we keep checking" · "that's exactly why we keep checking, see" · "which is exactly why we keep checking" · "that's exactly why we keep checking every day"
+- USE: "That's exactly why we keep checking, see." · "It changes through the day — that's exactly why we keep checking." · "That's exactly why we keep checking every day." · "Nothing to worry about — that's exactly why we keep checking." · "One high reading on its own is fine — that's exactly why we keep checking."
+
+### HG36 — "Not to worry, we'll use the other arm. Let me just move this table out of your way."
+
+Cut: `not to worry` **(new)** · `we'll use the other arm` **(new)** · `let me just` *(core)* · `move this table` **(new)** · `out of your way` **(new)**
+
+**"not to worry"**
+- BUILD: "not to worry, then" · "not to worry — all done" · "ah, not to worry" · "not to worry at all"
+- USE: "Not to worry — we'll use the other arm." · "Not to worry — I'll pop back later." · "Not to worry, it's come down nicely." · "Ah, not to worry — plenty of time." · "Not to worry, we'll do it again after lunch."
+
+**"we'll use the other arm"**
+- BUILD: "then we'll use the other arm" · "we'll use the other arm today" · "we'll use the other arm, then" · "so we'll use the other arm"
+- USE: "We'll use the other arm today." · "Not to worry — we'll use the other arm." · "If that one's no good, we'll use the other arm." · "We'll use the other arm, then — roll up that sleeve for me." · "We'll use the other arm this time."
+
+**"move this table"**
+- BUILD: "let me just move this table" · "I'll move this table" · "move this table a bit" · "let me move this table for you"
+- USE: "Let me move this table for you." · "I'll move this table a bit." · "Let me just move this table first." · "Shall I move this table out of your way?" · "Let me just move this table closer."
+
+**"out of your way"**
+- BUILD: "out of your way, there" · "I'll get out of your way" · "let's get this out of your way" · "out of your way now"
+- USE: "I'll move it out of your way." · "Let's get this out of your way." · "I'll get out of your way now." · "We'll keep the table out of your way." · "Let me just get these things out of your way."
+
+### HG37 — "It won't be in forever, I promise. There we are — all done for now."
+
+Cut: `it won't be in forever` **(new)** · `I promise` *(core)* · `there we are` **(new)** · `all done for now` *(HG34 "all done" + core "for now")*
+
+**"it won't be in forever"**
+- BUILD: "it won't be in forever, I promise" · "and it won't be in forever" · "it won't be in forever, mind" · "don't worry — it won't be in forever"
+- USE: "Don't worry — it won't be in forever." · "It won't be in forever — maybe a day or two." · "I know it's hard work, but it won't be in forever." · "It won't be in forever — not long now." · "It goes everywhere with you, I know — but it won't be in forever."
+
+**"there we are"**
+- BUILD: "there we are — all done" · "there we are, look" · "there we are, then" · "there we are — that's it"
+- USE: "There we are — all done for now." · "There we are, that wasn't so bad." · "There we are — all done till after lunch." · "There we are, look — all done." · "There we are — easy as anything."
+
+### HG38 — "How's your pain at the moment? On a scale of nought to ten, with ten the worst you can imagine? Would you like something for it?"
+
+Cut: `how's your pain` **(new)** · `at the moment` *(core)* · `on a scale of nought to ten` **(new)** · `with ten the worst you can imagine` **(new)** · `would you like something for it` **(new)**
+
+**"how's your pain"**
+- BUILD: "how's your pain at the moment?" · "how's your pain now?" · "how's your pain this morning?" · "and how's your pain?"
+- USE: "How's your pain this morning?" · "How's your pain now — better or worse?" · "And how's your pain after lunch?" · "How's your pain tonight?" · "Before I go — how's your pain?"
+
+**"on a scale of nought to ten"**
+- BUILD: "on a scale of nought to ten, with ten the worst" · "on a scale of nought to ten now" · "so — on a scale of nought to ten?" · "on a scale of nought to ten, then"
+- USE: "On a scale of nought to ten, how's your pain?" · "Where is it on a scale of nought to ten?" · "On a scale of nought to ten, with ten the worst you can imagine?" · "Can you give me a number, on a scale of nought to ten?" · "And this morning — on a scale of nought to ten?"
+
+**"with ten the worst you can imagine"**
+- BUILD: "nought to ten, with ten the worst you can imagine" · "ten — the worst you can imagine" · "with ten the worst you can imagine, remember" · "and ten the worst you can imagine"
+- USE: "Nought to ten, with ten the worst you can imagine." · "Ten is the worst you can imagine, and nought is nothing at all." · "Remember — ten is the worst you can imagine." · "On a scale of nought to ten, with ten the worst you can imagine, where are we today?" · "The worst you can imagine is a ten."
+
+**"would you like something for it"**
+- BUILD: "and would you like something for it?" · "would you like something for it now?" · "would you like something for it before lunch?" · "so — would you like something for it?"
+- USE: "Would you like something for it now?" · "It sounds bad — would you like something for it?" · "Would you like something for it before tonight?" · "If it's a seven, would you like something for it?" · "Would you like something for it? I can ask for you."
+
+### HG39 — "No problem, let me ask another way. Is it stopping you moving, or sleeping? Is it worse than this morning?"
+
+Cut: `no problem` *(core)* · `let me ask another way` **(new)** · `is it stopping you moving, or sleeping` **(new)** · `is it worse than this morning` **(new)**
+
+**"let me ask another way"**
+- BUILD: "no problem — let me ask another way" · "alright, let me ask another way" · "let me ask another way, then" · "so let me ask another way"
+- USE: "Let me ask another way, then." · "That's a hard question, I know — let me ask another way." · "Don't worry, let me ask another way." · "Let me ask another way: is it worse than this morning?" · "If nought to ten doesn't help, let me ask another way."
+
+**"is it stopping you moving, or sleeping"**
+- BUILD: "is it stopping you moving?" · "is it stopping you sleeping?" · "and is it stopping you moving, or sleeping?" · "is it stopping you eating?"
+- USE: "Is it stopping you sleeping?" · "Is it stopping you moving at all?" · "Is the pain stopping you moving, or sleeping?" · "Is it stopping you eating?" · "Tell me — is it stopping you moving?"
+
+**"is it worse than this morning"**
+- BUILD: "and is it worse than this morning?" · "is it worse than yesterday?" · "is it worse than before?" · "worse than this morning, or better?"
+- USE: "Is it worse than yesterday?" · "Is it worse than this morning, or better?" · "Is it worse when you move?" · "Is it worse at night?" · "And is it worse than this morning, honestly?"
+
+### HG40 — "It's no fuss at all — this is exactly what we're here for. I'll be back shortly."
+
+Cut: `it's no fuss at all` **(new)** · `this is exactly what we're here for` **(new)** · `I'll be back shortly` **(new)**
+
+**"it's no fuss at all"**
+- BUILD: "it's no fuss at all, honestly" · "and it's no fuss at all" · "no fuss at all" · "it's no fuss at all for us"
+- USE: "It's no fuss at all, honestly." · "It's no fuss at all — thank you for telling me." · "It's no fuss at all, so just press the bell." · "It's no fuss at all for any of the team." · "It's no fuss at all — don't sit there worrying quietly."
+
+**"this is exactly what we're here for"**
+- BUILD: "because this is exactly what we're here for" · "and this is exactly what we're here for" · "this is exactly what we're here for, remember" · "well, this is exactly what we're here for"
+- USE: "Just ask — this is exactly what we're here for." · "Press the bell any time — this is exactly what we're here for." · "It's never a silly question — this is exactly what we're here for." · "It's no fuss at all; this is exactly what we're here for." · "This is exactly what we're here for, day or night."
+
+**"I'll be back shortly"**
+- BUILD: "and I'll be back shortly" · "I'll be back shortly, alright?" · "don't worry — I'll be back shortly" · "I'll be back shortly with that"
+- USE: "I'll be back shortly, alright?" · "Don't worry — I'll be back shortly." · "I'll be back shortly to see how you are." · "You rest now — I'll be back shortly." · "I'll be back shortly, and any of the team can help before then."
