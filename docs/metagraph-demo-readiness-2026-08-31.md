@@ -120,7 +120,7 @@ during which the pod buttons have not arrived yet — see D2.
 # AFTER — what was changed
 
 Before/after screenshots, driven live:
-**https://watson-1.tail4968cb.ts.net/evidence/metagraph-demo-2026-08-31/**
+**https://watson-1.tail4968cb.ts.net/evidence/metagraph-demo-2026-08-31/index.html**
 
 All of it is front-end: `src/views/MetagraphView.vue`, plus band labels and tile height in
 `src/lib/metagraph/layout.js`. No API, no table, no store change, and the page is still read-only.
