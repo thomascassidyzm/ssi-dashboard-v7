@@ -395,3 +395,78 @@ describe('applyLanguageCast — reaching roles the course does not store', () =>
     expect(config).toBe(null);
   });
 });
+
+/**
+ * ── DIALECTS ARE DIFFERENT LANGUAGES (Tom, 2026-08-31) ──────────────────────
+ *
+ * The bug these lock shut: one cast row on 'deu' reached deu_for_eng AND
+ * deu_at_for_eng, because both carry target_lang 'deu'. A cast that reaches a
+ * course it was not made for is a defect, not an inheritance.
+ */
+describe('applyLanguageCast — the dialect is its own language', () => {
+  const moritz = { voice_id: 'cartesia_moritz', gender: 'm', tts_engine: 'cartesia', is_active: true, display_name: 'Moritz' };
+  const felix = { voice_id: 'cartesia_felix', gender: 'm', tts_engine: 'cartesia', is_active: true, display_name: 'Felix' };
+  // The stored voice is in the registry so genderForRole reads its gender off
+  // the data rather than falling to the default — the course keeps the gender it
+  // already has, which is the module's own rule.
+  const conrad = { voice_id: 'azure_de-DE-ConradNeural', gender: 'm', tts_engine: 'azure', is_active: true, display_name: 'Conrad' };
+  const germanVoices = [moritz, felix, conrad];
+  const cfg = () => ({ voices: { target1: { voiceId: 'azure_de-DE-ConradNeural', provider: 'azure' } } });
+  const deu = { course_code: 'deu_for_eng', known_lang: 'eng', target_lang: 'deu', voice_pool_key: null, dialect: 'standard' };
+  const deuAt = { course_code: 'deu_at_for_eng', known_lang: 'eng', target_lang: 'deu', voice_pool_key: 'deu_at', dialect: 'standard' };
+  const castOnDeu = [{ slot: 'phrase', language: 'deu', gender: 'm', rank: 0, voice_id: 'cartesia_moritz' }];
+
+  it('a cast on the parent code does NOT reach the Austrian course', () => {
+    const { config, decisions } = applyLanguageCast({ voiceConfig: cfg(), course: deuAt, roles: castOnDeu, voices: germanVoices });
+    expect(config.voices.target1.voiceId).toBe('azure_de-DE-ConradNeural');
+    expect(decisions.find((d) => d.role === 'target1').source).toBe('stored');
+    expect(decisions.find((d) => d.role === 'target1').language).toBe('deu_at');
+  });
+
+  it('and still reaches the German one', () => {
+    const { config } = applyLanguageCast({ voiceConfig: cfg(), course: deu, roles: castOnDeu, voices: germanVoices });
+    expect(config.voices.target1.voiceId).toBe('cartesia_moritz');
+  });
+
+  it('the two entities hold opposite casts at the same time', () => {
+    const roles = [
+      { slot: 'phrase', language: 'deu', gender: 'm', rank: 0, voice_id: 'cartesia_moritz' },
+      { slot: 'phrase', language: 'deu_at', gender: 'm', rank: 0, voice_id: 'cartesia_felix' },
+    ];
+    expect(applyLanguageCast({ voiceConfig: cfg(), course: deu, roles, voices: germanVoices }).config.voices.target1.voiceId).toBe('cartesia_moritz');
+    expect(applyLanguageCast({ voiceConfig: cfg(), course: deuAt, roles, voices: germanVoices }).config.voices.target1.voiceId).toBe('cartesia_felix');
+  });
+
+  it('a stated dialect splits the same way — a courses.dialect course keys on <base>_<dialect>', () => {
+    // Portuguese rather than Welsh: Welsh is human-recorded, so its target roles
+    // are refused by the human-voice guard before the key is ever reported.
+    const porBr = { course_code: 'por_br_for_eng', known_lang: 'eng', target_lang: 'por', voice_pool_key: null, dialect: 'brazil' };
+    const roles = [{ slot: 'phrase', language: 'por', gender: 'm', rank: 0, voice_id: 'cartesia_moritz' }];
+    const { decisions } = applyLanguageCast({ voiceConfig: cfg(), course: porBr, roles, voices: germanVoices });
+    expect(decisions.find((d) => d.role === 'target1').language).toBe('por_brazil');
+  });
+
+  it('the human-voice guard still catches a Welsh DIALECT course', () => {
+    // The guard reads the base of the cast key, so 'cym_north' is still Welsh.
+    // Getting that the other way round would unprotect every Welsh dialect at once.
+    const cymN = { course_code: 'cym_n_for_eng', known_lang: 'eng', target_lang: 'cym', voice_pool_key: null, dialect: 'north' };
+    const roles = [{ slot: 'phrase', language: 'cym_north', gender: 'm', rank: 0, voice_id: 'cartesia_moritz' }];
+    const { config, decisions } = applyLanguageCast({ voiceConfig: cfg(), course: cymN, roles, voices: germanVoices });
+    expect(config.voices.target1.voiceId).toBe('azure_de-DE-ConradNeural');
+    expect(decisions.find((d) => d.role === 'target1').source).toBe('human-recorded');
+  });
+
+  it('the KNOWN side is untouched: the guide is cast on the known language, dialect or not', () => {
+    const aran = { voice_id: 'elevenlabs_aran', gender: 'm', tts_engine: 'elevenlabs', is_active: true, display_name: 'Aran' };
+    const roles = [{ slot: 'guide', language: 'eng', gender: 'm', rank: 0, voice_id: 'elevenlabs_aran' }];
+    const { config } = applyLanguageCast({ voiceConfig: cfg(), course: deuAt, roles, voices: [aran] });
+    expect(config.voices.instruction.voiceId).toBe('elevenlabs_aran');
+  });
+
+  it('a course stating nothing regional resolves exactly as it did before', () => {
+    const fra = { course_code: 'fra_for_eng', known_lang: 'eng', target_lang: 'fra' };
+    const roles = [{ slot: 'phrase', language: 'fra', gender: 'm', rank: 0, voice_id: 'cartesia_moritz' }];
+    const { config } = applyLanguageCast({ voiceConfig: cfg(), course: fra, roles, voices: germanVoices });
+    expect(config.voices.target1.voiceId).toBe('cartesia_moritz');
+  });
+});

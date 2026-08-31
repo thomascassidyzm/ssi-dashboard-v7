@@ -67,6 +67,7 @@ const path = require('path')
 const policy = require('../shared/tts-provider-policy.cjs')
 const { isHumanVoiceLang } = require('../shared/human-voice-courses.cjs')
 const { humanRecordedForLanguage, loadHumanRecordedRoles } = require('../shared/human-recorded-roles.cjs')
+const { targetCastEntities, targetCastKey, baseLanguageOfCastKey, isDialectCastKey, COURSE_CAST_FIELDS } = require('../shared/cast-language-key.cjs')
 const { tryCanonicalVoiceId, PROVIDER_ALIASES } = require('../shared/clip-identity.cjs')
 
 /**
@@ -169,7 +170,7 @@ async function build (db, opts = {}) {
   // registers it; see router.cjs.
   const catalogue = opts.cartesiaCatalogue || {}
   const [courses, voices, roles, guideInUse] = await Promise.all([
-    all(db, 'courses', 'course_code, target_lang, known_lang, status, voice_config'),
+    all(db, 'courses', `${COURSE_CAST_FIELDS}, display_name, status, voice_config`),
     all(db, 'voices', 'voice_id, type, tts_engine, display_name, human_name, languages, gender, is_active, notes, natural_pace_ratio, natural_pace_cps, natural_pace_samples, natural_pace_measured_at, natural_pace_nudge, natural_pace_nudge_note'),
     all(db, 'voice_language_roles', 'language, gender, rank, voice_id, notes, assigned_by, slot'),
     // Who ACTUALLY speaks the instructions today, per known language. About a
@@ -189,15 +190,19 @@ async function build (db, opts = {}) {
 
   const voiceById = new Map(voices.map((v) => [v.voice_id, v]))
 
-  // Group the estate's courses by the language they teach. `target_lang` is the
-  // unit because that is what a voice actually speaks.
-  const byLang = new Map()
-  for (const c of courses) {
-    const lang = String(c.target_lang || '').trim()
-    if (!lang) continue
-    if (!byLang.has(lang)) byLang.set(lang, [])
-    byLang.get(lang).push(c)
-  }
+  // ── GROUPED BY CAST ENTITY, NOT BY BASE LANGUAGE ──────────────────────────
+  // Tom, 2026-08-31: "dialects are different LANGUAGES in this product —
+  // different text and different voices". So Austrian German is its own row
+  // with its own slots, not a fold of the German one, and a cast made here
+  // reaches exactly the courses that entity teaches. The key comes from
+  // services/shared/cast-language-key.cjs — the same module the render path
+  // resolves with, so this screen cannot offer a row nothing reads.
+  //
+  // This used to group on `courses.target_lang`, which carries the BASE tag for
+  // every regional course, so deu_at_for_eng and deu_for_eng shared one set of
+  // slots and there was no way to say anything different about them.
+  const entities = targetCastEntities(courses)
+  const byLang = new Map([...entities.entries()].map(([key, e]) => [key, e.courses]))
 
   const rolesByLang = new Map()
   for (const r of roles) {
@@ -242,7 +247,15 @@ async function build (db, opts = {}) {
   const languages = [...byLang.entries()]
     .map(([code, langCourses]) => describeLanguage({
       code,
-      paceReference: (reference.languages || {})[code] || null,
+      // Everything a PROVIDER knows is asked of the base language: which voices
+      // declare it, whether Cartesia covers it, whether it is human-voiced,
+      // what pace it reads at. A dialect is its own language for WHO speaks it,
+      // and the same language for WHAT can speak it — asking Cartesia about
+      // 'deu_at' would answer "no coverage" about a language with plenty.
+      baseCode: baseLanguageOfCastKey(code),
+      dialectOf: isDialectCastKey(code) ? baseLanguageOfCastKey(code) : null,
+      castKeySource: (entities.get(code) || {}).source || null,
+      paceReference: (reference.languages || {})[baseLanguageOfCastKey(code)] || null,
       langCourses,
       roles: rolesByLang.get(code) || [],
       voiceById,
@@ -364,10 +377,41 @@ function providersInUse (langCourses) {
   }
 }
 
+/**
+ * The name a DIALECT row is shown under, taken from the courses themselves.
+ *
+ * Every regional course already carries a display_name that names the dialect
+ * in plain English — "Austrian German for English Speakers", "Mexican Spanish
+ * for English Speakers", "North Welsh for English Speakers" — so the label is
+ * READ rather than assembled from a table of region codes that would have to be
+ * invented and then maintained. Cut at " for ", because the part after it names
+ * the known side, which is a fact about the course and not about the dialect.
+ *
+ * Deterministic: the most common label across the entity's courses, ties broken
+ * alphabetically. Null when nothing usable is stated, and the UI falls back to
+ * the ordinary language name.
+ */
+function dialectLabel (langCourses) {
+  const counts = new Map()
+  for (const c of langCourses || []) {
+    const raw = String(c.display_name || '').trim()
+    if (!raw) continue
+    const cut = raw.split(/\s+for\s+/i)[0].trim()
+    if (!cut) continue
+    counts.set(cut, (counts.get(cut) || 0) + 1)
+  }
+  if (!counts.size) return null
+  return [...counts.entries()].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))[0][0]
+}
+
 /** One language's row. */
-function describeLanguage ({ code, langCourses, roles, voiceById, voices, catalogue = {}, knownCourses = 0, guideInUse = [], paceReference = null, courses = [], humanRows = [] }) {
-  const human = isHumanVoiceLang(code)
-  const cartesiaCovers = policy.cartesiaCoversLanguage(code)
+function describeLanguage ({ code, baseCode = null, dialectOf = null, castKeySource = null, langCourses, roles, voiceById, voices, catalogue = {}, knownCourses = 0, guideInUse = [], paceReference = null, courses = [], humanRows = [] }) {
+  // `code` is the CAST key — what a slot is written against. `base` is the
+  // language a provider knows about. For a non-dialect row they are the same
+  // string, so every question below is unchanged for the 60-odd plain rows.
+  const base = baseCode || code
+  const human = isHumanVoiceLang(base)
+  const cartesiaCovers = policy.cartesiaCoversLanguage(base)
   // No course teaches this language; it only ever appears on the known side.
   // Its phrase slots are not a gap, and `statusFor` is told so.
   const knownOnly = langCourses.length === 0
@@ -454,6 +498,17 @@ function describeLanguage ({ code, langCourses, roles, voiceById, voices, catalo
 
   return {
     code,
+    // The base language this row's voices are drawn from. Equal to `code` for a
+    // plain language; 'deu' on the 'deu_at' row.
+    baseCode: base,
+    // Non-null ONLY on a dialect entity: the parent it is NOT cast with. The UI
+    // shows this so a dialect row cannot be mistaken for a duplicate.
+    dialectOf,
+    // Which column stated the dialect — 'voice_pool_key' or 'dialect'.
+    castKeySource,
+    // The dialect's own name, read from its courses. Null on a plain row, where
+    // the UI's ordinary code-to-name lookup already has the answer.
+    dialectName: dialectOf ? dialectLabel(langCourses) : null,
     courses: langCourses.length,
     released: langCourses.filter((c) => c.status === 'released').length,
     // The pace every voice in this language is compared against, and the exact
@@ -474,7 +529,7 @@ function describeLanguage ({ code, langCourses, roles, voiceById, voices, catalo
     // The provider a NEW render would actually use, asked of the same module
     // production asks, so this cannot claim something the render path denies.
     // This is a HYPOTHETICAL, and the UI labels it as one ("If re-rendered").
-    defaultProvider: providerFor(code),
+    defaultProvider: providerFor(base),
     // What the language's courses actually have stored, right now. The fact
     // the "If re-rendered" column cannot tell you.
     ...inUse,
@@ -504,7 +559,7 @@ function describeLanguage ({ code, langCourses, roles, voiceById, voices, catalo
       // Any active castable voice that declares this language. NOT filtered by
       // gender — a guide is one voice, and the male/female split is a property
       // of the phrase slots only.
-      candidates: guideCandidates({ code, voices, guideRoles, voiceById, inUse: guideInUse, catalogue }),
+      candidates: guideCandidates({ code: base, voices, guideRoles, voiceById, inUse: guideInUse, catalogue }),
     },
     // Voices that CAN speak this language and are not yet cast — the candidate
     // list, so casting is a click rather than a search.
@@ -520,13 +575,13 @@ function describeLanguage ({ code, langCourses, roles, voiceById, voices, catalo
     candidates: dedupeByVoiceId(voices
       .filter((v) => v.is_active !== false)
       .filter((v) => castable(v))
-      .filter((v) => (v.languages || []).some((l) => sameLang(l, code)))
+      .filter((v) => (v.languages || []).some((l) => sameLang(l, base)))
       .filter((v) => !roles.some((r) => r.voice_id === v.voice_id))
       // `pace` rides along on the candidate too, so the numbers are visible on
       // a language nobody has cast yet — which, until casting is populated, is
       // every language.
       .map((v) => ({ voiceId: v.voice_id, name: v.display_name || v.human_name || v.voice_id, kind: voiceKind(v), engine: v.tts_engine || null, gender: v.gender || null, registered: true, pace: paceOf(v) }))
-      .concat(cartesiaCandidates(code, catalogue, roles)))
+      .concat(cartesiaCandidates(base, catalogue, roles)))
       .slice(0, 80),
   }
 }
@@ -804,6 +859,7 @@ function notes () {
   return {
     completeness: `A language is complete when both genders have a primary voice cast (${GENDERS.length * COMPLETE_RANKS} voices: one male, one female). Backups are tracked up to ${REQUIRED_RANKS} ranks per gender but are insurance, not part of completeness — a missing backup shows as a quiet flag, never red. Tom's ruling, 2026-08-28.`,
     knownonly: 'A few languages are the KNOWN side of a course and the target side of none — nothing teaches them, so they have no phrase-voice worklist and are reported as "known only", never as a gap. They are on this screen so their guide voice can be cast: their learners hear instructions today, and without a row there was no way to cast who speaks them.',
+    dialects: 'A DIALECT IS ITS OWN LANGUAGE HERE (Tom, 2026-08-31): different text, different voices. Austrian German, Mexican Spanish, Northern Welsh and the rest hold their own castable row, and a voice cast on the parent code does not reach them — that would be a defect, not an inheritance. A course earns its own row by STATING its region in courses.voice_pool_key or courses.dialect; the course code is never read, because a code segment is not a statement. A regional course that states neither is cast with its parent and is a data gap, fixed by one column write.',
     human: 'Human-voiced languages (Welsh, Breton, PDC) are reported as "human", never as a gap. A human recording wins wherever it exists and no TTS provider may ever be selected for them.',
     nocover: 'Cartesia does not publish every language. Where it does not, the ladder falls to Azure — that is "nocover", which is covered, just not by the default provider. Welsh is NOT in Cartesia\'s published list, which is why the flagship courses could never have been Cartesia-only.',
     writes: 'This screen writes voice_language_roles and nothing else. It never writes course_audio, algorithm_config or any course voice_config.',

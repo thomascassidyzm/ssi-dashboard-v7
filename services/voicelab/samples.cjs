@@ -26,6 +26,7 @@
  */
 
 const crypto = require('crypto')
+const { targetCastKey, baseLanguageOfCastKey, COURSE_CAST_FIELDS } = require('../shared/cast-language-key.cjs')
 const fs = require('fs')
 const path = require('path')
 
@@ -105,15 +106,24 @@ function cacheKey (voiceId, language, text) {
  */
 async function pickLine (language) {
   const db = client()
+  // `language` is a CAST KEY, which may be a dialect entity ('deu_at'). The
+  // column holds the BASE tag for every course, dialect or not, so the query
+  // asks the base and the entity filter is applied in JS — one query either
+  // way, and the row that comes back is guaranteed to be a course this entity
+  // actually teaches. Auditioning a voice for Austrian German on a standard
+  // German line would be judging the wrong thing.
+  const base = baseLanguageOfCastKey(language) || language
   const { data: courses, error } = await db
     .from('courses')
-    .select('course_code, display_name, target_lang, known_lang, seed_count')
-    .eq('target_lang', language)
+    .select(`${COURSE_CAST_FIELDS}, display_name, seed_count`)
+    .eq('target_lang', base)
     .order('seed_count', { ascending: false, nullsFirst: false })
-    .limit(10)
+    .limit(40)
   if (error) throw Object.assign(new Error(`courses read failed: ${error.message}`), { status: 502 })
 
-  for (const c of preferCourses(courses || [], language)) {
+  const mine = (courses || []).filter((c) => targetCastKey(c) === language)
+
+  for (const c of preferCourses(mine, language)) {
     const { data: seeds } = await db
       .from('course_seeds')
       .select('seed_number, known_text, target_text')
@@ -138,7 +148,7 @@ async function pickLine (language) {
     }
   }
 
-  return guideLine(language)
+  return guideLine(base)
 }
 
 /**
@@ -147,6 +157,10 @@ async function pickLine (language) {
  * `cym_for_eng` beats `cym_for_yor` because a Yoruba known side tells Tom nothing.
  */
 function preferCourses (courses, language) {
+  // On a DIALECT entity every course in the list already teaches that dialect,
+  // so the "plainest code" leg has nothing to separate and the English-known
+  // and size legs decide. `deu_at` must not prefer a `deu_for_` code here: that
+  // code is a different language now and was filtered out before this ran.
   const plain = new RegExp(`^${language}_for_`)
   return courses
     .filter((c) => (c.seed_count || 0) > 0)
@@ -309,7 +323,9 @@ async function prepare ({ language, voiceIds = [], maxVoices = 12, renderOne }) 
   const todo = state.missing.filter(isRenderable).slice(0, Math.max(1, maxVoices))
   if (!todo.length) return { ...state, rendered: [], chars: 0 }
 
-  const lang = params.findLanguage(language)
+  // The STEER is a property of the base language: Cartesia is told to speak
+  // German, and which German is a property of the voice, not of the request.
+  const lang = params.findLanguage(baseLanguageOfCastKey(language) || language)
   if (!lang) {
     throw Object.assign(
       new Error(`The lab cannot steer "${language}" — samples are limited to the languages params.cjs knows how to steer; casting works regardless.`),

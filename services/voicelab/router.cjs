@@ -31,6 +31,10 @@ const fs = require('fs')
 const lab = require('./lab.cjs')
 const store = require('./store.cjs')
 const params = require('./params.cjs')
+// A cast slot is keyed on the DIALECT entity ('deu_at'); a PROVIDER only ever
+// knows the base language ('deu'). Everything that steers a render, registers a
+// voice's spoken languages or asks Cartesia a question uses the base.
+const { baseLanguageOfCastKey } = require('../shared/cast-language-key.cjs')
 const content = require('./content.cjs')
 const registry = require('./registry.cjs')
 const cartesia = require('./cartesia.cjs')
@@ -316,7 +320,10 @@ function mount (app, deps) {
           type: 'tts',
           tts_engine: engine,
           display_name: slotVoiceId,
-          languages: [language],
+          // The BASE language: this records what the voice can SPEAK, and a
+          // provider has no notion of 'deu_at'. Which dialect it is cast for
+          // is the slot's business, not the voice row's.
+          languages: [baseLanguageOfCastKey(language) || language],
           gender: registry.GENDERS.includes(gender) ? gender : null,
           is_active: true,
           notes: `Registered by the Voice Lab on ${new Date().toISOString().slice(0, 10)} when cast into the ${slot} slot for ${language}: it was already speaking this language's clips but had no voices row.`,
@@ -443,7 +450,7 @@ function mount (app, deps) {
       const { voiceId, language } = req.body || {}
       if (!voiceId) throw Object.assign(new Error('voiceId is required'), { status: 400 })
 
-      const lang = params.findLanguage(language)
+      const lang = params.findLanguage(baseLanguageOfCastKey(language) || language)
       if (!lang) {
         throw Object.assign(
           new Error(`The lab cannot steer "${language}". Auditioning is limited to the languages params.cjs knows how to steer; the voice is created and castable regardless.`),

@@ -53,6 +53,7 @@
 const { tryCanonicalVoiceId } = require('./clip-identity.cjs');
 const { voiceSpellings } = require('./clip-identity-lookup.cjs');
 const { humanRolesForCourse } = require('./human-recorded-roles.cjs');
+const { castKeyForCourse } = require('./cast-language-key.cjs');
 
 /**
  * The roles the language cast speaks for.
@@ -111,18 +112,30 @@ function slotForRole(role) { return isGuideRole(role) ? 'guide' : 'phrase'; }
 function slotOfRow(r) { return r.slot || 'phrase'; }
 
 /**
- * Which language a role speaks. `known` speaks the course's known_lang;
- * target1/target2 speak its target_lang. Nothing else is inferred.
+ * Which language a role speaks — as a CAST ENTITY, not as a base tag.
+ *
+ * `known`, and both guide roles, speak the course's KNOWN language.
+ * Instructions and encouragements are messages TO the learner, so they are
+ * spoken in the language the learner already has — which is exactly the
+ * mapping phase8-audio-v13 already makes for those two roles.
+ *
+ * ── DIALECTS ARE LANGUAGES (Tom, 2026-08-31) ────────────────────────────────
+ * This used to read `course.target_lang` directly, and target_lang carries the
+ * BASE tag for every regional course — deu_at_for_eng is 'deu', spa_mx_for_eng
+ * is 'spa'. One cast on 'deu' therefore reached the Austrian and Swiss courses
+ * too, which Tom has ruled a defect rather than a deferred feature. The key now
+ * comes from services/shared/cast-language-key.cjs, which reads the two columns
+ * that STATE a course's regional identity and never guesses from a course code.
+ *
+ * A course that states nothing regional still keys on its base language, so
+ * nothing about a non-dialect course changes — and a course whose dialect is
+ * stated in neither column keys on its base too, which is the pre-existing
+ * behaviour and is reported as a data gap rather than papered over here.
  */
 function languageForRole(role, course) {
   if (!course) return null;
-  // `known`, and both guide roles, speak the course's KNOWN language.
-  // Instructions and encouragements are messages TO the learner, so they are
-  // spoken in the language the learner already has — which is exactly the
-  // mapping phase8-audio-v13 already makes for those two roles.
   const knownSide = role === 'known' || isGuideRole(role);
-  const v = knownSide ? course.known_lang : course.target_lang;
-  return v ? String(v).trim() : null;
+  return castKeyForCourse(course, knownSide ? 'known' : 'target');
 }
 
 /**

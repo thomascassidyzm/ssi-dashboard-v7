@@ -344,7 +344,7 @@ const rows = computed(() => {
     // "xAI 29" gives you exactly the languages whose courses are on xAI.
     .filter((l) => provFilter.value === 'all' || (l.providersInUse || []).some((p) => p.provider === provFilter.value))
     // Search matches the words as well as the code, so typing "welsh" finds cym.
-    .filter((l) => !needle || l.code.toLowerCase().includes(needle) || languageName(l.code).toLowerCase().includes(needle))
+    .filter((l) => !needle || l.code.toLowerCase().includes(needle) || langName(l).toLowerCase().includes(needle))
     // THE ORDER TOM ASKED FOR (2026-08-29): live courses first, then course
     // count descending, then alphabetical BY NAME — "Arabic before Bengali
     // before Croatian", not "ara before ben before hrv". Done here and not on
@@ -354,7 +354,7 @@ const rows = computed(() => {
       const live = (l) => (l.released > 0 ? 0 : 1)
       return live(a) - live(b)
         || b.courses - a.courses
-        || languageName(a.code).localeCompare(languageName(b.code))
+        || langName(a).localeCompare(langName(b))
     })
 })
 
@@ -422,8 +422,22 @@ function providerHue (p) {
   return 'ui-hue-good'
 }
 
-/** "Korean · kor" — the words first, the code beside them, never one instead of the other. */
-function langName (code) { return languageName(code) }
+/**
+ * "Korean · kor" — the words first, the code beside them, never one instead of
+ * the other.
+ *
+ * A DIALECT ROW names itself (Tom, 2026-08-31: dialects are different languages
+ * here). Its code is 'deu_at', which the code-to-name CSV has never heard of,
+ * so the server sends the name read off the dialect's own courses — "Austrian
+ * German" — and this falls back to the base language's name rather than to a
+ * bare code if it ever arrives empty.
+ */
+function langName (codeOrLang) {
+  if (codeOrLang && typeof codeOrLang === 'object') {
+    return codeOrLang.dialectName || languageName(codeOrLang.baseCode || codeOrLang.code)
+  }
+  return languageName(codeOrLang)
+}
 
 /** The status word as Tom reads it, not as the API stores it. */
 function statusLabel (status) {
@@ -794,8 +808,15 @@ function candidatesFor (lang, slot) {
           <template v-for="lang in rows" :key="lang.code">
             <tr class="ui-row" :class="lang.status">
               <td class="vl-lang">
-                <span class="vl-name">{{ langName(lang.code) }}</span>
+                <span class="vl-name">{{ langName(lang) }}</span>
                 <span class="vl-code">{{ lang.code }}</span>
+                <!-- A dialect is its OWN language here, cast on its own row. The
+                     parent is named so the row cannot read as a duplicate of it. -->
+                <span
+                  v-if="lang.dialectOf"
+                  class="ui-pill ui-hue-quiet vl-flag"
+                  :title="`Cast separately from ${langName(lang.dialectOf)} — stated by courses.${lang.castKeySource}`"
+                >own cast · not {{ lang.dialectOf }}</span>
               </td>
               <td class="vl-muted vl-wide">{{ lang.courses }}<span v-if="lang.released"> · {{ lang.released }} live</span></td>
               <td class="vl-inuse">
@@ -845,8 +866,12 @@ function candidatesFor (lang, slot) {
                      at when I select it." The expanded panel names itself, and
                      stays named while it is scrolled. -->
                 <div class="vl-detail-head">
-                  <span class="vl-detail-name">{{ langName(lang.code) }}</span>
+                  <span class="vl-detail-name">{{ langName(lang) }}</span>
                   <span class="vl-code">{{ lang.code }}</span>
+                  <span v-if="lang.dialectOf" class="vl-muted">
+                    its own language for casting — a voice cast on
+                    {{ langName(lang.dialectOf) }} ({{ lang.dialectOf }}) does NOT reach these courses
+                  </span>
                   <span class="ui-pill" :class="hueFor(lang.status)">{{ statusLabel(lang.status) }}</span>
                   <span class="vl-muted">{{ lang.courses }} course{{ lang.courses === 1 ? '' : 's' }}</span>
                   <!-- WHAT 1.00x MEANS IN THIS LANGUAGE. Every voice below is a
@@ -868,17 +893,17 @@ function candidatesFor (lang, slot) {
                 </div>
 
                 <p v-if="lang.knownOnly" class="vl-note">
-                  <strong>No course teaches {{ langName(lang.code) }}</strong> — it is only ever the
+                  <strong>No course teaches {{ langName(lang) }}</strong> — it is only ever the
                   known side, so it has no phrase-voice worklist. It is on this screen so its
                   <strong>guide voice</strong> can be cast: its learners hear instructions today.
                 </p>
                 <p v-else-if="lang.human" class="vl-note">
-                  <strong>{{ langName(lang.code) }} is human-recorded only.</strong> A human recording wins
+                  <strong>{{ langName(lang) }} is human-recorded only.</strong> A human recording wins
                   wherever it exists, so empty slots here are a recording worklist for its
                   recordists, not a casting gap. No TTS provider may ever be selected for it.
                 </p>
                 <p v-else-if="!lang.cartesiaCovers" class="vl-note">
-                  Cartesia does not publish <strong>{{ langName(lang.code) }}</strong>, so a new render falls to
+                  Cartesia does not publish <strong>{{ langName(lang) }}</strong>, so a new render falls to
                   Azure. That is covered, just not by the default provider.
                 </p>
 
@@ -931,7 +956,7 @@ function candidatesFor (lang, slot) {
                 <div class="vl-sample-line">
                   <p class="vl-cast-meaning">
                     Casting decides <strong>who speaks</strong> — every course that teaches
-                    {{ langName(lang.code) }} will generate in this voice, with nothing else to do
+                    {{ langName(lang) }} will generate in this voice, with nothing else to do
                     anywhere. <strong>What is said</strong> stays each course's own.
                   </p>
 
@@ -1054,7 +1079,7 @@ function candidatesFor (lang, slot) {
                   Guide voice — instructions and encouragements
                   <span class="vl-muted vl-guide-sub">
                     spoken to the learner, not course material. Cast against
-                    <strong>{{ langName(lang.code) }}</strong> as a KNOWN language, so one cast serves
+                    <strong>{{ langName(lang) }}</strong> as a KNOWN language, so one cast serves
                     <template v-if="lang.knownCourses">
                       all {{ lang.knownCourses }} course{{ lang.knownCourses === 1 ? '' : 's' }} taught from it.
                     </template>

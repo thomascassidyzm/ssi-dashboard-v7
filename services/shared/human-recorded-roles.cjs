@@ -55,6 +55,7 @@
  */
 
 const { isHumanVoiceCourse, isHumanVoiceLang } = require('./human-voice-courses.cjs');
+const { castKeyForCourse, targetCastKey, baseLanguageOfCastKey } = require('./cast-language-key.cjs');
 
 /**
  * The roles the recording splicer files per-course takes into, and therefore
@@ -67,13 +68,13 @@ const PHRASE_ROLES = Object.freeze(['known', 'target1', 'target2']);
 const TARGET_ROLES = Object.freeze(['target1', 'target2']);
 
 /**
- * Which language a role actually SPEAKS.
+ * Which language a role actually SPEAKS — as a CAST ENTITY.
  *
  * A deliberate twin of languageForRole() in language-voice-cast.cjs, which
- * cannot be imported here because that module imports this one. The duplication
- * is three lines and is locked by a test asserting the two agree on every role;
- * inverting the dependency to save it would put the guard downstream of the
- * thing it guards.
+ * cannot be imported here because that module imports this one. Both now defer
+ * to cast-language-key.cjs, which imports neither, so the twin is one line and
+ * the two CANNOT disagree — a test still asserts it on every role, because the
+ * guard protecting the wrong slot is the failure that matters.
  *
  * This is what closes the hole the live probe found on 2026-08-31: nine courses
  * are taught FROM Welsh (eng_for_cym and friends), so their KNOWN side is
@@ -82,10 +83,17 @@ const TARGET_ROLES = Object.freeze(['target1', 'target2']);
  * voice on every one of them — the exact thing Tom's 2026-08-13 ruling
  * ("Welsh is permanently excluded from every TTS render queue") forbids, and a
  * thing no course-code check could see.
+ *
+ * Dialects are their own languages here (Tom, 2026-08-31), so a Northern Welsh
+ * course speaks 'cym_north'. The human-voice POLICY is a fact about the
+ * language rather than about the region — Welsh is human-recorded whichever
+ * Welsh it is — so the policy check below reads the base of whatever this
+ * returns. Getting that the other way round would drop the guard off every
+ * Welsh dialect course at once.
  */
 const KNOWN_SIDE_ROLES = Object.freeze(['known', 'instruction', 'encouragement']);
 function languageSpokenBy(role, course) {
-  return KNOWN_SIDE_ROLES.includes(role) ? course.known_lang : course.target_lang;
+  return castKeyForCourse(course, KNOWN_SIDE_ROLES.includes(role) ? 'known' : 'target');
 }
 
 /**
@@ -124,7 +132,8 @@ function humanRolesForCourse({ course, voiceConfig = null, humanRows = [], roles
     // not the same set as "the target roles". See languageSpokenBy above.
     for (const role of consider) {
       const spoken = languageSpokenBy(role, course);
-      if (!isHumanVoiceLang(spoken)) continue;
+      // Human-voiced is a property of the LANGUAGE, not of the dialect.
+      if (!isHumanVoiceLang(baseLanguageOfCastKey(spoken))) continue;
       note(role, {
         source: 'policy-language',
         reason: `${role} is spoken in ${spoken}, a human-recorded language (services/shared/human-voice-courses.cjs). No synthetic voice may be cast into it.`,
@@ -182,10 +191,15 @@ function humanRecordedForLanguage({ language, slot = 'phrase', courses = [], hum
   const affected = [];
   for (const c of courses) {
     // Which of the wanted roles this cast would actually reach on this course.
+    // Matched on the CAST KEY, because that is what the slot is written
+    // against: a cast on 'deu' does not reach deu_at_for_eng, so the guard must
+    // not warn about it either — a guard that names courses a cast cannot touch
+    // teaches the operator to ignore it.
+    const targetKey = targetCastKey(c);
     const reach = wanted.filter((role) => (
       role === 'known' || role === 'instruction' || role === 'encouragement'
         ? c.known_lang === lang
-        : c.target_lang === lang
+        : targetKey === lang
     ));
     if (!reach.length) continue;
     const human = humanRolesForCourse({
