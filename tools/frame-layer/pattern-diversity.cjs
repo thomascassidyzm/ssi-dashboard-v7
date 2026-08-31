@@ -61,6 +61,23 @@
  */
 const PATTERNS = require('./patterns.cjs');
 
+/**
+ * THE MERGED MATCHER LIST. `frameSig` used to see the 31 seed frames only, so a
+ * basket that put the LEGO into a greeting, a bare polar response and a thanks
+ * produced the SAME signature three times ("∅") and read as one shape. Adding
+ * the 12 D-frames is what lets the conversational register register at all.
+ *
+ * P-frames stay FIRST so a signature that fires no D-frame is byte-identical to
+ * what this file produced before — every existing reading is preserved, and a
+ * signature only ever grows a suffix.
+ *
+ * X-frames are deliberately absent: an exchange spans a turn boundary and
+ * cannot be matched against one phrase. A generator reaches them through their
+ * `sentence_projection`.
+ */
+const { allSentenceMatchers } = require('./dialogue-patterns.cjs');
+const MERGED = allSentenceMatchers();
+
 const WORD = (s) => String(s || '').toLowerCase().replace(/[^a-z0-9' ]/g, ' ').split(/\s+/).filter(Boolean);
 
 /** [SPEC:worker] the matrix clause: everything before the first subordinator or coordinator. */
@@ -71,8 +88,13 @@ function matrixClause(known) {
   return head.trim() || known;
 }
 
-function frameSig(known) {
-  const ids = PATTERNS.filter(p => p.test(known)).map(p => p.id);
+/**
+ * `matchers` defaults to the merged list. It is an argument, not a constant, so
+ * a caller comparing before/after (or scoring a corpus that predates the
+ * dialogue inventory) can hand in `PATTERNS` and get exactly the old reading.
+ */
+function frameSig(known, matchers = MERGED) {
+  const ids = matchers.filter(p => p.test(known)).map(p => p.id);
   return ids.join('+') || '∅';
 }
 
@@ -130,13 +152,29 @@ function crossesSplit(phrases, split) {
  */
 const isPractice = (p) => p.phrase_role !== 'component';
 
-function score(all, { lego, expensiveClass = 'SPLIT', splits = [], instantiableFrames = null } = {}) {
+/**
+ * `instantiableFrames` is now the size of the §3 POOL — seed frames this course
+ * has attested PLUS pod frames whose fixed material this basket owns — where it
+ * used to be `attestedFrames(...).size` alone. The denominator therefore rises
+ * exactly where the conversational register becomes reachable, which is early,
+ * because "yes"/"no"/"thank you"/"please" are cut early in essentially every
+ * pair.
+ *
+ * THE CONSEQUENCE IS FACED, NOT SOFTENED. Early baskets score LOWER against the
+ * bigger pool. That is the design working: an early basket that stamps nine
+ * statements reads as thin because it IS thin against what the corpus attests.
+ * The floors below are unchanged at 0.34 etc. on purpose — per-band relaxation
+ * is a later decision on lab evidence, not a calibration made here to keep the
+ * numbers looking nice. Late baskets are untouched: `min(phrase count, pool)`
+ * already caps at the phrase count long before the pool runs out.
+ */
+function score(all, { lego, expensiveClass = 'SPLIT', splits = [], instantiableFrames = null, matchers = MERGED } = {}) {
   const phrases = (all || []).filter(isPractice);
   const n = phrases.length;
   if (!n) return null;
   const sigs = new Set(), poss = new Set(), lefts = new Set(), rights = new Set(), juncts = new Set();
   const detail = phrases.map(p => {
-    const s = frameSig(matrixClause(p.known_text));
+    const s = frameSig(matrixClause(p.known_text), matchers);
     const w = walk(p.known_text, lego);
     sigs.add(s);
     // "absent" is not a position — it is a containment failure, counted separately.
@@ -190,7 +228,7 @@ function score(all, { lego, expensiveClass = 'SPLIT', splits = [], instantiableF
  * job) — asking the "to drive" basket to cross a conditional split it has nothing
  * to do with would be the per-seed error in a new costume.
  */
-function scoreBaskets(phrases, { legos = [], job = null, expensiveClass = 'SPLIT', instantiableFrames = null } = {}) {
+function scoreBaskets(phrases, { legos = [], job = null, expensiveClass = 'SPLIT', instantiableFrames = null, matchers = MERGED } = {}) {
   const { splitsForBasket } = require('./derive-seed-job.cjs');
   const byIndex = new Map();
   for (const p of phrases || []) {
@@ -204,11 +242,11 @@ function scoreBaskets(phrases, { legos = [], job = null, expensiveClass = 'SPLIT
     const mine = withIds(byIndex.get(idx) || [], idx);
     const splits = job ? splitsForBasket(job, idx) : [];
     return { lego_index: idx, lego: l, splits, phrases: mine,
-             score: score(mine, { lego: l.known_text, splits, expensiveClass, instantiableFrames }) };
+             score: score(mine, { lego: l.known_text, splits, expensiveClass, instantiableFrames, matchers }) };
   });
   const strays = [...byIndex.entries()].filter(([k]) => k === null || !known.has(k)).flatMap(([, v]) => v);
   const unattributed = strays.length
-    ? { phrases: withIds(strays, 0), score: score(withIds(strays, 0), { lego: '', splits: [], expensiveClass, instantiableFrames }) }
+    ? { phrases: withIds(strays, 0), score: score(withIds(strays, 0), { lego: '', splits: [], expensiveClass, instantiableFrames, matchers }) }
     : null;
   const scored = baskets.filter(b => b.score);
   return {
@@ -240,7 +278,7 @@ const ID_ROLE = { component: 0, build: 1, use: 2 };
 const sortForId = (a, b) => (ID_ROLE[a.phrase_role] ?? 9) - (ID_ROLE[b.phrase_role] ?? 9)
   || ((a.position ?? 0) - (b.position ?? 0));
 
-module.exports = { score, scoreBaskets, withIds, frameSig, walk, matrixClause, skeleton, crossesSplit, FLOORS };
+module.exports = { score, scoreBaskets, withIds, frameSig, walk, matrixClause, skeleton, crossesSplit, FLOORS, MERGED };
 
 if (require.main === module) {
   require('dotenv').config({ quiet: true });
@@ -252,17 +290,29 @@ if (require.main === module) {
   (async () => {
     const { seedRow, ownLegos, priorSeeds, priorLegos, priorComponents, phrases } = await loadCorpus(sb, course, +seed);
     const job = deriveJob({ course, seedRow, ownLegos, priorSeeds, priorLegos, priorComponents });
-    const { attestedFrames } = require('./availability.cjs');
-    const r = scoreBaskets(phrases, { legos: ownLegos, job,
-      instantiableFrames: attestedFrames(priorSeeds, seedRow).size });
+    const { attestedFrames, availableVocab, instantiableFrameSet } = require('./availability.cjs');
+    // The denominator is now the POOL, per basket — but the CLI scores a whole
+    // seed at once, so it uses the widest window of the seed (its last lego),
+    // which is the same window the generator's base vocabulary is built from.
+    const vocab = availableVocab({ legos: priorLegos.concat(ownLegos), components: priorComponents,
+                                   seed: seedRow.seed_number, legoIndex: null });
+    const pool = instantiableFrameSet({ vocab, priorSeeds, seedRow });
+    const attestedOnly = attestedFrames(priorSeeds, seedRow).size;
+    const r = scoreBaskets(phrases, { legos: ownLegos, job, instantiableFrames: pool.length });
+    const before = scoreBaskets(phrases, { legos: ownLegos, job,
+      instantiableFrames: attestedOnly, matchers: PATTERNS });
     console.log(`${course} seed ${seed} — ${seedRow.known_text}`);
+    console.log(`FRAME pool: ${attestedOnly} seed-attested → ${pool.length} instantiable ` +
+      `(+${pool.filter(p => p.provenance === 'pod').length} pod: ${pool.filter(p => p.provenance === 'pod').map(p => p.id).join(' ') || 'none'})`);
     console.log(`JOB: ${job.verdict} — ${job.sentence}\n`);
     for (const b of r.baskets) {
       const s = b.score;
       console.log(`— L${String(b.lego_index).padStart(2, '0')} "${b.lego.known_text}" / "${b.lego.target_text}"  ${b.phrases.length} phrases`);
       if (!s) { console.log('   no phrases'); continue; }
       console.log(`   ${Object.entries(s.axes).map(([k, v]) => `${k} ${v.toFixed(3)}`).join('  ')}`);
-      console.log(`   composite ${s.composite}  ${s.pass ? 'PASS' : 'FAIL: ' + s.floor_failures.join(', ')}`);
+      const b0 = before.baskets.find(x => x.lego_index === b.lego_index);
+      console.log(`   composite ${s.composite}  ${s.pass ? 'PASS' : 'FAIL: ' + s.floor_failures.join(', ')}`
+        + (b0 && b0.score ? `   [before this change: frame ${b0.score.axes.frame.toFixed(3)}, composite ${b0.score.composite}, ${b0.score.pass ? 'PASS' : 'FAIL'}]` : ''));
       b.phrases.forEach(d => console.log(`     ${d.lab_id.padEnd(7)} ${d.phrase_role.padEnd(9)} ${d.known_text}`));
     }
     if (r.unattributed) console.log(`\nUNATTRIBUTED (not gating): ${r.unattributed.phrases.length} phrase(s)`);

@@ -92,4 +92,90 @@ function expensiveClassFor(course, mappingDoc) {
   return ranked.length ? { class: ranked[0][0], counts: tally } : null;
 }
 
-module.exports = { availableVocab, attestedFrames, norm, expensiveClassFor };
+/**
+ * WHICH FRAMES MAY THIS BASKET ACTUALLY INSTANTIATE? — the pool, and the gate.
+ *
+ * Two clauses, and only the first has teeth.
+ *
+ * 1. OWNED — the safety gate. Every chunk of at least one alternate of the
+ *    frame's `fixed_material` must resolve WHOLE-CHUNK against the vocabulary
+ *    this basket owns: some available row's KNOWN side IS that chunk, which is
+ *    what gives it an owned target realisation. Same discipline as the
+ *    validator — no re-conjugation, no invention, no substring luck.
+ *    Seed frames (`P*`) pass trivially by construction: a prior seed attested
+ *    them, and a prior seed's material arrived through cuts. So for them
+ *    `attestedFrames(priorSeeds, seedRow)` remains the whole test, unchanged.
+ *
+ * 2. HEARD — a RANKING signal, never a gate. A frame attested in pod content
+ *    delivered at or before this position is nicer to practise; a frame that
+ *    is not is still safe. Making heard a gate would couple generation to the
+ *    pod delivery schedule, which is per-enrolment runtime state
+ *    (`corpus.cjs`, `deliveredPodRows`), and seeds were never heard-gated
+ *    either. `heardFrameIds` is therefore optional and affects only `heard`.
+ *
+ * THE POINT OF THE WHOLE DESIGN, stated as code: PODS CONTRIBUTE FRAME
+ * ATTESTATION AND ZERO VOCABULARY. Production material comes wholly from cuts.
+ * A frame whose fixed material no LEGO has cut is ABSENT from the pool and
+ * absent from the FRAME denominator — never "scored low". Scoring it would
+ * punish a basket for not doing the impossible, and offering it would ask a
+ * learner to produce target material the curriculum has never minted.
+ *
+ * The worked case, and the acceptance test: X1/D6 "and you?" is attested four
+ * times in pod-0. `spa_for_eng` has cut no "and you", no target containing
+ * "y tú", and no lego whose target is the bare word "tú". So this function must
+ * refuse D6 for spa at EVERY position — and must admit it the day a cut mints
+ * the material, with no config change anywhere.
+ */
+function instantiableFrameSet({
+  vocab = [], priorSeeds = [], seedRow = null,
+  dialogueFrames = null, heardFrameIds = null,
+} = {}) {
+  const attested = attestedFrames(priorSeeds, seedRow);
+  // The owned known side, normalised. A chunk is owned iff it IS one of these —
+  // "tú" being a substring of "estúpido" is not ownership, and normalising to
+  // whole strings is what makes that impossible to confuse.
+  const known = new Set(vocab.map(v => norm(v.known_text)).filter(Boolean));
+  const owns = (alternate) => alternate.length > 0 && alternate.every(c => known.has(norm(c)));
+  const pool = [];
+  for (const [id, firstSeed] of attested) {
+    pool.push({ id, provenance: 'seed', grain: 'sentence', first_seed: firstSeed,
+                heard: heardFrameIds ? heardFrameIds.has(id) : null });
+  }
+  const frames = dialogueFrames || loadDialogueFrames();
+  for (const f of frames) {
+    const alt = (f.fixed_material || []).find(owns);
+    if (!alt) continue;                                  // OWNED failed → not in the pool at all
+    pool.push({
+      id: f.id, provenance: 'pod', grain: f.grain || 'sentence',
+      name: f.name, position: f.position || (f.positions || []).join(' → ') || 'either',
+      register: f.register || [], owned_via: alt,
+      sentence_projection: f.sentence_projection || null,
+      heard: heardFrameIds ? heardFrameIds.has(f.id) : null,
+    });
+  }
+  return pool;
+}
+
+/**
+ * The dialogue frames, read from the mined inventory when it exists and falling
+ * back to the matcher definitions when it does not. The inventory is preferred
+ * because it carries the mechanically-derived `register` and the attestation
+ * counts; the matchers are the same `fixed_material` either way, so the gate's
+ * verdict never depends on which one was available.
+ */
+let _dialogueCache;
+function loadDialogueFrames() {
+  if (_dialogueCache) return _dialogueCache;
+  const path = require('path'), fs = require('fs');
+  const at = path.join(__dirname, '..', '..', 'docs', 'frame-layer', 'dialogue-frame-inventory.json');
+  try {
+    const inv = JSON.parse(fs.readFileSync(at, 'utf8'));
+    _dialogueCache = [...(inv.sentence_frames || []), ...(inv.exchange_frames || [])];
+  } catch {
+    const { SENTENCE_FRAMES, EXCHANGE_FRAMES } = require('./dialogue-patterns.cjs');
+    _dialogueCache = [...SENTENCE_FRAMES, ...EXCHANGE_FRAMES];
+  }
+  return _dialogueCache;
+}
+
+module.exports = { availableVocab, attestedFrames, instantiableFrameSet, loadDialogueFrames, norm, expensiveClassFor };
