@@ -615,6 +615,18 @@ function resetDeclaration () {
  * route's answer must not survive the switch. Somebody who agreed to the
  * attestation and then chose to record instead has not read anything aloud.
  */
+/**
+ * Opening the panel on its default route used to show an empty estate section
+ * until you found and pressed "Find speakers we hold" — a route that lands on
+ * nothing, for a call that reads the archive and costs nothing. So opening it
+ * asks. The button stays, because re-reading after a new recording lands is a
+ * real thing to want.
+ */
+function toggleClone () {
+  showClone.value = !showClone.value
+  if (showClone.value && cloneSource.value === 'estate' && !speakers.value.length) loadSpeakers()
+}
+
 function chooseSource (src) {
   cloneSource.value = src
   resetDeclaration()
@@ -1322,7 +1334,7 @@ function candidatesFor (lang, slot) {
          "create clones directly from this page"; a control you have to hunt for
          is not on the page in any sense that matters. -->
     <section class="vl-clone vl-clone-top">
-      <button class="vl-btn vl-clone-open" @click="showClone = !showClone">
+      <button class="vl-btn vl-clone-open" @click="toggleClone">
         {{ showClone ? 'Hide' : '+ Make a new voice — clone one with Cartesia' }}
       </button>
 
