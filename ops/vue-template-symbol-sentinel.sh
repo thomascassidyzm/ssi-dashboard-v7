@@ -17,8 +17,13 @@
 # is how a real notice stops being read. On green it writes one line to its own log and exits.
 # On RED it dispatches a single worker to say what broke, in the room where Tom will see it.
 #
-# Install:  (crontab -l; echo '30 4 * * *  /bin/sh /home/tomcassidy/SSi/ssi-dashboard-v7-clean/ops/vue-template-symbol-sentinel.sh') | crontab -
-DIR=/home/tomcassidy/SSi/ssi-dashboard-v7-clean
+# Runs against ssi-dashboard-v7-clean-prod, not the interactive dev checkout — that checkout
+# tracks whatever branch a human left it on, while -prod is kept fast-forwarded onto
+# origin/main by its own popty-staleness-watchdog (every 10 min), so this always checks the
+# code that's actually live, not an arbitrary feature branch.
+#
+# Install:  (crontab -l; echo '30 4 * * *  /bin/sh /home/tomcassidy/SSi/ssi-dashboard-v7-clean-prod/ops/vue-template-symbol-sentinel.sh') | crontab -
+DIR=/home/tomcassidy/SSi/ssi-dashboard-v7-clean-prod
 LOG=/home/tomcassidy/.local/log/vue-template-symbol-sentinel.log
 TS=$(/bin/date -u +%Y-%m-%dT%H:%M:%SZ)
 
