@@ -58,8 +58,18 @@ const audioVeracity = require('../audio-veracity.cjs')
  * phrasings would mean two different things had been consented to, and the
  * stored verbatim copy on each voice is what carries a change forward without
  * rewriting anybody's history.
+ *
+ * NO BRAND NAME IN IT (Tom's ruling, 2026-08-31). The first version said
+ * "SaySomethingin", and whisper hears that as "say something in" — or, run
+ * together with the next word, "say something intercopied". It cost 0.15
+ * coverage on a clean reading, EVERY reading, which is the difference between
+ * the gate having a comfortable margin and having almost none. The line does
+ * not need the product's name to do its job: it has to establish that this
+ * person consents to their voice being copied, and it does that in words a
+ * decoder cannot mangle. Whatever the wording becomes, keep proper nouns and
+ * coined words out of it — they are exactly what an ASR is worst at.
  */
-const SPOKEN_PHRASE = 'This is my own voice, and I am happy for SaySomethingin to copy it and use it in their courses.'
+const SPOKEN_PHRASE = 'This is my own voice, and I am happy for it to be copied and used in language courses.'
 
 /**
  * THE ATTESTATION, for the upload route and for the honest fallback when this
@@ -68,7 +78,7 @@ const SPOKEN_PHRASE = 'This is my own voice, and I am happy for SaySomethingin t
  * voice — and narrowing it would push people into ticking something untrue.
  * Same rule: one version, Tom's to redline.
  */
-const ATTESTATION = 'This is my own voice, or I have the right to use this recording. I am happy for SaySomethingin to copy the voice and use it in their courses.'
+const ATTESTATION = 'This is my own voice, or I have the right to use this recording. I am happy for it to be copied and used in language courses.'
 
 /**
  * How much of the line has to be locatable in the decode.
@@ -79,20 +89,33 @@ const ATTESTATION = 'This is my own voice, or I have the right to use this recor
  * speaker with an accent, a room with a fan in it, or a clipped first syllable
  * costs words out of nineteen on a perfectly good reading.
  *
- * ── THE TWO NUMBERS THIS WAS FITTED ON ──────────────────────────────────────
- * MEASURED END TO END, 2026-09-01, on this box with the real whisper:
+ * ── THE NUMBERS THIS WAS FITTED ON ──────────────────────────────────────────
+ * MEASURED END TO END on this box with the real whisper (ggml-small), decoding
+ * read takes of the line and scoring them with the same wordCoverage the gate
+ * uses. The brand-name version, 2026-09-01, then the current wording after the
+ * rename, 2026-08-31, on the identical harness:
  *
- *   an honest reading of the line          0.85
- *   an unrelated sentence                  0.15
+ *                                      with "SaySomethingin"   current line
+ *   a clean, evenly paced reading              0.85               1.00
+ *   the same reading, read fast                0.75               0.90
+ *   read with a French accent                  0.95               0.84
+ *   read with a heavy German accent            0.60  REFUSED      0.74-0.84
+ *   an unrelated sentence                      0.20               0.21
  *
- * (The reading lost its 0.15 to the brand name: whisper heard "say something
- * intercopied" for "SaySomethingin to copy it". It is the one word it reliably
- * mangles, and every reading will pay for it.)
+ * (The accented rows are synthesised accents, and whisper is not bit-exact run
+ * to run — the German row came back 0.74 and 0.84 on two runs of the identical
+ * clip. The lower number is the one quoted, and the one the test pins under.)
+ *
+ * The brand name was costing a clean reading 0.15 flat — whisper heard "say
+ * something intercopied" for "SaySomethingin to copy it" — and it was the whole
+ * of the difference in the one row that mattered: the heavily accented reading
+ * that the old line REFUSED and this one passes. Discrimination is unchanged;
+ * an unrelated sentence sits at 0.21, nowhere near the gate.
  *
  * ── WHY 0.7 AND NOT 0.8 ─────────────────────────────────────────────────────
- * That is a gap of 0.70 between the two populations, and the first draft of
- * this gate spent almost all of it on the wrong side. At 0.8, a clean, evenly
- * paced reading passed with 0.05 to spare — so an accent, a stumble, a cough,
+ * That is a gap of ~0.8 between the two populations, and the first draft of
+ * this gate spent almost all of it on the wrong side. At 0.8, on the old
+ * wording, a clean, evenly paced reading passed with 0.05 to spare — so an accent, a stumble, a cough,
  * or a room with any reverb in it would have refused somebody who did exactly
  * what they were asked. That is not a small cost. A false refusal here tells a
  * real person, usually with somebody sitting next to them, that their consent

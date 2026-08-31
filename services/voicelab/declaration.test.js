@@ -32,14 +32,23 @@ describe('the wording — one version, verbatim', () => {
     // that gets stored against a real person's voice. If it changes, that is a
     // decision, and a decision should have to edit this line deliberately.
     expect(declaration.SPOKEN_PHRASE).toBe(
-      'This is my own voice, and I am happy for SaySomethingin to copy it and use it in their courses.',
+      'This is my own voice, and I am happy for it to be copied and used in language courses.',
     )
   })
 
   it('ships the attestation exactly as Tom wrote it', () => {
     expect(declaration.ATTESTATION).toBe(
-      'This is my own voice, or I have the right to use this recording. I am happy for SaySomethingin to copy the voice and use it in their courses.',
+      'This is my own voice, or I have the right to use this recording. I am happy for it to be copied and used in language courses.',
     )
+  })
+
+  it('names no product, so the decoder has no coined word to mangle', () => {
+    // Tom's ruling, 2026-08-31. "SaySomethingin" cost a clean reading 0.15
+    // coverage every single time, and refused a heavily accented one outright.
+    for (const line of [declaration.SPOKEN_PHRASE, declaration.ATTESTATION]) {
+      expect(line.toLowerCase()).not.toContain('saysomethingin')
+      expect(line.toLowerCase()).not.toContain('say something in')
+    }
   })
 
   it('offers no alternative wording', () => {
@@ -52,13 +61,14 @@ describe('the wording — one version, verbatim', () => {
 
 describe('the threshold — fitted, not guessed', () => {
   it('sits at 0.7, between the two measured populations', () => {
-    // Measured end to end on this box with the real whisper, 2026-09-01: an
-    // honest reading of the line scored 0.85, an unrelated sentence 0.15. The
-    // gate sits well clear of both, and it is pinned here so that moving it is
-    // a decision somebody makes on purpose rather than a number that drifts.
+    // Measured end to end on this box with the real whisper: on the current,
+    // brand-free wording a clean reading scores 1.00, the worst accented
+    // reading in the set 0.74, and an unrelated sentence 0.21. The gate sits
+    // well clear of both populations, and it is pinned here so that moving it
+    // is a decision somebody makes on purpose rather than a number that drifts.
     expect(declaration.COVERAGE_THRESHOLD).toBe(0.7)
-    expect(declaration.COVERAGE_THRESHOLD).toBeLessThan(0.85)
-    expect(declaration.COVERAGE_THRESHOLD).toBeGreaterThan(0.15)
+    expect(declaration.COVERAGE_THRESHOLD).toBeLessThan(0.74)
+    expect(declaration.COVERAGE_THRESHOLD).toBeGreaterThan(0.21)
   })
 })
 
