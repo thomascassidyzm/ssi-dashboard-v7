@@ -77,20 +77,36 @@ const ATTESTATION = 'This is my own voice, or I have the right to use this recor
  * word is PRESENT, with a spelling tolerance, because whisper's spelling is
  * unreliable while its presence detection is what is being trusted here. A
  * speaker with an accent, a room with a fan in it, or a clipped first syllable
- * will cost a word or two out of eighteen on a perfectly good reading. 0.8
- * leaves that headroom while still being impossible to reach by accident: no
- * recording that does not contain this sentence gets four fifths of its words
- * in the right kind of order.
+ * costs words out of nineteen on a perfectly good reading.
  *
- * MEASURED END TO END, 2026-09-01, on this box with the real whisper: a reading
- * of the line scored 0.85 (whisper heard "say something intercopied" for
- * "SaySomethingin to copy it" — the brand name is the one word it reliably
- * mangles), and an unrelated sentence scored 0.15. So the two populations are
- * far apart, but the passing margin is only 0.05 and that was a clean, evenly
- * paced synthetic reading. TASTE DEFAULT, Tom's to move — and the first thing
- * to look at if a real human's honest reading is ever refused.
+ * ── THE TWO NUMBERS THIS WAS FITTED ON ──────────────────────────────────────
+ * MEASURED END TO END, 2026-09-01, on this box with the real whisper:
+ *
+ *   an honest reading of the line          0.85
+ *   an unrelated sentence                  0.15
+ *
+ * (The reading lost its 0.15 to the brand name: whisper heard "say something
+ * intercopied" for "SaySomethingin to copy it". It is the one word it reliably
+ * mangles, and every reading will pay for it.)
+ *
+ * ── WHY 0.7 AND NOT 0.8 ─────────────────────────────────────────────────────
+ * That is a gap of 0.70 between the two populations, and the first draft of
+ * this gate spent almost all of it on the wrong side. At 0.8, a clean, evenly
+ * paced reading passed with 0.05 to spare — so an accent, a stumble, a cough,
+ * or a room with any reverb in it would have refused somebody who did exactly
+ * what they were asked. That is not a small cost. A false refusal here tells a
+ * real person, usually with somebody sitting next to them, that their consent
+ * does not count; and the operator's next move after two refusals is to give up
+ * on the spoken line and tick the attestation instead, which is how a strong
+ * check quietly turns into a weak one.
+ *
+ * At 0.7 the discrimination is untouched — 0.15 is nowhere near it, and nothing
+ * that does not contain this sentence gets seven tenths of its words located in
+ * a decode — while the flow stops being brittle. TASTE DEFAULT, Tom's to move;
+ * the numbers above are what it was actually fitted on, so anyone moving it can
+ * see the evidence rather than guess at it.
  */
-const COVERAGE_THRESHOLD = 0.8
+const COVERAGE_THRESHOLD = 0.7
 
 /**
  * Did they actually read the line on this recording?

@@ -50,6 +50,18 @@ describe('the wording — one version, verbatim', () => {
   })
 })
 
+describe('the threshold — fitted, not guessed', () => {
+  it('sits at 0.7, between the two measured populations', () => {
+    // Measured end to end on this box with the real whisper, 2026-09-01: an
+    // honest reading of the line scored 0.85, an unrelated sentence 0.15. The
+    // gate sits well clear of both, and it is pinned here so that moving it is
+    // a decision somebody makes on purpose rather than a number that drifts.
+    expect(declaration.COVERAGE_THRESHOLD).toBe(0.7)
+    expect(declaration.COVERAGE_THRESHOLD).toBeLessThan(0.85)
+    expect(declaration.COVERAGE_THRESHOLD).toBeGreaterThan(0.15)
+  })
+})
+
 describe('verifySpoken — three outcomes, never two', () => {
   it('reports "could not check" when whisper is missing, and does not throw', async () => {
     vi.spyOn(audioVeracity, 'availability').mockReturnValue({ available: false, missing: ['whisper-cli'], bin: '', model: '' })
