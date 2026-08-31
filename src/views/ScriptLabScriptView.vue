@@ -167,6 +167,53 @@
                   <span v-else-if="step.payload._saved" class="text-accent-2">saved ✓</span>
                   <span v-else-if="step.payload._err" class="text-danger" :title="step.payload._err">error</span>
                 </span>
+
+                <!-- The chip is the whole affordance: tap to see what this line
+                     used to say, tap a version to put it back. No drag, no
+                     swipe, no long-press. -->
+                <button
+                  v-if="edits(step.payload.id)"
+                  type="button"
+                  class="chip basis-full sm:basis-auto"
+                  :class="{ on: openLine === step.payload.id }"
+                  @click="toggleHistory(step.payload.id)"
+                >
+                  edited {{ edits(step.payload.id).edits }}× ·
+                  {{ shortWho(edits(step.payload.id).lastSavedBy) }} ·
+                  {{ ago(edits(step.payload.id).lastSavedAt) }}
+                  <span class="text-faint">{{ openLine === step.payload.id ? '▲' : '▼' }}</span>
+                </button>
+
+                <div v-if="openLine === step.payload.id" class="basis-full history">
+                  <p v-if="hist(step.payload.id).loading" class="text-xs text-faint py-2">Loading history…</p>
+                  <p v-else-if="hist(step.payload.id).error" class="text-xs text-danger py-2">{{ hist(step.payload.id).error }}</p>
+                  <template v-else>
+                    <p class="text-xs text-faint pb-2">
+                      Newest first. Each one is diffed against the line as it stands now — struck-through words go, underlined words come in.
+                      The frozen original at the bottom is what it said before anyone edited it.
+                    </p>
+                    <div v-for="v in hist(step.payload.id).versions" :key="v.versionId" class="version">
+                      <div class="version-head">
+                        <span class="text-xs" :class="v.kind === 'original' ? 'text-accent' : 'text-muted'">
+                          {{ v.kind === 'original' ? 'original' : 'save' }} #{{ v.versionId }}
+                        </span>
+                        <span class="text-xs text-faint">{{ stamp(v.savedAt) }}</span>
+                        <span class="text-xs text-muted truncate">{{ v.savedBy }}</span>
+                        <button
+                          v-if="v.englishText !== step.payload.text"
+                          type="button"
+                          class="chip restore"
+                          :disabled="hist(step.payload.id).restoring === v.versionId"
+                          @click="restore(step, v.versionId)"
+                        >{{ hist(step.payload.id).restoring === v.versionId ? 'restoring…' : 'restore' }}</button>
+                        <span v-else class="text-xs text-accent-2">this is the line now</span>
+                      </div>
+                      <p class="diff">
+                        <span v-for="(r, k) in diffOf(v, step)" :key="k" :class="r.kind">{{ r.text }}</span>
+                      </p>
+                    </div>
+                  </template>
+                </div>
               </div>
             </div>
           </div>
@@ -184,6 +231,7 @@ import { useAuth } from '@/composables/useAuth.js'
 import { loadGraph } from '@/lib/metagraph/loadGraph.js'
 import { walkFromCanonicalRows, walkFromStoredPod } from '@/lib/metagraph/walk.js'
 import { computeCoverage } from '@/lib/metagraph/coverage.js'
+import { wordDiff } from '@/lib/wordDiff.js'
 
 const KIND_TAG = { coda: 'ADMITS', branch: 'BRANCH', alternative: 'VARIANT', unmapped: 'UNMAPPED' }
 const route = useRoute()
@@ -202,12 +250,107 @@ const unresolvedByRegister = computed(() => {
   return Object.entries(by).map(([k, v]) => `${v} ${k}`).join(', ')
 })
 
+// The history, per line: the summary chips come from one read of the whole
+// script, the versions themselves are fetched the first time a chip is tapped.
+const summary = ref({})     // scenario_id -> { edits, lastSavedAt, lastSavedBy }
+const histories = ref({})   // scenario_id -> { loading, error, versions, restoring }
+const openLine = ref(null)
+
 const { getAccessToken } = useAuth()
 async function authedFetch (path, init = {}) {
   const token = await getAccessToken()
   const headers = { 'ngrok-skip-browser-warning': 'true', 'Content-Type': 'application/json', ...(init.headers || {}) }
   if (token) headers.Authorization = `Bearer ${token}`
   return fetch(`${getApiUrl()}${path}`, { ...init, headers })
+}
+
+/**
+ * The versioning endpoints are Vercel routes (api/canonical-script.js), served
+ * from THIS origin — not from the production API that serves the read above.
+ * That is deliberate: api/* ships with every front-end deploy, whereas a new
+ * route in services/production-api.cjs 404s live until somebody restarts a
+ * shared long-lived process.
+ */
+async function vercelFetch (path, init = {}) {
+  const token = await getAccessToken()
+  const headers = { 'Content-Type': 'application/json', ...(init.headers || {}) }
+  if (token) headers.Authorization = `Bearer ${token}`
+  const res = await fetch(path, { ...init, headers })
+  const body = await res.json().catch(() => ({}))
+  if (!res.ok) throw new Error(body?.error || `HTTP ${res.status}`)
+  return body
+}
+
+const edits = id => summary.value[id] || null
+const hist = id => histories.value[id] || { loading: true, versions: [] }
+
+function shortWho (email) {
+  return String(email || 'someone').split('@')[0]
+}
+function stamp (iso) {
+  if (!iso) return ''
+  const d = new Date(iso)
+  return d.toLocaleString('en-GB', { day: '2-digit', month: 'short', hour: '2-digit', minute: '2-digit' })
+}
+function ago (iso) {
+  if (!iso) return ''
+  const mins = Math.max(0, Math.round((Date.now() - new Date(iso).getTime()) / 60000))
+  if (mins < 1) return 'just now'
+  if (mins < 60) return `${mins}m ago`
+  const hrs = Math.round(mins / 60)
+  if (hrs < 24) return `${hrs}h ago`
+  return `${Math.round(hrs / 24)}d ago`
+}
+
+/** Every version is diffed against the line AS IT STANDS NOW — the comparison
+ *  the reader is actually making: what would change if I put this back? */
+function diffOf (version, step) {
+  return wordDiff(version.englishText, step.payload.text ?? '')
+}
+
+async function loadSummary () {
+  try {
+    const body = await vercelFetch(`/api/canonical-script?slug=${encodeURIComponent(slug)}&history=1`)
+    summary.value = Object.fromEntries((body.lines || []).map(l => [l.scenarioId, l]))
+  } catch (err) {
+    // A missing history is not a reason to hide the script. The chips simply
+    // do not appear, and the page says so nowhere rather than crying wolf.
+    console.warn('[ScriptLab] history summary unavailable:', err.message)
+  }
+}
+
+async function toggleHistory (id) {
+  if (openLine.value === id) { openLine.value = null; return }
+  openLine.value = id
+  await loadHistory(id)
+}
+
+async function loadHistory (id) {
+  histories.value = { ...histories.value, [id]: { loading: true, versions: [], error: null } }
+  try {
+    const body = await vercelFetch(`/api/canonical-script?line=${encodeURIComponent(id)}`)
+    histories.value = { ...histories.value, [id]: { loading: false, versions: body.versions || [], error: null } }
+  } catch (err) {
+    histories.value = { ...histories.value, [id]: { loading: false, versions: [], error: err.message } }
+  }
+}
+
+async function restore (step, versionId) {
+  const id = step.payload.id
+  histories.value = { ...histories.value, [id]: { ...hist(id), restoring: versionId } }
+  try {
+    const body = await vercelFetch(`/api/canonical-script?line=${encodeURIComponent(id)}&restore=1`, {
+      method: 'POST',
+      body: JSON.stringify({ versionId })
+    })
+    step.payload.text = body.line?.englishText ?? step.payload.text
+    step.payload._orig = step.payload.text
+    step.payload._saved = true
+    setTimeout(() => { step.payload._saved = false }, 2000)
+    await Promise.all([loadHistory(id), loadSummary()])
+  } catch (err) {
+    histories.value = { ...histories.value, [id]: { ...hist(id), restoring: null, error: err.message } }
+  }
 }
 
 function sceneShapes (scene) {
@@ -240,6 +383,7 @@ async function load () {
       ? walkFromStoredPod(body.scenarios || [], body.walk, graph, { id: slug, slug })
       : walkFromCanonicalRows(body.scenarios || [], graph, { id: slug, slug })
     cov.value = computeCoverage(graph, walk.value)
+    await loadSummary()
   } catch (err) {
     error.value = err.message
   } finally {
@@ -252,15 +396,21 @@ async function saveLine (step) {
   if (p.text === p._orig) return
   p._saving = true; p._saved = false; p._err = ''
   try {
-    const res = await authedFetch(`/api/admin/canonical-pods/${encodeURIComponent(p.id)}`, {
-      method: 'PATCH',
+    // The versioned save: it freezes the pre-edit words the first time this
+    // line is touched, appends this edit, and only then moves the live text.
+    // The old PATCH straight onto canonical_pod_scenarios kept nothing.
+    const body = await vercelFetch(`/api/canonical-script?line=${encodeURIComponent(p.id)}`, {
+      method: 'POST',
       body: JSON.stringify({ english_text: p.text })
     })
-    const body = await res.json()
-    if (!res.ok) throw new Error(body?.error || `HTTP ${res.status}`)
+    p.text = body.line?.englishText ?? p.text
     p._orig = p.text
     p._saved = true
     setTimeout(() => { p._saved = false }, 2000)
+    if (!body.unchanged) {
+      await loadSummary()
+      if (openLine.value === p.id) await loadHistory(p.id)
+    }
   } catch (err) {
     p._err = err.message
   } finally {
@@ -275,4 +425,35 @@ onMounted(load)
 .error-box { color: var(--danger); border-color: var(--danger); background: color-mix(in srgb, var(--danger) 14%, var(--surface)); }
 :root[data-theme="light"] .error-box { background: color-mix(in srgb, var(--danger) 8%, #ffffff); }
 .deficit { background: color-mix(in srgb, var(--danger) 8%, var(--surface)); }
+
+/* Tap is the only affordance: every control here is a button with a finger-sized
+   target. No drag, no swipe, no long-press — Tom reads this on a 430px phone. */
+.chip {
+  min-height: 32px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 11px;
+  line-height: 1.2;
+  color: var(--accent);
+  border: 1px solid color-mix(in srgb, var(--accent) 45%, transparent);
+  background: color-mix(in srgb, var(--accent) 10%, transparent);
+}
+.chip.on { background: color-mix(in srgb, var(--accent) 22%, transparent); }
+.chip.restore { color: var(--accent-2); border-color: color-mix(in srgb, var(--accent-2) 45%, transparent); background: color-mix(in srgb, var(--accent-2) 10%, transparent); }
+.chip[disabled] { opacity: 0.5; }
+
+.history {
+  margin-top: 8px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  background: var(--surface-2);
+}
+.version { padding: 8px 0; border-top: 1px solid color-mix(in srgb, var(--line) 70%, transparent); }
+.version:first-of-type { border-top: 0; }
+.version-head { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-bottom: 4px; }
+.diff { font-size: 13px; line-height: 1.5; color: var(--ink); white-space: pre-wrap; word-break: break-word; }
+.diff .add { color: var(--accent-2); text-decoration: underline; }
+.diff .del { color: var(--danger); text-decoration: line-through; }
+.diff .same { opacity: 0.6; }
 </style>
