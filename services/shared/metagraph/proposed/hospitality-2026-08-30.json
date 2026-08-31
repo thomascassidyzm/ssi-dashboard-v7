@@ -1,0 +1,63 @@
+{
+  "concept": "proposed-additions",
+  "sector": "hospitality",
+  "version": 1,
+  "date": "2026-08-30",
+  "status": "PROPOSAL — nothing loads this file. index.cjs does not read proposed/, neither lab reads it, no learner hears a word of it. It is evidence for a human decision. Uniquely among the sector files, it proposes ZERO new ids: it is a zero-mint attestation file, recording what the sector re-attests and refuses, so the evidence lands where the other sectors' evidence landed.",
+  "source": {
+    "corpus": "NONE. There is no hospitality corpus. The encounter inventory (E1–E16) is derived/constructed by the mapping itself — docs/sector-pods/hospitality-metagraph-mapping-2026-08-30.md §3 — and every attestation below is constructed, labelled as such, never dialogic.",
+    "learner_seat": "the hospitality worker — server, receptionist, bartender, shift supervisor — both guest-facing and shift-facing",
+    "scope": "accommodation + food & beverage, UK/Ireland; personal-care services (spa, hairdressing) deliberately excluded to keep N102's body reading honest"
+  },
+  "schema_note": "Does not validate against schemas/metagraph-v1-schema.json, for the same named reasons as health's and Ireland's files (the proposed-additions concept, constructed attestations, provenance enum) plus one of its own: a proposal file with an empty additions list is not a shape the schema contemplates. Saying so honestly is correct; silently widening the schema is not.",
+  "store_untouched": "nodes.json, moves.json, edges.json, outcome-shapes.json, walks/ and the four prior proposal files are byte-identical to origin/main. Verified by tools/metagraph-selfcheck.cjs and git diff --stat origin/main -- services/shared/metagraph/ (this file is the only entry).",
+  "id_range": {
+    "reserved": "801–899",
+    "used": [],
+    "note": "Letter-keyed (H = 8th letter) rather than next-sequential, because sibling sectors were mapped in parallel the same night and next-sequential (601/701) invited a collision. Taken and off-limits elsewhere: 101–110 health, 201–299 outcome mints, 301–399 Talk Bollocks, 401–499 Ireland, 501–599 trades."
+  },
+  "mints": {
+    "nodes": [],
+    "moves": [],
+    "outcome_shapes": [],
+    "why_zero": "Hospitality is the store's own furniture walked from the opposite seat (pod-0/POD-1 were derived on cafés, counters, orders and bills from the customer's chair; role assignment is a walk annotation, so the seat-flip costs nothing). Its duty strand stops at REFUSING the guest — the drink, the door, the capacity — which N401 [ireland] carries whole, and never crosses into the consent-overridden act on the other party's property that N501 [trades] adds. Four sectors' mints all concentrate where duty crosses from refusal into compelled act; hospitality's duty never crosses that line, so it needs nothing new."
+  },
+  "refusals_to_mint": [
+    { "candidate": "complaint-and-redress node", "verdict": "composes: N12/check-back entry + F401 + F1/F6 repair + F2 unasked extra + re-check; escalation = N105. The sector's self-image, refused as trades refused the quote." },
+    { "candidate": "check-back solicit as a move ('how is everything?')", "verdict": "refused on the store's own convention — bare initiating solicits are family-null positions (N8, N3), and F21 earned its family only by fusing completion with solicitation in one turn; the ritual-or-complaint fork is walk-level outcome variance. LEAST CONFIDENT refusal: if Tom wants it named, it is F801 waiting, one position, fully specified in the mapping §7.2." },
+    { "candidate": "the comp / redress move ('desserts are on us')", "verdict": "F2 walked on a recovery branch; money content is mask." },
+    { "candidate": "welcome / check-in node", "verdict": "assembly of N1 + N103 + N110 + late P2; an assembly is not a shape." },
+    { "candidate": "shift handover node", "verdict": "N402 with the task handed FORWARD + N4/P3/F103; the receiving party differing from the requester is role annotation (precedent: trades' snagging reversal)." },
+    { "candidate": "pre-service briefing node", "verdict": "one-to-many topology, dyadic core lands (N4, P5, P3, N108); trades refusal 3 verbatim — the dyadic limit stays a trunk-level flag." },
+    { "candidate": "the 86 relay", "verdict": "broadcast + F6 carried onward dyad by dyad; propagation is topology, every hop an existing shape. The bare call is a one-position interjection (trades' 'BELOW!')." },
+    { "candidate": "the upsell move", "verdict": "unsolicited N8 / F21-adjacent bigger-ticket solicit; commercial intent is mask." },
+    { "candidate": "wait-management offer", "verdict": "N9 grant-plus-limit + F2 throw-in, composed." },
+    { "candidate": "ejection node", "verdict": "N401's re-route-to-process position escalated, police as final forum; physical stakes price positions, they do not add one." },
+    { "candidate": "booking terms / no-show charge node", "verdict": "N109 + N107's trigger-condition form + deferred P2, composed." }
+  ],
+  "re_attestations": {
+    "store": "all 12 pod-0 nodes given natural homes (expressibility claim, not attestation); N5 via the regulars, N6/O3 with the learner on the NATIVE side for the first time, N17's recovery half at its richest anywhere; all 20 move families attest across the shift's stretches",
+    "health": "N103 REVIVES (the reservation system is a person-file — Family A's dropout pattern completes its third data point: membership tracks the sector's possessions), N105 the sector workhorse, N108/N110 strong, N102 thin on plate/room, N106+O101 at the pass, N104 the thinnest member (recorded, not sanded), P101/F101/F103 present",
+    "ireland": "N401 carries the whole duty strand (drink/door/capacity refusal — third sector on Ireland's mints); N402 carries the shift handover; F401 sorry-on-behalf is the sector's SIGNATURE move",
+    "trades": "N501 does NOT attest (the expected finding — duty stops at refusal); F501 finds no work (K1 collapses by checking, not showing); F502 desk furniture only, too thin to claim",
+    "overlay_and_tb": "O1, O6+F203 (own fault at the pass), O7 all five positions (fifth corpus; violation-by-fixing = the upgrade), O9 at closing time; F302 THIN — its weakest column, because K1 unlocks on demand and the honest register is the check (N105), not the flag; first designed test of the F302-tracks-locked-K1 mechanism, passed"
+  },
+  "ladder": {
+    "K1": "pinned to the worker, SHALLOW — POD-1's own 'the barista knows the stock'; verification costs a walk to the pass, so bare F15 converts to N105 with no time-index (Ireland's rule, third form)",
+    "K2": "the sector variable: formally rotating, POLICY-pinned to the guest ('the customer is always right') — the worker's refusal position is genuinely missing, reappearing only where a second principal (licensing law, fire regs) overrides the first, pre-disowned, carried by N401",
+    "K3": "pinned to the house — booking system, tab, till roll, ticket rail; why N103 revives, and why N16 precision-haggle DIES guest-facing: the printed price confiscates the counterbid position — the first Method-Pod NODE death at a kind; general form recorded: shapes, like moves, die where the kind that kills them is pinned",
+    "K4": "weak — no body; guest-side the money and the unrepeatable occasion, worker-side the tip and the job (disciplinary, not positional)",
+    "money": "trades' ruling stands untouched — nothing here moves a position; the comp, the tip, the deposit all compose",
+    "proxy_holding": "held_in_trust covers a NEW form without strain: TWO principals whose instructions conflict (the house says the guest is right; the law says refuse) — the collision site is the drink refusal, a walk-level fact",
+    "rungs": "per stretch, fifth corpus: cabin 0, routine service 1 (POD-1 occupied from the inside), desk/allergy/trouble 2, complaint and refusal stretches 3; deaths (F11/F15/F18) track the stretch"
+  },
+  "second_axis": {
+    "verdict": "supported, shape-level, with one refinement: the costliest failure (allergen death) weights a CHAIN of shapes across the back-of-house relay — N108 → ticket → relayed F6 → N106 stop call → N402 handover — the first sector where the highest-cost link is worker-to-worker",
+    "irelands_hole": "present in both forms: the allergy never declared and the drink never refused produce no encounter, so no shape weight reaches them; filled the same way as trades — the mandated allergen solicit is the third recorded case of law filling the hole by MANDATING the encounter, never by a shape"
+  },
+  "port_verdict": {
+    "headline": "Hospitality costs the trunk zero new ids — the four-sector cost curve is 10 → 2 → 1 → 0, and the zero is structural: the sector is the store's home furniture walked from the opposite seat, and its duty never crosses from refusal into compelled act.",
+    "dependency": "The zero is computed against store + health Family A/B + Ireland's pair (nothing leans on trades' 5xx ids). If Family A were rejected upstream, ~6 shapes plus F101/F103/O101 would re-mint here; if Ireland's pair were rejected, N401/N402 would re-mint almost verbatim. Hospitality is the second sector to independently re-attest Ireland's pair and the third to re-attest Family A's core — the standing argument for accepting both upstream.",
+    "prediction": "Committed before mapping at e6e984f5c (zero mints predicted, check-back named as the one candidate and refused); scored in the mapping §8, with the score explicitly discounted — one mind, one sitting, after three priors."
+  }
+}
