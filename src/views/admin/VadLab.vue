@@ -1336,7 +1336,7 @@ code { background: var(--surface-2); padding: 1px 5px; border-radius: 4px; font-
 .tabs button.on { background: rgba(59, 130, 246, 0.15); border-color: #3b82f6; color: var(--color-paper, var(--ink)); }
 
 .notice { color: var(--muted); font-size: 0.875rem; padding: 12px 0; }
-.notice.err { color: #f87171; }
+.notice.err { color: var(--danger); }
 
 /* ── tour ── */
 .tour-intro { max-width: 820px; color: var(--muted); font-size: 0.875rem; line-height: 1.5; margin: 0 0 18px; }
@@ -1385,13 +1385,13 @@ code { background: var(--surface-2); padding: 1px 5px; border-radius: 4px; font-
 .track { position: relative; height: 8px; background: var(--surface-2); border-radius: 4px; }
 .tick { position: absolute; top: -2px; width: 2px; height: 12px; border-radius: 1px; }
 .tick-near { background: #6ee7b7; }
-.tick-far { background: #f87171; }
+.tick-far { background: var(--danger); }
 .dot { position: absolute; top: 50%; width: 10px; height: 10px; border-radius: 50%; background: var(--color-paper, #fff); border: 2px solid #3987e5; transform: translate(-50%, -50%); }
 .combined-row { border-top: 1px solid var(--surface-3); padding-top: 8px; margin-top: 4px; }
 .verdict { font-size: 0.75rem; padding: 2px 8px; border-radius: 999px; justify-self: start; }
 .v-same { background: rgba(110, 231, 183, 0.15); color: #6ee7b7; }
 .v-mid { background: rgba(251, 191, 36, 0.15); color: #fbbf24; }
-.v-diff { background: rgba(248, 113, 113, 0.15); color: #f87171; }
+.v-diff { background: rgba(248, 113, 113, 0.15); color: var(--danger); }
 [data-theme='light'] .v-same { color: #047857; }
 [data-theme='light'] .v-mid { color: #92400e; }
 [data-theme='light'] .v-diff { color: #b91c1c; }
@@ -1443,7 +1443,7 @@ code { background: var(--surface-2); padding: 1px 5px; border-radius: 4px; font-
   border-radius: 10px; padding: 10px 18px; font-size: 0.9rem; cursor: pointer; min-height: 48px;
 }
 .rec-btn:disabled { opacity: 0.5; cursor: default; }
-.rec-btn.recording { background: rgba(248, 113, 113, 0.2); border-color: #f87171; animation: recpulse 1.2s infinite; }
+.rec-btn.recording { background: rgba(248, 113, 113, 0.2); border-color: var(--danger); animation: recpulse 1.2s infinite; }
 .rec-btn.save { background: rgba(110, 231, 183, 0.12); border-color: #6ee7b7; }
 @keyframes recpulse { 50% { opacity: 0.6; } }
 .rec-band-note { max-width: 780px; font-size: 0.8125rem; color: var(--muted); font-style: italic; line-height: 1.5; }

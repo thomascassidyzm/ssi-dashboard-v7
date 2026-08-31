@@ -730,7 +730,7 @@ h1 { font-size: 1.25rem; margin: 0 0 0.25rem; letter-spacing: -0.01em; }
   text-align: center;
   color: var(--color-paper-dim, var(--muted));
 }
-.err { color: #f87171; background: rgba(248, 113, 113, 0.08); border-radius: 8px; }
+.err { color: var(--danger); background: rgba(248, 113, 113, 0.08); border-radius: 8px; }
 
 .rows { display: flex; flex-direction: column; gap: 1.25rem; }
 .config-row {
@@ -769,7 +769,7 @@ h1 { font-size: 1.25rem; margin: 0 0 0.25rem; letter-spacing: -0.01em; }
   border-radius: 6px;
   background: rgba(248, 113, 113, 0.12);
   border: 1px solid rgba(248, 113, 113, 0.3);
-  color: #f87171;
+  color: var(--danger);
   font-size: 0.8125rem;
 }
 
@@ -997,9 +997,9 @@ h1 { font-size: 1.25rem; margin: 0 0 0.25rem; letter-spacing: -0.01em; }
 .lab-phase.ph-known, .lab-phase.ph-target1, .lab-phase.ph-target2 { background: rgba(96, 165, 250, 0.18); color: #93c5fd; }
 @keyframes labpulse { 0%,100% { opacity: 1; } 50% { opacity: 0.45; } }
 .lab-stop { background: transparent; border: 1px solid var(--color-graphite, var(--surface-3)); color: var(--color-paper-dim, var(--muted)); border-radius: 6px; padding: 0.25rem 0.6rem; font-size: 0.75rem; cursor: pointer; }
-.lab-stop:hover { border-color: #f87171; color: #f87171; }
+.lab-stop:hover { border-color: var(--danger); color: var(--danger); }
 .lab-hear-note, .lab-hear-err { font-size: 0.8rem; color: var(--color-paper-dim, var(--muted)); padding: 0.3rem 0; }
-.lab-hear-err { color: #f87171; }
+.lab-hear-err { color: var(--danger); }
 .lab-hear-rows { display: flex; flex-direction: column; gap: 0.35rem; }
 .lab-hear-row { display: grid; grid-template-columns: 32px 130px 1fr auto; align-items: center; gap: 0.6rem; }
 .lab-play {

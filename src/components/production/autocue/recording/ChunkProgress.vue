@@ -106,12 +106,11 @@ function pipClass(index) {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  padding: 0.6rem 0.8rem;
-  border-radius: 14px;
+  padding: 0.75rem;
+  border-radius: 12px;
   /* Opaque: it overlays live content. */
-  background: var(--surface-2, #1a1f2b);
-  border: 1px solid var(--line, rgba(255, 255, 255, 0.18));
-  box-shadow: 0 -6px 24px rgba(0, 0, 0, 0.45);
+  background: var(--surface);
+  border: 1px solid var(--line);
 }
 
 @media (min-width: 720px) {
@@ -140,31 +139,25 @@ function pipClass(index) {
   align-items: center;
   justify-content: center;
   border-radius: 10px;
-  font-family: 'IBM Plex Mono', monospace;
   font-size: 1.1rem;
   font-weight: 700;
-  border: 2px solid var(--line, rgba(255, 255, 255, 0.15));
-  color: var(--muted, rgba(255, 255, 255, 0.45));
-  background: transparent;
+  font-variant-numeric: tabular-nums;
+  border: 1px solid var(--line);
+  color: var(--muted);
+  background: var(--surface-2);
   transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
 }
 
 .pip.done {
-  background: var(--color-emerald, #06ffa5);
-  border-color: var(--color-emerald, #06ffa5);
-  color: #04231a;
+  background: var(--success);
+  border-color: var(--success);
+  color: var(--canvas);
 }
 
 .pip.current {
-  border-color: var(--color-tungsten, var(--accent, #ffa630));
-  color: var(--color-tungsten, var(--accent, #ffa630));
-  background: rgba(255, 166, 48, 0.14);
-  animation: pipPulse 1.4s ease-in-out infinite;
-}
-
-@keyframes pipPulse {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(255, 166, 48, 0.5); }
-  50% { box-shadow: 0 0 0 6px rgba(255, 166, 48, 0); }
+  border-color: var(--accent);
+  color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 14%, var(--surface));
 }
 
 .pause-lane {
@@ -177,23 +170,23 @@ function pipClass(index) {
   position: relative;
   height: 10px;
   border-radius: 5px;
-  background: rgba(127, 127, 127, 0.25);
+  background: var(--surface-3);
   overflow: hidden;
 }
 
 .pause-fill {
   height: 100%;
   border-radius: 5px;
-  background: var(--color-tungsten, var(--accent, #ffa630));
+  background: var(--accent);
   transition: width 0.05s linear;
 }
 
 .is-registered .pause-fill {
-  background: var(--color-emerald, #06ffa5);
+  background: var(--success);
 }
 
 .is-idle .pause-fill {
-  background: rgba(127, 127, 127, 0.35);
+  background: var(--faint);
 }
 
 /* Where the pause starts counting. A recordist can watch the bar cross it. */
@@ -202,23 +195,21 @@ function pipClass(index) {
   top: -3px;
   bottom: -3px;
   width: 2px;
-  background: var(--ink, #fff);
+  background: var(--ink);
   opacity: 0.75;
 }
 
 .pause-caption {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 0.95rem;
+  font-size: 0.9375rem;
   font-weight: 600;
-  letter-spacing: 0.02em;
-  color: var(--muted, rgba(255, 255, 255, 0.6));
+  color: var(--muted);
 }
 
 .is-holding .pause-caption {
-  color: var(--color-tungsten, var(--accent, #ffa630));
+  color: var(--accent);
 }
 
 .is-registered .pause-caption {
-  color: var(--color-emerald, #06ffa5);
+  color: var(--success);
 }
 </style>

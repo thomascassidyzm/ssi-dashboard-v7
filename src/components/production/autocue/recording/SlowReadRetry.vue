@@ -6,7 +6,9 @@
        the loudest thing on the screen. -->
   <div class="slow-retry" role="alert" aria-live="assertive">
     <div class="retry-head">
-      <span class="retry-icon">✕</span>
+      <span class="retry-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18" /><path d="m6 6 12 12" /></svg>
+      </span>
       <span class="retry-title">Read that one again</span>
     </div>
 
@@ -104,11 +106,12 @@ const advice = computed(() => {
   z-index: 60;
   max-height: 78vh;
   overflow-y: auto;
-  border: 3px solid #ff3b30;
+  /* Loud without being neon: a 2px --danger frame on an opaque house surface.
+     The full-page black scrim it used to cast was the only one of its kind in
+     Popty and it was doing nothing in light mode. */
+  border: 2px solid var(--danger);
   border-radius: 16px;
-  /* Opaque, not a wash: it sits over live content and has to be readable. */
-  background: var(--canvas, #12161f);
-  box-shadow: 0 -8px 40px rgba(0, 0, 0, 0.55), 0 0 0 9999px rgba(0, 0, 0, 0.35);
+  background: var(--surface);
   padding: 1rem;
   animation: retryFlash 0.9s ease-in-out 3;
 }
@@ -124,8 +127,8 @@ const advice = computed(() => {
 }
 
 @keyframes retryFlash {
-  0%, 100% { border-color: #ff3b30; }
-  50% { border-color: #fff; }
+  0%, 100% { border-color: var(--danger); }
+  50% { border-color: var(--line); }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -144,28 +147,27 @@ const advice = computed(() => {
   height: 32px;
   flex-shrink: 0;
   border-radius: 50%;
-  background: #ff3b30;
-  color: #fff;
-  font-weight: 800;
-  font-size: 1.1rem;
+  background: var(--danger);
+  color: var(--canvas);
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
+.retry-icon svg { width: 18px; height: 18px; }
+
 .retry-title {
-  font-family: 'Josefin Sans', sans-serif;
-  font-size: 1.4rem;
-  font-weight: 800;
-  letter-spacing: 0.01em;
-  color: #ff3b30;
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--danger);
 }
 
 .retry-count {
   margin: 0 0 0.6rem;
-  font-size: 1.15rem;
-  font-weight: 700;
-  color: var(--ink, #fff);
+  font-size: 1.0625rem;
+  font-weight: 600;
+  color: var(--ink);
 }
 
 .retry-pips {
@@ -181,38 +183,38 @@ const advice = computed(() => {
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 9px;
-  font-family: 'IBM Plex Mono', monospace;
+  border-radius: 10px;
   font-weight: 700;
-  border: 2px solid;
+  font-variant-numeric: tabular-nums;
+  border: 1px solid;
 }
 
 .retry-pip.heard {
-  border-color: var(--color-emerald, #06ffa5);
-  color: var(--color-emerald, #06ffa5);
-  background: rgba(6, 255, 165, 0.12);
+  border-color: var(--success);
+  color: var(--success);
+  background: color-mix(in srgb, var(--success) 12%, var(--surface));
 }
 
 /* A piece the recordist never gave the recorder — drawn as a hole, not as a
    dimmed version of a good one. */
 .retry-pip.missed {
   border-style: dashed;
-  border-color: #ff3b30;
-  color: #ff3b30;
+  border-color: var(--danger);
+  color: var(--danger);
   background: transparent;
 }
 
 .retry-pip.extra {
-  border-color: #ff3b30;
-  color: #fff;
-  background: #ff3b30;
+  border-color: var(--danger);
+  color: var(--canvas);
+  background: var(--danger);
 }
 
 .retry-advice {
   margin: 0 0 0.9rem;
-  font-size: 1.05rem;
-  line-height: 1.4;
-  color: var(--ink, #fff);
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--ink);
 }
 
 .retry-actions {
@@ -226,28 +228,29 @@ const advice = computed(() => {
   width: 100%;
   min-height: 52px;
   border-radius: 12px;
-  font-family: 'Josefin Sans', sans-serif;
-  font-size: 1.05rem;
-  font-weight: 700;
+  font: inherit;
+  font-size: 1rem;
+  font-weight: 600;
   cursor: pointer;
-  border: 2px solid transparent;
+  border: 1px solid transparent;
 }
 
 .retry-again {
-  background: #ff3b30;
-  color: #fff;
+  background: var(--danger);
+  border-color: var(--danger);
+  color: var(--canvas);
 }
 
 .retry-keep,
 .retry-skip {
   background: transparent;
-  border-color: var(--line, rgba(255, 255, 255, 0.3)) !important;
-  color: var(--muted, rgba(255, 255, 255, 0.75));
+  border-color: var(--line);
+  color: var(--muted);
 }
 
 .retry-attempts {
   margin: 0.6rem 0 0;
-  font-size: 0.85rem;
-  color: var(--muted, rgba(255, 255, 255, 0.6));
+  font-size: 0.8125rem;
+  color: var(--muted);
 }
 </style>

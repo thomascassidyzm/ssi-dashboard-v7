@@ -194,6 +194,6 @@ function badgeClass(badge) {
 
 .badge-superseded {
   background: rgba(148, 163, 184, 0.2);
-  color: #64748b;
+  color: var(--faint);
 }
 </style>

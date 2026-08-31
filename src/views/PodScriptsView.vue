@@ -765,11 +765,11 @@ onMounted(() => {
   color: inherit;
   opacity: 0.92;
 }
-.clip-btn:hover { border-color: #34d399; opacity: 1; }
+.clip-btn:hover { border-color: var(--accent-2); opacity: 1; }
 .clip-primary { padding-inline: 0.8rem; font-weight: 600; }
 .clip-on { background-color: #059669; border-color: #059669; color: #fff; }
 /* A dangling reference is shown, never hidden and never made to look playable. */
-.clip-dead { border-color: #b91c1c; color: #f87171; text-decoration: line-through; }
+.clip-dead { border-color: #b91c1c; color: var(--danger); text-decoration: line-through; }
 .clip-none { font-size: 0.7rem; opacity: 0.6; font-style: italic; }
 
 /* ── LISTEN BAR + NOW PLAYING ───────────────────────────────────────────────
@@ -796,7 +796,7 @@ onMounted(() => {
   padding: 0.55rem 0.9rem;
   border-radius: 0.375rem;
   border: 1px solid #059669;
-  color: #34d399;
+  color: var(--accent-2);
 }
 .ps-run-btn:disabled { opacity: 0.4; border-color: rgb(var(--line, 63 63 70) / 1); color: inherit; }
 .ps-run-on { background-color: #059669; border-color: #059669; color: #fff; }
@@ -809,13 +809,13 @@ onMounted(() => {
   border: 1px solid rgb(var(--line, 63 63 70) / 1);
   opacity: 0.75;
 }
-.ps-toggle-on { background-color: #065f46; border-color: #34d399; color: #fff; opacity: 1; }
+.ps-toggle-on { background-color: #065f46; border-color: var(--accent-2); color: #fff; opacity: 1; }
 
-.ps-from { color: #34d399; border-color: #065f46; font-weight: 700; }
+.ps-from { color: var(--accent-2); border-color: #065f46; font-weight: 700; }
 .ps-from-on { background-color: #065f46; color: #fff; }
 
-.ps-now-dot { color: #34d399; }
-.ps-now-voice { color: #34d399; font-weight: 600; }
+.ps-now-dot { color: var(--accent-2); }
+.ps-now-voice { color: var(--accent-2); font-weight: 600; }
 
 /* The row you are hearing. Bar + ring + a lift, all outside the fill. */
 .ps-row-now {

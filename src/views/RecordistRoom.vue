@@ -1024,7 +1024,7 @@ kbd {
 }
 
 /* Light mode: the shared graphite border token is far too faint on white. */
-:root[data-theme="light"] .recordist { background: var(--surface-1, #f8fafc); }
+:root[data-theme="light"] .recordist { background: var(--surface); }
 :root[data-theme="light"] .rc-card,
 :root[data-theme="light"] .mic-select,
 :root[data-theme="light"] .meter,

@@ -681,18 +681,18 @@ async function deployToProduction() {
 }
 
 /* --- dark defaults (match prior Tailwind classes) --- */
-.stat-emerald { background: rgba(6, 78, 59, 0.2); border-color: rgba(4, 120, 87, 0.5); color: #34d399; }
-.stat-red     { background: rgba(127, 29, 29, 0.2); border-color: rgba(185, 28, 28, 0.5); color: #f87171; }
+.stat-emerald { background: rgba(6, 78, 59, 0.2); border-color: rgba(4, 120, 87, 0.5); color: var(--accent-2); }
+.stat-red     { background: rgba(127, 29, 29, 0.2); border-color: rgba(185, 28, 28, 0.5); color: var(--danger); }
 .stat-blue    { background: rgba(30, 58, 138, 0.2); border-color: rgba(29, 78, 216, 0.5); color: #60a5fa; }
 
 .callout-emerald { background: rgba(6, 78, 59, 0.2); border: 1px solid rgba(4, 120, 87, 0.5); }
-.callout-emerald .callout-text { color: #34d399; }
+.callout-emerald .callout-text { color: var(--accent-2); }
 .callout-yellow  { background: rgba(113, 63, 18, 0.2); border: 1px solid rgba(161, 98, 7, 0.5); }
 .callout-yellow .callout-text { color: #facc15; }
 .callout-red     { background: rgba(127, 29, 29, 0.2); border: 1px solid rgba(239, 68, 68, 0.5); }
-.callout-red.callout-text, .callout-red .callout-text { color: #f87171; }
+.callout-red.callout-text, .callout-red .callout-text { color: var(--danger); }
 
-.stat-value-red { color: #f87171; }
+.stat-value-red { color: var(--danger); }
 
 .missing-row { background: rgba(127, 29, 29, 0.1); border: 1px solid rgba(185, 28, 28, 0.3); }
 

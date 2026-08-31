@@ -837,8 +837,8 @@ onUnmounted(() => {
    Dark is the default; light is scoped under [data-theme="light"]. */
 
 /* Emerald accent text (links, headings, ids, voice ids). Dark = emerald-400. */
-.text-emerald { color: #34d399; }
-.link-emerald { color: #34d399; }
+.text-emerald { color: var(--accent-2); }
+.link-emerald { color: var(--accent-2); }
 .link-emerald:hover { color: #6ee7b7; }
 
 /* Status pills. Dark = the original *-900/40 fill + *-300 text. */
@@ -856,7 +856,7 @@ onUnmounted(() => {
 .vis-btn-hold { border-color: #b91c1c; color: #fca5a5; }
 .vis-btn-hold:hover { border-color: #dc2626; }
 .vis-btn-release { border-color: #047857; color: #6ee7b7; }
-.vis-btn-release:hover { border-color: #34d399; }
+.vis-btn-release:hover { border-color: var(--accent-2); }
 [data-theme="light"] .vis-live { background: #d1fae5; color: #065f46; border-color: #6ee7b7; }
 [data-theme="light"] .vis-panel-held { background: #fef2f2; border-color: #dc2626; color: #991b1b; }
 [data-theme="light"] .vis-btn-hold { color: #991b1b; border-color: #dc2626; }
