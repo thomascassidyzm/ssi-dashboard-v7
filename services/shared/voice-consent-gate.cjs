@@ -126,6 +126,14 @@ function refusalMessage (status, voiceId, voice) {
       // to an operator who already did would read as the system losing the
       // answer they gave.
       if (cloneConfirmation.isHearableForDecision(voice)) {
+        // AND SAY WHAT THEY ACTUALLY HAVE TO HEAR (Tom, 2026-08-31). Telling a
+        // Welsh recordist to go and play them "this clone" sends an operator
+        // looking for a thing that does not exist and cannot be made — Cartesia
+        // cannot clone Welsh, Breton or Cornish at all. What that person
+        // confirms is their own take, so that is what the refusal names.
+        if (cloneConfirmation.hearingSourceOf(voice, voiceId) === cloneConfirmation.HEARING_SOURCES.OWN_RECORDING) {
+          return `${who} agreed at sign-up but has not heard their own recording back yet. Play one of their takes to them, and this goes through the moment they confirm it.`
+        }
         return `${who} agreed at sign-up but has not heard this clone yet. Play it to them, and this goes through the moment they confirm it sounds like them.`
       }
       return `${who} has not authorised this voice yet. Ask them, record their answer on the voice in the Voice Lab, and then this will go through.`

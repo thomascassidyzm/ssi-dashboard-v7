@@ -46,11 +46,42 @@
  * "try again" and it is not a softer word for "not yet". The screen gives it
  * the same weight as the yes — same size, same one tap — because a confirm step
  * where the no is harder than the yes is a consent theatre, not a consent.
+ *
+ * ── AND SOMETIMES THE THING THEY HEAR IS NOT A CLONE ────────────────────────
+ * Tom's ruling, 2026-08-31, the same day, on the hole this file's own write-up
+ * named and left open:
+ *
+ *   "play back their OWN RECORDED TAKE as the confirmation instead of a
+ *    generated clone... the principle stays the same — hear the actual thing
+ *    that will be used, then consent to it."
+ *
+ * Welsh, Breton and Cornish recordists are human-voiced BY DESIGN and Cartesia
+ * cannot clone those languages at all, so there was never going to be a clone
+ * for them to hear. The first reading of that is a carve-out — three languages
+ * that skip the second stamp — and it is the wrong one, because the second
+ * stamp is not about clones. It is about hearing THE ACTUAL THING THAT WILL BE
+ * USED and then consenting to it. For a cloned voice the actual thing is the
+ * clone. For a human-recorded voice the actual thing is their own take: it is
+ * literally the audio the learner will hear, which makes it a STRONGER object
+ * to consent to than a clone, not a weaker one.
+ *
+ * So there is no carve-out and no second flow. The stages are the same, the
+ * state machine is the same, the block is the same, the two answers are the
+ * same shape. The only thing that varies is WHERE THE AUDIO COMES FROM, and
+ * that is one function — hearingSourceOf() — and some words.
+ *
+ * It is drawn from the voice row's own `type`, which is already in
+ * consent.COLUMNS and so is already on every row the gate reads. NOT from a
+ * language list: `cym`/`bre`/`kw` hard-coded anywhere here would be a rule
+ * about three languages, and the real rule is about whether this voice IS a
+ * recording or a synthesis. A human recordist in any language gets the same
+ * treatment, and the day Cartesia can clone Welsh nothing here has to change.
  */
 
 'use strict'
 
 const consent = require('./consent.cjs')
+const personhood = require('../shared/voice-personhood.cjs')
 
 /**
  * How this voice stands with respect to the two stamps.
@@ -72,6 +103,42 @@ function stageOf (voice) {
 
 function hasDeclaration (voice) {
   return Boolean(consent.declarationOf(voice))
+}
+
+/** The two things a person can be asked to listen to. There is no third. */
+const HEARING_SOURCES = Object.freeze({ CLONE: 'clone', OWN_RECORDING: 'own_recording' })
+
+/**
+ * IS THIS VOICE A RECORDING OF A PERSON, OR A SYNTHESIS OF ONE?
+ *
+ * ONE ANSWER, and it is not this file's — services/shared/voice-personhood.cjs
+ * already decides what every voice in the estate IS (`recordist`, `clone`,
+ * `stock`, `named`), it was written the same day for the neighbouring
+ * correction, and the consent gate and the census tools all read it. A second
+ * opinion here about whether somebody is a recordist is exactly the drift this
+ * subsystem keeps refusing everywhere else.
+ *
+ * `recordist` is the whole of the answer: a person whose own takes ARE the
+ * voice. It resolves from a `human_*` id or `type: 'human'`, which means a
+ * recordist with no `voices` row at all still gets it — and "we hold no row for
+ * this person" must never be the reason we offer them a clone that does not
+ * exist.
+ */
+function isHumanRecorded (voice, voiceId = null) {
+  return personhood.classify(voiceId || (voice && voice.voice_id) || '', voice) === 'recordist'
+}
+
+/**
+ * WHAT WILL THIS PERSON ACTUALLY HEAR?
+ *
+ * PURE, and deliberately total: every voice has an answer, so no caller has to
+ * carry a null branch and no screen can end up with a confirm button and
+ * nothing to play.
+ *
+ * @returns {'clone'|'own_recording'}
+ */
+function hearingSourceOf (voice, voiceId = null) {
+  return isHumanRecorded(voice, voiceId) ? HEARING_SOURCES.OWN_RECORDING : HEARING_SOURCES.CLONE
 }
 
 /**
@@ -124,9 +191,27 @@ function awaitingHearing (declarationRecord) {
   }
 }
 
-/** How the confirmation is described on the voice, forever after. */
+/**
+ * How the confirmation is described on the voice, FOREVER AFTER — so it says
+ * what they actually heard.
+ *
+ * Not cosmetic. `consent_authorised_how` is the audit trail: it is the sentence
+ * somebody reads in a year when they want to know what this person agreed to.
+ * Writing "heard their own clone" onto a Welsh recordist who heard their own
+ * take would be a false record of a consent event, which is the one thing this
+ * whole subsystem exists to prevent.
+ */
 const CONFIRMED_HOW = 'heard their own clone and confirmed it'
 const REJECTED_NOTE = 'Heard their own clone and said it should not be used.'
+const CONFIRMED_HOW_OWN_RECORDING = 'heard their own recording and confirmed it'
+const REJECTED_NOTE_OWN_RECORDING = 'Heard their own recording and said it should not be used.'
+
+/** The pair of sentences for whichever thing this voice actually is. */
+function wordingFor (source) {
+  return source === HEARING_SOURCES.OWN_RECORDING
+    ? { how: CONFIRMED_HOW_OWN_RECORDING, note: REJECTED_NOTE_OWN_RECORDING }
+    : { how: CONFIRMED_HOW, note: REJECTED_NOTE }
+}
 
 /**
  * The columns to write when the person has heard the clone and said yes.
@@ -141,7 +226,7 @@ function confirmedRecord ({ voice, note = null, recordedBy = null, now = new Dat
     consent_status: 'authorised',
     consent_person: person,
     consent_authorised_by: person,
-    consent_authorised_how: CONFIRMED_HOW,
+    consent_authorised_how: wordingFor(hearingSourceOf(voice)).how,
     consent_authorised_at: now.toISOString(),
     consent_recorded_by: trim(recordedBy) || null,
     consent_recorded_at: now.toISOString(),
@@ -160,6 +245,7 @@ function confirmedRecord ({ voice, note = null, recordedBy = null, now = new Dat
 function rejectedRecord ({ voice, note = null, recordedBy = null, now = new Date() }) {
   const person = requirePerson(voice)
   const said = trim(note)
+  const rejected = wordingFor(hearingSourceOf(voice)).note
   return {
     consent_status: 'refused',
     consent_person: person,
@@ -168,7 +254,7 @@ function rejectedRecord ({ voice, note = null, recordedBy = null, now = new Date
     consent_authorised_at: null,
     consent_recorded_by: trim(recordedBy) || null,
     consent_recorded_at: now.toISOString(),
-    consent_note: mergeNote(voice, said ? `${REJECTED_NOTE} They said: ${said}` : REJECTED_NOTE),
+    consent_note: mergeNote(voice, said ? `${rejected} They said: ${said}` : rejected),
   }
 }
 
@@ -179,39 +265,119 @@ function rejectedRecord ({ voice, note = null, recordedBy = null, now = new Date
  * screen has done nothing wrong in either direction, and a no is as ordinary an
  * answer as a yes.
  */
-function describe (voice) {
+function describe (voice, { voiceId = null, recordings = null } = {}) {
   const stage = stageOf(voice)
   const person = (voice && String(voice.consent_person || '').trim()) || null
   const who = person || 'this person'
   const decl = consent.declarationOf(voice)
+  const source = hearingSourceOf(voice, voiceId)
+  // "Have they got anything to hear?" is a fact about the world, not about the
+  // row, so this module never goes looking for it — the caller who already has
+  // the answer passes it in. Passing nothing means "not checked", which reads
+  // as no obstacle: the clone path has never needed the question asked.
+  const nothingRecorded = source === HEARING_SOURCES.OWN_RECORDING && recordings === 0
+  const canDecide = stage === 'awaiting_hearing' && !nothingRecorded
   return {
     stage,
     person,
+    /** What they are being asked to listen to, and where it comes from. */
+    hearing: hearingOf(source, { who, recordings, nothingRecorded }),
     /** Can they be asked right now? */
-    canDecide: stage === 'awaiting_hearing',
+    canDecide,
     /** May the clone be played so they can decide? */
     hearable: isHearableForDecision(voice),
     /** True once the second stamp exists, which is the only thing that casts. */
     castable: stage === 'confirmed',
     /** The words of the first stamp, so the screen can show what they agreed to. */
     declaration: decl,
-    heading: HEADINGS[stage](who),
-    /** The two answers, always both, always the same shape. */
-    answers: stage === 'awaiting_hearing'
+    heading: nothingRecorded ? NOTHING_RECORDED(who) : HEADINGS[stage](who, source),
+    /**
+     * The two answers, always both, always the same shape — and NOT OFFERED AT
+     * ALL when there is nothing to play. A confirm button above silence is the
+     * blind signing this whole step exists to abolish, wearing its own uniform.
+     */
+    answers: canDecide
       ? [
-        { decision: 'confirm', label: 'Yes, that sounds like me — use it' },
-        { decision: 'reject', label: 'No, that is not right — do not use it' },
+        { decision: 'confirm', label: ANSWERS[source].confirm },
+        { decision: 'reject', label: ANSWERS[source].reject },
       ]
       : [],
   }
 }
 
+/**
+ * The block a screen needs in order to know HOW to play the thing, held here
+ * rather than worked out in a component — the same reason the headings are:
+ * a second opinion about consent living in a component is how a screen starts
+ * disagreeing with its database.
+ */
+function hearingOf (source, { who, recordings, nothingRecorded }) {
+  const own = source === HEARING_SOURCES.OWN_RECORDING
+  return {
+    source,
+    /** In words, for the sentence on the screen. */
+    what: own ? 'their own recording' : 'the clone',
+    /** Where the audio comes from, which is what tells a screen how to get it. */
+    from: own
+      ? 'a take this person has already recorded — the exact audio a learner will hear'
+      : 'a rendered audition of the clone',
+    /**
+     * Playing a clone costs money at a vendor and goes through the daily
+     * ceiling. Playing somebody's own take costs nothing and renders nothing:
+     * it is an existing file in the estate's own bucket, so the deliberate hole
+     * in the consent block (assertHearableForDecision) is not involved at all.
+     * One fewer thing that can ever be widened.
+     */
+    spends: !own,
+    /** How many of their own takes the estate holds, when the caller looked. */
+    recordings: recordings === null || recordings === undefined ? null : Number(recordings),
+    nothingRecorded,
+    waiting: own
+      ? 'Play their own recording back to them, then ask.'
+      : 'Play the clone to them, then ask.',
+    blocked: nothingRecorded ? NOTHING_RECORDED(who) : null,
+  }
+}
+
+/**
+ * THE SENTENCE FOR A PERSON WITH NOTHING RECORDED YET.
+ *
+ * Not an error and not their fault — it is simply the ordinary shape of a
+ * recordist's first week: they agree at sign-up, then they record, then they
+ * confirm. So it says what has to happen next and stops there.
+ */
+const NOTHING_RECORDED = (who) =>
+  `${who} agreed at sign-up, and the estate holds no recording of them yet. There is nothing to play back, so there is nothing to confirm — this becomes answerable the moment they have recorded something.`
+
 const HEADINGS = Object.freeze({
-  awaiting_hearing: (who) => `${who} agreed to this at sign-up. Now play the clone to them and let them decide.`,
-  confirmed: (who) => `${who} heard this clone and confirmed it.`,
-  rejected: (who) => `${who} heard this clone and said not to use it.`,
+  awaiting_hearing: (who, source) => (source === HEARING_SOURCES.OWN_RECORDING
+    ? `${who} agreed to this at sign-up. Now play their own recording back to them and let them decide.`
+    : `${who} agreed to this at sign-up. Now play the clone to them and let them decide.`),
+  confirmed: (who, source) => (source === HEARING_SOURCES.OWN_RECORDING
+    ? `${who} heard their own recording and confirmed it.`
+    : `${who} heard this clone and confirmed it.`),
+  rejected: (who, source) => (source === HEARING_SOURCES.OWN_RECORDING
+    ? `${who} heard their own recording and said not to use it.`
+    : `${who} heard this clone and said not to use it.`),
   withdrawn: (who) => `${who} has withdrawn permission for this voice.`,
   unasked: (who) => `Nobody has recorded ${who} agreeing to this voice.`,
+})
+
+/**
+ * BOTH ANSWERS, ONE SHAPE, whichever thing they heard. The words change because
+ * "that sounds like me" is the wrong question to ask somebody about their own
+ * recording — it does not sound like them, it IS them, and the real question is
+ * whether they are happy for it to be used.
+ */
+const ANSWERS = Object.freeze({
+  [HEARING_SOURCES.CLONE]: {
+    confirm: 'Yes, that sounds like me — use it',
+    reject: 'No, that is not right — do not use it',
+  },
+  [HEARING_SOURCES.OWN_RECORDING]: {
+    confirm: 'Yes, that is my recording — use it',
+    reject: 'No, do not use my recording',
+  },
 })
 
 function requirePerson (voice) {
@@ -239,6 +405,13 @@ function trim (v) { return v === null || v === undefined ? '' : String(v).trim()
 module.exports = {
   CONFIRMED_HOW,
   REJECTED_NOTE,
+  CONFIRMED_HOW_OWN_RECORDING,
+  REJECTED_NOTE_OWN_RECORDING,
+  HEARING_SOURCES,
+  NOTHING_RECORDED,
+  isHumanRecorded,
+  hearingSourceOf,
+  wordingFor,
   stageOf,
   hasDeclaration,
   isHearableForDecision,

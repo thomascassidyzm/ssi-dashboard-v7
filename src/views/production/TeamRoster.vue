@@ -49,7 +49,19 @@
     <section v-if="awaitingConfirmation" class="card consent-card">
       <h2>{{ memberName(awaitingConfirmation.email) }} still has to hear their voice</h2>
       <p class="hint">{{ awaitingConfirmation.message }}</p>
-      <p class="hint">
+      <!-- ASK THEM HERE, not somewhere else (Tom, 2026-08-31). For a
+           human-voiced recordist — Welsh, Breton, Cornish — there is no clone
+           to go and make in the Voice Lab, because Cartesia cannot clone those
+           languages at all. What they consent to is their OWN take, the estate
+           already holds it, and this strip plays it back and takes the answer.
+           The same strip, the same two buttons, the same server route as the
+           clone path: only the audio is different. -->
+      <CloneConfirm
+        v-if="awaitingConfirmation.voiceId"
+        :voice-id="awaitingConfirmation.voiceId"
+        @decided="onConfirmed"
+      />
+      <p v-else class="hint">
         Their clone is made in the Voice Lab, and the confirm and reject buttons sit under it
         there — play it to them, and this assignment goes through the moment they say yes.
       </p>
@@ -199,6 +211,9 @@ import { ref, computed, onMounted } from 'vue'
 import { useAuth } from '../../composables/useAuth'
 import { getApiUrl } from '../../services/api'
 import { useCourses } from '../../composables/useCourses'
+// The SAME strip the Voice Lab uses, deliberately — one confirm/reject
+// mechanism in the estate, not two that can drift apart.
+import CloneConfirm from '../admin/voicelab/CloneConfirm.vue'
 
 const props = defineProps({
   courseCode: { type: String, required: true },
@@ -223,7 +238,7 @@ const slotPick = ref({ target1: '', target2: '' })
 // this panel is how the yes gets recorded — in the same breath, with the person
 // sitting there, rather than as a chore somebody does later or never.
 const consentFor = ref(null)          // { email, slot } — the assignment waiting on it
-const awaitingConfirmation = ref(null) // { email, message } — waiting on them hearing the clone
+const awaitingConfirmation = ref(null) // { email, message, voiceId, slot } — waiting on them hearing it
 const consentBusy = ref(false)
 const consentError = ref(null)
 const consentHeard = ref(null)        // what whisper heard, quoted back on a refusal
@@ -327,7 +342,14 @@ async function assign(email, slot) {
       // read the line aloud; what is left is hearing their own clone and saying
       // yes to it. Asking them to consent again here would look like the system
       // had lost the answer they gave, so the screen says which step is left.
-      awaitingConfirmation.value = { email, message: err.message }
+      awaitingConfirmation.value = {
+        email,
+        slot,
+        message: err.message,
+        // The voice id rides on the refusal already, so the strip can ask the
+        // server what this person is waiting to hear and play it right here.
+        voiceId: err.detail.voice_id || null,
+      }
     } else if (err.detail && err.detail.needsOnboardingConsent) {
       await openConsent(email, slot)
     } else {
@@ -335,6 +357,22 @@ async function assign(email, slot) {
     }
   } finally {
     saving.value = false
+  }
+}
+
+/**
+ * They have answered. A YES unblocks the assignment that sent them here, so it
+ * is retried immediately — being sent back to press the same button again after
+ * consenting is how a two-step flow starts feeling like a punishment. A NO is
+ * final, and the card closes on the refusal the roster will now show.
+ */
+async function onConfirmed (decided) {
+  const pending = awaitingConfirmation.value
+  awaitingConfirmation.value = null
+  if (decided && decided.castable && pending && pending.slot) {
+    await assign(pending.email, pending.slot)
+  } else {
+    await loadTeam()
   }
 }
 

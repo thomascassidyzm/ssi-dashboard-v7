@@ -686,6 +686,15 @@ function mount (app, deps) {
   // writes `refused`, which the block treats as final, because "that doesn't
   // sound like me" is a real answer and the only moment it can be given before
   // a learner hears the voice.
+  //
+  // AND SOMETIMES THE THING THEY HEAR IS NOT A CLONE (Tom, 2026-08-31):
+  // "play back their OWN RECORDED TAKE as the confirmation instead of a
+  // generated clone." Welsh, Breton and Cornish recordists are human-voiced by
+  // design and Cartesia cannot clone those languages at all — so the object
+  // they consent to is their own take, which is literally the audio a learner
+  // will hear. Same stages, same block, same two answers; the only thing that
+  // varies is where the audio comes from, and these routes are the only place
+  // in the estate that has to know.
 
   /** What to show the person, and whether they can decide right now. */
   app.get('/api/voicelab/voices/:voiceId/confirmation', async (req, res) => {
@@ -693,9 +702,51 @@ function mount (app, deps) {
     if (!user) return
     try {
       const { voice, voiceId } = await readVoiceRow(req.params.voiceId)
-      res.json({ ok: true, voiceId, ...cloneConfirmation.describe(voice), consent: consent.describe(voice || {}) })
+      const own = await ownRecordingsToHear(voice, voiceId)
+      res.json({
+        ok: true,
+        voiceId,
+        ...cloneConfirmation.describe(voice, { voiceId, recordings: own ? own.count : null }),
+        // The clips themselves, when the thing to hear is their own take. The
+        // URLs point straight at the estate's own bucket, so the browser plays
+        // the ORIGINAL file: nothing is rendered, nothing is copied, nothing is
+        // spent, and the consent block's deliberate render hole is not touched.
+        clips: own ? own.clips : [],
+        consent: consent.describe(voice || {}),
+      })
     } catch (err) { fail(res, err, 'clone-confirmation-read') }
   })
+
+  /**
+   * THIS PERSON'S OWN TAKES, or null when the thing to hear is a clone.
+   *
+   * The count is the load-bearing half — a recordist who has agreed at sign-up
+   * but recorded nothing yet has nothing to play back, and offering them a
+   * confirm button above silence would be exactly the blind signing the second
+   * stamp exists to abolish. So the count travels into describe(), which
+   * withholds both answers, and the POST below refuses on the same fact.
+   *
+   * Longest first (speakers.listClips already sorts that way) and capped small:
+   * this is a listen-and-decide strip, not the clone-source picker.
+   */
+  async function ownRecordingsToHear (voice, voiceId) {
+    if (cloneConfirmation.hearingSourceOf(voice, voiceId) !== cloneConfirmation.HEARING_SOURCES.OWN_RECORDING) {
+      return null
+    }
+    try {
+      const out = await speakers.listClips(supabase(), { voiceId, limit: CONFIRMATION_CLIPS })
+      return { count: out.clips.length, clips: out.clips.slice(0, CONFIRMATION_CLIPS) }
+    } catch (err) {
+      // FAIL CLOSED, exactly as the consent gate does: if we cannot tell
+      // whether this person has anything to hear, we do not offer them a button
+      // that says they heard it.
+      logger.warn?.(`[voicelab] could not read ${voiceId}'s own recordings: ${err.message}`)
+      return { count: 0, clips: [], unreadable: err.message }
+    }
+  }
+
+  /** Enough to pick a good one from, few enough to be a decision and not a list. */
+  const CONFIRMATION_CLIPS = 5
 
   /** The click. `confirm` casts nothing but makes casting possible; `reject` closes it. */
   app.post('/api/voicelab/voices/:voiceId/confirmation', async (req, res) => {
@@ -709,13 +760,26 @@ function mount (app, deps) {
       const { voice, voiceId } = await readVoiceRow(req.params.voiceId)
       if (!voice) throw Object.assign(new Error(`There is no voice recorded as ${voiceId}, so there is nothing to confirm.`), { status: 404 })
 
+      // SERVER-SIDE, LIKE EVERY OTHER PART OF THIS. A person confirming their
+      // own recording must actually have one; the screen hides the buttons when
+      // they do not, and hiding is not enforcing. Only the YES is refused — a
+      // NO from somebody who has recorded nothing is still a real answer, and
+      // "I do not want my voice used" must never need a recording first.
+      const own = await ownRecordingsToHear(voice, voiceId)
+      if (decision === 'confirm' && own && own.count === 0) {
+        throw Object.assign(
+          new Error(cloneConfirmation.NOTHING_RECORDED(voice.consent_person || voiceId)),
+          { status: 409, code: 'NOTHING_TO_HEAR', detail: { voiceId, recordings: 0 } },
+        )
+      }
+
       const stage = cloneConfirmation.stageOf(voice)
       if (stage !== 'awaiting_hearing') {
         // Not an error to re-ask an already-decided voice, but it must not
         // overwrite an answer: a second confirm on a refused voice is exactly
         // how a no gets turned into a yes by somebody who was not there.
         throw Object.assign(
-          new Error(cloneConfirmation.describe(voice).heading),
+          new Error(cloneConfirmation.describe(voice, { voiceId }).heading),
           { status: 409, code: 'ALREADY_DECIDED', detail: { stage } },
         )
       }
@@ -740,7 +804,7 @@ function mount (app, deps) {
         ok: true,
         voiceId,
         decision,
-        ...cloneConfirmation.describe(data),
+        ...cloneConfirmation.describe(data, { voiceId, recordings: own ? own.count : null }),
         consent: consent.describe(data),
       })
     } catch (err) { fail(res, err, 'clone-confirmation-write') }

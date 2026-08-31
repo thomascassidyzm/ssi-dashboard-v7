@@ -219,7 +219,14 @@ describe('the consent step mints the voice with the yes already on it', () => {
     const refusedBody = await refused.json()
     expect(refusedBody.needsCloneConfirmation).toBe(true)
     expect(refusedBody.needsOnboardingConsent).toBe(false)
-    expect(refusedBody.error).toMatch(/has not heard this clone yet/i)
+    // AND IT NAMES THE RIGHT THING TO PLAY (Tom, 2026-08-31). This asserted the
+    // CLONE wording, which was never right for this path: onboarding mints a
+    // `type: 'human'` recordist whose voice IS their own takes — there is no
+    // clone of them anywhere, and for Welsh, Breton and Cornish there cannot
+    // be one. Sending an operator to find one is sending them nowhere.
+    expect(refusedBody.error).toMatch(/has not heard their own recording back yet/i)
+    expect(refusedBody.error).toMatch(/play one of their takes/i)
+    expect(refusedBody.error).not.toMatch(/clone/i)
     expect(COURSES[0].voice_config.voices.target1.voiceId).toBe('azure_x')
 
     // …and goes through the moment the confirmation is on the row.
