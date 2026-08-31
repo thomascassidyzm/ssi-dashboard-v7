@@ -29,6 +29,9 @@ const fs = require('fs');
 const path = require('path');
 const { createClient } = require('@supabase/supabase-js');
 const { checkPhraseZUT } = require('../services/course-builder/lib/validation.cjs');
+// sector-helix §5b: ZUT is family-wide — a segment is its own course code but one
+// course to the learner. Null family for every course with no registry row.
+const { courseFamily } = require('../services/course-builder/lib/course-family.cjs');
 
 const [mode, planPath] = process.argv.slice(2);
 if (!['check', 'apply'].includes(mode) || !planPath) {
@@ -126,7 +129,7 @@ async function vocabUpTo(course, seed, legoIndex) {
         ...(b.lego_edits || []).map((le) => ({ known: le.known_text, target: b.lego_target })),
       ];
       for (const le of b.lego_edits || []) console.log(`  ◆ LEGO re-gloss: ${b.lego_target} ⟸ "${le.known_text}"`);
-      const zut = await checkPhraseZUT(sb, course, zutCandidates, null);
+      const zut = await checkPhraseZUT(sb, course, zutCandidates, null, { family: await courseFamily(sb, course) });
       for (const z of zut) {
         if (globalReplaced.has(`${z.known.toLowerCase().trim()}|${strip(z.existing_target)}`)) continue;
         console.log(`  ✗ ZUT: "${z.known}" → ${z.new_target} BUT S${z.existing_seed} has → ${z.existing_target}`);

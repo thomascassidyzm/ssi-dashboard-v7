@@ -60,8 +60,15 @@ async function loadCorpus(sb, course, seed) {
  * every pattern would silently report "no frames" rather than "not applicable".
  */
 function pairOf(course) {
-  const m = /^([a-z]{2,3})_for_([a-z]{2,3})$/.exec(String(course || ''));
-  return m ? { target: m[1], known: m[2] } : { target: null, known: null };
+  // The middle segment is a VARIANT, and it is the standing bug the sector
+  // segment codes only make louder: `cym_n_for_eng` has an English known side
+  // and the old regex said null, so every English pattern silently reported
+  // "no frames" rather than running. Regional variants (`spa_mx_for_eng`,
+  // `deu_at_for_eng`) and sector segments (`spa_health_for_eng`) take the same
+  // shape, so one relaxation resolves all three to their base pair and carries
+  // the variant rather than discarding it. Genuine rubbish is still null.
+  const m = /^([a-z]{2,3})(?:_([a-z0-9]+(?:_[a-z0-9]+)*))?_for_([a-z]{2,3})$/.exec(String(course || ''));
+  return m ? { target: m[1], known: m[3], variant: m[2] || null } : { target: null, known: null, variant: null };
 }
 const knownSideIsEnglish = (course) => pairOf(course).known === 'eng';
 
