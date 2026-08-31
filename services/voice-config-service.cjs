@@ -14,6 +14,7 @@ const { bumpCourseVersion } = require('./shared/course-version.cjs');
 const { voiceSpellings } = require('./shared/clip-identity-lookup.cjs');
 const { selectProvider } = require('./shared/tts-provider-policy.cjs');
 const { applyLanguageCast, CAST_ROLES } = require('./shared/language-voice-cast.cjs');
+const consentGate = require('./shared/voice-consent-gate.cjs');
 const { loadHumanRecordedRoles } = require('./shared/human-recorded-roles.cjs');
 const { COURSE_CAST_FIELDS } = require('./shared/cast-language-key.cjs');
 
@@ -521,6 +522,39 @@ async function ensureVoiceRegistered(voiceSettings) {
   }
 }
 
+
+/**
+ * Refuse a save that newly assigns a voice nobody has consented to.
+ *
+ * Compares against the STORED config, so "already cast" is decided by what is
+ * in the database and not by anything the caller sends. Every changed role is
+ * checked, so one save cannot smuggle a second unconsented voice through
+ * alongside a legitimate change.
+ */
+async function assertConsentOnNewAssignments(courseCode, config) {
+  const incoming = (config && config.voices) || {};
+  if (!Object.keys(incoming).length) return;
+  let stored = {};
+  try {
+    stored = ((await loadStoredVoiceConfig(courseCode)) || {}).voices || {};
+  } catch (err) {
+    // Fail closed: if we cannot tell what was already cast, every voice in the
+    // incoming config is treated as new. An unreadable "it was already like
+    // that" is not evidence that it was.
+    console.warn(`[VoiceConfig] could not read stored config for ${courseCode} (${err.message}) — every role checked as new`);
+  }
+  for (const [role, cfg] of Object.entries(incoming)) {
+    const voiceId = cfg && (cfg.voiceId || cfg.voice_id);
+    if (!voiceId) continue;
+    const before = stored[role] && (stored[role].voiceId || stored[role].voice_id);
+    if (before && String(before) === String(voiceId)) continue;   // unchanged
+    await consentGate.assertConsented(String(voiceId), {
+      db: supabase,
+      context: `${courseCode} ${role}`,
+    });
+  }
+}
+
 /**
  * Save voice configuration for a course to Supabase
  *
@@ -532,6 +566,24 @@ async function saveVoiceConfig(courseCode, config) {
   if (!supabase) {
     throw new Error('Supabase not initialized - cannot save voice config');
   }
+
+  // ── THE CONSENT BLOCK, ON THE OTHER CASTING SURFACE (Tom, 2026-08-31) ─────
+  //
+  //   "we are never going to use a voice without consent"
+  //
+  // voice_language_roles is the casting table the Voice Lab writes, and it held
+  // ZERO rows on 2026-08-31: every voice actually speaking in the estate is cast
+  // HERE, in courses.voice_config. Blocking only the Voice Lab endpoint would
+  // therefore have blocked the surface nobody has used yet and left the one
+  // everybody uses wide open.
+  //
+  // ONLY WHAT IS CHANGING. A role whose voiceId is unchanged passes untouched,
+  // even when that voice has no consent — 20 course roles hold an unconsented
+  // clone today, and whether they stay cast is Tom's decision, not a side
+  // effect of somebody saving an unrelated edit to another role. What this
+  // refuses is putting an unconsented person's voice somewhere it was not
+  // already, which is the thing the ruling is actually about.
+  await assertConsentOnNewAssignments(courseCode, config);
 
   // Merge with defaults to ensure all fields exist
   const fullConfig = {
@@ -987,6 +1039,7 @@ function convertConfigFromLegacyManifest(legacyConfig) {
 }
 
 module.exports = {
+  assertConsentOnNewAssignments,
   loadVoiceConfig,
   loadStoredVoiceConfig,
   resolveVoiceConfig,

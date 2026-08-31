@@ -1220,23 +1220,29 @@ const skipped = ref({})
 /**
  * Cast a voice into a slot.
  *
- * ── THE WARNING BEFORE A VOICE WITHOUT A YES REACHES A LEARNER ──────────────
- * A cast is what puts a voice in front of learners, so it is the moment the
- * consent question actually bites. A voice that nobody has authorised — or that
- * somebody has refused — gets ONE plain sentence and a confirm, naming the
- * person and what is missing.
+ * ── NO CONSENT, NO CAST (Tom's ruling, 2026-08-31) ──────────────────────────
  *
- * It does NOT block, and that is a deliberate, flagged default (2026-08-31): a
- * hard block on casting an unauthorised voice is Tom's call to make and he has
- * not made it. This is the loudest thing short of taking the decision off him.
+ *   "we are never going to use a voice without consent"
+ *
+ * This used to warn and offer "Cast it anyway?". That was the flagged default
+ * of the day before — the comment here said in as many words that a hard block
+ * "is Tom's call to make and he has not made it". He has made it. There is now
+ * no path through: the picker draws no Cast button for a voice nobody has
+ * consented to, and this refuses one anyway, because a stale tab still holds
+ * the old markup. The endpoint refuses it a third time, which is the one that
+ * actually counts.
+ *
  * An authorised voice casts in one tap exactly as before, with no dialog at
  * all — a guard on every cast is a guard people learn to click through.
  */
 async function cast (lang, slot, voiceId) {
   if (!voiceId) return
   const candidate = findCandidate(lang, slot, voiceId)
-  const warning = candidate?.consent?.castWarning
-  if (warning && !window.confirm(`${warning}\n\nCast it anyway?`)) return
+  const k = candidate?.consent
+  if (k && k.aboutAPerson && !k.authorised) {
+    error.value = `${k.castWarning || k.summary} Record consent for this voice — the "consent…" button beside it — and then cast it.`
+    return
+  }
   busy.value = slotKey(lang, slot)
   try {
     const out = await api.castSlot(lang.code, {
