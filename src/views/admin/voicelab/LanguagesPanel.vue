@@ -1480,7 +1480,7 @@ function candidatesFor (lang, slot) {
               </div>
             </div>
             <p v-if="pickHint" class="vl-muted vl-pick-hint">
-              {{ pickHint }} — press <strong>Create the clone</strong> below to join them.
+              {{ pickHint }}
             </p>
           </template>
         </div>
@@ -1540,8 +1540,12 @@ function candidatesFor (lang, slot) {
 
         <div class="vl-clone-row">
           <button class="vl-btn" :disabled="cloneBusy || !canSubmitClone" @click="submitClone">
-            {{ cloneBusy ? 'Cloning…' : (cloneSource === 'estate' && pickedKeys.length > 1
-              ? `Clone from the ${pickedKeys.length} ticked recordings`
+            <!-- TWO BUTTONS THAT LOOKED IDENTICAL AND WERE NOT. "Clone this →"
+                 on a row takes that one recording; this one joins everything
+                 ticked. Naming the count is the whole difference, said in the
+                 button rather than in a sentence beside it. -->
+            {{ cloneBusy ? 'Cloning…' : (cloneSource === 'estate' && pickedKeys.length
+              ? `Clone from the ${pickedKeys.length} ticked recording${pickedKeys.length === 1 ? '' : 's'}`
               : 'Create the clone') }}
           </button>
           <span v-if="cloneBlocker" class="vl-muted">{{ cloneBlocker }}</span>
