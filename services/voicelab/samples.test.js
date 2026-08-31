@@ -10,7 +10,7 @@
 import { describe, it, expect } from 'vitest'
 import samples from './samples.cjs'
 
-const { chooseFrom, preferCourses, isRenderable } = samples
+const { chooseFrom, preferCourses, isRenderable, renderPlan } = samples
 
 const line = (text, order = 1) => ({ text, knownText: '', order })
 
@@ -76,13 +76,48 @@ describe('chooseFrom — which line, in any script', () => {
   })
 })
 
-describe('isRenderable — this lab renders Cartesia and nothing else', () => {
-  it('accepts a Cartesia voice', () => {
-    expect(isRenderable('cartesia_3597a26f-80ef-4bd5-8101-9699bc764917')).toBe(true)
+describe('renderPlan — who can be previewed, on whose provider', () => {
+  it('sends a Cartesia voice to Cartesia, steered by the language', () => {
+    const plan = renderPlan('cartesia_3597a26f-80ef-4bd5-8101-9699bc764917', 'spa')
+    expect(plan.provider).toBe('cartesia')
+    expect(plan.voiceId).toBe('3597a26f-80ef-4bd5-8101-9699bc764917')
+    expect(plan.language).toBe('spa')
   })
 
-  it('refuses an Azure voice and a human recordist, which are castable but not renderable here', () => {
-    expect(isRenderable('azure_es-ES-TrianaNeural')).toBe(false)
-    expect(isRenderable('human_spa_for_eng_target1')).toBe(false)
+  it('refuses a Cartesia voice in a language the lab cannot steer — its API throws without a locale', () => {
+    const plan = renderPlan('cartesia_3597a26f-80ef-4bd5-8101-9699bc764917', 'cym')
+    expect(plan.provider).toBeUndefined()
+    expect(plan.why).toMatch(/steer/)
+  })
+
+  it('SENDS AN AZURE VOICE TO AZURE — the fix of 2026-08-31, in both spellings', () => {
+    // Tom saw a Chinese row of seventeen voices with four play buttons. These
+    // are the voices that had none, and they are the provider that will speak
+    // them in a real course.
+    expect(renderPlan('azure_es-ES-TrianaNeural', 'spa')).toEqual({
+      provider: 'azure', voiceId: 'es-ES-TrianaNeural', language: 'spa',
+    })
+    expect(renderPlan('zh-CN-XiaoxiaoNeural', 'zho')).toEqual({
+      provider: 'azure', voiceId: 'zh-CN-XiaoxiaoNeural', language: 'zho',
+    })
+  })
+
+  it('previews Azure in a language params.cjs has no Cartesia steer for — the locale rides on the voice name', () => {
+    expect(renderPlan('azure_cy-GB-NiaNeural', 'cym').provider).toBe('azure')
+  })
+
+  it('never synthesises a human recordist, and says which it is', () => {
+    const plan = renderPlan('human_spa_for_eng_target1', 'spa')
+    expect(plan.provider).toBeUndefined()
+    expect(plan.why).toMatch(/human/)
+  })
+
+  it('refuses ElevenLabs rather than growing a path to it quietly', () => {
+    expect(renderPlan('elevenlabs_pTOe8BQRdydOEIgv0wFL', 'zho').provider).toBeUndefined()
+  })
+
+  it('isRenderable is the same decision, asked as a yes or no', () => {
+    expect(isRenderable('azure_es-ES-TrianaNeural', 'spa')).toBe(true)
+    expect(isRenderable('human_spa_for_eng_target1', 'spa')).toBe(false)
   })
 })

@@ -123,15 +123,106 @@ async function loadSamples (lang) {
   samplesBusy.value = ''
 }
 
-/** SPENDS MONEY, and the button says so and says how much before it is pressed. */
-async function prepareSamples (lang) {
+/**
+ * GENERATE PREVIEW CLIPS — the one action on this row that spends.
+ *
+ * Tom, 2026-08-31, looking at the live Chinese row: "I want to be able to preview
+ * the cartesia voices, so I want to be able to generate cartesia clips or something
+ * - must be the same phrases for a fair test." So: ONE TAP ON THE LANGUAGE, every
+ * voice the row lists, and THE SAME LINE for all of them — a fair test means no
+ * voice is judged on different words from another, which is why the text is the
+ * one already shown above and never a per-voice choice.
+ *
+ * It streams. A twenty-voice row is a couple of minutes of rendering, and each clip
+ * is playable the moment it exists rather than when the last one finishes — the row
+ * fills in front of you. A backend that has no stream route falls back to the plain
+ * call rather than failing, because an older box is not a broken screen.
+ *
+ * Cached clips are never re-rendered, so a second visit costs nothing at all. That
+ * is what makes RE-GENERATE a separate, deliberate second action rather than a
+ * hazard sitting under the same button.
+ */
+const previewRun = ref(null)      // { code, done, total, failed: [] } while generating
+
+/** How many voices a press would render, and what that costs in characters. */
+function previewPlan (lang, force = false) {
+  const state = samplesByLang.value[lang.code] || {}
+  const ids = force ? allCandidateIds(lang).filter((v) => !(state.unrenderable || []).includes(v)) : (state.missing || [])
+  const chars = (lineFor(lang)?.text?.length || 0) * ids.length
+  return { ids, n: ids.length, chars }
+}
+
+/** One clip has landed: make it playable now, without waiting for the rest. */
+function addSample (code, voiceId, sample) {
+  const cur = samplesByLang.value[code] || { samples: {} }
+  samplesByLang.value = {
+    ...samplesByLang.value,
+    [code]: {
+      ...cur,
+      samples: { ...(cur.samples || {}), [voiceId]: sample },
+      missing: (cur.missing || []).filter((v) => v !== voiceId),
+    },
+  }
+}
+
+async function generatePreviews (lang, { force = false } = {}) {
+  const { ids } = previewPlan(lang, force)
+  if (!ids.length) return
+  previewRun.value = { code: lang.code, done: 0, total: ids.length, failed: [] }
   samplesBusy.value = lang.code
+  error.value = ''
   try {
-    const state = samplesByLang.value[lang.code]
-    await api.prepareSamples(lang.code, (state && state.missing) || allCandidateIds(lang))
-    await loadSamples(lang)
+    const onClip = (ev) => {
+      if (previewRun.value && previewRun.value.code === lang.code) {
+        previewRun.value = {
+          ...previewRun.value,
+          done: ev.done ?? previewRun.value.done,
+          total: ev.total ?? previewRun.value.total,
+          failed: ev.error ? [...previewRun.value.failed, ev] : previewRun.value.failed,
+        }
+      }
+      if (ev.url) addSample(lang.code, ev.voiceId, { url: ev.url, durationMs: ev.durationMs || null, free: false, cached: true })
+    }
+    let out
+    try {
+      out = await api.prepareSamplesStream(lang.code, ids, { force }, onClip)
+    } catch (e) {
+      if (!e.noStream) throw e
+      out = await api.prepareSamples(lang.code, ids, { force })
+    }
+    if (out && out.samples) samplesByLang.value = { ...samplesByLang.value, [lang.code]: out }
+    else await loadSamples(lang)
+    // A voice the provider refused is reported by name. Silently rendering 19 of
+    // 20 and saying nothing is how a dot gets mistaken for a decision.
+    const failed = (out && out.failed) || []
+    if (failed.length) {
+      error.value = `${failed.length} voice${failed.length === 1 ? '' : 's'} would not render: ` +
+        failed.slice(0, 3).map((f) => `${f.voiceId} (${f.error})`).join('; ') +
+        (failed.length > 3 ? ` and ${failed.length - 3} more` : '')
+    }
   } catch (e) { error.value = e.message }
   samplesBusy.value = ''
+  previewRun.value = null
+}
+
+/**
+ * The voices that genuinely cannot be previewed, counted BY REASON.
+ *
+ * Kept and said plainly rather than hidden (Tom's requirement): "cannot be
+ * rendered" and "nobody has rendered it yet" are different facts and a screen
+ * that draws them the same way is a screen that invites casting a voice nobody
+ * has heard. After the Azure path landed this list is human recordings and
+ * ElevenLabs, which is a short and honest list.
+ */
+function unrenderableReasons (lang) {
+  const state = samplesByLang.value[lang.code] || {}
+  const why = state.unrenderableWhy || {}
+  const counts = new Map()
+  for (const v of state.unrenderable || []) {
+    const reason = why[v] || 'this box has no provider for it'
+    counts.set(reason, (counts.get(reason) || 0) + 1)
+  }
+  return [...counts.entries()].map(([reason, n]) => `${n} · ${reason}`)
 }
 
 function samplesFor (lang) { return (samplesByLang.value[lang.code] || {}).samples || {} }
@@ -1332,25 +1423,44 @@ function candidatesFor (lang, slot) {
                   </p>
                   <p v-else class="vl-muted">No course line found for this language, so voices cannot be auditioned here.</p>
 
-                  <!-- The only button on this screen that spends money, and it
-                       says what it costs before it is pressed. -->
-                  <p v-if="samplesByLang[lang.code] && samplesByLang[lang.code].missing?.length" class="vl-prepare">
+                  <!-- GENERATE PREVIEW CLIPS — one tap on the language, every
+                       voice above, the SAME line for all of them. The only
+                       button on this screen that spends money, and it says what
+                       it costs before it is pressed. -->
+                  <p v-if="previewPlan(lang).n" class="vl-prepare">
                     <button
-                      class="ui-sort-btn"
+                      class="ui-sort-btn vl-generate"
                       :disabled="samplesBusy === lang.code"
-                      @click="prepareSamples(lang)"
-                    >{{ samplesBusy === lang.code ? 'Rendering…' : `Prepare ${Math.min(samplesByLang[lang.code].missing.length, 12)} sample${Math.min(samplesByLang[lang.code].missing.length, 12) === 1 ? '' : 's'}` }}</button>
-                    <span class="vl-muted">
-                      {{ samplesByLang[lang.code].missing.length }} voice{{ samplesByLang[lang.code].missing.length === 1 ? '' : 's' }}
-                      here have never said this line. Rendering the next
-                      {{ Math.min(samplesByLang[lang.code].missing.length, 12) }} costs
-                      {{ Math.min(samplesByLang[lang.code].missing.length, 12) * lineFor(lang)?.text?.length || 0 }} characters
-                      of the lab's daily allowance. Everything already rendered is cached and free to replay.
+                      @click="generatePreviews(lang)"
+                    >{{ samplesBusy === lang.code ? 'Generating…' : 'Generate preview clips' }}</button>
+                    <span v-if="previewRun && previewRun.code === lang.code" class="vl-muted">
+                      {{ previewRun.done }} of {{ previewRun.total }} rendered — each one is playable
+                      the moment it lands, so you can start listening now.
+                    </span>
+                    <span v-else class="vl-muted">
+                      {{ previewPlan(lang).n }} voice{{ previewPlan(lang).n === 1 ? '' : 's' }}
+                      here {{ previewPlan(lang).n === 1 ? 'has' : 'have' }} never said this line.
+                      One tap renders {{ previewPlan(lang).n === 1 ? 'it' : 'them all' }} on the
+                      <strong>same line</strong> — {{ previewPlan(lang).n }} call{{ previewPlan(lang).n === 1 ? '' : 's' }},
+                      {{ previewPlan(lang).chars }} characters of the lab's daily allowance.
+                      Everything already rendered is cached and free to replay.
                     </span>
                   </p>
+                  <p v-else-if="lineFor(lang) && Object.keys(samplesFor(lang)).length" class="vl-muted vl-prepare">
+                    Every voice here has a clip of this line — replaying costs nothing.
+                    <button
+                      class="vl-regenerate"
+                      :disabled="samplesBusy === lang.code"
+                      @click="generatePreviews(lang, { force: true })"
+                    >{{ samplesBusy === lang.code ? 'Re-generating…' : `Re-generate all ${previewPlan(lang, true).n}` }}</button>
+                    <span v-if="previewRun && previewRun.code === lang.code">
+                      — {{ previewRun.done }} of {{ previewRun.total }}
+                    </span>
+                    <span v-else>— spends {{ previewPlan(lang, true).chars }} characters again.</span>
+                  </p>
                   <p v-if="samplesByLang[lang.code] && samplesByLang[lang.code].unrenderable?.length" class="vl-muted vl-prepare">
-                    {{ samplesByLang[lang.code].unrenderable.length }} more can be cast but not previewed here —
-                    this lab renders Cartesia only, and the estate has no clip of them saying this line.
+                    {{ samplesByLang[lang.code].unrenderable.length }} can be cast but not previewed here,
+                    and why: {{ unrenderableReasons(lang).join(' · ') }}.
                   </p>
                 </div>
 
@@ -1429,6 +1539,7 @@ function candidatesFor (lang, slot) {
                         v-else
                         :candidates="candidatesFor(lang, slot)"
                         :samples="samplesFor(lang)"
+                        :unrenderable-why="(samplesByLang[lang.code] || {}).unrenderableWhy || {}"
                         :playing="playing"
                         :busy="busy === slotKey(lang, slot)"
                         :pace-title="(c) => (c.pace ? candidatePace(c) : '')"
@@ -1534,6 +1645,7 @@ function candidatesFor (lang, slot) {
                       <CandidateVoices
                         :candidates="candidatesFor(lang, slot)"
                         :samples="samplesFor(lang)"
+                        :unrenderable-why="(samplesByLang[lang.code] || {}).unrenderableWhy || {}"
                         :playing="playing"
                         :busy="busy === slotKey(lang, slot)"
                         :pace-title="(c) => (c.pace ? candidatePace(c) : '')"
@@ -1637,6 +1749,18 @@ function candidatesFor (lang, slot) {
   color: var(--faint); margin: .5rem 0 .4rem; }
 /* The sample line reads as a quotation, because that is what it is: somebody's
    actual course sentence, not a label on this screen. */
+/* The generate button is the primary action of the block and the regenerate is
+   deliberately not: one is what you do, the other is what you do again on
+   purpose. Tokens only — no hard-coded colour. */
+.vl-generate { font-weight: 600; }
+.vl-regenerate {
+  border: 1px solid var(--line); background: transparent; color: inherit;
+  border-radius: 6px; cursor: pointer; font: inherit; font-size: .8125rem;
+  padding: .15rem .55rem; margin: 0 .15rem;
+}
+.vl-regenerate:hover:not(:disabled) { background: var(--surface-2, rgba(127, 127, 127, .08)); }
+.vl-regenerate:disabled { opacity: .5; cursor: default; }
+
 .vl-sample-line { margin: .9rem 0 .2rem; padding: .6rem .8rem; border-radius: 8px;
                   background: var(--surface-2, rgba(127,127,127,.07)); }
 .vl-cast-meaning { margin: 0 0 .5rem; font-size: .8125rem; }

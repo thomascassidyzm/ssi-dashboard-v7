@@ -118,8 +118,61 @@ export const api = {
   // by the lab's daily character ceiling. Nothing here writes course_audio.
   samples: (language, voiceIds = []) =>
     call(`/api/voicelab/languages/${encodeURIComponent(language)}/samples?voices=${encodeURIComponent(voiceIds.join(','))}`),
-  prepareSamples: (language, voiceIds) =>
-    call(`/api/voicelab/languages/${encodeURIComponent(language)}/samples/prepare`, { method: 'POST', body: { voiceIds } }),
+  prepareSamples: (language, voiceIds, { force = false } = {}) =>
+    call(`/api/voicelab/languages/${encodeURIComponent(language)}/samples/prepare`, { method: 'POST', body: { voiceIds, force } }),
+
+  // The same press, streamed. `onClip` fires once per rendered clip so the row
+  // fills as it renders instead of after it; the promise resolves with the final
+  // state, identical to what `prepareSamples` returns. Falls back to nothing
+  // clever: a backend without the stream route answers HTML or 404, and the
+  // caller catches that and uses the plain endpoint.
+  prepareSamplesStream: async (language, voiceIds, { force = false } = {}, onClip = () => {}) => {
+    const token = await accessToken()
+    if (!token) throw new Error('Not signed in — every Voice Lab endpoint needs a dashboard session.')
+    const res = await fetch(
+      `${labBase()}/api/voicelab/languages/${encodeURIComponent(language)}/samples/prepare/stream`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'ngrok-skip-browser-warning': 'true',
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({ voiceIds, force }),
+      },
+    )
+    const ct = res.headers.get('content-type') || ''
+    if (!res.ok || !(ct.includes('ndjson') || ct.includes('json'))) {
+      const body = await res.text().catch(() => '')
+      let msg = `HTTP ${res.status}`
+      try { msg = JSON.parse(body).error || msg } catch { /* not json — keep the status */ }
+      throw Object.assign(new Error(msg), { status: res.status, noStream: !ct.includes('ndjson') })
+    }
+    if (!res.body) throw Object.assign(new Error('no stream'), { noStream: true })
+
+    const reader = res.body.getReader()
+    const decoder = new TextDecoder()
+    let buf = ''
+    let final = null
+    for (;;) {
+      const { value, done } = await reader.read()
+      if (done) break
+      buf += decoder.decode(value, { stream: true })
+      // A chunk can split a line anywhere, so the tail stays in the buffer.
+      const lines = buf.split('\n')
+      buf = lines.pop() || ''
+      for (const raw of lines) {
+        const line = raw.trim()
+        if (!line) continue
+        let ev
+        try { ev = JSON.parse(line) } catch { continue }
+        if (ev.clip) onClip(ev.clip)
+        if (ev.done) final = ev
+      }
+    }
+    if (final && final.error) throw new Error(final.error)
+    return final || {}
+  },
 
   // PER-VOICE NATURAL PACE. `pace` is the reading surface — measured from clips
   // that already exist, so it spends nothing. `nudgePace` writes ONE column:

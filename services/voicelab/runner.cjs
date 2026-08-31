@@ -101,7 +101,13 @@ function costUsdFor (provider, chars) {
 async function renderOne ({ text, cfg }) {
   const { generate, masterAudio } = load()
   const lang = params.findLanguage(cfg.language)
-  if (!lang) throw Object.assign(new Error(`unknown language ${cfg.language}`), { status: 400 })
+  // AZURE STEERS ITSELF: its voice name carries the locale (`cy-GB-NiaNeural`), so
+  // providerConfig never reads `lang` for it. Requiring a params.cjs entry anyway
+  // meant the lab could not preview an Azure voice in any of the ~50 languages it
+  // has no Cartesia steer for — Welsh included — which is a table's limitation
+  // reported as a provider's. Cartesia still refuses without one, because its API
+  // throws without a locale and there would be nothing honest to send.
+  if (!lang && cfg.provider !== 'azure') throw Object.assign(new Error(`unknown language ${cfg.language}`), { status: 400 })
 
   const t0 = Date.now()
   const { audioBuffer } = await generate(text, cfg.provider, providerConfig(cfg, lang))
@@ -115,7 +121,7 @@ async function renderOne ({ text, cfg }) {
   const { buffer: mastered, durationMs } = await masterAudio(audioBuffer, text, { targetLufs: cfg.masterLufs })
   const masterMs = Date.now() - tm
 
-  return { mastered, durationMs, renderMs, masterMs, lang }
+  return { mastered, durationMs, renderMs, masterMs, lang: lang || null }
 }
 
 /**

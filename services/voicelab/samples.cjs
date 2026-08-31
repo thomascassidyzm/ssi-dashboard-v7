@@ -22,6 +22,14 @@
  * every render is written to the ledger the moment the money is spent. A cached sample
  * is served from disk forever and is never re-rendered.
  *
+ * ── EVERY VOICE ON THE ROW GETS A CLIP (Tom, 2026-08-31) ──────────────────────────
+ * "I want to be able to preview the cartesia voices, so I want to be able to generate
+ * cartesia clips or something - must be the same phrases for a fair test." So one press
+ * on a language renders EVERY voice that row lists which this box can speak — Cartesia
+ * on Cartesia, Azure on Azure — all on the SAME line, which is what makes it a fair
+ * test. `renderPlan` below is the single place that decides who can be rendered and how,
+ * and the voices it refuses are named on screen with their reason, never dropped.
+ *
  * NOTHING HERE WRITES course_audio.
  */
 
@@ -256,8 +264,53 @@ async function freeTakes (text, voiceIds) {
 
 // ── C. THE READ, AND THE PREPARE ───────────────────────────────────────────────────
 
-/** Can this lab render a fresh sample of this voice? Cartesia only, by design. */
-function isRenderable (voiceId) { return /^cartesia_/.test(String(voiceId)) }
+/**
+ * HOW THIS VOICE WOULD BE RENDERED, or why it cannot be — one function, so the
+ * read and the render can never disagree about who is previewable.
+ *
+ * Tom, 2026-08-31, looking at the live Chinese row: "I want to be able to
+ * preview the cartesia voices, so I want to be able to generate cartesia clips
+ * or something — must be the same phrases for a fair test." The zho row had
+ * seventeen voices and four play buttons, so a cast could be made on a name.
+ *
+ * The old rule here was CARTESIA ONLY, and its reason was sound: pushing an
+ * Azure voice id through a Cartesia config renders a stranger and calls it an
+ * audition. That reason forbids the WRONG provider, not Azure — and the lab has
+ * rendered Azure since it was built (runner.providerConfig). So an Azure voice
+ * is now previewed ON AZURE, which is also the provider that will actually speak
+ * it in a course. The estate's Azure ids carry their own locale, so this needs
+ * no steer table and works for every language Azure covers, Welsh included.
+ *
+ * Still genuinely unrenderable, and still said in place rather than hidden:
+ *   human_*        a person's recording. Nothing synthesises it, and nothing here
+ *                  goes near a human-recorded course.
+ *   elevenlabs_*   explicit-cast-only and expensive (tts-provider-policy.cjs);
+ *                  the lab has no ElevenLabs path and must not grow one quietly.
+ *   cartesia_*     in a language params.cjs cannot steer — Cartesia's API throws
+ *   in a language  without a locale, so there is nothing honest to send.
+ *
+ * @returns {{provider: string, voiceId: string}|{why: string}}
+ */
+const AZURE_VOICE_ID = /^(?:azure_)?([a-z]{2,3}(?:-[A-Za-z]{2,8})+-[A-Za-z]+Neural)$/
+
+function renderPlan (voiceId, language) {
+  const id = String(voiceId || '')
+  if (/^cartesia_/.test(id)) {
+    const lang = params.findLanguage(baseLanguageOfCastKey(language) || language)
+    if (!lang) return { why: `the lab has no Cartesia steer for ${language}` }
+    return { provider: 'cartesia', voiceId: id.replace(/^cartesia_/, ''), language: lang.code }
+  }
+  const azure = AZURE_VOICE_ID.exec(id)
+  // An Azure voice name IS its locale plus a name, so it steers itself. The
+  // language argument is carried for the ledger, not for the request.
+  if (azure) return { provider: 'azure', voiceId: azure[1], language }
+  if (/^human_/.test(id)) return { why: 'a human recording — there is nothing to synthesise' }
+  if (/^elevenlabs_/.test(id)) return { why: 'ElevenLabs is explicit-cast-only; the lab has no path to it' }
+  return { why: 'no provider on this box can speak this voice id' }
+}
+
+/** Can this lab render a fresh sample of this voice, on whichever provider owns it? */
+function isRenderable (voiceId, language) { return Boolean(renderPlan(voiceId, language).provider) }
 
 /**
  * For one language: the line, and for each voice asked about, a playable sample if one
@@ -273,6 +326,7 @@ async function read ({ language, voiceIds = [], line = null }) {
   const samples = {}
   const missing = []
   const unrenderable = []
+  const unrenderableWhy = {}
   for (const v of voiceIds) {
     const cached = idx[cacheKey(v, language, picked.text)]
     if (cached && store.readClip(cached.clip)) {
@@ -286,14 +340,13 @@ async function read ({ language, voiceIds = [], line = null }) {
     }
     const f = free.get(v)
     if (f) { samples[v] = f; continue }
-    // THIS LAB RENDERS CARTESIA AND NOTHING ELSE. The candidate list is wider
-    // than that on purpose — an Azure voice or a human recordist can hold a
-    // slot — but pushing an Azure voice id through a Cartesia config would
-    // render a stranger and call it an audition. So a voice with no free take
-    // and no Cartesia id is reported as unrenderable rather than quietly
-    // dropped or quietly rendered: it can still be cast, just not previewed
-    // here until the estate has a clip of it.
-    ;(isRenderable(v) ? missing : unrenderable).push(v)
+    // A voice with no clip is either something this box can render — and then it
+    // belongs in `missing`, where one press will render it — or something it
+    // genuinely cannot, and then it is named WITH ITS REASON rather than quietly
+    // dropped or quietly rendered by the wrong provider. See renderPlan.
+    const plan = renderPlan(v, language)
+    if (plan.provider) missing.push(v)
+    else { unrenderable.push(v); unrenderableWhy[v] = plan.why }
   }
   return {
     language,
@@ -301,7 +354,11 @@ async function read ({ language, voiceIds = [], line = null }) {
     samples,
     missing,
     unrenderable,
-    // What pressing "prepare" would cost, before anyone presses it.
+    unrenderableWhy,
+    // Which provider each missing voice would go to, so the screen can say what a
+    // press will do before it is pressed rather than after.
+    plan: Object.fromEntries(missing.map((v) => [v, renderPlan(v, language).provider])),
+    // What pressing "generate" would cost, before anyone presses it.
     chars: missing.length * picked.text.length,
   }
 }
@@ -316,29 +373,33 @@ async function read ({ language, voiceIds = [], line = null }) {
  * @param {number} [maxVoices] a hard bound on one press, so a language with 400
  *                             candidates cannot become a 400-clip render by accident.
  */
-async function prepare ({ language, voiceIds = [], maxVoices = 12, renderOne }) {
+async function prepare ({ language, voiceIds = [], maxVoices = 80, renderOne, force = false, onClip = null }) {
   const state = await read({ language, voiceIds })
   if (!state.line) throw Object.assign(new Error(`no course line found for ${language}`), { status: 404 })
 
-  const todo = state.missing.filter(isRenderable).slice(0, Math.max(1, maxVoices))
-  if (!todo.length) return { ...state, rendered: [], chars: 0 }
+  // FORCE is the deliberate second action (Tom, 2026-08-31: "make re-generating a
+  // deliberate second action"). It re-renders every voice this box CAN render,
+  // cached or not — a normal press renders only what is missing, which is why a
+  // second visit costs nothing at all.
+  const field = force
+    ? voiceIds.filter((v) => renderPlan(v, language).provider)
+    : state.missing
+  const todo = field.slice(0, Math.max(1, maxVoices))
+  if (!todo.length) return { ...state, rendered: [], chars: 0, failed: [] }
 
-  // The STEER is a property of the base language: Cartesia is told to speak
-  // German, and which German is a property of the voice, not of the request.
-  const lang = params.findLanguage(baseLanguageOfCastKey(language) || language)
-  if (!lang) {
-    throw Object.assign(
-      new Error(`The lab cannot steer "${language}" — samples are limited to the languages params.cjs knows how to steer; casting works regardless.`),
-      { status: 400 },
-    )
-  }
-
-  const configs = todo.map((v, i) => ({
-    ...lab.normaliseConfig({ provider: 'cartesia', voiceId: String(v).replace(/^cartesia_/, ''), language: lang.code }),
-    key: `S${i}`,
-  }))
+  // ONE CONFIG PER VOICE, ON THAT VOICE'S OWN PROVIDER. An Azure voice rendered
+  // through a Cartesia config would be a stranger's audition, so the plan comes
+  // from renderPlan and nowhere else.
+  const configs = todo.map((v, i) => {
+    const plan = renderPlan(v, language)
+    return {
+      ...lab.normaliseConfig({ provider: plan.provider, voiceId: plan.voiceId, language: plan.language }),
+      key: `S${i}`,
+    }
+  })
   const idx = readIndex()
   const rendered = []
+  const failed = []
   let chars = 0
   for (let i = 0; i < todo.length; i++) {
     const voiceId = todo[i]
@@ -352,25 +413,40 @@ async function prepare ({ language, voiceIds = [], maxVoices = 12, renderOne }) 
     })
     if (refusal) {
       if (!rendered.length) throw Object.assign(new Error(refusal.error), { status: refusal.status })
+      onClip?.({ voiceId, stopped: refusal.error, done: i, total: todo.length })
       break
     }
-    const { mastered, durationMs } = await renderOne({ text: state.line.text, cfg: configs[i] })
+    // ONE VOICE'S FAILURE IS NOT THE ROW'S FAILURE. A withdrawn Cartesia id or a
+    // voice Azure will not speak used to abort the whole press and lose the clips
+    // after it; now it is reported in place and the rest of the row still renders.
+    let mastered, durationMs
+    try {
+      ;({ mastered, durationMs } = await renderOne({ text: state.line.text, cfg: configs[i] }))
+    } catch (e) {
+      failed.push({ voiceId, error: String(e.message || e).split('\n')[0] })
+      onClip?.({ voiceId, error: String(e.message || e).split('\n')[0], done: i + 1, total: todo.length })
+      continue
+    }
     const clip = store.newId()
     store.writeClip(clip, mastered)
     store.appendLedger({
-      sample: clip, chars: state.line.text.length, provider: 'cartesia',
-      voiceId: configs[i].voiceId, language: lang.code, course: state.line.course,
+      sample: clip, chars: state.line.text.length, provider: configs[i].provider,
+      voiceId: configs[i].voiceId, language, course: state.line.course,
     })
     chars += state.line.text.length
     idx[cacheKey(voiceId, language, state.line.text)] = {
       clip, durationMs, voiceId, language, course: state.line.course, at: new Date().toISOString(),
     }
     writeIndex(idx)   // after each clip: a crash must not lose what it already paid for
-    rendered.push({ voiceId, url: `/api/voicelab/clip/${clip}.mp3`, durationMs })
+    const one = { voiceId, url: `/api/voicelab/clip/${clip}.mp3`, durationMs }
+    rendered.push(one)
+    // The clip is announced the moment it exists, so the screen fills as the row
+    // renders rather than staying empty for the length of the whole press.
+    onClip?.({ ...one, done: i + 1, total: todo.length })
   }
 
   const after = await read({ language, voiceIds, line: state.line })
-  return { ...after, rendered, chars }
+  return { ...after, rendered, failed, chars }
 }
 
-module.exports = { pickLine, chooseFrom, preferCourses, freeTakes, isRenderable, read, prepare, cacheKey, MIN_CHARS, MAX_CHARS, HARD_CAP, INDEX }
+module.exports = { pickLine, chooseFrom, preferCourses, freeTakes, isRenderable, renderPlan, read, prepare, cacheKey, MIN_CHARS, MAX_CHARS, HARD_CAP, INDEX }

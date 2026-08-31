@@ -177,7 +177,15 @@ function mount (app, deps) {
    * and the spend report both count a sample exactly as they count an audition.
    * Nothing here writes course_audio.
    */
-  const SAMPLE_PREPARE_MAX = 12
+  /**
+   * ONE PRESS COVERS THE WHOLE ROW (Tom, 2026-08-31). The cap was 12, which on
+   * a 21-voice Chinese row or an 80-voice French one left most of the list as
+   * dots after a press — and a press that half-works is why the row looked
+   * unpreviewable in the first place. 80 is the registry's own candidate cap,
+   * so the ceiling here is now the row, not an arbitrary slice of it. The daily
+   * character ceiling still governs underneath, per clip.
+   */
+  const SAMPLE_PREPARE_MAX = 80
   app.post('/api/voicelab/languages/:language/samples/prepare', async (req, res) => {
     const user = await requireAdmin(req, res)
     if (!user) return
@@ -188,11 +196,56 @@ function mount (app, deps) {
       if (!voiceIds.length) throw Object.assign(new Error('voiceIds is required'), { status: 400 })
       const max = Math.min(Number((req.body || {}).max) || SAMPLE_PREPARE_MAX, SAMPLE_PREPARE_MAX)
       const out = await samples.prepare({
-        language, voiceIds, maxVoices: max, renderOne: (a) => runner().renderOne(a),
+        language, voiceIds, maxVoices: max, force: Boolean((req.body || {}).force),
+        renderOne: (a) => runner().renderOne(a),
       })
       logger.log?.(`[voicelab] prepared ${out.rendered.length} sample(s) for ${language} (${out.chars} chars) for ${who(user)}`)
       res.json({ ok: true, maxPerPress: SAMPLE_PREPARE_MAX, ...out })
     } catch (err) { fail(res, err, `prepare-samples ${req.params.language}`) }
+  })
+
+  /**
+   * The same press, reported CLIP BY CLIP as it happens.
+   *
+   * A twenty-voice row takes a couple of minutes to render, and a button that
+   * goes quiet for two minutes is a button nobody trusts. So this writes one
+   * NDJSON line per clip the moment that clip exists — the screen plays voice
+   * one while voice fourteen is still rendering — and a final line carrying the
+   * whole refreshed state, which is exactly what the plain endpoint returns.
+   *
+   * NDJSON rather than SSE because every lab endpoint is behind a bearer token
+   * and EventSource cannot carry a header; a streamed fetch can.
+   *
+   * Once the first byte is written the status code is spent, so an error after
+   * that point is a `{ "error": … }` LINE, never a 500 the client cannot see.
+   */
+  app.post('/api/voicelab/languages/:language/samples/prepare/stream', async (req, res) => {
+    const user = await requireAdmin(req, res)
+    if (!user) return
+    const language = String(req.params.language || '').trim()
+    const write = (o) => { res.write(`${JSON.stringify(o)}\n`) }
+    try {
+      if (!language) throw Object.assign(new Error('language is required'), { status: 400 })
+      const voiceIds = ((req.body || {}).voiceIds || []).map((s) => String(s).trim()).filter(Boolean)
+      if (!voiceIds.length) throw Object.assign(new Error('voiceIds is required'), { status: 400 })
+      const max = Math.min(Number((req.body || {}).max) || SAMPLE_PREPARE_MAX, SAMPLE_PREPARE_MAX)
+      res.set('Content-Type', 'application/x-ndjson; charset=utf-8')
+      res.set('Cache-Control', 'no-cache, no-transform')
+      res.set('X-Accel-Buffering', 'no')
+      res.flushHeaders?.()
+      const out = await samples.prepare({
+        language, voiceIds, maxVoices: max, force: Boolean((req.body || {}).force),
+        renderOne: (a) => runner().renderOne(a),
+        onClip: (ev) => write({ clip: ev }),
+      })
+      logger.log?.(`[voicelab] prepared ${out.rendered.length} sample(s) for ${language} (${out.chars} chars) for ${who(user)}`)
+      write({ done: true, ok: true, maxPerPress: SAMPLE_PREPARE_MAX, ...out })
+      res.end()
+    } catch (err) {
+      logger.error?.(`[voicelab] prepare-samples-stream ${language}: ${err.message}`)
+      if (res.headersSent) { write({ done: true, error: err.message }); res.end() }
+      else fail(res, err, `prepare-samples-stream ${language}`)
+    }
   })
 
   /**

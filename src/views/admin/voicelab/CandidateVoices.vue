@@ -28,6 +28,13 @@ defineProps({
   paceTitle: { type: Function, default: () => '' },
   paceSuffix: { type: Function, default: () => '' },
   emptyText: { type: String, default: 'no voice in the estate declares this language' },
+  /**
+   * voiceId -> why this box cannot render it. A dot that means "not rendered yet"
+   * and a dot that means "nothing here can ever render this" are different facts,
+   * and the second one must say so where it sits rather than only in a summary
+   * line under the block.
+   */
+  unrenderableWhy: { type: Object, default: () => ({}) },
 })
 
 defineEmits(['play', 'cast'])
@@ -50,7 +57,14 @@ defineEmits(['play', 'cast'])
           : 'Rendered for this page and cached; hearing it again costs nothing'"
         @click="$emit('play', c.voiceId)"
       >{{ playing === c.voiceId ? '■' : '▶' }}</button>
-      <span v-else class="vl-cand-nosample" title="No sample yet. Prepare samples for this language to hear it.">·</span>
+      <span
+        v-else
+        class="vl-cand-nosample"
+        :class="{ 'is-never': Boolean(unrenderableWhy[c.voiceId]) }"
+        :title="unrenderableWhy[c.voiceId]
+          ? `Cannot be previewed here — ${unrenderableWhy[c.voiceId]}. It can still be cast.`
+          : 'No clip yet. Generate preview clips for this language to hear it.'"
+      >{{ unrenderableWhy[c.voiceId] ? '—' : '·' }}</span>
 
       <span class="vl-cand-name" :title="paceTitle(c)">{{ c.name }}</span>
       <span class="vl-cand-kind ui-pill ui-hue-quiet">{{ c.kind }}</span>
@@ -83,6 +97,8 @@ defineEmits(['play', 'cast'])
 .vl-cand-play { width: 1.9rem; height: 1.9rem; flex: none; font-size: .8125rem; }
 .vl-cand-play.is-playing { background: var(--accent, #6366f1); border-color: var(--accent, #6366f1); color: #fff; }
 .vl-cand-nosample { width: 1.9rem; flex: none; text-align: center; opacity: .35; }
+/* Quieter still: this one is not waiting for a press, it is never coming. */
+.vl-cand-nosample.is-never { opacity: .22; }
 .vl-cand-name { flex: 1 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .vl-cand-kind { flex: none; font-size: .6875rem; }
 .vl-cand-pace, .vl-cand-free { flex: none; font-size: .75rem; opacity: .7; }
