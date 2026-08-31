@@ -50,11 +50,9 @@ function load(opts = {}) {
     walkSets[w.walk_set] = w;
   }
 
-  const survivability = [
-    ...edgesFile.survivability.corpus,
-    ...edgesFile.survivability.method_pod,
-    ...(edgesFile.survivability.talk_bollocks || []),
-  ];
+  // Every provenance bucket, not a hard-coded three: a ratification that adds a bucket must not
+  // be able to add edges the reader silently drops. Order is the file's own key order.
+  const survivability = Object.values(edgesFile.survivability).flat();
 
   const graph = {
     nodes: nodesFile.nodes,

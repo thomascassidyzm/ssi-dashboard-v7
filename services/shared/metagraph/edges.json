@@ -12,10 +12,11 @@
   "policy": "Two edge kinds and only two. Chaining is a property of the walk, not of the graph: it is recorded as a pivot_capable annotation on a node position, never as a third edge kind (§7). Composition permits reflexive edges; delivery order is computed on the graph of distinct nodes with self-loops dropped before the sort.",
   "null_result": "All ten corpus survivability edges rest on a non-delivery, a chaining move or a relational move. Not one rests on anything failing. The corpus attests the branch and withholds the recovery.",
   "counts": {
-    "composition": 21,
+    "composition": 24,
     "survivability_corpus": 10,
     "survivability_method_pod": 5,
-    "survivability_talk_bollocks": 5
+    "survivability_talk_bollocks": 5,
+    "survivability_medium_negotiation": 2
   },
   "composition": [
     {
@@ -189,6 +190,30 @@
       "contained": "N301",
       "container": "N305",
       "attestation": "1:241-246 — the proxy pitch closes with the owner extending and the pitcher completing ('You get everything clicking together'), joint construction inside the pitch's audit position",
+      "mechanical": true
+    },
+    {
+      "id": "C1201",
+      "kind": "composition",
+      "contained": "N5",
+      "container": "N1201",
+      "attestation": "1.0 Welsh flow 2; 1.0 English flow 2 — the biography interlude of the diversion runs on Acquaintance mechanics at N1201 position 2",
+      "mechanical": true
+    },
+    {
+      "id": "C1202",
+      "kind": "composition",
+      "contained": "N7",
+      "container": "N1201",
+      "attestation": "1.0 Welsh flow 3; 2.0 Welsh flow 2 — the counter-proposal of a different medium is Arrangement mechanics at N1201 position 2",
+      "mechanical": true
+    },
+    {
+      "id": "C1203",
+      "kind": "composition",
+      "contained": "N9",
+      "container": "N1201",
+      "attestation": "1.0 English flow 3; 2.0 English flow 2 — the participant admission (a third party joins with everyone's knowledge) sits inside the opener as a Feasibility request",
       "mechanical": true
     }
   ],
@@ -535,6 +560,42 @@
         "recovery_attested": "once",
         "recovery_note": "Once, complete. A genuine memory failure with an attested recovery — possible because the thread is joint property at rung 0.",
         "answer_slot_class": "failure"
+      }
+    ],
+    "medium_negotiation": [
+      {
+        "id": "S1201",
+        "kind": "survivability",
+        "provenance": "medium-negotiation-canonical",
+        "b_attemptable_only_if": "Offering to hold the encounter in the weaker medium (N1201 position 1, offer realisation)",
+        "a_survivable": "The medium offer declined — the other party opts out of the offered medium",
+        "nodes": [
+          "N1201"
+        ],
+        "attested_response_positions": [
+          "1.0 Welsh flow 3 — 'Actually, I'd rather stick to English today if that's alright, love. I'm not feeling up to it.' → 'Of course, no problem at all. English it is. Let's get you sorted.' → 'Thank you, love. No offence meant - I'm just tired today.' → 'None taken at all.'",
+          "2.0 Welsh flow 2 — 'To be honest, doctor, with something medical I'd feel safer in English. I want to be sure I follow everything.' → 'That's completely sensible, and exactly the right instinct. English it is - clarity matters most here.' → 'No offence to your Welsh, now.' → 'None taken at all - you've done me a favour.'"
+        ],
+        "recovery_attested": "twice",
+        "recovery_note": "Complete both times, four moves: yield instantly (no relitigating, no second offer), ratify the choice as sensible, de-personalise the refusal, re-anchor rapport and pivot. The ACCOUNT is a slot with two attested types — capacity ('not feeling up to it'), scoped to today, an implicit licence to re-offer next time; and stakes ('with something medical'), scoped to a domain, an implicit licence to keep the medium outside that domain. The offence-disclaimer tail is cultural form (Wales's politics of declining Welsh in a Welsh institution); the de-personalising function is canonical and survives in Bologna as the account itself plus warm ratification.",
+        "answer_slot_class": "non-delivery"
+      },
+      {
+        "id": "S1202",
+        "kind": "survivability",
+        "provenance": "medium-negotiation-canonical",
+        "b_attemptable_only_if": "Declaring a limitation on the medium (N1201 position 1, either realisation)",
+        "a_survivable": "The offer diverted into biography — the declaration is met with neither grant nor decline but with a personal question about the declarer's own story; acceptance of the medium happens silently, by conduct",
+        "nodes": [
+          "N1201"
+        ],
+        "attested_response_positions": [
+          "1.0 Welsh flow 2 — 'Where are you learning, then? Are you doing the classes?' → biography answered → 'That's lovely to hear. Right, shall we make a start? Just stop me if I lose you.'",
+          "1.0 English flow 2 — 'Where are you from, if you don't mind me asking?' → biography answered → 'The weather takes some getting used to! But the people are kind. Now then, let's have a look at you.'"
+        ],
+        "recovery_attested": "twice",
+        "recovery_note": "Complete both times, same recovery: answer the biography warmly, then SELF-INITIATE the pivot — the diversion never returns you to business; the learner must take themself back, and (first attestation) the repair licence gets issued on the way through. Attested once on each side of the offer/notice split, so the branch belongs to the declaration itself, not to the ask.",
+        "answer_slot_class": "chaining"
       }
     ]
   },

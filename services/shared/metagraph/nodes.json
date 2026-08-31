@@ -8,12 +8,13 @@
     "corpus": "canonical_pod_scenarios pod_slug='pod-0' (231 rows, 22 scenes)"
   },
   "counts": {
-    "nodes": 29,
+    "nodes": 30,
     "from_pod_0": 12,
     "from_method_pod": 10,
     "from_talk_bollocks": 6,
     "from_trades": 1,
-    "bound_pairs": 6
+    "bound_pairs": 6,
+    "from_medium_negotiation": 1
   },
   "nodes": [
     {
@@ -1033,6 +1034,70 @@
         ]
       },
       "example_surface": "\"I can't leave it connected — I'm disconnecting it now and tagging it. Nobody reconnects that until it's been re-tested.\" / \"It was fine yesterday! Put it back.\" / \"It wasn't fine yesterday — you just couldn't smell it. Ring Gas Safe if you want it checked; they'll stand by it.\""
+    },
+    {
+      "id": "N1201",
+      "name": "Medium contract",
+      "provenance": "medium-negotiation-canonical",
+      "gloss": "One party declares a limitation on the medium of the encounter itself and pre-negotiates the repair protocol BEFORE any business starts. The licence is issued in advance of the trouble it covers.",
+      "role_neutral": true,
+      "role_neutral_note": "In the health corpus the professional is the learner and the patient is the native; in the Bologna instantiation the learner is the customer. Nothing in the positions depends on who serves whom — either party may be the declarer.",
+      "positions": [
+        {
+          "index": 1,
+          "name": "declare own limitation on the medium",
+          "family": null,
+          "realisations": {
+            "offer": "a shared alternative medium exists: propose conducting the encounter in the weaker medium, name the fallback, ask — 'I'm learning X… if we get stuck I might ask you to speak Y, if that's okay'. Only the offer can be declined.",
+            "notice": "no alternative medium exists: the declaration and the repair licence fuse into one turn — 'X isn't my first language, so if anything isn't clear, just tell me'. Nothing to accept or decline."
+          }
+        },
+        {
+          "index": 2,
+          "name": "grant + reassure",
+          "family": "F14",
+          "branches": "declined (S1201), diverted into biography (S1202), participant admission (C1203)"
+        },
+        {
+          "index": 3,
+          "name": "issue the standing repair licence",
+          "family": null,
+          "note": "at full strength mutual ('and I'll do the same if I don't follow you') and pre-disarmed ('I won't be offended', 'it's never a silly question'); fuses into position 1 in the notice realisation"
+        },
+        {
+          "index": 4,
+          "name": "accept the licence",
+          "family": "F1"
+        },
+        {
+          "index": 5,
+          "name": "pivot to business",
+          "family": "F21",
+          "pivot_capable": true
+        }
+      ],
+      "attestations": {
+        "health": [
+          "1.0 Welsh flows 1–3",
+          "1.0 English flows 1–3",
+          "2.0 Welsh flows 1–2",
+          "2.0 English flows 1–2"
+        ]
+      },
+      "quote": "\"I'm learning Welsh at the moment, so I'll try to stay in Welsh as much as possible, but if we get stuck I might need to ask you to speak English, if that's okay.\" (1.0 Welsh flow 1) / \"English isn't my first language, so if you have any trouble understanding me, just let me know and I'll explain myself more clearly\" (1.0 English flow 1) — same shape, different admission; the second realisation never asks.",
+      "why_not_an_existing_node": "N6 Repair is the trouble handled when it arrives; N1201 is the licence granted before it arrives, and the two are different positions in time. N9 Feasibility request asks whether the world permits X; N1201 declares that the SPEAKER may fail. Nothing in the ratified 29 negotiates the medium of the encounter. (Inherited from N101, checked against the ratified store at f4198e22f: still true.)",
+      "trunk_or_branch": "trunk",
+      "core_siting": "CORE by Tom's ruling of 2026-08-31. Placement: a prologue — scene 0, after N1's open, before the first transaction ('Before we start -', 2.0 Welsh flow 1; §1.0 precedes even §1.1 Names). Prepending does not reorder CORE's existing scenes, so the audit's constraint holds; the set grows 18 → 19, which the ruling entails. Decline branch attaches at position 2 of scene 0 in the recovery-attachment mechanics. Every sector pod re-instantiates the contract in the pair's and sector's own terms as its opening (Tom's standing ruling for sector authoring); the every-optional-walk floor is untouched.",
+      "relation_to_prior": "Canonical re-cut of N101. Positions 2–5 survive in name; position 1 re-worded into two realisations (offer / notice) because N101's 'ask licence' presumed the offer variant and the corpus's own English flows never ask; role-neutrality made explicit; gloss kept verbatim.",
+      "stripped_as_pair_and_culture": [
+        "the language names (Welsh/English) — pair admission",
+        "the institutional fallback ('call someone who speaks Welsh more confidently') — sector/culture: language provision as infrastructure",
+        "the applause economy ('Chwarae teg i chi', 'Fair play') — Wales rewarding the offer as a civic act",
+        "the stakes-raiser ('it's really important that you understand everything') — health's duty-of-care register, sector-conditional; re-manufactured by any high-stakes span in any sector",
+        "the offence-disclaimer form of the face-repair tail ('no offence meant' / 'none taken at all') — cultural form around the canonical de-personalising function",
+        "the native's stake in the learner's project (the grandson learning in school) — the shared-cause warmth economy of a minority language"
+      ],
+      "ratified": "2026-08-31 — docs/pods/medium-negotiation-ratification-2026-08-31.md. Canonical re-cut of the proposed N101; N101 itself stays proposed."
     }
   ],
   "bound_pairs": [

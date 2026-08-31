@@ -34,19 +34,28 @@ function ok(label, cond, detail) {
 const g = mg.load({ fresh: true });
 
 console.log(`\nThe counts the derivation document asserts (${DOC}),`);
-console.log('extended by the 2026-08-31 ratification (docs/pods/core-walks-ratification-2026-08-31.md)');
-check('nodes', g.nodes.length, 29);
+console.log('extended by the 2026-08-31 ratifications (docs/pods/core-walks-ratification-2026-08-31.md,\n  docs/pods/medium-negotiation-ratification-2026-08-31.md)');
+check('nodes', g.nodes.length, 30);
 check('nodes from pod-0', g.nodes.filter(n => n.provenance === 'pod-0').length, 12);
 check('nodes from the Method Pod', g.nodes.filter(n => n.provenance === 'method-pod').length, 10);
 check('nodes from Talk Bollocks', g.nodes.filter(n => n.provenance === 'talk-bollocks').length, 6);
 check('nodes from trades (N501, Tom\'s ruling)', g.nodes.filter(n => n.provenance === 'trades').map(n => n.id), ['N501']);
+check('nodes from the medium negotiation (N1201, Tom\'s CORE ruling)', g.nodes.filter(n => n.provenance === 'medium-negotiation-canonical').map(n => n.id), ['N1201']);
 check('moves', g.moves.length, 27);
 check('moves from care work (F601, Tom\'s ruling)', g.moves.filter(m => m.provenance === 'care-work').map(m => m.id), ['F601']);
-check('composition edges', g.composition.length, 21);
+check('composition edges', g.composition.length, 24);
 check('survivability edges, corpus-attested', g.survivabilityByProvenance.corpus.length, 10);
 check('survivability edges, Method Pod only', g.survivabilityByProvenance.method_pod.length, 5);
 check('survivability edges, Talk Bollocks (the ratified recoveries)', (g.survivabilityByProvenance.talk_bollocks || []).length, 5);
+check('survivability edges, the medium negotiation', (g.survivabilityByProvenance.medium_negotiation || []).length, 2);
+check('every survivability bucket is loaded, none silently dropped', g.survivability.length,
+      Object.values(g.survivabilityByProvenance).reduce((n, b) => n + b.length, 0));
 check('outcome shapes', g.outcomeShapes.length, 9);
+// The CORE set: 12 pod-0 nodes + 6 bound pairs = the audit's 18, plus N1201, which Tom ruled CORE
+// and sited as a prologue. A prologue PREPENDS, so nothing is reordered and the set grows 18 -> 19.
+check('CORE shapes (12 pod-0 nodes + 6 bound pairs + the medium contract)',
+      g.nodes.filter(n => n.provenance === 'pod-0').length + g.boundPairs.length
+        + g.nodes.filter(n => n.core_siting).length, 19);
 check('outcome shapes minted from nothing', g.outcomeShapes.filter(o => o.attestation_class === 'minted').length, 4);
 check('outcome shapes attested in the Method Pod only', g.outcomeShapes.filter(o => o.attestation_class === 'method-pod-only').length, 3);
 check('outcome shapes attested thinly in pod-0', g.outcomeShapes.filter(o => o.attestation_class === 'thin').length, 2);
