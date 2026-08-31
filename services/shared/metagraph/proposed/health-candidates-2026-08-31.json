@@ -1,0 +1,83 @@
+{
+  "concept": "proposed-additions",
+  "version": 1,
+  "status": "PROPOSAL — not loaded by index.cjs, not read by the Script Lab, nothing executes it",
+  "provenance": "health-calibration-read",
+  "source": {
+    "document": "docs/sector-pods/health-calibration-read-2026-08-31.md",
+    "corpus": "docs/sector-pods/source/health-sector-conversations-v3.md — 23 contexts, 73 flows, 438 turns, 219 exchanges",
+    "store": "ratified store as of f4198e22f (18 CORE shapes, 9 outcomes, 15 survivability edges, every-optional-walk floor)",
+    "derived": "2026-08-31",
+    "relation_to_prior": "Re-rules services/shared/metagraph/proposed/health-additions-2026-08-30.json against the ratified store and adds one new survivability edge. The 2026-08-30 file is NOT superseded — it remains the definition source for the 1xx ids."
+  },
+  "id_range": {
+    "rule": "10xx was taken by core-recovery-attachments-2026-08-31.json; this file takes 11xx and uses only 1101. Next worker: start at 1102 or take 12xx.",
+    "used": ["S1101"]
+  },
+
+  "rulings_on_health_additions_2026_08_30": {
+    "context": "The ratification pass (docs/pods/core-walks-ratification-2026-08-31.md) did not ratify the sector 1xx proposals; they stay proposed. This read re-checked each against everything newly ratified (N301–N306, N902/N903/N907/N908/N909, N501, F301–F306, F601, C301–C302, S301–S305).",
+    "supported": ["N101", "N102", "N103", "N104", "N105", "N106", "N107", "N108", "N109", "N110", "P101", "F101", "F102", "F103", "F104", "C101", "C102", "C103", "C104", "C105", "C106", "C107", "C108", "C109", "C110", "S101", "S102", "S103", "S104", "S105", "S106", "S107", "O101"],
+    "withdrawn": [],
+    "superseded": [],
+    "notes": {
+      "N101": "Checked against ratified F304 (comment on the medium): F304 is parenthetical play about the machinery; N101 is a five-position pre-negotiated repair contract. Distinct. Support stands.",
+      "N110": "Checked against ratified N17 (backward meta-talk) and F306 (anticipating the partner's point). Neither narrates the encounter's own future structure. Support stands.",
+      "N103": "Keep the thin flag (3 attestations).",
+      "F104": "Keep the thin flag (2 attestations, one an analogue); value raised by being O4's teachability precondition.",
+      "P101": "Independently confirmed by this read's N11-PARTIAL verdict: positions 1–2 stand alone six times, positions 3–6 never occur."
+    }
+  },
+
+  "survivability": [
+    {
+      "id": "S1101",
+      "kind": "survivability",
+      "provenance": "health-calibration-read",
+      "b_attemptable_only_if": "Offering to hold the encounter in your target language (N101)",
+      "a_survivable": "The medium offer being declined — the native opts out of your L2",
+      "nodes": ["N101"],
+      "attested_response_positions": [
+        "1.0 Welsh flow 3 — 'Actually, I'd rather stick to English today if that's alright, love. I'm not feeling up to it.' → 'Of course, no problem at all. English it is. Let's get you sorted.' → 'Thank you, love. No offence meant - I'm just tired today.' → 'None taken at all.'",
+        "2.0 Welsh flow 2 — 'To be honest, doctor, with something medical I'd feel safer in English. I want to be sure I follow everything.' → 'That's completely sensible, and exactly the right instinct. English it is - clarity matters most here.' → 'No offence to your Welsh, now.' → 'None taken at all - you've done me a favour.'"
+      ],
+      "recovery_attested": "twice",
+      "recovery_note": "Twice, complete both times: yield instantly, ratify the choice as sensible, de-personalise the refusal, re-anchor rapport — with a mutual face-repair tail ('no offence meant' / 'none taken') in both cycles.",
+      "answer_slot_class": "non-delivery",
+      "why_not_already_recorded": "The 2026-08-30 mapping assigned these exchanges N7 + P101 (composition C109), which captures the turns but not the edge: no store or proposed survivability edge covers the learner's own language project being declined, and the S101–S107 set has no edge on N101 at all. For a language course this is the emotional core of the corpus: the learner's offer is refused, it costs nothing, and the refuser thanks them.",
+      "recommendation": "To ratification alongside the 1xx set; should travel with N101 into every sector pod that carries the linguistic-situation opener."
+    }
+  ],
+
+  "recorded_not_recommended": [
+    {
+      "candidate": "The distraction contract",
+      "attested": "1.6 flow 3 only — 'I'm terrible with needles. Can I look away? Talk to me about something else.' → grant + enact the distraction → act completes under cover → 'Is that it? You distracted me a treat.'",
+      "verdict": "HELD AT THE BAR — do not mint yet",
+      "why": "The two-channel structure (talk deployed as anaesthetic, its purpose not its content) is genuinely unnamed, but there is one attestation and the turns compose as N102 position 4 (impediment branch) with N5 content embedded. The mint bar (two consecutive positions no store node has AND not gettable by composition) fails on the second clause.",
+      "trigger": "A second sector attestation (care-work or trades — the dentist's chat, the barber's patter) re-opens the mint decision with this on file."
+    }
+  ],
+
+  "compose_notes": [
+    { "candidate": "Pre-emptive correction ('instead of, not as well as', 1.5 f2)", "verdict": "F6 inside N4; composes." },
+    { "candidate": "Graded-honesty contract ('If I were worried, I would tell you straight', 2.5 f3)", "verdict": "N109 walked on the channel itself; composes." },
+    { "candidate": "Comparative progress marking ('further than yesterday', 1.8 f3)", "verdict": "N104 with a self-referenced norm; walk colour." },
+    { "candidate": "Mnemonic compression read-back ('Text good, call thorough, tablets regardless', 2.6 f3)", "verdict": "P3 with a re-encoded surface; not a shape — an authorial signature the sector briefs should name as STYLE." },
+    { "candidate": "Third party admitted to the frame (1.0 E-f3)", "verdict": "N9 inside N101 (proposed C110); composes." },
+    { "candidate": "Preferred-name solicitation (1.1 f1)", "verdict": "N5 with P1; composes." },
+    { "candidate": "Humour as consent ('Do your worst')", "verdict": "Register colour on the grant position; never a position." }
+  ],
+
+  "floor_measurement": {
+    "context": "First body ever measured against the every-optional-walk floor (N13, N14, O7, O8, one story-with-challenge — bound by Tom 2026-08-31).",
+    "verdict": "FAIL — 4 of 5",
+    "items": {
+      "N13": "PASS marginal — one attestation, 2.3 flow 3, patient-voiced ('I can't remember them all. It's all on my repeat' → licenses 'do you have the repeat list?'). Revises the 2026-08-30 never-traversed call.",
+      "N14": "PASS — three attestations, 1.5 f2 / 1.6 f2 / 2.6 f2, patient audits professional; the audit received explicitly as a gift ('you're the best safety check we've got'). Revises the 2026-08-30 never-traversed call.",
+      "O7": "PASS strong — 8 attestations.",
+      "O8": "PASS thin — 3 attestations.",
+      "story_with_challenge": "FAIL — no multi-turn story is ever challenged in 73 flows; the register's signature move (F101 ratify-the-telling) is the structural antipode of scepticism toward an account. Reproduces the compulsory-set audit's M3 finding (cannot attach without engineering a story) in an independent corpus."
+    }
+  }
+}
