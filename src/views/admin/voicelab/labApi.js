@@ -106,6 +106,21 @@ export const api = {
       { method: 'DELETE' }
     ),
 
+  // SAMPLES — hearing a candidate voice say a real course line.
+  //
+  // `samples` SPENDS NOTHING: it returns what is already cached here or already
+  // owned by the estate, plus the plain list of voices that have neither. It is
+  // what the page calls when a language is opened, which is exactly why it must
+  // not render — "open it and it plays" is the whole point.
+  //
+  // `prepareSamples` is the one call on this path that spends: one Cartesia clip
+  // per voice, capped at 12 per press by the backend and refused on top of that
+  // by the lab's daily character ceiling. Nothing here writes course_audio.
+  samples: (language, voiceIds = []) =>
+    call(`/api/voicelab/languages/${encodeURIComponent(language)}/samples?voices=${encodeURIComponent(voiceIds.join(','))}`),
+  prepareSamples: (language, voiceIds) =>
+    call(`/api/voicelab/languages/${encodeURIComponent(language)}/samples/prepare`, { method: 'POST', body: { voiceIds } }),
+
   // PER-VOICE NATURAL PACE. `pace` is the reading surface — measured from clips
   // that already exist, so it spends nothing. `nudgePace` writes ONE column:
   // the human's correction. The measurement itself is deliberately not

@@ -67,6 +67,7 @@
  */
 import { ref, computed, onMounted } from 'vue'
 import { api, clipUrl } from './labApi'
+import CandidateVoices from './CandidateVoices.vue'
 // The estate's ONE place that turns a code into words. Importing it also kicks
 // off the CSV name fetch, so nothing else here has to.
 import { languageName } from '@/utils/languageNames'
@@ -79,6 +80,88 @@ const provFilter = ref('all')
 const q = ref('')
 const busy = ref('')
 const expanded = ref(null)
+
+// ── SAMPLES: hearing a voice before casting it ─────────────────────────────
+//
+// Tom, 2026-08-31: assign new Cartesia voices to existing languages "without
+// any fuss or bother". The bother was that the only way to judge a candidate
+// was its name. So opening a language fetches — never renders — the sample
+// state for every voice on offer: a cached clip, or a take the estate already
+// owns for that exact line, or the plain fact that it has none yet.
+//
+// OPENING A LANGUAGE MUST NOT SPEND OR SPIN. The read is three SELECTs and a
+// disk read; rendering is a separate, explicitly-pressed button that says what
+// it will cost before it is pressed.
+const samplesByLang = ref({})     // language code -> { line, samples, missing, chars }
+const samplesBusy = ref('')
+const playing = ref('')           // the voiceId currently sounding
+let audio = null
+
+/** Every voice on offer for a language, phrase and guide alike, de-duplicated. */
+function allCandidateIds (lang) {
+  const ids = [
+    ...(lang.candidates || []).map((c) => c.voiceId),
+    ...((lang.guide && lang.guide.candidates) || []).map((c) => c.voiceId),
+  ]
+  return [...new Set(ids)]
+}
+
+/** SPENDS NOTHING. Called when a language is opened, and again after a prepare. */
+async function loadSamples (lang) {
+  const voices = allCandidateIds(lang)
+  if (!voices.length) { samplesByLang.value = { ...samplesByLang.value, [lang.code]: null }; return }
+  samplesBusy.value = lang.code
+  try {
+    const out = await api.samples(lang.code, voices)
+    samplesByLang.value = { ...samplesByLang.value, [lang.code]: out }
+  } catch (e) {
+    // A missing sample is not a broken page: the row still casts. Say what went
+    // wrong in the block itself rather than raising the page-level error.
+    samplesByLang.value = { ...samplesByLang.value, [lang.code]: { error: e.message, samples: {} } }
+  }
+  samplesBusy.value = ''
+}
+
+/** SPENDS MONEY, and the button says so and says how much before it is pressed. */
+async function prepareSamples (lang) {
+  samplesBusy.value = lang.code
+  try {
+    const state = samplesByLang.value[lang.code]
+    await api.prepareSamples(lang.code, (state && state.missing) || allCandidateIds(lang))
+    await loadSamples(lang)
+  } catch (e) { error.value = e.message }
+  samplesBusy.value = ''
+}
+
+function samplesFor (lang) { return (samplesByLang.value[lang.code] || {}).samples || {} }
+function lineFor (lang) { return (samplesByLang.value[lang.code] || {}).line || null }
+
+/**
+ * One <audio> for the whole page: tapping a second voice stops the first, because
+ * two voices talking over each other is not a comparison. A lab clip is behind the
+ * dashboard session so it needs the token; an estate clip is a public S3 URL and
+ * must not have one bolted on.
+ */
+async function play (lang, voiceId) {
+  const sample = samplesFor(lang)[voiceId]
+  if (!sample) return
+  if (audio) { audio.pause(); audio = null }
+  if (playing.value === voiceId) { playing.value = ''; return }
+  const src = /^https?:/.test(sample.url) ? sample.url : await clipUrl(sample.url)
+  audio = new Audio(src)
+  audio.onended = () => { playing.value = '' }
+  audio.onerror = () => { playing.value = ''; error.value = `Could not play the sample for ${voiceId}.` }
+  playing.value = voiceId
+  audio.play().catch((e) => { playing.value = ''; error.value = e.message })
+}
+
+/** Opening a language loads its samples once; closing stops whatever is sounding. */
+function toggleLanguage (lang) {
+  if (audio) { audio.pause(); audio = null; playing.value = '' }
+  if (expanded.value === lang.code) { expanded.value = null; return }
+  expanded.value = lang.code
+  if (!samplesByLang.value[lang.code]) loadSamples(lang)
+}
 
 // ── Cloning ────────────────────────────────────────────────────────────────
 // One sample in, one voice id out. Cartesia's POST /voices/clone IS the INSTANT
@@ -702,7 +785,7 @@ function candidatesFor (lang, slot) {
                 >no fallback</span>
               </td>
               <td>
-                <button class="ui-sort-btn" @click="expanded = expanded === lang.code ? null : lang.code">
+                <button class="ui-sort-btn" @click="toggleLanguage(lang)">
                   {{ expanded === lang.code ? 'Hide' : 'Voices' }}
                 </button>
               </td>
@@ -733,7 +816,7 @@ function candidatesFor (lang, slot) {
                     class="ui-pill"
                     :class="providerHue(p.provider)"
                   >{{ providerLabel(p.provider) }} {{ p.courses }}</span>
-                  <button class="ui-sort-btn vl-detail-close" @click="expanded = null">Hide</button>
+                  <button class="ui-sort-btn vl-detail-close" @click="toggleLanguage(lang)">Hide</button>
                 </div>
 
                 <p v-if="lang.knownOnly" class="vl-note">
@@ -750,6 +833,50 @@ function candidatesFor (lang, slot) {
                   Cartesia does not publish <strong>{{ langName(lang.code) }}</strong>, so a new render falls to
                   Azure. That is covered, just not by the default provider.
                 </p>
+
+                <!-- ── WHAT YOU ARE LISTENING TO, AND WHOSE IT IS ───────
+                     Tom's correction, 2026-08-31: VOICE is per language, TEXT
+                     is per course. So the line is shown WITH the course it came
+                     from, never as "the" line for the language, and the sentence
+                     below says out loud that casting decides who speaks and not
+                     what is said. -->
+                <div class="vl-sample-line">
+                  <p class="vl-cast-meaning">
+                    Casting decides <strong>who speaks</strong> — every course that teaches
+                    {{ langName(lang.code) }} will generate in this voice, with nothing else to do
+                    anywhere. <strong>What is said</strong> stays each course's own.
+                  </p>
+
+                  <template v-if="lineFor(lang)">
+                    <p class="vl-line-text" :lang="lang.code">{{ lineFor(lang).text }}</p>
+                    <p class="vl-line-meta">
+                      <span v-if="lineFor(lang).knownText" class="vl-line-known">{{ lineFor(lang).knownText }}</span>
+                      <span class="vl-muted">from <code>{{ lineFor(lang).course || 'the estate' }}</code>{{ lineFor(lang).kind === 'instruction' ? ' — an instruction line, because no course teaches this language' : '' }}</span>
+                    </p>
+                  </template>
+                  <p v-else-if="samplesBusy === lang.code" class="vl-muted">finding a real line…</p>
+                  <p v-else-if="samplesByLang[lang.code] && samplesByLang[lang.code].error" class="vl-muted">
+                    Samples unavailable: {{ samplesByLang[lang.code].error }} — casting still works.
+                  </p>
+                  <p v-else class="vl-muted">No course line found for this language, so voices cannot be auditioned here.</p>
+
+                  <!-- The only button on this screen that spends money, and it
+                       says what it costs before it is pressed. -->
+                  <p v-if="samplesByLang[lang.code] && samplesByLang[lang.code].missing?.length" class="vl-prepare">
+                    <button
+                      class="ui-sort-btn"
+                      :disabled="samplesBusy === lang.code"
+                      @click="prepareSamples(lang)"
+                    >{{ samplesBusy === lang.code ? 'Rendering…' : `Prepare ${Math.min(samplesByLang[lang.code].missing.length, 12)} sample${Math.min(samplesByLang[lang.code].missing.length, 12) === 1 ? '' : 's'}` }}</button>
+                    <span class="vl-muted">
+                      {{ samplesByLang[lang.code].missing.length }} voice{{ samplesByLang[lang.code].missing.length === 1 ? '' : 's' }}
+                      here have never said this line. Rendering the next
+                      {{ Math.min(samplesByLang[lang.code].missing.length, 12) }} costs
+                      {{ Math.min(samplesByLang[lang.code].missing.length, 12) * lineFor(lang)?.text?.length || 0 }} characters
+                      of the lab's daily allowance. Everything already rendered is cached and free to replay.
+                    </span>
+                  </p>
+                </div>
 
                 <!-- PHRASE VOICES — the course material. These are the two
                      that make a language complete. -->
@@ -800,19 +927,16 @@ function candidatesFor (lang, slot) {
                     </div>
 
                     <div v-else class="vl-slot-empty">
-                      <select
-                        class="ui-select"
-                        :disabled="busy === slotKey(lang, slot)"
-                        @change="cast(lang, slot, $event.target.value)"
-                      >
-                        <option value="">— empty — choose a voice</option>
-                        <option v-for="c in candidatesFor(lang, slot)" :key="c.voiceId" :value="c.voiceId" :title="c.pace ? candidatePace(c) : ''">
-                          {{ c.name }} ({{ c.kind }}){{ paceSuffix(c) }}
-                        </option>
-                      </select>
-                      <span v-if="!candidatesFor(lang, slot).length" class="vl-muted">
-                        no voice in the estate declares this language
-                      </span>
+                      <CandidateVoices
+                        :candidates="candidatesFor(lang, slot)"
+                        :samples="samplesFor(lang)"
+                        :playing="playing"
+                        :busy="busy === slotKey(lang, slot)"
+                        :pace-title="(c) => (c.pace ? candidatePace(c) : '')"
+                        :pace-suffix="paceSuffix"
+                        @play="play(lang, $event)"
+                        @cast="cast(lang, slot, $event)"
+                      />
                     </div>
                   </div>
                 </div>
@@ -890,20 +1014,22 @@ function candidatesFor (lang, slot) {
                       >Clear</button>
                     </div>
 
+                    <!-- The GUIDE slot casts exactly like a phrase slot: same
+                         list, same two taps. Tom named it as the slot that
+                         exists with nothing in it, so it must not feel like an
+                         afterthought. -->
                     <div v-else class="vl-slot-empty">
-                      <select
-                        class="ui-select"
-                        :disabled="busy === slotKey(lang, slot)"
-                        @change="cast(lang, slot, $event.target.value)"
-                      >
-                        <option value="">— empty — choose a voice</option>
-                        <option v-for="c in candidatesFor(lang, slot)" :key="c.voiceId" :value="c.voiceId" :title="c.pace ? candidatePace(c) : ''">
-                          {{ c.name }} ({{ c.kind }}){{ paceSuffix(c) }}{{ c.registered ? '' : ' — registers it too' }}
-                        </option>
-                      </select>
-                      <span v-if="!candidatesFor(lang, slot).length" class="vl-muted">
-                        no voice in the estate declares this language
-                      </span>
+                      <CandidateVoices
+                        :candidates="candidatesFor(lang, slot)"
+                        :samples="samplesFor(lang)"
+                        :playing="playing"
+                        :busy="busy === slotKey(lang, slot)"
+                        :pace-title="(c) => (c.pace ? candidatePace(c) : '')"
+                        :pace-suffix="paceSuffix"
+                        empty-text="no voice in the estate declares this language"
+                        @play="play(lang, $event)"
+                        @cast="cast(lang, slot, $event)"
+                      />
                     </div>
                   </div>
                 </div>
@@ -963,6 +1089,17 @@ function candidatesFor (lang, slot) {
 .vl-slot { border: 1px solid var(--line); border-radius: .5rem; padding: .5rem; background: var(--surface); }
 .vl-slot-group { font-size: .75rem; text-transform: uppercase; letter-spacing: .05em;
   color: var(--faint); margin: .5rem 0 .4rem; }
+/* The sample line reads as a quotation, because that is what it is: somebody's
+   actual course sentence, not a label on this screen. */
+.vl-sample-line { margin: .9rem 0 .2rem; padding: .6rem .8rem; border-radius: 8px;
+                  background: var(--surface-2, rgba(127,127,127,.07)); }
+.vl-cast-meaning { margin: 0 0 .5rem; font-size: .8125rem; }
+.vl-line-text { margin: 0; font-size: 1.0625rem; font-weight: 600; }
+.vl-line-meta { margin: .15rem 0 0; font-size: .8125rem; display: flex; flex-wrap: wrap; gap: .6rem; }
+.vl-line-known { opacity: .75; }
+.vl-prepare { margin: .55rem 0 0; display: flex; align-items: center; gap: .6rem; flex-wrap: wrap;
+              font-size: .8125rem; }
+
 /* The guide block is set apart rather than mixed in with the phrase slots: it
    is a different kind of audio, cast on a different language role. */
 .vl-guide-group { margin-top: 1.1rem; padding-top: .8rem; border-top: 1px dashed var(--line); }
