@@ -10,7 +10,7 @@ import { describe, it, expect } from 'vitest'
 import pkg from './cast-language-key.cjs'
 const {
   targetCastKey, knownCastKey, castKeyForCourse, baseLanguageOfCastKey,
-  isDialectCastKey, castKeySource, targetCastEntities,
+  isDialectCastKey, castKeySource, knownCastKeySource, knownDialectOf, targetCastEntities,
 } = pkg
 
 const course = (over) => ({ course_code: 'x_for_eng', known_lang: 'eng', target_lang: 'x', voice_pool_key: null, dialect: 'standard', ...over })
@@ -99,5 +99,78 @@ describe('the entity list the Voice Lab is built from', () => {
     expect(e.get('deu_at').courses.map((c) => c.course_code)).toEqual(['deu_at_for_eng'])
     expect(e.get('deu_at').base).toBe('deu')
     expect(e.get('deu_at').source).toBe('voice_pool_key')
+  })
+})
+
+/**
+ * ── THE KNOWN SIDE ─────────────────────────────────────────────────────────
+ * `courses.known_dialect` landed on 2026-08-31 for the nine courses taught FROM
+ * Welsh. Until then the known side had nothing to read and keyed on the bare
+ * `known_lang`, so the cases below are BOTH halves: the new key, and the
+ * unchanged behaviour of the 140-odd courses that state nothing.
+ */
+describe('the known side is an entity too', () => {
+  const forCym = (over) => course({ course_code: 'spa_for_cym', known_lang: 'cym', target_lang: 'spa', ...over })
+
+  it('keys a Welsh-known course on the Welsh it is taught FROM', () => {
+    expect(knownCastKey(forCym({ known_dialect: 'north' }))).toBe('cym_north')
+    expect(knownCastKey(forCym({ known_dialect: 'south' }))).toBe('cym_south')
+  })
+
+  it('is the SAME entity as the target side of a course teaching that Welsh', () => {
+    // The whole point: one cast row, whichever side of a course the language is
+    // on. cym_n_for_eng TEACHES Northern Welsh; spa_for_cym is taught FROM it.
+    const teaches = targetCastKey(course({ course_code: 'cym_n_for_eng', target_lang: 'cym', dialect: 'north' }))
+    expect(knownCastKey(forCym({ known_dialect: 'north' }))).toBe(teaches)
+  })
+
+  it('leaves a course that states nothing exactly where it was', () => {
+    expect(knownCastKey(course({ known_lang: 'eng' }))).toBe('eng')
+    expect(knownCastKey(forCym({ known_dialect: null }))).toBe('cym')
+    expect(knownCastKey(forCym({}))).toBe('cym')
+  })
+
+  it("treats 'standard' as no statement, so it cannot become an entity", () => {
+    expect(knownCastKey(course({ known_lang: 'eng', known_dialect: 'standard' }))).toBe('eng')
+    expect(knownDialectOf(course({ known_lang: 'eng', known_dialect: 'standard' }))).toBe(null)
+  })
+
+  it('folds case and space, so North and north are one key', () => {
+    expect(knownCastKey(forCym({ known_dialect: ' North ' }))).toBe('cym_north')
+  })
+
+  it('NEVER reads voice_pool_key, which states the TARGET pool', () => {
+    // ara_lb_for_eng: an Arabic pool key and an ENGLISH known side. Reading the
+    // pool key here would give its English narration an 'ara_lb' cast.
+    const c = course({ course_code: 'ara_lb_for_eng', known_lang: 'eng', target_lang: 'ara', voice_pool_key: 'ara_lb' })
+    expect(knownCastKey(c)).toBe('eng')
+    expect(targetCastKey(c)).toBe('ara_lb')
+  })
+
+  it("NEVER reads courses.dialect, which states the TARGET content's dialect", () => {
+    // cym_n_for_eng teaches Northern Welsh TO English speakers. Its known side
+    // is plain English, not 'eng_north'.
+    expect(knownCastKey(course({ course_code: 'cym_n_for_eng', known_lang: 'eng', target_lang: 'cym', dialect: 'north' }))).toBe('eng')
+  })
+
+  it('says which column stated it, and says nothing when nothing did', () => {
+    expect(knownCastKeySource(forCym({ known_dialect: 'north' }))).toBe('known_dialect')
+    expect(knownCastKeySource(forCym({ known_dialect: null }))).toBe(null)
+    expect(knownCastKeySource(course({ known_lang: 'eng' }))).toBe(null)
+  })
+
+  it('is what castKeyForCourse returns for the known side', () => {
+    const c = forCym({ known_dialect: 'north' })
+    expect(castKeyForCourse(c, 'known')).toBe('cym_north')
+    expect(castKeyForCourse(c, 'target')).toBe('spa')
+  })
+})
+
+describe('the columns a cast key is read from', () => {
+  it('names known_dialect, or a SELECT would silently degrade the key', () => {
+    // The failure this guards is invisible: a SELECT that omits the column
+    // returns a course whose known side keys on 'cym' with no error anywhere.
+    expect(pkg.COURSE_CAST_FIELDS.split(',').map((s) => s.trim())).toEqual(
+      ['course_code', 'known_lang', 'target_lang', 'voice_pool_key', 'dialect', 'known_dialect'])
   })
 })

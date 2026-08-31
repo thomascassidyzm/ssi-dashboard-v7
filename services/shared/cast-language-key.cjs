@@ -49,10 +49,18 @@
  * bug as one key for two.
  *
  * ── THE KNOWN SIDE ──────────────────────────────────────────────────────────
- * Keyed on `known_lang`, unchanged. Nothing in the data states a known-side
- * dialect: `courses.dialect` describes the course's TARGET content and no known
- * language on the estate has a regional variant in play. Inventing a key here
- * would be inventing an entity.
+ * Keyed on `known_lang` plus `courses.known_dialect`, the column added on
+ * 2026-08-31 for exactly this. When this module was written the known side had
+ * nothing to read: `courses.dialect` describes a course's TARGET content, and
+ * the nine courses taught FROM Welsh (eng_for_cym and siblings) did not say
+ * which Welsh their learner already has. That was a missing column, not a
+ * missing concept — so the column exists now and this reads it, symmetrically
+ * with the target side, because a dialect is its own language on whichever side
+ * of a course it stands.
+ *
+ * `known_dialect` is NULLABLE and NULL means NOT STATED, never 'standard': most
+ * known languages on the estate have a regional fork nobody has ruled on. A
+ * course that states nothing keys on its base language, exactly as before.
  */
 
 'use strict';
@@ -64,7 +72,7 @@ const { canonicalDialect, DEFAULT_DIALECT } = require('./dialect.cjs');
  * row to this module must ask for these, or the key silently degrades to the
  * base language — which is the very defect this module exists to remove.
  */
-const COURSE_CAST_FIELDS = 'course_code, known_lang, target_lang, voice_pool_key, dialect';
+const COURSE_CAST_FIELDS = 'course_code, known_lang, target_lang, voice_pool_key, dialect, known_dialect';
 
 /**
  * The shape of a pool key, borrowed verbatim from tools/pod-sync.cjs so the two
@@ -101,10 +109,37 @@ function targetCastKey(course) {
   return base || null;
 }
 
-/** The cast key for the language a course is TAUGHT IN. See the header. */
+/**
+ * The cast key for the language a course is TAUGHT IN. See the header.
+ *
+ * There is no `voice_pool_key` leg here and there must not be: that column
+ * states a course's TARGET pool (tools/pod-sync.cjs has read it that way since
+ * 2026-08-17), so reading it on the known side would give ara_lb_for_eng an
+ * 'ara_lb' ENGLISH cast. The known side has exactly one statement of its own,
+ * `known_dialect`, and it is read the same way `dialect` is read on the target
+ * side: unstated is the base language.
+ */
 function knownCastKey(course) {
   if (!course) return null;
-  return lower(course.known_lang) || null;
+  const base = lower(course.known_lang);
+  if (!base) return null;
+  const dialect = knownDialectOf(course);
+  return dialect ? `${base}_${dialect}` : base;
+}
+
+/**
+ * The stated known-side dialect, or null when nothing is stated.
+ *
+ * NOT canonicalDialect(): that folds null/''/whitespace to 'standard', which is
+ * the right answer for `courses.dialect` (NOT NULL, and every non-forked
+ * language genuinely IS standard) and the WRONG answer here, where NULL is a
+ * deliberate "nobody has said". Case and space are folded exactly as
+ * canonicalDialect folds them, so 'North' and 'north' cannot become two keys.
+ */
+function knownDialectOf(course) {
+  const stated = lower(course && course.known_dialect);
+  if (!stated || stated === DEFAULT_DIALECT) return null;
+  return stated;
 }
 
 /**
@@ -158,6 +193,17 @@ function castKeySource(course) {
 }
 
 /**
+ * Which column produced the KNOWN-side key — the twin of castKeySource, kept
+ * separate because the two sides read different columns and a single function
+ * answering "the source" for an unnamed side is how they would drift.
+ *
+ * @returns {'known_dialect'|null}
+ */
+function knownCastKeySource(course) {
+  return course && knownDialectOf(course) ? 'known_dialect' : null;
+}
+
+/**
  * The estate's castable TARGET entities, computed from course rows.
  *
  * This is the list the Voice Lab's Languages screen is built from, and it is
@@ -190,5 +236,7 @@ module.exports = {
   baseLanguageOfCastKey,
   isDialectCastKey,
   castKeySource,
+  knownCastKeySource,
+  knownDialectOf,
   targetCastEntities,
 };

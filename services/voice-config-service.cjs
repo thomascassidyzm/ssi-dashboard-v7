@@ -236,12 +236,12 @@ async function loadCast() {
       // course to its parent language's cast: the exact defect being fixed,
       // reintroduced invisibly. 150 rows, two columns, once per cache window,
       // fixes every call site at once and cannot be forgotten by the eleventh.
-      supabase.from('courses').select('course_code, voice_pool_key, dialect'),
+      supabase.from('courses').select('course_code, voice_pool_key, dialect, known_dialect'),
     ]);
     if (roles.error) throw roles.error;
     const dialects = new Map();
     for (const c of courses.data || []) {
-      dialects.set(c.course_code, { voice_pool_key: c.voice_pool_key || null, dialect: c.dialect || null });
+      dialects.set(c.course_code, { voice_pool_key: c.voice_pool_key || null, dialect: c.dialect || null, known_dialect: c.known_dialect || null });
     }
     // NO CAST ROWS, NO WORK AND NO SECOND QUERY'S WORTH OF RISK: this is the
     // estate today, and it must cost nothing and change nothing.
@@ -269,7 +269,11 @@ function _clearCastCache() { castCache = { at: 0, roles: [], voices: [], humanRo
  */
 function withDialectFields(course, dialects) {
   if (!course || !course.course_code) return course;
-  if ('voice_pool_key' in course && 'dialect' in course) return course;
+  // All THREE columns, since 2026-08-31: `known_dialect` keys the known and
+  // guide roles, so a row carrying only the two target-side columns is still
+  // short and must be topped up. Testing only the first two would have made a
+  // *_for_cym course silently key its guide on 'cym' again.
+  if ('voice_pool_key' in course && 'dialect' in course && 'known_dialect' in course) return course;
   const extra = dialects && dialects.get(course.course_code);
   return extra ? { ...course, ...extra } : course;
 }

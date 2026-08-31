@@ -67,7 +67,7 @@ const path = require('path')
 const policy = require('../shared/tts-provider-policy.cjs')
 const { isHumanVoiceLang } = require('../shared/human-voice-courses.cjs')
 const { humanRecordedForLanguage, loadHumanRecordedRoles } = require('../shared/human-recorded-roles.cjs')
-const { targetCastEntities, targetCastKey, baseLanguageOfCastKey, isDialectCastKey, COURSE_CAST_FIELDS } = require('../shared/cast-language-key.cjs')
+const { targetCastEntities, targetCastKey, knownCastKey, baseLanguageOfCastKey, isDialectCastKey, COURSE_CAST_FIELDS } = require('../shared/cast-language-key.cjs')
 const { tryCanonicalVoiceId, PROVIDER_ALIASES } = require('../shared/clip-identity.cjs')
 
 /**
@@ -219,22 +219,36 @@ async function build (db, opts = {}) {
   // 'knownonly', which is deliberately NOT a gap: nothing teaches them, so
   // asking for a male and a female phrase voice would be the screen inventing a
   // worklist. Every other language's status is untouched by this.
+  //
+  // Keyed on the KNOWN CAST KEY, not on `known_lang` — the same reason the
+  // target side is. `courses.known_dialect` (2026-08-31) states which Welsh the
+  // nine *_for_cym courses are taught FROM, and the resolver keys their known
+  // and guide roles on 'cym_north' as a result. Grouping this screen on 'cym'
+  // would offer a guide slot that reaches none of them.
   for (const c of courses) {
-    const k = String(c.known_lang || '').trim()
+    const k = knownCastKey(c) || ''
     if (k && !byLang.has(k)) byLang.set(k, [])
   }
 
-  // How many courses use each language as their KNOWN language. This is what
+  // How many courses use each entity as their KNOWN language. This is what
   // makes a guide slot make sense on the row of a language nobody teaches from:
   // twelve languages carry a real number here and fifty-six carry zero.
   const knownCounts = new Map()
   for (const c of courses) {
-    const k = String(c.known_lang || '').trim()
+    const k = knownCastKey(c) || ''
     if (!k) continue
     knownCounts.set(k, (knownCounts.get(k) || 0) + 1)
   }
 
-  // The measured in-use guide voices, keyed by known language, biggest first.
+  // The measured in-use guide voices, biggest first.
+  //
+  // Keyed on the BASE known language, deliberately, because that is what the
+  // `voice_guide_in_use` view actually measures: it counts clips by
+  // `courses.known_lang`, which carries the base tag and cannot distinguish one
+  // Welsh from another. Reading it as if it were a cast key would silently
+  // report zero in-use guides for every known-side dialect row. A MEASUREMENT
+  // is asked of the base; a DECISION is asked of the entity — the same split
+  // the target side already makes for provider coverage.
   const inUseByLang = new Map()
   for (const g of guideInUse) {
     const k = String(g.known_lang || '').trim()
@@ -262,7 +276,7 @@ async function build (db, opts = {}) {
       voices,
       catalogue,
       knownCourses: knownCounts.get(code) || 0,
-      guideInUse: inUseByLang.get(code) || [],
+      guideInUse: inUseByLang.get(baseLanguageOfCastKey(code)) || [],
       courses,
       humanRows,
     }))
@@ -494,7 +508,10 @@ function describeLanguage ({ code, baseCode = null, dialectOf = null, castKeySou
   // Every course a PHRASE cast on this language would touch at all — the
   // denominator that decides whether a cast is partly refused or wholly
   // pointless. `known` slots on courses taught FROM this language count too.
-  const phraseReach = courses.filter((c) => c.target_lang === code || c.known_lang === code).length
+  // Cast keys on both sides, not raw language tags: a 'deu' cast does not reach
+  // deu_at_for_eng and a 'cym' cast does not reach the *_for_cym courses, so
+  // counting them here would overstate the reach of both.
+  const phraseReach = courses.filter((c) => targetCastKey(c) === code || knownCastKey(c) === code).length
 
   return {
     code,
