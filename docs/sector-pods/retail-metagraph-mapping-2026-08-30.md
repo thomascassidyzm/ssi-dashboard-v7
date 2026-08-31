@@ -658,3 +658,13 @@ doing to a shape what a missing possession does. O7 and F302 held for a fifth co
 partial result is N501, whose defining pair is only half-present at the fake-ID retention and
 is not claimed. Nothing in this sector needed a decision the trunk had not already recorded;
 the fan-out template survives its first heavily scripted sector unmodified.
+
+---
+
+*Mechanical verification: `node tools/metagraph-selfcheck.cjs` on this branch printed
+**"345 checks passed, 0 failed."** (the five schema checks require `ajv`, resolved via a sibling
+worktree's node_modules; the first run without it passed 340/340 with schema validation skipped).
+`git diff --stat origin/main -- services/shared/metagraph/` is empty of tracked changes — the only
+addition under the store is the new untracked proposal file `proposed/retail-2026-08-30.json`.
+The store is byte-identical to origin/main (`4dcdddee2`). Sibling ranges verified non-colliding:
+care work 601–699, retail 701–799 (this file), hospitality 801–899.*
