@@ -122,8 +122,20 @@ The **spoken** branch — the line read aloud and checked by whisper — is prov
 the fake-mic fixture plays a clip that does not contain the consent line, so it can only produce
 the refusal, never the pass.
 
-## 5. Other screens in the same shape
+## 5. Every other screen that provisions or casts a voice
 
-A separate read-only census (job #541) enumerated every other surface that can hit a consent
-refusal. Its findings are recorded in the session report that accompanies this document.
+| Surface | Gated route | Key? | Verdict |
+|---|---|---|---|
+| `PodCastPanel.vue` (PodDetailView) | `PUT /pods/cast` | **now yes** | the headline defect. FIXED. |
+| `PodLab.vue` voice picker + ▶ audition | `POST /api/pod-cast-voices`, `POST /api/voices/preview` | **now yes** | same lock; pools are vendor stock today so it does not bite yet. FIXED. |
+| `VoiceConfiguration.vue` — the course-role cast | `PUT /api/courses/:c/voice-config` (gated inside `voice-config-service.cjs`) | **now yes** | had no key, and its ▶ preview and Test buttons swallowed EVERY failure into `console.error` — a consent refusal there was invisible, the button simply did nothing. Both fixed: the refusal is shown, and the same step opens on it. |
+| `TeamRoster.vue` | `POST /team/:c/assign-slot` | yes, already | the good pattern, built by the onboarding worker: assign → if nobody has asked them, the consent step opens in place and finishes the assignment. |
+| `LanguagesPanel.vue` (Voice Lab) | `PUT /api/voicelab/languages/:lang/slot`, the clone routes | yes, already | consent is captured at clone time and the plain admin editor sits beside it. |
+| `tools/pod-recast.cjs` (CLI) | the gate directly | n/a | refuses with the gate's own sentence, which names what to do. A CLI operator has a screen to go to; no change needed. |
 
+Nothing else in `src/` calls a consent-gated route.
+
+**One thing I did NOT change and Tom should see:** `VoiceConfiguration.vue`'s preview and test
+buttons swallowing every error was not a consent bug — it was a general silent-failure that
+consent merely exposed. Surfacing it is in this commit; whether that screen wants a proper error
+region rather than borrowing `saveStatus` is a taste call, not fixed here.
