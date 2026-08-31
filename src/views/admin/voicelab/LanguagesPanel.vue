@@ -451,13 +451,51 @@ function slotKey (lang, slot) {
   return `${lang.code}:${slot.slot || 'phrase'}:${slot.gender || '-'}:${slot.rank}`
 }
 
+/**
+ * ── THE HUMAN-RECORDING LABEL (Tom's ruling, 2026-08-31) ────────────────────
+ *
+ * "A visible refusal beats a quiet one." Everything below exists so that a
+ * human-recorded course is named ON SCREEN, BEFORE the Cast button is tapped —
+ * not discovered afterwards, and never silently overridden. `humanRecorded`
+ * comes from the API (services/shared/human-recorded-roles.cjs) and carries the
+ * courses a cast on this language would otherwise speak over, per slot.
+ */
+function humanOf (lang, slot) {
+  return (lang.humanRecorded && lang.humanRecorded[slot === 'guide' ? 'guide' : 'phrase']) || { courses: [], total: 0, roles: [] }
+}
+
+/** Would a cast on this slot reach nothing but human recordings? Then it is refused. */
+function humanBlocks (lang, slot) {
+  return slot === 'guide' ? false : Boolean(lang.humanRecorded && lang.humanRecorded.blocked)
+}
+
+/** The course codes, plainly, for a tooltip and for the refusal sentence. */
+function humanCourseList (lang) {
+  const all = [...humanOf(lang, 'phrase').courses, ...humanOf(lang, 'guide').courses]
+  return all.map((c) => c.course).join(', ')
+}
+
+/** The one-line label the collapsed row carries, so the fact arrives before the tap. */
+function humanRowLabel (lang) {
+  const n = humanOf(lang, 'phrase').total + humanOf(lang, 'guide').total
+  if (!n) return ''
+  return `${n} human-recorded course${n === 1 ? '' : 's'}`
+}
+
+/** What the last cast did NOT reach, keyed by language, so it survives the reload. */
+const skipped = ref({})
+
 async function cast (lang, slot, voiceId) {
   if (!voiceId) return
   busy.value = slotKey(lang, slot)
   try {
-    await api.castSlot(lang.code, {
+    const out = await api.castSlot(lang.code, {
       slot: slot.slot || 'phrase', gender: slot.gender, rank: slot.rank, voiceId,
     })
+    // THE SKIPPED COURSES ARE THE POINT. A cast that quietly reached nine of
+    // eleven courses and said "saved" is the failure this guard exists to
+    // prevent, so the answer is kept and shown beside the slot.
+    skipped.value = { ...skipped.value, [lang.code]: (out && out.skipped) || [] }
     await load()
   } catch (e) { error.value = e.message }
   busy.value = ''
@@ -783,6 +821,16 @@ function candidatesFor (lang, slot) {
                   class="ui-pill ui-hue-quiet vl-flag"
                   title="No fallback cast — insurance only, does not affect completeness"
                 >no fallback</span>
+                <!-- THE LABEL THAT ARRIVES BEFORE THE TAP (Tom, 2026-08-31).
+                     A language whose status is already 'human' says so in the
+                     status pill; this is for the ones that do NOT — English,
+                     German, Finnish — where only SOME courses are recorded and
+                     the row would otherwise read as wholly synthetic. -->
+                <span
+                  v-if="humanRowLabel(lang) && lang.status !== 'human'"
+                  class="ui-pill ui-hue-info vl-flag"
+                  :title="`A cast here will not speak over these: ${humanCourseList(lang)}`"
+                >{{ humanRowLabel(lang) }}</span>
               </td>
               <td>
                 <button class="ui-sort-btn" @click="toggleLanguage(lang)">
@@ -832,6 +880,46 @@ function candidatesFor (lang, slot) {
                 <p v-else-if="!lang.cartesiaCovers" class="vl-note">
                   Cartesia does not publish <strong>{{ langName(lang.code) }}</strong>, so a new render falls to
                   Azure. That is covered, just not by the default provider.
+                </p>
+
+                <!-- ── WHAT A CAST HERE WILL NOT SPEAK OVER ─────────────────
+                     Tom's ruling, 2026-08-31: name the human-recorded courses
+                     ON SCREEN, before Cast is tapped. Shown for every language
+                     that has any, including the ones whose status pill says
+                     nothing about it. -->
+                <p
+                  v-if="humanOf(lang, 'phrase').total || humanOf(lang, 'guide').total"
+                  class="vl-note vl-note-human"
+                >
+                  <strong v-if="lang.humanRecorded && lang.humanRecorded.blocked">
+                    Every course this cast could reach is human-recorded, so casting is refused here.
+                  </strong>
+                  <strong v-else>
+                    Some courses in {{ langName(lang.code) }} are human-recorded, and a cast will not reach them.
+                  </strong>
+                  Real recordings win wherever they exist, and the recording pipeline resolves a slot from
+                  each course's own stored voice config — so a language cast is left out of these
+                  deliberately rather than silently:
+                  <span
+                    v-for="c in [...humanOf(lang, 'phrase').courses, ...humanOf(lang, 'guide').courses]"
+                    :key="c.course + c.roles.join()"
+                    class="ui-pill ui-hue-info vl-human-course"
+                    :title="c.reasons.join(' ')"
+                  ><code>{{ c.course }}</code> · {{ c.roles.join(', ') }}<template v-if="c.clips"> · {{ c.clips.toLocaleString('en-GB') }} clips</template></span>
+                </p>
+
+                <!-- WHAT THE LAST CAST ACTUALLY SKIPPED. The server's own
+                     answer, kept after the reload, so "saved" never stands on
+                     its own when it did not reach everything. -->
+                <p v-if="(skipped[lang.code] || []).length" class="vl-note vl-note-human">
+                  <strong>Cast saved, and skipped {{ skipped[lang.code].length }} human-recorded
+                  course{{ skipped[lang.code].length === 1 ? '' : 's' }}:</strong>
+                  <span
+                    v-for="c in skipped[lang.code]"
+                    :key="'skip:' + c.course + c.roles.join()"
+                    class="ui-pill ui-hue-info vl-human-course"
+                    :title="c.reasons.join(' ')"
+                  ><code>{{ c.course }}</code> · {{ c.roles.join(', ') }}</span>
                 </p>
 
                 <!-- ── WHAT YOU ARE LISTENING TO, AND WHOSE IT IS ───────
@@ -931,7 +1019,17 @@ function candidatesFor (lang, slot) {
                     </div>
 
                     <div v-else class="vl-slot-empty">
+                      <!-- A REFUSAL THE EYE CAN SEE. Where every course this
+                           slot could reach is human-recorded, the candidate
+                           list is replaced by the reason — not left tappable
+                           with a 409 waiting behind it (Tom, 2026-08-31). -->
+                      <p v-if="humanBlocks(lang, 'phrase')" class="vl-muted vl-slot-refused">
+                        Not castable — {{ langName(lang.code) }} is human-recorded.
+                        {{ humanCourseList(lang) }} hold real recordings, and their gaps are a
+                        recording worklist, not a casting gap.
+                      </p>
                       <CandidateVoices
+                        v-else
                         :candidates="candidatesFor(lang, slot)"
                         :samples="samplesFor(lang)"
                         :playing="playing"
@@ -1089,6 +1187,15 @@ function candidatesFor (lang, slot) {
 
 .vl-detail td { background: var(--surface-2); }
 .vl-note { margin: .25rem 0 .75rem; }
+/* The human-recording notice reads as information, never as an error: a real
+   recording is the best outcome a slot can have, not a fault. */
+.vl-note-human {
+  padding: .5rem .6rem; border-radius: 6px;
+  border-left: 3px solid var(--info, #38bdf8);
+  background: var(--surface-2, rgba(127, 127, 127, .08));
+}
+.vl-human-course { margin: .15rem .25rem 0 0; display: inline-block; font-size: .6875rem; }
+.vl-slot-refused { margin: 0; line-height: 1.45; }
 .vl-slots { display: grid; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); gap: .6rem; }
 .vl-slot { border: 1px solid var(--line); border-radius: .5rem; padding: .5rem; background: var(--surface); }
 .vl-slot-group { font-size: .75rem; text-transform: uppercase; letter-spacing: .05em;

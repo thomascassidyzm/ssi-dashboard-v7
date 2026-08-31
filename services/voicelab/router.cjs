@@ -35,6 +35,7 @@ const content = require('./content.cjs')
 const registry = require('./registry.cjs')
 const cartesia = require('./cartesia.cjs')
 const samples = require('./samples.cjs')
+const humanRecorded = require('../shared/human-recorded-roles.cjs')
 
 /**
  * @param {object} app        express app
@@ -199,6 +200,40 @@ function mount (app, deps) {
    * voice_config is written. Casting and rendering are deliberately separate:
    * the lab exports a config for a human to apply, and that rule survives.
    */
+  /**
+   * ── THE HUMAN-VOICE GUARD, AT THE FRONT DOOR (Tom, 2026-08-31) ───────────
+   *
+   * "A visible refusal beats a quiet one." A cast on a language whose courses
+   * are human-recorded must not be written and then quietly ignored by the
+   * reader: the operator has to be told, on screen, before they walk away.
+   *
+   * Two outcomes, and which one applies is arithmetic, not taste:
+   *   EVERY course this cast could reach is human-recorded → 409, no write.
+   *   SOME are → the cast is written for the synthetic courses and the response
+   *   names the ones it will not speak over, so the screen can show them.
+   *
+   * Read live rather than from registry.build(): this is one small SELECT and
+   * the answer must be the state at the moment of the tap, not the state when
+   * the page was opened.
+   */
+  async function humanGuardFor (language, slot) {
+    const db = supabase()
+    const [{ data: courses }, humanRows] = await Promise.all([
+      db.from('courses').select('course_code, target_lang, known_lang, voice_config'),
+      humanRecorded.loadHumanRecordedRoles(db),
+    ])
+    const list = courses || []
+    const affected = humanRecorded.humanRecordedForLanguage({
+      language, slot, courses: list, humanRows,
+    })
+    // How many courses this cast could reach AT ALL, so "all of them are human"
+    // is a fact rather than an impression.
+    const reach = slot === 'guide'
+      ? list.filter((c) => c.known_lang === language).length
+      : list.filter((c) => c.target_lang === language || c.known_lang === language).length
+    return { ...affected, reach, blocked: reach > 0 && affected.total >= reach }
+  }
+
   app.put('/api/voicelab/languages/:language/slot', async (req, res) => {
     const user = await requireAdmin(req, res)
     if (!user) return
@@ -225,6 +260,20 @@ function mount (app, deps) {
         throw Object.assign(new Error(`rank must be an integer 0..${registry.REQUIRED_RANKS - 1}`), { status: 400 })
       }
       if (!voiceId) throw Object.assign(new Error('voiceId is required — to empty a slot use DELETE'), { status: 400 })
+
+      // THE HUMAN-VOICE GUARD. Checked BEFORE the voice is registered, so a
+      // refused cast leaves no trace anywhere — not even a stray `voices` row.
+      const guard = await humanGuardFor(language, slot)
+      if (guard.blocked) {
+        const names = guard.courses.map((c) => `${c.course} (${c.roles.join(', ')})`).join(', ')
+        return res.status(409).json({
+          error: `Every ${slot === 'guide' ? 'course taught from' : 'course that uses'} ${language} is human-recorded, so this cast would speak over real recordings and has NOT been saved: ${names}. Their gaps are a recording worklist, not a casting gap (Tom 2026-08-31; services/shared/human-voice-courses.cjs).`,
+          code: 'HUMAN_RECORDED',
+          language,
+          slot,
+          humanRecorded: guard,
+        })
+      }
 
       // A voice can only hold a slot if it has a `voices` row — the slot table
       // carries a foreign key to it. The Languages screen offers Cartesia
@@ -291,7 +340,18 @@ function mount (app, deps) {
       if (error) throw Object.assign(new Error(error.message), { status: 400 })
 
       logger.log?.(`[voicelab] cast ${slot} ${language}/${rowGender}/rank${r} = ${slotVoiceId} by ${who(user)}`)
-      res.json({ ok: true, language, slot, gender: rowGender, rank: r, voiceId: slotVoiceId })
+      if (guard.total) {
+        logger.log?.(`[voicelab] cast ${slot} ${language} SKIPS ${guard.total} human-recorded course(s): ${guard.courses.map((c) => c.course).join(', ')}`)
+      }
+      // `skipped` is the visible half of the refusal: the cast is saved, and the
+      // response says out loud which courses it will not reach and why, so the
+      // screen can show it rather than the operator discovering it at render.
+      res.json({
+        ok: true, language, slot, gender: rowGender, rank: r, voiceId: slotVoiceId,
+        skipped: guard.courses,
+        skippedTotal: guard.total,
+        reach: guard.reach,
+      })
     } catch (err) { fail(res, err, 'cast') }
   })
 

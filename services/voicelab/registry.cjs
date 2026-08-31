@@ -66,6 +66,7 @@ const fs = require('fs')
 const path = require('path')
 const policy = require('../shared/tts-provider-policy.cjs')
 const { isHumanVoiceLang } = require('../shared/human-voice-courses.cjs')
+const { humanRecordedForLanguage, loadHumanRecordedRoles } = require('../shared/human-recorded-roles.cjs')
 const { tryCanonicalVoiceId, PROVIDER_ALIASES } = require('../shared/clip-identity.cjs')
 
 /**
@@ -179,6 +180,13 @@ async function build (db, opts = {}) {
     allSoft(db, 'voice_guide_in_use', 'known_lang, role, voice_id, clips, courses'),
   ])
 
+  // ── WHICH SLOTS HOLD REAL RECORDINGS (Tom's ruling, 2026-08-31) ───────────
+  // Tens of rows, grouped by the view rather than here for the same reason
+  // voice_guide_in_use is: paging 42,388 human clips on every page load to
+  // count them would be absurd. Read SOFTLY — with no view the policy and
+  // stored-config halves of the signal still stand, so Welsh is still labelled.
+  const humanRows = await loadHumanRecordedRoles(db)
+
   const voiceById = new Map(voices.map((v) => [v.voice_id, v]))
 
   // Group the estate's courses by the language they teach. `target_lang` is the
@@ -242,6 +250,8 @@ async function build (db, opts = {}) {
       catalogue,
       knownCourses: knownCounts.get(code) || 0,
       guideInUse: inUseByLang.get(code) || [],
+      courses,
+      humanRows,
     }))
     .sort((a, b) => {
       // LIVE COURSES FIRST, THEN COURSE COUNT, THEN THE LANGUAGE'S NAME.
@@ -355,7 +365,7 @@ function providersInUse (langCourses) {
 }
 
 /** One language's row. */
-function describeLanguage ({ code, langCourses, roles, voiceById, voices, catalogue = {}, knownCourses = 0, guideInUse = [], paceReference = null }) {
+function describeLanguage ({ code, langCourses, roles, voiceById, voices, catalogue = {}, knownCourses = 0, guideInUse = [], paceReference = null, courses = [], humanRows = [] }) {
   const human = isHumanVoiceLang(code)
   const cartesiaCovers = policy.cartesiaCoversLanguage(code)
   // No course teaches this language; it only ever appears on the known side.
@@ -430,6 +440,18 @@ function describeLanguage ({ code, langCourses, roles, voiceById, voices, catalo
     })
   }
 
+  // ── THE HUMAN RECORDINGS THIS LANGUAGE'S CAST WOULD REACH ────────────────
+  // Named per SLOT, because a phrase cast and a guide cast reach different
+  // courses and different roles. This is what the screen must be able to say
+  // BEFORE the tap — "Welsh has 3 human-recorded courses" is a label, not an
+  // error message after the fact (Tom, 2026-08-31).
+  const humanPhrase = humanRecordedForLanguage({ language: code, slot: 'phrase', courses, humanRows })
+  const humanGuide = humanRecordedForLanguage({ language: code, slot: 'guide', courses, humanRows })
+  // Every course a PHRASE cast on this language would touch at all — the
+  // denominator that decides whether a cast is partly refused or wholly
+  // pointless. `known` slots on courses taught FROM this language count too.
+  const phraseReach = courses.filter((c) => c.target_lang === code || c.known_lang === code).length
+
   return {
     code,
     courses: langCourses.length,
@@ -438,6 +460,16 @@ function describeLanguage ({ code, langCourses, roles, voiceById, voices, catalo
     // sentence it was measured on. Null for a language nobody has measured.
     paceReference,
     human,
+    // The MEASURED human signal, per slot: which courses a cast here would not
+    // speak over, and why. `blocked` means every course this cast could reach
+    // is human-recorded, so the cast is refused outright rather than written as
+    // a decision nothing can act on.
+    humanRecorded: {
+      phrase: humanPhrase,
+      guide: humanGuide,
+      phraseReach,
+      blocked: phraseReach > 0 && humanPhrase.total >= phraseReach,
+    },
     cartesiaCovers,
     // The provider a NEW render would actually use, asked of the same module
     // production asks, so this cannot claim something the render path denies.

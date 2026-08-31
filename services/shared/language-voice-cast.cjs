@@ -52,6 +52,7 @@
 
 const { tryCanonicalVoiceId } = require('./clip-identity.cjs');
 const { voiceSpellings } = require('./clip-identity-lookup.cjs');
+const { humanRolesForCourse } = require('./human-recorded-roles.cjs');
 
 /**
  * The roles the language cast speaks for.
@@ -220,7 +221,7 @@ function providerOfVoice(voice) {
  *   on it. `decisions` explains every role, including the ones left alone, so a
  *   render log can say WHY it chose what it chose.
  */
-function applyLanguageCast({ voiceConfig, course, roles = [], voices = [] }) {
+function applyLanguageCast({ voiceConfig, course, roles = [], voices = [], humanRows = [] }) {
   const decisions = [];
   if (!course) return { config: voiceConfig, decisions };
 
@@ -231,6 +232,18 @@ function applyLanguageCast({ voiceConfig, course, roles = [], voices = [] }) {
   // block as an EMPTY one costs nothing when nothing is cast (the caller
   // returns before it gets here) and lets the cast seed the roles it names.
   const stored = (voiceConfig && voiceConfig.voices) ? voiceConfig : { ...(voiceConfig || {}), voices: {} };
+
+  // ── THE HUMAN-VOICE GUARD (Tom's ruling, 2026-08-31) ─────────────────────
+  // A slot that holds a real recording is not a casting slot. This is computed
+  // from the STORED config, never from `stored`-with-cast-applied, because the
+  // recording splicer reads the stored config too — that is the whole point of
+  // keeping the two in agreement. It is a STOP, taken before the override check
+  // and before anything else: a human recording is not a preference to be
+  // outranked, and there is no runtime bypass, exactly as
+  // human-voice-courses.cjs has none.
+  const humanRoles = humanRolesForCourse({
+    course, voiceConfig: stored, humanRows, roles: CAST_ROLES,
+  });
 
   const voiceById = new Map();
   const voiceGenderById = new Map();
@@ -250,6 +263,19 @@ function applyLanguageCast({ voiceConfig, course, roles = [], voices = [] }) {
     // the exact slot Tom named as empty. An absent role with nothing cast for
     // it still reports 'absent' and still changes nothing.
     const roleConfig = stored.voices[role] || null;
+
+    const human = humanRoles.get(role);
+    if (human) {
+      decisions.push({
+        role,
+        source: 'human-recorded',
+        humanSource: human.source,
+        reason: human.reason,
+        clips: human.clips,
+        voiceId: (roleConfig && roleConfig.voiceId) || human.voiceId || null,
+      });
+      continue;
+    }
 
     if (isOverridden(stored, role)) {
       decisions.push({ role, source: 'course-override', voiceId: (roleConfig && roleConfig.voiceId) || null });

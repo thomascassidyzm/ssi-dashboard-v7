@@ -14,6 +14,7 @@ const { bumpCourseVersion } = require('./shared/course-version.cjs');
 const { voiceSpellings } = require('./shared/clip-identity-lookup.cjs');
 const { selectProvider } = require('./shared/tts-provider-policy.cjs');
 const { applyLanguageCast, CAST_ROLES } = require('./shared/language-voice-cast.cjs');
+const { loadHumanRecordedRoles } = require('./shared/human-recorded-roles.cjs');
 
 // Initialize Supabase client
 const supabaseUrl = process.env.SUPABASE_URL;
@@ -208,20 +209,27 @@ async function loadStoredVoiceConfig(courseCode) {
  * purpose: no invalidation hooks to forget to call.
  */
 const CAST_CACHE_MS = 30_000;
-let castCache = { at: 0, roles: [], voices: [] };
+let castCache = { at: 0, roles: [], voices: [], humanRows: [] };
 
 async function loadCast() {
   if (!supabase) return { roles: [], voices: [] };
   if (Date.now() - castCache.at < CAST_CACHE_MS) return castCache;
   try {
-    const [roles, voices] = await Promise.all([
+    // THE HUMAN-VOICE GUARD rides along on the same cached read (Tom,
+    // 2026-08-31). It is tens of rows, it is only ever consulted when there IS
+    // a cast to guard against, and reading it here rather than per course keeps
+    // a 12,000-item render at three queries a cache-window rather than 12,000.
+    // A soft read: a missing view leaves the policy and stored-config halves of
+    // the guard standing, so Welsh is protected even with no view at all.
+    const [roles, voices, humanRows] = await Promise.all([
       supabase.from('voice_language_roles').select('language, gender, rank, voice_id, slot'),
       supabase.from('voices').select('voice_id, gender, tts_engine, is_active, display_name, human_name'),
+      loadHumanRecordedRoles(supabase),
     ]);
     if (roles.error) throw roles.error;
     // NO CAST ROWS, NO WORK AND NO SECOND QUERY'S WORTH OF RISK: this is the
     // estate today, and it must cost nothing and change nothing.
-    castCache = { at: Date.now(), roles: roles.data || [], voices: (voices.data || []) };
+    castCache = { at: Date.now(), roles: roles.data || [], voices: (voices.data || []), humanRows: humanRows || [] };
     return castCache;
   } catch (err) {
     // A cast we cannot read must never take a render down. Falling back to the
@@ -229,12 +237,12 @@ async function loadCast() {
     // definition — but say so, because a silent fallback here would hide a
     // language being rendered in the voice nobody chose any more.
     console.warn(`[VoiceConfig] language cast unreadable (${err.message}) — falling back to stored voice_config`);
-    return { roles: [], voices: [] };
+    return { roles: [], voices: [], humanRows: [] };
   }
 }
 
 /** Testing seam: drop the cache so a cast made this second is seen at once. */
-function _clearCastCache() { castCache = { at: 0, roles: [], voices: [] }; }
+function _clearCastCache() { castCache = { at: 0, roles: [], voices: [], humanRows: [] }; }
 
 /**
  * Overlay the language cast onto a stored config for one course.
@@ -256,7 +264,7 @@ async function resolveVoiceConfig({ voiceConfig, course, courseCode }) {
   // an `instruction`/`encouragement` block — excluded the GUIDE slot from all
   // 150. The empty-table invariant is kept by the line below instead: with no
   // cast rows we return the stored value untouched, null included.
-  const { roles, voices } = await loadCast();
+  const { roles, voices, humanRows } = await loadCast();
   if (!roles.length) return voiceConfig;   // nothing cast anywhere: identity
 
   let c = course;
@@ -268,11 +276,19 @@ async function resolveVoiceConfig({ voiceConfig, course, courseCode }) {
   }
   if (!c) return voiceConfig;
 
-  const { config, decisions } = applyLanguageCast({ voiceConfig, course: c, roles, voices });
+  const { config, decisions } = applyLanguageCast({ voiceConfig, course: c, roles, voices, humanRows });
   if (config !== voiceConfig) {
     for (const d of decisions.filter((x) => x.source === 'language-cast')) {
       console.log(`[VoiceConfig] ${c.course_code}: ${d.role} cast from ${d.language}/${d.gender} rank${d.rank} → ${d.voiceId} (was ${d.replaced})`);
     }
+  }
+  // A REFUSAL IS SAID OUT LOUD, ALWAYS — including when nothing else changed.
+  // "A visible refusal beats a quiet one" (Tom, 2026-08-31): a human recording
+  // the cast declined to speak over is the single most important line this
+  // resolver can print, and it must not be conditional on some OTHER role
+  // having been cast.
+  for (const d of decisions.filter((x) => x.source === 'human-recorded')) {
+    console.log(`[VoiceConfig] ${c.course_code}: ${d.role} NOT cast — human-recorded (${d.humanSource}). ${d.reason}`);
   }
   return config;
 }
@@ -295,7 +311,7 @@ async function resolveVoiceConfig({ voiceConfig, course, courseCode }) {
  */
 async function explainVoiceConfig(courseCode) {
   const stored = await loadStoredVoiceConfig(courseCode);
-  const { roles, voices } = await loadCast();
+  const { roles, voices, humanRows } = await loadCast();
 
   let course = null;
   if (supabase) {
@@ -319,7 +335,7 @@ async function explainVoiceConfig(courseCode) {
     };
   }
 
-  const { config, decisions } = applyLanguageCast({ voiceConfig: stored, course, roles, voices });
+  const { config, decisions } = applyLanguageCast({ voiceConfig: stored, course, roles, voices, humanRows });
   return { stored, resolved: config, decisions, changed: config !== stored, castRowCount: roles.length };
 }
 
