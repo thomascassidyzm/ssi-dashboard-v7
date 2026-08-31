@@ -61,6 +61,10 @@ function mount (app, deps) {
     // runner is lazy: requiring the client at mount time would make one missing
     // env var take the whole production API down at boot.
     supabase = () => require('../supabase-client.cjs').getClient(),
+    // Injectable for the same reason `supabase` is: the sample routes' wire
+    // contract — the NDJSON framing a progress bar reads — is testable without
+    // spending a penny on TTS, but only if the renderer can be stood in for.
+    samples: samplesModule = samples,
   } = deps
 
   // Lazy: mounting must not pull in phase8 or a TTS client, or one missing env var takes
@@ -164,7 +168,7 @@ function mount (app, deps) {
       const language = String(req.params.language || '').trim()
       if (!language) throw Object.assign(new Error('language is required'), { status: 400 })
       const voiceIds = String(req.query.voices || '').split(',').map((s) => s.trim()).filter(Boolean).slice(0, 200)
-      res.json(await samples.read({ language, voiceIds }))
+      res.json(await samplesModule.read({ language, voiceIds }))
     } catch (err) { fail(res, err, `samples ${req.params.language}`) }
   })
 
@@ -195,7 +199,7 @@ function mount (app, deps) {
       const voiceIds = ((req.body || {}).voiceIds || []).map((s) => String(s).trim()).filter(Boolean)
       if (!voiceIds.length) throw Object.assign(new Error('voiceIds is required'), { status: 400 })
       const max = Math.min(Number((req.body || {}).max) || SAMPLE_PREPARE_MAX, SAMPLE_PREPARE_MAX)
-      const out = await samples.prepare({
+      const out = await samplesModule.prepare({
         language, voiceIds, maxVoices: max, force: Boolean((req.body || {}).force),
         renderOne: (a) => runner().renderOne(a),
       })
@@ -233,7 +237,7 @@ function mount (app, deps) {
       res.set('Cache-Control', 'no-cache, no-transform')
       res.set('X-Accel-Buffering', 'no')
       res.flushHeaders?.()
-      const out = await samples.prepare({
+      const out = await samplesModule.prepare({
         language, voiceIds, maxVoices: max, force: Boolean((req.body || {}).force),
         renderOne: (a) => runner().renderOne(a),
         onClip: (ev) => write({ clip: ev }),
