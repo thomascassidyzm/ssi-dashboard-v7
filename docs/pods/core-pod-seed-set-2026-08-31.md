@@ -1451,14 +1451,14 @@ carries it.
 **CP186 — changing my brain**
 - Source g229, sc22 (Learner): "This is exactly the kind of practice I need. I think I can feel it changing my brain while we're talking! I really appreciate your help. But it's surprising how tired I get when I'm talking in a language I don't speak very well."
 - Seed: **"This is exactly the kind of practice I need. I think I can feel it changing my brain while we're talking! I really appreciate your help. But it's surprising how tired I get when I'm talking in a language I don't speak very well."**
-- Cut: `this is exactly the kind of practice I need` **(new)** · `I think` *(core)* · `I can feel it changing my brain` **(new)** · `while we're talking` **(new)** · `I really appreciate your help` **(new)** · `it's surprising` **(new)** · `how tired I get` **(new)** · `when I'm talking in a language` **(new)** · `I don't speak very well` **(new)**
+- Cut: `this is exactly the kind of practice I need` **(new)** · `I think` *(core)* · `I can feel it changing my brain` **(new)** · `while we're talking` **(new)** · `I really appreciate your help` **(new)** · `it's surprising` **(new)** · `how tired I get` **(new)** · `I don't speak very well` **(new — admitted before its left neighbour, a stated inversion: the tiling order is unchanged, but "when I'm talking in a language" cannot close a natural sentence until this chunk exists, so admission order flips the pair; found by the basket floors, §7)** · `when I'm talking in a language` **(new)**
 - Job: the method talking about itself — appreciation, the felt change, and the honest cost
   ("how tired I get"). The richest single row in the corpus, cut at its natural joints.
 
 **CP187 — more conversations**
 - Source g231, sc22 (Learner): "It really is. I'm really happy that I can have this much of a conversation. And I hope we'll be able to have more conversations in the future as I keep on getting better."
 - Seed: **"It really is. I'm really happy that I can have this much of a conversation. And I hope we'll be able to have more conversations in the future as I keep on getting better."**
-- Cut: `it really is` **(new)** · `I'm really happy that` **(new)** · `I can have this much of a conversation` **(new)** · `I hope` **(new)** · `we'll be able to have more conversations` **(new)** · `in the future` **(new)** · `as I keep on getting better` **(new)**
+- Cut: `it really is` **(new)** · `I'm really happy that` **(new)** · `I can have this much of a conversation` **(new)** · `I hope` *(core — Appendix A lists it among the assumed frame openers, and earlier baskets already compose with it on that licence; minting it here too would double-admit one chunk, caught at assembly, §7)* · `we'll be able to have more conversations` **(new)** · `in the future` **(new)** · `as I keep on getting better` **(new)**
 - Job: the agreeing echo "it really is" (X2's warmest yes), the celebrated milestone, and the
   future opened — the scene's close and the trunk's promise to the learner.
 
@@ -1538,10 +1538,2030 @@ strings (Appendix A), and core glue — no forward references. A pod sentence, i
 legitimate USE phrase wherever it contains the LEGO (Tom's ruling) — baskets are encouraged
 to reuse corpus sentences verbatim as USE material.
 
-Baskets are being authored in document order by a dispatched fan-out and assembled here as
-they verify; the section below states exactly how far quality-complete baskets reach.
+**How far it reaches: the whole set.** Every one of the 400 new LEGOs (401 minted less the
+CP187 "I hope" duplicate resolved to core, §7.15) carries a complete basket at or above the
+floors: **1,681 BUILD and 2,114 USE phrases**, verified mechanically per LEGO against the cut
+inventory (floors, coverage, and the no-forward-reference window), then read for tier-1
+naturalness at the flagged thin spots. The baskets were authored in document order by a
+thirteen-block fan-out (jobs #549–#561) and adjudicated at assembly: six block-K phrases
+rewritten for novel later-chunk reach (§7.13), CP186's floor miss cured by the stated
+admission inversion (§7.14), one duplicate admission withdrawn (§7.15). The thin-but-honest
+baskets are structural facts of the earliest window — "hello" opens the set with nothing
+behind it; bound tails ("with everything", "and walk the rest") extend one way only; frame
+heads minted just before their paradigm ("what is", "how often") are paid off within a few
+seeds by design. Nowhere did volume substitute clunk for honesty: where a worker could not
+reach a floor naturally, it said so, and the fix went upstream.
 
-*(assembly in progress — see §7 for the verification protocol)*
+### CP001 — "Hello — good evening!"
+
+**"hello"**
+- BUILD: "hello, Sarah" · "hello again" · "well, hello" · "hello there"
+- USE: "Hello!" · "Hello, Sarah!" · "Hello there!" · "Hello again, James!" · "Well, hello, Anna!"
+
+**"good evening"**
+- BUILD: "hello, good evening" · "good evening, Sarah" · "good evening again" · "well, good evening"
+- USE: "Hello — good evening!" · "Good evening!" · "Good evening, Sarah." · "Well, good evening, James." · "Good evening again, Anna."
+
+### CP002 — "Good morning. How are you?"
+
+**"good morning"**
+- BUILD: "good morning, Sarah" · "hello, good morning" · "well, good morning" · "good morning again"
+- USE: "Good morning!" · "Good morning, Sarah!" · "Hello — good morning!" · "Well, good morning, James!" · "Good morning again, Anna."
+
+**"how are you"**
+- BUILD: "hello, how are you" · "good morning, how are you" · "and how are you" · "how are you, Sarah"
+- USE: "Good morning. How are you?" · "Hello, Sarah — how are you?" · "How are you?" · "Good evening, James. How are you?" · "And how are you, Anna?"
+
+### CP004 — "Good afternoon."
+
+**"good afternoon"**
+- BUILD: "good afternoon, Sarah" · "hello, good afternoon" · "good afternoon again" · "well, good afternoon"
+- USE: "Good afternoon." · "Good afternoon, Sarah. How are you?" · "Hello — good afternoon!" · "Good afternoon, James." · "Good afternoon — and how are you?"
+
+### CP005 — "Thank you very much. Goodbye."
+
+**"thank you very much"**
+- BUILD: "well, thank you very much" · "thank you very much, Sarah" · "and thank you very much" · "thank you very much again"
+- USE: "Thank you very much!" · "Thank you very much, Sarah." · "Well, thank you very much!" · "Thank you very much again." · "Thank you very much, and good afternoon."
+
+**"goodbye"**
+- BUILD: "thank you very much, goodbye" · "goodbye, Sarah" · "well, goodbye" · "goodbye then"
+- USE: "Thank you very much. Goodbye." · "Goodbye, Sarah!" · "Well, goodbye then!" · "Goodbye — thank you very much!" · "Goodbye now."
+
+### CP006 — "Good evening, Sarah. Did you have a long day?"
+
+**"did you have a long day"**
+- BUILD: "and did you have a long day" · "did you have a long day, Sarah" · "so did you have a long day" · "well, did you have a long day"
+- USE: "Good evening, Sarah. Did you have a long day?" · "Did you have a long day?" · "Hello, James — did you have a long day?" · "Did you have a long day again?" · "How are you? Did you have a long day?"
+
+### CP007 — "Good night. See you tomorrow."
+
+**"good night"**
+- BUILD: "good night, Sarah" · "well, good night" · "good night then" · "and good night"
+- USE: "Good night." · "Good night, Sarah." · "Well, good night then!" · "Good night, James — thank you very much." · "Good night now."
+
+**"see you tomorrow"**
+- BUILD: "good night, see you tomorrow" · "so see you tomorrow" · "and see you tomorrow" · "see you tomorrow then"
+- USE: "Good night. See you tomorrow." · "See you tomorrow!" · "Goodbye — see you tomorrow." · "See you tomorrow then, Sarah." · "Thank you very much. See you tomorrow."
+
+### CP008 — "See you later."
+
+**"see you later"**
+- BUILD: "so see you later" · "see you later then" · "goodbye, see you later" · "and see you later, Sarah"
+- USE: "See you later." · "See you later, James!" · "Goodbye — see you later!" · "See you later then." · "Thank you very much. See you later."
+
+### CP009 — "Yes, please."
+
+**"yes"**
+- BUILD: "well, yes" · "yes, thank you very much" · "yes, Sarah" · "yes, see you tomorrow"
+- USE: "Yes." · "Yes, thank you very much." · "Yes, I think so." · "Yes, see you tomorrow." · "Yes, see you later, Sarah."
+
+**"please"**
+- BUILD: "yes, please" · "please, Sarah" · "could you, please" · "can we, please"
+- USE: "Yes, please." · "Yes please, thank you very much." · "Could you, please?" · "Can we, please?" · "I'd like that, please."
+
+### CP010 — "I'm very well, thank you."
+
+**"I'm very well"**
+- BUILD: "yes, I'm very well" · "I'm very well now" · "I'm very well, Sarah" · "and I'm very well too"
+- USE: "I'm very well." · "Yes, I'm very well, Sarah." · "I'm very well now, thank you very much." · "Good morning! I'm very well — how are you?" · "I'm very well too."
+
+**"thank you"**
+- BUILD: "I'm very well, thank you" · "yes, thank you" · "and thank you, Sarah" · "thank you again"
+- USE: "I'm very well, thank you." · "Thank you." · "Yes, thank you." · "Thank you, Sarah. Good night." · "Thank you, and see you tomorrow."
+
+### CP011 — "You're welcome."
+
+**"you're welcome"**
+- BUILD: "well, you're welcome" · "you're welcome, Sarah" · "and you're welcome" · "you're welcome, goodbye"
+- USE: "You're welcome." · "You're welcome, Sarah." · "You're welcome — see you tomorrow!" · "Well, you're welcome, James!" · "You're welcome. Good night."
+
+### CP012 — "Of course, no problem."
+
+**"of course"**
+- BUILD: "yes, of course" · "of course, Sarah" · "well, of course" · "and of course"
+- USE: "Yes, of course." · "Of course!" · "Of course, Sarah — see you tomorrow." · "Of course. Thank you very much." · "Of course, James. Good night."
+
+**"no problem"**
+- BUILD: "of course, no problem" · "yes, no problem" · "no problem, Sarah" · "no problem, see you tomorrow"
+- USE: "Of course, no problem." · "No problem!" · "No problem, Sarah." · "No problem. You're welcome." · "No problem — see you later!"
+
+### CP013 — "I will, don't worry."
+
+**"I will"**
+- BUILD: "yes, I will" · "of course I will" · "well, I will" · "I will, Sarah"
+- USE: "Yes, I will." · "Of course I will." · "I think I will." · "I will — see you tomorrow." · "I will, James. Good night."
+
+**"don't worry"**
+- BUILD: "I will, don't worry" · "don't worry, Sarah" · "and don't worry" · "well, don't worry"
+- USE: "I will, don't worry." · "Don't worry!" · "Don't worry, Sarah." · "Don't worry — I will." · "Don't worry, it's no problem."
+
+### CP014 — "That's very kind of you."
+
+**"that's very kind of you"**
+- BUILD: "well, that's very kind of you" · "and that's very kind of you" · "that's very kind of you, Sarah" · "yes, that's very kind of you"
+- USE: "That's very kind of you." · "That's very kind of you, Sarah. Thank you very much." · "Well, that's very kind of you!" · "That's very kind of you — thank you." · "That's very kind of you, but don't worry."
+
+### CP015 — "You're very kind."
+
+**"you're very kind"**
+- BUILD: "and you're very kind" · "well, you're very kind" · "you're very kind, Sarah" · "yes, you're very kind"
+- USE: "You're very kind." · "Thank you very much — you're very kind." · "You're very kind, Sarah." · "Well, you're very kind!" · "You're very kind, but don't worry."
+
+### CP016 — "Thank you for helping me."
+
+**"for helping me"**
+- BUILD: "thank you for helping me" · "thank you very much for helping me" · "and thank you for helping me, Sarah" · "for helping me again"
+- USE: "Thank you for helping me." · "Thank you very much for helping me." · "Thank you for helping me, Sarah." · "Thank you for helping me again — you're very kind." · "Thank you for helping me. That's very kind of you."
+
+### CP017 — "Thank you for all your work."
+
+**"for all your work"**
+- BUILD: "thank you for all your work" · "thank you very much for all your work" · "and for all your work" · "for all your work, Sarah"
+- USE: "Thank you for all your work." · "Thank you very much for all your work, Sarah." · "Thank you for all your work — you're very kind." · "Thank you for helping me, and for all your work." · "Thank you for all your work. Good night."
+
+### CP018 — "Thank you for being so friendly."
+
+**"for being so friendly"**
+- BUILD: "thank you for being so friendly" · "thank you very much for being so friendly" · "and for being so friendly" · "for being so friendly, Sarah"
+- USE: "Thank you for being so friendly." · "Thank you very much for being so friendly." · "Thank you for being so friendly, Sarah — you're very kind." · "Thank you for helping me, and for being so friendly." · "Thank you for being so friendly. See you tomorrow!"
+
+### CP019 — "I wish you good luck with everything."
+
+**"I wish you good luck"**
+- BUILD: "and I wish you good luck" · "well, I wish you good luck" · "I wish you good luck, Sarah" · "so I wish you good luck"
+- USE: "I wish you good luck." · "I wish you good luck, Sarah." · "I wish you good luck — see you tomorrow!" · "Thank you for all your work, and I wish you good luck." · "Goodbye, James. I wish you good luck."
+
+**"with everything"**
+- BUILD: "I wish you good luck with everything" · "and I wish you good luck with everything" · "I wish you good luck with everything, Sarah" · "well, I wish you good luck with everything"
+- USE: "I wish you good luck with everything." · "I wish you good luck with everything, Sarah." · "Thank you for all your work — I wish you good luck with everything." · "Goodbye, James. I wish you good luck with everything." · "I wish you good luck with everything. Good night."
+
+### CP020 — "Good luck with that!"
+
+**"good luck"**
+- BUILD: "and good luck" · "well, good luck" · "good luck, Sarah" · "good luck with everything"
+- USE: "Good luck!" · "Good luck, Sarah!" · "Good luck with everything, James." · "Well, good luck — see you tomorrow!" · "Thank you very much, and good luck."
+
+**"with that"**
+- BUILD: "good luck with that" · "and good luck with that" · "well, good luck with that" · "good luck with that, Sarah"
+- USE: "Good luck with that!" · "Good luck with that, Sarah." · "Well, good luck with that!" · "Good luck with that, and see you tomorrow." · "Good luck with that — don't worry!"
+
+### CP021 — "I think that's normal — learning a new language is difficult."
+
+**"that's normal"**
+- BUILD: "I think that's normal" · "well, that's normal" · "and that's normal" · "yes, that's normal"
+- USE: "That's normal." · "I think that's normal." · "Don't worry — that's normal." · "Yes, that's normal, Sarah." · "Well, I think that's normal too."
+
+**"learning a new language is difficult"**
+- BUILD: "and learning a new language is difficult" · "I think learning a new language is difficult" · "well, learning a new language is difficult" · "but learning a new language is difficult"
+- USE: "I think that's normal — learning a new language is difficult." · "Learning a new language is difficult." · "Don't worry — learning a new language is difficult." · "Learning a new language is difficult, but I think that's normal." · "Learning a new language is difficult — good luck!"
+
+### CP024 — "Excuse me. Hello. What's your name?"
+
+**"excuse me"**
+- BUILD: "excuse me, hello" · "excuse me, please" · "excuse me — good morning" · "excuse me, good evening" · "well, excuse me"
+- USE: "Excuse me. Hello." · "Excuse me — good morning!" · "Excuse me, please." · "Excuse me. Good afternoon." · "Excuse me — thank you very much." · "Excuse me. Good evening!"
+
+**"what's your name"**
+- BUILD: "hello, what's your name" · "excuse me, what's your name" · "and what's your name" · "so, what's your name" · "well, what's your name"
+- USE: "Excuse me. Hello. What's your name?" · "Hello — what's your name?" · "Good morning. What's your name?" · "So what's your name?" · "Excuse me, what's your name?" · "Well, what's your name?"
+
+---
+
+### CP025 — "My name is Anna. And you?"
+
+**"my name is Anna"**
+- BUILD: "hello, my name is Anna" · "excuse me, my name is Anna" · "and my name is Anna" · "well, my name is James" · "good evening, my name is Sarah"
+- USE: "Hello, my name is Anna." · "Good morning. My name is James." · "My name is Sarah." · "Excuse me — my name is Anna." · "Well, my name is Anna." · "Good evening! My name is James."
+
+**"and you?"**
+- BUILD: "my name is Anna. And you?" · "I'm very well, thank you. And you?" · "good morning. And you?" · "well, and you?"
+- USE: "My name is Anna. And you?" · "I'm very well, thank you. And you?" · "I'm very well. And you?" · "My name is Sarah. And you?" · "Good evening! My name is James. And you?" · "And you?"
+
+---
+
+### CP026 — "I'm James. Pleased to meet you."
+
+**"I'm James"**
+- BUILD: "hello, I'm James" · "I'm James, and you?" · "excuse me, I'm James" · "and I'm James" · "well, I'm Anna"
+- USE: "Hello, I'm James." · "Good morning — I'm James." · "I'm Anna. And you?" · "Excuse me, I'm James. What's your name?" · "I'm Sarah, and you?" · "Well, I'm James."
+
+**"pleased to meet you"**
+- BUILD: "hello, pleased to meet you" · "I'm James, pleased to meet you" · "my name is Anna, pleased to meet you" · "and pleased to meet you"
+- USE: "I'm James. Pleased to meet you." · "Hello, pleased to meet you." · "My name is Anna. Pleased to meet you." · "Pleased to meet you!" · "Pleased to meet you — I'm Sarah." · "Good evening. Pleased to meet you."
+
+---
+
+### CP027 — "Pleased to meet you too. Where are you from?"
+
+**"where are you from"**
+- BUILD: "and where are you from" · "so where are you from" · "pleased to meet you. Where are you from?" · "well, where are you from"
+- USE: "Pleased to meet you too. Where are you from?" · "So where are you from?" · "Hello — where are you from?" · "And where are you from?" · "Excuse me, where are you from?" · "What's your name, and where are you from?"
+
+---
+
+### CP028 — "I'm from Manchester, but I live in London now. And you?"
+
+**"I'm from Manchester"**
+- BUILD: "I'm from Manchester, and you?" · "hello, I'm from Manchester" · "I'm James, and I'm from Manchester" · "well, I'm from France"
+- USE: "I'm from Manchester. And you?" · "Hello, I'm Anna. I'm from France." · "I'm from London." · "Well, I'm from Manchester." · "Pleased to meet you. I'm from Manchester." · "My name is James, and I'm from Manchester."
+
+**"I live in London now"**
+- BUILD: "but I live in London now" · "I'm from Manchester, but I live in London now" · "and I live in London now" · "well, I live in Manchester now"
+- USE: "I'm from Manchester, but I live in London now. And you?" · "I live in London now." · "I'm from France, but I live in Manchester now." · "Well, I live in London now." · "I'm James. I live in London now." · "Where are you from? I'm from Manchester, but I live in London now."
+
+---
+
+### CP029 — "I'm from France. I've been here for two years."
+
+**"I've been here for two years"**
+- BUILD: "and I've been here for two years" · "I'm from France. I've been here for two years" · "but I've been here for two years" · "well, I've been here for three years"
+- USE: "I'm from France. I've been here for two years." · "I've been here for two years." · "I live in London now — I've been here for three years." · "I'm from Manchester, but I've been here for two years." · "Well, I've been here for two years now." · "I'm James. I've been here for two years."
+
+---
+
+### CP030 — "This is a lovely city. What do you do?"
+
+**"this is a lovely city"**
+- BUILD: "and this is a lovely city" · "well, this is a lovely city" · "I think this is a lovely city" · "but this is a lovely city"
+- USE: "This is a lovely city." · "I think this is a lovely city." · "I live in London now — this is a lovely city." · "I've been here for two years. This is a lovely city." · "Well, this is a lovely city!" · "This is a lovely city, and I'm from Manchester."
+
+**"what do you do"**
+- BUILD: "and what do you do" · "so what do you do" · "this is a lovely city. What do you do?" · "well, what do you do"
+- USE: "This is a lovely city. What do you do?" · "So what do you do?" · "And what do you do?" · "What do you do, James?" · "Excuse me — what do you do?" · "What's your name, and what do you do?"
+
+---
+
+### CP031 — "I'm a nurse, at the hospital just round the corner. And you?"
+
+**"I'm a nurse"**
+- BUILD: "well, I'm a nurse" · "I'm a nurse, and you?" · "I'm Anna, and I'm a nurse" · "and I'm a nurse"
+- USE: "I'm a nurse. And you?" · "I'm a nurse, and I live in London now." · "My name is Anna and I'm a nurse." · "Well, I'm a nurse." · "I'm a nurse. What do you do?" · "I'm from France, and I'm a nurse."
+
+**"at the hospital"**
+- BUILD: "I'm a nurse at the hospital" · "at the hospital here" · "at the hospital now" · "well, at the hospital" · "and I'm a nurse at the hospital"
+- USE: "I'm a nurse at the hospital." · "I'm a nurse at the hospital, and you?" · "I'm Anna. I'm a nurse at the hospital." · "I've been here for two years — I'm a nurse at the hospital." · "Well, I'm a nurse at the hospital." · "I'm a nurse at the hospital now."
+
+**"just round the corner"**
+- BUILD: "at the hospital just round the corner" · "it's just round the corner" · "just round the corner here" · "and it's just round the corner"
+- USE: "I'm a nurse, at the hospital just round the corner. And you?" · "It's just round the corner." · "I'm a nurse at the hospital just round the corner." · "It's just round the corner, so don't worry." · "Well, it's just round the corner." · "Don't worry, it's just round the corner."
+
+---
+
+### CP032 — "I teach English, but not in a school. I work with adults."
+
+**"I teach English"**
+- BUILD: "and I teach English" · "well, I teach English" · "I'm James, and I teach English" · "I teach English now"
+- USE: "I teach English." · "I'm James. I teach English." · "I teach English, and you?" · "I teach English here." · "I live in London now, and I teach English." · "Well, I teach English. What do you do?"
+
+**"not in a school"**
+- BUILD: "I teach English, but not in a school" · "but not in a school" · "not in a school, though" · "and not in a school"
+- USE: "I teach English, but not in a school." · "I teach English now, but not in a school." · "I teach English here, but not in a school." · "Well, I teach English, though not in a school." · "Not in a school, though." · "I teach English, but not in a school. And you?"
+
+**"I work with adults"**
+- BUILD: "and I work with adults" · "I teach English, and I work with adults" · "but I work with adults" · "well, I work with adults" · "I work with adults now"
+- USE: "I teach English, but not in a school. I work with adults." · "I work with adults." · "I work with adults now." · "I teach English, and I work with adults." · "I work with adults, and you?" · "Well, I work with adults — I've been here for two years."
+
+---
+
+### CP033 — "I'm on holiday here with my wife and children. We're having a lovely time."
+
+**"I'm on holiday here"**
+- BUILD: "and I'm on holiday here" · "well, I'm on holiday here" · "I'm on holiday here now" · "but I'm on holiday here" · "I'm James, and I'm on holiday here"
+- USE: "I'm on holiday here." · "I'm from Manchester — I'm on holiday here." · "I'm on holiday here, and this is a lovely city." · "Well, I'm on holiday here." · "I'm on holiday here. And you?" · "I'm James. I'm on holiday here."
+
+**"with my wife and children"**
+- BUILD: "I'm on holiday here with my wife and children" · "and with my wife and children" · "here with my wife and children" · "I live in London now with my wife and children"
+- USE: "I'm on holiday here with my wife and children." · "I live in London now, with my wife and children." · "I've been here for two years, with my wife and children." · "I'm on holiday here with my wife and children, and this is a lovely city." · "Well, I'm on holiday here with my wife and children." · "I'm from Manchester, but I live in London now with my wife and children."
+
+**"we're having a lovely time"**
+- BUILD: "and we're having a lovely time" · "so we're having a lovely time" · "we're having a lovely time here" · "well, we're having a lovely time"
+- USE: "I'm on holiday here with my wife and children. We're having a lovely time." · "We're having a lovely time." · "This is a lovely city, and we're having a lovely time." · "We're having a lovely time here, thank you." · "Well, we're having a lovely time!" · "We're having a lovely time, thank you very much."
+
+---
+
+### CP034 — "How interesting. Well, lovely to meet you."
+
+**"how interesting"**
+- BUILD: "well, how interesting" · "yes, how interesting" · "how interesting — and you?" · "how interesting. Where are you from?"
+- USE: "How interesting." · "How interesting! Where are you from?" · "Well, how interesting." · "How interesting — what do you do?" · "Yes, how interesting." · "How interesting. This is a lovely city."
+
+**"lovely to meet you"**
+- BUILD: "well, lovely to meet you" · "and lovely to meet you" · "lovely to meet you, goodbye" · "lovely to meet you too"
+- USE: "How interesting. Well, lovely to meet you." · "Lovely to meet you." · "Lovely to meet you too." · "Lovely to meet you — goodbye!" · "Well, lovely to meet you. See you tomorrow." · "Lovely to meet you, and thank you very much."
+
+---
+
+### CP035 — "Excuse me, is this seat taken?"
+
+**"is this seat taken"**
+- BUILD: "excuse me, is this seat taken" · "and is this seat taken" · "so is this seat taken" · "hello, is this seat taken"
+- USE: "Excuse me, is this seat taken?" · "Is this seat taken?" · "Hello. Is this seat taken?" · "Is this seat taken, please?" · "Excuse me — is this seat taken? Thank you very much." · "Well, is this seat taken?"
+
+---
+
+### CP036 — "No, it's free. Please, go ahead."
+
+**"no"**
+- BUILD: "no, thank you" · "no, thank you very much" · "no, don't worry" · "well, no" · "no, I'm very well, thank you"
+- USE: "No, thank you." · "No, thank you very much." · "No, don't worry." · "No, I'm on holiday here." · "No, I'm from Manchester." · "Well, no."
+
+**"it's free"**
+- BUILD: "no, it's free" · "and it's free" · "well, it's free" · "it's free, don't worry" · "yes, it's free"
+- USE: "No, it's free." · "It's free." · "Don't worry, it's free." · "It's free, and it's just round the corner." · "Well, it's free!" · "Yes, it's free."
+
+**"go ahead"**
+- BUILD: "please, go ahead" · "no, it's free. Please, go ahead" · "yes, go ahead" · "go ahead, don't worry"
+- USE: "No, it's free. Please, go ahead." · "Please, go ahead." · "Yes, go ahead." · "Go ahead — don't worry." · "It's free, so go ahead." · "Go ahead, of course."
+
+---
+
+### CP037 — "Can you say that again?"
+
+**"say that again"**
+- BUILD: "can you say that again" · "could you say that again" · "please say that again" · "say that again, please"
+- USE: "Can you say that again?" · "Could you say that again, please?" · "Say that again, please." · "Excuse me, can you say that again?" · "Could you say that again? Thank you." · "Can you say that again, please?"
+
+---
+
+### CP038 — "I'm sorry, I didn't understand you. I'm learning your language. Could you say that again more slowly?"
+
+**"I'm sorry"**
+- BUILD: "I'm sorry, can you say that again" · "no, I'm sorry" · "well, I'm sorry" · "I'm sorry — could you say that again"
+- USE: "I'm sorry." · "I'm sorry — can you say that again?" · "No, I'm sorry." · "I'm sorry, could you say that again?" · "Well, I'm sorry!" · "I'm sorry. Please, go ahead."
+
+**"I didn't understand you"**
+- BUILD: "I'm sorry, I didn't understand you" · "but I didn't understand you" · "and I didn't understand you" · "I didn't understand you, can you say that again"
+- USE: "I'm sorry, I didn't understand you." · "I didn't understand you. Can you say that again?" · "I'm sorry, I didn't understand you — could you say that again?" · "I didn't understand you." · "Well, I didn't understand you, I'm sorry." · "I didn't understand you, so can you say that again, please?"
+
+**"I'm learning your language"**
+- BUILD: "and I'm learning your language" · "but I'm learning your language" · "well, I'm learning your language" · "I'm learning your language now"
+- USE: "I'm learning your language." · "I'm sorry, I didn't understand you. I'm learning your language." · "I'm learning your language, so can you say that again?" · "I'm learning your language, and learning a new language is difficult." · "Well, I'm learning your language now." · "I'm learning your language — please say that again."
+
+**"more slowly"**
+- BUILD: "say that again more slowly" · "can you say that again more slowly" · "please say that again more slowly" · "more slowly, please"
+- USE: "Could you say that again more slowly?" · "Can you say that again more slowly, please?" · "More slowly, please." · "I'm sorry, I didn't understand you — could you say that again more slowly?" · "I'm learning your language, so could you say that again more slowly?" · "Please say that again more slowly. Thank you."
+
+---
+
+### CP039 — "I'm sorry I can't speak very quickly."
+
+**"I can't speak very quickly"**
+- BUILD: "I'm sorry I can't speak very quickly" · "and I can't speak very quickly" · "but I can't speak very quickly" · "well, I can't speak very quickly"
+- USE: "I'm sorry I can't speak very quickly." · "I can't speak very quickly." · "I'm learning your language, so I can't speak very quickly." · "I can't speak very quickly, but I'm learning your language." · "Well, I can't speak very quickly — I'm sorry." · "I can't speak very quickly, so could you say that again more slowly?"
+
+---
+
+### CP040 — "You spoke a little too quickly, so I'm not sure if I understood."
+
+**"you spoke a little too quickly"**
+- BUILD: "I'm sorry, you spoke a little too quickly" · "but you spoke a little too quickly" · "you spoke a little too quickly, so I didn't understand you" · "well, you spoke a little too quickly"
+- USE: "I'm sorry, you spoke a little too quickly." · "You spoke a little too quickly — could you say that again more slowly?" · "You spoke a little too quickly, so can you say that again?" · "Well, you spoke a little too quickly!" · "I didn't understand you — you spoke a little too quickly." · "You spoke a little too quickly, and I'm learning your language."
+
+**"I'm not sure if I understood"**
+- BUILD: "so I'm not sure if I understood" · "and I'm not sure if I understood" · "but I'm not sure if I understood" · "well, I'm not sure if I understood"
+- USE: "You spoke a little too quickly, so I'm not sure if I understood." · "I'm not sure if I understood." · "I'm sorry, I'm not sure if I understood — could you say that again?" · "I'm learning your language, so I'm not sure if I understood." · "I'm not sure if I understood, so can you say that again more slowly?" · "Well, I'm not sure if I understood."
+
+---
+
+### CP041 — "Can we try again?"
+
+**"try again"**
+- BUILD: "can we try again" · "so can we try again" · "please, can we try again" · "I'd like to try again"
+- USE: "Can we try again?" · "Can we try again, please?" · "I'm not sure if I understood — can we try again?" · "I'm sorry, can we try again?" · "You spoke a little too quickly, so can we try again?" · "Can we try again more slowly?"
+
+---
+
+### CP042 — "I prefer to try to speak your language — I think it's polite."
+
+**"I prefer to try"**
+- BUILD: "well, I prefer to try" · "but I prefer to try" · "and I prefer to try" · "I prefer to try again"
+- USE: "I prefer to try." · "I'm learning your language, so I prefer to try." · "I prefer to try again." · "I can't speak very quickly, but I prefer to try." · "Well, I prefer to try!" · "I prefer to try, so please say that again more slowly."
+
+**"to speak your language"**
+- BUILD: "I prefer to try to speak your language" · "I'd like to speak your language" · "I want to speak your language" · "and I want to speak your language"
+- USE: "I prefer to try to speak your language." · "I'd like to speak your language." · "I want to speak your language, so can we try again?" · "I can't speak very quickly, but I want to speak your language." · "I prefer to try to speak your language, though I can't speak very quickly." · "I'd like to speak your language, but I can't speak very quickly."
+
+**"it's polite"**
+- BUILD: "I think it's polite" · "and I think it's polite" · "well, it's polite" · "but it's polite" · "so it's polite"
+- USE: "I prefer to try to speak your language — I think it's polite." · "I think it's polite." · "I think it's polite to speak your language." · "Well, I think it's polite." · "I'd like to speak your language — I think it's polite." · "It's polite, of course."
+
+---
+
+### CP043 — "But if you can speak slowly, I think we'll be able to manage."
+
+**"if you can speak slowly"**
+- BUILD: "but if you can speak slowly" · "and if you can speak slowly" · "so if you can speak slowly" · "if you can speak slowly, please"
+- USE: "If you can speak slowly, can we try again?" · "If you can speak slowly, I'd like to try again." · "I'm learning your language, so if you can speak slowly, that's very kind of you." · "If you can speak slowly, I prefer to try to speak your language." · "If you can speak slowly, please say that again." · "If you can speak slowly, I think that's very kind of you."
+
+**"we'll be able to manage"**
+- BUILD: "so I think we'll be able to manage" · "and we'll be able to manage" · "but we'll be able to manage" · "I think we'll be able to manage"
+- USE: "But if you can speak slowly, I think we'll be able to manage." · "I think we'll be able to manage." · "Don't worry, we'll be able to manage." · "If you can speak slowly, we'll be able to manage." · "Well, I think we'll be able to manage." · "I'm learning your language, but I think we'll be able to manage."
+
+### CP044 — "Before I order — I'm learning your language, and I'd like to do the whole thing in it, if that's OK with you. If I get properly stuck, I might have to ask you to switch back to mine."
+
+**"before I order"**
+- BUILD: "before I order" · "well, before I order" · "excuse me — before I order" · "so, before I order"
+- USE: "Before I order — I'm learning your language." · "Before I order, can you say that again?" · "Before I order — I'm sorry, I didn't understand you." · "Excuse me — before I order, could you say that again more slowly?" · "Well, before I order — I'm learning your language, and I can't speak very quickly."
+
+**"to do the whole thing in it"**
+- BUILD: "to do the whole thing in it" · "I'd like to do the whole thing in it" · "and I'd like to do the whole thing in it" · "I want to do the whole thing in it"
+- USE: "I'm learning your language, and I'd like to do the whole thing in it." · "I'd like to do the whole thing in it." · "I'm learning your language — I want to do the whole thing in it." · "I hope to do the whole thing in it." · "I'd like to do the whole thing in it, but I can't speak very quickly."
+
+**"if that's OK with you"**
+- BUILD: "if that's OK with you" · "and if that's OK with you" · "but if that's OK with you" · "well, if that's OK with you"
+- USE: "I'd like to do the whole thing in it, if that's OK with you." · "I'd like to speak your language, if that's OK with you." · "Can we try again, if that's OK with you?" · "Could you say that again more slowly, if that's OK with you?" · "I prefer to try, if that's OK with you."
+
+**"if I get properly stuck"**
+- BUILD: "if I get properly stuck" · "and if I get properly stuck" · "but if I get properly stuck" · "so if I get properly stuck"
+- USE: "If I get properly stuck, can you say that again more slowly?" · "I'd like to do the whole thing in it, but if I get properly stuck, could you say that again?" · "If I get properly stuck, don't worry — I prefer to try." · "If I get properly stuck, can we try again?" · "If I get properly stuck, I think we'll be able to manage."
+
+**"I might have to ask you"**
+- BUILD: "I might have to ask you" · "and I might have to ask you" · "I think I might have to ask you" · "but I might have to ask you"
+- USE: "If I get properly stuck, I might have to ask you to say that again." · "I might have to ask you to say that again more slowly." · "I might have to ask you to try again." · "I'm learning your language, so I might have to ask you to say that again." · "I'm not sure if I understood — I might have to ask you, if that's OK with you."
+
+**"to switch back to mine"**
+- BUILD: "to switch back to mine" · "I'd like to switch back to mine" · "I might have to ask you to switch back to mine" · "I need to switch back to mine"
+- USE: "If I get properly stuck, I might have to ask you to switch back to mine." · "I'm sorry — I need to switch back to mine." · "I didn't understand you, so I'd like to switch back to mine, if that's OK with you." · "I'm not sure if I understood — I might have to ask you to switch back to mine." · "If that's OK with you, I need to switch back to mine now."
+
+### CP045 — "Thanks. And if I get a word wrong, just tell me — I'd rather be told. I'll ask if I lose you."
+
+**"thanks"**
+- BUILD: "thanks" · "well, thanks" · "yes, thanks" · "and thanks"
+- USE: "Thanks." · "Thanks — that's very kind of you." · "Thanks, and good luck with that." · "Thanks — see you tomorrow." · "Thanks, you're very kind."
+
+**"if I get a word wrong"**
+- BUILD: "if I get a word wrong" · "and if I get a word wrong" · "so if I get a word wrong" · "but if I get a word wrong"
+- USE: "If I get a word wrong, can you say that again?" · "I'm learning your language, so if I get a word wrong, don't worry." · "If I get a word wrong, I'm sorry." · "If I get a word wrong, could you say that again more slowly?" · "If I get a word wrong, can we try again?"
+
+**"just tell me"**
+- BUILD: "just tell me" · "and just tell me" · "if I get a word wrong, just tell me" · "well, just tell me"
+- USE: "If I get a word wrong, just tell me." · "Just tell me." · "Just tell me — I'd like to speak your language." · "Don't worry — just tell me." · "Just tell me if I get a word wrong."
+
+**"I'd rather be told"**
+- BUILD: "I'd rather be told" · "and I'd rather be told" · "well, I'd rather be told" · "but I'd rather be told"
+- USE: "Just tell me — I'd rather be told." · "I'd rather be told." · "If I get a word wrong, I'd rather be told." · "Don't worry — I'd rather be told." · "I'm learning your language, so I'd rather be told."
+
+**"I'll ask"**
+- BUILD: "I'll ask" · "and I'll ask" · "so I'll ask" · "then I'll ask"
+- USE: "Don't worry — I'll ask." · "I'll ask again." · "If I get a word wrong, I'll ask." · "I'm learning your language, so I'll ask if I get a word wrong." · "I'll ask — I'd rather be told."
+
+**"if I lose you"**
+- BUILD: "if I lose you" · "and if I lose you" · "but if I lose you" · "I'll ask if I lose you"
+- USE: "I'll ask if I lose you." · "If I lose you, can you say that again more slowly?" · "If I lose you, don't worry — I'll ask." · "I can't speak very quickly, and if I lose you, I'll ask." · "If I lose you, I might have to ask you to switch back to mine."
+
+### CP046 — "Right then. A coffee with milk, please — to drink here."
+
+**"right then"**
+- BUILD: "right then" · "well, right then" · "right then, thanks" · "right then, before I order"
+- USE: "Right then — I'd like to do the whole thing in it." · "Right then, I'll ask if I lose you." · "Right then. Thank you very much." · "Right then, can we try again?" · "Right then — see you tomorrow."
+
+**"a coffee with milk"**
+- BUILD: "a coffee with milk" · "I'd like a coffee with milk" · "just a coffee with milk" · "and a coffee with milk"
+- USE: "A coffee with milk, please." · "I'd like a coffee with milk, please." · "Right then. A coffee with milk, please." · "Just a coffee with milk, thanks." · "A coffee with milk, please — and thanks."
+
+**"to drink here"**
+- BUILD: "to drink here" · "a coffee with milk to drink here" · "I'd like a coffee with milk to drink here" · "and a coffee with milk to drink here"
+- USE: "A coffee with milk, please — to drink here." · "I'd like a coffee with milk to drink here, please." · "Right then. A coffee with milk to drink here, thanks." · "Just a coffee with milk, to drink here." · "I'd like a coffee with milk, to drink here — thank you very much."
+
+### CP047 — "Of course — mine it is. Just a coffee with milk, please."
+
+**"mine it is"**
+- BUILD: "mine it is" · "of course — mine it is" · "well, mine it is" · "right then, mine it is"
+- USE: "Of course — mine it is." · "Mine it is, then." · "No problem — mine it is." · "Mine it is. Just a coffee with milk, please." · "Right then, mine it is — thanks."
+
+### CP048 — "Then I might come back after three and try you. Just the coffee, thanks — nothing else."
+
+**"I might come back after three"**
+- BUILD: "I might come back after three" · "then I might come back after three" · "so I might come back after three" · "well, I might come back after three"
+- USE: "Then I might come back after three." · "I might come back after three — see you later." · "No problem. I might come back after three." · "I might come back after three, if that's OK with you." · "Right then — I might come back after three."
+
+**"and try you"**
+- BUILD: "and try you" · "and try you again" · "I might come back after three and try you" · "then I might come back after three and try you"
+- USE: "Then I might come back after three and try you." · "I might come back after three and try you again." · "No problem — I might come back after three and try you." · "Right then. I might come back after three and try you, if that's OK with you." · "I might come back after three and try you — see you later."
+
+**"just the coffee, thanks"**
+- BUILD: "just the coffee, thanks" · "and just the coffee, thanks" · "right then — just the coffee, thanks" · "well, just the coffee, thanks"
+- USE: "Just the coffee, thanks." · "Just the coffee, thanks — and see you tomorrow." · "Right then. Just the coffee, thanks." · "Just the coffee, thanks. I might come back after three." · "Of course — just the coffee, thanks."
+
+**"nothing else"**
+- BUILD: "nothing else" · "and nothing else" · "just the coffee, thanks — nothing else" · "no, nothing else"
+- USE: "Just the coffee, thanks — nothing else." · "No, nothing else." · "Nothing else, thanks." · "A coffee with milk, please — nothing else." · "Nothing else for me, thanks."
+
+### CP049 — "That's fair — I'd rather pay for the right ones. Mine for the numbers, yours for everything else."
+
+**"that's fair"**
+- BUILD: "that's fair" · "well, that's fair" · "and that's fair" · "yes, that's fair"
+- USE: "That's fair." · "Yes, that's fair — thanks." · "That's fair. I think that's normal." · "Of course — that's fair." · "That's fair, and that's very kind of you."
+
+**"I'd rather pay for the right ones"**
+- BUILD: "I'd rather pay for the right ones" · "and I'd rather pay for the right ones" · "so I'd rather pay for the right ones" · "but I'd rather pay for the right ones"
+- USE: "That's fair — I'd rather pay for the right ones." · "I'd rather pay for the right ones." · "Don't worry — I'd rather pay for the right ones." · "I'd rather pay for the right ones, if that's OK with you." · "Yes, of course — I'd rather pay for the right ones."
+
+**"mine for the numbers"**
+- BUILD: "mine for the numbers" · "and mine for the numbers" · "so, mine for the numbers" · "well, mine for the numbers"
+- USE: "Mine for the numbers, please." · "That's fair — mine for the numbers." · "Mine for the numbers, if that's OK with you." · "Of course — mine for the numbers." · "Right then. Mine for the numbers, thanks."
+
+**"yours for everything else"**
+- BUILD: "yours for everything else" · "and yours for everything else" · "mine for the numbers, yours for everything else" · "so, yours for everything else"
+- USE: "Mine for the numbers, yours for everything else." · "Yours for everything else, if that's OK with you." · "That's fair — yours for everything else." · "Yours for everything else, please." · "Right then: mine for the numbers, and yours for everything else."
+
+### CP050 — "So, in mine: a double room, under the name Jones — three nights, Friday to Monday."
+
+**"in mine"**
+- BUILD: "in mine" · "so, in mine" · "and in mine" · "just in mine"
+- USE: "Can we try again in mine?" · "Could you say that again in mine?" · "If I get properly stuck, I'll ask in mine." · "Just tell me in mine, if that's OK with you." · "I'm sorry — I might have to ask you in mine."
+
+**"a double room"**
+- BUILD: "a double room" · "I'd like a double room" · "and a double room" · "just a double room"
+- USE: "A double room, please." · "I'd like a double room, please." · "So, in mine: a double room." · "A double room, thanks — nothing else." · "I'd like a double room, if that's OK with you."
+
+**"under the name Jones"**
+- BUILD: "under the name Jones" · "a double room, under the name Jones" · "and under the name Jones" · "so, under the name Jones"
+- USE: "A double room, under the name Jones." · "It's under the name Jones." · "I'd like a double room, please — under the name Jones." · "Under the name Jones, thanks." · "So, in mine: a double room, under the name Jones."
+
+**"three nights"**
+- BUILD: "three nights" · "for three nights" · "and three nights" · "a double room for three nights"
+- USE: "A double room for three nights, please." · "Three nights, please." · "I'd like a double room, under the name Jones — three nights." · "Just three nights, thanks." · "Three nights, if that's OK with you."
+
+**"Friday to Monday"**
+- BUILD: "Friday to Monday" · "three nights, Friday to Monday" · "and Friday to Monday" · "just Friday to Monday"
+- USE: "Three nights, Friday to Monday." · "A double room for three nights, Friday to Monday." · "Friday to Monday, please." · "So, in mine: a double room, under the name Jones — three nights, Friday to Monday." · "Friday to Monday, if that's OK with you."
+
+### CP051 — "On my own, mostly — a little every day, for about a year. Did you ever learn one?"
+
+**"on my own, mostly"**
+- BUILD: "on my own, mostly" · "just on my own, mostly" · "and on my own, mostly" · "well, on my own, mostly"
+- USE: "On my own, mostly." · "I'm learning your language on my own, mostly." · "Well — on my own, mostly." · "I'm here on my own, mostly." · "On my own, mostly, so I can't speak very quickly."
+
+**"a little every day"**
+- BUILD: "a little every day" · "just a little every day" · "and a little every day" · "on my own, mostly — a little every day"
+- USE: "A little every day." · "On my own, mostly — a little every day." · "I'm learning your language, a little every day." · "I prefer to try a little every day." · "Just a little every day, but I think we'll be able to manage."
+
+**"for about a year"**
+- BUILD: "for about a year" · "and for about a year" · "just for about a year" · "a little every day, for about a year"
+- USE: "For about a year." · "I'm learning your language — a little every day, for about a year." · "On my own, mostly — a little every day, for about a year." · "Just for about a year, so I can't speak very quickly." · "For about a year now."
+
+**"did you ever learn one"**
+- BUILD: "did you ever learn one" · "and did you ever learn one" · "so, did you ever learn one" · "well, did you ever learn one"
+- USE: "Did you ever learn one?" · "And you? Did you ever learn one?" · "Learning a new language is difficult. Did you ever learn one?" · "A little every day, for about a year. Did you ever learn one?" · "I'm learning your language — did you ever learn one?"
+
+### CP052 — "Well — that's exactly what I'm here to learn. A coffee with milk, please. And stop me if I say it wrong."
+
+**"that's exactly what I'm here to learn"**
+- BUILD: "that's exactly what I'm here to learn" · "well — that's exactly what I'm here to learn" · "and that's exactly what I'm here to learn" · "but that's exactly what I'm here to learn"
+- USE: "Well — that's exactly what I'm here to learn." · "That's exactly what I'm here to learn." · "Of course — that's exactly what I'm here to learn." · "Learning a new language is difficult, but that's exactly what I'm here to learn." · "Yes, that's exactly what I'm here to learn — a little every day."
+
+**"stop me"**
+- BUILD: "stop me" · "and stop me" · "just stop me" · "so stop me"
+- USE: "Stop me if I get a word wrong." · "Just stop me — I'd rather be told." · "Stop me, please." · "Don't worry — just stop me." · "Stop me — I'm learning your language."
+
+**"if I say it wrong"**
+- BUILD: "if I say it wrong" · "and stop me if I say it wrong" · "just tell me if I say it wrong" · "so if I say it wrong"
+- USE: "And stop me if I say it wrong." · "Just tell me if I say it wrong." · "If I say it wrong, I'd rather be told." · "Stop me if I say it wrong — I'd rather be told." · "If I say it wrong, don't worry — I'll ask."
+
+### CP053 — "I'd like a coffee, please. With milk but with no sugar. To take away."
+
+**"a coffee"**
+- BUILD: "a coffee, please" · "I'd like a coffee" · "I want a coffee" · "a coffee to drink here"
+- USE: "I'd like a coffee, please." · "Good morning. A coffee, please." · "Right then — a coffee, please." · "I'd like a coffee to drink here, please." · "Yes, a coffee, please. Thank you."
+
+**"with milk"**
+- BUILD: "with milk, please" · "just with milk" · "with milk, and nothing else" · "with milk, to drink here"
+- USE: "With milk, please." · "Yes, with milk, please." · "A coffee, please. With milk." · "A coffee with milk to drink here, please." · "Good afternoon. A coffee with milk, please."
+
+**"but with no sugar"**
+- BUILD: "with milk but with no sugar" · "but with no sugar, please" · "a coffee with milk but with no sugar" · "but with no sugar, thanks"
+- USE: "I'd like a coffee, please. With milk but with no sugar." · "With milk but with no sugar, please." · "A coffee with milk but with no sugar, to drink here." · "Yes, with milk but with no sugar, thanks." · "Good morning. A coffee with milk but with no sugar, please."
+
+**"to take away"**
+- BUILD: "to take away, please" · "a coffee to take away" · "just a coffee to take away" · "a coffee with milk to take away"
+- USE: "I'd like a coffee, please. With milk but with no sugar. To take away." · "A coffee with milk to take away, please." · "To take away, please." · "Good morning. A coffee to take away, please." · "I'd like a coffee with milk to take away, thanks."
+
+### CP054 — "Do you have any food?"
+
+**"do you have"**
+- BUILD: "do you have a coffee with milk" · "do you have a double room" · "excuse me, do you have" · "so do you have"
+- USE: "Excuse me — do you have a coffee with milk?" · "Do you have a double room?" · "Do you have a double room for three nights?" · "Do you have a coffee with milk but with no sugar?" · "Do you have a coffee to take away?"
+
+**"any food"**
+- BUILD: "do you have any food" · "any food to take away" · "and any food" · "do you have any food to take away"
+- USE: "Do you have any food?" · "Do you have any food to take away?" · "Excuse me — do you have any food?" · "Good evening. Do you have any food?" · "Do you have any food, or just a coffee?"
+
+### CP055 — "Do you have any snacks?"
+
+**"any snacks"**
+- BUILD: "do you have any snacks" · "and any snacks" · "any snacks to take away" · "do you have any snacks too"
+- USE: "Do you have any snacks?" · "Excuse me — do you have any snacks?" · "Do you have any food or any snacks?" · "Do you have any snacks to take away?" · "A coffee, please. And do you have any snacks?"
+
+### CP056 — "Do you have crisps, or nuts, or anything?"
+
+**"crisps, or nuts, or anything"**
+- BUILD: "do you have crisps, or nuts, or anything" · "and crisps, or nuts, or anything" · "any snacks — crisps, or nuts, or anything" · "crisps, or nuts, or anything to take away"
+- USE: "Do you have crisps, or nuts, or anything?" · "Do you have any snacks — crisps, or nuts, or anything?" · "Excuse me, do you have crisps, or nuts, or anything?" · "Do you have any food? Crisps, or nuts, or anything?" · "A coffee, please. And do you have crisps, or nuts, or anything?"
+
+### CP057 — "I'd like a black coffee, please."
+
+**"a black coffee"**
+- BUILD: "I'd like a black coffee" · "a black coffee, please" · "a black coffee to take away" · "and a black coffee"
+- USE: "I'd like a black coffee, please." · "A black coffee to take away, please." · "Good morning. A black coffee, please." · "I'd like a black coffee and a coffee with milk, please." · "Right then — a black coffee, please."
+
+### CP058 — "I'd like large, please. With oat milk if you have it."
+
+**"I'd like large"**
+- BUILD: "I'd like large, please" · "well, I'd like large" · "I'd like large to take away" · "yes, I'd like large"
+- USE: "I'd like large, please." · "Yes, I'd like large, please." · "I'd like large to take away, please." · "Well, I'd like large, thanks." · "A coffee with milk, please. I'd like large."
+
+**"with oat milk"**
+- BUILD: "with oat milk, please" · "a coffee with oat milk" · "with oat milk but with no sugar" · "with oat milk to take away"
+- USE: "With oat milk, please." · "I'd like a coffee with oat milk, please." · "I'd like large, please. With oat milk." · "A coffee with oat milk to take away, please." · "I'd like a coffee with oat milk but with no sugar, please."
+
+**"if you have it"**
+- BUILD: "with oat milk if you have it" · "a black coffee, if you have it" · "any food if you have it" · "with milk, if you have it"
+- USE: "I'd like large, please. With oat milk if you have it." · "A coffee with oat milk if you have it, please." · "I'd like a black coffee, if you have it." · "With milk if you have it, please." · "Just a coffee with milk, if you have it."
+
+### CP059 — "I'd like takeaway, please."
+
+**"I'd like takeaway"**
+- BUILD: "I'd like takeaway, please" · "yes, I'd like takeaway" · "well, I'd like takeaway" · "I'd like takeaway, thanks"
+- USE: "I'd like takeaway, please." · "Yes, I'd like takeaway, please." · "A black coffee. I'd like takeaway, please." · "I'd like takeaway, thanks." · "Well, I'd like takeaway, please."
+
+### CP060 — "Could I have two white coffees and two black coffees and one of those, please?"
+
+**"could I have"**
+- BUILD: "could I have a coffee" · "could I have a black coffee, please" · "excuse me, could I have" · "could I have a coffee with milk to take away"
+- USE: "Could I have a coffee with milk, please?" · "Excuse me — could I have a black coffee, please?" · "Could I have a coffee to take away, please?" · "Could I have a coffee with milk but with no sugar, please?" · "Could I have a coffee with oat milk if you have it?"
+
+**"two white coffees and two black coffees"**
+- BUILD: "could I have two white coffees and two black coffees" · "two white coffees and two black coffees, please" · "and two white coffees and two black coffees" · "two white coffees and two black coffees to take away"
+- USE: "Could I have two white coffees and two black coffees, please?" · "Two white coffees and two black coffees, please." · "Good morning. Two white coffees and two black coffees to take away, please." · "Could I have two white coffees and two black coffees? To take away, please." · "Two white coffees and two black coffees, please. And do you have any snacks?"
+
+**"one of those"**
+- BUILD: "and one of those" · "could I have one of those" · "one of those, please" · "just one of those"
+- USE: "Could I have two white coffees and two black coffees and one of those, please?" · "Could I have one of those, please?" · "And one of those, please." · "A black coffee and one of those, please." · "Excuse me — could I have one of those to take away?"
+
+### CP061 — "Yes, can I have a glass of water as well, please."
+
+**"can I have"**
+- BUILD: "can I have a coffee" · "can I have one of those" · "yes, can I have" · "and can I have a black coffee"
+- USE: "Can I have a coffee with milk, please?" · "Yes, can I have one of those, please?" · "Can I have two white coffees and two black coffees, please?" · "Can I have a black coffee to take away, please?" · "Excuse me — can I have a coffee with oat milk if you have it?"
+
+**"a glass of water"**
+- BUILD: "can I have a glass of water" · "and a glass of water" · "a glass of water, please" · "a glass of water too"
+- USE: "Can I have a glass of water, please?" · "A glass of water, please." · "Could I have a coffee and a glass of water, please?" · "Yes, and a glass of water too, please." · "Can I have a black coffee and a glass of water, please?"
+
+**"as well"**
+- BUILD: "a glass of water as well" · "and one of those as well" · "can I have a black coffee as well" · "with milk as well"
+- USE: "Yes, can I have a glass of water as well, please." · "Can I have one of those as well, please?" · "Could I have a black coffee as well, please?" · "And a glass of water as well, thanks." · "Do you have any snacks as well?"
+
+### CP062 — "Good morning. Two Americanos and a cup of tea, please."
+
+**"two Americanos"**
+- BUILD: "two Americanos, please" · "can I have two Americanos" · "two Americanos to take away" · "and two Americanos"
+- USE: "Good morning. Two Americanos, please." · "Can I have two Americanos, please?" · "Two Americanos to take away, please." · "Could I have two Americanos and a glass of water, please?" · "Two Americanos, please. And one of those as well."
+
+**"and a cup of tea"**
+- BUILD: "two Americanos and a cup of tea" · "and a cup of tea, please" · "a black coffee and a cup of tea" · "and a cup of tea to take away"
+- USE: "Good morning. Two Americanos and a cup of tea, please." · "Can I have a coffee with milk and a cup of tea, please?" · "Two Americanos and a cup of tea to take away, please." · "Could I have a black coffee and a cup of tea, please?" · "And a cup of tea as well, please."
+
+### CP063 — "I'd like two scoops of ice-cream, please."
+
+**"two scoops of ice-cream"**
+- BUILD: "I'd like two scoops of ice-cream" · "two scoops of ice-cream, please" · "can I have two scoops of ice-cream" · "and two scoops of ice-cream as well"
+- USE: "I'd like two scoops of ice-cream, please." · "Can I have two scoops of ice-cream, please?" · "Could I have two scoops of ice-cream and a glass of water, please?" · "Two scoops of ice-cream, please. To take away." · "I'd like two scoops of ice-cream and a cup of tea, please."
+
+### CP064 — "Can I have one scoop of chocolate and one of strawberry?"
+
+**"one scoop of chocolate"**
+- BUILD: "can I have one scoop of chocolate" · "one scoop of chocolate, please" · "and one scoop of chocolate" · "just one scoop of chocolate"
+- USE: "Can I have one scoop of chocolate, please?" · "One scoop of chocolate, please." · "I'd like one scoop of chocolate, please." · "Could I have one scoop of chocolate and a cup of tea, please?" · "Just one scoop of chocolate for me, please."
+
+**"and one of strawberry"**
+- BUILD: "one scoop of chocolate and one of strawberry" · "and one of strawberry, please" · "and one of strawberry as well" · "can I have one scoop of chocolate and one of strawberry"
+- USE: "Can I have one scoop of chocolate and one of strawberry?" · "One scoop of chocolate and one of strawberry, please." · "I'd like one scoop of chocolate and one of strawberry, please." · "And one of strawberry as well, please." · "Could I have one scoop of chocolate and one of strawberry to take away?"
+
+### CP065 — "And then another cone with one scoop of lemon and one of blueberry."
+
+**"and then"**
+- BUILD: "and then a black coffee" · "and then one of those" · "and then a glass of water as well" · "and then two scoops of ice-cream"
+- USE: "Two Americanos and a cup of tea, please. And then a glass of water as well." · "Can I have one scoop of chocolate and one of strawberry? And then a black coffee, please." · "A coffee with milk, please. And then two scoops of ice-cream." · "And then one of those, please." · "Could I have two white coffees and two black coffees? And then a cup of tea as well, please."
+
+**"another cone"**
+- BUILD: "and then another cone" · "another cone, please" · "can I have another cone" · "and another cone as well"
+- USE: "And then another cone with one scoop of chocolate and one of strawberry." · "Can I have another cone, please?" · "Could I have another cone as well, please?" · "And then another cone, please." · "One scoop of chocolate and one of strawberry, please. And then another cone."
+
+### CP067 — "Do you have anything to eat?"
+
+**"anything to eat"**
+- BUILD: "do you have anything to eat" · "and anything to eat as well" · "do you have anything to eat to take away" · "so, do you have anything to eat"
+- USE: "Do you have anything to eat?" · "Excuse me — do you have anything to eat?" · "Do you have anything to eat to take away?" · "A coffee with milk, please. And do you have anything to eat?" · "Good evening. Do you have anything to eat?"
+
+### CP068 — "Can we see the menu?"
+
+**"see the menu"**
+- BUILD: "can we see the menu" · "can we see the menu, please" · "and can we see the menu" · "excuse me, can we see the menu"
+- USE: "Can we see the menu?" · "Excuse me — can we see the menu, please?" · "Good evening. Can we see the menu, please?" · "Can we see the menu? Thank you." · "Do you have anything to eat? Can we see the menu?"
+
+### CP069 — "Can we see the dessert menu also?"
+
+**"see the dessert menu"**
+- BUILD: "can we see the dessert menu" · "can we see the dessert menu also" · "and can we see the dessert menu" · "can we see the dessert menu, please"
+- USE: "Can we see the dessert menu also?" · "Can we see the dessert menu, please?" · "Can we see the menu? And can we see the dessert menu also?" · "Excuse me — can we see the dessert menu?" · "Can we see the dessert menu? I'd like two scoops of ice-cream."
+
+### CP070 — "I'm not sure if I'm hungry. Do you have a menu?"
+
+**"I'm not sure if I'm hungry"**
+- BUILD: "well, I'm not sure if I'm hungry" · "I'm not sure if I'm hungry, though" · "I'm not sure if I'm hungry now" · "I'm not sure if I'm hungry, but"
+- USE: "I'm not sure if I'm hungry." · "Well, I'm not sure if I'm hungry, but can we see the menu?" · "I'm not sure if I'm hungry. Do you have anything to eat?" · "I'm not sure if I'm hungry now, but I'd like a coffee, please." · "I'm not sure if I'm hungry. Just the coffee, thanks."
+
+**"a menu"**
+- BUILD: "do you have a menu" · "and a menu, please" · "can I have a menu" · "a menu, please"
+- USE: "I'm not sure if I'm hungry. Do you have a menu?" · "Do you have a menu?" · "Excuse me — do you have a menu, please?" · "Can I have a menu, please?" · "Could I have a menu and a glass of water, please?"
+
+### CP071 — "I'd like a pint, please. What ales do you have on?"
+
+**"a pint"**
+- BUILD: "a pint, please" · "I'd like a pint" · "can I have a pint" · "a pint and a glass of water" · "just a pint for me"
+- USE: "I'd like a pint, please." · "Can I have a pint, please?" · "Can I have a pint and a glass of water as well?" · "Just a pint for me, thanks." · "I think I'd like a pint, please."
+
+**"what ales do you have on"**
+- BUILD: "and what ales do you have on" · "so, what ales do you have on" · "excuse me — what ales do you have on" · "hello — what ales do you have on" · "I'd like a pint. What ales do you have on"
+- USE: "I'd like a pint, please. What ales do you have on?" · "Excuse me, what ales do you have on?" · "What ales do you have on? I'd like a pint, please." · "Good evening. What ales do you have on?" · "Do you have any food? And what ales do you have on?"
+
+### CP072 — "I'd like a pint of the bitter, please."
+
+**"a pint of the bitter"**
+- BUILD: "a pint of the bitter, please" · "I'd like a pint of the bitter" · "can I have a pint of the bitter" · "just a pint of the bitter" · "a pint of the bitter and a glass of water"
+- USE: "I'd like a pint of the bitter, please." · "Can I have a pint of the bitter, please?" · "Can I have a pint of the bitter and a glass of water as well?" · "Just a pint of the bitter for me, thanks." · "I'd like a pint of the bitter, please. Nothing else."
+
+### CP073 — "Can I have a half of cider?"
+
+**"a half of cider"**
+- BUILD: "can I have a half of cider" · "a half of cider, please" · "I'd like a half of cider" · "just a half of cider" · "a half of cider and a glass of water"
+- USE: "Can I have a half of cider?" · "I'd like a half of cider, please." · "Can I have a half of cider and a glass of water as well?" · "A half of cider for me, please." · "Just a half of cider, thanks. Nothing else."
+
+### CP074 — "Could I see the wine list? I want a glass of wine."
+
+**"could I see"**
+- BUILD: "could I see a menu" · "could I see a menu, please" · "excuse me — could I see" · "and could I see that" · "could I see that, please"
+- USE: "Could I see a menu, please?" · "Excuse me, could I see that, please?" · "Could I see a menu? I'm not sure if I'm hungry." · "Could I see a menu, please? And can I have a glass of water?" · "Could I see that again, please?"
+
+**"the wine list"**
+- BUILD: "could I see the wine list" · "the wine list, please" · "and the wine list" · "could I see the wine list, please" · "the wine list too"
+- USE: "Could I see the wine list, please?" · "Could I see the wine list too, please?" · "Could I see the wine list and a menu, please?" · "Excuse me, could I see the wine list?" · "Good evening. Could I see the wine list, please?"
+
+**"a glass of wine"**
+- BUILD: "I want a glass of wine" · "a glass of wine, please" · "I'd like a glass of wine" · "can I have a glass of wine" · "a glass of wine and a pint"
+- USE: "I want a glass of wine." · "Could I see the wine list? I want a glass of wine." · "Can I have a glass of wine, please?" · "I'd like a glass of wine, please. And a glass of water as well." · "Just a glass of wine for me, thanks."
+
+### CP075 — "I'd like a large glass of white wine, please."
+
+**"a large glass of white wine"**
+- BUILD: "a large glass of white wine, please" · "I'd like a large glass of white wine" · "can I have a large glass of white wine" · "just a large glass of white wine" · "a large glass of white wine and a pint"
+- USE: "I'd like a large glass of white wine, please." · "Can I have a large glass of white wine, please?" · "Could I see the wine list? I'd like a large glass of white wine." · "A large glass of white wine for me, please." · "Can I have a large glass of white wine and a half of cider?"
+
+### CP076 — "Can I have a small glass of red wine?"
+
+**"a small glass of red wine"**
+- BUILD: "can I have a small glass of red wine" · "a small glass of red wine, please" · "I'd like a small glass of red wine" · "just a small glass of red wine" · "a small glass of red wine and a glass of water"
+- USE: "Can I have a small glass of red wine?" · "I'd like a small glass of red wine, please." · "Can I have a large glass of white wine and a small glass of red wine?" · "A small glass of red wine for me, please." · "Could I see the wine list? I'd like a small glass of red wine."
+
+### CP077 — "I'd like two more glasses of beer."
+
+**"two more glasses of beer"**
+- BUILD: "I'd like two more glasses of beer" · "two more glasses of beer, please" · "can I have two more glasses of beer" · "and two more glasses of beer" · "just two more glasses of beer"
+- USE: "I'd like two more glasses of beer." · "Can I have two more glasses of beer, please?" · "Two more glasses of beer, please. Nothing else." · "Can I have two more glasses of beer and a glass of water?" · "I'd like two more glasses of beer, please. And a small glass of red wine."
+
+### CP078 — "Can we have some bread? And a bowl of chips for the table."
+
+**"can we have"**
+- BUILD: "can we have a menu" · "can we have the wine list" · "can we have a glass of water" · "and can we have" · "can we have two more glasses of beer"
+- USE: "Can we have a menu, please?" · "Can we have the wine list, please?" · "Can we have two more glasses of beer, please?" · "Can we have a glass of water as well?" · "Can we have a half of cider and a small glass of red wine?"
+
+**"some bread"**
+- BUILD: "can we have some bread" · "some bread, please" · "I'd like some bread" · "and some bread" · "some bread too"
+- USE: "Can we have some bread?" · "Can we have some bread, please?" · "I'd like some bread, please." · "Do you have any food? Can we have some bread?" · "Can we have some bread and a glass of water?"
+
+**"a bowl of chips"**
+- BUILD: "and a bowl of chips" · "a bowl of chips, please" · "can we have a bowl of chips" · "I'd like a bowl of chips" · "a bowl of chips and some bread"
+- USE: "Can we have a bowl of chips, please?" · "I'd like a bowl of chips, please." · "Can we have some bread and a bowl of chips?" · "A bowl of chips, please. Nothing else." · "Do you have any snacks? Can we have a bowl of chips?"
+
+**"for the table"**
+- BUILD: "a bowl of chips for the table" · "some bread for the table" · "and a bowl of chips for the table" · "two more glasses of beer for the table" · "a glass of water for the table"
+- USE: "Can we have some bread for the table?" · "And a bowl of chips for the table." · "Can we have a bowl of chips for the table, please?" · "Can we have some bread and a bowl of chips for the table?" · "I'd like two more glasses of beer for the table, please."
+
+### CP079 — "Do you have any sandwiches? I'd like a cheese sandwich, please."
+
+**"any sandwiches"**
+- BUILD: "do you have any sandwiches" · "excuse me — do you have any sandwiches" · "and any sandwiches" · "any sandwiches too" · "do you have any sandwiches now"
+- USE: "Do you have any sandwiches?" · "Excuse me, do you have any sandwiches?" · "Do you have any sandwiches? I'm not sure if I'm hungry." · "Do you have any sandwiches? And any ice-cream?" · "Good afternoon. Do you have any sandwiches?"
+
+**"a cheese sandwich"**
+- BUILD: "I'd like a cheese sandwich" · "a cheese sandwich, please" · "can I have a cheese sandwich" · "can we have a cheese sandwich" · "a cheese sandwich and a coffee"
+- USE: "I'd like a cheese sandwich, please." · "Do you have any sandwiches? I'd like a cheese sandwich, please." · "Can I have a cheese sandwich and a coffee, please?" · "A cheese sandwich for me, please." · "Can we have a cheese sandwich and a bowl of chips?"
+
+### CP080 — "Good evening. We have a booking for two, under the name Davies."
+
+**"we have a booking for two"**
+- BUILD: "we have a booking for two, under the name Davies" · "good evening — we have a booking for two" · "hello, we have a booking for two" · "we have a booking for two, under the name Jones" · "and we have a booking for two"
+- USE: "Good evening. We have a booking for two, under the name Davies." · "Hello, we have a booking for two." · "Good evening. We have a booking for two, under the name Jones." · "We have a booking for two, for three nights." · "Excuse me, we have a booking for two, under the name Jones."
+
+### CP081 — "We'd like one bottle of sparkling water and one bottle of still water, please."
+
+**"we'd like"**
+- BUILD: "we'd like a menu" · "we'd like some bread" · "we'd like a bowl of chips for the table" · "and we'd like" · "we'd like two more glasses of beer"
+- USE: "We'd like a menu, please." · "We'd like some bread and a bowl of chips for the table." · "We'd like two more glasses of beer, please." · "We'd like a cheese sandwich, please." · "We'd like a large glass of white wine and a small glass of red wine, please."
+
+**"one bottle of sparkling water"**
+- BUILD: "we'd like one bottle of sparkling water" · "one bottle of sparkling water, please" · "can we have one bottle of sparkling water" · "and one bottle of sparkling water" · "just one bottle of sparkling water"
+- USE: "We'd like one bottle of sparkling water, please." · "Can we have one bottle of sparkling water, please?" · "One bottle of sparkling water for the table, please." · "Can we have one bottle of sparkling water and some bread?" · "We'd like one bottle of sparkling water. Nothing else, thanks."
+
+**"and one bottle of still water"**
+- BUILD: "one bottle of sparkling water and one bottle of still water" · "we'd like one bottle of sparkling water and one bottle of still water" · "and one bottle of still water, please" · "and one bottle of still water for the table" · "can we have one bottle of sparkling water and one bottle of still water"
+- USE: "We'd like one bottle of sparkling water and one bottle of still water, please." · "Can we have one bottle of sparkling water and one bottle of still water?" · "One bottle of sparkling water, please. And one bottle of still water for the table." · "We'd like some bread, and one bottle of still water, please." · "And one bottle of still water as well, please."
+
+### CP082 — "Excuse me — do you have anything gluten-free? Or for vegetarians?"
+
+**"anything gluten-free"**
+- BUILD: "do you have anything gluten-free" · "excuse me — do you have anything gluten-free" · "and anything gluten-free" · "anything gluten-free too" · "some bread, or anything gluten-free"
+- USE: "Excuse me, do you have anything gluten-free?" · "Do you have anything gluten-free?" · "Do you have any sandwiches? And anything gluten-free?" · "Could I see a menu? Do you have anything gluten-free?" · "We'd like some bread. Do you have anything gluten-free?"
+
+**"or for vegetarians"**
+- BUILD: "or for vegetarians" · "anything gluten-free? Or for vegetarians" · "do you have anything gluten-free? Or for vegetarians" · "any sandwiches? Or for vegetarians" · "do you have any food? Or for vegetarians"
+- USE: "Excuse me, do you have anything gluten-free? Or for vegetarians?" · "Do you have anything gluten-free? Or for vegetarians?" · "Do you have any sandwiches? Or for vegetarians?" · "Do you have anything to eat? Or for vegetarians?" · "Could I see a menu? Do you have anything gluten-free? Or for vegetarians?"
+
+### CP083 — "And what would you recommend tonight?"
+
+**"what would you recommend"**
+- BUILD: "and what would you recommend" · "so, what would you recommend" · "excuse me — what would you recommend" · "what would you recommend for the table" · "could I see a menu? What would you recommend"
+- USE: "And what would you recommend?" · "Excuse me, what would you recommend?" · "Could I see the wine list? What would you recommend?" · "What would you recommend for the table?" · "We'd like some bread. And what would you recommend?"
+
+**"tonight"**
+- BUILD: "what would you recommend tonight" · "and what would you recommend tonight" · "do you have any food tonight" · "we have a booking for two tonight" · "what ales do you have on tonight"
+- USE: "And what would you recommend tonight?" · "What ales do you have on tonight?" · "Good evening. We have a booking for two tonight, under the name Davies." · "Do you have any food tonight?" · "What would you recommend tonight? I'm not sure if I'm hungry."
+
+### CP084 — "I'll have the lamb, please. With a side of greens."
+
+**"I'll have"**
+- BUILD: "I'll have a pint" · "I'll have a cheese sandwich" · "I'll have a small glass of red wine" · "and I'll have" · "I'll have a bowl of chips"
+- USE: "I'll have a pint, please." · "I'll have a cheese sandwich and a coffee, please." · "I'll have a large glass of white wine, please." · "What would you recommend? I'll have that, please." · "I'll have a bowl of chips for the table, please."
+
+**"the lamb"**
+- BUILD: "I'll have the lamb" · "the lamb, please" · "I'd like the lamb" · "and the lamb" · "the lamb for me"
+- USE: "I'll have the lamb, please." · "I'd like the lamb, please." · "The lamb for me, please." · "We'd like the lamb, please. And some bread for the table." · "I'll have the lamb and a small glass of red wine, please."
+
+**"with a side of greens"**
+- BUILD: "the lamb with a side of greens" · "I'll have the lamb with a side of greens" · "and with a side of greens" · "a cheese sandwich with a side of greens" · "with a side of greens, please"
+- USE: "I'll have the lamb, please. With a side of greens." · "I'll have the lamb with a side of greens, please." · "I'd like the lamb with a side of greens, please." · "We'd like the lamb with a side of greens, and some bread for the table." · "Can we have the lamb with a side of greens, please?"
+
+### CP085 — "And the risotto for me. With a small green salad to start."
+
+**"and the risotto for me"**
+- BUILD: "and the risotto for me, please" · "and the risotto for me, thanks" · "and the risotto for me, with a side of greens" · "and the risotto for me too" · "the lamb, and the risotto for me"
+- USE: "And the risotto for me, please." · "And the risotto for me, with a side of greens." · "And the risotto for me. Nothing else, thanks." · "And the risotto for me, please. And a small glass of red wine." · "And the risotto for me, please. Could I see the wine list?"
+
+**"with a small green salad"**
+- BUILD: "the lamb with a small green salad" · "and the risotto for me, with a small green salad" · "with a small green salad, please" · "a cheese sandwich with a small green salad" · "and with a small green salad"
+- USE: "I'll have the lamb with a small green salad, please." · "And the risotto for me, with a small green salad." · "Can we have a cheese sandwich with a small green salad, please?" · "I'd like the lamb, please. With a small green salad." · "What would you recommend? I'll have the lamb with a small green salad, please."
+
+**"to start"**
+- BUILD: "with a small green salad to start" · "some bread to start" · "a bowl of chips to start" · "and the risotto for me, with a small green salad to start" · "to start, please"
+- USE: "And the risotto for me. With a small green salad to start." · "I'll have the lamb, please. With a small green salad to start." · "Can we have some bread to start?" · "We'd like a bowl of chips for the table to start." · "What would you recommend to start?"
+
+### CP087 — "A bottle of the house red would be lovely."
+
+**"a bottle of the house red"**
+- BUILD: "a bottle of the house red, please" · "I'd like a bottle of the house red" · "can we have a bottle of the house red" · "and a bottle of the house red" · "a bottle of the house red for the table"
+- USE: "Can we have a bottle of the house red, please?" · "I'd like a bottle of the house red, please." · "A bottle of the house red for the table, please." · "Could I see the wine list? I'd like a bottle of the house red." · "We'd like a bottle of the house red and one bottle of still water, please."
+
+**"would be lovely"**
+- BUILD: "a bottle of the house red would be lovely" · "some bread would be lovely" · "a coffee with milk would be lovely" · "a bowl of chips would be lovely" · "that would be lovely"
+- USE: "A bottle of the house red would be lovely." · "That would be lovely, thank you." · "Some bread for the table would be lovely." · "A coffee with milk would be lovely, thanks." · "A glass of water would be lovely."
+
+### CP088 — "Just two coffees, please. Decaf for me."
+
+**"two coffees"**
+- BUILD: "just two coffees, please" · "I'd like two coffees" · "can we have two coffees" · "two coffees and a cup of tea" · "two coffees, please"
+- USE: "Just two coffees, please." · "Can we have two coffees, please?" · "I'd like two coffees and a cup of tea, please." · "Two coffees to take away, please." · "We'd like two coffees, please. Nothing else."
+
+**"decaf for me"**
+- BUILD: "decaf for me, please" · "and decaf for me" · "decaf for me, thanks" · "two coffees — decaf for me" · "just two coffees, please. Decaf for me"
+- USE: "Just two coffees, please. Decaf for me." · "Two coffees, please. Decaf for me, thanks." · "Can we have two coffees? Decaf for me." · "Decaf for me, please." · "I'd like two coffees and a cup of tea. Decaf for me."
+
+### CP089 — "And the bill, when you're ready. Could we split it?"
+
+**"the bill"**
+- BUILD: "and the bill" · "the bill, please" · "could I see the bill" · "can we have the bill" · "the bill, thanks"
+- USE: "Can we have the bill, please?" · "Could I see the bill, please?" · "The bill, please." · "Just two coffees, please. And the bill." · "Excuse me, can we have the bill?"
+
+**"when you're ready"**
+- BUILD: "and the bill, when you're ready" · "the bill, when you're ready" · "a menu, when you're ready" · "two coffees, when you're ready" · "when you're ready, please"
+- USE: "And the bill, when you're ready." · "Can we have the bill, when you're ready?" · "Could I see the wine list, when you're ready?" · "Two coffees, when you're ready, please." · "Can we have a menu, when you're ready?"
+
+**"could we split it"**
+- BUILD: "and the bill — could we split it" · "could we split it, please" · "and could we split it" · "so could we split it" · "the bill, when you're ready. Could we split it"
+- USE: "And the bill, when you're ready. Could we split it?" · "Could we split it?" · "Can we have the bill? Could we split it?" · "Could we split it, please?" · "The bill, when you're ready. And could we split it?"
+
+### CP090 — "How much is that?"
+
+**"how much is that"**
+- BUILD: "how much is that" · "how much is that, please" · "excuse me, how much is that" · "and how much is that, please"
+- USE: "How much is that?" · "Excuse me, how much is that?" · "A coffee with milk, please. How much is that?" · "I'd like a pint. How much is that?" · "Could I have one of those? How much is that?"
+
+### CP091 — "Can you tell me how much that is?"
+
+**"can you tell me"**
+- BUILD: "can you tell me" · "excuse me, can you tell me" · "and can you tell me" · "can you tell me again"
+- USE: "Can you tell me, please?" · "Excuse me, can you tell me?" · "I'm sorry, can you tell me again?" · "Can you tell me again, more slowly?" · "Can you tell me again, please? I didn't understand you."
+
+**"how much that is"**
+- BUILD: "how much that is" · "can you tell me how much that is" · "can you tell me how much that is, please" · "excuse me, can you tell me how much that is"
+- USE: "Can you tell me how much that is?" · "Excuse me, can you tell me how much that is, please?" · "I'd like one of those. Can you tell me how much that is?" · "I'm sorry, can you tell me how much that is again?" · "A pint of the bitter, please. Can you tell me how much that is?"
+
+### CP092 — "Can we pay?"
+
+**"can we pay"**
+- BUILD: "can we pay" · "can we pay, please" · "so can we pay" · "and can we pay now"
+- USE: "Can we pay?" · "Can we pay, please?" · "Excuse me, can we pay, please?" · "The bill, when you're ready. Can we pay?" · "Thank you very much. Can we pay now?"
+
+### CP093 — "Can we pay by card?"
+
+**"by card"**
+- BUILD: "by card" · "can we pay by card" · "can we pay by card, please" · "just by card"
+- USE: "Can we pay by card?" · "Can we pay by card, please?" · "Excuse me, can we pay by card?" · "Can we pay by card now, please?" · "The bill, please. Can we pay by card?"
+
+### CP094 — "Could I pay by card?"
+
+**"could I pay"**
+- BUILD: "could I pay" · "could I pay by card" · "could I pay by card, please" · "so could I pay"
+- USE: "Could I pay by card?" · "Could I pay by card, please?" · "Could I pay now, please?" · "Excuse me, could I pay?" · "The bill, when you're ready. Could I pay by card?"
+
+### CP095 — "Do you have contactless?"
+
+**"contactless"**
+- BUILD: "contactless" · "do you have contactless" · "contactless, please" · "and do you have contactless"
+- USE: "Do you have contactless?" · "Excuse me, do you have contactless?" · "Contactless, please." · "Could I pay by card, please? Do you have contactless?" · "Can we pay by card? Do you have contactless?"
+
+### CP096 — "No, we only take cash."
+
+**"we only take cash"**
+- BUILD: "we only take cash" · "no, we only take cash" · "I'm sorry, we only take cash" · "we only take cash here"
+- USE: "No, we only take cash." · "I'm sorry, we only take cash." · "We only take cash, I'm sorry." · "We only take cash here." · "No, we only take cash here."
+
+### CP097 — "I'm sorry, I don't have any cash."
+
+**"I don't have"**
+- BUILD: "I don't have" · "I'm sorry, I don't have" · "I don't have any snacks" · "I'm sorry, I don't have any food"
+- USE: "I'm sorry, I don't have any food." · "I don't have any snacks, I'm sorry." · "I'm sorry, I don't have a menu." · "I don't have any ice-cream, I'm sorry." · "I don't have any food, but do you have any snacks?"
+
+**"any cash"**
+- BUILD: "any cash" · "I don't have any cash" · "I'm sorry, I don't have any cash" · "do you have any cash"
+- USE: "I'm sorry, I don't have any cash." · "Do you have any cash?" · "I don't have any cash. Could I pay by card?" · "I don't have any cash, so can we pay by card?" · "We only take cash. I'm sorry, I don't have any cash."
+
+### CP098 — "Is there a cash machine near here?"
+
+**"is there"**
+- BUILD: "is there" · "is there any food" · "is there a menu" · "excuse me, is there any ice-cream"
+- USE: "Is there any food?" · "Excuse me, is there a menu?" · "Is there any ice-cream?" · "Is there anything to eat?" · "Is there anything gluten-free?"
+
+**"a cash machine"**
+- BUILD: "a cash machine" · "is there a cash machine" · "is there a cash machine here" · "excuse me, is there a cash machine"
+- USE: "Is there a cash machine here?" · "Excuse me, is there a cash machine?" · "I don't have any cash. Is there a cash machine?" · "We only take cash. Is there a cash machine here?" · "Is there a cash machine? I don't have any cash."
+
+**"near here"**
+- BUILD: "near here" · "a cash machine near here" · "is there a cash machine near here" · "excuse me, is there a cash machine near here"
+- USE: "Is there a cash machine near here?" · "Excuse me, is there a cash machine near here, please?" · "Is there anything to eat near here?" · "Is there any food near here?" · "I don't have any cash. Is there a cash machine near here?"
+
+### CP099 — "Do you want to pay by cash or card or put it on the room?"
+
+**"do you want to pay"**
+- BUILD: "do you want to pay" · "do you want to pay by card" · "so do you want to pay" · "do you want to pay now"
+- USE: "Do you want to pay by card?" · "Do you want to pay now?" · "Do you want to pay by card now?" · "Do you want to pay by card again?" · "Excuse me, do you want to pay?"
+
+**"by cash or card"**
+- BUILD: "by cash or card" · "do you want to pay by cash or card" · "can we pay by cash or card" · "could I pay by cash or card"
+- USE: "Do you want to pay by cash or card?" · "Could I pay by cash or card?" · "Can we pay by cash or card?" · "Do you want to pay by cash or card now?" · "Excuse me, do you want to pay by cash or card?"
+
+**"or put it on the room"**
+- BUILD: "or put it on the room" · "by cash or card or put it on the room" · "do you want to pay by cash or card or put it on the room" · "can we pay by card or put it on the room"
+- USE: "Do you want to pay by cash or card or put it on the room?" · "Can we pay by card, or put it on the room?" · "Could I pay by card, or put it on the room?" · "Do you want to pay now, or put it on the room?" · "Can we pay by cash or card, or put it on the room?"
+
+### CP101 — "Would you like to pay by cash or card or on the room?"
+
+**"would you like to pay"**
+- BUILD: "would you like to pay" · "would you like to pay by card" · "would you like to pay by cash or card" · "so would you like to pay"
+- USE: "Would you like to pay by cash or card?" · "Would you like to pay by card?" · "Would you like to pay now?" · "Would you like to pay by cash or card, or put it on the room?" · "Would you like to pay, or put it on the room?"
+
+### CP102 — "Did you want to pay by cash or card?"
+
+**"did you want to pay"**
+- BUILD: "did you want to pay" · "did you want to pay by card" · "did you want to pay by cash or card" · "and did you want to pay"
+- USE: "Did you want to pay by cash or card?" · "Did you want to pay by card?" · "Did you want to pay now?" · "Did you want to pay by cash or card, or on the room?" · "Did you want to pay, or put it on the room?"
+
+### CP103 — "We'll pay by card again, please."
+
+**"we'll pay"**
+- BUILD: "we'll pay" · "we'll pay by card" · "we'll pay by card, please" · "and we'll pay by card again"
+- USE: "We'll pay by card again, please." · "We'll pay by card, please." · "We'll pay now, please." · "We'll pay by card, if that's OK with you." · "We'll pay by card. Do you have contactless?"
+
+### CP104 — "Of course. Here's my passport."
+
+**"here's"**
+- BUILD: "here's" · "here's the menu" · "here's the bill" · "here's the wine list"
+- USE: "Here's the menu." · "Here's the bill." · "Of course. Here's the wine list." · "Here's a glass of water." · "Here's the bill, when you're ready."
+
+**"my passport"**
+- BUILD: "my passport" · "here's my passport" · "of course, here's my passport" · "and here's my passport"
+- USE: "Of course. Here's my passport." · "Here's my passport." · "Yes, of course. Here's my passport." · "We have a booking for two, under the name Davies. Here's my passport." · "Here's my passport. Three nights, Friday to Monday."
+
+### CP105 — "Here it is."
+
+**"here it is"**
+- BUILD: "here it is" · "of course, here it is" · "yes, here it is" · "and here it is"
+- USE: "Here it is." · "Of course. Here it is." · "Here it is. No problem." · "The bill? Here it is." · "Here it is, and here's the menu."
+
+### CP106 — "How much does it cost to get a taxi into town?"
+
+**"how much does it cost"**
+- BUILD: "how much does it cost" · "excuse me, how much does it cost" · "and how much does it cost" · "how much does it cost, please"
+- USE: "How much does it cost?" · "Excuse me, how much does it cost?" · "How much does it cost, please?" · "How much does it cost? I don't have any cash." · "I'd like a double room for three nights. How much does it cost?"
+
+**"to get a taxi"**
+- BUILD: "to get a taxi" · "how much does it cost to get a taxi" · "I'd like to get a taxi" · "I want to get a taxi"
+- USE: "How much does it cost to get a taxi?" · "I'd like to get a taxi, please." · "How much does it cost to get a taxi, please?" · "Excuse me, how much does it cost to get a taxi?" · "I want to get a taxi. How much does it cost?"
+
+**"into town"**
+- BUILD: "into town" · "to get a taxi into town" · "how much does it cost to get a taxi into town" · "I'd like to get a taxi into town"
+- USE: "How much does it cost to get a taxi into town?" · "I'd like to get a taxi into town, please." · "How much does it cost to get a taxi into town, please?" · "Excuse me, how much does it cost to get a taxi into town?" · "I want to get a taxi into town now."
+
+### CP107 — "How much does it cost to get a bus into town?"
+
+**"to get a bus"**
+- BUILD: "to get a bus" · "to get a bus into town" · "how much does it cost to get a bus" · "I'd like to get a bus into town"
+- USE: "How much does it cost to get a bus into town?" · "I'd like to get a bus into town, please." · "I want to get a bus into town." · "Excuse me, how much does it cost to get a bus?" · "How much does it cost to get a bus into town, please?"
+
+### CP108 — "Good afternoon. I have a booking under the name Jones."
+
+**"I have a booking"**
+- BUILD: "I have a booking under the name Jones" · "good afternoon, I have a booking" · "I have a booking for three nights" · "hello, I have a booking" · "I think I have a booking"
+- USE: "Good afternoon. I have a booking under the name Jones." · "Hello, I have a booking for three nights." · "I have a booking under the name Davies." · "Excuse me, I have a booking." · "I have a booking for a double room." · "I have a booking from Friday to Monday."
+
+### CP109 — "Does the room have a view?"
+
+**"does the room have"**
+- BUILD: "does the room have any food" · "does the room have any snacks" · "and does the room have a menu" · "so does the room have a bottle of still water" · "excuse me, does the room have"
+- USE: "Does the room have a menu?" · "Does the room have any snacks?" · "Excuse me, does the room have any food?" · "Good afternoon. Does the room have a bottle of still water?" · "I have a booking under the name Jones. Does the room have a menu?"
+
+**"a view"**
+- BUILD: "does the room have a view" · "I'd like a view" · "I want a view" · "a view, if you have it" · "I have a booking, and I'd like a view"
+- USE: "Does the room have a view?" · "I'd like a view, if you have it." · "I have a booking, and I'd like a view." · "Does the room have a view? That would be lovely." · "I want a view, please." · "Excuse me — does the room have a view?"
+
+### CP110 — "What time is breakfast served?"
+
+**"what time is breakfast served"**
+- BUILD: "excuse me, what time is breakfast served" · "and what time is breakfast served" · "so what time is breakfast served" · "good morning, what time is breakfast served" · "I have a booking — what time is breakfast served"
+- USE: "What time is breakfast served?" · "Excuse me, what time is breakfast served?" · "Good morning. What time is breakfast served?" · "And what time is breakfast served?" · "I have a booking under the name Jones. What time is breakfast served?" · "Can you tell me — what time is breakfast served?"
+
+### CP111 — "Wonderful. Is it possible for us to have a late check-out?"
+
+**"wonderful"**
+- BUILD: "wonderful, thank you" · "that's wonderful" · "wonderful, thank you very much" · "wonderful — see you later" · "wonderful, and thanks for all your work"
+- USE: "Wonderful, thank you." · "That's wonderful." · "Wonderful. See you tomorrow." · "Wonderful, thank you very much." · "Wonderful. I'll have the lamb, please." · "Wonderful. We'll pay by card."
+
+**"is it possible for us"**
+- BUILD: "is it possible for us to get a taxi" · "is it possible for us to see the menu" · "is it possible for us to try again" · "and is it possible for us to get a bus" · "excuse me, is it possible for us"
+- USE: "Is it possible for us to get a taxi into town?" · "Is it possible for us to see the menu?" · "Is it possible for us to try again?" · "Excuse me — is it possible for us to get a bus into town?" · "Is it possible for us to see the wine list?"
+
+**"to have a late check-out"**
+- BUILD: "is it possible for us to have a late check-out" · "I'd like to have a late check-out" · "we'd like to have a late check-out" · "I want to have a late check-out" · "and to have a late check-out, please"
+- USE: "Wonderful. Is it possible for us to have a late check-out?" · "I'd like to have a late check-out, please." · "We'd like to have a late check-out on Monday." · "Excuse me — is it possible for us to have a late check-out?" · "I have a booking under the name Jones, and I'd like to have a late check-out."
+
+### CP112 — "And what is the wifi password?"
+
+**"what is"**
+- BUILD: "what is that" · "and what is that" · "excuse me, what is that" · "well, what is that" · "so what is that, Anna"
+- USE: "What is that?" · "Excuse me, what is that?" · "And what is that?" · "I'm sorry — what is that?" · "What is that, Anna?" · "Well, what is that?"
+
+**"the wifi password"**
+- BUILD: "and what is the wifi password" · "what is the wifi password" · "the wifi password, please" · "can you tell me the wifi password" · "I'd like the wifi password"
+- USE: "And what is the wifi password?" · "What is the wifi password?" · "Can you tell me the wifi password?" · "Excuse me — what is the wifi password?" · "I have a booking under the name Jones. What is the wifi password?" · "Wonderful. And what is the wifi password?"
+
+### CP113 — "Excuse me. Do you have any painkillers?"
+
+**"any painkillers"**
+- BUILD: "do you have any painkillers" · "excuse me, do you have any painkillers" · "any painkillers, please" · "and do you have any painkillers" · "I don't have any painkillers"
+- USE: "Excuse me. Do you have any painkillers?" · "Do you have any painkillers?" · "Do you have any painkillers, please?" · "Good morning. Do you have any painkillers?" · "I don't have any painkillers." · "Do you have any painkillers as well?"
+
+### CP114 — "Thank you. And do you have any painkillers for children?"
+
+**"for children"**
+- BUILD: "do you have any painkillers for children" · "do you have any food for children" · "and do you have any snacks for children" · "a menu for children" · "any painkillers for children, please"
+- USE: "Thank you. And do you have any painkillers for children?" · "Do you have any painkillers for children?" · "Do you have a menu for children?" · "Do you have any food for children?" · "Excuse me, do you have any snacks for children?" · "Is there anything gluten-free for children?"
+
+### CP115 — "I also need to get some sunscreen and some toothpaste."
+
+**"I need to get"**
+- BUILD: "I need to get a coffee" · "I need to get a cup of tea" · "and I need to get a glass of water" · "I also need to get some bread" · "I need to get a coffee with milk"
+- USE: "I need to get a coffee." · "I also need to get a glass of water." · "I need to get a coffee with milk, please." · "I need to get some bread too." · "I need to get a black coffee."
+
+**"some sunscreen"**
+- BUILD: "I need to get some sunscreen" · "some sunscreen, please" · "I'd like some sunscreen" · "I also need to get some sunscreen" · "I want some sunscreen"
+- USE: "I need to get some sunscreen." · "I'd like some sunscreen, please." · "I also need to get some sunscreen." · "I'm on holiday here, so I need to get some sunscreen." · "I think I need to get some sunscreen."
+
+**"and some toothpaste"**
+- BUILD: "I need to get some sunscreen and some toothpaste" · "and some toothpaste, please" · "I'd like some sunscreen and some toothpaste" · "do you have any painkillers and some toothpaste" · "I also need to get some sunscreen and some toothpaste"
+- USE: "I also need to get some sunscreen and some toothpaste." · "I need to get some sunscreen and some toothpaste." · "I'd like some sunscreen and some toothpaste, please." · "Do you have any painkillers and some toothpaste?" · "I'm on holiday here, and I need to get some sunscreen and some toothpaste." · "I want some sunscreen and some toothpaste."
+
+### CP116 — "Thank you, you've been very helpful. I'm very grateful."
+
+**"you've been very helpful"**
+- BUILD: "thank you, you've been very helpful" · "you've been very helpful, thank you very much" · "and you've been very helpful" · "you've been very helpful — thanks" · "well, you've been very helpful"
+- USE: "Thank you, you've been very helpful." · "You've been very helpful, thank you very much." · "Thanks, you've been very helpful. Goodbye." · "You've been very helpful. See you tomorrow." · "You're very kind, and you've been very helpful." · "Wonderful. You've been very helpful."
+
+**"I'm very grateful"**
+- BUILD: "thank you, I'm very grateful" · "I'm very grateful — thanks" · "and I'm very grateful" · "I'm very grateful for all your work" · "well, I'm very grateful"
+- USE: "Thank you, you've been very helpful. I'm very grateful." · "I'm very grateful for all your work." · "Thank you very much. I'm very grateful." · "You're very kind. I'm very grateful." · "I'm very grateful, and I wish you good luck with everything."
+
+### CP117 — "That's very kind of you! Yes, I'm on holiday, and I need to practise more to speak your language better."
+
+**"I need to practise more"**
+- BUILD: "I need to practise more" · "I think I need to practise more" · "and I need to practise more" · "I need to practise more, a little every day" · "I'm on holiday, and I need to practise more"
+- USE: "I'm on holiday, and I need to practise more." · "I think I need to practise more." · "I need to practise more, a little every day." · "Learning a new language is difficult, so I need to practise more." · "I need to practise more. Can we try again?" · "Yes, I need to practise more."
+
+**"to speak your language better"**
+- BUILD: "I need to practise more to speak your language better" · "I want to speak your language better" · "I'd like to speak your language better" · "I hope to speak your language better" · "and to speak your language better"
+- USE: "That's very kind of you! Yes, I'm on holiday, and I need to practise more to speak your language better." · "I want to speak your language better." · "I'd like to speak your language better." · "I hope to speak your language better." · "Learning a new language is difficult, but I want to speak your language better."
+
+### CP118 — "Good morning. I'm not feeling great — could you recommend something?"
+
+**"I'm not feeling great"**
+- BUILD: "good morning, I'm not feeling great" · "I'm sorry, I'm not feeling great" · "and I'm not feeling great" · "I'm not feeling great, so I'd like a glass of water" · "well, I'm not feeling great"
+- USE: "Good morning. I'm not feeling great." · "I'm sorry, I'm not feeling great." · "I'm not feeling great. Do you have any painkillers?" · "I'm not feeling great, so I'd like a glass of water." · "I'm not feeling great. I think I'll have a cup of tea."
+
+**"could you recommend something"**
+- BUILD: "could you recommend something" · "I'm not feeling great — could you recommend something" · "and could you recommend something" · "could you recommend something, please" · "so could you recommend something"
+- USE: "Good morning. I'm not feeling great — could you recommend something?" · "Could you recommend something?" · "Could you recommend something, please?" · "I'd like a glass of wine. Could you recommend something?" · "Could you recommend something? I'm not sure if I'm hungry."
+
+### CP119 — "I've had a headache and a sore throat since yesterday."
+
+**"I've had"**
+- BUILD: "I've had a coffee" · "I've had two coffees" · "and I've had a glass of water" · "I've had a cup of tea" · "I've had a coffee with milk"
+- USE: "I've had a coffee." · "I've had a glass of water, thank you." · "I've had two coffees, and I'd like a glass of water." · "I've had a pint of the bitter." · "Thank you, but I've had a cup of tea." · "I've had a coffee with milk."
+
+**"a headache"**
+- BUILD: "I've had a headache" · "a headache — do you have any painkillers" · "I've had a headache, so could you recommend something" · "I'm not feeling great, I've had a headache" · "and I've had a headache"
+- USE: "I've had a headache." · "I've had a headache. Do you have any painkillers?" · "I'm not feeling great — I've had a headache." · "I've had a headache, so could you recommend something?" · "I've had a headache, and I'd like a glass of water."
+
+**"and a sore throat"**
+- BUILD: "I've had a headache and a sore throat" · "a headache and a sore throat" · "I've had a headache and a sore throat, so I'm not feeling great" · "I'm not feeling great — I've had a headache and a sore throat" · "and a sore throat too"
+- USE: "I've had a headache and a sore throat." · "I'm not feeling great. I've had a headache and a sore throat." · "I've had a headache and a sore throat, so could you recommend something?" · "I've had a headache and a sore throat. Do you have any painkillers?" · "Good morning. I've had a headache and a sore throat."
+
+**"since yesterday"**
+- BUILD: "I've had a headache since yesterday" · "I've had a headache and a sore throat since yesterday" · "since yesterday, so I'm not feeling great" · "I've had a headache since yesterday, and I'm not feeling great" · "I've had two coffees since yesterday"
+- USE: "I've had a headache and a sore throat since yesterday." · "I've had a headache since yesterday." · "I'm not feeling great. I've had a headache since yesterday." · "I've had a headache since yesterday, so could you recommend something?" · "I've had a headache and a sore throat since yesterday. Do you have any painkillers?"
+
+### CP120 — "How often should I take the paracetamol?"
+
+**"how often"**
+- BUILD: "and how often" · "so how often" · "well, how often" · "how often, please" · "can you tell me how often"
+- USE: "How often?" · "And how often?" · "How often — a little every day?" · "Can you tell me how often?" · "So how often?" · "How often, please?"
+
+**"should I take"**
+- BUILD: "how often should I take" · "should I take any painkillers" · "and should I take" · "so should I take any painkillers" · "I'm not feeling great — should I take any painkillers"
+- USE: "Should I take any painkillers?" · "I've had a headache since yesterday. Should I take any painkillers?" · "I'm not feeling great — should I take any painkillers?" · "Should I take any painkillers, or could you recommend something?" · "Excuse me — should I take any painkillers?"
+
+**"the paracetamol"**
+- BUILD: "how often should I take the paracetamol" · "should I take the paracetamol" · "the paracetamol, please" · "I need to get the paracetamol" · "I'd like the paracetamol"
+- USE: "How often should I take the paracetamol?" · "Should I take the paracetamol?" · "I need to get the paracetamol." · "I've had a headache since yesterday, so should I take the paracetamol?" · "I'd like the paracetamol, please." · "And how often should I take the paracetamol?"
+
+### CP121 — "Are they all right to take with food?"
+
+**"are they all right"**
+- BUILD: "are they all right" · "and are they all right" · "are they all right for children" · "so are they all right" · "the paracetamol — are they all right"
+- USE: "Are they all right?" · "Are they all right for children?" · "And are they all right?" · "Are they all right? I'm not feeling great." · "Should I take the paracetamol? Are they all right for children?"
+
+**"to take with food"**
+- BUILD: "are they all right to take with food" · "and are they all right to take with food" · "so are they all right to take with food" · "are they all right to take with food too" · "the paracetamol — are they all right to take with food"
+- USE: "Are they all right to take with food?" · "And are they all right to take with food?" · "Should I take the paracetamol? Are they all right to take with food?" · "I've had a headache since yesterday. Are they all right to take with food?" · "Excuse me — are they all right to take with food?" · "How often should I take the paracetamol, and are they all right to take with food?"
+
+### CP122 — "Thank you. Could I also get a packet of plasters?"
+
+**"could I also get"**
+- BUILD: "could I also get a coffee" · "could I also get a glass of water" · "could I also get some sunscreen" · "thank you, could I also get a menu" · "and could I also get a black coffee"
+- USE: "Could I also get a coffee with milk?" · "Could I also get a glass of water, please?" · "Thank you. Could I also get some sunscreen?" · "Could I also get a menu?" · "Could I also get some bread for the table?" · "Could I also get a cup of tea?"
+
+**"a packet of plasters"**
+- BUILD: "could I also get a packet of plasters" · "a packet of plasters, please" · "do you have a packet of plasters" · "I need to get a packet of plasters" · "I'd like a packet of plasters"
+- USE: "Thank you. Could I also get a packet of plasters?" · "Do you have a packet of plasters?" · "I need to get a packet of plasters." · "I'd like a packet of plasters, please." · "Could I also get a packet of plasters and some sunscreen?"
+
+### CP123 — "Excuse me, do you know how to get to the nearest supermarket?"
+
+**"do you know"**
+- BUILD: "do you know" · "excuse me, do you know" · "do you know how much that is" · "do you know the wifi password" · "but do you know"
+- USE: "Excuse me, do you know how to get to the nearest supermarket?" · "Do you know how much that is?" · "Do you know the wifi password?" · "Do you know Anna?" · "Excuse me, do you know James too?"
+
+**"how to get to"**
+- BUILD: "how to get to" · "do you know how to get to" · "how to get to London" · "how to get to Manchester" · "excuse me, do you know how to get to"
+- USE: "Excuse me, do you know how to get to the nearest supermarket?" · "Do you know how to get to London?" · "Can you tell me how to get to Manchester?" · "Do you know how to get to France?" · "Do you know how to get to Manchester? I'm on holiday here."
+
+**"the nearest supermarket"**
+- BUILD: "the nearest supermarket" · "how to get to the nearest supermarket" · "to the nearest supermarket, please" · "and the nearest supermarket"
+- USE: "Excuse me, do you know how to get to the nearest supermarket?" · "Can you tell me how to get to the nearest supermarket?" · "I need to get to the nearest supermarket." · "Do you know how to get to the nearest supermarket, please?" · "I need to get some sunscreen — do you know how to get to the nearest supermarket?"
+
+### CP124 — "Past that church?"
+
+**"past that church"**
+- BUILD: "past that church" · "and then past that church" · "just past that church" · "so, past that church" · "past that church, and then"
+- USE: "Past that church?" · "Past that church, and then?" · "So it's just past that church?" · "Excuse me — past that church?" · "Past that church? I'm sorry, I didn't understand you."
+
+### CP126 — "Wonderful. And is there a cashpoint nearby?"
+
+**"a cashpoint"**
+- BUILD: "is there a cashpoint" · "and is there a cashpoint" · "a cashpoint near here" · "is there a cashpoint near here"
+- USE: "Wonderful. And is there a cashpoint nearby?" · "Is there a cashpoint near here?" · "Excuse me, is there a cashpoint near here?" · "I need to get to a cashpoint." · "We only take cash. Is there a cashpoint near here?"
+
+**"nearby"**
+- BUILD: "is there a cashpoint nearby" · "and is there a cashpoint nearby" · "a cashpoint nearby" · "is there a cash machine nearby"
+- USE: "Wonderful. And is there a cashpoint nearby?" · "Is there a cash machine nearby?" · "Is there a cashpoint nearby?" · "Excuse me, is there a cash machine nearby?" · "I'm on holiday here. Is there a cashpoint nearby?"
+
+### CP128 — "Hello. Can you take me to the train station, please?"
+
+**"can you take me to"**
+- BUILD: "can you take me to" · "can you take me to the nearest supermarket" · "hello, can you take me to" · "can you take me to Manchester, please"
+- USE: "Hello. Can you take me to the train station, please?" · "Can you take me to the nearest supermarket, please?" · "Can you take me to London, please?" · "Can you take me to a cashpoint, please?" · "Excuse me — can you take me to Manchester, please?"
+
+**"the train station"**
+- BUILD: "the train station" · "can you take me to the train station" · "to the train station, please" · "how to get to the train station"
+- USE: "Hello. Can you take me to the train station, please?" · "Do you know how to get to the train station?" · "Can you tell me how to get to the train station?" · "I need to get to the train station." · "Excuse me, can you take me to the train station, please?"
+
+### CP129 — "About how long do you think it will take?"
+
+**"about how long"**
+- BUILD: "about how long" · "can you tell me about how long" · "and about how long" · "so, about how long"
+- USE: "About how long do you think it will take?" · "About how long?" · "And about how long?" · "About how long? I need to get to the train station." · "Excuse me — about how long?"
+
+**"do you think"**
+- BUILD: "do you think" · "about how long, do you think" · "is it far, do you think" · "and do you think"
+- USE: "About how long do you think it will take?" · "Is there a cashpoint nearby, do you think?" · "Can we pay by card, do you think?" · "About how long, do you think?" · "Do you think we'll be able to manage?"
+
+**"it will take"**
+- BUILD: "it will take" · "do you think it will take" · "about how long it will take" · "about how long do you think it will take"
+- USE: "About how long do you think it will take?" · "Can you tell me about how long it will take?" · "Do you know about how long it will take?" · "Do you think it will take three nights?" · "Right then — about how long do you think it will take?"
+
+### CP130 — "Do you know where I can get a ticket in the station?"
+
+**"where I can get"**
+- BUILD: "where I can get" · "do you know where I can get" · "where I can get a coffee" · "can you tell me where I can get"
+- USE: "Do you know where I can get a ticket in the station?" · "Do you know where I can get a coffee?" · "Can you tell me where I can get some sunscreen?" · "Excuse me, do you know where I can get a packet of plasters?" · "Do you know where I can get any painkillers?"
+
+**"a ticket"**
+- BUILD: "a ticket" · "where I can get a ticket" · "a ticket, please" · "do you know where I can get a ticket"
+- USE: "Do you know where I can get a ticket in the station?" · "Do you know where I can get a ticket?" · "Can you tell me where I can get a ticket?" · "I need to get a ticket." · "A ticket, please. Thank you."
+
+**"in the station"**
+- BUILD: "in the station" · "a ticket in the station" · "where I can get a ticket in the station" · "is there a cashpoint in the station"
+- USE: "Do you know where I can get a ticket in the station?" · "Is there a cashpoint in the station?" · "Do you know where I can get a coffee in the station?" · "Can you tell me where I can get a ticket in the station?" · "Is there a cash machine in the station?"
+
+### CP131 — "How far is it into town?"
+
+**"how far is it"**
+- BUILD: "how far is it" · "how far is it into town" · "and how far is it" · "so how far is it"
+- USE: "How far is it into town?" · "Excuse me, how far is it into town?" · "How far is it, do you think?" · "How far is it into town? About how long do you think it will take?" · "So how far is it?"
+
+### CP132 — "Can you tell me how far it is into town?"
+
+**"how far it is"**
+- BUILD: "how far it is" · "can you tell me how far it is" · "how far it is into town" · "do you know how far it is"
+- USE: "Can you tell me how far it is into town?" · "Do you know how far it is into town?" · "Can you tell me how far it is?" · "Do you know how far it is, and about how long it will take?" · "Excuse me, can you tell me how far it is into town?"
+
+### CP133 — "Where can we get a bus?"
+
+**"where can we get"**
+- BUILD: "where can we get" · "where can we get a coffee" · "and where can we get" · "so, where can we get"
+- USE: "Where can we get a bus?" · "Where can we get a coffee?" · "Where can we get some bread?" · "Where can we get a ticket?" · "Excuse me, where can we get a coffee to take away?"
+
+**"a bus"**
+- BUILD: "a bus" · "where can we get a bus" · "a bus into town" · "and a bus"
+- USE: "Where can we get a bus?" · "Where can we get a bus into town?" · "How much does it cost to get a bus?" · "Is there a bus into town?" · "Do you know where I can get a bus?"
+
+### CP134 — "Where can we get a taxi?"
+
+**"a taxi"**
+- BUILD: "a taxi" · "where can we get a taxi" · "a taxi into town" · "and a taxi"
+- USE: "Where can we get a taxi?" · "How much does it cost to get a taxi?" · "Where can we get a taxi into town?" · "Do you know where I can get a taxi?" · "Is there a taxi nearby?"
+
+### CP135 — "Four single tickets to town, please."
+
+**"four single tickets"**
+- BUILD: "four single tickets" · "four single tickets, please" · "and four single tickets" · "four single tickets to town"
+- USE: "Four single tickets to town, please." · "Four single tickets, please." · "Can I have four single tickets, please?" · "I'd like four single tickets, please." · "Could I have four single tickets to town, please?"
+
+**"to town"**
+- BUILD: "to town" · "four single tickets to town" · "a ticket to town" · "a bus to town"
+- USE: "Four single tickets to town, please." · "A ticket to town, please." · "Can I have a ticket to town, please?" · "Where can we get a bus to town?" · "I'd like four single tickets to town, please."
+
+### CP136 — "Two return tickets to town, please."
+
+**"two return tickets"**
+- BUILD: "two return tickets" · "two return tickets to town" · "and two return tickets" · "two return tickets, please"
+- USE: "Two return tickets to town, please." · "Can I have two return tickets to town, please?" · "I'd like two return tickets, please." · "Two return tickets, please. How much is that?" · "Could I have two return tickets to town, please?"
+
+### CP137 — "Does the boat leave from here?"
+
+**"does the boat leave"**
+- BUILD: "does the boat leave" · "does the boat leave from here" · "and does the boat leave" · "so, does the boat leave"
+- USE: "Does the boat leave from here?" · "Excuse me, does the boat leave from here?" · "Does the boat leave at three o'clock?" · "Does the boat leave on Monday?" · "Does the boat leave from here? I need to get a ticket."
+
+**"from here"**
+- BUILD: "from here" · "does the boat leave from here" · "and from here" · "from here into town"
+- USE: "Does the boat leave from here?" · "How far is it from here into town?" · "Where can we get a bus from here?" · "Excuse me, does the boat leave from here?" · "Can you take me to the train station from here?"
+
+### CP138 — "Does the bus leave from here?"
+
+**"does the bus leave"**
+- BUILD: "does the bus leave" · "does the bus leave from here" · "and does the bus leave" · "so, does the bus leave"
+- USE: "Does the bus leave from here?" · "Excuse me, does the bus leave from here?" · "Does the bus leave at three o'clock?" · "Does the bus leave on Saturday?" · "Does the bus leave from here? I'd like two return tickets to town."
+
+### CP139 — "Where does the bus leave from?"
+
+**"where does the bus leave from"**
+- BUILD: "where does the bus leave from" · "and where does the bus leave from" · "so, where does the bus leave from" · "excuse me, where does the bus leave from"
+- USE: "Where does the bus leave from?" · "Excuse me, where does the bus leave from?" · "Two return tickets to town, please. And where does the bus leave from?" · "Where does the bus leave from? I'm sorry, I didn't understand you." · "Where does the bus leave from? Could you say that again more slowly?"
+
+### CP140 — "Is there a toilet here?"
+
+**"a toilet"**
+- BUILD: "a toilet" · "is there a toilet" · "is there a toilet here" · "a toilet nearby"
+- USE: "Is there a toilet here?" · "Is there a toilet nearby?" · "Excuse me, is there a toilet here?" · "Is there a toilet in the station?" · "Is there a toilet near here?"
+
+### CP141 — "Can you tell me where the toilet is?"
+
+**"where the toilet is"**
+- BUILD: "where the toilet is" · "can you tell me where the toilet is" · "do you know where the toilet is" · "and where the toilet is"
+- USE: "Can you tell me where the toilet is?" · "Do you know where the toilet is?" · "Excuse me, can you tell me where the toilet is?" · "Can you tell me where the toilet is, please?" · "I'm sorry — do you know where the toilet is?"
+
+### CP143 — "What is that over there?"
+
+**"over there"**
+- BUILD: "over there" · "what is that over there" · "it's over there" · "just over there"
+- USE: "What is that over there?" · "It's over there." · "It's just over there." · "Is there a toilet over there?" · "Excuse me, what is that over there?"
+
+### CP144 — "Yes, I said it's over there."
+
+**"I said"**
+- BUILD: "I said" · "yes, I said" · "I said it's over there" · "and I said"
+- USE: "Yes, I said it's over there." · "I said it's over there." · "Yes, I said it's just over there." · "I'm sorry — I said it's over there." · "I said two return tickets to town, please."
+
+### CP145 — "Excuse me — could you tell me the way to the railway station? Your language isn't my first, so go slowly with me — if I get a word wrong, just tell me, and I'll ask if I lose you."
+
+**"could you tell me the way to"**
+- BUILD: "could you tell me the way to" · "excuse me — could you tell me the way to" · "so could you tell me the way to" · "could you tell me the way to the nearest supermarket"
+- USE: "Excuse me — could you tell me the way to the train station?" · "Could you tell me the way to the nearest supermarket, please?" · "Could you tell me the way to a cashpoint near here?" · "I'm on holiday here — could you tell me the way to the train station?" · "Could you tell me the way to the nearest supermarket? I need to get some sunscreen and some toothpaste."
+
+**"the railway station"**
+- BUILD: "the railway station" · "to the railway station" · "could you tell me the way to the railway station" · "can you take me to the railway station"
+- USE: "Could you tell me the way to the railway station?" · "Can you take me to the railway station, please?" · "How far is it to the railway station?" · "Where can we get a bus to the railway station?" · "How much does it cost to get a taxi to the railway station?"
+
+**"your language isn't my first"**
+- BUILD: "your language isn't my first" · "well, your language isn't my first" · "your language isn't my first, so" · "excuse me — your language isn't my first"
+- USE: "Your language isn't my first, so I can't speak very quickly." · "Your language isn't my first, so could you say that again more slowly?" · "Excuse me — your language isn't my first, so I'm not sure if I understood." · "Your language isn't my first, but I prefer to try." · "Your language isn't my first, so if I get a word wrong, just tell me."
+
+**"go slowly with me"**
+- BUILD: "go slowly with me" · "so go slowly with me" · "please go slowly with me" · "just go slowly with me"
+- USE: "Your language isn't my first, so go slowly with me." · "Go slowly with me, please — I'm learning your language." · "I'm not sure if I understood, so go slowly with me." · "Go slowly with me, and I'll ask if I lose you." · "I can't speak very quickly, so go slowly with me."
+
+### CP146 — "Left at the lights — and then?"
+
+**"left at the lights"**
+- BUILD: "left at the lights" · "and left at the lights" · "so left at the lights" · "left at the lights, and then"
+- USE: "Left at the lights — and then?" · "So it's left at the lights?" · "Left at the lights, and then it's over there?" · "Right then — left at the lights." · "Left at the lights, and it's near here?"
+
+### CP147 — "Straight to the lights, left, and across the square. Thank you — I understood every word."
+
+**"straight to the lights"**
+- BUILD: "straight to the lights" · "so straight to the lights" · "straight to the lights, and then" · "and straight to the lights"
+- USE: "Straight to the lights, and then?" · "So it's straight to the lights?" · "Straight to the lights — thank you very much." · "Straight to the lights, and then it's over there?" · "Straight to the lights, and then left at the lights?"
+
+**"and across the square"**
+- BUILD: "and across the square" · "left, and across the square" · "straight to the lights, and across the square" · "and across the square, and then"
+- USE: "Straight to the lights, left, and across the square." · "So, left at the lights and across the square?" · "Left, and across the square — and then?" · "And across the square? Right then, thank you." · "Straight to the lights and across the square — how far is it?"
+
+**"I understood every word"**
+- BUILD: "I understood every word" · "and I understood every word" · "thank you — I understood every word" · "well, I understood every word"
+- USE: "Thank you — I understood every word." · "I understood every word, thank you very much." · "You spoke a little too quickly, but I understood every word." · "I'm learning your language, and I understood every word." · "I understood every word — you've been very helpful."
+
+### CP148 — "I'm sorry, my son lost his ticket."
+
+**"my son"**
+- BUILD: "my son" · "and my son" · "my son too" · "for my son"
+- USE: "I'd like a cheese sandwich for my son, please." · "Could I also get some sunscreen for my son?" · "Two return tickets, please — one for me and one for my son." · "Can I have a glass of water for my son as well?" · "Do you have any painkillers for children — for my son?"
+
+**"lost his ticket"**
+- BUILD: "lost his ticket" · "my son lost his ticket" · "and lost his ticket" · "I'm sorry, my son lost his ticket"
+- USE: "I'm sorry, my son lost his ticket." · "My son lost his ticket. I'm sorry." · "My son lost his ticket. Where can we get a ticket?" · "I'm sorry — my son lost his ticket in the station." · "My son lost his ticket, and I don't have any cash."
+
+### CP149 — "We have paid, but my daughter has lost her ticket."
+
+**"we have paid"**
+- BUILD: "we have paid" · "but we have paid" · "we have paid, but" · "yes, we have paid"
+- USE: "We have paid — here it is." · "We have paid, but my son lost his ticket." · "I'm sorry — we have paid, but I don't have a ticket." · "We have paid for two return tickets." · "Yes, we have paid. Thank you very much."
+
+**"my daughter"**
+- BUILD: "my daughter" · "and my daughter" · "my daughter too" · "for my daughter"
+- USE: "Two scoops of ice-cream for my daughter, please." · "Do you have any painkillers for children — for my daughter?" · "Two return tickets, please — one for me and one for my daughter." · "Can I have a glass of water for my daughter as well?" · "We have paid for my son and my daughter."
+
+**"has lost her ticket"**
+- BUILD: "has lost her ticket" · "my daughter has lost her ticket" · "but my daughter has lost her ticket" · "and my daughter has lost her ticket"
+- USE: "We have paid, but my daughter has lost her ticket." · "I'm sorry — my daughter has lost her ticket." · "My daughter has lost her ticket. Where can we get a ticket?" · "My son lost his ticket, and my daughter has lost her ticket too." · "We have paid, but my daughter has lost her ticket in the station."
+
+### CP150 — "Three or four miles — I could walk that. I might get off at the next stop, then, and walk the rest. It's a nice morning for it."
+
+**"three or four miles"**
+- BUILD: "three or four miles" · "three or four miles, I think" · "just three or four miles" · "so three or four miles"
+- USE: "How far is it? Three or four miles?" · "I think it's three or four miles." · "Do you think it's three or four miles?" · "It's three or four miles into town." · "It's three or four miles, so I'd like a taxi."
+
+**"I could walk that"**
+- BUILD: "I could walk that" · "and I could walk that" · "I think I could walk that" · "well, I could walk that"
+- USE: "Three or four miles — I could walk that." · "I could walk that, I think." · "If it's three or four miles, I could walk that." · "I could walk that. Could you tell me the way to the railway station?" · "I could walk that, but I'm not feeling great."
+
+**"I might get off at the next stop"**
+- BUILD: "I might get off at the next stop" · "so I might get off at the next stop" · "I think I might get off at the next stop" · "and I might get off at the next stop"
+- USE: "I might get off at the next stop, then." · "I could walk that, so I might get off at the next stop." · "It's three or four miles, so I might get off at the next stop." · "Three or four miles? I might get off at the next stop." · "Right then — I might get off at the next stop."
+
+**"and walk the rest"**
+- BUILD: "and walk the rest" · "and walk the rest, I think" · "so I might get off at the next stop and walk the rest" · "and walk the rest into town"
+- USE: "I might get off at the next stop, then, and walk the rest." · "I might get off at the next stop and walk the rest into town." · "It's three or four miles, so I might get off at the next stop and walk the rest." · "I could walk that, so I might get off at the next stop and walk the rest." · "I'm on holiday — I might get off at the next stop and walk the rest."
+
+**"it's a nice morning for it"**
+- BUILD: "it's a nice morning for it" · "and it's a nice morning for it" · "well, it's a nice morning for it" · "I think it's a nice morning for it"
+- USE: "It's a nice morning for it." · "I could walk that — it's a nice morning for it." · "I might get off at the next stop and walk the rest. It's a nice morning for it." · "Three or four miles? It's a nice morning for it." · "It's a nice morning for it, so I could walk that."
+
+### CP151 — "Don't be — you said maybe, and maybe was right. Six is too far for me. I'll stay in this seat and ride the whole way."
+
+**"don't be"**
+- BUILD: "don't be" · "no, don't be" · "well, don't be" · "don't be, please"
+- USE: "Don't be — it's no problem." · "Don't be. You've been very helpful." · "Don't be. Don't worry." · "Don't be — you spoke a little too quickly, but I understood every word." · "Don't be — I'm learning your language too."
+
+**"you said maybe"**
+- BUILD: "you said maybe" · "well, you said maybe" · "and you said maybe" · "you said maybe, so"
+- USE: "Don't be — you said maybe." · "You said maybe, and I understood every word." · "It's three or four miles? You said maybe." · "You said maybe, and that's fair." · "You said maybe, so don't be."
+
+**"and maybe was right"**
+- BUILD: "and maybe was right" · "you said maybe, and maybe was right" · "and maybe was right, so" · "and maybe was right too"
+- USE: "Don't be — you said maybe, and maybe was right." · "You said maybe, and maybe was right." · "You said maybe, and maybe was right — that's fair." · "You said maybe, and maybe was right, so don't be." · "Well, you said maybe, and maybe was right. No problem."
+
+**"six is too far for me"**
+- BUILD: "six is too far for me" · "but six is too far for me" · "and six is too far for me" · "well, six is too far for me"
+- USE: "Six is too far for me." · "Three or four miles? I could walk that, but six is too far for me." · "You said maybe, and maybe was right — six is too far for me." · "I'm not feeling great, and six is too far for me." · "Six is too far for me. How much does it cost to get a taxi into town?"
+
+**"I'll stay in this seat"**
+- BUILD: "I'll stay in this seat" · "so I'll stay in this seat" · "and I'll stay in this seat" · "well, I'll stay in this seat"
+- USE: "Six is too far for me. I'll stay in this seat." · "I'll stay in this seat, thank you." · "I'll stay in this seat, if that's OK with you." · "I'm not feeling great, so I'll stay in this seat." · "I could walk that, but six is too far for me, so I'll stay in this seat."
+
+**"and ride the whole way"**
+- BUILD: "and ride the whole way" · "I'll stay in this seat and ride the whole way" · "and ride the whole way into town" · "and ride the whole way, then"
+- USE: "I'll stay in this seat and ride the whole way." · "Six is too far for me, so I'll stay in this seat and ride the whole way." · "I'll stay in this seat and ride the whole way into town." · "I'm not feeling great, so I'll stay in this seat and ride the whole way." · "You said maybe, and maybe was right — I'll stay in this seat and ride the whole way."
+
+### CP152 — "Hello! I'm sorry but I can't talk at the moment. I need to go home now. Can we talk tomorrow?"
+
+**"I can't talk"**
+- BUILD: "I can't talk" · "I'm sorry but I can't talk" · "I can't talk now" · "so I can't talk"
+- USE: "I'm sorry but I can't talk." · "I'm sorry, I can't talk now." · "Hello! I'm sorry but I can't talk." · "No, I can't talk now." · "Excuse me — I can't talk now, I'm sorry." · "I can't talk now, so see you later."
+
+**"at the moment"**
+- BUILD: "at the moment" · "I can't talk at the moment" · "I'm learning your language at the moment" · "at the moment, I'm on holiday"
+- USE: "I'm sorry but I can't talk at the moment." · "I can't talk at the moment." · "I'm on holiday at the moment." · "I'm learning your language at the moment." · "I'm very well at the moment, thank you." · "I work with adults at the moment."
+
+**"I need to go home now"**
+- BUILD: "I need to go home now" · "so I need to go home now" · "but I need to go home now" · "I'm sorry — I need to go home now"
+- USE: "I'm sorry but I can't talk at the moment. I need to go home now." · "I need to go home now." · "I need to go home now, so see you tomorrow." · "I need to go home now. Good night!" · "I've had a headache since yesterday, so I need to go home now." · "Thank you very much — I need to go home now."
+
+**"can we talk tomorrow"**
+- BUILD: "can we talk tomorrow" · "so can we talk tomorrow" · "can we talk tomorrow, please" · "I'm sorry — can we talk tomorrow"
+- USE: "I need to go home now. Can we talk tomorrow?" · "Can we talk tomorrow?" · "Can we talk tomorrow, please?" · "I can't talk at the moment — can we talk tomorrow?" · "I'm sorry, I can't talk. Can we talk tomorrow?" · "Can we talk tomorrow? Good night!"
+
+### CP153 — "No, I'm sorry, I'm busy tomorrow. But let's talk on Saturday. See you then."
+
+**"I'm busy tomorrow"**
+- BUILD: "I'm busy tomorrow" · "I'm sorry, I'm busy tomorrow" · "but I'm busy tomorrow" · "no, I'm busy tomorrow"
+- USE: "No, I'm sorry, I'm busy tomorrow." · "I'm busy tomorrow." · "I'm sorry, I'm busy tomorrow." · "I'm busy tomorrow, so I can't talk." · "I'm busy tomorrow, but don't worry." · "I'm busy tomorrow. See you later!"
+
+**"let's talk"**
+- BUILD: "let's talk" · "but let's talk" · "so let's talk" · "let's talk again"
+- USE: "Let's talk." · "Let's talk now." · "Right then, let's talk." · "Let's talk again." · "I can't talk at the moment, but let's talk again." · "Let's talk, and go slowly with me."
+
+**"on Saturday"**
+- BUILD: "on Saturday" · "let's talk on Saturday" · "but let's talk on Saturday" · "see you on Saturday"
+- USE: "But let's talk on Saturday." · "I'm busy tomorrow. But let's talk on Saturday." · "See you on Saturday!" · "I'm on holiday on Saturday." · "Let's talk on Saturday." · "I need to go home now, but let's talk on Saturday."
+
+**"see you then"**
+- BUILD: "see you then" · "and see you then" · "so see you then" · "let's talk on Saturday, see you then"
+- USE: "But let's talk on Saturday. See you then." · "See you then!" · "Let's talk on Saturday — see you then." · "Can we talk tomorrow? See you then." · "Thank you very much. See you then!" · "Good night, and see you then."
+
+### CP154 — "Saturday's good — but only the morning. I'm away all afternoon."
+
+**"Saturday's good"**
+- BUILD: "Saturday's good" · "yes, Saturday's good" · "so Saturday's good" · "Saturday's good, thanks"
+- USE: "Saturday's good." · "Yes, Saturday's good." · "Saturday's good — let's talk then." · "Saturday's good, but I'm busy tomorrow." · "Saturday's good. See you then!" · "Saturday's good for me."
+
+**"but only the morning"**
+- BUILD: "but only the morning" · "Saturday's good, but only the morning" · "yes, but only the morning" · "but only the morning, I'm sorry"
+- USE: "Saturday's good — but only the morning." · "Yes, but only the morning." · "Let's talk on Saturday, but only the morning." · "Saturday's good, but only the morning. See you then!" · "That's fair — but only the morning." · "But only the morning, I'm sorry."
+
+**"I'm away all afternoon"**
+- BUILD: "I'm away all afternoon" · "so I'm away all afternoon" · "but I'm away all afternoon" · "I'm sorry, I'm away all afternoon"
+- USE: "Saturday's good — but only the morning. I'm away all afternoon." · "I'm away all afternoon." · "I'm sorry, I'm away all afternoon." · "I'm away all afternoon on Saturday." · "I'm away all afternoon, but let's talk on Saturday." · "I can't talk at the moment, and I'm away all afternoon."
+
+### CP155 — "Ten at the café — perfect. See you Saturday!"
+
+**"ten at the café"**
+- BUILD: "ten at the café" · "ten at the café on Saturday" · "so, ten at the café" · "let's talk — ten at the café"
+- USE: "Ten at the café?" · "Ten at the café, then." · "Let's talk on Saturday — ten at the café." · "Ten at the café. See you then!" · "Saturday's good. Ten at the café?" · "Ten at the café — but only the morning."
+
+**"perfect"**
+- BUILD: "perfect" · "yes, perfect" · "ten at the café — perfect" · "perfect, thanks"
+- USE: "Ten at the café — perfect. See you Saturday!" · "Perfect!" · "Perfect, thank you." · "Ten at the café? Perfect." · "Perfect. See you then!" · "Yes, perfect — see you Saturday!"
+
+### CP156 — "I'm very tired now."
+
+**"I'm very tired"**
+- BUILD: "I'm very tired" · "I'm very tired now" · "so I'm very tired" · "but I'm very tired"
+- USE: "I'm very tired now." · "I'm very tired." · "I'm very tired, so I need to go home now." · "I've had a headache since yesterday, and I'm very tired." · "I'm sorry, I'm very tired — can we talk tomorrow?" · "I'm very tired. Good night!"
+
+### CP157 — "Yes, I've got a busy day today. I hope you have a good day. See you later."
+
+**"I've got a busy day today"**
+- BUILD: "I've got a busy day today" · "yes, I've got a busy day today" · "so I've got a busy day today" · "but I've got a busy day today"
+- USE: "Yes, I've got a busy day today." · "I've got a busy day today." · "I've got a busy day today, so I can't talk." · "I've got a busy day today, and I'm busy tomorrow too." · "I'm sorry, I've got a busy day today. See you later!" · "I've got a busy day today, so I'm very tired."
+
+**"I hope you have a good day"**
+- BUILD: "I hope you have a good day" · "and I hope you have a good day" · "so I hope you have a good day" · "I hope you have a good day — see you later"
+- USE: "I hope you have a good day. See you later." · "I hope you have a good day!" · "Good morning! I hope you have a good day." · "I've got a busy day today. I hope you have a good day." · "Thank you very much. I hope you have a good day." · "I hope you have a good day, and see you tomorrow."
+
+### CP158 — "Are you going to work?"
+
+**"are you going to work"**
+- BUILD: "are you going to work" · "and are you going to work" · "so, are you going to work" · "good morning — are you going to work"
+- USE: "Are you going to work?" · "Good morning! Are you going to work?" · "Hello! Are you going to work?" · "Are you going to work now?" · "Are you going to work? I've got a busy day today." · "How are you? Are you going to work?"
+
+### CP159 — "It's hot today, again."
+
+**"it's hot today"**
+- BUILD: "it's hot today" · "it's hot today, again" · "and it's hot today" · "so it's hot today"
+- USE: "It's hot today, again." · "It's hot today." · "It's hot today — I'm very tired." · "It's hot today, so I'd like a glass of water." · "It's hot today. Can I have a glass of water, please?" · "It's hot today, and I'm away all afternoon."
+
+### CP160 — "Is the water warm?"
+
+**"is the water warm"**
+- BUILD: "is the water warm" · "and is the water warm" · "so is the water warm" · "it's hot today — is the water warm"
+- USE: "Is the water warm?" · "It's hot today. Is the water warm?" · "Is the water warm now?" · "Excuse me, is the water warm?" · "Is the water warm here?" · "Right then — is the water warm?"
+
+### CP161 — "No, it's a little cold today."
+
+**"it's a little cold today"**
+- BUILD: "it's a little cold today" · "no, it's a little cold today" · "but it's a little cold today" · "so it's a little cold today"
+- USE: "No, it's a little cold today." · "It's a little cold today." · "Is the water warm? No, it's a little cold today." · "It's a little cold today, but it's a nice morning for it." · "It's a little cold today — I'd like a coffee." · "It's a little cold today, so I'll stay in this seat."
+
+### CP162 — "It's not bad."
+
+**"it's not bad"**
+- BUILD: "it's not bad" · "but it's not bad" · "well, it's not bad" · "it's not bad, thanks"
+- USE: "It's not bad." · "Well, it's not bad." · "It's a little cold today, but it's not bad." · "It's not bad, thanks." · "It's hot today, but it's not bad." · "Is the water warm? It's not bad."
+
+### CP163 — "That's a bad idea."
+
+**"that's a bad idea"**
+- BUILD: "that's a bad idea" · "no, that's a bad idea" · "but that's a bad idea" · "I think that's a bad idea"
+- USE: "That's a bad idea." · "I think that's a bad idea." · "No, that's a bad idea." · "Well, that's a bad idea." · "That's a bad idea, so let's talk again." · "That's a bad idea — I'm sorry."
+
+### CP164 — "That makes me happy."
+
+**"that makes me happy"**
+- BUILD: "that makes me happy" · "and that makes me happy" · "so that makes me happy" · "well, that makes me happy"
+- USE: "That makes me happy." · "Thank you — that makes me happy." · "That's very kind of you, and that makes me happy." · "I understood every word, and that makes me happy." · "You've been very helpful, and that makes me happy." · "Let's talk on Saturday — that makes me happy."
+
+### CP165 — "That makes me feel a little worried."
+
+**"that makes me feel"**
+- BUILD: "and that makes me feel" · "so that makes me feel" · "but that makes me feel" · "well, that makes me feel"
+- USE: "That makes me feel a little worried." · "That makes me feel wonderful." · "Thank you — that makes me feel wonderful." · "When you go slowly with me, that makes me feel wonderful." · "You've been very helpful, and that makes me feel wonderful." · "I understood every word, and that makes me feel wonderful."
+
+**"a little worried"**
+- BUILD: "a little worried" · "that makes me feel a little worried" · "just a little worried" · "so that makes me feel a little worried"
+- USE: "That makes me feel a little worried." · "Well, that makes me feel a little worried." · "That's a bad idea, and that makes me feel a little worried." · "I'm not sure if I understood, and that makes me feel a little worried." · "That makes me feel a little worried — can we talk tomorrow?" · "That makes me feel a little worried, and I'm very tired."
+
+### CP166 — "When you talk quickly, it makes me feel stupid."
+
+**"when you talk quickly"**
+- BUILD: "when you talk quickly" · "and when you talk quickly" · "so when you talk quickly" · "when you talk quickly, that makes me feel a little worried"
+- USE: "When you talk quickly, it makes me feel stupid." · "When you talk quickly, that makes me feel a little worried." · "When you talk quickly, I'm not sure if I understood." · "When you talk quickly, could you say that again?" · "When you talk quickly, I might have to ask you to say that again." · "When you talk quickly, go slowly with me."
+
+**"it makes me feel stupid"**
+- BUILD: "it makes me feel stupid" · "and it makes me feel stupid" · "so it makes me feel stupid" · "when you talk quickly, it makes me feel stupid"
+- USE: "When you talk quickly, it makes me feel stupid." · "It makes me feel stupid." · "It makes me feel stupid, but don't worry." · "I'm not sure if I understood, and it makes me feel stupid." · "It makes me feel stupid, so go slowly with me." · "If I get a word wrong, it makes me feel stupid."
+
+### CP167 — "Is it okay if I sit here?"
+
+**"is it okay if"**
+- BUILD: "is it okay if I sit here" · "excuse me — is it okay if" · "so, is it okay if" · "is it okay if I ask"
+- USE: "Is it okay if I sit here?" · "Excuse me — is it okay if I sit here?" · "Is it okay if I ask?" · "Is it okay if I practise with you? I'm learning your language." · "Is it okay if I go home now? I'm very tired."
+
+**"I sit here"**
+- BUILD: "is it okay if I sit here" · "I sit here every morning" · "if I sit here" · "I sit here with my coffee"
+- USE: "Is it okay if I sit here?" · "I sit here every morning." · "Is it free? I sit here most days." · "I sit here with my coffee every morning." · "I sit here, and my son sits over there."
+
+### CP168 — "Is it okay if we put this here?"
+
+**"we put this here"**
+- BUILD: "is it okay if we put this here" · "so we put this here" · "we put this here, and then" · "we put this here for now"
+- USE: "Is it okay if we put this here?" · "Is it okay if we put this here, just for a minute?" · "We put this here every morning, and it's fine." · "We put this here so it's out of the way." · "We put this here, and then we're done."
+
+### CP169 — "I don't want to be late."
+
+**"I don't want"**
+- BUILD: "I don't want to be late" · "no, I don't want" · "but I don't want" · "I don't want a coffee"
+- USE: "I don't want to be late." · "I don't want a coffee, thank you." · "I don't want anything to eat, thank you." · "I don't want to go home now." · "I don't want to talk about it at the moment."
+
+**"to be late"**
+- BUILD: "I don't want to be late" · "to be late for work" · "to be late again" · "I don't want to be late for the train"
+- USE: "I don't want to be late." · "I don't want to be late for work." · "I don't want to be late again." · "I'd hate to be late." · "I don't want to be late, so let's go now."
+
+### CP170 — "Are we going to be late?"
+
+**"are we going"**
+- BUILD: "are we going to be late" · "are we going now" · "are we going by bus" · "so, are we going"
+- USE: "Are we going to be late?" · "Are we going now, or later?" · "Are we going by bus or by taxi?" · "Are we going to the train station?" · "Are we going tomorrow, or on Saturday?"
+
+### CP171 — "I promise I won't be late."
+
+**"I promise"**
+- BUILD: "I promise I won't be late" · "I promise, don't worry" · "I'll be there, I promise" · "I promise I'll ask"
+- USE: "I promise I won't be late." · "Don't worry — I promise." · "I promise I'll ask if I lose you." · "I'll be there at ten, I promise." · "I promise I'll try again tomorrow."
+
+**"I won't be late"**
+- BUILD: "I promise I won't be late" · "I won't be late, don't worry" · "and I won't be late" · "I won't be late again"
+- USE: "I promise I won't be late." · "Don't worry — I won't be late." · "I won't be late — I'll get a taxi." · "I won't be late tomorrow, I promise." · "I won't be late. See you then."
+
+### CP172 — "I promise we won't be late."
+
+**"we won't be late"**
+- BUILD: "I promise we won't be late" · "and we won't be late" · "we won't be late, don't worry" · "we won't be late again"
+- USE: "I promise we won't be late." · "Don't worry — we won't be late." · "We won't be late — we're getting a taxi." · "We won't be late on Saturday, I promise." · "We won't be late. We're leaving now."
+
+### CP173 — "It sounds as though we need to leave soon."
+
+**"it sounds as though"**
+- BUILD: "it sounds as though we need to leave soon" · "well, it sounds as though" · "it sounds as though you're busy" · "so it sounds as though"
+- USE: "It sounds as though we need to leave soon." · "It sounds as though you're busy tomorrow." · "It sounds as though it's not far into town." · "It sounds as though we can't pay by card." · "It sounds as though Saturday's good for you."
+
+**"we need to leave soon"**
+- BUILD: "it sounds as though we need to leave soon" · "I think we need to leave soon" · "and we need to leave soon" · "we need to leave soon, I'm afraid"
+- USE: "It sounds as though we need to leave soon." · "I think we need to leave soon." · "We need to leave soon — I don't want to be late." · "We need to leave soon. Can we have the bill, please?" · "We need to leave soon, so can we pay now?"
+
+### CP174 — "It sounds as though you want us not to do that."
+
+**"you want us not to do that"**
+- BUILD: "it sounds as though you want us not to do that" · "if you want us not to do that" · "so you want us not to do that" · "you want us not to do that, then"
+- USE: "It sounds as though you want us not to do that." · "Do you want us not to do that? Just tell me." · "If you want us not to do that, we won't." · "It sounds as though you want us not to do that, and that's fair." · "You want us not to do that, I think."
+
+### CP175 — "Is that correct? Am I correct?"
+
+**"is that correct"**
+- BUILD: "is that correct, or not" · "so, is that correct" · "I said it — is that correct" · "and is that correct"
+- USE: "Is that correct? Am I correct?" · "Is that correct?" · "I said it in your language — is that correct?" · "Is that correct? Just tell me if I say it wrong." · "Two coffees and a cup of tea — is that correct?"
+
+**"am I correct"**
+- BUILD: "is that correct? am I correct" · "so am I correct" · "am I correct, or not" · "well, am I correct"
+- USE: "Is that correct? Am I correct?" · "Am I correct? I'm not sure if I understood." · "Am I correct, or should I try again?" · "The bus leaves from here at ten — am I correct?" · "Am I correct? Just tell me — I'd rather be told."
+
+### CP176 — "Am I wrong about that?"
+
+**"am I wrong"**
+- BUILD: "am I wrong about that" · "so am I wrong" · "am I wrong, or not" · "am I wrong again"
+- USE: "Am I wrong about that?" · "Am I wrong? Just tell me." · "Am I wrong, or is that correct?" · "Am I wrong? I'd rather be told." · "I think the train station is over there — am I wrong?"
+
+**"about that"**
+- BUILD: "am I wrong about that" · "I'm not sure about that" · "don't worry about that" · "can we talk about that tomorrow"
+- USE: "Am I wrong about that?" · "Don't worry about that." · "Can we talk about that tomorrow?" · "I'm not sure about that — am I correct?" · "Let's talk about that on Saturday."
+
+### CP177 — "Would you like to order some drinks?"
+
+**"would you like to order"**
+- BUILD: "would you like to order some drinks" · "would you like to order now" · "and would you like to order" · "would you like to order anything to eat"
+- USE: "Would you like to order some drinks?" · "Would you like to order now, or later?" · "Would you like to order anything to eat?" · "Would you like to order? I'll have the lamb." · "Would you like to order a bottle of the house red?"
+
+**"some drinks"**
+- BUILD: "would you like to order some drinks" · "just some drinks" · "some drinks and some bread" · "some drinks for the table"
+- USE: "Would you like to order some drinks?" · "Can we have some drinks, please?" · "We'd like some drinks and a bowl of chips for the table." · "Some drinks would be lovely." · "I'll get some drinks, and then we can see the menu."
+
+### CP178 — "Do you want to order some drinks first?"
+
+**"do you want to order"**
+- BUILD: "do you want to order some drinks" · "do you want to order now" · "so do you want to order" · "do you want to order anything to eat"
+- USE: "Do you want to order some drinks first?" · "Do you want to order some drinks?" · "Do you want to order, or shall we see the menu again?" · "Do you want to order a pint?" · "Do you want to order anything to eat?"
+
+**"first"**
+- BUILD: "do you want to order some drinks first" · "just some drinks first" · "a coffee first" · "the bill first"
+- USE: "Do you want to order some drinks first?" · "Can we see the menu first?" · "Let's have some drinks first, and then we'll order." · "I'd like a coffee first, please." · "Can we pay first, and then we'll go?"
+
+### CP179 — "Did you want something to drink first?"
+
+**"did you want"**
+- BUILD: "did you want something to drink" · "did you want anything to eat" · "did you want to order" · "did you want a coffee"
+- USE: "Did you want something to drink first?" · "Did you want anything to eat?" · "Did you want to order now?" · "Did you want a glass of water as well?" · "Did you want to see the dessert menu?"
+
+**"something to drink"**
+- BUILD: "did you want something to drink" · "something to drink first" · "just something to drink" · "something to drink for the table"
+- USE: "Did you want something to drink first?" · "Would you like to order something to drink?" · "Can we have something to drink, please?" · "I'd like something to drink first, please." · "Do you want to order something to drink?"
+
+### CP180 — "Would you have a look? No rush — I'm waiting on my coffee anyway."
+
+**"would you have a look"**
+- BUILD: "would you have a look at this" · "would you have a look for me" · "would you have a look, please" · "and would you have a look"
+- USE: "Would you have a look? No rush — I'm waiting on my coffee anyway." · "Would you have a look for me, please?" · "Would you have a look at the wine list?" · "Would you have a look, and just tell me if it's wrong?" · "Would you have a look? I'm not sure if I understood."
+
+**"no rush"**
+- BUILD: "no rush at all" · "no rush — when you're ready" · "there's no rush" · "no rush, don't worry"
+- USE: "No rush — I'm waiting on my coffee anyway." · "No rush at all." · "No rush — when you're ready." · "Have a look when you can — no rush." · "Take your time, there's no rush."
+
+**"I'm waiting on my coffee"**
+- BUILD: "no rush — I'm waiting on my coffee" · "I'm waiting on my coffee anyway" · "I'm waiting on my coffee, so" · "and I'm waiting on my coffee"
+- USE: "No rush — I'm waiting on my coffee anyway." · "I'm waiting on my coffee, so take your time." · "Don't worry — I'm waiting on my coffee." · "I'm waiting on my coffee, so I'm in no hurry." · "I'm waiting on my coffee. Would you have a look while I do?"
+
+**"anyway"**
+- BUILD: "I'm waiting on my coffee anyway" · "thanks anyway" · "I'm busy tomorrow anyway" · "and I'll ask anyway"
+- USE: "No rush — I'm waiting on my coffee anyway." · "Thanks anyway." · "I could walk that anyway." · "I'm busy tomorrow anyway." · "It's a nice morning for it anyway."
+
+### CP181 — "Crisps will do nicely — salted, please."
+
+**"crisps will do nicely"**
+- BUILD: "crisps will do nicely, thanks" · "just crisps will do nicely" · "well, crisps will do nicely" · "crisps will do nicely for the table"
+- USE: "Crisps will do nicely — salted, please." · "Crisps will do nicely, thank you." · "Do you have any snacks? Crisps will do nicely." · "Just crisps will do nicely, nothing else." · "Crisps will do nicely for the table, please."
+
+**"salted"**
+- BUILD: "salted, please" · "just salted" · "salted, if you have it" · "salted for me"
+- USE: "Crisps will do nicely — salted, please." · "Salted, please." · "Salted, if you have it." · "Just salted, thanks." · "Salted for me, please."
+
+### CP182 — "Would you mind if I tried to practise speaking your language with you? I haven't been learning for very long, and I still feel a little nervous about speaking with other people."
+
+**"would you mind if I tried"**
+- BUILD: "would you mind if I tried" · "well, would you mind if I tried" · "would you mind if I tried again" · "so would you mind if I tried"
+- USE: "Would you mind if I tried?" · "Would you mind if I tried again?" · "Would you mind if I tried to speak your language?" · "Would you mind if I tried to speak your language with you?" · "Would you mind if I tried? I'm learning your language." · "I prefer to try — would you mind if I tried?"
+
+**"to practise speaking your language"**
+- BUILD: "to practise speaking your language" · "to practise speaking your language with you" · "and to practise speaking your language" · "just to practise speaking your language"
+- USE: "I'd like to practise speaking your language." · "I want to practise speaking your language with you." · "Would you mind if I tried to practise speaking your language with you?" · "I need to practise speaking your language a little every day." · "I'm on holiday here, so I'd like to practise speaking your language." · "Can we try again? I'd like to practise speaking your language."
+
+**"I haven't been learning for very long"**
+- BUILD: "I haven't been learning for very long" · "but I haven't been learning for very long" · "well, I haven't been learning for very long" · "and I haven't been learning for very long"
+- USE: "I haven't been learning for very long." · "I'm sorry, I haven't been learning for very long." · "I haven't been learning for very long, so please go slowly with me." · "I haven't been learning for very long, but I'd like to practise speaking your language." · "I haven't been learning for very long — just a little every day for about a year." · "I haven't been learning for very long, and learning a new language is difficult."
+
+**"I still feel a little nervous"**
+- BUILD: "I still feel a little nervous" · "and I still feel a little nervous" · "but I still feel a little nervous" · "I still feel a little nervous, though"
+- USE: "I still feel a little nervous." · "I still feel a little nervous, but can we try again?" · "I haven't been learning for very long, and I still feel a little nervous." · "I still feel a little nervous when you talk quickly." · "I still feel a little nervous. Would you mind if I tried anyway?" · "I still feel a little nervous, so stop me if I say it wrong."
+
+**"about speaking with other people"**
+- BUILD: "about speaking with other people" · "and about speaking with other people" · "but about speaking with other people" · "just about speaking with other people"
+- USE: "I still feel a little nervous about speaking with other people." · "I'm learning your language, but I still feel a little nervous about speaking with other people." · "I haven't been learning for very long, so I still feel a little nervous about speaking with other people." · "I think that's normal — I still feel a little nervous about speaking with other people." · "I'd like to practise speaking your language, but I still feel a little nervous about speaking with other people." · "Would you mind if I tried? I still feel a little nervous about speaking with other people."
+
+### CP183 — "Thank you, that's good to know. I need to learn more words, and I need to practise listening. I don't understand people very well when they don't speak slowly."
+
+**"that's good to know"**
+- BUILD: "that's good to know" · "well, that's good to know" · "and that's good to know" · "so that's good to know"
+- USE: "That's good to know." · "Thank you, that's good to know." · "That's good to know — thank you very much." · "Well, that's good to know. I still feel a little nervous, though." · "I haven't been learning for very long, so that's good to know." · "That's good to know. Would you mind if I tried?"
+
+**"I need to learn more words"**
+- BUILD: "I need to learn more words" · "and I need to learn more words" · "I think I need to learn more words" · "I need to learn more words, too"
+- USE: "I need to learn more words." · "I think I need to learn more words." · "I need to learn more words, and I need to practise more." · "I need to learn more words to speak your language better." · "Learning a new language is difficult, and I need to learn more words." · "I haven't been learning for very long, so I need to learn more words."
+
+**"I need to practise listening"**
+- BUILD: "I need to practise listening" · "and I need to practise listening" · "I need to practise listening, too" · "I think I need to practise listening"
+- USE: "I need to practise listening." · "I need to learn more words, and I need to practise listening." · "I need to practise listening a little every day." · "I need to practise listening, so please go slowly with me." · "I need to practise listening, but I still feel a little nervous." · "I think I need to practise listening, too."
+
+**"I don't understand people very well"**
+- BUILD: "I don't understand people very well" · "but I don't understand people very well" · "and I don't understand people very well" · "I don't understand people very well, though"
+- USE: "I don't understand people very well." · "I'm sorry, I don't understand people very well." · "I don't understand people very well, so I need to practise listening." · "I don't understand people very well when you talk quickly." · "I'm learning your language, but I don't understand people very well." · "I don't understand people very well, so please go slowly with me."
+
+**"when they don't speak slowly"**
+- BUILD: "when they don't speak slowly" · "and when they don't speak slowly" · "but when they don't speak slowly" · "not when they don't speak slowly"
+- USE: "I don't understand people very well when they don't speak slowly." · "It makes me feel stupid when they don't speak slowly." · "I still feel a little nervous when they don't speak slowly." · "I'm sorry — I don't understand people very well when they don't speak slowly." · "I don't understand people very well when they don't speak slowly, so please go slowly with me." · "I haven't been learning for very long, and I don't understand people very well when they don't speak slowly."
+
+### CP184 — "Yes, thank you. It's easier talking to just one person. It's a bit difficult thinking of something to say, though. I'm not sure what to say, but I feel as if I can speak enough to start having conversations."
+
+**"it's easier talking to just one person"**
+- BUILD: "it's easier talking to just one person" · "but it's easier talking to just one person" · "and it's easier talking to just one person" · "I think it's easier talking to just one person"
+- USE: "It's easier talking to just one person." · "Yes, thank you. It's easier talking to just one person." · "I think it's easier talking to just one person." · "I still feel a little nervous about speaking with other people, so it's easier talking to just one person." · "It's easier talking to just one person, and I haven't been learning for very long." · "It's easier talking to just one person, though I need to practise listening."
+
+**"it's a bit difficult"**
+- BUILD: "it's a bit difficult" · "but it's a bit difficult" · "and it's a bit difficult" · "it's a bit difficult, though"
+- USE: "It's a bit difficult." · "It's a bit difficult, but I'm learning your language." · "It's a bit difficult when they don't speak slowly." · "It's easier talking to just one person, but it's a bit difficult." · "It's a bit difficult when you talk quickly." · "It's a bit difficult, though I think that's normal."
+
+**"thinking of something to say"**
+- BUILD: "thinking of something to say" · "and thinking of something to say" · "it's a bit difficult thinking of something to say" · "just thinking of something to say"
+- USE: "It's a bit difficult thinking of something to say, though." · "It's a bit difficult thinking of something to say." · "It's easier talking to just one person, but it's a bit difficult thinking of something to say." · "Well, it's a bit difficult thinking of something to say." · "I haven't been learning for very long, so it's a bit difficult thinking of something to say." · "It's a bit difficult thinking of something to say, and I still feel a little nervous."
+
+**"I'm not sure what to say"**
+- BUILD: "I'm not sure what to say" · "but I'm not sure what to say" · "and I'm not sure what to say" · "I'm not sure what to say, though"
+- USE: "I'm not sure what to say." · "I'm sorry, I'm not sure what to say." · "I'm not sure what to say, but I'd like to practise speaking your language." · "I'm not sure what to say — I need to learn more words." · "I'm not sure what to say. Would you mind if I tried again?" · "I still feel a little nervous, and I'm not sure what to say."
+
+**"I feel as if"**
+- BUILD: "I feel as if" · "but I feel as if" · "and I feel as if" · "well, I feel as if"
+- USE: "I feel as if I need to learn more words." · "I feel as if I need to practise listening." · "I feel as if I haven't been learning for very long." · "I feel as if I don't understand people very well." · "I'm not sure what to say, but I feel as if that's normal." · "It's a bit difficult, and I feel as if I need to practise more."
+
+**"I can speak enough"**
+- BUILD: "I can speak enough" · "but I feel as if I can speak enough" · "and I can speak enough" · "I think I can speak enough"
+- USE: "I feel as if I can speak enough." · "I think I can speak enough, but I still feel a little nervous." · "I can speak enough now." · "I haven't been learning for very long, but I feel as if I can speak enough." · "I can speak enough, though I need to learn more words." · "I can't speak very quickly, but I can speak enough."
+
+**"to start having conversations"**
+- BUILD: "to start having conversations" · "and to start having conversations" · "I can speak enough to start having conversations" · "just to start having conversations"
+- USE: "I feel as if I can speak enough to start having conversations." · "I think I can speak enough to start having conversations." · "I'd like to start having conversations." · "I need to learn more words to start having conversations." · "I still feel a little nervous, but I'd like to start having conversations." · "I haven't been learning for very long, but I feel as if I can speak enough to start having conversations."
+
+### CP185 — "It's just a little frustrating when I can't think quickly enough to express myself properly. But I know that I need to keep practising if I want to speak more confidently."
+
+**"it's just a little frustrating"**
+- BUILD: "it's just a little frustrating" · "but it's just a little frustrating" · "and it's just a little frustrating" · "it's just a little frustrating, though"
+- USE: "It's just a little frustrating." · "It's just a little frustrating when they don't speak slowly." · "It's a bit difficult, and it's just a little frustrating." · "It's just a little frustrating when you talk quickly." · "I'm not sure what to say, and it's just a little frustrating." · "It's just a little frustrating, though I think that's normal."
+
+**"when I can't think quickly enough"**
+- BUILD: "when I can't think quickly enough" · "and when I can't think quickly enough" · "but when I can't think quickly enough" · "it's just a little frustrating when I can't think quickly enough"
+- USE: "It's just a little frustrating when I can't think quickly enough." · "It makes me feel stupid when I can't think quickly enough." · "I'm not sure what to say when I can't think quickly enough." · "It's a bit difficult when I can't think quickly enough." · "I still feel a little nervous when I can't think quickly enough." · "I can't speak very quickly, and it's just a little frustrating when I can't think quickly enough."
+
+**"to express myself properly"**
+- BUILD: "to express myself properly" · "and to express myself properly" · "just to express myself properly" · "I need to learn more words to express myself properly"
+- USE: "It's just a little frustrating when I can't think quickly enough to express myself properly." · "I need to learn more words to express myself properly." · "I'd like to express myself properly." · "I can speak enough, but I'd like to express myself properly." · "I need to practise more to express myself properly." · "It's a bit difficult to express myself properly when I can't think quickly enough."
+
+**"I know that"**
+- BUILD: "I know that" · "but I know that" · "and I know that" · "well, I know that"
+- USE: "I know that I need to practise more." · "I know that I need to learn more words." · "I know that it's a bit difficult." · "I know that I don't understand people very well." · "I know that I haven't been learning for very long." · "I know that I need to practise listening, too."
+
+**"I need to keep practising"**
+- BUILD: "I need to keep practising" · "and I need to keep practising" · "I know that I need to keep practising" · "but I need to keep practising"
+- USE: "I need to keep practising." · "I know that I need to keep practising." · "I need to keep practising a little every day." · "It's just a little frustrating, but I need to keep practising." · "I need to keep practising, and I need to learn more words." · "I need to keep practising to express myself properly."
+
+**"if I want to speak more confidently"**
+- BUILD: "if I want to speak more confidently" · "and if I want to speak more confidently" · "but if I want to speak more confidently" · "I need to keep practising if I want to speak more confidently"
+- USE: "I know that I need to keep practising if I want to speak more confidently." · "I need to practise more if I want to speak more confidently." · "I need to learn more words if I want to speak more confidently." · "I need to practise listening if I want to speak more confidently." · "If I want to speak more confidently, I need to keep practising." · "I know that I need to practise listening if I want to speak more confidently."
+
+### CP186 — "This is exactly the kind of practice I need. I think I can feel it changing my brain while we're talking! I really appreciate your help. But it's surprising how tired I get when I'm talking in a language I don't speak very well."
+
+**"this is exactly the kind of practice I need"**
+- BUILD: "this is exactly the kind of practice I need" · "and this is exactly the kind of practice I need" · "well, this is exactly the kind of practice I need" · "I think this is exactly the kind of practice I need"
+- USE: "This is exactly the kind of practice I need." · "Thank you — this is exactly the kind of practice I need." · "I think this is exactly the kind of practice I need." · "This is exactly the kind of practice I need, and I know that I need to keep practising." · "This is exactly the kind of practice I need if I want to speak more confidently." · "It's just a little frustrating, but this is exactly the kind of practice I need."
+
+**"I can feel it changing my brain"**
+- BUILD: "I can feel it changing my brain" · "and I can feel it changing my brain" · "I think I can feel it changing my brain" · "but I can feel it changing my brain"
+- USE: "I can feel it changing my brain." · "I think I can feel it changing my brain." · "This is exactly the kind of practice I need, and I can feel it changing my brain." · "I can feel it changing my brain now." · "It's a bit difficult, but I can feel it changing my brain." · "I can feel it changing my brain, and that makes me happy."
+
+**"while we're talking"**
+- BUILD: "while we're talking" · "and while we're talking" · "just while we're talking" · "I can feel it changing my brain while we're talking"
+- USE: "I think I can feel it changing my brain while we're talking." · "I still feel a little nervous while we're talking." · "I'm not sure what to say while we're talking." · "Please go slowly with me while we're talking." · "If I get a word wrong while we're talking, just tell me." · "It's a bit difficult thinking of something to say while we're talking."
+
+**"I really appreciate your help"**
+- BUILD: "I really appreciate your help" · "and I really appreciate your help" · "well, I really appreciate your help" · "but I really appreciate your help"
+- USE: "I really appreciate your help." · "Thank you, I really appreciate your help." · "You've been very helpful, and I really appreciate your help." · "I really appreciate your help — this is exactly the kind of practice I need." · "That's very kind of you. I really appreciate your help." · "I really appreciate your help, and I know that I need to keep practising."
+
+**"it's surprising"**
+- BUILD: "it's surprising" · "but it's surprising" · "and it's surprising" · "it's surprising, though"
+- USE: "It's surprising." · "It's surprising, but I can feel it changing my brain." · "It's surprising — I feel as if I can speak enough." · "It's surprising, though I think that's normal." · "It's surprising, and that makes me happy." · "Well, it's surprising. This is exactly the kind of practice I need."
+
+**"how tired I get"**
+- BUILD: "how tired I get" · "it's surprising how tired I get" · "and how tired I get" · "just how tired I get"
+- USE: "It's surprising how tired I get." · "I think it's surprising how tired I get." · "It's surprising how tired I get, and I'm very tired now." · "It's surprising how tired I get while we're talking." · "It's surprising how tired I get when I can't think quickly enough." · "It's surprising how tired I get, but this is exactly the kind of practice I need."
+
+**"when I'm talking in a language"**
+- BUILD: "when I'm talking in a language" · "and when I'm talking in a language" · "but when I'm talking in a language" · "how tired I get when I'm talking in a language"
+- USE: "It's surprising how tired I get when I'm talking in a language I don't speak very well." · "It's a bit difficult when I'm talking in a language I don't speak very well." · "It's just a little frustrating when I'm talking in a language I don't speak very well." · "I still feel a little nervous when I'm talking in a language I don't speak very well." · "Yes, I'm very tired now — it's surprising how tired I get when I'm talking in a language I don't speak very well."
+
+**"I don't speak very well"**
+- BUILD: "I don't speak very well" · "but I don't speak very well" · "and I don't speak very well" · "I don't speak very well, though"
+- USE: "I don't speak very well." · "I'm sorry, I don't speak very well." · "It's surprising how tired I get when I'm talking in a language I don't speak very well." · "I'm learning your language, but I don't speak very well." · "I don't speak very well, so please go slowly with me." · "I don't speak very well, and I don't understand people very well when they don't speak slowly."
+
+### CP187 — "It really is. I'm really happy that I can have this much of a conversation. And I hope we'll be able to have more conversations in the future as I keep on getting better."
+
+**"it really is"**
+- BUILD: "yes, it really is" · "well, it really is" · "it really is, though" · "it really is, and I'm very grateful"
+- USE: "It really is." · "Yes, it really is." · "It really is, though." · "Well, it really is — thank you." · "It really is, and I'm very grateful."
+
+**"I'm really happy that"**
+- BUILD: "I'm really happy that I understood every word" · "I'm really happy that we're doing this" · "well, I'm really happy that you told me" · "I'm really happy that I can practise with you"
+- USE: "I'm really happy that I understood every word." · "I'm really happy that we're doing this." · "I'm really happy that you told me." · "I'm really happy that I can practise with you." · "I'm really happy that you go slowly with me."
+
+**"I can have this much of a conversation"**
+- BUILD: "I'm really happy that I can have this much of a conversation" · "now I can have this much of a conversation" · "I can have this much of a conversation already" · "but I can have this much of a conversation"
+- USE: "I'm really happy that I can have this much of a conversation." · "I can have this much of a conversation now." · "It's surprising that I can have this much of a conversation." · "I can have this much of a conversation, and that makes me happy." · "I know that I can have this much of a conversation already."
+
+**"we'll be able to have more conversations"**
+- BUILD: "I hope we'll be able to have more conversations" · "and I hope we'll be able to have more conversations" · "so we'll be able to have more conversations" · "then we'll be able to have more conversations"
+- USE: "I hope we'll be able to have more conversations." · "We'll be able to have more conversations soon, I think." · "I need to keep practising, and then we'll be able to have more conversations." · "I really appreciate your help, and I hope we'll be able to have more conversations." · "We'll be able to have more conversations when I can speak more confidently."
+
+**"in the future"**
+- BUILD: "and in the future" · "more conversations in the future" · "in the future, I hope" · "some time in the future"
+- USE: "I hope we'll be able to have more conversations in the future." · "In the future, I'd like to speak your language better." · "I need to practise more in the future." · "Maybe in the future." · "In the future I won't be so nervous."
+
+**"as I keep on getting better"**
+- BUILD: "and as I keep on getting better" · "as I keep on getting better, I hope" · "in the future, as I keep on getting better" · "as I keep on getting better at it"
+- USE: "And I hope we'll be able to have more conversations in the future as I keep on getting better." · "As I keep on getting better, I'll be able to say more." · "I'm sure it will get easier as I keep on getting better." · "As I keep on getting better, I understand more of what people say." · "I need to keep practising, and as I keep on getting better it'll be easier."
+
+### CP188 — "About six months. A little every day — usually just ten minutes. It doesn't feel like very much."
+
+**"about six months"**
+- BUILD: "about six months now" · "for about six months" · "about six months, I think" · "I've been learning for about six months"
+- USE: "About six months." · "About six months, I think." · "I've been learning for about six months." · "I've been here for about six months now." · "About six months — a little every day."
+
+**"usually just ten minutes"**
+- BUILD: "usually just ten minutes a day" · "a little every day, usually just ten minutes" · "usually just ten minutes in the morning" · "and usually just ten minutes"
+- USE: "A little every day — usually just ten minutes." · "Usually just ten minutes, but every day." · "I do a little every day, usually just ten minutes." · "It's usually just ten minutes in the morning." · "Usually just ten minutes, though."
+
+**"it doesn't feel like very much"**
+- BUILD: "but it doesn't feel like very much" · "and it doesn't feel like very much" · "it doesn't feel like very much, though" · "usually just ten minutes, so it doesn't feel like very much"
+- USE: "It doesn't feel like very much." · "It doesn't feel like very much, though." · "A little every day — it doesn't feel like very much." · "It doesn't feel like very much, but I do it every day." · "Usually just ten minutes, so it doesn't feel like very much."
+
+### CP189 — "Thank you. Maybe it does add up after all. I still feel nervous — but a little less than when we started talking."
+
+**"maybe it does add up"**
+- BUILD: "well, maybe it does add up" · "thank you — maybe it does add up" · "so maybe it does add up" · "maybe it does add up, though"
+- USE: "Thank you. Maybe it does add up." · "Maybe it does add up." · "Usually just ten minutes, but maybe it does add up." · "It doesn't feel like very much, but maybe it does add up." · "A little every day, so maybe it does add up."
+
+**"after all"**
+- BUILD: "maybe it does add up after all" · "it's not bad after all" · "after all, I practise every day" · "and maybe I can do it after all"
+- USE: "Maybe it does add up after all." · "It's not bad after all." · "Maybe I can speak enough after all." · "So it wasn't a bad idea after all." · "You were right after all."
+
+**"but a little less"**
+- BUILD: "I still feel nervous, but a little less" · "but a little less than yesterday" · "but a little less now" · "but a little less every day"
+- USE: "I still feel nervous — but a little less." · "I still feel nervous, but a little less than yesterday." · "I'm still tired, but a little less." · "It's still difficult, but a little less." · "I'm still worried, but a little less now."
+
+**"than when we started talking"**
+- BUILD: "less than when we started talking" · "but a little less than when we started talking" · "better than when we started talking" · "easier than when we started talking"
+- USE: "I still feel nervous — but a little less than when we started talking." · "I feel better than when we started talking." · "I understand more than when we started talking." · "It's easier than when we started talking." · "I'm more tired than when we started talking."
+
+### CP190 — "That's kind — but I don't think we're going to agree about this. You hear my sentences; I hear all my gaps."
+
+**"that's kind"**
+- BUILD: "well, that's kind" · "that's kind, thank you" · "but that's kind" · "that's kind — thank you very much"
+- USE: "That's kind." · "That's kind, thank you." · "That's kind. Thank you very much." · "Well, that's kind — I really appreciate your help." · "That's kind, but I'm not sure."
+
+**"I don't think"**
+- BUILD: "I don't think so" · "no, I don't think so" · "but I don't think" · "well, I don't think so"
+- USE: "I don't think so." · "No, I don't think so." · "I don't think I understood that." · "I don't think it's very far." · "I don't think I can say that quickly enough."
+
+**"we're going to agree about this"**
+- BUILD: "I don't think we're going to agree about this" · "but I don't think we're going to agree about this" · "I'm not sure we're going to agree about this" · "well, we're going to agree about this one day"
+- USE: "That's kind — but I don't think we're going to agree about this." · "I don't think we're going to agree about this." · "I'm not sure we're going to agree about this, though." · "I don't think we're going to agree about this, and that's fine." · "Well, I don't think we're going to agree about this today."
+
+**"you hear my sentences"**
+- BUILD: "but you hear my sentences" · "you hear my sentences, though" · "well, you hear my sentences" · "you hear my sentences and you're very kind"
+- USE: "You hear my sentences, and you're very kind." · "You hear my sentences, but I don't think they're very good." · "You hear my sentences, so of course you think it's going well." · "You hear my sentences, though I still feel nervous about them." · "You hear my sentences when I get them right."
+
+**"I hear all my gaps"**
+- BUILD: "but I hear all my gaps" · "you hear my sentences; I hear all my gaps" · "and I hear all my gaps" · "I hear all my gaps, though"
+- USE: "You hear my sentences; I hear all my gaps." · "I hear all my gaps." · "I hear all my gaps, though." · "That's kind, but I hear all my gaps." · "You're very kind, but I hear all my gaps."
+
+### CP191 — "It's a deal. Either way, I need the practice — so let's keep talking."
+
+**"it's a deal"**
+- BUILD: "well, it's a deal" · "right then, it's a deal" · "it's a deal, then" · "so it's a deal"
+- USE: "It's a deal." · "Right then — it's a deal." · "Well, it's a deal." · "It's a deal. See you Saturday." · "It's a deal, and thank you."
+
+**"either way"**
+- BUILD: "either way, it's a deal" · "but either way" · "either way, thank you" · "so either way"
+- USE: "Either way, I need to practise more." · "Either way, it's a deal." · "Either way, thank you very much." · "Either way, I don't think we're going to agree about this." · "Either way, I'm very grateful."
+
+**"I need the practice"**
+- BUILD: "either way, I need the practice" · "and I need the practice" · "because I need the practice" · "I need the practice, though"
+- USE: "I need the practice." · "Either way, I need the practice." · "I need the practice, and I really appreciate your help." · "I don't mind either way — I need the practice." · "I need the practice, though it's a bit difficult."
+
+**"let's keep talking"**
+- BUILD: "so let's keep talking" · "well, let's keep talking" · "let's keep talking, then" · "I need the practice, so let's keep talking"
+- USE: "It's a deal. Either way, I need the practice — so let's keep talking." · "Let's keep talking." · "So let's keep talking." · "Let's keep talking, and I'll ask if I lose you." · "Let's keep talking, though I'm very tired now."
+
+### CP192 — "Do you have any orange juice?"
+
+**"any orange juice"**
+- BUILD: "do you have any orange juice" · "any orange juice, please" · "any orange juice for children" · "any orange juice as well"
+- USE: "Do you have any orange juice?" · "Do you have any orange juice, please?" · "Do you have any orange juice for children?" · "Do you have any orange juice as well?" · "Do you have any orange juice? And two coffees, please."
+
+### CP193 — "Do you have any apple juice?"
+
+**"any apple juice"**
+- BUILD: "do you have any apple juice" · "any apple juice, please" · "any apple juice for children" · "any orange juice or any apple juice"
+- USE: "Do you have any apple juice?" · "Do you have any apple juice, please?" · "Do you have any orange juice or any apple juice?" · "Do you have any apple juice for children?" · "Do you have any apple juice as well?"
+
+### CP194 — "It's down there on the left."
+
+**"it's down there"**
+- BUILD: "it's down there past that church" · "it's down there and then across the square" · "it's just down there" · "yes, it's down there"
+- USE: "It's down there." · "It's just down there." · "It's down there, past that church." · "It's down there and then across the square." · "Yes, it's down there — it's not very far."
+
+**"on the left"**
+- BUILD: "it's down there on the left" · "and then on the left" · "just on the left" · "past that church, on the left"
+- USE: "It's down there on the left." · "It's on the left." · "It's just on the left, past that church." · "It's down there on the left, and then across the square." · "It's over there on the left."
+
+### CP195 — "It's down there on the right."
+
+**"on the right"**
+- BUILD: "it's down there on the right" · "and then on the right" · "just on the right" · "past that church, on the right"
+- USE: "It's down there on the right." · "It's on the right." · "It's just on the right, past that church." · "It's over there on the right." · "It's down there on the right, and then across the square."
+
 
 ---
 
@@ -1620,14 +3640,36 @@ Decisions, one line each, each overrulable in one word:
     than cosmetic order.
 11. **No JSON companion authored** — same call as the health set: the document is the
     canonical artefact; the structured form falls out at registration.
+12. **"the railway station" (CP145) stands beside "the train station" (CP128)** — different
+    knowns, each mapping once, is not a production fork; the health set's own precedent
+    (its decision 11, the two visiting forms). Both are worn corpus wholes, never blended
+    inside one phrase.
+13. **The intact pod sentence is legal in any of its own LEGOs' baskets**, including before
+    the seed's later chunks are admitted — Tom's ruling makes the whole sentence one
+    established mapping, ZUT satisfied as a unit. Novel compositions reaching a later chunk
+    remain forbidden; the assembly pass rewrote the handful found (six phrases in block K,
+    audited mechanically).
+14. **CP186 carries the set's one admission-order inversion**, stated in place: "I don't
+    speak very well" debuts before "when I'm talking in a language", because the fragment
+    cannot close a natural sentence until its tail exists. Found honestly by a basket
+    refusing to pad; fixed upstream rather than papered over.
+15. **CP187's "I hope" resolved to core** — Appendix A already licenses it and earlier
+    baskets compose with it; the duplicate NEW admission was caught at assembly and its
+    basket withdrawn (400 basketed LEGOs, not 401).
+16. **A proposed CP165 admission swap was examined and declined** — swapping "a little
+    worried" ahead of "that makes me feel" merely relocates the thin basket from one chunk
+    to the other; both stand at the floors as authored.
 
 Mechanical verification, run against this document (the same discipline the health set
-closed with): **195 seeds, CP001–CP195, contiguous, no duplicates; 401 new LEGOs; zero
-forward references in any cut line** (every `(CPnnn)` citation in a cut resolves to an
-earlier seed); **9 strict-zero seeds**; **all 73 drill rows mint** (verified per scene
-block); **165 + 16 + 50 = 231** rows reconciled exactly; all 35 authored-walk steps
-dispositioned. The census caught four missed drill rows on its first run — block N is the
-honest record of that catch.
+closed with): **195 seeds, CP001–CP195, contiguous, no duplicates; 400 new LEGOs** (401
+minted, one resolved to core at assembly, §7.15); **zero forward references in any cut
+line** (every `(CPnnn)` citation in a cut resolves to an earlier seed); **9 strict-zero
+seeds**; **all 73 drill rows mint** (verified per scene block); **165 + 16 + 50 = 231**
+rows reconciled exactly; all 35 authored-walk steps dispositioned. Baskets: **400/400
+LEGOs at or above the 4/5 floors, 1,681 BUILD + 2,114 USE**, floor-checked per LEGO by
+`verify-baskets.cjs` against the cut inventory. The census caught four missed drill rows
+on its first run — block N is the honest record of that catch; the basket floors caught
+the CP186 inversion and the CP187 duplicate — §5's intro records those.
 
 ---
 
