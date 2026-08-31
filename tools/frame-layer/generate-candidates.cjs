@@ -26,7 +26,16 @@ const { deriveJob, splitsForBasket } = require('./derive-seed-job.cjs');
 const { loadCorpus, knownSideIsEnglish } = require('./corpus.cjs');
 const { availableVocab, attestedFrames, instantiableFrameSet, norm } = require('./availability.cjs');
 
-const sb = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY || process.env.SUPABASE_SERVICE_ROLE_KEY);
+/**
+ * LAZY. This module now exports pure helpers (`tilesFromVocab`,
+ * `rejectUntileable`) that a self-test requires, and creating the client at
+ * module load made that test need credentials to check string-tiling — it died
+ * with "supabaseUrl is required" on any checkout without a `.env`. A test that
+ * claims "no DB, no network" has to be true when nobody is looking.
+ */
+let _sb;
+const sb = () => (_sb || (_sb = createClient(process.env.SUPABASE_URL,
+  process.env.SUPABASE_SERVICE_KEY || process.env.SUPABASE_SERVICE_ROLE_KEY)));
 const ROOT = path.join(__dirname, '..', '..');
 const OUTDIR = path.join(ROOT, 'labs', 'basket-lab', 'candidates');
 
@@ -214,7 +223,7 @@ async function main() {
   const [course = 'spa_for_eng', seedArg = '599'] = process.argv.slice(2).filter(a => !a.startsWith('--'));
   const passes = +(process.argv[process.argv.indexOf('--passes') + 1] || 1) || 1;
   const seed = +seedArg;
-  const { seedRow, legos, ownLegos, priorSeeds, priorLegos, priorComponents, components, phrases } = await loadCorpus(sb, course, seed);
+  const { seedRow, legos, ownLegos, priorSeeds, priorLegos, priorComponents, components, phrases } = await loadCorpus(sb(), course, seed);
   if (!seedRow) throw new Error(`no seed ${seed} in ${course}`);
   const job = deriveJob({ course, seedRow, ownLegos, priorSeeds, priorLegos, priorComponents });
   // per-course frame attestation — never the doc's spa-derived first_seed
@@ -300,7 +309,7 @@ async function warnIfInventoryStale() {
   try {
     const { stalenessOf } = require('./extract-dialogue-patterns.cjs');
     const inv = JSON.parse(fs.readFileSync(path.join(ROOT, 'docs/frame-layer/dialogue-frame-inventory.json'), 'utf8'));
-    const { data } = await sb.from('canonical_pod_scenarios')
+    const { data } = await sb().from('canonical_pod_scenarios')
       .select('updated_at').order('updated_at', { ascending: false }).limit(1);
     const st = stalenessOf(inv, data && data[0] && data[0].updated_at);
     if (!st.known) return console.log('NOTE: dialogue inventory staleness is unreadable — treating it as current.');
