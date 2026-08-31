@@ -42,6 +42,7 @@ import { ref, computed, watch } from 'vue'
 import { api, clipUrl } from './labApi'
 import { dirFor } from '@/utils/textDirection.js'
 import CoursePicker from '@/components/CoursePicker.vue'
+import SearchSelect from './SearchSelect.vue'
 
 const props = defineProps({
   params: { type: Object, required: true },
@@ -57,16 +58,87 @@ const sentence = ref('')
 const languageRow = computed(() =>
   (props.params.languages || []).find((l) => l.code === language.value) || null)
 
-/** Clone first, then everything else, exactly as the backend grouped them. */
-const voiceGroups = computed(() => {
-  const groups = new Map()
-  for (const v of languageRow.value?.voices || []) {
-    const g = v.group || 'Voices'
-    if (!groups.has(g)) groups.set(g, [])
-    groups.get(g).push(v)
-  }
-  return [...groups.entries()].map(([name, list]) => ({ name, list }))
+const languageVoices = computed(() => languageRow.value?.voices || [])
+
+// ── The voice menu, with its attributes on the rows ─────────────────────────
+//
+// Tom, 2026-08-31: "these long lists are impenetrable as drop downs". The menu
+// was forty bare first names — Skylar, Daniel, Gemma — grouped by provider and
+// by nothing else, so the only way to choose was to audition down the list.
+// Every attribute below is one the provider already hands us and the menu was
+// throwing away: gender, native accent, country, the vendor's own tagline.
+// What we genuinely do not hold says so on the row instead of leaving a blank.
+
+const GENDER_WORD = { f: 'female', m: 'male', feminine: 'female', masculine: 'male', gender_neutral: 'neutral' }
+
+/** "general-american" reads as "general american" in a chip. */
+function humanAccent (a) { return String(a || '').replace(/-/g, ' ') }
+
+function voiceChips (v) {
+  const chips = []
+  const g = GENDER_WORD[v.gender] || (v.gender ? String(v.gender) : '')
+  chips.push(g ? { text: g, kind: '' } : { text: 'gender not listed', kind: 'missing' })
+  chips.push(v.accent
+    ? { text: humanAccent(v.accent), kind: 'accent' }
+    : v.accentLocale
+      ? { text: v.accentLocale, kind: 'accent' }
+      : { text: 'accent not listed', kind: 'missing' })
+  if (v.tagline) chips.push({ text: v.tagline.toLowerCase(), kind: '' })
+  if (v.clone) chips.push({ text: 'clone', kind: 'clone' })
+  chips.push({ text: v.provider, kind: '' })
+  if (v.clips) chips.push({ text: `${v.clips.toLocaleString()} clips`, kind: '' })
+  return chips
+}
+
+/** Everything the filter matches on, including what the row does not show. */
+function voiceHaystack (v) {
+  return [
+    v.name, v.id, v.provider, v.group,
+    GENDER_WORD[v.gender] || v.gender,
+    humanAccent(v.accent), v.accentLocale, v.country,
+    (v.otherAccents || []).map(humanAccent).join(' '),
+    v.tagline, v.description,
+    v.clone ? 'clone' : '',
+    languageRow.value?.name, languageRow.value?.code, languageRow.value?.steer,
+  ].filter(Boolean).join(' ')
+}
+
+const voiceOptions = computed(() => languageVoices.value.map((v) => ({
+  value: v.id,
+  label: v.name || v.id,
+  group: v.group || 'Voices',
+  chips: voiceChips(v),
+  haystack: voiceHaystack(v),
+})))
+
+/**
+ * What this list can and cannot be searched by — counted off the list itself
+ * rather than asserted, so a search for an accent that comes back thin is
+ * explained instead of mysterious.
+ */
+const voiceSearchNote = computed(() => {
+  const all = languageVoices.value
+  if (!all.length) return ''
+  const gaps = []
+  const noGender = all.filter((v) => !v.gender).length
+  const noAccent = all.filter((v) => !v.accent && !v.accentLocale).length
+  if (noGender) gaps.push(`gender on ${noGender}`)
+  if (noAccent) gaps.push(`accent on ${noAccent}`)
+  const base = 'Matches name, gender, accent, country, provider and the vendor’s own description. More words narrow further.'
+  return gaps.length ? `${base} Of ${all.length} voices we hold no ${gaps.join(' and no ')}.` : base
 })
+
+const languageOptions = computed(() => (props.params.languages || []).map((l) => ({
+  value: l.code,
+  label: l.name,
+  chips: [
+    { text: `steered as ${l.steer}`, kind: '' },
+    (l.voices || []).length
+      ? { text: `${(l.voices || []).length} voices`, kind: '' }
+      : { text: 'no voices on this backend', kind: 'missing' },
+  ],
+  haystack: [l.name, l.code, l.steer, l.azureLocale].filter(Boolean).join(' '),
+})))
 
 const voice = computed(() =>
   (languageRow.value?.voices || []).find((v) => v.id === voiceId.value) || null)
@@ -413,25 +485,26 @@ function gateDetail (clip) {
   <div class="play">
     <!-- 1 · who says it, in what language -->
     <div class="play-row">
-      <label class="play-field">
+      <div class="play-field">
         <span class="play-label">Voice</span>
-        <select v-model="voiceId" class="play-select">
-          <optgroup v-for="g in voiceGroups" :key="g.name" :label="g.name">
-            <option v-for="v in g.list" :key="`${v.provider}:${v.id}`" :value="v.id">
-              {{ v.name || v.id }}
-            </option>
-          </optgroup>
-        </select>
-        <span class="play-sub">{{ provider }}</span>
-      </label>
+        <SearchSelect
+          v-model="voiceId"
+          :options="voiceOptions"
+          :search-note="voiceSearchNote"
+          noun="voices"
+          placeholder="welsh female · scottish · cartesia · warm…"
+        />
+      </div>
 
-      <label class="play-field">
+      <div class="play-field">
         <span class="play-label">Language</span>
-        <select v-model="language" class="play-select">
-          <option v-for="l in params.languages" :key="l.code" :value="l.code">{{ l.name }}</option>
-        </select>
-        <span class="play-sub">steered as {{ languageRow?.steer || '—' }}</span>
-      </label>
+        <SearchSelect
+          v-model="language"
+          :options="languageOptions"
+          noun="languages"
+          placeholder="german · fr · japanese…"
+        />
+      </div>
     </div>
 
     <!-- 2 · what it says -->
