@@ -188,92 +188,174 @@ function phraseList(phrases) {
 }
 
 const CSS = `
-:root{--fg:#111;--dim:#666;--line:#ddd;--bad:#b00020;--ok:#0a6a2f;--bg:#fff}
-@media (prefers-color-scheme:dark){:root{--fg:#eee;--dim:#999;--line:#333;--bad:#ff6b6b;--ok:#4ade80;--bg:#111}}
+/* ── HOUSE TOKENS — A LITERAL MIRROR OF src/style.css ────────────────────────
+   An iframe inherits neither the shell's CSS custom properties nor its
+   data-theme attribute, so this lab has to carry the palette itself. These
+   values are COPIED FROM src/style.css, not re-tuned: change them there and
+   change them here IN THE SAME COMMIT, or this page silently drifts off brand
+   — which is the exact defect this block was written to fix (Tom, 2026-08-31:
+   the lab "has a different coloured iframe as its background").
+
+   Which block applies is decided by ?theme=light on the URL, which
+   src/views/admin/BasketLab.vue sets from the shell's own data-theme. It is
+   deliberately NOT prefers-color-scheme: the shell's toggle decides, not the
+   OS. Standalone on port 8461 that means dark by default, ?theme=light for
+   light — and the page still looks right with no shell around it. */
+:root{
+  --canvas:#0f172a; --surface:#1e293b; --surface-2:#334155; --surface-3:#475569;
+  --line:#334155; --ink:#f1f5f9; --muted:#94a3b8; --faint:#64748b;
+  --accent:#ffa630; --accent-2:#34d399; --success:#34d399; --danger:#f87171;
+  color-scheme:dark;
+}
+:root[data-theme="light"]{
+  --canvas:#eef2f6; --surface:#ffffff; --surface-2:#f1f5f9; --surface-3:#e2e8f0;
+  --line:#cbd5e1; --ink:#0f172a; --muted:#475569; --faint:#586573;
+  --accent:#a85508; --accent-2:#047857; --success:#047857; --danger:#cf1f1f;
+  color-scheme:light;
+}
 *{box-sizing:border-box}
-body{font:16px/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;margin:0;color:var(--fg);background:var(--bg)}
-main{max-width:1200px;margin:0 auto;padding:12px}
-h1{font-size:18px;margin:0 0 4px}
-h2{font-size:15px;margin:16px 0 6px;text-transform:uppercase;letter-spacing:.06em;color:var(--dim)}
-form.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;padding:8px 0;border-bottom:1px solid var(--line)}
-input,button,textarea,select{font:inherit;color:var(--fg);background:transparent;border:1px solid var(--line);border-radius:4px;padding:6px 8px}
-button{cursor:pointer}
-.seed{border:1px solid var(--line);border-left:4px solid var(--dim);padding:10px;margin:12px 0;border-radius:4px}
+html,body{background:var(--canvas)}
+body{font:15px/1.5 Inter,system-ui,Avenir,Helvetica,Arial,sans-serif;margin:0;color:var(--ink)}
+main{max-width:1200px;margin:0 auto;padding:16px}
+
+/* Type scale — sentence case throughout; the only tracked caps are the small
+   labels below, which are the house's .ui-filter-label / .section-label. */
+h1{font-size:1.25rem;font-weight:700;letter-spacing:-0.01em;margin:0 0 6px;color:var(--ink)}
+h2{font-size:1rem;font-weight:700;letter-spacing:-0.01em;margin:20px 0 8px;color:var(--ink)}
+h3{font-size:0.875rem;font-weight:600;margin:0 0 8px;color:var(--muted)}
+
+a{color:var(--accent-2);text-decoration:none}
+a:hover{text-decoration:underline}
+
+/* Forms — the shared field look from src/assets/ui-tokens.css (.ui-field). */
+form.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;padding:10px 0 14px;border-bottom:1px solid var(--line);margin-bottom:4px}
+form.row label{display:flex;gap:6px;align-items:center;font-size:0.8rem;color:var(--muted)}
+input,textarea,select{font:inherit;font-size:0.85rem;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:0.3rem 0.55rem}
+input::placeholder,textarea::placeholder{color:var(--faint)}
+input:focus,textarea:focus,select:focus{outline:none;border-color:var(--accent-2)}
+button{font:inherit;font-size:0.8rem;cursor:pointer;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:9999px;padding:0.28rem 0.8rem;transition:border-color .15s,color .15s}
+button:hover{border-color:var(--accent-2);color:var(--accent-2)}
+
+/* Cards, not boxes: one surface, one quiet 1px line, one radius. */
+.seed,.job,.rule,.taste,.col,.split{background:var(--surface);border:1px solid var(--line);border-radius:10px}
+.seed{border-left:3px solid var(--faint);padding:12px 14px;margin:14px 0}
 .seed .k{font-weight:600}
-.seed .t{color:var(--dim)}
-.immutable{font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--bad)}
+.seed .t{color:var(--muted)}
+.immutable{font-size:0.6875rem;text-transform:uppercase;letter-spacing:.06em;color:var(--danger);margin-bottom:4px}
 .cols{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 @media(max-width:820px){.cols{grid-template-columns:1fr}}
-.col{border:1px solid var(--line);border-radius:4px;padding:10px;min-width:0}
+.col{padding:12px 14px;min-width:0}
+
+/* Phrase lists. Monospace stays where it belongs: on phrase ids and commands. */
 ol.phrases{margin:0;padding-left:20px}
 ol.phrases li{margin:0 0 8px}
-.role{font-size:11px;text-transform:uppercase;letter-spacing:.06em;border:1px solid var(--line);border-radius:3px;padding:0 4px;margin-right:6px;color:var(--dim)}
-.k{display:inline}
-.t{display:block;color:var(--dim)}
-.why{display:block;font-size:12px;color:var(--dim);font-style:italic}
-table.crit{border-collapse:collapse;width:100%;margin:8px 0;font-size:14px}
-table.crit td,table.crit th{border-bottom:1px solid var(--line);padding:4px 6px;text-align:left}
-td.n,th.n{text-align:right;font-variant-numeric:tabular-nums}
-tr.bad td{color:var(--bad)}
-tr.ok td{color:inherit}
-.split{border:1px solid var(--line);border-radius:4px;padding:6px 8px;margin:6px 0;font-size:14px}
-.split.bad{border-color:var(--bad)}
-.split ul{margin:4px 0 0;padding-left:18px;color:var(--dim)}
-.none{color:var(--dim)}
-.verdict{margin-top:16px;border-top:1px solid var(--line);padding-top:12px}
-textarea{width:100%;min-height:90px}
-.meta{font-size:12px;color:var(--dim);margin-top:6px}
-a{color:inherit}
-.v{border-bottom:1px solid var(--line);padding:10px 0;white-space:pre-wrap}
-.v .meta{white-space:normal}
-h3{font-size:14px;margin:0 0 6px;color:var(--dim);font-weight:600}
 ul.phrases{margin:0;padding:0;list-style:none}
-ul.phrases li{margin:0 0 8px;padding-left:62px;text-indent:-62px}
-code.pid{font-size:11px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--dim);border:1px solid var(--line);border-radius:3px;padding:0 3px;margin-right:6px;display:inline-block;width:52px;text-align:center;text-indent:0}
+ul.phrases li{margin:0 0 10px;padding-left:62px;text-indent:-62px}
 ul.phrases li .t,ul.phrases li .why{padding-left:0;text-indent:0}
-.job{border:1px solid var(--line);border-left:4px solid var(--ok);border-radius:4px;padding:10px;margin:12px 0}
-.joblabel{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--dim)}
-.jobverdict{font-size:20px;font-weight:700;margin:2px 0 4px}
-.job p{margin:4px 0}
-.rule{border:1px solid var(--line);border-radius:4px;padding:10px;margin:12px 0;font-size:14px}
-.seedverdict{margin-top:6px;font-weight:700}
-.seedverdict.ok{color:var(--ok)}
-.seedverdict.bad{color:var(--bad)}
-.basket{margin:22px 0 0;border-top:2px solid var(--line);padding-top:10px}
-.basket h2{font-size:16px;text-transform:none;letter-spacing:0;color:var(--fg);font-weight:700;margin:6px 0 8px}
-.verdictpill{font-size:11px;letter-spacing:.06em;border-radius:3px;padding:1px 5px;border:1px solid currentColor}
-.verdictpill.ok{color:var(--ok)}
-.verdictpill.bad{color:var(--bad)}
-.taste{border:1px solid var(--line);border-left:4px solid var(--ok);border-radius:4px;padding:8px 10px;margin:10px 0;font-size:14px}
-.taste.instrument{border-left-color:var(--bad);background:color-mix(in srgb,var(--bad) 7%,transparent)}
-.tablewrap{overflow-x:auto}
-table.grid{border-collapse:collapse;width:100%;font-size:13px}
-table.grid th,table.grid td{border:1px solid var(--line);padding:8px;vertical-align:top;min-width:230px}
-table.grid th.seedh,table.grid td.seedh{min-width:0;width:48px;text-align:right;color:var(--dim)}
-table.grid th.instrument,table.grid td.instrument{background:color-mix(in srgb,var(--bad) 7%,transparent)}
-.colname{font-weight:700}
-.colmode{font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--dim)}
-th.instrument .colmode{color:var(--bad)}
-.colmeta{font-size:11px;color:var(--dim);font-weight:400}
-.cellhead{display:flex;justify-content:space-between;gap:8px;font-size:12px;margin-bottom:4px}
-.cellgen{margin:4px 0}
-.cellgen button{font-size:12px;padding:2px 6px}
-.cellseed{font-size:13px;margin:4px 0}
-.celljob{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--dim);margin:4px 0}
-ul.cellbaskets{margin:4px 0 0;padding-left:16px}
-ul.cellbaskets li{margin:0 0 6px}
-.genstate{font-size:12px;color:var(--dim)}
-.bad{color:var(--bad)}
-`;
+code,code.pid{font-family:'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,monospace}
+code.pid{font-size:0.6875rem;color:var(--muted);background:var(--surface-2);border:1px solid var(--line);border-radius:5px;padding:1px 3px;margin-right:6px;display:inline-block;width:52px;text-align:center;text-indent:0}
 
-function page(title, body) {
-  return `<!doctype html><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>${esc(title)}</title><style>${CSS}</style><main>${body}</main>`;
+/* Badges are pills from a fixed palette. */
+.role{font-size:0.625rem;text-transform:uppercase;letter-spacing:.06em;border:1px solid var(--line);border-radius:9999px;padding:1px 7px;margin-right:6px;color:var(--muted);background:var(--surface-2)}
+.role.use{color:var(--accent-2);border-color:color-mix(in srgb,var(--accent-2) 55%,transparent);background:color-mix(in srgb,var(--accent-2) 14%,transparent)}
+.role.build{color:var(--accent);border-color:color-mix(in srgb,var(--accent) 55%,transparent);background:color-mix(in srgb,var(--accent) 14%,transparent)}
+.verdictpill{display:inline-block;font-size:0.6875rem;font-weight:600;letter-spacing:.04em;border-radius:9999px;padding:1px 8px;border:1px solid currentColor;background:color-mix(in srgb,currentColor 12%,transparent)}
+.verdictpill.ok{color:var(--success)}
+.verdictpill.bad{color:var(--danger)}
+
+.k{display:inline}
+.t{display:block;color:var(--muted)}
+.why{display:block;font-size:0.8125rem;color:var(--faint);font-style:italic}
+.none{color:var(--faint)}
+.meta{font-size:0.75rem;color:var(--muted);margin-top:6px}
+.bad{color:var(--danger)}
+
+/* Criteria table — the house's dense scannable table (.ui-table). */
+table.crit{border-collapse:collapse;width:100%;margin:10px 0;font-size:0.8125rem}
+table.crit th{text-align:left;font-weight:600;color:var(--faint);font-size:0.6875rem;text-transform:uppercase;letter-spacing:.05em}
+table.crit td,table.crit th{border-bottom:1px solid var(--line);padding:5px 6px;text-align:left}
+td.n,th.n{text-align:right;font-variant-numeric:tabular-nums}
+tr.bad td{color:var(--danger)}
+tr.ok td{color:inherit}
+
+.split{padding:8px 10px;margin:8px 0;font-size:0.8125rem;background:var(--surface-2)}
+.split.bad{border-color:color-mix(in srgb,var(--danger) 55%,var(--line))}
+.split ul{margin:4px 0 0;padding-left:18px;color:var(--muted)}
+
+.verdict{margin-top:20px;border-top:1px solid var(--line);padding-top:14px}
+.verdict label{display:flex;gap:6px;align-items:center;font-size:0.8rem;color:var(--muted);margin:6px 0}
+textarea{width:100%;min-height:90px}
+
+.v{border-bottom:1px solid var(--line);padding:12px 0;white-space:pre-wrap}
+.v .meta{white-space:normal}
+
+.job{border-left:3px solid var(--accent-2);padding:12px 14px;margin:14px 0}
+.joblabel{font-size:0.6875rem;text-transform:uppercase;letter-spacing:.06em;color:var(--faint)}
+.jobverdict{font-size:1.125rem;font-weight:700;letter-spacing:-0.01em;margin:3px 0 5px}
+.job p{margin:5px 0}
+.rule{padding:12px 14px;margin:14px 0;font-size:0.8125rem}
+.seedverdict{margin-top:6px;font-weight:700}
+.seedverdict.ok{color:var(--success)}
+.seedverdict.bad{color:var(--danger)}
+
+.basket{margin:26px 0 0;border-top:1px solid var(--line);padding-top:14px}
+.basket h2{font-size:1rem;text-transform:none;letter-spacing:-0.01em;color:var(--ink);font-weight:700;margin:6px 0 10px}
+
+.taste{border-left:3px solid var(--accent-2);padding:10px 12px;margin:12px 0;font-size:0.8125rem}
+.taste.instrument{border-left-color:var(--danger);background:color-mix(in srgb,var(--danger) 8%,var(--surface))}
+
+/* The grid. */
+.tablewrap{background:var(--surface);border:1px solid var(--line);border-radius:10px;overflow-x:auto}
+table.grid{border-collapse:collapse;width:100%;font-size:0.8125rem}
+table.grid th,table.grid td{border-bottom:1px solid var(--line);border-right:1px solid var(--line);padding:10px;vertical-align:top;min-width:230px}
+table.grid tr:last-child td{border-bottom:none}
+table.grid th:last-child,table.grid td:last-child{border-right:none}
+table.grid thead th,table.grid tr:first-child th{background:var(--surface-2)}
+table.grid th.seedh,table.grid td.seedh{min-width:0;width:48px;text-align:right;color:var(--faint);font-variant-numeric:tabular-nums}
+table.grid th.instrument,table.grid td.instrument{background:color-mix(in srgb,var(--danger) 7%,var(--surface))}
+table.grid th.instrument{background:color-mix(in srgb,var(--danger) 10%,var(--surface-2))}
+.colname{font-weight:700;color:var(--ink)}
+.colmode{font-size:0.6875rem;text-transform:uppercase;letter-spacing:.05em;color:var(--faint)}
+th.instrument .colmode{color:var(--danger)}
+.colmeta{font-size:0.6875rem;color:var(--faint);font-weight:400}
+.cellhead{display:flex;justify-content:space-between;gap:8px;font-size:0.75rem;margin-bottom:6px}
+.cellgen{margin:6px 0;display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.cellgen button{font-size:0.6875rem;padding:2px 8px}
+.cellseed{font-size:0.8125rem;margin:6px 0}
+.celljob{font-size:0.6875rem;text-transform:uppercase;letter-spacing:.06em;color:var(--faint);margin:6px 0}
+ul.cellbaskets{margin:6px 0 0;padding-left:16px}
+ul.cellbaskets li{margin:0 0 8px}
+.genstate{font-size:0.75rem;color:var(--muted)}
+`;
+/* ── THEME ACROSS THE IFRAME BOUNDARY ────────────────────────────────────────
+ * An iframe inherits neither the parent's CSS variables nor its data-theme, so
+ * the shell's choice has to travel as data — on the query string. BasketLab.vue
+ * reads document.documentElement.dataset.theme and appends ?theme=light; here
+ * it lands on <html data-theme="light"> and the light token block in CSS wins.
+ * Anything else, including no parameter at all, is DARK — which is the shell's
+ * default and the standalone lab's default too.
+ *
+ * The theme has to survive a click as well as a load: prev/next/grid/verdicts
+ * and every form inside the frame navigate the frame itself, and the wrapper
+ * cannot re-append the parameter for them. So it is threaded onto every
+ * internal link (tq/tq1) and carried as a hidden field on every GET form.
+ */
+const themeOf = (url) => url.searchParams.get('theme') === 'light' ? 'light' : 'dark';
+/** Suffix for a link that already has a query string; '' in dark. */
+const tq = (theme) => theme === 'light' ? '&theme=light' : '';
+/** Suffix for a link that has no query string yet; '' in dark. */
+const tq1 = (theme) => theme === 'light' ? '?theme=light' : '';
+/** The same state, carried through a GET form — state, not a control. */
+const tqField = (theme) => theme === 'light' ? '<input type="hidden" name="theme" value="light">' : '';
+
+function page(title, body, theme) {
+  return `<!doctype html><html${theme === 'light' ? ' data-theme="light"' : ''}><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>${esc(title)}</title><style>${CSS}</style><main>${body}</main></html>`;
 }
 
-async function labPage(course, seed) {
+async function labPage(course, seed, theme) {
   const a = await analyse(course, seed);
-  if (a.missing) return page('basket lab', `<h1>basket lab</h1><p class="none">no seed ${esc(seed)} in ${esc(course)} — this course does not have that seed.</p>${controls(course, seed)}`);
+  if (a.missing) return page('basket lab', `<h1>basket lab</h1><p class="none">no seed ${esc(seed)} in ${esc(course)} — this course does not have that seed.</p>${controls(course, seed, theme)}`, theme);
   const { corpus: { seedRow, ownLegos }, job, live, gen, cand } = a;
   const genBy = new Map((gen ? gen.baskets : []).map(b => [b.lego_index, b]));
 
@@ -304,8 +386,8 @@ async function labPage(course, seed) {
 
   return page(`basket lab — ${course} ${seed}`, `
 <h1>the basket lab <span class="none">— ${esc(course)}, seed ${seed}</span></h1>
-${controls(course, seed)}
-${tasteBanner(course)}
+${controls(course, seed, theme)}
+${tasteBanner(course, theme)}
 ${generationPanel(course, seed, cand)}
 <div class="seed">
   <div class="immutable">the seed is immutable — nothing here writes to it, or to anything else in the database</div>
@@ -336,7 +418,7 @@ ${cand && !cand.broken ? `<p class="meta">candidates generated ${esc(cand.genera
 ${live.baskets.map(b => basket(b, genBy.get(b.lego_index))).join('')}
 ${unattr}
 
-<form class="verdict" method="post" action="${BASE}/lab/verdict">
+<form class="verdict" method="post" action="${BASE}/lab/verdict${tq1(theme)}">
   <input type="hidden" name="course" value="${esc(course)}">
   <input type="hidden" name="seed" value="${seed}">
   <input type="hidden" name="candidate_stamp" value="${esc(cand ? cand.generated : 'none')}">
@@ -345,7 +427,7 @@ ${unattr}
   <label>about <input name="about" list="pids" size="12" placeholder="L01-3, or L01, or blank"></label>
   <datalist id="pids">${live.baskets.flatMap(b => [`<option value="L${String(b.lego_index).padStart(2, '0')}">`, ...b.phrases.map(p => `<option value="${esc(p.lab_id)}">`)]).join('')}</datalist>
   <textarea name="text" id="v" placeholder="Type or dictate a sentence against what is on screen. Stored verbatim." autofocus></textarea>
-  <p><button type="submit">save verdict</button> <a href="${BASE}/lab/verdicts">read them back &rarr;</a></p>
+  <p><button type="submit">save verdict</button> <a href="${BASE}/lab/verdicts${tq1(theme)}">read them back &rarr;</a></p>
   <p class="meta">stored verbatim with the timestamp, the course and seed, what it is about, which candidate set was on screen, and build ${esc(BUILD_SHA)}</p>
 </form>
 <script>document.addEventListener('keydown',e=>{if(e.key==='v'&&e.target.tagName!=='TEXTAREA'){e.preventDefault();document.getElementById('v').focus()}
@@ -367,7 +449,7 @@ async function poll(){
   // status read, not the run — nothing here has to outlive a generation
   setTimeout(poll, live?5000:20000);
 }
-poll();</script>`);
+poll();</script>`, theme);
 }
 
 
@@ -417,7 +499,7 @@ function stateWords(st) {
 /* ------------------------------------------------------------------ *
  * TASTE versus MEASUREMENT — say which is which, never blur them.
  * ------------------------------------------------------------------ */
-function tasteBanner(course) {
+function tasteBanner(course, theme) {
   const taste = canTasteTarget(course);
   const p = pairOf(course);
   const knownEng = knownSideIsEnglish(course);
@@ -429,7 +511,7 @@ function tasteBanner(course) {
     ${taste
       ? ` The target side is <b>${esc(p.target || '?')}</b> and you read it, so judge the target phrases too.`
       : ` The target side is <b>${esc(p.target || '?')}</b>. Read the instrument, not the phrases: does it cross the split, is diversity above the floors, does the target still perform the seed's derived job. A verdict on target phrasing here would be a guess entering the record as evidence.`}
-    <span class="meta"> [default awaiting a ruling — <a href="${BASE}/lab/grid">edit the list</a>]</span>
+    <span class="meta"> [default awaiting a ruling — <a href="${BASE}/lab/grid${tq1(theme)}">edit the list</a>]</span>
   </div>`;
 }
 
@@ -444,7 +526,7 @@ function tasteBanner(course) {
  * A multi-LEGO seed shows SEVERAL BASKETS in its cell. They are never averaged:
  * the seed composite is context and never decides, so it is not shown here at all.
  * ------------------------------------------------------------------ */
-async function gridPage(courses, seeds) {
+async function gridPage(courses, seeds, theme) {
   const all = await courseList();
   const cells = [];
   for (const seed of seeds) for (const course of courses) cells.push({ course, seed });
@@ -463,16 +545,16 @@ async function gridPage(courses, seeds) {
 
   const body = seeds.map(seed => `<tr><th class="seedh">${seed}</th>${courses.map(course => {
     const r = at.get(`${course}|${seed}`);
-    return `<td class="${canTasteTarget(course) ? 'canTaste' : 'instrument'}">${cell(course, seed, r)}</td>`;
+    return `<td class="${canTasteTarget(course) ? 'canTaste' : 'instrument'}">${cell(course, seed, r, theme)}</td>`;
   }).join('')}</tr>`).join('');
 
   return page('basket lab — grid', `
 <h1>the basket lab <span class="none">— the grid</span></h1>
-<p><a href="${BASE}/lab">&larr; the deep view, where you judge phrases and type verdicts</a> · <a href="${BASE}/lab/verdicts">verdicts</a></p>
+<p><a href="${BASE}/lab${tq1(theme)}">&larr; the deep view, where you judge phrases and type verdicts</a> · <a href="${BASE}/lab/verdicts${tq1(theme)}">verdicts</a></p>
 <form class="row" method="get" action="${BASE}/lab/grid">
   <label>courses <input name="courses" value="${esc(courses.join(','))}" size="34" list="allcourses"></label>
   <label>seeds <input name="seeds" value="${esc(seeds.join(','))}" size="14" inputmode="numeric"></label>
-  <button type="submit">show</button>
+  ${tqField(theme)}<button type="submit">show</button>
   <span class="meta">${all.length} courses have content</span>
 </form>
 <datalist id="allcourses">${all.map(c => `<option value="${esc(c)}">`).join('')}</datalist>
@@ -480,7 +562,7 @@ async function gridPage(courses, seeds) {
 which is the mapping table made visible rather than tabulated. Each cell lists its own baskets; a multi-LEGO seed shows
 several. <b>They are never averaged</b> — three healthy baskets hiding a thin fourth is exactly what an average buys you.</p>
 <div class="tablewrap"><table class="grid">${head}${body}</table></div>
-<form class="row" method="post" action="${BASE}/lab/taste">
+<form class="row" method="post" action="${BASE}/lab/taste${tq1(theme)}">
   <label>pairs whose TARGET side you can taste <input name="list" value="${esc(tasteList().join(','))}" size="52"></label>
   <button type="submit">save</button>
   <span class="meta">[default awaiting your ruling] everything else is instrument-only on the target side</span>
@@ -512,12 +594,12 @@ async function poll(){
   setTimeout(poll, anyLive?5000:20000);
 }
 poll();
-</script>`);
+</script>`, theme);
 }
 
-function cell(course, seed, r) {
+function cell(course, seed, r, theme) {
   const st = JOBS.statusOf(course, seed);
-  const head = `<div class="cellhead"><a href="${BASE}/lab?course=${esc(course)}&seed=${seed}">open &rarr;</a>
+  const head = `<div class="cellhead"><a href="${BASE}/lab?course=${esc(course)}&seed=${seed}${tq(theme)}">open &rarr;</a>
      <span class="genstate">${esc(stateWords(st))}</span></div>
    ${READ_ONLY ? '' : `<div data-cell="${esc(course)}|${seed}" class="cellgen">
      <button onclick="gen('${esc(course)}',${seed},false)">generate</button>
@@ -544,30 +626,31 @@ function cell(course, seed, r) {
 
 const legoLabel = (l) => `L${String(l.lego_index).padStart(2, '0')} · ${l.known_text} → ${l.target_text}  [${l.type || '?'}]`;
 
-function controls(course, seed) {
+function controls(course, seed, theme) {
   return `<form class="row" method="get" action="${BASE}/lab">
     <label>course <input name="course" value="${esc(course)}" size="12"></label>
     <label>seed <input name="seed" value="${esc(seed)}" size="5" inputmode="numeric"></label>
-    <button type="submit">show</button>
-    <a href="${BASE}/lab?course=${esc(course)}&seed=${+seed - 1}">&larr; prev</a>
-    <a href="${BASE}/lab?course=${esc(course)}&seed=${+seed + 1}">next &rarr;</a>
-    <a href="${BASE}/lab/grid?courses=${esc(course)}&seeds=${seed}">grid</a>
-    <a href="${BASE}/lab/verdicts">verdicts</a>
+    ${tqField(theme)}<button type="submit">show</button>
+    <a href="${BASE}/lab?course=${esc(course)}&seed=${+seed - 1}${tq(theme)}">&larr; prev</a>
+    <a href="${BASE}/lab?course=${esc(course)}&seed=${+seed + 1}${tq(theme)}">next &rarr;</a>
+    <a href="${BASE}/lab/grid?courses=${esc(course)}&seeds=${seed}${tq(theme)}">grid</a>
+    <a href="${BASE}/lab/verdicts${tq1(theme)}">verdicts</a>
   </form>`;
 }
 
-function verdictsPage() {
+function verdictsPage(theme) {
   const rows = fs.existsSync(VERDICTS)
     ? fs.readFileSync(VERDICTS, 'utf8').split('\n').filter(Boolean).map(l => { try { return JSON.parse(l); } catch { return null; } }).filter(Boolean)
     : [];
   rows.reverse();
   return page('verdicts', `<h1>verdicts <span class="none">— newest first, ${rows.length}</span></h1>
-  <p><a href="${BASE}/lab">&larr; back to the lab</a> · <button onclick="navigator.clipboard.writeText(document.getElementById('all').textContent)">copy all</button></p>
-  <div id="all">${rows.map(r => `<div class="v">${r.about ? `<code class="pid">${esc(r.about)}</code> ` : ''}${esc(r.text)}<div class="meta">${esc(r.ts)} · ${esc(r.course)} seed ${esc(r.seed)}${r.about ? ` · about ${esc(r.about)}` : ' · about the whole seed'} · candidate set ${esc(r.candidate_stamp)} · build ${esc(r.build_sha)}</div></div>`).join('') || '<p class="none">none yet</p>'}</div>`);
+  <p><a href="${BASE}/lab${tq1(theme)}">&larr; back to the lab</a> · <button onclick="navigator.clipboard.writeText(document.getElementById('all').textContent)">copy all</button></p>
+  <div id="all">${rows.map(r => `<div class="v">${r.about ? `<code class="pid">${esc(r.about)}</code> ` : ''}${esc(r.text)}<div class="meta">${esc(r.ts)} · ${esc(r.course)} seed ${esc(r.seed)}${r.about ? ` · about ${esc(r.about)}` : ' · about the whole seed'} · candidate set ${esc(r.candidate_stamp)} · build ${esc(r.build_sha)}</div></div>`).join('') || '<p class="none">none yet</p>'}</div>`, theme);
 }
 
 async function handle(req, res) {
   const url = new URL(req.url, `http://${req.headers.host || 'localhost'}`);
+  const theme = themeOf(url);
   try {
     if (req.method === 'POST' && url.pathname === '/lab/verdict') {
       let body = '';
@@ -589,10 +672,10 @@ async function handle(req, res) {
             <p>Writing to <code>${esc(VERDICTS)}</code> failed: <b>${esc(e.message)}</b>. Nothing was stored.
             Copy the text below before you leave this page.</p>
             <div class="v">${esc(rec.text)}</div>
-            <p><a href="${BASE}/lab?course=${esc(rec.course)}&seed=${rec.seed}">&larr; back</a></p>`));
+            <p><a href="${BASE}/lab?course=${esc(rec.course)}&seed=${rec.seed}${tq(theme)}">&larr; back</a></p>`, theme));
         }
       }
-      res.writeHead(303, { Location: BASE + '/lab/verdicts' }); return res.end();
+      res.writeHead(303, { Location: BASE + '/lab/verdicts' + tq1(theme) }); return res.end();
     }
     if (req.method === 'POST' && url.pathname === '/lab/generate') {
       let body = '';
@@ -633,7 +716,7 @@ async function handle(req, res) {
       await new Promise(r => req.on('end', r));
       const list = (new URLSearchParams(body).get('list') || '').split(',').map(x => x.trim()).filter(Boolean);
       saveTasteList(list);
-      res.writeHead(303, { Location: BASE + '/lab/grid' }); return res.end();
+      res.writeHead(303, { Location: BASE + '/lab/grid' + tq1(theme) }); return res.end();
     }
     if (url.pathname === '/lab/grid') {
       // taste-safe default: a SMALL grid. Nine cells on a first click is nine
@@ -643,21 +726,21 @@ async function handle(req, res) {
       const seeds = (url.searchParams.get('seeds') || '599,600')
         .split(',').map(x => +x.trim()).filter(Number.isFinite).slice(0, 6);
       res.writeHead(200, { 'content-type': 'text/html; charset=utf-8' });
-      return res.end(await gridPage(courses.length ? courses : ['spa_for_eng'], seeds.length ? seeds : [599]));
+      return res.end(await gridPage(courses.length ? courses : ['spa_for_eng'], seeds.length ? seeds : [599], theme));
     }
     if (url.pathname === '/lab/courses') {
       res.writeHead(200, { 'content-type': 'application/json' });
       return res.end(JSON.stringify(await courseList()));
     }
     if (url.pathname === '/lab/verdicts') {
-      res.writeHead(200, { 'content-type': 'text/html; charset=utf-8' }); return res.end(verdictsPage());
+      res.writeHead(200, { 'content-type': 'text/html; charset=utf-8' }); return res.end(verdictsPage(theme));
     }
     if (url.pathname === '/basket-lab') { res.writeHead(302, { Location: BASE + '/lab' + url.search }); return res.end(); }
     if (url.pathname === '/lab' || url.pathname === '/') {
       const course = url.searchParams.get('course') || 'spa_for_eng';
       const seed = +(url.searchParams.get('seed') || 599);  // the current payload
       res.writeHead(200, { 'content-type': 'text/html; charset=utf-8' });
-      return res.end(await labPage(course, seed));
+      return res.end(await labPage(course, seed, theme));
     }
     if (url.pathname === '/healthz') { res.writeHead(200, { 'content-type': 'text/plain' }); return res.end('ok ' + BUILD_SHA + '\n'); }
     res.writeHead(404, { 'content-type': 'text/plain' }); res.end('not found\n');

@@ -23,7 +23,7 @@
  * it stays a deliberate local act. The lab says so in its own words on the page
  * and prints the command. Read and judge here; generate on the box.
  */
-import { ref, computed, onMounted } from 'vue'
+import { ref, computed, onMounted, onBeforeUnmount } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { getApiUrl } from '@/services/api'
 
@@ -38,11 +38,33 @@ const view = ref(String(route.query.view || 'lab')) // 'lab' | 'grid' | 'verdict
 const reachable = ref(null)
 const apiBase = ref('')
 
+/**
+ * THEME ACROSS THE IFRAME BOUNDARY.
+ *
+ * An iframe inherits neither the shell's CSS custom properties nor its
+ * data-theme attribute, so the lab cannot read the theme — it has to be TOLD.
+ * The shell's toggle (src/components/AppNavbar.vue) sets or removes
+ * documentElement.dataset.theme, so that attribute is the one true reading;
+ * we append it to the frame's src as ?theme=light, and the lab's own token
+ * mirror (labs/basket-lab/server.cjs, the CSS block) flips on it. Dark is the
+ * default on both sides, so dark needs no parameter at all.
+ *
+ * A MutationObserver on documentElement is how we notice the toggle: the
+ * attribute IS the event, and watching it needs no bus, no global and no
+ * cooperation from the navbar. Changing theme changes src, which reloads the
+ * frame — one HTTP round trip on a deliberate act, which is the honest price
+ * of there being exactly one copy of the lab.
+ */
+const theme = ref(document.documentElement.dataset.theme === 'light' ? 'light' : 'dark')
+let themeObserver = null
+
 const src = computed(() => {
   const b = `${apiBase.value}/api/basket-lab/lab`
-  if (view.value === 'grid') return `${b}/grid?courses=${encodeURIComponent(course.value)}&seeds=${encodeURIComponent(seed.value)}`
-  if (view.value === 'verdicts') return `${b}/verdicts`
-  return `${b}?course=${encodeURIComponent(course.value)}&seed=${encodeURIComponent(seed.value)}`
+  const t = theme.value === 'light' ? '&theme=light' : ''
+  const t1 = theme.value === 'light' ? '?theme=light' : ''
+  if (view.value === 'grid') return `${b}/grid?courses=${encodeURIComponent(course.value)}&seeds=${encodeURIComponent(seed.value)}${t}`
+  if (view.value === 'verdicts') return `${b}/verdicts${t1}`
+  return `${b}?course=${encodeURIComponent(course.value)}&seed=${encodeURIComponent(seed.value)}${t}`
 })
 
 function show () {
@@ -61,7 +83,15 @@ onMounted(async () => {
   } catch {
     reachable.value = false
   }
+
+  themeObserver = new MutationObserver(() => {
+    const t = document.documentElement.dataset.theme === 'light' ? 'light' : 'dark'
+    if (t !== theme.value) theme.value = t
+  })
+  themeObserver.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] })
 })
+
+onBeforeUnmount(() => { themeObserver?.disconnect(); themeObserver = null })
 </script>
 
 <template>
@@ -122,24 +152,50 @@ onMounted(async () => {
 </template>
 
 <style scoped>
-.basket-lab { max-width: 1400px; margin: 0 auto; padding: 1.25rem; color: var(--text, #e5e7eb); }
+/* House style: every colour is a semantic token from src/style.css, so light
+   mode follows for free. No fallback hexes — `var(--text, #e5e7eb)` used to
+   sit here, and since --text is not a token in this codebase the page title
+   rendered near-white on the light canvas, i.e. invisible. */
+.basket-lab { max-width: 1400px; margin: 0 auto; padding: 1.5rem; color: var(--ink); }
 .admin-crumbs { display: flex; align-items: center; gap: 0.5rem; font-size: 0.8125rem; margin-bottom: 0.75rem; }
-.admin-crumbs .crumb-link { color: var(--accent-2, #34d399); text-decoration: none; }
-.admin-crumbs .crumb-sep { color: var(--surface-3, #4b5563); }
-.admin-crumbs .crumb-here { color: var(--muted, #9ca3af); }
-.page-title { font-size: 1.5rem; margin: 0 0 0.25rem; }
-.page-subtitle { color: var(--muted, #9ca3af); margin: 0 0 1rem; max-width: 70ch; }
+.admin-crumbs .crumb-link { color: var(--accent-2); text-decoration: none; }
+.admin-crumbs .crumb-link:hover { color: #6ee7b7; }
+.admin-crumbs .crumb-sep { color: var(--surface-3); }
+.admin-crumbs .crumb-here { color: var(--muted); }
+[data-theme="light"] .admin-crumbs .crumb-link:hover { color: var(--accent-2); }
+
+.page-title { font-size: 2rem; font-weight: 700; letter-spacing: -0.02em; color: var(--ink); margin: 0 0 0.25rem; line-height: 1.2; }
+.page-subtitle { font-size: 0.9375rem; color: var(--muted); margin: 0 0 1.25rem; max-width: 70ch; }
+
 .bl-controls { display: flex; gap: 0.75rem; flex-wrap: wrap; align-items: center; margin-bottom: 0.75rem; }
-.bl-controls label { display: flex; gap: 0.35rem; align-items: center; font-size: 0.875rem; color: var(--muted, #9ca3af); }
-.bl-controls input, .bl-controls select, .bl-controls button {
-  font: inherit; color: inherit; background: transparent;
-  border: 1px solid var(--surface-3, #4b5563); border-radius: 4px; padding: 0.3rem 0.5rem;
+.bl-controls label { display: flex; gap: 0.35rem; align-items: center; font-size: 0.875rem; color: var(--muted); }
+.bl-controls input, .bl-controls select {
+  font: inherit; font-size: 0.85rem; color: var(--ink); background: var(--surface);
+  border: 1px solid var(--line); border-radius: 0.375rem; padding: 0.3rem 0.55rem;
 }
-.bl-controls button { cursor: pointer; }
-.bl-controls a { color: var(--accent-2, #34d399); font-size: 0.875rem; }
-.bl-frame { width: 100%; height: 78vh; border: 1px solid var(--surface-3, #4b5563); border-radius: 6px; background: #fff; }
-.bl-gap { border: 1px solid #b00020; border-radius: 6px; padding: 0.75rem; max-width: 80ch; }
-.bl-gap.muted { border-color: var(--surface-3, #4b5563); color: var(--muted, #9ca3af); }
-.bl-note { font-size: 0.8125rem; color: var(--muted, #9ca3af); max-width: 90ch; margin-top: 0.75rem; }
-code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.9em; }
+.bl-controls input:focus, .bl-controls select:focus { outline: none; border-color: var(--accent-2); }
+.bl-controls button {
+  font: inherit; font-size: 0.85rem; cursor: pointer; color: var(--ink); background: var(--surface);
+  border: 1px solid var(--line); border-radius: 9999px; padding: 0.3rem 0.9rem;
+  transition: border-color 0.15s, color 0.15s;
+}
+.bl-controls button:hover { border-color: var(--accent-2); color: var(--accent-2); }
+.bl-controls a { color: var(--accent-2); font-size: 0.875rem; text-decoration: none; }
+.bl-controls a:hover { text-decoration: underline; }
+
+/* The frame reads as one of the house cards, not as a rectangle pasted on:
+   the lab paints its own body with the same --canvas value, so the only edge
+   is this quiet 1px line. */
+.bl-frame {
+  width: 100%; height: 78vh; display: block;
+  border: 1px solid var(--line); border-radius: 12px; background: var(--canvas);
+}
+
+.bl-gap {
+  border: 1px solid var(--danger); border-radius: 12px; background: var(--surface);
+  padding: 0.9rem 1rem; max-width: 80ch;
+}
+.bl-gap.muted { border-color: var(--line); color: var(--muted); }
+.bl-note { font-size: 0.8125rem; color: var(--muted); max-width: 90ch; margin-top: 0.75rem; }
+code { font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.9em; }
 </style>
