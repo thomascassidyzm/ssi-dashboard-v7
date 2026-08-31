@@ -174,3 +174,97 @@ widening scope.
 - `estate-audio-verify.json` / `spa-audio-verify.json` — whisper decodes of deployed bytes
 - `silent-rows.json` — the 132 rows now needing audio
 - `spa-*` — the spa_for_eng BUILD and USE passes
+
+---
+
+# SECOND PASS — the recall gap, and 242 more rows
+
+**The first pass missed a whole cluster and I found it by inspection, not by the
+detector.** After applying the 321, spot-checking `kor_for_eng` for the leaked
+phrase `작은 교회가` turned up **19 further rows still carrying it** — 16 of them
+genuine defects the Dice detector never flagged. Its symmetry test suppresses
+exactly this shape: when a row carries a surplus word *and* has other known
+content unrendered, the penalty cancels the signal.
+
+## A better instrument, once a leak is known
+
+Once a leak is confirmed, its **exact string** beats any lexicon. The second pass
+is lexicon-free:
+
+1. For every confirmed leak span, find every BUILD row in that course containing
+   it — **3,250 rows**.
+2. Keep only those where **deleting the span lands on a byte-identical sibling**
+   (the parent LEGO or another row in the same seed) — **1,536**. This is the test
+   all four verifiers converged on independently.
+3. Clear the ones whose known side genuinely asks for the span, by a
+   **counterpart pattern authored once per cluster** — `hoje`→"today",
+   `agora`→"now", `hier`→"here", and for the eng_for_* courses the same trick in
+   the other script (`오늘`, `지금`, `아직`, `곧`, `ਇੱਥੇ`). This cleared **1,265**,
+   which is the honest measure of how badly pure containment over-reports.
+4. **250 survived. I read every one and ruled: 244 DEFECT, 6 OVERTURNED.**
+   242 applied; 2 refused by the ZUT gate.
+
+The counterpart step is the whole trick: **one semantic decision per cluster
+instead of 1,536 per-row reads.**
+
+## The leak contaminated BOTH sides
+
+**21 `gla_for_eng` rows carry the Gaelic word `roimhe` inside their ENGLISH known
+text** — "yes of course roimhe", "I'll ask him if he's able to help roimhe",
+"what would you do roimhe". The batch event wrote the stray word into the prompt
+as well as the answer, across seeds 172–203.
+
+These are **not repaired**. The known side is authoritative and never rewritten,
+and where it is corrupt there is nothing authoritative left to judge the target
+against. Listed in `p2-known_echo.json`. This is the same class as the eight
+corrupted-known rows found in pass one, and it is now nine courses' worth of
+evidence that a known-side sweep is its own job.
+
+## Second-pass results
+
+| | |
+|---|---|
+| Rows carrying a confirmed leak span | 3,250 |
+| Deleting the span lands on a byte-identical sibling | 1,536 |
+| Cleared — the known side does ask for it | 1,265 |
+| Read individually by me | **250** |
+| Applied | **242** |
+| Overturned | 6 |
+| Refused by the ZUT gate | 2 |
+
+By course: gla 74, eng_for_kor 43, mlt 20, lav 17, kor_for_eng 16, ita 14,
+ara_lb 12, srp 7, fas 7, eng_for_pan 7, swa 7, fra 6, cat 4, por_br 2, por 2,
+rus 2, eus 2.
+
+**Audio: 147 relinked, 95 silent.** Sampled 30 relinked clips and decoded the
+deployed bytes: **30/30 correct**. Audio passes queued for gla_for_eng (74),
+mlt_for_eng (20) and lav_for_eng (1). No TTS generated.
+
+## The six overturns
+
+- `fra_for_eng:S0390L01B02` — `celle-là` is one word; deletion leaves `celle-`.
+- `fra_for_eng:S0388L02B03` — `cette personne-là` *is* "that person"; `là` renders "that".
+- `ara_lb_for_eng:S0513L01B02` — known "it hurts me most"; `أكتر` renders "most".
+- `lav_for_eng:S0235L01B03` — remnant `kas teica, ka` strands a dangling conjunction.
+- `por_for_eng:S0120L02B04` — known says "there"; `aqui` is a mistranslation, so the fix is a substitution.
+- `eng_for_pan:S0485L02B03` — the Punjabi known says `ਇੱਥੋਂ` ("from here"); the span is backed.
+
+## The two the ZUT gate refused
+
+`gla_for_eng:S0283L01B04` and `S0283L02B04` share the known "which of your
+friends speaks Gaelic?" and currently share an identical target. Fixing either
+one alone forks that prompt into two targets, so the gate refuses both. They need
+a paired edit the tool deliberately does not do. **Left as they are, named here.**
+
+## Running total
+
+**569 rows repaired** — 6 in spa_for_eng, 321 in the first estate pass, 242 in
+the second. Across **49 courses**.
+
+## What I would do differently, stated for the next run
+
+The lexicon detector was the wrong primary instrument and the cluster/counterpart
+method is the right one. **Find leaks with a small high-precision sample, then
+expand each confirmed leak by exact string and clear it with one counterpart
+decision per cluster.** That found 242 rows the detector could not see, at a
+fraction of the reading cost, and it needs no lexicon, so it ports to any pair.
