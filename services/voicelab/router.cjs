@@ -34,6 +34,7 @@ const params = require('./params.cjs')
 const content = require('./content.cjs')
 const registry = require('./registry.cjs')
 const cartesia = require('./cartesia.cjs')
+const samples = require('./samples.cjs')
 
 /**
  * @param {object} app        express app
@@ -138,6 +139,52 @@ function mount (app, deps) {
       const { CARTESIA_CATALOGUE } = params._state()
       res.json(await registry.build(supabase(), { cartesiaCatalogue: CARTESIA_CATALOGUE }))
     } catch (err) { fail(res, err, 'languages') }
+  })
+
+  /**
+   * The samples for one language: the real course line, and a playable URL for every
+   * voice that already has a sample of it — cached here, or free from the estate's own
+   * clips. Voices with neither come back in `missing`, with what preparing them costs.
+   *
+   * SPENDS NOTHING. Three SELECTs and a disk read. This is the call the page makes on
+   * open, which is why it must never render: "open a language and it plays" is the
+   * whole ask, and a page that renders on open is a page that spins.
+   */
+  app.get('/api/voicelab/languages/:language/samples', async (req, res) => {
+    if (!await requireDashboardUser(req, res)) return
+    try {
+      const language = String(req.params.language || '').trim()
+      if (!language) throw Object.assign(new Error('language is required'), { status: 400 })
+      const voiceIds = String(req.query.voices || '').split(',').map((s) => s.trim()).filter(Boolean).slice(0, 200)
+      res.json(await samples.read({ language, voiceIds }))
+    } catch (err) { fail(res, err, `samples ${req.params.language}`) }
+  })
+
+  /**
+   * Prepare the missing samples for one language.
+   *
+   * SPENDS MONEY — one Cartesia clip per voice, on the line above, capped at
+   * SAMPLE_PREPARE_MAX voices per press and refused on top of that by the lab's daily
+   * character ceiling. Ledgered per clip the moment the money is spent, so the ceiling
+   * and the spend report both count a sample exactly as they count an audition.
+   * Nothing here writes course_audio.
+   */
+  const SAMPLE_PREPARE_MAX = 12
+  app.post('/api/voicelab/languages/:language/samples/prepare', async (req, res) => {
+    const user = await requireAdmin(req, res)
+    if (!user) return
+    try {
+      const language = String(req.params.language || '').trim()
+      if (!language) throw Object.assign(new Error('language is required'), { status: 400 })
+      const voiceIds = ((req.body || {}).voiceIds || []).map((s) => String(s).trim()).filter(Boolean)
+      if (!voiceIds.length) throw Object.assign(new Error('voiceIds is required'), { status: 400 })
+      const max = Math.min(Number((req.body || {}).max) || SAMPLE_PREPARE_MAX, SAMPLE_PREPARE_MAX)
+      const out = await samples.prepare({
+        language, voiceIds, maxVoices: max, renderOne: (a) => runner().renderOne(a),
+      })
+      logger.log?.(`[voicelab] prepared ${out.rendered.length} sample(s) for ${language} (${out.chars} chars) for ${who(user)}`)
+      res.json({ ok: true, maxPerPress: SAMPLE_PREPARE_MAX, ...out })
+    } catch (err) { fail(res, err, `prepare-samples ${req.params.language}`) }
   })
 
   /**
