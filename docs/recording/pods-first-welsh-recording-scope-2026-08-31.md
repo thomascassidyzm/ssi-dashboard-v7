@@ -2,29 +2,51 @@
 
 **Welsh North, from the live database, 31 August 2026.**
 
-# 193
+# 374
 
-**That is how many lines a human still has to say into a microphone to complete the audio for the Northern Welsh course** — 88 pod lines nobody has recorded yet, plus 105 course phrases that exist in no recording and cannot be built from any recording we hold.
+**That is how many lines a human still has to say into a microphone to complete the audio for the Northern Welsh course** — 286 seed sentences that exist in no recording, plus 88 pod lines nobody has recorded yet.
 
-For Welsh South the same sum is **314** — all 231 pod lines, plus 83 course phrases.
+For Welsh South the same sum is **444** — 207 seed sentences, 7 practice phrases, and all 231 pod lines.
 
-That number assumes the existing Welsh corpus stands. It is the whole ball game, so it is the first thing below.
+*Corrected 31 August, after my own workers contradicted me. The first version of this document said 193, because I counted distinct target texts across seeds, LEGOs and phrases as one pool and let whole-clip concatenation cover 180 of them. Both halves of that were wrong, and the correction is below. The pods finding underneath is unchanged.*
 
 ---
 
-## The four numbers behind it
+## What I got wrong, and what the right unit is
+
+Welsh North's LEGOs and practice phrases are **completely recorded**: 635 of 635 LEGOs and 4,997 of 4,997 practice phrases carry a `target1_audio_id`. There is no gap there at all.
+
+The gap is entirely in **seed sentences**, and seeds are a real audio unit — `course_seeds` carries its own `target1_audio_id` and the player walks that table directly. Welsh North has **19 of 668 seeds** with audio. Every mature course has all of them:
+
+| Course | seeds with target1 audio |
+|---|---|
+| spa_for_eng | 100% |
+| fra_for_eng | 100% |
+| deu_for_eng / ita_for_eng | 99.9% |
+| nld_for_eng | 53% |
+| cym_s_for_eng | 19.2% |
+| **cym_n_for_eng** | **2.8%** |
+
+So seed audio is the standard, and Welsh is the outlier precisely because it cannot fall back on TTS. Welsh North has 668 seed rows but only 306 distinct sentences; 286 of those 306 have no recording of any kind. At 8.4 words a sentence that is roughly **40 minutes of finished audio, or an afternoon in a room**.
+
+I also banked 180 phrases on whole-clip concatenation. My own splice worker then measured what that concatenation does — 6% to 86% duration inflation, restarted pitch contours — so I have taken those 180 back out of the headline. They are a fallback, not a plan.
+
+---
+
+---
+
+## Where Welsh actually stands
 
 | | Welsh North | Welsh South |
 |---|---|---|
-| Distinct target phrases the course needs spoken | 5,866 | 6,198 |
-| Already have a whole human take | 5,581 | 5,985 |
-| Buildable by joining whole takes we already hold | 180 | 130 |
-| **Nobody has ever said these** | **105** | **83** |
+| LEGOs with audio | 635 / 635 | 679 / 679 |
+| Practice phrases with audio | 4,997 / 4,997 | 5,358 / 5,365 |
+| Distinct seed sentences | 306 | 334 |
+| **Seed sentences with no recording anywhere** | **286** | **207** |
 | Pod lines still unrecorded | 88 | 231 |
+| **Human lines still needed** | **374** | **444** |
 
-So Northern Welsh is 95.1% recorded already, and the audio work left is not a campaign — it is an afternoon.
-
----
+A separate and free win sits alongside this: a further ~360 Welsh North seed rows are duplicates of sentences whose clip already exists but is not linked to the seed. That is a relink script, not a studio session.
 
 ## The thing you were testing, and the answer is no
 
@@ -87,6 +109,8 @@ https://watson-1.tail4968cb.ts.net/evidence/welsh-pods-first-2026-08-31/31-worst
 Aran, trim-chain damage — the clip ends before the word does
 https://watson-1.tail4968cb.ts.net/evidence/welsh-pods-first-2026-08-31/32-worst-aran-trimdamage.mp3
 
+The trim-chain flag holds up empirically, not just as a label: those 41 clips are **100% zero-padded hard cuts** at the start and ~98% at the end, with a noise floor about 12.5 dB worse than Aran's own unflagged clips. His second set also carries genuine digital clipping on 2 of 42 (+1.35 dB and +0.04 dB true peak).
+
 Your ruling on 2026-08-16 that none of Aran's takes were salvageable is written into the data: 65 Welsh clips carry `rerecord_wanted`, reason *"T-20 ALL: full re-record commissioned 2026-08-16 (trim-chain damage, whole set)"*. That was a pipeline defect, not a performance one.
 
 **Fixable with better process:** noise floor (room and mic — Catrin's setup is the existence proof), clipping (gain staging), trim damage (pipeline), level inconsistency (loudnorm already does this).
@@ -108,9 +132,18 @@ Eight Welsh phrases the course needs were built by joining pieces of real record
 
 The measurement that matters is **pitch at the seam**. A join between two pieces recorded in different sentences can drop or jump the speaker's register mid-phrase, and no amount of level matching hides it.
 
-- 8 examples, 1–3 joins each
-- 4 of 15 joins showed a pitch jump over 8 semitones; the worst was **17.7 semitones** — an octave and a half, mid-sentence
-- spliced versions ran 6%–70% longer than the natural take of the same words
+- 8 examples, 1–5 joins, 21 joins in total
+- 10 of the 15 joins where pitch was measurable on both sides jumped **4 semitones or more**; average absolute jump 8 semitones; worst **17.7 semitones** — an octave and a half, mid-sentence
+- every spliced version ran longer than the natural take of the same words: **+6% to +86%, averaging +36%**, and inflation rises with join count
+- 16 of 21 seams land in near-silence, because each source clip carries its own lead and trail padding — the gap *is* the defect
+
+Two structural facts came out of that run and both matter:
+
+**The splicer has never been run in production.** The S3 `segments/` prefix is empty for every course, and `course_audio` carries no `spliced` origin anywhere. Splice-and-dice is a design, not a capability we have exercised.
+
+**It does not crossfade.** `spliceSegmentsToFile()` hard-concatenates independently loudness-normalised clips; the crossfade path exists but is not wired in, because ffmpeg 7's threaded `acrossfade` nondeterministically drops whole segments. That is exactly what the padding and pitch-jump numbers predict.
+
+**One point in splicing's favour, for Welsh specifically:** every mutation-triggering pair in the sample — *mor fuan â **phosib***, *fy **mhres** yn ôl*, *y **ddwy** hogan* — landed inside a single M-LEGO and never across a join. The LEGO decomposition already bundles trigger and mutated word as one recorded unit, so Welsh mutation is structurally protected rather than luckily avoided. Worth a larger sample before calling it proven, but the mechanism is sound.
 
 **A good one** — one join, zero pitch jump, seam falls in silence:
 
@@ -155,16 +188,18 @@ What the measurements do say plainly: splice quality tracks join count and where
 
 ## What I would do
 
-1. **Finish Welsh North the honest way.** 88 pod lines and 105 course lines, recorded whole, by Catrin, in Catrin's room. Under 200 lines. No splicing needed for any of it, so no ceiling to argue about.
+1. **Finish Welsh North the honest way.** 286 seed sentences and 88 pod lines, recorded whole, by Catrin, in Catrin's room. Around 40 minutes of finished audio. No splicing needed for any of it, so no ceiling to argue about.
 2. **Do not use the pods as a splice corpus.** They earn 37 lines. Record them because the pods need recording.
-3. **If you want the splice lever, buy it once, properly:** run alignment over the Welsh corpus so `word_boundaries` exists. That is what turns 1,896 into 1,492 for the next minority language — and it is a code job, not a studio job.
-4. **Record the fixable things out of Aran's next session:** quieter room, gain 6 dB lower. His performance is not the problem.
+3. **Relink before you record.** ~360 Welsh North seed rows duplicate sentences whose clip already exists and simply is not linked. Free.
+4. **If you want the splice lever, buy it once, properly:** run alignment over the Welsh corpus so `word_boundaries` exists, and wire a crossfade that survives ffmpeg 7. That is what turns 1,896 into 1,492 for the next minority language — and it is a code job, not a studio job. Today the splicer has never run in production at all.
+5. **Record the fixable things out of Aran's next session:** quieter room, gain 6 dB lower. His performance is not the problem.
 
 ---
 
 ## Explicit gaps
 
 - **I cannot hear any of the audio.** Every perceptual claim in this document is a measurement plus a player. The verdict is yours.
-- **Legacy corpus liveness is sampled, not exhaustive.** The headline of 105 rests on the 5,581 legacy Welsh clips being real and acceptable. 20 were fetched from S3 and decoded cleanly, with sane levels. A 120-clip liveness sweep was still running when this was written; if that corpus is rejected the way Aran's set was, the number is not 193 — it is 1,859 plus the pods.
+- **Legacy corpus liveness: resolved, and it is real.** 130 clips sampled stratified across both courses and both target roles: **130/130 exist in S3 and decode cleanly** (Wilson 95% CI 97.1–100%), none silent, none truncated, stored durations matching measured within 200 ms. target1 and target2 are genuinely different recordings — 0 of 25 sampled pairs shared an MD5.
+- **But nobody knows whose voices they are.** `legacy_import` is a hard-coded placeholder in the importer (`database/import-course-v13.cjs:204`, comment *"Unknown from legacy manifest"*), and `origin='human'` is the importer's own tag, not evidence. All 13,078 rows landed in one bulk import on 2026-01-04, and no `recording_provenance` row covers any of them. A prior audit reached the same dead end. If you ever need to say who is speaking on 95% of the Welsh course, the data cannot tell you.
 - **Welsh South pod audio is zero.** All 231 lines unrecorded, and its `pod-0` is `visibility: live` while the Northern one is `held`.
 - **No before/after recording margins exist** in `recording_provenance` — there are no margin columns, so the gain-fix improvement cannot be quantified from the database, only inferred from the levels.
