@@ -114,3 +114,71 @@ during which the pod buttons have not arrived yet — see D2.
 - **The outcome ordering** (D9) is the store's declared sequence and stays as it is; it needs a
   label.
 - **`0 of 9 outcome shapes delivered` for POD 1** is the database's own declaration talking.
+
+---
+
+# AFTER — what was changed
+
+Before/after screenshots, driven live:
+**https://watson-1.tail4968cb.ts.net/evidence/metagraph-demo-2026-08-31/**
+
+All of it is front-end: `src/views/MetagraphView.vue`, plus band labels and tile height in
+`src/lib/metagraph/layout.js`. No API, no table, no store change, and the page is still read-only.
+
+| Defect | What was done |
+|---|---|
+| D1 grey on arrival | The page now arrives with **POD 1 already laid over it**. "Graph only" is still one tap. |
+| D2 picker pops in | Unchanged — the pod list lands in ~320 ms and the overlay with it. Measured, not assumed. |
+| D3 blank line count | The count renders only when it is a real number. |
+| D4 `pod-0` vs POD 1 | One name everywhere: tiles, detail panel and picker all say **POD 1**, the Method Pod, Talk Bollocks, the Trades pod. |
+| D5 schema read-out | Sentences: "231 lines of script, in 22 scenes · reaches **18 of the 35 shapes** · 9 of them more than once · 17 it never reaches". |
+| D6 band labels | "Whole exchanges — nothing else contains these" / "Parts that happen inside the exchanges above" / "Stand-alone shapes — nothing in the graph contains them". |
+| D7 edges mean nothing | "Lines read downwards: the shape at the bottom of a line happens *inside* the shape at the top." |
+| D8 titles cut mid-word | Titles wrap onto two lines at a space or a hyphen; tile height 56 → 74 to hold them. |
+| D9 outcomes look shuffled | Labelled: "Listed in the order the course delivers them, not by number." |
+| D10 raw survivability text | "**Re-select after a substitute** — a learner can only attempt *Any ticket* if they can survive this." |
+| D11 panel 1,150px down | The detail panel opens **directly beneath the graph**, with a "↑ back to the graph" button that closes it and scrolls back. Verified live: scrollY 830 → 450, panel closed. |
+| D12 dead sacked slates | `pod-1` and `pod-0.5` are **not in the picker at all**. |
+| D13 the red told the wrong story | Coverage is broken out by where each shape was drawn from, and the page says the true sentence in words. |
+| D14 stale README | Updated with a dated correction. |
+| D15 invisible light legend key | Given a visible border. |
+
+## The number that now tells the truth
+
+Cold arrival, POD 1:
+
+> POD 1 **12/12** · the Method Pod **0/10** · Talk Bollocks **0/6** · bound pairs **6/6** · the Trades pod **0/1**
+> POD 1 reaches **every** shape drawn from POD 1 and bound pairs.
+
+Tap the Method Pod's 43-scene cut and the picture inverts, in the same words:
+
+> POD 1 **5/12** · the Method Pod **10/10** · Talk Bollocks **6/6** · bound pairs **0/6** · the Trades pod **0/1**
+> Method Pod — 43 scenes reaches **every** shape drawn from the Method Pod and Talk Bollocks.
+
+That is the demo. It is two taps and it is all real numbers.
+
+## Verified live, after the changes
+
+- Cold arrival: graph painted **319 ms**, coverage read-out **352 ms**. No spinner.
+- Overlay switch: **24–44 ms**. No caching needed and none added.
+- "↑ back to the graph" closes the panel and returns to the graph.
+- Both **light and dark** render correctly — shots of both in the evidence link.
+- The five layout tests are green (two of them were already red on `main` against the grown store,
+  asserting 23 shapes and a frozen five-member band; they now assert the property, not the list).
+
+## Taste-safe defaults taken — reverse any of these with one word
+
+1. **POD 1 is selected on arrival.** One line in `onMounted`.
+2. **`pod-1` and `pod-0.5` are hidden from the picker.** One `HIDDEN` set.
+3. **Shapes are named by pod, not by slug** — `pod-0` → "POD 1", `method-pod` → "the Method Pod",
+   `talk-bollocks` → "Talk Bollocks", `trades` → "the Trades pod". One `ORIGINS` map.
+4. **The never-reached list is grouped** by where each shape came from rather than listed flat.
+5. **The unmapped count keeps its sentence and stays on screen** — it is the store's named gap.
+
+## Explicit gaps
+
+- **The `podsError` fallback was verified by reading the code, not by driving it.** Pointing the
+  browser at a dead API also blocks Popty's own sign-in, so the page never renders. The fix is one
+  guard (`v-if="pod.lines != null"`) and the fallback object it guards, both visible in the diff.
+- **Nothing was done to the store.** The 125 unmapped POD 1 lines and the 31 walks not yet encoded
+  are work on `services/shared/metagraph/`, out of scope here and correctly reported by the page.

@@ -342,9 +342,12 @@ const walkGap = computed(() => {
  *  seventeen names with seventeen repeated parentheticals was a wall of red. */
 const neverByOrigin = computed(() => {
   const groups = new Map()
+  const kindOf = new Map(graph.nodes.map(n => [n.id, n.kind]))
   for (const n of cov.value?.neverReached || []) {
-    const key = n.origin || 'other'
-    if (!groups.has(key)) groups.set(key, { key, label: originLabel(key), nodes: [] })
+    // Same grouping as the per-origin line above: a bound pair is its own thing,
+    // not a POD 1 shape, and listing it as one contradicted the counts.
+    const key = kindOf.get(n.id) === 'bound-pair' ? 'bound-pairs' : (n.origin || 'other')
+    if (!groups.has(key)) groups.set(key, { key, label: key === 'bound-pairs' ? 'the bound pairs' : originLabel(key), nodes: [] })
     groups.get(key).nodes.push(n)
   }
   return [...groups.values()].sort((a, b) => b.nodes.length - a.nodes.length)
