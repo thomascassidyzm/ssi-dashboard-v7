@@ -113,6 +113,21 @@ function mount (app, deps) {
     })
   }
 
+  /**
+   * Up to `n` items spread evenly across a list, in order and never repeated.
+   * Three from a list of twenty-four is items 0, 11 and 23 — the ends and the
+   * middle, which for a list sorted by length is short, medium and long.
+   */
+  function spread (rows, n) {
+    if (rows.length <= n) return rows
+    const out = []
+    for (let i = 0; i < n; i++) {
+      const at = Math.round((i * (rows.length - 1)) / (n - 1))
+      if (!out.includes(rows[at])) out.push(rows[at])
+    }
+    return out
+  }
+
   function fail (res, err, context) {
     const status = err && err.status ? err.status : 500
     if (status >= 500) logger.error?.(`[voicelab] ${context}:`, err)
@@ -1009,6 +1024,10 @@ function mount (app, deps) {
         .from('voices').update(record).eq('voice_id', voiceId).select().maybeSingle()
       if (error) throw Object.assign(new Error(error.message), { status: 400 })
       if (!data) throw Object.assign(new Error(`No voice called ${voiceId}.`), { status: 404 })
+      // Same 30-second verdict cache as the declaration route above: a consent
+      // recorded here and a cast attempted immediately after must not be
+      // refused by an answer formed before it.
+      consentGate.clearCache()
       logger.log?.(`[voicelab] consent ${record.consent_status} recorded on ${voiceId} by ${who(user)}`)
       res.json({ ok: true, voiceId, consent: consent.describe(data) })
     } catch (err) { fail(res, err, `consent ${req.params.voiceId}`) }
@@ -1117,6 +1136,72 @@ function mount (app, deps) {
       logger.log?.(`[voicelab] ${declarationRecord.consent_declaration_kind} consent recorded on ${voiceId} by ${who(user)}${created ? ' (voices row created)' : ''}`)
       res.json({ ok: true, voiceId, created, consent: consent.describe(voice) })
     } catch (err) { fail(res, err, `consent-declaration ${req.params.voiceId}`) }
+  })
+
+  /**
+   * WHAT THIS ONE VOICE HAS, AND COULD HAVE. SPENDS NOTHING.
+   *
+   * Tom, 2026-08-31: "there is no way to hear a voice that does not currently
+   * have a clip" and "there is only one clip per voice". This answers both: a
+   * slot per line of the judging set, filled or empty, and an empty one is
+   * tappable because the POST below renders exactly that one line.
+   *
+   * A HUMAN VOICE IS AUDITIONED ON ITS OWN RECORDINGS. Nothing synthesises a
+   * person, so the honest audition of a recordist is the audio the estate
+   * already holds of them — which is also the only way somebody can hear the
+   * voice they are being asked to consent to. It costs nothing: the URLs point
+   * at the estate's own bucket and play the original file.
+   */
+  app.get('/api/voicelab/languages/:language/voices/:voiceId/clips', async (req, res) => {
+    if (!await requireDashboardUser(req, res)) return
+    try {
+      const language = String(req.params.language || '').trim()
+      const voiceId = String(req.params.voiceId || '').trim()
+      if (!language || !voiceId) throw Object.assign(new Error('language and voiceId are required'), { status: 400 })
+
+      if (/^human[_-]/i.test(voiceId)) {
+        // Longest first is listClips' own order, and three long welcomes are
+        // three of the same clip for judging purposes. So the set is SPREAD
+        // across what the estate holds of them — longest, middling, shortest —
+        // which is the same variety-of-length reasoning the synthetic judging
+        // set is built on (services/voicelab/samples.cjs chooseSet).
+        const { clips: held } = await speakers.listClips(supabase(), { voiceId, limit: 24 })
+        const clips = spread(held, samplesModule.JUDGING_SET)
+        return res.json({
+          language,
+          voiceId,
+          own: true,
+          lines: clips.map((c) => ({ language, text: c.text, knownText: '', course: c.courses[0] || null, courseName: c.courses[0] || null, source: c.role || 'recording', kind: 'recording' })),
+          clips: clips.map((c, i) => ({ lineIndex: i, url: c.url, durationMs: c.durationMs, free: true })),
+        })
+      }
+
+      res.json(await samplesModule.readVoice({ language, voiceId }))
+    } catch (err) { fail(res, err, `voice-clips ${req.params.voiceId}`) }
+  })
+
+  /**
+   * Render ONE line for ONE voice. SPENDS MONEY — one clip, ledgered as it is
+   * spent, and refused by the same daily character ceiling as everything else.
+   *
+   * Admin, like every other call that spends. The row press renders one line
+   * for every voice; this renders every line for one voice, and the spend
+   * follows the attention rather than the catalogue.
+   */
+  app.post('/api/voicelab/languages/:language/voices/:voiceId/clips', async (req, res) => {
+    const user = await requireAdmin(req, res)
+    if (!user) return
+    try {
+      const language = String(req.params.language || '').trim()
+      const voiceId = String(req.params.voiceId || '').trim()
+      if (!language || !voiceId) throw Object.assign(new Error('language and voiceId are required'), { status: 400 })
+      const lineIndex = Math.max(0, Math.min(Number((req.body || {}).lineIndex) || 0, samplesModule.JUDGING_SET - 1))
+      const out = await samplesModule.renderClip({
+        language, voiceId, lineIndex, renderOne: (a) => runner().renderOne(a),
+      })
+      logger.log?.(`[voicelab] rendered clip ${lineIndex} of ${voiceId} in ${language} (${out.chars} chars) for ${who(user)}`)
+      res.json({ ok: true, ...out })
+    } catch (err) { fail(res, err, `voice-clip ${req.params.voiceId}`) }
   })
 
   /**
