@@ -79,6 +79,31 @@ function findLanguage (code) {
     || null
 }
 
+/**
+ * One voice out of the vendor's catalogue by id, across every language it lists.
+ * Used to put a name and attributes on an estate row that is otherwise a UUID.
+ */
+function catalogueEntry (id) {
+  for (const list of Object.values(CARTESIA_CATALOGUE)) {
+    const hit = list.find((v) => v.id === id)
+    if (hit) return { ...hit, name: hit.name }
+  }
+  return null
+}
+
+/**
+ * What we can honestly say about an Azure voice, which is read off its own id:
+ * `de-DE-KatjaNeural` gives the locale, and the locale gives the country. We do
+ * NOT hold Azure gender — the estate census counts ids out of course_audio and
+ * never called Azure's voice list — so gender stays null and the row says so
+ * rather than showing a blank that reads as "none".
+ */
+function azureAttributes (id) {
+  const m = /^([a-z]{2})-([A-Z]{2})-/.exec(String(id || ''))
+  if (!m) return {}
+  return { accentLocale: `${m[1]}-${m[2]}`, country: m[2] }
+}
+
 /** The voice menu for one language. */
 function voicesFor (lang, production = {}) {
   const seen = new Set()
@@ -91,7 +116,12 @@ function voicesFor (lang, production = {}) {
   }
 
   // Tom's clone speaks English only, so it is offered only where that is true.
-  if ((TOM_CLONE.languages || []).includes(lang.steer)) push({ ...TOM_CLONE, group: 'Clone' })
+  // Enriched from the vendor's own catalogue where it is there: the constant
+  // carries an id, a name and a gender, and the row would otherwise say
+  // "accent not listed" about a voice Cartesia describes perfectly well.
+  if ((TOM_CLONE.languages || []).includes(lang.steer)) {
+    push({ ...catalogueEntry(TOM_CLONE.id), ...TOM_CLONE, group: 'Clone' })
+  }
 
   // Cartesia's live catalogue, filtered to this language. Fetched from the vendor
   // rather than transcribed, so a voice Cartesia withdraws stops being offered
@@ -99,13 +129,16 @@ function voicesFor (lang, production = {}) {
   // The estate's OWN clones first, in their own group. Aran's English clone sat at
   // position 209 of 419 in Cartesia's order, which is listed but not findable.
   for (const v of (CARTESIA_CATALOGUE[lang.steer] || []).filter((v) => v.owner)) {
-    push({ id: v.id, name: `${v.name} — this estate's clone`, provider: 'cartesia', gender: v.gender, clone: true, group: 'Clone' })
+    push({ ...v, name: `${v.name} — this estate's clone`, provider: 'cartesia', clone: true, group: 'Clone' })
   }
   for (const v of (CARTESIA_CATALOGUE[lang.steer] || [])) {
-    push({ id: v.id, name: v.name, provider: 'cartesia', gender: v.gender, group: `Cartesia · ${lang.name}` })
+    push({ ...v, provider: 'cartesia', group: `Cartesia · ${lang.name}` })
   }
   for (const v of production[lang.code] || []) {
-    push({ ...v, group: 'In the estate today' })
+    // An estate row is a voice id counted out of course_audio, so a Cartesia one
+    // arrives as a bare UUID with no name and no attributes. If the vendor's
+    // catalogue holds that id, use what it says rather than showing the UUID.
+    push({ ...(v.provider === 'cartesia' ? catalogueEntry(v.id) : null), ...v, group: 'In the estate today' })
   }
   return out
 }
@@ -153,7 +186,27 @@ async function loadCartesiaCatalogue () {
         // returns them in no order anybody here chose, and Tom's own clone came back at
         // position 210 of 419 — far past the 80-candidate cap the registry applies — so
         // without this flag the estate's own clones are the voices most likely to be cut.
-        ;(byLang[v.language] = byLang[v.language] || []).push({ id: v.id, name: v.name, gender: g, owner: v.is_owner === true })
+        // Everything the vendor says about the voice comes through, because the
+        // menu that shows only a first name is unreadable: forty rows of
+        // "Skylar, Daniel, Gemma" cannot be chosen between without auditioning
+        // each one. `accents[]` carries a native accent plus the non-native
+        // locales the voice can be steered into; the native one is the honest
+        // answer to "what does this voice sound like", so it is lifted out.
+        const native = (v.accents || []).find((a) => a.is_native) || null
+        ;(byLang[v.language] = byLang[v.language] || []).push({
+          id: v.id,
+          name: v.name,
+          gender: g,
+          owner: v.is_owner === true,
+          description: v.description || null,
+          tagline: v.tagline || null,
+          country: v.country || null,
+          accent: native ? native.accent : null,
+          accentLocale: native ? native.locale : null,
+          // The non-native accents the vendor lists. Searchable, not shown as
+          // chips — a row with eight accent chips is the old problem again.
+          otherAccents: (v.accents || []).filter((a) => !a.is_native).map((a) => a.accent),
+        })
       }
       pages += 1
       url = body.has_more && body.next_page
@@ -211,7 +264,15 @@ function describeStoredVoice (raw, count) {
   if (id.startsWith('elevenlabs_') || id.startsWith('narakeet_')) return null
 
   const azure = id.startsWith('azure_') ? id.slice(6) : (/Neural$/.test(id) ? id : null)
-  if (azure) return { id: azure, name: azure.replace(/Neural$/, '').split('-').slice(2).join('-') || azure, provider: 'azure', clips: count }
+  if (azure) {
+    return {
+      id: azure,
+      name: azure.replace(/Neural$/, '').split('-').slice(2).join('-') || azure,
+      provider: 'azure',
+      clips: count,
+      ...azureAttributes(azure),
+    }
+  }
 
   const cartesia = id.startsWith('cartesia_') ? id.slice(9) : null
   if (cartesia) {
@@ -382,6 +443,7 @@ module.exports = {
   THRESHOLD_SPEC,
   findLanguage,
   voicesFor,
+  azureAttributes,
   describeStoredVoice,
   estateVoices,
   cartesiaCatalogue,
