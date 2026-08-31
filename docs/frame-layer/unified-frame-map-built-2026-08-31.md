@@ -66,11 +66,16 @@ the second mechanical signal and it is the reliable one: a role name (Barista, W
 Receptionist, Driver) is a service encounter, a personal name is a social one. Both are read off
 the attesting row, so nothing became a judgement call.
 
-**3. "The canonical 668 seeds" is an approximation, and a false one.** Across the 80 eng-known
-courses there are **2,174 distinct normalised known texts**, of which only ~653 appear in most
-courses and **1,143 appear in exactly one**. The design's known-corpus-invariance re-cut is
-therefore stronger than it stated — so the could-occupy artefact is keyed by known TEXT and a
-course inherits a tag by matching text, never by matching seed number.
+**3. Seeds and known texts are two different objects, and this artefact counts the second one.**
+There is ONE canonical seed set and it is identical by definition. A course's KNOWN TEXT is derived
+from a seed and legitimately differentiated per pair, because the known side is a teaching
+instrument and because cutting drives it: a LEGO is a cut, character-exactness has to enforce the
+disambiguation with no gloss, so the pair's cuts reach back and differentiate the English. Across
+the 80 eng-known courses there are **2,174 distinct normalised known texts**, of which only ~653
+appear in most courses and **1,143 appear in exactly one**; seed 1 alone has 116 distinct known
+texts across 130 courses. That is a fact about known texts, not a refutation of the canonical seed
+set. Consequence for the artefact: it is keyed by known TEXT and a course inherits a tag by
+matching text, never by matching seed number.
 
 ---
 
@@ -211,8 +216,8 @@ Watson named a specific need, the corpus is thin: **"can't comply, with a reason
 2,174 sentences.**
 
 Two calls I made and am flagging: (1) I tagged the whole eng known-language corpus rather than
-one course's 668, because the artefact is keyed by known_language and that key names a corpus of
-2,174; (2) `C9 decline/counter with an account` is the loosest class and visibly carries noise
+one course's 668 known texts, because the artefact is keyed by known_language and that key names a
+corpus of 2,174 distinct known texts; (2) `C9 decline/counter with an account` is the loosest class and visibly carries noise
 ("But they left with each other"), and I left it loose rather than over-tune a first pass.
 
 ---

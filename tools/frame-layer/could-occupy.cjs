@@ -17,10 +17,16 @@
  * forms rather than inventing one. 2,174 attested English sentences indexed by
  * shape position is that pool.
  *
- * KEYED BY known_language, TEXT-KEYED WITHIN IT. The known side is NOT one
- * canonical 668-seed set across the estate: across the 83 eng-known courses
- * there are 2,174 distinct normalised known texts, of which only ~653 appear in
- * most courses and 1,143 appear in exactly one. So a tag is filed against the
+ * KEYED BY known_language, TEXT-KEYED WITHIN IT. There is ONE canonical SEED
+ * set and it is identical by definition. A course's KNOWN TEXT is a different
+ * object: derived from the seed, and legitimately differentiated per pair,
+ * because the known side is a teaching instrument. That is what the counts
+ * here measure — across the 83 eng-known courses there are 2,174 distinct
+ * normalised known texts, of which only ~653 appear in most courses and 1,143
+ * appear in exactly one; seed 1 alone has 116 distinct known texts across 130
+ * courses. Divergence in the known side is CAUSED BY CUTTING: a LEGO is a cut,
+ * character-exactness has to enforce the disambiguation with no gloss, so the
+ * pair's cuts reach back and differentiate the English. So a tag is filed against the
  * TEXT and carries the seed numbers it is known by — a course inherits a tag by
  * matching text, never by matching seed number.
  *
@@ -231,7 +237,7 @@ function renderMd(out) {
   L.push('');
   L.push(`**COULD-OCCUPY, NEVER ATTESTATION.** ${out.what_this_is}`);
   L.push('');
-  L.push(`**Keyed by TEXT, not by seed number.** ${out.source.keying}. Only ~653 of the ${out.source.distinct_known_texts} texts appear in most courses; 1,143 appear in exactly one. "The canonical 668 seeds" is a useful approximation and a false one.`);
+  L.push(`**Keyed by TEXT, not by seed number.** ${out.source.keying}. Only ~653 of the ${out.source.distinct_known_texts} texts appear in most courses; 1,143 appear in exactly one. That measures COURSE KNOWN TEXTS, not seeds: the seed set is canonical and identical by definition, and the known side is a teaching instrument that each pair renders for itself — seed 1 alone has 116 distinct known texts across 130 courses.`);
   L.push('');
   L.push(`**Coverage:** ${out.counts.tagged_specifically} texts carry a specific tag, ${out.counts.generic_only} carry only a generic one (\`${out.generic_classes.join('\`, \`')}\` — true of nearly every declarative and therefore no index at all), ${out.counts.untagged} carry none (single-word fragments: "An idea.", "Woman.", "Badly."). Of the ${out.counts.positions_in_store} positions in the shape store, **${out.counts.positions_with_a_SPECIFIC_filler} have a specific filler and ${empty.length} have none.**`);
   L.push('');
@@ -279,8 +285,10 @@ if (require.main === module) {
 
   (async () => {
     // READ-ONLY. The known side of every course whose KNOWN language is `eng`.
-    // Not "spa_for_eng's 668 seeds": across the 83 eng-known courses there are
-    // 2,174 distinct normalised known texts, only ~653 of them shared widely,
+    // Not "spa_for_eng's 668 known texts": the seed set is canonical and
+    // identical, but the KNOWN TEXTS are per-pair renderings — across the 83
+    // eng-known courses there are 2,174 distinct normalised ones, only ~653
+    // of them shared widely,
     // and the artefact is keyed by known_language so it must read the corpus
     // that key names.
     const rows = await pageAll(sb, 'course_seeds', 'course_code,seed_number,known_text',
@@ -324,7 +332,7 @@ if (require.main === module) {
         seed_rows_read: rows.length,
         distinct_known_texts: entries.length,
         shape_store: 'services/shared/metagraph/nodes.json (docs/pods/shape-graph-2026-08-30.md)',
-        keying: 'by normalised known TEXT, never by seed number — the known side is not one canonical set across the estate, so a course inherits a tag by matching text',
+        keying: 'by normalised known TEXT, never by seed number — there is ONE canonical seed set, identical by definition, but a course’s KNOWN TEXT is derived and legitimately differentiated per pair, so a course inherits a tag by matching text',
       },
       counts: {
         tagged_specifically: tagged.filter(isSpecific).length,

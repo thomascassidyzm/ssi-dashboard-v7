@@ -57,10 +57,14 @@ Re-run of `extract-patterns.cjs --compare` over four eng-known courses (668 seed
 
 \* compared lower-cased, punctuation-stripped, with language names normalised to `LANG`.
 
-So the sitting's claim — one canonical English seed set, identical modulo language-name swap — is
-**nearly** true and now quantified: 664/668, 665/668 and 619/668. zho_for_eng carries a genuine
-divergent block in the 300s. The inventory is therefore per-KNOWN-LANGUAGE, as claimed, but a
-builder must read the known side of the pair it is building, not assume spa's.
+These figures compare COURSE KNOWN TEXTS, not seeds. The seed set is canonical and identical by
+definition; the known text is a derived object, legitimately differentiated per pair because the
+known side is a teaching instrument and because cutting drives it — a LEGO is a cut, and the cut's
+character-exact disambiguation reaches back and differentiates the English. So 664/668, 665/668 and
+619/668, with zho_for_eng's divergent block in the 300s, quantify how far the known SIDES have been
+rendered differently, and say nothing against the canonical seed set. The inventory is therefore
+per-KNOWN-LANGUAGE, as claimed, and a builder must read the known side of the pair it is building,
+not assume spa's.
 
 ## Disagreements with the 2026-08-29 write-up
 

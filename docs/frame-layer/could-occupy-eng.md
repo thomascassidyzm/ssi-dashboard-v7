@@ -4,7 +4,7 @@ Generated 2026-08-31 from `course_seeds` across 80 eng-known courses (52735 rows
 
 **COULD-OCCUPY, NEVER ATTESTATION.** COULD-OCCUPY, never attestation. A seed is one sentence with no turn around it, so it cannot attest a shape — a move is a position defined relative to the turn before it. Each row says only: if a turn were built around this sentence, which shape positions could it fill.
 
-**Keyed by TEXT, not by seed number.** by normalised known TEXT, never by seed number — the known side is not one canonical set across the estate, so a course inherits a tag by matching text. Only ~653 of the 2174 texts appear in most courses; 1,143 appear in exactly one. "The canonical 668 seeds" is a useful approximation and a false one.
+**Keyed by TEXT, not by seed number.** by normalised known TEXT, never by seed number — there is ONE canonical seed set, identical by definition, but a course’s KNOWN TEXT is derived and legitimately differentiated per pair, so a course inherits a tag by matching text. Only ~653 of the 2174 texts appear in most courses; 1,143 appear in exactly one. That measures COURSE KNOWN TEXTS, not seeds: the seed set is canonical and identical by definition, and the known side is a teaching instrument that each pair renders for itself — seed 1 alone has 116 distinct known texts across 130 courses.
 
 **Coverage:** 965 texts carry a specific tag, 1185 carry only a generic one (`C6`, `C0` — true of nearly every declarative and therefore no index at all), 24 carry none (single-word fragments: "An idea.", "Woman.", "Badly."). Of the 110 positions in the shape store, **36 have a specific filler and 74 have none.**
 

@@ -14,13 +14,22 @@ we want better representation of the corpus in the practice phrases for each LEG
 **The pair-invariance claim is RE-CUT, not confirmed.** The room's working read was "the frame
 inventory is pair-invariant; instantiability and mapping class are pair-specific overlays." The
 right statement, forced by measurements the estate already holds plus one new one: **the inventory
-is KNOWN-CORPUS-invariant, not pair-invariant.** It is a function of the known-side corpus alone —
-and it is invariant across pairs exactly to the degree the known corpora are actually shared, which
-is measured and imperfect: 664/668 seeds identical for deu, 665/668 for jpn, **619/668 for zho**
-(a genuine divergent block in the 300s — `english-pattern-inventory.md`). The pod canon is today
-one shared English corpus across every pair, so the pod-side inventory is invariant **by
-construction, not by principle** — the day a pod canon forks per known language, it inherits the
-same per-known-language status the seed inventory already has. The two overlays are confirmed
+is KNOWN-CORPUS-invariant, not pair-invariant.** It is a function of the known-side corpus alone.
+One inventory, TWO KEYINGS, and which one applies is decided by whether the source corpus CUTS.
+
+**Seed-derived frames key to the COURSE'S KNOWN TEXT and are per-pair at the generation layer.**
+There is ONE canonical seed set and it is identical by definition; a course's known text is a
+different object — derived, and legitimately differentiated per pair, because the known side is a
+teaching instrument. Seed 1 has 116 distinct known texts across 130 courses. The figures quoted
+below — 664/668 for deu, 665/668 for jpn, **619/668 for zho** (a divergent block in the 300s —
+`english-pattern-inventory.md`) — measure KNOWN TEXTS, not seeds, and they are not a defect in the
+seed set. The divergence is CAUSED BY CUTTING: a LEGO is a cut, character-exactness has to enforce
+the disambiguation with no gloss, so the pair's cuts reach back and differentiate the English.
+
+**Pod-derived frames key to the CANONICAL POD TEXT and ARE pair-invariant.** Pod sentences are not
+cut into LEGOs, so there are no different ways to do them: the granularity of the sentence is all
+that is cared about and it is always identical in meaning. No cut, no disambiguation pressure, no
+divergence. This is a property of the corpus, not an accident of today's canon. The two overlays are confirmed
 pair-specific as claimed. Design consequence: every inventory file is keyed by `known_language`,
 never by "the estate", and nothing breaks when the invariance degrades — because it already has.
 

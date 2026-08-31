@@ -8,7 +8,7 @@
   "seed_rows_read": 52735,
   "distinct_known_texts": 2174,
   "shape_store": "services/shared/metagraph/nodes.json (docs/pods/shape-graph-2026-08-30.md)",
-  "keying": "by normalised known TEXT, never by seed number — the known side is not one canonical set across the estate, so a course inherits a tag by matching text"
+  "keying": "by normalised known TEXT, never by seed number — there is ONE canonical seed set, identical by definition, but a course’s KNOWN TEXT is derived and legitimately differentiated per pair, so a course inherits a tag by matching text"
  },
  "counts": {
   "tagged_specifically": 965,

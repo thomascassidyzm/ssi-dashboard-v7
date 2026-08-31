@@ -16,12 +16,15 @@
  *   conversations touching in `global_order` are not an exchange.
  *
  * KEYED BY known_language, NEVER BY "the estate". The inventory is a function
- * of the KNOWN-side corpus alone, and is invariant across pairs only to the
- * degree the known corpora are actually shared — measured and imperfect
- * (664/668 deu, 619/668 zho). The pod canon happens to be one shared English
- * corpus today, so the pod-side inventory is invariant BY CONSTRUCTION, not by
- * principle: the day a pod canon forks per known language, each fork gets its
- * own mining run and its own file.
+ * of the KNOWN-side corpus alone. One inventory, TWO KEYINGS, and which one
+ * applies is decided by whether the source corpus CUTS. Seed-derived frames
+ * key to the COURSE'S KNOWN TEXT and are per-pair at the generation layer: the
+ * seed set itself is canonical and identical by definition, but a LEGO is a
+ * cut, and the cut's character-exact disambiguation reaches back and
+ * differentiates the English — which is what the 664/668 deu and 619/668 zho
+ * figures measure, known texts and not seeds. Pod-derived frames key to the
+ * CANONICAL POD TEXT and ARE pair-invariant, because pod sentences are not cut
+ * into LEGOs: no cut, no disambiguation pressure, no divergence.
  *
  * DOUBLE-COUNTING RULE. A row attested by a D-frame and also sitting inside an
  * X-frame attestation is counted once at each grain and NEVER summed across
