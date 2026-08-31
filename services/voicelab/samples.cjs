@@ -242,6 +242,9 @@ async function freeTakes (text, voiceIds) {
 
 // ── C. THE READ, AND THE PREPARE ───────────────────────────────────────────────────
 
+/** Can this lab render a fresh sample of this voice? Cartesia only, by design. */
+function isRenderable (voiceId) { return /^cartesia_/.test(String(voiceId)) }
+
 /**
  * For one language: the line, and for each voice asked about, a playable sample if one
  * is cached or free — otherwise the plain fact that it has none and what it would cost.
@@ -255,6 +258,7 @@ async function read ({ language, voiceIds = [], line = null }) {
   const free = await freeTakes(picked.text, voiceIds)
   const samples = {}
   const missing = []
+  const unrenderable = []
   for (const v of voiceIds) {
     const cached = idx[cacheKey(v, language, picked.text)]
     if (cached && store.readClip(cached.clip)) {
@@ -268,13 +272,21 @@ async function read ({ language, voiceIds = [], line = null }) {
     }
     const f = free.get(v)
     if (f) { samples[v] = f; continue }
-    missing.push(v)
+    // THIS LAB RENDERS CARTESIA AND NOTHING ELSE. The candidate list is wider
+    // than that on purpose — an Azure voice or a human recordist can hold a
+    // slot — but pushing an Azure voice id through a Cartesia config would
+    // render a stranger and call it an audition. So a voice with no free take
+    // and no Cartesia id is reported as unrenderable rather than quietly
+    // dropped or quietly rendered: it can still be cast, just not previewed
+    // here until the estate has a clip of it.
+    ;(isRenderable(v) ? missing : unrenderable).push(v)
   }
   return {
     language,
     line: picked,
     samples,
     missing,
+    unrenderable,
     // What pressing "prepare" would cost, before anyone presses it.
     chars: missing.length * picked.text.length,
   }
@@ -294,7 +306,7 @@ async function prepare ({ language, voiceIds = [], maxVoices = 12, renderOne }) 
   const state = await read({ language, voiceIds })
   if (!state.line) throw Object.assign(new Error(`no course line found for ${language}`), { status: 404 })
 
-  const todo = state.missing.slice(0, Math.max(1, maxVoices))
+  const todo = state.missing.filter(isRenderable).slice(0, Math.max(1, maxVoices))
   if (!todo.length) return { ...state, rendered: [], chars: 0 }
 
   const lang = params.findLanguage(language)
@@ -309,16 +321,23 @@ async function prepare ({ language, voiceIds = [], maxVoices = 12, renderOne }) 
     ...lab.normaliseConfig({ provider: 'cartesia', voiceId: String(v).replace(/^cartesia_/, ''), language: lang.code }),
     key: `S${i}`,
   }))
-  const refusal = lab.refuse({
-    kind: 'batch', sentences: [state.line.text], configs, charsSpentToday: store.charsSpentToday(),
-  })
-  if (refusal) throw Object.assign(new Error(refusal.error), { status: refusal.status })
-
   const idx = readIndex()
   const rendered = []
   let chars = 0
   for (let i = 0; i < todo.length; i++) {
     const voiceId = todo[i]
+    // THE CEILING IS ASKED BEFORE EVERY CLIP, not once for the batch. A batch
+    // refusal takes exactly one config (lab.refuse's own rule), and asking per
+    // clip is the stricter reading anyway: a press that runs into the daily
+    // allowance stops at the clip that crosses it and keeps everything already
+    // rendered, rather than being refused wholesale or overrunning wholesale.
+    const refusal = lab.refuse({
+      kind: 'batch', sentences: [state.line.text], configs: [configs[i]], charsSpentToday: store.charsSpentToday(),
+    })
+    if (refusal) {
+      if (!rendered.length) throw Object.assign(new Error(refusal.error), { status: refusal.status })
+      break
+    }
     const { mastered, durationMs } = await renderOne({ text: state.line.text, cfg: configs[i] })
     const clip = store.newId()
     store.writeClip(clip, mastered)
@@ -338,4 +357,4 @@ async function prepare ({ language, voiceIds = [], maxVoices = 12, renderOne }) 
   return { ...after, rendered, chars }
 }
 
-module.exports = { pickLine, chooseFrom, preferCourses, freeTakes, read, prepare, cacheKey, MIN_CHARS, MAX_CHARS, HARD_CAP, INDEX }
+module.exports = { pickLine, chooseFrom, preferCourses, freeTakes, isRenderable, read, prepare, cacheKey, MIN_CHARS, MAX_CHARS, HARD_CAP, INDEX }

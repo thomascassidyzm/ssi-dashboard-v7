@@ -876,6 +876,10 @@ function candidatesFor (lang, slot) {
                       of the lab's daily allowance. Everything already rendered is cached and free to replay.
                     </span>
                   </p>
+                  <p v-if="samplesByLang[lang.code] && samplesByLang[lang.code].unrenderable?.length" class="vl-muted vl-prepare">
+                    {{ samplesByLang[lang.code].unrenderable.length }} more can be cast but not previewed here —
+                    this lab renders Cartesia only, and the estate has no clip of them saying this line.
+                  </p>
                 </div>
 
                 <!-- PHRASE VOICES — the course material. These are the two
