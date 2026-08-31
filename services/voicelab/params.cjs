@@ -17,6 +17,7 @@ const path = require('path')
 
 const lab = require('./lab.cjs')
 const policy = require('../shared/tts-provider-policy.cjs')
+const declaration = require('./declaration.cjs')
 
 /**
  * Cartesia pins its API to a date, not a semver, and the header is REQUIRED —
@@ -325,6 +326,18 @@ async function payload ({ charsSpentToday = 0 } = {}) {
       cartesiaCovers: policy.cartesiaCoversLanguage(l.code),
       voices: voicesFor(l, PRODUCTION_VOICES),
     })),
+    // THE CONSENT WORDING, served rather than duplicated (2026-09-01).
+    //
+    // The browser has to SHOW the person the exact line they are about to read
+    // aloud or tick. If the front end kept its own copy, the day Tom redlines
+    // the wording there would be two versions in the estate — one on screen and
+    // one written into the database as what was agreed — and nobody would find
+    // out, because both halves would keep working. So there is one copy, in
+    // services/voicelab/declaration.cjs, and the page reads params.consent.
+    consent: {
+      spokenPhrase: declaration.SPOKEN_PHRASE,
+      attestation: declaration.ATTESTATION,
+    },
     gates: gateStack.GATES,
     thresholdSpec: THRESHOLD_SPEC,
     defaults: { config: defaults },

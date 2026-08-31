@@ -101,3 +101,81 @@ describe('what the screen is told', () => {
     expect(consent.describe({ type: 'tts', consent_status: 'awaiting_authorisation' }).aboutAPerson).toBe(true)
   })
 })
+
+describe('the declaration block — what the person actually agreed to', () => {
+  // Tom, 2026-09-01: the words read aloud or ticked ARE the consent record, so
+  // describe() has to be able to produce them. Stored per voice and rendered
+  // from the row, never from the code's current copy of the wording — that is
+  // the whole reason the column exists.
+
+  it('is null for a voice that never had one', () => {
+    // Every voice cloned before there was a phrase to read, and every
+    // clone-from-estate, where no live speaker is present to declare anything.
+    // Null, not an empty block: an empty block reads like a missing one.
+    expect(consent.describe({ consent_status: 'awaiting_authorisation', consent_person: 'Aran' }).declaration).toBeNull()
+    expect(consent.describe({}).declaration).toBeNull()
+  })
+
+  it('carries the words and the evidence for a spoken declaration', () => {
+    const d = consent.describe({
+      consent_status: 'authorised',
+      consent_person: 'Aran',
+      consent_authorised_by: 'Aran',
+      consent_declaration: 'This is my own voice, and I am happy for SaySomethingin to copy it.',
+      consent_declaration_kind: 'spoken',
+      consent_declaration_heard: 'this is my own voice and i am happy for say something in to copy it',
+    })
+    expect(d.declaration.kind).toBe('spoken')
+    expect(d.declaration.words).toBe('This is my own voice, and I am happy for SaySomethingin to copy it.')
+    // The evidence, so a human can disagree with the machine's reading later.
+    expect(d.declaration.heard).toMatch(/say something in/)
+  })
+
+  it('carries no "heard" for an attestation, because nothing was listened to', () => {
+    const d = consent.describe({
+      consent_status: 'authorised',
+      consent_person: 'Aran',
+      consent_authorised_by: 'tom@hey.com',
+      consent_declaration: 'This is my own voice, or I have the right to use this recording.',
+      consent_declaration_kind: 'attested',
+      consent_declaration_heard: null,
+    })
+    expect(d.declaration.kind).toBe('attested')
+    expect(d.declaration.heard).toBeNull()
+  })
+
+  it('changes nothing else describe() already said', () => {
+    // The declaration block is additive. A voice with one is still described by
+    // every field the 2026-08-31 screen renders, with the same values.
+    const voice = {
+      type: 'tts',
+      metadata_source: 'cartesia-clone (Voice Lab)',
+      consent_status: 'authorised',
+      consent_person: 'Aran',
+      consent_authorised_by: 'Aran',
+      consent_authorised_how: 'read the consent line aloud on the recording',
+      consent_authorised_at: '2026-09-01T10:00:00.000Z',
+      consent_recorded_by: 'tom@hey.com',
+      consent_source: 'recorded in the browser',
+    }
+    const before = consent.describe(voice)
+    const after = consent.describe({ ...voice, consent_declaration: 'x', consent_declaration_kind: 'spoken' })
+    for (const k of Object.keys(before)) {
+      if (k === 'declaration') continue
+      expect(after[k]).toEqual(before[k])
+    }
+    expect(after.authorised).toBe(true)
+    expect(after.castWarning).toBeNull()
+    expect(after.summary).toMatch(/Aran authorised this voice/)
+  })
+})
+
+describe('the columns a read needs', () => {
+  it('asks for the declaration columns, or describe() can never see them', () => {
+    // A SELECT that omits a column makes describe() silently answer null for it
+    // — the failure is invisible and the screen just stops mentioning consent.
+    for (const c of ['consent_declaration', 'consent_declaration_kind', 'consent_declaration_heard']) {
+      expect(consent.COLUMNS).toContain(c)
+    }
+  })
+})

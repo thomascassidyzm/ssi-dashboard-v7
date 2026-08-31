@@ -119,6 +119,18 @@ function describe (voice) {
     note: trim(voice && voice.consent_note) || null,
     summary: summarise(voice),
     /**
+     * THE WORDS THEMSELVES, when there are any. Null for every voice cloned
+     * before there was a phrase to read, and for the estate-clone path, where
+     * no live speaker is present to declare anything — and null is the honest
+     * answer for those, never an empty block that reads like a missing one.
+     *
+     * `words` is the copy stored ON THIS VOICE, not the copy in the code: the
+     * wording will be redlined and this block must keep saying what THIS person
+     * actually agreed to. `heard` is the evidence behind a spoken declaration —
+     * what the machine reported hearing — so a human can disagree with it.
+     */
+    declaration: declarationOf(voice),
+    /**
      * What the page must say BEFORE this voice is cast into anything a learner
      * hears. Null when there is nothing to warn about. Casting is deliberately
      * NOT blocked — a hard block is Tom's call and he has not made it — so the
@@ -126,6 +138,19 @@ function describe (voice) {
      */
     castWarning: castWarning(status, trim(voice && voice.consent_person)),
   }
+}
+
+/** The declaration block, or null. See describe(). */
+function declarationOf (voice) {
+  const kind = trim(voice && voice.consent_declaration_kind) || null
+  const words = trim(voice && voice.consent_declaration) || null
+  const heard = trim(voice && voice.consent_declaration_heard) || null
+  // Either of the first two is enough to say a declaration happened. Neither
+  // alone is a state anything writes, but a row half-written by hand should
+  // still surface rather than vanish — the whole point of the block is that a
+  // consent event can be produced later.
+  if (!kind && !words) return null
+  return { kind, words, heard }
 }
 
 const LABELS = Object.freeze({
@@ -232,9 +257,9 @@ function date (v) {
 }
 
 /** The columns any read of a voice needs in order to describe its consent. */
-const COLUMNS = 'type, metadata_source, consent_status, consent_person, consent_person_contact, consent_authorised_by, consent_authorised_how, consent_authorised_at, consent_recorded_by, consent_recorded_at, consent_source, consent_note'
+const COLUMNS = 'type, metadata_source, consent_status, consent_person, consent_person_contact, consent_authorised_by, consent_authorised_how, consent_authorised_at, consent_recorded_by, consent_recorded_at, consent_source, consent_note, consent_declaration, consent_declaration_kind, consent_declaration_heard'
 
 module.exports = {
   STATUSES, BIRTH_STATUS, COLUMNS, LABELS,
-  statusOf, isAuthorised, isAboutAPerson, summarise, describe, castWarning, birthRecord, decisionRecord,
+  statusOf, isAuthorised, isAboutAPerson, summarise, describe, castWarning, birthRecord, decisionRecord, declarationOf,
 }
