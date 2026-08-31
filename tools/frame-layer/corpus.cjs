@@ -65,4 +65,69 @@ function pairOf(course) {
 }
 const knownSideIsEnglish = (course) => pairOf(course).known === 'eng';
 
-module.exports = { loadCorpus, pageAll, pairOf, knownSideIsEnglish };
+/**
+ * THE POD CANON, READ-ONLY AND PAGINATED. 1,446 rows today, so the 1000-row cap
+ * bites already and pagination is not optional.
+ *
+ * `target_text`/`target_lang` are deliberately NOT selected. They exist on the
+ * table now (populated for the Method Pod in Italian, null for pod-0/0.5/1) but
+ * PODS DO NOT CUT: a rendering is a translation of shape-layer material, not an
+ * agreement between a known chunk and a target chunk, and the whole safety
+ * property of the frame layer rests on pod content contributing ATTESTATION and
+ * ZERO VOCABULARY. Selecting the column would put target material one careless
+ * line away from the generator; not selecting it makes that impossible here.
+ */
+async function loadPodCanon(sb, { pods = ['pod-0', 'pod-0.5', 'pod-1'] } = {}) {
+  const rows = await pageAll(sb, 'canonical_pod_scenarios',
+    'id,pod_slug,scene_number,scene_title,sentence_number,global_order,speaker,english_text,updated_at',
+    q => q.in('pod_slug', pods).order('pod_slug').order('global_order'));
+  return rows.map(r => ({ ...r, source: 'canon' }));
+}
+
+/**
+ * WHICH POD CONTENT HAS THIS LEARNER HEARD BY SEED N? — the interface, the
+ * schedule found, and an honest null.
+ *
+ * The design reported "where the pod-vs-seed interleaving schedule is defined"
+ * as an unestablished gap. It is established now, by reading the delivery side
+ * (ssi-learning-app):
+ *   - pods start at `podActivationRound`, default 6
+ *     (`packages/player-vue/src/providers/generateLearningScript.ts:174`,
+ *      `src/composables/usePodActivation.ts`);
+ *   - a lap then fires every `POD_ROUND_INTERVAL` main rounds, default 5
+ *     (`generateLearningScript.ts:678-728`, `usePodLapScheduler.ts:624-631`);
+ *   - each lap introduces ONE COHORT — one exchange, a speaker turn plus its
+ *     reply, never crossing a scene boundary (`usePodLapScheduler.ts`, cohort
+ *     intake; partition in `@ssi/core/pods/podCohorts.ts`);
+ *   - a "round" is one LEGO (`course_round_index` → `{ r, legoId, seed }`,
+ *     served by `api/courses/[code]/round-map.ts`).
+ * So the arithmetic below is derivable, and `podLapsByRound` states it.
+ *
+ * What is NOT derivable at authoring time is the ANSWER. `completedPodRounds`
+ * and `podActivationRound` are restored per ENROLMENT at scheduler init
+ * (`usePodLapScheduler.ts:596-604`) and a lap can be deferred a round at
+ * runtime, so "delivered by seed N" is per-learner runtime state, not a
+ * property of the course. A generator scoring a basket has no learner.
+ *
+ * Hence null, deliberately. Every caller must read null as "no schedule
+ * readable" and degrade to owned-only gating — which is not a degradation:
+ * HEARD is a ranking signal and never a gate, so the safety property is
+ * untouched. Returning `[]` would have been a lie: it would say "nothing heard
+ * yet", which is a claim, and a wrong one from round 6 onward.
+ */
+async function deliveredPodRows(/* sb, course, seedNumber */) {
+  return null;
+}
+
+/**
+ * How many pod laps has a learner on main round `round` seen, under the
+ * DEFAULT schedule? Pure arithmetic over the two published constants — an
+ * upper bound on cohorts delivered, not a per-learner fact. Exported so the
+ * next worker to wire "heard" has the arithmetic instead of a guess.
+ */
+function podLapsByRound(round, { activation = 6, interval = 5 } = {}) {
+  if (!Number.isFinite(round) || round < activation) return 0;
+  return Math.floor((round - activation) / Math.max(1, interval)) + 1;
+}
+
+module.exports = { loadCorpus, loadPodCanon, deliveredPodRows, podLapsByRound, pageAll, pairOf, knownSideIsEnglish };
