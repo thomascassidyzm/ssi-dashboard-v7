@@ -2299,6 +2299,15 @@ loadLiveConfig()
       </p>
     </header>
 
+    <!-- Signpost (2026-08-31). Tom looked for the canonical scripts HERE, because
+         this is the pod surface. They are not here: this Lab tunes the acquisition
+         ladder for ONE course's generated pod. The language-neutral English masters
+         live in the Script Lab, course-free. One tap across. -->
+    <nav class="elsewhere">
+      <router-link to="/canonical/scripts">Canonical scripts — view and edit, no course →</router-link>
+      <router-link to="/canonical/metagraph">The shape graph, with the pods over it →</router-link>
+    </nav>
+
     <div class="pickers">
       <CoursePicker
         :modelValue="selectedCourseCode"
@@ -2958,6 +2967,13 @@ code {
   font-size: 0.9em;
   font-family: var(--font-mono, ui-monospace, Menlo, monospace);
 }
+.elsewhere { display: flex; flex-wrap: wrap; gap: 10px; margin: 0 0 18px; }
+.elsewhere a {
+  display: inline-block; padding: 8px 12px; border-radius: 8px;
+  border: 1px solid var(--line, #2a3446); background: var(--surface, #172032);
+  color: var(--accent-2, #4ade80); font-size: 13px; text-decoration: none;
+}
+.elsewhere a:hover { border-color: var(--accent-2, #4ade80); }
 .pickers {
   display: flex;
   align-items: center;

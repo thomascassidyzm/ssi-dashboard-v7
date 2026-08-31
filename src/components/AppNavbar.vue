@@ -358,7 +358,11 @@ const sectionTabs = computed(() => {
       { label: 'Seeds', to: '/canonical/seeds', active: route.name === 'CanonicalSeeds' },
       { label: 'Content', to: '/canonical/content', active: route.name === 'CanonicalContent' },
       { label: 'Pods', to: '/canonical/pods', active: route.name === 'PodsDoc' },
-      { label: 'Script Lab', to: '/canonical/scripts', active: route.name === 'ScriptLab' || route.name === 'ScriptLabScript' }
+      { label: 'Script Lab', to: '/canonical/scripts', active: route.name === 'ScriptLab' || route.name === 'ScriptLabScript' },
+      // The graph the scripts are walks over. It was reachable only from a button
+      // inside the Script Lab, which is one door too few for a page Tom asked for
+      // by name (2026-08-31).
+      { label: 'Metagraph', to: '/canonical/metagraph', active: route.name === 'Metagraph' }
     ]
   }
 
