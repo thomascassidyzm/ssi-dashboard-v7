@@ -313,6 +313,11 @@ const THRESHOLD_SPEC = [
 ]
 
 /** The whole /params payload. */
+/** Whether whisper is present on this box. Never throws — a broken probe is a "no". */
+function canListen () {
+  try { return require('../audio-veracity.cjs').availability().available === true } catch { return false }
+}
+
 async function payload ({ charsSpentToday = 0 } = {}) {
   await Promise.all([estateVoices(), cartesiaCatalogue()])
   const defaults = lab.defaultConfig()
@@ -337,6 +342,16 @@ async function payload ({ charsSpentToday = 0 } = {}) {
     consent: {
       spokenPhrase: declaration.SPOKEN_PHRASE,
       attestation: declaration.ATTESTATION,
+      // Can this box listen at all? Whisper is local and on some machines it is
+      // simply not installed, so the recording path can tell the truth up front
+      // — "we will check what you read" or "we cannot, so please tick this
+      // instead" — rather than letting the person discover it on submit.
+      //
+      // ADVISORY ONLY. Nothing server-side branches on this value: the clone
+      // route re-asks availability() at submit time, because a flag fetched
+      // when the page opened is a flag that can be stale or edited in a console,
+      // and consent is not a thing to decide from the browser's copy of a fact.
+      canListen: canListen(),
     },
     gates: gateStack.GATES,
     thresholdSpec: THRESHOLD_SPEC,

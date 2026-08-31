@@ -114,7 +114,14 @@ function mount (app, deps) {
     const status = err && err.status ? err.status : 500
     if (status >= 500) logger.error?.(`[voicelab] ${context}:`, err)
     else logger.log?.(`[voicelab] ${context}: ${err.message}`)
-    res.status(status).json({ error: err.message, code: err.code || 'voicelab_failed' })
+    // `err.detail` rides alongside the sentence for the callers that have to
+    // BRANCH on a refusal rather than merely show it. The consent gate is the
+    // case that forced it (2026-09-01): the browser needs to know whether to
+    // offer the attestation instead or to ask for the line to be read again,
+    // and making a screen string-match English prose to find that out means the
+    // day the sentence is redlined the screen silently takes the wrong branch.
+    // The sentence stays the thing a human reads; the flag is the thing code reads.
+    res.status(status).json({ error: err.message, code: err.code || 'voicelab_failed', ...(err.detail || {}) })
   }
 
   /**
@@ -526,7 +533,7 @@ function mount (app, deps) {
           // "consent phrase not detected" sends them round the loop blind.
           throw Object.assign(new Error(
             `The consent line was not heard in that recording. It needs to say: "${declaration.SPOKEN_PHRASE}" — what came through instead was: "${(check.heard || '').trim() || 'nothing at all'}". Record it again, reading the line aloud.`,
-          ), { status: 400 })
+          ), { status: 400, detail: { declarationNotHeard: true, heard: check.heard, coverage: check.coverage } })
         } else {
           // THE HONEST FALLBACK, and it is deliberate. Whisper runs locally and
           // on some machines it is simply not installed, so "could not check"
@@ -540,7 +547,7 @@ function mount (app, deps) {
           if (!agreed || !attestedBy) {
             throw Object.assign(new Error(
               'This machine cannot listen to the recording to check that the consent line was read, so it needs the written statement instead: tick the consent wording and say who is making the statement.',
-            ), { status: 400 })
+            ), { status: 400, detail: { needsAttestation: true } })
           }
           declarationRecord = declaration.declarationRecord({ kind: 'attested', attestedBy, person })
         }
@@ -552,7 +559,7 @@ function mount (app, deps) {
         if (!agreed || !attestedBy) {
           throw Object.assign(new Error(
             `Nobody has agreed to the consent wording. An uploaded recording cannot prove who spoke, so somebody has to state it: tick "${declaration.ATTESTATION}" and say who is making the statement.`,
-          ), { status: 400 })
+          ), { status: 400, detail: { needsAttestation: true } })
         }
         declarationRecord = declaration.declarationRecord({ kind: 'attested', attestedBy, person })
       }
