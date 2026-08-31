@@ -23,22 +23,23 @@
     "policy": "A RECOVERY ATTACHES, IT DOES NOT APPEND (Tom's ruling, 2026-08-31): a pod is a branch point with its continuations attached, so each recovery is the other half of a move CORE already teaches, and hangs off the scene that exists. CORE's existing order is untouched — walks/pod-0.json is not modified and nothing is reordered. Each walk here names the pod-0 walk and step it attaches to, restages that turn as a quotation, and continues it inside the same encounter. A recovery three scenes later would be worth nothing; every one of these arrives while the learner is in the trouble the branch just made."
   },
   "accounting": {
-    "authored_walks": 3,
-    "turns_total": 18,
-    "restaged_turns": 5,
-    "authored_turns": 13,
+    "authored_walks": 4,
+    "turns_total": 23,
+    "restaged_turns": 6,
+    "authored_turns": 17,
     "corpus_rows": 0,
     "corpus_rows_note": "Zero, and that is the point: nothing here is a transcription. The restaged turns are quotations of pod-0 rows and are counted only in walks/pod-0.json.",
     "walks": {
       "W1301": "S2 (A1001) — the hedge acted on and turned out wrong, scene 2, attached at pod-0 W3 step 4",
       "W1302": "M1 (A1002) — 'I don't know', held with status, the third arm on the canon's one stored branch, scene 3, attached at pod-0 W1 step 4",
-      "W1303": "M5 (A1006) — the haggle over WHEN, settled by formula, scene 4, attached at pod-0 W4 step 3"
+      "W1303": "M5 (A1006) — the haggle over WHEN, settled by formula, scene 4, attached at pod-0 W4 step 3",
+      "W1304": "M2 (A1003) — the premise audited, received as a gift, scene 22, attached at pod-0 W16 step 1"
     }
   },
   "coverage_of_the_graph": {
-    "nodes": ["N3", "N4", "N13", "N2", "N7", "N16", "N1"],
+    "nodes": ["N3", "N4", "N13", "N2", "N7", "N16", "N1", "N14", "N11"],
     "composition_edges_used": [],
-    "survivability_edges_touched": ["S2", "M1", "M5"],
+    "survivability_edges_touched": ["S2", "M1", "M5", "M2"],
     "note": "S2 is the only corpus-attested edge with no recovery anywhere in the estate — five hedges attested, not one ever taken up; W1301 is its first. M1's recovery gives O2 ('nobody knows') its first dialogic home in CORE: the canon's recorded property is that nobody in it ever fails, and W1302 is the first turn in CORE where a responder does not know the answer. M5's recovery runs N16's four positions inside N7's arrangement — the one register where everyone haggles honestly — and the price-haggle is explicitly NOT attached, per the audit; no ratified composition edge exists for N16-inside-N7, so the composition is carried per-step and not cited as a C-edge."
   },
   "walks": [
@@ -254,6 +255,66 @@
           "move": "F1",
           "composed_in": { "node": "N1", "position": 2 },
           "note": "The second signature on the settlement, folded into the ritual close — and the release: the friend sends Sarah home, honouring the 'I need to go home now' she opened with. The haggle cost four turns inside an encounter that had no time to spare, which is the proof it was cheap."
+        }
+      ]
+    },
+    {
+      "id": "W1304",
+      "name": "Scene 22 — the premise audited, and the audit received as a gift (M2)",
+      "scene": 22,
+      "nodes_traversed": ["N14", "N11"],
+      "composition_edges_used": [],
+      "survivability_edges_touched": ["M2"],
+      "attaches_to": { "walk": "W16", "step": 1, "node": "N11", "position": 1, "attachment": "A1003" },
+      "note": "The first conversation, pod-0 W16's world. The learner's opening carries a claim about themselves — 'I haven't been learning for very long' — and in the canon that premise sails past unexamined, straight into a compliment. This walk audits it, in scene 22's own register: a friendly 'how long, exactly?', the ground supplied, and then the gift — the learner's own numbers, once on the table, argue against the learner's own self-downgrade, and the canon's compliment lands with evidence under it instead of over the learner's protest. CORE has the learner make claims; a claim summons the audit; the thing to own is that 'how do you know that?' from a friendly mouth is an invitation to stand somewhere solid, not an attack. The claim turns at g223 and g225 offer the same slot; one staging teaches it. The walk rejoins the canon at g224 — 'Am I speaking slowly enough for you now?' follows unchanged.",
+      "steps": [
+        {
+          "step": 1,
+          "node": "N14",
+          "position": 1,
+          "speaker": "Learner",
+          "surface": "Would you mind if I tried to practise speaking your language with you? I haven't been learning for very long, and I still feel a little nervous about speaking with other people.",
+          "move": null,
+          "composed_in": { "node": "N11", "position": 1 },
+          "restaged": true,
+          "note": "Quotation of the canon's opening (pod-0 W16 step 1), the [target language] bracket rendered deictically per the scene 0 convention. Read as N11 it is the self-downgrade; read as N14 it is a claim — 'not very long' — and a claim is auditable. Both readings are true at once, which is exactly why the audit attaches here."
+        },
+        {
+          "step": 2,
+          "node": "N14",
+          "position": 2,
+          "speaker": "Friend",
+          "surface": "Of course, no problem. Not very long — how long is that, exactly?",
+          "move": "F3",
+          "branch_point": true,
+          "note": "The grant first — the canon's own permission is not withheld to make room for the branch — and then the audit: the premise quoted back and asked to stand on something. F3, answering with a question, and the tone is the whole lesson: curiosity, not challenge. Everything after this turn is the continuation the canon never stored: in the canon, nobody's premise is ever examined."
+        },
+        {
+          "step": 3,
+          "node": "N14",
+          "position": 3,
+          "speaker": "Learner",
+          "surface": "About six months. A little every day — usually just ten minutes. It doesn't feel like very much.",
+          "move": "F19",
+          "note": "The ground supplied — N14's third position, taken the honest way rather than the conceding way. Simple numbers, simply held: a duration, a frequency, a size. The last sentence keeps the self-downgrade alive so that the next turn has something real to push against."
+        },
+        {
+          "step": 4,
+          "node": "N11",
+          "position": 2,
+          "speaker": "Friend",
+          "surface": "Six months, every single day? That's more than most people ever do. I can understand you easily — and now I know why.",
+          "move": "F17",
+          "note": "The gift, delivered: the audit turned the vague premise into numbers, and the numbers turn the canon's own compliment — 'I can understand you easily', g222's line, kept on purpose — from kindness into evidence. This is what 'the audit received as a gift' means in practice: the friend didn't doubt the learner, they went looking for the ground the learner was too modest to stand on, and handed it back."
+        },
+        {
+          "step": 5,
+          "node": "N11",
+          "position": 3,
+          "speaker": "Learner",
+          "surface": "Thank you. Maybe it does add up after all. I still feel nervous — but a little less than when we started talking.",
+          "move": "F16",
+          "note": "Concede-and-hold, scene 22's own signature move: the evidence is accepted — maybe it adds up — and the felt experience is held anyway, because feelings don't yield to arithmetic and nobody here pretends they do. The 'less than when we started talking' is in-scene proof that the conversation itself is doing what the learner came for."
         }
       ]
     }
