@@ -48,8 +48,19 @@ defineProps({
    * line under the block.
    */
   unrenderableWhy: { type: Object, default: () => ({}) },
-  /** The voice whose judging set is open, and that set. Only ever one at a time. */
+  /**
+   * Which list this is. The same voice appears in the primary and the backup
+   * list of the same language, so without this, opening a voice in one of them
+   * opens it in BOTH — two identical strips, and, worse, two consent panels
+   * with two microphones in them.
+   */
+  listKey: { type: String, default: '' },
+  /** The voice whose judging set is open, in which list. Only ever one at a time. */
   openVoice: { type: String, default: '' },
+  openIn: { type: String, default: '' },
+  /** The voice whose consent panel is open, in which list. */
+  consentFor: { type: String, default: '' },
+  consentIn: { type: String, default: '' },
   openClips: { type: Object, default: null },
   /** The voice currently being rendered, so its row can say so rather than freeze. */
   rendering: { type: String, default: '' },
@@ -79,7 +90,8 @@ function blockedFor (c) {
 </script>
 
 <template>
-  <div class="vl-cands">
+  <div class="vl-cands-wrap">
+    <div class="vl-cands">
     <p v-if="!candidates.length" class="vl-muted vl-cands-empty">{{ emptyText }}</p>
 
     <template v-for="c in candidates" :key="c.voiceId">
@@ -141,7 +153,7 @@ function blockedFor (c) {
          the course this voice would actually speak — one clip can flatter a
          voice or misrepresent it. An empty pill is dashed and tappable: tapping
          renders that one line and plays it. -->
-    <div v-if="openVoice === c.voiceId" class="vl-cand-set">
+    <div v-if="openVoice === c.voiceId && openIn === listKey" class="vl-cand-set">
       <p v-if="!openClips" class="vl-muted vl-cand-setline">…</p>
       <template v-else>
         <button
@@ -160,10 +172,20 @@ function blockedFor (c) {
       </template>
     </div>
     </template>
+    </div>
+
+    <!-- THE CONSENT PANEL OPENS WHERE IT WAS ASKED FOR — under this list, not
+         several screens up the page where it used to render, half-hidden behind
+         the sticky header. Outside the scrolling list rather than inside it: the
+         list is capped at 19rem and a panel with a microphone in it does not fit
+         in a 19rem scroll box. The panel itself lives in LanguagesPanel, which
+         owns the recording and the writes; this is only where it is drawn. -->
+    <slot v-if="consentFor && consentIn === listKey" name="consent" :voice-id="consentFor" />
   </div>
 </template>
 
 <style scoped>
+.vl-cands-wrap { display: flex; flex-direction: column; gap: .5rem; }
 .vl-cands { display: flex; flex-direction: column; gap: .25rem; max-height: 19rem; overflow-y: auto; }
 .vl-cands-empty { margin: 0; }
 .vl-cand {
