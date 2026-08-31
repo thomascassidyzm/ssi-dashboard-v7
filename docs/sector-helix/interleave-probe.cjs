@@ -9,8 +9,14 @@
  * Run from the Popty repo root (needs .env.psql):
  *   node docs/sector-helix/interleave-probe.cjs
  */
-require('dotenv').config({ path: '.env.psql' });
-const pg = require('pg');
+// Resolve deps from the repo the probe is RUN in (a docs worktree has no
+// node_modules), so `node docs/sector-helix/interleave-probe.cjs` works from
+// any checkout that holds .env.psql.
+const { createRequire } = require('module');
+const path = require('path');
+const req = createRequire(path.join(process.cwd(), 'noop.js'));
+req('dotenv').config({ path: '.env.psql' });
+const pg = req('pg');
 
 (async () => {
   const c = new pg.Client({ connectionString: process.env.DATABASE_URL });
