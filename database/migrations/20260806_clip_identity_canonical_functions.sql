@@ -286,7 +286,8 @@ INSERT INTO language_canonical (raw, canonical) VALUES
   ('zh','zho'),
   ('zho','zho'),
   ('zu','zul'),
-  ('zul','zul')
+  ('zul','zul'),
+  ('zzz','zzz')
 ON CONFLICT (raw) DO UPDATE SET canonical = EXCLUDED.canonical;
 
 -- ── non-throwing variants, for audits and the back-fill ─────────────────────

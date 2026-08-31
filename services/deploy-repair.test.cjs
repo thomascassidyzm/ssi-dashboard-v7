@@ -25,6 +25,10 @@ beforeEach(() => {
 
   fs.mkdirSync(origin)
   git('init -q -b main', origin)
+  // These are disposable fixture repos under os.tmpdir(), never pushed anywhere —
+  // exempt them from the machine's global identity guard (core.hooksPath, see
+  // ~/.git-identity-hooks) so the fixture author 't@example.com' isn't rejected.
+  git('config core.hooksPath /dev/null', origin)
   git('config user.email t@example.com', origin)
   git('config user.name Test', origin)
   fs.writeFileSync(path.join(origin, 'app.js'), 'v1\n')
@@ -33,6 +37,7 @@ beforeEach(() => {
   git('commit -q -m one', origin)
 
   execSync(`git clone -q ${origin} ${work}`, { encoding: 'utf-8' })
+  git('config core.hooksPath /dev/null', work)
   git('config user.email t@example.com', work)
   git('config user.name Test', work)
 
