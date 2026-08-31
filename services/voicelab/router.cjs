@@ -128,6 +128,41 @@ function mount (app, deps) {
     return out
   }
 
+  /**
+   * The clips the estate already holds of ONE voice, longest first, one row per
+   * FILE. SPENDS NOTHING — one indexed SELECT, and the URLs point at the
+   * estate's own public bucket, so the browser plays the original.
+   *
+   * Deliberately not filtered to origin='human' the way speakers.listClips is:
+   * the question here is "what does this voice sound like", and an ElevenLabs
+   * guide voice that has been talking to learners for months answers it just as
+   * well as a recordist's take does.
+   */
+  async function ownClips (voiceId, limit = 24) {
+    const bucket = process.env.S3_BUCKET || 'ssi-audio-stage'
+    const region = process.env.AWS_REGION || 'eu-west-1'
+    const { data, error } = await supabase()
+      .from('course_audio')
+      .select('s3_key, duration_ms, text, role, course_code')
+      .in('voice_id', require('../shared/clip-identity-lookup.cjs').voiceSpellings(voiceId))
+      .not('s3_key', 'is', null)
+      .order('duration_ms', { ascending: false })
+      .limit(limit * 4)
+    if (error) return []
+    const byKey = new Map()
+    for (const r of data || []) {
+      if (!r.s3_key || r.s3_key.startsWith('pending/') || byKey.has(r.s3_key)) continue
+      byKey.set(r.s3_key, {
+        url: `https://${bucket}.s3.${region}.amazonaws.com/${r.s3_key}`,
+        durationMs: Number(r.duration_ms || 0),
+        text: r.text || '',
+        role: r.role || null,
+        course: r.course_code || null,
+      })
+    }
+    return [...byKey.values()].slice(0, limit)
+  }
+
   function fail (res, err, context) {
     const status = err && err.status ? err.status : 500
     if (status >= 500) logger.error?.(`[voicelab] ${context}:`, err)
@@ -1193,11 +1228,28 @@ function mount (app, deps) {
    * slot per line of the judging set, filled or empty, and an empty one is
    * tappable because the POST below renders exactly that one line.
    *
-   * A HUMAN VOICE IS AUDITIONED ON ITS OWN RECORDINGS. Nothing synthesises a
-   * person, so the honest audition of a recordist is the audio the estate
-   * already holds of them — which is also the only way somebody can hear the
-   * voice they are being asked to consent to. It costs nothing: the URLs point
-   * at the estate's own bucket and play the original file.
+   * A VOICE THIS BOX CANNOT SYNTHESISE IS AUDITIONED ON ITS OWN CLIPS.
+   *
+   * Tom, 2026-08-31, from the English row: some voices you are invited to CAST
+   * cannot be HEARD at all. Three different reasons hid behind one dash, and
+   * they are not the same problem:
+   *
+   *   a human recording   nothing synthesises a person, and faking a preview
+   *                       would be a lie about whose voice you are hearing.
+   *   ElevenLabs          the lab has no render path to it, and the estate's
+   *                       policy is explicit-cast-only because it is expensive.
+   *   a Cartesia voice    Cartesia's API needs a locale and the lab has no
+   *   in an unsteered     steer for that language, so there is no honest
+   *   language            request to send.
+   *
+   * All three are answered the same way, and it costs NOTHING: every one of
+   * these voices is a voice that already SPEAKS somewhere in the estate, so the
+   * audition is its own clips, played from the estate's own bucket. Ten of the
+   * twelve ElevenLabs candidates are guide voices talking to learners today;
+   * building an ElevenLabs render path to hear them would be paying a vendor
+   * for audio we already own. What remains genuinely unhearable is a voice that
+   * can neither be rendered nor is anywhere on record — and that says so in
+   * place rather than being drawn as a clip that never arrives.
    */
   app.get('/api/voicelab/languages/:language/voices/:voiceId/clips', async (req, res) => {
     if (!await requireDashboardUser(req, res)) return
@@ -1206,19 +1258,25 @@ function mount (app, deps) {
       const voiceId = String(req.params.voiceId || '').trim()
       if (!language || !voiceId) throw Object.assign(new Error('language and voiceId are required'), { status: 400 })
 
-      if (/^human[_-]/i.test(voiceId)) {
-        // Longest first is listClips' own order, and three long welcomes are
+      const plan = samplesModule.renderPlan(voiceId, language)
+      if (!plan.provider) {
+        // Longest first is what the query returns, and three long welcomes are
         // three of the same clip for judging purposes. So the set is SPREAD
-        // across what the estate holds of them — longest, middling, shortest —
-        // which is the same variety-of-length reasoning the synthetic judging
-        // set is built on (services/voicelab/samples.cjs chooseSet).
-        const { clips: held } = await speakers.listClips(supabase(), { voiceId, limit: 24 })
+        // across what the estate holds — longest, middling, shortest — the same
+        // variety-of-length reasoning the synthetic judging set is built on
+        // (services/voicelab/samples.cjs chooseSet).
+        const held = await ownClips(voiceId)
         const clips = spread(held, samplesModule.JUDGING_SET)
         return res.json({
           language,
           voiceId,
           own: true,
-          lines: clips.map((c) => ({ language, text: c.text, knownText: '', course: c.courses[0] || null, courseName: c.courses[0] || null, source: c.role || 'recording', kind: 'recording' })),
+          // The reason is carried even when there ARE clips, because "this is
+          // what it sounds like elsewhere" and "this is what it will sound like
+          // here" are different claims and the screen should not merge them.
+          why: clips.length ? null : `${plan.why} — and the estate holds no clip of it either`,
+          reason: plan.why,
+          lines: clips.map((c) => ({ language, text: c.text, knownText: '', course: c.course || null, courseName: c.course || null, source: c.role || 'recording', kind: 'recording' })),
           clips: clips.map((c, i) => ({ lineIndex: i, url: c.url, durationMs: c.durationMs, free: true })),
         })
       }
