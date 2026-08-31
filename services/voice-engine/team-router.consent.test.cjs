@@ -179,26 +179,54 @@ describe('assign-slot refuses to mint a voice for somebody nobody has asked', ()
   })
 })
 
+// FLIPPED DELIBERATELY, 2026-08-31. These two tests asserted that the
+// declaration at sign-up was the WHOLE of the consent and cast on its own.
+// Tom's refinement of the same day makes it the first of two — "automatic
+// consent is better and then a click to confirm or something, once voice clone
+// has been generated" — so the voice is now born `awaiting_authorisation`, the
+// standing block refuses it, and the assignment goes through only after the
+// person has heard their clone and confirmed it. The old assertions are kept in
+// substance, inverted, so the day anybody restores one-stamp consent this file
+// says so out loud.
 describe('the consent step mints the voice with the yes already on it', () => {
-  it('spoken line heard → one voices write, authorised, and the assignment then goes through', async () => {
+  it('spoken line heard → one voices write, declared but NOT castable until the clone is confirmed', async () => {
     heardIs(declaration.SPOKEN_PHRASE)
 
     const res = await postSpokenConsent('aran@ssi')
     expect(res.status).toBe(200)
     const body = await res.json()
     expect(body.voice_id).toBe('human_aran_cym_n')
-    expect(body.consent.status).toBe('authorised')
+    expect(body.consent.status).toBe('awaiting_authorisation')
     expect(body.consent.kind).toBe('spoken')
-    expect(body.consent.authorised_by).toBe('Aran')
+    expect(body.consent.declared_by).toBe('Aran')
+    // The screen is told what is still outstanding, and both answers exist.
+    expect(body.confirmation.stage).toBe('awaiting_hearing')
+    expect(body.confirmation.answers.map((a) => a.decision)).toEqual(['confirm', 'reject'])
 
     // ONE write for the voice, and the consent is IN it — never a follow-up.
     const voiceWrites = writes.filter((w) => w.table === 'voices')
     expect(voiceWrites).toHaveLength(1)
-    expect(voiceWrites[0].payload.consent_status).toBe('authorised')
+    expect(voiceWrites[0].payload.consent_status).toBe('awaiting_authorisation')
     expect(voiceWrites[0].payload.consent_declaration).toBe(declaration.SPOKEN_PHRASE)
+    expect(voiceWrites[0].payload.consent_authorised_at).toBeNull()
     expect(voiceWrites[0].payload.type).toBe('human')
     expect(voiceWrites[0].payload.human_email).toBe('aran@ssi')
 
+    // AND THE ASSIGNMENT IS REFUSED, by the ordinary block, with no new state
+    // for it to have learned: the refusal names the step that is left.
+    const refused = await post('/assign-slot', { email: 'aran@ssi', slot: 'target1' })
+    expect(refused.status).toBe(409)
+    const refusedBody = await refused.json()
+    expect(refusedBody.needsCloneConfirmation).toBe(true)
+    expect(refusedBody.needsOnboardingConsent).toBe(false)
+    expect(refusedBody.error).toMatch(/has not heard this clone yet/i)
+    expect(COURSES[0].voice_config.voices.target1.voiceId).toBe('azure_x')
+
+    // …and goes through the moment the confirmation is on the row.
+    VOICES[0].consent_status = 'authorised'
+    VOICES[0].consent_authorised_by = 'Aran'
+    VOICES[0].consent_authorised_how = 'heard their own clone and confirmed it'
+    VOICES[0].consent_authorised_at = new Date().toISOString()
     const assign = await post('/assign-slot', { email: 'aran@ssi', slot: 'target1' })
     expect(assign.status).toBe(200)
     expect((await assign.json()).voice_id).toBe('human_aran_cym_n')
@@ -210,9 +238,10 @@ describe('the consent step mints the voice with the yes already on it', () => {
     expect(res.status).toBe(200)
     const body = await res.json()
     expect(body.consent.kind).toBe('attested')
-    expect(body.consent.authorised_by).toBe('Catrin Lliar')
+    expect(body.consent.declared_by).toBe('Catrin Lliar')
     expect(body.consent.heard).toBeNull()
-    expect(VOICES[0].consent_status).toBe('authorised')
+    expect(VOICES[0].consent_status).toBe('awaiting_authorisation')
+    expect(VOICES[0].consent_declaration_kind).toBe('attested')
   })
 
   it('a line that was not read is refused, and quotes what was heard instead', async () => {

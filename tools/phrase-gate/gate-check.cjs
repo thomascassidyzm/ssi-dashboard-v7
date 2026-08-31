@@ -45,6 +45,7 @@ const {
   checkKnownSide, isKnownVocabBreach, loadPairContract, compileKnownContract,
   stemKnownGloss, tokenizeKnown,
 } = require('../../services/course-builder/lib/validation.cjs');
+const { courseFamily } = require('../../services/course-builder/lib/course-family.cjs');
 
 /** Tom's BUILD count, 2026-08-28. Four is the target; three is accepted. */
 const BUILD_MIN = 3;
@@ -244,7 +245,12 @@ async function checkPhraseSet(entry, ctx) {
   // ── phrase-level ZUT against prior seeds ──
   {
     const allPhrases = [...build, ...use].filter(p => p.known && p.target);
-    const collisions = allPhrases.length ? await checkPhraseZUT(supabase, courseCode, allPhrases, seedNumber) : [];
+    // sector-helix §5b: a segment is its own course code but one course to the
+    // learner, so the gate sees the whole family. Null for every course today.
+    const collisions = allPhrases.length
+      ? await checkPhraseZUT(supabase, courseCode, allPhrases, seedNumber,
+                             { family: await courseFamily(supabase, courseCode) })
+      : [];
     if (collisions.length > 0) fail('zut', { collisions: collisions.slice(0, 5), total: collisions.length });
     else pass('zut');
   }

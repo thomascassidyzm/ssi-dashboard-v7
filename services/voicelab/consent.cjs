@@ -72,6 +72,14 @@ function summarise (voice) {
     case 'authorised':
       return `${person || by || 'They'} authorised this voice${by && by !== person ? ` — via ${by}` : ''}${how ? `, ${how}` : ''}${at ? `, ${at}` : ''}.`
     case 'awaiting_authorisation':
+      // TWO WAYS TO BE HERE since 2026-08-31. A person who read the line aloud
+      // at sign-up HAS been asked; what is outstanding is that they have not
+      // heard the clone yet and confirmed it (clone-confirmation.cjs — checked
+      // inline rather than imported, so the one module every gate depends on
+      // keeps depending on nothing).
+      if (declarationOf(voice)) {
+        return `${person || 'This person'} agreed at sign-up and has not heard this clone yet — waiting for them to confirm it.`
+      }
       return `${person || 'This person'} has not been asked yet — awaiting authorisation.`
     case 'refused':
       return `${person || 'This person'} said no. Do not use this voice.`
@@ -148,7 +156,7 @@ function describe (voice) {
      * chokepoints in services/shared/voice-consent-gate.cjs rather than here —
      * this module still only describes.
      */
-    castWarning: castWarning(status, trim(voice && voice.consent_person)),
+    castWarning: castWarning(status, trim(voice && voice.consent_person), Boolean(declarationOf(voice))),
   }
 }
 
@@ -173,12 +181,15 @@ const LABELS = Object.freeze({
   withdrawn: 'withdrawn',
 })
 
-function castWarning (status, person) {
+function castWarning (status, person, declared = false) {
   if (status === 'authorised') return null
   const who = person || 'the person this voice was cloned from'
   if (status === 'refused') return `${who} said NO to this voice being used. Casting it would go against a recorded refusal.`
   if (status === 'withdrawn') return `${who} has withdrawn permission for this voice. Casting it would go against a recorded withdrawal.`
-  if (status === 'awaiting_authorisation') return `${who} has not authorised this voice yet. Casting it puts it in front of learners before anyone has asked.`
+  if (status === 'awaiting_authorisation') {
+    if (declared) return `${who} agreed at sign-up but has not heard this clone yet. Play it to them: casting it now puts a voice in front of learners that nobody has actually listened to and approved.`
+    return `${who} has not authorised this voice yet. Casting it puts it in front of learners before anyone has asked.`
+  }
   return 'Nobody has recorded who this voice belongs to or who authorised it. Casting it puts an unattributed voice in front of learners.'
 }
 

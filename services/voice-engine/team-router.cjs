@@ -35,6 +35,8 @@ const crypto = require('crypto')
 const Busboy = require('busboy')
 const declaration = require('../voicelab/declaration.cjs')
 const consentGate = require('../shared/voice-consent-gate.cjs')
+const consent = require('../voicelab/consent.cjs')
+const cloneConfirmation = require('../voicelab/clone-confirmation.cjs')
 const { onboardConsentedVoice } = require('./recordist-consent.cjs')
 const {
   ASSIGNABLE_SLOTS,
@@ -213,6 +215,18 @@ module.exports = function createTeamRouter({
   })
 
 
+  /**
+   * Which of the two consent stamps this voice is waiting on, if any.
+   * Read straight from the row so the answer is the same one the block used.
+   */
+  async function confirmationStage (db, voiceId) {
+    try {
+      const { data } = await db.from('voices').select(consent.COLUMNS).eq('voice_id', voiceId).limit(1)
+      const row = Array.isArray(data) ? (data[0] || null) : (data || null)
+      return cloneConfirmation.stageOf(row)
+    } catch { return 'unasked' }
+  }
+
   // ── POST /consent — THE CONSENT STEP OF ONBOARDING ────────────────────────
   //
   // Tom, 2026-08-31: "onboarding must CAPTURE consent as a step of the process,
@@ -330,14 +344,22 @@ module.exports = function createTeamRouter({
         voice_id: voiceId,
         minted,
         consent: {
+          // The ROW's status, which since 2026-08-31 is the first of two
+          // stamps: they have said yes, and the voice is not castable until
+          // they have heard their clone and confirmed it. Reporting the
+          // declaration's own `authorised` here would tell the screen a thing
+          // the block does not agree with.
           status: voice.consent_status,
           kind: declarationRecord.consent_declaration_kind,
           person,
-          authorised_by: declarationRecord.consent_authorised_by,
-          authorised_at: declarationRecord.consent_authorised_at,
+          declared_by: declarationRecord.consent_authorised_by,
+          declared_at: declarationRecord.consent_authorised_at,
           words: declarationRecord.consent_declaration,
           heard: declarationRecord.consent_declaration_heard,
         },
+        // WHAT IS STILL OUTSTANDING, so the screen says it rather than showing
+        // a green tick over a voice that cannot be cast.
+        confirmation: cloneConfirmation.describe(voice),
       })
     } catch (err) {
       const status = err && err.status ? err.status : 500
@@ -441,10 +463,18 @@ module.exports = function createTeamRouter({
       try {
         await consentGate.assertConsented(voiceId, { db, context: `${courseCode} ${slot} assignment` })
       } catch (err) {
+        // WHICH STEP IS MISSING, not just "no consent" (Tom, 2026-08-31).
+        // Sign-up consent is now the first of two: the person also hears their
+        // clone and confirms it, and that second stamp is what casts. So the
+        // screen is told which of the two to open, and somebody who has already
+        // read the line aloud is never asked to read it again.
+        const stage = await confirmationStage(db, voiceId)
+        const needsConfirmation = stage === 'awaiting_hearing'
         return res.status(err.status || 409).json({
           error: err.message,
           code: err.code || 'NO_RECORDED_CONSENT',
-          needsOnboardingConsent: true,
+          needsCloneConfirmation: needsConfirmation,
+          needsOnboardingConsent: !needsConfirmation,
           email,
           slot,
           voice_id: voiceId,

@@ -29,6 +29,7 @@
 
 const policy = require('../shared/tts-provider-policy.cjs')
 const consent = require('./consent.cjs')
+const cloneConfirmation = require('./clone-confirmation.cjs')
 
 /** Cartesia pins its API to a date. REQUIRED — verified against a live 400. */
 const CARTESIA_API_VERSION = '2026-08-14'
@@ -166,7 +167,16 @@ async function createClone (db, { clip, filename = 'sample.wav', name, language,
   // record added in a follow-up update is a record that can fail to be added,
   // and the window between the two writes is a real person's voice sitting in
   // the database with no permission attached to it.
-  const consentRecord = declaration ? { ...birth, ...declaration } : birth
+  //
+  // AND HELD ONE STAMP SHORT OF CASTABLE (Tom, 2026-08-31): "automatic consent
+  // is better and then a click to confirm or something, once voice clone has
+  // been generated." Nobody — not the person, not the operator, not Cartesia —
+  // knows what a clone will sound like at the moment it is agreed to, so the
+  // declaration is the first of two stamps and this voice is born in the same
+  // `awaiting_authorisation` state every other unconsented voice sits in. The
+  // person hears it, and their yes is what makes it castable:
+  // services/voicelab/clone-confirmation.cjs.
+  const consentRecord = declaration ? { ...birth, ...cloneConfirmation.awaitingHearing(declaration) } : birth
 
   const code = policy.toCartesiaLangCode(language)
   if (!code) throw Object.assign(new Error(`"${language}" is not a language code Cartesia accepts.`), { status: 400 })
@@ -211,7 +221,14 @@ async function createClone (db, { clip, filename = 'sample.wav', name, language,
     registeredBy,
     consentRecord,
   })
-  return { cartesia: meta, voice, consent: consent.describe(voice) }
+  return {
+    cartesia: meta,
+    voice,
+    consent: consent.describe(voice),
+    // What the screen needs in order to ask the second question: the person,
+    // the words they already agreed to, and the two answers.
+    confirmation: cloneConfirmation.describe(voice),
+  }
 }
 
 /**

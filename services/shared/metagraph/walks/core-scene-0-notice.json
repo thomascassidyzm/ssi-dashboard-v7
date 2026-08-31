@@ -1,0 +1,135 @@
+{
+  "$schema": "../../../../schemas/metagraph-v1-schema.json",
+  "concept": "walk-set",
+  "version": 1,
+  "walk_set": "core-scene-0-notice",
+  "authored": true,
+  "source": {
+    "kind": "authored",
+    "job": "Author the NOTICE realisation of CORE scene 0 (2026-08-31) — the walk both prior authorings of scene 0 declared as a gap",
+    "shape": "N1201 Medium contract, notice realisation, as ratified at cd9d93e2f. The notice is the PRIMITIVE (Tom's ruling of 2026-08-31): it declares the asymmetry and nothing else — no request, no grant, and no branch. The survivability branch belongs to the REQUEST, which is why the offer has a decline family and the notice cannot: with no shared fallback there is nothing to decline into.",
+    "closes": "The declared gap in walks/core-scene-0.json (branch feat/core-scene-0-v2-2026-08-31, commits 76f67aa84 and e302afd0f, /d/095af584 and /d/89aab612): 'The notice realisation of position 1 has no walk here.' The two files are siblings — both authored, neither transcribed — and this one adds no branch walks because the shape it realises has none.",
+    "host": "Sited inside an existing pod-0 functional scenario, cast inherited and nobody invented: directions in the street (pod-0 W13, scene 13 — Tourist, Local).",
+    "statement": "AUTHORED, NOT TRANSCRIBED. Every surface line was written for this scene against the ratified shape. There is no corpus behind it: no `row` appears anywhere, no g-number is cited, and no line here is attested speech. Do not merge these counts into a corpus accounting."
+  },
+  "format": "A walk is a sequence of NODE REFERENCES. Each step names a node and a position; the surface sentence is a property of the step, never the step itself. Copied from walks/pod-0.json so coverage stays computable without parsing prose.",
+  "walk_kind": "listening",
+  "register": {
+    "sector_free": true,
+    "culture_free": true,
+    "note": "A street, a railway station, traffic lights, a square — every culture a course ships to has all four. Nothing here is Wales, nothing is health, and no language is named anywhere.",
+    "known_text": "English is the canonical pod known text and is pair-invariant. The languages are named deictically per scene 0's convention — the learner says 'your language', the native says 'mine' — so the scene instantiates in any pair with no template slot.",
+    "role": "Role-neutral as ratified: here the learner-declarer is the tourist, because that is who the host scenario casts as the one who needs the exchange to work."
+  },
+  "staging": {
+    "why_this_world": "The notice is what a speaker gives when there is NO shared fallback to offer, so the world had to be one where switching is not on the table and the exchange has to proceed anyway. A stranger stopped in their own street is that world: the tourist did not choose their interlocutor, the local owes the encounter nothing but kindness, and the directions have to come across regardless — the tourist is lost either way. The offer is unmintable here not by assertion but by fact: the local has one language, and says so.",
+    "visible_not_asserted": "The absence of a fallback is spoken inside the scene, from both sides. The tourist's turn 1 carries no ask — there is nothing whose permission could be sought. The local's turn 2 states the other half of the asymmetry in deictic terms — 'mine's the only one I've got' — which is a fact about the world, not a proposal, because there is nothing to propose. No turn anywhere in the walk could offer, grant, decline, or retreat: the deixis error that sank scene 0 v1 is structurally impossible here, and that impossibility is the thing the scene teaches.",
+    "what_the_notice_buys": "The fused repair licence gets USED, both ways, inside the same encounter: the tourist stumbles on a word and is corrected openly at zero social cost (where the corpus's own W13 correction, g123, had to stay silent — S5), and the tourist checks back freely without apologising for it. The walk ends with the licence's receipt: the whole route read back and the medium reported to have held."
+  },
+  "accounting": {
+    "authored_walks": 1,
+    "turns_per_walk": 8,
+    "turns_total": 8,
+    "corpus_rows": 0,
+    "corpus_rows_note": "Zero, and that is the point: nothing here is a transcription.",
+    "trunk_walk": "W1401 — the notice given in the street, the licence accepted and then drawn on, the business run to completion in the only medium there is",
+    "branch_walks": "None, and none are missing: the notice has no branch (Tom's ruling of 2026-08-31 — the survivability branch belongs to the request, and there is no request). An empty branch inventory here is the shape rendered faithfully, not a gap.",
+    "positions_covered": [1, 3, 4],
+    "positions_note": "Position 3 fuses into position 1, as the ratified node says the notice does — the declaration and the standing repair licence are one turn. Position 2 has no work: no ask arrived, so there is nothing to grant; its reassure half ('between us we'll manage') rides the position-4 turn. Position 5 has no work either: the offer suspends business until the grant and so needs a pivot back to it, but the notice suspends nothing — the business request rides turn 1 and the pivot never becomes due. Both absences are consequences of the realisation, not omissions.",
+    "gap": "None declared. This file exists to close one."
+  },
+  "coverage_of_the_graph": {
+    "nodes": ["N1201", "N4"],
+    "composition_edges_used": [],
+    "survivability_edges_touched": [],
+    "note": "No survivability edge is touched because none exists to touch — S1201 and S1202 hang off the offer's ask, and this walk contains no ask."
+  },
+  "walks": [
+    {
+      "id": "W1401",
+      "name": "Scene 0 — the notice in the street, and the licence spent the same minute",
+      "scene": 0,
+      "nodes_traversed": ["N1201", "N4"],
+      "composition_edges_used": [],
+      "survivability_edges_touched": [],
+      "note": "Pod-0 W13's world: a tourist stops a local to ask the way. The notice realisation of N1201 — no shared fallback, so declaration and repair licence fuse into one turn, nothing can be granted or declined, and the business rides the same breath. The walk then makes the licence earn its keep: one stumble corrected openly, one check-back taken freely, and the route read back whole at the end. Eight turns, one medium, first word to last.",
+      "steps": [
+        {
+          "step": 1,
+          "node": "N1201",
+          "position": 1,
+          "speaker": "Tourist",
+          "surface": "Excuse me — could you tell me the way to the railway station? Your language isn't my first, so go slowly with me — if I get a word wrong, just tell me, and I'll ask if I lose you.",
+          "move": null,
+          "realisation": "notice",
+          "composed_in": { "node": "N4", "position": 1 },
+          "note": "The primitive, whole: declaration of the asymmetry plus the standing repair licence, fused into one turn exactly as the ratified node says the notice fuses positions 1 and 3 — mutual ('I'll ask if I lose you') and pre-disarmed ('just tell me'). No ask anywhere in it: there is no fallback whose use could be requested, so there is nothing a grant could attach to. And because nothing is pending an answer, the business request rides the same turn — a street stop leads with its errand, since the stranger's attention is borrowed, not owned."
+        },
+        {
+          "step": 2,
+          "node": "N1201",
+          "position": 4,
+          "speaker": "Local",
+          "surface": "Of course. Mine's the only one I've got, so between us we'll manage. Right — straight down this road, all the way to the lights.",
+          "move": "F1",
+          "also": "N4.2 instruct — the business starts in the same breath; with nothing to negotiate, there is nothing to wait for",
+          "note": "The licence accepted — that is all position 4 asks — and the world's other half spoken: 'mine's the only one I've got' is the no-fallback fact stated deictically, a description and not a proposal, because there is nothing to propose. Position 2's grant half has no work here (no ask arrived); its reassure half — 'between us we'll manage' — rides this turn instead. Then the instructions simply begin."
+        },
+        {
+          "step": 3,
+          "node": "N4",
+          "position": 3,
+          "speaker": "Tourist",
+          "surface": "Straight on, down to the… the lamps?",
+          "move": "F9",
+          "note": "The read-back, with the licensed stumble in it — a wrong word offered without apology, because turn 1 already paid for it. This is the notice doing its work: the error arrives as ordinary traffic, not as an incident."
+        },
+        {
+          "step": 4,
+          "node": "N4",
+          "position": 4,
+          "speaker": "Local",
+          "surface": "The lights — that's it. Straight to the lights, then left.",
+          "move": "F9",
+          "note": "The correction, overt and warm, at zero social cost. The corpus's own directions walk had to leave its correction silent (W13 g123, S5 — 'the learner is never shown noticing it'); here it is open BECAUSE the licence was issued two turns ago. That contrast is what the notice buys, shown rather than asserted."
+        },
+        {
+          "step": 5,
+          "node": "N4",
+          "position": 5,
+          "speaker": "Tourist",
+          "surface": "Left at the lights — and then?",
+          "move": "F10",
+          "note": "The continuer, taken freely — checking and pressing on are both covered by the standing licence, so the tourist drives the chain rather than enduring it."
+        },
+        {
+          "step": 6,
+          "node": "N4",
+          "position": 6,
+          "speaker": "Local",
+          "surface": "Then you're nearly there — it's just across the square. You'll hear the trains before you see them.",
+          "move": "F2",
+          "note": "The last instruction, with something thrown in — F2's signature. The local is still going slowly, still in the only medium there is, and the encounter has never once needed anything else."
+        },
+        {
+          "step": 7,
+          "node": "N4",
+          "position": 3,
+          "speaker": "Tourist",
+          "surface": "Straight to the lights, left, and across the square. Thank you — I understood every word.",
+          "move": "F9",
+          "note": "The whole route read back — the licence's receipt — and the medium reported to have held, in the tourist's own words. The asymmetry declared in turn 1 is discharged here: the exchange had exactly one medium available from first word to last, and it was enough."
+        },
+        {
+          "step": 8,
+          "node": "N4",
+          "position": 4,
+          "speaker": "Local",
+          "surface": "Every word right. You'll be fine.",
+          "move": "F9",
+          "note": "Confirmed, and closed. Nobody granted anything, nobody declined anything, nobody retreated anywhere — there was nowhere to retreat to, and both of them knew it from turn 1. That is the notice."
+        }
+      ]
+    }
+  ]
+}

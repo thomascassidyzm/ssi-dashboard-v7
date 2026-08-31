@@ -12,6 +12,7 @@ const { getTargetLang, isChinese, checkLegoSyllables } = require('../lib/languag
 const { normalizeForContainment, stripBookendPunctuation } = require('../lib/text-normalization.cjs');
 const { makePhraseId, computeLegoPosition } = require('../lib/phrase-structure.cjs');
 const { checkLegoConflict } = require('../lib/validation.cjs');
+const { courseFamily } = require('../lib/course-family.cjs');   // sector-helix §5b: ZUT is family-wide
 const { recordActivity } = require('../lib/activity-tracker.cjs');
 const { bumpCourseVersion } = require('../../shared/course-version.cjs');
 
@@ -106,7 +107,8 @@ module.exports = function createSeedTranslateRoutes(ctx) {
         if (!targetLego) continue;
 
         const conflictResult = await checkLegoConflict(
-          ctx.supabase, course_code, lt.known_text, targetLego.target_text, seed_number
+          ctx.supabase, course_code, lt.known_text, targetLego.target_text, seed_number,
+          { family: await courseFamily(ctx.supabase, course_code) }
         );
 
         if (conflictResult.conflict === 'zut') {
@@ -173,7 +175,8 @@ module.exports = function createSeedTranslateRoutes(ctx) {
 
         // Check for duplicates
         const conflictResult = await checkLegoConflict(
-          ctx.supabase, course_code, knownText, targetLego.target_text, seed_number
+          ctx.supabase, course_code, knownText, targetLego.target_text, seed_number,
+          { family: await courseFamily(ctx.supabase, course_code) }
         );
         const isDuplicate = conflictResult.conflict === 'duplicate';
         if (isDuplicate) {

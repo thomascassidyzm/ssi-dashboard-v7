@@ -69,6 +69,7 @@ import { ref, computed, onMounted } from 'vue'
 import { api, clipUrl } from './labApi'
 import CandidateVoices from './CandidateVoices.vue'
 import ConsentBadge from './ConsentBadge.vue'
+import CloneConfirm from './CloneConfirm.vue'
 // The estate's ONE place that turns a code into words. Importing it also kicks
 // off the CSV name fetch, so nothing else here has to.
 import { languageName } from '@/utils/languageNames'
@@ -717,6 +718,7 @@ async function cloneOne (clip) {
     seconds: 0,
     voice: null,
     consent: null,
+    confirmation: null,
     source: null,
     audio: null,
     line: demoLine.value,
@@ -756,6 +758,7 @@ async function cloneOne (clip) {
     })
     entry.voice = made.voice
     entry.consent = made.consent
+    entry.confirmation = made.confirmation
     entry.source = made.source
     // THE CLONE AND THE HEARING FAIL SEPARATELY, and that is not tidiness.
     // The clone is free; the audition is the one call that spends, so it is
@@ -874,7 +877,7 @@ async function submitClone () {
     speaker: chosenSpeaker.value ? chosenSpeaker.value.voiceId : null,
     stage: 'cloning',
     seconds: 0,
-    voice: null, consent: null, source: null, audio: null,
+    voice: null, consent: null, confirmation: null, source: null, audio: null,
     line: demoLine.value,
     error: '',
   }
@@ -943,6 +946,7 @@ async function submitClone () {
     }
     entry.voice = out.voice
     entry.consent = out.consent
+    entry.confirmation = out.confirmation
     entry.source = out.source || null
     entry.stage = 'hearing'
     // Same split as cloneOne: a refused audition must not lose a made clone.
@@ -1546,6 +1550,14 @@ function candidatesFor (lang, slot) {
                     <button class="ui-sort-btn" :disabled="k.stage === 'removing'" @click="discard(k)">
                       {{ k.stage === 'removing' ? 'removing…' : 'discard' }}
                     </button>
+                    <!-- THE SECOND STAMP, under the audio it is about. -->
+                    <CloneConfirm
+                      v-if="k.voice"
+                      :voice-id="k.voice.voice_id"
+                      :confirmation="k.confirmation"
+                      :heard="Boolean(k.audio)"
+                      @decided="(d) => { k.confirmation = d; k.consent = d.consent }"
+                    />
                   </template>
                 </div>
               </div>
@@ -1651,6 +1663,13 @@ function candidatesFor (lang, slot) {
             <ConsentBadge :consent="k.consent" mode="full" />
             <button v-if="k.voice" class="ui-sort-btn" @click="openConsent(k.voice.voice_id, k.consent)">consent…</button>
             <button v-if="k.voice" class="ui-sort-btn" @click="discard(k)">discard</button>
+            <CloneConfirm
+              v-if="k.voice"
+              :voice-id="k.voice.voice_id"
+              :confirmation="k.confirmation"
+              :heard="Boolean(k.audio)"
+              @decided="(d) => { k.confirmation = d; k.consent = d.consent }"
+            />
           </div>
 
         </div>

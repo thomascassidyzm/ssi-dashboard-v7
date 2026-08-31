@@ -45,6 +45,7 @@ const consent = require('./consent.cjs')
 const consentGate = require('../shared/voice-consent-gate.cjs')
 const declaration = require('./declaration.cjs')
 const consentCapture = require('./consent-capture.cjs')
+const cloneConfirmation = require('./clone-confirmation.cjs')
 const { isHumanVoiceLang } = require('../shared/human-voice-courses.cjs')
 
 /**
@@ -639,6 +640,13 @@ function mount (app, deps) {
       const cfg = {
         ...lab.normaliseConfig({ provider: 'cartesia', voiceId: String(voiceId).replace(/^cartesia_/, ''), language: lang.code }),
         key: 'A',
+        // HEARING IT IS HOW IT GETS CONSENTED (Tom, 2026-08-31). A clone is born
+        // one stamp short of castable and the block refuses to render it, which
+        // would leave the person unable to hear the very thing they are being
+        // asked to confirm. This flag opens exactly that door and no other: the
+        // gate still refuses a refused, a withdrawn and a never-declared voice,
+        // and an already-confirmed one comes through the ordinary way.
+        consentAudition: true,
       }
       const refusal = lab.refuse({ kind: 'batch', sentences, configs: [cfg], charsSpentToday: store.charsSpentToday() })
       if (refusal) return res.status(refusal.status).json({ error: refusal.error, code: refusal.status === 429 ? 'ceiling_reached' : 'refused' })
@@ -660,6 +668,100 @@ function mount (app, deps) {
       res.json({ ok: true, clips, line, maxClips: cartesia.CLONE_AUDITION_MAX_CLIPS })
     } catch (err) { fail(res, err, 'audition-cartesia-voice') }
   })
+
+  // ── HEARD IT, AND SAID SO ─────────────────────────────────────────────────
+  //
+  // Tom, 2026-08-31: "automatic consent is better and then a click to confirm
+  // or something, once voice clone has been generated."
+  //
+  // The second of the two stamps. Sign-up captures the yes in the abstract;
+  // this is the yes to the actual object, made after the person has heard it.
+  // Until it exists the voice is `awaiting_authorisation` and the standing
+  // block refuses it everywhere — there is no half-consented state and nothing
+  // new for any other gate to learn. The rules are
+  // services/voicelab/clone-confirmation.cjs; these two routes only read and
+  // write them.
+  //
+  // BOTH ANSWERS ARE ONE TAP. `reject` is not a cancel and not a "not yet": it
+  // writes `refused`, which the block treats as final, because "that doesn't
+  // sound like me" is a real answer and the only moment it can be given before
+  // a learner hears the voice.
+
+  /** What to show the person, and whether they can decide right now. */
+  app.get('/api/voicelab/voices/:voiceId/confirmation', async (req, res) => {
+    const user = await requireAdmin(req, res)
+    if (!user) return
+    try {
+      const { voice, voiceId } = await readVoiceRow(req.params.voiceId)
+      res.json({ ok: true, voiceId, ...cloneConfirmation.describe(voice), consent: consent.describe(voice || {}) })
+    } catch (err) { fail(res, err, 'clone-confirmation-read') }
+  })
+
+  /** The click. `confirm` casts nothing but makes casting possible; `reject` closes it. */
+  app.post('/api/voicelab/voices/:voiceId/confirmation', async (req, res) => {
+    const user = await requireAdmin(req, res)
+    if (!user) return
+    try {
+      const decision = String(req.body?.decision || '').trim().toLowerCase()
+      if (decision !== 'confirm' && decision !== 'reject') {
+        throw Object.assign(new Error('Say which answer this is: confirm or reject.'), { status: 400 })
+      }
+      const { voice, voiceId } = await readVoiceRow(req.params.voiceId)
+      if (!voice) throw Object.assign(new Error(`There is no voice recorded as ${voiceId}, so there is nothing to confirm.`), { status: 404 })
+
+      const stage = cloneConfirmation.stageOf(voice)
+      if (stage !== 'awaiting_hearing') {
+        // Not an error to re-ask an already-decided voice, but it must not
+        // overwrite an answer: a second confirm on a refused voice is exactly
+        // how a no gets turned into a yes by somebody who was not there.
+        throw Object.assign(
+          new Error(cloneConfirmation.describe(voice).heading),
+          { status: 409, code: 'ALREADY_DECIDED', detail: { stage } },
+        )
+      }
+
+      const patch = decision === 'confirm'
+        ? cloneConfirmation.confirmedRecord({ voice, note: req.body?.note, recordedBy: who(user) })
+        : cloneConfirmation.rejectedRecord({ voice, note: req.body?.note, recordedBy: who(user) })
+
+      const { data, error } = await supabase()
+        .from('voices')
+        .update({ ...patch, updated_at: new Date().toISOString() })
+        .eq('voice_id', voiceId)
+        .select()
+        .single()
+      if (error) throw Object.assign(new Error(`voices update failed: ${error.message}`), { status: 502 })
+
+      // The block caches verdicts for 30 seconds, and the whole point of a
+      // confirm is that the next thing the operator does is cast.
+      consentGate.clearCache()
+      logger.log?.(`[voicelab] ${who(user)} recorded ${data.consent_person}'s ${decision} after hearing ${voiceId}`)
+      res.json({
+        ok: true,
+        voiceId,
+        decision,
+        ...cloneConfirmation.describe(data),
+        consent: consent.describe(data),
+      })
+    } catch (err) { fail(res, err, 'clone-confirmation-write') }
+  })
+
+  /**
+   * The `voices` row behind an id, under EVERY spelling it may be stored as.
+   * The same lookup the block uses, so the confirm screen and the refusal can
+   * never be talking about different rows — the registry stores a Cartesia
+   * clone as `cartesia_<uuid>` while the clone route hands back the bare uuid.
+   */
+  async function readVoiceRow (raw) {
+    const asked = String(raw || '').trim()
+    if (!asked) throw Object.assign(new Error('Which voice?'), { status: 400 })
+    // A FRESH READ, never the block's 30-second cache: a confirm decides
+    // whether a real person's voice may be used, and deciding it against a row
+    // that was true half a minute ago is how a refusal gets overwritten.
+    const read = await consentGate.readVoice(asked, { db: supabase(), cache: new Map() })
+    if (read.unreadable) throw Object.assign(new Error(read.unreadable.message), { status: 502 })
+    return { voice: read.voice, voiceId: (read.voice && read.voice.voice_id) || asked }
+  }
 
   // ── CLONING FROM RECORDINGS THE ESTATE ALREADY HOLDS ──────────────────────
   //
