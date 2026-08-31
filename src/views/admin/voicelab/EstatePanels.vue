@@ -108,6 +108,16 @@
         <button class="btn-primary" :disabled="busy" @click="declare">Declare {{ course }}/{{ role }}</button>
         <p v-if="declareResult" class="ok">{{ declareResult }}</p>
         <p v-if="declareError" class="err">{{ declareError }}</p>
+        <!-- The key, where the refusal happened. Recording the consent re-runs
+             the declaration it blocked. -->
+        <ConsentStep
+          v-if="consentNeeded"
+          :voice-id="consentNeeded.voiceId"
+          :reason="consentNeeded.reason"
+          :language="declareLanguage"
+          @recorded="onConsentRecorded"
+          @cancel="consentNeeded = null"
+        />
       </div>
     </section>
 
@@ -223,6 +233,7 @@
 import { ref, computed } from 'vue'
 import { useAuth } from '../../../composables/useAuth'
 import { dirFor } from '@/utils/textDirection.js'
+import ConsentStep from './ConsentStep.vue'
 import { decodeTo16kMono, extractFeatures, activeSpeechDb } from '../vadProsody'
 
 const { getAccessToken } = useAuth()
@@ -399,14 +410,49 @@ async function declare () {
       }),
     })
     const data = await res.json()
-    if (!res.ok) throw new Error(data.error || `${res.status}`)
+    // The body travels with the error: a declaration LOCKS a course side to a
+    // voice, so it takes the standing consent block, and this screen has to
+    // BRANCH on that refusal rather than print it and stop.
+    if (!res.ok) throw Object.assign(new Error(data.error || `${res.status}`), { data })
     declarations.value = data.declarations
     declareResult.value = `${course.value}/${role.value} declared ${data.declared.voiceId} — config ${data.configHash.slice(0, 12)}`
   } catch (e) {
-    declareError.value = e.message || String(e)
+    const refusal = consentRefusal(e)
+    if (refusal) {
+      consentNeeded.value = { ...refusal, retry: declare }
+      declareError.value = ''
+    } else {
+      declareError.value = e.message || String(e)
+    }
   } finally {
     busy.value = false
   }
+}
+
+// ── THE CONSENT STEP — the key, on the screen that declares a course side ────
+//
+// Tom, 2026-08-31: "we are never going to use a voice without consent."
+// api/voices/declare.js says it plainly: a declaration is a cast under another
+// name, so it takes the standing block. This panel showed the refusal honestly
+// and then had nothing to offer — the same lock-with-no-key the cast screens
+// had. Same key, and it is one component: ConsentStep is the Voice Lab's own
+// declaration flow, sitting inside the Voice Lab.
+//
+// It reuses the language already typed into the form for the case where the
+// voice has no `voices` row and recording consent has to create one.
+const consentNeeded = ref(null)
+
+/** A refusal this panel can do something about, or null. */
+function consentRefusal (err) {
+  const d = (err && err.data) || {}
+  if (d.code !== 'NO_RECORDED_CONSENT' && d.code !== 'CONSENT_UNREADABLE') return null
+  return { voiceId: d.voiceId || declareVoice.value, reason: err.message }
+}
+
+async function onConsentRecorded () {
+  const retry = consentNeeded.value?.retry
+  consentNeeded.value = null
+  if (retry) await retry()
 }
 </script>
 
