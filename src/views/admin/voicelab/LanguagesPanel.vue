@@ -378,6 +378,106 @@ const pickHint = computed(() => {
   return `${sec}s across ${n} clips — they will be joined into one file. One long clip clones better: joins carry changes in tone and room sound that the clone can learn.`
 })
 
+function pickFile (e) {
+  cloneFile.value = e.target.files?.[0] || null
+  clearRecording()
+}
+
+// ── Recording on the page ──────────────────────────────────────────────────
+// MediaRecorder, and nothing else: no library, no upload until the operator has
+// heard the take. If the browser or the deployment refuses the microphone we
+// say so in one line and the upload path is untouched — a half-alive recorder
+// that silently captures nothing is worse than no recorder.
+//
+// RESTORED 2026-08-31 after the clone-demo rewrite (67794654b) dropped this
+// whole block from the script while leaving its buttons in the template. The
+// failure was silent and looked like the browser's fault: `canRecord` resolved
+// to undefined, so "Record it here" rendered permanently disabled saying "This
+// browser will not give the page a microphone", and the file input's @change
+// pointed at a `pickFile` that no longer existed, so picking a file set nothing
+// and "Create the clone" never armed. Both non-estate clone routes were dead on
+// production. Anything the template names must exist in the script — Vue will
+// not tell you it doesn't.
+const recorder = ref(null)
+const recording = ref(false)
+const recordedUrl = ref('')
+const recordSeconds = ref(0)
+const recordError = ref('')
+let recordTimer = null
+let recordedChunks = []
+
+const canRecord = typeof window !== 'undefined'
+  && typeof window.MediaRecorder !== 'undefined'
+  && Boolean(navigator?.mediaDevices?.getUserMedia)
+
+/**
+ * Cartesia's own guidance, RE-VERIFIED against their live documentation on
+ * 2026-08-31: "You can create an instant voice clone with as little as 10
+ * seconds of audio", and up to sixty is recommended, more so for a less common
+ * accent. Ten is the FLOOR. An older note in this estate
+ * (docs/tts-bakeoff/phase2-clone-source-from-clone-2026-08-27.md) quotes it as
+ * a ten-second CAP; that is wrong, and the nineteen-second clone Tom judged
+ * good on 2026-08-27 is the estate's own refutation of it.
+ */
+const RECORD_MIN_SECONDS = 10
+const RECORD_MAX_SECONDS = 60
+
+function clearRecording () {
+  if (recordedUrl.value) URL.revokeObjectURL(recordedUrl.value)
+  recordedUrl.value = ''
+  recordSeconds.value = 0
+}
+
+async function startRecording () {
+  recordError.value = ''
+  clearRecording()
+  cloneFile.value = null
+  try {
+    const stream = await navigator.mediaDevices.getUserMedia({ audio: true })
+    // webm/opus is what every browser that has MediaRecorder actually emits,
+    // and Cartesia accepts webm — so no transcoding happens anywhere.
+    const mime = MediaRecorder.isTypeSupported('audio/webm') ? 'audio/webm' : ''
+    const mr = new MediaRecorder(stream, mime ? { mimeType: mime } : undefined)
+    recordedChunks = []
+    mr.ondataavailable = (e) => { if (e.data?.size) recordedChunks.push(e.data) }
+    mr.onstop = () => {
+      stream.getTracks().forEach((t) => t.stop())
+      const blob = new Blob(recordedChunks, { type: mr.mimeType || 'audio/webm' })
+      cloneFile.value = new File([blob], 'sample.webm', { type: blob.type })
+      recordedUrl.value = URL.createObjectURL(blob)
+      recording.value = false
+      clearInterval(recordTimer)
+    }
+    mr.start()
+    recorder.value = mr
+    recording.value = true
+    recordSeconds.value = 0
+    recordTimer = setInterval(() => {
+      recordSeconds.value += 1
+      // A hard stop, so a forgotten tab cannot record for an hour and then try
+      // to upload it into a 25 MB cap.
+      if (recordSeconds.value >= RECORD_MAX_SECONDS) stopRecording()
+    }, 1000)
+  } catch (e) {
+    recording.value = false
+    recordError.value = `The microphone is not available here — ${e.message}. Upload a file instead.`
+  }
+}
+
+function stopRecording () {
+  try { recorder.value?.stop() } catch { /* already stopped */ }
+  clearInterval(recordTimer)
+}
+
+const recordHint = computed(() => {
+  if (!recordedUrl.value) return ''
+  if (recordSeconds.value < RECORD_MIN_SECONDS) {
+    return `${recordSeconds.value}s — Cartesia asks for at least ${RECORD_MIN_SECONDS}s. This will clone, but a longer sample clones better.`
+  }
+  if (recordSeconds.value < 20) return `${recordSeconds.value}s — over the floor. Twenty to sixty seconds clones noticeably steadier.`
+  return `${recordSeconds.value}s — a good length.`
+})
+
 // ── THE DEMO: ONE TAP PER CLIP, AND THE CLONES STAY ON SCREEN ──────────────
 //
 // Tom, 2026-08-31, reframing what this screen is for: he sits with Aran and
@@ -523,6 +623,23 @@ async function discard (entry) {
     clones.value = clones.value.filter((c) => c.id !== entry.id)
   } catch (e) { entry.error = e.message; entry.stage = 'done' }
 }
+
+/**
+ * Is the deliberate "Create the clone" button armed?
+ *
+ * RESTORED 2026-08-31 alongside the recorder: 67794654b dropped this computed
+ * too, so the template's `:disabled="cloneBusy || !canSubmitClone"` read
+ * !undefined — permanently disabled — and submitClone() would have thrown on
+ * `.value` had it ever been reachable.
+ *
+ * The name is NOT required any more: submitClone composes one from the person
+ * and the source when the field is left empty, and the button's own hint asks
+ * only for the person. So the gate is the person, plus something to clone from.
+ */
+const canSubmitClone = computed(() => {
+  if (!clonePerson.value) return false
+  return cloneSource.value === 'estate' ? pickedKeys.value.length > 0 : Boolean(cloneFile.value)
+})
 
 /**
  * The DELIBERATE path: several estate clips joined, or a file, or a recording.
