@@ -266,3 +266,295 @@ confirmation.)*
    (F1 wearing false content — the store does not police truth-value), the confidentiality caveat
    (N109 with the bound volunteered — unsolicited is a walk property, health's own ruling), and
    death (the heaviest content in the sector, composing entirely on existing shapes).
+
+---
+
+## 5. The mapping — every encounter, LANDS or MINTS
+
+| Encounter | Primary | Also traversed | Verdict |
+|---|---|---|---|
+| E1 personal care | N102 **[health]** whole | N110 (the visit signposted: "wash first, then breakfast"); rung-0 talk on N5/F11/F18; O101 on the flinch | **lands** — the body shape, richly, recovering Ireland's dropout |
+| E2 medication round | N102 + N103 **[health]** | F103 (the MAR signature); halt branch = N106 + O101, both seats | **lands** — N103 recovered too: the agency-staff check is a known-answer question about a person, thin in domiciliary work and said so |
+| E3 refusal of care | F202 **[overlay]** + F103 **[health]** | N201's walk from the worker's seat; the return visit is the SAME ask re-walked — a walk annotation, not a shape (refusal §8); threshold branch → E7 | **lands** |
+| E4 the doorway | with capacity: N104 **[health]** + F103 + N105 | without: F6 **[store]** + the off-stage decision (E14); F502 predicted here does NOT attest confidently — the record targets the institution, not the person (scored in §9) | **lands** |
+| E5 the disclosure | N204/O7 **[overlay]** + F204 | the promise sought and bounded = N109 **[health]** verbatim ("you won't tell anyone?" → "I can't promise that"); threshold branch → E6 via C601 | **lands** — O7's fifth corpus |
+| E6 safeguarding pass-on | **N501 [trades]** whole | F101 (the telling ratified), F103, N105 (the team, the visit to come); press branch = F16, the forum named | **lands — on trades' mint, position for position** |
+| E7 soft-signs escalation | N12 **[store]** + F302 **[tb]** | F101 uptake; N105 (the duty nurse will ring) or N107 (if she's drowsy by lunch, 999); persistence via the record = F103 invoked | **lands** |
+| E8 handover | N4 + P3 **[store]** + F103 | N110; the thin-notes failure is S103's shape | **lands** |
+| E9 family update | N104 **[health]** (baseline as norm) | N109 (the bounded guarantee), F401 **[ireland]** (sorry on behalf), F501 **[trades]** where the evidence is shown ("come and look at her chair cushion — that's why we moved her") | **lands** |
+| E10 family vs the person's wishes | N401 **[ireland]** whole | the rule held in trust is the person's OWN autonomy under the MCA; forum = the review | **lands** — proxy holding with the principal in the room (§6) |
+| E11 out-of-scope ask | N401 **[ireland]** | the hurt branch = P101's currency run in reverse; relationship repaired, rule unmoved | **lands** |
+| E12 reality question | **F601 [mint, move]** in the answer slot of a store Q | the therapeutic untruth = F1 wearing false content (refusal §8); the repetition loop = S604, a walk property | **mints — the sector's one mint** |
+| E13 errand purse | P2 **[store]** + F103 | money held in trust; the record decides discrepancies | **lands** |
+| E14 professionals' room | N8 + N15 **[store]** + N108 **[health]** | F501 (the worker exhibits the specifics), F16 against rank; the consent position CHANGES HANDS here — see §6 | **lands** — the sector's gravest business, on colleague shapes |
+| E15 office and rota | N9 **[store]** + N109 + N402 **[ireland]** | the incomplete visit is suspend-and-task with the task routed to the OFFICE — a third party, which is N402 composed with N105 rather than a variant | **lands** |
+| E16 the death | N105 **[health]** + N109 + F14 | the direct question branch = N109's bound run at its limit; condolence = F14 + F204 | **lands** — refusal to mint on the heaviest content in the sector (§8) |
+| E17 assessment | P5 chains **[store]** + N108 + N110 | the pride branch = S102's anchored elicit ("walk me through yesterday") | **lands** |
+
+**The distribution — which is the finding.** Seventeen encounters: **eight land primarily on the
+original store or overlay, six primarily on health's Family A, two primarily on Ireland's pair,
+one primarily on trades' N501, and one mints a single move.** Zero nodes. The near neighbour,
+made to earn every mint under the same discipline as the far sector, needed none — and the
+sector's whole novelty concentrated exactly where three prior corpora said it would: at the point
+where duty overrides consent, on a node ANOTHER sector minted. N501 now carries constructed
+attestations from two unrelated sectors plus health's unattested containment (the trades file
+predicted "the safeguarding hold" by name); that is the Family-A graduation pattern repeating one
+level up, and it is the strongest single piece of evidence in this document.
+
+**The coverage caveat, copied from trades before anyone quotes a coverage number:** a derived
+inventory reaches nodes cheaply — I chose the encounters. The honest headline is the mint count.
+
+### 5.1 The moves pass — all twenty families
+
+All twenty store families attest somewhere in the sector: F1/F2 everywhere; F3 in elicit chains;
+F4 taken up at E7/E17 (S102's recovery — anchor it, re-frame, route to an artefact — is close to
+care work's core skill); F5 at E15 rota negotiation; F6 at the doorway; F7/F8 constantly, and
+with hearing loss and dementia the sector runs more repair per hour than any yet mapped; F9/P3 at
+handover and med instructions; F10 in long tellings; F11 and F18 ALIVE in the rung-0 stretches —
+the care visit, unlike health's ward, is half rung-0, and the families die only inside the pinned
+stretches (the MAR round, where the sheet decides what normal is and F102 answers) and revive at
+the teapot; F12/F13/P101 saturated ("I'm such a nuisance" / "you're no such thing — this is what
+I'm here for"); F14/F19 at every door; F15 obeys the unified rule with a care-work addendum — the
+PERSON'S own K1 share degrades with the condition, so "I couldn't tell you, love, my memory's
+terrible" stands and is anchored, never contested; F16 at E6/E10/E14; F17 in P101; F21 rare (the
+worker's tasks are rota-driven, not solicited onward) — attests at the office ("anything else
+while I'm here?"), thin. Health's F101–F104 all re-attest, F101 most heavily — the ratified
+telling is the safeguarding strand's front door. Overlay families: F201/F202 at E3 daily; F203 at
+own-fault callbacks ("I forgot to leave the key in the box — that's on me"); F204 at E5; F205's
+silent repair is endemic with hearing loss — the mishearing visible only in the act.
+
+---
+
+## 6. The ladder — placement ruled, and where the position test actually fires
+
+**Care work sits at rung 4 — health's rung. K4 is the body, pinned.** The near-neighbour claim is
+confirmed at the ladder: same rung, same stake. Everything distinctive about the sector is in
+HOW the other three kinds sit.
+
+**K1 — SPLIT, with a drift the ladder has not recorded before.** The worker holds the plan, the
+MAR, today's observations; the person holds their body and their biography, and their share
+decides (Ireland's split, on the body instead of the circumstances). The care-work addendum:
+**the person's K1 share degrades with the condition and migrates** — into the record, into the
+family, into the worker's pattern-knowledge of them. Trades time-indexed K1 within one job;
+care work condition-indexes it across years. Same annotation machinery, longer clock.
+
+**K2 — the sector variable: PINNED TO THE OTHER PARTY.** This is the first mapped sector where
+the learner's seat holds LESS refusal-right than the seat opposite, in nearly every encounter:
+autonomy gives the person an absolute per-encounter refusal ("you can't make me" — and the worker
+cannot), while duty of care strips the worker's walk-away — the barista can decline a customer,
+the officer can close the counter, the electrician can refuse the job; the care worker cannot
+refuse to care. Two consequences, both tested against the recorded rule ("a position appears,
+disappears or changes hands — not merely gets harder or dearer"):
+
+1. **The undischargeable close.** The person's refusal is real but cannot be TERMINAL — they can
+   refuse today's wash, not resign from care; and the worker can accept today's refusal but
+   cannot close the duty. N201's settle position is unavailable to BOTH parties at the
+   relationship level. Per-encounter, though, every walk composes: F202 + F103 + the same ask
+   re-walked later. So the ladder note records a genuinely new K2 configuration — refusal pinned
+   per-encounter to the person, terminal-close pinned to neither — while the walks stay on
+   existing shapes. A kind-configuration novelty with zero shape cost: the clearest evidence in
+   this document that the ladder and the node inventory are genuinely different layers.
+
+2. **Where the test fires, it fires on other people's mints.** At the safeguarding threshold the
+   person's refusal position DISAPPEARS — that is N501, trades' node, firing identically (the act
+   is a telling instead of a disconnection; content is the mask). At capacity loss the person's
+   consent position CHANGES HANDS — but to an off-stage forum, and the conversation in which it
+   changes hands is E14, between professionals, on N8/N15/N108. The sector's two position-test
+   events cost zero mints because trades and health already paid for them.
+
+**K3 — pinned to the worker and the agency**, and load-bearing beyond any sector yet mapped
+except Ireland: the notes ARE the continuity of care (the night carer acts on the record, not on
+memory), F103 saturates, F18 dies to the MAR inside the round, disputes at E13 and E14 are
+decided by the record. The record is of the PERSON — which is exactly why N103 re-attests here
+after failing in trades: care work has the person-file trades lacked.
+
+**Money — not a kind here, and barely a presence.** The worker never holds the price and rarely
+touches the cash; when they do (E13) it is held in trust with the record as the trust's
+instrument. Trades' both-ways argument does not need re-running — the sector offers no bench to
+run it on, which is itself weak confirmatory evidence for trades' ruling that money was never a
+kind: in the sector where the K-profile is most extreme, the money simply vanishes from the
+encounters without any shape noticing.
+
+**Proxy holding — the annotation covers, with one new grain worth recording.** The worker holds
+duty in trust for the statutory framework (MCA, Care Act), for the agency, and — the new grain —
+**for the person's own earlier self**: the advance decision, the care plan written when capacity
+was fuller, the family's report of "what mum would have wanted". At E10 the annotation reaches
+its limit case: the worker holds the person's autonomy in trust FOR the person, AGAINST the
+family, with the principal sitting in the room eating the biscuit. `held_in_trust` expresses all
+of this without strain because it attaches per kind, exactly as trades found — but the
+principal-is-the-other-party's-former-self reading deserves a line in the annotation's
+documentation if it graduates, because no prior sector produced it.
+
+---
+
+## 7. The second axis — tested, and Ireland's hole looked for and found
+
+**Supported, shape-level, fourth sector.** The cost-of-failing-to-recover weight lands on N106
+and O101 (the med-round halt — the wrong-meds recovery is the sector's most literally lethal),
+on N107 (the conditional instruction at E7 — "if she's drowsy by lunch, 999, don't wait"), on
+N501 at E6, and on the soft-signs escalation at E7, where the failure to convert a gut reading
+into uptake is the sector's classic preventable death (the UTI that becomes sepsis over a
+weekend). Low-cost shapes inside high-cost encounters stay low-cost — the F14 close of a
+safeguarding visit weighs nothing. The weight tracks shapes, not encounters, for the fourth
+corpus running.
+
+**The hole.** Ireland's costliest failure produced no encounter (the entitlement never claimed);
+trades narrowed the hole to DISCOVERY (the fault never found). Care work has BOTH forms and adds
+a third, and the line must be drawn carefully:
+
+- **At noticing** — trades' form. The deterioration nobody clocks, the pressure sore under the
+  dressing gown, produce no conversation. The sector's institutional fill is MANDATED RECORDING
+  — the daily note, the body map, the food-and-fluid chart: encounters with the record forced
+  into existence precisely so that noticing has somewhere to live. Trades' statutory-inspection
+  pattern, repeated. Maps entirely onto F103/N108; no shape weight can reach what is never
+  noticed, but the sector has already engineered the conversation into existence better than any
+  yet mapped.
+- **At disclosure** — Ireland's form, inverted. The abuse never spoken of produces no encounter.
+  The sector's partial fill is speech-adjacent: the worker's soft-signs reading (E7) can convert
+  an UNSPOKEN trouble into an encounter — the only sector so far whose ordinary skill set
+  includes manufacturing the missing encounter out of pattern-knowledge. The hole narrows; it
+  does not close.
+- **At the override itself — the form this sector adds.** The gravest acts done to the person —
+  covert medication, the locked door, the move to residential care — are DECIDED in encounters
+  the person is not part of (E14) and often EXECUTED without an announcing conversation at all:
+  covert medication is definitionally the N102 announcement withheld. The speakable half of the
+  duty-override strand lands on N501; the unspeakable half is not a missing shape — it is a
+  deliberate ABSENCE of the announcing position, decided on colleague shapes in another room.
+  No mint can reach it, and no mint should: the finding is that the trunk carries every
+  conversation the sector actually holds, and the sector's deepest ethics live precisely in the
+  conversations it chooses not to hold with the person. That is the sharpest form of Ireland's
+  hole yet observed, and it is a fact about the sector, not a deficit of the graph.
+
+---
+
+## 8. The one mint, and the refusals
+
+### The mint
+
+**F601 — Answer the need, not the question** *(move; care-work provenance; the mapping's least
+confident call, argued below).* Test: the responder receives a question whose premise is false
+in a way the asker cannot currently repair (the dead husband, the long-gone mother), and fills
+the answer slot with a response to the STATE that produced the question — the truth-value of the
+premise neither granted nor corrected. "When's my husband coming?" → "You miss him, don't you.
+Tell me how you two met."
+
+Why not the nearest candidates, by id: **F204** receives an unbidden disclosure and does nothing
+— this receives a QUESTION, and an unanswered question breaks adjacency where an unanswered
+disclosure completes it; F204 also forbids fixing, and F601's whole job is to fix the state
+under the premise. **F6** substitutes within the ticket's own currency (no 22mm, here's 15mm) —
+F601 changes currency entirely, from the proposition to the feeling. **O5's recovery** corrects
+the premise — the exact move F601 exists to refuse, because here correction is an injury
+re-delivered hourly. **F102** asserts normality from above — nothing is normalised. **F8**
+reformulates the speaker's own prior turn. One response position of novelty = a move, not a
+node, per the standing rubric. Smoke test: passes — dementia care in any language column, and
+the same move is attested folk practice with small children and the dying ("answer the need").
+The composed reading argued honestly: F204 + F6 in sequence could approximate it, but neither's
+test survives contact — F204's completes without uptake of a question, F6's requires same-currency
+substitution. The move is real. Flagged thin: constructed attestation only, one encounter (E12),
+though that encounter runs dozens of times a day wherever dementia lives.
+
+### The refusals — recorded explicitly, because this is where the porting evidence lives
+
+1. **The safeguarding pass-on (E6)** — the sector's duty apex and the obvious mint candidate —
+   **refused: it is N501 whole**, position for position: danger surfaced unbidden (via C601, the
+   disclosure running at position 1) → declared against its norm → the pass-on announced and
+   done, refusal unavailable → the record → the press on the person → drop the self, hold the
+   duty, name the forum. The act is a telling rather than a disconnection: content, mask.
+2. **Retreat-and-return (E3)** — the sector's signature texture — **refused: a walk annotation.**
+   The same ask re-walked after an interval is repetition of a node, not a position of a shape;
+   between walks run F202 and F103. Minting it would have minted patience.
+3. **The confidentiality caveat** ("before you tell me — I can't keep secrets that worry me") —
+   **refused: N109 with the bound volunteered.** When the person asks first it is N109 verbatim;
+   volunteered, it is the same positions unsolicited, and unsolicited is a walk property —
+   health's own ruling on the unsolicited diagnosis, applied unchanged.
+4. **The therapeutic untruth** ("he's just parking the car") — **refused: F1 wearing false
+   content.** The store does not police truth-value; a false grant is positionally a grant. The
+   ethics are real and live in the walk layer and the sector's own guidance, not in shape.
+5. **The death (E16)** — the heaviest content in the sector — **refused: N105 + N109 + F14
+   compose it whole.** Minting on death would have been minting on the mask at its heaviest.
+6. **The soft-signs escalation (E7)** — **refused: N12 + F302 + F101.** The epistemic flag
+   priced honestly plus the ratified telling IS the shape; what is distinctive is how much hangs
+   on it, which is weight (§7), not structure.
+7. **The doorway deflection (E4)** — **refused: F6.** Substitution with tea is still
+   substitution.
+8. **The best-interests decision** — **refused, emphatically: N8 + N15 + N108 in E14.** The
+   gravest candidate of all, and it composes on colleague shapes because the person is not in
+   the conversation — see §7's third hole form. A mint here would have been a monument, not a
+   shape.
+9. **The dementia-degraded N102** (personal care where verbal consent never comes) — **refused:
+   N102 with the grant position filled non-verbally.** Behavioural assent is still the grant
+   position until the off-stage forum takes it over; a position's filler degrading is not a
+   position disappearing. The moment it genuinely changes hands, you are in E14, on existing
+   shapes.
+10. **The substitute-worker opener** ("Karen's off, you'll have to tell me how you like things
+    done") — **refused: N101 whole**, and noted as a small honest surprise against the
+    prediction, which doubted N101 would attest here at all.
+11. **The one-to-many handover** (the staff-room briefing) — **refused for trades' reason:** the
+    novelty is topology, the store is dyadic, and the load-bearing exchanges run dyadically per
+    hearer. The trunk-level limit already flagged by trades stands; nothing new to add.
+
+---
+
+## 9. The prediction, scored — and the honesty section
+
+Scored against §4, kept honest by the two places it was wrong:
+
+- **(1) Zero nodes — CORRECT.** **(2) One move, F601 — CORRECT**, including the pre-commitment
+  to argue the composed reading before minting.
+- **(3) Duty strand on N501 — CORRECT**, and stronger than predicted: the disclosure feeds it by
+  a clean composition edge (C601), and trades' own ladder note named this sector's case in
+  advance.
+- **(4) The override-without-encounter — CORRECT, and sharpened in the writing:** the prediction
+  expected Ireland's hole at the best-interests decision; the mapping found the sector's third
+  hole form — the deliberately withheld announcing position (covert medication) — which the
+  prediction did not see coming in that specificity.
+- **(5) Family A re-attests including both dropouts — CORRECT** (N102 richly, N103 with a
+  thinness note). **N101 — WRONG in the pleasant direction:** predicted doubtful, found at the
+  substitute-worker opener. What I had misjudged: I was reading N101 as a LANGUAGE shape because
+  every prior attestation was linguistic; its actual content is any declared limitation of the
+  encounter's medium, and "I don't know your routines" qualifies.
+- **(6) Ireland's pair and trades' three all re-attest — PARTLY WRONG: F502 does not.** The
+  prediction flagged the doubt and the mapping confirmed it: care work's warn-and-record runs on
+  F103 with the record targeting the institution; the countersigned telling that transfers
+  liability to the told has no confident care-work occasion (the person is often precisely
+  someone the sector will not treat as liability-bearing). F502 stays a two-sector move. What I
+  had misjudged: I pattern-matched "warn and record" to trades without checking WHO the record
+  runs against.
+- **(7) Ladder — CORRECT** on rung 4, K2 inversion, K1 drift, money-absence; the
+  "undischargeable close" configuration (§6) emerged in the writing and was not predicted.
+- **(8) Invariants — CORRECT:** O7 fifth corpus with the duty-capture exit; F302 fifth corpus;
+  F18/F11 revival at rung 0. **(9) Counts:** predicted 0 nodes / 1 move / 16 land / ≥8 refusals;
+  actual 0 / 1 / 16 land + 1 mint / 11 refusals.
+
+**Honesty.** (a) Prediction and mapping are one head, minutes apart; the score is discipline
+kept, not independent confirmation — Ireland's version of this sentence applies with less force
+to a fourth mapping than to a second, and with more force to a same-session prediction than to a
+committed-overnight one. (b) The inventory is derived, not researched; no care worker has read
+it; entries labelled constructed may not survive contact with one, and E4's ordering, E6's
+wording, E14's and E16's orderings are the most exposed. (c) The zero-node headline depends on
+health's Family A and trades' N501 being accepted upstream; if Family A falls, roughly eight
+shapes re-mint here; if N501 falls, exactly one does, almost verbatim — and this document's
+independent re-derivation of it is an argument for accepting it upstream, not for re-minting it
+downstream. (d) Nothing here was checked against the two sibling-sector workers running tonight;
+id-range collision is possible and flagged in the worker report.
+
+---
+
+## 10. The port verdict, readable cold
+
+Care work — health's near neighbour, the sector named as unable to fail, mapped under the far
+sector's earn-every-mint discipline — costs the trunk **zero nodes and one move** (F601, answer
+the need not the question — the dementia-care response position no existing family covers).
+Sixteen of seventeen encounters land on the existing store plus the three prior proposals.
+The question this mapping was commissioned to answer — where does the duty-overrides-consent
+strand sit? — has a clean answer: **its speakable half sits on the same node trades minted**
+(N501 Compelled make-safe carries the safeguarding pass-on position for position, giving that
+node its second independent sector and repeating the Family-A graduation pattern), **and its
+heaviest half produces no encounter with the person at all** — best-interests decisions, covert
+medication and deprivation of liberty are decided between professionals on store shapes in
+another room, with the announcing position deliberately withheld. That is the sharpest form yet
+observed of Ireland's no-encounter hole, and it is a finding about the sector, not a gap in the
+graph. The ladder gains a genuinely new configuration at zero shape cost — K2 pinned to the
+OTHER party with a terminal close available to neither — which is the cleanest demonstration in
+four sectors that the ladder and the node inventory are different layers. O7 and F302 hold in a
+fifth corpus. The trunk is working.
