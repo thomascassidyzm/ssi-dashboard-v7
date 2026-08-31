@@ -50,10 +50,18 @@
 'use strict'
 
 const consent = require('./consent.cjs')
+const personhood = require('../shared/voice-personhood.cjs')
 
-/** A voice id that names a person by construction — the estate's convention. */
+/**
+ * A voice id that names a person by construction — the estate's convention.
+ *
+ * Delegated to the shared answer since 2026-08-31: this was the fifth inline
+ * copy of "is there a person behind this voice", and copies of that rule are
+ * how a rule about people ends up applied to things
+ * (services/shared/voice-personhood.cjs).
+ */
 function looksLikeAPerson (voiceId) {
-  return /^human[_-]/i.test(String(voiceId || '').trim())
+  return personhood.looksLikeARecordist(voiceId)
 }
 
 /**
