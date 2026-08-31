@@ -21,6 +21,7 @@ const { swapClipInPlace } = require('./shared/audio-revision-swap.cjs')
 const manifestGenerator = require('./manifest-generator.cjs')
 const podVisibility = require('./pod-visibility.cjs')
 const courseDataService = require('./course-data-service.cjs')
+const editGuardian = require('./course-editor/guardian-runtime.cjs')
 const { SchemaValidator } = require('./schema-validator.cjs')
 const learningScriptGenerator = require('./learning-script-generator.cjs')
 const audioProcessor = require('./audio-processor.cjs')
@@ -7613,7 +7614,28 @@ app.patch('/api/production/:courseCode/lego/:legoId', async (req, res) => {
       return res.status(400).json({ error: `Invalid legoId format: ${legoId}` })
     }
 
+    // Capture the before-row for the Edit Guardian (inert unless enabled).
+    let beforeLego = null
+    if (editGuardian.isEnabled()) {
+      try {
+        const { data } = await supabaseClient.getClient()
+          .from('course_legos').select('*')
+          .eq('course_code', courseCode).eq('seed_number', seedNumber).eq('lego_index', legoIndex)
+          .single()
+        beforeLego = data
+      } catch { /* best-effort */ }
+    }
+
     const result = await courseDataService.updateLego(courseCode, seedNumber, legoIndex, updates)
+
+    if (beforeLego) {
+      editGuardian.enqueueEditReview({
+        courseCode, table: 'course_legos', pk: result?.id || beforeLego.id,
+        before: beforeLego, after: result,
+        editedBy: req.headers['x-user-email'] || null,
+      })
+    }
+
     res.json({
       success: true,
       lego: result
@@ -13124,6 +13146,18 @@ httpServer.listen(PORT, HOST, () => {
   logger.log(`Production API server running on ${HOST}:${PORT}`)
   logger.log(`WebSocket path: /api/production/websocket`)
   scheduleNightlyArchive()
+  // Edit Guardian — inert unless EDIT_GUARDIAN_ENABLED=true (and the migration
+  // 20260617_edit_guardian.sql has been run). Streams inline review status to the
+  // editing client over the existing WebSocket.
+  try {
+    editGuardian.initGuardian({
+      supabase: supabaseClient.getClient(),
+      emit: (event, payload) => { try { io.emit(event, payload) } catch { /* best-effort */ } },
+      logger,
+    })
+  } catch (e) {
+    logger.warn?.(`[guardian] init skipped: ${e.message}`)
+  }
 })
 
 module.exports = { app, io, emitToRoom }
