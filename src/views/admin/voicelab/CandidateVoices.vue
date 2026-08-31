@@ -85,7 +85,15 @@ defineEmits(['play', 'cast', 'open', 'hear', 'consent'])
 function blockedFor (c) {
   const k = c && c.consent
   if (!k || !k.aboutAPerson || k.authorised) return ''
-  return k.castWarning || k.summary || 'No consent is recorded for this voice.'
+  // `castWarning` IS THE ANSWER, and its absence is an answer too. Tom drew the
+  // consent boundary on 2026-08-31: a voice CLONED from a person is gated, a
+  // person's own recording is not — the recording session is the consent. So
+  // consent.describe() now returns a null castWarning and needsAsking false for
+  // a recordist, and the gate lets them be cast. A row that fell back to
+  // `summary` here would hide the Cast button from Aran, Catrin and Sasha over
+  // a sentence that is merely describing them.
+  if (!k.needsAsking) return ''
+  return k.castWarning || 'No consent is recorded for this voice.'
 }
 </script>
 
@@ -189,9 +197,15 @@ function blockedFor (c) {
 .vl-cands { display: flex; flex-direction: column; gap: .25rem; max-height: 19rem; overflow-y: auto; }
 .vl-cands-empty { margin: 0; }
 .vl-cand {
-  display: flex; align-items: center; gap: .5rem;
+  display: flex; align-items: center; gap: .5rem; flex-wrap: wrap;
   padding: .25rem .4rem; border-radius: 6px;
 }
+/* WRAP RATHER THAN CLIP. In the two-column guide layout a card is ~590px, and a
+   row carrying a name, a kind, a consent chip and a button ran past its right
+   edge — the consent chip, which is the whole way through the block, ended up
+   underneath the next card. Clipped controls are unpressable and look like a
+   decision has been taken away. The row wraps onto a second line instead. */
+.vl-cand-name { flex: 1 1 8rem; }
 .vl-cand:hover { background: var(--surface-2, rgba(127, 127, 127, .08)); }
 .vl-cand-play, .vl-cand-cast {
   border: 1px solid var(--line); background: transparent; color: inherit;
