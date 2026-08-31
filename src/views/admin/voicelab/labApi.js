@@ -110,13 +110,17 @@ export const api = {
   // The per-language registry. `languages` spends nothing; the two slot calls
   // write voice_language_roles and nothing else — no render, no course_audio.
   // CONSENT — the words, and the yes recorded onto a voice that already exists.
-  // Neither call renders anything or spends anything. `recordConsent` is the
-  // key to the standing consent block for a voice nobody consented at birth;
-  // it takes a FormData when the person is at a microphone (the line read
-  // aloud, checked by whisper on the box) and a plain object when they are not
-  // (a named attestation).
+  // Neither call renders anything or spends anything.
+  //
+  // `recordConsentDeclaration` is the key to the standing consent block for a
+  // voice nobody consented at birth: it takes a FormData when the person is at
+  // a microphone (the line read aloud, checked by whisper on the box) and a
+  // plain object when they are not (a named attestation). NAMED APART from the
+  // `recordConsent` below on purpose — that one is the admin PUT that writes a
+  // decision Tom obtained off-system, and a duplicate key in this object would
+  // silently give both callers whichever definition came last.
   consentWording: () => call('/api/voicelab/consent-wording'),
-  recordConsent: (voiceId, body) =>
+  recordConsentDeclaration: (voiceId, body) =>
     body instanceof FormData
       ? postForm(`/api/voicelab/voices/${encodeURIComponent(voiceId)}/consent-declaration`, body)
       : call(`/api/voicelab/voices/${encodeURIComponent(voiceId)}/consent-declaration`, { method: 'POST', body }),

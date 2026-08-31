@@ -158,9 +158,9 @@ async function submit () {
         fd.append('attestedBy', attestedBy.value.trim())
       }
       fd.append('clip', clipFile)
-      out = await api.recordConsent(props.voiceId, fd)
+      out = await api.recordConsentDeclaration(props.voiceId, fd)
     } else {
-      out = await api.recordConsent(props.voiceId, {
+      out = await api.recordConsentDeclaration(props.voiceId, {
         sampleFrom: 'attested',
         person: personName.value.trim(),
         declarationAgreed: 'true',
