@@ -682,3 +682,15 @@ any single shape, and its silent form (the allergy never declared, the drink nev
 Ireland's hole again, filled the same way — by law mandating the encounter, never by a shape.
 Nothing here needs a decision from Tom beyond the standing upstream one: accept Family A and
 Ireland's pair, which this sector has now re-attested again.
+
+---
+
+## Verification (the one mechanical check this job runs)
+
+`node tools/metagraph-selfcheck.cjs` from the worktree root: **"340 checks passed, 0 failed. The
+store reproduces every count in docs/pods/shape-graph-2026-08-30.md."** (The tool SKIPs its five
+schema-validation checks in a worktree — "ajv is not resolvable from this checkout" — which
+accounts for the difference from the 345 the commission quotes on origin/main; the skip is the
+tool's own honest report, not a failure.) `git diff --stat origin/main -- services/shared/metagraph/`
+shows exactly one entry: `proposed/hospitality-2026-08-30.json | 63 ++++`. The store is
+byte-identical to origin/main.
