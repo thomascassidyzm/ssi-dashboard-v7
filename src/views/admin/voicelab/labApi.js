@@ -139,6 +139,30 @@ export const api = {
   // caps it at CLONE_AUDITION_MAX_CLIPS (3) and the lab's daily character
   // ceiling still refuses on top of that.
   auditionVoice: (body) => call('/api/voicelab/voices/cartesia/audition', { method: 'POST', body }),
+
+  // ── CLONING FROM WHAT THE ESTATE ALREADY HOLDS (the primary path) ────────
+  // Tom, 2026-08-31: "cloning FROM OUR OWN EXISTING RECORDINGS is the main
+  // route, not a fallback". The first two calls spend NOTHING — they read the
+  // archive and hand back URLs that play the original files straight from the
+  // estate's bucket. The third builds one source file on the server and posts
+  // it to Cartesia; it renders no speech.
+  speakers: (language = '') =>
+    call(`/api/voicelab/speakers${language ? `?language=${encodeURIComponent(language)}` : ''}`),
+  speakerClips: (voiceId, { language = '', limit = 60 } = {}) =>
+    call(`/api/voicelab/speakers/${encodeURIComponent(voiceId)}/clips?limit=${limit}` +
+      (language ? `&language=${encodeURIComponent(language)}` : '')),
+  cloneFromEstate: (body) =>
+    call('/api/voicelab/voices/cartesia/clone-from-estate', { method: 'POST', body }),
+
+  // Consent: recorded against the voice, queryable, and never inferred. Writing
+  // `authorised` without a named human, a means and a date is refused by both
+  // the route and the database.
+  recordConsent: (voiceId, body) =>
+    call(`/api/voicelab/voices/${encodeURIComponent(voiceId)}/consent`, { method: 'PUT', body }),
+
+  // Un-create. Refused outright while the voice is cast into any slot.
+  removeVoice: (voiceId) =>
+    call(`/api/voicelab/voices/${encodeURIComponent(voiceId)}`, { method: 'DELETE' }),
 }
 
 /** multipart POST. Same session gate as `call`; the browser sets the boundary. */

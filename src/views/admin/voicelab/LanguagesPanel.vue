@@ -68,6 +68,7 @@
 import { ref, computed, onMounted } from 'vue'
 import { api, clipUrl } from './labApi'
 import CandidateVoices from './CandidateVoices.vue'
+import ConsentBadge from './ConsentBadge.vue'
 // The estate's ONE place that turns a code into words. Importing it also kicks
 // off the CSV name fetch, so nothing else here has to.
 import { languageName } from '@/utils/languageNames'
@@ -189,8 +190,101 @@ const cloneFile = ref(null)
 const cloneBusy = ref(false)
 const cloneResult = ref(null)
 
-/** 'upload' | 'record' — where this sample is coming from. */
-const cloneSource = ref('upload')
+/**
+ * 'estate' | 'upload' | 'record' — where this sample is coming from.
+ *
+ * ESTATE IS THE DEFAULT and that is Tom's inversion of 2026-08-31: "We do NOT
+ * need to ask anyone to record a fresh sample first. We already hold clean
+ * studio audio of the people we want to clone, and cloning FROM OUR OWN
+ * EXISTING RECORDINGS is the main route, not a fallback." The recorder and the
+ * upload are not removed — they are for people the estate holds no audio of —
+ * they are demoted to second and third.
+ */
+const cloneSource = ref('estate')
+
+// ── WHOSE VOICE IS THIS ────────────────────────────────────────────────────
+// Required by the backend before it will call Cartesia at all. Not "did they
+// say yes" — Tom obtains that, later, and the voice is born marked as awaiting
+// authorisation — but "who do we go and ask", because a consent record with
+// nobody attached is decorative on the day it is written.
+const clonePerson = ref('')
+const clonePersonContact = ref('')
+const cloneConsentNote = ref('')
+
+// ── THE ESTATE'S OWN RECORDINGS ────────────────────────────────────────────
+// Two lists and a tick box, and one warning that is never allowed off the
+// screen: origin='human' is a LABEL somebody wrote. Two clone attempts in this
+// estate were built from TTS wearing that label and both were dead on arrival
+// (docs/tts-bakeoff/aran-welcome-source-candidates-2026-08-27.md). The audio
+// plays from the estate's own bucket, so listening costs nothing and is the
+// only verification that works.
+const speakers = ref([])
+const speakersBusy = ref(false)
+const speakersError = ref('')
+const speakerFilterLang = ref('eng')
+const chosenSpeaker = ref(null)
+const speakerClips = ref([])
+const clipsBusy = ref(false)
+const pickedKeys = ref([])
+const sampleGuidance = ref(null)
+const identityWarning = ref('')
+
+async function loadSpeakers () {
+  speakersBusy.value = true
+  speakersError.value = ''
+  try {
+    const out = await api.speakers(speakerFilterLang.value.trim())
+    speakers.value = out.speakers || []
+    sampleGuidance.value = out.guidance || null
+    if (out.unavailable) speakersError.value = out.unavailable
+  } catch (e) { speakersError.value = e.message }
+  speakersBusy.value = false
+}
+
+async function chooseSpeaker (sp) {
+  if (chosenSpeaker.value && chosenSpeaker.value.voiceId === sp.voiceId) {
+    chosenSpeaker.value = null
+    speakerClips.value = []
+    pickedKeys.value = []
+    return
+  }
+  chosenSpeaker.value = sp
+  pickedKeys.value = []
+  clipsBusy.value = true
+  speakerClips.value = []
+  try {
+    const out = await api.speakerClips(sp.voiceId, { language: sp.language })
+    // Longest first, which is the recommendation made structural: Cartesia
+    // clones best from ONE continuous take, so the clip most worth hearing is
+    // at the top rather than under two hundred short drill lines.
+    speakerClips.value = out.clips || []
+    identityWarning.value = out.identityWarning || ''
+    if (out.guidance) sampleGuidance.value = out.guidance
+    if (!cloneLang.value) cloneLang.value = sp.language
+  } catch (e) { speakersError.value = e.message }
+  clipsBusy.value = false
+}
+
+function togglePick (key) {
+  const i = pickedKeys.value.indexOf(key)
+  if (i >= 0) pickedKeys.value.splice(i, 1)
+  else pickedKeys.value.push(key)
+}
+
+const pickedSeconds = computed(() => Math.round(
+  speakerClips.value.filter((c) => pickedKeys.value.includes(c.s3Key))
+    .reduce((n, c) => n + (c.durationMs || 0), 0) / 1000,
+))
+
+/** Said before the clone is made, not after it disappoints. */
+const pickHint = computed(() => {
+  if (!pickedKeys.value.length) return ''
+  const n = pickedKeys.value.length
+  const s = pickedSeconds.value
+  if (s < 10) return `${s}s across ${n} clip(s) — under the 10s floor. It will clone, but thinner.`
+  if (n === 1) return `${s}s, one continuous take. That is the shape that clones best.`
+  return `${s}s across ${n} clips — they will be joined into one file. One long clip clones better: joins carry changes in tone and room sound that the clone can learn.`
+})
 
 function pickFile (e) {
   cloneFile.value = e.target.files?.[0] || null
@@ -273,20 +367,45 @@ const recordHint = computed(() => {
   return `${recordSeconds.value}s — a good length.`
 })
 
+const canSubmitClone = computed(() => {
+  if (!cloneName.value || !clonePerson.value) return false
+  return cloneSource.value === 'estate' ? pickedKeys.value.length > 0 : Boolean(cloneFile.value)
+})
+
 async function submitClone () {
-  if (!cloneFile.value || !cloneName.value) return
+  if (!canSubmitClone.value) return
   cloneBusy.value = true
   cloneResult.value = null
   auditionClips.value = []
   auditionError.value = ''
   error.value = ''
   try {
-    const fd = new FormData()
-    fd.append('clip', cloneFile.value)
-    fd.append('name', cloneName.value)
-    fd.append('language', cloneLang.value)
-    if (cloneGender.value) fd.append('gender', cloneGender.value)
-    const out = await api.cloneVoice(fd)
+    let out
+    if (cloneSource.value === 'estate') {
+      // The keys are sent in the order they were ticked, because that is the
+      // order the passage will be spoken in if more than one goes in.
+      out = await api.cloneFromEstate({
+        name: cloneName.value,
+        language: cloneLang.value,
+        gender: cloneGender.value || null,
+        person: clonePerson.value,
+        personContact: clonePersonContact.value || null,
+        consentNote: cloneConsentNote.value || null,
+        speaker: chosenSpeaker.value ? chosenSpeaker.value.voiceId : null,
+        s3Keys: pickedKeys.value,
+      })
+      pickedKeys.value = []
+    } else {
+      const fd = new FormData()
+      fd.append('clip', cloneFile.value)
+      fd.append('name', cloneName.value)
+      fd.append('language', cloneLang.value)
+      if (cloneGender.value) fd.append('gender', cloneGender.value)
+      fd.append('person', clonePerson.value)
+      if (clonePersonContact.value) fd.append('personContact', clonePersonContact.value)
+      if (cloneConsentNote.value) fd.append('consentNote', cloneConsentNote.value)
+      out = await api.cloneVoice(fd)
+    }
     cloneResult.value = out
     cloneName.value = ''
     cloneFile.value = null
@@ -296,12 +415,70 @@ async function submitClone () {
   cloneBusy.value = false
 }
 
+// ── RECORDING AN AUTHORISATION ─────────────────────────────────────────────
+// Tom, 2026-08-31: consent "is Tom to obtain, not you… There must be a plain
+// way for Tom to authorise a voice once he has actually asked the person."
+// This is that. It cannot invent a yes: a named human, a means and a date are
+// all required, by the route and again by the database.
+const consentFor = ref(null)
+const consentForm = ref({ status: 'authorised', person: '', authorisedBy: '', authorisedHow: 'in person', authorisedAt: '', note: '' })
+const consentBusy = ref(false)
+const consentError = ref('')
+
+function openConsent (voiceId, current) {
+  consentError.value = ''
+  consentFor.value = voiceId
+  consentForm.value = {
+    status: current?.status === 'not_recorded' ? 'authorised' : (current?.status || 'authorised'),
+    person: current?.person || '',
+    authorisedBy: current?.authorisedBy || current?.person || '',
+    authorisedHow: current?.authorisedHow || 'in person',
+    authorisedAt: (current?.authorisedAt || new Date().toISOString()).slice(0, 10),
+    note: current?.note || '',
+  }
+}
+
+async function saveConsent () {
+  consentBusy.value = true
+  consentError.value = ''
+  try {
+    await api.recordConsent(consentFor.value, { ...consentForm.value })
+    consentFor.value = null
+    await load()
+  } catch (e) { consentError.value = e.message }
+  consentBusy.value = false
+}
+
+// ── UN-CREATING A VOICE ────────────────────────────────────────────────────
+// The control the page has never had. A clone made by accident during a live
+// demo, with somebody watching, is the case this is for. The backend refuses
+// outright while the voice is cast into any slot, so this asks once and then
+// reports whatever the backend says.
+const removeBusy = ref('')
+async function removeVoice (voiceId) {
+  if (!window.confirm(`Remove ${voiceId} from the estate, and delete it at Cartesia? Existing clips already rendered with it keep playing.`)) return
+  removeBusy.value = voiceId
+  error.value = ''
+  try {
+    await api.removeVoice(voiceId)
+    if (cloneResult.value?.voice?.voice_id === voiceId) cloneResult.value = null
+    await load()
+  } catch (e) { error.value = e.message }
+  removeBusy.value = ''
+}
+
 // ── Hearing it ─────────────────────────────────────────────────────────────
 // The half that was missing until 2026-08-30: a clone you cannot hear is a
 // clone you cannot judge, and the next move was casting an unheard voice into a
 // course. THIS is the press that spends — capped at three clips by the backend,
 // under the lab's ordinary daily character ceiling.
-const auditionText = ref('This is what the new voice sounds like, on a full sentence.')
+// EMPTY BY DEFAULT, and that is the change of 2026-08-31. It used to hold "This
+// is what the new voice sounds like, on a full sentence." — which tells you the
+// voice can talk and nothing about whether it can carry a course. Left blank,
+// the backend picks a REAL line from a NAMED course through the picker that
+// already exists. Typing here still wins, for hearing a specific line.
+const auditionText = ref('')
+const auditionLine = ref(null)
 const auditionBusy = ref(false)
 const auditionClips = ref([])
 const auditionError = ref('')
@@ -316,6 +493,7 @@ async function audition (voiceId, language) {
       language,
       sentences: auditionText.value.split('\n').map((t) => t.trim()).filter(Boolean),
     })
+    auditionLine.value = out.line || null
     auditionClips.value = await Promise.all(
       (out.clips || []).map(async (c) => ({ ...c, src: await clipUrl(c.url) })),
     )
@@ -460,6 +638,21 @@ function guideSlotsOf (lang) {
   return (lang.guide?.slots || []).map((s) => ({ ...s, slot: 'guide' }))
 }
 
+/**
+ * The candidate row a cast is about, so the consent fact the API already sent
+ * can be read at the moment of casting. Looked up rather than passed through
+ * the event, because the guide list and the two phrase lists all emit the same
+ * `cast` event with a bare voice id.
+ */
+function findCandidate (lang, slot, voiceId) {
+  const lists = [lang.candidates || [], lang.guide?.candidates || []]
+  for (const list of lists) {
+    const hit = list.find((c) => c.voiceId === voiceId)
+    if (hit) return hit
+  }
+  return null
+}
+
 /** One busy key for every slot on the page — phrase slots carry a gender, guide slots do not. */
 function slotKey (lang, slot) {
   return `${lang.code}:${slot.slot || 'phrase'}:${slot.gender || '-'}:${slot.rank}`
@@ -499,8 +692,26 @@ function humanRowLabel (lang) {
 /** What the last cast did NOT reach, keyed by language, so it survives the reload. */
 const skipped = ref({})
 
+/**
+ * Cast a voice into a slot.
+ *
+ * ── THE WARNING BEFORE A VOICE WITHOUT A YES REACHES A LEARNER ──────────────
+ * A cast is what puts a voice in front of learners, so it is the moment the
+ * consent question actually bites. A voice that nobody has authorised — or that
+ * somebody has refused — gets ONE plain sentence and a confirm, naming the
+ * person and what is missing.
+ *
+ * It does NOT block, and that is a deliberate, flagged default (2026-08-31): a
+ * hard block on casting an unauthorised voice is Tom's call to make and he has
+ * not made it. This is the loudest thing short of taking the decision off him.
+ * An authorised voice casts in one tap exactly as before, with no dialog at
+ * all — a guard on every cast is a guard people learn to click through.
+ */
 async function cast (lang, slot, voiceId) {
   if (!voiceId) return
+  const candidate = findCandidate(lang, slot, voiceId)
+  const warning = candidate?.consent?.castWarning
+  if (warning && !window.confirm(`${warning}\n\nCast it anyway?`)) return
   busy.value = slotKey(lang, slot)
   try {
     const out = await api.castSlot(lang.code, {
@@ -655,15 +866,38 @@ function candidatesFor (lang, slot) {
 
       <div v-if="showClone" class="vl-clone-body">
         <p class="vl-muted">
-          Give it a sample — <strong>upload a file or record one here</strong> — give it a name,
-          and Cartesia returns a new voice. These are Cartesia's <strong>instant</strong> clones;
-          the fine-tuned product is a different thing and is not reachable from here.
-          The voice is registered straight away, so it is castable in the table below the moment
-          it exists. Cloning itself <strong>renders no audio</strong>: hearing it is the separate
-          press underneath, capped at three clips and counted against the lab's daily ceiling.
+          <strong>Clone from a recording we already hold</strong> — pick the speaker, listen to
+          their clips, tick the one you want. Uploading a file or recording here still works and
+          is what you use for somebody we hold no audio of.
+          These are Cartesia's <strong>instant</strong> clones; the fine-tuned product is a
+          different thing and is not reachable from here. The voice is registered straight away,
+          so it is castable in the table below the moment it exists. Cloning itself
+          <strong>renders no audio</strong>: hearing it is the separate press underneath, capped
+          at three clips and counted against the lab's daily ceiling.
           Cartesia cannot clone a language it does not support, so Welsh, Breton and Cornish are
-          refused with a message rather than a failure.
+          refused with a message rather than a failure — Welsh stays human-recorded by standing
+          rule, and nothing here writes, moves or replaces a single existing recording.
         </p>
+        <p v-if="sampleGuidance" class="vl-guidance">
+          <strong>{{ sampleGuidance.headline }}</strong> {{ sampleGuidance.detail }}
+        </p>
+
+        <!-- WHOSE VOICE IS THIS. Required before Cartesia is called at all.
+             Consent itself is Tom's to obtain afterwards; a name is what makes
+             that possible, and a record with nobody attached is decorative. -->
+        <div class="vl-clone-row vl-consent-row">
+          <span class="ui-filter-label">Whose voice</span>
+          <input v-model="clonePerson" class="ui-field" placeholder="the person this recording is of — required" />
+          <input v-model="clonePersonContact" class="ui-field" placeholder="how to reach them (optional)" />
+        </div>
+        <div class="vl-clone-row vl-consent-row">
+          <input v-model="cloneConsentNote" class="ui-field vl-wide" placeholder="anything to note about permission (optional)" />
+          <span class="vl-muted">
+            The new voice is born <strong>awaiting authorisation</strong> and says so everywhere it
+            appears. A recording existing is not permission to clone the person who made it —
+            ask them, then record their answer on the voice.
+          </span>
+        </div>
 
         <div class="vl-clone-row">
           <input v-model="cloneName" class="ui-field" placeholder="name for the new voice" />
@@ -679,6 +913,10 @@ function candidatesFor (lang, slot) {
         <div class="vl-clone-row vl-source-row">
           <span class="ui-filter-label">Sample</span>
           <button
+            class="ui-chip" :class="cloneSource === 'estate' ? 'ui-hue-info' : 'ui-chip-off'"
+            @click="cloneSource = 'estate'; if (!speakers.length) loadSpeakers()"
+          >From a recording we hold</button>
+          <button
             class="ui-chip" :class="cloneSource === 'upload' ? 'ui-hue-info' : 'ui-chip-off'"
             @click="cloneSource = 'upload'"
           >Upload a file</button>
@@ -690,12 +928,67 @@ function candidatesFor (lang, slot) {
           >Record it here</button>
         </div>
 
-        <div v-if="cloneSource === 'upload'" class="vl-clone-row">
-          <input type="file" accept="audio/*" class="ui-field" @change="pickFile" />
-          <span class="vl-muted">10 seconds is the floor, up to 60 is better. Clean, no pauses.</span>
+        <!-- ── THE PRIMARY PATH: a speaker we already have on tape ───────
+             Both numbers on every row — how many clips, and how much audio —
+             because "we have some Aran" is not an answer anyone can act on.
+             And the identity warning stays on screen: origin=human is a label
+             somebody wrote, and two clone attempts here were built from TTS
+             wearing it. Listening is the only verification that works. -->
+        <div v-if="cloneSource === 'estate'" class="vl-estate">
+          <div class="vl-clone-row">
+            <input
+              v-model="speakerFilterLang" class="ui-field vl-narrow" placeholder="language e.g. eng"
+              @keyup.enter="loadSpeakers"
+            />
+            <button class="vl-btn" :disabled="speakersBusy" @click="loadSpeakers">
+              {{ speakersBusy ? 'Looking…' : 'Find speakers we hold' }}
+            </button>
+            <span class="vl-muted">reads the archive — spends nothing.</span>
+          </div>
+          <p v-if="speakersError" class="vl-error">{{ speakersError }}</p>
+
+          <div v-if="speakers.length" class="vl-speakers">
+            <button
+              v-for="sp in speakers" :key="`${sp.voiceId}:${sp.language}`"
+              class="vl-speaker" :class="{ 'is-on': chosenSpeaker && chosenSpeaker.voiceId === sp.voiceId }"
+              @click="chooseSpeaker(sp)"
+            >
+              <span class="vl-speaker-id">{{ sp.voiceId }}</span>
+              <span class="vl-speaker-nums">{{ sp.clips }} clips · {{ Math.round(sp.totalSeconds / 60) }} min</span>
+              <span class="vl-speaker-roles">{{ sp.language }} · {{ sp.roles.join(', ') }}</span>
+            </button>
+          </div>
+
+          <template v-if="chosenSpeaker">
+            <p class="vl-warn-line">
+              <strong>Listen before you clone.</strong> {{ identityWarning }}
+            </p>
+            <p v-if="clipsBusy" class="vl-muted">Reading the archive…</p>
+            <div v-else class="vl-clips">
+              <div v-for="c in speakerClips" :key="c.s3Key" class="vl-clip">
+                <input
+                  type="checkbox" :checked="pickedKeys.includes(c.s3Key)"
+                  :aria-label="`use this ${c.seconds}s clip`" @change="togglePick(c.s3Key)"
+                />
+                <span class="vl-clip-secs">{{ c.seconds }}s</span>
+                <span class="vl-clip-role ui-pill ui-hue-quiet">{{ c.role }}</span>
+                <audio :src="c.url" controls preload="none" class="vl-clip-audio" />
+                <span class="vl-clip-text" :title="c.text">{{ c.text }}</span>
+              </div>
+            </div>
+            <p v-if="pickHint" class="vl-muted vl-pick-hint">{{ pickHint }}</p>
+          </template>
         </div>
 
-        <div v-else class="vl-clone-row vl-record-row">
+        <div v-else-if="cloneSource === 'upload'" class="vl-clone-row">
+          <input type="file" accept="audio/*" class="ui-field" @change="pickFile" />
+          <span class="vl-muted">
+            One continuous take, 20&ndash;60 seconds. Ten seconds is the floor. Clean room, no
+            background noise, no long pauses &mdash; pauses come back out in the clone.
+          </span>
+        </div>
+
+        <div v-else-if="cloneSource === 'record'" class="vl-clone-row vl-record-row">
           <button v-if="!recording" class="vl-btn" @click="startRecording">● Record</button>
           <button v-else class="vl-btn vl-recording" @click="stopRecording">■ Stop — {{ recordSeconds }}s</button>
           <span v-if="recording" class="vl-muted">
@@ -710,9 +1003,10 @@ function candidatesFor (lang, slot) {
         </div>
 
         <div class="vl-clone-row">
-          <button class="vl-btn" :disabled="cloneBusy || !cloneFile || !cloneName" @click="submitClone">
+          <button class="vl-btn" :disabled="cloneBusy || !canSubmitClone" @click="submitClone">
             {{ cloneBusy ? 'Cloning…' : 'Create the clone' }}
           </button>
+          <span v-if="!clonePerson" class="vl-muted">Name whose voice this is first.</span>
         </div>
 
         <div v-if="cloneResult" class="vl-clone-done">
@@ -721,10 +1015,25 @@ function candidatesFor (lang, slot) {
             — registered as <code>{{ cloneResult.voice?.voice_id }}</code>.
             It is castable in the table below now, and it is in the Play menu.
           </p>
+          <!-- The consent fact, on the voice, from its first second. -->
+          <ConsentBadge :consent="cloneResult.consent" mode="full" />
+          <p v-if="cloneResult.source" class="vl-muted">
+            Built from {{ cloneResult.source.used?.length }} estate clip(s), {{ cloneResult.source.seconds }}s.
+            <span v-if="cloneResult.source.stitched"><br>{{ cloneResult.source.stitched }}</span>
+            <span v-if="cloneResult.source.short"><br>{{ cloneResult.source.short }}</span>
+          </p>
+          <div class="vl-clone-row">
+            <button class="ui-sort-btn" @click="openConsent(cloneResult.voice?.voice_id, cloneResult.consent)">
+              Record an authorisation
+            </button>
+            <button class="ui-sort-btn" :disabled="removeBusy" @click="removeVoice(cloneResult.voice?.voice_id)">
+              {{ removeBusy === cloneResult.voice?.voice_id ? 'Removing…' : 'Remove this voice' }}
+            </button>
+          </div>
           <!-- HEAR IT. This is the only control on this panel that spends
                anything, and it says so. -->
           <div class="vl-clone-row">
-            <input v-model="auditionText" class="ui-field vl-audition-text" placeholder="a sentence for it to say" />
+            <input v-model="auditionText" class="ui-field vl-audition-text" placeholder="leave blank to hear a real course line" />
             <button
               class="vl-btn"
               :disabled="auditionBusy"
@@ -733,12 +1042,50 @@ function candidatesFor (lang, slot) {
             <span class="vl-muted">one clip, through the lab's ordinary render path and its daily ceiling.</span>
           </div>
           <p v-if="auditionError" class="vl-error">{{ auditionError }}</p>
+          <!-- THE COURSE IS NAMED. What is SAID belongs to the course, not the
+               language (Tom's correction, 2026-08-31), so an audition line is
+               never presented as "the" line for a language. -->
+          <p v-if="auditionLine" class="vl-muted">
+            Real course line from <strong>{{ auditionLine.courseName || auditionLine.course }}</strong>
+            <span v-if="auditionLine.source"> ({{ auditionLine.source }})</span>.
+          </p>
           <div v-for="c in auditionClips" :key="c.id" class="vl-clone-row">
             <audio :src="c.src" controls autoplay class="vl-record-audio" />
             <span class="vl-muted">{{ c.text }}</span>
           </div>
         </div>
       </div>
+    </section>
+
+    <!-- ── RECORDING AN AUTHORISATION ────────────────────────────────────────
+         Tom obtains the consent; this writes down what he was told. It cannot
+         invent a yes: a named human, a means and a date are all required here
+         and again by the database's own CHECK constraint. -->
+    <section v-if="consentFor" class="vl-clone vl-consent-editor">
+      <p><strong>Consent for <code>{{ consentFor }}</code></strong></p>
+      <div class="vl-clone-row">
+        <select v-model="consentForm.status" class="ui-field vl-narrow">
+          <option value="authorised">they said yes</option>
+          <option value="awaiting_authorisation">not asked yet</option>
+          <option value="refused">they said no</option>
+          <option value="withdrawn">they have withdrawn it</option>
+          <option value="not_recorded">nothing recorded</option>
+        </select>
+        <input v-model="consentForm.person" class="ui-field" placeholder="whose voice it is" />
+        <input v-model="consentForm.authorisedBy" class="ui-field" placeholder="who said yes" />
+      </div>
+      <div class="vl-clone-row">
+        <input v-model="consentForm.authorisedHow" class="ui-field vl-narrow" placeholder="how — in person, email…" />
+        <input v-model="consentForm.authorisedAt" type="date" class="ui-field vl-narrow" />
+        <input v-model="consentForm.note" class="ui-field" placeholder="anything else worth knowing" />
+      </div>
+      <div class="vl-clone-row">
+        <button class="vl-btn" :disabled="consentBusy" @click="saveConsent">
+          {{ consentBusy ? 'Saving…' : 'Record it' }}
+        </button>
+        <button class="ui-sort-btn" @click="consentFor = null">Cancel</button>
+      </div>
+      <p v-if="consentError" class="vl-error">{{ consentError }}</p>
     </section>
 
     <div class="vl-search">
@@ -1008,6 +1355,19 @@ function candidatesFor (lang, slot) {
                       <span class="vl-voice">{{ slot.voiceName }}</span>
                       <span class="vl-kind">{{ slot.kind }}</span>
                       <span v-if="slot.active === false" class="ui-pill ui-hue-bad">voice inactive</span>
+                      <!-- CONSENT TRAVELS ONTO THE CAST SLOT. This is the one
+                           place a voice is actually in front of learners, so it
+                           is the one place "who authorised this?" most has to be
+                           answerable at a glance. Drawn only for voices the
+                           question is about — a vendor's stock voice has nobody
+                           behind it to ask. -->
+                      <ConsentBadge v-if="slot.consent && slot.consent.aboutAPerson" :consent="slot.consent" />
+                      <button
+                        v-if="slot.consent && slot.consent.aboutAPerson"
+                        class="ui-sort-btn vl-consent-btn"
+                        title="Record who authorised this voice, and when"
+                        @click="openConsent(slot.voiceId, slot.consent)"
+                      >consent…</button>
                       <!-- PER-VOICE NATURAL PACE (Tom, 2026-08-29). The belt
                            ramp multiplies, so 0.8x of a brisk voice and 0.8x of
                            a measured one are nowhere near each other. This says
@@ -1106,6 +1466,19 @@ function candidatesFor (lang, slot) {
                       <span class="vl-voice">{{ slot.voiceName }}</span>
                       <span class="vl-kind">{{ slot.kind }}</span>
                       <span v-if="slot.active === false" class="ui-pill ui-hue-bad">voice inactive</span>
+                      <!-- CONSENT TRAVELS ONTO THE CAST SLOT. This is the one
+                           place a voice is actually in front of learners, so it
+                           is the one place "who authorised this?" most has to be
+                           answerable at a glance. Drawn only for voices the
+                           question is about — a vendor's stock voice has nobody
+                           behind it to ask. -->
+                      <ConsentBadge v-if="slot.consent && slot.consent.aboutAPerson" :consent="slot.consent" />
+                      <button
+                        v-if="slot.consent && slot.consent.aboutAPerson"
+                        class="ui-sort-btn vl-consent-btn"
+                        title="Record who authorised this voice, and when"
+                        @click="openConsent(slot.voiceId, slot.consent)"
+                      >consent…</button>
                       <!-- PER-VOICE NATURAL PACE (Tom, 2026-08-29). The belt
                            ramp multiplies, so 0.8x of a brisk voice and 0.8x of
                            a measured one are nowhere near each other. This says
@@ -1205,6 +1578,31 @@ function candidatesFor (lang, slot) {
 .vl-detail-name { font-weight: 700; font-size: .95rem; }
 .vl-detail-close { margin-left: auto; }
 .vl-clone-lang { align-self: center; font-size: .8125rem; }
+.vl-wide { flex: 1 1 24rem; }
+.vl-guidance { margin: .25rem 0 .75rem; font-size: .875rem; }
+.vl-consent-row { align-items: center; }
+.vl-consent-btn { font-size: .6875rem; padding: .1rem .4rem; }
+.vl-consent-editor { border: 1px solid var(--line); border-radius: 8px; padding: .75rem 1rem; margin-top: 1rem; }
+.vl-warn-line { margin: .5rem 0; font-size: .8125rem; }
+.vl-estate { display: flex; flex-direction: column; gap: .5rem; }
+.vl-speakers { display: flex; flex-wrap: wrap; gap: .4rem; max-height: 12rem; overflow-y: auto; }
+.vl-speaker {
+  display: flex; flex-direction: column; gap: .1rem; text-align: left;
+  border: 1px solid var(--line); border-radius: 8px; background: transparent;
+  color: inherit; font: inherit; cursor: pointer; padding: .4rem .6rem; min-width: 12rem;
+}
+.vl-speaker.is-on { border-color: var(--accent, #6366f1); background: var(--surface-2, rgba(99, 102, 241, .1)); }
+.vl-speaker-id { font-weight: 600; font-size: .8125rem; }
+.vl-speaker-nums { font-size: .75rem; opacity: .9; }
+.vl-speaker-roles { font-size: .6875rem; opacity: .6; }
+.vl-clips { display: flex; flex-direction: column; gap: .3rem; max-height: 22rem; overflow-y: auto; }
+.vl-clip { display: flex; align-items: center; gap: .5rem; padding: .2rem .3rem; border-radius: 6px; }
+.vl-clip:hover { background: var(--surface-2, rgba(127, 127, 127, .08)); }
+.vl-clip-secs { flex: none; width: 3.2rem; font-variant-numeric: tabular-nums; font-size: .8125rem; }
+.vl-clip-role { flex: none; font-size: .6875rem; }
+.vl-clip-audio { flex: none; height: 2rem; width: 15rem; }
+.vl-clip-text { flex: 1 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: .8125rem; opacity: .8; }
+.vl-pick-hint { margin: .25rem 0 0; }
 .vl-flag { margin-left: .35rem; }
 .vl-count.ok { color: var(--success); font-weight: 600; }
 .vl-count.warn { color: var(--accent); font-weight: 600; }
