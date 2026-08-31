@@ -68,6 +68,7 @@
 import { ref, computed, onMounted } from 'vue'
 import { api, clipUrl } from './labApi'
 import CandidateVoices from './CandidateVoices.vue'
+import ConsentStep from './ConsentStep.vue'
 import ConsentBadge from './ConsentBadge.vue'
 import CloneConfirm from './CloneConfirm.vue'
 // The estate's ONE place that turns a code into words. Importing it also kicks
@@ -989,38 +990,172 @@ async function submitClone () {
   cloneBusy.value = false
 }
 
-// ── RECORDING AN AUTHORISATION ─────────────────────────────────────────────
-// Tom, 2026-08-31: consent "is Tom to obtain, not you… There must be a plain
-// way for Tom to authorise a voice once he has actually asked the person."
-// This is that. It cannot invent a yes: a named human, a means and a date are
-// all required, by the route and again by the database.
+// ── GIVING CONSENT TO A VOICE ──────────────────────────────────────────────
+//
+// Tom, 2026-08-31, looking at the lab: "there is no way to give consent to a
+// voice here." Consent had become REQUIRED to cast on the same day — refused
+// server-side at every door — and nothing on this page could satisfy it for a
+// voice that already existed. Nine voices were stuck with no route forward.
+//
+// TWO MECHANISMS WENT, ONE STAYED. What was here was a form — a status
+// dropdown, a name, a date, a note — which could mark a voice `authorised` on
+// typing alone: a second meaning of the word consent, one screen from the clone
+// routes' spoken line. And this panel briefly grew a third of its own before
+// ConsentStep.vue landed on main for the cast screens. Tom's instruction was
+// explicit: use the SAME mechanism, do not invent a second one. So the panel
+// IS ConsentStep — the same component, the same route, the same wording as
+// PodLab and the pod cast screen — and this file only decides WHERE it opens
+// (under the row that was tapped) and what it can hear while it is open.
+//
+// The refusal is the one thing that does not go through it: consent-capture
+// deliberately cannot overturn a decision, so "they said no" goes to the older
+// admin PUT.
 const consentFor = ref(null)
-const consentForm = ref({ status: 'authorised', person: '', authorisedBy: '', authorisedHow: 'in person', authorisedAt: '', note: '' })
+/** Which candidate list it was opened from — the same voice is in two of them. */
+const consentIn = ref('')
 const consentBusy = ref(false)
 const consentError = ref('')
 
-function openConsent (voiceId, current) {
+function openConsent (voiceId, listKey = '') {
+  if (consentFor.value === voiceId && consentIn.value === listKey) { consentFor.value = null; return }
   consentError.value = ''
   consentFor.value = voiceId
-  consentForm.value = {
-    status: current?.status === 'not_recorded' ? 'authorised' : (current?.status || 'authorised'),
-    person: current?.person || '',
-    authorisedBy: current?.authorisedBy || current?.person || '',
-    authorisedHow: current?.authorisedHow || 'in person',
-    authorisedAt: (current?.authorisedAt || new Date().toISOString()).slice(0, 10),
-    note: current?.note || '',
-  }
+  consentIn.value = listKey
+  // The panel's first control plays the voice, so opening it loads what this
+  // voice has to play. Costs nothing.
+  const lang = expanded.value ? langByCode(expanded.value) : null
+  if (lang) loadVoiceClips(lang, voiceId)
 }
 
-async function saveConsent () {
+/** The consent block for whichever voice the panel is open on. */
+const consentCurrent = computed(() => {
+  if (!consentFor.value) return null
+  for (const lang of (data.value?.languages || [])) {
+    for (const c of [...(lang.candidates || []), ...((lang.guide && lang.guide.candidates) || [])]) {
+      if (c.voiceId === consentFor.value) return c.consent || null
+    }
+    for (const slot of [...slotsOf(lang), ...guideSlotsOf(lang)]) {
+      if (slot.voiceId === consentFor.value) return slot.consent || null
+    }
+  }
+  return null
+})
+
+/**
+ * The panel wrote a consent. Reload, so the chip that opened it becomes the
+ * state it now describes — and a Cast button appears where it was refused.
+ */
+function consentRecorded () {
+  consentFor.value = null
+  load()
+}
+
+/**
+ * A no. One tap, the same weight as the yes beside it.
+ *
+ * It goes through the older admin PUT rather than the declaration route, and
+ * that is the right split: consent-capture.cjs deliberately CANNOT write a
+ * refusal, because the thing it exists to do is add an evidenced yes and never
+ * to overturn a decision. Recording the no is a different act.
+ */
+async function consentDecide ({ status = 'refused', person }) {
   consentBusy.value = true
   consentError.value = ''
   try {
-    await api.recordConsent(consentFor.value, { ...consentForm.value })
+    await api.recordConsent(consentFor.value, { status, person })
     consentFor.value = null
     await load()
   } catch (e) { consentError.value = e.message }
   consentBusy.value = false
+}
+
+// ── HEARING ONE VOICE PROPERLY ─────────────────────────────────────────────
+//
+// Tom's other two gaps, 2026-08-31: "there is no way to hear a voice that does
+// not currently have a clip" and "there is only one clip per voice".
+//
+// `openVoice` is the voice whose judging set is showing — several lines of
+// deliberately different lengths, from the course this voice would actually
+// speak, because one clip may flatter a voice or misrepresent it. Reading that
+// state costs nothing; rendering one line of it costs one clip and is always a
+// deliberate tap on the line itself.
+const openVoice = ref('')
+/** Which candidate list the strip belongs to, so it opens once and not twice. */
+const openIn = ref('')
+/**
+ * voiceId -> its judging-set state. A MAP rather than one "currently open"
+ * object, because two things read it now: the strip under a row, and the
+ * consent panel's hear-it-first row, which is open on a voice the strip may not
+ * be. Keyed reads keep them from fighting over one slot.
+ */
+const clipsByVoice = ref({})
+const renderingClip = ref('')
+
+const openClips = computed(() => (openVoice.value ? clipsByVoice.value[openVoice.value] || null : null))
+function clipsOf (voiceId) { return voiceId ? clipsByVoice.value[voiceId] || null : null }
+
+async function loadVoiceClips (lang, voiceId) {
+  let state
+  try {
+    state = await api.voiceClips(lang.code, voiceId)
+  } catch (e) {
+    state = { lines: [], clips: [], why: e.message }
+  }
+  clipsByVoice.value = { ...clipsByVoice.value, [voiceId]: state }
+}
+
+async function toggleVoice (lang, voiceId, listKey = '') {
+  if (openVoice.value === voiceId && openIn.value === listKey) { openVoice.value = ''; return }
+  openVoice.value = voiceId
+  openIn.value = listKey
+  if (!clipsByVoice.value[voiceId]) await loadVoiceClips(lang, voiceId)
+}
+
+/**
+ * ONE TAP ENDS IN AUDIO. If the line has a clip, it plays it; if it has none,
+ * it renders one and then plays it. The backend returns a cached or free clip
+ * without spending, so pressing an already-rendered line never pays twice.
+ */
+async function hearVoice (lang, { voiceId, lineIndex = 0 }) {
+  // The consent panel can be open on a voice from the clone list, with no
+  // language row expanded behind it — and then there is no course to pick a
+  // line from. Nothing to play is not an error worth shouting about.
+  if (!lang) return
+  const key = `${voiceId}:${lineIndex}`
+  const known = (clipsByVoice.value[voiceId]?.clips || []).find((c) => c.lineIndex === lineIndex)
+  if (known && known.url) return playClip(key, known.url)
+  if (lineIndex === 0 && samplesFor(lang)[voiceId]) return play(lang, voiceId)
+
+  renderingClip.value = clipsByVoice.value[voiceId] ? key : voiceId
+  error.value = ''
+  try {
+    const out = await api.renderVoiceClip(lang.code, voiceId, lineIndex)
+    const state = clipsByVoice.value[voiceId]
+    if (state) {
+      clipsByVoice.value = {
+        ...clipsByVoice.value,
+        [voiceId]: { ...state, clips: (state.clips || []).map((c) => (c.lineIndex === lineIndex ? { ...c, ...out.clip } : c)) },
+      }
+    }
+    // The row's own play button reads the language-level sample map, so line
+    // zero lands there too — otherwise the row would go back to a dashed
+    // outline the moment the panel closed.
+    if (lineIndex === 0) addSample(lang.code, voiceId, { url: out.clip.url, durationMs: out.clip.durationMs || null, free: false, cached: true })
+    await playClip(key, out.clip.url)
+  } catch (e) { error.value = e.message }
+  renderingClip.value = ''
+}
+
+/** One <audio> for the page, exactly as `play` uses — two voices at once is not a comparison. */
+async function playClip (key, url) {
+  if (audio) { audio.pause(); audio = null }
+  if (playing.value === key) { playing.value = ''; return }
+  const src = /^https?:/.test(url) ? url : await clipUrl(url)
+  audio = new Audio(src)
+  audio.onended = () => { playing.value = '' }
+  audio.onerror = () => { playing.value = ''; error.value = `Could not play ${key}.` }
+  playing.value = key
+  audio.play().catch((e) => { playing.value = ''; error.value = e.message })
 }
 
 // ── UN-CREATING A VOICE ────────────────────────────────────────────────────
@@ -1383,6 +1518,11 @@ async function clear (lang, slot) {
  * A GUIDE slot takes any voice that speaks the language — a guide is one voice,
  * and the male/female split belongs to the phrase slots alone.
  */
+/** The row for a code, so a handler holding only a code can reach its language. */
+function langByCode (code) {
+  return (data.value?.languages || []).find((l) => l.code === code) || null
+}
+
 function candidatesFor (lang, slot) {
   if (slot.slot === 'guide') return lang.guide?.candidates || []
   return (lang.candidates || []).filter((c) => !c.gender || c.gender === slot.gender)
@@ -1661,7 +1801,7 @@ function candidatesFor (lang, slot) {
                  record is made, so it is the moment to show what was actually
                  written down about a real person. -->
             <ConsentBadge :consent="k.consent" mode="full" />
-            <button v-if="k.voice" class="ui-sort-btn" @click="openConsent(k.voice.voice_id, k.consent)">consent…</button>
+            <button v-if="k.voice" class="ui-sort-btn" @click="openConsent(k.voice.voice_id, `clone:${k.id}`)">consent…</button>
             <button v-if="k.voice" class="ui-sort-btn" @click="discard(k)">discard</button>
             <CloneConfirm
               v-if="k.voice"
@@ -1674,37 +1814,6 @@ function candidatesFor (lang, slot) {
 
         </div>
       </div>
-    </section>
-
-    <!-- ── RECORDING AN AUTHORISATION ────────────────────────────────────────
-         Tom obtains the consent; this writes down what he was told. It cannot
-         invent a yes: a named human, a means and a date are all required here
-         and again by the database's own CHECK constraint. -->
-    <section v-if="consentFor" class="vl-clone vl-consent-editor">
-      <p><strong>Consent for <code>{{ consentFor }}</code></strong></p>
-      <div class="vl-clone-row">
-        <select v-model="consentForm.status" class="ui-field vl-narrow">
-          <option value="authorised">they said yes</option>
-          <option value="awaiting_authorisation">not asked yet</option>
-          <option value="refused">they said no</option>
-          <option value="withdrawn">they have withdrawn it</option>
-          <option value="not_recorded">nothing recorded</option>
-        </select>
-        <input v-model="consentForm.person" class="ui-field" placeholder="whose voice it is" />
-        <input v-model="consentForm.authorisedBy" class="ui-field" placeholder="who said yes" />
-      </div>
-      <div class="vl-clone-row">
-        <input v-model="consentForm.authorisedHow" class="ui-field vl-narrow" placeholder="how — in person, email…" />
-        <input v-model="consentForm.authorisedAt" type="date" class="ui-field vl-narrow" />
-        <input v-model="consentForm.note" class="ui-field" placeholder="anything else worth knowing" />
-      </div>
-      <div class="vl-clone-row">
-        <button class="vl-btn" :disabled="consentBusy" @click="saveConsent">
-          {{ consentBusy ? 'Saving…' : 'Record it' }}
-        </button>
-        <button class="ui-sort-btn" @click="consentFor = null">Cancel</button>
-      </div>
-      <p v-if="consentError" class="vl-error">{{ consentError }}</p>
     </section>
 
     <div class="vl-search">
@@ -1969,7 +2078,7 @@ function candidatesFor (lang, slot) {
                         v-if="slot.consent && slot.consent.aboutAPerson"
                         class="ui-sort-btn vl-consent-btn"
                         title="Record who authorised this voice, and when"
-                        @click="openConsent(slot.voiceId, slot.consent)"
+                        @click="openConsent(slot.voiceId, slotKey(lang, slot))"
                       >consent…</button>
                       <!-- PER-VOICE NATURAL PACE (Tom, 2026-08-29). The belt
                            ramp multiplies, so 0.8x of a brisk voice and 0.8x of
@@ -2004,6 +2113,22 @@ function candidatesFor (lang, slot) {
                         :disabled="busy === slotKey(lang, slot)"
                         @click="clear(lang, slot)"
                       >Clear</button>
+                      <!-- A CAST VOICE CAN LOSE ITS CONSENT TOO. Withdrawal is
+                           the case: the panel opens under the slot it was
+                           tapped in, exactly as it does in a candidate list. -->
+                      <ConsentStep
+                        :voice-id="slot.voiceId"
+                        :person="consentCurrent?.person || ''"
+                        :reason="(slot.consent) ? (slot.consent).castWarning || '' : ''"
+                        :language="lang.code"
+                        :clips="clipsOf(slot.voiceId)"
+                        :playing="playing"
+                        allow-refusal
+                        @recorded="consentRecorded"
+                        @cancel="consentFor = null"
+                        @refuse="consentDecide"
+                        @hear="hearVoice(lang, { voiceId: slot.voiceId, lineIndex: $event })"
+                      />
                     </div>
 
                     <div v-else class="vl-slot-empty">
@@ -2023,9 +2148,35 @@ function candidatesFor (lang, slot) {
                         :busy="busy === slotKey(lang, slot)"
                         :pace-title="(c) => (c.pace ? candidatePace(c) : '')"
                         :pace-suffix="paceSuffix"
+                        :list-key="slotKey(lang, slot)"
+                        :open-voice="openVoice"
+                        :open-in="openIn"
+                        :consent-for="consentFor"
+                        :consent-in="consentIn"
+                        :open-clips="openClips"
+                        :rendering="renderingClip"
                         @play="play(lang, $event)"
                         @cast="cast(lang, slot, $event)"
-                      />
+                        @open="toggleVoice(lang, $event, slotKey(lang, slot))"
+                        @hear="hearVoice(lang, $event)"
+                        @consent="openConsent($event, slotKey(lang, slot))"
+                      >
+                        <template #consent="{ voiceId }">
+                          <ConsentStep
+                            :voice-id="voiceId"
+                            :person="consentCurrent?.person || ''"
+                            :reason="(consentCurrent) ? (consentCurrent).castWarning || '' : ''"
+                            :language="lang.code"
+                            :clips="clipsOf(voiceId)"
+                            :playing="playing"
+                            allow-refusal
+                            @recorded="consentRecorded"
+                            @cancel="consentFor = null"
+                            @refuse="consentDecide"
+                            @hear="hearVoice(lang, { voiceId, lineIndex: $event })"
+                          />
+                        </template>
+                      </CandidateVoices>
                     </div>
                   </div>
                 </div>
@@ -2072,7 +2223,7 @@ function candidatesFor (lang, slot) {
                         v-if="slot.consent && slot.consent.aboutAPerson"
                         class="ui-sort-btn vl-consent-btn"
                         title="Record who authorised this voice, and when"
-                        @click="openConsent(slot.voiceId, slot.consent)"
+                        @click="openConsent(slot.voiceId, slotKey(lang, slot))"
                       >consent…</button>
                       <!-- PER-VOICE NATURAL PACE (Tom, 2026-08-29). The belt
                            ramp multiplies, so 0.8x of a brisk voice and 0.8x of
@@ -2107,6 +2258,22 @@ function candidatesFor (lang, slot) {
                         :disabled="busy === slotKey(lang, slot)"
                         @click="clear(lang, slot)"
                       >Clear</button>
+                      <!-- A CAST VOICE CAN LOSE ITS CONSENT TOO. Withdrawal is
+                           the case: the panel opens under the slot it was
+                           tapped in, exactly as it does in a candidate list. -->
+                      <ConsentStep
+                        :voice-id="slot.voiceId"
+                        :person="consentCurrent?.person || ''"
+                        :reason="(slot.consent) ? (slot.consent).castWarning || '' : ''"
+                        :language="lang.code"
+                        :clips="clipsOf(slot.voiceId)"
+                        :playing="playing"
+                        allow-refusal
+                        @recorded="consentRecorded"
+                        @cancel="consentFor = null"
+                        @refuse="consentDecide"
+                        @hear="hearVoice(lang, { voiceId: slot.voiceId, lineIndex: $event })"
+                      />
                     </div>
 
                     <!-- The GUIDE slot casts exactly like a phrase slot: same
@@ -2122,10 +2289,36 @@ function candidatesFor (lang, slot) {
                         :busy="busy === slotKey(lang, slot)"
                         :pace-title="(c) => (c.pace ? candidatePace(c) : '')"
                         :pace-suffix="paceSuffix"
+                        :list-key="slotKey(lang, slot)"
+                        :open-voice="openVoice"
+                        :open-in="openIn"
+                        :consent-for="consentFor"
+                        :consent-in="consentIn"
+                        :open-clips="openClips"
+                        :rendering="renderingClip"
                         empty-text="no voice in the estate declares this language"
                         @play="play(lang, $event)"
                         @cast="cast(lang, slot, $event)"
-                      />
+                        @open="toggleVoice(lang, $event, slotKey(lang, slot))"
+                        @hear="hearVoice(lang, $event)"
+                        @consent="openConsent($event, slotKey(lang, slot))"
+                      >
+                        <template #consent="{ voiceId }">
+                          <ConsentStep
+                            :voice-id="voiceId"
+                            :person="consentCurrent?.person || ''"
+                            :reason="(consentCurrent) ? (consentCurrent).castWarning || '' : ''"
+                            :language="lang.code"
+                            :clips="clipsOf(voiceId)"
+                            :playing="playing"
+                            allow-refusal
+                            @recorded="consentRecorded"
+                            @cancel="consentFor = null"
+                            @refuse="consentDecide"
+                            @hear="hearVoice(lang, { voiceId, lineIndex: $event })"
+                          />
+                        </template>
+                      </CandidateVoices>
                     </div>
                   </div>
                 </div>

@@ -45,8 +45,28 @@ const props = defineProps({
   person: { type: String, default: '' },
   /** Only used if the voice has no `voices` row and one must be created. */
   language: { type: String, default: '' },
+  /**
+   * HEAR IT FIRST, when the host can supply audio. `{ lines, clips }` from
+   * GET /languages/:language/voices/:id/clips — a clip per line of the judging
+   * set, empty ones included, because tapping an empty one renders it.
+   *
+   * Optional, and absent is a real state: PodLab's cast screen has no language
+   * row behind it to pick a course line from. Where it IS supplied it matters a
+   * great deal — Tom, 2026-08-31: "you cannot judge a voice you cannot hear,
+   * and you certainly cannot confirm a clone you have never heard."
+   */
+  clips: { type: Object, default: null },
+  /** `voiceId:lineIndex` of whatever is sounding, so a row can say so. */
+  playing: { type: String, default: '' },
+  /**
+   * Offer the refusal. A no must be exactly as easy as a yes where a real
+   * person is being asked — one tap, same row. Off by default: the screens that
+   * open this because a CAST was refused are recording a fresh yes, and a
+   * "they said no" on a voice already refused is a button with nothing to do.
+   */
+  allowRefusal: { type: Boolean, default: false },
 })
-const emit = defineEmits(['recorded', 'cancel'])
+const emit = defineEmits(['recorded', 'cancel', 'hear', 'refuse'])
 
 const wording = ref(null)
 const wordingError = ref('')
@@ -78,7 +98,16 @@ const recordedUrl = ref('')
 const recordSeconds = ref(0)
 let recordTimer = null
 let recordedChunks = []
-let clipFile = null
+/**
+ * A REF, and this is not a style choice. It was a plain `let`, so writing the
+ * recorded take to it changed no reactive dependency and `ready` — a computed
+ * that reads it — never re-evaluated. The consequence, driven in a real browser
+ * on 2026-08-31: you read the line aloud, the take appears with its player and
+ * its "record it again", and "Record this consent" stays disabled forever. The
+ * spoken route could not be completed by anybody. The attestation route hid it,
+ * because ticking the box writes a ref and re-runs the computed.
+ */
+const clipFile = ref(null)
 
 /** A hard stop, so a forgotten tab cannot record for an hour. */
 const RECORD_MAX_SECONDS = 60
@@ -92,7 +121,7 @@ function clearRecording () {
   if (recordedUrl.value) URL.revokeObjectURL(recordedUrl.value)
   recordedUrl.value = ''
   recordSeconds.value = 0
-  clipFile = null
+  clipFile.value = null
 }
 
 async function startRecording () {
@@ -108,7 +137,7 @@ async function startRecording () {
     mr.onstop = () => {
       stream.getTracks().forEach((t) => t.stop())
       const blob = new Blob(recordedChunks, { type: mr.mimeType || 'audio/webm' })
-      clipFile = new File([blob], 'consent.webm', { type: blob.type })
+      clipFile.value = new File([blob], 'consent.webm', { type: blob.type })
       recordedUrl.value = URL.createObjectURL(blob)
       recording.value = false
       clearInterval(recordTimer)
@@ -135,7 +164,7 @@ function stopRecording () {
 
 const ready = computed(() => {
   if (!personName.value.trim()) return false
-  if (effectiveMode.value === 'spoken') return Boolean(clipFile)
+  if (effectiveMode.value === 'spoken') return Boolean(clipFile.value)
   return agreed.value && Boolean(attestedBy.value.trim())
 })
 
@@ -157,7 +186,7 @@ async function submit () {
         fd.append('declarationAgreed', 'true')
         fd.append('attestedBy', attestedBy.value.trim())
       }
-      fd.append('clip', clipFile)
+      fd.append('clip', clipFile.value)
       out = await api.recordConsentDeclaration(props.voiceId, fd)
     } else {
       out = await api.recordConsentDeclaration(props.voiceId, {
@@ -190,6 +219,20 @@ async function submit () {
     </div>
     <p v-if="reason" class="cs-reason">{{ reason }}</p>
     <p v-if="wordingError" class="cs-err">The consent wording could not be loaded — {{ wordingError }}</p>
+
+    <!-- HEAR IT. Consent given to a voice nobody has listened to is consent to
+         nothing, and this is also where a person hears themselves. A dashed pill
+         has not been rendered yet; tapping it renders that line and plays it. -->
+    <div v-if="clips && (clips.clips || []).length" class="cs-hear">
+      <button
+        v-for="c in clips.clips"
+        :key="c.lineIndex"
+        class="cs-clip"
+        :class="{ empty: !c.url, on: playing === `${voiceId}:${c.lineIndex}` }"
+        @click="emit('hear', c.lineIndex)"
+      >{{ playing === `${voiceId}:${c.lineIndex}` ? '■' : '▶' }} {{ (clips.lines[c.lineIndex] || {}).text }}</button>
+    </div>
+    <p v-else-if="clips && clips.why" class="cs-note">{{ clips.why }}</p>
 
     <label class="cs-field">
       <span>Whose voice is this?</span>
@@ -227,9 +270,20 @@ async function submit () {
     </template>
 
     <p v-if="error" class="cs-err">{{ error }}</p>
-    <button class="cs-btn cs-go" :disabled="!ready || busy" @click="submit">
-      {{ busy ? 'Recording consent…' : 'Record this consent' }}
-    </button>
+    <div class="cs-row">
+      <button class="cs-btn cs-go" :disabled="!ready || busy" @click="submit">
+        {{ busy ? 'Recording consent…' : 'Record this consent' }}
+      </button>
+      <!-- A NO IS AS EASY AS A YES. Same row, same size, one tap. It needs the
+           name for the same reason the yes does: a recorded decision nobody is
+           attached to cannot be acted on. -->
+      <button
+        v-if="allowRefusal"
+        class="cs-btn cs-no"
+        :disabled="busy || !personName.trim()"
+        @click="emit('refuse', { person: personName.trim() })"
+      >They said no</button>
+    </div>
   </div>
 </template>
 
@@ -249,6 +303,16 @@ async function submit () {
 .cs-btn { padding: .35rem .8rem; cursor: pointer; }
 .cs-rec { font-weight: 600; }
 .cs-go { align-self: flex-start; }
+.cs-no { color: var(--ui-bad, #c0392b); }
+.cs-hear { display: flex; flex-wrap: wrap; gap: .4rem; }
+.cs-clip {
+  display: inline-flex; align-items: center; gap: .4rem; max-width: 100%;
+  border: 1px solid currentColor; background: transparent; color: inherit;
+  border-radius: 999px; padding: .2rem .7rem; font: inherit; font-size: .8125rem;
+  cursor: pointer; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.cs-clip.empty { border-style: dashed; opacity: .55; }
+.cs-clip.on { font-weight: 600; }
 .cs-link { background: none; border: none; text-decoration: underline; cursor: pointer; font-size: .8125rem; padding: 0; }
 .cs-err { margin: 0; color: var(--ui-bad, #c0392b); font-size: .8125rem; }
 .cs-note, .cs-heard { margin: 0; font-size: .8125rem; opacity: .8; }

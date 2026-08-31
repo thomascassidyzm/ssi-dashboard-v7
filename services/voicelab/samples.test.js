@@ -121,3 +121,59 @@ describe('renderPlan — who can be previewed, on whose provider', () => {
     expect(isRenderable('human_spa_for_eng_target1', 'spa')).toBe(false)
   })
 })
+
+/**
+ * THE JUDGING SET (2026-08-31). Tom: "one clip is not enough to judge a voice
+ * on - it may be flattering or unrepresentative." So the set has to be
+ * genuinely varied, deterministic — two voices compared on different words is
+ * not a comparison — and its first line has to stay the line this module has
+ * always picked, or every clip already cached in the estate is orphaned.
+ */
+describe('chooseSet — several lines, deliberately different', () => {
+  const corpus = [
+    line('va', 1),
+    line('je vais bien', 2),
+    line('est-ce que tu viens ?', 3),
+    line('je pense que oui', 4),
+    line('nous allons au marché', 5),
+    line('il fait beau aujourd hui', 6),
+    line('je voudrais un café et un croissant', 7),
+    line('je ne sais pas encore ce que je vais faire demain', 8),
+    line('elle a dit que tout le monde serait là avant midi', 9),
+  ]
+
+  it('starts with exactly the line the single picker returns', () => {
+    expect(samples.chooseSet(corpus)[0]).toEqual(samples.chooseFrom(corpus))
+  })
+
+  it('gives three distinct lines', () => {
+    const set = samples.chooseSet(corpus)
+    expect(set).toHaveLength(3)
+    expect(new Set(set.map((l) => l.text)).size).toBe(3)
+  })
+
+  it('varies the length — the axis a voice actually fails on', () => {
+    const lengths = samples.chooseSet(corpus).map((l) => l.text.length)
+    expect(Math.max(...lengths) - Math.min(...lengths)).toBeGreaterThan(10)
+  })
+
+  it('prefers a question for the short slot, where a clone gives itself away', () => {
+    expect(samples.chooseSet(corpus).some((l) => l.text.endsWith('?'))).toBe(true)
+  })
+
+  it('is deterministic — the same set every visit, or it is not a comparison', () => {
+    expect(samples.chooseSet(corpus)).toEqual(samples.chooseSet(corpus))
+  })
+
+  it('never returns more lines than a tiny corpus holds', () => {
+    expect(samples.chooseSet([line('bonjour', 1)])).toHaveLength(1)
+  })
+
+  it('returns nothing for a corpus with nothing sayable in it', () => {
+    expect(samples.chooseSet([line('(4)', 1)])).toEqual([])
+  })
+
+  it('count 1 is exactly the old behaviour', () => {
+    expect(samples.chooseSet(corpus, 1)).toEqual([samples.chooseFrom(corpus)])
+  })
+})

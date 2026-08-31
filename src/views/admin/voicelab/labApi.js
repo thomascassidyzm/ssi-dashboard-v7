@@ -253,6 +253,19 @@ export const api = {
   decideCloneConfirmation: (voiceId, body) =>
     call(`/api/voicelab/voices/${encodeURIComponent(voiceId)}/confirmation`, { method: 'POST', body }),
 
+  // ── HEARING ONE VOICE PROPERLY ───────────────────────────────────────────
+  // `voiceClips` SPENDS NOTHING: the judging set for a language and, per line,
+  // a clip if one is cached here or already owned by the estate. A human voice
+  // comes back as its OWN recordings, because nothing synthesises a person.
+  // `renderVoiceClip` spends exactly one clip, and returns the cached one for
+  // free if the line has already been rendered.
+  voiceClips: (language, voiceId) =>
+    call(`/api/voicelab/languages/${encodeURIComponent(language)}/voices/${encodeURIComponent(voiceId)}/clips`),
+  renderVoiceClip: (language, voiceId, lineIndex = 0) =>
+    call(`/api/voicelab/languages/${encodeURIComponent(language)}/voices/${encodeURIComponent(voiceId)}/clips`, {
+      method: 'POST', body: { lineIndex },
+    }),
+
   // Un-create. Refused outright while the voice is cast into any slot.
   removeVoice: (voiceId) =>
     call(`/api/voicelab/voices/${encodeURIComponent(voiceId)}`, { method: 'DELETE' }),
