@@ -47,18 +47,22 @@ test('gap 1 — consent can be given to a voice, from the Voice Lab', async ({ p
   await row.locator('..').screenshot({ path: `${OUT}/1a-before-no-cast-button.png` })
 
   await row.locator('.vl-cand-noconsent').click()
-  const panel = page.locator('.vl-vc')
+  const panel = page.locator('.cs-step')
   await expect(panel).toBeVisible()
-  await panel.getByPlaceholder('their name').fill('Consent Probe')
+  await panel.getByRole('textbox', { name: 'Whose voice is this?' }).fill('Consent Probe')
+  // You cannot consent to a voice you have not heard: the panel offers the
+  // judging set for this voice, rendered on demand.
+  await expect(panel.locator('.cs-clip')).toHaveCount(3, { timeout: 60_000 })
   await panel.scrollIntoViewIfNeeded(); await panel.screenshot({ path: `${OUT}/1b-consent-panel.png` })
 
-  await panel.getByRole('button', { name: 'Record', exact: true }).click()
+  await panel.getByRole('button', { name: '● Record' }).click()
   await page.waitForTimeout(6000)
-  await panel.getByRole('button', { name: /^Stop/ }).click()
+  await panel.getByRole('button', { name: /Stop/ }).click()
   await expect(panel.locator('audio')).toBeVisible()
   await panel.scrollIntoViewIfNeeded(); await panel.screenshot({ path: `${OUT}/1c-line-read-aloud.png` })
 
-  await panel.getByRole('button', { name: 'Save this consent' }).first().click()
+  await panel.getByRole('textbox', { name: 'Whose voice is this?' }).fill('Consent Probe')
+  await panel.getByRole('button', { name: 'Record this consent' }).click()
   await expect(panel).toHaveCount(0, { timeout: 120_000 })
 
   const after = page.locator('.vl-cand', { hasText: PROBE }).first()
