@@ -231,13 +231,17 @@ function planSource (clips, { maxSeconds = MAX_SOURCE_SECONDS, maxClips = MAX_SO
  * the end. No course_audio row is read for anything but its key, and none is
  * written, moved, re-encoded or re-pointed.
  *
- * ── WHY A SINGLE CONCATENATED FILE ──────────────────────────────────────────
- * Cartesia's instant clone takes exactly ONE clip. The estate's instruction and
- * encouragement recordings are individually short, so cloning from them at all
- * means joining them. The join is a straight concatenation at a common sample
- * rate with no processing — no normalisation, no noise reduction, no trimming —
- * because Cartesia asks for "the volume, pacing, and audio quality you want
- * back", and the estate's mastered clips already are that.
+ * ── ONE CLIP IS COPIED; SEVERAL ARE JOINED ──────────────────────────────────
+ * Cartesia's instant clone takes exactly ONE file. A single chosen clip is
+ * therefore sent through UNTOUCHED — no decode, no re-encode, no ffmpeg at all
+ * — which is both the fastest path and the highest-fidelity one.
+ *
+ * The estate's instruction and encouragement recordings are individually short,
+ * so cloning from several of them means joining them. That join is a straight
+ * concatenation at a common sample rate with no processing — no normalisation,
+ * no noise reduction, no trimming — because Cartesia asks for "the volume,
+ * pacing, and audio quality you want back", and the estate's mastered clips
+ * already are that.
  *
  * A short silence is inserted between clips rather than butting them together:
  * two unrelated sentences spliced at the waveform give an audible click, and a
@@ -246,6 +250,44 @@ function planSource (clips, { maxSeconds = MAX_SOURCE_SECONDS, maxClips = MAX_SO
 async function buildSource (clips, { gapMs = 250, tmpRoot = null, fetchImpl = fetch, run = execFileAsync } = {}) {
   const plan = planSource(clips)
   if (!plan.take.length) throw Object.assign(new Error('No clips were selected to clone from.'), { status: 400 })
+
+  // ── ONE CLIP GOES STRAIGHT THROUGH, UNTOUCHED ─────────────────────────────
+  //
+  // Faster AND better, which is rare enough to state. Cartesia takes exactly one
+  // file, so a single-clip source needs no join — and a join is the only reason
+  // to decode and re-encode at all. Passing the estate's own mastered mp3
+  // through means:
+  //
+  //   * NO TRANSCODE. mp3 → wav → upload loses a generation for nothing.
+  //     Cartesia's advice is to send "the audio at the volume, pacing and audio
+  //     quality you want back", and a mastered course clip already is that. It
+  //     is also exactly what was done to the clone Tom judged good on
+  //     2026-08-27: nineteen seconds cut out and "nothing else done to it".
+  //   * NO ffmpeg PROCESS, so nothing to go wrong in front of an audience.
+  //   * AN EIGHTFOLD SMALLER UPLOAD. A 44-second clip is ~530 kB as mp3 and
+  //     ~3.9 MB as 44.1 kHz mono WAV. On a live demo that difference is the gap
+  //     between a pause and a wait.
+  //
+  // Several clips still go through ffmpeg below, because then there genuinely
+  // is a join to make.
+  if (plan.take.length === 1) {
+    const c = plan.take[0]
+    const res = await fetchImpl(c.url, { signal: AbortSignal.timeout(60000) })
+    if (!res.ok) throw Object.assign(new Error(`Could not read ${c.s3Key} (${res.status}) — the recording is not where the database says it is.`), { status: 502 })
+    const buffer = Buffer.from(await res.arrayBuffer())
+    const seconds = Math.round((c.durationMs || 0) / 100) / 10
+    return {
+      buffer,
+      filename: `clone-source${path.extname(c.s3Key) || '.mp3'}`,
+      seconds,
+      passthrough: true,
+      used: [{ s3Key: c.s3Key, seconds: c.seconds, role: c.role, text: (c.text || '').slice(0, 80) }],
+      skipped: plan.skipped.map((sk) => ({ s3Key: sk.clip && sk.clip.s3Key, why: sk.why })),
+      provenance: `1 clip already in the estate (${Math.round(seconds)}s), untouched`,
+      short: seconds && seconds < MIN_SOURCE_SECONDS ? `${Math.round(seconds)}s is under the ${MIN_SOURCE_SECONDS}s an instant clone wants. It will clone, but thinner.` : null,
+      stitched: null,
+    }
+  }
 
   const dir = fs.mkdtempSync(path.join(tmpRoot || os.tmpdir(), 'vl-clone-src-'))
   try {

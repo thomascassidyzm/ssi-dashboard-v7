@@ -281,7 +281,6 @@ const cloneLang = ref('eng')
 const cloneGender = ref('')
 const cloneFile = ref(null)
 const cloneBusy = ref(false)
-const cloneResult = ref(null)
 
 /**
  * 'estate' | 'upload' | 'record' — where this sample is coming from.
@@ -373,147 +372,238 @@ const pickedSeconds = computed(() => Math.round(
 const pickHint = computed(() => {
   if (!pickedKeys.value.length) return ''
   const n = pickedKeys.value.length
-  const s = pickedSeconds.value
-  if (s < 10) return `${s}s across ${n} clip(s) — under the 10s floor. It will clone, but thinner.`
-  if (n === 1) return `${s}s, one continuous take. That is the shape that clones best.`
-  return `${s}s across ${n} clips — they will be joined into one file. One long clip clones better: joins carry changes in tone and room sound that the clone can learn.`
+  const sec = pickedSeconds.value
+  if (sec < 10) return `${sec}s across ${n} clip(s) — under the 10s floor. It will clone, but thinner.`
+  if (n === 1) return `${sec}s, one continuous take. That is the shape that clones best.`
+  return `${sec}s across ${n} clips — they will be joined into one file. One long clip clones better: joins carry changes in tone and room sound that the clone can learn.`
 })
 
-function pickFile (e) {
-  cloneFile.value = e.target.files?.[0] || null
-  clearRecording()
-}
-
-// ── Recording on the page ──────────────────────────────────────────────────
-// MediaRecorder, and nothing else: no library, no upload until the operator has
-// heard the take. If the browser or the deployment refuses the microphone we
-// say so in one line and the upload path is untouched — a half-alive recorder
-// that silently captures nothing is worse than no recorder.
-const recorder = ref(null)
-const recording = ref(false)
-const recordedUrl = ref('')
-const recordSeconds = ref(0)
-const recordError = ref('')
-let recordTimer = null
-let recordedChunks = []
-
-const canRecord = typeof window !== 'undefined'
-  && typeof window.MediaRecorder !== 'undefined'
-  && Boolean(navigator?.mediaDevices?.getUserMedia)
+// ── THE DEMO: ONE TAP PER CLIP, AND THE CLONES STAY ON SCREEN ──────────────
+//
+// Tom, 2026-08-31, reframing what this screen is for: he sits with Aran and
+// shows him, live, that we can clone his voice from recordings he already made
+// — "and does it more than once, from DIFFERENT source clips, so Aran hears how
+// the source changes the result… A single perfect clone is worth less here than
+// three clones from three sources that Aran can hear the difference between."
+//
+// Three consequences, and they are the whole design of this block:
+//
+//   1. ONE TAP. No form to fill per clone. The person is typed ONCE at the top,
+//      the name is generated from the clip it came from, and the button on the
+//      row does the whole thing: clone, then immediately audition, so the tap
+//      ends in audio rather than in an id.
+//   2. CLONES ACCUMULATE. `clones` is a LIST, appended to and never overwritten.
+//      The previous design kept one `cloneResult` and replaced it — which is
+//      exactly the comparison this demo is made of, destroyed on every tap.
+//   3. EVERY CLONE SITS BESIDE ITS SOURCE, and both play. Original above, clone
+//      below, same row, same words underneath.
+//
+// ── WHY THE WAIT IS SHOWN RATHER THAN HIDDEN ────────────────────────────────
+// Measured live on this box, 2026-08-31, over six real clones: the Cartesia
+// clone call runs 6.0s on a 12-second source, 10.4s on a 44-second one and
+// 10.7s on an 84-second one — it climbs with source length and then plateaus —
+// and the audition adds a further ~2.3s. So a tap is six to thirteen seconds
+// before there is anything to hear. That is Cartesia's latency and no amount of
+// front-end work removes it.
+//
+// An unexplained thirteen-second freeze in front of an audience reads as a
+// crash. So the row names the stage it is in, counts the seconds out, and says
+// the useful thing to do meanwhile: PLAY THE ORIGINAL. That is not a
+// consolation — the originals are 44-second welcomes, so playing one covers the
+// whole wait exactly, and the demo fills its own dead time.
 
 /**
- * Cartesia's own guidance, RE-VERIFIED against their live documentation on
- * 2026-08-31: "You can create an instant voice clone with as little as 10
- * seconds of audio", and up to sixty is recommended, more so for a less common
- * accent. Ten is the FLOOR. An older note in this estate
- * (docs/tts-bakeoff/phase2-clone-source-from-clone-2026-08-27.md) quotes it as
- * a ten-second CAP; that is wrong, and the nineteen-second clone Tom judged
- * good on 2026-08-27 is the estate's own refutation of it.
+ * What every clone says, so the clones are comparable with each other and not
+ * only with their sources. Deliberately something the speaker has NEVER said —
+ * a clone repeating its own source proves nothing, and "saying things you have
+ * never said" is the line that landed with Aran on 2026-08-27.
  */
-const RECORD_MIN_SECONDS = 10
-const RECORD_MAX_SECONDS = 60
+const demoLine = ref('This is my own voice, and I have never said this sentence in my life.')
 
-function clearRecording () {
-  if (recordedUrl.value) URL.revokeObjectURL(recordedUrl.value)
-  recordedUrl.value = ''
-  recordSeconds.value = 0
+/** Every clone made in this session, oldest first. NEVER overwritten. */
+const clones = ref([])
+let cloneSeq = 0
+
+function clonesFor (s3Key) {
+  return clones.value.filter((c) => c.s3Key === s3Key)
 }
 
-async function startRecording () {
-  recordError.value = ''
-  clearRecording()
-  cloneFile.value = null
+/**
+ * Clone from ONE clip and immediately hear it, in a single tap.
+ *
+ * Each clone is its own row-level operation with its own stage, its own timer
+ * and its own error. Nothing here is global: a clone that fails leaves every
+ * other clone on screen untouched, which on a live demo is the difference
+ * between one awkward moment and a dead page.
+ */
+async function cloneOne (clip) {
+  if (!clonePerson.value) { error.value = 'Type whose voice this is first — one field, at the top.'; return }
+  const entry = {
+    id: `c${++cloneSeq}`,
+    s3Key: clip.s3Key,
+    clip,
+    speaker: chosenSpeaker.value ? chosenSpeaker.value.voiceId : null,
+    stage: 'cloning',
+    seconds: 0,
+    voice: null,
+    consent: null,
+    source: null,
+    audio: null,
+    line: demoLine.value,
+    error: '',
+  }
+  clones.value = [...clones.value, entry]
+  const tick = setInterval(() => { entry.seconds += 1 }, 1000)
   try {
-    const stream = await navigator.mediaDevices.getUserMedia({ audio: true })
-    // webm/opus is what every browser that has MediaRecorder actually emits,
-    // and Cartesia accepts webm — so no transcoding happens anywhere.
-    const mime = MediaRecorder.isTypeSupported('audio/webm') ? 'audio/webm' : ''
-    const mr = new MediaRecorder(stream, mime ? { mimeType: mime } : undefined)
-    recordedChunks = []
-    mr.ondataavailable = (e) => { if (e.data?.size) recordedChunks.push(e.data) }
-    mr.onstop = () => {
-      stream.getTracks().forEach((t) => t.stop())
-      const blob = new Blob(recordedChunks, { type: mr.mimeType || 'audio/webm' })
-      cloneFile.value = new File([blob], 'sample.webm', { type: blob.type })
-      recordedUrl.value = URL.createObjectURL(blob)
-      recording.value = false
-      clearInterval(recordTimer)
+    const made = await api.cloneFromEstate({
+      // The name says what it was made from, because that IS the variable
+      // under test — three clones called "Aran 1/2/3" would tell Aran nothing.
+      name: `${clonePerson.value} — ${clip.role || 'clip'}, ${Math.round(clip.seconds)}s`,
+      language: cloneLang.value || (chosenSpeaker.value && chosenSpeaker.value.language) || 'eng',
+      gender: cloneGender.value || null,
+      person: clonePerson.value,
+      personContact: clonePersonContact.value || null,
+      consentNote: cloneConsentNote.value || null,
+      speaker: entry.speaker,
+      s3Keys: [clip.s3Key],
+    })
+    entry.voice = made.voice
+    entry.consent = made.consent
+    entry.source = made.source
+    // THE CLONE AND THE HEARING FAIL SEPARATELY, and that is not tidiness.
+    // The clone is free; the audition is the one call that spends, so it is
+    // the one that can be refused by the lab's daily character ceiling. If
+    // that happens mid-demo the clone still EXISTS — marking the whole row
+    // failed would hide a real voice and leave it orphaned in the estate.
+    // So the row keeps the clone, shows why it is silent, and offers the
+    // retry.
+    entry.stage = 'hearing'
+    try {
+      const heard = await api.auditionVoice({
+        voiceId: made.voice.voice_id,
+        language: made.voice.languages?.[0] || cloneLang.value || 'eng',
+        sentences: [entry.line],
+      })
+      const first = (heard.clips || [])[0]
+      if (first) entry.audio = { ...first, src: await clipUrl(first.url) }
+    } catch (e) {
+      entry.error = `Cloned, but could not be heard: ${e.message}`
     }
-    mr.start()
-    recorder.value = mr
-    recording.value = true
-    recordSeconds.value = 0
-    recordTimer = setInterval(() => {
-      recordSeconds.value += 1
-      // A hard stop, so a forgotten tab cannot record for an hour and then try
-      // to upload it into a 25 MB cap.
-      if (recordSeconds.value >= RECORD_MAX_SECONDS) stopRecording()
-    }, 1000)
+    entry.stage = 'done'
   } catch (e) {
-    recording.value = false
-    recordError.value = `The microphone is not available here — ${e.message}. Upload a file instead.`
+    entry.error = e.message
+    entry.stage = 'failed'
   }
+  clearInterval(tick)
 }
 
-function stopRecording () {
-  try { recorder.value?.stop() } catch { /* already stopped */ }
-  clearInterval(recordTimer)
+/** Say the demo line again on a clone already made. One clip, same ceilings. */
+async function replay (entry) {
+  if (!entry.voice) return
+  entry.stage = 'hearing'
+  entry.error = ''
+  try {
+    const heard = await api.auditionVoice({
+      voiceId: entry.voice.voice_id,
+      language: entry.voice.languages?.[0] || 'eng',
+      sentences: [demoLine.value],
+    })
+    const first = (heard.clips || [])[0]
+    if (first) entry.audio = { ...first, src: await clipUrl(first.url) }
+    entry.line = demoLine.value
+  } catch (e) { entry.error = e.message }
+  entry.stage = 'done'
 }
 
-const recordHint = computed(() => {
-  if (!recordedUrl.value) return ''
-  if (recordSeconds.value < RECORD_MIN_SECONDS) {
-    return `${recordSeconds.value}s — Cartesia asks for at least ${RECORD_MIN_SECONDS}s. This will clone, but a longer sample clones better.`
-  }
-  if (recordSeconds.value < 20) return `${recordSeconds.value}s — over the floor. Twenty to sixty seconds clones noticeably steadier.`
-  return `${recordSeconds.value}s — a good length.`
-})
+/** Drop one clone from the estate and from this screen. Tidying up after a demo. */
+async function discard (entry) {
+  entry.stage = 'removing'
+  try {
+    if (entry.voice) await api.removeVoice(entry.voice.voice_id)
+    clones.value = clones.value.filter((c) => c.id !== entry.id)
+  } catch (e) { entry.error = e.message; entry.stage = 'done' }
+}
 
-const canSubmitClone = computed(() => {
-  if (!cloneName.value || !clonePerson.value) return false
-  return cloneSource.value === 'estate' ? pickedKeys.value.length > 0 : Boolean(cloneFile.value)
-})
-
+/**
+ * The DELIBERATE path: several estate clips joined, or a file, or a recording.
+ *
+ * It lands in the SAME accumulating list as a one-tap clone. Everything made in
+ * this session sits together and nothing replaces anything — which is the point
+ * of the demo, and which also quietly fixes the upload path, where a second
+ * clone used to wipe the first off the screen.
+ */
 async function submitClone () {
   if (!canSubmitClone.value) return
   cloneBusy.value = true
-  cloneResult.value = null
-  auditionClips.value = []
-  auditionError.value = ''
   error.value = ''
+  const fromEstate = cloneSource.value === 'estate'
+  const picked = speakerClips.value.filter((c) => pickedKeys.value.includes(c.s3Key))
+  const entry = {
+    id: `c${++cloneSeq}`,
+    s3Key: fromEstate && picked.length === 1 ? picked[0].s3Key : null,
+    clip: fromEstate && picked.length === 1 ? picked[0] : null,
+    joined: fromEstate ? picked : [],
+    speaker: chosenSpeaker.value ? chosenSpeaker.value.voiceId : null,
+    stage: 'cloning',
+    seconds: 0,
+    voice: null, consent: null, source: null, audio: null,
+    line: demoLine.value,
+    error: '',
+  }
+  clones.value = [...clones.value, entry]
+  const tick = setInterval(() => { entry.seconds += 1 }, 1000)
   try {
     let out
-    if (cloneSource.value === 'estate') {
+    if (fromEstate) {
       // The keys are sent in the order they were ticked, because that is the
       // order the passage will be spoken in if more than one goes in.
       out = await api.cloneFromEstate({
-        name: cloneName.value,
+        name: cloneName.value || `${clonePerson.value} — ${picked.length} clips, ${pickedSeconds.value}s`,
         language: cloneLang.value,
         gender: cloneGender.value || null,
         person: clonePerson.value,
         personContact: clonePersonContact.value || null,
         consentNote: cloneConsentNote.value || null,
-        speaker: chosenSpeaker.value ? chosenSpeaker.value.voiceId : null,
+        speaker: entry.speaker,
         s3Keys: pickedKeys.value,
       })
       pickedKeys.value = []
     } else {
       const fd = new FormData()
       fd.append('clip', cloneFile.value)
-      fd.append('name', cloneName.value)
+      fd.append('name', cloneName.value || `${clonePerson.value} — ${cloneSource.value === 'record' ? 'recorded here' : 'uploaded'}`)
       fd.append('language', cloneLang.value)
       if (cloneGender.value) fd.append('gender', cloneGender.value)
       fd.append('person', clonePerson.value)
       if (clonePersonContact.value) fd.append('personContact', clonePersonContact.value)
       if (cloneConsentNote.value) fd.append('consentNote', cloneConsentNote.value)
       out = await api.cloneVoice(fd)
+      cloneFile.value = null
+      clearRecording()
     }
-    cloneResult.value = out
+    entry.voice = out.voice
+    entry.consent = out.consent
+    entry.source = out.source || null
+    entry.stage = 'hearing'
+    // Same split as cloneOne: a refused audition must not lose a made clone.
+    try {
+      const heard = await api.auditionVoice({
+        voiceId: out.voice.voice_id,
+        language: out.voice.languages?.[0] || cloneLang.value || 'eng',
+        sentences: [entry.line],
+      })
+      const first = (heard.clips || [])[0]
+      if (first) entry.audio = { ...first, src: await clipUrl(first.url) }
+    } catch (e) {
+      entry.error = `Cloned, but could not be heard: ${e.message}`
+    }
+    entry.stage = 'done'
     cloneName.value = ''
-    cloneFile.value = null
-    clearRecording()
-    await load()
-  } catch (e) { error.value = e.message }
+  } catch (e) {
+    entry.error = e.message
+    entry.stage = 'failed'
+  }
+  clearInterval(tick)
   cloneBusy.value = false
 }
 
@@ -563,45 +653,17 @@ async function removeVoice (voiceId) {
   error.value = ''
   try {
     await api.removeVoice(voiceId)
-    if (cloneResult.value?.voice?.voice_id === voiceId) cloneResult.value = null
+    clones.value = clones.value.filter((c) => c.voice?.voice_id !== voiceId)
     await load()
   } catch (e) { error.value = e.message }
   removeBusy.value = ''
 }
 
-// ── Hearing it ─────────────────────────────────────────────────────────────
-// The half that was missing until 2026-08-30: a clone you cannot hear is a
-// clone you cannot judge, and the next move was casting an unheard voice into a
-// course. THIS is the press that spends — capped at three clips by the backend,
-// under the lab's ordinary daily character ceiling.
-// EMPTY BY DEFAULT, and that is the change of 2026-08-31. It used to hold "This
-// is what the new voice sounds like, on a full sentence." — which tells you the
-// voice can talk and nothing about whether it can carry a course. Left blank,
-// the backend picks a REAL line from a NAMED course through the picker that
-// already exists. Typing here still wins, for hearing a specific line.
-const auditionText = ref('')
-const auditionLine = ref(null)
-const auditionBusy = ref(false)
-const auditionClips = ref([])
-const auditionError = ref('')
-
-async function audition (voiceId, language) {
-  auditionBusy.value = true
-  auditionError.value = ''
-  auditionClips.value = []
-  try {
-    const out = await api.auditionVoice({
-      voiceId,
-      language,
-      sentences: auditionText.value.split('\n').map((t) => t.trim()).filter(Boolean),
-    })
-    auditionLine.value = out.line || null
-    auditionClips.value = await Promise.all(
-      (out.clips || []).map(async (c) => ({ ...c, src: await clipUrl(c.url) })),
-    )
-  } catch (e) { auditionError.value = e.message }
-  auditionBusy.value = false
-}
+// Auditioning is no longer a separate step with its own state: every clone is
+// heard as part of the tap that makes it (see cloneOne / submitClone), and
+// `replay` says the line again on a clone already made. The old single
+// `auditionClips` ref went with the single `cloneResult` it belonged to — both
+// were one-at-a-time state on a screen whose whole purpose is now comparison.
 
 async function load () {
   loading.value = true
@@ -1037,6 +1099,14 @@ function candidatesFor (lang, slot) {
              somebody wrote, and two clone attempts here were built from TTS
              wearing it. Listening is the only verification that works. -->
         <div v-if="cloneSource === 'estate'" class="vl-estate">
+          <!-- ONE LINE, SAID BY EVERY CLONE. That is what makes three clones
+               from three sources comparable with each other rather than only
+               with their own originals. Deliberately something the speaker has
+               never said: a clone repeating its own source proves nothing. -->
+          <div class="vl-clone-row">
+            <span class="ui-filter-label">Every clone says</span>
+            <input v-model="demoLine" class="ui-field vl-wide" placeholder="the line every clone will say" />
+          </div>
           <div class="vl-clone-row">
             <input
               v-model="speakerFilterLang" class="ui-field vl-narrow" placeholder="language e.g. eng"
@@ -1067,18 +1137,66 @@ function candidatesFor (lang, slot) {
             </p>
             <p v-if="clipsBusy" class="vl-muted">Reading the archive…</p>
             <div v-else class="vl-clips">
-              <div v-for="c in speakerClips" :key="c.s3Key" class="vl-clip">
-                <input
-                  type="checkbox" :checked="pickedKeys.includes(c.s3Key)"
-                  :aria-label="`use this ${c.seconds}s clip`" @change="togglePick(c.s3Key)"
-                />
-                <span class="vl-clip-secs">{{ c.seconds }}s</span>
-                <span class="vl-clip-role ui-pill ui-hue-quiet">{{ c.role }}</span>
-                <audio :src="c.url" controls preload="none" class="vl-clip-audio" />
-                <span class="vl-clip-text" :title="c.text">{{ c.text }}</span>
+              <!-- ONE ROW PER RECORDING: hear the original, then clone from
+                   just that one. The result appears underneath it and STAYS
+                   there, so cloning the next row builds a comparison instead
+                   of replacing one. -->
+              <div v-for="c in speakerClips" :key="c.s3Key" class="vl-cliprow">
+                <div class="vl-clip">
+                  <input
+                    type="checkbox" :checked="pickedKeys.includes(c.s3Key)"
+                    title="tick several to join them into one source — the deliberate path"
+                    :aria-label="`join this ${c.seconds}s clip with others`" @change="togglePick(c.s3Key)"
+                  />
+                  <span class="vl-clip-secs">{{ c.seconds }}s</span>
+                  <span class="vl-clip-role ui-pill ui-hue-quiet">{{ c.role }}</span>
+                  <audio :src="c.url" controls preload="none" class="vl-clip-audio" />
+                  <span class="vl-clip-text" :title="c.text">{{ c.text }}</span>
+                  <button
+                    class="vl-cliprow-clone"
+                    :disabled="!clonePerson"
+                    :title="clonePerson ? 'Clone from this one recording, then hear it say the line' : 'Type whose voice this is first'"
+                    @click="cloneOne(c)"
+                  >Clone this →</button>
+                </div>
+
+                <!-- THE RESULT, BESIDE ITS SOURCE. One strip per clone made
+                     from this clip; cloning the same clip twice keeps both. -->
+                <div v-for="k in clonesFor(c.s3Key)" :key="k.id" class="vl-made" :class="`is-${k.stage}`">
+                  <template v-if="k.stage === 'cloning' || k.stage === 'hearing'">
+                    <span class="vl-made-spin">◐</span>
+                    <span class="vl-made-stage">
+                      {{ k.stage === 'cloning' ? 'Cloning from this recording' : 'Hearing it back' }}
+                      — {{ k.seconds }}s
+                    </span>
+                    <span class="vl-muted">
+                      six to thirteen seconds, longer sources taking longer.
+                      <strong>Play the original above while it builds</strong> — a 44-second
+                      welcome covers the whole wait.
+                    </span>
+                  </template>
+                  <template v-else-if="k.stage === 'failed'">
+                    <span class="vl-made-spin">✕</span>
+                    <span class="vl-error">{{ k.error }}</span>
+                    <button class="ui-sort-btn" @click="clones = clones.filter((x) => x.id !== k.id)">dismiss</button>
+                  </template>
+                  <template v-else>
+                    <span class="vl-made-spin">▸</span>
+                    <span class="vl-made-name">{{ k.voice?.display_name }}</span>
+                    <audio v-if="k.audio" :src="k.audio.src" controls class="vl-clip-audio" />
+                    <span class="vl-made-line" :title="k.line">“{{ k.line }}”</span>
+                    <ConsentBadge :consent="k.consent" />
+                    <button class="ui-sort-btn" :disabled="k.stage === 'removing'" @click="replay(k)">say it again</button>
+                    <button class="ui-sort-btn" :disabled="k.stage === 'removing'" @click="discard(k)">
+                      {{ k.stage === 'removing' ? 'removing…' : 'discard' }}
+                    </button>
+                  </template>
+                </div>
               </div>
             </div>
-            <p v-if="pickHint" class="vl-muted vl-pick-hint">{{ pickHint }}</p>
+            <p v-if="pickHint" class="vl-muted vl-pick-hint">
+              {{ pickHint }} — press <strong>Create the clone</strong> below to join them.
+            </p>
           </template>
         </div>
 
@@ -1112,50 +1230,39 @@ function candidatesFor (lang, slot) {
           <span v-if="!clonePerson" class="vl-muted">Name whose voice this is first.</span>
         </div>
 
-        <div v-if="cloneResult" class="vl-clone-done">
+        <!-- ── EVERY CLONE MADE IN THIS SESSION ──────────────────────────
+             The comparison IS the demo (Tom, 2026-08-31), so this list only
+             ever grows. Three clones from three sources, all saying the same
+             line, is the thing Aran is being shown; a screen that kept one
+             clone would destroy that on every tap. -->
+        <div v-if="clones.length" class="vl-clone-done">
           <p class="vl-ok">
-            Created <strong>{{ cloneResult.voice?.display_name }}</strong>
-            — registered as <code>{{ cloneResult.voice?.voice_id }}</code>.
-            It is castable in the table below now, and it is in the Play menu.
+            <strong>{{ clones.length }} clone{{ clones.length === 1 ? '' : 's' }} made here</strong>
+            — each one from a different recording, all saying the same line, so the source is the
+            only thing that changed. Nothing is authorised: they are all awaiting a yes.
           </p>
-          <!-- The consent fact, on the voice, from its first second. -->
-          <ConsentBadge :consent="cloneResult.consent" mode="full" />
-          <p v-if="cloneResult.source" class="vl-muted">
-            Built from {{ cloneResult.source.used?.length }} estate clip(s), {{ cloneResult.source.seconds }}s.
-            <span v-if="cloneResult.source.stitched"><br>{{ cloneResult.source.stitched }}</span>
-            <span v-if="cloneResult.source.short"><br>{{ cloneResult.source.short }}</span>
+          <div v-for="k in clones" :key="`all-${k.id}`" class="vl-made vl-made-summary" :class="`is-${k.stage}`">
+            <span class="vl-made-name">{{ k.voice?.display_name || 'building…' }}</span>
+            <template v-if="k.clip">
+              <span class="vl-muted vl-made-from">from {{ k.clip.role }}, {{ k.clip.seconds }}s</span>
+              <audio :src="k.clip.url" controls preload="none" class="vl-clip-audio" title="the original recording" />
+            </template>
+            <span v-else-if="k.joined && k.joined.length" class="vl-muted vl-made-from">
+              from {{ k.joined.length }} clips joined
+            </span>
+            <span v-else class="vl-muted vl-made-from">from an uploaded or recorded sample</span>
+            <audio v-if="k.audio" :src="k.audio.src" controls class="vl-clip-audio" title="the clone" />
+            <span v-else-if="k.stage !== 'failed'" class="vl-muted">{{ k.stage }} — {{ k.seconds }}s</span>
+            <span v-if="k.source && k.source.passthrough" class="ui-pill ui-hue-quiet" title="the original file went to Cartesia byte for byte — no re-encoding">untouched</span>
+            <span v-if="k.source && k.source.stitched" class="ui-pill ui-hue-warn" :title="k.source.stitched">joined</span>
+            <ConsentBadge :consent="k.consent" />
+            <button v-if="k.voice" class="ui-sort-btn" @click="openConsent(k.voice.voice_id, k.consent)">consent…</button>
+            <button v-if="k.voice" class="ui-sort-btn" @click="discard(k)">discard</button>
+          </div>
+          <p class="vl-muted">
+            Every clone is castable in the table below and appears in the Play menu straight away.
+            Discarding one deletes it at Cartesia and in the estate's voice list.
           </p>
-          <div class="vl-clone-row">
-            <button class="ui-sort-btn" @click="openConsent(cloneResult.voice?.voice_id, cloneResult.consent)">
-              Record an authorisation
-            </button>
-            <button class="ui-sort-btn" :disabled="removeBusy" @click="removeVoice(cloneResult.voice?.voice_id)">
-              {{ removeBusy === cloneResult.voice?.voice_id ? 'Removing…' : 'Remove this voice' }}
-            </button>
-          </div>
-          <!-- HEAR IT. This is the only control on this panel that spends
-               anything, and it says so. -->
-          <div class="vl-clone-row">
-            <input v-model="auditionText" class="ui-field vl-audition-text" placeholder="leave blank to hear a real course line" />
-            <button
-              class="vl-btn"
-              :disabled="auditionBusy"
-              @click="audition(cloneResult.voice?.voice_id, cloneResult.voice?.languages?.[0] || cloneLang)"
-            >{{ auditionBusy ? 'Rendering…' : '▶ Hear it' }}</button>
-            <span class="vl-muted">one clip, through the lab's ordinary render path and its daily ceiling.</span>
-          </div>
-          <p v-if="auditionError" class="vl-error">{{ auditionError }}</p>
-          <!-- THE COURSE IS NAMED. What is SAID belongs to the course, not the
-               language (Tom's correction, 2026-08-31), so an audition line is
-               never presented as "the" line for a language. -->
-          <p v-if="auditionLine" class="vl-muted">
-            Real course line from <strong>{{ auditionLine.courseName || auditionLine.course }}</strong>
-            <span v-if="auditionLine.source"> ({{ auditionLine.source }})</span>.
-          </p>
-          <div v-for="c in auditionClips" :key="c.id" class="vl-clone-row">
-            <audio :src="c.src" controls autoplay class="vl-record-audio" />
-            <span class="vl-muted">{{ c.text }}</span>
-          </div>
         </div>
       </div>
     </section>
@@ -1727,6 +1834,33 @@ function candidatesFor (lang, slot) {
 .vl-clip-audio { flex: none; height: 2rem; width: 15rem; }
 .vl-clip-text { flex: 1 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: .8125rem; opacity: .8; }
 .vl-pick-hint { margin: .25rem 0 0; }
+
+/* ── THE DEMO ROWS ────────────────────────────────────────────────────────
+   A clone sits UNDER its source, indented and rule-joined, so "this came from
+   that" is read rather than explained. Nothing here is a modal or a new panel:
+   the comparison has to survive being scrolled past on a shared screen. */
+.vl-cliprow { border-bottom: 1px solid var(--line); padding-bottom: .2rem; }
+.vl-cliprow:last-child { border-bottom: 0; }
+.vl-cliprow-clone {
+  flex: none; margin-left: auto; padding: .25rem .7rem; font: inherit; font-size: .8125rem;
+  font-weight: 600; border: 1px solid var(--line); border-radius: 6px;
+  background: transparent; color: inherit; cursor: pointer; white-space: nowrap;
+}
+.vl-cliprow-clone:hover:not(:disabled) { background: var(--accent, #6366f1); border-color: var(--accent, #6366f1); color: #fff; }
+.vl-cliprow-clone:disabled { opacity: .4; cursor: default; }
+.vl-made {
+  display: flex; align-items: center; gap: .5rem; flex-wrap: wrap;
+  margin: .1rem 0 .35rem 2.4rem; padding: .3rem .5rem;
+  border-left: 3px solid var(--accent, #6366f1); border-radius: 0 6px 6px 0;
+  background: var(--surface-2, rgba(99, 102, 241, .07));
+}
+.vl-made.is-failed { border-left-color: var(--bad, #dc2626); }
+.vl-made-summary { margin-left: 0; }
+.vl-made-spin { flex: none; opacity: .7; }
+.vl-made-stage { flex: none; font-size: .8125rem; font-weight: 600; }
+.vl-made-name { flex: none; font-size: .8125rem; font-weight: 600; }
+.vl-made-from { flex: none; font-size: .75rem; }
+.vl-made-line { flex: 1 1 12rem; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: .8125rem; opacity: .75; font-style: italic; }
 .vl-flag { margin-left: .35rem; }
 .vl-count.ok { color: var(--success); font-weight: 600; }
 .vl-count.warn { color: var(--accent); font-weight: 600; }

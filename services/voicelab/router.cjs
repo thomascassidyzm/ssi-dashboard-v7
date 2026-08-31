@@ -722,7 +722,21 @@ function mount (app, deps) {
       })
       params.invalidateCartesiaCatalogue()
       logger.log?.(`[voicelab] cloned cartesia voice ${out.cartesia.id} from ${built.used.length} estate clip(s) (${built.seconds}s) by ${who(user)}`)
-      res.json({ ok: true, ...out, source: { seconds: built.seconds, used: built.used, skipped: built.skipped, short: built.short, stitched: built.stitched } })
+      res.json({
+        ok: true,
+        ...out,
+        source: {
+          seconds: built.seconds,
+          used: built.used,
+          skipped: built.skipped,
+          short: built.short,
+          stitched: built.stitched,
+          // True when the chosen clip went to Cartesia byte-for-byte, with no
+          // decode and no re-encode. Worth saying on screen: it is the highest
+          // fidelity path and it is what was done to the clone judged good.
+          passthrough: Boolean(built.passthrough),
+        },
+      })
     } catch (err) { fail(res, err, 'clone-from-estate') }
   })
 
