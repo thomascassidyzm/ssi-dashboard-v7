@@ -1,8 +1,10 @@
 # One frame map over the seeds and the pods — built
 
-**Date:** 2026-08-31. **Status: BUILT and pushed, not merged.** Branch
-`feat/unified-frame-map-build`, six commits, off `origin/main`. Every database touch in this job
-was read-only: no row written, no course touched, no audio, no TTS, no migration.
+**Date:** 2026-08-31. **Status: BUILT and pushed, NOT MERGED.** Branch
+`feat/unified-frame-map-build`, nine commits, off `origin/main`. Every database touch in this job
+was read-only: no row written, no course touched, no audio, no TTS, no migration. Verified by
+checking the pushed branch out fresh, with no `.env` present, and running all four self-tests —
+which is how the last defect was caught (see Verification).
 
 The design is `docs/frame-layer/unified-frame-map-2026-08-31.md`, ratified. This is what came of
 building it, including the three places the data corrected it.
@@ -258,3 +260,9 @@ node tools/frame-layer/could-occupy.test.cjs
 
 No test suite was run: this job changed the frame layer and nothing else, and the frame layer's
 verification is these four scripts. Read-only steps were verified by reading.
+
+They were then run again from a **fresh checkout of the pushed branch with no `.env` present** —
+and that caught a real defect. `generate-candidates.cjs` built its Supabase client at module load,
+so requiring its pure tiling helpers made a string-tiling test die with `supabaseUrl is required`
+on any machine without credentials. A test that claims "no DB, no network" has to be true when
+nobody is looking. The client is lazy now, and all four pass on a bare checkout.
