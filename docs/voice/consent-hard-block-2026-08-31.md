@@ -87,20 +87,55 @@ not_recorded) and, of course, `gfzdpspr5fdp` above, which is.
 
 ---
 
-## 4. Explicit gaps — paths NOT covered, said out loud
+## 4. The second sweep — every other path, found and closed
 
-1. **Serving already-rendered audio is not gated.** The block refuses *casting* and
-   *generating*. A clip already in `course_audio`, rendered months ago in an unconsented voice,
-   still plays. Pulling shipped audio is a destructive, learner-facing act and is Tom's call —
-   the honest position is that the block stops the estate *adding* to the problem and does not
-   pretend to have solved it.
-2. **`api/pod-cast-voices.js` (PodLab's manual voice choice) writes `listening_pods.speakers`
-   directly** and does not consult the gate. It selects from curated `xai`/`azure`/`elevenlabs`
-   pools, so in practice it casts stock voices — but it is a write path and it is currently
-   unchecked. Named here rather than left quiet.
-3. **`tools/pod-sync.cjs` `assignVoices` and the recast/recolour tools** write casts from pools
-   by the same route.
-4. Anything that reaches a provider **without** `tts-service.generate()` bypasses the render
-   block. `services/azure-tts-service.cjs` is required directly by `welcome-service.cjs`,
-   `orchestration/orchestrator.cjs` and `phases/phase8-audio-from-baskets.cjs`. Azure is
-   stock-voice-only, so no clone can travel that way today — but the guard is not there.
+Survey job #532 swept the estate for anything that could reach a provider or write a cast
+without passing the three chokepoints above. It found eleven. All but two are now gated.
+
+**Provider-direct synthesis** — these never touched `tts-service.generate()`. The guard now
+sits on each service's own door, so the bypass is structural rather than a promise:
+
+| Path | Reached the provider via | Now |
+|---|---|---|
+| `welcome-service.cjs`, `presentation-service.cjs`, `encouragement-service.cjs` | ElevenLabs direct — where the estate's cloned and human guide voices live | gated in `elevenlabs-service.cjs` (`generateAudio`, `generateSpeech`, `testVoice`) |
+| `orchestrator.cjs` `POST /api/voices/preview` | Azure **and** ElevenLabs direct, voice id raw from the request body | gated in both services |
+| `phases/phase8-audio-from-baskets.cjs` | Azure direct | gated in `azure-tts-service.cjs` (`generateAudio`, `generateSpeech`) |
+| `voice-discovery-service.cjs` `generateVoiceSamples` | Azure direct — dead code, no callers, still exported | gated |
+| `api/voices/preview.js` | its own hand-built SSML and its own `fetch`, **and no auth check at all** | gated in the route itself, 409 |
+
+**Cast writes outside the Voice Lab endpoint:**
+
+| Path | Writes | Now |
+|---|---|---|
+| `voice-engine/pods-router.cjs` `PUT /pods/cast` | `courses.voice_config.podCast` | gated before the merge; refused casts write nothing |
+| `voice-engine/recordist-router.cjs` `PUT /languages/:language` | `language_recording_policy.voices` — routes a language's recording queue to a named person | gated before the upsert |
+| `api/pod-cast-voices.js` `POST` | `listening_pods.speakers` | gated |
+| `tools/pod-recast.cjs` | the same `speakers` column, offline | gated — or the rule would hold only for people who use the screen |
+| `api/voices/declare.js` `POST` | locks a course side to a voice | gated. Its existing VOICELAB check asks "can this clone speak this language?", which is a different question from "did the person say yes" |
+
+### Two left open, deliberately, and why
+
+1. **`voice-engine/team-router.cjs` `POST /assign-slot`** — this MINTS a `human_*` voice id for a
+   recordist being onboarded. The id does not exist yet, so a consent check could only ever
+   refuse, and gating it would stop anyone being onboarded at all. The honest fix is that
+   onboarding a recordist should itself write a consent record; that is a design decision,
+   yours, not something to bolt on here.
+2. **`voice-engine/synthesis-job.cjs`** — the survey called this a synthesis bypass. It is not:
+   it splices a person's OWN recorded takes into `course_audio` and calls no provider. Gating it
+   would stop the Welsh and Austrian recording work dead. Named here so nobody re-files it as a
+   hole later.
+
+**One gap the survey raised, resolved:** `welcome`/`presentation`/`encouragement` read voice
+details from `vfs/canonical/voices.json` rather than the `voices` table, which would have been
+consent-blind. **That file does not exist in the repo** — those reads would fail on their own —
+and in any case those three now go through the gated ElevenLabs and Azure services.
+
+---
+
+## 5. Still not covered — one thing, and it is yours to rule on
+
+**Serving already-rendered audio is not gated.** The block refuses *casting* and *generating*.
+A clip already in `course_audio`, rendered months ago in an unconsented voice, still plays.
+Pulling shipped audio is destructive and learner-facing, and item 4 of the brief says the
+existing estate is your decision. So the honest position is that this stops the estate *adding*
+to the problem and does not pretend to have solved it.

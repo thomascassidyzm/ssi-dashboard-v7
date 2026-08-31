@@ -234,7 +234,27 @@ async function assertConsented (voiceId, { db, context = '', tts = false, provid
   throw err
 }
 
+
+/**
+ * The render-path door, supplying its own database client.
+ *
+ * Every synthesis entry point in the estate is a plain function that was handed
+ * a voice id and an API key; none of them carry a supabase client, and threading
+ * one through six services in order to add a guard is how a guard ends up added
+ * to four of them. So the gate fetches its own, lazily, and the call site is one
+ * line it cannot get wrong.
+ *
+ * `(403)` in the message is what makes tts-service's isRetriableTtsError treat
+ * this as a client error rather than retrying it eight times.
+ */
+async function assertConsentedForRender (voiceId, { context = '', provider = null } = {}) {
+  let db = null
+  try { db = require('../supabase-client.cjs').getClient() } catch { db = null }
+  return assertConsented(voiceId, { db, tts: true, provider, context })
+}
+
 module.exports = {
+  assertConsentedForRender,
   spellingsToTry,
   CACHE_MS,
   looksLikeAPerson,

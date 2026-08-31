@@ -241,15 +241,10 @@ function assertNotChildVoice(config) {
 async function assertConsentedVoice(config, provider = null) {
   const voiceId = config?.voiceId || config?.voice_id || config?.voiceName;
   if (!voiceId) return;
-  let db = null;
-  try {
-    db = require('./supabase-client.cjs').getClient();
-  } catch (err) {
-    // Fail closed for anything we can recognise as a person without a client;
-    // the gate itself decides, this only supplies (or fails to supply) the door.
-    db = null;
-  }
-  await consentGate.assertConsented(String(voiceId), { db, tts: true, provider: provider || config?.provider || null, context: 'tts-service.generate' });
+  await consentGate.assertConsentedForRender(String(voiceId), {
+    provider: provider || config?.provider || null,
+    context: 'tts-service.generate',
+  });
 }
 
 function assertNotHumanVoiceCourse(config) {

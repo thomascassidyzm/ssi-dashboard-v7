@@ -31,6 +31,7 @@ import { createRequire } from 'module'
 import { getSupabase } from '../lib/supabase.js'
 import { verifySupabaseJWT } from '../lib/auth.js'
 import { recordVersionAndPointer } from '../algorithm-config.js'
+import consentGate from '../../services/shared/voice-consent-gate.cjs'
 
 const require_ = createRequire(import.meta.url)
 const vd = require_('../../services/shared/voice-declarations.cjs')
@@ -74,6 +75,18 @@ export default async function handler (req, res) {
       }
       if (!vd.ROLES.includes(role)) {
         return res.status(400).json({ error: `role must be one of ${vd.ROLES.join(', ')}` })
+      }
+
+      // ── NO CONSENT, NO DECLARATION (Tom, 2026-08-31) ────────────────────
+      // A declaration LOCKS a course side to a voice, so it is a cast under
+      // another name. The VOICELAB capability gate below asks "can this clone
+      // speak this language?", which is a different question from "did the
+      // person say yes" — a capable clone of somebody who never consented
+      // passes it. Both have to hold.
+      try {
+        await consentGate.assertConsented(String(voiceId), { db: supabase, context: `declare ${course}/${role}` })
+      } catch (err) {
+        return res.status(err.status || 409).json({ error: err.message, code: err.code || 'NO_RECORDED_CONSENT', voiceId, language })
       }
 
       const capability = await readConfig(supabase, CAPABILITY_KEY, {})

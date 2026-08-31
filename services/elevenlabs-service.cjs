@@ -6,6 +6,7 @@
  */
 
 const fetch = require('node-fetch');
+const consentGate = require('./shared/voice-consent-gate.cjs');
 const fs = require('fs-extra');
 
 // Configuration from environment
@@ -111,6 +112,13 @@ function buildPriming(text, language) {
  * @returns {Promise<boolean>} True if successful
  */
 async function generateAudio(text, voiceId, outputPath, options = {}) {
+  // NO CONSENT, NO SPEECH (Tom, 2026-08-31). ElevenLabs is where the estate's
+  // cloned and human guide voices live — Aran speaks every English-known
+  // learner's instructions from here — and this service is called DIRECTLY by
+  // welcome-service, presentation-service, encouragement-service and the
+  // orchestrator's preview route, all of which walk straight past
+  // tts-service.generate(). So the guard sits at this service's own door too.
+  await consentGate.assertConsentedForRender(String(voiceId), { provider: 'elevenlabs', context: 'elevenlabs.generateAudio' });
   if (!ELEVENLABS_API_KEY) {
     throw new Error('ElevenLabs API key not found. Set ELEVENLABS_API_KEY in .env');
   }
@@ -270,6 +278,7 @@ async function getVoiceDetails(voiceId) {
  * @returns {Promise<string>} Path to generated test file
  */
 async function testVoice(voiceId, text = "Hello, this is a test.", options = {}) {
+  await consentGate.assertConsentedForRender(String(voiceId), { provider: 'elevenlabs', context: 'elevenlabs.testVoice' });
   const path = require('path');
   const os = require('os');
 
@@ -291,6 +300,13 @@ async function testVoice(voiceId, text = "Hello, this is a test.", options = {})
  * @returns {Promise<Buffer>} Audio buffer
  */
 async function generateSpeech(text, voiceId, options = {}) {
+  // NO CONSENT, NO SPEECH (Tom, 2026-08-31). ElevenLabs is where the estate's
+  // cloned and human guide voices live — Aran speaks every English-known
+  // learner's instructions from here — and this service is called DIRECTLY by
+  // welcome-service, presentation-service, encouragement-service and the
+  // orchestrator's preview route, all of which walk straight past
+  // tts-service.generate(). So the guard sits at this service's own door too.
+  await consentGate.assertConsentedForRender(String(voiceId), { provider: 'elevenlabs', context: 'elevenlabs.generateSpeech' });
   if (!ELEVENLABS_API_KEY) {
     throw new Error('ElevenLabs API key not found. Set ELEVENLABS_API_KEY in .env');
   }
