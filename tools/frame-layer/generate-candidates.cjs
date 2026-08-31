@@ -235,6 +235,10 @@ async function main() {
   const mapping = Object.fromEntries(JSON.parse(fs.readFileSync(path.join(ROOT, 'docs/frame-layer/pair-mapping-classes.json'), 'utf8'))
     .patterns.map(p => [p.id, p.pairs[course]?.class]));
 
+  // STALENESS, checked out loud. Four sector-pod authoring jobs are in flight,
+  // so an inventory older than the canon is the normal case — it must SAY so
+  // rather than quietly offer a frame list that no longer describes the corpus.
+  await warnIfInventoryStale();
   const podPool = pool.filter(p => p.provenance === 'pod');
   console.log(`${course} seed ${seed} — job: ${job.verdict}`);
   console.log(`frame pool: ${pool.length} instantiable (${attested.size} seed-attested + ${podPool.length} pod${podPool.length ? ': ' + podPool.map(p => p.id).join(' ') : ''})`);
@@ -291,6 +295,21 @@ async function main() {
   }
   console.log(`\nSEED: ${best.result.seed_pass ? 'PASS' : 'FAIL'} (seed composite ${best.result.seed_composite}, context only)`);
 }
-module.exports = { tilesFromVocab, rejectUntileable };
+/** One cheap head query against the canon; never fatal, only ever a warning. */
+async function warnIfInventoryStale() {
+  try {
+    const { stalenessOf } = require('./extract-dialogue-patterns.cjs');
+    const inv = JSON.parse(fs.readFileSync(path.join(ROOT, 'docs/frame-layer/dialogue-frame-inventory.json'), 'utf8'));
+    const { data } = await sb.from('canonical_pod_scenarios')
+      .select('updated_at').order('updated_at', { ascending: false }).limit(1);
+    const st = stalenessOf(inv, data && data[0] && data[0].updated_at);
+    if (!st.known) return console.log('NOTE: dialogue inventory staleness is unreadable — treating it as current.');
+    if (st.stale) console.log(`STALE: the dialogue inventory was mined at ${st.mined} but the pod canon has moved to ${st.live}. Re-run tools/frame-layer/extract-dialogue-patterns.cjs — the frame list below may not describe the corpus.`);
+  } catch (e) {
+    console.log(`NOTE: could not check dialogue-inventory staleness (${e.message}); treating it as current.`);
+  }
+}
+
+module.exports = { tilesFromVocab, rejectUntileable, warnIfInventoryStale };
 
 if (require.main === module) main().catch(e => { console.error(e.message); process.exit(1); });

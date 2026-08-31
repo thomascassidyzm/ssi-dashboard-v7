@@ -167,5 +167,15 @@ for (const f of FRAMES) {
   ok(rejected[0].reason.includes('does not tile'), 'the rejection carries its reason');
 }
 
+// 10. STALENESS must be loud, and must never guess ------------------------
+{
+  const { stalenessOf } = require('./extract-dialogue-patterns.cjs');
+  const inv = { source: { canon_max_updated_at: '2026-08-31T10:00:00Z' } };
+  ok(stalenessOf(inv, '2026-08-31T10:00:00Z').stale === false, 'same timestamp is not stale');
+  ok(stalenessOf(inv, '2026-09-05T00:00:00Z').stale === true, 'a canon that has moved on makes the inventory stale');
+  ok(stalenessOf(inv, null).known === false, 'an unreadable canon reports UNKNOWN, never "fresh"');
+  ok(stalenessOf({}, '2026-09-05T00:00:00Z').known === false, 'an inventory with no stamp reports UNKNOWN too');
+}
+
 console.log(fail ? `${fail} failing assertion(s)` : `ok — the gate refuses "and you?" for spa_for_eng at every position, admits it the day a cut mints it, and all ${FRAMES.length} frames are well-formed`);
 process.exit(fail ? 1 : 0);
