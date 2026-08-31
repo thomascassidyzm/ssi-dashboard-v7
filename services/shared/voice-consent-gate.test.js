@@ -49,12 +49,38 @@ describe('who the gate is even about', () => {
     }
   })
 
-  it('refuses a human_* voice with NO ROW AT ALL', () => {
-    // `human_sasha_wanasky_deu_at` is cast into deu_at_for_eng today and has no
-    // `voices` row. Knowing nothing about a person is the strongest reason to
-    // refuse, never a reason to wave them through.
+  it('lets a human_* voice through, with a row or without one', () => {
+    // FLIPPED 2026-08-31 on Tom's ruling: "do NOT gate a person's own recording
+    // — the recording session IS the consent." This test used to assert the
+    // opposite, and what it was really protecting — that a `human_*` id is a
+    // person by construction, row or no row — is still true and still tested:
+    // the verdict says aboutAPerson, and says allowed. `human_sasha_wanasky_deu_at`
+    // is cast into deu_at_for_eng today and has no `voices` row at all.
     const v = gate.verdict({ voiceId: 'human_sasha_wanasky_deu_at', voice: null })
+    expect(v.allowed).toBe(true)
+    expect(v.aboutAPerson).toBe(true)
+    expect(v.kind).toBe('recordist')
+  })
+
+  it('renders a recordist row with no consent recorded', () => {
+    const welsh = { voice_id: 'human_welsh_target1', type: 'human', tts_engine: null, provider_id: null, tts_voice_name: null, consent_status: 'not_recorded' }
+    const v = gate.verdict({ voiceId: welsh.voice_id, voice: welsh })
+    expect(v.allowed).toBe(true)
+    expect(v.kind).toBe('recordist')
+  })
+
+  it('still refuses a recordist who has withdrawn', () => {
+    const withdrawn = { voice_id: 'human_welsh_target1', type: 'human', consent_status: 'withdrawn', consent_person: 'Welsh Speaker 1' }
+    const v = gate.verdict({ voiceId: withdrawn.voice_id, voice: withdrawn })
     expect(v.allowed).toBe(false)
+    expect(v.message).toMatch(/withdrawn/)
+  })
+
+  it('still refuses a clone made from a recordist, which is its own row', () => {
+    const fromRecordist = { voice_id: 'cartesia_9f2c1e77', type: 'tts', tts_engine: 'cartesia', metadata_source: 'cartesia-clone (Voice Lab)', consent_status: 'not_recorded', display_name: 'Welsh Speaker 1 clone' }
+    const v = gate.verdict({ voiceId: fromRecordist.voice_id, voice: fromRecordist })
+    expect(v.allowed).toBe(false)
+    expect(v.kind).toBe('clone')
   })
 })
 

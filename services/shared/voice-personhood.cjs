@@ -23,9 +23,8 @@
  * estate actually holds, never a name:
  *
  *   RECORDIST   `type = 'human'`, or a `human_*` id. A real person's own
- *               recordings. The consent question is at its most real here, and
- *               a `human_*` id is a person BY CONSTRUCTION — an id with no row
- *               is the strongest reason to refuse, never a reason to allow.
+ *               recordings, played back. A person BY CONSTRUCTION — but NOT a
+ *               voice the consent gate asks about; see the ruling below.
  *   CLONE       provenance on the row says this estate cloned somebody:
  *               `metadata_source` from a clone flow ('cartesia-clone (Voice
  *               Lab)'), or the word "clone" in the notes/display name written
@@ -49,6 +48,54 @@
  *
  * Deliberately NOT a list of stock voice names, which would rot the first time
  * a vendor published a new one.
+ *
+ * ── THE THIRD CATEGORY: A PERSON'S OWN RECORDING ────────────────────────────
+ * Tom's ruling, 2026-08-31, drawing the boundary this module was left holding:
+ *
+ *   gate anything CLONED from a person's voice; do not gate a person's own
+ *   recording — the recording session IS the consent, and playing back
+ *   somebody's own take is not synthesis.
+ *
+ * So `recordist` and `stock` both come out of the gate ungated, for opposite
+ * reasons. Nobody is being asked about a stock voice because there is nobody to
+ * ask; nobody is being asked about a recordist's own take because they already
+ * answered — by turning up and recording it. The thing consent protects
+ * against is a machine speaking in your voice without you, and a recording of
+ * you speaking is not that. Left gated, the block refused all 17 human_* voices
+ * — Aran, Catrin Lliar, Sasha Wanasky, Kai and the course recordist slots —
+ * from casting and rendering their own audio, which protects nobody and stops
+ * the Welsh and Spanish human courses dead.
+ *
+ * requiresConsent(), not classify(), is what the gate asks. classify() still
+ * says `recordist` and isAboutAPerson() still says yes, because a recordist IS
+ * a person and a screen should say so.
+ *
+ * ── AND THE CLONE MADE FROM ONE ─────────────────────────────────────────────
+ * "If a recordist's audio is ever used as the source for a clone, THAT clone is
+ * gated as a clone." That falls out of the data rather than being arranged: the
+ * clone flow writes its OWN row (`cartesia_<uuid>`, `type='tts'`,
+ * `metadata_source: 'cartesia-clone (Voice Lab)'` —
+ * services/voicelab/cartesia.cjs registerVoice), so it never wears the source
+ * recordist's id and never inherits its exemption.
+ *
+ * Belt and braces on top of that, because an exemption is only as good as the
+ * thing that cannot be talked into it: a recordist row is only exempt while it
+ * looks like RECORDED AUDIO. Two facts take it back, both derived, neither a
+ * name:
+ *   - clone provenance in `metadata_source`, the field a clone flow writes;
+ *   - A VENDOR SYNTHESIS IDENTITY on the row — `tts_engine`, `provider_id` or
+ *     `tts_voice_name`. This is the structural half and the load-bearing one.
+ *     A person's own recording has no vendor voice: it is files, and all 17
+ *     recordist rows carry null in all three, under an id with no provider
+ *     prefix. A clone cannot exist without one,
+ *     because a clone IS a voice sitting at a provider under an id. So a
+ *     human_* row that acquires a provider voice is something synthesised in
+ *     that person's voice whatever it is called, and it is gated.
+ * Note what is deliberately NOT used here: the loose "clone" word-search over
+ * notes and display names that catches `elevenlabs_FOIN…`. On a recordist row
+ * that would gate the very recording Tom's ruling exempts the moment somebody
+ * notes "used as the source for Aran's clone" on it — a true sentence about the
+ * SOURCE, which is not a clone.
  */
 
 'use strict'
@@ -69,11 +116,37 @@ const CLONE_PROVENANCE = /\bclon(e|ed|ing)\b/i
  */
 const AZURE_CATALOGUE_ID = /^[a-z]{2,3}(-[A-Za-z]{2,8})?-[A-Za-z0-9]+Neural$/
 
+/** An id that names a voice sitting at a provider. `cartesia_e7ed10ad-…`. */
+const PROVIDER_PREFIXED_ID = /^(azure|xai|elevenlabs|google|narakeet|cartesia)_/i
+
 function text (v) { return v === null || v === undefined ? '' : String(v) }
 
 /** A voice id that names a person by construction. `human_aran_cym_n`. */
 function looksLikeARecordist (voiceId) {
   return /^human[_-]/i.test(text(voiceId).trim())
+}
+
+/**
+ * Does this row carry a VENDOR SYNTHESIS IDENTITY — a voice sitting at a
+ * provider, under an id something can be asked to speak with?
+ *
+ * The structural half of "recorded, not synthesised". A person's own recordings
+ * are files and nothing else: all 17 recordist rows in the estate hold null in
+ * all three of these columns, while every clone (`cartesia_e7ed10ad…`,
+ * `elevenlabs_FOIN…`, `gfzdpspr5fdp`) holds at least one, because a clone
+ * cannot be rendered without one.
+ */
+function carriesSynthesisIdentity (voiceId, voice = null) {
+  // The id itself is one: `cartesia_e7ed10ad-…` is a voice AT CARTESIA, and no
+  // `type` column on the row makes it a person's own recordings. Recordist ids
+  // are `human_*` and carry no provider prefix at all.
+  if (PROVIDER_PREFIXED_ID.test(text(voiceId).trim())) return true
+  if (!voice) return false
+  return Boolean(
+    text(voice.tts_engine).trim() ||
+    text(voice.provider_id).trim() ||
+    text(voice.tts_voice_name).trim(),
+  )
 }
 
 /** Does the row's own provenance say a vendor catalogue put it there? */
@@ -115,10 +188,24 @@ function looksLikeOurClone (voice) {
 function classify (voiceId, voice = null) {
   const id = text(voiceId).trim()
 
-  // 1. A PERSON BY CONSTRUCTION. Outranks everything, row or no row. An id
-  //    nothing is known about is the strongest reason to refuse, never to allow.
-  if (looksLikeARecordist(id)) return 'recordist'
-  if (voice && voice.type === 'human') return 'recordist'
+  // 1. A PERSON BY CONSTRUCTION, row or no row — and the ONE branch that can
+  //    come out ungated while still being about a person (see requiresConsent).
+  //    A missing row keeps them a recordist: nothing about "we hold no record
+  //    of this person" makes their own recording into a synthesis of it.
+  if (looksLikeARecordist(id) || (voice && voice.type === 'human')) {
+    // …unless the row itself says this is no longer just their recordings.
+    // Provenance first, then the structural test — a recordist who has acquired
+    // a provider voice id has something synthesising in their voice, and that
+    // is a clone whatever the id spells.
+    if (CLONE_PROVENANCE.test(text(voice && voice.metadata_source))) return 'clone'
+    if (carriesSynthesisIdentity(id, voice)) return 'clone'
+    // A RECORDED NO OUTRANKS THE RECORDING. The session is the consent, but
+    // consent given can be taken back, and a withdrawal is never walked back by
+    // a rule about what kind of voice this is.
+    const said = text(voice && voice.consent_status).trim()
+    if (said === 'refused' || said === 'withdrawn') return 'named'
+    return 'recordist'
+  }
 
   // 2. A PROVIDER WE CANNOT CLONE WITH. Structural, and it beats anything
   //    written on the row, because no sentence can make a voice into a clone
@@ -162,9 +249,24 @@ function classify (voiceId, voice = null) {
   return 'stock'
 }
 
-/** Is the consent question real for this voice? The one question callers ask. */
+/** Is there a person behind this voice at all? A DISPLAY question. */
 function isAboutAPerson (voiceId, voice = null) {
   return classify(voiceId, voice) !== 'stock'
+}
+
+/**
+ * MAY THIS VOICE ONLY SPEAK WITH A RECORDED YES BEHIND IT? The gate's question,
+ * and the one that is NOT the same as "is there a person behind this".
+ *
+ * Two kinds come out true: a clone this estate made from somebody, and a voice
+ * a human has named a human on (including a recordist who has since said no —
+ * classify() sends that row to `named`). A recordist's own recordings come out
+ * FALSE, because the recording session already is the consent (Tom, 2026-08-31)
+ * — the same answer stock gets, for the opposite reason.
+ */
+function requiresConsent (voiceId, voice = null) {
+  const kind = classify(voiceId, voice)
+  return kind === 'clone' || kind === 'named'
 }
 
 /**
@@ -189,6 +291,8 @@ function stripProviderPrefix (id) {
 module.exports = {
   classify,
   isAboutAPerson,
+  requiresConsent,
+  carriesSynthesisIdentity,
   looksLikeARecordist,
   looksLikeOurClone,
   looksLikeCatalogueProvenance,

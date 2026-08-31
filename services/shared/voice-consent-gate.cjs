@@ -31,8 +31,19 @@
  * A vendor's stock voice has no person behind it to ask. Refusing all 290 Azure
  * and Cartesia catalogue rows would not protect anybody and would stop the
  * estate rendering anything, so the gate applies exactly where the consent
- * question is REAL — voice-personhood.classify(): a human recordist, a clone
- * this estate made, or a voice with a person named on it.
+ * question is REAL — voice-personhood.requiresConsent(): a clone this estate
+ * made from somebody, or a voice with a person named on it.
+ *
+ * NOT a recordist's own recordings. Tom's ruling, 2026-08-31: "gate anything
+ * CLONED from a person's voice; do not gate a person's own recording — the
+ * recording session IS the consent". Playing somebody their own take back is
+ * not synthesis, and there is nobody left to ask: they answered by recording
+ * it. Until that ruling this gate refused all 17 `human_*` voices — Aran,
+ * Catrin Lliar, Sasha Wanasky, Kai and the Welsh/Spanish course recordist slots
+ * — from casting and rendering their own audio. A clone made FROM one of those
+ * recordings is a different row with clone provenance and is gated as a clone
+ * (voice-personhood.cjs, "the clone made from one"); a recordist who has since
+ * REFUSED or WITHDRAWN is `named` and is refused here as before.
  *
  * That last clause used to read "any voice somebody has already recorded a
  * consent state for", and it was wrong in the way Tom caught on 2026-08-31: a
@@ -40,13 +51,10 @@
  * good. Personhood is now decided from what the voice IS, in
  * services/shared/voice-personhood.cjs.
  *
- * With ONE addition that the estate forced. `human_sasha_wanasky_deu_at` is
- * cast into deu_at_for_eng today and has NO `voices` row at all, so a
- * row-driven test would wave a real person through on the grounds that we know
- * nothing about them. A `human_*` id is a person by construction (it is the
- * convention the whole estate names recordists by), and "we have no record of
- * this person" is the strongest possible reason to refuse, never a reason to
- * allow.
+ * `human_sasha_wanasky_deu_at` is cast into deu_at_for_eng today and has NO
+ * `voices` row at all. A `human_*` id is still a person by construction — it is
+ * the convention the whole estate names recordists by — and a missing row does
+ * not turn their own recording into a synthesis of it, so they render.
  *
  * ── FAIL CLOSED ─────────────────────────────────────────────────────────────
  * If the consent state cannot be READ, the answer is no. An unreadable consent
@@ -102,6 +110,16 @@ function isAboutAPerson (voiceId, voice) {
   return personhood.isAboutAPerson(voiceId, voice)
 }
 
+/**
+ * The question the DECISION turns on, which is narrower: may this voice only
+ * speak with a recorded yes behind it? Clones and named people, yes. Stock, no
+ * — nobody to ask. A recordist's own recordings, no — Tom's 2026-08-31 ruling,
+ * the recording session is the consent (voice-personhood.requiresConsent).
+ */
+function requiresConsent (voiceId, voice) {
+  return personhood.requiresConsent(voiceId, voice)
+}
+
 /** The name to use in a sentence a human reads. Never an id if we can help it. */
 function nameOf (voiceId, voice) {
   const person = voice && String(voice.consent_person || '').trim()
@@ -155,15 +173,21 @@ function refusalMessage (status, voiceId, voice) {
  * @returns {{allowed: boolean, aboutAPerson: boolean, status: string, code?: string, message?: string, person?: string|null}}
  */
 function verdict ({ voiceId, voice = null }) {
-  const aboutAPerson = isAboutAPerson(voiceId, voice)
+  const kind = personhood.classify(voiceId, voice)
+  const aboutAPerson = kind !== 'stock'
   const status = voice ? consent.statusOf(voice) : 'not_recorded'
-  if (!aboutAPerson) return { allowed: true, aboutAPerson: false, status }
+  // REPORTED HONESTLY, DECIDED NARROWLY: a recordist comes back aboutAPerson
+  // true — they are one — and allowed, because their own recording is not a
+  // voice cloned from them. `kind` rides along so a caller never has to
+  // re-derive which of the two ungated reasons it got.
+  if (!requiresConsent(voiceId, voice)) return { allowed: true, aboutAPerson, kind, status }
   if (voice && consent.isAuthorised(voice)) {
-    return { allowed: true, aboutAPerson: true, status: 'authorised' }
+    return { allowed: true, aboutAPerson: true, kind, status: 'authorised' }
   }
   return {
     allowed: false,
     aboutAPerson: true,
+    kind,
     status,
     code: 'NO_RECORDED_CONSENT',
     person: voice ? (voice.consent_person || null) : null,
@@ -355,6 +379,7 @@ module.exports = {
   CACHE_MS,
   looksLikeAPerson,
   isAboutAPerson,
+  requiresConsent,
   refusalMessage,
   verdict,
   verdictFor,

@@ -186,21 +186,36 @@ describe('hearing your own recording instead of a clone', () => {
   })
 
   it('is the SAME state machine — no new stage, nothing for another gate to learn', () => {
+    // The stages are untouched. What changed hours later on 2026-08-31 is who
+    // the BLOCK waits for: Tom ruled that a person's own recording is not gated
+    // at all — "the recording session IS the consent" — so a recordist casts
+    // while `awaiting_hearing` rather than being refused until they confirm.
+    // This assertion was `.toBe(false)`. Hearing your own take back and
+    // confirming it is still offered, still recorded, and a NO recorded that
+    // way is still honoured (below); it is no longer a precondition of casting.
     expect(confirmation.stageOf(RECORDIST)).toBe('awaiting_hearing')
-    expect(gate.verdict({ voiceId: RECORDIST.voice_id, voice: RECORDIST }).allowed).toBe(false)
+    expect(gate.verdict({ voiceId: RECORDIST.voice_id, voice: RECORDIST }).allowed).toBe(true)
     const confirmed = { ...RECORDIST, ...confirmation.confirmedRecord({ voice: RECORDIST }) }
     expect(confirmation.stageOf(confirmed)).toBe('confirmed')
     expect(gate.verdict({ voiceId: RECORDIST.voice_id, voice: confirmed }).allowed).toBe(true)
+    // And a recordist who says NO is still refused, which is the half of this
+    // that must never be traded away for the half that unblocks people.
+    const rejected = { ...RECORDIST, ...confirmation.rejectedRecord({ voice: RECORDIST }) }
+    expect(gate.verdict({ voiceId: RECORDIST.voice_id, voice: rejected }).allowed).toBe(false)
   })
 
   it('tells the operator to play a TAKE, never a clone that cannot exist', () => {
-    const v = gate.verdict({ voiceId: RECORDIST.voice_id, voice: RECORDIST })
-    expect(v.message).toMatch(/has not heard their own recording back yet/i)
-    expect(v.message).toMatch(/play one of their takes/i)
-    expect(v.message).not.toMatch(/clone/i)
-    // The clone path keeps its own sentence, word for word.
-    expect(gate.verdict({ voiceId: 'cartesia_abc', voice: { ...DECLARED, type: 'tts' } }).message)
-      .toMatch(/has not heard this clone yet/i)
+    // Asserted through refusalMessage() rather than verdict(): the sentence is
+    // unchanged and still the right one wherever an own-recording voice is
+    // reported as unheard, but the gate no longer REFUSES a recordist for it.
+    const m = gate.refusalMessage('awaiting_authorisation', RECORDIST.voice_id, RECORDIST)
+    expect(m).toMatch(/has not heard their own recording back yet/i)
+    expect(m).toMatch(/play one of their takes/i)
+    expect(m).not.toMatch(/clone/i)
+    // The clone path keeps its own sentence, word for word, and is still refused.
+    const cloneVerdict = gate.verdict({ voiceId: 'cartesia_abc', voice: { ...DECLARED, type: 'tts' } })
+    expect(cloneVerdict.allowed).toBe(false)
+    expect(cloneVerdict.message).toMatch(/has not heard this clone yet/i)
   })
 
   it('records what they ACTUALLY heard, because that record is the audit trail', () => {

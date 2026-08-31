@@ -75,6 +75,15 @@ function summarise (voice) {
   if (voice && status === 'not_recorded' && !isAboutAPerson(voice)) {
     return 'A stock voice licensed from the provider — no person to ask.'
   }
+  // THEIR OWN RECORDINGS. Also not a gap in our records, and for the opposite
+  // reason: they answered by turning up and recording (Tom, 2026-08-31 — "the
+  // recording session IS the consent"). "No consent recorded" on a recordist
+  // read as an outstanding ask, and 17 of them buried the five that matter just
+  // as the catalogue rows did.
+  if (voice && status === 'not_recorded' &&
+      personhood.classify(voice.voice_id || null, voice) === 'recordist') {
+    return 'Their own recordings — the recording session is the consent.'
+  }
   const person = trim(voice && voice.consent_person)
   const by = trim(voice && voice.consent_authorised_by)
   const at = date(voice && voice.consent_authorised_at)
@@ -117,9 +126,12 @@ function summarise (voice) {
  * how a rule about people gets applied to things.
  *
  * This is still a DISPLAY decision here; the permission decision is the gate's.
- * `needsAsking` deliberately keeps answering `status !== 'authorised'` for
- * every voice — see describe(), where it is now paired with `aboutAPerson` so
- * a screen can tell "nobody has asked" from "there is nobody to ask".
+ * And the two came apart on 2026-08-31: a RECORDIST is about a person (true
+ * here) but needs no recorded yes, because their own recording is the consent.
+ * So `needsAsking` and `castWarning` in describe() ask the narrower
+ * personhood.requiresConsent(), while this stays the honest wider answer — a
+ * screen can then tell "nobody has asked" from "there is nobody to ask" from
+ * "they answered by recording it".
  */
 function isAboutAPerson (voice) {
   if (!voice) return false
@@ -131,6 +143,11 @@ function describe (voice) {
   const status = statusOf(voice)
   const kind = voice ? personhood.classify(voice.voice_id || null, voice) : 'stock'
   const aboutAPerson = kind !== 'stock'
+  // WHETHER THE GATE WILL ASK, which since Tom's 2026-08-31 ruling is narrower
+  // than "is a person behind it": a recordist's own recordings are about a real
+  // person AND need no recorded yes, because the recording session is the
+  // consent. One answer, the gate's — voice-personhood.requiresConsent().
+  const gated = personhood.requiresConsent(voice ? (voice.voice_id || null) : null, voice)
   return {
     status,
     /** Whether a screen should draw this at all — see isAboutAPerson. */
@@ -156,7 +173,7 @@ function describe (voice) {
      * "this is impossible - it is only me and Aran with cloned voices". There
      * is nobody to ask for a stock voice, so the honest answer is no.
      */
-    needsAsking: aboutAPerson && status !== 'authorised',
+    needsAsking: gated && status !== 'authorised',
     person: trim(voice && voice.consent_person) || null,
     personContact: trim(voice && voice.consent_person_contact) || null,
     authorisedBy: trim(voice && voice.consent_authorised_by) || null,
@@ -191,7 +208,7 @@ function describe (voice) {
      * chokepoints in services/shared/voice-consent-gate.cjs rather than here —
      * this module still only describes.
      */
-    castWarning: aboutAPerson
+    castWarning: gated
       ? castWarning(status, trim(voice && voice.consent_person), Boolean(declarationOf(voice)))
       : null,
   }

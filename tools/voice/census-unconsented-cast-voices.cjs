@@ -22,7 +22,12 @@ const c=new Client({connectionString:url,ssl:{rejectUnauthorized:false}});
 // display name. It also prints WHICH KIND each blocked voice is, because
 // 'a clone of a real person' and 'a recordist with no row' are different jobs.
 const personhood=require('../../services/shared/voice-personhood.cjs');
-const person=(vid,row)=>personhood.isAboutAPerson(vid,row);
+// requiresConsent, NOT isAboutAPerson (2026-08-31, Tom's second ruling of the
+// day): this census is 'what the block refuses', and a recordist's own
+// recordings are about a real person AND are not gated — the recording
+// session is the consent. Listing them here re-created the noise the first
+// ruling cleared: 17 rows nobody is being asked about, next to the 5 real ones.
+const person=(vid,row)=>personhood.requiresConsent(vid,row);
 (async()=>{await c.connect();
 const vrows=(await c.query('select * from voices')).rows;const V=new Map(vrows.map(r=>[r.voice_id,r]));
 const spell=id=>{const out=new Set([id]);const m=/^(azure|xai|elevenlabs|google|narakeet|human|cartesia)_(.+)$/.exec(id);if(m)out.add(m[2]);else for(const p of ['azure','xai','elevenlabs','google','narakeet','human','cartesia'])out.add(p+'_'+id);return [...out]};

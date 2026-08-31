@@ -168,14 +168,19 @@ describe('assign-slot refuses to mint a voice for somebody nobody has asked', ()
     expect(writes).toEqual([])
   })
 
-  it('still refuses when they hold a minted id with no voices row behind it', async () => {
-    // The `human_sasha_wanasky_deu_at` shape: a real person, an id, no record
-    // anywhere. Knowing nothing about somebody is never a reason to allow.
+  it('casts a minted recordist id even with no voices row behind it', async () => {
+    // FLIPPED 2026-08-31 on Tom's ruling — this asserted a 409. The
+    // `human_sasha_wanasky_deu_at` shape: a real person, an id minted for them,
+    // no `voices` row anywhere. Their own recordings are not a voice cloned
+    // from them, so there is no second yes to wait for, and Sasha is cast into
+    // deu_at_for_eng today. The door this test guards is still shut one line
+    // earlier and still tested above: somebody with NO minted id of their own
+    // is refused with `needsOnboardingConsent`, because minting the id is what
+    // the consent step does.
     USERS.find((u) => u.email === 'aran@ssi').voice_id = 'human_aran_cym_n'
     const res = await post('/assign-slot', { email: 'aran@ssi', slot: 'target1' })
-    expect(res.status).toBe(409)
-    expect((await res.json()).code).toBe('NO_RECORDED_CONSENT')
-    expect(COURSES[0].voice_config.voices.target1.voiceId).toBe('azure_x')
+    expect(res.status).toBe(200)
+    expect(COURSES[0].voice_config.voices.target1.voiceId).toBe('human_aran_cym_n')
   })
 })
 
@@ -189,7 +194,7 @@ describe('assign-slot refuses to mint a voice for somebody nobody has asked', ()
 // substance, inverted, so the day anybody restores one-stamp consent this file
 // says so out loud.
 describe('the consent step mints the voice with the yes already on it', () => {
-  it('spoken line heard → one voices write, declared but NOT castable until the clone is confirmed', async () => {
+  it('spoken line heard → one voices write with the declaration on it, and the recordist casts', async () => {
     heardIs(declaration.SPOKEN_PHRASE)
 
     const res = await postSpokenConsent('aran@ssi')
@@ -212,28 +217,23 @@ describe('the consent step mints the voice with the yes already on it', () => {
     expect(voiceWrites[0].payload.type).toBe('human')
     expect(voiceWrites[0].payload.human_email).toBe('aran@ssi')
 
-    // AND THE ASSIGNMENT IS REFUSED, by the ordinary block, with no new state
-    // for it to have learned: the refusal names the step that is left.
-    const refused = await post('/assign-slot', { email: 'aran@ssi', slot: 'target1' })
-    expect(refused.status).toBe(409)
-    const refusedBody = await refused.json()
-    expect(refusedBody.needsCloneConfirmation).toBe(true)
-    expect(refusedBody.needsOnboardingConsent).toBe(false)
-    // AND IT NAMES THE RIGHT THING TO PLAY (Tom, 2026-08-31). This asserted the
-    // CLONE wording, which was never right for this path: onboarding mints a
-    // `type: 'human'` recordist whose voice IS their own takes — there is no
-    // clone of them anywhere, and for Welsh, Breton and Cornish there cannot
-    // be one. Sending an operator to find one is sending them nowhere.
-    expect(refusedBody.error).toMatch(/has not heard their own recording back yet/i)
-    expect(refusedBody.error).toMatch(/play one of their takes/i)
-    expect(refusedBody.error).not.toMatch(/clone/i)
-    expect(COURSES[0].voice_config.voices.target1.voiceId).toBe('azure_x')
-
-    // …and goes through the moment the confirmation is on the row.
-    VOICES[0].consent_status = 'authorised'
-    VOICES[0].consent_authorised_by = 'Aran'
-    VOICES[0].consent_authorised_how = 'heard their own clone and confirmed it'
-    VOICES[0].consent_authorised_at = new Date().toISOString()
+    // AND THE ASSIGNMENT GOES THROUGH — flipped 2026-08-31. This block asserted
+    // a 409 and the test was named "…NOT castable until the clone is confirmed".
+    //
+    // It used to be refused here, waiting for Aran to hear "this clone" and
+    // confirm it. There is no clone: `human_aran_cym_n` is Aran's OWN
+    // recordings, and Tom ruled the same day that a person's own recording is
+    // not gated — "the recording session IS the consent". The second stamp is
+    // a question about a synthesis of somebody's voice, and asking it of the
+    // recordings themselves left Aran, Catrin and Sasha unable to be cast into
+    // the courses they had recorded. Cloning Aran's clips is still gated: that
+    // makes a `cartesia_*` row of its own with clone provenance
+    // (/api/voicelab/voices/cartesia/clone-from-estate), which the block
+    // refuses exactly as before.
+    //
+    // What is UNCHANGED and still asserted above: the consent step still runs,
+    // still writes the declaration, and still mints the id with the record on
+    // it. Nothing here is inferred consent; it is a narrower question.
     const assign = await post('/assign-slot', { email: 'aran@ssi', slot: 'target1' })
     expect(assign.status).toBe(200)
     expect((await assign.json()).voice_id).toBe('human_aran_cym_n')
