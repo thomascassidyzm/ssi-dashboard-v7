@@ -1,0 +1,307 @@
+[
+ {
+  "id": "tur_for_eng:S0074L02B02",
+  "course": "tur_for_eng",
+  "verdict": "DEFECT",
+  "surplus_span": "ettiğin için",
+  "corrected_target": "anlamama yardım",
+  "reason": "Known is the gerund fragment 'helping me to understand'; target adds a causal clause 'ettiğin için' (because you did), turning it into 'because of your helping me understand' which the known side never asks for.",
+  "target": "anlamama yardım ettiğin için",
+  "known": "helping me to understand",
+  "detector_score": 1.6,
+  "detector_tokens": [
+   "ettiğin"
+  ],
+  "overturn": {
+   "id": "tur_for_eng:S0074L02B02",
+   "verdict": "OVERTURNED",
+   "which_test_failed": 1,
+   "note": "'ettiğin için' is not a leaked stray word but this course's established, course-wide LEGO rendering for 'helping'/'for helping' (identical suffix reused in every L02 sibling B03/B04/U01-U05); deleting it would also strand a bare noun 'yardım' with no verb, breaking test 3 as well."
+  }
+ },
+ {
+  "id": "tur_for_eng:S0076L03B03",
+  "course": "tur_for_eng",
+  "verdict": "DEFECT",
+  "surplus_span": "öğrendiğimden",
+  "corrected_target": "ne kadar memnunum",
+  "reason": "Known is the fragment 'how much, I'm pleased'; target adds 'öğrendiğimden' (from what I've learned), a whole learn-concept with no counterpart in the known side; deletion leaves a grammatical fragment matching the known telegraphic phrase.",
+  "target": "ne kadar öğrendiğimden memnunum",
+  "known": "how much, I'm pleased",
+  "detector_score": 1.6,
+  "detector_tokens": [
+   "öğrendiğimden"
+  ],
+  "overturn": {
+   "id": "tur_for_eng:S0076L03B03",
+   "verdict": "OVERTURNED",
+   "which_test_failed": 1,
+   "note": "'öğrendiğimden' is the seed's own established LEGO content for 'how much I learned' (used identically in every L03 sibling B02/B04/U01-U04, and is literally the LEGO's own gloss at L03B02); the known text 'how much, I'm pleased' is an elliptical label for it, not evidence of a leak. The proposed corrected form 'ne kadar memnunum' also risks a different, ambiguous exclamative reading ('how pleased I am!'), failing test 3."
+  }
+ },
+ {
+  "id": "nor_for_eng:S0087L01B02",
+  "course": "nor_for_eng",
+  "verdict": "DEFECT",
+  "surplus_span": "her",
+  "corrected_target": "det er folk jeg ikke kjenner",
+  "reason": "'her' (here) not in known 'I don't know many people'; deletion leaves a match.",
+  "target": "det er folk jeg ikke kjenner her",
+  "known": "I don't know many people",
+  "detector_score": 2.4,
+  "detector_tokens": [
+   "her"
+  ],
+  "overturn": {
+   "id": "nor_for_eng:S0087L01B02",
+   "verdict": "OVERTURNED",
+   "which_test_failed": 3,
+   "note": "known 'I don't know many people' contains a real quantifier ('many') that changes propositional content, unlike the filler-word cases elsewhere in this course; the proposed corrected target 'det er folk jeg ikke kjenner' (there are people I don't know) drops 'many' AND reframes the sentence as an existential ('there are') rather than 'I know' -- with no sibling establishing that pattern as this course's convention for this lego. Not confident in Norwegian nuance here; flagging as uncertain rather than confirming."
+  }
+ },
+ {
+  "id": "fra_for_eng:S0275L01B03",
+  "course": "fra_for_eng",
+  "verdict": "DEFECT",
+  "surplus_span": "encore ",
+  "corrected_target": "un peu plus longtemps",
+  "reason": "Known is only 'a bit longer'; 'encore' ('still/again') has no counterpart and deleting it recovers the parent LEGO exactly.",
+  "target": "encore un peu plus longtemps",
+  "known": "a bit longer",
+  "detector_score": 1.6,
+  "detector_tokens": [
+   "peu"
+  ],
+  "overturn": {
+   "id": "fra_for_eng:S0275L01B03",
+   "verdict": "OVERTURNED",
+   "which_test_failed": 1,
+   "note": "'encore un peu plus longtemps' is the established rendering for 'a bit longer' across this LEGO (siblings U06, U09 both use 'encore' unprompted for the same known concept); deleting it would break, not restore, course-wide consistency."
+  }
+ },
+ {
+  "id": "fra_for_eng:S0405L04B02",
+  "course": "fra_for_eng",
+  "verdict": "DEFECT",
+  "surplus_span": " oui",
+  "corrected_target": "réserver",
+  "reason": "Known is just 'reserve', no 'yes'; deleting recovers known/parent exactly.",
+  "target": "réserver oui",
+  "known": "reserve",
+  "detector_score": 1.6,
+  "detector_tokens": [
+   "oui"
+  ],
+  "overturn": {
+   "id": "fra_for_eng:S0405L04B02",
+   "verdict": "OVERTURNED",
+   "which_test_failed": 1,
+   "note": "'oui X' matches known 'yes X' in every other B02 sibling across seeds 396-405 (8+ clean matches); this known text 'reserve' is almost certainly missing its 'yes' prefix (a known-side typo), so 'oui' is backed by the established template even though not by this row's literal known text. Honest fix is adding 'yes' to known, not deleting oui from target."
+  }
+ },
+ {
+  "id": "eng_for_pan:S0273L01B03",
+  "course": "eng_for_pan",
+  "verdict": "DEFECT",
+  "surplus_span": " this week",
+  "corrected_target": "too much work",
+  "reason": "known 'ਮੇਰੇ ਕੋਲ ਬਹੁਤ ਜ਼ਿਆਦਾ ਕੰਮ ਹੈ' ('I have too much work') has no time reference at all; sibling S0273L01B01, the base form, renders cleanly as 'too much work' with no 'this week'.",
+  "target": "too much work this week",
+  "known": "ਮੇਰੇ ਕੋਲ ਬਹੁਤ ਜ਼ਿਆਦਾ ਕੰਮ ਹੈ",
+  "detector_score": 2.6,
+  "detector_tokens": [
+   "this",
+   "week"
+  ],
+  "overturn": {
+   "id": "eng_for_pan:S0273L01B03",
+   "verdict": "OVERTURNED",
+   "which_test_failed": 4,
+   "note": "known 'ਮੇਰੇ ਕੋਲ ਬਹੁਤ ਜ਼ਿਆਦਾ ਕੰਮ ਹੈ' explicitly includes 'ਮੇਰੇ ਕੋਲ...ਹੈ' (I've got), matching sibling B02's 'I've got too much work'. Deleting only 'this week' leaves 'too much work', which drops 'I've got' too -- pure deletion can't produce a row that says what this known says; the honest fix would need to ADD 'I've got' back, not just delete."
+  }
+ },
+ {
+  "id": "eng_for_pan:S0220L01B02",
+  "course": "eng_for_pan",
+  "verdict": "DEFECT",
+  "surplus_span": " here",
+  "corrected_target": "television",
+  "reason": "known 'ਟੀਵੀ ਦੇਖਣਾ' ('to watch television') has no 'ਇੱਥੇ'/'here' at all; no row in this seed's known text mentions 'here'.",
+  "target": "television here",
+  "known": "ਟੀਵੀ ਦੇਖਣਾ",
+  "detector_score": 1.6,
+  "detector_tokens": [
+   "here"
+  ],
+  "overturn": {
+   "id": "eng_for_pan:S0220L01B02",
+   "verdict": "OVERTURNED",
+   "which_test_failed": 3,
+   "note": "known 'ਟੀਵੀ ਦੇਖਣਾ' literally includes the verb ਦੇਖਣਾ (to watch/watching), per the reader's own reason -- but the corrected target 'television' drops that verb too, so it doesn't say what known says even after deleting 'here'. This looks like a deeper broken row (or a forward-referenced, unintroduced verb form) rather than a clean extra-word case."
+  }
+ },
+ {
+  "id": "lit_for_eng:S0078L02B04",
+  "course": "lit_for_eng",
+  "verdict": "DEFECT",
+  "surplus_span": "turiu omenyje",
+  "corrected_target": "pasakei ką",
+  "reason": "known 'what you said' never mentions 'I mean'; 'turiu omenyje' (I mean) is an unbacked added clause",
+  "target": "pasakei ką turiu omenyje",
+  "known": "what you said",
+  "detector_score": 1.8,
+  "detector_tokens": [
+   "turiu",
+   "omenyje"
+  ],
+  "overturn": {
+   "id": "lit_for_eng:S0078L02B04",
+   "verdict": "OVERTURNED",
+   "which_test_failed": 3,
+   "note": "corrected_target 'pasakei ką' reverses the natural/attested word order for 'what you said' — the seed's own master sentence renders it 'ką pasakei' (interrogative pronoun fronted, as in 'Nesuprantu, ką pasakei.'); leaving verb-first is a stranded echo-question reading, not the relative-clause meaning the known text asks for, so a pure deletion doesn't recover a valid phrase here."
+  }
+ },
+ {
+  "id": "kor_for_eng:S0332L02B03",
+  "course": "kor_for_eng",
+  "verdict": "DEFECT",
+  "surplus_span": "여동생을 위해 ",
+  "corrected_target": "새로운 방법을",
+  "reason": "known 'for a new way' never mentions a sister; '여동생을 위해' (for [my] sister) has no counterpart and deletes cleanly, matching the pattern of unrelated content leaking into other rows in this course.",
+  "target": "여동생을 위해 새로운 방법을",
+  "known": "for a new way",
+  "detector_score": 2.6,
+  "detector_tokens": [
+   "여동생을",
+   "위해"
+  ],
+  "overturn": {
+   "id": "kor_for_eng:S0332L02B03",
+   "verdict": "OVERTURNED",
+   "which_test_failed": 1,
+   "note": "'위해' (for) is confirmed by sibling U02 to render known's 'for' (for her sister); the proposed span over-deletes real backed content along with the unbacked 'sister' part. A correct fix would restructure, not delete the whole span."
+  }
+ },
+ {
+  "id": "ara_eg_for_eng:S0217L01B03",
+  "course": "ara_eg_for_eng",
+  "verdict": "DEFECT",
+  "surplus_span": "أو لأ",
+  "corrected_target": "عايز مية",
+  "reason": "known 'do you want water' is a plain question with no 'or not' tag; أو لأ (or not) is an added question tag with no counterpart in known, and Arabic grammar doesn't require it. Deleting it leaves an exact, grammatical match.",
+  "target": "عايز مية أو لأ",
+  "known": "do you want water",
+  "detector_score": 2.3,
+  "detector_tokens": [
+   "أو",
+   "لأ"
+  ],
+  "overturn": {
+   "id": "ara_eg_for_eng:S0217L01B03",
+   "verdict": "OVERTURNED",
+   "which_test_failed": 1,
+   "note": "Both L01 and L02 B03 rows consistently pair 'do you want X' known with an 'X أو لأ' (X or-not) target -- a plausible Egyptian-colloquial yes/no-question tag encoding 'do you' illocutionary force, not decorative filler. Low confidence, don't speak Egyptian Arabic; the consistency across two unrelated legos argues for deliberate design over leaked contamination."
+  }
+ },
+ {
+  "id": "kor_for_eng:S0332L03B03",
+  "course": "kor_for_eng",
+  "verdict": "DEFECT",
+  "surplus_span": "여동생을 위해 ",
+  "corrected_target": "새로운 삶을",
+  "reason": "known 'for a new life' never mentions a sister; deletes cleanly to match, same pattern as the sibling row.",
+  "target": "여동생을 위해 새로운 삶을",
+  "known": "for a new life",
+  "detector_score": 2,
+  "detector_tokens": [
+   "여동생을"
+  ],
+  "overturn": {
+   "id": "kor_for_eng:S0332L03B03",
+   "verdict": "OVERTURNED",
+   "which_test_failed": 1,
+   "note": "Same structural issue as S0332L02B03 -- '위해' (for) is backed by known's 'for'; deleting the whole '여동생을 위해' span removes real content, not just the unbacked 'sister' reference."
+  }
+ },
+ {
+  "id": "kor_for_eng:S0502L01B03",
+  "course": "kor_for_eng",
+  "verdict": "DEFECT",
+  "surplus_span": "했다고",
+  "corrected_target": "길을",
+  "reason": "known 'about the road' has no reported-speech content; '했다고' (said/did that) is a quotative marker with no counterpart here (unlike the sibling row where 'said' licenses it) and deletes cleanly.",
+  "target": "길을 했다고",
+  "known": "about the road",
+  "detector_score": 2,
+  "detector_tokens": [
+   "했다고"
+  ],
+  "overturn": {
+   "id": "kor_for_eng:S0502L01B03",
+   "verdict": "OVERTURNED",
+   "which_test_failed": 3,
+   "note": "Sibling U02 ('I heard about the road'->'길에 대해 들었어요') shows this course's own convention for 'about X' is 'X에 대해', not bare 'X을'. The corrected target 길을 drops 'about' entirely rather than rendering it -- deletion alone can't fix this row, since the case particle is also wrong (을 vs 에)."
+  }
+ },
+ {
+  "id": "kor_for_eng:S0585L03B03",
+  "course": "kor_for_eng",
+  "verdict": "DEFECT",
+  "surplus_span": "지역은 ",
+  "corrected_target": "이 보여요",
+  "reason": "known 'this is visible' never mentions an area; '지역은' (area-TOPIC) has no counterpart and deletes cleanly to match.",
+  "target": "이 지역은 보여요",
+  "known": "this is visible",
+  "detector_score": 2,
+  "detector_tokens": [
+   "지역은"
+  ],
+  "overturn": {
+   "id": "kor_for_eng:S0585L03B03",
+   "verdict": "OVERTURNED",
+   "which_test_failed": 3,
+   "note": "The corrected target '이 보여요' leaves the bare demonstrative determiner '이' (this) stranded with no following noun to modify -- Korean 이 is adnominal-only and cannot stand alone as a pronoun (unlike English 'this'). This is ungrammatical, not merely a fragment."
+  }
+ },
+ {
+  "id": "ara_eg_for_eng:S0217L02B03",
+  "course": "ara_eg_for_eng",
+  "verdict": "DEFECT",
+  "surplus_span": "أو لأ",
+  "corrected_target": "عايز كباية",
+  "reason": "known 'do you want a glass' is a plain question with no 'or not' tag; أو لأ (or not) is an added question tag with no counterpart in known. Deleting it leaves an exact, grammatical match.",
+  "target": "عايز كباية أو لأ",
+  "known": "do you want a glass",
+  "detector_score": 1.9,
+  "detector_tokens": [
+   "أو",
+   "لأ"
+  ],
+  "overturn": {
+   "id": "ara_eg_for_eng:S0217L02B03",
+   "verdict": "OVERTURNED",
+   "which_test_failed": 1,
+   "note": "Same pattern as S0217L01B03 -- 'أو لأ' plausibly a natural Egyptian Arabic yes/no question tag, consistently applied. Overturning both together; low confidence in Arabic pragmatics."
+  }
+ },
+ {
+  "id": "kor_for_eng:S0617L03B03",
+  "course": "kor_for_eng",
+  "verdict": "DEFECT",
+  "surplus_span": "실수라고 ",
+  "corrected_target": "그녀는 그건 생각했어요",
+  "reason": "known 'she thought that it was' never specifies 'a mistake'; deletes cleanly leaving a grammatical (if fragmentary) match.",
+  "target": "그녀는 그건 실수라고 생각했어요",
+  "known": "she thought that it was",
+  "detector_score": 1.6,
+  "detector_tokens": [
+   "실수라고"
+  ],
+  "overturn": {
+   "id": "kor_for_eng:S0617L03B03",
+   "verdict": "OVERTURNED",
+   "which_test_failed": 3,
+   "note": "Deleting '실수라고' removes the quotative marker that Korean requires to attach an embedded 'that it was X' clause to '생각했어요'. The remnant '그녀는 그건 생각했어요' reads as 'she thought about that' rather than preserving the 'thought that it was ___' structure known calls for -- a different construction, not just a shorter one. Uncertain about Korean nuance here; flagging rather than confirming."
+  }
+ }
+]
