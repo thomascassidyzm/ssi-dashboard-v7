@@ -1,0 +1,24 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Voice Lab Languages — after the fix, 2026-08-31</title>
+<style>
+  body { background:#0f1420; color:#e6edf3; font:16px/1.5 system-ui, sans-serif; margin:0; padding:1rem 1rem 4rem; }
+  h1 { font-size:1.25rem; margin:0 0 .25rem; }
+  p { color:#9fb0c3; margin:.35rem 0; }
+  table { border-collapse:collapse; margin:1rem 0; font-size:.95rem; }
+  td, th { border-bottom:1px solid #26324a; padding:.35rem .8rem .35rem 0; text-align:left; }
+  img { width:100%; border:1px solid #26324a; border-radius:8px; margin-top:1rem; }
+  code { color:#7ee787; }
+</style>
+<h1>Voice Lab · Languages — after the fix</h1>
+<p>watson-1, deployed <code>a989cf6ee</code>, 2026-08-31. Same 88 rows, same totals.</p>
+<table>
+  <tr><th></th><th>before</th><th>after</th></tr>
+  <tr><td>DB queries per load</td><td>5</td><td>5 cold, 0 warm</td></tr>
+  <tr><td>bytes over the wire</td><td>656,720</td><td>18,323</td></tr>
+  <tr><td>request, over the funnel</td><td>0.48–4.15 s</td><td>0.17 s</td></tr>
+  <tr><td>request, real browser</td><td>531–1,957 ms</td><td>194–237 ms</td></tr>
+  <tr><td>/voicelab/params bytes</td><td>290,823</td><td>2,704</td></tr>
+</table>
+<img src="languages-AFTER-deployed-3470.png" alt="The Voice Lab Languages tab after the fix: 88 language rows with course counts, in-use provider tallies, voices cast and status chips.">
