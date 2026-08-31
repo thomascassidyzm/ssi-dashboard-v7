@@ -4,6 +4,17 @@ const fs = require('fs'), path = require('path');
 const dir = path.join(__dirname, '..', '..', 'docs', 'frame-layer');
 const esc = (t) => String(t == null ? '' : t).replace(/\|/g, '\\|');
 const d = JSON.parse(fs.readFileSync(path.join(dir, 'pair-mapping-classes.json'), 'utf8'));
+/**
+ * The overlay now carries two provenances. `P*` rows are the SEED corpus's
+ * frames; `D*`/`X*` rows are the POD corpus's, and they default to
+ * NOT ATTESTED. They are rendered in their own section rather than mixed into
+ * the seed table, because a class distribution computed over eighteen
+ * placeholders would say something false about the pair.
+ */
+const PLACEHOLDER = /^NOT /;
+const isPod = (p) => p.provenance === 'pod';
+const seedRows = d.patterns.filter(p => !isPod(p));
+const podRows = d.patterns.filter(isPod);
 const L = [];
 L.push('# Per-pair mapping classes');
 L.push('');
@@ -19,18 +30,18 @@ L.push('## spa_for_eng — full');
 L.push('');
 L.push('| id | pattern | known seeds | class | mapping | attesting seeds | note |');
 L.push('|---|---|---:|---|---|---|---|');
-for (const p of d.patterns) {
+for (const p of seedRows) {
   const s = p.pairs.spa_for_eng;
   L.push(`| ${p.id} | ${p.name} | ${p.known_seed_count} | **${s.class}** | ${esc(s.mapping)} | ${s.evidence_seeds.join(' ') || '—'} | ${esc(s.note)} |`);
 }
 const counts = {};
-for (const p of d.patterns) counts[p.pairs.spa_for_eng.class] = (counts[p.pairs.spa_for_eng.class] || 0) + 1;
+for (const p of seedRows) counts[p.pairs.spa_for_eng.class] = (counts[p.pairs.spa_for_eng.class] || 0) + 1;
 L.push('');
 L.push('Class distribution for spa_for_eng: ' + Object.entries(counts).sort((a,b)=>b[1]-a[1]).map(([k,v])=>`${k} ${v}`).join(', ') + '. **SPLIT is the pair\'s expensive class** — the metric in `frame-zut.md` weights toward it.');
 L.push('');
 for (const course of ['deu_for_eng', 'zho_for_eng', 'jpn_for_eng']) {
-  const rows = d.patterns.filter(p => p.pairs[course].class !== 'NOT YET EXTRACTED');
-  L.push(`## ${course} — ${rows.length} of ${d.patterns.length} patterns extracted`);
+  const rows = seedRows.filter(p => !PLACEHOLDER.test(p.pairs[course].class));
+  L.push(`## ${course} — ${rows.length} of ${seedRows.length} patterns extracted`);
   L.push('');
   L.push('| id | pattern | class | mapping | attesting seed | note |');
   L.push('|---|---|---|---|---:|---|');
@@ -38,11 +49,19 @@ for (const course of ['deu_for_eng', 'zho_for_eng', 'jpn_for_eng']) {
     const c = p.pairs[course];
     L.push(`| ${p.id} | ${p.name} | **${c.class}** | ${esc(c.mapping)} | ${c.evidence_seeds.join(' ')} | ${esc(c.note)} |`);
   }
-  const missing = d.patterns.filter(p => p.pairs[course].class === 'NOT YET EXTRACTED').map(p => p.id);
+  const missing = seedRows.filter(p => PLACEHOLDER.test(p.pairs[course].class)).map(p => p.id);
   L.push('');
   L.push(`NOT YET EXTRACTED (${missing.length}): ${missing.join(' ')}`);
   L.push('');
 }
+L.push(`## Pod frames (\`D*\` sentence grain, \`X*\` exchange grain) — ${podRows.length} rows, all NOT ATTESTED`);
+L.push('');
+L.push('These come from `dialogue-frame-inventory.md`, not from the seeds. **NOT ATTESTED means exactly that** — no pair has target-side evidence for a pod frame yet, and `expensiveClassFor` skips any class matching `/^NOT /`, so these rows cannot skew a pair\'s expensive-class tally. The Method Pod\'s Italian rendering (585 rows with `target_text`) is the first place a pod-frame mapping class can actually be read for any pair — and reading one is a separate job, because **pods do not cut**: having target text is a different act from minting an agreement between a known chunk and a target chunk.');
+L.push('');
+L.push('| id | grain | frame | pod rows | class, every pair |');
+L.push('|---|---|---|---:|---|');
+for (const p of podRows) L.push(`| ${p.id} | ${p.grain} | ${p.name} | ${p.pod_row_count} | ${p.pairs.spa_for_eng.class} |`);
+L.push('');
 L.push('## The seed-15 flag, re-confirmed live');
 L.push('');
 L.push('Seed 15\'s canonical teaching job is the want-YOU-to split. Pulled fresh 2026-08-29:');

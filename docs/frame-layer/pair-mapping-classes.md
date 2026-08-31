@@ -97,6 +97,31 @@ NOT YET EXTRACTED (22): P2 P3 P4 P5 P6 P7 P10 P11 P12 P14 P15 P18 P21 P22 P23 P2
 
 NOT YET EXTRACTED (22): P2 P3 P4 P5 P6 P7 P10 P11 P12 P14 P15 P18 P21 P22 P23 P24 P25 P26 P27 P28 P29 P30
 
+## Pod frames (`D*` sentence grain, `X*` exchange grain) — 18 rows, all NOT ATTESTED
+
+These come from `dialogue-frame-inventory.md`, not from the seeds. **NOT ATTESTED means exactly that** — no pair has target-side evidence for a pod frame yet, and `expensiveClassFor` skips any class matching `/^NOT /`, so these rows cannot skew a pair's expensive-class tally. The Method Pod's Italian rendering (585 rows with `target_text`) is the first place a pod-frame mapping class can actually be read for any pair — and reading one is a separate job, because **pods do not cut**: having target text is a different act from minting an agreement between a known chunk and a target chunk.
+
+| id | grain | frame | pod rows | class, every pair |
+|---|---|---|---:|---|
+| D1 | sentence | ritual open/close | 35 | NOT ATTESTED |
+| D2 | sentence | polar response + elaboration | 70 | NOT ATTESTED |
+| D3 | sentence | thanks / gratitude close | 56 | NOT ATTESTED |
+| D4 | sentence | apology / attention-getter | 21 | NOT ATTESTED |
+| D5 | sentence | deictic handover | 10 | NOT ATTESTED |
+| D6 | sentence | reciprocal return | 22 | NOT ATTESTED |
+| D7 | sentence | uptake assessment | 24 | NOT ATTESTED |
+| D8 | sentence | ellipted order | 7 | NOT ATTESTED |
+| D9 | sentence | reckoning | 2 | NOT ATTESTED |
+| D10 | sentence | read-back receipt | 11 | NOT ATTESTED |
+| D11 | sentence | reassurance / normalising | 10 | NOT ATTESTED |
+| D12 | sentence | compliance commitment | 32 | NOT ATTESTED |
+| X1 | exchange | reciprocal return | 7 | NOT ATTESTED |
+| X2 | exchange | polar-response-to-question | 48 | NOT ATTESTED |
+| X3 | exchange | repair | 31 | NOT ATTESTED |
+| X4 | exchange | instruction -> read-back | 9 | NOT ATTESTED |
+| X5 | exchange | order -> deictic handover | 7 | NOT ATTESTED |
+| X6 | exchange | thanks -> downgrade | 3 | NOT ATTESTED |
+
 ## The seed-15 flag, re-confirmed live
 
 Seed 15's canonical teaching job is the want-YOU-to split. Pulled fresh 2026-08-29:
