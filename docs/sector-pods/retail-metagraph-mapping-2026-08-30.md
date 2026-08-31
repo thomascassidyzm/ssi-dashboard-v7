@@ -283,3 +283,378 @@ what the customer should do with the one at home ("bring yours back, full refund
 needed") → substitute or refund. The sector's mandated-encounter analogue, and it fires only
 when the till catches it. **Failure branch:** none in the room — the failure is the buyer this
 conversation never reaches (§6).
+
+---
+
+## 4. The mapping — every encounter, LANDS or MINTS
+
+| Encounter | Primary | Also traversed | Verdict |
+|---|---|---|---|
+| E1 sale | N1 + N2 + P1 + P2 **[store]** | F21 saturates ("anything else?"), F2 (the scripted throw-in), N101 **[health]** where the medium is contracted ("iawn i siarad Cymraeg?") | **lands** — the store's own home ground |
+| E2 where-is-it | N3 **[store]** + F1/F2 | walked-there = F2's volunteered extra | **lands** |
+| E3 out-of-stock | N3 negative branch + F6 **[store]** | N105 **[health]** (the order-in, the other branch), N109 (the bounded promise), F302 **[tb]** ("the system says two, but the system lies"), F4 | **lands** |
+| E4 advice counter | N8 + N12 **[store]** | P1, F4; failure branch = N13 **[store]** held with status, converting to N105 ("I'll get Priya") or to the record (the allergen folder — §6) | **lands** |
+| E5 age-restricted sale | N106 **[health]** + N104 + N401 **[ireland]** | N402 (goods held, task travels — "bring your passport in"), F16 on the press; the fake-ID retention = N501 **[trades]** PARTIAL, see §7 | **lands** |
+| E6 return, receipt in hand | N2 + P2 **[store]** + N103 **[health]** | N104 (the condition verdict), N107 (the policy recitation) | **lands** — N103 REVIVES |
+| E7 return refused/bent | N401 **[ireland]** + F6 | N105 at N401.5 (the manager — C403's exact composition), F201 **[overlay]** | **lands** |
+| E8 price dispute | N104 **[health]** + F501 **[trades]** | O5 **[store]** both directions; F203 **[overlay]** when the shop is wrong; F102 | **lands** — challenge-the-premise attests, and the exhibit re-attests |
+| E9 faulty goods | F401 **[ireland]** + N104 | N401 with statute in trust; the send-off = N105 (shop-side burden); F103 | **lands** |
+| E10 escalation | N105 **[health]** composed at N401.5 **[ireland]** | the handover-with-state = N110 + F103; the manager's bend = N201's discretionary settle **[overlay]**, revived at the higher tier — §5 | **lands** |
+| E11 security stop | N106 **[health]** + K3 (receipt v bag) | innocent repair = O6 + F203 **[overlay]**; offence = the process, N401's forum position; wrongful stop = F203 owned personally, script dropped — §6 | **lands** — the innocent-out REFUSED as a mint, §7 |
+| E12 the regular | N1, N5, F19, F11, F14 **[store]** | F303 shared lines, N302 digression-and-return **[tb]**; the till interruption = N17's bank **[store]**, constructed attestation | **lands** |
+| E13 shift handover | N4 + P3 **[store]** + F103 **[health]** | N110; N108 for the absent beneficiary (tomorrow's shift) | **lands** |
+| E14 task allocation | N4 + P3 + P4 **[store]** | show-then-do = P3 with acts as medium, health's ruling followed (trades refusal 4) | **lands** |
+| E15 the scripted no | N401 **[ireland]** / F201 **[overlay]** | F6 (the licit substitute — price-match), F16, ritual close; the script-break REFUSED as a mint, §7 | **lands** |
+| E16 recall at the till | N106 + N401 + N107 composition | the machine flags, the worker voices; §6 for the hole | **lands** |
+
+**The distribution — which is the finding.** Sixteen encounters: **eight land primarily on the
+original store, four primarily on health's proposals, three primarily on Ireland's, one on a
+store/health composite — and NONE mints.** Zero nodes, zero moves. The curve across four sectors:
+**health 10 → Ireland 2 → trades 1 → retail 0.** The amendment's expected result — zero or one,
+concentrated where duty overrides consent — lands at zero because retail's duty-strand is pure
+REFUSAL: nobody at a till acts on a customer's property against their refused consent, so the one
+variable that has minted anywhere (N501's consent-overridden act) has no full home here, and
+everything else composes.
+
+**The two questions the commission asked, answered plainly.** *Does a highly scripted sector
+reach fewer store nodes?* **No — it reaches nearly the whole trunk, but through its failure
+branches.** The happy path is shape-poor (E1 runs on five store ids all shift), and the scripts
+live entirely in the layer the store already reserves for them: `surface_variants`, here owned by
+a corporation instead of minted between friends. Scriptedness determines where the FREQUENCY
+sits, not which shapes exist — and frequency is precisely what a derived inventory cannot
+measure, so this document reports the expressibility result and stops there. *Do
+refusal-with-reason and challenge-the-premise still attest?* **Refusal-with-reason is the
+sector's densest strand** — N401 is primary in three encounters and present in a fourth, its
+richest showing in any sector yet; **challenge-the-premise (O5) attests in both directions at
+one encounter** — the worker corrects the customer's premise with the shelf-edge exhibit, and
+the customer's challenge is sometimes RIGHT, which the script even provides for ("it's our mess,
+I'll put it through at three").
+
+**Method-Pod reach, against trades' high-water mark.** N13 attests (the advice counter's held
+"I don't know"); N17's bank attests (the till interruption); N15 thinly at the staff room
+(constructed, rung 0); N14 stays implicit exactly as in health and trades. **N16 does not attest
+— and not thinly: positionally.** See §5. The far, unscripted sector widened the store's use;
+the scripted one narrows it at exactly one node, for a reason the ladder can state.
+
+### 4.1 The moves pass — all twenty families
+
+Retail runs the same per-stretch rule trades established — **a family dies exactly where the kind
+that kills it is pinned, and revives the moment it unpins** — fifth corpus, no exceptions found:
+
+| Move | Shop floor, in business | Rung-0 stretches (regulars, staff room) |
+|---|---|---|
+| F1–F10, F12–F14, F16, F17, F19, F21 | yes — F21 is the scripted sector's signature move ("anything else? do you have a loyalty card?"), F6 saturates out-of-stock, F9 the order read-back | yes |
+| **F11 And you?** | **dies inside the business** — "do you have a loyalty card?" is not returnable | **alive** — "busy one? — same every Saturday, and you?" |
+| **F15 I'm not sure** | **dies with ZERO time-index** — the system always already knows, so the bare "no idea" never stands and converts IMMEDIATELY to the check ("two seconds, I'll look it up"). Trades' pre-inspection licence ("couldn't tell you till I've looked") does not exist here: there is no stretch in which the fact is legitimately unassigned. Where the record itself is suspect, the convert carries F302's flag ("the system says two, but the system lies — let me walk and look") | alive |
+| **F18 That's normal, isn't it?** | **dies at K3** — "that's never £5?" is answered by the scanner, position 3 changing hands to the instrument | **alive** ("these self-service ones hate everyone, don't they?" — "tell me about it") |
+
+The refinement retail contributes: the F15 time-index is a variable, and retail sets it to zero.
+Trades showed the death is time-indexed; retail shows the index length is a property of HOW FAST
+THE SECTOR'S K3 CAN BE CONSULTED. Where the record is a lifted floorboard, the bare not-knowing
+stands for days; where it is a handheld scanner, it stands for zero seconds.
+
+---
+
+## 5. The ladder — placement ruled
+
+Using the recorded test throughout: **a position appears, disappears or changes hands — not
+merely gets harder or dearer.**
+
+**Retail is the first sector mapped AT the store's home rung.** POD-1's rung 1 — the barista
+knows the stock — IS retail in an apron. Per stretch, as trades established: rung 0 with the
+regulars and in the staff room; rung 1 across the counter on the happy path; rungs 2–3 at the
+returns desk, the disputes and the escalations, where the record and the trust-held rules enter;
+the duty apex only at the age gate and the security stop. No new rung is occupied and no new
+kind is needed.
+
+**K1 — pinned to the worker, and uniquely SELF-COLLAPSING.** The worker knows the stock, the
+aisle, the policy. But the evidence is on open display: the shelf can be walked to, the label
+read together, the seam shown across the counter. F501's exhibit — minted in trades where
+collapsing K1 takes a lifted floorboard — re-attests here at near-zero cost, which is why
+retail's K1 never pins hard: any customer can demand the walk, and the script even schedules it
+(the price check). The asymmetry is real but shallow, and shallow is exactly rung 1.
+
+**K2 — rotating on the happy path, pinned in trust at the regulated points, and the trust is
+TIERED, which is the sector's one genuine ladder contribution.** Either side can walk away from
+any ordinary sale. At the regulated points (the age gate, the licensing rules, the returns
+statute) K2 pins in trust, as in Ireland — but retail's building contains BOTH the bound seat
+and the discretionary one. Run the test at E10: at the assistant's seat, N201's discretionary
+settle position does not exist ("the till literally won't do it" — and that is true, not
+theatre); at the manager's seat, one flight of stairs away, it does ("go on — card refund, this
+once"). **A position exists at one tier of the same party and not at another, and the
+escalation encounter exists precisely to walk the business from the seat where the position is
+absent to the seat where it is present.** Ireland's contest path pointed out of the building at
+a forum; retail's points, first, at a person twenty feet away. Held-in-trust is per-seat, not
+per-party — the existing annotation expresses this without change (it attaches to kinds held by
+a party-seat), so it is recorded as a wrinkle, not a mint, but it is the cleanest showing yet
+that the annotation was cut at the right grain.
+
+**K3 — pinned to the shop, and SPLIT in a way no prior sector shows.** The shop holds the
+system, the cameras, the shelf-edge; the customer holds the receipt — the first sector where
+the lay party routinely carries a record-instrument of their own. Encounters at rungs 2–3 are
+settled by whichever record is produced, and the record-production position sits with the
+CUSTOMER at the returns desk (no receipt → a different branch entirely). That a record position
+changes hands relative to health, Ireland and trades is absorbed by walk annotation — who fills
+a position was never a shape distinction — and F18 dies to K3 on schedule regardless of whose
+pocket the record is in.
+
+**K4 — low by definition, with one spike.** It is the low-stakes sector: small money, small
+consequence, which is why it lives at the store's home rung. The spike is the security stop —
+the customer's dignity and the shop's liability both on the table at once — and the sector's
+entire response to the spike is REGISTER: the innocent-out frame, the dropped script at the
+wrongful stop. Cost management without a single new position, which is §7's first refusal.
+
+**The fixed price — the position test fired against a store node.** N16 the precision haggle:
+number → counterbid → counterbid → settlement formula. In scripted retail the price tag deletes
+positions 2 and 3 outright. The haggle is not harder in a supermarket; it is POSITIONALLY
+ABSENT — there is no turn a customer can take that opens a counterbid sequence at a fixed-price
+till, and both parties know it, which is what makes "go on, call it a fiver" a JOKE there (rung-0
+material, F303) rather than a bid. This is the first recorded case of an institutional fact
+deleting a node from a sector, and it is the exact mirror of the Family A dropouts: trades lost
+N103 for lacking a possession (the person-file); retail loses N16 for HOLDING one (the fixed
+price list). Shapes track possessions in both directions. N16 survives at the sector's unfixed
+margins — the market stall, the car showroom, the manager's "meet me on the delivery charge" in
+big-ticket retail — which is branch, exactly as the taste-safe default treated it.
+
+**Family A — for the first time, NO dropout.** All ten health shapes attest: N103 revives at
+click-and-collect and refund-verification (the known-answer check against the order file — the
+sector KEEPS a person-adjacent file, so the shape returns), and N102 attests at branch (the
+fitting room: "arms up, I'm just going to measure across the back" is consent-and-narrated-act
+on the body, in a shop). Ireland lacked the body and lost exactly N102; trades lacked the
+person-file and lost exactly N103; retail holds a transaction file always and a body at branch,
+and loses nothing. **The dropout theory now has its positive case: give the sector the
+possession back and the shape returns, position for position.**
+
+**The money.** Ruled in trades (§5 there), argued both ways there, and not re-litigated here.
+Retail — the all-money sector — merely confirms the ruling from the far side: the sale's
+positions are identical whether the instrument is cash, card, gift card or someone else's
+click-and-collect account, and the refund runs money BACKWARDS through the same positions
+unchanged. The positions never came from the money.
+
+**Proxy holding.** In force at every regulated point: the age gate (licensing law), the faulty-
+goods remedy (consumer statute — the rights the shop cannot refuse even when its policy would),
+the recall (the safety notice), the script itself (head office as the absent principal of every
+"I can't"). The existing `held_in_trust` annotation covers all of it without strain, with the
+tiered wrinkle recorded above. The script is the purest proxy artefact any sector has shown:
+the principal's voice, pre-written, in the worker's mouth.
+
+**The invariants.** **O7 holds, all five positions, fifth corpus:** business in progress → the
+unbidden disclosure at the till ("first Christmas on my own this year", over the mince pies) →
+acknowledge without fixing — and the retail violation-by-fixing is the freebie, the discount,
+or worst of all the UPSELL — → the discloser closes → business resumes. Evidence class stated
+plainly: consistency against constructed encounters, not independent attestation. **F302 holds,
+fifth corpus:** "the system says two, but the system lies"; "I might be wrong, but I think
+that's the last delivery before Christmas" — the flag prices the worker's partial authority over
+their own record down before delivery and licenses delivery at full strength. Neither invariant
+broke anywhere I could walk.
+
+---
+
+## 6. The second axis — tested, and the hole looked for
+
+The candidate: weight the overlay selector by the cost of failing to recover, shape-level.
+
+**Where the weight lands: N106 and N107, again, plus the F15-conversion.** The age gate and the
+security stop are N106 carrying the sector's two dearest failures (the underage sale — the
+worker personally fined, the licence lost; the wrongful accusation — the sector's most expensive
+sentence). The returns-conditional and the allergen instruction are N107 ("if anything goes
+wrong, that's your proof"; "it's made where nuts are handled — if the allergy's serious, don't").
+And the allergen enquiry puts the axis's weight on a MOVE-level discipline for the first time:
+at the food counter, the difference between the bare guess and the F15-convert-to-the-record
+("I won't guess on an allergy — let me get the folder") is the difference that kills. Low-cost
+shapes inside high-cost encounters stay low-cost — E5's flattery close and E11's F14 carry no
+weight. **Verdict: supported, shape-level, fourth sector running.**
+
+**The scripted sector's own contribution to the axis — the script runs out exactly where the
+cost peaks.** The corporate script covers the happy path wall-to-wall and the routine failures
+thinly (the refusal wordings are drilled), but at the sector's two highest-K4 moments it fails
+outright: the wrongful stop, where the policy voice makes everything worse and the recovery is
+immediate PERSONAL ownership ("my mistake — mine, not yours" — F203 with the script dropped);
+and the O7 disclosure, for which no script exists anywhere. **The scripted sector needs the
+trunk MOST precisely where its scripts stop** — so a retail pod's teaching weight should
+concentrate on the unscripted failure branches of scripted encounters, which is the axis
+recommendation this mapping hands the overlay selector.
+
+**Ireland's hole, looked for as instructed — found, in one place, with a third fill pattern.**
+Retail's costliest failures mostly sit ON encounters: the age check IS the conversation, the
+stop IS the conversation, the allergen answer IS the conversation — trades' discovered-danger
+best case, not Ireland's silence. The hole is the RECALL THAT NEVER REACHES THE BUYER: the
+unsafe product sold last month in a conversation that had no reason to mention it — no encounter
+exists in which the danger can speak, and no shape weight can reach a failure that consists of
+never speaking. E16 fires only when the flagged barcode crosses a till. And retail's fill is a
+third pattern for the file: Ireland guessed outreach and product; trades mandates
+inspection-ENCOUNTERS; retail BROADCASTS — the point-of-sale notice, the loyalty-data letter,
+the press release — filling the hole without conversation at all. The hole is real in every
+sector so far; the fills differ; none of the fills is a shape.
+
+---
+
+## 7. Zero mints, and the ten refusals
+
+`services/shared/metagraph/proposed/retail-2026-08-30.json` (ids **701–799**, fixed; nothing
+outside it) carries **no nodes and no moves** — the range is taken and left empty of mints,
+deliberately, with the re-attestations, three survivability edges, three composition edges and
+this refusal list as the file's whole content.
+
+**The ten refusals to mint — the deliverable:**
+
+1. **The innocent-out** — the theft challenge framed as its innocent counterpart ("I don't think
+   the scanner got the bottom of the trolley, did it?") — the sector's most tempting mint and
+   the one the prediction named first. REFUSED on the store's own recorded test: under a bare
+   accusation the repair position (pay now, no admission pressed) still exists — the frame makes
+   it enormously CHEAPER, and "harder or dearer" is exactly what the position test excludes. It
+   also composes: F102's normalise-from-asymmetric-knowledge ("things get missed at the bottom
+   all the time") + the elicit, packed into one turn, and turn-packing is not a position. The
+   innocent-out is register doing K4-management — precisely what the money was in trades.
+2. **The script-break** — "I'm not supposed to say, but the sale starts Thursday — wait."
+   REFUSED under Ireland's recorded rule that **a licence is not a position** (its N109
+   precedent, verbatim). The turn is F2's volunteered material (or F6's substitution) wearing a
+   licence flag; the flag is F302's structure with licence swapped for knowledge, and Ireland
+   already ruled that swap a note, not a mint.
+3. **The corporate script itself** — the sector's defining possession, and it is
+   `surface_variants` with a corporate owner. The store built the field for exactly this; a
+   "scripted variant" node would put surface in the shape layer.
+4. **The return** — N2 + N103 + N104 + N107 + P2 by composition; money running backwards is
+   direction annotation, not shape.
+5. **The escalation to the manager** — C403's composition exactly (N105 at N401.5); the
+   principal's deputy being on the premises changes the contest path's COST, not its positions.
+6. **The goodwill bend** ("go on, this once") — N201's discretionary settle, alive at the
+   manager tier; the tier is a seat annotation within one party (§5), not a shape distinction.
+7. **The queue, the tannoy, "till three's open"** — one-to-many topology; the store's dyadic
+   limit is trunk-level and already flagged by trades (its refusal 3). Followed, not re-argued.
+8. **The self-checkout intervention** — "unexpected item" is N6 repair + N106 with a machine as
+   furniture; the worker who arrives voices the machine's ticket. Minting would mint on
+   furniture.
+9. **The recall stop** (E16) — N106 + N401 + N107 by composition; the mandated encounter maps
+   whole, as trades' statutory inspection did.
+10. **The age gate as a node** — N106 + N104 + N401/N402 by composition; the sector's most
+    scripted moment, and minting it would have been minting the script.
+
+**Re-attestations recorded in the proposal file** (the graduation evidence): N401 in four
+encounters — its densest sector; N402 at E5 and E6's failure branch; F401 at E9; N201/F201,
+F202, F203, F204/N204, O5, O6 from the overlay; F501 at E8 (second sector); F302 (fifth
+corpus); O7 (fifth corpus). **N501: PARTIAL only** — the fake-ID retention walks the
+consent-overridden act + the record, but the reinstatement-condition position has no retail
+content (nothing is reinstated; the ID is simply gone), so the defining pair is only half
+present. Flagged as partial and constructed-thin, not claimed.
+
+**Mint zero outcome shapes, deliberately.** The candidate — "you were wrongly accused" — is O5
+premise-wrong walked at the sector's K4 spike, with F203's owned recovery; the ladder carries
+it, per Ireland's and trades' identical rulings.
+
+---
+
+## 8. The prediction, scored
+
+**P1 — zero mints, two refusals named in advance.** **Right on the count, and both named
+refusals held on the predicted grounds** — with the honesty note that predicting a refusal and
+then refusing it is the same mind twice, so the score's evidential weight sits in the count
+matching the amendment's cross-sector expectation, not in the self-agreement.
+
+**P2 — Family A with N103 reviving.** **Right on the revival — and the prediction UNDERSOLD the
+result.** It said N102 "fails or attests only at branch"; mapping found branch attestation (the
+fitting room) and therefore a clean 10/10 — the first sector with NO Family A dropout. The
+prediction saw the pieces and missed the headline: the dropout theory's positive case (possession
+back → shape back) is stronger evidence for Family A's reality than a third dropout would have
+been.
+
+**P3 — accumulated mints re-attest.** **Right on N401's density, N402, F401, F501, and the F502
+non-attestation. Half-wrong on N501:** predicted "thinly at one constructed site"; mapping found
+only a PARTIAL walk — the reinstatement-condition position has no content in the fake-ID
+retention, so the defining pair is half-present and the re-attestation is not claimed. Scored
+down honestly; this is the mapping's best internal evidence that it was not transcribing the
+prediction.
+
+**P4 — the ladder.** **Right on placement (the store's home rung, per-stretch 0–3, apex at the
+gate and the stop), right on shallow self-collapsing K1 and split K3** — and the mapping
+sharpened K2 into the TIERED form the prediction did not have: the discretionary-settle position
+exists at one seat of the party and not at another, and the escalation encounter exists to walk
+the business between them (§5). That is the sector's genuine ladder contribution and it was not
+predicted.
+
+**P5 — the scripted-sector question.** **Right in full:** happy path shape-poor, trunk reached
+on failure branches, scripts confined to `surface_variants`, and **N16 positionally deleted by
+the fixed price — the position test fired against a store node, as predicted, and the mapping
+added the mirror-symmetry** (trades lost a shape for lacking a possession; retail loses one for
+holding one).
+
+**P6 — the deaths.** **Right, including the zero time-index on F15**, with the mapping adding
+the general form: the index length is the consult-latency of the sector's K3.
+
+**P7 — O7 and F302.** **Both held, fifth corpus.** Neither broke anywhere I could walk.
+
+**P8 — the axis and the hole.** **Right on both halves** — and the mapping added the finding the
+prediction only brushed: **the script runs out exactly where the cost peaks**, so the scripted
+sector needs the trunk most at its unscripted edges, which is a concrete overlay-selector
+recommendation, not just a verdict.
+
+**The blind spot, named:** the prediction treated the script as inert surface. The mapping found
+the script has a DISTRIBUTION — wall-to-wall on the cheap stretches, absent at the dear ones —
+and that distribution, not the script's existence, is the sector's real teaching fact.
+
+---
+
+## 9. Honesty section — what this is and is not
+
+**There is no corpus.** Every encounter, attestation and confirmation is derived or constructed
+by this mapping, labelled per-entry in §3 and per-item in the proposal file. No shop worker has
+ever said any line quoted here. What this document can claim: the trunk EXPRESSES the derived
+retail inventory at zero mint cost; the two commission questions have plain answers
+(refusal-with-reason and challenge-the-premise attest; scriptedness moves frequency, not
+shapes); the invariants are CONSISTENT with a fifth corpus. What it cannot claim: frequencies,
+attestation, or that a real Saturday shift matches E1–E16. The strong form of the test remains a
+retail corpus authored blind by someone who has not read §3.
+
+**The dependency, stated plainly.** Four encounters land primarily on health ids, three on
+Ireland's, and F501 carries E8's exhibit. The zero-mint headline is computed against **store +
+health's Family A + Ireland's pair + trades' F501**. If health's Family A were rejected, six-plus
+shapes (N103–N110 at least, plus F103) would have to mint here under retail ids; if Ireland's
+were rejected, N401 would re-mint here almost verbatim — retail is its densest attestor, which
+is itself the strongest available argument for accepting it upstream. N501 is NOT load-bearing
+for retail (partial only); F502 is not used at all.
+
+**The epistemic caveat on the scoring, carried down:** prediction and mapping are one mind in
+one sitting, after reading all three priors including trades' own scoring. The commit order
+(prediction at `bf3cf5b56`, mapping after) is real; the independence is partial; the N501
+half-miss and the unpredicted tier-finding are the internal evidence that the mapping was not
+merely transcribing the prediction.
+
+**The least confident calls, named so they can be attacked:** (1) **The innocent-out refusal**
+— if Tom reads the face-work as load-bearing structure rather than register (the repair position
+under a bare accusation is arguably a DIFFERENT position — repair-with-admission — not the same
+one dearer), it is a one-move mint, and it is the only mint candidate in the sector. (2) **The
+N16 deletion** leans on scripted fixed-price retail being the sector's trunk; a corpus weighted
+toward markets, car sales or big-ticket haggling would revive N16 and demote the deletion to a
+sub-sector fact. (3) **The fake-ID retention** (N501-partial) is the document's thinnest
+attestation — real policy in UK schemes but legally murky and possibly rare in practice; nothing
+downstream leans on it. (4) **E16 the recall** is wholly constructed; a real till worker may
+never voice one in a career.
+
+**What I did not do, and did not need to do:** no test suite (the one mechanical verification
+is `tools/metagraph-selfcheck.cjs`, quoted in §10 and the report); no DB reads or writes; no web
+research; no fan-out; no course content, audio or UI work; no modification of any existing store
+or proposal file. The store is byte-identical to origin/main and the diff is shown in the report.
+
+---
+
+## 10. The verdict, readable cold
+
+**The trunk expresses a heavily scripted sector at ZERO cost — no nodes, no moves — and the
+mint curve across four sectors is now 10 → 2 → 1 → 0.** Sixteen derived retail encounters —
+the sale, returns and refunds, price disputes, out-of-stock, escalation to a manager, the
+security stop, the age gate, staff handovers — all land on the existing store plus the health,
+Ireland and trades proposals, with ten explicit refusals to mint, the two most tempting (the
+deniable theft challenge, the off-script confidential aside) refused on tests the store had
+already recorded. Scriptedness turned out to change nothing at the shape layer: scripts are
+corporate-owned surface variants, the happy path runs shape-poor at high frequency, and the
+trunk is reached through the failure branches — with the sharp corollary that the script runs
+out exactly where the cost of failure peaks, so a retail pod should spend its weight on the
+unscripted branches of scripted encounters. Refusal-with-reason attests more densely here than
+in any prior sector and challenge-the-premise attests in both directions. Family A recorded its
+first clean sweep — N103 revived the moment a sector held a file again, completing the
+possession-driven dropout theory in both directions — and the same symmetry deleted a store
+node for the first time: the fixed price positionally removes N16's counterbid, an institution
+doing to a shape what a missing possession does. O7 and F302 held for a fifth corpus. The one
+partial result is N501, whose defining pair is only half-present at the fake-ID retention and
+is not claimed. Nothing in this sector needed a decision the trunk had not already recorded;
+the fan-out template survives its first heavily scripted sector unmodified.
