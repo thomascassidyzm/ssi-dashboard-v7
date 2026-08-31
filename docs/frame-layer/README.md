@@ -1,6 +1,6 @@
 # The frame layer, persisted
 
-Six artefacts, each a human read plus a machine-readable companion in the same directory, and a lab that uses them on one seed.
+Seven artefacts, each a human read plus a machine-readable companion in the same directory, and a lab that uses them on one seed.
 
 | artefact | what it is | machine companion |
 |---|---|---|
@@ -9,6 +9,7 @@ Six artefacts, each a human read plus a machine-readable companion in the same d
 | [spanish-structural-splits.md](spanish-structural-splits.md) | the 12 splits, each with its trigger and its live-pulled attesting minimal pair | `spanish-structural-splits.json` |
 | [frame-zut.md](frame-zut.md) | frame-ZUT as a rule a machine can apply, and the pattern-diversity metric that supersedes edges-per-syllable | `../../tools/frame-layer/pattern-diversity.cjs` |
 | [dialogue-frame-inventory.md](dialogue-frame-inventory.md) | the POD corpus's frame delta over the seeds — 12 sentence frames (`D*`) and 6 exchange frames (`X*`): greetings, bare polar responses, ellipted orders, deictic handovers, thanks, read-backs. Mined read-only from `canonical_pod_scenarios` plus the sector sources | `dialogue-frame-inventory.json` |
+| [could-occupy-eng.md](could-occupy-eng.md) | the seed corpus as the metagraph's **material supply**, indexed by shape position — 2,174 distinct English known texts tagged with the positions they COULD occupy. A could-occupy, never an attestation: a seed has no turn around it, so it cannot attest a shape | `could-occupy-eng.json` |
 | [unified-frame-map-2026-08-31.md](unified-frame-map-2026-08-31.md) | the design the dialogue inventory and the instantiability gate were built from: what the map is, how it is mined, and the twelve judgement calls already decided | — |
 | [reverse-mapping-classes.md](reverse-mapping-classes.md) | the table read backwards — the eng_for_X curriculum: reverse classes worked on eng_for_spa + eng_for_zho, the new MINT class, the cut-cost statement, reverse frame-ZUT | `reverse-mapping-classes.json` |
 
@@ -34,6 +35,8 @@ node tools/frame-layer/pattern-diversity.cjs spa_for_eng 599        # score ever
 node tools/frame-layer/extract-dialogue-patterns.cjs                 # re-mine the dialogue inventory
 node tools/frame-layer/extract-patterns.test.cjs                    # self-test, no DB, no network
 node tools/frame-layer/instantiability.test.cjs                     # the gate's self-test, ditto
+node tools/frame-layer/could-occupy.cjs [--sample]                  # re-tag the seed corpus by shape position
+node tools/frame-layer/could-occupy.test.cjs                        # the tagger's self-test
 node tools/frame-layer/derive-and-baskets.test.cjs                  # self-test, no DB, no network
 node tools/frame-layer/generate-candidates.cjs spa_for_eng 599 --passes 3
 node tools/frame-layer/reverse-zut-scan.cjs eng_for_spa               # reverse-direction fork list
