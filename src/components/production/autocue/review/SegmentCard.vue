@@ -9,7 +9,9 @@
           Take {{ segment.takeNumber }}
         </span>
         <span v-if="status" class="verdict-badge" :class="status">
-          {{ status === 'approved' ? '✓ Approved' : '⚑ Flagged' }}
+          <svg v-if="status === 'approved'" class="badge-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>
+          <svg v-else class="badge-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V4s-1 1-4 1-5-2-8-2-4 1-4 1z" /><path d="M4 22v-7" /></svg>
+          {{ status === 'approved' ? 'Approved' : 'Flagged' }}
         </span>
       </div>
     </div>
@@ -23,7 +25,8 @@
     <!-- The one thing we can honestly say without listening: this file is too
          small to hold speech. No score, no waveform — both were decorative. -->
     <div v-if="hasWarning" class="segment-warning">
-      ⚠ {{ segment.issues[0] }}
+      <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z" /><path d="M12 9v4" /><path d="M12 17h.01" /></svg>
+      <span>{{ segment.issues[0] }}</span>
     </div>
 
     <!-- The pieces of a slow-pass take, one button each.
@@ -37,7 +40,8 @@
       <div class="chunk-strip-head">
         <span class="chunk-strip-title">LEGO pieces</span>
         <span v-if="chunkMismatch" class="chunk-warning" :title="chunkMismatchTitle">
-          ⚠ {{ chunks.length }} heard, script has {{ segment.chunksExpected }}
+          <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z" /><path d="M12 9v4" /><path d="M12 17h.01" /></svg>
+          {{ chunks.length }} heard, script has {{ segment.chunksExpected }}
         </span>
       </div>
       <div class="chunk-list">
@@ -49,7 +53,8 @@
           :title="`Play this piece on its own (${(chunk.durationMs / 1000).toFixed(1)}s)`"
           @click="$emit('play-chunk', segment, chunk)"
         >
-          <span class="btn-icon">{{ playingChunkIndex === chunk.index ? '⏸' : '▶' }}</span>
+          <template v-if="playingChunkIndex === chunk.index"><svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="4" width="4" height="16" rx="1" /><rect x="14" y="4" width="4" height="16" rx="1" /></svg></template>
+          <template v-else><svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><path d="m7 4 13 8-13 8z" /></svg></template>
           {{ chunk.label }}
         </button>
       </div>
@@ -63,7 +68,9 @@
         :title="hasAudio ? playHint : 'No audio captured for this phrase'"
         @click="$emit('play', segment)"
       >
-        <span class="btn-icon">{{ playing ? '⏸' : '▶' }}</span> {{ playing ? 'Playing' : 'Play' }}
+        <template v-if="playing"><svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="4" width="4" height="16" rx="1" /><rect x="14" y="4" width="4" height="16" rx="1" /></svg></template>
+        <template v-else><svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><path d="m7 4 13 8-13 8z" /></svg></template>
+        {{ playing ? 'Playing' : 'Play' }}
         <!-- Stored bytes and raw local bytes never wear the same word. A raw
              preview that reads as "the take" is exactly how a butchered trim
              chain sounded perfect for months. -->
@@ -75,7 +82,7 @@
         :title="status === 'rejected' ? 'Flagged for re-record — click to unflag' : 'Flag this take for re-record'"
         @click="$emit('redo', segment)"
       >
-        <span class="btn-icon">⚑</span> {{ status === 'rejected' ? 'Flagged' : 'Flag' }}
+<svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V4s-1 1-4 1-5-2-8-2-4 1-4 1z" /><path d="M4 22v-7" /></svg> {{ status === 'rejected' ? 'Flagged' : 'Flag' }}
       </button>
       <button
         class="segment-btn approve"
@@ -83,7 +90,7 @@
         :title="status === 'approved' ? 'Approved for upload — click to undo' : 'Approve this take for upload'"
         @click="$emit('approve', segment)"
       >
-        <span class="btn-icon">✓</span> {{ status === 'approved' ? 'Approved' : 'Approve' }}
+<svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg> {{ status === 'approved' ? 'Approved' : 'Approve' }}
       </button>
     </div>
   </div>
@@ -146,20 +153,16 @@ const chunkMismatchTitle = computed(() =>
 
 <style scoped>
 .segment-card {
-  background: var(--color-shadow, var(--surface));
+  background: var(--surface);
+  border: 1px solid var(--line);
   border-radius: 12px;
   padding: 1rem;
-  border-left: 4px solid var(--color-graphite, var(--surface-3));
-  transition: all 0.3s ease;
+  border-left: 4px solid var(--surface-3);
+  transition: border-color 0.2s ease, background 0.2s ease;
 }
 
 .segment-card.flagged {
-  border-left-color: var(--color-film-red, #e63946);
-}
-
-.segment-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+  border-left-color: var(--danger);
 }
 
 .segment-header {
@@ -170,16 +173,14 @@ const chunkMismatchTitle = computed(() =>
 }
 
 .segment-label {
-  font-family: 'Josefin Sans', sans-serif;
   font-weight: 600;
-  font-size: 1rem;
-  color: var(--color-paper, var(--ink));
+  font-size: 0.9375rem;
+  color: var(--ink);
 }
 
 .segment-text {
-  font-family: 'Crimson Pro', serif;
-  font-size: 1.2rem;
-  color: var(--color-paper-dim, var(--muted));
+  font-size: 1.0625rem;
+  color: var(--muted);
   margin-bottom: 0.75rem;
   font-style: italic;
 }
@@ -188,26 +189,27 @@ const chunkMismatchTitle = computed(() =>
   display: flex;
   gap: 1rem;
   margin-bottom: 0.75rem;
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 0.85rem;
-  color: var(--color-paper-dim, var(--muted));
+  font-size: 0.8125rem;
+  color: var(--muted);
 }
 
 .segment-warning {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 0.85rem;
-  color: var(--color-film-red, #e63946);
-  background: rgba(230, 57, 70, 0.12);
-  border-radius: 6px;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.4rem;
+  font-size: 0.8125rem;
+  color: var(--danger);
+  background: color-mix(in srgb, var(--danger) 12%, var(--surface));
+  border-radius: 8px;
   padding: 0.5rem 0.6rem;
   margin-bottom: 0.75rem;
 }
 
 /* LEGO pieces of a slow-pass take */
 .chunk-strip {
-  background: var(--color-void, var(--canvas));
-  border: 1px solid var(--color-graphite, var(--surface-3));
-  border-radius: 8px;
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  border-radius: 10px;
   padding: 0.5rem;
   margin-bottom: 0.75rem;
 }
@@ -221,17 +223,18 @@ const chunkMismatchTitle = computed(() =>
 }
 
 .chunk-strip-title {
-  font-family: 'IBM Plex Mono', monospace;
   font-size: 0.7rem;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--color-paper-dim, var(--muted));
+  color: var(--muted);
 }
 
 .chunk-warning {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 0.7rem;
-  color: var(--color-tungsten, var(--accent));
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.75rem;
+  color: var(--accent);
   cursor: help;
 }
 
@@ -242,111 +245,130 @@ const chunkMismatchTitle = computed(() =>
 }
 
 .chunk-btn {
-  background: var(--color-slate, var(--surface-2));
-  border: 1px solid var(--color-graphite, var(--surface-3));
-  color: var(--color-paper, var(--ink));
-  padding: 0.35rem 0.6rem;
-  border-radius: 999px;
-  font-family: 'Josefin Sans', sans-serif;
-  font-size: 0.8rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  color: var(--ink);
+  padding: 0.4rem 0.7rem;
+  border-radius: 9999px;
+  font: inherit;
+  font-size: 0.8125rem;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: border-color 0.2s ease, background 0.2s ease;
   display: inline-flex;
   align-items: center;
   gap: 0.3rem;
 }
 
 .chunk-btn:hover {
-  background: var(--color-tungsten, var(--accent));
-  color: var(--color-void, var(--canvas));
-  border-color: var(--color-tungsten, var(--accent));
+  border-color: var(--accent);
+  color: var(--accent);
 }
 
 .chunk-btn.playing {
-  background: var(--color-tungsten, var(--accent));
-  color: var(--color-void, var(--canvas));
-  border-color: var(--color-tungsten, var(--accent));
+  background: var(--accent);
+  color: var(--canvas);
+  border-color: var(--accent);
 }
 
 .segment-actions {
   display: flex;
+  flex-wrap: wrap;
   gap: 0.5rem;
 }
 
 .segment-btn {
-  flex: 1;
-  background: var(--color-void, var(--canvas));
-  border: 1px solid var(--color-graphite, var(--surface-3));
-  color: var(--color-paper, var(--ink));
+  flex: 1 1 auto;
+  min-width: 0;
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  color: var(--ink);
   padding: 0.5rem;
-  border-radius: 6px;
-  font-family: 'Josefin Sans', sans-serif;
+  border-radius: 8px;
+  font: inherit;
   font-weight: 600;
-  font-size: 0.85rem;
+  font-size: 0.8125rem;
+  min-height: 44px;
   cursor: pointer;
-  transition: all 0.2s ease;
-  text-transform: uppercase;
+  transition: border-color 0.2s ease, background 0.2s ease;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.25rem;
+  gap: 0.35rem;
 }
 
 .btn-icon {
-  font-size: 0.9em;
+  width: 15px;
+  height: 15px;
+  flex: none;
+}
+
+.badge-icon {
+  width: 12px;
+  height: 12px;
+  vertical-align: -0.1em;
 }
 
 .segment-btn:disabled {
-  opacity: 0.4;
+  opacity: 0.45;
   cursor: not-allowed;
 }
 
 .segment-btn:disabled:hover {
-  background: var(--color-void, var(--canvas));
-  color: var(--color-paper, var(--ink));
-  border-color: var(--color-graphite, var(--surface-3));
+  border-color: var(--line);
+  color: var(--ink);
 }
 
 .segment-btn.playing {
-  background: var(--color-tungsten, var(--accent));
-  color: var(--color-void, var(--canvas));
-  border-color: var(--color-tungsten, var(--accent));
+  background: var(--accent);
+  color: var(--canvas);
+  border-color: var(--accent);
 }
 
-.segment-btn:hover {
-  background: var(--color-tungsten, var(--accent));
-  color: var(--color-void, var(--canvas));
-  border-color: var(--color-tungsten, var(--accent));
+.segment-btn:hover:not(:disabled) {
+  border-color: var(--accent);
+  color: var(--accent);
 }
 
+/* Stored bytes and raw local bytes never wear the same word — and never the
+   same colour. */
 .source-tag {
-  font-family: 'IBM Plex Mono', monospace; font-size: 0.55rem; letter-spacing: 0.08em;
-  padding: 0.05rem 0.28rem; border-radius: 3px; margin-left: 0.35rem;
+  font-size: 0.6rem;
+  letter-spacing: 0.08em;
+  padding: 0.05rem 0.3rem;
+  border-radius: 9999px;
+  margin-left: 0.35rem;
+  font-weight: 700;
 }
-.source-tag.stored { background: var(--color-emerald, #06ffa5); color: #04211a; font-weight: 700; }
-.source-tag.local { background: #ffb703; color: #241a00; font-weight: 700; }
+.source-tag.stored { background: var(--success); color: var(--canvas); }
+.source-tag.local { background: var(--accent); color: var(--canvas); }
 
-.segment-btn.approve:hover {
-  background: var(--color-emerald, #06ffa5);
-  border-color: var(--color-emerald, #06ffa5);
+.segment-btn.approve:hover:not(:disabled) {
+  border-color: var(--success);
+  color: var(--success);
 }
 
 /* A verdict has to be visible from across the booth, not just remembered. */
-.segment-btn.approve.active {
-  background: var(--color-emerald, #06ffa5);
-  border-color: var(--color-emerald, #06ffa5);
-  color: var(--color-void, var(--canvas));
+.segment-btn.approve.active,
+.segment-btn.approve.active:hover {
+  background: var(--success);
+  border-color: var(--success);
+  color: var(--canvas);
 }
 
-.segment-btn.redo.active {
-  background: var(--color-film-red, #e63946);
-  border-color: var(--color-film-red, #e63946);
-  color: var(--color-void, var(--canvas));
+.segment-btn.redo:hover:not(:disabled) {
+  border-color: var(--danger);
+  color: var(--danger);
+}
+
+.segment-btn.redo.active,
+.segment-btn.redo.active:hover {
+  background: var(--danger);
+  border-color: var(--danger);
+  color: var(--canvas);
 }
 
 .segment-card.approved {
-  border-left-color: var(--color-emerald, #06ffa5);
-  box-shadow: inset 0 0 0 1px rgba(6, 255, 165, 0.25);
+  border-left-color: var(--success);
 }
 
 /* Flagged means "come back to this", so the card has to pull the eye across a
@@ -354,64 +376,41 @@ const chunkMismatchTitle = computed(() =>
    as "dealt with, ignore me": exactly backwards for the one state the recordist
    is scanning for. */
 .segment-card.rejected {
-  border-left-color: var(--color-film-red, #e63946);
-  box-shadow: inset 0 0 0 1px rgba(230, 57, 70, 0.45);
-  background: rgba(230, 57, 70, 0.07);
+  border-left-color: var(--danger);
+  border-color: var(--danger);
+  background: color-mix(in srgb, var(--danger) 8%, var(--surface));
+}
+
+.take-badge,
+.verdict-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 11px;
+  line-height: 1.45;
+  font-weight: 500;
+  margin-left: 0.5rem;
+  padding: 0.125rem 0.5rem;
+  border-radius: 9999px;
+  border: 1px solid transparent;
+  white-space: nowrap;
 }
 
 .take-badge {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 0.7rem;
-  margin-left: 0.5rem;
-  padding: 0.1rem 0.35rem;
-  border-radius: 4px;
-  text-transform: uppercase;
-  background: rgba(255, 166, 48, 0.18);
-  color: var(--color-tungsten, var(--accent));
-}
-
-.verdict-badge {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 0.7rem;
-  margin-left: 0.5rem;
-  padding: 0.1rem 0.35rem;
-  border-radius: 4px;
-  text-transform: uppercase;
+  background: color-mix(in srgb, var(--accent) 16%, transparent);
+  border-color: var(--accent);
+  color: var(--accent);
 }
 
 .verdict-badge.approved {
-  background: rgba(6, 255, 165, 0.2);
-  color: var(--color-emerald, #06ffa5);
+  background: color-mix(in srgb, var(--success) 16%, transparent);
+  border-color: var(--success);
+  color: var(--success);
 }
 
 .verdict-badge.rejected {
-  background: rgba(230, 57, 70, 0.2);
-  color: var(--color-film-red, #e63946);
-}
-
-:root[data-theme="light"] .verdict-badge.approved {
-  background: rgba(4, 120, 87, 0.14);
-  color: #03543c;
-}
-
-:root[data-theme="light"] .verdict-badge.rejected {
-  background: rgba(220, 38, 38, 0.12);
-  color: #b91c1c;
-}
-
-/* Light-mode refinements: dark mode untouched.
-   Lift the faint button border, and darken the warning text so it clears
-   WCAG AA on the pale card. */
-:root[data-theme="light"] .segment-warning {
-  background: rgba(220, 38, 38, 0.12);
-  color: #b91c1c;
-}
-
-:root[data-theme="light"] .segment-btn {
-  border-color: var(--line);
-}
-
-:root[data-theme="light"] .segment-card:hover {
-  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.12);
+  background: color-mix(in srgb, var(--danger) 16%, transparent);
+  border-color: var(--danger);
+  color: var(--danger);
 }
 </style>

@@ -83,58 +83,36 @@ onMounted(() => {
 </script>
 
 <style scoped>
+/* The reading surface is a house card: --surface on a 1px --line, 16px radius.
+   The old black vignette and 3px graphite frame were the only ones on the
+   estate, and the vignette read as a stain in light mode. */
 .teleprompter-viewport {
   position: relative;
-  background: var(--color-void, var(--canvas));
-  border: 3px solid var(--color-graphite, var(--surface-3));
-  border-radius: 20px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 16px;
   padding: 2rem;
   height: 500px;
   overflow: hidden;
-  box-shadow: inset 0 0 60px rgba(0, 0, 0, 0.8);
-  transition: all 0.3s ease;
+  transition: border-color 0.3s ease;
 }
 
-/* Light mode: the heavy black inset vignette reads as a muddy stain on a
-   light canvas, and surface-3 borders are near-invisible (~1.05:1 on canvas).
-   Use a readable --line border + a soft neutral inset for crisp separation.
-   Scoped so dark mode is untouched. */
-:root[data-theme="light"] .teleprompter-viewport {
-  border-color: var(--line);
-  box-shadow: inset 0 0 30px rgba(15, 23, 42, 0.06);
-}
-
+/* Live, the frame turns amber and grows a solid rule along the top edge. Same
+   amber as everywhere else, no glow and no travelling shimmer — the REC pill
+   and the on-air meter are what shout; this only has to confirm. */
 .teleprompter-viewport.recording {
-  border-color: var(--color-tungsten, var(--accent));
-  box-shadow:
-    inset 0 0 60px rgba(0, 0, 0, 0.8),
-    0 0 40px rgba(255, 166, 48, 0.3);
+  border-color: var(--accent);
 }
 
-/* Light mode recording: keep the orange glow (hue identity) but swap the
-   muddy black inset for a soft neutral one. Scoped — dark untouched. */
-:root[data-theme="light"] .teleprompter-viewport.recording {
-  box-shadow:
-    inset 0 0 30px rgba(15, 23, 42, 0.06),
-    0 0 40px rgba(168, 85, 8, 0.28);
-}
-
-/* Recording indicator bar */
 .teleprompter-viewport.recording::before {
   content: '';
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
-  height: 4px;
-  background: linear-gradient(90deg, transparent, var(--color-tungsten, var(--accent)), transparent);
-  animation: shimmer 3s linear infinite;
+  height: 3px;
+  background: var(--accent);
   z-index: 10;
-}
-
-@keyframes shimmer {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(100%); }
 }
 
 .teleprompter-scroller {
@@ -145,7 +123,8 @@ onMounted(() => {
   padding: 200px 0; /* Space for centering */
 }
 
-/* Gradient overlays */
+/* Gradient overlays — the fade at each edge of the scroll, so a half-visible
+   line does not read as a whole one. Matches the card surface behind it. */
 .gradient-top,
 .gradient-bottom {
   position: absolute;
@@ -158,11 +137,15 @@ onMounted(() => {
 
 .gradient-top {
   top: 0;
-  background: linear-gradient(to bottom, var(--color-void, var(--canvas)), transparent);
+  background: linear-gradient(to bottom, var(--surface), transparent);
 }
 
 .gradient-bottom {
   bottom: 0;
-  background: linear-gradient(to top, var(--color-void, var(--canvas)), transparent);
+  background: linear-gradient(to top, var(--surface), transparent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .teleprompter-scroller { transition: none; }
 }
 </style>

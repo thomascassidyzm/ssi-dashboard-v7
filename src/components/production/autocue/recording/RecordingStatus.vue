@@ -50,22 +50,22 @@ onUnmounted(() => {
 </script>
 
 <style scoped>
+/* House panel, floating top-right. */
 .recording-status {
   position: fixed;
   top: 1rem;
   right: 1rem;
   background: var(--surface);
   border: 1px solid var(--line);
-  border-radius: 8px;
-  padding: 0.75rem 1rem;
+  border-radius: 12px;
+  padding: 0.625rem 0.875rem;
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 0.75rem;
   z-index: 1000;
-  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.12);
   opacity: 0;
   transform: translateY(-10px);
-  transition: all 0.3s ease;
+  transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
 .recording-status.active {
@@ -73,37 +73,48 @@ onUnmounted(() => {
   transform: translateY(0);
 }
 
+/* A filled --danger pill, not a neon lamp. Solid red with a light dot is what
+   reads as "recording" at a glance from a mic; the glow added nothing that the
+   fill was not already saying, and it was the loudest thing on the estate. */
 .rec-indicator {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.4rem;
+  padding: 0.125rem 0.5rem;
+  border-radius: 9999px;
+  border: 1px solid var(--danger);
+  background: var(--danger);
 }
 
 .rec-dot {
-  width: 12px;
-  height: 12px;
-  background: var(--color-film-red, #e63946);
+  width: 8px;
+  height: 8px;
+  background: var(--canvas);
   border-radius: 50%;
-  box-shadow: 0 0 16px var(--color-film-red, #e63946);
+  /* A slow, subtle blink — no scaling, no glow. */
   animation: recPulse 2s ease-in-out infinite;
 }
 
 @keyframes recPulse {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.6; transform: scale(0.9); }
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rec-dot { animation: none; }
 }
 
 .rec-label {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 0.8rem;
+  font-size: 11px;
+  line-height: 1.45;
   font-weight: 600;
-  color: var(--color-film-red, #e63946);
-  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--canvas);
 }
 
 .rec-timer {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 1rem;
-  color: var(--color-paper, var(--ink));
+  font-size: 0.9375rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink);
 }
 </style>

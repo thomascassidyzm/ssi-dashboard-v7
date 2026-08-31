@@ -1,12 +1,43 @@
 <template>
   <div class="autocue-studio">
-    <!-- Film grain overlay -->
-    <div class="film-grain"></div>
+    <!-- Breadcrumbs. Present on EVERY phase, and once the recordist is inside a
+         mode the "Recording" crumb is the way back to the mode-choice page —
+         the same gesture as everywhere else in Popty. It replaces the bespoke
+         "← Back to Dashboard" link; the Home crumb goes to the same place
+         that did.
+
+         Rendered ONLY on the course route. This same component is also mounted
+         inside RecordRoom, whose /record/ and /r/ routes are public: the navbar
+         is deliberately hidden there so a volunteer "sees the line and nothing
+         else", and RecordRoom draws its own chrome with its own way out. A
+         volunteer on a phone must not be handed a route into the admin
+         dashboard. -->
+    <nav v-if="showCrumbs" class="admin-crumbs">
+      <router-link to="/" class="crumb-link">Home</router-link>
+      <span class="crumb-sep">/</span>
+      <template v-if="courseCode">
+        <router-link :to="`/production/${courseCode}`" class="crumb-link">{{ courseCrumb }}</router-link>
+        <span class="crumb-sep">/</span>
+      </template>
+      <template v-if="phaseCrumb">
+        <button type="button" class="crumb-link crumb-back" @click="resetSession">Recording</button>
+        <span class="crumb-sep">/</span>
+        <span class="crumb-here">{{ phaseCrumb }}</span>
+      </template>
+      <span v-else class="crumb-here">Recording</span>
+    </nav>
 
     <!-- Header -->
     <header class="studio-header">
       <div class="studio-branding">
-        <div class="studio-badge">🎙️</div>
+        <span class="icon-frame" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="9" y="2" width="6" height="11" rx="3" />
+            <path d="M5 10v1a7 7 0 0 0 14 0v-1" />
+            <path d="M12 18v4" />
+            <path d="M8 22h8" />
+          </svg>
+        </span>
         <div class="studio-meta">
           <h1>Autocue Studio</h1>
           <p class="session-info">{{ sessionInfo }}</p>
@@ -41,8 +72,6 @@
           <span class="stat-label">Uploaded</span>
         </div>
       </div>
-
-      <router-link to="/" class="back-link">← Back to Dashboard</router-link>
     </header>
 
     <!-- Recording Status (Fixed) -->
@@ -247,7 +276,7 @@
            is, or the recordist reads the jump as the teleprompter losing its
            place. -->
       <div v-if="retakeProgress" class="retake-banner">
-        <span class="retake-flag">⚑</span>
+        <svg class="retake-flag" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V4s-1 1-4 1-5-2-8-2-4 1-4 1z" /><path d="M4 22v-7" /></svg>
         Re-recording flagged takes — {{ retakeProgress.current }} of {{ retakeProgress.total }}
       </div>
 
@@ -489,6 +518,26 @@ const props = defineProps({
 
 const route = useRoute()
 const { learner } = useAuth()
+
+// Breadcrumb labels. Presentation only — `phaseCrumb` is null on the
+// mode-choice page itself, which is what makes the "Recording" crumb turn into
+// a link back to it from every other phase.
+const courseCode = computed(() => route.params.courseCode || null)
+// Only the /production/:courseCode/recording route gets the trail — see the
+// note beside the <nav>. RecordRoom mounts this same component behind a public
+// link and supplies its own exit.
+const showCrumbs = computed(() => route.name === 'AutocueStudioCourse')
+const courseCrumb = computed(() => state.courseName || courseCode.value || 'Course')
+const PHASE_CRUMBS = {
+  loading: 'Preparing',
+  'script-loaded': 'Recording script',
+  'script-empty': 'Nothing left to record',
+  'role-select': 'Your voice',
+  recording: 'Reading',
+  summary: 'Session summary',
+  review: 'Review takes'
+}
+const phaseCrumb = computed(() => PHASE_CRUMBS[state.currentPhase] || null)
 
 // Use shared autocue state
 const {
@@ -1162,72 +1211,54 @@ onUnmounted(() => {
 <style scoped>
 .autocue-studio {
   min-height: 100vh;
-  background: var(--color-void, var(--canvas));
+  /* Same blue-grey panel background as the rest of the shell — this page
+     introduces no backdrop of its own. */
+  background: var(--canvas);
+  color: var(--ink);
   padding: 2rem;
-  position: relative;
-
-  /* CSS Variables for the cinematic theme */
-  --color-void: var(--canvas);
-  --color-shadow: var(--surface);
-  --color-slate: var(--surface-2);
-  --color-graphite: var(--surface-3);
-  --color-film-red: #e63946;
-  --color-tungsten: var(--accent);
-  --color-emerald: #06ffa5;
-  --color-paper: var(--ink);
-  --color-paper-dim: var(--muted);
 }
 
-/*
- * Light-mode legibility: the cinematic palette uses two hardcoded neon
- * literals (emerald #06ffa5, film-red #e63946) that are unreadable on the
- * light canvas/surface, and remaps borders to --surface-3 (too faint on
- * white). Re-point these to the theme's accent-2/danger/line ONLY in light
- * mode so dark mode keeps its neon identity untouched.
- */
-:root[data-theme="light"] .autocue-studio {
-  --color-emerald: var(--accent-2);
-  --color-film-red: var(--danger);
-  --color-graphite: var(--line);
+/* House breadcrumbs — same markup and same colours as ConfigsIndex/BasketLab. */
+.admin-crumbs { display: flex; align-items: center; flex-wrap: wrap; gap: 0.5rem; font-size: 0.8125rem; margin-bottom: 0.75rem; }
+.admin-crumbs .crumb-link { color: var(--accent-2); text-decoration: none; }
+.admin-crumbs .crumb-sep { color: var(--surface-3); }
+.admin-crumbs .crumb-here { color: var(--muted); }
+/* The one crumb that is a control rather than a route: it drops the session
+   back to the mode-choice page. Styled to be indistinguishable from its
+   neighbours, because to the recordist it is the same gesture. */
+.crumb-back {
+  font: inherit;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
 }
 
-/* Film grain overlay */
-.film-grain {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 600 600' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.2' numOctaves='5' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.08'/%3E%3C/svg%3E");
-  pointer-events: none;
-  z-index: 9999;
-  mix-blend-mode: overlay;
-  animation: grainShift 8s steps(10) infinite;
+/* House icon frame: 44px raised square, 1px line, 22px stroke-1.5 glyph. */
+.icon-frame {
+  width: 44px;
+  height: 44px;
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  color: var(--accent-2);
 }
 
-@keyframes grainShift {
-  0%, 100% { transform: translate(0, 0); }
-  10% { transform: translate(-5%, -5%); }
-  20% { transform: translate(-10%, 5%); }
-  30% { transform: translate(5%, -10%); }
-  40% { transform: translate(-5%, 10%); }
-  50% { transform: translate(10%, 5%); }
-  60% { transform: translate(5%, -5%); }
-  70% { transform: translate(-10%, -10%); }
-  80% { transform: translate(10%, 10%); }
-  90% { transform: translate(-5%, 0); }
-}
+.icon-frame svg { width: 22px; height: 22px; }
 
 /* Header */
 .studio-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 2.5rem;
+  gap: 1rem;
+  margin-bottom: 2rem;
   padding-bottom: 1.5rem;
-  border-bottom: 1px solid var(--color-graphite);
-  position: relative;
-  z-index: 1;
+  border-bottom: 1px solid var(--line);
 }
 
 .studio-branding {
@@ -1236,116 +1267,70 @@ onUnmounted(() => {
   gap: 1rem;
 }
 
-.studio-badge {
-  width: 64px;
-  height: 64px;
-  background: linear-gradient(135deg, var(--color-film-red), #c4313d);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 2rem;
-  box-shadow: 0 0 40px rgba(230, 57, 70, 0.4);
-  position: relative;
-}
-
-.studio-badge::after {
-  content: '';
-  position: absolute;
-  width: 80px;
-  height: 80px;
-  border: 2px solid var(--color-film-red);
-  border-radius: 50%;
-  opacity: 0.3;
-  animation: badgePulse 3s ease-in-out infinite;
-}
-
-@keyframes badgePulse {
-  0%, 100% { transform: scale(1); opacity: 0.3; }
-  50% { transform: scale(1.15); opacity: 0; }
-}
-
 .studio-meta h1 {
-  font-family: 'Josefin Sans', sans-serif;
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: 700;
-  color: var(--color-paper);
+  letter-spacing: -0.02em;
+  color: var(--ink);
   margin: 0;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
 }
 
 .session-info {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 0.9rem;
-  color: var(--color-paper-dim);
-  margin: 0;
+  font-size: 0.875rem;
+  color: var(--muted);
+  margin: 0.125rem 0 0;
 }
 
 .recording-as {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 0.85rem;
-  color: var(--color-paper-dim);
+  font-size: 0.8125rem;
+  color: var(--muted);
   margin: 0.25rem 0 0;
 }
 
-.recording-as strong {
-  color: var(--color-paper, inherit);
-}
+.recording-as strong { color: var(--ink); }
 
 .recording-as-slot {
-  opacity: 0.75;
+  color: var(--faint);
   margin-left: 0.35rem;
 }
 
 .recording-as-none {
-  color: var(--color-amber, #d9a441);
+  color: var(--accent);
   max-width: 34rem;
 }
 
 .session-stats {
   display: flex;
-  gap: 1.5rem;
+  gap: 0.75rem;
 }
 
+/* Raised tile — same recipe as an inner panel anywhere else on the estate. */
 .stat-item {
   text-align: center;
   padding: 0.75rem 1.25rem;
-  background: var(--color-shadow);
-  border-radius: 8px;
-  border: 1px solid var(--color-graphite);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 10px;
 }
 
 .stat-value {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 2rem;
-  font-weight: 500;
-  color: var(--color-emerald);
+  font-size: 1.75rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink);
   display: block;
   line-height: 1;
-  text-shadow: 0 0 20px rgba(6, 255, 165, 0.5);
 }
 
+/* Micro-label under a number — the one place the house keeps small caps
+   (hub.css .section-label). */
 .stat-label {
   font-size: 0.7rem;
-  color: var(--color-paper-dim);
+  color: var(--muted);
   text-transform: uppercase;
   letter-spacing: 0.1em;
   margin-top: 0.5rem;
   display: block;
-}
-
-.back-link {
-  font-family: 'Josefin Sans', sans-serif;
-  font-size: 0.9rem;
-  color: var(--color-emerald);
-  text-decoration: none;
-  transition: all 0.3s ease;
-}
-
-.back-link:hover {
-  color: var(--color-tungsten);
-  text-decoration: underline;
 }
 
 /* Loading Phase */
@@ -1355,15 +1340,13 @@ onUnmounted(() => {
   align-items: center;
   justify-content: center;
   min-height: 400px;
-  position: relative;
-  z-index: 1;
 }
 
 .loading-spinner {
   width: 48px;
   height: 48px;
-  border: 3px solid var(--color-graphite);
-  border-top-color: var(--color-tungsten);
+  border: 3px solid var(--line);
+  border-top-color: var(--accent-2);
   border-radius: 50%;
   animation: spin 1s linear infinite;
 }
@@ -1373,8 +1356,7 @@ onUnmounted(() => {
 }
 
 .loading-text {
-  font-family: 'IBM Plex Mono', monospace;
-  color: var(--color-paper-dim);
+  color: var(--muted);
   margin-top: 1.5rem;
 }
 
@@ -1384,21 +1366,18 @@ onUnmounted(() => {
   max-width: 600px;
   margin: 0 auto 1.5rem;
   padding: 0.875rem 1.25rem;
-  border: 1px solid var(--color-film-red);
-  border-radius: 8px;
-  background: var(--color-shadow);
-  color: var(--color-film-red);
-  font-family: 'IBM Plex Mono', monospace;
+  border: 1px solid var(--danger);
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--danger) 12%, var(--surface));
+  color: var(--danger);
   font-size: 0.875rem;
   text-align: center;
-  position: relative;
-  z-index: 1;
 }
 
 .script-cap-note {
-  font-family: 'IBM Plex Mono', monospace;
   font-size: 0.875rem;
-  color: var(--color-paper-dim);
+  line-height: 1.6;
+  color: var(--muted);
   margin: -1.25rem 0 1.75rem 0;
 }
 
@@ -1406,53 +1385,52 @@ onUnmounted(() => {
 .script-loaded-phase {
   display: flex;
   justify-content: center;
-  position: relative;
-  z-index: 1;
 }
 
 .script-summary {
   max-width: 600px;
-  background: var(--color-shadow);
-  border: 1px solid var(--color-graphite);
+  background: var(--surface);
+  border: 1px solid var(--line);
   border-radius: 16px;
-  padding: 2.5rem;
+  padding: 2rem;
   text-align: center;
 }
 
 .script-summary h2 {
-  font-family: 'Josefin Sans', sans-serif;
-  font-size: 1.75rem;
-  color: var(--color-paper);
-  margin: 0 0 2rem 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  margin: 0 0 1.5rem 0;
 }
 
 .script-stats {
   display: flex;
-  gap: 1.5rem;
+  gap: 0.75rem;
   justify-content: center;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
 }
 
 .script-stat {
   text-align: center;
   padding: 1rem;
-  background: var(--color-void);
-  border-radius: 8px;
-  border: 1px solid var(--color-graphite);
+  background: var(--surface-2);
+  border-radius: 10px;
+  border: 1px solid var(--line);
   min-width: 80px;
 }
 
 .script-stat-value {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 1.75rem;
+  font-size: 1.5rem;
   font-weight: 600;
-  color: var(--color-emerald);
+  font-variant-numeric: tabular-nums;
+  color: var(--ink);
   display: block;
 }
 
 .script-stat-label {
   font-size: 0.7rem;
-  color: var(--color-paper-dim);
+  color: var(--muted);
   text-transform: uppercase;
   letter-spacing: 0.1em;
   margin-top: 0.25rem;
@@ -1460,139 +1438,149 @@ onUnmounted(() => {
 }
 
 .script-instructions {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 0.85rem;
-  color: var(--color-paper-dim);
+  font-size: 0.875rem;
+  color: var(--muted);
   line-height: 1.6;
-  margin-bottom: 2rem;
+  margin-bottom: 1.75rem;
 }
 
-.amber-text {
-  color: var(--color-tungsten);
-}
+.script-instructions strong { color: var(--ink); }
+
+/* The teleprompter's own convention, restated: white is natural speed, amber
+   is the slow pass. Same amber as the rest of the estate. */
+.amber-text { color: var(--accent); }
+.script-instructions strong.amber-text { color: var(--accent); }
 
 .script-actions {
   display: flex;
-  gap: 1rem;
+  gap: 0.75rem;
   justify-content: center;
+  flex-wrap: wrap;
 }
 
-.btn-begin {
-  font-family: 'Josefin Sans', sans-serif;
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: var(--color-void);
-  background: var(--color-emerald);
-  border: none;
+.btn-begin,
+.btn-review,
+.btn-done {
+  font: inherit;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--canvas);
+  background: var(--accent-2);
+  border: 1px solid var(--accent-2);
   border-radius: 8px;
-  padding: 0.85rem 2rem;
+  padding: 0.75rem 1.5rem;
+  min-height: 44px;
   cursor: pointer;
-  transition: all 0.3s ease;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
+  transition: opacity 0.2s ease;
 }
 
-.btn-begin:hover {
-  background: #00e693;
-  box-shadow: 0 0 20px rgba(6, 255, 165, 0.4);
+.btn-begin:hover,
+.btn-review:hover,
+.btn-done:hover { opacity: 0.88; }
+
+/* Review is the quieter of the two end-of-session actions. */
+.btn-review {
+  color: var(--accent-2);
+  background: transparent;
 }
 
 .btn-cancel {
-  font-family: 'Josefin Sans', sans-serif;
-  font-size: 1rem;
-  color: var(--color-paper-dim);
+  font: inherit;
+  font-size: 0.9375rem;
+  color: var(--muted);
   background: transparent;
-  border: 1px solid var(--color-graphite);
+  border: 1px solid var(--line);
   border-radius: 8px;
-  padding: 0.85rem 1.5rem;
+  padding: 0.75rem 1.25rem;
+  min-height: 44px;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: border-color 0.2s ease, color 0.2s ease;
 }
 
 .btn-cancel:hover {
-  border-color: var(--color-paper-dim);
-  color: var(--color-paper);
+  border-color: var(--muted);
+  color: var(--ink);
 }
 
 /* Pass Indicator */
 .pass-indicator {
-  background: var(--color-shadow);
-  border: 1px solid var(--color-graphite);
+  background: var(--surface);
+  border: 1px solid var(--line);
   border-radius: 12px;
-  padding: 1rem 1.5rem;
-  margin-bottom: 1.5rem;
+  padding: 1rem 1.25rem;
+  margin-bottom: 1rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
 }
 
 .pass-label {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 0.8rem;
-  color: var(--color-paper-dim);
+  font-size: 0.7rem;
+  color: var(--muted);
   text-transform: uppercase;
   letter-spacing: 0.1em;
   display: block;
 }
 
 .pass-title {
-  font-family: 'Josefin Sans', sans-serif;
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: var(--color-tungsten);
+  font-size: 1.0625rem;
+  font-weight: 600;
+  color: var(--ink);
 }
 
 .pass-progress {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 1rem;
-  color: var(--color-emerald);
+  font-size: 0.9375rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--muted);
 }
 
 /* The level bar, its caption and the calibration shell that matched it were
    replaced by OnAirMeter, which carries its own scoped styles. */
 
 .vad-noise-warning {
-  border-radius: 8px;
-  padding: 0.5rem 1rem;
+  border-radius: 10px;
+  padding: 0.625rem 1rem;
   margin-bottom: 1rem;
   display: flex;
   flex-direction: column;
   gap: 0.15rem;
-  font-size: 0.8rem;
-  line-height: 1.35;
+  font-size: 0.8125rem;
+  line-height: 1.4;
 }
 
-.vad-noise-warning strong {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 0.75rem;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-}
+.vad-noise-warning strong { font-size: 0.875rem; font-weight: 600; }
 
 .vad-noise-warning.quality-loud {
-  background: rgba(255, 186, 92, 0.12);
-  border: 1px solid var(--color-tungsten, var(--accent));
-  color: var(--color-tungsten, var(--accent));
+  background: color-mix(in srgb, var(--accent) 12%, var(--surface));
+  border: 1px solid var(--accent);
+  color: var(--accent);
 }
 
 .vad-noise-warning.quality-too-loud {
-  background: rgba(255, 92, 92, 0.14);
-  border: 1px solid var(--color-crimson, #ff5c5c);
-  color: var(--color-crimson, #ff5c5c);
+  background: color-mix(in srgb, var(--danger) 14%, var(--surface));
+  border: 1px solid var(--danger);
+  color: var(--danger);
 }
 
-/* Upload Progress Bar */
+/* In-session bars */
 .retake-banner {
   margin-bottom: 1rem;
-  padding: 0.6rem 1rem;
-  background: rgba(230, 57, 70, 0.12);
-  border: 1px solid var(--color-film-red, #e63946);
-  border-radius: 8px;
+  padding: 0.625rem 1rem;
+  background: color-mix(in srgb, var(--accent) 12%, var(--surface));
+  border: 1px solid var(--accent);
+  border-radius: 10px;
   text-align: center;
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 0.8rem;
-  letter-spacing: 0.04em;
-  color: var(--color-film-red, #e63946);
+  font-size: 0.875rem;
+  color: var(--accent);
+}
+
+.retake-flag {
+  width: 15px;
+  height: 15px;
+  vertical-align: -0.2em;
+  margin-right: 0.4rem;
 }
 
 /* Back's own feedback line. Quiet on purpose — it reports a navigation, not a
@@ -1600,37 +1588,30 @@ onUnmounted(() => {
 .back-note {
   margin: 0.6rem 0 0.2rem;
   text-align: center;
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 0.78rem;
-  letter-spacing: 0.03em;
-  opacity: 0.75;
-}
-
-.retake-flag {
-  margin-right: 0.4rem;
+  font-size: 0.8125rem;
+  color: var(--faint);
 }
 
 .upload-progress-bar {
   margin-top: 1rem;
   padding: 0.5rem 1rem;
-  background: var(--color-shadow);
-  border: 1px solid var(--color-graphite);
-  border-radius: 8px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 10px;
   text-align: center;
 }
 
 .upload-label {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 0.75rem;
-  color: var(--color-paper-dim);
+  font-size: 0.8125rem;
+  color: var(--muted);
 }
 
 .upload-failed-bar {
   margin-top: 0.5rem;
-  padding: 0.5rem 1rem;
-  background: rgba(220, 38, 38, 0.15);
-  border: 1px solid #dc2626;
-  border-radius: 8px;
+  padding: 0.625rem 1rem;
+  background: color-mix(in srgb, var(--danger) 14%, var(--surface));
+  border: 1px solid var(--danger);
+  border-radius: 10px;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -1641,10 +1622,10 @@ onUnmounted(() => {
    downstream of it — so it must not read as "you lost that take". */
 .upload-unfiled-bar {
   margin-top: 0.5rem;
-  padding: 0.5rem 1rem;
-  background: rgba(217, 119, 6, 0.15);
-  border: 1px solid #d97706;
-  border-radius: 8px;
+  padding: 0.625rem 1rem;
+  background: color-mix(in srgb, var(--accent) 14%, var(--surface));
+  border: 1px solid var(--accent);
+  border-radius: 10px;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -1653,57 +1634,53 @@ onUnmounted(() => {
 
 .upload-unfiled-bar .failed-count,
 .upload-unfiled-bar .failed-reason {
-  color: #fcd34d;
+  color: var(--accent);
 }
 
 .failed-count {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 0.8rem;
+  font-size: 0.875rem;
   font-weight: 700;
-  color: #fca5a5;
+  color: var(--danger);
 }
 
 .failed-reason {
-  font-size: 0.7rem;
-  color: #fca5a5;
-  line-height: 1.3;
+  font-size: 0.8125rem;
+  color: var(--danger);
+  line-height: 1.4;
 }
 
 /* Recording Phase */
 .recording-phase {
   max-width: 1000px;
   margin: 0 auto;
-  position: relative;
-  z-index: 1;
 }
 
 /* Summary Phase */
 .summary-phase {
   display: flex;
   justify-content: center;
-  position: relative;
-  z-index: 1;
 }
 
 .summary-card {
   max-width: 600px;
-  background: var(--color-shadow);
-  border: 1px solid var(--color-graphite);
+  background: var(--surface);
+  border: 1px solid var(--line);
   border-radius: 16px;
-  padding: 2.5rem;
+  padding: 2rem;
   text-align: center;
 }
 
 .summary-card h2 {
-  font-family: 'Josefin Sans', sans-serif;
-  font-size: 1.75rem;
-  color: var(--color-emerald);
-  margin: 0 0 2rem 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  margin: 0 0 1.5rem 0;
 }
 
 .summary-stats {
   display: flex;
-  gap: 1.5rem;
+  gap: 0.75rem;
   justify-content: center;
   margin-bottom: 1.5rem;
   flex-wrap: wrap;
@@ -1712,31 +1689,26 @@ onUnmounted(() => {
 .summary-stat {
   text-align: center;
   padding: 1rem;
-  background: var(--color-void);
-  border-radius: 8px;
-  border: 1px solid var(--color-graphite);
+  background: var(--surface-2);
+  border-radius: 10px;
+  border: 1px solid var(--line);
   min-width: 80px;
 }
 
 .summary-value {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 1.75rem;
+  font-size: 1.5rem;
   font-weight: 600;
-  color: var(--color-emerald);
+  font-variant-numeric: tabular-nums;
+  color: var(--ink);
   display: block;
 }
 
-.summary-value.pending {
-  color: var(--color-tungsten);
-}
-
-.summary-value.failed {
-  color: var(--color-film-red);
-}
+.summary-value.pending { color: var(--accent); }
+.summary-value.failed { color: var(--danger); }
 
 .summary-label {
   font-size: 0.7rem;
-  color: var(--color-paper-dim);
+  color: var(--muted);
   text-transform: uppercase;
   letter-spacing: 0.1em;
   margin-top: 0.25rem;
@@ -1746,29 +1718,27 @@ onUnmounted(() => {
 .summary-failures {
   text-align: left;
   margin-bottom: 1.5rem;
-  padding: 0.75rem 1rem;
-  background: rgba(220, 38, 38, 0.12);
-  border: 1px solid var(--color-film-red);
-  border-radius: 8px;
+  padding: 0.875rem 1rem;
+  background: color-mix(in srgb, var(--danger) 10%, var(--surface));
+  border: 1px solid var(--danger);
+  border-radius: 12px;
 }
 
 .summary-unfiled {
-  background: rgba(217, 119, 6, 0.12);
-  border-color: #d97706;
+  background: color-mix(in srgb, var(--accent) 10%, var(--surface));
+  border-color: var(--accent);
 }
 
 .summary-unfiled .summary-failures-title,
 .summary-unfiled .failed-why {
-  color: #fcd34d;
+  color: var(--accent);
 }
 
 .summary-failures-title {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 0.8rem;
-  color: var(--color-film-red);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--danger);
   margin: 0 0 0.5rem 0;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
 }
 
 .summary-failures ul {
@@ -1778,90 +1748,84 @@ onUnmounted(() => {
 }
 
 .summary-failures li {
-  font-size: 0.8rem;
-  color: var(--color-paper-dim);
-  line-height: 1.45;
+  font-size: 0.8125rem;
+  color: var(--muted);
+  line-height: 1.5;
   margin-bottom: 0.4rem;
 }
 
+.summary-failures li strong { color: var(--ink); }
+
 .summary-failures .failed-why {
   display: block;
-  color: var(--color-paper-dim);
-  opacity: 0.85;
+  color: var(--faint);
 }
 
 .summary-time {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 0.9rem;
-  color: var(--color-paper-dim);
-  margin-bottom: 2rem;
+  font-size: 0.875rem;
+  color: var(--muted);
+  margin-bottom: 1.75rem;
 }
 
 .summary-actions {
   display: flex;
-  gap: 1rem;
+  gap: 0.75rem;
   justify-content: center;
+  flex-wrap: wrap;
 }
 
-.btn-review {
-  font-family: 'Josefin Sans', sans-serif;
-  font-size: 1rem;
-  color: var(--color-void);
-  background: var(--color-tungsten);
-  border: none;
+/* "We stopped that take early" — the tool owning a cut it made. Amber, not red:
+   nothing is broken and nothing is lost, but it must be impossible to miss on a
+   phone held at arm's length while reading. */
+.cut-off-notice {
+  background: color-mix(in srgb, var(--accent) 14%, var(--surface));
+  border: 1px solid var(--accent);
+  border-radius: 12px;
+  padding: 1rem;
+  margin-bottom: 0.75rem;
+  color: var(--ink);
+}
+.cut-off-notice strong { display: block; font-size: 1rem; margin-bottom: 0.35rem; }
+.cut-off-notice p { margin: 0 0 0.6rem; font-size: 0.9rem; line-height: 1.5; color: var(--muted); }
+.cut-off-notice p strong { display: inline; color: var(--ink); }
+.cut-off-actions { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+.cut-off-notice button {
+  font: inherit;
+  border: 1px solid transparent;
   border-radius: 8px;
-  padding: 0.85rem 1.5rem;
+  padding: 0.5rem 1.1rem;
+  font-weight: 600;
+  min-height: 44px;
   cursor: pointer;
-  transition: all 0.3s ease;
 }
-
-.btn-review:hover {
-  box-shadow: 0 0 20px rgba(255, 166, 48, 0.4);
-}
-
-.btn-done {
-  font-family: 'Josefin Sans', sans-serif;
-  font-size: 1rem;
-  color: var(--color-void);
-  background: var(--color-emerald);
-  border: none;
-  border-radius: 8px;
-  padding: 0.85rem 1.5rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.btn-done:hover {
-  box-shadow: 0 0 20px rgba(6, 255, 165, 0.4);
+.cut-off-primary { background: var(--accent); color: var(--canvas); }
+/* Moving on without a re-read is the recordist's call and nobody else's, so it
+   is present but never the obvious button. */
+.cut-off-secondary {
+  background: transparent;
+  color: var(--accent);
+  border-color: var(--accent);
 }
 
 /* Review Phase */
-.review-phase {
-  position: relative;
-  z-index: 1;
-}
+.review-phase { position: relative; }
 
 /* Responsive */
 @media (max-width: 768px) {
   .studio-header {
     flex-direction: column;
+    align-items: flex-start;
     gap: 1rem;
   }
 
   .session-stats {
     width: 100%;
     justify-content: space-around;
-    /* Four stat tiles at 1.25rem side padding and a 2rem number measure 493px;
-       without wrapping they widened the studio to 549px on a 390px phone and
-       the whole recording screen scrolled sideways. */
+    /* Four stat tiles at 1.25rem side padding and a large number measure more
+       than a 390px phone; without wrapping the whole recording screen scrolled
+       sideways. */
     flex-wrap: wrap;
     gap: 0.5rem;
-  }
-
-  .back-link {
-    position: absolute;
-    top: 0;
-    right: 0;
   }
 
   .script-stats,
@@ -1886,36 +1850,10 @@ onUnmounted(() => {
   .stat-value {
     font-size: 1.35rem;
   }
-}
 
-/* "We stopped that take early" — the tool owning a cut it made. Amber, not red:
-   nothing is broken and nothing is lost, but it must be impossible to miss on a
-   phone held at arm's length while reading. */
-.cut-off-notice {
-  background: #78350f;
-  border: 1px solid #f59e0b;
-  border-radius: 10px;
-  padding: 0.9rem 1rem;
-  margin-bottom: 0.75rem;
-  color: #fef3c7;
-}
-.cut-off-notice strong { display: block; font-size: 1rem; margin-bottom: 0.35rem; }
-.cut-off-notice p { margin: 0 0 0.6rem; font-size: 0.9rem; line-height: 1.45; }
-.cut-off-actions { display: flex; gap: 0.5rem; flex-wrap: wrap; }
-.cut-off-notice button {
-  border: none;
-  border-radius: 6px;
-  padding: 0.45rem 1.1rem;
-  font-weight: 600;
-  min-height: 40px;
-  cursor: pointer;
-}
-.cut-off-primary { background: #f59e0b; color: #451a03; }
-/* Moving on without a re-read is the recordist's call and nobody else's, so it
-   is present but never the obvious button. */
-.cut-off-secondary {
-  background: transparent;
-  color: #fde68a;
-  border: 1px solid #b45309 !important;
+  .script-summary,
+  .summary-card {
+    padding: 1.25rem;
+  }
 }
 </style>

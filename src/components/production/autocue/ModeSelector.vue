@@ -5,18 +5,26 @@
       :class="{ selected: selectedMode === 'new-course' }"
       @click="selectMode('new-course')"
     >
-      <span class="mode-icon">🎬</span>
-      <h2 class="mode-title">Mode 1: New Course</h2>
+      <span class="icon-frame" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="6" width="20" height="15" rx="2" />
+          <path d="M2 11h20" />
+          <path d="m4.5 6 2.2-3.2 3.3 2.4" />
+          <path d="m10.5 6 2.2-3.2 3.3 2.4" />
+          <path d="m16.5 6 2.2-3.2 3.3 2.4" />
+        </svg>
+      </span>
+      <h2 class="mode-title">Record a new course</h2>
       <p class="mode-description">
         Record a complete course section with two-pass flow. Natural speed first,
         then slow with gaps for LEGO extraction.
       </p>
       <ul class="mode-features">
-        <li>Continuous teleprompter recording</li>
-        <li>Pass 1: Natural prosody</li>
-        <li>Pass 2: Slow with gaps</li>
-        <li>AI-powered segmentation</li>
-        <li>Batch review and approval</li>
+        <li><svg class="feature-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6" /></svg>Continuous teleprompter recording</li>
+        <li><svg class="feature-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6" /></svg>Pass 1: Natural prosody</li>
+        <li><svg class="feature-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6" /></svg>Pass 2: Slow with gaps</li>
+        <li><svg class="feature-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6" /></svg>AI-powered segmentation</li>
+        <li><svg class="feature-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6" /></svg>Batch review and approval</li>
       </ul>
 
       <!-- Which reading order this session uses. It lived ONLY in the link's
@@ -39,7 +47,10 @@
             :aria-checked="scriptOrder === opt.value"
             @click.stop="chooseOrder(opt.value)"
           >
-            <span class="order-option-title">{{ opt.title }}</span>
+            <span class="order-option-title">
+              <svg v-if="scriptOrder === opt.value" class="order-option-tick" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>
+              {{ opt.title }}
+            </span>
             <span class="order-option-detail">{{ opt.detail }}</span>
           </button>
         </div>
@@ -59,18 +70,22 @@
       :class="{ selected: selectedMode === 'regeneration' }"
       @click="selectMode('regeneration')"
     >
-      <span class="mode-icon">🔧</span>
-      <h2 class="mode-title">Mode 2: Regeneration</h2>
+      <span class="icon-frame" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
+        </svg>
+      </span>
+      <h2 class="mode-title">Re-record flagged lines</h2>
       <p class="mode-description">
         Re-record specific flagged items from QA review. Targeted fixes without
         re-recording the entire course.
       </p>
       <ul class="mode-features">
-        <li>Queue of flagged items only</li>
-        <li>See original recording context</li>
-        <li>Compare old vs. new versions</li>
-        <li>Skip and return to items</li>
-        <li>Quick targeted workflow</li>
+        <li><svg class="feature-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6" /></svg>Queue of flagged items only</li>
+        <li><svg class="feature-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6" /></svg>See original recording context</li>
+        <li><svg class="feature-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6" /></svg>Compare old vs. new versions</li>
+        <li><svg class="feature-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6" /></svg>Skip and return to items</li>
+        <li><svg class="feature-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6" /></svg>Quick targeted workflow</li>
       </ul>
     </div>
 
@@ -79,23 +94,29 @@
       class="mode-card"
       @click="goToPods"
     >
-      <span class="mode-icon">🎭</span>
-      <h2 class="mode-title">Mode 3: Listening Pods</h2>
+      <span class="icon-frame" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M13 3h6a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2h-1v3l-3.5-3H13a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z" />
+          <path d="M8 10H5a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h1v3l3.5-3H11" />
+        </svg>
+      </span>
+      <h2 class="mode-title">Record listening pods</h2>
       <p class="mode-description">
         Record the dialogue listening exercises with real voices. Every pod is
         cast with exactly two voices — one male, one female — who between them
         read every character in the scenario.
       </p>
       <ul class="mode-features">
-        <li>Two voices: one male, one female, every pod</li>
-        <li>One link per voice — read all your lines in one sitting</li>
-        <li>Cue lines show what was just said</li>
-        <li>Works on a phone</li>
-        <li>Starts at the cast panel (Listening Pods page)</li>
+        <li><svg class="feature-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6" /></svg>Two voices: one male, one female, every pod</li>
+        <li><svg class="feature-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6" /></svg>One link per voice — read all your lines in one sitting</li>
+        <li><svg class="feature-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6" /></svg>Cue lines show what was just said</li>
+        <li><svg class="feature-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6" /></svg>Works on a phone</li>
+        <li><svg class="feature-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6" /></svg>Starts at the cast panel (Listening Pods page)</li>
       </ul>
     </div>
   </div>
 </template>
+
 
 <script setup>
 import { ref } from 'vue'
@@ -186,86 +207,64 @@ function goToPods() {
 .mode-selector {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
+  gap: 1.5rem;
   max-width: 1500px;
   margin: 0 auto;
 }
 
+/* House card: flat --surface, one quiet 1px line, 16px radius. The old
+   gradient + amber sheen ::before overlay is gone — it was also swallowing
+   pointer events across the whole card. */
 .mode-card {
-  background: linear-gradient(135deg, var(--color-shadow, var(--surface)), var(--color-slate, var(--surface-2)));
-  border: 2px solid var(--color-graphite, var(--surface-3));
+  background: var(--surface);
+  border: 1px solid var(--line);
   border-radius: 16px;
-  padding: 2rem;
+  padding: 1.5rem;
   cursor: pointer;
-  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  position: relative;
-  overflow: hidden;
-}
-
-/* Light mode: the graphite/surface-3 border is nearly invisible on the
-   slate canvas (~1.07:1). Use the stronger --line token plus a subtle
-   shadow so cards separate crisply. Dark mode keeps its original border. */
-:root[data-theme="light"] .mode-card {
-  border-color: var(--line);
-  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.08), 0 4px 12px rgba(15, 23, 42, 0.05);
-}
-
-:root[data-theme="light"] .mode-card:hover {
-  box-shadow: 0 8px 32px rgba(168, 85, 8, 0.18);
-}
-
-:root[data-theme="light"] .mode-card.selected {
-  box-shadow: 0 0 0 1px var(--accent), 0 4px 24px rgba(168, 85, 8, 0.2);
-}
-
-.mode-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(135deg, transparent, rgba(255, 166, 48, 0.1));
-  opacity: 0;
-  transition: opacity 0.4s ease;
+  transition: border-color 0.2s ease, background 0.2s ease;
 }
 
 .mode-card:hover {
-  border-color: var(--color-tungsten, var(--accent));
-  transform: translateY(-4px);
-  box-shadow: 0 8px 32px rgba(255, 166, 48, 0.3);
-}
-
-.mode-card:hover::before {
-  opacity: 1;
+  border-color: var(--accent);
 }
 
 .mode-card.selected {
-  border-color: var(--color-tungsten, var(--accent));
-  box-shadow: 0 0 40px rgba(255, 166, 48, 0.4);
+  border-color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 8%, var(--surface));
 }
 
-.mode-icon {
-  font-size: 3rem;
-  display: block;
+/* House icon frame: 44px raised square, 1px line, 22px stroke-1.5 glyph. */
+.icon-frame {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  color: var(--accent);
   margin-bottom: 1rem;
+}
+
+.icon-frame svg {
+  width: 22px;
+  height: 22px;
 }
 
 .mode-title {
-  font-family: 'Josefin Sans', sans-serif;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   font-weight: 700;
-  color: var(--color-paper, var(--ink));
-  margin: 0 0 0.75rem 0;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  margin: 0 0 0.625rem 0;
 }
 
 .mode-description {
-  color: var(--color-paper-dim, var(--muted));
-  font-size: 0.95rem;
-  line-height: 1.7;
-  margin-bottom: 1rem;
+  color: var(--muted);
+  font-size: 0.875rem;
+  line-height: 1.6;
+  margin: 0 0 1rem;
 }
 
 .mode-features {
@@ -275,40 +274,38 @@ function goToPods() {
 }
 
 .mode-features li {
-  padding-left: 1.5rem;
-  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
   margin-bottom: 0.5rem;
-  font-size: 0.9rem;
-  color: var(--color-paper-dim, var(--muted));
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--muted);
 }
 
-.mode-features li::before {
-  content: '▸';
-  position: absolute;
-  left: 0;
-  color: var(--color-tungsten, var(--accent));
-  font-weight: bold;
+.feature-mark {
+  width: 14px;
+  height: 14px;
+  flex: none;
+  margin-top: 0.2rem;
+  color: var(--accent);
 }
 
 /* Reading-order chooser. Stacked full-width rows rather than a segmented pill:
    each option carries its own explanation, and a phone has no room to put two
    sentences side by side. */
 .order-choice {
-  position: relative;
-  z-index: 1;
   margin-top: 1.5rem;
   padding-top: 1.25rem;
-  border-top: 1px solid var(--color-graphite, var(--surface-3));
+  border-top: 1px solid var(--line);
 }
 
 .order-choice-label {
   display: block;
   margin-bottom: 0.75rem;
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 0.75rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--color-paper-dim, var(--muted));
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--ink);
 }
 
 .order-options {
@@ -325,20 +322,21 @@ function goToPods() {
   min-height: 44px;
   padding: 0.75rem 0.875rem;
   text-align: left;
-  background: transparent;
-  border: 1px solid var(--color-graphite, var(--surface-3));
+  font: inherit;
+  background: var(--surface-2);
+  border: 1px solid var(--line);
   border-radius: 10px;
   cursor: pointer;
   transition: border-color 0.2s ease, background 0.2s ease;
 }
 
 .order-option:hover {
-  border-color: var(--color-tungsten, var(--accent));
+  border-color: var(--accent);
 }
 
 .order-option.active {
-  border-color: var(--color-tungsten, var(--accent));
-  background: rgba(255, 166, 48, 0.08);
+  border-color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 10%, var(--surface-2));
 }
 
 .order-option-title {
@@ -346,12 +344,15 @@ function goToPods() {
   font-size: 0.9rem;
   font-weight: 600;
   line-height: 1.35;
-  color: var(--color-paper, var(--ink));
+  color: var(--ink);
 }
 
-.order-option.active .order-option-title::before {
-  content: '✓ ';
-  color: var(--color-tungsten, var(--accent));
+.order-option-tick {
+  width: 14px;
+  height: 14px;
+  vertical-align: -0.15em;
+  margin-right: 0.15rem;
+  color: var(--accent);
 }
 
 .order-option-detail {
@@ -359,30 +360,30 @@ function goToPods() {
   margin-top: 0.35rem;
   font-size: 0.8125rem;
   line-height: 1.5;
-  color: var(--color-paper-dim, var(--muted));
+  color: var(--muted);
 }
 
 /* Secondary to the card itself — this is the cautious path, not the headline
    action, so it reads as an outline button rather than competing with the card. */
 .test-batch-btn {
-  position: relative;
-  z-index: 1;
   width: 100%;
   margin-top: 1.5rem;
   padding: 0.625rem 1rem;
   background: transparent;
-  border: 1px solid var(--color-tungsten, var(--accent));
+  border: 1px solid var(--accent);
   border-radius: 8px;
-  color: var(--color-tungsten, var(--accent));
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 0.8125rem;
+  color: var(--accent);
+  font: inherit;
+  font-size: 0.875rem;
+  font-weight: 600;
+  min-height: 44px;
   cursor: pointer;
   transition: background 0.2s ease, color 0.2s ease;
 }
 
 .test-batch-btn:hover {
-  background: var(--color-tungsten, var(--accent));
-  color: var(--color-void, var(--canvas));
+  background: var(--accent);
+  color: var(--canvas);
 }
 
 @media (max-width: 768px) {
