@@ -551,3 +551,230 @@ The remaining 55 ward turns map as follows; **mints** in bold:
 
 85 turns → 57 canonical seeds + 28 covered/deferred, nothing dropped, nothing double-counted.
 (#5 and #23, opener turns, mint HG31 and HG29 inside Block D where their content belongs.)
+
+---
+
+## 5. Cuts and baskets — in order, as deep as quality allowed
+
+**The rules these baskets follow.** The cut never goes below a phrase — atomising destroys the
+worn whole chunk that is the pod's whole value — and the cut must tile its seed exactly. Only
+**new** LEGOs get baskets: chunks owned from core or scene 0 enter as `is_new = false` — tiling
+and vocabulary, no round, no learning event — so basketing them would be authoring overdrill.
+Floors are the standing ones: **at least 4 BUILD and 5 USE per new LEGO** — fewer phrases is a
+fail, and variety is a bonus on top of volume, never a substitute. BUILD phrases may be
+fragments but must extend into natural full English by appending or prepending owned chunks;
+USE phrases are complete natural sentences, tier-1 or they die. Every phrase composes only from
+this seed's LEGO, chunks owned at this point in the sequence, and core glue — no forward
+references, so a chunk taught by a later seed never appears in an earlier basket.
+
+### HG01 — "If I say anything that isn't clear, please stop me and I'll say it again."
+
+Cut: `if I say` *(core)* · `anything that isn't clear` **(new)** · `please stop me` *(scene 0)* · `and I'll say it again` **(new: "I'll say it again")**
+
+**"anything that isn't clear"**
+- BUILD: "if I say anything that isn't clear" · "anything that isn't clear, stop me" · "if there's anything that isn't clear" · "tell me if I say anything that isn't clear"
+- USE: "Is there anything that isn't clear?" · "If there's anything that isn't clear, please stop me." · "Just tell me if there's anything that isn't clear." · "If I say anything that isn't clear, stop me any time." · "Anything that isn't clear, you just tell me."
+
+**"I'll say it again"**
+- BUILD: "and I'll say it again" · "I'll say it again now" · "I'll say it again for you" · "stop me and I'll say it again"
+- USE: "Don't worry — I'll say it again." · "No problem at all — I'll say it again." · "Stop me any time and I'll say it again." · "If you don't understand me, I'll say it again." · "I'll say it again, a bit more slowly."
+
+### HG02 — "This isn't my first language, so if you have any trouble understanding me, just let me know and I'll explain myself more clearly — it's really important that you understand everything."
+
+Cut: `this isn't my first language` **(new)** · `so` *(core)* · `if you have any trouble understanding me` **(new)** · `just let me know` *(core)* · `and I'll explain myself more clearly` **(new: "I'll explain myself more clearly")** · `it's really important that you understand everything` **(new — kept whole: it is the worn stakes-raiser, and the phrase floor forbids cutting it into grammar)**
+
+**"this isn't my first language"**
+- BUILD: "this isn't my first language, so…" · "but this isn't my first language" · "this isn't my first language, remember" · "this isn't my first language, so stop me"
+- USE: "This isn't my first language, so please stop me any time." · "Don't worry if I'm slow — this isn't my first language." · "This isn't my first language, so I might be a little slow." · "This isn't my first language, so just let me know if I get stuck." · "This isn't my first language — I'm still learning it."
+
+**"if you have any trouble understanding me"**
+- BUILD: "if you have any trouble understanding me, stop me" · "and if you have any trouble understanding me" · "if you have any trouble understanding me today" · "if you have any trouble understanding me, just let me know"
+- USE: "If you have any trouble understanding me, just let me know." · "If you have any trouble understanding me, please stop me." · "Tell me if you have any trouble understanding me." · "If you have any trouble understanding me, I'll say it again." · "Just stop me if you have any trouble understanding me."
+
+**"I'll explain myself more clearly"**
+- BUILD: "and I'll explain myself more clearly" · "let me know and I'll explain myself more clearly" · "I'll explain myself more clearly now" · "I'll explain myself more clearly if you like"
+- USE: "Just let me know and I'll explain myself more clearly." · "Stop me and I'll explain myself more clearly." · "No problem — I'll explain myself more clearly." · "If I say anything that isn't clear, I'll explain myself more clearly." · "Ask me any time, and I'll explain myself more clearly."
+
+**"it's really important that you understand everything"**
+- BUILD: "because it's really important that you understand everything" · "and it's really important that you understand everything" · "stop me — it's really important that you understand everything" · "it's really important that you understand everything today"
+- USE: "Please stop me — it's really important that you understand everything." · "Ask me anything — it's really important that you understand everything." · "It's really important that you understand everything, so just let me know if I lose you." · "It's really important that you understand everything before we start." · "It's really important that you understand everything, so I'll say it again if you need me to."
+
+### HG03 — "If we get stuck, I can call someone who speaks it more confidently than me."
+
+Cut: `if we get stuck` *(scene 0 family)* · `I can call someone` **(new)** · `who speaks it more confidently than me` **(new)**
+
+**"I can call someone"**
+- BUILD: "I can call someone for you" · "if you like, I can call someone" · "I can call someone now" · "don't worry — I can call someone"
+- USE: "If you need me to, I can call someone." · "I can call someone if you like." · "Don't worry — I can call someone." · "I can call someone who can help you." · "If we get stuck, I can call someone."
+
+**"who speaks it more confidently than me"**
+- BUILD: "someone who speaks it more confidently than me" · "call someone who speaks it more confidently than me" · "there's someone who speaks it more confidently than me" · "she speaks it more confidently than me"
+- USE: "I can call someone who speaks it more confidently than me." · "There's always someone who speaks it more confidently than me." · "Someone here speaks it more confidently than me — I can call them." · "Give me a minute — I can call someone who speaks it more confidently than me." · "It's no trouble to call someone who speaks it more confidently than me."
+
+### HG04 — "If I use a word you don't know, just say — I won't be offended."
+
+Cut: `if I use a word you don't know` **(new)** · `just say` **(new)** · `I won't be offended` **(new)**
+
+**"if I use a word you don't know"**
+- BUILD: "and if I use a word you don't know" · "if I use a word you don't know, stop me" · "if I use a word you don't know, just let me know" · "if I use a word you don't know today"
+- USE: "If I use a word you don't know, just let me know." · "If I use a word you don't know, please stop me." · "If I use a word you don't know, I'll explain myself more clearly." · "Stop me any time if I use a word you don't know." · "If I use a word you don't know, tell me straight away."
+
+**"just say"**
+- BUILD: "just say — any time" · "you can just say" · "anything that isn't clear — just say" · "if I lose you, just say"
+- USE: "If you need anything, just say." · "Anything that isn't clear — just say." · "If I lose you, just say." · "You can just say, any time at all." · "If you'd like me to stop, just say."
+
+**"I won't be offended"**
+- BUILD: "don't worry — I won't be offended" · "I won't be offended, I promise" · "and I won't be offended" · "honestly, I won't be offended"
+- USE: "Stop me any time — I won't be offended." · "You can just say — I won't be offended." · "Ask me anything — I won't be offended." · "I won't be offended, I promise." · "Just let me know — I won't be offended."
+
+### HG05 — "If there's ever a word that doesn't make sense, just ask — it's never a silly question."
+
+Cut: `if there's ever` *(core)* · `a word that doesn't make sense` **(new)** · `just ask` **(new)** · `it's never a silly question` **(new)**
+
+**"a word that doesn't make sense"**
+- BUILD: "if there's ever a word that doesn't make sense" · "a word that doesn't make sense, you tell me" · "if there's a word that doesn't make sense" · "was there a word that doesn't make sense?"
+- USE: "If there's a word that doesn't make sense, just let me know." · "Stop me if there's a word that doesn't make sense." · "If there's ever a word that doesn't make sense, I'll explain myself more clearly." · "Was there a word that doesn't make sense? Just say." · "Tell me if there's a word that doesn't make sense."
+
+**"just ask"**
+- BUILD: "just ask — any time" · "you can always just ask" · "if you're not sure, just ask" · "just ask me"
+- USE: "If you're not sure, just ask." · "You can always just ask." · "Just ask, any time at all." · "If you need anything, just ask." · "Anything you need — just ask."
+
+**"it's never a silly question"**
+- BUILD: "because it's never a silly question" · "and it's never a silly question" · "it's never a silly question here" · "it's never a silly question, remember"
+- USE: "Ask me anything — it's never a silly question." · "Just ask — it's never a silly question." · "It's never a silly question, so just say." · "It's never a silly question, and I won't be offended." · "It's never a silly question, so stop me any time."
+
+### HG06 — "That's completely sensible, and exactly the right instinct — clarity matters most here."
+
+Cut: `that's completely sensible` **(new)** · `and exactly the right instinct` **(new: "exactly the right instinct")** · `clarity matters most here` **(new)**
+
+**"that's completely sensible"**
+- BUILD: "that's completely sensible, of course" · "and that's completely sensible" · "that's completely sensible — thank you" · "well, that's completely sensible"
+- USE: "That's completely sensible — no problem at all." · "That's completely sensible, and I won't be offended." · "That's completely sensible — thank you for telling me." · "Of course — that's completely sensible." · "I understand — that's completely sensible."
+
+**"exactly the right instinct"**
+- BUILD: "and exactly the right instinct" · "that's exactly the right instinct" · "it's exactly the right instinct" · "exactly the right instinct, every time"
+- USE: "That's exactly the right instinct — well done." · "That was exactly the right instinct." · "That's exactly the right instinct — you just say, any time." · "It's exactly the right instinct to ask." · "That's exactly the right instinct — it's never a silly question."
+
+**"clarity matters most here"**
+- BUILD: "because clarity matters most here" · "and clarity matters most here" · "clarity matters most here, always" · "clarity matters most here, remember"
+- USE: "Clarity matters most here, so please stop me any time." · "Just say — clarity matters most here." · "Clarity matters most here, so I'll say it again if you need me to." · "Ask me anything — clarity matters most here." · "Clarity matters most here — it's really important that you understand everything."
+
+### HG07 — "None taken at all — you've done me a favour."
+
+Cut: `none taken at all` **(new)** · `you've done me a favour` **(new)**
+
+**"none taken at all"**
+- BUILD: "none taken at all, honestly" · "oh, none taken at all" · "none taken at all — don't worry" · "and none taken at all"
+- USE: "None taken at all — don't worry." · "None taken at all, I promise." · "None taken at all — that's completely sensible." · "None taken at all — thank you for telling me." · "None taken at all — it's no trouble."
+
+**"you've done me a favour"**
+- BUILD: "and you've done me a favour" · "honestly, you've done me a favour" · "you've done me a favour there" · "you've done me a favour today"
+- USE: "Honestly, you've done me a favour." · "You've done me a favour — thank you." · "Don't worry — you've done me a favour." · "Not at all — you've done me a favour." · "You've done me a favour — none taken at all."
+
+### HG08 — "Through work, mostly — a little bit every day. I've been at it about a year now."
+
+Cut: `through work, mostly` **(new)** · `a little bit every day` *(scene 0)* · `I've been at it` **(new)** · `about a year now` *(scene 0 + core)*
+
+**"through work, mostly"**
+- BUILD: "through work, mostly — a bit every day" · "I'm learning through work, mostly" · "through work, mostly, and at home" · "it's through work, mostly"
+- USE: "I'm learning through work, mostly." · "It's through work, mostly — a little bit every day." · "Through work, mostly, but a bit at home too." · "I'm learning through work, mostly — they give us a little bit every day." · "Where am I learning? Through work, mostly."
+
+**"I've been at it"**
+- BUILD: "I've been at it about a year now" · "I've been at it every day" · "I've been at it a while" · "I've been at it all year"
+- USE: "I've been at it about a year now, a little bit every day." · "I've been at it a while now." · "I've been at it every day this year." · "I've been at it about a year, and I still get most of it wrong." · "How long have I been at it? About a year now."
+
+### HG09 — "I'm from the Philippines — I've been here three years now."
+
+Cut: `I'm from the Philippines` **(new)** · `I've been here` **(new)** · `three years now` *(core)*
+
+**"I'm from the Philippines"**
+- BUILD: "I'm from the Philippines, actually" · "well, I'm from the Philippines" · "I'm from the Philippines myself" · "I'm from the Philippines — a long way away"
+- USE: "I'm from the Philippines, actually." · "I'm from the Philippines myself." · "Me? I'm from the Philippines." · "I'm from the Philippines, but I've been here a while." · "I'm from the Philippines — a long way from here."
+
+**"I've been here"**
+- BUILD: "I've been here three years now" · "I've been here about a year" · "I've been here all day" · "I've been here a while now"
+- USE: "I've been here three years now, and I like it." · "I've been here about a year." · "I've been here a while now." · "I've been here since this morning." · "How long? I've been here three years."
+
+### HG10 — "The weather takes some getting used to — but the people are kind. Now then, let's have a look at you."
+
+Cut: `the weather` *(core)* · `takes some getting used to` **(new)** · `but the people are kind` **(new: "the people are kind")** · `now then` **(new)** · `let's have a look at you` **(new)**
+
+**"takes some getting used to"**
+- BUILD: "the weather takes some getting used to" · "it takes some getting used to" · "this place takes some getting used to" · "the food takes some getting used to"
+- USE: "The weather takes some getting used to!" · "It takes some getting used to, but you'll be fine." · "This place takes some getting used to at first." · "Everything here takes some getting used to." · "It takes some getting used to — I've been here three years and I'm still learning."
+
+**"the people are kind"**
+- BUILD: "but the people are kind" · "the people are kind here" · "and the people are kind" · "the people are kind, mostly"
+- USE: "The people are kind here." · "The weather takes some getting used to, but the people are kind." · "Don't worry — the people are kind." · "The people are kind, and that helps." · "The people are kind, mostly."
+
+**"now then"**
+- BUILD: "now then, let's have a look at you" · "right, now then" · "now then, what would you like?" · "now then, where do we start?"
+- USE: "Now then — let's have a look at you." · "Now then, what would you like?" · "Now then — where were we?" · "Now then, tell me about your day." · "Now then — let's start."
+
+**"let's have a look at you"**
+- BUILD: "now then, let's have a look at you" · "right, let's have a look at you" · "let's have a look at you, then" · "come on, let's have a look at you"
+- USE: "Right then — let's have a look at you." · "Let's have a look at you, then." · "Now then, let's have a look at you." · "Sit down a minute and let's have a look at you." · "Before anything else, let's have a look at you."
+
+### HG11 — "Right, shall we make a start? Just stop me if I lose you."
+
+Cut: `right` *(core)* · `shall we make a start` **(new)** · `just stop me` *(scene 0)* · `if I lose you` *(scene 0)*
+
+**"shall we make a start"**
+- BUILD: "right, shall we make a start?" · "shall we make a start, then?" · "well — shall we make a start?" · "shall we make a start before lunch?"
+- USE: "Shall we make a start, then?" · "Right — shall we make a start?" · "Shall we make a start? Take your time." · "If you're ready, shall we make a start?" · "Shall we make a start with the first one?"
+
+### HG12 — "Right — what can I do for you today?"
+
+Cut: `right` *(core)* · `what can I do for you today` **(new — kept whole: the worn service question, never grammar-cut)**
+
+**"what can I do for you today"**
+- BUILD: "right — what can I do for you today?" · "now then, what can I do for you today?" · "so, what can I do for you today?" · "good morning — what can I do for you today?"
+- USE: "Now then — what can I do for you today?" · "Good morning! What can I do for you today?" · "Hello again — what can I do for you today?" · "Right then, what can I do for you today?" · "And what can I do for you today, then?"
+
+### HG13 — "So — what's brought you in today?"
+
+Cut: `so` *(core)* · `what's brought you in today` **(new — kept whole, same reasoning as HG12)**
+
+**"what's brought you in today"**
+- BUILD: "so, what's brought you in today?" · "now then, what's brought you in today?" · "and what's brought you in today?" · "tell me — what's brought you in today?"
+- USE: "Now then — what's brought you in today?" · "Right then — what's brought you in today?" · "So then, what's brought you in today?" · "And what's brought you in today, then?" · "Hello — what's brought you in today?"
+
+### HG14 — "Of course — she's very welcome. Two pairs of ears are better than one."
+
+Cut: `of course` *(core)* · `she's very welcome` **(new)** · `two pairs of ears are better than one` **(new — a proverb is one chunk by definition)**
+
+**"she's very welcome"**
+- BUILD: "of course — she's very welcome" · "she's very welcome to stay" · "she's very welcome, any time" · "and she's very welcome too"
+- USE: "She's very welcome to stay." · "She's very welcome, any time at all." · "Of course she's very welcome — no need to ask." · "She's very welcome to stay with you." · "She's very welcome here."
+
+**"two pairs of ears are better than one"**
+- BUILD: "because two pairs of ears are better than one" · "and two pairs of ears are better than one" · "two pairs of ears are better than one, after all" · "well, two pairs of ears are better than one"
+- USE: "Let her stay — two pairs of ears are better than one." · "Two pairs of ears are better than one, after all." · "Of course — two pairs of ears are better than one." · "Bring her in — two pairs of ears are better than one." · "I always say two pairs of ears are better than one."
+
+### HG15 — "That's what family's for. Right — with you both here, let's make a start."
+
+Cut: `that's what family's for` **(new)** · `right` *(core)* · `with you both here` **(new)** · `let's make a start` **(new)**
+
+**"that's what family's for"**
+- BUILD: "well, that's what family's for" · "that's what family's for, after all" · "and that's what family's for" · "that's what family's for, isn't it?"
+- USE: "That's what family's for, isn't it?" · "Of course she worries — that's what family's for." · "That's what family's for, after all." · "Let her help — that's what family's for." · "Two pairs of ears are better than one — that's what family's for."
+
+**"with you both here"**
+- BUILD: "with you both here, let's make a start" · "now, with you both here" · "with you both here today" · "right — with you both here"
+- USE: "With you both here, let's make a start." · "With you both here, this will be easier." · "It's better with you both here." · "With you both here, shall we make a start?" · "Right then, with you both here, let's have a look at you."
+
+**"let's make a start"**
+- BUILD: "right, let's make a start" · "let's make a start, then" · "let's make a start before lunch" · "come on, let's make a start"
+- USE: "Right then — let's make a start." · "Let's make a start, shall we?" · "Let's make a start before lunch." · "If you're ready, let's make a start." · "Good — let's make a start, then."
+
+### HG16 — "Then we'll go through it slowly, all three of us."
+
+Cut: `then` *(core)* · `we'll go through it slowly` **(new)** · `all three of us` **(new)**
+
+**"we'll go through it slowly"**
+- BUILD: "then we'll go through it slowly" · "we'll go through it slowly together" · "we'll go through it slowly today" · "and we'll go through it slowly"
+- USE: "Don't worry — we'll go through it slowly." · "We'll go through it slowly, together." · "We'll go through it slowly, and just stop me if I lose you." · "There's no rush — we'll go through it slowly." · "We'll go through it slowly — it's really important that you understand everything."
+
+**"all three of us"**
+- BUILD: "all three of us together" · "with all three of us" · "all three of us, then" · "all three of us here"
+- USE: "We'll do it together, all three of us." · "It's better with all three of us here." · "Let's make a start, all three of us." · "Sit down and we'll go through it slowly, all three of us." · "All three of us, then — let's make a start."
