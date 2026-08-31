@@ -33,14 +33,19 @@ function ok(label, cond, detail) {
 
 const g = mg.load({ fresh: true });
 
-console.log(`\nThe counts the derivation document asserts (${DOC})`);
-check('nodes', g.nodes.length, 17);
+console.log(`\nThe counts the derivation document asserts (${DOC}),`);
+console.log('extended by the 2026-08-31 ratification (docs/pods/core-walks-ratification-2026-08-31.md)');
+check('nodes', g.nodes.length, 29);
 check('nodes from pod-0', g.nodes.filter(n => n.provenance === 'pod-0').length, 12);
-check('nodes from the Method Pod', g.nodes.filter(n => n.provenance === 'method-pod').length, 5);
-check('moves', g.moves.length, 20);
-check('composition edges', g.composition.length, 19);
+check('nodes from the Method Pod', g.nodes.filter(n => n.provenance === 'method-pod').length, 10);
+check('nodes from Talk Bollocks', g.nodes.filter(n => n.provenance === 'talk-bollocks').length, 6);
+check('nodes from trades (N501, Tom\'s ruling)', g.nodes.filter(n => n.provenance === 'trades').map(n => n.id), ['N501']);
+check('moves', g.moves.length, 27);
+check('moves from care work (F601, Tom\'s ruling)', g.moves.filter(m => m.provenance === 'care-work').map(m => m.id), ['F601']);
+check('composition edges', g.composition.length, 21);
 check('survivability edges, corpus-attested', g.survivabilityByProvenance.corpus.length, 10);
 check('survivability edges, Method Pod only', g.survivabilityByProvenance.method_pod.length, 5);
+check('survivability edges, Talk Bollocks (the ratified recoveries)', (g.survivabilityByProvenance.talk_bollocks || []).length, 5);
 check('outcome shapes', g.outcomeShapes.length, 9);
 check('outcome shapes minted from nothing', g.outcomeShapes.filter(o => o.attestation_class === 'minted').length, 4);
 check('outcome shapes attested in the Method Pod only', g.outcomeShapes.filter(o => o.attestation_class === 'method-pod-only').length, 3);

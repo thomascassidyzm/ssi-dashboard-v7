@@ -179,8 +179,10 @@ export function walkFromFlow (flow, graph, opts = {}) {
 export function walkFromStoredPod (rows, walkSteps, graph, opts = {}) {
   const knownNodes = new Set(graph.nodes.map(n => n.id))
   const knownOutcomes = new Set(graph.outcomes.map(o => o.id))
+  const knownMoves = new Set((graph.moves || []).map(m => m.id))
   const bySceneNodes = new Map()
   const bySceneOutcomes = new Map()
+  const bySceneMoves = new Map()
   const declarations = []
   for (const d of walkSteps || []) {
     declarations.push({
@@ -194,7 +196,9 @@ export function walkFromStoredPod (rows, walkSteps, graph, opts = {}) {
       note: d.note
     })
     if (!d.node_id) continue
-    const bucket = knownNodes.has(d.node_id) ? bySceneNodes : knownOutcomes.has(d.node_id) ? bySceneOutcomes : null
+    const bucket = knownNodes.has(d.node_id) ? bySceneNodes
+      : knownOutcomes.has(d.node_id) ? bySceneOutcomes
+      : knownMoves.has(d.node_id) ? bySceneMoves : null
     if (!bucket) continue
     if (!bucket.has(d.scene_number)) bucket.set(d.scene_number, [])
     if (!bucket.get(d.scene_number).includes(d.node_id)) bucket.get(d.scene_number).push(d.node_id)
@@ -206,11 +210,16 @@ export function walkFromStoredPod (rows, walkSteps, graph, opts = {}) {
   for (const row of rows || []) {
     const nodeIds = bySceneNodes.get(row.scene_number) || []
     const outcomes = bySceneOutcomes.get(row.scene_number) || []
+    const moveIds = bySceneMoves.get(row.scene_number) || []
     const step = {
       ref: null,
       nodeId: nodeIds[0] || null,
       nodeIds,
-      kind: nodeIds.length ? STEP_KINDS.MOVE : STEP_KINDS.UNMAPPED,
+      moveIds,
+      // A scene is mapped when the graph has anything resolved to say about it —
+      // a node, a delivered outcome (the outcome-mint scenes are the pod's most
+      // deliberate content, not its unmapped residue), or a move family.
+      kind: (nodeIds.length || outcomes.length || moveIds.length) ? STEP_KINDS.MOVE : STEP_KINDS.UNMAPPED,
       branch: null,
       variant: null,
       sceneNumber: row.scene_number,

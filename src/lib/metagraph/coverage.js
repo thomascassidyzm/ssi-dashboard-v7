@@ -12,9 +12,14 @@
 
 import { STEP_KINDS } from './walk.js'
 
-/** The row numbers a walk actually visits, in the graph's own reference space. */
+/** The row numbers a walk actually visits, in the graph's own reference space.
+ * Only a walk whose refSpace IS the graph's g-space contributes rows: a stored
+ * pod's `global_order` is its own numbering, and reading it as a g-number made
+ * every stored-walk pod "exercise" pod-0's survivability edges by numeric
+ * coincidence (the identical 10/15 read-out across all four pods). */
 function visitedRows (walk) {
   const set = new Set()
+  if (walk.refSpace !== 'g') return set
   for (const s of walk.steps) {
     if (s.payload?.globalOrder != null) set.add(s.payload.globalOrder)
     else if (s.ref && /^g\d+$/.test(s.ref)) set.add(Number(s.ref.slice(1)))
@@ -101,7 +106,9 @@ export function computeCoverage (graph, walk) {
   // when a step declares it. The presence of the row an outcome is *sited on* is
   // not delivery — that is the ask the outcome would hang from, and reading it as
   // coverage is exactly the lie this page exists to stop telling.
-  const declared = new Set(walk.steps.map(s => s.outcomeId).filter(Boolean))
+  // A scene may declare several outcomes (chapters cut, chapter 10: O4, O6 and
+  // O7); reading only the first understated delivery by whole outcomes.
+  const declared = new Set(walk.steps.flatMap(s => s.outcomeIds || (s.outcomeId ? [s.outcomeId] : [])))
   const outcomes = graph.outcomes.map(o => ({
     id: o.id,
     name: o.name,

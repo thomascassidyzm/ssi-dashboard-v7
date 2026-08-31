@@ -54,12 +54,22 @@ for (const c of CASES) {
 }
 
 console.log('\nregisters')
-// The m register is the control arm's own numbering and MUST NOT resolve.
+// Since the 2026-08-31 ratification the m register resolves through the DECLARED
+// crosswalk — never by guessing: every m step is either 'crosswalk' with a store
+// id, or 'unresolved' carrying the ruling that keeps it out (m6/m14/m15 are
+// intra-turn phenomena, not exchange positions).
 const allSteps = Object.values(parsed).flatMap(r => r.steps)
-ok(allSteps.filter(s => /^m\d+$/.test(s.declared_as)).every(s => s.resolution === 'unresolved' && s.register === 'corpus-move-m'),
-  'm1–m23 are recorded UNRESOLVED, never crosswalked to the store’s F register')
-ok(allSteps.some(s => s.register === 'summit-shape' && s.resolution === 'unresolved'),
-  'the eight summit shapes are recorded UNRESOLVED, never aliased')
+const mSteps = allSteps.filter(s => /^m\d+$/.test(s.declared_as))
+ok(mSteps.every(s => s.register === 'corpus-move-m' &&
+    ((s.resolution === 'crosswalk' && s.node_id) || (s.resolution === 'unresolved' && s.node_id === null))),
+  'm1–m23 resolve only through the declared crosswalk, or stay unresolved with the ruling as the note')
+ok(mSteps.filter(s => /^m(6|14|15)$/.test(s.declared_as)).every(s => s.resolution === 'unresolved'),
+  'm6/m14/m15 stay unresolved BY RULING — intra-turn, not exchange positions')
+ok(mSteps.some(s => s.resolution === 'crosswalk'), 'and the crosswalk actually fires')
+// The eight former summit shapes now carry ratified ids and resolve by alias.
+ok(allSteps.filter(s => /specimen|counterexample absorbed|stacked commission|pre-emption|misreading corrected|listener names it|outsider.s pitch|reported claim/i.test(s.declared_as))
+    .every(s => s.resolution === 'alias' && s.node_id),
+  'the eight summit shapes resolve by alias to their ratified ids')
 ok(allSteps.some(s => s.resolution === 'id' && s.register === 'node'), 'N ids resolve')
 ok(allSteps.some(s => s.resolution === 'id' && s.register === 'outcome'), 'O ids resolve')
 

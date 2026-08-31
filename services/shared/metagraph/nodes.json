@@ -8,9 +8,11 @@
     "corpus": "canonical_pod_scenarios pod_slug='pod-0' (231 rows, 22 scenes)"
   },
   "counts": {
-    "nodes": 17,
+    "nodes": 29,
     "from_pod_0": 12,
-    "from_method_pod": 5,
+    "from_method_pod": 10,
+    "from_talk_bollocks": 6,
+    "from_trades": 1,
     "bound_pairs": 6
   },
   "nodes": [
@@ -594,6 +596,443 @@
         ]
       },
       "notes": "The recovery half is unattested — the next session is lost."
+    },
+    {
+      "id": "N301",
+      "name": "Joint construction",
+      "provenance": "talk-bollocks",
+      "gloss": "One speaker leaves a clause open; the other closes it in a handful of words; the first ratifies; the closer is allowed one extension. The completion is a contribution, not an answer — it can amend as well as finish, and the amendment costs nothing.",
+      "positions": [
+        {
+          "index": 1,
+          "name": "open the clause and leave it hanging",
+          "family": null
+        },
+        {
+          "index": 2,
+          "name": "complete it (1–6 words)",
+          "family": null
+        },
+        {
+          "index": 3,
+          "name": "ratify, or amend the completion",
+          "family": "F1",
+          "outcome_branch": true
+        },
+        {
+          "index": 4,
+          "name": "extend beyond the opener's version",
+          "family": null,
+          "optional": true
+        }
+      ],
+      "attestations": {
+        "talk_bollocks": [
+          "1:26-28",
+          "1:221-222",
+          "2:37-39",
+          "2:88-98",
+          "2:117-118",
+          "2:169-171",
+          "2:227-228",
+          "4:26-30",
+          "4:47-50",
+          "4:84-87",
+          "4:279-281",
+          "4:308-312"
+        ]
+      }
+    },
+    {
+      "id": "N302",
+      "name": "Digression-and-return",
+      "provenance": "talk-bollocks",
+      "gloss": "A detour is taken — flagged or unflagged — and the thread survives because BOTH parties hold it. The return marker ('where were we?') can be answered by either side; the thread is joint property, and losing it entirely is recoverable because the partner has a copy.",
+      "positions": [
+        {
+          "index": 1,
+          "name": "digress (flag optional)",
+          "family": null
+        },
+        {
+          "index": 2,
+          "name": "run the detour",
+          "family": null
+        },
+        {
+          "index": 3,
+          "name": "return marker, or thread-loss admitted",
+          "family": null,
+          "outcome_branch": true
+        },
+        {
+          "index": 4,
+          "name": "either party restores the thread",
+          "family": null
+        },
+        {
+          "index": 5,
+          "name": "resume, detour optionally claimed as evidence",
+          "family": null,
+          "pivot_capable": true
+        }
+      ],
+      "attestations": {
+        "talk_bollocks": [
+          "1:59-60",
+          "1:257-259",
+          "2:57"
+        ]
+      }
+    },
+    {
+      "id": "N303",
+      "name": "The specimen",
+      "provenance": "talk-bollocks",
+      "gloss": "Mid-claim, the partner is turned into the live experiment — taught the thing, tested on the thing — and the result, INCLUDING failure, is read back into the claim. At rung 0 the specimen cannot fail: a failed recall is data for a claim about forgetting.",
+      "positions": [
+        {
+          "index": 1,
+          "name": "claim about how something works",
+          "family": null
+        },
+        {
+          "index": 2,
+          "name": "the partner is enrolled as the live case",
+          "family": null
+        },
+        {
+          "index": 3,
+          "name": "perform / undergo, imperfection allowed",
+          "family": null,
+          "outcome_branch": true
+        },
+        {
+          "index": 4,
+          "name": "the result is folded back into the claim",
+          "family": null
+        }
+      ],
+      "attestations": {
+        "talk_bollocks": [
+          "1:322-334"
+        ]
+      }
+    },
+    {
+      "id": "N304",
+      "name": "The reported claim too big to hold",
+      "provenance": "talk-bollocks",
+      "gloss": "A third party's claim is reported with its source, its size is registered ('my brain is already hurting'), it is tried on jointly — and it is left unresolved. Nobody owes a verdict; the parking of the verdict IS the shape.",
+      "positions": [
+        {
+          "index": 1,
+          "name": "report the claim + its source + its epistemic status",
+          "family": null
+        },
+        {
+          "index": 2,
+          "name": "register its size",
+          "family": null
+        },
+        {
+          "index": 3,
+          "name": "try it on jointly ('she would say…')",
+          "family": null,
+          "repeatable": true
+        },
+        {
+          "index": 4,
+          "name": "leave it unresolved",
+          "family": null
+        }
+      ],
+      "attestations": {
+        "talk_bollocks": [
+          "1:196-206",
+          "4:189-194"
+        ]
+      }
+    },
+    {
+      "id": "N305",
+      "name": "The proxy pitch",
+      "provenance": "talk-bollocks",
+      "gloss": "One party performs, to the other, how they pitch the OTHER's own thing to strangers. The owner audits, ratifies and extends — and may adopt the improvement into the thing itself.",
+      "positions": [
+        {
+          "index": 1,
+          "name": "perform the pitch of the partner's thing",
+          "family": null
+        },
+        {
+          "index": 2,
+          "name": "owner ratifies or corrects",
+          "family": null,
+          "outcome_branch": true
+        },
+        {
+          "index": 3,
+          "name": "owner extends; the improvement may be adopted",
+          "family": null,
+          "optional": true
+        }
+      ],
+      "attestations": {
+        "talk_bollocks": [
+          "1:233-246"
+        ]
+      },
+      "thin": "One attestation. Thin, and flagged as thin — strikeable with one word."
+    },
+    {
+      "id": "N306",
+      "name": "The co-staged scene",
+      "provenance": "talk-bollocks",
+      "gloss": "Both parties build one hypothetical scene across turns, each voicing roles inside it — the shops, the people, the council — handing the enactment back and forth. The scene itself carries the argument; stepping out of it ends it.",
+      "positions": [
+        {
+          "index": 1,
+          "name": "propose the frame",
+          "family": null
+        },
+        {
+          "index": 2,
+          "name": "voice a role inside it",
+          "family": null,
+          "repeatable": true
+        },
+        {
+          "index": 3,
+          "name": "the partner voices a role or the counter-role",
+          "family": null,
+          "repeatable": true
+        },
+        {
+          "index": 4,
+          "name": "read the scene back into the live argument",
+          "family": null
+        }
+      ],
+      "attestations": {
+        "talk_bollocks": [
+          "2:252-258",
+          "4:289-300",
+          "4:328-341"
+        ]
+      }
+    },
+    {
+      "id": "N902",
+      "name": "The razor",
+      "provenance": "method-pod",
+      "gloss": "A theory is dismantled by making its proponent state it in full until its complexity is self-refuting; the verdict is one line — the work was done by the restatement.",
+      "positions": [
+        {
+          "index": 1,
+          "name": "theory claimed",
+          "family": null
+        },
+        {
+          "index": 2,
+          "name": "invite the full statement — 'listen to yourself'",
+          "family": null
+        },
+        {
+          "index": 3,
+          "name": "the full statement, self-refuting",
+          "family": null,
+          "repeatable": true
+        },
+        {
+          "index": 4,
+          "name": "one-line verdict",
+          "family": null
+        }
+      ],
+      "attestations": {
+        "corpus": [],
+        "method": [
+          "method-pod-43-scene:8"
+        ]
+      },
+      "notes": "Ratified 2026-08-31 from the N901–N910 candidate list. The razor's DEPLOYMENT as a shared line stays F303 (talk-bollocks ruling); this node is the dismantling exchange itself, which F303 does not carry."
+    },
+    {
+      "id": "N903",
+      "name": "Public position-abandonment",
+      "provenance": "method-pod",
+      "gloss": "A position held for years is recanted at full strength, jointly, with the old position quoted and no face-saving hedge. Distinct from N15 (nothing is parked) and O8 (nobody disagrees — both parties abandon together).",
+      "positions": [
+        {
+          "index": 1,
+          "name": "the old position quoted",
+          "family": null
+        },
+        {
+          "index": 2,
+          "name": "recantation at full strength, no hedge",
+          "family": null
+        },
+        {
+          "index": 3,
+          "name": "the partner joins the abandonment",
+          "family": null
+        }
+      ],
+      "attestations": {
+        "corpus": [],
+        "method": [
+          "method-pod-43-scene:10"
+        ]
+      }
+    },
+    {
+      "id": "N907",
+      "name": "The misreading corrected",
+      "provenance": "method-pod",
+      "gloss": "A listener's paraphrase is refused ('that's not what I'm saying') and replaced, and the conversation continues on the corrected reading. The discursive sibling of N6 Repair: what fails is interpretation, not transmission.",
+      "positions": [
+        {
+          "index": 1,
+          "name": "turn",
+          "family": null
+        },
+        {
+          "index": 2,
+          "name": "paraphrase offered",
+          "family": null
+        },
+        {
+          "index": 3,
+          "name": "refused and replaced — 'that's not what I'm saying'",
+          "family": null
+        },
+        {
+          "index": 4,
+          "name": "continue on the corrected reading",
+          "family": null
+        }
+      ],
+      "attestations": {
+        "corpus": [],
+        "method": [
+          "method-pod-43-scene:27",
+          "method-pod-chapters:6",
+          "learning-flagship:8"
+        ]
+      }
+    },
+    {
+      "id": "N908",
+      "name": "Complaint-with-partner-turn",
+      "provenance": "method-pod",
+      "gloss": "A grievance about the world is voiced and the partner completes it rather than answering it. The sibling of O7, but here the disclosure is met and built on, not merely survived.",
+      "positions": [
+        {
+          "index": 1,
+          "name": "grievance voiced",
+          "family": null
+        },
+        {
+          "index": 2,
+          "name": "the partner completes it rather than answering",
+          "family": null
+        },
+        {
+          "index": 3,
+          "name": "held jointly — no fix owed",
+          "family": null
+        }
+      ],
+      "attestations": {
+        "corpus": [],
+        "method": [
+          "method-pod-43-scene:30",
+          "method-pod-chapters:7"
+        ]
+      }
+    },
+    {
+      "id": "N909",
+      "name": "Story → matched story",
+      "provenance": "method-pod",
+      "gloss": "An anecdote is answered with a structurally matching anecdote, and the match itself carries the claim. No verdict turn exists or is owed.",
+      "positions": [
+        {
+          "index": 1,
+          "name": "anecdote",
+          "family": null
+        },
+        {
+          "index": 2,
+          "name": "structurally matching anecdote",
+          "family": null
+        },
+        {
+          "index": 3,
+          "name": "the match ratified — no verdict owed",
+          "family": null,
+          "optional": true
+        }
+      ],
+      "attestations": {
+        "corpus": [],
+        "method": [
+          "method-pod-43-scene:35",
+          "method-pod-chapters:10"
+        ]
+      }
+    },
+    {
+      "id": "N501",
+      "name": "Compelled make-safe",
+      "provenance": "trades",
+      "gloss": "A danger is discovered — often in the course of other business, unbidden — and duty held in trust removes the choice from BOTH parties: the danger is declared against its norm, the act is announced and done regardless of the customer's refused consent (the disconnection, the capping, the danger tag), the statutory record is affixed, and the reinstatement condition is named. If the customer contests the person, the refuser drops the self, holds the duty, and names the forum that stands behind it.",
+      "positions": [
+        {
+          "index": 1,
+          "name": "danger discovered, usually mid-other-business, unbidden",
+          "family": null
+        },
+        {
+          "index": 2,
+          "name": "danger declared against the norm",
+          "family": "F2",
+          "note": "composes N104 — the norm-referenced verdict runs here"
+        },
+        {
+          "index": 3,
+          "name": "the compelled act announced and DONE; consent not sought and refusal unavailable",
+          "family": null
+        },
+        {
+          "index": 4,
+          "name": "the record affixed and the reinstatement condition named — 'nobody reconnects that until it's re-tested'",
+          "family": null
+        },
+        {
+          "index": 5,
+          "name": "press on the person → drop the self, hold the duty, name the forum",
+          "family": "F16",
+          "optional": true,
+          "repeatable": true
+        },
+        {
+          "index": 6,
+          "name": "the onward path — who can fix it, what happens next (routes into the quote)",
+          "family": "F2",
+          "optional": true
+        }
+      ],
+      "attestations": {
+        "constructed": [
+          "E5(c) refusing unsafe work, compelled form",
+          "E5 failure branch (the press on the person)",
+          "the statutory periodic inspection when it finds something (document §6)"
+        ]
+      },
+      "example_surface": "\"I can't leave it connected — I'm disconnecting it now and tagging it. Nobody reconnects that until it's been re-tested.\" / \"It was fine yesterday! Put it back.\" / \"It wasn't fine yesterday — you just couldn't smell it. Ring Gas Safe if you want it checked; they'll stand by it.\""
     }
   ],
   "bound_pairs": [
@@ -738,5 +1177,6 @@
         "method": []
       }
     }
-  ]
+  ],
+  "ratified": "2026-08-31: N301–N306 (talk-bollocks), N902/N903/N907/N908/N909 (method-pod mint candidates), N501 (trades, Tom's ruling). Decisions and rejections: docs/pods/core-walks-ratification-2026-08-31.md"
 }

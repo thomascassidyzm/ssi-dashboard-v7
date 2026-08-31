@@ -53,6 +53,7 @@ function load(opts = {}) {
   const survivability = [
     ...edgesFile.survivability.corpus,
     ...edgesFile.survivability.method_pod,
+    ...(edgesFile.survivability.talk_bollocks || []),
   ];
 
   const graph = {

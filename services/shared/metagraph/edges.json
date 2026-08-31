@@ -12,9 +12,10 @@
   "policy": "Two edge kinds and only two. Chaining is a property of the walk, not of the graph: it is recorded as a pivot_capable annotation on a node position, never as a third edge kind (§7). Composition permits reflexive edges; delivery order is computed on the graph of distinct nodes with self-loops dropped before the sort.",
   "null_result": "All ten corpus survivability edges rest on a non-delivery, a chaining move or a relational move. Not one rests on anything failing. The corpus attests the branch and withholds the recovery.",
   "counts": {
-    "composition": 19,
+    "composition": 21,
     "survivability_corpus": 10,
-    "survivability_method_pod": 5
+    "survivability_method_pod": 5,
+    "survivability_talk_bollocks": 5
   },
   "composition": [
     {
@@ -171,6 +172,24 @@
       "attestation": "g45→g46; g16→g17; g51 — one transaction becomes several without a new opening",
       "mechanical": true,
       "chain": true
+    },
+    {
+      "id": "C301",
+      "kind": "composition",
+      "provenance": "talk-bollocks",
+      "contained": "N301",
+      "container": "N306",
+      "attestation": "4:296-300 — completions run inside the co-staged scene: each party finishes the other's voiced lines while the scene is held open",
+      "mechanical": true
+    },
+    {
+      "id": "C302",
+      "kind": "composition",
+      "provenance": "talk-bollocks",
+      "contained": "N301",
+      "container": "N305",
+      "attestation": "1:241-246 — the proxy pitch closes with the owner extending and the pitcher completing ('You get everything clicking together'), joint construction inside the pitch's audit position",
+      "mechanical": true
     }
   ],
   "survivability": {
@@ -433,6 +452,91 @@
         "recovery_attested": "unknown",
         "answer_slot_class": null
       }
+    ],
+    "talk_bollocks": [
+      {
+        "id": "S301",
+        "kind": "survivability",
+        "provenance": "talk-bollocks",
+        "b_attemptable_only_if": "Offering a reformulation (F301)",
+        "a_survivable": "The reformulation being corrected",
+        "nodes": [],
+        "moves": [
+          "F301"
+        ],
+        "attested_response_positions": [
+          "4:403-405 — 'Okay. So I was thinking the Netflix layer of content would be in target language for learners… You're thinking of first language, Mandarin speakers who wants to… okay.'"
+        ],
+        "recovery_attested": "once",
+        "recovery_note": "Once, complete and cheap: correction issued, absorbed in one word, thread continues. This is also the store's thin O4 receiving its first real attestation, at rung 0.",
+        "answer_slot_class": "failure"
+      },
+      {
+        "id": "S302",
+        "kind": "survivability",
+        "provenance": "talk-bollocks",
+        "b_attemptable_only_if": "Completing the partner's clause (N301)",
+        "a_survivable": "The completion being amended rather than ratified",
+        "nodes": [
+          "N301"
+        ],
+        "attested_response_positions": [
+          "4:84-87 — 'It's fungible, through us, for external dollars or English pounds or whatever' / 'it is, or possibly that we've stopped that.'"
+        ],
+        "recovery_attested": "once",
+        "recovery_note": "Once. The amendment is absorbed without cost and the build continues — the completion position survives being wrong.",
+        "answer_slot_class": "failure"
+      },
+      {
+        "id": "S303",
+        "kind": "survivability",
+        "provenance": "talk-bollocks",
+        "b_attemptable_only_if": "Making the partner the specimen (N303)",
+        "a_survivable": "The specimen performing imperfectly",
+        "nodes": [
+          "N303"
+        ],
+        "attested_response_positions": [
+          "1:323-334 — the half-remembered pysgod ('is it a bit like puss?') is folded back into the claim: 'If we leave that. Yeah. and I come back in a couple of hours…'"
+        ],
+        "recovery_attested": "once",
+        "recovery_note": "Once — and the recovery is absorption: the failure is data for a claim about forgetting. At rung 0 the specimen cannot fail.",
+        "answer_slot_class": "failure"
+      },
+      {
+        "id": "S304",
+        "kind": "survivability",
+        "provenance": "talk-bollocks",
+        "b_attemptable_only_if": "Deploying a shared line (F303)",
+        "a_survivable": "The provenance being contested",
+        "nodes": [],
+        "moves": [
+          "F303"
+        ],
+        "attested_response_positions": [
+          "4:242-246 — Tom claims a line Aran has just said: 'I've been saying this for a little while: Politics is already irrelevant. It's already dead, it just doesn't know it yet.'"
+        ],
+        "recovery_attested": "once",
+        "recovery_note": "Once. The contest is play; the line is held jointly and the argument continues on it.",
+        "answer_slot_class": "relational"
+      },
+      {
+        "id": "S305",
+        "kind": "survivability",
+        "provenance": "talk-bollocks",
+        "b_attemptable_only_if": "Digressing (N302)",
+        "a_survivable": "Losing the thread entirely",
+        "nodes": [
+          "N302"
+        ],
+        "attested_response_positions": [
+          "1:59-60 — 'I have no idea what the original question was there - something about methodology?' — and the partner restores it and business resumes"
+        ],
+        "recovery_attested": "once",
+        "recovery_note": "Once, complete. A genuine memory failure with an attested recovery — possible because the thread is joint property at rung 0.",
+        "answer_slot_class": "failure"
+      }
     ]
-  }
+  },
+  "ratified": "2026-08-31: C301–C302 and S301–S305 (talk-bollocks). The five S30x edges carry the first attested recoveries in answer_slot_class 'failure' — the class the corpus null result said was withheld. Decisions: docs/pods/core-walks-ratification-2026-08-31.md"
 }

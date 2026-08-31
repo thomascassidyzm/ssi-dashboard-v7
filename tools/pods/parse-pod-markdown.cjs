@@ -23,7 +23,7 @@
  * Pure: takes markdown text, returns plain objects. No network, no DB.
  */
 
-const { matchAlias, isSummitShape } = require('./pod-shape-aliases.cjs')
+const { matchAlias, matchCrosswalk, isSummitShape } = require('./pod-shape-aliases.cjs')
 
 const pad = n => String(n).padStart(2, '0')
 
@@ -89,16 +89,36 @@ function declaredShapes (line, mode) {
   return out
 }
 
-/** Resolve one declared shape against the store. Never guesses. */
+/** The register a store id belongs to, from its prefix. */
+function registerOf (id) {
+  if (/^O\d+$/.test(id)) return 'outcome'
+  if (/^F\d+$/.test(id)) return 'move-F'
+  return 'node'
+}
+
+/** Whether the store actually holds this id, in its own register. */
+function storeHas (store, id) {
+  return store.nodeIds.has(id) || store.moveIds.has(id) || store.outcomeIds.has(id)
+}
+
+/** Resolve one declared shape against the store. Never guesses: every mapping is
+ * an id the store holds, reached by id, by declared alias, or by the declared
+ * m→store crosswalk (M_CROSSWALK, ruled landings only). */
 function resolveShape (decl, store) {
   const raw = decl.declaredAs
   if (/^m\d{1,2}$/.test(raw)) {
+    const cw = matchCrosswalk(raw)
+    if (cw && cw.id && storeHas(store, cw.id)) {
+      return { nodeId: cw.id, register: 'corpus-move-m', resolution: 'crosswalk', note: `m→store crosswalk (declared, tools/pods/pod-shape-aliases.cjs): ${cw.why}` }
+    }
     return {
       nodeId: null, register: 'corpus-move-m', resolution: 'unresolved',
-      note: "the control arm's own 23-move numbering (response-family inventory, 2026-08-29); the store's move register is F1–F21 and holds no crosswalk"
+      note: cw && cw.why
+        ? `unresolved by ruling: ${cw.why}`
+        : "the control arm's own 23-move numbering (method-pod-full-2026-08-30.md §1c); no crosswalk entry"
     }
   }
-  if (/^[NP]\d{1,2}$/.test(raw)) {
+  if (/^[NP]\d{1,3}$/.test(raw)) {
     return store.nodeIds.has(raw)
       ? { nodeId: raw, register: 'node', resolution: 'id', note: null }
       : { nodeId: null, register: 'node', resolution: 'unresolved', note: `no node ${raw} in the store` }
@@ -108,20 +128,20 @@ function resolveShape (decl, store) {
       ? { nodeId: raw, register: 'outcome', resolution: 'id', note: null }
       : { nodeId: null, register: 'outcome', resolution: 'unresolved', note: `no outcome ${raw} in the store` }
   }
-  if (/^F\d{1,2}$/.test(raw)) {
+  if (/^F\d{1,3}$/.test(raw)) {
     return store.moveIds.has(raw)
       ? { nodeId: raw, register: 'move-F', resolution: 'id', note: null }
       : { nodeId: null, register: 'move-F', resolution: 'unresolved', note: `no move ${raw} in the store` }
   }
+  const alias = matchAlias(raw)
+  if (alias && storeHas(store, alias.nodeId)) {
+    return { nodeId: alias.nodeId, register: registerOf(alias.nodeId), resolution: 'alias', note: alias.why }
+  }
   if (isSummitShape(raw)) {
     return {
       nodeId: null, register: 'summit-shape', resolution: 'unresolved',
-      note: 'one of the eight summit shapes the re-read named — the documents state no inventory names them, so the store has no id and none is invented'
+      note: 'one of the eight summit shapes the re-read named; its ratified id is not in this store build'
     }
-  }
-  const alias = matchAlias(raw)
-  if (alias && store.nodeIds.has(alias.nodeId)) {
-    return { nodeId: alias.nodeId, register: 'node', resolution: 'alias', note: alias.why }
   }
   return { nodeId: null, register: 'named-shape', resolution: 'unresolved', note: 'named by phrase; no declared alias matches' }
 }

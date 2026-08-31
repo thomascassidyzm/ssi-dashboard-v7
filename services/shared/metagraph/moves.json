@@ -8,7 +8,7 @@
   },
   "note": "A move is a position in a shape, filled by a family (object model §1). The twenty moves are the twenty corpus families of the 2026-08-29 inventory: F1-F19 and F21. There is no F20.",
   "counts": {
-    "moves": 20
+    "moves": 27
   },
   "moves": [
     {
@@ -370,6 +370,129 @@
         71,
         83
       ]
+    },
+    {
+      "id": "F301",
+      "name": "So what you're saying is",
+      "provenance": "talk-bollocks",
+      "test": "The listener hands back a compression or a NAME for what the speaker just built — sharper than the original — and the speaker ratifies and ADOPTS it into the joint position. The restatement is a contribution, not a check.",
+      "attestations": {
+        "talk_bollocks": [
+          "1:107-109",
+          "1:364-367",
+          "2:207-210",
+          "4:33-35",
+          "4:177-180"
+        ]
+      },
+      "dialogic_attestations": 5,
+      "position": "BUILD → COMPRESS/NAME IT BACK → ratify + adopt. Position 2.",
+      "rows": []
+    },
+    {
+      "id": "F302",
+      "name": "It proves nothing — accept it anyway",
+      "provenance": "talk-bollocks",
+      "test": "An epistemic flag prices the speaker's own authority down BEFORE the delivery — and thereby LICENSES delivery at full strength. The flag is not a withholding; it is what buys the confidence.",
+      "attestations": {
+        "talk_bollocks": [
+          "1:344-349",
+          "1:301",
+          "1:368",
+          "2:294-296",
+          "2:323",
+          "2:349",
+          "4:79"
+        ]
+      },
+      "dialogic_attestations": 7,
+      "position": "FLAG → full-strength delivery → uptake. Position 1, decorating the delivery turn.",
+      "rows": []
+    },
+    {
+      "id": "F303",
+      "name": "The shared line",
+      "provenance": "talk-bollocks",
+      "test": "A line minted between the parties is redeployed later as a joint tool — as argument, tease or shorthand — its ownership common and its provenance contestable in play.",
+      "attestations": {
+        "talk_bollocks": [
+          "1:347-349",
+          "2:273",
+          "4:242-246",
+          "4:455"
+        ]
+      },
+      "dialogic_attestations": 4,
+      "position": "Deploy the shared line → recognise / contest provenance → hold jointly. Any position.",
+      "rows": []
+    },
+    {
+      "id": "F304",
+      "name": "Comment on the medium",
+      "provenance": "talk-bollocks",
+      "test": "Either party comments on the conversation's own machinery — the tape, the hour, the un-recordable gestures — as play, and the machinery may be used AS a tool by either side.",
+      "attestations": {
+        "talk_bollocks": [
+          "1:11-13",
+          "1:213-215",
+          "1:381",
+          "2:11",
+          "2:144",
+          "4:13-16"
+        ]
+      },
+      "dialogic_attestations": 6,
+      "position": "Any position; parenthetical.",
+      "rows": []
+    },
+    {
+      "id": "F305",
+      "name": "Absorb and build",
+      "provenance": "talk-bollocks",
+      "test": "A counterexample or concession — the partner's or the speaker's own — is welcomed and folded into the claim as an upgrade. The counter is treated as data FOR the frame, not against it.",
+      "attestations": {
+        "talk_bollocks": [
+          "1:119-123",
+          "1:253-256",
+          "1:315-317",
+          "2:53",
+          "4:158-161"
+        ]
+      },
+      "dialogic_attestations": 5,
+      "position": "COUNTER → absorb as data → build. Position 2.",
+      "rows": []
+    },
+    {
+      "id": "F306",
+      "name": "Exactly where I'm about to go",
+      "provenance": "talk-bollocks",
+      "test": "The partner's contribution is ratified as the speaker's own planned next move — the floor merges rather than passes. Only honest between parties with equal access to the terrain.",
+      "attestations": {
+        "talk_bollocks": [
+          "1:315-319"
+        ]
+      },
+      "dialogic_attestations": 1,
+      "position": "CONTRIBUTION → ratify as own planned move → continue on the merged line. Position 2.",
+      "thin": "One clean dialogic attestation. The thinnest id in this file; minted because the position is unmistakable on the page and the store holds nothing for it. Strikeable with one word.",
+      "rows": []
+    },
+    {
+      "id": "F601",
+      "name": "Answer the need, not the question",
+      "provenance": "care-work",
+      "test": "The responder receives a question whose premise is false in a way the asker cannot currently repair, and fills the answer slot with a response to the STATE that produced the question — the premise's truth-value neither granted nor corrected.",
+      "attestations": {
+        "constructed": [
+          "E12 the reality question — 'When's my husband coming?' (he died in 2003)"
+        ]
+      },
+      "dialogic_attestations": 0,
+      "position": "QUESTION-ON-AN-IRREPARABLE-PREMISE → ANSWER THE NEED → the person follows, or the question returns verbatim (see S604). Position 2, repeatable without escalation.",
+      "thin": "One constructed attestation site — though that site runs dozens of times a day wherever dementia lives. Thin by construction, flagged, and the mapping's least confident call (document §8).",
+      "rows": []
     }
-  ]
+  ],
+  "ratified": "2026-08-31: F301–F306 (talk-bollocks), F601 (care work, Tom's ruling). Decisions: docs/pods/core-walks-ratification-2026-08-31.md"
 }

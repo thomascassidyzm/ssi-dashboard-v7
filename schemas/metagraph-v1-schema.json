@@ -12,7 +12,7 @@
   ],
   "definitions": {
     "id": { "type": "string", "pattern": "^(N|P|F|C|S|M|O|W)[0-9]+$" },
-    "provenance": { "enum": ["pod-0", "method-pod"] },
+    "provenance": { "enum": ["pod-0", "method-pod", "talk-bollocks", "trades", "care-work"] },
     "row": { "type": "string", "pattern": "^g[0-9]+$" },
 
     "position": {
@@ -140,7 +140,8 @@
           "description": "Provenance is kept structurally distinct, not as a flag on one flat list: five of the fifteen rest on the Method Pod alone and carry no g<n> support.",
           "properties": {
             "corpus": { "type": "array", "items": { "$ref": "#/definitions/survivabilityEdge" } },
-            "method_pod": { "type": "array", "items": { "$ref": "#/definitions/survivabilityEdge" } }
+            "method_pod": { "type": "array", "items": { "$ref": "#/definitions/survivabilityEdge" } },
+            "talk_bollocks": { "type": "array", "items": { "$ref": "#/definitions/survivabilityEdge" } }
           }
         }
       }
@@ -156,11 +157,12 @@
         "b_attemptable_only_if": { "type": "string" },
         "a_survivable": { "type": "string" },
         "nodes": { "type": "array", "items": { "$ref": "#/definitions/id" } },
+        "moves": { "type": "array", "items": { "$ref": "#/definitions/id" } },
         "attested_response_positions": { "type": "array", "items": { "type": "string" } },
         "method_attestation": { "type": "array", "items": { "type": "string" } },
         "recovery_attested": { "enum": ["never", "once", "twice", "repeated", "unknown"] },
         "recovery_note": { "type": ["string", "null"] },
-        "answer_slot_class": { "enum": ["non-delivery", "chaining", "relational", null] },
+        "answer_slot_class": { "enum": ["non-delivery", "chaining", "relational", "failure", null] },
         "note": { "type": ["string", "null"] }
       }
     },

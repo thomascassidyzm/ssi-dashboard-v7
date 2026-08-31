@@ -29,17 +29,20 @@ function check (name, fn) {
 }
 
 console.log('\nthe store reads into the shape the read-out uses, with the derivation\'s own numbers')
-check('17 nodes — twelve from pod-0, five from the Method Pod — plus the six bound pairs', () => {
+check('29 nodes — 12 pod-0, 10 method-pod, 6 talk-bollocks, N501 — plus the six bound pairs', () => {
   const nodes = graph.nodes.filter(n => n.kind === 'node')
-  assert.equal(nodes.length, 17)
+  assert.equal(nodes.length, 29)
   assert.equal(nodes.filter(n => n.origin === 'pod-0').length, 12)
-  assert.equal(nodes.filter(n => n.origin === 'method-pod').length, 5)
+  assert.equal(nodes.filter(n => n.origin === 'method-pod').length, 10)
+  assert.equal(nodes.filter(n => n.origin === 'talk-bollocks').length, 6)
+  assert.equal(nodes.filter(n => n.origin === 'trades').length, 1)
   assert.equal(graph.nodes.filter(n => n.kind === 'bound-pair').length, 6)
 })
-check('19 composition edges', () => assert.equal(graph.compositionEdges.length, 19))
-check('10 survivability edges from the corpus, 5 from the Method Pod', () => {
+check('21 composition edges', () => assert.equal(graph.compositionEdges.length, 21))
+check('10 survivability edges from the corpus, 5 Method Pod, 5 ratified Talk Bollocks recoveries', () => {
   assert.equal(graph.survivability.filter(s => s.origin === 'pod-0').length, 10)
   assert.equal(graph.survivability.filter(s => s.origin === 'method-pod').length, 5)
+  assert.equal(graph.survivability.filter(s => s.origin === 'talk-bollocks').length, 5)
 })
 check('nine outcome shapes, four of them minted from nothing', () => {
   assert.equal(graph.outcomes.length, 9)
@@ -165,6 +168,26 @@ check('a scene whose declaration resolves to nothing is honestly unmapped, never
   const cov = computeCoverage(graph, walk)
   assert.equal(cov.totals.unmapped, 1, 'the undeclared scene\'s line is counted, not hidden')
   assert.equal(walk.unresolved.length, 1, 'and its declaration stays on the unresolved list')
+})
+check('a stored pod\'s global_order never masquerades as a pod-0 g-number', () => {
+  // Rows 1 and 2 here collide numerically with pod-0's g1/g2; before the guard
+  // this "exercised" S-edges and sited outcomes the pod never touched, and all
+  // four pods reported an identical 10/15.
+  const walk = walkFromStoredPod(storedRows, storedSteps, graph, { id: 'p', slug: 'p' })
+  const cov = computeCoverage(graph, walk)
+  assert.equal(cov.survivability.filter(s => s.exercised).length, 0, 'no survivability edge is exercised by numeric coincidence')
+  assert.equal(cov.outcomes.filter(o => o.siteInWalk).length, 0, 'no outcome site is claimed by numeric coincidence')
+})
+check('a scene that declares a resolved outcome or move is mapped, not unmapped residue', () => {
+  const steps = [
+    ...storedSteps,
+    { pod_slug: 'p', walk_id: 'w', walk_name: 'w', scene_number: 2, step_order: 2, declared_as: 'O6', register: 'outcome', resolution: 'id', node_id: 'O6', note: '' },
+    { pod_slug: 'p', walk_id: 'w', walk_name: 'w', scene_number: 2, step_order: 3, declared_as: 'O7', register: 'outcome', resolution: 'id', node_id: 'O7', note: '' },
+    { pod_slug: 'p', walk_id: 'w', walk_name: 'w', scene_number: 2, step_order: 4, declared_as: 'F302', register: 'move-F', resolution: 'id', node_id: 'F302', note: '' }
+  ]
+  const cov = computeCoverage(graph, walkFromStoredPod(storedRows, steps, graph, { id: 'p', slug: 'p' }))
+  assert.equal(cov.totals.unmapped, 0, 'the outcome-mint scene is the pod\'s most deliberate content')
+  assert.equal(cov.totals.outcomesDelivered, 2, 'EVERY declared outcome of the scene counts, not just the first')
 })
 
 console.log(`\n${pass} checks passed${process.exitCode ? ' — WITH FAILURES' : ''}\n`)

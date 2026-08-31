@@ -55,8 +55,11 @@ function groupsForShape (shapeId, shape, storedWalks) {
       const rows = gRows(run)
       if (rows.length) groups.push({ raw: run, rows, anyOf: [], methodRefs: [] })
     }
-    for (const ref of shape.attestations?.method || []) {
-      groups.push({ raw: ref, rows: [], anyOf: [], methodRefs: [ref] })
+    // Non-corpus attestation spaces (method M-refs, talk-bollocks part:line,
+    // trades' constructed sites) all carry no g-rows; each ref is one group.
+    for (const [space, refs] of Object.entries(shape.attestations || {})) {
+      if (space === 'corpus') continue
+      for (const ref of refs || []) groups.push({ raw: ref, rows: [], anyOf: [], methodRefs: [ref] })
     }
   }
   return groups
@@ -115,6 +118,20 @@ export function graphFromStore ({ nodes, edges, moves, outcomeShapes, walkSets =
       methodRefs: e.method_attestation || [],
       recoveryAttested: e.recovery_note || e.recovery_attested || 'Method Pod only',
       recoveryRank: RECOVERY_RANK[e.recovery_attested] ?? 1
+    })),
+    // The ratified Talk Bollocks edges (S301–S305) attest in that corpus's own
+    // part:line space, never in g-rows, so like the M edges they carry no rows.
+    ...(edges.survivability?.talk_bollocks || []).map(e => ({
+      id: e.id,
+      origin: 'talk-bollocks',
+      attemptable: e.b_attemptable_only_if,
+      presupposes: e.a_survivable,
+      attestedAt: (e.attested_response_positions || []).join('; '),
+      rows: [],
+      methodRefs: e.attested_response_positions || [],
+      recoveryAttested: e.recovery_note || e.recovery_attested,
+      recoveryRank: RECOVERY_RANK[e.recovery_attested] ?? 1,
+      answerSlotClass: e.answer_slot_class || ''
     }))
   ]
 
