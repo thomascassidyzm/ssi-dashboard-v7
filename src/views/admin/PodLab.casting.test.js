@@ -304,8 +304,9 @@ describe('PodLab casting mode', () => {
       const poolOpt = opts.find((t) => t.includes('gfzdpspr5fdp'))
       expect(poolOpt).toContain('pool eng')
       expect(poolOpt).not.toContain('WRONG LANGUAGE')
-      // The wider discovered inventory is there too, below the pool.
-      expect(opts.some((t) => t.includes('Discovered M'))).toBe(true)
+      // xAI is retired from selection (Tom, 2026-08-27): the wider discovered
+      // inventory is never fetched, so it never appears in the picker.
+      expect(opts.some((t) => t.includes('Discovered M'))).toBe(false)
     })
 
     it('previews the selected voice through the shared preview endpoint', async () => {

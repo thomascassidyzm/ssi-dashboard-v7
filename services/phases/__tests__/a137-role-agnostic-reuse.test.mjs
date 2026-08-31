@@ -170,12 +170,19 @@ describe('findSiblingCourseClip — the reuse key is role-agnostic (A-137)', () 
 
 // ─── 2. the ONE exception, and its shape ─────────────────────────────────────
 
-describe('the Azure baked-speed guard is engine-shaped, not role-shaped', () => {
-  it('refuses to cross roles on an Azure clip, whose pace cannot be verified', async () => {
+describe('the Azure baked-speed guard is retired — one canonical rendered pace', () => {
+  // FLIPPED DELIBERATELY, 2026-08-29. This test asserted the baked-speed guard,
+  // which Tom retired: "playback speed is a player concern, not a baked-in
+  // render concern … stop treating rendered pace as a reason for distinct
+  // clips." isSpeedTrustedVoice is now a stub returning true for every voice,
+  // so an Azure clip crosses roles like any other. Tom, on the cost to clips
+  // already in the estate: "I don't care if anything notionally breaks... it's
+  // only going to affect regeneration, or replacement."
+  it('now crosses roles on an Azure clip too — the baked-speed guard is retired', async () => {
     state.audioRows = [row({ voice_id: SONIA, role: 'target2' })]
     const found = await phase8.findSiblingCourseClip(
       'fra_for_eng', 'I want to speak', 'eng', 'known', SONIA)
-    expect(found).toBeNull()
+    expect(found).toMatchObject({ s3_key: 'mastered/SIBLING.mp3', role: 'target2' })
   })
 
   it('still reuses the SAME role on Azure — that is today behaviour, unchanged', async () => {
