@@ -488,8 +488,8 @@ td.text { text-align: left; }
 .grid tr.minor td { opacity: 0.65; }
 .text { font-family: ui-monospace, monospace; }
 .muted { color: var(--muted); font-size: 0.8125rem; }
-.err { color: #f87171; }
-.ok { color: #34d399; }
+.err { color: var(--danger); }
+.ok { color: var(--accent-2); }
 .play { background: var(--surface-2); border: 1px solid var(--surface-3); border-radius: 5px; padding: 0.15rem 0.5rem; margin: 0 0.25rem 0.25rem 0; cursor: pointer; color: inherit; font-size: 0.75rem; }
 .play:hover { border-color: #ec4899; }
 .chips { display: flex; flex-wrap: wrap; gap: 0.35rem; margin: 0.5rem 0 1rem; }

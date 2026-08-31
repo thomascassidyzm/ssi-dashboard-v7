@@ -614,7 +614,7 @@ watch(() => props.courseCode, () => {
 .mini-stat.accent .mini-value { color: var(--color-tungsten, var(--accent)); }
 .mini-stat.good .mini-value { color: var(--accent-2); }
 .mini-stat.ok .mini-value { color: #fbbf24; }
-.mini-stat.low .mini-value { color: #f87171; }
+.mini-stat.low .mini-value { color: var(--danger); }
 
 /* Language-Pair Learnings */
 .learnings-section {
@@ -739,7 +739,7 @@ watch(() => props.courseCode, () => {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #f87171;
+  background: var(--danger);
   color: white;
   border-radius: 50%;
   font-size: 0.7rem;
@@ -754,7 +754,7 @@ watch(() => props.courseCode, () => {
 
 .btn-resolve {
   padding: 0.25rem 0.5rem;
-  background: #f87171;
+  background: var(--danger);
   color: white;
   border: none;
   border-radius: 4px;
@@ -949,7 +949,7 @@ watch(() => props.courseCode, () => {
   font-weight: 600;
 }
 .card-badge.error {
-  background: #f87171;
+  background: var(--danger);
   color: white;
 }
 

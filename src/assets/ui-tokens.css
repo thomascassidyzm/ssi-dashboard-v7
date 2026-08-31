@@ -180,9 +180,9 @@
    by an active filter chip. Hue families match the courses page exactly
    (emerald / yellow / red / blue / slate); the light values are darkened to
    clear AA on white the way CourseBrowser's own light overrides are. */
-.ui-hue-good  { background: rgba(16, 185, 129, 0.2); border-color: rgba(16, 185, 129, 0.55); color: #34d399; }
+.ui-hue-good  { background: rgba(16, 185, 129, 0.2); border-color: rgba(16, 185, 129, 0.55); color: var(--accent-2); }
 .ui-hue-warn  { background: rgba(234, 179, 8, 0.2);  border-color: rgba(234, 179, 8, 0.55);  color: #facc15; }
-.ui-hue-bad   { background: rgba(248, 113, 113, 0.18); border-color: rgba(248, 113, 113, 0.55); color: #f87171; }
+.ui-hue-bad   { background: rgba(248, 113, 113, 0.18); border-color: rgba(248, 113, 113, 0.55); color: var(--danger); }
 .ui-hue-info  { background: rgba(59, 130, 246, 0.2); border-color: rgba(59, 130, 246, 0.55); color: #60a5fa; }
 .ui-hue-quiet { background: color-mix(in srgb, var(--surface-3) 40%, transparent); border-color: var(--faint); color: var(--muted); }
 

@@ -519,7 +519,7 @@ defineExpose({
 
 .repair-title {
   font-weight: 700;
-  color: var(--fg, #f9fafb);
+  color: var(--ink);
 }
 
 .repair-warn {
@@ -570,6 +570,6 @@ defineExpose({
 }
 
 .deploy-message.error {
-  color: #f87171;
+  color: var(--danger);
 }
 </style>

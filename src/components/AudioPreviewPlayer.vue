@@ -641,7 +641,7 @@ watch(() => props.knownText + props.targetText, async () => {
 }
 
 .audio-error {
-  color: #f87171;
+  color: var(--danger);
 }
 
 /* Light-mode-only contrast fixes (dark mode untouched) */
