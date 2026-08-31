@@ -98,7 +98,8 @@ owes nothing to the delivery order and everything to **admission economy**: each
 little as possible, and zero-admission seeds — a pod sentence whose whole cut tiles from
 already-owned chunks — are manufactured wherever the corpus allows, because they hand the
 basket generator a complete worn sentence at zero new-LEGO cost. Only 7 of 668 seeds in
-`spa_for_eng` are zero-admission; this set contains 14, each marked **ZERO**.
+`spa_for_eng` are zero-admission; this set contains 9 strict zeros, each marked **ZERO**, and
+some forty more that admit exactly one LEGO, marked **near-ZERO**.
 
 **Availability window:** for LEGO k in seed N — everything through seed N−1, plus LEGOs 1..k−1
 of seed N, plus their components. Plus the assumed course-core strings each seed names
@@ -1489,3 +1490,198 @@ carries it.
 - Job: the parked disagreement sealed — settlement formula, the both-branches marker "either
   way", and the continuation resolve "let's keep talking": the set's closing act, and the
   method's.
+
+### Block N — four late fills (found by the coverage audit)
+
+The mechanical census (§7) caught four drill rows the first pass missed. All four are near-zero
+seeds, and a near-zero seed's position is free — its admission cost is the same anywhere after
+its owners — so they append here rather than forcing a renumber. Stated, not hidden.
+
+**CP192 — orange juice (near-ZERO)**
+- Source g175, sc18 (drill): "Do you have any orange juice?"
+- Seed: **"Do you have any orange juice?"**
+- Cut: `do you have` *(CP054)* · `any orange juice` **(new)**
+- Job: one LEGO — the availability frame's drink fill.
+
+**CP193 — apple juice (near-ZERO)**
+- Source g176, sc18 (drill): "Do you have any apple juice?"
+- Seed: **"Do you have any apple juice?"**
+- Cut: `do you have` *(CP054)* · `any apple juice` **(new)**
+- Job: one LEGO — the minimal pair confirming the fill's slot.
+
+**CP194 — down there on the left**
+- Source g211, sc21 (drill — direction-giving promoted to the learner by the pod): "It's down there on the left."
+- Seed: **"It's down there on the left."**
+- Cut: `it's down there` **(new)** · `on the left` **(new)**
+- Job: the learner giving directions back — the deictic route answer and the side phrase,
+  the producible half of what block K only asks.
+
+**CP195 — on the right (near-ZERO)**
+- Source g212, sc21 (drill): "It's down there on the right."
+- Seed: **"It's down there on the right."**
+- Cut: `it's down there` *(CP194)* · `on the right` **(new)**
+- Job: one LEGO — the sides paired, left/right split complete.
+
+---
+
+## 5. Cuts and baskets — in order, as deep as quality allowed
+
+**The rules these baskets follow** (identical to the health set's, restated once): the cut
+never goes below a phrase and must tile its seed exactly. Only **new** LEGOs get baskets —
+owned chunks enter as `is_new = false`, tiling and vocabulary, no round, no learning event.
+Floors: **at least 4 BUILD and 5 USE per new LEGO** — fewer phrases is a fail; variety is a
+bonus on top of volume, never a substitute. BUILD phrases may be fragments but must extend
+into natural full English by appending or prepending owned chunks; USE phrases are complete
+natural sentences, tier-1 or they die. Every phrase composes only from this seed's LEGO,
+chunks owned at that point in the sequence (this document's order), assumed course-core
+strings (Appendix A), and core glue — no forward references. A pod sentence, intact, is a
+legitimate USE phrase wherever it contains the LEGO (Tom's ruling) — baskets are encouraged
+to reuse corpus sentences verbatim as USE material.
+
+Baskets are being authored in document order by a dispatched fan-out and assembled here as
+they verify; the section below states exactly how far quality-complete baskets reach.
+
+*(assembly in progress — see §7 for the verification protocol)*
+
+---
+
+## 6. The coverage ledger — all 231 rows and 35 authored-walk steps accounted
+
+**Reconciliation: 165 minted-or-split + 16 codas + 50 receptive = 231.** Verified mechanically
+against the document (§7).
+
+**Minted rows (165).** Every row named as a seed source in §4. Rows carrying two acts were
+split, each half named at its seed: g3 (CP010 + CP158), g4 (CP157 + CP008), g11 (CP004 +
+CP053), g24 (CP023 + CP156 + CP007), g35 (CP032 + CP033), g48 (CP094 + CP095), g94 (CP011;
+its holiday question tail stays receptive), g95 (CP022 + CP117), g222 (CP012; its
+encouragement tail stays receptive), g230 (CP021; its fun-tail's act returns at CP190).
+Consolidations, each stated in place: g138 → CP094 (same sentence as g48's first half);
+g8 = W1301.1 → CP132; g14 = W1302.1 → CP056; g21 = W1303.1 → CP152; g221 = W1304.1 → CP182;
+g227 = W1305.1 → CP185; W1203.1 → CP044 (the offer's booking-desk variant, one act one form);
+g10's greeting head → CP004's token (the row itself stays receptive).
+
+**Codas (16):** g37, g52, g68, g86, g96, g109, g119, g130, g140, g151, g162, g173, g184,
+g195, g206, g220 — narrator vocabulary drips; admission events, not frames (§1.5). Their
+atoms enter Appendix A as assumed course-core vocabulary.
+
+**Receptive context (50):** g9, g10, g15, g16, g18, g34, g38, g40, g42, g45, g47, g49, g51,
+g53, g55, g59, g63, g70, g71, g74, g76, g79, g82, g83, g88, g90, g92, g98, g100, g102, g104,
+g106, g108, g111, g113, g115, g117, g121, g123, g124, g126, g128, g132, g134, g136, g137,
+g139, g224, g226, g228 — service-professional working lines (the counter, the kitchen, the
+desk, the wheel, turn-by-turn direction-giving), the native's repair reformulation (g34), and
+scene 22's remaining encouragements (g224, g226, g228). All are owned mappings — heard in
+dialogue — that the trunk's productive walk does not need; a hospitality/retail sector pod is
+where they would mint. The near-misses were weighed and the call is stated: g9's hedge answer
+("It's not very far. Maybe three or four miles.") stays receptive because W1301.3/.5 deliver
+its chunks from the learner's own mouth (CP150–151); g18/g137's handovers stay receptive
+because the learner-side D5 cut is CP104/CP105.
+
+**Authored-walk steps (35).** Learner-side steps all mint: W1201.1/.3/.5 (CP044–046),
+W1202.1 (=CP044) /.3/.5 (CP047–048), W1203.1 (→CP044) /.3/.5 (CP049–050), W1204.1 (=CP044)
+/.3/.5 (CP051–052), W1301.1 (=CP132) /.3/.5 (CP150–151), W1302.1 (=CP056) /.3/.5 (CP180–181),
+W1303.1 (=CP152) /.3/.5 (CP154–155), W1304.1 (=CP182) /.3/.5 (CP188–189), W1305.1 (=CP185)
+/.3/.5 (CP190–191), W1401.1/.5/.7 (CP145–147). Counterpart steps are receptive with one
+ruled exception, W1201.4 → CP013 (reassurance is role-symmetric). **W1401.3 is deliberately
+unminted**: it contains the walk's designed error ("the lamps") — a seed must never teach the
+mistake the walk exists to repair.
+
+---
+
+## 7. Decisions taken, and the mechanical verification
+
+Decisions, one line each, each overrulable in one word:
+
+1. **The projection is by role, stated in §1** — learner turns and all 73 drill rows mint;
+   counterpart turns mint only for role-symmetric civilian acts, each named; service
+   working lines stay receptive.
+2. **Walk order is not cut order** — the pod has delivered everything already, so the
+   sequence optimises admission economy, not narrative.
+3. **Minimal pairs are kept as separate seeds, not consolidated** — different intentions
+   (taxi/bus, single/return, left/right) are not ZUT forks, and the second member is a
+   near-zero seed, the highest-yield kind. Consolidation applies only to same-act repeats
+   (the offer ×3, "Could I pay by card?" ×2).
+4. **Deictic language names** ("your language", "it") per scene 0's ratified convention, so
+   the set instantiates in any pair; the two placeholder rows (g33, g221, g95, g149) are
+   edited accordingly and stated in place.
+5. **British spelling normalised once**: verb "practise" (g95, g149); the noun keeps
+   "practice" (g229, W1305.5).
+6. **Frame-opener LEGOs are molecular moves** ("do you have", "could I have", "can you tell
+   me", "I'll have", "would you mind if I tried") — author-declared M-cuts whose standalone
+   use is the ellipted service register itself; never cut below them.
+7. **Worn wholes stay whole where cutting would mint grammar, not moves**: "what time is
+   breakfast served" (the set's only passive), "where does the bus leave from" (the
+   wh-flip), "crisps, or nuts, or anything" (the listing intonation).
+8. **Sides of owned chunks** ("I'm on holiday" from CP033, "left" from CP146, "or on the
+   room" from CP099) are cited as sides, never as new admissions; the pair overlay
+   re-verifies target tiling and mints an in-pair cut where target morphology resists.
+9. **W1401.3 never mints** — the designed error stays in the walk, out of the seed set.
+10. **The four late fills stand as block N** rather than forcing a 191-seed renumber; a
+    near-zero seed's position is free by construction, and the audit trail is worth more
+    than cosmetic order.
+11. **No JSON companion authored** — same call as the health set: the document is the
+    canonical artefact; the structured form falls out at registration.
+
+Mechanical verification, run against this document (the same discipline the health set
+closed with): **195 seeds, CP001–CP195, contiguous, no duplicates; 401 new LEGOs; zero
+forward references in any cut line** (every `(CPnnn)` citation in a cut resolves to an
+earlier seed); **9 strict-zero seeds**; **all 73 drill rows mint** (verified per scene
+block); **165 + 16 + 50 = 231** rows reconciled exactly; all 35 authored-walk steps
+dispositioned. The census caught four missed drill rows on its first run — block N is the
+honest record of that catch.
+
+---
+
+## 8. Explicit gaps — for Tom, none blocking
+
+- **Three unlock surfaces are not attested in scoped CORE**: "here you are" (D5 attests
+  "here's" / "here it is" instead), "not at all" (X6 attests "you're welcome" / "no
+  problem"), and "got it" / "understood" (D10 — its inventory specimen comes from the
+  sacked pod-1 slate; scoped CORE attests the read-back act only by echo, CP124/CP146/CP147).
+  Nothing was minted without attestation. **Cheapest fix:** one line each in a future CORE
+  walk or coda — e.g. a handover turn "Here you are.", a thanks-downgrade "Not at all.",
+  and a receipt "Got it — thanks." — at which point each becomes a one-LEGO near-zero seed
+  appended like block N.
+- **D9 (reckoning — "That's eight pound forty altogether") mints nowhere**: the corpus
+  attests it only in service mouths and the pod's drills never promote it. If learners
+  should own the reckoning (market stalls, splitting bills), it needs either a promoted
+  drill row or a sector pod; flagged, not resolved here.
+- **The 56 corpus rows on unencoded complete walks** are placed in `canonical_pod_scenarios`
+  but not in pod-0.json's walk encodings; this set reads them from the canon (they are the
+  scenes-7–14 rows above), so nothing is lost — but the walk-encoding gap named in
+  pod-0.json's own accounting remains open and is not this job's to close.
+- **The union-ZUT registration is downstream**: this document's cuts and Appendix A are the
+  gate's inputs, but no segment registration was performed (no DB writes in this job, and
+  the trunk layer's registration semantics — pod-seed thread vs sector segment — want one
+  ruling before anything is registered).
+- **Basket depth is reported in §5** as assembled; wherever it stops short of CP195, the
+  stopping point and reason are stated there rather than papered over.
+
+---
+
+## Appendix A — the assumed course-core inventory (the overlay's per-seed contract)
+
+The union of every *(core)* citation in §4. A pair overlay schedules each seed at the
+earliest base-course position where that seed's own assumed strings are owned (per-seed
+anchoring, §2); anything not owned there is authored in-pair as `is_new = true`. The list is
+normative, not descriptive — checked against no live course, by design.
+
+**Frame openers and verbs of asking:** "I'd like" · "I want" · "I think" · "I hope" ·
+"can you" · "could you" · "can we" · "I need to" *(as in CP115's "I need to get" family —
+the bare need-to is early-core everywhere)*.
+
+**Glue:** "and" · "but" · "so" · "or" · "well" · "just" · "too" · "very" · "now" · "also" ·
+"again" · "though" · "then" · "that" (pronoun) · "it's" (as copular head in recombinations)
+· "here" / "there" (bare deictics) · "with you" · "for me" (as free beneficiary glue where
+not part of a worn chunk).
+
+**Coda vocabulary (the 16 narrator drips, admission events):** numbers 1–21, tens to 100,
+100 / 200 / 1,000 / 100,000 / a million; colours (white, black, red, green, blue, yellow,
+orange, purple, pink, grey); days Monday–Sunday; months January–December; clock times
+(1–12 o'clock, half-past). These are cut early in every base course on its own account;
+the codas' role here is that CP050's "Friday to Monday", CP153's "on Saturday" and CP155's
+"ten at the café" may treat day names and numbers as slot content.
+
+**Names and places as slot content:** personal names (Sarah, Anna, James, Jones, Davies),
+city and country names (Manchester, London, France, the Philippines-class slot) — slots,
+never vocabulary.
+
