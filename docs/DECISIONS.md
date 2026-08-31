@@ -5,6 +5,36 @@ from the code. Newest first.
 
 ---
 
+## 2026-08-31 — The metagraph is ratified past its derivation counts, and CORE is a placement, not a coverage number
+
+**Decision.** The store now carries the ratified discursive layer — N301–N306 /
+F301–F306 / C301–C302 / S301–S305 (talk-bollocks), five method-pod mints
+(N902/3/7/8/9), N501 and F601 (Tom's rulings) — and a **declared m→store
+crosswalk** in `tools/pods/pod-shape-aliases.cjs` (20 of 23 m-tokens land;
+m6/m14/m15 unresolved by ruling: intra-turn, not exchange positions). Five mint
+candidates were REJECTED as duplicates of rulings already on the page
+(N901→F302, N904→N11, N905→N301, N906→F1, N910→F301) — the rejections are the
+record that consolidation verdicts, once written, bind later minting.
+
+**Why it can't be reverse-engineered.** `tools/metagraph-selfcheck.cjs` used to
+assert the shape-graph document's own counts (17 nodes, 20 moves); it now
+asserts the ratified counts, and the header says so. If a future reader finds
+the store bigger than the derivation doc, the ratification doc
+(`docs/pods/core-walks-ratification-2026-08-31.md`) is the missing link, and
+`proposed/*.json` files whose status says RATIFIED are provenance records, not
+double-load hazards — the store proper is the only loaded copy.
+
+**The naming ruling applied.** CORE = the compulsory walk (live POD 1, slug
+`pod-0` — the off-by-one stands); everything else is an optional walk, and
+"optional names WHICH, never WHETHER". Consequence used throughout the audit
+(`docs/pods/core-compulsory-set-audit-2026-08-31.md`): a guarantee can live in
+CORE, or on EVERY optional walk (a second floor at zero compulsory cost), or
+nowhere — and survivability recoveries attach to the CORE scene that already
+stages their branch, never as appended scenes, because a recovery three scenes
+late is worth nothing.
+
+---
+
 ## 2026-08-29 — The language cast beats the course's stored voices, but a legacy config is not an override
 
 **Decision.** The render path now resolves a course's voices in three legs:

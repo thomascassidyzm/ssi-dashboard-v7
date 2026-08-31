@@ -1,0 +1,65 @@
+{
+  "concept": "proposed-recovery-attachments",
+  "version": 1,
+  "status": "PROPOSAL — not loaded by index.cjs, not read by the Script Lab, nothing executes it. No dialogue is authored here: each entry names the branch edge, the exact CORE scene and row it attaches to, and the shape of the missing continuation. Authoring is a separate, named commission.",
+  "source": {
+    "document": "docs/pods/core-compulsory-set-audit-2026-08-31.md — §the six withheld recoveries",
+    "derived": "2026-08-31",
+    "ruling": "Tom, this sitting: CORE's existing order must not change; a pod is a branch point with its continuations attached. A recovery attaches to the scene that already stages its branch — nothing is reordered, no walk lengthens."
+  },
+  "id_range": {
+    "rule": "This job holds 10xx (1xx–5xx, 6xx care work, 7xx retail, 8xx hospitality, 9xx method-pod mints are held). Nothing is minted yet; ids here are attachment keys, assigned from 10xx so a later ratification can promote them without renumbering.",
+    "attachments": "A1001–A1006"
+  },
+  "core_slug_note": "CORE is the live POD 1, table slug 'pod-0'. The off-by-one hazard stands; every row reference below is a pod-0 global_order (g-number).",
+  "attachments": [
+    {
+      "id": "A1001",
+      "completes_edge": "S2",
+      "branch": "acting on a hedge",
+      "attaches_to": { "scene": 2, "at_rows": ["g8", "g9"], "second_site": { "scene": 14, "at_rows": ["g133", "g134"] } },
+      "continuation_shape": "The hedge ('maybe three or four miles') is acted on; the actual turns out different; the flag is what makes the difference survivable — nobody promised. Recovery position: acknowledge the hedge did its job and re-orient without grievance.",
+      "note": "g90 ('you'll have to look to make sure') already hands the checking back; this closes that loop. Neighbourhood declaration: O2."
+    },
+    {
+      "id": "A1002",
+      "completes_edge": "M1",
+      "branch": "the answer being 'I don't know', held with status",
+      "attaches_to": { "scene": 3, "at_rows": ["g14", "g15", "g16"] },
+      "continuation_shape": "A third arm on the corpus's one stored branch: not yes, not no, but not-knowing that licenses the next question ('I don't know — ask at the counter'). N13's mechanics staged transactionally.",
+      "note": "Gives O2 a dialogic home; the branch floor itself travels with N13 on every optional walk."
+    },
+    {
+      "id": "A1003",
+      "completes_edge": "M2",
+      "branch": "the premise being audited",
+      "attaches_to": { "scene": 22, "at_rows": ["g221", "g225"] },
+      "continuation_shape": "The learner's self-account receives a friendly 'really? how long exactly?' and the ground is supplied — the audit received as a gift, in scene 22's own register.",
+      "note": "The branch floor travels with N14 on every optional walk."
+    },
+    {
+      "id": "A1004",
+      "completes_edge": "M3",
+      "branch": "a sceptical challenge landing mid-story",
+      "attaches_to": null,
+      "continuation_shape": "CANNOT ATTACH. CORE never gives the learner a story turn longer than one sentence; a mid-story challenge needs a story, and authoring one changes a scene rather than continuing it. Must be new material — carried instead as the every-optional-walk floor: any walk that stages a story stages the challenge.",
+      "note": "The one honest non-attachment of the six."
+    },
+    {
+      "id": "A1005",
+      "completes_edge": "M4",
+      "branch": "the disagreement being parked rather than resolved",
+      "attaches_to": { "scene": 22, "at_rows": ["g227", "g228"] },
+      "continuation_shape": "After the second counter-assessment, neither side concedes and the topic is parked with warmth and WITHOUT resolution. What CORE owns: an unresolved disagreement is not a rupture. The full N15 park-and-redeem stays discursive.",
+      "note": "Kind edge of O8."
+    },
+    {
+      "id": "A1006",
+      "completes_edge": "M5",
+      "branch": "the haggle — your number countered",
+      "attaches_to": { "scene": 4, "at_rows": ["g21", "g22"] },
+      "continuation_shape": "The arrangement is already a counterbid chain over WHEN; the attachment is the settlement-formula continuation ('Saturday morning, then'). N16's positions in the one register where everyone haggles honestly. Price-haggle is explicitly NOT attached.",
+      "note": "Second site of O9's neighbourhood; recovery arrives inside the negotiation the learner is already in."
+    }
+  ]
+}
