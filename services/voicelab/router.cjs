@@ -260,31 +260,6 @@ function mount (app, deps) {
       const gender = slot === 'guide' ? null : (req.body || {}).gender
       if (!language) throw Object.assign(new Error('language is required'), { status: 400 })
 
-      // ── WELSH (AND BRETON, AND PENNSYLVANIA DUTCH) ARE HUMAN-VOICED ──────
-      // Tom's ruling, 2026-08-13, stated as a hard rule: "Aran's and Catrin's
-      // recordings are never overwritten by synthesis", and those languages are
-      // permanently excluded from every TTS render queue with deliberately no
-      // env var and no --force flag. Casting a synthetic voice into one of them
-      // would put a slot in front of the render path that the render path is
-      // forbidden to honour — a false green of the exact kind this screen
-      // exists to prevent, and on the one language where it would be worst.
-      //
-      // A HUMAN voice may still be cast into them. That is the whole point of
-      // the slot for those languages, and it is what a recordist's row is for.
-      // The check is by target language, which is the unit the 2026-08-13
-      // ruling is keyed on and the unit a course-code guard could not see.
-      if (isHumanVoiceLang(language)) {
-        const proposed = String((req.body || {}).voiceId || '')
-        const { data: pv } = await supabase()
-          .from('voices').select('type, tts_engine').eq('voice_id', proposed).maybeSingle()
-        const isHumanVoice = pv ? pv.type === 'human' : /^human/i.test(proposed)
-        if (!isHumanVoice) {
-          throw Object.assign(new Error(
-            `${language} is human-voiced only — Aran's and Catrin's recordings are never replaced by synthesis (Tom's ruling, 2026-08-13). A synthetic voice cannot be cast into it. Its gaps are a recording worklist, never a render backlog.`,
-          ), { status: 400 })
-        }
-      }
-
       if (slot === 'phrase' && !registry.GENDERS.includes(gender)) {
         throw Object.assign(new Error(`gender must be one of ${registry.GENDERS.join(', ')}`), { status: 400 })
       }
@@ -306,6 +281,34 @@ function mount (app, deps) {
           slot,
           humanRecorded: guard,
         })
+      }
+
+      // ── THE RULING-LEVEL BACKSTOP: cym, bre and pdc, ALWAYS ─────────────
+      // The guard above is computed from DATA — it refuses when every course
+      // the cast reaches is already human-recorded. That is the right general
+      // rule and it catches Welsh today. It would stop catching Welsh the
+      // moment somebody added a cym course with no recordings in it yet, and
+      // "there are no recordings yet" is precisely a Welsh RECORDING WORKLIST,
+      // never a licence to synthesise.
+      //
+      // So this is the ruling stated as a rule rather than derived from a
+      // count. Tom, 2026-08-13, as a hard rule: "Aran's and Catrin's
+      // recordings are never overwritten by synthesis", and cym/bre/pdc are
+      // permanently excluded from every TTS render queue with deliberately no
+      // env var and no --force flag. A HUMAN voice may still be cast into
+      // them — that is what the slot is FOR on those languages.
+      if (isHumanVoiceLang(language)) {
+        const { data: pv } = await supabase()
+          .from('voices').select('type').eq('voice_id', String(voiceId)).maybeSingle()
+        const isHumanVoice = pv ? pv.type === 'human' : /^human/i.test(String(voiceId))
+        if (!isHumanVoice) {
+          return res.status(409).json({
+            error: `${language} is human-voiced only — Aran's and Catrin's recordings are never replaced by synthesis (Tom's ruling, 2026-08-13). A synthetic voice cannot be cast into it, and its gaps are a recording worklist rather than a render backlog.`,
+            code: 'HUMAN_VOICE_LANGUAGE',
+            language,
+            slot,
+          })
+        }
       }
 
       // A voice can only hold a slot if it has a `voices` row — the slot table
