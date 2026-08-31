@@ -711,9 +711,22 @@ function mount (app, deps) {
   // varies is where the audio comes from, and these routes are the only place
   // in the estate that has to know.
 
+  // A DASHBOARD SESSION, NOT ADMIN — the same reasoning, and the same precedent,
+  // as POST …/consent-declaration below (read its note). These two used to be
+  // admin-only because the second stamp was born inside the Voice Lab, which is
+  // an admin screen. It is not only there any more: from 2026-08-31 the cast
+  // screens' own consent step holds a gated voice one stamp short, so an editor
+  // who records a declaration and cannot then play the voice and confirm it
+  // would be left holding a voice nobody can finish consenting — the lock with
+  // no key, one step further along. What makes it safe is what these routes
+  // CANNOT do: `confirmation` only ever writes an answer onto a voice that is
+  // already `awaiting_hearing` with a declaration on it, it refuses outright to
+  // touch any other stage (ALREADY_DECIDED below), and it can create nothing.
+  // Overturning a decision stays on the admin PUT …/consent.
+
   /** What to show the person, and whether they can decide right now. */
   app.get('/api/voicelab/voices/:voiceId/confirmation', async (req, res) => {
-    const user = await requireAdmin(req, res)
+    const user = await requireDashboardUser(req, res)
     if (!user) return
     try {
       const { voice, voiceId } = await readVoiceRow(req.params.voiceId)
@@ -771,7 +784,7 @@ function mount (app, deps) {
 
   /** The click. `confirm` casts nothing but makes casting possible; `reject` closes it. */
   app.post('/api/voicelab/voices/:voiceId/confirmation', async (req, res) => {
-    const user = await requireAdmin(req, res)
+    const user = await requireDashboardUser(req, res)
     if (!user) return
     try {
       const decision = String(req.body?.decision || '').trim().toLowerCase()
@@ -1123,7 +1136,7 @@ function mount (app, deps) {
         language: fields.language || null,
       })
 
-      const { voice, created } = await consentCapture.recordConsentOnVoice(supabase(), {
+      const { voice, created, held } = await consentCapture.recordConsentOnVoice(supabase(), {
         voiceId,
         declarationRecord,
         person,
@@ -1139,8 +1152,21 @@ function mount (app, deps) {
       // screen does — is refused by a verdict taken before they said yes.
       consentGate.clearCache()
 
-      logger.log?.(`[voicelab] ${declarationRecord.consent_declaration_kind} consent recorded on ${voiceId} by ${who(user)}${created ? ' (voices row created)' : ''}`)
-      res.json({ ok: true, voiceId, created, consent: consent.describe(voice) })
+      logger.log?.(`[voicelab] ${declarationRecord.consent_declaration_kind} consent recorded on ${voiceId} by ${who(user)}${created ? ' (voices row created)' : ''}${held ? ' — held for hearing' : ''}`)
+      // `held` is the honest answer to "did that cast it?", and the screen needs
+      // it: for a gated voice this route now records the FIRST of two stamps and
+      // the cast does not complete until somebody has heard the voice and
+      // confirmed it. `stage` is the same fact in the confirmation flow's own
+      // vocabulary, so ConsentStep can hand straight over to CloneConfirm
+      // without re-deriving anything from the status string.
+      res.json({
+        ok: true,
+        voiceId,
+        created,
+        held: Boolean(held),
+        stage: cloneConfirmation.stageOf(voice),
+        consent: consent.describe(voice),
+      })
     } catch (err) { fail(res, err, `consent-declaration ${req.params.voiceId}`) }
   })
 

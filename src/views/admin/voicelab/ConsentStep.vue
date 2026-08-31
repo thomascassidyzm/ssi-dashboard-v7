@@ -30,11 +30,26 @@
  * voice — so what somebody was shown and what the database says they agreed to
  * cannot drift apart when Tom redlines the sentence.
  *
+ * ── AND IT NO LONGER FINISHES THE JOB ON ITS OWN ───────────────────────────
+ * For a voice the consent gate actually asks about — a clone, or a voice a
+ * human has named a human on — recording the declaration is now the FIRST of
+ * two stamps. The backend holds it at `awaiting_hearing`
+ * (services/voicelab/consent-capture.cjs), because a yes given to a voice
+ * nobody has listened to is a yes to nothing, and this screen used to be the
+ * one door in the estate that minted `authorised` with zero listening.
+ *
+ * So when the answer comes back `held`, the second stamp is offered right here
+ * — CloneConfirm, the same strip the Voice Lab uses, fetching its own state
+ * from the same routes — and `recorded` is emitted only once the person has
+ * heard the voice and confirmed it. Every host screen keeps its one event and
+ * its one meaning: "this voice may now be cast".
+ *
  * IT DECIDES NOTHING. Whether the consent is good enough is the backend's
  * answer, every time; this component collects and shows.
  */
 import { ref, computed, onMounted, watch } from 'vue'
 import { api } from './labApi'
+import CloneConfirm from './CloneConfirm.vue'
 
 const props = defineProps({
   /** The voice the gate refused. */
@@ -76,6 +91,12 @@ const agreed = ref(false)
 const busy = ref(false)
 const error = ref('')
 const heard = ref('')
+/**
+ * The declaration landed and the voice is one stamp short. Holds the API's own
+ * answer, so the hand-over is driven by what the server actually wrote rather
+ * than by this component guessing which voices are gated.
+ */
+const held = ref(null)
 
 watch(() => props.person, (v) => { if (v && !personName.value) personName.value = v })
 
@@ -197,7 +218,11 @@ async function submit () {
         language: props.language || null,
       })
     }
-    emit('recorded', out)
+    // ONE EVENT, ONE MEANING. A held voice is not castable yet, so `recorded`
+    // waits: emitting it here would tell every host screen the cast may proceed
+    // at the exact moment the backend decided it may not.
+    if (out && out.held) held.value = out
+    else emit('recorded', out)
   } catch (e) {
     error.value = e.message
     // The backend rides its branch flags alongside the sentence, so the screen
@@ -209,6 +234,17 @@ async function submit () {
     busy.value = false
   }
 }
+
+/**
+ * The second stamp came back. `confirm` is what makes the voice castable, so
+ * that is the moment `recorded` means what every host screen reads it to mean.
+ * A `reject` is a real answer and a final one — the voice is refused, nothing
+ * is castable, and the step closes rather than pretending otherwise.
+ */
+function onDecided (out) {
+  if (out && out.decision === 'confirm') emit('recorded', { ...held.value, confirmation: out, consent: out.consent })
+  else emit('cancel')
+}
 </script>
 
 <template>
@@ -217,7 +253,24 @@ async function submit () {
       <strong>Consent needed for {{ voiceId }}</strong>
       <button class="cs-link" @click="emit('cancel')">Cancel</button>
     </div>
-    <p v-if="reason" class="cs-reason">{{ reason }}</p>
+    <p v-if="reason && !held" class="cs-reason">{{ reason }}</p>
+
+    <!-- ── THE SECOND STAMP ────────────────────────────────────────────────
+         The declaration is recorded and the voice is held one step short. The
+         only thing left to do on this screen is play the voice to the person
+         and take their answer, so the form goes away and the answer takes its
+         place — the same strip the Voice Lab uses, which fetches its own state
+         and plays their own recordings where that is the thing to hear. -->
+    <template v-if="held">
+      <p class="cs-reason">{{ held.consent?.summary || 'Consent recorded. One step left.' }}</p>
+      <p class="cs-note">
+        Play it to them and take their answer. Until they say yes to the voice
+        itself, it is not cast and not used anywhere.
+      </p>
+      <CloneConfirm :voice-id="voiceId" @decided="onDecided" />
+    </template>
+
+    <template v-else>
     <p v-if="wordingError" class="cs-err">The consent wording could not be loaded — {{ wordingError }}</p>
 
     <!-- HEAR IT. Consent given to a voice nobody has listened to is consent to
@@ -284,6 +337,7 @@ async function submit () {
         @click="emit('refuse', { person: personName.trim() })"
       >They said no</button>
     </div>
+    </template>
   </div>
 </template>
 
