@@ -672,13 +672,21 @@ async function handleInvite(req, res) {
         logger.warn(`[Auth] Supabase Auth account creation failed for ${email}: ${authErr.message}`)
       }
 
-      const sanitizedEmail = email.split('@')[0].replace(/[^a-z0-9]/gi, '_').toLowerCase()
-      const primaryLanguage = (Array.isArray(courses) ? courses[0] : null)?.split('_')[0] || 'unknown'
-      // Non-admins get a voice_id since editors are the ones recording now.
-      const voiceId = role !== 'admin' ? `human_${sanitizedEmail}_${primaryLanguage}` : null
+      // NO VOICE ID AT INVITE TIME (Tom, 2026-08-31: "we are never going to use
+      // a voice without consent"). This used to mint `human_{email}_{lang}` for
+      // every non-admin invitee — a voice id for a real person created at the
+      // moment somebody typed their email address, before anyone had asked them
+      // anything, and days or months before they were ever in the room.
+      //
+      // The id is now minted by the consent step of onboarding
+      // (POST /api/production/:courseCode/team/consent), which writes it
+      // together with the person's recorded yes in one `voices` write. Nothing
+      // was lost by removing it: the invite-code REDEEM path below has never
+      // set voice_id, so an account arriving that way already had none, and the
+      // recordist surface takes its identity from the link (/r/:voiceId), not
+      // from this column.
       const row = {
         email, name: name || email.split('@')[0], role, courses: effectiveCourses,
-        ...(voiceId && { voice_id: voiceId }),
         invited_by: adminUser.email || adminUser.name, invited_at: new Date().toISOString()
       }
       const { data, error } = await db.from('dashboard_users').insert(row).select().single()

@@ -256,6 +256,71 @@ function declarationRecord ({ kind, heard = null, attestedBy = null, person = nu
   }
 }
 
+/**
+ * THE THREE WAYS THROUGH, in one place.
+ *
+ * Lifted verbatim out of the Cartesia clone route on 2026-08-31, when a SECOND
+ * consent capture appeared — recordist onboarding — and the choice was between
+ * two copies of this branch or one. Two copies is how the estate got
+ * warning-only consent the first time: a rule that lives in two routes is a
+ * rule that is one redline away from meaning two different things. Same reason
+ * consent.cjs is the only answer to "what is this voice's consent state".
+ *
+ * The branches are NOT interchangeable and the ordering is load-bearing:
+ *
+ *   'record'  the person is here, and the line they read is inside the very
+ *             bytes being cloned or attributed. Whisper checks it. If whisper
+ *             heard something else, refuse and QUOTE what it heard — a bare
+ *             "not detected" sends somebody round the loop blind. If whisper is
+ *             not installed at all, that is "could not check", which is neither
+ *             a pass nor a fail, and the honest move is to drop to the weaker,
+ *             truthful claim rather than record a spoken declaration nothing
+ *             verified or block a real person over a missing binary.
+ *
+ *   anything  UPLOAD, and the default when nothing says otherwise, BECAUSE the
+ *   else      default must be the branch that cannot be faked. A missing
+ *             `sampleFrom` must never fall into the spoken path.
+ *
+ * @param {object} a
+ * @param {Buffer} [a.clip]        the recording, for the spoken branch
+ * @param {string} [a.sampleFrom]  'record' for a live browser recording
+ * @param {boolean} [a.agreed]     they ticked the attestation wording
+ * @param {string} [a.attestedBy]  who is making the attestation
+ * @param {string} [a.person]      whose voice it is
+ * @param {string} [a.language]
+ * @param {Date}   [a.now]
+ * @returns {Promise<object>} the consent columns to write
+ */
+async function captureDeclaration ({ clip = null, sampleFrom = null, agreed = false, attestedBy = null, person = null, language = null, now = new Date() } = {}) {
+  const from = String(sampleFrom || '').trim().toLowerCase()
+  const by = trim(attestedBy)
+
+  if (from === 'record') {
+    const check = await verifySpoken(clip, { language })
+    if (check.available && check.ok) {
+      return declarationRecord({ kind: 'spoken', heard: check.heard, person, now })
+    }
+    if (check.available) {
+      throw Object.assign(new Error(
+        `The consent line was not heard in that recording. It needs to say: "${SPOKEN_PHRASE}" — what came through instead was: "${(check.heard || '').trim() || 'nothing at all'}". Record it again, reading the line aloud.`,
+      ), { status: 400, detail: { declarationNotHeard: true, heard: check.heard, coverage: check.coverage } })
+    }
+    if (!agreed || !by) {
+      throw Object.assign(new Error(
+        'This machine cannot listen to the recording to check that the consent line was read, so it needs the written statement instead: tick the consent wording and say who is making the statement.',
+      ), { status: 400, detail: { needsAttestation: true } })
+    }
+    return declarationRecord({ kind: 'attested', attestedBy: by, person, now })
+  }
+
+  if (!agreed || !by) {
+    throw Object.assign(new Error(
+      `Nobody has agreed to the consent wording. An uploaded recording cannot prove who spoke, so somebody has to state it: tick "${ATTESTATION}" and say who is making the statement.`,
+    ), { status: 400, detail: { needsAttestation: true } })
+  }
+  return declarationRecord({ kind: 'attested', attestedBy: by, person, now })
+}
+
 function trim (v) { return v === null || v === undefined ? '' : String(v).trim() }
 
 module.exports = {
@@ -264,4 +329,5 @@ module.exports = {
   COVERAGE_THRESHOLD,
   verifySpoken,
   declarationRecord,
+  captureDeclaration,
 }

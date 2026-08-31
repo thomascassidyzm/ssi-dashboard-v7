@@ -213,3 +213,54 @@ describe('merging over a birth record — what the voice is actually written wit
     })
   })
 })
+
+/**
+ * captureDeclaration — the three ways through, in the one place they now live.
+ *
+ * Extracted from the Cartesia clone route on 2026-08-31 when recordist
+ * onboarding needed the identical three. The test that matters most is the
+ * last one: a missing `sampleFrom` must fall to the branch that cannot be
+ * faked, or a forgotten form field becomes a spoken declaration nobody made.
+ */
+describe('captureDeclaration — one rule, both routes', () => {
+  afterEach(() => vi.restoreAllMocks())
+
+  it('records the spoken kind when the line was heard', async () => {
+    vi.spyOn(audioVeracity, 'availability').mockReturnValue({ available: true, missing: [], bin: '', model: '' })
+    vi.spyOn(audioVeracity, 'decodeAudio').mockResolvedValue(declaration.SPOKEN_PHRASE)
+    const rec = await declaration.captureDeclaration({
+      clip: Buffer.from('x'), sampleFrom: 'record', person: 'Aran',
+    })
+    expect(rec.consent_status).toBe('authorised')
+    expect(rec.consent_declaration_kind).toBe('spoken')
+    expect(rec.consent_authorised_by).toBe('Aran')
+  })
+
+  it('refuses, quoting what was heard, when it was not', async () => {
+    vi.spyOn(audioVeracity, 'availability').mockReturnValue({ available: true, missing: [], bin: '', model: '' })
+    vi.spyOn(audioVeracity, 'decodeAudio').mockResolvedValue('something else entirely')
+    await expect(declaration.captureDeclaration({
+      clip: Buffer.from('x'), sampleFrom: 'record', person: 'Aran',
+    })).rejects.toMatchObject({ status: 400, detail: { declarationNotHeard: true } })
+  })
+
+  it('drops to the attestation — never to a pass — when nothing could listen', async () => {
+    vi.spyOn(audioVeracity, 'availability').mockReturnValue({ available: false, missing: ['whisper-cli'], bin: '', model: '' })
+    await expect(declaration.captureDeclaration({
+      clip: Buffer.from('x'), sampleFrom: 'record', person: 'Aran',
+    })).rejects.toMatchObject({ status: 400, detail: { needsAttestation: true } })
+
+    const rec = await declaration.captureDeclaration({
+      clip: Buffer.from('x'), sampleFrom: 'record', person: 'Aran', agreed: true, attestedBy: 'Aran',
+    })
+    expect(rec.consent_declaration_kind).toBe('attested')
+  })
+
+  it('a missing sampleFrom falls to the branch that cannot be faked', async () => {
+    // No whisper call is even made: this must not be reachable by omission.
+    const listen = vi.spyOn(audioVeracity, 'availability')
+    await expect(declaration.captureDeclaration({ clip: Buffer.from('x'), person: 'Aran' }))
+      .rejects.toMatchObject({ status: 400, detail: { needsAttestation: true } })
+    expect(listen).not.toHaveBeenCalled()
+  })
+})

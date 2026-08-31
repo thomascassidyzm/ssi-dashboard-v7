@@ -12,8 +12,12 @@
  *
  * Endpoints (mounted at /api/production/:courseCode/team):
  *   GET    /             team members for this course + the two target voice slots
- *   POST   /assign-slot  { email, slot } — mint voice id, write dashboard_users.voice_id
- *                        AND courses.voice_config.voices[slot] (surgical merge);
+ *   POST   /consent      the CONSENT STEP OF ONBOARDING — mints this person's
+ *                        human_* voice id with a recorded consent declaration
+ *                        already on it (read-aloud phrase, or attestation)
+ *   POST   /assign-slot  { email, slot } — cast their consented voice id into
+ *                        courses.voice_config.voices[slot] (surgical merge) and
+ *                        mirror it onto dashboard_users.voice_id;
  *                        slot 'unassigned' (or null) removes them from their slot
  *   DELETE /member       { email } — remove THIS course from their courses[]
  *                        (never deletes the user row); vacates their slot here
@@ -28,6 +32,10 @@
 
 const express = require('express')
 const crypto = require('crypto')
+const Busboy = require('busboy')
+const declaration = require('../voicelab/declaration.cjs')
+const consentGate = require('../shared/voice-consent-gate.cjs')
+const { onboardConsentedVoice } = require('./recordist-consent.cjs')
 const {
   ASSIGNABLE_SLOTS,
   UNASSIGNED,
@@ -38,6 +46,7 @@ const {
   findSlotForMember,
   slotSummary,
   holdsCourse,
+  targetLangFromCourseCode,
 } = require('./voice-slots.cjs')
 
 /**
@@ -78,7 +87,14 @@ module.exports = function createTeamRouter({
         return res.status(403).json({ error: `No access to course ${courseCode}` })
       }
       if (req.method !== 'GET' && user.role === 'recorder') {
-        return res.status(403).json({ error: 'Recorders cannot manage the course team' })
+        // ONE EXCEPTION, and it is the whole point of the consent step: the
+        // person whose voice it is must be able to state, themselves, that they
+        // agree to it being used. Refusing a recordist the right to consent on
+        // their own behalf would leave consent as something done ABOUT people
+        // rather than BY them. Confined to their own email, checked in the
+        // route once the body has been parsed — everything else stays read-only.
+        if (req.path === '/consent') req.consentSelfOnly = true
+        else return res.status(403).json({ error: 'Recorders cannot manage the course team' })
       }
       req.dashboardUser = user
       next()
@@ -196,6 +212,152 @@ module.exports = function createTeamRouter({
     }
   })
 
+
+  // ── POST /consent — THE CONSENT STEP OF ONBOARDING ────────────────────────
+  //
+  // Tom, 2026-08-31: "onboarding must CAPTURE consent as a step of the process,
+  // and mint the voice id with a consent record already attached."
+  //
+  // Nothing about the block below is new consent machinery. The words, the
+  // whisper check, the three ways through and the columns written are the same
+  // `services/voicelab/declaration.cjs` the clone route uses — a recordist's
+  // yes and a clone subject's yes are the same yes, and two mechanisms would
+  // mean two things could be true at once about what somebody agreed to.
+  //
+  // Two shapes, one route:
+  //   multipart, sampleFrom=record  they read the line at a microphone; whisper
+  //                                 verifies it against the very bytes uploaded
+  //   JSON, declarationAgreed=true  they are not at a microphone; a named human
+  //                                 states it instead, recorded as 'attested'
+  //
+  // A recordist may run this for themselves (see the auth gate); an editor may
+  // run it for a member of their course's team.
+  const MAX_CONSENT_CLIP_BYTES = 25 * 1024 * 1024
+  function readConsentUpload (req) {
+    // Local, like every other multipart parse on this service — a request-scoped
+    // parse cannot leak into another route, and this is the only one here.
+    return new Promise((resolve, reject) => {
+      let bus
+      try {
+        bus = Busboy({ headers: req.headers, limits: { files: 1, fileSize: MAX_CONSENT_CLIP_BYTES } })
+      } catch (e) {
+        return reject(Object.assign(new Error(`Expected a multipart upload: ${e.message}`), { status: 400 }))
+      }
+      const fields = {}
+      const chunks = []
+      let tooBig = false
+      bus.on('field', (name, value) => { fields[name] = value })
+      bus.on('file', (_n, stream) => {
+        stream.on('data', (c) => chunks.push(c))
+        stream.on('limit', () => { tooBig = true })
+      })
+      bus.on('error', (e) => reject(Object.assign(new Error(String(e.message)), { status: 400 })))
+      bus.on('close', () => {
+        if (tooBig) return reject(Object.assign(new Error(`That recording is larger than ${MAX_CONSENT_CLIP_BYTES / 1024 / 1024} MB.`), { status: 413 }))
+        resolve({ clip: chunks.length ? Buffer.concat(chunks) : null, fields })
+      })
+      req.pipe(bus)
+    })
+  }
+
+  router.post('/consent', async (req, res) => {
+    const { courseCode } = req.params
+    try {
+      const multipart = /multipart\/form-data/i.test(req.headers['content-type'] || '')
+      const { clip, fields } = multipart
+        ? await readConsentUpload(req)
+        : { clip: null, fields: req.body || {} }
+
+      const email = String(fields.email || '').trim()
+      if (!email) return res.status(400).json({ error: 'email is required — say whose voice this consent is about' })
+      if (req.consentSelfOnly && email.toLowerCase() !== String(req.dashboardUser.email || '').toLowerCase()) {
+        return res.status(403).json({ error: 'You can record consent for your own voice only' })
+      }
+
+      const db = getDb()
+      const member = await fetchMember(db, email)
+      if (!member) return res.status(404).json({ error: `No dashboard user with email ${email}` })
+      if (!holdsCourse(member.courses, courseCode)) {
+        return res.status(400).json({ error: `${email} is not on this course's team — add them first` })
+      }
+
+      // Whose voice it is, in their own name. Falls back to the account name
+      // and then the email's local part, because a consent record with nobody
+      // named on it is one nobody can ever act on — but it is never left blank
+      // and never quietly set to the operator.
+      const person = String(fields.person || member.name || email.split('@')[0]).trim()
+
+      const declarationRecord = await declaration.captureDeclaration({
+        clip,
+        sampleFrom: fields.sampleFrom,
+        agreed: String(fields.declarationAgreed ?? '').toString().trim().toLowerCase() === 'true',
+        attestedBy: fields.attestedBy,
+        person,
+        language: targetLangFromCourseCode(courseCode),
+      })
+
+      const { voiceId, voice, minted } = await onboardConsentedVoice(db, {
+        email,
+        courseCode,
+        person,
+        declarationRecord,
+        existingVoiceId: member.voice_id,
+        name: member.name,
+        recordedBy: req.dashboardUser.email,
+        isTaken: candidate => voiceIdTakenByOther(db, candidate, email),
+      })
+
+      // Mirror the mint onto the person, exactly as assign-slot did — so the
+      // id exists on the person BEFORE anyone tries to cast it, which is what
+      // lets assign-slot stop minting and start checking.
+      if (member.voice_id !== voiceId) {
+        const { error: userErr } = await db
+          .from('dashboard_users')
+          .update({ voice_id: voiceId, updated_by: req.dashboardUser.email, updated_at: new Date().toISOString() })
+          .eq('email', email)
+        if (userErr) throw userErr
+      }
+
+      // The gate caches consent verdicts for 30 seconds. Without this, a person
+      // who consents and is assigned in the same breath — which is exactly what
+      // the screen does — is refused by a verdict taken before they said yes.
+      consentGate.clearCache()
+
+      logger.info(`[Team] ${req.dashboardUser.email} recorded ${declarationRecord.consent_declaration_kind} consent for ${email} on ${courseCode} as ${voiceId}`)
+      res.json({
+        success: true,
+        email,
+        voice_id: voiceId,
+        minted,
+        consent: {
+          status: voice.consent_status,
+          kind: declarationRecord.consent_declaration_kind,
+          person,
+          authorised_by: declarationRecord.consent_authorised_by,
+          authorised_at: declarationRecord.consent_authorised_at,
+          words: declarationRecord.consent_declaration,
+          heard: declarationRecord.consent_declaration_heard,
+        },
+      })
+    } catch (err) {
+      const status = err && err.status ? err.status : 500
+      if (status >= 500) logger.error(`[Team] Consent capture failed for ${courseCode}:`, err)
+      // err.detail rides alongside the sentence for the screen that has to
+      // BRANCH — offer the attestation, or ask for the line again — rather than
+      // string-match English prose that is Tom's to redline.
+      res.status(status).json({
+        error: status >= 500 ? 'Failed to record consent' : err.message,
+        code: err.code || 'consent_failed',
+        ...(err.detail || {}),
+      })
+    }
+  })
+
+  /** The consent line and the attestation wording, for the screen to show. */
+  router.get('/consent-wording', (_req, res) => {
+    res.json({ spoken_phrase: declaration.SPOKEN_PHRASE, attestation: declaration.ATTESTATION })
+  })
+
   // ── POST /assign-slot — { email, slot } ───────────────────────────────────
   router.post('/assign-slot', async (req, res) => {
     const { courseCode } = req.params
@@ -246,17 +408,46 @@ module.exports = function createTeamRouter({
         }
       }
 
-      // ── Assign: mint (or reuse) the voice id, then surgical merge ──
-      // Reuse the member's existing id if it's already a mint for this person+course
-      // (idempotent re-assign / slot move); otherwise mint fresh with collision suffixing.
+      // ── Assign: their CONSENTED voice id, then surgical merge ─────────────
+      //
+      // NO CONSENT, NO VOICE (Tom, 2026-08-31). This route used to mint a fresh
+      // `human_*` id here and cast it in the same motion — a voice id created
+      // for a real person before anybody had asked them anything, which is the
+      // one door the hard-block sweep left open and named.
+      //
+      // It is closed by moving the consent EARLIER, not by exempting this
+      // route: POST /consent mints the id with the person's recorded yes on it,
+      // so by the time anyone casts, the id already exists and already passes.
+      // The check below is therefore the ordinary standing gate, with no
+      // special case in it — for a properly onboarded recordist it never fires.
+      //
+      // The refusal names the missing step rather than the person. Somebody who
+      // has just been invited to help has done nothing wrong by not yet having
+      // read a sentence they have never been shown.
       let voiceId
       if (isOwnMint(member.voice_id, email, courseCode)) {
         voiceId = member.voice_id
       } else {
-        voiceId = await mintVoiceId({
+        const who = member.name || email
+        return res.status(409).json({
+          error: `${who} has not agreed to their voice being used on this course yet. Record their consent first — they read one line aloud in the browser, or state it in writing — and then this will go through.`,
+          code: 'NO_RECORDED_CONSENT',
+          needsOnboardingConsent: true,
           email,
-          courseCode,
-          isTaken: candidate => voiceIdTakenByOther(db, candidate, email),
+          slot,
+        })
+      }
+
+      try {
+        await consentGate.assertConsented(voiceId, { db, context: `${courseCode} ${slot} assignment` })
+      } catch (err) {
+        return res.status(err.status || 409).json({
+          error: err.message,
+          code: err.code || 'NO_RECORDED_CONSENT',
+          needsOnboardingConsent: true,
+          email,
+          slot,
+          voice_id: voiceId,
         })
       }
 

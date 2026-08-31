@@ -544,9 +544,15 @@ const recordHint = computed(() => {
 //             uploader states this is their own voice or that they hold the
 //             right to use it, agrees to it being cloned, and signs it with a
 //             name. Recorded against the voice with who and when.
-//   ESTATE  — unchanged. No live speaker is present, an existing recording is
-//             not permission, and the clone is still born awaiting
-//             authorisation for Tom to obtain in person.
+//   ESTATE  — the SAME ATTESTATION as upload (changed 2026-08-31). No live
+//             speaker is present, and an existing recording has never been
+//             permission — which is exactly why somebody has to state, in
+//             writing and signed, that they hold the right to clone this
+//             person from our archive. It used to be born awaiting
+//             authorisation instead, on the reasoning that there was nobody
+//             here to ask; but creating a clone of a real person at a vendor
+//             before anyone has said anything is the thing Tom's standing rule
+//             is about, and the attestation is one tick and a name.
 //
 // THE WORDS THEMSELVES ARE NOT IN THIS FILE. They come from
 // `params.consent`, which is the same string the backend stores on the voice.
@@ -584,7 +590,7 @@ const backendCanListen = computed(() => props.params?.consent?.canListen !== fal
 
 /** Which of the two the current source needs, or none. */
 const declarationMode = computed(() => {
-  if (cloneSource.value === 'upload') return 'attested'
+  if (cloneSource.value === 'upload' || cloneSource.value === 'estate') return 'attested'
   if (cloneSource.value !== 'record') return 'none'
   return (backendCanListen.value && !cannotListen.value) ? 'spoken' : 'attested'
 })
@@ -694,6 +700,14 @@ function clonesFor (s3Key) {
  */
 async function cloneOne (clip) {
   if (!clonePerson.value) { error.value = 'Type whose voice this is first — one field, at the top.'; return }
+  // The one-tap route creates a clone of a real person just as surely as the
+  // deliberate one, so it takes the same attestation. Said here as a sentence
+  // rather than let through to a 400, because on a live demo a refusal from
+  // the server reads like a broken button.
+  if (!declarationAgreed.value || !attestedBy.value) {
+    error.value = 'Agree to the wording and sign it with a name before cloning — one tick and one field, below the clips.'
+    return
+  }
   const draft = {
     id: `c${++cloneSeq}`,
     s3Key: clip.s3Key,
@@ -737,6 +751,8 @@ async function cloneOne (clip) {
       consentNote: cloneConsentNote.value || null,
       speaker: entry.speaker,
       s3Keys: [clip.s3Key],
+      declarationAgreed: true,
+      attestedBy: attestedBy.value,
     })
     entry.voice = made.voice
     entry.consent = made.consent
@@ -819,7 +835,10 @@ async function discard (entry) {
 const cloneBlocker = computed(() => {
   if (!clonePerson.value) return 'Name whose voice this is.'
   if (cloneSource.value === 'estate') {
-    return pickedKeys.value.length ? '' : 'Tick the recordings to clone from.'
+    if (!pickedKeys.value.length) return 'Tick the recordings to clone from.'
+    if (!declarationAgreed.value) return 'Agree to the wording above.'
+    if (!attestedBy.value) return 'Sign the attestation with a name.'
+    return ''
   }
   if (!cloneFile.value) return cloneSource.value === 'record' ? 'Record a take first.' : 'Choose a file first.'
   if (declarationMode.value === 'spoken') {
@@ -890,6 +909,10 @@ async function submitClone () {
         consentNote: cloneConsentNote.value || null,
         speaker: entry.speaker,
         s3Keys: pickedKeys.value,
+        // Somebody has to say they hold the right to clone this person from
+        // our archive — the route refuses without it, and so does the button.
+        declarationAgreed: true,
+        attestedBy: attestedBy.value,
       })
       pickedKeys.value = []
     } else {
@@ -1573,7 +1596,7 @@ function candidatesFor (lang, slot) {
              and it is signed. Tap to agree, type a name: both are recorded
              against the voice with the date, and both are required by the
              route as well as by this button. -->
-        <div v-if="declarationMode === 'attested' && cloneSource !== 'estate'" class="vl-declare">
+        <div v-if="declarationMode === 'attested'" class="vl-declare">
           <span class="ui-filter-label"><b class="vl-step">4</b> Agree to this</span>
           <p class="vl-declare-words">{{ attestationWords || 'This backend has not sent the wording to agree to.' }}</p>
           <p v-if="declarationError" class="vl-declare-err">{{ declarationError }}</p>
