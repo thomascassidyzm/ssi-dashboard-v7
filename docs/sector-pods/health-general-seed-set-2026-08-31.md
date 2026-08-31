@@ -1138,3 +1138,297 @@ Cut: `it's no fuss at all` **(new)** · `this is exactly what we're here for` **
 **"I'll be back shortly"**
 - BUILD: "and I'll be back shortly" · "I'll be back shortly, alright?" · "don't worry — I'll be back shortly" · "I'll be back shortly with that"
 - USE: "I'll be back shortly, alright?" · "Don't worry — I'll be back shortly." · "I'll be back shortly to see how you are." · "You rest now — I'll be back shortly." · "I'll be back shortly, and any of the team can help before then."
+
+### HG41 — "What would you like for lunch, the chicken or the soup? And try to drink a bit more water for me if you can."
+
+Cut: `what would you like for lunch` **(new — kept whole: the worn menu question)** · `the chicken or the soup` **(new)** · `and try to drink a bit more water for me` **(new: "try to drink a bit more water for me")** · `if you can` *(core)*
+
+**"what would you like for lunch"**
+- BUILD: "so, what would you like for lunch?" · "and what would you like for lunch today?" · "now then, what would you like for lunch?" · "what would you like for lunch, then?"
+- USE: "What would you like for lunch today?" · "Now then — what would you like for lunch?" · "What would you like for lunch, then — the chicken or the soup?" · "Before I go, what would you like for lunch?" · "What would you like for lunch tomorrow?"
+
+**"the chicken or the soup"**
+- BUILD: "the chicken or the soup?" · "the chicken or the soup today" · "so — the chicken or the soup?" · "the chicken or the soup, then?"
+- USE: "Is it the chicken or the soup today?" · "The chicken or the soup — which would you like?" · "We've got the chicken or the soup today." · "So — the chicken or the soup, then?" · "The chicken's very good today, or there's the soup."
+
+**"try to drink a bit more water for me"**
+- BUILD: "and try to drink a bit more water for me" · "try to drink a bit more water for me if you can" · "try to drink a bit more water today" · "just try to drink a bit more water"
+- USE: "Try to drink a bit more water for me today." · "And try to drink a bit more water for me, alright?" · "Try to drink a bit more water — the doctor will be pleased with that." · "Just try to drink a bit more water before tonight." · "Try to drink a bit more water for me — see how you go."
+
+### HG42 — "Chicken it is. And shall I put you down for the sponge and custard? You look like a pudding man to me."
+
+Cut: `chicken it is` **(new — the "X it is" ratifier, owned in shape from scene 0's "Yours it is", made productive here)** · `and shall I put you down for` **(new: "shall I put you down for")** · `the sponge and custard` **(new)** · `you look like a pudding man to me` **(new)**
+
+**"chicken it is"**
+- BUILD: "chicken it is, then" · "right — chicken it is" · "chicken it is today" · "so chicken it is"
+- USE: "Chicken it is, then." · "Right — chicken it is." · "Soup it is, then." · "Chicken it is — good choice." · "Chicken it is, and water with it."
+
+**"shall I put you down for"**
+- BUILD: "shall I put you down for the soup?" · "and shall I put you down for that?" · "shall I put you down for tomorrow?" · "shall I put you down for the same?"
+- USE: "Shall I put you down for the soup tomorrow?" · "Shall I put you down for the same as yesterday?" · "And shall I put you down for the chicken?" · "Shall I put you down for that, then?" · "Shall I put you down for lunch at twelve?"
+
+**"the sponge and custard"**
+- BUILD: "the sponge and custard?" · "the sponge and custard today" · "and the sponge and custard after" · "the sponge and custard, then"
+- USE: "Would you like the sponge and custard?" · "There's the sponge and custard today." · "The sponge and custard's very good here." · "Shall I put you down for the sponge and custard?" · "And is it the sponge and custard after?"
+
+**"you look like a pudding man to me"**
+- BUILD: "well, you look like a pudding man to me" · "because you look like a pudding man to me" · "and you look like a pudding man to me" · "you look like a pudding man to me!"
+- USE: "You look like a pudding man to me!" · "You look like a pudding man to me — shall I put you down for the sponge and custard?" · "Well, you look like a pudding man to me." · "You look like a soup man to me." · "You look like a pudding man to me, and I'm never wrong."
+
+### HG43 — "I'll leave this jug of water here — see if you can finish it before I'm back."
+
+Cut: `I'll leave this jug of water here` **(new)** · `see if you can finish it` **(new)** · `before I'm back` **(new)**
+
+**"I'll leave this jug of water here"**
+- BUILD: "I'll leave this jug of water here for you" · "and I'll leave this jug of water here" · "I'll leave this jug of water here, look" · "I'll leave this jug of water here by the bed"
+- USE: "I'll leave this jug of water here for you." · "I'll leave this jug of water here, by the bed." · "I'll leave this jug of water here — and try to drink a bit more water for me." · "I'll leave this jug of water here where you can reach it." · "I'll leave this jug of water here, and I'll pop back after lunch."
+
+**"see if you can finish it"**
+- BUILD: "see if you can finish it before I'm back" · "see if you can finish it today" · "and see if you can finish it" · "see if you can finish it by tonight"
+- USE: "See if you can finish it by tonight." · "See if you can finish it before lunch." · "Go on — see if you can finish it." · "See if you can finish it, and I'll top it up after." · "See if you can finish it — the doctor will be pleased with that."
+
+**"before I'm back"**
+- BUILD: "before I'm back, then" · "and before I'm back" · "before I'm back after lunch" · "before I'm back tonight"
+- USE: "See if you can finish the water before I'm back." · "Press the bell if you need anything before I'm back." · "You'll have lunch before I'm back." · "Have a little sleep before I'm back." · "Before I'm back, any of the team can help you."
+
+### HG44 — "Let me check the card… the soup has cream in it, so we'll steer clear. The chicken's safe. And I'll flag the dairy with the kitchen so it's on all your meals from now on."
+
+Cut: `let me check the card` **(new)** · `the soup has cream in it` **(new)** · `so we'll steer clear` **(new: "we'll steer clear")** · `the chicken's safe` **(new)** · `and I'll flag the dairy with the kitchen` **(new: "I'll flag the dairy with the kitchen")** · `so it's on all your meals from now on` **(new: "on all your meals from now on")**
+
+**"let me check the card"**
+- BUILD: "let me check the card first" · "hold on — let me check the card" · "let me check the card for you" · "let me just check the card"
+- USE: "Let me check the card first." · "Hold on — let me check the card." · "Let me check the card for you before you choose." · "Good question — let me check the card." · "Let me just check the card, to be safe."
+
+**"the soup has cream in it"**
+- BUILD: "the soup has cream in it, see" · "the soup has cream in it today" · "because the soup has cream in it" · "but the soup has cream in it"
+- USE: "The soup has cream in it today, I'm afraid." · "The soup has cream in it, see — so not that one." · "It says the soup has cream in it." · "The soup has cream in it, but the chicken's safe." · "Careful — the soup has cream in it."
+
+**"we'll steer clear"**
+- BUILD: "so we'll steer clear" · "we'll steer clear of that" · "we'll steer clear today" · "and we'll steer clear of the soup"
+- USE: "We'll steer clear of that, then." · "We'll steer clear of the soup today." · "If you're not sure, we'll steer clear." · "It has cream in it, so we'll steer clear." · "We'll steer clear, to be safe."
+
+**"the chicken's safe"**
+- BUILD: "the chicken's safe today" · "but the chicken's safe" · "the chicken's safe, look" · "and the chicken's safe"
+- USE: "The chicken's safe, so chicken it is." · "Don't worry — the chicken's safe." · "The chicken's safe today; I checked the card." · "The chicken's safe, and so is the sponge." · "The chicken's safe — it says so on the card."
+
+**"I'll flag the dairy with the kitchen"**
+- BUILD: "and I'll flag the dairy with the kitchen" · "I'll flag the dairy with the kitchen now" · "I'll flag the dairy with the kitchen today" · "I'll flag that with the kitchen"
+- USE: "I'll flag the dairy with the kitchen right now." · "I'll flag that with the kitchen, don't worry." · "I'll flag the dairy with the kitchen before lunch." · "Thank you for telling me — I'll flag the dairy with the kitchen." · "I'll flag the dairy with the kitchen, and I'll check the card every day."
+
+**"on all your meals from now on"**
+- BUILD: "so it's on all your meals from now on" · "it'll be on all your meals from now on" · "and it's on all your meals from now on" · "on all your meals from now on, alright?"
+- USE: "It'll be on all your meals from now on." · "The dairy's on all your meals from now on, so it can't catch you out." · "It's on all your meals from now on — nothing to worry about." · "From now on, it's on all your meals." · "It's on all your meals from now on, I promise."
+
+### HG45 — "Not on my watch. Chicken it is, and I'll make sure it's noted properly."
+
+Cut: `not on my watch` **(new)** · `chicken it is` *(HG42)* · `and I'll make sure it's noted properly` **(new: "I'll make sure it's noted properly")**
+
+**"not on my watch"**
+- BUILD: "not on my watch, don't worry" · "no — not on my watch" · "never on my watch" · "not on my watch, ever"
+- USE: "Not on my watch, don't worry." · "It won't catch you out again — not on my watch." · "No — not on my watch." · "Not on my watch; that's what I'm here for." · "Not on my watch, I promise."
+
+**"I'll make sure it's noted properly"**
+- BUILD: "and I'll make sure it's noted properly" · "I'll make sure it's noted properly today" · "I'll make sure it's noted properly this time" · "don't worry — I'll make sure it's noted properly"
+- USE: "Don't worry — I'll make sure it's noted properly." · "I'll make sure it's noted properly this time." · "I'll flag it with the kitchen and make sure it's noted properly." · "I'll make sure it's noted properly before I go." · "Thank you for saying — I'll make sure it's noted properly."
+
+### HG46 — "Shall we get you up for a little walk? Take your time, no rush. Hold onto my arm."
+
+Cut: `shall we get you up` **(new)** · `for a little walk` **(new)** · `take your time` *(core)* · `no rush` *(core)* · `hold onto my arm` **(new)**
+
+**"shall we get you up"**
+- BUILD: "shall we get you up, then?" · "shall we get you up for a little walk?" · "shall we get you up before lunch?" · "right — shall we get you up?"
+- USE: "Shall we get you up, then?" · "Shall we get you up before lunch?" · "Shall we get you up for a bit?" · "Right then — shall we get you up?" · "Shall we get you up after your lunch?"
+
+**"for a little walk"**
+- BUILD: "up for a little walk" · "for a little walk, then" · "for a little walk before tea" · "out for a little walk"
+- USE: "Shall we go for a little walk?" · "How about a little walk before lunch?" · "A little walk will do you good." · "We'll go for a little walk after tea." · "Just a little walk today, nothing big."
+
+**"hold onto my arm"**
+- BUILD: "hold onto my arm, now" · "and hold onto my arm" · "just hold onto my arm" · "hold onto my arm the whole way"
+- USE: "Hold onto my arm, now." · "Just hold onto my arm and take your time." · "Hold onto my arm the whole way." · "You hold onto my arm, and we'll go slowly." · "Hold onto my arm, and no rush."
+
+### HG47 — "Nice and slow now — sit on the edge of the bed first, and we'll let your head catch up with you."
+
+Cut: `nice and slow now` **(new: "nice and slow")** · `sit on the edge of the bed first` **(new: "sit on the edge of the bed")** · `and we'll let your head catch up with you` **(new: "we'll let your head catch up with you")**
+
+**"nice and slow"**
+- BUILD: "nice and slow now" · "nice and slow, then" · "nice and slow all the way" · "nice and slow this morning"
+- USE: "Nice and slow now — take your time." · "Nice and slow, there's no rush." · "We'll go nice and slow." · "Nice and slow — hold onto my arm." · "Nice and slow all the way, alright?"
+
+**"sit on the edge of the bed"**
+- BUILD: "sit on the edge of the bed first" · "just sit on the edge of the bed" · "sit on the edge of the bed a minute" · "come and sit on the edge of the bed"
+- USE: "Sit on the edge of the bed first." · "Just sit on the edge of the bed a minute." · "Sit on the edge of the bed, and take your time." · "Come and sit on the edge of the bed for me." · "Sit on the edge of the bed first, nice and slow."
+
+**"we'll let your head catch up with you"**
+- BUILD: "and we'll let your head catch up with you" · "we'll let your head catch up with you first" · "let your head catch up with you" · "we'll let your head catch up with you a minute"
+- USE: "Sit there a minute and we'll let your head catch up with you." · "We'll let your head catch up with you first." · "No rush — we'll let your head catch up with you." · "Let your head catch up with you before we go." · "We'll let your head catch up with you, then we'll make a start."
+
+### HG48 — "Take all the time you need. There's no prize for rushing. Ready? Off we go."
+
+Cut: `take all the time you need` **(new)** · `there's no prize for rushing` **(new)** · `ready` *(core)* · `off we go` **(new)**
+
+**"take all the time you need"**
+- BUILD: "take all the time you need, now" · "and take all the time you need" · "take all the time you need today" · "you take all the time you need"
+- USE: "Take all the time you need — there's no rush." · "You take all the time you need, now." · "Take all the time you need; I'm here till eight." · "Take all the time you need — nice and slow." · "Take all the time you need with your lunch."
+
+**"there's no prize for rushing"**
+- BUILD: "there's no prize for rushing, remember" · "and there's no prize for rushing" · "because there's no prize for rushing" · "there's no prize for rushing here"
+- USE: "There's no prize for rushing, remember." · "Take your time — there's no prize for rushing." · "There's no prize for rushing here." · "Nice and slow — there's no prize for rushing." · "There's no prize for rushing, so take all the time you need."
+
+**"off we go"**
+- BUILD: "ready? off we go" · "off we go, then" · "right — off we go" · "and off we go"
+- USE: "Off we go, then — nice and slow." · "Right then — off we go." · "Hold onto my arm, and off we go." · "Ready when you are — off we go." · "Off we go — just a little walk."
+
+### HG49 — "I've got you, I promise — I won't let go of you. We'll take it extra slow — to the door and back today, nothing heroic."
+
+Cut: `I've got you` **(new)** · `I promise` *(core)* · `I won't let go of you` **(new)** · `we'll take it extra slow` **(new)** · `to the door and back today` **(new: "to the door and back")** · `nothing heroic` **(new)**
+
+**"I've got you"**
+- BUILD: "I've got you, I promise" · "don't worry — I've got you" · "I've got you, look" · "I've got you the whole way"
+- USE: "I've got you, I promise." · "Don't worry — I've got you." · "I've got you the whole way." · "Hold onto my arm — I've got you." · "You won't fall — I've got you."
+
+**"I won't let go of you"**
+- BUILD: "and I won't let go of you" · "I won't let go of you, I promise" · "I won't let go of you the whole way" · "I won't let go of you, alright?"
+- USE: "I won't let go of you, I promise." · "I've got you, and I won't let go of you." · "I won't let go of you the whole way." · "Every step — I won't let go of you." · "I won't let go of you till you're back in bed."
+
+**"we'll take it extra slow"**
+- BUILD: "then we'll take it extra slow" · "we'll take it extra slow today" · "and we'll take it extra slow" · "we'll take it extra slow this time"
+- USE: "We'll take it extra slow today." · "We'll take it extra slow, and I won't let go of you." · "Don't worry, we'll take it extra slow this time." · "We'll take it extra slow — there's no prize for rushing." · "If you're tired, we'll take it extra slow."
+
+**"to the door and back"**
+- BUILD: "to the door and back today" · "just to the door and back" · "to the door and back, then" · "to the door and back before tea"
+- USE: "Just to the door and back today." · "To the door and back, and that's plenty." · "Shall we try to the door and back?" · "To the door and back before tea, then." · "We'll go to the door and back, nice and slow."
+
+**"nothing heroic"**
+- BUILD: "nothing heroic today" · "nothing heroic, mind" · "and nothing heroic" · "nothing heroic this morning"
+- USE: "To the door and back — nothing heroic." · "Nothing heroic today, alright?" · "Just a little walk, nothing heroic." · "Nothing heroic, mind — we'll take it extra slow." · "Nothing heroic — there's no prize for rushing."
+
+### HG50 — "Well done, you — that's further than yesterday. We'll do it again after tea."
+
+Cut: `well done, you` **(new)** · `that's further than yesterday` **(new)** · `we'll do it again after tea` *(HG34 "to do it again" family + core "after tea")*
+
+**"well done, you"**
+- BUILD: "well done, you!" · "well done, you — that's it" · "oh, well done, you" · "well done, you — again tomorrow"
+- USE: "Well done, you — nice and slow the whole way." · "Well done, you! All done for today." · "Well done, you — the doctor will be pleased with that." · "Well done, you; have a little sleep now." · "Well done, you — see if you can do it again after tea."
+
+**"that's further than yesterday"**
+- BUILD: "that's further than yesterday, look" · "and that's further than yesterday" · "that's further than yesterday already" · "well — that's further than yesterday"
+- USE: "That's further than yesterday, well done." · "Look — that's further than yesterday." · "That's further than yesterday already." · "That's further than yesterday, and further than the day before." · "To the door and back — that's further than yesterday."
+
+### HG51 — "Just checking in on you. Are you comfortable? Do you need the toilet? Can I get you anything before I go?"
+
+Cut: `just checking in on you` **(new)** · `are you comfortable` **(new)** · `do you need the toilet` **(new)** · `can I get you anything before I go` *(core "can I get you anything" + core "before I go")*
+
+**"just checking in on you"**
+- BUILD: "just checking in on you again" · "just checking in on you before lunch" · "just checking in on you, that's all" · "and just checking in on you"
+- USE: "Just checking in on you — are you comfortable?" · "Just checking in on you before I go home." · "Just checking in on you, that's all." · "Just checking in on you again — do you need anything?" · "Just checking in on you before tonight."
+
+**"are you comfortable"**
+- BUILD: "are you comfortable there?" · "and are you comfortable?" · "are you comfortable enough?" · "are you comfortable now?"
+- USE: "Are you comfortable there?" · "Are you comfortable, or do you need another pillow?" · "Are you comfortable enough to sleep?" · "Are you comfortable now?" · "Before I go — are you comfortable?"
+
+**"do you need the toilet"**
+- BUILD: "and do you need the toilet?" · "do you need the toilet first?" · "do you need the toilet before lunch?" · "do you need the toilet now?"
+- USE: "Do you need the toilet first?" · "Do you need the toilet before we start?" · "Do you need the toilet, or are you alright?" · "Do you need the toilet before your walk?" · "Just say if you need the toilet."
+
+### HG52 — "Of course. Water first, and let's sort this pillow out properly while I'm here. Lean forward for me a second."
+
+Cut: `of course` *(core)* · `water first` **(new)** · `and let's sort this pillow out properly` **(new: "let's sort this pillow out properly")** · `while I'm here` **(new)** · `lean forward for me a second` **(new)**
+
+**"water first"**
+- BUILD: "water first, then" · "right — water first" · "water first, and then the pillow" · "water first this time"
+- USE: "Water first, and then we'll sort the pillow." · "Right — water first." · "Water first, then your glasses." · "Water first — see if you can finish the jug." · "Water first, and the rest after."
+
+**"let's sort this pillow out properly"**
+- BUILD: "and let's sort this pillow out properly" · "let's sort this pillow out properly, then" · "let's sort this pillow out properly first" · "let's sort this pillow out"
+- USE: "Let's sort this pillow out properly, then." · "Come on — let's sort this pillow out properly." · "Let's sort this pillow out properly before I go." · "Let's sort this pillow out properly — lean forward for me." · "First, let's sort this pillow out properly."
+
+**"while I'm here"**
+- BUILD: "while I'm here, then" · "and while I'm here" · "while I'm here this morning" · "while I'm here anyway"
+- USE: "Is there anything else, while I'm here?" · "I'll top up your water while I'm here." · "Let's do the pillow while I'm here." · "While I'm here, do you need the toilet?" · "I'll move the table out of your way while I'm here."
+
+**"lean forward for me a second"**
+- BUILD: "just lean forward for me a second" · "and lean forward for me a second" · "lean forward for me a second, then" · "lean forward for me"
+- USE: "Lean forward for me a second, and I'll sort the pillow." · "Just lean forward for me a second." · "Can you lean forward for me a second?" · "Lean forward for me a second — there we are." · "Hold onto my arm and lean forward for me a second."
+
+### HG53 — "Right, you're all set. I'll be past again in an hour or so anyway."
+
+Cut: `right` *(core)* · `you're all set` **(new)** · `I'll be past again` **(new)** · `in an hour or so` *(core)* · `anyway` *(core)*
+
+**"you're all set"**
+- BUILD: "right, you're all set" · "there — you're all set" · "you're all set now" · "you're all set, then"
+- USE: "There — you're all set." · "You're all set now, I think." · "Right then, you're all set — press the bell if you need us." · "You're all set for lunch." · "There we are — you're all set."
+
+**"I'll be past again"**
+- BUILD: "I'll be past again in an hour or so" · "I'll be past again shortly" · "I'll be past again before lunch" · "and I'll be past again tonight"
+- USE: "I'll be past again shortly." · "I'll be past again before lunch." · "Don't worry — I'll be past again in an hour." · "I'll be past again tonight before eight." · "I'll be past again in an hour or so — but press the bell if you need us before then."
+
+### HG54 — "It's half past two, so you've not missed anything — visiting runs till eight. Expecting someone nice?"
+
+Cut: `it's half past two` *(core)* · `so you've not missed anything` **(new: "you've not missed anything")** · `visiting runs till eight` **(new)** · `expecting someone nice` **(new)**
+
+**"you've not missed anything"**
+- BUILD: "you've not missed anything, don't worry" · "and you've not missed anything" · "you've not missed anything yet" · "no — you've not missed anything"
+- USE: "Don't worry — you've not missed anything." · "You've not missed anything; it's only half past two." · "You've not missed anything — lunch is at twelve." · "You've not missed anything yet." · "You've not missed anything, I promise."
+
+**"visiting runs till eight"** — no ZUT fork with HG27: "visiting's two till eight" states the hours, "visiting runs till eight" states the closing time; the knowns differ and each maps once.
+- BUILD: "visiting runs till eight, remember" · "and visiting runs till eight" · "visiting runs till eight tonight" · "visiting runs till eight every day"
+- USE: "Visiting runs till eight, so there's plenty of time." · "Visiting runs till eight tonight." · "You've not missed anything — visiting runs till eight." · "Visiting runs till eight, remember." · "Visiting runs till eight, and it's only half past two."
+
+**"expecting someone nice"**
+- BUILD: "expecting someone nice today?" · "and are you expecting someone nice?" · "expecting someone nice this evening?" · "so — expecting someone nice?"
+- USE: "Expecting someone nice today?" · "Are you expecting someone nice this evening?" · "Expecting someone nice? Visiting runs till eight." · "You look happy — expecting someone nice?" · "And are you expecting someone nice tomorrow?"
+
+### HG55 — "Something to look forward to. Ring the bell if you want a hand tidying up before they come."
+
+Cut: `something to look forward to` **(new)** · `ring the bell` **(new)** · `if you want a hand` **(new)** · `tidying up` **(new)** · `before they come` *(core)*
+
+**"something to look forward to"**
+- BUILD: "something to look forward to, then" · "that's something to look forward to" · "and something to look forward to" · "something to look forward to tonight"
+- USE: "That's something to look forward to." · "Something to look forward to, then!" · "Visitors tonight — something to look forward to." · "The sponge and custard — something to look forward to." · "Home tomorrow would be something to look forward to."
+
+**"ring the bell"**
+- BUILD: "ring the bell, then" · "just ring the bell" · "ring the bell any time" · "ring the bell if you need us"
+- USE: "Ring the bell if you need anything at all." · "Just ring the bell, day or night." · "Ring the bell any time — that's what the bell's for." · "If I'm not about, ring the bell." · "Ring the bell when you're ready."
+
+**"if you want a hand"**
+- BUILD: "if you want a hand, ring the bell" · "and if you want a hand" · "if you want a hand with anything" · "if you want a hand later"
+- USE: "Ring the bell if you want a hand." · "If you want a hand with anything, just say." · "I'm here if you want a hand." · "If you want a hand getting up, ring the bell." · "Any of the team can help if you want a hand."
+
+**"tidying up"**
+- BUILD: "a hand tidying up" · "tidying up before they come" · "a bit of tidying up" · "tidying up this morning"
+- USE: "Do you want a hand tidying up before they come?" · "We'll do a bit of tidying up before visiting." · "I'll give you a hand tidying up." · "A little tidying up, and you're all set." · "Shall we do some tidying up before they come?"
+
+### HG56 — "Of course — no need to apologise. Let's take it steady, hold onto my arm."
+
+Cut: `of course` *(core)* · `no need to apologise` **(new)** · `let's take it steady` **(new)** · `hold onto my arm` *(HG46)*
+
+**"no need to apologise"**
+- BUILD: "no need to apologise, none at all" · "and no need to apologise" · "there's no need to apologise" · "no need to apologise, ever"
+- USE: "There's no need to apologise, ever." · "No need to apologise — this is exactly what we're here for." · "No need to apologise; it's no fuss at all." · "No need to apologise — that's what the bell's for." · "You've done nothing wrong — no need to apologise."
+
+**"let's take it steady"**
+- BUILD: "let's take it steady, then" · "and let's take it steady" · "let's take it steady to the bathroom" · "right — let's take it steady"
+- USE: "Let's take it steady to the bathroom." · "Let's take it steady — there's no prize for rushing." · "Right then, let's take it steady." · "We'll take it steady, nice and slow." · "Let's take it steady — I've got you."
+
+### HG57 — "Ring away — that's what it's for. I'd rather ten small things than one big thing we missed."
+
+Cut: `ring away` **(new)** · `that's what it's for` **(new)** · `I'd rather ten small things` **(new)** · `than one big thing we missed` **(new)**
+
+**"ring away"**
+- BUILD: "ring away, any time" · "you ring away" · "ring away, day or night" · "so ring away"
+- USE: "Ring away, any time at all." · "You ring away, day or night." · "Ring away — I won't be offended." · "Ring away; someone will always come." · "Don't sit there worrying quietly — ring away."
+
+**"that's what it's for"** — no ZUT fork with HG25: "that's what the bell's for" names the bell, "that's what it's for" is the anaphoric form; the knowns differ and each maps once.
+- BUILD: "because that's what it's for" · "and that's what it's for" · "that's what it's for, remember" · "well, that's what it's for"
+- USE: "Press it any time — that's what it's for." · "That's what it's for, remember." · "Use the bell — that's what it's for." · "Don't worry about ringing — that's what it's for." · "Ring away — that's what it's for, day or night."
+
+**"I'd rather ten small things"**
+- BUILD: "I'd rather ten small things, honestly" · "and I'd rather ten small things" · "I'd rather ten small things every day" · "I'd rather ten small things any day"
+- USE: "I'd rather ten small things any day." · "I'd rather ten small things than one big thing." · "Ring away — I'd rather ten small things." · "I'd rather ten small things every day than one big thing we missed." · "I'd rather ten small things, so ring away."
+
+**"than one big thing we missed"**
+- BUILD: "than one big thing we missed, see" · "than one big thing we missed later" · "rather that than one big thing we missed" · "and never one big thing we missed"
+- USE: "Better ten small things than one big thing we missed." · "I'd rather ten small things than one big thing we missed." · "Ten small things are better than one big thing we missed." · "I'd rather anything than one big thing we missed." · "We'd all rather ten small things than one big thing we missed."
+
+**Where the basket work stops: it does not stop short — all 57 seeds, HG01 through HG57, carry complete phrase-minimum cuts and full baskets at the floors.** The depth-before-breadth ruling was applied in earnest: quality was reassessed at the end of each block, and it held — partly because the owned inventory compounds, so later baskets got richer, not thinner. The count: **57 seeds, 132 new LEGOs, 528 BUILD and 660 USE phrases** at exactly the floors, plus the floors' worth wherever a lego wanted more.
