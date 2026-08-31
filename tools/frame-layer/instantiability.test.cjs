@@ -142,5 +142,30 @@ for (const f of FRAMES) {
      'the ceiling is min(phrase count, pool) — the pool binds when it is the smaller');
 }
 
+// 9. THE POST-GENERATION TILING CHECK — the second half of the gate --------
+{
+  const { tilesFromVocab, rejectUntileable } = require('./generate-candidates.cjs');
+  const V2 = (t) => ({ known_text: t, target_text: t });
+  const vocab = ['quiero', 'hablar', 'contigo', 'quiero hablar', 'ahora', 'no'].map(V2);
+  ok(tilesFromVocab('quiero hablar contigo', vocab).tiles, 'a phrase built from cut chunks must tile');
+  ok(tilesFromVocab('Quiero hablar contigo.', vocab).tiles, 'case and punctuation must not defeat the tiling');
+  const bad = tilesFromVocab('quiero comer contigo', vocab);
+  ok(!bad.tiles, 'an invented word must fail the tiling check');
+  ok(bad.untiled.join() === 'comer', 'the rejection must name the material that was not available');
+  // whole-chunk, never re-conjugation: "hablo" is not "hablar"
+  ok(!tilesFromVocab('hablo contigo', vocab).tiles, 'a re-conjugated form must not tile');
+  // longest-first must not strand a valid tiling: "quiero hablar" is a cut AND
+  // so are its two parts, and either decomposition is legitimate
+  ok(tilesFromVocab('quiero hablar', vocab).tiles, 'an overlapping chunk must not block the tiling');
+  ok(tilesFromVocab('no quiero hablar ahora contigo', vocab).tiles, 'a longer legitimate tiling must be found');
+
+  const { kept, rejected } = rejectUntileable(
+    [{ lego_index: 1, known_text: 'I want to speak with you', target_text: 'quiero hablar contigo' },
+     { lego_index: 1, known_text: 'I want to eat with you', target_text: 'quiero comer contigo' }],
+    () => vocab);
+  ok(kept.length === 1 && rejected.length === 1, 'the untileable phrase is rejected BEFORE scoring, not scored low');
+  ok(rejected[0].reason.includes('does not tile'), 'the rejection carries its reason');
+}
+
 console.log(fail ? `${fail} failing assertion(s)` : `ok — the gate refuses "and you?" for spa_for_eng at every position, admits it the day a cut mints it, and all ${FRAMES.length} frames are well-formed`);
 process.exit(fail ? 1 : 0);

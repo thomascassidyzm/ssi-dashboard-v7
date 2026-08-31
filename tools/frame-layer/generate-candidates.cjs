@@ -24,7 +24,7 @@ const fs = require('fs'), path = require('path');
 const { scoreBaskets } = require('./pattern-diversity.cjs');
 const { deriveJob, splitsForBasket } = require('./derive-seed-job.cjs');
 const { loadCorpus, knownSideIsEnglish } = require('./corpus.cjs');
-const { availableVocab, attestedFrames } = require('./availability.cjs');
+const { availableVocab, attestedFrames, instantiableFrameSet, norm } = require('./availability.cjs');
 
 const sb = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY || process.env.SUPABASE_SERVICE_ROLE_KEY);
 const ROOT = path.join(__dirname, '..', '..');
@@ -32,14 +32,83 @@ const OUTDIR = path.join(ROOT, 'labs', 'basket-lab', 'candidates');
 
 const pad = (i) => 'L' + String(i).padStart(2, '0');
 
-function buildPrompt({ seedRow, ownLegos, legos, components, liveBaskets, job, attested }, course, mapping, priorAttempt) {
+/**
+ * THE POST-GENERATION TARGET-TILING CHECK.
+ *
+ * The prompt ASKS the model not to invent vocabulary. Nothing verified it until
+ * API submission, which is far too late and is somebody else's error message.
+ * This is the second half of the structural gate: the first half keeps an
+ * unreachable frame out of the pool; this half keeps an unreachable PHRASE out
+ * of scoring, whatever frame it claims.
+ *
+ * Whole-chunk, longest-first, no re-conjugation and no invention — the same
+ * discipline the validator applies, and deliberately not a fuzzy match: if a
+ * tiling exists it is found, and if none exists the phrase is rejected rather
+ * than repaired. It protects seed-frame phrases exactly as much as pod-frame
+ * ones; a pod frame gets no special suspicion and no special licence.
+ */
+function tilesFromVocab(target, vocab) {
+  const chunks = [...new Set(vocab.map(v => norm(v.target_text)).filter(Boolean))]
+    .sort((a, b) => b.length - a.length);
+  const words = norm(target).split(' ').filter(Boolean);
+  const seen = new Set();
+  const walkFrom = (i) => {
+    if (i >= words.length) return [];
+    if (seen.has(i)) return null;
+    seen.add(i);
+    for (const c of chunks) {
+      const cw = c.split(' ');
+      if (cw.length > words.length - i) continue;
+      if (!cw.every((w, j) => w === words[i + j])) continue;
+      const rest = walkFrom(i + cw.length);
+      if (rest) return [c, ...rest];
+    }
+    return null;
+  };
+  const tiling = walkFrom(0);
+  if (tiling) return { tiles: true, tiling, untiled: [] };
+  // report WHICH material is unavailable, so the rejection is diagnosable
+  const owned = new Set(chunks.flatMap(c => c.split(' ')));
+  return { tiles: false, tiling: null, untiled: [...new Set(words.filter(w => !owned.has(w)))] };
+}
+
+/**
+ * Reject before scoring. A phrase that cannot be tiled is not a low-quality
+ * phrase, it is an unusable one, and letting it into `scoreBaskets` would let
+ * invented vocabulary buy diversity points.
+ */
+function rejectUntileable(phrases, vocabFor) {
+  const kept = [], rejected = [];
+  for (const p of phrases) {
+    const r = tilesFromVocab(p.target_text, vocabFor(p));
+    if (r.tiles) kept.push(p);
+    else rejected.push({ ...p, reason: 'target does not tile from available vocabulary',
+                         untiled: r.untiled });
+  }
+  return { kept, rejected };
+}
+
+function buildPrompt({ seedRow, ownLegos, legos, components, liveBaskets, job, attested, pool }, course, mapping, priorAttempt) {
   // The SHAPES come from the inventory doc; WHICH frames are attested comes from
   // THIS course's own prior seeds (`attested`), never from the doc's `first_seed`
   // — that field was computed over spa_for_eng's seed list and the known side is
   // not one canonical set across the estate.
   const patterns = JSON.parse(fs.readFileSync(path.join(ROOT, 'docs/frame-layer/english-pattern-inventory.json'), 'utf8'));
-  const usable = patterns.patterns.filter(p => attested.has(p.id))
-    .map(p => `${p.id} ${p.name}: ${p.shape}  [class for this pair: ${mapping[p.id] || '—'}]`).join('\n');
+  const byId = Object.fromEntries(patterns.patterns.map(p => [p.id, p]));
+  // THE POOL, with provenance and register readable per line. Seed frames first
+  // (they are the bulk and the familiar ones), then the pod frames the basket
+  // can actually own — a frame whose fixed material this basket has not cut is
+  // not listed here at all, so the generator cannot reach it.
+  const seedLines = pool.filter(p => p.provenance === 'seed' && byId[p.id])
+    .map(p => `${p.id} ${byId[p.id].name}: ${byId[p.id].shape}  [class for this pair: ${mapping[p.id] || '—'}]`);
+  const podLines = pool.filter(p => p.provenance === 'pod').map(p => {
+    const bits = [`${p.position} position`];
+    if (p.register && p.register.length) bits.push(`register: ${p.register.join('/')}`);
+    bits.push(`you own: "${p.owned_via.join(' ')}"`);
+    if (p.grain === 'exchange') bits.push(`exchange frame — write only its ${p.sentence_projection ? `${p.sentence_projection} projection` : 'response half'}`);
+    return `${p.id} ${p.name}  [${bits.join('; ')}]`;
+  });
+  const usable = seedLines.join('\n');
   // The base pool — everything admitted BEFORE this seed — is the same for every
   // basket, so it is stated once. Per-basket windows are stated as deltas off it:
   // repeating a 50,000-character vocabulary list four times quadrupled the prompt.
@@ -85,7 +154,15 @@ ${briefs}
 
 FRAMES YOU MAY INSTANTIATE (attested in the known-language corpus at or before this seed):
 ${usable}
-
+${podLines.length ? `
+CONVERSATIONAL FRAMES YOU MAY ALSO INSTANTIATE. These come from the POD corpus — real dialogue — and they
+are the register the seed corpus cannot attest, because every seed is a statement with no turn before it:
+responses, greetings, thanks, handovers. They are listed here ONLY because this basket already owns the
+material each one needs, quoted after "you own". Use that material exactly as cut; the rest of the phrase
+is ordinary available vocabulary. Frames whose material this basket has not been given are not on this
+list, and you must not reach for them.
+${podLines.join('\n')}
+` : ''}
 BASE VOCABULARY — every known/target pair the course admitted BEFORE this seed, LEGOs and components alike.
 Components are the pieces an M-LEGO was broken into for the learner; they are legitimately seen material and
 they are the connective glue that makes a phrase work on both sides, so use them. Do not invent, re-conjugate
@@ -142,17 +219,28 @@ async function main() {
   const job = deriveJob({ course, seedRow, ownLegos, priorSeeds, priorLegos, priorComponents });
   // per-course frame attestation — never the doc's spa-derived first_seed
   const attested = attestedFrames(priorSeeds, seedRow);
-  const liveScored = scoreBaskets(phrases, { legos: ownLegos, job, instantiableFrames: attested.size });
+  // The pool is per BASKET; the prompt is per SEED, so the listing uses the
+  // seed's widest window (its last lego) and each basket's own brief already
+  // states which of this seed's earlier legos it may use. The GATE that matters
+  // is the tiling check below, which is applied per phrase against that
+  // phrase's own basket window — a listing is an offer, the check is the rule.
+  const seedVocab = availableVocab({ legos, components, seed: seed, legoIndex: null });
+  const pool = instantiableFrameSet({ vocab: seedVocab, priorSeeds, seedRow });
+  const vocabFor = (p) => availableVocab({ legos, components, seed,
+    legoIndex: p.lego_index == null ? null : +p.lego_index });
+  const liveScored = scoreBaskets(phrases, { legos: ownLegos, job, instantiableFrames: pool.length });
   if (!knownSideIsEnglish(course)) {
     console.log(`NOTE: ${course} has a non-English known side; the frame layer's patterns are English regexes and will report nothing here.`);
   }
   const mapping = Object.fromEntries(JSON.parse(fs.readFileSync(path.join(ROOT, 'docs/frame-layer/pair-mapping-classes.json'), 'utf8'))
     .patterns.map(p => [p.id, p.pairs[course]?.class]));
 
+  const podPool = pool.filter(p => p.provenance === 'pod');
   console.log(`${course} seed ${seed} — job: ${job.verdict}`);
+  console.log(`frame pool: ${pool.length} instantiable (${attested.size} seed-attested + ${podPool.length} pod${podPool.length ? ': ' + podPool.map(p => p.id).join(' ') : ''})`);
   console.log(job.sentence + '\n');
 
-  const ctx = { seedRow, ownLegos, legos, components, liveBaskets: liveScored.baskets, job, attested };
+  const ctx = { seedRow, ownLegos, legos, components, liveBaskets: liveScored.baskets, job, attested, pool };
   const attempts = [];
   let best = null, prior = null;
   if (process.env.DUMP_PROMPT) {
@@ -164,11 +252,17 @@ async function main() {
     let parsed;
     try { parsed = callClaude(prompt); }
     catch (e) { attempts.push({ pass: i + 1, error: String(e.message).slice(0, 400) }); continue; }
-    const ph = (parsed.phrases || []).map((p, n) => ({ ...p, position: n + 1 }));
-    const r = scoreBaskets(ph, { legos: ownLegos, job, instantiableFrames: attested.size });
+    const raw = (parsed.phrases || []).map((p, n) => ({ ...p, position: n + 1 }));
+    // THE GATE, before scoring — never after.
+    const { kept: ph, rejected } = rejectUntileable(raw, vocabFor);
+    for (const r of rejected) {
+      console.log(`  REJECTED ${pad(r.lego_index)} "${r.known_text}" || "${r.target_text}" — untileable: ${r.untiled.join(', ')}`);
+    }
+    const r = scoreBaskets(ph, { legos: ownLegos, job, instantiableFrames: pool.length });
     attempts.push({ pass: i + 1, seed_composite: r.seed_composite, seed_pass: r.seed_pass,
-                    failing_baskets: r.failing_baskets, phrase_count: ph.length });
-    console.log(`pass ${i + 1}: ${ph.length} phrases, ${r.seed_pass ? 'ALL BASKETS PASS' : 'failing ' + r.failing_baskets.map(f => pad(f.lego_index)).join(', ')}`);
+                    failing_baskets: r.failing_baskets, phrase_count: ph.length,
+                    rejected_untileable: rejected.map(x => ({ known_text: x.known_text, target_text: x.target_text, untiled: x.untiled })) });
+    console.log(`pass ${i + 1}: ${raw.length} phrases, ${rejected.length} rejected untileable, ${ph.length} scored — ${r.seed_pass ? 'ALL BASKETS PASS' : 'failing ' + r.failing_baskets.map(f => pad(f.lego_index)).join(', ')}`);
     prior = { failing: r.failing_baskets, phrases: ph };
     // "better" = fewer failing baskets; the seed composite is never the decider
     if (!best || r.failing_baskets.length < best.result.failing_baskets.length) best = { phrases: ph, result: r };
@@ -179,6 +273,9 @@ async function main() {
   const build_sha = execFileSync('git', ['rev-parse', '--short', 'HEAD'], { cwd: ROOT, encoding: 'utf8' }).trim();
   const out = { course, seed, generated: new Date().toISOString(), build_sha, model: 'sonnet',
     job: { verdict: job.verdict, sentence: job.sentence },
+    frame_pool: { total: pool.length, seed_attested: attested.size,
+                  pod: podPool.map(p => ({ id: p.id, name: p.name, position: p.position,
+                                           register: p.register, owned_via: p.owned_via })) },
     attempts, phrases: best.phrases,
     baskets: best.result.baskets.map(b => ({ lego_index: b.lego_index, lego: b.lego.known_text,
       composite: b.score && b.score.composite, pass: !!(b.score && b.score.pass),
@@ -194,4 +291,6 @@ async function main() {
   }
   console.log(`\nSEED: ${best.result.seed_pass ? 'PASS' : 'FAIL'} (seed composite ${best.result.seed_composite}, context only)`);
 }
-main().catch(e => { console.error(e.message); process.exit(1); });
+module.exports = { tilesFromVocab, rejectUntileable };
+
+if (require.main === module) main().catch(e => { console.error(e.message); process.exit(1); });
