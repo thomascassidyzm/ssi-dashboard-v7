@@ -3,6 +3,14 @@
 **Live now at [popty.app/canonical/metagraph](https://popty.app/canonical/metagraph)** — verified in the
 deployed bundle at 01:12 UTC on 2026-08-31. Read-only. No course to load, no new API, no new table.
 
+> **Updated 2026-08-31, after the demo-readiness pass.** The numbers below were true when this
+> shipped and are now stale: the store has since grown to **35 shapes**, so POD 1 reads **18 of 35
+> reached, 17 never reached** rather than 18 of 23 and 5. The 17 are not seventeen failures — every
+> one was drawn from another pod's corpus (Method Pod 10, Talk Bollocks 6, Trades 1), and POD 1
+> still reaches all 12 shapes from its own corpus and all 6 bound pairs. The page now breaks
+> coverage out that way rather than reporting one bare number.
+> Pass and before/after: `docs/metagraph-demo-readiness-2026-08-31.md`.
+
 ---
 
 ## What it is
@@ -69,8 +77,10 @@ database — `canonical_pod_walk_steps`, 224 steps across three pods, joined to
 - **125 of POD 1's 231 lines read as UNMAPPED**, and the page says so. That is the store's own named
   gap — 16 of 47 complete walks encoded, 56 rows counted but not yet placed — not a defect in this
   page. Encoding the remaining walks is work on the store.
-- **`pod-1` and `pod-0.5` show zero coverage** on purpose: they are separate slates whose row
-  numbers collide with the graph's by accident, and mapping them would invent coverage.
+- **`pod-1` and `pod-0.5` are no longer offered in the picker** (changed 2026-08-31). They are
+  separate slates whose row numbers collide with the graph's by accident, so they showed zero
+  coverage on purpose — two dead buttons that invited exactly the wrong question. Reversible by
+  removing them from `HIDDEN` in `MetagraphView.vue`.
 - **Survivability edges are not drawn as lines.** They do not join two shapes — they name a pressure
   and the shape it is attemptable on — so they appear on the shape when you open it, not as an edge.
 - **The screenshots were taken through a local harness**, not through the deployed page: Popty gates

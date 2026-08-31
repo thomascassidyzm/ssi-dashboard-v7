@@ -18,7 +18,7 @@
  */
 
 export const TILE_W = 152
-export const TILE_H = 56
+export const TILE_H = 74
 export const GAP_X = 18
 export const GAP_Y = 46
 export const PAD_X = 16
@@ -73,7 +73,11 @@ export function computeLayout (graph) {
     if (members.length) {
       bands.push({
         key: `level-${l}`,
-        label: l === 0 ? 'Containers — shapes nothing contains' : `Contained at depth ${l}`,
+        label: l === 0
+          ? 'Whole exchanges — nothing else contains these'
+          : l === 1
+            ? 'Parts that happen inside the exchanges above'
+            : l === 2 ? 'Parts that happen inside those' : `Parts nested ${l} deep`,
         members
       })
     }
@@ -81,7 +85,7 @@ export function computeLayout (graph) {
   if (looseNodes.length) {
     bands.push({
       key: 'unattached',
-      label: 'No composition edge — unattached to the transactional lattice',
+      label: 'Stand-alone shapes — nothing in the graph contains them',
       members: looseNodes.sort(byId)
     })
   }
