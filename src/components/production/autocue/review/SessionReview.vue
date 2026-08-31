@@ -29,7 +29,7 @@
     <!-- Batch Actions -->
     <div class="batch-actions">
       <button class="batch-btn" @click="$emit('approve-all')">
-        <span class="btn-icon">✓</span> Approve All Unflagged ({{ stats.captured }})
+        <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg> Approve All Unflagged ({{ stats.captured }})
       </button>
       <button
         class="batch-btn"
@@ -37,13 +37,13 @@
         :disabled="!stats.flagged"
         @click="$emit('filter', 'flagged')"
       >
-        <span class="btn-icon">⚠</span> Show Flagged ({{ stats.flagged }})
+        <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z" /><path d="M12 9v4" /><path d="M12 17h.01" /></svg> Show Flagged ({{ stats.flagged }})
       </button>
       <button class="batch-btn" :disabled="!stats.flagged" @click="$emit('queue-redo')">
-        <span class="btn-icon">↻</span> Queue Flagged for Re-record ({{ stats.flagged }})
+        <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-2.6-6.4" /><path d="M21 3v6h-6" /></svg> Queue Flagged for Re-record ({{ stats.flagged }})
       </button>
       <button class="batch-btn" :disabled="!playableCount" @click="$emit('play-all')">
-        <span class="btn-icon">▶</span> Play All ({{ playableCount }})
+        <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m7 4 13 8-13 8z" /></svg> Play All ({{ playableCount }})
       </button>
     </div>
 
@@ -73,7 +73,7 @@
     <!-- Final Actions -->
     <div class="final-actions">
       <button class="control-btn" @click="$emit('back')">
-        <span class="btn-icon">⬅️</span> Back to Recording
+        <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5" /><path d="m12 19-7-7 7-7" /></svg> Back to Recording
       </button>
 
       <!-- The button that makes flagging mean something: go round again over
@@ -88,7 +88,7 @@
           : 'Flag at least one take first'"
         @click="$emit('re-record-flagged')"
       >
-        <span class="btn-icon">⚑</span> Re-record Flagged {{ rejectedIds.length ? `(${rejectedIds.length})` : '' }}
+        <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V4s-1 1-4 1-5-2-8-2-4 1-4 1z" /><path d="M4 22v-7" /></svg> Re-record Flagged {{ rejectedIds.length ? `(${rejectedIds.length})` : '' }}
       </button>
 
       <!-- Script mode has already uploaded every take, so there is nothing left
@@ -103,7 +103,7 @@
           : 'All takes saved — end the session'"
         @click="$emit('finalize')"
       >
-        <span class="btn-icon">✓</span> Done
+        <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg> Done
         <span v-if="rejectedIds.length" class="done-warn">{{ rejectedIds.length }} still flagged</span>
       </button>
 
@@ -117,7 +117,7 @@
         :title="approvedIds.length ? 'Upload approved takes' : 'Approve at least one take first'"
         @click="$emit('finalize')"
       >
-        <span class="btn-icon">✓</span> Finalize &amp; Upload {{ approvedIds.length ? `(${approvedIds.length})` : '' }}
+        <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg> Finalize &amp; Upload {{ approvedIds.length ? `(${approvedIds.length})` : '' }}
       </button>
     </div>
   </div>
@@ -186,71 +186,66 @@ const stats = computed(() => {
 }
 
 .review-header {
-  background: var(--color-shadow, var(--surface));
+  background: var(--surface);
   border: 1px solid var(--line);
-  border-radius: 12px;
+  border-radius: 16px;
   padding: 1.5rem;
   margin-bottom: 1.5rem;
 }
 
 .review-title {
-  font-family: 'Josefin Sans', sans-serif;
-  font-size: 1.8rem;
+  font-size: 1.25rem;
   font-weight: 700;
-  color: var(--color-paper, var(--ink));
+  letter-spacing: -0.01em;
+  color: var(--ink);
   margin: 0 0 0.5rem 0;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
 }
 
 .review-subtitle {
-  color: var(--color-paper-dim, var(--muted));
+  font-size: 0.9375rem;
+  color: var(--muted);
   margin: 0 0 1.5rem 0;
 }
 
 .review-summary {
   display: flex;
-  gap: 1.5rem;
+  gap: 0.75rem;
 }
 
 .summary-stat {
   flex: 1;
   text-align: center;
   padding: 1rem;
-  background: var(--color-slate, var(--surface-2));
+  background: var(--surface-2);
   border: 1px solid var(--line);
-  border-radius: 8px;
+  border-radius: 10px;
 }
 
 .summary-value {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 2rem;
+  font-size: 1.75rem;
   font-weight: 600;
+  font-variant-numeric: tabular-nums;
   display: block;
   margin-bottom: 0.25rem;
 }
 
-.summary-value.captured {
-  color: var(--color-paper, var(--ink));
-}
-
-.summary-value.flagged {
-  color: var(--color-film-red, #e63946);
-  text-shadow: 0 0 20px rgba(230, 57, 70, 0.5);
-}
+.summary-value.captured { color: var(--ink); }
+.summary-value.flagged { color: var(--danger); }
+.summary-value.approved { color: var(--success); }
+.summary-value.rejected { color: var(--danger); }
 
 .summary-label {
-  font-size: 0.85rem;
-  color: var(--color-paper-dim, var(--muted));
+  font-size: 0.7rem;
+  color: var(--muted);
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.1em;
 }
 
 /* Batch Actions */
 .batch-actions {
-  background: var(--color-shadow, var(--surface));
+  background: var(--surface);
   border: 1px solid var(--line);
-  border-radius: 12px;
+  border-radius: 16px;
   padding: 1rem;
   margin-bottom: 1.5rem;
   display: flex;
@@ -259,18 +254,17 @@ const stats = computed(() => {
 
 .batch-btn {
   flex: 1;
-  background: var(--color-slate, var(--surface-2));
+  background: var(--surface-2);
   border: 1px solid var(--line);
-  color: var(--color-paper, var(--ink));
+  color: var(--ink);
   padding: 0.75rem 1rem;
   border-radius: 8px;
-  font-family: 'Josefin Sans', sans-serif;
+  font: inherit;
   font-weight: 600;
-  font-size: 0.9rem;
+  font-size: 0.875rem;
+  min-height: 44px;
   cursor: pointer;
-  transition: all 0.3s ease;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
+  transition: border-color 0.2s ease, background 0.2s ease;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -278,40 +272,25 @@ const stats = computed(() => {
 }
 
 .btn-icon {
-  font-size: 1.1em;
+  width: 16px;
+  height: 16px;
+  flex: none;
 }
 
-.batch-btn:hover {
-  background: var(--color-graphite, var(--surface-3));
-  transform: translateY(-2px);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+.batch-btn:hover:not(:disabled) {
+  border-color: var(--accent);
 }
 
 .batch-btn.active {
-  background: var(--color-tungsten, var(--accent));
-  color: var(--color-void, var(--canvas));
-  border-color: var(--color-tungsten, var(--accent));
+  background: var(--accent);
+  color: var(--canvas);
+  border-color: var(--accent);
 }
 
 .batch-btn:disabled,
 .control-btn:disabled {
-  opacity: 0.4;
+  opacity: 0.45;
   cursor: not-allowed;
-}
-
-.batch-btn:disabled:hover,
-.control-btn:disabled:hover {
-  transform: none;
-  box-shadow: none;
-  background: var(--color-slate, var(--surface-2));
-}
-
-.summary-value.approved {
-  color: var(--color-emerald, #06ffa5);
-}
-
-.summary-value.rejected {
-  color: var(--color-film-red, #e63946);
 }
 
 .filter-bar {
@@ -321,31 +300,29 @@ const stats = computed(() => {
   gap: 1rem;
   margin-bottom: 1rem;
   padding: 0.6rem 1rem;
-  background: var(--color-slate, var(--surface-2));
+  background: var(--surface-2);
   border: 1px solid var(--line);
-  border-radius: 8px;
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 0.85rem;
-  color: var(--color-paper-dim, var(--muted));
+  border-radius: 10px;
+  font-size: 0.875rem;
+  color: var(--muted);
 }
 
 .filter-clear {
   background: transparent;
   border: 1px solid var(--line);
-  color: var(--color-paper, var(--ink));
-  padding: 0.35rem 0.75rem;
-  border-radius: 6px;
+  color: var(--ink);
+  padding: 0.4rem 0.75rem;
+  border-radius: 8px;
   cursor: pointer;
-  font-family: 'Josefin Sans', sans-serif;
+  font: inherit;
   font-weight: 600;
-  text-transform: uppercase;
-  font-size: 0.75rem;
+  font-size: 0.8125rem;
+  min-height: 44px;
 }
 
 .filter-clear:hover {
-  background: var(--color-tungsten, var(--accent));
-  color: var(--color-void, var(--canvas));
-  border-color: var(--color-tungsten, var(--accent));
+  border-color: var(--accent);
+  color: var(--accent);
 }
 
 /* Segments Grid */
@@ -360,64 +337,63 @@ const stats = computed(() => {
 .final-actions {
   display: flex;
   justify-content: center;
-  gap: 1rem;
+  flex-wrap: wrap;
+  gap: 0.75rem;
   margin-top: 2rem;
   padding-top: 2rem;
   border-top: 1px solid var(--line);
 }
 
 .control-btn {
-  background: var(--color-slate, var(--surface-2));
-  border: 2px solid var(--line);
-  color: var(--color-paper, var(--ink));
+  background: var(--surface);
+  border: 1px solid var(--line);
+  color: var(--ink);
   padding: 0.75rem 1.5rem;
   border-radius: 12px;
-  font-family: 'Josefin Sans', sans-serif;
+  font: inherit;
   font-weight: 600;
-  font-size: 1rem;
+  font-size: 0.9375rem;
+  min-height: 44px;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: border-color 0.2s ease, opacity 0.2s ease;
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
 }
 
-.control-btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.4);
-  border-color: var(--color-tungsten, var(--accent));
+.control-btn:hover:not(:disabled) {
+  border-color: var(--accent);
 }
 
 .control-btn.retake {
-  background: var(--color-film-red, #e63946);
-  border-color: var(--color-film-red, #e63946);
-  color: #fff;
+  background: var(--danger);
+  border-color: var(--danger);
+  color: var(--canvas);
 }
 
 .control-btn.retake:hover:not(:disabled) {
-  box-shadow: 0 8px 32px rgba(230, 57, 70, 0.4);
+  border-color: var(--danger);
+  opacity: 0.9;
 }
 
 /* An outstanding-flag count rides on the Done button rather than blocking it:
    ending with flags left is allowed, it just must never be silent. */
 .done-warn {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 0.7rem;
-  text-transform: none;
+  font-size: 0.75rem;
+  font-weight: 400;
   opacity: 0.85;
   margin-left: 0.4rem;
 }
 
 .control-btn.success {
-  background: linear-gradient(135deg, var(--color-emerald, #06ffa5), #04cc84);
-  border-color: var(--color-emerald, #06ffa5);
-  color: var(--color-void, var(--canvas));
+  background: var(--accent-2);
+  border-color: var(--accent-2);
+  color: var(--canvas);
 }
 
-.control-btn.success:hover {
-  box-shadow: 0 8px 32px rgba(6, 255, 165, 0.4);
+.control-btn.success:hover:not(:disabled) {
+  border-color: var(--accent-2);
+  opacity: 0.9;
 }
 
 @media (max-width: 768px) {

@@ -1,7 +1,10 @@
 <template>
   <div class="role-selector">
     <div class="role-setup-card">
-      <button class="back-to-modes" @click="emit('back')">← Back to modes</button>
+      <button class="back-to-modes" @click="emit('back')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5" /><path d="m12 19-7-7 7-7" /></svg>
+        Back to modes
+      </button>
       <h2 class="setup-title">Recording Session Setup</h2>
 
       <div class="course-info">
@@ -138,161 +141,157 @@ function beginSession() {
 }
 
 .role-setup-card {
-  background: linear-gradient(135deg, var(--color-shadow, var(--surface)), var(--color-slate, var(--surface-2)));
-  border: 2px solid var(--color-graphite, var(--surface-3));
+  background: var(--surface);
+  border: 1px solid var(--line);
   border-radius: 16px;
-  padding: 2.5rem;
-  position: relative;
+  padding: 2rem;
 }
 
+/* The other way back to the mode chooser, kept exactly where it was — the
+   breadcrumb above is the same gesture, this is the one already under the
+   recordist's thumb. */
 .back-to-modes {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
   background: none;
   border: none;
-  color: var(--color-paper-dim, var(--muted));
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 0.85rem;
+  color: var(--accent-2);
+  font: inherit;
+  font-size: 0.875rem;
   cursor: pointer;
   padding: 0;
   margin-bottom: 1.5rem;
+  min-height: 44px;
 }
 
-.back-to-modes:hover {
-  color: var(--color-tungsten, var(--accent));
-}
+.back-to-modes svg { width: 16px; height: 16px; }
 
 .setup-title {
-  font-family: 'Josefin Sans', sans-serif;
-  font-size: 1.75rem;
+  font-size: 1.25rem;
   font-weight: 700;
-  color: var(--color-paper, var(--ink));
-  margin: 0 0 2rem 0;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  margin: 0 0 1.5rem 0;
   text-align: center;
 }
 
 .course-info {
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 1.75rem;
 }
 
 .course-label {
-  font-size: 1rem;
-  color: var(--color-paper-dim, var(--muted));
+  font-size: 0.9375rem;
+  color: var(--muted);
+  margin-right: 0.35rem;
 }
 
 .course-name {
   font-weight: 600;
-  color: var(--color-paper, var(--ink));
+  color: var(--ink);
 }
 
 .selection-label {
   display: block;
-  font-family: 'Josefin Sans', sans-serif;
-  font-size: 0.85rem;
+  font-size: 0.875rem;
   font-weight: 600;
-  color: var(--color-paper-dim, var(--muted));
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  margin-bottom: 1rem;
+  color: var(--ink);
+  margin-bottom: 0.75rem;
   text-align: center;
 }
 
 .role-options {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
-  margin-bottom: 2rem;
+  gap: 0.75rem;
+  margin-bottom: 1.75rem;
 }
 
 .role-option {
-  background: var(--color-void, var(--canvas));
-  border: 2px solid var(--color-graphite, var(--surface-3));
+  background: var(--surface-2);
+  border: 1px solid var(--line);
   border-radius: 12px;
-  padding: 1.5rem;
+  padding: 1.25rem;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: border-color 0.2s ease, background 0.2s ease;
   text-align: center;
 }
 
 .role-option:hover {
-  border-color: var(--color-tungsten, var(--accent));
-  transform: translateY(-4px);
-  box-shadow: 0 8px 24px rgba(255, 166, 48, 0.3);
+  border-color: var(--accent);
 }
 
 .role-option.selected {
-  border-color: var(--color-tungsten, var(--accent));
-  background: linear-gradient(135deg, rgba(255, 166, 48, 0.15), transparent);
-  box-shadow: 0 0 30px rgba(255, 166, 48, 0.3);
+  border-color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 10%, var(--surface-2));
 }
 
 /* The slot this recordist is cast in — readable at a glance even unselected. */
 .role-option.mine {
   border-style: dashed;
-  border-color: var(--color-tungsten, var(--accent));
+  border-color: var(--accent);
 }
 
 .assigned-note {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 0.85rem;
-  color: var(--color-paper-dim, var(--muted));
+  font-size: 0.875rem;
+  color: var(--muted);
   margin: 0 0 0.75rem;
+  text-align: center;
 }
 
+.assigned-note strong { color: var(--ink); }
+
 .role-type {
-  font-family: 'Josefin Sans', sans-serif;
-  font-size: 1rem;
+  font-size: 0.9375rem;
   font-weight: 700;
-  color: var(--color-paper, var(--ink));
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
+  color: var(--ink);
   margin-bottom: 0.25rem;
 }
 
 .role-language {
-  font-size: 1.2rem;
-  color: var(--color-paper-dim, var(--muted));
+  font-size: 1rem;
+  color: var(--muted);
   margin-bottom: 1rem;
 }
 
 .role-radio {
-  width: 24px;
-  height: 24px;
-  border: 3px solid var(--color-graphite, var(--surface-3));
+  width: 22px;
+  height: 22px;
+  border: 2px solid var(--surface-3);
   border-radius: 50%;
   margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.3s ease;
+  transition: border-color 0.2s ease, background 0.2s ease;
 }
 
 .role-option.selected .role-radio {
-  border-color: var(--color-tungsten, var(--accent));
-  background: var(--color-tungsten, var(--accent));
-  box-shadow: 0 0 16px rgba(255, 166, 48, 0.6);
+  border-color: var(--accent);
+  background: var(--accent);
 }
 
 .role-option.selected .role-radio::after {
   content: '';
   width: 8px;
   height: 8px;
-  background: var(--color-void, var(--canvas));
+  background: var(--canvas);
   border-radius: 50%;
 }
 
 .session-summary {
-  background: var(--color-void, var(--canvas));
+  background: var(--surface-2);
+  border: 1px solid var(--line);
   border-radius: 12px;
-  padding: 1.5rem;
-  margin-bottom: 2rem;
+  padding: 1.25rem;
+  margin-bottom: 1.75rem;
   text-align: center;
 }
 
 .summary-line {
-  font-size: 1rem;
-  color: var(--color-paper-dim, var(--muted));
+  font-size: 0.9375rem;
+  color: var(--muted);
   margin-bottom: 0.5rem;
 }
 
@@ -301,42 +300,32 @@ function beginSession() {
 }
 
 .summary-line strong {
-  color: var(--color-emerald, #06ffa5);
-  font-family: 'IBM Plex Mono', monospace;
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
 }
 
 .begin-btn {
   width: 100%;
-  background: linear-gradient(135deg, var(--color-film-red, #e63946), #c4313d);
-  border: 2px solid var(--color-film-red, #e63946);
-  color: var(--color-paper, var(--ink));
-  padding: 1rem 2rem;
+  background: var(--accent-2);
+  border: 1px solid var(--accent-2);
+  color: var(--canvas);
+  padding: 0.875rem 2rem;
   border-radius: 12px;
-  font-family: 'Josefin Sans', sans-serif;
-  font-weight: 700;
-  font-size: 1.25rem;
+  font: inherit;
+  font-weight: 600;
+  font-size: 1rem;
+  min-height: 44px;
   cursor: pointer;
-  transition: all 0.3s ease;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  box-shadow: 0 4px 16px rgba(230, 57, 70, 0.4);
+  transition: opacity 0.2s ease;
 }
 
 .begin-btn:hover:not(:disabled) {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 32px rgba(230, 57, 70, 0.6);
+  opacity: 0.9;
 }
 
 .begin-btn:disabled {
-  opacity: 0.4;
+  opacity: 0.45;
   cursor: not-allowed;
-}
-
-/* In light mode --ink flips to near-black, which would put dark text on the
-   saturated red CTA (muddy, ~4.3:1). Keep the button label light, as it is in
-   dark mode, for a crisp white-on-red CTA. Scoped so dark mode is untouched. */
-:root[data-theme="light"] .begin-btn {
-  color: #ffffff;
 }
 
 @media (max-width: 768px) {
