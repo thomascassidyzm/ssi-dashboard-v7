@@ -40,6 +40,7 @@
 
 require('dotenv').config({ path: require('path').resolve(__dirname, '../.env') })
 const fs = require('fs')
+const consentGate = require('../services/shared/voice-consent-gate.cjs')
 const path = require('path')
 const { createClient } = require('@supabase/supabase-js')
 const { assignVoices, canonicalSpeakerName, loadVoicePools, poolKeysForCourse } = require('./pod-sync.cjs')
@@ -326,6 +327,15 @@ async function recastCourse(courseCode, pools, opts) {
 
     if (opts.apply) {
       await assertNoDrift(pod)
+      // NO CONSENT, NO CAST (Tom, 2026-08-31). An offline script writing the
+      // same speakers column as the API route needs the same lock, or the rule
+      // holds only for people who use the screen.
+      for (const [speaker, entry] of Object.entries(r.after || {})) {
+        for (const leg of ['known', 'target']) {
+          const vid = entry && entry[leg] && (entry[leg].voice_id || entry[leg].voiceId)
+          if (vid) await consentGate.assertConsented(String(vid), { db: supabase, context: `${pod.id} ${speaker}.${leg}` })
+        }
+      }
       // MAKE BEFORE BREAK: speakers only. No audio-id nulling. See file header.
       const { error: upErr } = await supabase.from('listening_pods')
         .update({ speakers: r.after, updated_at: new Date().toISOString() })

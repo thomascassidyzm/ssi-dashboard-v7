@@ -50,6 +50,7 @@ const {
 const { canonicalLanguage, canonicalVoiceId, ClipIdentityError } = require('../shared/clip-identity.cjs')
 const { audioKeyCandidates } = require('../shared/text-normalize.cjs')
 const { bucketKey } = require('../shared/dialect.cjs')
+const consentGate = require('../shared/voice-consent-gate.cjs')
 
 const MAX_TAKE_BYTES = 60 * 1024 * 1024
 
@@ -655,6 +656,16 @@ module.exports = function createRecordistRouter({
             canonicalVoiceId(entry.voiceId)
           } catch (e) {
             return res.status(400).json({ error: `voices.${slot}.voiceId: ${e.message}` })
+          }
+          // ── NO CONSENT, NO CAST (Tom, 2026-08-31) ────────────────────────
+          // This policy row is what routes a language's recording queue to a
+          // named person's voice, so it is a cast in everything but table name
+          // and takes the same lock as the Voice Lab's slot endpoint. Checked
+          // before the upsert: a refused policy writes nothing at all.
+          try {
+            await consentGate.assertConsented(String(entry.voiceId), { db: db(), context: `${language} recording policy ${slot}` })
+          } catch (err) {
+            return res.status(err.status || 409).json({ error: err.message, code: err.code || 'NO_RECORDED_CONSENT', slot, voiceId: entry.voiceId })
           }
         }
       }

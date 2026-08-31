@@ -49,6 +49,7 @@ import { getSupabase } from './lib/supabase.js'
 import { verifySupabaseJWT } from './lib/auth.js'
 import approvals from '../services/pod-voice-approvals.cjs'
 import podSync from '../tools/pod-sync.cjs'
+import consentGate from '../services/shared/voice-consent-gate.cjs'
 
 const { castFingerprint, loadCastPods, loadApprovals, evaluateApproval, resolveCurrentPod0 } = approvals
 const { assignVoices, loadVoicePools, poolKeysForCourse, canonicalSpeakerName } = podSync
@@ -183,6 +184,25 @@ async function postApply(req, res, supabase, user) {
   }
   if (!Object.keys(overrides).length) {
     return res.status(400).json({ error: 'nothing to apply — give at least one of target.m / target.f / known.m / known.f' })
+  }
+
+  // ── NO CONSENT, NO CAST (Tom's ruling, 2026-08-31) ────────────────────────
+  // "we are never going to use a voice without consent." This route writes
+  // listening_pods.speakers, which is a cast in every sense that matters — it
+  // decides who speaks a pod to a learner — so it takes the same lock as the
+  // Voice Lab's slot endpoint. The pools it picks from are vendor stock today,
+  // which is exactly why the check costs nothing and is worth having: the day
+  // a clone enters a pool, nobody has to remember this route exists.
+  for (const [track, slot] of Object.entries(overrides)) {
+    for (const [gender, entry] of Object.entries(slot || {})) {
+      const vid = entry && entry.voice_id
+      if (!vid) continue
+      try {
+        await consentGate.assertConsented(String(vid), { db: supabase, provider: entry.provider || null, context: `${courseCode} pod cast ${track}.${gender}` })
+      } catch (err) {
+        return res.status(err.status || 409).json({ error: err.message, code: err.code || 'NO_RECORDED_CONSENT', where: `${track}.${gender}`, voiceId: vid })
+      }
+    }
   }
 
   const course = await courseOf(supabase, courseCode)

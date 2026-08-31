@@ -10,6 +10,7 @@ const path = require('path');
 const sdk = require('microsoft-cognitiveservices-speech-sdk');
 const langService = require('./language-code-service.cjs');
 const { ellipsisToSSMLBreaks } = require('./shared/ellipsis-ssml.cjs');
+const consentGate = require('./shared/voice-consent-gate.cjs');
 
 // Configuration from environment
 const AZURE_SPEECH_KEY = process.env.AZURE_SPEECH_KEY;
@@ -305,6 +306,13 @@ function applyRegenerationVariation(text, attemptNumber = 0) {
  * @returns {Promise<boolean>} True if successful
  */
 async function generateAudio(text, voiceName, outputPath, speed = 1.0) {
+  // NO CONSENT, NO SPEECH (Tom, 2026-08-31). Azure speaks vendor stock voices,
+  // so in practice this gate passes everything it sees — but this service is
+  // called DIRECTLY by welcome-service, phase8-audio-from-baskets, the
+  // orchestrator's preview route and voice-discovery-service, every one of which
+  // walks past tts-service.generate(). A structural guard on the door beats a
+  // reassurance about who currently walks through it.
+  await consentGate.assertConsentedForRender(String(voiceName), { provider: 'azure', context: 'azure.generateAudio' });
   await rateLimitRequest();
 
   return new Promise((resolve, reject) => {
@@ -356,6 +364,13 @@ async function generateAudio(text, voiceName, outputPath, speed = 1.0) {
  * @returns {Promise<Buffer>} Audio buffer
  */
 async function generateSpeech(text, voiceName, language, options = {}) {
+  // NO CONSENT, NO SPEECH (Tom, 2026-08-31). Azure speaks vendor stock voices,
+  // so in practice this gate passes everything it sees — but this service is
+  // called DIRECTLY by welcome-service, phase8-audio-from-baskets, the
+  // orchestrator's preview route and voice-discovery-service, every one of which
+  // walks past tts-service.generate(). A structural guard on the door beats a
+  // reassurance about who currently walks through it.
+  await consentGate.assertConsentedForRender(String(voiceName), { provider: 'azure', context: 'azure.generateSpeech' });
   const speed = options.rate || 1.0;
   const regenerationAttempt = options.regenerationAttempt || 0;
 

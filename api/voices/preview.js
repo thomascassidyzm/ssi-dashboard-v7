@@ -11,6 +11,9 @@
  * Returns: audio/mpeg stream
  */
 
+import consentGate from '../../services/shared/voice-consent-gate.cjs';
+import { getSupabase } from '../lib/supabase.js';
+
 const AZURE_SPEECH_REGION = process.env.AZURE_SPEECH_REGION || 'westeurope';
 const AZURE_SPEECH_KEY = process.env.AZURE_SPEECH_KEY;
 
@@ -50,6 +53,17 @@ export default async function handler(req, res) {
     }
     if (text.length > 1000) {
       return res.status(400).json({ error: 'Text too long (max 1000 characters for preview)' });
+    }
+
+    // NO CONSENT, NO SPEECH (Tom, 2026-08-31). This route synthesises straight
+    // from a voice id in the request body — no session, no auth, its own hand-
+    // built SSML and its own fetch — so nothing upstream can protect it. Azure
+    // only ever speaks stock voices, so this passes in practice; it is here
+    // because "the provider happens not to hold a clone today" is not a guard.
+    try {
+      await consentGate.assertConsented(String(voiceId), { db: getSupabase(), provider: 'azure', context: 'api/voices/preview' });
+    } catch (err) {
+      return res.status(409).json({ error: err.message, code: err.code || 'NO_RECORDED_CONSENT' });
     }
 
     console.log('[Preview] Generating:', { voiceId, textLength: text.length, style, rate });

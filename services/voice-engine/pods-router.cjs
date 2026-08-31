@@ -59,6 +59,7 @@ const {
   mergeCastAliases,
 } = require('./pods-cast.cjs')
 const { buildRecordingPlan, finalizeRecordingPlan, DEFAULT_CUE_COUNT } = require('./pods-plan.cjs')
+const consentGate = require('../shared/voice-consent-gate.cjs')
 
 // Explainer narration is deprecated (2026-08-24): explainer_text /
 // explainer_audio_id are deliberately NOT selected — the columns and their rows
@@ -433,6 +434,23 @@ module.exports = function createPodsCastRouter({
       }
 
       const db = getDb()
+
+      // ── NO CONSENT, NO CAST (Tom, 2026-08-31) ──────────────────────────
+      // "we are never going to use a voice without consent." This is a cast
+      // write that goes straight to courses.voice_config, so it is a second
+      // door onto the same room as the Voice Lab's slot endpoint and needs the
+      // same lock. Checked BEFORE the merge so a refused cast writes nothing.
+      // Only the entries being SET are checked; clearing one (null) never is.
+      for (const [speaker, entry] of Object.entries(updates)) {
+        const vid = entry && entry.voiceId
+        if (!vid) continue
+        try {
+          await consentGate.assertConsented(String(vid), { db, context: `${courseCode} podCast ${speaker}` })
+        } catch (err) {
+          return res.status(err.status || 409).json({ error: err.message, code: err.code || 'NO_RECORDED_CONSENT', speaker, voiceId: vid })
+        }
+      }
+
       const { found, voiceConfig } = await fetchVoiceConfig(db, courseCode)
       if (!found) return res.status(404).json({ error: `Course ${courseCode} not found` })
 
