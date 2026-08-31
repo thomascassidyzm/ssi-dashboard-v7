@@ -23,21 +23,22 @@
     "policy": "A RECOVERY ATTACHES, IT DOES NOT APPEND (Tom's ruling, 2026-08-31): a pod is a branch point with its continuations attached, so each recovery is the other half of a move CORE already teaches, and hangs off the scene that exists. CORE's existing order is untouched — walks/pod-0.json is not modified and nothing is reordered. Each walk here names the pod-0 walk and step it attaches to, restages that turn as a quotation, and continues it inside the same encounter. A recovery three scenes later would be worth nothing; every one of these arrives while the learner is in the trouble the branch just made."
   },
   "accounting": {
-    "authored_walks": 1,
-    "turns_total": 6,
-    "restaged_turns": 2,
-    "authored_turns": 4,
+    "authored_walks": 2,
+    "turns_total": 12,
+    "restaged_turns": 3,
+    "authored_turns": 9,
     "corpus_rows": 0,
     "corpus_rows_note": "Zero, and that is the point: nothing here is a transcription. The restaged turns are quotations of pod-0 rows and are counted only in walks/pod-0.json.",
     "walks": {
-      "W1301": "S2 (A1001) — the hedge acted on and turned out wrong, scene 2, attached at pod-0 W3 step 4"
+      "W1301": "S2 (A1001) — the hedge acted on and turned out wrong, scene 2, attached at pod-0 W3 step 4",
+      "W1302": "M1 (A1002) — 'I don't know', held with status, the third arm on the canon's one stored branch, scene 3, attached at pod-0 W1 step 4"
     }
   },
   "coverage_of_the_graph": {
-    "nodes": ["N3", "N4"],
+    "nodes": ["N3", "N4", "N13", "N2"],
     "composition_edges_used": [],
-    "survivability_edges_touched": ["S2"],
-    "note": "S2 is the only corpus-attested edge with no recovery anywhere in the estate — five hedges attested, not one ever taken up. W1301 is its first."
+    "survivability_edges_touched": ["S2", "M1"],
+    "note": "S2 is the only corpus-attested edge with no recovery anywhere in the estate — five hedges attested, not one ever taken up; W1301 is its first. M1's recovery gives O2 ('nobody knows') its first dialogic home in CORE: the canon's recorded property is that nobody in it ever fails, and W1302 is the first turn in CORE where a responder does not know the answer."
   },
   "walks": [
     {
@@ -107,6 +108,78 @@
           "surface": "Do that. It's the last stop, anyway — you can't miss it.",
           "move": "F2",
           "note": "Confirm plus something thrown in, F2 — and the something is certainty, offered exactly where certainty exists. The passenger only ever estimated the distance, but the route's last stop is a fact; the contrast between the hedged answer and the unhedged one is the quietest lesson in the walk."
+        }
+      ]
+    },
+    {
+      "id": "W1302",
+      "name": "Scene 3 — 'I don't know', held with status: the third arm at the café (M1)",
+      "scene": 3,
+      "nodes_traversed": ["N3", "N13", "N2"],
+      "composition_edges_used": [],
+      "survivability_edges_touched": ["M1"],
+      "outcome_shape": "O2",
+      "attaches_to": { "walk": "W1", "step": 4, "node": "N3", "position": 2, "attachment": "A1002" },
+      "note": "The café, pod-0 W1's world, mid-order: the coffee is already being made. The canon's one stored branch forks the crisps question into yes (g16) and no (g15); this walk is its third arm — the answer that is neither, because the barista genuinely cannot know yet: today's delivery is still in its boxes. The not-knowing is held with status — the boxes have the answer even though the barista does not — and that status is what licenses Sarah's next move: re-route the ask from the person to the means, O2's own recovery, staged transactionally. CORE trains asking, and asking summons this answer; before this walk, no responder anywhere in CORE ever failed to know anything.",
+      "steps": [
+        {
+          "step": 1,
+          "node": "N3",
+          "position": 1,
+          "speaker": "Sarah",
+          "surface": "Do you have crisps, or nuts, or anything?",
+          "move": null,
+          "composed_in": { "node": "N2", "position": 3 },
+          "restaged": true,
+          "note": "Quotation of the canon's availability ticket (pod-0 W1 step 3). The coffee was ordered two turns ago and is on its way — that fact does quiet work at step 3."
+        },
+        {
+          "step": 2,
+          "node": "N13",
+          "position": 2,
+          "speaker": "Barista",
+          "surface": "I honestly don't know — today's delivery is still in its boxes. There might be crisps in there; there might not.",
+          "move": "F15",
+          "composed_in": { "node": "N3", "position": 2 },
+          "branch_point": true,
+          "via_branch": "the third arm — neither the canon's no (g15) nor its yes (g16)",
+          "note": "N13's I-don't-know, filling N3's answer slot, and the world explains why a barista can fail to know their own stock: the delivery only just arrived and nobody has opened it. The not-knowing is held WITH STATUS — the barista names exactly where the answer lives — and that is the difference between a dead end and a door. F15 with the account standing visibly in the room, boxes and all."
+        },
+        {
+          "step": 3,
+          "node": "N13",
+          "position": 3,
+          "speaker": "Sarah",
+          "surface": "Would you have a look? No rush — I'm waiting on my coffee anyway.",
+          "move": null,
+          "note": "The question the not-knowing licenses — N13's own third position, and O2's recovery in one turn: the ask re-routed from the person to the means. The world makes the request cheap to grant: her coffee is still being made, so the minute the boxes cost was already spoken for. A learner who owns this turn is never stranded by 'I don't know' again — they ask the question it points to."
+        },
+        {
+          "step": 4,
+          "node": "N3",
+          "position": 2,
+          "speaker": "Barista",
+          "surface": "Right — you're in luck. Crisps, two kinds. No nuts, though.",
+          "move": "F2",
+          "note": "The deferred answer, back from the boxes: the availability ticket finally gets what the canon's branch gives it immediately, one loop later. F2 — the answer plus what was thrown in, the exact count and the honest no on the nuts. From here the walk rejoins the canon's yes branch."
+        },
+        {
+          "step": 5,
+          "node": "N2",
+          "position": 4,
+          "speaker": "Sarah",
+          "surface": "Crisps will do nicely — salted, please.",
+          "move": "F1",
+          "note": "Re-select and specify, the transaction resuming as if the loop had never happened — because to the transaction, it hadn't: the detour cost one turn each way and nothing else, which is the whole lesson."
+        },
+        {
+          "step": 6,
+          "node": "N2",
+          "position": 5,
+          "speaker": "Barista",
+          "surface": "Here's your coffee — and your crisps.",
+          "move": "F1",
+          "note": "Delivery, echoing the canon's own g18 shape with the recovered item riding alongside. The canon's close (thanks and goodbye) follows unchanged."
         }
       ]
     }
