@@ -471,25 +471,40 @@ function checkPhraseBalance(phrases, balanceData, courseCode) {
 }
 
 // ─── LEGO conflict detection (ZUT + overlap) ───────────────────────────
+// A sector segment is registered as its own course code but is one course to
+// the learner, so every check below takes an optional `opts.family` and reads
+// the whole family. No family (every course today) = the single-course query
+// these functions have always run. sector-helix §5b/§6; course-family.cjs.
+const { zutScope } = require('./course-family.cjs');
 
 /**
  * Check for LEGO conflicts before insertion.
  * Returns: { conflict: false } | { conflict: 'duplicate', ... } | { conflict: 'zut', ... }
  */
-async function checkLegoConflict(supabase, courseCode, knownText, targetText, currentSeedNumber = null) {
-  let query = supabase
-    .from('course_legos')
-    .select('seed_number, lego_index, known_text, target_text, type')
-    .eq('course_code', courseCode)
-    .eq('known_text', knownText);
+async function checkLegoConflict(supabase, courseCode, knownText, targetText, currentSeedNumber = null, opts = {}) {
+  // THE FAMILY IS THE INPUT, THE GATE IS UNCHANGED (sector-helix §6). With no
+  // family this is one query on one course code — byte-identically what the 130
+  // live courses do. With a family it is the same query per family member: the
+  // seed-number bound applies only to the course being authored, because seed
+  // numbering is a per-course namespace and a sibling's seed 3 is not "before"
+  // or "after" anything here. ZUT is content-keyed, so it is unbounded across
+  // the family: a fork is a fork whenever it lands.
+  const scope = zutScope(courseCode, opts.family);
+  const fetchOne = async (code) => {
+    let query = supabase
+      .from('course_legos')
+      .select('seed_number, lego_index, known_text, target_text, type')
+      .eq('course_code', code)
+      .eq('known_text', knownText);
+    if (code === courseCode && currentSeedNumber !== null) query = query.lt('seed_number', currentSeedNumber);
+    const { data, error } = await query;
+    if (error) throw new Error(`Conflict check failed: ${error.message}`);
+    // tagged with a key that is NOT a column, so the tag can never be confused
+    // with a row that happened to be selected with its own course_code
+    return (data || []).map(r => (code === courseCode ? r : { ...r, __course: code }));
+  };
+  const existing = (await Promise.all(scope.map(fetchOne))).flat();
 
-  if (currentSeedNumber !== null) {
-    query = query.lt('seed_number', currentSeedNumber);
-  }
-
-  const { data: existing, error } = await query;
-
-  if (error) throw new Error(`Conflict check failed: ${error.message}`);
   if (!existing || existing.length === 0) return { conflict: false };
 
   const sameTarget = existing.find(e => e.target_text === targetText);
@@ -505,12 +520,17 @@ async function checkLegoConflict(supabase, courseCode, knownText, targetText, cu
   const existingTargets = existing.map(e => ({
     target: e.target_text,
     legoId: `S${String(e.seed_number).padStart(4,'0')}L${String(e.lego_index).padStart(2,'0')}`,
+    // present ONLY when the collision came from a sibling course, so a
+    // single-course message stays byte-identical to the one it always was
+    ...(e.__course ? { courseCode: e.__course } : {}),
   }));
+  const foreign = existing.find(e => e.__course);
 
   return {
     conflict: 'zut',
     existing: existingTargets,
-    error: `ZUT violation: "${knownText}" already maps to "${existing[0].target_text}"`,
+    error: `ZUT violation: "${knownText}" already maps to "${existing[0].target_text}"`
+      + (foreign ? ` in ${foreign.__course} (same course family — to the learner it is one course)` : ''),
     suggestions: [
       `UPCHUNK: Add context to disambiguate (recommended)`,
       `  - "${knownText}" → "${existing[0].target_text}" (existing)`,
@@ -525,11 +545,11 @@ async function checkLegoConflict(supabase, courseCode, knownText, targetText, cu
 /**
  * Check if a LEGO represents an overlapping chunk.
  */
-async function checkLegoOverlap(supabase, courseCode, knownText, targetText) {
+async function checkLegoOverlap(supabase, courseCode, knownText, targetText, opts = {}) {
   const { data: allLegos, error } = await supabase
     .from('course_legos')
     .select('seed_number, lego_index, known_text, target_text, type')
-    .eq('course_code', courseCode);
+    .in('course_code', zutScope(courseCode, opts.family));
 
   if (error || !allLegos) return { isOverlap: false, containedLegos: [] };
 
@@ -630,7 +650,7 @@ function formatDecompositionPatterns(goldenSeeds) {
 // collision); only a genuinely different target for the same English collides.
 // Resolution (the builder must do one): CONSOLIDATE to the existing target, or
 // DIFFERENTIATE the English prompt so each maps uniquely.
-async function checkPhraseZUT(supabase, courseCode, phrases, currentSeedNumber = null) {
+async function checkPhraseZUT(supabase, courseCode, phrases, currentSeedNumber = null, opts = {}) {
   const nk = s => (s || '').toLowerCase().trim().replace(/[.?!,，。？！、]+$/, '');
   const nt = s => (s || '').replace(/[\s。，？！、.?!,]/g, '');
   const subByKnown = new Map(); // normKnown -> { known, target, normTarget }
@@ -642,13 +662,18 @@ async function checkPhraseZUT(supabase, courseCode, phrases, currentSeedNumber =
   }
   if (!rawKnowns.length) return [];
 
-  const fetch = async (table) => {
-    let q = supabase.from(table).select('known_text, target_text, seed_number').eq('course_code', courseCode).in('known_text', [...new Set(rawKnowns)]);
-    if (currentSeedNumber !== null) q = q.lt('seed_number', currentSeedNumber);
+  // Same widening as checkLegoConflict: the family is the input, the comparison
+  // is untouched. Seed-number bound on the authored course only.
+  const scope = zutScope(courseCode, opts.family);
+  const fetch = async (table, code) => {
+    let q = supabase.from(table).select('known_text, target_text, seed_number').eq('course_code', code).in('known_text', [...new Set(rawKnowns)]);
+    if (code === courseCode && currentSeedNumber !== null) q = q.lt('seed_number', currentSeedNumber);
     const { data } = await q;
-    return data || [];
+    return (data || []).map(r => (code === courseCode ? r : { ...r, __course: code }));
   };
-  const existing = [...(await fetch('course_practice_phrases')), ...(await fetch('course_legos'))];
+  const existing = (await Promise.all(
+    scope.flatMap(code => [fetch('course_practice_phrases', code), fetch('course_legos', code)])
+  )).flat();
 
   const collisions = [], seen = new Set();
   for (const e of existing) {
@@ -657,7 +682,8 @@ async function checkPhraseZUT(supabase, courseCode, phrases, currentSeedNumber =
     if (nt(e.target_text) !== sub.normTarget) {
       const key = `${nk(e.known_text)}|${nt(e.target_text)}`;
       if (seen.has(key)) continue; seen.add(key);
-      collisions.push({ known: sub.known, new_target: sub.target, existing_target: e.target_text, existing_seed: e.seed_number });
+      collisions.push({ known: sub.known, new_target: sub.target, existing_target: e.target_text, existing_seed: e.seed_number,
+                        ...(e.__course ? { existing_course: e.__course } : {}) });
     }
   }
   return collisions;

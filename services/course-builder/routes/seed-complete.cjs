@@ -23,6 +23,11 @@ const {
   loadPairContract, checkKnownSide, isKnownVocabBreach, compileKnownContract, stemKnownGloss, tokenizeKnown,
   checkBuildRecombination, checkBuildBasketTeachesWord,
 } = require('../lib/validation.cjs');
+// A sector segment is its own course code but one course to the learner, so the
+// ZUT gate is fed the whole family (sector-helix §5b/§6). Null for every course
+// that has no registry row — i.e. all 130 today — and the checks then run the
+// single-course query they always ran.
+const { courseFamily } = require('../lib/course-family.cjs');
 // Script-aware segmentation + UNCHECKED reason codes, so the known-side gate can report that it
 // could not check rather than reporting a pass it never earned (2026-08-18).
 const { REASON: KS_REASON, segmentKnown } = require('../lib/known-side-script.cjs');
@@ -456,7 +461,7 @@ module.exports = function seedCompleteRoutes(ctx) {
       let skipBaskets = false;
 
       if (!allowValidationBypass(req.body)) {
-        const conflictResult = await checkLegoConflict(ctx.supabase, course_code, known, target, seed);
+        const conflictResult = await checkLegoConflict(ctx.supabase, course_code, known, target, seed, { family: await courseFamily(ctx.supabase, course_code) });
 
         if (conflictResult.conflict === 'zut') {
           console.log(`✗ ${legoId}: REJECTED - ${conflictResult.error}`);
@@ -542,7 +547,7 @@ module.exports = function seedCompleteRoutes(ctx) {
         // transgressing phrase(s) from this lego's basket (so a known collision never enters the
         // course) and still insert the lego + every conforming phrase. Surfaced, never rejected.
         if (!allowValidationBypass(req.body)) {
-          const zutCollisions = await checkPhraseZUT(ctx.supabase, course_code, phrases, seed);
+          const zutCollisions = await checkPhraseZUT(ctx.supabase, course_code, phrases, seed, { family: await courseFamily(ctx.supabase, course_code) });
           if (zutCollisions.length > 0) {
             const nkZut = s => (s || '').toLowerCase().trim().replace(/[.?!,，。？！、]+$/, '');
             const flaggedKnowns = new Set(zutCollisions.map(c => nkZut(c.known)));
@@ -763,7 +768,7 @@ module.exports = function seedCompleteRoutes(ctx) {
         let skipBaskets = false;
 
         if (!allowValidationBypass(req.body)) {
-          const conflictResult = await checkLegoConflict(ctx.supabase, course_code, lego.known, lego.target, lego.seed);
+          const conflictResult = await checkLegoConflict(ctx.supabase, course_code, lego.known, lego.target, lego.seed, { family: await courseFamily(ctx.supabase, course_code) });
 
           if (conflictResult.conflict === 'zut') {
             zutViolations.push({
@@ -1146,7 +1151,7 @@ module.exports = function seedCompleteRoutes(ctx) {
       if (!isDraft) {
         for (const lego of legos) {
           const legoId = `${seedId}L${String(lego.idx).padStart(2, '0')}`;
-          const conflictResult = await checkLegoConflict(ctx.supabase, course_code, lego.known, lego.target, seed_number);
+          const conflictResult = await checkLegoConflict(ctx.supabase, course_code, lego.known, lego.target, seed_number, { family: await courseFamily(ctx.supabase, course_code) });
 
           if (conflictResult.conflict === 'zut') {
             zutViolations.push({
@@ -1479,7 +1484,7 @@ module.exports = function seedCompleteRoutes(ctx) {
           else if (lego.phrases) zutPhrases.push(...lego.phrases);
         }
         if (zutPhrases.length > 0) {
-          const zutCollisions = await checkPhraseZUT(ctx.supabase, course_code, zutPhrases, seed_number);
+          const zutCollisions = await checkPhraseZUT(ctx.supabase, course_code, zutPhrases, seed_number, { family: await courseFamily(ctx.supabase, course_code) });
           if (zutCollisions.length > 0) {
             const nkZut = s => (s || '').toLowerCase().trim().replace(/[.?!,，。？！、]+$/, '');
             const flaggedKnowns = new Set(zutCollisions.map(c => nkZut(c.known)));

@@ -31,7 +31,11 @@
  * Run: node tools/union-zut/union-zut.test.cjs
  */
 const path = require('path');
-const V = require(path.join(__dirname, '..', '..', 'services', 'course-builder', 'lib', 'validation.cjs'));
+// UNION_ZUT_VALIDATION lets this file be pointed at the PRE-CHANGE validator, so
+// the RED run stays reproducible after the change lands. A test that can only be
+// run against the fixed code is not evidence.
+const V = require(process.env.UNION_ZUT_VALIDATION
+  || path.join(__dirname, '..', '..', 'services', 'course-builder', 'lib', 'validation.cjs'));
 const { availableVocab, instantiableFrameSet } = require(path.join(__dirname, '..', 'frame-layer', 'availability.cjs'));
 
 let fail = 0;
@@ -41,15 +45,19 @@ const ok = (c, m) => { if (!c) { fail++; console.log('FAIL ' + m); } };
 function stub(tables) {
   const build = (rows) => {
     const filters = [];
+    let cols = null;   // the stub PROJECTS, as PostgREST does: a check must never
+                       // be able to read a column its own select did not ask for
     const api = {
-      select: () => api,
+      select: (sel) => (cols = String(sel || '').split(',').map(c => c.trim()).filter(Boolean), api),
       eq: (col, val) => (filters.push(r => r[col] === val), api),
       lt: (col, val) => (filters.push(r => r[col] < val), api),
       lte: (col, val) => (filters.push(r => r[col] <= val), api),
       in: (col, vals) => (filters.push(r => vals.includes(r[col])), api),
       order: () => api,
       range: () => api,
-      run: () => ({ data: rows.filter(r => filters.every(f => f(r))), error: null }),
+      run: () => ({ data: rows.filter(r => filters.every(f => f(r)))
+        .map(r => (!cols || cols.includes('*')) ? { ...r }
+          : Object.fromEntries(cols.filter(c => c in r).map(c => [c, r[c]]))), error: null }),
       maybeSingle: () => Promise.resolve({ data: api.run().data[0] || null, error: null }),
       then: (res, rej) => Promise.resolve(api.run()).then(res, rej),
     };
