@@ -9,6 +9,7 @@ Four artefacts, each a human read plus a machine-readable companion in the same 
 | [spanish-structural-splits.md](spanish-structural-splits.md) | the 12 splits, each with its trigger and its live-pulled attesting minimal pair | `spanish-structural-splits.json` |
 | [frame-zut.md](frame-zut.md) | frame-ZUT as a rule a machine can apply, and the pattern-diversity metric that supersedes edges-per-syllable | `../../tools/frame-layer/pattern-diversity.cjs` |
 | [reverse-mapping-classes.md](reverse-mapping-classes.md) | the table read backwards — the eng_for_X curriculum: reverse classes worked on eng_for_spa + eng_for_zho, the new MINT class, the cut-cost statement, reverse frame-ZUT | `reverse-mapping-classes.json` |
+| [unified-frame-map-2026-08-31.md](unified-frame-map-2026-08-31.md) | DESIGN (not yet built): one frame map over seeds + pods — dialogue-frame inventory (D/X namespaces), the owned-material instantiability gate, and the plug-in points | — (design; companion JSON arrives with the build) |
 
 ## Two rules that decide how everything here is scored
 
