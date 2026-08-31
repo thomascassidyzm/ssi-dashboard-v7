@@ -914,3 +914,578 @@ carries it.
 - Seed: **"How much does it cost to get a bus into town?"**
 - Cut: `how much does it cost` *(CP106)* · `to get a bus` **(new)** · `into town` *(CP106)*
 - Job: one LEGO — the vehicle slot's second fill; the frame confirmed by minimal contrast.
+
+### Block I — hotel (scene 11)
+
+**CP108 — the arrival (near-ZERO)**
+- Source g97, sc11 (Guest): "Good afternoon. I have a booking under the name Jones."
+- Seed: **"Good afternoon. I have a booking under the name Jones."** (name is slot content)
+- Cut: `good afternoon` *(CP004)* · `I have a booking` **(new)** · `under the name Jones` *(CP050 — slot fill)*
+- Job: one LEGO — the singular booking declaration beside CP080's plural; the name formula
+  pays out a second time.
+
+**CP109 — the view**
+- Source g101, sc11 (Guest): "Does the room have a view?"
+- Seed: **"Does the room have a view?"**
+- Cut: `does the room have` **(new)** · `a view` **(new)**
+- Job: the third-person possession question — the does-X-have frame's first member, reused by
+  the boat/bus family (CP137–138) in its leave-shape.
+
+**CP110 — breakfast**
+- Source g103, sc11 (Guest): "What time is breakfast served?"
+- Seed: **"What time is breakfast served?"**
+- Cut: `what time is breakfast served` **(new — kept whole: the worn hotel formula, and the set's only passive; cutting it would mint grammar, not moves)**
+- Job: the scheduled-meal question, one LEGO by design.
+
+**CP111 — the late check-out**
+- Source g105, sc11 (Guest): "Wonderful. Is it possible for us to have a late check-out?"
+- Seed: **"Wonderful. Is it possible for us to have a late check-out?"**
+- Cut: `wonderful` **(new)** · `is it possible for us` **(new)** · `to have a late check-out` **(new)**
+- Job: the D7 assessment token "wonderful", and the impersonal permission frame "is it
+  possible for us…" — the politest ask in the corpus, beside block L's "is it okay if".
+
+**CP112 — the wifi password**
+- Source g107, sc11 (Guest): "And what is the wifi password?"
+- Seed: **"And what is the wifi password?"**
+- Cut: `what is` **(new)** · `the wifi password` **(new)**
+- Job: the bare what-is identification frame — CP142 closes it to zero later.
+
+### Block J — shop and pharmacy (scenes 10, 12)
+
+**CP113 — painkillers (near-ZERO)**
+- Source g87, sc10 (Customer): "Excuse me. Do you have any painkillers?"
+- Seed: **"Excuse me. Do you have any painkillers?"**
+- Cut: `excuse me` *(CP024)* · `do you have` *(CP054)* · `any painkillers` **(new)**
+- Job: one LEGO — the availability frame walks into the pharmacy.
+
+**CP114 — for children (near-ZERO)**
+- Source g89, sc10 (Customer): "Thank you. And do you have any painkillers for children?"
+- Seed: **"Thank you. And do you have any painkillers for children?"**
+- Cut: `thank you` *(CP010)* · `do you have` *(CP054)* · `any painkillers` *(CP113)* · `for children` **(new)**
+- Job: one LEGO — the beneficiary qualifier, turning any item request into a for-someone
+  request.
+
+**CP115 — the shopping list**
+- Source g91, sc10 (Customer): "I also need to get some sunscreen and some toothpaste."
+- Seed: **"I also need to get some sunscreen and some toothpaste."**
+- Cut: `I need to get` **(new)** · `some sunscreen` **(new)** · `and some toothpaste` **(new)** · `also` *(core — glue)*
+- Job: the errand statement — need-to-get plus the some-list, the shop's own register.
+
+**CP116 — the grateful close**
+- Source g93, sc10 (Customer): "Thank you, you've been very helpful. I'm very grateful."
+- Seed: **"Thank you, you've been very helpful. I'm very grateful."**
+- Cut: `thank you` *(CP010)* · `you've been very helpful` **(new)** · `I'm very grateful` **(new)**
+- Job: the warm exit pair — assessment of the helper plus own-state gratitude; g129
+  recombines both into a zero seed in block K.
+
+**CP117 — the practise-better resolve (near-ZERO)**
+- Source g95, sc10 (Customer): "That's very kind of you! Yes, I'm on holiday, and I need to practice more to speak [target language] better."
+- Seed: **"That's very kind of you! Yes, I'm on holiday, and I need to practise more to speak your language better."** — deictic language name; "practise" normalised (§4 head).
+- Cut: `that's very kind of you` *(CP014)* · `yes` *(CP009)* · `I'm on holiday` *(side of CP033's chunk)* · `I need to practise more` **(new)** · `to speak your language better` **(new)**
+- Job: the learner's resolve — the compliment received and converted into practice; "to speak
+  your language better" is CP042's infinitive with its comparative tail, the split's new side.
+
+**CP118 — not feeling great**
+- Source g110, sc12 (Customer): "Good morning. I'm not feeling great - could you recommend something?"
+- Seed: **"Good morning. I'm not feeling great — could you recommend something?"**
+- Cut: `good morning` *(CP002)* · `I'm not feeling great` **(new)** · `could you recommend something` **(new)**
+- Job: the symptom-opener and the recommendation request in its could-you form (beside
+  CP083's what-would-you — question vs request, both corpus forms).
+
+**CP119 — the symptoms**
+- Source g112, sc12 (Customer): "I've had a headache and a sore throat since yesterday."
+- Seed: **"I've had a headache and a sore throat since yesterday."**
+- Cut: `I've had` **(new)** · `a headache` **(new)** · `and a sore throat` **(new)** · `since yesterday` **(new)**
+- Job: the symptom report — perfect-of-experience, two ailment NPs, and the onset marker
+  "since yesterday". The health segment's arrival language, cut in the trunk where it belongs.
+
+**CP120 — how often?**
+- Source g114, sc12 (Customer): "How often should I take the paracetamol?"
+- Seed: **"How often should I take the paracetamol?"**
+- Cut: `how often` **(new)** · `should I take` **(new)** · `the paracetamol` **(new)**
+- Job: the dosing question — frequency wh, the should-I deontic, and the named medicine slot.
+
+**CP121 — with food?**
+- Source g116, sc12 (Customer): "Are they all right to take with food?"
+- Seed: **"Are they all right to take with food?"**
+- Cut: `are they all right` **(new)** · `to take with food` **(new)**
+- Job: the safety check — "are they all right" generalises to any object of doubt.
+
+**CP122 — the plasters (near-ZERO)**
+- Source g118, sc12 (Customer): "Thank you. Could I also get a packet of plasters?"
+- Seed: **"Thank you. Could I also get a packet of plasters?"**
+- Cut: `thank you` *(CP010)* · `could I also get` **(new)** · `a packet of plasters` **(new)**
+- Job: the afterthought add-on — "could I also get" beside CP060's "could I have": the get
+  form is the shop's, the have form the table's, both corpus-attested, distinct knowns.
+
+### Block K — directions and travel (scenes 2, 13, 14, W1401, W1301, travel drills)
+
+**CP123 — the way to the supermarket**
+- Source g120, sc13 (Tourist): "Excuse me, do you know how to get to the nearest supermarket?"
+- Seed: **"Excuse me, do you know how to get to the nearest supermarket?"**
+- Cut: `excuse me` *(CP024)* · `do you know` **(new)** · `how to get to` **(new)** · `the nearest supermarket` **(new)**
+- Job: the full street ask — the knowledge hedge "do you know", the route infinitive, and the
+  superlative destination.
+
+**CP124 — the checking fragment**
+- Source g122, sc13 (Tourist): "Past that church?"
+- Seed: **"Past that church?"**
+- Cut: `past that church` **(new)**
+- Job: the read-back at its smallest — a bare landmark echoed with rising intonation, X4's
+  learner-side shape with no receipt token (the D10 gap, §3).
+
+**CP125 — and then? (ZERO)**
+- Source g125, sc13 (Tourist); also W1401.5's tail: "And then?"
+- Seed: **"And then?"**
+- Cut: `and then` *(CP065)*
+- Job: **zero admission.** The continuation probe — one owned chunk doing a whole turn's work,
+  the purest zero in the set.
+
+**CP126 — the cashpoint (near-ZERO)**
+- Source g127, sc13 (Tourist): "Wonderful. And is there a cashpoint nearby?"
+- Seed: **"Wonderful. And is there a cashpoint nearby?"**
+- Cut: `wonderful` *(CP111)* · `is there` *(CP098)* · `a cashpoint` **(new)** · `nearby` **(new)**
+- Job: the existential frame's second fill plus "nearby" — beside CP098's "near here", the
+  vicinity split's two sides.
+
+**CP127 — the helpful close (ZERO)**
+- Source g129, sc13 (Tourist): "Thank you very much. You've been very helpful."
+- Seed: **"Thank you very much. You've been very helpful."**
+- Cut: `thank you very much` *(CP005)* · `you've been very helpful` *(CP116)*
+- Job: **zero admission.** The grateful close recombined from two owned chunks — corpus
+  representation for the directions walk at no cost.
+
+**CP128 — the taxi ask**
+- Source g131, sc14 (Passenger): "Hello. Can you take me to the train station, please?"
+- Seed: **"Hello. Can you take me to the train station, please?"**
+- Cut: `hello` *(CP001)* · `can you take me to` **(new)** · `the train station` **(new)** · `please` *(CP009)*
+- Job: the transport imperative-request — "can you take me to X" is the taxi's whole grammar —
+  plus the destination the ticket family reuses.
+
+**CP129 — how long will it take?**
+- Source g133, sc14 (Passenger): "About how long do you think it will take?"
+- Seed: **"About how long do you think it will take?"**
+- Cut: `about how long` **(new)** · `do you think` **(new)** · `it will take` **(new)**
+- Job: the duration estimate solicited through the opinion hedge "do you think" — the
+  corpus's polite-uncertainty wrap, reused wherever a native knows better.
+
+**CP130 — the ticket question (near-ZERO)**
+- Source g135, sc14 (Passenger): "Do you know where I can get a ticket in the station?"
+- Seed: **"Do you know where I can get a ticket in the station?"**
+- Cut: `do you know` *(CP123)* · `where I can get` **(new)** · `a ticket` **(new)** · `in the station` **(new)**
+- Job: the embedded place question under the owned knowledge hedge — "where I can get X"
+  generalises to everything a traveller runs out of.
+
+**CP131 — how far?**
+- Source g7, sc2 (Sarah): "How far is it into town?"
+- Seed: **"How far is it into town?"**
+- Cut: `how far is it` **(new)** · `into town` *(CP106)*
+- Job: the distance question direct — one LEGO over the owned destination.
+
+**CP132 — how far, wrapped (near-ZERO)**
+- Source g8, sc2 (Sarah) = W1301.1: "Can you tell me how far it is into town?"
+- Seed: **"Can you tell me how far it is into town?"**
+- Cut: `can you tell me` *(CP091)* · `how far it is` **(new)** · `into town` *(CP106)*
+- Job: one LEGO — the embedded side of CP131's question; the direct/embedded split now has
+  two attested pairs (price, distance), so the pattern is inferable, never explained.
+
+**CP133 — where can we get a bus?**
+- Source g145, sc15 (drill): "Where can we get a bus?"
+- Seed: **"Where can we get a bus?"**
+- Cut: `where can we get` **(new)** · `a bus` **(new)**
+- Job: the plural side of CP130's where-I-can-get, direct form, plus the vehicle.
+
+**CP134 — a taxi (near-ZERO)**
+- Source g146, sc15 (drill): "Where can we get a taxi?"
+- Seed: **"Where can we get a taxi?"**
+- Cut: `where can we get` *(CP133)* · `a taxi` **(new)**
+- Job: one LEGO — the slot's second vehicle.
+
+**CP135 — four singles**
+- Source g147, sc15 (drill): "Four single tickets to town, please."
+- Seed: **"Four single tickets to town, please."**
+- Cut: `four single tickets` **(new)** · `to town` **(new)** · `please` *(CP009)*
+- Job: the ellipted ticket order (D8 with no verb in sight) and bare "to town" beside owned
+  "into town" — direction's two prepositions, both corpus forms.
+
+**CP136 — two returns (near-ZERO)**
+- Source g148, sc15 (drill): "Two return tickets to town, please."
+- Seed: **"Two return tickets to town, please."**
+- Cut: `two return tickets` **(new)** · `to town` *(CP135)* · `please` *(CP009)*
+- Job: one LEGO — single/return, the ticket paradigm completed.
+
+**CP137 — does the boat leave from here?**
+- Source g177, sc18 (drill): "Does the boat leave from here?"
+- Seed: **"Does the boat leave from here?"**
+- Cut: `does the boat leave` **(new)** · `from here` **(new)**
+- Job: the departure question and the source phrase "from here" — the does-X frame from CP109
+  in its motion shape.
+
+**CP138 — the bus version (near-ZERO)**
+- Source g178, sc18 (drill): "Does the bus leave from here?"
+- Seed: **"Does the bus leave from here?"**
+- Cut: `does the bus leave` **(new)** · `from here` *(CP137)*
+- Job: one LEGO — the minimal pair confirming the frame.
+
+**CP139 — where does it leave from?**
+- Source g179, sc18 (drill): "Where does the bus leave from?"
+- Seed: **"Where does the bus leave from?"**
+- Cut: `where does the bus leave from` **(new — kept whole: the wh-flip with its stranded preposition is one worn move; cutting it would mint word-order, not meaning)**
+- Job: the open form of CP138's question — polar and wh sides of one frame, by contrast.
+
+**CP140 — the toilet (near-ZERO)**
+- Source g209, sc21 (drill): "Is there a toilet here?"
+- Seed: **"Is there a toilet here?"**
+- Cut: `is there` *(CP098)* · `a toilet` **(new)** · `here` *(core — glue)*
+- Job: one LEGO — the existential frame's most necessary fill.
+
+**CP141 — where the toilet is (near-ZERO)**
+- Source g210, sc21 (drill): "Can you tell me where the toilet is?"
+- Seed: **"Can you tell me where the toilet is?"**
+- Cut: `can you tell me` *(CP091)* · `where the toilet is` **(new)**
+- Job: one LEGO — the embed family's third member (price, distance, place); the wrap is now
+  a fully productive frame.
+
+**CP142 — what is that? (ZERO)**
+- Source g215, sc21 (drill): "What is that?"
+- Seed: **"What is that?"**
+- Cut: `what is` *(CP112)* · `that` *(core — glue)*
+- Job: **zero admission.** The identification question from owned material.
+
+**CP143 — over there (near-ZERO)**
+- Source g216, sc21 (drill): "What is that over there?"
+- Seed: **"What is that over there?"**
+- Cut: `what is` *(CP112)* · `that` *(core)* · `over there` **(new)**
+- Job: one LEGO — distal deixis, the pointing phrase every street exchange leans on.
+
+**CP144 — I said (near-ZERO)**
+- Source g214, sc21 (drill): "Yes, I said it's over there."
+- Seed: **"Yes, I said it's over there."**
+- Cut: `yes` *(CP009)* · `I said` **(new)** · `it's` *(core — glue)* · `over there` *(CP143)*
+- Job: one LEGO — the self-repeat marker "I said", the answering half of X3 when the learner
+  is the one asked to say it again.
+
+**CP145 — the street contract (near-ZERO family)**
+- Source W1401.1 (Tourist): "Excuse me — could you tell me the way to the railway station? Your language isn't my first, so go slowly with me — if I get a word wrong, just tell me, and I'll ask if I lose you."
+- Seed: **"Excuse me — could you tell me the way to the railway station? Your language isn't my first, so go slowly with me — if I get a word wrong, just tell me, and I'll ask if I lose you."**
+- Cut: `excuse me` *(CP024)* · `could you tell me the way to` **(new)** · `the railway station` **(new)** · `your language isn't my first` **(new)** · `go slowly with me` **(new)** · `if I get a word wrong` *(CP045)* · `just tell me` *(CP045)* · `I'll ask` *(CP045)* · `if I lose you` *(CP045)*
+- Job: the notice — the contract compressed into a stranger's minute. Four new LEGOs; the
+  whole licence tail rides free on block E's cuts, exactly as the walk was authored to allow.
+
+**CP146 — left at the lights (near-ZERO)**
+- Source W1401.5 (Tourist): "Left at the lights — and then?"
+- Seed: **"Left at the lights — and then?"**
+- Cut: `left at the lights` **(new)** · `and then` *(CP065)*
+- Job: one LEGO — the read-back echo plus the owned continuation probe: X4's learner side in
+  four words.
+
+**CP147 — the full read-back**
+- Source W1401.7 (Tourist): "Straight to the lights, left, and across the square. Thank you — I understood every word."
+- Seed: **"Straight to the lights, left, and across the square. Thank you — I understood every word."**
+- Cut: `straight to the lights` **(new)** · `left` *(side of CP146's chunk)* · `and across the square` **(new)** · `thank you` *(CP010)* · `I understood every word` **(new)**
+- Job: the route repeated whole and the comprehension receipt "I understood every word" — the
+  nearest thing scoped CORE has to D10's receipt, and the walk's triumphant close.
+
+**CP148 — the lost ticket**
+- Source g182, sc18 (drill): "I'm sorry, my son lost his ticket."
+- Seed: **"I'm sorry, my son lost his ticket."**
+- Cut: `I'm sorry` *(CP038)* · `my son` **(new)** · `lost his ticket` **(new)**
+- Job: the apologised mishap — the family member and the loss, the trouble-report frame's
+  first member.
+
+**CP149 — paid, but lost**
+- Source g183, sc18 (drill): "We have paid, but my daughter has lost her ticket."
+- Seed: **"We have paid, but my daughter has lost her ticket."**
+- Cut: `we have paid` **(new)** · `my daughter` **(new)** · `has lost her ticket` **(new)**
+- Job: the claim-plus-mishap — asserting the right before reporting the loss; the gendered
+  pair with CP148 shows the his/her split without a word of grammar.
+
+**CP150 — the walk considered**
+- Source W1301.3 (Sarah): "Three or four miles — I could walk that. I might get off at the next stop, then, and walk the rest. It's a nice morning for it."
+- Seed: **"Three or four miles — I could walk that. I might get off at the next stop, then, and walk the rest. It's a nice morning for it."**
+- Cut: `three or four miles` **(new)** · `I could walk that` **(new)** · `I might get off at the next stop` **(new)** · `and walk the rest` **(new)** · `it's a nice morning for it` **(new)**
+- Job: acting on a hedge — the echoed estimate, the tentative plan ("I could…", "I might…"),
+  and the justifying pleasantry. The recovery walk's first learner turn.
+
+**CP151 — the hedge honoured**
+- Source W1301.5 (Sarah): "Don't be — you said maybe, and maybe was right. Six is too far for me. I'll stay in this seat and ride the whole way."
+- Seed: **"Don't be — you said maybe, and maybe was right. Six is too far for me. I'll stay in this seat and ride the whole way."**
+- Cut: `don't be` **(new)** · `you said maybe` **(new)** · `and maybe was right` **(new)** · `six is too far for me` **(new)** · `I'll stay in this seat` **(new)** · `and ride the whole way` **(new)**
+- Job: absolving the apologiser — "don't be" is D11's second-person absolution, the corpus's
+  own answer to "I'm sorry" — plus the revised plan stated as commitment (D12 shape).
+
+### Block L — time, weather, and feelings (scenes 1, 4, 5, 17–19, 21, W1302, W1303)
+
+**CP152 — can't talk now**
+- Source g21, sc4 (Sarah) = W1303.1: "Hello! I'm sorry but I can't talk at the moment. I need to go home now. Can we talk tomorrow?"
+- Seed: **"Hello! I'm sorry but I can't talk at the moment. I need to go home now. Can we talk tomorrow?"**
+- Cut: `hello` *(CP001)* · `I'm sorry` *(CP038)* · `I can't talk` **(new)** · `at the moment` **(new)** · `I need to go home now` **(new)** · `can we talk tomorrow` **(new)**
+- Job: the declined conversation with its account and counter-offer — the corpus's model of
+  saying no warmly: apology, inability, reason, alternative.
+
+**CP153 — busy, but Saturday**
+- Source g22, sc4 (Friend — the decline-with-counterproposal is role-symmetric): "No, I'm sorry, I'm busy tomorrow. But let's talk on Saturday. See you then."
+- Seed: **"No, I'm sorry, I'm busy tomorrow. But let's talk on Saturday. See you then."**
+- Cut: `no` *(CP036)* · `I'm sorry` *(CP038)* · `I'm busy tomorrow` **(new)** · `let's talk` **(new)** · `on Saturday` **(new)** · `see you then` **(new)**
+- Job: the counter-decline and counter-proposal — "let's talk" opens the let's frame; "see
+  you then" completes the see-you family's third member (later, tomorrow, then).
+
+**CP154 — only the morning**
+- Source W1303.3 (Sarah): "Saturday's good — but only the morning. I'm away all afternoon."
+- Seed: **"Saturday's good — but only the morning. I'm away all afternoon."**
+- Cut: `Saturday's good` **(new)** · `but only the morning` **(new)** · `I'm away all afternoon` **(new)**
+- Job: the counterbid — accept the day, scope the time, give the account. The negotiation
+  move the trunk's M5 shape exists for.
+
+**CP155 — ten at the café (near-ZERO)**
+- Source W1303.5 (Sarah): "Ten at the café — perfect. See you Saturday!"
+- Seed: **"Ten at the café — perfect. See you Saturday!"**
+- Cut: `ten at the café` **(new)** · `perfect` **(new)** · `see you Saturday` *(see-you family + core day — no new LEGO)*
+- Job: the settlement formula — time-place echo plus the sealing assessment "perfect" (D7's
+  fixed material) — and the see-you frame taking a day name as its slot.
+
+**CP156 — very tired (near-ZERO)**
+- Source g24, sc5 (Sarah), middle sentence (head: CP023; tail: CP007): "I'm very tired now."
+- Seed: **"I'm very tired now."**
+- Cut: `I'm very tired` **(new)** · `now` *(core — glue)*
+- Job: one LEGO — the state report; "I'm very X" now has well (CP010) and tired, a paradigm
+  opening.
+
+**CP157 — the busy day**
+- Source g4, sc1 (Sarah), after CP008 took the close: "Yes, I've got a busy day today. I hope you have a good day. See you later."
+- Seed: **"Yes, I've got a busy day today. I hope you have a good day. See you later."**
+- Cut: `yes` *(CP009)* · `I've got a busy day today` **(new)** · `I hope you have a good day` **(new)** · `see you later` *(CP008)*
+- Job: the possession-of-time idiom "I've got a busy day" and the parting wish "I hope you
+  have a good day" — the corpus's warmest close, D3-adjacent.
+
+**CP158 — going to work?**
+- Source g3, sc1 (Neighbour — role-symmetric), question tail (head: CP010): "Are you going to work?"
+- Seed: **"Are you going to work?"**
+- Cut: `are you going to work` **(new)**
+- Job: the neighbourly destination question, whole — progressive-as-future in a worn chunk,
+  never as taught grammar.
+
+**CP159 — hot again**
+- Source g169, sc17 (drill): "It's hot today, again."
+- Seed: **"It's hot today, again."**
+- Cut: `it's hot today` **(new)** · `again` *(core — glue)*
+- Job: opens the weather register — "it's X today" with its first adjective.
+
+**CP160 — is the water warm?**
+- Source g170, sc17 (drill): "Is the water warm?"
+- Seed: **"Is the water warm?"**
+- Cut: `is the water warm` **(new)**
+- Job: the property question, whole — the polar side of the weather-and-water small talk.
+
+**CP161 — a little cold (near-ZERO)**
+- Source g171, sc17 (drill): "No, it's a little cold today."
+- Seed: **"No, it's a little cold today."**
+- Cut: `no` *(CP036)* · `it's a little cold today` **(new)**
+- Job: one LEGO — the hedged negative answer, CP159's frame with the degree softener.
+
+**CP162 — not bad**
+- Source g172, sc17 (drill): "It's not bad."
+- Seed: **"It's not bad."**
+- Cut: `it's not bad` **(new)**
+- Job: the litotes assessment — the most British chunk in the corpus, one LEGO.
+
+**CP163 — a bad idea**
+- Source g174, sc18 (drill): "That's a bad idea."
+- Seed: **"That's a bad idea."**
+- Cut: `that's a bad idea` **(new)**
+- Job: the blunt evaluation — D7's negative pole, which no politeness formula covers.
+
+**CP164 — that makes me happy**
+- Source g185, sc19 (drill): "That makes me happy."
+- Seed: **"That makes me happy."**
+- Cut: `that makes me happy` **(new)**
+- Job: opens the causative-feeling family, whole — the corpus's way of owning a feeling
+  without owning the grammar of causatives.
+
+**CP165 — a little worried**
+- Source g186, sc19 (drill): "That makes me feel a little worried."
+- Seed: **"That makes me feel a little worried."**
+- Cut: `that makes me feel` **(new)** · `a little worried` **(new)**
+- Job: the feel-variant with its hedged object — "that makes me feel X" is the family's
+  productive frame, "a little X" the corpus's standing softener.
+
+**CP166 — it makes me feel stupid**
+- Source g187, sc19 (drill): "When you talk quickly, it makes me feel stupid."
+- Seed: **"When you talk quickly, it makes me feel stupid."**
+- Cut: `when you talk quickly` **(new)** · `it makes me feel stupid` **(new — the it-side of CP165's frame, kept whole with its blunt adjective)**
+- Job: the learner's honest complaint — the temporal trigger clause and the feeling named;
+  the repair register's emotional floor, and the pod's most quoted line for a reason.
+
+**CP167 — is it okay if I sit here?**
+- Source g188, sc19 (drill): "Is it okay if I sit here?"
+- Seed: **"Is it okay if I sit here?"**
+- Cut: `is it okay if` **(new)** · `I sit here` **(new)**
+- Job: the permission frame — beside CP111's formal "is it possible for us", the casual ask;
+  the seat question (CP035) now has its non-idiomatic sibling.
+
+**CP168 — okay if we put this here? (near-ZERO)**
+- Source g189, sc19 (drill): "Is it okay if we put this here?"
+- Seed: **"Is it okay if we put this here?"**
+- Cut: `is it okay if` *(CP167)* · `we put this here` **(new)**
+- Job: one LEGO — the frame's plural-action fill.
+
+**CP169 — I don't want to be late**
+- Source g190, sc19 (drill): "I don't want to be late."
+- Seed: **"I don't want to be late."**
+- Cut: `I don't want` **(new)** · `to be late` **(new)**
+- Job: the negative want (beside core "I want") and the lateness infinitive the next three
+  seeds run on — a four-seed paradigm from one drill cluster.
+
+**CP170 — are we going to be late? (near-ZERO)**
+- Source g191, sc19 (drill): "Are we going to be late?"
+- Seed: **"Are we going to be late?"**
+- Cut: `are we going` **(new)** · `to be late` *(CP169)*
+- Job: one LEGO — the going-to future interrogative over the owned complement.
+
+**CP171 — I promise I won't be late**
+- Source g192, sc19 (drill): "I promise I won't be late."
+- Seed: **"I promise I won't be late."**
+- Cut: `I promise` **(new)** · `I won't be late` **(new)**
+- Job: D12's explicit performative "I promise" and the negative-future commitment — the
+  compliance frame's strongest form.
+
+**CP172 — we won't be late (near-ZERO)**
+- Source g193, sc19 (drill): "I promise we won't be late."
+- Seed: **"I promise we won't be late."**
+- Cut: `I promise` *(CP171)* · `we won't be late` **(new)**
+- Job: one LEGO — the plural side, promising for the party.
+
+**CP173 — it sounds as though**
+- Source g207, sc21 (drill): "It sounds as though we need to leave soon."
+- Seed: **"It sounds as though we need to leave soon."**
+- Cut: `it sounds as though` **(new)** · `we need to leave soon` **(new)**
+- Job: the evidential hedge — reporting what the situation says rather than what you know —
+  plus the shared-need statement.
+
+**CP174 — you want us not to (near-ZERO)**
+- Source g208, sc21 (drill): "It sounds as though you want us not to do that."
+- Seed: **"It sounds as though you want us not to do that."**
+- Cut: `it sounds as though` *(CP173)* · `you want us not to do that` **(new)**
+- Job: one LEGO — the inferred prohibition, read from tone rather than words: the pod
+  teaching pragmatics by attestation.
+
+**CP175 — am I correct?**
+- Source g180, sc18 (drill): "Is that correct? Am I correct?"
+- Seed: **"Is that correct? Am I correct?"**
+- Cut: `is that correct` **(new)** · `am I correct` **(new)**
+- Job: the verification pair — fact-check and self-check, the learner's calibration moves.
+
+**CP176 — am I wrong about that?**
+- Source g181, sc18 (drill): "Am I wrong about that?"
+- Seed: **"Am I wrong about that?"**
+- Cut: `am I wrong` **(new)** · `about that` **(new)**
+- Job: the inverse check plus the topic phrase "about that" — reused by block M's
+  agree-about-this.
+
+**CP177 — the drinks offer**
+- Source g217, sc21 (drill — host-side, promoted by the pod): "Would you like to order some drinks?"
+- Seed: **"Would you like to order some drinks?"**
+- Cut: `would you like to order` **(new)** · `some drinks` **(new)**
+- Job: the learner as host — the would-you-like offer with its first object; the ordering
+  paradigm's other chair.
+
+**CP178 — drinks first? (near-ZERO)**
+- Source g218, sc21 (drill): "Do you want to order some drinks first?"
+- Seed: **"Do you want to order some drinks first?"**
+- Cut: `do you want to order` **(new)** · `some drinks` *(CP177)* · `first` **(new)**
+- Job: the casual side of CP177's offer, plus the sequencing adverb "first".
+
+**CP179 — something to drink? (near-ZERO)**
+- Source g219, sc21 (drill): "Did you want something to drink first?"
+- Seed: **"Did you want something to drink first?"**
+- Cut: `did you want` **(new — the bare side of CP102's chunk)** · `something to drink` **(new)** · `first` *(CP178)*
+- Job: the past-softened offer and "something to drink" — the indefinite object that outlives
+  every menu.
+
+**CP180 — would you have a look?**
+- Source W1302.3 (Sarah): "Would you have a look? No rush — I'm waiting on my coffee anyway."
+- Seed: **"Would you have a look? No rush — I'm waiting on my coffee anyway."**
+- Cut: `would you have a look` **(new)** · `no rush` **(new)** · `I'm waiting on my coffee` **(new)** · `anyway` **(new)**
+- Job: holding an "I don't know" with grace — the check request, the pressure release "no
+  rush", and the waiting account. The M1 recovery's producible heart.
+
+**CP181 — crisps will do nicely**
+- Source W1302.5 (Sarah): "Crisps will do nicely — salted, please."
+- Seed: **"Crisps will do nicely — salted, please."**
+- Cut: `crisps will do nicely` **(new — "will do nicely" rides inside its worn subject)** · `salted` **(new)** · `please` *(CP009)*
+- Job: accepting the partial win — "X will do nicely" is the settling formula, and the
+  one-word specification "salted" is D8 ellipsis at its limit.
+
+### Block M — talking about talking (scene 22, W1304, W1305)
+
+**CP182 — the practise request**
+- Source g221, sc22 (Learner) = W1304.1: "Would you mind if I tried to practise speaking [target language] with you? I haven't been learning for very long, and I still feel a little nervous about speaking with other people."
+- Seed: **"Would you mind if I tried to practise speaking your language with you? I haven't been learning for very long, and I still feel a little nervous about speaking with other people."** — deictic language name.
+- Cut: `would you mind if I tried` **(new)** · `to practise speaking your language` **(new)** · `with you` *(core — glue)* · `I haven't been learning for very long` **(new)** · `I still feel a little nervous` **(new)** · `about speaking with other people` **(new)**
+- Job: the humblest ask in the corpus — "would you mind if I tried" is the permission frame's
+  gentlest form — with the learner's self-account: short history, standing nerves.
+
+**CP183 — what I need to practise**
+- Source g223, sc22 (Learner): "Thank you, that's good to know. I need to learn more words, and I need to practise listening. I don't understand people very well when they don't speak slowly."
+- Seed: **"Thank you, that's good to know. I need to learn more words, and I need to practise listening. I don't understand people very well when they don't speak slowly."**
+- Cut: `thank you` *(CP010)* · `that's good to know` **(new)** · `I need to learn more words` **(new)** · `I need to practise listening` **(new)** · `I don't understand people very well` **(new)** · `when they don't speak slowly` **(new)**
+- Job: the receipt of reassurance ("that's good to know") and the learner's own needs
+  analysis — the two need-to statements and the honest comprehension limit.
+
+**CP184 — easier with one person**
+- Source g225, sc22 (Learner): "Yes, thank you. It's easier talking to just one person. It's a bit difficult thinking of something to say, though. I'm not sure what to say, but I feel as if I can speak enough to start having conversations."
+- Seed: **"Yes, thank you. It's easier talking to just one person. It's a bit difficult thinking of something to say, though. I'm not sure what to say, but I feel as if I can speak enough to start having conversations."**
+- Cut: `yes` *(CP009)* · `thank you` *(CP010)* · `it's easier talking to just one person` **(new)** · `it's a bit difficult` **(new)** · `thinking of something to say` **(new)** · `though` *(core — glue)* · `I'm not sure what to say` **(new)** · `I feel as if` **(new)** · `I can speak enough` **(new)** · `to start having conversations` **(new)**
+- Job: the mid-conversation self-report — comparative ease, named difficulty, the hedge "I
+  feel as if", and the threshold claim "I can speak enough to start having conversations".
+
+**CP185 — frustrating, but keep practising**
+- Source g227, sc22 (Learner) = W1305.1: "It's just a little frustrating when I can't think quickly enough to express myself properly. But I know that I need to keep practising if I want to speak more confidently."
+- Seed: **"It's just a little frustrating when I can't think quickly enough to express myself properly. But I know that I need to keep practising if I want to speak more confidently."**
+- Cut: `it's just a little frustrating` **(new)** · `when I can't think quickly enough` **(new)** · `to express myself properly` **(new)** · `I know that` **(new)** · `I need to keep practising` **(new)** · `if I want to speak more confidently` **(new)**
+- Job: the frustration named and answered — the degree-hedged feeling, the capacity limit,
+  and the resolve pair ("keep practising", "speak more confidently") block M's remaining
+  seeds orbit.
+
+**CP186 — changing my brain**
+- Source g229, sc22 (Learner): "This is exactly the kind of practice I need. I think I can feel it changing my brain while we're talking! I really appreciate your help. But it's surprising how tired I get when I'm talking in a language I don't speak very well."
+- Seed: **"This is exactly the kind of practice I need. I think I can feel it changing my brain while we're talking! I really appreciate your help. But it's surprising how tired I get when I'm talking in a language I don't speak very well."**
+- Cut: `this is exactly the kind of practice I need` **(new)** · `I think` *(core)* · `I can feel it changing my brain` **(new)** · `while we're talking` **(new)** · `I really appreciate your help` **(new)** · `it's surprising` **(new)** · `how tired I get` **(new)** · `when I'm talking in a language` **(new)** · `I don't speak very well` **(new)**
+- Job: the method talking about itself — appreciation, the felt change, and the honest cost
+  ("how tired I get"). The richest single row in the corpus, cut at its natural joints.
+
+**CP187 — more conversations**
+- Source g231, sc22 (Learner): "It really is. I'm really happy that I can have this much of a conversation. And I hope we'll be able to have more conversations in the future as I keep on getting better."
+- Seed: **"It really is. I'm really happy that I can have this much of a conversation. And I hope we'll be able to have more conversations in the future as I keep on getting better."**
+- Cut: `it really is` **(new)** · `I'm really happy that` **(new)** · `I can have this much of a conversation` **(new)** · `I hope` **(new)** · `we'll be able to have more conversations` **(new)** · `in the future` **(new)** · `as I keep on getting better` **(new)**
+- Job: the agreeing echo "it really is" (X2's warmest yes), the celebrated milestone, and the
+  future opened — the scene's close and the trunk's promise to the learner.
+
+**CP188 — six months, honestly counted**
+- Source W1304.3 (Learner): "About six months. A little every day — usually just ten minutes. It doesn't feel like very much."
+- Seed: **"About six months. A little every day — usually just ten minutes. It doesn't feel like very much."**
+- Cut: `about six months` **(new)** · `a little every day` *(CP051)* · `usually just ten minutes` **(new)** · `it doesn't feel like very much` **(new)**
+- Job: the audited premise — the duration answered exactly, the cadence owned from the
+  contract block, and the self-deprecating coda the next seed overturns.
+
+**CP189 — maybe it adds up (near-ZERO family)**
+- Source W1304.5 (Learner): "Thank you. Maybe it does add up after all. I still feel nervous — but a little less than when we started talking."
+- Seed: **"Thank you. Maybe it does add up after all. I still feel nervous — but a little less than when we started talking."**
+- Cut: `thank you` *(CP010)* · `maybe it does add up` **(new)** · `after all` **(new)** · `I still feel nervous` *(side of CP182's chunk — the hedge dropped)* · `but a little less` **(new)** · `than when we started talking` **(new)**
+- Job: the gift received — the premise revised in real time ("maybe it does add up after
+  all") and the feeling re-measured. The M2 recovery's landing.
+
+**CP190 — agree to differ**
+- Source W1305.3 (Learner): "That's kind — but I don't think we're going to agree about this. You hear my sentences; I hear all my gaps."
+- Seed: **"That's kind — but I don't think we're going to agree about this. You hear my sentences; I hear all my gaps."**
+- Cut: `that's kind` **(new — the bare assessment beside CP014's full form)** · `I don't think` **(new)** · `we're going to agree about this` **(new)** · `you hear my sentences` **(new)** · `I hear all my gaps` **(new)**
+- Job: disagreeing warmly — the softened dissent "I don't think we're going to agree" and the
+  two-perspectives figure, the corpus's most grown-up move.
+
+**CP191 — it's a deal**
+- Source W1305.5 (Learner): "It's a deal. Either way, I need the practice — so let's keep talking."
+- Seed: **"It's a deal. Either way, I need the practice — so let's keep talking."**
+- Cut: `it's a deal` **(new)** · `either way` **(new)** · `I need the practice` **(new)** · `so` *(core)* · `let's keep talking` **(new)**
+- Job: the parked disagreement sealed — settlement formula, the both-branches marker "either
+  way", and the continuation resolve "let's keep talking": the set's closing act, and the
+  method's.
