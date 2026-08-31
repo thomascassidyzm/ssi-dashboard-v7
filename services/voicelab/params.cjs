@@ -54,6 +54,7 @@ const LANGUAGES = [
   { code: 'por', name: 'Portuguese', steer: 'pt', catalogue: 'pt', azureLocale: 'pt-PT' },
   { code: 'pol', name: 'Polish', steer: 'pl', catalogue: 'pl', azureLocale: 'pl-PL' },
   { code: 'tur', name: 'Turkish', steer: 'tr', catalogue: 'tr', azureLocale: 'tr-TR' },
+  { code: 'fin', name: 'Finnish', steer: 'fi', catalogue: 'fi', azureLocale: 'fi-FI' },
   { code: 'rus', name: 'Russian', steer: 'ru', catalogue: 'ru', azureLocale: 'ru-RU' },
   { code: 'jpn', name: 'Japanese', steer: 'ja', catalogue: 'ja', azureLocale: 'ja-JP' },
   { code: 'kor', name: 'Korean', steer: 'ko', catalogue: 'ko', azureLocale: 'ko-KR' },
