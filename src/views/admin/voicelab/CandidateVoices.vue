@@ -15,6 +15,8 @@
  * No confirmation dialog: a cast is undone by one tap on `Clear`, and a guard on a
  * reversible action is a guard that trains people to click through guards.
  */
+import ConsentBadge from './ConsentBadge.vue'
+
 defineProps({
   candidates: { type: Array, default: () => [] },
   /** voiceId -> { url, free, cached, durationMs } for the samples that exist. */
@@ -52,6 +54,11 @@ defineEmits(['play', 'cast'])
 
       <span class="vl-cand-name" :title="paceTitle(c)">{{ c.name }}</span>
       <span class="vl-cand-kind ui-pill ui-hue-quiet">{{ c.kind }}</span>
+      <!-- CONSENT, ON THE VOICE, WHEREVER THE VOICE APPEARS (Tom, 2026-08-31).
+           A clone nobody has authorised must not look like an authorised one at
+           a glance, and this is the list a cast is made from. Vendor stock
+           voices carry no badge — there is nobody behind them to ask. -->
+      <ConsentBadge v-if="c.consent && c.consent.aboutAPerson" :consent="c.consent" />
       <span v-if="paceSuffix(c)" class="vl-cand-pace">{{ paceSuffix(c) }}</span>
       <span v-if="samples[c.voiceId] && samples[c.voiceId].free" class="vl-cand-free" title="Already in the estate — hearing it spends nothing">free</span>
 
