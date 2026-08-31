@@ -1,0 +1,114 @@
+{
+  "$schema": "../../../../schemas/metagraph-v1-schema.json",
+  "concept": "walk-set",
+  "version": 1,
+  "walk_set": "core-recoveries",
+  "authored": true,
+  "source": {
+    "kind": "authored",
+    "job": "Author the five withheld recoveries, attached to their existing CORE scenes (2026-08-31). The attachment points were sited by the CORE compulsory-set audit and are machine-readable as A1001-A1006 in proposed/core-recovery-attachments-2026-08-31.json; this file is the commissioned authoring of the five that attach. A1004 (M3, the mid-story challenge) is deliberately absent — it cannot attach without giving CORE a story turn it does not have, and it lives on the every-optional-walk floor instead.",
+    "attachments_realised": ["A1001 (S2)", "A1002 (M1)", "A1006 (M5)", "A1003 (M2)", "A1005 (M4)"],
+    "document": "docs/pods/core-recoveries-2026-08-31.md",
+    "statement": "AUTHORED, NOT TRANSCRIBED. Every continuation line in this file was written for its scene against the sited attachment point. There is no corpus behind the continuations: no `row` appears anywhere and no continuation line is attested speech. Where a walk restages the canonical turn it attaches to, that turn is a QUOTATION of walks/pod-0.json's transcription — marked `restaged: true`, carrying no row field — and contributes nothing to any corpus accounting. The transcription itself lives only in walks/pod-0.json."
+  },
+  "format": "A walk is a sequence of NODE REFERENCES. Each step names a node and a position; the surface sentence is a property of the step, never the step itself. Copied from walks/pod-0.json so coverage stays computable without parsing prose.",
+  "walk_kind": "listening",
+  "register": {
+    "sector_free": true,
+    "culture_free": true,
+    "note": "CORE recoveries in CORE's own worlds: a seat on the bus into town, a café counter, a street arrangement between friends, a first conversation. Every one of these exists in every pair a course ships to; nothing here is Wales, nothing is a sector. English is the canonical known text and is pair-invariant; where the canon writes a [target language] bracket, this file renders it deictically ('your language'), per the scene 0 convention, so the pair overlay may substitute names on the target side.",
+    "casts": "Inherited, none invented: Sarah and the Passenger (pod-0 W3), Sarah and the Barista (pod-0 W1), Sarah and the Friend (pod-0 W4), the Learner and the Friend (pod-0 W16)."
+  },
+  "attachment": {
+    "policy": "A RECOVERY ATTACHES, IT DOES NOT APPEND (Tom's ruling, 2026-08-31): a pod is a branch point with its continuations attached, so each recovery is the other half of a move CORE already teaches, and hangs off the scene that exists. CORE's existing order is untouched — walks/pod-0.json is not modified and nothing is reordered. Each walk here names the pod-0 walk and step it attaches to, restages that turn as a quotation, and continues it inside the same encounter. A recovery three scenes later would be worth nothing; every one of these arrives while the learner is in the trouble the branch just made."
+  },
+  "accounting": {
+    "authored_walks": 1,
+    "turns_total": 6,
+    "restaged_turns": 2,
+    "authored_turns": 4,
+    "corpus_rows": 0,
+    "corpus_rows_note": "Zero, and that is the point: nothing here is a transcription. The restaged turns are quotations of pod-0 rows and are counted only in walks/pod-0.json.",
+    "walks": {
+      "W1301": "S2 (A1001) — the hedge acted on and turned out wrong, scene 2, attached at pod-0 W3 step 4"
+    }
+  },
+  "coverage_of_the_graph": {
+    "nodes": ["N3", "N4"],
+    "composition_edges_used": [],
+    "survivability_edges_touched": ["S2"],
+    "note": "S2 is the only corpus-attested edge with no recovery anywhere in the estate — five hedges attested, not one ever taken up. W1301 is its first."
+  },
+  "walks": [
+    {
+      "id": "W1301",
+      "name": "Scene 2 — the hedge acted on, and the sign that corrects it (S2)",
+      "scene": 2,
+      "nodes_traversed": ["N3", "N4"],
+      "composition_edges_used": [],
+      "survivability_edges_touched": ["S2"],
+      "attaches_to": { "walk": "W3", "step": 4, "node": "N3", "position": 2, "attachment": "A1001" },
+      "note": "The bus into town, pod-0 W3's world, the morning of the day of greetings. The canon's hedge — 'maybe three or four miles' — is attested five times and taken up never; this walk takes it up. The shape the learner owns when it ends: a hedge is a licence to act plus a licence to be wrong. The hedge propagates into the plan ('I might get off'), the world supplies the correction — a road sign, never a mood — and the recovery is that nobody promised, so nobody is owed an apology. The passenger's last line hands over certainty where certainty genuinely exists: the estimate was hedged, the last stop is not.",
+      "steps": [
+        {
+          "step": 1,
+          "node": "N3",
+          "position": 1,
+          "speaker": "Sarah",
+          "surface": "Can you tell me how far it is into town?",
+          "move": null,
+          "restaged": true,
+          "note": "Quotation of the canon's ticket (pod-0 W3 step 3). The seat business has already run; this walk begins where the trouble begins."
+        },
+        {
+          "step": 2,
+          "node": "N3",
+          "position": 2,
+          "speaker": "Passenger",
+          "surface": "It's not very far. Maybe three or four miles.",
+          "move": "F4",
+          "hedge": true,
+          "restaged": true,
+          "branch_point": true,
+          "note": "Quotation of the canon's hedge (pod-0 W3 step 4) — the exact turn S2 hangs on. In the canon no turn takes this up; everything after this step is the continuation the corpus never stored."
+        },
+        {
+          "step": 3,
+          "node": "N4",
+          "position": 3,
+          "speaker": "Sarah",
+          "surface": "Three or four miles — I could walk that. I might get off at the next stop, then, and walk the rest. It's a nice morning for it.",
+          "move": "F9",
+          "note": "The hedge acted on, out loud — and acting on an answer out loud IS a read-back, which is why this is N4's read-back position: saying the plan is what gives the world its chance to object. The hedge has propagated honestly into the plan — 'I might', not 'I will' — because a hedged answer breeds a hedged plan, and that propagation is the learner already owning half the shape."
+        },
+        {
+          "step": 4,
+          "node": "N4",
+          "position": 4,
+          "speaker": "Passenger",
+          "surface": "Oh — hold on. There's the sign: six miles to town. It's further than I thought. I'm sorry.",
+          "move": "F6",
+          "note": "The confirm slot filled with a revision — not-that-but-this, F6. The world motivates the correction: a road sign on the way into town is exactly where a hedged distance meets ground truth mid-journey. The passenger apologises because real people do; the next turn's job is to show the apology was never owed."
+        },
+        {
+          "step": 5,
+          "node": "N4",
+          "position": 3,
+          "speaker": "Sarah",
+          "surface": "Don't be — you said maybe, and maybe was right. Six is too far for me. I'll stay in this seat and ride the whole way.",
+          "move": "F9",
+          "note": "The recovery, complete in one turn: the hedge acknowledged as having done its job — 'you said maybe, and maybe was right', nobody promised — and the re-orientation without grievance, the revised number read straight back into a revised plan. The bound read-back/confirm pair runs twice in this walk, once around the wrong number and once around the right one."
+        },
+        {
+          "step": 6,
+          "node": "N4",
+          "position": 4,
+          "speaker": "Passenger",
+          "surface": "Do that. It's the last stop, anyway — you can't miss it.",
+          "move": "F2",
+          "note": "Confirm plus something thrown in, F2 — and the something is certainty, offered exactly where certainty exists. The passenger only ever estimated the distance, but the route's last stop is a fact; the contrast between the hedged answer and the unhedged one is the quietest lesson in the walk."
+        }
+      ]
+    }
+  ]
+}
