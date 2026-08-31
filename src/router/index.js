@@ -231,6 +231,17 @@ const routes = [
     props: true,
     meta: { title: 'Script Lab' }
   },
+  // The metagraph itself, with the pods as overlays through it (2026-08-31).
+  // Tom: "what about popty.app being able to see the metagraph and the PODS as
+  // overlays through it?" The Script Lab shows a script and reports coverage as
+  // a number; this shows the GRAPH and lays a pod's walk over it, so the deficit
+  // is a picture rather than a list. Read-only, no course, no new API.
+  {
+    path: '/canonical/metagraph',
+    name: 'Metagraph',
+    component: () => import('../views/MetagraphView.vue'),
+    meta: { title: 'Metagraph' }
+  },
   // Pod script viewer (2026-08-24) — fleet-wide, read-only. Tom: "I think I need
   // to be able to see them all." Deep-linkable per course so a URL can be sent.
   {

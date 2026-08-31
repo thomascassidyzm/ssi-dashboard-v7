@@ -16,6 +16,10 @@
         These are the language-neutral English masters. Editing one changes the source every course flexes from — it changes no generated pod.
       </p>
 
+      <router-link to="/canonical/metagraph" class="inline-block mb-5 px-3 py-1.5 rounded border border-line bg-surface text-xs text-accent-2 hover:border-accent-2">
+        See the graph itself, with these scripts as overlays through it →
+      </router-link>
+
       <p v-if="stale" class="text-accent text-xs mb-4 border border-line rounded px-3 py-2 bg-surface">
         This API has not been restarted onto the script index yet, so only <code>pod-0</code> is listed. The script page itself works.
       </p>
