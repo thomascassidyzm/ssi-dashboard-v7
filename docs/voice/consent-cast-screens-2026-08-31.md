@@ -124,18 +124,23 @@ the refusal, never the pass.
 
 ## 5. Every other screen that provisions or casts a voice
 
-| Surface | Gated route | Key? | Verdict |
-|---|---|---|---|
-| `PodCastPanel.vue` (PodDetailView) | `PUT /pods/cast` | **now yes** | the headline defect. FIXED. |
-| `PodLab.vue` voice picker + ▶ audition | `POST /api/pod-cast-voices`, `POST /api/voices/preview` | **now yes** | same lock; pools are vendor stock today so it does not bite yet. FIXED. |
-| `VoiceConfiguration.vue` — the course-role cast | `PUT /api/courses/:c/voice-config` (gated inside `voice-config-service.cjs`) | **now yes** | had no key, and its ▶ preview and Test buttons swallowed EVERY failure into `console.error` — a consent refusal there was invisible, the button simply did nothing. Both fixed: the refusal is shown, and the same step opens on it. |
-| `TeamRoster.vue` | `POST /team/:c/assign-slot` | yes, already | the good pattern, built by the onboarding worker: assign → if nobody has asked them, the consent step opens in place and finishes the assignment. |
-| `LanguagesPanel.vue` (Voice Lab) | `PUT /api/voicelab/languages/:lang/slot`, the clone routes | yes, already | consent is captured at clone time and the plain admin editor sits beside it. |
-| `tools/pod-recast.cjs` (CLI) | the gate directly | n/a | refuses with the gate's own sentence, which names what to do. A CLI operator has a screen to go to; no change needed. |
+Two passes: my own, and an independent read-only census (job #541) run against `origin/main`
+before these commits landed. They agree, and #541 found one surface I had missed — the Voice Lab's
+own Declare tab.
 
-Nothing else in `src/` calls a consent-gated route.
+| Surface | Gated route | Verdict |
+|---|---|---|
+| `PodCastPanel.vue` (PodDetailView, PodsView, PodScriptsView) | `PUT /pods/cast` | **FIXED.** The headline defect: no new pod speaker was castable by anybody. |
+| `PodLab.vue` voice picker + ▶ audition | `POST /api/pod-cast-voices`, `POST /api/voices/preview` | **FIXED.** Same lock; the pools are vendor stock today so it does not bite yet. |
+| `VoiceConfiguration.vue` — the course-role cast | `PUT /api/courses/:c/voice-config`, gated inside `voice-config-service.cjs` | **FIXED.** Worse than the others: its ▶ preview and Test buttons swallowed *every* failure into `console.error` without even checking `response.ok`, so a consent refusal there was invisible and the button simply did nothing. #541 called this a different shape needing its own design; on reading it the reuse turned out to be the same three-line branch the others take, so it is fixed rather than flagged — but its silent-swallow was a general defect that consent merely exposed, and whether that screen wants a proper error region rather than borrowing `saveStatus` is a taste call left alone. |
+| `EstatePanels.vue` — the Voice Lab's Declare tab | `POST /api/voices/declare` | **FIXED.** Found by #541, missed by me. A declaration locks a course side to a voice — a cast under another name — and the panel showed the refusal honestly and then had nothing to offer. |
+| `TeamRoster.vue` | `POST /team/:c/assign-slot` | already had a key. #541's words: the reference implementation — it branches on `detail.code` and opens its own inline consent flow before retrying. |
+| `CandidateVoices.vue` / `LanguagesPanel.vue` | `PUT /api/voicelab/languages/:lang/slot`, the clone routes | already had a key: consent badge, disabled Cast with a reason, editor beside it. |
+| `AdminRecording.vue` | — | never reaches the gate; it only toggles `humanOnly` and writes no voice map. |
+| `tools/pod-recast.cjs` (CLI) | the gate directly | no change needed — it refuses with the gate's own sentence, which names what to do, and the operator has a screen to go to. |
 
-**One thing I did NOT change and Tom should see:** `VoiceConfiguration.vue`'s preview and test
-buttons swallowing every error was not a consent bug — it was a general silent-failure that
-consent merely exposed. Surfacing it is in this commit; whether that screen wants a proper error
-region rather than borrowing `saveStatus` is a taste call, not fixed here.
+#541 also confirmed two gated writers that the hard-block doc's call-site list does not name:
+`voice-config-service.cjs:551` and `pods-router.cjs:398`. Both are genuinely gated; the list was
+incomplete, not the code.
+
+Nothing else in `src/` or `tools/` calls a consent-gated route.
