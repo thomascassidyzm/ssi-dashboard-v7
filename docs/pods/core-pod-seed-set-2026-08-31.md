@@ -537,3 +537,380 @@ carries it.
 - Cut: `that's exactly what I'm here to learn` **(new)** · `a coffee with milk` *(CP046)* · `please` *(CP009)* · `stop me` **(new)** · `if I say it wrong` **(new)**
 - Job: the self-initiated pivot back from biography to business, and the licence's imperative
   form ("stop me") — the chunk the health set's HG01/HG11 lean on.
+
+### Block F — café and ordering (D8, scenes 3, 7, 16, 19–20)
+
+**CP053 — the full café order**
+- Source g11, sc3 (Sarah), after the CP004 greeting head: "I'd like a coffee, please. With milk but with no sugar. To take away."
+- Seed: **"I'd like a coffee, please. With milk but with no sugar. To take away."**
+- Cut: `I'd like` *(core)* · `a coffee` **(new)** · `please` *(CP009)* · `with milk` **(new)** · `but with no sugar` **(new)** · `to take away` **(new)**
+- Job: the customised order — item, additions, exclusions, mode — the trunk's canonical
+  service turn. "a coffee" bare beside CP046's "a coffee with milk": the split's two sides.
+
+**CP054 — the availability question**
+- Source g12, sc3 (Sarah): "Do you have any food?"
+- Seed: **"Do you have any food?"**
+- Cut: `do you have` **(new)** · `any food` **(new)**
+- Job: the availability frame-opener — the corpus's most productive question head (eleven
+  attestations across four scenes).
+
+**CP055 — the snacks variant (near-ZERO)**
+- Source g13, sc3 (Sarah): "Do you have any snacks?"
+- Seed: **"Do you have any snacks?"**
+- Cut: `do you have` *(CP054)* · `any snacks` **(new)**
+- Job: second fill of the availability slot — the frame confirmed by minimal contrast.
+
+**CP056 — the or-list**
+- Source g14, sc3 (Sarah): "Do you have crisps, or nuts, or anything?"
+- Seed: **"Do you have crisps, or nuts, or anything?"**
+- Cut: `do you have` *(CP054)* · `crisps, or nuts, or anything` **(new)**
+- Job: the open or-list — offered whole because the listing intonation is the worn value;
+  W1302.1 replays this exact line.
+
+**CP057 — the black coffee (near-ZERO)**
+- Source g39, sc7 (Customer 1): "I'd like a black coffee, please."
+- Seed: **"I'd like a black coffee, please."**
+- Cut: `I'd like` *(core)* · `a black coffee` **(new)** · `please` *(CP009)*
+- Job: one LEGO — the item slot of the I'd-like order, second fill after CP053.
+
+**CP058 — size and substitution**
+- Source g41, sc7 (Customer 1): "I'd like large, please. With oat milk if you have it."
+- Seed: **"I'd like large, please. With oat milk if you have it."**
+- Cut: `I'd like large` **(new)** · `with oat milk` **(new)** · `if you have it` **(new)**
+- Job: the anaphoric size answer (answering an unspoken "regular or large?"), a second
+  with-addition, and the availability hedge "if you have it" — reusable after any request.
+
+**CP059 — the mode answer (near-ZERO)**
+- Source g43, sc7 (Customer 1): "I'd like takeaway, please."
+- Seed: **"I'd like takeaway, please."**
+- Cut: `I'd like takeaway` **(new)** · `please` *(CP009)*
+- Job: the mode answer as a complete turn — the sit-in/takeaway fork's producible half.
+
+**CP060 — the multi-item order**
+- Source g44, sc7 (Customer 2): "Could I have two white coffees and two black coffees and one of those, please?"
+- Seed: **"Could I have two white coffees and two black coffees and one of those, please?"**
+- Cut: `could I have` **(new)** · `two white coffees and two black coffees` **(new)** · `one of those` **(new)**
+- Job: the polite-request opener (beside "I'd like" — both corpus forms, distinct knowns, no
+  fork), the coordinated plural order, and the pointing order "one of those" — deixis doing
+  the vocabulary's job, the pod register at its purest.
+
+**CP061 — the addition**
+- Source g46, sc7 (Customer 2): "Yes, can I have a glass of water as well, please."
+- Seed: **"Yes, can I have a glass of water as well, please."**
+- Cut: `yes` *(CP009)* · `can I have` **(new)** · `a glass of water` **(new)** · `as well` **(new)**
+- Job: the casual request opener (third of the family: I'd like / could I have / can I have)
+  and the add-on marker "as well".
+
+**CP062 — the counter order (D8 pure)**
+- Source g50, sc7 (Customer 3): "Good morning. Two Americanos and a cup of tea, please."
+- Seed: **"Good morning. Two Americanos and a cup of tea, please."**
+- Cut: `good morning` *(CP002)* · `two Americanos` **(new)** · `and a cup of tea` **(new)** · `please` *(CP009)*
+- Job: the ellipted order in its pure form — no finite verb anywhere, D8's defining shape,
+  over an owned greeting and particle.
+
+**CP063 — the ice-cream order (near-ZERO)**
+- Source g194, sc19 (drill): "I'd like two scoops of ice-cream, please."
+- Seed: **"I'd like two scoops of ice-cream, please."**
+- Cut: `I'd like` *(core)* · `two scoops of ice-cream` **(new)** · `please` *(CP009)*
+- Job: one LEGO — the measured-portion order, opening the scoop family.
+
+**CP064 — the two-flavour cone**
+- Source g196, sc20 (drill): "Can I have one scoop of chocolate and one of strawberry?"
+- Seed: **"Can I have one scoop of chocolate and one of strawberry?"**
+- Cut: `can I have` *(CP061)* · `one scoop of chocolate` **(new)** · `and one of strawberry` **(new)**
+- Job: the portioned pair with ellipsis in the second conjunct ("one of strawberry") — the
+  corpus's own economy of repetition.
+
+**CP065 — and then another (near-ZERO)**
+- Source g197, sc20 (drill): "And then another cone with one scoop of lemon and one of blueberry."
+- Seed: **"And then another cone with one scoop of lemon and one of blueberry."**
+- Cut: `and then` **(new)** · `another cone` **(new)** · `with one scoop of lemon and one of blueberry` *(CP064 — slot fill on the owned scoop pair)*
+- Job: the order continued across turns — "and then" is the continuation marker CP126 and
+  W1401 reuse — and "another X", the repeat-order frame.
+
+**CP066 — any ice-cream? (ZERO)**
+- Source g198, sc20 (drill): "Do you have any ice-cream?"
+- Seed: **"Do you have any ice-cream?"**
+- Cut: `do you have` *(CP054)* · `any ice-cream` *(side of CP063's "two scoops of ice-cream" — the noun is owned; "any" is the frame's own slot marker, attested twice already)*
+- Job: **zero admission.** The availability frame's fourth fill from owned material — pure
+  corpus representation for the ice-cream walk.
+
+**CP067 — anything to eat**
+- Source g157, sc16 (drill): "Do you have anything to eat?"
+- Seed: **"Do you have anything to eat?"**
+- Cut: `do you have` *(CP054)* · `anything to eat` **(new)**
+- Job: the open availability question — "anything to eat" generalises the or-list's tail into
+  the frame the learner actually reaches for when the nouns run out.
+
+**CP068 — the menu**
+- Source g155, sc16 (drill): "Can we see the menu?"
+- Seed: **"Can we see the menu?"**
+- Cut: `can we` *(core)* · `see the menu` **(new)**
+- Job: the menu request — the corpus's standing repair for not knowing the words for food.
+
+**CP069 — the dessert menu (near-ZERO)**
+- Source g156, sc16 (drill): "Can we see the dessert menu also?"
+- Seed: **"Can we see the dessert menu also?"**
+- Cut: `can we` *(core)* · `see the dessert menu` **(new — the slot refilled)** · `also` *(core — glue)*
+- Job: the slot's second fill; "see the X" is now a frame, not a phrase.
+
+**CP070 — hungry, and a menu**
+- Source g64, sc8 (Customer 1): "I'm not sure if I'm hungry. Do you have a menu?"
+- Seed: **"I'm not sure if I'm hungry. Do you have a menu?"**
+- Cut: `I'm not sure if I'm hungry` **(new)** · `do you have` *(CP054)* · `a menu` **(new)**
+- Job: the hedged appetite — "I'm not sure if…" reattested from CP040 with a new complement —
+  and the indefinite menu ask beside CP068's definite one.
+
+### Block G — pub and restaurant (scenes 8–9)
+
+**CP071 — the pint, and the ales question**
+- Source g54, sc8 (Customer 1): "I'd like a pint, please. What ales do you have on?"
+- Seed: **"I'd like a pint, please. What ales do you have on?"**
+- Cut: `I'd like` *(core)* · `a pint` **(new)** · `please` *(CP009)* · `what ales do you have on` **(new)**
+- Job: the pub's own order-token and the what-do-you-have question turned to a category —
+  the availability frame's interrogative-wh side.
+
+**CP072 — the specified pint (near-ZERO)**
+- Source g56, sc8 (Customer 1): "I'd like a pint of the bitter, please."
+- Seed: **"I'd like a pint of the bitter, please."**
+- Cut: `I'd like` *(core)* · `a pint of the bitter` **(new)** · `please` *(CP009)*
+- Job: one LEGO — the measured-of-the-named order, choosing from what the answer offered.
+
+**CP073 — the half (near-ZERO)**
+- Source g57, sc8 (Customer 2): "Can I have a half of cider?"
+- Seed: **"Can I have a half of cider?"**
+- Cut: `can I have` *(CP061)* · `a half of cider` **(new)**
+- Job: one LEGO — the measure family's second member (pint, half).
+
+**CP074 — the wine list, and the want**
+- Source g58, sc8 (Customer 3): "Could I see the wine list? I want a glass of wine."
+- Seed: **"Could I see the wine list? I want a glass of wine."**
+- Cut: `could I see` **(new)** · `the wine list` **(new)** · `I want` *(core)* · `a glass of wine` **(new)**
+- Job: the see-request in its polite form and the bare want — the corpus's only unhedged
+  "I want", kept because its bluntness is the register truth of a third drink.
+
+**CP075 — the large white (near-ZERO)**
+- Source g60, sc8 (Customer 3): "I'd like a large glass of white wine, please."
+- Seed: **"I'd like a large glass of white wine, please."**
+- Cut: `I'd like` *(core)* · `a large glass of white wine` **(new)** · `please` *(CP009)*
+- Job: one LEGO — size + vessel + kind in one worn NP.
+
+**CP076 — the small red (near-ZERO)**
+- Source g61, sc8 (Customer 1): "Can I have a small glass of red wine?"
+- Seed: **"Can I have a small glass of red wine?"**
+- Cut: `can I have` *(CP061)* · `a small glass of red wine` **(new)**
+- Job: CP075's minimal pair — both size and colour flipped; the NP's slots shown by contrast.
+
+**CP077 — two more (near-ZERO)**
+- Source g62, sc8 (Customer 2): "I'd like two more glasses of beer."
+- Seed: **"I'd like two more glasses of beer."**
+- Cut: `I'd like` *(core)* · `two more glasses of beer` **(new)**
+- Job: one LEGO — the re-order: "more" inside the NP is the repeat-custom move.
+
+**CP078 — bread and chips for the table**
+- Source g66, sc8 (Customer 1): "Can we have some bread? And a bowl of chips for the table."
+- Seed: **"Can we have some bread? And a bowl of chips for the table."**
+- Cut: `can we have` **(new)** · `some bread` **(new)** · `a bowl of chips` **(new)** · `for the table` **(new)**
+- Job: the plural request opener (completing the can-family paradigm: can I / could I / can
+  we) and the shared order "for the table".
+
+**CP079 — the sandwich**
+- Source g67, sc8 (Customer 2): "Do you have any sandwiches? I'd like a cheese sandwich, please."
+- Seed: **"Do you have any sandwiches? I'd like a cheese sandwich, please."**
+- Cut: `do you have` *(CP054)* · `any sandwiches` **(new)** · `I'd like` *(core)* · `a cheese sandwich` **(new)** · `please` *(CP009)*
+- Job: the availability-then-order pair in one turn — ask the frame, use the answer — the
+  corpus teaching the exchange grammar inside a single row.
+
+**CP080 — the restaurant booking**
+- Source g69, sc9 (Customer 1): "Good evening. We have a booking for two, under the name Davies."
+- Seed: **"Good evening. We have a booking for two, under the name Davies."** (name is slot content)
+- Cut: `good evening` *(CP001)* · `we have a booking for two` **(new)** · `under the name Davies` *(CP050 — slot fill)*
+- Job: one new LEGO — the arrival declaration; the name formula is owned from the contract
+  block, exactly as designed.
+
+**CP081 — the waters**
+- Source g72, sc9 (Customer 2): "We'd like one bottle of sparkling water and one bottle of still water, please."
+- Seed: **"We'd like one bottle of sparkling water and one bottle of still water, please."**
+- Cut: `we'd like` **(new)** · `one bottle of sparkling water` **(new)** · `and one bottle of still water` **(new)** · `please` *(CP009)*
+- Job: the plural preference opener and the paired bottle order — the sparkling/still fork
+  answered in its own worn coordination.
+
+**CP082 — the dietary question**
+- Source g73, sc9 (Customer 1): "Excuse me - do you have anything gluten-free? Or for vegetarians?"
+- Seed: **"Excuse me — do you have anything gluten-free? Or for vegetarians?"**
+- Cut: `excuse me` *(CP024)* · `do you have` *(CP054)* · `anything gluten-free` **(new)** · `or for vegetarians` **(new)**
+- Job: the dietary-constraint ask — "anything X" reattested with an adjective fill, and the
+  afterthought disjunct "or for X?" as its own move.
+
+**CP083 — the recommendation question**
+- Source g75, sc9 (Customer 1): "And what would you recommend tonight?"
+- Seed: **"And what would you recommend tonight?"**
+- Cut: `what would you recommend` **(new)** · `tonight` **(new)**
+- Job: handing the choice to the expert — the move that turns a menu into a conversation —
+  plus the daypart adverb.
+
+**CP084 — the main, chosen**
+- Source g77, sc9 (Customer 1): "I'll have the lamb, please. With a side of greens."
+- Seed: **"I'll have the lamb, please. With a side of greens."**
+- Cut: `I'll have` **(new)** · `the lamb` **(new)** · `please` *(CP009)* · `with a side of greens` **(new)**
+- Job: the decision opener "I'll have" — commitment, not preference, completing the ordering
+  paradigm (I'd like / could I / can I / can we / we'd like / I'll have) — and the side-order.
+
+**CP085 — and for me (near-ZERO)**
+- Source g78, sc9 (Customer 2): "And the risotto for me. With a small green salad to start."
+- Seed: **"And the risotto for me. With a small green salad to start."**
+- Cut: `and the risotto for me` **(new)** · `with a small green salad` **(new)** · `to start` **(new)**
+- Job: the verbless second order ("and the X for me" — D8 ellipsis with a beneficiary) and
+  the course-structure marker "to start".
+
+**CP086 — the wine list again (ZERO)**
+- Source g80, sc9 (Customer 1): "Could we see the wine list?"
+- Seed: **"Could we see the wine list?"**
+- Cut: `could I see` → plural side: `could we` *(core)* · `see` composed as *(CP068's "see the menu" frame with CP074's "the wine list")* — no new LEGO
+- Job: **zero admission.** The see-frame refilled plural from wholly owned material; the
+  corpus attests the recombination, which is exactly what a zero seed is for.
+
+**CP087 — would be lovely**
+- Source g81, sc9 (Customer 2): "A bottle of the house red would be lovely."
+- Seed: **"A bottle of the house red would be lovely."**
+- Cut: `a bottle of the house red` **(new)** · `would be lovely` **(new)**
+- Job: the desiderative order — naming the thing and blessing it, no request verb at all —
+  and "would be lovely", the politeness tail that upgrades any NP into an order.
+
+**CP088 — coffees and decaf**
+- Source g84, sc9 (Customer 1): "Just two coffees, please. Decaf for me."
+- Seed: **"Just two coffees, please. Decaf for me."**
+- Cut: `just` *(core)* · `two coffees` **(new)** · `please` *(CP009)* · `decaf for me` **(new)**
+- Job: the winding-down order and the for-me specification — "X for me" now attested twice
+  (CP085), a frame.
+
+**CP089 — the bill, and the split**
+- Source g85, sc9 (Customer 2): "And the bill, when you're ready. Could we split it?"
+- Seed: **"And the bill, when you're ready. Could we split it?"**
+- Cut: `the bill` **(new)** · `when you're ready` **(new)** · `could we split it` **(new)**
+- Job: closing the meal — the verbless bill request, the pressure-softener "when you're
+  ready", and the split question. Block H picks up payment from here.
+
+### Block H — paying, and the handover (D5, X5, scenes 7, 14, 15–17)
+
+**CP090 — how much is that?**
+- Source g141, sc15 (drill): "How much is that?"
+- Seed: **"How much is that?"**
+- Cut: `how much is that` **(new)**
+- Job: the price question, whole — the corpus's smallest complete transaction move.
+
+**CP091 — the wrapped price question**
+- Source g142, sc15 (drill): "Can you tell me how much that is?"
+- Seed: **"Can you tell me how much that is?"**
+- Cut: `can you tell me` **(new)** · `how much that is` **(new)**
+- Job: mints "can you tell me" — the embedding wrap the corpus applies to three different
+  questions (price, distance, place) — and the embedded word-order side of CP090's question.
+  The pair teaches the direct/embedded split by minimal contrast.
+
+**CP092 — can we pay?**
+- Source g158, sc16 (drill): "Can we pay?"
+- Seed: **"Can we pay?"**
+- Cut: `can we pay` **(new)**
+- Job: the settlement move at its barest — one LEGO.
+
+**CP093 — by card (near-ZERO)**
+- Source g159, sc16 (drill): "Can we pay by card?"
+- Seed: **"Can we pay by card?"**
+- Cut: `can we pay` *(CP092)* · `by card` **(new)**
+- Job: one LEGO — the instrument phrase, the payment scenes' load-bearing chunk.
+
+**CP094 — could I pay by card? (near-ZERO)**
+- Source g48, sc7 (Customer 2), first half: "Could I pay by card?" — g138 (Taxi) is the same
+  sentence and consolidates here.
+- Seed: **"Could I pay by card?"**
+- Cut: `could I pay` **(new)** · `by card` *(CP093)*
+- Job: the singular-polite side of CP092's split, over the owned instrument.
+
+**CP095 — contactless (near-ZERO)**
+- Source g48, sc7 (Customer 2), second half: "Do you have contactless?"
+- Seed: **"Do you have contactless?"**
+- Cut: `do you have` *(CP054)* · `contactless` **(new)**
+- Job: one LEGO — the availability frame reaching payment infrastructure.
+
+**CP096 — only cash (near-ZERO)**
+- Source g160, sc16 (drill — service-side, promoted by the pod itself): "No, we only take cash."
+- Seed: **"No, we only take cash."**
+- Cut: `no` *(CP036)* · `we only take cash` **(new)**
+- Job: the polar-negative with its account (D2's no-side, first attested production) — and
+  the learner's line when hosting or relaying a merchant's answer.
+
+**CP097 — no cash (near-ZERO)**
+- Source g161, sc16 (drill): "I'm sorry, I don't have any cash."
+- Seed: **"I'm sorry, I don't have any cash."**
+- Cut: `I'm sorry` *(CP038)* · `I don't have` **(new)** · `any cash` **(new)**
+- Job: the apologised lack — "I don't have" is the possession negative the corpus reuses for
+  tickets and time.
+
+**CP098 — the cash machine**
+- Source g163, sc17 (drill): "Is there a cash machine near here?"
+- Seed: **"Is there a cash machine near here?"**
+- Cut: `is there` **(new)** · `a cash machine` **(new)** · `near here` **(new)**
+- Job: opens the existential frame (P19 — three pod attestations, all in response position)
+  and the vicinity phrase "near here".
+
+**CP099 — the three-way payment question**
+- Source g164, sc17 (drill — service-side, promoted): "Do you want to pay by cash or card or put it on the room?"
+- Seed: **"Do you want to pay by cash or card or put it on the room?"**
+- Cut: `do you want to pay` **(new)** · `by cash or card` **(new)** · `or put it on the room` **(new)**
+- Job: the offered alternatives — the or-list applied to payment — and the room-billing idiom
+  arriving inside its question.
+
+**CP100 — on the room (ZERO)**
+- Source g165, sc17 (drill): "Can we put it on the room, please?"
+- Seed: **"Can we put it on the room, please?"**
+- Cut: `can we` *(core)* · `put it on the room` *(contained whole in CP099's "or put it on the room")* · `please` *(CP009)*
+- Job: **zero admission.** The idiom flipped from offer to request entirely from owned
+  material — the manufactured zero at its cleanest.
+
+**CP101 — would you like to pay…? (near-ZERO)**
+- Source g166, sc17 (drill): "Would you like to pay by cash or card or on the room?"
+- Seed: **"Would you like to pay by cash or card or on the room?"**
+- Cut: `would you like to pay` **(new)** · `by cash or card` *(CP099)* · `or on the room` *(side of CP099's chunk)*
+- Job: one LEGO — the would-you-like offer opener, the politest of the asking paradigm,
+  minted over owned alternatives.
+
+**CP102 — did you want…? (near-ZERO)**
+- Source g167, sc17 (drill): "Did you want to pay by cash or card?"
+- Seed: **"Did you want to pay by cash or card?"**
+- Cut: `did you want to pay` **(new)** · `by cash or card` *(CP099)*
+- Job: one LEGO — the past-form softener ("did you want"), completing the offer paradigm's
+  third member; CP184 reuses the bare "did you want" side.
+
+**CP103 — again, by card (near-ZERO)**
+- Source g168, sc17 (drill): "We'll pay by card again, please."
+- Seed: **"We'll pay by card again, please."**
+- Cut: `we'll pay` **(new)** · `by card` *(CP093)* · `again` *(core — glue)* · `please` *(CP009)*
+- Job: one LEGO — the settled-intention form "we'll pay", D12's first-plural sibling.
+
+**CP104 — here's my passport**
+- Source g99, sc11 (Guest): "Of course. Here's my passport."
+- Seed: **"Of course. Here's my passport."**
+- Cut: `of course` *(CP012)* · `here's` **(new)** · `my passport` **(new)**
+- Job: **the D5/X5 unlock** — the deictic handover from the learner's own side, the physical
+  move of giving. "here's" is the frame's head and cut nowhere in any eng-known course.
+
+**CP105 — here it is**
+- Source g65, sc8 (Bartender — the handover is role-symmetric: the learner hands things
+  daily): "Here it is."
+- Seed: **"Here it is."**
+- Cut: `here it is` **(new)**
+- Job: D5's anaphoric alternate, one LEGO — with CP104 the handover frame has both its
+  attested surfaces ("here you are" itself is a corpus gap, §8).
+
+**CP106 — how much to town? (taxi)**
+- Source g143, sc15 (drill): "How much does it cost to get a taxi into town?"
+- Seed: **"How much does it cost to get a taxi into town?"**
+- Cut: `how much does it cost` **(new)** · `to get a taxi` **(new)** · `into town` **(new)**
+- Job: the costed-journey question — price meets travel; "into town" is block K's most
+  reused destination.
+
+**CP107 — how much by bus? (near-ZERO)**
+- Source g144, sc15 (drill): "How much does it cost to get a bus into town?"
+- Seed: **"How much does it cost to get a bus into town?"**
+- Cut: `how much does it cost` *(CP106)* · `to get a bus` **(new)** · `into town` *(CP106)*
+- Job: one LEGO — the vehicle slot's second fill; the frame confirmed by minimal contrast.
