@@ -220,6 +220,17 @@
           >Cancel</button>
           <span v-if="proposal && !dirty" class="text-[11px] text-faint">This matches the saved cast — nothing to save.</span>
         </div>
+        <!-- The key to the consent lock, shown WHERE THE REFUSAL HAPPENED.
+             Recording the person's consent finishes the save it interrupted. -->
+        <ConsentStep
+          v-if="consentNeeded"
+          :voice-id="consentNeeded.voiceId"
+          :reason="consentNeeded.reason"
+          :person="consentNeeded.person"
+          :language="targetLangOfCourse"
+          @recorded="onConsentRecorded"
+          @cancel="consentNeeded = null"
+        />
       </div>
       <div v-else-if="!speakerCount" class="text-xs text-faint mt-4">
         No dialogue characters yet — generate or sync a pod first.
@@ -262,6 +273,7 @@
 import { ref, computed, watch, onMounted, onBeforeUnmount } from 'vue'
 import { getApiUrl } from '@/services/api.js'
 import { useAuth } from '@/composables/useAuth.js'
+import ConsentStep from '@/views/admin/voicelab/ConsentStep.vue'
 
 const props = defineProps({
   courseCode: { type: String, required: true },
@@ -294,6 +306,13 @@ const provisioningNotes = ref([])
 const castDefaults = ref(null)
 const maxVoices = computed(() => castDefaults.value?.max || 5)
 
+/**
+ * The language a newly-created `voices` row should carry, if consent has to
+ * create one. Read off the course code the same way voice-slots mints ids from
+ * it, so the row and the id cannot disagree about what the voice is for.
+ */
+const targetLangOfCourse = computed(() => String(props.courseCode || '').split('_for_')[0] || '')
+
 const hasSavedCast = computed(() => Object.values(savedCast.value || {}).some(v => v && v.voiceId))
 const mode = computed(() => (editing.value || !hasSavedCast.value ? 'editing' : 'saved'))
 
@@ -303,8 +322,52 @@ async function authedFetch(path, init = {}) {
   if (token) headers.Authorization = `Bearer ${token}`
   const res = await fetch(`${getApiUrl()}${path}`, { ...init, headers })
   const body = await res.json().catch(() => ({}))
-  if (!res.ok) throw new Error(body?.error || `HTTP ${res.status}`)
+  // The body travels with the error. The consent refusal is the reason: it
+  // carries `code`, `speaker` and `voiceId` so this panel can BRANCH on it and
+  // offer the way through, rather than pattern-matching English prose that is
+  // Tom's to redline.
+  if (!res.ok) throw Object.assign(new Error(body?.error || `HTTP ${res.status}`), { status: res.status, data: body })
   return body
+}
+
+// ── THE CONSENT STEP — the key to the lock that refuses casting a new person ─
+//
+// Tom, 2026-08-31: "we are never going to use a voice without consent." Saving
+// a cast writes courses.voice_config, so PUT /pods/cast takes the standing
+// block — correctly. But this panel MINTS a `human_*` id for somebody the
+// moment you type their name, and the gate refuses any human id with no
+// recorded consent, which is the strongest possible reason to refuse and also
+// meant that CASTING A NEW POD SPEAKER WAS IMPOSSIBLE FOR ANYBODY. The lock was
+// right; the screen had no key. The previous worker named this exact flow and
+// left it (docs/voice/consent-in-onboarding-2026-08-31.md §4c).
+//
+// This is that key, and it is the SAME mechanism: ConsentStep is the Voice
+// Lab's declaration — the line read aloud and checked by whisper on the box, or
+// the named written statement — writing the same consent_* columns through the
+// same declaration.cjs. This panel only decides when to show it, and then
+// finishes the save it interrupted, so a leader goes from refused to cast in
+// one pass instead of being sent to another screen.
+const consentNeeded = ref(null) // { voiceId, reason, person }
+
+/** A refusal this panel can do something about, or null. */
+function consentRefusal(err) {
+  const d = (err && err.data) || {}
+  if (d.code !== 'NO_RECORDED_CONSENT' && d.code !== 'CONSENT_UNREADABLE') return null
+  // Whose voice it is, from the cast being saved — so nobody retypes a name
+  // that is already on screen, and the record names the person rather than
+  // the operator.
+  const fromProposal = (proposal.value?.assignments || []).find(a => a.voiceId === d.voiceId)
+  const entry = fromProposal || (d.speaker ? (proposal.value?.podCast || {})[d.speaker] : null)
+  return { voiceId: d.voiceId || '', reason: err.message, person: (entry && entry.name) || '' }
+}
+
+async function onConsentRecorded() {
+  consentNeeded.value = null
+  note('Consent recorded — saving the cast.')
+  // One more speaker may still need asking; the save refuses again and the
+  // step re-opens on that person. Iterating is honest: each person's yes is
+  // their own.
+  await saveCast()
 }
 
 function note(msg, isError = false) {
@@ -523,7 +586,13 @@ async function saveCast() {
     editing.value = false
     note('Cast saved ✓ — copy each person their record link.')
   } catch (err) {
-    note(err.message || String(err), true)
+    const refusal = consentRefusal(err)
+    if (refusal) {
+      consentNeeded.value = refusal
+      note('')
+    } else {
+      note(err.message || String(err), true)
+    }
   } finally {
     saving.value = false
   }

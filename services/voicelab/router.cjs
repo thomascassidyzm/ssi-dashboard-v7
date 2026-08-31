@@ -44,6 +44,7 @@ const speakers = require('./speakers.cjs')
 const consent = require('./consent.cjs')
 const consentGate = require('../shared/voice-consent-gate.cjs')
 const declaration = require('./declaration.cjs')
+const consentCapture = require('./consent-capture.cjs')
 const cloneConfirmation = require('./clone-confirmation.cjs')
 const { isHumanVoiceLang } = require('../shared/human-voice-courses.cjs')
 
@@ -947,6 +948,111 @@ function mount (app, deps) {
       logger.log?.(`[voicelab] consent ${record.consent_status} recorded on ${voiceId} by ${who(user)}`)
       res.json({ ok: true, voiceId, consent: consent.describe(data) })
     } catch (err) { fail(res, err, `consent ${req.params.voiceId}`) }
+  })
+
+  /**
+   * THE CONSENT WORDING, on its own, for a screen that only needs the words.
+   *
+   * /api/voicelab/params carries the same block, but it also reads the estate's
+   * voices and Cartesia's catalogue on every call — far too much to make a
+   * screen pay for when all it wants is the sentence somebody is about to read
+   * aloud. Same single source (declaration.cjs), so the words on screen and the
+   * words written into the database can never drift apart.
+   */
+  app.get('/api/voicelab/consent-wording', async (req, res) => {
+    const user = await requireDashboardUser(req, res)
+    if (!user) return
+    let canListen = false
+    try { canListen = require('../audio-veracity.cjs').availability().available === true } catch { canListen = false }
+    res.json({ spokenPhrase: declaration.SPOKEN_PHRASE, attestation: declaration.ATTESTATION, canListen })
+  })
+
+  /**
+   * RECORD A CONSENT DECLARATION against a voice THAT ALREADY EXISTS.
+   *
+   * Tom, 2026-08-31: "we are never going to use a voice without consent." The
+   * block that ruling produced is real and it refuses, correctly, at every cast
+   * and every render. What it exposed is that consent could only ever be
+   * CAPTURED at the moment a voice was born — in the clone routes above, or in
+   * recordist onboarding. A voice that already exists and is refused at the
+   * moment somebody tries to cast it had no key at all: PodLab's cast screen
+   * could not cast a new pod speaker, by anybody, because the only way through
+   * the lock was to have gone through it before the voice was made.
+   *
+   * So this is the same declaration, offered where the refusal happens.
+   *
+   * TWO SHAPES, ONE ROUTE — identical to POST /team/:course/consent, on purpose:
+   *   multipart, sampleFrom=record   they read the line at a microphone, and
+   *                                  whisper checks it against these very bytes
+   *   JSON, declarationAgreed=true   they are not at a microphone, so a named
+   *                                  human states it instead: 'attested'
+   *
+   * The PUT route above stays exactly what it was — Tom typing in a yes he
+   * obtained off-system. This is the yes obtained ON the system, with evidence.
+   * Neither is a second opinion about consent: both write the columns that
+   * services/voicelab/consent.cjs and declaration.cjs produce, and nothing else.
+   */
+  app.post('/api/voicelab/voices/:voiceId/consent-declaration', async (req, res) => {
+    // A DASHBOARD SESSION, not admin — deliberately, and here is the reasoning.
+    // The screens that get refused are course screens: a course leader casting
+    // a pod, a producer casting a speaker. Admin-only here would mean the lock
+    // still has no key for the people who actually hit it, which is the whole
+    // defect. The estate already has this precedent: an editor may record
+    // consent for a member of their course's team (team-router POST /consent).
+    // What makes it safe is what this route CANNOT do — it can only ever write
+    // a fresh, evidenced yes with a named person and a named operator, and
+    // consent-capture refuses outright to overturn a recorded no. Changing a
+    // decision, rather than recording one, stays on the admin PUT above.
+    const user = await requireDashboardUser(req, res)
+    if (!user) return
+    try {
+      const voiceId = String(req.params.voiceId || '').trim()
+      if (!voiceId) throw Object.assign(new Error('voiceId is required'), { status: 400 })
+
+      const multipart = /multipart\/form-data/i.test(req.headers['content-type'] || '')
+      const { clip, fields } = multipart
+        ? await readUpload(req)
+        : { clip: null, fields: req.body || {} }
+
+      // Whose voice it is. Never defaulted to the operator: a consent record
+      // that names the person who typed it is the one failure mode the two
+      // separate columns exist to prevent.
+      const person = String(fields.person || '').trim()
+      if (!person) {
+        throw Object.assign(
+          new Error('Name whose voice this is before recording their consent — without a name there is nobody the record can ever be matched to.'),
+          { status: 400, detail: { needsPerson: true } },
+        )
+      }
+
+      const declarationRecord = await declaration.captureDeclaration({
+        clip,
+        sampleFrom: fields.sampleFrom,
+        agreed: String(fields.declarationAgreed ?? '').toString().trim().toLowerCase() === 'true',
+        attestedBy: fields.attestedBy,
+        person,
+        language: fields.language || null,
+      })
+
+      const { voice, created } = await consentCapture.recordConsentOnVoice(supabase(), {
+        voiceId,
+        declarationRecord,
+        person,
+        personContact: fields.personContact || null,
+        recordedBy: who(user),
+        source: fields.source || 'consent recorded at the cast screen',
+        note: fields.consentNote || null,
+        language: fields.language || null,
+      })
+
+      // The gate caches verdicts for 30 seconds. Without this drop, somebody
+      // who consents and casts in the same breath — which is exactly what the
+      // screen does — is refused by a verdict taken before they said yes.
+      consentGate.clearCache()
+
+      logger.log?.(`[voicelab] ${declarationRecord.consent_declaration_kind} consent recorded on ${voiceId} by ${who(user)}${created ? ' (voices row created)' : ''}`)
+      res.json({ ok: true, voiceId, created, consent: consent.describe(voice) })
+    } catch (err) { fail(res, err, `consent-declaration ${req.params.voiceId}`) }
   })
 
   /**

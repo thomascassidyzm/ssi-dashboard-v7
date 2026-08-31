@@ -80,6 +80,22 @@ export async function probe () {
   }
 }
 
+/**
+ * POST a multipart body to the lab. `call` sends JSON; a consent recording is
+ * bytes, and the browser must be left to set its own multipart boundary — so
+ * this is a sibling of `call` rather than a flag on it.
+ */
+async function postForm (path, form) {
+  const headers = { 'ngrok-skip-browser-warning': 'true' }
+  const token = await accessToken()
+  if (!token) throw new Error('Not signed in — every Voice Lab endpoint needs a dashboard session.')
+  headers.Authorization = `Bearer ${token}`
+  const res = await fetch(`${labBase()}${path}`, { method: 'POST', headers, body: form })
+  const data = await res.json().catch(() => ({}))
+  if (!res.ok) throw Object.assign(new Error(data.error || `HTTP ${res.status}`), { status: res.status, data })
+  return data
+}
+
 export const api = {
   params: () => call('/api/voicelab/params'),
   courses: () => call('/api/voicelab/courses'),
@@ -93,6 +109,22 @@ export const api = {
 
   // The per-language registry. `languages` spends nothing; the two slot calls
   // write voice_language_roles and nothing else — no render, no course_audio.
+  // CONSENT — the words, and the yes recorded onto a voice that already exists.
+  // Neither call renders anything or spends anything.
+  //
+  // `recordConsentDeclaration` is the key to the standing consent block for a
+  // voice nobody consented at birth: it takes a FormData when the person is at
+  // a microphone (the line read aloud, checked by whisper on the box) and a
+  // plain object when they are not (a named attestation). NAMED APART from the
+  // `recordConsent` below on purpose — that one is the admin PUT that writes a
+  // decision Tom obtained off-system, and a duplicate key in this object would
+  // silently give both callers whichever definition came last.
+  consentWording: () => call('/api/voicelab/consent-wording'),
+  recordConsentDeclaration: (voiceId, body) =>
+    body instanceof FormData
+      ? postForm(`/api/voicelab/voices/${encodeURIComponent(voiceId)}/consent-declaration`, body)
+      : call(`/api/voicelab/voices/${encodeURIComponent(voiceId)}/consent-declaration`, { method: 'POST', body }),
+
   languages: () => call('/api/voicelab/languages'),
   castSlot: (language, body) =>
     call(`/api/voicelab/languages/${encodeURIComponent(language)}/slot`, { method: 'PUT', body }),

@@ -21,6 +21,18 @@
 
     <!-- Swim Lanes - All 3 roles visible -->
     <div v-else class="swim-lanes">
+      <!-- The key to the consent lock, where the refusal happened. It sits at
+           the top of the lanes rather than between the v-if branches above,
+           which would break that chain. Recording the consent re-runs the save
+           it interrupted. -->
+      <ConsentStep
+        v-if="consentNeeded"
+        :voice-id="consentNeeded.voiceId"
+        :reason="consentNeeded.reason"
+        :language="consentLanguage"
+        @recorded="onConsentRecorded"
+        @cancel="consentNeeded = null"
+      />
       <div
         v-for="role in roles"
         :key="role.id"
@@ -310,6 +322,7 @@ import { ref, computed, onMounted, watch } from 'vue'
 import { getApiUrl } from '@/services/api'
 import { languageName } from '@/utils/languageNames'
 import { dirFor } from '@/utils/textDirection.js'
+import ConsentStep from '@/views/admin/voicelab/ConsentStep.vue'
 import { isConfigured as isSupabaseConfigured, getVoiceConfig, getSeedPhrasesPreview } from '@/services/supabase'
 
 const props = defineProps({
@@ -842,7 +855,9 @@ async function saveConfig() {
 
     if (!response.ok) {
       const data = await response.json()
-      throw new Error(data.error || 'Failed to save')
+      // The body travels with the error so the consent refusal can be branched
+      // on rather than merely printed — see consentRefusal below.
+      throw Object.assign(new Error(data.error || 'Failed to save'), { data })
     }
 
     const data = await response.json()
@@ -853,10 +868,47 @@ async function saveConfig() {
     saveStatus.value = { type: 'success', message: 'Saved!' }
     setTimeout(() => { saveStatus.value = null }, 2000)
   } catch (err) {
-    saveStatus.value = { type: 'error', message: err.message }
-    console.error('[VoiceConfig] Save error:', err)
+    const refusal = consentRefusal(err)
+    if (refusal) {
+      consentNeeded.value = { ...refusal, retry: saveConfig }
+      saveStatus.value = null
+    } else {
+      saveStatus.value = { type: 'error', message: err.message }
+      console.error('[VoiceConfig] Save error:', err)
+    }
   }
 }
+
+// ── THE CONSENT STEP — the key, on the screen that casts course roles ────────
+//
+// Tom, 2026-08-31: "we are never going to use a voice without consent." The
+// save above goes through voice-config-service, which refuses any newly
+// assigned voice nobody has consented to. Correct — and this screen had no way
+// to satisfy it, so a course role could not be cast onto a real person's voice
+// by anybody. Same lock as PodLab and PodCastPanel, so the same key: ConsentStep
+// is the Voice Lab's declaration, and recording the consent re-runs the save it
+// interrupted.
+const consentNeeded = ref(null)
+
+/** A refusal this screen can do something about, or null. */
+function consentRefusal (err) {
+  const d = (err && err.data) || {}
+  if (d.code !== 'NO_RECORDED_CONSENT' && d.code !== 'CONSENT_UNREADABLE') return null
+  return { voiceId: d.voiceId || '', reason: err.message }
+}
+
+async function onConsentRecorded () {
+  const retry = consentNeeded.value?.retry
+  consentNeeded.value = null
+  if (retry) await retry()
+}
+
+/**
+ * The language a newly-created `voices` row should carry, if recording consent
+ * has to create one. Read off the course code, the same segment the estate
+ * mints human voice ids from.
+ */
+const consentLanguage = computed(() => String(props.courseCode || '').split('_for_')[0] || '')
 
 async function discoverVoices(roleId, provider = 'azure') {
   discovering.value = true
@@ -901,7 +953,10 @@ async function previewVoice(voice, roleId) {
       body: JSON.stringify(body)
     })
 
-    if (!response.ok) throw new Error('Failed to preview')
+    if (!response.ok) {
+      const data = await response.json().catch(() => ({}))
+      throw Object.assign(new Error(data.error || 'Failed to preview'), { data })
+    }
 
     const data = await response.json()
     if (data.audio && audioPlayer.value) {
@@ -909,6 +964,12 @@ async function previewVoice(voice, roleId) {
       audioPlayer.value.play()
     }
   } catch (err) {
+    // It used to be console.error and nothing else, so a consent refusal — or
+    // any other failure — made the ▶ button simply do nothing, which reads as
+    // a broken button rather than as an answer.
+    const refusal = consentRefusal(err)
+    if (refusal) consentNeeded.value = { ...refusal, retry: null }
+    else saveStatus.value = { type: 'error', message: `Preview failed: ${err.message}` }
     console.error('[VoiceConfig] Preview error:', err)
     previewingVoiceId.value = null
   }
@@ -945,7 +1006,10 @@ async function testVoice(roleId) {
       body: JSON.stringify(body)
     })
 
-    if (!response.ok) throw new Error('Failed to test')
+    if (!response.ok) {
+      const data = await response.json().catch(() => ({}))
+      throw Object.assign(new Error(data.error || 'Failed to test'), { data })
+    }
 
     const data = await response.json()
     if (data.audio && audioPlayer.value) {
@@ -956,6 +1020,9 @@ async function testVoice(roleId) {
     // Cycle to next phrase after playing
     cyclePhrase(roleId)
   } catch (err) {
+    const refusal = consentRefusal(err)
+    if (refusal) consentNeeded.value = { ...refusal, retry: null }
+    else saveStatus.value = { type: 'error', message: `Test failed: ${err.message}` }
     console.error('[VoiceConfig] Test error:', err)
   } finally {
     testingRole.value = null
