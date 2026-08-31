@@ -1,0 +1,34 @@
+{
+  "concept": "proposed-additions",
+  "version": 1,
+  "status": "PROPOSAL — not loaded by index.cjs, not read by the Script Lab, nothing executes it",
+  "provenance": "method-pod",
+  "source": {
+    "document": "docs/pods/pod-union-coverage-2026-08-31.md — the union-coverage read that produced this list",
+    "corpus": "canonical_pod_scenarios where pod_slug = 'method-pod-43-scene' (and the same scenes in 'method-pod-chapters' / 'learning-flagship' where noted)",
+    "derived": "2026-08-31",
+    "method": "Every 43-scene chapter carries a walk declaration. These ten declared shape names resolve to nothing in the store AND to nothing in proposed/talk-bollocks-additions-2026-08-30.json. Each candidate below is the pod's own declared name with a one-line gloss read from the scene it stages — not a corpus derivation. Ratification, including whether each is a node or a move, is Tom's."
+  },
+  "id_range": {
+    "rule": "N901 upward — 1xx–5xx are held by the health/outcome-mint/talk-bollocks/ireland/trades proposals, 6xx by care work, 7xx by retail, 8xx reserved by hospitality. 9xx was free on 2026-08-31.",
+    "nodes": "N901–N910"
+  },
+  "schema_note": "Deliberately does not validate against schemas/metagraph-v1-schema.json: candidates carry no positions[] because splitting a shape into positions is ratification work, not measurement work.",
+  "candidates": [
+    { "id": "N901", "declared_as": "the flagged guess", "attested": ["method-pod-43-scene:7"], "gloss": "An estimate is asked for; the answerer flags the guess as a guess before giving it ('I'm out of practice, and I haven't thought about it much… but'), then commits to a concrete number under the flag. The flag licenses the precision." },
+    { "id": "N902", "declared_as": "the razor", "attested": ["method-pod-43-scene:8"], "gloss": "A theory is dismantled by making its proponent state it in full until its complexity is self-refuting ('listen to yourself — it gets complicated very fast'). The verdict is one line; the work was done by the restatement." },
+    { "id": "N903", "declared_as": "public position-abandonment", "attested": ["method-pod-43-scene:10"], "gloss": "A position held for years is recanted at full strength, jointly, with the old position quoted and no face-saving hedge. Distinct from N15 (nothing is parked) and O8 (nobody disagrees — both parties abandon together)." },
+    { "id": "N904", "declared_as": "the mirrored tease", "attested": ["method-pod-43-scene:11"], "gloss": "A tease is returned in the same shape it arrived in, and the mirroring is the ratification of the relationship. Adjacent to N10 Compliment but the currency is mock-attack, not praise." },
+    { "id": "N905", "declared_as": "the metaphor handover", "attested": ["method-pod-43-scene:12"], "gloss": "One speaker's metaphor is taken up and driven further by the other, with the handover named ('now you're driving my metaphor' / 'you gave me the keys'). The image becomes joint property." },
+    { "id": "N906", "declared_as": "the stacked commission", "attested": ["method-pod-43-scene:20", "method-pod-chapters:10", "learning-flagship:1"], "gloss": "Several distinct asks are stacked into one turn and accepted in one word. Named a summit shape by the 2026-08-30 re-read; never minted by the talk-bollocks extraction." },
+    { "id": "N907", "declared_as": "the misreading corrected", "attested": ["method-pod-43-scene:27", "method-pod-chapters:6", "learning-flagship:8"], "gloss": "A listener's paraphrase is refused ('that's not what I'm saying') and replaced, and the conversation continues on the corrected reading. The discursive sibling of N6 Repair: what fails is interpretation, not transmission." },
+    { "id": "N908", "declared_as": "complaint-with-partner-turn", "attested": ["method-pod-43-scene:30", "method-pod-chapters:7"], "gloss": "A grievance about the world is voiced and the partner completes it rather than answering it ('…and gives nothing back' — 'Nothing'). The listed sibling of O7, but here the disclosure is met and built on, not merely survived." },
+    { "id": "N909", "declared_as": "story → matched story", "attested": ["method-pod-43-scene:35", "method-pod-chapters:10"], "gloss": "An anecdote is answered with a structurally matching anecdote, and the match itself carries the claim ('two days, a year apart' / 'sixteen months apart'). No verdict turn exists or is owed." },
+    { "id": "N910", "declared_as": "the listener names it", "attested": ["method-pod-43-scene:38", "method-pod-chapters:8", "learning-flagship:9"], "gloss": "Mid-story, the listener supplies the story's own name for itself ('that's literally how cancer works') and the teller ratifies it and builds on the naming. A summit shape of the 2026-08-30 re-read; never minted." }
+  ],
+  "explicitly_not_minted": [
+    "Scene 2's 'anecdote-with-flag, challenged' — its flag line IS F302 ('It proves nothing — accept it anyway') verbatim; if F302 is ratified the scene is F302's attestation, not a new shape.",
+    "Scenes 25/26 ('concession-then-build', 'the counterexample absorbed') — both read as F305 'Absorb and build'; same condition.",
+    "Scene 4's 'flagged digression and return' — that is proposed N302; today it aliases to N6 Repair via the /reformulation/ regex in tools/pods/pod-shape-aliases.cjs, which is arguably the one over-mapping in the current instrument."
+  ]
+}
