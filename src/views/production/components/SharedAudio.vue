@@ -185,9 +185,9 @@ const SharedBucketRow = defineComponent({
 
 <style scoped>
 /* Status pips — keep the original dark-mode hues; darken for legibility on light surfaces. */
-.shared-audio-pip.pip-ok   { background: #34d399; }
+.shared-audio-pip.pip-ok   { background: var(--accent-2); }
 .shared-audio-pip.pip-warn { background: #fbbf24; }
-.shared-audio-pip.pip-bad  { background: #f87171; }
+.shared-audio-pip.pip-bad  { background: var(--danger); }
 
 :root[data-theme="light"] .shared-audio-pip.pip-ok   { background: #059669; }
 :root[data-theme="light"] .shared-audio-pip.pip-warn { background: #b45309; }

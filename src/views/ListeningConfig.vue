@@ -913,7 +913,7 @@ h1 { font-size: 1.25rem; margin: 0 0 0.25rem; letter-spacing: -0.01em; }
   text-align: center;
   color: var(--color-paper-dim, var(--muted));
 }
-.err { color: #f87171; background: rgba(248, 113, 113, 0.08); border-radius: 8px; }
+.err { color: var(--danger); background: rgba(248, 113, 113, 0.08); border-radius: 8px; }
 
 .rows {
   display: flex;
@@ -961,7 +961,7 @@ h1 { font-size: 1.25rem; margin: 0 0 0.25rem; letter-spacing: -0.01em; }
   border-radius: 6px;
   background: rgba(248, 113, 113, 0.12);
   border: 1px solid rgba(248, 113, 113, 0.3);
-  color: #f87171;
+  color: var(--danger);
   font-size: 0.8125rem;
 }
 
@@ -1118,7 +1118,7 @@ h1 { font-size: 1.25rem; margin: 0 0 0.25rem; letter-spacing: -0.01em; }
 }
 :deep(.micro:hover:not(:disabled)) { color: var(--color-paper, var(--ink)); border-color: var(--color-paper-dim, var(--muted)); }
 :deep(.micro:disabled) { opacity: 0.3; cursor: not-allowed; }
-:deep(.micro.remove:hover:not(:disabled)) { color: #f87171; border-color: #f87171; }
+:deep(.micro.remove:hover:not(:disabled)) { color: var(--danger); border-color: var(--danger); }
 :deep(.add-pill) {
   width: 32px; height: 32px;
   border-radius: 999px;
@@ -1300,8 +1300,8 @@ h1 { font-size: 1.25rem; margin: 0 0 0.25rem; letter-spacing: -0.01em; }
   cursor: pointer;
 }
 .stage-remove-btn:hover:not(:disabled) {
-  border-color: #f87171;
-  color: #f87171;
+  border-color: var(--danger);
+  color: var(--danger);
 }
 .stage-remove-btn:disabled { opacity: 0.3; cursor: not-allowed; }
 .stage-insert-btn {

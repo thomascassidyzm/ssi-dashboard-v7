@@ -366,7 +366,7 @@ async function recompileManifest() {
   background-color: rgba(127, 29, 29, 0.2); /* red-900/20 */
   border: 1px solid rgba(239, 68, 68, 0.5); /* red-500/50 */
 }
-.status-error-title { color: #f87171; } /* red-400 */
+.status-error-title { color: var(--danger); } /* red-400 */
 
 .status-warn {
   background-color: rgba(113, 63, 18, 0.2); /* yellow-900/20 */
