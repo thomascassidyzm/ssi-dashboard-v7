@@ -29,6 +29,8 @@
  * database/migrations/20260831_voices_consent.sql.
  */
 
+const personhood = require('../shared/voice-personhood.cjs')
+
 /** The five states, in the order a voice travels through them. */
 const STATUSES = Object.freeze([
   'not_recorded',
@@ -64,6 +66,15 @@ function statusOf (voice) {
  */
 function summarise (voice) {
   const status = statusOf(voice)
+  // NOBODY TO ASK. "No consent recorded" against a vendor catalogue entry reads
+  // as a gap in our records; it is not one, and printing it on ~288 rows is what
+  // buried the five that matter (voice-personhood.cjs).
+  // `voice` itself must be present: describe(null) means "we have no row",
+  // which is not the same fact as "this is a catalogue voice" and must not
+  // borrow its sentence.
+  if (voice && status === 'not_recorded' && !isAboutAPerson(voice)) {
+    return 'A stock voice licensed from the provider — no person to ask.'
+  }
   const person = trim(voice && voice.consent_person)
   const by = trim(voice && voice.consent_authorised_by)
   const at = date(voice && voice.consent_authorised_at)
@@ -93,35 +104,59 @@ function summarise (voice) {
 /**
  * IS THE CONSENT QUESTION EVEN ABOUT THIS VOICE?
  *
- * A vendor's stock voice has no person behind it to ask, so drawing "no consent
- * recorded" on all 165 Azure rows would bury the handful of voices where the
- * question is real. Three things make it real: the voice is a HUMAN recordist,
- * it is a CLONE this estate made, or somebody has already recorded something
- * about it. Never inferred from anything softer than that.
+ * Delegated, since 2026-08-31, to services/shared/voice-personhood.cjs — read
+ * its header for the reasoning. The short version is Tom's: "it is only me and
+ * Aran with cloned voices." The test that used to live here said yes if ANY
+ * consent state had ever been written on the row, which made a stock catalogue
+ * entry into a person the moment anything touched it, and said nothing about
+ * `elevenlabs_FOIN928B9X0jwgJ95cLt` — "English Narrator (Aran Clone -
+ * Presentation)" — which is a real clone of a real person it waved through.
  *
- * This is a DISPLAY decision, not a permission one. `needsAsking` still answers
- * honestly for every voice; this only decides whether the badge is drawn.
+ * ONE ANSWER, used by both this module and the gate, for the same reason
+ * everything else here is centralised: two opinions about who is a person is
+ * how a rule about people gets applied to things.
+ *
+ * This is still a DISPLAY decision here; the permission decision is the gate's.
+ * `needsAsking` deliberately keeps answering `status !== 'authorised'` for
+ * every voice — see describe(), where it is now paired with `aboutAPerson` so
+ * a screen can tell "nobody has asked" from "there is nobody to ask".
  */
 function isAboutAPerson (voice) {
   if (!voice) return false
-  if (statusOf(voice) !== 'not_recorded') return true
-  if (voice.type === 'human') return true
-  return /clone/i.test(String(voice.metadata_source || ''))
+  return personhood.isAboutAPerson(voice.voice_id || null, voice)
 }
 
 /** The whole consent fact, shaped for a screen. Never null, never partial. */
 function describe (voice) {
   const status = statusOf(voice)
+  const kind = voice ? personhood.classify(voice.voice_id || null, voice) : 'stock'
+  const aboutAPerson = kind !== 'stock'
   return {
     status,
     /** Whether a screen should draw this at all — see isAboutAPerson. */
-    aboutAPerson: isAboutAPerson(voice),
+    aboutAPerson,
+    /**
+     * WHICH KIND OF THING THIS VOICE IS: `recordist`, `clone`, `named` or
+     * `stock` (voice-personhood.cjs). Published so a screen can SAY what it is
+     * rather than infer it from a boolean, and so a census can report the split
+     * Tom asked for on 2026-08-31 without re-deriving the rule.
+     */
+    kind,
     label: LABELS[status],
     authorised: status === 'authorised',
     /** True for the two states that mean a human has actively said no. */
     blocked: status === 'refused' || status === 'withdrawn',
-    /** True whenever a voice may reach a learner without a yes behind it. */
-    needsAsking: status !== 'authorised',
+    /**
+     * True whenever a voice may reach a learner without a yes behind it AND
+     * there is somebody to ask.
+     *
+     * It used to be `status !== 'authorised'` alone, which said "needs asking"
+     * about all 288 vendor catalogue rows — Skylar, Ollie Multilingual,
+     * en-US-JennyNeural — and that is what Tom read on 2026-08-31 before saying
+     * "this is impossible - it is only me and Aran with cloned voices". There
+     * is nobody to ask for a stock voice, so the honest answer is no.
+     */
+    needsAsking: aboutAPerson && status !== 'authorised',
     person: trim(voice && voice.consent_person) || null,
     personContact: trim(voice && voice.consent_person_contact) || null,
     authorisedBy: trim(voice && voice.consent_authorised_by) || null,
@@ -156,7 +191,9 @@ function describe (voice) {
      * chokepoints in services/shared/voice-consent-gate.cjs rather than here —
      * this module still only describes.
      */
-    castWarning: castWarning(status, trim(voice && voice.consent_person), Boolean(declarationOf(voice))),
+    castWarning: aboutAPerson
+      ? castWarning(status, trim(voice && voice.consent_person), Boolean(declarationOf(voice)))
+      : null,
   }
 }
 

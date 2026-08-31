@@ -31,8 +31,14 @@
  * A vendor's stock voice has no person behind it to ask. Refusing all 290 Azure
  * and Cartesia catalogue rows would not protect anybody and would stop the
  * estate rendering anything, so the gate applies exactly where the consent
- * question is REAL — consent.isAboutAPerson(): a human recordist, a clone this
- * estate made, or any voice somebody has already recorded a consent state for.
+ * question is REAL — voice-personhood.classify(): a human recordist, a clone
+ * this estate made, or a voice with a person named on it.
+ *
+ * That last clause used to read "any voice somebody has already recorded a
+ * consent state for", and it was wrong in the way Tom caught on 2026-08-31: a
+ * consent state written on a stock catalogue row turned it into a person, for
+ * good. Personhood is now decided from what the voice IS, in
+ * services/shared/voice-personhood.cjs.
  *
  * With ONE addition that the estate forced. `human_sasha_wanasky_deu_at` is
  * cast into deu_at_for_eng today and has NO `voices` row at all, so a
@@ -61,6 +67,7 @@ const consent = require('../voicelab/consent.cjs')
 const cloneConfirmation = require('../voicelab/clone-confirmation.cjs')
 const { voiceSpellings } = require('./clip-identity-lookup.cjs')
 const { PROVIDERS } = require('./clip-identity.cjs')
+const personhood = require('./voice-personhood.cjs')
 
 /** How long a voice's consent state is trusted from cache. */
 const CACHE_MS = 30_000
@@ -70,18 +77,29 @@ const CACHE_MS = 30_000
  * `human_aran_cym_n`, `human_kai_fin`, `human_sasha_wanasky_deu_at`.
  */
 function looksLikeAPerson (voiceId) {
-  return /^human[_-]/i.test(String(voiceId || '').trim())
+  return personhood.looksLikeARecordist(voiceId)
 }
 
 /**
  * Is the consent question real for this voice?
  *
+ * ONE ANSWER, shared with consent.describe() and with the census tools:
+ * services/shared/voice-personhood.cjs. Corrected 2026-08-31 after Tom read
+ * the census — "it is only me and Aran with cloned voices" — and found the
+ * block asking for consent on vendor stock catalogue entries, which have
+ * nobody behind them to ask. A rule about people had been applied to things.
+ *
+ * The correction cuts BOTH ways and neither half is optional. Stock voices stop
+ * being treated as people, and `elevenlabs_FOIN928B9X0jwgJ95cLt` — "English
+ * Narrator (Aran Clone - Presentation)", a real clone of a real person that the
+ * old row test waved straight through because its `metadata_source` is null —
+ * starts being one.
+ *
  * @param {string} voiceId
  * @param {object|null} voice  the `voices` row, or null when there is none
  */
 function isAboutAPerson (voiceId, voice) {
-  if (voice) return consent.isAboutAPerson(voice) || looksLikeAPerson(voiceId)
-  return looksLikeAPerson(voiceId)
+  return personhood.isAboutAPerson(voiceId, voice)
 }
 
 /** The name to use in a sentence a human reads. Never an id if we can help it. */
@@ -189,7 +207,10 @@ async function readVoice (id, { db, provider = null, cache = defaultCache } = {}
   // find no row for the bare form, conclude "not a person", and wave the exact
   // clone this gate exists for straight through.
   const { data, error } = await db
-    .from('voices').select(`voice_id, ${consent.COLUMNS}, display_name, human_name`)
+    // `notes` and the display names ride along because personhood reads the
+    // provenance a clone flow wrote there — "English Narrator (Aran Clone -
+    // Presentation)" is a display_name and nothing else on that row says clone.
+    .from('voices').select(`voice_id, ${consent.COLUMNS}, display_name, human_name, notes, tts_engine`)
     .in('voice_id', spellingsToTry(id, provider))
     .limit(1)
   if (error) {
