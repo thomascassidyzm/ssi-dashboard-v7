@@ -1,0 +1,164 @@
+{
+  "concept": "proposed-additions",
+  "version": 1,
+  "status": "PROPOSAL — not loaded by index.cjs, not read by either lab, nothing executes it; no learner hears a word of it",
+  "provenance": "care-work",
+  "source": {
+    "document": "docs/sector-pods/care-work-metagraph-mapping-2026-08-30.md",
+    "corpus": "NONE. There is no care-work corpus. The encounter inventory (document §3, encounters E1–E17) is derived/constructed by the mapping itself — each entry labelled derived-confident or constructed — and every attestation below is labelled accordingly. This file records what the trunk CANNOT express for the sector; it attests nothing.",
+    "sector_context": "UK/Ireland domiciliary and residential care of older and disabled adults, dementia care treated as core; the learner seat is the CARE WORKER in both encounter families (person-and-family-facing and colleague-facing); care vocabulary (MAR, body map, hoist, care plan) is overlay and never a node",
+    "derived": "2026-08-30",
+    "author": "the care-work sector worker (prediction committed before mapping at 9224ae9e7)"
+  },
+  "id_range": {
+    "rule": "Minted in the existing register but from 601 upward: the store holds 1..21, the health proposal 101..110, outcome-mints 201..299, Talk Bollocks 301..399, Ireland 401..499, trades 501..599. Nothing in this file is outside 601..699. Two sibling sectors were running in parallel when this was written; a collision on 6xx is possible and would be theirs-or-mine to renumber, flagged in the worker report.",
+    "nodes": "none minted — see port_verdict",
+    "moves": "F601",
+    "composition_edges": "C601–C603",
+    "survivability_edges": "S601–S604",
+    "outcome_shapes": "none minted, deliberately — see outcome_shapes_note",
+    "bound_pairs": "none",
+    "walks": "none"
+  },
+  "schema_note": "This file does NOT validate against schemas/metagraph-v1-schema.json as written, on the same points as the health, Ireland and trades proposals: (1) `provenance` is an enum of [\"pod-0\", \"method-pod\"] and this file needs \"care-work\" — the same one-line widening the other four proposal files need; (2) attestations carry a `constructed` array of document-encounter citations (E1–E17) because there is no corpus, no g-rows and no flows; (3) the concept `proposed-additions` is not one of the schema's five file kinds. Nothing about the existing store is changed to accommodate any of this.",
+  "store_untouched": "nodes.json, moves.json, edges.json, outcome-shapes.json and walks/ are byte-identical to origin/main (4dcdddee2). POD-1 is attested evidence and is extended here, never re-cut. The health, outcome-mints, Talk Bollocks, Ireland and trades proposal files are also untouched.",
+
+  "port_verdict": {
+    "one_sentence": "The near neighbour, mapped under the far sector's earn-every-mint discipline, costs ZERO nodes and one move (F601, the dementia-care answer-the-need position): sixteen of seventeen encounters land on store + the three prior proposals; the duty-overrides-consent strand lands on trades' N501 position for position (its second independent sector — the Family-A graduation pattern repeating one level up), while its heaviest half (best-interests, covert medication, DoLS) produces NO in-room encounter and is decided between professionals on store shapes; Family A re-attests including both prior dropouts (N102 richly, N103 thinly); N401/N402/F401 re-attest; F501 re-attests, F502 does NOT; O7 and F302 hold in a fifth corpus; the ladder gains a new K2 configuration (pinned to the OTHER party, terminal close available to neither) at zero shape cost.",
+    "dependency": "Six encounters land primarily on health-proposal ids, two on Ireland's, one on trades' N501. The zero-node headline is computed against store + all three prior proposal files. If health's Family A were rejected upstream, roughly eight shapes would re-mint here; if trades' N501 were rejected, exactly one would, almost verbatim — this file's independent re-derivation of N501 is an argument for accepting it upstream, not re-minting it downstream.",
+    "sector_variable": "K2 INVERSION UNDER DUTY — the first sector where the learner holds less refusal-right than the other party in nearly every encounter (the person's autonomy is absolute per-encounter; the worker's walk-away is stripped by duty of care), with the two position-test events (refusal disappearing at the safeguarding threshold; consent changing hands at capacity loss) firing on OTHER sectors' mints (N501) or in another room on store shapes (E14). The sector's novelty is a ladder configuration, not a shape."
+  },
+
+  "nodes": [],
+  "nodes_note": "ZERO minted. The safeguarding pass-on — the sector's duty apex and the obvious candidate — is N501 whole, position for position, with the act being a telling rather than a disconnection (content is the mask). The best-interests decision composes on N8 + N15 + N108 between professionals. Eleven refusals-to-mint are recorded in document §8; the re-attestation evidence for N501, Family A and Ireland's pair is carried under re_attestations below.",
+
+  "moves": [
+    {
+      "id": "F601",
+      "name": "Answer the need, not the question",
+      "provenance": "care-work",
+      "test": "The responder receives a question whose premise is false in a way the asker cannot currently repair, and fills the answer slot with a response to the STATE that produced the question — the premise's truth-value neither granted nor corrected.",
+      "attestations": { "constructed": ["E12 the reality question — 'When's my husband coming?' (he died in 2003)"] },
+      "dialogic_attestations": 0,
+      "example_surface": "\"When's my husband coming?\" / \"You miss him, don't you. Tell me how you two met.\"",
+      "why_not_F204": "F204 receives an unbidden DISCLOSURE and does nothing; this receives a QUESTION — an unanswered question breaks adjacency where an unanswered disclosure completes it — and F601's whole job is to fix the state under the premise, which F204's test forbids.",
+      "why_not_F6": "F6 substitutes within the ticket's own currency (no 22mm, here's 15mm); F601 changes currency entirely, from the proposition to the feeling.",
+      "why_not_O5_recovery": "O5's recovery corrects the premise — the exact move F601 exists to refuse, because here correction is an injury re-delivered hourly.",
+      "why_not_F102": "Nothing is normalised and nothing asserted from above.",
+      "why_not_F8": "F8 reformulates the speaker's own prior turn; here the prior turn is the other party's.",
+      "composed_reading_argued": "F204 + F6 in sequence could approximate it, but neither test survives contact: F204 completes without uptake of a question, F6 requires same-currency substitution. One response position of novelty = a move, not a node, per the standing rubric.",
+      "position": "QUESTION-ON-AN-IRREPARABLE-PREMISE → ANSWER THE NEED → the person follows, or the question returns verbatim (see S604). Position 2, repeatable without escalation.",
+      "trunk_or_branch": "trunk",
+      "smoke_test": "Passes. Dementia care in any language column; the same move is folk practice with small children and the dying — 'answer the need' is taught wherever premises cannot be repaired.",
+      "thin": "One constructed attestation site — though that site runs dozens of times a day wherever dementia lives. Thin by construction, flagged, and the mapping's least confident call (document §8)."
+    }
+  ],
+
+  "composition": [
+    { "id": "C601", "kind": "composition", "contained": "N204", "container": "N501", "attestation": "constructed, E5→E6 — the safeguarding disclosure IS the danger arriving unbidden: N204's disclosure exchange runs at N501 position 1, and the threshold is where the receiving move flips from F204 to F101 + the pass-on", "mechanical": true },
+    { "id": "C602", "kind": "composition", "contained": "N109", "container": "N204", "attestation": "constructed, E5 — 'you won't tell anyone, will you?' → 'I can't promise that, but you can still tell me': the guarantee sought and bounded runs at the disclosure's opening, and the bound is what licenses C601 later", "mechanical": true },
+    { "id": "C603", "kind": "composition", "contained": "N110", "container": "N102", "attestation": "constructed, E1 — the visit signposted inside the narrated act: 'wash first, then breakfast, and the nurse comes at eleven'", "mechanical": true }
+  ],
+
+  "survivability": [
+    {
+      "id": "S601",
+      "kind": "survivability",
+      "provenance": "care-work",
+      "b_attemptable_only_if": "Bounding a sought confidence (N109 position 2 at E5) — the LEARNER'S seat",
+      "a_survivable": "The withdrawal — 'then I'm not telling you anything'",
+      "nodes": ["N109", "N204"],
+      "attested_response_positions": ["constructed, E5 — hold the bound, keep the door open: F16's concede-and-hold with the door as the held position ('that's alright, my love. I'm here every Tuesday, and the offer doesn't run out')"],
+      "recovery_attested": "constructed only",
+      "recovery_note": "The worker who cannot survive the withdrawal either gives the false promise (and later breaks it at N501, twice the injury) or presses (and loses the disclosure for good). The bound held warmly is the only walk that keeps both the duty and the door.",
+      "answer_slot_class": "relational"
+    },
+    {
+      "id": "S602",
+      "kind": "survivability",
+      "provenance": "care-work",
+      "b_attemptable_only_if": "Delivering the safeguarding pass-on (N501 position 3) — the LEARNER'S seat",
+      "a_survivable": "'I trusted you. You've ruined everything.' — the press on the person from someone the worker returns to on Tuesday",
+      "nodes": ["N501"],
+      "attested_response_positions": ["constructed, E6 failure branch — drop the self, hold the duty, name the forum, AND name the return ('you can be as cross with me as you like and I'll still come Tuesday')"],
+      "recovery_attested": "constructed only",
+      "recovery_note": "Kin to trades' S501 but harder along a different axis: the fitter drives away from the anger; the care worker's recovery must survive INSIDE an ongoing relationship — the named return is a position trades' walk never needed. Same node, heavier walk.",
+      "answer_slot_class": "relational"
+    },
+    {
+      "id": "S603",
+      "kind": "survivability",
+      "provenance": "care-work",
+      "b_attemptable_only_if": "Offering any care at all (E1, E2, E3) under a duty that strips the walk-away",
+      "a_survivable": "Being refused by someone you cannot leave — daily, sometimes hourly",
+      "nodes": ["N201"],
+      "attested_response_positions": ["constructed, E3 — F202's absorb-and-move with the move being record-and-return: accept without contest, record (F103), re-walk the same ask later, differently"],
+      "recovery_attested": "constructed only",
+      "recovery_note": "The sector's signature survivability burden: the worker who cannot survive refusal either forces (which is abuse) or stops offering (which is neglect). The recovery is a walk-level loop on existing shapes — retreat-and-return is a walk annotation, refused as a mint (document §8).",
+      "answer_slot_class": "non-delivery"
+    },
+    {
+      "id": "S604",
+      "kind": "survivability",
+      "provenance": "care-work",
+      "b_attemptable_only_if": "Answering the reality question at all (F601 at E12)",
+      "a_survivable": "The question returning verbatim, minutes later, dozens of times a day",
+      "nodes": [],
+      "attested_response_positions": ["constructed, E12 failure branch — the same move, the same warmth, every time: repetition without escalation, with no reference to the prior askings"],
+      "recovery_attested": "constructed only",
+      "recovery_note": "The store has nothing where the same exchange re-runs verbatim indefinitely and the recovery is to not escalate and not refer back. Ruled a walk property, not a shape — but the survivability edge is real: the worker who cannot survive the fortieth asking reaches for the correction, and the correction is the injury.",
+      "answer_slot_class": "relational"
+    }
+  ],
+
+  "outcome_shapes_note": "Zero minted, deliberately. The med-round halt is O101 walked in both seats; the refusal of care is O1/N201 walked under the undischargeable close; the death composes on N105 + N109 + F14. The sector's costliest failures either produce no encounter (the unnoticed deterioration — filled institutionally by mandated recording, trades' statutory-inspection pattern) or consist of a conversation DELIBERATELY NOT HELD with the person (covert medication is the N102 announcement withheld; the decision runs at E14 on colleague shapes). The line falls at NOTICING, and the third hole form — the withheld announcing position — is a finding about the sector, not a deficit of the graph (document §7).",
+
+  "re_attestations": {
+    "note": "The porting evidence. All constructed, labelled per the inventory; an expressibility claim, not an attestation claim — the derived-inventory caveat of the trades file applies verbatim.",
+    "N501": "E6 whole, position for position — second independent sector, plus health's unattested containment (the safeguarding hold trades' ladder_note predicted by name). The Family-A graduation pattern one level up.",
+    "family_A": "N102 richly (E1, E2 — recovering Ireland's dropout, the body back in the room); N103 (E2, agency-staff form — recovering trades' dropout, the person-file back in the room; thin in domiciliary work and flagged); N104 (E4, E9); N105 (E7, E16); N106 + O101 (E2, both seats); N107 (E7); N108 (E14, E17); N109 (E5, E9, E15, E16); N110 (E1, E17); N101 (E1's substitute-worker opener — against the prediction's doubt); P101 saturated; F101 heavily (the safeguarding strand's front door), F102, F103 saturated, F104 at med instructions.",
+    "ireland": "N401 at E10 (the rule held in trust being the person's OWN autonomy, principal in the room) and E11; N402 at E15 (task routed to the office, composed with N105); F401 at E9.",
+    "trades": "F501 at E9/E14 (the evidence shown to family or MDT). F502 does NOT re-attest — care work's warn-and-record runs on F103 with the record targeting the institution; the countersigned telling has no confident care-work occasion. F502 stays a two-sector move; the prediction flagged the doubt and the mapping confirmed it.",
+    "store_depth": "N12 (E7), N15 + N8 (E14), N16 absent (nothing is haggled — the first mapped sector with no price talk at all), N13/F302 native register ('I'm not a nurse, but that doesn't look right to me'), F205 endemic with hearing loss, F202/F201 daily at E3, F203 at own-fault callbacks, F204 at E5. F18 and F11 REVIVE in the rung-0 stretches — the care visit, unlike health's ward, is half rung-0."
+  },
+
+  "ladder": {
+    "note": "Extends the ladder blocks of outcome-mints, Ireland and trades; kinds K1–K4 and the recorded test ('a position appears, disappears or changes hands — not merely gets harder or dearer') used unchanged.",
+    "ruling": {
+      "K1": "SPLIT (the worker holds the plan and the MAR; the person holds body and biography, and their share decides) — Ireland's split on the body — WITH A DRIFT no prior sector recorded: the person's share degrades with the condition and migrates into K3, the family and the worker's pattern-knowledge. Trades time-indexed K1 within one job; care work condition-indexes it across years. Same annotation machinery, longer clock.",
+      "K2": "THE SECTOR VARIABLE — PINNED TO THE OTHER PARTY. First mapped sector where the learner holds less refusal-right than the seat opposite: autonomy gives the person an absolute per-encounter refusal; duty of care strips the worker's walk-away. Two test-firing events, both landing on existing mints: at the safeguarding threshold the person's refusal position DISAPPEARS (N501, firing identically to trades); at capacity loss the consent position CHANGES HANDS to an off-stage forum, the conversation of transfer being E14 on N8/N15/N108. Plus the UNDISCHARGEABLE CLOSE: refusal is real per-encounter but terminal for neither party — the person cannot resign from care, the worker cannot close the duty — N201's settle unavailable at the relationship level while every individual walk composes (F202 + F103 + re-walk). A genuinely new K2 configuration at zero shape cost: the cleanest demonstration in four sectors that the ladder and the node inventory are different layers.",
+      "K3": "PINNED to the worker and agency, load-bearing: the notes ARE the continuity of care (the night carer acts on the record, not memory); F103 saturates; F18 dies to the MAR inside the round; E13 and E14 disputes are decided by the record. The record is of the PERSON — which is exactly why N103 re-attests here after failing in trades.",
+      "K4": "The person's body, pinned, maximal — health's rung 4, confirming the near-neighbour placement — with a note: the worker's own body is also on the table (manual handling, violence in dementia care), simultaneously rather than per encounter-family as in trades; role annotation absorbs it."
+    },
+    "money": {
+      "ruling": "Not a kind, and barely a presence: the worker never holds the price and rarely the cash; the errand purse (E13) is held in trust with the record as the trust's instrument. Trades' both-ways argument needed no re-run — the sector offers no bench for it — which is itself weak confirmation of trades' ruling: in the sector with the most extreme K-profile, the money vanishes from the encounters without any shape noticing."
+    },
+    "held_in_trust": {
+      "verdict": "The annotation covers, with one NEW GRAIN worth a line in its documentation if it graduates: the worker holds duty in trust for the statutory framework, the agency, AND the person's own earlier self (the advance decision, the care plan written at fuller capacity). Limit case at E10: the worker holds the person's autonomy in trust FOR the person AGAINST the family, with the principal in the room. Because the annotation attaches per kind it expresses all of this unchanged — but no prior sector produced a principal who is the other party's former self."
+    },
+    "rungs": "Per stretch, per trades' contribution, confirmed: the care visit opens and closes at rung 0 and is half rung-0 throughout (companionship is half the service); the MAR round and the safeguarding declaration are the pinned stretches; the duty-override apex is E6 and the off-stage E14. Unlike health's ward there are long genuine rung-0 stretches inside rung-4 encounters — the families die and revive per stretch exactly as the unified rule predicts.",
+    "collapsing_families": {
+      "F18": "dies at K3 inside the med round (the MAR decides what normal is; F102 answers) and REVIVES at the teapot — per stretch, fourth confirmation",
+      "F11": "dies in elicit chains, alive in the chat — per stretch",
+      "F15": "obeys the unified rule with a care-work addendum: the person's own K1 share, degraded by the condition, makes their bare 'I couldn't tell you, love' STAND — anchored (S102's recovery), never contested. The rule's fourth corpus, now capacity-indexed as well as time-indexed.",
+      "unified_rule": "A family dies exactly where the kind that kills it is pinned, and revives the moment it unpins — holds, fourth sector."
+    },
+    "O7_invariance": "Holds, FIFTH corpus, saturated — care work may be the O7-densest sector there is. Contribution: the DUTY-CAPTURE EXIT — when the disclosure's content crosses the safeguarding threshold the walk exits into N501 via C601; the positions of O7 are unchanged, a new place the walk can go. Invariant confirmed with an annotated exit. Evidence class stated: consistency against constructed encounters, not independent attestation.",
+    "F302_invariance": "Holds, FIFTH corpus — 'I'm not a nurse, but that doesn't look right to me' is the sector's native register: the worker's authority is low and priced honestly, and the whole soft-signs escalation (E7) runs on the flag being credible BECAUSE it is priced.",
+    "second_axis": "Supported, shape-level, fourth sector: weight on N106/O101 (the med halt — the most literally lethal recovery yet mapped), N107, N501 and the E7 escalation whose failure is the sector's classic preventable death. Low-cost shapes inside high-cost encounters stay low-cost. BLIND ZONE: all three forms — at NOTICING (trades' form; filled institutionally by mandated recording), at disclosure (Ireland's form, inverted — the abuse never spoken of; partially filled by the soft-signs skill, the only sector whose ordinary skill set manufactures the missing encounter from pattern-knowledge), and the form this sector adds: the announcing position DELIBERATELY WITHHELD (covert medication), decided at E14 on colleague shapes. No mint can reach it and none should."
+  },
+
+  "explicitly_not_minted": [
+    { "candidate": "The safeguarding pass-on — the sector's duty apex", "verdict": "N501 whole, position for position", "why": "The act is a telling rather than a disconnection: content is the mask. Second independent sector for N501; graduation evidence, not a mint." },
+    { "candidate": "Retreat-and-return — the sector's signature texture", "verdict": "a walk annotation", "why": "The same ask re-walked after an interval is repetition of a node, not a position of a shape; F202 and F103 run between walks. Minting it would have minted patience." },
+    { "candidate": "The confidentiality caveat, volunteered", "verdict": "N109 with the bound volunteered", "why": "Sought, it is N109 verbatim; volunteered, unsolicited is a walk property — health's unsolicited-diagnosis ruling applied unchanged." },
+    { "candidate": "The therapeutic untruth ('he's just parking the car')", "verdict": "F1 wearing false content", "why": "The store does not police truth-value; a false grant is positionally a grant. The ethics live in the walk layer and the sector's own guidance, not in shape." },
+    { "candidate": "The death (E16)", "verdict": "N105 + N109 + F14", "why": "Minting on death would have been minting on the mask at its heaviest." },
+    { "candidate": "The soft-signs escalation ('she's not herself')", "verdict": "N12 + F302 + F101", "why": "The epistemic flag priced honestly plus the ratified telling IS the shape; what is distinctive is how much hangs on it — weight, not structure." },
+    { "candidate": "The doorway deflection", "verdict": "F6", "why": "Substitution with tea is still substitution." },
+    { "candidate": "The best-interests decision", "verdict": "N8 + N15 + N108 at E14", "why": "The gravest candidate of all, composing on colleague shapes because the person is not in the conversation. A mint here would have been a monument, not a shape." },
+    { "candidate": "Dementia-degraded N102 (consent never verbal)", "verdict": "N102 with the grant position filled non-verbally", "why": "Behavioural assent is still the grant position; a filler degrading is not a position disappearing. When it genuinely changes hands you are at E14, on existing shapes." },
+    { "candidate": "The substitute-worker opener", "verdict": "N101 whole", "why": "Against the prediction's doubt: N101's content is any declared limitation of the encounter's medium, not language specifically — 'I don't know your routines' qualifies." },
+    { "candidate": "The staff-room briefing (one-to-many handover)", "verdict": "N4 + P3 + F103 dyadically per hearer", "why": "Trades' topology ruling stands: the novelty is one-to-many topology, the store is dyadic, and the load-bearing exchanges run dyadically. Nothing new to add." }
+  ]
+}
