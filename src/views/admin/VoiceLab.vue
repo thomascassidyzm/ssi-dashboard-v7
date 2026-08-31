@@ -163,7 +163,10 @@ const showB = ref(false)
     <!-- Languages does not need /params, so it renders even on a backend whose
          render path is unavailable: knowing what is cast is useful regardless. -->
     <section v-if="mode === 'languages'">
-      <LanguagesPanel />
+      <!-- `params` may be null on a backend without the lab; the panel is built
+           for that and still shows what is cast. It needs only the consent
+           wording from it — see LanguagesPanel's prop comment. -->
+      <LanguagesPanel :params="params" />
     </section>
 
     <section v-if="params && mode === 'play'">

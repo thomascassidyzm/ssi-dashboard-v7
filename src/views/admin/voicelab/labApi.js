@@ -228,7 +228,12 @@ async function upload (path, formData) {
     body: formData,
   })
   const data = await res.json().catch(() => ({}))
-  if (!res.ok) throw Object.assign(new Error(data.error || `HTTP ${res.status}`), { status: res.status })
+  // `data` rides along on the error exactly as it does in `call`. The clone
+  // route's refusals carry machine-readable flags beside the sentence
+  // (needsAttestation, declarationNotHeard, heard, coverage) and the consent
+  // step branches on them — a screen that had to string-match the prose would
+  // break the first time the wording is redlined, which it will be.
+  if (!res.ok) throw Object.assign(new Error(data.error || `HTTP ${res.status}`), { status: res.status, data })
   return data
 }
 
