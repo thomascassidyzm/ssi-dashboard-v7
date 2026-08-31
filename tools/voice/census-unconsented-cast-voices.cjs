@@ -15,7 +15,14 @@
 const {Client}=require('pg');const fs=require('fs');
 const url=fs.readFileSync('.env.psql','utf8').match(/DATABASE_URL=(.*)/)[1].trim();
 const c=new Client({connectionString:url,ssl:{rejectUnauthorized:false}});
-const person=(vid,row)=>row?(row.type==='human'||/clone/i.test(row.metadata_source||'')||row.consent_status!=='not_recorded'||/^human[_-]/i.test(vid)):/^human[_-]/i.test(vid);
+// ONE ANSWER, shared with the gate: services/shared/voice-personhood.cjs.
+// The inline copy this replaced was the census half of the category error Tom
+// caught on 2026-08-31 — it made any voice with a consent state written on it
+// into a person, and it could not see a clone whose only provenance is its
+// display name. It also prints WHICH KIND each blocked voice is, because
+// 'a clone of a real person' and 'a recordist with no row' are different jobs.
+const personhood=require('../../services/shared/voice-personhood.cjs');
+const person=(vid,row)=>personhood.isAboutAPerson(vid,row);
 (async()=>{await c.connect();
 const vrows=(await c.query('select * from voices')).rows;const V=new Map(vrows.map(r=>[r.voice_id,r]));
 const spell=id=>{const out=new Set([id]);const m=/^(azure|xai|elevenlabs|google|narakeet|human|cartesia)_(.+)$/.exec(id);if(m)out.add(m[2]);else for(const p of ['azure','xai','elevenlabs','google','narakeet','human','cartesia'])out.add(p+'_'+id);return [...out]};
@@ -33,6 +40,6 @@ for(const r of (await c.query("select id,course_code,speakers,updated_at from li
     add(v&&(v.voice_id||v.voiceId),`listening_pods ${r.course_code}/${r.id}/${sp}`)}}
 const out=[...hits.values()].sort((a,b)=>b.where.length-a.where.length);
 console.log('VOICES CAST WITH NO VALID CONSENT:',out.length);
-for(const h of out){console.log('\n### '+h.vid);console.log('  row:', h.row?`${h.row.type} | ${h.row.consent_status} | ${h.row.metadata_source||'no metadata_source'} | display=${h.row.display_name||h.row.human_name||'-'} | created=${h.row.created_at?String(h.row.created_at).slice(0,10):'?'}`:'NO voices ROW AT ALL');
+for(const h of out){console.log('\n### '+h.vid+'  ['+personhood.classify(h.vid,h.row)+']');console.log('  row:', h.row?`${h.row.type} | ${h.row.consent_status} | ${h.row.metadata_source||'no metadata_source'} | display=${h.row.display_name||h.row.human_name||'-'} | created=${h.row.created_at?String(h.row.created_at).slice(0,10):'?'}`:'NO voices ROW AT ALL');
 console.log('  cast in '+h.where.length+' place(s):');for(const w of h.where.slice(0,40))console.log('    - '+w);if(h.where.length>40)console.log('    … and '+(h.where.length-40)+' more')}
 await c.end()})().catch(e=>{console.error(e);process.exit(1)});

@@ -10,7 +10,14 @@ const c=new Client({connectionString:url,ssl:{rejectUnauthorized:false}});
 const vrows=(await c.query('select * from voices')).rows;const V=new Map(vrows.map(r=>[r.voice_id,r]));
 const spell=id=>{const out=new Set([id]);const m=/^(azure|xai|elevenlabs|google|narakeet|human|cartesia)_(.+)$/.exec(id);if(m)out.add(m[2]);else for(const p of ['azure','xai','elevenlabs','google','narakeet','human','cartesia'])out.add(p+'_'+id);return [...out]};
 const find=id=>{for(const s of spell(id))if(V.has(s))return V.get(s);return null};
-const person=(vid,row)=>row?(row.type==='human'||/clone/i.test(row.metadata_source||'')||row.consent_status!=='not_recorded'||/^human[_-]/i.test(vid)):/^human[_-]/i.test(vid);
+// ONE ANSWER, shared with the gate: services/shared/voice-personhood.cjs.
+// The inline copy this replaced was the census half of the category error Tom
+// caught on 2026-08-31 — it made any voice with a consent state written on it
+// into a person, and it could not see a clone whose only provenance is its
+// display name. It also prints WHICH KIND each blocked voice is, because
+// 'a clone of a real person' and 'a recordist with no row' are different jobs.
+const personhood=require('../../services/shared/voice-personhood.cjs');
+const person=(vid,row)=>personhood.isAboutAPerson(vid,row);
 const H=new Map();
 const add=(vid,kind,key,when)=>{if(!vid)return;const row=find(vid);if(!person(vid,row))return;if(row&&row.consent_status==='authorised')return;
  if(!H.has(vid))H.set(vid,{row,surfaces:{},courses:new Set(),last:null});const h=H.get(vid);h.surfaces[kind]=(h.surfaces[kind]||0)+1;h.courses.add(key);if(when&&(!h.last||when>h.last))h.last=when};
