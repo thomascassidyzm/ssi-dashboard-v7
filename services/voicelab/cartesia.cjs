@@ -28,6 +28,7 @@
  */
 
 const policy = require('../shared/tts-provider-policy.cjs')
+const consent = require('./consent.cjs')
 
 /** Cartesia pins its API to a date. REQUIRED — verified against a live 400. */
 const CARTESIA_API_VERSION = '2026-08-14'
@@ -67,7 +68,7 @@ function headers (extra = {}) {
  * provider-scoped ids elsewhere (`xai_…`, `azure_…`) and how
  * params.describeStoredVoice reads them back.
  */
-async function registerVoice (db, { voiceId, name, language, gender = null, notes = null, isClone = false, registeredBy = null }) {
+async function registerVoice (db, { voiceId, name, language, gender = null, notes = null, isClone = false, registeredBy = null, consentRecord = null }) {
   const bare = String(voiceId || '').replace(/^cartesia_/, '').trim()
   if (!bare) throw Object.assign(new Error('voiceId is required'), { status: 400 })
 
@@ -93,6 +94,13 @@ async function registerVoice (db, { voiceId, name, language, gender = null, note
     metadata_checked_at: new Date().toISOString(),
     notes: notes || (isClone ? `Cloned from the Voice Lab${registeredBy ? ` by ${registeredBy}` : ''}.` : null),
     updated_at: new Date().toISOString(),
+    // THE CONSENT RECORD IS PART OF THE VOICE'S FIRST WRITE, not a follow-up.
+    // Tom, 2026-08-31: "shown on the voice itself, because these are real
+    // people". A record added in a second call is a record that can fail to be
+    // added — and an optional consent field is an empty consent field. Omitted
+    // entirely for a catalogue registration, which is a vendor's stock voice
+    // and has no person behind it to ask.
+    ...(consentRecord || {}),
   }
 
   const { data, error } = await db.from('voices').upsert(row, { onConflict: 'voice_id' }).select().single()
@@ -125,9 +133,22 @@ async function fetchVoice (voiceId) {
  * @param {string} a.name      what to call the voice
  * @param {string} a.language  ISO-639-1/3/locale — normalised before sending
  */
-async function createClone (db, { clip, filename = 'sample.wav', name, language, gender = null, description = null, registeredBy = null }) {
+async function createClone (db, { clip, filename = 'sample.wav', name, language, gender = null, description = null, registeredBy = null, person = null, personContact = null, consentNote = null, source = null }) {
   if (!clip || !clip.length) throw Object.assign(new Error('A sample clip is required to clone a voice.'), { status: 400 })
   if (!name) throw Object.assign(new Error('A name is required for the new voice.'), { status: 400 })
+
+  // WHOSE VOICE IS THIS? Asked before Cartesia is, and it throws if unanswered.
+  //
+  // Tom's amendment of 2026-08-31 says the clone must NOT be refused for having
+  // no consent — under the primary path the person has not been asked yet, and
+  // refusing would make the whole flow impossible. But it must still be
+  // refused for having no PERSON: a consent record nobody can attach to a human
+  // is decorative, and Tom cannot go and ask a voice id. So the voice is born
+  // 'awaiting_authorisation' with a name attached, and that is the state it
+  // wears on screen until a real yes is recorded against it.
+  const consentRecord = consent.birthRecord({
+    person, personContact, note: consentNote, source, recordedBy: registeredBy,
+  })
 
   const code = policy.toCartesiaLangCode(language)
   if (!code) throw Object.assign(new Error(`"${language}" is not a language code Cartesia accepts.`), { status: 400 })
@@ -170,12 +191,37 @@ async function createClone (db, { clip, filename = 'sample.wav', name, language,
     gender,
     isClone: true,
     registeredBy,
+    consentRecord,
   })
-  return { cartesia: meta, voice }
+  return { cartesia: meta, voice, consent: consent.describe(voice) }
+}
+
+/**
+ * Delete a voice AT CARTESIA. The `voices` row is the caller's business.
+ *
+ * A page that can create but cannot un-create is a trap, and the case it is a
+ * trap for is the one Tom will actually hit: a clone made by accident during a
+ * live demo with somebody watching. SPENDS NOTHING.
+ *
+ * A 404 is treated as success — the goal is "this voice is not at Cartesia",
+ * and it already is not. Any other failure is reported rather than swallowed,
+ * so a row is never deleted here on the strength of a delete that did not
+ * happen there.
+ */
+async function deleteClone (voiceId) {
+  const bare = String(voiceId || '').replace(/^cartesia_/, '')
+  if (!bare) throw Object.assign(new Error('voiceId is required'), { status: 400 })
+  const res = await fetch(`${CARTESIA_BASE}/voices/${encodeURIComponent(bare)}`, {
+    method: 'DELETE', headers: headers(), signal: AbortSignal.timeout(30000),
+  })
+  if (res.ok || res.status === 404) return { deleted: res.ok, absent: res.status === 404 }
+  const text = await res.text()
+  throw Object.assign(new Error(`Cartesia refused to delete ${bare} (${res.status}): ${text.slice(0, 200)}`), { status: 502 })
 }
 
 module.exports = {
   CARTESIA_API_VERSION,
+  deleteClone,
   CLONE_AUDITION_MAX_CLIPS,
   PREVIEW_MAX_CLIPS,
   registerVoice,

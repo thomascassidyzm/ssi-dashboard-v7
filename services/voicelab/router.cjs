@@ -40,6 +40,9 @@ const registry = require('./registry.cjs')
 const cartesia = require('./cartesia.cjs')
 const samples = require('./samples.cjs')
 const humanRecorded = require('../shared/human-recorded-roles.cjs')
+const speakers = require('./speakers.cjs')
+const consent = require('./consent.cjs')
+const { isHumanVoiceLang } = require('../shared/human-voice-courses.cjs')
 
 /**
  * @param {object} app        express app
@@ -256,6 +259,7 @@ function mount (app, deps) {
       }
       const gender = slot === 'guide' ? null : (req.body || {}).gender
       if (!language) throw Object.assign(new Error('language is required'), { status: 400 })
+
       if (slot === 'phrase' && !registry.GENDERS.includes(gender)) {
         throw Object.assign(new Error(`gender must be one of ${registry.GENDERS.join(', ')}`), { status: 400 })
       }
@@ -277,6 +281,34 @@ function mount (app, deps) {
           slot,
           humanRecorded: guard,
         })
+      }
+
+      // ── THE RULING-LEVEL BACKSTOP: cym, bre and pdc, ALWAYS ─────────────
+      // The guard above is computed from DATA — it refuses when every course
+      // the cast reaches is already human-recorded. That is the right general
+      // rule and it catches Welsh today. It would stop catching Welsh the
+      // moment somebody added a cym course with no recordings in it yet, and
+      // "there are no recordings yet" is precisely a Welsh RECORDING WORKLIST,
+      // never a licence to synthesise.
+      //
+      // So this is the ruling stated as a rule rather than derived from a
+      // count. Tom, 2026-08-13, as a hard rule: "Aran's and Catrin's
+      // recordings are never overwritten by synthesis", and cym/bre/pdc are
+      // permanently excluded from every TTS render queue with deliberately no
+      // env var and no --force flag. A HUMAN voice may still be cast into
+      // them — that is what the slot is FOR on those languages.
+      if (isHumanVoiceLang(language)) {
+        const { data: pv } = await supabase()
+          .from('voices').select('type').eq('voice_id', String(voiceId)).maybeSingle()
+        const isHumanVoice = pv ? pv.type === 'human' : /^human/i.test(String(voiceId))
+        if (!isHumanVoice) {
+          return res.status(409).json({
+            error: `${language} is human-voiced only — Aran's and Catrin's recordings are never replaced by synthesis (Tom's ruling, 2026-08-13). A synthetic voice cannot be cast into it, and its gaps are a recording worklist rather than a render backlog.`,
+            code: 'HUMAN_VOICE_LANGUAGE',
+            language,
+            slot,
+          })
+        }
       }
 
       // A voice can only hold a slot if it has a `voices` row — the slot table
@@ -418,6 +450,13 @@ function mount (app, deps) {
         gender: fields.gender || null,
         description: fields.description || null,
         registeredBy: who(user),
+        // WHOSE VOICE IT IS. Required — see cartesia.createClone. Consent
+        // itself is Tom's to obtain later; naming the person is what makes
+        // that possible at all.
+        person: fields.person || null,
+        personContact: fields.personContact || null,
+        consentNote: fields.consentNote || null,
+        source: fields.source || (filename ? `uploaded or recorded sample (${filename})` : 'uploaded sample'),
       })
       // Same reason as register, and it matters more here: this voice did not
       // exist a second ago, so without this the operator gets a green tick for
@@ -458,10 +497,30 @@ function mount (app, deps) {
         )
       }
 
-      const sentences = (req.body?.sentences || [])
+      // ── A REAL COURSE LINE, FROM A NAMED COURSE, BY DEFAULT ─────────────
+      // Tom's commission, 2026-08-31: "hear it back saying a real course line".
+      // Until now this route said whatever it was handed, and the page handed
+      // it "This is what the new voice sounds like, on a full sentence." —
+      // which tells you the voice can talk and nothing about whether it can
+      // carry the course. The picker that answers this properly already exists
+      // (samples.pickLine), it already NAMES the course it took the line from,
+      // and it is already deterministic so two voices are compared on identical
+      // text. So the audition uses it, and an explicit `sentences` array still
+      // wins for anyone who wants to hear a specific line.
+      let sentences = (req.body?.sentences || [])
         .map((t) => String(t || '').trim())
         .filter(Boolean)
         .slice(0, cartesia.CLONE_AUDITION_MAX_CLIPS)
+      let line = null
+      if (!sentences.length) {
+        line = await samples.pickLine(lang.code) || await samples.pickLine(language)
+        if (!line) {
+          throw Object.assign(new Error(
+            `No course line was found in ${language} to audition on, and no sentence was given. Type one to hear this voice.`,
+          ), { status: 404 })
+        }
+        sentences = [line.text]
+      }
       if (!sentences.length) throw Object.assign(new Error('Give the audition at least one sentence to say.'), { status: 400 })
 
       const cfg = {
@@ -482,8 +541,213 @@ function mount (app, deps) {
         clips.push({ id, text, durationMs, url: `/api/voicelab/clip/${id}.mp3` })
       }
       logger.log?.(`[voicelab] auditioned cartesia ${cfg.voiceId} on ${clips.length} clip(s) for ${who(user)}`)
-      res.json({ ok: true, clips, maxClips: cartesia.CLONE_AUDITION_MAX_CLIPS })
+      // `line` travels back so the screen can print the course beside the
+      // audio. A line with no named course is the thing Tom corrected on
+      // 2026-08-31: what is SAID belongs to the course, not the language.
+      res.json({ ok: true, clips, line, maxClips: cartesia.CLONE_AUDITION_MAX_CLIPS })
     } catch (err) { fail(res, err, 'audition-cartesia-voice') }
+  })
+
+  // ── CLONING FROM RECORDINGS THE ESTATE ALREADY HOLDS ──────────────────────
+  //
+  // Tom, 2026-08-31: "We do NOT need to ask anyone to record a fresh sample
+  // first. We already hold clean studio audio of the people we want to clone,
+  // and cloning FROM OUR OWN EXISTING RECORDINGS is the main route, not a
+  // fallback." These three routes are that route: list the speakers, list one
+  // speaker's clips, clone from a chosen subset. Uploading and recording on the
+  // page both survive underneath as the secondary path, for people the estate
+  // holds no audio of.
+  //
+  // The first two SPEND NOTHING. The third spends nothing at Cartesia either —
+  // a clone is an upload and an id, and hearing it is a separate capped press.
+
+  /**
+   * Every speaker the estate holds recordings of, with BOTH numbers: how many
+   * clips, and how much total audio. Tom: "'we have some Aran' is not an answer
+   * an operator can act on."
+   */
+  app.get('/api/voicelab/speakers', async (req, res) => {
+    if (!await requireDashboardUser(req, res)) return
+    try {
+      const language = String(req.query.language || '').trim() || null
+      res.json({ ...(await speakers.listSpeakers(supabase(), { language })), guidance: speakers.SAMPLE_GUIDANCE })
+    } catch (err) { fail(res, err, 'speakers') }
+  })
+
+  /**
+   * One speaker's clips, longest first, each with a URL that plays the ORIGINAL
+   * file straight from the estate's bucket. Nothing is copied to audition it,
+   * and no original is ever written, moved or re-encoded.
+   */
+  app.get('/api/voicelab/speakers/:voiceId/clips', async (req, res) => {
+    if (!await requireDashboardUser(req, res)) return
+    try {
+      const out = await speakers.listClips(supabase(), {
+        voiceId: String(req.params.voiceId || ''),
+        language: String(req.query.language || '').trim() || null,
+        limit: Number(req.query.limit) || 60,
+      })
+      res.json({
+        ...out,
+        maxSourceClips: speakers.MAX_SOURCE_CLIPS,
+        maxSourceSeconds: speakers.MAX_SOURCE_SECONDS,
+        minSourceSeconds: speakers.MIN_SOURCE_SECONDS,
+        guidance: speakers.SAMPLE_GUIDANCE,
+        // Printed on the screen beside the list, every time. The 2026-08-27
+        // failure was believing this column; the fix is a listening step, not a
+        // better heuristic.
+        identityWarning: 'origin=human is a label somebody wrote, not proof of a human. Two clone attempts in this estate were built from TTS wearing that label. Listen to every clip you tick.',
+      })
+    } catch (err) { fail(res, err, `speaker-clips ${req.params.voiceId}`) }
+  })
+
+  /**
+   * Clone from clips the estate already holds.
+   *
+   * Downloads the chosen originals, joins them into one source file on this
+   * box, and posts that to Cartesia. RENDERS NOTHING and touches no original.
+   * The new voice is born `awaiting_authorisation` with the person named —
+   * Tom obtains the consent, this route only records that it is outstanding.
+   */
+  app.post('/api/voicelab/voices/cartesia/clone-from-estate', async (req, res) => {
+    const user = await requireAdmin(req, res)
+    if (!user) return
+    try {
+      const { name, language, gender = null, person = null, personContact = null, consentNote = null, speaker = null } = req.body || {}
+      const keys = ((req.body || {}).s3Keys || []).map((k) => String(k || '').trim()).filter(Boolean)
+      if (!keys.length) throw Object.assign(new Error('Tick at least one clip to clone from.'), { status: 400 })
+      if (!name) throw Object.assign(new Error('A name is required for the new voice.'), { status: 400 })
+
+      // Re-read the clips from the database rather than trusting the durations
+      // and keys the browser sent back: the source that goes to a vendor must
+      // be built from what the estate actually holds.
+      //
+      // SCOPED BY SPEAKER AND ORIGIN, and that is not decoration. `s3_key` has
+      // no index on a 2.5-million-row table, so an `in (s3_key)` on its own is
+      // a sequential scan and times out — measured live 2026-08-31, the first
+      // clone-from-estate attempt died on "canceling statement due to statement
+      // timeout". Adding origin and voice_id puts this read on the same index
+      // path the clip list already uses (idx_course_audio_origin). It is also
+      // the stricter check: a key can only be cloned from as part of the
+      // speaker it was listed under.
+      if (!speaker) throw Object.assign(new Error('Say which speaker these clips belong to.'), { status: 400 })
+      const { data: rows, error } = await supabase()
+        .from('course_audio')
+        .select('s3_key, duration_ms, text, role, language, course_code')
+        .eq('origin', 'human')
+        .eq('voice_id', speaker)
+        .in('s3_key', keys.slice(0, speakers.MAX_SOURCE_CLIPS * 2))
+      if (error) throw Object.assign(new Error(`course_audio read failed: ${error.message}`), { status: 502 })
+      const byKey = new Map()
+      for (const r of rows || []) {
+        if (byKey.has(r.s3_key)) continue
+        byKey.set(r.s3_key, {
+          s3Key: r.s3_key,
+          url: speakers.clipUrl(r.s3_key),
+          durationMs: Number(r.duration_ms || 0),
+          seconds: Math.round(Number(r.duration_ms || 0) / 100) / 10,
+          text: r.text || '', role: r.role || null,
+        })
+      }
+      // The caller's order is the operator's order — it is the order the
+      // passage will be spoken in, so it is not re-sorted here.
+      const chosen = keys.map((k) => byKey.get(k)).filter(Boolean)
+      if (!chosen.length) throw Object.assign(new Error(`None of those clips are in the estate under "${speaker}".`), { status: 404 })
+
+      const built = await speakers.buildSource(chosen, { tmpRoot: process.env.CS_SCRATCH || undefined })
+      const out = await cartesia.createClone(supabase(), {
+        clip: built.buffer,
+        filename: built.filename,
+        name,
+        language,
+        gender,
+        registeredBy: who(user),
+        person,
+        personContact,
+        consentNote,
+        source: speaker ? `${built.provenance} — filed under voice id "${speaker}"` : built.provenance,
+      })
+      params.invalidateCartesiaCatalogue()
+      logger.log?.(`[voicelab] cloned cartesia voice ${out.cartesia.id} from ${built.used.length} estate clip(s) (${built.seconds}s) by ${who(user)}`)
+      res.json({ ok: true, ...out, source: { seconds: built.seconds, used: built.used, skipped: built.skipped, short: built.short, stitched: built.stitched } })
+    } catch (err) { fail(res, err, 'clone-from-estate') }
+  })
+
+  /**
+   * RECORD A CONSENT DECISION against a voice.
+   *
+   * Tom, 2026-08-31: consent "is Tom to obtain, not you… There must be a plain
+   * way for Tom to authorise a voice once he has actually asked the person."
+   * This is that way. It writes only the consent columns; nothing else about
+   * the voice moves, nothing renders, and no clip is touched.
+   *
+   * It cannot be used to invent a yes: `authorised` without a named human, a
+   * means and a date is refused here in plain English and refused again by the
+   * database's own CHECK constraint.
+   */
+  app.put('/api/voicelab/voices/:voiceId/consent', async (req, res) => {
+    const user = await requireAdmin(req, res)
+    if (!user) return
+    try {
+      const voiceId = String(req.params.voiceId || '').trim()
+      if (!voiceId) throw Object.assign(new Error('voiceId is required'), { status: 400 })
+      const record = consent.decisionRecord({ ...(req.body || {}), recordedBy: who(user) })
+      const { data, error } = await supabase()
+        .from('voices').update(record).eq('voice_id', voiceId).select().maybeSingle()
+      if (error) throw Object.assign(new Error(error.message), { status: 400 })
+      if (!data) throw Object.assign(new Error(`No voice called ${voiceId}.`), { status: 404 })
+      logger.log?.(`[voicelab] consent ${record.consent_status} recorded on ${voiceId} by ${who(user)}`)
+      res.json({ ok: true, voiceId, consent: consent.describe(data) })
+    } catch (err) { fail(res, err, `consent ${req.params.voiceId}`) }
+  })
+
+  /**
+   * REMOVE A VOICE — the un-create the page has never had.
+   *
+   * The case this is for is the one a live demo produces: a clone made by
+   * accident with somebody watching, which until now stayed in the estate's
+   * voice list until a human went to the database. SPENDS NOTHING.
+   *
+   * Order is deliberate and it is make-before-break's mirror image: the
+   * `voices` row is deleted only AFTER Cartesia has confirmed the voice is gone
+   * there, so a half-delete leaves the estate knowing about a voice that still
+   * exists rather than not knowing about one that does.
+   *
+   * A voice that is CAST is refused outright. Removing it would silently empty
+   * a slot the render path reads, and "never touch a voice that is currently
+   * cast without saying so plainly first" is the whole of the safety here.
+   */
+  app.delete('/api/voicelab/voices/:voiceId', async (req, res) => {
+    const user = await requireAdmin(req, res)
+    if (!user) return
+    try {
+      const voiceId = String(req.params.voiceId || '').trim()
+      if (!voiceId) throw Object.assign(new Error('voiceId is required'), { status: 400 })
+
+      const { data: cast } = await supabase()
+        .from('voice_language_roles').select('language, slot, gender, rank').eq('voice_id', voiceId)
+      if (cast && cast.length) {
+        const where = cast.map((c) => `${c.slot} ${c.language}/${c.gender}/rank${c.rank}`).join(', ')
+        throw Object.assign(new Error(
+          `${voiceId} is cast into ${cast.length} slot(s) — ${where}. Clear those slots first; removing a cast voice would empty them without saying so.`,
+        ), { status: 409 })
+      }
+
+      // Historic clips keep playing whatever happens to the row, so this is not
+      // a check that blocks — it is a fact the operator is told before they act.
+      const { count: clipCount } = await supabase()
+        .from('course_audio').select('id', { count: 'exact', head: true }).eq('voice_id', voiceId)
+
+      let atCartesia = null
+      if (/^cartesia_/.test(voiceId)) {
+        atCartesia = await cartesia.deleteClone(voiceId)
+      }
+      const { error } = await supabase().from('voices').delete().eq('voice_id', voiceId)
+      if (error) throw Object.assign(new Error(error.message), { status: 400 })
+      params.invalidateCartesiaCatalogue()
+      logger.log?.(`[voicelab] removed voice ${voiceId} by ${who(user)}${atCartesia ? ' (and at Cartesia)' : ''}`)
+      res.json({ ok: true, voiceId, atCartesia, existingClips: clipCount || 0 })
+    } catch (err) { fail(res, err, `remove-voice ${req.params.voiceId}`) }
   })
 
   /** Empty a slot. The language then reads as incomplete, which is the point. */

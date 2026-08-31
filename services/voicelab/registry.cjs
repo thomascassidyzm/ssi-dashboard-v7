@@ -68,6 +68,7 @@ const policy = require('../shared/tts-provider-policy.cjs')
 const { isHumanVoiceLang } = require('../shared/human-voice-courses.cjs')
 const { humanRecordedForLanguage, loadHumanRecordedRoles } = require('../shared/human-recorded-roles.cjs')
 const { targetCastEntities, targetCastKey, knownCastKey, baseLanguageOfCastKey, isDialectCastKey, COURSE_CAST_FIELDS } = require('../shared/cast-language-key.cjs')
+const consent = require('./consent.cjs')
 const { tryCanonicalVoiceId, PROVIDER_ALIASES } = require('../shared/clip-identity.cjs')
 
 /**
@@ -171,7 +172,11 @@ async function build (db, opts = {}) {
   const catalogue = opts.cartesiaCatalogue || {}
   const [courses, voices, roles, guideInUse] = await Promise.all([
     all(db, 'courses', `${COURSE_CAST_FIELDS}, display_name, status, voice_config`),
-    all(db, 'voices', 'voice_id, type, tts_engine, display_name, human_name, languages, gender, is_active, notes, natural_pace_ratio, natural_pace_cps, natural_pace_samples, natural_pace_measured_at, natural_pace_nudge, natural_pace_nudge_note'),
+    // The consent columns ride along on the SAME read as everything else: the
+    // fact has to travel with the voice everywhere the voice appears (Tom,
+    // 2026-08-31), and a second query for it is a second query that can be
+    // forgotten on one of the three lists.
+    all(db, 'voices', `voice_id, type, tts_engine, display_name, human_name, languages, gender, is_active, notes, natural_pace_ratio, natural_pace_cps, natural_pace_samples, natural_pace_measured_at, natural_pace_nudge, natural_pace_nudge_note, metadata_source, ${consent.COLUMNS.replace('type, metadata_source, ', '')}`),
     all(db, 'voice_language_roles', 'language, gender, rank, voice_id, notes, assigned_by, slot'),
     // Who ACTUALLY speaks the instructions today, per known language. About a
     // dozen rows: the GROUP BY is the view's, not this module's, because doing
@@ -456,6 +461,10 @@ function describeLanguage ({ code, baseCode = null, dialectOf = null, castKeySou
         kind: voice ? voiceKind(voice) : null,
         engine: voice ? (voice.tts_engine || null) : null,
         pace: paceOf(voice),
+        // Consent travels onto the CAST slot too, not only onto the candidate
+        // list. A voice that reaches learners is exactly where the question
+        // "who authorised this?" has to be answerable at a glance.
+        consent: voice ? consent.describe(voice) : null,
         notes: role ? role.notes : null,
         assignedBy: role ? role.assigned_by : null,
       })
@@ -493,6 +502,7 @@ function describeLanguage ({ code, baseCode = null, dialectOf = null, castKeySou
       engine: voice ? (voice.tts_engine || null) : null,
       gender: role ? role.gender : null,
       pace: paceOf(voice),
+      consent: voice ? consent.describe(voice) : null,
       notes: role ? role.notes : null,
       assignedBy: role ? role.assigned_by : null,
     })
@@ -597,7 +607,7 @@ function describeLanguage ({ code, baseCode = null, dialectOf = null, castKeySou
       // `pace` rides along on the candidate too, so the numbers are visible on
       // a language nobody has cast yet — which, until casting is populated, is
       // every language.
-      .map((v) => ({ voiceId: v.voice_id, name: v.display_name || v.human_name || v.voice_id, kind: voiceKind(v), engine: v.tts_engine || null, gender: v.gender || null, registered: true, pace: paceOf(v) }))
+      .map((v) => ({ voiceId: v.voice_id, name: v.display_name || v.human_name || v.voice_id, kind: voiceKind(v), engine: v.tts_engine || null, gender: v.gender || null, registered: true, pace: paceOf(v), consent: consent.describe(v) }))
       .concat(cartesiaCandidates(base, catalogue, roles)))
       .slice(0, 80),
   }
@@ -681,6 +691,7 @@ function guideCandidates ({ code, voices, guideRoles, voiceById, inUse, catalogu
       gender: v.gender || null,
       registered: true,
       inUse: false,
+      consent: consent.describe(v),
     }))
   const seen = new Set(registered.map((c) => c.voiceId))
   const unregistered = [...new Set((inUse || []).map((r) => r.voice_id))]
