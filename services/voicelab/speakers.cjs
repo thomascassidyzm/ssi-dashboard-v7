@@ -260,27 +260,40 @@ async function buildSource (clips, { gapMs = 250, tmpRoot = null, fetchImpl = fe
     }
 
     const out = path.join(dir, 'source.wav')
-    if (parts.length === 1 && !gapMs) {
-      await run('ffmpeg', ['-y', '-i', parts[0], '-ac', '1', '-ar', '44100', out])
-    } else {
-      // One filter graph rather than a concat demuxer file: the inputs are
-      // mastered mp3s of possibly different sample rates, and the demuxer would
-      // splice them without resampling and produce a file that plays at the
-      // wrong speed halfway through.
-      const args = ['-y']
-      for (const p of parts) args.push('-i', p)
-      const silence = gapMs > 0 ? `aevalsrc=0:d=${(gapMs / 1000).toFixed(3)}:s=44100[gap];` : ''
-      const chain = parts
-        .map((_, i) => `[${i}:a]aformat=sample_fmts=s16:sample_rates=44100:channel_layouts=mono[a${i}]`)
-        .join(';')
-      const seq = parts.map((_, i) => (gapMs > 0 && i ? `[gap][a${i}]` : `[a${i}]`)).join('')
-      const n = gapMs > 0 ? parts.length * 2 - 1 : parts.length
-      args.push(
-        '-filter_complex', `${silence}${chain};${seq}concat=n=${n}:v=0:a=1[out]`,
-        '-map', '[out]', '-ac', '1', '-ar', '44100', out,
-      )
-      await run('ffmpeg', args)
+    // ── ONE FILTER GRAPH, ONE SILENCE INPUT PER JOIN ────────────────────────
+    // Not the concat DEMUXER: the inputs are mastered mp3s of possibly
+    // different sample rates and the demuxer splices without resampling, which
+    // produces a file that plays at the wrong speed halfway through.
+    //
+    // And a separate lavfi silence INPUT per gap rather than one reused filter
+    // output: an ffmpeg filter output can be consumed exactly once, so a single
+    // [gap] node works for two clips and fails on three with "has output 0
+    // unconnected". Measured live 2026-08-31 on a one-clip clone, which is the
+    // other end of the same bug.
+    const gapSeconds = (gapMs > 0 ? gapMs : 0) / 1000
+    const gaps = gapSeconds > 0 ? Math.max(0, parts.length - 1) : 0
+    const args = ['-y']
+    for (const p of parts) args.push('-i', p)
+    for (let g = 0; g < gaps; g++) {
+      args.push('-f', 'lavfi', '-t', gapSeconds.toFixed(3), '-i', 'anullsrc=r=44100:cl=mono')
     }
+    const total = parts.length + gaps
+    const fmt = []
+    for (let i = 0; i < total; i++) {
+      fmt.push(`[${i}:a]aformat=sample_fmts=s16:sample_rates=44100:channel_layouts=mono[a${i}]`)
+    }
+    // Interleave: clip, gap, clip, gap, … clip. The gap inputs live after every
+    // clip input, so gap g sits between clip g and clip g+1.
+    const seq = []
+    for (let i = 0; i < parts.length; i++) {
+      seq.push(`[a${i}]`)
+      if (i < gaps) seq.push(`[a${parts.length + i}]`)
+    }
+    args.push(
+      '-filter_complex', `${fmt.join(';')};${seq.join('')}concat=n=${total}:v=0:a=1[out]`,
+      '-map', '[out]', '-ac', '1', '-ar', '44100', out,
+    )
+    await run('ffmpeg', args)
 
     const buf = fs.readFileSync(out)
     const seconds = await probeSeconds(out, run)

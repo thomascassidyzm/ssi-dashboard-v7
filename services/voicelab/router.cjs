@@ -618,9 +618,21 @@ function mount (app, deps) {
       // Re-read the clips from the database rather than trusting the durations
       // and keys the browser sent back: the source that goes to a vendor must
       // be built from what the estate actually holds.
+      //
+      // SCOPED BY SPEAKER AND ORIGIN, and that is not decoration. `s3_key` has
+      // no index on a 2.5-million-row table, so an `in (s3_key)` on its own is
+      // a sequential scan and times out — measured live 2026-08-31, the first
+      // clone-from-estate attempt died on "canceling statement due to statement
+      // timeout". Adding origin and voice_id puts this read on the same index
+      // path the clip list already uses (idx_course_audio_origin). It is also
+      // the stricter check: a key can only be cloned from as part of the
+      // speaker it was listed under.
+      if (!speaker) throw Object.assign(new Error('Say which speaker these clips belong to.'), { status: 400 })
       const { data: rows, error } = await supabase()
         .from('course_audio')
         .select('s3_key, duration_ms, text, role, language, course_code')
+        .eq('origin', 'human')
+        .eq('voice_id', speaker)
         .in('s3_key', keys.slice(0, speakers.MAX_SOURCE_CLIPS * 2))
       if (error) throw Object.assign(new Error(`course_audio read failed: ${error.message}`), { status: 502 })
       const byKey = new Map()
@@ -637,7 +649,7 @@ function mount (app, deps) {
       // The caller's order is the operator's order — it is the order the
       // passage will be spoken in, so it is not re-sorted here.
       const chosen = keys.map((k) => byKey.get(k)).filter(Boolean)
-      if (!chosen.length) throw Object.assign(new Error('None of those clips are in the estate.'), { status: 404 })
+      if (!chosen.length) throw Object.assign(new Error(`None of those clips are in the estate under "${speaker}".`), { status: 404 })
 
       const built = await speakers.buildSource(chosen, { tmpRoot: process.env.CS_SCRATCH || undefined })
       const out = await cartesia.createClone(supabase(), {

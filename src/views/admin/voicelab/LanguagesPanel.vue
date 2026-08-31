@@ -172,11 +172,13 @@ function toggleLanguage (lang) {
 // separate product and is not reachable from this endpoint at all, which is
 // what Tom asked for ("just the instant clones").
 //
-// The sample can come from a FILE or from the MICROPHONE on this page. Cartesia
-// asks for at least 10 seconds and recommends up to 60 for a less common
-// accent, clean, no pauses — so the recorder says the elapsed seconds out loud
-// rather than leaving the operator to guess, and lets them listen and redo it
-// before anything is uploaded.
+// The sample comes from ONE OF THREE PLACES, and as of Tom's inversion of
+// 2026-08-31 the first is the default: a recording the estate ALREADY HOLDS, a
+// file, or the microphone on this page. Cartesia asks for at least 10 seconds
+// and recommends up to 60 for a less common accent, clean, no pauses — verified
+// against their live documentation 2026-08-31 — so the recorder says the
+// elapsed seconds out loud rather than leaving the operator to guess, and lets
+// them listen and redo it before anything is uploaded.
 //
 // CLONING STILL RENDERS NOTHING. Hearing the result is a SEPARATE press, capped
 // at three clips by the backend, and it counts against the lab's ordinary daily
@@ -308,7 +310,15 @@ const canRecord = typeof window !== 'undefined'
   && typeof window.MediaRecorder !== 'undefined'
   && Boolean(navigator?.mediaDevices?.getUserMedia)
 
-/** Cartesia's own guidance: 10s is the floor, 60s is the useful ceiling. */
+/**
+ * Cartesia's own guidance, RE-VERIFIED against their live documentation on
+ * 2026-08-31: "You can create an instant voice clone with as little as 10
+ * seconds of audio", and up to sixty is recommended, more so for a less common
+ * accent. Ten is the FLOOR. An older note in this estate
+ * (docs/tts-bakeoff/phase2-clone-source-from-clone-2026-08-27.md) quotes it as
+ * a ten-second CAP; that is wrong, and the nineteen-second clone Tom judged
+ * good on 2026-08-27 is the estate's own refutation of it.
+ */
 const RECORD_MIN_SECONDS = 10
 const RECORD_MAX_SECONDS = 60
 
@@ -364,6 +374,7 @@ const recordHint = computed(() => {
   if (recordSeconds.value < RECORD_MIN_SECONDS) {
     return `${recordSeconds.value}s — Cartesia asks for at least ${RECORD_MIN_SECONDS}s. This will clone, but a longer sample clones better.`
   }
+  if (recordSeconds.value < 20) return `${recordSeconds.value}s — over the floor. Twenty to sixty seconds clones noticeably steadier.`
   return `${recordSeconds.value}s — a good length.`
 })
 
@@ -992,7 +1003,8 @@ function candidatesFor (lang, slot) {
           <button v-if="!recording" class="vl-btn" @click="startRecording">● Record</button>
           <button v-else class="vl-btn vl-recording" @click="stopRecording">■ Stop — {{ recordSeconds }}s</button>
           <span v-if="recording" class="vl-muted">
-            Read anything aloud, evenly, no pauses. Stops itself at 60s.
+            One continuous take &mdash; talk normally, the way you want to sound, and don't leave
+            long pauses: pauses come back out in the clone. Stops itself at 60s.
           </span>
           <template v-if="recordedUrl">
             <audio :src="recordedUrl" controls class="vl-record-audio" />
