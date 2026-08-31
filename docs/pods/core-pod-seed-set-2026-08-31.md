@@ -1,11 +1,24 @@
-# The canonical CORE pod-seed set — the trunk's own productive walk
+# The canonical pod set — CORE's cut inventory, and the every-optional-walk floor
 
-**Authored 2026-08-31.** This is the canonical **English known-side** pod-seed set for CORE —
-the artefact that gives the trunk's own pod corpus its cut handles, so that pod material can
-enter every course's LEGO baskets. There is one canonical set, identical for every pair by
-definition. **It contains no target language of any kind.** The target side is a pair overlay
-and a separate downstream mapping job. This is the same act that produced the canonical health
-seed set (`docs/sector-pods/health-general-seed-set-2026-08-31.md`), pointed at the trunk.
+**Authored 2026-08-31. Reframed 2026-08-31** — framing only: not one seed, cut, basket, ledger
+row or decision below was re-authored. The artefact was commissioned as "the canonical CORE
+pod-seed set"; Tom ruled after dispatch that **there are no CORE pod-seeds**. The work stands
+as written, and it has **two homes**:
+
+1. **Its cut inventory is CORE's deliverable.** The 400 phrase-minimum chunks — what each
+   admits, and what each assumes already owned — are what make the conversational register
+   ownable inside the compulsory trunk. **CORE gets CUTS, not seeds:** the cut chunks enter
+   the availability window and the EXISTING seed baskets draw on them. No new thread, no new
+   sequencing, nothing interleaved, no learner-facing choice.
+2. **Its 195 sequenced seeds (§4) and their baskets (§5) are the EVERY-OPTIONAL-WALK FLOOR
+   CONTENT** — the shared interaction register that every themed walk carries, written once,
+   here. Not a CORE thread; there is no such thing.
+
+This is the canonical **English known-side** artefact for both. There is one canonical set,
+identical for every pair by definition. **It contains no target language of any kind.** The
+target side is a pair overlay and a separate downstream mapping job. This is the same act that
+produced the canonical health seed set
+(`docs/sector-pods/health-general-seed-set-2026-08-31.md`), pointed at the CORE corpus.
 
 **Why it exists, measured not asserted** (job #450, the unified frame map): every eng-known
 course can finish all 668 seeds without ever cutting a greeting. "hello", "and you",
@@ -35,6 +48,34 @@ handle, and a handle is a cut.
 - **Seeds SEQUENCE, LEGOs ADMIT, phrases MINT** — and the learner only ever touches the last.
   Floors belong to the LEGO basket, never the seed.
 
+**The rulings that arrived after this set was dispatched** (Tom, 2026-08-31 — they change
+where the work lands, not a line of what it says; settled, not to be re-opened):
+
+- **Seeds are immutable — "we're not messing with the SEEDS".** The 668 canonical seeds are
+  untouched and nothing may be interleaved into that sequence.
+- **CORE gets CUTS, not seeds.** The pod already delivered every one of these lines as a
+  known/target pair, so the learner owns the mapping; what was missing is the handle, and a
+  handle is a cut.
+- **Pod-seeds belong to THEMED WALKS only**, and the selector is **interest, not occupation**:
+  a health worker picks health because they are one, everyone else picks by interest. Sector
+  is one reason among several for choosing a themed walk, never the category a walk belongs to.
+- **The shared interaction register rides the every-optional-walk floor.** At least one
+  optional walk is always in play, so "optional" names WHICH ONE, never WHETHER — and anything
+  common to every optional walk is compulsory without being in CORE. A second floor, cheaper
+  than CORE, and that is where §4 and §5 live.
+- **Roles are per themed walk and DERIVED, not authored** — role is a projection (a dialogue
+  has both ends; production is only your own turns), so a walk's available roles are whoever's
+  mouths exist in its corpus. Health's ruled order: general > patient > nurse > doctor, where
+  general is "no role really" and is a strict 100% subset of nurse.
+
+**Why the floor is written once, here, rather than derived per walk** — the evidence that
+decided it: the health calibration resolved all 30 of its opener turns against CORE scene 0,
+**16 defer, 14 mint**. A themed walk inherits the shared register and mints only what it ADDS
+(health's duty-of-care stakes-raiser, the colleague fallback, the say-it-again repair, "none
+taken at all", the family-helper admission). Deriving the floor per walk would re-author that
+inherited half every time, and a learner who took a second themed walk would be taught it
+twice — which is the one thing we never do.
+
 **Sources (read-only, unedited):**
 
 - `services/shared/metagraph/walks/pod-0.json` — the live POD 1, byte-identical, untouched.
@@ -49,7 +90,10 @@ handle, and a handle is a cut.
 - `services/shared/metagraph/walks/core-recoveries.json` — W1301–W1305, the five withheld
   recoveries at their sited points.
 
-**What this feeds:** the pair-overlay mapping job for each pair; the frame layer's
+**What this feeds:** **CORE's cut list** — §5's inventory of 400 chunks, entering the
+availability window so the existing seeds' baskets can draw on them; **the every-optional-walk
+floor** — §4's 195 sequenced seeds with §5's baskets, carried by every themed walk; the
+pair-overlay mapping job for each pair; the frame layer's
 instantiability gate (`tools/frame-layer/availability.cjs`), which will find these chunks cut
 and open the dialogue frames; and the cross-course union ZUT gate, which checks the ownership
 statements in §4.
@@ -79,7 +123,7 @@ country — need to produce this turn, essentially as written?** The corpus answ
 4. **Service-professional working lines stay receptive context** — "What can I get you?",
    "That's eight pound forty altogether", room details, dosing instructions, turn-by-turn
    direction-giving. The learner hears them (the mapping is owned — heard in dialogue), but
-   the trunk's productive walk does not need them; a hospitality or retail sector pod is where
+   the shared register does not need them; a hospitality or retail themed walk is where
    they would mint. The one deliberate exception is the deictic handover (§3, D5).
 5. **The 16 narrator codas** ("1. 2. 3. White. Black.") are vocabulary admission events, not
    frames (the frame map's own exclusion). They mint no seeds; their atoms — numbers, colours,
@@ -106,14 +150,17 @@ of seed N, plus their components. Plus the assumed course-core strings each seed
 explicitly (Appendix A is their union). No forward references anywhere; verified mechanically
 against the document (§7).
 
-**Anchoring and interleave.** Unlike a sector segment, this thread has no single anchor: it
-runs THROUGH the course, starting where pods start (activation round 6 of the base course).
-Each seed's ownership statement is its own anchor contract: a pair overlay schedules each seed
-at the earliest base-course position where that seed's assumed strings are owned, keeping this
-document's order. The earliest seeds assume nothing at all — a greeting needs no prerequisite
-— which is what lets the conversational register open at round 6 rather than seed 600.
-Anything a base course does not own at the scheduled point, the overlay authors in-pair as
-`is_new = true`; the canonical set does not move.
+**Anchoring — and what this order means in each of the two homes.** Nothing here is
+interleaved into the 668: they are immutable, and this document does not touch them. The order
+below does two separate jobs. For **CORE** it is the admission order of the cuts: the earliest
+cuts assume nothing at all — a greeting needs no prerequisite — so the chunks reach the
+availability window from where pods start (activation round 6), which is what lets the existing
+baskets open the conversational register at round 6 rather than at seed 600. For the
+**every-optional-walk floor** it is the seed order proper, kept exactly as written: each seed's
+ownership statement is its own anchor contract, and a pair overlay schedules each seed at the
+earliest position where that seed's assumed strings are owned. Anything a base course does not
+own at that point, the overlay authors in-pair as `is_new = true`; the canonical set does not
+move.
 
 **Block order** (the register the learner needs first, at the lowest admission cost first):
 A ritual open/close · B thanks and the particles · C introductions and the reciprocal loop ·
@@ -3590,7 +3637,7 @@ g106, g108, g111, g113, g115, g117, g121, g123, g124, g126, g128, g132, g134, g1
 g139, g224, g226, g228 — service-professional working lines (the counter, the kitchen, the
 desk, the wheel, turn-by-turn direction-giving), the native's repair reformulation (g34), and
 scene 22's remaining encouragements (g224, g226, g228). All are owned mappings — heard in
-dialogue — that the trunk's productive walk does not need; a hospitality/retail sector pod is
+dialogue — that the shared register does not need; a hospitality/retail themed walk is
 where they would mint. The near-misses were weighed and the call is stated: g9's hedge answer
 ("It's not very far. Maybe three or four miles.") stays receptive because W1301.3/.5 deliver
 its chunks from the learner's own mouth (CP150–151); g18/g137's handovers stay receptive
@@ -3686,15 +3733,16 @@ the CP186 inversion and the CP187 duplicate — §5's intro records those.
 - **D9 (reckoning — "That's eight pound forty altogether") mints nowhere**: the corpus
   attests it only in service mouths and the pod's drills never promote it. If learners
   should own the reckoning (market stalls, splitting bills), it needs either a promoted
-  drill row or a sector pod; flagged, not resolved here.
+  drill row or a themed walk of its own; flagged, not resolved here.
 - **The 56 corpus rows on unencoded complete walks** are placed in `canonical_pod_scenarios`
   but not in pod-0.json's walk encodings; this set reads them from the canon (they are the
   scenes-7–14 rows above), so nothing is lost — but the walk-encoding gap named in
   pod-0.json's own accounting remains open and is not this job's to close.
 - **The union-ZUT registration is downstream**: this document's cuts and Appendix A are the
-  gate's inputs, but no segment registration was performed (no DB writes in this job, and
-  the trunk layer's registration semantics — pod-seed thread vs sector segment — want one
-  ruling before anything is registered).
+  gate's inputs, but no segment registration was performed (no DB writes in this job). The
+  ruling this bullet was waiting on has since arrived and is stated at the head — there is no
+  pod-seed thread to register: CORE registers the **cuts**, and §4's seeds register as the
+  **every-optional-walk floor**. Building that registration is still open.
 - **Basket depth is reported in §5** as assembled; wherever it stops short of CP195, the
   stopping point and reason are stated there rather than papered over.
 
