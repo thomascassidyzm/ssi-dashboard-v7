@@ -13,7 +13,12 @@ hear.
 ## courses
 
 The **Library** lists your courses, and next to it sit the canonical browsers — **Seeds**,
-**Content** and **Pods** — windows onto the canonical material in the database. A course
+**Content**, **Pods** and **Script Lab** — windows onto the canonical material in the
+database. **Script Lab** is the odd one: it holds the pod scripts themselves, the
+language-neutral English masters, with no course loaded. Editing a script there changes the
+source every course flexes from and changes no generated pod, so a script edit reaches
+learners only when a pod is built from it again. Its read-out is coverage — which shapes the
+script's walk reaches, and which it never does. A course
 opens on its **Overview** hub — one door per course, every working surface a card
 inside it: text, audio, recording, QA. The method under all of it: one known prompt maps to
 exactly one target form, course-wide, and the known side is a controlled language too — the

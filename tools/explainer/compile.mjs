@@ -196,7 +196,7 @@ const supabaseTables = [...tableRefs.keys()].sort().map((t) => ({
 const DOCS_SURFACE = {
   compiled: ['Stock-take', 'Pipeline', 'Glossary', 'APML'],
   rulings: ['How & Why', 'Pedagogy', 'Pod Thinking'],
-  data: ['Seeds', 'Content', 'Pods'],
+  data: ['Seeds', 'Content', 'Pods', 'Script Lab'],
 }
 {
   const classified = Object.values(DOCS_SURFACE).flat()
