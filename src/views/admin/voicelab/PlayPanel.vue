@@ -125,14 +125,6 @@ const DETAIL_STOPS = [
   { word: 'full', real: '24 kHz · 192 kbps', patch: { sampleRate: 24000, bitRate: 192000 } },
 ]
 
-const LOUDNESS_NOTE = computed(() => {
-  const band = defaults.value.thresholds?.loudness || {}
-  const stops = LOUDNESS_STOPS.value
-  return `Every stop sits inside the band the store admits (${band.targetLufs} ±${band.toleranceDb} dB), `
-    + `so no position here can be refused for level. That band, not caution, is what makes the swing `
-    + `${Math.abs(stops[4].patch.masterLufs - stops[0].patch.masterLufs).toFixed(1)} dB rather than more.`
-})
-
 /** Live knobs first — a dead control should not be the first thing you meet. */
 const SLIDERS = computed(() => {
   const all = [
@@ -143,8 +135,7 @@ const SLIDERS = computed(() => {
       stops: PACE_STOPS,
       live: supports.value.speed === true,
       note: '',
-      why: providerRow.value.speedNote
-        || `${providerRow.value.name || provider.value} exposes no speed parameter, so this would change nothing. Pick an Azure voice to move it.`,
+      why: `no speed on ${providerRow.value.name || provider.value}`,
     },
     {
       id: 'loudness',
@@ -152,7 +143,7 @@ const SLIDERS = computed(() => {
       ends: ['quieter', 'louder'],
       stops: LOUDNESS_STOPS.value,
       live: true,
-      note: LOUDNESS_NOTE.value,
+      note: '',
       why: '',
     },
     {
@@ -162,7 +153,7 @@ const SLIDERS = computed(() => {
       stops: DETAIL_STOPS,
       live: supports.value.sampleRate === true && supports.value.bitRate === true,
       note: '',
-      why: 'Azure pins the output format in generateAzure, so sample rate and bit rate are not yours to set here.',
+      why: 'format pinned by Azure',
     },
   ]
   return [...all.filter((s) => s.live), ...all.filter((s) => !s.live)]
@@ -395,11 +386,11 @@ function verdictLine (clip) {
     return { cls: 'fail', text: `did not render — ${clip.error || 'unknown error'}` }
   }
   if (clip.status === 'pending') return { cls: 'wait', text: 'rendering…' }
-  if (!clip.verdict) return { cls: 'wait', text: 'playable now — the machine is still checking it' }
+  if (!clip.verdict) return { cls: 'wait', text: 'playable — still checking' }
   const v = clip.verdict
-  if (v.admit) return { cls: 'pass', text: 'Admitted — every gate passed. This clip would be allowed into a course.' }
+  if (v.admit) return { cls: 'pass', text: 'Admitted — every gate passed.' }
   const failed = (v.refusedBy || []).map((g) => GATE_WORDS[g] || g)
-  return { cls: 'fail', text: `Quarantined — ${failed.join(' and ')} did not pass.` }
+  return { cls: 'fail', text: `Quarantined — ${failed.join(' and ')}.` }
 }
 
 function gateDetail (clip) {
@@ -458,10 +449,7 @@ function gateDetail (clip) {
         spellcheck="false"
         placeholder="Type something for this voice to say."
       ></textarea>
-      <p v-if="tooLong" class="play-err">
-        That is {{ sentence.trim().length }} characters and the cap is {{ maxChars }} — this is a lab,
-        not a batch renderer.
-      </p>
+      <p v-if="tooLong" class="play-err">{{ sentence.trim().length }} characters — the cap is {{ maxChars }}.</p>
 
       <div v-if="picking" class="play-picker">
         <div class="play-row">
@@ -584,17 +572,15 @@ function gateDetail (clip) {
         {{ running ? 'Generating…' : comparing ? 'Generate both' : 'Generate' }}
       </button>
       <span class="play-cost">
-        <template v-if="estimating">working out the cost…</template>
+        <template v-if="estimating">costing…</template>
         <template v-else-if="estimate">
           {{ estimate.clips }} clip{{ estimate.clips === 1 ? '' : 's' }} ·
           {{ estimate.usd == null ? 'not priced' : '$' + estimate.usd.toFixed(4) }} ·
-          {{ estimate.ceilingRemaining.toLocaleString() }} characters left today
-          <strong v-if="estimate.wouldExceed" class="play-err">
-            — over the daily ceiling, so it is refused rather than quietly costing money.
-          </strong>
+          {{ estimate.ceilingRemaining.toLocaleString() }} chars left today
+          <strong v-if="estimate.wouldExceed" class="play-err">— over the daily ceiling</strong>
         </template>
         <span v-else-if="estimateError" class="play-err">{{ estimateError }}</span>
-        <template v-else>Type a sentence and the cost appears here first.</template>
+        <template v-else>the cost appears here first</template>
       </span>
     </div>
     <p v-if="runError" class="play-err">{{ runError }}</p>
@@ -624,11 +610,7 @@ function gateDetail (clip) {
       </template>
 
       <template v-else>
-        <p class="play-note">
-          {{ revealed
-            ? 'Labels shown.'
-            : 'Listen to both before you look. A label is a thumb on the scale, which is why the sides are hidden and their order is the server’s choice, not A-then-B.' }}
-        </p>
+        <p class="play-note">{{ revealed ? 'Labels shown.' : 'Listen to both before you look.' }}</p>
         <div class="play-ab">
           <div v-for="(side, i) in [leftKey, rightKey]" :key="side" class="play-side">
             <button

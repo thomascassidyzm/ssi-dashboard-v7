@@ -217,12 +217,6 @@ function defaultTitle () {
   <div>
     <div class="vl-panel">
       <h3>Run a test</h3>
-      <p class="vl-note">
-        The clips are playable the moment they are mastered; the two whisper passes behind the
-        phonology and words gates take the best part of a minute each, so verdicts arrive after
-        the audio. Listen while the machine is still making up its mind — that is the right order.
-      </p>
-
       <div class="vl-kinds">
         <button
           v-for="k in KINDS" :key="k.id"
@@ -268,8 +262,7 @@ function defaultTitle () {
               @update:model-value="pickCourse"
             />
             <span v-if="selectedCourse && selectedCourse.renderable === false" class="vl-why vl-warn">
-              This lab cannot steer {{ languageName(selectedCourse.language) }} — its text is
-              listed and searchable, but a run would render it in whatever language the config names.
+              {{ languageName(selectedCourse.language) }} is not steerable here
             </span>
           </label>
           <label class="vl-field">Text
@@ -306,17 +299,13 @@ function defaultTitle () {
       </div>
 
       <p v-if="overCap" class="vl-warn">
-        {{ overCap }} sentence{{ overCap === 1 ? '' : 's' }} beyond the cap of {{ maxSentences }} will
-        NOT be run. The cap is stated rather than silently applied.
+        {{ overCap }} beyond the cap of {{ maxSentences }} — not run.
       </p>
       <p v-if="tooLong.length" class="vl-err">
-        {{ tooLong.length }} sentence{{ tooLong.length === 1 ? ' is' : 's are' }} over
-        {{ params.limits?.maxCharsPerSentence || 300 }} characters — shorten
-        {{ tooLong.length === 1 ? 'it' : 'them' }} or drop
-        {{ tooLong.length === 1 ? 'it' : 'them' }}.
+        {{ tooLong.length }} over {{ params.limits?.maxCharsPerSentence || 300 }} characters.
       </p>
 
-      <h4>Cost, before anything is spent</h4>
+      <h4>Cost</h4>
       <div class="vl-estimate">
         <template v-if="estimating">
           <span class="vl-muted">estimating…</span>
@@ -325,18 +314,14 @@ function defaultTitle () {
           <span class="vl-chip">{{ estimate.clips }} clips</span>
           <span class="vl-chip">{{ estimate.chars }} chars</span>
           <span class="vl-chip" :class="{ fail: estimate.wouldExceed }">{{ estimate.usd == null ? 'not priced' : '$' + estimate.usd.toFixed(4) }}</span>
-          <span class="vl-muted">
-            {{ estimate.ceilingRemaining }} characters left under today's ceiling.
-          </span>
-          <span v-if="estimate.wouldExceed" class="vl-err">
-            This run would pass the daily ceiling — it is refused rather than quietly costing money.
-          </span>
+          <span class="vl-muted">{{ estimate.ceilingRemaining }} chars left today</span>
+          <span v-if="estimate.wouldExceed" class="vl-err">over the daily ceiling</span>
         </template>
         <template v-else-if="estimateError">
           <span class="vl-err">{{ estimateError }}</span>
         </template>
         <template v-else>
-          <span class="vl-muted">Pick or type at least one sentence.</span>
+          <span class="vl-muted">pick or type a sentence</span>
         </template>
       </div>
 

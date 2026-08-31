@@ -1,12 +1,5 @@
 <template>
   <div class="lab">
-    <p class="page-subtitle">
-      The estate side of the lab, and it <strong>renders nothing</strong>: audition voices on real
-      course sentences from takes that already exist, compare providers on identical text, declare
-      one voice per course side, and read whether a side has stayed one person.
-      <strong>A take that already exists costs nothing to hear.</strong>
-    </p>
-
     <div class="controls">
       <label>Course
         <input v-model="course" list="course-list" placeholder="deu_for_eng" @keyup.enter="loadAll" />
@@ -34,20 +27,8 @@
 
     <!-- 1 · AUDITION ---------------------------------------------------- -->
     <section v-show="tab === 'audition'" class="panel">
-      <p class="panel-note">
-        Real course sentences, stratified deliberately: the shortest, where the intercept
-        dominates and truncation hides; the longest, where a voice runs out of breath; a few
-        from the middle so the sample can calibrate as well as catch. Never the first N rows —
-        that is a sample of the easiest material.
-      </p>
-
       <div v-if="audition" class="free-voices">
-        <h3>Free to audition right now — {{ audition.freeVoices.length }} voices</h3>
-        <p class="muted">
-          These takes already exist in the estate for these exact sentences. Playing them
-          spends nothing. Anything not in this list is what a sample run would have to render,
-          and that is the whole spend.
-        </p>
+        <h3>Free to audition — {{ audition.freeVoices.length }} voices</h3>
         <div class="chips">
           <button
             v-for="v in audition.freeVoices"
@@ -68,7 +49,7 @@
             <td><span class="stratum" :class="s.stratum">{{ s.stratum }}</span></td>
             <td class="text bidi-isolate" :dir="dirFor(s.text)">{{ s.text }}</td>
             <td>
-              <span v-if="!s.existingTakes.length" class="muted">— nothing in the store; this one costs a render</span>
+              <span v-if="!s.existingTakes.length" class="muted">— nothing in the store</span>
               <button
                 v-for="t in visibleTakes(s)"
                 :key="t.id"
@@ -84,11 +65,6 @@
 
     <!-- 2 · COMPARE ------------------------------------------------------ -->
     <section v-show="tab === 'compare'" class="panel">
-      <p class="panel-note">
-        Same sentence, two voices, back to back. Blind hides which is which until you have
-        decided — taste is spent only on candidates the measurements have already let through,
-        and a label is a thumb on the scale.
-      </p>
       <label class="blind-toggle"><input type="checkbox" v-model="blind" /> Blind — hide voice labels</label>
 
       <div v-if="audition" class="compare">
@@ -111,12 +87,6 @@
 
     <!-- 3 · DECLARE ------------------------------------------------------ -->
     <section v-show="tab === 'declare'" class="panel">
-      <p class="panel-note">
-        One voice per side, declared here, recorded as a versioned config — and the renderer
-        cannot be handed another. This is step 0 of a migration: <strong>no audio is touched
-        and it costs nothing</strong>, and it is what closes the gap where two voices are
-        permitted for one slot and something downstream picks.
-      </p>
 
       <div v-if="declarations" class="declare-current">
         <h3>Declared today</h3>
@@ -138,21 +108,11 @@
         <button class="btn-primary" :disabled="busy" @click="declare">Declare {{ course }}/{{ role }}</button>
         <p v-if="declareResult" class="ok">{{ declareResult }}</p>
         <p v-if="declareError" class="err">{{ declareError }}</p>
-        <p class="muted">
-          A clone may not be declared for a language where that pair has no passing verdict.
-          Untested refuses and names the experiment — that one check is how "clones used
-          multilingually wherever the clone is capable" stops being a hope.
-        </p>
       </div>
     </section>
 
     <!-- 4 · DRIFT -------------------------------------------------------- -->
     <section v-show="tab === 'drift'" class="panel">
-      <p class="panel-note">
-        Has this side stayed one person? Three of these four numbers are histograms the
-        admission gates already compute; the voice-id census is one SQL query, and it would
-        have caught the German drift in January.
-      </p>
 
       <div v-if="report">
         <table class="grid">
@@ -192,11 +152,6 @@
         </table>
 
         <h3>Speaking rate — syllables per second, per voice</h3>
-        <p class="muted">
-          Per file duration, not per speech span: the span needs the bytes. A distribution to
-          look at, never a gate — the gate's number is measured on the mastered bytes at
-          generation time.
-        </p>
         <table class="grid">
           <thead><tr><th>side</th><th>voice</th><th>n</th><th>p10</th><th>median</th><th>p90</th><th>IQR</th></tr></thead>
           <tbody>
@@ -210,11 +165,7 @@
         </table>
 
         <h3>Pitch and loudness — measured here, in the browser</h3>
-        <p class="muted">
-          vadProsody.js computes the voice-identity signal and then deliberately throws it
-          away, because for VAD melody is noise. Here it is the whole signal. Measuring
-          {{ prosodySampleSize }} clips fetches and decodes them locally; nothing is rendered.
-        </p>
+        <p class="muted">{{ prosodySampleSize }} clips, decoded here — nothing is rendered.</p>
         <button class="btn-secondary" :disabled="prosodyBusy" @click="measureProsody">
           {{ prosodyBusy ? `Measuring ${prosodyDone}/${prosodySampleSize}…` : 'Measure a sample' }}
         </button>
@@ -231,8 +182,7 @@
 
         <h3>Ambiguous slots — one text, one role, more than one voice</h3>
         <p class="muted">
-          {{ report.ambiguousSlots.returned }} returned (capped at {{ report.ambiguousSlots.cappedAt }}).
-          The declared voice says which row wins; the loser is left in place, unlinked. Nothing is deleted.
+          {{ report.ambiguousSlots.returned }} of them, capped at {{ report.ambiguousSlots.cappedAt }}.
         </p>
         <table class="grid" v-if="report.ambiguousSlots.slots.length">
           <thead><tr><th>role</th><th>text</th><th>voices</th><th>rows</th></tr></thead>
@@ -244,7 +194,7 @@
           </tbody>
         </table>
 
-        <p class="caveats">Caveats carried with these numbers: {{ report.caveats.join(' · ') }}</p>
+        <p class="caveats">{{ report.caveats.join(' · ') }}</p>
       </div>
     </section>
   </div>
@@ -470,7 +420,6 @@ td.text { text-align: left; }
 .crumb-link { color: var(--accent-2); text-decoration: none; }
 .crumb-sep, .crumb-here { color: var(--muted); }
 .page-title { font-size: 1.75rem; margin: 0 0 0.25rem; letter-spacing: 0.04em; }
-.page-subtitle { color: var(--muted); max-width: 70ch; line-height: 1.5; margin: 0 0 1.25rem; }
 .controls { display: flex; gap: 1rem; align-items: flex-end; flex-wrap: wrap; margin-bottom: 1rem; }
 .controls label { display: flex; flex-direction: column; gap: 0.25rem; font-size: 0.75rem; color: var(--muted); }
 .controls input, .controls select { padding: 0.4rem 0.5rem; border-radius: 6px; border: 1px solid var(--surface-3); background: var(--surface-1); color: inherit; }
@@ -480,7 +429,6 @@ td.text { text-align: left; }
 .tab-n { opacity: 0.5; margin-right: 0.35rem; }
 .panel { animation: fade 0.15s ease; }
 @keyframes fade { from { opacity: 0 } to { opacity: 1 } }
-.panel-note { color: var(--muted); max-width: 80ch; line-height: 1.55; font-size: 0.875rem; }
 .grid { width: 100%; border-collapse: collapse; font-size: 0.8125rem; margin: 0.75rem 0 1.5rem; }
 .grid th { text-align: left; font-weight: 500; color: var(--muted); border-bottom: 1px solid var(--surface-3); padding: 0.4rem 0.5rem; }
 .grid td { padding: 0.35rem 0.5rem; border-bottom: 1px solid var(--surface-2); vertical-align: top; }

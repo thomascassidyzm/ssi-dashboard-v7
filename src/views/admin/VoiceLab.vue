@@ -42,7 +42,7 @@
  * being the entrance, which is a different thing from stopping existing.
  */
 import { ref, computed } from 'vue'
-import { probe, labBase, useCloudBackend, CLOUD_BACKEND } from './voicelab/labApi'
+import { probe, labBase, useCloudBackend } from './voicelab/labApi'
 import LanguagesPanel from './voicelab/LanguagesPanel.vue'
 import PlayPanel from './voicelab/PlayPanel.vue'
 import ParametersPanel from './voicelab/ParametersPanel.vue'
@@ -109,6 +109,13 @@ function switchToCloud () {
 
 const spend = computed(() => params.value?.spend || null)
 
+/** The meter's fill. Capped at 100 so an over-ceiling day still draws a bar. */
+const spendPct = computed(() => {
+  const sp = spend.value
+  if (!sp?.ceiling) return 0
+  return Math.min(100, Math.round((sp.charsToday / sp.ceiling) * 100))
+})
+
 /** Config B only matters for an A/B; showing it always is noise. */
 const showB = ref(false)
 </script>
@@ -128,46 +135,26 @@ const showB = ref(false)
           <button :class="{ on: mode === 'play' }" @click="mode = 'play'">Play</button>
           <button :class="{ on: mode === 'engineering' }" @click="mode = 'engineering'">Engineering</button>
         </div>
+
+        <!-- The spend, as a meter rather than a sentence: the bar is the fact
+             that there is a ceiling, and the numbers are where you stand. -->
+        <span v-if="spend" class="spend">
+          <span class="spend-bar"><i :style="{ width: spendPct + '%' }"></i></span>
+          {{ spend.charsToday.toLocaleString() }} / {{ spend.ceiling.toLocaleString() }} chars today
+          · ${{ (spend.usdToday || 0).toFixed(4) }}
+        </span>
+        <span class="hdr-chip">writes no course audio</span>
       </div>
-      <p v-if="mode === 'languages'" class="page-subtitle">
-        Every language the estate teaches, and which voices are configured for it. Each language
-        wants a male and a female voice, each with a backup. Anything missing shows as a gap.
-        <strong>Casting a voice here writes the casting and nothing else</strong> — no audio is
-        rendered and no course is changed.
-      </p>
-      <p v-else-if="mode === 'play'" class="page-subtitle">
-        Pick a voice, type a sentence, move the sliders, press Generate. Every slider here changes
-        something you can hear — what a voice cannot do is greyed out and says so.
-        <strong>Nothing here writes to <code>course_audio</code></strong>, and the daily spending
-        ceiling refuses rather than quietly costing money.
-      </p>
-      <p v-else class="page-subtitle">
-        Parameters, tests, and a record of every run. Set a config, render real sentences through
-        it, read the six-gate verdict beside the audio, and keep the run so the next one can be
-        compared against it. <strong>Nothing here writes to <code>course_audio</code></strong>, and
-        an approved config is exported for a human to apply, never deployed from this screen.
-      </p>
-      <p v-if="spend" class="spend-line">
-        Spent today: {{ spend.charsToday.toLocaleString() }} / {{ spend.ceiling.toLocaleString() }}
-        characters — ${{ (spend.usdToday || 0).toFixed(4) }}. The ceiling refuses rather than
-        quietly costing money.
-      </p>
     </header>
 
     <!-- The backend banner. A missing lab is a deployment fact, said plainly. -->
     <div v-if="backendError" class="backend-warn">
-      <strong>No Voice Lab on this backend.</strong>
-      <span>{{ backendError }}</span>
-      <span class="muted">
-        The lab renders audio, so it needs a backend that can — currently
-        <code>{{ backendBase || 'unset' }}</code>.
-      </span>
+      <strong>No Voice Lab on <code>{{ backendBase || 'unset' }}</code></strong>
+      <span class="muted">{{ backendError }}</span>
       <div class="backend-actions">
         <button class="btn-primary" @click="switchToCloud">Use SSi Machine (Cloud)</button>
         <button class="btn-secondary" @click="boot">Try again</button>
       </div>
-      <span class="muted small">That button points the dashboard at <code>{{ CLOUD_BACKEND }}</code> — the same
-        entry the Environment Switcher offers.</span>
     </div>
 
     <div v-else-if="loading" class="muted">Loading the lab…</div>
@@ -181,12 +168,6 @@ const showB = ref(false)
 
     <section v-if="params && mode === 'play'">
       <PlayPanel :params="params" />
-      <p class="play-footnote">
-        Everything else the lab can do — every gate threshold, blind A/B over a batch of real
-        course sentences, the log of every run ever made, and the free estate bench —
-        <button class="play-footlink" @click="mode = 'engineering'">is under Engineering</button>,
-        unchanged.
-      </p>
     </section>
 
     <template v-if="params && mode === 'engineering'">
@@ -200,7 +181,7 @@ const showB = ref(false)
       <section v-show="tab === 'parameters'">
         <label class="ab-toggle">
           <input type="checkbox" v-model="showB" />
-          Show config B — the second side of an A/B
+          Config B
         </label>
         <div :class="showB ? 'two-up' : ''">
           <ParametersPanel v-model="configA" :params="params" label="A" />
@@ -243,13 +224,13 @@ const showB = ref(false)
   font-size: 0.8125rem; padding: 0.4rem 1.1rem; cursor: pointer;
 }
 .mode-switch button.on { background: #ec4899; color: #fff; }
-.play-footnote { color: var(--muted); font-size: 0.78rem; margin-top: 3rem; max-width: 80ch; line-height: 1.55; }
-.play-footlink {
-  background: none; border: none; padding: 0; color: #ec4899;
-  font: inherit; cursor: pointer; text-decoration: underline;
+.spend { display: inline-flex; align-items: center; gap: 0.5rem; color: var(--muted); font-size: 0.75rem; }
+.spend-bar { width: 5rem; height: 4px; border-radius: 999px; background: var(--surface-3); overflow: hidden; }
+.spend-bar i { display: block; height: 100%; background: #ec4899; }
+.hdr-chip {
+  font-size: 0.68rem; color: var(--muted); border: 1px solid var(--surface-3);
+  border-radius: 999px; padding: 0.1rem 0.55rem; white-space: nowrap;
 }
-.page-subtitle { color: var(--muted); max-width: 80ch; line-height: 1.55; margin: 0 0 0.5rem; }
-.spend-line { color: var(--muted); font-size: 0.78rem; margin: 0 0 1rem; }
 .tabs {
   display: flex;
   gap: 0.5rem;

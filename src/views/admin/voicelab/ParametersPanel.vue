@@ -138,18 +138,12 @@ function prettyKey (k) {
 <template>
   <div class="vl-panel">
     <h3>Parameters <span v-if="label" class="vl-chip on">{{ label }}</span></h3>
-    <p class="vl-note">
-      Everything a run may vary. What a provider does not accept is disabled and says so —
-      a slider that changes nothing is worse than no slider.
-    </p>
-
     <h4>Render</h4>
     <div class="vl-fields">
       <label class="vl-field">Provider
         <select :value="modelValue.provider" @change="onProvider($event.target.value)">
           <option v-for="p in params.providers" :key="p.id" :value="p.id">{{ p.name || p.id }}</option>
         </select>
-        <span v-if="provider.note" class="vl-why">{{ provider.note }}</span>
       </label>
 
       <label class="vl-field">Language
@@ -158,7 +152,7 @@ function prettyKey (k) {
             {{ l.name }} ({{ l.code }})
           </option>
         </select>
-        <span class="vl-why">Steered as <code>{{ language?.steer || '—' }}</code>.</span>
+        <span class="vl-why">steered as <code>{{ language?.steer || '—' }}</code></span>
       </label>
 
       <label class="vl-field">Voice
@@ -169,9 +163,7 @@ function prettyKey (k) {
             </option>
           </optgroup>
         </select>
-        <span v-if="!voiceGroups.length" class="vl-why vl-warn">
-          No {{ modelValue.provider }} voice listed for this language.
-        </span>
+        <span v-if="!voiceGroups.length" class="vl-why vl-warn">no {{ modelValue.provider }} voice here</span>
       </label>
 
       <label class="vl-field">Speed
@@ -181,9 +173,7 @@ function prettyKey (k) {
           :value="modelValue.speed"
           @input="set('speed', Number($event.target.value))"
         />
-        <span v-if="!supports.speed" class="vl-why vl-warn">
-          {{ provider.speedNote || `${provider.name || modelValue.provider} exposes no speed parameter — this would be ignored.` }}
-        </span>
+        <span v-if="!supports.speed" class="vl-why vl-warn">not on {{ provider.name || modelValue.provider }}</span>
       </label>
 
       <label class="vl-field">Style
@@ -193,7 +183,7 @@ function prettyKey (k) {
           :value="modelValue.style || ''"
           @input="set('style', $event.target.value || null)"
         />
-        <span v-if="!supports.style" class="vl-why vl-warn">No style parameter on this provider.</span>
+        <span v-if="!supports.style" class="vl-why vl-warn">not on this provider</span>
       </label>
 
       <label class="vl-field">Style degree
@@ -234,11 +224,6 @@ function prettyKey (k) {
     </div>
 
     <h4>Gate thresholds</h4>
-    <p class="vl-note">
-      The six gates that decide whether a clip would be admitted to the store, judged on the
-      MASTERED bytes — the same bytes a learner would get. Every number below is the backend's
-      own default until you change it; nothing here is hardcoded in the browser.
-    </p>
 
     <div v-for="g in thresholdGates" :key="g.group" class="vl-threshold-gate">
       <div class="vl-gate-title">{{ g.title }}</div>
@@ -266,8 +251,7 @@ function prettyKey (k) {
             :value="f.value ?? ''"
             @input="setThreshold(g.group, f.key, $event.target.value)"
           />
-          <span v-if="f.readOnly" class="vl-why vl-warn">read-only — the gate stack does not read this, so moving it would change nothing</span>
-          <span v-else-if="f.why" class="vl-why">{{ f.why }}</span>
+          <span v-if="f.readOnly" class="vl-why vl-warn">read-only</span>
         </label>
       </div>
     </div>

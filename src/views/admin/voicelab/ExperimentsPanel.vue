@@ -106,11 +106,6 @@ function summarise (e) {
         <h3>Experiments</h3>
         <button class="vl-btn" :disabled="loading" @click="load">{{ loading ? 'Loading…' : 'Refresh' }}</button>
       </div>
-      <p class="vl-note">
-        Every run this lab has ever done, newest first — config, sentences, clips and gate
-        verdicts, kept together. Open one, put a second beside it, or re-run it against the
-        same sentences.
-      </p>
       <p v-if="error" class="vl-err">{{ error }}</p>
 
       <table v-if="experiments.length" class="vl-grid">
@@ -138,16 +133,12 @@ function summarise (e) {
           </tr>
         </tbody>
       </table>
-      <p v-else-if="!loading" class="vl-muted">No experiments yet — run one from the Tests tab.</p>
+      <p v-else-if="!loading" class="vl-muted">No experiments yet.</p>
     </div>
 
     <div v-if="exported" class="vl-panel">
       <h3>Exported config <span class="vl-muted">· {{ exportedFor }}</span></h3>
-      <p class="vl-note">
-        Copied to your clipboard. This is an export, not a deploy — the lab never writes
-        <code>algorithm_config</code>, because those writes reach every learner within about
-        five minutes. Apply it deliberately.
-      </p>
+      <p class="vl-note">Copied. Nothing is deployed from here.</p>
       <textarea class="vl-json" rows="16" readonly :value="exported"></textarea>
     </div>
 

@@ -222,7 +222,7 @@ function unrenderableReasons (lang) {
     const reason = why[v] || 'this box has no provider for it'
     counts.set(reason, (counts.get(reason) || 0) + 1)
   }
-  return [...counts.entries()].map(([reason, n]) => `${n} · ${reason}`)
+  return [...counts.entries()].map(([reason]) => reason)
 }
 
 function samplesFor (lang) { return (samplesByLang.value[lang.code] || {}).samples || {} }
@@ -319,7 +319,6 @@ const speakerClips = ref([])
 const clipsBusy = ref(false)
 const pickedKeys = ref([])
 const sampleGuidance = ref(null)
-const identityWarning = ref('')
 
 async function loadSpeakers () {
   speakersBusy.value = true
@@ -350,7 +349,6 @@ async function chooseSpeaker (sp) {
     // clones best from ONE continuous take, so the clip most worth hearing is
     // at the top rather than under two hundred short drill lines.
     speakerClips.value = out.clips || []
-    identityWarning.value = out.identityWarning || ''
     if (out.guidance) sampleGuidance.value = out.guidance
     if (!cloneLang.value) cloneLang.value = sp.language
   } catch (e) { speakersError.value = e.message }
@@ -855,7 +853,13 @@ const providerChips = computed(() => {
   if (!totals.length) return []
   return [
     { value: 'all', label: 'Any provider', count: null },
-    ...totals.map((t) => ({ value: t.provider, label: providerLabel(t.provider), count: t.courses })),
+    // xAI is being retired, so its chip carries that where its count already
+    // is — the fact belongs to the provider, not to a paragraph above the table.
+    ...totals.map((t) => ({
+      value: t.provider,
+      label: providerLabel(t.provider) + (t.provider === 'xai' ? ' · retiring' : ''),
+      count: t.courses,
+    })),
   ]
 })
 
@@ -1114,27 +1118,6 @@ function candidatesFor (lang, slot) {
 
 <template>
   <div class="vl-langs">
-    <!-- The page subtitle above already says what this screen is and that
-         casting writes nothing else. One line here, and it is the one fact the
-         subtitle does not carry: where the rows come from. -->
-    <p class="vl-intro">
-      One row per language, read live from <code>courses</code>, <code>voices</code> and the same
-      provider policy the render path uses. <strong>In use now</strong> is what each language's
-      courses actually store in their own <code>voice_config</code>; <strong>if re-rendered</strong>
-      is what a new render would pick, which is a different question.
-    </p>
-
-    <!-- The one number this rework exists to surface. xAI is being deprecated
-         and this says, in courses, how much of the estate is standing on it. -->
-    <p v-if="summary?.xaiCourses" class="vl-xai-line">
-      <strong>{{ summary.xaiCourses }} course{{ summary.xaiCourses === 1 ? '' : 's' }}</strong>
-      across {{ summary.xaiLanguages }} language{{ summary.xaiLanguages === 1 ? '' : 's' }}
-      are configured on <strong>xAI</strong> right now
-      ({{ summary.xaiRoles }} voice slot{{ summary.xaiRoles === 1 ? '' : 's' }}), the provider being
-      deprecated. Voice configuration is a per-course call for whoever builds the course — this
-      screen shows the situation and changes nothing.
-    </p>
-
     <!-- MAKE A VOICE — moved to the top of this panel 2026-08-30. It was at the
          bottom, below every language in the estate, which on a phone is several
          screens of scrolling past a table you did not come for. Tom's ask was
@@ -1146,22 +1129,7 @@ function candidatesFor (lang, slot) {
       </button>
 
       <div v-if="showClone" class="vl-clone-body">
-        <p class="vl-muted">
-          <strong>Clone from a recording we already hold</strong> — pick the speaker, listen to
-          their clips, tick the one you want. Uploading a file or recording here still works and
-          is what you use for somebody we hold no audio of.
-          These are Cartesia's <strong>instant</strong> clones; the fine-tuned product is a
-          different thing and is not reachable from here. The voice is registered straight away,
-          so it is castable in the table below the moment it exists. Cloning itself
-          <strong>renders no audio</strong>: hearing it is the separate press underneath, capped
-          at three clips and counted against the lab's daily ceiling.
-          Cartesia cannot clone a language it does not support, so Welsh, Breton and Cornish are
-          refused with a message rather than a failure — Welsh stays human-recorded by standing
-          rule, and nothing here writes, moves or replaces a single existing recording.
-        </p>
-        <p v-if="sampleGuidance" class="vl-guidance">
-          <strong>{{ sampleGuidance.headline }}</strong> {{ sampleGuidance.detail }}
-        </p>
+        <p v-if="sampleGuidance" class="vl-guidance">{{ sampleGuidance.headline }}</p>
 
         <!-- WHOSE VOICE IS THIS. Required before Cartesia is called at all.
              Consent itself is Tom's to obtain afterwards; a name is what makes
@@ -1173,11 +1141,7 @@ function candidatesFor (lang, slot) {
         </div>
         <div class="vl-clone-row vl-consent-row">
           <input v-model="cloneConsentNote" class="ui-field vl-wide" placeholder="anything to note about permission (optional)" />
-          <span class="vl-muted">
-            The new voice is born <strong>awaiting authorisation</strong> and says so everywhere it
-            appears. A recording existing is not permission to clone the person who made it —
-            ask them, then record their answer on the voice.
-          </span>
+          <span class="vl-muted">born awaiting authorisation</span>
         </div>
 
         <div class="vl-clone-row">
@@ -1232,7 +1196,7 @@ function candidatesFor (lang, slot) {
             <button class="vl-btn" :disabled="speakersBusy" @click="loadSpeakers">
               {{ speakersBusy ? 'Looking…' : 'Find speakers we hold' }}
             </button>
-            <span class="vl-muted">reads the archive — spends nothing.</span>
+            <span class="vl-muted">free</span>
           </div>
           <p v-if="speakersError" class="vl-error">{{ speakersError }}</p>
 
@@ -1249,9 +1213,7 @@ function candidatesFor (lang, slot) {
           </div>
 
           <template v-if="chosenSpeaker">
-            <p class="vl-warn-line">
-              <strong>Listen before you clone.</strong> {{ identityWarning }}
-            </p>
+            <p class="vl-warn-line"><strong>Listen before you clone</strong> — an origin label is not proof.</p>
             <p v-if="clipsBusy" class="vl-muted">Reading the archive…</p>
             <div v-else class="vl-clips">
               <!-- ONE ROW PER RECORDING: hear the original, then clone from
@@ -1286,11 +1248,7 @@ function candidatesFor (lang, slot) {
                       {{ k.stage === 'cloning' ? 'Cloning from this recording' : 'Hearing it back' }}
                       — {{ k.seconds }}s
                     </span>
-                    <span class="vl-muted">
-                      six to thirteen seconds, longer sources taking longer.
-                      <strong>Play the original above while it builds</strong> — a 44-second
-                      welcome covers the whole wait.
-                    </span>
+
                   </template>
                   <template v-else-if="k.stage === 'failed'">
                     <span class="vl-made-spin">✕</span>
@@ -1319,19 +1277,13 @@ function candidatesFor (lang, slot) {
 
         <div v-else-if="cloneSource === 'upload'" class="vl-clone-row">
           <input type="file" accept="audio/*" class="ui-field" @change="pickFile" />
-          <span class="vl-muted">
-            One continuous take, 20&ndash;60 seconds. Ten seconds is the floor. Clean room, no
-            background noise, no long pauses &mdash; pauses come back out in the clone.
-          </span>
+          <span class="vl-muted">one take, 20&ndash;60s, no long pauses</span>
         </div>
 
         <div v-else-if="cloneSource === 'record'" class="vl-clone-row vl-record-row">
           <button v-if="!recording" class="vl-btn" @click="startRecording">● Record</button>
           <button v-else class="vl-btn vl-recording" @click="stopRecording">■ Stop — {{ recordSeconds }}s</button>
-          <span v-if="recording" class="vl-muted">
-            One continuous take &mdash; talk normally, the way you want to sound, and don't leave
-            long pauses: pauses come back out in the clone. Stops itself at 60s.
-          </span>
+          <span v-if="recording" class="vl-muted">one take, no long pauses &mdash; stops at 60s</span>
           <template v-if="recordedUrl">
             <audio :src="recordedUrl" controls class="vl-record-audio" />
             <span class="vl-muted">{{ recordHint }}</span>
@@ -1355,8 +1307,6 @@ function candidatesFor (lang, slot) {
         <div v-if="clones.length" class="vl-clone-done">
           <p class="vl-ok">
             <strong>{{ clones.length }} clone{{ clones.length === 1 ? '' : 's' }} made here</strong>
-            — each one from a different recording, all saying the same line, so the source is the
-            only thing that changed. Nothing is authorised: they are all awaiting a yes.
           </p>
           <div v-for="k in clones" :key="`all-${k.id}`" class="vl-made vl-made-summary" :class="`is-${k.stage}`">
             <span class="vl-made-name">{{ k.voice?.display_name || 'building…' }}</span>
@@ -1376,10 +1326,7 @@ function candidatesFor (lang, slot) {
             <button v-if="k.voice" class="ui-sort-btn" @click="openConsent(k.voice.voice_id, k.consent)">consent…</button>
             <button v-if="k.voice" class="ui-sort-btn" @click="discard(k)">discard</button>
           </div>
-          <p class="vl-muted">
-            Every clone is castable in the table below and appears in the Play menu straight away.
-            Discarding one deletes it at Cartesia and in the estate's voice list.
-          </p>
+
         </div>
       </div>
     </section>
@@ -1438,7 +1385,10 @@ function candidatesFor (lang, slot) {
 
       <button class="ui-sort-btn" :disabled="loading" @click="load">↻ Refresh</button>
 
-      <span class="ui-count">{{ rows.length }} of {{ summary?.languages ?? 0 }} languages</span>
+      <span class="ui-count">
+        {{ rows.length }} of {{ summary?.languages ?? 0 }} languages<span
+          v-if="summary?.noBackup"> · {{ summary.noBackup }} with no fallback</span>
+      </span>
     </div>
 
     <!-- Same idea as the status row: the count and the way to act on it are one
@@ -1455,12 +1405,6 @@ function candidatesFor (lang, slot) {
         {{ p.label }}<span v-if="p.count !== null" class="chip-no">{{ p.count }}</span>
       </button>
     </div>
-
-    <p v-if="summary" class="vl-tail vl-muted">
-      Complete means {{ summary.requiredPerLanguage }} voices — one male, one female. Backups are
-      insurance, not required<span v-if="summary.noBackup">, and {{ summary.noBackup }} complete
-      language{{ summary.noBackup === 1 ? ' has' : 's have' }} none</span>.
-    </p>
 
     <p v-if="error" class="vl-error">{{ error }}</p>
     <p v-if="loading" class="vl-muted">Reading the estate…</p>
@@ -1542,10 +1486,7 @@ function candidatesFor (lang, slot) {
                 <div class="vl-detail-head">
                   <span class="vl-detail-name">{{ langName(lang) }}</span>
                   <span class="vl-code">{{ lang.code }}</span>
-                  <span v-if="lang.dialectOf" class="vl-muted">
-                    its own language for casting — a voice cast on
-                    {{ langName(lang.dialectOf) }} ({{ lang.dialectOf }}) does NOT reach these courses
-                  </span>
+                  <span v-if="lang.dialectOf" class="ui-pill ui-hue-quiet">own cast · not {{ lang.dialectOf }}</span>
                   <span class="ui-pill" :class="hueFor(lang.status)">{{ statusLabel(lang.status) }}</span>
                   <span class="vl-muted">{{ lang.courses }} course{{ lang.courses === 1 ? '' : 's' }}</span>
                   <!-- WHAT 1.00x MEANS IN THIS LANGUAGE. Every voice below is a
@@ -1566,20 +1507,9 @@ function candidatesFor (lang, slot) {
                   <button class="ui-sort-btn vl-detail-close" @click="toggleLanguage(lang)">Hide</button>
                 </div>
 
-                <p v-if="lang.knownOnly" class="vl-note">
-                  <strong>No course teaches {{ langName(lang) }}</strong> — it is only ever the
-                  known side, so it has no phrase-voice worklist. It is on this screen so its
-                  <strong>guide voice</strong> can be cast: its learners hear instructions today.
-                </p>
-                <p v-else-if="lang.human" class="vl-note">
-                  <strong>{{ langName(lang) }} is human-recorded only.</strong> A human recording wins
-                  wherever it exists, so empty slots here are a recording worklist for its
-                  recordists, not a casting gap. No TTS provider may ever be selected for it.
-                </p>
-                <p v-else-if="!lang.cartesiaCovers" class="vl-note">
-                  Cartesia does not publish <strong>{{ langName(lang) }}</strong>, so a new render falls to
-                  Azure. That is covered, just not by the default provider.
-                </p>
+                <p v-if="lang.knownOnly" class="vl-note vl-muted">Known side only — guide voice, no phrase voices.</p>
+                <p v-else-if="lang.human" class="vl-note vl-muted">Human-recorded — no TTS provider.</p>
+                <p v-else-if="!lang.cartesiaCovers" class="vl-note vl-muted">No Cartesia — a new render falls to Azure.</p>
 
                 <!-- ── WHAT A CAST HERE WILL NOT SPEAK OVER ─────────────────
                      Tom's ruling, 2026-08-31: name the human-recorded courses
@@ -1591,14 +1521,9 @@ function candidatesFor (lang, slot) {
                   class="vl-note vl-note-human"
                 >
                   <strong v-if="lang.humanRecorded && lang.humanRecorded.blocked">
-                    Every course this cast could reach is human-recorded, so casting is refused here.
+                    Casting refused — every course here is human-recorded:
                   </strong>
-                  <strong v-else>
-                    Some courses in {{ langName(lang.code) }} are human-recorded, and a cast will not reach them.
-                  </strong>
-                  Real recordings win wherever they exist, and the recording pipeline resolves a slot from
-                  each course's own stored voice config — so a language cast is left out of these
-                  deliberately rather than silently:
+                  <strong v-else>Human-recorded, a cast will not reach:</strong>
                   <span
                     v-for="c in [...humanOf(lang, 'phrase').courses, ...humanOf(lang, 'guide').courses]"
                     :key="c.course + c.roles.join()"
@@ -1611,8 +1536,7 @@ function candidatesFor (lang, slot) {
                      answer, kept after the reload, so "saved" never stands on
                      its own when it did not reach everything. -->
                 <p v-if="(skipped[lang.code] || []).length" class="vl-note vl-note-human">
-                  <strong>Cast saved, and skipped {{ skipped[lang.code].length }} human-recorded
-                  course{{ skipped[lang.code].length === 1 ? '' : 's' }}:</strong>
+                  <strong>Saved · skipped {{ skipped[lang.code].length }} human-recorded:</strong>
                   <span
                     v-for="c in skipped[lang.code]"
                     :key="'skip:' + c.course + c.roles.join()"
@@ -1628,24 +1552,18 @@ function candidatesFor (lang, slot) {
                      below says out loud that casting decides who speaks and not
                      what is said. -->
                 <div class="vl-sample-line">
-                  <p class="vl-cast-meaning">
-                    Casting decides <strong>who speaks</strong> — every course that teaches
-                    {{ langName(lang) }} will generate in this voice, with nothing else to do
-                    anywhere. <strong>What is said</strong> stays each course's own.
-                  </p>
-
                   <template v-if="lineFor(lang)">
                     <p class="vl-line-text" :lang="lang.code">{{ lineFor(lang).text }}</p>
                     <p class="vl-line-meta">
                       <span v-if="lineFor(lang).knownText" class="vl-line-known">{{ lineFor(lang).knownText }}</span>
-                      <span class="vl-muted">from <code>{{ lineFor(lang).course || 'the estate' }}</code>{{ lineFor(lang).kind === 'instruction' ? ' — an instruction line, because no course teaches this language' : '' }}</span>
+                      <span class="vl-muted">from <code>{{ lineFor(lang).course || 'the estate' }}</code>{{ lineFor(lang).kind === 'instruction' ? ' · instruction line' : '' }}</span>
                     </p>
                   </template>
                   <p v-else-if="samplesBusy === lang.code" class="vl-muted">finding a real line…</p>
                   <p v-else-if="samplesByLang[lang.code] && samplesByLang[lang.code].error" class="vl-muted">
-                    Samples unavailable: {{ samplesByLang[lang.code].error }} — casting still works.
+                    No samples: {{ samplesByLang[lang.code].error }}
                   </p>
-                  <p v-else class="vl-muted">No course line found for this language, so voices cannot be auditioned here.</p>
+                  <p v-else class="vl-muted">No course line here — nothing to audition.</p>
 
                   <!-- GENERATE PREVIEW CLIPS — one tap on the language, every
                        voice above, the SAME line for all of them. The only
@@ -1658,20 +1576,14 @@ function candidatesFor (lang, slot) {
                       @click="generatePreviews(lang)"
                     >{{ samplesBusy === lang.code ? 'Generating…' : 'Generate preview clips' }}</button>
                     <span v-if="previewRun && previewRun.code === lang.code" class="vl-muted">
-                      {{ previewRun.done }} of {{ previewRun.total }} rendered — each one is playable
-                      the moment it lands, so you can start listening now.
+                      {{ previewRun.done }} of {{ previewRun.total }} rendered
                     </span>
                     <span v-else class="vl-muted">
-                      {{ previewPlan(lang).n }} voice{{ previewPlan(lang).n === 1 ? '' : 's' }}
-                      here {{ previewPlan(lang).n === 1 ? 'has' : 'have' }} never said this line.
-                      One tap renders {{ previewPlan(lang).n === 1 ? 'it' : 'them all' }} on the
-                      <strong>same line</strong> — {{ previewPlan(lang).n }} call{{ previewPlan(lang).n === 1 ? '' : 's' }},
-                      {{ previewPlan(lang).chars }} characters of the lab's daily allowance.
-                      Everything already rendered is cached and free to replay.
+                      {{ previewPlan(lang).n }} unheard · {{ previewPlan(lang).chars }} chars
                     </span>
                   </p>
                   <p v-else-if="lineFor(lang) && Object.keys(samplesFor(lang)).length" class="vl-muted vl-prepare">
-                    Every voice here has a clip of this line — replaying costs nothing.
+                    Every voice has this line · free to replay
                     <button
                       class="vl-regenerate"
                       :disabled="samplesBusy === lang.code"
@@ -1680,17 +1592,17 @@ function candidatesFor (lang, slot) {
                     <span v-if="previewRun && previewRun.code === lang.code">
                       — {{ previewRun.done }} of {{ previewRun.total }}
                     </span>
-                    <span v-else>— spends {{ previewPlan(lang, true).chars }} characters again.</span>
+                    <span v-else>· {{ previewPlan(lang, true).chars }} chars</span>
                   </p>
                   <p v-if="samplesByLang[lang.code] && samplesByLang[lang.code].unrenderable?.length" class="vl-muted vl-prepare">
-                    {{ samplesByLang[lang.code].unrenderable.length }} can be cast but not previewed here,
-                    and why: {{ unrenderableReasons(lang).join(' · ') }}.
+                    {{ samplesByLang[lang.code].unrenderable.length }} castable, not previewable —
+                    {{ unrenderableReasons(lang).join(' · ') }}
                   </p>
                 </div>
 
                 <!-- PHRASE VOICES — the course material. These are the two
                      that make a language complete. -->
-                <p class="vl-slot-group">Phrase voices — the course material</p>
+                <p class="vl-slot-group">Phrase voices</p>
                 <div class="vl-slots">
                   <div v-for="slot in slotsOf(lang)" :key="slotKey(lang, slot)" class="vl-slot">
                     <div class="vl-slot-label">
@@ -1755,9 +1667,7 @@ function candidatesFor (lang, slot) {
                            list is replaced by the reason — not left tappable
                            with a 409 waiting behind it (Tom, 2026-08-31). -->
                       <p v-if="humanBlocks(lang, 'phrase')" class="vl-muted vl-slot-refused">
-                        Not castable — {{ langName(lang.code) }} is human-recorded.
-                        {{ humanCourseList(lang) }} hold real recordings, and their gaps are a
-                        recording worklist, not a casting gap.
+                        Not castable — human-recorded.
                       </p>
                       <CandidateVoices
                         v-else
@@ -1783,17 +1693,11 @@ function candidatesFor (lang, slot) {
                      KNOWN language, one voice not a pair, and NEVER counted
                      toward the status above. -->
                 <p class="vl-slot-group vl-guide-group">
-                  Guide voice — instructions and encouragements
+                  Guide voice — instructions
                   <span class="vl-muted vl-guide-sub">
-                    spoken to the learner, not course material. Cast against
-                    <strong>{{ langName(lang) }}</strong> as a KNOWN language, so one cast serves
-                    <template v-if="lang.knownCourses">
-                      all {{ lang.knownCourses }} course{{ lang.knownCourses === 1 ? '' : 's' }} taught from it.
-                    </template>
-                    <template v-else>
-                      any course taught from it — no course uses it as a known language today.
-                    </template>
-                    It never counts toward the status above.
+                    <template v-if="lang.knownCourses">{{ lang.knownCourses }} course{{ lang.knownCourses === 1 ? '' : 's' }} taught from {{ langName(lang) }}</template>
+                    <template v-else>no course is taught from {{ langName(lang) }} yet</template>
+                    · not counted above
                   </span>
                 </p>
 
@@ -1802,7 +1706,6 @@ function candidatesFor (lang, slot) {
                   <span v-for="u in lang.guide.inUse" :key="u.voiceId" class="ui-pill" :class="u.human ? 'ui-hue-info' : 'ui-hue-good'">
                     {{ u.name }} · {{ u.clips }} clip{{ u.clips === 1 ? '' : 's' }}
                   </span>
-                  <span class="vl-muted"> — measured from the clips that exist, not from any config.</span>
                 </p>
 
                 <div class="vl-slots">
@@ -1888,10 +1791,6 @@ function candidatesFor (lang, slot) {
       </table>
     </div>
 
-
-    <div v-if="data?.notes" class="vl-notes">
-      <p v-for="(text, key) in data.notes" :key="key" class="vl-muted">{{ text }}</p>
-    </div>
   </div>
 </template>
 
@@ -1900,14 +1799,9 @@ function candidatesFor (lang, slot) {
    come from `src/assets/ui-tokens.css` — the same file the Course Library reads
    from, so this screen and that one are one product rather than two that nearly
    match. What is left here is only what is particular to a language row. */
-.vl-intro { max-width: 60rem; margin: 0 0 1rem; color: var(--muted); font-size: 0.8125rem; }
 .vl-search { margin-bottom: .75rem; }
 .vl-filters { margin-bottom: .5rem; }
 .chip-no { margin-left: .35rem; opacity: .75; font-variant-numeric: tabular-nums; }
-.vl-tail { font-size: .75rem; margin: 0 0 1rem; max-width: 70ch; color: var(--muted); }
-
-.vl-xai-line { max-width: 70ch; margin: 0 0 1rem; font-size: .8125rem; padding: .5rem .7rem;
-  border: 1px solid var(--danger); border-radius: .5rem; background: var(--surface-2); }
 
 /* The words first, the code beside them. Both, always: the name is what a
    person reads, the code is what everything else in the estate is keyed on. */
@@ -1994,7 +1888,11 @@ function candidatesFor (lang, slot) {
 }
 .vl-human-course { margin: .15rem .25rem 0 0; display: inline-block; font-size: .6875rem; }
 .vl-slot-refused { margin: 0; line-height: 1.45; }
-.vl-slots { display: grid; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); gap: .6rem; }
+/* Two columns, not four: at four the phrase slots squeezed every candidate's
+   NAME to nothing — the one thing a cast is chosen by. Fixed at two so the
+   male/female pair reads as a 2x2 rather than three and an orphan. */
+.vl-slots { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .6rem; }
+@media (max-width: 900px) { .vl-slots { grid-template-columns: minmax(0, 1fr); } }
 .vl-slot { border: 1px solid var(--line); border-radius: .5rem; padding: .5rem; background: var(--surface); }
 .vl-slot-group { font-size: .75rem; text-transform: uppercase; letter-spacing: .05em;
   color: var(--faint); margin: .5rem 0 .4rem; }
@@ -2014,7 +1912,6 @@ function candidatesFor (lang, slot) {
 
 .vl-sample-line { margin: .9rem 0 .2rem; padding: .6rem .8rem; border-radius: 8px;
                   background: var(--surface-2, rgba(127,127,127,.07)); }
-.vl-cast-meaning { margin: 0 0 .5rem; font-size: .8125rem; }
 .vl-line-text { margin: 0; font-size: 1.0625rem; font-weight: 600; }
 .vl-line-meta { margin: .15rem 0 0; font-size: .8125rem; display: flex; flex-wrap: wrap; gap: .6rem; }
 .vl-line-known { opacity: .75; }
@@ -2044,7 +1941,6 @@ function candidatesFor (lang, slot) {
 .vl-kind { font-size: .75rem; color: var(--muted); }
 .vl-muted { color: var(--muted); }
 .vl-error { color: var(--danger); }
-.vl-notes { margin-top: 1.25rem; display: grid; gap: .35rem; font-size: .75rem; }
 .vl-clone { margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid var(--line); }
 /* .vl-btn carried no style at all until 2026-08-30, so every control on the
    clone form drew as bare text — a button nobody can see is a button nobody

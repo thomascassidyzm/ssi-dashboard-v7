@@ -121,11 +121,7 @@ const byConfig = computed(() => {
       <button class="vl-btn" @click="revealed = !revealed">
         {{ revealed ? 'Hide the labels again' : 'Reveal which is which' }}
       </button>
-      <span class="vl-muted">
-        {{ revealed
-          ? 'Labels shown — A and B are named against their configs.'
-          : 'Blind: listen and decide first. A label is a thumb on the scale.' }}
-      </span>
+      <span class="vl-muted">{{ revealed ? 'Labels shown.' : 'Blind — listen and decide first.' }}</span>
     </div>
 
     <!-- Scoreboard: how each config did across the whole run -->
@@ -210,7 +206,7 @@ const byConfig = computed(() => {
     </table>
 
     <p v-if="experiment.caveats?.length" class="vl-caveats">
-      Caveats carried with this run: {{ experiment.caveats.join(' · ') }}
+      {{ experiment.caveats.join(' · ') }}
     </p>
   </div>
 </template>
