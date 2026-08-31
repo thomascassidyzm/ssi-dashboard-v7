@@ -1431,4 +1431,77 @@ Cut: `ring away` **(new)** · `that's what it's for` **(new)** · `I'd rather te
 - BUILD: "than one big thing we missed, see" · "than one big thing we missed later" · "rather that than one big thing we missed" · "and never one big thing we missed"
 - USE: "Better ten small things than one big thing we missed." · "I'd rather ten small things than one big thing we missed." · "Ten small things are better than one big thing we missed." · "I'd rather anything than one big thing we missed." · "We'd all rather ten small things than one big thing we missed."
 
-**Where the basket work stops: it does not stop short — all 57 seeds, HG01 through HG57, carry complete phrase-minimum cuts and full baskets at the floors.** The depth-before-breadth ruling was applied in earnest: quality was reassessed at the end of each block, and it held — partly because the owned inventory compounds, so later baskets got richer, not thinner. The count: **57 seeds, 132 new LEGOs, 528 BUILD and 660 USE phrases** at exactly the floors, plus the floors' worth wherever a lego wanted more.
+**Where the basket work stops: it does not stop short — all 57 seeds, HG01 through HG57, carry complete phrase-minimum cuts and full baskets at the floors.** The depth-before-breadth ruling was applied in earnest: quality was reassessed at the end of each block, and it held — partly because the owned inventory compounds, so later baskets got richer, not thinner. The count, verified mechanically against the document itself: **57 seeds, 159 new LEGOs, 636 BUILD and 795 USE phrases** — every lego at the floors exactly, 4 and 5.
+
+---
+
+## 6. Decisions taken — one line each, each overrulable in one word
+
+1. **Deictic language names** in HG02/HG03 ("this isn't my first language", "someone who speaks it more confidently"), following scene 0's ratified convention, so the canonical set instantiates in any pair without a template slot.
+2. **Role-word swap applied once:** #37/#43's "one of the nurses" is covered by the role-free #49 form; no seed asserts a role.
+3. **One canonical seed per act:** near-duplicate turns consolidate under ZUT (one production form per intention); every covered turn is named in the ledger.
+4. **Backchannel heads trimmed** ("Perfect.", "Grand.", "Good.", "Thank you.", "Ah, it flies by.", "A good name to remember, then.") where they answer the patient's prior turn rather than carry the act — stated per seed.
+5. **Two rider merges, both stated in place:** #67's "day or night" folded into HG24; #173+#177 merged into HG49 with "I won't let go of you" standardised as the one form.
+6. **#245 split into two seeds** (HG07 the disclaimer response, HG13 the service opener) — two acts, two intentions.
+7. **Anchor at the earliest position:** scene-0-complete plus the Appendix A inventory; each pair overlay binds it to the earliest base-course lego id that dominates the inventory, and authors any shortfall in-segment as `is_new = true`.
+8. **Baskets for new LEGOs only** — owned chunks enter `is_new = false`, no round, per the helix mechanics; basketing them would author overdrill.
+9. **English-side recombination flex:** baskets may recombine transparent owned material ("press" + "the bell" → "press the bell"); the pair overlay re-verifies tiling in target and substitutes the nearest tileable form where target morphology resists.
+10. **"Every step" restored** inside an HG49 USE phrase rather than minted as a seed — it is a one-word act with no independent job.
+11. **Both visiting forms kept** (HG27 "visiting's two till eight", HG54 "visiting runs till eight") — different knowns, no production fork; same reasoning for HG25 "that's what the bell's for" beside HG57 "that's what it's for".
+12. **The drip is never named in production** — the corpus keeps "drip" in the patient's mouth and the worker says "it" (HG37); preserved deliberately as register truth.
+13. **No JSON companion authored** — the document is the canonical artefact; the structured form falls out mechanically at segment registration, and authoring it now would freeze a schema the helix registry owns.
+
+## 7. Explicit gaps
+
+- **Aran's clinical caveat stands untouched:** the pain-scale wording, the obs narration and the blood-pressure figures want a pass from a practising clinician before anything ships. Nothing in the general walk touches nil-by-mouth or safety-netting thresholds.
+- **The four exclusions (#71, #159, #161, #171) are scope-of-practice judgements**, made in the role map's own frame and landing on its own count — but the finest line (#81 kept as procedural reassurance, #171 dropped as clinical interpretation) is exactly the kind of call Aran or a clinician may overturn.
+- **Scene-0 ownership citations track job #490's surfaces** as authored at `feat/core-scene-0-2026-08-31`; if those surfaces change, the "(scene 0)" strings in §4–§5 follow them.
+- **Appendix A is normative, not descriptive:** it was checked against no live course, by design — the canonical set is pair-unbound, and the inventory is the anchor's contract, not a claim about any base course's current state.
+
+## Appendix A — the assumed-ownership inventory (the anchor's binding contract)
+
+The union of every "(core)" and "(scene 0)" citation in §4 and §5. A pair overlay binds the
+segment's anchor to the earliest base-course position that dominates this list; anything not
+owned there is authored in-segment as `is_new = true`.
+
+**From scene 0 (W1201–W1204, cited by step):** the offer shape (W1201.1, including "before we
+start", "if we get stuck" / "if I get properly stuck", "if that's all right"); "stop me",
+"I'd rather be stopped", "I'll do the same if I lose you" (W1201.3); the yield-and-ratify
+"Of course. Yours it is — no trouble at all." (W1202.3); "another day, then" (W1202.5);
+"on my own, mostly — a bit every day for about a year", "I still get most of it wrong"
+(W1204.3); the self-initiated pivot "right — the reason I came" (W1204.5 / W1201.5).
+
+**Core everyday glue and frames, as strings:** "hello" · "good morning" · "my name's …" ·
+"what's your name" · "of course" · "thank you" · "thank you for telling me" · "don't worry" ·
+"look" · "right" · "right then" · "so" · "then" · "but" · "and" · "first" · "just" ·
+"any time" · "at all" · "not at all" · "no problem" · "no trouble" · "I'm afraid" ·
+"I promise" · "honestly" · "remember" · "hold on" · "come on" · "careful" · "ready" ·
+"anyway" · "I need to" · "I've got" · "I can" · "let me just" · "shall I" · "shall we" ·
+"can you tell me" · "can you … for me" · "what would you like" · "which would you like" ·
+"can I get you anything" · "before I go" · "before we start" · "before they come" ·
+"if that's alright" · "if that's possible" · "if you can" · "if you like" · "if you need
+anything" · "if you're not sure" · "if you're ready" · "if you forget" · "if you're tired" ·
+"take your time" · "no rush" · "well done" · "good question" · "give me a minute" ·
+"it won't take a minute" · "to be safe" · "see how you go" · "that's all" · "that's it" ·
+"whatever it is" · "where were we" · "a hard question" · "you're alright" · "you'll be fine" ·
+"you've done nothing wrong" · "will do you good" · "how about".
+
+**Core time, number and place:** clock times ("half past two", "at two", "at twelve", "till
+eight") · numbers including paired readings' digits · "today" · "tonight" · "yesterday" ·
+"tomorrow" · "this morning" · "this evening" · "this year" · "after lunch" · "after tea" ·
+"after work" · "at night" · "in the mornings" · "later" · "now" · "a minute" · "a second" ·
+"a while" · "in an hour" · "an hour or so" · "a day or two" · "every day" · "all day" ·
+"three years" · "about a year" · "from now on" *(as composition)* · "the whole way" ·
+"at the moment" · "at first" · "at last" · "straight away" · "not long now" · "here" ·
+"there" · "at home" · "this place" · "on the left" · "by the bed" · "next to the bed" ·
+"out of the way" *(spatial glue)* · "the bed" · "the table" · "the light" · "the water" ·
+"the food" · "the weather" · "the people".
+
+**Core comparison and quantity:** "much better" · "better or worse" · "worse than" · "better
+than" · "the same as" · "more slowly" · "a bit more" · "a little" · "a little bit" ·
+"plenty of" · "enough" · "another" · "only" · "everything" · "anything" · "anything else" ·
+"anyone" · "someone" · "nothing big" · "kind" · "fine" · "quiet" · "easy" · "safer" ·
+"a long day" · "a long way from here".
+
+**Core people and daily life:** "family" · "home" · "water" · "lunch" · "sleep" · "a little
+sleep" · "you can rest" · "help" · "she worries" · personal names as slot content.
