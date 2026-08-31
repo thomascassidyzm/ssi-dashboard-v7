@@ -1,6 +1,7 @@
 // services/production-api.cjs
 require('dotenv').config()
 const express = require('express')
+const compression = require('compression')
 const cors = require('cors')
 const path = require('path')
 const fs = require('fs-extra')
@@ -148,6 +149,16 @@ const io = new Server(httpServer, {
     methods: ['GET', 'POST']
   }
 })
+
+// ── GZIP, BECAUSE THE BYTES WERE THE BOTTLENECK (2026-08-31) ────────────────
+// Tom, on the Voice Lab Languages tab: "why is the page load so slow… are we
+// making a bastard shed load of DB queries?" Measured answer: five queries and
+// ~0.5s of them, against 657 KB of uncompressed JSON crossing the Tailscale
+// funnel — 4.1s on a bad hop. That payload gzips to 54 KB, a 12x cut, and the
+// same is true of every other big read this API serves (/api/voicelab/params
+// is 291 KB raw, 55 KB gzipped). One middleware, whole surface, no per-route
+// thought required. Ordered before every route so it wraps them all.
+app.use(compression())
 
 app.use(cors({
   origin: true,

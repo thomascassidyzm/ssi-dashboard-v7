@@ -1182,11 +1182,11 @@ async function removeVoice (voiceId) {
 // `auditionClips` ref went with the single `cloneResult` it belonged to — both
 // were one-at-a-time state on a screen whose whole purpose is now comparison.
 
-async function load () {
+async function load ({ force = false } = {}) {
   loading.value = true
   error.value = ''
   try {
-    data.value = await api.languages()
+    data.value = await api.languages({ force })
   } catch (e) {
     error.value = e.message
   }
@@ -1837,7 +1837,7 @@ function candidatesFor (lang, slot) {
         {{ st.label }}<span v-if="st.count !== null" class="chip-no">{{ st.count }}</span>
       </button>
 
-      <button class="ui-sort-btn" :disabled="loading" @click="load">↻ Refresh</button>
+      <button class="ui-sort-btn" :disabled="loading" @click="load({ force: true })">↻ Refresh</button>
 
       <span class="ui-count">
         {{ rows.length }} of {{ summary?.languages ?? 0 }} languages<span

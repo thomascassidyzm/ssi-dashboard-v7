@@ -154,6 +154,19 @@ function mount (app, deps) {
   }
 
   // ── PARAMETERS ────────────────────────────────────────────────────────────
+  // ── EVERY LAB WRITE FORGETS THE HELD LANGUAGES VIEW ──────────────────────
+  // Casting a slot, clearing one, cloning, registering, recording consent,
+  // nudging a pace — all of them change what /languages answers, and all of
+  // them come through this router. One hook on the method beats remembering to
+  // call invalidate() at eleven call sites and forgetting it at the twelfth.
+  // Fires on the way OUT and only on success: a rejected cast changed nothing.
+  app.use('/api/voicelab', (req, res, next) => {
+    if (req.method !== 'GET' && req.method !== 'OPTIONS') {
+      res.on('finish', () => { if (res.statusCode < 400) registry.invalidate() })
+    }
+    next()
+  })
+
   app.get('/api/voicelab/params', async (req, res) => {
     if (!await requireDashboardUser(req, res)) return
     try {
@@ -175,7 +188,9 @@ function mount (app, deps) {
       // "registered voices only", not break it.
       await params.cartesiaCatalogue()
       const { CARTESIA_CATALOGUE } = params._state()
-      res.json(await registry.build(supabase(), { cartesiaCatalogue: CARTESIA_CATALOGUE }))
+      // Held between loads — see registry.cjs. ?refresh=1 is the Refresh button.
+      const refresh = req.query.refresh === '1' || req.query.refresh === 'true'
+      res.json(await registry.cachedBuild(supabase(), { cartesiaCatalogue: CARTESIA_CATALOGUE, refresh }))
     } catch (err) { fail(res, err, 'languages') }
   })
 

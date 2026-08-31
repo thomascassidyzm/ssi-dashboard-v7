@@ -125,7 +125,9 @@ export const api = {
       ? postForm(`/api/voicelab/voices/${encodeURIComponent(voiceId)}/consent-declaration`, body)
       : call(`/api/voicelab/voices/${encodeURIComponent(voiceId)}/consent-declaration`, { method: 'POST', body }),
 
-  languages: () => call('/api/voicelab/languages'),
+  // The built view is held on the server between loads (registry.cjs). `force`
+  // is what the page's Refresh button sends — the one-click way past a hold.
+  languages: ({ force = false } = {}) => call(`/api/voicelab/languages${force ? '?refresh=1' : ''}`),
   castSlot: (language, body) =>
     call(`/api/voicelab/languages/${encodeURIComponent(language)}/slot`, { method: 'PUT', body }),
   // `slot` is 'phrase' (the male/female course voices — the default) or 'guide'

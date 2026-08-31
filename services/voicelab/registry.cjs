@@ -921,7 +921,51 @@ async function all (db, table, columns) {
   }
 }
 
+// ── THE BUILT VIEW, HELD (Tom's ruling, 2026-08-31) ─────────────────────────
+//
+// "why is the page load so slow when getting all the voice for languages
+// information - this really does NOT change very often". He is right, and the
+// measurement agrees: five queries, ~0.5s, rebuilt in full on every open of a
+// screen whose answer only moves when somebody casts a voice or a course
+// changes. So the whole payload is held in the process and handed back until
+// something makes it wrong.
+//
+// Deliberately NOT a cache layer: one object, one timestamp, one function to
+// forget it. Three things clear it —
+//   1. any write through the lab's own router (see router.cjs's invalidator),
+//   2. the Refresh button already on the page, which sends ?refresh=1,
+//   3. a TTL, as the backstop for changes made OUTSIDE the lab (a course going
+//      live, a voice registered by a tool), which no in-process hook can see.
+// Staleness is therefore bounded by the TTL and escapable in one click, and
+// `builtAt` travels with the payload so the screen can never lie about how old
+// its answer is.
+let CACHE = null
+
+const CACHE_TTL_MS = Number(process.env.VOICELAB_REGISTRY_TTL_MS || 10 * 60 * 1000)
+
+/** Forget the held view. Called by every write path in the lab's router. */
+function invalidate () { CACHE = null }
+
+/**
+ * `build`, but served from the held view when one is fresh.
+ *
+ * @param {object} db
+ * @param {object} [opts]           passed straight to build() on a miss
+ * @param {boolean} [opts.refresh]  force a rebuild (the Refresh button)
+ */
+async function cachedBuild (db, opts = {}) {
+  const { refresh = false, ...buildOpts } = opts
+  const age = CACHE ? Date.now() - CACHE.builtAtMs : Infinity
+  if (!refresh && CACHE && age < CACHE_TTL_MS) {
+    return { ...CACHE.payload, builtAt: CACHE.builtAt, cached: true, ageMs: age }
+  }
+  const payload = await build(db, buildOpts)
+  const now = Date.now()
+  CACHE = { payload, builtAtMs: now, builtAt: new Date(now).toISOString() }
+  return { ...payload, builtAt: CACHE.builtAt, cached: false, ageMs: 0 }
+}
+
 /** The casting slots this registry knows about. 'phrase' is the default in the DB. */
 const SLOTS = Object.freeze(['phrase', 'guide'])
 
-module.exports = { build, paceOf, describeLanguage, providerOfRole, providersInUse, statusFor, rankName, sameLang, voiceKind, castable, cartesiaCandidates, guideCandidates, guideVoicesInUse, REQUIRED_RANKS, COMPLETE_RANKS, GENDERS, SLOTS }
+module.exports = { build, cachedBuild, invalidate, CACHE_TTL_MS, paceOf, describeLanguage, providerOfRole, providersInUse, statusFor, rankName, sameLang, voiceKind, castable, cartesiaCandidates, guideCandidates, guideVoicesInUse, REQUIRED_RANKS, COMPLETE_RANKS, GENDERS, SLOTS }
