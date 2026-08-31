@@ -311,3 +311,182 @@ me about it"), the mutual assessment after a bad service. Listed to say where th
 stretches live: inside the shift's own day, exactly as trades found — the doorstep tea's
 equivalent is the fire-escape cigarette. **Failure branch:** none — rung 0 has no business to
 fail.
+
+---
+
+## 4. The mapping — every encounter, LANDS or MINTS
+
+| Encounter | Primary | Also traversed | Verdict |
+|---|---|---|---|
+| E1 welcome / check-in | N1 + N103 **[health]** + N110 **[health]** | P2 late (the pre-auth), N9 (the walk-in bound: "happy to be out by 10:45?" is grant+limit) | **lands** — N103's revival, see §8 |
+| E2 taking the order | N2 + P1 + N3 + F6 **[store]** | P3 (the order read back), F21 | **lands** — POD-1 from the other chair |
+| E3 recommendation / concierge | N8 + N4 **[store]** | N105 **[health]** (the booking made via the named third party), P3 | **lands** |
+| E4 the allergy | N108 **[health]** | N105 (the kitchen checked), N109 (the guarantee BOUNDED: "I can't promise the fryer"), F103 | **lands** — the sector's highest-stakes walk on entirely existing shapes |
+| E5 check-back and complaint | F401 **[ireland]** + F2 + F6 **[store]** | O1 **[overlay]**, N105 on escalation, the check-back solicit refused as a move (§7) | **lands** |
+| E6 refusing the guest | N401 **[ireland]** | F201 **[overlay]**, the ejection = N401's re-route-to-process position; police as final forum | **lands** — the duty strand whole, on Ireland's mint |
+| E7 narrated intrusion | N102 **[health]**, thin | O101 **[health]** on the halt ("leave the glasses") | **lands** — undergoing on the plate and the room, as trades' property reading predicts |
+| E8 the bill | N2 pos 6–7 + P2 **[store]** | N104 **[health]** thin (the disputed line read against the till roll), F16 | **lands** — P2's fourth sector |
+| E9 the guest's trouble | N12 **[store]** + N105 **[health]** | N109 (the bounded commitment), F101, the closed loop = N110's told-when position | **lands** — N105 the workhorse, as predicted |
+| E10 booking on the phone | N7 **[store]** + N108 + P3 | N110 (the terms signposted), N109 + P2 (the card to secure), F6 (the sister restaurant) | **lands** |
+| E11 occasion disclosure | N204 / O7 **[overlay]** verbatim | the violation-by-fixing = the upgrade; recovery position unchanged | **lands** — O7's fifth corpus |
+| E12 shift handover | N402 **[ireland]** + N4 + P3 **[store]** | F103 saturating; the float = P2 between colleagues | **lands** — the task handed FORWARD, role annotation absorbing the third seat |
+| E13 pre-service briefing | N4 + P5 + P3 **[store]** + N108 **[health]** | one-to-many topology refused as a mint per trades' precedent (§7) | **lands** |
+| E14 the 86 and the pass | F6 **[store]** relayed + N7/F5 (the sequencing negotiation) | the broadcast is walk-level, like trades' "BELOW!"; N15 **[store]** when parked to the manager | **lands** |
+| E15 stop call at the pass | N106 + O101 **[health]** | both seats; the resentment branch survives on N106's withhold-until-certain position | **lands** — Family B's third sector outside clinical |
+| E16 cabin talk | N301–N306, F301–F306 **[tb]**; N5, N11 **[store]** | F11, F18 alive; N17's interruption-and-bank at its richest anywhere | **lands** |
+
+**The distribution — which is the finding.** Sixteen encounters: **eight land primarily on the
+original store, five primarily on health's proposals, three primarily on Ireland's — and NONE
+mints.** Zero nodes, zero moves, zero outcome shapes. Four sectors now sit on the trunk at a
+cost curve of 10 → 2 → 1 → 0. The store's own furniture, walked from the opposite seat, needed
+nothing new — which is what "role assignment is a walk annotation" predicts if it is true, and
+it is the cleanest single confirmation of that rubric line so far.
+
+Store reach: all twelve `pod-0` nodes pick up natural homes, including N5 acquaintance (the
+REGULARS — "you're back! how was the wedding?" is N5 walked across weeks of visits), N6 repair
+(the guest with little English — O3 with the seats reversed: here the LEARNER performs F8's
+reformulation for the struggling other, the first sector where the learner sits on the native
+side of O3), and N10 compliment with a relay twist ("compliments to the chef" — N10 walked
+across two dyads, table-to-server then server-to-pass, composition not novelty). Method-Pod
+nodes: N13 attests ("I don't know if the kitchen can split that — shall I ask?" routing into
+N105), N15 attests (the pass dispute parked to the manager), **N17 finds its richest column
+anywhere** — interruption is the very texture of service ("hold that thought — table 12's up —
+right, where were we"), and the recovery half, unattested in the Method corpus, is walked
+dozens of times a shift. **N16 fails to attest guest-facing** — see §5; it is the mapping's one
+node-death and it is a finding, not a gap.
+
+**The same caveat trades stated, restated:** a DERIVED inventory reaches nodes cheaply — I chose
+the encounters, so "12 of 12 pod-0 nodes given homes" is an expressibility claim, not an
+attestation claim. The honest headline is the mint count: zero.
+
+### 4.1 The moves pass — all twenty families
+
+Hospitality is the second sector (after trades) where **all twenty families attest somewhere**,
+and for the same reason: the working day interleaves rung-0 stretches (the cabin, the
+fire-escape cigarette, the regulars' small talk) with pinned stretches. Within the pinned
+stretches, the deaths land where the stretch rule says they must:
+
+| Move | Guest-facing, in business | Cabin / rung-0 stretches |
+|---|---|---|
+| F1–F10, F12–F14, F16, F17, F19, F21 | yes — F21 is native ("anything else I can get you?"), F2 saturates (the throw-in IS hospitality's register), F14 carries whole stretches, F17 is service courtesy ("we're awful, ordering dessert again" — "not at all") | yes |
+| **F11 And you?** | **dies at the non-returnable elicit** — "table for how many?" cannot be handed back | **alive** — the cabin, and the regulars' "busy tonight?" → "and you, good week?" |
+| **F15 I'm not sure** | **professionally unavailable, converting to N105 with NO time-index** — "I'm not sure" must become "I'll find out for you", because the kitchen is thirty feet away and K1 unlocks on demand. Trades needed a time-index because its K1 was locked behind the boards; hospitality's never is. Ireland's rule, third form. | alive |
+| **F18 That's normal, isn't it?** | **dies at K3** — "that can't be right, can it?" at the bill is answered by the till roll, position 3 changing hands to the record | **alive** — "doubles on a Tuesday, that's the new normal, isn't it?" — "tell me about it" |
+
+The stretch rule — **a family dies exactly where the kind that kills it is pinned, and revives
+the moment it unpins** — takes its fifth corpus without amendment.
+
+---
+
+## 5. The ladder — placement ruled, proxy holding checked, and one node-death at a kind
+
+Using the recorded test throughout: **a position appears, disappears or changes hands — not
+merely gets harder or dearer.**
+
+**K1 — pinned to the worker, SHALLOW.** The worker knows the stock, the kitchen state, the house
+— POD-1's own rung-1 definition, now occupied from the inside. But nothing is hidden behind a
+wall: verification costs a walk to the pass, which is exactly why bare F15 converts to N105
+(§4.1) and why F501 the exhibit finds no work here — the K1-holder collapses the asymmetry by
+CHECKING, not by showing. The guest holds their own share (the allergy, the occasion, the
+constraint), elicited and RECORDED — split, like Ireland's, and the guest's share decides more
+than the customer's did in trades: the allergy re-routes the whole kitchen.
+
+**K2 — the sector variable: formally rotating, POLICY-pinned to the guest.** Run the test on the
+worker's seat: the refusal position is genuinely MISSING from it for almost the whole encounter —
+not dearer, missing. A server facing an unreasonable demand does not refuse; they escalate
+(N105's named third party) or absorb. That is a position held by the world's pinning in every
+sense that matters to the learner, and the pin is *the customer is always right* — a COMMERCIAL
+policy, not a statute. The position reappears in the worker's seat only where a second principal
+overrides the first: the licensing law, the fire capacity, the ID check — and there it arrives
+pre-disowned ("it's my licence, not my choice"), which is why E6 lands so exactly on N401,
+Ireland's counter in an apron. **The customer-is-always-right is not a shape and mints nothing:
+it is K2 pinned by policy, and its effects are all at kind level** — F17-style contest of the
+guest's account is unavailable in complaint stretches, N201's discretionary refusal belongs to
+the house not the worker, and the complaint encounter (E5) runs entirely on repair moves with
+the contest positions deleted from one seat.
+
+**K3 — pinned to the house:** the booking system, the tab, the till roll, the key-card log, the
+ticket rail. Two consequences, both findings. First, **N103 revives** — the desk holds a
+PERSON-file, so the known-answer check ("name on the reservation?") attests strongly, completing
+the Family A dropout pattern at three data points: Ireland lost N102 (no body), trades lost N103
+(no person-file), hospitality holds both possessions thinly-to-strongly and holds both shapes.
+**Family A's membership tracks the sector's possessions, position-perfectly, for the third
+consecutive sector.** Second, **N16 precision-haggle dies guest-facing at K3** — the first
+Method-Pod NODE to die at a kind, mirroring the move deaths: the menu price is held by the
+printed record, so the counterbid position has no holder; there is nobody at the table entitled
+to bid. (The walk-in rate negotiation at a quiet city desk exists but is thin, discretionary,
+and half of it is N9's grant-plus-limit — not enough to call the node alive in this sector's
+business stretches. It stays alive at rung 0, where it was minted.) The deaths rule extends
+without amendment: **shapes, like moves, die where the kind that kills them is pinned** — the
+haggle needs both parties to hold bid positions, and K3 confiscates one of them.
+
+**K4 — weak, and split.** No body on the table (personal care was scoped out precisely so this
+would stay honest). Guest-side the stake is money and the OCCASION — unrepeatable in a way money
+is not: you cannot re-run a wedding breakfast, which is why the occasion disclosure (E11)
+carries more weight than its rung suggests. Worker-side the stake is the tip and the job —
+real, but disciplinary rather than positional: it prices positions, it does not move them.
+
+**Proxy holding, checked as instructed.** Hospitality holds it in a form neither Ireland nor
+trades showed: **two principals whose instructions CONFLICT.** The house says the guest is
+right; the law says refuse the drink. Ireland's official held everything in trust from one
+statutory principal; the tradesperson held K1 personally and one override in trust from the
+regulator; the hospitality worker holds almost nothing personally — the refusal they exercise
+in E6 is the law's, the redress they offer in E5 is the house's ("I'd love to comp it, I have
+to ask") — and at the drink refusal the two trusts collide. Verdict: **`held_in_trust` covers
+the two-principal form without strain**, because the annotation attaches per kind per stretch,
+and the collision is a walk-level fact (the worker citing the licence AGAINST the
+customer-is-right register is one sentence: "I know, and I'm sorry — but it's my licence").
+That a principal can be commercial rather than statutory changes nothing at shape level, and
+recording it needed no new machinery. The tronc, the brand standard, the mystery-diner — all
+the same annotation.
+
+**Rungs, per stretch** (fifth corpus for the per-stretch reading): rung 0 — the cabin, the
+fire-escape, the regulars' banter; rung 1 — E2/E3/E8 routine service, which IS POD-1 occupied
+from the inside; rung 2 — E1, E4, E9, E10 (K1+K3 doing real work, K2 rotation intact for the
+guest); rung 3 — E5's complaint stretch and E6's refusal stretch (stake on the table, the
+worker's contest positions deleted, trust-held kinds pinning hardest); back-of-house E12–E15
+run at 1–2 between peers with K3 (the record, the ticket) doing the deciding. No encounter
+sits on one rung for its whole length.
+
+**The invariants.** **O7 holds, all five positions, fifth corpus** — and hospitality sharpens
+the violation-by-fixing better than any prior sector: the pull is to fix by UPGRADE ("let me
+send up champagne"), which converts a person into a service ticket, and the recovery position
+(acknowledge without fixing, then let the discloser close) is unchanged. Evidence class stated
+plainly: consistency against constructed encounters, not independent attestation. **F302
+attests THIN, its weakest column of the four, for the legible reason predicted**: the flag
+earns its keep where K1 is locked; hospitality's K1 unlocks on demand, so the register that
+prices authority down ("don't quote me, but—") is professionally displaced by the check ("I'll
+find out for you" — N105). Where F302 does appear, it is a bridge into N105, not a licence to
+deliver. Neither invariant BROKE; one thinned where its enabling condition thinned, which is
+better evidence for the mechanism than a fourth rich column would have been.
+
+---
+
+## 6. The second axis — tested, and Ireland's hole looked for
+
+The candidate: weight the overlay selector by the cost of failing to recover, shape-level.
+
+**Where the weight lands: on a RELAY, which is new.** Hospitality's costliest failure is the
+allergen death, and no single guest-facing shape carries it — the weight distributes along the
+chain N108 (declared and recorded) → the ticket → E14's relayed F6 → E15's stop call
+(N106/O101) → E12's handover (N402). **The first sector where the highest-cost link is
+worker-to-worker rather than worker-to-public**: the guest-facing declaration is the cheapest
+link in its own chain, and the failure that kills is a dropped baton in the back-of-house.
+Shape-level weighting survives this — each link is a shape and each carries its share — but the
+finding for the selector is that cost-of-failure can be a property of a CHAIN of shapes across
+encounters, not of any one shape. Low-cost shapes inside the high-cost chain stay low-cost
+(the F14 rituals around the allergy ask carry no weight); the weight tracks shapes, fourth
+sector running. **Verdict: supported, shape-level, with the relay refinement recorded.**
+
+**Ireland's hole, looked for as instructed — found, in both of its forms.** The allergy never
+declared produces no encounter until the failure itself; the drink that should have been
+refused and never was produces no conversation at all — the guest who drives home over-served
+is trades' badly-earthed circuit in a car park. No shape weight can reach a failure that
+consists of never speaking. And the sector shows the SAME FILL trades recorded, now the third
+case on file: the allergen solicit is mandated — "any allergies or intolerances at the table?"
+is an encounter put into the service script by law (UK/IE allergen-information rules), made to
+run on a schedule precisely so the silent risk speaks — and it maps entirely onto existing
+shapes (a scripted N108 opening). The over-service side has its weaker analogue in mandatory
+responsible-service training scripts. The pattern across three sectors is now stable enough to
+name for the selector: **the axis's blind zone is filled by mandating the encounter, never by
+minting a shape.**
