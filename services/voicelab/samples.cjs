@@ -67,6 +67,10 @@ const MIN_CHARS = 4
 const MAX_CHARS = HARD_CAP
 /** Brackets, quotes, ellipses and digits all read oddly out of context. */
 const ODD_PUNCTUATION = /[()[\]{}"“”«»…\d]/
+/** A question in any script the estate teaches — Greek, Arabic and CJK included. */
+const QUESTION = /[?？;؟]\s*$/
+/** How many lines a voice is judged on. See chooseSet for why three. */
+const JUDGING_SET = 3
 
 // ── The cache index ────────────────────────────────────────────────────────────────
 // One small JSON file beside the clips, for the same reason store.cjs is disk and not a
@@ -113,6 +117,18 @@ function cacheKey (voiceId, language, text) {
  * instead — which is what a guide voice actually says.
  */
 async function pickLine (language) {
+  return (await pickLines(language, { count: 1 }))[0] || null
+}
+
+/**
+ * The judging set for a language: several lines from ONE named course.
+ *
+ * Identical selection to the single line for its first element — see chooseSet
+ * for what the other two are and why — so a language's median line is the same
+ * string it has always been and every clip already cached against it still
+ * plays.
+ */
+async function pickLines (language, { count = JUDGING_SET } = {}) {
   const db = client()
   // `language` is a CAST KEY, which may be a dialect entity ('deu_at'). The
   // column holds the BASE tag for every course, dialect or not, so the query
@@ -138,13 +154,13 @@ async function pickLine (language) {
       .eq('course_code', c.course_code)
       .order('seed_number', { ascending: true })
       .limit(200)
-    const line = chooseFrom((seeds || []).map((s) => ({
+    const picked = chooseSet((seeds || []).map((s) => ({
       text: String(s.target_text || '').trim(),
       knownText: String(s.known_text || '').trim(),
       order: s.seed_number,
-    })))
-    if (line) {
-      return {
+    })), count)
+    if (picked.length) {
+      return picked.map((line) => ({
         language,
         text: line.text,
         knownText: line.knownText,
@@ -152,11 +168,12 @@ async function pickLine (language) {
         courseName: c.display_name || c.course_code,
         source: `${c.course_code} seed ${line.order}`,
         kind: 'seed',
-      }
+      }))
     }
   }
 
-  return guideLine(base)
+  const guide = await guideLine(base)
+  return guide ? [guide] : []
 }
 
 /**
@@ -197,6 +214,82 @@ function chooseFrom (rows) {
   return field
     .slice()
     .sort((a, b) => Math.abs(a.text.length - median) - Math.abs(b.text.length - median) || a.order - b.order)[0]
+}
+
+/**
+ * THE JUDGING SET — several lines, chosen to be different from each other.
+ *
+ * Tom, 2026-08-31, looking at the lab: "there is only one clip per voice … one
+ * clip is not enough to judge a voice on - it may be flattering or
+ * unrepresentative."
+ *
+ * ── WHAT MAKES A GOOD SET, AND WHY THESE THREE ──────────────────────────────
+ * A set of three lines of the same shape is one clip three times. So the axis
+ * the set varies on is the axis voices actually fail on, and for a synthetic or
+ * cloned voice that is LENGTH, in two opposite directions:
+ *
+ *   the median line   what the course mostly sounds like. Unchanged from the
+ *                     single line this module has always picked, deliberately:
+ *                     every clip already rendered in the estate stays valid,
+ *                     and the row's one-press fair comparison still renders
+ *                     exactly the same words for every voice.
+ *   a SHORT line      onset and tail. A short utterance is where a clone
+ *                     clips its first consonant, or hangs a breath on the end
+ *                     with no sentence to hide it in.
+ *   a LONG line       breath, pace and drift. A voice that is convincing for
+ *                     four words is often not convincing for fourteen: the
+ *                     pitch wanders, the rhythm flattens, and there is no way
+ *                     to hear that on the median line.
+ *
+ * And where the corpus offers one, the SHORT slot prefers a QUESTION, because
+ * rising intonation is the single most common place a clone gives itself away
+ * and a question is also, on its own, a different KIND of line rather than the
+ * same kind at a different length.
+ *
+ * ── THE MATERIAL IS THE COURSE'S OWN ────────────────────────────────────────
+ * Every line comes from the SAME NAMED COURSE, exactly as the single line does.
+ * A voice is being judged on the material it would actually speak, and holding
+ * the course constant is what keeps the set comparable across voices.
+ *
+ * These are DEFAULTS chosen on 2026-08-31, not a ruling from Tom.
+ *
+ * @returns {Array} up to `count` distinct lines, median first.
+ */
+function chooseSet (rows, count = JUDGING_SET) {
+  const first = chooseFrom(rows)
+  if (!first) return []
+  if (count <= 1) return [first]
+
+  const clean = rows
+    .filter((r) => r.text && r.text.length >= MIN_CHARS && r.text.length <= HARD_CAP)
+    .filter((r) => !ODD_PUNCTUATION.test(r.text))
+  const out = [first]
+  const taken = new Set([first.text])
+
+  // The short slot, questions first. `quantileLine` is deterministic, so the
+  // set is the same on every visit — two voices are never compared on
+  // different words, which is the whole reason the single line was
+  // deterministic in the first place.
+  const short = quantileLine(clean.filter((r) => QUESTION.test(r.text)), 0.35, taken)
+    || quantileLine(clean, 0.15, taken)
+  if (short) { out.push(short); taken.add(short.text) }
+  if (out.length >= count) return out.slice(0, count)
+
+  const long = quantileLine(clean, 0.9, taken)
+  if (long) out.push(long)
+  return out.slice(0, count)
+}
+
+/**
+ * The line at a given quantile of the corpus's own length distribution, skipping
+ * anything already taken. Relative, never absolute — the same reason the band in
+ * chooseFrom is relative: eight characters is a whole Chinese sentence.
+ */
+function quantileLine (rows, quantile, taken = new Set()) {
+  const field = rows.filter((r) => !taken.has(r.text))
+  if (!field.length) return null
+  const sorted = field.slice().sort((a, b) => a.text.length - b.text.length || a.order - b.order)
+  return sorted[Math.min(sorted.length - 1, Math.max(0, Math.round(quantile * (sorted.length - 1))))]
 }
 
 /**
@@ -449,4 +542,94 @@ async function prepare ({ language, voiceIds = [], maxVoices = 80, renderOne, fo
   return { ...after, rendered, failed, chars }
 }
 
-module.exports = { pickLine, chooseFrom, preferCourses, freeTakes, isRenderable, renderPlan, read, prepare, cacheKey, MIN_CHARS, MAX_CHARS, HARD_CAP, INDEX }
+
+// ── D. ONE VOICE, SEVERAL CLIPS ────────────────────────────────────────────────────
+//
+// Tom, 2026-08-31, on the Voice Lab: "there is no way to hear a voice that does not
+// currently have a clip" and "there is only one clip per voice". Both are answered
+// here, and by the SAME pair of functions, because they are the same question asked
+// about clip one and about clip three: what does this voice sound like saying this,
+// and what does it cost to find out.
+//
+// WHY PER VOICE RATHER THAN PER ROW. The row's press renders ONE line for EVERY voice
+// — that is the fair comparison and it is what makes a shortlist. The judging set is
+// the opposite motion: several lines for ONE voice, once a voice is worth listening
+// to properly. Rendering three lines for eighty candidates would triple the bill to
+// answer a question nobody asked about seventy-seven of them, so the spend follows
+// the attention.
+
+/**
+ * What this voice has, and could have, across the judging set. SPENDS NOTHING.
+ *
+ * Returns a slot per line whether or not it holds audio, because "not rendered yet"
+ * has to be visible in order to be tappable — a voice with no clip that shows nothing
+ * is precisely the gap this answers.
+ */
+async function readVoice ({ language, voiceId, count = JUDGING_SET, lines = null }) {
+  const set = lines || await pickLines(language, { count })
+  if (!set.length) return { language, voiceId, lines: [], clips: [] }
+
+  const idx = readIndex()
+  const plan = renderPlan(voiceId, language)
+  const clips = []
+  for (let i = 0; i < set.length; i++) {
+    const line = set[i]
+    const cached = idx[cacheKey(voiceId, language, line.text)]
+    if (cached && store.readClip(cached.clip)) {
+      clips.push({ lineIndex: i, url: `/api/voicelab/clip/${cached.clip}.mp3`, durationMs: cached.durationMs || null, free: false, cached: true })
+      continue
+    }
+    const free = (await freeTakes(line.text, [voiceId])).get(voiceId)
+    clips.push(free ? { lineIndex: i, ...free } : { lineIndex: i, url: null, renderable: Boolean(plan.provider), chars: line.text.length })
+  }
+  return {
+    language,
+    voiceId,
+    lines: set,
+    clips,
+    provider: plan.provider || null,
+    // Said in place, never inferred from a null url: "nothing has rendered this yet"
+    // and "nothing here can ever render this" are different facts.
+    why: plan.why || null,
+  }
+}
+
+/**
+ * Render ONE line for ONE voice. SPENDS MONEY — one clip, ledgered the moment it is
+ * spent, refusable by the lab's daily character ceiling exactly as a row press is.
+ *
+ * Writes the same cache the row press writes, keyed on the same (voice, language,
+ * text), so a clip rendered here is the clip the row plays afterwards and neither
+ * path ever pays for the other's work twice.
+ */
+async function renderClip ({ language, voiceId, lineIndex = 0, renderOne, count = JUDGING_SET }) {
+  const set = await pickLines(language, { count })
+  const line = set[Number(lineIndex) || 0]
+  if (!line) throw Object.assign(new Error(`no course line found for ${language}`), { status: 404 })
+
+  const plan = renderPlan(voiceId, language)
+  if (!plan.provider) throw Object.assign(new Error(`This voice cannot be rendered here — ${plan.why}.`), { status: 400 })
+
+  const idx = readIndex()
+  const key = cacheKey(voiceId, language, line.text)
+  const cached = idx[key]
+  if (cached && store.readClip(cached.clip)) {
+    return { voiceId, lineIndex, line, chars: 0, clip: { lineIndex, url: `/api/voicelab/clip/${cached.clip}.mp3`, durationMs: cached.durationMs || null, cached: true } }
+  }
+  const free = (await freeTakes(line.text, [voiceId])).get(voiceId)
+  if (free) return { voiceId, lineIndex, line, chars: 0, clip: { lineIndex, ...free } }
+
+  const cfg = { ...lab.normaliseConfig({ provider: plan.provider, voiceId: plan.voiceId, language: plan.language }), key: 'V' }
+  const refusal = lab.refuse({ kind: 'batch', sentences: [line.text], configs: [cfg], charsSpentToday: store.charsSpentToday() })
+  if (refusal) throw Object.assign(new Error(refusal.error), { status: refusal.status })
+
+  const { mastered, durationMs } = await renderOne({ text: line.text, cfg })
+  const clip = store.newId()
+  store.writeClip(clip, mastered)
+  store.appendLedger({ sample: clip, chars: line.text.length, provider: cfg.provider, voiceId: cfg.voiceId, language, course: line.course })
+  idx[key] = { clip, durationMs, voiceId, language, course: line.course, at: new Date().toISOString() }
+  writeIndex(idx)
+  return { voiceId, lineIndex, line, chars: line.text.length, clip: { lineIndex, url: `/api/voicelab/clip/${clip}.mp3`, durationMs, cached: true } }
+}
+
+module.exports = { pickLine, pickLines, chooseSet, quantileLine, readVoice, renderClip, JUDGING_SET, chooseFrom, preferCourses, freeTakes, isRenderable, renderPlan, read, prepare, cacheKey, MIN_CHARS, MAX_CHARS, HARD_CAP, INDEX }

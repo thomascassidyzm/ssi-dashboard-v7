@@ -68,6 +68,7 @@
 import { ref, computed, onMounted } from 'vue'
 import { api, clipUrl } from './labApi'
 import CandidateVoices from './CandidateVoices.vue'
+import VoiceConsent from './VoiceConsent.vue'
 import ConsentBadge from './ConsentBadge.vue'
 import CloneConfirm from './CloneConfirm.vue'
 // The estate's ONE place that turns a code into words. Importing it also kicks
@@ -989,38 +990,189 @@ async function submitClone () {
   cloneBusy.value = false
 }
 
-// ── RECORDING AN AUTHORISATION ─────────────────────────────────────────────
-// Tom, 2026-08-31: consent "is Tom to obtain, not you… There must be a plain
-// way for Tom to authorise a voice once he has actually asked the person."
-// This is that. It cannot invent a yes: a named human, a means and a date are
-// all required, by the route and again by the database.
+// ── GIVING CONSENT TO A VOICE ──────────────────────────────────────────────
+//
+// Tom, 2026-08-31, looking at the lab: "there is no way to give consent to a
+// voice here." Consent had become REQUIRED to cast on the same day — refused
+// server-side at every door — and nothing on this page could satisfy it for a
+// voice that already existed. Nine voices were stuck with no route forward.
+//
+// THIS REPLACED A SECOND MECHANISM RATHER THAN ADDING A THIRD. What was here
+// was a form: a status dropdown, a name, a date, a note — Tom writing down what
+// he had been told, off-system. It could mark a voice `authorised` with nothing
+// but typing behind it, and it lived beside the clone routes' spoken line and
+// signed attestation, which is two different meanings of the word consent one
+// screen apart. Tom's instruction on this job was explicit: use the SAME
+// mechanism, do not invent a second one. So the panel is
+// VoiceConsent.vue — the line read aloud and checked, or the signed
+// attestation — and the refusal path ("they said no", "they withdrew") still
+// goes through the older PUT, which is the one thing that form could say that
+// a declaration cannot.
 const consentFor = ref(null)
-const consentForm = ref({ status: 'authorised', person: '', authorisedBy: '', authorisedHow: 'in person', authorisedAt: '', note: '' })
 const consentBusy = ref(false)
 const consentError = ref('')
+const consentHeard = ref('')
 
-function openConsent (voiceId, current) {
+function openConsent (voiceId) {
   consentError.value = ''
+  consentHeard.value = ''
   consentFor.value = voiceId
-  consentForm.value = {
-    status: current?.status === 'not_recorded' ? 'authorised' : (current?.status || 'authorised'),
-    person: current?.person || '',
-    authorisedBy: current?.authorisedBy || current?.person || '',
-    authorisedHow: current?.authorisedHow || 'in person',
-    authorisedAt: (current?.authorisedAt || new Date().toISOString()).slice(0, 10),
-    note: current?.note || '',
-  }
+  // The panel's first control plays the voice, so opening it loads what this
+  // voice has to play. Costs nothing.
+  const lang = expanded.value ? langByCode(expanded.value) : null
+  if (lang) loadVoiceClips(lang, voiceId)
 }
 
-async function saveConsent () {
+/** The consent block for whichever voice the panel is open on. */
+const consentCurrent = computed(() => {
+  if (!consentFor.value) return null
+  for (const lang of (data.value?.languages || [])) {
+    for (const c of [...(lang.candidates || []), ...((lang.guide && lang.guide.candidates) || [])]) {
+      if (c.voiceId === consentFor.value) return c.consent || null
+    }
+    for (const slot of [...slotsOf(lang), ...guideSlotsOf(lang)]) {
+      if (slot.voiceId === consentFor.value) return slot.consent || null
+    }
+  }
+  return null
+})
+
+const consentName = computed(() => {
+  if (!consentFor.value) return ''
+  for (const lang of (data.value?.languages || [])) {
+    for (const c of [...(lang.candidates || []), ...((lang.guide && lang.guide.candidates) || [])]) {
+      if (c.voiceId === consentFor.value) return c.name || consentFor.value
+    }
+  }
+  return consentFor.value
+})
+
+/**
+ * THE LINE, READ ALOUD, going up as the recording it was read on. The backend
+ * transcribes it and refuses if the line is not there — so a refusal here is
+ * information, and what the machine heard is shown rather than swallowed.
+ */
+async function consentSpoken ({ file, person }) {
+  consentBusy.value = true
+  consentError.value = ''
+  consentHeard.value = ''
+  try {
+    const fd = new FormData()
+    fd.append('clip', file, 'consent.webm')
+    fd.append('person', person)
+    if (expanded.value) fd.append('language', expanded.value)
+    await api.declareConsentSpoken(consentFor.value, fd)
+    consentFor.value = null
+    await load()
+  } catch (e) {
+    const d = e.data || {}
+    if (d.declarationNotHeard) consentHeard.value = d.heard || ''
+    consentError.value = e.message
+  }
+  consentBusy.value = false
+}
+
+/** Nobody at the microphone: a named human states it instead, in writing. */
+async function consentAttested ({ person, attestedBy, agreed }) {
   consentBusy.value = true
   consentError.value = ''
   try {
-    await api.recordConsent(consentFor.value, { ...consentForm.value })
+    await api.declareConsentAttested(consentFor.value, {
+      person, attestedBy, declarationAgreed: agreed ? 'true' : 'false', language: expanded.value || null,
+    })
     consentFor.value = null
     await load()
   } catch (e) { consentError.value = e.message }
   consentBusy.value = false
+}
+
+/** A no, and a withdrawal. One tap, the same weight as the yes above it. */
+async function consentDecide ({ status, person }) {
+  consentBusy.value = true
+  consentError.value = ''
+  try {
+    await api.recordConsent(consentFor.value, { status, person })
+    consentFor.value = null
+    await load()
+  } catch (e) { consentError.value = e.message }
+  consentBusy.value = false
+}
+
+// ── HEARING ONE VOICE PROPERLY ─────────────────────────────────────────────
+//
+// Tom's other two gaps, 2026-08-31: "there is no way to hear a voice that does
+// not currently have a clip" and "there is only one clip per voice".
+//
+// `openVoice` is the voice whose judging set is showing — several lines of
+// deliberately different lengths, from the course this voice would actually
+// speak, because one clip may flatter a voice or misrepresent it. Reading that
+// state costs nothing; rendering one line of it costs one clip and is always a
+// deliberate tap on the line itself.
+const openVoice = ref('')
+const openClips = ref(null)
+const renderingClip = ref('')
+
+async function loadVoiceClips (lang, voiceId) {
+  openClips.value = null
+  try {
+    openClips.value = await api.voiceClips(lang.code, voiceId)
+  } catch (e) {
+    openClips.value = { lines: [], clips: [], why: e.message }
+  }
+}
+
+async function toggleVoice (lang, voiceId) {
+  if (openVoice.value === voiceId) { openVoice.value = ''; openClips.value = null; return }
+  openVoice.value = voiceId
+  await loadVoiceClips(lang, voiceId)
+}
+
+/**
+ * ONE TAP ENDS IN AUDIO. If the line has a clip, it plays it; if it has none,
+ * it renders one and then plays it. The backend returns a cached or free clip
+ * without spending, so pressing an already-rendered line never pays twice.
+ */
+async function hearVoice (lang, { voiceId, lineIndex = 0 }) {
+  // The consent panel can be open on a voice from the clone list, with no
+  // language row expanded behind it — and then there is no course to pick a
+  // line from. Nothing to play is not an error worth shouting about.
+  if (!lang) return
+  const key = `${voiceId}:${lineIndex}`
+  const known = (openVoice.value === voiceId && openClips.value)
+    ? (openClips.value.clips || []).find((c) => c.lineIndex === lineIndex)
+    : null
+  if (known && known.url) return playClip(key, known.url)
+  if (lineIndex === 0 && samplesFor(lang)[voiceId]) return play(lang, voiceId)
+
+  renderingClip.value = openVoice.value === voiceId ? key : voiceId
+  error.value = ''
+  try {
+    const out = await api.renderVoiceClip(lang.code, voiceId, lineIndex)
+    if (openVoice.value === voiceId && openClips.value) {
+      openClips.value = {
+        ...openClips.value,
+        clips: (openClips.value.clips || []).map((c) => (c.lineIndex === lineIndex ? { ...c, ...out.clip } : c)),
+      }
+    }
+    // The row's own play button reads the language-level sample map, so line
+    // zero lands there too — otherwise the row would go back to a dashed
+    // outline the moment the panel closed.
+    if (lineIndex === 0) addSample(lang.code, voiceId, { url: out.clip.url, durationMs: out.clip.durationMs || null, free: false, cached: true })
+    await playClip(key, out.clip.url)
+  } catch (e) { error.value = e.message }
+  renderingClip.value = ''
+}
+
+/** One <audio> for the page, exactly as `play` uses — two voices at once is not a comparison. */
+async function playClip (key, url) {
+  if (audio) { audio.pause(); audio = null }
+  if (playing.value === key) { playing.value = ''; return }
+  const src = /^https?:/.test(url) ? url : await clipUrl(url)
+  audio = new Audio(src)
+  audio.onended = () => { playing.value = '' }
+  audio.onerror = () => { playing.value = ''; error.value = `Could not play ${key}.` }
+  playing.value = key
+  audio.play().catch((e) => { playing.value = ''; error.value = e.message })
 }
 
 // ── UN-CREATING A VOICE ────────────────────────────────────────────────────
@@ -1383,6 +1535,11 @@ async function clear (lang, slot) {
  * A GUIDE slot takes any voice that speaks the language — a guide is one voice,
  * and the male/female split belongs to the phrase slots alone.
  */
+/** The row for a code, so a handler holding only a code can reach its language. */
+function langByCode (code) {
+  return (data.value?.languages || []).find((l) => l.code === code) || null
+}
+
 function candidatesFor (lang, slot) {
   if (slot.slot === 'guide') return lang.guide?.candidates || []
   return (lang.candidates || []).filter((c) => !c.gender || c.gender === slot.gender)
@@ -1676,36 +1833,26 @@ function candidatesFor (lang, slot) {
       </div>
     </section>
 
-    <!-- ── RECORDING AN AUTHORISATION ────────────────────────────────────────
-         Tom obtains the consent; this writes down what he was told. It cannot
-         invent a yes: a named human, a means and a date are all required here
-         and again by the database's own CHECK constraint. -->
-    <section v-if="consentFor" class="vl-clone vl-consent-editor">
-      <p><strong>Consent for <code>{{ consentFor }}</code></strong></p>
-      <div class="vl-clone-row">
-        <select v-model="consentForm.status" class="ui-field vl-narrow">
-          <option value="authorised">they said yes</option>
-          <option value="awaiting_authorisation">not asked yet</option>
-          <option value="refused">they said no</option>
-          <option value="withdrawn">they have withdrawn it</option>
-          <option value="not_recorded">nothing recorded</option>
-        </select>
-        <input v-model="consentForm.person" class="ui-field" placeholder="whose voice it is" />
-        <input v-model="consentForm.authorisedBy" class="ui-field" placeholder="who said yes" />
-      </div>
-      <div class="vl-clone-row">
-        <input v-model="consentForm.authorisedHow" class="ui-field vl-narrow" placeholder="how — in person, email…" />
-        <input v-model="consentForm.authorisedAt" type="date" class="ui-field vl-narrow" />
-        <input v-model="consentForm.note" class="ui-field" placeholder="anything else worth knowing" />
-      </div>
-      <div class="vl-clone-row">
-        <button class="vl-btn" :disabled="consentBusy" @click="saveConsent">
-          {{ consentBusy ? 'Saving…' : 'Record it' }}
-        </button>
-        <button class="ui-sort-btn" @click="consentFor = null">Cancel</button>
-      </div>
-      <p v-if="consentError" class="vl-error">{{ consentError }}</p>
-    </section>
+    <!-- ── GIVING CONSENT ───────────────────────────────────────────────────
+         The same mechanism as every other consent in the estate: the line read
+         aloud and checked against the recording, or a signed attestation. -->
+    <VoiceConsent
+      v-if="consentFor"
+      :voice-id="consentFor"
+      :name="consentName"
+      :consent="consentCurrent"
+      :wording="params?.consent || {}"
+      :busy="consentBusy"
+      :error="consentError"
+      :heard="consentHeard"
+      :clips="openClips && openVoice === consentFor ? openClips : null"
+      :playing="playing"
+      @close="consentFor = null"
+      @spoken="consentSpoken"
+      @attested="consentAttested"
+      @decide="consentDecide"
+      @hear="hearVoice(langByCode(expanded), { voiceId: consentFor, lineIndex: $event })"
+    />
 
     <div class="vl-search">
       <input
@@ -2023,8 +2170,14 @@ function candidatesFor (lang, slot) {
                         :busy="busy === slotKey(lang, slot)"
                         :pace-title="(c) => (c.pace ? candidatePace(c) : '')"
                         :pace-suffix="paceSuffix"
+                        :open-voice="openVoice"
+                        :open-clips="openClips"
+                        :rendering="renderingClip"
                         @play="play(lang, $event)"
                         @cast="cast(lang, slot, $event)"
+                        @open="toggleVoice(lang, $event)"
+                        @hear="hearVoice(lang, $event)"
+                        @consent="openConsent($event)"
                       />
                     </div>
                   </div>
@@ -2122,9 +2275,15 @@ function candidatesFor (lang, slot) {
                         :busy="busy === slotKey(lang, slot)"
                         :pace-title="(c) => (c.pace ? candidatePace(c) : '')"
                         :pace-suffix="paceSuffix"
+                        :open-voice="openVoice"
+                        :open-clips="openClips"
+                        :rendering="renderingClip"
                         empty-text="no voice in the estate declares this language"
                         @play="play(lang, $event)"
                         @cast="cast(lang, slot, $event)"
+                        @open="toggleVoice(lang, $event)"
+                        @hear="hearVoice(lang, $event)"
+                        @consent="openConsent($event)"
                       />
                     </div>
                   </div>
