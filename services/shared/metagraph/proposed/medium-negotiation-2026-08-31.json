@@ -1,0 +1,184 @@
+{
+  "concept": "proposed-additions",
+  "version": 1,
+  "status": "PROPOSAL — not loaded by index.cjs, not read by the Script Lab, nothing executes it",
+  "provenance": "medium-negotiation-canonical",
+  "source": {
+    "document": "docs/pods/medium-negotiation-canonical-2026-08-31.md",
+    "corpus": "docs/sector-pods/source/health-sector-conversations-v3.md — §1.0 and §2.0 (ten opener flows), plus a targeted sweep of all 73 flows",
+    "store": "ratified store as of f4198e22f (18 CORE shapes, 9 outcomes, 15 survivability edges, 29 nodes)",
+    "derived": "2026-08-31",
+    "relation_to_prior": "Canonical re-cut of N101 (health-additions-2026-08-30.json, which remains the definition source for the 1xx ids) and S1101 (health-candidates-2026-08-31.json on branch pods/health-calibration-2026-08-31, which remains the definition source for 1101). Commissioned by Tom's 2026-08-31 ruling: the health openers were written as context-known-language English for Welsh speakers; this file is the pair-and-culture layer stripped out, leaving the shape. The medium negotiation is ruled CORE by Tom; the siting argument is in the document.",
+    "invariance_note": "Shape-layer claim under the metagraph ruling (shapes are compressions, surface forms are agreements, culture is a sector). NOT a frame-inventory claim: per job #448 the frame inventory is KNOWN-CORPUS-invariant, not pair-invariant, and pods contribute frame attestation and zero vocabulary. The Bologna instantiation in the document demonstrates the shape instantiates; it asserts no target-side cut exists in any pair."
+  },
+  "id_range": {
+    "rule": "10xx taken by core-recovery-attachments-2026-08-31.json; 11xx taken by health-candidates-2026-08-31.json (used only S1101). This file takes 12xx.",
+    "used": ["N1201", "S1201", "S1202", "C1201", "C1202", "C1203"],
+    "next_worker": "start at 1204 within 12xx, or take 13xx"
+  },
+  "store_untouched": "services/shared/metagraph/{nodes,edges,moves,outcome-shapes}.json unmodified; node tools/metagraph-selfcheck.cjs passes 355 checks, 0 failed on this branch",
+  "nodes": [
+    {
+      "id": "N1201",
+      "name": "Medium contract",
+      "provenance": "medium-negotiation-canonical",
+      "relation_to_prior": "Canonical re-cut of N101. Positions 2–5 survive in name; position 1 re-worded into two realisations (offer / notice) because N101's 'ask licence' presumed the offer variant and the corpus's own English flows never ask; role-neutrality made explicit; gloss kept verbatim.",
+      "role_neutral": true,
+      "role_neutral_note": "In the health corpus the professional is the learner and the patient is the native; in the Bologna instantiation the learner is the customer. Nothing in the positions depends on who serves whom — either party may be the declarer.",
+      "gloss": "One party declares a limitation on the medium of the encounter itself and pre-negotiates the repair protocol BEFORE any business starts. The licence is issued in advance of the trouble it covers.",
+      "positions": [
+        {
+          "index": 1,
+          "name": "declare own limitation on the medium",
+          "family": null,
+          "realisations": {
+            "offer": "a shared alternative medium exists: propose conducting the encounter in the weaker medium, name the fallback, ask — 'I'm learning X… if we get stuck I might ask you to speak Y, if that's okay'. Only the offer can be declined.",
+            "notice": "no alternative medium exists: the declaration and the repair licence fuse into one turn — 'X isn't my first language, so if anything isn't clear, just tell me'. Nothing to accept or decline."
+          }
+        },
+        {
+          "index": 2,
+          "name": "grant + reassure",
+          "family": "F14",
+          "branches": "declined (S1201), diverted into biography (S1202), participant admission (C1203)"
+        },
+        {
+          "index": 3,
+          "name": "issue the standing repair licence",
+          "family": null,
+          "note": "at full strength mutual ('and I'll do the same if I don't follow you') and pre-disarmed ('I won't be offended', 'it's never a silly question'); fuses into position 1 in the notice realisation"
+        },
+        {
+          "index": 4,
+          "name": "accept the licence",
+          "family": "F1"
+        },
+        {
+          "index": 5,
+          "name": "pivot to business",
+          "family": "F21",
+          "pivot_capable": true
+        }
+      ],
+      "stripped_as_pair_and_culture": [
+        "the language names (Welsh/English) — pair admission",
+        "the institutional fallback ('call someone who speaks Welsh more confidently') — sector/culture: language provision as infrastructure",
+        "the applause economy ('Chwarae teg i chi', 'Fair play') — Wales rewarding the offer as a civic act",
+        "the stakes-raiser ('it's really important that you understand everything') — health's duty-of-care register, sector-conditional; re-manufactured by any high-stakes span in any sector",
+        "the offence-disclaimer form of the face-repair tail ('no offence meant' / 'none taken at all') — cultural form around the canonical de-personalising function",
+        "the native's stake in the learner's project (the grandson learning in school) — the shared-cause warmth economy of a minority language"
+      ],
+      "attestations": {
+        "health": [
+          "1.0 Welsh flows 1–3",
+          "1.0 English flows 1–3",
+          "2.0 Welsh flows 1–2",
+          "2.0 English flows 1–2"
+        ]
+      },
+      "quote": "\"I'm learning Welsh at the moment, so I'll try to stay in Welsh as much as possible, but if we get stuck I might need to ask you to speak English, if that's okay.\" (1.0 Welsh flow 1) / \"English isn't my first language, so if you have any trouble understanding me, just let me know and I'll explain myself more clearly\" (1.0 English flow 1) — same shape, different admission; the second realisation never asks.",
+      "why_not_an_existing_node": "N6 Repair is the trouble handled when it arrives; N1201 is the licence granted before it arrives, and the two are different positions in time. N9 Feasibility request asks whether the world permits X; N1201 declares that the SPEAKER may fail. Nothing in the ratified 29 negotiates the medium of the encounter. (Inherited from N101, checked against the ratified store at f4198e22f: still true.)",
+      "smoke_test": "Passed in writing: the Bologna instantiation (document §6) — ita_for_eng, learner as customer in a pharmacy — instantiates every position and both attested branches with none of Wales's history, at three named costs, all pair-and-culture.",
+      "trunk_or_branch": "trunk",
+      "core_siting": "CORE by Tom's ruling of 2026-08-31. Placement: a prologue — scene 0, after N1's open, before the first transaction ('Before we start -', 2.0 Welsh flow 1; §1.0 precedes even §1.1 Names). Prepending does not reorder CORE's existing scenes, so the audit's constraint holds; the set grows 18 → 19, which the ruling entails. Decline branch attaches at position 2 of scene 0 in the recovery-attachment mechanics. Every sector pod re-instantiates the contract in the pair's and sector's own terms as its opening (Tom's standing ruling for sector authoring); the every-optional-walk floor is untouched."
+    }
+  ],
+  "composition": [
+    {
+      "id": "C1201",
+      "kind": "composition",
+      "contained": "N5",
+      "container": "N1201",
+      "attestation": "1.0 Welsh flow 2; 1.0 English flow 2 — the biography interlude of the diversion runs on Acquaintance mechanics at N1201 position 2",
+      "mechanical": true,
+      "relation_to_prior": "new"
+    },
+    {
+      "id": "C1202",
+      "kind": "composition",
+      "contained": "N7",
+      "container": "N1201",
+      "attestation": "1.0 Welsh flow 3; 2.0 Welsh flow 2 — the counter-proposal of a different medium is Arrangement mechanics at N1201 position 2",
+      "mechanical": true,
+      "relation_to_prior": "canonical successor of C109; survives the stripping unchanged"
+    },
+    {
+      "id": "C1203",
+      "kind": "composition",
+      "contained": "N9",
+      "container": "N1201",
+      "attestation": "1.0 English flow 3; 2.0 English flow 2 — the participant admission (a third party joins with everyone's knowledge) sits inside the opener as a Feasibility request",
+      "mechanical": true,
+      "relation_to_prior": "canonical successor of C110; survives the stripping unchanged. NOT the commission's 'third party who does not know you are learning' — the admission joins the contract, the unbriefed stranger would test it; see gaps."
+    }
+  ],
+  "survivability": [
+    {
+      "id": "S1201",
+      "kind": "survivability",
+      "provenance": "medium-negotiation-canonical",
+      "relation_to_prior": "canonical re-cut of S1101, absorbing both attested account-types; S1101 remains defined in health-candidates-2026-08-31.json",
+      "b_attemptable_only_if": "Offering to hold the encounter in the weaker medium (N1201 position 1, offer realisation)",
+      "a_survivable": "The medium offer declined — the other party opts out of the offered medium",
+      "nodes": ["N1201"],
+      "attested_response_positions": [
+        "1.0 Welsh flow 3 — 'Actually, I'd rather stick to English today if that's alright, love. I'm not feeling up to it.' → 'Of course, no problem at all. English it is. Let's get you sorted.' → 'Thank you, love. No offence meant - I'm just tired today.' → 'None taken at all.'",
+        "2.0 Welsh flow 2 — 'To be honest, doctor, with something medical I'd feel safer in English. I want to be sure I follow everything.' → 'That's completely sensible, and exactly the right instinct. English it is - clarity matters most here.' → 'No offence to your Welsh, now.' → 'None taken at all - you've done me a favour.'"
+      ],
+      "recovery_attested": "twice",
+      "recovery_note": "Complete both times, four moves: yield instantly (no relitigating, no second offer), ratify the choice as sensible, de-personalise the refusal, re-anchor rapport and pivot. The ACCOUNT is a slot with two attested types — capacity ('not feeling up to it'), scoped to today, an implicit licence to re-offer next time; and stakes ('with something medical'), scoped to a domain, an implicit licence to keep the medium outside that domain. The offence-disclaimer tail is cultural form (Wales's politics of declining Welsh in a Welsh institution); the de-personalising function is canonical and survives in Bologna as the account itself plus warm ratification.",
+      "answer_slot_class": "non-delivery"
+    },
+    {
+      "id": "S1202",
+      "kind": "survivability",
+      "provenance": "medium-negotiation-canonical",
+      "relation_to_prior": "new",
+      "b_attemptable_only_if": "Declaring a limitation on the medium (N1201 position 1, either realisation)",
+      "a_survivable": "The offer diverted into biography — the declaration is met with neither grant nor decline but with a personal question about the declarer's own story; acceptance of the medium happens silently, by conduct",
+      "nodes": ["N1201"],
+      "attested_response_positions": [
+        "1.0 Welsh flow 2 — 'Where are you learning, then? Are you doing the classes?' → biography answered → 'That's lovely to hear. Right, shall we make a start? Just stop me if I lose you.'",
+        "1.0 English flow 2 — 'Where are you from, if you don't mind me asking?' → biography answered → 'The weather takes some getting used to! But the people are kind. Now then, let's have a look at you.'"
+      ],
+      "recovery_attested": "twice",
+      "recovery_note": "Complete both times, same recovery: answer the biography warmly, then SELF-INITIATE the pivot — the diversion never returns you to business; the learner must take themself back, and (first attestation) the repair licence gets issued on the way through. Attested once on each side of the offer/notice split, so the branch belongs to the declaration itself, not to the ask.",
+      "why_an_edge_not_just_composition": "The interlude's turns are N5 mechanics (C1201 records that, as C109 recorded N7 inside the decline), but no composition captures what the learner must survive: a granted contract with no grant ever spoken, and a pivot nobody else will make. The learner who waits for 'of course, that's fine' before proceeding waits forever.",
+      "answer_slot_class": "chaining"
+    }
+  ],
+  "recorded_not_recommended": [
+    {
+      "name": "the busy decline (as a separate edge)",
+      "refusal": "Same positions as S1201, different account — the account is a slot, not a shape. The calibration read already cited 1.0 Welsh flow 3 as an S1101 attestation; a separate mint would split one edge's own evidence in two."
+    },
+    {
+      "name": "the medium notice (as a second shape)",
+      "refusal": "Same positions minus the ask — a realisation of N1201 position 1, not a shape. One shape with branches beats two shapes sharing four positions."
+    },
+    {
+      "name": "the participant admission (as a decline-family edge)",
+      "refusal": "Composes as N9 at position 2 (C1203); a third party joining with everyone's knowledge is a branch of the contract's negotiation, not a threat to its premise."
+    }
+  ],
+  "gaps": [
+    {
+      "name": "the switch-back mid-conversation",
+      "status": "NOT ATTESTED — not minted",
+      "evidence_of_absence": "Swept all 73 flows; once an opener completes, no flow revisits the medium.",
+      "would_be_attested_by": "A corpus whose stakes escalate mid-flow — the natural sites already exist in this corpus's safety-critical flows (1.4 flow 3, 1.5 flow 3), where a real professional would drop into the stronger medium for the critical span; a health v4 or any escalating sector corpus would attest it in six lines. May be scoped rather than total (the stakes account of S1201 already attests domain-scoping at the opener) — speculation until written down."
+    },
+    {
+      "name": "the third party who does not know you are learning",
+      "status": "NOT ATTESTED — not minted",
+      "evidence_of_absence": "The corpus's only third parties are announced helpers (C1203); the bedside cast is fixed at two plus family.",
+      "would_be_attested_by": "Any corpus where a colleague, family member or second customer arrives mid-encounter unbriefed — a workplace or social corpus. Must stay distinct from the participant admission: the admission joins the contract, the stranger tests it."
+    },
+    {
+      "name": "the over-accommodation (the native slows to unnatural speech)",
+      "status": "NOT ATTESTED — not minted",
+      "evidence_of_absence": "No flow stages a native performing exaggerated slowness; the corpus's natives all respond naturally.",
+      "would_be_attested_by": "Structurally the hardest: the trigger is paralinguistic — delivery, not lines — so a text corpus may never attest it cleanly. A text corpus CAN attest the recovery line ('you don't need to slow down — I'll stop you if I'm lost'); audio of real native-with-learner speech would attest the trigger directly. A decline in effect rather than in form; the family's best-known and least-evidenced member, off the list until a corpus writes it down."
+    }
+  ]
+}
