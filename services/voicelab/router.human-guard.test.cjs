@@ -17,6 +17,16 @@ import express from 'express'
 import routerPkg from './router.cjs'
 const { mount } = routerPkg
 
+/**
+ * The `voices` rows the consent gate reads. `cartesia_probe` is a vendor stock
+ * voice — nobody behind it to ask — so it casts; `cartesia_clone` is a clone of
+ * a real person nobody has authorised, so it must not.
+ */
+const VOICES = [
+  { voice_id: 'cartesia_probe', type: 'tts', metadata_source: null, consent_status: 'not_recorded', display_name: 'Stock voice' },
+  { voice_id: 'cartesia_clone', type: 'tts', metadata_source: 'cartesia-clone (Voice Lab)', consent_status: 'awaiting_authorisation', consent_person: 'Aran', display_name: 'Aran clone' },
+]
+
 const COURSES = [
   { course_code: 'cym_n_for_eng', target_lang: 'cym', known_lang: 'eng', voice_config: {} },
   { course_code: 'cym_s_for_eng', target_lang: 'cym', known_lang: 'eng', voice_config: {} },
@@ -34,9 +44,13 @@ const upserts = []
 function stubSupabase () {
   const table = (name) => {
     const rowsFor = () => (name === 'courses' ? COURSES : [])
+    let wanted = null
     const chain = {
       select: () => chain,
       eq: () => chain,
+      // The consent gate looks a voice up under every spelling of its id.
+      in: (_col, ids) => { wanted = ids; return chain },
+      limit: async () => ({ data: VOICES.filter((v) => (wanted || []).includes(v.voice_id)), error: null }),
       maybeSingle: async () => ({ data: { voice_id: 'cartesia_probe', gender: 'f' } }),
       upsert: async (row) => { upserts.push({ table: name, row }); return { error: null } },
       then: (resolve) => resolve({ data: rowsFor(), error: null }),
@@ -100,5 +114,32 @@ describe('PUT /languages/:language/slot — the human-voice guard', () => {
     const body = await res.json()
     expect(body.skippedTotal).toBe(0)
     expect(body.skipped).toEqual([])
+  })
+})
+
+/**
+ * NO CONSENT, NO CAST — at the endpoint, where the client cannot reach.
+ *
+ * Tom, 2026-08-31: "we are never going to use a voice without consent". The
+ * screen hides the Cast button, but the screen is not the protection: this is
+ * the request a stale tab, a curl or a future screen sends, and it has to be
+ * refused on its own.
+ */
+describe('PUT /languages/:language/slot — the consent block', () => {
+  it('REFUSES a clone nobody has authorised, and writes nothing at all', async () => {
+    upserts.length = 0
+    const res = await castSlot('deu', { slot: 'phrase', gender: 'f', rank: 0, voiceId: 'cartesia_clone' })
+    expect(res.status).toBe(409)
+    const body = await res.json()
+    expect(body.code).toBe('NO_RECORDED_CONSENT')
+    expect(body.error).toMatch(/Aran has not authorised/)
+    // Not the slot, and not a stray `voices` row for a person nobody has asked.
+    expect(upserts).toEqual([])
+  })
+
+  it('still casts a vendor stock voice — the block is about people, not voices', async () => {
+    upserts.length = 0
+    const res = await castSlot('deu', { slot: 'phrase', gender: 'f', rank: 0, voiceId: 'cartesia_probe' })
+    expect(res.status).toBe(200)
   })
 })

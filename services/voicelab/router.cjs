@@ -42,6 +42,7 @@ const samples = require('./samples.cjs')
 const humanRecorded = require('../shared/human-recorded-roles.cjs')
 const speakers = require('./speakers.cjs')
 const consent = require('./consent.cjs')
+const consentGate = require('../shared/voice-consent-gate.cjs')
 const declaration = require('./declaration.cjs')
 const { isHumanVoiceLang } = require('../shared/human-voice-courses.cjs')
 
@@ -375,6 +376,29 @@ function mount (app, deps) {
           })
         }
       }
+
+      // ── THE CONSENT BLOCK (Tom's ruling, 2026-08-31) ────────────────────
+      //
+      //   "we are never going to use a voice without consent"
+      //
+      // A hard refusal, not a warning. The 2026-08-31 consent flow shipped a
+      // castWarning() and said in its own comments that "a hard block is Tom's
+      // call and he has not made it"; he has now made it, and this is it.
+      //
+      // Checked HERE — before the voice is registered, before the upsert — for
+      // the same reason the human-voice guard is: a refused cast must leave no
+      // trace anywhere, not even a stray `voices` row for a person nobody has
+      // asked. It applies only where the consent question is real (a clone, a
+      // human recordist, or any voice with a consent state already recorded);
+      // a vendor's stock catalogue voice has nobody to ask and is untouched.
+      //
+      // THE CLIENT CANNOT GET ROUND IT. The screen hides and disables the
+      // control, but this is the endpoint that writes the row, so a hand-rolled
+      // curl, a stale tab or a future screen that forgets all get the same 409.
+      await consentGate.assertConsented(String(voiceId), {
+        db: supabase(),
+        context: `cast ${slot} ${language}`,
+      })
 
       // A voice can only hold a slot if it has a `voices` row — the slot table
       // carries a foreign key to it. The Languages screen offers Cartesia

@@ -19,6 +19,12 @@
  * nothing in this module can move a voice to `authorised` without a named human
  * and a date, and nothing anywhere infers consent from provenance.
  *
+ * ── AND SINCE 2026-08-31, IT IS ENFORCED, NOT ANNOUNCED ─────────────────────
+ * Tom: "we are never going to use a voice without consent." This module still
+ * only DESCRIBES; the refusal is services/shared/voice-consent-gate.cjs, which
+ * reads these same functions and is required by the cast endpoint and by
+ * tts-service.generate(). One decision, two chokepoints, no dialog through it.
+ *
  * The column definitions and the reasoning behind the five states live in
  * database/migrations/20260831_voices_consent.sql.
  */
@@ -131,10 +137,16 @@ function describe (voice) {
      */
     declaration: declarationOf(voice),
     /**
-     * What the page must say BEFORE this voice is cast into anything a learner
-     * hears. Null when there is nothing to warn about. Casting is deliberately
-     * NOT blocked — a hard block is Tom's call and he has not made it — so the
-     * warning is the whole of the protection and it has to be plain.
+     * Why this voice cannot be cast, in a sentence a human reads. Null when
+     * there is nothing wrong.
+     *
+     * It used to be a warning you could click through, and this comment used to
+     * say "casting is deliberately NOT blocked — a hard block is Tom's call and
+     * he has not made it". He made it on 2026-08-31: "we are never going to use
+     * a voice without consent". So the same sentence is now the REFUSAL, shown
+     * where the Cast button used to be, and the enforcement lives at the two
+     * chokepoints in services/shared/voice-consent-gate.cjs rather than here —
+     * this module still only describes.
      */
     castWarning: castWarning(status, trim(voice && voice.consent_person)),
   }

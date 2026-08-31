@@ -21,6 +21,7 @@ const { execFile } = require('child_process');
 const { buildAzureSSMLBody } = require('./shared/ellipsis-ssml.cjs');
 const { isHumanVoiceCourse } = require('./shared/human-voice-courses.cjs');
 const { assertSelectableProvider } = require('./shared/tts-provider-policy.cjs');
+const consentGate = require('./shared/voice-consent-gate.cjs');
 const sdk = require('microsoft-cognitiveservices-speech-sdk');
 const { applyRegenerationVariation, applyShortWordHint } = require('./azure-tts-service.cjs');
 
@@ -215,6 +216,42 @@ function assertNotChildVoice(config) {
 // (fail fast, never retry). Callers thread the course code via config.courseCode
 // (see services/shared/human-voice-courses.cjs); pipeline entry points skip
 // these courses up front, so this is defence-in-depth, not the first line.
+/**
+ * NO CONSENT, NO SPEECH (Tom's ruling, 2026-08-31).
+ *
+ *   "we are never going to use a voice without consent"
+ *
+ * Same defence pattern as the two guards above and here for the same reason:
+ * this is the one chokepoint every provider path passes through — phase8, the
+ * pod path, the Voice Lab runner, the tools, production-api — so one line here
+ * refuses an unconsented voice everywhere at once, rather than five copies of a
+ * check that drift apart. Fails as a client error ("(403)"), so
+ * isRetriableTtsError does not retry it: a missing consent record is not a
+ * transient failure, and retrying it eight times helps nobody.
+ *
+ * ONLY WHERE THE QUESTION IS REAL. A vendor's stock voice has no person behind
+ * it to ask; the gate applies to clones this estate made, to human recordists,
+ * and to any voice somebody has already recorded a consent state for. See
+ * services/shared/voice-consent-gate.cjs.
+ *
+ * The voice id is read from the same place every provider branch reads it, so
+ * there is no branch where the guard sees a different voice from the one that
+ * ends up speaking.
+ */
+async function assertConsentedVoice(config, provider = null) {
+  const voiceId = config?.voiceId || config?.voice_id || config?.voiceName;
+  if (!voiceId) return;
+  let db = null;
+  try {
+    db = require('./supabase-client.cjs').getClient();
+  } catch (err) {
+    // Fail closed for anything we can recognise as a person without a client;
+    // the gate itself decides, this only supplies (or fails to supply) the door.
+    db = null;
+  }
+  await consentGate.assertConsented(String(voiceId), { db, tts: true, provider: provider || config?.provider || null, context: 'tts-service.generate' });
+}
+
 function assertNotHumanVoiceCourse(config) {
   const courseCode = config?.courseCode;
   if (courseCode && isHumanVoiceCourse(courseCode)) {
@@ -651,6 +688,8 @@ async function generate(text, provider, config) {
 
   assertNotChildVoice(config);
   assertNotHumanVoiceCourse(config);
+  // NO CONSENT, NO SPEECH (Tom, 2026-08-31). See assertConsentedVoice above.
+  await assertConsentedVoice(config, provider);
   // xAI RETIRED FROM SELECTION (Tom, 2026-08-27). Same defence pattern as the
   // two guards above, and here for the same reason: this switch is the one
   // chokepoint EVERY provider path passes through — the five call sites in
@@ -916,6 +955,7 @@ function getVoiceForRole(role, voiceMapping) {
 }
 
 module.exports = {
+  assertConsentedVoice,
   generate,
   generateWithRetry,
   isRetriableTtsError,

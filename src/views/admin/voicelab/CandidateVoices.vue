@@ -38,6 +38,26 @@ defineProps({
 })
 
 defineEmits(['play', 'cast'])
+
+/**
+ * NO CONSENT, NO CAST BUTTON (Tom's ruling, 2026-08-31).
+ *
+ * This screen used to show a confirm dialog with "Cast it anyway?" behind it.
+ * Tom has ruled that out: "we are never going to use a voice without consent".
+ * A dialog with a way through is a warning, and a warning is what was already
+ * there.
+ *
+ * The DECISION is still the backend's — `c.consent` is the block
+ * services/voicelab/consent.cjs computed, and this reads the two flags it
+ * publishes rather than forming a second opinion about consent in a Vue file.
+ * `aboutAPerson` is false for every vendor stock voice, so nothing changes for
+ * the 290 catalogue voices; only a clone or a real recordist can be blocked.
+ */
+function blockedFor (c) {
+  const k = c && c.consent
+  if (!k || !k.aboutAPerson || k.authorised) return ''
+  return k.castWarning || k.summary || 'No consent is recorded for this voice.'
+}
 </script>
 
 <template>
@@ -76,8 +96,15 @@ defineEmits(['play', 'cast'])
       <span v-if="paceSuffix(c)" class="vl-cand-pace">{{ paceSuffix(c) }}</span>
       <span v-if="samples[c.voiceId] && samples[c.voiceId].free" class="vl-cand-free" title="Already in the estate — hearing it spends nothing">free</span>
 
-      <!-- CAST IT. One tap, no confirm, reversible with Clear. -->
-      <button class="vl-cand-cast" :disabled="busy" @click="$emit('cast', c.voiceId)">Cast</button>
+      <!-- CAST IT. One tap, no confirm, reversible with Clear.
+           UNLESS NOBODY HAS CONSENTED (Tom, 2026-08-31: "we are never going to
+           use a voice without consent"). Then there is no button at all — not a
+           disabled one you can argue with, and not a dialog you can click
+           through. The row says what is missing and what to do about it, and
+           the `consent…` editor beside it is the way through. The server
+           refuses this identically, so a stale tab cannot cast either. -->
+      <span v-if="blockedFor(c)" class="vl-cand-noconsent" :title="blockedFor(c)">consent needed</span>
+      <button v-else class="vl-cand-cast" :disabled="busy" @click="$emit('cast', c.voiceId)">Cast</button>
     </div>
   </div>
 </template>
@@ -105,4 +132,11 @@ defineEmits(['play', 'cast'])
 .vl-cand-cast { flex: none; padding: .25rem .7rem; font-size: .8125rem; font-weight: 600; }
 .vl-cand-cast:hover:not(:disabled) { background: var(--accent, #6366f1); border-color: var(--accent, #6366f1); color: #fff; }
 .vl-cand-cast:disabled { opacity: .5; cursor: default; }
+/* Not a disabled button — a statement. A greyed-out control invites a hunt for
+   the way to enable it; this says what is missing instead. */
+.vl-cand-noconsent {
+  flex: none; padding: .25rem .5rem; font-size: .75rem; font-weight: 600;
+  border-radius: 6px; color: var(--hue-warn-fg, #b45309);
+  background: var(--hue-warn-bg, rgba(245, 158, 11, .14));
+}
 </style>
