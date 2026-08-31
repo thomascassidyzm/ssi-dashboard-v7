@@ -1,0 +1,342 @@
+{
+  "$schema": "../../../../schemas/metagraph-v1-schema.json",
+  "concept": "walk-set",
+  "version": 2,
+  "walk_set": "core-scene-0",
+  "authored": true,
+  "source": {
+    "kind": "authored",
+    "job": "Re-author CORE scene 0 — restaged in POD-1 (2026-08-31, second attempt)",
+    "shape": "N1201 Medium contract, offer realisation, as ratified at cd9d93e2f",
+    "supersedes": "The first attempt (branch feat/core-scene-0-2026-08-31, W1201–W1204) staged the contract between two neighbours arranging a parcel. Tom rejected the content: a world with no pressure and no consequence cannot motivate a decline, so the decline read as a mood. This version keeps the ratified shape and every settled design decision, and restages the scene inside POD 1's own transactional world, where the declines have reasons.",
+    "branches": ["S1201 the medium offer declined (both attested accounts)", "S1202 the offer diverted into biography"],
+    "document": "docs/pods/core-scene-0-v2-2026-08-31.md",
+    "statement": "AUTHORED, NOT TRANSCRIBED. Every surface line in this file was written for this scene against the ratified shape. There is no corpus behind it: no `row` appears anywhere, no g-number is cited, and no line here is attested speech. The scenarios are pod-0's (the café of W1, the check-in of W10) but not one line is copied from a corpus row as a transcription claim. Do not merge these counts into a corpus accounting."
+  },
+  "format": "A walk is a sequence of NODE REFERENCES. Each step names a node and a position; the surface sentence is a property of the step, never the step itself. Copied from walks/pod-0.json so coverage stays computable without parsing prose.",
+  "walk_kind": "listening",
+  "register": {
+    "sector_free": true,
+    "culture_free": true,
+    "note": "CORE carries no sector and no culture, and the transactional trunk is what makes that possible here: a café counter and a hotel desk exist everywhere, and a till is not a sector. The stakes come from the business at hand — a queue, a booking date — never from a sector's register. No country, institution, language, profession or civic cause is named in any turn. The applause economy, the institutional fallback, the duty-of-care stakes-raiser and the offence-disclaimer tail stay stripped per the ratification.",
+    "known_text": "English is the canonical pod known text and is pair-invariant. The languages are named deictically — 'your language' / 'mine' / 'yours' — so the scene instantiates in any pair without a template slot; the pair overlay may substitute names on the target side. Deixis discipline, which the first attempt broke: the learner's own language is the FALLBACK, so a counterpart who declines the offer proposes the LEARNER'S language ('let's stick to yours'), never their own — declining into the local language would be declining into the very thing the learner offered to attempt, which is the nonsense Tom caught.",
+    "cast": "Pod-0's own convention and pod-0's own people: Sarah and the Barista at the café (W1's cast), the Guest and the Receptionist at the check-in (W10's cast). The learner is a visitor at a counter, which is why the offer makes obvious sense — a visitor asking to do the business in the local language is a thing people actually do."
+  },
+  "attachment": {
+    "policy": "A recovery ATTACHES rather than appends (the audit's attachment mechanics). W1212 and W1214 are literal continuations of W1211 step 2 — the same turn at the same counter, answered differently. W1213 attaches at the same POSITION (N1201 position 2) but restages it at the check-in desk, because the stakes account needs a business made of dates and numbers; its step 1 is the same ask realised in that scenario.",
+    "point": { "walk": "W1211", "step": 2, "node": "N1201", "position": 2 },
+    "staging_note": "The café branches are the same ask on different afternoons — the grant is motivated by a quiet moment, the capacity decline by a queue. The answers are the teaching; the weather is staging, and a listening learner meets one walk at a time."
+  },
+  "accounting": {
+    "authored_walks": 4,
+    "turns_per_walk": 6,
+    "turns_total": 24,
+    "corpus_rows": 0,
+    "corpus_rows_note": "Zero, and that is the point: nothing here is a transcription.",
+    "trunk_walk": "W1211 — positions 1-5 of N1201 on the offer realisation, plus the uptake of the pivot as the sixth turn",
+    "branch_walks": {
+      "W1212": "S1201, capacity account, scoped to right now — the counterpart is rushed, with a queue to prove it",
+      "W1213": "S1201, stakes account, scoped to a domain — dates and numbers, at the desk where dates and numbers are the business",
+      "W1214": "S1202, diverted into biography — with a queue building, so the self-pivot has a reason"
+    },
+    "positions_covered": [1, 2, 3, 4, 5],
+    "gap": "The notice realisation of position 1 has no walk here. Scene 0 is the OFFER, because the offer is the realisation that branches and the branches are half of this scene's job (Tom's ruling of 2026-08-31: the notice is the primitive and carries no branch). A notice-realisation scene is authorable and is not authored here."
+  },
+  "coverage_of_the_graph": {
+    "nodes": ["N1201", "N2", "N4", "N5", "N7"],
+    "composition_edges_used": ["C1201", "C1202"],
+    "survivability_edges_touched": ["S1201", "S1202"],
+    "not_covered": "C1203 (the participant admission, N9 inside position 2) is attested and ratified but is not staged in scene 0 — a third party joining is a sector-pod opening variant, not trunk business."
+  },
+  "walks": [
+    {
+      "id": "W1211",
+      "name": "Scene 0 — the medium contract, the offer taken up (the café)",
+      "scene": 0,
+      "nodes_traversed": ["N1201", "N2", "N4"],
+      "composition_edges_used": [],
+      "survivability_edges_touched": [],
+      "note": "N1's open has already run when this starts — the contract wraps the hello rather than replacing it, which is why turn 1 opens 'Before I order'. Six turns: five positions and the uptake of the pivot. The pivot is not a new arrangement here; at a counter the business IS the order, so position 5 composes into N2 position 2, and the counterpart's uptake is the order read back — N4 position 3, exactly the move pod-0's own W10 cites.",
+      "steps": [
+        {
+          "step": 1,
+          "node": "N1201",
+          "position": 1,
+          "speaker": "Sarah",
+          "surface": "Before I order — I'm learning your language, and I'd like to do the whole thing in it, if that's all right with you. I'm slow at it, so if I get properly stuck I might have to go back to mine.",
+          "move": null,
+          "realisation": "offer",
+          "note": "Declaration, proposal of the weaker medium, the fallback named, and the ask. The ask is what makes this the offer rather than the notice, and it is the ask that the branches hang off. A visitor at a counter asking to do the business in the local language needs no further motivation — that is what the transactional staging buys."
+        },
+        {
+          "step": 2,
+          "node": "N1201",
+          "position": 2,
+          "speaker": "Barista",
+          "surface": "Of course — it's quiet, go ahead. We'll get there between us.",
+          "move": "F14",
+          "note": "Grant + reassure, and the world motivates the grant: a quiet counter has time. Flat and friendly on purpose — in a pair with no politics around the language there is no applause economy, and the scene must not depend on ceremony it will not get."
+        },
+        {
+          "step": 3,
+          "node": "N1201",
+          "position": 3,
+          "speaker": "Sarah",
+          "surface": "Thank you. And if I say something wrong, stop me and say it right — I'd rather be stopped. I'll ask you if I don't follow.",
+          "move": null,
+          "note": "The standing repair licence, at full strength: mutual ('I'll ask you if I don't follow') and pre-disarmed ('I'd rather be stopped'). Issued before the trouble it covers — that is the whole shape in one turn."
+        },
+        {
+          "step": 4,
+          "node": "N1201",
+          "position": 4,
+          "speaker": "Barista",
+          "surface": "I will. Don't worry.",
+          "move": "F1",
+          "note": "Accept the licence, and nothing else — F1 exactly."
+        },
+        {
+          "step": 5,
+          "node": "N1201",
+          "position": 5,
+          "speaker": "Sarah",
+          "surface": "Right then. I'd like a coffee, please — with milk, no sugar. To take away.",
+          "move": "F21",
+          "composed_in": { "node": "N2", "position": 2 },
+          "pivot_to_position": 2,
+          "note": "Pivot to business. The contract closes and the trunk starts: at a counter the pivot IS the order, so it composes into N2 position 2 — the same order W1's Sarah places, because scene 0 hands the encounter to the trunk it prologues."
+        },
+        {
+          "step": 6,
+          "node": "N4",
+          "position": 3,
+          "speaker": "Barista",
+          "surface": "One coffee with milk, no sugar, to take away. Won't be a minute.",
+          "move": "F1",
+          "note": "The pivot taken up, as a read-back — N4 position 3, the move W10 attests at the desk. Real work, not padding: a pivot nobody answers has not been shown to be a pivot."
+        }
+      ]
+    },
+    {
+      "id": "W1212",
+      "name": "Scene 0 — the offer declined, capacity account (S1201, the café)",
+      "scene": 0,
+      "nodes_traversed": ["N1201", "N7", "N2", "N4"],
+      "composition_edges_used": ["C1202"],
+      "survivability_edges_touched": ["S1201"],
+      "attaches_to": { "walk": "W1211", "step": 2, "node": "N1201", "position": 2 },
+      "note": "The other continuation of turn 2, and the world now supplies what the first attempt could not: a REASON. The account is CAPACITY, scoped to right now, and the queue behind the learner is standing there proving it. 'Come in when it's quiet' is the re-offer licence made explicit — the capacity account's implicit licence, spoken because the world gives it a natural form.",
+      "steps": [
+        {
+          "step": 1,
+          "node": "N1201",
+          "position": 1,
+          "speaker": "Sarah",
+          "surface": "Before I order — I'm learning your language, and I'd like to do the whole thing in it, if that's all right with you. I'm slow at it, so if I get properly stuck I might have to go back to mine.",
+          "move": null,
+          "realisation": "offer",
+          "note": "Identical to W1211 step 1. The branch is in the answer, never in the ask."
+        },
+        {
+          "step": 2,
+          "node": "N7",
+          "position": 2,
+          "speaker": "Barista",
+          "surface": "Any other day, gladly — but I'm on my own this morning and there's a queue building behind you. Let's stick to yours for now, if you don't mind.",
+          "move": "F5",
+          "composed_in": { "node": "N1201", "position": 2 },
+          "branch_point": true,
+          "note": "The decline: refusal, account, counter-proposal of the other medium, all in one turn — arrangement mechanics running inside the contract, C1202. Deixis, corrected from the first attempt: the counterpart declines INTO THE LEARNER'S language ('yours'), the shared fallback — never into their own, which is the very language the learner just offered to attempt. And the account is checkable by looking over your shoulder: the queue is real."
+        },
+        {
+          "step": 3,
+          "node": "N7",
+          "position": 4,
+          "speaker": "Sarah",
+          "surface": "Of course — you've got your hands full. Mine it is.",
+          "move": "F1",
+          "note": "Recovery moves 1 and 2: yield instantly — no relitigating, no second offer — and ratify the choice as the sensible one. Accepting the counter-proposed medium is N7 position 4."
+        },
+        {
+          "step": 4,
+          "node": "N1201",
+          "position": 2,
+          "speaker": "Barista",
+          "surface": "It's nothing to do with how you speak — you sound fine. Come in when it's quiet and we'll do the whole thing properly.",
+          "move": null,
+          "note": "Recovery move 3: de-personalise the refusal — position 2's REASSURE half survives the decline even though its grant half did not, which is why this sits at position 2 and not somewhere new. The offence-disclaimer tail stays stripped; the queue does the de-personalising, and the re-offer licence arrives on the same breath because the scope was 'right now', not 'you'."
+        },
+        {
+          "step": 5,
+          "node": "N1201",
+          "position": 5,
+          "speaker": "Sarah",
+          "surface": "I'll hold you to that. A coffee with milk, please — no sugar, to take away.",
+          "move": "F21",
+          "composed_in": { "node": "N2", "position": 2 },
+          "pivot_to_position": 2,
+          "note": "Recovery move 4: re-anchor rapport and pivot. 'I'll hold you to that' takes up the re-offer licence in four words, and the order follows in the fallback — the contract just agreed is honoured immediately."
+        },
+        {
+          "step": 6,
+          "node": "N4",
+          "position": 3,
+          "speaker": "Barista",
+          "surface": "One coffee with milk, no sugar, to take away. Won't be a minute.",
+          "move": "F1",
+          "note": "The walk ends where the trunk walk ends. The offer was refused at zero cost, the coffee arrives all the same, and the encounter is unharmed — which is the whole point of teaching this branch."
+        }
+      ]
+    },
+    {
+      "id": "W1213",
+      "name": "Scene 0 — the offer declined for one domain, stakes account (S1201, the check-in)",
+      "scene": 0,
+      "nodes_traversed": ["N1201", "N7", "N2", "N4"],
+      "composition_edges_used": ["C1202"],
+      "survivability_edges_touched": ["S1201"],
+      "attaches_to": {
+        "walk": "W1211",
+        "step": 2,
+        "node": "N1201",
+        "position": 2,
+        "restaged": "Positional attachment: the same ask answered differently, but its host scenario is W10's check-in desk rather than the café, because the stakes account needs a business made of dates and numbers. Step 1 is position 1 realised in that scenario."
+      },
+      "note": "The same branch, the other attested account: STAKES, scoped to a domain. The corpus's domain is medical and the sector is stripped, so the domain here is the thing that has to be exact — dates and numbers — and the desk is where dates and numbers ARE the business. The decline is the counterpart being careful, not reluctant: a misheard check-out morning is a real consequence in any country. The scope then bites at the pivot, exactly as the Bologna pharmacist's does at the dosage.",
+      "steps": [
+        {
+          "step": 1,
+          "node": "N1201",
+          "position": 1,
+          "speaker": "Guest",
+          "surface": "Before we do the booking — I'm learning your language, and I'd like to check in using it, if that's all right with you. I'm slow at it, so if I get properly stuck I might have to ask you to go back to mine.",
+          "move": null,
+          "realisation": "offer",
+          "note": "Position 1 restaged at the desk. Same declaration, same proposal, same named fallback, same ask."
+        },
+        {
+          "step": 2,
+          "node": "N7",
+          "position": 2,
+          "speaker": "Receptionist",
+          "surface": "Gladly — but let's do the dates and the numbers in yours. I'd want us both sure you're booked out on the right morning.",
+          "move": "F5",
+          "composed_in": { "node": "N1201", "position": 2 },
+          "branch_point": true,
+          "note": "A partial decline: the medium is granted everywhere except one domain, the domain is named, and the world says why — get a date wrong at this desk and someone loses a room. Counter-proposal in the same turn, C1202 again. 'In yours' = the guest's language, the fallback: same deixis correction as W1212."
+        },
+        {
+          "step": 3,
+          "node": "N7",
+          "position": 4,
+          "speaker": "Guest",
+          "surface": "That's fair — I'd want to be sure too. Yours for the talking, mine for anything with a number in it.",
+          "move": "F1",
+          "note": "Yield and ratify in one turn, and restate the scope so both parties are holding the same contract. The de-personalising is done by the account itself: it is about the dates, not about the guest."
+        },
+        {
+          "step": 4,
+          "node": "N1201",
+          "position": 2,
+          "speaker": "Receptionist",
+          "surface": "Perfect. Go ahead, then.",
+          "move": "F14",
+          "note": "The grant, scoped and now spoken. A domain-scoped decline is not a refusal of the offer; it is the offer accepted with a boundary drawn, and the learner still gets the encounter."
+        },
+        {
+          "step": 5,
+          "node": "N1201",
+          "position": 5,
+          "speaker": "Guest",
+          "surface": "Then here's the numbers part, in mine: I have a booking under the name Jones. A double room, three nights, leaving Friday morning.",
+          "move": "F21",
+          "composed_in": { "node": "N2", "position": 2 },
+          "pivot_to_position": 2,
+          "note": "The scope bites immediately — the business at hand IS dates and numbers, so the pivot itself is conducted in the fallback and the learner honours a contract they agreed to thirty seconds ago. The booking announcement is W10's own opening move, N2 position 2."
+        },
+        {
+          "step": 6,
+          "node": "N4",
+          "position": 3,
+          "speaker": "Receptionist",
+          "surface": "Jones — a double room, three nights, checking out Friday morning. That's exactly what I have. Welcome.",
+          "move": "F1",
+          "note": "The read-back, N4 position 3 — the move this desk exists to make (W10 attests it on this very scenario), now doing double duty: it takes up the pivot AND demonstrates why the receptionist wanted the numbers in the stronger medium. The scene argues its own stakes without a stakes-raiser being spoken."
+        }
+      ]
+    },
+    {
+      "id": "W1214",
+      "name": "Scene 0 — the offer diverted into biography (S1202, the café)",
+      "scene": 0,
+      "nodes_traversed": ["N1201", "N5", "N2", "N4"],
+      "composition_edges_used": ["C1201"],
+      "survivability_edges_touched": ["S1202"],
+      "attaches_to": { "walk": "W1211", "step": 2, "node": "N1201", "position": 2 },
+      "note": "The third continuation of turn 2. The offer is neither granted nor declined: it is turned into acquaintance. The grant is never spoken anywhere in this walk — acceptance happens by conduct, because the counterpart simply carries on in the medium — and the diversion never hands the encounter back. The queue building behind Sarah makes the trouble sharper, not weaker: someone is waiting, nobody is pivoting, and the learner has to take themself back.",
+      "steps": [
+        {
+          "step": 1,
+          "node": "N1201",
+          "position": 1,
+          "speaker": "Sarah",
+          "surface": "Before I order — I'm learning your language, and I'd like to do the whole thing in it, if that's all right with you. I'm slow at it, so if I get properly stuck I might have to go back to mine.",
+          "move": null,
+          "realisation": "offer",
+          "note": "Identical to W1211 step 1."
+        },
+        {
+          "step": 2,
+          "node": "N5",
+          "position": 1,
+          "speaker": "Barista",
+          "surface": "Where did you learn it, then? You didn't pick that up round here.",
+          "move": "F3",
+          "composed_in": { "node": "N1201", "position": 2 },
+          "branch_point": true,
+          "note": "Position 2 filled by a question instead of an answer — F3. Acquaintance mechanics running inside the contract: C1201. Nothing has been granted and nothing refused — but the question is asked in the medium the learner offered, which is the acceptance-by-conduct already begun."
+        },
+        {
+          "step": 3,
+          "node": "N5",
+          "position": 2,
+          "speaker": "Sarah",
+          "surface": "On my own, mostly — a little every day on the way to work. I still get most of it wrong. Did you ever learn one yourself?",
+          "move": "F11",
+          "note": "Biography answered and the question handed back — the return is of the same question, not of the same words, which is F11 doing its job in a walk rather than in a drill."
+        },
+        {
+          "step": 4,
+          "node": "N5",
+          "position": 2,
+          "speaker": "Barista",
+          "surface": "A bit at school, and none of it stuck. You're further on than I ever got.",
+          "move": null,
+          "note": "The interlude runs on, warm, and shows no sign of ending — and the queue is growing. This is the trouble the branch exists to teach: nobody is going to give the encounter back."
+        },
+        {
+          "step": 5,
+          "node": "N1201",
+          "position": 3,
+          "speaker": "Sarah",
+          "surface": "You'd have it back in a week. — And I'm holding up your queue. A coffee with milk, please — no sugar, to take away. And stop me if I say it wrong.",
+          "move": "F21",
+          "also": "N1201.5 — the self-initiated pivot rides the same turn",
+          "composed_in": { "node": "N2", "position": 2 },
+          "pivot_to_position": 2,
+          "note": "The recovery, complete and in one turn: acknowledge the biography warmly, SELF-INITIATE the pivot — with a reason the room can see, the queue — and issue the repair licence on the way through, salvaging positions 3 and 4 from a turn that was never going to arrive. Exactly the corpus's own recovery, twice attested, now with the world supplying the motive."
+        },
+        {
+          "step": 6,
+          "node": "N4",
+          "position": 3,
+          "speaker": "Barista",
+          "surface": "One coffee with milk, no sugar, to take away — and I will, don't you worry.",
+          "move": "F1",
+          "also": "N1201.4 — the licence accepted",
+          "note": "Acceptance of the medium by conduct: the grant was never spoken and the counterpart is still in the language, now reading the order back. The licence, issued late, is accepted normally."
+        }
+      ]
+    }
+  ]
+}
