@@ -44,6 +44,18 @@
     </section>
 
 
+    <!-- THE SECOND STAMP, when it is what the assignment is waiting on. They
+         have already said yes once; nobody is asked to say it twice. -->
+    <section v-if="awaitingConfirmation" class="card consent-card">
+      <h2>{{ memberName(awaitingConfirmation.email) }} still has to hear their voice</h2>
+      <p class="hint">{{ awaitingConfirmation.message }}</p>
+      <p class="hint">
+        Their clone is made in the Voice Lab, and the confirm and reject buttons sit under it
+        there — play it to them, and this assignment goes through the moment they say yes.
+      </p>
+      <button class="btn" @click="awaitingConfirmation = null">close</button>
+    </section>
+
     <!-- Consent — a step of onboarding, not a screen you can click past -->
     <section v-if="consentFor" class="card consent-card">
       <h2>Before {{ memberName(consentFor.email) }} records: their permission</h2>
@@ -211,6 +223,7 @@ const slotPick = ref({ target1: '', target2: '' })
 // this panel is how the yes gets recorded — in the same breath, with the person
 // sitting there, rather than as a chore somebody does later or never.
 const consentFor = ref(null)          // { email, slot } — the assignment waiting on it
+const awaitingConfirmation = ref(null) // { email, message } — waiting on them hearing the clone
 const consentBusy = ref(false)
 const consentError = ref(null)
 const consentHeard = ref(null)        // what whisper heard, quoted back on a refusal
@@ -303,12 +316,19 @@ async function assign(email, slot) {
     await api('/assign-slot', { method: 'POST', body: JSON.stringify({ email, slot }) })
     slotPick.value[slot] = ''
     consentFor.value = null
+    awaitingConfirmation.value = null
     await loadTeam()
   } catch (err) {
     // Not an error to show and abandon — it is the next step of onboarding.
     // The server refused to create this person's voice because nobody has asked
     // them yet, so ask them, right here, and finish the assignment after.
-    if (err.detail && err.detail.needsOnboardingConsent) {
+    if (err.detail && err.detail.needsCloneConfirmation) {
+      // THE SECOND STAMP IS OUTSTANDING (Tom, 2026-08-31). They have already
+      // read the line aloud; what is left is hearing their own clone and saying
+      // yes to it. Asking them to consent again here would look like the system
+      // had lost the answer they gave, so the screen says which step is left.
+      awaitingConfirmation.value = { email, message: err.message }
+    } else if (err.detail && err.detail.needsOnboardingConsent) {
       await openConsent(email, slot)
     } else {
       error.value = err.message

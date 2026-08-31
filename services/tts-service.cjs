@@ -241,6 +241,21 @@ function assertNotChildVoice(config) {
 async function assertConsentedVoice(config, provider = null) {
   const voiceId = config?.voiceId || config?.voice_id || config?.voiceName;
   if (!voiceId) return;
+  // ONE NARROW EXCEPTION (Tom, 2026-08-31): the person hearing their own clone
+  // so they can confirm or reject it. Without it the confirmation step
+  // deadlocks — the clone cannot be rendered until it is confirmed, and cannot
+  // be confirmed until it has been heard. The flag does not weaken anything on
+  // its own: assertHearableForDecision opens only for a voice that has a
+  // recorded declaration and is waiting to be heard, and refuses a refused,
+  // withdrawn or never-declared voice exactly as the ordinary door does. Set by
+  // one caller: the Voice Lab's confirmation audition.
+  if (config?.consentAudition) {
+    await consentGate.assertHearableForDecision(String(voiceId), {
+      provider: provider || config?.provider || null,
+      context: 'clone confirmation audition',
+    });
+    return;
+  }
   await consentGate.assertConsentedForRender(String(voiceId), {
     provider: provider || config?.provider || null,
     context: 'tts-service.generate',

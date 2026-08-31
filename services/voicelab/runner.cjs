@@ -55,8 +55,15 @@ function load () {
  * identical to the one before it and a lab report claiming that knob was tested.
  */
 function providerConfig (cfg, lang) {
+  // THE ONE FLAG THAT TRAVELS. `consentAudition` says this render exists so a
+  // person can hear their own unconfirmed clone and decide about it, and
+  // tts-service reads it to pick the narrow consent door rather than the
+  // ordinary one (services/shared/voice-consent-gate.cjs). It is passed through
+  // rather than defaulted here, so a lab run cannot acquire it by accident.
+  const forDecision = cfg.consentAudition ? { consentAudition: true } : {}
   if (cfg.provider === 'azure') {
     return {
+      ...forDecision,
       subscriptionKey: process.env.AZURE_SPEECH_KEY,
       region: process.env.AZURE_SPEECH_REGION || 'westeurope',
       voiceName: cfg.voiceId,
@@ -65,6 +72,7 @@ function providerConfig (cfg, lang) {
   }
   if (cfg.provider === 'cartesia') {
     return {
+      ...forDecision,
       apiKey: process.env.CARTESIA_API_KEY,
       voiceId: cfg.voiceId,
       // `locale`, not `language`: generateCartesia steers on locale and THROWS

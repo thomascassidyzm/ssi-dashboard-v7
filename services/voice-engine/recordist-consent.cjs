@@ -43,6 +43,7 @@
 'use strict'
 
 const consent = require('../voicelab/consent.cjs')
+const cloneConfirmation = require('../voicelab/clone-confirmation.cjs')
 const { mintVoiceId, isOwnMint, targetLangFromCourseCode } = require('./voice-slots.cjs')
 
 /**
@@ -81,7 +82,7 @@ async function onboardConsentedVoice (db, {
   recordedBy = null,
   isTaken,
 }) {
-  if (!declarationRecord || declarationRecord.consent_status !== 'authorised') {
+  if (!declarationRecord || !declarationRecord.consent_declaration_kind) {
     // Belt and braces on the module's whole reason for existing. Nothing in
     // this file may write a voice row for a person who has not said yes.
     throw Object.assign(
@@ -89,6 +90,15 @@ async function onboardConsentedVoice (db, {
       { status: 400, code: 'NO_RECORDED_CONSENT' },
     )
   }
+
+  // THE FIRST OF TWO STAMPS (Tom, 2026-08-31). Sign-up captures the yes; it no
+  // longer casts anything on its own. "automatic consent is better and then a
+  // click to confirm or something, once voice clone has been generated" — so
+  // the id is minted with the declaration on it and the voice sits in the
+  // ordinary `awaiting_authorisation` state, refused by the ordinary block,
+  // until the person has heard their clone and confirmed it.
+  // services/voicelab/clone-confirmation.cjs.
+  const heldRecord = cloneConfirmation.awaitingHearing(declarationRecord)
 
   const reused = isOwnMint(existingVoiceId, email, courseCode)
   const voiceId = reused
@@ -121,7 +131,7 @@ async function onboardConsentedVoice (db, {
     notes: `Recordist on ${courseCode}${recordedBy ? `, onboarded by ${recordedBy}` : ''}.`,
     updated_at: new Date().toISOString(),
     ...birth,
-    ...declarationRecord,
+    ...heldRecord,
   }
 
   const { data, error } = await db.from('voices').upsert(row, { onConflict: 'voice_id' }).select().single()

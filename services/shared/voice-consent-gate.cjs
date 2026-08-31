@@ -58,6 +58,7 @@
 'use strict'
 
 const consent = require('../voicelab/consent.cjs')
+const cloneConfirmation = require('../voicelab/clone-confirmation.cjs')
 const { voiceSpellings } = require('./clip-identity-lookup.cjs')
 const { PROVIDERS } = require('./clip-identity.cjs')
 
@@ -101,6 +102,14 @@ function refusalMessage (status, voiceId, voice) {
   const who = nameOf(voiceId, voice)
   switch (status) {
     case 'awaiting_authorisation':
+      // TWO WAYS TO BE HERE, and they need different next steps (2026-08-31).
+      // Somebody who declared at sign-up is not somebody nobody has asked: they
+      // have said yes once and are waiting to hear the clone. Saying "ask them"
+      // to an operator who already did would read as the system losing the
+      // answer they gave.
+      if (cloneConfirmation.isHearableForDecision(voice)) {
+        return `${who} agreed at sign-up but has not heard this clone yet. Play it to them, and this goes through the moment they confirm it sounds like them.`
+      }
       return `${who} has not authorised this voice yet. Ask them, record their answer on the voice in the Voice Lab, and then this will go through.`
     case 'refused':
       return `${who} said no to their voice being used. This voice cannot be used. Pick a different one.`
@@ -149,15 +158,28 @@ const defaultCache = new Map()
 async function verdictFor (voiceId, { db, provider = null, cache = defaultCache } = {}) {
   const id = String(voiceId || '').trim()
   if (!id) return { allowed: true, aboutAPerson: false, status: 'not_recorded' }
+  const read = await readVoice(id, { db, provider, cache })
+  if (read.unreadable) return read.unreadable
+  return verdict({ voiceId: id, voice: read.voice })
+}
 
+/**
+ * The `voices` row behind an id, cached, or the fail-closed verdict to return
+ * instead of one.
+ *
+ * Separated from verdictFor so that the ONE other question anybody may ask of a
+ * voice — "may the person hear it in order to decide?" — reads the same row
+ * through the same cache and the same spellings, rather than growing its own
+ * lookup that misses the `cartesia_` prefix in a way nobody notices for a month.
+ */
+async function readVoice (id, { db, provider = null, cache = defaultCache } = {}) {
   const hit = cache.get(id)
-  if (hit && Date.now() - hit.at < CACHE_MS) return verdict({ voiceId: id, voice: hit.voice })
+  if (hit && Date.now() - hit.at < CACHE_MS) return { voice: hit.voice }
 
   if (!db) {
     // No client to ask. Fail closed for the ids we can recognise as people
     // without one; a stock catalogue id is still not a person and is still fine.
-    if (!looksLikeAPerson(id)) return { allowed: true, aboutAPerson: false, status: 'not_recorded' }
-    return verdict({ voiceId: id, voice: null })
+    return { voice: null }
   }
 
   // EVERY SPELLING, or the gate is a sieve. The registry stores Tom's Cartesia
@@ -173,18 +195,20 @@ async function verdictFor (voiceId, { db, provider = null, cache = defaultCache 
   if (error) {
     // FAIL CLOSED. An unreadable consent record is not consent.
     return {
-      allowed: false,
-      aboutAPerson: true,
-      status: 'unreadable',
-      code: 'CONSENT_UNREADABLE',
-      message: `The consent record for ${id} could not be read, so this voice has not been used. Try again in a moment; if it keeps happening the voices table is unreachable (${error.message}).`,
+      voice: null,
+      unreadable: {
+        allowed: false,
+        aboutAPerson: true,
+        status: 'unreadable',
+        code: 'CONSENT_UNREADABLE',
+        message: `The consent record for ${id} could not be read, so this voice has not been used. Try again in a moment; if it keeps happening the voices table is unreachable (${error.message}).`,
+      },
     }
   }
   const row = Array.isArray(data) ? (data[0] || null) : (data || null)
   cache.set(id, { at: Date.now(), voice: row })
-  return verdict({ voiceId: id, voice: row })
+  return { voice: row }
 }
-
 
 /**
  * EVERY SPELLING, or the gate is a sieve.
@@ -253,8 +277,51 @@ async function assertConsentedForRender (voiceId, { context = '', provider = nul
   return assertConsented(voiceId, { db, tts: true, provider, context })
 }
 
+/**
+ * MAY THE PERSON HEAR THIS VOICE IN ORDER TO DECIDE ABOUT IT?
+ *
+ * The one deliberate hole in "no consent, no speech", and the flow does not
+ * work without it: an unconfirmed clone cannot be rendered, so the person can
+ * never hear the thing they are being asked to confirm. That is a deadlock, and
+ * a deadlock in a consent flow gets solved by somebody switching the gate off.
+ *
+ * It is shaped so that it can only ever be used for the thing it is for:
+ *   - the ORDINARY verdict is tried first, so a confirmed voice comes through
+ *     the front door and this branch is not involved;
+ *   - it opens ONLY for `awaiting_hearing` — declared, not yet heard. A voice
+ *     nobody has declared for stays refused, and so do `refused` and
+ *     `withdrawn`: somebody has said no, and "play it once more" is how a no
+ *     gets worn down;
+ *   - it is a SEPARATE EXPORT rather than a flag on assertConsented, so no
+ *     caller can widen the ordinary door by passing an option.
+ * What comes out is played to one person, once, and stored in the Voice Lab's
+ * own clip store. It never reaches course_audio and it casts nothing.
+ */
+async function assertHearableForDecision (voiceId, { db, context = '', provider = null, cache } = {}) {
+  const id = String(voiceId || '').trim()
+  let client = db
+  if (client === undefined) {
+    try { client = require('../supabase-client.cjs').getClient() } catch { client = null }
+  }
+  const v = await verdictFor(id, { db: client, provider, cache })
+  if (v.allowed) return { ...v, forDecision: false }
+
+  const read = await readVoice(id, { db: client, provider, cache })
+  if (!read.unreadable && cloneConfirmation.isHearableForDecision(read.voice)) {
+    return { allowed: true, aboutAPerson: true, status: 'awaiting_authorisation', forDecision: true }
+  }
+  const where = context ? ` [${context}]` : ''
+  const err = new Error(`Voice consent blocked (403): ${v.message}${where}`)
+  err.status = 409
+  err.code = v.code
+  err.detail = { code: v.code, voiceId: id, consentStatus: v.status, person: v.person || null }
+  throw err
+}
+
 module.exports = {
   assertConsentedForRender,
+  assertHearableForDecision,
+  readVoice,
   spellingsToTry,
   CACHE_MS,
   looksLikeAPerson,

@@ -213,6 +213,14 @@ export const api = {
   recordConsent: (voiceId, body) =>
     call(`/api/voicelab/voices/${encodeURIComponent(voiceId)}/consent`, { method: 'PUT', body }),
 
+  // THE SECOND STAMP (Tom, 2026-08-31). A clone is born declared-but-unheard and
+  // is refused everywhere until the person has heard it and confirmed it. The
+  // POST takes 'confirm' or 'reject'; a reject writes `refused`, which is final.
+  cloneConfirmation: (voiceId) =>
+    call(`/api/voicelab/voices/${encodeURIComponent(voiceId)}/confirmation`),
+  decideCloneConfirmation: (voiceId, body) =>
+    call(`/api/voicelab/voices/${encodeURIComponent(voiceId)}/confirmation`, { method: 'POST', body }),
+
   // Un-create. Refused outright while the voice is cast into any slot.
   removeVoice: (voiceId) =>
     call(`/api/voicelab/voices/${encodeURIComponent(voiceId)}`, { method: 'DELETE' }),
