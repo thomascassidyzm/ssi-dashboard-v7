@@ -694,7 +694,7 @@ function clonesFor (s3Key) {
  */
 async function cloneOne (clip) {
   if (!clonePerson.value) { error.value = 'Type whose voice this is first — one field, at the top.'; return }
-  const entry = {
+  const draft = {
     id: `c${++cloneSeq}`,
     s3Key: clip.s3Key,
     clip,
@@ -708,7 +708,22 @@ async function cloneOne (clip) {
     line: demoLine.value,
     error: '',
   }
-  clones.value = [...clones.value, entry]
+  // ⚠️ TAKE THE ENTRY BACK OUT OF THE ARRAY BEFORE MUTATING IT.
+  //
+  // `clones` is a ref, so reading `clones.value` hands out a REACTIVE PROXY of
+  // each object in it. The literal above is the RAW object, and writing to the
+  // raw object updates the data without notifying anything — the screen keeps
+  // rendering whatever it last drew.
+  //
+  // Measured on live popty.app, 2026-08-31: a one-tap estate clone completed
+  // at Cartesia and was written to `voices`, and ninety seconds later the row
+  // still read "cloning — 0s". The seconds never counted and the finished
+  // clone never appeared. The deliberate route hid the same bug by accident,
+  // because it also writes `cloneBusy` and `cloneFile`, and those repaint the
+  // panel — so the one-tap route, which is the route the live demo uses, was
+  // the only one visibly broken.
+  clones.value = [...clones.value, draft]
+  const entry = clones.value[clones.value.length - 1]
   const tick = setInterval(() => { entry.seconds += 1 }, 1000)
   try {
     const made = await api.cloneFromEstate({
@@ -832,7 +847,7 @@ async function submitClone () {
   error.value = ''
   const fromEstate = cloneSource.value === 'estate'
   const picked = speakerClips.value.filter((c) => pickedKeys.value.includes(c.s3Key))
-  const entry = {
+  const draft = {
     id: `c${++cloneSeq}`,
     s3Key: fromEstate && picked.length === 1 ? picked[0].s3Key : null,
     clip: fromEstate && picked.length === 1 ? picked[0] : null,
@@ -844,7 +859,22 @@ async function submitClone () {
     line: demoLine.value,
     error: '',
   }
-  clones.value = [...clones.value, entry]
+  // ⚠️ TAKE THE ENTRY BACK OUT OF THE ARRAY BEFORE MUTATING IT.
+  //
+  // `clones` is a ref, so reading `clones.value` hands out a REACTIVE PROXY of
+  // each object in it. The literal above is the RAW object, and writing to the
+  // raw object updates the data without notifying anything — the screen keeps
+  // rendering whatever it last drew.
+  //
+  // Measured on live popty.app, 2026-08-31: a one-tap estate clone completed
+  // at Cartesia and was written to `voices`, and ninety seconds later the row
+  // still read "cloning — 0s". The seconds never counted and the finished
+  // clone never appeared. The deliberate route hid the same bug by accident,
+  // because it also writes `cloneBusy` and `cloneFile`, and those repaint the
+  // panel — so the one-tap route, which is the route the live demo uses, was
+  // the only one visibly broken.
+  clones.value = [...clones.value, draft]
+  const entry = clones.value[clones.value.length - 1]
   const tick = setInterval(() => { entry.seconds += 1 }, 1000)
   try {
     let out
