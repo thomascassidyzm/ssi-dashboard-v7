@@ -17,6 +17,7 @@ const path = require('path')
 
 const lab = require('./lab.cjs')
 const policy = require('../shared/tts-provider-policy.cjs')
+const declaration = require('./declaration.cjs')
 
 /**
  * Cartesia pins its API to a date, not a semver, and the header is REQUIRED —
@@ -312,6 +313,11 @@ const THRESHOLD_SPEC = [
 ]
 
 /** The whole /params payload. */
+/** Whether whisper is present on this box. Never throws — a broken probe is a "no". */
+function canListen () {
+  try { return require('../audio-veracity.cjs').availability().available === true } catch { return false }
+}
+
 async function payload ({ charsSpentToday = 0 } = {}) {
   await Promise.all([estateVoices(), cartesiaCatalogue()])
   const defaults = lab.defaultConfig()
@@ -325,6 +331,28 @@ async function payload ({ charsSpentToday = 0 } = {}) {
       cartesiaCovers: policy.cartesiaCoversLanguage(l.code),
       voices: voicesFor(l, PRODUCTION_VOICES),
     })),
+    // THE CONSENT WORDING, served rather than duplicated (2026-09-01).
+    //
+    // The browser has to SHOW the person the exact line they are about to read
+    // aloud or tick. If the front end kept its own copy, the day Tom redlines
+    // the wording there would be two versions in the estate — one on screen and
+    // one written into the database as what was agreed — and nobody would find
+    // out, because both halves would keep working. So there is one copy, in
+    // services/voicelab/declaration.cjs, and the page reads params.consent.
+    consent: {
+      spokenPhrase: declaration.SPOKEN_PHRASE,
+      attestation: declaration.ATTESTATION,
+      // Can this box listen at all? Whisper is local and on some machines it is
+      // simply not installed, so the recording path can tell the truth up front
+      // — "we will check what you read" or "we cannot, so please tick this
+      // instead" — rather than letting the person discover it on submit.
+      //
+      // ADVISORY ONLY. Nothing server-side branches on this value: the clone
+      // route re-asks availability() at submit time, because a flag fetched
+      // when the page opened is a flag that can be stale or edited in a console,
+      // and consent is not a thing to decide from the browser's copy of a fact.
+      canListen: canListen(),
+    },
     gates: gateStack.GATES,
     thresholdSpec: THRESHOLD_SPEC,
     defaults: { config: defaults },

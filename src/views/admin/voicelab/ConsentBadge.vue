@@ -37,6 +37,15 @@ const HUE = {
     <span class="ui-pill" :class="HUE[consent.status]">{{ consent.label }}</span>
     <span class="vl-consent-line">{{ consent.summary }}</span>
     <span v-if="consent.source" class="vl-consent-src">Sample: {{ consent.source }}</span>
+    <!-- THE WORDS THEY ACTUALLY AGREED TO, verbatim off the voice — never the
+         copy in the code, which will be redlined and would then quietly
+         misreport what an older voice's person was shown. This is the thing
+         that has to be producible later, so it is on the voice, not in a log. -->
+    <span v-if="consent.declaration" class="vl-consent-decl">
+      “{{ consent.declaration.words }}”
+      <em v-if="consent.declaration.kind === 'spoken'">— read aloud on the recording</em>
+      <em v-else>— agreed to when the recording was uploaded</em>
+    </span>
   </span>
 </template>
 
@@ -45,4 +54,6 @@ const HUE = {
 .vl-consent-full { display: flex; align-items: baseline; gap: .5rem; flex-wrap: wrap; font-size: .8125rem; }
 .vl-consent-line { opacity: .85; }
 .vl-consent-src { opacity: .6; font-size: .75rem; }
+.vl-consent-decl { flex-basis: 100%; opacity: .8; font-size: .75rem; }
+.vl-consent-decl em { opacity: .7; font-style: normal; }
 </style>

@@ -73,6 +73,22 @@ import ConsentBadge from './ConsentBadge.vue'
 // off the CSV name fetch, so nothing else here has to.
 import { languageName } from '@/utils/languageNames'
 
+/**
+ * `params` is the /api/voicelab/params payload, passed down from VoiceLab
+ * rather than fetched again here. It is OPTIONAL and may be null: this panel
+ * deliberately renders on a backend that has no render path at all, because
+ * "what is cast where" is worth knowing regardless.
+ *
+ * The one thing it carries that this panel needs is `consent` — the exact
+ * wording of the line a person reads aloud and of the attestation an uploader
+ * agrees to. That wording is NEVER duplicated in this file. It will be
+ * redlined, and a second copy in the front end is how a screen starts showing
+ * a person different words from the ones recorded against their voice.
+ */
+const props = defineProps({
+  params: { type: Object, default: null },
+})
+
 const data = ref(null)
 const loading = ref(true)
 const error = ref('')
@@ -376,10 +392,43 @@ const pickHint = computed(() => {
   return `${sec}s across ${n} clips — they will be joined into one file. One long clip clones better: joins carry changes in tone and room sound that the clone can learn.`
 })
 
+/**
+ * THE CHOSEN FILE, MEASURED — not just named.
+ *
+ * The three sample routes all answer the same question ("is there enough audio
+ * here?") and until now they answered it three different ways: the estate rows
+ * print seconds, the recorder counts seconds out loud, and the upload printed
+ * nothing but the browser's own "No file chosen". So an operator uploading a
+ * file was the only one of the three who could not see the number the whole
+ * page is about. `<audio>` gives the duration for free, locally, before
+ * anything is sent anywhere.
+ */
+const fileSeconds = ref(null)
+
 function pickFile (e) {
   cloneFile.value = e.target.files?.[0] || null
+  fileSeconds.value = null
   clearRecording()
+  if (!cloneFile.value) return
+  const probe = new Audio(URL.createObjectURL(cloneFile.value))
+  probe.addEventListener('loadedmetadata', () => {
+    fileSeconds.value = Number.isFinite(probe.duration) ? Math.round(probe.duration) : null
+    URL.revokeObjectURL(probe.src)
+  })
+  // A file the browser cannot decode still uploads — Cartesia may well accept
+  // it — so a failed probe means "no number", never "no file".
+  probe.addEventListener('error', () => { fileSeconds.value = null; URL.revokeObjectURL(probe.src) })
 }
+
+/** The same sentence the recorder shows, for a file. Seconds, then what they mean. */
+const fileHint = computed(() => {
+  if (!cloneFile.value) return ''
+  const size = `${(cloneFile.value.size / 1024 / 1024).toFixed(1)} MB`
+  if (fileSeconds.value == null) return `${cloneFile.value.name} — ${size}`
+  if (fileSeconds.value < RECORD_MIN_SECONDS) return `${fileSeconds.value}s — under the ${RECORD_MIN_SECONDS}s floor. It will clone, but thinner.`
+  if (fileSeconds.value < 20) return `${fileSeconds.value}s — over the floor. Twenty to sixty seconds clones noticeably steadier.`
+  return `${fileSeconds.value}s — a good length.`
+})
 
 // ── Recording on the page ──────────────────────────────────────────────────
 // MediaRecorder, and nothing else: no library, no upload until the operator has
@@ -475,6 +524,103 @@ const recordHint = computed(() => {
   if (recordSeconds.value < 20) return `${recordSeconds.value}s — over the floor. Twenty to sixty seconds clones noticeably steadier.`
   return `${recordSeconds.value}s — a good length.`
 })
+
+// ── THE CONSENT STEP ───────────────────────────────────────────────────────
+//
+// Tom, 2026-09-01, on walking the clone flows: "I have not read the phrase I am
+// supposed to read to confirm it is my own voice, or to testify it, if it is an
+// upload."
+//
+// So a live sample now carries its own permission, and the two routes carry it
+// differently because only one of them can:
+//
+//   RECORD  — the person READS A LINE ALOUD inside the recording. It does two
+//             jobs at once: it is evidence that the speaker is the person
+//             consenting, and it is the consent record itself. The backend
+//             transcribes the take with the local whisper and refuses the
+//             clone if the line is not in it, so this is not a tick box.
+//   UPLOAD  — nobody was here, and no amount of listening to a file tells you
+//             who chose to send it. So it becomes an EXPLICIT ATTESTATION: the
+//             uploader states this is their own voice or that they hold the
+//             right to use it, agrees to it being cloned, and signs it with a
+//             name. Recorded against the voice with who and when.
+//   ESTATE  — unchanged. No live speaker is present, an existing recording is
+//             not permission, and the clone is still born awaiting
+//             authorisation for Tom to obtain in person.
+//
+// THE WORDS THEMSELVES ARE NOT IN THIS FILE. They come from
+// `params.consent`, which is the same string the backend stores on the voice.
+// One copy, so what a person agreed to and what the screen showed them can
+// never drift apart.
+const declarationAgreed = ref(false)
+const attestedBy = ref('')
+
+/**
+ * Set when the backend answers that IT CANNOT LISTEN — no whisper on that box.
+ * The honest answer then is the same attestation the upload route uses, rather
+ * than either a dead end or a silent pass, and the record says `attested`
+ * rather than `spoken` so the two are never confused later.
+ */
+const cannotListen = ref(false)
+
+/** What the machine heard last time it refused a take. Shown, never hidden. */
+const declarationHeard = ref('')
+
+/**
+ * A refusal, said WHERE THE PERSON IS LOOKING.
+ *
+ * The panel's own `error` renders below the consent editor and above the
+ * language table — several screens down from the Record button on the estate
+ * route, and off the bottom on a phone. A gate that refuses somebody's consent
+ * and then puts the reason somewhere they cannot see it is the same as not
+ * saying anything, so the declaration block carries its own.
+ */
+const declarationError = ref('')
+
+const spokenPhrase = computed(() => props.params?.consent?.spokenPhrase || '')
+const attestationWords = computed(() => props.params?.consent?.attestation || '')
+/** What the backend says about its own ability to check a recording. */
+const backendCanListen = computed(() => props.params?.consent?.canListen !== false)
+
+/** Which of the two the current source needs, or none. */
+const declarationMode = computed(() => {
+  if (cloneSource.value === 'upload') return 'attested'
+  if (cloneSource.value !== 'record') return 'none'
+  return (backendCanListen.value && !cannotListen.value) ? 'spoken' : 'attested'
+})
+
+/**
+ * WHAT THIS CLONE WILL BE BORN AS, shown as a state rather than explained.
+ *
+ * The panel used to print "born awaiting authorisation" beside the permission
+ * note on every route, including the two where it is no longer true. A pill
+ * that changes with the route says the same thing in fewer words and cannot
+ * go stale against the route it is sitting in.
+ */
+const bornAs = computed(() => {
+  if (declarationMode.value === 'spoken') return { label: 'authorised — by the line they read', hue: 'ui-hue-good' }
+  if (declarationMode.value === 'attested') return { label: 'authorised — by the attestation', hue: 'ui-hue-good' }
+  return { label: 'awaiting authorisation', hue: 'ui-hue-warn' }
+})
+
+function resetDeclaration () {
+  declarationAgreed.value = false
+  cannotListen.value = false
+  declarationHeard.value = ''
+  declarationError.value = ''
+}
+
+/**
+ * Changing the sample route changes which permission applies, so the previous
+ * route's answer must not survive the switch. Somebody who agreed to the
+ * attestation and then chose to record instead has not read anything aloud.
+ */
+function chooseSource (src) {
+  cloneSource.value = src
+  resetDeclaration()
+  error.value = ''
+  if (src === 'estate' && !speakers.value.length) loadSpeakers()
+}
 
 // ── THE DEMO: ONE TAP PER CLIP, AND THE CLONES STAY ON SCREEN ──────────────
 //
@@ -634,10 +780,31 @@ async function discard (entry) {
  * and the source when the field is left empty, and the button's own hint asks
  * only for the person. So the gate is the person, plus something to clone from.
  */
-const canSubmitClone = computed(() => {
-  if (!clonePerson.value) return false
-  return cloneSource.value === 'estate' ? pickedKeys.value.length > 0 : Boolean(cloneFile.value)
+/**
+ * THE ONE MISSING THING, NAMED.
+ *
+ * The button used to sit under a single fixed sentence — "Name whose voice this
+ * is first." — which stayed put even once you had named them, so on the estate
+ * path it was telling you to do something you had already done while the real
+ * blocker (nothing ticked, eighty rows above) went unmentioned. A disabled
+ * control has to say what would arm it, and it has to say the CURRENT one.
+ */
+const cloneBlocker = computed(() => {
+  if (!clonePerson.value) return 'Name whose voice this is.'
+  if (cloneSource.value === 'estate') {
+    return pickedKeys.value.length ? '' : 'Tick the recordings to clone from.'
+  }
+  if (!cloneFile.value) return cloneSource.value === 'record' ? 'Record a take first.' : 'Choose a file first.'
+  if (declarationMode.value === 'spoken') {
+    return spokenPhrase.value ? '' : 'This backend has not sent the line to read.'
+  }
+  if (!attestationWords.value) return 'This backend has not sent the wording to agree to.'
+  if (!declarationAgreed.value) return 'Agree to the wording above.'
+  if (!attestedBy.value) return 'Sign the attestation with a name.'
+  return ''
 })
+
+const canSubmitClone = computed(() => !cloneBlocker.value)
 
 /**
  * The DELIBERATE path: several estate clips joined, or a file, or a recording.
@@ -692,8 +859,21 @@ async function submitClone () {
       fd.append('person', clonePerson.value)
       if (clonePersonContact.value) fd.append('personContact', clonePersonContact.value)
       if (cloneConsentNote.value) fd.append('consentNote', cloneConsentNote.value)
+      // THE CONSENT STEP, on the wire. `sampleFrom` is what tells the backend
+      // which of the two it is entitled to ask for: it listens for the spoken
+      // line on a recording, and it requires the signed attestation on a file.
+      // Neither is optional there — this is a real-world permission about a
+      // real person, and the route refuses rather than trusting the screen.
+      fd.append('sampleFrom', cloneSource.value)
+      if (declarationMode.value === 'attested') {
+        fd.append('declarationAgreed', 'true')
+        fd.append('attestedBy', attestedBy.value)
+      }
       out = await api.cloneVoice(fd)
       cloneFile.value = null
+      fileSeconds.value = null
+      resetDeclaration()
+      attestedBy.value = ''
       clearRecording()
     }
     entry.voice = out.voice
@@ -715,8 +895,26 @@ async function submitClone () {
     entry.stage = 'done'
     cloneName.value = ''
   } catch (e) {
-    entry.error = e.message
-    entry.stage = 'failed'
+    // A REFUSED DECLARATION IS NOT A FAILED CLONE, and must not read like one.
+    // Nothing was made, nothing was spent, and the operator has something
+    // specific to do about it — so the row comes straight back off the screen
+    // and the panel says what is needed, where the control for it is.
+    const d = e.data || {}
+    if (d.needsAttestation || d.declarationNotHeard) {
+      clones.value = clones.value.filter((c) => c.id !== entry.id)
+      if (d.needsAttestation) cannotListen.value = true
+      if (d.declarationNotHeard) {
+        // What the machine heard, verbatim. The operator can then disagree
+        // with it out loud — a gate that refuses without showing its evidence
+        // is one nobody can argue with, and this one is about a real person's
+        // permission.
+        declarationHeard.value = d.heard || ''
+      }
+      declarationError.value = e.message
+    } else {
+      entry.error = e.message
+      entry.stage = 'failed'
+    }
   }
   clearInterval(tick)
   cloneBusy.value = false
@@ -1131,21 +1329,32 @@ function candidatesFor (lang, slot) {
       <div v-if="showClone" class="vl-clone-body">
         <p v-if="sampleGuidance" class="vl-guidance">{{ sampleGuidance.headline }}</p>
 
-        <!-- WHOSE VOICE IS THIS. Required before Cartesia is called at all.
-             Consent itself is Tom's to obtain afterwards; a name is what makes
-             that possible, and a record with nobody attached is decorative. -->
+        <!-- ── THE PANEL NOW READS IN THE ORDER IT IS USED ──────────────────
+             Tom, 2026-09-01: the flows "do not hang together". The fields were
+             all here and all correct, in an order nobody works in — the field
+             that gates everything sat at the top, the button that says so sat
+             at the bottom past eighty clip rows, and the source picker that
+             changes what all of them mean was fourth. Numbering the four moves
+             is state, not prose: it costs three characters a row and it makes
+             the next tap obvious without a sentence explaining it. -->
+
+        <!-- 1 — WHOSE VOICE IS THIS. Required before Cartesia is called at all,
+             because a consent record with nobody attached is decorative on the
+             day it is written and Tom cannot go and ask a voice id. -->
         <div class="vl-clone-row vl-consent-row">
-          <span class="ui-filter-label">Whose voice</span>
+          <span class="ui-filter-label"><b class="vl-step">1</b> Whose voice</span>
           <input v-model="clonePerson" class="ui-field" placeholder="the person this recording is of — required" />
           <input v-model="clonePersonContact" class="ui-field" placeholder="how to reach them (optional)" />
-        </div>
-        <div class="vl-clone-row vl-consent-row">
           <input v-model="cloneConsentNote" class="ui-field vl-wide" placeholder="anything to note about permission (optional)" />
-          <span class="vl-muted">born awaiting authorisation</span>
         </div>
 
+        <!-- 2 — THE VOICE BEING MADE. The demo line lives here now rather than
+             inside the estate branch: every route auditions the new clone with
+             it, so hiding it on two of the three meant hearing a sentence you
+             were never shown. -->
         <div class="vl-clone-row">
-          <input v-model="cloneName" class="ui-field" placeholder="name for the new voice" />
+          <span class="ui-filter-label"><b class="vl-step">2</b> The new voice</span>
+          <input v-model="cloneName" class="ui-field" placeholder="name it yourself (optional)" />
           <input v-model="cloneLang" class="ui-field vl-narrow" placeholder="language e.g. eng" />
           <span v-if="cloneLang" class="vl-muted vl-clone-lang">{{ langName(cloneLang) }}</span>
           <select v-model="cloneGender" class="ui-field vl-narrow">
@@ -1154,23 +1363,32 @@ function candidatesFor (lang, slot) {
             <option value="f">female</option>
           </select>
         </div>
+        <div class="vl-clone-row">
+          <span class="ui-filter-label vl-sub">and says</span>
+          <input v-model="demoLine" class="ui-field vl-wide" placeholder="the line every new voice will say" />
+        </div>
 
+        <!-- 3 — WHERE THE SAMPLE COMES FROM, and what that route means for
+             permission. The pill is the whole of the explanation: it changes
+             with the chip beside it, so "awaiting authorisation" can no longer
+             sit on a route where it is not true. -->
         <div class="vl-clone-row vl-source-row">
-          <span class="ui-filter-label">Sample</span>
+          <span class="ui-filter-label"><b class="vl-step">3</b> Sample</span>
           <button
             class="ui-chip" :class="cloneSource === 'estate' ? 'ui-hue-info' : 'ui-chip-off'"
-            @click="cloneSource = 'estate'; if (!speakers.length) loadSpeakers()"
+            @click="chooseSource('estate')"
           >From a recording we hold</button>
           <button
             class="ui-chip" :class="cloneSource === 'upload' ? 'ui-hue-info' : 'ui-chip-off'"
-            @click="cloneSource = 'upload'"
+            @click="chooseSource('upload')"
           >Upload a file</button>
           <button
             class="ui-chip" :class="cloneSource === 'record' ? 'ui-hue-info' : 'ui-chip-off'"
             :disabled="!canRecord"
             :title="canRecord ? '' : 'This browser will not give the page a microphone.'"
-            @click="cloneSource = 'record'"
+            @click="chooseSource('record')"
           >Record it here</button>
+          <span class="ui-pill vl-born" :class="bornAs.hue">{{ bornAs.label }}</span>
         </div>
 
         <!-- ── THE PRIMARY PATH: a speaker we already have on tape ───────
@@ -1180,14 +1398,6 @@ function candidatesFor (lang, slot) {
              somebody wrote, and two clone attempts here were built from TTS
              wearing it. Listening is the only verification that works. -->
         <div v-if="cloneSource === 'estate'" class="vl-estate">
-          <!-- ONE LINE, SAID BY EVERY CLONE. That is what makes three clones
-               from three sources comparable with each other rather than only
-               with their own originals. Deliberately something the speaker has
-               never said: a clone repeating its own source proves nothing. -->
-          <div class="vl-clone-row">
-            <span class="ui-filter-label">Every clone says</span>
-            <input v-model="demoLine" class="ui-field vl-wide" placeholder="the line every clone will say" />
-          </div>
           <div class="vl-clone-row">
             <input
               v-model="speakerFilterLang" class="ui-field vl-narrow" placeholder="language e.g. eng"
@@ -1275,28 +1485,66 @@ function candidatesFor (lang, slot) {
           </template>
         </div>
 
+        <!-- UPLOAD. Seconds, like the other two routes: this was the only one
+             of the three that could not tell you how much audio it had. -->
         <div v-else-if="cloneSource === 'upload'" class="vl-clone-row">
           <input type="file" accept="audio/*" class="ui-field" @change="pickFile" />
-          <span class="vl-muted">one take, 20&ndash;60s, no long pauses</span>
+          <span class="vl-muted">{{ fileHint || 'one take, 20–60s, no long pauses' }}</span>
         </div>
 
-        <div v-else-if="cloneSource === 'record'" class="vl-clone-row vl-record-row">
-          <button v-if="!recording" class="vl-btn" @click="startRecording">● Record</button>
-          <button v-else class="vl-btn vl-recording" @click="stopRecording">■ Stop — {{ recordSeconds }}s</button>
-          <span v-if="recording" class="vl-muted">one take, no long pauses &mdash; stops at 60s</span>
-          <template v-if="recordedUrl">
-            <audio :src="recordedUrl" controls class="vl-record-audio" />
-            <span class="vl-muted">{{ recordHint }}</span>
-            <button class="ui-sort-btn" @click="startRecording">Record it again</button>
-          </template>
-          <span v-if="recordError" class="vl-error">{{ recordError }}</span>
+        <!-- RECORD. The line to read is the first thing on this route and it
+             stays up while the tape rolls — a phrase you are meant to read is
+             no use if it leaves the screen the moment you press Record. -->
+        <div v-else-if="cloneSource === 'record'" class="vl-record-block">
+          <div v-if="declarationMode === 'spoken'" class="vl-declare">
+            <span class="ui-filter-label"><b class="vl-step">4</b> Read this aloud</span>
+            <p class="vl-declare-words">{{ spokenPhrase || 'This backend has not sent the line to read.' }}</p>
+            <!-- The backend's refusal already quotes what came through, so a
+                 second copy of the transcript under it said the same thing
+                 twice. If in doubt, cut it out. `declarationHeard` is still
+                 kept in state: it is what the consent record stores. -->
+            <p v-if="declarationError" class="vl-declare-err">{{ declarationError }}</p>
+          </div>
+          <div class="vl-clone-row vl-record-row">
+            <button v-if="!recording" class="vl-btn" @click="startRecording">● Record</button>
+            <button v-else class="vl-btn vl-recording" @click="stopRecording">■ Stop — {{ recordSeconds }}s</button>
+            <span v-if="recording" class="vl-muted">keep going after the line &mdash; stops at 60s</span>
+            <template v-if="recordedUrl">
+              <audio :src="recordedUrl" controls class="vl-record-audio" />
+              <span class="vl-muted">{{ recordHint }}</span>
+              <button class="ui-sort-btn" @click="startRecording">Record it again</button>
+            </template>
+            <span v-if="recordError" class="vl-error">{{ recordError }}</span>
+          </div>
+        </div>
+
+        <!-- ── THE ATTESTATION ────────────────────────────────────────────
+             The upload route, and a recording on a box with no ear. Nobody
+             was in the room and no amount of listening to a file says who
+             chose to send it, so the permission is stated rather than proved,
+             and it is signed. Tap to agree, type a name: both are recorded
+             against the voice with the date, and both are required by the
+             route as well as by this button. -->
+        <div v-if="declarationMode === 'attested' && cloneSource !== 'estate'" class="vl-declare">
+          <span class="ui-filter-label"><b class="vl-step">4</b> Agree to this</span>
+          <p class="vl-declare-words">{{ attestationWords || 'This backend has not sent the wording to agree to.' }}</p>
+          <p v-if="declarationError" class="vl-declare-err">{{ declarationError }}</p>
+          <div class="vl-clone-row">
+            <label class="vl-agree">
+              <input type="checkbox" v-model="declarationAgreed" />
+              I agree
+            </label>
+            <input v-model="attestedBy" class="ui-field" placeholder="your name — required" />
+          </div>
         </div>
 
         <div class="vl-clone-row">
           <button class="vl-btn" :disabled="cloneBusy || !canSubmitClone" @click="submitClone">
-            {{ cloneBusy ? 'Cloning…' : 'Create the clone' }}
+            {{ cloneBusy ? 'Cloning…' : (cloneSource === 'estate' && pickedKeys.length > 1
+              ? `Clone from the ${pickedKeys.length} ticked recordings`
+              : 'Create the clone') }}
           </button>
-          <span v-if="!clonePerson" class="vl-muted">Name whose voice this is first.</span>
+          <span v-if="cloneBlocker" class="vl-muted">{{ cloneBlocker }}</span>
         </div>
 
         <!-- ── EVERY CLONE MADE IN THIS SESSION ──────────────────────────
@@ -1322,7 +1570,10 @@ function candidatesFor (lang, slot) {
             <span v-else-if="k.stage !== 'failed'" class="vl-muted">{{ k.stage }} — {{ k.seconds }}s</span>
             <span v-if="k.source && k.source.passthrough" class="ui-pill ui-hue-quiet" title="the original file went to Cartesia byte for byte — no re-encoding">untouched</span>
             <span v-if="k.source && k.source.stitched" class="ui-pill ui-hue-warn" :title="k.source.stitched">joined</span>
-            <ConsentBadge :consent="k.consent" />
+            <!-- FULL, not the pill, and only here: this is the moment the
+                 record is made, so it is the moment to show what was actually
+                 written down about a real person. -->
+            <ConsentBadge :consent="k.consent" mode="full" />
             <button v-if="k.voice" class="ui-sort-btn" @click="openConsent(k.voice.voice_id, k.consent)">consent…</button>
             <button v-if="k.voice" class="ui-sort-btn" @click="discard(k)">discard</button>
           </div>
@@ -1966,6 +2217,29 @@ function candidatesFor (lang, slot) {
 .vl-record-audio { height: 2rem; max-width: 18rem; }
 .vl-source-row { align-items: center; }
 .vl-audition-text { min-width: 22rem; }
+/* The step numerals. Deliberately quiet — they order the panel, they are not
+   headings, and the moment they compete with the fields they are noise. */
+.vl-step {
+  display: inline-block; min-width: 1.05rem; text-align: center;
+  border-radius: 999px; background: var(--surface-3); color: inherit;
+  font-size: .6875rem; font-weight: 600; padding: 0 .1rem; margin-right: .3rem;
+}
+.vl-sub { padding-left: 1.35rem; }
+.vl-born { flex: none; margin-left: auto; font-size: .6875rem; }
+
+/* THE DECLARATION. The words a person reads aloud or agrees to are the whole
+   point of the block, so they are set larger than the chrome around them and
+   given a coloured edge — this is the one thing on the panel a human other
+   than the operator is expected to read. */
+.vl-declare {
+  border: 1px solid var(--surface-3); border-left: 3px solid #ec4899;
+  border-radius: 8px; padding: .6rem .85rem; margin-top: .6rem;
+}
+.vl-declare-words { font-size: 1.0625rem; line-height: 1.5; margin: .35rem 0 0; }
+.vl-declare-err { font-size: .8125rem; color: var(--danger); margin: .4rem 0 0; }
+.vl-declare-heard { font-size: .78rem; color: var(--warning, #f59e0b); margin: .4rem 0 0; }
+.vl-agree { display: inline-flex; align-items: center; gap: .4rem; font-size: .8125rem; }
+.vl-record-block { margin-top: .5rem; }
 .vl-clone-done { margin-top: .75rem; }
 .vl-clone-body { margin-top: .75rem; max-width: 60rem; }
 .vl-clone-row { display: flex; gap: .5rem; flex-wrap: wrap; align-items: center; margin-top: .5rem; }

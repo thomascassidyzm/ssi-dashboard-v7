@@ -133,7 +133,7 @@ async function fetchVoice (voiceId) {
  * @param {string} a.name      what to call the voice
  * @param {string} a.language  ISO-639-1/3/locale — normalised before sending
  */
-async function createClone (db, { clip, filename = 'sample.wav', name, language, gender = null, description = null, registeredBy = null, person = null, personContact = null, consentNote = null, source = null }) {
+async function createClone (db, { clip, filename = 'sample.wav', name, language, gender = null, description = null, registeredBy = null, person = null, personContact = null, consentNote = null, source = null, declaration = null }) {
   if (!clip || !clip.length) throw Object.assign(new Error('A sample clip is required to clone a voice.'), { status: 400 })
   if (!name) throw Object.assign(new Error('A name is required for the new voice.'), { status: 400 })
 
@@ -146,9 +146,27 @@ async function createClone (db, { clip, filename = 'sample.wav', name, language,
   // is decorative, and Tom cannot go and ask a voice id. So the voice is born
   // 'awaiting_authorisation' with a name attached, and that is the state it
   // wears on screen until a real yes is recorded against it.
-  const consentRecord = consent.birthRecord({
+  const birth = consent.birthRecord({
     person, personContact, note: consentNote, source, recordedBy: registeredBy,
   })
+
+  // A DECLARATION, WHEN THE PERSON WAS ACTUALLY THERE (2026-09-01).
+  //
+  // The birth record above is the estate-clone answer: nobody is present, so
+  // the voice is born awaiting authorisation and Tom goes and asks. The browser
+  // recording path is a different situation — the person read the consent line
+  // into the microphone, or the uploader agreed to the attestation — and there
+  // the consent event has ALREADY happened. So the declaration columns are
+  // merged OVER the birth record rather than instead of it: the birth record
+  // still supplies the person, the provenance and the operator, and still
+  // refuses to exist without a name; the declaration overwrites the status and
+  // the three authorised_* fields with what actually took place.
+  //
+  // Merged HERE, so the consent fact is part of the voice's FIRST write. A
+  // record added in a follow-up update is a record that can fail to be added,
+  // and the window between the two writes is a real person's voice sitting in
+  // the database with no permission attached to it.
+  const consentRecord = declaration ? { ...birth, ...declaration } : birth
 
   const code = policy.toCartesiaLangCode(language)
   if (!code) throw Object.assign(new Error(`"${language}" is not a language code Cartesia accepts.`), { status: 400 })

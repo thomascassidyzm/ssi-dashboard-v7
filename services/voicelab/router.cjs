@@ -42,6 +42,7 @@ const samples = require('./samples.cjs')
 const humanRecorded = require('../shared/human-recorded-roles.cjs')
 const speakers = require('./speakers.cjs')
 const consent = require('./consent.cjs')
+const declaration = require('./declaration.cjs')
 const { isHumanVoiceLang } = require('../shared/human-voice-courses.cjs')
 
 /**
@@ -113,7 +114,14 @@ function mount (app, deps) {
     const status = err && err.status ? err.status : 500
     if (status >= 500) logger.error?.(`[voicelab] ${context}:`, err)
     else logger.log?.(`[voicelab] ${context}: ${err.message}`)
-    res.status(status).json({ error: err.message, code: err.code || 'voicelab_failed' })
+    // `err.detail` rides alongside the sentence for the callers that have to
+    // BRANCH on a refusal rather than merely show it. The consent gate is the
+    // case that forced it (2026-09-01): the browser needs to know whether to
+    // offer the attestation instead or to ask for the line to be read again,
+    // and making a screen string-match English prose to find that out means the
+    // day the sentence is redlined the screen silently takes the wrong branch.
+    // The sentence stays the thing a human reads; the flag is the thing code reads.
+    res.status(status).json({ error: err.message, code: err.code || 'voicelab_failed', ...(err.detail || {}) })
   }
 
   /**
@@ -499,6 +507,63 @@ function mount (app, deps) {
     try {
       const parsed = await readUpload(req)
       const { clip, filename, fields } = parsed
+
+      // ── THE CONSENT GATE (2026-09-01) ─────────────────────────────────────
+      //
+      // Tom: "A clone must not be creatable from a browser recording where the
+      // phrase was not read." So this route will not reach Cartesia at all
+      // until it can say, in a column, what this person consented to. There are
+      // exactly three ways through, and they are not interchangeable.
+      const sampleFrom = String(fields.sampleFrom || '').trim().toLowerCase()
+      const attestedBy = String(fields.attestedBy || '').trim()
+      const agreed = String(fields.declarationAgreed || '').trim().toLowerCase() === 'true'
+      const person = fields.person || null
+      let declarationRecord = null
+
+      if (sampleFrom === 'record') {
+        // Recorded here, in the browser, seconds ago: the person is present and
+        // the line they read is inside the very bytes about to be cloned.
+        const check = await declaration.verifySpoken(clip, { language: fields.language })
+        if (check.available && check.ok) {
+          declarationRecord = declaration.declarationRecord({ kind: 'spoken', heard: check.heard, person })
+        } else if (check.available) {
+          // We listened, and the line was not in the recording. Quote what WAS
+          // heard: the operator needs to see why — a misread word, the wrong
+          // clip picked up, or a microphone that captured nothing — and a bare
+          // "consent phrase not detected" sends them round the loop blind.
+          throw Object.assign(new Error(
+            `The consent line was not heard in that recording. It needs to say: "${declaration.SPOKEN_PHRASE}" — what came through instead was: "${(check.heard || '').trim() || 'nothing at all'}". Record it again, reading the line aloud.`,
+          ), { status: 400, detail: { declarationNotHeard: true, heard: check.heard, coverage: check.coverage } })
+        } else {
+          // THE HONEST FALLBACK, and it is deliberate. Whisper runs locally and
+          // on some machines it is simply not installed, so "could not check"
+          // is a real state — it is not a pass and it is not a failure. Waving
+          // the clone through would record a spoken declaration that nothing
+          // verified, which is the one lie this feature exists to prevent.
+          // Blocking would make a legitimate recording uncloneable because of a
+          // missing binary. So the recording route drops to exactly the same
+          // attestation the upload route uses, and the voice carries
+          // 'attested' — the weaker, truthful claim — rather than 'spoken'.
+          if (!agreed || !attestedBy) {
+            throw Object.assign(new Error(
+              'This machine cannot listen to the recording to check that the consent line was read, so it needs the written statement instead: tick the consent wording and say who is making the statement.',
+            ), { status: 400, detail: { needsAttestation: true } })
+          }
+          declarationRecord = declaration.declarationRecord({ kind: 'attested', attestedBy, person })
+        }
+      } else {
+        // UPLOAD, and the default when nothing says otherwise — because the
+        // default must be the branch that cannot be faked. A missing
+        // sampleFrom must never fall into the spoken path and record a
+        // declaration nobody made.
+        if (!agreed || !attestedBy) {
+          throw Object.assign(new Error(
+            `Nobody has agreed to the consent wording. An uploaded recording cannot prove who spoke, so somebody has to state it: tick "${declaration.ATTESTATION}" and say who is making the statement.`,
+          ), { status: 400, detail: { needsAttestation: true } })
+        }
+        declarationRecord = declaration.declarationRecord({ kind: 'attested', attestedBy, person })
+      }
+
       const out = await cartesia.createClone(supabase(), {
         clip,
         filename,
@@ -507,19 +572,22 @@ function mount (app, deps) {
         gender: fields.gender || null,
         description: fields.description || null,
         registeredBy: who(user),
-        // WHOSE VOICE IT IS. Required — see cartesia.createClone. Consent
-        // itself is Tom's to obtain later; naming the person is what makes
-        // that possible at all.
-        person: fields.person || null,
+        // WHOSE VOICE IT IS. Required — see cartesia.createClone. Still
+        // required even with a declaration attached: a yes that cannot be
+        // matched to a person is a record nobody can ever act on.
+        person,
         personContact: fields.personContact || null,
         consentNote: fields.consentNote || null,
         source: fields.source || (filename ? `uploaded or recorded sample (${filename})` : 'uploaded sample'),
+        // Merged over the birth record inside createClone, so the consent fact
+        // is part of the voice's FIRST write — never a follow-up update.
+        declaration: declarationRecord,
       })
       // Same reason as register, and it matters more here: this voice did not
       // exist a second ago, so without this the operator gets a green tick for
       // a voice they cannot then find or hear.
       params.invalidateCartesiaCatalogue()
-      logger.log?.(`[voicelab] cloned cartesia voice ${out.cartesia.id} by ${who(user)}`)
+      logger.log?.(`[voicelab] cloned cartesia voice ${out.cartesia.id} by ${who(user)} — consent ${declarationRecord.consent_declaration_kind}`)
       res.json({ ok: true, ...out })
     } catch (err) { fail(res, err, 'clone-cartesia-voice') }
   })
